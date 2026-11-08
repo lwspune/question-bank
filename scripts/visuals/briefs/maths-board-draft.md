@@ -52,6 +52,19 @@ algebra-steps draft, a sketch draft, or a skip.
   for a phone. Split it: "dy/dx = A + B" as the first line, then simplify
   each part on its own line.
 
+## Learned on Differential Equations (2026-11-08, 217 questions)
+
+- A step's `from` is an index into that question's `sentences` and must
+  exist: a short solution (three sentences) cannot have steps from 0, 2
+  and 5. The assembler drops such a draft ("the steps do not fit the
+  solution's sentences"); check-drafts does not catch it.
+- A solution that is only a relation (implicit general solution): check it
+  by differentiating the relation by formula at one sample point, as for
+  implicit differentiation above.
+- A character your console prints as � is usually an em dash (U+2014) the
+  console cannot show, not a damaged character: check its code point
+  before reporting it (four false reports on Definite Integration).
+
 ## Output, checks and report
 
 As in physics-draft.md: three files per slice (algebra, sketch, skip with a

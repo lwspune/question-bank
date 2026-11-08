@@ -1,0 +1,1126 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "35457637-3a91-4193-8ff2-226f89fe26ac",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "A = \\begin{bmatrix} 5 & -1 & 4 \\\\ 2 & 3 & 5 \\\\ 5 & -2 & 6 \\end{bmatrix}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "|A| = 51",
+              "f": "5*(3*6-5*(-2))-(-1)*(2*6-5*5)+4*(2*(-2)-3*5)",
+              "value": "51",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\operatorname{adj}(A) = \\begin{bmatrix} 28 & -2 & -17 \\\\ 13 & 10 & -17 \\\\ -19 & 5 & 17 \\end{bmatrix}",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "x = \\tfrac{1}{51}(140 - 4 + 17) = 3",
+              "f": "(28*5+(-2)*2+(-17)*(-1))/51",
+              "value": "3",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "y = \\tfrac{1}{51}(65 + 20 + 17) = 2",
+              "f": "(13*5+10*2+(-17)*(-1))/51",
+              "value": "2",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "z = \\tfrac{1}{51}(-95 + 10 - 17) = -2",
+              "f": "((-19)*5+5*2+17*(-1))/51",
+              "value": "-2",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{check: } 5(3) + (-1)(2) + 4(-2) = 5",
+              "f": "5*3+(-1)*2+4*(-2)",
+              "value": "5",
+              "step": "s4"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "a3fc3ae9",
+        "answer": {
+          "value": 3,
+          "label": "x = 3, y = 2, z = -2"
+        }
+      }
+    },
+    {
+      "id": "36d5109d-20ee-46ba-83aa-3b0f88cb3d36",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "A = \\begin{bmatrix} 1 & 0 & 1 \\\\ 0 & 2 & 3 \\\\ 1 & 2 & 1 \\end{bmatrix}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "|A| = -6",
+              "f": "1*(2*1-3*2)-0*(0*1-3*1)+1*(0*2-2*1)",
+              "value": "-6",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\text{columns: } A = AI",
+              "step": "s2"
+            },
+            {
+              "kind": "note",
+              "tex": "A^{-1} = \\tfrac{1}{6}\\begin{bmatrix} 4 & -2 & 2 \\\\ -3 & 0 & 3 \\\\ 2 & 2 & -2 \\end{bmatrix}",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "(AA^{-1})_{11} = 1",
+              "f": "(1*4+0*(-3)+1*2)/6",
+              "value": "1",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "(AA^{-1})_{21} = 0",
+              "f": "(0*4+2*(-3)+3*2)/6",
+              "value": "0",
+              "step": "s3"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "d68bf472",
+        "answer": {
+          "value": 1,
+          "label": "AA⁻¹ = I"
+        }
+      }
+    },
+    {
+      "id": "43326ced-f22e-4a68-819e-19a93a41cbaa",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "A = \\begin{bmatrix} 1 & 2 & 3 \\\\ 1 & 1 & 5 \\\\ 2 & 4 & 7 \\end{bmatrix}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "|A| = -1",
+              "f": "1*(1*7-5*4)-2*(1*7-5*2)+3*(1*4-1*2)",
+              "value": "-1",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\text{rows: } A = IA",
+              "step": "s2"
+            },
+            {
+              "kind": "note",
+              "tex": "A^{-1} = \\begin{bmatrix} 13 & 2 & -7 \\\\ -3 & -1 & 2 \\\\ -2 & 0 & 1 \\end{bmatrix}",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "(AA^{-1})_{11} = 1",
+              "f": "(1*13+2*(-3)+3*(-2))/1",
+              "value": "1",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "(AA^{-1})_{21} = 0",
+              "f": "(1*13+1*(-3)+5*(-2))/1",
+              "value": "0",
+              "step": "s3"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "db72b3ab",
+        "answer": {
+          "value": 1,
+          "label": "AA⁻¹ = I"
+        }
+      }
+    },
+    {
+      "id": "5a238241-17ba-4e22-967e-e0ade94e1aa1",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "A = \\begin{bmatrix} 1 & 1 & 1 \\\\ 6 & 7 & 8 \\\\ 6 & 7 & -8 \\end{bmatrix}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "|A| = -16",
+              "f": "1*(7*(-8)-8*7)-1*(6*(-8)-8*6)+1*(6*7-7*6)",
+              "value": "-16",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\operatorname{adj}(A) = \\begin{bmatrix} -112 & 15 & 1 \\\\ 96 & -14 & -2 \\\\ 0 & -1 & 1 \\end{bmatrix}",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "x = -\\tfrac{1}{16}(-560000 + 525000 + 7000) = 1750",
+              "f": "((-112)*5000+15*35000+1*7000)/(-16)",
+              "value": "1750",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "y = -\\tfrac{1}{16}(480000 - 490000 - 14000) = 1500",
+              "f": "(96*5000+(-14)*35000+(-2)*7000)/(-16)",
+              "value": "1500",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "z = -\\tfrac{1}{16}(0 - 35000 + 7000) = 1750",
+              "f": "(0*5000+(-1)*35000+1*7000)/(-16)",
+              "value": "1750",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{check: } 1(1750) + 1(1500) + 1(1750) = 5000",
+              "f": "1*1750+1*1500+1*1750",
+              "value": "5000",
+              "step": "s4"
+            }
+          ],
+          "answer": "1750"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 17,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "7b4b058d",
+        "answer": {
+          "value": 1750,
+          "label": "x = 1750, y = 1500, z = 1750"
+        }
+      }
+    },
+    {
+      "id": "60e1844c-e24f-48ae-b23e-cef644db9113",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\left[A \\mid B\\right] = \\begin{bmatrix} 2 & -1 & 1 & 1 \\\\ 1 & 2 & 3 & 8 \\\\ 3 & 1 & -4 & 1 \\end{bmatrix}",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "R_1 \\leftrightarrow R_2:\\ \\begin{bmatrix} 1 & 2 & 3 & 8 \\\\ 2 & -1 & 1 & 1 \\\\ 3 & 1 & -4 & 1 \\end{bmatrix}",
+              "step": "s2"
+            },
+            {
+              "kind": "note",
+              "tex": "R_2 - 2R_1,\\ R_3 - 3R_1:\\ \\begin{bmatrix} 1 & 2 & 3 & 8 \\\\ 0 & -5 & -5 & -15 \\\\ 0 & -5 & -13 & -23 \\end{bmatrix}",
+              "step": "s3"
+            },
+            {
+              "kind": "note",
+              "tex": "R_3 \\to R_3 - R_2:\\ \\begin{bmatrix} 1 & 2 & 3 & 8 \\\\ 0 & -5 & -5 & -15 \\\\ 0 & 0 & -8 & -8 \\end{bmatrix}",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "z = \\tfrac{-8}{-8} = 1",
+              "f": "(-8)/(-8)",
+              "value": "1",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "y = \\tfrac{-15 + 5(1)}{-5} = 2",
+              "f": "(-15+5*1)/(-5)",
+              "value": "2",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "x = 8 - 2(2) - 3(1) = 1",
+              "f": "8-2*2-3*1",
+              "value": "1",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{check: } 3(1) + 2 - 4(1) = 1",
+              "f": "3*1+2-4*1",
+              "value": "1",
+              "step": "s5"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "e8e7fd85",
+        "answer": {
+          "value": 1,
+          "label": "x = 1, y = 2, z = 1"
+        }
+      }
+    },
+    {
+      "id": "6a68fb43-7b2d-48b9-8324-79349101586b",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\left[A \\mid B\\right] = \\begin{bmatrix} 1 & 1 & 0 & 1 \\\\ 0 & 1 & 1 & \\frac{5}{3} \\\\ 1 & 0 & 1 & \\frac{4}{3} \\end{bmatrix}",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "R_3 \\to R_3 - R_1:\\ \\begin{bmatrix} 1 & 1 & 0 & 1 \\\\ 0 & 1 & 1 & \\frac{5}{3} \\\\ 0 & -1 & 1 & \\frac{1}{3} \\end{bmatrix}",
+              "step": "s2"
+            },
+            {
+              "kind": "note",
+              "tex": "R_3 \\to R_3 + R_2:\\ \\begin{bmatrix} 1 & 1 & 0 & 1 \\\\ 0 & 1 & 1 & \\frac{5}{3} \\\\ 0 & 0 & 2 & 2 \\end{bmatrix}",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "z = \\tfrac{2}{2} = 1",
+              "f": "2/2",
+              "value": "1",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "y = \\tfrac{5}{3} - 1 = \\tfrac{2}{3}",
+              "f": "5/3-1",
+              "value": "2/3",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "x = 1 - \\tfrac{2}{3} = \\tfrac{1}{3}",
+              "f": "1-2/3",
+              "value": "1/3",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{check: } z + x = \\tfrac{4}{3}",
+              "f": "1+1/3",
+              "value": "4/3",
+              "step": "s4"
+            }
+          ],
+          "answer": "1/3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "17639437",
+        "answer": {
+          "value": 0.3333333333333333,
+          "label": "x = 1/3, y = 2/3, z = 1"
+        }
+      }
+    },
+    {
+      "id": "6c0c4a40-4849-45ff-837b-5609b6905ace",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "A = \\begin{bmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 1 \\\\ 1 & 3 & 2 \\end{bmatrix}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "|A| = 1",
+              "f": "1*(2*2-1*3)-1*(1*2-1*1)+1*(1*3-2*1)",
+              "value": "1",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\operatorname{adj}(A) = \\begin{bmatrix} 1 & 1 & -1 \\\\ -1 & 1 & 0 \\\\ 1 & -2 & 1 \\end{bmatrix}",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "x = (210 + 240 - 300) = 150",
+              "f": "(1*210+1*240+(-1)*300)/1",
+              "value": "150",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "y = (-210 + 240 + 0) = 30",
+              "f": "((-1)*210+1*240+0*300)/1",
+              "value": "30",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "z = (210 - 480 + 300) = 30",
+              "f": "(1*210+(-2)*240+1*300)/1",
+              "value": "30",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{check: } 1(150) + 1(30) + 1(30) = 210",
+              "f": "1*150+1*30+1*30",
+              "value": "210",
+              "step": "s4"
+            }
+          ],
+          "answer": "150"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 15,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "c4e53a2e",
+        "answer": {
+          "value": 150,
+          "label": "x = 150, y = 30, z = 30"
+        }
+      }
+    },
+    {
+      "id": "7345ae4b-964c-4fed-a07b-a5d6ae819fc8",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "A = \\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & 1 & 1 \\\\ 1 & 1 & -1 \\end{bmatrix}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "|A| = -2",
+              "f": "1*(1*(-1)-1*1)-1*(0*(-1)-1*1)+1*(0*1-1*1)",
+              "value": "-2",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\operatorname{adj}(A) = \\begin{bmatrix} -2 & 2 & 0 \\\\ 1 & -2 & -1 \\\\ -1 & 0 & 1 \\end{bmatrix}",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "x = -\\tfrac{1}{2}(2 + 4 + 0) = -3",
+              "f": "((-2)*(-1)+2*2+0*3)/(-2)",
+              "value": "-3",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "y = -\\tfrac{1}{2}(-1 - 4 - 3) = 4",
+              "f": "(1*(-1)+(-2)*2+(-1)*3)/(-2)",
+              "value": "4",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "z = -\\tfrac{1}{2}(1 + 0 + 3) = -2",
+              "f": "((-1)*(-1)+0*2+1*3)/(-2)",
+              "value": "-2",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{check: } 1(-3) + 1(4) + 1(-2) = -1",
+              "f": "1*(-3)+1*4+1*(-2)",
+              "value": "-1",
+              "step": "s4"
+            }
+          ],
+          "answer": "-3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "910316f2",
+        "answer": {
+          "value": -3,
+          "label": "x = -3, y = 4, z = -2"
+        }
+      }
+    },
+    {
+      "id": "75c7e931-01dd-45e2-9a89-2ac19afa4d80",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "A = \\begin{bmatrix} 4 & 3 & 2 \\\\ 1 & 2 & 3 \\\\ 6 & 2 & 3 \\end{bmatrix}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "|A| = 25",
+              "f": "4*(2*3-3*2)-3*(1*3-3*6)+2*(1*2-2*6)",
+              "value": "25",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\operatorname{adj}(A) = \\begin{bmatrix} 0 & -5 & 5 \\\\ 15 & 0 & -10 \\\\ -10 & 10 & 5 \\end{bmatrix}",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "x = \\tfrac{1}{25}(0 - 625 + 875) = 10",
+              "f": "(0*150+(-5)*125+5*175)/25",
+              "value": "10",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "y = \\tfrac{1}{25}(2250 + 0 - 1750) = 20",
+              "f": "(15*150+0*125+(-10)*175)/25",
+              "value": "20",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "z = \\tfrac{1}{25}(-1500 + 1250 + 875) = 25",
+              "f": "((-10)*150+10*125+5*175)/25",
+              "value": "25",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{check: } 4(10) + 3(20) + 2(25) = 150",
+              "f": "4*10+3*20+2*25",
+              "value": "150",
+              "step": "s4"
+            }
+          ],
+          "answer": "10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 15,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "7741f423",
+        "answer": {
+          "value": 10,
+          "label": "x = 10, y = 20, z = 25"
+        }
+      }
+    },
+    {
+      "id": "94dbf880-1f58-49c6-b307-6052e4021e8b",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "A = \\begin{bmatrix} 1 & 2 & 3 \\\\ -1 & 1 & 2 \\\\ 1 & 2 & 4 \\end{bmatrix}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "|A| = 3",
+              "f": "1*(1*4-2*2)-2*((-1)*4-2*1)+3*((-1)*2-1*1)",
+              "value": "3",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\operatorname{adj}(A) = \\begin{bmatrix} 0 & -2 & 1 \\\\ 6 & 1 & -5 \\\\ -3 & 0 & 3 \\end{bmatrix}",
+              "step": "s2"
+            },
+            {
+              "kind": "note",
+              "tex": "\\text{rows: } A = IA",
+              "step": "s3"
+            },
+            {
+              "kind": "note",
+              "tex": "A^{-1} = \\tfrac{1}{3}\\begin{bmatrix} 0 & -2 & 1 \\\\ 6 & 1 & -5 \\\\ -3 & 0 & 3 \\end{bmatrix}",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "(AA^{-1})_{11} = 1",
+              "f": "(1*0+2*6+3*(-3))/3",
+              "value": "1",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "(AA^{-1})_{21} = 0",
+              "f": "(-1*0+1*6+2*(-3))/3",
+              "value": "0",
+              "step": "s4"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "bf429075",
+        "answer": {
+          "value": 1,
+          "label": "AA⁻¹ = I"
+        }
+      }
+    },
+    {
+      "id": "bcd3a214-eae0-4c42-83cf-68a8f3ee18b1",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "A = \\begin{bmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 1 \\\\ 5 & 1 & 1 \\end{bmatrix}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "|A| = -4",
+              "f": "1*(2*1-1*1)-1*(1*1-1*5)+1*(1*1-2*5)",
+              "value": "-4",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\operatorname{adj}(A) = \\begin{bmatrix} 1 & 0 & -1 \\\\ 4 & -4 & 0 \\\\ -9 & 4 & 1 \\end{bmatrix}",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "x = -\\tfrac{1}{4}(2 + 0 - 6) = 1",
+              "f": "(1*2+0*1+(-1)*6)/(-4)",
+              "value": "1",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "y = -\\tfrac{1}{4}(8 - 4 + 0) = -1",
+              "f": "(4*2+(-4)*1+0*6)/(-4)",
+              "value": "-1",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "z = -\\tfrac{1}{4}(-18 + 4 + 6) = 2",
+              "f": "((-9)*2+4*1+1*6)/(-4)",
+              "value": "2",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{check: } 1(1) + 1(-1) + 1(2) = 2",
+              "f": "1*1+1*(-1)+1*2",
+              "value": "2",
+              "step": "s4"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "3cde4ee2",
+        "answer": {
+          "value": 1,
+          "label": "x = 1, y = -1, z = 2"
+        }
+      }
+    },
+    {
+      "id": "d374b37b-01be-4d2b-96b0-1c5261b228d5",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "A = \\begin{bmatrix} 1 & 1 & 1 \\\\ 1 & 0 & 3 \\\\ 3 & 1 & 1 \\end{bmatrix}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "|A| = 6",
+              "f": "1*(0*1-3*1)-1*(1*1-3*3)+1*(1*1-0*3)",
+              "value": "6",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\operatorname{adj}(A) = \\begin{bmatrix} -3 & 0 & 3 \\\\ 8 & -2 & -2 \\\\ 1 & 2 & -1 \\end{bmatrix}",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "x = \\tfrac{1}{6}(-18 + 0 + 36) = 3",
+              "f": "((-3)*6+0*7+3*12)/6",
+              "value": "3",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "y = \\tfrac{1}{6}(48 - 14 - 24) = \\tfrac{5}{3}",
+              "f": "(8*6+(-2)*7+(-2)*12)/6",
+              "value": "5/3",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "z = \\tfrac{1}{6}(6 + 14 - 12) = \\tfrac{4}{3}",
+              "f": "(1*6+2*7+(-1)*12)/6",
+              "value": "4/3",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{check: } 1(3) + 1(\\tfrac{5}{3}) + 1(\\tfrac{4}{3}) = 6",
+              "f": "1*3+1*(5/3)+1*(4/3)",
+              "value": "6",
+              "step": "s4"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "e9abef84",
+        "answer": {
+          "value": 3,
+          "label": "x = 3, y = 5/3, z = 4/3"
+        }
+      }
+    },
+    {
+      "id": "eb7df150-18e7-48e5-8c8b-9789e09b8560",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "vars": {
+            "a": "3"
+          },
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "A = \\begin{bmatrix} 1 & 1 & 1 \\\\ 2 & 3 & 2 \\\\ a & a & 2a \\end{bmatrix}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "|A| = 4a - 2a - a = a",
+              "f": "1*(6*a-2*a)-1*(4*a-2*a)+1*(2*a-3*a)",
+              "value": "a",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\operatorname{adj}(A) = \\begin{bmatrix} 4a & -a & -1 \\\\ -2a & a & 0 \\\\ -a & 0 & 1 \\end{bmatrix}",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "x = \\tfrac{1}{a}(4a - 2a - 4) = \\tfrac{2a - 4}{a}",
+              "f": "(4*a*1+(-a)*2+(-1)*4)/a",
+              "value": "(2*a-4)/a",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "y = \\tfrac{1}{a}(-2a + 2a + 0) = 0",
+              "f": "((-2*a)*1+a*2+0*4)/a",
+              "value": "0",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "z = \\tfrac{1}{a}(-a + 0 + 4) = \\tfrac{4 - a}{a}",
+              "f": "((-a)*1+0*2+1*4)/a",
+              "value": "(4-a)/a",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{check } (a = 3):\\ x + y + z = 1",
+              "f": "(2*a-4)/a+0+(4-a)/a",
+              "value": "1",
+              "step": "s4"
+            }
+          ],
+          "answer": "(2*a-4)/a"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "871238f6",
+        "answer": {
+          "value": 0.6666666666666666,
+          "label": "x=(2a−4)/a, y=0, z=(4−a)/a"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
