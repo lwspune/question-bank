@@ -33,6 +33,7 @@ export const KIND_LABELS: Record<ActivityKind, string> = {
   solution_visual: "Animated solution event",
   path_chapter_done: "Board path chapter done",
   path_paced: "Board path pace changed",
+  v_not_understood: "Told V they did not understand",
 };
 
 export type KindStat = { kind: string; events: number; users: number };
