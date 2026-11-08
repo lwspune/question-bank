@@ -27,6 +27,7 @@ import { loadFocus } from "@/lib/me/focusServer";
 import { readTodayRow } from "@/lib/path/exemptions";
 import { buildFixList, chapterQuestions, latestMisses, reasonOf, type Reason } from "@/lib/review/fixList";
 import { loadMissRows } from "@/lib/review/query";
+import { readAllPages } from "@/lib/supabase/readAllPages";
 
 const LIMIT = Number(process.argv[2] ?? 10);
 const DAY = 86_400_000;
@@ -38,16 +39,12 @@ async function pagedUserIds(
   sinceIso: string,
   mark?: string
 ): Promise<string[]> {
-  const out: string[] = [];
-  for (let from = 0; from < 20_000; from += 1000) {
+  const rows = await readAllPages<{ user_id: string }>((from, to) => {
     let q = db.from("user_activity").select("user_id").eq("kind", kind).gte("created_at", sinceIso);
     if (mark) q = q.eq("metadata->>mark", mark);
-    const { data, error } = await q.order("id").range(from, from + 999);
-    if (error) throw new Error(error.message);
-    out.push(...(data ?? []).map((r) => r.user_id as string));
-    if ((data ?? []).length < 1000) break;
-  }
-  return out;
+    return q.order("id").range(from, to).returns<{ user_id: string }[]>();
+  });
+  return rows.map((r) => r.user_id);
 }
 
 async function main() {
