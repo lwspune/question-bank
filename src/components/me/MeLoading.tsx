@@ -22,10 +22,18 @@ const MAIN: Record<MeTab, string> = {
 export default function MeLoading({ active }: { active: MeTab }) {
   return (
     <main className={MAIN[active]} aria-busy="true">
-      <span className="sr-only">Loading</span>
+      {/* Same children, in the same order, as the real header (MeHeader), so
+          the space-y rules put everything where the page will: an extra first
+          child would push the header down and it would jump on arrival. */}
       <header className="space-y-4">
         <div className="space-y-2">
-          <Skeleton className="h-8 w-64 max-w-full sm:h-9" />
+          {/* The greeting, and its "Not you? Change the name" line. */}
+          <div>
+            <Skeleton className="h-8 w-64 max-w-full sm:h-9">
+              <span className="sr-only">Loading</span>
+            </Skeleton>
+            <Skeleton className="mt-1 h-4 w-40" />
+          </div>
           <div className="flex items-center gap-2">
             <Skeleton className="h-3 w-12" />
             <Skeleton className="h-8 w-14 rounded-full" />

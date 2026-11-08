@@ -8,8 +8,9 @@ import { Skeleton } from "@/components/ui/skeleton";
 export default function PlainLoading() {
   return (
     <main className="mx-auto max-w-4xl space-y-6 px-4 py-6 sm:px-6 sm:py-8" aria-busy="true">
-      <span className="sr-only">Loading</span>
-      <Skeleton className="h-8 w-56" />
+      <Skeleton className="h-8 w-56">
+        <span className="sr-only">Loading</span>
+      </Skeleton>
       <Skeleton className="h-64 w-full rounded-2xl" />
       <Skeleton className="h-40 w-full rounded-2xl" />
     </main>
