@@ -10,10 +10,10 @@ Asked for in student feedback on 2026-11-06 ("cuet iat"); taken up 2026-11-08.
 **Pattern** (2026 brochure §19): 60 MCQs, 15 each of Biology, Chemistry,
 Mathematics, Physics; +4 / -1 / 0; 180 minutes; out of 240.
 
-**Status 2026-11-08:** all nine years committed PRIVATE, 539 questions (2025 has
+**Status 2026-11-08:** all nine years PUBLIC, 539 questions (2025 has
 59), every one with a worked solution; 17 graced as defective as printed (notice
-above the solution, `src/lib/mocks/flawed.json`). Publishing (`publish.ts`), the
-registry flags and the mock build wait on the owner's OK.
+above the solution, `src/lib/mocks/flawed.json`). Nine mocks
+(`iat-2017` ... `iat-2026`), published after the deploy.
 
 ## What each year can support
 
