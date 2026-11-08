@@ -437,6 +437,7 @@ describe("exam tiers", () => {
       "ipmat-rohtak",
       "jipmat",
       "uceed",
+      "iiser-iat",
       "imat",
     ],
     graduate: [

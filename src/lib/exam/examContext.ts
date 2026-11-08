@@ -710,6 +710,20 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     noImageIndex: true,
     hasMocks: true, // 12 Part A mocks (2015-2026) published 2026-11-06, MOCKS.md
   },
+  {
+    slug: "iiser-iat",
+    // IISER Aptitude Test, the entrance to the IISERs' BS-MS science programme,
+    // sat after Class 12: 60 MCQs, 15 each of Biology, Chemistry, Mathematics and
+    // Physics, +4/-1, 3 hours. IISER's own papers 2017-2026 (scripts/iat/); 2025
+    // and 2026 carry IISER's final key, earlier years are solved twice, blind.
+    // Asked for in student feedback, 2026-11-06.
+    tier: "senior",
+    displayName: "IISER IAT",
+    examName: "IISER IAT", // must match the `exams` DB row exactly
+    guidesPath: null,
+    notesPath: null,
+    noPublicContent: true, // rows go in PRIVATE; drop this flag when they go PUBLIC
+  },
   // ── MPSC ──────────────────────────────────────────────────────────────────
   // One family with a stage level: MPSC -> Prelims / Mains -> exam. Prelims
   // first, so the Stage control reads Prelims, Mains. The Mains exams are the
