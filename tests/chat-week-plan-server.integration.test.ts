@@ -53,9 +53,14 @@ describe.skipIf(!HAS_ENV)("study plans (0169)", () => {
     await mustSignIn(ALICE_EMAIL, alice, { email: ALICE_EMAIL, password: PASSWORD });
     await mustSignIn(BOB_EMAIL, bob, { email: BOB_EMAIL, password: PASSWORD });
 
-    // Six PUBLIC questions of one chapter, for the practice count.
-    const { data: one } = await admin.from("questions").select("chapter_id").eq("visibility", "PUBLIC").not("chapter_id", "is", null).limit(1);
-    const chapterId = (one?.[0] as { chapter_id: string }).chapter_id;
+    // Six PUBLIC questions of one chapter, for the practice count. The chapter
+    // must HAVE six: "any public question's chapter" (an unordered limit 1)
+    // picked one with two once a vacuum reordered the table (2026-11-08).
+    const { data: sample } = await admin.from("questions").select("chapter_id").eq("visibility", "PUBLIC").not("chapter_id", "is", null).order("id").limit(1000);
+    const perChapter = new Map<string, number>();
+    for (const r of (sample ?? []) as { chapter_id: string }[]) perChapter.set(r.chapter_id, (perChapter.get(r.chapter_id) ?? 0) + 1);
+    const chapterId = [...perChapter].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]?.[0];
+    if (!chapterId || (perChapter.get(chapterId) ?? 0) < 6) throw new Error("need a chapter with 6 PUBLIC questions in the test project");
     const { data: qs } = await admin.from("questions").select("id, chapter_id").eq("visibility", "PUBLIC").eq("chapter_id", chapterId).limit(6);
     questions = (qs ?? []) as { id: string; chapter_id: string }[];
   });
