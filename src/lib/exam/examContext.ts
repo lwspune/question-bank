@@ -721,9 +721,12 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "senior",
     displayName: "IISER IAT",
     examName: "IISER IAT", // must match the `exams` DB row exactly
+    // PUBLIC since 2026-11-08: all nine years IISER posts, 539 q, every one with a
+    // worked solution. One timed mock per year (iat-2017 ... iat-2026), MOCKS.md.
+    hasMocks: true,
+    pastPaperSolutions: true,
     guidesPath: null,
     notesPath: null,
-    noPublicContent: true, // rows go in PRIVATE; drop this flag when they go PUBLIC
   },
   // ── MPSC ──────────────────────────────────────────────────────────────────
   // One family with a stage level: MPSC -> Prelims / Mains -> exam. Prelims
