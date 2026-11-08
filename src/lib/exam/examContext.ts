@@ -23,6 +23,7 @@ export type ExamSlug =
   | "cbse-11"
   | "cbse-12"
   | "isc-12"
+  | "iiser-iat"
   | "icse-10"
   | "mh-sb-9"
   | "mh-sb-11"

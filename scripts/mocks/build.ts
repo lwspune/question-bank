@@ -37,6 +37,7 @@
  *   npx tsx scripts/mocks/build.ts --paper=ipmat-indore    # IPMAT Indore 2022-2026
  *   npx tsx scripts/mocks/build.ts --paper=imat            # IMAT ministry papers 2023+
  *   npx tsx scripts/mocks/build.ts --paper=uceed           # UCEED Part A 2019-2026 (opt-in)
+ *   npx tsx scripts/mocks/build.ts --paper=iat             # IISER IAT, one per committed year (opt-in)
  *   npx tsx scripts/mocks/build.ts --only=2026-jan-21-s1    # one JEE shift
  *   npx tsx scripts/mocks/build.ts --only=2024-Sep --apply --publish
  *   npx tsx scripts/mocks/build.ts --only=cds-2026-i-english
@@ -78,6 +79,7 @@ import {
   SPI_PAPER,
   IMAT_PAPER,
   uceedPaper,
+  iatPaper,
   type MockPaperBlueprint,
 } from "../../src/lib/mocks/blueprints";
 import { answerKeyFromRow, type MockAnswerKey, type OptionLabel } from "../../src/lib/mocks/answers";
@@ -113,6 +115,7 @@ import { sscSittings, sscT2Sittings, t2Rows, withHeld } from "./sscSittings";
 import { spiSittings } from "./spiSittings";
 import { imatSittings } from "./imatSittings";
 import { uceedSittings } from "./uceedSittings";
+import { iatSittings } from "./iatSittings";
 import { mockTestRow } from "../../src/lib/mocks/row";
 
 function loadEnv() {
@@ -778,6 +781,22 @@ async function buildUceed(db: SupabaseClient, run: RunState) {
   }
 }
 
+/**
+ * IISER Aptitude Test, one mock per committed year (iatSittings.ts). Each year gets its own
+ * section counts (iatPaper): a question IISER dropped from its final key shortens its section.
+ */
+async function buildIat(db: SupabaseClient, run: RunState) {
+  for (const s of iatSittings()) {
+    await buildFromSourceFiles(
+      db,
+      iatPaper(s.counts),
+      [{ key: s.key, sourceFile: s.sourceFile, year: s.year, slug: s.slug, title: s.title }],
+      run,
+      "iatSittings.ts"
+    );
+  }
+}
+
 /** IMAT ministry papers (imatSittings.ts); a question that cannot be solved as printed rides as grace. */
 function imatMockSittings(): SourceFileSitting[] {
   return imatSittings().map((s) => ({
@@ -869,9 +888,11 @@ async function main() {
   const runMpscMains = paperFilter === "mpsc-mains";
   // Opt-in too until UCEED's multiple-select and range rows are PUBLIC (migration 0214).
   const runUceed = paperFilter === "uceed";
-  if (paperFilter && !runUceed && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runSpi && !runImat && !runMpscMains) {
+  // Opt-in too: IAT rows are PRIVATE until the owner OKs them (scripts/iat/README.md).
+  const runIat = paperFilter === "iat";
+  if (paperFilter && !runUceed && !runIat && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runSpi && !runImat && !runMpscMains) {
     throw new Error(
-      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, spi, imat, mpsc-mains, uceed)`
+      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, spi, imat, mpsc-mains, uceed, iat)`
     );
   }
 
@@ -944,6 +965,7 @@ async function main() {
   if (runImat) await buildFromSourceFiles(db, IMAT_PAPER, imatMockSittings(), run, "imatSittings.ts");
   if (runMpscMains) await buildMpscMains(db, run);
   if (runUceed) await buildUceed(db, run);
+  if (runIat) await buildIat(db, run);
 
   console.log(`\n${apply ? "Upserted" : "Would build"} ${run.built.n} mock(s)${publish ? " (published)" : apply ? " (draft)" : ""}.`);
   if (run.held.n) console.log(`${run.held.n} paper(s) held — cannot reconstruct whole (see ⊘ lines above).`);
