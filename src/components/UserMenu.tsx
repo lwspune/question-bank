@@ -235,7 +235,7 @@ export default function UserMenu({
             Your performance
           </Link>
           <Link
-            href="/saved"
+            href="/review?list=saved"
             className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"
           >
             <Bookmark className="h-4 w-4" aria-hidden />

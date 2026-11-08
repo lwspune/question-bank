@@ -7,11 +7,13 @@ import FocusChips from "./FocusChips";
 import type { MeHeaderData } from "@/lib/me/header";
 import type { ExamLink } from "@/lib/exam/examLinks";
 
-export type MeTab = "home" | "performance" | "account";
+export type MeTab = "home" | "review" | "performance" | "account";
 
 /** The student's three pages, shared with their loading screens (MeLoading). */
 export const ME_TABS: readonly Tab<MeTab>[] = [
   { key: "home", label: "Home", href: "/me" },
+  // Everything to come back to: the drill's mistakes and the saved list (2026-11-08).
+  { key: "review", label: "Review", href: "/review" },
   { key: "performance", label: "Performance", href: "/performance" },
   { key: "account", label: "Account", href: "/account" },
 ];

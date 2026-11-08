@@ -40,7 +40,7 @@ const one: MeHeaderData = {
   examLinks: [{ slug: "mht-cet", label: "MHT-CET", href: "/mock/exam/mht-cet" }],
 };
 
-const render = (data: MeHeaderData, props: { active?: "home" | "performance" | "account"; readOnly?: boolean }) =>
+const render = (data: MeHeaderData, props: { active?: "home" | "review" | "performance" | "account"; readOnly?: boolean }) =>
   renderToStaticMarkup(createElement(MeHeader, { data, active: props.active, readOnly: props.readOnly ?? false }));
 
 describe("MeHeader", () => {
@@ -63,9 +63,10 @@ describe("MeHeader", () => {
     expect(out).not.toContain("aria-pressed");
   });
 
-  it("shows Home · Performance · Account with the open one marked", () => {
+  it("shows Home · Review · Performance · Account with the open one marked", () => {
     const out = render(two, { active: "performance" });
     expect(out).toContain('href="/me"');
+    expect(out).toContain('href="/review"');
     expect(out).toContain('href="/account"');
     expect(out).toMatch(/<a[^>]*aria-current="page"[^>]*href="\/performance"|<a[^>]*href="\/performance"[^>]*aria-current="page"/);
     expect(out).not.toMatch(/aria-current="page"[^>]*href="\/me"/);

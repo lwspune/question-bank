@@ -36,6 +36,7 @@ export const DRILL_FROM = [
   "board_chapter", // a /board chapter page
   "browse_chapter", // /browse filtered to one chapter
   "path", // the board path's Fix task on /me (2026-11-07, MENTOR_SPEC.md)
+  "review_tab", // the Review tab's Fix buttons, whole list or one chapter (2026-11-08)
 ] as const;
 
 /** The chapter line's tag on each page it sits on. */
