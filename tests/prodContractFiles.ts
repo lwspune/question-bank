@@ -35,4 +35,5 @@ export const PROD_CONTRACT_FILES: string[] = [
   "tests/performance-concept-graph-taxonomy.test.ts", // prereq-graph nodes vs live NDA Maths chapters
   "tests/mh-hsc-12-paper-catalog-prod.test.ts", // board-paper lane's generated catalog vs live HSC Maths taxonomy
   "tests/visuals-ingestion-gate.test.ts", // new PUBLIC questions of a launched exam carry an animated-solution verdict
+  "tests/reveal-limit-holds.test.ts", // no student without a pass went past yesterday's daily answer limit (0228/0229)
 ];
