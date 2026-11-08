@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { cache } from "react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
-import { getPlanBySlug, listPublishedPlans } from "@/lib/homework/query";
+import { getPlanBySlug, getPlanLinks } from "@/lib/homework/query";
 import { sectionsOf, shortNote } from "@/lib/homework/display";
 import { homeworkSideNav } from "@/lib/homework/chapters";
 import { homeworkOfferFacts, homeworkOfferLead } from "@/lib/billing/passOfferLead";
@@ -21,9 +22,12 @@ export const revalidate = 86400;
 
 type Params = { planSlug: string };
 
+// The metadata and the page both need the plan: one read per render, not two.
+const loadPlan = cache((slug: string) => getPlanBySlug(createSupabaseAnonClient(), slug));
+
 export async function generateStaticParams(): Promise<Params[]> {
   try {
-    return (await listPublishedPlans(createSupabaseAnonClient())).map((p) => ({ planSlug: p.slug }));
+    return (await getPlanLinks()).map((p) => ({ planSlug: p.slug }));
   } catch {
     return [];
   }
@@ -31,7 +35,7 @@ export async function generateStaticParams(): Promise<Params[]> {
 
 export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
   const params = await props.params;
-  const plan = await getPlanBySlug(createSupabaseAnonClient(), params.planSlug);
+  const plan = await loadPlan(params.planSlug);
   if (!plan) return {};
   return {
     title: `${plan.title} Daily Homework from ${planWording(plan.examName).papers} Papers`,
@@ -59,8 +63,10 @@ const SECTION_HELP: Record<"most" | "once", string> = {
  */
 export default async function HomeworkPlanPage(props: { params: Promise<Params> }) {
   const params = await props.params;
-  const client = createSupabaseAnonClient();
-  const [plan, plans] = await Promise.all([getPlanBySlug(client, params.planSlug), listPublishedPlans(client)]);
+  // The side menu and the offer need each plan's name, exam and subject only:
+  // getPlanLinks, never the plan list with counts, which counts every plan's
+  // items (tests/homework-page-reads.test.ts).
+  const [plan, plans] = await Promise.all([loadPlan(params.planSlug), getPlanLinks()]);
   if (!plan) notFound();
   const sections = sectionsOf(plan.dayList);
   const offer = homeworkOfferLead(homeworkOfferFacts(plan, plans));

@@ -1720,11 +1720,14 @@ export type Database = {
       }
       homework_plans: {
         Row: {
+          chapter_count: number
           created_at: string
+          day_count: number
           exam_id: string
           id: string
           per_day: number
           published: boolean
+          question_count: number
           slug: string
           subject_id: string
           summary: string
@@ -1732,11 +1735,14 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          chapter_count?: number
           created_at?: string
+          day_count?: number
           exam_id: string
           id?: string
           per_day?: number
           published?: boolean
+          question_count?: number
           slug: string
           subject_id: string
           summary?: string
@@ -1744,11 +1750,14 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          chapter_count?: number
           created_at?: string
+          day_count?: number
           exam_id?: string
           id?: string
           per_day?: number
           published?: boolean
+          question_count?: number
           slug?: string
           subject_id?: string
           summary?: string
