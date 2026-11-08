@@ -1,0 +1,126 @@
+{
+  "derivedBy": "Claude (Opus 5.5) subagent, independent solve from the question text and pictures only",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "A",
+      "value": "\\(\\mathrm{[Cr(H_2O)_4(OH)_2]}\\)",
+      "working": "Find the oxidation state, the d-electron count and the number of unpaired electrons \\(n\\) in each complex, then use \\(\\mu = \\sqrt{n(n+2)}\\) BM.\n\n| Complex | Metal ion | d count | Unpaired \\(n\\) |\n|---|---|---|---|\n| \\(\\mathrm{[Cr(H_2O)_4(OH)_2]}\\) | \\(\\mathrm{Cr^{3+}}\\) | \\(\\mathrm{d^3}\\) | 3 |\n| \\(\\mathrm{[V(H_2O)_4I_2]^+}\\) | \\(\\mathrm{V^{3+}}\\) | \\(\\mathrm{d^2}\\) | 2 |\n| \\(\\mathrm{[Co(NH_3)_4Cl_2]}\\) | \\(\\mathrm{Co^{2+}}\\) | \\(\\mathrm{d^7}\\) | 1 (low spin with the stronger-field \\(\\mathrm{NH_3}\\)) |\n| \\(\\mathrm{[Fe(NH_3)_4(CN)_2]^+}\\) | \\(\\mathrm{Fe^{3+}}\\) | \\(\\mathrm{d^5}\\) | 1 (low spin with strong-field \\(\\mathrm{CN^-}\\) and \\(\\mathrm{NH_3}\\)) |\n\nA \\(\\mathrm{d^3}\\) ion in an octahedral field always has three unpaired electrons in the \\(t_{2g}\\) set, whatever the ligand, so \\(\\mathrm{Cr^{3+}}\\) gives \\(\\mu = \\sqrt{15} \\approx 3.87\\) BM. That is the largest value among the four complexes as the question intends them.\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "MEDIUM",
+      "flag": "Real Co(II) ammine complexes (e.g. [Co(NH3)6]2+) are high spin d7 with 3 unpaired electrons, which would tie option C with option A at 3.87 BM. The intended single answer treats NH3 as strong-field (low-spin Co(II), 1 unpaired), leaving A as the only d3 case."
+    },
+    {
+      "ref": "2",
+      "label": "A",
+      "value": "14, 6",
+      "working": "Write the balanced half-reaction in acid.\n\nEach Cr goes from +6 in \\(\\mathrm{Cr_2O_7^{2-}}\\) to +3, so two Cr atoms need \\(2 \\times 3 = 6\\) electrons. The seven oxygen atoms leave as seven \\(\\mathrm{H_2O}\\), which needs \\(7 \\times 2 = 14\\) protons:\n\n\\(\\mathrm{Cr_2O_7^{2-} + 14H^+ + 6e^- \\rightarrow 2Cr^{3+} + 7H_2O}\\)\n\nCharge check: left side \\(-2 + 14 - 6 = +6\\); right side \\(2 \\times (+3) = +6\\). Balanced.\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "label": "A",
+      "value": "\\(\\mathrm{F_2}\\)",
+      "working": "Bond order \\(= \\frac{1}{2}(N_b - N_a)\\). Removing an electron raises the bond order only if that electron came from an **antibonding** orbital.\n\n- \\(\\mathrm{F_2}\\) (18 electrons): the HOMO is \\(\\pi^*2p\\), antibonding. Bond order goes from 1 in \\(\\mathrm{F_2}\\) to 1.5 in \\(\\mathrm{F_2^+}\\). Increase.\n- \\(\\mathrm{B_2}\\): HOMO is \\(\\pi 2p\\) (bonding); bond order falls from 1 to 0.5.\n- \\(\\mathrm{N_2}\\): HOMO is \\(\\sigma 2p_z\\) (bonding); bond order falls from 3 to 2.5.\n- \\(\\mathrm{C_2}\\): HOMO is \\(\\pi 2p\\) (bonding); bond order falls from 2 to 1.5.\n\nOnly \\(\\mathrm{F_2}\\) loses an antibonding electron. So the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4",
+      "label": "A",
+      "value": "\\(\\mathrm{Mn_2(CO)_{10}}\\): metal orbital \\(\\rightarrow\\) ligand orbital; \\(\\mathrm{[MnO_4]^-}\\): ligand orbital \\(\\rightarrow\\) metal orbital",
+      "working": "In \\(\\mathrm{Mn_2(CO)_{10}}\\), manganese is in the 0 oxidation state and has filled d orbitals. The \\(\\pi\\) bond forms by **back donation (synergic bonding)**: a filled metal d orbital donates electron density into the empty \\(\\pi^*\\) orbital of CO. So the direction is metal orbital to ligand orbital.\n\nIn \\(\\mathrm{[MnO_4]^-}\\), manganese is +7, a \\(\\mathrm{d^0}\\) ion with empty d orbitals. Here the filled p orbitals of the oxide ligands donate electron pairs into the empty metal d orbitals, giving \\(\\mathrm{p\\pi{-}d\\pi}\\) bonding. So the direction is ligand orbital to metal orbital.\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "label": "A",
+      "value": "\\(\\mathrm{C{=}S > C{=}Te}\\) and \\(\\mathrm{Cl{-}Cl > F{-}F}\\)",
+      "working": "**C=S vs C=Te:** Te is much larger than S, so its orbitals overlap poorly with the small carbon orbitals, especially for the \\(\\pi\\) bond. Bond strength falls down the group, so \\(\\mathrm{C{=}S}\\) is stronger than \\(\\mathrm{C{=}Te}\\).\n\n**Cl-Cl vs F-F:** this is the well-known exception. Fluorine atoms are very small, so in \\(\\mathrm{F_2}\\) the lone pairs on the two atoms repel each other strongly, which weakens the bond. The bond enthalpy of \\(\\mathrm{F_2}\\) (about 158 kJ \\(\\mathrm{mol^{-1}}\\)) is lower than that of \\(\\mathrm{Cl_2}\\) (about 242 kJ \\(\\mathrm{mol^{-1}}\\)).\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6",
+      "label": "B",
+      "value": "The reaction rate decreases upon changing the solvent from ethyl alcohol to 1:1 mixture of ethyl alcohol and water.",
+      "working": "tert-Butyl bromide is a tertiary halide, so it reacts by the **\\(\\mathrm{S_N1}\\)** mechanism. The slow step is the ionisation \\(\\mathrm{(CH_3)_3C{-}Br \\rightarrow (CH_3)_3C^+ + Br^-}\\), so rate \\(= k[\\mathrm{(CH_3)_3CBr}]\\).\n\n- (A) The rate does not depend on \\(\\mathrm{[OH^-]}\\): correct.\n- (C) The rate is proportional to \\(\\mathrm{[(CH_3)_3CBr]}\\): correct.\n- (D) The rate-determining step is the dissociation of the bromide: correct.\n- (B) Adding water makes the solvent more polar and protic, which stabilises the carbocation and the leaving \\(\\mathrm{Br^-}\\) ion in the transition state. The \\(\\mathrm{S_N1}\\) rate therefore **increases**, not decreases. This statement is incorrect.\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "7",
+      "label": "B",
+      "value": "2,4,5,6-tetramethyl-1,3-dioxane drawn with the 2-methyl on a wedge (2-H hashed), the 4-methyl on a wedge, the 5-methyl hashed (5-H on a wedge) and the 6-methyl hashed",
+      "working": "Look for a **plane of symmetry**. In 1,3-dioxane the plane that passes through C2 and C5 (at right angles to the ring) swaps O1 with O3 and C4 with C6. The substituents on C2 and C5 lie in this plane, so they never spoil it, whatever their wedges. The plane is a true mirror only if the methyl groups on C4 and C6 point to the **same face** of the ring.\n\n- (A) 4-Me hashed, 6-Me hashed: same face, mirror plane present, achiral (meso).\n- (C) 4-Me hashed, 6-Me hashed: same face, achiral.\n- (D) 4-Me wedge, 6-Me wedge: same face, achiral.\n- (B) 4-Me wedge, 6-Me hashed: opposite faces. The mirror plane is lost, and no other symmetry element exists (a two-fold axis through C2 and C5 would have to swap the Me and H on C2, which are different). So this molecule is chiral.\n\nSo the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "A",
+      "value": "B is more polar than A; A has \\(\\mathrm{R}_f = 0.75\\).",
+      "working": "\\(\\mathrm{R}_f = \\dfrac{\\text{distance moved by the spot}}{\\text{distance moved by the solvent front}}\\), both measured from the base line.\n\n- A: \\(\\mathrm{R}_f = 3.75/5 = 0.75\\)\n- B: \\(\\mathrm{R}_f = 1.25/5 = 0.25\\)\n\nSilica gel is polar, so a more polar compound is held more strongly and travels less. B moved less (lower \\(\\mathrm{R}_f\\)), so B is more polar than A. Options (B), (C) and (D) each get either the polarity order or the \\(\\mathrm{R}_f\\) value wrong.\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9",
+      "label": "D",
+      "value": "X = \\(\\mathrm{\\mathit{o}\\text{-}C_6H_4(COONa)(CHDOH)}\\); P = 3-deuterio-2-benzofuran-1(3H)-one (3-deuteriophthalide)",
+      "working": "With concentrated NaOH, phthalaldehyde undergoes an **intramolecular Cannizzaro reaction**: \\(\\mathrm{OH^-}\\) adds to one carbonyl group, and that carbon then transfers a hydride (or deuteride) to the other carbonyl group. The carbon that gives away its H or D becomes the carboxylate; the carbon that receives it becomes the alcohol.\n\nA C-H bond breaks faster than a C-D bond (**kinetic isotope effect**), so mainly the CHO carbon transfers its H. The CHO group becomes \\(\\mathrm{COO^-}\\) (as \\(\\mathrm{COONa}\\) in NaOH), and the CDO carbon receives the H to become \\(\\mathrm{CHD{-}O^-}\\), which is \\(\\mathrm{CHDOH}\\) after protonation. So X is \\(\\mathrm{\\mathit{o}\\text{-}C_6H_4(COONa)(CHDOH)}\\). The D stays on carbon; it is not on oxygen as in option (A).\n\nExcess HCl gas acidifies the salt to the hydroxy acid, and the OH of the \\(\\mathrm{CHDOH}\\) group and the COOH, held next to each other on the ring, close to a five-membered **lactone** (esterification with loss of water). The product is phthalide carrying the D on the \\(\\mathrm{CH}\\) carbon: 3-deuteriophthalide. A lactol (options B and C) would need an aldehyde carbon, which is no longer present.\n\nSo the answer is option (D).",
+      "difficulty": "Hard",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "B",
+      "value": "P < R < Q < S",
+      "working": "A lower \\(\\mathrm{p}K_b\\) means a stronger base.\n\n- **P, benzylamine:** the nitrogen is on a \\(\\mathrm{CH_2}\\) group, not on the ring, so its lone pair is not delocalised into the ring. It behaves like an alkylamine and is by far the strongest base (\\(\\mathrm{p}K_b \\approx 4.7\\)).\n- **S, aniline:** the lone pair is delocalised into the benzene ring, so it is the weakest base (\\(\\mathrm{p}K_b \\approx 9.4\\)).\n- **Q and R:** each methyl group on nitrogen pushes electron density onto it (+I effect), so basicity rises from aniline to N-methylaniline (\\(\\mathrm{p}K_b \\approx 9.3\\)) to N,N-dimethylaniline (\\(\\mathrm{p}K_b \\approx 8.9\\)).\n\nOrder of \\(\\mathrm{p}K_b\\): P < R < Q < S.\n\nSo the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "label": "D",
+      "value": "0.17 M",
+      "working": "Track moles of NaOH.\n\n- Start: \\(0.100\\ \\mathrm{L} \\times 1.0\\ \\mathrm{M} = 0.10\\) mol, diluted to 1.0 L (0.10 M).\n- Discard half: 0.50 L left, containing 0.050 mol.\n- Add 100 mL of 0.5 M: \\(0.100 \\times 0.5 = 0.050\\) mol more.\n\nTotal: \\(0.050 + 0.050 = 0.10\\) mol in \\(0.50 + 0.10 = 0.60\\) L.\n\nConcentration \\(= 0.10/0.60 = 0.167 \\approx 0.17\\ \\mathrm{M}\\).\n\nSo the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12",
+      "label": "B",
+      "value": "(i) and (iii) only",
+      "working": "Check each graph against what the two steps do.\n\n**Isothermal expansion:** T constant, V increases, P falls as \\(P = nRT/V\\). **Adiabatic expansion:** V increases, and both T and P fall; \\(PV^{\\gamma}\\) is constant, so P falls more steeply than in the isothermal step.\n\n- (i) P vs V: P falls along the isotherm, then falls more steeply along the adiabat. Correct.\n- (ii) T vs V: the horizontal line is right, but in an adiabatic expansion the gas does work at the cost of its internal energy, so T must **fall**. The curve rises. Wrong.\n- (iii) P vs T: the isothermal step is a vertical line (T fixed, P falling). The adiabatic step then moves to lower T and lower P, with \\(P \\propto T^{\\gamma/(\\gamma - 1)}\\), a curve bending upward. The graph shows this. Correct.\n- (iv) P vs \\(1/V\\): the isothermal step is a straight line through the origin, \\(P = nRT \\cdot (1/V)\\). But expansion makes \\(1/V\\) **smaller**, so the adiabatic step must lie to the left of the junction. The dashed part goes to larger \\(1/V\\). Wrong.\n\nSo the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "label": "A",
+      "value": "1:1",
+      "working": "In Bohr's model the speed of the electron in the \\(n\\)th orbit of a one-electron species is \\(v_n = 2.18 \\times 10^6 \\times \\dfrac{Z}{n}\\ \\mathrm{m\\,s^{-1}}\\), so \\(v \\propto Z/n\\).\n\n- \\(\\mathrm{Be^{3+}}\\), fourth orbit: \\(Z/n = 4/4 = 1\\)\n- \\(\\mathrm{He^+}\\), second orbit: \\(Z/n = 2/2 = 1\\)\n\nRatio \\(= 1:1\\).\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "label": "B",
+      "value": "\\(p_{\\text{total}} < (p^0_{\\mathbf{X}} + p^0_{\\mathbf{Y}})/2\\)",
+      "working": "If the X-Y attractions are stronger than X-X and Y-Y, molecules escape from the solution less easily than from the pure liquids. The solution shows **negative deviation** from Raoult's law: its vapour pressure is lower than the ideal value.\n\nFor an ideal equimolar solution, \\(x_{\\mathbf{X}} = x_{\\mathbf{Y}} = \\frac{1}{2}\\), so \\(p_{\\text{ideal}} = \\frac{1}{2}p^0_{\\mathbf{X}} + \\frac{1}{2}p^0_{\\mathbf{Y}} = (p^0_{\\mathbf{X}} + p^0_{\\mathbf{Y}})/2\\).\n\nWith negative deviation, \\(p_{\\text{total}} < (p^0_{\\mathbf{X}} + p^0_{\\mathbf{Y}})/2\\). Option (D) is the ideal case and option (A) is positive deviation.\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15",
+      "label": "A",
+      "value": "680 K",
+      "working": "The unit of k (\\(\\mathrm{s^{-1}}\\)) shows a first-order reaction, so \\(t_{1/2} = 0.693/k\\).\n\nRequired rate constant: \\(k_2 = 0.693/152 = 4.56 \\times 10^{-3}\\ \\mathrm{s^{-1}}\\).\n\nArrhenius equation for two temperatures:\n\n\\(\\ln\\dfrac{k_2}{k_1} = \\dfrac{E_a}{R}\\left(\\dfrac{1}{T_1} - \\dfrac{1}{T_2}\\right)\\)\n\n\\(\\dfrac{k_2}{k_1} = \\dfrac{4.56 \\times 10^{-3}}{5.0 \\times 10^{-5}} = 91.2\\), so \\(\\ln 91.2 = 4.513\\).\n\n\\(\\dfrac{E_a}{R} = \\dfrac{191470}{8.314} = 23030\\ \\mathrm{K}\\).\n\n\\(\\dfrac{1}{600} - \\dfrac{1}{T_2} = \\dfrac{4.513}{23030} = 1.960 \\times 10^{-4}\\)\n\n\\(\\dfrac{1}{T_2} = 1.6667 \\times 10^{-3} - 0.1960 \\times 10^{-3} = 1.4707 \\times 10^{-3}\\ \\mathrm{K^{-1}}\\), so \\(T_2 \\approx 680\\ \\mathrm{K}\\).\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    }
+  ]
+}

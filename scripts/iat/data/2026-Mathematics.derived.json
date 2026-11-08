@@ -1,0 +1,125 @@
+{
+  "derivedBy": "Claude Opus 5.5 subagent, independent hand solve with arithmetic checks",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "A",
+      "value": "\\(0\\)",
+      "working": "Since \\(p(1) = 0\\) and \\(p(-1) = 0\\), both \\(x = 1\\) and \\(x = -1\\) are roots of the quadratic. So by the factor theorem, \\(p(x) = k(x - 1)(x + 1)\\) for some non-zero constant \\(k\\).\n\nExpanding, \\(p(x) = k(x^2 - 1) = kx^2 + 0 \\cdot x - k\\). There is no \\(x\\) term, whatever \\(k\\) is.\n\nSo the coefficient of \\(x\\) is \\(0\\), and the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "label": "A",
+      "value": "\\(A\\) is finite but \\(B\\) is infinite.",
+      "working": "The points of \\(A\\) are \\(e^{2n\\pi i/5}\\), the **fifth roots of unity**. Since \\(e^{2\\pi i} = 1\\), the value repeats every time \\(n\\) increases by 5, so \\(A\\) has exactly 5 points (\\(n = 0, 1, 2, 3, 4\\)). So \\(A\\) is finite.\n\nThe points of \\(B\\) are \\(e^{2ni/5}\\), with angle \\(\\frac{2n}{5}\\) radians (no \\(\\pi\\)). Two of them are equal only if \\(\\frac{2n}{5} - \\frac{2m}{5} = 2k\\pi\\) for some integer \\(k\\), that is \\(n - m = 5k\\pi\\). The left side is an integer, while \\(5k\\pi\\) is irrational unless \\(k = 0\\). So \\(n = m\\): every integer \\(n\\) gives a different point, and \\(B\\) is infinite.\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "label": "D",
+      "value": "\\(A\\), \\(B\\) and \\(C\\) are collinear.",
+      "working": "Write the points as \\(A(4, 1, 3)\\), \\(B(0, 2, 0)\\) and \\(C(-4, 3, -3)\\).\n\nThen \\(\\overrightarrow{AB} = B - A = (-4, 1, -3)\\) and \\(\\overrightarrow{BC} = C - B = (-4, 1, -3)\\). These are the same vector, so \\(\\overrightarrow{AB}\\) and \\(\\overrightarrow{BC}\\) are parallel and share the point \\(B\\). Hence \\(A\\), \\(B\\) and \\(C\\) lie on one line.\n\nThis also rules out the other options: parallel vectors are not perpendicular, their cross product is \\(\\vec{0}\\), not \\(\\hat{i} + \\hat{j} + \\hat{k}\\), and \\(\\overrightarrow{AB} + 3\\overrightarrow{BC} = 4\\overrightarrow{AB}\\) is parallel to \\(\\overrightarrow{AC} = 2\\overrightarrow{AB}\\), not perpendicular to it.\n\nSo the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4",
+      "label": "A",
+      "value": "\\(30^\\circ\\)",
+      "working": "A direction vector of \\(l_1\\) is \\((3, 1, 3) - (1, 1, 1) = (2, 0, 2)\\), and of \\(l_2\\) is \\((2, 0, 3) - (0, 2, -1) = (2, -2, 4)\\).\n\nTheir dot product is \\(2 \\cdot 2 + 0 \\cdot (-2) + 2 \\cdot 4 = 12\\). Their lengths are \\(\\sqrt{4 + 0 + 4} = 2\\sqrt{2}\\) and \\(\\sqrt{4 + 4 + 16} = 2\\sqrt{6}\\).\n\nSo \\(\\cos\\theta = \\frac{12}{2\\sqrt{2} \\cdot 2\\sqrt{6}} = \\frac{12}{4\\sqrt{12}} = \\frac{3}{2\\sqrt{3}} = \\frac{\\sqrt{3}}{2}\\), which gives \\(\\theta = 30^\\circ\\).\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "label": "B",
+      "value": "\\(r^{r-l+1}(r-1)(r-2)\\cdots(r-l+1)\\)",
+      "working": "Choose the values one input at a time.\n\nFor \\(f(1), f(2), \\ldots, f(l)\\), which must be all different, there are \\(r\\) choices for \\(f(1)\\), then \\(r - 1\\) for \\(f(2)\\), and so on down to \\(r - l + 1\\) for \\(f(l)\\). That gives \\(r(r-1)(r-2)\\cdots(r-l+1)\\) ways.\n\nThe remaining \\(r - l\\) inputs \\(l+1, \\ldots, r\\) have no restriction, so each has \\(r\\) choices: \\(r^{r-l}\\) ways.\n\nBy the multiplication principle the total is \\(r^{r-l} \\cdot r(r-1)\\cdots(r-l+1) = r^{r-l+1}(r-1)(r-2)\\cdots(r-l+1)\\). Option (A) is the tempting one, but it forgets the factor \\(r\\) from \\(f(1)\\).\n\nSo the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6",
+      "label": "A",
+      "value": "\\(\\mathcal{R}\\) is reflexive and symmetric but not transitive.",
+      "working": "\\(\\mathcal{R}\\) is a subset of \\(\\mathcal{C} \\times \\mathcal{C}\\), so it is a relation on \\(\\mathcal{C}\\).\n\n**Reflexive:** every circle \\(C\\) has all its points in common with itself, so \\(C\\) intersects \\(C\\) and \\((C, C) \\in \\mathcal{R}\\).\n\n**Symmetric:** if \\(C_1\\) meets \\(C_2\\), then \\(C_2\\) meets \\(C_1\\).\n\n**Not transitive:** take two circles \\(C_1\\) and \\(C_3\\) far apart, and a large circle \\(C_2\\) that crosses both. Then \\((C_1, C_2)\\) and \\((C_2, C_3)\\) are in \\(\\mathcal{R}\\), but \\((C_1, C_3)\\) is not.\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "7",
+      "label": "C",
+      "value": "\\(-1\\)",
+      "working": "Compare the two functions: \\((1 - x) - (1 - x^3) = x^3 - x = x(x - 1)(x + 1)\\).\n\nThis is \\(\\ge 0\\) on \\([-1, 0]\\) and on \\([1, 2]\\), so there the smaller one is \\(1 - x^3\\). It is \\(\\le 0\\) on \\([0, 1]\\), so there the smaller one is \\(1 - x\\).\n\nNow integrate piece by piece:\n\n\\(\\int_{-1}^{0} (1 - x^3)\\,dx = 1 - \\left[\\frac{x^4}{4}\\right]_{-1}^{0} = 1 + \\frac{1}{4} = \\frac{5}{4}\\),\n\n\\(\\int_{0}^{1} (1 - x)\\,dx = \\frac{1}{2}\\),\n\n\\(\\int_{1}^{2} (1 - x^3)\\,dx = 1 - \\frac{16 - 1}{4} = -\\frac{11}{4}\\).\n\nAdding, \\(\\frac{5}{4} + \\frac{2}{4} - \\frac{11}{4} = -1\\).\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "A",
+      "value": "The mean deviation about the mean does not change.",
+      "working": "If every score \\(x_i\\) becomes \\(x_i + 2\\), the mean and the median also go up by 2. So every deviation \\((x_i + 2) - (\\bar{x} + 2) = x_i - \\bar{x}\\) stays exactly the same.\n\nHence the **mean deviation about the mean**, the mean deviation about the median and the variance are all unchanged. Adding a constant shifts the data but does not change how spread out it is.\n\nOptions (B), (C) and (D) all claim an increase of 2, which is wrong. So the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9",
+      "label": "D",
+      "value": "\\(f\\) is increasing on \\(\\left(\\frac{3\\pi}{2}, 2\\pi\\right)\\).",
+      "working": "Use the identity \\(\\sin^2 P - \\sin^2 Q = \\sin(P + Q)\\sin(P - Q)\\). So \\(f(x) = \\sin(12x)\\sin(2x)\\).\n\n(A) For \\(0 < x < \\frac{\\pi}{48}\\), \\(0 < 12x < \\frac{\\pi}{4}\\) and \\(0 < 2x < \\frac{\\pi}{24}\\), so both sines are positive and \\(f(x) > 0\\). True.\n\n(B) \\(f\\left(\\frac{\\pi}{12}\\right) = \\sin(\\pi)\\sin\\left(\\frac{\\pi}{6}\\right) = 0\\). True.\n\n(C) \\(f\\left(x + \\frac{\\pi}{2}\\right) = \\sin(12x + 6\\pi)\\sin(2x + \\pi) = \\sin(12x)\\cdot(-\\sin 2x) = -f(x)\\). True.\n\n(D) On an interval of length \\(\\frac{\\pi}{2}\\), the factor \\(\\sin(12x)\\) changes sign many times (it has period \\(\\frac{\\pi}{6}\\)), so \\(f\\) keeps going up and down. For example, \\(f = 0\\) at both \\(x = \\frac{19\\pi}{12}\\) and \\(x = \\frac{5\\pi}{3}\\) (where \\(\\sin 12x = 0\\)) while \\(f\\) is non-zero between them, so \\(f\\) cannot be increasing there. False.\n\nSo the statement that is NOT true is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "A",
+      "value": "\\(0\\)",
+      "working": "Each piece is a polynomial, so \\(f\\) can only fail to be continuous at \\(x = -1\\) or \\(x = 1\\).\n\nAt \\(x = -1\\): the left-hand limit is \\(-a(-1) - b = a - b\\), and \\(f(-1) = 5(-1) + 1 = -4\\). So \\(a - b = -4\\), that is \\(b = a + 4\\).\n\nAt \\(x = 1\\): \\(f(1) = 6\\) and the right-hand limit is \\(a^2 + 3b\\). So \\(a^2 + 3b = 6\\).\n\nSubstituting \\(b = a + 4\\): \\(a^2 + 3a + 12 = 6\\), so \\(a^2 + 3a + 6 = 0\\). Its discriminant is \\(9 - 24 = -15 < 0\\), so there is no real \\(a\\).\n\nHence no real pair \\((a, b)\\) works, and the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "label": "B",
+      "value": "\\(A_1^m = A_1^{m-1} + A_1^{m-2}\\)",
+      "working": "Here \\(x_0 = 0, x_1 = 1, x_2 = 1\\), so \\(A_1 = \\begin{bmatrix} 1 & 1 \\\\ 1 & 0 \\end{bmatrix}\\).\n\nCompute \\(A_1^2 = \\begin{bmatrix} 2 & 1 \\\\ 1 & 1 \\end{bmatrix}\\) and \\(A_1 + I = \\begin{bmatrix} 2 & 1 \\\\ 1 & 1 \\end{bmatrix}\\). So \\(A_1^2 = A_1 + I\\). Multiplying both sides by \\(A_1^{m-2}\\) gives \\(A_1^m = A_1^{m-1} + A_1^{m-2}\\) for every \\(m \\ge 3\\). So (B) is true.\n\nThe others fail. By induction \\(A_1^m = A_m\\), so \\(A_m - A_{m-1} = A_{m-2}\\), which is not \\(I\\) (for \\(m = 3\\) it is \\(A_1\\)); this rules out (A), and (C) would need \\(A_{m-2} = -I\\), also false. Finally \\(\\det(A_m) = (\\det A_1)^m = (-1)^m\\), which is \\(+1\\) for even \\(m\\), so (D) is false.\n\nSo the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12",
+      "label": "C",
+      "value": "\\(93\\)",
+      "working": "Let the common ratio be \\(q\\), so \\(a_n = 3q^{n-1}\\). The condition \\(a_{n+2} = a_{n+1} + 2a_n\\) becomes \\(3q^{n+1} = 3q^n + 6q^{n-1}\\). Dividing by \\(3q^{n-1}\\): \\(q^2 = q + 2\\), so \\(q^2 - q - 2 = 0\\), giving \\(q = 2\\) or \\(q = -1\\).\n\nThe terms are positive integers, so \\(q = -1\\) is ruled out (it makes \\(a_2 = -3\\)). Hence \\(q = 2\\).\n\nThe first five terms are \\(3, 6, 12, 24, 48\\), and their sum is \\(3(2^5 - 1) = 93\\).\n\nSo the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "label": "A",
+      "value": "\\(2\\)",
+      "working": "Note that \\(n = 20^{26}\\) is even and is a multiple of \\(100\\) (since \\(20^2 = 400\\)).\n\n**First term:** \\(49^2 = 2401 \\equiv 1 \\pmod{100}\\). Since \\(n\\) is even, \\(49^n = (49^2)^{n/2} \\equiv 1 \\pmod{100}\\).\n\n**Second term:** by the binomial theorem, \\(41^n = (1 + 40)^n = 1 + 40n + \\binom{n}{2}40^2 + \\cdots\\). Every term from the third on contains \\(40^2 = 1600\\), a multiple of 100. So \\(41^n \\equiv 1 + 40n \\pmod{100}\\), and \\(40n\\) is a multiple of 100, giving \\(41^n \\equiv 1\\).\n\n**Third term:** \\(10n\\) is a multiple of 100, so it leaves remainder 0.\n\nAdding, the remainder is \\(1 + 1 + 0 = 2\\). So the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "label": "D",
+      "value": "\\(\\frac{35}{57}\\)",
+      "working": "Let \\(E_1\\) be the event that the ball from \\(B_1\\) is red and \\(E_2\\) that it is black. Then \\(P(E_1) = \\frac{3}{7}\\) and \\(P(E_2) = \\frac{4}{7}\\).\n\nIf \\(E_1\\) happens, \\(B_2\\) gets 4 red balls and holds 7 red and 4 black, so \\(P(\\text{red} \\mid E_1) = \\frac{7}{11}\\). If \\(E_2\\) happens, \\(B_2\\) gets 3 black balls and holds 3 red and 7 black, so \\(P(\\text{red} \\mid E_2) = \\frac{3}{10}\\).\n\nBy **Bayes' theorem**,\n\n\\(P(E_1 \\mid \\text{red}) = \\dfrac{\\frac{3}{7} \\cdot \\frac{7}{11}}{\\frac{3}{7} \\cdot \\frac{7}{11} + \\frac{4}{7} \\cdot \\frac{3}{10}} = \\dfrac{\\frac{3}{11}}{\\frac{3}{11} + \\frac{6}{35}} = \\dfrac{\\frac{3}{11}}{\\frac{171}{385}} = \\frac{105}{171} = \\frac{35}{57}\\).\n\nSo the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15",
+      "label": "B",
+      "value": "\\(2\\)",
+      "working": "The only possible corners are where something inside a modulus is zero: \\(x = 1\\), \\(x = 2\\), and where \\(|x - 2| = 1\\), that is \\(x = 1\\) or \\(x = 3\\). Write \\(f\\) without moduli on each piece:\n\n| Interval | \\(f(x)\\) | slope |\n|---|---|---|\n| \\(x < 1\\) | \\((2 - x) + 3(1 - x) + (1 - x) = 6 - 5x\\) | \\(-5\\) |\n| \\(1 < x < 2\\) | \\((2 - x) + 3(x - 1) + (x - 1) = 3x - 2\\) | \\(3\\) |\n| \\(2 < x < 3\\) | \\((x - 2) + 3(x - 1) + (3 - x) = 3x - 2\\) | \\(3\\) |\n| \\(x > 3\\) | \\((x - 2) + 3(x - 1) + (x - 3) = 5x - 8\\) | \\(5\\) |\n\nThe slope jumps at \\(x = 1\\) (from \\(-5\\) to \\(3\\)) and at \\(x = 3\\) (from \\(3\\) to \\(5\\)), so \\(f\\) is not differentiable there.\n\nAt \\(x = 2\\) the slope is \\(3\\) on both sides: near \\(x = 2\\), \\(\\left||x - 2| - 1\\right| = 1 - |x - 2|\\), which cancels the corner of \\(|x - 2|\\). So \\(f\\) is differentiable at \\(x = 2\\), which is the trap.\n\nHence there are 2 such points, and the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    }
+  ]
+}
