@@ -40,6 +40,11 @@ export function plainLinks(reply: string): string {
   });
 }
 
+/** An escaped quote (\") copied into a reply shows its backslash (2026-11-07). LaTeX never needs one. */
+export function plainQuotes(reply: string): string {
+  return reply.replace(/\\"/g, '"');
+}
+
 export type ReplySegment ={ kind: "text"; text: string } | { kind: "link"; href: string };
 
 /** Split a reply for display; only paths in `links` become links. */

@@ -74,6 +74,24 @@ describe("rankNotesConcepts", () => {
     expect(rankNotesConcepts(["diamagnetic", "current"], index)).toEqual([]);
   });
 
+  // 2026-11-08: "percentage error product quotient powers" missed "Percentage Errors Through Products and Powers"
+  // on the very notes page the student was reading: "quotient" is not in the card's name.
+  it("with 3+ words, also takes a card that holds all but one of them, after the full matches", () => {
+    const cards = [
+      entry("Percentage Errors Through Products and Powers", "Error propagation", { key: "mht-cet-physics/units-and-measurement" }),
+      entry("Percentage error of a product, quotient and powers", "Errors", { key: "nda-physics/units" }),
+    ];
+    const r = rankNotesConcepts(["percentage", "error", "product", "quotient", "powers"], cards);
+    expect(r.map((e) => e.key)).toEqual(["nda-physics/units", "mht-cet-physics/units-and-measurement"]);
+    expect(rankNotesConcepts(["percentage", "diode", "magnet", "quotient"], cards)).toEqual([]);
+  });
+
+  it("ranks the notes chapter the student is reading first among cards that match as well", () => {
+    const here = entry("Diamagnetism", "Magnetism", { key: "mht-cet-physics/magnetism", examName: "MHT-CET" });
+    const r = rankNotesConcepts(["diamagnetic"], [...index, here], ["NDA"], "mht-cet-physics/magnetism");
+    expect(r[0].key).toBe("mht-cet-physics/magnetism");
+  });
+
   it("prefers the student's exam, then returns at most 2", () => {
     const two = [entry("Diamagnetism", "Magnetism", { examName: "MHT-CET", key: "mht-cet-physics/x" }), ...index];
     const r = rankNotesConcepts(["diamagnetic"], two, ["NDA"]);

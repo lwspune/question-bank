@@ -40,6 +40,7 @@ import { myQuestionTools, type MyQuestionDeps } from "./myQuestions";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import type { ExamSlug } from "@/lib/exam/examContext";
 import { conceptTool, type ConceptToolDeps } from "./conceptSearch";
+import { notesPageOf } from "./notesItem";
 
 /** Profile slugs as the exam names V's facts use; a retired or unknown slug is dropped. */
 export function profileExamNames(slugs: readonly string[]): string[] {
@@ -207,6 +208,7 @@ export async function loadVContext(
         ...opts.concepts,
         loadChapters,
         page: pageInfo ? { examName: pageInfo.examName, subjectName: pageInfo.subjectName } : null,
+        pageNotesKey: notesPageOf(opts.page ?? null)?.key ?? null,
         onPaths: (paths) => paths.forEach((p) => allowedPaths.add(p)),
       })
     );

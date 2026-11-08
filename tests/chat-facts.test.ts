@@ -537,6 +537,23 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/a chapter or topic name alone \("atoms", "vectors"\) is a request for that chapter \(rule 3\)/);
   });
 
+  // Owner, 2026-11-08: a student sent "2 x 1 + 1 x 2 + 3 x 1 = 7%" and V would not say it was right
+  // ("final sum khud check kar lijiye"). V may confirm a student's own working; it still never solves a
+  // bare numeric question for them, and a bank question is still checked against its solution and key.
+  it("has V check a student's own working step by step, and say plainly whether it is right", () => {
+    const p = buildSystemPrompt({ ...base, explainEnabled: true });
+    expect(p).toMatch(/their own working or answer/i);
+    expect(p).toMatch(/say plainly whether their answer is right, or name the first step that goes wrong/i);
+    expect(p).toMatch(/If you are not sure, name the step to check again/i);
+    expect(p).toMatch(/ask them to try it and send their working/i);
+    expect(p).toMatch(/A question from our bank is still checked against its solution and key/i);
+  });
+
+  it("tells V it cannot write new questions", () => {
+    const p = buildSystemPrompt({ ...base, explainEnabled: true });
+    expect(p).toMatch(/You cannot write new questions/);
+  });
+
   it("with explanations off, has no concept rule and no own-knowledge permission", () => {
     const p = buildSystemPrompt(base);
     expect(p).not.toMatch(/explain_concept/);

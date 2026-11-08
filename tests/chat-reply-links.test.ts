@@ -4,7 +4,7 @@
  * made-up address is never a link.
  */
 import { describe, it, expect } from "vitest";
-import { pathsInReply, allowedReplyLinks, splitReplyLinks, plainLinks } from "@/lib/chat/replyLinks";
+import { pathsInReply, allowedReplyLinks, splitReplyLinks, plainLinks, plainQuotes } from "@/lib/chat/replyLinks";
 
 describe("pathsInReply", () => {
   it("finds site paths written in the reply", () => {
@@ -50,6 +50,14 @@ describe("splitReplyLinks", () => {
 
   it("does not link the start of a longer path", () => {
     expect(splitReplyLinks("see /notes/nda", ["/notes"])).toEqual([{ kind: "text", text: "see /notes/nda" }]);
+  });
+});
+
+// 2026-11-07: a reply showed (\"A horse rider covers...\") with the backslashes: V copied an escaped quote.
+describe("plainQuotes", () => {
+  it("turns an escaped quote into a plain one, and leaves maths alone", () => {
+    expect(plainQuotes('the question (\\"A horse rider\\")')).toBe('the question ("A horse rider")');
+    expect(plainQuotes("so \\(x^2 \\ge 0\\) holds")).toBe("so \\(x^2 \\ge 0\\) holds");
   });
 });
 
