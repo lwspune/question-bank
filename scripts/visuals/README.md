@@ -421,6 +421,14 @@ picture shows the right shape.
 
 ## Gotchas (each one cost a batch)
 
+- **Editing an ANIMATED solution hides its animation.** The visual carries a
+  fingerprint of the solution text, so any later edit (a `**Note:**` notice
+  from scripts/reports/apply-fixes.ts, a fix-solutions entry) makes it stale
+  until it is re-tied: shift every step after the first past the added
+  sentences (`sentenceStarts`), take the new `solutionFingerprint`, and run the
+  re-tied batch with `--replace` (2026-11-09: 13 HSC 12 visuals re-tied this
+  way, batch al-hsc-retie-1). Fix the solution BEFORE animating where you can.
+
 - **A check on the batch FILE is not a check on what the database returns.**
   Postgres jsonb re-sorts an object's keys (shortest first), so `vars` written in
   dependency order came back out of order and the scene refused them on read:
