@@ -1591,6 +1591,35 @@ export type Database = {
           },
         ]
       }
+      fix_points: {
+        Row: {
+          earned_at: string
+          question_id: string
+          source: string
+          user_id: string
+        }
+        Insert: {
+          earned_at?: string
+          question_id: string
+          source: string
+          user_id: string
+        }
+        Update: {
+          earned_at?: string
+          question_id?: string
+          source?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fix_points_question_id_fkey"
+            columns: ["question_id"]
+            isOneToOne: false
+            referencedRelation: "questions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       free_downloads: {
         Row: {
           created_at: string
@@ -5089,6 +5118,17 @@ export type Database = {
           mobile: string
           name: string
           stage: string
+        }[]
+      }
+      fix_points_readout: {
+        Args: { p_since: string; p_until: string }
+        Returns: {
+          active_students: number
+          fixers: number
+          fixes: number
+          points_students: number
+          sales: number
+          sales_with_points: number
         }[]
       }
       free_limits: { Args: never; Returns: Json }

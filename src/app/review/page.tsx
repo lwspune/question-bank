@@ -21,6 +21,7 @@ import ReviewSwitch from "./ReviewSwitch";
 import FixOverview from "./FixOverview";
 import ChapterFix, { CHAPTER_CAP } from "./ChapterFix";
 import SavedList from "./SavedList";
+import { FixPointsStatus } from "@/components/billing/useFixPoints";
 
 export const dynamic = "force-dynamic";
 
@@ -128,6 +129,8 @@ export default async function ReviewPage(props: { searchParams: Promise<Search> 
       <main className="mx-auto max-w-4xl space-y-6 px-4 py-6 sm:px-6 sm:py-8">
         <MeHeader data={header} active="review" readOnly={false} />
         <ReviewSwitch list={params.list} fixCount={pool ? due.length : null} savedCount={savedIds.length} />
+        {/* Fix Points (0245): what fixing this list is worth. www only. */}
+        {!saved && !intl && <FixPointsStatus />}
         {body}
       </main>
     </>

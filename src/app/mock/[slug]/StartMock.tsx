@@ -13,6 +13,7 @@ import type { PassCta } from "@/lib/billing/plans";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import { pricingHref } from "@/lib/billing/checkoutReturn";
 import { lockedPassLine } from "@/lib/mocks/passLine";
+import { useDiscountedPass, FixPointsOfferNote } from "@/components/billing/useFixPoints";
 
 /**
  * Starts (or resumes) an attempt, then routes into the runner.
@@ -134,7 +135,7 @@ function testNoun(unit: TestUnit, n: number): string {
 function MockPassCard({
   limit,
   unit,
-  pass,
+  pass: offered,
   slug,
   isPastPaper,
 }: {
@@ -144,6 +145,8 @@ function MockPassCard({
   slug: string;
   isPastPaper: boolean;
 }) {
+  // Fix Points (0245) lower the price shown; /pricing and the order route follow.
+  const pass = useDiscountedPass(offered);
   const plural = testNoun(unit, 2);
   return (
     <div className="rounded-lg border-2 border-brand-accent/40 bg-card p-5 text-center">
@@ -161,6 +164,7 @@ function MockPassCard({
           {pass ? `Get the ${pass.label}: ${pass.price}` : "See passes"}
         </Link>
       </Button>
+      {pass && <FixPointsOfferNote planId={pass.planId} className="mt-2 text-xs font-medium text-emerald-700 dark:text-emerald-400" />}
     </div>
   );
 }

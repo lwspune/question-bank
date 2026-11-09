@@ -72,6 +72,8 @@ import {
   WHY_NOT_BUY_LEAD_PCT,
   WHY_NOT_BUY_MIN_ANSWERS,
   PARENT_PAY_KEEP,
+  FIX_POINTS_FIXES_LIFT_PCT,
+  FIX_POINTS_SALES_KEEP,
   checkOn,
   type Experiment,
 } from "@/lib/growth/registry";
@@ -646,6 +648,13 @@ export default async function GrowthPage() {
             <ReadingsList metric="v-explain-students" />
             <ReadingsList metric="v-explain-similar-right" />
           </div>
+        );
+      case "fix-points":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Read on {fmtDate(checkOn(e.liveSince, e.windowDays))} with <code>npm run fix-points:readout</code>: keep it if
+            fixes per active student rise {FIX_POINTS_FIXES_LIFT_PCT}%+ and {FIX_POINTS_SALES_KEEP}+ passes sell with points.
+          </p>
         );
       case "parent-pay":
         return (

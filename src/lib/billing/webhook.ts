@@ -10,6 +10,7 @@
  */
 import { planForPaidOrder, type OrderGrant, type PaidOrder } from "./plans";
 import { parentGrantNote } from "./parentLink";
+import { fixPointsGrantNote } from "./fixPoints";
 import { ebookForPaidOrder, isEbookOrder, type EbookGrant } from "@/lib/ebooks/order";
 
 export type WebhookDecision =
@@ -53,7 +54,7 @@ export function decideWebhook(body: WebhookBody): WebhookDecision {
     }
     const decided = planForPaidOrder(order, userId);
     if (!decided.ok) return { action: "skip", reason: decided.reason };
-    return { action: "grant", userId, paymentId, grant: decided.grant, note: parentGrantNote(order.notes?.parentLink) };
+    return { action: "grant", userId, paymentId, grant: decided.grant, note: parentGrantNote(order.notes?.parentLink) ?? fixPointsGrantNote(order.notes) };
   }
 
   if (body.event === "refund.processed") {

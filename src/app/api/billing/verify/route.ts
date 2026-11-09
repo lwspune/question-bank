@@ -3,6 +3,7 @@ import { getSessionUser } from "@/lib/auth";
 import { fetchOrder, verifyPaymentSignature } from "@/lib/billing/razorpay";
 import { computeExpiry, planForPaidOrder } from "@/lib/billing/plans";
 import { grantRazorpayEntitlement } from "@/lib/billing/grant";
+import { fixPointsGrantNote } from "@/lib/billing/fixPoints";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { logActivity } from "@/lib/activity/service";
 import { paywallEvent } from "@/lib/activity/clientEvents";
@@ -105,6 +106,8 @@ export async function POST(request: NextRequest) {
     expiresAt: computeExpiry(Date.now(), decided.grant.durationDays),
     amountPaise: decided.grant.amountPaise,
     currency: decided.grant.currency,
+    // Fix Points (0245): marks a pass bought with points, as the webhook does.
+    note: fixPointsGrantNote(fetched.order.notes),
   });
   if (result.kind === "error") {
     console.error("grant after verify failed:", result.message);

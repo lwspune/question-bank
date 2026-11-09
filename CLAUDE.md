@@ -353,6 +353,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-09 (fifth) — Fix Points: each fixed mistake is 1% off the pass, up to 40% (0245); referrals next.**
+  - **Owner's gut call against the data:** of 33 buyers none had fixed 10+ mistakes and 18 paid on day one; measured by experiment `fix-points` (`npm run fix-points:readout`).
+  - **Its own table, server-written** (`fix_points`): students may insert their own `user_activity`, so `answer_correct` cannot carry money. Self-marks and same-day right answers (an echo) pay nothing.
+  - **The order stays the contract:** the order route stamps the discounted price; a failed points read sells at list price. Display (`/api/me/fix-points`) never decides a price.
+  - **Points shown with their value on drill and Review** (owner exception to "no pass in general copy"). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-09 (fourth) — Each test run cleans up only its own test data (no migration).**
   - **Why:** every session, worktree and CI shares one test project, and teardown deleted every test-looking row, so the first run to finish deleted live runs' fixtures (4 red gates 11-08, 3 more on 11-09's push).
   - **Owner's option 2:** fixtures take ids from `testRunId()`, recorded in a folder the run's workers share (vitest `provide`/`inject`); teardown deletes only those, plus test orgs/users over 6 hours old. A machine lock was rejected: CI would still collide.

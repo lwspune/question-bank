@@ -22,6 +22,8 @@ import { fixedCount, questionState, scopeToAttempt, scopeToChapter, scopeToExam,
 import type { DrillScope } from "./scope";
 import { answerProgress, type AnswerProgress } from "./progress";
 import { awardAnsweredMilestone } from "@/lib/celebrate/service";
+import { awardFixPoints } from "@/lib/billing/fixPointsService";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { crowdTiers } from "@/lib/celebrate/crowdService";
 import type { CrowdTier } from "@/lib/celebrate/crowd";
 import { getPremiumLimits } from "@/lib/billing/premiumLimits";
@@ -233,6 +235,8 @@ export type AnswerOutcome = DrillVerdict & {
   milestone: number | null;
   /** "Beat the crowd" tier for a right answer on a checked question, else null. */
   crowd: CrowdTier | null;
+  /** True when THIS answer earned a Fix Point (migration 0245). */
+  fixPoint: boolean;
 };
 
 /** The ladder total, alongside the due pool, for the pulse (2026-10-04). Same
@@ -339,13 +343,29 @@ export async function recordDrillAnswer(
   // ROUND 3, everything that reads the log after the write, at once. The
   // milestone counts THIS answer, so it cannot move before the write. No crowd
   // on a written question: nobody's written answer is graded, so there is none.
-  const [readBack, milestone, tiers] = await Promise.all([
+  // A Fix Point (0245) needs a GRADED fix: a self-marked "Understood" is the
+  // student's own word, so it moves the drill but pays nothing. Not on intl,
+  // whose passes take no discount.
+  const pays = kind === "answer_correct" && picked && !opts.intl;
+  const [readBack, milestone, tiers, earned] = await Promise.all([
     readProgress(db, userId, questionId, kind, verdict.correct, now),
     awardAnsweredMilestone(db, userId),
     verdict.correct && picked ? crowdTiers([questionId]) : Promise.resolve(new Map<string, CrowdTier>()),
+    pays
+      ? awardFixPoints(createSupabaseAdminClient(), { userId, questionIds: [questionId], source: "drill", now })
+      : Promise.resolve([] as string[]),
   ]);
 
-  return { ...verdict, recorded: true, ...readBack, milestone, crowd: tiers.get(questionId) ?? null };
+  return {
+    ...verdict,
+    recorded: true,
+    ...readBack,
+    milestone,
+    crowd: tiers.get(questionId) ?? null,
+    // A pass holder's point still counts toward their next pass, but "1% off
+    // the pass" means nothing to them today, so V does not say it.
+    fixPoint: earned.length > 0 && !allowanceInput.hasPass,
+  };
 }
 
 /**

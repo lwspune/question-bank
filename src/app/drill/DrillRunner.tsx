@@ -14,6 +14,7 @@ import { drillVSays, progressLine } from "@/lib/drill/progress";
 import { scopeCopy, type DrillScope as Scope } from "@/lib/drill/scope";
 import { drillHref } from "@/lib/drill/from";
 import PushOptIn from "@/components/push/PushOptIn";
+import { FixPointsStatus } from "@/components/billing/useFixPoints";
 
 // The scope's shape and every line about it live in lib/drill/scope (2026-11-06).
 export type DrillScope = Scope | null;
@@ -479,6 +480,12 @@ function Summary({
             ? "None this time, and that is exactly what a drill is for. You have the solutions now, and these come back round."
             : `The ${correct} you fixed go quiet for a while. The other ${total - correct} come back round.`}
       </p>
+
+      {/* Read fresh: this drill may just have earned points (0245). */}
+      <FixPointsStatus
+        fresh
+        className="mx-auto mt-3 flex max-w-sm items-start justify-center gap-2 text-left text-sm font-medium text-emerald-700 dark:text-emerald-400"
+      />
 
       <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:justify-center">
         {(remaining > 0 || scope) && (
