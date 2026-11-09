@@ -17,6 +17,7 @@
  * Pure: no React, no DB. Spec: tests/growth-registry.test.ts.
  */
 import type { ActivityKind } from "@/lib/activity/events";
+import { STUDY_CIRCLE_MIN_YES, STUDY_CIRCLE_YES_RATE } from "@/lib/studyCircle/core";
 
 /**
  * What counts as studying for the North Star ("weekly learners on 2+ study
@@ -338,7 +339,8 @@ export type Readout =
   | "fix-points"
   | "flashcards"
   | "chapter-fix"
-  | "board-path";
+  | "board-path"
+  | "study-circle";
 
 export type Experiment = {
   id: string;
@@ -943,6 +945,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-07",
     windowDays: 21,
     readout: "tutor-price",
+    status: "running",
+  },
+  {
+    id: "study-circle",
+    title: "Study with your friends?",
+    change:
+      "Home shows every signed-in student a card: \"Study with your friends?\" You and up to 4 friends you already know would see each other's week (chapters done, mistakes fixed); no chat, no scores, no ranking; it says plainly that it is not built yet. Two equal buttons, \"I'd use this\" and \"Not for me\"; either answer hides it for good.",
+    why: "A Class 10 student's post asking for a study partner (9 Nov). A circle of matched strangers was ruled out: most of these students are minors, and the pool is thin (29 students answered CBSE Class 10 questions in 30 days). Sharing here is already rare: 18 mock invites sent in 3 weeks, 0 joined. So demand is measured before anything is built.",
+    metric:
+      "Students who saw the card (it records when half of it first comes on screen), and how many answered Yes and No, overall and for Class 9-10 students (study_circle_interest, migration 0247; staff left out)",
+    rule: `Build friends-only circles if ${STUDY_CIRCLE_MIN_YES}+ students say Yes AND that is ${STUDY_CIRCLE_YES_RATE * 100}%+ of those who saw it. Otherwise drop the idea. Even on a pass, the first build must show invited friends actually join.`,
+    liveSince: "2026-11-09",
+    windowDays: 15,
+    readout: "study-circle",
     status: "running",
   },
 ];

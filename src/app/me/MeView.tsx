@@ -10,6 +10,7 @@ import HomeReminder from "./HomeReminder";
 import StageNudge from "./StageNudge";
 import ResultCheckCard from "./ResultCheckCard";
 import TutorPriceCard from "./TutorPriceCard";
+import StudyCircleCard from "./StudyCircleCard";
 import { rupees } from "@/lib/tutor/price";
 import type { MeData } from "@/lib/me/load";
 import type { Pulse } from "@/lib/pulse/cache";
@@ -151,6 +152,15 @@ export default function MeView({
       {/* The highest-value chapters not started (2026-11-09). A board-plan
           student's plan already orders their chapters, so not for them. */}
       {!data.pathCard.path && <StartNext chapters={data.startNext ?? []} from={staff ? undefined : "home"} />}
+
+      {/* The study-circle demand test (2026-11-09, migration 0247): a card
+          that says it is not built yet, until answered or the test ends. */}
+      {data.studyCircleAsk &&
+        (staff ? (
+          <HiddenNote>Here they see the &ldquo;Study with your friends?&rdquo; question, until they answer it.</HiddenNote>
+        ) : (
+          <StudyCircleCard />
+        ))}
 
       {/* Home keeps things to DO (2026-11-08): the number tiles and Recent
           mocks moved to the Progress tab (OutcomeTiles, Papers you sat). */}

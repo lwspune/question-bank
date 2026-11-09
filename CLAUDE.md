@@ -353,6 +353,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-09 (eighth) — Study-circle button test on Home (0247); a hook warns when the shared folder leaves main.**
+  - **Why:** a Class 10 student's post asked for a study partner. Matching strangers was ruled out: most are minors (safety, DPDP consent) and the pool is thin (29 CBSE 10 answerers in 30 days).
+  - **Measure before building:** a card says it is not built yet; it records when it comes on screen, so Yes has a denominator. Two equal buttons; a filled Yes would nudge the answer.
+  - **Bar:** 40+ Yes AND 10%+ of those who saw it, else drop; even then, invited friends must join (mock invites: 0 joins).
+  - **post-checkout hook** warns only in the main folder off main (no pre-checkout hook exists). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-09 (seventh) — Flashcards for everyone: the staff-only "Project" overlay opens as a deck for every visitor (no migration).**
   - **Why:** owner, "it makes questions look like flashcards". Its Show answer skipped the daily answer limit (357 students met it in 35 days), so it had to count like the card.
   - **Modes (`lib/present/deck.ts`):** staff keep the projector, nothing recorded; students practise through the card's own counter (one store per page, never counted twice); a mock review is free.
