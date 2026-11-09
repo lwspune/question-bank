@@ -1,0 +1,219 @@
+{
+ "//": "re-tied after a notice was put above the solution (2026-11-09)",
+ "visuals": [
+  {
+   "id": "276bece5-d5cc-490e-8176-e627775932ae",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "answer": {
+     "label": "2/5 (D)",
+     "value": 0.4
+    },
+    "params": {
+     "lines": [
+      {
+       "f": "(1/3)*(3/5)",
+       "tex": "P(A) = \\dfrac{1}{3}\\times\\dfrac{3}{5} = \\dfrac{1}{5}",
+       "kind": "calc",
+       "step": "s1",
+       "value": "1/5"
+      },
+      {
+       "f": "(2/3)*(3/5)",
+       "tex": "P(A\\cap B) = \\dfrac{2}{3}\\times\\dfrac{3}{5} = \\dfrac{2}{5}",
+       "kind": "calc",
+       "step": "s2",
+       "value": "2/5"
+      },
+      {
+       "f": "1/5+3/5-2/5",
+       "tex": "P(A\\cup B) = \\dfrac{1}{5}+\\dfrac{3}{5}-\\dfrac{2}{5} = \\dfrac{2}{5}",
+       "kind": "calc",
+       "step": "s3",
+       "value": "2/5"
+      }
+     ],
+     "answer": "1/5+3/5-2/5"
+    },
+    "fingerprint": "d7183372"
+   }
+  },
+  {
+   "id": "28ce7e70-5ce4-478b-bdfa-4714bf196908",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "answer": {
+     "label": "1/5 (D)",
+     "value": 0.19999999999999998
+    },
+    "params": {
+     "lines": [
+      {
+       "f": "5/7-4/7",
+       "tex": "P(\\overline{A}\\cap B) = \\dfrac{5}{7}-\\dfrac{4}{7} = \\dfrac{1}{7}",
+       "kind": "calc",
+       "step": "s1",
+       "value": "1/7"
+      },
+      {
+       "f": "(1/7)/(5/7)",
+       "tex": "P(\\overline{A}\\mid B) = \\dfrac{1/7}{5/7} = \\dfrac{1}{5}",
+       "kind": "calc",
+       "step": "s2",
+       "value": "1/5"
+      }
+     ],
+     "answer": "(1/7)/(5/7)"
+    },
+    "fingerprint": "3bed95ae"
+   }
+  },
+  {
+   "id": "59a83c5d-fea1-4aa4-93f2-85bbc7f6625c",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "answer": {
+     "label": "7/8 (A)",
+     "value": 0.8749999999999999
+    },
+    "params": {
+     "lines": [
+      {
+       "f": "0.6+0.2-0.5",
+       "tex": "P(M\\cup N) = 0.6+0.2-0.5 = 0.3",
+       "kind": "calc",
+       "step": "s1",
+       "value": "0.3"
+      },
+      {
+       "f": "1-0.3",
+       "tex": "P(M'\\cap N') = 1-0.3 = 0.7",
+       "kind": "calc",
+       "step": "s2",
+       "value": "0.7"
+      },
+      {
+       "f": "1-0.2",
+       "tex": "P(N') = 1-0.2 = 0.8",
+       "kind": "calc",
+       "step": "s3",
+       "value": "0.8"
+      },
+      {
+       "f": "0.7/0.8",
+       "tex": "P(M'/N') = \\dfrac{0.7}{0.8} = \\dfrac{7}{8}",
+       "kind": "calc",
+       "step": "s4",
+       "value": "7/8"
+      }
+     ],
+     "answer": "0.7/0.8"
+    },
+    "fingerprint": "d63d4c12"
+   }
+  },
+  {
+   "id": "1dd23817-5c36-49e7-bfa0-e59631cf7e02",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "answer": {
+     "label": "7/24",
+     "value": 0.2916666666666667
+    },
+    "params": {
+     "lines": [
+      {
+       "f": "1-1/4",
+       "tex": "P(A\\cap B) = 1-\\dfrac{1}{4} = \\dfrac{3}{4}",
+       "kind": "calc",
+       "step": "s1",
+       "value": "3/4"
+      },
+      {
+       "f": "(1/2)*(7/12)",
+       "tex": "P(A)P(B) = \\dfrac{1}{2}\\times\\dfrac{7}{12} = \\dfrac{7}{24}",
+       "kind": "calc",
+       "note": "not equal to 3/4, so not independent",
+       "step": "s2",
+       "value": "7/24"
+      }
+     ],
+     "answer": "(1/2)*(7/12)"
+    },
+    "fingerprint": "598da4a1"
+   }
+  }
+ ],
+ "decided": []
+}
