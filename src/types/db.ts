@@ -1854,6 +1854,81 @@ export type Database = {
           },
         ]
       }
+      institute_prospects: {
+        Row: {
+          address: string | null
+          area: string
+          category: string | null
+          created_at: string
+          distance_km: number
+          follow_up: string | null
+          id: string
+          kind: string
+          lat: number
+          lng: number
+          maps_url: string | null
+          name: string
+          neighborhood: string | null
+          note: string | null
+          phone: string | null
+          place_id: string
+          rating: number | null
+          reviews: number
+          searches: string[]
+          status: string
+          updated_at: string
+          website: string | null
+        }
+        Insert: {
+          address?: string | null
+          area: string
+          category?: string | null
+          created_at?: string
+          distance_km: number
+          follow_up?: string | null
+          id?: string
+          kind: string
+          lat: number
+          lng: number
+          maps_url?: string | null
+          name: string
+          neighborhood?: string | null
+          note?: string | null
+          phone?: string | null
+          place_id: string
+          rating?: number | null
+          reviews?: number
+          searches?: string[]
+          status?: string
+          updated_at?: string
+          website?: string | null
+        }
+        Update: {
+          address?: string | null
+          area?: string
+          category?: string | null
+          created_at?: string
+          distance_km?: number
+          follow_up?: string | null
+          id?: string
+          kind?: string
+          lat?: number
+          lng?: number
+          maps_url?: string | null
+          name?: string
+          neighborhood?: string | null
+          note?: string | null
+          phone?: string | null
+          place_id?: string
+          rating?: number | null
+          reviews?: number
+          searches?: string[]
+          status?: string
+          updated_at?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
       learn_attempts: {
         Row: {
           correct: boolean
