@@ -1,5 +1,9 @@
 import { ChevronRight, Flame, ListChecks, PenLine, Shapes } from "lucide-react";
-import KatexRenderer from "@/components/math/KatexRenderer";
+// mhchem: the sheets write chemistry as \ce{...}, as the checker and the PDF
+// allow. Loaded here, on the server, so only this tab gets it and no phone
+// downloads it (the bank's own questions still never use \ce).
+import "katex/contrib/mhchem";
+import { StaticKatexRenderer } from "@/components/math/StaticMath";
 import FormulaBlock from "@/app/notes/_components/FormulaBlock";
 import TrapCallout from "@/app/notes/_components/TrapCallout";
 import type { RevisionSheet } from "@/lib/board/revision/types";
@@ -16,6 +20,12 @@ import RevisionSheetDownload from "./RevisionSheetDownload";
  * Most asked comes first: it is what to revise first. Derivations fold into
  * native <details>, so a student can try one before opening its outline and
  * the tab stays a page, not a wall. The PDF (Premium Pass) is the same sheet.
+ *
+ * Its maths is drawn here on the server (2026-11-09), with mhchem loaded: the
+ * client KatexRenderer has no mhchem, so every \ce{} on the tab showed
+ * "KaTeX parse error" while the checker, which loads it, passed the sheet.
+ * tests/board-revision-sheet-render.test.ts draws every sheet through this
+ * component.
  */
 export default function BoardRevisionSheet({ sheet }: { sheet: RevisionSheet }) {
   const summary = revisionSummary(sheet);
@@ -44,7 +54,7 @@ export default function BoardRevisionSheet({ sheet }: { sheet: RevisionSheet }) 
                 {i + 1}
               </span>
               <div className="min-w-0 space-y-1">
-                <KatexRenderer text={m.topic} className="font-serif text-[15px] leading-snug text-foreground" />
+                <Tex text={m.topic} className="font-serif text-[15px] leading-snug text-foreground" />
                 <p className="text-xs text-muted-foreground">
                   Asked {m.years.length === 1 ? "in" : `${m.years.length} times:`} {m.years.join(", ")}
                   {m.marks ? ` · ${m.marks} mark${m.marks === 1 ? "" : "s"}` : ""}
@@ -60,10 +70,10 @@ export default function BoardRevisionSheet({ sheet }: { sheet: RevisionSheet }) 
           {sheet.keyPoints.map((k, i) => (
             <div key={i} className="rounded-md border-l-2 border-brand/40 pl-3">
               <dt className="text-sm font-semibold text-foreground">
-                <KatexRenderer text={k.term} />
+                <Tex text={k.term} />
               </dt>
               <dd className="mt-0.5">
-                <KatexRenderer text={k.text} className="font-serif text-[15px] leading-relaxed text-foreground" />
+                <Tex text={k.text} className="font-serif text-[15px] leading-relaxed text-foreground" />
               </dd>
             </div>
           ))}
@@ -74,7 +84,7 @@ export default function BoardRevisionSheet({ sheet }: { sheet: RevisionSheet }) 
         <Section title="Formulas">
           <div className="grid gap-3 sm:grid-cols-2">
             {sheet.formulas.map((f, i) => (
-              <FormulaBlock key={i} formula={stacked(f)} />
+              <FormulaBlock key={i} formula={stacked(f)} Katex={Tex} />
             ))}
           </div>
         </Section>
@@ -91,12 +101,12 @@ export default function BoardRevisionSheet({ sheet }: { sheet: RevisionSheet }) 
                     className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-90"
                     aria-hidden
                   />
-                  <KatexRenderer text={d.title} />
+                  <Tex text={d.title} />
                 </summary>
                 <ol className="list-decimal space-y-1.5 border-t px-3 py-3 pl-9 font-serif text-[15px] leading-relaxed">
                   {d.steps.map((s, j) => (
                     <li key={j}>
-                      <KatexRenderer text={s} />
+                      <Tex text={s} />
                     </li>
                   ))}
                 </ol>
@@ -112,7 +122,7 @@ export default function BoardRevisionSheet({ sheet }: { sheet: RevisionSheet }) 
             {sheet.diagrams.map((d, i) => (
               <li key={i} className="text-sm">
                 <span className="font-semibold text-foreground">
-                  <KatexRenderer text={d.title} />
+                  <Tex text={d.title} />
                 </span>
                 <span className="text-muted-foreground">: label </span>
                 <span className="text-foreground">{d.labels.join(" · ")}</span>
@@ -125,12 +135,17 @@ export default function BoardRevisionSheet({ sheet }: { sheet: RevisionSheet }) 
       <Section title="Mistakes that cost marks">
         <div className="space-y-3">
           {sheet.mistakes.map((m, i) => (
-            <TrapCallout key={i} title={m.title} body={m.body} />
+            <TrapCallout key={i} title={m.title} body={m.body} Katex={Tex} />
           ))}
         </div>
       </Section>
     </div>
   );
+}
+
+/** Server-drawn maths, keeping KaTeX's MathML copy for screen readers. */
+function Tex({ text, className }: { text: string; className?: string }) {
+  return <StaticKatexRenderer text={text} className={className} mathml />;
 }
 
 /**
