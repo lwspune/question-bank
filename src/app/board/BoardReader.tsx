@@ -162,6 +162,7 @@ export default function BoardReader({
               defaultOpen={openByDefault[i]}
               supabaseUrl={supabaseUrl}
               chapterName={chapterName}
+              examName={examName}
               revealed={revealed}
               blocked={blocked}
               lock={lock}
@@ -191,6 +192,7 @@ export default function BoardReader({
                 defaultOpen={i === 0}
                 supabaseUrl={supabaseUrl}
                 chapterName={chapterName}
+                examName={examName}
                 sittingIndex={i}
                 revealed={revealed}
                 blocked={blocked}
@@ -440,6 +442,7 @@ function PyqSitting({
   defaultOpen,
   supabaseUrl,
   chapterName,
+  examName,
   sittingIndex,
   revealed,
   blocked,
@@ -452,6 +455,8 @@ function PyqSitting({
   defaultOpen: boolean;
   supabaseUrl: string;
   chapterName: string;
+  /** The DB exam name, for a flashcard wall's attribution. */
+  examName: string;
   /** Position of this sitting in the panel, so the walk-through orders questions
    *  across sittings rather than restarting at 0 in each one. */
   sittingIndex: number;
@@ -492,6 +497,7 @@ function PyqSitting({
                 present={fromBoardQuestion(q, {
                   chapter: chapterName,
                   sectionLabel: sitting.label,
+                  examName,
                 })}
                 order={sittingIndex * 1000 + i}
                 revealed={revealed.has(q.id)}
@@ -528,6 +534,7 @@ function GroupSection({
   defaultOpen,
   supabaseUrl,
   chapterName,
+  examName,
   revealed,
   blocked,
   lock,
@@ -539,6 +546,8 @@ function GroupSection({
   defaultOpen: boolean;
   supabaseUrl: string;
   chapterName: string;
+  /** The DB exam name, for a flashcard wall's attribution. */
+  examName: string;
   revealed: Set<string>;
   blocked: Set<string>;
   lock: RevealLock;
@@ -566,6 +575,7 @@ function GroupSection({
           groupLabel={group.group}
           supabaseUrl={supabaseUrl}
           chapterName={chapterName}
+          examName={examName}
           revealed={revealed}
           blocked={blocked}
           lock={lock}
@@ -583,6 +593,7 @@ function BlockSection({
   groupLabel,
   supabaseUrl,
   chapterName,
+  examName,
   revealed,
   blocked,
   lock,
@@ -594,6 +605,8 @@ function BlockSection({
   groupLabel: string;
   supabaseUrl: string;
   chapterName: string;
+  /** The DB exam name, for a flashcard wall's attribution. */
+  examName: string;
   revealed: Set<string>;
   blocked: Set<string>;
   lock: RevealLock;
@@ -623,6 +636,7 @@ function BlockSection({
               present={fromBoardQuestion(q, {
                 chapter: chapterName,
                 sectionLabel: block.label,
+                examName,
               })}
               order={block.seq * 1000 + i}
               revealed={revealed.has(q.id)}

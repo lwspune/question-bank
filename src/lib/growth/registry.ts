@@ -280,6 +280,8 @@ export const PARENT_PAY_KEEP = 5;
 export const FIX_POINTS_FIXES_LIFT_PCT = 30;
 /** "fix-points": passes sold with points by the check date that keep it. */
 export const FIX_POINTS_SALES_KEEP = 5;
+/** "flashcards": cards answered per deck a student opens, on average, that keeps it open to students. */
+export const FLASHCARDS_ANSWERS_PER_OPEN_KEEP = 3;
 /** "tutor-interest": student Yes answers (looking for 1:1 tutoring) that take tutoring further. */
 export const TUTOR_STUDENT_YES_KEEP = 20;
 /** "tutor-price": answers each price needs before the three are compared (below it, run 2 more weeks). */
@@ -334,6 +336,7 @@ export type Readout =
   | "why-not-buy"
   | "parent-pay"
   | "fix-points"
+  | "flashcards"
   | "chapter-fix"
   | "board-path";
 
@@ -872,6 +875,19 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-09",
     windowDays: 30,
     readout: "fix-points",
+    status: "running",
+  },
+  {
+    id: "flashcards",
+    title: "Flashcards for everyone",
+    change:
+      "The board icon on every question card, once staff-only, now opens the page's questions as a deck of flashcards for everyone: one a screen, an MCQ answered by tapping an option (a wrong one goes to Fix your mistakes), a written answer by Show answer and then Understood / Review later, the animated solution on the back. Each answer counts toward the free answers like the card's. Staff keep the projector as it was.",
+    why: "The owner's call (9 Nov): one question a screen with arrows between them reads as flashcards, a way to practise a list by recalling before seeing the answer.",
+    metric:
+      "Vercel events: flashcards_answer ÷ flashcards_open where role is student (props say which page and how the card was answered); students' answers in the deck also reach the drill and the answer counts like the card's",
+    rule: `Keep it open to students if they answer ${FLASHCARDS_ANSWERS_PER_OPEN_KEEP}+ cards per deck opened, on average, by the check date. Below 1, it is opened and left: put it back to staff only.`,
+    liveSince: "2026-11-09",
+    readout: "flashcards",
     status: "running",
   },
   {

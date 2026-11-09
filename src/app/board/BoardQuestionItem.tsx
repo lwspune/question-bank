@@ -101,7 +101,7 @@ export default function BoardQuestionItem({
         <div className="order-last min-w-0 basis-full font-serif text-[15px] leading-relaxed sm:order-none sm:flex-1 [&_.katex]:max-w-full">
           {bi ? <BilingualStem q={bi} field="text" /> : <BlockText text={q.text} />}
         </div>
-        <PresentButton question={present} order={order} className="ml-auto mt-0.5" />
+        <PresentButton question={present} order={order} className="ml-auto mt-0.5" surface="board" />
       </div>
 
       {q.imageUrl && (

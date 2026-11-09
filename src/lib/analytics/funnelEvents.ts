@@ -184,6 +184,18 @@ export const FUNNEL_EVENTS = [
   "notes_practice_wall_shown",
   /** …and tapped a sign-in link on it; props: variant, button ("signup" | "login"). */
   "notes_practice_wall_signin_click",
+  /**
+   * The flashcard deck was opened (2026-11-09, growth registry "flashcards"):
+   * the board icon on a question card. Props: surface (bank · board · guide ·
+   * daily · mock), role (student · teacher). Once per open.
+   */
+  "flashcards_open",
+  /**
+   * A card in the deck was answered by a student: an option tapped, ticks
+   * checked or Show answer. Props: surface, kind (pick · ticks · show).
+   * Divided by student opens, it says whether a deck is worked through.
+   */
+  "flashcards_answer",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];

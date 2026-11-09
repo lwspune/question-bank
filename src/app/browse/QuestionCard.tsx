@@ -382,7 +382,7 @@ export default function QuestionCard({
               {headerInner}
             </button>
           )}
-          <PresentButton question={presentable} order={index} />
+          <PresentButton question={presentable} order={index} surface={surface} />
           <BookmarkButton questionId={question.id} />
           {!hideCart && (
             <CartToggle
