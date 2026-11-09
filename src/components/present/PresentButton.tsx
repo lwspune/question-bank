@@ -5,31 +5,31 @@ import { Presentation } from "lucide-react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useIsStaff } from "@/lib/viewer/useViewerSession";
 import { cn } from "@/lib/utils";
+import { trackFunnel } from "@/lib/analytics/trackFunnel";
+import { deckMode, deckRole, type DeckSurface } from "@/lib/present/deck";
 import type { PresentableQuestion } from "@/lib/present/viewModel";
 import { usePresentRegistry } from "./PresentRegistry";
 import PresentSurface from "./PresentSurface";
 
 /**
- * "Project" — opens one question full-screen on a classroom board, with the
- * space below it left blank to work the solution out on.
+ * The board icon on a question card. Staff get the classroom projector: one
+ * question full-screen, the space below left blank to work the solution out
+ * on. Everyone else gets the same screen as a deck of flashcards
+ * (2026-11-09, the owner's call): one question a screen, ← / → through the
+ * page's questions, each answered by the card's own rules (lib/present/deck).
  *
- * TEACHER-ONLY, and that is a PRODUCT decision rather than a security one. The
- * question it projects is already on the page in front of whoever clicked; the
- * overlay reveals nothing new. It is scoped to org staff because it is a
- * teaching instrument — the same reasoning that puts the Word paper and the
- * .pptx deck behind `resolveExportAccess`. Nothing here is load-bearing for
- * confidentiality, so resolving staff in the browser is sufficient.
+ * Icon only, by the owner's choice; the label is for screen readers.
  *
- * Resolving it in the browser is also the only option available. Three of the
- * four surfaces that mount this button (`/board`, `/notes`, and the 317
- * `/questions` landing pages) are ISR-cached and read no identity during server
- * render — a server-side gate here would silently de-cache them, which is a
- * regression this project has already paid for once. `useIsStaff` shares
- * AppHeader's single `/api/me/header` request, so the button costs no extra
- * round trip and anonymous visitors issue none at all.
+ * Who is staff is resolved in the browser, which is the only option: three of
+ * the four surfaces that mount this button (`/board`, `/notes`, and the 317
+ * `/questions` landing pages) are ISR-cached and read no identity during
+ * server render, so a server-side check would de-cache them. Nothing here is
+ * load-bearing for confidentiality either way: a student's answers go through
+ * the same counter as the card's, and a teacher's question is already on the
+ * page. `useIsStaff` shares AppHeader's single `/api/me/header` request.
  *
- * Renders NOTHING until identity resolves, so a student never sees a control
- * flash and vanish.
+ * The button renders for everyone from the first paint, so the cached HTML
+ * and the hydrated page agree.
  */
 export default function PresentButton({
   question,
@@ -37,13 +37,21 @@ export default function PresentButton({
   order = 0,
   supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "",
   className,
+  surface,
 }: {
   question: PresentableQuestion;
   order?: number;
   supabaseUrl?: string;
   className?: string;
+  /**
+   * The page this card is on, which decides the counter a student's answer
+   * spends. Required with no default on purpose: a default is how /board's
+   * reveals were once recorded as the bank's (see useRevealMeter).
+   */
+  surface: DeckSurface;
 }) {
   const { isStaff } = useIsStaff();
+  const mode = deckMode({ isStaff, surface });
   const registry = usePresentRegistry();
   const [open, setOpen] = useState(false);
   // Which question is on screen. Starts at the one clicked and moves with the
@@ -51,8 +59,8 @@ export default function PresentButton({
   const [current, setCurrent] = useState<PresentableQuestion>(question);
   const [siblings, setSiblings] = useState<PresentableQuestion[] | undefined>(undefined);
 
-  // Registration is unconditional — it runs before the staff check below, so the
-  // walk-through list is complete regardless of the order identity resolves in.
+  // Registration is unconditional, for every viewer, so the walk-through list
+  // is complete whoever opens it.
   //
   // Keyed on the question's IDENTITY (its key), not on the object: several
   // callers build the view-model inline during render, so an object-keyed effect
@@ -66,14 +74,13 @@ export default function PresentButton({
     return registry.register(latest.current.key, order, latest.current);
   }, [registry, question.key, order]);
 
-  if (!isStaff) return null;
-
   return (
     <Dialog
       open={open}
       onOpenChange={(next) => {
         setOpen(next);
         if (next) {
+          trackFunnel("flashcards_open", { surface, role: deckRole(mode) });
           // Re-opening always starts from the card that was clicked, not
           // wherever the last walk-through happened to end. The sibling list is
           // snapshotted here rather than subscribed to: the page behind the
@@ -88,15 +95,14 @@ export default function PresentButton({
           onOpenChange — so the sibling snapshot below would never be taken and
           the walk-through arrows would never appear. */}
       <DialogTrigger
-        aria-label="Project this question on the board"
-        title="Project on board"
+        aria-label={mode === "teach" ? "Project this question on the board" : "Practise these questions as flashcards"}
+        title={mode === "teach" ? "Project on board" : "Flashcards"}
         className={cn(
-          "inline-flex shrink-0 items-center gap-1.5 rounded-md border px-2 py-1 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+          "inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-input bg-background text-muted-foreground transition-colors hover:border-brand-accent/40 hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           className
         )}
       >
-        <Presentation className="h-3.5 w-3.5" aria-hidden />
-        Project
+        <Presentation className="h-4 w-4" aria-hidden />
       </DialogTrigger>
 
       <DialogContent
@@ -109,6 +115,8 @@ export default function PresentButton({
           siblings={siblings}
           supabaseUrl={supabaseUrl}
           onNavigate={setCurrent}
+          mode={mode}
+          surface={surface}
         />
       </DialogContent>
     </Dialog>

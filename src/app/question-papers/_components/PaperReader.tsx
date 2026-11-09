@@ -114,6 +114,7 @@ export default function PaperReader({
               </div>
               <PaperSections
                 set={s}
+                examName={examName}
                 items={s.items}
                 supabaseUrl={supabaseUrl}
                 revealed={revealed}
@@ -133,6 +134,7 @@ export default function PaperReader({
 
 function PaperSections({
   set,
+  examName,
   items,
   supabaseUrl,
   revealed,
@@ -143,6 +145,8 @@ function PaperSections({
   onPick,
 }: {
   set: PaperSet;
+  /** The DB exam name, for a flashcard wall's attribution. */
+  examName: string;
   items: PaperViewItem[];
   supabaseUrl: string;
   revealed: Set<string>;
@@ -190,7 +194,7 @@ function PaperSections({
                     <BoardQuestionItem
                       q={q}
                       supabaseUrl={supabaseUrl}
-                      present={fromBoardQuestion(q, { chapter: set.title, sectionLabel: sec?.title ?? null })}
+                      present={fromBoardQuestion(q, { chapter: set.title, sectionLabel: sec?.title ?? null, examName })}
                       order={it.position}
                       revealed={revealed.has(q.id)}
                       blocked={blocked.has(q.id)}

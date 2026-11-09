@@ -76,6 +76,7 @@ describe("EXPERIMENTS", () => {
       "ebook-store",
       "email-cap",
       "fix-points",
+      "flashcards",
       "formula-pages",
       "homework-progress",
       "homework-tab",

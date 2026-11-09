@@ -46,6 +46,8 @@ describe("FUNNEL_EVENTS", () => {
       "home_continue_click",
       "notes_practice_wall_shown",
       "notes_practice_wall_signin_click",
+      "flashcards_open",
+      "flashcards_answer",
     ]);
   });
 

@@ -28,6 +28,7 @@ import type { BoardQuestion } from "@/lib/board/query";
 import type { ReviewItem } from "@/lib/mocks/service";
 import { formatProvenance } from "@/lib/questions/formatProvenance";
 import { buildBreadcrumb } from "@/app/browse/breadcrumb";
+import type { DeckFormat } from "@/lib/present/deck";
 
 export type PresentOption = {
   label: string;
@@ -62,6 +63,21 @@ export type PresentableQuestion = {
   imageUrl: string | null;
   options: PresentOption[];
   answer: PresentAnswer | null;
+  /*
+   * For the flashcard deck (2026-11-09), where a student answers the card
+   * through the same counter as the card behind it (lib/present/deck).
+   */
+  /** The bank question's id. Not `key`: a review card's key is its position. */
+  questionId: string;
+  /** The DB exam name, for a wall hit's attribution; null where the page has none. */
+  examName: string | null;
+  /** The chapter, named in a "right in a row" message; null where unknown. */
+  topic: string | null;
+  format: DeckFormat;
+  /** Officially cancelled (0119): no option is right, so nothing is graded. */
+  cancelled: boolean;
+  /** The checked animated solution (usableVisual, server side), or null. */
+  solutionVisual: unknown | null;
 };
 
 /**
@@ -135,6 +151,12 @@ export function fromQuestionRow(q: QuestionRow): PresentableQuestion {
       solution: q.solution,
       solutionImageUrl: q.solutionImageUrl ?? null,
     }),
+    questionId: q.id,
+    examName: q.exam.name,
+    topic: q.chapter.name,
+    format: q.questionFormat ?? "mcq",
+    cancelled: Boolean(q.cancelledNote),
+    solutionVisual: q.solutionVisual ?? null,
   };
 }
 
@@ -161,6 +183,13 @@ export function fromWorkedExample(e: WorkedExample): PresentableQuestion {
       solution: e.solution,
       solutionImageUrl: null,
     }),
+    questionId: e.id,
+    examName: e.examName,
+    topic: e.chapter,
+    // A worked example carries no format column: options mean an MCQ.
+    format: e.options.length > 0 ? "mcq" : "subjective",
+    cancelled: false,
+    solutionVisual: null,
   };
 }
 
@@ -172,7 +201,7 @@ export function fromWorkedExample(e: WorkedExample): PresentableQuestion {
  */
 export function fromBoardQuestion(
   q: BoardQuestion,
-  ctx: { chapter: string; sectionLabel: string | null }
+  ctx: { chapter: string; sectionLabel: string | null; examName?: string | null }
 ): PresentableQuestion {
   return {
     key: q.id,
@@ -192,6 +221,12 @@ export function fromBoardQuestion(
       solution: q.solution,
       solutionImageUrl: q.solutionImageUrl,
     }),
+    questionId: q.id,
+    examName: ctx.examName ?? null,
+    topic: ctx.chapter,
+    format: q.format,
+    cancelled: false,
+    solutionVisual: q.solutionVisual ?? null,
   };
 }
 
@@ -227,5 +262,12 @@ export function fromReviewItem(item: ReviewItem): PresentableQuestion {
       solution: item.solution,
       solutionImageUrl: item.solutionImageUrl,
     }),
+    questionId: item.questionId,
+    // A review deck counts and records nothing (lib/present/deck), so it needs no exam.
+    examName: null,
+    topic: null,
+    format: item.format,
+    cancelled: Boolean(item.cancelledNote),
+    solutionVisual: item.solutionVisual ?? null,
   };
 }

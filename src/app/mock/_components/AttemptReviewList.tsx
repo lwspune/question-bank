@@ -81,6 +81,7 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
           order={item.position}
           supabaseUrl={supabaseUrl}
           className="ml-auto"
+          surface="mock"
         />
         {item.grace ? (
           <span className="inline-flex items-center gap-1 text-xs font-medium text-amber-700 dark:text-amber-400">

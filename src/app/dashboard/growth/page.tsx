@@ -74,6 +74,7 @@ import {
   PARENT_PAY_KEEP,
   FIX_POINTS_FIXES_LIFT_PCT,
   FIX_POINTS_SALES_KEEP,
+  FLASHCARDS_ANSWERS_PER_OPEN_KEEP,
   checkOn,
   type Experiment,
 } from "@/lib/growth/registry";
@@ -654,6 +655,14 @@ export default async function GrowthPage() {
           <p className="text-sm text-muted-foreground">
             Read on {fmtDate(checkOn(e.liveSince, e.windowDays))} with <code>npm run fix-points:readout</code>: keep it if
             fixes per active student rise {FIX_POINTS_FIXES_LIFT_PCT}%+ and {FIX_POINTS_SALES_KEEP}+ passes sell with points.
+          </p>
+        );
+      case "flashcards":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: in Vercel, divide students&rsquo;
+            flashcards_answer by flashcards_open (role student). Keep it open to students at{" "}
+            {FLASHCARDS_ANSWERS_PER_OPEN_KEEP}+ cards a deck; below 1, put it back to staff only.
           </p>
         );
       case "parent-pay":

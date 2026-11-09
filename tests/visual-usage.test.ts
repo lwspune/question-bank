@@ -29,7 +29,7 @@ describe("parseVisualEvent", () => {
     for (const action of ["shown", "finished", "replayed", "opened_still", "chose_still", "chose_animated"]) {
       expect(parseVisualEvent({ questionId: Q, surface: "mock", action, scene: "space3d" }, "u1", NOW).ok).toBe(true);
     }
-    for (const surface of ["bank", "guide", "daily", "board", "drill", "mock", "v"]) {
+    for (const surface of ["bank", "guide", "daily", "board", "drill", "mock", "v", "flashcards"]) {
       expect(parseVisualEvent({ questionId: Q, surface, action: "shown", scene: "space3d" }, "u1", NOW).ok).toBe(true);
     }
   });

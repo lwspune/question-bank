@@ -228,6 +228,10 @@ async function main() {
         // Read by hand: fix_points_readout (migration 0245), before vs after.
         line = "by hand: npm run fix-points:readout";
         break;
+      case "flashcards":
+        // Read by hand in Vercel: flashcards_answer / flashcards_open, role student.
+        line = "by hand: Vercel events flashcards_answer / flashcards_open (role student)";
+        break;
       case "parent-pay":
         // Live steps and passes on /dashboard/sales (lib/sales/query loadParentLinks).
         line = "live card on /dashboard/sales (paywall_event parent_* steps, entitlements note parent_link:%)";

@@ -96,7 +96,7 @@ export default function WorkedExampleCard({ rank, example }: Props) {
               {DIFFICULTY_LABEL[example.difficulty]}
             </span>
           </div>
-          <PresentButton question={presentable} order={rank} />
+          <PresentButton question={presentable} order={rank} surface="guide" />
         </div>
 
         <p className="text-xs text-muted-foreground">

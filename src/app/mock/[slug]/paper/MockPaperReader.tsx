@@ -74,7 +74,7 @@ export default function MockPaperReader({
                     <BoardQuestionItem
                       q={q}
                       supabaseUrl={supabaseUrl}
-                      present={fromBoardQuestion(q, { chapter: paperName, sectionLabel: showHeadings ? sec.title : null })}
+                      present={fromBoardQuestion(q, { chapter: paperName, sectionLabel: showHeadings ? sec.title : null, examName })}
                       order={it.position}
                       revealed={revealed.has(q.id)}
                       blocked={blocked.has(q.id)}

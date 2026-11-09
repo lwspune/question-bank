@@ -323,3 +323,80 @@ describe("fromQuestionRow: multiple-select and range answers (migration 0214)", 
     expect(p.answer?.numericAnswerMax).toBe(133.1);
   });
 });
+
+/**
+ * The flashcard deck (2026-11-09): every student can open the overlay, and in
+ * practice mode a card is answered through the same counter as the card behind
+ * it. So each adapter carries what that needs: the real question id (the
+ * review card's `key` is a position, not an id), the exam (a wall hit's
+ * attribution), the chapter (the "right in a row" message), the format (tap an
+ * option, tick several, or Show answer), a cancelled flag, and the animated
+ * solution.
+ */
+describe("flashcard fields", () => {
+  it("fromQuestionRow carries the id, exam, chapter, format, cancelled flag and visual", () => {
+    const visual = { scene: "functionGraph" };
+    const p = fromQuestionRow(makeQuestionRow({ solutionVisual: visual }));
+    expect(p.questionId).toBe("q-1");
+    expect(p.examName).toBe("NDA");
+    expect(p.topic).toBe("Matrices and Determinants");
+    expect(p.format).toBe("mcq");
+    expect(p.cancelled).toBe(false);
+    expect(p.solutionVisual).toBe(visual);
+  });
+
+  it("fromQuestionRow reads a missing format as MCQ and a cancel note as cancelled", () => {
+    const p = fromQuestionRow(makeQuestionRow({ questionFormat: undefined, cancelledNote: "Dropped by UPSC." }));
+    expect(p.format).toBe("mcq");
+    expect(p.cancelled).toBe(true);
+    expect(p.solutionVisual).toBeNull();
+  });
+
+  it("fromQuestionRow keeps the written, numeric and multiple-select formats", () => {
+    expect(fromQuestionRow(makeQuestionRow({ questionFormat: "subjective", options: [] })).format).toBe("subjective");
+    expect(fromQuestionRow(makeQuestionRow({ questionFormat: "numeric", options: [] })).format).toBe("numeric");
+    expect(fromQuestionRow(makeQuestionRow({ questionFormat: "msq" })).format).toBe("msq");
+  });
+
+  it("fromWorkedExample: an example with options is an MCQ, one without is written", () => {
+    const mcq = fromWorkedExample(makeWorkedExample());
+    expect(mcq.questionId).toBe("we-1");
+    expect(mcq.examName).toBe("NDA");
+    expect(mcq.topic).toBe("Statistics");
+    expect(mcq.format).toBe("mcq");
+    expect(mcq.cancelled).toBe(false);
+    expect(mcq.solutionVisual).toBeNull();
+    expect(fromWorkedExample(makeWorkedExample({ options: [] })).format).toBe("subjective");
+  });
+
+  it("fromBoardQuestion takes the exam from the reader and the chapter as the topic", () => {
+    const visual = { scene: "space3d" };
+    const p = fromBoardQuestion(makeBoardQuestion({ solutionVisual: visual }), {
+      chapter: "Matrices",
+      sectionLabel: "Exercise 2.1",
+      examName: "Maharashtra HSC Class 12",
+    });
+    expect(p.questionId).toBe("b-1");
+    expect(p.examName).toBe("Maharashtra HSC Class 12");
+    expect(p.topic).toBe("Matrices");
+    expect(p.format).toBe("subjective");
+    expect(p.cancelled).toBe(false);
+    expect(p.solutionVisual).toBe(visual);
+  });
+
+  it("fromBoardQuestion without an exam leaves it null rather than guessing", () => {
+    const p = fromBoardQuestion(makeBoardQuestion(), { chapter: "Matrices", sectionLabel: null });
+    expect(p.examName).toBeNull();
+    expect(p.solutionVisual).toBeNull();
+  });
+
+  it("fromReviewItem carries the real question id, not the position key", () => {
+    const p = fromReviewItem(makeReviewItem({ cancelledNote: "Cancelled.", solutionVisual: { scene: "x" } }));
+    expect(p.key).toBe("pos-7");
+    expect(p.questionId).toBe("q-7");
+    expect(p.examName).toBeNull();
+    expect(p.format).toBe("mcq");
+    expect(p.cancelled).toBe(true);
+    expect(p.solutionVisual).toEqual({ scene: "x" });
+  });
+});

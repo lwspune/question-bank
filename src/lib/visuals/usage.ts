@@ -93,9 +93,9 @@ function parseDetail(action: VisualAction, raw: Record<string, unknown>): { ok: 
 
 /** Every place a visual renders: the bank card's own surfaces (/browse and
  *  /questions, a /guide worked example, the question of the day; the reveal
- *  beacon's PRACTICE_SURFACES), the board readers, the drill, mock review, and
- *  V's reply. */
-export const VISUAL_SURFACES = ["bank", "guide", "daily", "board", "drill", "mock", "v"] as const;
+ *  beacon's PRACTICE_SURFACES), the board readers, the drill, mock review,
+ *  V's reply, and the back of a flashcard (2026-11-09). */
+export const VISUAL_SURFACES = ["bank", "guide", "daily", "board", "drill", "mock", "v", "flashcards"] as const;
 export type VisualSurface = (typeof VISUAL_SURFACES)[number];
 
 const ACTION_SET: ReadonlySet<string> = new Set(VISUAL_ACTIONS);
