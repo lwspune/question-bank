@@ -232,6 +232,13 @@ async function main() {
         // Read by hand in Vercel: flashcards_answer / flashcards_open, role student.
         line = "by hand: Vercel events flashcards_answer / flashcards_open (role student)";
         break;
+      case "study-circle": {
+        // study_circle_interest (migration 0247): seen, Yes, No, staff left out.
+        const { loadStudyCircleReadout } = await import("../../src/lib/studyCircle/readout");
+        const r = await loadStudyCircleReadout(db);
+        line = `seen ${r.seen}, yes ${r.yes}, no ${r.no}; class 9-10 seen ${r.school.seen}, yes ${r.school.yes}`;
+        break;
+      }
       case "parent-pay":
         // Live steps and passes on /dashboard/sales (lib/sales/query loadParentLinks).
         line = "live card on /dashboard/sales (paywall_event parent_* steps, entitlements note parent_link:%)";

@@ -4361,6 +4361,33 @@ export type Database = {
           },
         ]
       }
+      study_circle_interest: {
+        Row: {
+          answer: string | null
+          answered_at: string | null
+          exams: string[]
+          shown_at: string
+          stage: string | null
+          user_id: string
+        }
+        Insert: {
+          answer?: string | null
+          answered_at?: string | null
+          exams?: string[]
+          shown_at?: string
+          stage?: string | null
+          user_id: string
+        }
+        Update: {
+          answer?: string | null
+          answered_at?: string | null
+          exams?: string[]
+          shown_at?: string
+          stage?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       study_path_days: {
         Row: {
           created_at: string

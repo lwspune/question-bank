@@ -9,6 +9,8 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { loadEbookStoreReadout } from "@/lib/ebooks/readout";
 import { loadLearnReadout } from "@/lib/learn/readout";
 import { loadTutorInterestReadout, loadTutorPriceReadout } from "@/lib/tutor/readout";
+import { loadStudyCircleReadout } from "@/lib/studyCircle/readout";
+import { STUDY_CIRCLE_MIN_YES, STUDY_CIRCLE_YES_RATE, studyCircleVerdict } from "@/lib/studyCircle/core";
 import { formatRupees } from "@/lib/billing/plans";
 import {
   INSIGHTS,
@@ -371,12 +373,13 @@ export default async function GrowthPage() {
 
   const admin = createSupabaseAdminClient();
   const learnSince = EXPERIMENTS.find((e) => e.readout === "learn")?.liveSince ?? "2026-10-28";
-  const [raw, ebookRows, tutor, tutorPrice, learn] = await Promise.all([
+  const [raw, ebookRows, tutor, tutorPrice, learn, studyCircle] = await Promise.all([
     getGrowthSnapshot(),
     loadEbookStoreReadout(admin),
     loadTutorInterestReadout(admin),
     loadTutorPriceReadout(admin),
     loadLearnReadout(admin, learnSince),
+    loadStudyCircleReadout(admin),
   ]);
   const today = todayIst();
   const north = viewNorthStar(raw.weeks, today);
@@ -719,6 +722,26 @@ export default async function GrowthPage() {
             </Link>
           </div>
         );
+      case "study-circle": {
+        const pct = (r: number) => `${Math.round(r * 100)}%`;
+        const s = studyCircle;
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Check on {fmtDate(checkOn(e.liveSince, e.windowDays))}: build friends-only circles if {STUDY_CIRCLE_MIN_YES}+
+              students say Yes and that is {pct(STUDY_CIRCLE_YES_RATE)}+ of those who saw it.
+            </p>
+            <p className="text-sm">
+              <span className="text-2xl font-semibold tabular-nums">{s.yes}</span> Yes of{" "}
+              <span className="tabular-nums">{s.seen}</span> who saw it ({pct(s.yesRate)}), {s.no} No. Class 9-10:{" "}
+              <span className="tabular-nums">
+                {s.school.yes} Yes of {s.school.seen}
+              </span>
+              . So far: {studyCircleVerdict(s) === "build" ? "clears the bar" : "below the bar"}.
+            </p>
+          </div>
+        );
+      }
       case "tutor-price": {
         const answered = (a: (typeof tutorPrice.arms)[number]) => a.yes + a.cheaper + a.no;
         return (

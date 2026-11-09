@@ -35,6 +35,7 @@ import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { firstMockHref, firstNotesHref } from "@/lib/exam/examLinks";
 import { loadTutorPriceAsk } from "@/lib/tutor/priceAsk";
 import { loadPathCard, type PathCard } from "@/lib/path/service";
+import { loadStudyCircleAsk } from "@/lib/studyCircle/server";
 
 /** The header fields (greeting, exams, focus) plus the Home tab's own cards. */
 export type MeData = MeHeaderData & {
@@ -60,6 +61,9 @@ export type MeData = MeHeaderData & {
   /** "Start next" (2026-11-09, migration 0242): the highest-value chapters of
    *  their exam not started yet. Optional so older fixtures stay small. */
   startNext?: ChapterWeight[];
+  /** The study-circle demand card (2026-11-09, migration 0247): shown until
+   *  answered or the test ends. Optional so older fixtures stay small. */
+  studyCircleAsk?: boolean;
 };
 
 export async function loadMe(
@@ -74,7 +78,8 @@ export async function loadMe(
   // ROUND 1: every read that needs nothing from another, at once. Each read
   // that waits for another costs a database round trip (2026-11-08: the page
   // ran six in a row; the tabs' loading screens hide the rest of the wait).
-  const [attempts, notesRows, lastNpsAt, week, assigned, profile, examIds, header, tutorPriceAsk] = await Promise.all([
+  const [attempts, notesRows, lastNpsAt, week, assigned, profile, examIds, header, tutorPriceAsk, studyCircleAsk] =
+    await Promise.all([
     getUserAttempts(db, user.id),
     listOwnNotesProgress(db, user.id),
     getLastNpsAt(db, user.id),
@@ -92,6 +97,11 @@ export async function loadMe(
     loadTutorPriceAsk(user.id, now).catch((e) => {
       console.error("tutor price ask read failed", e instanceof Error ? e.message : e);
       return null;
+    }),
+    // The study-circle demand card (2026-11-09). Best effort: a failed read hides it.
+    loadStudyCircleAsk(user.id, now).catch((e) => {
+      console.error("study circle ask read failed", e instanceof Error ? e.message : e);
+      return false;
     }),
   ]);
 
@@ -184,5 +194,6 @@ export async function loadMe(
     tutorPriceAsk,
     pathCard,
     startNext,
+    studyCircleAsk,
   };
 }
