@@ -865,9 +865,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
   },
   {
     id: "fix-points",
-    title: "Fix Points: fix a mistake, take 1% off the pass",
+    title: "Vault Points: fix a mistake, take 1% off the pass",
     change:
-      "Each question a student gets right after missing it on an earlier day earns a fix point, worth 1% off a rupee pass, up to 40%. Points last 30 days and a purchase starts them again. Every offer card and /pricing show the lower price; the drill and Review show the points with their value.",
+      "Each question a student gets right after missing it on an earlier day earns a Vault Point (called a fix point until 9 Nov), worth 1% off a rupee pass, up to 40%. Points last 30 days and a purchase starts them again. Every offer card and /pricing show the lower price; the drill, Review, /me and the avatar menu show the points with their value (/me and the avatar from 9 Nov, to pass holders too).",
     why: "The owner's call (9 Nov), against the data: of 33 buyers, none had fixed 10+ mistakes before paying, and 18 paid on their first day. The bet is that a reward makes students fix more mistakes and turns some of the learners who never pay into buyers.",
     metric:
       "Graded fixes per active student (fix_points_readout, the award's own rule) in the 30 days after against the 30 days before (baseline 9 Nov: 792 fixes by 138 of 1,312 active students, 0.60 each), and passes sold with points (entitlement note fix_points:<n>)",

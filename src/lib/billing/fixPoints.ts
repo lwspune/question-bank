@@ -96,36 +96,75 @@ export type FixPointsView = {
   maxPct: number;
   /** A pass holder's points count toward their next pass; the offer lines stay quiet for them. */
   hasPass: boolean;
+  /** When the oldest point in the window runs out (its earned time + 30 days, ISO); null with no points. */
+  lapsesOn: string | null;
   /** planId -> discounted price, only for active passes the points lower. */
   prices: Record<string, string>;
 };
 
-export function fixPointsView(i: { points: number; plans: readonly Plan[]; hasPass: boolean }): FixPointsView {
-  const pct = fixPointsPct(i.points);
+export function fixPointsView(i: {
+  points: number;
+  plans: readonly Plan[];
+  hasPass: boolean;
+  /** Earned time of the oldest point still in the window (fixPointsService.readFixPoints). */
+  oldestAt?: string | null;
+}): FixPointsView {
+  const points = Math.max(0, Math.floor(i.points) || 0);
+  const pct = fixPointsPct(points);
   const prices: Record<string, string> = {};
   if (pct > 0) {
     for (const p of i.plans) {
       if (p.active && planTakesDiscount(p)) prices[p.id] = formatPrice(discountedPaise(p.amountPaise, pct), p.currency);
     }
   }
-  return { points: Math.max(0, Math.floor(i.points) || 0), pct, maxPct: FIX_POINTS_MAX_PCT, hasPass: i.hasPass, prices };
+  const oldest = i.oldestAt ? new Date(i.oldestAt) : null;
+  const lapsesOn =
+    points > 0 && oldest && !Number.isNaN(oldest.getTime())
+      ? new Date(oldest.getTime() + FIX_POINTS_WINDOW_DAYS * DAY_MS).toISOString()
+      : null;
+  return { points, pct, maxPct: FIX_POINTS_MAX_PCT, hasPass: i.hasPass, lapsesOn, prices };
 }
 
+/*
+ * Student-facing copy. The points are called VAULT POINTS (owner, 2026-11-09):
+ * fixing a mistake is the first way to earn them, not the only one planned,
+ * so the name does not say "fix". Internal names (table fix_points, these
+ * functions' module) keep the first activity's name.
+ */
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
+const vp = (n: number) => plural(n, "Vault Point", "Vault Points");
+/** The pass the points lower: a pass holder's points count toward the NEXT one. */
+const target = (v: FixPointsView) => (v.hasPass ? "your next pass" : "the pass");
 
 /** The line under a pass offer whose price the points lowered; null when they did not. */
-export function fixPointsOfferNote(v: FixPointsView | null): string | null {
+export function vaultPointsOfferNote(v: FixPointsView | null): string | null {
   if (!v || v.hasPass || v.pct <= 0) return null;
-  return `Includes ${v.pct}% off: you fixed ${plural(v.points, "mistake", "mistakes")} in the last 30 days.`;
+  return `Includes ${v.pct}% off from your ${vp(v.points)}.`;
 }
 
-/** The status line on the drill and Review (owner, 2026-11-09: shown with its value). Null for a pass holder. */
-export function fixPointsStatusLine(v: FixPointsView | null): string | null {
-  if (!v || v.hasPass) return null;
-  if (v.points <= 0) return `Get a question right that you missed on an earlier day to earn 1% off the pass, up to ${v.maxPct}%.`;
-  const pts = plural(v.points, "fix point", "fix points");
-  if (v.pct >= v.maxPct) return `${pts}: the full ${v.maxPct}% off the pass. Points last 30 days.`;
-  return `${pts}: ${v.pct}% off the pass. Each mistake you fix adds 1%, up to ${v.maxPct}%. Points last 30 days.`;
+/** The status line on /me, the drill's end screen and Review (owner, 2026-11-09: shown with its value, to every student). */
+export function vaultPointsLine(v: FixPointsView | null): string | null {
+  if (!v) return null;
+  if (v.points <= 0) {
+    return `Get a question right that you missed on an earlier day to earn a Vault Point: 1% off ${target(v)}, up to ${v.maxPct}%.`;
+  }
+  if (v.pct >= v.maxPct) return `${vp(v.points)}: the full ${v.maxPct}% off ${target(v)}. Points last 30 days.`;
+  return `${vp(v.points)}: ${v.pct}% off ${target(v)}. Each mistake you fix adds 1%, up to ${v.maxPct}%. Points last 30 days.`;
+}
+
+/** The avatar menu's one line. */
+export function vaultPointsShort(v: FixPointsView | null): string | null {
+  if (!v) return null;
+  if (v.points <= 0) return `0 Vault Points · fix a mistake to earn 1% off`;
+  if (v.pct >= v.maxPct) return `${vp(v.points)} · the full ${v.maxPct}% off`;
+  return `${vp(v.points)} · ${v.pct}% off ${target(v)}`;
+}
+
+/** When the oldest points run out, as an IST date ("2 Dec"); null without a date. */
+export function vaultPointsLapseLine(v: FixPointsView | null): string | null {
+  if (!v || !v.lapsesOn || v.points <= 0) return null;
+  const day = new Date(v.lapsesOn).toLocaleDateString("en-IN", { day: "numeric", month: "short", timeZone: "Asia/Kolkata" });
+  return v.points === 1 ? `This point runs out on ${day}.` : `Your oldest points run out on ${day}.`;
 }
 
 type Answer = { userId: string; questionId: string; at: string };

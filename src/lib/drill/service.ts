@@ -235,8 +235,8 @@ export type AnswerOutcome = DrillVerdict & {
   milestone: number | null;
   /** "Beat the crowd" tier for a right answer on a checked question, else null. */
   crowd: CrowdTier | null;
-  /** True when THIS answer earned a Fix Point (migration 0245). */
-  fixPoint: boolean;
+  /** THIS answer earned a Vault Point (migration 0245): "next" for a pass holder, whose points lower their next pass. */
+  vaultPoint: "pass" | "next" | null;
 };
 
 /** The ladder total, alongside the due pool, for the pulse (2026-10-04). Same
@@ -364,7 +364,7 @@ export async function recordDrillAnswer(
     crowd: tiers.get(questionId) ?? null,
     // A pass holder's point still counts toward their next pass, but "1% off
     // the pass" means nothing to them today, so V does not say it.
-    fixPoint: earned.length > 0 && !allowanceInput.hasPass,
+    vaultPoint: earned.length > 0 ? (allowanceInput.hasPass ? "next" : "pass") : null,
   };
 }
 

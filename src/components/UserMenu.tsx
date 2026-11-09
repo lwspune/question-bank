@@ -11,6 +11,7 @@ import { totalsLine, type Pulse } from "@/lib/pulse/cache";
 import { weeklyProgress } from "@/lib/goals/weekly";
 import { examCountdownSentence } from "@/lib/exam/calendar";
 import { drillHref } from "@/lib/drill/from";
+import { VaultPointsMenuLine } from "@/components/billing/useFixPoints";
 
 export default function UserMenu({
   email,
@@ -106,6 +107,8 @@ export default function UserMenu({
               )}
             </p>
             {totals && <p className="mt-0.5 truncate text-xs tabular-nums text-muted-foreground">{totals}</p>}
+            {/* Vault Points (owner, 2026-11-09), students only: staff do not buy a pass. */}
+            {role === null && !isStaff && <VaultPointsMenuLine />}
             {exam && (
               <p className="mt-0.5 truncate text-xs text-muted-foreground">
                 {examCountdownSentence({ ...exam, source: "calendar", exam: null, date: "" })}

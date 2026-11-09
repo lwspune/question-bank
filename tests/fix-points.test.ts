@@ -16,8 +16,10 @@ import {
   stampDiscountNotes,
   fixPointsGrantNote,
   fixPointsView,
-  fixPointsOfferNote,
-  fixPointsStatusLine,
+  vaultPointsOfferNote,
+  vaultPointsLine,
+  vaultPointsShort,
+  vaultPointsLapseLine,
   pickBackfillFixes,
 } from "@/lib/billing/fixPoints";
 import { stampOrderNotes, planForPaidOrder, type Plan } from "@/lib/billing/plans";
@@ -157,6 +159,7 @@ describe("fixPointsView (what /api/me/fix-points answers)", () => {
       pct: 12,
       maxPct: 40,
       hasPass: false,
+      lapsesOn: null,
       prices: { "mock-pass-6m": "₹439", "practice-pass-6m": "₹175" },
     });
   });
@@ -168,38 +171,75 @@ describe("fixPointsView (what /api/me/fix-points answers)", () => {
   });
 });
 
-describe("Fix Points copy", () => {
-  const view = (points: number, hasPass = false) => fixPointsView({ points, plans: [premium], hasPass });
+describe("Vault Points copy (renamed from fix points, owner 2026-11-09)", () => {
+  const view = (points: number, hasPass = false, oldestAt: string | null = null) =>
+    fixPointsView({ points, plans: [premium], hasPass, oldestAt });
 
   it("tells an offer card where the lower price came from", () => {
-    expect(fixPointsOfferNote(view(12))).toBe("Includes 12% off: you fixed 12 mistakes in the last 30 days.");
-    expect(fixPointsOfferNote(view(1))).toBe("Includes 1% off: you fixed 1 mistake in the last 30 days.");
+    expect(vaultPointsOfferNote(view(12))).toBe("Includes 12% off from your 12 Vault Points.");
+    expect(vaultPointsOfferNote(view(1))).toBe("Includes 1% off from your 1 Vault Point.");
   });
   it("says nothing on an offer card with no points, or to a pass holder", () => {
-    expect(fixPointsOfferNote(view(0))).toBeNull();
-    expect(fixPointsOfferNote(view(12, true))).toBeNull();
-    expect(fixPointsOfferNote(null)).toBeNull();
+    expect(vaultPointsOfferNote(view(0))).toBeNull();
+    expect(vaultPointsOfferNote(view(12, true))).toBeNull();
+    expect(vaultPointsOfferNote(null)).toBeNull();
   });
 
   it("explains how to earn, before the first point", () => {
-    expect(fixPointsStatusLine(view(0))).toBe(
-      "Get a question right that you missed on an earlier day to earn 1% off the pass, up to 40%."
+    expect(vaultPointsLine(view(0))).toBe(
+      "Get a question right that you missed on an earlier day to earn a Vault Point: 1% off the pass, up to 40%."
     );
   });
   it("states the points and their worth", () => {
-    expect(fixPointsStatusLine(view(12))).toBe(
-      "12 fix points: 12% off the pass. Each mistake you fix adds 1%, up to 40%. Points last 30 days."
+    expect(vaultPointsLine(view(12))).toBe(
+      "12 Vault Points: 12% off the pass. Each mistake you fix adds 1%, up to 40%. Points last 30 days."
     );
-    expect(fixPointsStatusLine(view(1))).toMatch(/^1 fix point: 1% off/);
+    expect(vaultPointsLine(view(1))).toMatch(/^1 Vault Point: 1% off/);
   });
   it("says when the cap is reached", () => {
-    expect(fixPointsStatusLine(view(55))).toBe("55 fix points: the full 40% off the pass. Points last 30 days.");
+    expect(vaultPointsLine(view(55))).toBe("55 Vault Points: the full 40% off the pass. Points last 30 days.");
   });
-  it("is quiet for a pass holder", () => {
-    expect(fixPointsStatusLine(view(12, true))).toBeNull();
+  it("tells a pass holder the points lower their NEXT pass", () => {
+    expect(vaultPointsLine(view(12, true))).toBe(
+      "12 Vault Points: 12% off your next pass. Each mistake you fix adds 1%, up to 40%. Points last 30 days."
+    );
+    expect(vaultPointsLine(view(0, true))).toMatch(/1% off your next pass, up to 40%\.$/);
+    expect(vaultPointsLine(view(40, true))).toBe("40 Vault Points: the full 40% off your next pass. Points last 30 days.");
   });
+  it("is null before the read lands", () => {
+    expect(vaultPointsLine(null)).toBeNull();
+  });
+
+  it("has a short form for the avatar menu", () => {
+    expect(vaultPointsShort(view(12))).toBe("12 Vault Points · 12% off the pass");
+    expect(vaultPointsShort(view(1, true))).toBe("1 Vault Point · 1% off your next pass");
+    expect(vaultPointsShort(view(50))).toBe("50 Vault Points · the full 40% off");
+    expect(vaultPointsShort(view(0))).toBe("0 Vault Points · fix a mistake to earn 1% off");
+    expect(vaultPointsShort(null)).toBeNull();
+  });
+
+  it("dates when the oldest points run out: 30 days after they were earned, in IST", () => {
+    // Earned 2026-11-01 20:00 UTC = 2 Nov 01:30 IST, so it runs out on 2 Dec IST.
+    const v = view(3, false, "2026-11-01T20:00:00.000Z");
+    expect(v.lapsesOn).toBe("2026-12-01T20:00:00.000Z");
+    expect(vaultPointsLapseLine(v)).toBe("Your oldest points run out on 2 Dec.");
+    expect(vaultPointsLapseLine(view(1, false, "2026-11-01T20:00:00.000Z"))).toBe("This point runs out on 2 Dec.");
+  });
+  it("has no run-out date without points", () => {
+    expect(view(0, false, "2026-11-01T20:00:00.000Z").lapsesOn).toBeNull();
+    expect(vaultPointsLapseLine(view(0))).toBeNull();
+    expect(vaultPointsLapseLine(view(5))).toBeNull();
+  });
+
   it("never uses a dash", () => {
-    for (const s of [fixPointsOfferNote(view(3)), fixPointsStatusLine(view(0)), fixPointsStatusLine(view(9)), fixPointsStatusLine(view(40))]) {
+    for (const s of [
+      vaultPointsOfferNote(view(3)),
+      vaultPointsLine(view(0)),
+      vaultPointsLine(view(9)),
+      vaultPointsLine(view(40, true)),
+      vaultPointsShort(view(9)),
+      vaultPointsLapseLine(view(2, false, "2026-11-01T20:00:00.000Z")),
+    ]) {
       expect(s).not.toMatch(/[—–]| -- | - /);
     }
   });

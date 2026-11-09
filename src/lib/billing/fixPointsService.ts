@@ -58,7 +58,8 @@ export async function awardFixPoints(
   }
 }
 
-export type FixPointsBalance = { points: number; pct: number };
+/** `oldestAt`: the earned time of the oldest point still in the window, which dates the run-out; null with none. */
+export type FixPointsBalance = { points: number; pct: number; oldestAt: string | null };
 
 /**
  * The student's points now: earned since the later of 30 days ago and their
@@ -78,12 +79,24 @@ export async function readFixPoints(admin: SupabaseClient, userId: string, now: 
   const last = (bought ?? [])[0] as { created_at: string } | undefined;
   const since = fixPointsWindowStart(now, last ? new Date(last.created_at) : null);
 
-  const { count, error } = await admin
-    .from("fix_points")
-    .select("question_id", { count: "exact", head: true })
-    .eq("user_id", userId)
-    .gte("earned_at", since.toISOString());
-  if (error) throw new Error(`fix points count: ${error.message}`);
-  const points = count ?? 0;
-  return { points, pct: fixPointsPct(points) };
+  // The count and the oldest point in the window, read side by side.
+  const [counted, oldest] = await Promise.all([
+    admin
+      .from("fix_points")
+      .select("question_id", { count: "exact", head: true })
+      .eq("user_id", userId)
+      .gte("earned_at", since.toISOString()),
+    admin
+      .from("fix_points")
+      .select("earned_at")
+      .eq("user_id", userId)
+      .gte("earned_at", since.toISOString())
+      .order("earned_at", { ascending: true })
+      .limit(1),
+  ]);
+  if (counted.error) throw new Error(`fix points count: ${counted.error.message}`);
+  if (oldest.error) throw new Error(`fix points oldest: ${oldest.error.message}`);
+  const points = counted.count ?? 0;
+  const first = (oldest.data ?? [])[0] as { earned_at: string } | undefined;
+  return { points, pct: fixPointsPct(points), oldestAt: points > 0 && first ? first.earned_at : null };
 }

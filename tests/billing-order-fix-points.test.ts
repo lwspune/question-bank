@@ -49,7 +49,7 @@ beforeEach(() => {
 
 describe("/api/billing/order and Fix Points", () => {
   it("charges the discounted price and records the points used", async () => {
-    vi.mocked(readFixPoints).mockResolvedValue({ points: 12, pct: 12 });
+    vi.mocked(readFixPoints).mockResolvedValue({ points: 12, pct: 12, oldestAt: null });
     const res = await order(post({ planId: "mock-pass-6m" }));
     expect(res.status).toBe(200);
     const call = vi.mocked(createOrder).mock.calls[0][0];
@@ -59,7 +59,7 @@ describe("/api/billing/order and Fix Points", () => {
   });
 
   it("charges the list price with no points", async () => {
-    vi.mocked(readFixPoints).mockResolvedValue({ points: 0, pct: 0 });
+    vi.mocked(readFixPoints).mockResolvedValue({ points: 0, pct: 0, oldestAt: null });
     await order(post({ planId: "mock-pass-6m" }));
     const call = vi.mocked(createOrder).mock.calls[0][0];
     expect(call.amountPaise).toBe(49900);

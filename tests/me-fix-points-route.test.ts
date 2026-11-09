@@ -37,7 +37,7 @@ describe("GET /api/me/fix-points", () => {
   });
 
   it("answers the points and the new price", async () => {
-    vi.mocked(readFixPoints).mockResolvedValue({ points: 12, pct: 12 });
+    vi.mocked(readFixPoints).mockResolvedValue({ points: 12, pct: 12, oldestAt: "2026-11-01T20:00:00.000Z" });
     const res = await GET(get());
     expect(res.status).toBe(200);
     expect(await res.json()).toEqual({
@@ -46,6 +46,7 @@ describe("GET /api/me/fix-points", () => {
       pct: 12,
       maxPct: 40,
       hasPass: false,
+      lapsesOn: "2026-12-01T20:00:00.000Z",
       prices: { "mock-pass-6m": "₹439" },
     });
   });

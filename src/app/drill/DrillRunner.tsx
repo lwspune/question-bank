@@ -14,7 +14,7 @@ import { drillVSays, progressLine } from "@/lib/drill/progress";
 import { scopeCopy, type DrillScope as Scope } from "@/lib/drill/scope";
 import { drillHref } from "@/lib/drill/from";
 import PushOptIn from "@/components/push/PushOptIn";
-import { FixPointsStatus } from "@/components/billing/useFixPoints";
+import { VaultPointsStatus } from "@/components/billing/useFixPoints";
 
 // The scope's shape and every line about it live in lib/drill/scope (2026-11-06).
 export type DrillScope = Scope | null;
@@ -482,7 +482,7 @@ function Summary({
       </p>
 
       {/* Read fresh: this drill may just have earned points (0245). */}
-      <FixPointsStatus
+      <VaultPointsStatus
         fresh
         className="mx-auto mt-3 flex max-w-sm items-start justify-center gap-2 text-left text-sm font-medium text-emerald-700 dark:text-emerald-400"
       />

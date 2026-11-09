@@ -23,7 +23,7 @@ import { getMockExamCardsCached } from "@/lib/mocks/examCardsCached";
 import { passLineForExam } from "@/lib/mocks/mocksNav";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { readFixPoints } from "@/lib/billing/fixPointsService";
-import { fixPointsOfferNote, fixPointsView, type FixPointsView } from "@/lib/billing/fixPoints";
+import { vaultPointsOfferNote, fixPointsView, type FixPointsView } from "@/lib/billing/fixPoints";
 
 export const dynamic = "force-dynamic";
 
@@ -148,7 +148,7 @@ export default async function PricingPage(
                   </p>
                   {fixView?.prices[plan.id] && !owns(plan) && (
                     <p className="mt-1 text-xs font-medium text-emerald-700 dark:text-emerald-400">
-                      {fixPointsOfferNote(fixView)}
+                      {vaultPointsOfferNote(fixView)}
                     </p>
                   )}
                   <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground">

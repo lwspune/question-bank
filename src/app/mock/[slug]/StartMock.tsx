@@ -13,7 +13,7 @@ import type { PassCta } from "@/lib/billing/plans";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import { pricingHref } from "@/lib/billing/checkoutReturn";
 import { lockedPassLine } from "@/lib/mocks/passLine";
-import { useDiscountedPass, FixPointsOfferNote } from "@/components/billing/useFixPoints";
+import { useDiscountedPass, VaultPointsOfferNote } from "@/components/billing/useFixPoints";
 
 /**
  * Starts (or resumes) an attempt, then routes into the runner.
@@ -164,7 +164,7 @@ function MockPassCard({
           {pass ? `Get the ${pass.label}: ${pass.price}` : "See passes"}
         </Link>
       </Button>
-      {pass && <FixPointsOfferNote planId={pass.planId} className="mt-2 text-xs font-medium text-emerald-700 dark:text-emerald-400" />}
+      {pass && <VaultPointsOfferNote planId={pass.planId} className="mt-2 text-xs font-medium text-emerald-700 dark:text-emerald-400" />}
     </div>
   );
 }

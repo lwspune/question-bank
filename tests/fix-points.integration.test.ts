@@ -79,7 +79,11 @@ describe.skipIf(!HAS_ENV)("fix points", () => {
       .from("fix_points")
       .insert({ user_id: userId, question_id: q[3], source: "drill", earned_at: new Date(now.getTime() - 40 * DAY).toISOString() });
     if (error) throw new Error(error.message);
-    expect(await readFixPoints(admin, userId, now)).toEqual({ points: 1, pct: 1 });
+    const bal = await readFixPoints(admin, userId, now);
+    expect(bal).toMatchObject({ points: 1, pct: 1 });
+    // The oldest point IN the window dates the run-out, never the 40-day-old one.
+    expect(bal.oldestAt).not.toBeNull();
+    expect(new Date(bal.oldestAt!).getTime()).toBeGreaterThan(now.getTime() - 30 * DAY);
   });
 
   it("lets the student read their own points and write none", async () => {
@@ -113,6 +117,6 @@ describe.skipIf(!HAS_ENV)("fix points", () => {
       currency: "INR",
     });
     if (error) throw new Error(error.message);
-    expect(await readFixPoints(admin, userId, new Date(now.getTime() + 1000))).toEqual({ points: 0, pct: 0 });
+    expect(await readFixPoints(admin, userId, new Date(now.getTime() + 1000))).toEqual({ points: 0, pct: 0, oldestAt: null });
   });
 });
