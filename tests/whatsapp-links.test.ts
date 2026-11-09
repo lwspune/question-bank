@@ -30,6 +30,14 @@ const SRC = join(process.cwd(), "src");
 /** The one module allowed to build a recipient link. */
 const HELPER = join("src", "lib", "profile", "mobile.ts");
 
+/**
+ * The one exception to rule 1 (2026-11-09): the institute sales list
+ * (/dashboard/institutes, migration 0246). Those numbers come from Google Maps
+ * and many are LANDLINES ("+91 20 ..."), which WhatsApp cannot reach, so rule
+ * 1's premise does not hold there; it still sends mobiles through whatsappHref.
+ */
+const TEL_ALLOWED = join("src", "lib", "institutes", "prospects.ts");
+
 /** Surfaces that render someone else's number. Each must link it. */
 const SURFACES = [
   join("src", "app", "dashboard", "leads", "LeadsBrowser.tsx"),
@@ -57,6 +65,7 @@ describe("staff surfaces reach a number through WhatsApp, via one helper", () =>
 
   it("builds no tel: link from a number", () => {
     const offenders = files
+      .filter((f) => relative(process.cwd(), f) !== TEL_ALLOWED)
       .filter((f) => readFileSync(f, "utf8").includes("tel:"))
       .map((f) => relative(process.cwd(), f));
     expect(offenders).toEqual([]);
