@@ -9,10 +9,12 @@
  * says the pass ends when the refund is made, and a partial refund is a discount.
  */
 import { planForPaidOrder, type OrderGrant, type PaidOrder } from "./plans";
+import { parentGrantNote } from "./parentLink";
 import { ebookForPaidOrder, isEbookOrder, type EbookGrant } from "@/lib/ebooks/order";
 
 export type WebhookDecision =
-  | { action: "grant"; userId: string; paymentId: string; grant: OrderGrant }
+  /** `note` marks a pass paid through a parent link (2026-11-09), else null. */
+  | { action: "grant"; userId: string; paymentId: string; grant: OrderGrant; note: string | null }
   | { action: "grant_ebook"; userId: string; paymentId: string; grant: EbookGrant }
   | { action: "revoke"; paymentId: string }
   | { action: "skip"; reason: string }
@@ -51,7 +53,7 @@ export function decideWebhook(body: WebhookBody): WebhookDecision {
     }
     const decided = planForPaidOrder(order, userId);
     if (!decided.ok) return { action: "skip", reason: decided.reason };
-    return { action: "grant", userId, paymentId, grant: decided.grant };
+    return { action: "grant", userId, paymentId, grant: decided.grant, note: parentGrantNote(order.notes?.parentLink) };
   }
 
   if (body.event === "refund.processed") {

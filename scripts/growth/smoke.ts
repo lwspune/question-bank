@@ -224,6 +224,10 @@ async function main() {
         // Read by hand with the path's own readout (lib/path).
         line = "by hand: npm run path:readout";
         break;
+      case "parent-pay":
+        // Live steps and passes on /dashboard/sales (lib/sales/query loadParentLinks).
+        line = "live card on /dashboard/sales (paywall_event parent_* steps, entitlements note parent_link:%)";
+        break;
       case "why-not-buy":
         // Live answers on /dashboard/sales (lib/sales/query loadDeclines).
         line = "live table on /dashboard/sales (user_activity paywall_event step declined)";

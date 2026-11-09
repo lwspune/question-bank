@@ -1,6 +1,9 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { verifyWebhookSignature } from "@/lib/billing/razorpay";
-import { computeExpiry } from "@/lib/billing/plans";
+import { computeExpiry, planLengthLabel } from "@/lib/billing/plans";
+import { listActivePlans } from "@/lib/billing/plansQuery";
+import { emailParentPaid } from "@/lib/billing/parentPayService";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { grantRazorpayEntitlement, revokeRazorpayEntitlement } from "@/lib/billing/grant";
 import { decideWebhook, type WebhookBody } from "@/lib/billing/webhook";
 import { grantEbookPurchase, revokeEbookPurchase } from "@/lib/ebooks/grant";
@@ -82,10 +85,22 @@ export async function POST(request: NextRequest) {
     expiresAt: computeExpiry(Date.now(), decision.grant.durationDays),
     amountPaise: decision.grant.amountPaise,
     currency: decision.grant.currency,
+    note: decision.note,
   });
   if (result.kind === "error") {
     console.error("billing webhook: grant failed", result.message);
     return NextResponse.json({ error: "grant failed" }, { status: 500 });
+  }
+  // A parent paid (2026-11-09): tell the student, from whichever grant is new.
+  if (result.kind === "ok" && decision.note) {
+    const admin = createSupabaseAdminClient();
+    const plan = (await listActivePlans(admin).catch(() => [])).find((p) => p.id === decision.grant.planId);
+    await emailParentPaid(admin, {
+      userId: decision.userId,
+      paymentId: decision.paymentId,
+      planLabel: plan?.label ?? "PYQ Vault pass",
+      length: planLengthLabel({ durationDays: decision.grant.durationDays }),
+    });
   }
   return NextResponse.json({ received: true, granted: result.kind });
 }

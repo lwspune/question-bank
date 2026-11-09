@@ -4,7 +4,8 @@ import { getSessionSuperadmin } from "@/lib/auth";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import AppHeader from "@/components/AppHeader";
 import { formatPrice, formatRupees } from "@/lib/billing/plans";
-import { loadDeclines, loadFunnelStudents, loadSalesByPeriod } from "@/lib/sales/query";
+import { loadDeclines, loadFunnelStudents, loadParentLinks, loadSalesByPeriod } from "@/lib/sales/query";
+import type { ParentLinkSummary } from "@/lib/billing/parentLink";
 import {
   DECLINE_GROUPS,
   DECLINE_GROUP_LABELS,
@@ -68,11 +69,55 @@ const percent = (n: number | null) => (n === null ? "–" : `${n}%`);
 
 /** The day the "Tell us why" question went on the offers (IST). */
 const DECLINES_SINCE = "2026-11-05";
+/** "Ask a parent to pay" went live (migration 0244). */
+const PARENT_LINKS_SINCE = "2026-11-09";
 
 /**
  * "Why students didn't buy": the one-tap answers under the answer-limit and
  * download-box offers (2026-11-05), by reason, student group and offer.
  */
+function ParentLinksCard({ summary }: { summary: ParentLinkSummary | null }) {
+  const steps: [string, number][] = summary
+    ? [
+        ["Students who made a link", summary.asked],
+        ["Links a parent opened", summary.opened],
+        ["Parents who started paying", summary.checkout],
+        ["Passes a parent paid", summary.paid],
+      ]
+    : [];
+  return (
+    <section aria-labelledby="parent-links-heading" className="space-y-3 rounded-lg border bg-card p-4">
+      <div>
+        <h2 id="parent-links-heading" className="text-base font-semibold">
+          Ask a parent to pay
+        </h2>
+        <p className="mt-1 text-xs text-muted-foreground">
+          Students who sent a payment link from a pass offer, since 9 Nov 2026. Each step counts students; a link
+          preview (WhatsApp drawing its card) is not counted as opened. Paid passes leave refunds out and are also
+          in the totals above.
+        </p>
+      </div>
+      {!summary ? (
+        <p role="alert" className="text-sm text-destructive">
+          Could not load the parent links. Reload the page; the server log says why.
+        </p>
+      ) : (
+        <dl className="grid gap-3 sm:grid-cols-4">
+          {steps.map(([label, n]) => (
+            <div key={label} className="rounded-md border p-3">
+              <dt className="text-xs text-muted-foreground">{label}</dt>
+              <dd className="mt-1 text-xl font-semibold">{n}</dd>
+            </div>
+          ))}
+          {summary.paid > 0 && (
+            <p className="text-sm text-muted-foreground sm:col-span-4">Paid by parents: ₹{summary.rupees.toLocaleString("en-IN")}</p>
+          )}
+        </dl>
+      )}
+    </section>
+  );
+}
+
 function DeclinesCard({ summary }: { summary: DeclineSummary | null }) {
   return (
     <section aria-labelledby="declines-heading" className="space-y-3 rounded-lg border bg-card p-4">
@@ -210,6 +255,12 @@ export default async function SalesPage(props: { searchParams?: Promise<{ view?:
     declines = summariseDeclines(await loadDeclines(admin, DECLINES_SINCE));
   } catch (err) {
     console.error("dashboard/sales declines:", err);
+  }
+  let parentLinks: ParentLinkSummary | null = null;
+  try {
+    parentLinks = await loadParentLinks(admin, PARENT_LINKS_SINCE);
+  } catch (err) {
+    console.error("dashboard/sales parent links:", err);
   }
 
   const rows = loaded ? fillPeriods(loaded[0], grain, today, shown) : [];
@@ -376,6 +427,7 @@ export default async function SalesPage(props: { searchParams?: Promise<{ view?:
             </section>
 
             <DeclinesCard summary={declines} />
+            <ParentLinksCard summary={parentLinks} />
           </>
         )}
       </main>

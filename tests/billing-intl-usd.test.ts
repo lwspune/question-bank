@@ -93,6 +93,10 @@ describe("passCta prices in the plan's currency", () => {
   it("shows dollars for a USD plan", () => {
     expect(passCta(plan({ site: "intl", currency: "USD", amountPaise: 1900 }))?.price).toBe("$19");
     expect(passCta(plan({}))?.price).toBe("₹499");
+    // "Ask a parent to pay" (2026-11-09) is for www passes in rupees only.
+    expect(passCta(plan({}))?.parentLink).toBe(true);
+    expect(passCta(plan({ site: "intl", currency: "USD", amountPaise: 1900 }))?.parentLink).toBe(false);
+    expect(passCta(plan({ site: "intl", currency: "INR", amountPaise: 99900 }))?.parentLink).toBe(false);
   });
 });
 

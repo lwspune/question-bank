@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Loader2, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCheckout, type CheckoutOutcome } from "@/components/billing/useCheckout";
+import AskParent from "@/components/billing/AskParent";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import { perMonthLine } from "@/lib/billing/offerCopy";
@@ -65,6 +66,7 @@ export default function VHourlyOffer({
         <p className="text-center text-xs text-muted-foreground">
           One-time payment{perMonth ? `, ${perMonth}` : ""}. UPI, card or netbanking.
         </p>
+        {pass.parentLink && !busy && <AskParent planId={pass.planId} gate="v_hourly" className="pt-1" />}
       </div>
     </div>
   );

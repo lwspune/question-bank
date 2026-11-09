@@ -71,6 +71,7 @@ import {
   TUTOR_PRICE_MIN_ANSWERS,
   WHY_NOT_BUY_LEAD_PCT,
   WHY_NOT_BUY_MIN_ANSWERS,
+  PARENT_PAY_KEEP,
   checkOn,
   type Experiment,
 } from "@/lib/growth/registry";
@@ -644,6 +645,22 @@ export default async function GrowthPage() {
             </p>
             <ReadingsList metric="v-explain-students" />
             <ReadingsList metric="v-explain-similar-right" />
+          </div>
+        );
+      case "parent-pay":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Read on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if a parent pays for {PARENT_PAY_KEEP}+
+              passes and total pass sales do not fall.
+            </p>
+            <Link
+              href="/dashboard/sales"
+              prefetch={false}
+              className="inline-flex items-center gap-1 text-sm font-medium text-brand-accent underline-offset-2 hover:underline"
+            >
+              The parent-link steps and passes paid <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
+            </Link>
           </div>
         );
       case "why-not-buy":

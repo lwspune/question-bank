@@ -10,6 +10,7 @@ import { isDeclineReason, withoutSameDayBuyers, type DeclineRow, type PassPurcha
 import { EXAM_REGISTRY, type ExamTier } from "@/lib/exam/examContext";
 import { resolveStudentTier } from "@/lib/exam/examFeed";
 import { isStage, sanitizeTargetExams } from "@/lib/profile/onboarding";
+import { summariseParentLinks, type ParentLinkSummary } from "@/lib/billing/parentLink";
 
 type Row = {
   period: string;
@@ -148,4 +149,40 @@ export async function loadFunnelStudents(admin: SupabaseClient, window: DayWindo
   if (error) throw new Error(`sales_funnel_students(${window.from}..${window.to}): ${error.message}`);
   const row = ((data ?? []) as { paywall_students: number; checkout_students: number }[])[0];
   return { paywallStudents: row?.paywall_students ?? 0, checkoutStudents: row?.checkout_students ?? 0 };
+}
+
+/**
+ * "Ask a parent to pay" from the IST day `since` (2026-11-09, migration 0244):
+ * the funnel events (written under the student's id) and the passes a parent
+ * paid (entitlement note `parent_link:<code>`, refunds left out).
+ */
+export async function loadParentLinks(admin: SupabaseClient, since: string): Promise<ParentLinkSummary> {
+  const from = `${since}T00:00:00+05:30`;
+  const events: { userId: string; step: string }[] = [];
+  for (let offset = 0; ; offset += PAGE) {
+    const { data, error } = await admin
+      .from("user_activity")
+      .select("user_id, metadata")
+      .eq("kind", "paywall_event")
+      .in("metadata->>step", ["parent_link_created", "parent_link_opened", "parent_checkout_opened"])
+      .gte("created_at", from)
+      .order("created_at", { ascending: true })
+      .range(offset, offset + PAGE - 1);
+    if (error) throw new Error(`loadParentLinks user_activity: ${error.message}`);
+    const rows = (data ?? []) as { user_id: string; metadata: Record<string, unknown> | null }[];
+    events.push(...rows.map((r) => ({ userId: r.user_id, step: String(r.metadata?.step ?? "") })));
+    if (rows.length < PAGE) break;
+  }
+  const { data: paid, error } = await admin
+    .from("entitlements")
+    .select("amount_paise")
+    .eq("source", "razorpay")
+    .eq("status", "active")
+    .like("note", "parent_link:%")
+    .gte("granted_at", from);
+  if (error) throw new Error(`loadParentLinks entitlements: ${error.message}`);
+  return summariseParentLinks(
+    events,
+    ((paid ?? []) as { amount_paise: number | null }[]).map((p) => ({ amountPaise: p.amount_paise ?? 0 }))
+  );
 }

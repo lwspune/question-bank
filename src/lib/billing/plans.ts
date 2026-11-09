@@ -351,6 +351,8 @@ export type PassCta = {
   perks: string[];
   /** False for the Practice Pass (no downloads), so an offer never promises a PDF it does not sell. */
   downloads: boolean;
+  /** True when a parent can pay for it through a link (a www pass in rupees, 2026-11-09). */
+  parentLink?: boolean;
 };
 
 export function passCta(plan: Plan | null): PassCta | null {
@@ -363,5 +365,6 @@ export function passCta(plan: Plan | null): PassCta | null {
     urlKey: plan.urlKey,
     perks: [...plan.perks],
     downloads: plan.scope !== SCOPE_PRACTICE,
+    parentLink: plan.site === "pyqvault" && plan.currency === "INR",
   };
 }

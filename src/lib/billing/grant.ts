@@ -16,6 +16,8 @@ export type GrantRazorpayInput = {
   amountPaise: number;
   /** The order's currency; amountPaise is in its smallest unit (migration 0203). */
   currency: "INR" | "USD";
+  /** "parent_link:<code>" for a pass a parent paid (2026-11-09), read by /dashboard/sales. */
+  note?: string | null;
 };
 
 export type GrantRazorpayResult =
@@ -37,6 +39,7 @@ export async function grantRazorpayEntitlement(
       provider_ref: input.paymentId,
       amount_paise: input.amountPaise,
       currency: input.currency,
+      note: input.note ?? null,
     });
     if (error) {
       // 23505 = unique violation on provider_ref → already granted. Idempotent.
