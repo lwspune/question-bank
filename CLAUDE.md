@@ -363,7 +363,7 @@ The load-bearing choices made during the initial scaffold. Every later phase res
   - **234 places in 3 km** from two capped Apify runs ($1.47); Entrance/Board/Other is a GUESS from name, category and search, so a misfit is marked Not a fit, never re-tagged; size is the review count, read at display time.
   - **WhatsApp only for a mobile by Google's 5+5 grouping:** `normalizeMobile` takes "+91 80 ..." landlines as mobiles.
   - **A re-import never touches status, note or follow-up** (upsert names only Maps fields). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
-- **2026-11-09 (fifth) — Fix Points: each fixed mistake is 1% off the pass, up to 40% (0245); referrals next.**
+- **2026-11-09 (fifth) — Fix Points (Vault Points to students since the same day): each fixed mistake is 1% off the pass, up to 40% (0245); referrals next.**
   - **Owner's gut call against the data:** of 33 buyers none had fixed 10+ mistakes and 18 paid on day one; measured by experiment `fix-points` (`npm run fix-points:readout`).
   - **Its own table, server-written** (`fix_points`): students may insert their own `user_activity`, so `answer_correct` cannot carry money. Self-marks and same-day right answers (an echo) pay nothing.
   - **The order stays the contract:** the order route stamps the discounted price; a failed points read sells at list price. Display (`/api/me/fix-points`) never decides a price.
