@@ -162,15 +162,15 @@ export async function loadParentLinks(admin: SupabaseClient, since: string): Pro
   for (let offset = 0; ; offset += PAGE) {
     const { data, error } = await admin
       .from("user_activity")
-      .select("user_id, metadata->>step")
+      .select("user_id, metadata")
       .eq("kind", "paywall_event")
       .in("metadata->>step", ["parent_link_created", "parent_link_opened", "parent_checkout_opened"])
       .gte("created_at", from)
       .order("created_at", { ascending: true })
       .range(offset, offset + PAGE - 1);
     if (error) throw new Error(`loadParentLinks user_activity: ${error.message}`);
-    const rows = (data ?? []) as unknown as { user_id: string; step: string }[];
-    events.push(...rows.map((r) => ({ userId: r.user_id, step: r.step })));
+    const rows = (data ?? []) as { user_id: string; metadata: Record<string, unknown> | null }[];
+    events.push(...rows.map((r) => ({ userId: r.user_id, step: String(r.metadata?.step ?? "") })));
     if (rows.length < PAGE) break;
   }
   const { data: paid, error } = await admin
