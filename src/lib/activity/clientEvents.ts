@@ -11,6 +11,7 @@
 import { istDayKey } from "@/lib/email/dueNudge";
 import { AFTER_CHECKOUT_ONLY, isDeclineReason, type DeclineReason } from "@/lib/billing/declineReasons";
 import { CHAPTER_FIX_FROM } from "@/lib/drill/from";
+import { START_NEXT_FROM } from "@/lib/me/startNext";
 import type { ActivityEvent } from "./events";
 import { boardChapterPath, isReadingSurface, isSurface, learnLessonPath, readingViewFor, viewDedupeKey } from "./views";
 
@@ -32,6 +33,8 @@ const CHAPTER_RE = /^[a-z0-9-]{1,60}\/[a-z0-9-]{1,100}$/;
 
 /** The chapter line's page tags (lib/drill/from CHAPTER_FIX_FROM). */
 const CHAPTER_FIX_FROM_SET: ReadonlySet<string> = new Set<string>(Object.values(CHAPTER_FIX_FROM));
+/** Start next's pages (lib/me/startNext START_NEXT_FROM). */
+const START_NEXT_FROM_SET: ReadonlySet<string> = new Set<string>(START_NEXT_FROM);
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 
 /** Where a paywall met the student. Five are the 0134 limits (2026-10-05):
@@ -222,6 +225,35 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
           kind: "surface_viewed",
           metadata: { surface: "chapter_fix", chapterId: raw.chapterId, from: raw.from },
           dedupeKey: `view:chapter_fix:${raw.chapterId}:${userId}:${istDayKey(now)}`,
+        },
+      };
+    }
+    // Start next seen (once per page per day) and a chapter's Start tapped
+    // (once per chapter per day), each naming its page (2026-11-09).
+    if (raw.surface === "start_next" || raw.surface === "start_next_tap") {
+      if (typeof raw.from !== "string" || !START_NEXT_FROM_SET.has(raw.from)) {
+        return { ok: false, error: "Unknown page." };
+      }
+      if (raw.surface === "start_next") {
+        if (raw.chapterId !== undefined) return { ok: false, error: "No chapter id on this surface." };
+        return {
+          ok: true,
+          value: {
+            kind: "surface_viewed",
+            metadata: { surface: "start_next", from: raw.from },
+            dedupeKey: `view:start_next:${raw.from}:${userId}:${istDayKey(now)}`,
+          },
+        };
+      }
+      if (typeof raw.chapterId !== "string" || !UUID_RE.test(raw.chapterId)) {
+        return { ok: false, error: "Invalid chapter id." };
+      }
+      return {
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "start_next_tap", chapterId: raw.chapterId, from: raw.from },
+          dedupeKey: `view:start_next_tap:${raw.chapterId}:${userId}:${istDayKey(now)}`,
         },
       };
     }

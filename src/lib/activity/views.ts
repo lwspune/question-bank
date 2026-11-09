@@ -79,6 +79,13 @@ export const SURFACES = [
   // list. Before it, /saved recorded no visit at all.
   "review",
   "review_saved",
+  // Home's "Start next" and the Chapters view's "Not started yet" (2026-11-09,
+  // lib/me/startNext): "start_next" the card seen, with metadata.from (the
+  // page), once a day; "start_next_tap" a chapter's Start tapped, with
+  // metadata.chapterId and metadata.from. The tap leaves for /browse, which
+  // records no source, so without these nothing says whether the card is used.
+  "start_next",
+  "start_next_tap",
 ] as const;
 
 export type Surface = (typeof SURFACES)[number];

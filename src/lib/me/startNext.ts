@@ -33,6 +33,14 @@ export const MIN_QUESTIONS_PER_PAPER = 1;
 
 export const START_NEXT_LIMIT = 2;
 
+/**
+ * The pages the card sits on (2026-11-09): Home, and the Chapters view's
+ * "Not started yet". Recorded on its "seen" and "tapped" activity rows
+ * (lib/activity/clientEvents), so each page's tap rate can be read apart.
+ */
+export const START_NEXT_FROM = ["home", "map"] as const;
+export type StartNextFrom = (typeof START_NEXT_FROM)[number];
+
 type Weight = Pick<ChapterWeight, "qPerPaper" | "marksPerPaper" | "paperMarks">;
 
 function parts(w: Weight) {
