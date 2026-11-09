@@ -28,6 +28,7 @@ function entry(slug: ExamSlug, tier: ExamTier, extra: Partial<ExamEntry> = {}): 
     guidesPath: null,
     notesPath: null,
     tier,
+    goal: "science",
     ...extra,
   };
 }

@@ -20,7 +20,9 @@
  * thing neither of those pages does.
  */
 import { EMPTY_FILTERS, type Filters } from "./filters";
-import { resolveBankHref } from "@/lib/exam/examContext";
+import { resolveBankHref, getExamBySlug, type ExamEntry } from "@/lib/exam/examContext";
+import { groupExamFamilies, type ExamFamilyNode } from "@/lib/exam/examFamily";
+import { sortByDemand, withChosenExamFirst } from "@/lib/exam/demandOrder";
 import type { ExamIdMap } from "@/lib/exam/examNav";
 import type { ExamCatalog } from "@/lib/exam/allExamStats";
 import type { ChapterLanding } from "./landing";
@@ -169,6 +171,23 @@ export function pickStarterChapters(
   }
   return picked;
 }
+
+/**
+ * The landing's exams as family nodes in the order every part of the panel
+ * uses: most-chosen first, then the visitor's chosen exam moved to the front.
+ * The showcase ring and the goal list both read this, so they cannot disagree.
+ */
+export function landingExamNodes(
+  exams: readonly ExamStarter[],
+  chosenSlug: string | null
+): ExamFamilyNode<ExamStarter>[] {
+  return withChosenExamFirst(sortByDemand(groupExamFamilies(exams, starterEntry)), chosenSlug);
+}
+
+export function starterEntry(e: ExamStarter): ExamEntry | null {
+  return getExamBySlug(e.slug);
+}
+
 
 /**
  * `examId` and `subjectId` ride along with the chapter deliberately: the
