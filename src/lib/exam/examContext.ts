@@ -67,6 +67,14 @@ export type ExamTier = "school" | "senior" | "graduate";
 
 export const EXAM_TIERS: readonly ExamTier[] = ["school", "senior", "graduate"];
 
+/**
+ * What the student is aiming for (2026-11-09). The /browse landing groups its
+ * exam list by it, and each exam card carries it. NOT the same axis as `tier`:
+ * SPI is a Class 10 exam (tier "school") whose students are aiming for NDA, so
+ * its goal is "defence". Labels and grouping: lib/exam/examGoals.ts.
+ */
+export type ExamGoal = "boards" | "science" | "government" | "defence" | "management";
+
 export const TIER_LABELS: Record<ExamTier, string> = {
   school: "Class 9–10",
   senior: "Class 11–12 & droppers",
@@ -88,6 +96,12 @@ export type ExamEntry = {
    * without one.
    */
   tier: ExamTier;
+  /**
+   * What the student is aiming for, one value (see ExamGoal). Every board exam
+   * is "boards" and a family's members share one goal; tests/exam-goals.test.ts
+   * holds both. Required, so a new exam cannot land without one.
+   */
+  goal: ExamGoal;
   /** `/guide/<slug>` subtree if shipped; null falls back to `/guide`. */
   guidesPath: string | null;
   /** Per-exam notes hub `/notes/<slug>`; null falls back to the `/notes` index. */
@@ -286,6 +300,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   {
     slug: "nda",
     tier: "senior",
+    goal: "defence",
     displayName: "NDA",
     examName: "NDA",
     guidesPath: "/guide/nda",
@@ -296,6 +311,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   {
     slug: "mht-cet",
     tier: "senior",
+    goal: "science",
     displayName: "MHT-CET",
     examName: "MHT-CET",
     guidesPath: "/guide/mht-cet", // hub: MHT-CET Maths + Physics (Template C) + Chemistry (execution-mode strands)
@@ -306,6 +322,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   {
     slug: "jee-mains",
     tier: "senior",
+    goal: "science",
     displayName: "JEE Mains",
     examName: "JEE Mains", // must match the `exams` DB row exactly
     mixedFormats: true, // Section-B NAT: 2,900 numeric alongside 7,593 MCQ
@@ -317,6 +334,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   {
     slug: "cds",
     tier: "graduate",
+    goal: "defence",
     displayName: "CDS",
     examName: "CDS", // must match the `exams` DB row exactly
     guidesPath: "/guide/cds", // hub: CDS Maths (Template C, 2026-09-29)
@@ -328,6 +346,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "foundation-course",
     passScope: "free", // Class 9-10: no pass needed (migration 0210)
     tier: "school",
+    goal: "defence",
     displayName: "Foundation",
     examName: "Foundation Course", // must match the `exams` DB row exactly
     solutionCoverage: "some", // 87% solved (2026-10-26)
@@ -339,6 +358,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   {
     slug: "neet",
     tier: "senior",
+    goal: "science",
     displayName: "NEET",
     examName: "NEET", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree yet — falls back to the index
@@ -352,6 +372,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // options a question (migration 0140).
     slug: "imat",
     tier: "senior", // sat after Class 12, like NEET
+    goal: "science",
     displayName: "IMAT",
     examName: "IMAT", // must match the `exams` DB row exactly
     guidesPath: null,
@@ -378,6 +399,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   {
     slug: "mh-hsc-12",
     tier: "senior",
+    goal: "boards",
     displayName: "MH HSC 12",
     examName: "Maharashtra HSC Class 12", // must match the `exams` DB row exactly
     classLabel: "Class 12 (HSC)", // grouped pickers: HSC is what Maharashtra students say
@@ -403,6 +425,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "cbse-10",
     passScope: "free", // Class 9-10: no pass needed (migration 0210)
     tier: "school",
+    goal: "boards",
     displayName: "CBSE Class 10",
     examName: "CBSE Class 10", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree yet — falls back to the index
@@ -450,6 +473,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   {
     slug: "cbse-11",
     tier: "senior",
+    goal: "boards",
     displayName: "CBSE Class 11",
     examName: "CBSE Class 11", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree yet — falls back to the index
@@ -489,6 +513,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   {
     slug: "cbse-12",
     tier: "senior",
+    goal: "boards",
     displayName: "CBSE Class 12",
     examName: "CBSE Class 12", // must match the `exams` DB row exactly
     mixedFormats: true, // 760 MCQ vs 2,696 subjective (re-measured 2026-09-08, Physics complete)
@@ -515,6 +540,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   {
     slug: "isc-12",
     tier: "senior",
+    goal: "boards",
     displayName: "ISC Class 12",
     examName: "ISC Class 12", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree yet — falls back to the index
@@ -550,6 +576,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "icse-10",
     passScope: "free", // Class 9-10: no pass needed (migration 0210)
     tier: "school",
+    goal: "boards",
     displayName: "ICSE Class 10",
     examName: "ICSE Class 10", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree yet — falls back to the index
@@ -566,6 +593,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "mh-sb-9",
     passScope: "free", // Class 9-10: no pass needed (migration 0210)
     tier: "school",
+    goal: "boards",
     displayName: "MH State Board 9",
     examName: "Maharashtra State Board Class 9", // must match the `exams` DB row exactly
     mixedFormats: true, // 1,176 subjective vs 111 MCQ
@@ -579,6 +607,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   {
     slug: "mh-sb-11",
     tier: "senior",
+    goal: "boards",
     displayName: "MH State Board 11",
     examName: "Maharashtra State Board Class 11", // must match the `exams` DB row exactly
     mixedFormats: true, // 2,738 subjective vs 203 MCQ
@@ -593,6 +622,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "mh-ssc-10",
     passScope: "free", // Class 9-10: no pass needed (migration 0210)
     tier: "school",
+    goal: "boards",
     displayName: "MH SSC 10",
     examName: "Maharashtra State Board Class 10", // must match the `exams` DB row exactly
     classLabel: "Class 10 (SSC)", // grouped pickers: SSC is what Maharashtra students say
@@ -623,6 +653,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   {
     slug: "worksheets-11-12",
     tier: "senior",
+    goal: "defence",
     displayName: "Worksheets 11+12",
     examName: "Worksheets - 11th+12th", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree — falls back to the index
@@ -649,6 +680,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   {
     slug: "ipmat-indore",
     tier: "senior",
+    goal: "management",
     displayName: "IPMAT Indore",
     examName: "IPMAT Indore", // must match the `exams` DB row exactly
     solutionCoverage: "some", // 89% solved (2026-10-26)
@@ -670,6 +702,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   {
     slug: "ipmat-rohtak",
     tier: "senior",
+    goal: "management",
     displayName: "IPMAT Rohtak",
     examName: "IPMAT Rohtak", // must match the `exams` DB row exactly
     solutionCoverage: "some", // 84% solved (2026-10-26)
@@ -683,6 +716,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   {
     slug: "jipmat",
     tier: "senior",
+    goal: "management",
     displayName: "JIPMAT",
     // The exam is "JIPMAT", not "IPMAT Jammu" — the joint Bodh Gaya/Jammu paper
     // has its own name, and the `exams` row uses it. Only its label INSIDE the
@@ -703,6 +737,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // with IIT Bombay's final keys, 2015-2026 (scripts/uceed/), including the
     // multiple-select (msq) and range-keyed NAT rows since migration 0214.
     tier: "senior",
+    goal: "science",
     displayName: "UCEED",
     examName: "UCEED", // must match the `exams` DB row exactly
     guidesPath: null,
@@ -720,6 +755,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // and 2026 carry IISER's final key, earlier years are solved twice, blind.
     // Asked for in student feedback, 2026-11-06.
     tier: "senior",
+    goal: "science",
     displayName: "IISER IAT",
     examName: "IISER IAT", // must match the `exams` DB row exactly
     // PUBLIC since 2026-11-08: all nine years IISER posts, 539 q, every one with a
@@ -739,6 +775,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "mpsc-group-b-c",
     // Group B/C are graduate-entry state services (ASO, PSI, STI, clerk-typist…).
     tier: "graduate",
+    goal: "government",
     displayName: "MPSC Group B & C",
     examName: "MPSC Group B & C Prelims", // must match the `exams` DB row exactly
     solutionCoverage: "some", // 66% solved (2026-10-26)
@@ -758,6 +795,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "mpsc-state-services-prelims",
     // Rajyaseva: the state civil services (Deputy Collector, DySP, …), graduate entry.
     tier: "graduate",
+    goal: "government",
     displayName: "MPSC State Services Prelims",
     examName: "MPSC State Services Prelims", // must match the `exams` DB row exactly
     solutionCoverage: "some", // 63% solved (2026-10-26)
@@ -776,6 +814,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "mpsc-forest-service-prelims",
     // Maharashtra Forest Service (ACF / RFO), graduate entry.
     tier: "graduate",
+    goal: "government",
     displayName: "MPSC Forest Service Prelims",
     examName: "MPSC Forest Service Prelims", // must match the `exams` DB row exactly
     solutionCoverage: "some", // 336/399 = 84% solved (measured 2026-11-05)
@@ -795,6 +834,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "mpsc-agriculture-service-prelims",
     // Maharashtra Agriculture Service (Class I and II), graduate entry.
     tier: "graduate",
+    goal: "government",
     displayName: "MPSC Agriculture Service Prelims",
     examName: "MPSC Agriculture Service Prelims", // must match the `exams` DB row exactly
     solutionCoverage: "some", // 590/700 = 84% solved (measured 2026-11-05)
@@ -812,6 +852,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   {
     slug: "mpsc-state-services-mains",
     tier: "graduate",
+    goal: "government",
     displayName: "MPSC State Services Mains",
     examName: "MPSC State Services Mains", // must match the `exams` DB row exactly
     pastPaperSolutions: true, // 276/300 = 92% of past-paper questions solved (measured 2026-11-05); solutionCoverage absent = "all"
@@ -827,6 +868,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   {
     slug: "mpsc-group-b-combined-mains",
     tier: "graduate",
+    goal: "government",
     displayName: "MPSC Group B Combined Mains",
     examName: "MPSC Group B Combined Mains", // must match the `exams` DB row exactly
     solutionCoverage: "some", // 46% solved (2026-10-26)
@@ -842,6 +884,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   {
     slug: "mpsc-sti-mains",
     tier: "graduate",
+    goal: "government",
     displayName: "MPSC STI Mains",
     examName: "MPSC STI Mains", // must match the `exams` DB row exactly
     solutionCoverage: "some", // 66% solved (2026-10-26)
@@ -857,6 +900,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   {
     slug: "mpsc-aso-mains",
     tier: "graduate",
+    goal: "government",
     displayName: "MPSC ASO Mains",
     examName: "MPSC ASO Mains", // must match the `exams` DB row exactly
     solutionCoverage: "some", // 65% solved (2026-10-26)
@@ -872,6 +916,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   {
     slug: "mpsc-psi-mains",
     tier: "graduate",
+    goal: "government",
     displayName: "MPSC PSI Mains",
     examName: "MPSC PSI Mains", // must match the `exams` DB row exactly
     solutionCoverage: "some", // 63% solved (2026-10-26)
@@ -888,6 +933,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "upsc-cse",
     // UPSC Civil Services — a graduation-level exam.
     tier: "graduate",
+    goal: "government",
     displayName: "UPSC CSE",
     examName: "UPSC CSE (Prelims)", // must match the `exams` DB row exactly
     // PUBLIC 2026-09-26: both papers of every sitting 2017-2026, answers verified
@@ -901,6 +947,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "afcat",
     // Air Force Common Admission Test — a graduation-level exam.
     tier: "graduate",
+    goal: "defence",
     displayName: "AFCAT",
     examName: "AFCAT", // must match the `exams` DB row exactly
     // PUBLIC 2026-10-14: Numerical Ability only, mostly practice (LWS quizzes,
@@ -914,6 +961,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "ssc-cgl",
     // SSC Combined Graduate Level: a graduation-level exam.
     tier: "graduate",
+    goal: "government",
     displayName: "SSC CGL",
     examName: "SSC CGL", // must match the `exams` DB row exactly
     // PUBLIC 2026-10-17: Tier I, every readable shift of 2023, 2024 and 2025
@@ -933,6 +981,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   {
     slug: "ssc-cgl-tier-2",
     tier: "graduate",
+    goal: "government",
     displayName: "SSC CGL Tier II",
     examName: "SSC CGL Tier II", // must match the `exams` DB row exactly
     // Its own exam row, not Tier I's: a different paper (150 questions in five
@@ -959,6 +1008,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // published: answers derived twice, blind); the sample papers and LWS mocks are
     // practice. scripts/spi/.
     tier: "school",
+    goal: "defence",
     displayName: "SPI",
     examName: "SPI", // must match the `exams` DB row exactly
     // PUBLIC since 2026-10-21: the 2022 paper (pyq), the sample papers, Practice Paper 1

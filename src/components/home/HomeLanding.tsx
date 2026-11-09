@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Fragment, type CSSProperties } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -34,6 +35,16 @@ import { wwwNotesChapterCount } from "@/lib/notes/notesNav";
 import { getExamBySlug, type ExamSlug } from "@/lib/exam/examContext";
 import { groupExamFamilies, familyTotal, membersByStage } from "@/lib/exam/examFamily";
 import { sortByDemand, withChosenExamFirst } from "@/lib/exam/demandOrder";
+import {
+  buildShowcaseCards,
+  examFactsFromLandings,
+  showcaseItemsFromCatalog,
+  yearBarsFrom,
+  type ShowcaseItem,
+} from "@/lib/exam/examShowcase";
+import { getPyqYearRows } from "@/lib/exam/pyqYearCounts";
+import { listChapterLandings } from "@/lib/questions/landing";
+import ExamCarousel from "@/components/home/ExamCarousel";
 
 /**
  * The homepage body (2026-11-06). Rendered by `/` (no chosen exam) and by the
@@ -253,11 +264,25 @@ const SURFACES: SurfacePreview[] = [
   },
 ];
 
+const HEADLINE = ["Practise", "the", "questions", "your", "exam", "actually", "asks."];
+
+function showcaseEntry(item: ShowcaseItem) {
+  return getExamBySlug(item.slug);
+}
+
 export default async function HomeLanding({ chosen }: { chosen: ExamSlug | null }) {
   // Cached (24h): the page itself is cached too, but a revalidation still
   // reads these 12 head-counts. A failed load leaves the numbers out rather
   // than printing 0 (2026-10-08).
-  const { catalog, countsKnown } = await getExamCatalogForRender();
+  // The carousel adds two reads, both cached: the chapter list (already paid
+  // for by /questions and the sitemap) and the per-year counts (0248, an
+  // index-only scan, cached a day). Either failing leaves its line off the
+  // cards; the homepage itself never fails on them.
+  const [{ catalog, countsKnown }, landings, yearRows] = await Promise.all([
+    getExamCatalogForRender(),
+    listChapterLandings().catch(() => []),
+    getPyqYearRows(),
+  ]);
   // Group the six (board, class) exams into two family cards. Presentation
   // only: every class link keeps the exact href it had before, and the hero's
   // exam COUNT below still reports 13 — we do have 13 corpora.
@@ -268,6 +293,21 @@ export default async function HomeLanding({ chosen }: { chosen: ExamSlug | null 
     sortByDemand(groupExamFamilies(catalog.exams, (e) => getExamBySlug(e.slug))),
     chosen
   );
+
+  // The exam carousel (2026-11-09): the same demand order and chosen-first
+  // rule as the exam cards below, so the two never disagree.
+  const showcaseNodes = withChosenExamFirst(
+    sortByDemand(groupExamFamilies(showcaseItemsFromCatalog(catalog.exams), showcaseEntry)),
+    chosen
+  );
+  const slugById: Record<string, string> = {};
+  for (const e of catalog.exams) if (e.examId) slugById[e.examId] = e.slug;
+  const showcaseCards = buildShowcaseCards(
+    showcaseNodes,
+    showcaseEntry,
+    examFactsFromLandings(landings),
+    yearBarsFrom(yearRows, slugById)
+  ).map((card) => ({ ...card, moreHref: `#${examCardAnchor(card.key)}` }));
 
   return (
     <>
@@ -281,12 +321,15 @@ export default async function HomeLanding({ chosen }: { chosen: ExamSlug | null 
         />
 
         {/*
-          The one strong moment on the site (2026-10-04): the brand panel, with
-          the product itself on the right. Both counts are read from the catalog
-          this page already fetches, so the claim cannot drift from the bank,
-          and both kinds are named (UX_REVIEW_TRIAGE.md D1).
+          The one strong moment on the site (2026-10-04): the brand panel. Since
+          2026-11-09 it holds the exam carousel in place of the phone
+          screenshot, right under the headline so the front card is on a
+          phone's first screen; the counts, the sentence and both buttons
+          follow it. Both counts are read from the catalog this page already
+          fetches, so the claim cannot drift from the bank, and both kinds are
+          named (UX_REVIEW_TRIAGE.md D1).
         */}
-        <section className="hero-brand mb-8 rounded-3xl px-5 py-7 sm:px-8 sm:py-10">
+        <section className="hero-brand mb-8 rounded-3xl pt-7 sm:pt-10" aria-labelledby="home-title">
           {/* eslint-disable-next-line @next/next/no-img-element -- decorative static asset, 14 KB */}
           <img
             src="/icons/mark-256.webp"
@@ -296,58 +339,62 @@ export default async function HomeLanding({ chosen }: { chosen: ExamSlug | null 
             height={256}
             className="pointer-events-none absolute -right-10 -top-8 w-52 opacity-[0.14] sm:w-64"
           />
-          <div className="relative grid items-center gap-8 md:grid-cols-[1.15fr_1fr]">
-            <div>
-              <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
-                Practise the questions your exam actually asks.
-              </h1>
-              <p className="mt-4 max-w-xl font-serif text-base leading-relaxed text-white/85 sm:text-lg">
-                Every past paper, sorted by chapter, with worked answers. We find the chapters that cost you marks and bring your mistakes back until you get them right.
-              </p>
-              <ul className="mt-5 flex flex-wrap gap-2 text-xs font-semibold" aria-label="What is in the bank">
-                {countsKnown && (
-                  <>
-                    <li className="rounded-full border border-white/25 bg-white/10 px-3 py-1 tabular-nums">
-                      <span className="text-cyan-200">{catalog.totals.pyq.toLocaleString("en-IN")}</span> previous year questions
-                    </li>
-                    <li className="rounded-full border border-white/25 bg-white/10 px-3 py-1 tabular-nums">
-                      <span className="text-cyan-200">{catalog.totals.practice.toLocaleString("en-IN")}</span> textbook and practice
-                    </li>
-                  </>
-                )}
-                <li className="rounded-full border border-white/25 bg-white/10 px-3 py-1 tabular-nums">
-                  <span className="text-cyan-200">{catalog.exams.length}</span> exams · free to browse
-                </li>
-              </ul>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href="/browse"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-[#0f1d4a] shadow-lg transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f1d4a]"
-                >
-                  <Compass className="h-4 w-4" aria-hidden />
-                  Start practising free
-                  <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-                </Link>
-                <Link
-                  href="/mock"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/35 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f1d4a]"
-                >
-                  <Timer className="h-4 w-4" aria-hidden />
-                  Sit a real past paper
-                </Link>
-              </div>
+          <h1
+            id="home-title"
+            className="relative px-5 text-[1.6rem] font-extrabold leading-tight tracking-tight sm:px-8 sm:text-4xl lg:text-5xl"
+          >
+            {HEADLINE.map((w, i) => (
+              <Fragment key={w}>
+                <span className="sc-word">
+                  <span style={{ "--i": i } as CSSProperties}>{w}</span>
+                </span>
+                {i < HEADLINE.length - 1 ? " " : null}
+              </Fragment>
+            ))}
+          </h1>
+
+          {showcaseCards.length > 0 && (
+            <div className="sc-host relative mt-3 sm:mt-4">
+              <ExamCarousel cards={showcaseCards} />
             </div>
-            {/* The product, not a description of it: a real 2026 NDA question
-                answered on a bank card (public/marketing/, captured from the
-                live card so it shows exactly what a student gets). */}
-            {/* eslint-disable-next-line @next/next/no-img-element -- static marketing screenshot */}
-            <img
-              src="/marketing/answer-card.webp"
-              alt="A 2026 NDA question on PYQ Vault with the correct answer marked and the worked solution below it"
-              width={640}
-              height={1198}
-              className="mx-auto max-h-[340px] w-full max-w-sm rounded-2xl object-cover object-top shadow-2xl ring-1 ring-white/20 [mask-image:linear-gradient(to_bottom,black_75%,transparent)] md:max-h-none md:max-w-[340px] md:[mask-image:none]"
-            />
+          )}
+
+          <div className="relative grid gap-4 border-t border-white/10 px-5 pb-7 pt-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-x-8 sm:px-8 sm:pb-9">
+            <ul className="flex flex-wrap gap-x-4 gap-y-1 text-xs font-semibold sm:col-span-2 sm:text-sm" aria-label="What is in the bank">
+              {countsKnown && (
+                <>
+                  <li className="whitespace-nowrap tabular-nums">
+                    <span className="text-cyan-200">{catalog.totals.pyq.toLocaleString("en-IN")}</span> previous year questions
+                  </li>
+                  <li className="whitespace-nowrap tabular-nums">
+                    <span className="text-cyan-200">{catalog.totals.practice.toLocaleString("en-IN")}</span> textbook and practice
+                  </li>
+                </>
+              )}
+              <li className="whitespace-nowrap tabular-nums">
+                <span className="text-cyan-200">{catalog.exams.length}</span> exams · free to browse
+              </li>
+            </ul>
+            <p className="max-w-xl font-serif text-base leading-relaxed text-white/85">
+              Every past paper, sorted by chapter, with worked answers. We find the chapters that cost you marks and bring your mistakes back until you get them right.
+            </p>
+            <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-3">
+              <Link
+                href="/browse"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-3 py-3 text-sm font-bold text-[#0f1d4a] shadow-lg transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f1d4a] sm:px-5"
+              >
+                <Compass className="h-4 w-4" aria-hidden />
+                Start practising free
+                <ArrowRight className="hidden h-3.5 w-3.5 sm:block" aria-hidden />
+              </Link>
+              <Link
+                href="/mock"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/35 px-3 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f1d4a] sm:px-5"
+              >
+                <Timer className="h-4 w-4" aria-hidden />
+                Sit a real past paper
+              </Link>
+            </div>
           </div>
         </section>
 

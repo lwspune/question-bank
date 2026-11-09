@@ -35,6 +35,14 @@ const PAIRS: [text: string, bg: string][] = [
   ["brand-foreground", "brand"],
   ["brand-accent", "background"],
   ["brand-accent", "card"],
+  // The homepage exam carousel (2026-11-09): white cards and controls on the
+  // navy panel keep the same look in both modes, so they carry their own tokens.
+  ["band-foreground", "band"],
+  ["band-accent", "band"],
+  ["showcase-ink", "showcase-card"],
+  ["showcase-muted", "showcase-card"],
+  ["showcase-accent", "showcase-card"],
+  ["showcase-accent", "showcase-tint"],
 ];
 
 describe("theme tokens clear WCAG AA in both modes", () => {

@@ -1,27 +1,89 @@
 import Link from "next/link";
-import { ArrowRight, LibraryBig, Layers } from "lucide-react";
-import type {
-  ExamStarter,
-  StarterChapter,
+import { BookOpen, Briefcase, FlaskConical, Landmark, Layers, LibraryBig, Shield } from "lucide-react";
+import type { ExamFamilyNode } from "@/lib/exam/examFamily";
+import { membersByStage } from "@/lib/exam/examFamily";
+import type { ExamGoal } from "@/lib/exam/examContext";
+import { groupByGoal, goalGroupSummary } from "@/lib/exam/examGoals";
+import {
+  landingExamNodes,
+  starterEntry,
+  type ExamStarter,
+  type StarterChapter,
 } from "@/lib/questions/browseLanding";
-import { getExamBySlug } from "@/lib/exam/examContext";
-import { groupExamFamilies, familyTotal, membersByStage } from "@/lib/exam/examFamily";
-import { sortByDemand, withChosenExamFirst } from "@/lib/exam/demandOrder";
 
 /**
  * What bare `/browse` shows instead of 25 arbitrary questions.
  *
  * The old default listed the 25 most recently INGESTED questions
  * (`created_at DESC`), so the front door of the tool opened on whatever batch
- * landed last — measured on 2026-08-13, that was 25 Maharashtra HSC Binomial
+ * landed last. Measured on 2026-08-13, that was 25 Maharashtra HSC Binomial
  * Distribution questions, on a site whose bank is mostly NDA and JEE.
  *
  * Every link here APPLIES A FILTER on this page rather than navigating away.
- * That is the distinction from `/` (exam cards → guides/notes) and
- * `/questions` (the exam → subject → chapter directory): those already exist
+ * That is the distinction from `/` (exam cards to guides/notes) and
+ * `/questions` (the exam, subject, chapter directory): those already exist
  * and this must not become a third copy of them. `/browse` is the tool; this
  * panel's whole job is to get you into it with one click.
+ *
+ * 2026-11-09: the exams are grouped by what the student is aiming for
+ * (lib/exam/examGoals), in the homepage's order: most
+ * chosen first, the visitor's own exam first.
  */
+const GOAL_ICON: Record<ExamGoal, typeof Shield> = {
+  defence: Shield,
+  science: FlaskConical,
+  government: Landmark,
+  boards: BookOpen,
+  management: Briefcase,
+};
+
+const pillClass =
+  "inline-flex items-center gap-1.5 rounded-full border bg-card px-3 py-1.5 text-sm font-medium transition-[transform,border-color] duration-200 hover:-translate-y-0.5 hover:border-brand-accent/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0";
+const memberClass =
+  "inline-flex items-center rounded-full bg-accent px-2.5 py-1 text-xs font-semibold text-brand-accent transition-colors hover:bg-brand hover:text-brand-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
+
+function ExamNode({ node }: { node: ExamFamilyNode<ExamStarter> }) {
+  if (node.kind === "flat") {
+    const exam = node.item;
+    return (
+      <li>
+        <Link href={exam.href} className={pillClass}>
+          {exam.displayName}
+          <span className="text-xs tabular-nums text-brand-accent">{exam.questionCount.toLocaleString("en-IN")}</span>
+        </Link>
+      </li>
+    );
+  }
+  // A family pill cannot apply a filter (`examId` is one UUID and there is no
+  // family-level filter), so the family is a label and each member is its own
+  // filter-applying link.
+  return (
+    <li className="inline-flex flex-wrap items-center gap-1.5 rounded-2xl border px-3 py-1.5 sm:rounded-full">
+      <span className="text-sm font-semibold">{node.label}</span>
+      {membersByStage(node).map((group) => (
+        <span key={group.stage ?? "all"} className="inline-flex flex-wrap items-center gap-1">
+          {group.stage && (
+            <span className="ml-1 text-[0.6875rem] font-semibold uppercase tracking-wide text-muted-foreground">
+              {group.stage}
+            </span>
+          )}
+          {group.members.map((m) => (
+            <Link
+              key={m.item.slug}
+              href={m.item.href}
+             
+              aria-label={[node.label, group.stage, m.label].filter(Boolean).join(" ")}
+              className={memberClass}
+            >
+              {m.label}
+            </Link>
+          ))}
+        </span>
+      ))}
+    </li>
+  );
+}
+
 export default function BrowseLanding({
   exams,
   chapters,
@@ -34,93 +96,40 @@ export default function BrowseLanding({
   /** The visitor's chosen exam (qb_exam), shown first. */
   chosenSlug?: string | null;
 }) {
-  // Board exams grouped into two families. `buildExamStarters` has already
-  // dropped any exam with nothing in the default view, so a family that lost
-  // all but one member correctly degrades back to a single pill.
-  // The visitor's own exam first, then most-chosen first, as on the homepage.
-  const examNodes = withChosenExamFirst(
-    sortByDemand(groupExamFamilies(exams, (e) => getExamBySlug(e.slug))),
-    chosenSlug
-  );
+  const groups = groupByGoal(landingExamNodes(exams, chosenSlug), starterEntry);
   return (
     <div className="space-y-8">
       <section aria-labelledby="browse-start-exam">
-        <h2
-          id="browse-start-exam"
-          className="flex items-center gap-2 text-sm font-semibold tracking-tight"
-        >
+        <h2 id="browse-start-exam" className="flex scroll-mt-24 items-center gap-2 text-sm font-semibold tracking-tight">
           <LibraryBig className="h-4 w-4 text-brand-accent" aria-hidden />
-          Start with an exam
+          All exams, by goal
         </h2>
-        {/* Two columns from the smallest phone up (one column made 14 tall
-            cards before the first chapter). A board family, which carries its
-            class links, takes the full width on a phone; `dense` lets a later
-            single exam fill the hole a family leaves. */}
-        <ul className="mt-3 grid grid-flow-dense grid-cols-2 gap-2 lg:grid-cols-3">
-          {examNodes.map((node) => {
-            if (node.kind === "family") {
-              // A family pill CANNOT apply a filter — `examId` is one UUID and
-              // there is no board-level filter — so the board is a heading and
-              // each class stays its own filter-applying link. The count is
-              // summed from the DEFAULT-VIEW numbers these pills already carry,
-              // never the homepage's total-PUBLIC figure.
-              const total = familyTotal(node, (e) => e.questionCount);
-              return (
-                <li key={node.key} className="col-span-2 sm:col-span-1">
-                  <div className="flex h-full flex-col rounded-lg border bg-card p-3 shadow-sm sm:p-4">
-                    <span className="block truncate text-sm font-medium">
-                      {node.label}
-                    </span>
-                    <span className="mt-0.5 block text-xs tabular-nums text-brand-accent">
-                      {total.toLocaleString("en-IN")} questions
-                    </span>
-                    {membersByStage(node).map((group) => (
-                      <div key={group.stage ?? "all"}>
-                        {group.stage && (
-                          <p className="mt-2.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                            {group.stage}
-                          </p>
-                        )}
-                        <ul className={`${group.stage ? "mt-1.5" : "mt-2.5"} flex flex-wrap gap-1.5`}>
-                          {group.members.map((cls) => (
-                            <li key={cls.item.slug}>
-                              <Link
-                                href={cls.item.href}
-                                aria-label={[node.label, group.stage, cls.label].filter(Boolean).join(" ")}
-                                className="inline-flex items-center gap-1 rounded-full border bg-background px-2.5 py-1 text-xs font-medium transition-colors hover:border-brand-accent/60 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                              >
-                                {cls.label}
-                                <ArrowRight className="h-3 w-3 text-muted-foreground" aria-hidden />
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                </li>
-              );
-            }
-            const exam = node.item;
+        <ul className="mt-3 divide-y overflow-hidden rounded-2xl border bg-card shadow-sm">
+          {groups.map((group, gi) => {
+            const Icon = GOAL_ICON[group.goal];
+            const sum = goalGroupSummary(group, (e) => e.questionCount);
             return (
-              <li key={exam.slug}>
-                <Link
-                  href={exam.href}
-                  className="group flex h-full items-start justify-between gap-2 rounded-lg border bg-card p-3 shadow-sm transition-colors hover:border-brand-accent/60 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:gap-3 sm:p-4"
-                >
+              <li
+                key={group.goal}
+                className="grid animate-fade-in-up gap-2.5 p-3.5 sm:grid-cols-[13rem_minmax(0,1fr)] sm:items-center sm:px-4"
+                style={{ animationDelay: `${120 + gi * 70}ms` }}
+              >
+                <div className="flex min-w-0 items-center gap-2.5">
+                  <span className="icon-tile grid h-9 w-9 shrink-0 place-items-center rounded-xl">
+                    <Icon className="h-4 w-4" aria-hidden />
+                  </span>
                   <span className="min-w-0">
-                    <span className="block truncate text-sm font-medium">
-                      {exam.displayName}
-                    </span>
-                    <span className="mt-0.5 block text-xs tabular-nums text-brand-accent">
-                      {exam.questionCount.toLocaleString("en-IN")} questions
+                    <span className="block text-sm font-semibold">{group.label}</span>
+                    <span className="block text-xs tabular-nums text-muted-foreground">
+                      {sum.exams} {sum.unit} · {sum.questions.toLocaleString("en-IN")} questions
                     </span>
                   </span>
-                  <ArrowRight
-                    className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5"
-                    aria-hidden
-                  />
-                </Link>
+                </div>
+                <ul className="flex min-w-0 flex-wrap gap-1.5" aria-label={group.label}>
+                  {group.nodes.map((node) => (
+                    <ExamNode key={node.kind === "family" ? node.key : node.item.slug} node={node} />
+                  ))}
+                </ul>
               </li>
             );
           })}
