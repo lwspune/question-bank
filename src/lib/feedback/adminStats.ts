@@ -13,10 +13,12 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { namesForUsers } from "@/lib/supabase/authUsers";
 import { summarizeMockRatings, type MockRatingRow, type MockRatingsSummary } from "@/lib/mocks/feedback";
 import { computeNps, type NpsRollup } from "./nps";
+import { isReplyStatus, type ReplyStatus } from "./replies";
 
 const PAGE = 1000;
 
 type FeedbackRow = {
+  id: string;
   user_id: string;
   kind: string;
   score: number | null;
@@ -39,12 +41,20 @@ export type FeedbackItem = {
   createdAt: string;
 };
 
+/** A feature request with our reply to it (migration 0243), if any. */
+export type FeatureRequestItem = FeedbackItem & {
+  id: string;
+  reply: { status: ReplyStatus; note: string | null; repliedAt: string; seen: boolean } | null;
+};
+
+type ReplyRow = { feedback_id: string; status: string; note: string | null; replied_at: string; seen_at: string | null };
+
 export type MockRatingItem = MockRatingRow & { who: string };
 
 export type FeedbackOverview = {
   nps: NpsRollup;
   npsComments: FeedbackItem[];
-  featureRequests: FeedbackItem[];
+  featureRequests: FeatureRequestItem[];
   mockRatings: MockRatingsSummary<MockRatingItem>;
 };
 
@@ -67,11 +77,11 @@ async function readAll<T>(
 export async function getFeedbackOverview(): Promise<FeedbackOverview> {
   const db = createSupabaseAdminClient();
 
-  const [rows, ratingRows] = await Promise.all([
+  const [rows, ratingRows, replyRows] = await Promise.all([
     readAll<FeedbackRow>("user_feedback", (from, to) =>
       db
         .from("user_feedback")
-        .select("user_id, kind, score, message, created_at")
+        .select("id, user_id, kind, score, message, created_at")
         .order("created_at", { ascending: false })
         .range(from, to)
     ),
@@ -82,7 +92,15 @@ export async function getFeedbackOverview(): Promise<FeedbackOverview> {
         .order("created_at", { ascending: false })
         .range(from, to)
     ),
+    readAll<ReplyRow>("feedback_replies", (from, to) =>
+      db
+        .from("feedback_replies")
+        .select("feedback_id, status, note, replied_at, seen_at")
+        .order("feedback_id")
+        .range(from, to)
+    ),
   ]);
+  const replies = new Map(replyRows.map((r) => [r.feedback_id, r]));
 
   const names = await namesForUsers(db, new Set([...rows, ...ratingRows].map((r) => r.user_id)));
   const who = (id: string) => names.get(id) ?? "(unknown)";
@@ -96,7 +114,20 @@ export async function getFeedbackOverview(): Promise<FeedbackOverview> {
   const featureRequests = rows
     .filter((r) => r.kind === "feature" && r.message)
     .slice(0, 50)
-    .map((r) => ({ who: who(r.user_id), score: null, message: r.message, createdAt: r.created_at }));
+    .map((r) => {
+      const rep = replies.get(r.id);
+      return {
+        id: r.id,
+        who: who(r.user_id),
+        score: null,
+        message: r.message,
+        createdAt: r.created_at,
+        reply:
+          rep && isReplyStatus(rep.status)
+            ? { status: rep.status, note: rep.note, repliedAt: rep.replied_at, seen: rep.seen_at !== null }
+            : null,
+      };
+    });
 
   const mockRatings = summarizeMockRatings<MockRatingItem>(
     ratingRows.map((r) => {

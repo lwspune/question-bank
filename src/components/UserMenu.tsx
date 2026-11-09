@@ -38,6 +38,9 @@ export default function UserMenu({
 }) {
   const router = useRouter();
   const due = pulse?.due ?? 0;
+  // Unread replies to their feedback (migration 0243). Shown on the feedback
+  // item, not on the avatar: the avatar's number is the mistakes to fix.
+  const replies = pulse?.replies ?? 0;
   const week = pulse ? weeklyProgress(pulse.week.done, pulse.week.goal) : null;
   const exam = pulse?.exam ?? null;
   const totals = pulse?.totals ? totalsLine(pulse.totals) : null;
@@ -64,7 +67,7 @@ export default function UserMenu({
       <Popover.Trigger asChild>
         <button
           type="button"
-          aria-label={due > 0 ? `Open user menu, ${due} questions to fix` : "Open user menu"}
+          aria-label={menuLabel(due, replies)}
           className="relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-input bg-background text-sm font-medium transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           <span aria-hidden>{initial}</span>
@@ -270,11 +273,19 @@ export default function UserMenu({
           {/* Every signed-in role: before this, the suggestion form lived only
               at the bottom of /me and was never used. */}
           <Link
+            // prefetch off: /feedback is a per-user render, and opening this
+            // menu should not run it for everyone.
+            prefetch={false}
             href="/feedback"
             className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"
           >
             <MessageSquarePlus className="h-4 w-4" aria-hidden />
             Send feedback
+            {replies > 0 && (
+              <span className="ml-auto rounded-full bg-brand/10 px-2 py-0.5 text-xs font-semibold tabular-nums text-brand-accent">
+                {replies === 1 ? "1 reply" : `${replies} replies`}
+              </span>
+            )}
           </Link>
           <button
             type="button"
@@ -289,4 +300,12 @@ export default function UserMenu({
       </Popover.Portal>
     </Popover.Root>
   );
+}
+
+function menuLabel(due: number, replies: number): string {
+  const parts = [
+    due > 0 ? `${due} questions to fix` : null,
+    replies > 0 ? (replies === 1 ? "1 reply to your feedback" : `${replies} replies to your feedback`) : null,
+  ].filter(Boolean);
+  return parts.length ? `Open user menu, ${parts.join(", ")}` : "Open user menu";
 }

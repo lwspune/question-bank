@@ -1550,6 +1550,47 @@ export type Database = {
           },
         ]
       }
+      feedback_replies: {
+        Row: {
+          feedback_id: string
+          kind: string
+          note: string | null
+          replied_at: string
+          replied_by: string | null
+          seen_at: string | null
+          status: string
+          user_id: string
+        }
+        Insert: {
+          feedback_id: string
+          kind?: string
+          note?: string | null
+          replied_at?: string
+          replied_by?: string | null
+          seen_at?: string | null
+          status: string
+          user_id: string
+        }
+        Update: {
+          feedback_id?: string
+          kind?: string
+          note?: string | null
+          replied_at?: string
+          replied_by?: string | null
+          seen_at?: string | null
+          status?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "feedback_replies_request_fk"
+            columns: ["feedback_id", "user_id", "kind"]
+            isOneToOne: false
+            referencedRelation: "user_feedback"
+            referencedColumns: ["id", "user_id", "kind"]
+          },
+        ]
+      }
       free_downloads: {
         Row: {
           created_at: string
@@ -5047,6 +5088,20 @@ export type Database = {
           last_added: string
         }[]
       }
+      get_chapter_paper_weights: {
+        Args: { p_exam_id: string }
+        Returns: {
+          chapter: string
+          chapter_id: string
+          exam: string
+          marks_per_paper: number
+          paper_code: string
+          paper_marks: number
+          papers: number
+          q_per_paper: number
+          subject: string
+        }[]
+      }
       get_chapter_profile: {
         Args: {
           p_kind: Database["public"]["Enums"]["question_kind"]
@@ -5115,6 +5170,10 @@ export type Database = {
       get_pyq_years: { Args: never; Returns: number[] }
       get_share_snapshot: { Args: { p_since: string }; Returns: Json }
       get_signup_countries: { Args: { p_since: string }; Returns: Json }
+      get_started_chapter_ids: {
+        Args: { p_exam_id: string; p_user_id: string }
+        Returns: string[]
+      }
       get_student_answer_totals_for_staff: {
         Args: { p_user_id: string }
         Returns: {
@@ -5231,6 +5290,7 @@ export type Database = {
       learn_routing_window: { Args: never; Returns: number }
       learn_seed_chapter: { Args: { p: Json }; Returns: Json }
       learn_seed_courses: { Args: { p: Json }; Returns: Json }
+      mark_feedback_replies_seen: { Args: never; Returns: number }
       match_chunks: {
         Args: {
           match_count?: number

@@ -109,10 +109,13 @@ function NpsCard() {
 export function FeatureCard({
   defaultOpen = false,
   compact = false,
+  onSent,
 }: {
   defaultOpen?: boolean;
   /** /me: one quiet line until opened (it was a permanent card). */
   compact?: boolean;
+  /** After a suggestion saves: /feedback refreshes so it joins the list below. */
+  onSent?: () => void;
 }) {
   const [open, setOpen] = useState(defaultOpen);
   const [message, setMessage] = useState("");
@@ -127,6 +130,7 @@ export function FeatureCard({
       setMessage("");
       setOpen(defaultOpen);
       toast.success("Thanks. We read every suggestion.");
+      onSent?.();
     }
   }
 

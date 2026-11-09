@@ -353,6 +353,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-09 (second) — Replies to feature requests: status + note on /feedback, one email per status (0243).**
+  - **Why:** a request (0051) got nothing back; 10 from 9 students since 10-15, none answered. Question reports' replies stay LATER (owner).
+  - **Own table, one row per request** (`feedback_replies`): user_feedback stays the student's append-only row; a composite FK refuses a reply on another student's request or an NPS score.
+  - **The send log decides the email** (key per request + status): a failed send retries on the next save, a note edit mails nothing.
+  - **Read is marked in the browser** (`mark_feedback_replies_seen`), never in the render: a prefetch would clear unread replies. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-09 — Start next on Home: high-value chapters not started, in marks a paper (0242); Review gets subject chips.**
   - **Weights are measured from the published past papers** (each question's own marks), shown "about 10 questions a paper · 24 of 300 marks (8%)" (owner's format). They agree with the guides' matrices (CDS Trig 10.8 vs 10.7), which cover few subjects and no marks.
   - **"Started" = any answer or mock answer; a No to V is not.** No card for plan students or exams without published papers.
