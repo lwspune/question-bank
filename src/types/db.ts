@@ -2950,6 +2950,41 @@ export type Database = {
           },
         ]
       }
+      parent_pay_links: {
+        Row: {
+          code: string
+          created_at: string
+          expires_at: string
+          plan_id: string
+          student_name: string | null
+          user_id: string
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          expires_at: string
+          plan_id: string
+          student_name?: string | null
+          user_id: string
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          expires_at?: string
+          plan_id?: string
+          student_name?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "parent_pay_links_plan_id_fkey"
+            columns: ["plan_id"]
+            isOneToOne: false
+            referencedRelation: "plans"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       paywall_settings: {
         Row: {
           brand_name_line: boolean
