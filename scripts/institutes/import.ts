@@ -19,6 +19,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { config } from "dotenv";
 import { createClient } from "@supabase/supabase-js";
+import { readAllPages } from "../../src/lib/supabase/readAllPages";
 import { KIND_LABELS, PROSPECT_KINDS, sizeBand, toProspectRows, type MapsPlace } from "../../src/lib/institutes/prospects";
 
 const args = process.argv.slice(2);
@@ -46,13 +47,13 @@ async function main() {
   const rows = toProspectRows(places, { center, radiusKm, area });
 
   const db = createClient(url!, key!, { auth: { persistSession: false } });
-  const existing = new Set<string>();
-  for (let from = 0; ; from += 1000) {
-    const { data, error } = await db.from("institute_prospects").select("place_id").range(from, from + 999);
-    if (error) throw new Error(`read failed: ${error.message}`);
-    for (const r of data ?? []) existing.add(r.place_id as string);
-    if ((data ?? []).length < 1000) break;
-  }
+  const existing = new Set(
+    (
+      await readAllPages<{ place_id: string }>((from, to) =>
+        db.from("institute_prospects").select("place_id").order("place_id").range(from, to)
+      )
+    ).map((r) => r.place_id)
+  );
 
   const fresh = rows.filter((r) => !existing.has(r.place_id)).length;
   console.log(`${target}: ${places.length} places read from ${files.length} file(s), ${rows.length} kept within ${radiusKm} km of ${area}`);

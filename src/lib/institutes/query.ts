@@ -1,5 +1,6 @@
 import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { readAllPages } from "@/lib/supabase/readAllPages";
 import {
   PROSPECT_KINDS,
   PROSPECT_STATUSES,
@@ -10,7 +11,6 @@ import {
 
 const COLUMNS =
   "id, place_id, name, category, address, neighborhood, phone, website, maps_url, lat, lng, distance_km, rating, reviews, kind, searches, area, status, note, follow_up, updated_at";
-const PAGE = 1000;
 
 /**
  * Every institute prospect (migration 0246), read with the service role. Paged,
@@ -18,18 +18,10 @@ const PAGE = 1000;
  * would pass that.
  */
 export async function loadProspects(admin: SupabaseClient): Promise<ProspectView[]> {
-  const out: ProspectView[] = [];
-  for (let from = 0; ; from += PAGE) {
-    const { data, error } = await admin
-      .from("institute_prospects")
-      .select(COLUMNS)
-      .order("place_id")
-      .range(from, from + PAGE - 1);
-    if (error) throw new Error(`institute_prospects read failed: ${error.message}`);
-    const rows: Record<string, unknown>[] = data ?? [];
-    for (const r of rows) out.push(toView(r));
-    if (rows.length < PAGE) return out;
-  }
+  const rows = await readAllPages<Record<string, unknown>>((from, to) =>
+    admin.from("institute_prospects").select(COLUMNS).order("place_id").range(from, to)
+  );
+  return rows.map(toView);
 }
 
 const str = (v: unknown): string | null => (typeof v === "string" ? v : null);
