@@ -1,0 +1,583 @@
+{
+  "//": "2026-11-09: six stored visuals each had a line no step played, so it never appeared (SUGGESTIONS.md backfill ledger). Steps re-pointed; 47e7bf8c drops a line that only repeated the one before it.",
+  "visuals": [
+    {
+      "id": "42b74075-83f8-4305-9ba6-69cf0a704f6b",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t},\\quad [\\mathrm{A}]_t = \\dfrac{[\\mathrm{A}]_0}{2}\\ \\text{at } t_{1/2}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}",
+              "f": "ln(10)*log10(A0/At)/t",
+              "value": "k",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "k\\,t_{1/2} = 2.303\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_0/2}",
+              "f": "ln(10)*log10(A0/(A0/2))",
+              "value": "k*th",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "k\\,t_{1/2} = 2.303 \\times 0.3010",
+              "f": "ln(10)*log10(2)",
+              "value": "k*th",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{0.693}{t_{1/2}}",
+              "f": "ln(2)/th",
+              "value": "k",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "t_{1/2} = \\dfrac{0.693}{k}",
+              "f": "ln(2)/k",
+              "value": "th",
+              "step": "s6"
+            }
+          ],
+          "answer": "0.693/k",
+          "vars": {
+            "A0": "5",
+            "k": "0.3",
+            "t": "2",
+            "At": "A0*exp(-k*t)",
+            "th": "ln(2)/k"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "7a493a21",
+        "answer": {
+          "value": 2.31,
+          "label": "t½ = 0.693/k"
+        }
+      }
+    },
+    {
+      "id": "53aaf98b-edfb-4298-b584-1aff3fcb4f03",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "0.8 \\to 0.2\\ \\text{in } 12\\ \\text{h}",
+              "note": "a fall to one quarter",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{0.2}{0.8} = \\left(\\dfrac{1}{2}\\right)^n,\\quad n = 2\\ \\text{half lives}",
+              "lhs": "0.2/0.8",
+              "rhs": "(1/2)^x",
+              "roots": [
+                "2"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "2\\,t_{1/2} = 12\\ \\text{h}",
+              "lhs": "2*x",
+              "rhs": "12",
+              "roots": [
+                "6"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "t_{1/2} = \\dfrac{12}{2} = 6\\ \\text{h}",
+              "f": "12/2",
+              "value": "6",
+              "step": "s4"
+            }
+          ],
+          "answer": "6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "c86b0ccc",
+        "answer": {
+          "value": 6,
+          "label": "(D) 6 h"
+        }
+      }
+    },
+    {
+      "id": "47e7bf8c-0a6e-4b9a-b06d-725952d05469",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = c_1\\cos(\\log x) + c_2\\sin(\\log x)",
+              "f": "c1*cos(log(x))+c2*sin(log(x))",
+              "restart": true,
+              "domain": [
+                0.3,
+                4
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "\\dfrac{dy}{dx} = \\dfrac1x\\left[-c_1\\sin(\\log x) + c_2\\cos(\\log x)\\right]",
+              "f": "(-c1*sin(log(x))+c2*cos(log(x)))/x"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "x\\dfrac{dy}{dx} = -c_1\\sin(\\log x) + c_2\\cos(\\log x)",
+              "f": "x*((-c1*sin(log(x))+c2*cos(log(x)))/x)",
+              "restart": true,
+              "domain": [
+                0.3,
+                4
+              ]
+            },
+            {
+              "step": "s4",
+              "kind": "deriv",
+              "tex": "\\dfrac{d}{dx}\\left(x\\dfrac{dy}{dx}\\right) = \\dfrac1x\\left[-c_1\\cos(\\log x) - c_2\\sin(\\log x)\\right]",
+              "f": "(-c1*cos(log(x))-c2*sin(log(x)))/x"
+            },
+            {
+              "step": "s4",
+              "kind": "expr",
+              "tex": "= -\\dfrac yx",
+              "f": "-(c1*cos(log(x))+c2*sin(log(x)))/x"
+            },
+            {
+              "step": "s5",
+              "kind": "expr",
+              "tex": "x^2y'' + xy' + y",
+              "f": "(p*cos(log(x))+q*sin(log(x)))+(-c1*sin(log(x))+c2*cos(log(x)))+c1*cos(log(x))+c2*sin(log(x))",
+              "restart": true,
+              "domain": [
+                0.3,
+                4
+              ]
+            },
+            {
+              "step": "s5",
+              "kind": "expr",
+              "tex": "= 0",
+              "f": "0"
+            }
+          ],
+          "answer": "0",
+          "vars": {
+            "c1": "1",
+            "c2": "2",
+            "p": "-c1-c2",
+            "q": "c1-c2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "45c39fc0",
+        "answer": {
+          "value": 0,
+          "label": "x²y″ + xy′ + y = 0"
+        }
+      }
+    },
+    {
+      "id": "7cf06cd7-0bbd-4ee6-b131-cf44f6eec4ca",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "r = 9.9\\ \\text{m},\\ \\tan\\theta = 0.5,\\ \\mu_s = 0.2,\\ g = 10",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "v_{\\min} = \\sqrt{9.9\\times 10\\times\\dfrac{0.5-0.2}{1+0.2\\times 0.5}} = \\sqrt{27} = 5.196\\ \\text{m/s}",
+              "f": "sqrt(9.9*10*(0.5-0.2)/(1+0.2*0.5))",
+              "value": "5.196",
+              "dp": 3,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "(v_{\\min})_{\\text{allowed}} = 5.196\\times\\dfrac{110}{100} = 5.716\\ \\text{m/s}",
+              "f": "5.196*110/100",
+              "value": "5.716",
+              "dp": 3,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "v_{\\max} = \\sqrt{9.9\\times 10\\times\\dfrac{0.5+0.2}{1-0.2\\times 0.5}} = \\sqrt{77} = 8.775\\ \\text{m/s}",
+              "f": "sqrt(9.9*10*(0.5+0.2)/(1-0.2*0.5))",
+              "value": "8.775",
+              "dp": 3,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "(v_{\\max})_{\\text{allowed}} = 8.775\\times\\dfrac{90}{100} = 7.898\\ \\text{m/s}",
+              "f": "8.775*90/100",
+              "value": "7.898",
+              "dp": 3,
+              "step": "s5"
+            }
+          ],
+          "answer": "5.716"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "ea35de6e",
+        "answer": {
+          "value": 5.716,
+          "label": "5.716; 7.898 m/s"
+        }
+      }
+    },
+    {
+      "id": "abded017-5297-4744-8962-0ed6777249d6",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "3\\sqrt6\\cos45^\\circ=3\\sqrt6\\cdot{{1:\\dfrac{\\sqrt2}{2}}}",
+              "f": "3*sqrt(6)*cos(pi/4)",
+              "value": "3*sqrt(6)*sqrt(2)/2",
+              "dp": 4
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "=\\dfrac32\\cdot2\\sqrt3={{2:3\\sqrt3}}",
+              "f": "1.5*2*sqrt(3)",
+              "value": "3*sqrt(3)",
+              "dp": 4
+            }
+          ],
+          "answer": "3*sqrt(3)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "397406ff",
+        "answer": {
+          "value": 5.196152422706632,
+          "label": "3√3"
+        }
+      }
+    },
+    {
+      "id": "a89279e5-6a68-4552-a112-c5e06e5ead95",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "T": 744,
+            "f16": 352,
+            "l16": 416,
+            "d16": "f16+l16-T",
+            "u": 0.35
+          },
+          "view": {
+            "x": [
+              0,
+              14
+            ],
+            "y": [
+              -3,
+              6.2
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  1.5,
+                  3.4
+                ],
+                [
+                  "1.5+31*u",
+                  3.4
+                ],
+                [
+                  "1.5+31*u",
+                  4.4
+                ],
+                [
+                  1.5,
+                  4.4
+                ]
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "1.5+15.5*u",
+                4.75
+              ],
+              "text": "31 days: 31 × 24 = 744",
+              "step": "s1",
+              "pos": "n"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  1.5,
+                  1.6
+                ],
+                [
+                  "(1.5)+((16)*u)",
+                  1.6
+                ],
+                [
+                  "(1.5)+((16)*u)",
+                  2.6
+                ],
+                [
+                  1.5,
+                  2.6
+                ]
+              ],
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "((1.5)+((1.5)+((16)*u)))/2",
+                1.471794871794872
+              ],
+              "text": "first 16: 352",
+              "step": "s2",
+              "pos": "n"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  "1.5+15*u",
+                  -0.2
+                ],
+                [
+                  "(1.5+15*u)+((16)*u)",
+                  -0.2
+                ],
+                [
+                  "(1.5+15*u)+((16)*u)",
+                  0.8
+                ],
+                [
+                  "1.5+15*u",
+                  0.8
+                ]
+              ],
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "((1.5+15*u)+((1.5+15*u)+((16)*u)))/2",
+                -0.3282051282051282
+              ],
+              "text": "last 16: 416",
+              "step": "s2",
+              "pos": "n"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  "1.5+15*u",
+                  3.4
+                ],
+                [
+                  "1.5+16*u",
+                  3.4
+                ],
+                [
+                  "1.5+16*u",
+                  4.4
+                ],
+                [
+                  "1.5+15*u",
+                  4.4
+                ]
+              ],
+              "step": "s3",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.5,
+                -1.6
+              ],
+              "text": "day 16 = 352 + 416 − 744 = 24",
+              "step": "s4",
+              "pos": "e",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "16*22 = f16",
+            "16*26 = l16",
+            "31*24 = T",
+            "d16 = 24"
+          ],
+          "answer": "d16"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "f0789e04",
+        "answer": {
+          "value": 24,
+          "label": "24 °C"
+        }
+      }
+    }
+  ]
+}
