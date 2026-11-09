@@ -52,6 +52,8 @@ describe("decideWebhook: order.paid", () => {
       userId: "u1",
       paymentId: "pay_1",
       grant: { planId: "mock-pass-6m", scope: "mocks", durationDays: 182, amountPaise: 9900, currency: "INR" },
+      // Not paid through a parent link (2026-11-09).
+      note: null,
     });
   });
 

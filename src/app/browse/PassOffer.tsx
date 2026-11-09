@@ -147,6 +147,7 @@ export default function PassOffer({
                 planId={pass.planId}
                 busy={busy}
                 dismissed={dismissed}
+                parentLink={pass.parentLink}
                 className="border-t pt-3"
               />
             )}

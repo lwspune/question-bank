@@ -52,6 +52,8 @@ export const PAYWALL_GATES = [
   "store",
   /** V's hourly limit (0226, 2026-11-07): Premium offered in the chat window. */
   "v_hourly",
+  /** A parent's payment page, /pay/<code> (0244, 2026-11-09). */
+  "parent",
 ] as const;
 export type PaywallGate = (typeof PAYWALL_GATES)[number];
 
@@ -66,6 +68,12 @@ export const PAYWALL_STEPS = [
   "checkout_dismissed",
   "verify_failed",
   "declined",
+  /** "Ask a parent to pay" (0244, 2026-11-09), all written by the server under
+   *  the STUDENT's id: the link made, the parent's page opened, the parent's
+   *  checkout started. A parent's payment is the entitlement's note. */
+  "parent_link_created",
+  "parent_link_opened",
+  "parent_checkout_opened",
 ] as const;
 export type PaywallStep = (typeof PAYWALL_STEPS)[number];
 

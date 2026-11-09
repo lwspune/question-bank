@@ -69,7 +69,7 @@ const SCRIPT_SRC = "https://checkout.razorpay.com/v1/checkout.js";
 let scriptLoad: Promise<void> | null = null;
 
 /** Loads Razorpay once per page; a failed load can be retried. */
-function loadRazorpay(): Promise<void> {
+export function loadRazorpay(): Promise<void> {
   if (window.Razorpay) return Promise.resolve();
   if (scriptLoad) return scriptLoad;
   scriptLoad = new Promise<void>((resolve, reject) => {

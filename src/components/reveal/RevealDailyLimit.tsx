@@ -167,7 +167,7 @@ export function RevealDailyOffer({
         <p className="text-center text-xs text-muted-foreground">
           Not now? {limit ? `${limit} more free answers` : "More free answers"} tomorrow.
         </p>
-        <WhyNotNow gate={GATE[checkoutSurface]} planId={pass.planId} busy={busy} dismissed={dismissed} />
+        <WhyNotNow gate={GATE[checkoutSurface]} planId={pass.planId} busy={busy} dismissed={dismissed} parentLink={pass.parentLink} />
       </div>
     </div>
   );
