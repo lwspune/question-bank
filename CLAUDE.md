@@ -353,6 +353,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-09 (seventh) — Flashcards for everyone: the staff-only "Project" overlay opens as a deck for every visitor (no migration).**
+  - **Why:** owner, "it makes questions look like flashcards". Its Show answer skipped the daily answer limit (357 students met it in 35 days), so it had to count like the card.
+  - **Modes (`lib/present/deck.ts`):** staff keep the projector, nothing recorded; students practise through the card's own counter (one store per page, never counted twice); a mock review is free.
+  - **MCQ = tap an option** (a wrong one goes to Fix your mistakes); "Did you know it?" on written answers only (numeric has no drill screen). Phone: one scrolling column, arrows and the button in a bottom bar.
+  - **Measured:** `flashcards_open` / `flashcards_answer`, registry `flashcards` (keep at 3+ cards a deck). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-09 (sixth) — Institutes near FC Road: a superadmin sales list from Google Maps (0246).**
   - **Why:** institutes as steady money, but self-serve institute signups stalled (7 outside orgs, 0 papers in 30 days); this is a list to sell from, small classes first (owner: no question bank of their own).
   - **234 places in 3 km** from two capped Apify runs ($1.47); Entrance/Board/Other is a GUESS from name, category and search, so a misfit is marked Not a fit, never re-tagged; size is the review count, read at display time.
