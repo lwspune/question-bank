@@ -9,7 +9,6 @@
  */
 import { describe, it, expect, beforeAll, afterAll, vi } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { randomUUID } from "node:crypto";
 import { NextRequest } from "next/server";
 
 const { jar } = vi.hoisted(() => ({ jar: new Map<string, string>() }));
@@ -27,13 +26,14 @@ vi.mock("next/headers", () => ({
 import { POST, DELETE } from "@/app/api/push/subscribe/route";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { mustSignIn } from "./helpers/fixture";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 const PASSWORD = "push-route-password-1234";
 const A = `push-route-a-${RUN_ID}@test.local`;
 const B = `push-route-b-${RUN_ID}@test.local`;

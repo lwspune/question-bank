@@ -9,8 +9,9 @@
 import { describe, it, expect } from "vitest";
 import { NextRequest } from "next/server";
 import { randomUUID } from "node:crypto";
+import { testRunId } from "./helpers/runId";
 
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 
 function post(body: unknown): NextRequest {
   return new NextRequest("http://localhost:3000/api/export", {

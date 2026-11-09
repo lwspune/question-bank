@@ -16,6 +16,7 @@ import { NextRequest } from "next/server";
 import { GET } from "@/app/api/e/[token]/route";
 import { newClickToken } from "@/lib/email/click";
 import { SIGNED_LINK_DAYS } from "@/lib/email/signedLink";
+import { testRunId } from "./helpers/runId";
 
 const { jar } = vi.hoisted(() => ({ jar: new Map<string, string>() }));
 vi.mock("next/headers", () => ({
@@ -34,7 +35,7 @@ const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const STAMP = Date.now();
+const STAMP = testRunId();
 const EMAIL = `click_${STAMP}@test.invalid`;
 const DAY = 86_400_000;
 

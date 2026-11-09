@@ -4,16 +4,16 @@
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { randomUUID } from "node:crypto";
 import { loadPendingResultChecks, saveResultAnswer } from "@/lib/results/service";
 import { listResultsForReview, listStudentResults, markStudentResult, reviewResult } from "@/lib/results/admin";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY &&
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 
 describe.skipIf(!HAS_ENV)("student results (migration 0149)", () => {
   let admin: SupabaseClient;

@@ -4,15 +4,15 @@
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { randomUUID } from "node:crypto";
 import { contentHash } from "@/lib/upload/hash";
 import { deleteQuestion } from "@/lib/questions/deleteQuestion";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 
 describe.skipIf(!HAS_ENV)("deleteQuestion", () => {
   let admin: SupabaseClient;

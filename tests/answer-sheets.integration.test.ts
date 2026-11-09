@@ -12,9 +12,9 @@
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { randomUUID } from "node:crypto";
 import { mustSignIn } from "./helpers/fixture";
 import { finishSubmission, startSubmission } from "@/lib/answerSheets/service";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -22,7 +22,7 @@ const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 type Q = { id: string; exam_id: string; subject_id: string };
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 const PASSWORD = "answer-sheet-test-pw-1234";
 
 describe.skipIf(!HAS_ENV)("answer sheets (migration 0153)", () => {

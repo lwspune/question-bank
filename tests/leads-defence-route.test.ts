@@ -15,10 +15,11 @@ import { NextRequest } from "next/server";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { formatCursor } from "@/lib/leads/defenceFeed";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV = !!process.env.NEXT_PUBLIC_SUPABASE_URL && !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 const SECRET = `defence-feed-${RUN_ID}-secret`;
 // A per-run instant in 2099 (whole seconds + microseconds), so reruns never collide.
 const BASE = new Date(Date.UTC(2099, 0, 1) + (parseInt(RUN_ID, 16) % 1_000_000) * 1000);

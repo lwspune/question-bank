@@ -27,13 +27,14 @@ import { getStoreEbook, listStoreEbooks } from "@/lib/ebooks/query";
 import { loadEbookStoreReadout } from "@/lib/ebooks/readout";
 import { PDFDocument } from "pdf-lib";
 import { mustSignIn } from "./helpers/fixture";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const STAMP = Date.now();
+const STAMP = testRunId();
 const PASSWORD = "test-password-12345";
 const BOOK = `test-ebook-${STAMP}`;
 const HIDDEN = `test-ebook-hidden-${STAMP}`;

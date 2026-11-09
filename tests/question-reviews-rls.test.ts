@@ -22,7 +22,6 @@
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { randomUUID } from "node:crypto";
 import { recordReviews } from "@/lib/reviews/service";
 import {
   recordErrataReviews,
@@ -30,6 +29,7 @@ import {
   recordTriageReview,
 } from "@/lib/reviews/emit";
 import { mustSignIn } from "./helpers/fixture";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -37,7 +37,7 @@ const HAS_ENV =
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 const PASSWORD = "reviews-test-1234";
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 const RUN_LABEL = `test:question-reviews:${RUN_ID}`;
 const OTHER_RUN_LABEL = `test:question-reviews:${RUN_ID}:second-pass`;
 const STUDENT_EMAIL = `qr-student-${RUN_ID}@test.local`;

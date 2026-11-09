@@ -24,13 +24,14 @@ vi.mock("@/lib/auth", () => ({ getSessionUser: async () => session.user }));
 vi.mock("@/lib/supabase/server", () => ({ createSupabaseServerClient: () => session.client }));
 
 import { POST } from "@/app/api/activity/practice/route";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const STAMP = Date.now();
+const STAMP = testRunId();
 /** Marks the crowd fixtures (stats row source_ref, review note) for cleanup. */
 const CROWD_REF = `crowd-test-${STAMP}`;
 const EMAIL = `bank_verdict_${STAMP}@test.local`;

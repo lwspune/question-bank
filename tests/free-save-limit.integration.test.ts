@@ -23,6 +23,7 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { mustSignIn } from "./helpers/fixture";
 import { istDayKey } from "@/lib/email/dueNudge";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -30,7 +31,7 @@ const HAS_ENV =
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 const PASSWORD = "free-save-limit-pw-1234";
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 // "reveal": the daily answer limit's own student (claim_reveal, migration 0228).
 const ROLES = ["student", "pass", "practice", "off", "freeexam", "reveal"] as const;
 type Role = (typeof ROLES)[number];

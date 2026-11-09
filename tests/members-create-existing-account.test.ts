@@ -24,9 +24,9 @@
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { randomUUID } from "node:crypto";
 import { createMember } from "@/lib/members/admin";
 import { accountUpdatedAt } from "./helpers/fixture";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -36,7 +36,7 @@ const HAS_ENV =
 const ORIGINAL_PW = "student-own-pw-1234";
 // Never written by the code under test; the "unchanged" checks prove it.
 const ATTACKER_PW = "admin-chosen-pw-5678";
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 const STUDENT_EMAIL = `mc-student-${RUN_ID}@test.local`;
 const STAFF_EMAIL = `mc-staff-${RUN_ID}@test.local`;
 const OTHER_ORG_EMAIL = `mc-other-${RUN_ID}@test.local`;

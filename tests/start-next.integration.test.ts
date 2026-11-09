@@ -14,13 +14,14 @@ import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { randomUUID } from "node:crypto";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { mustSignIn } from "./helpers/fixture";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const RUN = Date.now().toString(36);
+const RUN = testRunId();
 const PAPER = `startnext-${RUN}`;
 
 type WeightRow = { chapter_id: string; paper_code: string; papers: number; q_per_paper: number; marks_per_paper: number; paper_marks: number };

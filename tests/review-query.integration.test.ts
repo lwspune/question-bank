@@ -12,13 +12,14 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { mustSignIn } from "./helpers/fixture";
 import { loadMissRows, loadMockTitles } from "@/lib/review/query";
 import { latestMisses, reasonOf } from "@/lib/review/fixList";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const STAMP = Date.now();
+const STAMP = testRunId();
 const MOCK_ID = "0b8d6c1a-3f2e-4d5c-9a8b-7c6d5e4f3a2b";
 
 describe.skipIf(!HAS_ENV)("Review's miss reads", () => {

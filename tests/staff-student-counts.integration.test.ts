@@ -14,13 +14,14 @@ import { mustSignIn } from "./helpers/fixture";
 import { countWeekStudyDays, countStudentWeekStudyDays } from "@/lib/goals/service";
 import { getOwnAnswerTotals, getStudentAnswerTotals } from "@/lib/celebrate/service";
 import { weekStartIst } from "@/lib/goals/weekly";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const STAMP = Date.now();
+const STAMP = testRunId();
 const STUDENT_EMAIL = `staff_counts_student_${STAMP}@test.local`;
 const SUPER_EMAIL = `staff_counts_super_${STAMP}@test.local`;
 const OTHER_EMAIL = `staff_counts_other_${STAMP}@test.local`;

@@ -20,6 +20,7 @@ import { createBranch } from "@/lib/branches/admin";
 import { createBatch } from "@/lib/batches/admin";
 import { setMemberBranches } from "@/lib/members/admin";
 import { mustSignIn } from "./helpers/fixture";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -27,7 +28,7 @@ const HAS_ENV =
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 const PASSWORD = "batch-enroll-rls-pw-1234";
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 const ADMIN_EMAIL = `be-rls-admin-${RUN_ID}@test.local`;
 const TX_EMAIL = `be-rls-tx-${RUN_ID}@test.local`;
 const TY_EMAIL = `be-rls-ty-${RUN_ID}@test.local`;

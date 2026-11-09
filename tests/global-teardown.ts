@@ -32,6 +32,16 @@
  * Per-suite afterAll hooks still clean up on the happy path; this is the
  * safety net for crashed / killed / parallel-interrupted runs.
  *
+ * PER-RUN OWNERSHIP (2026-11-09). Every session, worktree and CI job shares
+ * ONE test project, and this sweep used to delete EVERY test-looking row, so
+ * the first run to finish deleted the fixtures of any run still going (the
+ * "not present in table users" failures). Now the global setup below makes a
+ * folder for this run and passes it to the workers; `testRunId()`
+ * (tests/helpers/runId.ts) records every fixture id there; and the sweep and
+ * the guardrail touch only rows carrying one of THOSE ids, plus any test org or
+ * user older than STALE_HOURS (a killed run's leftovers). The canonical-
+ * adjacent chapters (stage 3) carry no id and are still deleted only when empty.
+ *
  * Why this rewrite (2026-06-11): the old teardown swept only test-NAMED
  * subjects by a hardcoded prefix list (which had already rotted —
  * `EditSetSubj_` was missing) and two canonical-adjacent nodes. It had NO
@@ -39,10 +49,33 @@
  * questions (11 PUBLIC) + 12 orgs leaked into production. See the Decisions log.
  */
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { isTestOrgName, isTestTaxonomyName, isTestAuthEmail, sweepUntilClean } from "./global-teardown-helpers";
+import { randomUUID } from "node:crypto";
+import { mkdirSync, readdirSync, rmSync, statSync } from "node:fs";
+import { tmpdir } from "node:os";
+import path from "node:path";
+import type { TestProject } from "vitest/node";
+import {
+  belongsToRun,
+  isTestTaxonomyName,
+  shouldSweepOrg,
+  shouldSweepUser,
+  sweepUntilClean,
+} from "./global-teardown-helpers";
+import { readRunIds } from "./helpers/runIdRegistry";
 import { resolveSupabaseTestEnv } from "./helpers/testenv";
 
-export default async function setup() {
+/** What one sweep may delete: this run's ids, and stale rows as of `now`. */
+export type SweepScope = { own: ReadonlySet<string>; now: Date };
+
+/** All runs' registry folders live here; each run makes its own. */
+const RUNS_ROOT = path.join(tmpdir(), "qb-test-runs");
+
+export default async function setup(project: TestProject) {
+  const runDir = path.join(RUNS_ROOT, randomUUID());
+  mkdirSync(runDir, { recursive: true });
+  project.provide("testRunDir", runDir);
+  removeOldRunDirs(runDir);
+
   return async function teardown(): Promise<void> {
     // Same env resolution as tests/setup.ts — globalSetup does NOT go through
     // setupFiles, and before this it read .env.local directly, which would
@@ -54,25 +87,50 @@ export default async function setup() {
     if (!url || !key) return; // tests skipped — nothing to clean
 
     const admin = createClient(url, key, { auth: { persistSession: false } });
+    const scope: SweepScope = { own: readRunIds(runDir), now: new Date() };
 
-    await sweepTestData(admin);
+    try {
+      await sweepTestData(admin, scope);
 
-    // GUARDRAIL — fail the run loudly if pollution survived. Resilient to the
-    // delete-visibility race: re-sweeps + re-checks before throwing on a leak
-    // that genuinely persists (see assertNoLeakedTestData).
-    await assertNoLeakedTestData(admin);
+      // GUARDRAIL — fail the run loudly if THIS run's pollution (or a stale
+      // leftover) survived. Resilient to the delete-visibility race: re-sweeps
+      // + re-checks before throwing on a leak that genuinely persists.
+      await assertNoLeakedTestData(admin, scope);
+    } finally {
+      rmSync(runDir, { recursive: true, force: true });
+    }
   };
+}
+
+/** A killed run never removes its folder: drop any older than a day. */
+function removeOldRunDirs(keep: string): void {
+  const dayAgo = Date.now() - 86_400_000;
+  let entries: string[] = [];
+  try {
+    entries = readdirSync(RUNS_ROOT);
+  } catch {
+    return;
+  }
+  for (const name of entries) {
+    const dir = path.join(RUNS_ROOT, name);
+    if (dir === keep) continue;
+    try {
+      if (statSync(dir).mtimeMs < dayAgo) rmSync(dir, { recursive: true, force: true });
+    } catch {
+      /* another run removed it first */
+    }
+  }
 }
 
 /**
  * The four-stage sweep. Idempotent + re-runnable, so the guardrail can call it
  * again when a post-sweep read still sees a (likely already-doomed) survivor.
  */
-async function sweepTestData(admin: SupabaseClient): Promise<void> {
-  // ── 1) ORG SWEEP (primary) ──────────────────────────────────────────────
-  const { data: orgs } = await admin.from("organizations").select("id, name");
+export async function sweepTestData(admin: SupabaseClient, scope: SweepScope): Promise<void> {
+  // ── 1) ORG SWEEP (primary): this run's test orgs + stale ones ───────────
+  const { data: orgs } = await admin.from("organizations").select("id, name, created_at");
   const testOrgIds = (orgs ?? [])
-    .filter((o) => isTestOrgName(o.name))
+    .filter((o) => shouldSweepOrg(o, scope.own, scope.now))
     .map((o) => o.id);
 
   if (testOrgIds.length > 0) {
@@ -84,8 +142,11 @@ async function sweepTestData(admin: SupabaseClient): Promise<void> {
 
   // ── 2) TEST TAXONOMY (global, no org_id) ────────────────────────────────
   const { data: subjects } = await admin.from("subjects").select("id, name");
+  // Subjects have no created_at, so only THIS run's: another run's empty
+  // subject may be about to receive its questions. A killed run's leftover
+  // subject waits for `npm run testdb:reset`.
   const testSubjectIds = (subjects ?? [])
-    .filter((s) => isTestTaxonomyName(s.name))
+    .filter((s) => isTestTaxonomyName(s.name) && belongsToRun(s.name, scope.own))
     .map((s) => s.id);
   for (const subjectId of testSubjectIds) {
     // Only drop a test subject once the org sweep has emptied it.
@@ -101,7 +162,7 @@ async function sweepTestData(admin: SupabaseClient): Promise<void> {
   await deleteEmptyCanonicalAdjacentSubtopic(admin, ["Maths", "Mathematics"], "Differentiation", "Chain Rule");
 
   // ── 4) AUTH USERS (admin API; org cascade leaves auth.users behind) ─────
-  const testUserIds = await listTestAuthUserIds(admin);
+  const testUserIds = await listTestAuthUserIds(admin, scope);
   if (testUserIds.length > 0) {
     // entitlements.user_id → auth.users; clear before deleting the user.
     await admin.from("entitlements").delete().in("user_id", testUserIds);
@@ -109,32 +170,35 @@ async function sweepTestData(admin: SupabaseClient): Promise<void> {
   }
 }
 
-/** Page through auth.users and collect the @test.local fixture accounts. */
-async function listTestAuthUserIds(admin: SupabaseClient): Promise<string[]> {
+/** Page through auth.users and collect the test accounts this run may delete. */
+async function listTestAuthUserIds(admin: SupabaseClient, scope: SweepScope): Promise<string[]> {
   const ids: string[] = [];
   for (let page = 1; ; page++) {
     const { data, error } = await admin.auth.admin.listUsers({ page, perPage: 1000 });
     if (error) break;
     const users = data?.users ?? [];
-    for (const u of users) if (isTestAuthEmail(u.email)) ids.push(u.id);
+    for (const u of users) if (shouldSweepUser(u, scope.own, scope.now)) ids.push(u.id);
     if (users.length < 1000) break;
   }
   return ids;
 }
 
-/** One read pass: the list of surviving test-signature "problems" (empty = clean). */
-async function collectLeaks(admin: SupabaseClient): Promise<string[]> {
+/** One read pass: this run's (or stale) surviving test rows (empty = clean).
+ *  Another live run's fresh rows are not a leak. */
+export async function collectLeaks(admin: SupabaseClient, scope: SweepScope): Promise<string[]> {
   const problems: string[] = [];
 
-  const { data: orgs } = await admin.from("organizations").select("name");
-  const leakedOrgs = (orgs ?? []).filter((o) => isTestOrgName(o.name)).map((o) => o.name);
+  const { data: orgs } = await admin.from("organizations").select("name, created_at");
+  const leakedOrgs = (orgs ?? []).filter((o) => shouldSweepOrg(o, scope.own, scope.now)).map((o) => o.name);
   if (leakedOrgs.length) problems.push(`orgs: ${leakedOrgs.join(", ")}`);
 
   const { data: subjects } = await admin.from("subjects").select("name");
-  const leakedSubjects = (subjects ?? []).filter((s) => isTestTaxonomyName(s.name)).map((s) => s.name);
+  const leakedSubjects = (subjects ?? [])
+    .filter((s) => isTestTaxonomyName(s.name) && belongsToRun(s.name, scope.own))
+    .map((s) => s.name);
   if (leakedSubjects.length) problems.push(`subjects: ${leakedSubjects.join(", ")}`);
 
-  const leakedUsers = await listTestAuthUserIds(admin);
+  const leakedUsers = await listTestAuthUserIds(admin, scope);
   if (leakedUsers.length) problems.push(`auth users: ${leakedUsers.length}`);
 
   return problems;
@@ -151,16 +215,16 @@ async function collectLeaks(admin: SupabaseClient): Promise<string[]> {
  * retry instead of false-throwing and blocking the push. A GENUINE leak persists
  * through every re-sweep and still fails the run.
  */
-async function assertNoLeakedTestData(admin: SupabaseClient): Promise<void> {
+async function assertNoLeakedTestData(admin: SupabaseClient, scope: SweepScope): Promise<void> {
   const problems = await sweepUntilClean(
-    () => collectLeaks(admin),
-    () => sweepTestData(admin),
+    () => collectLeaks(admin, scope),
+    () => sweepTestData(admin, scope),
     { attempts: 3, delayMs: 750 }
   );
 
   if (problems.length) {
     throw new Error(
-      `global-teardown left test data in the LIVE project (persisted through 3 re-sweeps — ` +
+      `global-teardown left this run's test data in the test project (persisted through 3 re-sweeps — ` +
         `not a visibility race) — ${problems.join(" | ")}. ` +
         `Investigate the sweep before trusting bank counts.`
     );

@@ -6,6 +6,7 @@ import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { recordChatInteraction } from "@/lib/chat/interactionsAdmin";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -15,7 +16,7 @@ const HAS_ENV =
 describe.skipIf(!HAS_ENV)("chat_interactions: typed questions", () => {
   let admin: SupabaseClient;
   let anon: SupabaseClient;
-  const tag = `typed-test-${randomUUID().slice(0, 8)}`;
+  const tag = `typed-test-${testRunId()}`;
 
   beforeAll(() => {
     admin = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {

@@ -8,16 +8,16 @@
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { randomUUID } from "node:crypto";
 import { loadWorkedExamples } from "@/lib/guide/loadWorkedExamples";
 import { formatProvenance } from "@/lib/questions/formatProvenance";
 import { sourceTag } from "@/lib/questions/sourceTag";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 const ORG_NAME = `Worked Ctx Org ${RUN_ID}`;
 const USER_EMAIL = `worked-ctx-${RUN_ID}@test.local`;
 const PASSAGE = `For the next item that follow: P(1,2,3), Q(4,5,6) ${RUN_ID}`;

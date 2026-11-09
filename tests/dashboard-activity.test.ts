@@ -6,6 +6,9 @@
 import { describe, it, expect, beforeAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { getRecentUploads } from "@/lib/dashboard/activity";
+import { testRunId } from "./helpers/runId";
+
+const EMPTY_ORG_RUN_ID = testRunId();
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -53,7 +56,7 @@ describe.skipIf(!HAS_ENV)("getRecentUploads (against LWS Pune seed)", () => {
   it("returns [] for an org with no uploads", async () => {
     const { data: emptyOrg, error } = await client
       .from("organizations")
-      .insert({ name: `__test_empty_org_${Date.now()}` })
+      .insert({ name: `__test_empty_org_${EMPTY_ORG_RUN_ID}` })
       .select("id")
       .single();
     expect(error).toBeNull();
