@@ -353,6 +353,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-09 (third) — Ask a parent to pay: a /pay link a parent opens with no account (0244).**
+  - **Why:** 586 students met an offer in 30 days, 85% left without checkout; "Need to ask a parent" was 6 of 26 why-not answers.
+  - **The order stays the contract:** the link names only the student and pass; the order is stamped for the student at today's price, so whoever pays, only that student gets the pass.
+  - **A table, not a signed token:** a 10-character code a parent trusts, 7 days, service-role only. "Already active" wins on the page, so nobody pays twice.
+  - **Measured:** paywall_event `parent_*` steps under the student's id + entitlement note `parent_link:<code>`; /dashboard/sales card, experiment `parent-pay`. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-09 (second) — Replies to feature requests: status + note on /feedback, one email per status (0243).**
   - **Why:** a request (0051) got nothing back; 10 from 9 students since 10-15, none answered. Question reports' replies stay LATER (owner).
   - **Own table, one row per request** (`feedback_replies`): user_feedback stays the student's append-only row; a composite FK refuses a reply on another student's request or an NPS score.
