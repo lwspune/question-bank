@@ -39,6 +39,10 @@ export type Pulse = {
    *  for V's "My plan for today" and the /board line. Optional for the same
    *  reason as `exam`. */
   path?: PathPulse;
+  /** Unread replies to the student's feedback (migration 0243), for the
+   *  avatar menu's "reply to your feedback" line. Optional for the same reason
+   *  as `exam`: an older entry shows no line until it expires. */
+  replies?: number;
 };
 
 export type PulseWeak = { chapterId: string; name: string; place: string; due: number };
@@ -134,7 +138,12 @@ export function parsePulseEntry(raw: string | null): PulseEntry | null {
     if ((x.state !== "on" && x.state !== "offer") || !isPathExam(x.exam)) return null;
     path = { state: x.state, exam: x.exam };
   }
-  return { at: o.at, due: o.due, week: { done: week.done, goal: week.goal as number | null }, exam, totals, weak, chapterDue, path };
+  let replies = 0;
+  if (o.replies !== undefined && o.replies !== null) {
+    if (!isCount(o.replies)) return null;
+    replies = o.replies;
+  }
+  return { at: o.at, due: o.due, week: { done: week.done, goal: week.goal as number | null }, exam, totals, weak, chapterDue, path, replies };
 }
 
 

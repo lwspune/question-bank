@@ -23,6 +23,7 @@ import { getOwnProfile } from "@/lib/profile/service";
 import { resolveExamDate } from "@/lib/exam/calendar";
 import type { Pulse } from "./cache";
 import { isPathExam, pathPulseState, type PathExam } from "@/lib/path/model";
+import { countUnreadReplies } from "@/lib/feedback/replyService";
 
 export async function buildPulse(
   db: SupabaseClient,
@@ -30,7 +31,7 @@ export async function buildPulse(
   now: Date,
   counts: { week: Promise<OwnWeekly>; answers: Promise<AnswerTotals | null> }
 ): Promise<Required<Pulse>> {
-  const [ladder, week, profile, answers, focusExam] = await Promise.all([
+  const [ladder, week, profile, answers, focusExam, replies] = await Promise.all([
     getOwnLadder(db, userId, now),
     counts.week,
     getOwnProfile(db, userId),
@@ -45,6 +46,11 @@ export async function buildPulse(
         console.error("pulse focus read failed", e instanceof Error ? e.message : e);
         return null;
       }),
+    // Unread replies to their feedback (0243). A failed read shows no line.
+    countUnreadReplies(db, userId).catch((e: unknown) => {
+      console.error("pulse replies read failed", e instanceof Error ? e.message : e);
+      return 0;
+    }),
   ]);
   const countdown = resolveExamDate(profile, now);
   const exam = countdown
@@ -64,7 +70,7 @@ export async function buildPulse(
   // Class 12 board among their exams. A failed read shows no path line.
   const active = profile.targetExams.some(isPathExam) ? await activePathExam(db, userId) : undefined;
   const path = active === undefined ? null : pathPulseState(profile.targetExams, active);
-  return { due: focused.length, week, exam, totals, weak, chapterDue, path };
+  return { due: focused.length, week, exam, totals, weak, chapterDue, path, replies };
 }
 
 /** The active path's board, null with none, undefined when the read failed. */

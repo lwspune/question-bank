@@ -7,6 +7,8 @@ import BackToDashboard from "@/app/dashboard/BackToDashboard";
 import { getSessionSuperadmin } from "@/lib/auth";
 import { getFeedbackOverview, type FeedbackItem, type MockRatingItem } from "@/lib/feedback/adminStats";
 import { RATINGS, RATING_LABELS, isRating, type RatingDistribution } from "@/lib/mocks/feedback";
+import { STATUS_LABELS } from "@/lib/feedback/replies";
+import ReplyForm from "./ReplyForm";
 
 export const dynamic = "force-dynamic";
 
@@ -115,12 +117,19 @@ export default async function FeedbackDashboardPage() {
             </p>
           ) : (
             <ul className="space-y-2">
-              {featureRequests.map((f, i) => (
-                <li key={i} className="rounded-lg border bg-card p-3 text-sm">
-                  <p className="text-foreground">{f.message}</p>
+              {featureRequests.map((f) => (
+                <li key={f.id} className="rounded-lg border bg-card p-3 text-sm">
+                  <p className="whitespace-pre-line break-words text-foreground">{f.message}</p>
                   <p className="mt-1 text-xs text-muted-foreground">
                     {f.who} · {fmtDate(f.createdAt)}
                   </p>
+                  {f.reply && (
+                    <p className="mt-2 text-xs text-muted-foreground">
+                      Replied {fmtDate(f.reply.repliedAt)}: {STATUS_LABELS[f.reply.status]} ·{" "}
+                      {f.reply.seen ? "seen" : "not seen yet"}
+                    </p>
+                  )}
+                  <ReplyForm feedbackId={f.id} initial={f.reply ? { status: f.reply.status, note: f.reply.note } : null} />
                 </li>
               ))}
             </ul>
