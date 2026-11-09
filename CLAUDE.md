@@ -353,6 +353,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-09 (third) — Fix Points: each fixed mistake is 1% off the pass, up to 40% (0245); referrals next.**
+  - **Owner's gut call against the data:** of 33 buyers none had fixed 10+ mistakes and 18 paid on day one; measured by experiment `fix-points` (`npm run fix-points:readout`).
+  - **Its own table, server-written** (`fix_points`): students may insert their own `user_activity`, so `answer_correct` cannot carry money. Self-marks and same-day right answers (an echo) pay nothing.
+  - **The order stays the contract:** the order route stamps the discounted price; a failed points read sells at list price. Display (`/api/me/fix-points`) never decides a price.
+  - **Points shown with their value on drill and Review** (owner exception to "no pass in general copy"). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-09 (second) — Replies to feature requests: status + note on /feedback, one email per status (0243).**
   - **Why:** a request (0051) got nothing back; 10 from 9 students since 10-15, none answered. Question reports' replies stay LATER (owner).
   - **Own table, one row per request** (`feedback_replies`): user_feedback stays the student's append-only row; a composite FK refuses a reply on another student's request or an NPS score.
