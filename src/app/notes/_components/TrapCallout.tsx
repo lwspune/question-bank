@@ -1,3 +1,4 @@
+import type { ComponentType } from "react";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import { AlertTriangle } from "lucide-react";
 
@@ -5,13 +6,16 @@ type Props = {
   title: string;
   body: string;
   presentMode?: boolean;
+  /** Draws the maths. Default: the client KatexRenderer. The /board revision
+   *  sheet passes a server-drawn one with mhchem loaded (2026-11-09). */
+  Katex?: ComponentType<{ text: string; className?: string }>;
 };
 
 /**
  * Distinct warning-style callout for subtopic-specific gotchas. Amber/destructive
  * tone separates these visually from positive concept cards and formulas.
  */
-export default function TrapCallout({ title, body, presentMode }: Props) {
+export default function TrapCallout({ title, body, presentMode, Katex = KatexRenderer }: Props) {
   return (
     <div
       className={
@@ -31,7 +35,7 @@ export default function TrapCallout({ title, body, presentMode }: Props) {
           }
           aria-hidden
         />
-        <KatexRenderer text={title} />
+        <Katex text={title} />
       </p>
       <div
         className={
@@ -41,7 +45,7 @@ export default function TrapCallout({ title, body, presentMode }: Props) {
             : "mt-2 text-sm")
         }
       >
-        <KatexRenderer text={body} />
+        <Katex text={body} />
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import type { ComponentType } from "react";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import { Sigma } from "lucide-react";
 import type { FormulaSpec } from "@/app/notes/_types";
@@ -7,13 +8,16 @@ type Props = {
   formula: FormulaSpec;
   /** Vestigial — scaled fonts for the (removed 2026-06-09) Present mode; no caller passes it now. */
   presentMode?: boolean;
+  /** Draws the maths. Default: the client KatexRenderer. The /board revision
+   *  sheet passes a server-drawn one with mhchem loaded (2026-11-09). */
+  Katex?: ComponentType<{ text: string; className?: string }>;
 };
 
 /**
  * Boxed, prominent formula display with optional symbol legend. The box is
  * compact by default; `presentMode` scaled it for board legibility (now unused).
  */
-export default function FormulaBlock({ formula, presentMode }: Props) {
+export default function FormulaBlock({ formula, presentMode, Katex = KatexRenderer }: Props) {
   return (
     <div
       className={
@@ -39,7 +43,7 @@ export default function FormulaBlock({ formula, presentMode }: Props) {
             : "mt-2 text-lg leading-relaxed")
         }
       >
-        <KatexRenderer text={`\\[${formula.latex}\\]`} />
+        <Katex text={`\\[${formula.latex}\\]`} />
       </div>
       {formula.symbols && formula.symbols.length > 0 && (
         <ul
@@ -53,11 +57,11 @@ export default function FormulaBlock({ formula, presentMode }: Props) {
               <span className="font-semibold text-foreground">
                 {/* The handout's rule: bare math ("F_b") is wrapped, prose stays text.
                     Rendered raw, 109 bare symbols printed as markup (2026-11-02). */}
-                <KatexRenderer text={legendSymbolText(s.symbol)} />
+                <Katex text={legendSymbolText(s.symbol)} />
               </span>
               <span aria-hidden>=</span>
               <span>
-                <KatexRenderer text={s.meaning} />
+                <Katex text={s.meaning} />
               </span>
             </li>
           ))}
