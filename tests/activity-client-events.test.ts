@@ -395,3 +395,47 @@ describe("parseClientEvent - the chapter page's Fix line seen (2026-11-07)", () 
     expect(parseClientEvent({ kind: "surface_viewed", surface: "drill", from: "chapter" }, "u1", NOW).ok).toBe(false);
   });
 });
+
+describe("parseClientEvent - Start next seen and tapped (2026-11-09)", () => {
+  const CH = "c0ffee00-1b2c-4d3e-9f00-112233445566";
+
+  it("records the card seen with its page, once per page per day", () => {
+    const r = parseClientEvent({ kind: "surface_viewed", surface: "start_next", from: "home" }, "u1", NOW);
+    expect(r).toEqual({
+      ok: true,
+      value: {
+        kind: "surface_viewed",
+        metadata: { surface: "start_next", from: "home" },
+        dedupeKey: "view:start_next:home:u1:2026-09-27",
+      },
+    });
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "start_next", from: "map" }, "u1", NOW).ok).toBe(true);
+  });
+
+  it("records a tap with its chapter and page, once per chapter per day", () => {
+    const r = parseClientEvent({ kind: "surface_viewed", surface: "start_next_tap", chapterId: CH, from: "map" }, "u1", NOW);
+    expect(r).toEqual({
+      ok: true,
+      value: {
+        kind: "surface_viewed",
+        metadata: { surface: "start_next_tap", chapterId: CH, from: "map" },
+        dedupeKey: `view:start_next_tap:${CH}:u1:2026-09-27`,
+      },
+    });
+  });
+
+  it("refuses an unknown page, a chapter on the seen record, or a tap without its chapter", () => {
+    for (const bad of [
+      { surface: "start_next" },
+      { surface: "start_next", from: "board_chapter" },
+      { surface: "start_next", from: "home", chapterId: CH },
+      { surface: "start_next", from: "home", path: "/me" },
+      { surface: "start_next_tap", from: "home" },
+      { surface: "start_next_tap", chapterId: "not-a-uuid", from: "home" },
+      { surface: "start_next_tap", chapterId: CH },
+      { surface: "start_next_tap", chapterId: CH, from: "chapter" },
+    ]) {
+      expect(parseClientEvent({ kind: "surface_viewed", ...bad }, "u1", NOW).ok, JSON.stringify(bad)).toBe(false);
+    }
+  });
+});

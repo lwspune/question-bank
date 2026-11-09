@@ -13,6 +13,7 @@ import type { Surface } from "./views";
 import type { DownloadBox, PaywallGate, VIEW_BROWSERS } from "./clientEvents";
 import type { DeclineReason } from "@/lib/billing/declineReasons";
 import type { ChapterFixFrom } from "@/lib/drill/from";
+import type { StartNextFrom } from "@/lib/me/startNext";
 
 const ENDPOINT = "/api/activity/event";
 const sent = new Set<string>();
@@ -33,6 +34,19 @@ type ClientEvent =
       surface: "chapter_fix";
       chapterId: string;
       from: ChapterFixFrom;
+    }
+  | {
+      /** Start next seen on its page (lib/me/startNext). */
+      kind: "surface_viewed";
+      surface: "start_next";
+      from: StartNextFrom;
+    }
+  | {
+      /** A Start next chapter's Start tapped. */
+      kind: "surface_viewed";
+      surface: "start_next_tap";
+      chapterId: string;
+      from: StartNextFrom;
     }
   | {
       kind: "paywall_event";

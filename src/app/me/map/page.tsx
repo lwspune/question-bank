@@ -184,6 +184,7 @@ export default async function MasteryMapPage(props: { searchParams: Promise<Sear
             <StartNext
               chapters={notStarted}
               title="Not started yet"
+              from="map"
               note="The chapters of this subject worth the most that you haven't answered anything in."
             />
 
