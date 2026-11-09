@@ -1,0 +1,35 @@
+#!/bin/sh
+# Warn when the SHARED checkout leaves main (owner, 2026-11-09).
+#
+# Several Claude sessions, and their dev servers, work in the one
+# Downloads/Question_Bank folder. A branch switch there changes every one of
+# their files at once, and nothing says so: on 2026-11-09 a session's
+# `checkout -b` silently swapped another session's code under its running dev
+# server. New work belongs in a linked worktree, which is the switcher's own,
+# so this hook stays quiet there. Git has no pre-checkout hook, so it can only
+# warn, not refuse. Pinned by tests/post-checkout-hook.test.ts.
+#
+# Arguments from git: $1 old HEAD, $2 new HEAD, $3 = 1 for a branch checkout
+# (0 for a file checkout).
+
+[ "$3" = "1" ] || exit 0
+[ -n "$CI" ] && exit 0
+
+git_dir=$(git rev-parse --path-format=absolute --git-dir 2>/dev/null) || exit 0
+common_dir=$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null) || exit 0
+# A linked worktree has its own git dir under <common>/worktrees/<name>.
+[ "$git_dir" = "$common_dir" ] || exit 0
+
+branch=$(git symbolic-ref --short -q HEAD)
+[ "$branch" = "main" ] && exit 0
+[ -n "$branch" ] || branch="detached at $(git rev-parse --short HEAD)"
+
+cat >&2 <<EOF
+
+WARNING: this is the SHARED folder, and it is now on '$branch', not main.
+Other sessions and their dev servers use this folder, so their files just changed too.
+  Go back:            git checkout main
+  Work on your own:   git worktree add ../qb-<name> -b <branch> main
+
+EOF
+exit 0
