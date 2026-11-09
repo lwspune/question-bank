@@ -6,7 +6,7 @@
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { randomUUID } from "node:crypto";
+import { testRunId } from "./helpers/runId";
 import { mustSignIn } from "./helpers/fixture";
 import { awardFixPoints, readFixPoints } from "@/lib/billing/fixPointsService";
 
@@ -15,7 +15,7 @@ const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 const EMAIL = `fix-points-${RUN_ID}@test.local`;
 const PASSWORD = "test-password-12345";
 const DAY = 24 * 60 * 60 * 1000;
