@@ -10,7 +10,7 @@ import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import { perMonthLine } from "@/lib/billing/offerCopy";
 import type { PassCta } from "@/lib/billing/plans";
-import { useDiscountedPass, FixPointsOfferNote } from "@/components/billing/useFixPoints";
+import { useDiscountedPass, VaultPointsOfferNote } from "@/components/billing/useFixPoints";
 
 /**
  * The Premium Pass under V's hourly-limit line (owner, 2026-11-07, 0226): a
@@ -69,7 +69,7 @@ export default function VHourlyOffer({
         <p className="text-center text-xs text-muted-foreground">
           One-time payment{perMonth ? `, ${perMonth}` : ""}. UPI, card or netbanking.
         </p>
-        <FixPointsOfferNote planId={pass.planId} />
+        <VaultPointsOfferNote planId={pass.planId} />
         {pass.parentLink && !busy && <AskParent planId={pass.planId} gate="v_hourly" className="pt-1" />}
       </div>
     </div>

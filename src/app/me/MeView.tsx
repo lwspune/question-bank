@@ -21,6 +21,7 @@ import { STAGE_LABELS } from "@/lib/profile/onboarding";
 import { homeReminderAsk } from "@/lib/profile/push";
 import { cn } from "@/lib/utils";
 import MeHeader, { type MeTab } from "@/components/me/MeHeader";
+import { VaultPointsCard } from "@/components/billing/useFixPoints";
 
 /**
  * The body of /me, shared by the student's own /me and the staff view of a
@@ -148,6 +149,11 @@ export default function MeView({
       {/* The chapters holding most waiting mistakes, each with its own Fix
           (2026-11-06): 448 of 745 /me visitors had misses waiting. */}
       <WeakSpots pulse={viewAs?.pulse} initialPulse={initialPulse} />
+
+      {/* Vault Points (owner, 2026-11-09): what fixing those mistakes is
+          worth. Read by the browser for the signed-in viewer, so the staff
+          view says what is here instead (it would show the VIEWER's points). */}
+      {staff ? <HiddenNote>Here they see their Vault Points and what they are worth.</HiddenNote> : <VaultPointsCard />}
 
       {/* The highest-value chapters not started (2026-11-09). A board-plan
           student's plan already orders their chapters, so not for them. */}

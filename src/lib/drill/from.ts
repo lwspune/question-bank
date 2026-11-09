@@ -20,6 +20,7 @@ export const DRILL_FROM = [
   "today", // the /me Today card
   "me_tile", // the /me progress row's "fixed" tile (2026-11-05)
   "me_weak", // a chapter's Fix button in /me's Weak spots (2026-11-06)
+  "me_points", // the Fix link on /me's Vault Points card (2026-11-09)
   "result", // the mock result page's headline button
   "findings", // the result page's findings card
   "map", // /me/map

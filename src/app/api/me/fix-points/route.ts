@@ -41,7 +41,7 @@ export async function GET(request: NextRequest) {
       userHasAnyAccess(db, user.id, sitePassScopes("pyqvault"), now.getTime()),
     ]);
     return NextResponse.json(
-      { eligible: true, ...fixPointsView({ points: balance.points, plans, hasPass }) },
+      { eligible: true, ...fixPointsView({ points: balance.points, plans, hasPass, oldestAt: balance.oldestAt }) },
       { headers: { "Cache-Control": "private, no-store" } }
     );
   } catch (e) {

@@ -17,7 +17,7 @@ import { offerPriceLine, perMonthLine, splitOfferPerks } from "@/lib/billing/off
 import { alsoIncludedPerks, type PassOfferLead } from "@/lib/billing/passOfferLead";
 import type { PassCta } from "@/lib/billing/plans";
 import type { DownloadBox } from "@/lib/activity/clientEvents";
-import { useDiscountedPass, FixPointsOfferNote } from "@/components/billing/useFixPoints";
+import { useDiscountedPass, VaultPointsOfferNote } from "@/components/billing/useFixPoints";
 
 /**
  * The download box's offer to a visitor without the pass, sold IN PLACE
@@ -143,7 +143,7 @@ export default function PassOffer({
                 One-time payment, no auto-renewal. Pay by UPI, card or netbanking.
               </span>
             </p>
-            <FixPointsOfferNote planId={pass.planId} className="text-xs font-medium text-emerald-700 dark:text-emerald-400" />
+            <VaultPointsOfferNote planId={pass.planId} className="text-xs font-medium text-emerald-700 dark:text-emerald-400" />
             {isSignedIn && (
               <WhyNotNow
                 gate={GATE[surface]}

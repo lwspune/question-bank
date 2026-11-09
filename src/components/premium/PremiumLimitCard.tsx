@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { PassCta } from "@/lib/billing/plans";
-import { PassPrice, FixPointsOfferNote } from "@/components/billing/useFixPoints";
+import { PassPrice, VaultPointsOfferNote } from "@/components/billing/useFixPoints";
 import { pricingHref } from "@/lib/billing/checkoutReturn";
 
 /**
@@ -39,7 +39,7 @@ export default function PremiumLimitCard({
           )}
         </Link>
       </Button>
-      {pass && <FixPointsOfferNote planId={pass.planId} className="mt-2 text-xs font-medium text-emerald-700 dark:text-emerald-400" />}
+      {pass && <VaultPointsOfferNote planId={pass.planId} className="mt-2 text-xs font-medium text-emerald-700 dark:text-emerald-400" />}
     </div>
   );
 }
