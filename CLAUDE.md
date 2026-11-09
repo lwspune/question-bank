@@ -353,6 +353,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-09 (ninth) — Homepage exam carousel; /browse exams grouped by goal (0248).**
+  - **Why:** owner, "looks plain, wants a wow". A 3D ring of exam cards replaces the phone screenshot in the navy panel; mockups approved first, carousel on `/`, NOT /browse (owner corrected that mid-build).
+  - **Every exam declares a `goal`** (5, `lib/exam/examGoals.ts`), not its tier: SPI is a Class 10 exam aimed at NDA. /browse groups its exam list by it; nothing else there changed.
+  - **Year bars need 0248** (an index): the grouped read was 7.9 s, anon's limit is 3 s; index-only it is 50 ms. A year needs 20+ questions to count, else JEE showed "2012" from 9 reprinted AIEEE questions.
+  - **The server places every card** (`showcaseSlots.ts`, import-free); 4.5 s per slide, Pause button, still under Reduce motion. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-09 (eighth) — Study-circle button test on Home (0247); a hook warns when the shared folder leaves main.**
   - **Why:** a Class 10 student's post asked for a study partner. Matching strangers was ruled out: most are minors (safety, DPDP consent) and the pool is thin (29 CBSE 10 answerers in 30 days).
   - **Measure before building:** a card says it is not built yet; it records when it comes on screen, so Yes has a denominator. Two equal buttons; a filled Yes would nudge the answer.
