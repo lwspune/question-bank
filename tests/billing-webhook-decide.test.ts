@@ -106,3 +106,12 @@ describe("decideWebhook: other events", () => {
     });
   });
 });
+
+describe("decideWebhook and Fix Points", () => {
+  it("notes a pass bought with points", async () => {
+    const { stampDiscountNotes } = await import("@/lib/billing/fixPoints");
+    const notes = stampDiscountNotes(stampOrderNotes(MOCK, "u1"), MOCK, { points: 7 });
+    const d = decideWebhook(orderPaid({ notes, amount_paid: Number(notes.amountPaise) }));
+    expect(d).toMatchObject({ action: "grant", note: "fix_points:7" });
+  });
+});

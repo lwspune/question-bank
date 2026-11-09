@@ -71,6 +71,7 @@ import {
   type PickVerdict,
 } from "@/lib/questions/bankVerdict";
 import { pickFixNudge, type FixNudge } from "@/lib/drill/fixNudge";
+import { awardFixPoints } from "@/lib/billing/fixPointsService";
 import { getOwnLadder } from "@/lib/drill/service";
 import { MISS_KINDS } from "@/lib/drill/select";
 import { istDayStartIso } from "@/lib/email/dueNudge";
@@ -149,6 +150,18 @@ export async function POST(request: NextRequest) {
   // question per IST day; a dropped one fails safe (the question stays due).
   await logActivityBatch(db, user.id, reveals);
   await logActivityBatchOnce(db, user.id, ladder);
+
+  // Fix Points (0245): a right pick on a question missed before today pays a
+  // point. The grader above decided "right"; the award checks "before today".
+  const fixed = correctlyAnsweredIds(verdicts).filter((id) => priorWrongIds.has(id));
+  if (fixed.length > 0 && parsed.surface !== "guide") {
+    await awardFixPoints(createSupabaseAdminClient(), {
+      userId: user.id,
+      questionIds: fixed,
+      source: parsed.surface,
+      now,
+    });
+  }
 
   // Read AFTER the writes above, so the answer that crossed the line counts.
   // `crowd` is "beat the crowd" (lib/celebrate/crowd): the highest tier among

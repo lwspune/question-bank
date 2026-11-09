@@ -15,6 +15,7 @@ import { otherBenefits, perMonthLine } from "@/lib/billing/offerCopy";
 import type { PassCta } from "@/lib/billing/plans";
 import type { PracticeSurface } from "@/lib/questions/practiceBatch";
 import { dailyRevealLimit, dailyRevealPass } from "./useRevealMeter";
+import { useDiscountedPass, FixPointsOfferNote } from "@/components/billing/useFixPoints";
 
 /**
  * The signed-in daily wall (migration 0134, 2026-10-05): a free student has
@@ -83,7 +84,7 @@ const reload = () => window.location.reload();
  */
 export function RevealDailyOffer({
   surface,
-  pass,
+  pass: offered,
   limit,
   onPaid = reload,
   checkoutSurface = "reveal_wall",
@@ -94,6 +95,8 @@ export function RevealDailyOffer({
   onPaid?: () => void;
   checkoutSurface?: CheckoutSurface;
 }) {
+  // Fix Points (0245) lower the price shown; the order route charges it.
+  const pass = useDiscountedPass(offered);
   useDailyWallSeen(surface);
   const router = useRouter();
   const [showOthers, setShowOthers] = useState(false);
@@ -162,6 +165,7 @@ export function RevealDailyOffer({
         <p className="text-center text-xs text-muted-foreground">
           One-time payment{perMonth ? `, ${perMonth}` : ""}. UPI, card or netbanking.
         </p>
+        <FixPointsOfferNote planId={pass.planId} />
       </div>
       <div className="space-y-3 border-t border-brand-accent/20 pt-3">
         <p className="text-center text-xs text-muted-foreground">

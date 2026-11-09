@@ -49,19 +49,25 @@ export function fixedMessage(totalFixed: number): string {
  * answer to a new question. Order: the fix (the student's own progress), then
  * beating the crowd, then a milestone. V laughs at a win, talks otherwise.
  */
+/** V's line when a drill answer earns a Fix Point (owner, 2026-11-09: shown with its value). */
+export const FIX_POINT_LINE = "That earned you 1 fix point: 1% off the pass.";
+
 export function drillVSays(input: {
   correct: boolean;
   progress: AnswerProgress;
   fixedTotal: number | null;
   crowd: CrowdTier | null;
   milestone: number | null;
+  /** This answer earned a Fix Point (migration 0245). */
+  fixPoint?: boolean;
 }): { lines: string[]; face: "laugh" | "talk"; fixed: boolean } | null {
   if (!input.correct) return null;
   const lines: string[] = [];
   const fixed = input.progress === "fixed" && input.fixedTotal !== null;
   if (fixed) lines.push(fixedMessage(input.fixedTotal!));
+  if (input.fixPoint) lines.push(FIX_POINT_LINE);
   if (input.crowd !== null) lines.push(crowdMessage(input.crowd));
   if (input.milestone !== null) lines.push(milestoneMessage(input.milestone));
   if (lines.length === 0) return null;
-  return { lines, face: fixed || input.crowd !== null ? "laugh" : "talk", fixed };
+  return { lines, face: fixed || input.fixPoint || input.crowd !== null ? "laugh" : "talk", fixed };
 }

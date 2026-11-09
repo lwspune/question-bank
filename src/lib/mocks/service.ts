@@ -21,6 +21,8 @@ import {
 import { gradeMock, questionOutcome, remainingSecs, type MockGradeQuestion } from "./attempt";
 import { type OptionLabel, type SavedResponse } from "./answers";
 import { logActivity, logActivityBatch } from "@/lib/activity/service";
+import { awardFixPoints } from "@/lib/billing/fixPointsService";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import {
   selectAnswerCorrectEvents,
   answerCorrectDedupeKey,
@@ -416,6 +418,16 @@ export async function submitAttempt(
   }
 
   await logActivityBatch(db, userId, events, at.getTime());
+  // Fix Points (0245): each recovered question pays, if its miss was from before
+  // the day of this attempt. Best-effort, never costs the submit.
+  if (recovered.length > 0) {
+    await awardFixPoints(createSupabaseAdminClient(), {
+      userId,
+      questionIds: recovered.map((r) => r.questionId),
+      source: "mock",
+      now: at,
+    });
+  }
 
   return {
     attemptId,

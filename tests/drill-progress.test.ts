@@ -8,7 +8,7 @@
  */
 import { describe, it, expect } from "vitest";
 import { fixedCount, type DrillEvent } from "@/lib/drill/select";
-import { answerProgress, drillVSays, fixedMessage, progressLine } from "@/lib/drill/progress";
+import { answerProgress, drillVSays, fixedMessage, progressLine, FIX_POINT_LINE } from "@/lib/drill/progress";
 import { crowdMessage } from "@/lib/celebrate/crowd";
 import { milestoneMessage } from "@/lib/celebrate/milestones";
 
@@ -110,6 +110,17 @@ describe("drillVSays — what V says inside the drill's answer panel", () => {
 
   it("laughs when a right answer beats the crowd, even on a new question", () => {
     expect(drillVSays({ ...base, crowd: 70 })).toEqual({ lines: [crowdMessage(70)], face: "laugh", fixed: false });
+  });
+
+  it("names a Fix Point right after the fix (0245)", () => {
+    expect(drillVSays({ ...base, progress: "fixed", fixedTotal: 3, fixPoint: true })).toEqual({
+      lines: [fixedMessage(3), FIX_POINT_LINE],
+      face: "laugh",
+      fixed: true,
+    });
+    // A point can come on an answer the ladder calls only "right" (a miss from an earlier day).
+    expect(drillVSays({ ...base, fixPoint: true })).toEqual({ lines: [FIX_POINT_LINE], face: "laugh", fixed: false });
+    expect(FIX_POINT_LINE).toBe("That earned you 1 fix point: 1% off the pass.");
   });
 
   it("talks when only a milestone came with the answer", () => {

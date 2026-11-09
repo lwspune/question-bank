@@ -9,6 +9,9 @@ import { bookCheckoutEvent, checkoutBox, checkoutGate, paywallEvent } from "@/li
 import { readCountry, withCountry } from "@/lib/acquisition/country";
 import { ebookOrderTerms } from "@/lib/ebooks/checkout";
 import { stampEbookOrderNotes } from "@/lib/ebooks/order";
+import { planTakesDiscount, stampDiscountNotes } from "@/lib/billing/fixPoints";
+import { readFixPoints } from "@/lib/billing/fixPointsService";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
 export const maxDuration = 30;
 
@@ -70,11 +73,24 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Unknown plan" }, { status: 400 });
   }
 
+  // Fix Points (0245): the server reads the buyer's points NOW and the order
+  // carries the price they make, so the payment is held to it. A failed read
+  // sells at the list price: never a discount nobody earned.
+  let points = 0;
+  if (planTakesDiscount(plan)) {
+    try {
+      points = (await readFixPoints(createSupabaseAdminClient(), user.id, new Date())).points;
+    } catch (e) {
+      console.error("order: fix points read failed", e);
+    }
+  }
+  const notes = stampDiscountNotes(stampOrderNotes(plan, user.id), plan, { points });
+
   const result = await createOrder({
-    amountPaise: plan.amountPaise,
+    amountPaise: Number(notes.amountPaise),
     currency: plan.currency,
     receipt: `qb_${plan.id}_${user.id.slice(0, 8)}`,
-    notes: stampOrderNotes(plan, user.id),
+    notes,
   });
   if (!result.ok) {
     console.error("razorpay createOrder failed:", result.error);

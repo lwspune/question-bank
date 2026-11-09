@@ -10,6 +10,7 @@ import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import { perMonthLine } from "@/lib/billing/offerCopy";
 import type { PassCta } from "@/lib/billing/plans";
+import { useDiscountedPass, FixPointsOfferNote } from "@/components/billing/useFixPoints";
 
 /**
  * The Premium Pass under V's hourly-limit line (owner, 2026-11-07, 0226): a
@@ -19,7 +20,7 @@ import type { PassCta } from "@/lib/billing/plans";
  * it (no upgrade price yet), and neither does a signed-out visitor.
  */
 export default function VHourlyOffer({
-  pass,
+  pass: offered,
   premiumLimit,
   onPaid,
 }: {
@@ -28,6 +29,8 @@ export default function VHourlyOffer({
   /** Access granted: the caller asks the stopped message again. */
   onPaid: () => void;
 }) {
+  // Fix Points (0245) lower the price shown; the order route charges it.
+  const pass = useDiscountedPass(offered);
   const router = useRouter();
   useEffect(() => {
     sendActivityOnce("v_hourly", { kind: "paywall_event", step: "shown", gate: "v_hourly" });
@@ -66,6 +69,7 @@ export default function VHourlyOffer({
         <p className="text-center text-xs text-muted-foreground">
           One-time payment{perMonth ? `, ${perMonth}` : ""}. UPI, card or netbanking.
         </p>
+        <FixPointsOfferNote planId={pass.planId} />
         {pass.parentLink && !busy && <AskParent planId={pass.planId} gate="v_hourly" className="pt-1" />}
       </div>
     </div>

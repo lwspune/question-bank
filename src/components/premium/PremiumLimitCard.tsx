@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { PassCta } from "@/lib/billing/plans";
+import { PassPrice, FixPointsOfferNote } from "@/components/billing/useFixPoints";
 import { pricingHref } from "@/lib/billing/checkoutReturn";
 
 /**
@@ -29,9 +30,16 @@ export default function PremiumLimitCard({
       <p className="mx-auto mt-1 max-w-md text-sm text-muted-foreground">{body}</p>
       <Button asChild variant="brand" size="lg" className="mt-4 w-full sm:w-auto">
         <Link href={pricingHref(pass?.urlKey ?? null, returnTo)}>
-          {pass ? `Get the ${pass.label}: ${pass.price}` : "See passes"}
+          {pass ? (
+            <>
+              Get the {pass.label}: <PassPrice pass={pass} />
+            </>
+          ) : (
+            "See passes"
+          )}
         </Link>
       </Button>
+      {pass && <FixPointsOfferNote planId={pass.planId} className="mt-2 text-xs font-medium text-emerald-700 dark:text-emerald-400" />}
     </div>
   );
 }

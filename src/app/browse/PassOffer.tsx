@@ -17,6 +17,7 @@ import { offerPriceLine, perMonthLine, splitOfferPerks } from "@/lib/billing/off
 import { alsoIncludedPerks, type PassOfferLead } from "@/lib/billing/passOfferLead";
 import type { PassCta } from "@/lib/billing/plans";
 import type { DownloadBox } from "@/lib/activity/clientEvents";
+import { useDiscountedPass, FixPointsOfferNote } from "@/components/billing/useFixPoints";
 
 /**
  * The download box's offer to a visitor without the pass, sold IN PLACE
@@ -30,7 +31,7 @@ import type { DownloadBox } from "@/lib/activity/clientEvents";
  * the next step while its own state, including "open", survives.
  */
 export default function PassOffer({
-  pass,
+  pass: offered,
   isSignedIn,
   freeAfterSignIn = false,
   returnTo,
@@ -69,6 +70,8 @@ export default function PassOffer({
    */
   onSignedIn?: () => void;
 }) {
+  // Fix Points (0245) lower the price shown; the order route charges it.
+  const pass = useDiscountedPass(offered);
   // Every box that renders this is a download gate: lead with downloads. With
   // a lead, the lead says what downloading gets you and the rest follow it.
   // Without one (2026-10-25), three perks and the rest on one line, without
@@ -140,6 +143,7 @@ export default function PassOffer({
                 One-time payment, no auto-renewal. Pay by UPI, card or netbanking.
               </span>
             </p>
+            <FixPointsOfferNote planId={pass.planId} className="text-xs font-medium text-emerald-700 dark:text-emerald-400" />
             {isSignedIn && (
               <WhyNotNow
                 gate={GATE[surface]}

@@ -21,6 +21,9 @@ import { passScopeForExam } from "@/lib/billing/passScope";
 import { SCOPE_MOCKS } from "@/lib/entitlements/access";
 import { getMockExamCardsCached } from "@/lib/mocks/examCardsCached";
 import { passLineForExam } from "@/lib/mocks/mocksNav";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { readFixPoints } from "@/lib/billing/fixPointsService";
+import { fixPointsOfferNote, fixPointsView, type FixPointsView } from "@/lib/billing/fixPoints";
 
 export const dynamic = "force-dynamic";
 
@@ -56,6 +59,18 @@ export default async function PricingPage(
     await logActivityOnce(createSupabaseServerClient(), user.id, surfaceViewedEvent(user.id, "pricing", new Date()));
   }
   const now = Date.now();
+  // Fix Points (0245): a student's points lower the rupee passes. Display
+  // here; the order route reads them again and charges that price. A failed
+  // read shows the plain price.
+  let fixView: FixPointsView | null = null;
+  if (user && !member && site === "pyqvault") {
+    try {
+      const balance = await readFixPoints(createSupabaseAdminClient(), user.id, new Date(now));
+      fixView = fixPointsView({ points: balance.points, plans: allPlans, hasPass: false });
+    } catch (e) {
+      console.error("pricing: fix points read failed", e);
+    }
+  }
   const examLine = site === "pyqvault" ? await passLineForViewer(user?.id ?? null) : null;
   // Staff already have everything a pass sells.
   // ownsPlan, not "covers": a Practice holder covers the online checks but does
@@ -124,10 +139,18 @@ export default async function PricingPage(
                   </h2>
                   <p className="mt-2 flex items-baseline gap-1">
                     <span className="text-4xl font-semibold tracking-tight">
-                      {formatPrice(plan.amountPaise, plan.currency)}
+                      {fixView?.prices[plan.id] ?? formatPrice(plan.amountPaise, plan.currency)}
                     </span>
+                    {fixView?.prices[plan.id] && (
+                      <s className="text-base text-muted-foreground">{formatPrice(plan.amountPaise, plan.currency)}</s>
+                    )}
                     <span className="text-sm text-muted-foreground">/ {planLengthLabel(plan)}</span>
                   </p>
+                  {fixView?.prices[plan.id] && !owns(plan) && (
+                    <p className="mt-1 text-xs font-medium text-emerald-700 dark:text-emerald-400">
+                      {fixPointsOfferNote(fixView)}
+                    </p>
+                  )}
                   <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground">
                     {plan.blurb}
                   </p>
@@ -153,7 +176,7 @@ export default async function PricingPage(
                       <PricingClient
                         planId={plan.id}
                         returnTo={returnTo}
-                        buttonLabel={`Buy ${plan.label}: ${formatPrice(plan.amountPaise, plan.currency)}`}
+                        buttonLabel={`Buy ${plan.label}: ${fixView?.prices[plan.id] ?? formatPrice(plan.amountPaise, plan.currency)}`}
                       />
                     ) : (
                       <div className="space-y-2 text-center">
