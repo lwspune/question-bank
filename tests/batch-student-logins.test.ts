@@ -14,11 +14,11 @@
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { randomUUID } from "node:crypto";
 import { createBranch } from "@/lib/branches/admin";
 import { createBatch } from "@/lib/batches/admin";
 import { createStudentLogins } from "@/lib/batches/studentLoginsAdmin";
 import { SIGN_IN_TEST_TIMEOUT_MS, accountUpdatedAt, mustSignIn, signInWorks } from "./helpers/fixture";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -26,7 +26,7 @@ const HAS_ENV =
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 const PASSWORD = "student-logins-pw-1234";
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 const ADMIN_EMAIL = `sl-admin-${RUN_ID}@test.local`;
 const OUTSIDER_EMAIL = `sl-outsider-${RUN_ID}@test.local`;
 const EXISTING_EMAIL = `sl-existing-${RUN_ID}@test.local`;

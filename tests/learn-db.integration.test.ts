@@ -16,8 +16,8 @@
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { randomUUID } from "node:crypto";
 import { mustSignIn } from "./helpers/fixture";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -25,7 +25,7 @@ const HAS_ENV =
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 const PASSWORD = "learn-db-test-1234";
-const RUN = randomUUID().slice(0, 8);
+const RUN = testRunId();
 const CHAPTER = `learn-test-${RUN}`;
 const EXAM = `learn-test-${RUN}`; // not a real exam: the test DB may hold the real courses
 const COURSE = `${EXAM}-maths`;

@@ -15,13 +15,14 @@ import { mustSignIn } from "./helpers/fixture";
 import { logActivityOnce } from "@/lib/activity/service";
 import { hasPriorWrong, loadDrillEvents } from "@/lib/drill/query";
 import { questionState } from "@/lib/drill/select";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const STAMP = Date.now();
+const STAMP = testRunId();
 const EMAIL = `v_not_understood_${STAMP}@test.local`;
 const PASSWORD = `Pw-${STAMP}-vnu`;
 const REPLY_ID = "5b0c7f3e-2d4a-4e8b-9c1d-0a1b2c3d4e5f";

@@ -16,10 +16,10 @@
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { randomUUID } from "node:crypto";
 import { createConceptReport } from "@/lib/notes-reports/createConceptReport";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { mustSignIn } from "./helpers/fixture";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -27,7 +27,7 @@ const HAS_ENV =
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 const PASSWORD = "notes-reports-create-pw-1234";
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 
 // First shipped chapter's first subtopic + first concept — a real slug pair.
 const chapter = NOTES_CHAPTERS[0];

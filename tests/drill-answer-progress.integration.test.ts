@@ -17,13 +17,14 @@ vi.mock("@/lib/supabase/server", () => ({ createSupabaseServerClient: () => sess
 
 import { recordDrillAnswer } from "@/lib/drill/service";
 import { CROWD_REVIEW_RUNS } from "@/lib/celebrate/crowd";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const STAMP = Date.now();
+const STAMP = testRunId();
 const EMAIL = `drill_progress_${STAMP}@test.local`;
 const PASSWORD = `Pw-${STAMP}-drill`;
 const CROWD_REF = `crowd-drill-test-${STAMP}`;

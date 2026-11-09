@@ -25,13 +25,14 @@ import {
 } from "@/lib/billing/admin";
 import { SCOPE_ALL, SCOPE_MOCKS, SCOPE_TEACHER } from "@/lib/entitlements/access";
 import { mustSignIn } from "./helpers/fixture";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const STAMP = Date.now();
+const STAMP = testRunId();
 const TEST_ID = `test-plan-${STAMP}`;
 const EMAIL = `plans_student_${STAMP}@test.invalid`;
 const PASSWORD = "test-password-12345";

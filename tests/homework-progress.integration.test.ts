@@ -14,13 +14,14 @@ import { mustSignIn } from "./helpers/fixture";
 import { recordSelfMark } from "@/lib/questions/selfMarkService";
 import { logActivityBatch } from "@/lib/activity/service";
 import { loadHomeworkDayMarks, loadHomeworkProgress } from "@/lib/homework/progressService";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const STAMP = Date.now();
+const STAMP = testRunId();
 const EMAIL = `hw_progress_${STAMP}@test.local`;
 const PASSWORD = `Pw-${STAMP}-hw`;
 

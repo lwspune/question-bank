@@ -7,14 +7,14 @@
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { randomUUID } from "node:crypto";
 import { recordExportEvent } from "@/lib/export/log";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV = !!process.env.NEXT_PUBLIC_SUPABASE_URL && !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 describe.skipIf(!HAS_ENV)("export_events: formula-sheet downloads", () => {
   let admin: SupabaseClient;
-  const sheet = `test-subject/test-chapter-${randomUUID().slice(0, 8)}`;
+  const sheet = `test-subject/test-chapter-${testRunId()}`;
 
   beforeAll(() => {
     admin = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {

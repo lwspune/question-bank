@@ -1,9 +1,10 @@
+import { testRunId } from "./helpers/runId";
 /**
  * Pure predicates for the global-teardown sweep. Extracted so they can be
  * unit-tested without a live DB.
  *
  * Every integration test creates throwaway rows under a throwaway org whose
- * name carries an 8-hex run-id token (`randomUUID().slice(0, 8)`), e.g.
+ * name carries an 8-hex run-id token (`testRunId()`), e.g.
  * "Resolver Org fd90dd5f", "EditSetOrg_3e39bcfa", "UpDelete Org A da693ef2".
  * That run-id token is the robust, content-independent signal for "this is
  * test data" — it survives even when the fixture itself uses a real sha256
@@ -50,7 +51,66 @@ export function isTestTaxonomyName(name: string): boolean {
  * these are swept separately by email domain.
  */
 export function isTestAuthEmail(email: string | null | undefined): boolean {
-  return typeof email === "string" && email.trim().toLowerCase().endsWith("@test.local");
+  if (typeof email !== "string") return false;
+  const e = email.trim().toLowerCase();
+  // `@test.invalid` too (billing and a few other suites): until 2026-11-09 the
+  // sweep never matched it, the blind spot the 2026-08-06 incident named.
+  return e.endsWith("@test.local") || e.endsWith("@test.invalid");
+}
+
+// ── Per-run ownership (2026-11-09) ─────────────────────────────────────────
+// Every session, worktree and CI job shares ONE test project. The sweep used
+// to delete every test-looking row, so the first run to finish deleted the
+// fixtures of any run still going (four red gates on 2026-11-08, four more on
+// 11-09). Now a run deletes only rows carrying an id IT handed out
+// (tests/helpers/runIdRegistry.ts), plus any test row older than STALE_HOURS:
+// no run lasts that long (gate ~10 min, CI ~12), so such a row is a killed
+// run's leftover.
+
+/** Older than this, a test row belongs to no live run. */
+export const STALE_HOURS = 6;
+
+/** Every standalone 8-hex id in a name or email. Bounded by anything that is
+ *  not a letter or digit, so ids inside emails ("a-3e39bcfa@test.local")
+ *  count and a slice of a longer hex or word run does not. */
+export function runIdTokens(text: string): string[] {
+  const out: string[] = [];
+  for (const m of text.toLowerCase().matchAll(/(?<![0-9a-z])([0-9a-f]{8})(?![0-9a-z])/g)) out.push(m[1]);
+  return out;
+}
+
+/** True when the name carries an id this run recorded. */
+export function belongsToRun(text: string, own: ReadonlySet<string>): boolean {
+  return runIdTokens(text).some((t) => own.has(t));
+}
+
+/** True when the row is older than STALE_HOURS. A missing or unreadable time
+ *  is never stale: do not delete what you cannot date. */
+export function isStaleTestRow(createdAt: string | null | undefined, now: Date): boolean {
+  if (!createdAt) return false;
+  const t = Date.parse(createdAt);
+  if (Number.isNaN(t)) return false;
+  return now.getTime() - t > STALE_HOURS * 3_600_000;
+}
+
+/** A test org this run may delete: ours, or a killed run's. Never a real org. */
+export function shouldSweepOrg(
+  org: { name: string; created_at?: string | null },
+  own: ReadonlySet<string>,
+  now: Date
+): boolean {
+  if (!isTestOrgName(org.name)) return false;
+  return belongsToRun(org.name, own) || isStaleTestRow(org.created_at, now);
+}
+
+/** A test user this run may delete: ours, or any test user past STALE_HOURS. */
+export function shouldSweepUser(
+  user: { email?: string | null; created_at?: string | null },
+  own: ReadonlySet<string>,
+  now: Date
+): boolean {
+  if (!isTestAuthEmail(user.email)) return false;
+  return belongsToRun(user.email as string, own) || isStaleTestRow(user.created_at, now);
 }
 
 const defaultSleep = (ms: number): Promise<void> =>

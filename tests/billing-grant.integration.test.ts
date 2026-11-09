@@ -21,13 +21,14 @@ import { userHasAccess } from "@/lib/entitlements/query";
 import { computeExpiry } from "@/lib/billing/plans";
 import { SCOPE_ALL, SCOPE_MOCKS } from "@/lib/entitlements/access";
 import { mustSignIn } from "./helpers/fixture";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const STAMP = Date.now();
+const STAMP = testRunId();
 const PASSWORD = "test-password-12345";
 const PAID_EMAIL = `billing_paid_${STAMP}@test.invalid`;
 const EXPIRED_EMAIL = `billing_expired_${STAMP}@test.invalid`;

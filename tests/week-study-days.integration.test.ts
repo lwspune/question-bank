@@ -12,13 +12,14 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { mustSignIn } from "./helpers/fixture";
 import { countWeekStudyDays } from "@/lib/goals/service";
 import { weekStartIst } from "@/lib/goals/weekly";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const STAMP = Date.now();
+const STAMP = testRunId();
 const EMAIL = `study_days_${STAMP}@test.local`;
 const OTHER_EMAIL = `study_days_other_${STAMP}@test.local`;
 const PASSWORD = `Pw-${STAMP}-days`;

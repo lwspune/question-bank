@@ -22,12 +22,13 @@ import { NextRequest } from "next/server";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { MAX_IDS } from "@/lib/sync/byIdsRequest";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 const MINE_ORG = `ByIds Mine ${RUN_ID}`;
 const THEIRS_ORG = `ByIds Theirs ${RUN_ID}`;
 const USER_EMAIL = `by-ids-${RUN_ID}@test.local`;

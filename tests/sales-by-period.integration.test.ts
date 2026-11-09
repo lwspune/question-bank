@@ -27,13 +27,14 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const RUN = randomUUID().slice(0, 8);
+const RUN = testRunId();
 const EMAIL = `sales_period_${RUN}@test.invalid`;
 const EMAIL_B = `sales_period_b_${RUN}@test.invalid`;
 const PAY = (n: string) => `pay_sales_${RUN}_${n}`;

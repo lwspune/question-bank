@@ -14,7 +14,6 @@
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { randomUUID } from "node:crypto";
 import {
   createPaper,
   addQuestion,
@@ -30,6 +29,7 @@ import { createBranch } from "@/lib/branches/admin";
 import { createBatch } from "@/lib/batches/admin";
 import { setMemberBranches } from "@/lib/members/admin";
 import { mustSignIn } from "./helpers/fixture";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -37,7 +37,7 @@ const HAS_ENV =
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 const PASSWORD = "papers-rls-test-pw-1234";
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 const ADMIN_A = `papers-rls-adminA-${RUN_ID}@test.local`;
 const TEACHER_A = `papers-rls-teacherA-${RUN_ID}@test.local`;
 const TEACHER_A2 = `papers-rls-teacherA2-${RUN_ID}@test.local`;

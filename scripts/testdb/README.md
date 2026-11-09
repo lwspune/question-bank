@@ -47,6 +47,14 @@ Decisions log).
 - **The seed owner user** (`seed-owner@testdb.internal`) is deliberately NOT
   under `@test.local` — the global-teardown sweeps that domain, and
   `questions.created_by` is a NO-ACTION FK, so sweeping the owner would fail.
+- **Name every fixture with `testRunId()`** (`tests/helpers/runId.ts`):
+  `const RUN_ID = testRunId();` then `alice-${RUN_ID}@test.local`,
+  `Resolver Org ${RUN_ID}`. Every session, worktree and CI job shares this one
+  project, so since 2026-11-09 a run's teardown deletes only rows carrying an
+  id IT recorded, plus test orgs and users older than 6 hours (a killed run's
+  leftovers). Before that, the first run to finish deleted every other live
+  run's fixtures. A fixture named any other way lingers for 6 hours, and
+  `tests/test-fixtures-use-run-id.test.ts` fails the file.
 - **taxonomy.json seeds MHT-CET only** (it derives from the MHT-CET reference
   Excel; other exams were auto-created by uploads in prod). Tests needing
   other real taxonomy belong in the prod-contract list.

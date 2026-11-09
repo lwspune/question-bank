@@ -8,12 +8,13 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { recordChatInteraction } from "@/lib/chat/interactionsAdmin";
 import { readChatSettings } from "@/lib/chat/settingsAdmin";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV = !!process.env.NEXT_PUBLIC_SUPABASE_URL && !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 describe.skipIf(!HAS_ENV)("V's hourly limit (0226)", () => {
   let admin: SupabaseClient;
-  const tag = `hourly-test-${randomUUID().slice(0, 8)}`;
+  const tag = `hourly-test-${testRunId()}`;
 
   beforeAll(() => {
     admin = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {

@@ -9,16 +9,16 @@
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { randomUUID } from "node:crypto";
 import { commitStaged } from "@/lib/upload/commit";
 import { contentHash } from "@/lib/upload/hash";
 import type { ParsedRowPayload, StoredOptionLabel } from "@/lib/upload/validate";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 
 function mcq(
   sourceRow: number,

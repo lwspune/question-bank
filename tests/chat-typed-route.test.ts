@@ -14,6 +14,7 @@ import { randomUUID } from "node:crypto";
 import { TYPED_QUESTION_REPLY } from "@/lib/chat/typed";
 import { ABUSE_REPLY } from "@/lib/chat/abuse";
 import { ANON_ASKED_COOKIE, ANON_FREE_COOKIE, ANON_FREE_REPLIES_MAX, SIGN_IN_TO_ASK_REPLY } from "@/lib/chat/anonLimit";
+import { testRunId } from "./helpers/runId";
 
 const askV = vi.fn();
 vi.mock("@/lib/chat/anthropic", async (orig) => ({
@@ -48,7 +49,7 @@ vi.mock("@/lib/entitlements/query", async (orig) => ({
     })),
 }));
 
-const RUN = randomUUID().slice(0, 8);
+const RUN = testRunId();
 const HAS_ENV = !!process.env.NEXT_PUBLIC_SUPABASE_URL && !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 function post(body: unknown, ip = `typed-${RUN}-${Math.random().toString(36).slice(2, 8)}`): NextRequest {

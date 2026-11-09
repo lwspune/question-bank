@@ -12,13 +12,14 @@ import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { mustSignIn, SIGN_IN_TEST_TIMEOUT_MS } from "./helpers/fixture";
 import { fetchOwnPracticeEvidence } from "@/lib/performance/practiceQuery";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const STAMP = Date.now();
+const STAMP = testRunId();
 const EMAIL = `practice_evidence_${STAMP}@test.local`;
 const OTHER_EMAIL = `practice_evidence_other_${STAMP}@test.local`;
 const PASSWORD = `Pw-${STAMP}-evidence`;

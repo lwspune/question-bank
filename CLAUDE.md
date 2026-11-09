@@ -353,6 +353,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-09 (fourth) — Each test run cleans up only its own test data (no migration).**
+  - **Why:** every session, worktree and CI shares one test project, and teardown deleted every test-looking row, so the first run to finish deleted live runs' fixtures (4 red gates 11-08, 3 more on 11-09's push).
+  - **Owner's option 2:** fixtures take ids from `testRunId()`, recorded in a folder the run's workers share (vitest `provide`/`inject`); teardown deletes only those, plus test orgs/users over 6 hours old. A machine lock was rejected: CI would still collide.
+  - **Subjects have no creation time,** so only the run's own are swept. A source-scan test fails any fixture named another way. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-09 (third) — Ask a parent to pay: a /pay link a parent opens with no account (0244).**
   - **Why:** 586 students met an offer in 30 days, 85% left without checkout; "Need to ask a parent" was 6 of 26 why-not answers.
   - **The order stays the contract:** the link names only the student and pass; the order is stamped for the student at today's price, so whoever pays, only that student gets the pass.

@@ -13,6 +13,7 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { TINY_PNG } from "./fixtures/tinyImage";
 import { mustSignIn } from "./helpers/fixture";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -21,7 +22,7 @@ const HAS_ENV =
 
 const BUCKET = "question-images";
 const PASSWORD = "storage-rls-pw-1234";
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 const ADMIN_A_EMAIL = `storage-admin-a-${RUN_ID}@test.local`;
 const ADMIN_B_EMAIL = `storage-admin-b-${RUN_ID}@test.local`;
 const TEACHER_A_EMAIL = `storage-teacher-${RUN_ID}@test.local`;

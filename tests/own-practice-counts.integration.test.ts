@@ -9,13 +9,14 @@ import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { mustSignIn } from "./helpers/fixture";
 import { getOwnPracticeCounts } from "@/lib/activity/practiceCounts";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const STAMP = Date.now();
+const STAMP = testRunId();
 const EMAIL = `practice_counts_${STAMP}@test.local`;
 const OTHER_EMAIL = `practice_counts_other_${STAMP}@test.local`;
 const PASSWORD = `Pw-${STAMP}-counts`;

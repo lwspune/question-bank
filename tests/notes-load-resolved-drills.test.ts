@@ -15,18 +15,18 @@
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { randomUUID } from "node:crypto";
 import {
   loadResolvedDrills,
   type ConceptForResolver,
 } from "@/lib/notes/loadResolvedDrills";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 const SUBTOPIC_SLUG = `resolver-${RUN_ID}`;
 const ORG_NAME = `Resolver Org ${RUN_ID}`;
 const USER_EMAIL = `resolver-${RUN_ID}@test.local`;

@@ -17,13 +17,14 @@ import { randomUUID } from "node:crypto";
 import { onboardingArm, type OnboardingArm } from "@/lib/education/howItWorks";
 import { NORTH_STAR_KINDS } from "@/lib/growth/registry";
 import type { GrowthSnapshotRaw } from "@/lib/growth/query";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 const EXAM = `growthtest-${RUN_ID}`;
 const CAMPAIGN = `growthtest-${RUN_ID}`;
 const PASSWORD = `growth-snapshot-${RUN_ID}`;

@@ -15,10 +15,10 @@
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { randomUUID } from "node:crypto";
 import { mustSignIn } from "./helpers/fixture";
 import { loadRevealedToday } from "@/lib/questions/revealQuota";
 import { DAILY_REVEAL_SURFACES } from "@/lib/questions/revealQuota";
+import { testRunId } from "./helpers/runId";
 
 // my_paid_reveals_today (0211/0227) is called by the deployed site until the
 // claim_reveal code (0228) ships; the app no longer calls it. Read it directly
@@ -35,7 +35,7 @@ const HAS_ENV =
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 const PASSWORD = "free-exams-pw-1234";
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 
 describe.skipIf(!HAS_ENV)("free exams (migration 0210)", () => {
   let admin: SupabaseClient;

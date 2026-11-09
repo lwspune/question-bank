@@ -163,7 +163,9 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ## 2026-11-08
 
-### Every session shares one test database, and one run's cleanup deletes another run's test rows (owner picked option 2, not done)
+### Every session shares one test database, and one run's cleanup deletes another run's test rows (owner picked option 2, DONE 2026-11-09)
+
+- **Done 2026-11-09 (branch `fix/test-run-isolation`).** Fixtures take their id from `testRunId()` (`tests/helpers/runId.ts`), which records it in a folder the run's workers share (`tests/helpers/runIdRegistry.ts`, made by the global setup in `tests/global-teardown.ts`). The teardown and its leak check now touch only that run's orgs, users and subjects, plus any test org or user older than 6 hours (a killed run's leftovers); `@test.invalid` users are swept too. `tests/test-fixtures-use-run-id.test.ts` fails a test that names a fixture any other way. **Still open:** timeouts when the machine or database is busy (CI's `export-rate-limit` failure on 11-09 was a statement timeout), the slow `client-bundle-notes-registry` test below, and an empty leftover test SUBJECT from a killed run (no creation time, so it waits for `npm run testdb:reset`).
 
 - **What happened (2026-11-08).** Four gate runs failed on causes outside the code under test, and each failing test passed when run alone (about 10 minutes lost per re-run, and a red gate stopped meaning anything):
   - a push gate: 5 tests (`export-rate-limit`, `signup-country`) while another session's push gate ran;

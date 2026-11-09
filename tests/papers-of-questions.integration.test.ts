@@ -12,13 +12,14 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY &&
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 
 type Row = { question_id: string; kind: string; slug: string; year: number };
 

@@ -20,10 +20,11 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { getOrCreateInvite, joinMockInvite } from "@/lib/practiceTests/mockInviteService";
 import { loadTogetherCard, readFriendFinishGroups } from "@/lib/practiceTests/togetherService";
+import { testRunId } from "./helpers/runId";
 
 const HAS_ENV = !!process.env.NEXT_PUBLIC_SUPABASE_URL && !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const RUN_ID = randomUUID().slice(0, 8);
+const RUN_ID = testRunId();
 const ROLES = ["sam", "riya", "aman", "stan"] as const;
 type Role = (typeof ROLES)[number];
 
