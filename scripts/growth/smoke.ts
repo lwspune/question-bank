@@ -224,6 +224,10 @@ async function main() {
         // Read by hand with the path's own readout (lib/path).
         line = "by hand: npm run path:readout";
         break;
+      case "fix-points":
+        // Read by hand: fix_points_readout (migration 0245), before vs after.
+        line = "by hand: npm run fix-points:readout";
+        break;
       case "parent-pay":
         // Live steps and passes on /dashboard/sales (lib/sales/query loadParentLinks).
         line = "live card on /dashboard/sales (paywall_event parent_* steps, entitlements note parent_link:%)";

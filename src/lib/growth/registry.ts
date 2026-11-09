@@ -276,6 +276,10 @@ export const WHY_NOT_BUY_MIN_ANSWERS = 30;
 export const WHY_NOT_BUY_LEAD_PCT = 40;
 /** "parent-pay": passes a parent pays through a link, by the check date, that keep it. */
 export const PARENT_PAY_KEEP = 5;
+/** "fix-points": the rise in graded fixes per active student, against the 30 days before, that keeps it (%). */
+export const FIX_POINTS_FIXES_LIFT_PCT = 30;
+/** "fix-points": passes sold with points by the check date that keep it. */
+export const FIX_POINTS_SALES_KEEP = 5;
 /** "tutor-interest": student Yes answers (looking for 1:1 tutoring) that take tutoring further. */
 export const TUTOR_STUDENT_YES_KEEP = 20;
 /** "tutor-price": answers each price needs before the three are compared (below it, run 2 more weeks). */
@@ -329,6 +333,7 @@ export type Readout =
   | "homework-progress"
   | "why-not-buy"
   | "parent-pay"
+  | "fix-points"
   | "chapter-fix"
   | "board-path";
 
@@ -853,6 +858,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     rule: `Keep if a parent pays for ${PARENT_PAY_KEEP}+ passes by the check date and total pass sales do not fall. Fewer: look at where the steps drop (links not sent, parents not opening, parents not paying) before deciding.`,
     liveSince: "2026-11-09",
     readout: "parent-pay",
+    status: "running",
+  },
+  {
+    id: "fix-points",
+    title: "Fix Points: fix a mistake, take 1% off the pass",
+    change:
+      "Each question a student gets right after missing it on an earlier day earns a fix point, worth 1% off a rupee pass, up to 40%. Points last 30 days and a purchase starts them again. Every offer card and /pricing show the lower price; the drill and Review show the points with their value.",
+    why: "The owner's call (9 Nov), against the data: of 33 buyers, none had fixed 10+ mistakes before paying, and 18 paid on their first day. The bet is that a reward makes students fix more mistakes and turns some of the learners who never pay into buyers.",
+    metric:
+      "Graded fixes per active student (fix_points_readout, the award's own rule) in the 30 days after against the 30 days before (baseline 9 Nov: 792 fixes by 138 of 1,312 active students, 0.60 each), and passes sold with points (entitlement note fix_points:<n>)",
+    rule: `Keep if fixes per active student rise ${FIX_POINTS_FIXES_LIFT_PCT}%+ AND ${FIX_POINTS_SALES_KEEP}+ passes sell with points. Miss either: switch it off.`,
+    liveSince: "2026-11-09",
+    windowDays: 30,
+    readout: "fix-points",
     status: "running",
   },
   {
