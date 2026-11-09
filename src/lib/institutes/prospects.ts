@@ -10,6 +10,7 @@
  * it Not a fit. Size comes from the Google review count and is not stored, so
  * a re-import moves it with the count.
  */
+import { whatsappHref } from "@/lib/profile/mobile";
 
 export const PROSPECT_STATUSES = ["new", "contacted", "interested", "demo", "won", "lost", "not_fit"] as const;
 export type ProspectStatus = (typeof PROSPECT_STATUSES)[number];
@@ -186,11 +187,16 @@ export function isMobileFormatted(phone: string | null | undefined): boolean {
   return /^\+91 [6-9]\d{4} \d{5}$/.test((phone ?? "").trim());
 }
 
+/** WhatsApp through the shared helper, but only for a number Google shows as a mobile. */
 export function prospectWhatsappHref(phone: string | null | undefined): string | null {
-  if (!isMobileFormatted(phone)) return null;
-  return `https://wa.me/${phone!.replace(/\D/g, "")}`;
+  return isMobileFormatted(phone) ? whatsappHref(phone) : null;
 }
 
+/**
+ * A call link. The ONE place a staff surface builds `tel:` (tests/whatsapp-links
+ * allows it here only): unlike a student's mobile, an institute often lists only
+ * a landline, which WhatsApp cannot reach, and the owner calls from a phone.
+ */
 export function callHref(phone: string | null | undefined): string | null {
   const dial = (phone ?? "").replace(/[^\d+]/g, "");
   return dial ? `tel:${dial}` : null;
