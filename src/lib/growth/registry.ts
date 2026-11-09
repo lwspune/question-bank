@@ -274,6 +274,8 @@ export const ANSWER_LIMIT_RETURN_MAX_DROP = 10;
 export const WHY_NOT_BUY_MIN_ANSWERS = 30;
 /** "why-not-buy": a reason holding this share of a group's answers decides that group's next change (%). */
 export const WHY_NOT_BUY_LEAD_PCT = 40;
+/** "parent-pay": passes a parent pays through a link, by the check date, that keep it. */
+export const PARENT_PAY_KEEP = 5;
 /** "tutor-interest": student Yes answers (looking for 1:1 tutoring) that take tutoring further. */
 export const TUTOR_STUDENT_YES_KEEP = 20;
 /** "tutor-price": answers each price needs before the three are compared (below it, run 2 more weeks). */
@@ -326,6 +328,7 @@ export type Readout =
   | "homework-tab"
   | "homework-progress"
   | "why-not-buy"
+  | "parent-pay"
   | "chapter-fix"
   | "board-path";
 
@@ -837,6 +840,19 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-05",
     windowDays: 14,
     readout: "why-not-buy",
+    status: "running",
+  },
+  {
+    id: "parent-pay",
+    title: "Ask a parent to pay",
+    change:
+      "Under every pass offer (answer limit, download boxes, V's hourly offer), signed-in students see \"Can't pay yourself? Ask a parent to pay\": a short /pay link and a ready WhatsApp message. The parent pays on a page written for them, with no account, and the pass goes to the student.",
+    why: "In the 30 days to 9 Nov, 586 students met an offer and 85% left without opening checkout; \"Need to ask a parent\" was 6 of the first 26 why-not-buy answers. Many students cannot pay themselves.",
+    metric:
+      "Passes a parent paid (entitlement note parent_link:<code>), and students at each step (link made, opened by a parent, parent started paying) on /dashboard/sales \"Ask a parent to pay\"; plus all pass sales against the 3 weeks before, so a parent sale that only replaces a student's own is seen",
+    rule: `Keep if a parent pays for ${PARENT_PAY_KEEP}+ passes by the check date and total pass sales do not fall. Fewer: look at where the steps drop (links not sent, parents not opening, parents not paying) before deciding.`,
+    liveSince: "2026-11-09",
+    readout: "parent-pay",
     status: "running",
   },
   {
