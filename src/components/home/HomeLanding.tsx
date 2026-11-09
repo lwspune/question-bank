@@ -45,6 +45,16 @@ import {
 import { getPyqYearRows } from "@/lib/exam/pyqYearCounts";
 import { listChapterLandings } from "@/lib/questions/landing";
 import ExamCarousel from "@/components/home/ExamCarousel";
+import {
+  HomeworkPreview,
+  MapPreview,
+  MockResultPreview,
+  NotesPreview,
+  QuestionPreview,
+  ReviewPreview,
+  TeacherPaperPreview,
+  YourHomePreview,
+} from "@/components/home/HomePreviews";
 
 /**
  * The homepage body (2026-11-06). Rendered by `/` (no chosen exam) and by the
@@ -190,6 +200,39 @@ type SurfacePreview = {
 // the homepage linked two internal destinations, and Search Console reported 12
 // of 1,474 pages indexed with discovery running at ~0.41 URLs/day. Guarded by
 // tests/crawl-entry-points.test.ts.
+/**
+ * The surfaces shown with a picture of their screen (2026-11-09). "Your own
+ * home" is not in SURFACES: a signed-out visitor cannot open it, so it leads
+ * to sign-up instead.
+ */
+const FEATURED: { href: string; title: string; blurb: string; Preview: () => JSX.Element }[] = [
+  {
+    href: "/browse",
+    title: "Question bank",
+    blurb: "Filter by exam, chapter, year and difficulty. Try each question first, then open the answer and the worked solution.",
+    Preview: QuestionPreview,
+  },
+  {
+    href: "/notes",
+    title: "Teaching notes",
+    blurb: "One page per subtopic: the idea, the formula, a solved past question and the traps that catch people.",
+    Preview: NotesPreview,
+  },
+  {
+    href: "/homework",
+    title: "Daily homework",
+    blurb: "A short set every day, chapter by chapter, until the subject is done.",
+    Preview: HomeworkPreview,
+  },
+  {
+    href: "/signup",
+    title: "Your own home",
+    blurb: "Sign up free and it shows one next step a day, and the chapters costing you marks.",
+    Preview: YourHomePreview,
+  },
+];
+const FEATURED_HREFS = new Set(FEATURED.map((f) => f.href));
+
 const SURFACES: SurfacePreview[] = [
   {
     href: "/browse",
@@ -420,7 +463,13 @@ export default async function HomeLanding({ chosen }: { chosen: ExamSlug | null 
               <ArrowRight className="h-3.5 w-3.5" aria-hidden />
             </Link>
           </div>
-          <HowItWorks loop={loopFor(null)} compact />
+          {/* Each step with the product's own screen under it (2026-11-09):
+              sample data, nothing a visitor can tap. */}
+          <HowItWorks
+            loop={loopFor(null)}
+            compact
+            pictures={[<MockResultPreview key="mock" />, <ReviewPreview key="review" />, <MapPreview key="map" />]}
+          />
         </section>
 
         {/* Exam catalog — the pick-your-exam front door. `/exams` lands here. */}
@@ -551,8 +600,41 @@ export default async function HomeLanding({ chosen }: { chosen: ExamSlug | null 
               What&rsquo;s inside
             </h2>
           </div>
+          {/* Four surfaces with a picture of the screen (2026-11-09); the rest
+              stay short text cards below them. */}
+          <ul className="mb-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {FEATURED.map(({ href, title, blurb, Preview }) => (
+              <li
+                key={href}
+                className="relative flex h-full flex-col overflow-hidden rounded-xl border bg-card transition-colors focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 hover:border-primary/40"
+              >
+                {/* The picture sits outside the link: the Home preview holds
+                    links of its own, and a link cannot contain a link. The
+                    link's ::after covers the whole card, so all of it opens. */}
+                <div className="bg-gradient-to-b from-accent to-card px-4 pt-4">
+                  <Preview />
+                </div>
+                <div className="flex flex-1 flex-col p-4">
+                  <h3 className="text-base font-semibold tracking-tight">
+                    <Link
+                      href={href}
+                      prefetch={false}
+                      className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none"
+                    >
+                      {title}
+                    </Link>
+                  </h3>
+                  <p className="mt-1 font-serif text-sm leading-relaxed text-muted-foreground">{blurb}</p>
+                  <span className="mt-auto inline-flex items-center gap-1 pt-3 text-xs font-medium text-primary" aria-hidden>
+                    Open
+                    <ArrowRight className="h-3 w-3" aria-hidden />
+                  </span>
+                </div>
+              </li>
+            ))}
+          </ul>
           <ul className="grid gap-4 sm:grid-cols-2">
-            {SURFACES.map(({ href, title, blurb, Icon }) => (
+            {SURFACES.filter((s) => !FEATURED_HREFS.has(s.href)).map(({ href, title, blurb, Icon }) => (
               <li key={href}>
                 <Link
                   href={href}
@@ -579,8 +661,9 @@ export default async function HomeLanding({ chosen }: { chosen: ExamSlug | null 
           </ul>
         </section>
 
-        {/* Closing banner */}
-        <section className="rounded-xl border border-dashed bg-muted/30 p-5 sm:p-6">
+        {/* Closing banner, with the two printed files beside it (2026-11-09). */}
+        <section className="grid items-center gap-6 rounded-xl border border-dashed bg-muted/30 p-5 sm:p-6 md:grid-cols-[minmax(0,1fr)_340px]">
+          <div>
           <h2 className="text-base font-semibold tracking-tight">
             For teachers: build a paper in two clicks
           </h2>
@@ -597,6 +680,8 @@ export default async function HomeLanding({ chosen }: { chosen: ExamSlug | null 
             Open the question bank
             <ArrowRight className="h-3.5 w-3.5" aria-hidden />
           </Link>
+          </div>
+          <TeacherPaperPreview />
         </section>
       </main>
       <Footer />
