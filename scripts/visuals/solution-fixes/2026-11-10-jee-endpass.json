@@ -586,5 +586,335 @@
   "before": "9ecf65c0",
   "solution": "\\(MgCl_{2}\\) dissociates into three ions, so with degree of dissociation \\(\\alpha = 0.8\\) the van't Hoff factor is \\(i = 1 + \\alpha(n-1) = 1 + 0.8 \\times 2 = 2.6\\). A 1.0 molal solution has 1 mol of salt in 1000 g of water, i.e. in \\(1000/18 = 55.56\\) mol of water, and the salt behaves as \\(2.6\\) mol of particles. The mole fraction of solute is \\(2.6/(2.6 + 55.56) = 0.044704\\). By Raoult's law the lowered vapour pressure is \\(p = p^{\\circ}(1 - x_{solute}) = 50 \\times (1 - 0.044704) = 47.76\\) mm Hg, which is 48 mm Hg to the nearest integer.",
   "note": "1000/18 = 55.56; 2.6/(2.6+55.56) = 0.044704"
+ },
+ {
+  "id": "0074e6cc-25b8-4ab5-81a0-2f526ba1e0ea",
+  "before": "2daa14ee",
+  "solution": "\\[\\begin{matrix} & |A| = - 2 \\\\ & det(3adj( - 6adj(3\\text{ }A))) \\\\ & \\ = 3^{3}det(adj( - 6adj(3\\text{ }A))) \\\\ & \\ = 3^{3}( - 6)^{6}(det(3\\text{ }A))^{4} \\\\ & \\ = 3^{21} \\times 2^{10} \\\\ & \\text{ }m + n = 10 \\\\ & mn = 21 \\\\ & \\text{ }m = 7;n = 3 \\end{matrix}\\]",
+  "note": "second line lost the -6 inside the inner adjugate"
+ },
+ {
+  "id": "008f05b2-da6b-4365-8f2a-61a9d70d22c4",
+  "before": "166903c4",
+  "solution": "\\(x + y + z = 4\\mu,x + 2y + 2\\lambda z = 10\\mu,x + 3y + 4\\lambda\\) \\(\\ ^{2}z = \\mu^{2} + 15\\), \\[\\Delta = \\left| \\begin{matrix} 1 & 1 & 1 \\\\ 1 & 2 & 2\\lambda \\\\ 1 & 3 & 4\\lambda^{2} \\end{matrix} \\right| = (2\\lambda - 1)^{2}\\] For unique solution \\(\\Delta \\neq 0,2\\lambda - 1 \\neq 0,\\left( \\lambda \\neq \\frac{1}{2} \\right)\\) Let \\(\\Delta = 0,\\lambda = \\frac{1}{2}\\) \\[\\Delta_{y} = 0,\\Delta_{x} = \\Delta_{z} = \\left| \\begin{matrix} 4\\mu & 1 & 1 \\\\ 10\\mu & 2 & 1 \\\\ \\mu^{2} + 15 & 3 & 1 \\end{matrix} \\right|\\] \\[= - (\\mu - 15)(\\mu - 1)\\] For infinite solution \\(\\lambda = \\frac{1}{2},\\mu = 1\\) or 15",
+  "note": "lost minus sign: the determinant is -(mu-15)(mu-1)"
+ },
+ {
+  "id": "0095b9cb-0da2-419a-a1fd-e5b2cd178d0b",
+  "before": "863d4414",
+  "solution": "\\(\\ I = \\int_{0}^{10} \\lbrack x\\rbrack \\cdot e^{\\lbrack x\\rbrack - x + 1}dx\\) \\[\\begin{matrix} I & \\ = \\int_{0}^{1} 0dx + \\int_{1}^{2} 1 \\cdot e^{2 - x}dx + \\int_{2}^{3} 2 \\cdot e^{3 - x}dx + \\ldots.. + \\int_{9}^{10} 9 \\cdot e^{10 - x}dx \\\\ & \\ \\Rightarrow I = \\sum_{n = 0}^{9} \\int_{n}^{n + 1} n \\cdot e^{n + 1 - x}dx \\\\ & \\ = - \\sum_{n = 0}^{9} n\\left( e^{n + 1 - x} \\right)_{n}^{n + 1} \\end{matrix}\\] \\[= - \\sum_{n = 0}^{9} n \\cdot \\left( e^{0} - e^{1} \\right)\\] \\[= (e - 1)\\sum_{n = 0}^{9} n\\] \\[= (e - 1) \\cdot \\frac{9 \\cdot 10}{2}\\] \\[= 45(e - 1)\\]",
+  "note": "dx missing on two integrals"
+ },
+ {
+  "id": "015b15fa-41e4-439d-a9bb-f7a8b79d258a",
+  "before": "1f67a100",
+  "solution": "\\[\\ f'(x) + f(x) \\cdot \\sqrt{1 - \\log^{2}f(x)} = 0\\] \\[\\frac{dy}{dx} = - y\\sqrt{1 - \\log^{2}y}\\] \\[f(0) = e\\] \\[\\frac{dy}{y\\sqrt{1 - \\log^{2}y}} = - dx\\] \\[\\log y = t\\] \\[\\frac{1}{y}dy = dt\\] \\[\\frac{dt}{\\sqrt{1 - t^{2}}} = - dx\\] \\[{Sin}^{- 1}(t) = - x + C\\] \\[{Sin}^{- 1}\\lbrack \\log y\\rbrack = - x + C\\] \\[\\begin{matrix} & x = 0\\ {Sin}^{- 1}(1) = C \\Rightarrow \\frac{\\pi}{2} \\\\ & \\log(y) = Sin\\left( \\frac{\\pi}{2} - x \\right) \\\\ & x = \\frac{\\pi}{6}\\ \\log_{e}\\left\\lbrack f\\left( \\frac{\\pi}{6} \\right) \\right\\rbrack = Sin\\left( \\frac{\\pi}{3} \\right) = \\frac{\\sqrt{3}}{2} \\\\ & \\ \\therefore\\left( 6 \\times \\frac{\\sqrt{3}}{2} \\right)^{2} = 27 \\end{matrix}\\]",
+  "note": "Sin^-1(a) should be Sin^-1(1) (log f(0) = 1); stray dot in log^2 f(x)"
+ },
+ {
+  "id": "03d274ac-4daf-46d9-b39f-d1b346f410e9",
+  "before": "06a806b6",
+  "solution": "\\[\\ IF = e^{\\int\\frac{2x}{\\left( 1 + x^{2} \\right)^{2}}dx} = e^{\\frac{- 1}{1 + x^{2}}}\\] \\[y \\cdot e^{\\frac{- 1}{1 + x^{2}}} = \\int x \\cdot e^{\\frac{1}{1 + x^{2}}} \\cdot e^{\\frac{- 1}{1 + x^{2}}}dx\\] \\[y \\cdot e^{\\frac{- 1}{1 + x^{2}}} = \\frac{x^{2}}{2} + c\\] \\[(0,0) \\Rightarrow C = 0\\] \\[y(x) = \\frac{x^{2}}{2}e^{\\frac{1}{1 + x^{2}}}\\] \\[f(x) = \\frac{x^{2}}{2}\\] \\[A = \\int_{- 2}^{4} \\left( (x + 4) - \\frac{x^{2}}{2} \\right)dx = 18\\]",
+  "note": "dx sat inside the exponent; missing brackets round the integrand"
+ },
+ {
+  "id": "052c63b0-c513-4eae-a0c9-6e478ba89cad",
+  "before": "09571f84",
+  "solution": "\\(\\sum_{r = 0}^{20} r^{2} \\cdot \\ ^{20}C_{r}\\) \\[\\sum(r(r - 1) + r) \\cdot \\ ^{20}C_{r}\\] \\[\\sum r(r - 1) \\cdot \\frac{20 \\times 19}{r(r - 1)} \\cdot \\ ^{18}C_{r - 2} + r \\cdot \\frac{20}{r} \\cdot \\sum\\ ^{19}C_{r - 1}\\] \\[\\Rightarrow 20 \\times 19 \\cdot 2^{18} + 20 \\cdot 2^{19}\\] \\[\\Rightarrow 420 \\times 2^{18}\\]",
+  "note": "r^2 = r(r-1)+r (4(r-1) printed); 18C_{r-2}; 19.2 is 19 x 2"
+ },
+ {
+  "id": "05642dd9-7868-45c9-aadb-cc288d3e6751",
+  "before": "7e1a9ee3",
+  "solution": "\\(f(x) = x + \\int_{0}^{\\pi/2} \\sin x\\cos y\\,f(y)dy\\) \\[f(x) = x + \\sin x\\underbrace{\\int_{0}^{\\pi/2} \\cos yf(y)dy}_{K}\\] \\[\\Rightarrow f(x) = x + Ksinx\\] \\[\\Rightarrow f(y) = y + Ksiny\\] Now \\(K = \\int_{0}^{\\pi/2} \\cos y(y + Ksiny)dy\\) \\[K = \\int_{0}^{\\pi/2} y\\cos y\\,dy + K\\int_{0}^{\\pi/2} \\underset{\\text{~Apply IBP~}}{\\cos y}\\sin y\\,dy\\] \\[K = (ysiny)_{0}^{\\pi/2} - \\int_{0}^{\\pi/2} \\sin y\\,dy + K\\int_{0}^{1} tdt\\] \\[\\Rightarrow K = \\frac{\\pi}{2} - 1 + K\\left( \\frac{1}{2} \\right)\\] \\[\\Rightarrow K = \\pi - 2\\] So \\(f(x) = x + (\\pi - 2)\\sin x\\)",
+  "note": "missing cos y / sin y / K / dy in the K integral lines"
+ },
+ {
+  "id": "05bf8b78-e2a5-4869-b414-b648a243c7f9",
+  "before": "4af6bf3a",
+  "solution": "\\[k = 4\\left( 4^{x} + \\frac{1}{4^{x}} \\right) + \\left( 4^{2x} + \\frac{1}{4^{2x}} \\right)\\] \\(\\geq 2\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\geq 2\\) \\[k \\geq 4 \\cdot 2 + 2 = 10\\]",
+  "note": "the bound 4*2 + 2 was not shown"
+ },
+ {
+  "id": "07591ba3-b724-4f69-879d-51705808a923",
+  "before": "08b680b2",
+  "solution": "Let the equation of normal is \\(Y - y = - \\frac{1}{m}(X - x)\\), where, \\(m = \\frac{dy}{dx}\\) As it passes through \\((a,b)\\) \\[b - y = - \\frac{1}{m}(a - x) = - \\frac{dx}{dy}(a - x)\\] \\[\\Rightarrow (b - y)dy = (x - a)dx\\] by \\(- \\frac{y^{2}}{2} = \\frac{x^{2}}{2} - ax + c\\) It passes through \\((3, - 3)\\&(4, - 2\\sqrt{2})\\) \\[\\therefore\\ - 3b - \\frac{9}{2} = \\frac{9}{2} - 3a + c\\] \\[\\Rightarrow - 6\\text{ }b - 9 = 9 - 6a + 2c\\] \\[\\Rightarrow 6a - 6\\text{ }b - 2c = 18\\] \\[\\Rightarrow 3a - 3\\text{ }b - c = 9\\quad\\text{(i)}\\] Also \\[- 2\\sqrt{2}b - 4 = 8 - 4a + c\\] \\[4a - 2\\sqrt{2}b - c = 12\\quad\\text{(ii)}\\] Also \\(a - 2\\sqrt{2}b = 3\\) (iii). (i) - (ii) \\(\\Rightarrow - a + (2\\sqrt{2} - 3)b = - 3\\) (iv) \\(+ \\text{(iii)} \\Rightarrow b = 0,\\ a = 3\\) \\[\\therefore a^{2} + b^{2} + ab = 9\\]",
+  "note": "equations were unlabelled and (ii)-(iii), (iv)+(v) named nothing printed"
+ },
+ {
+  "id": "07e4f116-1b45-4b47-9c4a-dab7c398166e",
+  "before": "103b10c1",
+  "solution": "\\[x^{2}dy + \\left( y - \\frac{1}{x} \\right)dx = 0:x > 0,y(1) = 1\\] \\[x^{2}dy + \\frac{(xy - 1)}{x}dx = 0\\] \\[x^{2}dy = \\frac{(xy - 1)}{x}dx\\] \\[\\frac{dy}{dx} = \\frac{1 - xy}{x^{3}}\\] \\[\\frac{dy}{dx} = \\frac{1}{x^{3}} - \\frac{y}{x^{2}}\\] \\[\\frac{dy}{dx} + \\frac{1}{x^{2}} \\cdot y = \\frac{1}{x^{3}}\\] If \\(e^{\\int\\frac{1}{x^{2}}dx} = e^{- \\frac{1}{x}}\\) \\[ye^{- \\frac{1}{x}} = \\int\\frac{1}{x^{3}} \\cdot e^{- \\frac{1}{x}}\\] \\[{ye}^{- \\frac{1}{x}} = e^{- \\frac{1}{x}}\\left( 1 + \\frac{1}{x} \\right) + C\\] \\[1.e^{- 1} = e^{- 1}(2) + C\\] \\[C = - e^{- 1} = - \\frac{1}{e}\\] \\[{ye}^{- \\frac{1}{x}} = e^{- \\frac{1}{x}}\\left( 1 + \\frac{1}{x} \\right) - \\frac{1}{e}\\] \\[y\\left( \\frac{1}{2} \\right) = 3 - \\frac{1}{e} \\times e^{2}\\] \\[y\\left( \\frac{1}{2} \\right) = 3 - e\\]",
+  "note": "lost +; e^{-x} should be e^{-1/x}"
+ },
+ {
+  "id": "09255275-4fd6-4139-8eb4-83a70507fb2f",
+  "before": "f8f575c0",
+  "solution": "\\(\\frac{10!}{\\alpha!\\beta!\\gamma!}a^{\\alpha}(2b)^{\\beta} \\cdot (4ab)^{\\gamma}\\) \\[\\frac{10!}{\\alpha!\\beta!\\gamma!}a^{\\alpha + \\gamma} \\cdot b^{\\beta + \\gamma} \\cdot 2^{\\beta} \\cdot 4^{\\gamma}\\] \\[\\alpha + \\beta + \\gamma = 10\\] \\[\\alpha + \\gamma = 7\\] \\[\\beta + \\gamma = 8\\] (b) \\(+ (c) - (a) \\Rightarrow \\gamma = 5\\) \\[\\alpha = 2\\] \\[\\beta = 3\\] so coefficients \\(= \\frac{10!}{2!3!5!}2^{3} \\cdot 2^{10}\\) \\[= \\frac{10 \\times 9 \\times 8 \\times 7 \\times 6 \\times 5!}{2 \\times 3 \\times 2 \\times 5!} \\times 2^{13}\\] \\[= 315 \\times 2^{16} \\Rightarrow k = 315\\]",
+  "note": "numerator lacked the factorial on 5 (as printed gives 105)"
+ },
+ {
+  "id": "09cd8b3a-8c3e-42b1-871f-2a8da4695b3d",
+  "before": "c336eb0a",
+  "solution": "\\(\\left| \\begin{matrix} a & d \\\\ b & c \\end{matrix} \\right| = ad - bc \\Rightarrow ad = bc\\)\nCase-I Exactly 1 no. is used\n\\(\\Rightarrow\\) All singular \\(= \\ ^{4}C_{1}\\)\nCase-II Exactly 2 no. is used \\[\\Rightarrow \\ ^{4}C_{2} \\times 2 \\times 2\\] Case-III Exactly 3 no. is used\nNone will be singular Case-IV Exactly 4 No. is used \\(ad = bc\\) \\[\\Rightarrow 2 \\times 9 = 3 \\times 6\\] \\[\\left| \\begin{matrix} 9 & - \\\\ - & 2 \\end{matrix} \\right| \\Rightarrow 2 \\times 2 \\times 2\\] Total \\(= 36\\)",
+  "note": "Case IV count is 2 x 2 x 2 = 8, not 4C1 x 21"
+ },
+ {
+  "id": "09f4de35-4d25-4e59-a166-7402a64afd7a",
+  "before": "363b41c2",
+  "solution": "\\(\\text{LHS}=\\frac{d}{dx}[x\\ln x\\,f]=g'(x)\\ge1.\\ g(2)=\\ln2,\\ g(4)=2\\ln2\\Rightarrow\\ln2+x-2\\le g\\le2\\ln2+x-4.\\ f=\\frac{g}{x\\ln x}\\Rightarrow f\\le\\frac{2\\ln2}{2\\ln2}=1\\text{ and }f\\ge\\frac{\\ln2}{4\\ln4}=\\tfrac18.\\ \\text{Both statements true}\\)",
+  "note": "bounds on g did not show how they give f<=1 and f>=1/8"
+ },
+ {
+  "id": "0ae8273b-2211-4157-a457-32a2fdb72c93",
+  "before": "04670e5c",
+  "solution": "\\[\\frac{dy}{dx} = \\frac{(x - 2)^{2} + y + 4}{(x - 2)} = (x - 2) + \\frac{y + 4}{(x - 2)}\\] Let \\(x - 2 = t \\Rightarrow dx = dt\\) and \\(y + 4 = u \\Rightarrow dy = du\\) \\[\\begin{matrix} & \\frac{dy}{dx} = \\frac{du}{dt} \\\\ & \\frac{du}{dt} = t + \\frac{u}{t} \\Rightarrow \\frac{du}{dt} - \\frac{u}{t} = t \\\\ & \\text{~I.F~} = \\ e^{\\int_{}^{}\\ \\frac{- 1}{t}dt} = e^{- \\ln t} = \\frac{1}{t} \\\\ & u \\cdot \\frac{1}{t} = \\int_{}^{}\\ t \\cdot \\frac{1}{t}dt \\Rightarrow \\frac{u}{t} = t + c \\\\ & \\frac{y + 4}{x - 2} = (x - 2) + c \\\\ & \\text{~Passing through~}(0,0) \\\\ & c = 0 \\\\ & \\ \\Rightarrow (y + 4) = (x - 2)^{2} \\end{matrix}\\]",
+  "note": "garbled ln t"
+ },
+ {
+  "id": "0e0dea5b-4939-420e-8460-975a5deeca89",
+  "before": "90eed59e",
+  "solution": "\\[\\begin{matrix} & \\frac{n}{2}(2a + (n - 1)6) = (n - 2) \\cdot 180^{\\circ} \\\\ & an + 3n^{2} - 3n = (n - 2) \\cdot 180^{\\circ}\\ \\ \\ldots\\ldots(1) \\end{matrix}\\] Now according to question \\[\\begin{matrix} & a + (n - 1)6^{\\circ} = 219^{\\circ} \\\\ & \\ \\Rightarrow a = 225^{\\circ} - 6n^{\\circ}\\ \\ \\ \\ldots\\ldots\\ldots(2) \\end{matrix}\\] Putting value of a from equation (2) in (1)\nWe get \\[\\begin{matrix} & \\left( 225n - 6n^{2} \\right) + 3n^{2} - 3n = 180n - 360 \\\\ & \\ \\Rightarrow 3n^{2} - 42n - 360 = 0 \\\\ & \\ \\Rightarrow n^{2} - 14n - 120 = 0 \\\\ & n = 20, - 6\\text{~(rejected)~} \\end{matrix}\\]",
+  "note": "2n^2 should be 3n^2; n2 should be n^2"
+ },
+ {
+  "id": "0f0a12f2-1c30-44b4-bc9f-0d3637d71ae6",
+  "before": "ecf71375",
+  "solution": "\\(\\sum_{r = 0}^{6} \\ ^{6}C_{r} \\cdot \\ ^{6}C_{6 - r}\\) \\[= \\ ^{6}C_{0} \\cdot \\ ^{6}C_{6} + \\ ^{6}C_{1} \\cdot \\ ^{6}C_{5} + \\ldots\\ldots + \\ ^{6}C_{6} \\cdot \\ ^{6}C_{0}\\] Now, \\[\\begin{matrix} & \\ (1 + x)^{6}(1 + x)^{6} \\\\ & \\ = \\left( \\ ^{6}C_{0} + \\ ^{6}C_{1}x + \\ ^{6}C_{2}x^{2} + \\ldots\\ldots + \\ ^{6}C_{6}x^{6} \\right) \\\\ & \\\\ & \\ \\left( \\ ^{6}C_{0} + \\ ^{6}C_{1}x + \\ ^{6}C_{2}x^{2} + \\ldots\\ldots + \\ ^{6}C_{6}x^{6} \\right) \\end{matrix}\\] Comparing coefficeint of \\(x^{6}\\) both sides \\[\\begin{matrix} & \\ ^{6}C_{0} \\cdot \\ ^{6}C_{6} + \\ ^{6}C_{1} \\cdot \\ ^{6}C_{5} + \\ldots\\ldots. + \\ ^{6}C_{6} \\cdot \\ ^{6}C_{0} = \\ ^{12}C_{6} \\\\ & \\ = 924 \\end{matrix}\\]",
+  "note": "product lost: 6C1 . 6C5"
+ },
+ {
+  "id": "133c9950-e0f0-42fc-95bd-82b181a6ab23",
+  "before": "ed6a5fb6",
+  "solution": "\\[\\begin{matrix} 48\\int_{\\frac{3\\sqrt{2}}{4}}^{\\frac{3\\sqrt{3}}{4}} \\frac{dx}{\\sqrt{9 - 4x^{2}}} & \\ = \\frac{48}{2}\\left\\lbrack \\sin^{- 1}\\frac{2x}{3} \\right\\rbrack_{\\frac{3\\sqrt{2}}{4}}^{\\frac{3\\sqrt{3}}{4}} \\\\ & \\ = 24\\left\\lbrack \\sin^{- 1}\\frac{\\sqrt{3}}{2} - \\sin^{- 1}\\frac{1}{\\sqrt{2}} \\right\\rbrack \\\\ & \\ = 24\\left\\lbrack \\frac{\\pi}{3} - \\frac{\\pi}{4} \\right\\rbrack = 2\\pi \\end{matrix}\\]",
+  "note": "limits were a stray superscript; now [..] from 3sqrt2/4 to 3sqrt3/4"
+ },
+ {
+  "id": "18990563-5477-436a-b6d7-52e69bf7b010",
+  "before": "4eb91539",
+  "solution": "\\[\\frac{dx}{dt} + ax = 0\\] \\[\\frac{dx}{x} = - adt\\] \\[\\int\\frac{dx}{x} = - a\\int dt\\] \\[\\ln|x| = - at + c\\] at \\(t = 0,x = 2\\) \\[\\ln2 = 0 + c\\] \\(\\ln x = -\\) at \\(+ \\ln2\\) \\[\\frac{x}{2} = e^{- at}\\] \\[x = 2e^{- at}\\] \\[\\frac{dy}{dt} + by = 0\\] \\[\\frac{dy}{y} = - bdt\\] \\[\\ln|y| = - bt + \\lambda\\] \\[t = 0,y = 1\\] \\[0 = 0 + \\lambda\\] \\[y = e^{- bt}\\] According to question \\[\\begin{matrix} 3y(1) = 2x(1) \\\\ 3e^{- b} = 2\\left( 2e^{- a} \\right) \\\\ e^{a - b} = \\frac{4}{3} \\end{matrix}\\] For \\(x(t) = y(t)\\) \\[\\Rightarrow 2e^{- at} = e^{- bt}\\] \\[2 = e^{(a - b)t}\\] \\[2 = \\left( \\frac{4}{3} \\right)^{t}\\] \\[\\log_{\\frac{4}{3}}2 = t\\]",
+  "note": "x = 2e^{-at}; condition is at t = 1"
+ },
+ {
+  "id": "18ccd8ff-0ee3-4c3d-90d1-a64e216f92f7",
+  "before": "3da461b7",
+  "solution": "\\[\\begin{matrix} & \\sum_{r = 1}^{30} \\frac{r^{2}\\left( \\ ^{30}C_{r} \\right)^{2}}{\\ ^{30}C_{r - 1}} \\\\ & \\ = \\sum_{r = 1}^{30} r^{2}\\left( \\frac{31 - r}{r} \\right) \\cdot \\frac{30!}{r!(30 - r)!} \\\\ & \\left( \\because\\frac{\\ ^{30}C_{r}}{\\ ^{30}C_{r - 1}} = \\frac{30 - r + 1}{r} = \\frac{31 - r}{r} \\right) \\\\ & \\ = \\sum_{r = 1}^{30} \\frac{(31 - r)30!}{(r - 1)!(30 - r)!} \\\\ & \\ = 30\\sum_{r = 1}^{30} \\frac{(31 - r)29!}{(r - 1)!(30 - r)!} \\\\ & \\ = 30\\sum_{r - 1}^{30} (30 - r + 1)^{29}C_{30 - r} \\\\ & \\ = 30\\left( \\sum_{r = 1}^{30} (30 - r)^{29}C_{30 - r} + \\sum_{r = 1}^{30} \\ ^{29}C_{30 - r} \\right) \\\\ & \\ = 30\\left( 29 \\times 2^{28} + 2^{29} \\right) = 30(29 + 2)2^{28} \\\\ & \\ = 15 \\times 31 \\times 2^{29} \\\\ & \\ = 465\\left( 2^{29} \\right) \\\\ & \\alpha = 465 \\end{matrix}\\]",
+  "note": "(31 - r) should be (30 - r) in the first sum"
+ },
+ {
+  "id": "18d29b7d-2a11-4a56-bd0d-7fba55d90ca9",
+  "before": "46cdf352",
+  "solution": "\\(\\sin^{-1}\\frac{6}{11}\\approx0.5769>\\frac{\\pi}{6}\\), so \\(\\alpha=3\\sin^{-1}\\frac{6}{11}\\approx1.731>\\frac{\\pi}{2}\\Rightarrow\\cos\\alpha<0\\): Statement II true. Also \\(\\beta=3\\cos^{-1}\\frac49\\approx3.331\\). Then \\(\\alpha+\\beta\\approx5.062\\) lies in \\(\\left(\\frac{3\\pi}{2},2\\pi\\right)\\), where cosine is positive: \\(\\cos(\\alpha+\\beta)\\approx0.342>0\\): Statement I true. Both true.",
+  "note": "last-digit slips: arcsin(6/11)=0.5769, alpha=1.731, alpha+beta=5.062, cos=0.342"
+ },
+ {
+  "id": "19a326a4-4d8e-42c5-a730-df8d29d3e7af",
+  "before": "68ff335d",
+  "solution": "\\[\\left( x^{2} + 1 \\right)\\frac{dy}{dx} - 2xy = \\left( x^{4} + 2x^{2} + 1 \\right)\\cos x\\] \\[\\frac{dy}{dx} - \\left( \\frac{2x}{x^{2} + 1} \\right)y = \\frac{\\left( x^{2} + 1 \\right)^{2}\\cos x}{x^{2} + 1} = \\left( x^{2} + 1 \\right)\\cos x\\] \\[\\text{~(Linear D.E)~}\\] \\[P = \\frac{- 2x}{x^{2} + 1},Q = \\left( x^{2} + 1 \\right)\\cos x\\] \\[\\text{I.F~} = e^{\\int_{}^{}\\ Pdx} = e^{\\int_{}^{}\\ \\frac{- 2x}{x^{2} + 1}dx} = \\frac{1}{x^{2} + 1}\\] \\[y \\cdot \\frac{1}{x^{2} + 1} = \\int_{}^{}\\ \\left( x^{2} + 1 \\right)\\cos x \\cdot \\frac{1}{x^{2} + 1}dx\\] \\[\\frac{y}{x^{2} + 1} = \\sin x + c \\Rightarrow y(0) = 1 \\Rightarrow c = 1\\] \\[y = \\left( x^{2} + 1 \\right)(\\sin x + 1)\\] \\[\\int_{- 3}^{3} ydx = \\int_{- 3}^{3} \\left( x^{2} + 1 \\right)(\\sin x + 1)\\] \\[dx = \\int_{- 3}^{3} x^{2}\\sin x + x^{2} + \\sin x + 1dx\\] \\[\\Rightarrow \\int_{- 3}^{3} x^{2}\\sin xdx + \\int_{- 3}^{3} x^{2}dx + \\int_{- 3}^{3} \\sin xdx + \\int_{- 3}^{3} 1dx\\] \\[= 0 + 18 + 0 + 6 = 24\\]",
+  "note": "cx^2+1 should be x^2+1; y(0)=1; expansion is x^2 sin x + x^2 + sin x + 1"
+ },
+ {
+  "id": "1ca6ef16-74ab-4ad0-abff-760f2153f658",
+  "before": "c495a329",
+  "solution": "\\(E_{1}:A\\) is selected \\(E_{2}:B\\) is selected \\(E\\) : white ball is drawn \\[P\\left( E_{1}/E \\right) =\\] \\[\\frac{P\\left( E_{1} \\right) \\cdot P\\left( E/E_{1} \\right)}{P\\left( E_{1} \\right) \\cdot P\\left( E/E_{1} \\right) + P\\left( E_{2} \\right) \\cdot P\\left( E/E_{2} \\right)} = \\frac{\\frac{1}{2} \\times \\frac{3}{10}}{\\frac{1}{2} \\times \\frac{3}{10} + \\frac{1}{2} \\times \\frac{3}{5}}\\] \\[= \\frac{3}{3 + 6} = \\frac{1}{3}\\]",
+  "note": "numerator should be P(E1) . P(E/E1)"
+ },
+ {
+  "id": "1d2032ee-7d6a-49bf-b04e-5b98050e3b25",
+  "before": "e456263c",
+  "solution": "\\(gcd(a,b) = 1,\\ 2a \\neq b\\) reflexive \\(gcd(a,a) = a\\) Not possible symmetric \\(gcd(b,a) = 1\\& 2a \\neq b\\) Not possible \\[a = 2,\\text{ }b = 1\\] transitive \\[\\begin{matrix} (a,b) = (2,3) & gcd\\{ a,b\\} = 1, & 2a \\neq b \\\\ (b,c) = (3,4) & gcd\\{ b,c\\} = 1, & 2b \\neq c \\\\ (a,c) = (2,4) & gcd\\{ 2,4\\} = 2, & 2a = c \\end{matrix}\\] Not possible",
+  "note": "second row is for (b,c): gcd{b,c}=1 and 2b != c"
+ },
+ {
+  "id": "1e7a4868-e292-4c3c-bfc5-fb455f6a930d",
+  "before": "b0cea8f0",
+  "solution": "\\[\\begin{matrix} & 133 = 2\\left( 4^{n} \\right) + \\lambda \\\\ & 255 = 2\\left( 5^{n} \\right) + \\lambda \\\\ & 122 = 2\\left\\lbrack 5^{n} - 4^{n} \\right\\rbrack \\\\ & \\frac{5^{n} - 4^{n} = 61}{\\Downarrow} \\\\ & \\ \\Downarrow \\\\ & n = 3 \\\\ & \\text{~Now,~} \\\\ & f(3) = 2(3)^{3} + \\lambda \\\\ & f(2) = 2(2)^{3} + \\lambda \\\\ & f(3) - f(2) = 38 = 2 \\times 19 \\\\ & \\left( 2^{0} + 2^{1} \\right)\\left( 19^{0} + 19 \\right) \\\\ & \\ = 60 \\end{matrix}\\]",
+  "note": "f(c), f(b) should be f(3), f(2)"
+ },
+ {
+  "id": "1e9a45e8-4421-46d6-a4ef-b509603748de",
+  "before": "d3af5144",
+  "solution": ". \\(\\int_{0}^{1} \\left( x^{2} + bx + c \\right)dx = 1\\) \\[\\frac{1}{3} + \\frac{b}{2} + c = 1 \\Rightarrow \\frac{b}{2} + c = \\frac{2}{3}\\] \\[3b + 6c = 4\\] \\[P(2) = 5\\] \\[4 + 2b + c = 5\\] \\[2\\text{ }b + c = 1\\] From (a) & (b) \\[b = \\frac{2}{9}\\ \\&\\ c = \\frac{5}{9}\\] \\[9(b + c) = 7\\]",
+  "note": "remainder on division by (x - 2) is P(2)"
+ },
+ {
+  "id": "20fb6349-8664-4700-a446-ed0422589e0e",
+  "before": "045f7c74",
+  "solution": "\\(\\ ^{2}C_{2} = \\ ^{3}C_{3}\\) \\[S = \\ ^{3}C_{3} + \\ ^{3}C_{2} + \\ldots\\ldots + \\ ^{n}C_{2} = \\ ^{n + 1}C_{3}\\] \\[\\because\\ ^{n}C_{r} + \\ ^{n}C_{r - 1} = \\ ^{n + 1}C_{r}\\] \\[\\therefore\\ ^{n + 1}C_{2} + \\ ^{n + 1}C_{3} + \\ ^{n + 1}C_{3} = \\ ^{n + 2}C_{3} + \\ ^{n + 1}C_{3}\\] \\[= \\frac{(n + 2)!}{3!(n - 1)!} + \\frac{(n + 1)!}{3!(n - 2)!}\\] \\[= \\frac{(n + 2)(n + 1)n}{6} + \\frac{(n + 1)(n)(n - 1)}{6} = \\frac{n(n + 1)(2n + 1)}{6}\\]",
+  "note": "(n+1)! should be (n+2)!"
+ },
+ {
+  "id": "24852c79-c9f2-41ea-9dd1-0f22bf19b005",
+  "before": "23e04169",
+  "solution": "\\(a =\\) number or dice 1\n\\(b =\\) number on dice 2 \\[(a,b) = (1,3),(3,1),(2,2),(2,3),(3,2),(1,4),(4,1)\\] Required probability \\[\\begin{matrix} & = \\frac{2}{6} \\times \\frac{2}{6} + \\frac{1}{6} \\times \\frac{1}{6} + \\frac{2}{6} \\times \\frac{2}{6} + \\frac{2}{6} \\times \\frac{2}{6} + \\frac{1}{6} \\times \\frac{2}{6} + \\frac{2}{6} \\times \\frac{1}{6} + \\frac{1}{6} \\times \\frac{1}{6} \\\\ & \\ = \\frac{18}{36} = \\frac{1}{2} \\end{matrix}\\] > Section -- B",
+  "note": "last term, for (4,1), is 1/6 x 1/6"
+ },
+ {
+  "id": "2596a567-7bd3-4654-aafd-16c63e5a4793",
+  "before": "b5831491",
+  "solution": "\\(I = \\int_{- 1/\\sqrt{2}}^{1/\\sqrt{2}} \\left( \\left( \\frac{x + 1}{x - 1} - \\frac{x - 1}{x + 1} \\right)^{2} \\right)^{1/2}dx\\) \\[I = \\int_{- 1/\\sqrt{2}}^{1/\\sqrt{2}} \\left| \\frac{4x}{x^{2} - 1} \\right|dx \\Rightarrow I = 2 \\cdot 4\\int_{0}^{1/\\sqrt{2}} \\left| \\frac{x}{x^{2} - 1} \\right|dx\\] \\[\\Rightarrow I = - 4\\int_{0}^{1/\\sqrt{2}} \\frac{2x}{x^{2} - 1}dx \\Rightarrow I = - 4\\ln\\left| x^{2} - 1 \\right|_{0}^{1/\\sqrt{2}}\\] \\[\\Rightarrow I = 4\\ln2 \\Rightarrow I = \\ln16\\]",
+  "note": "2.4 is 2 x 4"
+ },
+ {
+  "id": "28a0d9ce-25d0-4c62-8d57-362343ada5b4",
+  "before": "1243096c",
+  "solution": "\\[\\text{~}\\begin{matrix} = & 24\\int_{0}^{\\frac{\\pi}{48}} - \\sin\\left( 4x - \\frac{\\pi}{12} \\right)dx + \\int_{\\pi/48}^{\\pi/4} \\sin\\left( 4x - \\frac{\\pi}{12} \\right)dx \\\\ & \\ + \\int_{0}^{\\frac{\\pi}{6}} \\lbrack 0\\rbrack dx + \\int_{\\pi/6}^{\\pi/4} \\lbrack 2\\underset{1}{\\downarrow}\\sin x\\rbrack dx \\\\ = & 24\\left\\lbrack \\frac{\\left( 1 - \\cos\\frac{\\pi}{12} \\right)}{4} - \\frac{\\left( - \\cos\\frac{\\pi}{12} - 1 \\right)}{4} + \\frac{\\pi}{4} - \\frac{\\pi}{6} \\right\\rbrack \\\\ = & 24\\left( \\frac{1}{2} + \\frac{\\pi}{12} \\right) = 2\\pi + 12 \\\\ \\alpha = & 12 \\end{matrix}\\]",
+  "note": "factor 24 must multiply the pi/4 - pi/6 term too (bracket misplaced); dx missing on two integrals"
+ },
+ {
+  "id": "29cc1e66-d2f5-452e-ac5b-f12c79f94273",
+  "before": "7faa1dd1",
+  "solution": "\\(\\left( a + bx + cx^{2} \\right)^{10} = \\sum_{i = 0}^{20} p_{i}x^{i}\\) Coefficient of \\(x^{1} = 20\\) \\[20 = \\frac{10!}{9!1!} \\times a^{9} \\times b^{1}\\] \\[a^{9} \\cdot b = 2\\] \\[a = 1,\\text{ }b = 2\\] Coefficient of \\(x^{2} = 210\\) \\[210 = \\frac{10!}{9!1!} \\times a^{9} \\times c^{1} + \\frac{10!}{8!2!} \\times a^{8}b^{2}\\] \\[210 = 10.c + 45 \\times 4\\] \\[10c = 30\\] \\[c = 3\\] \\[2(a + b + c) = 12\\]",
+  "note": "= should be +"
+ },
+ {
+  "id": "2bd65cc1-e4e6-400c-824a-b2192c3abde1",
+  "before": "6cc35982",
+  "solution": "\\[f(x) = \\frac{4^{x}}{4^{x} + 2}\\] \\[f(1 - x) = \\frac{\\frac{4}{4^{x}}}{\\frac{4}{4^{x}} + 2} = \\frac{4}{4 + {2.4}^{x}} = \\frac{2}{2 + 4^{x}}\\] \\[f(x) + f(1 - x) = 1\\] The 2022 terms pair up as \\(f\\left( \\frac{k}{2023} \\right) + f\\left( \\frac{2023 - k}{2023} \\right)\\), giving 1011 pairs each equal to 1, so the sum is \\(1011\\).",
+  "note": "working stopped at f(x)+f(1-x)=1 without pairing the terms"
+ },
+ {
+  "id": "35acc149-fe15-489d-8929-8be1e20577c6",
+  "before": "06084278",
+  "solution": "\\(\\tan^{- 1}x + \\tan^{- 1}2x = \\frac{\\pi}{4};x > 0\\) \\[\\Rightarrow \\tan^{- 1}2x = \\frac{\\pi}{4} - \\tan^{- 1}x\\] Taking tan both sides \\[\\Rightarrow 2x = \\frac{1 - x}{1 + x}\\] \\[\\Rightarrow 2x^{2} + 3x - 1 = 0\\] \\[x = \\frac{- 3 \\pm \\sqrt{9 + 8}}{4} = \\frac{- 3 \\pm \\sqrt{17}}{4}\\] Only possible \\(x = \\frac{- 3 + \\sqrt{17}}{4}\\)",
+  "note": "denominator is 2a = 4, not 8"
+ },
+ {
+  "id": "36191f9d-4e8f-49c6-9674-704fbf99ad2d",
+  "before": "2803ad15",
+  "solution": "Given, \\(4x^{2} - 9x + 5 = 0\\) \\[\\Rightarrow (x - 1)(4x - 5) = 0\\] \\(\\Rightarrow\\) A.M \\(= \\frac{5}{4},G.M = 1\\ (Q\\) A.M \\(>\\) G.M) Again, for the series \\(- 16,8, - 4,2\\ldots\\ldots\\). \\(p^{\\text{th~}}\\) term \\(t_{p} = - 16\\left( \\frac{- 1}{2} \\right)^{p - 1}\\) \\(q^{\\text{th~}}\\) term \\(t_{q} = - 16\\left( \\frac{- 1}{2} \\right)^{q - 1}\\) Now, A.M \\(= \\frac{t_{p} + t_{q}}{2} = \\frac{5}{4}\\& G.M = \\sqrt{t_{p}t_{q}} = 1\\) \\[\\Rightarrow 16^{2}\\left( - \\frac{1}{2} \\right)^{p + q - 2} = 1\\] \\[\\Rightarrow ( - 2)^{8} = ( - 2)^{(p + q - 2)}\\] \\[\\Rightarrow p + q = 10\\]",
+  "note": "q-th term is t_q"
+ },
+ {
+  "id": "36942f3d-c9ab-4372-b034-d29a1fb0bffb",
+  "before": "596201c1",
+  "solution": " Let \\(T_{r} = r(n - r)\\) \\[T_{r} = nr - r^{2}\\] \\[\\Rightarrow S_{n} = \\sum_{r = 1}^{n} T_{r} = \\sum_{r = 1}^{n} \\left( nr - r^{2} \\right)\\] \\[S_{n} = \\frac{n \\cdot (n)(n + 1)}{2} - \\frac{n(n + 1)(2n + 1)}{6}\\] \\[S_{n} = \\frac{n(n - 1)(n + 1)}{6}\\] Now \\(\\sum_{n = 4}^{\\infty} \\left( \\frac{2{\\text{ }S}_{n}}{n!} - \\frac{1}{(n - 2)!} \\right)\\) \\[= \\sum_{n = 4}^{\\infty} \\left( 2 \\cdot \\frac{n(n - 1)(n + 1)}{6 \\cdot n(n - 1)(n - 2)!} - \\frac{1}{(n - 2)!} \\right)\\] \\[= \\sum_{n = 4}^{\\infty} \\left( \\frac{1}{3}\\left( \\frac{n - 2 + 3}{(n - 2)!} \\right) - \\frac{1}{(n - 2)!} \\right)\\] \\[= \\sum_{n = 4}^{\\infty} \\frac{1}{3} \\cdot \\frac{1}{(n - 3)!} = \\frac{1}{3}(e - 1)\\]",
+  "note": "summation index is n, not r"
+ },
+ {
+  "id": "36bc6448-7093-4aa8-b85d-8a8b1f9e1df6",
+  "before": "6c147952",
+  "solution": "\\(\\left| \\begin{matrix} 1 & 1 & 1 \\\\ 1 & 2 & \\lambda^{2} \\\\ 1 & 3 & \\lambda \\end{matrix} \\right| = 0\\) \\[\\Rightarrow 2\\lambda^{2} - \\lambda - 1 = 0\\] \\[\\lambda = 1, - \\frac{1}{2}\\] \\[\\left| \\begin{matrix} 1 & 1 & 5 \\\\ 2 & \\lambda^{2} & 9 \\\\ 3 & \\lambda & \\mu \\end{matrix} \\right| = 0 \\Rightarrow \\mu = 13\\] Infinite solution \\(\\lambda = 1\\&\\mu = 13\\) For unique solution \\(\\lambda \\neq 1, - \\frac{1}{2}\\) For no solution \\(\\lambda = 1\\&\\mu \\neq 13\\) If \\(\\lambda \\neq 1\\) and \\(\\mu \\neq 13\\) Considering the case when \\(\\lambda = - \\frac{1}{2}\\) and \\(\\mu \\neq 13\\) this will generate no solution case",
+  "note": "unique solution needs lambda != 1 and != -1/2; {sol}^n is solution"
+ },
+ {
+  "id": "38a14e15-07fc-4062-b83d-90272cf8b265",
+  "before": "aaa775db",
+  "solution": "\\[\\lim_{n \\rightarrow \\infty} \\sum_{k = 1}^{n} \\frac{n^{3}}{n^{4}\\left( 1 + \\frac{k^{2}}{n^{2}} \\right)\\left( 1 + \\frac{3k^{2}}{n^{2}} \\right)}\\] \\[= \\lim_{n \\rightarrow \\infty} \\frac{1}{n}\\sum_{k = 1}^{n} \\frac{1}{\\left( 1 + \\frac{k^{2}}{n^{2}} \\right)\\left( 1 + \\frac{3k^{2}}{n^{2}} \\right)}\\] \\[= \\int_{0}^{1} \\frac{dx}{3\\left( 1 + x^{2} \\right)\\left( \\frac{1}{3} + x^{2} \\right)}\\] \\[\\begin{matrix} & \\ = \\int_{0}^{1} \\frac{1}{3} \\times \\frac{3}{2}\\frac{\\left( x^{2} + 1 \\right) - \\left( x^{2} + \\frac{1}{3} \\right)}{\\left( 1 + x^{2} \\right)\\left( x^{2} + \\frac{1}{3} \\right)}dx \\\\ & \\ = \\frac{1}{2}\\int_{0}^{1} \\left\\lbrack \\frac{1}{x^{2} + \\left( \\frac{1}{\\sqrt{3}} \\right)^{2}} - \\frac{1}{1 + x^{2}} \\right\\rbrack dx \\\\ & \\ = \\frac{1}{2}\\left\\lbrack \\sqrt{3}\\tan^{- 1}(\\sqrt{3}x) \\right\\rbrack_{0}^{1} - \\frac{1}{2}\\left( \\tan^{- 1}x \\right)_{0}^{1} \\\\ & \\ = \\frac{\\sqrt{3}}{2}\\left( \\frac{\\pi}{3} \\right) - \\frac{1}{2}\\left( \\frac{\\pi}{4} \\right) = \\frac{\\pi}{2\\sqrt{3}} - \\frac{\\pi}{8} \\\\ & \\ = \\frac{13\\pi}{8(4\\sqrt{3} + 3)} \\end{matrix}\\]",
+  "note": "n^3 stray in the numerator of the Riemann sum; 8.(...) is 8(...)"
+ },
+ {
+  "id": "40907d7c-4fe0-4971-8f57-20706d7586d6",
+  "before": "3d2bf6c4",
+  "solution": "\\[10\\frac{d}{dx}\\int_{1}^{x} f(t)dt = \\frac{d}{dx}\\left( 5xf(x) - x^{5} - 9 \\right)\\] \\[\\Rightarrow 10f(x) = 5f(x) + 5xf'(x) - 5x^{4}\\] \\[\\Rightarrow f(x) + x^{4} = xf'(x)\\] \\[\\Rightarrow y + x^{4} = x\\frac{dy}{dx}\\] \\[\\Rightarrow \\frac{dy}{dx} + y\\left( - \\frac{1}{x} \\right) = x^{3}\\] \\[\\Rightarrow ye^{\\int_{}^{}\\ - \\frac{1}{x}dx} = \\int_{}^{}\\ x^{3}e^{\\int_{}^{}\\ - \\frac{1}{x}dx} + c\\] \\[\\Rightarrow ye^{- \\ln|x|} = \\int_{}^{}\\ x^{3}e^{- \\ln|x|}dx + c\\] \\[\\Rightarrow \\frac{y}{|x|} = \\int_{}^{}\\ \\frac{x^{3}}{|x|} + c\\] \\[\\Rightarrow \\frac{y}{x} = \\int_{}^{}\\ x^{2} + c\\] \\[\\Rightarrow \\frac{y}{x} = \\frac{x^{3}}{3} + c\\] Put \\(x = 1\\) in given equation \\[\\Rightarrow 0 = 5f(1) - 1 - 9 \\Rightarrow f(1) = 2\\] \\[\\Rightarrow \\frac{2}{1} = \\frac{1}{3} + c \\Rightarrow c = \\frac{5}{3}\\] \\[\\Rightarrow \\frac{f(3)}{3} = \\frac{27}{3} + \\frac{5}{3}\\] \\[\\Rightarrow f(3) = 32\\]",
+  "note": "garbled ln|x| and missing dx"
+ },
+ {
+  "id": "4157dea8-b1ed-46df-b9ed-e5409f221893",
+  "before": "e5ea977e",
+  "solution": "Let \\(S = \\{ 1,2,3,\\ldots,10\\}\\) \\[R = \\{(A,B):A \\cap B \\neq \\phi;A,B \\in M\\}\\] For Reflexive, \\(M\\) is subset of ' \\(S\\) ' So \\(\\phi \\in M\\) for \\(\\phi \\cap \\phi = \\phi\\) \\(\\Rightarrow\\) but relation is \\(A \\cap B \\neq \\phi\\) So it is not reflexive. For symmetric, \\(ARB\\ A \\cap B \\neq \\phi\\), \\(\\Rightarrow BRA\\ \\Rightarrow B \\cap A \\neq \\phi\\), So it is symmetric. For transitive, If \\(A = \\{1,2\\}\\) \\[B = \\{2,3\\}\\] \\[C = \\{3,4\\}\\] ARB & BRC but A does not relate to C So it not transitive",
+  "note": "A, B, C must be subsets of S, not sets of pairs"
+ },
+ {
+  "id": "43759c49-0a73-43e6-8dc9-b565c62d8db9",
+  "before": "234dcf9a",
+  "solution": "\\(\\frac{dy}{dx} = \\frac{2^{x}\\left( y + 2^{y} \\right)}{2^{x}\\left( 1 + 2^{y}\\ln2 \\right)}\\) \\[\\Rightarrow \\int\\frac{1 + 2^{y}\\ln 2}{y + 2^{y}}dy = \\int dx\\] \\[\\Rightarrow \\ln\\left| y + 2^{y} \\right| = x + c\\] \\[x = 0;y = 0 \\Rightarrow c = 0\\] \\[\\Rightarrow x = \\ln\\left| y + 2^{y} \\right|\\] \\(\\Rightarrow\\) at \\(y = 1,x = \\ln3\\) \\[\\because 3 \\in \\left( e,e^{2} \\right) \\Rightarrow x \\in (1,2)\\]",
+  "note": "numerator is 1 + 2^y ln 2 (derivative of y + 2^y); garbled ln"
+ },
+ {
+  "id": "439842f1-26b1-496b-8c2d-de8daae2ae4e",
+  "before": "b6c8622f",
+  "solution": "\\[f(g(x)) = |g(x) - 1|\\] fog \\(\\left\\lbrack \\begin{matrix} \\left| e^{x} - 1 \\right| & x \\geq 0 \\\\ |x + 1 - 1| & x \\leq 0 \\end{matrix} \\right.\\) fog \\(\\left\\lbrack \\begin{matrix} e^{x} - 1 & x \\geq 0 \\\\ - x & x \\leq 0 \\end{matrix} \\right.\\). Its range is \\([0, \\infty)\\), so it is not onto, and \\(f(g(1)) = f(g(1 - e)) = e - 1\\), so it is not one-one.",
+  "note": "working stopped at the piecewise form without concluding"
+ },
+ {
+  "id": "474fee97-08e3-4c6d-beb6-67f41e8dc92b",
+  "before": "0c8d2bd8",
+  "solution": "\\[\\begin{matrix} & P = \\begin{bmatrix} \\cos\\theta & - \\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{bmatrix} \\\\ & \\ \\because P^{T}P = I \\\\ & \\text{ }B = PAP^{T} \\end{matrix}\\] Pre multiply by \\(P^{T}\\) ( Given) \\[P^{T}\\text{ }B = P^{T}PAP^{T} = {AP}^{T}\\] Now post multiply by \\(P\\) \\[P^{T}BP = {AP}^{T}P = A\\] So \\(A^{2} = \\underbrace{P^{T}BPP^{T}}_{I}BP\\) \\[A^{2} = P^{T}{\\text{ }B}^{2}P\\] Similarly \\(A^{10} = P^{T}B^{10}P = C\\)\n\\(A = \\begin{bmatrix} \\frac{1}{\\sqrt{2}} & - 2 \\\\ 0 & 1 \\end{bmatrix}\\) (Given)\n\\[\\Rightarrow A^{2} = \\begin{bmatrix} \\frac{1}{2} & - \\sqrt{2} - 2 \\\\ 0 & 1 \\end{bmatrix} \\]Similarly check \\(A^{3}\\) and so on since \\(C = A^{10}\\)\n\\(\\Rightarrow\\) Sum of diagonal elements of C is \\(\\left( \\frac{1}{\\sqrt{2}} \\right)^{10} + 1\\) \\[\\begin{matrix} & = \\frac{1}{32} + 1 = \\frac{33}{32} = \\frac{m}{n} \\\\ & g\\text{ }cd(m,n) = 1\\text{~(Given)~} \\\\ & \\ \\Rightarrow m + n = 65 \\end{matrix}\\]",
+  "note": "PAPT is PAP^T; P^T P A P P^T should be P^T P A P^T"
+ },
+ {
+  "id": "48d5e09e-a83f-467d-9ba0-e4ade8907ccb",
+  "before": "8d1cabe9",
+  "solution": "Note that \\((1,2)\\) and \\((2,3)\\) satisfy \\(0 < |x - y| \\leq 1\\) but \\((1,3)\\) does not satisfy it so \\(0 < |x - y| \\leq 1\\) is symmetric but not transitive",
+  "note": "relation of option B is 0 < |x-y| <= 1"
+ },
+ {
+  "id": "48daf7e6-7804-49d8-a69e-433a82694539",
+  "before": "c53a8dda",
+  "solution": "Let R be the required relation \\[A = \\{(1,1)(2,2),(3,3)\\}\\] (i) \\(|R| = 3\\), when \\(R = A\\)\n(ii) \\(|R| = 5\\), e.g. \\(R = A \\cup \\{(1,2),(2,1)\\}\\) Number of \\(R\\) can be \\(3\\)\n(iii) \\(R = \\{ 1,2,3\\} \\times \\{ 1,2,3\\}\\). Total \\(= 1 + 3 + 1 = 5\\)",
+  "note": "bracketed [3] is 3; the cases were never totalled"
+ },
+ {
+  "id": "49019077-71a9-4f0b-b956-854c92320bb7",
+  "before": "4e837ed6",
+  "solution": "\\((a - c)x^{2} + (b - a)x + (c - b) = 0\\)\n\\(x = 1\\) is one root & other root is \\(\\frac{c - b}{a - c}\\ \\ldots(a)\\) now \\(\\left| \\begin{matrix} \\alpha^{2} & \\alpha & 1 \\\\ 1 & 1 & 1 \\\\ a & b & c \\end{matrix} \\right|\\) is singular \\[\\Rightarrow \\left| \\begin{matrix} \\alpha^{2} & \\alpha & 1 \\\\ 1 & 1 & 1 \\\\ a & b & c \\end{matrix} \\right| = 0 \\Rightarrow \\alpha^{2}(c - b) - \\alpha(c - a) + (b - a) = 0\\] \\[\\Rightarrow \\alpha^{2}(c - b) + \\alpha(a - c) + (b - a) = 0\\] satisfied by \\(\\alpha = 1\\) or \\(\\alpha = \\frac{b - a}{c - b}\\) Now, if \\(\\alpha = 1\\) then \\(\\forall a \\neq b \\neq c\\) \\[\\sum\\frac{(a - c)^{2}}{(b - a)(c - b)} = \\frac{\\sum(a - c)^{3}}{(a - c)(b - a)(c - b)}\\] \\[= \\frac{3(a - c)(b - a)(c - b)}{(a - c)(b - a)(c - b)}\\] \\[= 3\\] [if \\(A + B + C = 0\\ \\Rightarrow \\ A^{3} + B^{3} + C^{3} = 3ABC\\) ]",
+  "note": "product is (a-c)(b-a)(c-b), the stored (a-b)(b-c)(c-a) is its negative; the two slips cancel"
+ },
+ {
+  "id": "4b66cd0f-9c08-4fc2-b8da-7eab922687d2",
+  "before": "28e4ea6b",
+  "solution": "GM \\(2^{(1830+n(n+1))/(60+n)}=2^{225/8}\\Rightarrow8n^2-217n+1140=0\\Rightarrow n=20\\). \\(\\sum_{k=1}^n k(n-k)=\\dfrac{n(n^2-1)}{6}=\\dfrac{20\\cdot399}{6}=1330\\).",
+  "note": "8(1830 + n(n+1)) = 225(60 + n) gives 8n^2, not 2n^2"
+ },
+ {
+  "id": "4bcc9c37-49fa-4c48-bd97-8ae874bec80c",
+  "before": "60cdbfcc",
+  "solution": "\\[x^{2} = 2y\\& y = 2x + 6\\] \\[x^{2} = 4x + 12\\] \\[\\left. \\ x^{2} - 4x - 12 = 0 \\Rightarrow \\begin{matrix} x = 6 \\\\ y = 18 \\end{matrix} \\right|\\ \\text{~if~}x = - 2\\] \\[y = 2\\] \\[\\therefore(6,18)\\&( - 2,2)\\] Here \\((6,18)\\) Rejected because \\((a,b)\\) lies in \\(2^{\\text{nd~}}\\) quadrant \\[\\therefore a = - 2\\&\\text{ }b = 2\\] \\[\\therefore I = \\int_{- 2}^{2} \\frac{9x^{2}}{1 + 5^{x}}dx = \\int_{- 2}^{2} \\frac{{9.5}^{x} \\cdot x^{2}}{1 + 5^{x}}dx\\] \\[\\therefore 2I = \\int_{- 2}^{2} 9x^{2}dx = 18\\int_{0}^{2} x^{2}dx = 18\\left( \\frac{x^{3}}{3} \\right)_{0}^{2}\\] \\[2I = 48\\] \\[I = 24\\]",
+  "note": "T is I"
+ },
+ {
+  "id": "526da241-0ecd-4cb7-b670-123924efa0e3",
+  "before": "812875dd",
+  "solution": "\\[\\begin{matrix} & \\left( 1 + x^{2} \\right)\\frac{dy}{dx} + xy = 5x^{2}\\sqrt{1 + x^{2}} \\\\ & \\frac{dy}{dx} + \\frac{xy}{1 + x^{2}} = \\frac{5x^{2}}{\\sqrt{1 + x^{2}}} \\\\ & \\ \\therefore\\text{~I.F.~} = e^{\\int\\frac{x}{1 + x^{2}}dx} = e^{\\frac{\\ln\\left( 1 + x^{2} \\right)}{2}} = \\sqrt{1 + x^{2}} \\\\ & \\ \\therefore y\\sqrt{1 + x^{2}} = \\int\\frac{5x^{2}}{\\sqrt{1 + x^{2}}} \\cdot \\sqrt{1 + x^{2}}dx \\\\ & \\ \\therefore y\\sqrt{1 + x^{2}} = \\int\\frac{5x^{2}}{\\sqrt{1 + x^{2}}} \\cdot \\sqrt{1 + x^{2}}dx \\\\ & y\\sqrt{1 + x^{2}} = \\frac{5x^{3}}{3} + C \\\\ & \\ \\because y(0) = 0 \\Rightarrow 0 = 0 + C \\Rightarrow C = 0 \\\\ & \\ \\therefore y = \\frac{5x^{3}}{3\\sqrt{1 + x^{2}}} \\\\ & y(\\sqrt{3}) = \\frac{15\\sqrt{3}}{3 \\cdot 2} = \\frac{5\\sqrt{3}}{2} \\end{matrix}\\]",
+  "note": "5x^1 should be 5x^2; 32 is 3 x 2"
+ },
+ {
+  "id": "53b03b7a-d7bd-4435-ae1a-0ad8ecebd0e7",
+  "before": "2a491729",
+  "solution": "\\(P(a,b),Q(c,d),PO = QO\\) \\[\\Rightarrow a^{2} + b^{2} = c^{2} + d^{2}\\] \\[R(x,y)\\ S = (1, - 1) \\Rightarrow RO = SO\\] ( \\(\\because\\) equivalence class) \\[x^{2} + y^{2} = 2\\]",
+  "note": "lower-case s is the point S"
+ },
+ {
+  "id": "5417f996-5caf-410b-9932-4ebd8b65460a",
+  "before": "2a2c1b76",
+  "solution": "\\[e^{\\left( \\cos^{2}x + \\cos^{4}x + \\ldots\\ldots\\infty \\right)\\ln 2} = 2^{\\cos^{2}x + \\cos^{4}x + \\ldots\\ldots\\infty}\\] \\[= 2^{\\cot^{2}x}\\] \\[t^{2} - 9t + 8 = 0 \\Rightarrow t = 1,8\\] \\[\\Rightarrow 2^{\\cot^{2}x} = 1,8 \\Rightarrow \\cot^{2}x = 0,3\\] \\[0 < x < \\frac{\\pi}{2} \\Rightarrow \\cot x = \\sqrt{3}\\] \\[\\Rightarrow \\frac{2\\sin x}{\\sin x + \\sqrt{3}\\cos x} = \\frac{2}{1 + \\sqrt{3}\\cot x} = \\frac{2}{4} = \\frac{1}{2}\\]",
+  "note": "n2 is ln 2"
+ },
+ {
+  "id": "598f4830-7fe1-4166-b1e7-7c4ef11778ba",
+  "before": "dc104b7d",
+  "solution": "\\[\\begin{matrix} & \\ \\sum_{x = 0}^{\\infty} P(X = x) = 1 \\\\ & k\\left( 1 + 2 \\cdot 3^{- 1} + 3 \\cdot 3^{- 2} + 4 \\cdot 3^{- 3} + \\ldots\\infty \\right) = 1 \\end{matrix}\\] Let \\(s = 1 + \\frac{2}{3} + \\frac{3}{3^{2}} + \\frac{4}{3^{3}} + \\ldots\\infty\\) \\[\\frac{s}{3} = \\frac{1}{3} + \\frac{2}{3^{2}} + \\frac{3}{3^{3}} + \\ldots\\infty\\] \\[{\\frac{2\\text{ }s}{3} = 1 + \\frac{1}{3} + \\frac{1}{3^{2}} + \\frac{1}{3^{3}} + \\ldots\\infty }{\\frac{2s}{3} = \\frac{1}{1 - \\frac{1}{3}} = \\frac{3}{2}}\\] \\[s = \\frac{9}{4}\\] so \\(k = \\frac{4}{9}\\) \\[\\begin{matrix} & P(X \\geq 2) = 1 - P(x = 0) - P(x = 1) \\\\ & \\ = 1 - \\frac{4}{9}\\left( 1 + \\frac{2}{3} \\right) \\\\ & \\ = \\frac{7}{27} \\end{matrix}\\]",
+  "note": "3/3^3 and 1/3^3 terms; '2s/3 - ... = 3/2' should be '2s/3 = ... = 3/2'"
+ },
+ {
+  "id": "5c7b4271-1fdf-4c4d-879a-e4769cd7438e",
+  "before": "41ced3b6",
+  "solution": "> \\[p = P\\left( \\frac{B_{I}}{R} \\right) = \\frac{\\frac{1}{3}\\left( \\frac{3}{10} \\right)}{\\frac{1}{3}\\left( \\frac{3}{10} + \\frac{4}{10} + \\frac{5}{10} \\right)} = \\frac{1}{4}\\] \\[q = P\\left( \\frac{B_{\\text{III~}}}{G} \\right) = \\frac{\\frac{1}{3}\\left( \\frac{4}{10} \\right)}{\\frac{1}{3}\\left( \\frac{5}{10} + \\frac{3}{10} + \\frac{4}{10} \\right)} = \\frac{1}{3}\\] \\[\\therefore\\frac{1}{p} + \\frac{1}{q} = 7\\]",
+  "note": "q = P(B_III / G): the P was lost"
+ },
+ {
+  "id": "5e01e4aa-99eb-4cc6-98ff-44881d33755e",
+  "before": "2baa8a27",
+  "solution": "\\(T_{n} = \\frac{1}{(2n + 1)^{2} - 1} = \\frac{1}{(2n + 2)2n} = \\frac{1}{4(n)(n + 1)}\\) \\[= \\frac{(n + 1) - n}{4n(n + 1)} = \\frac{1}{4}\\left( \\frac{1}{n} - \\frac{1}{n + 1} \\right)\\] \\[S = \\frac{1}{4}\\left( 1 - \\frac{1}{101} \\right) = \\frac{1}{4}\\left( \\frac{100}{101} \\right) = \\frac{25}{101}\\]",
+  "note": "missing = between the two fractions"
+ },
+ {
+  "id": "5ee0229c-c7d8-45d5-a7a3-050742fc3cd2",
+  "before": "5707d936",
+  "solution": "Constant term needs \\(36=r(3+k)\\), coefficient \\(=\\binom{12}{r}2^{12-r}3^{r}\\), and \\(v_2=v_2\\binom{12}{r}+12-r=8\\). Checking divisor cases: \\(r=6\\ (k=3)\\): \\(v_2=2+6=8\\) ✓; \\(r=4\\ (k=6)\\): \\(v_2=0+8=8\\) ✓; others fail. So 2 values of \\(k\\).",
+  "note": "k from 36 = r(3 + k): r=6 gives k=3, r=4 gives k=6"
+ },
+ {
+  "id": "5faac73d-ec65-4929-8c62-3fea64be6ea0",
+  "before": "c4db3d7f",
+  "solution": "\\(\\ \\frac{1}{3} \\leq f(t) \\leq 1\\forall t \\in \\lbrack 0,1\\rbrack\\) \\[0 \\leq f(t) \\leq \\frac{1}{2}\\forall t \\in (1,3\\rbrack\\] Now, \\(g(3) = \\int_{0}^{3} f(t)dt = \\int_{0}^{1} f(t)dt + \\int_{1}^{3} f(t)dt\\) \\[\\because\\int_{0}^{1} \\frac{1}{3}dt \\leq \\int_{0}^{1} f(t)dt \\leq \\int_{0}^{1} 1.dt\\] and \\(\\int_{1}^{3} 0dt \\leq \\int_{1}^{3} f(t)dt \\leq \\int_{1}^{3} \\frac{1}{2}dt\\) Adding, we get \\[\\begin{matrix} & \\frac{1}{3} + 0 \\leq g(3) \\leq 1 + \\frac{1}{2}(3 - 1) \\\\ & \\frac{1}{3} \\leq g(3) \\leq 2 \\end{matrix}\\]",
+  "note": "g(c) is g(3); f(a) is f(t)"
+ },
+ {
+  "id": "16a6da97-70e8-4a41-b5b4-c58e86a3a526",
+  "before": "6a488aae",
+  "solution": "\\[\\begin{matrix} & T_{r + 1} = \\ ^{11}C_{r}\\left( 2x^{2} \\right)^{11 - r}\\left( \\frac{1}{2x} \\right)^{r} \\\\ & \\ = \\ ^{11}C_{r}2^{11 - 2r}x^{22 - 3r} \\\\ & 22 - 3r = 10\\text{~and~}22 - 3r = 7 \\\\ & r = 4\\ \\text{~and~}\\ r = 5 \\\\ & \\text{~Coefficient of~}x^{10} = \\ ^{11}C_{4} \\cdot 2^{3} \\\\ & \\text{~Coefficient of~}x^{7} = \\ ^{11}C_{5} \\cdot 2^{1} \\\\ & \\text{~difference~} = \\ ^{11}C_{4} \\cdot 2^{3} - \\ ^{11}C_{5} \\cdot 2 \\\\ & \\ = \\frac{11 \\times 10 \\times 9 \\times 8}{24} \\times 8 - \\frac{11 \\times 10 \\times 9 \\times 8 \\times 7}{120} \\times 2 \\\\ & \\ = 11 \\times 10 \\times 3 \\times 8 - 11 \\times 3 \\times 4 \\times 7 \\\\ & \\ = 11 \\times 3 \\times 4 \\times (20 - 7) \\\\ & \\ = 11 \\times 12 \\times 13 \\\\ & \\ = 12(12 - 1)(12 + 1) \\\\ & \\ = 12\\left( 12^{2} - 1 \\right) \\\\ & \\ = 12^{3} - 12 \\end{matrix}\\]",
+  "note": "removed the stray 156. and the unrelated second working (5670, HEICS words)"
  }
 ]
