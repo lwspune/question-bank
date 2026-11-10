@@ -76,6 +76,7 @@ import {
   PARENT_PAY_KEEP,
   FIX_POINTS_FIXES_LIFT_PCT,
   FIX_POINTS_SALES_KEEP,
+  REFERRALS_SALES_KEEP,
   FLASHCARDS_ANSWERS_PER_OPEN_KEEP,
   checkOn,
   type Experiment,
@@ -658,6 +659,13 @@ export default async function GrowthPage() {
           <p className="text-sm text-muted-foreground">
             Read on {fmtDate(checkOn(e.liveSince, e.windowDays))} with <code>npm run fix-points:readout</code>: keep it if
             fixes per active student rise {FIX_POINTS_FIXES_LIFT_PCT}%+ and {FIX_POINTS_SALES_KEEP}+ passes sell with points.
+          </p>
+        );
+      case "referrals":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Read on {fmtDate(checkOn(e.liveSince, e.windowDays))} with <code>npm run referrals:readout</code>: keep it if
+            referred friends buy {REFERRALS_SALES_KEEP}+ passes.
           </p>
         );
       case "flashcards":
