@@ -1,0 +1,437 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "0274e0dc-93bf-4c53-9a9f-152462b20c62",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "R": "10",
+            "d": "15",
+            "n": "2/5*R^2+d^2"
+          },
+          "view": {
+            "x": [
+              -14,
+              22
+            ],
+            "y": [
+              -13.5,
+              13.5
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "D": [
+              "d",
+              0
+            ],
+            "P1": [
+              "d",
+              -12
+            ],
+            "P2": [
+              "d",
+              12
+            ],
+            "Q1": [
+              0,
+              -12
+            ],
+            "Q2": [
+              0,
+              12
+            ]
+          },
+          "items": [
+            {
+              "kind": "circle",
+              "center": "O",
+              "r": "R",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "O",
+              "step": "s1",
+              "label": "centre",
+              "pos": "w"
+            },
+            {
+              "kind": "segment",
+              "from": "Q1",
+              "to": "Q2",
+              "dash": true,
+              "tone": "muted",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -13.5,
+                -11
+              ],
+              "text": "R = {R} cm",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "P1",
+              "to": "P2",
+              "tone": "brand",
+              "step": "s2",
+              "label": "axis",
+              "labelAt": [
+                "d+0.6",
+                11
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "D",
+              "dash": true,
+              "step": "s2",
+              "label": "d = {d} cm",
+              "labelAt": [
+                5,
+                0
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -13.5,
+                11.5
+              ],
+              "text": "n = {n}",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "n = 265",
+            "d > R",
+            "R*R*2/5 + d*d = n"
+          ],
+          "answer": "n"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "2c3293cc",
+        "answer": {
+          "value": 265,
+          "label": "n = 265"
+        }
+      }
+    },
+    {
+      "id": "129b7090-515e-45ce-adb9-be225a031000",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "g": "10",
+            "L": "60",
+            "th": "rad(30)",
+            "hc": "L*sin(th)",
+            "bs": "L*cos(th)",
+            "hm": "hc/100",
+            "v": "sqrt(2*g*hm/1.5)"
+          },
+          "view": {
+            "x": [
+              -10,
+              70
+            ],
+            "y": [
+              -12,
+              48
+            ]
+          },
+          "points": {
+            "T": [
+              0,
+              "hc"
+            ],
+            "C": [
+              0,
+              0
+            ],
+            "F": [
+              "bs",
+              0
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "T",
+                "C",
+                "F"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "T",
+              "to": "F",
+              "tone": "brand",
+              "step": "s1",
+              "label": "L = {L} cm",
+              "labelAt": [
+                30,
+                19
+              ],
+              "pos": "ne"
+            },
+            {
+              "kind": "angle",
+              "at": "F",
+              "from": "T",
+              "to": "C",
+              "step": "s1",
+              "label": "30°"
+            },
+            {
+              "kind": "angle",
+              "at": "C",
+              "from": "T",
+              "to": "F",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "T",
+              "to": "C",
+              "dash": true,
+              "step": "s1",
+              "label": "h",
+              "labelAt": [
+                -1.5,
+                15
+              ],
+              "pos": "w"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -9,
+                -8
+              ],
+              "text": "h = L sin30° = 0.6 × 0.5 = {hm} m",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -9,
+                42
+              ],
+              "text": "v = {v} m/s",
+              "step": "s2",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "hm = 0.3",
+            "bs*bs + hc*hc = L*L",
+            "v = 2"
+          ],
+          "answer": "v"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "f4d329d7",
+        "answer": {
+          "value": 2,
+          "label": "2 m/s"
+        }
+      }
+    },
+    {
+      "id": "15c3f3d5-042a-44e3-9206-2746c6b698f6",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "R": "5",
+            "d": "10",
+            "n": "2/5*R^2+d^2"
+          },
+          "view": {
+            "x": [
+              -14,
+              22
+            ],
+            "y": [
+              -13.5,
+              13.5
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "D": [
+              "d",
+              0
+            ],
+            "P1": [
+              "d",
+              -12
+            ],
+            "P2": [
+              "d",
+              12
+            ],
+            "Q1": [
+              0,
+              -12
+            ],
+            "Q2": [
+              0,
+              12
+            ]
+          },
+          "items": [
+            {
+              "kind": "circle",
+              "center": "O",
+              "r": "R",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "O",
+              "step": "s1",
+              "label": "centre",
+              "pos": "w"
+            },
+            {
+              "kind": "segment",
+              "from": "Q1",
+              "to": "Q2",
+              "dash": true,
+              "tone": "muted",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -13.5,
+                -11
+              ],
+              "text": "R = {R} cm",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "P1",
+              "to": "P2",
+              "tone": "brand",
+              "step": "s2",
+              "label": "axis",
+              "labelAt": [
+                "d+0.6",
+                11
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "D",
+              "dash": true,
+              "step": "s2",
+              "label": "d = {d} cm",
+              "labelAt": [
+                5,
+                0
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -13.5,
+                11.5
+              ],
+              "text": "x = {n}",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "n = 110",
+            "d > R",
+            "R*R*2/5 + d*d = n"
+          ],
+          "answer": "n"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "65989905",
+        "answer": {
+          "value": 110,
+          "label": "x = 110"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
