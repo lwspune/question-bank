@@ -371,8 +371,22 @@ describe("parseClientEvent - the chapter page's Fix line seen (2026-11-07)", () 
     });
   });
 
+  // V_LEARNING_LOOP.md step 3 (2026-11-10): the line under V's explanation is counted on its own key,
+  // so it never uses up a chapter page's view of the same chapter that day (experiment chapter-fix).
+  it("counts the line under V's explanation apart from the chapter pages", () => {
+    const r = parseClientEvent({ kind: "surface_viewed", surface: "chapter_fix", chapterId: CH, from: "v_chapter" }, "u1", NOW);
+    expect(r).toEqual({
+      ok: true,
+      value: {
+        kind: "surface_viewed",
+        metadata: { surface: "chapter_fix", chapterId: CH, from: "v_chapter" },
+        dedupeKey: `view:chapter_fix:v:${CH}:u1:2026-09-27`,
+      },
+    });
+  });
+
   it("accepts each page's tag", () => {
-    for (const from of ["chapter", "board_chapter", "browse_chapter"]) {
+    for (const from of ["chapter", "board_chapter", "browse_chapter", "v_chapter"]) {
       expect(parseClientEvent({ kind: "surface_viewed", surface: "chapter_fix", chapterId: CH, from }, "u1", NOW).ok).toBe(true);
     }
   });

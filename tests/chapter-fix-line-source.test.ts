@@ -52,6 +52,21 @@ describe("the three pages carry the line, each with its own tag", () => {
   });
 });
 
+describe("V's explanation carries the line, tagged as V's (V_LEARNING_LOOP.md step 3, 2026-11-10)", () => {
+  it("renders it in the chat with the explained question's chapter", () => {
+    const chat = read("src", "components", "chat", "ChatWidget.tsx");
+    expect(chat).toContain("<ChapterFixLine");
+    expect(chat).toContain("CHAPTER_FIX_FROM.v");
+    expect(chat).toContain("explainedChapterId");
+  });
+
+  it("closes the chat when its link is tapped, like V's own links", () => {
+    const chat = read("src", "components", "chat", "ChatWidget.tsx");
+    const at = chat.indexOf("<ChapterFixLine");
+    expect(chat.slice(Math.max(0, at - 400), at)).toMatch(/onClickCapture=\{\(e\) => \{\s*if \(\(e\.target as HTMLElement\)\.closest\("a"\)\) close\(\);/);
+  });
+});
+
 describe("on /questions the Fix line takes the place of the sign-in sentence (2026-11-07)", () => {
   it("passes the sentence as the line's fallback, so a signed-in student with mistakes sees one, not both", () => {
     const page = read("src", "app", "questions", "[examSlug]", "[subjectSlug]", "[chapterSlug]", "page.tsx");

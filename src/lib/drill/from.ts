@@ -38,6 +38,7 @@ export const DRILL_FROM = [
   "browse_chapter", // /browse filtered to one chapter
   "path", // the board path's Fix task on /me (2026-11-07, MENTOR_SPEC.md)
   "review_tab", // the Review tab's Fix buttons, whole list or one chapter (2026-11-08)
+  "v_chapter", // the chapter line under V's explanation (2026-11-10, V_LEARNING_LOOP.md step 3)
 ] as const;
 
 /** The chapter line's tag on each page it sits on. */
@@ -45,6 +46,8 @@ export const CHAPTER_FIX_FROM = {
   questions: "chapter",
   board: "board_chapter",
   browse: "browse_chapter",
+  // Under V's explanation (2026-11-10): counted apart from the chapter pages (experiment chapter-fix).
+  v: "v_chapter",
 } as const satisfies Record<string, DrillFrom>;
 
 export type ChapterFixFrom = (typeof CHAPTER_FIX_FROM)[keyof typeof CHAPTER_FIX_FROM];

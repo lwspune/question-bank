@@ -232,7 +232,11 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
         value: {
           kind: "surface_viewed",
           metadata: { surface: "chapter_fix", chapterId: raw.chapterId, from: raw.from },
-          dedupeKey: `view:chapter_fix:${raw.chapterId}:${userId}:${istDayKey(now)}`,
+          // V's line has its own key (2026-11-10), so it never uses up a chapter page's view that day.
+          dedupeKey:
+            raw.from === CHAPTER_FIX_FROM.v
+              ? `view:chapter_fix:v:${raw.chapterId}:${userId}:${istDayKey(now)}`
+              : `view:chapter_fix:${raw.chapterId}:${userId}:${istDayKey(now)}`,
         },
       };
     }

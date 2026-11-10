@@ -90,6 +90,8 @@ import PracticeBuilder, { PENDING_BUILD_KEY, logBuilderStep } from "./PracticeBu
 import type { BuilderAnswers } from "@/lib/practiceTests/builder";
 import { sceneOf } from "@/lib/visuals/usage";
 import { reportVisual } from "@/lib/visuals/usageBeacon";
+import ChapterFixLine from "@/components/drill/ChapterFixLine";
+import { CHAPTER_FIX_FROM } from "@/lib/drill/from";
 
 // The animated-solution player loads only when a reply carries a visual.
 const VAnimatedSolution = dynamic(() => import("@/components/visuals/AnimatedSolution"));
@@ -122,6 +124,8 @@ type ChatTurn = HistoryTurn & {
   hourlyOffer?: { pass: NonNullable<HourlyLimitReply["pass"]>; premiumLimit: number | null };
   /** "One more like this" was tapped under this explanation, so the button goes (2026-11-08). */
   moreTaken?: boolean;
+  /** The explained question's chapter: its "Fix N mistakes" line goes under the explanation (2026-11-10). Never kept. */
+  explainedChapterId?: string;
 };
 
 /** What the device keeps of a turn: no face, no errors. */
@@ -714,6 +718,8 @@ export default function ChatWidget() {
         solutionVisualQuestionId?: string;
         /** The bank question V explained, for "One more like this" (2026-11-08). */
         explainedQuestionId?: string;
+        /** Its chapter, for the "Fix N mistakes in this chapter" line (V_LEARNING_LOOP.md step 3). */
+        explainedChapterId?: string;
         /** The day's free answers stopped an explanation: the pass offer goes under the reply (2026-10-28). */
         passOffer?: unknown;
         /** Abuse after the calm line (lib/chat/abuse.ts): V says nothing. */
@@ -772,6 +778,7 @@ export default function ChatWidget() {
               ...(data.solutionVisual && typeof data.solutionVisual === "object" ? { visual: data.solutionVisual } : {}),
               ...(typeof data.solutionVisualQuestionId === "string" ? { visualQuestionId: data.solutionVisualQuestionId } : {}),
               ...(typeof data.explainedQuestionId === "string" ? { explainedQuestionId: data.explainedQuestionId } : {}),
+              ...(typeof data.explainedChapterId === "string" ? { explainedChapterId: data.explainedChapterId } : {}),
             }
           : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan, path, reveal: true }
       );
@@ -996,6 +1003,19 @@ export default function ChatWidget() {
                         <Plus className="h-3.5 w-3.5" aria-hidden />
                         One more like this
                       </button>
+                    </div>
+                  )}
+                  {/* The chapter's waiting mistakes under an explanation (V_LEARNING_LOOP.md step 3): renders nothing
+                      signed out or with none waiting, and is tagged as V's so the chapter-fix experiment reads it apart. */}
+                  {rateable && t.explained && t.explainedChapterId && (
+                    // "Fix them" leaves the page, so it closes the window like V's own links do.
+                    <div
+                      className="ml-9 mt-2 max-w-[calc(100%-2.25rem)]"
+                      onClickCapture={(e) => {
+                        if ((e.target as HTMLElement).closest("a")) close();
+                      }}
+                    >
+                      <ChapterFixLine chapterId={t.explainedChapterId} from={CHAPTER_FIX_FROM.v} />
                     </div>
                   )}
                   {t.offer && !t.reveal && (

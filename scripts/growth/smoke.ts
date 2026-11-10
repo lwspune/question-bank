@@ -254,6 +254,10 @@ async function main() {
         // Live answers on /dashboard/sales (lib/sales/query loadDeclines).
         line = "live table on /dashboard/sales (user_activity paywall_event step declined)";
         break;
+      case "v-fix-line":
+        // Read by hand: the v_chapter rows of the chapter-fix readout (views and drill starts).
+        line = "by hand: scripts/drill/chapter-fix-readout.sql (v_chapter rows)";
+        break;
       case "v-follow-up-loop":
         // Read by hand: v_followups against Ask V explanations (migration 0250, V_LEARNING_LOOP.md step 2).
         line = "by hand: npm run v:learning";
