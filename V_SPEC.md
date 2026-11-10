@@ -159,6 +159,9 @@ reads everything else from the stored row.
    rung 3, labelled. Measured against the baseline.
 3. **`facts.ts` rewritten by job**, each rule pointing at the cases that justify
    it; the pending fixes from the 2026-10-22 review go through the test loop.
+4. **The learning loop** (2026-11-10, planned, not built): V sees whether its
+   explanation worked and remembers the student. Audit, baseline and build
+   order in [V_LEARNING_LOOP.md](V_LEARNING_LOOP.md).
 
 ## 7. The weekly review (Thursdays, first 2026-10-29)
 
