@@ -114,6 +114,56 @@ describe("Paper I before Paper II within a sitting", () => {
     ]);
     expect(groups[0].items.map((m) => m.slug)).toEqual(["m-sep", "g-sep", "m-apr", "g-apr"]);
   });
+
+  // MHT-CET, JEE and SSC record no month: the sitting is only in the title, and
+  // the live MHT-CET list mixed 13 May between April shifts.
+  it("orders shifts newest first by the date and shift printed in the title", () => {
+    const t = (slug: string, title: string, code = "maths") =>
+      paper({ slug, title, paperCode: code, pyqMonth: null });
+    const groups = groupMocksForType("past-papers", [
+      t("17-2-gat", "X 2026 (17 April Shift II) — Paper II", "gat"),
+      t("17-2-m", "X 2026 (17 April Shift II) — Paper I"),
+      t("20-2", "X 2026 (20 April Shift II) — Paper I"),
+      t("13may-1", "X 2026 (13 May Shift I) — Paper I"),
+      t("17-1", "X 2026 (17 April Shift I) — Paper I"),
+      t("9-1", "X 2026 (9 April Shift I) — Paper I"),
+    ]);
+    expect(groups[0].items.map((m) => m.slug)).toEqual(["13may-1", "20-2", "17-2-m", "17-2-gat", "17-1", "9-1"]);
+  });
+
+  it("reads the JEE and SSC forms of a sitting too", () => {
+    const t = (slug: string, title: string) => paper({ slug, title, pyqMonth: null });
+    const jee = groupMocksForType("past-papers", [
+      t("24jan-1", "JEE Mains 2026 (24 Jan, Shift 1) — Paper 1"),
+      t("5apr-2", "JEE Mains 2026 (5 Apr, Shift 2) — Paper 1"),
+      t("5apr-1", "JEE Mains 2026 (5 Apr, Shift 1) — Paper 1"),
+    ]);
+    expect(jee[0].items.map((m) => m.slug)).toEqual(["5apr-2", "5apr-1", "24jan-1"]);
+    const ssc = groupMocksForType("past-papers", [
+      t("13-2", "SSC CGL Tier I, 13 Sep 2025, Shift 2"),
+      t("20-1", "SSC CGL Tier I, 20 Sep 2025, Shift 1"),
+    ]);
+    expect(ssc[0].items.map((m) => m.slug)).toEqual(["20-1", "13-2"]);
+  });
+
+  it("orders papers by the number in their label, not the alphabet (GS Paper I before CSAT Paper II)", () => {
+    const mpsc = (slug: string, code: string, title: string) =>
+      paper({ slug, paperCode: code, title, examName: "MPSC State Services Prelims", pyqMonth: null });
+    const groups = groupMocksForType("past-papers", [
+      mpsc("csat", "ssp-csat-2021", "MPSC State Services Prelims 2026 — CSAT Paper II (31 May 2026)"),
+      mpsc("gs", "ssp-gs1", "MPSC State Services Prelims 2026 — GS Paper I — 31 May 2026"),
+    ]);
+    expect(groups[0].items.map((m) => m.slug)).toEqual(["gs", "csat"]);
+  });
+
+  it("puts the second sitting first when only its numeral says so (CDS (II) before (I))", () => {
+    const t = (slug: string, title: string) => paper({ slug, title, pyqMonth: null });
+    const groups = groupMocksForType("past-papers", [
+      t("i", "CDS (I) 2026 — Elementary Mathematics"),
+      t("ii", "CDS (II) 2026 — Elementary Mathematics"),
+    ]);
+    expect(groups[0].items.map((m) => m.slug)).toEqual(["ii", "i"]);
+  });
 });
 
 describe("openYearKeys: recent years open, older years folded", () => {
@@ -188,6 +238,21 @@ describe("paperFacts", () => {
     ];
     expect(paperFacts(neet, ndaBlueprint)[0].earlierQuestions).toEqual([200]);
     expect(facts[0].earlierQuestions).toEqual([]);
+  });
+
+  it("lists several earlier counts as a sentence (UCEED: 100, 85, 80 or 68)", () => {
+    const uceed = [100, 85, 80, 68, 57].map((n, i) => paper({ slug: `u${i}`, pyqYear: 2020 + i, totalQuestions: n }));
+    expect(paperFacts(uceed, ndaBlueprint)[0].earlierText).toBe("Earlier papers had 100, 85, 80 or 68 questions.");
+    expect(facts[0].earlierText).toBeNull();
+  });
+
+  it("orders cards by the paper number in the label (GS Paper I before CSAT Paper II)", () => {
+    const bp = (code: string, paperLabel: string): MockPaperBlueprint => ({ ...NDA_BP.maths, code, paperLabel });
+    const two = paperFacts(
+      [paper({ slug: "c", paperCode: "csat" }), paper({ slug: "g", paperCode: "gs" })],
+      (code) => (code === "csat" ? bp("csat", "CSAT Paper II") : bp("gs", "GS Paper I"))
+    );
+    expect(two.map((f) => f.label)).toEqual(["GS Paper I", "CSAT Paper II"]);
   });
 
   it("puts no em or en dash in anything it prints", () => {
@@ -301,6 +366,35 @@ describe("pastPapersFaq", () => {
   it("says yes to negative marking when any paper deducts", () => {
     expect(answer(/negative marking/)).toMatch(/^Yes\./);
     expect(answer(/negative marking/)).toMatch(/A question you leave blank loses nothing\./);
+  });
+
+  it("sets a label off with commas only when the label has one itself", () => {
+    const bp = (code: string, paperLabel: string): MockPaperBlueprint => ({ ...NDA_BP.maths, code, paperLabel });
+    const mpsc = pastPapersFaq({
+      ...base,
+      examName: "MPSC",
+      facts: paperFacts(
+        [paper({ slug: "c", paperCode: "csat", totalQuestions: 80, totalMarks: 200, durationSecs: 7200 }), paper({ slug: "g", paperCode: "gs" })],
+        (code) => (code === "csat" ? bp("csat", "CSAT Paper II") : bp("gs", "GS Paper I"))
+      ),
+    });
+    expect(mpsc[0].a).toMatch(/^GS Paper I has 120 questions/);
+    expect(mpsc[0].a).toMatch(/CSAT Paper II has 80 questions for 200 marks in 120 minutes\.$/);
+  });
+
+  it("explains a paper marked differently by section in plain words (UCEED)", () => {
+    const bp: MockPaperBlueprint = {
+      ...NDA_BP.maths,
+      paperLabel: "Part A",
+      sections: [
+        { key: "nat", label: "Numerical answer", subjects: [], count: 14, marking: { correct: 4, wrong: 0 } },
+        { key: "mcq", label: "Multiple choice", subjects: [], count: 28, marking: { correct: 3, wrong: -0.71 } },
+      ],
+    };
+    const uceed = pastPapersFaq({ ...base, examName: "UCEED", facts: paperFacts([paper({ slug: "u" })], () => bp) });
+    expect(uceed.find((f) => /negative marking/.test(f.q))?.a).toBe(
+      "In some sections. Each section is marked differently: a paper's start page lists the marking for each. A question you leave blank loses nothing."
+    );
   });
 
   it("says no to negative marking when nothing deducts (MHT-CET)", () => {

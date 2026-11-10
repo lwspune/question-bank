@@ -235,8 +235,39 @@ function paperLabel(m: MockListItem): string {
 
 const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
 
+const ROMAN: Readonly<Record<string, number>> = { I: 1, II: 2, III: 3, IV: 4 };
+
+/**
+ * Where a past paper's title prints its sitting, as a number that grows with
+ * the sitting: the day and month ("17 April", "5 Apr", "20 Sep 2025"), the
+ * shift ("Shift II", "Shift 2") and a sitting numeral ("CDS (II) 2026"). 0 when
+ * the title names none, so such papers keep their order. Titles are the only
+ * place MHT-CET, JEE and SSC record a sitting finer than its year.
+ */
+export function sittingRankFromTitle(title: string): number {
+  const date = title.match(/\b(\d{1,2})\s+([A-Za-z]{3})[a-z]*\b/);
+  const month = date ? monthRank(date[2]) : 0;
+  const day = month > 0 && date ? Number(date[1]) : 0;
+  const shift = title.match(/\bShift\s+(IV|I{1,3}|\d)\b/);
+  const shiftN = shift ? ROMAN[shift[1]] ?? Number(shift[1]) : 0;
+  const sitting = title.match(/\((IV|I{1,3})\)/);
+  const sittingN = sitting ? ROMAN[sitting[1]] : 0;
+  return ((month * 100 + day) * 10 + shiftN) * 10 + sittingN;
+}
+
+/** The number a paper label prints ("GS Paper I" -> 1, "CSAT Paper II" -> 2); unnumbered labels sort after. */
+function paperNumber(label: string): number {
+  const m = label.match(/\bPaper\s+(IV|I{1,3}|\d)\b/);
+  return m ? ROMAN[m[1]] ?? Number(m[1]) : 99;
+}
+
+/** Printed paper labels in paper order: by their number, then alphabetically. */
+export function comparePaperLabels(a: string, b: string): number {
+  return paperNumber(a) - paperNumber(b) || a.localeCompare(b);
+}
+
 /** 1-12 for a month name or abbreviation ("Sep", "September"), 0 when unknown. */
-function monthRank(month: string | null | undefined): number {
+export function monthRank(month: string | null | undefined): number {
   return month ? MONTHS.indexOf(month.slice(0, 3).toLowerCase()) + 1 : 0;
 }
 
@@ -278,9 +309,18 @@ export function groupMocksForType(
       (m) => (typeof m.pyqYear === "number" ? String(m.pyqYear) : "Undated")
     );
     // Within a year, the later sitting first where the month is recorded (NDA
-    // sits in Apr and Sep). Rows with no month keep their order: the sort is
-    // stable and an unknown month ranks as 0 alongside them.
-    for (const g of groups) g.items.sort((a, b) => monthRank(b.pyqMonth) - monthRank(a.pyqMonth));
+    // sits in Apr and Sep). An unknown month ranks as 0 alongside them.
+    // Then by the sitting the title prints, newest first (MHT-CET, JEE and SSC
+    // record no month), then by the printed paper label, so Paper I comes before
+    // Paper II within a sitting (2026-11-10: the live NDA page printed 2024 (I)
+    // GAT before Maths, and the MHT-CET list put 13 May between April shifts).
+    for (const g of groups)
+      g.items.sort(
+        (a, b) =>
+          monthRank(b.pyqMonth) - monthRank(a.pyqMonth) ||
+          sittingRankFromTitle(b.title) - sittingRankFromTitle(a.title) ||
+          comparePaperLabels(paperLabel(a), paperLabel(b))
+      );
     // Newest sitting first; an undated row (a DB CHECK makes it impossible)
     // sorts last so it reads as the anomaly it is rather than leading the page.
     return groups.sort((a, b) => {
