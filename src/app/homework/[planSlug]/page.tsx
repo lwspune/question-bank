@@ -16,6 +16,7 @@ import { Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { dayHref } from "@/lib/homework/links";
 import { planWording } from "@/lib/homework/display";
+import { planIntro } from "@/lib/homework/intro";
 
 // Plans change only when the plan builder runs; a day is plenty.
 export const revalidate = 86400;
@@ -81,7 +82,7 @@ export default async function HomeworkPlanPage(props: { params: Promise<Params> 
       <GuideHero
         eyebrow={`Daily homework · ${plan.perDay} questions a day`}
         title={`${plan.title} daily homework`}
-        subtitle={plan.summary}
+        subtitle={planIntro(plan.summary)}
       />
 
       <PlanTabs planSlug={plan.slug} active="days" />

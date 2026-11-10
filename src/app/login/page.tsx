@@ -3,7 +3,14 @@
 import { Suspense, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { BookOpen, Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
+import {
+  AUTH_INPUT_CLASS,
+  AUTH_SUBMIT_CLASS,
+  AuthBrandPanel,
+  AuthCard,
+  AuthLogo,
+} from "@/components/auth/AuthLayout";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -65,13 +72,8 @@ function LoginSection() {
   return (
     <section className="flex items-center justify-center px-6 py-16">
         <div className="w-full max-w-sm">
-          <div className="mb-8 flex items-center gap-2 md:hidden">
-            <BookOpen className="h-5 w-5 text-primary" aria-hidden />
-            <span className="text-sm font-semibold tracking-tight">
-              PYQ Vault
-            </span>
-          </div>
-
+          <AuthLogo />
+          <AuthCard>
           <header className="mb-6">
             <h1 className="text-2xl font-semibold tracking-tight">Sign in</h1>
             <p className="mt-1 text-sm text-muted-foreground">
@@ -101,6 +103,7 @@ function LoginSection() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={submitting}
+                className={AUTH_INPUT_CLASS}
               />
             </div>
             <div className="space-y-2">
@@ -114,7 +117,7 @@ function LoginSection() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   disabled={submitting}
-                  className="pr-10"
+                  className={cn(AUTH_INPUT_CLASS, "pr-10")}
                 />
                 <button
                   type="button"
@@ -143,7 +146,7 @@ function LoginSection() {
             )}
             <Button
               type="submit"
-              className="w-full"
+              className={AUTH_SUBMIT_CLASS}
               disabled={submitting || !email || !password}
             >
               {submitting ? "Signing in…" : "Sign in"}
@@ -159,6 +162,7 @@ function LoginSection() {
               Sign up
             </Link>
           </p>
+          </AuthCard>
         </div>
       </section>
   );
@@ -166,22 +170,7 @@ function LoginSection() {
 
 function BrandPanel() {
   return (
-    <aside
-      aria-hidden
-      className="relative hidden overflow-hidden bg-primary md:block"
-    >
-      <div
-        className="absolute inset-0 opacity-30"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 30% 20%, rgba(255,255,255,0.18), transparent 50%), radial-gradient(circle at 70% 80%, rgba(255,255,255,0.12), transparent 60%)",
-        }}
-      />
-      <div className="relative flex h-full flex-col justify-between p-12 text-primary-foreground">
-        <div className="flex items-center gap-2 text-sm font-semibold tracking-tight">
-          <BookOpen className="h-5 w-5" aria-hidden />
-          <span>PYQ Vault</span>
-        </div>
+    <>
         {/*
           AUDIENCE-NEUTRAL ON PURPOSE. This panel used to read "For coaching
           staff. … A focused tool for teachers." — copy from when the paper
@@ -197,22 +186,17 @@ function BrandPanel() {
           it (2026-10-01: the pass, not the role, since the Teacher Pass retired). Positioning follows the homepage hero — do not
           invent a third one here.
         */}
-        <div>
-          <p className="font-serif text-3xl leading-snug tracking-tight lg:text-4xl">
-            Pick up right where
-            <br />
-            you left off.
-          </p>
-          <p className="mt-4 max-w-md text-sm text-primary-foreground/70">
-            Your saved questions, mock attempts and notes progress, all waiting
-            for you. With the Premium Pass you can also download question
-            papers and answer keys as PDF files.
-          </p>
-        </div>
-        <p className="text-xs text-primary-foreground/50">
-          Built on real previous year questions.
-        </p>
-      </div>
-    </aside>
+        <AuthBrandPanel
+          heading={
+            <>
+              Pick up right where
+              <br />
+              you left off.
+            </>
+          }
+          body="Your saved questions, mock attempts and notes progress, all waiting for you. With the Premium Pass you can also download question papers and answer keys as PDF files."
+          footer="Built on real previous year questions."
+        />
+    </>
   );
 }

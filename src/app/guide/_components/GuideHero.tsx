@@ -23,8 +23,11 @@ type Props = {
   className?: string;
 };
 
+// Sans since 2026-11-10: serif is for what a student studies (questions,
+// options, solutions, notes teaching text), and a serif line under a sans
+// heading in the same card read as two designs.
 const SUBTITLE_CLASS =
-  "mt-4 max-w-2xl font-serif text-base leading-relaxed text-muted-foreground sm:text-lg";
+  "mt-2 max-w-2xl text-[15px] leading-relaxed text-muted-foreground sm:mt-4 sm:text-lg";
 
 export default function GuideHero({
   eyebrow,
@@ -37,13 +40,15 @@ export default function GuideHero({
   return (
     // `hero-soft` (globals.css) is the quiet brand band every page header
     // carries since 2026-10-04; the homepage alone gets the full `hero-brand`.
-    <header className={cn("hero-soft mb-8 rounded-2xl px-5 py-6 sm:mb-10 sm:px-8 sm:py-8", className)}>
+    // Compact on a phone (2026-11-10): the old padding and 30 px heading left
+    // the page's first real link under the fold on /mock/exam/nda.
+    <header className={cn("hero-soft mb-5 rounded-2xl px-4 py-4 sm:mb-10 sm:px-8 sm:py-8", className)}>
       {eyebrow && (
-        <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-brand-accent">
+        <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-brand-accent sm:mb-2 sm:text-xs">
           {eyebrow}
         </p>
       )}
-      <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+      <h1 className="text-[26px] font-bold leading-[1.15] tracking-tight sm:text-4xl lg:text-5xl">
         {title}
       </h1>
       {subtitle &&
@@ -52,7 +57,7 @@ export default function GuideHero({
         ) : (
           <p className={SUBTITLE_CLASS}>{subtitle}</p>
         ))}
-      {children && <div className="mt-6">{children}</div>}
+      {children && <div className="mt-4 sm:mt-6">{children}</div>}
     </header>
   );
 }

@@ -64,7 +64,6 @@ export default async function MockDownloadList(props: { params: Promise<Params> 
   const groups = groupMocksForType("past-papers", papers);
   const parent = mockFamilyOf(exam.slug);
   const bilingual = getExamByName(exam.examName)?.bilingual === true;
-  const solved = getExamByName(exam.examName)?.pastPaperSolutions === true;
 
   return (
     <GuideShell
@@ -80,7 +79,7 @@ export default async function MockDownloadList(props: { params: Promise<Params> 
       <GuideHero
         eyebrow={`${exam.displayName} · Past papers`}
         title={`${exam.examName} previous year question papers`}
-        subtitle={`Every paper exactly as it was set${range ? `, ${range}` : ""}. Read any paper free online ${solved ? "with answers and worked solutions" : "with answers"}, sit it as a timed mock, or download it as a PDF. Your first PDF paper and its answer key are free.`}
+        subtitle={`Every paper as set${range ? `, ${range}` : ""}. Read free, sit as a timed mock, or download a PDF.`}
       >
         <Link
           href="/mock/attempts"

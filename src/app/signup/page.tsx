@@ -3,7 +3,14 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { BookOpen, Eye, EyeOff, MailCheck } from "lucide-react";
+import { Eye, EyeOff, MailCheck } from "lucide-react";
+import {
+  AUTH_INPUT_CLASS,
+  AUTH_SUBMIT_CLASS,
+  AuthBrandPanel,
+  AuthCard,
+  AuthLogo,
+} from "@/components/auth/AuthLayout";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { signUpErrorMessage, validateSignup } from "@/lib/auth/credentials";
 import { Button } from "@/components/ui/button";
@@ -77,13 +84,8 @@ export default function SignupPage() {
     <main className="grid min-h-screen md:grid-cols-2">
       <section className="flex items-center justify-center px-6 py-16">
         <div className="w-full max-w-sm">
-          <div className="mb-8 flex items-center gap-2 md:hidden">
-            <BookOpen className="h-5 w-5 text-primary" aria-hidden />
-            <span className="text-sm font-semibold tracking-tight">
-              PYQ Vault
-            </span>
-          </div>
-
+          <AuthLogo />
+          <AuthCard>
           {confirmSent ? (
             <div className="space-y-4" role="status">
               <MailCheck className="h-8 w-8 text-primary" aria-hidden />
@@ -138,6 +140,7 @@ export default function SignupPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     disabled={submitting}
+                    className={AUTH_INPUT_CLASS}
                   />
                 </div>
                 <div className="space-y-2">
@@ -151,7 +154,7 @@ export default function SignupPage() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       disabled={submitting}
-                      className="pr-10"
+                      className={cn(AUTH_INPUT_CLASS, "pr-10")}
                     />
                     <button
                       type="button"
@@ -181,6 +184,7 @@ export default function SignupPage() {
                     value={confirm}
                     onChange={(e) => setConfirm(e.target.value)}
                     disabled={submitting}
+                    className={AUTH_INPUT_CLASS}
                   />
                 </div>
                 {error && (
@@ -190,7 +194,7 @@ export default function SignupPage() {
                 )}
                 <Button
                   type="submit"
-                  className="w-full"
+                  className={AUTH_SUBMIT_CLASS}
                   disabled={submitting || !email || !password || !confirm}
                 >
                   {submitting ? "Creating account…" : "Create account"}
@@ -208,6 +212,7 @@ export default function SignupPage() {
               </p>
             </>
           )}
+          </AuthCard>
         </div>
       </section>
 
@@ -218,37 +223,16 @@ export default function SignupPage() {
 
 function BrandPanel() {
   return (
-    <aside
-      aria-hidden
-      className="relative hidden overflow-hidden bg-primary md:block"
-    >
-      <div
-        className="absolute inset-0 opacity-30"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 30% 20%, rgba(255,255,255,0.18), transparent 50%), radial-gradient(circle at 70% 80%, rgba(255,255,255,0.12), transparent 60%)",
-        }}
-      />
-      <div className="relative flex h-full flex-col justify-between p-12 text-primary-foreground">
-        <div className="flex items-center gap-2 text-sm font-semibold tracking-tight">
-          <BookOpen className="h-5 w-5" aria-hidden />
-          <span>PYQ Vault</span>
-        </div>
-        <div>
-          <p className="font-serif text-3xl leading-snug tracking-tight lg:text-4xl">
-            Real previous year questions.
-            <br />
-            Built for your exam.
-          </p>
-          <p className="mt-4 max-w-md text-sm text-primary-foreground/70">
-            Filter by exam, chapter and difficulty, download a paper + answer
-            key, and study with grounded notes and strategy guides.
-          </p>
-        </div>
-        <p className="text-xs text-primary-foreground/50">
-          Free to start. No card required.
-        </p>
-      </div>
-    </aside>
+    <AuthBrandPanel
+      heading={
+        <>
+          Real previous year questions.
+          <br />
+          Built for your exam.
+        </>
+      }
+      body="Filter by exam, chapter and difficulty, download a paper + answer key, and study with grounded notes and strategy guides."
+      footer="Free to start. No card required."
+    />
   );
 }
