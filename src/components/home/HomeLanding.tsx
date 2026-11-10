@@ -418,7 +418,7 @@ export default async function HomeLanding({ chosen }: { chosen: ExamSlug | null 
                 <span className="text-cyan-200">{catalog.exams.length}</span> exams · free to browse
               </li>
             </ul>
-            <p className="max-w-xl font-serif text-base leading-relaxed text-white/85">
+            <p className="max-w-xl text-base leading-relaxed text-white/85">
               Every past paper, sorted by chapter, with worked answers. We find the chapters that cost you marks and bring your mistakes back until you get them right.
             </p>
             <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-3">
@@ -509,7 +509,7 @@ export default async function HomeLanding({ chosen }: { chosen: ExamSlug | null 
                           )}
                         </div>
                       </div>
-                      <p className="mt-1 font-serif text-sm leading-relaxed text-muted-foreground">
+                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                         {meta.blurb}
                       </p>
                       {membersByStage(node).map((group) => (
@@ -578,7 +578,7 @@ export default async function HomeLanding({ chosen }: { chosen: ExamSlug | null 
                         aria-hidden
                       />
                     </div>
-                    <p className="mt-1 font-serif text-sm leading-relaxed text-muted-foreground">
+                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                       {meta.blurb}
                     </p>
                   </Link>
@@ -624,7 +624,7 @@ export default async function HomeLanding({ chosen }: { chosen: ExamSlug | null 
                       {title}
                     </Link>
                   </h3>
-                  <p className="mt-1 font-serif text-sm leading-relaxed text-muted-foreground">{blurb}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{blurb}</p>
                   <span className="mt-auto inline-flex items-center gap-1 pt-3 text-xs font-medium text-primary" aria-hidden>
                     Open
                     <ArrowRight className="h-3 w-3" aria-hidden />
@@ -648,7 +648,7 @@ export default async function HomeLanding({ chosen }: { chosen: ExamSlug | null 
                       {title}
                     </h3>
                   </div>
-                  <p className="mt-1 font-serif text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                     {blurb}
                   </p>
                   <span className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-primary">
@@ -667,7 +667,7 @@ export default async function HomeLanding({ chosen }: { chosen: ExamSlug | null 
           <h2 className="text-base font-semibold tracking-tight">
             For teachers: build a paper in two clicks
           </h2>
-          <p className="mt-2 max-w-2xl font-serif text-sm leading-relaxed text-muted-foreground">
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
             Pick the chapters and difficulty you want. Check every question on
             screen, then download two files, ready to print: the question
             paper and a separate answer key.
