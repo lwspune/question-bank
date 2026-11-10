@@ -1,0 +1,740 @@
+{
+ "//": "Assembled from agent drafts (sketch).",
+ "visuals": [
+  {
+   "id": "26755cc3-0fa6-4f42-a8c2-50d00fc53ae2",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "vars": {
+      "mu": "0.5",
+      "xP": "2*mu",
+      "yP": "xP^2/4",
+      "xT": "3",
+      "yT": "yP+mu*(xT-xP)"
+     },
+     "view": {
+      "x": [
+       -3.2,
+       3.2
+      ],
+      "y": [
+       -0.8,
+       4
+      ]
+     },
+     "axes": true,
+     "points": {
+      "P": [
+       "xP",
+       "yP"
+      ],
+      "T": [
+       "xT",
+       "yT"
+      ],
+      "S": [
+       "-1",
+       "yP-mu*(xP+1)"
+      ]
+     },
+     "items": [
+      {
+       "kind": "curve",
+       "f": "x^2/4",
+       "x": [
+        -3,
+        3
+       ],
+       "step": "s1",
+       "label": "y = x²/4",
+       "labelAt": [
+        -2.9,
+        2
+       ],
+       "pos": "e"
+      },
+      {
+       "kind": "line",
+       "through": [
+        "S",
+        "T"
+       ],
+       "step": "s2",
+       "label": "slope = μ",
+       "labelAt": [
+        2.0,
+        0.45
+       ],
+       "pos": "s"
+      },
+      {
+       "kind": "point",
+       "at": "P",
+       "step": "s3",
+       "label": "x = 1",
+       "pos": "nw"
+      },
+      {
+       "kind": "label",
+       "at": [
+        -2.9,
+        3.5
+       ],
+       "text": "max height y = {yP}",
+       "step": "s3",
+       "tone": "good"
+      }
+     ],
+     "assert": [
+      "yP = xP^2/4",
+      "xP/2 = mu",
+      "yT = xT^2/4 - (xT-xP)^2/4"
+     ],
+     "answer": "yP"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "ca0b8bb0",
+    "answer": {
+     "value": 0.25,
+     "label": "1/4 m"
+    }
+   }
+  },
+  {
+   "id": "3972ddb6-b02c-4a96-a64d-ed1a051c20ec",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "vars": {
+      "d": "3",
+      "L2": "34",
+      "h": "sqrt(L2-d^2)",
+      "mgv": "100",
+      "Fw": "mgv/2*d/h",
+      "Ff": "sqrt(mgv^2+Fw^2)",
+      "k": "0.02",
+      "ratio": "Fw/Ff"
+     },
+     "view": {
+      "x": [
+       -1.7,
+       7.2
+      ],
+      "y": [
+       -1,
+       5.7
+      ]
+     },
+     "points": {
+      "O": [
+       0,
+       0
+      ],
+      "A": [
+       "d",
+       0
+      ],
+      "B": [
+       0,
+       "h"
+      ],
+      "M": [
+       "d/2",
+       "h/2"
+      ],
+      "Md": [
+       "d/2",
+       "h/2-mgv*k"
+      ],
+      "Nt": [
+       "d",
+       "mgv*k"
+      ],
+      "Ft": [
+       "d-Fw*k",
+       0
+      ],
+      "Wt": [
+       "Fw*k",
+       "h"
+      ],
+      "Wh": [
+       0,
+       5.4
+      ],
+      "Fl": [
+       -1.2,
+       0
+      ],
+      "Fr": [
+       4.6,
+       0
+      ]
+     },
+     "items": [
+      {
+       "kind": "segment",
+       "from": "O",
+       "to": "Wh",
+       "step": "s1"
+      },
+      {
+       "kind": "segment",
+       "from": "Fl",
+       "to": "Fr",
+       "step": "s1"
+      },
+      {
+       "kind": "segment",
+       "from": "A",
+       "to": "B",
+       "step": "s1",
+       "tone": "brand"
+      },
+      {
+       "kind": "label",
+       "at": [
+        4,
+        4.4
+       ],
+       "text": "ladder √34 m, foot 3 m",
+       "step": "s1",
+       "tone": "muted"
+      },
+      {
+       "kind": "arrow",
+       "from": "B",
+       "to": "Wt",
+       "step": "s2",
+       "tone": "amber"
+      },
+      {
+       "kind": "label",
+       "at": [
+        0.75,
+        5
+       ],
+       "text": "Fw",
+       "step": "s2",
+       "tone": "amber"
+      },
+      {
+       "kind": "arrow",
+       "from": "M",
+       "to": "Md",
+       "step": "s3",
+       "tone": "bad"
+      },
+      {
+       "kind": "label",
+       "at": [
+        1.4,
+        1.5
+       ],
+       "text": "mg",
+       "step": "s3",
+       "tone": "bad"
+      },
+      {
+       "kind": "arrow",
+       "from": "A",
+       "to": "Nt",
+       "step": "s3",
+       "tone": "good"
+      },
+      {
+       "kind": "label",
+       "at": [
+        3.15,
+        1
+       ],
+       "text": "N = mg",
+       "step": "s3",
+       "tone": "good"
+      },
+      {
+       "kind": "arrow",
+       "from": "A",
+       "to": "Ft",
+       "step": "s3",
+       "tone": "amber"
+      },
+      {
+       "kind": "label",
+       "at": [
+        2.7,
+        -0.45
+       ],
+       "text": "f = Fw",
+       "step": "s3",
+       "tone": "amber"
+      },
+      {
+       "kind": "label",
+       "at": [
+        4,
+        2.9
+       ],
+       "text": "Fw = {Fw} N",
+       "step": "s3",
+       "tone": "good"
+      },
+      {
+       "kind": "label",
+       "at": [
+        4,
+        2.2
+       ],
+       "text": "Fw/Ff = 3/√109",
+       "step": "s3",
+       "tone": "good"
+      }
+     ],
+     "assert": [
+      "h = 5",
+      "d^2 + h^2 = L2",
+      "Fw*h = mgv/2*d",
+      "Ff^2 = mgv^2 + Fw^2",
+      "ratio = 3/sqrt(109)"
+     ],
+     "answer": "ratio"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "d8640e2f",
+    "answer": {
+     "value": 0.28734788556634544,
+     "label": "3/√109"
+    }
+   }
+  },
+  {
+   "id": "64b850cc-df38-4aee-9bc9-9dff1cd0a9ee",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "vars": {
+      "ang": "30",
+      "th": "rad(ang)",
+      "ux": "cos(th)",
+      "uy": "sin(th)",
+      "nx": "-sin(th)",
+      "ny": "cos(th)",
+      "L": "7",
+      "s": "5",
+      "b": "1",
+      "Px": "L*ux",
+      "Py": "L*uy",
+      "B0x": "s*ux",
+      "B0y": "s*uy",
+      "Cx": "B0x+b/2*nx",
+      "Cy": "B0y+b/2*ny",
+      "k": "2.2",
+      "mu": "(sin(th)-1/4)/cos(th)",
+      "Nn": "cos(th)",
+      "fk": "mu*Nn"
+     },
+     "view": {
+      "x": [
+       -0.8,
+       7.6
+      ],
+      "y": [
+       -0.6,
+       5.7
+      ]
+     },
+     "points": {
+      "O": [
+       0,
+       0
+      ],
+      "P": [
+       "Px",
+       "Py"
+      ],
+      "Q": [
+       "Px",
+       0
+      ],
+      "G": [
+       1.5,
+       0
+      ],
+      "K1": [
+       "B0x-b/2*ux",
+       "B0y-b/2*uy"
+      ],
+      "K2": [
+       "B0x+b/2*ux",
+       "B0y+b/2*uy"
+      ],
+      "K3": [
+       "B0x+b/2*ux+b*nx",
+       "B0y+b/2*uy+b*ny"
+      ],
+      "K4": [
+       "B0x-b/2*ux+b*nx",
+       "B0y-b/2*uy+b*ny"
+      ],
+      "C": [
+       "Cx",
+       "Cy"
+      ],
+      "Tmg": [
+       "Cx",
+       "Cy-k"
+      ],
+      "TN": [
+       "Cx+Nn*k*nx",
+       "Cy+Nn*k*ny"
+      ],
+      "Tf": [
+       "Cx+fk*k*ux",
+       "Cy+fk*k*uy"
+      ]
+     },
+     "items": [
+      {
+       "kind": "polygon",
+       "points": [
+        "O",
+        "P",
+        "Q"
+       ],
+       "step": "s1",
+       "tone": "muted"
+      },
+      {
+       "kind": "polygon",
+       "points": [
+        "K1",
+        "K2",
+        "K3",
+        "K4"
+       ],
+       "step": "s1",
+       "tone": "brand"
+      },
+      {
+       "kind": "angle",
+       "at": "O",
+       "from": "G",
+       "to": "P",
+       "label": "30°",
+       "step": "s1"
+      },
+      {
+       "kind": "arrow",
+       "from": "C",
+       "to": "Tmg",
+       "step": "s2",
+       "tone": "bad"
+      },
+      {
+       "kind": "point",
+       "at": "Tmg",
+       "label": "mg",
+       "pos": "s",
+       "step": "s2",
+       "tone": "bad"
+      },
+      {
+       "kind": "arrow",
+       "from": "C",
+       "to": "TN",
+       "step": "s2",
+       "tone": "good"
+      },
+      {
+       "kind": "point",
+       "at": "TN",
+       "label": "N",
+       "pos": "nw",
+       "step": "s2",
+       "tone": "good"
+      },
+      {
+       "kind": "arrow",
+       "from": "C",
+       "to": "Tf",
+       "step": "s2",
+       "tone": "amber"
+      },
+      {
+       "kind": "point",
+       "at": "Tf",
+       "label": "f",
+       "pos": "ne",
+       "step": "s2",
+       "tone": "amber"
+      },
+      {
+       "kind": "label",
+       "at": [
+        0.2,
+        5
+       ],
+       "text": "μ = 1/(2√3)",
+       "step": "s3",
+       "tone": "good"
+      }
+     ],
+     "assert": [
+      "fk = 1/4",
+      "mu = 1/(2*sqrt(3))",
+      "mu*Nn = sin(th) - 1/4"
+     ],
+     "answer": "mu"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "eec1d133",
+    "answer": {
+     "value": 0.2886751345948128,
+     "label": "1/(2√3)"
+    }
+   }
+  },
+  {
+   "id": "68327ef1-5019-472b-8648-3c32da5dd714",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "vars": {
+      "ang": "60",
+      "th": "rad(ang)",
+      "ux": "cos(th)",
+      "uy": "sin(th)",
+      "nx": "-sin(th)",
+      "ny": "cos(th)",
+      "L": "5",
+      "s": "3.2",
+      "b": "1",
+      "Px": "L*ux",
+      "Py": "L*uy",
+      "B0x": "s*ux",
+      "B0y": "s*uy",
+      "Cx": "B0x+b/2*nx",
+      "Cy": "B0y+b/2*ny",
+      "k": "0.7",
+      "mg": "2",
+      "F": "mg*tan(th)",
+      "Nn": "mg*cos(th)+F*sin(th)"
+     },
+     "view": {
+      "x": [
+       -2.5,
+       4.6
+      ],
+      "y": [
+       -0.4,
+       4.9
+      ]
+     },
+     "points": {
+      "O": [
+       0,
+       0
+      ],
+      "P": [
+       "Px",
+       "Py"
+      ],
+      "Q": [
+       "Px",
+       0
+      ],
+      "G": [
+       1.5,
+       0
+      ],
+      "K1": [
+       "B0x-b/2*ux",
+       "B0y-b/2*uy"
+      ],
+      "K2": [
+       "B0x+b/2*ux",
+       "B0y+b/2*uy"
+      ],
+      "K3": [
+       "B0x+b/2*ux+b*nx",
+       "B0y+b/2*uy+b*ny"
+      ],
+      "K4": [
+       "B0x-b/2*ux+b*nx",
+       "B0y-b/2*uy+b*ny"
+      ],
+      "C": [
+       "Cx",
+       "Cy"
+      ],
+      "Tmg": [
+       "Cx",
+       "Cy-mg*k"
+      ],
+      "TF": [
+       "Cx+F*k",
+       "Cy"
+      ],
+      "TN": [
+       "Cx+Nn*k*nx",
+       "Cy+Nn*k*ny"
+      ]
+     },
+     "items": [
+      {
+       "kind": "polygon",
+       "points": [
+        "O",
+        "P",
+        "Q"
+       ],
+       "step": "s1",
+       "tone": "muted"
+      },
+      {
+       "kind": "polygon",
+       "points": [
+        "K1",
+        "K2",
+        "K3",
+        "K4"
+       ],
+       "step": "s1",
+       "tone": "brand"
+      },
+      {
+       "kind": "angle",
+       "at": "O",
+       "from": "G",
+       "to": "P",
+       "label": "60°",
+       "step": "s1"
+      },
+      {
+       "kind": "arrow",
+       "from": "C",
+       "to": "Tmg",
+       "step": "s2",
+       "tone": "bad"
+      },
+      {
+       "kind": "point",
+       "at": "Tmg",
+       "label": "mg",
+       "pos": "s",
+       "step": "s2",
+       "tone": "bad"
+      },
+      {
+       "kind": "arrow",
+       "from": "C",
+       "to": "TF",
+       "step": "s2",
+       "tone": "amber"
+      },
+      {
+       "kind": "point",
+       "at": "TF",
+       "label": "F",
+       "pos": "e",
+       "step": "s2",
+       "tone": "amber"
+      },
+      {
+       "kind": "arrow",
+       "from": "C",
+       "to": "TN",
+       "step": "s2",
+       "tone": "good"
+      },
+      {
+       "kind": "point",
+       "at": "TN",
+       "label": "N",
+       "pos": "nw",
+       "step": "s2",
+       "tone": "good"
+      },
+      {
+       "kind": "label",
+       "at": [
+        3,
+        4.4
+       ],
+       "text": "F² = 12",
+       "step": "s3",
+       "tone": "good"
+      }
+     ],
+     "assert": [
+      "F*cos(th) = mg*sin(th)",
+      "F = sqrt(12)",
+      "Nn = 4"
+     ],
+     "answer": "F^2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "ca322ce0",
+    "answer": {
+     "value": 11.999999999999993,
+     "label": "x = 12"
+    }
+   }
+  }
+ ],
+ "decided": []
+}
