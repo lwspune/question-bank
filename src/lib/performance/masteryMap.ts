@@ -136,7 +136,27 @@ export function buildMasteryMap(lane: Lane): MasteryMap {
 /** Subtopics mastered across every lane: the Progress tab's tile (2026-11-08),
  *  the map's green dots summed over every exam and subject. */
 export function masteredCount(lanes: readonly Lane[]): number {
-  return lanes.reduce((n, lane) => n + buildMasteryMap(lane).totals.mastered, 0);
+  return masteryTotals(lanes).mastered;
+}
+
+/** The Progress tile's numbers: mastered, out of every subtopic on the map. */
+export function masteryTile(lanes: readonly Lane[]): { mastered: number; of: number } {
+  const t = masteryTotals(lanes);
+  return { mastered: t.mastered, of: BAND_ORDER.reduce((n, b) => n + t[b], 0) };
+}
+
+/**
+ * Every band summed across lanes (2026-11-10): the subtopics the mastered
+ * count is out of, for the Progress tile's ring. One sum, so the ring's
+ * "12 of 31" and the map's legend can never disagree.
+ */
+export function masteryTotals(lanes: readonly Lane[]): BandCounts {
+  const totals: BandCounts = { weak: 0, mid: 0, mastered: 0, unknown: 0 };
+  for (const lane of lanes) {
+    const t = buildMasteryMap(lane).totals;
+    for (const b of BAND_ORDER) totals[b] += t[b];
+  }
+  return totals;
 }
 
 /**

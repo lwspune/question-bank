@@ -114,6 +114,25 @@ export function defaultTrendSubject(attempts: readonly HistoryAttempt[]): string
   return best;
 }
 
+/**
+ * The paper whose marks line goes with a performance lane (exam name + subject,
+ * 2026-11-10): the paper of that exam whose blueprint carries the subject, the
+ * one with the most finished full papers when several do. NDA Mathematics is
+ * Paper I, NDA English is the GAT; a JEE paper carries all three subjects.
+ * Null when no paper of that exam carries it, or its blueprint is unknown.
+ */
+export function laneTrendKey(
+  attempts: readonly HistoryAttempt[],
+  lane: { exam: string; subject: string }
+): string | null {
+  const carries = attempts.filter(
+    (a) =>
+      a.examName === lane.exam &&
+      (getBlueprint(a.examSlug, a.paperCode)?.sections.some((s) => s.subjects.includes(lane.subject)) ?? false)
+  );
+  return defaultTrendSubject(carries);
+}
+
 export const TREND_POINTS = 6;
 export const TREND_MIN_POINTS = 3;
 

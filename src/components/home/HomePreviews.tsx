@@ -41,7 +41,7 @@ export function ReviewPreview() {
       title="Review"
       label="The Review tab: 23 mistakes waiting, grouped by chapter, each with why it is there and a Fix button"
     >
-      <FixOverview list={FIX_SAMPLE} focusExam={null} savedCount={4} />
+      <FixOverview list={FIX_SAMPLE} focusExam={null} savedCount={4} fixed={PULSE_SAMPLE.totals?.fixed ?? 0} />
     </ScreenPreview>
   );
 }

@@ -2,45 +2,71 @@
 
 import { usePulse } from "@/lib/viewer/usePulse";
 import type { Pulse } from "@/lib/pulse/cache";
+import { fixProgress } from "@/lib/me/charts";
+import ProgressRing from "./ProgressRing";
 
 /**
- * The Progress tab's two tiles (2026-11-08): what got better, not how much was
- * done. They replaced Home's answered · % right · fixed row: "answered" counted
- * effort, and "% right" mixed easy and hard questions, practice and papers and
- * every exam, so it moved with what a student chose to practise.
+ * What got better, at the top of Progress: mistakes fixed and subtopics
+ * mastered, each with a ring of how far along (2026-11-10) so the number has
+ * something to be measured against: "41 fixed · 23 to go", "12 of 31".
  *
- * Mistakes fixed comes from the shared pulse, the header badge's own request,
- * so it costs no extra fetch; subtopics mastered is the map's green dots,
- * counted on the server (lib/performance/masteryMap masteredCount).
+ * Fixed and waiting are both counted across every exam (lib/me/charts
+ * fixProgress says why); the subtopics are the map's own totals.
  */
 export default function OutcomeTiles({
-  mastered,
+  mastery,
   pulse: given,
 }: {
-  /** Null when the evidence read failed: the tile is left out, never a 0. */
-  mastered: number | null;
-  /** A test or staff view passes a pulse; the student's page fetches its own. */
+  /** Mastered subtopics and how many the map holds; null when not computed. */
+  mastery: { mastered: number; of: number } | null;
   pulse?: Pulse;
 }) {
   const fetched = usePulse(!given);
   const pulse = given ?? fetched;
-  const fixed = pulse?.totals?.fixed ?? null;
+  const fix = fixProgress(pulse?.totals?.fixed ?? null, pulse?.chapterDue);
 
   return (
     <section aria-label="What got better" className="grid grid-cols-2 gap-2 sm:gap-3">
-      <Tile value={fixed} label="mistakes fixed" />
-      {mastered !== null && <Tile value={mastered} label="subtopics mastered" />}
+      <Tile
+        value={fix?.fixed ?? null}
+        share={fix?.share ?? null}
+        label={fix && fix.waiting > 0 ? `fixed · ${fix.waiting.toLocaleString("en-IN")} to go` : "mistakes fixed"}
+      />
+      {mastery !== null && (
+        <Tile
+          value={mastery.mastered}
+          of={mastery.of}
+          share={mastery.of > 0 ? mastery.mastered / mastery.of : 0}
+          label="subtopics mastered"
+        />
+      )}
     </section>
   );
 }
 
-function Tile({ value, label }: { value: number | null; label: string }) {
+function Tile({
+  value,
+  of,
+  share,
+  label,
+}: {
+  value: number | null;
+  of?: number;
+  share: number | null;
+  label: string;
+}) {
   return (
-    <div className="rounded-xl border bg-card p-3 sm:p-4">
-      <span className="block h-8 text-2xl font-bold tabular-nums tracking-tight text-brand-accent">
-        {value === null ? "" : value.toLocaleString("en-IN")}
-      </span>
-      <span className="mt-0.5 block text-xs leading-snug text-muted-foreground">{label}</span>
+    <div className="flex items-center gap-3 rounded-xl border bg-card p-3 sm:p-4">
+      {share !== null && <ProgressRing share={share} />}
+      <div className="min-w-0">
+        <span className="block h-8 text-2xl font-bold tabular-nums tracking-tight text-brand-accent">
+          {value === null ? "" : value.toLocaleString("en-IN")}
+          {value !== null && of !== undefined && of > 0 && (
+            <span className="text-sm font-medium text-muted-foreground"> of {of.toLocaleString("en-IN")}</span>
+          )}
+        </span>
+        <span className="mt-0.5 block text-xs leading-snug text-muted-foreground">{label}</span>
+      </div>
     </div>
   );
 }

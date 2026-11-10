@@ -101,12 +101,21 @@ describe("OutcomeTiles", () => {
   const pulse = { due: 3, week: { done: 0, goal: null }, totals: { answered: 900, right: 500, fixed: 19 } } as Pulse;
 
   it("shows what got better: mistakes fixed and subtopics mastered", () => {
-    const html = renderToStaticMarkup(createElement(OutcomeTiles, { mastered: 22, pulse }));
+    const html = renderToStaticMarkup(createElement(OutcomeTiles, { mastery: { mastered: 22, of: 40 }, pulse }));
     expect(html).toContain("19");
     expect(html).toContain("mistakes fixed");
     expect(html).toContain("22");
+    expect(html).toContain("of 40");
     expect(html).toContain("subtopics mastered");
     expect(html).not.toContain("answered");
+  });
+
+  it("says how many are still to fix when some wait, counting every exam's (2026-11-10)", () => {
+    const html = renderToStaticMarkup(
+      createElement(OutcomeTiles, { mastery: null, pulse: { ...pulse, chapterDue: { c1: 4, c2: 3 } } })
+    );
+    expect(html).toContain("fixed · 7 to go");
+    expect(html).not.toContain("subtopics mastered");
   });
 });
 

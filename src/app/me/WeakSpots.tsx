@@ -5,6 +5,8 @@ import { Target } from "lucide-react";
 import { usePulse } from "@/lib/viewer/usePulse";
 import { drillChapterHref } from "@/lib/drill/from";
 import type { Pulse } from "@/lib/pulse/cache";
+import { barWidth } from "@/lib/me/charts";
+import SegmentBar from "@/components/me/SegmentBar";
 
 /**
  * /me "Weak spots" (2026-11-06): the chapters where most of the student's
@@ -30,6 +32,9 @@ export default function WeakSpots({
   const pulse = given ?? fetched;
   const weak = pulse?.weak ?? [];
   if (weak.length === 0) return null;
+  // A bar per chapter against the biggest (2026-11-10), in Review's "wrong"
+  // red, so the chapter holding the most stands out; the count is in words too.
+  const max = Math.max(...weak.map((w) => w.due));
 
   return (
     <section aria-labelledby="weak-heading" className="rounded-2xl border bg-card p-4 sm:p-5">
@@ -42,6 +47,13 @@ export default function WeakSpots({
           <li key={w.chapterId} className="flex items-center gap-3 py-2.5">
             <div className="min-w-0 flex-1">
               <p className="truncate text-sm font-medium">{w.name}</p>
+              <SegmentBar
+                parts={[{ key: "due", n: w.due, pct: 100 }]}
+                colorOf={{ due: "bg-red-500" }}
+                width={barWidth(w.due, max)}
+                size="sm"
+                className="mt-1.5 max-w-xs"
+              />
               <p className="mt-0.5 truncate text-xs text-muted-foreground">
                 <span className="font-medium tabular-nums text-foreground">{w.due.toLocaleString("en-IN")} to fix</span>
                 {w.place && <> {" · "} {w.place}</>}

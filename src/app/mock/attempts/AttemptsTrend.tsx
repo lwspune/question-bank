@@ -1,5 +1,6 @@
 import { TrendingDown, TrendingUp } from "lucide-react";
 import { sparkline, type trendFor } from "@/lib/mocks/attemptHistory";
+import { cn } from "@/lib/utils";
 
 type Trend = NonNullable<ReturnType<typeof trendFor>>;
 
@@ -17,7 +18,16 @@ function fmt(n: number): string {
  * SVG, no chart library: six dots and a line. Abandoned papers are already left
  * out by trendFor, so a dip here is a paper the student actually sat.
  */
-export default function AttemptsTrend({ label, trend }: { label: string; trend: Trend }) {
+export default function AttemptsTrend({
+  label,
+  trend,
+  className = "mt-5",
+}: {
+  label: string;
+  trend: Trend;
+  /** Spacing from the caller: My attempts sets a top margin, Papers sits in a spaced stack. */
+  className?: string;
+}) {
   const scores = trend.points.map((p) => p.score);
   const pts = sparkline(scores, W, H, PAD);
   const first = scores[0];
@@ -27,7 +37,7 @@ export default function AttemptsTrend({ label, trend }: { label: string; trend: 
   const rising = lastPt.y <= pts[pts.length - 2].y;
 
   return (
-    <section className="mt-5 rounded-xl border bg-card p-4" aria-labelledby="trend-heading">
+    <section className={cn("rounded-xl border bg-card p-4", className)} aria-labelledby="trend-heading">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h2 id="trend-heading" className="text-sm font-semibold">
           {label}, your marks
