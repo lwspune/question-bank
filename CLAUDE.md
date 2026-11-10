@@ -33,6 +33,8 @@ Free, public past-year-question paper builder for Indian entrance exams. Anyone 
 
 **AFCAT** (`afcat`, graduate) — PUBLIC since 2026-10-14, **Maths CLOSED 2026-10-16**: Numerical Ability only, 4,822 q (4,689 practice from LWS quizzes, Errorless sheets, book chapters and every Cadetprep sheet, every key re-derived; 133 AFCAT past-year questions printed in Conquer the Sky, `pyq`). Not practiceOnly. No mocks. **Notes for all 20 chapters (2026-10-22, `/notes/afcat`).** `scripts/afcat/` (README has the Cadetprep loop and the sources deliberately left out).
 
+**UGC NET** (`ugc-net`, graduate, mocks; goal "government") — PUBLIC since 2026-11-10: **Paper 1 only** (General Paper on Teaching and Research Aptitude), 20 of the 21 June 2024 shifts, 1,000 q, read from NTA's own master papers and keyed BY QUESTION ID from NTA's final key, which prints no question text. Blind 962/978 against it; 3 keys corrected with a notice, 34 grace. 20 mocks (50 q, 60 min, +2/0). `scripts/ugc-net/` (README has which cycles have papers and keys).
+
 **IMAT** (`imat`, senior, practiceOnly, `site: "intl"`; Italian medical-school entrance) — **on intl.pyqvault.com since 2026-10-30, not www** (its www URLs 308 there; intl shows no Indian exam and sells the pass in USD, migration 0203; how it works: the top of [NICHE_SITES_SPEC.md](NICHE_SITES_SPEC.md)): 681 ORIGINAL five-option practice questions (twins of the Cambridge papers) and 46 notes chapters authored in `src/lib/sites/imat/notes/`. **The ministry's own papers 2023-2026 (240 q) PUBLIC since 2026-10-23** (owner settled D1: MUR publishes them and prep sites host them), each with a worked solution written blind against the key (`scripts/imat/apply-solutions.ts`); 2011-2022 stay publish_blocked (Cambridge's copyright). Mocks: 4 past papers + 7 practice papers (MOCKS.md). `practiceOnly` KEPT: dropping it would cut its chapter landing pages 20 → 3. `scripts/imat/`.
 
 **SPI** (`spi`, school, mocks) — PUBLIC since 2026-10-21: the Services Preparatory Institute entrance (Class 10, NDA-bound; GSPI sits the same shape), 1,315 q: the 2022 paper (`pyq`, answers derived twice, no key published; a published mock) and ten practice papers (samples, Practice Paper 1, LWS Mocks 1-6). Every chapter with 5+ questions has its own notes (`/notes/spi-*`, 2026-10-22), counting practice too. `scripts/spi/` (README).
@@ -354,6 +356,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-10 (fourth) — UGC NET Paper 1: all 20 June 2024 shifts, 1,000 q PUBLIC, 20 mocks (`scripts/ugc-net/`).**
+  - **Owner's call (graduate focus); no student had asked.** Keep rule: 50+ UGC NET students and 3+ passes two weeks after the Dec 2026 sitting (experiment `ugc-net`).
+  - **NTA's key prints only id to option**; papers are NTA's master prints re-hosted by AglaSem, each question carrying NTA's id, so answers are looked up by id. June 2024, not 2025: no 2025 papers hosted, Dec 2025 keyed for 5 subjects only.
+  - **Blind solve vs NTA's final key 962/978**; 3 NTA keys corrected with a notice; 34 graced (22 dropped or two-answer, 9 two readings, those 3). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-10 (third) — Small charts on Home, Review and Progress (no migration).**
   - **Why:** owner, "beautiful visualization"; the tabs were lists and sentences. Five OK'd: a marks line on Papers, reason bars + "fixed so far" on Review, rings on the two tiles, a subject bar over the map, a bar per weak spot.
   - **Papers reuses My attempts' `AttemptsTrend`** (marks, same-total full papers), picked per lane by `laneTrendKey` (the paper whose blueprint carries the subject); `npm run trend:smoke` fails on lane/blueprint subject-name drift.
