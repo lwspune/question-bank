@@ -188,6 +188,16 @@ export function canonicalFor(path: string): string {
   return intlExamOfPath(path) ? `${INTL_ORIGIN}${path}` : path;
 }
 
+/**
+ * The canonical of a SHARED page (served on www and intl, e.g. /browse) for the
+ * host the request came to: absolute on the intl origin there, relative
+ * elsewhere. A relative canonical alone resolves against the www metadataBase,
+ * which pointed intl's /browse at www's (2026-11-10).
+ */
+export function canonicalOnHost(path: string, host: string | null | undefined): string {
+  return isIntlHost(host) ? `${INTL_ORIGIN}${path}` : path;
+}
+
 /** Whether a sitemap URL (absolute or a path) is an international page. */
 export function isIntlUrl(url: string): boolean {
   const pathname = url.startsWith("/") ? url : new URL(url).pathname;

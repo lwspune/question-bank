@@ -6,15 +6,19 @@ import { sessionPaperFree } from "@/lib/export/freeDownloadSession";
 import { downloadScopesFor } from "@/lib/billing/passScope";
 import { readCountry } from "@/lib/acquisition/country";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { isIntlHost } from "@/lib/sites/intl";
+import { canonicalOnHost, isIntlHost } from "@/lib/sites/intl";
 import renderBrowse from "./renderBrowse";
 
-export const metadata: Metadata = {
-  title: "Browse questions",
-  description:
-    "Filter previous year questions by exam, chapter, difficulty, and year, and preview them free. Download the Question Paper + Answer Key as PDF files with the Premium Pass.",
-  alternates: { canonical: "/browse" },
-};
+/** The canonical names the host it was served on: /browse runs on www and intl. */
+export async function generateMetadata(): Promise<Metadata> {
+  const host = (await headers()).get("host");
+  return {
+    title: "Browse questions",
+    description:
+      "Filter previous year questions by exam, chapter, difficulty, and year, and preview them free. Download the Question Paper + Answer Key as PDF files with the Premium Pass.",
+    alternates: { canonical: canonicalOnHost("/browse", host) },
+  };
+}
 
 type PageProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
