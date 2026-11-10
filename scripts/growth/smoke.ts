@@ -254,6 +254,10 @@ async function main() {
         // Live answers on /dashboard/sales (lib/sales/query loadDeclines).
         line = "live table on /dashboard/sales (user_activity paywall_event step declined)";
         break;
+      case "score-plan":
+        // Read by hand: fair full-paper attempts, drill_started from score_plan/result within a day, next paper in 14 days.
+        line = "by hand: drill_started from score_plan, and next full paper within 14 days";
+        break;
       case "v-better-retry":
         // Read by hand: chat_interactions replies to a No (plain or naming a step), understood Yes against No.
         line = "by hand: chat_interactions understood on replies to a No";
