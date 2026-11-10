@@ -354,6 +354,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-10 (fourth) — Past-papers page: facts, trends, FAQ, readable year headings (no migration).**
+  - **Why:** read against testbook.com, ours was an 888-word list whose year headings read "20264" (count inside the h2). One template, all 22 mock exams.
+  - **All from data** (`lib/mocks/pastPapersPage.ts`): facts from the newest row (blueprint only to spot per-section marking), trends from 0242's weights, FAQ computed; `YEAR_NOTES` (NDA 2020) is the one hand input.
+  - **Sitting order read from titles** (MHT-CET, JEE, SSC store no month); a year over 12 papers starts folded, at most 3 open (an open 42-paper year buried the FAQ on a phone).
+  - **No "Updated" date:** none is stored and a render date fakes freshness; "Newest: 19 May 2026" instead. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-10 (third) — Small charts on Home, Review and Progress (no migration).**
   - **Why:** owner, "beautiful visualization"; the tabs were lists and sentences. Five OK'd: a marks line on Papers, reason bars + "fixed so far" on Review, rings on the two tiles, a subject bar over the map, a bar per weak spot.
   - **Papers reuses My attempts' `AttemptsTrend`** (marks, same-total full papers), picked per lane by `laneTrendKey` (the paper whose blueprint carries the subject); `npm run trend:smoke` fails on lane/blueprint subject-name drift.
