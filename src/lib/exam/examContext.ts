@@ -777,9 +777,12 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     goal: "government",
     displayName: "UGC NET",
     examName: "UGC NET", // must match the `exams` DB row exactly
+    // PUBLIC since 2026-11-10: June 2024, 20 shifts, 1,000 q, every one with a
+    // worked solution. One timed mock per shift (ugc-net-paper-1-*), MOCKS.md.
+    hasMocks: true,
+    pastPaperSolutions: true,
     guidesPath: null,
     notesPath: null,
-    noPublicContent: true, // rows go in PRIVATE; drop this flag when they go PUBLIC
   },
   // ── MPSC ──────────────────────────────────────────────────────────────────
   // One family with a stage level: MPSC -> Prelims / Mains -> exam. Prelims
