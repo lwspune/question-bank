@@ -158,6 +158,7 @@ describe("fixPointsView (what /api/me/fix-points answers)", () => {
       points: 12,
       pct: 12,
       maxPct: 40,
+      referralPct: 0,
       hasPass: false,
       lapsesOn: null,
       prices: { "mock-pass-6m": "₹439", "practice-pass-6m": "₹175" },

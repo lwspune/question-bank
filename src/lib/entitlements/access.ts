@@ -7,7 +7,8 @@
  * status is "active" and it hasn't passed `expiresAt` (null = no expiry).
  */
 
-export type EntitlementSource = "razorpay" | "comp" | "manual";
+/** `referral`: an inviter's free Premium days, earned when a friend paid (0249). */
+export type EntitlementSource = "razorpay" | "comp" | "manual" | "referral";
 export type EntitlementStatus = "active" | "expired" | "revoked" | "cancelled";
 
 /** The full-premium scope. A grant with this scope unlocks everything. */

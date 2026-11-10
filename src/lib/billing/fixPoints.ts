@@ -5,8 +5,8 @@
  *
  * Only points earned in the last FIX_POINTS_WINDOW_DAYS count, and a purchase
  * starts the count again: points expire by the window alone, with no decay job
- * and no spend ledger. Referral discounts (the next branch) add on top, up to
- * COMBINED_DISCOUNT_CAP_PCT.
+ * and no spend ledger. A friend's referral discount (lib/referrals, 0249) adds
+ * on top, the two together capped at COMBINED_DISCOUNT_CAP_PCT.
  *
  * WHY POINTS ONLY FOR FIXES: the rewarded act is deliberate practice on the
  * student's own misses (the engagement gate in CLAUDE.md). Points for every
@@ -31,10 +31,14 @@ export function fixPointsPct(points: number): number {
   return Math.min(FIX_POINTS_MAX_PCT, Math.floor(points));
 }
 
+/** A referral percentage as given, junk and negatives counting as none. */
+function referralPart(referralPct: number | undefined): number {
+  return Number.isFinite(referralPct) && (referralPct ?? 0) > 0 ? Math.floor(referralPct ?? 0) : 0;
+}
+
 /** The whole discount on an order: points plus any referral, capped together. */
 export function discountPct(d: { points: number; referralPct?: number }): number {
-  const referral = Number.isFinite(d.referralPct) && (d.referralPct ?? 0) > 0 ? Math.floor(d.referralPct ?? 0) : 0;
-  return Math.min(COMBINED_DISCOUNT_CAP_PCT, fixPointsPct(d.points) + referral);
+  return Math.min(COMBINED_DISCOUNT_CAP_PCT, fixPointsPct(d.points) + referralPart(d.referralPct));
 }
 
 /** `listPaise` less `pct`%, rounded down to a whole rupee. */
@@ -57,9 +61,10 @@ export function planTakesDiscount(plan: Pick<Plan, "site" | "currency" | "scope"
 /**
  * The order notes for a discounted sale: `amountPaise` becomes the price
  * charged (the paid-order check compares the payment with it, unchanged), and
- * the list price and points used ride beside it for /dashboard/sales and the
- * experiment's readout. No discount, or a plan that takes none, returns the
- * notes untouched.
+ * the list price, points used and any referral ride beside it for
+ * /dashboard/sales, the experiments' readouts and the referral reward (both
+ * grant paths read `referralPct`). No discount, or a plan that takes none,
+ * returns the notes untouched.
  */
 export function stampDiscountNotes(
   notes: Record<string, string>,
@@ -69,12 +74,14 @@ export function stampDiscountNotes(
   if (!planTakesDiscount(plan)) return notes;
   const pct = discountPct(d);
   if (pct <= 0) return notes;
+  const referral = referralPart(d.referralPct);
   return {
     ...notes,
     amountPaise: String(discountedPaise(plan.amountPaise, pct)),
     listPaise: String(plan.amountPaise),
     fixPoints: String(fixPointsPct(d.points)),
     discountPct: String(pct),
+    ...(referral > 0 ? { referralPct: String(referral) } : {}),
   };
 }
 
@@ -92,13 +99,16 @@ export function fixPointsGrantNote(notes: Record<string, string> | null | undefi
 /** What /api/me/fix-points answers: the points, what they are worth, and the new price of each pass they lower. */
 export type FixPointsView = {
   points: number;
+  /** What the points alone are worth. */
   pct: number;
   maxPct: number;
+  /** A referred friend's discount on their first pass (0249); 0 for everyone else. */
+  referralPct: number;
   /** A pass holder's points count toward their next pass; the offer lines stay quiet for them. */
   hasPass: boolean;
   /** When the oldest point in the window runs out (its earned time + 30 days, ISO); null with no points. */
   lapsesOn: string | null;
-  /** planId -> discounted price, only for active passes the points lower. */
+  /** planId -> discounted price (points plus any referral), only for active passes the discount lowers. */
   prices: Record<string, string>;
 };
 
@@ -108,13 +118,17 @@ export function fixPointsView(i: {
   hasPass: boolean;
   /** Earned time of the oldest point still in the window (fixPointsService.readFixPoints). */
   oldestAt?: string | null;
+  /** A referred friend's discount (lib/referrals/service readReferralDiscount); absent = none. */
+  referralPct?: number;
 }): FixPointsView {
   const points = Math.max(0, Math.floor(i.points) || 0);
   const pct = fixPointsPct(points);
+  const referralPct = referralPart(i.referralPct);
+  const total = discountPct({ points, referralPct });
   const prices: Record<string, string> = {};
-  if (pct > 0) {
+  if (total > 0) {
     for (const p of i.plans) {
-      if (p.active && planTakesDiscount(p)) prices[p.id] = formatPrice(discountedPaise(p.amountPaise, pct), p.currency);
+      if (p.active && planTakesDiscount(p)) prices[p.id] = formatPrice(discountedPaise(p.amountPaise, total), p.currency);
     }
   }
   const oldest = i.oldestAt ? new Date(i.oldestAt) : null;
@@ -122,7 +136,7 @@ export function fixPointsView(i: {
     points > 0 && oldest && !Number.isNaN(oldest.getTime())
       ? new Date(oldest.getTime() + FIX_POINTS_WINDOW_DAYS * DAY_MS).toISOString()
       : null;
-  return { points, pct, maxPct: FIX_POINTS_MAX_PCT, hasPass: i.hasPass, lapsesOn, prices };
+  return { points, pct, maxPct: FIX_POINTS_MAX_PCT, referralPct, hasPass: i.hasPass, lapsesOn, prices };
 }
 
 /*
@@ -136,10 +150,17 @@ const vp = (n: number) => plural(n, "Vault Point", "Vault Points");
 /** The pass the points lower: a pass holder's points count toward the NEXT one. */
 const target = (v: FixPointsView) => (v.hasPass ? "your next pass" : "the pass");
 
-/** The line under a pass offer whose price the points lowered; null when they did not. */
+/** The line under a pass offer whose price the points or a friend's invite lowered; null when neither did. */
 export function vaultPointsOfferNote(v: FixPointsView | null): string | null {
-  if (!v || v.hasPass || v.pct <= 0) return null;
-  return `Includes ${v.pct}% off from your ${vp(v.points)}.`;
+  if (!v || v.hasPass) return null;
+  const referral = v.referralPct ?? 0;
+  if (referral <= 0) return v.pct > 0 ? `Includes ${v.pct}% off from your ${vp(v.points)}.` : null;
+  if (v.pct <= 0) return `Includes ${referral}% off from your friend's invite.`;
+  const total = discountPct({ points: v.points, referralPct: referral });
+  if (total < v.pct + referral) {
+    return `Includes ${total}% off, the most there is: your friend's invite and your ${vp(v.points)}.`;
+  }
+  return `Includes ${total}% off: ${referral}% from your friend's invite and ${v.pct}% from your ${vp(v.points)}.`;
 }
 
 /** The status line on /me, the drill's end screen and Review (owner, 2026-11-09: shown with its value, to every student). */
