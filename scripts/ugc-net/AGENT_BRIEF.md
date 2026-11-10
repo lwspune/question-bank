@@ -102,6 +102,15 @@ candidate would. Options are labelled A, B, C, D = printed 1, 2, 3, 4.
   follows: NEP 2020, UGC regulations, the SDGs, the usual research-methods and
   communication texts. Where reasonable sources disagree, say so in `flag` and
   use `MEDIUM` confidence.
+- **SWAYAM PRABHA channels** come up often and memory is unreliable here. The
+  official allocation (swayamprabha.gov.in/ch_allocation/he, read 2026-11-10):
+  1 Sanskar and 2 Sanvahak (CEC), 3 Kautilya (EMRC Ahmedabad), 4 Aryabhatt
+  (EMRC Calicut), 5 Spandan (EMRC Srinagar), 6 Daksh (EMRC Chennai), 7 Vyas
+  (CEC), 8 Aatmagyan (INFLIBNET), 9 AICTE, **10-16 IGNOU**, 17-20 IIT Bombay,
+  21-22 IIT Delhi, 23 IIT Gandhinagar, 24-28 IIT Kanpur (25 = Humanities and
+  Social Sciences), 29-30 IIT Kharagpur, 31-36 IIT Madras, 37-38 IIT Tirupati,
+  39-40 University of Hyderabad. Numbering has changed over the years; if a
+  question's premise clashes with this list, say so in `flag`.
 - `difficulty`: `Easy` (one fact or one step), `Moderate` (two linked steps, or
   a fact most candidates half-know), `Hard` (an idea most candidates would not
   see, or long working).
