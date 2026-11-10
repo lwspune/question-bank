@@ -1,0 +1,8 @@
+[
+ {
+  "id": "a2782578-e8f1-4308-9b3f-3ee491b59bb0",
+  "before": "a322ad07",
+  "solution": "Factorise each term as a difference of squares. First: \\(\\frac{(p - q + r)(p + q - r)}{(p + r - q)(p + r + q)} = \\frac{p + q - r}{p + q + r}\\).\n\nSecond: \\(\\frac{(q - p + r)(q + p - r)}{(p + q - r)(p + q + r)} = \\frac{q + r - p}{p + q + r}\\). Third: \\(\\frac{(r - p + q)(r + p - q)}{(q + r - p)(q + r + p)} = \\frac{r + p - q}{p + q + r}\\).\n\nSum of numerators \\(= p + q + r\\), so the value is \\(1\\).\n\nCheck: \\(p = 4, q = 2, r = 1\\) gives \\(\\frac{15}{21} - \\frac{5}{35} + \\frac{3}{7} = \\frac{5}{7} - \\frac{1}{7} + \\frac{3}{7} = 1\\).",
+  "note": "p = 3, q = 2, r = 1 makes the third denominator 0"
+ }
+]
