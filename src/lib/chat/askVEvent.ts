@@ -170,3 +170,24 @@ export function askVAbout(detail: AskVDetail): void {
   if (typeof window === "undefined") return;
   window.dispatchEvent(new CustomEvent<AskVDetail>(ASK_V_EVENT, { detail }));
 }
+
+/**
+ * "Ask V this", with no question attached (2026-11-10): the stuck offer's Teach
+ * me the idea, on a subtopic with no notes, opens V with "Explain the idea
+ * behind <subtopic>." V answers it as a concept (rule 7a, explain_concept). A
+ * separate event from ASK_V_EVENT, whose detail always names a question.
+ */
+export const ASK_V_TEXT_EVENT = "v:ask-text";
+export type AskVTextDetail = { message: string };
+const ASK_V_TEXT_MAX = 300;
+
+export function isAskVTextDetail(d: unknown): d is AskVTextDetail {
+  if (!d || typeof d !== "object") return false;
+  const { message } = d as { message?: unknown };
+  return typeof message === "string" && message.trim().length > 0 && message.length <= ASK_V_TEXT_MAX;
+}
+
+export function askVText(message: string): void {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(new CustomEvent<AskVTextDetail>(ASK_V_TEXT_EVENT, { detail: { message } }));
+}

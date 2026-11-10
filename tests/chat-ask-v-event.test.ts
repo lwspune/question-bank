@@ -13,6 +13,7 @@ import {
   isAskVDetail,
   isAskVMessage,
   questionForRequest,
+  isAskVTextDetail,
 } from "@/lib/chat/askVEvent";
 
 const ID = "11111111-1111-4111-8111-111111111111";
@@ -155,5 +156,15 @@ describe("explainedTap", () => {
 
   it("never matches without a card", () => {
     expect(explainedTap([ask, explained], null, "Explain this question.")).toBe(-1);
+  });
+});
+
+// "Teach me the idea" with no notes for the subtopic opens V with a typed request (2026-11-10).
+describe("askVText detail", () => {
+  it("accepts a short message and refuses anything else", () => {
+    expect(isAskVTextDetail({ message: "Explain the idea behind Coulomb's Law." })).toBe(true);
+    expect(isAskVTextDetail({ message: "" })).toBe(false);
+    expect(isAskVTextDetail({ message: "x".repeat(301) })).toBe(false);
+    expect(isAskVTextDetail({ questionId: "q" })).toBe(false);
   });
 });

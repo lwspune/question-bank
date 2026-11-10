@@ -77,6 +77,8 @@ import VProgressCard from "./VProgressCard";
 import VPathCard from "./VPathCard";
 import {
   ASK_V_EVENT,
+  ASK_V_TEXT_EVENT,
+  isAskVTextDetail,
   askedCardOf,
   explainedTap,
   askVMessage,
@@ -232,6 +234,16 @@ export default function ChatWidget() {
     }
     window.addEventListener(ASK_V_EVENT, onAsk);
     return () => window.removeEventListener(ASK_V_EVENT, onAsk);
+  }, []);
+  // "Ask V this" with no question attached (the stuck offer's Teach me the idea, 2026-11-10).
+  const onAskTextRef = useRef<(message: string) => void>(() => {});
+  useEffect(() => {
+    function onAskText(e: Event) {
+      const d = (e as CustomEvent<unknown>).detail;
+      if (isAskVTextDetail(d)) onAskTextRef.current(d.message);
+    }
+    window.addEventListener(ASK_V_TEXT_EVENT, onAskText);
+    return () => window.removeEventListener(ASK_V_TEXT_EVENT, onAskText);
   }, []);
   // Phones only: tuck the launcher away while the student scrolls down a page
   // and bring it back on any scroll up (UX_ACTION_PLAN.md A7). It used to sit
@@ -679,6 +691,15 @@ export default function ChatWidget() {
     void askTyped(message, d);
   };
 
+  onAskTextRef.current = (message: string) => {
+    setMode("chat");
+    openChat();
+    setAsked(null);
+    setReplyingTo(null);
+    focusTurnRef.current = null;
+    void askTyped(message, null);
+  };
+
   function startReply(id: string, text: string) {
     setReplyingTo({ id, text });
     inputRef.current?.focus();
@@ -691,7 +712,8 @@ export default function ChatWidget() {
     focusTurnRef.current = null;
     const { id: sessionId, fresh } = currentSessionId();
     // A new session drops the old tapped question and reply; a button send never carries a reply.
-    const question = about ?? (fresh ? null : asked);
+    // `about` null = explicitly no question (a concept request); undefined = the tapped one, if any.
+    const question = about === null ? null : (about ?? (fresh ? null : asked));
     const replyTo = override === undefined && !fresh ? replyingTo : null;
     // An Ask V tap shows its question above the message (owner, 2026-10-23).
     const askedCard = about ? askedCardOf(about, pathname) : null;
