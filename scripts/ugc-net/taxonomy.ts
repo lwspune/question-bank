@@ -96,8 +96,10 @@ export const UGC_NET_TAXONOMY: readonly Chapter[] = [
     name: "Higher Education System",
     subtopics: [
       "Higher learning in ancient India",
-      // Not a syllabus sub-head, but asked every shift (Wood's Despatch, Hunter, Sadler,
-      // the first universities); added 2026-11-10 when agents had nowhere to put them.
+      // The next two are not syllabus sub-heads, but asked most shifts (madrasas and
+      // maktabs; Wood's Despatch, Hunter, Sadler, the first universities); added
+      // 2026-11-10 when agents had nowhere to put them.
+      "Higher learning in medieval India",
       "Higher education in colonial India",
       "Higher education after independence",
       "Conventional and non-conventional learning",
