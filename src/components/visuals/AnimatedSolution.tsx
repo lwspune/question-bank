@@ -18,6 +18,8 @@ import { getScene } from "@/lib/visuals/registry";
 import type { VisualDetail } from "@/lib/visuals/usage";
 import { checkVisual, parseSolutionVisual, stepTexts } from "@/lib/visuals/visual";
 import { cn } from "@/lib/utils";
+import { showsCheckLine } from "@/lib/visuals/checkLine";
+import { useIsStaff } from "@/lib/viewer/useViewerSession";
 import SceneSvg from "./SceneSvg";
 
 type Pos = { step: number; beat: number; t: number };
@@ -65,6 +67,8 @@ function Player({
   const steps = visual.steps;
   const texts = useMemo(() => stepTexts(visual, solution), [visual, solution]);
   const check = useMemo(() => checkVisual(visual), [visual]);
+  // The "Checked" line is staff-only (lib/visuals/checkLine).
+  const { isStaff } = useIsStaff();
   const box = scene.viewBox(params);
   const slider = scene.slider?.(params);
 
@@ -276,7 +280,7 @@ function Player({
             </span>
           </div>
 
-          {check.ok && (
+          {showsCheckLine({ checkOk: check.ok, isStaff }) && (
             <p className="flex items-start gap-1.5 rounded-md bg-emerald-50 px-2.5 py-1.5 font-sans text-xs text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-200">
               <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden />
               <span>
