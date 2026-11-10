@@ -99,6 +99,15 @@ is enforced in `facts.ts` or the tools; the date is when it was made.
 - **"One more like this"** under an explanation picks another question from the
   same subtopic with no AI call (`/api/chat/similar`, owner 2026-11-08). V
   cannot write questions and never promises one.
+- **V sees the follow-up answer (owner, 2026-11-10, V_LEARNING_LOOP.md step 2).**
+  The "One more like this" card is linked to the explanation it followed
+  (`v_followups`, migration 0250) once the server has checked V explained it
+  today; the first one per explanation per day uses no free answer while
+  `chat_settings.followup_free` is on. A right pick says "Right: you used the
+  same idea on a new question." and offers another; a wrong one offers "Show
+  me where I went wrong", where V is told the question it explained before and
+  starts from the step that differs (its "leave earlier replies alone" line is
+  replaced there, since the earlier reply is the point).
 - **Parked:** withdrawn UPSC questions (V says the pick "is marked wrong"; 10
   such questions; re-raise only when the owner does); the mock result page
   being wider than a phone.
