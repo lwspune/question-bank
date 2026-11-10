@@ -1,0 +1,4508 @@
+{
+ "//": "Assembled from agent drafts (algebraSteps).",
+ "visuals": [
+  {
+   "id": "0009af61-21f1-4ec7-8689-1fcd1ead56a3",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "[\\mathrm{Ag(NH_3)_2}]^{+}:\\ \\mathrm{NH_3}\\text{ neutral},\\ \\mathrm{Ag} = +1"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "[\\mathrm{Ag(CN)_2}]^{-}:\\ x + 2(-1) = -1 \\Rightarrow x = +1",
+       "f": "-1-2*(-1)",
+       "value": "1"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{Sum} = +1 + 1 = 2",
+       "f": "1+1",
+       "value": "2"
+      }
+     ],
+     "answer": "1+1"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "dc2760ea",
+    "answer": {
+     "value": 2,
+     "label": "2"
+    }
+   }
+  },
+  {
+   "id": "0285c5a2-8d19-45b6-8ca6-5b6f5585e309",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Cu^{2+}}:\\ 3d^{9},\\ n = 1"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mu = \\sqrt{n(n+2)} = \\sqrt{1\\times3} = 1.73\\ \\text{B.M.}",
+       "f": "sqrt(1*(1+2))",
+       "value": "1.73",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mu \\approx 2\\ \\text{B.M.}",
+       "f": "sqrt(1*3)",
+       "value": "2",
+       "note": "nearest integer",
+       "dp": 0
+      }
+     ],
+     "answer": "2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "7014fa21",
+    "answer": {
+     "value": 2,
+     "label": "2"
+    }
+   }
+  },
+  {
+   "id": "04dfa80d-aab5-4cf1-ae81-55e33108b953",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{tetrahedral: lower } e \\text{ set, upper } t_2 \\text{ set}",
+       "note": "high spin: e fills first (up to 4)"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mathrm{TiCl_4}:\\ \\mathrm{Ti^{4+}},\\ d^{0}\\to t_2^{0}",
+       "f": "0",
+       "value": "0"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "[\\mathrm{FeO_4}]^{2-}:\\ \\mathrm{Fe^{6+}},\\ d^{2}\\to e^{2}t_2^{0}",
+       "f": "2+0",
+       "value": "2"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "[\\mathrm{FeCl_4}]^{-}:\\ \\mathrm{Fe^{3+}},\\ d^{5}\\to e^{2}t_2^{3}",
+       "f": "2+3",
+       "value": "5"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "[\\mathrm{CoCl_4}]^{2-}:\\ \\mathrm{Co^{2+}},\\ d^{7}\\to e^{4}t_2^{3}",
+       "f": "4+3",
+       "value": "7"
+      },
+      {
+       "step": "s6",
+       "kind": "note",
+       "tex": "[\\mathrm{MnO_4}]^{-}:\\ \\mathrm{Mn^{7+}},\\ d^{0}\\to t_2^{0}"
+      },
+      {
+       "step": "s7",
+       "kind": "note",
+       "tex": "\\text{Empty } t_2:\\ \\mathrm{TiCl_4},\\ [\\mathrm{MnO_4}]^{-},\\ [\\mathrm{FeO_4}]^{2-} = 3"
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s6"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s5"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s7"
+      ]
+     }
+    ],
+    "fingerprint": "b0ded697",
+    "answer": {
+     "value": 3,
+     "label": "3"
+    }
+   }
+  },
+  {
+   "id": "072bdfaf-4a26-425d-8d98-780e459519dd",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "a:\\ [\\mathrm{Co(NH_3)_3(NO_2)_3}] = Ma_3b_3\\to \\text{fac, mer},\\ a = 2"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "b:\\ [\\mathrm{Cr(C_2O_4)_3}]^{3-} = M(AA)_3\\to 0\\ \\text{geometrical},\\ b = 0"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "a + b = 2 + 0 = 2",
+       "f": "2+0",
+       "value": "2"
+      }
+     ],
+     "answer": "2+0"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "52a2e65a",
+    "answer": {
+     "value": 2,
+     "label": "2"
+    }
+   }
+  },
+  {
+   "id": "07cddb6b-f9fe-4819-845b-a3a991347179",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{CFSE} = 0\\ \\text{only for high-spin } d^{5}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "t_{2g}^{3}e_g^{2}:\\ -0.4(3) + 0.6(2) = 0",
+       "f": "-0.4*3+0.6*2",
+       "value": "0",
+       "note": "values in units of Δ₀"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "K_3[\\mathrm{Fe(SCN)_6}]:\\ \\mathrm{Fe^{3+}}\\ d^{5},\\ \\text{weak field, high spin}",
+       "note": "CFSE = 0, option D"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "\\text{A: } -0.4\\Delta_0,\\quad \\text{B: } -2.0\\Delta_0,\\quad \\text{C: } -2.4\\Delta_0"
+      }
+     ],
+     "answer": "0"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "2f1f9892",
+    "answer": {
+     "value": 0,
+     "label": "0"
+    }
+   }
+  },
+  {
+   "id": "0b3e2622-69f7-44b8-b064-f9b813169b31",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{Yellow: } K_3[\\mathrm{Co(NO_2)_6}],\\ K_4[\\mathrm{Fe(CN)_6}]",
+       "note": "both low spin, d⁶: t₂g⁶ e_g⁰, n = 0"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "K_3[\\mathrm{Co(NO_2)_6}]:\\ \\mu = \\sqrt{0(0+2)} = 0\\ \\text{B.M.}",
+       "f": "sqrt(0*(0+2))",
+       "value": "0"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "K_4[\\mathrm{Fe(CN)_6}]:\\ \\mu = 0\\ \\text{B.M.}",
+       "f": "sqrt(0*2)",
+       "value": "0"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "0 + 0 = 0",
+       "f": "0+0",
+       "value": "0"
+      }
+     ],
+     "answer": "0+0"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 9,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 12,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 15,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "bc8c3f28",
+    "answer": {
+     "value": 0,
+     "label": "0"
+    }
+   }
+  },
+  {
+   "id": "0bdb296f-b4a2-4259-acbe-9f4f6fe75ffc",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "K_d = \\dfrac{1}{K_f} = \\dfrac{1}{2.1\\times10^{13}} = 4.76\\times10^{-14}",
+       "f": "1/(2.1*10^13)",
+       "value": "4.76*10^(-14)",
+       "sf": 3
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "y = 4.76 \\approx 5",
+       "f": "1/(2.1*10^13)/10^(-14)",
+       "value": "5",
+       "note": "nearest integer",
+       "dp": 0
+      }
+     ],
+     "answer": "5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "5383ad43",
+    "answer": {
+     "value": 5,
+     "label": "5"
+    }
+   }
+  },
+  {
+   "id": "0beafadc-0b63-4e2b-aeae-9239eff6b4d8",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "[\\mathrm{Mn(CN)_6}]^{4-}:\\ \\mathrm{Mn^{2+}},\\ d^5\\to t_{2g}^5,\\ d^2sp^3"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "[\\mathrm{Fe(CN)_6}]^{3-}:\\ \\mathrm{Fe^{3+}},\\ d^5\\to t_{2g}^5,\\ d^2sp^3"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mu = \\sqrt{3} = 1.73\\ \\text{BM}",
+       "f": "sqrt(3)",
+       "value": "1.73",
+       "note": "one unpaired electron: paramagnetic",
+       "dp": 2
+      }
+     ],
+     "answer": "sqrt(3)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "f4171bc7",
+    "answer": {
+     "value": 1.7320508075688772,
+     "label": "1.73"
+    }
+   }
+  },
+  {
+   "id": "0f428be0-2687-4dba-b221-6f31f6067185",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "[\\mathrm{Co(CN)_6}]^{3-}:\\ \\mathrm{Co^{3+}}\\ d^6,\\ \\text{strong field, low spin } t_{2g}^6e_g^0"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mu = \\sqrt{n(n+2)} = \\sqrt{0(0+2)} = 0\\ \\text{B.M.}",
+       "f": "sqrt(0*(0+2))",
+       "value": "0"
+      }
+     ],
+     "answer": "0"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "feb9f309",
+    "answer": {
+     "value": 0,
+     "label": "0"
+    }
+   }
+  },
+  {
+   "id": "164d0ab5-e106-4532-bf45-5af2c0a731cb",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "X = 3\\quad [\\mathrm{Pt(NH_3)(H_2O)BrCl}]"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "Y = 1\\quad [\\mathrm{CrCl_2(ox)_2}]^{3-}:\\ \\text{trans is inactive}"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "Z = 2\\quad [\\mathrm{Co(NH_3)_3(NO_2)_3}]:\\ \\text{fac, mer}"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "X + Y + Z = 3 + 1 + 2 = 6",
+       "f": "3+1+2",
+       "value": "6"
+      }
+     ],
+     "answer": "3+1+2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 10,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "eeaf8c4e",
+    "answer": {
+     "value": 6,
+     "label": "6"
+    }
+   }
+  },
+  {
+   "id": "1b31e34a-4aba-4447-b2eb-ea7886a171fa",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\mathrm{A}:\\ \\mu = \\sqrt{5\\times7} = 5.92\\ \\text{BM}",
+       "f": "sqrt(5*7)",
+       "value": "5.92",
+       "dp": 2
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mathrm{B}:\\ \\mu = 1.73\\ \\text{BM}",
+       "f": "sqrt(1*3)",
+       "value": "1.73",
+       "note": "one unpaired electron",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\mathrm{C}:\\ \\mu = 0"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\mathrm{D}:\\ \\mu = 2.83\\ \\text{BM}",
+       "f": "sqrt(2*4)",
+       "value": "2.83",
+       "note": "two unpaired electrons",
+       "dp": 2
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "C < B < D < A"
+      }
+     ],
+     "answer": "sqrt(5*7)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "2d0d8d5d",
+    "answer": {
+     "value": 5.916079783099616,
+     "label": "C < B < D < A"
+    }
+   }
+  },
+  {
+   "id": "1f3b3b0a-2838-4386-ad9a-9f8384c02fbc",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "[\\mathrm{Co(en)_3}]^{3+}:\\ t_{2g}^{6}e_g^{0},\\ \\text{CFSE} = -24\\,Dq",
+       "f": "6*(-4)+0*6",
+       "value": "-24"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "[\\mathrm{CoF_6}]^{3-}:\\ t_{2g}^{4}e_g^{2},\\ \\text{CFSE} = -4\\,Dq",
+       "f": "4*(-4)+2*6",
+       "value": "-4"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "[\\mathrm{Mn(H_2O)_6}]^{2+}:\\ t_{2g}^{3}e_g^{2},\\ \\text{CFSE} = 0",
+       "f": "3*(-4)+2*6",
+       "value": "0"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "[\\mathrm{Zn(H_2O)_6}]^{2+}:\\ d^{10},\\ \\text{CFSE} = 0",
+       "f": "6*(-4)+4*6",
+       "value": "0"
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "\\text{Highest CFSE: } t_{2g}^{6}e_g^{0}"
+      }
+     ],
+     "answer": "6*(-4)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "4c86ab5c",
+    "answer": {
+     "value": -24,
+     "label": "t2g6 eg0"
+    }
+   }
+  },
+  {
+   "id": "20f1615b-0fa2-4658-b3b7-9579b3d6b6e3",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{Inner-orbital, strong field: } K_3[\\mathrm{Fe(CN)_6}],\\ [\\mathrm{Co(NH_3)_6}]\\mathrm{Cl_3}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "[\\mathrm{Fe(CN)_6}]^{3-}\\ (\\approx 35000\\ \\text{cm}^{-1}) > [\\mathrm{Co(NH_3)_6}]^{3+}\\ (\\approx 23000\\ \\text{cm}^{-1})",
+       "note": "largest Δ₀: shortest wavelength"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mathrm{Fe^{3+}}\\ d^5\\ \\text{low spin},\\ n = 1:\\ \\mu = \\sqrt{1(1+2)} = 1.73\\ \\text{B.M.}",
+       "f": "sqrt(1*(1+2))",
+       "value": "1.73",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\mu \\approx 2\\ \\text{B.M.}",
+       "f": "sqrt(3)",
+       "value": "2",
+       "note": "nearest integer",
+       "dp": 0
+      }
+     ],
+     "answer": "2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "c1c09dd5",
+    "answer": {
+     "value": 2,
+     "label": "2"
+    }
+   }
+  },
+  {
+   "id": "20ff79cf-d76e-4c8e-8cc3-b6c464f03ce6",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\Delta T_f = iK_fm:\\ 0.558 = i\\times1.86\\times0.1 \\Rightarrow i = 3",
+       "f": "0.558/(1.86*0.1)",
+       "value": "3"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "[\\mathrm{Cr(NH_3)_6}]\\mathrm{Cl_3}: 4\\ \\text{ions},\\ [\\mathrm{Cr(NH_3)_4Cl_2}]\\mathrm{Cl}: 2,\\ [\\mathrm{Cr(NH_3)_3Cl_3}]: 0"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "[\\mathrm{Cr(NH_3)_5Cl}]\\mathrm{Cl_2}: 1 + 2 = 3\\ \\text{ions}",
+       "note": "option (C)"
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "86b81832",
+    "answer": {
+     "value": 3,
+     "label": "3 ions: option C"
+    }
+   }
+  },
+  {
+   "id": "26eda33a-4032-4efd-ac3d-10ab745edbdb",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "[\\mathrm{Ni(H_2O)_6}]\\mathrm{Cl_2}\\ \\to\\ 2\\ \\text{mol AgCl}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mathrm{Ni^{2+}}\\ 3d^{8}:\\ t_{2g}^{6}e_g^{2},\\ n = 2:\\ \\mu = \\sqrt{2(2+2)} = 2.83\\ \\text{B.M.}",
+       "f": "sqrt(2*(2+2))",
+       "value": "2.83",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mu \\approx 3\\ \\text{B.M.}",
+       "f": "sqrt(8)",
+       "value": "3",
+       "note": "nearest integer",
+       "dp": 0
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "26b7348f",
+    "answer": {
+     "value": 3,
+     "label": "3"
+    }
+   }
+  },
+  {
+   "id": "288f3063-68ca-4ce0-a930-6a170b71994c",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "M = 52 + 3(35.5) + 6(18) = 266.5\\ \\text{g mol}^{-1}",
+       "f": "52+3*35.5+6*18",
+       "value": "266.5"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n_{\\text{complex}} = 5.33/266.5 = 0.02\\ \\text{mol}",
+       "f": "5.33/266.5",
+       "value": "0.02",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n_{\\mathrm{AgCl}} = 8.61/143.5 = 0.06\\ \\text{mol}",
+       "f": "8.61/143.5",
+       "value": "0.06",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{Ratio} = \\dfrac{0.02}{0.06} = 0.3333",
+       "f": "0.02/0.06",
+       "value": "0.3333",
+       "dp": 4
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "0.3333 = 33.33\\times10^{-2}",
+       "f": "0.02/0.06/10^(-2)",
+       "value": "33.33",
+       "dp": 2
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "\\approx 33",
+       "f": "0.02/0.06/10^(-2)",
+       "value": "33",
+       "note": "nearest integer",
+       "dp": 0
+      }
+     ],
+     "answer": "33"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "d15f9204",
+    "answer": {
+     "value": 33,
+     "label": "33"
+    }
+   }
+  },
+  {
+   "id": "2ebbee32-c83a-4041-8c25-fc0561f55f0d",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Mn^{2+}}:\\ [\\mathrm{Ar}]\\,3d^{5},\\ \\text{high spin},\\ n = 5"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mu = \\sqrt{n(n+2)} = \\sqrt{35} = 5.92\\ \\text{B.M.}",
+       "f": "sqrt(5*(5+2))",
+       "value": "5.92",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mu \\approx 6\\ \\text{B.M.}",
+       "f": "sqrt(35)",
+       "value": "6",
+       "note": "nearest integer",
+       "dp": 0
+      }
+     ],
+     "answer": "6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "54ef3f4d",
+    "answer": {
+     "value": 6,
+     "label": "6"
+    }
+   }
+  },
+  {
+   "id": "37a8bb54-f0f2-48fd-b64d-7ba3a3b3d1e8",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Fe^{2+}}:\\ 3d^{6}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "t_{2g}^{4}e_g^{2},\\ n = 4:\\ \\mu = \\sqrt{4\\times6} = \\sqrt{24} = 4.90\\ \\text{BM}",
+       "f": "sqrt(4*6)",
+       "value": "4.90",
+       "dp": 2
+      }
+     ],
+     "answer": "sqrt(24)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "f230a8b9",
+    "answer": {
+     "value": 4.898979485566356,
+     "label": "4.90"
+    }
+   }
+  },
+  {
+   "id": "3bbd3a79-5ce8-4e18-a3d5-1ee4d274964b",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{CFSE} = (-0.4\\,n_{t_{2g}} + 0.6\\,n_{e_g})\\Delta_o"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{I: } t_{2g}^{4}e_g^{0}:\\ -0.4\\times4 = -1.6\\,\\Delta_o",
+       "f": "-0.4*4",
+       "value": "-1.6"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{II: } t_{2g}^{6}e_g^{1}:\\ -0.4\\times6 + 0.6\\times1 = -1.8\\,\\Delta_o",
+       "f": "-0.4*6+0.6*1",
+       "value": "-1.8"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{III: } t_{2g}^{6}e_g^{0}:\\ -0.4\\times6 = -2.4\\,\\Delta_o",
+       "f": "-0.4*6",
+       "value": "-2.4"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "\\text{IV: } t_{2g}^{5}e_g^{0}:\\ -0.4\\times5 = -2.0\\,\\Delta_o",
+       "f": "-0.4*5",
+       "value": "-2.0"
+      },
+      {
+       "step": "s6",
+       "kind": "note",
+       "tex": "1.6 < 1.8 < 2.0 < 2.4:\\ \\text{I} < \\text{II} < \\text{IV} < \\text{III}"
+      }
+     ],
+     "answer": "-0.4*4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 9,
+      "beats": [
+       "s5"
+      ]
+     },
+     {
+      "from": 11,
+      "beats": [
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "2062ff6a",
+    "answer": {
+     "value": -1.6,
+     "label": "I < II < IV < III"
+    }
+   }
+  },
+  {
+   "id": "3d513a8f-47b4-4de8-a8de-3b69b9b7f013",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "x + 4(0) + (-2) = +1 \\Rightarrow x = +3",
+       "f": "1-4*0-(-2)",
+       "value": "3"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{Fe^{3+}}\\ 3d^{5},\\ \\text{low spin } t_{2g}^{5}e_g^{0},\\ n = 1"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mu = \\sqrt{n(n+2)} = \\sqrt{1\\times3} = 1.73\\ \\text{BM}",
+       "f": "sqrt(1*3)",
+       "value": "1.73",
+       "dp": 2
+      }
+     ],
+     "answer": "sqrt(3)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "0fe86c38",
+    "answer": {
+     "value": 1.7320508075688772,
+     "label": "1.73"
+    }
+   }
+  },
+  {
+   "id": "4490f293-eff9-4645-8a69-52e9ae246a1b",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Cr^{3+}}:\\ 3d^{3}\\ \\text{in both},\\ t_{2g}\\ \\text{singly filled},\\ n = 3"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mu = \\sqrt{3(3+2)} = \\sqrt{15}\\ \\text{BM (each)}",
+       "f": "sqrt(3*(3+2))",
+       "value": "sqrt(15)"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{\\mu[\\mathrm{Cr(CN)_6}]^{3-}}{\\mu[\\mathrm{Cr(H_2O)_6}]^{3+}} = \\dfrac{\\sqrt{15}}{\\sqrt{15}} = 1",
+       "f": "sqrt(15)/sqrt(15)",
+       "value": "1"
+      }
+     ],
+     "answer": "1"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "1ccd90c3",
+    "answer": {
+     "value": 1,
+     "label": "1"
+    }
+   }
+  },
+  {
+   "id": "4a1c8505-3ae8-460d-8646-35a2420a7b8a",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\mu = \\sqrt{n(n+2)} = \\sqrt{15} = 3.87\\ \\text{BM} \\Rightarrow n = 3",
+       "f": "sqrt(3*(3+2))",
+       "value": "3.87",
+       "dp": 2
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{CFSE} = (-0.4\\,n_{t_{2g}} + 0.6\\,n_{e_g})\\Delta_0",
+       "note": "water is weak field: high spin"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "d^{7}:\\ t_{2g}^{5}e_g^{2}:\\ 5(-0.4) + 2(0.6) = -0.8\\Delta_0",
+       "f": "5*(-0.4)+2*0.6",
+       "value": "-0.8"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "d^{3}:\\ 3(-0.4) = -1.2\\Delta_0",
+       "f": "3*(-0.4)",
+       "value": "-1.2",
+       "note": "a d³ ion does not match"
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "d^{7}\\ \\text{dipositive} = \\mathrm{Co^{2+}}"
+      }
+     ],
+     "answer": "-0.8"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "caaa24d5",
+    "answer": {
+     "value": -0.8,
+     "label": "Co²⁺ (d⁷)"
+    }
+   }
+  },
+  {
+   "id": "5d73dec0-25d2-4ebb-a7fb-a5193d6351cb",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{dmgH}_2 = \\mathrm{C_4H_8N_2O_2}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{dmgH^{-}} = \\mathrm{C_4H_7N_2O_2^{-}}",
+       "note": "each ligand loses one oxime proton"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "[\\mathrm{Ni(dmgH)_2}]:\\ 2\\times7 = 14\\ \\text{H atoms}",
+       "f": "2*7",
+       "value": "14"
+      }
+     ],
+     "answer": "14"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "533897d3",
+    "answer": {
+     "value": 14,
+     "label": "14"
+    }
+   }
+  },
+  {
+   "id": "5f583164-92d9-4610-a63e-23ba4426c633",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Co_2(CO)_8}:\\ \\text{one Co-Co bond},\\ X = 1"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "8\\ \\mathrm{CO}:\\ 2\\ \\text{bridging},\\ 6\\ \\text{terminal},\\ Y = 6"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "X + Y = 1 + 6 = 7",
+       "f": "1+6",
+       "value": "7"
+      }
+     ],
+     "answer": "1+6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "975a9ef1",
+    "answer": {
+     "value": 7,
+     "label": "7"
+    }
+   }
+  },
+  {
+   "id": "63208d62-1598-4178-b330-b0a2554a5de7",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\mathrm{Mn}:\\ 7 + 2(5) = 17\\ \\text{electrons}",
+       "f": "7+2*5",
+       "value": "17",
+       "note": "five terminal CO give 10 electrons"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{Mn-Mn\\ bond}\\Rightarrow 18\\ \\text{electrons each}"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\text{Every CO is terminal}:\\ \\text{bridging CO} = 0"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "\\mathrm{Co_2(CO)_8}\\ \\text{(solid)}:\\ 2\\ \\text{bridging CO}",
+       "note": "contrast"
+      }
+     ],
+     "answer": "0"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "72b6a4ce",
+    "answer": {
+     "value": 0,
+     "label": "0"
+    }
+   }
+  },
+  {
+   "id": "640757e8-17a5-4ad7-86c6-ef6c95326529",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "[\\mathrm{MnBr_6}]^{4-}:\\ \\mathrm{Mn^{2+}},\\ d^{5}",
+       "note": "six Br⁻ carry −6, so Mn is +2"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{weak field: high spin},\\ n = 5"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mu = \\sqrt{5(5+2)} = \\sqrt{35} = 5.92\\ \\text{BM}",
+       "f": "sqrt(5*(5+2))",
+       "value": "5.92",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\mu \\approx 6\\ \\text{B.M.}",
+       "f": "sqrt(35)",
+       "value": "6",
+       "note": "nearest integer",
+       "dp": 0
+      }
+     ],
+     "answer": "6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "d36b3c5b",
+    "answer": {
+     "value": 6,
+     "label": "6"
+    }
+   }
+  },
+  {
+   "id": "6bbd8c2a-9de2-4998-abdf-d7da6c617bf3",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{CFSE} = (-0.4\\,n_{t_{2g}} + 0.6\\,n_{e_g})\\Delta_0"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{A: } \\mathrm{Cu^{2+}}\\ d^9,\\ t_{2g}^{6}e_g^{3}:\\ -2.4 + 1.8 = -0.6",
+       "f": "-2.4+1.8",
+       "value": "-0.6",
+       "note": "matches (I)"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{B: } \\mathrm{Ti^{3+}}\\ d^1,\\ t_{2g}^{1}:\\ -0.4",
+       "f": "-0.4*1",
+       "value": "-0.4",
+       "note": "matches (IV)"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{C: } \\mathrm{Fe^{3+}}\\ d^5,\\ \\text{low spin } t_{2g}^{5}:\\ -2.0",
+       "f": "-0.4*5",
+       "value": "-2.0",
+       "note": "matches (II)"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "\\text{D: } \\mathrm{Ni^{2+}}\\ d^8,\\ t_{2g}^{6}e_g^{2}:\\ -2.4 + 1.2 = -1.2",
+       "f": "-2.4+1.2",
+       "value": "-1.2",
+       "note": "matches (III)"
+      }
+     ],
+     "answer": "-2.4+1.8"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "ef083710",
+    "answer": {
+     "value": -0.5999999999999999,
+     "label": "A-I, B-IV, C-II, D-III"
+    }
+   }
+  },
+  {
+   "id": "6c6bf2ba-01c1-4a81-a389-d3b6929059a8",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "[\\mathrm{Co(bpy)Cl_4}]^{-}:\\ x + 4(-1) = -1 \\Rightarrow \\mathrm{Co} = +3",
+       "note": "Na gives +1, bpy neutral"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{Coordination number} = 2 + 4 = 6",
+       "f": "2+4",
+       "value": "6"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "3 + 6 = 9",
+       "f": "3+6",
+       "value": "9"
+      }
+     ],
+     "answer": "3+6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "cb6b167c",
+    "answer": {
+     "value": 9,
+     "label": "9"
+    }
+   }
+  },
+  {
+   "id": "6ec3ced6-adf6-4934-84b6-33ad7a277ea5",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Ti^{3+}}\\ d^1:\\ \\text{CFSE} = -0.4\\,\\Delta_o"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "-96 = -0.4\\,\\Delta_o \\Rightarrow \\Delta_o = 240\\ \\text{kJ mol}^{-1}",
+       "f": "96/0.4",
+       "value": "240"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "E = \\dfrac{240\\times10^{3}}{6\\times10^{23}} = 4\\times10^{-19}\\ \\text{J}",
+       "f": "240*10^3/(6*10^23)",
+       "value": "4*10^(-19)",
+       "sf": 1
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "hc = (6.4\\times10^{-34})(3.0\\times10^{8}) = 1.92\\times10^{-25}",
+       "f": "6.4*10^(-34)*3.0*10^8",
+       "value": "1.92*10^(-25)",
+       "sf": 3
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "\\lambda = \\dfrac{hc}{E} = \\dfrac{1.92\\times10^{-25}}{4\\times10^{-19}} = 4.8\\times10^{-7}\\ \\text{m}",
+       "f": "1.92*10^(-25)/(4*10^(-19))",
+       "value": "4.8*10^(-7)",
+       "sf": 2
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "\\lambda = 480\\ \\text{nm}",
+       "f": "4.8*10^(-7)*10^9",
+       "value": "480"
+      }
+     ],
+     "answer": "480"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "8bc26ab9",
+    "answer": {
+     "value": 480,
+     "label": "480 nm"
+    }
+   }
+  },
+  {
+   "id": "71ea2ad7-d1c7-41af-b379-0ea185d64c20",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "[\\mathrm{Fe(OH)_6}]^{3-}:\\ x + 6(-1) = -3 \\Rightarrow \\mathrm{Fe^{3+}}\\ 3d^{5}",
+       "f": "-3+6",
+       "value": "3"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n = 5:\\ \\mu = \\sqrt{5\\times7} = \\sqrt{35} = 5.92\\ \\text{B.M.}",
+       "f": "sqrt(5*7)",
+       "value": "5.92",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "[\\mathrm{Fe(OH)_6}]^{4-}:\\ \\mathrm{Fe^{2+}}\\ 3d^{6},\\ t_{2g}^{4}e_g^{2},\\ n = 4"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\mu = \\sqrt{4\\times6} = \\sqrt{24} = 4.90\\ \\text{B.M.}",
+       "f": "sqrt(4*6)",
+       "value": "4.90",
+       "dp": 2
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "5.92\\ \\text{and}\\ 4.90:\\ \\text{option (B)}",
+       "note": "option (D) is the reverse order"
+      }
+     ],
+     "answer": "sqrt(35)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "038cd345",
+    "answer": {
+     "value": 5.916079783099616,
+     "label": "5.92 and 4.90 BM"
+    }
+   }
+  },
+  {
+   "id": "75939025-d7d1-4ad3-9341-72860218bf8a",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\text{A: } d^2,\\ t_{2g}^{2}:\\ 2(-0.4) = -0.8",
+       "f": "2*(-0.4)",
+       "value": "-0.8",
+       "note": "(A)-(IV)"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{B: } d^3,\\ t_{2g}^{3}:\\ 3(-0.4) = -1.2",
+       "f": "3*(-0.4)",
+       "value": "-1.2",
+       "note": "(B)-(I)"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{C: } d^4,\\ t_{2g}^{3}e_g^{1}:\\ 3(-0.4) + 1(0.6) = -0.6",
+       "f": "3*(-0.4)+1*0.6",
+       "value": "-0.6",
+       "note": "(C)-(II)"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{D: } d^5,\\ t_{2g}^{3}e_g^{2}:\\ 3(-0.4) + 2(0.6) = 0",
+       "f": "3*(-0.4)+2*0.6",
+       "value": "0",
+       "note": "(D)-(III)"
+      }
+     ],
+     "answer": "2*(-0.4)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "7ae5e409",
+    "answer": {
+     "value": -0.8,
+     "label": "A-IV, B-I, C-II, D-III"
+    }
+   }
+  },
+  {
+   "id": "76184f0a-9ed1-4583-a22a-df2394894781",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "[\\mathrm{Ni(NH_3)_6}]^{2+}:\\ \\mathrm{Ni^{2+}}\\ 3d^{8},\\ t_{2g}^{6}e_g^{2},\\ n = 2"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mu = \\sqrt{n(n+2)} = \\sqrt{8} = 2.83\\ \\text{BM}",
+       "f": "sqrt(2*(2+2))",
+       "value": "2.83",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "2.83\\ \\text{BM} = 28.3\\times10^{-1}\\ \\text{BM}",
+       "f": "sqrt(8)/10^(-1)",
+       "value": "28.3",
+       "dp": 1
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\approx 28\\times10^{-1}\\ \\text{BM}",
+       "f": "sqrt(8)/10^(-1)",
+       "value": "28",
+       "dp": 0
+      }
+     ],
+     "answer": "28"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "63cb8b5f",
+    "answer": {
+     "value": 28,
+     "label": "28"
+    }
+   }
+  },
+  {
+   "id": "7b2add7b-a126-4ece-a11b-0e17f44afb9d",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\text{A: } \\mathrm{Cr^{2+}}\\ d^4,\\ n = 4:\\ \\mu = \\sqrt{24} = 4.90",
+       "f": "sqrt(24)",
+       "value": "4.90",
+       "note": "(III)",
+       "dp": 2
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{B: } \\mathrm{Co^{2+}}\\ d^7,\\ n = 3:\\ \\mu = \\sqrt{15} = 3.87",
+       "f": "sqrt(15)",
+       "value": "3.87",
+       "note": "(I)",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{C: } \\mathrm{Cu^{2+}}\\ d^9,\\ n = 1:\\ \\mu = \\sqrt{3} = 1.73",
+       "f": "sqrt(3)",
+       "value": "1.73",
+       "note": "(IV)",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{D: } \\mathrm{Mn^{2+}}\\ d^5,\\ n = 5:\\ \\mu = \\sqrt{35} = 5.92",
+       "f": "sqrt(35)",
+       "value": "5.92",
+       "note": "(II)",
+       "dp": 2
+      }
+     ],
+     "answer": "sqrt(24)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "209199f2",
+    "answer": {
+     "value": 4.898979485566356,
+     "label": "A-III, B-I, C-IV, D-II"
+    }
+   }
+  },
+  {
+   "id": "8e965d1e-e043-4d0c-9eb2-685d5e7db655",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{Water is weak field: both complexes high spin}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mathrm{Cr^{2+}}\\ d^4,\\ t_{2g}^{3}e_g^{1}:\\ 3(-0.4) + 1(0.6) = -0.6\\Delta_o",
+       "f": "3*(-0.4)+1*0.6",
+       "value": "-0.6"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mathrm{Mn^{2+}}\\ d^5,\\ t_{2g}^{3}e_g^{2}:\\ 3(-0.4) + 2(0.6) = 0",
+       "f": "3*(-0.4)+2*0.6",
+       "value": "0",
+       "note": "Statement I is true"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "K_3[\\mathrm{Fe(CN)_6}]:\\ t_{2g}^{5},\\ \\mu = \\sqrt{1(1+2)} = 1.73\\ \\text{BM}",
+       "f": "sqrt(1*(1+2))",
+       "value": "1.73",
+       "dp": 2
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "\\mathrm{Na_4[Fe(CN)_6]}:\\ t_{2g}^{6},\\ \\mu = 0",
+       "note": "Statement II is also true"
+      }
+     ],
+     "answer": "3*(-0.4)+1*0.6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "638c4388",
+    "answer": {
+     "value": -0.6000000000000002,
+     "label": "Both true"
+    }
+   }
+  },
+  {
+   "id": "977c4872-ba96-45e8-af60-5150ff82f5b6",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Fe^{3+}}\\ d^5,\\ t_{2g}^{5}e_g^{0}:\\ \\text{low spin, coordination number } 6"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "+3 + x(0) + y(-1) = -1 \\Rightarrow y = 4",
+       "f": "3-(-1)",
+       "value": "4"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "x = 2,\\quad x + y = 2 + 4 = 6",
+       "f": "2+4",
+       "value": "6",
+       "note": "[Fe(NH₃)₂(CN)₄]⁻"
+      }
+     ],
+     "answer": "6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "7f7f1081",
+    "answer": {
+     "value": 6,
+     "label": "6"
+    }
+   }
+  },
+  {
+   "id": "9b56a7b7-bb48-44f7-a90c-aac624f3a8d5",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "d^{3}:\\ t_{2g}^{3},\\ 3\\ \\text{unpaired}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "d^{4}\\ \\text{low spin}:\\ t_{2g}^{4},\\ 2\\ \\text{unpaired}"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "d^{5}\\ \\text{high spin}:\\ t_{2g}^{3}e_g^{2},\\ 5\\ \\text{unpaired}"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "d^{6}\\ \\text{high spin}:\\ t_{2g}^{4}e_g^{2},\\ 4\\ \\text{unpaired}"
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "d^{7}\\ \\text{low spin}:\\ t_{2g}^{6}e_g^{1},\\ 1\\ \\text{unpaired}"
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "\\text{Total} = 3 + 2 + 5 + 4 + 1 = 15",
+       "f": "3+2+5+4+1",
+       "value": "15"
+      }
+     ],
+     "answer": "15"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s5"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "d04bc2be",
+    "answer": {
+     "value": 15,
+     "label": "15"
+    }
+   }
+  },
+  {
+   "id": "9e6ff1f4-7b9c-49f8-b06f-aff21f0a1d76",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mu = \\sqrt{n(n+2)}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "[\\mathrm{Cr(NH_3)_6}]^{3+}\\ d^3,\\ n = 3:\\ \\sqrt{15} = 3.87",
+       "f": "sqrt(15)",
+       "value": "3.87",
+       "note": "(A) is (II)",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "[\\mathrm{NiCl_4}]^{2-}\\ d^8,\\ n = 2:\\ \\sqrt{8} = 2.83",
+       "f": "sqrt(8)",
+       "value": "2.83",
+       "note": "(B) is (IV)",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "[\\mathrm{CoF_6}]^{3-}\\ d^6,\\ n = 4:\\ \\sqrt{24} = 4.90",
+       "f": "sqrt(24)",
+       "value": "4.90",
+       "note": "(C) is (I)",
+       "dp": 2
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "[\\mathrm{Ni(CN)_4}]^{2-}\\ d^8,\\ \\text{all paired}:\\ 0.0",
+       "note": "(D) is (III)"
+      }
+     ],
+     "answer": "sqrt(15)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "9b8dfd39",
+    "answer": {
+     "value": 3.872983346207417,
+     "label": "(A)-(II) (B)-(IV) (C)-(I) (D)-(I"
+    }
+   }
+  },
+  {
+   "id": "9f31a614-5c4c-4774-a9cf-a2bb8eaef834",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Fe^{3+}} = [\\mathrm{Ar}]\\,3d^{5}\\ \\text{in both}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "[\\mathrm{Fe(H_2O)_6}]^{3+}\\ \\text{high spin},\\ n = 5:\\ \\mu = \\sqrt{5(5+2)} = 5.92\\ \\text{BM}",
+       "f": "sqrt(5*(5+2))",
+       "value": "5.92",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "[\\mathrm{Fe(CN)_6}]^{3-}\\ t_{2g}^{5},\\ n = 1:\\ \\mu = \\sqrt{1(1+2)} = 1.73\\ \\text{BM}",
+       "f": "sqrt(1*(1+2))",
+       "value": "1.73",
+       "dp": 2
+      }
+     ],
+     "answer": "sqrt(35)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "2f00eaf0",
+    "answer": {
+     "value": 5.916079783099616,
+     "label": "5.92 and 1.73 BM"
+    }
+   }
+  },
+  {
+   "id": "9f6b1492-f0d6-4607-a740-93a32d208bf4",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "[\\mathrm{MCl_2L_2}]\\mathrm{Cl}:\\ \\text{one ionisable } \\mathrm{Cl^-}"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "2 + 2d = 6",
+       "lhs": "2+2*x",
+       "rhs": "6",
+       "note": "d is the denticity of L"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "d = 2:\\ \\mathrm{L\\ is\\ bidentate}"
+      }
+     ],
+     "answer": "2",
+     "roots": [
+      "2"
+     ]
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "0dd7d4e6",
+    "answer": {
+     "value": 2,
+     "label": "2"
+    }
+   }
+  },
+  {
+   "id": "a13a895c-49f6-4fd5-8219-e2d029e8bf4f",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "[\\mathrm{Fe(CN)_6}]^{3-}\\ t_{2g}^{5},\\ n = 1:\\ \\mu = 1.73",
+       "f": "sqrt(1*(1+2))",
+       "value": "1.73",
+       "dp": 2
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "[\\mathrm{Mn(CN)_6}]^{3-}\\ t_{2g}^{4},\\ n = 2:\\ \\mu = 2.83",
+       "f": "sqrt(2*(2+2))",
+       "value": "2.83",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "[\\mathrm{CoF_6}]^{3-}\\ t_{2g}^{4}e_g^{2},\\ n = 4:\\ \\mu = 4.90",
+       "f": "sqrt(4*(4+2))",
+       "value": "4.90",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "[\\mathrm{MnBr_4}]^{2-}\\ d^5\\ \\text{high spin},\\ n = 5:\\ \\mu = 5.92",
+       "f": "sqrt(5*(5+2))",
+       "value": "5.92",
+       "dp": 2
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "1.73 < 2.83 < 4.90 < 5.92"
+      }
+     ],
+     "answer": "sqrt(3)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "2e249961",
+    "answer": {
+     "value": 1.7320508075688772,
+     "label": "1.73<2.83<4.90<5.92"
+    }
+   }
+  },
+  {
+   "id": "a6cd06d5-89ef-49ec-a2cb-d7a866bcfdf0",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\mathrm{Cr^{2+}}\\ d^4,\\ 4\\ \\text{unpaired}:\\ \\mu = 4.90",
+       "f": "sqrt(4*(4+2))",
+       "value": "4.90",
+       "dp": 2
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mathrm{Mn^{2+}}\\ d^5,\\ 5\\ \\text{unpaired}:\\ \\mu = 5.92",
+       "f": "sqrt(5*(5+2))",
+       "value": "5.92",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mathrm{Fe^{2+}}\\ d^6,\\ 4\\ \\text{unpaired}:\\ \\mu = 4.90",
+       "f": "sqrt(4*(4+2))",
+       "value": "4.90",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\mathrm{Co^{2+}}\\ d^7,\\ 3\\ \\text{unpaired}:\\ \\mu = 3.87",
+       "f": "sqrt(3*(3+2))",
+       "value": "3.87",
+       "note": "fewest unpaired: least paramagnetic",
+       "dp": 2
+      }
+     ],
+     "answer": "sqrt(15)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "13be71db",
+    "answer": {
+     "value": 3.872983346207417,
+     "label": "[Co(H₂O)₆]²⁺, n = 3"
+    }
+   }
+  },
+  {
+   "id": "b2b333cd-09a8-4b1b-88de-37a65832522d",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{Attraction grows with unpaired electrons } n:\\ \\mu = \\sqrt{n(n+2)}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{Zn^{2+}}\\ 3d^{10}:\\ n = 0\\qquad [\\mathrm{Co(en)_3}]^{3+}\\ t_{2g}^{6}:\\ n = 0"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "[\\mathrm{Co(H_2O)_6}]^{2+}\\ t_{2g}^{5}e_g^{2},\\ n = 3:\\ \\mu = \\sqrt{15} = 3.87\\ \\text{BM}",
+       "f": "sqrt(15)",
+       "value": "3.87",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "[\\mathrm{Ni(H_2O)_6}]^{2+}\\ t_{2g}^{6}e_g^{2},\\ n = 2:\\ \\mu = \\sqrt{8} = 2.83\\ \\text{BM}",
+       "f": "sqrt(8)",
+       "value": "2.83",
+       "note": "largest n = 3: option (B)",
+       "dp": 2
+      }
+     ],
+     "answer": "sqrt(15)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "e280680d",
+    "answer": {
+     "value": 3.872983346207417,
+     "label": "[Co(H₂O)₆]²⁺, n = 3"
+    }
+   }
+  },
+  {
+   "id": "b58ed9f2-a17e-492c-af4a-adb56b6c47c6",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "n = 4:\\ \\mu = \\sqrt{24} = 4.90",
+       "f": "sqrt(24)",
+       "value": "4.90",
+       "dp": 2
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n = 5:\\ \\mu = \\sqrt{35} = 5.92",
+       "f": "sqrt(35)",
+       "value": "5.92",
+       "note": "6.06 BM corresponds to n = 5",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "d^{5}\\ \\text{high spin}:\\ \\mathrm{Mn^{2+}}"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "(+2) + 6(-1) = -4",
+       "f": "2+6*(-1)",
+       "value": "-4"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "x = 4",
+       "f": "-(2+6*(-1))",
+       "value": "4"
+      }
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "d1dfe722",
+    "answer": {
+     "value": 4,
+     "label": "4"
+    }
+   }
+  },
+  {
+   "id": "b828b2f3-eb68-40a8-8b10-11538e8c1dc6",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "[\\mathrm{FeCl_4}]^{2-}\\ d^6,\\ n = 4:\\ \\mu = \\sqrt{24} = 4.90\\ \\text{BM}",
+       "f": "sqrt(4*(4+2))",
+       "value": "4.90",
+       "dp": 2
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "[\\mathrm{Co(C_2O_4)_3}]^{3-}\\ t_{2g}^{6}:\\ \\mu = 0"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mathrm{MnO_4^{2-}}\\ d^1,\\ n = 1:\\ \\mu = \\sqrt{3} = 1.73\\ \\text{BM}",
+       "f": "sqrt(3)",
+       "value": "1.73",
+       "dp": 2
+      }
+     ],
+     "answer": "sqrt(24)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "9cc4eb08",
+    "answer": {
+     "value": 4.898979485566356,
+     "label": "4.90, 0 and 1.73 BM"
+    }
+   }
+  },
+  {
+   "id": "b973f29a-5772-4282-926d-c5805405fff0",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "[\\mathrm{Co(NH_3)_6}]^{3+}:\\ d^6,\\ t_{2g}^{6},\\ 0\\ \\text{unpaired}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "[\\mathrm{NiCl_4}]^{2-}:\\ d^8,\\ e^{4}t_2^{4},\\ 2\\ \\text{unpaired}"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{Total} = 0 + 2 = 2",
+       "f": "0+2",
+       "value": "2"
+      }
+     ],
+     "answer": "0+2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "413bc3cc",
+    "answer": {
+     "value": 2,
+     "label": "2"
+    }
+   }
+  },
+  {
+   "id": "ba37a247-43fe-4407-9a25-976a245c1d1d",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "6(-1)\\ \\text{against}\\ -3:\\ \\mathrm{Fe}^{3+},\\ d^5\\to t_{2g}^{5}e_g^{0}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "t_{2g}:\\ -0.4\\Delta_o\\ \\text{each},\\quad e_g:\\ +0.6\\Delta_o\\ \\text{each}"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{CFSE} = 5\\times(-0.4\\Delta_o) = -2.0\\Delta_o",
+       "f": "5*(-0.4)",
+       "value": "-2.0"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{Magnitude} = 2",
+       "f": "abs(5*(-0.4))",
+       "value": "2"
+      }
+     ],
+     "answer": "2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "e80d1d12",
+    "answer": {
+     "value": 2,
+     "label": "2"
+    }
+   }
+  },
+  {
+   "id": "ba9dc2e8-3264-48b9-ba05-8cff1e079234",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "[\\mathrm{Co(NH_3)_n Cl}]\\mathrm{Cl_2}:\\ \\text{one Cl bonded to Co}"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "n + 1 = 6",
+       "lhs": "x+1",
+       "rhs": "6",
+       "note": "octahedral: coordination number 6"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "[\\mathrm{Co(NH_3)_5Cl}]^{2+}:\\ x = +3"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "x + n = 3 + 5 = 8",
+       "f": "3+5",
+       "value": "8"
+      }
+     ],
+     "answer": "8",
+     "roots": [
+      "5"
+     ]
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "efab18f6",
+    "answer": {
+     "value": 8,
+     "label": "8"
+    }
+   }
+  },
+  {
+   "id": "bb706fbc-d9e9-494d-bbf9-6df80270fa6e",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "e:\\ -0.6\\Delta_t\\ \\text{each},\\quad t_2:\\ +0.4\\Delta_t\\ \\text{each}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{A: } d^2 = e^2:\\ 2(-0.6) = -1.2\\Delta_t",
+       "f": "2*(-0.6)",
+       "value": "-1.2",
+       "note": "(III)"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{B: } d^4 = e^2t_2^2:\\ 2(-0.6) + 2(0.4) = -1.2 + 0.8 = -0.4",
+       "f": "2*(-0.6)+2*0.4",
+       "value": "-0.4",
+       "note": "(IV)"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{C: } d^6 = e^3t_2^3:\\ 3(-0.6) + 3(0.4) = -1.8 + 1.2 = -0.6",
+       "f": "3*(-0.6)+3*0.4",
+       "value": "-0.6",
+       "note": "(I)"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "\\text{D: } d^8 = e^4t_2^4:\\ 4(-0.6) + 4(0.4) = -2.4 + 1.6 = -0.8",
+       "f": "4*(-0.6)+4*0.4",
+       "value": "-0.8",
+       "note": "(II)"
+      }
+     ],
+     "answer": "2*(-0.6)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "993adb12",
+    "answer": {
+     "value": -1.2,
+     "label": "A-III, B-IV, C-I, D-II"
+    }
+   }
+  },
+  {
+   "id": "bf1c3295-f291-4c4f-8819-912e2180e765",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{Water is weak field: high spin},\\ \\mu = \\sqrt{n(n+2)}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "[\\mathrm{Co(H_2O)_6}]\\mathrm{Cl_2}:\\ \\mathrm{Co^{2+}}\\ d^7,\\ n = 3,\\ \\mu = \\sqrt{15} = 3.87\\ \\text{BM}",
+       "f": "sqrt(3*(3+2))",
+       "value": "3.87",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "[\\mathrm{Cr(H_2O)_6}]\\mathrm{Cl_3}:\\ \\mathrm{Cr^{3+}}\\ d^3,\\ n = 3,\\ \\mu = 3.87\\ \\text{BM}",
+       "f": "sqrt(3*(3+2))",
+       "value": "3.87",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{Difference} = 3.87 - 3.87 = 0",
+       "f": "sqrt(15)-sqrt(15)",
+       "value": "0"
+      }
+     ],
+     "answer": "0"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "2e9f2e66",
+    "answer": {
+     "value": 0,
+     "label": "0"
+    }
+   }
+  },
+  {
+   "id": "c45ff102-66cd-4e95-8adc-6528ac32768c",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mu = \\sqrt{n(n+2)} = 3.95"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n(n+2) = (3.95)^2 \\approx 15.6\\ \\Rightarrow\\ n = 3",
+       "f": "3.95^2",
+       "value": "15.6",
+       "dp": 1
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n = 3:\\ \\mu = \\sqrt{15} = 3.87\\ \\text{BM}",
+       "f": "sqrt(3*(3+2))",
+       "value": "3.87",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "\\mathrm{Co(II)}\\ d^7\\ \\text{high spin}:\\ t_{2g}^{5}e_g^{2}",
+       "note": "3 unpaired: option (C)"
+      }
+     ],
+     "answer": "sqrt(15)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "6aa084f9",
+    "answer": {
+     "value": 3.872983346207417,
+     "label": "t2g5 eg2"
+    }
+   }
+  },
+  {
+   "id": "c7de63f7-27bc-4d43-b2d8-053ff210eeea",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "P:\\ \\mathrm{Fe^{3+}}\\ d^5,\\ n = 5:\\ \\mu = \\sqrt{35} = 5.92\\ \\text{BM}",
+       "f": "sqrt(5*(5+2))",
+       "value": "5.92",
+       "dp": 2
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "Q:\\ \\mathrm{V^{2+}}\\ d^3,\\ n = 3:\\ \\mu = \\sqrt{15} = 3.87\\ \\text{BM}",
+       "f": "sqrt(3*(3+2))",
+       "value": "3.87",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "R:\\ \\mathrm{Fe^{2+}}\\ d^6,\\ n = 4:\\ \\mu = \\sqrt{24} = 4.90\\ \\text{BM}",
+       "f": "sqrt(4*(4+2))",
+       "value": "4.90",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "Q\\,(3.87) < R\\,(4.90) < P\\,(5.92)"
+      }
+     ],
+     "answer": "sqrt(15)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "f925d190",
+    "answer": {
+     "value": 3.872983346207417,
+     "label": "Q < R < P"
+    }
+   }
+  },
+  {
+   "id": "ccf1bb6e-43b1-42db-9f7e-6909aed7b3ee",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "[\\mathrm{Pt(NH_3)_2Cl(NH_2CH_3)}]^{+}:\\ \\mathrm{NH_3},\\ \\mathrm{NH_2CH_3}\\ \\text{neutral},\\ \\mathrm{Cl^-} = -1"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "x + 0 + 0 + (-1) = +1 \\Rightarrow x = +2",
+       "lhs": "x+0+0+(-1)",
+       "rhs": "1",
+       "note": "Pt is Pt²⁺"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "Z = 78:\\ [\\mathrm{Xe}]4f^{14}5d^{9}6s^{1}\\ \\Rightarrow\\ \\mathrm{Pt^{2+}}\\ 5d^{8}"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "\\text{square planar } d^8:\\ \\text{all paired},\\ n = 0"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "\\mu = \\sqrt{n(n+2)} = \\sqrt{0} = 0\\ \\text{B.M.}",
+       "f": "sqrt(0*(0+2))",
+       "value": "0"
+      }
+     ],
+     "answer": "0",
+     "roots": [
+      "2"
+     ]
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "d9b0f1a5",
+    "answer": {
+     "value": 0,
+     "label": "0"
+    }
+   }
+  },
+  {
+   "id": "cdff0b24-c62f-4b10-9ba1-62748bb44b42",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "[\\mathrm{Cr(H_2O)_5Cl}]\\mathrm{Cl_2}:\\ \\text{two ionisable chlorides}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n(\\text{complex}) = 20\\times0.01 = 0.2\\ \\text{mmol}",
+       "f": "20*0.01",
+       "value": "0.2"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n(\\mathrm{Cl^-}) = 2\\times0.2 = 0.4\\ \\text{mmol}",
+       "f": "2*0.2",
+       "value": "0.4",
+       "note": "so 0.4 mmol AgNO₃ is needed"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "V = \\dfrac{0.4}{0.1} = 4\\ \\text{mL}",
+       "f": "0.4/0.1",
+       "value": "4"
+      }
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "ea7d61bb",
+    "answer": {
+     "value": 4,
+     "label": "4"
+    }
+   }
+  },
+  {
+   "id": "ce8590a8-d402-437b-8ea3-2651a12469ae",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "[\\mathrm{Co(en)_2Cl_2}]\\mathrm{Cl}:\\ \\text{one ionisable chloride per formula unit}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "2\\ \\text{en}\\times2\\ \\text{N} = 4",
+       "f": "2*2",
+       "value": "4"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{Secondary valency} = 4 + 2 = 6",
+       "f": "4+2",
+       "value": "6",
+       "note": "plus two coordinated chlorides"
+      }
+     ],
+     "answer": "6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "7f0eeed6",
+    "answer": {
+     "value": 6,
+     "label": "6"
+    }
+   }
+  },
+  {
+   "id": "d36fbe0c-d34c-4bae-96a9-4fc220b44377",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "M^{3+}/M^{2+}:\\ \\mathrm{Co}\\ (+1.97\\ \\text{V})\\ \\text{is the highest}",
+       "note": "Cr −0.41, Mn +1.51, Fe +0.77 V"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "[\\mathrm{Co(CN)_6}]^{4-}:\\ x + 6(-1) = -4 \\Rightarrow x = +2",
+       "lhs": "x+6*(-1)",
+       "rhs": "-4",
+       "note": "Co²⁺, d⁷"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{low spin}:\\ t_{2g}^{6}e_g^{1}:\\ 6 + 1 = 7\\ \\text{electrons}",
+       "f": "6+1",
+       "value": "7"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "e_g\\ \\text{electrons} = 1"
+      }
+     ],
+     "answer": "1",
+     "roots": [
+      "2"
+     ]
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "392bb576",
+    "answer": {
+     "value": 1,
+     "label": "1"
+    }
+   }
+  },
+  {
+   "id": "e397feca-2b5c-4893-8bf6-7010036fd19f",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "[\\mathrm{MnCl_6}]^{3-}:\\ x + 6(-1) = -3\\Rightarrow \\mathrm{Mn^{3+}},\\ 3d^{4}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{Cl}^{-}\\ \\text{weak field: outer orbitals},\\ sp^3d^2,\\ \\text{high spin}"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n = 4:\\ \\mu = \\sqrt{4(4+2)} = \\sqrt{24} = 4.9\\ \\text{BM}",
+       "f": "sqrt(4*(4+2))",
+       "value": "4.9",
+       "dp": 1
+      }
+     ],
+     "answer": "sqrt(24)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "c2019907",
+    "answer": {
+     "value": 4.898979485566356,
+     "label": "sp³d², n = 4"
+    }
+   }
+  },
+  {
+   "id": "e4649e82-d30f-428a-b77b-5bb5825a8812",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\mathrm{Co^{2+}}\\ d^7,\\ n = 3:\\ \\mu = \\sqrt{15} = 3.87\\ \\text{BM}",
+       "f": "sqrt(3*(3+2))",
+       "value": "3.87",
+       "dp": 2
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mathrm{Ni^{2+}}\\ d^8,\\ n = 2:\\ \\mu = 2.83\\ \\text{BM}",
+       "f": "sqrt(2*(2+2))",
+       "value": "2.83",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mathrm{Fe^{2+}}\\ d^6,\\ n = 4:\\ \\mu = \\sqrt{24} = 4.90\\ \\text{BM}",
+       "f": "sqrt(4*(4+2))",
+       "value": "4.90",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\mathrm{V^{3+}}\\ d^2,\\ n = 2:\\ \\mu = 2.83\\ \\text{BM}",
+       "f": "sqrt(2*(2+2))",
+       "value": "2.83",
+       "dp": 2
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "\\mathrm{Ti^{2+}}\\ d^2,\\ n = 2:\\ \\mu = 2.83\\ \\text{BM}",
+       "f": "sqrt(2*(2+2))",
+       "value": "2.83",
+       "dp": 2
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "\\text{Only Co}^{2+}\\ \\text{and Fe}^{2+}:\\ 3 + 4 = 7",
+       "f": "3+4",
+       "value": "7"
+      }
+     ],
+     "answer": "7"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s5"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "04395869",
+    "answer": {
+     "value": 7,
+     "label": "7"
+    }
+   }
+  },
+  {
+   "id": "e8aaf553-e999-4079-88da-b63e6ad3fc64",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "[\\mathrm{FeF_6}]^{3-}\\ d^5,\\ n = 5:\\ \\mu = \\sqrt{5\\times7} = 5.92\\ \\text{BM}",
+       "f": "sqrt(5*7)",
+       "value": "5.92",
+       "dp": 2
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "[\\mathrm{CoF_6}]^{3-}\\ d^6,\\ n = 4:\\ \\mu = \\sqrt{4\\times6} = 4.90\\ \\text{BM}",
+       "f": "sqrt(4*6)",
+       "value": "4.90",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "[\\mathrm{Co(C_2O_4)_3}]^{3-}\\ \\text{low spin, diamagnetic}:\\ \\mu = 0"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "5.92 > 4.90 > 0"
+      }
+     ],
+     "answer": "sqrt(35)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "2e2dc126",
+    "answer": {
+     "value": 5.916079783099616,
+     "label": "FeF6 > CoF6 > Co(ox)3"
+    }
+   }
+  },
+  {
+   "id": "e9075621-0f40-4b40-9869-b135319d6510",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "3.87\\ \\text{BM}:\\ n = 3,\\ \\mathrm{Cr^{3+}}\\ d^3",
+       "note": "1:2 electrolyte: two ionisable Cl"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "M = 52 + 3(35.5) + 6(18) = 266.5\\ \\text{g mol}^{-1}",
+       "f": "52+3*35.5+6*18",
+       "value": "266.5"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n(\\text{complex}) = \\dfrac{2.75}{266.5} = 0.01032\\ \\text{mol}",
+       "f": "2.75/266.5",
+       "value": "0.01032",
+       "dp": 5
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "n(\\mathrm{AgCl}) = 2\\times0.01032 = 0.02064\\ \\text{mol}",
+       "f": "2*0.01032",
+       "value": "0.02064"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "m = 0.02064\\times143.5 = 2.96\\ \\text{g}",
+       "f": "0.02064*143.5",
+       "value": "2.96",
+       "dp": 2
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "m \\approx 3\\ \\text{g}",
+       "f": "0.02064*143.5",
+       "value": "3",
+       "note": "nearest integer",
+       "dp": 0
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s4",
+       "s5",
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "66644e3e",
+    "answer": {
+     "value": 3,
+     "label": "3"
+    }
+   }
+  },
+  {
+   "id": "f09bef7d-18e5-4cc1-9ea9-d0431b05611e",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "[\\mathrm{Cr(H_2O)_4Cl_2}]\\mathrm{Cl}:\\ \\text{only one chloride is ionisable}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n(\\text{complex}) = 0.100\\times0.05 = 5\\times10^{-3}\\ \\text{mol}",
+       "f": "0.100*0.05",
+       "value": "5*10^(-3)",
+       "sf": 1
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n(\\mathrm{AgCl}) = 1\\times5\\times10^{-3} = 5\\times10^{-3}\\ \\text{mol}",
+       "f": "1*5*10^(-3)",
+       "value": "5*10^(-3)",
+       "sf": 1
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "5\\times10^{-3} = 5\\times10^{-3}:\\ \\text{required integer} = 5",
+       "f": "5*10^(-3)/10^(-3)",
+       "value": "5"
+      }
+     ],
+     "answer": "5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "834fbe5a",
+    "answer": {
+     "value": 5,
+     "label": "5"
+    }
+   }
+  },
+  {
+   "id": "f10fb9c9-dc87-4a7a-ab78-08e16797b5cb",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "a\\ \\text{mol NH}_3\\ \\text{in 2 L}:\\ [\\mathrm{NH_3}]_0 = a/2,\\quad [\\mathrm{Ag^+}]_0 = 0.80\\ \\text{M}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "[\\mathrm{Ag(NH_3)_2}]^{+} = 0.80\\ \\text{M},\\ \\mathrm{NH_3}\\ \\text{used} = 1.60\\ \\text{M}",
+       "f": "2*0.80",
+       "value": "1.60",
+       "note": "free NH₃ left: a/2 − 1.60",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "K_f = \\dfrac{0.80}{(5.0\\times10^{-8})(a/2-1.60)^2} = 1.0\\times10^{8}:\\ (a/2-1.60)^2 = 0.16",
+       "f": "0.80/(5.0*10^(-8)*1.0*10^8)",
+       "value": "0.16",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "a/2 - 1.60 = \\sqrt{0.16} = 0.40",
+       "f": "sqrt(0.16)",
+       "value": "0.40",
+       "dp": 2
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "a = 2(0.40 + 1.60) = 4\\ \\text{mol}",
+       "f": "2*(0.40+1.60)",
+       "value": "4"
+      }
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "204eee87",
+    "answer": {
+     "value": 4,
+     "label": "4"
+    }
+   }
+  },
+  {
+   "id": "f57a91c3-9605-4247-8c8a-659c4754a3f1",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{Only ionisable (outer) }\\mathrm{Cl^-}\\text{ precipitates}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "[\\mathrm{Co(NH_3)_4Cl_2}]\\mathrm{Cl}:\\ 1\\qquad [\\mathrm{Ni(H_2O)_6}]\\mathrm{Cl_2}:\\ 2"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "[\\mathrm{Pt(NH_3)_2Cl_2}]:\\ 0\\qquad [\\mathrm{Pd(NH_3)_4}]\\mathrm{Cl_2}:\\ 2"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{Total} = 1 + 2 + 0 + 2 = 5\\ \\text{mol AgCl}",
+       "f": "1+2+0+2",
+       "value": "5"
+      }
+     ],
+     "answer": "1+2+0+2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "964f69a3",
+    "answer": {
+     "value": 5,
+     "label": "5"
+    }
+   }
+  },
+  {
+   "id": "f655b49c-046a-4dea-a2de-47cb0b3ca38f",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "[\\mathrm{Ni(CO)_4}]:\\ 0,\\quad [\\mathrm{NiCl_4}]^{2-}:\\ d^8\\ \\text{tetrahedral},\\ 2"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "[\\mathrm{PtCl_2(NH_3)_2}]:\\ 0,\\quad [\\mathrm{Ni(CN)_4}]^{2-}:\\ 0,\\quad [\\mathrm{Pt(CN)_4}]^{2-}:\\ 0"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{Total} = 0 + 2 + 0 + 0 + 0 = 2",
+       "f": "0+2+0+0+0",
+       "value": "2"
+      }
+     ],
+     "answer": "2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "b010a82a",
+    "answer": {
+     "value": 2,
+     "label": "2"
+    }
+   }
+  },
+  {
+   "id": "f9c869ee-b863-4aee-be31-994c7a411560",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "M(AA)_2XY:\\ \\text{cis or trans}\\ \\to\\ 2\\ \\text{geometrical isomers}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{trans: plane of symmetry, achiral}:\\ 1\\ \\text{form}"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\text{cis: no plane or centre, chiral}:\\ 2\\ \\text{forms}"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{Total stereoisomers} = 1 + 2 = 3",
+       "f": "1+2",
+       "value": "3"
+      }
+     ],
+     "answer": "1+2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "5906429c",
+    "answer": {
+     "value": 3,
+     "label": "3"
+    }
+   }
+  },
+  {
+   "id": "fd0e83e7-7f61-4e46-9346-d02f179ac8c9",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "[\\mathrm{CoCl_4}]^{2-}:\\ \\mathrm{Co^{2+}},\\ d^7"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{high spin}:\\ e^{4}t_2^{3}:\\ 4 + 3 = 7\\ \\text{electrons},\\quad m = 4",
+       "f": "4+3",
+       "value": "7"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "e^4:\\ \\text{two pairs};\\quad t_2^3:\\ \\text{three singly}\\Rightarrow 3\\ \\text{unpaired}"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{Sum} = m + 3 = 4 + 3 = 7",
+       "f": "4+3",
+       "value": "7"
+      }
+     ],
+     "answer": "4+3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "ae79b346",
+    "answer": {
+     "value": 7,
+     "label": "7"
+    }
+   }
+  }
+ ],
+ "decided": []
+}
