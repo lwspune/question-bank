@@ -11,7 +11,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { PassCta } from "@/lib/billing/plans";
 import Link from "next/link";
 import {
-  vaultPointsOfferNote,
+  passOfferNote,
   vaultPointsLine,
   vaultPointsShort,
   vaultPointsLapseLine,
@@ -55,21 +55,38 @@ export function useFixPoints(enabled = true, fresh = false): FixPointsView | nul
   return view;
 }
 
-/** The pass offer with its price lowered by the student's points, where they lower it. */
+/**
+ * The pass offer at this student's price: lowered by an upgrade credit (a
+ * Practice Pass holder buying Premium, 2026-11-11) and by their points. The
+ * price shown is the price the order route charges, pass holder or not: an
+ * offer on their screen is one they are buying.
+ */
 export function useDiscountedPass<T extends PassCta | null>(pass: T): T {
   const view = useFixPoints(pass !== null);
   return useMemo(() => {
-    const price = pass && view && !view.hasPass ? view.prices[pass.planId] : undefined;
+    const price = pass && view ? view.prices[pass.planId] : undefined;
     return (pass && price ? { ...pass, price } : pass) as T;
   }, [pass, view]);
 }
 
-/** "Includes 12% off: you fixed 12 mistakes…" under an offer whose price the points lowered. */
+/** "Includes ₹199 off for the days left on your Practice Pass…" or the points note, under an offer whose price they lowered. */
 export function VaultPointsOfferNote({ planId, className }: { planId: string; className?: string }) {
   const view = useFixPoints();
-  const note = view && view.prices[planId] ? vaultPointsOfferNote(view) : null;
+  const note = view && view.prices[planId] ? passOfferNote(view, planId) : null;
   if (!note) return null;
   return <p className={className ?? "text-center text-xs font-medium text-emerald-700 dark:text-emerald-400"}>{note}</p>;
+}
+
+/** "You have the Practice Pass…" above an offer that is an upgrade for this student; nothing otherwise. */
+export function UpgradeLead({ planId, className }: { planId: string; className?: string }) {
+  const view = useFixPoints();
+  const from = view && (view.credits?.[planId] ?? 0) > 0 ? view.creditFrom : null;
+  if (!from) return null;
+  return (
+    <p className={className ?? "font-medium text-foreground"}>
+      You have the {from}. Upgrade and pay only the difference.
+    </p>
+  );
 }
 
 /** Just the price, for a server-rendered card: lowered by the student's points where they apply. */

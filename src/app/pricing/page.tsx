@@ -24,7 +24,8 @@ import { passLineForExam } from "@/lib/mocks/mocksNav";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { readFixPoints } from "@/lib/billing/fixPointsService";
 import { readReferralDiscount } from "@/lib/referrals/service";
-import { vaultPointsOfferNote, fixPointsView, type FixPointsView } from "@/lib/billing/fixPoints";
+import { passOfferNote, fixPointsView, type FixPointsView } from "@/lib/billing/fixPoints";
+import { upgradeCredits } from "@/lib/billing/upgrade";
 
 export const dynamic = "force-dynamic";
 
@@ -63,21 +64,29 @@ export default async function PricingPage(
   // Fix Points (0245) and a friend's invite (0249) lower the rupee passes.
   // Display here; the order route reads both again and charges that price. A
   // failed read shows the plain price (points) or leaves the invite out.
+  // A Practice Pass holder sees the Premium Pass at the upgrade price
+  // (2026-11-11), read from the passes already loaded; a failed points read
+  // still shows it (the order route charges both again).
   let fixView: FixPointsView | null = null;
   if (user && !member && site === "pyqvault") {
+    const { credits, creditFrom } = upgradeCredits(rows, allPlans, now);
+    let points = 0;
+    let referralPct = 0;
     try {
       const admin = createSupabaseAdminClient();
-      const [balance, referralPct] = await Promise.all([
+      const [balance, referral] = await Promise.all([
         readFixPoints(admin, user.id, new Date(now)),
         readReferralDiscount(admin, user.id).catch((e: unknown) => {
           console.error("pricing: referral read failed", e);
           return 0;
         }),
       ]);
-      fixView = fixPointsView({ points: balance.points, plans: allPlans, hasPass: false, referralPct });
+      points = balance.points;
+      referralPct = referral;
     } catch (e) {
       console.error("pricing: fix points read failed", e);
     }
+    fixView = fixPointsView({ points, plans: allPlans, hasPass: false, referralPct, credits, creditFrom });
   }
   const examLine = site === "pyqvault" ? await passLineForViewer(user?.id ?? null) : null;
   // Staff already have everything a pass sells.
@@ -156,7 +165,7 @@ export default async function PricingPage(
                   </p>
                   {fixView?.prices[plan.id] && !owns(plan) && (
                     <p className="mt-1 text-xs font-medium text-emerald-700 dark:text-emerald-400">
-                      {vaultPointsOfferNote(fixView)}
+                      {passOfferNote(fixView, plan.id)}
                     </p>
                   )}
                   <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground">
@@ -184,7 +193,7 @@ export default async function PricingPage(
                       <PricingClient
                         planId={plan.id}
                         returnTo={returnTo}
-                        buttonLabel={`Buy ${plan.label}: ${fixView?.prices[plan.id] ?? formatPrice(plan.amountPaise, plan.currency)}`}
+                        buttonLabel={`${fixView?.credits[plan.id] ? "Upgrade to" : "Buy"} ${plan.label}: ${fixView?.prices[plan.id] ?? formatPrice(plan.amountPaise, plan.currency)}`}
                       />
                     ) : (
                       <div className="space-y-2 text-center">
