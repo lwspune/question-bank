@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import GoogleAuthButton from "@/components/auth/GoogleAuthButton";
 import { cn } from "@/lib/utils";
+import { REFERRAL_FRIEND_PCT } from "@/lib/referrals/referral";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -107,6 +108,12 @@ export default function SignupPage() {
                 <p className="mt-1 text-sm text-muted-foreground">
                   Free to start. Build papers, save reports, and unlock more.
                 </p>
+                {/* A friend's invite link (/r/<code>, 0249) lands here tagged as a referral. */}
+                {signupSource === "referral" && (
+                  <p className="mt-3 rounded-md bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300">
+                    Your friend&apos;s invite: {REFERRAL_FRIEND_PCT}% off your first pass.
+                  </p>
+                )}
               </header>
 
               <GoogleAuthButton next={next} signupSource={signupSource} />

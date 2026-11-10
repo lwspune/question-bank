@@ -14,6 +14,8 @@ import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { saveFirstTouch, saveSignupCountry } from "@/lib/profile/service";
 import { readCountry } from "@/lib/acquisition/country";
+import { attachReferralAtSignIn } from "@/lib/referrals/service";
+import { REF_COOKIE } from "@/lib/referrals/referral";
 
 export async function POST(request: NextRequest) {
   const db = createSupabaseServerClient();
@@ -26,6 +28,8 @@ export async function POST(request: NextRequest) {
     console.error("acquisition save at sign-in", e instanceof Error ? e.message : e);
     return NextResponse.json({ error: "Could not save." }, { status: 500 });
   }
+  // A friend's invite link (0249): ties a NEW account to its inviter. Never throws.
+  await attachReferralAtSignIn(data.user, request.cookies.get(REF_COOKIE)?.value);
   // Country (0142), independent of the channel above.
   try {
     await saveSignupCountry(db, data.user, readCountry(request.headers));

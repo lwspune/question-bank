@@ -281,6 +281,8 @@ export const PARENT_PAY_KEEP = 5;
 export const FIX_POINTS_FIXES_LIFT_PCT = 30;
 /** "fix-points": passes sold with points by the check date that keep it. */
 export const FIX_POINTS_SALES_KEEP = 5;
+/** "referrals": passes bought by referred friends by the check date that keep it. */
+export const REFERRALS_SALES_KEEP = 3;
 /** "flashcards": cards answered per deck a student opens, on average, that keeps it open to students. */
 export const FLASHCARDS_ANSWERS_PER_OPEN_KEEP = 3;
 /** "tutor-interest": student Yes answers (looking for 1:1 tutoring) that take tutoring further. */
@@ -337,6 +339,7 @@ export type Readout =
   | "why-not-buy"
   | "parent-pay"
   | "fix-points"
+  | "referrals"
   | "flashcards"
   | "chapter-fix"
   | "board-path"
@@ -877,6 +880,19 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-09",
     windowDays: 30,
     readout: "fix-points",
+    status: "running",
+  },
+  {
+    id: "referrals",
+    title: "Invite a friend: 25% off for them, 30 free days for you",
+    change:
+      "Every student gets an invite link (/r/<code>, made when they tap Get my invite link on Home). A friend who creates a new account through it gets 25% off their first rupee pass, on top of any Vault Points (50% at most together); when that friend pays, the inviter gets 30 days of Premium, after any Premium they hold, up to 6 times. A full refund ends the 30 days it earned.",
+    why: "The owner's call (9 Nov), against the data: students share under 1% of the time (18 real practise-together sends in 3 weeks, 0 joins; 4 sign-ups from any share, ever). The bet is that a reward on both sides makes a student send the link and a friend buy.",
+    metric:
+      "Passes bought by referred friends (referrals.paid_at), with the steps before it: links made (referral_codes), share taps (share_events kind referral), friends who signed up through a link (referrals). `npm run referrals:readout` lists every referred sale so a student inviting their own second account shows up.",
+    rule: `Keep if referred friends buy ${REFERRALS_SALES_KEEP}+ passes by the check date. Fewer: switch it off.`,
+    liveSince: "2026-11-10",
+    readout: "referrals",
     status: "running",
   },
   {

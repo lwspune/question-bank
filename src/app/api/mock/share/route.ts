@@ -24,7 +24,7 @@ import { recordShareEvent } from "@/lib/mocks/shareLog";
 const BodySchema = z.object({
   // 'practice': a practice test sent to a friend (migration 0163). Absent on
   // the mock result card, which predates it.
-  kind: z.enum(["mock", "practice", "mock_together"]).default("mock"),
+  kind: z.enum(["mock", "practice", "mock_together", "referral"]).default("mock"),
   slug: z.string().min(1).max(200),
   channel: z.enum(SHARE_CHANNELS),
   includedScore: z.boolean(),

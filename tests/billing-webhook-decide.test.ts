@@ -54,6 +54,8 @@ describe("decideWebhook: order.paid", () => {
       grant: { planId: "mock-pass-6m", scope: "mocks", durationDays: 182, amountPaise: 9900, currency: "INR" },
       // Not paid through a parent link (2026-11-09).
       note: null,
+      // Not sold at a friend's referral price (0249).
+      referral: false,
     });
   });
 
@@ -113,5 +115,14 @@ describe("decideWebhook and Fix Points", () => {
     const notes = stampDiscountNotes(stampOrderNotes(MOCK, "u1"), MOCK, { points: 7 });
     const d = decideWebhook(orderPaid({ notes, amount_paid: Number(notes.amountPaise) }));
     expect(d).toMatchObject({ action: "grant", note: "fix_points:7" });
+  });
+});
+
+describe("decideWebhook and referrals", () => {
+  it("flags an order sold at the referral price", async () => {
+    const { stampDiscountNotes } = await import("@/lib/billing/fixPoints");
+    const notes = stampDiscountNotes(stampOrderNotes(MOCK, "u1"), MOCK, { points: 0, referralPct: 25 });
+    const d = decideWebhook(orderPaid({ notes, amount_paid: Number(notes.amountPaise) }));
+    expect(d).toMatchObject({ action: "grant", referral: true });
   });
 });

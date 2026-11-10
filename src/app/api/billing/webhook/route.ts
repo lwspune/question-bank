@@ -7,6 +7,7 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { grantRazorpayEntitlement, revokeRazorpayEntitlement } from "@/lib/billing/grant";
 import { decideWebhook, type WebhookBody } from "@/lib/billing/webhook";
 import { grantEbookPurchase, revokeEbookPurchase } from "@/lib/ebooks/grant";
+import { completeReferral, revokeReferralReward } from "@/lib/referrals/service";
 
 export const maxDuration = 30;
 
@@ -52,13 +53,23 @@ export async function POST(request: NextRequest) {
 
   if (decision.action === "revoke") {
     // A payment buys either a pass or an ebook; revoking both by payment id
-    // ends whichever it was, and the other finds nothing.
-    const [pass, book] = await Promise.all([
+    // ends whichever it was, and the other finds nothing. A friend's refunded
+    // pass also ends the inviter's free days it earned (0249).
+    const [pass, book, reward] = await Promise.all([
       revokeRazorpayEntitlement(decision.paymentId),
       revokeEbookPurchase(decision.paymentId),
+      revokeReferralReward(createSupabaseAdminClient(), decision.paymentId).then(
+        (n) => ({ kind: "ok" as const, revoked: n }),
+        (e: unknown) => ({ kind: "error" as const, message: e instanceof Error ? e.message : String(e) })
+      ),
     ]);
-    if (pass.kind === "error" || book.kind === "error") {
-      console.error("billing webhook: revoke failed", pass.kind === "error" ? pass.message : "", book.kind === "error" ? book.message : "");
+    if (pass.kind === "error" || book.kind === "error" || reward.kind === "error") {
+      console.error(
+        "billing webhook: revoke failed",
+        pass.kind === "error" ? pass.message : "",
+        book.kind === "error" ? book.message : "",
+        reward.kind === "error" ? reward.message : ""
+      );
       return NextResponse.json({ error: "revoke failed" }, { status: 500 });
     }
     return NextResponse.json({ received: true, revoked: pass.revoked + book.revoked });
@@ -90,6 +101,18 @@ export async function POST(request: NextRequest) {
   if (result.kind === "error") {
     console.error("billing webhook: grant failed", result.message);
     return NextResponse.json({ error: "grant failed" }, { status: 500 });
+  }
+  // A friend's referral price (0249): reward the inviter. Run on "already
+  // granted" too, since verify may have granted and failed this step; the
+  // database makes a second completion a no-op. A failure answers 500 so
+  // Razorpay retries, and the retry lands on "already granted" again.
+  if (decision.referral) {
+    try {
+      await completeReferral(createSupabaseAdminClient(), decision.userId, decision.paymentId);
+    } catch (e) {
+      console.error("billing webhook: referral reward failed", e instanceof Error ? e.message : e);
+      return NextResponse.json({ error: "referral reward failed" }, { status: 500 });
+    }
   }
   // A parent paid (2026-11-09): tell the student, from whichever grant is new.
   if (result.kind === "ok" && decision.note) {

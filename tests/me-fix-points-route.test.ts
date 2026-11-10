@@ -13,6 +13,7 @@ vi.mock("@/lib/supabase/server", () => ({ createSupabaseServerClient: vi.fn(() =
 vi.mock("@/lib/supabase/admin", () => ({ createSupabaseAdminClient: vi.fn(() => ({})) }));
 vi.mock("@/lib/entitlements/query", () => ({ userHasAnyAccess: vi.fn(async () => false) }));
 vi.mock("@/lib/billing/fixPointsService", () => ({ readFixPoints: vi.fn() }));
+vi.mock("@/lib/referrals/service", () => ({ readReferralDiscount: vi.fn(async () => 0) }));
 
 const premium: Plan = {
   id: "mock-pass-6m", label: "Premium Pass", blurb: "b", perks: [], urlKey: "mocks", amountPaise: 49900,
@@ -21,6 +22,7 @@ const premium: Plan = {
 vi.mock("@/lib/billing/plansQuery", () => ({ listActivePlans: vi.fn(async () => [premium]) }));
 
 import { readFixPoints } from "@/lib/billing/fixPointsService";
+import { readReferralDiscount } from "@/lib/referrals/service";
 import { GET } from "@/app/api/me/fix-points/route";
 
 const get = (host = "www.pyqvault.com") => new NextRequest(`https://${host}/api/me/fix-points`, { headers: { host } });
@@ -45,10 +47,26 @@ describe("GET /api/me/fix-points", () => {
       points: 12,
       pct: 12,
       maxPct: 40,
+      referralPct: 0,
       hasPass: false,
       lapsesOn: "2026-12-01T20:00:00.000Z",
       prices: { "mock-pass-6m": "₹439" },
     });
+  });
+
+  it("lowers the price by a friend's invite too (0249)", async () => {
+    vi.mocked(readFixPoints).mockResolvedValue({ points: 0, pct: 0, oldestAt: null });
+    vi.mocked(readReferralDiscount).mockResolvedValueOnce(25);
+    const body = await (await GET(get())).json();
+    expect(body).toMatchObject({ referralPct: 25, prices: { "mock-pass-6m": "₹374" } });
+  });
+
+  it("shows the points price when the invite cannot be read", async () => {
+    vi.mocked(readFixPoints).mockResolvedValue({ points: 12, pct: 12, oldestAt: null });
+    vi.mocked(readReferralDiscount).mockRejectedValueOnce(new Error("db down"));
+    const res = await GET(get());
+    expect(res.status).toBe(200);
+    expect(await res.json()).toMatchObject({ referralPct: 0, prices: { "mock-pass-6m": "₹439" } });
   });
 
   it("is 503 when the points cannot be read", async () => {

@@ -23,6 +23,7 @@ import { getMockExamCardsCached } from "@/lib/mocks/examCardsCached";
 import { passLineForExam } from "@/lib/mocks/mocksNav";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { readFixPoints } from "@/lib/billing/fixPointsService";
+import { readReferralDiscount } from "@/lib/referrals/service";
 import { vaultPointsOfferNote, fixPointsView, type FixPointsView } from "@/lib/billing/fixPoints";
 
 export const dynamic = "force-dynamic";
@@ -59,14 +60,21 @@ export default async function PricingPage(
     await logActivityOnce(createSupabaseServerClient(), user.id, surfaceViewedEvent(user.id, "pricing", new Date()));
   }
   const now = Date.now();
-  // Fix Points (0245): a student's points lower the rupee passes. Display
-  // here; the order route reads them again and charges that price. A failed
-  // read shows the plain price.
+  // Fix Points (0245) and a friend's invite (0249) lower the rupee passes.
+  // Display here; the order route reads both again and charges that price. A
+  // failed read shows the plain price (points) or leaves the invite out.
   let fixView: FixPointsView | null = null;
   if (user && !member && site === "pyqvault") {
     try {
-      const balance = await readFixPoints(createSupabaseAdminClient(), user.id, new Date(now));
-      fixView = fixPointsView({ points: balance.points, plans: allPlans, hasPass: false });
+      const admin = createSupabaseAdminClient();
+      const [balance, referralPct] = await Promise.all([
+        readFixPoints(admin, user.id, new Date(now)),
+        readReferralDiscount(admin, user.id).catch((e: unknown) => {
+          console.error("pricing: referral read failed", e);
+          return 0;
+        }),
+      ]);
+      fixView = fixPointsView({ points: balance.points, plans: allPlans, hasPass: false, referralPct });
     } catch (e) {
       console.error("pricing: fix points read failed", e);
     }

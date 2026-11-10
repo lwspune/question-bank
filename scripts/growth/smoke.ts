@@ -228,6 +228,10 @@ async function main() {
         // Read by hand: fix_points_readout (migration 0245), before vs after.
         line = "by hand: npm run fix-points:readout";
         break;
+      case "referrals":
+        // Read by hand: referral_codes, share_events kind referral, referrals (migration 0249).
+        line = "by hand: npm run referrals:readout";
+        break;
       case "flashcards":
         // Read by hand in Vercel: flashcards_answer / flashcards_open, role student.
         line = "by hand: Vercel events flashcards_answer / flashcards_open (role student)";

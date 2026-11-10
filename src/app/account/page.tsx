@@ -155,6 +155,7 @@ export default async function AccountPage() {
                               ? `Active until ${formatDate(pass.expiresAt)}`
                               : "Lifetime access"}
                             {pass.source === "comp" && " · complimentary"}
+                            {pass.source === "referral" && " · includes free days from your invites"}
                           </p>
                           <Link
                             href={view.href}

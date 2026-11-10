@@ -4153,6 +4153,59 @@ export type Database = {
         }
         Relationships: []
       }
+      referral_codes: {
+        Row: {
+          code: string
+          created_at: string
+          user_id: string
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          user_id: string
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      referrals: {
+        Row: {
+          created_at: string
+          friend_id: string
+          paid_at: string | null
+          paid_payment_id: string | null
+          referrer_id: string
+          reward_entitlement_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          friend_id: string
+          paid_at?: string | null
+          paid_payment_id?: string | null
+          referrer_id: string
+          reward_entitlement_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          friend_id?: string
+          paid_at?: string | null
+          paid_payment_id?: string | null
+          referrer_id?: string
+          reward_entitlement_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "referrals_reward_entitlement_id_fkey"
+            columns: ["reward_entitlement_id"]
+            isOneToOne: false
+            referencedRelation: "entitlements"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       result_announcements: {
         Row: {
           announced_on: string
@@ -5204,6 +5257,15 @@ export type Database = {
         Returns: Json
       }
       collect_db_health: { Args: never; Returns: Json }
+      complete_referral: {
+        Args: {
+          p_days: number
+          p_friend: string
+          p_max: number
+          p_payment: string
+        }
+        Returns: string
+      }
       defence_leads_after: {
         Args: {
           p_after_at: string
@@ -5495,6 +5557,14 @@ export type Database = {
           slug: string
           subject_name: string
           year: number
+        }[]
+      }
+      public_pyq_year_counts: {
+        Args: never
+        Returns: {
+          exam_id: string
+          pyq_year: number
+          questions: number
         }[]
       }
       public_question_counts: {

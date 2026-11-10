@@ -353,6 +353,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-10 (second) — Referrals: a friend's first pass 25% off, the inviter 30 free days of Premium (0249).**
+  - **The owner's call against the data** (students share under 1%); experiment `referrals`, keep on 3+ referred sales in 30 days (`npm run referrals:readout`).
+  - **The order stays the contract:** `referralPct` is stamped into the order beside the points (50% cap together); only such an order rewards the inviter.
+  - **One reward per payment, in the database:** `complete_referral` marks the friend paid, locks the inviter, caps at 6 and stacks after their Premium in one transaction, so verify and the webhook cannot both pay. Refund revokes it.
+  - **A friend = an account made after the link was opened, within a day** (own rule: `isNewAccount`'s 60 s misses email confirms). Codes are made on tap, not view. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-10 — Homepage shows the product's own screens with a sample student (no migration).**
   - **Why:** owner, after the carousel: signed-out visitors never see Review, the map or Home; How it works, four What's inside cards and the teachers' banner now show them.
   - **Real components, sample data** (owner's pick over screenshots): ScoreCard, FixOverview, the map tile (moved to `components/performance/MapTile.tsx`) and TodayCard/WeakSpots (handed a pulse, they never fetch) render from `lib/home/previewSamples.ts`, typed with the real types. Question, notes, homework and paper are drawn: their real parts count reveals, fetch, or pull KaTeX's CSS onto the homepage.

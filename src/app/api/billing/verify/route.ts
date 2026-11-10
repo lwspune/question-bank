@@ -10,6 +10,9 @@ import { paywallEvent } from "@/lib/activity/clientEvents";
 import { readCountry, withCountry } from "@/lib/acquisition/country";
 import { ebookForPaidOrder, isEbookOrder } from "@/lib/ebooks/order";
 import { grantEbookPurchase } from "@/lib/ebooks/grant";
+import { orderCarriesReferral } from "@/lib/referrals/referral";
+import { completeReferral } from "@/lib/referrals/service";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
 export const maxDuration = 30;
 
@@ -112,6 +115,16 @@ export async function POST(request: NextRequest) {
   if (result.kind === "error") {
     console.error("grant after verify failed:", result.message);
     return NextResponse.json({ error: "Could not activate access" }, { status: 500 });
+  }
+  // A friend's referral price (0249): reward the inviter. The buyer's pass is
+  // already theirs, so a failure here is logged, not shown: the order.paid
+  // webhook completes it (idempotent in the database).
+  if (orderCarriesReferral(fetched.order.notes)) {
+    try {
+      await completeReferral(createSupabaseAdminClient(), user.id, body.razorpay_payment_id);
+    } catch (e) {
+      console.error("verify: referral reward failed", e instanceof Error ? e.message : e);
+    }
   }
   return NextResponse.json({ ok: true });
 }
