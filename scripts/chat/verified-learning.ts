@@ -18,10 +18,12 @@ import {
   BEFORE_WINDOW_MS,
   VERIFY_WINDOW_MS,
   answerFromActivity,
+  followUpWeek,
   mockAnswer,
   needFromActivity,
   verifiedLearning,
   type BeforeAfter,
+  type FollowUpLink,
   type LoopAnswer,
   type LoopNeed,
   type VerifiedLearningWeek,
@@ -239,7 +241,31 @@ async function main() {
     }
     console.log("");
   }
-  console.log(`V's try card ("One more like this"), last ${weeks} weeks: ${tryCards} answered, ${tryCardsRight} right. Taps on the button are not recorded yet (step 2).`);
+  // 7. Follow-ups linked to their explanation (v_followups, 0250, V_LEARNING_LOOP.md step 2).
+  const links: FollowUpLink[] = (
+    await pages((a, b) =>
+      db
+        .from("v_followups")
+        .select("user_id, followup_question_id, free, created_at")
+        .gte("created_at", new Date(firstWeek).toISOString())
+        .order("created_at")
+        .order("user_id")
+        .range(a, b)
+    )
+  )
+    .filter((r) => keep(r.user_id))
+    .map((r) => ({ userId: r.user_id as string, followUpId: r.followup_question_id as string, free: r.free === true, at: Date.parse(r.created_at as string) }));
+  console.log("Follow-ups after an explanation (the first try card answered after V explained a question, per day)");
+  for (let w = weeks; w >= 1; w--) {
+    const from = now - w * 7 * DAY;
+    const to = now - (w - 1) * 7 * DAY;
+    const f = followUpWeek(links, answers, { from, to });
+    console.log(
+      `  ${day(from)} to ${day(to)}: ${f.followUps} follow-ups from ${f.students} students, ${f.answeredRight} right (${pct(f.answeredRight, f.followUps)}), ${f.free} free`
+    );
+  }
+  console.log("");
+  console.log(`V's try cards answered in all, last ${weeks} weeks: ${tryCards}, ${tryCardsRight} right. Taps on "One more like this" are counted in Vercel Analytics (v_more_like_this_tap), not here.`);
   console.log(`Read: ${ladder.length + verdicts.length} activity rows, ${taps.length} Ask V replies, ${picks.length} mock picks from ${attempts.length} attempts.`);
 }
 

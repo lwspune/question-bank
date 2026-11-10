@@ -148,3 +148,34 @@ export function verifiedLearning(
     beforeAfter,
   };
 }
+
+/** A try card linked to the explanation it followed (v_followups, migration 0250). */
+export type FollowUpLink = { userId: string; followUpId: string; free: boolean; at: number };
+
+export type FollowUpWeek = { followUps: number; free: number; answeredRight: number; students: number };
+
+/** The answer is written in the same request as its link, so it lands just after it (a minute's slack). */
+const LINK_SLACK_MS = 60_000;
+
+/**
+ * The week's follow-ups (V_LEARNING_LOOP.md step 2): how many explanations led
+ * to an answered follow-up, how many were free, and how many were right. A
+ * right follow-up is a verified need by construction: a different question in
+ * the same subtopic, after the explanation.
+ */
+export function followUpWeek(
+  links: readonly FollowUpLink[],
+  answers: readonly LoopAnswer[],
+  window: { from: number; to: number }
+): FollowUpWeek {
+  const inWeek = links.filter((l) => l.at >= window.from && l.at < window.to);
+  const right = inWeek.filter((l) =>
+    answers.some((a) => a.correct && a.userId === l.userId && a.questionId === l.followUpId && a.at >= l.at - LINK_SLACK_MS && a.at <= l.at + DAY_MS)
+  );
+  return {
+    followUps: inWeek.length,
+    free: inWeek.filter((l) => l.free).length,
+    answeredRight: right.length,
+    students: new Set(inWeek.map((l) => l.userId)).size,
+  };
+}

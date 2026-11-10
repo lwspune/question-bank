@@ -8,9 +8,11 @@ import { describe, it, expect } from "vitest";
 import {
   VERIFY_WINDOW_MS,
   answerFromActivity,
+  followUpWeek,
   mockAnswer,
   needFromActivity,
   verifiedLearning,
+  type FollowUpLink,
   type LoopAnswer,
   type LoopNeed,
 } from "@/lib/chat/verifiedLearning";
@@ -83,6 +85,29 @@ describe("mockAnswer: grading a mock pick against the key", () => {
   it("skips an unanswered question and a question with no option key (numeric)", () => {
     expect(mockAnswer(null, ["B"])).toBeNull();
     expect(mockAnswer("B", [])).toBeNull();
+  });
+});
+
+describe("followUpWeek: follow-ups linked to an explanation (0250)", () => {
+  const link = (over: Partial<FollowUpLink> = {}): FollowUpLink => ({ userId: "u1", followUpId: "q2", free: true, at: at(0), ...over });
+
+  it("counts the week's linked follow-ups, the free ones, and those answered right", () => {
+    const answers = [answer({ questionId: "q2", at: at(0) + 2000, correct: true }), answer({ userId: "u2", questionId: "q3", at: at(1), correct: false })];
+    const r = followUpWeek([link(), link({ userId: "u2", followUpId: "q3", free: false })], answers, week);
+    expect(r).toEqual({ followUps: 2, free: 1, answeredRight: 1, students: 2 });
+  });
+
+  it("reads only the answer to that follow-up, by that student, from that day", () => {
+    const answers = [
+      answer({ questionId: "q9", at: at(1) }),
+      answer({ userId: "u2", questionId: "q2", at: at(1) }),
+      answer({ questionId: "q2", at: at(0) + 2 * DAY }),
+    ];
+    expect(followUpWeek([link()], answers, week).answeredRight).toBe(0);
+  });
+
+  it("counts only links inside the week", () => {
+    expect(followUpWeek([link({ at: week.from - MIN }), link({ at: week.to })], [], week).followUps).toBe(0);
   });
 });
 

@@ -11,6 +11,9 @@
  *   npm run v:eval -- --dry              lists the cases, calls nothing, stores nothing
  *   npm run v:eval -- --recheck          re-applies the cases' current checks to the latest
  *                                        run's stored replies (--run=<id>): free, no model call
+ *   npm run v:eval -- --from=<file.json> replays cases from a local file (v_eval_cases columns)
+ *                                        and stores nothing: tries a case before it is saved.
+ *                                        Keep the file out of the repo (student messages)
  *
  * The answer goes through lib/chat/answer.ts, the function the live route
  * uses, with V's live settings (explanations, plans). What it cannot replay it
@@ -32,7 +35,7 @@
 import "../../lib/serverOnly";
 import { join } from "node:path";
 import { execSync } from "node:child_process";
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { answerWithV, type VContextOptions } from "../../../src/lib/chat/answer";
 import { isPathExam } from "../../../src/lib/path/model";
@@ -71,6 +74,8 @@ type Case = {
   reply_to: string | null;
   expect: unknown;
   good_reply: string;
+  /** "Show me where I went wrong" on a follow-up card: the question V explained before (0250). */
+  follows_up_question_id?: string | null;
 };
 
 type Result = {
@@ -114,11 +119,18 @@ async function main() {
     return;
   }
 
-  let q = admin.from("v_eval_cases").select("*").eq("active", true).order("created_at");
-  if (job) q = q.eq("job", job);
-  const { data, error } = await q;
-  if (error) throw new Error(error.message);
-  const cases = pickCases((data ?? []) as Case[], arg("case")).slice(0, limit);
+  const fromFile = arg("from");
+  let loaded: Case[];
+  if (fromFile) {
+    loaded = (JSON.parse(readFileSync(fromFile, "utf8")) as Case[]).filter((c) => !job || c.job === job);
+  } else {
+    let q = admin.from("v_eval_cases").select("*").eq("active", true).order("created_at");
+    if (job) q = q.eq("job", job);
+    const { data, error } = await q;
+    if (error) throw new Error(error.message);
+    loaded = (data ?? []) as Case[];
+  }
+  const cases = pickCases(loaded, arg("case")).slice(0, limit);
   if (dry) {
     for (const c of cases) console.log(`${c.id.slice(0, 8)} ${c.job.padEnd(16)} ${short(c.message, 80)}`);
     console.log(`${cases.length} cases (dry run, nothing called).`);
@@ -216,7 +228,15 @@ async function main() {
     // A notes question is read from its page, as the route does (0181).
     const notesRef = parseNotesRefKey(c.asked_notes_item);
     const notesBrief = notesRef ? await loadNotesItemBrief(c.page_path, notesRef) : null;
-    const r = await answerWithV({ anon, context: contextFor(c, notesBrief), message: c.message, replyTo: c.reply_to, history: c.history });
+    // A follow-up card's Ask V (0250), told the explained question's stem as the route does.
+    const followsUp = c.follows_up_question_id ? { stem: (await loadVQuestion(anon, c.follows_up_question_id))?.text ?? null } : null;
+    const r = await answerWithV({
+      anon,
+      context: { ...contextFor(c, notesBrief), followsUp },
+      message: c.message,
+      replyTo: c.reply_to,
+      history: c.history,
+    });
     const tools = r.toolCalls.map((t) => t.name);
     const reply = r.ok ? r.reply : "";
     const check = checkReply(expect, { reply, links: r.links, tools });
@@ -262,6 +282,20 @@ async function main() {
   }
   await Promise.all(Array.from({ length: Math.min(CONCURRENCY, cases.length) }, worker));
   results.sort((a, b) => cases.indexOf(a.c) - cases.indexOf(b.c));
+
+  // Cases from a file are not in v_eval_cases, so nothing is stored: the replies are printed to read.
+  if (fromFile) {
+    for (const r of results) {
+      console.log(`\n${r.c.id} (${r.c.job}) ${r.autoPass ? "ok" : `FAIL: ${r.failures.join("; ")}`}`);
+      console.log(`  asked: ${short(r.c.message, 200)}`);
+      console.log(`  tools: ${r.tools.join(", ") || "(none)"}`);
+      console.log(`  reply: ${r.reply}`);
+      console.log(`  a good reply: ${r.c.good_reply}`);
+    }
+    const spent = results.reduce((s, r) => s + r.cost, 0);
+    console.log(`\n${results.length} cases from ${fromFile}, ${spent.toFixed(4)} USD; nothing stored.`);
+    return;
+  }
 
   // Each case's most recent earlier result, for what changed (a run may have covered one job only).
   const prev = await latestResults(admin, null);
