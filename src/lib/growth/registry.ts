@@ -260,6 +260,15 @@ export const V_FIX_LINE_KEEP_PCT = 10;
 export const V_RETRY_YES_KEEP_PCT = 50;
 
 /**
+ * "score-plan": keep "How to raise your score" if at least this share of the
+ * fair full-paper attempts it shows on start the Fix list within a day (%).
+ * Baseline with "What to fix next", 36 fair attempts (60 to 14 days before
+ * 2026-11-10): 5 (14%) started a drill within a day, 7 (19%) sat another full
+ * paper of the exam within 14 days.
+ */
+export const SCORE_PLAN_DRILL_KEEP_PCT = 25;
+
+/**
  * "self-mark": keep Understood / Review later under written model answers if
  * at least this share of signed-in written-answer reveals get a tap (%)...
  */
@@ -376,7 +385,8 @@ export type Readout =
   | "ugc-net"
   | "v-follow-up-loop"
   | "v-fix-line"
-  | "v-better-retry";
+  | "v-better-retry"
+  | "score-plan";
 
 export type Experiment = {
   id: string;
@@ -803,6 +813,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-28",
     windowDays: 14,
     readout: "v-pay-offer",
+    status: "running",
+  },
+  {
+    id: "score-plan",
+    title: "How to raise your score, after a full paper",
+    change:
+      "On a fair full past paper (40%+ of the time used, a fifth or more answered), the result page's \"What to fix next\" becomes \"How to raise your score\": what went well, up to three actions each valued in marks (easy questions wrong, a section that ate the time, the chapters that cost the most with how often a paper asks them, guessing judged by the exam's own marking), progress since the last paper, and three steps before the next mock. Built by code from the attempt, no AI.",
+    why: "Owner (2026-11-10): the question after a mock is how to gain marks, not where they were lost. Of 235 full-paper attempts in 30 days only 36 were fair (most are opened and abandoned), so it reaches about 27 students a month, the ones who sit papers.",
+    metric:
+      "Fair full-paper attempts that start a drill within a day (drill_started from score_plan or result), and that sit another full paper of the exam within 14 days, against the baseline (5 of 36 and 7 of 36)",
+    rule: `Keep it if ${SCORE_PLAN_DRILL_KEEP_PCT}%+ of fair attempts start a drill within a day, or 14-day return beats 19%; small numbers, so read the replies, not only the rate.`,
+    liveSince: "2026-11-10",
+    windowDays: 42,
+    readout: "score-plan",
     status: "running",
   },
   {

@@ -29,7 +29,8 @@ type WeightRow = {
   paper_marks: number | string;
 };
 
-async function readWeights(examId: string): Promise<ChapterWeight[]> {
+/** Uncached, for scripts outside Next (scripts/mocks/score-plan-smoke.ts); the app reads loadChapterWeights. */
+export async function readWeights(examId: string): Promise<ChapterWeight[]> {
   const { data, error } = await createSupabaseAdminClient().rpc("get_chapter_paper_weights", { p_exam_id: examId });
   if (error) throw new Error(`chapter weights: ${error.message}`);
   return ((data ?? []) as WeightRow[]).map((r) => ({

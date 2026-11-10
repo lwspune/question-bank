@@ -22,6 +22,9 @@ import { loadTogetherCard } from "@/lib/practiceTests/togetherService";
 import WhatsappOptIn from "./WhatsappOptIn";
 import PushOptIn from "@/components/push/PushOptIn";
 import Findings from "./Findings";
+import ScorePlanCard from "./ScorePlanCard";
+import { buildScorePlan, type ScorePlan } from "@/lib/mocks/scorePlan";
+import { loadChapterWeights } from "@/lib/me/startNextServer";
 import ScoreCard from "./ScoreCard";
 import ReviewFilterShell from "./ReviewFilterShell";
 import { getUserAttempts } from "@/lib/mocks/query";
@@ -84,7 +87,7 @@ export default async function MockResultPage(props: { params: Promise<Params> })
   // Past the gate → a mobile is on file. Load any existing feedback (to render
   // the widget vs a filled state) and decide whether to offer the WhatsApp opt-in.
   const feedback = await getMockFeedback(db, params.attemptId);
-  const report = await loadFindings(params.attemptId);
+  const { report, plan } = await loadFindings(params.attemptId, mock.slug);
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
   const multiSection = mock.sections.length > 1;
   // The headline is about what they ATTEMPTED (lib/mocks/resultHeadline.ts).
@@ -163,7 +166,8 @@ export default async function MockResultPage(props: { params: Promise<Params> })
             score; the rating, Share and the notification ask follow it, and
             all three stay above the review, which on a 150-question paper is
             the bottom of the page and would bury them. */}
-        {report && <Findings report={report} attemptId={params.attemptId} />}
+        {/* A fair full paper gets "How to raise your score"; anything else keeps "What to fix next" (lib/mocks/scorePlan). */}
+        {plan ? <ScorePlanCard plan={plan} attemptId={params.attemptId} /> : report && <Findings report={report} attemptId={params.attemptId} />}
 
         {together && <TogetherCard state={together} />}
 
@@ -232,15 +236,27 @@ export default async function MockResultPage(props: { params: Promise<Params> })
  * QUESTION; it never says anything about a person, which is the line the
  * engagement gate draws. Best-effort like the rest of this loader.
  */
-async function loadFindings(attemptId: string): Promise<MockReport | null> {
+async function loadFindings(attemptId: string, mockSlug: string): Promise<{ report: MockReport | null; plan: ScorePlan | null }> {
   try {
     const payload = await getOwnPerformance();
-    if (!payload) return null;
+    if (!payload) return { report: null, plan: null };
     const mine = payload.facts.filter((f) => f.a === attemptId).map((f) => f.q);
-    const peer = await readPeerAccuracy(createSupabaseAdminClient(), mine).catch(() => new Map());
-    return buildMockReport(payload, attemptId, peer, new Date());
+    const admin = createSupabaseAdminClient();
+    const peer = await readPeerAccuracy(admin, mine).catch(() => new Map());
+    const report = buildMockReport(payload, attemptId, peer, new Date());
+    // "How to raise your score" (2026-11-10): the exam's chapter weights, read once a day per exam.
+    // Best-effort: a failed read means no plan, and the page shows the findings card as before.
+    let plan: ScorePlan | null = null;
+    try {
+      const { data } = await admin.from("mock_tests").select("exam_id").eq("slug", mockSlug).maybeSingle();
+      const weights = data?.exam_id ? await loadChapterWeights(data.exam_id as string) : [];
+      plan = buildScorePlan({ payload, attemptId, peer, weights });
+    } catch (e) {
+      console.error("mock result score plan failed", e);
+    }
+    return { report, plan };
   } catch (e) {
     console.error("mock result findings failed", e);
-    return null;
+    return { report: null, plan: null };
   }
 }

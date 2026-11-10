@@ -64,6 +64,7 @@ import {
   V_FOLLOW_UP_KEEP_PCT,
   V_FIX_LINE_KEEP_PCT,
   V_RETRY_YES_KEEP_PCT,
+  SCORE_PLAN_DRILL_KEEP_PCT,
   V_REVEAL_FOLLOWUP_MAX_DROP,
   V_PLAN_DAYS_DONE_KEEP_PCT,
   V_PROGRESS_NEXT_STEP_KEEP_PCT,
@@ -833,6 +834,13 @@ export default async function GrowthPage() {
             <ReadingsList metric="v-pay-offer-shown" />
             <ReadingsList metric="v-pay-offer-checkout" />
           </div>
+        );
+      case "score-plan":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if {SCORE_PLAN_DRILL_KEEP_PCT}%+ of fair
+            full-paper attempts start a drill within a day (was 14%), or more sit another paper within 14 days (was 19%).
+          </p>
         );
       case "v-better-retry":
         return (
