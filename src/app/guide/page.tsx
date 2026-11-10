@@ -98,6 +98,7 @@ export default async function GuideIndex() {
 
   return (
     <GuideShell
+      wide
       guideTitle="Strategy Guides"
       sideNav={buildGuideSideNav()}
       breadcrumbs={[{ label: "Guides" }]}
@@ -120,7 +121,7 @@ export default async function GuideIndex() {
       </div>
 
       <ExamFeedList
-        className="mt-8 grid gap-5 sm:grid-cols-2"
+        className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
         items={exams.map((exam) => {
           const copy = COPY[exam.slug];
           const Icon = copy?.icon ?? BookOpen;

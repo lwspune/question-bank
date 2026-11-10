@@ -29,6 +29,7 @@ export default async function HomeworkIndex() {
 
   return (
     <GuideShell
+      wide
       guideTitle="Daily Homework"
       sideNav={homeworkSideNav(plans)}
       breadcrumbs={[{ label: "Daily Homework" }]}
@@ -50,7 +51,7 @@ export default async function HomeworkIndex() {
               <h2 id={`exam-${slugify(g.examName)}`} className="section-title text-lg font-semibold">
                 {homeworkExamLabel(g.examName)}
               </h2>
-              <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+              <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {g.plans.map((p) => (
                   <li key={p.slug}>
                     <PlanCard plan={p} />

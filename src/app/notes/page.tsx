@@ -34,7 +34,7 @@ export default function NotesIndex() {
   ];
 
   return (
-    <GuideShell guideTitle="Notes" sideNav={sideNav} breadcrumbs={[{ label: "Notes" }]}>
+    <GuideShell wide guideTitle="Notes" sideNav={sideNav} breadcrumbs={[{ label: "Notes" }]}>
       <GuideJsonLd
         type="CollectionPage"
         path="/notes"
@@ -69,7 +69,7 @@ export default function NotesIndex() {
                   All {g.displayName} notes →
                 </Link>
               </div>
-              <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+              <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {g.subjects.map((s) => (
                   <li key={s.subjectRoute}>
                     <Link

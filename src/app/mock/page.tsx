@@ -93,6 +93,7 @@ export default async function MockCatalogue() {
 
   return (
     <GuideShell
+      wide
       guideTitle="Mock Tests"
       sideNav={mockSideNav()}
       breadcrumbs={[{ href: "/mock", label: "Mocks" }, { label: "All exams" }]}
@@ -119,7 +120,7 @@ export default async function MockCatalogue() {
       </GuideHero>
 
       <ExamFeedList
-        className="mt-8 grid gap-5 sm:grid-cols-2"
+        className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
         items={entries.map((entry) => {
           const card = entry.card;
           const slug = entry.kind === "family" ? entry.family.slug : card.slug;

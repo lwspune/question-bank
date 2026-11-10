@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import KatexRenderer from "@/components/math/KatexRenderer";
+import FitWidth from "@/components/math/FitWidth";
 import { Sigma } from "lucide-react";
 import type { FormulaSpec } from "@/app/notes/_types";
 import { legendSymbolText } from "@/lib/notes/printDoc";
@@ -35,7 +36,9 @@ export default function FormulaBlock({ formula, presentMode, Katex = KatexRender
         <Sigma className={presentMode ? "h-5 w-5" : "h-3.5 w-3.5"} aria-hidden />
         {formula.label}
       </p>
-      <div
+      {/* A formula a little too wide for a phone shrinks to fit; a much wider
+          one scrolls under the edge shadow (FitWidth, 2026-11-10). */}
+      <FitWidth
         className={
           "scroll-cue-x leading-tight overflow-x-auto [&_.katex]:max-w-full " +
           (presentMode
@@ -44,7 +47,7 @@ export default function FormulaBlock({ formula, presentMode, Katex = KatexRender
         }
       >
         <Katex text={`\\[${formula.latex}\\]`} />
-      </div>
+      </FitWidth>
       {formula.symbols && formula.symbols.length > 0 && (
         <ul
           className={

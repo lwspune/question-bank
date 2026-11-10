@@ -910,7 +910,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
       "The board icon on every question card, once staff-only, now opens the page's questions as a deck of flashcards for everyone: one a screen, an MCQ answered by tapping an option (a wrong one goes to Fix your mistakes), a written answer by Show answer and then Understood / Review later, the animated solution on the back. Each answer counts toward the free answers like the card's. Staff keep the projector as it was.",
     why: "The owner's call (9 Nov): one question a screen with arrows between them reads as flashcards, a way to practise a list by recalling before seeing the answer.",
     metric:
-      "Vercel events: flashcards_answer ÷ flashcards_open where role is student (props say which page and how the card was answered); students' answers in the deck also reach the drill and the answer counts like the card's",
+      "Vercel events: flashcards_answer ÷ flashcards_open where role is student (props say which page and how the card was answered); students' answers in the deck also reach the drill and the answer counts like the card's. The card's board button went from a bordered square to a borderless round icon in the deploy that merged slicker Phase 2 (2026-11-10), so read flashcards_open counts across that date with care; the answers-per-open ratio is the judge, not opens",
     rule: `Keep it open to students if they answer ${FLASHCARDS_ANSWERS_PER_OPEN_KEEP}+ cards per deck opened, on average, by the check date. Below 1, it is opened and left: put it back to staff only.`,
     liveSince: "2026-11-09",
     readout: "flashcards",
