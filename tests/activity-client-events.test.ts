@@ -453,3 +453,27 @@ describe("parseClientEvent - Start next seen and tapped (2026-11-09)", () => {
     }
   });
 });
+
+// The stuck offer (2026-11-10, lib/questions/stuckOffer): seen and each button, per question and day.
+describe("parseClientEvent - the stuck offer", () => {
+  const Q = "c0ffee00-1b2c-4d3e-9f00-112233445566";
+
+  it("records each step with its question, once per question per day", () => {
+    for (const action of ["shown", "teach", "easier", "keep"]) {
+      expect(parseClientEvent({ kind: "surface_viewed", surface: "stuck_offer", questionId: Q, action }, "u1", NOW)).toEqual({
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "stuck_offer", questionId: Q, action },
+          dedupeKey: `view:stuck_offer:${action}:${Q}:u1:2026-09-27`,
+        },
+      });
+    }
+  });
+
+  it("refuses an unknown step or a bad question id, and these fields on another surface", () => {
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "stuck_offer", questionId: Q, action: "bought" }, "u1", NOW).ok).toBe(false);
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "stuck_offer", questionId: "x", action: "shown" }, "u1", NOW).ok).toBe(false);
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "drill", questionId: Q, action: "shown" }, "u1", NOW).ok).toBe(false);
+  });
+});

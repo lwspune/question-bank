@@ -53,6 +53,7 @@
  * Otherwise responses stay terse (204/400/401): from sendBeacon nothing reads
  * the body.
  */
+import { readStuckOffer } from "@/lib/questions/stuckOfferServer";
 import { NextResponse, type NextRequest } from "next/server";
 import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -168,18 +169,28 @@ export async function POST(request: NextRequest) {
   // this batch's RIGHT answers, on checked questions only.
   if (parsed.celebrate && verdicts.size > 0) {
     const right = correctlyAnsweredIds(verdicts);
-    const [milestone, tiers, fixNudge] = await Promise.all([
+    // The stuck offer (2026-11-10, lib/questions/stuckOffer): 3 of the last 4 on a subtopic wrong,
+    // on the answer that makes it true. Bank only, the card that draws it; best-effort.
+    const stuckFor = parsed.surface === "bank" ? wrongIds[wrongIds.length - 1] : undefined;
+    const [milestone, tiers, fixNudge, stuck] = await Promise.all([
       awardAnsweredMilestone(db, user.id),
       right.length > 0 ? crowdTiers(right) : Promise.resolve(new Map()),
       wrongBefore !== null ? readFixNudge(db, user.id, now, wrongBefore, wrongIds) : Promise.resolve(null),
+      stuckFor
+        ? readStuckOffer(db, createSupabaseAdminClient(), user.id, stuckFor).catch((e) => {
+            console.error("stuck offer failed", e);
+            return null;
+          })
+        : Promise.resolve(null),
     ]);
     const crowd = topTier(tiers);
-    if (milestone !== null || crowd !== null || fixNudge !== null) {
+    if (milestone !== null || crowd !== null || fixNudge !== null || stuck !== null) {
       return NextResponse.json(
         {
           ...(milestone !== null ? { milestone } : {}),
           ...(crowd !== null ? { crowd } : {}),
           ...(fixNudge !== null ? { fixNudge } : {}),
+          ...(stuck !== null ? { stuck } : {}),
         },
         { status: 200 }
       );

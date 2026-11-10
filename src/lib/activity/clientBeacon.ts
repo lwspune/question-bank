@@ -42,6 +42,13 @@ type ClientEvent =
       from: StartNextFrom;
     }
   | {
+      /** The stuck offer seen, or one of its buttons tapped (lib/questions/stuckOffer). */
+      kind: "surface_viewed";
+      surface: "stuck_offer";
+      questionId: string;
+      action: "shown" | "teach" | "easier" | "keep";
+    }
+  | {
       /** A Start next chapter's Start tapped. */
       kind: "surface_viewed";
       surface: "start_next_tap";

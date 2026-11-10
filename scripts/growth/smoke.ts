@@ -254,6 +254,10 @@ async function main() {
         // Live answers on /dashboard/sales (lib/sales/query loadDeclines).
         line = "live table on /dashboard/sales (user_activity paywall_event step declined)";
         break;
+      case "stuck-offer":
+        // Read by hand: surface_viewed stuck_offer by action, then the student's next answers.
+        line = "by hand: surface_viewed stuck_offer (shown, teach, easier, keep) and the next answers on the subtopic";
+        break;
       case "score-plan":
         // Read by hand: fair full-paper attempts, drill_started from score_plan/result within a day, next paper in 14 days.
         line = "by hand: drill_started from score_plan, and next full paper within 14 days";
