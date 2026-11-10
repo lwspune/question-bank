@@ -956,7 +956,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
       "The www pass split by feature (migration 0212): a Practice Pass at Rs 199 lifts every online limit (answers, drill, saves, projected score, mocks, chapter tests, V); the Premium Pass stays at Rs 499 and adds PDF downloads. Online walls offer Practice, download boxes offer Premium.",
     why: "The 27 rupee buyers since 27 Sep split into two groups: 12 practised online and downloaded little, 12 downloaded PDFs and barely practised (4 both, 3 neither). Only 2 ever took more than the 3 free mocks. Rs 199 was the only price with a good sales week; Rs 499 is untested for downloads. The owner's call.",
     metric:
-      "Pass revenue per week and checkout opened then paid (the two readings below), and how many of the sales are Practice (/dashboard/sales, \"of which Practice\"). Read from the day the Practice plan goes on sale",
+      "Pass revenue per week and checkout opened then paid (the two readings below), and how many of the sales are Practice (/dashboard/sales, \"of which Practice\"). Read from the day the Practice plan goes on sale. From 11 Nov a Practice holder can upgrade to Premium for the difference (pass note upgrade_credit:<paise>, lib/billing/upgrade): such a sale is Premium revenue at the upgrade price, so count it apart, not as a new Premium buyer",
     rule: `Keep both passes if a week's revenue beats Rs ${PASS_TIERS_BASELINE_WEEKLY_REVENUE} (the single Rs 499 pass) at 14 days. If Premium sells none in 4 weeks, try it nearer Rs 299 before folding downloads back in.`,
     liveSince: "2026-11-03",
     readout: "pass-tiers",
