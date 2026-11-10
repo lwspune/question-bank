@@ -536,7 +536,17 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/never offer one yourself/);
     // 2026-10-23: "Did you understand?" No sends NOT_UNDERSTOOD; the next explanation must be simpler, not the same.
     expect(p).toContain(`"${NOT_UNDERSTOOD}"`);
-    expect(p).toMatch(/explain it again more simply/);
+    // 2026-11-10 (V_LEARNING_LOOP.md step 4): second tries were the same steps reworded, once word for word,
+    // and still skipped the hard step ("do this for every entry", "using the quadratic formula").
+    expect(p).toMatch(/never send the same explanation again/);
+    expect(p).toMatch(/show that step in full with the actual numbers/);
+    expect(p).toMatch(/explain the idea that step needs/);
+    expect(p).toMatch(/tiny example with simpler numbers/);
+    expect(p).toMatch(/When they named a step, explain only that step/);
+    // A second No got "Here is the same working, one step at a time" (case 218c68dc).
+    expect(p).toMatch(/If they say they did not understand again, use a way you have not used yet/);
+    // The step buttons ask which step; V asked it in its text too ("Which step is still unclear?").
+    expect(p).toMatch(/Do not ask which step is unclear: buttons under your reply ask it/);
     // 2026-10-23: a slip in our solution is reported, not just told to one student.
     expect(p).toMatch(/call report_solution_issue once/);
     expect(p).toMatch(/at most one short line/);

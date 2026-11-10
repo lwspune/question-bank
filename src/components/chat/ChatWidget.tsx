@@ -13,7 +13,7 @@ import { CHAT_MESSAGE_MAX } from "@/lib/chat/validate";
 import { vPlacement } from "@/lib/chat/placement";
 import { launcherHiddenAfterScroll } from "@/lib/chat/launcherScroll";
 import { panelBox, type PanelBox } from "@/lib/chat/panelBox";
-import { NOT_UNDERSTOOD } from "@/lib/chat/understood";
+import { NOT_UNDERSTOOD, replySteps, stuckStepMessage } from "@/lib/chat/understood";
 import { figureSrc } from "@/lib/chat/solutionFigure";
 import { SESSION_IDLE_MS, quoteSnippet, type HistoryTurn } from "@/lib/chat/conversation";
 import {
@@ -124,6 +124,10 @@ type ChatTurn = HistoryTurn & {
   hourlyOffer?: { pass: NonNullable<HourlyLimitReply["pass"]>; premiumLimit: number | null };
   /** "One more like this" was tapped under this explanation, so the button goes (2026-11-08). */
   moreTaken?: boolean;
+  /** After a No on a reply with numbered steps: how many step buttons "Which step lost you?" offers (2026-11-10). */
+  stepChoices?: number;
+  /** A step (or "All of it") was picked, so the buttons go. */
+  stepSent?: boolean;
   /** The explained question's chapter: its "Fix N mistakes" line goes under the explanation (2026-11-10). Never kept. */
   explainedChapterId?: string;
 };
@@ -553,7 +557,22 @@ export default function ChatWidget() {
     // A signed-in No sends the question to Fix your mistakes (2026-11-08):
     // refresh the count the header badge and /me show.
     if (!value && signedIn) invalidatePulse();
-    if (!value) void askTyped(NOT_UNDERSTOOD);
+    if (!value) {
+      // A reply with numbered steps asks which one lost them first (V_LEARNING_LOOP.md step 4, 2026-11-10).
+      const steps = replySteps(turn.text);
+      if (steps >= 2) {
+        setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, stepChoices: steps } : t)));
+      } else {
+        void askTyped(NOT_UNDERSTOOD);
+      }
+    }
+  }
+
+  /** "Which step lost you?": a step number, or 0 for "All of it". */
+  function pickStuckStep(index: number, step: number) {
+    if (sending) return;
+    setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, stepSent: true } : t)));
+    void askTyped(step > 0 ? stuckStepMessage(step) : NOT_UNDERSTOOD);
   }
 
   /**
@@ -935,6 +954,30 @@ export default function ChatWidget() {
                             <Check className="h-3.5 w-3.5" aria-hidden />
                             Great!
                           </span>
+                        ) : t.understood === false && t.stepChoices && !t.stepSent ? (
+                          <>
+                            <span className="px-1 text-xs text-muted-foreground">Which step lost you?</span>
+                            {Array.from({ length: t.stepChoices }, (_, k) => k + 1).map((step) => (
+                              <button
+                                key={step}
+                                type="button"
+                                disabled={sending}
+                                onClick={() => pickStuckStep(i, step)}
+                                aria-label={`Step ${step} lost me`}
+                                className="inline-flex h-7 items-center rounded-full border border-border bg-card px-3 text-xs font-medium text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+                              >
+                                {step}
+                              </button>
+                            ))}
+                            <button
+                              type="button"
+                              disabled={sending}
+                              onClick={() => pickStuckStep(i, 0)}
+                              className="inline-flex h-7 items-center rounded-full border border-border bg-card px-3 text-xs font-medium text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+                            >
+                              All of it
+                            </button>
+                          </>
                         ) : t.understood === false ? (
                           <span className="px-1 text-xs text-muted-foreground">Let me explain it more simply.</span>
                         ) : (
