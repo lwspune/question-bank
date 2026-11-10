@@ -30,11 +30,16 @@ async function main() {
 
   type Raw = { id: string; solution_visual?: unknown; exams: { name: string }; subjects: { name: string } | null; chapters: { name: string } | null };
   const questions = new Map<string, CoverageQuestion>();
+  // Filter on exam_id, never the embedded exams.name: the embedded filter timed out (2026-11-09).
+  const examRows = await client.from("exams").select("id, name").in("name", exams);
+  if (examRows.error) throw new Error(`exams: ${examRows.error.message}`);
+  const examIds = (examRows.data as { id: string }[]).map((e) => e.id);
+  if (examIds.length !== exams.length) throw new Error(`exams: found ${examIds.length} of ${exams.join(", ")}`);
   let hasColumn = true;
   for (let from = 0; ; from += PAGE) {
-    const cols = (withVisual: boolean) => `id, ${withVisual ? "solution_visual, " : ""}exams!inner(name), subjects(name), chapters(name)`;
+    const cols = (withVisual: boolean) => `id, ${withVisual ? "solution_visual, " : ""}exams(name), subjects(name), chapters(name)`;
     const run = (withVisual: boolean) =>
-      client.from("questions").select(cols(withVisual)).eq("visibility", "PUBLIC").in("exams.name", exams).order("id").range(from, from + PAGE - 1);
+      client.from("questions").select(cols(withVisual)).eq("visibility", "PUBLIC").in("exam_id", examIds).order("id").range(from, from + PAGE - 1);
     let res = await run(hasColumn);
     if (res.error && /solution_visual/.test(res.error.message)) {
       hasColumn = false;

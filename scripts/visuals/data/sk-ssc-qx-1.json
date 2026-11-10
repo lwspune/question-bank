@@ -1,0 +1,655 @@
+{
+ "//": "Assembled from agent drafts (sketch).",
+ "visuals": [
+  {
+   "id": "17dc11a5-3cea-46bb-a92b-bc41bec3455b",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "vars": {
+      "ox": "0",
+      "oy": "0",
+      "acd": "40",
+      "dd": "180-2*acd",
+      "cc": "dd/2",
+      "ax": "cos(rad(180))",
+      "ay": "sin(rad(180))",
+      "bx": "cos(rad(0))",
+      "by": "sin(rad(0))",
+      "cx": "cos(rad(cc))",
+      "cy": "sin(rad(cc))",
+      "dx": "cos(rad(dd))",
+      "dy": "sin(rad(dd))",
+      "angACD": "deg(acos(((ax-cx)*(dx-cx)+(ay-cy)*(dy-cy))/(sqrt((ax-cx)^2+(ay-cy)^2)*sqrt((dx-cx)^2+(dy-cy)^2))))",
+      "angABD": "deg(acos(((ax-bx)*(dx-bx)+(ay-by)*(dy-by))/(sqrt((ax-bx)^2+(ay-by)^2)*sqrt((dx-bx)^2+(dy-by)^2))))",
+      "angADB": "deg(acos(((ax-dx)*(bx-dx)+(ay-dy)*(by-dy))/(sqrt((ax-dx)^2+(ay-dy)^2)*sqrt((bx-dx)^2+(by-dy)^2))))",
+      "angBAD": "deg(acos(((bx-ax)*(dx-ax)+(by-ay)*(dy-ay))/(sqrt((bx-ax)^2+(by-ay)^2)*sqrt((dx-ax)^2+(dy-ay)^2))))"
+     },
+     "view": {
+      "x": [
+       -1.9,
+       1.9
+      ],
+      "y": [
+       -1.9,
+       1.5
+      ]
+     },
+     "points": {
+      "O": [
+       "ox",
+       "oy"
+      ],
+      "A": [
+       "ax",
+       "ay"
+      ],
+      "B": [
+       "bx",
+       "by"
+      ],
+      "C": [
+       "cx",
+       "cy"
+      ],
+      "D": [
+       "dx",
+       "dy"
+      ]
+     },
+     "items": [
+      {
+       "kind": "circle",
+       "center": "O",
+       "r": "1",
+       "step": "s1"
+      },
+      {
+       "kind": "polygon",
+       "points": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "step": "s1"
+      },
+      {
+       "kind": "segment",
+       "from": "A",
+       "to": "C",
+       "step": "s1",
+       "dash": true
+      },
+      {
+       "kind": "segment",
+       "from": "B",
+       "to": "D",
+       "step": "s1",
+       "dash": true
+      },
+      {
+       "kind": "point",
+       "at": "A",
+       "step": "s1",
+       "label": "A",
+       "pos": "w"
+      },
+      {
+       "kind": "point",
+       "at": "B",
+       "step": "s1",
+       "label": "B",
+       "pos": "e"
+      },
+      {
+       "kind": "point",
+       "at": "C",
+       "step": "s1",
+       "label": "C",
+       "pos": "ne"
+      },
+      {
+       "kind": "point",
+       "at": "D",
+       "step": "s1",
+       "label": "D",
+       "pos": "n"
+      },
+      {
+       "kind": "angle",
+       "at": "C",
+       "from": "A",
+       "to": "D",
+       "label": "40°",
+       "step": "s1"
+      },
+      {
+       "kind": "angle",
+       "at": "B",
+       "from": "A",
+       "to": "D",
+       "label": "40°",
+       "step": "s1"
+      },
+      {
+       "kind": "angle",
+       "at": "D",
+       "from": "A",
+       "to": "B",
+       "label": "90°",
+       "step": "s2"
+      },
+      {
+       "kind": "angle",
+       "at": "A",
+       "from": "B",
+       "to": "D",
+       "label": "50°",
+       "step": "s3"
+      },
+      {
+       "kind": "label",
+       "at": [
+        -1.8,
+        -1.65
+       ],
+       "text": "∠BAD = 50°",
+       "step": "s3",
+       "tone": "good"
+      }
+     ],
+     "assert": [
+      "angACD = 40",
+      "angABD = angACD",
+      "angADB = 90",
+      "angBAD + angABD = 90"
+     ],
+     "answer": "angBAD"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "083ab2bf",
+    "answer": {
+     "value": 50,
+     "label": "50°",
+     "tolerance": 0.01
+    }
+   }
+  },
+  {
+   "id": "18eb0c9f-9eec-462d-a317-d5cf45276463",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "vars": {
+      "ox": "0",
+      "oy": "0",
+      "acf": "50",
+      "afc": "30",
+      "fac": "180-acf-afc",
+      "bac": "180-fac",
+      "acb": "180-bac-acf",
+      "ca": "90",
+      "aa": "ca+2*acf",
+      "bb": "aa+2*acb",
+      "cx": "cos(rad(ca))",
+      "cy": "sin(rad(ca))",
+      "ax": "cos(rad(aa))",
+      "ay": "sin(rad(aa))",
+      "bx": "cos(rad(bb))",
+      "by": "sin(rad(bb))",
+      "fx": "ax+((cy-ay)/(by-ay))*(bx-ax)",
+      "fy": "cy",
+      "angACF": "deg(acos(((ax-cx)*(fx-cx)+(ay-cy)*(fy-cy))/(sqrt((ax-cx)^2+(ay-cy)^2)*sqrt((fx-cx)^2+(fy-cy)^2))))",
+      "angAFC": "deg(acos(((ax-fx)*(cx-fx)+(ay-fy)*(cy-fy))/(sqrt((ax-fx)^2+(ay-fy)^2)*sqrt((cx-fx)^2+(cy-fy)^2))))",
+      "angABC": "deg(acos(((ax-bx)*(cx-bx)+(ay-by)*(cy-by))/(sqrt((ax-bx)^2+(ay-by)^2)*sqrt((cx-bx)^2+(cy-by)^2))))",
+      "angBAC": "deg(acos(((bx-ax)*(cx-ax)+(by-ay)*(cy-ay))/(sqrt((bx-ax)^2+(by-ay)^2)*sqrt((cx-ax)^2+(cy-ay)^2))))",
+      "angFAC": "deg(acos(((fx-ax)*(cx-ax)+(fy-ay)*(cy-ay))/(sqrt((fx-ax)^2+(fy-ay)^2)*sqrt((cx-ax)^2+(cy-ay)^2))))",
+      "angACB": "deg(acos(((ax-cx)*(bx-cx)+(ay-cy)*(by-cy))/(sqrt((ax-cx)^2+(ay-cy)^2)*sqrt((bx-cx)^2+(by-cy)^2))))",
+      "angAOB": "deg(acos(((ax-ox)*(bx-ox)+(ay-oy)*(by-oy))/(sqrt((ax-ox)^2+(ay-oy)^2)*sqrt((bx-ox)^2+(by-oy)^2))))"
+     },
+     "view": {
+      "x": [
+       -3.9,
+       1.7
+      ],
+      "y": [
+       -2.1,
+       1.9
+      ]
+     },
+     "points": {
+      "O": [
+       "ox",
+       "oy"
+      ],
+      "C": [
+       "cx",
+       "cy"
+      ],
+      "A": [
+       "ax",
+       "ay"
+      ],
+      "B": [
+       "bx",
+       "by"
+      ],
+      "F": [
+       "fx",
+       "fy"
+      ]
+     },
+     "items": [
+      {
+       "kind": "circle",
+       "center": "O",
+       "r": "1",
+       "step": "s1"
+      },
+      {
+       "kind": "line",
+       "through": [
+        "F",
+        "C"
+       ],
+       "step": "s1"
+      },
+      {
+       "kind": "segment",
+       "from": "F",
+       "to": "B",
+       "step": "s1"
+      },
+      {
+       "kind": "segment",
+       "from": "C",
+       "to": "A",
+       "step": "s1"
+      },
+      {
+       "kind": "point",
+       "at": "C",
+       "step": "s1",
+       "label": "C",
+       "pos": "n"
+      },
+      {
+       "kind": "point",
+       "at": "A",
+       "step": "s1",
+       "label": "A",
+       "pos": "w"
+      },
+      {
+       "kind": "point",
+       "at": "B",
+       "step": "s1",
+       "label": "B",
+       "pos": "se"
+      },
+      {
+       "kind": "point",
+       "at": "F",
+       "step": "s1",
+       "label": "F",
+       "pos": "w"
+      },
+      {
+       "kind": "angle",
+       "at": "C",
+       "from": "A",
+       "to": "F",
+       "label": "50°",
+       "step": "s1"
+      },
+      {
+       "kind": "angle",
+       "at": "F",
+       "from": "A",
+       "to": "C",
+       "label": "30°",
+       "step": "s1"
+      },
+      {
+       "kind": "segment",
+       "from": "C",
+       "to": "B",
+       "step": "s2"
+      },
+      {
+       "kind": "angle",
+       "at": "B",
+       "from": "A",
+       "to": "C",
+       "label": "50°",
+       "step": "s2"
+      },
+      {
+       "kind": "angle",
+       "at": "A",
+       "from": "F",
+       "to": "C",
+       "label": "100°",
+       "step": "s3"
+      },
+      {
+       "kind": "angle",
+       "at": "A",
+       "from": "B",
+       "to": "C",
+       "label": "80°",
+       "step": "s3"
+      },
+      {
+       "kind": "angle",
+       "at": "C",
+       "from": "A",
+       "to": "B",
+       "label": "50°",
+       "step": "s4"
+      },
+      {
+       "kind": "segment",
+       "from": "O",
+       "to": "A",
+       "step": "s5",
+       "dash": true
+      },
+      {
+       "kind": "segment",
+       "from": "O",
+       "to": "B",
+       "step": "s5",
+       "dash": true
+      },
+      {
+       "kind": "angle",
+       "at": "O",
+       "from": "A",
+       "to": "B",
+       "label": "100°",
+       "step": "s5"
+      },
+      {
+       "kind": "label",
+       "at": [
+        -3.8,
+        -1.9
+       ],
+       "text": "∠AOB = 100°",
+       "step": "s5",
+       "tone": "good"
+      }
+     ],
+     "assert": [
+      "angACF = 50",
+      "angAFC = 30",
+      "(fx-cx)*(cx-ox)+(fy-cy)*(cy-oy) = 0",
+      "angABC = angACF",
+      "angBAC + angFAC = 180",
+      "angACB = 50",
+      "angAOB = 2*angACB"
+     ],
+     "answer": "angAOB"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "e3b0fe8d",
+    "answer": {
+     "value": 100,
+     "label": "100°",
+     "tolerance": 0.01
+    }
+   }
+  },
+  {
+   "id": "709db769-308f-4b01-b869-2a71a5f55a85",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "vars": {
+      "ox": "0",
+      "oy": "0",
+      "g": "120",
+      "rho": "2*g-180",
+      "px": "cos(rad(180))",
+      "py": "sin(rad(180))",
+      "qx": "cos(rad(0))",
+      "qy": "sin(rad(0))",
+      "rx": "cos(rad(rho))",
+      "ry": "sin(rad(rho))",
+      "sx": "cos(rad((rho+180)/2))",
+      "sy": "sin(rad((rho+180)/2))",
+      "angPSR": "deg(acos(((px-sx)*(rx-sx)+(py-sy)*(ry-sy))/(sqrt((px-sx)^2+(py-sy)^2)*sqrt((rx-sx)^2+(ry-sy)^2))))",
+      "angPQR": "deg(acos(((px-qx)*(rx-qx)+(py-qy)*(ry-qy))/(sqrt((px-qx)^2+(py-qy)^2)*sqrt((rx-qx)^2+(ry-qy)^2))))",
+      "angPRQ": "deg(acos(((px-rx)*(qx-rx)+(py-ry)*(qy-ry))/(sqrt((px-rx)^2+(py-ry)^2)*sqrt((qx-rx)^2+(qy-ry)^2))))",
+      "angQPR": "deg(acos(((qx-px)*(rx-px)+(qy-py)*(ry-py))/(sqrt((qx-px)^2+(qy-py)^2)*sqrt((rx-px)^2+(ry-py)^2))))"
+     },
+     "view": {
+      "x": [
+       -1.9,
+       1.9
+      ],
+      "y": [
+       -1.9,
+       1.5
+      ]
+     },
+     "points": {
+      "O": [
+       "ox",
+       "oy"
+      ],
+      "P": [
+       "px",
+       "py"
+      ],
+      "Q": [
+       "qx",
+       "qy"
+      ],
+      "R": [
+       "rx",
+       "ry"
+      ],
+      "S": [
+       "sx",
+       "sy"
+      ]
+     },
+     "items": [
+      {
+       "kind": "circle",
+       "center": "O",
+       "r": "1",
+       "step": "s1"
+      },
+      {
+       "kind": "polygon",
+       "points": [
+        "P",
+        "Q",
+        "R",
+        "S"
+       ],
+       "step": "s1"
+      },
+      {
+       "kind": "segment",
+       "from": "P",
+       "to": "R",
+       "step": "s1",
+       "dash": true
+      },
+      {
+       "kind": "point",
+       "at": "P",
+       "step": "s1",
+       "label": "P",
+       "pos": "w"
+      },
+      {
+       "kind": "point",
+       "at": "Q",
+       "step": "s1",
+       "label": "Q",
+       "pos": "e"
+      },
+      {
+       "kind": "point",
+       "at": "R",
+       "step": "s1",
+       "label": "R",
+       "pos": "ne"
+      },
+      {
+       "kind": "point",
+       "at": "S",
+       "step": "s1",
+       "label": "S",
+       "pos": "nw"
+      },
+      {
+       "kind": "angle",
+       "at": "S",
+       "from": "P",
+       "to": "R",
+       "label": "120°",
+       "step": "s1"
+      },
+      {
+       "kind": "angle",
+       "at": "Q",
+       "from": "P",
+       "to": "R",
+       "label": "60°",
+       "step": "s1"
+      },
+      {
+       "kind": "angle",
+       "at": "R",
+       "from": "P",
+       "to": "Q",
+       "label": "90°",
+       "step": "s2"
+      },
+      {
+       "kind": "angle",
+       "at": "P",
+       "from": "Q",
+       "to": "R",
+       "label": "30°",
+       "step": "s3"
+      },
+      {
+       "kind": "label",
+       "at": [
+        -1.8,
+        -1.65
+       ],
+       "text": "∠QPR = 30°",
+       "step": "s3",
+       "tone": "good"
+      }
+     ],
+     "assert": [
+      "angPSR = 120",
+      "angPQR = 180 - angPSR",
+      "angPRQ = 90",
+      "angQPR + angPQR = 90"
+     ],
+     "answer": "angQPR"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "8c554de2",
+    "answer": {
+     "value": 30,
+     "label": "30°",
+     "tolerance": 0.01
+    }
+   }
+  }
+ ],
+ "decided": [
+  {
+   "id": "7f5193f1-8635-4136-9fff-2de79b2dd066",
+   "verdict": "none",
+   "reason": "the final picture crowds the centre-angle marks onto the 82 and 55 degree labels; the text explains it better"
+  }
+ ]
+}
