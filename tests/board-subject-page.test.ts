@@ -90,7 +90,7 @@ describe("boardFacts", () => {
     },
     chapterHrefs: {},
   };
-  const facts = boardFacts([old, newest], stats)!;
+  const facts = boardFacts([old, newest], stats, { casesAreQuestions: true })!;
 
   it("reads marks, time, questions and choices from the newest paper", () => {
     expect(facts).toMatchObject({ label: "2026 paper", marks: 70, minutes: 180, questions: 3, choices: 2 });
@@ -106,12 +106,12 @@ describe("boardFacts", () => {
   });
 
   it("still gives marks and time when the items could not be read", () => {
-    const f = boardFacts([newest], { items: [], sections: {}, chapterHrefs: {} })!;
+    const f = boardFacts([newest], { items: [], sections: {}, chapterHrefs: {} }, { casesAreQuestions: true })!;
     expect(f).toMatchObject({ marks: 70, minutes: 180, questions: null, choices: null, sections: [] });
   });
 
   it("is null without papers", () => {
-    expect(boardFacts([], stats)).toBeNull();
+    expect(boardFacts([], stats, { casesAreQuestions: true })).toBeNull();
   });
 });
 
@@ -119,6 +119,7 @@ describe("boardFacts with case-study questions (CBSE Section D)", () => {
   // As stored for CBSE 12 Chemistry 2026 56/1/1: each case-study PART is its own
   // item, sharing a case key, and Section D's stored note is "".
   const newest = paper({ id: "cs" });
+  const CBSE = { casesAreQuestions: true };
   const it_ = (over: Partial<SubjectStats["items"][number]>): SubjectStats["items"][number] => ({
     paperId: "cs", marks: 1, alternativeTo: null, questionId: `q${++n}`, chapter: "Solutions",
     section: "A", caseKey: null, ...over,
@@ -147,7 +148,7 @@ describe("boardFacts with case-study questions (CBSE Section D)", () => {
     },
     chapterHrefs: {},
   };
-  const facts = boardFacts([newest], stats)!;
+  const facts = boardFacts([newest], stats, { casesAreQuestions: true })!;
 
   it("counts a case study as ONE question, not one per part", () => {
     // 2 in A + 1 in C + 2 case studies = 5 (parts counted singly would say 9).
@@ -162,18 +163,59 @@ describe("boardFacts with case-study questions (CBSE Section D)", () => {
     expect(facts.sections).toEqual(["Section A: 1 mark each", "Section C: 3 marks each", "Section D: 4 marks each"]);
   });
 
-  it("names each total when a section's questions differ", () => {
+  it("gives questions and marks when a section's questions differ (CBSE 10 Science sections)", () => {
     const mixed: SubjectStats = {
       ...stats,
-      items: [it_({ section: "D", marks: 4, caseKey: "X" }), it_({ section: "D", marks: 5, caseKey: "Y" })],
-      sections: { cs: [{ key: "D", title: "Section D", note: "" }] },
+      items: [
+        it_({ section: "A", marks: 1 }),
+        it_({ section: "A", marks: 3 }),
+        it_({ section: "A", marks: 3, alternativeTo: 2 }),
+        it_({ section: "A", marks: 2, caseKey: "X" }),
+        it_({ section: "A", marks: 2, caseKey: "X" }),
+      ],
+      sections: { cs: [{ key: "A", title: "Section A", note: "" }] },
     };
-    expect(boardFacts([newest], mixed)!.sections).toEqual(["Section D: 4 or 5 marks"]);
+    expect(boardFacts([newest], mixed, CBSE)!.sections).toEqual(["Section A: 3 questions, 8 marks"]);
+  });
+
+  it("works a case-study section out from its items even over a per-part stored note (CBSE 12 Physics)", () => {
+    // Physics stores "1 mark each" on Section D: true of each part, not of a 4-mark case study.
+    const physics: SubjectStats = {
+      ...stats,
+      items: [
+        ...[1, 2, 3, 4].map(() => it_({ section: "D", marks: 1, caseKey: "CS1" })),
+        ...[1, 2, 3, 4].map(() => it_({ section: "D", marks: 1, caseKey: "CS2" })),
+      ],
+      sections: { cs: [{ key: "D", title: "Section D", note: "1 mark each" }] },
+    };
+    expect(boardFacts([newest], physics, CBSE)!.sections).toEqual(["Section D: 4 marks each"]);
   });
 
   it("keeps the bare title when a section has no note and no items to read", () => {
     const none: SubjectStats = { ...stats, items: [], sections: { cs: [{ key: "D", title: "Section D", note: "" }] } };
-    expect(boardFacts([newest], none)!.sections).toEqual(["Section D"]);
+    expect(boardFacts([newest], none, CBSE)!.sections).toEqual(["Section D"]);
+  });
+});
+
+describe("boardFacts on Maharashtra papers (a case key groups a block of questions)", () => {
+  // As stored for HSC 12 Geography June 2026: Q.1 (A) is five 1-mark questions
+  // sharing case key "Q1(A)", and the stored note "1 mark each" is right.
+  const newest = paper({ id: "mh", groupSlug: "2026-june" });
+  const stats: SubjectStats = {
+    items: [1, 2, 3, 4, 5].map((k) => ({
+      paperId: "mh", marks: 1, alternativeTo: null, questionId: `mh${k}`, chapter: null, section: "1 (A)", caseKey: "Q1(A)",
+    })),
+    sections: { mh: [{ key: "1 (A)", title: "Q.1 (A)", note: "1 mark each" }] },
+    chapterHrefs: {},
+  };
+  const facts = boardFacts([newest], stats, { casesAreQuestions: false })!;
+
+  it("counts every item as a question", () => {
+    expect(facts.questions).toBe(5);
+  });
+
+  it("keeps the stored note", () => {
+    expect(facts.sections).toEqual(["Q.1 (A): 1 mark each"]);
   });
 });
 

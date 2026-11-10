@@ -75,7 +75,8 @@ export default async function SubjectPapers(props: { params: Promise<Params> }) 
     subjectName,
     papers.map((p) => p.id)
   );
-  const facts = stats ? boardFacts(papers, stats) : null;
+  // A CBSE case key is one printed question; a Maharashtra one is a block of them (subjectPage.ts).
+  const facts = stats ? boardFacts(papers, stats, { casesAreQuestions: params.examSlug.startsWith("cbse-") }) : null;
   const marks = stats && facts ? chapterMarks(papers, stats, facts.marks) : null;
   const overlap = stats ? setOverlap(papers, stats) : null;
   const paperCount = years.reduce((s, y) => s + y.groups.length, 0);

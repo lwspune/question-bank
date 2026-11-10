@@ -109,14 +109,21 @@ export type BoardFacts = {
 type Item = SubjectStats["items"][number];
 
 /**
- * One printed question per entry: a case study's parts (one item each, sharing
- * a case key) are ONE question, so CBSE 12 Chemistry 2026 reads 33, not 37.
+ * How a board's case key reads (measured 2026-11-10). On CBSE papers it joins
+ * the parts of ONE printed question ("29 (a)", "29 (b)" are question 29), so
+ * CBSE 12 Chemistry 2026 has 33 questions, not 37. On Maharashtra papers it
+ * joins a block of separate questions (HSC Geography "1 (A) (1)" to "(5)" are
+ * five 1-mark questions under one key), so there every item is a question.
+ * The printed numbers cannot tell the two apart; the board can.
  */
-function questionUnits(items: readonly Item[]): Item[][] {
+export type CaseRule = { casesAreQuestions: boolean };
+
+/** One printed question per entry. */
+function questionUnits(items: readonly Item[], rule: CaseRule): Item[][] {
   const units: Item[][] = [];
   const byCase = new Map<string, Item[]>();
   for (const i of items) {
-    if (i.caseKey === null) {
+    if (!rule.casesAreQuestions || i.caseKey === null) {
       units.push([i]);
       continue;
     }
@@ -132,37 +139,45 @@ function questionUnits(items: readonly Item[]): Item[][] {
 }
 
 /**
- * "4 marks each" for a section whose stored note is empty (every CBSE
- * case-study section: 401 of them, 2026-11-10), from its own questions with
- * OR alternatives left out; null with nothing to read.
+ * A section's marks from its own questions, OR alternatives left out: "4 marks
+ * each", or "16 questions, 30 marks" when they differ (CBSE 10 Science's
+ * sections are by subject). Null with nothing to read.
  */
-function sectionMarksNote(items: readonly Item[], key: string): string | null {
+function sectionMarksNote(items: readonly Item[], key: string, rule: CaseRule): string | null {
   const counted = items.filter((i) => i.section === key && i.alternativeTo === null && i.marks !== null);
-  const totals = [...new Set(questionUnits(counted).map((u) => u.reduce((s, i) => s + (i.marks ?? 0), 0)))]
-    .filter((m) => m > 0)
-    .sort((a, b) => a - b);
+  const units = questionUnits(counted, rule);
+  const totals = units.map((u) => u.reduce((s, i) => s + (i.marks ?? 0), 0));
   if (totals.length === 0) return null;
-  if (totals.length === 1) return `${totals[0]} ${totals[0] === 1 ? "mark" : "marks"} each`;
-  return `${orList(totals)} marks`;
+  const distinct = [...new Set(totals)];
+  if (distinct.length === 1) return `${distinct[0]} ${distinct[0] === 1 ? "mark" : "marks"} each`;
+  return `${units.length} questions, ${totals.reduce((a, b) => a + b, 0)} marks`;
 }
 
-/** The facts box, read from the newest paper. */
-export function boardFacts(papers: readonly PaperListing[], stats: SubjectStats): BoardFacts | null {
+/**
+ * The facts box, read from the newest paper. A section's stored note is kept,
+ * except where it is empty (401 CBSE sections) or the section holds a CBSE case
+ * study, whose stored note describes one PART (Physics stores "1 mark each" on
+ * its 4-mark case studies): those are worked out from the items.
+ */
+export function boardFacts(papers: readonly PaperListing[], stats: SubjectStats, rule: CaseRule): BoardFacts | null {
   const newest = newestPaper(papers);
   if (!newest) return null;
   const mine = stats.items.filter((i) => i.paperId === newest.id);
   const earlier = [...new Set(papers.map((p) => p.totalMarks))]
     .filter((m) => m !== newest.totalMarks)
     .sort((a, b) => b - a);
+  const holdsCase = (key: string) => rule.casesAreQuestions && mine.some((i) => i.section === key && i.caseKey !== null);
   return {
     label: `${newestBoardSitting([newest])} paper`,
     marks: newest.totalMarks,
     minutes: newest.durationMinutes,
     questions:
-      mine.length > 0 ? questionUnits(mine.filter((i) => i.marks !== null && i.alternativeTo === null)).length : null,
-    choices: mine.length > 0 ? questionUnits(mine.filter((i) => i.alternativeTo !== null)).length : null,
+      mine.length > 0
+        ? questionUnits(mine.filter((i) => i.marks !== null && i.alternativeTo === null), rule).length
+        : null,
+    choices: mine.length > 0 ? questionUnits(mine.filter((i) => i.alternativeTo !== null), rule).length : null,
     sections: (stats.sections[newest.id] ?? []).map((s) => {
-      const note = s.note || sectionMarksNote(mine, s.key);
+      const note = holdsCase(s.key) || !s.note ? (sectionMarksNote(mine, s.key, rule) ?? s.note) : s.note;
       return note ? `${s.title}: ${note}` : s.title;
     }),
     earlierText: earlier.length > 0 ? `Earlier papers had ${orList(earlier)} marks.` : null,

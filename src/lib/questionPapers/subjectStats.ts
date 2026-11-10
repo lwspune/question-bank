@@ -10,70 +10,51 @@
  * read. Pure rules: ./subjectPage.ts.
  */
 import { unstable_cache } from "next/cache";
-import { createSupabaseAnonClient } from "@/lib/supabase/server";
+import { createTypedAnonClient } from "@/lib/supabase/server";
+import { readInChunks } from "@/lib/supabase/readInChunks";
 import { listBoardChapters } from "@/lib/board/query";
+import type { Json } from "@/types/db";
 import type { SubjectStats } from "./subjectPage";
 
-/** Paper ids per items query: ~45 items a paper keeps a page under PostgREST's 1000 rows. */
-const PAPERS_PER_READ = 20;
-/** .in() puts the ids in the URL: chunk them. */
-const IDS_PER_READ = 150;
+type Section = SubjectStats["sections"][string][number];
 
-type RawItem = {
-  paper_id: string;
-  marks: number | null;
-  alternative_to: number | null;
-  question_id: string;
-  section: string | null;
-  case_key: string | null;
-};
-type RawQuestion = { id: string; chapter: { name: string } | { name: string }[] | null };
+/** A paper's stored `sections` (jsonb), keeping only well-formed entries. */
+function parseSections(raw: Json): Section[] {
+  if (!Array.isArray(raw)) return [];
+  const out: Section[] = [];
+  for (const s of raw) {
+    if (!s || typeof s !== "object" || Array.isArray(s)) continue;
+    const { key, title, note } = s;
+    if (typeof key === "string" && typeof title === "string") out.push({ key, title, note: typeof note === "string" ? note : "" });
+  }
+  return out;
+}
 
 async function readStats(examSlug: string, examName: string, subjectName: string, paperIds: string[]): Promise<SubjectStats> {
-  const client = createSupabaseAnonClient();
+  const client = createTypedAnonClient();
 
-  const rawItems: RawItem[] = [];
-  for (let i = 0; i < paperIds.length; i += PAPERS_PER_READ) {
-    const ids = paperIds.slice(i, i + PAPERS_PER_READ);
-    for (let from = 0; ; from += 1000) {
-      const { data, error } = await client
-        .from("board_paper_items")
-        .select("paper_id, marks, alternative_to, question_id, section, case_key")
-        .in("paper_id", ids)
-        .order("paper_id")
-        .order("position")
-        .range(from, from + 999);
-      if (error) throw new Error(`board subject items: ${error.message}`);
-      rawItems.push(...((data ?? []) as RawItem[]));
-      if (!data || data.length < 1000) break;
-    }
-  }
+  const rawItems = await readInChunks(paperIds, (ids, from, to) =>
+    client
+      .from("board_paper_items")
+      .select("paper_id, marks, alternative_to, question_id, section, case_key")
+      .in("paper_id", ids)
+      .order("paper_id")
+      .order("position")
+      .range(from, to)
+  );
 
   const chapterOf = new Map<string, string | null>();
-  const questionIds = [...new Set(rawItems.map((r) => r.question_id))];
-  for (let i = 0; i < questionIds.length; i += IDS_PER_READ) {
-    const { data, error } = await client
-      .from("questions")
-      .select("id, chapter:chapters!chapter_id(name)")
-      .in("id", questionIds.slice(i, i + IDS_PER_READ));
-    if (error) throw new Error(`board subject chapters: ${error.message}`);
-    for (const q of (data ?? []) as unknown as RawQuestion[]) {
-      const ch = Array.isArray(q.chapter) ? q.chapter[0] : q.chapter;
-      chapterOf.set(q.id, ch?.name ?? null);
-    }
-  }
+  const questions = await readInChunks(
+    rawItems.map((r) => r.question_id),
+    (ids, from, to) => client.from("questions").select("id, chapter:chapters!chapter_id(name)").in("id", ids).order("id").range(from, to)
+  );
+  for (const q of questions) chapterOf.set(q.id, q.chapter?.name ?? null);
 
   const sections: SubjectStats["sections"] = {};
-  for (let i = 0; i < paperIds.length; i += IDS_PER_READ) {
-    const { data, error } = await client
-      .from("board_papers")
-      .select("id, sections")
-      .in("id", paperIds.slice(i, i + IDS_PER_READ));
-    if (error) throw new Error(`board subject sections: ${error.message}`);
-    for (const p of (data ?? []) as { id: string; sections: SubjectStats["sections"][string] | null }[]) {
-      sections[p.id] = p.sections ?? [];
-    }
-  }
+  const papers = await readInChunks(paperIds, (ids, from, to) =>
+    client.from("board_papers").select("id, sections").in("id", ids).order("id").range(from, to)
+  );
+  for (const p of papers) sections[p.id] = parseSections(p.sections);
 
   const chapterHrefs: Record<string, string> = {};
   const subject = (await listBoardChapters(client, examName)).find((s) => s.subjectName === subjectName);
