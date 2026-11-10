@@ -55,15 +55,18 @@ describe("mockHubSubtitle (/mock/exam/<slug>)", () => {
     expect(s).toBe("Timed Maharashtra HSC Class 12 chapter tests, marked for you.");
   });
 
-  it("keeps the full sentence for an exam with past and practice papers", () => {
-    expect(mockHubSubtitle("NDA", ["past-papers", "practice", "sectional"], false)).toBe(
-      "Sit NDA papers online, timed and marked for you: full past papers, practice papers with the same number of questions per subject, and shorter sectional tests."
-    );
+  // One short line (owner, 2026-11-10): the list of types it used to carry
+  // repeated the Past papers / Practice mocks / Sectional tests tabs right
+  // below it, and ran four lines on a phone.
+  it("is one short line for an exam with papers, not a list of the types", () => {
+    const s = mockHubSubtitle("NDA", ["past-papers", "practice", "sectional"], false);
+    expect(s).toBe("Sit NDA papers online, timed and marked for you.");
+    expect(s).not.toMatch(/practice|sectional|past papers/);
   });
 
   it("does not promise practice papers an exam does not have", () => {
     const s = mockHubSubtitle("NEET", ["past-papers"], false);
-    expect(s).toBe("Sit NEET papers online, timed and marked for you: full past papers.");
+    expect(s).toBe("Sit NEET papers online, timed and marked for you.");
     expect(s).not.toMatch(/practice/);
   });
 });

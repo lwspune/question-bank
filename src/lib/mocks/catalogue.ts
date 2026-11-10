@@ -160,6 +160,10 @@ export function comingSoonLine(comingSoon: MockTypeCard[], examName: string): st
  * promise "full past papers, plus practice papers" on every exam, including the
  * board exams with chapter tests alone, two lines above "Past papers and
  * practice mocks are coming soon" (2026-11-07).
+ *
+ * One short line since 2026-11-10 (owner): the list of types it carried after
+ * the colon repeated the tabs right below it and ran four lines on a phone. It
+ * still names no type an exam lacks, because it names no type at all.
  */
 export function mockHubSubtitle(
   examName: string,
@@ -167,21 +171,11 @@ export function mockHubSubtitle(
   boardExam: boolean
 ): string {
   const has = (t: MockTypeSlug) => openTypes.includes(t);
-  const sectional = boardExam ? "chapter tests" : "sectional tests";
   if (!has("past-papers") && !has("practice")) {
+    const sectional = boardExam ? "chapter tests" : "sectional tests";
     return `Timed ${examName} ${sectional}, marked for you.`;
   }
-  const parts: string[] = [];
-  if (has("past-papers")) parts.push("full past papers");
-  if (has("practice")) parts.push("practice papers with the same number of questions per subject");
-  if (has("sectional")) parts.push(`shorter ${sectional}`);
-  const list =
-    parts.length === 1
-      ? parts[0]
-      : parts.length === 2
-        ? `${parts[0]} and ${parts[1]}`
-        : `${parts.slice(0, -1).join(", ")}, and ${parts[parts.length - 1]}`;
-  return `Sit ${examName} papers online, timed and marked for you: ${list}.`;
+  return `Sit ${examName} papers online, timed and marked for you.`;
 }
 
 /** One card per type for the exam page's picker, in MOCK_TYPES order. */
