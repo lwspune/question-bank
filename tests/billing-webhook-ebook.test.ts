@@ -8,6 +8,12 @@ import { vi, describe, it, expect, beforeEach, afterEach } from "vitest";
 import { createHmac } from "node:crypto";
 import { NextRequest } from "next/server";
 
+// Referral rewards and refunds (0249): no referral in these orders; kept off the database.
+vi.mock("@/lib/referrals/service", () => ({
+  completeReferral: vi.fn(async () => "none"),
+  revokeReferralReward: vi.fn(async () => 0),
+  readReferralDiscount: vi.fn(async () => 0),
+}));
 vi.mock("@/lib/billing/grant", () => ({
   grantRazorpayEntitlement: vi.fn(async () => ({ kind: "ok" })),
   revokeRazorpayEntitlement: vi.fn(async () => ({ kind: "ok", revoked: 0 })),

@@ -11,11 +11,16 @@
 import { planForPaidOrder, type OrderGrant, type PaidOrder } from "./plans";
 import { parentGrantNote } from "./parentLink";
 import { fixPointsGrantNote } from "./fixPoints";
+import { orderCarriesReferral } from "@/lib/referrals/referral";
 import { ebookForPaidOrder, isEbookOrder, type EbookGrant } from "@/lib/ebooks/order";
 
 export type WebhookDecision =
-  /** `note` marks a pass paid through a parent link (2026-11-09), else null. */
-  | { action: "grant"; userId: string; paymentId: string; grant: OrderGrant; note: string | null }
+  /**
+   * `note` marks a pass paid through a parent link (2026-11-09) or with points,
+   * else null. `referral`: sold at a friend's referral price (0249), so the
+   * inviter's reward is completed after the grant.
+   */
+  | { action: "grant"; userId: string; paymentId: string; grant: OrderGrant; note: string | null; referral: boolean }
   | { action: "grant_ebook"; userId: string; paymentId: string; grant: EbookGrant }
   | { action: "revoke"; paymentId: string }
   | { action: "skip"; reason: string }
@@ -54,7 +59,14 @@ export function decideWebhook(body: WebhookBody): WebhookDecision {
     }
     const decided = planForPaidOrder(order, userId);
     if (!decided.ok) return { action: "skip", reason: decided.reason };
-    return { action: "grant", userId, paymentId, grant: decided.grant, note: parentGrantNote(order.notes?.parentLink) ?? fixPointsGrantNote(order.notes) };
+    return {
+      action: "grant",
+      userId,
+      paymentId,
+      grant: decided.grant,
+      note: parentGrantNote(order.notes?.parentLink) ?? fixPointsGrantNote(order.notes),
+      referral: orderCarriesReferral(order.notes),
+    };
   }
 
   if (body.event === "refund.processed") {

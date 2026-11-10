@@ -12,6 +12,7 @@ import { stampEbookOrderNotes } from "@/lib/ebooks/order";
 import { planTakesDiscount, stampDiscountNotes } from "@/lib/billing/fixPoints";
 import { readFixPoints } from "@/lib/billing/fixPointsService";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { readReferralDiscount } from "@/lib/referrals/service";
 
 export const maxDuration = 30;
 
@@ -73,18 +74,20 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Unknown plan" }, { status: 400 });
   }
 
-  // Fix Points (0245): the server reads the buyer's points NOW and the order
-  // carries the price they make, so the payment is held to it. A failed read
-  // sells at the list price: never a discount nobody earned.
+  // Fix Points (0245) and a friend's referral (0249): the server reads both
+  // NOW and the order carries the price they make, so the payment is held to
+  // it. Each failed read counts as none: never a discount nobody earned.
   let points = 0;
+  let referralPct = 0;
   if (planTakesDiscount(plan)) {
-    try {
-      points = (await readFixPoints(createSupabaseAdminClient(), user.id, new Date())).points;
-    } catch (e) {
-      console.error("order: fix points read failed", e);
-    }
+    const admin = createSupabaseAdminClient();
+    const [p, r] = await Promise.allSettled([readFixPoints(admin, user.id, new Date()), readReferralDiscount(admin, user.id)]);
+    if (p.status === "fulfilled") points = p.value.points;
+    else console.error("order: fix points read failed", p.reason);
+    if (r.status === "fulfilled") referralPct = r.value;
+    else console.error("order: referral read failed", r.reason);
   }
-  const notes = stampDiscountNotes(stampOrderNotes(plan, user.id), plan, { points });
+  const notes = stampDiscountNotes(stampOrderNotes(plan, user.id), plan, { points, referralPct });
 
   const result = await createOrder({
     amountPaise: Number(notes.amountPaise),
