@@ -150,14 +150,32 @@ The missing link in the loop.
   CBSE 12 variables-separable pair) passed and read right. They are not saved
   to `v_eval_cases` until the owner agrees: that table is in production.
 
-### Step 3. V remembers the student's subtopic (M, no migration)
+### Step 3. The student's past mistakes, under V's explanation: BUILT 2026-11-10 (as a button)
 
-On an Ask V tap, V is told, in one line built by code (no tool call, no extra
-AI cost): this student's recent misses in this subtopic, what V explained
-there before, and how the next question went. Read from `user_activity` and
-`chat_interactions` with the student's own login. V can then say "last time
-the sign of g tripped you" instead of starting cold. Rule 12 gets one line
-on how to use it. Eval cases: a returning student, a student with no history.
+**Measured first (20 Oct to 9 Nov, 553 Ask V taps):** 186 (34%) came from a
+student who had got another question in the same subtopic wrong in the 30
+days before, 310 (56%) in the same chapter, mostly on /browse earlier that
+day; only 14 came after an earlier V explanation there. So the useful memory
+is the mistakes, not V's past explanations.
+
+**Tried and dropped: a note to V.** Migration 0251 read the student's recent
+graded answers on the topic (24 ms for the heaviest student) and V was told
+the two latest wrong ones (stem, pick, key). Over 18 test replies on 6 real
+taps, in three wordings ("use only if it repeats", "add one line linking
+them", and a rule-7 exception "start with one line"), V linked an earlier
+mistake ONCE. It never misused the note (no reading back, no scolding, no
+link to the unrelated Grignard question), so it was safe, but it did nothing:
+V keeps to the solution, and it sees only the pick, never why. Dropped by the
+owner. The read (0251) stays in production unused: dropping it was declined.
+
+**Built instead: a button made by code.** Under an explanation, the chapter
+pages' own line, "Fix N mistakes in this chapter · Fix them"
+(`components/drill/ChapterFixLine.tsx`), for the explained question's
+chapter, opening the drill narrowed to it. It reads the drill's pulse, so the
+number shown is the number served, and renders nothing signed out or with
+nothing waiting. Tag `v_chapter`, its views on their own daily key so it never
+uses up a chapter page's view (the running experiment chapter-fix, read
+2026-11-28, carries a note). Experiment `v-fix-line`, read 2026-12-08.
 
 ### Step 4. Teach differently on a No, and ask for working (S, prompt only)
 
