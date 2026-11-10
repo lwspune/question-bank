@@ -8,7 +8,7 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { testRunId } from "./helpers/runId";
-import { mustSignIn } from "./helpers/fixture";
+import { mustSignIn, SIGN_IN_TEST_TIMEOUT_MS } from "./helpers/fixture";
 import {
   attachReferral,
   completeReferral,
@@ -75,6 +75,19 @@ describe.skipIf(!HAS_ENV)("referrals", () => {
 
   const cookie = () => refCookie;
 
+  it("a student can read neither table", async () => {
+    const student = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, {
+      auth: { persistSession: false },
+    });
+    await mustSignIn("referral inviter", student, { email: `referral-referrer-${RUN_ID}@test.local`, password: PASSWORD });
+    const codes = await student.from("referral_codes").select("code");
+    const refs = await student.from("referrals").select("friend_id");
+    expect(codes.data ?? []).toEqual([]);
+    expect(refs.data ?? []).toEqual([]);
+    const call = await student.rpc("complete_referral", { p_friend: ids.f3, p_payment: "x", p_days: 30, p_max: 6 });
+    expect(call.error).not.toBeNull();
+  }, SIGN_IN_TEST_TIMEOUT_MS);
+
   it("gives a student one code and keeps it", async () => {
     expect(code).toMatch(/^[A-HJ-NP-Z2-9]{8}$/);
     expect(await getOrCreateReferralCode(admin, ids.referrer)).toBe(code);
@@ -134,18 +147,5 @@ describe.skipIf(!HAS_ENV)("referrals", () => {
     expect(await revokeReferralReward(admin, `pay_f2_${RUN_ID}`)).toBe(1);
     expect(await revokeReferralReward(admin, `pay_f2_${RUN_ID}`)).toBe(0);
     expect(await readReferralStats(admin, ids.referrer)).toEqual({ joined: 3, bought: 3, rewards: 1 });
-  });
-
-  it("a student can read neither table", async () => {
-    const student = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, {
-      auth: { persistSession: false },
-    });
-    await mustSignIn("referral inviter", student, { email: `referral-referrer-${RUN_ID}@test.local`, password: PASSWORD });
-    const codes = await student.from("referral_codes").select("code");
-    const refs = await student.from("referrals").select("friend_id");
-    expect(codes.data ?? []).toEqual([]);
-    expect(refs.data ?? []).toEqual([]);
-    const call = await student.rpc("complete_referral", { p_friend: ids.f3, p_payment: "x", p_days: 30, p_max: 6 });
-    expect(call.error).not.toBeNull();
   });
 });
