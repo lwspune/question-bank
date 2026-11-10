@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -36,13 +36,21 @@ type Props = {
 };
 
 /**
- * Sticky vertical list of routes on desktop (left rail); chevron-triggered
- * Sheet on mobile. Active link computed from usePathname.
+ * The guide's section links in two places, one list: a "Sections" button that
+ * opens a Sheet below `lg` (GuideSideNavSheet, placed in the breadcrumb row by
+ * GuideShell since 2026-11-10, so it no longer takes a full-width row above
+ * the page), and a sticky left rail from `lg` up (GuideSideNavRail).
  */
-export default function GuideSideNav({ guideTitle, items, landingHref }: Props) {
+function NavList({
+  items,
+  landingHref,
+  onNavigate,
+}: {
+  items: SideNavItem[];
+  landingHref?: string;
+  onNavigate?: () => void;
+}) {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
-
   const landing = landingHref ?? items[0]?.href;
 
   const isActive = (href: string) => {
@@ -57,7 +65,7 @@ export default function GuideSideNav({ guideTitle, items, landingHref }: Props) 
       <li key={item.href}>
         <Link
           href={item.href}
-          onClick={() => setOpen(false)}
+          onClick={onNavigate}
           className={cn(
             "block rounded-md px-3 py-2 text-sm font-medium transition-colors",
             active
@@ -72,7 +80,7 @@ export default function GuideSideNav({ guideTitle, items, landingHref }: Props) 
     );
   };
 
-  const list = (
+  return (
     <ul className="space-y-1">
       {sideNavSegments(items).map((seg, i) =>
         seg.group ? (
@@ -80,7 +88,7 @@ export default function GuideSideNav({ guideTitle, items, landingHref }: Props) 
             {seg.group.href ? (
               <Link
                 href={seg.group.href}
-                onClick={() => setOpen(false)}
+                onClick={onNavigate}
                 className="block rounded-md px-3 py-1 text-xs font-semibold uppercase tracking-wider text-foreground transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 {seg.group.label}
@@ -96,38 +104,43 @@ export default function GuideSideNav({ guideTitle, items, landingHref }: Props) 
       )}
     </ul>
   );
+}
 
+/** Below `lg`: a small "Sections" button that opens the list in a Sheet. */
+export function GuideSideNavSheet({ guideTitle, items, landingHref }: Props) {
+  const [open, setOpen] = useState(false);
   return (
-    <>
-      {/* Mobile trigger */}
-      <Sheet open={open} onOpenChange={setOpen}>
-        <SheetTrigger asChild>
-          <Button
-            variant="outline"
-            size="sm"
-            className="lg:hidden"
-          >
-            <Menu className="h-4 w-4" aria-hidden />
-            Sections
-          </Button>
-        </SheetTrigger>
-        <SheetContent side="left" className="w-72 p-0">
-          <SheetHeader className="border-b px-5 pb-4 pt-6">
-            <SheetTitle>{guideTitle}</SheetTitle>
-          </SheetHeader>
-          <nav className="p-4">{list}</nav>
-        </SheetContent>
-      </Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger asChild>
+        <Button variant="outline" size="sm" className="h-8 shrink-0 rounded-full px-3 lg:hidden">
+          <Menu className="h-4 w-4" aria-hidden />
+          Sections
+        </Button>
+      </SheetTrigger>
+      <SheetContent side="left" className="w-72 p-0">
+        <SheetHeader className="border-b px-5 pb-4 pt-6">
+          <SheetTitle>{guideTitle}</SheetTitle>
+        </SheetHeader>
+        <nav className="p-4">
+          <NavList items={items} landingHref={landingHref} onNavigate={() => setOpen(false)} />
+        </nav>
+      </SheetContent>
+    </Sheet>
+  );
+}
 
-      {/* Desktop rail */}
-      <aside className="hidden lg:block">
-        <div className="sticky top-20 space-y-3">
-          <p className="px-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-            {guideTitle}
-          </p>
-          <nav>{list}</nav>
-        </div>
-      </aside>
-    </>
+/** From `lg` up: the sticky left rail. */
+export function GuideSideNavRail({ guideTitle, items, landingHref }: Props) {
+  return (
+    <aside className="hidden lg:block">
+      <div className="sticky top-20 space-y-3">
+        <p className="px-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          {guideTitle}
+        </p>
+        <nav>
+          <NavList items={items} landingHref={landingHref} />
+        </nav>
+      </div>
+    </aside>
   );
 }

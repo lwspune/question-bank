@@ -2,7 +2,7 @@ import AppHeader from "@/components/AppHeader";
 import Breadcrumbs, { type Crumb } from "@/components/nav/Breadcrumbs";
 import Footer from "@/components/Footer";
 import { cn } from "@/lib/utils";
-import GuideSideNav, { type SideNavItem } from "./GuideSideNav";
+import { GuideSideNavRail, GuideSideNavSheet, type SideNavItem } from "./GuideSideNav";
 
 type Props = {
   guideTitle: string;
@@ -20,9 +20,8 @@ type Props = {
 
 /**
  * Page shell for every /guide/* route. AppHeader + breadcrumbs + side nav +
- * content. GuideSideNav self-toggles between a Sheet trigger (mobile) and a
- * sticky aside (desktop) based on the lg breakpoint, so it can be rendered
- * once.
+ * content. The side nav renders twice from one list: a Sheet button in the
+ * breadcrumb row below `lg`, and a sticky rail from `lg` up.
  */
 export default function GuideShell({
   guideTitle,
@@ -35,19 +34,20 @@ export default function GuideShell({
   return (
     <>
       <AppHeader />
-      <main className="mx-auto max-w-7xl px-4 pb-16 pt-6 sm:px-6 sm:pt-8">
-        <Breadcrumbs items={breadcrumbs} />
+      <main className="mx-auto max-w-7xl px-4 pb-16 pt-4 sm:px-6 sm:pt-8">
+        {/* The Sections button shares the breadcrumb row below `lg` (2026-11-10):
+            as its own full-width row it pushed every page's content down. */}
+        <div className="flex items-center justify-between gap-2">
+          <Breadcrumbs items={breadcrumbs} className="min-w-0 flex-1" />
+          <GuideSideNavSheet guideTitle={guideTitle} items={sideNav} landingHref={landingHref} />
+        </div>
         <div
           className={cn(
-            "mt-6 flex flex-col gap-4 lg:mt-8 lg:grid lg:grid-cols-[16rem_1fr] lg:gap-10",
+            "mt-4 flex flex-col gap-4 sm:mt-6 lg:mt-8 lg:grid lg:grid-cols-[16rem_1fr] lg:gap-10",
             rail && "xl:grid-cols-[14rem_minmax(0,1fr)_12rem] xl:gap-8"
           )}
         >
-          <GuideSideNav
-            guideTitle={guideTitle}
-            items={sideNav}
-            landingHref={landingHref}
-          />
+          <GuideSideNavRail guideTitle={guideTitle} items={sideNav} landingHref={landingHref} />
           <article className="min-w-0 max-w-3xl">{children}</article>
           {rail && <aside className="hidden xl:block">{rail}</aside>}
         </div>

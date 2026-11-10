@@ -42,7 +42,7 @@ const LANDING = ["src", "app", "notes", "_components", "NotesChapterLanding.tsx"
 /**
  * The DESKTOP clamp is the wider of the two (`sm:line-clamp-4`), so it is the
  * one an intro has to beat for the control to mean anything. Four lines of the
- * hero's `max-w-2xl` serif at `text-lg` is ~65 chars a line before wrapping
+ * hero's `max-w-2xl` sans (serif until 2026-11-10) at `text-lg` is ~65 chars a line before wrapping
  * losses — 260 is that budget rounded down, i.e. deliberately generous to the
  * intro. The shortest shipped intro is 362 chars, so there is real headroom;
  * this fails the day someone ships a one-liner and leaves a dead control on it.
