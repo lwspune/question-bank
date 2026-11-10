@@ -173,6 +173,18 @@ reads everything else from the stored row.
 2a. **Follow-up line:** `npm run v:followups`: the share of V's replies the
    student followed up within 30 minutes, a week at a time (repeat Ask V taps
    on the same question left out). The owner's measure of V as a study partner.
+2b. **Verified learning:** `npm run v:learning` (2026-11-10, V_LEARNING_LOOP.md).
+   A NEED is a graded miss, or an Ask V explanation of a bank question; it is
+   VERIFIED when the same student gets a DIFFERENT question in the same
+   subtopic right within 7 days. Counted per week by student and by need, each
+   student once; one need per student, question and India day. Graded answers
+   are bank, board, guide and daily taps, V's try card, the drill and mock
+   picks; self-marks are left out (nobody checked them). Beside each week, the
+   student's accuracy on other questions in that subtopic in the 30 days
+   before the week against the 7 days after their first need: a check on
+   "they already knew it", thin while few students have a history there. A
+   week stays open 7 days after it ends. Staff left out. Baseline 2026-11-10:
+   after a miss 54-57% of students; after an Ask V explanation 26-43%.
 3. **Cost line:** `npm run v:cost`: cost per answer over the last 7 days
    against the 7 before (flagged above a 20% rise, once both weeks have 20+
    answers), and what the week's test runs cost. A flagged rise is looked into
