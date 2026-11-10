@@ -75,7 +75,25 @@ Owner policy 2026-10-29, per row in `data/<shift>.adjudication.json`:
 
 ## Measured
 
-- 3 Sep 2024 Shift 1 (pilot): solver 50/50 with NTA's final key.
+June 2024, all 20 shifts (1,000 questions, committed PRIVATE 2026-11-10):
+
+- **Blind solver vs NTA's final key: 962 / 978 (98.4%)** on the questions NTA
+  kept. NTA dropped 21 and accepted two answers on 1; all 22 are graced.
+- The 16 disagreements, every one read by a person (`data/*.adjudication.json`):
+  4 NTA right (two checked against SWAYAM PRABHA's own channel table, now in
+  the agent brief), 9 two defensible readings (NTA's key kept, notice, grace),
+  3 NTA's key wrong and corrected with a notice and grace (29 Aug S2 Q11
+  plagiarism increment, Q43 Anglican societies; 4 Sep S1 Q42 IIM Indore).
+- The solver's misses cluster on recall facts (SWAYAM PRABHA channels,
+  committee names) and on loosely worded theory items; arithmetic and data
+  interpretation agreed throughout.
+
+## Taxonomy additions
+
+Two subtopics are not NTA syllabus sub-heads but are asked most shifts:
+"Higher learning in medieval India" and "Higher education in colonial India".
+`refile.ts` moved the 17 rows committed before they existed
+(`data/refile.json`).
 
 ## Files
 
