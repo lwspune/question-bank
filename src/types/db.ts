@@ -5014,6 +5014,7 @@ export type Database = {
           reply_to: string | null
           signed_in: boolean
           source_interaction_id: string | null
+          subtopic_history: string | null
         }
         Insert: {
           active?: boolean
@@ -5035,6 +5036,7 @@ export type Database = {
           reply_to?: string | null
           signed_in: boolean
           source_interaction_id?: string | null
+          subtopic_history?: string | null
         }
         Update: {
           active?: boolean
@@ -5056,6 +5058,7 @@ export type Database = {
           reply_to?: string | null
           signed_in?: boolean
           source_interaction_id?: string | null
+          subtopic_history?: string | null
         }
         Relationships: [
           {
@@ -5705,6 +5708,15 @@ export type Database = {
           solution: string
           text: string
         }[]
+      }
+      v_subtopic_history: {
+        Args: {
+          p_before?: string
+          p_exclude: string
+          p_subtopic: string
+          p_user: string
+        }
+        Returns: Json
       }
     }
     Enums: {
