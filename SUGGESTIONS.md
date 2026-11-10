@@ -175,8 +175,9 @@ Phase 1 (compact phone page tops, calmer header, branded sign-in, short intros) 
 - **Check on the live site after the push:** `/browse` should no longer throw React error #418, and should follow dark mode (on 2026-11-10 it stayed light while every other page went dark; most likely the same hydration error).
 - **The typecheck now peaks at about 4.1 GB.** `npm run typecheck` got a 6 GB limit (merge `04838e029`); excluding `generated-papers/` saved only 390 of 9,631 files, so the growth is the code itself. If it nears 6 GB, look at what pulls the notes corpus into the type program.
 
-### An MHT-CET Physics question with broken text, and its likely duplicate (owner to decide)
+### An MHT-CET Physics question with broken text, and its likely duplicate (DONE 2026-11-10)
 
+- **Done 2026-11-10.** The source paper itself typesets it as "e.m. f′E ′", and the bank copied it. Row `87dfcc37` fixed in place to "equal e.m.f. 'E' ... external resistance 'R'" with its hash recomputed by the lane's own builder (`b84e6d11...`, backup in the session scratchpad); `scripts/mhtcet/shifts/2025-apr-19-s2.json` Q42 got the same text as `stemOverride` plus a `note`, so a re-commit lands on the row instead of duplicating it (checked: the source still hashes to the old value, the override to the new). Its two mocks hold the id only. `e2535bd4` turned out to be the retired Excel import's copy, already PRIVATE, so it was left as it is.
 - `87dfcc37-ea62-4f54-beae-bc570f612259` (MHT-CET 2025, "19 April Shift II", Current Electricity) reads `having equal e.m. \(f^{'}E\) '`, which shows on the page as "equal e.m. f′ E ′". It should read "equal e.m.f. E".
 - `e2535bd4-35be-4c9f-916b-c567dbe0040d` (MHT-CET 2025) is the same question with correct text, but its sitting is stored as "Shift ||" instead of "Shift II".
 - Check against the 19 April Shift II source paper whether these are one question stored twice (then keep one, fix its sitting, and check the mock that uses it) or two sittings that share a question. Fixing the text of the first is a stem edit on a shipped row: fix it in place, as for other repairs.
