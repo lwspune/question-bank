@@ -1828,5 +1828,23 @@
   "before": "0225427b",
   "solution": "\\[A = \\{ - 3, - 2, - 1,0,1,2,3\\}\\] \\[- 2y \\leq x^{2} \\leq 4 - 2y\\] \\[y = - 3\\ 6 \\leq x^{2} \\leq 10 \\Rightarrow x \\in \\{ - 3,3\\}\\] \\[y = - 2\\ 4 \\leq x^{2} \\leq 8 \\Rightarrow x \\in \\{ - 2,2\\}\\] \\[y = - 1\\ 2 \\leq x^{2} \\leq 6 \\Rightarrow x \\in \\{ - 2,2\\}\\] \\[y = 0\\ 0 \\leq x^{2} \\leq 4 \\Rightarrow x \\in \\{ - 2, - 1,0,1,2\\}\\] \\[y = 1\\ - 2 \\leq x^{2} \\leq 2 \\Rightarrow x \\in \\{ - 1,0,1\\}\\] \\[y = 2\\ - 4 \\leq x^{2} \\leq 0 \\Rightarrow x \\in \\{ 0\\}\\] \\[y = 3\\ - 6 \\leq x^{2} \\leq - 2 \\Rightarrow Nox\\text{-Exist~}\\] \\[R = \\{( - 3, - 3)( - 3,3),( - 2, - 2)( - 2,2)( - 1, - 2)( - 1,2)\\] \\[(0, - 2)(0, - 1)(0,0)(0,1)(0,2)(1, - 1)(1,0)(1,1)\\] \\[(2,0)\\}\\] \\[\\therefore\\mathcal{l} = 15\\] To make it reflexive we will add \\[\\{( - 1, - 1),(2,2),(3,3)\\}\\ \\therefore m = 3\\] \\[\\therefore\\mathcal{l} + m = 15 + 3 = 18\\]",
   "note": "removed the stray '56.' and the sentence that belongs to another question (ellipse, PA, PB)"
+ },
+ {
+  "id": "cb6cf685-00a7-4cca-9eb6-6367ad44712f",
+  "before": "811c9dc5",
+  "solution": "Dividing the numerator and the denominator by \\(\\cos\\alpha\\), \\[\\tan\\theta = \\frac{1 - \\tan\\alpha}{1 + \\tan\\alpha} = \\tan\\left(\\frac{\\pi}{4} - \\alpha\\right).\\] Since \\(\\theta\\) is acute, \\(\\theta = \\frac{\\pi}{4} - \\alpha\\), so \\(\\theta + \\alpha = \\frac{\\pi}{4}\\).",
+  "note": "no stored solution; written (tan(pi/4 - alpha))"
+ },
+ {
+  "id": "ed37ae39-1c34-4c61-9423-e17641704c81",
+  "before": "811c9dc5",
+  "solution": "In a triangle \\(\\cos C = -\\cos(A + B) = \\sin A\\sin B - \\cos A\\cos B\\), so \\[\\tan A\\tan B = \\frac{\\sin A\\sin B}{\\cos A\\cos B} = 1 + \\frac{\\cos C}{\\cos A\\cos B}.\\] Also \\[\\tan C(\\tan A + \\tan B) = \\frac{\\sin C}{\\cos C}\\cdot\\frac{\\sin(A + B)}{\\cos A\\cos B} = \\frac{\\sin^{2}C}{\\cos A\\cos B\\cos C}.\\] Adding, \\[\\tan A\\tan B + \\tan B\\tan C + \\tan C\\tan A = 1 + \\frac{\\cos^{2}C + \\sin^{2}C}{\\cos A\\cos B\\cos C} = 1 + \\frac{1}{\\cos A\\cos B\\cos C}.\\] With \\(\\cos A\\cos B\\cos C = \\frac{1}{3}\\), the value is \\(1 + 3 = 4\\).",
+  "note": "no stored solution; written (sum of tan products = 1 + sec A sec B sec C)"
+ },
+ {
+  "id": "ff7d90c6-8d8e-4b61-8ded-6dacad9db5e9",
+  "before": "811c9dc5",
+  "solution": "From \\(\\cos(x - y) = \\frac{\\sqrt{3}}{2}\\), take \\(x - y = \\frac{\\pi}{6}\\), so \\(x = y + \\frac{\\pi}{6}\\). Then \\[\\cos x = \\cos y\\cos\\frac{\\pi}{6} - \\sin y\\sin\\frac{\\pi}{6} = 2\\cos y.\\] Dividing by \\(\\cos y\\), \\[\\frac{\\sqrt{3}}{2} - \\frac{1}{2}\\tan y = 2 \\Rightarrow \\tan y = \\sqrt{3} - 4.\\] (Taking \\(x - y = -\\frac{\\pi}{6}\\) instead gives \\(\\tan y = 4 - \\sqrt{3}\\), which is not among the options.)",
+  "note": "no stored solution; written (x - y = pi/6)"
  }
 ]
