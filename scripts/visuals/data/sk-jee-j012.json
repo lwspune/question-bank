@@ -1,0 +1,777 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "b1bda622-ae17-44b5-8eeb-24926aaaa15a",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "u": "12",
+            "d": "8",
+            "Rm": "2*15",
+            "xl": "u",
+            "xm": "u+d",
+            "xc": "xm+Rm",
+            "yl": "6",
+            "len": "sqrt((xc-xl)^2+yl^2)",
+            "qx": "xc-Rm*(xc-xl)/len",
+            "qy": "Rm*yl/len",
+            "am": "deg(asin(8/Rm))",
+            "tot": "xc"
+          },
+          "view": {
+            "x": [
+              -4,
+              56
+            ],
+            "y": [
+              -10,
+              19
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "P": [
+              "xl",
+              "yl"
+            ],
+            "Q": [
+              "qx",
+              "qy"
+            ],
+            "C": [
+              "xc",
+              0
+            ],
+            "Lt": [
+              "xl",
+              8
+            ],
+            "Lb": [
+              "xl",
+              -8
+            ],
+            "A0": [
+              -3,
+              0
+            ],
+            "A1": [
+              55,
+              0
+            ],
+            "D1": [
+              0,
+              -4
+            ],
+            "D2": [
+              "xl",
+              -4
+            ],
+            "D3": [
+              "xm",
+              -4
+            ],
+            "D4": [
+              "xc",
+              -4
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": "A0",
+              "to": "A1",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "O",
+              "step": "s1",
+              "label": "object",
+              "pos": "n"
+            },
+            {
+              "kind": "segment",
+              "from": "Lt",
+              "to": "Lb",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "xl",
+                9.5
+              ],
+              "text": "lens",
+              "step": "s1"
+            },
+            {
+              "kind": "arc",
+              "center": "C",
+              "r": "Rm",
+              "from": "180-am",
+              "to": "180+am",
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "xm+6",
+                9.5
+              ],
+              "text": "mirror",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "C",
+              "step": "s2",
+              "label": "C",
+              "pos": "n"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "P",
+              "step": "s2"
+            },
+            {
+              "kind": "segment",
+              "from": "P",
+              "to": "Q",
+              "step": "s2"
+            },
+            {
+              "kind": "segment",
+              "from": "Q",
+              "to": "C",
+              "step": "s3",
+              "dash": true
+            },
+            {
+              "kind": "segment",
+              "from": "D1",
+              "to": "D2",
+              "step": "s4",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "D2",
+              "to": "D3",
+              "step": "s4",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "D3",
+              "to": "D4",
+              "step": "s4",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6,
+                -4
+              ],
+              "text": "12",
+              "step": "s4",
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                16,
+                -4
+              ],
+              "text": "8",
+              "step": "s4",
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                35,
+                -4
+              ],
+              "text": "30",
+              "step": "s4",
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -2.5,
+                16
+              ],
+              "text": "object to image = {tot} cm",
+              "step": "s4",
+              "tone": "good",
+              "pos": "e"
+            }
+          ],
+          "assert": [
+            "xm = xl + d",
+            "xc - xm = Rm",
+            "(xc-qx)^2 + qy^2 = Rm^2",
+            "qy*(xc-xl) = yl*(xc-qx)",
+            "tot = u + d + Rm"
+          ],
+          "answer": "tot"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "caa0858f",
+        "answer": {
+          "value": 50,
+          "label": "50 cm"
+        }
+      }
+    },
+    {
+      "id": "bb35ed03-6116-46c6-8ee6-5d20845e58a9",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "R": "30",
+            "mu": "1.75",
+            "f": "R/(mu-1)",
+            "d": "40",
+            "h": "5",
+            "u2": "d+f",
+            "v": "1/(1/f-1/u2)",
+            "ym": "h*(f+d)/f",
+            "tot": "d+v"
+          },
+          "view": {
+            "x": [
+              -52,
+              128
+            ],
+            "y": [
+              -30,
+              25
+            ]
+          },
+          "points": {
+            "A0": [
+              -50,
+              0
+            ],
+            "A1": [
+              126,
+              0
+            ],
+            "L1t": [
+              0,
+              15
+            ],
+            "L1b": [
+              0,
+              -15
+            ],
+            "L2t": [
+              "d",
+              15
+            ],
+            "L2b": [
+              "d",
+              -15
+            ],
+            "F": [
+              "-f",
+              0
+            ],
+            "R0": [
+              -50,
+              "h"
+            ],
+            "R1": [
+              0,
+              "h"
+            ],
+            "R2": [
+              "d",
+              "ym"
+            ],
+            "I": [
+              "tot",
+              0
+            ],
+            "D1": [
+              "-f",
+              -6
+            ],
+            "D2": [
+              0,
+              -6
+            ],
+            "D3": [
+              "d",
+              -6
+            ],
+            "D4": [
+              "tot",
+              -6
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": "A0",
+              "to": "A1",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "L1t",
+              "to": "L1b",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                15
+              ],
+              "text": "concave",
+              "step": "s1",
+              "pos": "n"
+            },
+            {
+              "kind": "segment",
+              "from": "L2t",
+              "to": "L2b",
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "d",
+                15
+              ],
+              "text": "convex",
+              "step": "s1",
+              "pos": "n"
+            },
+            {
+              "kind": "segment",
+              "from": "R0",
+              "to": "R1",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "F",
+              "step": "s2",
+              "label": "F",
+              "pos": "nw"
+            },
+            {
+              "kind": "segment",
+              "from": "R1",
+              "to": "R2",
+              "step": "s2"
+            },
+            {
+              "kind": "segment",
+              "from": "F",
+              "to": "R1",
+              "step": "s2",
+              "dash": true
+            },
+            {
+              "kind": "segment",
+              "from": "R2",
+              "to": "I",
+              "step": "s3"
+            },
+            {
+              "kind": "point",
+              "at": "I",
+              "step": "s3",
+              "label": "I",
+              "pos": "n"
+            },
+            {
+              "kind": "segment",
+              "from": "D1",
+              "to": "D2",
+              "step": "s4",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "D2",
+              "to": "D3",
+              "step": "s4",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "D3",
+              "to": "D4",
+              "step": "s4",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -20,
+                -6
+              ],
+              "text": "40",
+              "step": "s4",
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                20,
+                -6
+              ],
+              "text": "40",
+              "step": "s4",
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                80,
+                -6
+              ],
+              "text": "80",
+              "step": "s4",
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -50,
+                -26
+              ],
+              "text": "image {tot} cm from concave lens",
+              "step": "s4",
+              "tone": "good",
+              "pos": "e"
+            }
+          ],
+          "assert": [
+            "f = 40",
+            "ym*f = h*(f+d)",
+            "v = 80",
+            "1/v = 1/f - 1/u2",
+            "tot = 120"
+          ],
+          "answer": "tot"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "4da6dd90",
+        "answer": {
+          "value": 120,
+          "label": "120 cm"
+        }
+      }
+    },
+    {
+      "id": "c62dfec0-3487-4562-a0fa-e38ef7fccff3",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "f1": "10",
+            "f2": "15",
+            "d": "f1+f2",
+            "h": "2",
+            "y2": "h*(1-d/f1)",
+            "ff": "d-f2"
+          },
+          "view": {
+            "x": [
+              -8,
+              44
+            ],
+            "y": [
+              -11,
+              11
+            ]
+          },
+          "points": {
+            "A0": [
+              -7,
+              0
+            ],
+            "A1": [
+              43,
+              0
+            ],
+            "L1t": [
+              0,
+              7
+            ],
+            "L1b": [
+              0,
+              -7
+            ],
+            "L2t": [
+              "d",
+              7
+            ],
+            "L2b": [
+              "d",
+              -7
+            ],
+            "R0": [
+              -7,
+              "h"
+            ],
+            "R1": [
+              0,
+              "h"
+            ],
+            "F": [
+              "f1",
+              0
+            ],
+            "R2": [
+              "d",
+              "y2"
+            ],
+            "R3": [
+              "d+12",
+              "y2"
+            ],
+            "D1": [
+              0,
+              -6
+            ],
+            "D2": [
+              "f1",
+              -6
+            ],
+            "D3": [
+              "d",
+              -6
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": "A0",
+              "to": "A1",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "L1t",
+              "to": "L1b",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                7
+              ],
+              "text": "L1",
+              "step": "s1",
+              "pos": "n"
+            },
+            {
+              "kind": "segment",
+              "from": "L2t",
+              "to": "L2b",
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "d",
+                7
+              ],
+              "text": "L2",
+              "step": "s1",
+              "pos": "n"
+            },
+            {
+              "kind": "segment",
+              "from": "R0",
+              "to": "R1",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "R1",
+              "to": "F",
+              "step": "s2"
+            },
+            {
+              "kind": "point",
+              "at": "F",
+              "step": "s2",
+              "label": "F",
+              "pos": "s"
+            },
+            {
+              "kind": "segment",
+              "from": "F",
+              "to": "R2",
+              "step": "s3"
+            },
+            {
+              "kind": "segment",
+              "from": "R2",
+              "to": "R3",
+              "step": "s3"
+            },
+            {
+              "kind": "segment",
+              "from": "D1",
+              "to": "D2",
+              "step": "s3",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "D2",
+              "to": "D3",
+              "step": "s3",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                5,
+                -6
+              ],
+              "text": "10",
+              "step": "s3",
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                17.5,
+                -6
+              ],
+              "text": "15",
+              "step": "s3",
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                28,
+                9
+              ],
+              "text": "d = {d} cm",
+              "step": "s3",
+              "tone": "good",
+              "pos": "e"
+            }
+          ],
+          "assert": [
+            "d = f1 + f2",
+            "ff = f1",
+            "y2*f1 = h*(f1-d)"
+          ],
+          "answer": "d"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "666de6c2",
+        "answer": {
+          "value": 25,
+          "label": "25 cm"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
