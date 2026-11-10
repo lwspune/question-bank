@@ -93,6 +93,9 @@ describe("paperIssues", () => {
     expect(issues.join("\n")).toMatch(/Astrology/);
     expect(issues.join("\n")).toMatch(/answer-shaped/);
   });
+  it("accepts the 9-digit ids the 21 Aug 2024 papers print", () => {
+    expect(paperIssues(paper([row("1", "342123926")]))).toEqual([]);
+  });
   it("refuses a question id used twice", () => {
     expect(paperIssues(paper([row("1", "34212315762"), row("2", "34212315762")])).join()).toMatch(/twice/);
   });
@@ -153,6 +156,20 @@ describe("assemblePaper", () => {
   it("refuses a two-answer question where the solver picked neither accepted option", () => {
     const res = assemblePaper({ paper: paper([row("8", "34212315801")]), keys, derived: [derived("8", "A")] });
     expect(res.issues.join()).toMatch(/accepted/);
+  });
+
+  it("refuses a solution that breaks the house style: em dash, an option by number, bare unicode maths", () => {
+    const p = paper([row("1", "34212315762")]);
+    for (const [working, why] of [
+      ["Two steps — then done. So the answer is option (B).", /dash/],
+      ["Option 3 is false. So the answer is option (B).", /letter/],
+      ["\\(2\\) × 3 = 6. So the answer is option (B).", /unicode/],
+    ] as const) {
+      const d = { ...derived("1", "B"), working };
+      expect(assemblePaper({ paper: p, keys, derived: [d] }).issues.join()).toMatch(why);
+    }
+    const ok = { ...derived("1", "B"), working: "\\(64 \\times 12 = 768\\), and options (A) and (C) fail. So the answer is option (B)." };
+    expect(assemblePaper({ paper: p, keys, derived: [ok] }).issues).toEqual([]);
   });
 
   it("refuses a question whose id is in no key", () => {

@@ -177,6 +177,23 @@ export type Label = (typeof LABELS)[number];
 const DIFFICULTIES = ["Easy", "Moderate", "Hard"] as const;
 const letter = (option: number): Label => LABELS[option - 1];
 
+/** Maths zones removed, so `\(2 \times 3\)` is not read as a bare sign. */
+const outsideMath = (s: string) => s.replace(/\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]/g, " ");
+
+/**
+ * The house style a published solution must meet: no em dash (owner, 2026-10-05),
+ * options named by the LETTER the site shows (never "option 3"), and no bare
+ * unicode maths sign outside `\( \)`.
+ */
+export function styleIssues(where: string, s: string): string[] {
+  const out: string[] = [];
+  const prose = outsideMath(s);
+  if (/—| – | -- /.test(prose)) out.push(`${where}: em dash or spaced dash (use a full stop, colon, comma or brackets)`);
+  if (/\boptions? \(?[1-4]\)?(?![\d.])/i.test(prose)) out.push(`${where}: names an option by number; use its letter, (A)-(D)`);
+  if (/[×÷√≤≥≠]/.test(prose)) out.push(`${where}: bare unicode maths sign; put it in \\( \\) or use words`);
+  return out;
+}
+
 export function paperIssues(paper: UgcPaper): string[] {
   const issues: string[] = [];
   const refs = new Set<string>();
@@ -185,7 +202,7 @@ export function paperIssues(paper: UgcPaper): string[] {
     const at = `${paper.shift} Q${r.ref}`;
     if (refs.has(r.ref)) issues.push(`${at}: duplicate ref`);
     refs.add(r.ref);
-    if (!/^\d{10,11}$/.test(r.qid ?? "")) issues.push(`${at}: no NTA question id`);
+    if (!new RegExp(`^(?:${ID})$`).test(r.qid ?? "")) issues.push(`${at}: no NTA question id`);
     else if (qids.has(r.qid)) issues.push(`${at}: question id ${r.qid} used twice`);
     qids.add(r.qid);
     const ch = UGC_NET_TAXONOMY.find((c) => c.name === r.chapter);
@@ -333,7 +350,7 @@ export function assemblePaper(input: {
     let solution = a?.solution ?? d.working;
     if (a?.solutionNote) solution = `${solution}\n\n${a.solutionNote}`;
     if (notice) solution = `**Note:** ${notice}\n\n${solution}`;
-    const bad = textIssues(`${at} solution`, solution);
+    const bad = [...textIssues(`${at} solution`, solution), ...styleIssues(`${at} solution`, solution)];
     if (!solution?.trim()) bad.push(`${at}: empty solution`);
     if (bad.length) {
       issues.push(...bad);
