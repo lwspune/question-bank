@@ -35,6 +35,10 @@ const PAIRS: [text: string, bg: string][] = [
   ["brand-foreground", "brand"],
   ["brand-accent", "background"],
   ["brand-accent", "card"],
+  // The header's Ebooks and Tutor pills (2026-11-10): blue text on the light
+  // accent tint, and on the secondary navy in dark mode.
+  ["brand-accent", "accent"],
+  ["brand-accent", "secondary"],
   // The homepage exam carousel (2026-11-09): white cards and controls on the
   // navy panel keep the same look in both modes, so they carry their own tokens.
   ["band-foreground", "band"],

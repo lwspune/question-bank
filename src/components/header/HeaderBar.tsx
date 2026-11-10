@@ -175,7 +175,7 @@ export default function HeaderBar({
                 />
               </>
             ) : (
-              <Button asChild variant="outline" size="sm">
+              <Button asChild size="sm" className="shrink-0 rounded-full">
                 <SignInLink variant="header">Sign in</SignInLink>
               </Button>
             )}
@@ -190,11 +190,17 @@ export default function HeaderBar({
   );
 }
 
-/** The header's outlined buttons (Ebooks, Tutor); filled when you are on their page. */
+/**
+ * The header's Ebooks and Tutor buttons: soft tinted pills, filled when you are
+ * on their page. Outlined boxes until 2026-11-10, when four outlined boxes in a
+ * row (these two, the theme toggle and Sign in) made the header busy and none
+ * stood out; Sign in is now the one solid button. Both stay visible: each is
+ * the way in to a running experiment (ebook-store, tutor-price).
+ */
 function headerButtonClass(active: boolean): string {
   return (
-    "inline-flex h-9 shrink-0 items-center gap-1.5 rounded-md border px-2 text-sm sm:px-2.5 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 " +
-    (active ? "border-brand bg-brand text-brand-foreground" : "border-brand/40 text-brand-accent hover:bg-brand/10")
+    "inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full px-2.5 text-sm sm:px-3 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 " +
+    (active ? "bg-brand text-brand-foreground" : "bg-accent text-brand-accent hover:bg-brand/15 dark:bg-secondary")
   );
 }
 
