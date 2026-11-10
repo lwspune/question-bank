@@ -50,9 +50,14 @@ export type PlanProgress = {
   doneDays: number;
   /** Questions of this plan waiting in the drill. */
   toReview: number;
-  /** The day to continue: the lowest day started but not finished, else the
-   *  lowest day not done. Null when every day is done. */
+  /** The day to continue: the lowest day not done. Null when every day is done.
+   *  Until 2026-11-10 a day already begun came first, but a mark made anywhere
+   *  counts, so one /board answer sent a student to Day 215 of a plan they had
+   *  never opened. */
   nextDay: number | null;
+  /** The lowest day after `nextDay` that is begun but not finished, named on
+   *  the card so a student who skipped ahead still sees it. Null when none. */
+  laterStartedDay: number | null;
   started: boolean;
 };
 
@@ -141,15 +146,38 @@ export function planProgress(items: readonly ProgressItem[], events: readonly Pr
     return { day, ...summarizeDay(slots, marks, due) };
   });
   const started = touched.size > 0;
-  const partial = days.find((d) => touched.has(d.day) && !d.complete);
-  const nextDay = partial?.day ?? days.find((d) => !d.complete)?.day ?? null;
+  const nextDay = days.find((d) => !d.complete)?.day ?? null;
+  const laterStartedDay =
+    nextDay === null ? null : days.find((d) => d.day > nextDay && touched.has(d.day) && !d.complete)?.day ?? null;
   return {
     days,
     doneDays: days.filter((d) => d.complete).length,
     toReview: days.reduce((n, d) => n + d.toReview, 0),
     nextDay,
+    laterStartedDay,
     started,
   };
+}
+
+// ── the progress card's words ────────────────────────────────────────────────
+
+const plural = (n: number, one: string, many: string) => (n === 1 ? one : many);
+
+/** "Next up: Day 1", or "3 days done. Next up: Day 4". Never opens with a zero. */
+export function progressHeadline(p: PlanProgress): string {
+  const done = p.doneDays > 0 ? `${p.doneDays} ${plural(p.doneDays, "day", "days")} done.` : "";
+  const next = p.nextDay === null ? "You have finished every day." : `Next up: Day ${p.nextDay}`;
+  return done ? `${done} ${next}` : next;
+}
+
+/** The line naming a later day already begun, or null. A day with only part
+ *  of a case study answered has no whole question marked, so it is "started". */
+export function laterStartedLine(p: PlanProgress): string | null {
+  const d = p.laterStartedDay === null ? undefined : p.days.find((x) => x.day === p.laterStartedDay);
+  if (!d) return null;
+  return d.done > 0
+    ? `You have also marked ${d.done} of Day ${d.day}'s ${d.total} questions.`
+    : `You have also started Day ${d.day}.`;
 }
 
 // ── the route's input ────────────────────────────────────────────────────────
