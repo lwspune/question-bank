@@ -1,0 +1,5762 @@
+{
+ "//": "Assembled from agent drafts (algebraSteps).",
+ "visuals": [
+  {
+   "id": "023cb7f9-aadf-4ca1-aa77-15f4a2b289b9",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sum x = 12 \\cdot \\tfrac{9}{2} = 54",
+       "f": "12*9/2",
+       "value": "54"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sum x^2 = 12\\left(4+\\tfrac{81}{4}\\right) = 291",
+       "f": "12*(4+(9/2)^2)",
+       "value": "291"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{new } \\sum x = 54-19+21 = 56",
+       "f": "54-19+21",
+       "value": "56"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum x^2 = 291-81-100+49+196 = 355",
+       "f": "291-81-100+49+196",
+       "value": "355"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\sigma^2 = \\tfrac{355}{12}-\\tfrac{196}{9} = \\tfrac{281}{36}",
+       "f": "355/12-(56/12)^2",
+       "value": "281/36"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "m+n = 281+36 = 317",
+       "f": "281+36",
+       "value": "317"
+      }
+     ],
+     "answer": "281+36"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "740c623f",
+    "answer": {
+     "value": 317,
+     "label": "317",
+     "option": "C"
+    }
+   }
+  },
+  {
+   "id": "047076a8-33a3-4a46-b880-85914329cf7b",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "a+b = 5 \\cdot 5-1-3-7 = 14",
+       "f": "5*5-1-3-7",
+       "value": "14"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "a^2+b^2 = 5 \\cdot 35-1-9-49 = 116",
+       "f": "5*(10+25)-1-9-49",
+       "value": "116"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "a=10,\\; b=4"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "n+x_n:\\; 2,\\,5,\\,13,\\,11,\\,9"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\tfrac{2^2+5^2+13^2+11^2+9^2}{5} = 80",
+       "f": "(4+25+169+121+81)/5",
+       "value": "80"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\sigma^2 = 80-\\left(\\tfrac{40}{5}\\right)^2 = 16",
+       "f": "80-(40/5)^2",
+       "value": "16"
+      }
+     ],
+     "answer": "80-(40/5)^2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "fdbea0d1",
+    "answer": {
+     "value": 16,
+     "label": "16",
+     "option": "D"
+    }
+   }
+  },
+  {
+   "id": "08201f35-a3dc-4f22-9686-806c7279b698",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sum x_i = 30+20 = 50,\\ \\bar x = 5",
+       "f": "(30+20)/10",
+       "value": "5"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sum (x_i-5)^2 = 10 \\cdot \\tfrac{4}{5} = 8",
+       "f": "10*4/5",
+       "value": "8"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "98 = 8+10(5-\\beta)^2",
+       "lhs": "98",
+       "rhs": "8+10*(5-x)^2",
+       "roots": [
+        "8"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "(5-\\beta)^2 = 9,\\; \\beta>2 \\Rightarrow \\beta = 8"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mu = 2 \\cdot 5-2+4 \\cdot 8 = 40",
+       "f": "2*5-2+4*8",
+       "value": "40"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\sigma^2 = 4 \\cdot \\tfrac{4}{5} = \\tfrac{16}{5}",
+       "f": "4*4/5",
+       "value": "16/5"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\tfrac{\\beta\\mu}{\\sigma^2} = \\tfrac{8 \\cdot 40}{16/5} = 100",
+       "f": "8*40/(16/5)",
+       "value": "100"
+      }
+     ],
+     "answer": "8*40/(16/5)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "0efcf568",
+    "answer": {
+     "value": 100,
+     "label": "100",
+     "option": "A"
+    }
+   }
+  },
+  {
+   "id": "08a865cc-5614-4dd1-bbec-013ef70b1fdb",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "N = 8+6+2+2+2+6 = 26",
+       "f": "8+6+2+2+2+6",
+       "value": "26"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sum f_ix_i = 40+42+18+20+24+90 = 234",
+       "f": "40+42+18+20+24+90",
+       "value": "234"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\text{mean} = \\tfrac{234}{26} = 9",
+       "f": "234/26",
+       "value": "9"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum f_i|x_i-9| = 8(4)+6(2)+2(0)+2(1)+2(3)+6(6)",
+       "f": "8*4+6*2+2*0+2*1+2*3+6*6",
+       "value": "88"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "= 32+12+0+2+6+36 = 88",
+       "f": "32+12+0+2+6+36",
+       "value": "88"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{M.D.} = \\tfrac{88}{26} = \\tfrac{44}{13}",
+       "f": "88/26",
+       "value": "44/13"
+      }
+     ],
+     "answer": "88/26"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "5ac6d485",
+    "answer": {
+     "value": 3.3846153846153846,
+     "label": "44/13",
+     "option": "C"
+    }
+   }
+  },
+  {
+   "id": "0a2fe4d9-9135-44c0-9978-fde318be2f28",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sum x = 56,\\ \\sum x^2 = 7(16+64) = 560",
+       "f": "7*(16+64)",
+       "value": "560"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{new } \\sum x = 42 \\Rightarrow a = 7",
+       "f": "(56-14)/6",
+       "value": "7"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum x^2 = 364 \\Rightarrow b = \\tfrac{364}{6}-49",
+       "f": "364/6-49",
+       "value": "35/3"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "a+3b-5 = 7+35-5 = 37",
+       "f": "7+3*(35/3)-5",
+       "value": "37"
+      }
+     ],
+     "answer": "7+3*(35/3)-5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "6216198c",
+    "answer": {
+     "value": 37,
+     "label": "37"
+    }
+   }
+  },
+  {
+   "id": "0ba9d2d0-9889-43f5-af73-822809264c95",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{M.D.} = \\dfrac{n^{2}-1}{4n}"
+      },
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "\\dfrac{(n-1)(n+1)}{4n} = \\dfrac{5(n+1)}{n}",
+       "lhs": "(x^2-1)/(4*x)",
+       "rhs": "5*(x+1)/x",
+       "roots": [
+        "21"
+       ]
+      },
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "\\dfrac{n-1}{4} = 5 \\Rightarrow n = 21",
+       "lhs": "(x-1)/4",
+       "rhs": "5",
+       "roots": [
+        "21"
+       ]
+      }
+     ],
+     "answer": "21"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     }
+    ],
+    "fingerprint": "5a0bd7b5",
+    "answer": {
+     "value": 21,
+     "label": "21"
+    }
+   }
+  },
+  {
+   "id": "0c1bc3b9-0e61-4721-b10e-c156e062fefe",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "c-w = 800-750 = 50",
+       "f": "800-750",
+       "value": "50"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "c = \\tfrac{70+50}{2} = 60,\\ w = 10",
+       "f": "(70+50)/2",
+       "value": "60"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum x^2 = 50(4+225) = 11450",
+       "f": "50*(4+225)",
+       "value": "11450"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\sum x^2 = 11450-10^2+60^2 = 14950",
+       "f": "11450-10^2+60^2",
+       "value": "14950"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\sigma^2 = \\tfrac{14950}{50}-16^2 = 299-256 = 43",
+       "f": "14950/50-16^2",
+       "value": "43"
+      }
+     ],
+     "answer": "14950/50-16^2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "e123110f",
+    "answer": {
+     "value": 43,
+     "label": "43",
+     "option": "C"
+    }
+   }
+  },
+  {
+   "id": "0d61678f-1d7d-45dc-8894-6fdd1851de57",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sum x_i = 10 \\cdot \\tfrac{6}{5} = 12",
+       "f": "10*6/5",
+       "value": "12"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "12-10\\alpha = 2 \\Rightarrow \\alpha = 1",
+       "lhs": "12-10*x",
+       "rhs": "2",
+       "roots": [
+        "1"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\sum (x_i-\\bar x)^2 = 10 \\cdot \\tfrac{84}{25} = 33.6",
+       "f": "10*84/25",
+       "value": "33.6"
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "33.6+10\\left(\\tfrac{6}{5}-\\beta\\right)^2 = 40",
+       "lhs": "33.6+10*(6/5-x)^2",
+       "rhs": "40",
+       "roots": [
+        "2"
+       ]
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "(1.2-\\beta)^2 = 0.64 \\Rightarrow \\beta = 2"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "\\beta/\\alpha = 2",
+       "f": "2/1",
+       "value": "2"
+      }
+     ],
+     "answer": "2/1"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "86773681",
+    "answer": {
+     "value": 2,
+     "label": "2",
+     "option": "A"
+    }
+   }
+  },
+  {
+   "id": "10dbcf8c-7642-48a7-9b8d-288ddb0c2e04",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{means } 6 \\text{ and } 3,\\ \\text{variances } \\sigma_1^2, \\sigma_2^2"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{mean} = \\tfrac{2 \\cdot 6+3}{3} = 5",
+       "f": "(2*6+3)/3",
+       "value": "5"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\tfrac{2(\\sigma_1^2+1)+(\\sigma_2^2+4)}{3} = 4 \\Rightarrow 2\\sigma_1^2+\\sigma_2^2 = 6"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{new mean} = \\tfrac{2 \\cdot 7+2}{3} = \\tfrac{16}{3}",
+       "f": "(2*7+2)/3",
+       "value": "16/3"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "k = \\tfrac{6+2 \\cdot 25/9+100/9}{3}",
+       "f": "(6+2*25/9+100/9)/3",
+       "value": "68/9"
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "k = \\tfrac{6+150/9}{3} = \\tfrac{68}{9},\\ 9k = 68",
+       "f": "9*(6+150/9)/3",
+       "value": "68"
+      }
+     ],
+     "answer": "9*(6+150/9)/3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "d63f3721",
+    "answer": {
+     "value": 68,
+     "label": "68"
+    }
+   }
+  },
+  {
+   "id": "163b6210-44c7-4294-a357-d16c91eb92e1",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "a+b = 72-60 = 12",
+       "f": "72-60",
+       "value": "12"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum x^2 = 8\\left(\\tfrac{37}{4}+81\\right) = 722",
+       "f": "8*(37/4+81)",
+       "value": "722"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "a^2+b^2 = 722-642 = 80",
+       "f": "722-642",
+       "value": "80"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "2ab = 144-80 = 64",
+       "f": "144-80",
+       "value": "64"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "(a-b)^2 = 80-64 = 16",
+       "f": "80-64",
+       "value": "16"
+      }
+     ],
+     "answer": "80-64"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "f6556c75",
+    "answer": {
+     "value": 16,
+     "label": "16"
+    }
+   }
+  },
+  {
+   "id": "1a48be9f-cf32-4329-a50a-511d258c59f9",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "20\\sum x_i = 2500-100 = 2400",
+       "f": "2500-100",
+       "value": "2400"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sum x_i = 120,\\ \\text{mean} = 6",
+       "f": "2400/20/20",
+       "value": "6"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "2\\sum x_i^2 = 2600-1000 \\Rightarrow \\sum x_i^2 = 800",
+       "f": "(2600-1000)/2",
+       "value": "800"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\sigma^2 = \\tfrac{800}{20}-6^2 = 4",
+       "f": "800/20-6^2",
+       "value": "4"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{mean} : \\text{SD} = 6 : 2 = 3 : 1",
+       "f": "6/sqrt(4)",
+       "value": "3"
+      }
+     ],
+     "answer": "6/sqrt(4)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "ea27b089",
+    "answer": {
+     "value": 3,
+     "label": "3 : 1",
+     "option": "B"
+    }
+   }
+  },
+  {
+   "id": "22658fe8-e15a-4c93-abe1-6c8c0c27000e",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\text{correct } \\sum x = 120-5+20 = 135",
+       "f": "120-5+20",
+       "value": "135"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\text{mean} = \\tfrac{135}{15} = 9",
+       "f": "135/15",
+       "value": "9"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{old } \\sum x^2 = 15(9+64) = 1095",
+       "f": "15*(9+64)",
+       "value": "1095"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{correct } \\sum x^2 = 1095-25+400 = 1470",
+       "f": "1095-25+400",
+       "value": "1470"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\sigma^2 = \\tfrac{1470}{15}-9^2 = 98-81 = 17",
+       "f": "1470/15-9^2",
+       "value": "17"
+      }
+     ],
+     "answer": "1470/15-9^2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "0ad39c8f",
+    "answer": {
+     "value": 17,
+     "label": "17"
+    }
+   }
+  },
+  {
+   "id": "23f495ae-fe58-4255-af03-8aec03f33b5e",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "x:\\ c,2c,\\dots,6c;\\quad f:\\ 2,1,1,1,1,1;\\quad N = 7"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{mean} = \\tfrac{22c}{7},\\quad \\sum fx^2 = 92c^2"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "\\tfrac{92c^2}{7}-\\tfrac{484c^2}{49} = \\tfrac{160c^2}{49} = 160",
+       "lhs": "92*x^2/7-484*x^2/49",
+       "rhs": "160",
+       "roots": [
+        "7"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "c^2 = 49,\\ c = 7"
+      }
+     ],
+     "answer": "7"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "ccaf41d2",
+    "answer": {
+     "value": 7,
+     "label": "7",
+     "option": "C"
+    }
+   }
+  },
+  {
+   "id": "25096134-52b7-42fa-8a8c-2bd7b4287993",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "a+b = 6 \\cdot 2-(-3+4+7-6) = 10",
+       "f": "6*2-(-3+4+7-6)",
+       "value": "10"
+      },
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "(a-2)^2+(b-2)^2 = 20 \\Rightarrow \\{a,b\\} = \\{4,6\\}",
+       "lhs": "(x-2)^2+(10-x-2)^2",
+       "rhs": "20",
+       "roots": [
+        "4",
+        "6"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "|x_i-2| = 5,\\,2,\\,5,\\,8,\\,2,\\,4"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{MD} = \\tfrac{26}{6} = \\tfrac{13}{3}",
+       "f": "(5+2+5+8+2+4)/6",
+       "value": "13/3"
+      }
+     ],
+     "answer": "(5+2+5+8+2+4)/6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "144937e1",
+    "answer": {
+     "value": 4.333333333333333,
+     "label": "13/3",
+     "option": "A"
+    }
+   }
+  },
+  {
+   "id": "30c7107b-bf84-4fd7-a9b2-d314f531bd33",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sum x = 200,\\ \\sum x^2 = 20(4+100) = 2080",
+       "f": "20*(4+100)",
+       "value": "2080"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum x = 204,\\ \\bar x = 10.2",
+       "f": "204/20",
+       "value": "10.2"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum x^2 = 2080-64+144 = 2160",
+       "f": "2080-64+144",
+       "value": "2160"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{Var} = \\tfrac{2160}{20}-10.2^2 = 108-104.04",
+       "f": "2160/20-10.2^2",
+       "value": "3.96"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{SD} = \\sqrt{3.96}",
+       "f": "sqrt(3.96)",
+       "value": "sqrt(3.96)"
+      }
+     ],
+     "answer": "sqrt(3.96)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "f718270b",
+    "answer": {
+     "value": 1.98997487421324,
+     "label": "√3.96",
+     "option": "C"
+    }
+   }
+  },
+  {
+   "id": "35c64dd0-ca07-40f5-aae2-fee34a3dee82",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\text{correct } \\sum x = 150-25+15 = 140,\\ \\text{mean} = 14",
+       "f": "(150-25+15)/10",
+       "value": "14"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum x^2 = 10(15+225) = 2400",
+       "f": "10*(15+225)",
+       "value": "2400"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{correct } \\sum x^2 = 2400-625+225 = 2000",
+       "f": "2400-625+225",
+       "value": "2000"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{Var} = \\tfrac{2000}{10}-14^2 = 200-196 = 4",
+       "f": "2000/10-14^2",
+       "value": "4"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{SD} = 2",
+       "f": "sqrt(4)",
+       "value": "2"
+      }
+     ],
+     "answer": "sqrt(4)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "e148ff43",
+    "answer": {
+     "value": 2,
+     "label": "2"
+    }
+   }
+  },
+  {
+   "id": "37c3a42d-f390-4068-986f-a8ab26ab5186",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "360+6\\alpha+12\\beta = 9(40+\\alpha+\\beta) \\Rightarrow \\alpha = \\beta"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "\\tfrac{3904+180\\alpha}{40+2\\alpha}-81 = 15.08",
+       "lhs": "(3904+180*x)/(40+2*x)-81",
+       "rhs": "15.08",
+       "roots": [
+        "5"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "60.8 = 12.16\\alpha \\Rightarrow \\alpha = \\beta = 5"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\alpha^2+\\beta^2-\\alpha\\beta = 25+25-25 = 25",
+       "f": "5^2+5^2-5*5",
+       "value": "25"
+      }
+     ],
+     "answer": "5^2+5^2-5*5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "058e9fcb",
+    "answer": {
+     "value": 25,
+     "label": "25"
+    }
+   }
+  },
+  {
+   "id": "3b0d68be-9ee0-4ec5-9168-880fcd7e3424",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "A':\\ \\text{mean } 2,\\ \\text{var } 12;\\quad B':\\ \\text{mean } 10,\\ \\text{var } 20"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\bar C = \\tfrac{5 \\cdot 2+5 \\cdot 10}{10} = 6",
+       "f": "(5*2+5*10)/10",
+       "value": "6"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sigma_C^2 = \\tfrac{140+180}{10} = 32",
+       "f": "(140+180)/10",
+       "value": "32"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\text{Sum} = 6+32 = 38",
+       "f": "6+32",
+       "value": "38"
+      }
+     ],
+     "answer": "6+32"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     }
+    ],
+    "fingerprint": "5d98f306",
+    "answer": {
+     "value": 38,
+     "label": "38",
+     "option": "B"
+    }
+   }
+  },
+  {
+   "id": "3b31d6ab-dbd0-4091-84f0-bb3fabaa04c2",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{midpoints } 7.5,\\,12.5,\\,17.5,\\,22.5,\\,27.5,\\,32.5"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "\\tfrac{1910+40k}{90+2k} = 21",
+       "lhs": "(1910+40*x)/(90+2*x)",
+       "rhs": "21",
+       "roots": [
+        "10"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "20 = 2k \\Rightarrow k = 10"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "2k^2-19k-10 = 200-190-10 = 0",
+       "f": "2*10^2-19*10-10",
+       "value": "0"
+      }
+     ],
+     "answer": "10"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "4cdac88c",
+    "answer": {
+     "value": 10,
+     "label": "k = 10",
+     "option": "C"
+    }
+   }
+  },
+  {
+   "id": "41d3ab71-ec0e-45f8-86c4-9af8061c52a4",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\sum a_k = 50,\\quad \\sum_{k<j} a_ka_j = 1100"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum a_i^2 = 2500-2(1100) = 300",
+       "f": "2500-2*1100",
+       "value": "300"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sigma = \\sqrt{\\tfrac{300}{10}-\\left(\\tfrac{50}{10}\\right)^2} = \\sqrt{30-25}",
+       "f": "sqrt(300/10-(50/10)^2)",
+       "value": "sqrt(5)"
+      }
+     ],
+     "answer": "sqrt(5)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "f89d258a",
+    "answer": {
+     "value": 2.23606797749979,
+     "label": "√5",
+     "option": "B"
+    }
+   }
+  },
+  {
+   "id": "42b94a18-3ac0-4111-b04c-e33836e745f3",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "6\\sum x_i+30 = 180-90 \\Rightarrow \\sum x_i = 10",
+       "f": "(180-90-30)/6",
+       "value": "10"
+      },
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{mean} = 1"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum x_i^2-2(10)+10 = 90 \\Rightarrow \\sum x_i^2 = 100",
+       "f": "90+2*10-10",
+       "value": "100"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{Var} = \\tfrac{100}{10}-1^2 = 9",
+       "f": "100/10-1^2",
+       "value": "9"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{SD} = 3",
+       "f": "sqrt(9)",
+       "value": "3"
+      }
+     ],
+     "answer": "sqrt(9)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "e4a85fc3",
+    "answer": {
+     "value": 3,
+     "label": "3",
+     "option": "D"
+    }
+   }
+  },
+  {
+   "id": "43c3c202-51f3-4a76-95b6-2741ba23411f",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sum (X_i-\\bar X)^2 = 18 \\cdot 1 = 18",
+       "f": "18*1^2",
+       "value": "18"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\bar X-\\alpha = \\tfrac{36}{18} = 2",
+       "f": "36/18",
+       "value": "2"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "18+18(\\bar X-\\beta)^2 = 90",
+       "lhs": "18+18*x^2",
+       "rhs": "90",
+       "roots": [
+        "2",
+        "-2"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "(\\bar X-\\beta)^2 = 4"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "\\alpha \\ne \\beta \\Rightarrow \\beta = \\bar X+2"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\beta-\\alpha = (\\bar X-\\alpha)+2 = 4",
+       "f": "2+2",
+       "value": "4"
+      }
+     ],
+     "answer": "2+2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "2f6cd109",
+    "answer": {
+     "value": 4,
+     "label": "4"
+    }
+   }
+  },
+  {
+   "id": "4b4ef684-5e56-4e56-9298-66dddfd2bc0a",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "3k^2+4k-2 = 62",
+       "lhs": "3*x^2+4*x-2",
+       "rhs": "62",
+       "roots": [
+        "4"
+       ]
+      },
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "f_i = 6,\\,8,\\,15,\\,15,\\,17,\\,1"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\bar x = \\tfrac{156}{62}",
+       "f": "156/62",
+       "value": "156/62"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\overline{x^2} = \\tfrac{500}{62} = 8.06\\ldots",
+       "f": "500/62",
+       "value": "500/62"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "[\\mu^2+\\sigma^2] = [8.06\\ldots] = 8",
+       "f": "floor(500/62)",
+       "value": "8"
+      }
+     ],
+     "answer": "floor(500/62)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "87244a2f",
+    "answer": {
+     "value": 8,
+     "label": "8",
+     "option": "A"
+    }
+   }
+  },
+  {
+   "id": "4feb2285-a78d-4ae1-8281-02dbea54bf6b",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\mu_{\\text{corr}} = \\tfrac{200-50+40}{10} = 19",
+       "f": "(200-50+40)/10",
+       "value": "19"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sum x_i^2 = (64+400) \\cdot 10",
+       "f": "(64+400)*10",
+       "value": "4640"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sigma^2_{\\text{corr}} = \\tfrac{1}{10}[4640-2500+1600]-19^2",
+       "f": "(4640-2500+1600)/10-19^2",
+       "value": "13"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "= 374-361 = 13",
+       "f": "374-361",
+       "value": "13"
+      }
+     ],
+     "answer": "374-361"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     }
+    ],
+    "fingerprint": "be312e55",
+    "answer": {
+     "value": 13,
+     "label": "13",
+     "option": "B"
+    }
+   }
+  },
+  {
+   "id": "50161299-038e-45d2-8aad-2ea24d14f601",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sum_5 = 24,\\ \\sum_4 = 14 \\Rightarrow x_5 = 10",
+       "f": "24-14",
+       "value": "10"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum x^2 = 5\\left(\\tfrac{194}{25}+\\tfrac{576}{25}\\right) = 154",
+       "f": "5*(194/25+576/25)",
+       "value": "154"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{first four } \\sum x^2 = 154-100 = 54",
+       "f": "154-100",
+       "value": "54"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "a = \\tfrac{54}{4}-\\tfrac{49}{4} = \\tfrac{5}{4}",
+       "f": "54/4-49/4",
+       "value": "5/4"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "4a+x_5 = 5+10 = 15",
+       "f": "4*(5/4)+10",
+       "value": "15"
+      }
+     ],
+     "answer": "4*(5/4)+10"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "a8b3e64e",
+    "answer": {
+     "value": 15,
+     "label": "15",
+     "option": "B"
+    }
+   }
+  },
+  {
+   "id": "52c13673-c346-424e-bf34-89c3ea618297",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{Var}(1,2,\\ldots,n) = \\tfrac{n^2-1}{12}"
+      },
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "\\tfrac{n^2-1}{12} = 14 \\Rightarrow n = 13",
+       "lhs": "(x^2-1)/12",
+       "rhs": "14",
+       "roots": [
+        "13"
+       ]
+      }
+     ],
+     "answer": "13"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     }
+    ],
+    "fingerprint": "63f3889e",
+    "answer": {
+     "value": 13,
+     "label": "13"
+    }
+   }
+  },
+  {
+   "id": "533373f4-799a-4ab0-a716-1b5d06469f86",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "\\tfrac13+K+\\tfrac16+\\tfrac14 = 1 \\Rightarrow K = \\tfrac14",
+       "lhs": "1/3+x+1/6+1/4",
+       "rhs": "1",
+       "roots": [
+        "1/4"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mu = \\tfrac{\\alpha}{3}+\\tfrac14-\\tfrac34 = \\tfrac{\\alpha}{3}-\\tfrac12"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "E(X^2) = \\tfrac{\\alpha^2}{3}+\\tfrac14+\\tfrac94 = \\tfrac{\\alpha^2}{3}+\\tfrac52"
+      },
+      {
+       "step": "s3",
+       "kind": "expr",
+       "tex": "\\sigma^2 = \\tfrac{\\alpha^2}{3}+\\tfrac52-\\left(\\tfrac{\\alpha}{3}-\\tfrac12\\right)^2",
+       "f": "x^2/3+5/2-(x/3-1/2)^2"
+      },
+      {
+       "step": "s3",
+       "kind": "expr",
+       "tex": "\\sigma^2 = \\tfrac{2\\alpha^2}{9}+\\tfrac{\\alpha}{3}+\\tfrac94",
+       "f": "2*x^2/9+x/3+9/4"
+      },
+      {
+       "step": "s4",
+       "kind": "expr",
+       "tex": "\\sigma^2 = \\left(\\tfrac{\\alpha}{3}+\\tfrac32\\right)^2 = \\tfrac{\\alpha^2}{9}+\\alpha+\\tfrac94",
+       "f": "(x/3+3/2)^2",
+       "restart": true
+      },
+      {
+       "step": "s5",
+       "kind": "eq",
+       "tex": "\\tfrac{2\\alpha^2}{9}+\\tfrac{\\alpha}{3}+\\tfrac94 = \\tfrac{\\alpha^2}{9}+\\alpha+\\tfrac94",
+       "lhs": "2*x^2/9+x/3+9/4",
+       "rhs": "x^2/9+x+9/4",
+       "roots": [
+        "0",
+        "6"
+       ]
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "\\alpha = 6,\\ \\mu = \\tfrac32,\\ \\sigma = \\tfrac72",
+       "f": "6/3-1/2",
+       "value": "3/2"
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "\\sigma+\\mu = \\tfrac72+\\tfrac32 = 5",
+       "f": "7/2+3/2",
+       "value": "5"
+      }
+     ],
+     "answer": "7/2+3/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "1e24f1c8",
+    "answer": {
+     "value": 5,
+     "label": "5"
+    }
+   }
+  },
+  {
+   "id": "5c9af234-0cac-490a-8a9c-24835d42a6a8",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\alpha+\\beta = 560-448 = 112",
+       "f": "560-448",
+       "value": "112"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum x^2 = 10(66.2+56^2) = 32022",
+       "f": "10*(66.2+56^2)",
+       "value": "32022"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\alpha^2+\\beta^2 = 32022-25678 = 6344",
+       "f": "32022-25678",
+       "value": "6344"
+      }
+     ],
+     "answer": "32022-25678"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "faf9a396",
+    "answer": {
+     "value": 6344,
+     "label": "6344"
+    }
+   }
+  },
+  {
+   "id": "5d3c9d2d-c331-40fa-a545-1b048ab9e0f7",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{combined mean} = 13;\\ d_1 = -1,\\ d_2 = 1"
+      },
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "13 = \\tfrac{15(14+1)+15(\\sigma^2+1)}{30}",
+       "lhs": "(15*(14+1)+15*(x+1))/30",
+       "rhs": "13",
+       "roots": [
+        "10"
+       ]
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "390 = 240+15\\sigma^2 \\Rightarrow \\sigma^2 = 10",
+       "f": "(390-240)/15",
+       "value": "10"
+      }
+     ],
+     "answer": "(390-240)/15"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     }
+    ],
+    "fingerprint": "b37baf9d",
+    "answer": {
+     "value": 10,
+     "label": "10",
+     "option": "D"
+    }
+   }
+  },
+  {
+   "id": "5fda8938-8a18-42d6-b585-dd61c114ad5a",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{Var} = d^2\\tfrac{n^2-1}{12} = 4d^2"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\text{SD} = 2|d| = 4 \\Rightarrow d = 2",
+       "f": "4/2",
+       "value": "2"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\bar x = x_4 = 9+6 = 15",
+       "f": "9+3*2",
+       "value": "15"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "x_6 = 9+10 = 19",
+       "f": "9+5*2",
+       "value": "19"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\bar x+x_6 = 34",
+       "f": "15+19",
+       "value": "34"
+      }
+     ],
+     "answer": "15+19"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "8d2a3de8",
+    "answer": {
+     "value": 34,
+     "label": "34",
+     "option": "D"
+    }
+   }
+  },
+  {
+   "id": "6148daf9-9a10-4d70-9a64-80b44f682bbe",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\bar x = 26,\\ \\bar y = 76"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\tfrac{31^2-1}{12} = 80",
+       "f": "(31^2-1)/12",
+       "value": "80"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sigma^2 = 80+\\tfrac{(26-51)^2+(76-51)^2}{2} = 80+625",
+       "f": "80+((26-51)^2+(76-51)^2)/2",
+       "value": "705"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "|\\bar x+\\bar y-\\sigma^2| = |102-705| = 603",
+       "f": "abs(102-705)",
+       "value": "603"
+      }
+     ],
+     "answer": "abs(102-705)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "5f8940a8",
+    "answer": {
+     "value": 603,
+     "label": "603"
+    }
+   }
+  },
+  {
+   "id": "654d06a2-620d-465e-92a4-01fa80f0f380",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sum x = 1200,\\ \\sum x^2 = 40(25+900) = 37000",
+       "f": "40*(25+900)",
+       "value": "37000"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n = 38,\\ \\sum x = 1178 \\ (\\text{mean } 31)",
+       "f": "1200-12-10",
+       "value": "1178"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum x^2 = 36756",
+       "f": "37000-144-100",
+       "value": "36756"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "38\\sigma^2 = 36756-38 \\cdot 31^2 = 36756-36518",
+       "f": "36756-38*31^2",
+       "value": "238"
+      }
+     ],
+     "answer": "36756-38*31^2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "28f5593a",
+    "answer": {
+     "value": 238,
+     "label": "238"
+    }
+   }
+  },
+  {
+   "id": "661364e0-942a-4301-b91b-bed1ddc900ac",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{nine } 1\\text{'s and one } k:\\ \\text{mean} = \\tfrac{9+k}{10}"
+      },
+      {
+       "step": "s3",
+       "kind": "expr",
+       "tex": "\\sigma^2 = \\tfrac{9 \\cdot 1^2+k^2}{10}-\\left(\\tfrac{9+k}{10}\\right)^2",
+       "f": "(9*1^2+x^2)/10-((9+x)/10)^2",
+       "restart": true
+      },
+      {
+       "step": "s3",
+       "kind": "expr",
+       "tex": "= \\tfrac{10(9+k^2)-(9+k)^2}{100}",
+       "f": "(10*(9+x^2)-(9+x)^2)/100"
+      },
+      {
+       "step": "s3",
+       "kind": "expr",
+       "tex": "= \\tfrac{9(k-1)^2}{100}",
+       "f": "9*(x-1)^2/100"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "(k-1)^2 < \\tfrac{1000}{9} = 111.1",
+       "f": "1000/9",
+       "value": "111.1",
+       "dp": 1
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "|k-1| < 10.54",
+       "f": "sqrt(1000/9)",
+       "value": "10.54",
+       "dp": 2
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "k < 11.54 \\Rightarrow k = 11",
+       "f": "floor(1+sqrt(1000/9))",
+       "value": "11"
+      }
+     ],
+     "answer": "floor(1+sqrt(1000/9))"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "06fc262b",
+    "answer": {
+     "value": 11,
+     "label": "11"
+    }
+   }
+  },
+  {
+   "id": "697f4a44-8a77-487c-8169-43f543d3d641",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "P(0) = \\tfrac{105}{153},\\ P(1) = \\tfrac{45}{153},\\ P(2) = \\tfrac{3}{153}",
+       "f": "105+45+3",
+       "value": "153"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "E[X] = \\tfrac{51}{153} = \\tfrac13",
+       "f": "(45+2*3)/153",
+       "value": "1/3"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "E[X^2] = \\tfrac{57}{153}",
+       "f": "(45+4*3)/153",
+       "value": "57/153"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{Var} = \\tfrac{57}{153}-\\tfrac19 = \\tfrac{40}{153}",
+       "f": "57/153-1/9",
+       "value": "40/153"
+      }
+     ],
+     "answer": "57/153-1/9"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "de6b7ead",
+    "answer": {
+     "value": 0.26143790849673204,
+     "label": "40/153",
+     "option": "D"
+    }
+   }
+  },
+  {
+   "id": "717cd737-4707-406e-9dbf-b764d8f4611d",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\text{corrected } \\sum x = 500-95+45 = 450",
+       "f": "500-95+45",
+       "value": "450"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\text{mean} = 45",
+       "f": "450/10",
+       "value": "45"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum x^2 = 10(144+2500) = 26440",
+       "f": "10*(144+2500)",
+       "value": "26440"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "26440-4525+1025 = 22940",
+       "f": "26440-4525+1025",
+       "value": "22940"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{Var} = \\tfrac{22940}{10}-45^2 = 2294-2025 = 269",
+       "f": "22940/10-45^2",
+       "value": "269"
+      }
+     ],
+     "answer": "22940/10-45^2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "a3ad7141",
+    "answer": {
+     "value": 269,
+     "label": "269"
+    }
+   }
+  },
+  {
+   "id": "76be30ee-3b29-48c4-80bc-732e34bc9f0e",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{sum rises by } 1 \\Rightarrow \\beta-\\alpha = 1"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum x^2 = 10(2+100) = 1020",
+       "f": "10*(2+100)",
+       "value": "1020"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{new } \\sum x^2 = 10(1.99+10.1^2) = 1040",
+       "f": "10*(1.99+10.1^2)",
+       "value": "1040"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\beta^2-\\alpha^2 = 20"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "(\\alpha+\\beta)(1) = 20 \\Rightarrow \\alpha+\\beta = 20",
+       "f": "(1040-1020)/1",
+       "value": "20"
+      }
+     ],
+     "answer": "(1040-1020)/1"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "3af7e973",
+    "answer": {
+     "value": 20,
+     "label": "20",
+     "option": "D"
+    }
+   }
+  },
+  {
+   "id": "7a086c92-94ab-42ec-8c8c-570a5c9c9294",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\alpha+\\beta = 56-40 = 16",
+       "f": "56-40",
+       "value": "16"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "(\\alpha-8)^2+(\\beta-8)^2 = 112-104 = 8",
+       "f": "112-104",
+       "value": "8"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "2d^2 = 8 \\Rightarrow d = 2,\\ \\alpha = 6,\\ \\beta = 10",
+       "lhs": "2*x^2",
+       "rhs": "8",
+       "roots": [
+        "2"
+       ]
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "3\\alpha+2 = 20,\\ 2\\beta+1 = 21,\\ \\text{sum} = 41",
+       "f": "20+21",
+       "value": "41"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{product} = 420",
+       "f": "20*21",
+       "value": "420"
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "x^2-41x+420 = 0"
+      }
+     ],
+     "answer": "20*21"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "c0efdfe9",
+    "answer": {
+     "value": 420,
+     "label": "x²−41x+420=0",
+     "option": "B"
+    }
+   }
+  },
+  {
+   "id": "7b8d8d97-0eb6-40fb-85fa-30fd0dc5b17e",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\text{combined mean} = \\tfrac{4(1)+6(2)}{10} = 1.6",
+       "f": "(4*1+6*2)/10",
+       "value": "1.6"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "d_1 = -0.6,\\quad d_2 = 0.4"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\tfrac{4(13+0.36)+6(1+0.16)}{10} = \\tfrac{53.44+6.96}{10}",
+       "f": "(4*(13+0.36)+6*(1+0.16))/10",
+       "value": "6.04"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\sigma^2 = 6.04",
+       "f": "(53.44+6.96)/10",
+       "value": "6.04"
+      }
+     ],
+     "answer": "(53.44+6.96)/10"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "4bf1c210",
+    "answer": {
+     "value": 6.04,
+     "label": "6.04",
+     "option": "C"
+    }
+   }
+  },
+  {
+   "id": "7c387297-77f3-49ab-926b-d73d45a8785c",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "S = 25 \\times 40 = 1000",
+       "f": "25*40",
+       "value": "1000"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "\\tfrac{1000-60+x}{25} = 39 \\Rightarrow 940+x = 975",
+       "lhs": "(1000-60+x)/25",
+       "rhs": "39",
+       "roots": [
+        "35"
+       ]
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "x = 35 \\text{ years}",
+       "f": "975-940",
+       "value": "35"
+      }
+     ],
+     "answer": "975-940"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "103248b8",
+    "answer": {
+     "value": 35,
+     "label": "35"
+    }
+   }
+  },
+  {
+   "id": "7c39a30e-6484-4d5c-845f-36bdd12b0ccd",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "f: 4,4,\\alpha,\\beta \\text{ for } x: 2,6,8,9,\\quad N = 8+\\alpha+\\beta"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\tfrac{4 \\cdot 2+4 \\cdot 6+8\\alpha+9\\beta}{8+\\alpha+\\beta} = 6 \\Rightarrow 2\\alpha+3\\beta = 16"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\tfrac{160+64\\alpha+81\\beta}{N} = 42.8"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "21.2\\alpha+38.2\\beta = 182.4"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "\\beta = 2,\\ \\alpha = 5,\\ N = 15"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\sum fx = 8+24+40+18 = 90",
+       "f": "4*2+4*6+5*8+2*9",
+       "value": "90"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "\\text{new sum} = 90-5 = 85",
+       "f": "90-5*(8-7)",
+       "value": "85"
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "\\text{new mean} = \\tfrac{85}{15} = \\tfrac{17}{3}",
+       "f": "85/15",
+       "value": "17/3"
+      }
+     ],
+     "answer": "85/15"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "945b3547",
+    "answer": {
+     "value": 5.666666666666667,
+     "label": "17/3",
+     "option": "C"
+    }
+   }
+  },
+  {
+   "id": "88e17d33-5390-43fc-a660-8c4bc603439f",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\mu = \\tfrac{50(15)-20(12)}{30} = \\tfrac{510}{30} = 17",
+       "f": "(50*15-20*12)/30",
+       "value": "17"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "d_1 = -3 \\text{ (boys)},\\quad d_2 = 2 \\text{ (girls)}"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\sigma^2 = \\tfrac{20(2+9)+30(2+4)}{50} = \\tfrac{220+180}{50} = 8",
+       "f": "(20*(2+9)+30*(2+4))/50",
+       "value": "8"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\mu+\\sigma^2 = 17+8 = 25",
+       "f": "17+8",
+       "value": "25"
+      }
+     ],
+     "answer": "17+8"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "abeaa51f",
+    "answer": {
+     "value": 25,
+     "label": "25"
+    }
+   }
+  },
+  {
+   "id": "8b3693ab-865c-4e5e-88a2-f0a96c92d341",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "n \\text{ copies of } a,\\ n \\text{ of } -a:\\ \\text{mean } 0,\\ \\text{var } a^2"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{mean} = b = 5,\\ |a| = 20",
+       "f": "20",
+       "value": "20"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "a^2+b^2 = 400+25 = 425",
+       "f": "20^2+5^2",
+       "value": "425"
+      }
+     ],
+     "answer": "20^2+5^2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "c69d1e48",
+    "answer": {
+     "value": 425,
+     "label": "425",
+     "option": "A"
+    }
+   }
+  },
+  {
+   "id": "8c446a13-aa98-492e-8bab-5ed67a275d11",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sum (x_i-\\bar x)^2 = 7 \\times 20 = 140",
+       "f": "7*20",
+       "value": "140"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{one failing student: } (62-50)^2 = 144 > 140",
+       "f": "(62-50)^2",
+       "value": "144"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{students who can fail} = 0",
+       "f": "0",
+       "value": "0"
+      }
+     ],
+     "answer": "0"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "d6e7b764",
+    "answer": {
+     "value": 0,
+     "label": "0"
+    }
+   }
+  },
+  {
+   "id": "8d8d550b-f998-4e0c-913e-17718b9785fa",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "53+a+b = 72 \\Rightarrow a+b = 19",
+       "f": "72-53",
+       "value": "19"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "81+\\tfrac{37}{4} = \\tfrac{529+a^2+b^2}{8}",
+       "f": "8*(81+37/4)",
+       "value": "722"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "648+74 = 529+a^2+b^2 \\Rightarrow a^2+b^2 = 193",
+       "f": "648+74-529",
+       "value": "193"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "2ab = 361-193 = 168 \\Rightarrow ab = 84",
+       "f": "(361-193)/2",
+       "value": "84"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "a+b+ab = 103",
+       "f": "19+84",
+       "value": "103"
+      }
+     ],
+     "answer": "19+84"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     }
+    ],
+    "fingerprint": "85f64eae",
+    "answer": {
+     "value": 103,
+     "label": "103",
+     "option": "B"
+    }
+   }
+  },
+  {
+   "id": "8f6bf848-04be-4c6a-b7b8-091f37dfd9d6",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "x+y = 20-10 = 10",
+       "f": "4*5-3-7",
+       "value": "10"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "140 = 49+9+x^2+y^2 \\Rightarrow x^2+y^2 = 82",
+       "f": "140-49-9",
+       "value": "82"
+      },
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "(x,y) = (9,1)"
+      },
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{four numbers } 21,\\,9,\\,10,\\,8"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\text{mean} = \\tfrac{48}{4} = 12",
+       "f": "(21+9+10+8)/4",
+       "value": "12"
+      }
+     ],
+     "answer": "(21+9+10+8)/4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     }
+    ],
+    "fingerprint": "71a03250",
+    "answer": {
+     "value": 12,
+     "label": "12"
+    }
+   }
+  },
+  {
+   "id": "93bccef6-8ef6-4531-9852-ff7c1c861a49",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "N = 45+\\alpha,\\quad \\sum f_ix_i = 225+5\\alpha \\Rightarrow \\bar x = 5"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "\\tfrac{1275+25\\alpha}{45+\\alpha}-25 = 3",
+       "lhs": "(1275+25*x)/(45+x)-25",
+       "rhs": "3",
+       "roots": [
+        "5"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "\\tfrac{1275+25\\alpha}{45+\\alpha} = 28 \\Rightarrow 15 = 3\\alpha",
+       "lhs": "(1275+25*x)/(45+x)",
+       "rhs": "28",
+       "roots": [
+        "5"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\alpha = 5",
+       "f": "15/3",
+       "value": "5"
+      }
+     ],
+     "answer": "15/3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "c56203c0",
+    "answer": {
+     "value": 5,
+     "label": "5"
+    }
+   }
+  },
+  {
+   "id": "96b24deb-93e3-47b5-80df-b95374228658",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\text{var} = \\tfrac{19^2-1}{12} = 30",
+       "f": "(19^2-1)/12",
+       "value": "30"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "a^2 \\cdot 30 = 750 \\Rightarrow a^2 = 25",
+       "f": "750/30",
+       "value": "25"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "a=5:\\ b = 30-10 \\cdot 5 = -20",
+       "f": "30-10*5",
+       "value": "-20"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "a=-5:\\ b = 30-10(-5) = 80",
+       "f": "30-10*(-5)",
+       "value": "80"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{sum of } b = -20+80 = 60",
+       "f": "-20+80",
+       "value": "60"
+      }
+     ],
+     "answer": "-20+80"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "e4c3863d",
+    "answer": {
+     "value": 60,
+     "label": "60",
+     "option": "D"
+    }
+   }
+  },
+  {
+   "id": "9ff3174d-c5c6-4d41-87d7-c1d9aed87b16",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\text{unknowns sum} = 90-80 = 10",
+       "f": "90-80",
+       "value": "10"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum x^2 = 10(34.2+81) = 1152",
+       "f": "10*(34.2+81)",
+       "value": "1152"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{two squares sum} = 1152-1094 = 58",
+       "f": "1152-1094",
+       "value": "58"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "ab = \\tfrac{10^2-58}{2} = 21 \\Rightarrow \\{3,7\\}",
+       "f": "(10^2-58)/2",
+       "value": "21"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "\\text{sorted: } 2,3,3,5,7,10,11,13,15,21;\\ \\text{median} = 8.5"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\sum |x_i-8.5| = 50",
+       "f": "6.5+5.5+5.5+3.5+1.5+1.5+2.5+4.5+6.5+12.5",
+       "value": "50"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{mean deviation} = \\tfrac{50}{10} = 5",
+       "f": "50/10",
+       "value": "5"
+      }
+     ],
+     "answer": "50/10"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "e22cd9d4",
+    "answer": {
+     "value": 5,
+     "label": "5",
+     "option": "A"
+    }
+   }
+  },
+  {
+   "id": "a519132f-03f8-4d53-9add-2b2d6c23e15d",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\mu = \\tfrac{100(40)-50+40}{100} = 39.9",
+       "f": "(100*40-50+40)/100",
+       "value": "39.9"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum x^2 = 100(5.1^2+40^2) = 162601",
+       "f": "100*(5.1^2+40^2)",
+       "value": "162601"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{corrected } \\sum x^2 = 162601-2500+1600 = 161701",
+       "f": "162601-2500+1600",
+       "value": "161701"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sigma^2 = 1617.01-1592.01 = 25,\\ \\sigma = 5",
+       "f": "sqrt(161701/100-39.9^2)",
+       "value": "5"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "10(\\mu+\\sigma) = 10(44.9) = 449",
+       "f": "10*(39.9+5)",
+       "value": "449"
+      }
+     ],
+     "answer": "10*(39.9+5)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "384c52c9",
+    "answer": {
+     "value": 449,
+     "label": "449",
+     "option": "D"
+    }
+   }
+  },
+  {
+   "id": "aa329d8c-2272-4c85-b367-89e4b62381cb",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "a+b+c = 90-34 = 56",
+       "f": "5*18-9-25",
+       "value": "56"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "p+q+r = 2,\\ p^2+q^2+r^2 = 6,\\ |p|+|q|+|r| = 4"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "(p,q,r) = (-1,1,2) \\Rightarrow a=17,\\ b=19,\\ c=20"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "17+19+20 = 56",
+       "f": "17+19+20",
+       "value": "56"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "2a+b-c = 34+19-20 = 33",
+       "f": "2*17+19-20",
+       "value": "33"
+      }
+     ],
+     "answer": "2*17+19-20"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "d15799ec",
+    "answer": {
+     "value": 33,
+     "label": "33"
+    }
+   }
+  },
+  {
+   "id": "ab4fd6e3-0081-4a70-ab7c-cb15437f5fb2",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{class marks } 5,15,25,35,45;\\ f = 2,3,x,5,4"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "\\tfrac{10+45+25x+175+180}{14+x} = 28",
+       "lhs": "(10+45+25*x+175+180)/(14+x)",
+       "rhs": "28",
+       "roots": [
+        "6"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "410+25x = 392+28x \\Rightarrow x = 6,\\ N = 20"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\sum f_ix_i^2 = 50+675+3750+6125+8100 = 18700",
+       "f": "50+675+3750+6125+8100",
+       "value": "18700"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{Var} = \\tfrac{18700}{20}-28^2 = 935-784 = 151",
+       "f": "18700/20-28^2",
+       "value": "151"
+      }
+     ],
+     "answer": "18700/20-28^2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "b984d25f",
+    "answer": {
+     "value": 151,
+     "label": "151"
+    }
+   }
+  },
+  {
+   "id": "ad491239-ad0b-40b6-b95d-24ce8a512e32",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{median} = \\tfrac{2k+12}{2} = k+6"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "\\tfrac{58-2k}{8} = 6",
+       "lhs": "(58-2*x)/8",
+       "rhs": "6",
+       "roots": [
+        "5"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{median} = k+6 = 11",
+       "f": "5+6",
+       "value": "11"
+      }
+     ],
+     "answer": "5+6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "4812a41e",
+    "answer": {
+     "value": 11,
+     "label": "11",
+     "option": "D"
+    }
+   }
+  },
+  {
+   "id": "bb3d7f94-5114-4376-b3c8-68864ea7aa09",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "x+y = 40-30 = 10",
+       "f": "40-(5+8+5+12)",
+       "value": "10"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{median} = 18"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "\\tfrac{1}{40}(15+16+5+0+x+2y) = 1.25",
+       "lhs": "(15+16+5+0+x+2*(10-x))/40",
+       "rhs": "1.25",
+       "roots": [
+        "6"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "x+2y = 14"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "y = 4,\\ x = 6:\\ 4x+5y = 24+20 = 44",
+       "f": "4*6+5*4",
+       "value": "44"
+      }
+     ],
+     "answer": "4*6+5*4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "485c2e46",
+    "answer": {
+     "value": 44,
+     "label": "44",
+     "option": "B"
+    }
+   }
+  },
+  {
+   "id": "be885e5d-615b-48ce-a00f-dbe5f34e019d",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{median} = 170"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "|a-170|+|b-170| = 205-165 = 40",
+       "f": "205-165",
+       "value": "40"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "a+b = 340-40 = 300",
+       "f": "2*170-40",
+       "value": "300"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{mean} = \\tfrac{1225}{7} = 175",
+       "f": "1225/7",
+       "value": "175"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{MD} = \\tfrac{1}{7}(5+50+55+15+35+50) = \\tfrac{210}{7} = 30",
+       "f": "(5+50+55+15+35+50)/7",
+       "value": "30"
+      }
+     ],
+     "answer": "(5+50+55+15+35+50)/7"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "3fece250",
+    "answer": {
+     "value": 30,
+     "label": "30",
+     "option": "C"
+    }
+   }
+  },
+  {
+   "id": "c8fa0dc9-f615-4715-aad9-345844d2e576",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\text{mean} = \\tfrac{3+7+12+43}{5} = 13",
+       "f": "(3+7+12+43)/5",
+       "value": "13"
+      },
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{variance} = \\tfrac{2(a^2-43a+603)}{5}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "5 \\mid (a^2-3a+3);\\ \\text{residues } 0,1,2,3,4 \\text{ (mod 5)}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "a \\equiv 0:\\ 0-0+3 \\equiv 3",
+       "f": "0^2-3*0+3",
+       "value": "3"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "a \\equiv 1:\\ 1-3+3 = 1",
+       "f": "1^2-3*1+3",
+       "value": "1"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "a \\equiv 2:\\ 4-6+3 = 1",
+       "f": "2^2-3*2+3",
+       "value": "1"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "a \\equiv 3:\\ 9-9+3 \\equiv 3",
+       "f": "3^2-3*3+3",
+       "value": "3"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "a \\equiv 4:\\ 16-12+3 \\equiv 2"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\text{never } 0 \\Rightarrow 0 \\text{ values}"
+      }
+     ],
+     "answer": "0"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "3ac4830f",
+    "answer": {
+     "value": 0,
+     "label": "0",
+     "option": "A"
+    }
+   }
+  },
+  {
+   "id": "cba450d0-f50f-4537-8ca7-6e63bd9edd8c",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "N = 10+n:\\ \\tfrac{20+n}{10+n}+\\tfrac{10n}{(10+n)^2}"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "\\tfrac{20+n}{10+n}+\\tfrac{10n}{(10+n)^2} = \\tfrac{17}{9}",
+       "lhs": "(20+x)/(10+x)+10*x/(10+x)^2",
+       "rhs": "17/9",
+       "roots": [
+        "5"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "8n^2-20n-100 = 0 \\Rightarrow 2n^2-5n-25 = 0",
+       "lhs": "2*x^2-5*x-25",
+       "rhs": "0",
+       "roots": [
+        "5",
+        "-5/2"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "(n-5)(2n+5) = 0"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n = 5",
+       "f": "5",
+       "value": "5"
+      }
+     ],
+     "answer": "5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "03de4b9a",
+    "answer": {
+     "value": 5,
+     "label": "5"
+    }
+   }
+  },
+  {
+   "id": "cd79b577-a1f2-44dc-a856-d5f3c7b8a251",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sum x = 7(8) = 56,\\ \\sum x^2 = 7(16+64) = 560",
+       "f": "7*(16+64)",
+       "value": "560"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{five sum} = 56-14 = 42",
+       "f": "56-6-8",
+       "value": "42"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum x^2 = 560-36-64 = 460",
+       "f": "560-36-64",
+       "value": "460"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{Var} = \\tfrac{460}{5}-\\left(\\tfrac{42}{5}\\right)^2 = \\tfrac{2300-1764}{25}",
+       "f": "460/5-(42/5)^2",
+       "value": "536/25"
+      }
+     ],
+     "answer": "460/5-(42/5)^2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "d0190bc9",
+    "answer": {
+     "value": 21.439999999999998,
+     "label": "536/25",
+     "option": "C"
+    }
+   }
+  },
+  {
+   "id": "cd8a54b9-4000-4034-bf1e-ea51023ec386",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\overline{x^2} = 9+225 = 234",
+       "f": "9+15^2",
+       "value": "234"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "234+30\\alpha+\\alpha^2 = 178 \\Rightarrow \\alpha^2+30\\alpha+56 = 0",
+       "lhs": "234+30*x+x^2",
+       "rhs": "178",
+       "roots": [
+        "-2",
+        "-28"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\alpha_{\\max} = -2,\\ \\alpha^2 = 4",
+       "f": "(-2)^2",
+       "value": "4"
+      }
+     ],
+     "answer": "(-2)^2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "eafe36ed",
+    "answer": {
+     "value": 4,
+     "label": "4"
+    }
+   }
+  },
+  {
+   "id": "d09fa06f-eefe-40a9-aec6-ad42ad31d9b6",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sum x_i = 15 \\cdot 12 = 180",
+       "f": "15*12",
+       "value": "180"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\mu = \\tfrac{180-10+12}{15} = \\tfrac{182}{15}",
+       "f": "(180-10+12)/15",
+       "value": "182/15"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sum x_i^2 = 15(9+144) = 2295",
+       "f": "15*(9+144)",
+       "value": "2295"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\text{correct } \\sum x_i^2 = 2295-100+144 = 2339",
+       "f": "2295-100+144",
+       "value": "2339"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "15\\left(\\tfrac{182}{15}+\\tfrac{2339}{15}\\right) = 2521",
+       "f": "15*(182/15+2339/15)",
+       "value": "2521"
+      }
+     ],
+     "answer": "15*(182/15+2339/15)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     }
+    ],
+    "fingerprint": "c4ed6c27",
+    "answer": {
+     "value": 2521,
+     "label": "2521"
+    }
+   }
+  },
+  {
+   "id": "d1dc540e-4326-4273-9018-653ca97f8866",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "b = a+c"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\bar x = \\tfrac{a+b+c}{3} = \\tfrac{2b}{3}",
+       "f": "(a+b+c)/3",
+       "value": "2*b/3"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{S.D. of } (a+2,b+2,c+2) = \\text{S.D. of } (a,b,c) = d"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "d^2 = \\tfrac{a^2+b^2+c^2}{3}-\\bar x^2",
+       "f": "(a^2+b^2+c^2)/3-((a+b+c)/3)^2",
+       "value": "d2"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "d^2 = \\tfrac{a^2+b^2+c^2}{3}-\\tfrac{4b^2}{9}",
+       "f": "(a^2+b^2+c^2)/3-4*b^2/9",
+       "value": "d2"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "9d^2 = 3(a^2+b^2+c^2)-4b^2",
+       "f": "3*(a^2+b^2+c^2)-4*b^2",
+       "value": "9*d2"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "b^2 = 3(a^2+c^2)-9d^2",
+       "f": "3*(a^2+c^2)-9*d2",
+       "value": "b^2"
+      }
+     ],
+     "answer": "3*(a^2+c^2)-9*d2",
+     "vars": {
+      "a": 1,
+      "c": 2,
+      "b": "a+c",
+      "d2": "((a-(a+b+c)/3)^2+(b-(a+b+c)/3)^2+(c-(a+b+c)/3)^2)/3"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "0cc076f4",
+    "answer": {
+     "value": 9,
+     "label": "b² = 3(a²+c²) − 9d²",
+     "option": "D"
+    }
+   }
+  },
+  {
+   "id": "d520c736-ec29-400f-b7aa-9ce9a48abf7f",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "\\tfrac{n(n-1)2^{n-2}}{2^n} = \\tfrac{n(n-1)}{4} = 60 \\Rightarrow n = 16",
+       "lhs": "x*(x-1)/4",
+       "rhs": "60",
+       "roots": [
+        "16"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum_{k=0}^{7}\\binom{16}{k} = 26333 < 2^{15}",
+       "f": "1+16+120+560+1820+4368+8008+11440",
+       "value": "26333"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{median: } k = 8,\\ 8 \\cdot 7 = 56",
+       "f": "8*7",
+       "value": "56"
+      }
+     ],
+     "answer": "8*7"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "64f23109",
+    "answer": {
+     "value": 56,
+     "label": "56",
+     "option": "A"
+    }
+   }
+  },
+  {
+   "id": "d5f75a7c-aaa9-4da3-9a97-6698cd496e97",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "N = 14+\\lambda,\\ \\sum fx = 200+10\\lambda,\\ \\sum fx^2 = 3160+100\\lambda"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "(3160+100\\lambda)(14+\\lambda)-(200+10\\lambda)^2 = 19(14+\\lambda)^2",
+       "lhs": "(3160+100*x)*(14+x)-(200+10*x)^2",
+       "rhs": "19*(14+x)^2",
+       "roots": [
+        "6"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "19\\lambda^2-28\\lambda-516 = 0 \\Rightarrow (\\lambda-6)(19\\lambda+86) = 0",
+       "lhs": "19*x^2-28*x-516",
+       "rhs": "0",
+       "roots": [
+        "6"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mu = \\tfrac{260}{20} = 13",
+       "f": "(200+10*6)/(14+6)",
+       "value": "13"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\lambda+\\mu = 6+13 = 19",
+       "f": "6+13",
+       "value": "19"
+      }
+     ],
+     "answer": "6+13"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "24b644c8",
+    "answer": {
+     "value": 19,
+     "label": "19",
+     "option": "D"
+    }
+   }
+  },
+  {
+   "id": "d6746868-afc2-4305-a5ff-880775043309",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "x_5 = 24-14 = 10",
+       "f": "24-14",
+       "value": "10"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\tfrac{\\sum x^2}{5} = \\tfrac{194}{25}+\\left(\\tfrac{24}{5}\\right)^2 = \\tfrac{770}{25}",
+       "f": "194/25+(24/5)^2",
+       "value": "770/25"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum x^2 = 154",
+       "f": "5*770/25",
+       "value": "154"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{first four } \\sum x^2 = 154-100 = 54",
+       "f": "154-100",
+       "value": "54"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{Var} = \\tfrac{54}{4}-\\left(\\tfrac{7}{2}\\right)^2 = 13.5-12.25 = \\tfrac54",
+       "f": "54/4-(7/2)^2",
+       "value": "5/4"
+      }
+     ],
+     "answer": "54/4-(7/2)^2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "2e3907e1",
+    "answer": {
+     "value": 1.25,
+     "label": "5/4",
+     "option": "C"
+    }
+   }
+  },
+  {
+   "id": "d9c58a1c-3fb7-41e7-9535-5a421b669b16",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\sum x_i = 10n"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "\\tfrac{10n+4}{n} = 10.2 \\Rightarrow n = 20",
+       "lhs": "(10*x+4)/x",
+       "rhs": "10.2",
+       "roots": [
+        "20"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\sum x_i^2 = 20(4+100) = 2080",
+       "f": "20*(4+100)",
+       "value": "2080"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{after: } 2080-64+144 = 2160",
+       "f": "2080-64+144",
+       "value": "2160"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{Var} = \\tfrac{2160}{20}-10.2^2 = 108-104.04 = 3.96",
+       "f": "2160/20-10.2^2",
+       "value": "3.96"
+      }
+     ],
+     "answer": "2160/20-10.2^2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "55a91fda",
+    "answer": {
+     "value": 3.960000000000008,
+     "label": "3.96",
+     "option": "A"
+    }
+   }
+  },
+  {
+   "id": "dcc5efee-9f8d-4edf-929d-0a3a1b17382d",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{median} = 500.5k"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{MD} = \\tfrac{|k|}{1000} \\cdot 250000 = 250|k|",
+       "f": "250000/1000",
+       "value": "250"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "250|k| = 500 \\Rightarrow |k| = 2",
+       "lhs": "250*abs(x)",
+       "rhs": "500",
+       "roots": [
+        "2"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "k^2 = 4",
+       "f": "2^2",
+       "value": "4"
+      }
+     ],
+     "answer": "2^2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "0317ed66",
+    "answer": {
+     "value": 4,
+     "label": "4",
+     "option": "B"
+    }
+   }
+  },
+  {
+   "id": "e1092cc6-bcb8-4d45-95dc-8733c3372f5b",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{A.P.: } a,\\ a+d,\\ \\ldots,\\ a+5d"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "2a+2d = 10 \\Rightarrow a+d = 5,\\quad 2a+5d = 19",
+       "lhs": "2*(5-x)+5*x",
+       "rhs": "19",
+       "roots": [
+        "3"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "d = 3,\\ a = 2:\\ 2,\\,5,\\,8,\\,11,\\,14,\\,17"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\sigma^2 = \\tfrac{d^2(n^2-1)}{12} = \\tfrac{9 \\cdot 35}{12} = \\tfrac{105}{4}",
+       "f": "9*35/12",
+       "value": "105/4"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "8\\sigma^2 = 210",
+       "f": "8*105/4",
+       "value": "210"
+      }
+     ],
+     "answer": "8*105/4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "d1a582fd",
+    "answer": {
+     "value": 210,
+     "label": "210",
+     "option": "A"
+    }
+   }
+  },
+  {
+   "id": "e270426b-a176-4dfb-8541-acd32643a29a",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "a+b = 30-23 = 7",
+       "f": "5*6-(8+5+10)",
+       "value": "7"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "a^2+b^2 = 25 \\Rightarrow ab = \\tfrac{49-25}{2} = 12",
+       "f": "(49-25)/2",
+       "value": "12"
+      },
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\{a,b\\} = \\{3,4\\}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "M = \\tfrac{3+2+2+1+4}{5} = \\tfrac{12}{5}",
+       "f": "(3+2+2+1+4)/5",
+       "value": "12/5"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "25M = 60",
+       "f": "25*12/5",
+       "value": "60"
+      }
+     ],
+     "answer": "25*12/5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "e28bd56c",
+    "answer": {
+     "value": 60,
+     "label": "60",
+     "option": "A"
+    }
+   }
+  },
+  {
+   "id": "e2d691f5-1239-4cc2-aa94-94ebd0eb7d4e",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{cumulative: } 3,\\,12,\\,22,\\,30,\\,36;\\ N = 36,\\ \\tfrac{N}{2} = 18"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "M = 8+\\tfrac{18-12}{10} \\times 4 = 10.4",
+       "f": "8+(18-12)/10*4",
+       "value": "10.4"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "20M = 208",
+       "f": "20*10.4",
+       "value": "208"
+      }
+     ],
+     "answer": "20*10.4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "b644fb7c",
+    "answer": {
+     "value": 208,
+     "label": "208",
+     "option": "D"
+    }
+   }
+  },
+  {
+   "id": "e4c67a25-fa60-4e6f-8908-236ae18f4d3e",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "a+b = 8,\\ a^2+b^2 = 32 \\Rightarrow a = b = 4",
+       "f": "8/2",
+       "value": "4"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{data } 2,3,3,4,4,4,5,7;\\ \\text{mode} = 4"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{MD} = \\tfrac{2+1+1+0+0+0+1+3}{8} = 1",
+       "f": "(2+1+1+0+0+0+1+3)/8",
+       "value": "1"
+      }
+     ],
+     "answer": "(2+1+1+0+0+0+1+3)/8"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "b07b35b6",
+    "answer": {
+     "value": 1,
+     "label": "1",
+     "option": "A"
+    }
+   }
+  },
+  {
+   "id": "e5542b77-a653-4328-b6d5-86c4bc2bdfbf",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "x_i = \\tfrac{3}{2^{i-1}},\\quad 20\\bar x = \\sum x_i^2-2\\sum ix_i+\\sum i^2"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\sum x_i^2 = 12(1-4^{-20}),\\quad \\sum ix_i = 12\\left(1-\\tfrac{11}{2^{20}}\\right)"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum i^2 = \\tfrac{20 \\cdot 21 \\cdot 41}{6} = 2870",
+       "f": "20*21*41/6",
+       "value": "2870"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "20\\bar x = 12-24+2870 = 2858+\\epsilon",
+       "f": "12-2*12+2870",
+       "value": "2858"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\bar x \\approx \\tfrac{2858}{20} = 142.9",
+       "f": "2858/20",
+       "value": "142.9",
+       "dp": 1
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\lfloor \\bar x \\rfloor = 142",
+       "f": "floor(2858/20)",
+       "value": "142"
+      }
+     ],
+     "answer": "floor(2858/20)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "802c6b39",
+    "answer": {
+     "value": 142,
+     "label": "142"
+    }
+   }
+  },
+  {
+   "id": "e5cddacb-d049-4cc8-ab88-93b161a41378",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\sum x = 8n,\\quad \\sum x^2 = n(16+64) = 80n"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "x_n = 8n-48,\\quad x_n^2 = 80n-496"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "(8n-48)^2 = 80n-496 \\Rightarrow 4n^2-53n+175 = 0",
+       "lhs": "(8*x-48)^2",
+       "rhs": "80*x-496",
+       "roots": [
+        "7",
+        "25/4"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n = \\tfrac{53 \\pm 3}{8}",
+       "f": "(53+3)/8",
+       "value": "7"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "\\text{integer solution: } n = 7"
+      }
+     ],
+     "answer": "(53+3)/8"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "2bf31d38",
+    "answer": {
+     "value": 7,
+     "label": "7",
+     "option": "D"
+    }
+   }
+  },
+  {
+   "id": "e839e1df-f19d-47bd-8529-13aadd5880b8",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\text{sum of nine} = 9 \\cdot 40 = 360",
+       "f": "9*40",
+       "value": "360"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "a+b = 360-280 = 80",
+       "f": "360-280",
+       "value": "80"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\text{known sorted: } 8,13,17,21,51,67,103"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\sum |x_i-21| = 0+13+4+30+82+8+46 = 183",
+       "f": "0+13+4+30+82+8+46",
+       "value": "183"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "|a-21|+|b-21| = 9(26)-183 = 51",
+       "f": "9*26-183",
+       "value": "51"
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "b = 21,\\ a = 59 \\text{ gives } 38 \\neq 51"
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "a-b = 51,\\ a+b = 80 \\Rightarrow a = 65.5",
+       "f": "(51+80)/2",
+       "value": "65.5"
+      },
+      {
+       "step": "s7",
+       "kind": "calc",
+       "tex": "2a = 131",
+       "f": "2*65.5",
+       "value": "131"
+      }
+     ],
+     "answer": "2*65.5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s6"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s7"
+      ]
+     }
+    ],
+    "fingerprint": "f9857a85",
+    "answer": {
+     "value": 131,
+     "label": "131",
+     "option": "D"
+    }
+   }
+  },
+  {
+   "id": "e9b26ad3-15b4-43be-bade-21e4c110794b",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "M = l+\\tfrac{N/2-F}{f} \\times h:\\ l=12,\\ F=18,\\ f=12,\\ h=6"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "14 = 12+\\tfrac{N/2-18}{12} \\times 6",
+       "lhs": "12+(x/2-18)/12*6",
+       "rhs": "14",
+       "roots": [
+        "44"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\tfrac{N}{2}-18 = 4 \\Rightarrow N = 44",
+       "f": "(4+18)*2",
+       "value": "44"
+      }
+     ],
+     "answer": "(4+18)*2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "e0f34e9a",
+    "answer": {
+     "value": 44,
+     "label": "44",
+     "option": "B"
+    }
+   }
+  },
+  {
+   "id": "f13939a3-bb44-4da2-84ef-c469eac5c04a",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "a+b = 60-43 = 17",
+       "f": "6*10-43",
+       "value": "17"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum x^2 = 6\\left(\\tfrac{20}{3}+100\\right) = 640",
+       "f": "6*(20/3+100)",
+       "value": "640"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "a^2+b^2 = 640-495 = 145",
+       "f": "640-495",
+       "value": "145"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "2ab = 289-145 = 144",
+       "f": "289-145",
+       "value": "144"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "|a-b| = \\sqrt{289-288} = 1",
+       "f": "sqrt(289-288)",
+       "value": "1"
+      }
+     ],
+     "answer": "sqrt(289-288)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "ec8025e3",
+    "answer": {
+     "value": 1,
+     "label": "1",
+     "option": "D"
+    }
+   }
+  },
+  {
+   "id": "f5a0bdfa-d11a-4d22-87f2-a8054d761acc",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{mean} = a_1+49.5"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sum_{k=0}^{99}|k-49.5| = 2(0.5+1.5+\\cdots+49.5) = 2500",
+       "f": "2*(0.5+49.5)*50/2",
+       "value": "2500"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\text{MD} = \\tfrac{2500}{100} = 25",
+       "f": "2500/100",
+       "value": "25"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{independent of } a_1 \\Rightarrow S = \\mathbb{N}"
+      }
+     ],
+     "answer": "2500/100"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "f52cea38",
+    "answer": {
+     "value": 25,
+     "label": "S = N",
+     "option": "A"
+    }
+   }
+  },
+  {
+   "id": "f90fe52c-a947-486a-a6bd-dff16ba2bcbd",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "n = \\tfrac{320-8}{13}+1 = 25",
+       "f": "(320-8)/13+1",
+       "value": "25"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\tfrac{d^2(n^2-1)}{12} = \\tfrac{13^2(25^2-1)}{12} = \\tfrac{169 \\cdot 624}{12}",
+       "f": "13^2*(25^2-1)/12",
+       "value": "8788"
+      }
+     ],
+     "answer": "13^2*(25^2-1)/12"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "114732bb",
+    "answer": {
+     "value": 8788,
+     "label": "8788"
+    }
+   }
+  },
+  {
+   "id": "fadf92d3-adf3-4ac9-8d5e-2988a05d9222",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sum x_i = 20(10) = 200",
+       "f": "20*10",
+       "value": "200"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sum x_i^2 = 20(2.5^2+10^2) = 2125",
+       "f": "20*(2.5^2+10^2)",
+       "value": "2125"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum x_i = 210 \\Rightarrow \\alpha = 10.5",
+       "f": "(200-25+35)/20",
+       "value": "10.5"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum x_i^2 = 2125-625+1225 = 2725",
+       "f": "2125-625+1225",
+       "value": "2725"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{Var} = \\tfrac{2725}{20}-10.5^2 = 136.25-110.25 = 26",
+       "f": "2725/20-10.5^2",
+       "value": "26"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "(\\alpha,\\beta) = (10.5,\\ 26)"
+      }
+     ],
+     "answer": "2725/20-10.5^2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "4f3712a3",
+    "answer": {
+     "value": 26,
+     "label": "(10.5, 26)",
+     "option": "D"
+    }
+   }
+  },
+  {
+   "id": "fb1059c9-9ec4-4f50-8808-edbc02171031",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sum x_i = 10(5.5) = 55",
+       "f": "10*5.5",
+       "value": "55"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum x_i = 55-9+14 = 60",
+       "f": "55-9+14",
+       "value": "60"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sum x_i^2 = 371-(16+25)+(36+64) = 430",
+       "f": "371-(16+25)+(36+64)",
+       "value": "430"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{Var} = \\tfrac{430}{10}-6^2 = 43-36 = 7",
+       "f": "430/10-6^2",
+       "value": "7"
+      }
+     ],
+     "answer": "430/10-6^2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "a139056e",
+    "answer": {
+     "value": 7,
+     "label": "7",
+     "option": "A"
+    }
+   }
+  },
+  {
+   "id": "fc8bb37d-08e9-41be-a826-4e8494732706",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "a+b = 330-220 = 110",
+       "f": "6*55-(68+44+48+60)",
+       "value": "110"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "a^2+b^2 = 6(194+3025)-12464 = 6850",
+       "f": "6*(194+3025)-12464",
+       "value": "6850"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "2ab = 110^2-6850 = 5250 \\Rightarrow ab = 2625",
+       "f": "(110^2-6850)/2",
+       "value": "2625"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "t^2-110t+2625 = 0 \\Rightarrow t = 75,\\ 35",
+       "lhs": "x^2-110*x+2625",
+       "rhs": "0",
+       "roots": [
+        "75",
+        "35"
+       ]
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "a+3b = 75+105 = 180",
+       "f": "75+3*35",
+       "value": "180"
+      }
+     ],
+     "answer": "75+3*35"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "4d733fbd",
+    "answer": {
+     "value": 180,
+     "label": "180",
+     "option": "C"
+    }
+   }
+  },
+  {
+   "id": "fcff14f2-175b-453f-8740-fa58d342f7f1",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "\\tfrac{288+7\\alpha}{64+\\alpha} = 5 \\Rightarrow \\alpha = 16",
+       "lhs": "(288+7*x)/(64+x)",
+       "rhs": "5",
+       "roots": [
+        "16"
+       ]
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "N = 64+16 = 80",
+       "f": "64+16",
+       "value": "80"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sigma^2 = \\tfrac{352}{80} = 4.4",
+       "f": "352/80",
+       "value": "4.4"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "m = \\tfrac{128}{80} = 1.6",
+       "f": "128/80",
+       "value": "1.6"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\tfrac{3\\alpha}{m+\\sigma^2} = \\tfrac{48}{6} = 8",
+       "f": "3*16/(1.6+4.4)",
+       "value": "8"
+      }
+     ],
+     "answer": "3*16/(1.6+4.4)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "9fb2c84b",
+    "answer": {
+     "value": 8,
+     "label": "8"
+    }
+   }
+  }
+ ],
+ "decided": []
+}
