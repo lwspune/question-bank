@@ -177,13 +177,39 @@ nothing waiting. Tag `v_chapter`, its views on their own daily key so it never
 uses up a chapter page's view (the running experiment chapter-fix, read
 2026-11-28, carries a note). Experiment `v-fix-line`, read 2026-12-08.
 
-### Step 4. Teach differently on a No, and ask for working (S, prompt only)
+### Step 4. A better second try after a No: BUILT 2026-11-10
 
-- A No changes the approach: a prerequisite idea first, a worked example,
-  or another way to show it, not only smaller steps.
-- When V cannot tell why a pick was wrong, it says so and shows a "Send my
-  working" button (rule 7b already checks working).
-- Eval cases from the 23 real No's.
+**Measured first:** 23 Nos from 23 Oct to 9 Nov; of the 21 second tries,
+students answered Yes 2 times, No again 5 times, nothing 14. Read side by
+side, the second try was the first one's steps reworded (once word for word,
+the "mean of 100 observations" case), and it still skipped the step that was
+hard: "do this for every spot" for A squared, "using the quadratic formula"
+with only its result.
+
+**A (rule 7):** never the same explanation again. Find the step that lost
+them (the one they named, or the one the last reply rushed or skipped), then
+ONE of: that step in full with the actual numbers; the idea it needs first;
+a tiny example with simpler numbers. Number steps "1.". Do not ask which step
+is unclear in the text. On 5 real cases (now V test cases), 4 second tries
+were clearly better (A squared showed how an entry is made; the quadratic
+showed a, b, c; the wedges started from the seesaw idea; matrix orders
+stated the rule). The second No in a row (the mean case) still walked the
+same steps 1 to 2 runs in 3; a code signal ("they said it twice: start with
+a tiny example") did not help (1 in 3), so it was removed. It is rare (5 in
+3 weeks).
+
+**B ("Which step lost you?"):** after a No on a reply with 2+ numbered steps
+("1.", "1)" or "Step 1:"), the chat shows a button per step (up to 8) and
+"All of it"; a step sends "I didn't understand step N. Please explain it
+more simply.", which counts as a No everywhere a No does (`isNotUnderstoodMessage`:
+the Did-you-understand row, the Fix list). A reply without numbered steps
+sends the plain No at once, as before.
+
+"Send my working" was not built: rule 7b already checks working when a
+student sends it, and no case showed a student who wanted to.
+
+Experiment `v-better-retry`: keep if half the answered second tries get a
+Yes (was 2 of 7); read 2026-12-08.
 
 ### Step 5. V in more places (M, one surface at a time)
 

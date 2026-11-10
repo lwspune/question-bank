@@ -116,6 +116,11 @@ is enforced in `facts.ts` or the tools; the date is when it was made.
   one a rule-7 exception, V used it once. V keeps to the solution and sees
   only the pick, never why it was picked. Do not try that note again without
   new evidence (a different model, or the student's working).
+- **A second try after a No is never the first one reworded (owner, 2026-11-10,
+  V_LEARNING_LOOP.md step 4).** V finds the step that lost them and does one
+  of: that step in full with the numbers, the idea it needs first, or a tiny
+  example. After a No on a reply with numbered steps the chat asks "Which step
+  lost you?" with a button per step; a step message counts as a No everywhere.
 - **Parked:** withdrawn UPSC questions (V says the pick "is marked wrong"; 10
   such questions; re-raise only when the owner does); the mock result page
   being wider than a phone.
