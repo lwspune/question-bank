@@ -103,6 +103,7 @@ describe("EXPERIMENTS", () => {
       "study-circle",
       "tutor-interest",
       "tutor-price",
+      "ugc-net",
       "v-explain",
       "v-finder",
       "v-pay-offer",

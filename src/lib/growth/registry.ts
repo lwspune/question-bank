@@ -166,6 +166,13 @@ export const MOCK_TOGETHER_STARTS_KEEP = 3;
  * once cleared, then mocks) if at least this many students choose it...
  */
 export const IMAT_STUDENTS_KEEP = 20;
+/**
+ * UGC NET Paper 1 (2026-11-10): keep adding cycles if, by two weeks after the
+ * December 2026 sitting, this many students have chosen UGC NET at sign-up...
+ */
+export const UGC_NET_SIGNUPS_KEEP = 50;
+/** ...and this many of them have bought the pass (owner, 2026-11-10). */
+export const UGC_NET_PASSES_KEEP = 3;
 /** The Learn tab (2026-10-27): keep building learning inside PYQ Vault at this many students who master a concept... */
 export const LEARN_MASTERED_KEEP = 25;
 /** ...and this many who come back to Learn on a second day. */
@@ -343,7 +350,8 @@ export type Readout =
   | "flashcards"
   | "chapter-fix"
   | "board-path"
-  | "study-circle";
+  | "study-circle"
+  | "ugc-net";
 
 export type Experiment = {
   id: string;
@@ -976,7 +984,21 @@ export const EXPERIMENTS: readonly Experiment[] = [
     windowDays: 15,
     readout: "study-circle",
     status: "running",
+  },  {
+    id: "ugc-net",
+    title: "UGC NET Paper 1: a graduate exam nobody asked for",
+    change:
+      "UGC NET added 2026-11-10: Paper 1 (General Paper) of all 20 June 2024 shifts, 1,000 questions read from NTA's own master papers and keyed by question id from NTA's final key, each with a worked solution, and 20 timed mocks (50 q, 60 min, +2/0).",
+    why: "Owner's call (graduate focus, 4 Nov: graduates were 22% of sign-ups but 44% of sales). No student had asked for it; UGC NET sits roughly 10 lakh candidates a cycle and Paper 1 is common to all of them.",
+    metric:
+      "Students with UGC NET among their exams, and passes those students bought, read by hand two weeks after the December 2026 sitting (dates on ugcnet.nta.nic.in)",
+    rule: `Keep adding cycles (December 2025, then older ones) if ${UGC_NET_SIGNUPS_KEEP}+ students choose UGC NET AND ${UGC_NET_PASSES_KEEP}+ of them buy the pass. Otherwise it stays live but gets no more cycles.`,
+    liveSince: "2026-11-10",
+    windowDays: 70,
+    readout: "ugc-net",
+    status: "running",
   },
+
 ];
 
 export type DecidedAgainst = { title: string; decision: string; on: string; why: string };
@@ -1049,6 +1071,8 @@ export type ReadingMetric =
   | "imat-students"
   | "imat-page-views"
   | "imat-foreign-share"
+  | "ugc-net-students"
+  | "ugc-net-passes"
   | "v-false-not-found"
   | "v-clarify-turns"
   | "v-practice-after"
@@ -1342,6 +1366,16 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
   "imat-students": {
     label: "Students with IMAT among their exams",
     source: "student_profiles where 'imat' = any(target_exams), staff excluded",
+    entries: [],
+  },
+  "ugc-net-students": {
+    label: "Students with UGC NET among their exams",
+    source: "student_profiles where 'ugc-net' = any(target_exams), staff excluded",
+    entries: [],
+  },
+  "ugc-net-passes": {
+    label: "Passes bought by students with UGC NET among their exams",
+    source: "entitlements (source razorpay, active) joined to student_profiles with 'ugc-net' in target_exams",
     entries: [],
   },
   "imat-page-views": {

@@ -47,7 +47,8 @@ export type ExamSlug =
   | "ssc-cgl-tier-2"
   | "imat"
   | "spi"
-  | "uceed";
+  | "uceed"
+  | "ugc-net";
 
 /**
  * School boards the bank carries content for. NOT every exam has one — a
@@ -760,6 +761,24 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     examName: "IISER IAT", // must match the `exams` DB row exactly
     // PUBLIC since 2026-11-08: all nine years IISER posts, 539 q, every one with a
     // worked solution. One timed mock per year (iat-2017 ... iat-2026), MOCKS.md.
+    hasMocks: true,
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "ugc-net",
+    // UGC NET (NTA), the eligibility test for Assistant Professor and JRF:
+    // Paper 1 only (General Paper on Teaching and Research Aptitude, 50 MCQs,
+    // +2 / 0). Read from NTA's own master papers and keyed by question id from
+    // NTA's final keys (scripts/ugc-net/). Added 2026-11-10 on the owner's call
+    // (graduate focus), with no student request yet.
+    tier: "graduate",
+    goal: "government",
+    displayName: "UGC NET",
+    examName: "UGC NET", // must match the `exams` DB row exactly
+    // PUBLIC since 2026-11-10: June 2024, 20 shifts, 1,000 q, every one with a
+    // worked solution. One timed mock per shift (ugc-net-paper-1-*), MOCKS.md.
     hasMocks: true,
     pastPaperSolutions: true,
     guidesPath: null,

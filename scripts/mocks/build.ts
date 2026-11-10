@@ -38,6 +38,7 @@
  *   npx tsx scripts/mocks/build.ts --paper=imat            # IMAT ministry papers 2023+
  *   npx tsx scripts/mocks/build.ts --paper=uceed           # UCEED Part A 2019-2026 (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=iat             # IISER IAT, one per committed year (opt-in)
+ *   npx tsx scripts/mocks/build.ts --paper=ugc-net         # UGC NET Paper 1, one per committed shift (opt-in)
  *   npx tsx scripts/mocks/build.ts --only=2026-jan-21-s1    # one JEE shift
  *   npx tsx scripts/mocks/build.ts --only=2024-Sep --apply --publish
  *   npx tsx scripts/mocks/build.ts --only=cds-2026-i-english
@@ -80,6 +81,7 @@ import {
   IMAT_PAPER,
   uceedPaper,
   iatPaper,
+  UGC_NET_PAPER_1,
   type MockPaperBlueprint,
 } from "../../src/lib/mocks/blueprints";
 import { answerKeyFromRow, type MockAnswerKey, type OptionLabel } from "../../src/lib/mocks/answers";
@@ -116,6 +118,7 @@ import { spiSittings } from "./spiSittings";
 import { imatSittings } from "./imatSittings";
 import { uceedSittings } from "./uceedSittings";
 import { iatSittings } from "./iatSittings";
+import { ugcNetSittings } from "./ugcNetSittings";
 import { mockTestRow } from "../../src/lib/mocks/row";
 
 function loadEnv() {
@@ -797,6 +800,17 @@ async function buildIat(db: SupabaseClient, run: RunState) {
   }
 }
 
+/** UGC NET Paper 1, one mock per committed shift (ugcNetSittings.ts); dropped / two-answer questions ride as grace. */
+async function buildUgcNet(db: SupabaseClient, run: RunState) {
+  await buildFromSourceFiles(
+    db,
+    UGC_NET_PAPER_1,
+    ugcNetSittings().map((s) => ({ key: s.key, sourceFile: s.sourceFile, year: s.year, slug: s.slug, title: s.title })),
+    run,
+    "ugcNetSittings.ts"
+  );
+}
+
 /** IMAT ministry papers (imatSittings.ts); a question that cannot be solved as printed rides as grace. */
 function imatMockSittings(): SourceFileSitting[] {
   return imatSittings().map((s) => ({
@@ -890,9 +904,11 @@ async function main() {
   const runUceed = paperFilter === "uceed";
   // Opt-in too: IAT rows are PRIVATE until the owner OKs them (scripts/iat/README.md).
   const runIat = paperFilter === "iat";
-  if (paperFilter && !runUceed && !runIat && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runSpi && !runImat && !runMpscMains) {
+  // Opt-in: UGC NET rows are PRIVATE until the owner OKs them (scripts/ugc-net/README.md).
+  const runUgcNet = paperFilter === "ugc-net";
+  if (paperFilter && !runUceed && !runIat && !runUgcNet && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runSpi && !runImat && !runMpscMains) {
     throw new Error(
-      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, spi, imat, mpsc-mains, uceed, iat)`
+      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, spi, imat, mpsc-mains, uceed, iat, ugc-net)`
     );
   }
 
@@ -966,6 +982,7 @@ async function main() {
   if (runMpscMains) await buildMpscMains(db, run);
   if (runUceed) await buildUceed(db, run);
   if (runIat) await buildIat(db, run);
+  if (runUgcNet) await buildUgcNet(db, run);
 
   console.log(`\n${apply ? "Upserted" : "Would build"} ${run.built.n} mock(s)${publish ? " (published)" : apply ? " (draft)" : ""}.`);
   if (run.held.n) console.log(`${run.held.n} paper(s) held — cannot reconstruct whole (see ⊘ lines above).`);
