@@ -916,5 +916,263 @@
   "before": "6a488aae",
   "solution": "\\[\\begin{matrix} & T_{r + 1} = \\ ^{11}C_{r}\\left( 2x^{2} \\right)^{11 - r}\\left( \\frac{1}{2x} \\right)^{r} \\\\ & \\ = \\ ^{11}C_{r}2^{11 - 2r}x^{22 - 3r} \\\\ & 22 - 3r = 10\\text{~and~}22 - 3r = 7 \\\\ & r = 4\\ \\text{~and~}\\ r = 5 \\\\ & \\text{~Coefficient of~}x^{10} = \\ ^{11}C_{4} \\cdot 2^{3} \\\\ & \\text{~Coefficient of~}x^{7} = \\ ^{11}C_{5} \\cdot 2^{1} \\\\ & \\text{~difference~} = \\ ^{11}C_{4} \\cdot 2^{3} - \\ ^{11}C_{5} \\cdot 2 \\\\ & \\ = \\frac{11 \\times 10 \\times 9 \\times 8}{24} \\times 8 - \\frac{11 \\times 10 \\times 9 \\times 8 \\times 7}{120} \\times 2 \\\\ & \\ = 11 \\times 10 \\times 3 \\times 8 - 11 \\times 3 \\times 4 \\times 7 \\\\ & \\ = 11 \\times 3 \\times 4 \\times (20 - 7) \\\\ & \\ = 11 \\times 12 \\times 13 \\\\ & \\ = 12(12 - 1)(12 + 1) \\\\ & \\ = 12\\left( 12^{2} - 1 \\right) \\\\ & \\ = 12^{3} - 12 \\end{matrix}\\]",
   "note": "removed the stray 156. and the unrelated second working (5670, HEICS words)"
+ },
+ {
+  "id": "7c5f082d-7c68-45d4-a6ff-ab27c4f92854",
+  "before": "e67e4057",
+  "solution": "\\[v_{y} = v_{x} - 20\\] \\[\\sqrt{\\left( u_{x} - 20 \\right)^{2} + u_{x}^{2}} = 20\\] \\[\\Rightarrow 2u_{x}^{2} - 40u_{x} = 0\\] \\[\\therefore u_{x} = 20\\] Since \\(u_{y} = u_{x} = 20\\text{ }m/s\\), \\[H = \\frac{u_{y}^{2}}{2g} = \\frac{20^{2}}{2(10)} = 20\\text{ }m\\]",
+  "note": "working stopped at u_x = 20; max height H = u_y^2/2g = 20 m never reached"
+ },
+ {
+  "id": "86cef38d-4886-4fd7-b108-421f6c3894e0",
+  "before": "df33fe06",
+  "solution": "For a pure capacitor the reactance is \\(X_{C}=\\frac{1}{\\omega C}\\), so the peak current is \\[I_{0}=\\frac{E_{0}}{X_{C}}=E_{0}\\omega C.\\] Here \\(E_{0}=36\\ \\text{V}\\), \\(\\omega=120\\pi\\ \\text{rad/s}\\) and \\(C=150\\times10^{-6}\\ \\text{F}\\), giving \\[I_{0}=36\\times120\\pi\\times150\\times10^{-6}\\approx2.04\\ \\text{A}\\approx2\\ \\text{A}.\\] The correct choice is A.",
+  "note": "36 x 120 pi x 150e-6 = 2.0357, so 2.04 not 2.03"
+ },
+ {
+  "id": "8bf79688-e48d-4e23-aaae-5d3a2c73617e",
+  "before": "3dcebd68",
+  "solution": "\\[u_{x} = 5\\text{ }m/s\\ a_{x} = 3\\text{ }m/s^{2}\\ x = 84\\text{ }m\\] \\[v_{x}^{2} - u_{x}^{2} = 2ax\\] \\[v_{x}^{2} - 25 = 2(3)(84)\\] \\[V_{x} = 23\\text{ }m/s\\] \\[v_{x} - u_{x} = a_{x}t\\] \\[t = \\frac{23 - 5}{3} = 6\\text{ }s\\] \\[v_{y} = 0 + a_{y}t = 0 + 2 \\times (6) = 12\\text{ }m/s\\] \\[v^{2} = v_{x}^{2} + v_{y}^{2} = 23^{2} + 12^{2} = 673\\] \\[v = \\sqrt{673}\\text{ }m/s\\]",
+  "note": "lost acceleration value: c should be 3"
+ },
+ {
+  "id": "8e42d560-3714-40aa-977f-cd50dbc6023b",
+  "before": "912fb86e",
+  "solution": "\\[\\begin{matrix} & \\Delta E = 10.2eV \\\\ & \\frac{hc}{\\lambda} = 10.2ev \\\\ & \\lambda = \\frac{hc}{(10.2)e} \\\\ & \\ = \\frac{12400}{10.2}\\text{Å} \\\\ & \\ = 121.57\\text{ }nm \\\\ & \\ \\simeq 121.8\\text{ }nm \\end{matrix}\\]",
+  "note": "12400/10.2 A = 121.57 nm, not 121.56"
+ },
+ {
+  "id": "8eb834dc-f94a-49ec-a541-04e1810c6143",
+  "before": "1191ff19",
+  "solution": "\\[\\cos\\theta = \\frac{x}{d}\\] If displaced from equilibrium position, \\[F_{\\text{restoring~}} = \\left( \\frac{GMmd}{R^{3}} \\right)\\cos\\theta\\] \\[F_{\\text{Res.~}} = \\frac{GMmd}{R^{3}} \\cdot \\frac{x}{d} = \\frac{GMmx}{R^{3}}\\] \\[a_{R} = \\frac{GMx}{R^{3}}\\ {GM}_{e} = {gR}^{2}\\] \\[T = 2\\pi\\sqrt{\\left| \\frac{x}{a} \\right|}\\] \\[T = 2\\pi\\sqrt{\\frac{x}{\\frac{GMx}{R^{3}}}} = 2\\pi\\sqrt{\\frac{R^{3}}{{gR}^{2}}}\\] \\[T = 2\\pi\\sqrt{\\frac{R}{g}}\\]",
+  "note": "garbled T line: the root of x/a was multiplied by a second root; T = 2 pi sqrt(R^3/GM) = 2 pi sqrt(R^3/gR^2)"
+ },
+ {
+  "id": "8f07ab50-54da-4835-84cd-1a7d0e326a96",
+  "before": "8211d695",
+  "solution": "\\(x(t) = t^{2} + t + 1\\)\n\\[{v(t) = 2t + 1 }{a(t) = 2 }\\]\\(F = 4\\text{ }N\\).\nDisplacement \\(= x(3) - x(2)\\)\n\\[{= 13 - 7 = 6\\text{ }m }{W = F.S = 4 \\times 6 = 24\\text{ }J}\\]",
+  "note": "unit M should be m"
+ },
+ {
+  "id": "91689a67-08b3-4b36-bf51-d96a28970534",
+  "before": "226cdaf5",
+  "solution": "\\[\\begin{matrix} & Nsin\\theta + fcos\\theta = \\frac{mv^{2}}{R} \\\\ & Ncos\\theta - fsin\\theta = mg \\\\ & \\frac{\\sin\\theta + \\mu \\cos\\theta}{\\cos\\theta - \\mu \\sin\\theta} = \\frac{v^{2}}{Rg} \\\\ & Rgtan\\theta + \\mu Rg = v^{2} - v^{2}\\mu \\tan\\theta \\\\ & \\mu = \\frac{v^{2} - Rgtan\\theta}{Rg + v^{2}\\tan\\theta} \\end{matrix}\\]",
+  "note": "lost g: Rg tan(theta)"
+ },
+ {
+  "id": "9772d480-0c9d-4c56-ba72-7b81e07d0f1a",
+  "before": "53b25389",
+  "solution": "Inside earth, force is given by \\(F = - \\frac{GM_{e}mx}{R_{e}^{3}}\\) And \\(g_{0}\\) (on surface of earth) \\(= \\frac{GM_{e}}{R_{e}^{2}}\\) \\[\\therefore F = - \\frac{g_{0}m}{R_{e}}x\\] \\[\\Rightarrow a = - \\frac{g_{0}}{R_{e}}x\\] \\[\\omega = \\sqrt{\\frac{g_{0}}{R_{e}}}\\] \\[\\Rightarrow T = 2\\pi\\sqrt{\\frac{R_{e}}{g_{0}}} = 2\\pi\\sqrt{\\frac{6400 \\times 10^{3}}{10}} = 2 \\times 3.14 \\times 8 \\times 10^{2}sec = 5024sec = 1.4hr\\] \\(T = 1.4hr = 1hr24\\) minutes",
+  "note": "2 x 3.13 x 8 x 10^2 is 5008, not 5024: should be 3.14"
+ },
+ {
+  "id": "97835195-29ab-4467-9655-d4a0dd6f6da0",
+  "before": "be18a783",
+  "solution": "By conservation of mechanical energy \\[U_{i} + K_{i} = U_{f} + K_{f}\\] \\[- \\frac{GMm}{2R} + 0 = - \\frac{GMm}{R} + \\frac{1}{2}{mv}^{2}\\] \\[\\frac{GMm}{2R} = \\frac{1}{2}{mv}^{2}\\] \\[v = \\sqrt{\\frac{GM}{R}} = \\sqrt{gR}\\]",
+  "note": "final kinetic energy K_f, not K_i"
+ },
+ {
+  "id": "985fdb1a-7a85-47dd-bcc6-438c4d897ead",
+  "before": "e0a00ac4",
+  "solution": "\\[\\begin{matrix} & V^{2} = 0 + 2\\text{ }g(\\text{ }S - x) \\\\ & V^{2} = 2\\text{ }g(\\text{ }S - x) \\end{matrix}\\] At B, Potential energy \\(=\\) mgx \\[\\frac{1}{2}{mv}^{2} = 3mgx\\] \\[g(S - x) = 3gx\\] \\[4x = S\\] \\[x = \\frac{S}{4}\\] \\[\\Rightarrow \\text{ }V = \\sqrt{2\\text{ }g \\times \\frac{3\\text{ }S}{4}} = \\sqrt{\\frac{3gS}{2}}\\]",
+  "note": "KE is three times PE: 1/2 mv^2 = 3mgx, so g(S - x) = 3gx, then 4x = S"
+ },
+ {
+  "id": "9afaa01d-4b68-459c-b57b-f5096e1463f0",
+  "before": "0bfba7ac",
+  "solution": "\\(a_{1} = gsin\\theta - \\mu gcos\\theta\\) > \\[\\mathcal{l} = \\frac{1}{2}a \\cdot t^{2}\\] > > \n> for frictionless surface \\(a_{2} = gsin\\theta\\)\n> \\[{\\mathcal{l} = \\frac{1}{2}a_{2}\\frac{t^{2}}{4} > }{a_{1}t^{2} = a_{2}\\frac{t^{2}}{4} > }{g\\left( \\sin45 - \\mu\\cos 45^{\\circ} \\right) = \\frac{gsin45}{4} > }{1 - \\mu = \\frac{1}{4} > }{\\mu = \\frac{3}{4} = \\frac{\\alpha}{100} > }{\\alpha = 75}\\]",
+  "note": "lost cos(theta) in a_1; 'a,t^2' should be a_1 t^2"
+ },
+ {
+  "id": "9c38d893-30b0-4489-a0d7-9148e627ad17",
+  "before": "c9a052c5",
+  "solution": "\\[\\frac{f}{\\pi r^{2}} = Y\\frac{\\mathcal{l}}{L}\\] \\[\\frac{2f}{\\pi(2r)^{2}} = Y\\frac{\\mathcal{l}'}{2\\text{ }L}\\] \\[\\Rightarrow \\frac{2}{1} = \\frac{2\\mathcal{l}}{\\mathcal{l}'} \\Rightarrow \\mathcal{l}'\\mathcal{= l}\\]",
+  "note": "dividing the first equation by the second gives 2 = 2l/l', not 2l'/l"
+ },
+ {
+  "id": "9e1e2f96-5b06-46b8-8e7f-aca0f12220af",
+  "before": "4ad66859",
+  "solution": "using energy conservation between \\(A\\) and \\(B\\) point \\[mgh = \\frac{1}{2}m(\\omega r)^{2} + \\frac{1}{2}I\\omega^{2}\\] \\[2mgh = \\left( {mr}^{2} + I \\right)\\omega^{2}\\] \\[\\omega^{2} = \\frac{2mgh}{I + mr^{2}}\\]",
+  "note": "stem has mass m and radius r; stored line used M and R, so its last line did not match option D"
+ },
+ {
+  "id": "a540d1ad-f6ca-4e29-b171-605833b68868",
+  "before": "70e32829",
+  "solution": "\\(a\\widehat{i} + b\\widehat{j} + \\widehat{k}\\) is \\(\\bot\\) to \\((2\\widehat{i} - 3\\widehat{j} + 4\\widehat{k})\\) \\(\\overrightarrow{A} \\cdot \\overrightarrow{B} = 0 \\Rightarrow \\ 2a - 3\\text{ }b + 4 = 0\\) \\(2a - 3\\text{ }b = - 4\\) Given \\(\\ 3a + 2b = 7\\) \\[\\frac{2\\left( \\frac{a}{b} \\right) - 3}{3\\left( \\frac{a}{b} \\right) + 2} = \\frac{- 4}{7} \\Rightarrow 14\\frac{a}{b} - 21 = - 12\\frac{a}{b} - 8\\] \\[26\\frac{a}{b} = 13 \\Rightarrow \\frac{a}{b} = \\frac{1}{2} = \\frac{x}{2}\\] \\[x = 1\\]",
+  "note": "k components give +1 x 4, so + 4"
+ },
+ {
+  "id": "a6fc0f1b-4038-4e1c-9e89-2dadddf2ddad",
+  "before": "6ed6b390",
+  "solution": "\\(Tcos\\theta = Mg\\) ..... (1)\n\\({Tsin}\\theta = M\\omega^{2}R\\ \\ \\ \\ldots\\) (2)\nUsing equation (2)\n\\[Tsin\\theta = M\\omega^{2}(\\text{ }Lsin\\theta)\\] \\[T = M\\omega^{2}\\text{ }L = M\\left( \\frac{3}{\\pi} \\times 2\\pi \\right)^{2}\\text{ }L\\] \\[T = 36ML\\]",
+  "note": "the mass is M, so T cos(theta) = Mg"
+ },
+ {
+  "id": "aec0f1eb-5935-403e-8036-acce3ba67ba0",
+  "before": "07133d0a",
+  "solution": "Reaction: \\(\\ _{3}^{7}Li + \\ _{1}^{1}p \\rightarrow 2\\ _{2}^{4}He\\). Mass defect per reaction: \\[\\Delta m = (7.0183 + 1.008) - 2(4.004) = 0.0183\\ u,\\] so each reaction releases \\(0.0183 \\times 931 = 17.04\\ MeV\\). Number of Li nuclei: \\(\\frac{7000/17.13\\ g}{7\\ g\\,mol^{-1}} \\times 6 \\times 10^{23} = \\frac{6 \\times 10^{26}}{17.13} = 3.50 \\times 10^{25}\\). Total energy: \\[E = 17.04\\ MeV \\times 3.50 \\times 10^{25} = 5.96 \\times 10^{26}\\ MeV = 5.96 \\times 10^{32}\\ eV.\\] So \\(\\alpha = 6\\).",
+  "note": "17.04 x 3.50 x 10^25 = 5.96 x 10^26 from the printed values"
+ },
+ {
+  "id": "b159183b-fb1e-4311-919e-2f403c7bca4d",
+  "before": "01acb807",
+  "solution": "\\[\\begin{matrix} & \\lbrack E\\rbrack = M^{1}{\\text{ }L}^{2}{\\text{ }T}^{- 2} \\\\ & \\lbrack Pc\\rbrack = M^{1}{\\text{ }L}^{1}{\\text{ }T}^{- 1} \\cdot {\\text{ }L}^{1}{\\text{ }T}^{- 1} = M^{1}{\\text{ }L}^{2}{\\text{ }T}^{- 2} \\\\ & \\left\\lbrack {mc}^{2} \\right\\rbrack = M^{1}{\\text{ }L}^{2}T^{- 2} \\\\ & \\left\\lbrack E^{2} \\right\\rbrack = M^{2}{\\text{ }L}^{4}{\\text{ }T}^{- 4} \\\\ & E^{2} = P^{2}c^{2} + m^{2}c^{4} \\end{matrix}\\]",
+  "note": "the line gave [E] under the name E^2; [E^2] = M^2 L^4 T^-4"
+ },
+ {
+  "id": "b2c5f849-7ec9-4a53-a057-351501481e3e",
+  "before": "b4c4de32",
+  "solution": "\\[\\ i_{g} = \\frac{10}{400 + 100} = 20 \\times 10^{- 3}\\text{ }A\\] For ammeter Let shunt resistance \\(= S\\) \\[i_{g}R = \\left( i - i_{g} \\right)S\\] \\[20 \\times 10^{- 3} \\times 100 = (10 - 0.02)S \\approx 10\\text{ }S\\] \\[S \\approx 20 \\times 10^{- 2}\\Omega\\]",
+  "note": "the 0.02 A beside 10 A was dropped without saying; now shown as an approximation"
+ },
+ {
+  "id": "b345f985-2bd7-457a-a6f4-ead39f19a09b",
+  "before": "7818294d",
+  "solution": "Let height of tower be \\(h\\) and speed of projection in first two cases be \\(u\\). For case-I \\(:2^{\\text{nd~}}\\) equation \\(s = ut + \\frac{1}{2}at^{2}\\)\n\\[h = - u(6) + \\frac{1}{2}\\text{ }g(6)^{2}\\] \\[h = - 6u + 18g\\] For case-II : \\(h = u(1.5) + \\frac{1}{2}\\text{ }g(1.5)^{2}\\) \\[h = 1.5u + \\frac{2.25\\text{ }g}{2}\\] Multiplying equation (ii) by 4 we get \\[4\\text{ }h = 6u + 4.5\\text{ }g\\] equation (i) + equation (iii) we get \\(5\\text{ }h = 22.5\\text{ }g\\) \\(h = 4.5\\text{ }g\\ldots\\) (iv) For case-III : \\[h = 0 + \\frac{1}{2}{gt}^{2}\\] Using equation (4) & equation (5) \\[4.5\\text{ }g = \\frac{1}{2}{gt}^{2}\\] \\[t^{2} = 9 \\Rightarrow t = 3\\text{ }s\\]",
+  "note": "h, not H"
+ },
+ {
+  "id": "b630d6c3-eb6d-41bc-a680-4879072f056b",
+  "before": "0d6889b5",
+  "solution": "\\(T^{2} \\propto R^{3}\\) \\[\\left( \\frac{T'}{T} \\right)^{2} = \\left( \\frac{9R}{R} \\right)^{3}\\] \\[T'^{2} = T^{2} \\times 9^{3}\\] \\[T' = T \\times 3^{3}\\] \\[T' = 27\\text{ }T\\]",
+  "note": "lost prime in T'^2; last line named T'' instead of T'"
+ },
+ {
+  "id": "bb14eb94-4a6d-49e3-be1c-67ceed94805e",
+  "before": "afa126c0",
+  "solution": "Take each quantity from its defining relation. From \\(C=Q/V\\) with \\(V=W/Q\\), \\[[C]=\\frac{[Q]^{2}}{[W]}=\\frac{A^{2}T^{2}}{ML^{2}T^{-2}}=M^{-1}L^{-2}T^{4}A^{2},\\] which is (iii). From the parallel-plate result \\(C=\\varepsilon_{0}A/d\\), \\[[\\varepsilon_{0}]=[C]\\frac{[d]}{[A]}=M^{-1}L^{-2}T^{4}A^{2}\\cdot L^{-1}=M^{-1}L^{-3}T^{4}A^{2},\\] which is (ii). From \\(c=1/\\sqrt{\\mu_{0}\\varepsilon_{0}}\\), \\[[\\mu_{0}]=\\frac{1}{[c]^{2}[\\varepsilon_{0}]}=\\frac{1}{L^{2}T^{-2}}\\cdot ML^{3}T^{-4}A^{-2}=MLT^{-2}A^{-2},\\] which is (iv). From \\(E=F/q\\), \\[[E]=\\frac{MLT^{-2}}{AT}=MLT^{-3}A^{-1},\\] which is (i). So (a) goes to (iii), (b) to (ii), (c) to (iv) and (d) to (i), and the correct choice is A.",
+  "note": "1/eps0 = M L^3 T^-4 A^-2; the stored product multiplies out to M L^4 T^-4 A^-2"
+ },
+ {
+  "id": "bf25cf5f-0975-4021-9f58-0d7aed2685a2",
+  "before": "e15bacc7",
+  "solution": "From \\(9\\ MSD=10\\ VSD\\) we get \\(1\\ VSD=0.9\\ MSD\\), so \\[LC=1\\ MSD-1\\ VSD=0.1\\ MSD=0.1\\text{ }mm=0.01\\text{ }cm\\] The reading is \\[d=MSR+LC\\times VSR=2\\text{ }cm+0.01\\times2=2.02\\text{ }cm\\] \\[V=\\frac{4}{3}\\pi\\left(\\frac{2.02}{2}\\right)^{3}=4.32\\text{ }cm^{3}\\] \\[\\rho=\\frac{8.635}{4.32}\\approx2.0\\text{ }g/cm^{3}\\] The correct choice is D.",
+  "note": "(4/3) pi (1.01)^3 = 4.3159, so 4.32; rho = 8.635/4.32 = 2.0"
+ },
+ {
+  "id": "cbf21e0e-ab34-4458-8167-cb982ea9e415",
+  "before": "5a47e3af",
+  "solution": "Given least count of Screw Gauge \\(= 0.01\\text{ }mm\\) \\[\\text{~L.C~} = \\frac{(\\text{~pitch~})}{\\text{~No. of circular turn~}} = \\frac{P}{\\text{ }N} = 0.01\\text{ }mm\\] New least count \\(= \\frac{P(1 + 0.75)}{N(1 - 0.5)} = \\frac{P}{N}\\left\\lbrack \\frac{1.75}{0.5} \\right\\rbrack\\) \\[\\begin{matrix} & \\ = (0.01)3.5 \\\\ & \\ = 0.035\\text{ }mm \\\\ & \\ = 35 \\times 10^{- 3}\\text{ }mm \\\\ & \\ \\therefore\\text{~Ans. is~}35 \\end{matrix}\\]",
+  "note": "the quotient P(1.75)/N(0.5) is the new least count, not the new pitch"
+ },
+ {
+  "id": "cc7df824-edbf-4407-b42f-3e988ed49313",
+  "before": "b7c40ed6",
+  "solution": "For line-of-sight transmission the radio horizon of a tower of height \\(h\\) is \\(d=\\sqrt{2hR_{e}}\\), so \\[h=\\frac{d^{2}}{2R_{e}}.\\] With \\(d=1500\\ \\text{km}\\) and \\(R_{e}=6400\\ \\text{km}\\), \\[h=\\frac{\\left(1.5\\times10^{6}\\right)^{2}}{2\\left(6.4\\times10^{6}\\right)}=\\frac{2.25\\times10^{12}}{1.28\\times10^{7}}=1.76\\times10^{5}\\ \\text{m}\\approx176\\ \\text{km}\\ (\\text{nearest option: }175\\ \\text{km}).\\]",
+  "note": "1.76 x 10^5 m is 176 km; 175 km is only the nearest option"
+ },
+ {
+  "id": "d017ff09-ba68-40f5-a8b6-dd3159f122c3",
+  "before": "55300095",
+  "solution": "Applying conservation of linear momentum \\[\\Rightarrow {\\overrightarrow{P}}_{i} = {\\overrightarrow{P}}_{f}\\] \\[mv + 2\\text{ }m \\times 0 = (3\\text{ }m)v'\\] \\(\\therefore mv = 3mv'\\), \\[v' = \\frac{v}{3}\\]",
+  "note": "lost prime on v'"
+ },
+ {
+  "id": "d3633a04-3eea-4ce2-a52a-9f5318a68ef2",
+  "before": "24cc732b",
+  "solution": "For a body performing SHM, relation between velocity and displacement \\[v = \\omega\\sqrt{A^{2} - x^{2}}\\] now, square both side \\[v^{2} = \\omega^{2}\\left( A^{2} - x^{2} \\right)\\] \\[\\Rightarrow v^{2} = \\omega^{2}A^{2} - \\omega^{2}x^{2}\\] \\[v^{2} + \\omega^{2}x^{2} = \\omega^{2}A^{2}\\] divide whole equation by \\(\\omega^{2}A^{2}\\) \\[\\frac{v^{2}}{\\omega^{2}A^{2}} + \\frac{\\omega^{2}x^{2}}{\\omega^{2}A^{2}} = \\frac{\\omega^{2}A^{2}}{\\omega^{2}A^{2}}\\] \\[\\frac{v^{2}}{(\\omega A)^{2}} + \\frac{x^{2}}{(A)^{2}} = 1\\] above equation is similar as standard equation of ellipes, so graph between velocity and displacement will be ellipes.",
+  "note": "lost omega (w) twice; right side of the divided equation should be w^2A^2/(w^2A^2)"
+ },
+ {
+  "id": "d3bfe269-891c-464d-9572-f7ebd890e843",
+  "before": "7935ee2e",
+  "solution": "\\(\\overrightarrow{a} = \\frac{\\overrightarrow{F}}{m} = \\frac{5\\widehat{i} + 10\\widehat{j}}{0.1} = \\left( 50\\widehat{i} + 100\\widehat{j} \\right)\\)\n\\[{\\overrightarrow{s} = \\overrightarrow{u}t + \\frac{1}{2}\\overrightarrow{a}t^{2} }{\\overrightarrow{s} = 0 + \\frac{1}{2}\\lbrack 50\\widehat{i} + 100\\widehat{j}\\rbrack\\lbrack 2\\rbrack^{2} }{\\overrightarrow{s} = 100\\widehat{i} + 200\\widehat{j} = \\overrightarrow{r} = 2x\\widehat{i} + 5y\\widehat{j} }\\]\\(2x = 100\\) \\(5y = 200\\) x = 50 y = 40 > \\[\\frac{x}{y} = \\frac{5}{4}\\]",
+  "note": "5y = 200 gives y = 40, not 100"
+ },
+ {
+  "id": "d3f9424b-58f0-4244-a7a3-1b428eebd7fd",
+  "before": "1cf78386",
+  "solution": "\\[{Q = AT }{I = A }{\\mu_{0} = {MLT}^{- 2}{\\text{ }A}^{- 2} }{P = Q^{x}\\mu_{0}\\ ^{y}I^{z} = \\lbrack AT\\rbrack^{x}\\left\\lbrack {MLT}^{- 2}{\\text{ }A}^{- 2} \\right\\rbrack^{y}\\lbrack A\\rbrack^{z} }{{MLT}^{- 1} = M^{y}L^{y}T^{x - 2y}A^{- 2y + z + x} }\\]Now; \\(y = 1\\)\n\\[{x - 2y = - 1 }{- 2y + z + x = 0 }{\\therefore x = y = z = 1}\\]",
+  "note": "A exponent is -2y + z + x; the stored line dropped x"
+ },
+ {
+  "id": "d5a2f36b-1e0d-47a4-a234-461e4ea26082",
+  "before": "25d0d86f",
+  "solution": "Activity decays as \\(A=A_{0}e^{-\\lambda t}\\), so \\[\\lambda=\\frac{1}{t}\\ln\\frac{A_{0}}{A}=\\frac{1}{10}\\ln\\frac{4250}{2250}=\\frac{1}{10}\\ln(1.889).\\] Using \\(\\ln x=2.303\\log_{10}x\\) and the given \\(\\log_{10}1.88=0.274\\), \\[\\lambda=\\frac{2.303\\times0.274}{10}=0.063\\ \\min^{-1}.\\] The correct choice is C.",
+  "note": "4250/2250 = 1.8889, so 1.889"
+ },
+ {
+  "id": "d6610537-9e32-439b-ade5-dd628a5ccbac",
+  "before": "a1e5bd1c",
+  "solution": "Least count. \\(= \\frac{\\text{~pitch~}}{\\text{~no. of div.~}} = \\frac{1\\text{ }mm}{100} = 0.01\\text{ }mm\\) +ve error \\(= 8 \\times\\) L.C. \\(= + 0.08\\text{ }mm\\) measured reading \\(= 1\\text{ }mm + 72 \\times\\) L.C. \\[= 1\\text{ }mm + 0.72\\text{ }mm\\] \\[= 1.72\\text{ }mm\\] True reading \\(= 1.72 - 0.08\\) \\[= 1.64\\text{ }mm\\] Radius \\(= \\frac{1.64}{2} = 0.82\\text{ }mm\\)",
+  "note": "unit m should be mm; the + of +ve error was lost"
+ },
+ {
+  "id": "de226daa-295c-485f-9532-056ab40e20ac",
+  "before": "9ce8db14",
+  "solution": "\\[I = ma^{2} + ma^{2} + m(\\sqrt{2}a)^{2}\\] \\[= 4{ma}^{2}\\] \\[= 4 \\times 1 \\times (2)^{2} = 16\\]",
+  "note": "(sqrt(2a))^2 is 2a; the diagonal is sqrt2 times a"
+ },
+ {
+  "id": "dfe75de3-68ec-4e97-bf47-c848db5d89e4",
+  "before": "60b8e0fd",
+  "solution": "The wire keeps its length: the circumference is \\(2\\pi \\times 7 = 14\\pi\\ cm\\), so the square has side \\(\\frac{14\\pi}{4} = \\frac{7\\pi}{2}\\ cm\\). Areas: circle \\(49\\pi = 153.9\\ cm^{2}\\), square \\(\\left(\\frac{7\\pi}{2}\\right)^{2} = 120.9\\ cm^{2}\\). The area falls by \\(33.0\\ cm^{2} = 33.0 \\times 10^{-4}\\ m^{2}\\), so \\(\\Delta\\phi = 0.2 \\times 33.0 \\times 10^{-4} = 6.60 \\times 10^{-4}\\ Wb\\) and \\[\\varepsilon = \\frac{\\Delta\\phi}{\\Delta t} = \\frac{6.60 \\times 10^{-4}}{0.5} = 1.32 \\times 10^{-3}\\ V = 1.32\\ mV.\\] Hence option (d).",
+  "note": "0.2 x 33.0e-4 = 6.60e-4, not 6.61e-4"
+ },
+ {
+  "id": "e0928e27-d535-489a-b8ab-01ea33d9c05e",
+  "before": "ccd2c315",
+  "solution": "\\(T = \\left( {ML}^{- 3} \\right)^{a}L^{b}\\left( {ML}^{- 1}{\\text{ }T}^{- 1} \\right)^{c}\\left( {ML}^{- 3} \\right)^{d}\\)\n\\[T = M^{a + c + d}L^{- 3a - c - 3d + b}T^{- c} \\]on comparing\n\\[{c = - 1;a + c + d = 0; - 3a - c - 3\\text{ }d + b = 0 }{b = 2;a + d = 1 }{b + c = 1}\\]",
+  "note": "sd should be 3d"
+ },
+ {
+  "id": "e28051ab-7510-4eed-b136-1526cbf24d3c",
+  "before": "86022dde",
+  "solution": "\\[f_{1} = 20cm\\] \\[f_{2} = 20cm\\] \\(1^{\\text{st~}}\\) refraction in \\(L_{1}\\left( I_{1} \\right)\\) \\[\\frac{1}{v} - \\frac{1}{u} = \\frac{1}{f}\\] \\[\\frac{1}{v} - \\frac{1}{\\infty} = \\frac{1}{f}\\] \\(\\therefore v = f\\) \\(2^{\\text{nd~}}\\) refraction in \\(L_{2}\\) \\(I_{1} \\rightarrow\\) object \\(I_{2} \\rightarrow\\) image \\[u = - 40\\text{ }cm\\ f = 20\\text{ }cm\\] \\[\\frac{1}{v} - \\frac{1}{u} = \\frac{1}{f}\\] \\[\\frac{1}{v} - \\frac{1}{( - 40)} = \\frac{1}{20}\\] \\[\\frac{1}{v} = \\frac{1}{20} - \\frac{1}{40} = \\frac{6 - 3}{120}\\] \\[\\frac{1}{\\text{ }V} = \\frac{3}{120} = \\frac{1}{40}\\] \\[\\therefore\\ v = 40\\text{ }cm\\] from \\(L_{2}\\), so the image is \\(60 + 40 = 100\\text{ }cm\\) from the first lens.",
+  "note": "working stopped at v = 40 cm from L2; the 100 cm from the first lens was only announced"
+ },
+ {
+  "id": "eab464fe-e721-42d7-a870-fdc351c9cdb5",
+  "before": "6db149f6",
+  "solution": "The nature of flow is determined by Reynolds Number. \\[R_{e} = \\frac{\\rho vD}{\\eta}\\] \\[\\begin{bmatrix} \\rho \\rightarrow \\text{~density of fluid~}\\ ; & \\eta \\rightarrow \\text{~coefficient of~} \\\\ v \\rightarrow \\text{~velocity of flow~} & \\text{~viscosity~} \\\\ D \\rightarrow \\text{~Diameter of pipe~} & \\end{bmatrix}\\] From NCERT If \\(R_{e} < 1000 \\rightarrow\\) flow is steady \\(1000 < R_{e} < 2000 \\rightarrow\\) flow becomes unsteady \\(R_{e} > 2000 \\rightarrow\\) flow is turbulent \\[R_{\\text{einitial~}} = 10^{3} \\times \\frac{0.18 \\times 10^{- 3}}{\\pi \\times \\left( 0.5 \\times 10^{- 2} \\right)^{2} \\times 60} \\times \\frac{1 \\times 10^{- 2}}{10^{- 3}}\\] \\[\\approx 382\\] \\[R_{\\text{efinal~}} = 10^{3} \\times \\frac{0.48 \\times 10^{- 3}}{\\pi \\times \\left( 0.5 \\times 10^{- 2} \\right)^{2} \\times 60} \\times \\frac{1 \\times 10^{- 2}}{10^{- 3}}\\] \\[\\approx 1019\\] The initial \\(R_{e} < 1000\\), so the flow is steady, and the final \\(1000 < R_{e} < 2000\\), so it is unsteady: steady flow to unsteady flow.",
+  "note": "Re values are 381.97/382.17 and 1018.59/1019.11 depending on pi; 382 and 1019; the working never stated the verdict"
+ },
+ {
+  "id": "eb2ce391-06f9-4b62-8c14-a432a08b9951",
+  "before": "643aaeff",
+  "solution": "The angular frequency is \\[\\omega = 2\\pi f = 2\\times\\frac{22}{7}\\times\\frac{500}{60}\\text{ }rad\\,s^{-1}.\\] For a rotating coil \\(e = NBA\\omega\\sin\\theta\\), where \\(\\theta\\) is the angle between the normal to the coil and the field. With the plane inclined at \\(60^{\\circ}\\) to the field the normal makes \\(30^{\\circ}\\) with it, so \\(\\sin\\theta = \\sin 30^{\\circ} = \\tfrac{1}{2}\\). Hence \\[e = 600\\times 0.4\\times\\left(70\\times 10^{-4}\\right)\\times\\left(2\\times\\frac{22}{7}\\times\\frac{500}{60}\\right)\\times\\frac{1}{2} = 44\\text{ }V.\\]",
+  "note": "the next line uses the normal at 30 degrees, so theta is measured from the normal"
+ },
+ {
+  "id": "ebc4eeff-183f-4990-885e-ec748539cc03",
+  "before": "7ae49215",
+  "solution": "Bohr's energy is given by \\(E = - 13.6 \\times \\frac{1}{n^{2}}\\) for hydrogen atom. And \\(E = \\frac{hc}{\\lambda}\\) For \\(1^{\\text{st~}}\\) condition, \\(\\frac{hc}{\\lambda_{0}} = 13.6\\left( \\frac{1}{4} - \\frac{1}{9} \\right) = 13.6 \\times \\frac{5}{36} - - - - - (i)\\) For \\(2^{\\text{nd~}}\\) condition, \\(\\frac{hc}{\\lambda} = 13.6\\left( \\frac{1}{4} - \\frac{1}{16} \\right) = 13.6 \\times \\frac{3}{16} - - - - - (\\) ii \\()\\) Dividing equation (i) by (ii), \\[\\frac{\\lambda}{\\lambda_{0}} = \\frac{5}{36} \\times \\frac{16}{3} = \\frac{20}{27}\\] \\[\\Rightarrow \\lambda = \\frac{20}{27}\\lambda_{0}\\] \\[\\Rightarrow x = 27\\]",
+  "note": "the unknown in the stem is x"
+ },
+ {
+  "id": "ef8fefcc-2387-4bf8-8dc3-7160094ea919",
+  "before": "d1b987e0",
+  "solution": "\\(\\ 83\\ _{1}P^{1} + 126\\ _{0}n^{1} \\rightarrow \\ _{83}{Bi}^{209}\\)\n\\[{\\Delta m = 83{\\text{ }m}_{p} + 126{\\text{ }m}_{n} - M_{Bi} }{= 83 \\times 1.007825 + 126 \\times 1.008665 - 208.980388 }{= 1.760877u }{BE = 1.760877 \\times 931MeV = 1639.3765 }{\\frac{BE}{A} = \\frac{1639.3765}{209}MeV = 7.8439MeV}\\]",
+  "note": "1.760877 x 931 = 1639.376487, so 1639.3765"
+ },
+ {
+  "id": "f39f9914-65c1-44a6-8782-7c767832888d",
+  "before": "75326694",
+  "solution": "\\[\\begin{matrix} & k_{i} = \\frac{1}{2}mv^{2} \\\\ & k_{f} = \\frac{1}{2}\\text{ }m\\left( vcos60^{\\circ} \\right)^{2} = \\frac{1}{8}{mv}^{2} \\\\ & \\Delta k = k_{i} - k_{f} = \\frac{3}{8}{mv}^{2} = \\frac{3}{8} \\times 0.1 \\times 400 = 15\\text{ }J \\end{matrix}\\]",
+  "note": "stray extra v in k_i"
+ },
+ {
+  "id": "f3cd663b-e3ec-4550-8dc5-60225d732a62",
+  "before": "e868bd77",
+  "solution": "\\(F = 4x\\widehat{i} + 3y^{2}\\widehat{j}\\) \\[WD = \\Delta KE\\] \\[W = \\int\\overrightarrow{F} \\cdot (dx\\widehat{i} + dy\\widehat{j})\\] \\[= \\int_{1}^{2} 4xdx + \\int_{2}^{3} 3y^{2}dy\\] \\[= \\left( 2x^{2} \\right)_{1}^{2} + \\left( y^{3} \\right)_{2}^{3}\\] \\[= (8 - 2) + (27 - 8)\\] \\[= 6 + 19 = 25\\text{ }J\\]",
+  "note": "the y integral is with respect to y"
+ },
+ {
+  "id": "f5544842-795f-4834-9e35-9d1069e4b403",
+  "before": "05df63a0",
+  "solution": "\\[\\overrightarrow{P} = \\cos(kt)\\widehat{i} - \\sin(kt)\\widehat{j};|\\overrightarrow{P}| = 1\\] \\[\\because\\overrightarrow{P} = m\\overrightarrow{v}\\] \\[\\therefore\\widehat{P} = \\widehat{V}\\] \\[\\Rightarrow \\widehat{v} = \\cos(kt)\\widehat{i} - \\sin(kt)\\widehat{j}\\] \\[\\widehat{a} = \\frac{- ksin(kt)\\widehat{i} - kcos(kt)\\widehat{j}}{k}\\] \\[\\Rightarrow \\widehat{a} = - \\sin kt\\widehat{i} - \\cos kt\\widehat{j}\\] \\[\\because\\widehat{F} = \\widehat{a} = - \\sin kt\\widehat{i} - \\cos kt\\widehat{j}\\] \\[\\cos\\theta = \\frac{\\widehat{F} \\cdot \\widehat{P}}{|\\widehat{F}||\\widehat{P}|} = \\frac{- \\sin kt\\cos kt + \\sin kt\\cos kt}{1 \\times 1} = 0\\] \\[\\Rightarrow \\theta = \\frac{\\pi}{2}\\]",
+  "note": "the two terms have opposite signs and cos t should be cos kt"
+ },
+ {
+  "id": "fd963b57-5a00-4fc8-97e3-b552589e9c41",
+  "before": "56091d57",
+  "solution": "\\(B = \\frac{N\\mu_{0}i}{2R}\\) \\[B_{1} = \\frac{N_{1}\\mu_{0}i}{2R_{1}}\\] For \\(N_{2} = 5\\) Radius of coil \\(= R_{2} = \\frac{N_{1} \\times R_{1}}{{\\text{ }N}_{2}}\\) \\[B_{2} = \\frac{N_{2}\\mu_{0}i}{2R_{2}}\\] \\[\\frac{B_{2}}{{\\text{ }B}_{1}} = \\frac{N_{2}}{{\\text{ }N}_{1}} \\cdot \\frac{R_{1}}{R_{2}} = \\frac{N_{2}}{{\\text{ }N}_{1}} \\times \\frac{N_{2}}{{\\text{ }N}_{1}};\\ \\frac{B_{2}}{{\\text{ }B}_{1}} = \\frac{25}{4}\\]",
+  "note": "B at the centre of a coil is N mu0 i / 2R; the 2 was lost"
+ },
+ {
+  "id": "7aea49bc-abe5-4e34-adb1-184aa6493a14",
+  "before": "9b79ade4",
+  "solution": "> At any time, t after it is released velocity \\(V = gt\\)\n> Acceleration of the ball remains constant \\(= g\\)\n> \\(\\therefore\\) Both will be equal at \\(t = 1sec\\)\n> \\(\\therefore\\) Position of ball from ground will be ( \\(18 - \\frac{1}{2}(10)(1)^{2}\\) ) m \\(= 18 - 5 = 13\\) m",
+  "note": "fall in 1 s was never shown; ends at 18 - 5 without the 13"
  }
 ]
