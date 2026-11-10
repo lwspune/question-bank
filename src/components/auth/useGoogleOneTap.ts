@@ -56,7 +56,7 @@ type GoogleAccountsId = {
       theme: "filled_blue" | "outline";
       size: "large";
       text: "continue_with";
-      shape: "rectangular";
+      shape: "rectangular" | "pill";
       width?: number;
     }
   ): void;
@@ -204,7 +204,7 @@ export const googleButtonAvailable = CLIENT_ID !== null;
 export async function renderGoogleButton(
   el: HTMLElement,
   handlers: { onSignedIn: (userId: string) => void; onError: () => void },
-  options: { theme?: "filled_blue" | "outline"; source?: string } = {}
+  options: { theme?: "filled_blue" | "outline"; shape?: "rectangular" | "pill"; source?: string } = {}
 ): Promise<boolean> {
   if (!CLIENT_ID) return false;
   try {
@@ -230,7 +230,7 @@ export async function renderGoogleButton(
       theme: options.theme ?? "filled_blue",
       size: "large",
       text: "continue_with",
-      shape: "rectangular",
+      shape: options.shape ?? "rectangular",
       width: Math.min(400, Math.max(200, Math.floor(el.clientWidth))),
     });
     return true;

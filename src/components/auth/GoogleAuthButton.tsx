@@ -62,7 +62,9 @@ export default function GoogleAuthButton({
           toast.error("Google sign-in didn't complete. Please try again.");
         },
       },
-      { theme: "filled_blue", source: signupSource }
+      // Google's white outline pill (2026-11-10), matching the page's rounded
+      // buttons; the blue rectangle read as an ad above the form.
+      { theme: "outline", shape: "pill", source: signupSource }
     ).then((ok) => {
       if (live) setDrawn(ok);
     });
