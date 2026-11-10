@@ -111,6 +111,9 @@ export type Entitlement = {
   providerRef: string | null;
   note: string | null;
   grantedBy: string | null;
+  /** What the buyer paid, in the currency's smallest unit (null for a free grant). Read for the upgrade credit. */
+  amountPaise?: number | null;
+  currency?: string | null;
 };
 
 /** True if the row is active and not past its expiry at `nowMs`. */

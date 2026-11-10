@@ -18,6 +18,8 @@ type EntitlementRow = {
   provider_ref: string | null;
   note: string | null;
   granted_by: string | null;
+  amount_paise?: number | null;
+  currency?: string | null;
 };
 
 function mapRow(r: EntitlementRow): Entitlement {
@@ -32,6 +34,8 @@ function mapRow(r: EntitlementRow): Entitlement {
     providerRef: r.provider_ref,
     note: r.note,
     grantedBy: r.granted_by,
+    amountPaise: r.amount_paise ?? null,
+    currency: r.currency ?? null,
   };
 }
 
@@ -47,7 +51,7 @@ export async function loadEntitlements(
   const { data, error } = await client
     .from("entitlements")
     .select(
-      "id, user_id, scope, source, status, granted_at, expires_at, provider_ref, note, granted_by"
+      "id, user_id, scope, source, status, granted_at, expires_at, provider_ref, note, granted_by, amount_paise, currency"
     )
     .eq("user_id", userId);
   if (error || !data) return [];
