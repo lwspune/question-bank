@@ -49,6 +49,7 @@ export default async function HomeworkExamPage(props: { params: Promise<Params> 
 
   return (
     <GuideShell
+      wide
       guideTitle="Daily Homework"
       sideNav={homeworkSideNav(links.length ? links : plans, exam.examName)}
       landingHref={HOMEWORK_HUB}
@@ -73,7 +74,7 @@ export default async function HomeworkExamPage(props: { params: Promise<Params> 
         </p>
       ) : (
         <>
-          <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+          <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {plans.map((p) => (
               <li key={p.slug}>
                 <PlanCard plan={p} />

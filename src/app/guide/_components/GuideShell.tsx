@@ -16,6 +16,10 @@ type Props = {
   /** Optional right-hand rail, shown from `xl` up (the notes topic page's
    *  "On this page"). Pages without one keep the two-column layout. */
   rail?: React.ReactNode;
+  /** List pages (2026-11-10): the content uses the full width beside the side
+   *  nav, for three cards across. Reading pages leave it off and keep a
+   *  comfortable line length. */
+  wide?: boolean;
 };
 
 /**
@@ -30,6 +34,7 @@ export default function GuideShell({
   children,
   landingHref,
   rail,
+  wide,
 }: Props) {
   return (
     <>
@@ -48,7 +53,7 @@ export default function GuideShell({
           )}
         >
           <GuideSideNavRail guideTitle={guideTitle} items={sideNav} landingHref={landingHref} />
-          <article className="min-w-0 max-w-3xl">{children}</article>
+          <article className={cn("min-w-0", wide ? "max-w-none" : "max-w-3xl")}>{children}</article>
           {rail && <aside className="hidden xl:block">{rail}</aside>}
         </div>
       </main>
