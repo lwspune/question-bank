@@ -1,0 +1,202 @@
+{
+  "//": "Assembled from agent drafts (space3d).",
+  "visuals": [
+    {
+      "id": "d0df809a-8eea-4211-a1f2-94f7593edd85",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "points": [
+            {
+              "id": "P",
+              "at": [
+                4,
+                6,
+                -2
+              ],
+              "label": "P(4, 6, −2)"
+            },
+            {
+              "id": "A",
+              "at": [
+                -3,
+                2,
+                3
+              ],
+              "label": "(−3, 2, 3)"
+            }
+          ],
+          "lines": [
+            {
+              "id": "L",
+              "point": "A",
+              "dir": [
+                3,
+                3,
+                -1
+              ],
+              "label": "line"
+            }
+          ],
+          "derived": [
+            {
+              "id": "M",
+              "kind": "foot",
+              "from": "P",
+              "to": "L",
+              "label": "M(3, 8, 1)"
+            }
+          ],
+          "segments": [
+            {
+              "from": "P",
+              "to": "M",
+              "label": "PM"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "P",
+            "to": "L",
+            "label": "distance = √14"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived",
+              "construct"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "2d18dfae",
+        "answer": {
+          "value": 3.7416573867739413,
+          "label": "√14"
+        }
+      }
+    },
+    {
+      "id": "e0098b67-2534-4f6b-985a-f89fa0ba3618",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "points": [
+            {
+              "id": "P",
+              "at": [
+                5,
+                4,
+                2
+              ],
+              "label": "P(5, 4, 2)"
+            },
+            {
+              "id": "A",
+              "at": [
+                -1,
+                3,
+                1
+              ],
+              "label": ""
+            }
+          ],
+          "lines": [
+            {
+              "id": "L",
+              "point": "A",
+              "dir": [
+                2,
+                3,
+                -1
+              ],
+              "label": "line"
+            }
+          ],
+          "derived": [
+            {
+              "id": "F",
+              "kind": "foot",
+              "from": "P",
+              "to": "L",
+              "label": "F(1, 6, 0)"
+            }
+          ],
+          "vectors": [
+            {
+              "id": "u",
+              "v": [
+                1,
+                6,
+                0
+              ],
+              "label": "(1, 6, 0)",
+              "beat": "derived"
+            },
+            {
+              "id": "w",
+              "v": [
+                6,
+                2,
+                3
+              ],
+              "label": "(6, 2, 3)",
+              "beat": "construct"
+            }
+          ],
+          "segments": [
+            {
+              "from": "P",
+              "to": "F"
+            }
+          ],
+          "ask": {
+            "kind": "projection",
+            "vector": "u",
+            "on": "w",
+            "label": "projection = 18/7"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "derived"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "1c04d0ba",
+        "answer": {
+          "value": 2.571428571428571,
+          "label": "18/7"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
