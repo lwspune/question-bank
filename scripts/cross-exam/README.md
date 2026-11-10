@@ -124,6 +124,25 @@ thing as the last one's.
   pair on the corrected text. Example: NDA 1 2025 Q91-92 had the passage
   sin⁻¹((x − 4x³)/27) where the paper prints sin⁻¹(x − 4x³/27); fixed 2026-11-06.
 
+Added while settling NDA Maths against CBSE (2026-11-10):
+- **A group is matched by its specific feature, never by its topic.** Some NDA questions draw a
+  board question from every exercise of a chapter ("order and degree of a DE", "derivative of one
+  function with respect to another", "absolute max/min on a closed interval"). Keep a pair only when
+  both questions share the feature the NDA question turns on: a lower derivative raised above the
+  highest one; the curvature form; inverse-trig with respect to inverse-trig, aᵘ with respect to uᵃ,
+  f(u) with respect to u; cos 2x + x on a closed interval. The State Board runs did this; check one
+  of them before settling a big group.
+- **Both passes can share an over-broad group, and then settle accepts it unread.** After
+  `settle.ts --write`, count the accepted pairs per NDA question; any question with 6+ pairs is
+  read against the rule above, and pairs that fail it are removed from the settled file before
+  `commit.ts`. Differential Equations lost 51 such pairs this way, Limits & Differentiation 11.
+- **Bayes and total probability: the situation decides, like any word problem.** A different
+  situation (HIV test against a building collapse) is similar even when every probability is given;
+  numbers only when the situation is the same (managers and a scheme against managers and a bonus).
+- **A board question that is one statement of a multi-statement NDA question is similar**, with the
+  statement named in `why`; when the board answer is the whole of what NDA asks, use the stronger
+  kind.
+
 ### E. What this does not cover
 
 - **A question whose wording is corrected after a run.** Its pairs were judged on the old text and
@@ -205,6 +224,32 @@ slice of about 135 board questions, so about 1.2 million per pass pair for a 400
 | `nda-maths-vectors-3d-2026-11-06` | Vectors, 3D Geometry | HSC XII Vectors, HSC XII Line and Planes | 257 (7 exact, 107 numbers, 143 similar) | 181 | 82 (46 exact or numbers) |
 
 **NDA Mathematics, all 22 runs (2026-11-06):** 2,619 pairs (77 exact, 844 numbers, 1,698 similar) linking 1,700 board questions to 770 of NDA's 2,280 PUBLIC Maths questions (34%). **357 (16%) were asked as a board question, exact or with new numbers.** Three NDA chapters have no State Board chapter and were not run: Binary Numbers (14), Quadratic Equations (67), Height & Distance (26). Weakest by share: Statistics (14 of 165), Sequence & Series (13 of 93), Functions (26 of 115): NDA asks shortcuts and properties there, the books drill computation.
+
+### NDA Mathematics against CBSE (plan `pairs/nda-maths-cbse.json`, 2026-11-10)
+
+CBSE Class 11 and 12 (NCERT exercises, plus the CBSE Class 12 board papers 2022-2026), mapped from the syllabus rulings' `ncert.coveredBy`. Same method; the Matrices pilot first (two passes agreed on the kind for 86% of the pairs both found, against 73% on the State Board calibration; 72 of the 76 one-pass pairs kept).
+
+| run | exam chapter | board chapters | pairs | board q matched | exam q with a twin |
+|---|---|---|---|---|---|
+| `nda-maths-cbse-application-of-derivatives-2026-11-10` | Application of Derivatives | CBSE XII Application of Derivatives | 133 (5 exact, 48 numbers, 80 similar) | 89 | 50 (28 exact or numbers) |
+| `nda-maths-cbse-complex-numbers-2026-11-10` | Complex Numbers | CBSE XI Complex Numbers and Quadratic Equations | 8 (2 exact, 1 numbers, 5 similar) | 5 | 8 (3 exact or numbers) |
+| `nda-maths-cbse-conics-2026-11-10` | Circles, Conics | CBSE XI Conic Sections | 56 (1 exact, 17 numbers, 38 similar) | 44 | 13 (5 exact or numbers) |
+| `nda-maths-cbse-differential-equations-2026-11-10` | Differential Equations | CBSE XII Differential Equations | 172 (13 exact, 37 numbers, 122 similar) | 92 | 37 (17 exact or numbers) |
+| `nda-maths-cbse-integration-2026-11-10` | Indefinite Integration, Definite Integration, Applications of Integration | CBSE XII Integrals, CBSE XII Application of Integrals | 363 (14 exact, 70 numbers, 279 similar) | 209 | 83 (44 exact or numbers) |
+| `nda-maths-cbse-inverse-trig-2026-11-10` | Inverse Trigonometry | CBSE XII Inverse Trigonometric Functions | 34 (2 exact, 10 numbers, 22 similar) | 26 | 11 (7 exact or numbers) |
+| `nda-maths-cbse-limits-differentiation-2026-11-10` | Limits & Continuity, Differentiation, Logarithms | CBSE XI Limits and Derivatives, CBSE XII Continuity and Differentiability | 278 (3 exact, 45 numbers, 230 similar) | 163 | 91 (32 exact or numbers) |
+| `nda-maths-cbse-linear-inequalities-2026-11-10` | Linear Inequalities | CBSE XI Linear Inequalities, CBSE XII Linear Programming | 1 (0 exact, 0 numbers, 1 similar) | 1 | 1 (0 exact or numbers) |
+| `nda-maths-cbse-lines-2026-11-10` | Lines | CBSE XI Straight Lines | 51 (2 exact, 20 numbers, 29 similar) | 33 | 35 (17 exact or numbers) |
+| `nda-maths-cbse-matrices-2026-11-10` | Matrices & Determinants | CBSE XII Matrices, CBSE XII Determinants | 234 (10 exact, 70 numbers, 154 similar) | 166 | 74 (27 exact or numbers) |
+| `nda-maths-cbse-pc-binomial-2026-11-10` | Permutation & Combination, Binomial Theorem | CBSE XI Permutations and Combinations, CBSE XI Binomial Theorem | 68 (1 exact, 28 numbers, 39 similar) | 45 | 32 (18 exact or numbers) |
+| `nda-maths-cbse-probability-2026-11-10` | Probability, Binomial Distribution | CBSE XI Probability, CBSE XII Probability | 323 (5 exact, 101 numbers, 217 similar) | 170 | 82 (44 exact or numbers) |
+| `nda-maths-cbse-sequence-series-2026-11-10` | Sequence & Series | CBSE XI Sequences and Series | 19 (0 exact, 7 numbers, 12 similar) | 17 | 10 (4 exact or numbers) |
+| `nda-maths-cbse-sets-functions-2026-11-10` | Sets & Relations, Functions | CBSE XI Sets, CBSE XI Relations and Functions, CBSE XII Relations and Functions | 116 (4 exact, 20 numbers, 92 similar) | 104 | 46 (17 exact or numbers) |
+| `nda-maths-cbse-statistics-2026-11-10` | Statistics | CBSE XI Statistics | 63 (1 exact, 40 numbers, 22 similar) | 31 | 26 (16 exact or numbers) |
+| `nda-maths-cbse-trigonometry-2026-11-10` | Trigonometric Identities, Properties of Triangle | CBSE XI Trigonometric Functions | 62 (0 exact, 4 numbers, 58 similar) | 32 | 23 (4 exact or numbers) |
+| `nda-maths-cbse-vectors-3d-2026-11-10` | Vectors, 3D Geometry | CBSE XI Introduction to Three Dimensional Geometry, CBSE XII Vector Algebra, CBSE XII Three Dimensional Geometry | 301 (20 exact, 116 numbers, 165 similar) | 210 | 83 (54 exact or numbers) |
+
+**NDA Mathematics against CBSE, all 17 runs (2026-11-10):** 2,282 pairs (83 exact, 634 numbers, 1,565 similar) linking 1,437 CBSE questions to 705 of NDA's 2,280 PUBLIC Maths questions (31%); **337 (15%) were asked as a CBSE question, exact or with new numbers.** The CBSE board papers (1,766 of the 4,349 questions read) give 36 of the 83 exact pairs, about their share (CBSE 2026 printed NDA 1 2025's A² − 4A on the same matrix). Not run: Binary Numbers, Trigonometric Equations and Quadratic Equations (the rationalised NCERT books carry neither), Height & Distance (Class 10). Thin by design: Sequence & Series (the rationalised Class 11 book has no arithmetic progressions) and Linear Inequalities (1 pair). **Both boards together: 1,029 of 2,280 NDA Maths questions (45%) have a twin, 544 (24%) exact or with new numbers.** Next candidates: a Class 10 plan (Quadratic Equations, Height & Distance and arithmetic progressions sit in CBSE 10 and SSC 10).
 
 Pilot method: 3 agents, then the main session read all 185 proposed pairs: kept all 163 firm
 matches (3 re-labelled numbers -> similar), settled the 22 unsure (12 kept, 10 rejected), added 2

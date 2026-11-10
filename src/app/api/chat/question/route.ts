@@ -7,10 +7,15 @@
  *      Also (2026-10-23) ?page=<notes page>&concept=&item=[&index=]: a notes
  *      practice question for the card above an Ask V tap, prompt and options
  *      only (lib/chat/notesItem.ts notesItemCard).
- * POST /api/chat/question  { id, chose }  a signed-in student's pick, checked
- *      here. It is one of the day's free answers like any other reveal, and
- *      it is recorded as practice on the "v" surface, with a miss as an
- *      answer_wrong so the drill brings it back.
+ * POST /api/chat/question  { id, chose, after? }  a signed-in student's pick,
+ *      checked here. It is one of the day's free answers like any other
+ *      reveal, and it is recorded as practice on the "v" surface, with a miss
+ *      as an answer_wrong so the drill brings it back.
+ *      `after` (2026-11-10, V_LEARNING_LOOP.md step 2): the question V explained
+ *      before "One more like this". The server links the two (v_followups,
+ *      0250) only once it has checked V explained it today, and the first
+ *      follow-up per explanation per day uses no free answer while
+ *      chat_settings.followup_free is on (lib/chat/followUpServer.ts).
  *
  * Both answer 404 while explanations are switched off (/dashboard/chat, 0168).
  */
@@ -27,6 +32,8 @@ import { readChatSettings } from "@/lib/chat/settingsAdmin";
 import { parseAskedQuestion, toVQuestion } from "@/lib/chat/questionTools";
 import { cardView, gradeCard } from "@/lib/chat/questionCard";
 import { claimVReveal } from "@/lib/chat/questionReveal";
+import { parseFollowsUp } from "@/lib/chat/followUp";
+import { settleFollowUp } from "@/lib/chat/followUpServer";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import { parseNotesItemRef } from "@/lib/chat/notesItem";
 import { loadNotesItemCard } from "@/lib/chat/notesItemServer";
@@ -80,25 +87,47 @@ export async function POST(request: NextRequest) {
       userId = null;
     }
     if (!userId) return NextResponse.json({ error: "Sign in to answer." }, { status: 401 });
-    if (!(await explainOn())) return NextResponse.json({ error: "Not found" }, { status: 404 });
+    const admin = createSupabaseAdminClient();
+    const settings = await readChatSettings(admin);
+    if (!settings.explainEnabled) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
-    const rl = await checkAndIncrement(createSupabaseAdminClient(), `chat-card:user:${userId}`, {
+    const rl = await checkAndIncrement(admin, `chat-card:user:${userId}`, {
       limit: LIMIT_PER_HOUR,
       windowMs: HOUR_MS,
     });
     if (!rl.ok) return NextResponse.json({ error: "Too many answers. Please try again later." }, { status: 429 });
 
-    const raw = (await request.json().catch(() => null)) as { id?: unknown; chose?: unknown } | null;
+    const raw = (await request.json().catch(() => null)) as { id?: unknown; chose?: unknown; after?: unknown } | null;
     const asked = parseAskedQuestion(raw);
     if (!asked || !asked.chose) return NextResponse.json({ error: "Pick one of the options." }, { status: 400 });
+    const after = parseFollowsUp(raw?.after);
 
-    const row = (await queryQuestionsByIds(createSupabaseAnonClient(), [asked.id]))[0];
-    const graded = row ? gradeCard(toVQuestion(row), asked.chose) : null;
-    if (!graded) return NextResponse.json({ error: "That question cannot be checked here." }, { status: 400 });
+    const anon = createSupabaseAnonClient();
+    const [row, explainedRow] = await queryQuestionsByIds(anon, after ? [asked.id, after] : [asked.id]).then((rows) => [
+      rows.find((r) => r.id === asked.id),
+      after ? rows.find((r) => r.id === after) : undefined,
+    ]);
+    const card = row ? toVQuestion(row) : null;
+    const graded = card ? gradeCard(card, asked.chose) : null;
+    if (!card || !graded) return NextResponse.json({ error: "That question cannot be checked here." }, { status: 400 });
 
     // The student's own login for the count and the record: user_activity is own-row under RLS.
     const db = createSupabaseServerClient();
     const now = new Date();
+    // A follow-up after an explanation (0250). With the free switch on it is settled FIRST, so a free
+    // follow-up is marked before claim_reveal reads the day's count. With it off, the pick is counted
+    // first, so a refused pick is never linked.
+    const settle = () =>
+      explainedRow
+        ? settleFollowUp(admin, {
+            userId: userId!,
+            explained: { id: explainedRow.id, subtopicId: toVQuestion(explainedRow).subtopicId },
+            followUp: { id: card.id, subtopicId: card.subtopicId },
+            switchOn: settings.followUpFree,
+            now,
+          })
+        : Promise.resolve({ linked: false, free: false });
+    if (settings.followUpFree) await settle();
     // The server decides (claim_reveal, 0228): the question's exam, its pass,
     // today's path questions and the day's count, in one step.
     const check = await claimVReveal(db, asked.id);
@@ -106,6 +135,7 @@ export async function POST(request: NextRequest) {
     if (check.kind === "limit") {
       return NextResponse.json({ ok: false, limit: check.limit, pass: await passOnSale() }, { status: 200 });
     }
+    if (!settings.followUpFree) await settle();
 
     const day = istDayKey(now);
     await logActivityOnce(db, userId, {

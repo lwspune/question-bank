@@ -677,6 +677,20 @@ describe("buildSystemTail", () => {
     expect(buildSystemTail({ page: null, signedIn: true })).not.toMatch(/earlier replies/i);
   });
 
+  // V_LEARNING_LOOP.md step 2 (2026-11-10): "Show me where I went wrong" on a follow-up card.
+  it("on a follow-up, tells V it just explained a similar question and to start where this one differs", () => {
+    const t = buildSystemTail({
+      page: null,
+      signedIn: true,
+      question: { id: "q2", chose: "B" },
+      followsUp: { stem: "A ball is thrown up at 20 m/s. Find the maximum height." },
+    });
+    expect(t).toMatch(/A ball is thrown up at 20 m\/s/);
+    expect(t).toMatch(/where this one differs/i);
+    // Here the earlier explanation IS the point, so V may refer to it.
+    expect(t).not.toMatch(/do not mention, correct or take them back/i);
+  });
+
   it("tells V the page the student is on, when known", () => {
     expect(buildSystemTail({ page: "/questions/cbse-12/physics/atoms", signedIn: true })).toContain(
       "The student is on the page /questions/cbse-12/physics/atoms"

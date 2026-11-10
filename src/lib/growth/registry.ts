@@ -238,6 +238,14 @@ export const V_PAY_OFFER_CHECKOUT_KEEP_PCT = 10;
 export const V_PREMIUM_HOURLY_CHECKOUT_KEEP_PCT = 10;
 
 /**
+ * "v-follow-up-loop" (V_LEARNING_LOOP.md step 2): keep the linked, free
+ * follow-up if a follow-up is answered after at least this share of Ask V
+ * explanations (%). Before it: 3 try cards answered in 4 weeks, on about 400
+ * explanations (under 1%).
+ */
+export const V_FOLLOW_UP_KEEP_PCT = 10;
+
+/**
  * "self-mark": keep Understood / Review later under written model answers if
  * at least this share of signed-in written-answer reveals get a tap (%)...
  */
@@ -351,7 +359,8 @@ export type Readout =
   | "chapter-fix"
   | "board-path"
   | "study-circle"
-  | "ugc-net";
+  | "ugc-net"
+  | "v-follow-up-loop";
 
 export type Experiment = {
   id: string;
@@ -778,6 +787,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-28",
     windowDays: 14,
     readout: "v-pay-offer",
+    status: "running",
+  },
+  {
+    id: "v-follow-up-loop",
+    title: "V sees the follow-up answer",
+    change:
+      "After an explanation, the \"One more like this\" question is linked to the explanation it followed (v_followups, migration 0250), the first one per explanation per day uses none of the day's free answers (chat_settings.followup_free), a right answer says \"Right: you used the same idea on a new question\" and offers another, and a wrong one offers \"Show me where I went wrong\", where V starts from the step that differs from the question it just explained.",
+    why: "V explained questions well but never saw whether the explanation worked (V_LEARNING_LOOP.md). After an Ask V explanation, 26 to 43% of students got a different question in the same subtopic right within 7 days, against 54 to 57% after a plain miss; V's try card had been answered 3 times in 4 weeks.",
+    metric:
+      "npm run v:learning: follow-ups after an explanation (answered, right, free) against Ask V explanations, and the verified-learning rate after an Ask V explanation; guard: Ask V explanations a week must not fall",
+    rule: `Keep it if a follow-up is answered after ${V_FOLLOW_UP_KEEP_PCT}%+ of Ask V explanations over the window and Ask V explanations do not fall; then read whether the verified-learning rate after an explanation rose.`,
+    liveSince: "2026-11-10",
+    windowDays: 28,
+    readout: "v-follow-up-loop",
     status: "running",
   },
   {

@@ -61,6 +61,7 @@ import {
   V_PLAN_STUDENTS_KEEP,
   V_REVEAL_FOLLOWUP_BASELINE_PCT,
   V_PREMIUM_HOURLY_CHECKOUT_KEEP_PCT,
+  V_FOLLOW_UP_KEEP_PCT,
   V_REVEAL_FOLLOWUP_MAX_DROP,
   V_PLAN_DAYS_DONE_KEEP_PCT,
   V_PROGRESS_NEXT_STEP_KEEP_PCT,
@@ -830,6 +831,14 @@ export default async function GrowthPage() {
             <ReadingsList metric="v-pay-offer-shown" />
             <ReadingsList metric="v-pay-offer-checkout" />
           </div>
+        );
+      case "v-follow-up-loop":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} from <span className="font-mono">npm run v:learning</span>:
+            keep it if a follow-up is answered after {V_FOLLOW_UP_KEEP_PCT}%+ of Ask V explanations and Ask V explanations do not
+            fall.
+          </p>
         );
       case "v-premium-hourly":
         return (

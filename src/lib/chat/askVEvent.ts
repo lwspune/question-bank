@@ -21,6 +21,8 @@ export type AskVDetail =
       entered?: number | null;
       /** They skipped it in a test (a mock review): V must not ask what they picked. */
       skipped?: boolean;
+      /** A follow-up card's "Show me where I went wrong": the question V explained before (V_LEARNING_LOOP.md step 2). */
+      after?: string;
       notes?: undefined;
     }
   | { notes: NotesItemRef; chose: null; questionId?: undefined };
@@ -34,13 +36,14 @@ export function isAskVDetail(d: unknown): d is AskVDetail {
 /** The `question` field of a /api/chat/typed request for this tap. */
 export function questionForRequest(
   d: AskVDetail
-): { id: string; chose: string | null; entered?: number; skipped?: true } | { notes: NotesItemRef } {
+): { id: string; chose: string | null; entered?: number; skipped?: true; after?: string } | { notes: NotesItemRef } {
   if (d.notes) return { notes: d.notes };
   return {
     id: d.questionId,
     chose: d.chose,
     ...(typeof d.entered === "number" ? { entered: d.entered } : {}),
     ...(d.skipped ? { skipped: true as const } : {}),
+    ...(d.after ? { after: d.after } : {}),
   };
 }
 

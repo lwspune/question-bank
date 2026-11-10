@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CheckCircle2, XCircle } from "lucide-react";
+import { CheckCircle2, Plus, XCircle } from "lucide-react";
 import { toast } from "sonner";
 import MathText from "./MathText";
 import MathBlockText from "./MathBlockText";
 import SignInLink from "@/components/reveal/SignInLink";
 import { askVAbout } from "@/lib/chat/askVEvent";
 import type { CardQuestion } from "@/lib/chat/questionCard";
+import { followUpCardCopy } from "@/lib/chat/followUp";
 import { parseVPassOffer, type VPassOffer as Offer } from "@/lib/chat/passOffer";
 import { liftDailyLimit } from "@/components/reveal/useRevealMeter";
 import VPassOffer from "./VPassOffer";
@@ -28,14 +29,32 @@ const ACTION =
  *   whether it is theirs, so V never explains the wrong one.
  * Past the day's free answers the card offers the pass in place (2026-10-28),
  * and once it is bought checks the pick it was holding.
+ * - `after` (2026-11-10, V_LEARNING_LOOP.md step 2): the question V explained
+ *   before "One more like this". Sent with the pick, so the server can link
+ *   the two; the result line then says what the student showed, a right pick
+ *   offers another (`onMore`), and a wrong one asks V where it went wrong,
+ *   with V told which question it explained before.
  */
-export default function VQuestionCard({ id, kind, onNavigate }: { id: string; kind: "try" | "confirm"; onNavigate?: () => void }) {
+export default function VQuestionCard({
+  id,
+  kind,
+  after,
+  onMore,
+  onNavigate,
+}: {
+  id: string;
+  kind: "try" | "confirm";
+  after?: string;
+  onMore?: () => void;
+  onNavigate?: () => void;
+}) {
   const [q, setQ] = useState<CardQuestion | null>(null);
   const [failed, setFailed] = useState(false);
   const [picked, setPicked] = useState<string | null>(null);
   const [result, setResult] = useState<Result>(null);
   const [dismissed, setDismissed] = useState(false);
   const [signIn, setSignIn] = useState(false);
+  const [moreTaken, setMoreTaken] = useState(false);
 
   useEffect(() => {
     let live = true;
@@ -59,7 +78,7 @@ export default function VQuestionCard({ id, kind, onNavigate }: { id: string; ki
       const res = await fetch("/api/chat/question", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id, chose: label }),
+        body: JSON.stringify({ id, chose: label, ...(after ? { after } : {}) }),
       });
       if (res.status === 401) {
         setSignIn(true);
@@ -141,14 +160,34 @@ export default function VQuestionCard({ id, kind, onNavigate }: { id: string; ki
           }}
         />
       )}
-      {result && "correct" in result && (
-        <div className="flex flex-wrap items-center gap-2" role="status">
-          <span className="font-semibold">{result.correct ? "Right, well done." : `Not quite: the answer is (${result.answer}).`}</span>
-          <button type="button" className={ACTION} onClick={() => askVAbout({ questionId: id, chose: picked })}>
-            Ask V why
-          </button>
-        </div>
-      )}
+      {result && "correct" in result && (() => {
+        const copy = followUpCardCopy(result, Boolean(after));
+        return (
+          <div className="flex flex-wrap items-center gap-2" role="status">
+            <span className="font-semibold">{copy.line}</span>
+            <button
+              type="button"
+              className={ACTION}
+              onClick={() => askVAbout({ questionId: id, chose: picked, ...(after ? { after } : {}) })}
+            >
+              {copy.askLabel}
+            </button>
+            {copy.offerMore && onMore && !moreTaken && (
+              <button
+                type="button"
+                className={`${ACTION} gap-1.5`}
+                onClick={() => {
+                  setMoreTaken(true);
+                  onMore();
+                }}
+              >
+                <Plus className="h-4 w-4" aria-hidden />
+                One more like this
+              </button>
+            )}
+          </div>
+        );
+      })()}
 
       {kind === "confirm" && (
         <div className="flex flex-wrap gap-2">

@@ -99,6 +99,15 @@ is enforced in `facts.ts` or the tools; the date is when it was made.
 - **"One more like this"** under an explanation picks another question from the
   same subtopic with no AI call (`/api/chat/similar`, owner 2026-11-08). V
   cannot write questions and never promises one.
+- **V sees the follow-up answer (owner, 2026-11-10, V_LEARNING_LOOP.md step 2).**
+  The "One more like this" card is linked to the explanation it followed
+  (`v_followups`, migration 0250) once the server has checked V explained it
+  today; the first one per explanation per day uses no free answer while
+  `chat_settings.followup_free` is on. A right pick says "Right: you used the
+  same idea on a new question." and offers another; a wrong one offers "Show
+  me where I went wrong", where V is told the question it explained before and
+  starts from the step that differs (its "leave earlier replies alone" line is
+  replaced there, since the earlier reply is the point).
 - **Parked:** withdrawn UPSC questions (V says the pick "is marked wrong"; 10
   such questions; re-raise only when the owner does); the mock result page
   being wider than a phone.
@@ -159,6 +168,9 @@ reads everything else from the stored row.
    rung 3, labelled. Measured against the baseline.
 3. **`facts.ts` rewritten by job**, each rule pointing at the cases that justify
    it; the pending fixes from the 2026-10-22 review go through the test loop.
+4. **The learning loop** (2026-11-10, planned, not built): V sees whether its
+   explanation worked and remembers the student. Audit, baseline and build
+   order in [V_LEARNING_LOOP.md](V_LEARNING_LOOP.md).
 
 ## 7. The weekly review (Thursdays, first 2026-10-29)
 
@@ -170,6 +182,18 @@ reads everything else from the stored row.
 2a. **Follow-up line:** `npm run v:followups`: the share of V's replies the
    student followed up within 30 minutes, a week at a time (repeat Ask V taps
    on the same question left out). The owner's measure of V as a study partner.
+2b. **Verified learning:** `npm run v:learning` (2026-11-10, V_LEARNING_LOOP.md).
+   A NEED is a graded miss, or an Ask V explanation of a bank question; it is
+   VERIFIED when the same student gets a DIFFERENT question in the same
+   subtopic right within 7 days. Counted per week by student and by need, each
+   student once; one need per student, question and India day. Graded answers
+   are bank, board, guide and daily taps, V's try card, the drill and mock
+   picks; self-marks are left out (nobody checked them). Beside each week, the
+   student's accuracy on other questions in that subtopic in the 30 days
+   before the week against the 7 days after their first need: a check on
+   "they already knew it", thin while few students have a history there. A
+   week stays open 7 days after it ends. Staff left out. Baseline 2026-11-10:
+   after a miss 54-57% of students; after an Ask V explanation 26-43%.
 3. **Cost line:** `npm run v:cost`: cost per answer over the last 7 days
    against the 7 before (flagged above a 20% rise, once both weeks have 20+
    answers), and what the week's test runs cost. A flagged rise is looked into

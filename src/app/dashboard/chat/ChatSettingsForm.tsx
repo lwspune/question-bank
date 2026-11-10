@@ -17,6 +17,7 @@ export default function ChatSettingsForm({ initial }: { initial: ChatSettings })
   const [explainEnabled, setExplainEnabled] = useState(initial.explainEnabled);
   const [planEnabled, setPlanEnabled] = useState(initial.planEnabled);
   const [progressEnabled, setProgressEnabled] = useState(initial.progressEnabled);
+  const [followUpFree, setFollowUpFree] = useState(initial.followUpFree);
   const [perHour, setPerHour] = useState(String(initial.perPersonPerHour));
   const [premiumPerHour, setPremiumPerHour] = useState(String(initial.premiumPerPersonPerHour));
   const [perDay, setPerDay] = useState(String(initial.aiAnswersPerDay));
@@ -36,6 +37,7 @@ export default function ChatSettingsForm({ initial }: { initial: ChatSettings })
           explainEnabled,
           planEnabled,
           progressEnabled,
+          followUpFree,
           perPersonPerHour: Number(perHour),
           premiumPerPersonPerHour: Number(premiumPerHour),
           aiAnswersPerDay: Number(perDay),
@@ -52,6 +54,7 @@ export default function ChatSettingsForm({ initial }: { initial: ChatSettings })
       setExplainEnabled(json.settings.explainEnabled);
       setPlanEnabled(json.settings.planEnabled);
       setProgressEnabled(json.settings.progressEnabled);
+      setFollowUpFree(json.settings.followUpFree);
       setPerHour(String(json.settings.perPersonPerHour));
       setPremiumPerHour(String(json.settings.premiumPerPersonPerHour));
       setPerDay(String(json.settings.aiAnswersPerDay));
@@ -125,6 +128,23 @@ export default function ChatSettingsForm({ initial }: { initial: ChatSettings })
           <span className="block text-xs text-muted-foreground">
             A card of the student&apos;s own numbers: this week&apos;s answers, mistakes fixed, exam covered, mocks, chapters
             and notes read. Uses no AI, so it works with the AI switch off. Off: the button is hidden.
+          </span>
+        </span>
+      </label>
+
+      <label className="flex items-start gap-2 text-sm">
+        <input
+          type="checkbox"
+          checked={followUpFree}
+          onChange={(e) => setFollowUpFree(e.target.checked)}
+          className="mt-0.5 h-4 w-4 rounded border-input focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        />
+        <span>
+          Free follow-up after an explanation
+          <span className="block text-xs text-muted-foreground">
+            The first &ldquo;One more like this&rdquo; question a student answers after V explains a question uses none of
+            the day&apos;s free answers (one per explanation per day). Off: it counts like any answer. Either way V links the
+            follow-up to the explanation, for the weekly count.
           </span>
         </span>
       </label>
