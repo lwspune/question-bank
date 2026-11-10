@@ -203,14 +203,43 @@ a[data-nav-pending] {
   covers move with the content and paint over the two "scroll" shadows at the
   ends. --cue-bg must match the surface behind the box (the formula box's 5%
   brand tint on a card).
+
+  Stronger since 2026-11-10 (slicker Phase 2): at 20% over 0.6rem the shadow
+  was too faint to read as "swipe", and a cut-off formula still looked broken.
+  Tables that scroll sideways get the same cue below.
 */
-.scroll-cue-x {
+.scroll-cue-x,
+:where(.overflow-x-auto:has(> table)) {
   --cue-bg: color-mix(in srgb, hsl(var(--brand)) 5%, hsl(var(--card)));
   background:
-    linear-gradient(to right, var(--cue-bg) 40%, transparent) left center / 1.5rem 100% no-repeat local,
-    linear-gradient(to left, var(--cue-bg) 40%, transparent) right center / 1.5rem 100% no-repeat local,
-    radial-gradient(farthest-side at 0 50%, hsl(var(--foreground) / 0.2), transparent) left center / 0.6rem 100% no-repeat scroll,
-    radial-gradient(farthest-side at 100% 50%, hsl(var(--foreground) / 0.2), transparent) right center / 0.6rem 100% no-repeat scroll;
+    linear-gradient(to right, var(--cue-bg) 40%, transparent) left center / 2rem 100% no-repeat local,
+    linear-gradient(to left, var(--cue-bg) 40%, transparent) right center / 2rem 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, hsl(var(--foreground) / 0.35), transparent) left center / 1rem 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, hsl(var(--foreground) / 0.35), transparent) right center / 1rem 100% no-repeat scroll;
+}
+
+/*
+  A table in a sideways scroller (2026-11-10): about 80 of them, most hand-written
+  into guide pages, so one rule rather than 80 edits. It sits on a card-white
+  panel so the cue's covers match it, and on a phone its first column stays put
+  while the rest swipes, so a row keeps its label. Zero-specificity :where on
+  the scroller, so a table's own classes still win elsewhere.
+*/
+:where(.overflow-x-auto:has(> table)) {
+  --cue-bg: hsl(var(--card));
+  background-color: hsl(var(--card));
+}
+@media (max-width: 639px) {
+  :where(.overflow-x-auto) > table :is(td, th):first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background-color: hsl(var(--card));
+    box-shadow: 6px 0 8px -6px hsl(var(--foreground) / 0.25);
+  }
+  :where(.overflow-x-auto) > table thead :is(td, th):first-child {
+    background-color: color-mix(in srgb, hsl(var(--muted)) 40%, hsl(var(--card)));
+  }
 }
 
 /*
