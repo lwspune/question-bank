@@ -11,6 +11,7 @@ import {
   intlHostDecision,
   wwwHostDecision,
   canonicalFor,
+  canonicalOnHost,
   isIntlUrl,
   isIntlPagePath,
   intlNavFor,
@@ -247,6 +248,21 @@ describe("canonicalFor", () => {
 
   it("leaves a PYQ Vault canonical relative, for metadataBase to resolve", () => {
     expect(canonicalFor("/notes/nda-maths")).toBe("/notes/nda-maths");
+  });
+});
+
+describe("canonicalOnHost (a shared page served on both hosts)", () => {
+  // /browse is served on www and intl. Its relative canonical resolved against
+  // the www metadataBase, so intl's /browse named www as canonical (2026-11-10).
+  it("is absolute on the intl origin when the request came to the intl host", () => {
+    expect(canonicalOnHost("/browse", "intl.pyqvault.com")).toBe("https://intl.pyqvault.com/browse");
+    expect(canonicalOnHost("/browse", "intl.localhost:3000")).toBe("https://intl.pyqvault.com/browse");
+  });
+
+  it("stays relative on any other host, for metadataBase to resolve", () => {
+    expect(canonicalOnHost("/browse", "www.pyqvault.com")).toBe("/browse");
+    expect(canonicalOnHost("/browse", "localhost:3000")).toBe("/browse");
+    expect(canonicalOnHost("/browse", null)).toBe("/browse");
   });
 });
 

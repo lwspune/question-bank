@@ -32,12 +32,21 @@ export function sitemapXml(entries: MetadataRoute.Sitemap): string {
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`;
 }
 
+/**
+ * The intl host's robots.txt. It blocks what www's app/robots.ts blocks, plus
+ * /account. `/browse?` is the filter space: until 2026-11-10 it was missing
+ * here, and Google indexed filtered intl /browse pages. A plain prefix, not
+ * `/browse?*`, because not every crawler reads `*`.
+ */
 export function intlRobotsTxt(): string {
   return [
     "User-agent: *",
     "Allow: /",
+    "Disallow: /dashboard",
+    "Disallow: /upload",
     "Disallow: /api",
     "Disallow: /account",
+    "Disallow: /browse?",
     "",
     `Sitemap: ${INTL_ORIGIN}/sitemap.xml`,
     "",

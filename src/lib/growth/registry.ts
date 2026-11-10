@@ -1089,6 +1089,12 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
         value: 74,
         note: "Export of 2026-10-12; fell 84 to 74 on 2026-10-05, flat since. 57 of the 74 are NDA notes and guide pages, 7 are /questions pages",
       },
+      { on: "2026-10-23", value: 121, note: "Live Pages report read on 2026-10-28; 4,733 discovered, not indexed" },
+      {
+        on: "2026-11-06",
+        value: 597,
+        note: "Export of 2026-11-10; jumped 121 to 597 on 2026-10-24. 452 www + 145 intl. 124 of the www pages are old IMAT URLs that now redirect to intl, so expect about 473. IMAT 257, SSC CGL 117, NDA 81; JEE, CBSE, HSC, CET and NEET about 50 together",
+      },
     ],
   },
   "share-taps": {
