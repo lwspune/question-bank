@@ -1,0 +1,25 @@
+{
+ "note": "NDA Mathematics chapters -> the CBSE (NCERT) chapters that teach them, from scripts/syllabus/data/maths-nda-rulings.json (ncert.coveredBy), rolled up per NDA chapter. Runs that share a board chapter are grouped, so each board question is read once against every NDA chapter it may match; every one of the 27 CBSE Maths chapters (book exercises and, for Class 12, the 2022-2026 board papers) sits in exactly one run. Extra target, owner 2026-11-10: Binomial Distribution in the probability run (ruled 'not' in NCERT, but CBSE 12 Probability carries random-variable questions; it costs no extra board reading). No CBSE twin, so not run: Binary Numbers; Trigonometric Equations and Quadratic Equations (the rationalised NCERT books carry neither: checked against the bank's CBSE 11 subtopics); Height & Distance (a Class 10 topic). Run name = <slug>-<settled date>.",
+ "exam": "NDA",
+ "subject": "Mathematics",
+ "boardExams": { "XI": "CBSE Class 11", "XII": "CBSE Class 12" },
+ "runs": [
+  { "slug": "nda-maths-cbse-matrices", "targets": ["Matrices & Determinants"], "board": ["XII|Matrices", "XII|Determinants"] },
+  { "slug": "nda-maths-cbse-sets-functions", "targets": ["Sets & Relations", "Functions"], "board": ["XI|Sets", "XI|Relations and Functions", "XII|Relations and Functions"] },
+  { "slug": "nda-maths-cbse-trigonometry", "targets": ["Trigonometric Identities", "Properties of Triangle"], "board": ["XI|Trigonometric Functions"] },
+  { "slug": "nda-maths-cbse-inverse-trig", "targets": ["Inverse Trigonometry"], "board": ["XII|Inverse Trigonometric Functions"] },
+  { "slug": "nda-maths-cbse-complex-numbers", "targets": ["Complex Numbers"], "board": ["XI|Complex Numbers and Quadratic Equations"] },
+  { "slug": "nda-maths-cbse-linear-inequalities", "targets": ["Linear Inequalities"], "board": ["XI|Linear Inequalities", "XII|Linear Programming"] },
+  { "slug": "nda-maths-cbse-pc-binomial", "targets": ["Permutation & Combination", "Binomial Theorem"], "board": ["XI|Permutations and Combinations", "XI|Binomial Theorem"] },
+  { "slug": "nda-maths-cbse-sequence-series", "targets": ["Sequence & Series"], "board": ["XI|Sequences and Series"] },
+  { "slug": "nda-maths-cbse-lines", "targets": ["Lines"], "board": ["XI|Straight Lines"] },
+  { "slug": "nda-maths-cbse-conics", "targets": ["Circles", "Conics"], "board": ["XI|Conic Sections"] },
+  { "slug": "nda-maths-cbse-vectors-3d", "targets": ["Vectors", "3D Geometry"], "board": ["XI|Introduction to Three Dimensional Geometry", "XII|Vector Algebra", "XII|Three Dimensional Geometry"] },
+  { "slug": "nda-maths-cbse-limits-differentiation", "targets": ["Limits & Continuity", "Differentiation", "Logarithms"], "board": ["XI|Limits and Derivatives", "XII|Continuity and Differentiability"] },
+  { "slug": "nda-maths-cbse-application-of-derivatives", "targets": ["Application of Derivatives"], "board": ["XII|Application of Derivatives"] },
+  { "slug": "nda-maths-cbse-integration", "targets": ["Indefinite Integration", "Definite Integration", "Applications of Integration"], "board": ["XII|Integrals", "XII|Application of Integrals"] },
+  { "slug": "nda-maths-cbse-differential-equations", "targets": ["Differential Equations"], "board": ["XII|Differential Equations"] },
+  { "slug": "nda-maths-cbse-probability", "targets": ["Probability", "Binomial Distribution"], "board": ["XI|Probability", "XII|Probability"] },
+  { "slug": "nda-maths-cbse-statistics", "targets": ["Statistics"], "board": ["XI|Statistics"] }
+ ]
+}
