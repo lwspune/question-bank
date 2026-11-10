@@ -1,0 +1,40 @@
+{
+ "visuals": [],
+ "decided": [
+  {
+   "id": "019bc43c-94f2-4ee3-b352-aaf34f4f872a",
+   "verdict": "none",
+   "reason": "stored 7.71e-15 should be 7.73e-15 with 1.26e-6, and the working reaches 8.78e-8 or 8.79e-8, not the key 8.77e-8"
+  },
+  {
+   "id": "3b4115ee-14f4-4e3f-a294-c79e4cec7824",
+   "verdict": "none",
+   "reason": "working 1/(4 pi^2 60^2 1e-7) = 70.36 rounds to 70.4 H at its own precision, not the key 70.3 H"
+  },
+  {
+   "id": "4b7c5f37-cd97-4633-b4e8-afafb638b03f",
+   "verdict": "none",
+   "reason": "working gives k = 0.838 = 0.84 cm^-1 at its own precision, but the key option prints 0.83"
+  },
+  {
+   "id": "5a5d2230-f6d4-4236-8cfd-843aec069de3",
+   "verdict": "none",
+   "reason": "working gives 0.5 x 10 x 0.0433 = 0.2165 N, which is 0.217 N at three figures, not the key 0.216"
+  },
+  {
+   "id": "6b285e76-736d-491e-8cd0-188a0a432c5c",
+   "verdict": "none",
+   "reason": "working gives 33e-20/1.6e-19 = 2.0625, which is 2.06 eV at its own precision, not the key 2.07; the 5e14 Hz it uses is read off the figure and not stated"
+  },
+  {
+   "id": "72714664-399a-4338-b895-e779497f2018",
+   "verdict": "none",
+   "reason": "working gives 144/(7 x 1.097e7) = 1.8752e-6 m, which is 1.875e-6 at its own precision, not the key 1.876e-6"
+  },
+  {
+   "id": "7607da0a-668e-4d6e-8e53-a58606fbf1af",
+   "verdict": "none",
+   "reason": "working gives K = 2.25e-19/1.6e-19 = 1.406 eV (1.41, not 1.40), so phi = 2.76 - 1.41 = 1.35 eV, not the key 1.36"
+  }
+ ]
+}
