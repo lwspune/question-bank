@@ -1,0 +1,607 @@
+{
+ "//": "Assembled from agent drafts (algebraSteps).",
+ "visuals": [
+  {
+   "id": "0ea39bb8-5543-42b2-800c-4ada48206186",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "9+8+7+6+5+4 = 39",
+       "f": "9+8+7+6+5+4",
+       "value": "39"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "3+9 = 12",
+       "f": "3+9",
+       "value": "12",
+       "note": "then 1 + 2 = 3, so 987654 gives 3"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "8 \\times 6 = 48",
+       "f": "8*6",
+       "value": "48"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "4+8 = 12",
+       "f": "4+8",
+       "value": "12",
+       "note": "then 1 + 2 = 3, so 888888 gives 3"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "7+6+5+4+3+1 = 26",
+       "f": "7+6+5+4+3+1",
+       "value": "26"
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "2+6 = 8",
+       "f": "2+6",
+       "value": "8",
+       "note": "765431 gives 8"
+      },
+      {
+       "step": "s7",
+       "kind": "calc",
+       "tex": "9 \\times 6 = 54",
+       "f": "9*6",
+       "value": "54"
+      },
+      {
+       "step": "s8",
+       "kind": "calc",
+       "tex": "5+4 = 9",
+       "f": "5+4",
+       "value": "9",
+       "note": "999999 gives 9"
+      }
+     ],
+     "answer": "9"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s5",
+       "s6"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s7",
+       "s8"
+      ]
+     }
+    ],
+    "fingerprint": "a412142d",
+    "answer": {
+     "value": 9,
+     "label": "D) 999999"
+    }
+   }
+  },
+  {
+   "id": "13909451-67fa-4ccf-be4e-9f90a702dade",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "D,E,N,S,T,T,U",
+       "note": "sorted letters of STUDENT"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "E = 5",
+       "f": "5",
+       "value": "5",
+       "note": "second from the left"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "S = 19",
+       "f": "19",
+       "value": "19",
+       "note": "fourth from the right"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "19 - 5 - 1 = 13",
+       "f": "19-5-1",
+       "value": "13"
+      }
+     ],
+     "answer": "13"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "0c2ebba9",
+    "answer": {
+     "value": 13,
+     "label": "13"
+    }
+   }
+  },
+  {
+   "id": "17aaf702-ec5b-4d0d-97bb-9e5ca9aec1d9",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "SIMILAR \\to RJLJKBQ",
+       "note": "vowels +1, consonants -1"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "J = 10",
+       "f": "10",
+       "value": "10",
+       "note": "second from the left"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "L = 12",
+       "f": "12",
+       "value": "12",
+       "note": "third from the left"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "12 - 10 - 1 = 1",
+       "f": "12-10-1",
+       "value": "1",
+       "note": "only K lies between"
+      }
+     ],
+     "answer": "1"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "e8a2941e",
+    "answer": {
+     "value": 1,
+     "label": "One"
+    }
+   }
+  },
+  {
+   "id": "2d3d7d61-de1c-47e3-9f5f-f561dab5a9d2",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "ISOLATED \\to JRPKBSFC",
+       "note": "vowels +1, consonants -1"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "P = 16",
+       "f": "16",
+       "value": "16",
+       "note": "third from the left"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "R = 18",
+       "f": "18",
+       "value": "18",
+       "note": "second from the left"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "18 - 16 - 1 = 1",
+       "f": "18-16-1",
+       "value": "1",
+       "note": "only Q lies between"
+      }
+     ],
+     "answer": "1"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "3f7aa33f",
+    "answer": {
+     "value": 1,
+     "label": "One"
+    }
+   }
+  },
+  {
+   "id": "34f9aec1-2eec-4bcd-a296-7bc0ace2a78d",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "PURITAN \\to QTSHUZO",
+       "note": "vowels -1, consonants +1"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "Q = 17",
+       "f": "17",
+       "value": "17",
+       "note": "1st from the left"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "T = 20",
+       "f": "20",
+       "value": "20",
+       "note": "6th from the right = 2nd from left"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "20 - 17 - 1 = 2",
+       "f": "20-17-1",
+       "value": "2",
+       "note": "R and S lie between"
+      }
+     ],
+     "answer": "2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "86bca120",
+    "answer": {
+     "value": 2,
+     "label": "Two"
+    }
+   }
+  },
+  {
+   "id": "45407e83-af73-4b47-98a3-d6fc46ab84c4",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "A,B,D,E,K,O,R,Y",
+       "note": "sorted letters of KEYBOARD"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "O = 15",
+       "f": "15",
+       "value": "15",
+       "note": "third from the right"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "R = 18",
+       "f": "18",
+       "value": "18",
+       "note": "second from the right"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "18 - 15 - 1 = 2",
+       "f": "18-15-1",
+       "value": "2",
+       "note": "P and Q lie between"
+      }
+     ],
+     "answer": "2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "89b80033",
+    "answer": {
+     "value": 2,
+     "label": "Two"
+    }
+   }
+  },
+  {
+   "id": "45bdd1c6-55cb-4222-9a9e-9cc2b24a0e86",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "A,L,O,P,P,T",
+       "note": "sorted letters of LAPTOP"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "P = 16",
+       "f": "16",
+       "value": "16",
+       "note": "fourth from the left"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "T = 20",
+       "f": "20",
+       "value": "20",
+       "note": "first from the right"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "20 - 16 - 1 = 3",
+       "f": "20-16-1",
+       "value": "3",
+       "note": "Q, R, S lie between"
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "cd138fd8",
+    "answer": {
+     "value": 3,
+     "label": "Three"
+    }
+   }
+  },
+  {
+   "id": "4bb37cc3-8827-4f95-abc2-6dd8102d9786",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "A,G,I,L,N,S,T",
+       "note": "sorted letters of LASTING"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "G = 7",
+       "f": "7",
+       "value": "7",
+       "note": "second from the left"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "L = 12",
+       "f": "12",
+       "value": "12",
+       "note": "fourth from the right"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "12 - 7 - 1 = 4",
+       "f": "12-7-1",
+       "value": "4",
+       "note": "H, I, J, K lie between"
+      }
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "b715a568",
+    "answer": {
+     "value": 4,
+     "label": "Four"
+    }
+   }
+  }
+ ],
+ "decided": [
+  {
+   "id": "1c07bd8f-e024-4ff5-80fc-5052a119a75b",
+   "verdict": "none",
+   "reason": "one line: the middle place of a 9-letter word, nothing to step through"
+  }
+ ]
+}

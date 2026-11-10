@@ -1,0 +1,85 @@
+{
+ "visuals": [
+  {
+   "id": "0e14e3aa-4594-41fa-85e3-3889b89b472a",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "answer": {
+     "label": "91 1/6%",
+     "value": 91.16666666666667
+    },
+    "params": {
+     "lines": [
+      {
+       "tex": "100,\\ 80,\\ 90,\\ 95,\\ 90,\\ 90\\ (\\%)",
+       "kind": "note",
+       "note": "highest % in each subject",
+       "step": "s1"
+      },
+      {
+       "f": "150+0.8*130+0.9*120+95+0.9*60+0.9*40",
+       "tex": "150 + 104 + 108 + 95 + 54 + 36 = {{1:547}}",
+       "kind": "calc",
+       "note": "marks: maximum × highest %",
+       "step": "s2",
+       "value": "547"
+      },
+      {
+       "f": "150+130+120+100+60+40",
+       "tex": "150 + 130 + 120 + 100 + 60 + 40 = {{2:600}}",
+       "kind": "calc",
+       "note": "maximum marks",
+       "step": "s2",
+       "value": "600"
+      },
+      {
+       "f": "547/600*100",
+       "tex": "\\dfrac{{{1:547}}}{{{2:600}}} \\times 100 = 91\\tfrac{1}{6}\\%",
+       "kind": "calc",
+       "step": "s3",
+       "value": "547/6"
+      },
+      {
+       "f": "(547/6)*600/100",
+       "tex": "91\\tfrac{1}{6}\\% \\text{ of } 600 = 547",
+       "kind": "calc",
+       "note": "check",
+       "step": "s4",
+       "value": "547"
+      }
+     ],
+     "answer": "547/6"
+    },
+    "fingerprint": "79c42123"
+   }
+  }
+ ]
+}
