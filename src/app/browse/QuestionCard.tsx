@@ -32,7 +32,7 @@ import {
 } from "@/components/ui/dialog";
 import type { OptionRow, QuestionRow } from "@/lib/questions/query";
 import { sourceTag } from "@/lib/questions/sourceTag";
-import { DIFFICULTY_LABEL, DIFFICULTY_PILL } from "@/lib/questions/difficultyPill";
+import { DIFFICULTY_LABEL, DIFFICULTY_TEXT } from "@/lib/questions/difficultyPill";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { useCart } from "@/lib/cart/CartProvider";
 import type { QuestionResources } from "@/lib/links/questionResources";
@@ -324,16 +324,7 @@ export default function QuestionCard({
             <span className="truncate">{tag.label}</span>
           </span>
         )}
-        <span className={cn("inline-flex shrink-0 items-center rounded-full px-2 py-0.5 text-xs font-semibold sm:px-2.5", DIFFICULTY_PILL[question.difficulty])}>
-          {DIFFICULTY_LABEL[question.difficulty]}
-        </span>
         <ItemStatChip agg={itemStats} />
-        {question.imageUrl && (
-          <span className="inline-flex shrink-0 items-center text-muted-foreground">
-            <ImageIcon className="h-3.5 w-3.5" aria-hidden />
-            <span className="sr-only">Has image</span>
-          </span>
-        )}
       </span>
       {/* Hidden on phones: there the tag pills need the width (the
           difficulty pill was wrapping to a line of its own), and the
@@ -361,7 +352,7 @@ export default function QuestionCard({
           textbook and practice questions in grey, and a practice question
           never shows a number that could pass for a paper's. */}
       <div className="p-3 sm:p-4">
-        <div className="flex items-start gap-2">
+        <div className="flex items-center gap-1">
           {/* With a paper to open, the source pill is a link (2026-10-10), and a
               link cannot sit inside a button, so this row becomes a plain tap
               area with the same look. Keyboard and screen-reader users toggle
@@ -393,8 +384,22 @@ export default function QuestionCard({
           )}
         </div>
 
+        {/* Difficulty and the image mark sit on this line since 2026-11-10: in
+            the tag row above they pushed the difficulty pill onto a line of its
+            own on a phone, beside the three buttons. */}
         <p className="mt-1.5 text-xs text-muted-foreground">
           <span className="tabular-nums text-muted-foreground/80">#{index}</span>
+          <span aria-hidden> · </span>
+          <span className={cn("font-semibold", DIFFICULTY_TEXT[question.difficulty])}>
+            {DIFFICULTY_LABEL[question.difficulty]}
+          </span>
+          {question.imageUrl && (
+            <>
+              <span aria-hidden> · </span>
+              <ImageIcon className="inline h-3.5 w-3.5 align-[-2px]" aria-hidden />
+              <span className="sr-only">Has image</span>
+            </>
+          )}
           {breadcrumb && (
             <>
               <span aria-hidden> · </span>
@@ -772,12 +777,14 @@ function CartToggle({
       className={cn(
         // Icon-only on phones (label hidden) so the breadcrumb keeps its width
         // and the card reads content-first; "+ Add" / "✓ Added" returns from sm: up.
-        "-mt-0.5 inline-flex h-10 min-w-[44px] shrink-0 select-none items-center justify-center gap-1.5 rounded-md border px-2.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:cursor-not-allowed sm:h-9 sm:px-3",
+        // On a phone it is a borderless round icon like the two beside it
+        // (2026-11-10); from sm up, with its label, it keeps its outline.
+        "inline-flex h-9 min-w-9 shrink-0 select-none items-center justify-center gap-1.5 rounded-full border border-transparent text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:cursor-not-allowed sm:rounded-md sm:px-3",
         inCart
-          ? "border-primary/40 bg-primary/10 text-primary hover:bg-primary/15"
+          ? "bg-primary/10 text-primary hover:bg-primary/15 sm:border-primary/40"
           : disabled
-          ? "border-input bg-background text-muted-foreground/50"
-          : "border-input bg-background text-foreground hover:bg-accent"
+          ? "text-muted-foreground/50 sm:border-input sm:bg-background"
+          : "text-foreground hover:bg-accent sm:border-input sm:bg-background"
       )}
     >
       {inCart ? (

@@ -9,10 +9,10 @@ import { SaveLimitReached } from "@/lib/bookmarks/limit";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import { pricingHref } from "@/lib/billing/checkoutReturn";
 
+// Borderless round icon, 36 px (2026-11-10), like the flashcards button beside it.
 const BASE =
-  "inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
-const IDLE =
-  "border-input bg-background text-muted-foreground hover:border-brand-accent/40 hover:text-brand-accent";
+  "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+const IDLE = "text-muted-foreground hover:bg-accent hover:text-brand-accent";
 
 /**
  * Save/bookmark toggle on a QuestionCard. Anon → a sign-in nudge (returns to the
@@ -64,7 +64,7 @@ export default function BookmarkButton({ questionId }: { questionId: string }) {
       aria-pressed={saved}
       aria-label={saved ? "Remove from saved" : "Save this question"}
       title={saved ? "Saved. Click to remove" : "Save this question"}
-      className={cn(BASE, saved ? "border-brand-accent/40 bg-brand/10 text-brand-accent" : IDLE)}
+      className={cn(BASE, saved ? "bg-brand/10 text-brand-accent" : IDLE)}
     >
       {saved ? (
         <BookmarkCheck className="h-4 w-4" aria-hidden />

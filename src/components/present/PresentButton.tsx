@@ -98,7 +98,9 @@ export default function PresentButton({
         aria-label={mode === "teach" ? "Project this question on the board" : "Practise these questions as flashcards"}
         title={mode === "teach" ? "Project on board" : "Flashcards"}
         className={cn(
-          "inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-input bg-background text-muted-foreground transition-colors hover:border-brand-accent/40 hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+          // Borderless round icon, 36 px (2026-11-10): three bordered squares in
+          // a question card's tag row crowded it on a phone.
+          "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           className
         )}
       >
