@@ -356,6 +356,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-10 (sixth) — Board past-paper subject pages get the same upgrade (no migration).**
+  - **What:** `/question-papers/<exam>/<subject>` (CBSE 10/12, HSC 12, SSC 10): year headings with exam and subject, older years folded, a facts box, "What N papers show", a computed FAQ (`lib/questionPapers/subjectPage.ts`).
+  - **Averages count one set per paper and only papers with the newest total:** sets of one paper share just 64% of questions, and 2022 CBSE papers were 35/40-mark term papers.
+  - **A `case_key` means one printed question on CBSE but a block of questions on Maharashtra**, and nothing stored tells them apart: the page passes `casesAreQuestions` (exam `cbse-*`). CBSE case-study and empty-note sections get their marks from the items (Physics stores a per-part "1 mark each"). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-10 (fifth) — UGC NET Paper 1: all 20 June 2024 shifts, 1,000 q PUBLIC, 20 mocks (`scripts/ugc-net/`).**
   - **Owner's call (graduate focus); no student had asked.** Keep rule: 50+ UGC NET students and 3+ passes two weeks after the Dec 2026 sitting (experiment `ugc-net`).
   - **NTA's key prints only id to option**; papers are NTA's master prints re-hosted by AglaSem, each question carrying NTA's id, so answers are looked up by id. June 2024, not 2025: no 2025 papers hosted, Dec 2025 keyed for 5 subjects only.
