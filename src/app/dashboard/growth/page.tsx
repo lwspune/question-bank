@@ -62,6 +62,7 @@ import {
   V_REVEAL_FOLLOWUP_BASELINE_PCT,
   V_PREMIUM_HOURLY_CHECKOUT_KEEP_PCT,
   V_FOLLOW_UP_KEEP_PCT,
+  V_FIX_LINE_KEEP_PCT,
   V_REVEAL_FOLLOWUP_MAX_DROP,
   V_PLAN_DAYS_DONE_KEEP_PCT,
   V_PROGRESS_NEXT_STEP_KEEP_PCT,
@@ -831,6 +832,14 @@ export default async function GrowthPage() {
             <ReadingsList metric="v-pay-offer-shown" />
             <ReadingsList metric="v-pay-offer-checkout" />
           </div>
+        );
+      case "v-fix-line":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} from{" "}
+            <span className="font-mono">scripts/drill/chapter-fix-readout.sql</span> (the v_chapter rows): keep it if{" "}
+            {V_FIX_LINE_KEEP_PCT}%+ of the times it is shown lead to a drill start from it that day.
+          </p>
         );
       case "v-follow-up-loop":
         return (

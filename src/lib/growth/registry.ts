@@ -246,6 +246,13 @@ export const V_PREMIUM_HOURLY_CHECKOUT_KEEP_PCT = 10;
 export const V_FOLLOW_UP_KEEP_PCT = 10;
 
 /**
+ * "v-fix-line" (V_LEARNING_LOOP.md step 3): keep the chapter's Fix line under
+ * V's explanations if at least this share of the times it is shown lead to a
+ * drill start from it that day (%), the chapter-fix experiment's own drop bar.
+ */
+export const V_FIX_LINE_KEEP_PCT = 10;
+
+/**
  * "self-mark": keep Understood / Review later under written model answers if
  * at least this share of signed-in written-answer reveals get a tap (%)...
  */
@@ -360,7 +367,8 @@ export type Readout =
   | "board-path"
   | "study-circle"
   | "ugc-net"
-  | "v-follow-up-loop";
+  | "v-follow-up-loop"
+  | "v-fix-line";
 
 export type Experiment = {
   id: string;
@@ -647,7 +655,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     why: "Students come back to the bank but rarely to the drill: in the 30 days to 2026-11-07, 534 of 947 students with a miss returned on 2+ days, but 41 drilled on 2+ days. So the drill goes to the chapter they already chose. Review of a ChatGPT mentorship plan, 2026-11-07.",
     metric:
       "Of chapter-days where a student practised a chapter while holding older unfixed mistakes there: the share fixing one of them that day. Also drill starts tagged chapter / board_chapter / browse_chapter against chapter_fix views.",
-    rule: "Baseline (30 days to 2026-11-07): 30% (160 of 529 chapter-days, 191 students). Keep if 40%+. Drop if under 10% of chapter_fix views lead to a drill start that day. The /me redesign went live 2026-11-06, so part of any rise may be its.",
+    rule: "Baseline (30 days to 2026-11-07): 30% (160 of 529 chapter-days, 191 students). Keep if 40%+. Drop if under 10% of chapter_fix views lead to a drill start that day. The /me redesign went live 2026-11-06, so part of any rise may be its. From 2026-11-10 V shows the same line under its explanations (tag v_chapter, experiment v-fix-line): its views and drill starts are separate rows of the readout, but a fix made from it also counts in this same-day share, so read the share with and without students who started a drill from v_chapter that day.",
     liveSince: "2026-11-07",
     windowDays: 21,
     readout: "chapter-fix",
@@ -787,6 +795,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-28",
     windowDays: 14,
     readout: "v-pay-offer",
+    status: "running",
+  },
+  {
+    id: "v-fix-line",
+    title: "Fix N mistakes in this chapter, under V's explanation",
+    change:
+      "Under an Ask V explanation, a signed-in student whose drill holds mistakes from the explained question's chapter sees the chapter pages' line, \"Fix 2 mistakes in this chapter\", with a Fix them button that opens the drill for that chapter (tag v_chapter). It replaced a note telling V the student's recent mistakes on the topic, which V used in 1 of 18 test replies.",
+    why: "Of 553 Ask V taps (20 Oct to 9 Nov), 310 came from a student with another mistake in the same chapter in the 30 days before, and V cannot see answers given elsewhere on the site. A button built by code shows every time; practising one's own mistakes is how the drill fixes them.",
+    metric:
+      "Line shown under V (surface_viewed chapter_fix, from v_chapter) and drill starts from v_chapter that day; read with scripts/drill/chapter-fix-readout.sql",
+    rule: `Keep it if ${V_FIX_LINE_KEEP_PCT}%+ of the times it is shown lead to a drill start from it that day.`,
+    liveSince: "2026-11-10",
+    windowDays: 28,
+    readout: "v-fix-line",
     status: "running",
   },
   {

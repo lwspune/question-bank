@@ -15,7 +15,7 @@ describe("parseDrillFrom", () => {
 
   it("covers every link we ship", () => {
     expect([...DRILL_FROM].sort()).toEqual(
-      ["again", "bank", "board_chapter", "browse_chapter", "chapter", "email", "findings", "homework", "map", "me_tile", "me_points", "me_weak", "menu", "nav", "path", "push", "result", "review", "review_tab", "start", "today"].sort()
+      ["again", "bank", "board_chapter", "browse_chapter", "chapter", "email", "findings", "homework", "map", "me_tile", "me_points", "me_weak", "menu", "nav", "path", "push", "result", "review", "review_tab", "start", "today", "v_chapter"].sort()
     );
   });
 
@@ -52,7 +52,7 @@ describe("drillHref", () => {
 
 describe("CHAPTER_FIX_FROM", () => {
   it("is one tag per page the chapter line sits on, each a drill source", () => {
-    expect({ ...CHAPTER_FIX_FROM }).toEqual({ questions: "chapter", board: "board_chapter", browse: "browse_chapter" });
+    expect({ ...CHAPTER_FIX_FROM }).toEqual({ questions: "chapter", board: "board_chapter", browse: "browse_chapter", v: "v_chapter" });
     for (const f of Object.values(CHAPTER_FIX_FROM)) expect(parseDrillFrom(f)).toBe(f);
   });
 });

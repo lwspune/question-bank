@@ -106,6 +106,7 @@ describe("EXPERIMENTS", () => {
       "ugc-net",
       "v-explain",
       "v-finder",
+      "v-fix-line",
       "v-follow-up-loop",
       "v-pay-offer",
       "v-plan",

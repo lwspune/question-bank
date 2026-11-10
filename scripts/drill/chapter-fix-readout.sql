@@ -66,7 +66,8 @@ views as (
 starts as (
   select metadata->>'from' as page, count(*) as started, count(distinct user_id) as people
   from user_activity, params
-  where kind = 'drill_started' and metadata->>'from' in ('chapter', 'board_chapter', 'browse_chapter')
+  -- v_chapter: the same line under V's explanations (2026-11-10, experiment v-fix-line), a row of its own.
+  where kind = 'drill_started' and metadata->>'from' in ('chapter', 'board_chapter', 'browse_chapter', 'v_chapter')
     and (created_at at time zone 'Asia/Kolkata')::date between params.from_day and params.to_day
     and user_id not in (select user_id from staff)
   group by 1
