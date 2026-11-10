@@ -76,7 +76,7 @@ export function bandOf(row: Pick<SubtopicRow, "judged" | "weightedScore">): Band
 
 const zero = (): BandCounts => ({ weak: 0, mid: 0, mastered: 0, unknown: 0 });
 
-function labelFor(c: BandCounts): string {
+export function labelFor(c: BandCounts): string {
   const measured = c.weak + c.mid + c.mastered;
   if (measured === 0) return "not tested yet";
   if (c.weak > 0) return `${c.weak} to fix`;

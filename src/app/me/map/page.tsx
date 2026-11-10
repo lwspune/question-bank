@@ -12,7 +12,8 @@ import { getOwnPerformance, getOwnPracticeEvidence } from "@/lib/performance/ser
 import { buildPerformance } from "@/lib/performance/compute";
 import { latestEvidenceExam, withPractice } from "@/lib/performance/practice";
 import { buildLaneNav } from "@/lib/performance/laneNav";
-import { buildMasteryMap, sourceLine, BAND_ORDER, type Band, type MapTile } from "@/lib/performance/masteryMap";
+import { buildMasteryMap, BAND_ORDER } from "@/lib/performance/masteryMap";
+import MapTileCard, { BAND_DOT, BAND_LABEL } from "@/components/performance/MapTile";
 import { cn } from "@/lib/utils";
 import { drillHref } from "@/lib/drill/from";
 import { isIntlHost } from "@/lib/sites/intl";
@@ -54,20 +55,6 @@ export const metadata: Metadata = {
 };
 
 type Search = { exam?: string; subject?: string };
-
-const DOT: Record<Band, string> = {
-  weak: "bg-red-500",
-  mid: "bg-amber-500",
-  mastered: "bg-emerald-500",
-  unknown: "bg-muted-foreground/30",
-};
-
-const BAND_LABEL: Record<Band, string> = {
-  weak: "to fix",
-  mid: "nearly there",
-  mastered: "mastered",
-  unknown: "not tested yet",
-};
 
 export default async function MasteryMapPage(props: { searchParams: Promise<Search> }) {
   const searchParams = await props.searchParams;
@@ -175,7 +162,7 @@ export default async function MasteryMapPage(props: { searchParams: Promise<Sear
             <ul className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground" aria-label="Legend">
               {BAND_ORDER.map((b) => (
                 <li key={b} className="inline-flex items-center gap-1.5">
-                  <span className={cn("inline-block h-2.5 w-2.5 rounded-full", DOT[b])} aria-hidden />
+                  <span className={cn("inline-block h-2.5 w-2.5 rounded-full", BAND_DOT[b])} aria-hidden />
                   <span className="tabular-nums text-foreground">{map.totals[b]}</span> {BAND_LABEL[b]}
                 </li>
               ))}
@@ -190,7 +177,7 @@ export default async function MasteryMapPage(props: { searchParams: Promise<Sear
 
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
               {map.tiles.map((t) => (
-                <Tile key={t.chapter} tile={t} />
+                <MapTileCard key={t.chapter} tile={t} />
               ))}
             </div>
 
@@ -221,60 +208,6 @@ function PickLink({ href, active, children }: { href: string; active: boolean; c
     >
       {children}
     </Link>
-  );
-}
-
-/**
- * A chapter tile. Collapsed: name, the dot row, the plain-words label.
- * Expanded (native <details>): one line per subtopic with its band and a
- * "Practise" link. The summary is the whole collapsed card so the tap target
- * is the tile, not a chevron.
- */
-function Tile({ tile }: { tile: MapTile }) {
-  return (
-    <details className="group rounded-xl border bg-card">
-      <summary className="cursor-pointer list-none p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring [&::-webkit-details-marker]:hidden">
-        <p className="truncate text-sm font-semibold" title={tile.chapter}>
-          {tile.chapter}
-        </p>
-        <div className="mt-2 flex flex-wrap gap-1" aria-hidden>
-          {tile.dots.map((d) => (
-            <span key={d.subtopic} className={cn("inline-block h-2.5 w-2.5 rounded-full", DOT[d.band])} />
-          ))}
-        </div>
-        <p
-          className={cn(
-            "mt-2 text-xs",
-            tile.counts.weak > 0 ? "text-red-600 dark:text-red-400" : "text-muted-foreground"
-          )}
-        >
-          {tile.label}
-        </p>
-      </summary>
-      <ul className="space-y-1.5 border-t p-3">
-        {tile.dots.map((d) => (
-          <li key={d.subtopic} className="flex items-center gap-2 text-xs">
-            <span className={cn("inline-block h-2.5 w-2.5 shrink-0 rounded-full", DOT[d.band])} aria-hidden />
-            <span className="min-w-0 flex-1 truncate" title={d.subtopic}>
-              {d.subtopic}
-              <span className="sr-only">, {BAND_LABEL[d.band]}</span>
-            </span>
-            {d.accuracy !== null && (
-              <span className="tabular-nums text-muted-foreground">{d.accuracy}%</span>
-            )}
-            <Link
-              href={d.href}
-              prefetch={false}
-              aria-label={`Practise ${d.subtopic}`}
-              className="text-brand-accent underline-offset-4 hover:underline focus-visible:underline"
-            >
-              Practise
-            </Link>
-          </li>
-        ))}
-        {sourceLine(tile) && <li className="pt-1 text-xs text-muted-foreground">{sourceLine(tile)}</li>}
-      </ul>
-    </details>
   );
 }
 

@@ -353,6 +353,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-10 — Homepage shows the product's own screens with a sample student (no migration).**
+  - **Why:** owner, after the carousel: signed-out visitors never see Review, the map or Home; How it works, four What's inside cards and the teachers' banner now show them.
+  - **Real components, sample data** (owner's pick over screenshots): ScoreCard, FixOverview, the map tile (moved to `components/performance/MapTile.tsx`) and TodayCard/WeakSpots (handed a pulse, they never fetch) render from `lib/home/previewSamples.ts`, typed with the real types. Question, notes, homework and paper are drawn: their real parts count reveals, fetch, or pull KaTeX's CSS onto the homepage.
+  - **`inert` must be non-empty in React 18:** `inert=""` was dropped from the HTML. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-09 (ninth) — Homepage exam carousel; /browse exams grouped by goal (0248).**
   - **Why:** owner, "looks plain, wants a wow". A 3D ring of exam cards replaces the phone screenshot in the navy panel; mockups approved first, carousel on `/`, NOT /browse (owner corrected that mid-build).
   - **Every exam declares a `goal`** (5, `lib/exam/examGoals.ts`), not its tier: SPI is a Class 10 exam aimed at NDA. /browse groups its exam list by it; nothing else there changed.
