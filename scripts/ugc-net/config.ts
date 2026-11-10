@@ -119,7 +119,12 @@ export function pyqNote(s: Shift): string {
   return `${d} ${MONTHS[m - 1]} Shift ${s.shift}`;
 }
 
-export const keyPath = (c: CycleId) => join(SOURCE_ROOT, "keys", CYCLES[c].keyFile);
+const MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+/** pyq_month is a month NAME everywhere in the bank ("September"): the month the shift was SAT. */
+export const pyqMonth = (s: Shift) => MONTH_NAMES[Number(s.date.split("-")[1]) - 1];
+export const pyqYear = (s: Shift) => Number(s.date.split("-")[0]);
+
+export const keyPath =(c: CycleId) => join(SOURCE_ROOT, "keys", CYCLES[c].keyFile);
 export const srcPath = (s: Shift) => join(SOURCE_ROOT, "src", s.file);
 export const dataDir = () => join(process.cwd(), "scripts", "ugc-net", "data");
 /** Question images and the manifest pairing each with its NTA id. */

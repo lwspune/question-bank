@@ -114,11 +114,15 @@ Students read it under the question. Plain English a final-year student reads
 easily. Explain why the right option is right and, where it helps, why the
 tempting one is wrong; for statements, say which are true and why; for a
 match, give each pair; show every step of a calculation; end with the option,
-e.g. `So the answer is option (2).` (use the PRINTED number, 1-4, since that is
-what the student sees). Usually 3 to 8 sentences.
+e.g. `So the answer is option (B).` (the site shows the four options as A-D, so
+use the LETTER, never the printed number 1-4). Usually 3 to 8 sentences.
 
 - Paragraphs separated by a blank line. `**bold**` for a key term. A table as a
-  GFM pipe table. Maths in `\( ... \)` only.
+  GFM pipe table. Maths in `\( ... \)` only: no bare unicode maths signs
+  (`× ÷ √ ≤ ≥ ≠`); write `\(64 \times 12 = 768\)` or plain words. Plain `+`,
+  `-`, `=` and `%` in simple arithmetic are fine.
+- When you name another option inside the working, use its letter too:
+  `option (C) is true`, never `option 3`.
 - **No em dashes** (—) anywhere, and no " – " or " -- ": use a full stop, colon,
   comma or brackets.
 - Never mention a key, "blind", "transcription", NTA's answer, or yourself.
