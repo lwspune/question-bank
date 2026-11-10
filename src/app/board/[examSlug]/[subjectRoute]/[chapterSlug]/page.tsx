@@ -197,8 +197,9 @@ export default async function BoardChapterPage(props: { params: Promise<Params> 
           </p>
           <h1 className="mt-1 text-2xl font-bold tracking-tight text-foreground">{chapter.chapterName}</h1>
           <p className="mt-1.5 text-sm text-muted-foreground">
-            Every solved example, exercise, and miscellaneous question, in the order the textbook teaches them.
-            {pyqCount > 0 && " Plus every board question asked from this chapter."}
+            {pyqCount > 0
+              ? "Every textbook question in book order, plus the board's past questions."
+              : "Every textbook question, in the order the book teaches them."}
             <span className="text-muted-foreground/70"> · {chapter.total} questions</span>
           </p>
         </header>

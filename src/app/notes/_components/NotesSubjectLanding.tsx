@@ -12,6 +12,7 @@ import { getNotesChaptersForSubject } from "@/lib/notes/chapters";
 import { chapterCardBlurb } from "@/lib/notes/cardBlurb";
 import { loadChapterPyqCounts } from "@/lib/notes/chapterCounts";
 import { notesCountKind, notesCountNoun } from "@/lib/notes/countKind";
+import { subjectNotesIntro } from "@/lib/notes/subjectIntro";
 import { notesExamCrumbs } from "@/lib/notes/breadcrumbs";
 import { canonicalFor } from "@/lib/sites/intl";
 
@@ -28,18 +29,10 @@ function subjectMeta(subjectRoute: string) {
   const first = chapters[0];
   if (!first) return null;
   const title = `${first.subjectDisplay} Notes`;
-  // Says how to USE these notes. The /notes hub says what they are and the exam
-  // hub says what is covered, so all three levels answer different questions —
-  // before 2026-09-16 they rendered one sentence with the name swapped.
-  //
-  // Phrased "written to be…" and "No chapter assumes…" rather than "Each chapter
-  // is…" because four subjects have exactly ONE chapter, where "each" reads
-  // wrong. Pluralised for the same reason.
-  const n = chapters.length;
-  const intro =
-    `${n} chapter${n === 1 ? "" : "s"} of ${first.subjectDisplay}, written to be taught ` +
-    "from directly or read alone. No chapter assumes you have read the others, so start " +
-    "wherever you are weakest. The question counts below are live, straight from the bank.";
+  // Says how to USE these notes; the /notes hub and the exam hub answer other
+  // questions (before 2026-09-16 all three rendered one sentence). Short since
+  // 2026-11-10: lib/notes/subjectIntro.
+  const intro = subjectNotesIntro(chapters.length, first.subjectDisplay);
   return { chapters, first, title, intro };
 }
 

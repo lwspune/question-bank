@@ -56,7 +56,7 @@ export const MOCK_TYPES: readonly MockTypeDef[] = [
     label: "Past papers",
     tagline: "The real thing",
     blurb:
-      "The actual papers, served whole — the exact questions of each sitting in their printed order, on the official marking scheme.",
+      "Each paper exactly as it was set, marked the way the exam marks it.",
   },
   {
     slug: "practice",
