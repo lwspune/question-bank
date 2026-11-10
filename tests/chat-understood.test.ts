@@ -4,7 +4,16 @@
  * Pure core src/lib/chat/understood.ts and lib/chat/conversation.ts.
  */
 import { describe, it, expect } from "vitest";
-import { isExplanation, notUnderstoodQuestionId, NOT_UNDERSTOOD } from "@/lib/chat/understood";
+import {
+  isExplanation,
+  isNotUnderstoodMessage,
+  MAX_STEP_CHOICES,
+  notUnderstoodQuestionId,
+  NOT_UNDERSTOOD,
+  replySteps,
+  stuckStepMessage,
+  stuckStepOf,
+} from "@/lib/chat/understood";
 import { groupConversations, historyTurns, type ConversationRow } from "@/lib/chat/conversation";
 
 const CID = "6f1c2a52-8a3e-4c5b-9d7e-1f2a3b4c5d6e";
@@ -116,3 +125,56 @@ describe("notUnderstoodQuestionId: the question a No belongs to", () => {
     expect(notUnderstoodQuestionId({ toolCalls: [explained(Q.toUpperCase())], message: "Explain", askedQuestionId: null })).toBe(Q);
   });
 });
+
+// V_LEARNING_LOOP.md step 4 (2026-11-10): after a No, "Which step lost you?" names the step.
+describe("which step lost them", () => {
+  it("writes and reads the step message", () => {
+    expect(stuckStepMessage(3)).toBe("I didn't understand step 3. Please explain it more simply.");
+    expect(stuckStepOf(stuckStepMessage(3))).toBe(3);
+    expect(stuckStepOf(NOT_UNDERSTOOD)).toBeNull();
+    expect(stuckStepOf("I didn't understand step 0. Please explain it more simply.")).toBeNull();
+    expect(stuckStepOf("explain step 3")).toBeNull();
+  });
+
+  it("treats a step message as a No, like the plain one", () => {
+    expect(isNotUnderstoodMessage(NOT_UNDERSTOOD)).toBe(true);
+    expect(isNotUnderstoodMessage(stuckStepMessage(2))).toBe(true);
+    expect(isNotUnderstoodMessage("Explain this question.")).toBe(false);
+    expect(isExplanation(null, stuckStepMessage(2))).toBe(true);
+    const asked = "6f1c2a52-8a3e-4c5b-9d7e-1f2a3b4c5d6e";
+    expect(notUnderstoodQuestionId({ toolCalls: null, message: stuckStepMessage(2), askedQuestionId: asked })).toBe(asked);
+  });
+
+  it("counts the numbered steps of a reply, from 1 and in order", () => {
+    expect(replySteps("Here is how.\n\n1. Split it.\n2. Separate.\n3. Integrate.\n\nSo (A).")).toBe(3);
+    expect(replySteps("1) one\n2) two")).toBe(2);
+    expect(replySteps("1. one\n2. two\n4. four")).toBe(2);
+  });
+
+  it("reads steps written as Step 1: too (V writes both)", () => {
+    expect(replySteps("Tiny example first.\nStep 1: total 2000.\nStep 2: take out 80.\nStep 3: divide by 96.")).toBe(3);
+  });
+
+  it("gives no steps for bullets, plain lines, or a list not starting at 1", () => {
+    expect(replySteps("- one\n- two\n- three")).toBe(0);
+    expect(replySteps("The total is 2000.\nTake 80 out.\nSo 20.")).toBe(0);
+    expect(replySteps("2. two\n3. three")).toBe(0);
+  });
+
+  it("caps the count, so the buttons fit a phone", () => {
+    const many = Array.from({ length: 12 }, (_, i) => `${i + 1}. step`).join("\n");
+    expect(replySteps(many)).toBe(MAX_STEP_CHOICES);
+  });
+});
+
+describe("the chat asks which step after a No (wiring)", () => {
+  const src = require("node:fs").readFileSync(require("node:path").join(process.cwd(), "src", "components", "chat", "ChatWidget.tsx"), "utf8") as string;
+
+  it("offers step buttons when the reply has numbered steps, else sends the plain No", () => {
+    expect(src).toMatch(/replySteps\(turn\.text\)/);
+    expect(src).toContain("Which step lost you?");
+    expect(src).toMatch(/stuckStepMessage\(/);
+    expect(src).toContain("All of it");
+  });
+});
+

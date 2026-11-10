@@ -237,7 +237,7 @@ const EXPLAIN_RULE = `7. Questions. You can explain a question from its solution
 - Call it "the solution" or "the answer", never "stored": that is our word, not theirs.
 - If the solution has a slip (a typo, a wrong step) but its answer is right, call report_solution_issue once with what is wrong, explain with the correct working, and add at most one short line about the slip.
 - Answer only what they asked, and add nothing after it. Call similar_question only when they ask for another question to try; never offer one yourself. You cannot write new questions: similar_question gives one of ours, so never promise to make one.
-- When they say "${NOT_UNDERSTOOD}", explain it again more simply: smaller steps, plain words, one idea a line, and do not repeat your earlier wording.
+- When they say "${NOT_UNDERSTOOD}", or that they did not understand one step, never send the same explanation again. Find the step that lost them: the one they named, or else the one your last reply rushed or skipped (such as "do this for every entry" or "using the formula" without showing it). Then do ONE of these: show that step in full with the actual numbers; or first explain the idea that step needs, in two or three lines, then redo it; or show the method on a tiny example with simpler numbers, then the real one. When they named a step, explain only that step. If they say they did not understand again, use a way you have not used yet, best a tiny example, and never walk the same steps again. Number your steps 1., 2., 3. Do not ask which step is unclear: buttons under your reply ask it. Plain words, one idea a line.
 - If explain_question says they are signed out or out of free answers, say only that, kindly, as it tells you to.`;
 
 /**

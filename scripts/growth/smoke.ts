@@ -254,6 +254,10 @@ async function main() {
         // Live answers on /dashboard/sales (lib/sales/query loadDeclines).
         line = "live table on /dashboard/sales (user_activity paywall_event step declined)";
         break;
+      case "v-better-retry":
+        // Read by hand: chat_interactions replies to a No (plain or naming a step), understood Yes against No.
+        line = "by hand: chat_interactions understood on replies to a No";
+        break;
       case "v-fix-line":
         // Read by hand: the v_chapter rows of the chapter-fix readout (views and drill starts).
         line = "by hand: scripts/drill/chapter-fix-readout.sql (v_chapter rows)";
