@@ -13,7 +13,29 @@ import { CYCLES, SHIFTS, pyqYear, sourceFile, type Shift } from "../ugc-net/conf
 export type UgcNetSitting = { key: string; year: number; sourceFile: string; slug: string; title: string };
 
 /** The shifts committed to the bank. Add a shift id here when its commit lands. */
-export const UGC_NET_MOCK_SHIFTS: readonly string[] = [];
+export const UGC_NET_MOCK_SHIFTS: readonly string[] = [
+  // June 2024: all 20 shifts committed 2026-11-10 (5 Sep Shift 1 has no hosted paper).
+  "2024-08-21-1",
+  "2024-08-21-2",
+  "2024-08-22-1",
+  "2024-08-22-2",
+  "2024-08-23-1",
+  "2024-08-23-2",
+  "2024-08-27-1",
+  "2024-08-27-2",
+  "2024-08-28-1",
+  "2024-08-28-2",
+  "2024-08-29-1",
+  "2024-08-29-2",
+  "2024-08-30-1",
+  "2024-08-30-2",
+  "2024-09-02-1",
+  "2024-09-02-2",
+  "2024-09-03-1",
+  "2024-09-03-2",
+  "2024-09-04-1",
+  "2024-09-04-2",
+];
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
