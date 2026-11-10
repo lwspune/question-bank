@@ -64,6 +64,7 @@ export default function PerformanceBody({
   starter,
   headerAction,
   showExamRow = true,
+  trend,
 }: {
   perf: Performance;
   nav: LaneNav;
@@ -83,6 +84,9 @@ export default function PerformanceBody({
   /** False when the exam focus picked the exam: the header's chips stand in
    *  for this row (the student page, 2026-11-08). */
   showExamRow?: boolean;
+  /** The marks line for the subject on screen (the student page, 2026-11-10),
+   *  shown between the pills and the subject's detail. */
+  trend?: ReactNode;
 }) {
   const { summary } = perf;
   const examRow = showExamRow && nav.exams.length > 1;
@@ -158,6 +162,7 @@ export default function PerformanceBody({
         </div>
       )}
 
+      {selected && trend}
       {selected && <LaneView lane={selected} links={links} viewer={viewer} />}
     </>
   );

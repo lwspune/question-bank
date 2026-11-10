@@ -84,6 +84,7 @@ export const PULSE_SAMPLE: Pulse = {
   due: FIX_SAMPLE.total,
   week: { done: 3, goal: 5 },
   exam: null,
-  totals: null,
+  // Fixed so far: Review's chip and the Progress ring read it (2026-11-10).
+  totals: { answered: 412, right: 268, fixed: 41 },
   weak: FIX_SAMPLE.chapters.slice(0, 3).map((c) => ({ chapterId: c.chapterId, name: c.name, place: c.place, due: c.count })),
 };

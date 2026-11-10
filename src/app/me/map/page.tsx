@@ -12,7 +12,7 @@ import { getOwnPerformance, getOwnPracticeEvidence } from "@/lib/performance/ser
 import { buildPerformance } from "@/lib/performance/compute";
 import { latestEvidenceExam, withPractice } from "@/lib/performance/practice";
 import { buildLaneNav } from "@/lib/performance/laneNav";
-import { buildMasteryMap, BAND_ORDER } from "@/lib/performance/masteryMap";
+import { buildMasteryMap, masteryTile, type Band } from "@/lib/performance/masteryMap";
 import MapTileCard, { BAND_DOT, BAND_LABEL } from "@/components/performance/MapTile";
 import { cn } from "@/lib/utils";
 import { drillHref } from "@/lib/drill/from";
@@ -24,7 +24,8 @@ import OutcomeTiles from "@/components/me/OutcomeTiles";
 import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { loadMeHeader } from "@/lib/me/header";
 import { mapExamFor } from "@/lib/me/progress";
-import { masteredCount } from "@/lib/performance/masteryMap";
+import { segments } from "@/lib/me/charts";
+import SegmentBar from "@/components/me/SegmentBar";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { loadNotStarted } from "@/lib/me/startNextServer";
 import StartNext from "@/app/me/StartNext";
@@ -107,7 +108,7 @@ export default async function MasteryMapPage(props: { searchParams: Promise<Sear
           <>
             <MeHeader data={header} active="progress" readOnly={false} />
             <ProgressSwitch active="chapters" />
-            <OutcomeTiles mastered={masteredCount(lanes)} />
+            <OutcomeTiles mastery={masteryTile(lanes)} />
             <p className="text-sm text-muted-foreground">
               Every subtopic you have answered questions on, in papers or in practice. Fixing mistakes moves the dots.
             </p>
@@ -158,15 +159,24 @@ export default async function MasteryMapPage(props: { searchParams: Promise<Sear
               </nav>
             )}
 
-            {/* Totals: the legend IS the summary, so there is one row, not two. */}
+            {/* The subject at a glance (2026-11-10): one bar in the dots' own
+                colours, best first, and under it the legend, which carries the
+                same counts in words. */}
+            <div className="space-y-2">
+              <SegmentBar
+                parts={segments(SUMMARY_ORDER.map((b) => ({ key: b, n: map.totals[b] })))}
+                colorOf={BAND_DOT}
+                size="lg"
+              />
             <ul className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground" aria-label="Legend">
-              {BAND_ORDER.map((b) => (
+              {SUMMARY_ORDER.map((b) => (
                 <li key={b} className="inline-flex items-center gap-1.5">
                   <span className={cn("inline-block h-2.5 w-2.5 rounded-full", BAND_DOT[b])} aria-hidden />
                   <span className="tabular-nums text-foreground">{map.totals[b]}</span> {BAND_LABEL[b]}
                 </li>
               ))}
             </ul>
+            </div>
 
             <StartNext
               chapters={notStarted}
@@ -192,6 +202,9 @@ export default async function MasteryMapPage(props: { searchParams: Promise<Sear
     </>
   );
 }
+
+/** The summary bar and its legend, best first: a bar that opens on red reads as a verdict. */
+const SUMMARY_ORDER: readonly Band[] = ["mastered", "mid", "weak", "unknown"];
 
 function PickLink({ href, active, children }: { href: string; active: boolean; children: React.ReactNode }) {
   return (

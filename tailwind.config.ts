@@ -68,6 +68,11 @@ const config: Config = {
           "0%, 100%": { transform: "scale(1)" },
           "50%": { transform: "scale(1.25)" },
         },
+        // The small charts on the student's tabs (2026-11-10): a bar grows in once.
+        "grow-x": {
+          from: { transform: "scaleX(0)" },
+          to: { transform: "scaleX(1)" },
+        },
         "fade-in-up": {
           "0%": { opacity: "0", transform: "translateY(6px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
@@ -89,6 +94,7 @@ const config: Config = {
         "pill-in": "pill-in 220ms ease-out",
         "count-pulse": "count-pulse 320ms ease-out",
         "fade-in-up": "fade-in-up 360ms ease-out both",
+        "grow-x": "grow-x 600ms cubic-bezier(0.22, 1, 0.36, 1) both",
         "learn-slide-in": "learn-slide-in 0.25s ease-out",
         "learn-rise": "learn-rise 0.35s ease-out both",
         "learn-pop": "learn-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both",

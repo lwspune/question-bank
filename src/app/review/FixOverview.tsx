@@ -3,6 +3,9 @@ import { ArrowRight, CalendarCheck } from "lucide-react";
 import type { FixList, FixChapter } from "@/lib/review/fixList";
 import { drillChapterHref, drillHref } from "@/lib/drill/from";
 import { cn } from "@/lib/utils";
+import { barWidth, segments } from "@/lib/me/charts";
+import SegmentBar from "@/components/me/SegmentBar";
+import FixedSoFar from "./FixedSoFar";
 
 /**
  * The To fix list: the total with one Fix button, then every chapter, most to
@@ -18,6 +21,7 @@ export default function FixOverview({
   subjects = [],
   subject = null,
   allCount,
+  fixed,
 }: {
   list: FixList;
   /** The header's exam focus: the list shows that exam's questions only. */
@@ -29,6 +33,8 @@ export default function FixOverview({
   subject?: string | null;
   /** Everything waiting, all subjects: the All chip's count. */
   allCount?: number;
+  /** Mistakes fixed so far, when the caller has it (the homepage sample); else read from the pulse. */
+  fixed?: number;
 }) {
   const chips =
     subjects.length > 1 ? <SubjectChips subjects={subjects} subject={subject} allCount={allCount ?? list.total} /> : null;
@@ -55,11 +61,15 @@ export default function FixOverview({
   return (
     <div className="space-y-6">
       {chips}
-      <section aria-labelledby="fix-heading" className="hero-soft flex flex-col gap-4 rounded-2xl p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+      <section aria-labelledby="fix-heading" className="hero-soft rounded-2xl p-5 sm:p-6">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="min-w-0">
-          <h2 id="fix-heading" className="text-xl font-semibold tracking-tight sm:text-2xl">
-            {list.total.toLocaleString("en-IN")} {list.total === 1 ? "question" : "questions"} to fix
-          </h2>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <h2 id="fix-heading" className="text-xl font-semibold tracking-tight sm:text-2xl">
+              {list.total.toLocaleString("en-IN")} {list.total === 1 ? "question" : "questions"} to fix
+            </h2>
+            <FixedSoFar value={fixed} />
+          </div>
           <p className="mt-1 text-sm text-muted-foreground">
             {planFirst ? (
               <>
@@ -81,6 +91,10 @@ export default function FixOverview({
           {fixLabel}
           <ArrowRight className="h-4 w-4" aria-hidden />
         </Link>
+        </div>
+        {/* Under the heading and button, full width: beside them, a narrow
+            card (the homepage's preview) squeezed it to a sliver. */}
+        <ReasonBar chapters={list.chapters} />
       </section>
 
       <section aria-labelledby="chapters-heading" className="rounded-2xl border bg-card p-4 sm:p-5">
@@ -89,7 +103,7 @@ export default function FixOverview({
         </h2>
         <ul className="mt-2 divide-y">
           {list.chapters.map((c) => (
-            <ChapterRow key={c.chapterId} chapter={c} />
+            <ChapterRow key={c.chapterId} chapter={c} max={list.chapters[0]?.count ?? 0} />
           ))}
         </ul>
       </section>
@@ -97,11 +111,12 @@ export default function FixOverview({
   );
 }
 
-function ChapterRow({ chapter: c }: { chapter: FixChapter }) {
+function ChapterRow({ chapter: c, max }: { chapter: FixChapter; max: number }) {
   return (
     <li className="flex items-center gap-3 py-3">
       <div className="min-w-0 flex-1">
         <p className="truncate text-sm font-medium">{c.name}</p>
+        <SegmentBar parts={reasonParts(c)} colorOf={REASON_COLOR} width={barWidth(c.count, max)} size="sm" className="mt-1.5 max-w-sm" />
         <p className="mt-0.5 text-xs text-muted-foreground">
           <span className="font-medium tabular-nums text-foreground">{c.count.toLocaleString("en-IN")} to fix</span>
           {c.place && <> · {c.place}</>}
@@ -129,6 +144,53 @@ function ChapterRow({ chapter: c }: { chapter: FixChapter }) {
 }
 
 /** "4 wrong · 1 Review later · 1 V didn't help · 2 in today's plan". */
+/** Why a question waits, as colour (2026-11-10). V keeps its indigo. */
+type ReasonKey = "wrong" | "reviewLater" | "vUnclear";
+const REASON_COLOR: Record<ReasonKey, string> = {
+  wrong: "bg-red-500",
+  reviewLater: "bg-amber-500",
+  vUnclear: "bg-indigo-500",
+};
+const REASON_WORDS: Record<ReasonKey, string> = {
+  wrong: "wrong",
+  reviewLater: "Review later",
+  vUnclear: "not clear after V",
+};
+
+function reasonParts(c: Pick<FixChapter, ReasonKey>) {
+  return segments<ReasonKey>([
+    { key: "wrong", n: c.wrong },
+    { key: "reviewLater", n: c.reviewLater },
+    { key: "vUnclear", n: c.vUnclear },
+  ]);
+}
+
+/** The whole list's reasons: one bar, and the same counts in words under it. */
+function ReasonBar({ chapters }: { chapters: readonly FixChapter[] }) {
+  const sum = { wrong: 0, reviewLater: 0, vUnclear: 0 };
+  for (const c of chapters) {
+    sum.wrong += c.wrong;
+    sum.reviewLater += c.reviewLater;
+    sum.vUnclear += c.vUnclear;
+  }
+  const parts = reasonParts(sum);
+  if (parts.length === 0) return null;
+  return (
+    <div className="mt-4">
+      <SegmentBar parts={parts} colorOf={REASON_COLOR} size="lg" />
+      <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground" aria-label="Why they are waiting">
+        {parts.map((p) => (
+          <li key={p.key} className="inline-flex items-center gap-1.5">
+            <span className={cn("inline-block h-2.5 w-2.5 rounded-sm", REASON_COLOR[p.key])} aria-hidden />
+            <span className="font-medium tabular-nums text-foreground">{p.n.toLocaleString("en-IN")}</span>
+            {REASON_WORDS[p.key]}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export function breakdown(c: Pick<FixChapter, "wrong" | "reviewLater" | "vUnclear" | "inPlan">): string {
   const parts: string[] = [];
   if (c.wrong) parts.push(`${c.wrong} wrong`);

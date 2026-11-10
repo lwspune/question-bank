@@ -60,6 +60,12 @@ describe("the Home sample agrees with the Review sample", () => {
     expect(PULSE_SAMPLE.due).toBe(FIX_SAMPLE.total);
   });
 
+  it("hands Review its fixed count, so the homepage's Review never fetches the pulse", () => {
+    const previews = readFileSync(join(process.cwd(), "src", "components", "home", "HomePreviews.tsx"), "utf8");
+    expect(previews).toMatch(/<FixOverview[^>]*\sfixed=\{/);
+    expect(PULSE_SAMPLE.totals?.fixed).toBeGreaterThan(0);
+  });
+
   it("names the same three weakest chapters, with the same counts", () => {
     const top = FIX_SAMPLE.chapters.slice(0, 3).map((c) => [c.name, c.count]);
     expect((PULSE_SAMPLE.weak ?? []).map((w) => [w.name, w.due])).toEqual(top);

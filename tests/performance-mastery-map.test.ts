@@ -10,6 +10,9 @@ import { describe, it, expect } from "vitest";
 import {
   bandOf,
   buildMasteryMap,
+  masteredCount,
+  masteryTile,
+  masteryTotals,
   sourceLine,
   BAND_ORDER,
   type Band,
@@ -163,5 +166,35 @@ describe("buildMasteryMap", () => {
     const m = buildMasteryMap(lane([]));
     expect(m.tiles).toEqual([]);
     expect(m.subtopics).toBe(0);
+  });
+});
+
+describe("masteryTotals: every band summed across lanes (the mastered tile's denominator)", () => {
+  const a = lane([
+    chapter("Trigonometry", [
+      sub({ subtopic: "Identities", accuracy: 90, judged: 6 }),
+      sub({ subtopic: "Heights", accuracy: 30, judged: 6 }),
+    ]),
+  ]);
+  const b = lane([chapter("Algebra", [sub({ subtopic: "Quadratics", accuracy: 60, judged: 6 }), sub({ subtopic: "Series", accuracy: null, judged: 0 })])]);
+
+  it("adds each lane's map totals, so the tile counts what the map shows", () => {
+    const t = masteryTotals([a, b]);
+    for (const band of BAND_ORDER) {
+      expect(t[band], band).toBe(buildMasteryMap(a).totals[band] + buildMasteryMap(b).totals[band]);
+    }
+    expect(t.mastered + t.mid + t.weak + t.unknown).toBe(4);
+  });
+
+  it("agrees with masteredCount, so the ring and the number cannot differ", () => {
+    expect(masteryTotals([a, b]).mastered).toBe(masteredCount([a, b]));
+  });
+
+  it("gives the tile mastered out of every subtopic", () => {
+    expect(masteryTile([a, b])).toEqual({ mastered: masteryTotals([a, b]).mastered, of: 4 });
+  });
+
+  it("is all zeros with no lanes", () => {
+    expect(masteryTotals([])).toEqual({ weak: 0, mid: 0, mastered: 0, unknown: 0 });
   });
 });

@@ -33,8 +33,10 @@ import { mockCatalogueHref } from "@/lib/exam/examLinks";
 import ProgressSwitch from "@/components/me/ProgressSwitch";
 import OutcomeTiles from "@/components/me/OutcomeTiles";
 import RecentPapers from "@/components/me/RecentPapers";
+import AttemptsTrend from "@/app/mock/attempts/AttemptsTrend";
+import { laneTrendKey, subjectKey, subjectLabel, trendFor } from "@/lib/mocks/attemptHistory";
 import { withPractice } from "@/lib/performance/practice";
-import { masteredCount } from "@/lib/performance/masteryMap";
+import { masteryTile } from "@/lib/performance/masteryMap";
 import { forSite } from "@/lib/sites/siteScope";
 import { getUserAttempts } from "@/lib/mocks/query";
 import { summarizeUserMocks } from "@/lib/mocks/perf";
@@ -93,7 +95,7 @@ export default async function OwnPerformancePage(props: { searchParams: Promise<
   const built = buildPerformance(payload, now);
   // The map's green dots across every exam on this site (www; intl has no
   // /performance), from the same evidence the map draws.
-  const mastered = masteredCount(forSite(withPractice(payload, built, practice, now).lanes, (l) => l.exam, false));
+  const mastery = masteryTile(forSite(withPractice(payload, built, practice, now).lanes, (l) => l.exam, false));
   // The papers list follows the exam focus, as Home's did.
   const focusSlug = header.focus.selected;
   const shownAttempts = focusSlug ? attempts.filter((a) => a.examSlug === focusSlug) : attempts;
@@ -147,6 +149,11 @@ export default async function OwnPerformancePage(props: { searchParams: Promise<
   const projectionLocked = showGate ? <ProjectionGate state={access} pass={pass} /> : undefined;
 
   const sheets = cardSheetRows(ownSheets, { kind: "self" });
+  // The marks line for the subject on screen (2026-11-10): that subject's
+  // paper, its last few finished full papers with the same total.
+  const trendKey = nav.selected ? laneTrendKey(attempts, nav.selected) : null;
+  const trend = trendKey ? trendFor(attempts, trendKey) : null;
+  const trendOf = trendKey ? attempts.find((a) => subjectKey(a) === trendKey) : undefined;
 
   return (
     <>
@@ -154,7 +161,7 @@ export default async function OwnPerformancePage(props: { searchParams: Promise<
       <main className="mx-auto max-w-5xl space-y-8 px-4 py-6 sm:px-6 sm:py-8">
         <MeHeader data={header} active="progress" readOnly={false} />
         <ProgressSwitch active="papers" />
-        <OutcomeTiles mastered={mastered} />
+        <OutcomeTiles mastery={mastery} />
 
         {pf.noPaperFor && focusExam ? (
           <NoPaperFor examName={focusExam.displayName} href={mockCatalogueHref(focusExam.slug)} />
@@ -169,6 +176,15 @@ export default async function OwnPerformancePage(props: { searchParams: Promise<
             projectionNote={projectionNote}
             starter={starter}
             showExamRow={pf.showExamRow}
+            trend={
+              trend && trendOf ? (
+                <AttemptsTrend
+                  label={subjectLabel(trendOf.examSlug, trendOf.examName, trendOf.paperCode)}
+                  trend={trend}
+                  className=""
+                />
+              ) : undefined
+            }
             headerAction={allPapers("bg-white/10 text-white ring-1 ring-white/25 hover:bg-white/20")}
           />
         )}
