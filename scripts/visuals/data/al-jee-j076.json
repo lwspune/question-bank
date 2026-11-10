@@ -1,0 +1,2682 @@
+{
+ "//": "Assembled from agent drafts (algebraSteps).",
+ "visuals": [
+  {
+   "id": "025abe9f-1bef-4f56-8b25-3158faea104f",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mu=\\sqrt{n(n+2)}\\ \\text{B.M.},\\quad n=\\text{unpaired electrons}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "3d^{7}:\\ n=3,\\ \\mu=\\sqrt{15}=3.87",
+       "f": "sqrt(15)",
+       "value": "3.87",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "3d^{8}:\\ n=2,\\ \\mu=\\sqrt{8}=2.83",
+       "f": "sqrt(8)",
+       "value": "2.83",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "3d^{3}:\\ n=3,\\ \\mu=\\sqrt{15}=3.87",
+       "f": "sqrt(15)",
+       "value": "3.87",
+       "dp": 2
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "3d^{6}:\\ n=4,\\ \\mu=\\sqrt{24}=4.90",
+       "f": "sqrt(24)",
+       "value": "4.90",
+       "dp": 2
+      }
+     ],
+     "answer": "sqrt(24)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "d70c35a3",
+    "answer": {
+     "value": 4.898979485566356,
+     "label": "4.90 BM, option D"
+    }
+   }
+  },
+  {
+   "id": "05a77293-72e2-4e77-8777-03b7295f65cc",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mu=\\sqrt{n(n+2)}\\ \\text{BM}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{Sc^{3+}}:\\ 3d^{0},\\ n=0,\\ \\mu=0"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mathrm{V^{2+}}:\\ 3d^{3},\\ n=3,\\ \\mu=\\sqrt{15}\\approx3.9",
+       "f": "sqrt(15)",
+       "value": "3.9",
+       "dp": 1
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\mathrm{Ti^{2+}}:\\ 3d^{2},\\ n=2,\\ \\mu=\\sqrt{8}\\approx2.8",
+       "f": "sqrt(8)",
+       "value": "2.8",
+       "dp": 1
+      }
+     ],
+     "answer": "sqrt(15)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "7b681a25",
+    "answer": {
+     "value": 3.872983346207417,
+     "label": "0, 3.9, 2.8 (option C)"
+    }
+   }
+  },
+  {
+   "id": "09eda852-6e8d-406a-9d36-f8c876b20573",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{CrO}\\ \\text{basic},\\ \\mathrm{Cr_2O_3}\\ \\text{amphoteric}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mathrm{CrO}:\\ \\mathrm{Cr}^{2+},\\ 3d^{4},\\ \\mu=\\sqrt{24}=4.90\\text{ BM}",
+       "f": "sqrt(24)",
+       "value": "4.90",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mathrm{Cr_2O_3}:\\ \\mathrm{Cr}^{3+},\\ 3d^{3},\\ \\mu=\\sqrt{15}=3.87\\text{ BM}",
+       "f": "sqrt(15)",
+       "value": "3.87",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{Sum}=4.90+3.87=8.77\\text{ BM}",
+       "f": "4.90+3.87",
+       "value": "8.77",
+       "dp": 2
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "8.77\\text{ BM}=877\\times10^{-2}\\text{ BM}",
+       "f": "8.77/10^(-2)",
+       "value": "877",
+       "dp": 0
+      }
+     ],
+     "answer": "877"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "ebfaf574",
+    "answer": {
+     "value": 877,
+     "label": "877"
+    }
+   }
+  },
+  {
+   "id": "12032e7e-8a55-4216-a6c8-1209d2057fba",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "[\\mathrm{Ar}]3d^{5}:\\ 18+5"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "18+5=23\\ \\text{electrons in the}\\ +3\\ \\text{ion}",
+       "f": "18+5",
+       "value": "23"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "23+3=26\\ \\text{electrons in the atom},\\ Z=26",
+       "f": "23+3",
+       "value": "26"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "\\mathrm{Mn^{3+}}:[\\mathrm{Ar}]3d^{4},\\ \\ \\mathrm{Co^{3+}}:[\\mathrm{Ar}]3d^{6}"
+      }
+     ],
+     "answer": "26"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "830bb7a1",
+    "answer": {
+     "value": 26,
+     "label": "Z = 26, Fe"
+    }
+   }
+  },
+  {
+   "id": "170ea5e0-b183-4401-a249-9fa51b1b6b12",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Mn^{2+}}:\\ 3d^{5},\\ n=5"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mu=\\sqrt{5(5+2)}=\\sqrt{35}=5.92\\text{ BM}",
+       "f": "sqrt(5*(5+2))",
+       "value": "5.92",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "5.92\\approx6",
+       "f": "sqrt(35)",
+       "value": "6",
+       "note": "nearest integer",
+       "dp": 0
+      }
+     ],
+     "answer": "6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "bebc3141",
+    "answer": {
+     "value": 6,
+     "label": "6"
+    }
+   }
+  },
+  {
+   "id": "1fa8af04-7214-4362-87b7-720903667a56",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{V_2O_3}\\ \\text{is most basic},\\ \\mathrm{V^{3+}}:\\ 3d^{2},\\ n=2"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mu=\\sqrt{n(n+2)}=\\sqrt{8}=2.83\\text{ B.M.}",
+       "f": "sqrt(8)",
+       "value": "2.83",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "2.83\\approx3",
+       "f": "sqrt(8)",
+       "value": "3",
+       "note": "nearest integer",
+       "dp": 0
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "e6394ce6",
+    "answer": {
+     "value": 3,
+     "label": "3"
+    }
+   }
+  },
+  {
+   "id": "276bea1a-d6b2-4906-8c5e-4cd248e170ab",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "E^{\\circ}:\\ \\mathrm{MnO_4^-}\\ 1.51,\\ \\mathrm{Cr_2O_7^{2-}}\\ 1.33,\\ \\mathrm{VO_2^+}\\ 1.00\\ \\text{V}",
+       "note": "VO₂⁺ is the weakest oxidant"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{VO_2^+}:\\ \\mathrm{V}^{5+},\\ 3d^{0},\\ n=0"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mu=\\sqrt{0(0+2)}=0\\text{ BM}",
+       "f": "sqrt(0*(0+2))",
+       "value": "0"
+      }
+     ],
+     "answer": "sqrt(0*(0+2))"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "95569148",
+    "answer": {
+     "value": 0,
+     "label": "0"
+    }
+   }
+  },
+  {
+   "id": "314a2a7b-4eb2-406a-a69c-c56a19e9ac3b",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\mu=3.86:\\ n(n+2)\\approx3.86^{2}\\approx14.9",
+       "f": "3.86^2",
+       "value": "14.9",
+       "dp": 1
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n=3,\\ \\sqrt{15}=3.87",
+       "f": "sqrt(15)",
+       "value": "3.87",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\mathrm{M^{2+}}:\\ d^{3}"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "[\\mathrm{Ar}]3d^{3}4s^{2}\\ \\to\\ \\mathrm{V},\\ Z=23"
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "c79ce00d",
+    "answer": {
+     "value": 3,
+     "label": "n = 3, V (Z = 23), option D"
+    }
+   }
+  },
+  {
+   "id": "35f984c0-119c-46b7-9764-f9d0b104f1ec",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "\\mathrm{CrO_4^{2-}}:\\ x+(-8)=-2,\\ x=+6",
+       "lhs": "x-8",
+       "rhs": "-2",
+       "roots": [
+        "6"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "\\mathrm{Cr_2O_7^{2-}}:\\ 2x+(-14)=-2,\\ 2x=+12,\\ x=+6",
+       "lhs": "2*x-14",
+       "rhs": "-2",
+       "roots": [
+        "6"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "+6-(+6)=0",
+       "f": "6-6",
+       "value": "0"
+      }
+     ],
+     "answer": "6-6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "e9fcbcc4",
+    "answer": {
+     "value": 0,
+     "label": "0"
+    }
+   }
+  },
+  {
+   "id": "3ad523c6-77bd-4808-9456-ad4eaddb2dd7",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "X=7-2=5",
+       "f": "7-2",
+       "value": "5"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{Fe^{3+}}:\\ 3d^{5},\\ Y=5"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "X+Y=5+5=10",
+       "f": "5+5",
+       "value": "10"
+      }
+     ],
+     "answer": "5+5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "7964c13a",
+    "answer": {
+     "value": 10,
+     "label": "10"
+    }
+   }
+  },
+  {
+   "id": "47e702d6-c92c-4286-b054-5667eac7e7e8",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\Delta_aH\\ (\\text{kJ mol}^{-1}):\\ \\mathrm{Sc}\\ 326,\\ \\mathrm{Mn}\\ 281,\\ \\mathrm{Co}\\ 425,\\ \\mathrm{Cu}\\ 339"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{Co}\\ \\text{is highest}"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\mathrm{Co^{2+}}:\\ 3d^{7},\\ n=3"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\mu=\\sqrt{3(3+2)}=\\sqrt{15}=3.87\\text{ B.M.}",
+       "f": "sqrt(3*(3+2))",
+       "value": "3.87",
+       "dp": 2
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "3.87\\approx4",
+       "f": "sqrt(15)",
+       "value": "4",
+       "note": "nearest integer",
+       "dp": 0
+      }
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3",
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "df1b1395",
+    "answer": {
+     "value": 4,
+     "label": "4"
+    }
+   }
+  },
+  {
+   "id": "4850ed2b-2b80-4814-8884-ebc837904055",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\Delta_aH\\ (\\text{kJ mol}^{-1}):\\ \\mathrm{Cr}\\ 397,\\ \\mathrm{Fe}\\ 418,\\ \\mathrm{Co}\\ 425,\\ \\mathrm{Ni}\\ 430"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{lowest:}\\ \\mathrm{Cr}"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\mathrm{Cr}:\\ [\\mathrm{Ar}]3d^{5}4s^{1}"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{valence electrons}=5+1=6",
+       "f": "5+1",
+       "value": "6"
+      }
+     ],
+     "answer": "5+1"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "8ed7475d",
+    "answer": {
+     "value": 6,
+     "label": "6"
+    }
+   }
+  },
+  {
+   "id": "49242c19-1436-4bba-8dce-92ad93c2d3a0",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "A=\\mathrm{K_2MnO_4},\\ B=\\mathrm{KMnO_4},\\ C=\\mathrm{MnO_2}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{Mn^{7+}}:\\ d^{0},\\ \\mu=0"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mathrm{Mn^{4+}}:\\ d^{3},\\ \\mu=\\sqrt{3\\times5}=3.87\\text{ BM}",
+       "f": "sqrt(3*5)",
+       "value": "3.87",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{Sum}=3.87",
+       "f": "0+sqrt(15)",
+       "value": "3.87",
+       "dp": 2
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "3.87\\approx4",
+       "f": "sqrt(15)",
+       "value": "4",
+       "note": "nearest integer",
+       "dp": 0
+      }
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "099de0fe",
+    "answer": {
+     "value": 4,
+     "label": "4"
+    }
+   }
+  },
+  {
+   "id": "4fda2517-1db9-4982-a63b-2d66c6c62dd6",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mu=\\sqrt{n(n+2)}\\ \\text{B.M.}"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "n(n+2)=24,\\ n=4",
+       "lhs": "x*(x+2)",
+       "rhs": "24",
+       "roots": [
+        "4"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\mathrm{Cr^{2+}}\\ d^{4}\\ (4),\\ \\ \\mathrm{Fe^{2+}}\\ d^{6}\\ \\text{high spin}\\ (4)"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\mathrm{Fe^{3+}}:\\ d^{5}\\ (5),\\ 5.92\\text{ B.M.}",
+       "f": "sqrt(35)",
+       "value": "5.92",
+       "dp": 2
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "\\mathrm{Co^{2+}}:\\ d^{7}\\ (3),\\ 3.87\\text{ B.M.}",
+       "f": "sqrt(15)",
+       "value": "3.87",
+       "dp": 2
+      },
+      {
+       "step": "s6",
+       "kind": "note",
+       "tex": "\\mathrm{Mn^{3+}}:\\ d^{4}\\ (4)"
+      }
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4",
+       "s5",
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "ae18e936",
+    "answer": {
+     "value": 4,
+     "label": "A, B and E (option D)"
+    }
+   }
+  },
+  {
+   "id": "52199900-285f-48e7-949d-34f5373b4bbd",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{MnF_4}:\\ +4,\\quad \\mathrm{Mn_2O_7}:\\ +7"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "|x|=|4-7|=3",
+       "f": "abs(4-7)",
+       "value": "3"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\mathrm{Sc^{3+}}:\\ 3d^{0},\\ 0\\ \\text{unpaired}"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "\\mathrm{Zn^{2+}}:\\ 3d^{10},\\ 0\\ \\text{unpaired}"
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "\\mathrm{V^{2+}}:\\ 3d^{3},\\ 3\\ \\text{unpaired}"
+      },
+      {
+       "step": "s6",
+       "kind": "note",
+       "tex": "\\mathrm{Fe^{2+}}:\\ 3d^{6},\\ 4\\ \\text{unpaired}"
+      },
+      {
+       "step": "s7",
+       "kind": "note",
+       "tex": "\\mathrm{Co^{2+}}:\\ 3d^{7},\\ 3\\ \\text{unpaired}"
+      }
+     ],
+     "answer": "abs(4-7)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s5"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s6"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s7"
+      ]
+     }
+    ],
+    "fingerprint": "d754e422",
+    "answer": {
+     "value": 3,
+     "label": "(C) and (E), option C"
+    }
+   }
+  },
+  {
+   "id": "54370c74-7a7d-42b5-be6b-939205873b4d",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{MnF_4}:\\ \\mathrm{Mn^{4+}}=[\\mathrm{Ar}]3d^{3},\\ n=3"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mu=\\sqrt{3\\times5}=\\sqrt{15}=3.87\\text{ B.M.}",
+       "f": "sqrt(3*5)",
+       "value": "3.87",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "3.87\\approx4",
+       "f": "sqrt(15)",
+       "value": "4",
+       "note": "nearest integer",
+       "dp": 0
+      }
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "a7844275",
+    "answer": {
+     "value": 4,
+     "label": "4"
+    }
+   }
+  },
+  {
+   "id": "5660a699-c90f-4ac4-9649-57a01dbd3bef",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Cr_2O_7^{2-}}+2\\mathrm{OH^-}\\to2\\mathrm{CrO_4^{2-}}+\\mathrm{H_2O}"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "y+4(-2)=-2,\\ y=+6",
+       "lhs": "x+4*(-2)",
+       "rhs": "-2",
+       "roots": [
+        "6"
+       ]
+      }
+     ],
+     "answer": "6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "8de0c333",
+    "answer": {
+     "value": 6,
+     "label": "6"
+    }
+   }
+  },
+  {
+   "id": "5dd5fe91-6b62-4e4d-ab17-09d0f252a16d",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{V_2O_5}\\ \\text{amphoteric}\\to\\mathrm{VO_4^{3-}}"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "x+4(-2)=-3,\\ x=+5",
+       "lhs": "x+4*(-2)",
+       "rhs": "-3",
+       "roots": [
+        "5"
+       ]
+      }
+     ],
+     "answer": "5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "87d5f8d1",
+    "answer": {
+     "value": 5,
+     "label": "+5, option C"
+    }
+   }
+  },
+  {
+   "id": "6330e125-36c3-4322-998b-3288395faef5",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "2(+1)+2x+7(-2)=0,\\ x=+6",
+       "lhs": "2*1+2*x+7*(-2)",
+       "rhs": "0",
+       "roots": [
+        "6"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{Cr_2O_7^{2-}}+14\\mathrm{H^+}+6e^-\\to2\\mathrm{Cr^{3+}}+7\\mathrm{H_2O}",
+       "note": "chromium ends at +3"
+      }
+     ],
+     "answer": "6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "8b988bf2",
+    "answer": {
+     "value": 6,
+     "label": "+6 to +3, option D"
+    }
+   }
+  },
+  {
+   "id": "696a2203-5e5a-4d4e-8e4b-84ce56e6d726",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Co^{3+}}\\ \\text{cannot liberate}\\ \\mathrm{H_2}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{Co^{3+}}:\\ 3d^{6},\\ n=4"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mu=\\sqrt{4(4+2)}=\\sqrt{24}=4.90\\text{ B.M.}",
+       "f": "sqrt(4*(4+2))",
+       "value": "4.90",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "4.90\\approx5",
+       "f": "sqrt(24)",
+       "value": "5",
+       "note": "nearest integer",
+       "dp": 0
+      }
+     ],
+     "answer": "5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "36214298",
+    "answer": {
+     "value": 5,
+     "label": "5"
+    }
+   }
+  },
+  {
+   "id": "75cc6953-dfe3-4fc0-b333-cb57c75e8e85",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{CrO_2Cl_2}:\\ \\mathrm{O}=-2,\\ \\mathrm{Cl}=-1"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "x+2(-2)+2(-1)=0\\Rightarrow x=+6",
+       "lhs": "x+2*(-2)+2*(-1)",
+       "rhs": "0",
+       "roots": [
+        "6"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\mathrm{Cr^{6+}}:\\ [\\mathrm{Ar}]3d^{0}"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "\\mathrm{Ti^{3+}}\\ 3d^1,\\ \\mathrm{Fe^{3+}}\\ 3d^5,\\ \\mathrm{V^{4+}}\\ 3d^1,\\ \\mathrm{Mn^{7+}}\\ 3d^0"
+      }
+     ],
+     "answer": "6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "4f327127",
+    "answer": {
+     "value": 6,
+     "label": "Mn(VII), d⁰, option D"
+    }
+   }
+  },
+  {
+   "id": "75da6dc8-999c-406f-b68f-5b8d30ef58de",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "A=\\mathrm{SO_4^{2-}}"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "y+4(-2)=-2,\\ y=+6",
+       "lhs": "x+4*(-2)",
+       "rhs": "-2",
+       "roots": [
+        "6"
+       ]
+      }
+     ],
+     "answer": "6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "7b051b2b",
+    "answer": {
+     "value": 6,
+     "label": "6"
+    }
+   }
+  },
+  {
+   "id": "792977e3-9b73-4a8d-9bce-940b308f6d99",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Cr}:[\\mathrm{Ar}]3d^{5}4s^{1},\\ \\ \\mathrm{Cr^{+}}:\\ 3d^{5}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{2nd IE (kJ mol}^{-1}):\\ \\mathrm{Cr}\\ 1592>\\mathrm{Fe}\\ 1561>\\mathrm{Mn}\\ 1509>\\mathrm{V}\\ 1414"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mu=\\sqrt{n(n+2)}=\\sqrt{35}=5.92\\text{ BM}",
+       "f": "sqrt(5*(5+2))",
+       "value": "5.92",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "5.92\\approx6",
+       "f": "sqrt(35)",
+       "value": "6",
+       "note": "nearest integer",
+       "dp": 0
+      }
+     ],
+     "answer": "6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "93494ad4",
+    "answer": {
+     "value": 6,
+     "label": "6"
+    }
+   }
+  },
+  {
+   "id": "799792c3-a262-41e6-9d80-aa2054d6e0ee",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\mathrm{V^{3+}}:\\ d^{2},\\ n=2,\\ \\mu=\\sqrt{2\\times4}=2.83",
+       "f": "sqrt(2*4)",
+       "value": "2.83",
+       "dp": 2
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mathrm{Cr^{3+}}:\\ d^{3},\\ n=3,\\ \\mu=\\sqrt{3\\times5}=3.87",
+       "f": "sqrt(3*5)",
+       "value": "3.87",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mathrm{Fe^{2+}}:\\ d^{6},\\ n=4,\\ \\mu=\\sqrt{4\\times6}=4.90",
+       "f": "sqrt(4*6)",
+       "value": "4.90",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\mathrm{Ni^{3+}}:\\ d^{7},\\ n=3,\\ \\mu=3.87",
+       "f": "sqrt(3*5)",
+       "value": "3.87",
+       "dp": 2
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "\\mathrm{Cr^{3+}}\\ \\text{and}\\ \\mathrm{Ni^{3+}}\\ \\text{match}\\Rightarrow2"
+      }
+     ],
+     "answer": "2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "23dbcc5d",
+    "answer": {
+     "value": 2,
+     "label": "2"
+    }
+   }
+  },
+  {
+   "id": "79db597f-ee97-4321-83d5-4554416e8640",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "[\\mathrm{Fe(H_2O)_5(NO)}]\\mathrm{SO_4},\\ \\text{cation charge}=+2"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "x+0+(+1)=+2,\\ x=+1",
+       "lhs": "x+0+1",
+       "rhs": "2",
+       "roots": [
+        "1"
+       ]
+      }
+     ],
+     "answer": "1"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "298bdd64",
+    "answer": {
+     "value": 1,
+     "label": "+1"
+    }
+   }
+  },
+  {
+   "id": "7d34bbcb-22da-4f68-a02c-85ebe0dc552a",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "A=\\mathrm{Na_2CrO_4},\\ B=\\mathrm{Fe_2O_3}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{Cr^{6+}}:\\ 3d^{0},\\ n=0,\\ \\mu=0\\text{ BM}"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mathrm{Fe^{3+}}:\\ n=5,\\ \\mu=\\sqrt{5(5+2)}=\\sqrt{35}=5.92\\text{ BM}",
+       "f": "sqrt(5*(5+2))",
+       "value": "5.92",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{Sum}=0+5.92=5.92\\approx6",
+       "f": "0+sqrt(35)",
+       "value": "6",
+       "note": "nearest integer",
+       "dp": 0
+      }
+     ],
+     "answer": "6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "bfdefc15",
+    "answer": {
+     "value": 6,
+     "label": "6"
+    }
+   }
+  },
+  {
+   "id": "8a9b5ff3-82c4-4ebb-8d9a-b7bdc74e2108",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{KMnO_4}:\\ \\mathrm{Mn^{7+}},\\ 3d^{0},\\ \\mu=0\\text{ BM}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mathrm{Mn^{2+}}:\\ 3d^{5},\\ \\mu=\\sqrt{5(5+2)}=\\sqrt{35}=5.92\\text{ BM}",
+       "f": "sqrt(5*(5+2))",
+       "value": "5.92",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "5.92-0=5.92\\approx6",
+       "f": "sqrt(35)-0",
+       "value": "6",
+       "note": "nearest integer",
+       "dp": 0
+      }
+     ],
+     "answer": "6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "34fa20be",
+    "answer": {
+     "value": 6,
+     "label": "6"
+    }
+   }
+  },
+  {
+   "id": "8ec87ea2-0013-4c28-bfec-bfc1d1e0a421",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{CrO_5}:\\ 4\\ \\text{peroxo O}\\ (-1),\\ 1\\ \\text{oxide O}\\ (-2)"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{total}=4(-1)+(-2)=-6",
+       "f": "4*(-1)+(-2)",
+       "value": "-6"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{Cr}=+6",
+       "f": "-(4*(-1)+(-2))",
+       "value": "6"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "x+5(-2)=0\\Rightarrow x=+10\\ \\text{(wrong)}",
+       "f": "-5*(-2)",
+       "value": "10",
+       "note": "wrong: ignores the peroxo links"
+      }
+     ],
+     "answer": "-(4*(-1)+(-2))"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "f86677e6",
+    "answer": {
+     "value": 6,
+     "label": "+6, option A"
+    }
+   }
+  },
+  {
+   "id": "90f27cd4-f686-41e6-9af6-33afbc77920b",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{CrO_2Cl_2}:\\ \\mathrm{O}=-2,\\ \\mathrm{Cl}=-1"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "x+2(-2)+2(-1)=0,\\ x=+6",
+       "lhs": "x+2*(-2)+2*(-1)",
+       "rhs": "0",
+       "roots": [
+        "6"
+       ]
+      }
+     ],
+     "answer": "6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "5eb0f2ba",
+    "answer": {
+     "value": 6,
+     "label": "+6"
+    }
+   }
+  },
+  {
+   "id": "a279d38c-8708-46f0-8e99-43524f004a2b",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{count unpaired}\\ 4f\\ \\text{electrons}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "(\\mathrm{A})\\ \\mathrm{Ce^{4+}}:\\ [\\mathrm{Xe}]4f^{0},\\ \\mu=0"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "(\\mathrm{B})\\ \\mathrm{Gd^{3+}}:\\ 4f^{7},\\ \\mu=\\sqrt{7\\times9}=\\sqrt{63}=7.94\\text{ BM}",
+       "f": "sqrt(7*9)",
+       "value": "7.94",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "(\\mathrm{C})\\ \\mathrm{Eu^{3+}}:\\ 4f^{6},\\ \\mu=\\sqrt{6\\times8}=\\sqrt{48}=6.93\\text{ BM}",
+       "f": "sqrt(6*8)",
+       "value": "6.93",
+       "dp": 2
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "\\mathrm{A}<\\mathrm{C}<\\mathrm{B}"
+      }
+     ],
+     "answer": "sqrt(7*9)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "78c97b7c",
+    "answer": {
+     "value": 7.937253933193772,
+     "label": "A < C < B, option D"
+    }
+   }
+  },
+  {
+   "id": "a73a3cc2-dcf8-4986-a89e-d77aa08eeec9",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Cr^{3+}/Cr^{2+}}\\ \\text{has}\\ E^{\\circ}=-0.41\\text{ V}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{Cr^{3+}}:\\ 3d^{3},\\ n=3"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mu=\\sqrt{3(3+2)}=\\sqrt{15}=3.87\\text{ B.M.}",
+       "f": "sqrt(3*(3+2))",
+       "value": "3.87",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "3.87\\approx4",
+       "f": "sqrt(15)",
+       "value": "4",
+       "note": "nearest integer",
+       "dp": 0
+      }
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "b0b9f369",
+    "answer": {
+     "value": 4,
+     "label": "4"
+    }
+   }
+  },
+  {
+   "id": "a9c9dee7-266b-4cf6-a13e-0a31b11fced5",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Mn(VII)}\\ \\text{in}\\ \\mathrm{MnO_4^-},\\ \\mathrm{Mn(IV)}\\ \\text{in}\\ \\mathrm{MnO_2}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "B=\\mathrm{MnO_2}:\\ \\mathrm{Mn^{4+}}=3d^{3},\\ n=3"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mu=\\sqrt{3\\times5}=\\sqrt{15}=3.87\\text{ BM}",
+       "f": "sqrt(3*5)",
+       "value": "3.87",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "3.87\\approx4",
+       "f": "sqrt(15)",
+       "value": "4",
+       "note": "nearest integer",
+       "dp": 0
+      }
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "b2107070",
+    "answer": {
+     "value": 4,
+     "label": "4"
+    }
+   }
+  },
+  {
+   "id": "ab6f0355-3e57-44c9-9e5f-d3f7ab391432",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{MnO_4^-}\\ (+7)\\ \\text{is the higher state}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{Mn(VII)}:\\ d^{0},\\ n=0"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mu=\\sqrt{n(n+2)}=0\\text{ B.M.}",
+       "f": "sqrt(0*(0+2))",
+       "value": "0"
+      }
+     ],
+     "answer": "sqrt(0*(0+2))"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "49008b79",
+    "answer": {
+     "value": 0,
+     "label": "0"
+    }
+   }
+  },
+  {
+   "id": "aba5c7ac-4658-4739-b6d5-1463179c3b3e",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{FeSO_4\\cdot(NH_4)_2SO_4\\cdot6H_2O}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "2\\ \\mathrm{KMnO_4}\\ \\text{need}\\ 2\\times5=10\\ \\mathrm{Fe^{2+}}",
+       "f": "2*5",
+       "value": "10"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\text{redox reaction gives}\\ 8\\ \\mathrm{H_2O}"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{hexahydrate}:\\ 10\\times6=60\\ \\mathrm{H_2O}",
+       "f": "10*6",
+       "value": "60"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "8+60=68",
+       "f": "8+60",
+       "value": "68"
+      }
+     ],
+     "answer": "8+60"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "a435e35d",
+    "answer": {
+     "value": 68,
+     "label": "68"
+    }
+   }
+  },
+  {
+   "id": "b18307d3-54f2-4f2e-b3dc-175c1bdea4eb",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mu=\\sqrt{n(n+2)}\\ \\text{B.M.}"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "n(n+2)=15,\\ n=3",
+       "lhs": "x*(x+2)",
+       "rhs": "15",
+       "roots": [
+        "3"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\mathrm{Cr^{2+}}\\ d^4\\ (4),\\ \\mathrm{Ti^{2+}}\\ d^2\\ (2),\\ \\mathrm{V^{2+}}\\ d^3\\ (3),\\ \\mathrm{Mn^{2+}}\\ d^5\\ (5)"
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "0d22d6d9",
+    "answer": {
+     "value": 3,
+     "label": "n = 3, V²⁺ (option C)"
+    }
+   }
+  },
+  {
+   "id": "b7e7e11e-addf-4632-aa25-571bb5bf9087",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Mn_2O_3}\\ (\\mathrm{Mn^{3+}})\\ \\text{is the strongest oxidant}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{Mn^{3+}}:\\ 3d^{4},\\ n=4"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mu=\\sqrt{4\\times6}=\\sqrt{24}=4.9\\text{ B.M.}",
+       "f": "sqrt(4*6)",
+       "value": "4.9",
+       "dp": 1
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "4.9\\approx5",
+       "f": "sqrt(24)",
+       "value": "5",
+       "note": "nearest integer",
+       "dp": 0
+      }
+     ],
+     "answer": "5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "2c6204f4",
+    "answer": {
+     "value": 5,
+     "label": "5"
+    }
+   }
+  },
+  {
+   "id": "bf5720af-3297-4b5e-aded-33d82467f779",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{MnO_4^-}+8\\mathrm{H^+}+5e^-\\to\\mathrm{Mn^{2+}}+4\\mathrm{H_2O}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "+7\\to+2:\\ 7-2=5",
+       "f": "7-2",
+       "value": "5"
+      }
+     ],
+     "answer": "7-2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "1c9b5329",
+    "answer": {
+     "value": 5,
+     "label": "5"
+    }
+   }
+  },
+  {
+   "id": "c903b708-05e8-46cb-adef-298d2c51cc27",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Mn^{2+}}:\\ [\\mathrm{Ar}]3d^{5},\\ n=5"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mu=\\sqrt{5(5+2)}=\\sqrt{35}=5.92\\text{ BM}",
+       "f": "sqrt(5*(5+2))",
+       "value": "5.92",
+       "dp": 2
+      }
+     ],
+     "answer": "sqrt(5*(5+2))"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "5423a628",
+    "answer": {
+     "value": 5.916079783099616,
+     "label": "5.92 BM, option A"
+    }
+   }
+  },
+  {
+   "id": "ca1e1692-b378-47af-b306-9db4857326b6",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "C=\\mathrm{CrO_5}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "X=2\\ \\mathrm{O_2^{2-}}\\ \\text{units}"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "Y=5\\ \\text{oxygen atoms}"
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "Z+2(-2)+(-2)=0,\\ Z=+6",
+       "lhs": "x+2*(-2)+(-2)",
+       "rhs": "0",
+       "roots": [
+        "6"
+       ]
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "X+Y+Z=2+5+6=13",
+       "f": "2+5+6",
+       "value": "13"
+      }
+     ],
+     "answer": "2+5+6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "e94ce42a",
+    "answer": {
+     "value": 13,
+     "label": "13"
+    }
+   }
+  },
+  {
+   "id": "cc64818e-bfc2-414e-90f1-e376ceefc9d6",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{MnO_4^-}+2\\mathrm{H_2O}+3e^-\\to\\mathrm{MnO_2}+4\\mathrm{OH^-}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "+7\\to+4:\\ 7-4=3",
+       "f": "7-4",
+       "value": "3"
+      }
+     ],
+     "answer": "7-4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "de72cdc4",
+    "answer": {
+     "value": 3,
+     "label": "3"
+    }
+   }
+  },
+  {
+   "id": "db138781-f4bc-4bfb-b98b-2459b5ff31b4",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "3\\mathrm{MnO_4^{2-}}+4\\mathrm{H^+}\\to2\\mathrm{MnO_4^-}+\\mathrm{MnO_2}+2\\mathrm{H_2O}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "+7\\ \\text{and}\\ +4:\\ 7-4=3",
+       "f": "7-4",
+       "value": "3"
+      }
+     ],
+     "answer": "7-4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "b5f835ce",
+    "answer": {
+     "value": 3,
+     "label": "3"
+    }
+   }
+  },
+  {
+   "id": "dcf14537-938f-4aa9-b123-2cbbce694dff",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Nb}\\ (Z=41):\\ [\\mathrm{Kr}]4d^{4}5s^{1},\\ x=4"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{Ru}\\ (Z=44):\\ [\\mathrm{Kr}]4d^{7}5s^{1},\\ y=7"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "x+y=4+7=11",
+       "f": "4+7",
+       "value": "11"
+      }
+     ],
+     "answer": "4+7"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "7f8b0083",
+    "answer": {
+     "value": 11,
+     "label": "11"
+    }
+   }
+  },
+  {
+   "id": "f3289d44-f631-44e2-bdad-4263a69b127a",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Cr}\\ \\text{has the smallest radius};\\ \\mathrm{CrO_4^{2-}}:\\ \\mathrm{Cr}^{6+},\\ 3d^{0}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mu=\\sqrt{n(n+2)}=0\\text{ BM}",
+       "f": "sqrt(0*(0+2))",
+       "value": "0"
+      }
+     ],
+     "answer": "sqrt(0*(0+2))"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "b22c3f88",
+    "answer": {
+     "value": 0,
+     "label": "0"
+    }
+   }
+  },
+  {
+   "id": "f62682e4-d2c5-416c-9647-06b8c7234f16",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{CrO_2Cl_2}:\\ \\mathrm{O}=-2,\\ \\mathrm{Cl}=-1"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "x+2(-2)+2(-1)=0,\\ x=+6",
+       "lhs": "x+2*(-2)+2*(-1)",
+       "rhs": "0",
+       "roots": [
+        "6"
+       ]
+      }
+     ],
+     "answer": "6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "9202e091",
+    "answer": {
+     "value": 6,
+     "label": "+6, option B"
+    }
+   }
+  }
+ ],
+ "decided": []
+}
