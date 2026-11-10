@@ -1,0 +1,1863 @@
+{
+ "//": "Assembled from agent drafts (truthTable).",
+ "visuals": [
+  {
+   "id": "002704cf-19e1-415f-be1c-57f430396af3",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "p | ~q"
+      },
+      {
+       "f": "~p | q"
+      }
+     ],
+     "ask": {
+      "kind": "classify",
+      "f": "~((p | ~q) | (~p | q))",
+      "expect": "contradiction"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "16d96a96",
+    "answer": {
+     "value": 1,
+     "label": "Y = 0 always"
+    }
+   }
+  },
+  {
+   "id": "09d3d1b5-11b6-45c1-889f-15aefd1bf9f6",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~p"
+      },
+      {
+       "f": "~q"
+      },
+      {
+       "f": "~(~p & ~q)"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~(~(~p & ~q))",
+      "b": "~(p | q)"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "bf861ee1",
+    "answer": {
+     "value": 1,
+     "label": "NOR gate"
+    }
+   }
+  },
+  {
+   "id": "0a9997e8-f308-4e15-80b4-84de668a85d1",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~p"
+      },
+      {
+       "f": "~q"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~(~p | ~q)",
+      "b": "p & q"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "1205e6d6",
+    "answer": {
+     "value": 1,
+     "label": "AND gate"
+    }
+   }
+  },
+  {
+   "id": "10bc0de0-2581-41d3-8ed6-10d7b3a6e47a",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~p"
+      },
+      {
+       "f": "p & q"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~p | (p & q)",
+      "b": "~p | q"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "532ac1f0",
+    "answer": {
+     "value": 1,
+     "label": "Y = ∼A ∨ B"
+    }
+   }
+  },
+  {
+   "id": "14237334-0378-4e57-8516-947e9c6fd30d",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "p | q"
+      },
+      {
+       "f": "p & q"
+      },
+      {
+       "f": "~((p | q) & (p & q))"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~(~((p | q) & (p & q)))",
+      "b": "p & q"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "08176449",
+    "answer": {
+     "value": 1,
+     "label": "AND gate"
+    }
+   }
+  },
+  {
+   "id": "15d2c3f7-755f-4154-9b08-d9bdff0c7535",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "p & q"
+      },
+      {
+       "f": "p | q"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~((p & q) & (p | q))",
+      "b": "~(p & q)"
+     },
+     "letters": {
+      "p": "input A",
+      "q": "input B"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "3e5215ef",
+    "answer": {
+     "value": 1,
+     "label": "Y = ∼(AB)"
+    }
+   }
+  },
+  {
+   "id": "1a614e7c-b31c-4586-b2da-06ff9a20a8ba",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~(p & q)"
+      },
+      {
+       "f": "~(p | q)"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~(~(p & q) & ~(p | q))",
+      "b": "p | q"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "5be4aa61",
+    "answer": {
+     "value": 1,
+     "label": "OR gate"
+    }
+   }
+  },
+  {
+   "id": "1e7d713a-d61f-4aa8-a70b-65574bc9599b",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~p"
+      },
+      {
+       "f": "~q"
+      },
+      {
+       "f": "p & ~q"
+      },
+      {
+       "f": "~p & q"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "(p & ~q) | (~p & q)",
+      "b": "~(p <-> q)"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "12a4a282",
+    "answer": {
+     "value": 1,
+     "label": "XOR gate"
+    }
+   }
+  },
+  {
+   "id": "2998656a-1160-4d2f-9be6-67f03b49af40",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~q"
+      },
+      {
+       "f": "p | ~q"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~(p | ~q)",
+      "b": "~p & q"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "d9175f65",
+    "answer": {
+     "value": 1,
+     "label": "∼A · B"
+    }
+   }
+  },
+  {
+   "id": "29e1da3e-9364-40de-9f6e-22d3367286ce",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "p & ~q"
+      },
+      {
+       "f": "p & q"
+      },
+      {
+       "f": "~(p & p)"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~((p & ~q) | (p & q))",
+      "b": "~(p & p)"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "ab29f76e",
+    "answer": {
+     "value": 1,
+     "label": "Y = ∼A"
+    }
+   }
+  },
+  {
+   "id": "3d5ab744-ee91-48d9-9466-fb83dd8c846e",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~(p & q)",
+       "label": "N1 = ∼(AB)"
+      },
+      {
+       "f": "~(p & ~(p & q))",
+       "label": "N2"
+      },
+      {
+       "f": "~(q & ~(p & q))",
+       "label": "N3"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~(~(p & ~(p & q)) & ~(q & ~(p & q)))",
+      "b": "~(p <-> q)"
+     },
+     "letters": {
+      "p": "input A",
+      "q": "input B"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "1076cd35",
+    "answer": {
+     "value": 1,
+     "label": "XOR gate"
+    }
+   }
+  },
+  {
+   "id": "3fcac2f2-30fe-4648-97b1-7ff027606eb5",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~p"
+      },
+      {
+       "f": "~q"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~(~p | ~q)",
+      "b": "p & q"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "2a738c78",
+    "answer": {
+     "value": 1,
+     "label": "AND gate"
+    }
+   }
+  },
+  {
+   "id": "425c91c7-bc18-4d36-9b4a-ee30d1563d47",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~p"
+      },
+      {
+       "f": "~q"
+      },
+      {
+       "f": "~(~p & ~q)"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~(~p & ~q)",
+      "b": "p | q"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "3e3d9de3",
+    "answer": {
+     "value": 1,
+     "label": "OR gate"
+    }
+   }
+  },
+  {
+   "id": "44b38632-f7a6-416d-bcd1-93dbde47c40a",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "p | q"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "p & (p | q)",
+      "b": "p"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "3380cc15",
+    "answer": {
+     "value": 1,
+     "label": "C = A"
+    }
+   }
+  },
+  {
+   "id": "45eb32d5-5789-4b5c-9311-97c19963cf40",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "p | q"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "p & (p | q)",
+      "b": "p"
+     },
+     "letters": {
+      "p": "input A",
+      "q": "input B"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "5dc6e51e",
+    "answer": {
+     "value": 1,
+     "label": "Y = A"
+    }
+   }
+  },
+  {
+   "id": "465f1c37-2849-4be4-8ce9-6b23bac04602",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "p & q"
+      },
+      {
+       "f": "~q"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "(p & q) | ~q",
+      "b": "p | ~q"
+     },
+     "letters": {
+      "p": "input A",
+      "q": "input B"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "a897fbac",
+    "answer": {
+     "value": 1,
+     "label": "Y = 1, 0, 1, 1"
+    }
+   }
+  },
+  {
+   "id": "46fd475e-b41a-4d2b-a923-f676ca0263a0",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~p"
+      },
+      {
+       "f": "~q"
+      },
+      {
+       "f": "~(~p | ~q)"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~(~(~p | ~q) | ~(~p | ~q))",
+      "b": "~(p & q)"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "6303f156",
+    "answer": {
+     "value": 1,
+     "label": "NAND gate"
+    }
+   }
+  },
+  {
+   "id": "4c57e2ad-f9e4-47f4-8bdb-b6638a529426",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "p & q"
+      },
+      {
+       "f": "~p | ~q"
+      }
+     ],
+     "ask": {
+      "kind": "evaluate",
+      "at": {
+       "p": true,
+       "q": true
+      },
+      "f": [
+       "~(p & q) & (~p | ~q)",
+       "~((p & q) | (~p | ~q))"
+      ],
+      "expect": [
+       false,
+       false
+      ]
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "a5d5dcb9",
+    "answer": {
+     "value": 1,
+     "label": "P = 0, Q = 0"
+    }
+   }
+  },
+  {
+   "id": "4d05d865-5eed-430b-a8d8-8c296390c5b6",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "p & q"
+      },
+      {
+       "f": "~(p & q)"
+      },
+      {
+       "f": "p | q"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~(p & q) & (p | q)",
+      "b": "~(p <-> q)"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "97bfe695",
+    "answer": {
+     "value": 1,
+     "label": "XOR gate"
+    }
+   }
+  },
+  {
+   "id": "510769f9-0026-42bc-9c5d-8e8dae166e47",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~p"
+      },
+      {
+       "f": "~q"
+      },
+      {
+       "f": "p & ~q"
+      },
+      {
+       "f": "~p & q"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "(p & ~q) | (~p & q)",
+      "b": "~(p <-> q)"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "4c1c1c99",
+    "answer": {
+     "value": 1,
+     "label": "XOR gate"
+    }
+   }
+  },
+  {
+   "id": "614e68b0-4a6e-4dc0-9ad8-d01d0eb2f543",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~p"
+      },
+      {
+       "f": "~(q & r)"
+      }
+     ],
+     "ask": {
+      "kind": "evaluate",
+      "at": {
+       "p": true,
+       "q": false,
+       "r": false,
+       "s": false
+      },
+      "f": [
+       "~(~p | ~(q & r))",
+       "~s"
+      ],
+      "expect": [
+       false,
+       true
+      ]
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input",
+      "r": "the third input",
+      "s": "the fourth input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "84e7c909",
+    "answer": {
+     "value": 1,
+     "label": "P = 0, Q = 1: bulb on"
+    }
+   }
+  },
+  {
+   "id": "621bb443-66ae-4fd7-a8d6-a8511103d28f",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~(p & q)"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "(p & p) & ~(p & q)",
+      "b": "p & ~q"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "0e36fb89",
+    "answer": {
+     "value": 1,
+     "label": "Y = A · ∼B"
+    }
+   }
+  },
+  {
+   "id": "644b2fc8-0417-4340-beb7-a599760c601b",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "p | q"
+      },
+      {
+       "f": "p & (p | q) & r"
+      }
+     ],
+     "ask": {
+      "kind": "evaluate",
+      "at": {
+       "p": true,
+       "q": false,
+       "r": true
+      },
+      "f": [
+       "p | q",
+       "p & (p | q) & r"
+      ],
+      "expect": [
+       true,
+       true
+      ]
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input",
+      "r": "the third input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "060aca84",
+    "answer": {
+     "value": 1,
+     "label": "both LEDs glow"
+    }
+   }
+  },
+  {
+   "id": "73b75a01-1da8-4c1d-9127-e58991ca16aa",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "p | q"
+      },
+      {
+       "f": "p & (p | q)"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~(p & (p | q))",
+      "b": "~p"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "4715186a",
+    "answer": {
+     "value": 1,
+     "label": "z = ∼n"
+    }
+   }
+  },
+  {
+   "id": "793fb1df-470c-43cc-9964-52f3d8112966",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "p | ~q"
+      },
+      {
+       "f": "~p & q"
+      }
+     ],
+     "ask": {
+      "kind": "classify",
+      "f": "(p | ~q) & (~p & q)",
+      "expect": "contradiction"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "6f05dd23",
+    "answer": {
+     "value": 1,
+     "label": "Y = 0 always"
+    }
+   }
+  },
+  {
+   "id": "7e1415e0-f1d6-4a06-a1f1-935bc1670d83",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "p & q"
+      },
+      {
+       "f": "~p | q"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~((p & q) & (~p | q))",
+      "b": "~(p & q)"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "df7c4b54",
+    "answer": {
+     "value": 1,
+     "label": "Y = 0 for A = B = 1"
+    }
+   }
+  },
+  {
+   "id": "7f821ff4-96a9-4fa5-8710-8d3eff81cf18",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "p & q"
+      },
+      {
+       "f": "r | s"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~(~(p & q) & (r | s))",
+      "b": "(p & q) | ~(r | s)"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input",
+      "r": "the third input",
+      "s": "the fourth input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "415af917",
+    "answer": {
+     "value": 1,
+     "label": "Y = AB + ∼(C+D)"
+    }
+   }
+  },
+  {
+   "id": "80344c63-9646-4c2d-96d8-8fbb8774a5b0",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "p & ~q"
+      },
+      {
+       "f": "~p & q"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~((p & ~q) | (~p & q))",
+      "b": "p <-> q"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "198e63aa",
+    "answer": {
+     "value": 1,
+     "label": "Y = 1 when A = B"
+    }
+   }
+  },
+  {
+   "id": "967f2bf1-dfdc-4399-a70a-28cb449603f9",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~p"
+      },
+      {
+       "f": "~q"
+      },
+      {
+       "f": "~(~p | ~q)"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~(~(~p | ~q) | ~(~p | ~q))",
+      "b": "~(p & q)"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "e20fe0ec",
+    "answer": {
+     "value": 1,
+     "label": "NAND gate"
+    }
+   }
+  },
+  {
+   "id": "9eb2318d-6308-4c2d-84ee-b8609d70a3c8",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~p"
+      },
+      {
+       "f": "~q"
+      },
+      {
+       "f": "~(~p & ~q)"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~(~(~p & ~q) & ~(~p & ~q))",
+      "b": "~(p | q)"
+     },
+     "letters": {
+      "p": "input X",
+      "q": "input Y"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "87a85c35",
+    "answer": {
+     "value": 1,
+     "label": "NOR gate"
+    }
+   }
+  },
+  {
+   "id": "a92aea83-21f3-4fb9-8be2-603065dfe765",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~p & q"
+      },
+      {
+       "f": "p & ~q"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "(~p & q) | (p & ~q)",
+      "b": "~(p <-> q)"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "f4ac2ef7",
+    "answer": {
+     "value": 1,
+     "label": "XOR gate"
+    }
+   }
+  },
+  {
+   "id": "ac4f2edd-fefd-4605-b81a-f068b0842f7d",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~p"
+      },
+      {
+       "f": "~q"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~p & ~q",
+      "b": "~(p | q)"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "4bdc78d9",
+    "answer": {
+     "value": 1,
+     "label": "NOR gate"
+    }
+   }
+  },
+  {
+   "id": "b8fd2ceb-0cc6-426b-8a68-e7c243fe6aab",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~(p | q)",
+       "label": "N = ∼(A + B)"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~(~(p | ~(p | q)) | ~(q | ~(p | q)))",
+      "b": "p <-> q"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "e61baa10",
+    "answer": {
+     "value": 1,
+     "label": "y = 1, 0, 0, 1"
+    }
+   }
+  },
+  {
+   "id": "b9cc5a7a-810c-430a-9222-58ba3f86958d",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "p | q"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "(p | q) | (q & T)",
+      "b": "p | q"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "39a6a62e",
+    "answer": {
+     "value": 1,
+     "label": "Y = 0 only for A = B = 0"
+    }
+   }
+  },
+  {
+   "id": "c5d4a145-97d9-4b88-abc5-d08a1a311333",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~p | q"
+      },
+      {
+       "f": "~p & q"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~((~p | q) | (~p & q))",
+      "b": "p & ~q",
+      "label": "Y for A, B = 1, 1 and 0, 1"
+     },
+     "letters": {
+      "p": "input A",
+      "q": "input B"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "17e5902d",
+    "answer": {
+     "value": 1,
+     "label": "Y = 0, 0"
+    }
+   }
+  },
+  {
+   "id": "da51653b-1559-45ba-9493-7a1c394d75e8",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "p & q"
+      },
+      {
+       "f": "~p & q"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "(p & q) | (~p & q)",
+      "b": "q"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "46609e13",
+    "answer": {
+     "value": 1,
+     "label": "Y = B"
+    }
+   }
+  },
+  {
+   "id": "e127a2a0-52f6-4750-aebc-605550339dee",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~p"
+      },
+      {
+       "f": "~q"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~(~p & ~q)",
+      "b": "p | q"
+     },
+     "letters": {
+      "p": "the first input",
+      "q": "the second input"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "76f7c03d",
+    "answer": {
+     "value": 1,
+     "label": "OR gate"
+    }
+   }
+  },
+  {
+   "id": "e6aa92a4-32c8-40f9-99aa-7e2fbb2c1c3e",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "p | q"
+      },
+      {
+       "f": "~(r | s)"
+      }
+     ],
+     "ask": {
+      "kind": "evaluate",
+      "at": {
+       "p": true,
+       "q": true,
+       "r": false,
+       "s": true
+      },
+      "f": [
+       "p | q",
+       "~(r | s)"
+      ],
+      "expect": [
+       true,
+       false
+      ]
+     },
+     "letters": {
+      "p": "input A",
+      "q": "input B",
+      "r": "input C",
+      "s": "input D"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "182fc840",
+    "answer": {
+     "value": 1,
+     "label": "1101: P = 1, Q = 0"
+    }
+   }
+  }
+ ],
+ "decided": []
+}
