@@ -1,0 +1,250 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "1452c35d-eb38-45c5-9615-b67357d08804",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "A,A,I,M,N,S,T",
+              "note": "sorted letters of STAMINA"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "A = 1",
+              "f": "1",
+              "value": "1",
+              "note": "first from the left"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "M = 13",
+              "f": "13",
+              "value": "13",
+              "note": "fourth from the right"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "13 - 1 - 1 = 11",
+              "f": "13-1-1",
+              "value": "11"
+            }
+          ],
+          "answer": "11"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "360992dd",
+        "answer": {
+          "value": 11,
+          "label": "11"
+        }
+      }
+    },
+    {
+      "id": "6b2a5e55-6ace-484f-91c4-de6360fddf6f",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "DJOS:\\ 4,10,15,19 \\to +6,+5,+4 = 15",
+              "f": "19-4",
+              "value": "15",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "BHMQ:\\ 2,8,13,17 \\to +6,+5,+4 = 15",
+              "f": "17-2",
+              "value": "15",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "HNSW:\\ 8,14,19,23 \\to +6,+5,+4 = 15",
+              "f": "23-8",
+              "value": "15",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "PTXA:\\ 16,20,24,27 \\to {{1:+4,+4,+3}} = 11",
+              "f": "27-16",
+              "value": "11",
+              "step": "s4",
+              "note": "A comes after Z: 24 + 3 = 27"
+            },
+            {
+              "kind": "note",
+              "tex": "\\text{PTXA is the odd one}",
+              "step": "s5"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "abcdcc3b",
+        "answer": {
+          "value": 3,
+          "label": "PTXA"
+        }
+      }
+    },
+    {
+      "id": "a2782578-e8f1-4308-9b3f-3ee491b59bb0",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "vars": {
+            "p": "4",
+            "q": "2",
+            "r": "1"
+          },
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\frac{p^2-(q-r)^2}{(p+r)^2-q^2} = \\frac{p+q-r}{p+q+r}",
+              "f": "(p^2-(q-r)^2)/((p+r)^2-q^2)",
+              "value": "(p+q-r)/(p+q+r)",
+              "step": "s1",
+              "note": "a² − b² = (a − b)(a + b)"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\frac{q^2-(p-r)^2}{(p+q)^2-r^2} = \\frac{q+r-p}{p+q+r}",
+              "f": "(q^2-(p-r)^2)/((p+q)^2-r^2)",
+              "value": "(q+r-p)/(p+q+r)",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\frac{r^2-(p-q)^2}{(q+r)^2-p^2} = \\frac{r+p-q}{p+q+r}",
+              "f": "(r^2-(p-q)^2)/((q+r)^2-p^2)",
+              "value": "(r+p-q)/(p+q+r)",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\frac{(p+q-r)+(q+r-p)+(r+p-q)}{p+q+r} = 1",
+              "f": "((p+q-r)+(q+r-p)+(r+p-q))/(p+q+r)",
+              "value": "1",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\frac{15}{21} - \\frac{5}{35} + \\frac{3}{7} = 1",
+              "f": "15/21-5/35+3/7",
+              "value": "1",
+              "step": "s5",
+              "note": "check: p = 4, q = 2, r = 1"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "bd408ead",
+        "answer": {
+          "value": 1,
+          "label": "1"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
