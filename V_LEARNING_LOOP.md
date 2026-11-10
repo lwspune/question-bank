@@ -27,7 +27,7 @@ by messages, taps or "I understood".
 | **1. Attempt** | Every answer is recorded: bank and board taps (`question_practiced` with right or wrong, since 2026-10-02), misses (`answer_wrong`), mock answers (`attempt_answers`), drill answers, the V try card | **4 in 5 Ask V taps come before any attempt**: of 534 taps (20 Oct to 8 Nov), only 103 followed a recorded miss |
 | **2. Diagnose** | V starts with why the student's pick is wrong (rule 7); checks the student's working when they send it (rule 7b); Review shows why each question is waiting; checked answer sheets carry a `cause` per question (`answer_grades`) | Nothing asks for working when V cannot tell why a pick was wrong; a wrong pick alone rarely says why |
 | **3. Teach** | `explain_question` (our solution, never against the key), `explain_concept` (bank model answers, then notes, then the model's own knowledge); "Did you understand? No" gets a re-explanation in smaller steps | The re-explanation only shrinks the steps; it never changes the approach (a prerequisite idea, an example, another way to show it) |
-| **4. Practise** | "One more like this" under an explanation (2026-11-08) puts a same-subtopic question in the chat as a try card; the drill; chapter tests; Top 10 PYQs | The tap on "One more like this" is not recorded anywhere |
+| **4. Practise** | "One more like this" under an explanation (2026-11-08) puts a same-subtopic question in the chat as a try card; the drill; chapter tests; Top 10 PYQs | The tap on "One more like this" is counted only anonymously, in Vercel Analytics (corrected 2026-11-10) |
 | **5. Verify** | The try card checks the pick on the server and records it (`question_practiced`, surface `v`); the drill fixes a miss on one right answer | **V never sees the try card's result**, and the answer is not linked to the explanation it followed. Try-card answers so far: 3, all in the week of 19 Oct |
 | **6. Remember** | Mistakes stay in the Fix list until answered right (drill); the map (`/me/map`) bands each subtopic with a minimum-evidence rule (`MIN_JUDGED_FOR_CLAIM`); `my_progress` gives V chapter-level results | V's memory is the last 2 exchanges of a session that ends after an hour idle. V cannot see "last time in this subtopic you missed 3 and I explained 1". An explained question the student never answered is remembered nowhere |
 
@@ -118,20 +118,37 @@ before-miss accuracy beside each loop. Its definitions go into V_SPEC.md and
 it joins the Thursday review (section 7 there), next to the follow-up line.
 Pure core plus tests first (TDD), like `v:followups`.
 
-### Step 2. V sees the follow-up answer (M; one small migration)
+### Step 2. V sees the follow-up answer (M; one small migration): BUILT 2026-11-10
 
 The missing link in the loop.
-- Record the "One more like this" tap (today nothing is written).
-- The try card's answer carries which explanation it followed
-  (`metadata.after_explained`), so a verified loop can be counted exactly,
-  not guessed from time and subtopic.
-- After the pick, V responds in the chat:
-  - **Right:** a fixed line, no AI call ("Right: you used the same idea on a
-    new question."), and "One more like this" again.
-  - **Wrong:** "Show me where I went wrong" opens an explanation that is told
-    it follows the first one, so it compares the two questions instead of
-    starting over.
-- Eval cases: a wrong follow-up, a right follow-up, a follow-up after a No.
+- **The link** is its own small table, `v_followups` (migration 0250), not a
+  field on the answer row: one row per student, day and explained question,
+  written by `POST /api/chat/question` only after the server has checked that
+  V explained that question to this student today and that the card is a
+  different question in the same subtopic (`lib/chat/followUp{,Server}.ts`).
+  Its primary key is the claim, so a second follow-up for the same
+  explanation that day is neither linked nor free.
+- **One free follow-up per explanation per day** (switch
+  `chat_settings.followup_free` at `/dashboard/chat`): marked in
+  `daily_reveals` with `counts = false` BEFORE the answer is recorded, so the
+  mirror trigger does nothing and `claim_reveal` reads it as a repeat; "Show me
+  where I went wrong" on it is a repeat too. With the switch off the pick is
+  counted first, so a refused pick is never linked.
+- After the pick, the card says (copy in `followUpCardCopy`):
+  - **Right:** "Right: you used the same idea on a new question." and "One
+    more like this" again (a card of its own, not linked).
+  - **Wrong:** "Not quite: the answer is (X)." and "Show me where I went
+    wrong": V is told the explained question's stem and to start from the
+    step where this one differs, in place of the line that tells it to leave
+    earlier replies alone.
+- The "One more like this" tap was already counted, anonymously, in Vercel
+  Analytics (`v_more_like_this_tap`); section 2 said it was recorded nowhere,
+  which was wrong.
+- `npm run v:learning` prints the follow-ups per week (answered, right, free).
+- Eval: `npm run v:eval -- --from=<file>` replays cases from a local file and
+  stores nothing; three follow-up cases (wrong, right, after a No, from a real
+  CBSE 12 variables-separable pair) passed and read right. They are not saved
+  to `v_eval_cases` until the owner agrees: that table is in production.
 
 ### Step 3. V remembers the student's subtopic (M, no migration)
 
@@ -177,6 +194,16 @@ where they are:
    Should a follow-up right after an explanation be free?
 6. **Order.** Steps 1 to 4 apply to every exam. Step 5's surfaces could start
    with the exams where Ask V is used most. Agree, or a different start?
+
+**Settled 2026-11-10 (owner accepted the recommendations):** 1, a 2-week test
+of "Try it first" as two buttons, with "Want a hint?" added if it helps (owner:
+"we should always revisit the decisions if they create positive impact");
+2, yes (feedback on the student's own answer, fixed lines); 3, no (the Fix
+list means "got it wrong"); 4, yes, light: one check on a DIFFERENT question of
+the subtopic 3 to 7 days later, at most one in each drill of 5; 5, yes, one
+free follow-up per explanation per day (built in step 2); 6, yes, MCQ first
+(CBSE 12, JEE Mains, HSC 12, MHT-CET and NDA were about 85% of Ask V taps
+from 20 Oct), written board answers counted apart as weaker evidence.
 
 ## 6. Risks and how each is handled
 

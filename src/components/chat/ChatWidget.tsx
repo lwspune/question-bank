@@ -104,7 +104,7 @@ type ChatTurn = HistoryTurn & {
   avatar?: VAvatar;
   transient?: boolean;
   /** A question card under V's reply (2026-10-19): a similar one to try, or a pasted one to confirm. */
-  card?: { id: string; kind: "try" | "confirm" };
+  card?: { id: string; kind: "try" | "confirm"; after?: string };
   /** The week plan under V's reply (2026-10-19): it made or read the student's plan. */
   plan?: boolean;
   /** The "How's my progress" card (2026-10-27): the student's own numbers, read when shown. */
@@ -581,28 +581,46 @@ export default function ChatWidget() {
   async function oneMoreLikeThis(index: number) {
     const turn = turns[index];
     if (sending || !turn || turn.role !== "assistant" || !turn.explainedQuestionId) return;
-    trackFunnel("v_more_like_this_tap");
     setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, moreTaken: true } : t)));
+    // The card carries the explained question, so its pick is linked to this explanation (0250).
+    const ok = await moreLike(turn.explainedQuestionId, turn.explainedQuestionId);
+    if (!ok) setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, moreTaken: false } : t)));
+  }
+
+  /**
+   * Another question from `questionId`'s subtopic, as a card to try: under an explanation, and
+   * after a right follow-up (2026-11-10). `after` is the explained question, when there is one.
+   */
+  async function moreLike(questionId: string, after?: string): Promise<boolean> {
+    if (sending) return false;
+    trackFunnel("v_more_like_this_tap");
     addTurn({ role: "user", text: "One more like this", transient: true });
     setSending(true);
     try {
       const res = await fetch("/api/chat/similar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ questionId: turn.explainedQuestionId }),
+        body: JSON.stringify({ questionId }),
       });
       const data = (await res.json().catch(() => ({}))) as { ok?: boolean; questionId?: string | null; error?: string };
       if (!res.ok || !data.ok) throw new Error(data.error || String(res.status));
       addTurn(
         typeof data.questionId === "string"
-          ? { role: "assistant", avatar: "laugh", text: "Here's one to try.", card: { id: data.questionId, kind: "try" }, transient: true }
+          ? {
+              role: "assistant",
+              avatar: "laugh",
+              text: "Here's one to try.",
+              card: { id: data.questionId, kind: "try", ...(after ? { after } : {}) },
+              transient: true,
+            }
           : { role: "assistant", avatar: "idle", text: "There's no other question on this topic to try right now.", transient: true }
       );
+      return true;
     } catch {
       const errorText = "Couldn't get another question. Please try again.";
       addTurn({ role: "assistant", avatar: "idle", text: errorText, transient: true });
       toast.error(errorText);
-      setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, moreTaken: false } : t)));
+      return false;
     } finally {
       setSending(false);
     }
@@ -726,7 +744,7 @@ export default function ChatWidget() {
       }
       const links = Array.isArray(data.links) ? data.links.filter((l): l is string => typeof l === "string") : [];
       const card: ChatTurn["card"] = data.similarQuestionId
-        ? { id: data.similarQuestionId, kind: "try" }
+        ? { id: data.similarQuestionId, kind: "try", ...(data.explainedQuestionId ? { after: data.explainedQuestionId } : {}) }
         : data.matchQuestionId
           ? { id: data.matchQuestionId, kind: "confirm" }
           : undefined;
@@ -994,7 +1012,15 @@ export default function ChatWidget() {
                       />
                     </div>
                   )}
-                  {t.card && !t.reveal && <VQuestionCard id={t.card.id} kind={t.card.kind} onNavigate={close} />}
+                  {t.card && !t.reveal && (
+                    <VQuestionCard
+                      id={t.card.id}
+                      kind={t.card.kind}
+                      after={t.card.after}
+                      onMore={t.card.kind === "try" ? () => void moreLike(t.card!.id) : undefined}
+                      onNavigate={close}
+                    />
+                  )}
                   {t.plan && !t.reveal && <VPlanCard onNavigate={close} />}
                   {t.progress && <VProgressCard onNavigate={close} />}
                   {t.path && !t.reveal && <VPathCard onNavigate={close} />}

@@ -15,6 +15,11 @@ export type ChatSettings = {
   planEnabled: boolean;
   /** V's "How's my progress" button and card (chat_settings.progress_enabled, 0191). No AI call, so not behind aiEnabled. */
   progressEnabled: boolean;
+  /**
+   * One free follow-up per explanation per day (chat_settings.followup_free, 0250): the try card after
+   * "One more like this" uses none of the day's free answers. Off: it counts like any answer.
+   */
+  followUpFree: boolean;
   /** Messages one person may type per hour (signed in: per account; signed out: per connection). */
   perPersonPerHour: number;
   /**
@@ -27,7 +32,7 @@ export type ChatSettings = {
 };
 
 /** Mirrors the table's defaults: nothing that calls the AI changes until the owner switches it on. */
-export const DEFAULT_CHAT_SETTINGS: ChatSettings = { aiEnabled: false, explainEnabled: false, planEnabled: false, progressEnabled: true, perPersonPerHour: 15, premiumPerPersonPerHour: 50, aiAnswersPerDay: 300 };
+export const DEFAULT_CHAT_SETTINGS: ChatSettings = { aiEnabled: false, explainEnabled: false, planEnabled: false, progressEnabled: true, followUpFree: false, perPersonPerHour: 15, premiumPerPersonPerHour: 50, aiAnswersPerDay: 300 };
 
 export const PER_HOUR_RANGE = { min: 1, max: 200 } as const;
 export const PREMIUM_PER_HOUR_RANGE = { min: 1, max: 500 } as const;
@@ -45,6 +50,7 @@ export function parseChatSettingsInput(
   if (typeof b.explainEnabled !== "boolean") return { ok: false, message: "Missing the explanations switch" };
   if (typeof b.planEnabled !== "boolean") return { ok: false, message: "Missing the week-plan switch" };
   if (typeof b.progressEnabled !== "boolean") return { ok: false, message: "Missing the progress-card switch" };
+  if (typeof b.followUpFree !== "boolean") return { ok: false, message: "Missing the free follow-up switch" };
   if (!wholeIn(b.perPersonPerHour, PER_HOUR_RANGE)) {
     return { ok: false, message: `Messages per hour must be a whole number from ${PER_HOUR_RANGE.min} to ${PER_HOUR_RANGE.max}` };
   }
@@ -67,6 +73,7 @@ export function parseChatSettingsInput(
       explainEnabled: b.explainEnabled,
       planEnabled: b.planEnabled,
       progressEnabled: b.progressEnabled,
+      followUpFree: b.followUpFree,
       perPersonPerHour: b.perPersonPerHour,
       premiumPerPersonPerHour: b.premiumPerPersonPerHour,
       aiAnswersPerDay: b.aiAnswersPerDay,

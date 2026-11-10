@@ -40,6 +40,12 @@ describe("questionForRequest", () => {
     expect(questionForRequest({ questionId: ID, chose: null, skipped: true })).toEqual({ id: ID, chose: null, skipped: true });
   });
 
+  // V_LEARNING_LOOP.md step 2: "Show me where I went wrong" names the question V explained before.
+  it("sends the explained question's id on a follow-up card's Ask V", () => {
+    const after = "22222222-2222-4222-8222-222222222222";
+    expect(questionForRequest({ questionId: ID, chose: "B", after })).toEqual({ id: ID, chose: "B", after });
+  });
+
   it("sends a notes item as itself, with no id", () => {
     const notes = { concept: "benzylic", item: "practice" as const, index: 1 };
     expect(questionForRequest({ notes, chose: null })).toEqual({ notes });

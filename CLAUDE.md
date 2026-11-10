@@ -356,6 +356,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-10 (eighth) — V's learning loop: a verified-learning count, and V sees the follow-up answer (0250).**
+  - **From a ChatGPT spec:** V never saw whether an explanation worked. Plan: `V_LEARNING_LOOP.md`.
+  - **`npm run v:learning`:** a miss or explanation, then a DIFFERENT question in the subtopic right within 7 days: 54-57% of students after a miss, 26-43% after V. Before/after reads the 30 days before the WEEK (from the need: a false 91% -> 68%).
+  - **The link is a table** (`v_followups`), written once the server sees V explained it today; the first follow-up a day is marked `counts = false` in `daily_reveals` BEFORE the answer, so `claim_reveal` reads a repeat.
+  - **`v:eval -- --from=<file>`** stores nothing; 3 follow-up cases saved (owner OK). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-10 (seventh) — "Asked in NDA" twins for CBSE 11+12 Maths: all 17 runs, 2,282 pairs in prod (no migration).**
   - **Same pipeline, a new plan only** (`scripts/cross-exam/pairs/nda-maths-cbse.json`, from the rulings' `ncert.coveredBy`); the CBSE 12 board papers 2022-2026 are read with the book exercises. Matrices piloted first: the passes agreed on the kind more often than on the State Board (86% vs 73%).
   - **705 of 2,280 NDA Maths questions have a CBSE twin, 337 exact or new numbers;** with the State Board, 1,029 (45%) and 544 (24%).

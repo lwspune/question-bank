@@ -10,11 +10,12 @@ type Row = {
   explain_enabled: boolean;
   plan_enabled: boolean;
   progress_enabled: boolean;
+  followup_free: boolean;
   per_person_per_hour: number;
   premium_per_person_per_hour: number;
   ai_answers_per_day: number;
 };
-const COLUMNS = "ai_enabled, explain_enabled, plan_enabled, progress_enabled, per_person_per_hour, premium_per_person_per_hour, ai_answers_per_day";
+const COLUMNS = "ai_enabled, explain_enabled, plan_enabled, progress_enabled, followup_free, per_person_per_hour, premium_per_person_per_hour, ai_answers_per_day";
 
 function fromRow(r: Row): ChatSettings {
   return {
@@ -22,6 +23,7 @@ function fromRow(r: Row): ChatSettings {
     explainEnabled: r.explain_enabled,
     planEnabled: r.plan_enabled,
     progressEnabled: r.progress_enabled,
+    followUpFree: r.followup_free,
     perPersonPerHour: r.per_person_per_hour,
     premiumPerPersonPerHour: r.premium_per_person_per_hour,
     aiAnswersPerDay: r.ai_answers_per_day,
@@ -53,6 +55,7 @@ export async function saveChatSettings(
       explain_enabled: s.explainEnabled,
       plan_enabled: s.planEnabled,
       progress_enabled: s.progressEnabled,
+      followup_free: s.followUpFree,
       per_person_per_hour: s.perPersonPerHour,
       premium_per_person_per_hour: s.premiumPerPersonPerHour,
       ai_answers_per_day: s.aiAnswersPerDay,
