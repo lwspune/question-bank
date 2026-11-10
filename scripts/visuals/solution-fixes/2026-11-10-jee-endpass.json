@@ -1,0 +1,56 @@
+[
+ {
+  "id": "c29a10d4-9fe5-4470-92ca-15431e4e4a74",
+  "before": "ba57bf03",
+  "solution": "\\(E \\cdot 2\\pi r\\mathcal{l} = \\frac{\\rho\\pi R^{2}\\mathcal{l}}{\\varepsilon_{0}}\\) \\[qE = \\frac{q\\rho R^{2}}{2\\varepsilon_{0}r} = \\frac{mv^{2}}{r}\\] \\[{mv}^{2} = \\frac{q\\rho R^{2}}{2\\varepsilon_{0}}\\] \\[KE = \\frac{1}{2}mv^{2} = \\frac{q\\rho R^{2}}{4\\varepsilon_{0}}\\]",
+  "note": "Gauss line lacked E and used r for the enclosed radius (outside the cylinder it is R); mvv typo; working stopped at mv^2, KE = qrhoR^2/(4eps0) added"
+ },
+ {
+  "id": "206a5c64-23d3-48fe-b378-c677c061f68b",
+  "before": "33a1d623",
+  "solution": "given: work \\(= \\alpha \\cdot \\beta^{2} \\cdot e^{- \\frac{x^{2}}{\\alpha \\cdot k.T}}\\) \\(k =\\) boltzmann constant \\(T =\\) temperature \\(x =\\) displacement we know that, \\(\\frac{x^{2}}{\\alpha.k.T} =\\) dimensionless \\[\\left\\lbrack \\frac{x^{2}}{\\alpha \\cdot k \\cdot T} \\right\\rbrack = \\left\\lbrack M^{0}{\\text{ }L}^{0}{\\text{ }T}^{0} \\right\\rbrack\\] \\[\\lbrack\\alpha\\rbrack = \\left\\lbrack \\frac{L^{2}}{K \\cdot T} \\right\\rbrack\\] \\[\\Rightarrow \\lbrack K\\rbrack = \\left\\lbrack M^{1}{\\text{ }L}^{2}{\\text{ }T}^{- 2}{\\text{ }K}^{- 1} \\right\\rbrack\\] \\[\\lbrack T\\rbrack = \\lbrack K\\rbrack\\] \\[\\Rightarrow \\lbrack\\alpha\\rbrack = \\left\\lbrack \\frac{L^{2}}{M^{1}{\\text{ }L}^{2}{\\text{ }T}^{- 2}{\\text{ }K}^{- 1} \\times K} \\right\\rbrack \\Rightarrow \\lbrack\\alpha\\rbrack = \\left\\lbrack M^{- 1}{\\text{ }T}^{2} \\right\\rbrack\\] \\[\\Rightarrow \\omega = \\alpha \\cdot \\beta^{2}\\] \\[\\Rightarrow \\frac{\\left\\lbrack M^{1}{\\text{ }L}^{1}{\\text{ }T}^{- 2} \\right\\rbrack\\left\\lbrack L \\right\\rbrack}{\\left\\lbrack M^{- 1}{\\text{ }T}^{2} \\right\\rbrack} = \\left\\lbrack \\beta^{2} \\right\\rbrack = \\left\\lbrack M^{2}{\\text{ }L}^{2}{\\text{ }T}^{- 4} \\right\\rbrack\\] \\[\\lbrack\\beta\\rbrack = \\left\\lbrack {MLT}^{- 2} \\right\\rbrack\\]",
+  "note": "work = force x length, so the factor is [L], not [L^-1] (that gave L^0 instead of the M L^2 T^-2 the working needs)"
+ },
+ {
+  "id": "263a1ca9-1b33-4f7f-bd03-9622cb98f2dc",
+  "before": "0c2782b3",
+  "solution": "\\[\\begin{matrix} & \\frac{\\phi_{E}}{\\phi_{M}} = \\frac{EA}{BA} = \\frac{E}{B} \\\\ & B = \\frac{MLT^{- 2}}{ATLT^{- 1}} \\\\ & \\text{~So~}\\left\\lbrack \\frac{E}{B} \\right\\rbrack = \\frac{MLT^{- 3}A^{- 1}}{MT^{- 2}A^{- 1}} = LT^{- 1} \\end{matrix}\\] Or \\[E = c \\cdot \\text{ }B(c = \\text{~Speed of light~})\\left\\lbrack \\frac{E}{\\text{ }B} \\right\\rbrack = {LT}^{- 1}\\]",
+  "note": "B = F/(qv) = MLT^-2/(AT.LT^-1) (M/T^-2 garbled); E = F/q = MLT^-3A^-1 (T^-3 was missing)"
+ },
+ {
+  "id": "a7277029-4d41-4b9f-909f-1a2e9285a14d",
+  "before": "720c968e",
+  "solution": "\\(e_{2}\\) : induced emf in secondary coil \\(i_{1}\\) : Current in primary coil \\(M\\) : Mutual inductance \\[e_{2} = - M\\frac{{di}_{1}}{dt}\\] \\[M = - \\frac{e_{2}}{\\frac{{di}_{1}}{dt}}\\] \\[\\lbrack M\\rbrack = \\frac{\\left\\lbrack e_{2} \\right\\rbrack}{\\left\\lbrack \\frac{{di}_{1}}{dt} \\right\\rbrack} = \\frac{\\left\\lbrack \\frac{W}{q} \\right\\rbrack}{\\left\\lbrack \\frac{{di}_{1}}{dt} \\right\\rbrack} = \\frac{\\left\\lbrack {ML}^{2}{\\text{ }T}^{- 3}{\\text{ }A}^{- 1} \\right\\rbrack}{\\lbrack AT^{- 1}\\rbrack}\\] \\[= \\left\\lbrack {ML}^{2}{\\text{ }T}^{- 2}{\\text{ }A}^{- 2} \\right\\rbrack\\]",
+  "note": "[W/q] = ML^2T^-3A^-1 and [di/dt] = AT^-1; the line gave ML^2T^-2 over AT, which is not the ratio the next line reaches"
+ },
+ {
+  "id": "c8ad11e4-9322-46da-9ef9-d673f50d6ac8",
+  "before": "424a8c82",
+  "solution": "\\[\\begin{matrix} & H = \\frac{\\left( \\frac{v_{0}}{\\sqrt{2}} \\right)^{2}}{2\\text{ }g} = \\frac{v_{0}^{2}}{4\\text{ }g} \\\\ & \\text{ }L = mvh \\\\ & L = m\\frac{v_{0}}{\\sqrt{2}}\\frac{v_{0}^{2}}{4\\text{ }g} = \\frac{mv_{0}^{3}}{4\\sqrt{2}\\text{ }g}\\text{, along negative }z\\text{-axis} \\end{matrix}\\]",
+  "note": "working stopped before the value and direction: L = mv0^3/(4 sqrt2 g), r x p points along -z"
+ },
+ {
+  "id": "1d92f4b1-2eb0-4248-9e8b-e3c3986dd455",
+  "before": "3971d14e",
+  "solution": "\\(\\therefore\\) for lens \\(v = 20 - 5 = 15\\text{ }cm\\) \\[\\frac{1}{v} - \\frac{1}{u} = \\frac{1}{f}\\] \\[\\frac{1}{15} - \\frac{1}{u} = \\frac{1}{10}\\] \\[\\frac{1}{u} = \\frac{1}{15} - \\frac{1}{10} = \\frac{2 - 3}{30} = -\\frac{1}{30}\\] \\[u = - 30\\] \\[= 30\\]",
+  "note": "lost minus sign: 1/u = -1/30 (then u = -30)"
+ },
+ {
+  "id": "8938b001-9b9b-4a55-ad68-2436fa2d2183",
+  "before": "e2a41bfb",
+  "solution": "For objects to float \\[mg = m\\omega^{2}R\\] \\(\\omega =\\) angular velocity of earth. \\(R =\\) Radius of earth \\[\\omega = \\sqrt{\\frac{g}{R}}\\] Duration of day \\(= T\\) \\[T = \\frac{2\\pi}{\\omega}\\] \\[\\Rightarrow T = 2\\pi\\sqrt{\\frac{R}{g}}\\] \\[= 2\\pi\\sqrt{\\frac{6400 \\times 10^{3}}{10}}\\] \\(\\Rightarrow \\frac{T}{60} = 83.733\\) minutes \\(\\simeq 84\\) minutes",
+  "note": "2 x 3.14 x 800 / 60 = 83.733 with pi = 3.14 (83.775 is for 3.1416)"
+ },
+ {
+  "id": "03ef95e3-b137-4255-85f8-0466cd437fff",
+  "before": "911c6f38",
+  "solution": "\\[2 \\times \\frac{4}{3}\\pi r^{3} = \\frac{4}{3}\\pi R^{3} \\Rightarrow R = 2^{1/3}r\\] \\[U_{i} = 2 \\times 4\\pi r^{2}T\\] \\[U_{f} = 4\\pi R^{2}T = 4\\pi r^{2}T2^{2/3}\\] \\[\\therefore\\text{~Heat lost~} = u_{i} - u_{f} = 4\\pi r^{2}T\\left\\lbrack 2 - 2^{2/3} \\right\\rbrack\\]",
+  "note": "r and R swapped against the stem (small drops have radius r, the big drop R)"
+ },
+ {
+  "id": "b8360ea2-3d95-4b44-9431-2ac498a4aa61",
+  "before": "5138fd93",
+  "solution": "The bulb radiates \\(1.25\\%\\) of \\(1000\\ W\\), that is \\(12.5\\ W\\). Treating it as a point source, the intensity at \\(2\\ m\\) is \\[I = \\frac{P}{4\\pi r^{2}} = \\frac{12.5}{4\\pi \\times 4} = 0.2487\\ W/m^{2}.\\] With \\(I = \\frac{1}{2}c\\varepsilon_{0}E_{0}^{2}\\), \\[E_{0} = \\sqrt{\\frac{2I}{c\\varepsilon_{0}}} = \\sqrt{\\frac{2 \\times 0.2487}{3 \\times 10^{8} \\times 8.85 \\times 10^{-12}}} = \\sqrt{187.3} = 13.69\\ V/m = 136.9 \\times 10^{-1}\\ V/m.\\] To the nearest integer, \\(x = 137\\).",
+  "note": "printed 0.249 gives sqrt(187.6)=13.70; the working's 187.3 and 13.69 come from I = 0.2487"
+ }
+]
