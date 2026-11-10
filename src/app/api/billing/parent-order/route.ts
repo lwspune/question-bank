@@ -6,6 +6,7 @@ import { ownsPlan } from "@/lib/billing/plans";
 import { loadEntitlements } from "@/lib/entitlements/query";
 import { isParentCode, parentLinkState, parentOrderNotes } from "@/lib/billing/parentLink";
 import { readParentLink } from "@/lib/billing/parentLinkStore";
+import { stampUpgradeNotes, upgradeCredit } from "@/lib/billing/upgrade";
 import { checkAndIncrement } from "@/lib/rate-limit";
 import { getClientIp } from "@/lib/http";
 import { logActivity } from "@/lib/activity/service";
@@ -42,18 +43,23 @@ export async function POST(request: NextRequest) {
   if (!link) return NextResponse.json({ error: "This link is not valid." }, { status: 404 });
 
   const now = Date.now();
-  const plan = (await listActivePlans(admin)).find((p) => p.id === link.planId) ?? null;
-  const studentHasPass = plan ? ownsPlan(await loadEntitlements(admin, link.userId), plan, now) : false;
+  const plans = await listActivePlans(admin);
+  const plan = plans.find((p) => p.id === link.planId) ?? null;
+  const rows = plan ? await loadEntitlements(admin, link.userId) : [];
+  const studentHasPass = plan ? ownsPlan(rows, plan, now) : false;
   const state = parentLinkState({ link, plan, nowMs: now, studentHasPass });
   if (state !== "payable" || !plan) {
     return NextResponse.json({ error: "This link can't be paid.", state }, { status: 409 });
   }
 
+  // A Practice Pass holder's link to the Premium Pass is paid at the upgrade
+  // price (2026-11-11), the same credit the student's own checkout gives.
+  const notes = stampUpgradeNotes(parentOrderNotes(plan, link), upgradeCredit(rows, plan, plans, now).creditPaise);
   const result = await createOrder({
-    amountPaise: plan.amountPaise,
+    amountPaise: Number(notes.amountPaise),
     currency: plan.currency,
     receipt: `qb_parent_${link.code}`,
-    notes: parentOrderNotes(plan, link),
+    notes,
   });
   if (!result.ok) {
     console.error("razorpay createOrder (parent) failed:", result.error);

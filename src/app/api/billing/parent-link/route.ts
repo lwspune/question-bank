@@ -4,6 +4,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { listActivePlans } from "@/lib/billing/plansQuery";
 import { formatPrice, ownsPlan, planLengthLabel } from "@/lib/billing/plans";
+import { upgradePricePaise } from "@/lib/billing/upgrade";
 import { loadEntitlements } from "@/lib/entitlements/query";
 import { parentFirstName, parentPayUrl, parentShareText } from "@/lib/billing/parentLink";
 import { findOrCreateParentLink } from "@/lib/billing/parentLinkStore";
@@ -30,7 +31,8 @@ export async function POST(request: NextRequest) {
 
   const admin = createSupabaseAdminClient();
   const now = Date.now();
-  if (ownsPlan(await loadEntitlements(admin, user.id), plan, now)) {
+  const rows = await loadEntitlements(admin, user.id);
+  if (ownsPlan(rows, plan, now)) {
     return NextResponse.json({ error: "You already have this pass." }, { status: 409 });
   }
 
@@ -48,7 +50,7 @@ export async function POST(request: NextRequest) {
     const text = parentShareText({
       examName,
       planLabel: plan.label,
-      price: formatPrice(plan.amountPaise, plan.currency),
+      price: formatPrice(upgradePricePaise(plan, rows, plans, now), plan.currency),
       length: planLengthLabel(plan),
       url,
     });

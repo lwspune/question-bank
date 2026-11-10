@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { listActivePlans, readFreeLimits } from "@/lib/billing/plansQuery";
 import { formatPrice, ownsPlan, planLengthLabel } from "@/lib/billing/plans";
+import { upgradePricePaise } from "@/lib/billing/upgrade";
 import { fillPerks } from "@/lib/billing/perkLimits";
 import { loadEntitlements } from "@/lib/entitlements/query";
 import { isParentCode, parentLinkState, type ParentLink, type ParentLinkState } from "@/lib/billing/parentLink";
@@ -49,7 +50,8 @@ async function load(code: string): Promise<{ link: ParentLink | null; state: Par
   const view: View | null = plan
     ? {
         planLabel: plan.label,
-        price: formatPrice(plan.amountPaise, plan.currency),
+        // A Practice Pass holder's link to Premium shows the upgrade price, as its order charges (2026-11-11).
+        price: formatPrice(upgradePricePaise(plan, rows, plans, now), plan.currency),
         length: planLengthLabel(plan),
         perks: fillPerks(plan.perks, limits),
       }
