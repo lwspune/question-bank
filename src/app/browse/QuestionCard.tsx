@@ -45,6 +45,7 @@ import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
 import RevealLockedLink from "@/components/reveal/RevealLockedLink";
 import { RevealDailyLink, RevealDailyPrompt } from "@/components/reveal/RevealDailyLimit";
 import FixNudgeLine from "@/components/reveal/FixNudgeLine";
+import StuckOfferLine from "@/components/reveal/StuckOfferLine";
 import PresentButton from "@/components/present/PresentButton";
 import { fromQuestionRow } from "@/lib/present/viewModel";
 import BookmarkButton from "./BookmarkButton";
@@ -624,6 +625,7 @@ export default function QuestionCard({
             {/* Every fifth wrong bank answer of the day: the misses are saved in
                 Fix your mistakes (lib/drill/fixNudge). Nothing on other cards. */}
             {surface === "bank" && revealed && <FixNudgeLine questionId={question.id} />}
+            {surface === "bank" && revealed && <StuckOfferLine questionId={question.id} notesHref={resources?.notes?.href ?? null} />}
 
             {isSubjective && !question.solution && (
               <p className="text-xs italic text-muted-foreground">Model answer coming soon.</p>

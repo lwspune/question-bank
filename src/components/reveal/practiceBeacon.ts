@@ -12,6 +12,8 @@ import { crowdMessage, type CrowdTier } from "@/lib/celebrate/crowd";
 import { celebrateInTurn, type VMessage } from "@/components/celebrate/celebrate";
 import { invalidatePulse } from "@/lib/viewer/usePulse";
 import { parseFixNudge, showFixNudge } from "./fixNudgeStore";
+import { showStuckOffer } from "./stuckOfferStore";
+import { parseStuckOffer } from "@/lib/questions/stuckOffer";
 
 /**
  * Client-side queue for the answer-reveal practice signal.
@@ -119,9 +121,12 @@ function send(json: string, useBeacon: boolean): void {
       .then(async (res) => {
         // 204 is the normal reply; only a 200 carries a milestone.
         if (res.status !== 200) return;
-        const reply = (await res.json()) as { milestone?: unknown; crowd?: unknown; fixNudge?: unknown };
+        const reply = (await res.json()) as { milestone?: unknown; crowd?: unknown; fixNudge?: unknown; stuck?: unknown };
         const nudge = parseFixNudge(reply.fixNudge);
         if (nudge) showFixNudge(nudge);
+        // The stuck offer (2026-11-10): 3 of the last 4 on a subtopic wrong.
+        const stuck = parseStuckOffer(reply.stuck);
+        if (stuck) showStuckOffer(stuck);
         const messages: VMessage[] = [];
         if (reply.crowd === 70 || reply.crowd === 80 || reply.crowd === 90) {
           messages.push({ text: crowdMessage(reply.crowd as CrowdTier), face: "laugh" });

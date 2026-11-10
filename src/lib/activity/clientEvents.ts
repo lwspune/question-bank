@@ -36,6 +36,8 @@ const CHAPTER_FIX_FROM_SET: ReadonlySet<string> = new Set<string>(Object.values(
 /** Start next's pages (lib/me/startNext START_NEXT_FROM). */
 const START_NEXT_FROM_SET: ReadonlySet<string> = new Set<string>(START_NEXT_FROM);
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+/** The stuck offer's steps (lib/questions/stuckOffer): seen, and its three buttons. */
+export const STUCK_OFFER_ACTIONS: ReadonlySet<string> = new Set(["shown", "teach", "easier", "keep"]);
 
 /** Where a paywall met the student. Five are the 0134 limits (2026-10-05):
  *  chapter tests, the drill, daily answers, saves, the projected score.
@@ -268,6 +270,22 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
           dedupeKey: `view:start_next_tap:${raw.chapterId}:${userId}:${istDayKey(now)}`,
         },
       };
+    }
+    // The stuck offer (2026-11-10, lib/questions/stuckOffer): seen and each button, per question and day.
+    if (raw.surface === "stuck_offer") {
+      if (typeof raw.questionId !== "string" || !UUID_RE.test(raw.questionId)) return { ok: false, error: "Invalid question id." };
+      if (typeof raw.action !== "string" || !STUCK_OFFER_ACTIONS.has(raw.action)) return { ok: false, error: "Unknown step." };
+      return {
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "stuck_offer", questionId: raw.questionId, action: raw.action },
+          dedupeKey: `view:stuck_offer:${raw.action}:${raw.questionId}:${userId}:${istDayKey(now)}`,
+        },
+      };
+    }
+    if (raw.questionId !== undefined || raw.action !== undefined) {
+      return { ok: false, error: "No question id on this surface." };
     }
     if (raw.chapterId !== undefined || raw.from !== undefined) {
       return { ok: false, error: "No chapter id on this surface." };
