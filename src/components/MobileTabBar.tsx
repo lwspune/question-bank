@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePublicPathname } from "@/lib/nav/usePublicPathname";
 import { CalendarDays, Compass, Library, NotebookPen, Target, Timer } from "lucide-react";
 import { getActiveTab } from "@/lib/exam/examContext";
 import {
@@ -45,7 +45,7 @@ const ICONS: Record<MobileTabId, typeof Compass> = {
 };
 
 export default function MobileTabBar({ nav, fifth }: { nav: ExamNav; fifth: FifthTab }) {
-  const pathname = usePathname() ?? "/";
+  const pathname = usePublicPathname();
   const active = getActiveTab(pathname);
   const tabs = resolveMobileTabs(nav, fifth);
 

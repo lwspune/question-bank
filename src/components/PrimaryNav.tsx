@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePublicPathname } from "@/lib/nav/usePublicPathname";
 import { BookMarked, BookOpen, CalendarDays, Compass, FileText, Library, NotebookPen, Target, Timer } from "lucide-react";
 import { getActiveTab, type ActiveTab } from "@/lib/exam/examContext";
 import { FIX_TAB_HREF, type FifthTab } from "@/lib/nav/fifthTab";
@@ -46,7 +46,7 @@ export default function PrimaryNav({
   showPapers = false,
   showBooks = false,
 }: Props) {
-  const pathname = usePathname() ?? "/";
+  const pathname = usePublicPathname();
   const active = getActiveTab(pathname);
 
   const tabs: Tab[] = [

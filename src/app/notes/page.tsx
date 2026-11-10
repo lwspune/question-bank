@@ -64,7 +64,7 @@ export default function NotesIndex() {
                 </h2>
                 <Link
                   href={`/notes/${g.slug}`}
-                  className="text-xs font-medium text-brand-accent opacity-80 hover:opacity-100"
+                  className="text-xs font-medium text-brand-accent hover:underline"
                 >
                   All {g.displayName} notes →
                 </Link>

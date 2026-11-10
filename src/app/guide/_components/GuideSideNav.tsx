@@ -106,7 +106,6 @@ export default function GuideSideNav({ guideTitle, items, landingHref }: Props) 
             variant="outline"
             size="sm"
             className="lg:hidden"
-            aria-label="Open guide navigation"
           >
             <Menu className="h-4 w-4" aria-hidden />
             Sections

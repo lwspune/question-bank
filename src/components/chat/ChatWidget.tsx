@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { useIntlSite } from "@/lib/sites/useIntlSite";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { usePathname } from "next/navigation";
+import { usePublicPathname } from "@/lib/nav/usePublicPathname";
 import { CalendarCheck, Check, ListChecks, Plus, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, TrendingUp, X } from "lucide-react";
 import { toast } from "sonner";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
@@ -335,7 +335,7 @@ export default function ChatWidget() {
   const launcherRef = useRef<HTMLButtonElement>(null);
   const openRecordedRef = useRef(false);
   const accountCheckedRef = useRef(false);
-  const pathname = usePathname() ?? "/";
+  const pathname = usePublicPathname();
   // V speaks to PYQ Vault's Indian students; intl.pyqvault.com has no V (2026-10-30).
   const intl = useIntlSite();
   const cart = useCart();
