@@ -15,6 +15,27 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-11-10 (fourth) — Past-papers page: facts, trends, FAQ and readable year headings (no migration). Branch `feat/past-papers-page`.**
+
+**Why.** The owner asked what PYQ Vault can learn about SEO/GEO from testbook.com. Testbook's engine is ~1.2M one-question pages (24 English sitemap files of 50,000; QAPage schema; "[Solved] <stem>" titles; a meta description that opens with the answer) plus ~33 news/intent pages per exam (`/upsc-nda/previous-year-papers`, cut-off, admit card, salary...). Its NDA papers page runs ~8,000 words with an H2 per year and FAQ schema. Ours, `/mock/exam/nda/download`, was 888 words, almost all the list, and every year heading read "20264" to Google and a screen reader: the count badge sat inside the `<h2>`. For an NDA question search, the results were single-question pages from prepp.in and examside.com that name the sitting, not Testbook.
+
+**What shipped (one template, all 22 mock exams).** Pure core `lib/mocks/pastPapersPage.ts`, spec `tests/past-papers-page.test.ts`:
+- `yearHeading` ("NDA 2026 question papers") with the count beside it, not in it.
+- Sitting order: `groupMocksForType` sorts within a year by month, then `sittingRankFromTitle` (the day, month, shift or "(II)" a title prints: MHT-CET, JEE and SSC record no month, and the live MHT-CET list put 13 May between April shifts), then `comparePaperLabels` (paper number before the alphabet: GS Paper I before CSAT Paper II). The `/past-papers` twin uses the same grouping, so it is fixed too.
+- `openYearKeys`: recent years open until 8 papers show, at most 3 years, and none from the first year holding over 12 papers. The first rule ("until 8") opened MHT-CET's 42-paper 2026 and SSC CGL's 36-paper 2025 on the before/after sheet, burying the trends and FAQ thousands of pixels down a phone; UCEED opened 8 one-paper boxes.
+- `paperFacts`: questions, marks, minutes and marking from the NEWEST paper's mock row, grouped by the printed label (MPSC CSAT has two codes for two marking eras). The blueprint is read only to learn whether sections are marked differently (UCEED, IPMAT Indore): then the card links to the paper's start page, which already prints a line per section. `PAPER_NOTES` carries the one rule a row cannot show (CSAT Decision Making). "Earlier papers had 200 questions" (NEET) is derived.
+- `paperTrends`: per paper, its top 6 chapters, or its subjects when it spans several (NDA GAT, NEET), from 0242's `get_chapter_paper_weights` via `loadChapterWeights` (cached a day, [] on failure). Shown only with 4+ sittings. Chapters link to their `/questions` landing (internal links into the indexing backlog). The heading quotes one sitting count only when every card has the same (MHT-CET: 58 Maths vs 54 PCB papers).
+- `pastPapersFaq`: every answer computed. The one hand input is `YEAR_NOTES` (why NDA 2020 has one sitting), because no column records why.
+- Paper titles print through `plainPaperTitle` (no em dashes).
+
+**Decided against.** An "Updated <date>" line: the listing has no publish date and a render date fakes freshness (Testbook refreshes `dateModified` on unchanged pages); "Newest: 19 May 2026", read from the newest title, is true. FAQ schema (Google limits FAQ rich results); the text is for readers and AI quoting. Testbook-style news pages (dates, admit cards, results, cut-offs): the hardest searches, a newsroom's upkeep, the wrong visitor. A claim about where answer keys came from: the registry does not record it.
+
+**Measured.** Search Console (2026-11-10): neither `/mock/exam/nda/download` nor `/past-papers` is known to Google, so the twins do not compete yet; both go to the `/gsc-index` queue after deploy. All 22 pages rendered 200 locally with facts and FAQ; four (MPSC Forest, State Services Mains, Group B Combined Mains, SPI) show no trends (under 4 sittings).
+
+**Found on the way.** `tests/client-bundle-notes-registry.test.ts` times out on `main` (~106 s against its 30 s limit) on this machine; not this branch's doing. The screenshot tool left 20 headless Edge processes holding its temp profiles.
+
+**Queued next (owner):** (a) the same upgrade for board past papers (`/question-papers`), (b) per-exam syllabus pages built from our data under `/exams/<slug>/syllabus`, not /blog.
+
 **2026-11-10 (third) — Small charts on the student's Home, Review and Progress tabs (no migration). Branch `feat/me-charts`.**
 
 - **Ask.** The owner asked for a review of the tabs "for beautiful visualization". The review (artifact mockup, now vs proposed) found two charts on three tabs (the Papers score ring, the map's dots) and proposed five places where a small chart shows what words do not; the owner OK'd all five. Deliberately not proposed: a countdown bar draining to the exam, streaks or a daily heatmap (burst studiers), any ranking (forbidden), charts on Home above Today (Home is things to do since 11-08).
