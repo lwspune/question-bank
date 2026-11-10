@@ -1,0 +1,3988 @@
+{
+ "//": "Assembled from agent drafts (algebraSteps).",
+ "visuals": [
+  {
+   "id": "ae103088-be01-4f1c-a7af-64fa8cf3336f",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "n = \\dfrac{11}{44} = 0.25\\ \\text{mol}",
+       "f": "11/44",
+       "value": "0.25"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "P = 2\\times10^{6}\\ \\text{Pa},\\quad V = 2\\times10^{-3}\\ \\text{m}^3",
+       "note": "PV = nRT"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "T = \\dfrac{2\\times10^{6}\\times2\\times10^{-3}}{0.25\\times8.3} = \\dfrac{4000}{2.075}",
+       "f": "(2*10^6*2*10^(-3))/(0.25*8.3)",
+       "value": "4000/2.075"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "T = 1927.7\\ \\text{K}",
+       "f": "4000/2.075",
+       "value": "1927.7",
+       "dp": 1
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "t = 1927.7 - 273 = 1654.7\\ ^{\\circ}\\text{C}",
+       "f": "1927.7-273",
+       "value": "1654.7",
+       "dp": 1
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "t \\approx 1655\\ ^{\\circ}\\text{C}",
+       "f": "1927.7-273",
+       "value": "1655",
+       "note": "nearest integer",
+       "dp": 0
+      }
+     ],
+     "answer": "1655"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4",
+       "s5",
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "3b2f8353",
+    "answer": {
+     "value": 1655,
+     "label": "1655 °C"
+    }
+   }
+  },
+  {
+   "id": "afd42f5b-82d9-4846-8eff-88fcecfe469f",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{MnO_2 + 4HCl \\rightarrow MnCl_2 + Cl_2 + 2H_2O}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "M(\\mathrm{MnO_2}) = 55 + 2(16) = 87\\ \\text{g mol}^{-1}",
+       "f": "55+2*16",
+       "value": "87"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n = \\dfrac{8.7}{87} = 0.1\\ \\text{mol}",
+       "f": "8.7/87",
+       "value": "0.1"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "n(\\mathrm{Cl_2}) = 0.1\\ \\text{mol}",
+       "note": "HCl in excess, 1:1 stoichiometry"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "m = 0.1\\times71 = 7.1\\ \\text{g}",
+       "f": "0.1*71",
+       "value": "7.1"
+      }
+     ],
+     "answer": "0.1*71"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "d2edbfc4",
+    "answer": {
+     "value": 7.1000000000000005,
+     "label": "7.1 g"
+    }
+   }
+  },
+  {
+   "id": "b4bc0370-38f0-4dea-b3ce-35f91857dbed",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "14.5+64.46+1.8 = 80.76",
+       "f": "14.5+64.46+1.8",
+       "value": "80.76"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\%\\ \\mathrm{O} = 100 - 80.76 = 19.24\\%",
+       "f": "100-80.76",
+       "value": "19.24"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mathrm{C} = \\dfrac{14.5}{12} = 1.208",
+       "f": "14.5/12",
+       "value": "1.208",
+       "note": "H = 1.8/1 = 1.8",
+       "dp": 3
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\mathrm{Cl} = \\dfrac{64.46}{35.5} = 1.816",
+       "f": "64.46/35.5",
+       "value": "1.816",
+       "dp": 3
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "\\mathrm{O} = \\dfrac{19.24}{16} = 1.203",
+       "f": "19.24/16",
+       "value": "1.203",
+       "dp": 3
+      },
+      {
+       "step": "s6",
+       "kind": "note",
+       "tex": "\\mathrm{C:H:Cl:O} = 1:1.5:1.5:1 \\Rightarrow \\mathrm{C_2H_3Cl_3O_2}",
+       "note": "divide by 1.203, multiply by 2"
+      },
+      {
+       "step": "s7",
+       "kind": "calc",
+       "tex": "2(12)+3(1)+3(35.5)+2(16) = 165.5",
+       "f": "2*12+3*1+3*35.5+2*16",
+       "value": "165.5"
+      },
+      {
+       "step": "s8",
+       "kind": "calc",
+       "tex": "165.5 = 1655\\times10^{-1}",
+       "f": "1655*10^(-1)",
+       "value": "165.5",
+       "sf": 4
+      }
+     ],
+     "answer": "1655"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3",
+       "s4",
+       "s5"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s6"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s7",
+       "s8"
+      ]
+     }
+    ],
+    "fingerprint": "9355e15d",
+    "answer": {
+     "value": 1655,
+     "label": "1655"
+    }
+   }
+  },
+  {
+   "id": "b7149657-ee37-48df-bc66-7946f0450ef2",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "p_{gas} = 4 - 0.4 = 3.6\\ \\text{atm}",
+       "f": "4-0.4",
+       "value": "3.6"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "p_{gas}' = \\dfrac{3.6}{2} = 1.8\\ \\text{atm}",
+       "f": "3.6/2",
+       "value": "1.8",
+       "note": "Boyle's law on the dry gas only"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "p = 1.8 + 0.4 = 2.2\\ \\text{atm}",
+       "f": "1.8+0.4",
+       "value": "2.2"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "2.2 = 22\\times10^{-1}\\ \\text{atm}",
+       "f": "22*10^(-1)",
+       "value": "2.2",
+       "sf": 2
+      }
+     ],
+     "answer": "22"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "b9ecd79f",
+    "answer": {
+     "value": 22,
+     "label": "22"
+    }
+   }
+  },
+  {
+   "id": "b967e293-3634-4750-9d82-da0e1bcd0f6a",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "M = 7(12)+5(1)+3(14)+6(16) = 84+5+42+96",
+       "f": "7*12+5*1+3*14+6*16",
+       "value": "84+5+42+96"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "M = 227\\ \\text{g mol}^{-1}",
+       "f": "84+5+42+96",
+       "value": "227"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n = \\dfrac{681}{227} = 3\\ \\text{mol}",
+       "f": "681/227",
+       "value": "3"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "n(\\mathrm{N}) = 3\\times3 = 9\\ \\text{mol}",
+       "f": "3*3",
+       "value": "9"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "9\\times6.02\\times10^{23} = 5.418\\times10^{24}",
+       "f": "9*6.02*10^23",
+       "value": "5.418*10^24",
+       "sf": 4
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "5.418\\times10^{24} = 5418\\times10^{21}",
+       "f": "5.418*10^24",
+       "value": "5418*10^21",
+       "sf": 4
+      }
+     ],
+     "answer": "5418"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s5",
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "869f52ef",
+    "answer": {
+     "value": 5418,
+     "label": "5418"
+    }
+   }
+  },
+  {
+   "id": "b9c7f3f1-fade-4fcc-ac3d-559dc91099c3",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "m(\\mathrm{CaCO_3}) = 150\\times0.75 = 112.5\\ \\text{kg}",
+       "f": "150*0.75",
+       "value": "112.5"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{CaCO_3 \\rightarrow CaO + CO_2}",
+       "note": "molar masses 100 and 56 g mol⁻¹"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "m(\\mathrm{CaO}) = 112.5\\times\\dfrac{56}{100} = 63\\ \\text{kg}",
+       "f": "112.5*56/100",
+       "value": "63"
+      }
+     ],
+     "answer": "63"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "0c4a46bd",
+    "answer": {
+     "value": 63,
+     "label": "63 kg"
+    }
+   }
+  },
+  {
+   "id": "ba673fc8-a237-419b-81a1-373f65c2e216",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "n(\\mathrm{Na}) = \\dfrac{3.45}{23.0} = 0.15\\ \\text{mol}",
+       "f": "3.45/23.0",
+       "value": "0.15"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n(\\mathrm{Na_3PO_4}) = \\dfrac{0.15}{3} = 0.05\\ \\text{mol}",
+       "f": "0.15/3",
+       "value": "0.05"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "M = \\dfrac{0.05}{0.100} = 0.5\\ \\text{mol L}^{-1}",
+       "f": "0.05/0.100",
+       "value": "0.5",
+       "note": "100 mL = 0.100 L"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "0.5 = 50\\times10^{-2}\\ \\text{mol L}^{-1}",
+       "f": "50*10^(-2)",
+       "value": "0.5",
+       "sf": 2
+      }
+     ],
+     "answer": "50"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "a9442c1c",
+    "answer": {
+     "value": 50,
+     "label": "50"
+    }
+   }
+  },
+  {
+   "id": "bb7c3c64-e45a-4431-91ef-2070ce18603d",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "n(\\mathrm{HCl}) = 0.1\\times0.040 = 4\\times10^{-3}\\ \\text{mol}",
+       "f": "0.1*0.04",
+       "value": "4*10^(-3)",
+       "sf": 1
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n(\\text{excess}) = \\dfrac{4\\times10^{-3}}{2} = 2\\times10^{-3}\\ \\text{mol}",
+       "f": "4*10^(-3)/2",
+       "value": "2*10^(-3)",
+       "note": "Ca(OH)₂ + 2HCl → CaCl₂ + 2H₂O",
+       "sf": 1
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "n(\\text{consumed by } \\mathrm{CO_2}) = 2\\times10^{-3}\\ \\text{mol}",
+       "note": "half of the base was used, as the stem says"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "n(\\mathrm{CO_2}) = 2\\times10^{-3}\\ \\text{mol}",
+       "note": "CO₂ + Ca(OH)₂ → CaCO₃ + H₂O, 1:1"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "x = 2\\times10^{-3}\\times22400 = 44.8\\ \\text{cm}^3",
+       "f": "2*10^(-3)*22400",
+       "value": "44.8",
+       "note": "22400 cm³ per mol at 1 atm, 273 K",
+       "dp": 1
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "x \\approx 45\\ \\text{cm}^3",
+       "f": "2*10^(-3)*22400",
+       "value": "45",
+       "dp": 0
+      }
+     ],
+     "answer": "45"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5",
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "f120bb41",
+    "answer": {
+     "value": 45,
+     "label": "45 cm³"
+    }
+   }
+  },
+  {
+   "id": "bdf79cf4-40bd-4e75-929f-be145549e446",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "100\\ \\text{mL of solution}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "10\\ \\text{mL } \\mathrm{Br_2},\\quad 90\\ \\text{mL } \\mathrm{CCl_4}",
+       "note": "10% v/v"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "m(\\mathrm{Br_2}) = 10\\times3.2 = 32\\ \\text{g}",
+       "f": "10*3.2",
+       "value": "32"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "n(\\mathrm{Br_2}) = \\dfrac{32}{160} = 0.2\\ \\text{mol}",
+       "f": "32/160",
+       "value": "0.2"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "m(\\mathrm{CCl_4}) = 90\\times1.6 = 144\\ \\text{g} = 0.144\\ \\text{kg}",
+       "f": "90*1.6/1000",
+       "value": "0.144"
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "m = \\dfrac{0.2}{0.144} = 1.389\\ \\text{mol kg}^{-1}",
+       "f": "0.2/0.144",
+       "value": "1.389",
+       "note": "moles per kg of solvent",
+       "dp": 3
+      },
+      {
+       "step": "s7",
+       "kind": "calc",
+       "tex": "1.389 = 138.9\\times10^{-2}",
+       "f": "138.9*10^(-2)",
+       "value": "1.389",
+       "sf": 4
+      },
+      {
+       "step": "s8",
+       "kind": "calc",
+       "tex": "x \\approx 139",
+       "f": "138.9",
+       "value": "139",
+       "dp": 0
+      }
+     ],
+     "answer": "139"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4",
+       "s5"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s6",
+       "s7",
+       "s8"
+      ]
+     }
+    ],
+    "fingerprint": "cf2336b7",
+    "answer": {
+     "value": 139,
+     "label": "139"
+    }
+   }
+  },
+  {
+   "id": "be1ff402-f11a-4223-8d79-311d3099ac9f",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "n(\\mathrm{Fe^{2+}}) = 20.0\\times0.05 = 1.0\\ \\text{mmol}",
+       "f": "20.0*0.05",
+       "value": "1.0",
+       "dp": 1
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{MnO_4^- + 5Fe^{2+} + 8H^+ \\rightarrow Mn^{2+} + 5Fe^{3+} + 4H_2O}"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n(\\mathrm{MnO_4^-}) = \\dfrac{1.0}{5} = 0.2\\ \\text{mmol}",
+       "f": "1.0/5",
+       "value": "0.2"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "V = \\dfrac{0.2}{0.01} = 20.0\\ \\text{mL}",
+       "f": "0.2/0.01",
+       "value": "20.0",
+       "dp": 1
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "V_{\\text{rem}} = 50 - 20 = 30\\ \\text{mL}",
+       "f": "50-20",
+       "value": "30"
+      }
+     ],
+     "answer": "30"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "4009c601",
+    "answer": {
+     "value": 30,
+     "label": "30 mL"
+    }
+   }
+  },
+  {
+   "id": "c0e1eddd-7c68-4d4f-bdae-7ddd8b61535e",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "u_{rms} = \\sqrt{\\dfrac{3RT}{M}},\\quad u_{mp} = \\sqrt{\\dfrac{2RT}{M}}"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "\\dfrac{3\\times600}{40} = \\dfrac{2\\times90}{M_Y}",
+       "lhs": "3*600/40",
+       "rhs": "2*90/x",
+       "note": "equal speeds",
+       "roots": [
+        "4"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "45 = \\dfrac{180}{M_Y}",
+       "lhs": "45",
+       "rhs": "180/x",
+       "roots": [
+        "4"
+       ]
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "M_Y = \\dfrac{180}{45} = 4\\ \\text{g mol}^{-1}",
+       "f": "180/45",
+       "value": "4",
+       "note": "helium"
+      }
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "86be91f8",
+    "answer": {
+     "value": 4,
+     "label": "4 g/mol"
+    }
+   }
+  },
+  {
+   "id": "c1a812ed-c15c-49dd-b058-1de1f9ddf021",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{C_4H_{10}(g) + \\tfrac{13}{2}O_2(g) \\rightarrow 4CO_2(g) + 5H_2O(l)}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n(\\mathrm{C_4H_{10}}) = \\dfrac{174000}{58} = 3000\\ \\text{mol}",
+       "f": "174000/58",
+       "value": "3000",
+       "note": "M = 58 g mol⁻¹"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n(\\mathrm{O_2}) = \\dfrac{320000}{32} = 10000\\ \\text{mol}",
+       "f": "320000/32",
+       "value": "10000",
+       "note": "M = 32 g mol⁻¹"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "3000\\times6.5 = 19500\\ \\text{mol } \\mathrm{O_2}",
+       "f": "3000*6.5",
+       "value": "19500",
+       "note": "only 10000 mol present: O₂ limits"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "n(\\mathrm{H_2O}) = 10000\\times\\dfrac{5}{6.5} = 7692.3\\ \\text{mol}",
+       "f": "10000*5/6.5",
+       "value": "7692.3",
+       "dp": 1
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "m = 7692.3\\times18 = 138461\\ \\text{g}",
+       "f": "7692.3*18",
+       "value": "138461",
+       "dp": 0
+      },
+      {
+       "step": "s7",
+       "kind": "calc",
+       "tex": "V = 138461\\ \\text{mL} = 138.46\\ \\text{L}",
+       "f": "138461/1000",
+       "value": "138.46",
+       "note": "density 1 g mL⁻¹",
+       "dp": 2
+      },
+      {
+       "step": "s8",
+       "kind": "calc",
+       "tex": "V \\approx 138\\ \\text{L}",
+       "f": "138461/1000",
+       "value": "138",
+       "note": "nearest integer",
+       "dp": 0
+      }
+     ],
+     "answer": "138"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s5"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s6",
+       "s7",
+       "s8"
+      ]
+     }
+    ],
+    "fingerprint": "aaf5f1eb",
+    "answer": {
+     "value": 138,
+     "label": "138 L"
+    }
+   }
+  },
+  {
+   "id": "c3b5de7d-6747-4986-b605-f615cc60c266",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "1\\ \\text{L}:\\ 0.8\\ \\text{mol } \\mathrm{H_2SO_4}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "m = 1000\\times1.06 = 1060\\ \\text{g}",
+       "f": "1000*1.06",
+       "value": "1060"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "m(\\mathrm{H_2SO_4}) = 0.8\\times98 = 78.4\\ \\text{g}",
+       "f": "0.8*98",
+       "value": "78.4"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "1060 - 78.4 = 981.6\\ \\text{g} = 0.9816\\ \\text{kg}",
+       "f": "1060-78.4",
+       "value": "981.6",
+       "note": "solvent",
+       "dp": 1
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "m = \\dfrac{0.8}{0.9816} = 0.815\\ \\text{mol kg}^{-1}",
+       "f": "0.8/0.9816",
+       "value": "0.815",
+       "note": "moles per kg of solvent",
+       "dp": 3
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "0.815 = 815\\times10^{-3}",
+       "f": "815*10^(-3)",
+       "value": "0.815",
+       "sf": 3
+      }
+     ],
+     "answer": "815"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s5",
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "f528292b",
+    "answer": {
+     "value": 815,
+     "label": "815"
+    }
+   }
+  },
+  {
+   "id": "c4be4c36-3aaa-4c8e-903c-463342372978",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\text{A: } \\dfrac{2}{32} = 0.0625\\ \\text{mol } \\mathrm{O_2}",
+       "f": "2/32",
+       "value": "0.0625",
+       "dp": 4
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{A: atoms} = 2\\times0.0625 = 0.125\\ \\text{mol}",
+       "f": "2*0.0625",
+       "value": "0.125"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{B: } \\dfrac{4}{64} = 0.0625\\ \\text{mol}",
+       "f": "4/64",
+       "value": "0.0625",
+       "dp": 4
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{B: atoms} = 3\\times0.0625 = 0.1875\\ \\text{mol}",
+       "f": "3*0.0625",
+       "value": "0.1875"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "\\text{C: } \\dfrac{1400}{22400} = 0.0625\\ \\text{mol};\\ \\text{atoms} = 0.125\\ \\text{mol}",
+       "f": "1400/22400",
+       "value": "0.0625",
+       "dp": 4
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "\\text{D: } \\dfrac{50}{22400} = 2.23\\times10^{-3}\\ \\text{mol, atoms the same}",
+       "f": "50/22400",
+       "value": "2.23*10^(-3)",
+       "note": "He is monoatomic",
+       "sf": 3
+      },
+      {
+       "step": "s7",
+       "kind": "calc",
+       "tex": "\\text{E: atoms} = 2\\times0.0625 = 0.125\\ \\text{mol}",
+       "f": "2*0.0625",
+       "value": "0.125"
+      },
+      {
+       "step": "s8",
+       "kind": "note",
+       "tex": "\\text{A, C, E: } 0.125\\ \\text{mol of atoms}",
+       "note": "the same number of atoms"
+      }
+     ],
+     "answer": "2*0.0625"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s5"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s6"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s7"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s8"
+      ]
+     }
+    ],
+    "fingerprint": "64c0a7f6",
+    "answer": {
+     "value": 0.125,
+     "label": "0.125 mol atoms: A, C, E"
+    }
+   }
+  },
+  {
+   "id": "c5b92730-69cf-4f50-b2a1-ee3c0b66a163",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "p_{\\mathrm{Ne}} = x_{\\mathrm{Ne}}\\,p_{total}",
+       "note": "Dalton law of partial pressures"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "x_{\\mathrm{Ne}} = \\dfrac{20}{25} = 0.8",
+       "f": "20/25",
+       "value": "0.8"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n(\\mathrm{Ne}) = \\dfrac{200}{20} = 10\\ \\text{mol}",
+       "f": "200/20",
+       "value": "10"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "n_{total} = \\dfrac{10}{0.8} = 12.5\\ \\text{mol}",
+       "f": "10/0.8",
+       "value": "12.5"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "n(\\mathrm{O_2}) = 12.5 - 10 = 2.5\\ \\text{mol}",
+       "f": "12.5-10",
+       "value": "2.5"
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "x = 2.5\\times32 = 80\\ \\text{g}",
+       "f": "2.5*32",
+       "value": "80"
+      }
+     ],
+     "answer": "80"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4",
+       "s5"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "8b5bdf8d",
+    "answer": {
+     "value": 80,
+     "label": "80 g"
+    }
+   }
+  },
+  {
+   "id": "c7c6b945-76cd-4dee-ad8c-1f0b6bc9dc39",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "n(\\mathrm{KMnO_4}) = 0.5\\times0.2 = 0.1\\ \\text{mol}",
+       "f": "0.5*0.2",
+       "value": "0.1"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n(\\mathrm{KI}) = 0.5\\times1.2 = 0.6\\ \\text{mol}",
+       "f": "0.5*1.2",
+       "value": "0.6"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\mathrm{2MnO_4^- + 6I^- + 4H_2O \\rightarrow 2MnO_2 + 3I_2 + 8OH^-}",
+       "note": "MnO₄⁻ → MnO₂ is a 3-electron change"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "n(\\mathrm{I^-})\\ \\text{needed} = 0.3\\ \\text{mol} < 0.6\\ \\text{mol}",
+       "note": "KMnO₄ is limiting"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "n(\\mathrm{I_2}) = \\dfrac{3}{2}\\times0.1 = 0.15\\ \\text{mol}",
+       "f": "3/2*0.1",
+       "value": "0.15"
+      },
+      {
+       "step": "s6",
+       "kind": "note",
+       "tex": "\\mathrm{I_2 + 2S_2O_3^{2-} \\rightarrow 2I^- + S_4O_6^{2-}}"
+      },
+      {
+       "step": "s7",
+       "kind": "calc",
+       "tex": "n(\\mathrm{Na_2S_2O_3}) = 2\\times0.15 = 0.3\\ \\text{mol}",
+       "f": "2*0.15",
+       "value": "0.3"
+      },
+      {
+       "step": "s8",
+       "kind": "calc",
+       "tex": "V = \\dfrac{0.3}{0.1} = 3\\ \\text{L}",
+       "f": "0.3/0.1",
+       "value": "3"
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s6",
+       "s7"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s8"
+      ]
+     }
+    ],
+    "fingerprint": "b0021ee6",
+    "answer": {
+     "value": 3,
+     "label": "3 L"
+    }
+   }
+  },
+  {
+   "id": "c7c82ce0-7cd4-45bb-829f-76ece6acefb4",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "3\\,\\mathrm{PbCl_2} + 2\\,\\mathrm{(NH_4)_3PO_4} \\rightarrow 1\\,\\mathrm{Pb_3(PO_4)_2}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{from } \\mathrm{PbCl_2}: \\dfrac{72}{3} = 24\\ \\text{mmol}",
+       "f": "72/3",
+       "value": "24"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{from } \\mathrm{(NH_4)_3PO_4}: \\dfrac{50}{2} = 25\\ \\text{mmol}",
+       "f": "50/2",
+       "value": "25"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "\\mathrm{Pb_3(PO_4)_2} = 24\\ \\text{mmol}",
+       "note": "smaller figure: PbCl₂ is limiting"
+      }
+     ],
+     "answer": "24"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "a6ca1c69",
+    "answer": {
+     "value": 24,
+     "label": "24 mmol"
+    }
+   }
+  },
+  {
+   "id": "c8077b8c-e6e7-4ec5-b441-810e8969f712",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{CH_4 + 2O_2 \\rightarrow CO_2 + 2H_2O}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n(\\mathrm{CO_2}) = \\dfrac{11}{44} = 0.25\\ \\text{mol}",
+       "f": "11/44",
+       "value": "0.25"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "n(\\mathrm{CH_4}) = 0.25\\ \\text{mol}",
+       "note": "1 : 1 mole ratio"
+      }
+     ],
+     "answer": "11/44"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "bcfb107f",
+    "answer": {
+     "value": 0.25,
+     "label": "0.25 mol"
+    }
+   }
+  },
+  {
+   "id": "ce80971d-8311-46a1-bf15-95e4cbfa7a07",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "2\\mathrm{IO_3^-} + x\\mathrm{I^-} + 12\\mathrm{H^+} \\rightarrow 6\\mathrm{I_2} + 6\\mathrm{H_2O}",
+       "note": "balance iodine"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "2 + x = 12",
+       "lhs": "2+x",
+       "rhs": "12",
+       "note": "2 I in 2IO₃⁻, 12 I in 6I₂",
+       "roots": [
+        "10"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{charge: } 2(-1) + 10(-1) + 12(+1) = 0",
+       "f": "2*(-1)+10*(-1)+12*1",
+       "value": "0"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "\\text{O: 6 each side; H: 12 each side}"
+      }
+     ],
+     "answer": "2+10-2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "91eb993d",
+    "answer": {
+     "value": 10,
+     "label": "x = 10"
+    }
+   }
+  },
+  {
+   "id": "cea891b8-8321-413e-a5ea-77ebbf835e49",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "n = (0.020\\times2) + (0.400\\times0.5) = 0.04 + 0.20",
+       "f": "0.020*2+0.400*0.5",
+       "value": "0.04+0.20"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n = 0.24\\ \\text{mol}",
+       "f": "0.04+0.20",
+       "value": "0.24"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "V = 20 + 400 = 420\\ \\text{mL} = 0.420\\ \\text{L}",
+       "f": "20+400",
+       "value": "420"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "c = \\dfrac{0.24}{0.420} = 0.5714\\ \\text{M}",
+       "f": "0.24/0.420",
+       "value": "0.5714",
+       "dp": 4
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "0.5714 = 57.14\\times10^{-2}\\ \\text{M}",
+       "f": "57.14*10^(-2)",
+       "value": "0.5714",
+       "sf": 4
+      }
+     ],
+     "answer": "57"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "b9c62517",
+    "answer": {
+     "value": 57,
+     "label": "57"
+    }
+   }
+  },
+  {
+   "id": "ced2b5c7-1ba8-47ec-af0b-05a2ff0dd32e",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{C_3H_8 + 5O_2 \\rightarrow 3CO_2 + 4H_2O}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n(\\mathrm{C_3H_8}) = \\dfrac{100}{44} = 2.27\\ \\text{mol}",
+       "f": "100/44",
+       "value": "2.27",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n(\\mathrm{O_2}) = \\dfrac{1000}{32} = 31.25\\ \\text{mol}",
+       "f": "1000/32",
+       "value": "31.25",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "5\\times2.27 = 11.35\\ \\text{mol } \\mathrm{O_2}",
+       "f": "5*2.27",
+       "value": "11.35",
+       "note": "propane is limiting",
+       "dp": 2
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "31.25 - 11.35 = 19.9\\ \\text{mol } \\mathrm{O_2}",
+       "f": "31.25-11.35",
+       "value": "19.9",
+       "dp": 1
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "n(\\mathrm{CO_2}) = 3\\times2.27 = 6.81\\ \\text{mol}",
+       "f": "3*2.27",
+       "value": "6.81",
+       "dp": 2
+      },
+      {
+       "step": "s7",
+       "kind": "calc",
+       "tex": "n(\\mathrm{H_2O}) = 4\\times2.27 = 9.08\\ \\text{mol}",
+       "f": "4*2.27",
+       "value": "9.08",
+       "dp": 2
+      },
+      {
+       "step": "s8",
+       "kind": "calc",
+       "tex": "x_{\\mathrm{CO_2}} = \\dfrac{6.81}{19.9 + 6.81 + 9.08} = 0.190",
+       "f": "6.81/(19.9+6.81+9.08)",
+       "value": "0.190",
+       "note": "0.190 = 19.0 × 10⁻²",
+       "dp": 3
+      }
+     ],
+     "answer": "19"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4",
+       "s5"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s6",
+       "s7"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s8"
+      ]
+     }
+    ],
+    "fingerprint": "4c5675fa",
+    "answer": {
+     "value": 19,
+     "label": "19"
+    }
+   }
+  },
+  {
+   "id": "cfaa128f-d38c-4044-83de-7b6d7d398d1f",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{CH_4 + 2O_2 \\rightarrow CO_2 + 2H_2O}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "M(\\mathrm{CO_2}) = 12.0 + 2(16.0) = 44.0\\ \\text{g mol}^{-1}",
+       "f": "12.0+2*16.0",
+       "value": "44.0",
+       "dp": 1
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n(\\mathrm{CO_2}) = \\dfrac{22}{44} = 0.5\\ \\text{mol}",
+       "f": "22/44",
+       "value": "0.5"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "n(\\mathrm{CH_4}) = 0.5\\ \\text{mol}",
+       "note": "1 : 1 stoichiometry"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "M(\\mathrm{CH_4}) = 12.0 + 4(1.0) = 16.0\\ \\text{g mol}^{-1}",
+       "f": "12.0+4*1.0",
+       "value": "16.0",
+       "dp": 1
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "m = 0.5\\times16.0 = 8\\ \\text{g}",
+       "f": "0.5*16.0",
+       "value": "8"
+      }
+     ],
+     "answer": "8"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s5",
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "b8c4becc",
+    "answer": {
+     "value": 8,
+     "label": "8 g"
+    }
+   }
+  },
+  {
+   "id": "d06f7fae-9ada-401b-92ec-7659da7c0cd8",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{N_2O_5} \\rightarrow 2\\mathrm{NO_2} + \\tfrac{1}{2}\\mathrm{O_2}",
+       "note": "initial pressure of N₂O₅ is P₀"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{remaining } \\mathrm{N_2O_5} = 0.5P_0",
+       "note": "50% reacted"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\mathrm{NO_2} = 2\\times0.5P_0 = P_0",
+       "f": "2*0.5*P0",
+       "value": "P0"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\mathrm{O_2} = \\tfrac{1}{2}\\times0.5P_0 = 0.25P_0",
+       "f": "0.5*0.5*P0",
+       "value": "0.25*P0"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "P = 0.5P_0 + P_0 + 0.25P_0 = 1.75P_0",
+       "f": "0.5*P0+P0+0.25*P0",
+       "value": "1.75*P0"
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "P = 1.75P_0 = \\dfrac{7}{4}P_0",
+       "f": "1.75*P0",
+       "value": "7/4*P0"
+      }
+     ],
+     "answer": "7/4*P0",
+     "vars": {
+      "P0": "2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s5",
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "27a8baf2",
+    "answer": {
+     "value": 3.5,
+     "label": "7/4 of initial pressure"
+    }
+   }
+  },
+  {
+   "id": "d200e0d8-2d0d-420c-b7b7-4a774dc5203e",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "V\\times0.02\\times1 = 10.0\\times0.01\\times2",
+       "note": "milliequivalents are equal"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "0.02V = 0.2",
+       "lhs": "0.02*x",
+       "rhs": "0.2",
+       "roots": [
+        "10"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "V = \\dfrac{0.2}{0.02} = 10.0\\ \\text{mL}",
+       "f": "0.2/0.02",
+       "value": "10.0",
+       "dp": 1
+      }
+     ],
+     "answer": "0.2/0.02"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "687e0132",
+    "answer": {
+     "value": 10,
+     "label": "10.0 mL"
+    }
+   }
+  },
+  {
+   "id": "d2b951de-e62b-40c2-be41-1f4d1c696b71",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "m(\\mathrm{O}) = 100 - 69.9 = 30.1\\ \\text{g}",
+       "f": "100-69.9",
+       "value": "30.1",
+       "note": "in 100 g of the oxide",
+       "dp": 1
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n_{\\mathrm{Fe}} = \\dfrac{69.9}{56} = 1.248",
+       "f": "69.9/56",
+       "value": "1.248",
+       "dp": 3
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n_{\\mathrm{O}} = \\dfrac{30.1}{16} = 1.881",
+       "f": "30.1/16",
+       "value": "1.881",
+       "dp": 3
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\mathrm{Fe:O} = 1 : \\dfrac{1.881}{1.248} = 1 : 1.507",
+       "f": "1.881/1.248",
+       "value": "1.507",
+       "note": "divide by the smaller",
+       "dp": 3
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "1 : 1.507 \\approx 2 : 3 \\Rightarrow \\mathrm{Fe_2O_3}"
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "\\%\\,\\mathrm{Fe} = \\dfrac{112}{160}\\times100 = 70.0\\%",
+       "f": "112/160*100",
+       "value": "70.0",
+       "note": "check: matches the given 69.9%",
+       "dp": 1
+      },
+      {
+       "step": "s7",
+       "kind": "note",
+       "tex": "\\mathrm{FeO}: 77.8\\%,\\quad \\mathrm{Fe_3O_4}: 72.4\\%"
+      }
+     ],
+     "answer": "112/160*100"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s6",
+       "s7"
+      ]
+     }
+    ],
+    "fingerprint": "c78ce2cd",
+    "answer": {
+     "value": 70,
+     "label": "Fe₂O₃"
+    }
+   }
+  },
+  {
+   "id": "d314ee37-61d5-4ac5-9250-8ea278bb3c6f",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "m(\\text{sugar}) = 0.25\\times200 + 0.40\\times500 = 50 + 200",
+       "f": "0.25*200+0.40*500",
+       "value": "50+200"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "m(\\text{sugar}) = 250\\ \\text{g}",
+       "f": "50+200",
+       "value": "250"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "m(\\text{solution}) = 200 + 500 = 700\\ \\text{g}",
+       "f": "200+500",
+       "value": "700"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\dfrac{250}{700}\\times100 = 35.7\\%",
+       "f": "250/700*100",
+       "value": "35.7",
+       "dp": 1
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "35.7\\% \\approx 36\\%",
+       "f": "250/700*100",
+       "value": "36",
+       "dp": 0
+      }
+     ],
+     "answer": "36"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "25b3ad96",
+    "answer": {
+     "value": 36,
+     "label": "36"
+    }
+   }
+  },
+  {
+   "id": "d609c6d5-a510-4d7a-bd3f-7f6fb78d0000",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "n = \\dfrac{0.448}{22.4} = 0.02\\ \\text{mol}",
+       "f": "0.448/22.4",
+       "value": "0.02",
+       "note": "448 mL = 0.448 L at STP"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "M = \\dfrac{1.53}{0.02} = 76.5\\ \\text{g mol}^{-1}",
+       "f": "1.53/0.02",
+       "value": "76.5",
+       "dp": 1
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\text{A has a } C=C \\text{ with an H on each doubly bonded carbon}",
+       "note": "ozonolysis gives aldehydes"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\mathrm{C_3H_5Cl}: 36 + 5 + 35.5 = 76.5",
+       "f": "36+5+35.5",
+       "value": "76.5",
+       "dp": 1
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "\\mathrm{CH_3CH{=}CHCl}\\ \\rightarrow\\ \\mathrm{CH_3CHO} + \\mathrm{HCOCl}",
+       "note": "1-chloroprop-1-ene"
+      },
+      {
+       "step": "s6",
+       "kind": "note",
+       "tex": "\\text{carbon atoms} = 3"
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "5ff5d433",
+    "answer": {
+     "value": 3,
+     "label": "3"
+    }
+   }
+  },
+  {
+   "id": "d6b86c48-9366-442f-9956-19e9dc001a38",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "n(\\mathrm{H_2O}) = \\dfrac{1000}{18} = 55.56\\ \\text{mol}",
+       "f": "1000/18",
+       "value": "55.56",
+       "note": "in 1 kg of water",
+       "dp": 2
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "4.44 + 55.56 = 60.00",
+       "f": "4.44+55.56",
+       "value": "60.00",
+       "dp": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "x_{urea} = \\dfrac{4.44}{60.00} = 0.0740",
+       "f": "4.44/60.00",
+       "value": "0.0740",
+       "dp": 4
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "0.0740 = 74\\times10^{-3}",
+       "f": "74*10^(-3)",
+       "value": "0.074",
+       "sf": 2
+      }
+     ],
+     "answer": "74"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "ed0a26e7",
+    "answer": {
+     "value": 74,
+     "label": "74"
+    }
+   }
+  },
+  {
+   "id": "db4d44f7-655d-4ab5-aa57-545debb727e3",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "M(\\mathrm{KNO_3}) = 39 + 14 + 3\\times16 = 101",
+       "f": "39+14+3*16",
+       "value": "101"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n(\\mathrm{KNO_3}) = \\dfrac{110}{101} = 1.089\\ \\text{mol}",
+       "f": "110/101",
+       "value": "1.089",
+       "dp": 3
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n(\\mathrm{HNO_3}) = \\dfrac{4}{3}\\times1.089 = 1.452\\ \\text{mol}",
+       "f": "4/3*1.089",
+       "value": "1.452",
+       "note": "4 mol HNO₃ give 3 mol KNO₃",
+       "dp": 3
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "M(\\mathrm{HNO_3}) = 1 + 14 + 48 = 63",
+       "f": "1+14+48",
+       "value": "63"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "m = 1.452\\times63 = 91.5\\ \\text{g}",
+       "f": "1.452*63",
+       "value": "91.5",
+       "dp": 1
+      }
+     ],
+     "answer": "1.452*63"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "4ba96d59",
+    "answer": {
+     "value": 91.476,
+     "label": "91.5 g"
+    }
+   }
+  },
+  {
+   "id": "dd316487-1a71-42ee-a42b-e202fbf35cbb",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{C_6H_{12}O_6 + 6O_2 \\rightarrow 6CO_2 + 6H_2O}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n(\\text{glucose}) = \\dfrac{900}{180} = 5\\ \\text{mol}",
+       "f": "900/180",
+       "value": "5"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n(\\mathrm{O_2}) = 5\\times6 = 30\\ \\text{mol}",
+       "f": "5*6",
+       "value": "30"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "m(\\mathrm{O_2}) = 30\\times32 = 960\\ \\text{g}",
+       "f": "30*32",
+       "value": "960"
+      }
+     ],
+     "answer": "30*32"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "840728b5",
+    "answer": {
+     "value": 960,
+     "label": "960 g"
+    }
+   }
+  },
+  {
+   "id": "defaf559-84aa-46cd-ba9f-2bfcd4f1b621",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "1\\ \\text{L of sea water} = 2000\\ \\text{g}",
+       "note": "density 2 g mL⁻¹"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "m(\\mathrm{NaCl}) = 6\\times58.5 = 351\\ \\text{g}",
+       "f": "6*58.5",
+       "value": "351"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "m(\\text{water}) = 2000 - 351 = 1649\\ \\text{g} = 1.649\\ \\text{kg}",
+       "f": "2000-351",
+       "value": "1649"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "m(\\mathrm{O_2}) = 5.8\\times10^{-6}\\times2000 = 1.16\\times10^{-2}\\ \\text{g}",
+       "f": "5.8*10^(-6)*2000",
+       "value": "1.16*10^(-2)",
+       "sf": 3
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "n(\\mathrm{O_2}) = \\dfrac{1.16\\times10^{-2}}{32} = 3.625\\times10^{-4}\\ \\text{mol}",
+       "f": "1.16*10^(-2)/32",
+       "value": "3.625*10^(-4)",
+       "sf": 4
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "m = \\dfrac{3.625\\times10^{-4}}{1.649} = 2.20\\times10^{-4}\\ \\text{mol kg}^{-1}",
+       "f": "3.625*10^(-4)/1.649",
+       "value": "2.20*10^(-4)",
+       "sf": 3
+      },
+      {
+       "step": "s7",
+       "kind": "calc",
+       "tex": "x \\approx 2",
+       "f": "2.20",
+       "value": "2",
+       "dp": 0
+      }
+     ],
+     "answer": "2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s6",
+       "s7"
+      ]
+     }
+    ],
+    "fingerprint": "11736755",
+    "answer": {
+     "value": 2,
+     "label": "2"
+    }
+   }
+  },
+  {
+   "id": "e098bb86-d78e-4a88-b0b5-c19ea2a3046a",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Fe_3O_4(s) + 4CO(g) \\rightarrow 3Fe(l) + 4CO_2(g)}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n(\\mathrm{Fe_3O_4}) = \\dfrac{2.32\\times10^{6}}{232} = 1.0\\times10^{4}\\ \\text{mol}",
+       "f": "2.32*10^6/232",
+       "value": "1.0*10^4",
+       "sf": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n(\\mathrm{CO}) = \\dfrac{2.8\\times10^{5}}{28} = 1.0\\times10^{4}\\ \\text{mol}",
+       "f": "2.8*10^5/28",
+       "value": "1.0*10^4",
+       "sf": 2
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "4\\times10^{4}\\ \\text{mol CO needed, } 1\\times10^{4}\\ \\text{available}",
+       "note": "CO is the limiting reagent"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "n(\\mathrm{Fe}) = \\dfrac{3}{4}\\times1.0\\times10^{4} = 7.5\\times10^{3}\\ \\text{mol}",
+       "f": "3/4*1.0*10^4",
+       "value": "7.5*10^3",
+       "sf": 2
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "m = 7.5\\times10^{3}\\times56 = 4.2\\times10^{5}\\ \\text{g}",
+       "f": "7.5*10^3*56",
+       "value": "4.2*10^5",
+       "sf": 2
+      },
+      {
+       "step": "s7",
+       "kind": "calc",
+       "tex": "m = 420\\ \\text{kg}",
+       "f": "4.2*10^5/1000",
+       "value": "420"
+      }
+     ],
+     "answer": "420"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s5"
+      ]
+     },
+     {
+      "from": 10,
+      "beats": [
+       "s6",
+       "s7"
+      ]
+     }
+    ],
+    "fingerprint": "f67d6d76",
+    "answer": {
+     "value": 420,
+     "label": "420 kg"
+    }
+   }
+  },
+  {
+   "id": "e0ced450-1017-4dc1-a7d3-4cee3a3dfbe0",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Cr_2O_7^{2-} + 6Fe^{2+} + 14H^+ \\rightarrow 2Cr^{3+} + 6Fe^{3+} + 7H_2O}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n(\\mathrm{K_2Cr_2O_7}) = 0.1\\times0.015 = 1.5\\times10^{-3}\\ \\text{mol}",
+       "f": "0.1*0.015",
+       "value": "1.5*10^(-3)",
+       "sf": 2
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n(\\mathrm{Fe^{2+}}) = 6\\times1.5\\times10^{-3} = 9\\times10^{-3}\\ \\text{mol}",
+       "f": "6*1.5*10^(-3)",
+       "value": "9*10^(-3)",
+       "sf": 1
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "M = \\dfrac{9\\times10^{-3}}{0.010} = 0.9\\ \\text{M}",
+       "f": "9*10^(-3)/0.010",
+       "value": "0.9",
+       "note": "in 10 mL"
+      }
+     ],
+     "answer": "0.9"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "6981b874",
+    "answer": {
+     "value": 0.9,
+     "label": "0.9 M"
+    }
+   }
+  },
+  {
+   "id": "e1dc9528-6d48-427f-9934-d9bb95a0a3fb",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "n = \\dfrac{0.90}{18} = 0.05\\ \\text{mol}",
+       "f": "0.90/18",
+       "value": "0.05"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "P = \\dfrac{32}{760} = 0.0421\\ \\text{atm}",
+       "f": "32/760",
+       "value": "0.0421",
+       "note": "T = 300 K",
+       "dp": 4
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "V = \\dfrac{0.05\\times0.082\\times300}{0.0421} = 29.2\\ \\text{L}",
+       "f": "0.05*0.082*300/0.0421",
+       "value": "29.2",
+       "dp": 1
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "V \\approx 29\\ \\text{L}",
+       "f": "0.05*0.082*300/0.0421",
+       "value": "29",
+       "dp": 0
+      }
+     ],
+     "answer": "29"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "a0209df9",
+    "answer": {
+     "value": 29,
+     "label": "29 L"
+    }
+   }
+  },
+  {
+   "id": "e308a518-cdcd-40fb-b704-e161b0dcf774",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{HCl : H_2} = 6 : 3 = 2 : 1",
+       "note": "1 mol HCl gives 0.5 mol H₂"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "0.5\\times22.4 = 11.2\\ \\text{L at STP}",
+       "f": "0.5*22.4",
+       "value": "11.2",
+       "dp": 1
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "1\\ \\text{mol Al}: 1.5\\ \\text{mol H}_2 = 33.6\\ \\text{L}",
+       "f": "1.5*22.4",
+       "value": "33.6",
+       "note": "so (B), 67.2 L, is wrong",
+       "dp": 1
+      }
+     ],
+     "answer": "0.5*22.4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "c63324a0",
+    "answer": {
+     "value": 11.2,
+     "label": "11.2 L per mol HCl"
+    }
+   }
+  },
+  {
+   "id": "e5419448-688f-4ca4-a8b2-db37313edd61",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "3\\ m:\\ 3\\ \\text{mol NaOH in } 1000\\ \\text{g of water}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "m(\\mathrm{NaOH}) = 3\\times40 = 120\\ \\text{g}",
+       "f": "3*40",
+       "value": "120"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "m(\\text{solution}) = 1000 + 120 = 1120\\ \\text{g}",
+       "f": "1000+120",
+       "value": "1120"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "V = \\dfrac{1120}{1.12} = 1000\\ \\text{mL} = 1\\ \\text{L}",
+       "f": "1120/1.12",
+       "value": "1000"
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "x = \\dfrac{3\\ \\text{mol}}{1\\ \\text{L}} = 3.0"
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "1f8b5814",
+    "answer": {
+     "value": 3,
+     "label": "3.0 M"
+    }
+   }
+  },
+  {
+   "id": "e607dcb7-1fa0-42ad-bfa4-c768f1129f2c",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "n(\\mathrm{HCl}) = 0.250\\times0.76 = 0.19\\ \\text{mol}",
+       "f": "0.250*0.76",
+       "value": "0.19"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n(\\mathrm{CaCO_3}) = \\dfrac{1000}{100} = 10\\ \\text{mol}",
+       "f": "1000/100",
+       "value": "10",
+       "note": "large excess: HCl is limiting"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n(\\mathrm{CaCl_2}) = \\dfrac{0.19}{2} = 0.095\\ \\text{mol}",
+       "f": "0.19/2",
+       "value": "0.095",
+       "dp": 3
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "M(\\mathrm{CaCl_2}) = 40 + 2(35.5) = 111\\ \\text{g mol}^{-1}",
+       "f": "40+2*35.5",
+       "value": "111"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "m = 0.095\\times111 = 10.545\\ \\text{g}",
+       "f": "0.095*111",
+       "value": "10.545",
+       "dp": 3
+      }
+     ],
+     "answer": "0.095*111"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "0d19b0e0",
+    "answer": {
+     "value": 10.545,
+     "label": "10.545 g"
+    }
+   }
+  },
+  {
+   "id": "e87c0c99-6cd5-4b7d-91cc-5657569ed129",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\dfrac{P_1}{T_1} = \\dfrac{P_2}{T_2}",
+       "note": "rigid tank, T in kelvin"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "T_1 = 300\\ \\text{K},\\quad T_2 = 318\\ \\text{K}"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "P_2 = 30\\times\\dfrac{318}{300} = 31.8\\ \\text{atm}",
+       "f": "30*318/300",
+       "value": "31.8",
+       "dp": 1
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "P_2 \\approx 32\\ \\text{atm}",
+       "f": "30*318/300",
+       "value": "32",
+       "dp": 0
+      }
+     ],
+     "answer": "32"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "14bc7f90",
+    "answer": {
+     "value": 32,
+     "label": "32 atm"
+    }
+   }
+  },
+  {
+   "id": "e98c704a-d5ad-4c33-902b-23deb8f2f861",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "n(\\mathrm{H_2SO_4}) = 2\\times0.2 = 0.4\\ \\text{mol}",
+       "f": "2*0.2",
+       "value": "0.4",
+       "note": "n(NaOH) = 2 × 0.1 = 0.2 mol"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{H_2SO_4 + 2NaOH \\rightarrow Na_2SO_4 + 2H_2O}",
+       "note": "NaOH is limiting"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n(\\mathrm{Na_2SO_4}) = \\dfrac{0.2}{2} = 0.1\\ \\text{mol}",
+       "f": "0.2/2",
+       "value": "0.1"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "V = 2 + 2 = 4\\ \\text{L}",
+       "f": "2+2",
+       "value": "4"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "M = \\dfrac{0.1}{4} = 0.025\\ \\text{M} = 25\\ \\text{millimolar}",
+       "f": "0.1/4",
+       "value": "0.025",
+       "dp": 3
+      }
+     ],
+     "answer": "25"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "50234776",
+    "answer": {
+     "value": 25,
+     "label": "25 millimolar"
+    }
+   }
+  },
+  {
+   "id": "ea2dad92-6234-456f-90ad-3aba8c662960",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\dfrac{40}{10} = 4\\ \\text{volumes of } \\mathrm{CO_2}",
+       "f": "40/10",
+       "value": "4",
+       "note": "4 carbon atoms per molecule"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{50}{10} = 5\\ \\text{volumes of water vapour}",
+       "f": "50/10",
+       "value": "5",
+       "note": "5 × 2 = 10 hydrogen atoms"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\mathrm{C_4H_{10}}"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "4 + 10 = 14",
+       "f": "4+10",
+       "value": "14"
+      }
+     ],
+     "answer": "14"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "7bb5c807",
+    "answer": {
+     "value": 14,
+     "label": "14"
+    }
+   }
+  },
+  {
+   "id": "f1a78255-74e5-4e7b-a54a-69afb0f35c51",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "M = 2(1)+2(12)+4(16)+2(18) = 126\\ \\text{g mol}^{-1}",
+       "f": "2*1+2*12+4*16+2*18",
+       "value": "126"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n = \\dfrac{6.3}{126} = 0.05\\ \\text{mol}",
+       "f": "6.3/126",
+       "value": "0.05"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "c = \\dfrac{0.05}{0.250} = 0.20\\ \\text{mol L}^{-1}",
+       "f": "0.05/0.250",
+       "value": "0.20",
+       "note": "250 mL = 0.250 L",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "0.20 = 20\\times10^{-2}",
+       "f": "20*10^(-2)",
+       "value": "0.2",
+       "sf": 2
+      }
+     ],
+     "answer": "20"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "aa93a690",
+    "answer": {
+     "value": 20,
+     "label": "20"
+    }
+   }
+  },
+  {
+   "id": "f1caa788-5bfe-4e53-9a4a-fa535c6ae032",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "m(\\mathrm{CHCl_3}) = 671.141\\times1.49 = 1000.0\\ \\text{g}",
+       "f": "671.141*1.49",
+       "value": "1000.0",
+       "dp": 1
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n = 2.6\\times10^{-3}\\times0.671141 = 1.745\\times10^{-3}\\ \\text{mol}",
+       "f": "2.6*10^(-3)*0.671141",
+       "value": "1.745*10^(-3)",
+       "sf": 4
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "M(\\mathrm{CH_2Cl_2}) = 12 + 2 + 71 = 85\\ \\text{g mol}^{-1}",
+       "f": "12+2+71",
+       "value": "85"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "m(\\mathrm{DCM}) = 1.745\\times10^{-3}\\times85 = 0.1483\\ \\text{g}",
+       "f": "1.745*10^(-3)*85",
+       "value": "0.1483",
+       "dp": 4
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "m(\\text{solution}) = 1000.0 + 0.1483 = 1000.15\\ \\text{g}",
+       "f": "1000.0+0.1483",
+       "value": "1000.15",
+       "dp": 2
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "\\dfrac{0.1483}{1000.15}\\times10^{6} = 148.3\\ \\text{ppm}",
+       "f": "0.1483/1000.15*10^6",
+       "value": "148.3",
+       "dp": 1
+      },
+      {
+       "step": "s7",
+       "kind": "calc",
+       "tex": "148.3 \\approx 148\\ \\text{ppm}",
+       "f": "0.1483/1000.15*10^6",
+       "value": "148",
+       "dp": 0
+      }
+     ],
+     "answer": "148"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s5",
+       "s6",
+       "s7"
+      ]
+     }
+    ],
+    "fingerprint": "4fdab556",
+    "answer": {
+     "value": 148,
+     "label": "148 ppm"
+    }
+   }
+  },
+  {
+   "id": "f41000f9-79bc-41a6-8eda-4aa1c59028b6",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "2700\\ \\text{kJ} \\rightarrow 180\\ \\text{g of glucose}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "1\\ \\text{kJ} \\rightarrow \\dfrac{180}{2700}\\ \\text{g of glucose}"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "10000\\ \\text{kJ} \\rightarrow \\dfrac{180}{2700}\\times10000 = 666.67\\ \\text{g}",
+       "f": "180/2700*10000",
+       "value": "666.67",
+       "dp": 2
+      }
+     ],
+     "answer": "180/2700*10000"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "8f875e18",
+    "answer": {
+     "value": 666.6666666666666,
+     "label": "666.67 g"
+    }
+   }
+  },
+  {
+   "id": "f66e81bc-5c3e-47ed-b540-5188af8769a4",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "m(\\text{acid solution}) = 50\\times1.3 = 65\\ \\text{g}",
+       "f": "50*1.3",
+       "value": "65"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "m(\\mathrm{H_2SO_4}) = 32.5\\ \\text{g},\\ n = \\dfrac{32.5}{98} = 0.332\\ \\text{mol}",
+       "f": "32.5/98",
+       "value": "0.332",
+       "note": "50% purity: half of 65 g",
+       "dp": 3
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n(\\mathrm{Zn}) = \\dfrac{20}{65} = 0.3077\\ \\text{mol}",
+       "f": "20/65",
+       "value": "0.3077",
+       "dp": 4
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "\\mathrm{Zn + H_2SO_4 \\rightarrow ZnSO_4 + H_2}",
+       "note": "1:1, Zn limits: n(H₂) = 0.3077 mol"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "V = 0.3077\\times22.4 = 6.892\\ \\text{L}",
+       "f": "0.3077*22.4",
+       "value": "6.892",
+       "dp": 3
+      }
+     ],
+     "answer": "0.3077*22.4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "6c6b4dad",
+    "answer": {
+     "value": 6.892479999999999,
+     "label": "6.892 L"
+    }
+   }
+  },
+  {
+   "id": "f69c4437-6ca0-45ec-89da-b686c6798065",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Mg + 2HCl \\rightarrow MgCl_2 + H_2}",
+       "note": "1 mol Mg gives 1 mol H₂"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n(\\mathrm{Mg}) = \\dfrac{2.4}{24} = 0.1\\ \\text{mol}",
+       "f": "2.4/24",
+       "value": "0.1"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "V = 0.1\\times22.4 = 2.24\\ \\text{L}",
+       "f": "0.1*22.4",
+       "value": "2.24",
+       "dp": 2
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "2.24 = 224\\times10^{-2}\\ \\text{L}",
+       "f": "224*10^(-2)",
+       "value": "2.24",
+       "sf": 3
+      }
+     ],
+     "answer": "224"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "e0207aa5",
+    "answer": {
+     "value": 224,
+     "label": "224"
+    }
+   }
+  },
+  {
+   "id": "f93423b5-3345-4ae3-898f-ba0e1da9c88e",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\text{A: } 2\\times(6+12) = 2\\times18 = 36\\ \\text{mol of atoms}",
+       "f": "2*(6+12)",
+       "value": "36"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "M(\\text{sucrose}) = 12(12)+22(1)+11(16) = 342\\ \\text{g mol}^{-1}",
+       "f": "12*12+22*1+11*16",
+       "value": "342"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n = \\dfrac{684}{342} = 2",
+       "f": "684/342",
+       "value": "2",
+       "note": "B: sucrose"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "2\\times(12+22+11) = 2\\times45 = 90\\ \\text{mol of atoms}",
+       "f": "2*(12+22+11)",
+       "value": "90"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "\\text{C: } \\dfrac{90.8}{22.7} = 4\\ \\text{mol } \\mathrm{H_2}",
+       "f": "90.8/22.7",
+       "value": "4",
+       "note": "1 mol at STP = 22.7 L"
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "4\\times2 = 8\\ \\text{mol of atoms}",
+       "f": "4*2",
+       "value": "8"
+      },
+      {
+       "step": "s7",
+       "kind": "note",
+       "tex": "\\text{with } 22.4\\ \\text{L: } 8.1\\ \\text{mol of atoms}",
+       "note": "the older value changes little"
+      },
+      {
+       "step": "s8",
+       "kind": "note",
+       "tex": "90 > 36 > 8 \\Rightarrow (B) > (A) > (C)"
+      }
+     ],
+     "answer": "2*(12+22+11)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s5",
+       "s6"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s7"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s8"
+      ]
+     }
+    ],
+    "fingerprint": "4d12e446",
+    "answer": {
+     "value": 90,
+     "label": "B > A > C: 90 > 36 > 8"
+    }
+   }
+  },
+  {
+   "id": "fdbc9645-c11f-4cc1-9470-d5d01afbee46",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "n\\text{-factors: } \\mathrm{MnO_4^-} = 5,\\ \\text{oxalic acid} = 2"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "5M\\times2 = 2\\times2\\times20",
+       "lhs": "5*x*2",
+       "rhs": "2*2*20",
+       "note": "equating equivalents (M × mL)",
+       "roots": [
+        "8"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "10M = 80",
+       "lhs": "10*x",
+       "rhs": "80",
+       "roots": [
+        "8"
+       ]
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "M = \\dfrac{80}{10} = 8\\ \\text{M}",
+       "f": "80/10",
+       "value": "8"
+      }
+     ],
+     "answer": "8"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "ff05f0b4",
+    "answer": {
+     "value": 8,
+     "label": "8 M"
+    }
+   }
+  },
+  {
+   "id": "fecfce5b-df0d-417e-85bb-161ae2292bba",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "m(\\text{liquid}) = 135.0 - 40.0 = 95.0\\ \\text{g}",
+       "f": "135.0-40.0",
+       "value": "95.0",
+       "dp": 1
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "V = \\dfrac{95.0}{0.95} = 100\\ \\text{mL} = 0.1\\ \\text{L}",
+       "f": "95.0/0.95",
+       "value": "100"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "m(\\text{gas}) = 40.5 - 40.0 = 0.5\\ \\text{g}",
+       "f": "40.5-40.0",
+       "value": "0.5",
+       "dp": 1
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "0.82\\times0.1 = \\dfrac{0.5}{M}\\times0.082\\times250",
+       "lhs": "0.82*0.1",
+       "rhs": "(0.5/x)*0.082*250",
+       "note": "PV = nRT",
+       "roots": [
+        "125"
+       ]
+      },
+      {
+       "step": "s5",
+       "kind": "eq",
+       "tex": "0.082 = \\dfrac{10.25}{M}",
+       "lhs": "0.082",
+       "rhs": "10.25/x",
+       "roots": [
+        "125"
+       ]
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "M = \\dfrac{10.25}{0.082} = 125\\ \\text{g mol}^{-1}",
+       "f": "10.25/0.082",
+       "value": "125"
+      }
+     ],
+     "answer": "10.25/0.082"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4",
+       "s5",
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "cc033e37",
+    "answer": {
+     "value": 125,
+     "label": "125 g/mol"
+    }
+   }
+  },
+  {
+   "id": "ff1d2829-9f39-442f-ba77-b7ab1c959b4a",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "14(300 - T) = T - 60",
+       "lhs": "14*(300-x)",
+       "rhs": "x-60",
+       "note": "heat lost = heat gained",
+       "roots": [
+        "284"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "T = 284\\ \\text{K}",
+       "f": "4260/15",
+       "value": "284"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n = \\dfrac{3.0}{28}\\ \\text{mol},\\quad V = 3\\times10^{-3}\\ \\text{m}^3",
+       "f": "3.0/28",
+       "value": "0.10714",
+       "note": "combined volume 3 L",
+       "dp": 5
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "P = \\dfrac{(3/28)\\times8.31\\times284}{3\\times10^{-3}} = 8.43\\times10^{4}\\ \\text{Pa}",
+       "f": "(3/28)*8.31*284/(3*10^(-3))",
+       "value": "8.43*10^4",
+       "sf": 3
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "P = 0.843\\ \\text{bar} = 84.3\\times10^{-2}\\ \\text{bar}",
+       "f": "8.43*10^4/10^5",
+       "value": "0.843",
+       "dp": 3
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "x \\approx 84",
+       "f": "84.3",
+       "value": "84",
+       "dp": 0
+      }
+     ],
+     "answer": "84"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4",
+       "s5",
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "c31bc58d",
+    "answer": {
+     "value": 84,
+     "label": "84"
+    }
+   }
+  }
+ ],
+ "decided": []
+}
