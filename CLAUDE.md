@@ -356,6 +356,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-10 (seventh) — "Asked in NDA" twins for CBSE 11+12 Maths: all 17 runs, 2,282 pairs in prod (no migration).**
+  - **Same pipeline, a new plan only** (`scripts/cross-exam/pairs/nda-maths-cbse.json`, from the rulings' `ncert.coveredBy`); the CBSE 12 board papers 2022-2026 are read with the book exercises. Matrices piloted first: the passes agreed on the kind more often than on the State Board (86% vs 73%).
+  - **705 of 2,280 NDA Maths questions have a CBSE twin, 337 exact or new numbers;** with the State Board, 1,029 (45%) and 544 (24%).
+  - **Both passes can share an over-broad group, which settle then accepts unread:** order-and-degree and "derivative with respect to" pairs were cut to the shared feature after settling (62 removed). Runbook step added (README D).
+  - **Not run:** Trig Equations and Quadratic Equations (not in the rationalised NCERT books), Binary Numbers, Height & Distance. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-10 (sixth) — Board past-paper subject pages get the same upgrade (no migration).**
   - **What:** `/question-papers/<exam>/<subject>` (CBSE 10/12, HSC 12, SSC 10): year headings with exam and subject, older years folded, a facts box, "What N papers show", a computed FAQ (`lib/questionPapers/subjectPage.ts`).
   - **Averages count one set per paper and only papers with the newest total:** sets of one paper share just 64% of questions, and 2022 CBSE papers were 35/40-mark term papers.
