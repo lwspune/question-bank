@@ -9,7 +9,7 @@ import type { ExamFamilyNode } from "./examFamily";
  * (a family summed over its members): Maharashtra State Board 337, JEE Mains
  * 240, MHT-CET 238, CBSE 207, Worksheets 11+12 149, SSC CGL 134, MPSC 134,
  * NDA 91, NEET 78, CDS 59, UPSC 37, IPMAT 20, AFCAT 15, Foundation 14, SPI 2,
- * CISCE 1 (live since 10-30), UCEED (live 2026-11-03, no sign-ups yet), then IISER IAT (added 2026-11-08). The one exception: Worksheets sits just after
+ * CISCE 1 (live since 10-30), UCEED (live 2026-11-03, no sign-ups yet), then IISER IAT (added 2026-11-08), then UGC NET (added 2026-11-10). The one exception: Worksheets sits just after
  * NDA, not above it. It is an NDA maths course, and its generic name likely
  * draws board students who mean "Class 11-12 worksheets", so its count is not
  * clean demand.
@@ -38,6 +38,7 @@ export const EXAM_DEMAND_ORDER: readonly string[] = [
   "spi",
   "uceed",
   "iiser-iat",
+  "ugc-net",
 ];
 
 function keyOf<T>(node: ExamFamilyNode<T>): string | undefined {

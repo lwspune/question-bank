@@ -455,6 +455,7 @@ describe("exam tiers", () => {
       "afcat",
       "ssc-cgl",
       "ssc-cgl-tier-2",
+      "ugc-net",
     ],
   };
 

@@ -47,7 +47,8 @@ export type ExamSlug =
   | "ssc-cgl-tier-2"
   | "imat"
   | "spi"
-  | "uceed";
+  | "uceed"
+  | "ugc-net";
 
 /**
  * School boards the bank carries content for. NOT every exam has one — a
@@ -764,6 +765,21 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     pastPaperSolutions: true,
     guidesPath: null,
     notesPath: null,
+  },
+  {
+    slug: "ugc-net",
+    // UGC NET (NTA), the eligibility test for Assistant Professor and JRF:
+    // Paper 1 only (General Paper on Teaching and Research Aptitude, 50 MCQs,
+    // +2 / 0). Read from NTA's own master papers and keyed by question id from
+    // NTA's final keys (scripts/ugc-net/). Added 2026-11-10 on the owner's call
+    // (graduate focus), with no student request yet.
+    tier: "graduate",
+    goal: "government",
+    displayName: "UGC NET",
+    examName: "UGC NET", // must match the `exams` DB row exactly
+    guidesPath: null,
+    notesPath: null,
+    noPublicContent: true, // rows go in PRIVATE; drop this flag when they go PUBLIC
   },
   // ── MPSC ──────────────────────────────────────────────────────────────────
   // One family with a stage level: MPSC -> Prelims / Mains -> exam. Prelims

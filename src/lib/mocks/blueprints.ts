@@ -850,6 +850,23 @@ export function iatPaper(counts: Partial<Record<(typeof IAT_SUBJECTS)[number], n
 
 export const IAT_PAPER: MockPaperBlueprint = iatPaper();
 
+/**
+ * UGC NET Paper 1 (General Paper on Teaching and Research Aptitude), as NTA sets
+ * it: 50 MCQs, 2 marks each, no negative marking. The real sitting gives 3 hours
+ * for Paper 1 and Paper 2 together with no separate clock; Paper 1 alone is
+ * timed at 60 minutes (owner, 2026-11-10). A question NTA dropped stays in as
+ * grace (src/lib/mocks/flawed.json), so the count never shortens.
+ */
+export const UGC_NET_PAPER_1: MockPaperBlueprint = {
+  code: "paper-1",
+  examName: "UGC NET",
+  examSlug: "ugc-net",
+  paperLabel: "Paper 1: General Paper",
+  durationSecs: 60 * 60,
+  marking: { correct: 2, wrong: 0 },
+  sections: [{ key: "general-paper", label: "General Paper", subjects: ["General Paper"], count: 50 }],
+};
+
 /** Tier II Paper 1, Section III Module I: Computer Knowledge, 15 minutes, qualifying only. */
 export const SSC_CGL_T2_COMPUTER_PAPER: MockPaperBlueprint = {
   code: "tier-2-computer",
@@ -1069,6 +1086,7 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   SSC_CGL_T2_QUANT_PAPER,
   SPI_PAPER,
   IAT_PAPER,
+  UGC_NET_PAPER_1,
   IMAT_PAPER,
   CBSE_10_CHAPTER_MCQ_PAPER,
   CBSE_12_CHAPTER_MCQ_PAPER,
