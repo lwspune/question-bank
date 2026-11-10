@@ -22,6 +22,7 @@ import { homeReminderAsk } from "@/lib/profile/push";
 import { cn } from "@/lib/utils";
 import MeHeader, { type MeTab } from "@/components/me/MeHeader";
 import { VaultPointsCard } from "@/components/billing/useFixPoints";
+import InviteFriendCard from "@/components/referrals/InviteFriendCard";
 
 /**
  * The body of /me, shared by the student's own /me and the staff view of a
@@ -154,6 +155,10 @@ export default function MeView({
           worth. Read by the browser for the signed-in viewer, so the staff
           view says what is here instead (it would show the VIEWER's points). */}
       {staff ? <HiddenNote>Here they see their Vault Points and what they are worth.</HiddenNote> : <VaultPointsCard />}
+
+      {/* Invite a friend (referrals, 0249): their link, made on tap, and what
+          it has earned. Read for the signed-in viewer, so not in the staff view. */}
+      {staff ? <HiddenNote>Here they get their invite link and see the friends it brought.</HiddenNote> : <InviteFriendCard />}
 
       {/* The highest-value chapters not started (2026-11-09). A board-plan
           student's plan already orders their chapters, so not for them. */}

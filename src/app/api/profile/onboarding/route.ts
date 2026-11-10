@@ -17,6 +17,8 @@ import { saveOnboarding, persistAcquisition, saveSignupCountry } from "@/lib/pro
 import { readAcquisitionCookie } from "@/lib/acquisition/cookie";
 import { acquisitionForAccount } from "@/lib/acquisition/source";
 import { isNewAccount } from "@/lib/auth/oneTap";
+import { attachReferralAtSignIn } from "@/lib/referrals/service";
+import { REF_COOKIE } from "@/lib/referrals/referral";
 import { readCountry } from "@/lib/acquisition/country";
 
 const BodySchema = z.object({
@@ -68,6 +70,9 @@ export async function POST(request: NextRequest) {
     } catch (e) {
       console.error("acquisition persist", e instanceof Error ? e.message : e);
     }
+    // A friend's invite link (0249), the backstop for an email signup as for
+    // the country below. Only a new account is tied; never throws.
+    await attachReferralAtSignIn(authUser, request.cookies.get(REF_COOKIE)?.value);
     // Country (0142): the backstop for an email signup, which reaches /welcome
     // without passing the OAuth callback. Same never-fail rule as the channel.
     try {

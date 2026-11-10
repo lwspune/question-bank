@@ -2,6 +2,8 @@ import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getOnboardingState, saveFirstTouch, saveSignupCountry } from "@/lib/profile/service";
 import { readCountry } from "@/lib/acquisition/country";
+import { attachReferralAtSignIn } from "@/lib/referrals/service";
+import { REF_COOKIE } from "@/lib/referrals/referral";
 import { needsOnboarding } from "@/lib/profile/onboarding";
 import { safeNextPath, signedInHome, type OrgRole } from "@/lib/auth/redirect";
 
@@ -42,6 +44,8 @@ export async function GET(request: NextRequest) {
           } catch (e) {
             console.error("acquisition save at sign-in", e instanceof Error ? e.message : e);
           }
+          // A friend's invite link (0249): ties a NEW account to its inviter. Never throws.
+          await attachReferralAtSignIn(data.user, request.cookies.get(REF_COOKIE)?.value);
           // Country the account was created from (0142); not tied to the cookie.
           try {
             await saveSignupCountry(supabase, data.user, readCountry(request.headers));

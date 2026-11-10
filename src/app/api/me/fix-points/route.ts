@@ -5,7 +5,9 @@
  * copy here can never change what a student pays.
  *
  * A failed read is 503, never "0 points" (the lesson of the answer-limit leak,
- * 2026-11-08): the card then shows the plain price.
+ * 2026-11-08): the card then shows the plain price. A referred friend's
+ * discount (0249) lowers the prices too; a failed read of it counts as none,
+ * so the points price still shows (the order route reads it again anyway).
  */
 import { NextResponse, type NextRequest } from "next/server";
 import { getSessionUser } from "@/lib/auth";
@@ -15,6 +17,7 @@ import { listActivePlans } from "@/lib/billing/plansQuery";
 import { userHasAnyAccess } from "@/lib/entitlements/query";
 import { sitePassScopes } from "@/lib/billing/passScope";
 import { readFixPoints } from "@/lib/billing/fixPointsService";
+import { readReferralDiscount } from "@/lib/referrals/service";
 import { fixPointsView } from "@/lib/billing/fixPoints";
 import { isIntlHost } from "@/lib/sites/intl";
 
@@ -35,13 +38,18 @@ export async function GET(request: NextRequest) {
   try {
     const db = createSupabaseServerClient();
     const now = new Date();
-    const [balance, plans, hasPass] = await Promise.all([
-      readFixPoints(createSupabaseAdminClient(), user.id, now),
+    const admin = createSupabaseAdminClient();
+    const [balance, plans, hasPass, referralPct] = await Promise.all([
+      readFixPoints(admin, user.id, now),
       listActivePlans(db),
       userHasAnyAccess(db, user.id, sitePassScopes("pyqvault"), now.getTime()),
+      readReferralDiscount(admin, user.id).catch((e: unknown) => {
+        console.error("referral read failed", e);
+        return 0;
+      }),
     ]);
     return NextResponse.json(
-      { eligible: true, ...fixPointsView({ points: balance.points, plans, hasPass, oldestAt: balance.oldestAt }) },
+      { eligible: true, ...fixPointsView({ points: balance.points, plans, hasPass, oldestAt: balance.oldestAt, referralPct }) },
       { headers: { "Cache-Control": "private, no-store" } }
     );
   } catch (e) {
