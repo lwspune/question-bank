@@ -153,6 +153,9 @@ async function main() {
       case "imat":
         line = handRead(e.liveSince, ["imat-students", "imat-page-views", "imat-foreign-share"]);
         break;
+      case "ugc-net":
+        line = handRead(e.liveSince, ["ugc-net-students", "ugc-net-passes"]);
+        break;
       case "v-explain":
         line = handRead(e.liveSince, ["v-explain-students", "v-explain-similar-right"]);
         break;

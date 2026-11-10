@@ -43,6 +43,8 @@ import {
   MOCK_TOGETHER_SENDS_KEEP,
   MOCK_TOGETHER_STARTS_KEEP,
   IMAT_STUDENTS_KEEP,
+  UGC_NET_SIGNUPS_KEEP,
+  UGC_NET_PASSES_KEEP,
   LEARN_MASTERED_KEEP,
   LEARN_RETURNED_KEEP,
   IMAT_FOREIGN_SHARE_PCT,
@@ -630,6 +632,18 @@ export default async function GrowthPage() {
             <ReadingsList metric="imat-students" />
             <ReadingsList metric="imat-page-views" />
             <ReadingsList metric="imat-foreign-share" />
+          </div>
+        );
+      case "ugc-net":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}, about two weeks after the December 2026
+              sitting: keep adding UGC NET cycles if {UGC_NET_SIGNUPS_KEEP}+ students choose it and{" "}
+              {UGC_NET_PASSES_KEEP}+ of them buy the pass.
+            </p>
+            <ReadingsList metric="ugc-net-students" />
+            <ReadingsList metric="ugc-net-passes" />
           </div>
         );
       case "pyq-wording":
