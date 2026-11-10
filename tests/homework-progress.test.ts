@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
   isDue,
+  laterStartedLine,
   markOf,
+  progressHeadline,
   parseProgressQuery,
   planProgress,
   summarizeDay,
@@ -122,9 +124,39 @@ describe("planProgress", () => {
     expect(p.nextDay).toBe(2);
   });
 
-  it("a day the student has started comes before an earlier day never opened", () => {
+  // 2026-11-10: a mark made anywhere counts (the bank, /board), so "started
+  // first" sent a student who had answered one /board question to Day 215 of a
+  // plan they had never opened. Continue is now the lowest day not done; a
+  // later day already begun is named on its own line instead.
+  it("a later day begun elsewhere does not take over Continue", () => {
     const events = [ev("d3a", "self_mark", "2026-11-03T10:00:00Z", "understood")];
-    expect(planProgress(items, events).nextDay).toBe(3);
+    const p = planProgress(items, events);
+    expect(p.started).toBe(true);
+    expect(p.nextDay).toBe(1);
+    expect(p.laterStartedDay).toBe(3);
+  });
+
+  it("a part-done day that is also the lowest undone day is next, with no later day named", () => {
+    const events = [
+      ev("d1a", "self_mark", "2026-11-01T10:00:00Z", "understood"),
+      ev("d1b", "question_practiced", "2026-11-01T10:01:00Z"),
+      ev("d2a", "self_mark", "2026-11-02T10:00:00Z", "understood"),
+    ];
+    const p = planProgress(items, events);
+    expect(p.nextDay).toBe(2);
+    expect(p.laterStartedDay).toBeNull();
+  });
+
+  it("names the LOWEST later day begun, skipping later days already done", () => {
+    const events = [
+      ev("d2a", "self_mark", "2026-11-02T10:00:00Z", "understood"),
+      ev("d2b1", "question_practiced", "2026-11-02T10:01:00Z"),
+      ev("d2b2", "question_practiced", "2026-11-02T10:02:00Z"),
+      ev("d3b", "self_mark", "2026-11-03T10:00:00Z", "review"),
+    ];
+    const p = planProgress(items, events);
+    expect(p.nextDay).toBe(1);
+    expect(p.laterStartedDay).toBe(3);
   });
 
   it("with no day started, next is the first day not done", () => {
@@ -155,6 +187,54 @@ describe("planProgress", () => {
   it("ignores events for questions outside the plan", () => {
     const p = planProgress(items, [ev("other", "self_mark", "2026-11-01T10:00:00Z", "understood")]);
     expect(p.started).toBe(false);
+    expect(p.laterStartedDay).toBeNull();
+  });
+});
+
+describe("the progress card's words", () => {
+  const items: ProgressItem[] = [
+    { day: 1, position: 1, questionId: "d1a", format: W },
+    { day: 1, position: 2, questionId: "d1b", format: M },
+    { day: 2, position: 1, questionId: "d2a", format: W },
+    { day: 2, position: 2, questionId: "d2b1", format: M },
+    { day: 2, position: 2, questionId: "d2b2", format: M },
+  ];
+  const day1Done = [
+    ev("d1a", "self_mark", "2026-11-01T10:00:00Z", "understood"),
+    ev("d1b", "question_practiced", "2026-11-01T10:01:00Z"),
+  ];
+
+  it("never opens with a zero", () => {
+    const p = planProgress(items, [ev("d2a", "self_mark", "2026-11-02T10:00:00Z", "understood")]);
+    expect(progressHeadline(p)).toBe("Next up: Day 1");
+  });
+
+  it("counts days done once there are some", () => {
+    expect(progressHeadline(planProgress(items, day1Done))).toBe("1 day done. Next up: Day 2");
+  });
+
+  it("every day done", () => {
+    const all = [
+      ...day1Done,
+      ev("d2a", "self_mark", "2026-11-02T10:00:00Z", "understood"),
+      ev("d2b1", "question_practiced", "2026-11-02T10:01:00Z"),
+      ev("d2b2", "question_practiced", "2026-11-02T10:02:00Z"),
+    ];
+    expect(progressHeadline(planProgress(items, all))).toBe("2 days done. You have finished every day.");
+  });
+
+  it("names a later day begun, with its count", () => {
+    const p = planProgress(items, [ev("d2a", "self_mark", "2026-11-02T10:00:00Z", "understood")]);
+    expect(laterStartedLine(p)).toBe("You have also marked 1 of Day 2's 2 questions.");
+  });
+
+  it("a later day with only part of a case study answered is 'started', never '0 of'", () => {
+    const p = planProgress(items, [ev("d2b1", "question_practiced", "2026-11-02T10:01:00Z")]);
+    expect(laterStartedLine(p)).toBe("You have also started Day 2.");
+  });
+
+  it("no later day: no line", () => {
+    expect(laterStartedLine(planProgress(items, day1Done))).toBeNull();
   });
 });
 

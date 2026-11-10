@@ -470,7 +470,7 @@ The load-bearing choices made during the initial scaffold. Every later phase res
   - **zod 3 parses every element despite `.max()`** (4 MB body: 634 MB heap): `boundedArray` caps public request arrays first. xlsx 0.20.3 is vendored (SheetJS ships fixes only from its site). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-05 — Homework progress: signed in, plan pages show days done and Continue, day pages show "3 of 5 marked" and "Day N done" (no migration).**
   - **No completed button (owner OK'd a sample):** a day is done when every question is marked (Understood / Review later, or an MCQ answered), from rows already written. A bare tick is a vanity milestone.
-  - **To review = the drill's due rule; continue = lowest started day, else first undone; no day totals** (owner, 10-10).
+  - **To review = the drill's due rule; continue = lowest day not done; no day totals** (owner, 10-10). Until 11-10 a started day came first, but a mark made anywhere counts, so one /board answer sent a student to Day 215; a later begun day is now its own line.
   - **Filled in by the browser** (`/api/homework/progress`): both pages are cached. The plan page reads all the student's mark rows (an `.in()` of 2,700 ids overflows the URL). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-04 (second) — Homework replaces Learn in the nav at every width; each plan gets a Top 10 PYQs tab (no migration).**
   - **Why:** Learn's first week as phone slot 2: 284 visitors, 256 saw only its hub, 1 Class 12 student answered a lesson question. Homework, with no tab, had as many open a day (34) as Learn had open a lesson (29).

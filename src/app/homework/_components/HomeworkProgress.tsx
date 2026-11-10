@@ -14,7 +14,7 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 import Link from "next/link";
 import { ArrowRight, Check, Clock } from "lucide-react";
 import { useSignedIn } from "@/components/auth/useSignedIn";
-import type { DayProgress, PlanProgress } from "@/lib/homework/progress";
+import { laterStartedLine, progressHeadline, type DayProgress, type PlanProgress } from "@/lib/homework/progress";
 import { dayHref } from "@/lib/homework/links";
 import { drillHref } from "@/lib/drill/from";
 
@@ -49,6 +49,7 @@ export function HomeworkProgressSummary({ planSlug }: { planSlug: string }) {
   const p = useContext(ProgressContext);
   if (!p) return null;
   const next = p.nextDay === null ? null : p.days.find((d) => d.day === p.nextDay) ?? null;
+  const later = laterStartedLine(p);
 
   return (
     <section
@@ -58,13 +59,21 @@ export function HomeworkProgressSummary({ planSlug }: { planSlug: string }) {
       <h2 id="hw-progress" className="text-xs font-semibold uppercase tracking-wide text-brand-accent">
         Your progress
       </h2>
-      <p className="mt-2 text-base font-semibold text-foreground">
-        {p.doneDays} {plural(p.doneDays, "day", "days")} done.
-        {next ? ` Next up: Day ${next.day}` : " You have finished every day."}
-      </p>
+      <p className="mt-2 text-base font-semibold text-foreground">{progressHeadline(p)}</p>
       {next && next.done > 0 && (
         <p className="mt-1 text-sm text-muted-foreground">
           You have marked {next.done} of Day {next.day}&apos;s {next.total} questions.
+        </p>
+      )}
+      {later && p.laterStartedDay !== null && (
+        <p className="mt-1 text-sm text-muted-foreground">
+          <Link
+            href={dayHref(planSlug, p.laterStartedDay)}
+            prefetch={false}
+            className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            {later}
+          </Link>
         </p>
       )}
       {next && (
