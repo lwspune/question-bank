@@ -17,6 +17,7 @@ import { MAX_CHAPTERS } from "@/lib/practiceTests/builder";
 import { ABUSE_REPLY } from "./abuse";
 import { NOT_UNDERSTOOD } from "./understood";
 import { languageLine, type VLanguage } from "./language";
+import { followUpTailLine } from "./followUp";
 import type { ExamEntry } from "@/lib/exam/examContext";
 
 export type ChatExamFact = {
@@ -369,6 +370,8 @@ export function buildSystemTail(who: {
   notesBrief?: string | null;
   /** The language the student saved for every reply (set_language, migration 0232). */
   language?: VLanguage | null;
+  /** "Show me where I went wrong" on a follow-up card: the question V explained before (V_LEARNING_LOOP.md step 2). */
+  followsUp?: { stem: string | null } | null;
 }): string {
   const parts: string[] = [];
   if (who.language) parts.push(languageLine(who.language));
@@ -378,8 +381,11 @@ export function buildSystemTail(who: {
       `The student tapped Ask V on question ${who.question.id}. ${answeredLine(who.question)}`
     );
   }
-  // 2026-11-08: "My earlier reply did not match it, please disregard it" (rule 12 alone did not hold it).
-  if (who.notesBrief || who.question) {
+  // 2026-11-10: on a follow-up the earlier explanation is the point, so V is told to build on it.
+  if (who.question && who.followsUp) {
+    parts.push(followUpTailLine(who.followsUp));
+  } else if (who.notesBrief || who.question) {
+    // 2026-11-08: "My earlier reply did not match it, please disregard it" (rule 12 alone did not hold it).
     parts.push("Your earlier replies were about other questions and were right for them: do not mention, correct or take them back.");
   }
   if (who.page) parts.push(`The student is on the page ${who.page} (you cannot see what is on it).`);

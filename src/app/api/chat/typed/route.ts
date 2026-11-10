@@ -70,6 +70,7 @@ import {
 } from "@/lib/chat/anonLimit";
 import type { ToolCallLog } from "@/lib/chat/anthropic";
 import { parseAskedQuestion } from "@/lib/chat/questionTools";
+import { parseFollowsUp } from "@/lib/chat/followUp";
 import { notesPageOf, notesRefKey, parseNotesItemRef } from "@/lib/chat/notesItem";
 import { isExplanation } from "@/lib/chat/understood";
 import { fileVSolutionReport } from "@/lib/reports/fileVReport";
@@ -268,6 +269,8 @@ export async function POST(request: NextRequest) {
     const asked = settings.explainEnabled ? parseAskedQuestion(raw.question) : null;
     // Ask V on a practice question written into the notes (2026-10-20): read from the notes, by page and position.
     const askedNotes = settings.explainEnabled ? parseNotesItemRef((raw.question as { notes?: unknown } | null)?.notes) : null;
+    // "Show me where I went wrong" on a follow-up card (V_LEARNING_LOOP.md step 2): the question V explained before.
+    const followsUpId = asked ? parseFollowsUp((raw.question as { after?: unknown } | null)?.after) : null;
 
     // Read from the TABLE, never the device, and only when the conversation is this person's.
     const earlier = conversationId ? await readConversation(admin, conversationId) : [];
@@ -354,6 +357,8 @@ export async function POST(request: NextRequest) {
             saveLanguage: ownId ? (lang) => saveVLanguage(ownId, lang) : null,
             question: asked,
             notesBrief,
+            // Only its stem: V is told which question it explained, and its memory holds the explanation.
+            followsUp: followsUpId ? { stem: (await loadVQuestion(createSupabaseAnonClient(), followsUpId).catch(() => null))?.text ?? null } : null,
             myQuestions: ownId ? buildMyQuestionDeps(createSupabaseServerClient(), createSupabaseAnonClient(), ownId) : null,
             questionTools: settings.explainEnabled
               ? buildQuestionToolDeps(ownId, tappedFrom(asked, message), {

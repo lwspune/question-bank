@@ -23,6 +23,7 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { mustSignIn } from "./helpers/fixture";
 import { istDayKey } from "@/lib/email/dueNudge";
+import { markFreeReveal } from "@/lib/chat/followUpServer";
 import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
@@ -263,6 +264,17 @@ describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)"
     it("refuses a new answer at the limit but still opens one already counted", async () => {
       expect(await claim("reveal", questionIds[3])).toMatchObject({ allowed: false, reason: "limit" });
       expect(await claim("reveal", questionIds[0])).toMatchObject({ allowed: true, reason: "repeat" });
+    });
+
+    // V_LEARNING_LOOP.md step 2: the server marks a free follow-up BEFORE the answer is recorded.
+    it("costs no answer for a follow-up the server marked free, and the recorded answer changes nothing (0250)", async () => {
+      expect(await markFreeReveal(admin, { userId: ids.student, day: today(), questionId: questionIds[3] })).toBe(true);
+      expect(await claim("student", questionIds[3], "v")).toMatchObject({ allowed: true, reason: "repeat", used: 0 });
+      const { error } = await admin
+        .from("user_activity")
+        .insert({ user_id: ids.student, kind: "question_practiced", ref_id: questionIds[3], ref_kind: "question", metadata: { surface: "v", chose: "A", correct: true } });
+      expect(error).toBeNull();
+      expect(await rowsFor("student")).toEqual([{ question_id: questionIds[3], counts: false }]);
     });
 
     it("opens today's board-path questions at the limit, without counting them (0225)", async () => {

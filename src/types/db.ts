@@ -838,6 +838,7 @@ export type Database = {
           ai_answers_per_day: number
           ai_enabled: boolean
           explain_enabled: boolean
+          followup_free: boolean
           id: boolean
           per_person_per_hour: number
           plan_enabled: boolean
@@ -849,6 +850,7 @@ export type Database = {
           ai_answers_per_day?: number
           ai_enabled?: boolean
           explain_enabled?: boolean
+          followup_free?: boolean
           id?: boolean
           per_person_per_hour?: number
           plan_enabled?: boolean
@@ -860,6 +862,7 @@ export type Database = {
           ai_answers_per_day?: number
           ai_enabled?: boolean
           explain_enabled?: boolean
+          followup_free?: boolean
           id?: boolean
           per_person_per_hour?: number
           plan_enabled?: boolean
@@ -4998,6 +5001,7 @@ export type Database = {
           asked_question_id: string | null
           created_at: string
           expect: Json
+          follows_up_question_id: string | null
           good_reply: string
           history: Json
           id: string
@@ -5018,6 +5022,7 @@ export type Database = {
           asked_question_id?: string | null
           created_at?: string
           expect?: Json
+          follows_up_question_id?: string | null
           good_reply: string
           history?: Json
           id?: string
@@ -5038,6 +5043,7 @@ export type Database = {
           asked_question_id?: string | null
           created_at?: string
           expect?: Json
+          follows_up_question_id?: string | null
           good_reply?: string
           history?: Json
           id?: string
@@ -5141,6 +5147,48 @@ export type Database = {
           started_at?: string
         }
         Relationships: []
+      }
+      v_followups: {
+        Row: {
+          created_at: string
+          explained_question_id: string
+          followup_question_id: string
+          free: boolean
+          ist_day: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          explained_question_id: string
+          followup_question_id: string
+          free: boolean
+          ist_day: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          explained_question_id?: string
+          followup_question_id?: string
+          free?: boolean
+          ist_day?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "v_followups_explained_question_id_fkey"
+            columns: ["explained_question_id"]
+            isOneToOne: false
+            referencedRelation: "questions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "v_followups_followup_question_id_fkey"
+            columns: ["followup_question_id"]
+            isOneToOne: false
+            referencedRelation: "questions"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       vocab_entries: {
         Row: {

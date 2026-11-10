@@ -106,6 +106,8 @@ export async function loadVContext(
     question?: AskedQuestion | null;
     /** A notes practice question the student tapped Ask V on, as V is told it (lib/chat/notesItem.ts). */
     notesBrief?: string | null;
+    /** "Show me where I went wrong" on a follow-up card: the question V explained before (V_LEARNING_LOOP.md step 2). */
+    followsUp?: { stem: string | null } | null;
     /** explain_concept's data sources (lib/chat/conceptSearchServer.ts conceptSources); offered with the question tools. */
     concepts?: Pick<ConceptToolDeps, "searchBank" | "loadNotesIndex" | "loadNotesConcept"> | null;
     /** The signed-in student's recent questions and saves (lib/chat/myQuestions.ts); absent when signed out. */
@@ -163,6 +165,7 @@ export async function loadVContext(
     profileExams: profileExamNames(opts.profileExamSlugs ?? []),
     question: opts.questionTools ? (opts.question ?? null) : null,
     notesBrief: opts.questionTools ? (opts.notesBrief ?? null) : null,
+    followsUp: opts.questionTools ? (opts.followsUp ?? null) : null,
     language: opts.language ?? null,
   });
 

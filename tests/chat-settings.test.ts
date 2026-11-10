@@ -12,9 +12,9 @@ import {
 
 describe("parseChatSettingsInput", () => {
   it("accepts a valid set", () => {
-    expect(parseChatSettingsInput({ aiEnabled: true, explainEnabled: false, planEnabled: true, progressEnabled: false, perPersonPerHour: 20, premiumPerPersonPerHour: 60, aiAnswersPerDay: 500 })).toEqual({
+    expect(parseChatSettingsInput({ aiEnabled: true, explainEnabled: false, planEnabled: true, progressEnabled: false, followUpFree: true, perPersonPerHour: 20, premiumPerPersonPerHour: 60, aiAnswersPerDay: 500 })).toEqual({
       ok: true,
-      settings: { aiEnabled: true, explainEnabled: false, planEnabled: true, progressEnabled: false, perPersonPerHour: 20, premiumPerPersonPerHour: 60, aiAnswersPerDay: 500 },
+      settings: { aiEnabled: true, explainEnabled: false, planEnabled: true, progressEnabled: false, followUpFree: true, perPersonPerHour: 20, premiumPerPersonPerHour: 60, aiAnswersPerDay: 500 },
     });
   });
 
@@ -36,6 +36,14 @@ describe("parseChatSettingsInput", () => {
     expect(DEFAULT_CHAT_SETTINGS.progressEnabled).toBe(true);
   });
 
+  // 2026-11-10 (migration 0250): the free follow-up after an explanation has its own switch, off until the owner turns it on.
+  it("refuses a missing follow-up switch, and starts with free follow-ups off", () => {
+    expect(
+      parseChatSettingsInput({ aiEnabled: true, explainEnabled: true, planEnabled: false, progressEnabled: true, perPersonPerHour: 15, premiumPerPersonPerHour: 50, aiAnswersPerDay: 300 }).ok
+    ).toBe(false);
+    expect(DEFAULT_CHAT_SETTINGS.followUpFree).toBe(false);
+  });
+
   it("refuses a missing switch", () => {
     expect(parseChatSettingsInput({ perPersonPerHour: 20, aiAnswersPerDay: 500 }).ok).toBe(false);
   });
@@ -52,12 +60,12 @@ describe("parseChatSettingsInput", () => {
   });
 
   it("accepts a daily cap of 0 (AI on, but no answers today)", () => {
-    expect(parseChatSettingsInput({ aiEnabled: true, explainEnabled: true, planEnabled: false, progressEnabled: true, perPersonPerHour: 15, premiumPerPersonPerHour: 50, aiAnswersPerDay: 0 }).ok).toBe(true);
+    expect(parseChatSettingsInput({ aiEnabled: true, explainEnabled: true, planEnabled: false, progressEnabled: true, followUpFree: false, perPersonPerHour: 15, premiumPerPersonPerHour: 50, aiAnswersPerDay: 0 }).ok).toBe(true);
   });
 });
 
 describe("the Premium hourly limit (2026-11-07)", () => {
-  const base = { aiEnabled: true, explainEnabled: true, planEnabled: true, progressEnabled: true, perPersonPerHour: 5, aiAnswersPerDay: 300 };
+  const base = { aiEnabled: true, explainEnabled: true, planEnabled: true, progressEnabled: true, followUpFree: false, perPersonPerHour: 5, aiAnswersPerDay: 300 };
   it("is required, a whole number from 1 to 500", () => {
     expect(parseChatSettingsInput(base).ok).toBe(false);
     expect(parseChatSettingsInput({ ...base, premiumPerPersonPerHour: 501 }).ok).toBe(false);
@@ -71,8 +79,8 @@ describe("the Premium hourly limit (2026-11-07)", () => {
 });
 
 describe("defaults", () => {
-  it("ship with the AI, explanations and plans off, the progress card on, 15 an hour, 300 a day", () => {
-    expect(DEFAULT_CHAT_SETTINGS).toEqual({ aiEnabled: false, explainEnabled: false, planEnabled: false, progressEnabled: true, perPersonPerHour: 15, premiumPerPersonPerHour: 50, aiAnswersPerDay: 300 });
+  it("ship with the AI, explanations, plans and free follow-ups off, the progress card on, 15 an hour, 300 a day", () => {
+    expect(DEFAULT_CHAT_SETTINGS).toEqual({ aiEnabled: false, explainEnabled: false, planEnabled: false, progressEnabled: true, followUpFree: false, perPersonPerHour: 15, premiumPerPersonPerHour: 50, aiAnswersPerDay: 300 });
   });
 });
 
