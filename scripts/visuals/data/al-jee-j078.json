@@ -1,0 +1,2494 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "015be856-acba-451a-b7d8-9b85996dcdb0",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\mathrm{H_2C=CH-CH_2-C{\\equiv}C-CH_3}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{H count} = 2+1+2+0+0+3 = 8",
+              "f": "2+1+2+0+0+3",
+              "value": "8",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\sigma = 5 + 8 = 13",
+              "f": "5+8",
+              "value": "13",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\pi = 1 + 2 = 3",
+              "f": "1+2",
+              "value": "3",
+              "step": "s4"
+            }
+          ],
+          "answer": "5+8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "1e12b3cb",
+        "answer": {
+          "value": 13,
+          "label": "13 and 3"
+        }
+      }
+    },
+    {
+      "id": "046c101e-e2fd-4b7f-ad89-011a655a49a7",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\mathrm{H_2C=CH-CH=CH-C{\\equiv}CH}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{H count} = 2+1+1+1+0+1 = 6",
+              "f": "2+1+1+1+0+1",
+              "value": "6",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\sigma = 5 + 6 = 11",
+              "f": "5+6",
+              "value": "11",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\pi = 1 + 1 + 2 = 4",
+              "f": "1+1+2",
+              "value": "4",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\sigma + \\pi = 11 + 4 = 15",
+              "f": "11+4",
+              "value": "15",
+              "step": "s5"
+            }
+          ],
+          "answer": "11+4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "c9aabdfe",
+        "answer": {
+          "value": 15,
+          "label": "15"
+        }
+      }
+    },
+    {
+      "id": "0a2ebb7a-3d9b-4670-8a50-501e407d5679",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{O_2^{2-}}:\\ 8+8+2 = 18\\ e^-",
+              "f": "8+8+2",
+              "value": "18",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\text{bonding: }\\sigma1s,\\ \\sigma2s,\\ \\sigma2p_z,\\ \\pi2p_x,\\ \\pi2p_y",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "5 \\times 2 = 10",
+              "f": "5*2",
+              "value": "10",
+              "step": "s3"
+            }
+          ],
+          "answer": "5*2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "bd1985b7",
+        "answer": {
+          "value": 10,
+          "label": "10"
+        }
+      }
+    },
+    {
+      "id": "14ec6a07-5832-4c83-ae78-32df1fc1dd0c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\mathrm{O_2}:\\ 16\\ e^-,\\quad \\pi^{*}\\text{ electrons} = 2",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\mathrm{O_2^+}:\\ 15\\ e^-,\\ 1;\\quad \\mathrm{O_2^-}:\\ 17\\ e^-,\\ 3",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "2 + 1 + 3 = 6",
+              "f": "2+1+3",
+              "value": "6",
+              "step": "s3"
+            }
+          ],
+          "answer": "2+1+3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "9fd906dc",
+        "answer": {
+          "value": 6,
+          "label": "6"
+        }
+      }
+    },
+    {
+      "id": "209b9dff-fabf-448e-bb82-fa7e70dfe25c",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\mathrm{C_2^{2-}}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "6 + 6 + 2 = 14\\ e^-",
+              "f": "6+6+2",
+              "value": "14",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{bond order} = \\dfrac{10-4}{2} = 3",
+              "f": "(10-4)/2",
+              "value": "3",
+              "note": "no unpaired electrons: diamagnetic",
+              "step": "s3"
+            },
+            {
+              "kind": "note",
+              "tex": "\\mathrm{NO^+}\\ \\text{also has } 14\\ e^-\\ \\Rightarrow\\ \\text{(A)}",
+              "step": "s4"
+            }
+          ],
+          "answer": "(10-4)/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "cae9b16b",
+        "answer": {
+          "value": 3,
+          "label": "bond order 3: NO⁺"
+        }
+      }
+    },
+    {
+      "id": "220bca97-9490-4fe0-bff4-99fd83f7b061",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\mathrm{Xe}:\\ 8\\ \\text{valence electrons}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{XeF_2}:\\ 8-2 = 6",
+              "f": "8-2",
+              "value": "6",
+              "note": "3 lone pairs: (A)-(iv)",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{XeO_2F_2}:\\ 8-(2\\times2)-(2\\times1) = 2",
+              "f": "8-(2*2)-(2*1)",
+              "value": "2",
+              "note": "1 lone pair: (B)-(ii)",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{XeO_3F_2}:\\ 8-(3\\times2)-(2\\times1) = 0",
+              "f": "8-(3*2)-(2*1)",
+              "value": "0",
+              "note": "no lone pair: (C)-(i)",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{XeF_4}:\\ 8-4 = 4",
+              "f": "8-4",
+              "value": "4",
+              "note": "2 lone pairs: (D)-(iii)",
+              "step": "s5"
+            }
+          ],
+          "answer": "8-2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "8eb0d386",
+        "answer": {
+          "value": 6,
+          "label": "A-iv, B-ii, C-i, D-iii"
+        }
+      }
+    },
+    {
+      "id": "24d18cf1-4d99-495b-917a-0aee97e31057",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\mu = q \\times d",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\mu = 1.2\\times10^{-18}\\ \\text{esu cm},\\quad d = 1\\times10^{-8}\\ \\text{cm}",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "q = \\dfrac{1.2\\times10^{-18}}{1\\times10^{-8}} = 1.2\\times10^{-10}\\ \\text{esu}",
+              "f": "(1.2*10^(-18))/(1*10^(-8))",
+              "value": "1.2*10^(-10)",
+              "sf": 2,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "1.2\\times10^{-10} = 12\\times10^{-11}\\ \\text{esu}",
+              "f": "12*10^(-11)",
+              "value": "1.2*10^(-10)",
+              "sf": 2,
+              "step": "s4"
+            }
+          ],
+          "answer": "12"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "8db5de14",
+        "answer": {
+          "value": 12,
+          "label": "12"
+        }
+      }
+    },
+    {
+      "id": "28e6c620-bc14-4ad8-b361-690687beeee4",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{NO_2^-}:\\ 5+2(6)+1 = 18",
+              "f": "5+2*6+1",
+              "value": "18",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\left[\\mathrm{O=N-\\ddot{O}}\\right]^{-}",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "4 + 2 + 2 = 8",
+              "f": "4+2+2",
+              "value": "8",
+              "note": "double bond, single bond, lone pair",
+              "step": "s3"
+            }
+          ],
+          "answer": "4+2+2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "23fad76e",
+        "answer": {
+          "value": 8,
+          "label": "8"
+        }
+      }
+    },
+    {
+      "id": "2dc1f27a-5932-41da-ac4d-fe49228898da",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{XeF_5^+}:\\ 8-5-1 = 2",
+              "f": "8-5-1",
+              "value": "2",
+              "note": "Xe has 8 valence e; 1 lone pair, qualifies",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{XeO_3}:\\ 8-6 = 2",
+              "f": "8-6",
+              "value": "2",
+              "note": "1 lone pair, qualifies",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{XeO_2F_2}:\\ 8-(4+2) = 2",
+              "f": "8-(4+2)",
+              "value": "2",
+              "note": "1 lone pair, qualifies",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{XeF_5^-}:\\ 8-5+1 = 4",
+              "f": "8-5+1",
+              "value": "4",
+              "note": "2 lone pairs, does not qualify",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{XeO_3F_2}:\\ 8-(6+2) = 0",
+              "f": "8-(6+2)",
+              "value": "0",
+              "note": "no lone pair, does not qualify",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{XeOF_4}:\\ 8-(2+4) = 2",
+              "f": "8-(2+4)",
+              "value": "2",
+              "note": "1 lone pair, qualifies",
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{XeF_4}:\\ 8-4 = 4",
+              "f": "8-4",
+              "value": "4",
+              "note": "2 lone pairs, does not qualify",
+              "step": "s7"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{one lone pair}:\\ 1+1+1+1 = 4",
+              "f": "1+1+1+1",
+              "value": "4",
+              "step": "s8"
+            }
+          ],
+          "answer": "1+1+1+1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s7"
+            ]
+          },
+          {
+            "from": 16,
+            "beats": [
+              "s8"
+            ]
+          }
+        ],
+        "fingerprint": "6c3c949b",
+        "answer": {
+          "value": 4,
+          "label": "4"
+        }
+      }
+    },
+    {
+      "id": "3910f865-80da-4fc6-92f6-e48bfba0bbde",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{NO_2}:\\ 7+16 = 23",
+              "f": "7+16",
+              "value": "23",
+              "note": "odd",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{ICl_4^-}:\\ 53+68+1 = 122",
+              "f": "53+68+1",
+              "value": "122",
+              "note": "even",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{BrF_3}:\\ 35+27 = 62",
+              "f": "35+27",
+              "value": "62",
+              "note": "even",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{ClO_2}:\\ 17+16 = 33",
+              "f": "17+16",
+              "value": "33",
+              "note": "odd",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{NO_2^+}:\\ 7+16-1 = 22",
+              "f": "7+16-1",
+              "value": "22",
+              "note": "even",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{NO}:\\ 7+8 = 15",
+              "f": "7+8",
+              "value": "15",
+              "note": "odd",
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{not odd: }\\mathrm{ICl_4^-},\\mathrm{BrF_3},\\mathrm{NO_2^+} \\Rightarrow 1+1+1 = 3",
+              "f": "1+1+1",
+              "value": "3",
+              "step": "s7"
+            }
+          ],
+          "answer": "1+1+1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              "s5",
+              "s6"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "8f44b819",
+        "answer": {
+          "value": 3,
+          "label": "3"
+        }
+      }
+    },
+    {
+      "id": "432c0241-3831-402b-a689-2163bc11e046",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{CH_4}:\\ 6+4 = 10",
+              "f": "6+4",
+              "value": "10",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{NH_4^+}:\\ 7+4-1 = 10",
+              "f": "7+4-1",
+              "value": "10",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{BH_4^-}:\\ 5+4+1 = 10",
+              "f": "5+4+1",
+              "value": "10",
+              "note": "all three isoelectronic",
+              "step": "s3"
+            },
+            {
+              "kind": "note",
+              "tex": "sp^{3},\\ \\text{four bond pairs, no lone pair: tetrahedral}",
+              "step": "s4"
+            }
+          ],
+          "answer": "6+4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "c07edc21",
+        "answer": {
+          "value": 10,
+          "label": "10 e each, all tetrahedral"
+        }
+      }
+    },
+    {
+      "id": "51c83e1e-0287-48a2-87d2-82bec0f53380",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{FC} = V - L - \\tfrac{1}{2}S",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{atom (1)}:\\ 6-4-2 = 0",
+              "f": "6-4-2",
+              "value": "0",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{atom (2)}:\\ 5-0-4 = +1",
+              "f": "5-0-4",
+              "value": "1",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{atom (3)}:\\ 6-4-2 = 0",
+              "f": "6-4-2",
+              "value": "0",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{atom (4)}:\\ 6-6-1 = -1",
+              "f": "6-6-1",
+              "value": "-1",
+              "step": "s5"
+            }
+          ],
+          "answer": "6-4-2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "acd85bda",
+        "answer": {
+          "value": 0,
+          "label": "0, +1, 0, -1"
+        }
+      }
+    },
+    {
+      "id": "56073602-5069-4d30-922e-804196b01f92",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\mathrm{O_2^-}:\\ 10\\ \\text{bonding},\\ 7\\ \\text{antibonding}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "10 + 7 = 17\\ e^-",
+              "f": "10+7",
+              "value": "17",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{bond order} = \\dfrac{10-7}{2} = 1.5",
+              "f": "(10-7)/2",
+              "value": "1.5",
+              "step": "s3"
+            },
+            {
+              "kind": "note",
+              "tex": "\\text{one unpaired electron: paramagnetic}",
+              "step": "s4"
+            }
+          ],
+          "answer": "(10-7)/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "16304ed0",
+        "answer": {
+          "value": 1.5,
+          "label": "1.5, paramagnetic"
+        }
+      }
+    },
+    {
+      "id": "5b1053dd-2cb2-453a-a9d1-4353744d5b64",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{Be_2}:\\ \\dfrac{4-4}{2} = 0",
+              "f": "(4-4)/2",
+              "value": "0",
+              "note": "bond order zero: does not exist",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{He_2^+}:\\ \\dfrac{2-1}{2} = 0.5",
+              "f": "(2-1)/2",
+              "value": "0.5",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{He_2^-}:\\ \\dfrac{3-2}{2} = 0.5",
+              "f": "(3-2)/2",
+              "value": "0.5",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{O_2^{2-}}:\\ \\dfrac{10-8}{2} = 1",
+              "f": "(10-8)/2",
+              "value": "1",
+              "step": "s4"
+            }
+          ],
+          "answer": "(4-4)/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "00ebf811",
+        "answer": {
+          "value": 0,
+          "label": "Be₂ has bond order 0"
+        }
+      }
+    },
+    {
+      "id": "662f0999-9f4e-45ba-84d8-03c866d1ecb9",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\sigma^{*}2s:\\ 1;\\quad \\sigma^{*}2p_z,\\ \\pi^{*}2p_x,\\ \\pi^{*}2p_y:\\ 3",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "1 + 3 = 4",
+              "f": "1+3",
+              "value": "4",
+              "step": "s2"
+            }
+          ],
+          "answer": "1+3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "6a08a968",
+        "answer": {
+          "value": 4,
+          "label": "4"
+        }
+      }
+    },
+    {
+      "id": "6da01044-4831-460c-bf67-dfada749f105",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{bond order} = \\tfrac{1}{2}(N_b - N_a)",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\mathrm{Ne_2}:\\ 0\\ \\Rightarrow\\ \\text{(A)-(iii)}",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{N_2}:\\ \\dfrac{10-4}{2} = 3",
+              "f": "(10-4)/2",
+              "value": "3",
+              "note": "(B)-(iv)",
+              "step": "s3"
+            },
+            {
+              "kind": "note",
+              "tex": "\\mathrm{F_2}:\\ 1\\ \\text{(C)-(i)};\\quad \\mathrm{O_2}:\\ 2\\ \\text{(D)-(ii)}",
+              "step": "s4"
+            }
+          ],
+          "answer": "(10-4)/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "9d9ee8e1",
+        "answer": {
+          "value": 3,
+          "label": "A-iii, B-iv, C-i, D-ii"
+        }
+      }
+    },
+    {
+      "id": "776063bb-c503-4eec-9fb3-8fb5142c0e6f",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\mathrm{O{=}\\overset{+}{O}{-}\\overset{-}{O}}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "1 + 2 + 3 = 6\\ \\text{lone pairs}",
+              "f": "1+2+3",
+              "value": "6",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "3 \\times 6 = 18\\ e^-",
+              "f": "3*6",
+              "value": "18",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "18 - 6 = 12\\ e^-",
+              "f": "18-6",
+              "value": "12",
+              "note": "2 sigma and 1 pi bond use 6",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{12}{2} = 6\\ \\text{lone pairs}",
+              "f": "12/2",
+              "value": "6",
+              "step": "s5"
+            }
+          ],
+          "answer": "1+2+3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "e60cdc29",
+        "answer": {
+          "value": 6,
+          "label": "6"
+        }
+      }
+    },
+    {
+      "id": "7d1e21b3-bc8a-46fc-8b8f-98e0cda575c4",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\Delta_f H = \\Delta_{sub}H + \\Delta_i H + \\tfrac12\\Delta_{diss}H + \\Delta_{eg}H + \\Delta_{lattice}H",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "-594 = 155 + 520 + \\tfrac12(150) + (-313) + \\Delta_{lattice}H",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\tfrac12(150) = 75",
+              "f": "150/2",
+              "value": "75",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "155 + 520 + 75 - 313 = 437",
+              "f": "155+520+75-313",
+              "value": "437",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\Delta_{lattice}H = -594 - 437 = -1031",
+              "f": "-594-437",
+              "value": "-1031",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\left|\\Delta_{lattice}H\\right| = 1031\\ \\text{kJ mol}^{-1}",
+              "f": "abs(-594-437)",
+              "value": "1031",
+              "step": "s6"
+            }
+          ],
+          "answer": "abs(-594-437)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "5011a4f7",
+        "answer": {
+          "value": 1031,
+          "label": "1031"
+        }
+      }
+    },
+    {
+      "id": "9529dcd5-6144-40cb-9d59-6793635c9718",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\mathrm{C_7H_{10}O_3}:\\ 20\\ \\text{atoms}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\sigma = 20 - 1 = 19",
+              "f": "20-1",
+              "value": "19",
+              "note": "acyclic: atoms minus one",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "6\\,(\\mathrm{C{-}C}) + 9\\,(\\mathrm{C{-}H}) + 1\\,(\\mathrm{O{-}H}) + 3\\,(\\mathrm{C{-}O}) = 19",
+              "f": "6+9+1+3",
+              "value": "19",
+              "step": "s3"
+            },
+            {
+              "kind": "note",
+              "tex": "\\pi = 3:\\ \\mathrm{C{=}C},\\ \\text{two carbonyls}",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "19 + 3 = 22",
+              "f": "19+3",
+              "value": "22",
+              "step": "s5"
+            }
+          ],
+          "answer": "19+3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "c9745850",
+        "answer": {
+          "value": 22,
+          "label": "22"
+        }
+      }
+    },
+    {
+      "id": "9f7d1100-8e9f-472c-a7c6-3f4d97f32f92",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{SO_3^{2-}}:\\ 6+18+2 = 26",
+              "f": "6+18+2",
+              "value": "26",
+              "note": "pyramidal",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{CO_3^{2-}}:\\ 4+18+2 = 24",
+              "f": "4+18+2",
+              "value": "24",
+              "note": "trigonal planar: A not similar",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{O_2^{2-}}:\\ 6+6+2 = 14",
+              "f": "6+6+2",
+              "value": "14",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{F_2}:\\ 7+7 = 14",
+              "f": "7+7",
+              "value": "14",
+              "note": "B similar",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{CrO_4^{2-}}:\\ 6+24+2 = 32",
+              "f": "6+24+2",
+              "value": "32",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{MnO_4^{2-}}:\\ 7+24+2 = 33",
+              "f": "7+24+2",
+              "value": "33",
+              "note": "odd: E not similar",
+              "step": "s6"
+            },
+            {
+              "kind": "note",
+              "tex": "\\text{dissimilar pairs: A and E}",
+              "step": "s7"
+            }
+          ],
+          "answer": "6+18+2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s5",
+              "s6"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "feedf9ea",
+        "answer": {
+          "value": 26,
+          "label": "A and E"
+        }
+      }
+    },
+    {
+      "id": "a3ab5f44-160b-42b4-92c3-bd821a5eedfe",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\mathrm{Xe}:\\ 8\\ \\text{valence electrons}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{XeO_3}:\\ \\dfrac{8-6}{2} = 1",
+              "f": "(8-6)/2",
+              "value": "1",
+              "note": "3 double bonds use 6",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{XeOF_4}:\\ \\dfrac{8-6}{2} = 1",
+              "f": "(8-6)/2",
+              "value": "1",
+              "note": "1 double + 4 single bonds use 6",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{XeF_6}:\\ \\dfrac{8-6}{2} = 1",
+              "f": "(8-6)/2",
+              "value": "1",
+              "note": "6 single bonds use 6",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "1 + 1 + 1 = 3",
+              "f": "1+1+1",
+              "value": "3",
+              "step": "s5"
+            }
+          ],
+          "answer": "1+1+1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "11b24df2",
+        "answer": {
+          "value": 3,
+          "label": "3"
+        }
+      }
+    },
+    {
+      "id": "a6d286d3-640c-4c13-a521-51a89c28c2f9",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\mathrm{CO},\\ \\mathrm{NO^+}:\\ 14\\ e^-,\\ \\text{isoelectronic with } \\mathrm{N_2}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{bond order} = \\dfrac{10-4}{2} = 3",
+              "f": "(10-4)/2",
+              "value": "3",
+              "note": "for each",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{difference} = 3 - 3 = 0",
+              "f": "3-3",
+              "value": "0",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{x}{2} = 0 \\Rightarrow x = 0",
+              "f": "2*(3-3)",
+              "value": "0",
+              "step": "s4"
+            }
+          ],
+          "answer": "2*(3-3)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "cbeb203a",
+        "answer": {
+          "value": 0,
+          "label": "x = 0"
+        }
+      }
+    },
+    {
+      "id": "a76f60e2-d613-4af9-810f-fa890cc95c12",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{IF_7}:\\ \\dfrac{7-7}{2} = 0",
+              "f": "(7-7)/2",
+              "value": "0",
+              "note": "(A)-(IV)",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{ICl_4^-}:\\ 7+1 = 8",
+              "f": "7+1",
+              "value": "8",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{8-4}{2} = 2",
+              "f": "(8-4)/2",
+              "value": "2",
+              "note": "(B)-(III)",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{XeF_6}:\\ \\dfrac{8-6}{2} = 1",
+              "f": "(8-6)/2",
+              "value": "1",
+              "note": "(C)-(II)",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{XeF_2}:\\ \\dfrac{8-2}{2} = 3",
+              "f": "(8-2)/2",
+              "value": "3",
+              "note": "(D)-(I)",
+              "step": "s5"
+            }
+          ],
+          "answer": "(7-7)/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "216a143e",
+        "answer": {
+          "value": 0,
+          "label": "A-IV, B-III, C-II, D-I"
+        }
+      }
+    },
+    {
+      "id": "ac2fe78f-4b3a-4a08-a72b-e39ffda60ead",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "2\\,(6) = 12",
+              "f": "2*6",
+              "value": "12",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "5 + 12 + 1 = 18\\ e^-",
+              "f": "5+12+1",
+              "value": "18",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{18}{2} = 9\\ \\text{pairs}",
+              "f": "18/2",
+              "value": "9",
+              "step": "s3"
+            },
+            {
+              "kind": "note",
+              "tex": "\\left[\\mathrm{O{=}\\ddot{N}{-}\\ddot{O}}\\right]^{-}",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "3\\ \\text{bond pairs} = 3 \\times 2 = 6\\ e^-",
+              "f": "3*2",
+              "value": "6",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "18 - 6 = 12",
+              "f": "18-6",
+              "value": "12",
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "2 + 3 + 1 = 6\\ \\text{lone pairs}",
+              "f": "2+3+1",
+              "value": "6",
+              "step": "s7"
+            },
+            {
+              "kind": "calc",
+              "tex": "6 \\times 2 = 12\\ e^-",
+              "f": "6*2",
+              "value": "12",
+              "step": "s8"
+            }
+          ],
+          "answer": "18-6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s7",
+              "s8"
+            ]
+          }
+        ],
+        "fingerprint": "dc13f25a",
+        "answer": {
+          "value": 12,
+          "label": "12"
+        }
+      }
+    },
+    {
+      "id": "b36d9604-b6f3-400b-8af6-d17be1a504bd",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{O_2^{2-}}:\\ \\dfrac{10-8}{2} = 1",
+              "f": "(10-8)/2",
+              "value": "1",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{CO}:\\ \\dfrac{10-4}{2} = 3",
+              "f": "(10-4)/2",
+              "value": "3",
+              "step": "s2"
+            },
+            {
+              "kind": "note",
+              "tex": "\\mathrm{NO^+}:\\ 14\\ e^-,\\ \\text{bond order } 3",
+              "step": "s3"
+            }
+          ],
+          "answer": "(10-8)/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "eb990952",
+        "answer": {
+          "value": 1,
+          "label": "1, 3 and 3"
+        }
+      }
+    },
+    {
+      "id": "bbd12b05-6151-4fdf-aad2-b3538a7555d0",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\text{per atom: } 1 + 3 = 4\\ \\text{orbitals}",
+              "f": "1+3",
+              "value": "4",
+              "note": "one 2s and three 2p",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "2 \\times 4 = 8\\ \\text{atomic orbitals}",
+              "f": "2*4",
+              "value": "8",
+              "step": "s2"
+            },
+            {
+              "kind": "note",
+              "tex": "8\\ \\text{molecular orbitals: 4 bonding, 4 antibonding}",
+              "step": "s3"
+            }
+          ],
+          "answer": "2*4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "622489ae",
+        "answer": {
+          "value": 8,
+          "label": "8"
+        }
+      }
+    },
+    {
+      "id": "bf2fa521-edbc-46e7-8aa5-e3d0a78c71c7",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{CO}:\\ 6+8 = 14\\ e^-",
+              "f": "6+8",
+              "value": "14",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{B.O.} = \\dfrac{10-4}{2} = 3",
+              "f": "(10-4)/2",
+              "value": "3",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{NO^+}:\\ 7+8-1 = 14\\ e^-",
+              "f": "7+8-1",
+              "value": "14",
+              "note": "same configuration: B.O. = 3",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "3 + 3 = 6",
+              "f": "3+3",
+              "value": "6",
+              "step": "s4"
+            }
+          ],
+          "answer": "3+3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "eff9d7b5",
+        "answer": {
+          "value": 6,
+          "label": "6"
+        }
+      }
+    },
+    {
+      "id": "c3aff422-8d53-4359-9d30-fee8708c4536",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\mathrm{B_2}:\\ 10\\ e^-;\\quad \\mathrm{B_2^+}:\\ 9\\ e^-",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\pi 2p^{1}:\\ n = 1",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mu = \\sqrt{n(n+2)} = \\sqrt{3} = 1.73\\ \\text{BM}",
+              "f": "sqrt(1*(1+2))",
+              "value": "1.73",
+              "dp": 2,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "1.73\\ \\text{BM} = 173\\times10^{-2}\\ \\text{BM}",
+              "f": "173*10^(-2)",
+              "value": "1.73",
+              "sf": 3,
+              "step": "s4"
+            }
+          ],
+          "answer": "173"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "7b876090",
+        "answer": {
+          "value": 173,
+          "label": "173"
+        }
+      }
+    },
+    {
+      "id": "c9d04494-cc96-4030-a53c-2a2b638de977",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{ICl_2^-}:\\ 7+1 = 8",
+              "f": "7+1",
+              "value": "8",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "8-2 = 6\\ e^-",
+              "f": "8-2",
+              "value": "6",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{6}{2} = 3\\ \\text{lone pairs}",
+              "f": "6/2",
+              "value": "3",
+              "note": "2 : 3, so A-III",
+              "step": "s3"
+            },
+            {
+              "kind": "note",
+              "tex": "\\mathrm{H_2O}:\\ 2:2,\\ \\text{B-IV}",
+              "step": "s4"
+            },
+            {
+              "kind": "note",
+              "tex": "\\mathrm{SO_2}:\\ 4:1,\\ \\text{C-II}",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{XeF_4}:\\ 8-4 = 4\\ e^-",
+              "f": "8-4",
+              "value": "4",
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{4}{2} = 2\\ \\text{lone pairs}",
+              "f": "4/2",
+              "value": "2",
+              "note": "4 : 2, so D-I",
+              "step": "s7"
+            }
+          ],
+          "answer": "8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s6",
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "1da50e0f",
+        "answer": {
+          "value": 8,
+          "label": "A-III, B-IV, C-II, D-I"
+        }
+      }
+    },
+    {
+      "id": "d65c220f-853c-466d-b24a-02b509a6cb0b",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\Delta H_f = \\Delta H_{sub} + \\Delta H_i + \\tfrac12\\Delta H_{bond} + \\Delta H_{eg} - \\Delta H_{lattice}",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "-400 = 100 + 500 + \\tfrac12\\Delta H_{bond} - 300 - 800",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "100 + 500 - 300 - 800 = -500",
+              "f": "100+500-300-800",
+              "value": "-500",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\tfrac12\\Delta H_{bond} = -400-(-500) = 100",
+              "f": "-400-(-500)",
+              "value": "100",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\Delta H_{bond} = 2 \\times 100 = 200\\ \\text{kJ mol}^{-1}",
+              "f": "2*100",
+              "value": "200",
+              "step": "s5"
+            }
+          ],
+          "answer": "2*100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "b0bdefa1",
+        "answer": {
+          "value": 200,
+          "label": "200"
+        }
+      }
+    },
+    {
+      "id": "e0bd98a7-65b0-4ae8-bbe7-8ac8198280f4",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{O_2^+}\\ (15\\ e^-):\\ \\dfrac{10-5}{2} = 2.5",
+              "f": "(10-5)/2",
+              "value": "2.5",
+              "note": "one unpaired electron: paramagnetic",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\mathrm{N_2^-}\\ (15\\ e^-):\\ 2.5,\\ \\text{paramagnetic}",
+              "step": "s2"
+            },
+            {
+              "kind": "note",
+              "tex": "\\mathrm{N_2^{2-}}:\\ 2;\\ \\mathrm{O_2^-}:\\ 1.5;\\ \\mathrm{N_2^+}:\\ 2.5",
+              "step": "s3"
+            }
+          ],
+          "answer": "(10-5)/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "bc2f82ff",
+        "answer": {
+          "value": 2.5,
+          "label": "O₂⁺, N₂⁻: 2.5"
+        }
+      }
+    },
+    {
+      "id": "e5d5ba82-b44e-4832-9167-9a5ecf5334fe",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\mathrm{CH_3{-}CH{=}CH{-}C{\\equiv}CH}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{H count} = 3+1+1+0+1 = 6",
+              "f": "3+1+1+0+1",
+              "value": "6",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\sigma = 4 + 6 = 10",
+              "f": "4+6",
+              "value": "10",
+              "step": "s3"
+            }
+          ],
+          "answer": "4+6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "d5305ecb",
+        "answer": {
+          "value": 10,
+          "label": "10"
+        }
+      }
+    },
+    {
+      "id": "e9fe0d15-02f7-4b24-b95e-148f43289ee8",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\mathrm{H_2C{=}CH_2}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\sigma = 4 + 1 = 5",
+              "f": "4+1",
+              "value": "5",
+              "note": "4 C-H, 1 sigma of C=C",
+              "step": "s2"
+            },
+            {
+              "kind": "note",
+              "tex": "\\pi = 1",
+              "note": "from C=C",
+              "step": "s3"
+            }
+          ],
+          "answer": "4+1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "7c6b3852",
+        "answer": {
+          "value": 5,
+          "label": "5 and 1"
+        }
+      }
+    },
+    {
+      "id": "f19ccd62-faa8-47d1-a8d0-67b1480e6614",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\mathrm{NF_3}:\\ 0.24\\ \\text{D, the lowest}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{NF_3}:\\ \\dfrac{5-3}{2} = 1",
+              "f": "(5-3)/2",
+              "value": "1",
+              "note": "5 valence e, 3 used in N-F bonds",
+              "step": "s2"
+            },
+            {
+              "kind": "note",
+              "tex": "\\text{1 lone pair on the central atom}",
+              "step": "s3"
+            }
+          ],
+          "answer": "(5-3)/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "4ececbee",
+        "answer": {
+          "value": 1,
+          "label": "1 lone pair on N"
+        }
+      }
+    },
+    {
+      "id": "f7642690-c8aa-458b-ac3a-b7e1e46ea944",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\mathrm{XeO_6^{4-}}:\\ \\sigma\\ \\text{bond pairs} = 6,\\ \\text{lone pairs} = 0",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "6 + 0 = 6",
+              "f": "6+0",
+              "value": "6",
+              "step": "s2"
+            }
+          ],
+          "answer": "6+0"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "0838dd9f",
+        "answer": {
+          "value": 6,
+          "label": "6"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

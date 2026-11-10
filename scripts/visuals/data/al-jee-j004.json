@@ -1,0 +1,6218 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "84667039-606f-481f-9c62-669176188bf4",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\dfrac{V_1}{V_2}=\\dfrac{3}{2}=\\dfrac{E-i_1r}{E-i_2r}",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{3}{2}=\\dfrac{8(4+r)}{4(8+r)}",
+              "lhs": "3/2",
+              "rhs": "8*(4+x)/(4*(8+x))",
+              "roots": [
+                "8"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "24+3r=16+4r",
+              "lhs": "24+3*x",
+              "rhs": "16+4*x",
+              "roots": [
+                "8"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "r=24-16=8\\ \\Omega",
+              "f": "24-16",
+              "value": "8",
+              "step": "s4"
+            }
+          ],
+          "answer": "24-16"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "04b60007",
+        "answer": {
+          "value": 8,
+          "label": "8 Ω"
+        }
+      }
+    },
+    {
+      "id": "84fb0446-5c82-4413-b7c6-29842487ecd4",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "R=R_0(1+\\alpha T)",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{3}{2}=\\dfrac{1+30\\alpha}{1+10\\alpha}",
+              "lhs": "3/2",
+              "rhs": "(1+30*x)/(1+10*x)",
+              "roots": [
+                "1/30"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "3+30\\alpha=2+60\\alpha",
+              "lhs": "3+30*x",
+              "rhs": "2+60*x",
+              "roots": [
+                "1/30"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\alpha=\\dfrac{1}{30}\\approx0.033\\ {}^{\\circ}\\text{C}^{-1}",
+              "f": "1/30",
+              "value": "0.033",
+              "dp": 3,
+              "step": "s4"
+            }
+          ],
+          "answer": "1/30"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "63f5a15b",
+        "answer": {
+          "value": 0.03333333333333333,
+          "label": "0.033 °C⁻¹"
+        }
+      }
+    },
+    {
+      "id": "88bcf97a-7ca1-4d32-a933-3ada44d3da2f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "l\\propto\\text{terminal p.d.}",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\dfrac{10\\varepsilon}{10+r}\\propto500,\\quad\\dfrac{\\varepsilon}{1+r}\\propto400",
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{10(1+r)}{10+r}=\\dfrac{500}{400}=\\dfrac{5}{4}",
+              "lhs": "10*(1+x)/(10+x)",
+              "rhs": "5/4",
+              "roots": [
+                "10/35"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "eq",
+              "tex": "40+40r=50+5r",
+              "lhs": "40+40*x",
+              "rhs": "50+5*x",
+              "roots": [
+                "10/35"
+              ],
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "r=\\dfrac{10}{35}\\approx0.3\\ \\Omega",
+              "f": "10/35",
+              "value": "0.3",
+              "dp": 1,
+              "step": "s5"
+            }
+          ],
+          "answer": "10/35"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "43838cba",
+        "answer": {
+          "value": 0.2857142857142857,
+          "label": "0.3 Ω"
+        }
+      }
+    },
+    {
+      "id": "8be535e1-9e5d-4d4d-aa80-d4c05c2ffdb6",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "V=4.2\\ \\text{V},\\quad q=5800\\ \\text{mAh}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "E=qV=4.2\\times5800\\times3600\\times10^{-3}\\ \\text{J}=87.696\\ \\text{kJ}",
+              "f": "4.2*5800*3600*10^(-3)/1000",
+              "value": "87.696",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "E\\approx87.7\\ \\text{kJ}",
+              "f": "87.696",
+              "value": "87.7",
+              "dp": 1,
+              "step": "s3"
+            }
+          ],
+          "answer": "87.696"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "4fa9f5a4",
+        "answer": {
+          "value": 87.696,
+          "label": "87.7 kJ"
+        }
+      }
+    },
+    {
+      "id": "8da6325c-6f13-4b9f-9bb6-d98c17f1d41c",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "R_{new}=n^2R",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{new}=(5)^2\\times5=125\\ \\Omega",
+              "f": "5^2*5",
+              "value": "125",
+              "step": "s2"
+            }
+          ],
+          "answer": "5^2*5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "67fc0439",
+        "answer": {
+          "value": 125,
+          "label": "125 Ω"
+        }
+      }
+    },
+    {
+      "id": "8e329a17-9517-4e6c-bf52-eea4d76a4548",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "H=I^2Rt",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R=\\dfrac{300}{(2)^2(15)}=\\dfrac{300}{60}=5\\ \\Omega",
+              "f": "300/(2^2*15)",
+              "value": "5",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "H=(3)^2(5)(10)=450\\ \\text{J}",
+              "f": "3^2*5*10",
+              "value": "450",
+              "step": "s3"
+            }
+          ],
+          "answer": "3^2*5*10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "70a934dc",
+        "answer": {
+          "value": 450,
+          "label": "450 J"
+        }
+      }
+    },
+    {
+      "id": "8ff63910-a89f-4bd4-b976-4e8192c9f39a",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "R=\\dfrac{192}{4^2\\times1}=12\\ \\Omega",
+              "f": "192/(4^2*1)",
+              "value": "12",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "H=8^2\\times12\\times5=3840\\ \\text{J}",
+              "f": "8^2*12*5",
+              "value": "3840",
+              "step": "s2"
+            }
+          ],
+          "answer": "8^2*12*5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "92b95c9c",
+        "answer": {
+          "value": 3840,
+          "label": "3840 J"
+        }
+      }
+    },
+    {
+      "id": "91b58778-85db-42fa-b170-d2049a3f351d",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "V=\\dfrac{12\\times6-6\\times3}{6+3}=\\dfrac{54}{9}=6\\ \\text{V}",
+              "f": "(12*6-6*3)/(6+3)",
+              "value": "6",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "r_{eq}=\\dfrac{6\\times3}{6+3}=2\\ \\Omega",
+              "f": "6*3/(6+3)",
+              "value": "2",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{6}{4+2}=1\\ \\text{A}",
+              "f": "6/(4+2)",
+              "value": "1",
+              "step": "s3"
+            }
+          ],
+          "answer": "6/(4+2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "87fb9539",
+        "answer": {
+          "value": 1,
+          "label": "1 A"
+        }
+      }
+    },
+    {
+      "id": "931f7431-3c83-414f-ab55-7957755dff8c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{8-2}{2+4}=\\dfrac{6}{6}=1\\ \\text{A}",
+              "f": "(8-2)/(2+4)",
+              "value": "1",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "V_C-2-4\\times1=V_B",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "V_C-V_B=2+4\\times1=6\\ \\text{V}",
+              "f": "2+4*1",
+              "value": "6",
+              "step": "s3"
+            }
+          ],
+          "answer": "2+4*1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "b60af5c7",
+        "answer": {
+          "value": 6,
+          "label": "6 V"
+        }
+      }
+    },
+    {
+      "id": "93bac206-a88e-4460-abe6-a2d94ac99079",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "P_1=\\dfrac{V_0^2}{R}",
+              "f": "V0^2/R",
+              "value": "V0^2/R",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "P=\\dfrac{V_0^2}{R/2}=\\dfrac{2V_0^2}{R}",
+              "f": "V0^2/(R/2)",
+              "value": "2*V0^2/R",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "P_2=2\\times\\dfrac{2V_0^2}{R}=\\dfrac{4V_0^2}{R}",
+              "f": "2*(2*V0^2/R)",
+              "value": "4*V0^2/R",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{P_2}{P_1}=4",
+              "f": "(4*V0^2/R)/(V0^2/R)",
+              "value": "4",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\sqrt{x}=4\\Rightarrow x=16",
+              "f": "4^2",
+              "value": "16",
+              "step": "s5"
+            }
+          ],
+          "answer": "4^2",
+          "vars": {
+            "V0": "2",
+            "R": "3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "b8cfe0f8",
+        "answer": {
+          "value": 16,
+          "label": "x = 16"
+        }
+      }
+    },
+    {
+      "id": "944c1f6c-0dfe-425b-a7af-d397d4bd0f50",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "P=4\\ \\Omega",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{P}{Q}=\\dfrac{40}{60}=\\dfrac{2}{3}\\Rightarrow Q=6\\ \\Omega",
+              "f": "4/(40/60)",
+              "value": "6",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{P+X}{Q}=\\dfrac{80}{20}=4",
+              "f": "80/20",
+              "value": "4",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "P+X=4\\times6=24\\ \\Omega",
+              "f": "4*6",
+              "value": "24",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "X=24-4=20\\ \\Omega",
+              "f": "24-4",
+              "value": "20",
+              "step": "s5"
+            }
+          ],
+          "answer": "24-4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "f774bc65",
+        "answer": {
+          "value": 20,
+          "label": "20 Ω"
+        }
+      }
+    },
+    {
+      "id": "952cce71-8290-49d3-977a-3df910fd281e",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "m=\\rho A\\ell=10^{3}\\times(1\\times10^{-4})\\times1=0.1\\ \\text{kg}",
+              "f": "10^3*(1*10^(-4))*1",
+              "value": "0.1",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "Q=mc\\Delta T+mL=0.1\\left(2\\times10^{3}\\times10+3.33\\times10^{5}\\right)=3.53\\times10^{4}\\ \\text{J}",
+              "f": "0.1*(2*10^3*10+3.33*10^5)",
+              "value": "3.53*10^4",
+              "sf": 3,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "P=I^2R=(0.5)^2\\times4\\times10^{3}=10^{3}\\ \\text{W}",
+              "f": "0.5^2*4*10^3",
+              "value": "10^3",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "t=\\dfrac{Q}{P}=\\dfrac{3.53\\times10^{4}}{10^{3}}=35.3\\ \\text{s}",
+              "f": "3.53*10^4/10^3",
+              "value": "35.3",
+              "sf": 3,
+              "step": "s4"
+            }
+          ],
+          "answer": "3.53*10^4/10^3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "d7633e6c",
+        "answer": {
+          "value": 35.3,
+          "label": "35.3 s"
+        }
+      }
+    },
+    {
+      "id": "95b2fbe4-0adb-489e-aff0-61289660348a",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "E\\propto l",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "l=60+40=100\\ \\text{cm}",
+              "f": "60+40",
+              "value": "100",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "E=1.5\\times\\dfrac{100}{60}=2.5\\ \\text{V}=\\dfrac{25}{10}\\ \\text{V}",
+              "f": "1.5*100/60",
+              "value": "2.5",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "x=2.5\\times10=25",
+              "f": "2.5*10",
+              "value": "25",
+              "step": "s4"
+            }
+          ],
+          "answer": "2.5*10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "cd3b9564",
+        "answer": {
+          "value": 25,
+          "label": "x = 25"
+        }
+      }
+    },
+    {
+      "id": "9899ce20-5c5a-410b-9c0c-d16ad50a3413",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "i=\\dfrac{4}{R+780}",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{4R}{R+780}\\times\\dfrac{60}{300}=\\dfrac{4R}{5(R+780)}",
+              "lhs": "4*x/(x+780)*60/300",
+              "rhs": "4*x/(5*(x+780))",
+              "roots": [
+                "20"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{4R}{5(R+780)}=2\\times10^{-2}",
+              "lhs": "4*x/(5*(x+780))",
+              "rhs": "2*10^(-2)",
+              "roots": [
+                "20"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "eq",
+              "tex": "4R=0.1(R+780)",
+              "lhs": "4*x",
+              "rhs": "0.1*(x+780)",
+              "roots": [
+                "20"
+              ],
+              "step": "s4"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{39R}{10}=78",
+              "lhs": "39*x/10",
+              "rhs": "78",
+              "roots": [
+                "20"
+              ],
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "R=\\dfrac{78\\times10}{39}=20\\ \\Omega",
+              "f": "78*10/39",
+              "value": "20",
+              "step": "s6"
+            }
+          ],
+          "answer": "78*10/39"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "154c20c0",
+        "answer": {
+          "value": 20,
+          "label": "20 Ω"
+        }
+      }
+    },
+    {
+      "id": "993055c4-f0f0-4ae3-8023-d82f6bbc189a",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "i_1=\\dfrac{2}{5}=0.4\\ \\text{A}",
+              "f": "2/5",
+              "value": "0.4",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{drop across }2\\ \\Omega=3-2=1\\ \\text{V}",
+              "f": "3-2",
+              "value": "1",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "i=\\dfrac{1}{2}=0.5\\ \\text{A}",
+              "f": "1/2",
+              "value": "0.5",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "i_V=i-i_1=0.5-0.4=0.1\\ \\text{A}",
+              "f": "0.5-0.4",
+              "value": "0.1",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_V=\\dfrac{2}{0.1}=20\\ \\Omega",
+              "f": "2/0.1",
+              "value": "20",
+              "step": "s5"
+            }
+          ],
+          "answer": "2/0.1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "5e5f52ae",
+        "answer": {
+          "value": 20,
+          "label": "20 Ω"
+        }
+      }
+    },
+    {
+      "id": "9ad4bca3-4f69-4595-8a23-b161fd6b12ad",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\dfrac{4.5}{60}=\\dfrac{R}{40},\\quad R=\\dfrac{\\rho l}{\\pi r^2}",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "4.5\\times40=\\rho\\times\\dfrac{0.1}{\\pi\\times7\\times10^{-8}}\\times60",
+              "lhs": "4.5*40",
+              "rhs": "x*0.1/(pi*7*10^(-8))*60",
+              "roots": [
+                "4.5*40*pi*7*10^(-8)/(0.1*60)"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\rho=66\\times10^{-7}\\ \\Omega\\,\\text{m}",
+              "f": "4.5*40*pi*7*10^(-8)/(0.1*60)",
+              "value": "66*10^(-7)",
+              "sf": 2,
+              "step": "s3"
+            }
+          ],
+          "answer": "floor(4.5*40*pi*7*10^(-8)/(0.1*60)*10^7+0.5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a06f1c4e",
+        "answer": {
+          "value": 66,
+          "label": "R = 66"
+        }
+      }
+    },
+    {
+      "id": "a077578a-857a-408d-9c7f-1dbaa135dba1",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "V=V_0\\left(1-e^{-t/RC}\\right)",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "50=100\\left(1-e^{-t/RC}\\right)",
+              "lhs": "50",
+              "rhs": "100*(1-exp(-x))",
+              "roots": [
+                "ln(2)"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{1}{2}=1-e^{-t/RC}",
+              "lhs": "1/2",
+              "rhs": "1-exp(-x)",
+              "roots": [
+                "ln(2)"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "eq",
+              "tex": "e^{-t/RC}=\\dfrac{1}{2}",
+              "lhs": "exp(-x)",
+              "rhs": "1/2",
+              "roots": [
+                "ln(2)"
+              ],
+              "step": "s4"
+            },
+            {
+              "kind": "note",
+              "tex": "\\dfrac{t}{RC}=\\ln2,\\quad t=RC\\ln2",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "t=100\\times1\\times10^{-6}\\times0.6=60\\ \\mu\\text{s}",
+              "f": "100*1*0.6",
+              "value": "60",
+              "step": "s6"
+            }
+          ],
+          "answer": "100*1*0.6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "13af6770",
+        "answer": {
+          "value": 60,
+          "label": "60 µs"
+        }
+      }
+    },
+    {
+      "id": "a1f154e9-f5b0-472c-a3e7-71e039021efd",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{inductor: open circuit just after closing}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{6}{2+4}=1\\ \\text{A}",
+              "f": "6/(2+4)",
+              "value": "1",
+              "step": "s2"
+            }
+          ],
+          "answer": "6/(2+4)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "ed3a06f6",
+        "answer": {
+          "value": 1,
+          "label": "1 A"
+        }
+      }
+    },
+    {
+      "id": "a3096641-c0b1-4c08-bf9c-5ffb1ed5bfa4",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "H=I^2Rt",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{H_1}{H_2}=\\left(\\dfrac{4}{16}\\right)^2=\\dfrac{1}{16}",
+              "f": "(4/16)^2",
+              "value": "1/16",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "H_2=16H_1",
+              "f": "1/(1/16)",
+              "value": "16",
+              "step": "s3"
+            }
+          ],
+          "answer": "1/(1/16)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "17cb81b1",
+        "answer": {
+          "value": 16,
+          "label": "16H"
+        }
+      }
+    },
+    {
+      "id": "a413986c-392b-4b49-a580-428f0366ba59",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "A:\\ V,\\qquad D:\\ 0",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\text{centre}=\\dfrac{V}{2},\\quad B,F=x,\\quad C,E=V-x",
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "(x-V)+\\left(x-(V-x)\\right)+\\left(x-\\dfrac{V}{2}\\right)=0",
+              "lhs": "(x-V)+(x-(V-x))+(x-V/2)",
+              "rhs": "0",
+              "roots": [
+                "5*V/8"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{1}{r}\\left[2\\left(V-\\dfrac{5V}{8}\\right)+\\dfrac{V}{2}\\right]=\\dfrac{5V}{4r}",
+              "f": "(2*(V-5*V/8)+V/2)/r",
+              "value": "5*V/(4*r)",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{eq}=\\dfrac{V}{I}=\\dfrac{4r}{5}",
+              "f": "V/(5*V/(4*r))",
+              "value": "4*r/5",
+              "step": "s5"
+            }
+          ],
+          "answer": "4*r/5/r",
+          "vars": {
+            "V": "8",
+            "r": "3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "3cc194d1",
+        "answer": {
+          "value": 0.7999999999999999,
+          "label": "4r/5"
+        }
+      }
+    },
+    {
+      "id": "a41760fe-2517-45ef-ac69-7e66f4e178af",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "R_p=\\dfrac{500\\times2000}{2500}=400\\ \\Omega",
+              "f": "500*2000/2500",
+              "value": "400",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "i=\\dfrac{20}{400+600}=0.02\\ \\text{A}",
+              "f": "20/(400+600)",
+              "value": "0.02",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "V=(0.02)(400)=8\\ \\text{V}",
+              "f": "0.02*400",
+              "value": "8",
+              "step": "s3"
+            }
+          ],
+          "answer": "0.02*400"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "0e4c7011",
+        "answer": {
+          "value": 8,
+          "label": "8 V"
+        }
+      }
+    },
+    {
+      "id": "a518ed1f-942e-4687-9d61-08338ba48337",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "i_0R_0=i_{100}R_{100}",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "2R_0=1.2R_0\\left[1+100\\alpha\\right]",
+              "lhs": "2",
+              "rhs": "1.2*(1+100*x)",
+              "roots": [
+                "1/150"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "1+100\\alpha=\\dfrac{5}{3}\\Rightarrow50\\alpha=\\dfrac{1}{3}",
+              "f": "(5/3-1)/2",
+              "value": "1/3",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "i_{50}=\\dfrac{2}{1+\\frac{1}{3}}=1.5\\ \\text{A}",
+              "f": "2/(1+1/3)",
+              "value": "1.5",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "i_{50}=15\\times10^{2}\\ \\text{mA}",
+              "f": "1.5*1000",
+              "value": "15*10^2",
+              "sf": 2,
+              "step": "s5"
+            }
+          ],
+          "answer": "1.5*1000/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "56eefc16",
+        "answer": {
+          "value": 15,
+          "label": "15 × 10² mA"
+        }
+      }
+    },
+    {
+      "id": "a5b9ab5b-075e-4768-8a53-335ca5770674",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "R=\\dfrac{\\rho l}{A}=\\dfrac{1.7\\times10^{-8}\\times1}{2.0\\times10^{-6}}=8.5\\times10^{-3}\\ \\Omega",
+              "f": "1.7*10^(-8)*1/(2.0*10^(-6))",
+              "value": "8.5*10^(-3)",
+              "sf": 2,
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "V=IR=8.5\\times10^{-3}\\ \\text{V}",
+              "f": "1*8.5*10^(-3)",
+              "value": "8.5*10^(-3)",
+              "sf": 2,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "E=\\dfrac{V}{l}=8.5\\times10^{-3}\\ \\text{V/m}",
+              "f": "8.5*10^(-3)/1",
+              "value": "8.5*10^(-3)",
+              "sf": 2,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "F=eE=1.6\\times10^{-19}\\times8.5\\times10^{-3}=1.36\\times10^{-21}\\ \\text{N}",
+              "f": "1.6*10^(-19)*8.5*10^(-3)",
+              "value": "1.36*10^(-21)",
+              "sf": 3,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "F=136\\times10^{-23}\\ \\text{N}",
+              "f": "1.36*10^(-21)",
+              "value": "136*10^(-23)",
+              "sf": 3,
+              "step": "s5"
+            }
+          ],
+          "answer": "1.6*10^(-19)*8.5*10^(-3)*10^23"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "18a009a3",
+        "answer": {
+          "value": 136.00000000000003,
+          "label": "136 × 10⁻²³ N"
+        }
+      }
+    },
+    {
+      "id": "a5c87459-4d4b-4101-851c-99d486f37525",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "R_{eq}=\\dfrac{16\\times4}{16+4}=\\dfrac{16}{5}\\ \\Omega",
+              "f": "16*4/(16+4)",
+              "value": "16/5",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{eq}=3.2\\ \\Omega",
+              "f": "16/5",
+              "value": "3.2",
+              "step": "s2"
+            }
+          ],
+          "answer": "16/5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "979f8630",
+        "answer": {
+          "value": 3.2,
+          "label": "3.2 Ω"
+        }
+      }
+    },
+    {
+      "id": "a5db31c8-33ed-4363-9e63-ef6f7dc4fc55",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{capacitor branch carries no current}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{3\\times6}{3+6}=2\\ \\Omega",
+              "f": "3*6/(3+6)",
+              "value": "2",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "2+2=4\\ \\Omega",
+              "f": "2+2",
+              "value": "4",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{eq}=\\dfrac{4\\times4}{4+4}=2\\ \\Omega",
+              "f": "4*4/(4+4)",
+              "value": "2",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{2}{2}=1\\ \\text{A}",
+              "f": "2/2",
+              "value": "1",
+              "step": "s5"
+            }
+          ],
+          "answer": "2/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "e315f872",
+        "answer": {
+          "value": 1,
+          "label": "1 A"
+        }
+      }
+    },
+    {
+      "id": "a6a2844f-8fc0-4397-ba64-51117e378d30",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "V(3.2)=5+5(0.2)=6\\ \\text{V}",
+              "f": "5+5*0.2",
+              "value": "6",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "V(t)-IR-5=0",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{V(t)-5}{R}=\\dfrac{6-5}{1}=1\\ \\text{A}",
+              "f": "(6-5)/1",
+              "value": "1",
+              "step": "s3"
+            }
+          ],
+          "answer": "(6-5)/1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e5953208",
+        "answer": {
+          "value": 1,
+          "label": "1 A"
+        }
+      }
+    },
+    {
+      "id": "a7f8ecd0-f3ee-4925-942e-acfb3e63d674",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "R=\\dfrac{V^2}{P}",
+              "f": "V^2/P",
+              "value": "V^2/P",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_s=nR=\\dfrac{nV^2}{P}",
+              "f": "n*(V^2/P)",
+              "value": "n*V^2/P",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "P_s=\\dfrac{V^2}{R_s}=\\dfrac{P}{n}",
+              "f": "V^2/(n*V^2/P)",
+              "value": "P/n",
+              "step": "s3"
+            }
+          ],
+          "answer": "(P/n)/P",
+          "vars": {
+            "V": "5",
+            "P": "3",
+            "n": "4"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "1747598a",
+        "answer": {
+          "value": 0.25,
+          "label": "P/n"
+        }
+      }
+    },
+    {
+      "id": "a845c810-9c43-4e04-acff-f50fb6edf3e5",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{9}{3}=3\\ \\text{A}",
+              "f": "9/3",
+              "value": "3",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "V_C-V_A=2\\times1.5=3\\ \\text{V}",
+              "f": "2*1.5",
+              "value": "3",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "V_C-V_B=4\\times1.5=6\\ \\text{V}",
+              "f": "4*1.5",
+              "value": "6",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "V_A-V_B=6-3=3\\ \\text{V}",
+              "f": "6-3",
+              "value": "3",
+              "step": "s4"
+            }
+          ],
+          "answer": "6-3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "6fdeca06",
+        "answer": {
+          "value": 3,
+          "label": "3 V"
+        }
+      }
+    },
+    {
+      "id": "a8f6402a-7a55-49a8-9a6d-eb00001ec846",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "R_{eq}=4000\\ \\Omega",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "i=\\dfrac{4}{4000}=\\dfrac{1}{1000}\\ \\text{A}",
+              "f": "4/4000",
+              "value": "1/1000",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "V_0=iR=\\dfrac{1}{1000}\\times500=0.5\\ \\text{V}",
+              "f": "1/1000*500",
+              "value": "0.5",
+              "step": "s3"
+            }
+          ],
+          "answer": "1/1000*500"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "fd7e9396",
+        "answer": {
+          "value": 0.5,
+          "label": "0.5 V"
+        }
+      }
+    },
+    {
+      "id": "aa764df6-ddf5-4dd5-b54a-e61dcf0a6f8c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "expr",
+              "tex": "R=\\dfrac{ma}{3}+\\dfrac{a}{2m}",
+              "f": "a*x/3+a/(2*x)",
+              "domain": [
+                0.3,
+                4
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "deriv",
+              "tex": "\\dfrac{dR}{dm}=\\dfrac{a}{3}-\\dfrac{a}{2m^2}",
+              "f": "a/3-a/(2*x^2)",
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{a}{3}=\\dfrac{a}{2m^2}",
+              "lhs": "a/3",
+              "rhs": "a/(2*x^2)",
+              "roots": [
+                "sqrt(3/2)"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "m^2=\\dfrac{3}{2}",
+              "f": "(a/2)/(a/3)",
+              "value": "3/2",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "m=\\sqrt{\\dfrac{3}{2}}\\Rightarrow x=3",
+              "f": "2*(3/2)",
+              "value": "3",
+              "step": "s5"
+            }
+          ],
+          "answer": "2*(3/2)",
+          "vars": {
+            "a": "2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "18d1975c",
+        "answer": {
+          "value": 3,
+          "label": "x = 3"
+        }
+      }
+    },
+    {
+      "id": "ab6b5cf9-4c19-4c82-b95a-ce6c2149521c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{R_v\\times100}{R_v+100}=\\dfrac{200}{3}",
+              "lhs": "x*100/(x+100)",
+              "rhs": "200/3",
+              "roots": [
+                "200"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "3R_v=2R_v+200",
+              "lhs": "3*x",
+              "rhs": "2*x+200",
+              "roots": [
+                "200"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_v=200\\ \\Omega",
+              "f": "3*200-2*200",
+              "value": "200",
+              "step": "s3"
+            }
+          ],
+          "answer": "3*200-2*200"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "1c9bcd89",
+        "answer": {
+          "value": 200,
+          "label": "200 Ω"
+        }
+      }
+    },
+    {
+      "id": "ac2d6b71-7c29-4a10-9c54-e39f6f80dba5",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{i_1}{i_2}=\\dfrac{10}{5}=\\dfrac{2}{1}",
+              "f": "10/5",
+              "value": "2/1",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{P_1}{P_2}=\\dfrac{i_1^2R_1}{i_2^2R_2}=\\left(\\dfrac{2}{1}\\right)^2\\times\\dfrac{5}{10}=\\dfrac{2}{1}",
+              "f": "2^2*5/10",
+              "value": "2",
+              "step": "s2"
+            }
+          ],
+          "answer": "2^2*5/10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "8ab54bad",
+        "answer": {
+          "value": 2,
+          "label": "2 : 1"
+        }
+      }
+    },
+    {
+      "id": "ad8bcf2c-ecb3-4491-bfb8-c6226c131815",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "R_{eq}=\\dfrac{3\\times3/2}{3+3/2}=\\dfrac{9/2}{9/2}",
+              "f": "3*(3/2)/(3+3/2)",
+              "value": "(9/2)/(9/2)",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{eq}=1\\ \\Omega",
+              "f": "(9/2)/(9/2)",
+              "value": "1",
+              "step": "s2"
+            }
+          ],
+          "answer": "(9/2)/(9/2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "985da4b3",
+        "answer": {
+          "value": 1,
+          "label": "1 Ω"
+        }
+      }
+    },
+    {
+      "id": "afbc5ccf-4f7a-49db-9d6d-985c6a68cd6e",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "eq",
+              "tex": "62=50\\left(1+2.4\\times10^{-4}\\Delta T\\right)",
+              "lhs": "62",
+              "rhs": "50*(1+2.4*10^(-4)*x)",
+              "roots": [
+                "1000"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{62}{50}-1=0.24",
+              "f": "62/50-1",
+              "value": "0.24",
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "0.24=2.4\\times10^{-4}\\Delta T",
+              "lhs": "0.24",
+              "rhs": "2.4*10^(-4)*x",
+              "roots": [
+                "1000"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\Delta T=\\dfrac{0.24}{2.4\\times10^{-4}}=1000\\ {}^{\\circ}\\text{C}",
+              "f": "0.24/(2.4*10^(-4))",
+              "value": "1000",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "T=27+1000=1027\\ {}^{\\circ}\\text{C}",
+              "f": "27+1000",
+              "value": "1027",
+              "step": "s5"
+            }
+          ],
+          "answer": "27+1000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "9640e5dd",
+        "answer": {
+          "value": 1027,
+          "label": "1027 °C"
+        }
+      }
+    },
+    {
+      "id": "b20831f7-fc38-4624-a8ee-bcf7c90d80f4",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "R_1=\\rho\\dfrac{L_1}{A_1}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_2=\\rho\\dfrac{3L_1}{A_1/3}=9\\rho\\dfrac{L_1}{A_1}",
+              "f": "rho*(3*L1/(A1/3))",
+              "value": "9*rho*L1/A1",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{R_2}{R_1}=9",
+              "f": "(9*rho*L1/A1)/(rho*L1/A1)",
+              "value": "9",
+              "step": "s3"
+            }
+          ],
+          "answer": "(9*rho*L1/A1)/(rho*L1/A1)",
+          "vars": {
+            "rho": "2",
+            "L1": "3",
+            "A1": "5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "3ca7800f",
+        "answer": {
+          "value": 9.000000000000002,
+          "label": "9 : 1"
+        }
+      }
+    },
+    {
+      "id": "b262354e-63b7-48e0-b461-4f5e9f7fd96f",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{R_1}{R_2}=\\dfrac{40}{60}=\\dfrac{2}{3}",
+              "f": "40/60",
+              "value": "2/3",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\text{equal gaps: }R_1=\\dfrac{16R_2}{16+R_2}",
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{2}{3}R_2=\\dfrac{16R_2}{16+R_2}",
+              "lhs": "2/3*x",
+              "rhs": "16*x/(16+x)",
+              "roots": [
+                "8"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "eq",
+              "tex": "16+R_2=24",
+              "lhs": "16+x",
+              "rhs": "24",
+              "roots": [
+                "8"
+              ],
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_2=8\\ \\Omega,\\quad R_1=\\dfrac{2}{3}\\times8=\\dfrac{16}{3}\\ \\Omega",
+              "f": "2/3*8",
+              "value": "16/3",
+              "step": "s5"
+            }
+          ],
+          "answer": "24-16"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "3361c060",
+        "answer": {
+          "value": 8,
+          "label": "R₂ = 8 Ω, R₁ = 16/3 Ω"
+        }
+      }
+    },
+    {
+      "id": "b27c2502-0657-4cb8-b9dd-8cf071b7f826",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\tau=\\dfrac{L}{R}=\\dfrac{1}{100}=10\\ \\text{ms}",
+              "f": "1/100*1000",
+              "value": "10",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "t=\\tau\\ln2=10\\times0.693\\approx7\\ \\text{ms}",
+              "f": "10*0.693",
+              "value": "7",
+              "dp": 0,
+              "step": "s2"
+            },
+            {
+              "kind": "note",
+              "tex": "\\dfrac{t}{\\tau}=1.5,\\quad e^{-3/2}=0.25",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "i=\\dfrac{6}{100}(1-0.25)=0.045\\ \\text{A}",
+              "f": "6/100*(1-0.25)",
+              "value": "0.045",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "U=\\dfrac{1}{2}Li^2=\\dfrac{1}{2}(1)(0.045)^2\\approx1\\ \\text{mJ}",
+              "f": "0.5*1*0.045^2*1000",
+              "value": "1",
+              "dp": 0,
+              "step": "s5"
+            }
+          ],
+          "answer": "10*0.693"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "d63b5ac5",
+        "answer": {
+          "value": 6.93,
+          "label": "t ≈ 7 ms; U ≈ 1 mJ"
+        }
+      }
+    },
+    {
+      "id": "b30803b5-4dc2-4533-bda4-a27d8de4ccc0",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\dfrac{ER}{R+r}=k\\ell",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\dfrac{5E}{5+r}=k(200),\\quad\\dfrac{15E}{15+r}=k(300)",
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{5(15+r)}{15(5+r)}=\\dfrac{200}{300}=\\dfrac{2}{3}",
+              "lhs": "5*(15+x)/(15*(5+x))",
+              "rhs": "2/3",
+              "roots": [
+                "5"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{15+r}{5+r}=2",
+              "lhs": "(15+x)/(5+x)",
+              "rhs": "2",
+              "roots": [
+                "5"
+              ],
+              "step": "s4"
+            },
+            {
+              "kind": "eq",
+              "tex": "15+r=10+2r",
+              "lhs": "15+x",
+              "rhs": "10+2*x",
+              "roots": [
+                "5"
+              ],
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "r=15-10=5\\ \\Omega",
+              "f": "15-10",
+              "value": "5",
+              "step": "s6"
+            }
+          ],
+          "answer": "15-10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "80b0d2c2",
+        "answer": {
+          "value": 5,
+          "label": "5 Ω"
+        }
+      }
+    },
+    {
+      "id": "b32e9e90-663f-4dbf-8ee3-c350f80c54d2",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "R_H=\\dfrac{V^2}{P}=\\dfrac{100^2}{1000}=10\\ \\Omega",
+              "f": "100^2/1000",
+              "value": "10",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "V_H=\\sqrt{PR_H}=\\sqrt{62.5\\times10}=25\\ \\text{V}",
+              "f": "sqrt(62.5*10)",
+              "value": "25",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "i_H=\\dfrac{25}{10}=2.5\\ \\text{A}",
+              "f": "25/10",
+              "value": "2.5",
+              "step": "s3"
+            },
+            {
+              "kind": "note",
+              "tex": "\\text{heater and }R\\text{ in parallel, in series with }10\\ \\Omega",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "i=\\dfrac{100-25}{10}=7.5\\ \\text{A}",
+              "f": "(100-25)/10",
+              "value": "7.5",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "i_R=7.5-2.5=5\\ \\text{A}",
+              "f": "7.5-2.5",
+              "value": "5",
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "R=\\dfrac{25}{5}=5\\ \\Omega",
+              "f": "25/5",
+              "value": "5",
+              "step": "s7"
+            }
+          ],
+          "answer": "25/5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s5",
+              "s6",
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "475f5caf",
+        "answer": {
+          "value": 5,
+          "label": "5 Ω"
+        }
+      }
+    },
+    {
+      "id": "b4fa0136-00c0-4ca2-a1d4-d0f35fdc49dc",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "V_{3\\Omega\\ \\text{end}}=2\\ \\text{V}",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\text{junction at }x",
+              "step": "s2"
+            },
+            {
+              "kind": "note",
+              "tex": "I_{6\\Omega}=\\dfrac{x-3}{6}",
+              "step": "s3"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{x-3}{6}+\\dfrac{x-2}{3}+\\dfrac{x}{4}=0",
+              "lhs": "(x-3)/6+(x-2)/3+x/4",
+              "rhs": "0",
+              "roots": [
+                "14/9"
+              ],
+              "step": "s4"
+            },
+            {
+              "kind": "eq",
+              "tex": "2(x-3)+4(x-2)+3x=0",
+              "lhs": "2*(x-3)+4*(x-2)+3*x",
+              "rhs": "0",
+              "roots": [
+                "14/9"
+              ],
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{3-14/9}{6}=\\dfrac{13}{54}\\ \\text{A}",
+              "f": "(3-14/9)/6",
+              "value": "13/54",
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "H=\\left(\\dfrac{13}{54}\\right)^2\\times6\\times100=34.77\\ \\text{J}",
+              "f": "(13/54)^2*6*100",
+              "value": "34.77",
+              "dp": 2,
+              "step": "s7"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\alpha=34.77\\times100=3477",
+              "f": "34.77*100",
+              "value": "3477",
+              "step": "s8"
+            }
+          ],
+          "answer": "floor((13/54)^2*6*100*100+0.5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4",
+              "s5",
+              "s6",
+              "s7",
+              "s8"
+            ]
+          }
+        ],
+        "fingerprint": "3106d7d6",
+        "answer": {
+          "value": 3477,
+          "label": "3477"
+        }
+      }
+    },
+    {
+      "id": "b5c9cb29-3ceb-48a5-90a9-bc7508a44a08",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{1}{R_{234}}=\\dfrac{1}{8}+\\dfrac{1}{4}+\\dfrac{1}{8}=\\dfrac{1}{2}",
+              "f": "1/8+1/4+1/8",
+              "value": "1/2",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{234}=2\\ \\Omega",
+              "f": "1/(1/2)",
+              "value": "2",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{eq}=R_{234}+R_1=2+10=12\\ \\Omega",
+              "f": "2+10",
+              "value": "12",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "i=\\dfrac{12}{12}=1\\ \\text{A}",
+              "f": "12/12",
+              "value": "1",
+              "step": "s4"
+            }
+          ],
+          "answer": "2+10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "9ab3434c",
+        "answer": {
+          "value": 12,
+          "label": "12 Ω; 1 A"
+        }
+      }
+    },
+    {
+      "id": "b675594d-48b1-4c73-97a1-b2f4d32a91a6",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "I_1=\\dfrac{12}{3+9}=1\\ \\text{A}",
+              "f": "12/(3+9)",
+              "value": "1",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "I_2=\\dfrac{12}{4+2}=2\\ \\text{A}",
+              "f": "12/(4+2)",
+              "value": "2",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "V_A-V_C=3I_1=3\\ \\text{V}",
+              "f": "3*1",
+              "value": "3",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "V_A-V_D=2\\times4=8\\ \\text{V}",
+              "f": "2*4",
+              "value": "8",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "V_C-V_D=8-3=5\\ \\text{V}",
+              "f": "8-3",
+              "value": "5",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "U=\\dfrac{1}{2}CV^2=\\dfrac{1}{2}\\times6\\times5^2=75\\ \\mu\\text{J}",
+              "f": "0.5*6*5^2",
+              "value": "75",
+              "step": "s6"
+            }
+          ],
+          "answer": "0.5*6*5^2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "3bd68260",
+        "answer": {
+          "value": 75,
+          "label": "75 µJ"
+        }
+      }
+    },
+    {
+      "id": "b7120220-85f2-4163-94fa-03166e9f7f1a",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "q=Q_0e^{-t/RC},\\quad U\\propto q^2",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{1}{\\sqrt{2}}=e^{-t_1/RC}",
+              "lhs": "1/sqrt(2)",
+              "rhs": "exp(-x)",
+              "roots": [
+                "0.5*ln(2)"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{1}{8}=e^{-t_2/RC}",
+              "lhs": "1/8",
+              "rhs": "exp(-x)",
+              "roots": [
+                "3*ln(2)"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{t_1}{t_2}=\\dfrac{\\tfrac{1}{2}\\ln2}{3\\ln2}=\\dfrac{1}{6}",
+              "f": "(0.5*ln(2))/(3*ln(2))",
+              "value": "1/6",
+              "step": "s4"
+            }
+          ],
+          "answer": "(1/2)/3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "976a31bf",
+        "answer": {
+          "value": 0.16666666666666666,
+          "label": "1/6"
+        }
+      }
+    },
+    {
+      "id": "ba8085d0-86f6-471f-a372-832b803c94ff",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "i_{t=0}=\\dfrac{E}{6}+\\dfrac{E}{9}=\\dfrac{5E}{18}",
+              "f": "E/6+E/9",
+              "value": "5*E/18",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{5\\times5}{5+5}=2.5\\ \\Omega",
+              "f": "5*5/(5+5)",
+              "value": "2.5",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{1\\times4}{1+4}=0.8\\ \\Omega",
+              "f": "1*4/(1+4)",
+              "value": "0.8",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "R=2.5+0.8=3.3\\ \\Omega",
+              "f": "2.5+0.8",
+              "value": "3.3",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "i_{t=\\infty}=\\dfrac{E}{3.3}=\\dfrac{10E}{33}",
+              "f": "E/3.3",
+              "value": "10*E/33",
+              "step": "s5"
+            }
+          ],
+          "answer": "(E/6+E/9)/E",
+          "vars": {
+            "E": "2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "1bc3179d",
+        "answer": {
+          "value": 0.2777777777777778,
+          "label": "5E/18, 10E/33"
+        }
+      }
+    },
+    {
+      "id": "bb6abe3f-c510-409b-8de1-c70de691ccdb",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "V_A=\\dfrac{40}{2}=20\\ \\text{V}",
+              "f": "40/2",
+              "value": "20",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "V_B=40\\times\\dfrac{R}{1.1R+R}=\\dfrac{40}{2.1}=19.05\\ \\text{V}",
+              "f": "40*R/(1.1*R+R)",
+              "value": "19.05",
+              "dp": 2,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "V_A-V_B=20-19.05=0.95\\ \\text{V}",
+              "f": "20-19.05",
+              "value": "0.95",
+              "dp": 2,
+              "step": "s3"
+            }
+          ],
+          "answer": "20-19.05",
+          "vars": {
+            "R": "3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "157efa5f",
+        "answer": {
+          "value": 0.9499999999999993,
+          "label": "0.95 V"
+        }
+      }
+    },
+    {
+      "id": "bbb79df7-6b52-446f-9c0f-e5be414e7d98",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{inductor branches carry no current}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{9}{9}=1\\ \\text{A}",
+              "f": "9/9",
+              "value": "1",
+              "step": "s2"
+            }
+          ],
+          "answer": "9/9"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "3df584e3",
+        "answer": {
+          "value": 1,
+          "label": "1 A"
+        }
+      }
+    },
+    {
+      "id": "bc29fd3a-7a1c-4610-9f37-aa8f8cdafbc6",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{P}{V}=\\dfrac{110}{220}=0.5\\ \\text{A}",
+              "f": "110/220",
+              "value": "0.5",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{n}{t}=\\dfrac{0.5}{1.6\\times10^{-19}}=3.125\\times10^{18}",
+              "f": "0.5/(1.6*10^(-19))",
+              "value": "3.125*10^18",
+              "sf": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{n}{t}=31.25\\times10^{17}\\ \\text{per second}",
+              "f": "3.125*10^18",
+              "value": "31.25*10^17",
+              "sf": 4,
+              "step": "s3"
+            }
+          ],
+          "answer": "3.125*10^18"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "ddf46b60",
+        "answer": {
+          "value": 3125000000000000000,
+          "label": "31.25 × 10¹⁷"
+        }
+      }
+    },
+    {
+      "id": "c004aaa9-1248-4d9c-a90b-b2295447009b",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "expr",
+              "tex": "I=\\int J\\,dA=\\int10^{6}\\times2\\pi x\\,dx",
+              "f": "10^6*2*pi*x",
+              "step": "s1"
+            },
+            {
+              "kind": "integral",
+              "tex": "I=10^{6}\\times2\\pi\\cdot\\dfrac{x^{2}}{2}\\Big]_{r/2}^{r}",
+              "f": "10^6*pi*x^2",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "I=\\pi\\times10^{6}\\left[r^2-\\dfrac{r^2}{4}\\right]=12\\pi",
+              "f": "pi*10^6*((4*10^(-3))^2-(4*10^(-3))^2/4)",
+              "value": "12*pi",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "x=\\dfrac{12\\pi}{\\pi}=12",
+              "f": "12*pi/pi",
+              "value": "12",
+              "step": "s4"
+            }
+          ],
+          "answer": "12*pi/pi"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "3fc53fe1",
+        "answer": {
+          "value": 12,
+          "label": "x = 12"
+        }
+      }
+    },
+    {
+      "id": "c0107d03-c2ae-468f-88ee-edfce7cb91ab",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{no current in the capacitor branch}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{E}{R+r}=\\dfrac{10}{100+10}=\\dfrac{1}{11}\\ \\text{A}",
+              "f": "10/(100+10)",
+              "value": "1/11",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "V_C=IR=\\dfrac{100}{11}\\ \\text{V}",
+              "f": "1/11*100",
+              "value": "100/11",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "q=CV_C=1.1\\times10^{-6}\\times\\dfrac{100}{11}=10\\times10^{-6}\\ \\text{C}",
+              "f": "1.1*10^(-6)*(100/11)",
+              "value": "10*10^(-6)",
+              "sf": 2,
+              "step": "s4"
+            }
+          ],
+          "answer": "1.1*(100/11)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "30087884",
+        "answer": {
+          "value": 10.000000000000002,
+          "label": "10 × 10⁻⁶ C"
+        }
+      }
+    },
+    {
+      "id": "c24d4247-f7af-46be-a082-9ff700d3e8cc",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "R_2+R_1=4+2=6\\ \\Omega",
+              "f": "4+2",
+              "value": "6",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{6\\times6}{6+6}=3\\ \\Omega",
+              "f": "6*6/(6+6)",
+              "value": "3",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_4+3=3+3=6\\ \\Omega",
+              "f": "3+3",
+              "value": "6",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{6\\times3}{6+3}=2\\ \\Omega",
+              "f": "6*3/(6+3)",
+              "value": "2",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{EA}=2+2=4\\ \\Omega",
+              "f": "2+2",
+              "value": "4",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{8}{4}=2\\ \\text{A}",
+              "f": "8/4",
+              "value": "2",
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "I_{DC}=2\\times\\dfrac{3}{3+6}=\\dfrac{2}{3}\\ \\text{A}",
+              "f": "2*3/(3+6)",
+              "value": "2/3",
+              "step": "s7"
+            },
+            {
+              "kind": "calc",
+              "tex": "I_{R_2}=\\dfrac{1}{2}\\times\\dfrac{2}{3}=\\dfrac{1}{3}\\ \\text{A}",
+              "f": "1/2*(2/3)",
+              "value": "1/3",
+              "step": "s8"
+            }
+          ],
+          "answer": "1/2*(2/3)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s5",
+              "s6",
+              "s7",
+              "s8"
+            ]
+          }
+        ],
+        "fingerprint": "7c6e9676",
+        "answer": {
+          "value": 0.3333333333333333,
+          "label": "1/3 A"
+        }
+      }
+    },
+    {
+      "id": "c547b1ee-8035-4bea-8f2b-f51a9d227082",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{R}{3}=\\dfrac{4}{6}",
+              "lhs": "x/3",
+              "rhs": "4/6",
+              "roots": [
+                "2"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{eq}=\\dfrac{(2+4)(3+6)}{(2+4)+(3+6)}=\\dfrac{6\\times9}{15}=\\dfrac{18}{5}\\ \\Omega",
+              "f": "(2+4)*(3+6)/((2+4)+(3+6))",
+              "value": "18/5",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{36}{18/5}=10\\ \\text{A}",
+              "f": "36/(18/5)",
+              "value": "10",
+              "step": "s3"
+            }
+          ],
+          "answer": "36/(18/5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "7a615ed6",
+        "answer": {
+          "value": 10,
+          "label": "10 A"
+        }
+      }
+    },
+    {
+      "id": "c59deca7-2b71-4332-83d9-846d13e7ce27",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "5\\ \\Omega\\ \\text{is the bridge arm}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{3}{3}=\\dfrac{6}{6}",
+              "f": "3/3",
+              "value": "6/6",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{eq}=\\dfrac{(3+3)(6+6)}{(3+3)+(6+6)}+2=\\dfrac{6\\times12}{18}+2=6\\ \\Omega",
+              "f": "(3+3)*(6+6)/((3+3)+(6+6))+2",
+              "value": "6",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{6}{6}=1\\ \\text{A}",
+              "f": "6/6",
+              "value": "1",
+              "step": "s4"
+            }
+          ],
+          "answer": "6/6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "9791967e",
+        "answer": {
+          "value": 1,
+          "label": "1 A"
+        }
+      }
+    },
+    {
+      "id": "c626fb03-3fcd-42c4-92f8-19366c8647a1",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "V_B=V_D:\\ \\text{balanced bridge}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "P=\\dfrac{6\\times3}{6+3}=2\\ \\Omega",
+              "f": "6*3/(6+3)",
+              "value": "2",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "R=1+2=3\\ \\Omega",
+              "f": "1+2",
+              "value": "3",
+              "step": "s3"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{2}{x/(x+1)}=\\dfrac{3}{x}",
+              "lhs": "2/(x/(x+1))",
+              "rhs": "3/x",
+              "roots": [
+                "1/2"
+              ],
+              "step": "s4"
+            },
+            {
+              "kind": "eq",
+              "tex": "2(x+1)=3",
+              "lhs": "2*(x+1)",
+              "rhs": "3",
+              "roots": [
+                "1/2"
+              ],
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "x=\\dfrac{1}{2}\\ \\Omega=\\dfrac{1}{n}\\Rightarrow n=2",
+              "f": "1/(1/2)",
+              "value": "2",
+              "step": "s6"
+            }
+          ],
+          "answer": "1/(1/2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "e0533bee",
+        "answer": {
+          "value": 2,
+          "label": "n = 2"
+        }
+      }
+    },
+    {
+      "id": "c6740d79-3ef4-4d1f-b2ac-19ef9e8d4fd3",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{8\\times5}{8\\times0.2}=\\dfrac{40}{1.6}=25\\ \\text{A}",
+              "f": "8*5/(8*0.2)",
+              "value": "25",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "V=E-Ir=5-25\\times0.2=0\\ \\text{V}",
+              "f": "5-25*0.2",
+              "value": "0",
+              "step": "s2"
+            }
+          ],
+          "answer": "5-25*0.2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "65f52b0a",
+        "answer": {
+          "value": 0,
+          "label": "0 V"
+        }
+      }
+    },
+    {
+      "id": "c7d655a7-670d-444a-9731-7e8f0c7be12f",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "R=\\tan45^{\\circ}=1\\ \\Omega",
+              "f": "tan(rad(45))",
+              "value": "1",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\rho=\\dfrac{RA}{L}=\\dfrac{(1)\\pi(2.4)^{2}/4}{31.4}=\\dfrac{3.14\\times5.76}{4\\times31.4}=0.144\\ \\Omega\\,\\text{cm}",
+              "f": "3.14*2.4^2/4/31.4",
+              "value": "0.144",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\rho=144\\times10^{-3}\\ \\Omega\\,\\text{cm}\\Rightarrow x=144",
+              "f": "0.144*1000",
+              "value": "144",
+              "step": "s3"
+            }
+          ],
+          "answer": "0.144*1000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "1d7b0262",
+        "answer": {
+          "value": 144,
+          "label": "x = 144"
+        }
+      }
+    },
+    {
+      "id": "c9e6457b-b4da-426e-8e44-841d1b38259d",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "R=75\\times10^{2}=7500\\ \\Omega",
+              "f": "75*10^2",
+              "value": "7500",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "5\\%\\text{ of }7500=375\\ \\Omega",
+              "f": "0.05*7500",
+              "value": "375",
+              "step": "s2"
+            }
+          ],
+          "answer": "75*10^2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "390992e3",
+        "answer": {
+          "value": 7500,
+          "label": "7500 ± 375 Ω"
+        }
+      }
+    },
+    {
+      "id": "ca2f1cc5-f063-48f5-916e-02eeb6cf3da1",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\dfrac{\\varepsilon_1}{\\varepsilon_2}=\\dfrac{l_1}{l_2}",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{3}{2}=\\dfrac{75}{l_2}",
+              "lhs": "3/2",
+              "rhs": "75/x",
+              "roots": [
+                "50"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "l_1-l_2=75-50=25\\ \\text{cm}",
+              "f": "75-50",
+              "value": "25",
+              "step": "s3"
+            }
+          ],
+          "answer": "75-50"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "aaf4ceec",
+        "answer": {
+          "value": 25,
+          "label": "25 cm"
+        }
+      }
+    },
+    {
+      "id": "cb56b2d9-59ae-4b91-a401-7ab98bfe74aa",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\dfrac{V_0}{3}=V_0e^{-t/\\tau}\\Rightarrow t=\\tau\\ln3",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "6.6\\times10^{-6}=R\\left(1.5\\times10^{-6}\\right)(1.1)",
+              "lhs": "6.6*10^(-6)",
+              "rhs": "x*1.5*10^(-6)*1.1",
+              "roots": [
+                "4"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "R=\\dfrac{6}{1.5}=4\\ \\Omega",
+              "f": "6/1.5",
+              "value": "4",
+              "step": "s3"
+            }
+          ],
+          "answer": "6/1.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c241845c",
+        "answer": {
+          "value": 4,
+          "label": "4 Ω"
+        }
+      }
+    },
+    {
+      "id": "cbed5b92-6e55-4bf3-892e-12a7f500fff1",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{1}{2}=\\dfrac{2}{4}\\Rightarrow\\text{balanced}",
+              "f": "1/2",
+              "value": "2/4",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{AB}=(1+2)\\parallel(2+4)=3\\parallel6=2\\ \\Omega",
+              "f": "(1+2)*(2+4)/((1+2)+(2+4))",
+              "value": "2",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{9}{2+1}=3\\ \\text{A}",
+              "f": "9/(2+1)",
+              "value": "3",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "P=I^2R_{AB}=9\\times2=18\\ \\text{W}",
+              "f": "3^2*2",
+              "value": "18",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "H=18\\times60=1080\\ \\text{J}",
+              "f": "18*60",
+              "value": "1080",
+              "step": "s5"
+            }
+          ],
+          "answer": "18*60"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "43c530b2",
+        "answer": {
+          "value": 1080,
+          "label": "1080 J"
+        }
+      }
+    },
+    {
+      "id": "cc80d26f-ddc2-42de-bdc9-f765680e002a",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{b-10}{100}+\\dfrac{b}{10}+\\dfrac{b-d}{15}=0",
+              "lhs": "(x-10)/100+x/10+(x-d)/15",
+              "rhs": "0",
+              "roots": [
+                "b"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "53b-20d=30",
+              "lhs": "53*x-20*d",
+              "rhs": "30",
+              "roots": [
+                "b"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{d-10}{60}+\\dfrac{d}{5}+\\dfrac{d-b}{15}=0",
+              "lhs": "(x-10)/60+x/5+(x-b)/15",
+              "rhs": "0",
+              "roots": [
+                "d"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "eq",
+              "tex": "17d-4b=10",
+              "lhs": "17*x-4*b",
+              "rhs": "10",
+              "roots": [
+                "d"
+              ],
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "b=0.8648\\ \\text{V}",
+              "f": "b",
+              "value": "0.8648",
+              "dp": 4,
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "d=0.7917\\ \\text{V}",
+              "f": "d",
+              "value": "0.7917",
+              "dp": 4,
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "I_G=\\dfrac{b-d}{15}=\\dfrac{0.0731}{15}=4.87\\ \\text{mA}",
+              "f": "(b-d)/15*1000",
+              "value": "4.87",
+              "dp": 2,
+              "step": "s7"
+            }
+          ],
+          "answer": "(b-d)/15*1000",
+          "vars": {
+            "d": "650/821",
+            "b": "(17*d-10)/4"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              "s5",
+              "s6",
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "cad23bd3",
+        "answer": {
+          "value": 4.87210718635811,
+          "label": "4.87 mA"
+        }
+      }
+    },
+    {
+      "id": "cd256eed-6379-4761-ba87-82cadf338a77",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{1.5}{10}=0.15\\ \\text{A}",
+              "f": "1.5/10",
+              "value": "0.15",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "3=0.15\\left(10+2r\\right)",
+              "lhs": "3",
+              "rhs": "0.15*(10+2*x)",
+              "roots": [
+                "5"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "10+2r=20",
+              "lhs": "10+2*x",
+              "rhs": "20",
+              "roots": [
+                "5"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "r=\\dfrac{20-10}{2}=5\\ \\Omega",
+              "f": "(20-10)/2",
+              "value": "5",
+              "step": "s4"
+            }
+          ],
+          "answer": "(20-10)/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "d2b74b3e",
+        "answer": {
+          "value": 5,
+          "label": "5 Ω"
+        }
+      }
+    },
+    {
+      "id": "ce8d5778-3fc8-45b7-9e8b-56727205811d",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{P}{V}=\\dfrac{200}{100}=2\\ \\text{A}",
+              "f": "200/100",
+              "value": "2",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_b=\\dfrac{V}{I}=\\dfrac{100}{2}=50\\ \\Omega",
+              "f": "100/2",
+              "value": "50",
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{200}{R_b+R}=2",
+              "lhs": "200/(50+x)",
+              "rhs": "2",
+              "roots": [
+                "50"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "R=100-50=50\\ \\Omega",
+              "f": "100-50",
+              "value": "50",
+              "step": "s4"
+            }
+          ],
+          "answer": "100-50"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "0c53dc76",
+        "answer": {
+          "value": 50,
+          "label": "50 Ω"
+        }
+      }
+    },
+    {
+      "id": "d1c4f6fc-f77d-41fe-a678-5204dd5b18fb",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "R=\\dfrac{\\rho(2l)}{A/2}=\\dfrac{4\\rho l}{A}",
+              "f": "rho*(2*l)/(A/2)",
+              "value": "4*rho*l/A",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{V}{R}=\\dfrac{VA}{4\\rho l}",
+              "f": "V/(4*rho*l/A)",
+              "value": "V*A/(4*rho*l)",
+              "step": "s2"
+            }
+          ],
+          "answer": "(V*A/(4*rho*l))/(V*A/(rho*l))",
+          "vars": {
+            "rho": "2",
+            "l": "3",
+            "A": "5",
+            "V": "7"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "40d1c537",
+        "answer": {
+          "value": 0.25,
+          "label": "VA/(4ρl)"
+        }
+      }
+    },
+    {
+      "id": "d3b0ce8b-bd68-4c24-b31b-28be5f017d0d",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "i_1=\\dfrac{2E}{6+2r}",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "i_2=\\dfrac{E}{6+\\dfrac{r}{2}}",
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "2\\left(6+\\dfrac{r}{2}\\right)=6+2r",
+              "lhs": "2*(6+x/2)",
+              "rhs": "6+2*x",
+              "roots": [
+                "6"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "eq",
+              "tex": "12+r=6+2r",
+              "lhs": "12+x",
+              "rhs": "6+2*x",
+              "roots": [
+                "6"
+              ],
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "r=12-6=6\\ \\Omega",
+              "f": "12-6",
+              "value": "6",
+              "step": "s5"
+            }
+          ],
+          "answer": "12-6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "3aea9923",
+        "answer": {
+          "value": 6,
+          "label": "6 Ω"
+        }
+      }
+    },
+    {
+      "id": "d439d341-deeb-4fe2-bd40-004bec78570f",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "V=V_0\\left(1-e^{-t/RC}\\right)",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "2=20\\left(1-e^{-t/RC}\\right)",
+              "lhs": "2",
+              "rhs": "20*(1-exp(-x))",
+              "roots": [
+                "ln(10/9)"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{t}{RC}=\\ln\\dfrac{10}{9}=0.105",
+              "f": "ln(10/9)",
+              "value": "0.105",
+              "dp": 3,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "C=\\dfrac{t}{R\\ln(10/9)}=\\dfrac{10^{-6}}{10\\times0.105}=9.5\\times10^{-7}\\ \\text{F}",
+              "f": "10^(-6)/(10*0.105)",
+              "value": "9.5*10^(-7)",
+              "sf": 2,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "C=0.95\\ \\mu\\text{F}",
+              "f": "10^(-6)/(10*0.105)*10^6",
+              "value": "0.95",
+              "dp": 2,
+              "step": "s5"
+            }
+          ],
+          "answer": "10^(-6)/(10*0.105)*10^6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "c0ba0bdb",
+        "answer": {
+          "value": 0.9523809523809523,
+          "label": "0.95 µF"
+        }
+      }
+    },
+    {
+      "id": "d7a2460b-403f-4029-8491-fe0c8bbb5bba",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "R_{LC}=\\dfrac{2\\times2}{4}=1\\ \\Omega",
+              "f": "2*2/4",
+              "value": "1",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{LCR}=1+1=2\\ \\Omega",
+              "f": "1+1",
+              "value": "2",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{edges}=\\dfrac{2\\times2}{4}=1\\ \\Omega",
+              "f": "2*2/4",
+              "value": "1",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{network}=\\dfrac{2\\times1}{2+1}=\\dfrac{2}{3}\\ \\Omega",
+              "f": "2*1/(2+1)",
+              "value": "2/3",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{total}=\\dfrac{2}{3}+\\dfrac{2}{3}=\\dfrac{4}{3}\\ \\Omega",
+              "f": "2/3+2/3",
+              "value": "4/3",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{2}{4/3}=1.5\\ \\text{A}",
+              "f": "2/(4/3)",
+              "value": "1.5",
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "P=\\mathcal{E}I=2\\times1.5=3\\ \\text{W}",
+              "f": "2*1.5",
+              "value": "3",
+              "step": "s7"
+            }
+          ],
+          "answer": "2*1.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              "s5",
+              "s6"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "94e9a734",
+        "answer": {
+          "value": 3,
+          "label": "3 W"
+        }
+      }
+    },
+    {
+      "id": "d80c95de-88f1-44c2-8300-751e3eac54bc",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "2\\ \\Omega\\text{ and }4\\ \\Omega\\text{ in parallel, then in series with }6\\text{ and }8",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_p=\\dfrac{2\\times4}{2+4}=\\dfrac{4}{3}\\ \\Omega",
+              "f": "2*4/(2+4)",
+              "value": "4/3",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{eq}=\\dfrac{4}{3}+6+8=\\dfrac{4}{3}+14=\\dfrac{4+42}{3}=\\dfrac{46}{3}\\ \\Omega",
+              "f": "4/3+6+8",
+              "value": "46/3",
+              "step": "s3"
+            }
+          ],
+          "answer": "4/3+6+8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "aa05d260",
+        "answer": {
+          "value": 15.333333333333332,
+          "label": "46/3 Ω"
+        }
+      }
+    },
+    {
+      "id": "d9974d60-8d93-4b22-b5d8-a05961ad99d3",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\dfrac{R_1R_2}{R_1+R_2}=3,\\quad R=\\dfrac{\\rho l}{A}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "l=\\dfrac{3\\cdot\\pi(2)^2\\times10^{-6}/4\\cdot(63\\times10^{-8})}{(12\\times10^{-8})(51\\times10^{-8})}\\approx97\\ \\text{m}",
+              "f": "3*(pi*2^2*10^(-6)/4)*(63*10^(-8))/((12*10^(-8))*(51*10^(-8)))",
+              "value": "97",
+              "dp": 0,
+              "step": "s2"
+            }
+          ],
+          "answer": "3*(pi*2^2*10^(-6)/4)*(63*10^(-8))/((12*10^(-8))*(51*10^(-8)))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "5f733033",
+        "answer": {
+          "value": 97.01977312556713,
+          "label": "97 m"
+        }
+      }
+    },
+    {
+      "id": "d9edf24d-797e-43d9-9d78-c2123656955b",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{2}{3}=\\dfrac{l}{100-l}",
+              "lhs": "2/3",
+              "rhs": "x/(100-x)",
+              "roots": [
+                "40"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "l'=40+10=50\\ \\text{cm}",
+              "f": "40+10",
+              "value": "50",
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{3x}{3+x}=2",
+              "lhs": "3*x/(3+x)",
+              "rhs": "2",
+              "roots": [
+                "6"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "x=\\dfrac{2\\times3}{3-2}=6\\ \\Omega",
+              "f": "2*3/(3-2)",
+              "value": "6",
+              "step": "s4"
+            }
+          ],
+          "answer": "2*3/(3-2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "4c60430a",
+        "answer": {
+          "value": 6,
+          "label": "6 Ω"
+        }
+      }
+    },
+    {
+      "id": "dae01efc-a851-4e40-92e6-074145f1bfc1",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "R=R_0(1+\\alpha\\Delta T),\\quad R_0=10\\ \\Omega",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\alpha=\\dfrac{10.2-10}{10\\times100}=2\\times10^{-4}\\ {}^{\\circ}\\text{C}^{-1}",
+              "f": "(10.2-10)/10/100",
+              "value": "2*10^(-4)",
+              "sf": 1,
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "0.095=2\\times10^{-4}\\,t",
+              "lhs": "0.095",
+              "rhs": "2*10^(-4)*x",
+              "roots": [
+                "475"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "T=475+273=748\\ \\text{K}",
+              "f": "475+273",
+              "value": "748",
+              "step": "s4"
+            }
+          ],
+          "answer": "475+273"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "a8f2a233",
+        "answer": {
+          "value": 748,
+          "label": "748 K"
+        }
+      }
+    },
+    {
+      "id": "dc2f3403-5ed2-452b-b1a9-34b74cf4e85b",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\dfrac{Q}{A}=\\dfrac{Q_0e^{-t/RC}}{A_0e^{-\\lambda t}}",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\lambda=\\dfrac{1}{RC},\\quad RC=\\dfrac{1}{\\lambda}=T_{mean}",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "R=\\dfrac{T_{mean}}{C}=\\dfrac{30\\times10^{-3}}{100\\times10^{-6}}=300\\ \\Omega",
+              "f": "30*10^(-3)/(100*10^(-6))",
+              "value": "300",
+              "step": "s3"
+            }
+          ],
+          "answer": "30*10^(-3)/(100*10^(-6))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "462523e3",
+        "answer": {
+          "value": 300,
+          "label": "300 Ω"
+        }
+      }
+    },
+    {
+      "id": "dd2a3262-ab0f-4cff-be54-0173d657609d",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{x-1}{6}+\\dfrac{x}{3}+\\dfrac{x-y}{3}=0",
+              "lhs": "(x-1)/6+x/3+(x-Vy)/3",
+              "rhs": "0",
+              "roots": [
+                "Vx"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "5x-2y=1",
+              "lhs": "5*x-2*Vy",
+              "rhs": "1",
+              "roots": [
+                "Vx"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{y-1}{3}+\\dfrac{y}{6}+\\dfrac{y-x}{3}=0",
+              "lhs": "(x-1)/3+x/6+(x-Vx)/3",
+              "rhs": "0",
+              "roots": [
+                "Vy"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "eq",
+              "tex": "5y-2x=2",
+              "lhs": "5*x-2*Vx",
+              "rhs": "2",
+              "roots": [
+                "Vy"
+              ],
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{1-3/7}{6}+\\dfrac{1-4/7}{3}=\\dfrac{5}{21}\\ \\text{A}",
+              "f": "(1-3/7)/6+(1-4/7)/3",
+              "value": "5/21",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{AB}=\\dfrac{1}{5/21}=\\dfrac{21}{5}\\ \\Omega",
+              "f": "1/(5/21)",
+              "value": "21/5",
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "x=21",
+              "f": "21/5*5",
+              "value": "21",
+              "step": "s7"
+            }
+          ],
+          "answer": "21/5*5",
+          "vars": {
+            "Vx": "3/7",
+            "Vy": "4/7"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5",
+              "s6",
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "516e9660",
+        "answer": {
+          "value": 21,
+          "label": "x = 21"
+        }
+      }
+    },
+    {
+      "id": "ddc9ea09-2b8d-46c2-87b2-d738e5bd0687",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "i_1=\\dfrac{25}{5+R}",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "i_2=\\dfrac{5}{R+\\dfrac{1}{5}}",
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "5\\left(R+\\dfrac{1}{5}\\right)=5+R",
+              "lhs": "5*(x+1/5)",
+              "rhs": "5+x",
+              "roots": [
+                "1"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "eq",
+              "tex": "4R=4",
+              "lhs": "4*x",
+              "rhs": "4",
+              "roots": [
+                "1"
+              ],
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "R=\\dfrac{4}{4}=1\\ \\Omega",
+              "f": "4/4",
+              "value": "1",
+              "step": "s5"
+            }
+          ],
+          "answer": "4/4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "e0636ed4",
+        "answer": {
+          "value": 1,
+          "label": "1 Ω"
+        }
+      }
+    },
+    {
+      "id": "de30667a-5b98-49c2-8a19-2612904c0183",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "R_{QB}=\\dfrac{2\\times2}{2+2}=1\\ \\Omega",
+              "f": "2*2/(2+2)",
+              "value": "1",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "2+1=3\\ \\Omega",
+              "f": "2+1",
+              "value": "3",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{3\\times3}{6}=1.5\\ \\Omega",
+              "f": "3*3/6",
+              "value": "1.5",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{AB}=\\dfrac{3\\times1.5}{3+1.5}=\\dfrac{4.5}{4.5}=1\\ \\Omega",
+              "f": "3*1.5/(3+1.5)",
+              "value": "1",
+              "step": "s4"
+            }
+          ],
+          "answer": "3*1.5/(3+1.5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "cda489cf",
+        "answer": {
+          "value": 1,
+          "label": "1 Ω"
+        }
+      }
+    },
+    {
+      "id": "e0966b75-9e69-49fe-bde4-5caa55dfc8b6",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\varepsilon=8-4=4\\ \\text{V}",
+              "f": "8-4",
+              "value": "4",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_p=\\dfrac{3\\times6}{3+6}=2\\ \\Omega",
+              "f": "3*6/(3+6)",
+              "value": "2",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "R=0.5+1+4.5+2=8\\ \\Omega",
+              "f": "0.5+1+4.5+2",
+              "value": "8",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{4}{8}=0.5\\ \\text{A}",
+              "f": "4/8",
+              "value": "0.5",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "I_{3\\Omega}=0.5\\times\\dfrac{6}{3+6}=\\dfrac{1}{3}\\ \\text{A}",
+              "f": "0.5*6/(3+6)",
+              "value": "1/3",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "x=\\dfrac{1}{3}\\times3=1",
+              "f": "1/3*3",
+              "value": "1",
+              "step": "s6"
+            }
+          ],
+          "answer": "1/3*3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "5cabf2e7",
+        "answer": {
+          "value": 1,
+          "label": "x = 1"
+        }
+      }
+    },
+    {
+      "id": "e36b26e8-4992-487c-8c7b-4869e74a5e67",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "6\\ \\Omega,\\ 4\\ \\Omega\\ \\text{and the two wire parts}",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{6}{4}=\\dfrac{l_{AP}}{50-l_{AP}}",
+              "lhs": "6/4",
+              "rhs": "x/(50-x)",
+              "roots": [
+                "30"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "l_{AP}=\\dfrac{3}{5}\\times50=30\\ \\text{cm}",
+              "f": "3/5*50",
+              "value": "30",
+              "step": "s3"
+            }
+          ],
+          "answer": "3/5*50"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "131b8232",
+        "answer": {
+          "value": 30,
+          "label": "30 cm"
+        }
+      }
+    },
+    {
+      "id": "e57db9a7-68f8-47d6-904d-fc1e6c434a6a",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "I_{\\text{series}}=\\dfrac{2E}{2r+R},\\quad I_{\\text{parallel}}=\\dfrac{E}{r/2+R}",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "2\\left(\\dfrac{r}{2}+2\\right)=2r+2",
+              "lhs": "2*(x/2+2)",
+              "rhs": "2*x+2",
+              "roots": [
+                "2"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "r+4=2r+2",
+              "lhs": "x+4",
+              "rhs": "2*x+2",
+              "roots": [
+                "2"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "r=4-2=2\\ \\Omega",
+              "f": "4-2",
+              "value": "2",
+              "step": "s4"
+            }
+          ],
+          "answer": "4-2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "55f6378a",
+        "answer": {
+          "value": 2,
+          "label": "2 Ω"
+        }
+      }
+    },
+    {
+      "id": "e6011934-f777-4612-9310-964563b84293",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{2}{3}=\\dfrac{x}{100-x}",
+              "lhs": "2/3",
+              "rhs": "x/(100-x)",
+              "roots": [
+                "40"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "40+22.5=62.5\\ \\text{cm}",
+              "f": "40+22.5",
+              "value": "62.5",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "60-22.5=37.5\\ \\text{cm}",
+              "f": "60-22.5",
+              "value": "37.5",
+              "step": "s3"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{2}{3R/(3+R)}=\\dfrac{62.5}{37.5}",
+              "lhs": "2/(3*x/(3+x))",
+              "rhs": "62.5/37.5",
+              "roots": [
+                "2"
+              ],
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "R=2\\ \\Omega",
+              "f": "6*3/(15-6)",
+              "value": "2",
+              "step": "s5"
+            }
+          ],
+          "answer": "6*3/(15-6)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "b316462b",
+        "answer": {
+          "value": 2,
+          "label": "2 Ω"
+        }
+      }
+    },
+    {
+      "id": "e6fb0576-231c-4bf7-be62-539f57ca9885",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "R=\\dfrac{\\rho l}{\\pi\\left(r_2^2-r_1^2\\right)}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R=\\dfrac{2.4\\times10^{-8}\\times3.14}{\\pi\\left(4^2-2^2\\right)\\times10^{-6}}=2\\times10^{-3}\\ \\Omega",
+              "f": "2.4*10^(-8)*3.14/(pi*(4^2-2^2)*10^(-6))",
+              "value": "2*10^(-3)",
+              "sf": 1,
+              "step": "s2"
+            }
+          ],
+          "answer": "floor(2.4*10^(-8)*3.14/(pi*(4^2-2^2)*10^(-6))*10^3+0.5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "ad9298d4",
+        "answer": {
+          "value": 2,
+          "label": "n = 2"
+        }
+      }
+    },
+    {
+      "id": "e7de7719-b3eb-42b5-bcd7-654b29f86a13",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "R_p=\\dfrac{400\\times100}{500}=80\\ \\Omega",
+              "f": "400*100/500",
+              "value": "80",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{9}{80+100}=0.05\\ \\text{A}",
+              "f": "9/(80+100)",
+              "value": "0.05",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "V=0.05\\times80=4\\ \\text{V}",
+              "f": "0.05*80",
+              "value": "4",
+              "step": "s3"
+            }
+          ],
+          "answer": "0.05*80"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "0e655ce2",
+        "answer": {
+          "value": 4,
+          "label": "4 V"
+        }
+      }
+    },
+    {
+      "id": "e7ef3f7e-2476-4382-bb83-7449cad736b6",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "i=\\dfrac{2}{6+2}=\\dfrac{1}{4}\\ \\text{A}",
+              "f": "2/(6+2)",
+              "value": "1/4",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "v_C=i\\times2=\\dfrac{1}{2}\\ \\text{V}=0.5\\ \\text{V}",
+              "f": "1/4*2",
+              "value": "0.5",
+              "step": "s2"
+            }
+          ],
+          "answer": "1/4*2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "e199c93e",
+        "answer": {
+          "value": 0.5,
+          "label": "0.5 V"
+        }
+      }
+    },
+    {
+      "id": "e98d7807-dbe3-433c-85a5-60bde6d01eb0",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{each resistor}=\\dfrac{r}{3}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{eq}=\\dfrac{r/3}{3}=\\dfrac{r}{9}",
+              "f": "(r/3)/3",
+              "value": "r/9",
+              "step": "s2"
+            }
+          ],
+          "answer": "((r/3)/3)/r",
+          "vars": {
+            "r": "3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "c4ec7751",
+        "answer": {
+          "value": 0.1111111111111111,
+          "label": "r/9"
+        }
+      }
+    },
+    {
+      "id": "ebd9f71d-8884-4cda-a30e-3851a277cbbb",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "V=E-\\dfrac{ir}{2}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "1.2=1.5-i\\left(\\dfrac{r}{2}\\right)\\Rightarrow i\\dfrac{r}{2}=0.3",
+              "f": "1.5-1.2",
+              "value": "0.3",
+              "step": "s2"
+            },
+            {
+              "kind": "note",
+              "tex": "i=\\dfrac{1.5}{10+r/2}\\Rightarrow10i+\\dfrac{ir}{2}=1.5",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "10i=1.5-0.3\\Rightarrow i=0.12\\ \\text{A}",
+              "f": "(1.5-0.3)/10",
+              "value": "0.12",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "r=\\dfrac{0.6}{0.12}=5\\ \\Omega",
+              "f": "0.6/0.12",
+              "value": "5",
+              "step": "s5"
+            }
+          ],
+          "answer": "0.6/0.12"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "7b019e8d",
+        "answer": {
+          "value": 5,
+          "label": "5 Ω"
+        }
+      }
+    },
+    {
+      "id": "ed274449-9ba8-4442-b981-462a97299c1d",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\varepsilon_{eq}=3,\\ R_{eq}=9,\\ i_1=\\dfrac{3}{9}=\\dfrac{1}{3}\\ \\text{A}",
+              "f": "3/9",
+              "value": "1/3",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\varepsilon_{eq}=\\dfrac{\\frac{1}{2}+\\frac{2}{1}}{\\frac{1}{2}+\\frac{1}{1}}=\\dfrac{5}{3}\\ \\text{V}",
+              "f": "(1/2+2/1)/(1/2+1/1)",
+              "value": "5/3",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "r_{eq}=\\dfrac{2\\times1}{3}+6=\\dfrac{20}{3}\\ \\Omega",
+              "f": "2*1/3+6",
+              "value": "20/3",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "i_2=\\dfrac{5/3}{20/3}=\\dfrac{1}{4}\\ \\text{A}",
+              "f": "(5/3)/(20/3)",
+              "value": "1/4",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{i_1}{i_2}=\\dfrac{1/3}{1/4}=\\dfrac{4}{3}",
+              "f": "(1/3)/(1/4)",
+              "value": "4/3",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "x=\\dfrac{4}{3}\\times3=4",
+              "f": "4/3*3",
+              "value": "4",
+              "step": "s6"
+            }
+          ],
+          "answer": "4/3*3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "80a31e01",
+        "answer": {
+          "value": 4,
+          "label": "x = 4"
+        }
+      }
+    },
+    {
+      "id": "ed34a50a-bc37-42d2-9139-a39e432a1bd8",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "R=4\\times3=12\\ \\Omega",
+              "f": "4*3",
+              "value": "12",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R=\\dfrac{6\\times6}{6+6}=3\\ \\Omega",
+              "f": "6*6/(6+6)",
+              "value": "3",
+              "step": "s2"
+            }
+          ],
+          "answer": "6*6/(6+6)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "2d552dfe",
+        "answer": {
+          "value": 3,
+          "label": "3 Ω"
+        }
+      }
+    },
+    {
+      "id": "ef94b3cd-0725-492e-af83-fff818961ad8",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "A_1L=A_2\\dfrac{L}{4}\\Rightarrow A_2=4A_1",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{R_2}{R_1}=\\dfrac{L_2A_1}{A_2L_1}=\\dfrac{1}{4}\\times\\dfrac{1}{4}=\\dfrac{1}{16}",
+              "f": "1/4*(1/4)",
+              "value": "1/16",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_2=\\dfrac{160}{16}=10\\ \\Omega",
+              "f": "160/16",
+              "value": "10",
+              "step": "s3"
+            }
+          ],
+          "answer": "160/16"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "908e1bd4",
+        "answer": {
+          "value": 10,
+          "label": "10 Ω"
+        }
+      }
+    },
+    {
+      "id": "efa65351-05b7-4d2b-81f4-3b408ccc9443",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\dfrac{ER}{R+r}=kl",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\dfrac{4E}{4+r}=120k,\\quad\\dfrac{12E}{12+r}=180k",
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{4(12+r)}{12(4+r)}=\\dfrac{120}{180}=\\dfrac{2}{3}",
+              "lhs": "4*(12+x)/(12*(4+x))",
+              "rhs": "2/3",
+              "roots": [
+                "4"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "eq",
+              "tex": "12+r=2(4+r)",
+              "lhs": "12+x",
+              "rhs": "2*(4+x)",
+              "roots": [
+                "4"
+              ],
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "r=12-8=4\\ \\Omega",
+              "f": "12-8",
+              "value": "4",
+              "step": "s5"
+            }
+          ],
+          "answer": "12-8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "914c948a",
+        "answer": {
+          "value": 4,
+          "label": "4 Ω"
+        }
+      }
+    },
+    {
+      "id": "f05929ef-3709-4e67-90b9-12ea26c75597",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\text{each side}=\\dfrac{16}{4}=4\\ \\Omega",
+              "f": "16/4",
+              "value": "4",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{eq}=1+\\dfrac{4\\times12}{16}=1+3=4\\ \\Omega",
+              "f": "1+4*12/16",
+              "value": "4",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{9}{4}\\ \\text{A}",
+              "f": "9/4",
+              "value": "9/4",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "I_1=\\dfrac{9}{4}\\times\\dfrac{4}{16}=\\dfrac{9}{16}\\ \\text{A}",
+              "f": "9/4*4/16",
+              "value": "9/16",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\Delta V=\\dfrac{9}{16}\\times8=\\dfrac{9}{2}\\ \\text{V}",
+              "f": "9/16*8",
+              "value": "9/2",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "U=\\dfrac{1}{2}CV^2=\\dfrac{1}{2}\\times4\\times\\left(\\dfrac{9}{2}\\right)^2=\\dfrac{81}{2}\\ \\mu\\text{J}",
+              "f": "0.5*4*(9/2)^2",
+              "value": "81/2",
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "x=\\dfrac{81}{2}\\times2=81",
+              "f": "81/2*2",
+              "value": "81",
+              "step": "s7"
+            }
+          ],
+          "answer": "81/2*2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s5",
+              "s6",
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "5b3d3e2f",
+        "answer": {
+          "value": 81,
+          "label": "x = 81"
+        }
+      }
+    },
+    {
+      "id": "f1690a1e-9610-433d-ae09-f4d3c3f3cea1",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{1}{R_{eq}}=\\dfrac{1}{3}+\\dfrac{1}{3}+\\dfrac{1}{3}=1\\Rightarrow R_{eq}=1\\ \\Omega",
+              "f": "1/(1/3+1/3+1/3)",
+              "value": "1",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R=1+2=3\\ \\Omega",
+              "f": "1+2",
+              "value": "3",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "i=\\dfrac{30}{3}=10\\ \\text{A}",
+              "f": "30/3",
+              "value": "10",
+              "step": "s3"
+            }
+          ],
+          "answer": "30/3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "32b30c12",
+        "answer": {
+          "value": 10,
+          "label": "10 A"
+        }
+      }
+    },
+    {
+      "id": "f448e4fb-3cf2-48d4-976d-c043ab340036",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "w=QV",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "w=20\\times15=300\\ \\text{J}",
+              "f": "20*15",
+              "value": "300",
+              "step": "s2"
+            }
+          ],
+          "answer": "20*15"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "b4ece311",
+        "answer": {
+          "value": 300,
+          "label": "300 J"
+        }
+      }
+    },
+    {
+      "id": "f4a9f201-bfa8-4917-b771-762a8f5df700",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "R_{open}=\\dfrac{3R}{2}",
+              "f": "3*R/2",
+              "value": "3*R/2",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{closed}=2\\times\\dfrac{R\\times2R}{3R}=\\dfrac{4R}{3}",
+              "f": "2*(R*2*R/(3*R))",
+              "value": "4*R/3",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{R_{open}}{R_{closed}}=\\dfrac{3R}{2}\\times\\dfrac{3}{4R}=\\dfrac{9}{8}",
+              "f": "(3*R/2)/(4*R/3)",
+              "value": "9/8",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "x=\\dfrac{9}{8}\\times8=9",
+              "f": "9/8*8",
+              "value": "9",
+              "step": "s4"
+            }
+          ],
+          "answer": "9/8*8",
+          "vars": {
+            "R": "2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "9760e220",
+        "answer": {
+          "value": 9,
+          "label": "x = 9"
+        }
+      }
+    },
+    {
+      "id": "f604a867-9a20-4ed1-a19f-29d1059f161a",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "R_A=\\dfrac{R}{2}+R=\\dfrac{3R}{2}",
+              "f": "R/2+R",
+              "value": "3*R/2",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_B=\\dfrac{2R\\times R}{2R+R}=\\dfrac{2R}{3}",
+              "f": "2*R*R/(2*R+R)",
+              "value": "2*R/3",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_C=\\dfrac{R}{3}",
+              "f": "1/(3/R)",
+              "value": "R/3",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_D=3R",
+              "f": "R+R+R",
+              "value": "3*R",
+              "step": "s4"
+            }
+          ],
+          "answer": "(3*R)/R",
+          "vars": {
+            "R": "2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "ac30a592",
+        "answer": {
+          "value": 3,
+          "label": "P_C < P_B < P_A < P_D"
+        }
+      }
+    },
+    {
+      "id": "f6990be5-d1da-4101-8872-e2be433b4c92",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "R_{max}=10R=10\\times10=100\\ \\Omega",
+              "f": "10*10",
+              "value": "100",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{min}=\\dfrac{R}{10}=\\dfrac{10}{10}=1\\ \\Omega",
+              "f": "10/10",
+              "value": "1",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{R_{max}}{R_{min}}=\\dfrac{100}{1}=100",
+              "f": "100/1",
+              "value": "100",
+              "step": "s3"
+            }
+          ],
+          "answer": "100/1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "3dc83752",
+        "answer": {
+          "value": 100,
+          "label": "100"
+        }
+      }
+    },
+    {
+      "id": "f6c3ee5e-0dee-4510-9b12-4cc7dcdee72b",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "R_1=\\dfrac{\\pi\\lambda r}{2},\\ R_2=\\dfrac{3\\pi\\lambda r}{2},\\ R_3=2\\lambda r",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{1}{R_{AB}}=\\dfrac{1}{\\lambda r}\\left(\\dfrac{2}{\\pi}+\\dfrac{2}{3\\pi}+\\dfrac{1}{2}\\right)",
+              "f": "1/(pi*lam*r/2)+1/(3*pi*lam*r/2)+1/(2*lam*r)",
+              "value": "(2/pi+2/(3*pi)+1/2)/(lam*r)",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{1}{R_{AB}}=\\dfrac{1}{\\lambda r}\\cdot\\dfrac{16+3\\pi}{6\\pi}",
+              "f": "(2/pi+2/(3*pi)+1/2)/(lam*r)",
+              "value": "(16+3*pi)/(6*pi*lam*r)",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{AB}=\\dfrac{6\\pi\\lambda r}{3\\pi+16}",
+              "f": "1/((16+3*pi)/(6*pi*lam*r))",
+              "value": "6*pi*lam*r/(3*pi+16)",
+              "step": "s4"
+            }
+          ],
+          "answer": "(6*pi*lam*r/(3*pi+16))/(lam*r)",
+          "vars": {
+            "lam": "2",
+            "r": "3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "75c5db0e",
+        "answer": {
+          "value": 0.7413852719038004,
+          "label": "6πλr/(3π+16)"
+        }
+      }
+    },
+    {
+      "id": "f970cb10-94fa-4bc8-8311-2d40a840ec44",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "I=\\dfrac{2E}{R+r_1+r_2},\\quad E-Ir_1=0\\Rightarrow I=\\dfrac{E}{r_1}",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{2E}{R+r_1+r_2}=\\dfrac{E}{r_1}",
+              "lhs": "2*E/(x+r1+r2)",
+              "rhs": "E/r1",
+              "roots": [
+                "r1-r2"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "2r_1=R+r_1+r_2",
+              "lhs": "2*r1",
+              "rhs": "x+r1+r2",
+              "roots": [
+                "r1-r2"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "R=2r_1-r_1-r_2=r_1-r_2",
+              "f": "2*r1-r1-r2",
+              "value": "r1-r2",
+              "step": "s4"
+            }
+          ],
+          "answer": "2*r1-r1-r2",
+          "vars": {
+            "E": "1.5",
+            "r1": "5",
+            "r2": "2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "32a01182",
+        "answer": {
+          "value": 3,
+          "label": "r₁ − r₂"
+        }
+      }
+    },
+    {
+      "id": "fa97a1aa-4043-4144-a2c7-4b25da941c8c",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{each part}=\\dfrac{R}{5}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{eq}=\\dfrac{1}{5}\\times\\dfrac{R}{5}=\\dfrac{R}{25}",
+              "f": "1/(5*(1/(R/5)))",
+              "value": "R/25",
+              "step": "s2"
+            }
+          ],
+          "answer": "(R/25)/R",
+          "vars": {
+            "R": "2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "feaaa15c",
+        "answer": {
+          "value": 0.04,
+          "label": "R/25"
+        }
+      }
+    },
+    {
+      "id": "fb26a851-b307-403d-9894-605a2bb95081",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "R_{AB}=24\\parallel24=\\dfrac{24\\times24}{24+24}=12\\ \\Omega",
+              "f": "24*24/(24+24)",
+              "value": "12",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_{BC}=1\\parallel1=0.5\\ \\Omega",
+              "f": "1*1/(1+1)",
+              "value": "0.5",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "12\\parallel12=6\\ \\Omega,\\quad R_{AD}=x+6",
+              "f": "12*12/(12+12)",
+              "value": "6",
+              "step": "s3"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{R_{AB}}{R_{AD}}=\\dfrac{R_{BC}}{R_{CD}}\\Rightarrow\\dfrac{12}{x+6}=\\dfrac{0.5}{0.5}=1",
+              "lhs": "12/(x+6)",
+              "rhs": "1",
+              "roots": [
+                "6"
+              ],
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "x=12-6=6\\ \\Omega",
+              "f": "12-6",
+              "value": "6",
+              "step": "s5"
+            }
+          ],
+          "answer": "12-6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "63d2353f",
+        "answer": {
+          "value": 6,
+          "label": "6 Ω"
+        }
+      }
+    },
+    {
+      "id": "fcc9a290-7893-4575-88aa-840c64fddc88",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "R_{eq}=\\dfrac{3R}{4}=\\dfrac{3\\times2}{4}=1.5\\ \\Omega",
+              "f": "3*2/4",
+              "value": "1.5",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "I=\\dfrac{6}{1.5}=4\\ \\text{A}",
+              "f": "6/1.5",
+              "value": "4",
+              "step": "s2"
+            },
+            {
+              "kind": "note",
+              "tex": "V_a=6,\\ V_c=0,\\ V_b=V_d=V_e=V_g=3\\ \\text{V}",
+              "step": "s3"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\left(0-V_f\\right)+\\left(3-V_f\\right)+\\left(3-V_f\\right)=0",
+              "lhs": "(0-x)+(3-x)+(3-x)",
+              "rhs": "0",
+              "roots": [
+                "2"
+              ],
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\left|V_e-V_f\\right|=3-2=1\\ \\text{V}",
+              "f": "3-2",
+              "value": "1",
+              "step": "s5"
+            }
+          ],
+          "answer": "3-2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "f6d620a1",
+        "answer": {
+          "value": 1,
+          "label": "1 V"
+        }
+      }
+    },
+    {
+      "id": "fd368bb1-2952-4c4e-bd9a-77c313b747e3",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "expr",
+              "tex": "q=\\int_{1}^{2}(0.02t+0.01)\\,dt",
+              "f": "0.02*x+0.01",
+              "step": "s1"
+            },
+            {
+              "kind": "integral",
+              "tex": "q=\\left[0.01t^{2}+0.01t\\right]_{1}^{2}",
+              "f": "0.01*x^2+0.01*x",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "q=0.01(4-1)+0.01(2-1)=0.04\\ \\text{C}",
+              "f": "0.01*(4-1)+0.01*(2-1)",
+              "value": "0.04",
+              "step": "s3"
+            }
+          ],
+          "answer": "0.01*(4-1)+0.01*(2-1)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "63c3d850",
+        "answer": {
+          "value": 0.04,
+          "label": "0.04 C"
+        }
+      }
+    },
+    {
+      "id": "fe0452eb-0031-4016-a97b-8da9ad4160bc",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "V_A+\\dfrac{10}{3}a-6a=V_B",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "V_A-V_B=6-\\dfrac{10}{3}=\\dfrac{8}{3}\\ \\text{V}",
+              "f": "6-10/3",
+              "value": "8/3",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "Q=C\\left(V_A-V_B\\right)=150\\times\\dfrac{8}{3}=400\\ \\mu\\text{C}",
+              "f": "150*8/3",
+              "value": "400",
+              "step": "s3"
+            }
+          ],
+          "answer": "150*8/3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "5fd4e9bc",
+        "answer": {
+          "value": 400,
+          "label": "400 µC"
+        }
+      }
+    },
+    {
+      "id": "fe126fbd-e340-4255-84b2-7fba4caac9ac",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "R\\propto\\ell",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_1=\\dfrac{\\left(\\frac{R}{3}\\right)\\left(\\frac{2R}{3}\\right)}{\\frac{R}{3}+\\frac{2R}{3}}=\\dfrac{2R}{9}",
+              "f": "(R/3)*(2*R/3)/(R/3+2*R/3)",
+              "value": "2*R/9",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "R_2=\\dfrac{\\left(\\frac{R}{4}\\right)\\left(\\frac{3R}{4}\\right)}{\\frac{R}{4}+\\frac{3R}{4}}=\\dfrac{3R}{16}",
+              "f": "(R/4)*(3*R/4)/(R/4+3*R/4)",
+              "value": "3*R/16",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{R_1}{R_2}=\\dfrac{2R/9}{3R/16}=\\dfrac{32}{27}",
+              "f": "(2*R/9)/(3*R/16)",
+              "value": "32/27",
+              "step": "s4"
+            }
+          ],
+          "answer": "(2*R/9)/(3*R/16)",
+          "vars": {
+            "R": "2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "2c011b61",
+        "answer": {
+          "value": 1.1851851851851851,
+          "label": "32/27"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

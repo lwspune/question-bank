@@ -1,0 +1,2867 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "aeb3f819-c834-4337-81c2-5184ee23f569",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "y = \\dfrac{32.3 \\times 1125}{27.4}",
+              "note": "operands have 3 significant digits"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "y = \\dfrac{32.3 \\times 1125}{27.4} = 1326.186",
+              "f": "32.3*1125/27.4",
+              "value": "1326.186",
+              "dp": 3
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "y = 1330",
+              "f": "32.3*1125/27.4",
+              "value": "1330",
+              "note": "keep 3 significant digits",
+              "sf": 3
+            }
+          ],
+          "answer": "1330"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "5494cded",
+        "answer": {
+          "value": 1330,
+          "label": "y = 1330"
+        }
+      }
+    },
+    {
+      "id": "b1ef9364-2100-46a7-a447-ab4be2d06b24",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "LC = \\dfrac{0.5}{50} = 0.01\\ \\text{mm}",
+              "f": "0.5/50",
+              "value": "0.01"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "D = 1.5 + 7(0.01) = 1.57\\ \\text{mm}",
+              "f": "1.5+7*0.01",
+              "value": "1.57"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\pi D\\ell = 3.14 \\times 0.157 \\times 6.8 = 3.35",
+              "f": "3.14*0.157*6.8",
+              "value": "3.35",
+              "note": "D = 0.157 cm",
+              "dp": 2
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\approx 3.4\\ \\text{cm}^2",
+              "f": "3.14*0.157*6.8",
+              "value": "3.4",
+              "note": "2 significant figures",
+              "sf": 2
+            }
+          ],
+          "answer": "3.4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "cefdb55b",
+        "answer": {
+          "value": 3.4,
+          "label": "3.4 cm²"
+        }
+      }
+    },
+    {
+      "id": "b2c3db45-c434-4f27-a43c-86cff93cf971",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "[Y] = \\dfrac{MLT^{-2}}{L^2}:\\ L\\ \\text{exponent}\\ 1-2 = -1",
+              "f": "1-2",
+              "value": "-1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[\\eta] = \\dfrac{MLT^{-2}}{L \\cdot LT^{-1}}:\\ L\\ \\text{exponent}\\ 1-2 = -1",
+              "f": "1-(1+1)",
+              "value": "-1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "[\\eta]:\\ T\\ \\text{exponent}\\ -2-(-1) = -1",
+              "f": "-2-(-1)",
+              "value": "-1"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "[h] = \\dfrac{ML^2T^{-2}}{T^{-1}}:\\ T\\ \\text{exponent}\\ -2-(-1) = -1",
+              "f": "-2-(-1)",
+              "value": "-1"
+            }
+          ],
+          "answer": "1-2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "0dd0d767",
+        "answer": {
+          "value": -1,
+          "label": "A-III, B-I, C-II, D-IV"
+        }
+      }
+    },
+    {
+      "id": "b33b345f-92a0-4cf3-9fac-58a7d20f2cb5",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "[\\tau] = L \\cdot MLT^{-2}:\\ L\\ \\text{exponent}\\ 1+1 = 2",
+              "f": "1+1",
+              "value": "2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{[ML^{-1}T^{-2}]}{L}:\\ L\\ \\text{exponent}\\ -1-1 = -2",
+              "f": "-1-1",
+              "value": "-2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "[\\eta] = \\dfrac{MLT^{-2}}{L^2 T^{-1}}:\\ L\\ \\text{exponent}\\ 1-2 = -1",
+              "f": "1-2",
+              "value": "-1"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "[\\eta]:\\ T\\ \\text{exponent}\\ -2-(-1) = -1",
+              "f": "-2-(-1)",
+              "value": "-1"
+            }
+          ],
+          "answer": "1+1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "9916ba15",
+        "answer": {
+          "value": 2,
+          "label": "A-II, B-IV, C-I, D-III"
+        }
+      }
+    },
+    {
+      "id": "b34bffad-5478-40b0-af99-4ed62dab963b",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "4.62,\\ 4.632,\\ 4.6,\\ 4.64\\ \\text{s}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{sum} = 18.492\\ \\text{s}",
+              "f": "4.62+4.632+4.6+4.64",
+              "value": "18.492"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{mean} = \\dfrac{18.492}{4} = 4.623\\ \\text{s}",
+              "f": "18.492/4",
+              "value": "4.623",
+              "dp": 3
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{mean} = 4.6\\ \\text{s}",
+              "f": "18.492/4",
+              "value": "4.6",
+              "note": "one decimal place, as in 4.6 s",
+              "dp": 1
+            }
+          ],
+          "answer": "floor(10*18.492/4+0.5)/10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "033ae7fc",
+        "answer": {
+          "value": 4.6,
+          "label": "4.6 s"
+        }
+      }
+    },
+    {
+      "id": "b83c8311-dda6-40d8-80d8-fd41a87d91af",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{zero error} = 6 \\times 0.1 = 0.6\\ \\text{mm}",
+              "f": "6*0.1",
+              "value": "0.6"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[32 + (0.1)4] - 0.6 = 31.8\\ \\text{mm}",
+              "f": "(32+0.1*4)-0.6",
+              "value": "31.8"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "= 3.18\\ \\text{cm}",
+              "f": "31.8/10",
+              "value": "3.18"
+            }
+          ],
+          "answer": "31.8/10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a10b07f9",
+        "answer": {
+          "value": 3.18,
+          "label": "3.18 cm"
+        }
+      }
+    },
+    {
+      "id": "b8f1e81a-2a93-41dc-8572-c0aeb99d6edb",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "[a] = [P][V^2] = ML^{-1}T^{-2} \\cdot L^6:\\ L\\ \\text{exponent}\\ -1+6 = 5",
+              "f": "-1+6",
+              "value": "5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[b] = [V]:\\ L\\ \\text{exponent}\\ 3",
+              "f": "3",
+              "value": "3"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "[ab^{-2}]:\\ L\\ \\text{exponent}\\ 5-6 = -1",
+              "f": "5-6",
+              "value": "-1",
+              "note": "= ML⁻¹T⁻²: energy density"
+            }
+          ],
+          "answer": "5-6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "0c90d004",
+        "answer": {
+          "value": -1,
+          "label": "ML⁻¹T⁻² (energy density)"
+        }
+      }
+    },
+    {
+      "id": "ba032cc3-e90b-405a-97cf-6056b18170a6",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "[nt] = [\\lambda] = L \\Rightarrow [n] = LT^{-1}:\\ T\\ \\text{exponent}\\ 0-1 = -1",
+              "f": "0-1",
+              "value": "-1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\left[\\dfrac{n}{\\lambda}\\right]:\\ L\\ \\text{exponent}\\ 1-1 = 0",
+              "f": "1-1",
+              "value": "0"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\left[\\dfrac{n}{\\lambda}\\right] = T^{-1} \\neq T",
+              "f": "0-1",
+              "value": "-1"
+            }
+          ],
+          "answer": "0-1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c93278a2",
+        "answer": {
+          "value": -1,
+          "label": "[n/λ] = T⁻¹, not T"
+        }
+      }
+    },
+    {
+      "id": "bae9bccc-c4cf-4b2f-baf9-5a05206c14ef",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{3}{60} + 4\\left(\\dfrac{0.1}{20}\\right) + \\dfrac{0.2}{40} + \\dfrac{0.1}{50} = 0.077",
+              "f": "3/60+4*(0.1/20)+0.2/40+0.1/50",
+              "value": "0.077"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{\\Delta Q}{Q} \\times 100 = 0.077 \\times 100 = 7.7",
+              "f": "0.077*100",
+              "value": "7.7"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{x}{1000} = 7.7 \\Rightarrow x = 7700",
+              "f": "7.7*1000",
+              "value": "7700"
+            }
+          ],
+          "answer": "7700"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "17ee28cc",
+        "answer": {
+          "value": 7700,
+          "label": "x = 7700"
+        }
+      }
+    },
+    {
+      "id": "bcd09985-1a2f-4d68-9c22-b7b799983056",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "m = kc^{P}G^{-1/2}h^{1/2}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "L\\ \\text{exponent}:\\ P - \\dfrac{3}{2} + 1 = 0 \\Rightarrow P = \\dfrac{3}{2}-1 = \\dfrac{1}{2}",
+              "f": "3/2-1",
+              "value": "1/2"
+            }
+          ],
+          "answer": "3/2-1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "f718dc2f",
+        "answer": {
+          "value": 0.5,
+          "label": "P = 1/2"
+        }
+      }
+    },
+    {
+      "id": "bd7b8819-83c0-4f32-80f8-b6a261b33db4",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{MLT^{-2}}{L^2 \\cdot L}:\\ L\\ \\text{exponent}\\ 1-3 = -2",
+              "f": "1-3",
+              "value": "-2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{ML^2T^{-2}}{L^3}:\\ L\\ \\text{exponent}\\ 2-3 = -1",
+              "f": "2-3",
+              "value": "-1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{MLT^{-2}}{AT}:\\ T\\ \\text{exponent}\\ -2-1 = -3",
+              "f": "-2-1",
+              "value": "-3"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{ML^2T^{-2}}{M}:\\ M\\ \\text{exponent}\\ 1-1 = 0",
+              "f": "1-1",
+              "value": "0"
+            }
+          ],
+          "answer": "1-3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "fb295410",
+        "answer": {
+          "value": -2,
+          "label": "A-III, B-II, C-IV, D-I"
+        }
+      }
+    },
+    {
+      "id": "c893a89e-6470-4227-bd66-1178f2e3e575",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{L_2}{T_2} = \\dfrac{n}{m^2}\\dfrac{L_1}{T_1},\\quad \\dfrac{L_2}{T_2^2} = \\dfrac{1}{mn}\\dfrac{L_1}{T_1^2}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "T_2 = \\dfrac{n}{m^2} \\cdot mn \\cdot T_1 = \\dfrac{n^2}{m}T_1",
+              "f": "(n/m^2)*(m*n)*T1",
+              "value": "n^2/m*T1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "L_2 = \\dfrac{n}{m^2}\\cdot\\dfrac{n^2}{m}L_1 = \\dfrac{n^3}{m^3}L_1",
+              "f": "(n/m^2)*(n^2/m)*L1",
+              "value": "n^3/m^3*L1"
+            }
+          ],
+          "answer": "n^2/m*T1",
+          "vars": {
+            "n": "2",
+            "m": "3",
+            "T1": "5",
+            "L1": "7"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "1d3b6662",
+        "answer": {
+          "value": 6.666666666666666,
+          "label": "T₂=n²T₁/m, L₂=n³L₁/m³"
+        }
+      }
+    },
+    {
+      "id": "c8eda78f-f36d-4f79-92a4-5fa7dbc24fff",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\bar{x} = \\dfrac{1.22+1.23+1.19+1.20}{4} = 1.21\\ \\text{mm}",
+              "f": "(1.22+1.23+1.19+1.20)/4",
+              "value": "1.21"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta x = \\dfrac{0.06}{4} = 0.015\\ \\text{mm}",
+              "f": "(0.01+0.02+0.02+0.01)/4",
+              "value": "0.015"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{0.015}{1.21} \\times 100 = \\dfrac{150}{121}\\ \\%",
+              "f": "0.015/1.21*100",
+              "value": "150/121"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "x = 150",
+              "f": "0.015/1.21*100*121",
+              "value": "150"
+            }
+          ],
+          "answer": "150"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "2182129f",
+        "answer": {
+          "value": 150,
+          "label": "x = 150"
+        }
+      }
+    },
+    {
+      "id": "cd90396c-635f-4df2-9963-6cf8a7f7d681",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "C = \\dfrac{q}{V} = \\dfrac{q \\cdot q}{V \\cdot q} = \\dfrac{q^2}{W}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[W] = ML^2T^{-2}:\\ M\\ \\text{exponent}\\ 0-1 = -1",
+              "f": "0-1",
+              "value": "-1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "L\\ \\text{exponent}\\ 0-2 = -2",
+              "f": "0-2",
+              "value": "-2"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "T\\ \\text{exponent}\\ 0-(-2) = 2",
+              "f": "0-(-2)",
+              "value": "2",
+              "note": "[C] = C²M⁻¹L⁻²T²"
+            }
+          ],
+          "answer": "0-1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "75cdc2ac",
+        "answer": {
+          "value": -1,
+          "label": "C²M⁻¹L⁻²T²"
+        }
+      }
+    },
+    {
+      "id": "d1341713-6462-40b2-9841-b13fc1e2ccb0",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "1\\ \\text{VSD} = \\dfrac{10}{11}\\ \\text{MSD}",
+              "f": "10/11",
+              "value": "10/11"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "LC = \\left(1-\\dfrac{10}{11}\\right)\\text{MSD} = \\dfrac{1}{11}\\ \\text{MSD}",
+              "f": "1-10/11",
+              "value": "1/11"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "LC = \\dfrac{1}{11} \\times 5 = \\dfrac{5}{11}\\ \\text{units}",
+              "f": "(1-10/11)*5",
+              "value": "5/11"
+            }
+          ],
+          "answer": "5/11"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f0792182",
+        "answer": {
+          "value": 0.45454545454545453,
+          "label": "5/11 units"
+        }
+      }
+    },
+    {
+      "id": "d2c696d0-81d9-4d7e-8e77-b91c6ac572c9",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\ell_{\\text{mean}} = \\dfrac{\\ell_1+\\ell_2+\\ell_3+\\ell_4}{4}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\ell_{\\text{mean}} = \\dfrac{20.00+19.75+17.01+18.25}{4} = 18.75",
+              "f": "(20+19.75+17.01+18.25)/4",
+              "value": "18.75",
+              "dp": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta\\ell_{\\text{mean}} = \\dfrac{1.25+1+1.74+0.5}{4} = 1.12",
+              "f": "(1.25+1+1.74+0.5)/4",
+              "value": "1.12",
+              "dp": 2
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{\\Delta\\ell_{\\text{mean}}}{\\ell_{\\text{mean}}} = \\dfrac{1.12}{18.75} = 0.06",
+              "f": "1.12/18.75",
+              "value": "0.06",
+              "dp": 2
+            }
+          ],
+          "answer": "floor(100*1.12/18.75+0.5)/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "769a9229",
+        "answer": {
+          "value": 0.06,
+          "label": "0.06"
+        }
+      }
+    },
+    {
+      "id": "d31e9497-3fb9-4bdf-9a79-51d3274b8318",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "[b] = [V]:\\ L\\ \\text{exponent}\\ 3",
+              "f": "3",
+              "value": "3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[a] = [P][V^2] = ML^{-1}T^{-2}\\cdot L^6:\\ L\\ \\text{exponent}\\ -1+6 = 5",
+              "f": "-1+6",
+              "value": "5"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "[ab^{-1}]:\\ L\\ \\text{exponent}\\ 5-3 = 2",
+              "f": "5-3",
+              "value": "2",
+              "note": "= ML²T⁻²"
+            }
+          ],
+          "answer": "5-3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "910ce8ec",
+        "answer": {
+          "value": 2,
+          "label": "ML²T⁻²"
+        }
+      }
+    },
+    {
+      "id": "d338dc4d-11e0-42ce-8537-6cb1c4dd58e1",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "[k] = \\dfrac{PV}{NT} = \\dfrac{ML^2T^{-2}}{K}:\\ T\\ \\text{exponent}\\ -2",
+              "f": "0-2",
+              "value": "-2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[\\eta] = \\dfrac{MLT^{-2}}{L^2T^{-1}}:\\ L\\ \\text{exponent}\\ 1-2 = -1",
+              "f": "1-2",
+              "value": "-1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "[h] = \\dfrac{ML^2T^{-2}}{T^{-1}}:\\ T\\ \\text{exponent}\\ -2-(-1) = -1",
+              "f": "-2-(-1)",
+              "value": "-1"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "k = \\dfrac{(ML^2T^{-3})L}{L^2K}:\\ L\\ \\text{exponent}\\ 2+1-2 = 1",
+              "f": "2+1-2",
+              "value": "1"
+            }
+          ],
+          "answer": "0-2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "c7ac30de",
+        "answer": {
+          "value": -2,
+          "label": "A-III, B-IV, C-I, D-II"
+        }
+      }
+    },
+    {
+      "id": "d4f08cb1-b398-4932-afd1-26ea448e46e0",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "[h] = ML^2T^{-1},\\ [c] = LT^{-1},\\ [G] = M^{-1}L^3T^{-2}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\left[\\sqrt{\\dfrac{hc}{G}}\\right]:\\ M\\ \\text{exponent}\\ \\dfrac{1-(-1)}{2} = 1",
+              "f": "(1-(-1))/2",
+              "value": "1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\left[\\sqrt{\\dfrac{Gh}{c^5}}\\right]:\\ T\\ \\text{exponent}\\ \\dfrac{-3-(-5)}{2} = 1",
+              "f": "(-3-(-5))/2",
+              "value": "1"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\left[\\sqrt{\\dfrac{Gh}{c^3}}\\right]:\\ L\\ \\text{exponent}\\ \\dfrac{5-3}{2} = 1",
+              "f": "(5-3)/2",
+              "value": "1"
+            }
+          ],
+          "answer": "(1-(-1))/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "1efa88f6",
+        "answer": {
+          "value": 1,
+          "label": "A-IV, B-II, C-I, D-III"
+        }
+      }
+    },
+    {
+      "id": "d8276850-7b50-4c9b-bd93-1e2281ed1489",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "[\\tau] = [r][F]:\\ L\\ \\text{exponent}\\ 1+1 = 2",
+              "f": "1+1",
+              "value": "2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[B] = \\dfrac{MLT^{-2}}{(AT)(LT^{-1})}:\\ T\\ \\text{exponent}\\ -2-0 = -2",
+              "f": "-2-(1-1)",
+              "value": "-2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "[B]:\\ L\\ \\text{exponent}\\ 1-1 = 0",
+              "f": "1-1",
+              "value": "0"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "[\\mu_0] = \\dfrac{Br^2}{I\\,dl}:\\ L\\ \\text{exponent}\\ 0+2-1 = 1",
+              "f": "0+2-1",
+              "value": "1"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "[\\mu_0]:\\ A\\ \\text{exponent}\\ -1-1 = -2",
+              "f": "-1-1",
+              "value": "-2"
+            }
+          ],
+          "answer": "1+1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "524717ca",
+        "answer": {
+          "value": 2,
+          "label": "A-IV, B-III, C-II, D-I"
+        }
+      }
+    },
+    {
+      "id": "d8d5a50f-67ea-456c-8c12-d8b1db86e427",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{\\Delta g}{g} = \\dfrac{0.1}{10} + 2\\left(\\dfrac{1/200}{0.5}\\right) = \\dfrac{1}{100}+\\dfrac{1}{50}",
+              "f": "0.1/10+2*((1/200)/0.5)",
+              "value": "1/100+1/50"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{\\Delta g}{g}\\times 100 = 3\\%",
+              "f": "(1/100+1/50)*100",
+              "value": "3"
+            }
+          ],
+          "answer": "(1/100+1/50)*100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "8723eddf",
+        "answer": {
+          "value": 3,
+          "label": "3%"
+        }
+      }
+    },
+    {
+      "id": "db18e6c5-8aa7-484b-a3b4-54998a710d8b",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{\\Delta R}{R} = \\dfrac{5}{200}+\\dfrac{0.2}{20} = 0.025+0.010 = 0.035",
+              "f": "5/200+0.2/20",
+              "value": "0.035"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{percentage error} = 0.035 \\times 100 = 3.5\\%",
+              "f": "(5/200+0.2/20)*100",
+              "value": "3.5"
+            }
+          ],
+          "answer": "floor(10*(5/200+0.2/20)*100+0.5)/10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "0ea6d9ef",
+        "answer": {
+          "value": 3.5,
+          "label": "3.5%"
+        }
+      }
+    },
+    {
+      "id": "db975aa3-904f-480a-a415-4608642124a4",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{\\Delta\\rho}{\\rho} = \\dfrac{0.02}{97.42} + 2\\times\\dfrac{0.02}{20.20} + \\dfrac{0.05}{8.35} = 0.0082",
+              "f": "0.02/97.42+2*(0.02/20.20)+0.05/8.35",
+              "value": "0.0082",
+              "dp": 4
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\%\\ \\text{error} = 0.82\\%",
+              "f": "(0.02/97.42+2*(0.02/20.20)+0.05/8.35)*100",
+              "value": "0.82",
+              "dp": 2
+            }
+          ],
+          "answer": "floor(100*(0.02/97.42+2*(0.02/20.20)+0.05/8.35)*100+0.5)/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "ab802711",
+        "answer": {
+          "value": 0.82,
+          "label": "0.82%"
+        }
+      }
+    },
+    {
+      "id": "dc9ca4c6-c0e0-4862-8633-5b5f9ae169ec",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{Pitch} = \\dfrac{2.5}{5} = 0.5\\ \\text{mm} = 5\\times10^{-4}\\ \\text{m}",
+              "f": "2.5/5",
+              "value": "0.5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{LC} = \\dfrac{5\\times10^{-4}}{100} = 5\\times10^{-6}\\ \\text{m}",
+              "f": "5*10^(-4)/100",
+              "value": "5*10^(-6)",
+              "sf": 1
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{LC} = 5\\times10^{-3}\\ \\text{mm}",
+              "f": "5*10^(-6)*1000",
+              "value": "5*10^(-3)",
+              "sf": 1
+            }
+          ],
+          "answer": "5*10^(-3)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "97e8c05c",
+        "answer": {
+          "value": 0.005,
+          "label": "5 × 10⁻³ mm"
+        }
+      }
+    },
+    {
+      "id": "dec07a33-8505-4dfc-9bf3-cee57c355d72",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "1\\ \\text{VSD} = \\dfrac{19}{20}\\ \\text{MSD}",
+              "f": "19/20",
+              "value": "19/20"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "0.1 = \\left(1-\\dfrac{19}{20}\\right)\\text{MSD} = \\dfrac{1}{20}\\ \\text{MSD}",
+              "f": "1-19/20",
+              "value": "1/20"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "1\\ \\text{MSD} = 0.1 \\times 20 = 2\\ \\text{mm}",
+              "f": "0.1*20",
+              "value": "2"
+            }
+          ],
+          "answer": "0.1*20"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "cb2d2943",
+        "answer": {
+          "value": 2,
+          "label": "2 mm"
+        }
+      }
+    },
+    {
+      "id": "dfc9a743-b198-4d15-8087-6a4f8f6ce2ba",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{\\Delta M}{M} = \\dfrac{1\\ \\text{g}}{2\\ \\text{kg}} = 5\\times10^{-4}",
+              "f": "0.001/2",
+              "value": "5*10^(-4)",
+              "sf": 1
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "3\\,\\dfrac{\\Delta L}{L} = 3\\times\\dfrac{1\\ \\text{mm}}{1\\ \\text{m}} = 3\\times10^{-3}",
+              "f": "3*(1/1000)",
+              "value": "3*10^(-3)",
+              "sf": 1
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{\\Delta b}{b} = \\dfrac{0.1\\ \\text{mm}}{4\\ \\text{cm}} = 2.5\\times10^{-3}",
+              "f": "0.1/40",
+              "value": "2.5*10^(-3)",
+              "sf": 2
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "3\\,\\dfrac{\\Delta d}{d} = 3\\times\\dfrac{0.01\\ \\text{mm}}{0.4\\ \\text{cm}} = 7.5\\times10^{-3}",
+              "f": "3*(0.01/4)",
+              "value": "7.5*10^(-3)",
+              "sf": 2
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\dfrac{\\Delta\\delta}{\\delta} = \\dfrac{0.01\\ \\text{mm}}{5\\ \\text{mm}} = 2\\times10^{-3}",
+              "f": "0.01/5",
+              "value": "2*10^(-3)",
+              "sf": 1
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\dfrac{\\Delta Y}{Y} = 15.5\\times10^{-3} = 0.0155",
+              "f": "0.0005+0.003+0.0025+0.0075+0.002",
+              "value": "0.0155"
+            }
+          ],
+          "answer": "floor(10000*(0.0005+0.003+0.0025+0.0075+0.002)+0.5)/10000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "1d19514a",
+        "answer": {
+          "value": 0.0155,
+          "label": "0.0155"
+        }
+      }
+    },
+    {
+      "id": "e1b5821f-831e-439a-8e3c-acfd9bb6fa78",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "Y = \\dfrac{F\\ell}{A\\,\\Delta\\ell},\\quad A = \\dfrac{\\pi d^2}{4}",
+              "note": "F is known exactly, so ΔF = 0"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{\\Delta Y}{Y} = \\dfrac{0.1}{150} + \\dfrac{2\\times0.001}{0.08} + \\dfrac{0.001}{0.5} = 0.0277",
+              "f": "0.1/150+2*0.001/0.08+0.001/0.5",
+              "value": "0.0277",
+              "dp": 4
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "Y = \\dfrac{100\\times1.5}{\\frac{\\pi}{4}(0.08/100)^2\\times0.5\\times10^{-2}} = 5.97\\times10^{10}",
+              "f": "100*1.5/(pi/4*(0.08/100)^2*0.5*10^(-2))",
+              "value": "5.97*10^10",
+              "sf": 3
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\Delta Y = 0.0277\\times5.97\\times10^{10} = 1.65\\times10^{9}",
+              "f": "0.0277*5.97*10^10",
+              "value": "1.65*10^9",
+              "sf": 3
+            }
+          ],
+          "answer": "floor(100*0.0277*5.97*10^10/10^9+0.5)/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "665870e4",
+        "answer": {
+          "value": 1.65,
+          "label": "1.65 × 10⁹ N/m²"
+        }
+      }
+    },
+    {
+      "id": "e254b3cc-ce34-49cd-b264-f182ced66757",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "C = p^{1}q^{2}r^{-3}s^{-1/2}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{\\Delta C}{C}\\times100 = 1(1) + 2(2) + 3(3) + \\dfrac{1}{2}(2) = 1+4+9+1 = 15\\%",
+              "f": "1*1+2*2+3*3+(1/2)*2",
+              "value": "15"
+            }
+          ],
+          "answer": "1*1+2*2+3*3+(1/2)*2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "a53ac7a2",
+        "answer": {
+          "value": 15,
+          "label": "15%"
+        }
+      }
+    },
+    {
+      "id": "e2be060e-8234-4aa8-b42d-f2feddf37f21",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{LC} = \\dfrac{0.05}{50} = 0.001\\ \\text{cm}",
+              "f": "0.05/50",
+              "value": "0.001"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "8.45+26(0.001) = 8.476\\ \\text{cm}",
+              "f": "8.45+26*0.001",
+              "value": "8.476"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "7.12+41(0.001) = 7.161\\ \\text{cm}",
+              "f": "7.12+41*0.001",
+              "value": "7.161"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "4.05+1(0.001) = 4.051\\ \\text{cm}",
+              "f": "4.05+1*0.001",
+              "value": "4.051"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{real depth} = 8.476-4.051 = 4.425\\ \\text{cm}",
+              "f": "8.476-4.051",
+              "value": "4.425"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\text{apparent depth} = 7.161-4.051 = 3.110\\ \\text{cm}",
+              "f": "7.161-4.051",
+              "value": "3.11"
+            },
+            {
+              "step": "s7",
+              "kind": "calc",
+              "tex": "\\mu = \\dfrac{4.425}{3.110} = 1.42",
+              "f": "4.425/3.11",
+              "value": "1.42",
+              "dp": 2
+            }
+          ],
+          "answer": "floor(100*4.425/3.11+0.5)/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s5",
+              "s6"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "da7a9c1e",
+        "answer": {
+          "value": 1.42,
+          "label": "1.42"
+        }
+      }
+    },
+    {
+      "id": "e31ee5a2-20ce-4642-bab0-251e2af7fd46",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "M^{x}L^{x+2y}T^{-x+z} = M^{1}L^{-1}T^{-1}",
+              "note": "x = 1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "x + 2y = -1 \\Rightarrow y = \\dfrac{-1-1}{2} = -1",
+              "f": "(-1-1)/2",
+              "value": "-1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "-x + z = -1 \\Rightarrow z = -1+1 = 0",
+              "f": "-1+1",
+              "value": "0"
+            }
+          ],
+          "answer": "(-1-1)/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e3085b7f",
+        "answer": {
+          "value": -1,
+          "label": "P A⁻¹ T⁰"
+        }
+      }
+    },
+    {
+      "id": "e4290d6a-a01b-43c2-88ec-291112ee6114",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "[B] = \\dfrac{MLT^{-2}}{(AT)(LT^{-1})}:\\ T\\ \\text{exponent}\\ -2-0 = -2",
+              "f": "-2-(1-1)",
+              "value": "-2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[\\mu_0] = \\dfrac{Br}{I}:\\ L\\ \\text{exponent}\\ 0+1 = 1",
+              "f": "0+1",
+              "value": "1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "[\\mu_0]:\\ A\\ \\text{exponent}\\ -1-1 = -2",
+              "f": "-1-1",
+              "value": "-2"
+            }
+          ],
+          "answer": "-2-(1-1)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "8f164689",
+        "answer": {
+          "value": -2,
+          "label": "A-III, B-II, C-IV, D-I"
+        }
+      }
+    },
+    {
+      "id": "e4a863df-c7a3-454f-8f84-818c5b3aa0b4",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "[\\tau] = [r][F] = ML^{2}T^{-2}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\%\\tau = 5 + 2(5) + 2(5) = 25\\%",
+              "f": "5+2*5+2*5",
+              "value": "25"
+            }
+          ],
+          "answer": "5+2*5+2*5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "1c0f69f3",
+        "answer": {
+          "value": 25,
+          "label": "25%"
+        }
+      }
+    },
+    {
+      "id": "e4afe961-c738-4f99-ac8e-0e6cd3d393cc",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "M = K\\,F^{a}T^{b}V^{c}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "L:\\ a + c = 0 \\Rightarrow c = -1",
+              "f": "-1",
+              "value": "-1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "T:\\ -2a + b - c = 0 \\Rightarrow b = 2(1) + (-1) = 1",
+              "f": "2*1+(-1)",
+              "value": "1"
+            }
+          ],
+          "answer": "2*1+(-1)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c6027131",
+        "answer": {
+          "value": 1,
+          "label": "M = F T V⁻¹"
+        }
+      }
+    },
+    {
+      "id": "e730cf74-ead6-4c5b-8cbd-8372c092d3fd",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{F}{A}\\,t = \\dfrac{MLT^{-2}}{L^2}\\,T:\\ L\\ \\text{exponent}\\ 1-2 = -1",
+              "f": "1-2",
+              "value": "-1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "T\\ \\text{exponent}\\ -2+1 = -1",
+              "f": "-2+1",
+              "value": "-1",
+              "note": "= ML⁻¹T⁻¹"
+            }
+          ],
+          "answer": "1-2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "d2b18d6c",
+        "answer": {
+          "value": -1,
+          "label": "ML⁻¹T⁻¹"
+        }
+      }
+    },
+    {
+      "id": "ea4ab404-ffeb-4d29-aba0-d9f511b26248",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "u = \\dfrac{1}{2}\\epsilon_0 E^2 \\Rightarrow [\\epsilon_0 E^2] = \\dfrac{[ML^2T^{-2}]}{[L^3]}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "L\\ \\text{exponent}\\ 2-3 = -1",
+              "f": "2-3",
+              "value": "-1",
+              "note": "= ML⁻¹T⁻², as pressure"
+            }
+          ],
+          "answer": "2-3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "f43ca9ea",
+        "answer": {
+          "value": -1,
+          "label": "ML⁻¹T⁻²"
+        }
+      }
+    },
+    {
+      "id": "eb013833-095f-4fee-be23-85f9f54bf1ae",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Reading} = MSR + VSR\\times LC - \\text{zero error}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "= 15 + (5\\times0.1) - (4\\times0.1) = 15.1\\ \\text{mm}",
+              "f": "15+(5*0.1)-(4*0.1)",
+              "value": "15.1"
+            }
+          ],
+          "answer": "15+(5*0.1)-(4*0.1)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "50f2c225",
+        "answer": {
+          "value": 15.1,
+          "label": "15.1 mm"
+        }
+      }
+    },
+    {
+      "id": "eb05babb-ee53-423f-a13e-a92b43462e7d",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "50V = 49S \\Rightarrow S = 50(S - V)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "S - V = \\dfrac{0.5}{50} = \\dfrac{1}{100} = 0.01\\ \\text{mm}",
+              "f": "0.5/50",
+              "value": "0.01"
+            }
+          ],
+          "answer": "0.5/50"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "0cda3124",
+        "answer": {
+          "value": 0.01,
+          "label": "0.01 mm"
+        }
+      }
+    },
+    {
+      "id": "ed63c358-ede4-43f9-b193-5ab50d384ce9",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "g = 4\\pi^{2}\\dfrac{\\ell}{T^{2}} \\Rightarrow \\dfrac{\\Delta g}{g} = \\dfrac{\\Delta\\ell}{\\ell} + \\dfrac{2\\Delta T}{T}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\left[\\dfrac{1\\ \\text{mm}}{1\\ \\text{m}} + \\dfrac{2(10\\times10^{-3})}{1.95}\\right]\\times100 = 1.13\\%",
+              "f": "(0.001/1+2*(10*10^(-3))/1.95)*100",
+              "value": "1.13",
+              "dp": 2
+            }
+          ],
+          "answer": "floor(100*(0.001/1+2*(10*10^(-3))/1.95)*100+0.5)/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "ad607ec6",
+        "answer": {
+          "value": 1.13,
+          "label": "1.13%"
+        }
+      }
+    },
+    {
+      "id": "ee097935-54cb-49a9-b56c-881e8099106c",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "[B] = \\dfrac{MLT^{-2}}{(AT)(LT^{-1})}:\\ T\\ \\text{exponent}\\ -2-0 = -2",
+              "f": "-2-(1-1)",
+              "value": "-2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[\\phi] = [B][A]:\\ L\\ \\text{exponent}\\ 0+2 = 2",
+              "f": "0+2",
+              "value": "2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "[\\mu_0] = \\dfrac{[B][L]}{[A]}:\\ A\\ \\text{exponent}\\ -1-1 = -2",
+              "f": "-1-1",
+              "value": "-2"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "[L] = \\dfrac{ML^2T^{-2}}{A^2}:\\ A\\ \\text{exponent}\\ 0-2 = -2",
+              "f": "0-2",
+              "value": "-2"
+            }
+          ],
+          "answer": "-2-(1-1)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "ab694fca",
+        "answer": {
+          "value": -2,
+          "label": "A-III, B-IV, C-I, D-II"
+        }
+      }
+    },
+    {
+      "id": "ef50c6ee-8341-4828-abf7-8516f5ad2d83",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "1\\ \\text{VSD} = \\dfrac{49}{50}\\ \\text{MSD},\\quad LC = \\left(1-\\dfrac{49}{50}\\right)\\text{MSD} = \\dfrac{1}{50}\\ \\text{MSD}",
+              "f": "1-49/50",
+              "value": "1/50"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "LC = \\dfrac{1}{50\\times40} = \\dfrac{1}{2000}\\ \\text{cm}",
+              "f": "1/(50*40)",
+              "value": "1/2000"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "LC = 5\\times10^{-6}\\ \\text{m}",
+              "f": "1/2000*10^(-2)",
+              "value": "5*10^(-6)",
+              "sf": 1
+            }
+          ],
+          "answer": "floor(1/2000*10^(-2)*10^6+0.5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "20901119",
+        "answer": {
+          "value": 5,
+          "label": "5 × 10⁻⁶ m"
+        }
+      }
+    },
+    {
+      "id": "f17437ad-c177-49cb-9285-9f64070cc11d",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "1\\ \\text{msd} = \\dfrac{15}{300} = 0.05\\ \\text{cm}",
+              "f": "15/300",
+              "value": "0.05"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "LC = \\left(1-\\dfrac{24}{25}\\right)\\text{msd} = \\dfrac{1}{25}\\ \\text{msd}",
+              "f": "1-24/25",
+              "value": "1/25"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "LC = \\dfrac{1}{25}\\times0.05 = 0.002\\ \\text{cm}",
+              "f": "1/25*0.05",
+              "value": "0.002"
+            }
+          ],
+          "answer": "floor(1000*1/25*0.05+0.5)/1000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "9b0b4480",
+        "answer": {
+          "value": 0.002,
+          "label": "0.002 cm"
+        }
+      }
+    },
+    {
+      "id": "f1763124-543c-4cd9-a26c-5f37dbbc971e",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "V = \\dfrac{4}{3}\\pi R^{3}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{\\Delta V}{V} = 3\\dfrac{\\Delta R}{R} = 3\\times2 = 6\\%",
+              "f": "3*2",
+              "value": "6"
+            }
+          ],
+          "answer": "3*2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "36aaa111",
+        "answer": {
+          "value": 6,
+          "label": "6%"
+        }
+      }
+    },
+    {
+      "id": "f1962a51-1b93-4f93-9b16-2c6b9bc98f97",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "[H] = [L^{-1}A],\\ [H] = [x]^{p}[\\epsilon]^{q}[E]^{r}[t]^{-s}"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "M:\\ -q + r = 0 \\Rightarrow r = q;\\quad A:\\ 2q - r = 2q - q = 1 \\Rightarrow q = r = 1",
+              "lhs": "2*x-x",
+              "rhs": "1"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "L:\\ p - 3q + r = -1 \\Rightarrow p - 3 + 1 = -1 \\Rightarrow p = 1",
+              "lhs": "x-3*1+1",
+              "rhs": "-1"
+            },
+            {
+              "step": "s4",
+              "kind": "eq",
+              "tex": "T:\\ 4q - 3r - s = 0 \\Rightarrow 4 - 3 - s = 0 \\Rightarrow s = 1",
+              "lhs": "4*1-3*1-x",
+              "rhs": "0"
+            }
+          ],
+          "answer": "1",
+          "roots": [
+            "1"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "9bf332dc",
+        "answer": {
+          "value": 1,
+          "label": "p, q, r, s = 1, 1, 1, 1"
+        }
+      }
+    },
+    {
+      "id": "f20acd2c-bd58-498b-8761-a354ecc411a7",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "[uG]:\\ L\\ \\text{exponent}\\ -1+3 = 2",
+              "f": "-1+3",
+              "value": "2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[uG]:\\ T\\ \\text{exponent}\\ -2-2 = -4",
+              "f": "-2-2",
+              "value": "-4"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "[\\sqrt{uG}] = L^{1}T^{-2}:\\ \\text{halve each exponent},\\ \\dfrac{-4}{2} = -2",
+              "f": "-4/2",
+              "value": "-2",
+              "note": "= force per unit mass"
+            }
+          ],
+          "answer": "-1+3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a88e7dbb",
+        "answer": {
+          "value": 2,
+          "label": "[√(uG)] = LT⁻²"
+        }
+      }
+    },
+    {
+      "id": "f2e731c5-cf2b-4a84-a96e-cca41c0ec5e4",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "[\\alpha] = \\dfrac{[kt]}{[x]} = \\dfrac{ML^2T^{-2}}{L}:\\ L\\ \\text{exponent}\\ 2-1 = 1",
+              "f": "2-1",
+              "value": "1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[\\beta] = \\dfrac{[\\alpha]}{[u]} = \\dfrac{MLT^{-2}}{ML^{-1}T^{-2}}:\\ L\\ \\text{exponent}\\ 1-(-1) = 2",
+              "f": "1-(-1)",
+              "value": "2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "[\\beta]:\\ T\\ \\text{exponent}\\ -2-(-2) = 0",
+              "f": "-2-(-2)",
+              "value": "0",
+              "note": "= M⁰L²T⁰"
+            }
+          ],
+          "answer": "1-(-1)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e859c625",
+        "answer": {
+          "value": 2,
+          "label": "M⁰L²T⁰"
+        }
+      }
+    },
+    {
+      "id": "f35832e2-ba9b-4627-8c16-f2e98e41d1c1",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "c = \\dfrac{1}{\\sqrt{\\mu_0\\varepsilon_0}} \\Rightarrow \\dfrac{1}{\\mu_0\\varepsilon_0} = c^{2}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[c^2] = (LT^{-1})^2:\\ L\\ \\text{exponent}\\ 2\\times1 = 2",
+              "f": "2*1",
+              "value": "2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "T\\ \\text{exponent}\\ 2\\times(-1) = -2",
+              "f": "2*(-1)",
+              "value": "-2",
+              "note": "= L²T⁻²"
+            }
+          ],
+          "answer": "2*1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "2330cbcc",
+        "answer": {
+          "value": 2,
+          "label": "L²T⁻²"
+        }
+      }
+    },
+    {
+      "id": "f75011b9-b30d-4257-bb69-cc5abfc7c345",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "[M] = [G]^{x}[h]^{y}[c]^{z}:\\ -x+y = 1,\\ 3x+2y+z = 0,\\ -2x-y-z = 0"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "x = -\\dfrac{1}{2},\\ y = \\dfrac{1}{2},\\ z = \\dfrac{1}{2}:\\ -x+y = \\dfrac{1}{2}+\\dfrac{1}{2} = 1",
+              "f": "1/2+1/2",
+              "value": "1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "3x+2y+z = -\\dfrac{3}{2}+1+\\dfrac{1}{2} = 0",
+              "f": "-3/2+1+1/2",
+              "value": "0"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "-2x-y-z = 1-\\dfrac{1}{2}-\\dfrac{1}{2} = 0",
+              "f": "1-1/2-1/2",
+              "value": "0"
+            }
+          ],
+          "answer": "1/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "63c98df5",
+        "answer": {
+          "value": 0.5,
+          "label": "M = h^½ c^½ G^-½"
+        }
+      }
+    },
+    {
+      "id": "f834625e-2ec8-4c1f-b2a8-f1639c428eb1",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "R = \\dfrac{\\rho L}{A} = \\dfrac{4\\rho L}{\\pi d^2}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{\\Delta R}{R} = \\dfrac{\\Delta L}{L} + 2\\dfrac{\\Delta d}{d} = 0.1\\% + 2\\times0.1\\% = 0.3\\%",
+              "f": "0.1+2*0.1",
+              "value": "0.3"
+            }
+          ],
+          "answer": "floor(10*(0.1+2*0.1)+0.5)/10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "1e222eb8",
+        "answer": {
+          "value": 0.3,
+          "label": "0.3%"
+        }
+      }
+    },
+    {
+      "id": "f862a5a5-8625-4857-84ef-77ed36a3414c",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "E_H = I^2 R\\,t"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{\\Delta E}{E}\\times100 = 2(2) + 1 + 3 = 8\\%",
+              "f": "2*2+1+3",
+              "value": "8"
+            }
+          ],
+          "answer": "2*2+1+3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "e5b79913",
+        "answer": {
+          "value": 8,
+          "label": "8%"
+        }
+      }
+    },
+    {
+      "id": "f9ced3da-b253-4c50-b8f6-fd01d452039e",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "[L] = [M][LT^{-1}][L]"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "L\\ \\text{exponent}\\ 1+1 = 2",
+              "f": "1+1",
+              "value": "2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "T\\ \\text{exponent}\\ -1",
+              "f": "0-1",
+              "value": "-1",
+              "note": "= ML²T⁻¹"
+            }
+          ],
+          "answer": "1+1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "2144e862",
+        "answer": {
+          "value": 2,
+          "label": "ML²T⁻¹"
+        }
+      }
+    },
+    {
+      "id": "fc6276c9-57ec-4aa1-882b-268dc41e9cd0",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "Bt\\ \\text{adds to}\\ h:\\ [B] = LT^{-1},\\ T\\ \\text{exponent}\\ 0-1 = -1",
+              "f": "0-1",
+              "value": "-1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[A] = ML^{-1}T^{-2}\\cdot LT^{-1}\\cdot T^{2}:\\ L\\ \\text{exponent}\\ -1+1 = 0",
+              "f": "-1+1",
+              "value": "0"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "[A]:\\ T\\ \\text{exponent}\\ -2-1+2 = -1",
+              "f": "-2-1+2",
+              "value": "-1",
+              "note": "= ML⁰T⁻¹"
+            }
+          ],
+          "answer": "0-1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "173355d7",
+        "answer": {
+          "value": -1,
+          "label": "A: ML⁰T⁻¹, B: M⁰LT⁻¹"
+        }
+      }
+    },
+    {
+      "id": "fcada58c-8e7f-4b3e-963a-46826fecc028",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "B = \\mu_0 n i \\Rightarrow \\left[\\dfrac{B}{\\mu_0}\\right] = [ni]"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[n] = L^{-1}:\\ L\\ \\text{exponent}\\ 0-1 = -1,\\ A\\ \\text{exponent}\\ 1",
+              "f": "0-1",
+              "value": "-1",
+              "note": "= L⁻¹A"
+            }
+          ],
+          "answer": "0-1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "bbf523e6",
+        "answer": {
+          "value": -1,
+          "label": "L⁻¹A"
+        }
+      }
+    },
+    {
+      "id": "ff6d61a4-ef0d-4803-88f5-8cf451ec2def",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "k = k_1 + k_2 = 10 + 20 = 30\\ \\text{N/m}",
+              "f": "10+20",
+              "value": "30"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta k = 0.2 + 0.3 = 0.5\\ \\text{N/m}",
+              "f": "0.2+0.3",
+              "value": "0.5"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{0.5}{30}\\times100 = 1.67\\%",
+              "f": "0.5/30*100",
+              "value": "1.67",
+              "dp": 2
+            }
+          ],
+          "answer": "floor(100*0.5/30*100+0.5)/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "97275b58",
+        "answer": {
+          "value": 1.67,
+          "label": "1.67%"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

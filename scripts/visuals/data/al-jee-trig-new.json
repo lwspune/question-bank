@@ -1,0 +1,152 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "cb6cf685-00a7-4cca-9eb6-6367ad44712f",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\tan\\theta = \\dfrac{1 - \\tan\\alpha}{1 + \\tan\\alpha} = \\tan\\left(\\dfrac{\\pi}{4} - \\alpha\\right)"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\theta\\ \\text{acute}:\\ \\theta = \\dfrac{\\pi}{4} - \\alpha"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\theta + \\alpha = \\dfrac{\\pi}{4}",
+              "f": "pi/4",
+              "value": "pi/4"
+            }
+          ],
+          "answer": "pi/4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a517b399",
+        "answer": {
+          "value": 0.7853981633974483,
+          "label": "π/4"
+        }
+      }
+    },
+    {
+      "id": "ed37ae39-1c34-4c61-9423-e17641704c81",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\tan A\\tan B = 1 + \\dfrac{\\cos C}{\\cos A\\cos B}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\tan C(\\tan A + \\tan B) = \\dfrac{\\sin^{2}C}{\\cos A\\cos B\\cos C}"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "\\text{sum} = 1 + \\dfrac{1}{\\cos A\\cos B\\cos C}"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "1 + \\dfrac{1}{1/3} = 1 + 3 = 4",
+              "f": "1+1/(1/3)",
+              "value": "4"
+            }
+          ],
+          "answer": "1+1/(1/3)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "2142288d",
+        "answer": {
+          "value": 4,
+          "label": "4"
+        }
+      }
+    },
+    {
+      "id": "ff7d90c6-8d8e-4b61-8ded-6dacad9db5e9",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "x - y = \\dfrac{\\pi}{6}\\ \\Rightarrow\\ x = y + \\dfrac{\\pi}{6}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\cos x = \\dfrac{\\sqrt{3}}{2}\\cos y - \\dfrac{1}{2}\\sin y = 2\\cos y"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{\\sqrt{3}}{2} - \\dfrac{1}{2}\\tan y = 2\\ \\Rightarrow\\ \\tan y = \\sqrt{3} - 4",
+              "f": "2*(sqrt(3)/2-2)",
+              "value": "sqrt(3)-4"
+            }
+          ],
+          "answer": "sqrt(3)-4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "9d2b772c",
+        "answer": {
+          "value": -2.267949192431123,
+          "label": "√3 − 4"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

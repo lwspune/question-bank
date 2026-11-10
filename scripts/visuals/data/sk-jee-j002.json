@@ -1,0 +1,257 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "8830c095-c106-4356-bb82-7ce56570dba4",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "qa": 20,
+            "qb": 5,
+            "d": 5,
+            "xp": 5,
+            "pP": "d+xp"
+          },
+          "view": {
+            "x": [
+              -1,
+              11
+            ],
+            "y": [
+              -4.5,
+              4.5
+            ]
+          },
+          "points": {
+            "A": [
+              0,
+              0
+            ],
+            "B": [
+              "d",
+              0
+            ],
+            "P": [
+              "pP",
+              0
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "P",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "A",
+              "step": "s1",
+              "label": "20 μC",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1",
+              "label": "−5 μC",
+              "pos": "n",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.5,
+                -1.2
+              ],
+              "text": "A to B: {d} cm",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "P",
+              "step": "s2",
+              "label": "null point",
+              "pos": "n",
+              "tone": "good"
+            },
+            {
+              "kind": "segment",
+              "from": "B",
+              "to": "P",
+              "step": "s2",
+              "dash": true,
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.5,
+                -2.2
+              ],
+              "text": "x = {xp} cm from −5 μC",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "qb/xp^2 = qa/(d+xp)^2",
+            "pP = 2*xp"
+          ],
+          "answer": "xp"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e37f362b",
+        "answer": {
+          "value": 5,
+          "label": "5 cm right of −5 μC"
+        }
+      }
+    },
+    {
+      "id": "9199a80d-5bf2-4df5-bb02-05f83f872390",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "a": 1,
+            "R": "4*a",
+            "xq": "3*a",
+            "xr": "-5*a"
+          },
+          "view": {
+            "x": [
+              -7,
+              7
+            ],
+            "y": [
+              -3.5,
+              3.5
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "P": [
+              "xq",
+              0
+            ],
+            "N": [
+              "xr",
+              0
+            ]
+          },
+          "items": [
+            {
+              "kind": "circle",
+              "center": "O",
+              "r": "R",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "point",
+              "at": "O",
+              "step": "s1",
+              "label": "O",
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -1.2,
+                2.4
+              ],
+              "text": "radius 4a",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "P",
+              "step": "s2",
+              "label": "5Q at 3a",
+              "pos": "n",
+              "tone": "good"
+            },
+            {
+              "kind": "point",
+              "at": "N",
+              "step": "s2",
+              "label": "−2Q at −5a",
+              "pos": "n",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -3.3,
+                -2.6
+              ],
+              "text": "outside: net flux 0",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.6,
+                -1.2
+              ],
+              "text": "flux = 5Q/ε₀",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "xq < R",
+            "-xr > R"
+          ],
+          "answer": "5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "83724e4f",
+        "answer": {
+          "value": 5,
+          "label": "5Q/ε₀"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

@@ -1,0 +1,315 @@
+{
+ "//": "Assembled from agent drafts (truthTable).",
+ "visuals": [
+  {
+   "id": "17cd8d3e-3806-4309-b2f6-c1437215b3f2",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "(p | q) -> ~r",
+       "label": "(A)"
+      },
+      {
+       "f": "(r | q) -> ~p",
+       "label": "(B)"
+      },
+      {
+       "f": "~(p | q) -> ~r",
+       "label": "(C)"
+      },
+      {
+       "f": "~(r | q) -> ~p",
+       "label": "(D)"
+      }
+     ],
+     "ask": {
+      "kind": "evaluate",
+      "at": {
+       "p": true,
+       "q": false,
+       "r": false
+      },
+      "f": [
+       "(p | q) -> ~r",
+       "(r | q) -> ~p",
+       "~(p | q) -> ~r",
+       "~(r | q) -> ~p"
+      ],
+      "expect": [
+       true,
+       true,
+       true,
+       false
+      ],
+      "label": "(D) is false"
+     },
+     "letters": {
+      "p": "P",
+      "q": "Q",
+      "r": "R"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "a9e1450c",
+    "answer": {
+     "value": 1,
+     "label": "(D)"
+    }
+   }
+  },
+  {
+   "id": "52246fdc-90af-4e43-b808-cf8df62e73f4",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "(p & (q | r)) -> (p | q)",
+       "label": "X"
+      },
+      {
+       "f": "((p & (q | r)) -> (p | q)) -> p",
+       "label": "X → A"
+      }
+     ],
+     "ask": {
+      "kind": "transform",
+      "of": "((p & (q | r)) -> (p | q)) -> p",
+      "op": "negation",
+      "equals": "~p"
+     },
+     "letters": {
+      "p": "A",
+      "q": "B",
+      "r": "C"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "a9b63d46",
+    "answer": {
+     "value": 1,
+     "label": "equivalent to ∼A"
+    }
+   }
+  },
+  {
+   "id": "86a42d36-f10d-41a4-a939-ac723d6395e7",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "(p & ~r) <-> ~q",
+       "label": "(P ∧ ∼R) ↔ ∼Q"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~((p & ~r) <-> ~q)",
+      "b": "((p & ~r) & q) | ((~p | r) & ~q)"
+     },
+     "letters": {
+      "p": "P (intelligent)",
+      "q": "Q (rich)",
+      "r": "R (not honest)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "2f17e0de",
+    "answer": {
+     "value": 1,
+     "label": "option (D)"
+    }
+   }
+  },
+  {
+   "id": "ab092c66-0aa8-4cb3-9b40-567b41ad4dd6",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "q & ~(p & q)",
+       "label": "X"
+      },
+      {
+       "f": "p & (q & ~(p & q))",
+       "label": "p ∧ X"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~(p & (q & ~(p & q)))",
+      "b": "~(p & q) | p"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "faa25a44",
+    "answer": {
+     "value": 1,
+     "label": "option (d)"
+    }
+   }
+  },
+  {
+   "id": "c7ca7bdd-fcb3-4004-a1fb-e6401d3957da",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "(p | q) -> ((p & q) | r)",
+       "label": "∨, ∧"
+      },
+      {
+       "f": "(p & q) -> ((p & q) & r)",
+       "label": "∧, ∧"
+      },
+      {
+       "f": "(p | q) -> ((p | q) | r)",
+       "label": "∨, ∨"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "(p | q) | r",
+      "b": "(p | r) | q"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "b7bfba38",
+    "answer": {
+     "value": 1,
+     "label": "(p Δ r) ∨ q"
+    }
+   }
+  },
+  {
+   "id": "cb3852b1-5f0e-4f1d-a824-c31fa42f3e21",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "(p | q) -> (~r | p)",
+       "label": "S"
+      },
+      {
+       "f": "(p | q) & ~(~r | p)",
+       "label": "∼S"
+      },
+      {
+       "f": "~p & q & r",
+       "label": "∼P ∧ Q ∧ R"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~((p | q) -> (~r | p))",
+      "b": "~p & q & r"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "ed142a48",
+    "answer": {
+     "value": 1,
+     "label": "∼p ∧ q ∧ r"
+    }
+   }
+  }
+ ],
+ "decided": []
+}

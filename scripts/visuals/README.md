@@ -389,6 +389,14 @@ fit check, Sonnet for drafts.
    scene and situation, which is how the next scene or ask gets picked.
 9. **Commit** the batch files, fixes and NEEDS_OWNER rows on the branch, and
    report: visuals applied, solutions fixed, new NEEDS_OWNER rows.
+10. **Close the exam from the database, not from your notes.** A draft skip
+    flagged `solutionWrong` is held, not decided, so it stays "not reviewed" in
+    `visuals:coverage`. Before calling an exam done, list every PUBLIC question
+    with no visual and no verdict, and give each a reason (no solution, on
+    NEEDS_OWNER, held as solutionWrong). Every held one goes through a fix pass:
+    re-derive, fix the solution and draft it, or put it on NEEDS_OWNER.md.
+    On 2026-11-10 JEE Mains had 379 held skips that no list named, because only
+    the ones an agent mentioned in its reply had been copied to the hold list.
 
 | Scene | Draws | Chapters done (2026-10-25) |
 |---|---|---|

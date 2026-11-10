@@ -1,0 +1,26 @@
+[
+ {
+  "id": "1b7518a0-7dc3-45c9-a9f3-d84c8596335a",
+  "before": "8ab2aceb",
+  "solution": "For stretched or compressed wire \\[R \\propto l^{2}\\] \\[\\frac{R_{1}}{R_{2}} = \\frac{l_{1}^{2}}{l_{2}^{2}}\\] \\[\\Rightarrow \\frac{R}{R_{2}} = \\frac{l^{2}}{(1.25l)^{2}}\\] \\[\\Rightarrow R_{2} = 1.5625R\\] \\(\\%\\) increase \\(\\rightarrow 56.25\\% \\approx 56\\%\\)",
+  "note": "length l was printed as I and 1.25l as 1.251; 1.5625 is a 56.25% rise"
+ },
+ {
+  "id": "5150c9fe-1a64-4d51-a95d-aeca1295f8de",
+  "before": "5b92fcd0",
+  "solution": "Let each resistance be \\(R_{0}\\) at \\(0^{\\circ}C\\), so \\(R_{1}=R_{0}(1+\\alpha_{1}t)\\) and \\(R_{2}=R_{0}(1+\\alpha_{2}t)\\). In series \\[R_{s}=2R_{0}\\left(1+\\frac{\\alpha_{1}+\\alpha_{2}}{2}t\\right)\\quad\\Rightarrow\\quad \\alpha_{s}=\\frac{\\alpha_{1}+\\alpha_{2}}{2}.\\] In parallel, to first order in the small quantities \\(\\alpha t\\), \\[R_{p}=\\frac{R_{1}R_{2}}{R_{1}+R_{2}}=\\frac{R_{0}\\left(1+\\alpha_{1}t\\right)\\left(1+\\alpha_{2}t\\right)}{2+\\left(\\alpha_{1}+\\alpha_{2}\\right)t}\\approx\\frac{R_{0}}{2}\\left[1+\\left(\\alpha_{1}+\\alpha_{2}\\right)t\\right]\\left[1-\\frac{\\alpha_{1}+\\alpha_{2}}{2}t\\right]\\approx\\frac{R_{0}}{2}\\left(1+\\frac{\\alpha_{1}+\\alpha_{2}}{2}t\\right),\\] so \\(\\alpha_{p}=\\dfrac{\\alpha_{1}+\\alpha_{2}}{2}\\) as well. Numerical cross-check with \\(R_{0}=1,\\ \\alpha_{1}=0.001,\\ \\alpha_{2}=0.003,\\ t=10\\): \\(R_{1}=1.01,\\ R_{2}=1.03\\); parallel value \\(=0.50995\\) against \\(0.5\\) at \\(0^{\\circ}C\\), a fractional rise of \\(0.0199\\), i.e. \\(\\alpha_{p}\\approx0.00199\\), matching \\(\\left(\\alpha_{1}+\\alpha_{2}\\right)/2=0.002\\). Hence the correct choice is B.",
+  "note": "1.01 x 1.03 / 2.04 = 0.50995, a rise of 0.0199"
+ },
+ {
+  "id": "3dd725b6-f160-4d7a-b72a-af2c9ee33a64",
+  "before": "270e5957",
+  "solution": "\\(\\ E = {ML}^{2}{\\text{ }T}^{- 2}\\) \\[L = {ML}^{2}{\\text{ }T}^{- 1}\\] \\[m = M\\] \\[G = M^{- 1}{\\text{ }L}^{+ 3}{\\text{ }T}^{- 2}\\] \\[P = \\frac{EL^{2}}{M^{5}G^{2}}\\] \\[\\lbrack P\\rbrack = \\frac{\\left( {ML}^{2}{\\text{ }T}^{- 2} \\right)\\left( M^{2}{\\text{ }L}^{4}{\\text{ }T}^{- 2} \\right)}{M^{5}\\left( M^{- 2}{\\text{ }L}^{6}{\\text{ }T}^{- 4} \\right)} = M^{0}{\\text{ }L}^{0}{\\text{ }T}^{0}\\]",
+  "note": "P = EL^2/(M^5 G^2): the next line squares L"
+ },
+ {
+  "id": "8021aa15-f1ba-48b1-9554-f31dd0a6162b",
+  "before": "ef333d3b",
+  "solution": "\\[T = 2\\pi\\sqrt{\\frac{\\mathcal{l}}{g}} \\Rightarrow \\mathcal{l} = \\frac{T^{2}g}{4\\pi^{2}}\\] \\[E = mg\\mathcal{l}\\frac{\\theta^{2}}{2} = {mg}^{2}\\frac{T^{2}\\theta^{2}}{8\\pi^{2}}\\] \\[\\frac{dE}{E} = 2\\left( \\frac{dg}{g} + \\frac{dT}{T} \\right)\\] \\[= 2(4 + 3) = 14\\%\\]",
+  "note": "the factor 2 from dE/E = 2(dg/g + dT/T) was dropped"
+ }
+]

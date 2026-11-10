@@ -1,0 +1,143 @@
+{
+  "//": "Assembled from agent drafts (coordGeometry).",
+  "visuals": [
+    {
+      "id": "38cf6990-12d4-4177-97be-728950d01442",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -3,
+              5
+            ],
+            "y": [
+              -1.5,
+              5.5
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "C",
+              "at": [
+                1,
+                2
+              ],
+              "label": "centre (1, 2)",
+              "beat": "derived"
+            },
+            {
+              "id": "A",
+              "at": [
+                -1,
+                1
+              ],
+              "label": "A(−1, 1)",
+              "beat": "construct"
+            },
+            {
+              "id": "B",
+              "at": [
+                2,
+                4
+              ],
+              "label": "B(2, 4)",
+              "beat": "construct"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": "C",
+              "r": 2.23606797749979,
+              "label": "x² + y² − 2x − 4y = 0",
+              "beat": "derived"
+            }
+          ],
+          "lines": [
+            {
+              "id": "L1",
+              "eq": [
+                1,
+                -2,
+                3
+              ],
+              "label": "x − 2y + 3 = 0",
+              "beat": "given"
+            },
+            {
+              "id": "L2",
+              "eq": [
+                2,
+                1,
+                -4
+              ],
+              "label": "2x + y − 4 = 0",
+              "beat": "given"
+            },
+            {
+              "id": "L3",
+              "eq": [
+                1,
+                -1,
+                2
+              ],
+              "label": "x − y + 2 = 0",
+              "beat": "construct"
+            }
+          ],
+          "ask": {
+            "kind": "chordLength",
+            "line": "L3",
+            "of": "S",
+            "squared": true,
+            "label": "(AB)² = 18"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "construct"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "3b856be8",
+        "answer": {
+          "value": 18,
+          "label": "18",
+          "tolerance": 0.000001
+        }
+      }
+    }
+  ],
+  "decided": []
+}

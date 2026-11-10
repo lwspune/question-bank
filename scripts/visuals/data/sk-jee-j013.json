@@ -1,0 +1,205 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "50b1dc8f-aa9d-427e-bc8c-21caac7878dd",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "R": "2",
+            "sp": "4",
+            "kv": "0.25",
+            "ka": "0.15",
+            "acc": "sp^2/R"
+          },
+          "view": {
+            "x": [
+              -4.5,
+              4.5
+            ],
+            "y": [
+              -3.4,
+              3.4
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "P": [
+              "R",
+              0
+            ],
+            "Q": [
+              "-R",
+              0
+            ],
+            "VP": [
+              "R",
+              "-kv*sp"
+            ],
+            "VQ": [
+              "-R",
+              "kv*sp"
+            ],
+            "AQ": [
+              "-R+ka*acc",
+              0
+            ]
+          },
+          "items": [
+            {
+              "kind": "circle",
+              "center": "O",
+              "r": "R",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "O",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "P",
+              "dash": true,
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1,
+                -0.45
+              ],
+              "text": "r = {R} m",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "P",
+              "label": "(2, 0)",
+              "pos": "e",
+              "step": "s1"
+            },
+            {
+              "kind": "arrow",
+              "from": "P",
+              "to": "VP",
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                2.2,
+                -0.75
+              ],
+              "text": "v = −4ĵ",
+              "pos": "e",
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "point",
+              "at": "Q",
+              "label": "(−2, 0)",
+              "pos": "w",
+              "step": "s3"
+            },
+            {
+              "kind": "arrow",
+              "from": "Q",
+              "to": "VQ",
+              "step": "s4",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -2.2,
+                0.7
+              ],
+              "text": "v = +4ĵ",
+              "pos": "w",
+              "step": "s4",
+              "tone": "brand"
+            },
+            {
+              "kind": "arrow",
+              "from": "Q",
+              "to": "AQ",
+              "step": "s4",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -0.7,
+                0.25
+              ],
+              "text": "a = {acc}î m/s²",
+              "pos": "ne",
+              "step": "s4",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -4.3,
+                -2.6
+              ],
+              "text": "speed 4 m/s, radius 2 m",
+              "step": "s1",
+              "tone": "muted"
+            }
+          ],
+          "assert": [
+            "acc = 8",
+            "kv*sp = 1",
+            "R*R = 4"
+          ],
+          "answer": "acc"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "7f688ff1",
+        "answer": {
+          "value": 8,
+          "label": "v = 4ĵ, a = 8î"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

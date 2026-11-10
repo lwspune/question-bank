@@ -62,6 +62,17 @@ for (const f of files) {
       bad++;
       continue;
     }
+    // A command that lost its backslash, usually right after a matrix row break: "2\\sqrt2" (should be
+    // "2\\\sqrt2") renders the letters "sqrt2" as text, and KaTeX raises no error (JEE Matrices, 2026-11-10).
+    const bareCmd = /(?:(?<![\\A-Za-z])|(?<!\\)\\\\)(?:sqrt|d?frac|times|cdot|alpha|beta|gamma|theta|lambda|infty|Rightarrow|rightarrow|leq|geq|neq|approx)(?![A-Za-z])/;
+    const lostSlash = ((d.params as { lines?: { tex?: string }[] })?.lines ?? []).find((l) =>
+      bareCmd.test((l.tex ?? "").replace(/\\(?:text|mathrm|operatorname)\{[^{}]*\}/g, "")),
+    );
+    if (lostSlash) {
+      console.log(`${tag}: a TeX command lost its backslash and will print as letters (after a row break write \\\\\\sqrt): ${lostSlash.tex}`);
+      bad++;
+      continue;
+    }
     // A calc line whose tex lost its multiplication signs: "23 + (-1)1" for f "2*3+(-1)*1" reads as twenty-three
     // (146 lines in one CBSE 12 Determinants run). Write \cdot (or brackets) between numbers that multiply.
     const merged = ((d.params as { lines?: { kind?: string; tex?: string; f?: string }[] })?.lines ?? []).find((l) => {

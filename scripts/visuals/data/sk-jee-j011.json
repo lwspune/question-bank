@@ -1,0 +1,585 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "1d305c8c-0306-4065-a8dd-afc4c5c5e7ae",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "h": "sqrt(7)",
+            "mu": "4/3",
+            "sinC": "1/mu",
+            "C": "asin(sinC)",
+            "r": "h*tan(C)",
+            "area": "r^2"
+          },
+          "view": {
+            "x": [
+              -4,
+              4
+            ],
+            "y": [
+              -2.4,
+              3.6
+            ]
+          },
+          "points": {
+            "B": [
+              0,
+              0
+            ],
+            "S": [
+              0,
+              "h"
+            ],
+            "P": [
+              "r",
+              "h"
+            ],
+            "Q": [
+              "-r",
+              "h"
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": [
+                -3.8,
+                "h"
+              ],
+              "to": [
+                3.8,
+                "h"
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -3.8,
+                3.2
+              ],
+              "text": "water surface",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "label": "bulb",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "B",
+              "to": "S",
+              "dash": true,
+              "step": "s1",
+              "label": "h = √7 m",
+              "labelAt": [
+                0.1,
+                2
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "segment",
+              "from": "B",
+              "to": "P",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": "B",
+              "to": "Q",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "angle",
+              "at": "B",
+              "from": "S",
+              "to": "P",
+              "label": "C",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -3.8,
+                -1
+              ],
+              "text": "sin C = {sinC}",
+              "step": "s2"
+            },
+            {
+              "kind": "segment",
+              "from": "S",
+              "to": "P",
+              "step": "s3",
+              "tone": "good"
+            },
+            {
+              "kind": "segment",
+              "from": "S",
+              "to": "Q",
+              "step": "s3",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -3.8,
+                -1.5
+              ],
+              "text": "r = h tan C = {r} m",
+              "step": "s3"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -3.8,
+                -2
+              ],
+              "text": "area = {area}π m²",
+              "step": "s4",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "sinC*mu = 1",
+            "tan(C)*sqrt(7) = 3",
+            "r = 3",
+            "area = 9"
+          ],
+          "answer": "area"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "1120c7ba",
+        "answer": {
+          "value": 9,
+          "label": "x = 9"
+        }
+      }
+    },
+    {
+      "id": "300bb727-6d60-46a8-abad-1deca12f7382",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "R": "1",
+            "mu": "sqrt(2)",
+            "iA": "deg(atan2(R,R))"
+          },
+          "view": {
+            "x": [
+              -1.5,
+              2.5
+            ],
+            "y": [
+              -2,
+              1
+            ]
+          },
+          "points": {
+            "C": [
+              0,
+              0
+            ],
+            "O": [
+              0,
+              "-R"
+            ],
+            "B": [
+              "R",
+              0
+            ],
+            "E": [
+              2.2,
+              0
+            ],
+            "Nd": [
+              "R",
+              -0.6
+            ]
+          },
+          "items": [
+            {
+              "kind": "arc",
+              "center": "C",
+              "r": "R",
+              "from": 180,
+              "to": 360,
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                -1,
+                0
+              ],
+              "to": [
+                1,
+                0
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "point",
+              "at": "O",
+              "label": "coin O",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "label": "B",
+              "pos": "nw",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "E",
+              "label": "E",
+              "pos": "n",
+              "step": "s2"
+            },
+            {
+              "kind": "arrow",
+              "from": "B",
+              "to": "E",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "B",
+              "step": "s3",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                "R",
+                0.6
+              ],
+              "to": "Nd",
+              "dash": true,
+              "step": "s3"
+            },
+            {
+              "kind": "angle",
+              "at": "B",
+              "from": "O",
+              "to": "Nd",
+              "label": "i",
+              "step": "s3"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -1.4,
+                -1.5
+              ],
+              "text": "i = {iA}°, μ sin i = 1",
+              "step": "s4"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -1.4,
+                -1.9
+              ],
+              "text": "μ min = √2",
+              "step": "s5",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "atan2(R,R) = pi/4",
+            "mu*sin(pi/4) = 1",
+            "R*R = R*R"
+          ],
+          "answer": "mu"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "10421211",
+        "answer": {
+          "value": 1.4142135623730951,
+          "label": "μ = √2"
+        }
+      }
+    },
+    {
+      "id": "50793e0b-0a2c-4d44-8cd4-c20190ef723c",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "w": "50",
+            "d1": "60",
+            "d2": "120",
+            "half": "w/2",
+            "dist": "d1+d2",
+            "hw": "half*dist/d1",
+            "ans": "2*hw"
+          },
+          "view": {
+            "x": [
+              -84,
+              170
+            ],
+            "y": [
+              -95,
+              95
+            ]
+          },
+          "points": {
+            "A": [
+              0,
+              "half"
+            ],
+            "B": [
+              0,
+              "-half"
+            ],
+            "S": [
+              "d1",
+              0
+            ],
+            "Si": [
+              "-d1",
+              0
+            ],
+            "E1": [
+              "d2",
+              "hw"
+            ],
+            "E2": [
+              "d2",
+              "-hw"
+            ],
+            "T": [
+              "d2",
+              85
+            ],
+            "U": [
+              "d2",
+              -85
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "B",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -8,
+                -35
+              ],
+              "text": "mirror 50 cm",
+              "step": "s1",
+              "pos": "w"
+            },
+            {
+              "kind": "point",
+              "at": "S",
+              "label": "S",
+              "pos": "ne",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "Si",
+              "label": "S′",
+              "pos": "nw",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "Si",
+              "to": "S",
+              "dash": true,
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                30,
+                0
+              ],
+              "text": "60 cm",
+              "step": "s1",
+              "pos": "n"
+            },
+            {
+              "kind": "segment",
+              "from": "Si",
+              "to": "E1",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": "Si",
+              "to": "E2",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": "T",
+              "to": "U",
+              "dash": true,
+              "step": "s3",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -10,
+                -87
+              ],
+              "text": "his path: 120 cm from the mirror",
+              "step": "s3",
+              "pos": "e"
+            },
+            {
+              "kind": "point",
+              "at": "E1",
+              "step": "s4",
+              "tone": "good"
+            },
+            {
+              "kind": "point",
+              "at": "E2",
+              "step": "s4",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "at": [
+                118,
+                0
+              ],
+              "text": "{ans} cm",
+              "step": "s4",
+              "pos": "w",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "dist = 180",
+            "hw = 75",
+            "ans = 150",
+            "hw*d1 = half*dist"
+          ],
+          "answer": "ans"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "40fe876f",
+        "answer": {
+          "value": 150,
+          "label": "150 cm"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
