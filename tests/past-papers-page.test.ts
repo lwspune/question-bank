@@ -5,6 +5,8 @@ import type { ChapterWeight } from "@/lib/me/startNext";
 import { groupMocksForType } from "@/lib/mocks/catalogue";
 import {
   OPEN_PAPER_TARGET,
+  OPEN_YEAR_MAX,
+  OPEN_YEARS_MAX,
   markingLine,
   newestSittingLabel,
   openYearKeys,
@@ -174,12 +176,19 @@ describe("openYearKeys: recent years open, older years folded", () => {
     expect([...openYearKeys([g("2026", 4), g("2025", 4), g("2024", 4)])]).toEqual(["2026", "2025"]);
   });
 
-  it("opens one year when that year alone is long (SSC CGL: ~37 shifts)", () => {
-    expect([...openYearKeys([g("2025", 37), g("2024", 30)])]).toEqual(["2025"]);
+  // Sheet review 2026-11-10: an open 42-paper year (MHT-CET 2026, SSC CGL 2025)
+  // pushed the trends and FAQ thousands of pixels down a phone.
+  it(`opens no year that holds more than ${OPEN_YEAR_MAX} papers, nor any older one`, () => {
+    expect(openYearKeys([g("2025", 37), g("2024", 30)]).size).toBe(0);
+    expect([...openYearKeys([g("2026", 4), g("2025", 42), g("2024", 4)])]).toEqual(["2026"]);
   });
 
-  it("opens more years when each is short", () => {
-    expect(openYearKeys([g("2026", 2), g("2025", 2), g("2024", 2), g("2023", 2), g("2022", 2)]).size).toBe(4);
+  it(`opens at most ${OPEN_YEARS_MAX} years when each is short (UCEED: one paper a year)`, () => {
+    expect([...openYearKeys([g("2026", 1), g("2025", 1), g("2024", 1), g("2023", 1), g("2022", 1)])]).toEqual([
+      "2026",
+      "2025",
+      "2024",
+    ]);
   });
 
   it("opens nothing when there are no papers", () => {
@@ -336,6 +345,19 @@ describe("paperTrends", () => {
 describe("newestSittingLabel", () => {
   it("names the month and year of the newest paper", () => {
     expect(newestSittingLabel(NDA_PAPERS)).toBe("September 2026");
+  });
+
+  it("reads the day from the title when the title prints one (MHT-CET, JEE, SSC)", () => {
+    const t = (slug: string, title: string, pyqYear = 2026) => paper({ slug, title, pyqYear, pyqMonth: null });
+    expect(
+      newestSittingLabel([
+        t("a", "MHT-CET 2026 (17 April Shift II) — Paper I — Mathematics"),
+        t("b", "MHT-CET 2026 (19 May Shift I) — Paper I — Mathematics"),
+      ])
+    ).toBe("19 May 2026");
+    expect(newestSittingLabel([t("j", "JEE Mains 2026 (8 Apr, Shift 2) — Paper 1")])).toBe("8 April 2026");
+    // A title's own year wins: SSC CGL Tier II for CGL 2025 was sat in January 2026.
+    expect(newestSittingLabel([t("s", "SSC CGL Tier II (CGL 2025), 18 Jan 2026", 2025)])).toBe("18 January 2026");
   });
 
   it("falls back to the year when no month is recorded", () => {

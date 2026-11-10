@@ -238,9 +238,12 @@ export default async function MockDownloadList(props: { params: Promise<Params> 
                               {/* The stored title's dashes become commas, as on the paper's own page. */}
                               {plainPaperTitle(m.title)}
                             </Link>
-                            <p className="mt-1 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-xs text-muted-foreground">
+                            <p className="mt-1 flex items-center gap-1.5 text-xs text-muted-foreground">
                               <FileText className="h-3.5 w-3.5" aria-hidden />
-                              {m.totalQuestions} questions ·
+                              {m.totalQuestions} questions
+                            </p>
+                            {/* Own line, no separators: on a phone a wrapped "·" was left hanging. */}
+                            <p className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-xs">
                               <Link
                                 href={paperPageHref(m.slug)}
                                 className="rounded-sm text-brand-accent underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
@@ -248,7 +251,6 @@ export default async function MockDownloadList(props: { params: Promise<Params> 
                               >
                                 Read online
                               </Link>
-                              ·
                               <Link
                                 href={`/mock/${m.slug}`}
                                 className="rounded-sm text-brand-accent underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"

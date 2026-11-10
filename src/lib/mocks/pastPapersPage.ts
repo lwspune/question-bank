@@ -27,12 +27,20 @@
  */
 import type { MockListItem } from "./query";
 import { sectionMarking, type MockPaperBlueprint } from "./blueprints";
-import { comparePaperLabels, monthRank } from "./catalogue";
+import { comparePaperLabels, monthRank, sittingRankFromTitle } from "./catalogue";
 import { plainPaperTitle } from "./paperPage";
 import type { ChapterWeight } from "@/lib/me/startNext";
 
 /** Recent years stay open until this many papers show; older years fold. */
 export const OPEN_PAPER_TARGET = 8;
+/**
+ * A year with more papers than this starts folded, and so does every older one:
+ * an open 42-paper year (MHT-CET 2026, SSC CGL 2025) put the trends and FAQ
+ * thousands of pixels down a phone (sheet review, 2026-11-10).
+ */
+export const OPEN_YEAR_MAX = 12;
+/** At most this many years open: twelve one-paper boxes (UCEED) read as a wall too. */
+export const OPEN_YEARS_MAX = 3;
 /** A paper needs this many published sittings before its averages mean much. */
 export const MIN_TREND_PAPERS = 4;
 /** Chapters shown for a one-subject paper. */
@@ -74,12 +82,16 @@ export function paperCountLabel(n: number): string {
   return `${n} ${n === 1 ? "paper" : "papers"}`;
 }
 
-/** The year groups to show open, newest first, until OPEN_PAPER_TARGET papers show. */
+/**
+ * The year groups to show open, newest first: until OPEN_PAPER_TARGET papers
+ * show, at most OPEN_YEARS_MAX years, and none from the first year holding more
+ * than OPEN_YEAR_MAX papers.
+ */
 export function openYearKeys(groups: readonly { key: string; items: readonly unknown[] }[]): Set<string> {
   const open = new Set<string>();
   let shown = 0;
   for (const g of groups) {
-    if (shown >= OPEN_PAPER_TARGET) break;
+    if (shown >= OPEN_PAPER_TARGET || open.size >= OPEN_YEARS_MAX || g.items.length > OPEN_YEAR_MAX) break;
     open.add(g.key);
     shown += g.items.length;
   }
@@ -134,7 +146,11 @@ function orList(xs: readonly (string | number)[]): string {
 }
 
 function newestFirst(a: MockListItem, b: MockListItem): number {
-  return (b.pyqYear ?? 0) - (a.pyqYear ?? 0) || monthRank(b.pyqMonth) - monthRank(a.pyqMonth);
+  return (
+    (b.pyqYear ?? 0) - (a.pyqYear ?? 0) ||
+    monthRank(b.pyqMonth) - monthRank(a.pyqMonth) ||
+    sittingRankFromTitle(b.title) - sittingRankFromTitle(a.title)
+  );
 }
 
 function sameMarking(a: { correct: number; wrong: number }, b: { correct: number; wrong: number }): boolean {
@@ -257,10 +273,20 @@ export function paperTrends(
   return cards;
 }
 
-/** "September 2026", or "2026" when no month is recorded; null with no papers. */
+/**
+ * "19 May 2026" when the newest paper's title prints its day (MHT-CET, JEE,
+ * SSC), else "September 2026", else "2026"; null with no papers. A year printed
+ * in the title wins over pyq_year: SSC CGL Tier II for CGL 2025 was sat in
+ * January 2026.
+ */
 export function newestSittingLabel(papers: readonly MockListItem[]): string | null {
   const newest = [...papers].sort(newestFirst)[0];
   if (!newest || newest.pyqYear === null) return null;
+  const dated = newest.title.match(/\b(\d{1,2})\s+([A-Za-z]{3})[a-z]*,?(?:\s+(\d{4}))?/);
+  const titleMonth = dated ? monthRank(dated[2]) : 0;
+  if (dated && titleMonth > 0) {
+    return `${Number(dated[1])} ${MONTH_NAMES[titleMonth - 1]} ${dated[3] ?? newest.pyqYear}`;
+  }
   const month = monthRank(newest.pyqMonth);
   return month > 0 ? `${MONTH_NAMES[month - 1]} ${newest.pyqYear}` : String(newest.pyqYear);
 }
