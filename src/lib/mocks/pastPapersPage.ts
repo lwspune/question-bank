@@ -140,7 +140,7 @@ export type PaperFact = {
 };
 
 /** "100, 85, 80 or 68". */
-function orList(xs: readonly (string | number)[]): string {
+export function orList(xs: readonly (string | number)[]): string {
   const s = xs.map(String);
   return s.length <= 1 ? (s[0] ?? "") : `${s.slice(0, -1).join(", ")} or ${s[s.length - 1]}`;
 }
