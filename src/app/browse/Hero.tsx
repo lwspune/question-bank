@@ -36,12 +36,17 @@ export default function Hero({
         {stats.map((s) => (
           <div key={s.label} className="flex items-baseline gap-1.5">
             <dt className="sr-only">{s.label}</dt>
-            <dd className="stat-gradient text-xl font-bold tabular-nums tracking-tight sm:text-2xl">
-              {s.value}
+            {/* The visible label sits inside the <dd>: a <dl> group may hold
+                only <dt> and <dd>. The <dt> already names it for screen
+                readers, so the copy here is hidden from them. */}
+            <dd className="flex items-baseline gap-1.5">
+              <span className="stat-gradient text-xl font-bold tabular-nums tracking-tight sm:text-2xl">
+                {s.value}
+              </span>
+              <span aria-hidden className="text-xs text-muted-foreground sm:text-sm">
+                {s.label}
+              </span>
             </dd>
-            <span className="text-xs text-muted-foreground sm:text-sm">
-              {s.label}
-            </span>
           </div>
         ))}
       </dl>
