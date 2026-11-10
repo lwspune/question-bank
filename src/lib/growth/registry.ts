@@ -253,6 +253,13 @@ export const V_FOLLOW_UP_KEEP_PCT = 10;
 export const V_FIX_LINE_KEEP_PCT = 10;
 
 /**
+ * "v-better-retry" (V_LEARNING_LOOP.md step 4): keep the new second try and
+ * the step buttons if at least this share of answered second tries get a Yes
+ * (%). Before: 2 of 7 answered (29%), 23 Nos from 23 Oct to 9 Nov.
+ */
+export const V_RETRY_YES_KEEP_PCT = 50;
+
+/**
  * "self-mark": keep Understood / Review later under written model answers if
  * at least this share of signed-in written-answer reveals get a tap (%)...
  */
@@ -368,7 +375,8 @@ export type Readout =
   | "study-circle"
   | "ugc-net"
   | "v-follow-up-loop"
-  | "v-fix-line";
+  | "v-fix-line"
+  | "v-better-retry";
 
 export type Experiment = {
   id: string;
@@ -795,6 +803,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-28",
     windowDays: 14,
     readout: "v-pay-offer",
+    status: "running",
+  },
+  {
+    id: "v-better-retry",
+    title: "A better second try after \"No, I didn't understand\"",
+    change:
+      "After a No, a reply with numbered steps asks \"Which step lost you?\" (a button per step, and All of it), and V's second try must differ: the named step, or the one its first reply rushed, shown in full with the numbers, or the idea it needs first, or a tiny example (rule 7).",
+    why: "Second tries were the first steps reworded, once word for word, and still skipped the hard step (\"do this for every entry\", \"using the quadratic formula\"). Of 21 second tries (23 Oct to 9 Nov), students answered Yes 2 times and No again 5 times.",
+    metric:
+      "chat_interactions: replies to a No (message I didn't understand..., plain or naming a step) answered Yes against No; step messages against plain ones (which steps students name)",
+    rule: `Keep it if ${V_RETRY_YES_KEEP_PCT}%+ of answered second tries get a Yes (was 2 of 7).`,
+    liveSince: "2026-11-10",
+    windowDays: 28,
+    readout: "v-better-retry",
     status: "running",
   },
   {

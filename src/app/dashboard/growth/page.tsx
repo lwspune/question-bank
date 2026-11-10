@@ -63,6 +63,7 @@ import {
   V_PREMIUM_HOURLY_CHECKOUT_KEEP_PCT,
   V_FOLLOW_UP_KEEP_PCT,
   V_FIX_LINE_KEEP_PCT,
+  V_RETRY_YES_KEEP_PCT,
   V_REVEAL_FOLLOWUP_MAX_DROP,
   V_PLAN_DAYS_DONE_KEEP_PCT,
   V_PROGRESS_NEXT_STEP_KEEP_PCT,
@@ -832,6 +833,13 @@ export default async function GrowthPage() {
             <ReadingsList metric="v-pay-offer-shown" />
             <ReadingsList metric="v-pay-offer-checkout" />
           </div>
+        );
+      case "v-better-retry":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if {V_RETRY_YES_KEEP_PCT}%+ of answered
+            second tries get a Yes (was 2 of 7).
+          </p>
         );
       case "v-fix-line":
         return (

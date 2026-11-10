@@ -104,6 +104,7 @@ describe("EXPERIMENTS", () => {
       "tutor-interest",
       "tutor-price",
       "ugc-net",
+      "v-better-retry",
       "v-explain",
       "v-finder",
       "v-fix-line",
