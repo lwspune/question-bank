@@ -269,6 +269,13 @@ export const V_RETRY_YES_KEEP_PCT = 50;
 export const SCORE_PLAN_DRILL_KEEP_PCT = 25;
 
 /**
+ * "stuck-offer": keep the offer if, at the moments it shows, students leave
+ * less often than the baseline (%): 14% left right after the answer that made
+ * 3 of their last 4 on a subtopic wrong (30 days to 2026-11-10).
+ */
+export const STUCK_OFFER_LEAVE_BASELINE_PCT = 14;
+
+/**
  * "self-mark": keep Understood / Review later under written model answers if
  * at least this share of signed-in written-answer reveals get a tap (%)...
  */
@@ -386,7 +393,8 @@ export type Readout =
   | "v-follow-up-loop"
   | "v-fix-line"
   | "v-better-retry"
-  | "score-plan";
+  | "score-plan"
+  | "stuck-offer";
 
 export type Experiment = {
   id: string;
@@ -813,6 +821,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-28",
     windowDays: 14,
     readout: "v-pay-offer",
+    status: "running",
+  },
+  {
+    id: "stuck-offer",
+    title: "Help after 3 of 4 wrong on a subtopic",
+    change:
+      "On a bank question card, the answer that makes 3 of the student's last 4 on its subtopic wrong (3 of 3 counts) gets an offer: \"3 of your last 4 on Coulomb's Law were wrong. Want help with the idea behind it?\" with Teach me the idea (our notes for the subtopic, else V explains the concept), Try an easier one (an easy unanswered question from the subtopic) and Keep going. Once per streak, never in a mock.",
+    why: "30 days to 2026-11-10: 629 such moments by 267 students on bank and board practice, and 14% left right after (12% after a right answer). Every bank answer shows its solution, so these students had read three and still missed: the gap is the idea. Owner's idea.",
+    metric:
+      "Offers shown and each button (surface_viewed stuck_offer, metadata.action); whether the student answers again within 20 minutes; their next answers on that subtopic, right or wrong. Replaying the rule on 30 days of answers: about 540 offers to 215 students a month",
+    rule: `Keep it if fewer than ${STUCK_OFFER_LEAVE_BASELINE_PCT}% leave right after an offer, or students who take Teach or Easier get their next answer on the subtopic right more often than those who keep going.`,
+    liveSince: "2026-11-11",
+    windowDays: 28,
+    readout: "stuck-offer",
     status: "running",
   },
   {

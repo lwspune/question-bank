@@ -101,6 +101,7 @@ describe("EXPERIMENTS", () => {
       "second-page",
       "self-mark",
       "specific-offer",
+      "stuck-offer",
       "study-circle",
       "tutor-interest",
       "tutor-price",
