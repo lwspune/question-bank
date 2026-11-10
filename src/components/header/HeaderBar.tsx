@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePublicPathname } from "@/lib/nav/usePublicPathname";
 import { Gem, GraduationCap, ShoppingBag } from "lucide-react";
 import { trackFunnel } from "@/lib/analytics/trackFunnel";
 import SignInLink from "@/components/reveal/SignInLink";
@@ -199,7 +199,7 @@ function headerButtonClass(active: boolean): string {
 }
 
 function StoreLink() {
-  const pathname = usePathname() ?? "";
+  const pathname = usePublicPathname();
   const active = pathname.startsWith("/store");
   return (
     <Link
@@ -220,7 +220,7 @@ function StoreLink() {
 
 /** The 1:1 tutoring interest check (2026-10-27, migration 0190); `from` rides to the stored answer. */
 function TutorLink() {
-  const pathname = usePathname() ?? "";
+  const pathname = usePublicPathname();
   const active = pathname.startsWith("/tutor");
   const from = pathname.split("/")[1] || "home";
   return (

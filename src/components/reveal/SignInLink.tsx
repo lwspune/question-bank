@@ -2,7 +2,8 @@
 
 import { Suspense, type ComponentProps } from "react";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { usePublicPathname } from "@/lib/nav/usePublicPathname";
 import { headerSignInHref, signInHref } from "./signInHref";
 
 type Props = Omit<ComponentProps<typeof Link>, "href"> & {
@@ -21,7 +22,7 @@ type Props = Omit<ComponentProps<typeof Link>, "href"> & {
  * server renders it with the path alone, and the browser adds the query.
  */
 export default function SignInLink({ variant = "return", ...props }: Props) {
-  const pathname = usePathname();
+  const pathname = usePublicPathname();
   const hrefFor = variant === "header" ? headerSignInHref : signInHref;
   return (
     <Suspense fallback={<Link {...props} href={hrefFor(pathname, "")} />}>
@@ -31,7 +32,7 @@ export default function SignInLink({ variant = "return", ...props }: Props) {
 }
 
 function WithQuery({ variant, ...props }: Props) {
-  const pathname = usePathname();
+  const pathname = usePublicPathname();
   const search = useSearchParams()?.toString() ?? "";
   const hrefFor = variant === "header" ? headerSignInHref : signInHref;
   return <Link {...props} href={hrefFor(pathname, search)} />;
