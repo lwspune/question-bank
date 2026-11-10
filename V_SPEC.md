@@ -275,3 +275,15 @@ reads everything else from the stored row.
   (owner: prorated by days left, to think through). Stopped messages are now
   kept (`hourly_limit`). No change to V's text, so no v:eval case moves.
   Growth experiment `v-premium-hourly`.
+- 2026-11-10: "Price" and "How to buy" (two students, 2026-11-09) each got a
+  paragraph of free limits and no way to buy, because rule 6 said to lead
+  with what is free. Rule 6 now gives each pass's price and length, then the
+  steps (open /pricing, sign in, tap Buy, pay by UPI, card or netbanking),
+  even when unsure they mean our pass; "what is free" (6b) and "which pass"
+  (6c) keep their own answers. V had also been told free accounts get "5
+  whole past-paper downloads a day": that is the pass holders' cap (0137); a
+  free account gets one free paper with its key and one free formula sheet.
+  Full run a11e8f22 188/204; the pricing cases 5/5 after the last edit (run
+  9f0beac5). "Notes for cbse" (7ab00300) failed on the branch and once on
+  main too: 9 of 19 runs ever, a coin flip, not this change. The two new
+  messages are not cases yet: seeding writes to production and was not run.

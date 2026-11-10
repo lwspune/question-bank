@@ -122,7 +122,10 @@ export function buildFreeFacts(limits: FreeLimits | null): string[] {
     n(limits.chapterTests, "Chapter tests: {n} free per account, then the pass.", "Chapter tests: no limit right now, free."),
     n(limits.reveals, "Answers shown: {n} a day free when signed in, then the pass.", "Answers shown: no daily limit right now."),
     n(limits.drill, "Drill questions: {n} a day free.", "Drill questions: no daily limit right now."),
-    n(limits.papersPerDay, "Whole past-paper downloads: {n} a day free.", "Whole past-paper downloads: no daily limit right now."),
+    // Free downloads are once per account (0131/0139, 0150); papersPerDay is the
+    // daily cap on PASS HOLDERS (0137), never a free allowance. V sold it as one.
+    "Downloads: one free paper per account (its question paper and answer key) and one free chapter formula sheet; after that, PDF downloads need the Premium Pass.",
+    n(limits.papersPerDay, "Premium Pass holders can download up to {n} different whole past papers a day.", "Premium Pass holders have no daily limit on whole past papers right now."),
   ];
 }
 
@@ -299,7 +302,9 @@ RULES
 4. When they want a test, a mock or a quiz on a chapter, tell them to tap "Build a practice test" in this chat. It picks whole chapters (up to ${MAX_CHAPTERS}), not subtopics, so name the chapter to pick. For a whole past paper, point to /mock.
 5. Nobody knows the questions of a future paper (2027 or any upcoming exam). Say so kindly, then call exam_strategy and name the chapters it says were asked in every one of the recent years, with the biggest shares; for board exams also point to each chapter's Top 10 PYQs on /board.
 5a. Strategy (which chapters matter most, weightage, what to focus on, little time left): call exam_strategy with the exam, and the subject if they named one. Quote only the percentages it returns and say they are shares of the past papers in our bank. Name the top two or three chapters, link their pages, and link the subject's guide from STRATEGY GUIDES when it gives one. If it asks which subject or which exam, ask the student. Never say you have no weightage data.
-6. Price, fees, free or not, buying: say what is free (FREE ACCOUNT below), then the pass price and what it gives, and link /pricing.
+6. Price, fees, cost, how to buy, buying: give each pass's price and length from PASSES ON SALE in one short sentence (a few words on what sets them apart), then the steps: open /pricing, sign in (or create a free account first), tap Buy on the pass they want, and pay by UPI, card or netbanking. Do not list what is free unless they ask. If you are not sure they mean our pass, still give the prices and the steps, then ask.
+6b. Free or not, what is free, what a free account gets: say what is free from FREE ACCOUNT, then that the cheapest pass in PASSES ON SALE removes the limits (name it and its price), and link /pricing.
+6c. Which pass to buy, the difference between the passes, what a pass gives: say what each pass gives from PASSES ON SALE, and link /pricing.
 6a. Payment problems (they paid, money was taken, the pass is not showing, a refund): in your first reply say you cannot see payments, tell them to write to the team with the contact form on /about, giving the payment ID or UPI reference and the email they paid with, and say that a payment that failed is returned by their bank on its own, usually within 5 to 7 working days. Do not ask which exam they study.
 ${questionRule}
 8. A student's own results: when they ask about their scores, progress, how many questions they have answered or practised, weak or strong chapters, or what to study next, call my_progress and use only its numbers. Practice outside mocks counts as progress: give it even when they have no mock yet. Say what went well first, then the one or two chapters to work on next, and link /performance (or /drill for the questions they got wrong). Never compare them with other students. If it says they are signed out, tell them to sign in.${facts.planEnabled ? `\n${PLAN_RULE}` : ""}

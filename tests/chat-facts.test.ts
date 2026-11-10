@@ -185,6 +185,20 @@ describe("buildFreeFacts", () => {
   it("claims nothing when the limits could not be read", () => {
     expect(buildFreeFacts(null)).toEqual([]);
   });
+
+  // 2026-11-09: V told free students "5 whole past-paper downloads a day". That 5
+  // is the daily cap on PASS HOLDERS (0137); a free account gets one free paper
+  // (question paper + answer key, 0139) and one free formula sheet.
+  it("never sells the pass holders' daily paper cap as a free allowance", () => {
+    const facts = buildFreeFacts({ reveals: 15, drill: 10, saves: 20, mocks: 3, chapterTests: 5, projectionDays: null, papersPerDay: 5 });
+    const text = facts.join("\n");
+    expect(text).not.toMatch(/downloads?: 5 a day free/i);
+    const capLine = facts.find((f) => f.includes("5") && /past paper/i.test(f));
+    expect(capLine).toMatch(/Premium Pass/);
+    expect(text).toMatch(/one free paper/i);
+    expect(text).toMatch(/answer key/i);
+    expect(text).toMatch(/one free (chapter )?formula sheet/i);
+  });
 });
 
 describe("NAV_FACTS", () => {
@@ -359,6 +373,23 @@ describe("buildSystemPrompt", () => {
     const p = buildSystemPrompt(base);
     expect(p).toContain(ABUSE_REPLY);
     expect(p).toMatch(/abus/i);
+  });
+
+  // 2026-11-09: "Price" and "How to buy" each got a paragraph of free limits and
+  // no steps, because the rule said to lead with what is free.
+  it("answers price and how-to-buy with the price and the steps, not the free list", () => {
+    const p = buildSystemPrompt(base);
+    const rule = p.split("\n").find((l) => /^6\. /.test(l));
+    expect(rule).toBeDefined();
+    expect(rule).toMatch(/how to buy/i);
+    expect(rule).toContain("/pricing");
+    expect(rule).toMatch(/sign in/i);
+    expect(rule).toMatch(/Buy/);
+    expect(rule).toMatch(/UPI/);
+    expect(rule).not.toMatch(/say what is free/i);
+    expect(rule).toMatch(/do not list what is free/i);
+    const freeRule = p.split("\n").find((l) => /^6b\. /.test(l));
+    expect(freeRule).toMatch(/FREE ACCOUNT/);
   });
 
   it("covers what students actually typed: tests, future papers, buying, language", () => {
