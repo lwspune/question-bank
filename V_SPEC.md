@@ -9,6 +9,55 @@ weekly review instead. Read this before changing V's instructions or tools.
 The runbook (keys, switches, caps, cost, exports) stays in OPERATIONS.md, "V's
 AI answers". The history of each change is in the project memory and git.
 
+## 0. The vision: a tutor, not a reply (owner, 2026-11-11)
+
+**V becomes like a live human tutor who works a doubt WITH the student.** Not a
+competitor's feature list: TrackPrep's voice tutor (2026-11-11) prompted the
+question, it does not set the target.
+
+**Done when the student can solve a new one alone,** not when a reply is
+right. The measure already exists: verified learning (section 7, 2b). Every
+step towards the vision says how it should move that number.
+
+**The yardstick.** What a good human tutor does, and where V stands:
+
+| A good tutor | V (2026-11-11) |
+|---|---|
+| is right, never teaches something wrong | strong: stored solutions, never against the key, `v:eval` |
+| lets the student do the work | good: method + "show me your working" (rule 7b) |
+| follows up with one like it | good: "One more like this", linked (0250) |
+| tries again differently when it did not land | partly: better second try, "Which step lost you?" |
+| shows it on a board | partly: 20k animated solutions, but they play on their own, not with V's words |
+| asks first: "what did you try, where are you stuck?" | missing |
+| checks as it goes and waits for the answer | missing (only a Yes/No at the end) |
+| remembers the student and their past mistakes | missing (language + last 2 exchanges) |
+| takes any doubt: a textbook, a coaching sheet, a photo | missing (bank questions only, no photos) |
+| has time: a session of 10-20 turns | blocked by the 5-an-hour free cap |
+| talks | missing |
+
+**How we move: tiny steps.** One change, one measure, easy to undo. Any rule in
+section 3, and this framework itself, may be revisited when it blocks a tutor
+behaviour. A revisit names the rule, the behaviour it blocks, the risk, and
+gets the owner's OK; the new ruling replaces the old line in section 3 with
+its date.
+
+**What does not move: being right.** Explanations stay grounded in our
+solutions, never against the key, and every change passes `v:eval` before
+merging. A tutor who teaches something wrong is worse than none.
+
+**The step ladder** (order may change as each step is measured):
+
+1. "Teach me step by step" on a bank question: one step at a time, a tap
+   check between steps, V waits; the animation moves with it.
+2. Ask first: on Ask V after a wrong pick, V asks what the student did.
+3. Session memory: the whole session, and the student's past mistakes on the
+   topic.
+4. Photo doubts, bank first: read it, "is this your question?", tutor it with
+   our solution.
+5. Doubts from outside the bank, once V's working can be checked without a key.
+6. Read aloud, then talk.
+7. V comes back: "yesterday you got stuck on X, try one?"
+
 ## 1. What V is for: the student's jobs
 
 Every message a student sends V is one of these jobs. A change to V names the
@@ -24,6 +73,7 @@ job it improves, and is tested on that job's cases (section 4).
 | `reflect` | "how am I doing?", "good at Maths, bad at GAT" | `my_progress`; the "How's my progress" button opens a card built without AI (`lib/chat/progressCard.ts`, 2026-10-27) | answers the question they asked | typed: no per-subject split |
 | `help` | payment, app, homework, "is it free" | site facts | the right next step | gaps: app install, homework |
 | `chat` | greetings, role-play, gibberish, abuse | none | one friendly line back to studying; abuse gets the fixed line | works |
+| `tutor` | "teach me this step by step", "I still don't get it" | the stored solution, one step at a time (section 0) | the student gets a different question on the subtopic right within 7 days | not built (step 1 of section 0) |
 
 ## 2. Where V's knowledge comes from (the ladder)
 
@@ -184,6 +234,8 @@ reads everything else from the stored row.
 4. **The learning loop** (2026-11-10, planned, not built): V sees whether its
    explanation worked and remembers the student. Audit, baseline and build
    order in [V_LEARNING_LOOP.md](V_LEARNING_LOOP.md).
+5. **The tutor** (2026-11-11, vision agreed, nothing built): the step ladder in
+   section 0, one step at a time.
 
 ## 7. The weekly review (Thursdays, first 2026-10-29)
 
@@ -338,3 +390,7 @@ reads everything else from the stored row.
   3 runs in 4 on main as well (V calls its earlier reply a mistake and echoes
   "stored" from the old reply in the history): a separate slip, not this
   change.
+- 2026-11-11: vision agreed (section 0): V becomes like a live human tutor,
+  done when the student can solve a new one alone (verified learning), in tiny
+  steps; any rule in section 3 may be revisited with the owner's OK. New job
+  `tutor` (not built). Next: a mockup of step 1, "Teach me step by step".
