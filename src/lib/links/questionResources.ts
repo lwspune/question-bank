@@ -131,6 +131,25 @@ const CHAPTER_KEYED_BY_SUBJECT = new Map<
   ])
 );
 
+/** The chapter-keyed guides, read-only (lib/guide/chapterTraps and its coverage test). */
+export function chapterKeyedGuides(): typeof CHAPTER_KEYED_GUIDES {
+  return CHAPTER_KEYED_GUIDES;
+}
+
+/**
+ * The chapter's playbook in a chapter-keyed guide, or null: the same lookup
+ * the /browse chip makes, so the Review traps panel and the chip agree.
+ */
+export function chapterPlaybook(
+  examName: string,
+  subjectName: string,
+  chapterName: string
+): { guideSlug: string; slug: string; name: string } | null {
+  const ck = CHAPTER_KEYED_BY_SUBJECT.get(chapterKeyedKey(examName, subjectName));
+  const hit = ck?.byChapter.get(chapterName);
+  return ck && hit ? { guideSlug: ck.guideSlug, slug: hit.slug, name: hit.name } : null;
+}
+
 /** Single-page guide landings (no playbooks array) — subject → fixed link. */
 const SINGLE_PAGE_GUIDES: Record<string, ResourceLink> = {
   Economics: { href: "/guide/nda-economics", label: "NDA Economics strategy" },
