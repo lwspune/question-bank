@@ -14,7 +14,8 @@ import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { listActivePlans } from "@/lib/billing/plansQuery";
-import { userHasAnyAccess } from "@/lib/entitlements/query";
+import { loadEntitlements, userHasAnyAccess } from "@/lib/entitlements/query";
+import { upgradeCredits } from "@/lib/billing/upgrade";
 import { sitePassScopes } from "@/lib/billing/passScope";
 import { readFixPoints } from "@/lib/billing/fixPointsService";
 import { readReferralDiscount } from "@/lib/referrals/service";
@@ -39,7 +40,7 @@ export async function GET(request: NextRequest) {
     const db = createSupabaseServerClient();
     const now = new Date();
     const admin = createSupabaseAdminClient();
-    const [balance, plans, hasPass, referralPct] = await Promise.all([
+    const [balance, plans, hasPass, referralPct, rows] = await Promise.all([
       readFixPoints(admin, user.id, now),
       listActivePlans(db),
       userHasAnyAccess(db, user.id, sitePassScopes("pyqvault"), now.getTime()),
@@ -47,9 +48,18 @@ export async function GET(request: NextRequest) {
         console.error("referral read failed", e);
         return 0;
       }),
+      // A Practice Pass holder's upgrade price (2026-11-11). A failed read shows no credit, never an error.
+      loadEntitlements(db, user.id).catch((e: unknown) => {
+        console.error("pass read for upgrade failed", e);
+        return [];
+      }),
     ]);
+    const { credits, creditFrom, creditEndsAt } = upgradeCredits(rows, plans, now.getTime());
     return NextResponse.json(
-      { eligible: true, ...fixPointsView({ points: balance.points, plans, hasPass, oldestAt: balance.oldestAt, referralPct }) },
+      {
+        eligible: true,
+        ...fixPointsView({ points: balance.points, plans, hasPass, oldestAt: balance.oldestAt, referralPct, credits, creditFrom, creditEndsAt }),
+      },
       { headers: { "Cache-Control": "private, no-store" } }
     );
   } catch (e) {

@@ -11,7 +11,7 @@ const session = vi.fn();
 vi.mock("@/lib/auth", () => ({ getSessionUser: () => session() }));
 vi.mock("@/lib/supabase/server", () => ({ createSupabaseServerClient: vi.fn(() => ({})) }));
 vi.mock("@/lib/supabase/admin", () => ({ createSupabaseAdminClient: vi.fn(() => ({})) }));
-vi.mock("@/lib/entitlements/query", () => ({ userHasAnyAccess: vi.fn(async () => false) }));
+vi.mock("@/lib/entitlements/query", () => ({ userHasAnyAccess: vi.fn(async () => false), loadEntitlements: vi.fn(async () => []) }));
 vi.mock("@/lib/billing/fixPointsService", () => ({ readFixPoints: vi.fn() }));
 vi.mock("@/lib/referrals/service", () => ({ readReferralDiscount: vi.fn(async () => 0) }));
 
@@ -19,10 +19,12 @@ const premium: Plan = {
   id: "mock-pass-6m", label: "Premium Pass", blurb: "b", perks: [], urlKey: "mocks", amountPaise: 49900,
   currency: "INR", site: "pyqvault", durationDays: 182, scope: "mocks", active: true, sortOrder: 1, countries: null,
 };
-vi.mock("@/lib/billing/plansQuery", () => ({ listActivePlans: vi.fn(async () => [premium]) }));
+const practice: Plan = { ...premium, id: "practice-pass-6m", label: "Practice Pass", urlKey: "practice", amountPaise: 19900, scope: "practice", sortOrder: 0 };
+vi.mock("@/lib/billing/plansQuery", () => ({ listActivePlans: vi.fn(async () => [premium, practice]) }));
 
 import { readFixPoints } from "@/lib/billing/fixPointsService";
 import { readReferralDiscount } from "@/lib/referrals/service";
+import { loadEntitlements, userHasAnyAccess } from "@/lib/entitlements/query";
 import { GET } from "@/app/api/me/fix-points/route";
 
 const get = (host = "www.pyqvault.com") => new NextRequest(`https://${host}/api/me/fix-points`, { headers: { host } });
@@ -50,7 +52,30 @@ describe("GET /api/me/fix-points", () => {
       referralPct: 0,
       hasPass: false,
       lapsesOn: "2026-12-01T20:00:00.000Z",
-      prices: { "mock-pass-6m": "₹439" },
+      prices: { "mock-pass-6m": "₹439", "practice-pass-6m": "₹175" },
+      credits: {},
+      creditFrom: null,
+      creditEndsAt: null,
+    });
+  });
+
+  it("prices the Premium Pass as an upgrade for a Practice Pass holder (2026-11-11)", async () => {
+    vi.mocked(readFixPoints).mockResolvedValue({ points: 12, pct: 12, oldestAt: null });
+    vi.mocked(userHasAnyAccess).mockResolvedValueOnce(true);
+    const granted = Date.now() - 60_000;
+    vi.mocked(loadEntitlements).mockResolvedValueOnce([
+      {
+        id: "e1", userId: "u1", scope: "practice", source: "razorpay", status: "active",
+        grantedAt: new Date(granted).toISOString(), expiresAt: new Date(granted + 182 * 86_400_000).toISOString(),
+        providerRef: "pay_1", note: null, grantedBy: null, amountPaise: 19900, currency: "INR",
+      },
+    ]);
+    const body = await (await GET(get())).json();
+    expect(body).toMatchObject({
+      hasPass: true,
+      credits: { "mock-pass-6m": 19900 },
+      creditFrom: "Practice Pass",
+      prices: { "mock-pass-6m": "₹264" },
     });
   });
 
@@ -67,6 +92,14 @@ describe("GET /api/me/fix-points", () => {
     const res = await GET(get());
     expect(res.status).toBe(200);
     expect(await res.json()).toMatchObject({ referralPct: 0, prices: { "mock-pass-6m": "₹439" } });
+  });
+
+  it("shows no credit, not an error, when the passes cannot be read", async () => {
+    vi.mocked(readFixPoints).mockResolvedValue({ points: 0, pct: 0, oldestAt: null });
+    vi.mocked(loadEntitlements).mockRejectedValueOnce(new Error("db down"));
+    const res = await GET(get());
+    expect(res.status).toBe(200);
+    expect(await res.json()).toMatchObject({ credits: {}, prices: {} });
   });
 
   it("is 503 when the points cannot be read", async () => {

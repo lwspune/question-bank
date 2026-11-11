@@ -1,9 +1,10 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { fetchOrder, verifyPaymentSignature } from "@/lib/billing/razorpay";
-import { computeExpiry, planLengthLabel } from "@/lib/billing/plans";
+import { grantExpiry, grantLengthLabel } from "@/lib/billing/plans";
 import { grantRazorpayEntitlement } from "@/lib/billing/grant";
-import { isParentCode, parentGrantFromOrder, parentGrantNote } from "@/lib/billing/parentLink";
+import { isParentCode, parentGrantFromOrder } from "@/lib/billing/parentLink";
+import { orderGrantNote } from "@/lib/billing/upgrade";
 import { emailParentPaid } from "@/lib/billing/parentPayService";
 import { listActivePlans } from "@/lib/billing/plansQuery";
 
@@ -51,10 +52,11 @@ export async function POST(request: NextRequest) {
     userId: decided.userId,
     paymentId: body.razorpay_payment_id,
     scope: decided.grant.scope,
-    expiresAt: computeExpiry(Date.now(), decided.grant.durationDays),
+    expiresAt: grantExpiry(decided.grant, Date.now()),
     amountPaise: decided.grant.amountPaise,
     currency: decided.grant.currency,
-    note: parentGrantNote(code),
+    // The parent mark first; an upgrade's credit after it (2026-11-11).
+    note: orderGrantNote({ ...(fetched.order.notes ?? {}), parentLink: code }),
   });
   if (result.kind === "error") {
     console.error("parent grant after verify failed:", result.message);
@@ -67,7 +69,7 @@ export async function POST(request: NextRequest) {
       userId: decided.userId,
       paymentId: body.razorpay_payment_id,
       planLabel: plan?.label ?? "PYQ Vault pass",
-      length: planLengthLabel({ durationDays: decided.grant.durationDays }),
+      length: grantLengthLabel(decided.grant, Date.now()),
     });
   }
   return NextResponse.json({ ok: true });

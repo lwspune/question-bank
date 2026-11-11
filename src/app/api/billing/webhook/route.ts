@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { verifyWebhookSignature } from "@/lib/billing/razorpay";
-import { computeExpiry, planLengthLabel } from "@/lib/billing/plans";
+import { grantExpiry, grantLengthLabel } from "@/lib/billing/plans";
 import { listActivePlans } from "@/lib/billing/plansQuery";
 import { emailParentPaid } from "@/lib/billing/parentPayService";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
@@ -93,7 +93,7 @@ export async function POST(request: NextRequest) {
     userId: decision.userId,
     paymentId: decision.paymentId,
     scope: decision.grant.scope,
-    expiresAt: computeExpiry(Date.now(), decision.grant.durationDays),
+    expiresAt: grantExpiry(decision.grant, Date.now()),
     amountPaise: decision.grant.amountPaise,
     currency: decision.grant.currency,
     note: decision.note,
@@ -122,7 +122,7 @@ export async function POST(request: NextRequest) {
       userId: decision.userId,
       paymentId: decision.paymentId,
       planLabel: plan?.label ?? "PYQ Vault pass",
-      length: planLengthLabel({ durationDays: decision.grant.durationDays }),
+      length: grantLengthLabel(decision.grant, Date.now()),
     });
   }
   return NextResponse.json({ received: true, granted: result.kind });

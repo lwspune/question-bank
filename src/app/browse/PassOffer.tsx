@@ -17,7 +17,7 @@ import { offerPriceLine, perMonthLine, splitOfferPerks } from "@/lib/billing/off
 import { alsoIncludedPerks, type PassOfferLead } from "@/lib/billing/passOfferLead";
 import type { PassCta } from "@/lib/billing/plans";
 import type { DownloadBox } from "@/lib/activity/clientEvents";
-import { useDiscountedPass, VaultPointsOfferNote } from "@/components/billing/useFixPoints";
+import { UpgradeLead, useDiscountedPass, VaultPointsOfferNote } from "@/components/billing/useFixPoints";
 
 /**
  * The download box's offer to a visitor without the pass, sold IN PLACE
@@ -118,6 +118,7 @@ export default function PassOffer({
           <p className="text-base font-medium text-foreground">Sign in to download.</p>
         ) : (
           <>
+            <UpgradeLead planId={pass.planId} />
             {lead && (
               <div className="space-y-1 rounded-md border border-brand-accent/30 bg-brand-accent/5 p-3">
                 <p className="font-semibold text-foreground">{lead.lead}</p>

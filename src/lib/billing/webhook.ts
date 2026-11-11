@@ -9,8 +9,7 @@
  * says the pass ends when the refund is made, and a partial refund is a discount.
  */
 import { planForPaidOrder, type OrderGrant, type PaidOrder } from "./plans";
-import { parentGrantNote } from "./parentLink";
-import { fixPointsGrantNote } from "./fixPoints";
+import { orderGrantNote } from "./upgrade";
 import { orderCarriesReferral } from "@/lib/referrals/referral";
 import { ebookForPaidOrder, isEbookOrder, type EbookGrant } from "@/lib/ebooks/order";
 
@@ -64,7 +63,7 @@ export function decideWebhook(body: WebhookBody): WebhookDecision {
       userId,
       paymentId,
       grant: decided.grant,
-      note: parentGrantNote(order.notes?.parentLink) ?? fixPointsGrantNote(order.notes),
+      note: orderGrantNote(order.notes),
       referral: orderCarriesReferral(order.notes),
     };
   }
