@@ -410,6 +410,8 @@ export type Readout =
   | "v-better-retry"
   | "score-plan"
   | "stuck-offer"
+  | "mock-before-start"
+  | "review-traps"
   | "answer-limit-copy";
 
 export type Experiment = {
@@ -839,6 +841,34 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-28",
     windowDays: 14,
     readout: "v-pay-offer",
+    status: "running",
+  },
+  {
+    id: "review-traps",
+    title: "How this chapter catches students, on a Review chapter",
+    change:
+      "A Review chapter with a strategy-guide playbook shows its traps above the student's wrong answers there: the first trap cut to two lines, Show more for the rest, the playbook's \"Spot it\" line and a link to the playbook. 13 chapter-keyed guides (NDA science and humanities, MHT-CET PCM, CDS Maths, JEE PCM).",
+    why: "The guides' insight reached only students who opened /guide; Review is where a student looks at their own misses in one chapter. Of 12,088 missed answers in the 30 days to 2026-11-11, 4,014 (33%) were in a chapter with a panel (MHT-CET 93%, JEE 98%, NDA 37%). The traps are not yet independently checked (owner: ship, validate later).",
+    metric:
+      "surface_viewed review_traps: shown, expand (Show more) and playbook per chapter and day; then whether the student's next answers in that chapter are right more often after an expand than after shown alone",
+    rule: "Keep it if 15%+ of shown panels are expanded; drop it under 5%. Read the right-answer comparison with its counts, since students who expand may differ from those who do not.",
+    liveSince: "2026-11-11",
+    windowDays: 28,
+    readout: "review-traps",
+    status: "running",
+  },
+  {
+    id: "mock-before-start",
+    title: "Before you start: what a guess is worth on this paper",
+    change:
+      "Every mock's instructions page gets a \"Before you start\" card computed from that paper's own marking: on JEE, NEET, SSC, MPSC Prelims and CLAT even a blind guess gains; on NDA, CDS, UPSC and SSC Tier II rule out one option first; on MHT-CET and board chapter tests a wrong answer costs nothing; JEE numeric answers cost 1 mark. Plus the paper's strategy guide where one exists. The Instructions' \"skip if unsure\" went: it was wrong wherever a blind guess gains.",
+    why: "Fair full attempts in the 60 days to 2026-11-11 left 51.6% of questions blank on papers where a blind guess gains, and 52.6% on papers with no penalty at all, where a blank is never better than a guess. Guide insight surfaced where it can still change the score (owner, 2026-11-11).",
+    metric:
+      "Blank share (skipped_count over all questions) on fair full attempts (40%+ of the time used, a fifth answered), split by the card's line: blind guess gains, rule out one, no penalty. Baseline 51.6% / 59.3% / 52.6% (25, 15, 7 attempts). Blanks include questions never reached, which the card cannot fix",
+    rule: "Keep it if the blank share on blind-gain and no-penalty papers falls by 5+ points with no fall in score per attempt; small numbers, so read it with the attempt counts.",
+    liveSince: "2026-11-11",
+    windowDays: 42,
+    readout: "mock-before-start",
     status: "running",
   },
   {

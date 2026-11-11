@@ -28,10 +28,15 @@ describe("markingCopy", () => {
     expect(c.wrongNote).toMatch(/negative marking/i);
   });
 
-  it("tells a penalty exam's candidate that skipping is an option", () => {
-    expect(markingCopy(NDA_MATHS_PAPER.marking).unattemptedAdvice).toMatch(
-      /skip if unsure/i
-    );
+  /**
+   * "Skip if unsure" was wrong advice wherever a blind guess gains (JEE, NEET,
+   * SSC: +4/-1 or a quarter penalty). What a guess is worth is now computed per
+   * paper by lib/mocks/beforeYouStart.ts; this line only states the mark.
+   */
+  it("gives no guessing advice on a penalty exam's blank line", () => {
+    const advice = markingCopy(NDA_MATHS_PAPER.marking).unattemptedAdvice;
+    expect(advice).not.toMatch(/skip/i);
+    expect(advice).toMatch(/leave blank/i);
   });
 
   it("keeps fractional penalties readable", () => {

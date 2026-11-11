@@ -21,6 +21,7 @@ import ReviewSwitch from "./ReviewSwitch";
 import FixOverview from "./FixOverview";
 import ChapterFix, { CHAPTER_CAP } from "./ChapterFix";
 import SavedList from "./SavedList";
+import { getChapterTraps } from "@/lib/guide/chapterTraps";
 import { VaultPointsStatus } from "@/components/billing/useFixPoints";
 
 export const dynamic = "force-dynamic";
@@ -96,6 +97,11 @@ export default async function ReviewPage(props: { searchParams: Promise<Search> 
         loadMockTitles(db, shown.flatMap((q) => (q.mockId ? [q.mockId] : []))),
       ]);
       const chapter = due.find((q) => q.chapterId === params.chapterId);
+      // The chapter's traps from its strategy-guide playbook, keyed like the /browse chip.
+      const first = cards[0];
+      const traps = first
+        ? getChapterTraps({ examName: first.exam.name, subjectName: first.subject.name, chapterName: first.chapter.name })
+        : null;
       body = (
         <ChapterFix
           chapterId={params.chapterId}
@@ -107,6 +113,7 @@ export default async function ReviewPage(props: { searchParams: Promise<Search> 
           titles={titles}
           canEdit={canEdit}
           supabaseUrl={supabaseUrl}
+          traps={traps}
         />
       );
     } else {

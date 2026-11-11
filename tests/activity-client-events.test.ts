@@ -477,3 +477,26 @@ describe("parseClientEvent - the stuck offer", () => {
     expect(parseClientEvent({ kind: "surface_viewed", surface: "drill", questionId: Q, action: "shown" }, "u1", NOW).ok).toBe(false);
   });
 });
+
+// The Review tab's traps panel (2026-11-11, src/app/review/ChapterTraps): seen, Show more, the playbook link.
+describe("parseClientEvent - the Review traps panel", () => {
+  const CH = "c0ffee00-1b2c-4d3e-9f00-998877665544";
+
+  it("records each step with its chapter, once per chapter per day", () => {
+    for (const action of ["shown", "expand", "playbook"]) {
+      expect(parseClientEvent({ kind: "surface_viewed", surface: "review_traps", chapterId: CH, action }, "u1", NOW)).toEqual({
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "review_traps", chapterId: CH, action },
+          dedupeKey: `view:review_traps:${action}:${CH}:u1:2026-09-27`,
+        },
+      });
+    }
+  });
+
+  it("refuses an unknown step or a bad chapter id", () => {
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "review_traps", chapterId: CH, action: "teach" }, "u1", NOW).ok).toBe(false);
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "review_traps", chapterId: "x", action: "shown" }, "u1", NOW).ok).toBe(false);
+  });
+});

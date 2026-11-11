@@ -90,6 +90,9 @@ export const SURFACES = [
   // metadata.action (shown, teach, easier, keep; returned and try_after since
   // 2026-11-11, after Teach me the idea) and metadata.questionId.
   "stuck_offer",
+  // The Review tab's traps panel on one chapter (2026-11-11, src/app/review/ChapterTraps):
+  // metadata.action (shown, expand = Show more, playbook = the playbook link) and metadata.chapterId.
+  "review_traps",
 ] as const;
 
 export type Surface = (typeof SURFACES)[number];

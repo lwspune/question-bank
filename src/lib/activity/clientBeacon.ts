@@ -49,6 +49,13 @@ type ClientEvent =
       action: "shown" | "teach" | "easier" | "keep" | "returned" | "try_after";
     }
   | {
+      /** The Review traps panel seen, opened (Show more) or its playbook link tapped. */
+      kind: "surface_viewed";
+      surface: "review_traps";
+      chapterId: string;
+      action: "shown" | "expand" | "playbook";
+    }
+  | {
       /** A Start next chapter's Start tapped. */
       kind: "surface_viewed";
       surface: "start_next_tap";

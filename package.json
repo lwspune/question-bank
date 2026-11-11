@@ -163,7 +163,8 @@
     "revision:prepare": "tsx --env-file=.env.local scripts/board-revision/prepare.ts",
     "revision:evidence": "tsx scripts/board-revision/evidence.ts",
     "revision:registry": "tsx scripts/board-revision/registry.ts",
-    "twins:pending": "tsx scripts/cross-exam/pending.ts"
+    "twins:pending": "tsx scripts/cross-exam/pending.ts",
+    "before-you-start:smoke": "tsx scripts/mocks/before-you-start-smoke.ts"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",

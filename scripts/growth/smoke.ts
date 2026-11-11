@@ -261,6 +261,14 @@ async function main() {
         // Read by hand: surface_viewed stuck_offer by action, then the student's next answers.
         line = "by hand: surface_viewed stuck_offer (shown, teach, easier, keep) and the next answers on the subtopic";
         break;
+      case "review-traps":
+        // Read by hand: surface_viewed review_traps by action (shown, expand, playbook).
+        line = "by hand: surface_viewed review_traps by action";
+        break;
+      case "mock-before-start":
+        // Read by hand: fair full attempts' skipped share, split by the card's line kind.
+        line = "by hand: mock_attempts skipped share on fair full attempts, by blind-gain / rule-out / no-penalty paper";
+        break;
       case "answer-limit-copy":
         // Read by hand: students shown the reveals wall, then checkout_opened from it and any pass bought after.
         line = "by hand: paywall_event gate reveals (shown, checkout_opened) and passes bought after";

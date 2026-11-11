@@ -22,6 +22,9 @@ import { surfaceViewedEvent } from "@/lib/activity/views";
 import { paywallEvent } from "@/lib/activity/clientEvents";
 import { getExamByName } from "@/lib/exam/examContext";
 import ShareMock from "./ShareMock";
+import BeforeYouStart from "./BeforeYouStart";
+import { loadBeforeYouStart } from "@/lib/mocks/beforeYouStartServer";
+import { paperGuideLink } from "@/lib/mocks/paperGuide";
 import AttemptsList from "../_components/AttemptsList";
 import PaperDownload from "../_components/PaperDownload";
 import { paperPageHref } from "@/lib/mocks/paperPage";
@@ -142,6 +145,15 @@ export default async function MockInstructions(
   const marking = markingCopy(mock.marking);
   // A paper whose sections are marked differently (UCEED, IPMAT Indore) states each one.
   const bySection = sectionMarkingLines(mock.sections, mock.questions);
+  // What a guess and a blank are worth on THIS paper, computed from its marking.
+  // Service role: a numeric question read as MCQ would get a wrong line, so the
+  // format read must not lose rows to RLS. Best-effort: a failure shows no card.
+  const examSlug = getExamByName(mock.examName)?.slug ?? null;
+  const beforeLines = await loadBeforeYouStart(admin, mock, examSlug).catch((e) => {
+    console.error("mock page: before-you-start failed", e);
+    return [];
+  });
+  const paperGuide = paperGuideLink(examSlug, mock.paperCode);
   // Stated for EVERY type, past papers included — see mockKindNote. This is the
   // screen someone reaches from a shared link, with no route to tell them what
   // they are about to sit.
@@ -237,6 +249,8 @@ export default async function MockInstructions(
             </li>
           </ul>
         </section>
+
+        <BeforeYouStart lines={beforeLines} guide={paperGuide} />
 
         <div className="mt-6">
           {fromFriend && (

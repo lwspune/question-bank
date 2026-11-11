@@ -38,6 +38,8 @@ const START_NEXT_FROM_SET: ReadonlySet<string> = new Set<string>(START_NEXT_FROM
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 /** The stuck offer's steps (lib/questions/stuckOffer): seen, its three buttons, and after Teach
  *  me the idea (2026-11-11): back on the question (returned), then Try one tapped (try_after). */
+/** The Review traps panel's steps (src/app/review/ChapterTraps). */
+export const REVIEW_TRAPS_ACTIONS: ReadonlySet<string> = new Set(["shown", "expand", "playbook"]);
 export const STUCK_OFFER_ACTIONS: ReadonlySet<string> = new Set(["shown", "teach", "easier", "keep", "returned", "try_after"]);
 
 /** Where a paywall met the student. Five are the 0134 limits (2026-10-05):
@@ -269,6 +271,19 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
           kind: "surface_viewed",
           metadata: { surface: "start_next_tap", chapterId: raw.chapterId, from: raw.from },
           dedupeKey: `view:start_next_tap:${raw.chapterId}:${userId}:${istDayKey(now)}`,
+        },
+      };
+    }
+    // The Review traps panel (2026-11-11): seen, Show more and the playbook link, per chapter and day.
+    if (raw.surface === "review_traps") {
+      if (typeof raw.chapterId !== "string" || !UUID_RE.test(raw.chapterId)) return { ok: false, error: "Invalid chapter id." };
+      if (typeof raw.action !== "string" || !REVIEW_TRAPS_ACTIONS.has(raw.action)) return { ok: false, error: "Unknown step." };
+      return {
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "review_traps", chapterId: raw.chapterId, action: raw.action },
+          dedupeKey: `view:review_traps:${raw.action}:${raw.chapterId}:${userId}:${istDayKey(now)}`,
         },
       };
     }

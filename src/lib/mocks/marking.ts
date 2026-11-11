@@ -55,9 +55,12 @@ export function markingCopy(marking: Marking): MarkingCopy {
     wrongNote: hasPenalty
       ? "marks for every wrong answer (negative marking)."
       : "marks for a wrong answer — this exam has no negative marking.",
+    // No guessing advice on a penalty paper: what a guess is worth depends on the
+    // ratio and the option count, so lib/mocks/beforeYouStart.ts computes it.
+    // "Skip if unsure" stood here and was wrong wherever a blind guess gains.
     unattemptedAdvice: hasPenalty
-      ? "marks for un-attempted questions — skip if unsure."
-      : "marks for un-attempted questions — a blank scores the same as a wrong answer, so never leave one.",
+      ? "marks for a question you leave blank."
+      : "marks for a question you leave blank. A blank scores the same as a wrong answer, so never leave one.",
   };
 }
 
