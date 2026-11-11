@@ -221,25 +221,18 @@ a[data-nav-pending] {
 /*
   A table in a sideways scroller (2026-11-10): about 80 of them, most hand-written
   into guide pages, so one rule rather than 80 edits. It sits on a card-white
-  panel so the cue's covers match it, and on a phone its first column stays put
-  while the rest swipes, so a row keeps its label. Zero-specificity :where on
-  the scroller, so a table's own classes still win elsewhere.
+  panel so the cue's covers match it. Zero-specificity :where on the scroller,
+  so a table's own classes still win elsewhere.
+
+  NO pinned first column (owner, 2026-11-11). This rule pinned every table's
+  first cell on a phone for a day: a wide first column (a chapter and its Notes
+  chip, a student's name and email) took 45-70% of the screen, the rest showed
+  cut off mid-word, and the pinned cell painted white over its row's tint.
+  tests/no-pinned-table-column.test.ts keeps it out.
 */
 :where(.overflow-x-auto:has(> table)) {
   --cue-bg: hsl(var(--card));
   background-color: hsl(var(--card));
-}
-@media (max-width: 639px) {
-  :where(.overflow-x-auto) > table :is(td, th):first-child {
-    position: sticky;
-    left: 0;
-    z-index: 1;
-    background-color: hsl(var(--card));
-    box-shadow: 6px 0 8px -6px hsl(var(--foreground) / 0.25);
-  }
-  :where(.overflow-x-auto) > table thead :is(td, th):first-child {
-    background-color: color-mix(in srgb, hsl(var(--muted)) 40%, hsl(var(--card)));
-  }
 }
 
 /*
