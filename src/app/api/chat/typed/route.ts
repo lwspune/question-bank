@@ -190,13 +190,6 @@ async function readProfileForV(userId: string): Promise<{ examSlugs: string[]; l
 }
 
 /** set_language's write, on the student's own row. A failure is logged and V told it was not saved. */
-/** The explained question's chapter, for the Fix line under the explanation; null when unknown (no line). */
-async function explainedChapter(anon: ReturnType<typeof createSupabaseAnonClient>, questionId: string): Promise<string | null> {
-  const { data, error } = await anon.from("questions").select("chapter_id").eq("id", questionId).maybeSingle();
-  if (error) console.error("explainedChapter:", error.message);
-  return (data?.chapter_id as string | null | undefined) ?? null;
-}
-
 async function saveVLanguage(userId: string, lang: VLanguage): Promise<boolean> {
   try {
     await updateOwnProfile(createSupabaseServerClient(), userId, { vLanguage: lang });
@@ -451,18 +444,16 @@ export async function POST(request: NextRequest) {
 
     // The explained question's solution figure, shown under the reply; V is never told (owner, 2026-10-24).
     const explainedId = recorded.source === "ai" ? explainedQuestionId(recorded.toolCalls) : null;
-    const [solutionFigure, solutionVisual, explainedChapterId] = explainedId
+    const [solutionFigure, solutionVisual] = explainedId
       ? await (async () => {
           const anon = createSupabaseAnonClient();
-          const [figures, visuals, chapterId] = await Promise.all([
+          const [figures, visuals] = await Promise.all([
             loadSolutionFigures(anon, [explainedId]),
             loadSolutionVisuals(anon, [explainedId]),
-            // The chapter's "Fix N mistakes" line goes under the explanation (V_LEARNING_LOOP.md step 3).
-            userId ? explainedChapter(anon, explainedId) : Promise.resolve(null),
           ]);
-          return [figures.get(explainedId), visuals.get(explainedId), chapterId] as const;
+          return [figures.get(explainedId), visuals.get(explainedId)] as const;
         })()
-      : [undefined, undefined, null];
+      : [undefined, undefined];
     // Read only when the limit was met, so an ordinary reply reads no plans.
     const passOffer = recorded.source === "ai" && limitHit !== null ? { limit: limitHit, pass: await passOnSale() } : null;
 
@@ -480,7 +471,6 @@ export async function POST(request: NextRequest) {
             ...(solutionVisual ? { solutionVisual, solutionVisualQuestionId: explainedId } : {}),
             // "One more like this" under the explanation picks from this question's subtopic (2026-11-08).
             ...(explainedId ? { explainedQuestionId: explainedId } : {}),
-            ...(explainedChapterId ? { explainedChapterId } : {}),
             ...(passOffer ? { passOffer } : {}),
           }
         : {};

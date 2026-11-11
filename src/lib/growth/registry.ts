@@ -939,7 +939,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-10",
     windowDays: 28,
     readout: "v-fix-line",
-    status: "running",
+    status: "decided",
+    decision:
+      "Removed on 2026-11-11 by the owner, a day in: too much under V's explanation, and distracting. Shown twice, one drill start from it; too few to judge either way. The same line on the chapter pages (chapter-fix) stays.",
   },
   {
     id: "v-follow-up-loop",

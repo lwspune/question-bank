@@ -158,10 +158,10 @@ is enforced in `facts.ts` or the tools; the date is when it was made.
   me where I went wrong", where V is told the question it explained before and
   starts from the step that differs (its "leave earlier replies alone" line is
   replaced there, since the earlier reply is the point).
-- **The student's past mistakes reach them as a button, not through V's text
-  (owner, 2026-11-10, V_LEARNING_LOOP.md step 3).** Under an explanation, the
-  chapter's "Fix N mistakes in this chapter" line opens the drill for that
-  chapter (tag `v_chapter`). A note telling V the student's recent mistakes on
+- **Nothing under an explanation about the student's other mistakes (owner,
+  2026-11-11).** The chapter's "Fix N mistakes in this chapter" line ran there
+  for a day (2026-11-10, V_LEARNING_LOOP.md step 3) and was removed as
+  distracting: under an explanation, fewer buttons. A note telling V the student's recent mistakes on
   the topic was tried and dropped: in 18 test replies over three wordings,
   one a rule-7 exception, V used it once. V keeps to the solution and sees
   only the pick, never why it was picked. Do not try that note again without
