@@ -124,6 +124,8 @@ Consortium's final key, on the 648 questions it scored:
 
 ## Publishing
 
+All five years PUBLIC and their mocks published 2026-11-11 (the owner OK'd the flip after the permission classifier refused it).
+
 `npx tsx scripts/clat/publish.ts <year>` (dry run) then `--apply`: refuses unless
 the bank holds exactly the paper's question numbers, each with a solution and its
 passage. Then drop `noPublicContent` in the registry, add `hasMocks` and
