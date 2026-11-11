@@ -11,25 +11,18 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import type { MockRow } from "./query";
 import { getBlueprint, optionCountOf } from "./blueprints";
 import { beforeYouStartLines, type BeforeYouStartLine } from "./beforeYouStart";
-
-/** `.in()` puts the ids in the URL: chunk well under the request-line limit. */
-const CHUNK = 150;
+import { readInChunks } from "@/lib/supabase/readInChunks";
 
 async function numericIds(db: SupabaseClient, ids: readonly string[]): Promise<Set<string> | null> {
-  const out = new Set<string>();
-  for (let i = 0; i < ids.length; i += CHUNK) {
-    const { data, error } = await db
-      .from("questions")
-      .select("id")
-      .in("id", ids.slice(i, i + CHUNK))
-      .eq("question_format", "numeric");
-    if (error) {
-      console.error("before-you-start: numeric read failed", error.message);
-      return null;
-    }
-    for (const r of data ?? []) out.add(r.id as string);
+  try {
+    const rows = await readInChunks<{ id: string }>(ids, (part, from, to) =>
+      db.from("questions").select("id").in("id", part).eq("question_format", "numeric").order("id").range(from, to)
+    );
+    return new Set(rows.map((r) => r.id));
+  } catch (e) {
+    console.error("before-you-start: numeric read failed", e instanceof Error ? e.message : e);
+    return null;
   }
-  return out;
 }
 
 export async function loadBeforeYouStart(
