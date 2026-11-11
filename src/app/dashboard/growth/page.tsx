@@ -849,6 +849,13 @@ export default async function GrowthPage() {
             <ReadingsList metric="v-pay-offer-checkout" />
           </div>
         );
+      case "review-traps":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if 15%+ of shown panels are opened with
+            Show more, drop it under 5%.
+          </p>
+        );
       case "mock-before-start":
         return (
           <p className="text-sm text-muted-foreground">

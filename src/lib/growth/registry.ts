@@ -403,7 +403,8 @@ export type Readout =
   | "v-better-retry"
   | "score-plan"
   | "stuck-offer"
-  | "mock-before-start";
+  | "mock-before-start"
+  | "review-traps";
 
 export type Experiment = {
   id: string;
@@ -832,6 +833,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-28",
     windowDays: 14,
     readout: "v-pay-offer",
+    status: "running",
+  },
+  {
+    id: "review-traps",
+    title: "How this chapter catches students, on a Review chapter",
+    change:
+      "A Review chapter with a strategy-guide playbook shows its traps above the student's wrong answers there: the first trap cut to two lines, Show more for the rest, the playbook's \"Spot it\" line and a link to the playbook. 13 chapter-keyed guides (NDA science and humanities, MHT-CET PCM, CDS Maths, JEE PCM).",
+    why: "The guides' insight reached only students who opened /guide; Review is where a student looks at their own misses in one chapter. Of 12,088 missed answers in the 30 days to 2026-11-11, 4,014 (33%) were in a chapter with a panel (MHT-CET 93%, JEE 98%, NDA 37%). The traps are not yet independently checked (owner: ship, validate later).",
+    metric:
+      "surface_viewed review_traps: shown, expand (Show more) and playbook per chapter and day; then whether the student's next answers in that chapter are right more often after an expand than after shown alone",
+    rule: "Keep it if 15%+ of shown panels are expanded; drop it under 5%. Read the right-answer comparison with its counts, since students who expand may differ from those who do not.",
+    liveSince: "2026-11-11",
+    windowDays: 28,
+    readout: "review-traps",
     status: "running",
   },
   {

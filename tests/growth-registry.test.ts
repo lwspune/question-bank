@@ -99,6 +99,7 @@ describe("EXPERIMENTS", () => {
       "pyq-wording",
       "referrals",
       "resource-chips",
+      "review-traps",
       "score-plan",
       "second-page",
       "self-mark",
