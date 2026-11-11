@@ -15,6 +15,14 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-11-11 (fourth) — The Fix line under V's explanation removed (experiment v-fix-line ended a day in). No migration.**
+
+- **Why:** the owner found it distracting. Under one explanation a signed-in student could see the animated solution, "Did you understand? Yes · No", "One more like this", this line and sometimes a pass offer, and V_SPEC section 0 step 1 ("Teach me step by step") would add one more. Students already ignore most of it: 556 of 602 Ask V explanations in 60 days got no answer to "Did you understand?".
+- **Evidence at removal:** live since 2026-11-10; shown twice (2 students), one drill start from it. Too few to judge either way, so no evidence was lost.
+- **What changed:** ChatWidget no longer renders ChapterFixLine; /api/chat/typed no longer reads the explained question's chapter (one query fewer per explanation). The `v_chapter` drill tag, its parser and its own view key stay so past rows still read. The same line on /questions, /board and /browse (experiment chapter-fix) is untouched.
+- **Records:** registry v-fix-line `decided` with the reason; V_SPEC section 3 line rewritten ("nothing under an explanation about the student's other mistakes"; the note-to-V finding kept); V_LEARNING_LOOP.md step 3 marked removed. Test first: tests/chapter-fix-line-source.test.ts now requires the chat and the route to carry none of it.
+- **Next under an explanation (proposed, not built):** one row of two buttons, "One more like this" and "Teach me step by step", each also answering "Did you understand?". Part of step 1's plan.
+
 **2026-11-11 (third) — CLAT UG added: the Consortium's Set A papers 2022-2026, 660 q, committed with worked solutions (`scripts/clat/`). Branch `feat/clat-pyq`.**
 
 - **Why:** the owner asked to ingest CLAT, then "go ahead, end to end" after an analysis. CLAT 2027 is on 6 Dec 2026, so it was taken whole in one day to give students mocks before the sitting. No student had asked (0 feedback mentions); it is a Class 12 exam, against the 11-04 graduate focus. A new goal, "law", was added for it (room for AILET). Keep rule proposed (the owner set none): UGC NET's, 50+ CLAT students and 3+ passes by 2026-12-20 (growth experiment `clat`).

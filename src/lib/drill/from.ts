@@ -38,7 +38,7 @@ export const DRILL_FROM = [
   "browse_chapter", // /browse filtered to one chapter
   "path", // the board path's Fix task on /me (2026-11-07, MENTOR_SPEC.md)
   "review_tab", // the Review tab's Fix buttons, whole list or one chapter (2026-11-08)
-  "v_chapter", // the chapter line under V's explanation (2026-11-10, V_LEARNING_LOOP.md step 3)
+  "v_chapter", // the chapter line under V's explanation (2026-11-10 to 11-11, removed; kept so its rows still read)
   "score_plan", // "How to raise your score" on a full paper's result (2026-11-10, lib/mocks/scorePlan)
 ] as const;
 

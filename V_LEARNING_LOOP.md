@@ -150,7 +150,7 @@ The missing link in the loop.
   CBSE 12 variables-separable pair) passed and read right. They are not saved
   to `v_eval_cases` until the owner agrees: that table is in production.
 
-### Step 3. The student's past mistakes, under V's explanation: BUILT 2026-11-10 (as a button)
+### Step 3. The student's past mistakes, under V's explanation: BUILT 2026-11-10 (as a button), REMOVED 2026-11-11
 
 **Measured first (20 Oct to 9 Nov, 553 Ask V taps):** 186 (34%) came from a
 student who had got another question in the same subtopic wrong in the 30
@@ -176,6 +176,13 @@ number shown is the number served, and renders nothing signed out or with
 nothing waiting. Tag `v_chapter`, its views on their own daily key so it never
 uses up a chapter page's view (the running experiment chapter-fix, read
 2026-11-28, carries a note). Experiment `v-fix-line`, read 2026-12-08.
+
+**Removed 2026-11-11 by the owner, a day in:** distracting, one item too many
+under an explanation (with "Did you understand?", "One more like this" and,
+next, "Teach me step by step"). Shown twice, one drill start: too few to judge.
+The line stays on the chapter pages. The server no longer reads the explained
+question's chapter; the `v_chapter` tag stays so its rows still read. What
+replaces it under an explanation is part of V_SPEC.md section 0, step 1.
 
 ### Step 4. A better second try after a No: BUILT 2026-11-10
 

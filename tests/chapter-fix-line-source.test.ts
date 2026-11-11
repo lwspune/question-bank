@@ -52,18 +52,19 @@ describe("the three pages carry the line, each with its own tag", () => {
   });
 });
 
-describe("V's explanation carries the line, tagged as V's (V_LEARNING_LOOP.md step 3, 2026-11-10)", () => {
-  it("renders it in the chat with the explained question's chapter", () => {
+describe("V's explanation does NOT carry the line (removed 2026-11-11, owner: distracting)", () => {
+  // It ran 2026-11-10 to 11-11 as experiment v-fix-line (V_LEARNING_LOOP.md step 3):
+  // shown twice, one drill start. Under an explanation it was one item too many.
+  it("the chat renders no Fix line", () => {
     const chat = read("src", "components", "chat", "ChatWidget.tsx");
-    expect(chat).toContain("<ChapterFixLine");
-    expect(chat).toContain("CHAPTER_FIX_FROM.v");
-    expect(chat).toContain("explainedChapterId");
+    expect(chat).not.toContain("ChapterFixLine");
+    expect(chat).not.toContain("CHAPTER_FIX_FROM.v");
+    expect(chat).not.toContain("explainedChapterId");
   });
 
-  it("closes the chat when its link is tapped, like V's own links", () => {
-    const chat = read("src", "components", "chat", "ChatWidget.tsx");
-    const at = chat.indexOf("<ChapterFixLine");
-    expect(chat.slice(Math.max(0, at - 400), at)).toMatch(/onClickCapture=\{\(e\) => \{\s*if \(\(e\.target as HTMLElement\)\.closest\("a"\)\) close\(\);/);
+  it("the chat route no longer looks up the explained question's chapter for it", () => {
+    const route = read("src", "app", "api", "chat", "typed", "route.ts");
+    expect(route).not.toContain("explainedChapterId");
   });
 });
 
