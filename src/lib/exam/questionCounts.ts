@@ -49,3 +49,18 @@ export function defaultViewLabel(c: KindCounts, practiceOnly: boolean): string {
   const n = defaultViewCount(c, practiceOnly);
   return `${fmt(n)} ${practiceOnly ? "practice" : "previous year"} questions`;
 }
+
+/**
+ * The global site's question bank card (intl.pyqvault.com). Says "past-paper",
+ * the term outside India, and only for an exam that has past papers: most
+ * exams after IMAT will carry practice questions alone.
+ */
+export function globalBankLine(c: KindCounts | null): string {
+  if (!c || c.pyq + c.practice === 0) return "Every question, with solutions";
+  const n = (x: number) => x.toLocaleString("en-US");
+  if (c.pyq > 0 && c.practice > 0) {
+    return `${n(c.pyq)} past-paper and ${n(c.practice)} practice questions, with solutions`;
+  }
+  if (c.pyq > 0) return `${n(c.pyq)} past-paper questions, with solutions`;
+  return `${n(c.practice)} practice questions, with solutions`;
+}

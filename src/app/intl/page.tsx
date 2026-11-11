@@ -5,6 +5,7 @@ import IntlHeader from "@/components/header/IntlHeader";
 import IntlFooter from "@/components/footer/IntlFooter";
 import { EXAM_REGISTRY, type ExamEntry } from "@/lib/exam/examContext";
 import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
+import { globalBankLine, type KindCounts } from "@/lib/exam/questionCounts";
 import { getNotesExamGroup } from "@/lib/notes/notesNav";
 import { INTL_EXAMS, INTL_ORIGIN } from "@/lib/sites/intl";
 
@@ -14,7 +15,7 @@ import { INTL_EXAMS, INTL_ORIGIN } from "@/lib/sites/intl";
  */
 export const revalidate = 86400;
 
-const TITLE = "PYQ Vault International: IMAT past papers, notes and mock tests";
+const TITLE = "PYQ Vault Global: IMAT past papers, notes and mock tests";
 const DESCRIPTION =
   "Free IMAT practice: the ministry's past papers with worked solutions, original practice questions, notes for every chapter and timed mock tests.";
 
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
   title: { absolute: TITLE },
   description: DESCRIPTION,
   alternates: { canonical: `${INTL_ORIGIN}/` },
-  openGraph: { title: TITLE, description: DESCRIPTION, url: `${INTL_ORIGIN}/`, siteName: "PYQ Vault International", type: "website" },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: `${INTL_ORIGIN}/`, siteName: "PYQ Vault Global", type: "website" },
 };
 
 /** What each international exam is, in a sentence, for its card. */
@@ -31,10 +32,10 @@ const ABOUT: Record<string, string> = {
     "The International Medical Admissions Test for English-taught medicine and dentistry at Italy's public universities: 60 questions in 100 minutes across logic, reading, biology, chemistry, physics and maths.",
 };
 
-async function questionCounts(): Promise<Map<string, number>> {
+async function questionCounts(): Promise<Map<string, KindCounts>> {
   try {
     const catalog = await getCachedExamCatalog(EXAM_REGISTRY);
-    return new Map(catalog.exams.map((e) => [e.slug, e.totalPublicQuestions]));
+    return new Map(catalog.exams.map((e) => [e.slug, e.counts]));
   } catch (err) {
     console.error("[intl home] catalogue unavailable", err);
     return new Map();
@@ -49,11 +50,11 @@ export default async function IntlHome() {
       <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-12">
         <header className="hero-soft mb-10 rounded-2xl px-5 py-8 sm:px-8 sm:py-10">
           <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-            Prepare for international entrance exams with real past papers
+            Notes, mocks and practice questions for globally recognised exams
           </h1>
           <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
-            Past papers with worked solutions, original practice questions, chapter notes and timed mocks
-            that score you like the real exam. Free to browse.
+            Chapter notes with worked examples, practice questions with solutions and timed mocks that
+            score you like the real exam. Free to browse.
           </p>
         </header>
         <div className="grid gap-6">
@@ -67,7 +68,7 @@ export default async function IntlHome() {
   );
 }
 
-function ExamCard({ exam, questions }: { exam: ExamEntry; questions: number | null }) {
+function ExamCard({ exam, questions }: { exam: ExamEntry; questions: KindCounts | null }) {
   const notes = getNotesExamGroup(exam.slug);
   const chapters = notes?.subjects.reduce((n, s) => n + s.chapterCount, 0) ?? 0;
   const actions = [
@@ -87,7 +88,7 @@ function ExamCard({ exam, questions }: { exam: ExamEntry; questions: number | nu
       href: "/browse",
       icon: ListChecks,
       title: "Question bank",
-      line: questions ? `${questions.toLocaleString("en-US")} questions with solutions` : "Every question, with solutions",
+      line: globalBankLine(questions),
     },
   ];
   return (
