@@ -308,7 +308,7 @@ export const TEST_DAY_PLAN: TestDayPhase[] = [
     durationMin: 5,
     label: "Sweep Recall (Carbon + Matter + Industrial + Metals + Hydrogen + Everyday + Practical)",
     detail:
-      "Scan all ~15 Chemistry questions, mark every Recall-strand item (allotropes, common compounds, separation methods, reactivity series, alloy composition, water hardness, household chemicals). Expect ~8 Recall items per paper at ~25 sec each. Target: 7 correct in 5 min. If you don't recognise an allotrope or common-compound name within 5 sec, skip — the −1.33 penalty makes a guess negative-EV at below ~55% confidence.",
+      "Scan all ~15 Chemistry questions, mark every Recall-strand item (allotropes, common compounds, separation methods, reactivity series, alloy composition, water hardness, household chemicals). Expect ~8 Recall items per paper at ~25 sec each. Target: 7 correct in 5 min. If you don't recognise an allotrope or common-compound name within 5 sec, skip: with −1.33 for a wrong answer, a blind guess gains nothing on average.",
   },
   {
     durationMin: 7,

@@ -280,7 +280,7 @@ export const TEST_DAY_PLAN: TestDayPhase[] = [
     label:
       "Sweep Recall (Human Physiology + Cell Biology + Microbiology + Biodiversity + Genetics)",
     detail:
-      "Scan all ~10–11 Biology questions, mark every Recall-strand item (vitamin↔deficiency, organ↔function, organelle role, kingdom/phylum classification, disease↔pathogen, scientist↔discovery). Expect ~7 Recall items per paper at ~25 sec each. Target: 6 correct in 4 min. If you don't recognise a vitamin-disease or disease-pathogen pair within 5 sec, skip — the −1.33 penalty makes a guess negative-EV at below ~55% confidence.",
+      "Scan all ~10–11 Biology questions, mark every Recall-strand item (vitamin↔deficiency, organ↔function, organelle role, kingdom/phylum classification, disease↔pathogen, scientist↔discovery). Expect ~7 Recall items per paper at ~25 sec each. Target: 6 correct in 4 min. If you don't recognise a vitamin-disease or disease-pathogen pair within 5 sec, skip: with −1.33 for a wrong answer, a blind guess gains nothing on average.",
   },
   {
     durationMin: 5,

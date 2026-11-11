@@ -174,8 +174,8 @@ export default async function NdaHistoryStrategy() {
           The −1.33 penalty is harsh, and History&rsquo;s named-fact density
           rewards &lsquo;know cold or skip&rsquo; more than guessing. If you
           don&rsquo;t recognise a reformer↔movement or ruler↔dynasty pair
-          within 5 seconds, skip — the −1.33 makes guessing negative-EV at
-          below ~55% confidence.
+          within 5 seconds, skip. With −1.33 for a wrong answer,
+          a blind guess among four options gains nothing on average; rule out one option and it is worth +0.44.
         </p>
       </section>
 

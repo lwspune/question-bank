@@ -263,7 +263,7 @@ export const TEST_DAY_PLAN: TestDayPhase[] = [
     label:
       "Sweep Recall (Indian Geography Economy + Indian Geography Physical + World/Human)",
     detail:
-      "Scan all ~19 Geography questions, mark every Recall-strand item (crop↔state, mineral↔state, river↔tributary, peak↔range, port↔coast, megacity, world river/canal). Expect ~10 Recall items per paper at ~30 sec each. Target: 8 correct in 6 min. If you don't recognise a state-crop or mineral-state pair within 5 sec, skip — the −1.33 penalty makes a guess negative-EV at below ~55% confidence.",
+      "Scan all ~19 Geography questions, mark every Recall-strand item (crop↔state, mineral↔state, river↔tributary, peak↔range, port↔coast, megacity, world river/canal). Expect ~10 Recall items per paper at ~30 sec each. Target: 8 correct in 6 min. If you don't recognise a state-crop or mineral-state pair within 5 sec, skip: with −1.33 for a wrong answer, a blind guess gains nothing on average.",
   },
   {
     durationMin: 7,

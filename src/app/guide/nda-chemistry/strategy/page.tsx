@@ -172,7 +172,7 @@ export default async function NdaChemistryStrategy() {
           The −1.33 penalty is harsh — and Chemistry&rsquo;s high recall surface
           rewards &lsquo;know cold or skip&rsquo; more than guessing. If you don&rsquo;t
           recognise an allotrope name or a chemical formula within 5 seconds,
-          skip — the −1.33 makes guessing negative-EV at below ~55% confidence.
+          skip. With −1.33 for a wrong answer, a blind guess among four options gains nothing on average; rule out one option and it is worth +0.44.
         </p>
       </section>
 
