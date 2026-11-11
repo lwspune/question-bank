@@ -25,6 +25,7 @@
  * What it cannot show: a REAL student's data. A screen behind ONE tap (a dialog,
  * a sheet) can be shown with `--click="<button text>"`, and a few taps deep with
  * `--click="A >> B"` (each matched by its text or its aria-label).
+ * `--scroll-x[=n]` scrolls the n-th sideways table into view and to its right end.
  * `--no-fullscreen` makes the page read full screen as unavailable, as on an
  * iPhone, so a full-screen fallback can be captured (with --click).
  * `--with-pass` (with --as-student) makes that student a Premium Pass holder.
@@ -40,7 +41,7 @@ import { spawn, type ChildProcess } from "node:child_process";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
-import { clickScript, NO_FULLSCREEN_SCRIPT, parseShotArgs, planCaptures, sheetHtml, storageScript, stubHeaderSession, VIEWPORTS, type Capture } from "./lib";
+import { clickScript, scrollXScript, NO_FULLSCREEN_SCRIPT, parseShotArgs, planCaptures, sheetHtml, storageScript, stubHeaderSession, VIEWPORTS, type Capture } from "./lib";
 
 const EDGE = process.env.EDGE ?? "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
 const PHONE_UA =
@@ -100,7 +101,7 @@ async function evaluate(cdp: Cdp, expression: string): Promise<unknown> {
   return res.result?.result?.value;
 }
 
-async function capture(cdp: Cdp, c: Capture, waitMs: number, fullPage: boolean, dir: string, click: string[] | null) {
+async function capture(cdp: Cdp, c: Capture, waitMs: number, fullPage: boolean, dir: string, click: string[] | null, scrollX: number | null) {
   const vp = VIEWPORTS[c.viewport];
   await cdp.send("Emulation.setDeviceMetricsOverride", { width: vp.width, height: vp.height, deviceScaleFactor: vp.scale, mobile: vp.mobile });
   await cdp.send("Emulation.setUserAgentOverride", { userAgent: vp.mobile ? PHONE_UA : "" });
@@ -115,6 +116,10 @@ async function capture(cdp: Cdp, c: Capture, waitMs: number, fullPage: boolean, 
   for (const tap of click ?? []) {
     if (!(await evaluate(cdp, clickScript(tap)))) throw new Error(`--click: no visible button or link starting "${tap}" on ${c.url}`);
     await sleep(1500);
+  }
+  if (scrollX !== null) {
+    if (!(await evaluate(cdp, scrollXScript(scrollX)))) throw new Error(`--scroll-x: no sideways table number ${scrollX} on ${c.url}`);
+    await sleep(600);
   }
   let params: object = { format: "png" };
   if (fullPage) {
@@ -175,7 +180,7 @@ async function main() {
     for (const c of plan) {
       if (args.phase !== "both" && c.target !== args.phase) continue;
       process.stdout.write(`${c.target.padEnd(6)} ${c.viewport.padEnd(7)} ${c.theme.padEnd(5)} ${c.url} ... `);
-      await capture(cdp, c, args.waitMs, args.fullPage, dir, args.click);
+      await capture(cdp, c, args.waitMs, args.fullPage, dir, args.click, args.scrollX);
       console.log("ok");
     }
     // The sheet needs both sides; a before-only run stops here.

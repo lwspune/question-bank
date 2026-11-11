@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { clickScript, NO_FULLSCREEN_SCRIPT, pageSlug, planCaptures, parseShotArgs, sheetHtml, storageScript, stubHeaderSession, VIEWPORTS } from "../scripts/ui/lib";
+import { clickScript, scrollXScript, NO_FULLSCREEN_SCRIPT, pageSlug, planCaptures, parseShotArgs, sheetHtml, storageScript, stubHeaderSession, VIEWPORTS } from "../scripts/ui/lib";
 
 /**
  * `npm run ui:shots` (2026-10-04): the before/after screenshot sheet every
@@ -258,5 +258,21 @@ describe("--storage: seed localStorage before every page load", () => {
   it("never throws where storage is blocked", () => {
     const localStorage = { setItem: () => { throw new Error("blocked"); } };
     expect(() => new Function("localStorage", storageScript({ a: "b" }))(localStorage)).not.toThrow();
+  });
+});
+
+describe("--scroll-x: a sideways table scrolled before the shot (2026-11-11)", () => {
+  it("defaults off, and takes the table's number on the page (1 = the first)", () => {
+    expect(parseShotArgs(["--pages=/guide/nda-maths"]).scrollX).toBeNull();
+    expect(parseShotArgs(["--pages=/guide/nda-maths", "--scroll-x"]).scrollX).toBe(1);
+    expect(parseShotArgs(["--pages=/guide/nda-maths", "--scroll-x=2"]).scrollX).toBe(2);
+    expect(() => parseShotArgs(["--pages=/", "--scroll-x=0"])).toThrow(/--scroll-x/);
+  });
+  it("brings that table into view and scrolls it to its right end", () => {
+    const js = scrollXScript(2);
+    expect(js).toContain(".overflow-x-auto");
+    expect(js).toContain("[1]");
+    expect(js).toContain("scrollIntoView");
+    expect(js).toContain("scrollLeft = ");
   });
 });

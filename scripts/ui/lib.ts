@@ -49,6 +49,10 @@ export type ShotArgs = {
    *  aria-label) starts with this before the shot, so a dialog or sheet can be
    *  captured. `A >> B` taps A, waits, then taps B. */
   click: string[] | null;
+  /** `--scroll-x[=n]`: before the shot, bring the n-th sideways-scrolling table
+   *  (1 = the first) into view and scroll it to its right end, the state where
+   *  a pinned or clipped column shows (2026-11-11). Null = leave tables alone. */
+  scrollX: number | null;
   /** `--storage=<file.json>`: a JSON object of localStorage entries set before
    *  every page load (shots.ts), e.g. a saved V conversation under "v-chat",
    *  so a state can be shown without writing anything to production. */
@@ -147,6 +151,7 @@ export function parseShotArgs(argv: string[]): ShotArgs {
     withPass: flag("with-pass"),
     noFullscreen: flag("no-fullscreen"),
     click: clickArg(value("click")),
+    scrollX: scrollXArg(flag("scroll-x"), value("scroll-x")),
     storage: value("storage") ?? null,
     cookies: cookieArg(value("cookie")),
   };
@@ -159,6 +164,24 @@ function cookieArg(raw: string | undefined): { name: string; value: string }[] |
     if (at < 1) throw new Error(`--cookie= takes name=value pairs, e.g. --cookie=qb_exam=cbse-12, not "${pair}"`);
     return { name: pair.slice(0, at).trim(), value: pair.slice(at + 1).trim() };
   });
+}
+
+function scrollXArg(bare: boolean, raw: string | undefined): number | null {
+  if (raw === undefined) return bare ? 1 : null;
+  const n = Number(raw);
+  if (!Number.isInteger(n) || n < 1) throw new Error(`--scroll-x= takes the table's number on the page, 1 for the first, not "${raw}"`);
+  return n;
+}
+
+/** The page script `--scroll-x` runs: the n-th sideways table into view, scrolled to its right end. Never throws. */
+export function scrollXScript(n: number): string {
+  return `(() => {
+  const box = [...document.querySelectorAll(".overflow-x-auto")].filter((b) => b.querySelector(":scope > table"))[${n - 1}];
+  if (!box) return false;
+  box.scrollIntoView({ block: "center" });
+  box.scrollLeft = box.scrollWidth;
+  return true;
+})()`;
 }
 
 function clickArg(raw: string | undefined): string[] | null {
