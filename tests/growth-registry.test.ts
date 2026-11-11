@@ -84,6 +84,7 @@ describe("EXPERIMENTS", () => {
       "imat",
       "indexing",
       "learn",
+      "mock-before-start",
       "mock-together",
       "notes-titles",
       "onboarding-arms",

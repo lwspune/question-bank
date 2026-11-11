@@ -261,6 +261,10 @@ async function main() {
         // Read by hand: surface_viewed stuck_offer by action, then the student's next answers.
         line = "by hand: surface_viewed stuck_offer (shown, teach, easier, keep) and the next answers on the subtopic";
         break;
+      case "mock-before-start":
+        // Read by hand: fair full attempts' skipped share, split by the card's line kind.
+        line = "by hand: mock_attempts skipped share on fair full attempts, by blind-gain / rule-out / no-penalty paper";
+        break;
       case "score-plan":
         // Read by hand: fair full-paper attempts, drill_started from score_plan/result within a day, next paper in 14 days.
         line = "by hand: drill_started from score_plan, and next full paper within 14 days";

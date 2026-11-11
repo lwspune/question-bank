@@ -402,7 +402,8 @@ export type Readout =
   | "v-fix-line"
   | "v-better-retry"
   | "score-plan"
-  | "stuck-offer";
+  | "stuck-offer"
+  | "mock-before-start";
 
 export type Experiment = {
   id: string;
@@ -831,6 +832,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-28",
     windowDays: 14,
     readout: "v-pay-offer",
+    status: "running",
+  },
+  {
+    id: "mock-before-start",
+    title: "Before you start: what a guess is worth on this paper",
+    change:
+      "Every mock's instructions page gets a \"Before you start\" card computed from that paper's own marking: on JEE, NEET, SSC, MPSC Prelims and CLAT even a blind guess gains; on NDA, CDS, UPSC and SSC Tier II rule out one option first; on MHT-CET and board chapter tests a wrong answer costs nothing; JEE numeric answers cost 1 mark. Plus the paper's strategy guide where one exists. The Instructions' \"skip if unsure\" went: it was wrong wherever a blind guess gains.",
+    why: "Fair full attempts in the 60 days to 2026-11-11 left 51.6% of questions blank on papers where a blind guess gains, and 52.6% on papers with no penalty at all, where a blank is never better than a guess. Guide insight surfaced where it can still change the score (owner, 2026-11-11).",
+    metric:
+      "Blank share (skipped_count over all questions) on fair full attempts (40%+ of the time used, a fifth answered), split by the card's line: blind guess gains, rule out one, no penalty. Baseline 51.6% / 59.3% / 52.6% (25, 15, 7 attempts). Blanks include questions never reached, which the card cannot fix",
+    rule: "Keep it if the blank share on blind-gain and no-penalty papers falls by 5+ points with no fall in score per attempt; small numbers, so read it with the attempt counts.",
+    liveSince: "2026-11-11",
+    windowDays: 42,
+    readout: "mock-before-start",
     status: "running",
   },
   {

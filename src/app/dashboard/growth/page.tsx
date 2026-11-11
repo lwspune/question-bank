@@ -849,6 +849,13 @@ export default async function GrowthPage() {
             <ReadingsList metric="v-pay-offer-checkout" />
           </div>
         );
+      case "mock-before-start":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if fair full attempts leave 5+ points fewer
+            questions blank on papers where a guess gains or costs nothing (was 51.6% and 52.6%), with no fall in score.
+          </p>
+        );
       case "stuck-offer":
         return (
           <p className="text-sm text-muted-foreground">
