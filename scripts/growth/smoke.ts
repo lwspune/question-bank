@@ -261,6 +261,10 @@ async function main() {
         // Read by hand: surface_viewed stuck_offer by action, then the student's next answers.
         line = "by hand: surface_viewed stuck_offer (shown, teach, easier, keep) and the next answers on the subtopic";
         break;
+      case "answer-limit-copy":
+        // Read by hand: students shown the reveals wall, then checkout_opened from it and any pass bought after.
+        line = "by hand: paywall_event gate reveals (shown, checkout_opened) and passes bought after";
+        break;
       case "score-plan":
         // Read by hand: fair full-paper attempts, drill_started from score_plan/result within a day, next paper in 14 days.
         line = "by hand: drill_started from score_plan, and next full paper within 14 days";

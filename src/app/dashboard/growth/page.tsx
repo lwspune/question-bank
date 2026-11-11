@@ -68,6 +68,8 @@ import {
   V_RETRY_YES_KEEP_PCT,
   SCORE_PLAN_DRILL_KEEP_PCT,
   STUCK_OFFER_LEAVE_BASELINE_PCT,
+  ANSWER_LIMIT_COPY_CHECKOUT_BASELINE_PCT,
+  ANSWER_LIMIT_COPY_BUY_BASELINE_PCT,
   V_REVEAL_FOLLOWUP_MAX_DROP,
   V_PLAN_DAYS_DONE_KEEP_PCT,
   V_PROGRESS_NEXT_STEP_KEEP_PCT,
@@ -854,6 +856,14 @@ export default async function GrowthPage() {
           <p className="text-sm text-muted-foreground">
             Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if fewer than {STUCK_OFFER_LEAVE_BASELINE_PCT}%
             leave right after an offer, or Teach and Easier lead to more right answers on the subtopic than Keep going.
+          </p>
+        );
+      case "answer-limit-copy":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if {ANSWER_LIMIT_COPY_CHECKOUT_BASELINE_PCT}%+ of
+            students shown the answer limit open checkout and {ANSWER_LIMIT_COPY_BUY_BASELINE_PCT}%+ buy a pass (35 and 16 of 360
+            before).
           </p>
         );
       case "score-plan":

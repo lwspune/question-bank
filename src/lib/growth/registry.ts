@@ -281,6 +281,13 @@ export const SCORE_PLAN_DRILL_KEEP_PCT = 25;
  * 3 of their last 4 on a subtopic wrong (30 days to 2026-11-10).
  */
 export const STUCK_OFFER_LEAVE_BASELINE_PCT = 14;
+/**
+ * "answer-limit-copy": of students who met the answer limit in the 30 days to
+ * 2026-11-11, the share who opened checkout from it (35 of 360) and who bought
+ * a pass afterwards (16 of 360), staff left out.
+ */
+export const ANSWER_LIMIT_COPY_CHECKOUT_BASELINE_PCT = 9.7;
+export const ANSWER_LIMIT_COPY_BUY_BASELINE_PCT = 4.4;
 
 /**
  * "self-mark": keep Understood / Review later under written model answers if
@@ -402,7 +409,8 @@ export type Readout =
   | "v-fix-line"
   | "v-better-retry"
   | "score-plan"
-  | "stuck-offer";
+  | "stuck-offer"
+  | "answer-limit-copy";
 
 export type Experiment = {
   id: string;
@@ -848,6 +856,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     status: "running",
   },
   {
+    id: "answer-limit-copy",
+    title: "Answer limit: say why more practice matters",
+    change:
+      "Under \"That's today's N free answers\", the wall now leads with \"The more questions you practise, the more marks you get.\" then \"Practice Pass takes the limit away for 6 months, every answer with its full solution.\" It said \"See this answer now, with its full solution. Practice Pass opens every answer for 6 months.\" V's copy of the offer changes with it.",
+    why: "Owner, 2026-11-11: the wall named features only, never why more answers help. Practising with real exam questions raising marks is a general truth, so it is said as one: no figure of ours (40 students a group, too few and confounded) and no promise of marks.",
+    metric:
+      "Of students shown the wall (paywall_event gate reveals, step shown, staff left out), the share who open checkout from it (step checkout_opened) and the share who buy any pass afterwards; against 35 of 360 (9.7%) and 16 of 360 (4.4%) in the 30 days to 2026-11-11",
+    rule: `Keep it if checkout opens reach ${ANSWER_LIMIT_COPY_CHECKOUT_BASELINE_PCT}%+ and buyers hold at ${ANSWER_LIMIT_COPY_BUY_BASELINE_PCT}%+. Clearly lower on both: go back to the old line.`,
+    liveSince: "2026-11-11",
+    windowDays: 28,
+    readout: "answer-limit-copy",
+    status: "running",
+  },
+  {
     id: "score-plan",
     title: "How to raise your score, after a full paper",
     change:
@@ -1046,7 +1068,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
       "Signed-in students now get 25 free answers a day in the bank and the book reader, down from 30, from 18:15 IST on 2026-10-23, at /dashboard/pricing.",
     why: "The answer limit is the only free limit students meet often (87 of 478 in the 14 days to 23 Oct; the mock limit 5 of 102, chapter tests 1 of 148, saves 2 of 93), and it brought 5 of the 11 tracked sales. 63 more students reached 20 to 29 answers on their best day, so a lower limit shows the pass to more of them. 77% of signups never meet any offer.",
     metric:
-      "Students meeting the limit per day (paywall_event gate reveals, step shown, distinct students per IST day), against 10.7; of those, the share back on a later IST day within 7 days (question_practiced, mock_started or drill_started), against 65%; their checkout opens and passes. Read from 24 Oct, as 23 Oct straddles the change",
+      "Students meeting the limit per day (paywall_event gate reveals, step shown, distinct students per IST day), against 10.7; of those, the share back on a later IST day within 7 days (question_practiced, mock_started or drill_started), against 65%; their checkout opens and passes. Read from 24 Oct, as 23 Oct straddles the change. The wall's wording changed on 2026-11-11 (answer-limit-copy), so read checkout opens before and after that day apart",
     rule: `Keep 25 if the students who meet it still come back (within ${ANSWER_LIMIT_RETURN_MAX_DROP} points of ${ANSWER_LIMIT_RETURN_BASELINE_PCT}%) and more of them open checkout; if the return share falls further, go back to 30.`,
     liveSince: "2026-10-23",
     readout: "answer-limit",
