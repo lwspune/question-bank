@@ -356,7 +356,7 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
-- **2026-11-11 — Pass upgrade: a Practice Pass holder buys Premium for the difference (no migration).**
+- **2026-11-11 (second) — Pass upgrade: a Practice Pass holder buys Premium for the difference (no migration).**
   - **Why:** on 11-10 a student paid ₹199 for Practice, then met a download box asking the full ₹499 with "Everything in the Practice Pass" as a perk, and answered "too expensive".
   - **Pay the difference for the days left, same end date** (owner, over a fresh 6 months that made waiting dearer): (₹499 − paid) × days left ÷ 182, nearest rupee: ₹300 day 0, ₹218 day 50. Vault Points come off on top; free grants earn no upgrade.
   - **The order is still the contract:** the order route stamps the upgrade price AND end date (`lib/billing/upgrade.ts`); grants end then (`grantExpiry`); a failed read sells at list. Parent links get the credit too. Pass rows get `upgrade_credit:<paise>` AFTER any `fix_points:`/`parent_link:` mark, so those LIKE readouts still match.
