@@ -3,6 +3,8 @@ import { ArrowLeft, ArrowRight, CalendarCheck, CircleX, Clock, MessageCircleQues
 import QuestionCard from "../browse/QuestionCard";
 import type { QuestionRow } from "@/lib/questions/query";
 import { reasonLabel, type FixQuestion, type Reason } from "@/lib/review/fixList";
+import type { ChapterTraps as Traps } from "@/lib/guide/chapterTraps";
+import ChapterTraps from "./ChapterTraps";
 import { drillChapterHref } from "@/lib/drill/from";
 
 /** The most questions one chapter page shows; the drill serves the rest. */
@@ -24,6 +26,7 @@ export default function ChapterFix({
   titles,
   canEdit,
   supabaseUrl,
+  traps,
 }: {
   chapterId: string;
   /** Null when nothing in this chapter is waiting (all fixed, or a stale link). */
@@ -35,6 +38,8 @@ export default function ChapterFix({
   titles: ReadonlyMap<string, string>;
   canEdit: boolean;
   supabaseUrl: string;
+  /** The chapter's playbook traps from its strategy guide; null where it has none. */
+  traps: Traps | null;
 }) {
   const back = (
     <Link
@@ -80,6 +85,8 @@ export default function ChapterFix({
           <ArrowRight className="h-4 w-4" aria-hidden />
         </Link>
       </section>
+
+      {traps && <ChapterTraps chapterId={chapterId} traps={traps} />}
 
       <ol className="space-y-4">
         {cards.map((q, i) => {
