@@ -1,5 +1,5 @@
 /**
- * Each test run cleans up only what it made (SUGGESTIONS.md "Every session
+ * Each test run cleans up only what it made (SUGGESTIONS_HISTORY.md "Every session
  * shares one test database", owner's option 2).
  *
  * A run's fixtures carry ids from testRunId(); the ids are recorded in a
