@@ -44,6 +44,7 @@ import ChapterShareCard from "@/components/ChapterShareCard";
 import { mockCtaCopy, withChapterTest } from "@/lib/mocks/chapterTests";
 import { listChapterTests } from "@/lib/mocks/chapterTestsQuery";
 import { canonicalFor } from "@/lib/sites/intl";
+import BackToQuestionPill from "./BackToQuestionPill";
 import { loadChapterTopPyqs } from "@/lib/homework/chapterTop";
 import dynamic from "next/dynamic";
 // Loaded only where it renders (TOP_PYQS_SUBJECTS): a static import of this client
@@ -471,6 +472,7 @@ export default async function NotesChapterLanding({ chapter }: Props) {
       {mock && (
         <NotesTestBar href={mock.href} examDisplay={mock.examDisplay} line={mockCtaCopy(mock).bar} />
       )}
+      <BackToQuestionPill />
     </GuideShell>
   );
 }

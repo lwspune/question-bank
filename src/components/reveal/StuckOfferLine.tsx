@@ -14,7 +14,7 @@ import { dismissStuckOffer, useStuckOffer } from "./stuckOfferStore";
  * it?" under a bank answer (owner, 2026-11-10). The rule is
  * lib/questions/stuckOffer; how the card learns it is stuckOfferStore.
  * Teach me the idea opens our notes for the subtopic (the card's own notes
- * chip link) or, with none, asks V for the idea; Try an easier one shows an
+ * chip link, with a way back: lib/browse/backToQuestion) or, with none, asks V for the idea; Try an easier one shows an
  * easier question from the subtopic here, as V's try card; Keep going folds it
  * away. Each step is recorded (surface stuck_offer) for the experiment.
  */
@@ -23,7 +23,16 @@ const BUTTON =
 
 type Action = "teach" | "easier" | "keep";
 
-export default function StuckOfferLine({ questionId, notesHref }: { questionId: string; notesHref: string | null }) {
+export default function StuckOfferLine({
+  questionId,
+  notesHref,
+  onTeach,
+}: {
+  questionId: string;
+  notesHref: string | null;
+  /** Called as Teach me the idea opens the notes, so the card can save the way back. */
+  onTeach?: (offer: { subtopic: string; easierId: string | null }) => void;
+}) {
   const offer = useStuckOffer(questionId);
   const [easier, setEasier] = useState(false);
 
@@ -46,7 +55,15 @@ export default function StuckOfferLine({ questionId, notesHref }: { questionId: 
       {!easier && (
         <div className="mt-2.5 flex flex-wrap items-center gap-2 pl-6">
           {notesHref ? (
-            <Link href={notesHref} prefetch={false} className={BUTTON} onClick={() => track("teach")}>
+            <Link
+              href={notesHref}
+              prefetch={false}
+              className={BUTTON}
+              onClick={() => {
+                onTeach?.({ subtopic: offer.subtopic, easierId: offer.easierId ?? null });
+                track("teach");
+              }}
+            >
               Teach me the idea
             </Link>
           ) : (

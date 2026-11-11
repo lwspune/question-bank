@@ -32,6 +32,7 @@ import NotesMockCard from "./NotesMockCard";
 import { mockCtaCopy, withChapterTest } from "@/lib/mocks/chapterTests";
 import { listChapterTests } from "@/lib/mocks/chapterTestsQuery";
 import NotesTestBar from "./NotesTestBar";
+import BackToQuestionPill from "./BackToQuestionPill";
 import ConceptUnitCard from "./ConceptUnitCard";
 import NotesPaywall from "./NotesPaywall";
 import PracticeGate from "./PracticeGate";
@@ -440,6 +441,7 @@ export default async function NotesSubtopicPage({
       {mock && (
         <NotesTestBar href={mock.href} examDisplay={mock.examDisplay} line={mockCtaCopy(mock).bar} />
       )}
+      <BackToQuestionPill />
     </GuideShell>
   );
 }

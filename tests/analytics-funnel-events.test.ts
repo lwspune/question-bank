@@ -48,6 +48,9 @@ describe("FUNNEL_EVENTS", () => {
       "notes_practice_wall_signin_click",
       "flashcards_open",
       "flashcards_answer",
+      "back_to_question_shown",
+      "back_to_question_click",
+      "back_to_question_restored",
     ]);
   });
 

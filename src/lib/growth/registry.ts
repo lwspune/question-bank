@@ -522,7 +522,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     rule: `Keep them if ${CHIPS_KEEP_PCT}%+ of cards that show them get a tap by the check date. Below that, keep them only if their target pages show search value (indexed and getting search clicks, or cited by AI answers); otherwise retire the chips.`,
     liveSince: "2026-10-04",
     readout: "resource-chips",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-11 over 12 Oct to 10 Nov: chips showed on 11,540 cards (2,176 browsers) and got 384 taps (3.3%), above the rule as a pair. Split: Concept notes 314 taps (2.7%), Strategy 70 (0.6%). Owner retired the Strategy chip from the card on 2026-11-11 (the /questions page header still links the guide once); Concept notes stays and now saves a way back from the notes (lib/browse/backToQuestion). From then resource_chips_shown counts only cards with a notes chip.",
   },
   {
     id: "premium-limits",
@@ -835,7 +837,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     id: "stuck-offer",
     title: "Help after 3 of 4 wrong on a subtopic",
     change:
-      "On a bank question card, the answer that makes 3 of the student's last 4 on its subtopic wrong (3 of 3 counts) gets an offer: \"3 of your last 4 on Coulomb's Law were wrong. Want help with the idea behind it?\" with Teach me the idea (our notes for the subtopic, else V explains the concept), Try an easier one (an easy unanswered question from the subtopic) and Keep going. Once per streak, never in a mock.",
+      "On a bank question card, the answer that makes 3 of the student's last 4 on its subtopic wrong (3 of 3 counts) gets an offer: \"3 of your last 4 on Coulomb's Law were wrong. Want help with the idea behind it?\" with Teach me the idea (our notes for the subtopic, else V explains the concept), Try an easier one (an easy unanswered question from the subtopic) and Keep going. Once per streak, never in a mock. Since 2026-11-11 (no student had tapped Teach yet) the notes show \"Back to your question\", and the card comes back answered with \"Now try one\" (steps returned, try_after).",
     why: "30 days to 2026-11-10: 629 such moments by 267 students on bank and board practice, and 14% left right after (12% after a right answer). Every bank answer shows its solution, so these students had read three and still missed: the gap is the idea. Owner's idea.",
     metric:
       "Offers shown and each button (surface_viewed stuck_offer, metadata.action); whether the student answers again within 20 minutes; their next answers on that subtopic, right or wrong. Replaying the rule on 30 days of answers: about 540 offers to 215 students a month",
@@ -1387,7 +1389,13 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
   "chip-tap-rate": {
     label: "Question-card chip tap rate (%)",
     source: "Vercel → Analytics → Events → resource_chips_click ÷ resource_chips_shown",
-    entries: [],
+    entries: [
+      {
+        on: "2026-11-10",
+        value: 3.3,
+        note: "12 Oct to 10 Nov: 384 taps on 11,540 cards; notes 314 (2.7%), strategy 70 (0.6%). Strategy chip retired 2026-11-11",
+      },
+    ],
   },
   "specific-offer-checkout": {
     label: "Board paper + homework offer: opened checkout (%)",

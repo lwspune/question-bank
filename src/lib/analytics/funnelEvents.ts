@@ -196,6 +196,21 @@ export const FUNNEL_EVENTS = [
    * Divided by student opens, it says whether a deck is worked through.
    */
   "flashcards_answer",
+  /**
+   * "Back to your question" (2026-11-11, lib/browse/backToQuestion): a bank card's
+   * notes link (prop from: "offer" for the stuck offer's Teach me the idea, "chip"
+   * for the notes chip) was followed, and the notes page showed the pill back.
+   * Once per notes page view.
+   */
+  "back_to_question_shown",
+  /** …and the pill was tapped; prop from. */
+  "back_to_question_click",
+  /**
+   * The card that was left showed its answer again on return; props: from, how
+   * ("pill" | "back", the browser's own Back). Against the notes taps it says how
+   * many come back at all.
+   */
+  "back_to_question_restored",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];

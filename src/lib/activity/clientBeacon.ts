@@ -46,7 +46,7 @@ type ClientEvent =
       kind: "surface_viewed";
       surface: "stuck_offer";
       questionId: string;
-      action: "shown" | "teach" | "easier" | "keep";
+      action: "shown" | "teach" | "easier" | "keep" | "returned" | "try_after";
     }
   | {
       /** A Start next chapter's Start tapped. */
