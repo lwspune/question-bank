@@ -867,6 +867,37 @@ export const UGC_NET_PAPER_1: MockPaperBlueprint = {
   sections: [{ key: "general-paper", label: "General Paper", subjects: ["General Paper"], count: 50 }],
 };
 
+const CLAT_SECTIONS = [
+  ["english", "English Language", 24],
+  ["current-affairs", "Current Affairs including General Knowledge", 28],
+  ["legal", "Legal Reasoning", 30],
+  ["logical", "Logical Reasoning", 26],
+  ["quant", "Quantitative Techniques", 12],
+] as const;
+export type ClatSection = (typeof CLAT_SECTIONS)[number][1];
+
+/**
+ * CLAT UG, as the Consortium of NLUs sets it: five sections in the booklet's
+ * order (Set A), one mark each, minus 0.25 for a wrong answer, two hours. 120
+ * questions since CLAT 2024, 150 in 2022 and 2023; `counts` takes a year's own
+ * section sizes from its contents page (scripts/clat/years.json). A question the
+ * Consortium withdrew stays in as grace (src/lib/mocks/flawed.json), so a
+ * section never shortens. The default is CLAT 2026's split.
+ */
+export function clatPaper(counts: Partial<Record<ClatSection, number>> = {}): MockPaperBlueprint {
+  return {
+    code: "paper",
+    examName: "CLAT",
+    examSlug: "clat",
+    paperLabel: "CLAT UG",
+    durationSecs: 120 * 60,
+    marking: { correct: 1, wrong: -0.25 },
+    sections: CLAT_SECTIONS.map(([key, label, n]) => ({ key, label, subjects: [label], count: counts[label] ?? n })),
+  };
+}
+
+export const CLAT_PAPER: MockPaperBlueprint = clatPaper();
+
 /** Tier II Paper 1, Section III Module I: Computer Knowledge, 15 minutes, qualifying only. */
 export const SSC_CGL_T2_COMPUTER_PAPER: MockPaperBlueprint = {
   code: "tier-2-computer",
@@ -1087,6 +1118,7 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   SPI_PAPER,
   IAT_PAPER,
   UGC_NET_PAPER_1,
+  CLAT_PAPER,
   IMAT_PAPER,
   CBSE_10_CHAPTER_MCQ_PAPER,
   CBSE_12_CHAPTER_MCQ_PAPER,
