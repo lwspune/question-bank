@@ -15,6 +15,7 @@ import {
   otherBenefits,
   perMonthLine,
   offerPriceLine,
+  answerLimitCopy,
 } from "@/lib/billing/offerCopy";
 
 // The live perks on 25 Oct 2026, in their /dashboard/pricing order.
@@ -146,5 +147,28 @@ describe("offerPriceLine", () => {
   it("reads as a sentence", () => {
     expect(offerPriceLine({ price: "₹199", length: "6 months" })).toBe("₹199 for 6 months");
     expect(offerPriceLine({ price: "₹499", length: "lifetime" })).toBe("₹499 for life");
+  });
+});
+
+describe("answerLimitCopy", () => {
+  // 2026-11-11 (owner): the wall named features only ("See this answer now");
+  // it now says why more answers matter. A general truth about practice, never
+  // a figure of ours or a promise of marks.
+  it("leads with practice and marks, then what the pass does and for how long", () => {
+    expect(answerLimitCopy({ label: "Practice Pass", length: "6 months" })).toEqual({
+      lead: "The more questions you practise, the more marks you get.",
+      body: "Practice Pass takes the limit away for 6 months, every answer with its full solution.",
+    });
+  });
+
+  it("names whichever pass is offered and reads a lifetime pass as for life", () => {
+    expect(answerLimitCopy({ label: "Premium Pass", length: "lifetime" }).body).toBe(
+      "Premium Pass takes the limit away for life, every answer with its full solution."
+    );
+  });
+
+  it("never quotes a number of answers, so it cannot disagree with the live limit", () => {
+    const { lead, body } = answerLimitCopy({ label: "Practice Pass", length: "6 months" });
+    expect(`${lead} ${body}`).not.toMatch(/\b\d+ (free )?answers\b/);
   });
 });
