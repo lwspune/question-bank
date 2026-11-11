@@ -156,6 +156,9 @@ async function main() {
       case "ugc-net":
         line = handRead(e.liveSince, ["ugc-net-students", "ugc-net-passes"]);
         break;
+      case "clat":
+        line = handRead(e.liveSince, ["clat-students", "clat-passes"]);
+        break;
       case "v-explain":
         line = handRead(e.liveSince, ["v-explain-students", "v-explain-similar-right"]);
         break;

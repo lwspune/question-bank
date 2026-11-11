@@ -73,6 +73,7 @@ describe("EXPERIMENTS", () => {
       "chapter-fix",
       "chapter-share",
       "chapter-tests",
+      "clat",
       "ebook-store",
       "email-cap",
       "fix-points",
