@@ -6,7 +6,7 @@
  * question the conversation is about.
  */
 import { describe, it, expect } from "vitest";
-import { questionTools, tappedFrom, type QuestionToolDeps } from "@/lib/chat/questionToolSet";
+import { notesTappedFrom, questionTools, tappedFrom, type QuestionToolDeps } from "@/lib/chat/questionToolSet";
 import type { RevealCheck, VQuestion } from "@/lib/chat/questionTools";
 
 const ID = "11111111-1111-4111-8111-111111111111";
@@ -164,6 +164,28 @@ describe("an Ask V tap pins the question", () => {
     const { tools, seen } = deps({ loadQuestion: async (id) => ({ ...Q, id }) });
     await tools.explain_question.run({ question_id: OTHER });
     expect(seen.explained).toEqual([OTHER]);
+  });
+});
+
+// 2026-11-11: a student tapped Ask V on a notes question (the integral of cos x from 0 to pi/2) 45 minutes after
+// asking about a mock's trigonometry question; V called explain_question on the trigonometry question from its
+// memory and explained that, "your pick (B)" and all. The 2026-11-08 pin covered bank taps only.
+describe("an Ask V tap on a notes question pins it too", () => {
+  it("refuses to look up any bank question, and points V back to the notes question", async () => {
+    const { tools, seen } = deps({ notesTapped: true });
+    for (const name of ["get_question", "explain_question", "similar_question"] as const) {
+      const out = await tools[name].run({ question_id: ID, chose: "B" });
+      expect(out).toMatch(/practice question in the notes/);
+      expect(out).toMatch(/look up no other question/);
+    }
+    expect(seen.explained).toEqual([]);
+    expect(seen.similar).toEqual([]);
+  });
+
+  it("is a notes tap only for the window's own Ask V message on a notes question", () => {
+    expect(notesTappedFrom(true, "Explain this question.")).toBe(true);
+    expect(notesTappedFrom(true, "Why you put tan")).toBe(false);
+    expect(notesTappedFrom(false, "Explain this question.")).toBe(false);
   });
 });
 

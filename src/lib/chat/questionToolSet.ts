@@ -36,6 +36,12 @@ export type QuestionToolDeps = {
    * named the PREVIOUS tapped question. A typed follow-up is left alone, as it may mean an earlier one.
    */
   tapped?: { id: string; chose: string | null; entered: number | null } | null;
+  /**
+   * An Ask V TAP on a practice question in the notes (2026-11-11): it has no bank id, and its question and
+   * solution reach V in the per-message tail. The bank tools then refuse every id: V had explained a
+   * trigonometry question from its memory on a tap on a definite-integral notes question.
+   */
+  notesTapped?: boolean;
   /** The route collects these for the chat window. */
   onSimilar: (id: string) => void;
   /** A pasted question's best match, offered as a card to confirm. */
@@ -78,6 +84,15 @@ export function tappedFrom(asked: AskedQuestion | null, message: string): Questi
   return { id: asked.id, chose: asked.chose, entered: asked.entered };
 }
 
+/** A notes tap: only the window's own Ask V message, on a page where a notes question was tapped. */
+export function notesTappedFrom(notesQuestion: boolean, message: string): boolean {
+  return notesQuestion && isAskVMessage(message);
+}
+
+/** What every bank question tool answers on a notes tap. */
+const NOTES_TAP =
+  "The student tapped a practice question in the notes. It and its solution are given at the end of your instructions: explain that one from them, and look up no other question. Your earlier replies were about other questions: do not mention them.";
+
 /** Said on a tap, in the tool's answer because V weighs a tool's words above its rules (2026-11-08). */
 const TAP_NOTE =
   "This is the question the student just tapped. Your earlier replies were about other questions and were right for them: do not mention, correct or take them back.";
@@ -98,6 +113,7 @@ export function questionTools(d: QuestionToolDeps): VTool[] {
         "Read the question for a HINT: its text, options and the first step of its solution, without the answer. Use when the student wants a hint, or to see the question before asking hint or full solution.",
       input_schema: ID_SCHEMA,
       run: async (input) => {
+        if (d.notesTapped) return NOTES_TAP;
         const q = await load(input);
         return q ? onTap(hintView(q)) : NOT_FOUND;
       },
@@ -117,6 +133,7 @@ export function questionTools(d: QuestionToolDeps): VTool[] {
         required: ["question_id"],
       },
       run: async (input) => {
+        if (d.notesTapped) return NOTES_TAP;
         const q = await load(input);
         if (!q) return NOT_FOUND;
         if (!d.spendReveal) return "The student is signed out: tell them to sign in (free) to get explanations, and give no answer.";
@@ -143,6 +160,7 @@ export function questionTools(d: QuestionToolDeps): VTool[] {
         "Give the student another question from the same subtopic to try, when they ask for one. It is shown to them as a card, which they answer there.",
       input_schema: ID_SCHEMA,
       run: async (input) => {
+        if (d.notesTapped) return NOTES_TAP;
         const q = await load(input);
         if (!q) return NOT_FOUND;
         const id = await d.loadSimilar(q);

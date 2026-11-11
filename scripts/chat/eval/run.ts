@@ -45,7 +45,7 @@ import { loadExamCatalogPayload, shapeExamCatalog } from "../../../src/lib/exam/
 import { readChapterLandingsUncached } from "../../../src/lib/questions/landing";
 import { readSubtopicIndexUncached, withSubtopics } from "../../../src/lib/chat/subtopicIndex";
 import { loadSimilarId, loadVQuestion, searchVQuestions } from "../../../src/lib/chat/questionToolsServer";
-import { tappedFrom } from "../../../src/lib/chat/questionToolSet";
+import { notesTappedFrom, tappedFrom } from "../../../src/lib/chat/questionToolSet";
 import { answerIn } from "../../../src/lib/chat/askVEvent";
 import { conceptSources } from "../../../src/lib/chat/conceptSearchServer";
 import { parseNotesRefKey } from "../../../src/lib/chat/notesItem";
@@ -168,6 +168,8 @@ async function main() {
         ? {
             // As live: an Ask V tap pins the question (2026-11-08).
             tapped: tappedFrom(question, c.message),
+            // As live: a tap on a notes question pins it too (2026-11-11).
+            notesTapped: notesTappedFrom(notesBrief !== null, c.message),
             loadQuestion: (id) => loadVQuestion(anon, id),
             spendReveal: c.signed_in ? async () => ({ kind: "ok" as const, counts: false }) : null,
             loadSimilar: (vq) => loadSimilarId(anon, vq, []),

@@ -324,3 +324,17 @@ reads everything else from the stored row.
   9f0beac5). "Notes for cbse" (7ab00300) failed on the branch and once on
   main too: 9 of 19 runs ever, a coin flip, not this change. The two new
   messages are not cases yet: seeding writes to production and was not run.
+- 2026-11-11: a tap on a notes practice question could make V explain a
+  DIFFERENT question. One real chat: the student asked V about a mock's
+  trigonometry question, then 45 minutes later tapped Ask V on a definite
+  integral in the notes; V called `explain_question` with the old question's
+  id and explained the trigonometry one (1 of 25 notes taps in 30 days). A
+  bank tap was already pinned in code (2026-11-08); a notes tap now is too
+  (`notesTappedFrom`, `lib/chat/questionToolSet.ts`): when its question and
+  solution loaded, the three question tools answer "explain the one at the
+  end of your instructions" instead of looking anything up. Replayed 4 times
+  through V: 4/4 explained the integral, none mentioned the old question.
+  Full run 1f78474b 210/220. "??" after an explanation (494dbce4) fails about
+  3 runs in 4 on main as well (V calls its earlier reply a mistake and echoes
+  "stored" from the old reply in the history): a separate slip, not this
+  change.
