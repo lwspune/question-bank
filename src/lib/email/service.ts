@@ -160,7 +160,11 @@ export async function readPriorSends(db: SupabaseClient): Promise<PriorSend[]> {
  * A student with NO student_profiles row (25 of 41 today) is NOT opted out —
  * they simply never gave a mobile. Absent ⇒ `emailOptOut: false`.
  */
-export async function readStudents(db: SupabaseClient): Promise<StudentLite[]> {
+export async function readStudents(
+  db: SupabaseClient,
+  /** "intl" returns ONLY the intl-only students, for their own welcome (2026-11-11). */
+  site: "pyqvault" | "intl" = "pyqvault"
+): Promise<StudentLite[]> {
   const { data: members, error: mErr } = await db.from("org_members").select("user_id");
   if (mErr) throw new Error(`readStudents members: ${mErr.message}`);
   const staff = new Set((members ?? []).map((m) => m.user_id as string));
@@ -189,7 +193,7 @@ export async function readStudents(db: SupabaseClient): Promise<StudentLite[]> {
     if (error) throw new Error(`readStudents users: ${error.message}`);
     const batch = data?.users ?? [];
     for (const u of batch) {
-      if (staff.has(u.id) || intlOnly.has(u.id)) continue;
+      if (staff.has(u.id) || intlOnly.has(u.id) !== (site === "intl")) continue;
       const meta = (u.user_metadata ?? null) as { full_name?: string; name?: string } | null;
       out.push({
         userId: u.id,

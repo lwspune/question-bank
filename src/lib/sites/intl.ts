@@ -106,7 +106,6 @@ const SHARED_EXACT = new Set([
   "/privacy",
   "/refunds",
   "/contact",
-  "/unsubscribe",
   "/opengraph-image",
   // A student's progress (2026-11-06). Site-aware rather than identical: on
   // intl the map and the drill hold the international exams alone
@@ -118,7 +117,8 @@ const SHARED_EXACT = new Set([
   // the international exams alone here, like the drill.
   "/review",
 ]);
-const SHARED_PREFIXES = ["/account", "/mock/attempt", "/api", "/_next", "/intl"];
+// /unsubscribe/<token>: an intl email's unsubscribe link must land on intl (2026-11-11).
+const SHARED_PREFIXES = ["/account", "/mock/attempt", "/api", "/_next", "/intl", "/unsubscribe"];
 
 function isShared(pathname: string): boolean {
   if (SHARED_EXACT.has(pathname)) return true;
