@@ -45,6 +45,8 @@ import {
   IMAT_STUDENTS_KEEP,
   UGC_NET_SIGNUPS_KEEP,
   UGC_NET_PASSES_KEEP,
+  CLAT_STUDENTS_KEEP,
+  CLAT_PASSES_KEEP,
   LEARN_MASTERED_KEEP,
   LEARN_RETURNED_KEEP,
   IMAT_FOREIGN_SHARE_PCT,
@@ -649,6 +651,17 @@ export default async function GrowthPage() {
             </p>
             <ReadingsList metric="ugc-net-students" />
             <ReadingsList metric="ugc-net-passes" />
+          </div>
+        );
+      case "clat":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}, two weeks after CLAT 2027 (6 December 2026):
+              keep adding CLAT work if {CLAT_STUDENTS_KEEP}+ students choose it and {CLAT_PASSES_KEEP}+ of them buy a pass.
+            </p>
+            <ReadingsList metric="clat-students" />
+            <ReadingsList metric="clat-passes" />
           </div>
         );
       case "pyq-wording":

@@ -48,7 +48,8 @@ export type ExamSlug =
   | "imat"
   | "spi"
   | "uceed"
-  | "ugc-net";
+  | "ugc-net"
+  | "clat";
 
 /**
  * School boards the bank carries content for. NOT every exam has one — a
@@ -74,7 +75,7 @@ export const EXAM_TIERS: readonly ExamTier[] = ["school", "senior", "graduate"];
  * SPI is a Class 10 exam (tier "school") whose students are aiming for NDA, so
  * its goal is "defence". Labels and grouping: lib/exam/examGoals.ts.
  */
-export type ExamGoal = "boards" | "science" | "government" | "defence" | "management";
+export type ExamGoal = "boards" | "science" | "government" | "defence" | "management" | "law";
 
 export const TIER_LABELS: Record<ExamTier, string> = {
   school: "Class 9–10",
@@ -783,6 +784,22 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     pastPaperSolutions: true,
     guidesPath: null,
     notesPath: null,
+  },
+  {
+    slug: "clat",
+    // CLAT UG (Consortium of National Law Universities), the entrance to the NLUs'
+    // five-year law programmes, sat after Class 12: 120 passage-based MCQs since
+    // CLAT 2024 (150 before), five sections, +1 / -0.25, 2 hours. The
+    // Consortium's own Set A booklets 2022-2026 with its final keys
+    // (scripts/clat/). Added 2026-11-11 on the owner's call, ahead of CLAT 2027
+    // on 6 Dec 2026; no student had asked.
+    tier: "senior",
+    goal: "law",
+    displayName: "CLAT",
+    examName: "CLAT", // must match the `exams` DB row exactly
+    guidesPath: null,
+    notesPath: null,
+    noPublicContent: true, // rows go in PRIVATE; drop this flag when they go PUBLIC
   },
   // ── MPSC ──────────────────────────────────────────────────────────────────
   // One family with a stage level: MPSC -> Prelims / Mains -> exam. Prelims

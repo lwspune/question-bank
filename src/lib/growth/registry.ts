@@ -173,6 +173,13 @@ export const IMAT_STUDENTS_KEEP = 20;
 export const UGC_NET_SIGNUPS_KEEP = 50;
 /** ...and this many of them have bought the pass (owner, 2026-11-10). */
 export const UGC_NET_PASSES_KEEP = 3;
+/**
+ * CLAT UG (2026-11-11): keep adding CLAT years and content if, by two weeks
+ * after CLAT 2027 (6 Dec 2026), this many students have chosen CLAT...
+ */
+export const CLAT_STUDENTS_KEEP = 50;
+/** ...and this many of them have bought a pass. Proposed by Claude, the UGC NET bar; the owner set no rule for CLAT. */
+export const CLAT_PASSES_KEEP = 3;
 /** The Learn tab (2026-10-27): keep building learning inside PYQ Vault at this many students who master a concept... */
 export const LEARN_MASTERED_KEEP = 25;
 /** ...and this many who come back to Learn on a second day. */
@@ -390,6 +397,7 @@ export type Readout =
   | "board-path"
   | "study-circle"
   | "ugc-net"
+  | "clat"
   | "v-follow-up-loop"
   | "v-fix-line"
   | "v-better-retry"
@@ -1111,6 +1119,19 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "ugc-net",
     status: "running",
   },
+  {
+    id: "clat",
+    title: "CLAT UG: past papers and mocks three weeks before the exam",
+    change:
+      "CLAT added 2026-11-11: the Consortium's Set A papers for CLAT 2022-2026 (660 questions), passages read straight from the official booklets, each keyed from the Consortium's final key with a worked solution, and five timed mocks (+1/-0.25, 2 hours).",
+    why: "Owner's call, to catch CLAT 2027 on 6 Dec 2026. No student had asked. It is a Class 12 exam, against the 4 Nov graduate focus, so it is a test of whether a timely exam with a fixed date draws students on its own.",
+    metric: "Students with CLAT among their exams, and passes those students bought, read by hand on 2026-12-20, two weeks after the sitting",
+    rule: `Keep adding (CLAT 2021, notes, CLAT PG) if ${CLAT_STUDENTS_KEEP}+ students choose CLAT AND ${CLAT_PASSES_KEEP}+ of them buy a pass. Otherwise it stays live with no more work. (Proposed: the owner set no rule; it copies UGC NET's.)`,
+    liveSince: "2026-11-11",
+    windowDays: 39,
+    readout: "clat",
+    status: "running",
+  },
 
 ];
 
@@ -1186,6 +1207,8 @@ export type ReadingMetric =
   | "imat-foreign-share"
   | "ugc-net-students"
   | "ugc-net-passes"
+  | "clat-students"
+  | "clat-passes"
   | "v-false-not-found"
   | "v-clarify-turns"
   | "v-practice-after"
@@ -1489,6 +1512,16 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
   "ugc-net-passes": {
     label: "Passes bought by students with UGC NET among their exams",
     source: "entitlements (source razorpay, active) joined to student_profiles with 'ugc-net' in target_exams",
+    entries: [],
+  },
+  "clat-students": {
+    label: "Students with CLAT among their exams",
+    source: "student_profiles where 'clat' = any(target_exams), staff excluded",
+    entries: [],
+  },
+  "clat-passes": {
+    label: "Passes bought by students with CLAT among their exams",
+    source: "entitlements (source razorpay, active) joined to student_profiles with 'clat' in target_exams",
     entries: [],
   },
   "imat-page-views": {

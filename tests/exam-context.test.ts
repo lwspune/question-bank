@@ -439,6 +439,7 @@ describe("exam tiers", () => {
       "uceed",
       "iiser-iat",
       "imat",
+      "clat",
     ],
     graduate: [
       "cds",

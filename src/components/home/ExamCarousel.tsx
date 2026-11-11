@@ -11,7 +11,7 @@ import {
   type MouseEvent as ReactMouseEvent,
   type PointerEvent as ReactPointerEvent,
 } from "react";
-import { ArrowRight, BookOpen, Briefcase, ChevronLeft, ChevronRight, FlaskConical, Landmark, Pause, Play, Shield } from "lucide-react";
+import { ArrowRight, BookOpen, Briefcase, ChevronLeft, ChevronRight, FlaskConical, Landmark, Pause, Play, Scale, Shield } from "lucide-react";
 import type { ExamGoal } from "@/lib/exam/examContext";
 import { slotStyle, wrapOffset } from "@/lib/exam/showcaseSlots";
 import type { ShowcaseCard } from "@/lib/exam/examShowcase";
@@ -35,6 +35,7 @@ const GOAL_ICON: Record<ExamGoal, typeof Shield> = {
   government: Landmark,
   boards: BookOpen,
   management: Briefcase,
+  law: Scale,
 };
 const GOAL_SHORT: Record<ExamGoal, string> = {
   defence: "Defence",
@@ -42,6 +43,7 @@ const GOAL_SHORT: Record<ExamGoal, string> = {
   government: "Government",
   boards: "School board",
   management: "Management",
+  law: "Law",
 };
 /** Faint symbols that drift behind each card, from the subjects each goal tests. */
 const GOAL_GLYPHS: Record<ExamGoal, string[]> = {
@@ -50,6 +52,7 @@ const GOAL_GLYPHS: Record<ExamGoal, string[]> = {
   government: ["GDP", "Art. 21", "%", "∴"],
   boards: ["|A|", "dx", "Δ", "H₂O"],
   management: ["%", "÷", "x̄", "∴"],
+  law: ["§", "Art. 14", "∴", "v."],
 };
 
 const fmt = (n: number) => n.toLocaleString("en-IN");

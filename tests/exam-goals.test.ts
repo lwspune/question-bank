@@ -10,7 +10,7 @@ import { EXAM_GOALS, GOAL_LABEL, groupByGoal, goalGroupSummary } from "@/lib/exa
  * it sits under Defence, not with the school boards.
  */
 describe("every exam declares a goal", () => {
-  it("is one of the five goals, for every registry entry", () => {
+  it("is one of the six goals, for every registry entry", () => {
     for (const e of EXAM_REGISTRY) expect(EXAM_GOALS, e.slug).toContain(e.goal);
   });
 
@@ -48,6 +48,7 @@ describe("every exam declares a goal", () => {
     ["ipmat-indore", "management"],
     ["jipmat", "management"],
     ["cbse-12", "boards"],
+    ["clat", "law"],
   ])("%s is under %s", (slug, goal) => {
     expect(getExamBySlug(slug)?.goal).toBe(goal);
   });
@@ -59,6 +60,7 @@ describe("every exam declares a goal", () => {
       government: "Government jobs",
       defence: "Defence",
       management: "Management",
+      law: "Law",
     });
   });
 });

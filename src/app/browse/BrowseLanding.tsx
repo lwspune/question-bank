@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookOpen, Briefcase, FlaskConical, Landmark, Layers, LibraryBig, Shield } from "lucide-react";
+import { BookOpen, Briefcase, FlaskConical, Landmark, Layers, LibraryBig, Scale, Shield } from "lucide-react";
 import type { ExamFamilyNode } from "@/lib/exam/examFamily";
 import { membersByStage } from "@/lib/exam/examFamily";
 import type { ExamGoal } from "@/lib/exam/examContext";
@@ -35,6 +35,7 @@ const GOAL_ICON: Record<ExamGoal, typeof Shield> = {
   government: Landmark,
   boards: BookOpen,
   management: Briefcase,
+  law: Scale,
 };
 
 const pillClass =
