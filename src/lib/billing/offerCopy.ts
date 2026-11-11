@@ -89,6 +89,20 @@ export function perMonthLine(cta: { price: string; length: string }): string | n
   return `about ${price[1]}${Math.round(amount / months).toLocaleString(locale)} a month`;
 }
 
+/**
+ * The answer-limit wall's two lines (2026-11-11, owner): why more answers
+ * matter, then what the pass does. The first is a general truth about practice,
+ * never a figure of ours or a promise of marks. No answer count here: the
+ * heading carries the live limit, which changes at /dashboard/pricing.
+ */
+export function answerLimitCopy(pass: { label: string; length: string }): { lead: string; body: string } {
+  const forHowLong = pass.length === "lifetime" ? "for life" : `for ${pass.length}`;
+  return {
+    lead: "The more questions you practise, the more marks you get.",
+    body: `${pass.label} takes the limit away ${forHowLong}, every answer with its full solution.`,
+  };
+}
+
 /** "₹199 for 6 months". */
 export function offerPriceLine(cta: { price: string; length: string }): string {
   return cta.length === "lifetime" ? `${cta.price} for life` : `${cta.price} for ${cta.length}`;

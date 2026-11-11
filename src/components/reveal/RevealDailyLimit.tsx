@@ -11,7 +11,7 @@ import { useAskWhyOnClose } from "@/components/billing/WhyNotNowToast";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import { pricingHref } from "@/lib/billing/checkoutReturn";
-import { otherBenefits, perMonthLine } from "@/lib/billing/offerCopy";
+import { answerLimitCopy, otherBenefits, perMonthLine } from "@/lib/billing/offerCopy";
 import type { PassCta } from "@/lib/billing/plans";
 import type { PracticeSurface } from "@/lib/questions/practiceBatch";
 import { dailyRevealLimit, dailyRevealPass } from "./useRevealMeter";
@@ -101,6 +101,7 @@ export function RevealDailyOffer({
   const router = useRouter();
   const [showOthers, setShowOthers] = useState(false);
   const others = otherBenefits(pass.perks);
+  const copy = answerLimitCopy(pass);
   const perMonth = perMonthLine(pass);
   const bought = useRef(false);
   const onDone = useCallback(
@@ -133,9 +134,8 @@ export function RevealDailyOffer({
           <Lock className="h-4 w-4 shrink-0" aria-hidden />
           That&apos;s today&apos;s {limit ?? ""} free answers
         </p>
-        <p className="text-muted-foreground">
-          See this answer now, with its full solution. {pass.label} opens every answer for {pass.length}.
-        </p>
+        <p className="font-medium text-foreground">{copy.lead}</p>
+        <p className="text-muted-foreground">{copy.body}</p>
         {others.length > 0 && (
           <button
             type="button"
