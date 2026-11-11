@@ -84,7 +84,7 @@ export function UpgradeLead({ planId, className }: { planId: string; className?:
   if (!from) return null;
   return (
     <p className={className ?? "font-medium text-foreground"}>
-      You have the {from}. Upgrade and pay only the difference.
+      You have the {from}. Upgrade for the days it has left and pay only the difference.
     </p>
   );
 }

@@ -1,25 +1,29 @@
 /**
  * Pass upgrade (owner, 2026-11-11): a student holding a paid pass that a
  * dearer pass includes (today the Practice Pass, which the Premium Pass
- * includes) buys the dearer one for its price less what is left of the one
- * they hold. Before this, a Practice Pass holder at a download box was asked
- * the full Premium price, with "Everything in the Practice Pass" listed as a
- * perk they had paid for minutes earlier (11-10: one did, and said "too
- * expensive").
+ * includes) moves to the dearer pass for the days their pass has LEFT, paying
+ * the difference for those days, and the dearer pass ends on the same date.
+ * Before this, a Practice Pass holder at a download box was asked the full
+ * Premium price, with "Everything in the Practice Pass" listed as a perk they
+ * had paid for minutes earlier (11-10: one did, and said "too expensive").
  *
- * THE CREDIT (owner: "shrinks with time used"): what the student PAID for the
- * pass (the entitlement's amount_paise, so points or a parent's payment are
- * counted as paid), times the share of its days still left, to the nearest
- * whole rupee. A free grant (comp, manual, referral days) carries no payment
- * and so no credit. Vault Points then come off the upgrade price (owner: "yes,
- * on top"): fixPoints.stampDiscountNotes discounts whatever the notes say is
- * being charged.
+ * THE PRICE (owner: "pay the difference, same end date", chosen over a fresh
+ * 6 months, which made the upgrade dearer the longer the student waited):
  *
- * THE ORDER IS STILL THE CONTRACT: /api/billing/order (and the parent order)
- * stamps the upgrade price into the Razorpay order, and the grant paths hold
- * the payment to it. The pass granted is the dearer pass for its full length
- * from the day of the upgrade; the old row is left alone (the new one
- * includes it).
+ *   price = target list x left / target length  -  paid x left / pass length
+ *
+ * to the nearest rupee, where `left` is the time to the pass's end and `paid`
+ * is what the student PAID for it (points or a parent's payment count as
+ * paid). With both passes 6 months long that is (₹499 - ₹199) x days left /
+ * 182: ₹300 on day 0, ₹218 on day 50, ₹150 halfway. A free grant (comp,
+ * manual, referral days) carries no payment and is no upgrade. Vault Points
+ * then come off the upgrade price (owner: "yes, on top"):
+ * fixPoints.stampDiscountNotes discounts whatever the notes say is charged.
+ *
+ * THE ORDER IS STILL THE CONTRACT: the order route (and the parent order)
+ * stamps the upgrade price AND its end date into the Razorpay order, and the
+ * grant paths hold the payment to the price and grant until that date
+ * (plans.grantExpiry). The old pass row is left alone: the new one includes it.
  *
  * Pure.
  */
@@ -28,9 +32,10 @@ import { fixPointsGrantNote } from "./fixPoints";
 import { parentGrantNote } from "./parentLink";
 import type { Plan } from "./plans";
 
-/** Razorpay's smallest charge, ₹1: a credit never brings a price under it. */
+/** Razorpay's smallest charge, ₹1: an upgrade never costs less. */
 export const MIN_CHARGE_PAISE = 100;
 
+const DAY_MS = 86_400_000;
 const FALLBACK_LABEL = "current pass";
 
 export type CreditRow = Pick<Entitlement, "scope" | "source" | "status" | "grantedAt" | "expiresAt"> & {
@@ -38,73 +43,108 @@ export type CreditRow = Pick<Entitlement, "scope" | "source" | "status" | "grant
   currency?: string | null;
 };
 
-export type UpgradeCredit = {
-  /** Whole rupees, in paise; 0 = not an upgrade. */
+export type Upgrade = {
+  /** What the upgrade costs, in paise, whole rupees, before any Vault Points. */
+  pricePaise: number;
+  /** The target's list price less the upgrade price: what the student does not pay. */
   creditPaise: number;
-  /** The pass the credit comes from, as the offer names it ("Practice Pass"); null with no credit. */
-  fromLabel: string | null;
+  /** When the upgraded pass ends: the held pass's own end (ISO). */
+  endsAt: string;
+  /** The pass upgraded from, as the offer names it ("Practice Pass"). */
+  fromLabel: string;
 };
 
-const NONE: UpgradeCredit = { creditPaise: 0, fromLabel: null };
+type Held = { paid: number; start: number; end: number; scope: string };
 
-/** The unused share of a paid row, in paise (fractional); 0 for a row that earns no credit. */
-function unusedPaise(row: CreditRow, target: Pick<Plan, "scope" | "currency">, nowMs: number): number {
-  if (row.source !== "razorpay" || !isEntitlementActive(row, nowMs)) return 0;
-  // An upgrade only: the target gives everything the row gave, and more.
-  if (row.scope === target.scope || !scopeIncludes(target.scope, row.scope)) return 0;
-  if (row.currency !== target.currency) return 0;
+/** A row the target is an upgrade to: paid, active, strictly included by the target, same currency. */
+function heldPass(row: CreditRow, target: Pick<Plan, "scope" | "currency">, nowMs: number): Held | null {
+  if (row.source !== "razorpay" || !isEntitlementActive(row, nowMs)) return null;
+  if (row.scope === target.scope || !scopeIncludes(target.scope, row.scope)) return null;
+  if (row.currency !== target.currency) return null;
   const paid = row.amountPaise ?? 0;
-  if (!Number.isFinite(paid) || paid <= 0 || !row.expiresAt) return 0;
+  if (!Number.isFinite(paid) || paid <= 0 || !row.expiresAt) return null;
   const start = Date.parse(row.grantedAt);
   const end = Date.parse(row.expiresAt);
-  if (!Number.isFinite(start) || !Number.isFinite(end) || end <= start) return 0;
-  const left = Math.min(1, Math.max(0, (end - nowMs) / (end - start)));
-  return paid * left;
+  if (!Number.isFinite(start) || !Number.isFinite(end) || end <= start || end <= nowMs) return null;
+  return { paid, start, end, scope: row.scope };
 }
 
 /**
- * What `rows` (one student's entitlements) take off `target` at `nowMs`. Zero
- * when the student already holds the target, or holds nothing paid that the
- * target includes. `plans` names the credited pass for the offer.
+ * The upgrade to `target` that `rows` (one student's entitlements) allow at
+ * `nowMs`, or null: the student holds the target already, holds nothing paid
+ * that the target includes, or holds a pass that outlasts the target's own
+ * length (it would sell more of the target than the target sells). With two
+ * such passes, the one that ends last decides.
  */
-export function upgradeCredit(
+export function upgradeFor(
   rows: readonly CreditRow[],
-  target: Pick<Plan, "scope" | "currency" | "amountPaise">,
-  plans: readonly Pick<Plan, "scope" | "label" | "site" | "currency">[],
+  target: Pick<Plan, "scope" | "currency" | "amountPaise" | "durationDays">,
+  plans: readonly Pick<Plan, "scope" | "label" | "currency">[],
   nowMs: number
-): UpgradeCredit {
-  if (rows.some((r) => isEntitlementActive(r, nowMs) && scopeIncludes(r.scope, target.scope))) return NONE;
-  let total = 0;
-  let fromScope: string | null = null;
+): Upgrade | null {
+  if (target.durationDays === null || target.durationDays <= 0) return null;
+  if (rows.some((r) => isEntitlementActive(r, nowMs) && scopeIncludes(r.scope, target.scope))) return null;
+  let held: Held | null = null;
   for (const r of rows) {
-    const part = unusedPaise(r, target, nowMs);
-    if (part > 0) {
-      total += part;
-      fromScope ??= r.scope;
+    const h = heldPass(r, target, nowMs);
+    if (h && (!held || h.end > held.end)) held = h;
+  }
+  if (!held) return null;
+  const left = held.end - nowMs;
+  const targetMs = target.durationDays * DAY_MS;
+  if (left > targetMs) return null;
+  const owed = (target.amountPaise * left) / targetMs - (held.paid * left) / (held.end - held.start);
+  const pricePaise = Math.max(MIN_CHARGE_PAISE, Math.min(target.amountPaise, Math.round(owed / 100) * 100));
+  const creditPaise = target.amountPaise - pricePaise;
+  if (creditPaise <= 0) return null;
+  const named = plans.find((p) => p.scope === held.scope && p.currency === target.currency);
+  return { pricePaise, creditPaise, endsAt: new Date(held.end).toISOString(), fromLabel: named?.label ?? FALLBACK_LABEL };
+}
+
+/**
+ * The upgrades a student has to each rupee pass on www, for the offers
+ * (/api/me/fix-points, /pricing): planId -> what they do not pay, plus the
+ * pass upgraded from and when the upgrade would end.
+ */
+export function upgradeCredits(
+  rows: readonly CreditRow[],
+  plans: readonly Plan[],
+  nowMs: number
+): { credits: Record<string, number>; creditFrom: string | null; creditEndsAt: string | null } {
+  const credits: Record<string, number> = {};
+  let creditFrom: string | null = null;
+  let creditEndsAt: string | null = null;
+  for (const p of plans) {
+    if (!p.active || p.site !== "pyqvault" || p.currency !== "INR") continue;
+    const u = upgradeFor(rows, p, plans, nowMs);
+    if (u) {
+      credits[p.id] = u.creditPaise;
+      creditFrom ??= u.fromLabel;
+      creditEndsAt ??= u.endsAt;
     }
   }
-  // Nearest rupee: a pass bought minutes ago credits its full price, not a rupee less.
-  const whole = Math.round(total / 100) * 100;
-  const creditPaise = Math.max(0, Math.min(whole, target.amountPaise - MIN_CHARGE_PAISE));
-  if (creditPaise <= 0) return NONE;
-  const named = plans.find((p) => p.scope === fromScope && p.currency === target.currency);
-  return { creditPaise, fromLabel: named?.label ?? FALLBACK_LABEL };
+  return { credits, creditFrom, creditEndsAt };
+}
+
+/** `plan`'s price for the student holding `rows`: the upgrade price, else the list price (no points; a parent's price). */
+export function upgradePricePaise(plan: Plan, rows: readonly CreditRow[], plans: readonly Plan[], nowMs: number): number {
+  return upgradeFor(rows, plan, plans, nowMs)?.pricePaise ?? plan.amountPaise;
 }
 
 /**
- * The order notes for an upgrade: `amountPaise` becomes the list price less
- * the credit, with the list price and the credit beside it. Runs BEFORE
- * fixPoints.stampDiscountNotes, which takes points off what is charged. No
- * credit returns the notes untouched.
+ * The order notes for an upgrade: `amountPaise` becomes the upgrade price,
+ * with the list price, the credit and the END DATE beside it (the grant reads
+ * `upgradeEndsAt` in place of the plan's length). Runs BEFORE
+ * fixPoints.stampDiscountNotes. No upgrade returns the notes untouched.
  */
-export function stampUpgradeNotes(notes: Record<string, string>, creditPaise: number): Record<string, string> {
-  if (!Number.isInteger(creditPaise) || creditPaise <= 0) return notes;
-  const charged = Number(notes.amountPaise);
+export function stampUpgradeNotes(notes: Record<string, string>, upgrade: Upgrade | null): Record<string, string> {
+  if (!upgrade) return notes;
   return {
     ...notes,
-    amountPaise: String(Math.max(MIN_CHARGE_PAISE, charged - creditPaise)),
+    amountPaise: String(upgrade.pricePaise),
     listPaise: notes.listPaise ?? notes.amountPaise,
-    upgradeCreditPaise: String(creditPaise),
+    upgradeCreditPaise: String(upgrade.creditPaise),
+    upgradeEndsAt: upgrade.endsAt,
   };
 }
 
@@ -126,32 +166,4 @@ export function orderGrantNote(notes: Record<string, string> | null | undefined)
     (p): p is string => p !== null
   );
   return parts.length > 0 ? parts.join(" ") : null;
-}
-
-/**
- * The credit toward each rupee pass on www that one of `rows` is an upgrade
- * to, for the offers (/api/me/fix-points, /pricing). planId -> paise, plus the
- * credited pass's name.
- */
-export function upgradeCredits(
-  rows: readonly CreditRow[],
-  plans: readonly Plan[],
-  nowMs: number
-): { credits: Record<string, number>; creditFrom: string | null } {
-  const credits: Record<string, number> = {};
-  let creditFrom: string | null = null;
-  for (const p of plans) {
-    if (!p.active || p.site !== "pyqvault" || p.currency !== "INR") continue;
-    const c = upgradeCredit(rows, p, plans, nowMs);
-    if (c.creditPaise > 0) {
-      credits[p.id] = c.creditPaise;
-      creditFrom ??= c.fromLabel;
-    }
-  }
-  return { credits, creditFrom };
-}
-
-/** `plan`'s price for the student holding `rows`: list less any upgrade credit (no points; a parent's price). */
-export function upgradePricePaise(plan: Plan, rows: readonly CreditRow[], plans: readonly Plan[], nowMs: number): number {
-  return plan.amountPaise - upgradeCredit(rows, plan, plans, nowMs).creditPaise;
 }

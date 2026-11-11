@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { getSessionUser } from "@/lib/auth";
 import { fetchOrder, verifyPaymentSignature } from "@/lib/billing/razorpay";
-import { computeExpiry, planForPaidOrder } from "@/lib/billing/plans";
+import { grantExpiry, planForPaidOrder } from "@/lib/billing/plans";
 import { grantRazorpayEntitlement } from "@/lib/billing/grant";
 import { orderGrantNote } from "@/lib/billing/upgrade";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -106,7 +106,7 @@ export async function POST(request: NextRequest) {
     userId: user.id,
     paymentId: body.razorpay_payment_id,
     scope: decided.grant.scope,
-    expiresAt: computeExpiry(Date.now(), decided.grant.durationDays),
+    expiresAt: grantExpiry(decided.grant, Date.now()),
     amountPaise: decided.grant.amountPaise,
     currency: decided.grant.currency,
     // Points (0245) and an upgrade's credit (2026-11-11), marked as the webhook marks them.

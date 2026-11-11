@@ -24,7 +24,7 @@ import { passLineForExam } from "@/lib/mocks/mocksNav";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { readFixPoints } from "@/lib/billing/fixPointsService";
 import { readReferralDiscount } from "@/lib/referrals/service";
-import { passOfferNote, fixPointsView, type FixPointsView } from "@/lib/billing/fixPoints";
+import { passOfferNote, fixPointsView, upgradeEndLabel, type FixPointsView } from "@/lib/billing/fixPoints";
 import { upgradeCredits } from "@/lib/billing/upgrade";
 
 export const dynamic = "force-dynamic";
@@ -69,7 +69,7 @@ export default async function PricingPage(
   // still shows it (the order route charges both again).
   let fixView: FixPointsView | null = null;
   if (user && !member && site === "pyqvault") {
-    const { credits, creditFrom } = upgradeCredits(rows, allPlans, now);
+    const { credits, creditFrom, creditEndsAt } = upgradeCredits(rows, allPlans, now);
     let points = 0;
     let referralPct = 0;
     try {
@@ -86,7 +86,7 @@ export default async function PricingPage(
     } catch (e) {
       console.error("pricing: fix points read failed", e);
     }
-    fixView = fixPointsView({ points, plans: allPlans, hasPass: false, referralPct, credits, creditFrom });
+    fixView = fixPointsView({ points, plans: allPlans, hasPass: false, referralPct, credits, creditFrom, creditEndsAt });
   }
   const examLine = site === "pyqvault" ? await passLineForViewer(user?.id ?? null) : null;
   // Staff already have everything a pass sells.
@@ -161,7 +161,11 @@ export default async function PricingPage(
                     {fixView?.prices[plan.id] && (
                       <s className="text-base text-muted-foreground">{formatPrice(plan.amountPaise, plan.currency)}</s>
                     )}
-                    <span className="text-sm text-muted-foreground">/ {planLengthLabel(plan)}</span>
+                    <span className="text-sm text-muted-foreground">
+                      {fixView?.credits[plan.id] && fixView.creditEndsAt
+                        ? `until ${upgradeEndLabel(fixView.creditEndsAt)}`
+                        : `/ ${planLengthLabel(plan)}`}
+                    </span>
                   </p>
                   {fixView?.prices[plan.id] && !owns(plan) && (
                     <p className="mt-1 text-xs font-medium text-emerald-700 dark:text-emerald-400">

@@ -358,8 +358,8 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 - **2026-11-11 — Pass upgrade: a Practice Pass holder buys Premium for the difference (no migration).**
   - **Why:** on 11-10 a student paid ₹199 for Practice, then met a download box asking the full ₹499 with "Everything in the Practice Pass" as a perk, and answered "too expensive".
-  - **Credit = what they PAID x share of days left, nearest rupee** (owner: "shrinks with time used"); Vault Points then come off the upgrade price (owner: "on top"). Free grants earn none. Premium runs 6 months from the upgrade; the old row stays.
-  - **The order is still the contract:** the order route reads the passes and stamps list less credit (`lib/billing/upgrade.ts`); a failed read sells at list. Parent links get the credit too. Pass rows get `upgrade_credit:<paise>` AFTER any `fix_points:`/`parent_link:` mark, so those LIKE readouts still match.
+  - **Pay the difference for the days left, same end date** (owner, over a fresh 6 months that made waiting dearer): (₹499 − paid) × days left ÷ 182, nearest rupee: ₹300 day 0, ₹218 day 50. Vault Points come off on top; free grants earn no upgrade.
+  - **The order is still the contract:** the order route stamps the upgrade price AND end date (`lib/billing/upgrade.ts`); grants end then (`grantExpiry`); a failed read sells at list. Parent links get the credit too. Pass rows get `upgrade_credit:<paise>` AFTER any `fix_points:`/`parent_link:` mark, so those LIKE readouts still match.
   - **Shown = charged:** offers no longer hide the points price from a pass holder. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-11 — "3 of your last 4 on <subtopic> were wrong": help offered under a bank answer (no migration).**
   - **Owner's idea, measured first:** 629 such moments (267 students) in 30 days; 14% left right after. They had read three solutions and still missed.

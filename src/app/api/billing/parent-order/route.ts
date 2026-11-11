@@ -6,7 +6,7 @@ import { ownsPlan } from "@/lib/billing/plans";
 import { loadEntitlements } from "@/lib/entitlements/query";
 import { isParentCode, parentLinkState, parentOrderNotes } from "@/lib/billing/parentLink";
 import { readParentLink } from "@/lib/billing/parentLinkStore";
-import { stampUpgradeNotes, upgradeCredit } from "@/lib/billing/upgrade";
+import { stampUpgradeNotes, upgradeFor } from "@/lib/billing/upgrade";
 import { checkAndIncrement } from "@/lib/rate-limit";
 import { getClientIp } from "@/lib/http";
 import { logActivity } from "@/lib/activity/service";
@@ -53,8 +53,8 @@ export async function POST(request: NextRequest) {
   }
 
   // A Practice Pass holder's link to the Premium Pass is paid at the upgrade
-  // price (2026-11-11), the same credit the student's own checkout gives.
-  const notes = stampUpgradeNotes(parentOrderNotes(plan, link), upgradeCredit(rows, plan, plans, now).creditPaise);
+  // price and ends with the Practice Pass (2026-11-11), as the student's own checkout.
+  const notes = stampUpgradeNotes(parentOrderNotes(plan, link), upgradeFor(rows, plan, plans, now));
   const result = await createOrder({
     amountPaise: Number(notes.amountPaise),
     currency: plan.currency,

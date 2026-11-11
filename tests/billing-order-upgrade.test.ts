@@ -70,13 +70,16 @@ beforeEach(() => {
 });
 
 describe("/api/billing/order: the upgrade price", () => {
-  it("charges list less what is left of the Practice Pass", async () => {
-    vi.mocked(loadEntitlements).mockResolvedValueOnce([practiceRow()]);
+  it("charges the difference for the days left, ending with the Practice Pass", async () => {
+    const row = practiceRow();
+    vi.mocked(loadEntitlements).mockResolvedValueOnce([row]);
     const res = await order(post("http://localhost/api/billing/order", { planId: "mock-pass-6m" }));
     expect(res.status).toBe(200);
     const call = vi.mocked(createOrder).mock.calls[0][0];
     expect(call.amountPaise).toBe(30000);
-    expect(call.notes).toMatchObject({ amountPaise: "30000", listPaise: "49900", upgradeCreditPaise: "19900", scope: "mocks" });
+    expect(call.notes).toMatchObject({
+      amountPaise: "30000", listPaise: "49900", upgradeCreditPaise: "19900", scope: "mocks", upgradeEndsAt: row.expiresAt,
+    });
   });
 
   it("takes Vault Points off the upgrade price", async () => {

@@ -164,6 +164,7 @@ describe("fixPointsView (what /api/me/fix-points answers)", () => {
       prices: { "mock-pass-6m": "₹439", "practice-pass-6m": "₹175" },
       credits: {},
       creditFrom: null,
+      creditEndsAt: null,
     });
   });
   it("lists no prices with no points (the cards keep their own)", () => {

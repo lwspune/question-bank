@@ -117,6 +117,8 @@ export type FixPointsView = {
   credits: Record<string, number>;
   /** The pass the credit comes from ("Practice Pass"); null with no credit. */
   creditFrom: string | null;
+  /** When an upgrade would end: the held pass's own end (ISO); null with no credit. */
+  creditEndsAt: string | null;
 };
 
 export function fixPointsView(i: {
@@ -130,6 +132,7 @@ export function fixPointsView(i: {
   /** Upgrade credits by planId (lib/billing/upgrade upgradeCredit); absent = none. */
   credits?: Record<string, number>;
   creditFrom?: string | null;
+  creditEndsAt?: string | null;
 }): FixPointsView {
   const points = Math.max(0, Math.floor(i.points) || 0);
   const pct = fixPointsPct(points);
@@ -149,8 +152,10 @@ export function fixPointsView(i: {
     points > 0 && oldest && !Number.isNaN(oldest.getTime())
       ? new Date(oldest.getTime() + FIX_POINTS_WINDOW_DAYS * DAY_MS).toISOString()
       : null;
-  const creditFrom = Object.keys(credits).length > 0 ? i.creditFrom ?? null : null;
-  return { points, pct, maxPct: FIX_POINTS_MAX_PCT, referralPct, hasPass: i.hasPass, lapsesOn, prices, credits, creditFrom };
+  const upgrading = Object.keys(credits).length > 0;
+  const creditFrom = upgrading ? i.creditFrom ?? null : null;
+  const creditEndsAt = upgrading ? i.creditEndsAt ?? null : null;
+  return { points, pct, maxPct: FIX_POINTS_MAX_PCT, referralPct, hasPass: i.hasPass, lapsesOn, prices, credits, creditFrom, creditEndsAt };
 }
 
 /*
@@ -177,21 +182,28 @@ export function vaultPointsOfferNote(v: FixPointsView | null): string | null {
   return `Includes ${total}% off: ${referral}% from your friend's invite and ${v.pct}% from your ${vp(v.points)}.`;
 }
 
+/** The day an upgrade ends, as the offers say it ("11 May 2027", IST). */
+export function upgradeEndLabel(endsAt: string): string {
+  return new Date(endsAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric", timeZone: "Asia/Kolkata" });
+}
+
 /**
- * The line under an offer for `planId`: where its lower price came from. An
- * upgrade names the credit first ("₹199 off for the days left on your
- * Practice Pass") and any points after it. Without a credit, the points note.
- * Unlike vaultPointsOfferNote this speaks to a pass holder too: an offer on
- * their screen is one they are buying, at the price shown (2026-11-11).
+ * The line under an offer for `planId`: where its price came from. An upgrade
+ * says what it covers and when it ends (owner, 2026-11-11: pay the difference
+ * for the days left, same end date), with any points after it. Without an
+ * upgrade, the points note. Unlike vaultPointsOfferNote this speaks to a pass
+ * holder too: an offer on their screen is one they are buying, at the price
+ * shown.
  */
 export function passOfferNote(v: FixPointsView | null, planId: string): string | null {
   if (!v) return null;
   const credit = v.credits?.[planId] ?? 0;
   if (credit <= 0) return vaultPointsOfferNote({ ...v, hasPass: false });
-  const from = `${formatPrice(credit, "INR")} off for the days left on your ${v.creditFrom ?? "current pass"}`;
-  // A friend's invite never meets a credit: it is for a first purchase only.
-  if (v.pct <= 0) return `Includes ${from}.`;
-  return `Includes ${from}, and ${v.pct}% off from your ${vp(v.points)}.`;
+  const what = `Upgrade price for the days left on your ${v.creditFrom ?? "current pass"}`;
+  const end = v.creditEndsAt ? ` Premium ends with it, on ${upgradeEndLabel(v.creditEndsAt)}.` : "";
+  // A friend's invite never meets an upgrade: it is for a first purchase only.
+  if (v.pct <= 0) return `${what}.${end}`;
+  return `${what}, with ${v.pct}% off from your ${vp(v.points)}.${end}`;
 }
 
 /** The status line on /me, the drill's end screen and Review (owner, 2026-11-09: shown with its value, to every student). */

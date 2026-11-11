@@ -55,6 +55,7 @@ describe("GET /api/me/fix-points", () => {
       prices: { "mock-pass-6m": "₹439", "practice-pass-6m": "₹175" },
       credits: {},
       creditFrom: null,
+      creditEndsAt: null,
     });
   });
 

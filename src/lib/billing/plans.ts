@@ -296,7 +296,28 @@ export type OrderGrant = {
   durationDays: number | null;
   amountPaise: number;
   currency: PlanCurrency;
+  /** An upgrade's fixed end (ISO, lib/billing/upgrade): the pass ends then, not `durationDays` from now. */
+  endsAt?: string;
 };
+
+const DAY_MS = 86_400_000;
+
+/**
+ * When a granted pass ends: an upgrade's stamped end date, else the plan's
+ * length from now. An end already past (a checkout left open across it) still
+ * gives a day, so a payment never buys a pass that is over.
+ */
+export function grantExpiry(grant: Pick<OrderGrant, "durationDays" | "endsAt">, nowMs: number): string | null {
+  if (grant.endsAt) return new Date(Math.max(Date.parse(grant.endsAt), nowMs + DAY_MS)).toISOString();
+  return computeExpiry(nowMs, grant.durationDays);
+}
+
+/** How long a granted pass lasts, for the emails ("6 months", "132 days"). */
+export function grantLengthLabel(grant: Pick<OrderGrant, "durationDays" | "endsAt">, nowMs: number): string {
+  if (!grant.endsAt) return planLengthLabel({ durationDays: grant.durationDays });
+  const days = Math.max(1, Math.round((Date.parse(grantExpiry(grant, nowMs) as string) - nowMs) / DAY_MS));
+  return planLengthLabel({ durationDays: days });
+}
 
 /**
  * What a paid order grants, for the account claiming it — decided from the
@@ -326,12 +347,25 @@ export function planForPaidOrder(
     if (!Number.isInteger(d) || d <= 0) return { ok: false, reason: "order notes incomplete" };
     durationDays = d;
   }
+  let endsAt: string | undefined;
+  if ("upgradeEndsAt" in notes) {
+    const t = Date.parse(notes.upgradeEndsAt);
+    if (!Number.isFinite(t)) return { ok: false, reason: "order notes incomplete" };
+    endsAt = new Date(t).toISOString();
+  }
   if (order.amount_paid !== amount || order.currency !== notes.currency) {
     return { ok: false, reason: "amount does not match order" };
   }
   return {
     ok: true,
-    grant: { planId: notes.planId, scope: notes.scope, durationDays, amountPaise: amount, currency: notes.currency },
+    grant: {
+      planId: notes.planId,
+      scope: notes.scope,
+      durationDays,
+      amountPaise: amount,
+      currency: notes.currency,
+      ...(endsAt ? { endsAt } : {}),
+    },
   };
 }
 

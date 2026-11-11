@@ -14,7 +14,7 @@ import { readFixPoints } from "@/lib/billing/fixPointsService";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { readReferralDiscount } from "@/lib/referrals/service";
 import { loadEntitlements } from "@/lib/entitlements/query";
-import { stampUpgradeNotes, upgradeCredit } from "@/lib/billing/upgrade";
+import { stampUpgradeNotes, upgradeFor, type Upgrade } from "@/lib/billing/upgrade";
 
 export const maxDuration = 30;
 
@@ -77,14 +77,14 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Unknown plan" }, { status: 400 });
   }
 
-  // An upgrade's credit (2026-11-11), Fix Points (0245) and a friend's
-  // referral (0249): the server reads all three NOW and the order carries the
-  // price they make, so the payment is held to it. Each failed read counts as
-  // none: never a discount nobody earned. The credit comes off first, then the
-  // points off what is left (owner).
+  // An upgrade (2026-11-11), Fix Points (0245) and a friend's referral (0249):
+  // the server reads all three NOW and the order carries the price they make
+  // (and an upgrade's end date), so the payment is held to it. Each failed read
+  // counts as none: never a discount nobody earned. The upgrade price first,
+  // then the points off it (owner).
   let points = 0;
   let referralPct = 0;
-  let creditPaise = 0;
+  let upgrade: Upgrade | null = null;
   if (planTakesDiscount(plan)) {
     const admin = createSupabaseAdminClient();
     const [p, r, e] = await Promise.allSettled([
@@ -96,10 +96,10 @@ export async function POST(request: NextRequest) {
     else console.error("order: fix points read failed", p.reason);
     if (r.status === "fulfilled") referralPct = r.value;
     else console.error("order: referral read failed", r.reason);
-    if (e.status === "fulfilled") creditPaise = upgradeCredit(e.value, plan, plans, Date.now()).creditPaise;
+    if (e.status === "fulfilled") upgrade = upgradeFor(e.value, plan, plans, Date.now());
     else console.error("order: pass read for upgrade failed", e.reason);
   }
-  const notes = stampDiscountNotes(stampUpgradeNotes(stampOrderNotes(plan, user.id), creditPaise), plan, { points, referralPct });
+  const notes = stampDiscountNotes(stampUpgradeNotes(stampOrderNotes(plan, user.id), upgrade), plan, { points, referralPct });
 
   const result = await createOrder({
     amountPaise: Number(notes.amountPaise),

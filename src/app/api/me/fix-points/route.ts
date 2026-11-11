@@ -54,11 +54,11 @@ export async function GET(request: NextRequest) {
         return [];
       }),
     ]);
-    const { credits, creditFrom } = upgradeCredits(rows, plans, now.getTime());
+    const { credits, creditFrom, creditEndsAt } = upgradeCredits(rows, plans, now.getTime());
     return NextResponse.json(
       {
         eligible: true,
-        ...fixPointsView({ points: balance.points, plans, hasPass, oldestAt: balance.oldestAt, referralPct, credits, creditFrom }),
+        ...fixPointsView({ points: balance.points, plans, hasPass, oldestAt: balance.oldestAt, referralPct, credits, creditFrom, creditEndsAt }),
       },
       { headers: { "Cache-Control": "private, no-store" } }
     );
