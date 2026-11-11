@@ -23,11 +23,17 @@ import type { DueSummary } from "./dueNudge";
 import type { Loop } from "@/lib/education/howItWorks";
 import { INVITE_LINES } from "@/lib/education/classroomScript";
 import { drillHref } from "@/lib/drill/from";
+import type { ExamEntry } from "@/lib/exam/examContext";
+import { INTL_ORIGIN } from "@/lib/sites/intl";
 
 
-/** A CTA href: through /api/e/<token> when the send has a click token, else direct. */
-function ctaHref(path: string, clickToken: string | undefined): string {
-  return clickToken ? `${SITE_URL}/api/e/${clickToken}?to=${encodeURIComponent(path)}` : `${SITE_URL}${path}`;
+/**
+ * A CTA href: through /api/e/<token> when the send has a click token, else
+ * direct. `origin` is the site the student uses: www by default, intl for an
+ * intl.pyqvault.com student (the click route is shared by both hosts).
+ */
+function ctaHref(path: string, clickToken: string | undefined, origin: string = SITE_URL): string {
+  return clickToken ? `${origin}/api/e/${clickToken}?to=${encodeURIComponent(path)}` : `${origin}${path}`;
 }
 
 /** Replies go to a real, monitored mailbox. `EMAIL_FROM` is a send-only address
@@ -610,6 +616,133 @@ ${stepsHtml}
   <p style="margin:12px 0 24px;color:${MUTED};font-size:14px">Everything on the site, one line each: <a href="${startUrl}" style="color:${ACCENT}">${startUrl}</a></p>
   <p style="margin:0 0 24px;color:${MUTED};font-size:14px">Reply to this email if something looks wrong. A person reads every reply.</p>
   <p style="margin:0 0 24px">— ${BRAND}</p>
+  <hr style="border:none;border-top:1px solid #e2e8f0;margin:0 0 12px">
+  <p style="margin:0;color:#94a3b8;font-size:12px">
+    Don&#39;t want these? <a href="${unsubUrl}" style="color:#94a3b8">Unsubscribe</a>.
+  </p>
+</div>`;
+
+  return {
+    subject,
+    text,
+    html,
+    replyTo: REPLY_TO,
+    headers: {
+      "List-Unsubscribe": `<${oneClickUrl}>`,
+      "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+    },
+  };
+}
+
+// ─── The intl welcome (2026-11-11) ──────────────────────────────────────────
+
+/** The intl site's public name (app/intl/page.tsx, IntlFooter). */
+export const INTL_BRAND = "PYQ Vault Global";
+
+/**
+ * The paper an intl exam's welcome opens first: a real ministry paper, so the
+ * first thing a student meets is the exam itself. An intl exam not listed here
+ * opens its mock list instead.
+ */
+const INTL_FIRST_PAPER: Partial<Record<string, string>> = {
+  imat: "imat-2025",
+};
+
+/**
+ * The three steps for an intl student. A paper comes FIRST because on
+ * 2026-11-11 one of 15 IMAT signups had found the mocks, while 12 had taken a
+ * notes PDF: they arrive on notes and never see a paper. Review and the notes
+ * pages are site-aware on intl (lib/sites/siteScope), so they hold the intl
+ * exams alone.
+ */
+export function intlWelcomeLoop(exam: ExamEntry): Loop {
+  const name = exam.displayName;
+  const paper = INTL_FIRST_PAPER[exam.slug];
+  return {
+    kind: "mock",
+    examLabel: name,
+    steps: [
+      {
+        title: `Sit a real ${name} paper, timed`,
+        body: paper
+          ? `Start with the official 2025 paper, under the real time limit. At the end you see your score, the right answer to every question and a worked solution.`
+          : `Pick a past paper and sit it under the real time limit. At the end you see your score, the right answer to every question and a worked solution.`,
+        href: paper ? `/mock/${paper}` : `/mock/exam/${exam.slug}`,
+        cta: paper ? "Start the 2025 paper" : "See the papers",
+      },
+      {
+        title: "Fix what you got wrong",
+        body: "Every question you miss waits for you in Review. Try it again until you get it right, and it leaves the list.",
+        href: "/review",
+        cta: "Open Review",
+      },
+      {
+        title: "Read the notes for your weak chapters",
+        body: `Notes for every ${name} chapter, with worked examples and a PDF you can print. Start with the chapters that cost you marks.`,
+        href: exam.notesPath ?? `/exams/${exam.slug}`,
+        cta: "Open the notes",
+      },
+    ],
+  };
+}
+
+export type IntlWelcomeEmailInput = {
+  name: string;
+  exam: ExamEntry;
+  unsubscribeToken: string;
+  clickToken?: string;
+};
+
+/**
+ * The welcome for a student whose exams are all international. Same once-ever
+ * rule as the PYQ Vault welcome (same kind and dedupe key, lib/email/welcome),
+ * but every link is on intl.pyqvault.com and it names no Indian exam. It sells
+ * nothing (owner rule: no pass in general copy).
+ */
+export function buildIntlWelcomeEmail(input: IntlWelcomeEmailInput): BuiltEmail {
+  const { name, exam, unsubscribeToken, clickToken } = input;
+  const who = greetingName(name);
+  const loop = intlWelcomeLoop(exam);
+  const unsubUrl = `${INTL_ORIGIN}/unsubscribe/${unsubscribeToken}`;
+  const oneClickUrl = `${INTL_ORIGIN}/api/unsubscribe/${unsubscribeToken}`;
+  const href = (path: string) => ctaHref(path, clickToken, INTL_ORIGIN);
+
+  const subject = who
+    ? `How to use ${INTL_BRAND} for ${exam.displayName}, ${who}`
+    : `How to use ${INTL_BRAND} for ${exam.displayName}`;
+  const lead = `Thanks for joining ${INTL_BRAND}. Here are three steps to raise your ${exam.displayName} score:`;
+  const close = "Reply to this email if you get stuck or something looks wrong. A person reads every reply.";
+
+  const text = [
+    who ? `Hi ${who},` : "Hi,",
+    "",
+    lead,
+    "",
+    ...loop.steps.flatMap((s, i) => [`${i + 1}. ${s.title}`, `   ${s.body}`, `   ${s.cta}: ${href(s.href)}`, ""]),
+    close,
+    "",
+    `The ${INTL_BRAND} team`,
+    "",
+    "---",
+    `Don't want these? Unsubscribe: ${unsubUrl}`,
+  ].join("\n");
+
+  const stepsHtml = loop.steps
+    .map(
+      (s, i) => `  <div style="border:1px solid #e2e8f0;border-radius:8px;padding:14px 16px;margin:0 0 12px">
+    <p style="margin:0 0 4px;font-weight:600;color:#0f172a">${i + 1}. ${escapeHtml(s.title)}</p>
+    <p style="margin:0 0 10px;color:${MUTED};font-size:14px">${escapeHtml(s.body)}</p>
+    <a href="${href(s.href)}" style="background:${ACCENT};color:#fff;text-decoration:none;padding:9px 16px;border-radius:6px;display:inline-block;font-weight:600;font-size:14px">${escapeHtml(s.cta)}</a>
+  </div>`
+    )
+    .join("\n");
+
+  const html = `<div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:520px;margin:0 auto;color:${INK};line-height:1.55">
+  <p style="margin:0 0 16px">${who ? `Hi ${escapeHtml(who)},` : "Hi,"}</p>
+  <p style="margin:0 0 16px">${escapeHtml(lead)}</p>
+${stepsHtml}
+  <p style="margin:12px 0 24px;color:${MUTED};font-size:14px">${escapeHtml(close)}</p>
+  <p style="margin:0 0 24px">The ${INTL_BRAND} team</p>
   <hr style="border:none;border-top:1px solid #e2e8f0;margin:0 0 12px">
   <p style="margin:0;color:#94a3b8;font-size:12px">
     Don&#39;t want these? <a href="${unsubUrl}" style="color:#94a3b8">Unsubscribe</a>.
