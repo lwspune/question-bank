@@ -459,7 +459,7 @@ describe("parseClientEvent - the stuck offer", () => {
   const Q = "c0ffee00-1b2c-4d3e-9f00-112233445566";
 
   it("records each step with its question, once per question per day", () => {
-    for (const action of ["shown", "teach", "easier", "keep"]) {
+    for (const action of ["shown", "teach", "easier", "keep", "returned", "try_after"]) {
       expect(parseClientEvent({ kind: "surface_viewed", surface: "stuck_offer", questionId: Q, action }, "u1", NOW)).toEqual({
         ok: true,
         value: {

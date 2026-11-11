@@ -87,7 +87,8 @@ export const SURFACES = [
   "start_next",
   "start_next_tap",
   // The stuck offer under a bank answer (2026-11-10, lib/questions/stuckOffer):
-  // metadata.action (shown, teach, easier, keep) and metadata.questionId.
+  // metadata.action (shown, teach, easier, keep; returned and try_after since
+  // 2026-11-11, after Teach me the idea) and metadata.questionId.
   "stuck_offer",
 ] as const;
 

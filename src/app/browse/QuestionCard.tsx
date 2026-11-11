@@ -1,11 +1,10 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   ArrowUpRight,
-  BookOpen,
   Check,
   ChevronDown,
   ChevronUp,
@@ -46,6 +45,10 @@ import RevealLockedLink from "@/components/reveal/RevealLockedLink";
 import { RevealDailyLink, RevealDailyPrompt } from "@/components/reveal/RevealDailyLimit";
 import FixNudgeLine from "@/components/reveal/FixNudgeLine";
 import StuckOfferLine from "@/components/reveal/StuckOfferLine";
+import BackFromNotesLine from "@/components/reveal/BackFromNotesLine";
+import { dismissStuckOffer } from "@/components/reveal/stuckOfferStore";
+import { clearBackTrip, readBackTrip, saveBackTrip } from "@/components/reveal/backToQuestionStore";
+import { questionAnchorId, returnsTo, type BackSource, type BackTrip } from "@/lib/browse/backToQuestion";
 import PresentButton from "@/components/present/PresentButton";
 import { fromQuestionRow } from "@/lib/present/viewModel";
 import BookmarkButton from "./BookmarkButton";
@@ -220,7 +223,48 @@ export default function QuestionCard({
   }
   const correctLabels = question.options.filter((o) => o.isCorrect).map((o) => o.label);
   const pathname = usePathname();
-  const hasChips = Boolean(resources?.guide || resources?.notes);
+  // The Strategy chip left the card on 2026-11-11 (0.6% of cards tapped it in 30 days; the
+  // /questions page header still links the guide). Concept notes stays (2.7%).
+  const hasChips = Boolean(resources?.notes);
+
+  // "Back to your question" (lib/browse/backToQuestion): a notes link from this card saves
+  // the way back, and on return the card shows the answer it showed when it was left.
+  const [backFromNotes, setBackFromNotes] = useState<BackTrip | null>(null);
+  function leaveForNotes(notesHref: string, source: BackSource, offer?: { subtopic: string; easierId: string | null }) {
+    saveBackTrip({
+      questionId: question.id,
+      notesHref,
+      source,
+      answer: { picked, ticks, checked: msqChecked, showSolution },
+      subtopic: offer?.subtopic ?? null,
+      easierId: offer?.easierId ?? null,
+    });
+  }
+  useEffect(() => {
+    if (surface !== "bank") return;
+    const trip = readBackTrip();
+    if (!trip || !returnsTo(trip, question.id, window.location)) return;
+    clearBackTrip();
+    const labels = new Set<string>(question.options.map((o) => o.label));
+    const a = trip.answer;
+    setExpanded(true);
+    if (a.picked && labels.has(a.picked)) setPicked(a.picked as OptionLabel);
+    const ticked = a.ticks.filter((l) => labels.has(l)) as OptionLabel[];
+    if (ticked.length > 0) {
+      setTicks(ticked);
+      setMsqChecked(a.checked);
+    }
+    if (a.showSolution) setShowSolution(true);
+    // After Teach me the idea the offer has done its job: the card asks for one more try instead.
+    if (trip.source === "offer") dismissStuckOffer(question.id);
+    setBackFromNotes(trip);
+    trackFunnel("back_to_question_restored", { from: trip.source, how: trip.viaPill ? "pill" : "back" });
+    requestAnimationFrame(() => {
+      document.getElementById(questionAnchorId(question.id))?.scrollIntoView({ block: "start" });
+    });
+    // Once, on arrival: a later answer on this card is its own.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   async function toggleSolution() {
     if (showSolution) {
       setShowSolution(false);
@@ -342,8 +386,9 @@ export default function QuestionCard({
 
   return (
     <div
+      id={questionAnchorId(question.id)}
       className={cn(
-        "overflow-hidden rounded-2xl border bg-card shadow-sm transition-all hover:border-primary/30 hover:shadow-md",
+        "scroll-mt-20 overflow-hidden rounded-2xl border bg-card shadow-sm transition-all hover:border-primary/30 hover:shadow-md",
         inCart && "border-primary/60 ring-2 ring-primary/20"
       )}
     >
@@ -625,7 +670,14 @@ export default function QuestionCard({
             {/* Every fifth wrong bank answer of the day: the misses are saved in
                 Fix your mistakes (lib/drill/fixNudge). Nothing on other cards. */}
             {surface === "bank" && revealed && <FixNudgeLine questionId={question.id} />}
-            {surface === "bank" && revealed && <StuckOfferLine questionId={question.id} notesHref={resources?.notes?.href ?? null} />}
+            {surface === "bank" && revealed && (
+              <StuckOfferLine
+                questionId={question.id}
+                notesHref={resources?.notes?.href ?? null}
+                onTeach={(offer) => resources?.notes && leaveForNotes(resources.notes.href, "offer", offer)}
+              />
+            )}
+            {backFromNotes && <BackFromNotesLine trip={backFromNotes} />}
 
             {isSubjective && !question.solution && (
               <p className="text-xs italic text-muted-foreground">Model answer coming soon.</p>
@@ -694,21 +746,24 @@ export default function QuestionCard({
               <SelfMarkButtons questionId={question.id} surface={selfMarkSurface} />
             )}
 
-            {/* Strategy and concept chips: one line, SHOWN only with the
-                solution, but always in the HTML. On the crawlable /questions
-                pages they are internal links to /notes and /guide (growth
-                registry "internal-links"), so hiding them from the markup would
-                cut that before "resource-chips" has measured anything. */}
+            {/* The concept notes chip: SHOWN only with the solution, but always
+                in the HTML, an internal link to /notes on the crawlable
+                /questions pages (growth registry "internal-links"). The
+                Strategy chip beside it was retired 2026-11-11 ("resource-chips"):
+                the page header links the guide once. */}
             {hasChips && (
               // The `hidden` CLASS, not the attribute: a `flex` class outranks the
               // [hidden] browser style, so the attribute left the chips showing.
               // Wraps: three chips on one phone line cut every label to "Conc…".
               <div className={cn("min-w-0 flex-wrap items-center gap-1.5 font-sans text-xs", showSolution ? "flex" : "hidden")}>
-                {resources?.guide && (
-                  <ResourceChip href={resources.guide.href} label="Strategy" title={resources.guide.label} Icon={BookOpen} chip="guide" page={chipPage(pathname)} fixed />
-                )}
                 {resources?.notes && (
-                  <ResourceChip href={resources.notes.href} label={resources.notes.label.replace(/^Concept:\s*/, "")} title={resources.notes.label} Icon={NotebookPen} chip="notes" page={chipPage(pathname)} />
+                  <ResourceChip
+                    href={resources.notes.href}
+                    label={resources.notes.label.replace(/^Concept:\s*/, "")}
+                    title={resources.notes.label}
+                    page={chipPage(pathname)}
+                    onFollow={() => resources.notes && leaveForNotes(resources.notes.href, "chip")}
+                  />
                 )}
               </div>
             )}
@@ -808,38 +863,33 @@ function ResourceChip({
   href,
   label,
   title,
-  Icon,
-  chip,
   page,
-  fixed = false,
+  onFollow,
 }: {
   href: string;
   label: string;
   title: string;
-  Icon: typeof BookOpen;
-  chip: "guide" | "notes";
   page: "browse" | "questions" | "other";
-  /** Never shrink (the short "Strategy" chip); the other shortens with an ellipsis. */
-  fixed?: boolean;
+  /** Saves the way back before the notes open (lib/browse/backToQuestion). */
+  onFollow: () => void;
 }) {
-  const className = cn(
-    "group inline-flex min-w-0 items-center gap-1 rounded-full border border-input bg-card px-2.5 py-1 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
-    fixed ? "shrink-0" : "shrink"
-  );
-  const onClick = () => trackFunnel("resource_chips_click", { chip, page });
-  const body = (
-    <>
-      <Icon className="h-3 w-3 shrink-0" aria-hidden />
+  const onClick = () => {
+    onFollow();
+    trackFunnel("resource_chips_click", { chip: "notes", page });
+  };
+  return (
+    <Link
+      href={href}
+      title={title}
+      onClick={onClick}
+      className="group inline-flex min-w-0 shrink items-center gap-1 rounded-full border border-input bg-card px-2.5 py-1 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
+    >
+      <NotebookPen className="h-3 w-3 shrink-0" aria-hidden />
       <span className="truncate">{label}</span>
       <ArrowUpRight
         className="h-3 w-3 shrink-0 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
         aria-hidden
       />
-    </>
-  );
-  return (
-    <Link href={href} title={title} onClick={onClick} className={className}>
-      {body}
     </Link>
   );
 }

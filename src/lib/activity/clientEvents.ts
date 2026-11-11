@@ -36,8 +36,9 @@ const CHAPTER_FIX_FROM_SET: ReadonlySet<string> = new Set<string>(Object.values(
 /** Start next's pages (lib/me/startNext START_NEXT_FROM). */
 const START_NEXT_FROM_SET: ReadonlySet<string> = new Set<string>(START_NEXT_FROM);
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
-/** The stuck offer's steps (lib/questions/stuckOffer): seen, and its three buttons. */
-export const STUCK_OFFER_ACTIONS: ReadonlySet<string> = new Set(["shown", "teach", "easier", "keep"]);
+/** The stuck offer's steps (lib/questions/stuckOffer): seen, its three buttons, and after Teach
+ *  me the idea (2026-11-11): back on the question (returned), then Try one tapped (try_after). */
+export const STUCK_OFFER_ACTIONS: ReadonlySet<string> = new Set(["shown", "teach", "easier", "keep", "returned", "try_after"]);
 
 /** Where a paywall met the student. Five are the 0134 limits (2026-10-05):
  *  chapter tests, the drill, daily answers, saves, the projected score.
