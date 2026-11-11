@@ -708,7 +708,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
       "IMAT's pages moved from www to intl.pyqvault.com by permanent redirects. Intl shows no Indian exam (its own header, footer and home), has no V, and sells the pass in US dollars through Razorpay's international cards. Replaces imat-on-pyqvault (IMAT on www for everyone, 2026-10-20 to 10-30), ended early by the owner with 4 IMAT students, 2 of them foreign (US, Turkey), and no IMAT mock sat.",
     why: "Owner, 2026-10-30: international students pay where Indian students mostly do not, and an Indian site dilutes the offer for them. More international exams (MCAT next) will join the same site.",
     metric:
-      "Students with IMAT among their exams and their countries; IMAT mocks sat; USD passes sold (/dashboard/sales, Pass $)",
+      "Students with IMAT among their exams and their countries; IMAT mocks sat; USD passes sold (/dashboard/sales, Pass $). From the first deploy after 2026-11-11, intl students get a welcome email (paper first, then Review, then notes; email_sends kind welcome, metadata site intl), so read mocks started within 48 hours of signup before and after that date apart: before it, no email reached an intl student and 1 of 15 IMAT signups had sat a mock",
     rule: "No decision rule yet: there is no baseline for foreign demand or dollar sales. Read it at six weeks; a first USD sale or 10+ foreign IMAT students is the sign to add the next international exam.",
     liveSince: "2026-10-30",
     windowDays: 42,
