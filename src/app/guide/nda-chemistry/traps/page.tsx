@@ -225,8 +225,9 @@ export default async function Traps() {
             The 10-second pair-check is the highest-leverage habit.
           </strong>{" "}
           Most Chemistry distractors fall to it. A guess at 5 seconds without
-          the pair-check is negative-EV; a 10-second pair-check + skip is
-          strictly better.
+          the pair-check is close to a blind guess, which gains nothing on average with −1.33 for a
+          wrong answer. Spend the 10 seconds: each option the pair-check rules out makes
+          the answer worth more (+0.44 with one gone, +1.33 with two).
         </p>
       </section>
 

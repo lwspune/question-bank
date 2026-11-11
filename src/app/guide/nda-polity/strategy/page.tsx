@@ -174,9 +174,9 @@ export default async function NdaPolityStrategy() {
           The −1.33 penalty is harsh in a 5-question section — you can&rsquo;t
           recover from 2 wrongs without near-perfect accuracy on the rest. If
           you don&rsquo;t recognise an Article-number or body-function pair
-          within 10 seconds, skip — the −1.33 makes guessing negative-EV at
-          below ~55% confidence. World Polity multi-statement questions need
-          a 75%+ confidence threshold (60% HARD on UN subtopic).
+          within 10 seconds, skip. With −1.33 for a wrong answer,
+          a blind guess among four options gains nothing on average; rule out one option and it is worth +0.44. World Polity multi-statement questions
+          (60% HARD on the UN subtopic) need each statement checked before you answer.
         </p>
       </section>
 

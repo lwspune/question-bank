@@ -370,7 +370,7 @@ export const TEST_DAY_PLAN: TestDayPhase[] = [
     durationMin: 8,
     label: "Sweep Recall (Sound + Modern + Astronomy + Units)",
     detail:
-      "Scan all 25 Physics questions, mark every Sound/Modern Physics/Astronomy/Units/Energy Sources item, attack them first. Expect 6–8 Recall items per paper at ~30 sec each. Target: 6 correct in 8 min. If you don't know an item cold, skip — the −1.33 penalty for wrong answers makes a guess negative-EV at 50% confidence.",
+      "Scan all 25 Physics questions, mark every Sound/Modern Physics/Astronomy/Units/Energy Sources item, attack them first. Expect 6–8 Recall items per paper at ~30 sec each. Target: 6 correct in 8 min. If you don't know an item cold and cannot rule out an option, skip: with −1.33 for a wrong answer, a blind guess gains nothing on average.",
   },
   {
     durationMin: 14,

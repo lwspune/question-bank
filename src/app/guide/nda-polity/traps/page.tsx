@@ -240,9 +240,9 @@ export default async function Traps() {
             Recall; the institutional-distinction check on Procedural.
           </strong>{" "}
           Most Polity distractors fall to one of these. A guess at 5 seconds
-          without either is negative-EV; a 10-second check + skip is
-          strictly better in a 5-question section where you can&rsquo;t
-          recover from many wrongs.
+          without either is close to a blind guess, which gains nothing on average with −1.33 for a
+          wrong answer. Spend the 10 seconds: each option the check rules out makes
+          the answer worth more (+0.44 with one gone, +1.33 with two).
         </p>
       </section>
 

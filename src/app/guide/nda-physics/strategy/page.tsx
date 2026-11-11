@@ -189,8 +189,9 @@ export default async function NdaPhysicsStrategy() {
             Target: attempt 20 questions at 90%+ accuracy. Skip the 5 you&rsquo;re
             unsure of.
           </span>{" "}
-          The −1.33 penalty per wrong is harsher than NDA Maths&rsquo; −0.83 —
-          skipping is strictly correct when you&rsquo;re below ~55% confident.
+          The −1.33 per wrong is a third of the 4 marks a right answer earns, the
+          same share as NDA Maths&rsquo; −0.83 on 2.5. A guess pays once you are
+          more than 1 in 4 sure, so skip only where you cannot rule out an option.
         </p>
       </section>
 
