@@ -103,6 +103,7 @@ export const INSIGHTS: readonly Insight[] = [
         numbers:
           "Visits (Clarity) as above. Signups (database, 28 days) point the other way: ChatGPT 132 signups, 78% practised, 50% came back on a later day; Google 49 signups, 63% and 40%; unknown source 155, 61% and 37%.",
       },
+      { on: "2026-11-11", verdict: "reversed", numbers: "Signup half only (database, 28 days to 11 Nov, staff excluded); Clarity half not read. Google signups are now the more engaged: Google 207 signups, 65% practised, 53% back on a later day; ChatGPT 1,308, 61% and 34%; no source or direct 230, 53% and 39%; other 186, 57% and 36%." },
     ],
     status: "open",
   },
@@ -128,7 +129,9 @@ export const INSIGHTS: readonly Insight[] = [
     confidence: "high",
     firstSeen: "2026-10-12",
     howToCheck: `Database, staff and superadmins excluded: student_profiles from the last 28 and 7 days, share whose target_exams include a board exam (${BOARD_EXAMS}), signups per exam, and the most common pairs. Then question_practiced, answer_wrong and answer_correct joined to questions: board exams' share of answers over 28 days vs 7 days.`,
-    checks: [],
+    checks: [
+      { on: "2026-11-11", verdict: "weaker", numbers: "28 days to 11 Nov, staff excluded: 534 of 944 signups who picked an exam included a board exam (57%), last 7 days 108 of 199 (54%), down from 67% and 73%. Most picked: MH HSC 12 251, JEE Mains 238, MHT-CET 228, CBSE 12 172, Worksheets 134, SSC CGL 113, SSC CGL Tier II 101, NDA 84; 163 picked HSC with MHT-CET. Board exams' share of answers 39% (28 days) and 42% (7 days), was 38% and 49%. Still the largest group, but SSC CGL and JEE are growing faster." },
+    ],
     status: "open",
   },
   {
@@ -141,7 +144,9 @@ export const INSIGHTS: readonly Insight[] = [
     firstSeen: "2026-10-12",
     howToCheck:
       "Database: the same answers over 28 days, grouped by board vs other exams and by metadata.surface (no surface = a mock answer); answers and distinct students per group.",
-    checks: [],
+    checks: [
+      { on: "2026-11-11", verdict: "weaker", numbers: "28 days to 11 Nov, answers on board-exam questions: bank 9,912 (404 students), book reader 7,236 (272), mocks and tests (no surface) 965 (136), drill 861 (107), V 165 (89). Entrance exams: bank 23,072 (549), tests 3,418 (225). Tests are still only 5% of board answers (11% for entrance), but 136 board students sat one, up from 12." },
+    ],
     status: "open",
   },
   {
@@ -162,6 +167,7 @@ export const INSIGHTS: readonly Insight[] = [
         numbers:
           "14 days to 20 Oct IST, staff excluded: 197 download-box signups (about 15 a day, up from about 4), 195 never saw /welcome, 194 picked no exam. 30% practised (question, mock, drill or notes checkpoint) vs 78% of the 471 other signups; 37 of 168 old enough came back on a later day (22%, vs 44%). 158 downloaded (149 within 2 minutes); of the 39 who did not, 11 saw the download box and none saw download_box_over_cap, so the 200-question limit is not what stops them.",
       },
+      { on: "2026-11-11", verdict: "holds", numbers: "14 days to 11 Nov, staff excluded: 299 download-box signups (about 21 a day, up from 15), 294 never saw /welcome. 24% practised vs 72% of the 616 other signups; 53 of 257 old enough came back on a later day (21%, vs 41%). 248 downloaded." },
     ],
     status: "open",
     actedOn:
@@ -218,7 +224,9 @@ export const INSIGHTS: readonly Insight[] = [
     firstSeen: "2026-10-12",
     howToCheck:
       "Database, last 7 days: note_checkpoint and chapter_mastered rows and students, beside question_practiced. First check what a notes visit records (a surface_viewed row would settle it) before trusting a low number.",
-    checks: [],
+    checks: [
+      { on: "2026-11-11", verdict: "reversed", numbers: "7 days to 11 Nov, staff excluded: 169 students opened a notes page (942 views) and 60 opened a handout, beside 254 who answered in the bank. Reading notes is common; the checkpoint is not: 24 checkpoints from 14 students, 1 chapter mastered. The 12 Oct number was a floor because notes visits were not recorded then." },
+    ],
     status: "open",
   },
   {
@@ -232,7 +240,9 @@ export const INSIGHTS: readonly Insight[] = [
     recheckDays: 14,
     howToCheck:
       "Database, staff excluded: (1) reach first: students and distinct pages per surface (notes, board, questions, guide, formula, question_papers, past_paper) since 19 Oct, beside question_practiced students. (2) Then per notes chapter (metadata.path /notes/<subjectRoute>/<chapterSlug>/..., mapped to the DB chapter through the NOTES_CHAPTERS registry): question_practiced rows with metadata.correct on that chapter in the 7 days after a read, against the same students' rows before the read and against students who practised the chapter without reading. A correlation at best: readers choose to read.",
-    checks: [],
+    checks: [
+      { on: "2026-11-11", verdict: "mixed", numbers: "Step 1 only (reach since 19 Oct, staff excluded): notes 496 students (869 pages), questions 466, board 359, guide 252, handout 189, question papers 175, formula 26, past paper 13, beside 991 who answered a question. Step 2 (scores after a read) not run yet, so the question is still open." },
+    ],
     status: "open",
   },
   {
@@ -245,7 +255,9 @@ export const INSIGHTS: readonly Insight[] = [
     firstSeen: "2026-10-12",
     howToCheck:
       "Database: export_events with mode = 'homework' and not is_staff, last 7 days, downloads and distinct students; the same for board_paper_id is not null; answer_submissions per week. Also note how long each checked sheet took (from the grading sessions), which is what decides whether checking can grow.",
-    checks: [],
+    checks: [
+      { on: "2026-11-11", verdict: "holds", numbers: "7 days to 11 Nov, staff excluded: homework downloads 3 by 3 students; board-paper exports 23 by 14 students (board_paper_downloads 14 by 14). Answer sheets: 2 in five weeks (weeks of 12 and 19 Oct), graded 1 h and 8 h after submission." },
+    ],
     status: "open",
     actedOn: "12 Oct: decided not to add checking to homework until it reaches about 20 students a week (see Decided against).",
   },
@@ -260,9 +272,11 @@ export const INSIGHTS: readonly Insight[] = [
     recheckDays: 30,
     howToCheck:
       "Time one filtered /browse URL 4 times with curl (first byte and total) and read x-vercel-id; Supabase edge_logs for /rest/v1 calls grouped by request.cf.colo (IAD vs BOM), median and p90 origin_time.",
-    checks: [],
-    status: "open",
-    actedOn: "Logged in SUGGESTIONS.md on 12 Oct: run /browse in bom1 (about $3 a month). Deferred by the owner.",
+    checks: [
+      { on: "2026-11-11", verdict: "reversed", numbers: "Functions moved to Mumbai (bom1) on 2026-10-20. Four curl requests to /browse?exam=mht-cet&subject=Physics on 11 Nov: x-vercel-id bom1::bom1, first byte 0.22 to 0.36 s, total 0.33 to 0.53 s. Edge-log split by colo not read." },
+    ],
+    status: "retired",
+    actedOn: "Logged in SUGGESTIONS.md on 12 Oct: run /browse in bom1 (about $3 a month). Deferred by the owner, then done site-wide: every function runs in Mumbai (bom1) since 2026-10-20.",
   },
   {
     id: "gulf-students-cannot-pay",
@@ -274,7 +288,9 @@ export const INSIGHTS: readonly Insight[] = [
     firstSeen: "2026-10-13",
     howToCheck:
       "Database: signups by signup_country (not IN); for those, paywall_event rows by metadata.step (shown, checkout_opened) and razorpay entitlements. Razorpay dashboard: international cards on, and payments with a non-Indian card.",
-    checks: [],
+    checks: [
+      { on: "2026-11-11", verdict: "weaker", numbers: "Since signup country was recorded, staff excluded: 52 signups abroad; 16 met a pass offer, 3 opened checkout, 2 paid (both in INR; whether with a card issued abroad is not known). Razorpay dashboard not checked." },
+    ],
     status: "open",
     actedOn:
       "13 Oct: owner to request international cards on Razorpay. Not built: a local-currency hint on /pricing or 'resets at midnight IST' wording; only if more Gulf students meet the wall.",
@@ -289,7 +305,9 @@ export const INSIGHTS: readonly Insight[] = [
     firstSeen: "2026-10-13",
     howToCheck:
       "Database, signups since 13 Oct: count by acq_source (null, direct, chatgpt.com, google), then group the direct ones by acq_landing. A landing on /question-papers, /formula or /results points at what is being shared or bookmarked.",
-    checks: [],
+    checks: [
+      { on: "2026-11-11", verdict: "reversed", numbers: "Signups since 28 Oct, staff excluded (about 1,000): ChatGPT 662, Google 138, direct 65, Bing 51, no source 36, Yahoo 19, lwspune 10, Perplexity 4. No channel (none or direct) is 101, about 10%, down from 52%. Direct landings: /questions 23, /browse 10, home 8, none recorded 36." },
+    ],
     status: "open",
     actedOn:
       "13 Oct: a direct visit is now stored with its landing page and replaced by the first named channel. /dashboard/pmf shows it as 'Direct (no referrer, from 13 Oct)'.",
@@ -318,7 +336,9 @@ export const INSIGHTS: readonly Insight[] = [
     firstSeen: "2026-10-15",
     howToCheck:
       "Database, staff excluded, last 28 days: rank students by answers (question_practiced rows plus correct and wrong counts of finished mock_attempts) and take the top 10%. For them: share with a paywall_event shown, split by metadata.gate; of those who met 'reveals', how many practised on a later IST day and how many have a checkout_opened row; razorpay entitlements.",
-    checks: [],
+    checks: [
+      { on: "2026-11-11", verdict: "weaker", numbers: "Top 10% of the 28 days to 11 Nov, staff excluded: 132 students, 73+ answers each, 53% of all answers. 91 met a paywall, 84 the daily answer limit, and 82 of those practised again on a later day. 32 opened checkout and 19 have paid (was 3 and 1 of 39). Most still wait it out, but about 1 in 7 now pays. Price and limit changed on 23 Oct." },
+    ],
     status: "open",
   },
   {
@@ -331,7 +351,9 @@ export const INSIGHTS: readonly Insight[] = [
     firstSeen: "2026-10-15",
     howToCheck:
       "Database, staff excluded: signups 8 to 35 days old. Bucket by their first 24 hours (any mock_submitted; else question_practiced 10+, 1 to 9, none; separately any question_bookmarked; any question_practiced with metadata.surface = 'board'), then the share with question_practiced, mock_submitted or drill_completed on 3+ distinct IST days.",
-    checks: [],
+    checks: [
+      { on: "2026-11-11", verdict: "holds", numbers: "Signups 8 to 35 days old on 11 Nov (1,740, staff excluded), share active on 3+ days: all 14%; first-day mock 15% (343); 10+ bank answers and no mock 31% (350); 1 to 9 bank 22% (333); nothing 2% (714); saved a question 35% (81); answered in the book reader 37% (191). Same order as before." },
+    ],
     status: "open",
   },
   {
@@ -358,7 +380,9 @@ export const INSIGHTS: readonly Insight[] = [
     firstSeen: "2026-10-15",
     howToCheck:
       "Clarity recordings (ask first): sessions with a /notes/print/ page, and the most distinct print pages in one session. Database: surface_viewed rows with metadata.surface = 'handout' (one per page load and no chapter recorded, so a floor).",
-    checks: [],
+    checks: [
+      { on: "2026-11-11", verdict: "holds", numbers: "Database half only (Clarity not read): 7 days to 11 Nov, 126 handout views by 60 students, one student 21 in the week; 189 students opened a handout since 19 Oct. A floor: no chapter is recorded per handout view." },
+    ],
     status: "open",
   },
   {
@@ -384,7 +408,9 @@ export const INSIGHTS: readonly Insight[] = [
     firstSeen: "2026-10-15",
     howToCheck:
       "Clarity recordings (ask first): share of sessions touching /question-papers, Show model answer taps, and the longest time on one paper page. Database: answer_sheets uploads per day, the step after sitting a paper on paper.",
-    checks: [],
+    checks: [
+      { on: "2026-11-11", verdict: "mixed", numbers: "Database half only (Clarity, which shows whole papers being worked, not read): 7 days to 11 Nov, 54 students opened /question-papers (116 views), 175 since 19 Oct. Answer sheets, the step after sitting a paper, stay rare: 2 in five weeks." },
+    ],
     status: "open",
   },
   {
@@ -398,7 +424,9 @@ export const INSIGHTS: readonly Insight[] = [
     recheckDays: 7,
     howToCheck:
       "Clarity recordings (ask first): taps on \"Download paper and answer\" and what each session did next. Database, the same day: board_paper_downloads rows, and paywall_event rows whose metadata.box is board_paper.",
-    checks: [],
+    checks: [
+      { on: "2026-11-11", verdict: "mixed", numbers: "Database half only (Clarity tap counts not read): 14 days to 11 Nov, 28 board-paper downloads by 28 students; the board-paper offer box was shown to 9 students and declined by 2." },
+    ],
     status: "open",
     experimentId: "specific-offer",
   },
@@ -413,7 +441,9 @@ export const INSIGHTS: readonly Insight[] = [
     recheckDays: 7,
     howToCheck:
       "Database: chat_interactions rows with event_type typed_question since the last check, user_id not in platform_admins or org_members (signed-out rows have no user_id; count them by conversation_id). Read every message and count the people asking about the question or page in front of them (a symbol, \"this question\", \"these questions\", a point from the open chapter) against everyone who typed. Build \"explain this question\" only if the share holds near a quarter on more people.",
-    checks: [],
+    checks: [
+      { on: "2026-11-11", verdict: "stronger", numbers: "14 days to 11 Nov, staff excluded: 195 people typed to V (586 messages); 124 of them (374 messages) asked through Ask V on a question or notes item, which V can see. Of the 90 who typed with nothing attached, a keyword scan found 4 pointing at \"this question\" (a floor: not every message was read)." },
+    ],
     status: "open",
   },
   {
@@ -427,7 +457,9 @@ export const INSIGHTS: readonly Insight[] = [
     firstSeen: "2026-10-23",
     howToCheck:
       "Database, staff excluded (org_members, platform_admins), since 2026-09-27: signups (auth.users); distinct students with paywall_event step 'shown', then 'checkout_opened', then a razorpay entitlement granted after it. Per metadata.gate and metadata.box: students shown, and of them those paid later. Limit reach, paying students also excluded: per student the most bank plus board question_practiced rows on one IST day in the last 14 days (bucket at the answer limit and 5 below it), full and sectional mocks first started since counts_from, question_bookmarks count. One Clarity call (ask first) for distinct users over 3 days, divided into signups over the same days. The price (Rs 199) and the answer limit (25) both changed on 2026-10-23, so compare like with like.",
-    checks: [],
+    checks: [
+      { on: "2026-11-11", verdict: "holds", numbers: "Since 23 Oct (Rs 199, answer limit 25), staff excluded: 1,396 signups, 497 met an offer (36%, was 23%), 79 opened checkout (16%), 26 paid, all after opening checkout (33%). Shown and paid by gate: answer limit 309 and 14, download gate 231 and 14, drill 16 and 1, saves 8 and 0, chapter tests 5 and 0, V hourly 5 and 0, mock limit 1 and 0. Limit reach not re-measured." },
+    ],
     status: "open",
     actedOn: "Owner raised the pass to Rs 199 and lowered the answer limit from 30 to 25 on 2026-10-23.",
     experimentId: "answer-limit",
