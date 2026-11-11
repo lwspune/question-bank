@@ -446,7 +446,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     rule: `Keep if practice-first is ${ONBOARDING_KEEP_POINTS}+ points higher after 4 weeks; revert if ${ONBOARDING_KEEP_POINTS}+ points lower; otherwise no clear difference.`,
     liveSince: "2026-10-01",
     readout: "onboarding-arms",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-11, 13 days after the check date: no clear difference, and control is slightly ahead. Back within 7 days: practice-first 97 of 319 (30%), mock-first 120 of 353 (34%); 2+ study days 92 vs 105. Owner's call: end the split and keep mock-first as the main welcome button for everyone. Removing the split from the code is a separate change, not yet made.",
   },
   {
     id: "chapter-share",
@@ -458,7 +460,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     rule: `Keep if it brings ${CHAPTER_SHARE_KEEP}+ signups by the check date; remove it otherwise.`,
     liveSince: "2026-10-01",
     readout: "chapter-share",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-11, 13 days after the check date: 4 signups tagged chapter-share in six weeks, below the bar of 5. Removed under the rule (owner, 2026-11-11). Taking the card off the /questions and notes chapter pages is a separate change, not yet made.",
   },
   {
     id: "chapter-tests",
@@ -470,7 +474,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     rule: `Keep them featured if weekly MHT-CET mock students reach ${CHAPTER_TESTS_STUDENTS_KEEP}+ or chapter tests average ${CHAPTER_TESTS_ANSWERED_KEEP}%+ answered by the check date; otherwise stop featuring them on chapter pages.`,
     liveSince: "2026-10-01",
     readout: "chapter-tests",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-11: kept featured. 14 MHT-CET students sat a mock in the last full week (bar 10, about 5 before launch). Since launch 112 chapter-test sittings answered 69% on average, against 27% for 58 full-paper sittings, so the answered half sits just under its 70% bar; the rule needs only one half.",
   },
   {
     id: "internal-links",
@@ -482,7 +488,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     rule: `Tracked, not killed: the links stay either way. Goal ${INDEXING_GOAL} indexed pages.`,
     liveSince: "2026-10-01",
     readout: "indexing",
-    status: "running",
+    status: "decided",
+    decision:
+      "Goal met (read 2026-11-11): 597 pages indexed on 2026-11-06 against the goal of 200, up from 39 when the links went in. About 124 of them are old IMAT URLs that now redirect to intl, so about 473 count. The links stay; indexing keeps its readings below.",
   },
   {
     id: "email-cap",
@@ -546,7 +554,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     rule: `Keep them if ${PREMIUM_LIMITS_MIN_SALES}+ passes sell by the check date and the students who meet the answer limit keep coming back; if those students stop returning, raise or drop that limit first.`,
     liveSince: "2026-10-06", // switched on at /dashboard/pricing; merged 2026-10-05 with every limit off
     readout: "premium-limits",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-11: kept. 37 passes sold to 37 students since 2026-10-06 (bar 3; 1 before the limits). Students who meet the answer limit keep coming back: 65% back within 7 days (2026-10-23 reading), and 82 of the 84 heaviest students who met it in the 28 days to 11 Nov practised again on a later day. Sales also rose with signups, so the limits are not the only cause.",
   },
   {
     id: "performance-starter",
@@ -558,7 +568,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     rule: `Keep it if ${STARTER_KEEP_PCT}%+ of those viewers start a test within a day by the check date; below that, try a different offer before removing it.`,
     liveSince: "2026-10-06",
     readout: "performance-starter",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-11: kept. Of 41 students whose first performance-page view since 6 Oct came before any graded paper, 11 started a test within 24 hours (27%, bar 15%). Small numbers: 107 students viewed the page in all.",
   },
   {
     id: "formula-pages",
@@ -1337,13 +1349,22 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
   "limit-sales": {
     label: "Passes sold since the free limits went on",
     source: "entitlements where source = 'razorpay' and granted_at >= the switch-on date; paywall_event shown rows by gate beside it",
-    entries: [{ on: "2026-10-05", value: 1, note: "Baseline: 1 pass sold since sales opened on 2026-09-27, before any of these limits" }],
+    entries: [
+      { on: "2026-10-05", value: 1, note: "Baseline: 1 pass sold since sales opened on 2026-09-27, before any of these limits" },
+      { on: "2026-11-11", value: 37, note: "37 students, granted_at >= 2026-10-06" },
+    ],
   },
   "starter-start-rate": {
     label: "Empty performance page: started a test within a day (%)",
     source:
       "user_activity: surface_viewed 'performance' rows by students with no graded attempt that day, then mock_started by the same student within 24 hours",
-    entries: [],
+    entries: [
+      {
+        on: "2026-11-11",
+        value: 27,
+        note: "Since 6 Oct: 11 of 41 students (each student's first view, with no paper submitted before it; a start = a mock_attempts row within 24 hours)",
+      },
+    ],
   },
   "formula-indexed": {
     label: "Indexed /formula/ pages",
@@ -1353,7 +1374,7 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
   "formula-signups": {
     label: "Signups whose first page was a /formula/ page",
     source: "student_profiles where acq_landing starts with /formula/ and created_at >= the live date",
-    entries: [],
+    entries: [{ on: "2026-11-11", value: 12, note: "Since 2026-10-10 (bar 5); the indexed half is still unread" }],
   },
   "paper-signups": {
     label: "Signups whose first page was a past paper page or list",
