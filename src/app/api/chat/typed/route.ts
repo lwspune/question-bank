@@ -76,7 +76,7 @@ import { isExplanation } from "@/lib/chat/understood";
 import { fileVSolutionReport } from "@/lib/reports/fileVReport";
 import { loadNotesItemBrief } from "@/lib/chat/notesItemServer";
 import { buildMyQuestionDeps } from "@/lib/chat/myQuestionsServer";
-import { tappedFrom, type QuestionToolDeps } from "@/lib/chat/questionToolSet";
+import { notesTappedFrom, tappedFrom, type QuestionToolDeps } from "@/lib/chat/questionToolSet";
 import { parseVLanguage, type VLanguage } from "@/lib/chat/language";
 import { loadSimilarId, loadVQuestion, searchVQuestions } from "@/lib/chat/questionToolsServer";
 import { explainedQuestionId } from "@/lib/chat/solutionFigure";
@@ -119,11 +119,13 @@ function ownProgress(userId: string): Promise<Performance | null> {
 function buildQuestionToolDeps(
   userId: string | null,
   tapped: QuestionToolDeps["tapped"],
+  notesTapped: boolean,
   out: { onSimilar: (id: string) => void; onMatch: (id: string) => void; onLimit: (limit: number) => void }
 ): QuestionToolDeps {
   const anon = createSupabaseAnonClient();
   return {
     tapped,
+    notesTapped,
     loadQuestion: (id) => loadVQuestion(anon, id),
     spendReveal: userId ? (id) => spendVReveal(createSupabaseServerClient(), userId, id) : null,
     loadSimilar: async (q) =>
@@ -368,7 +370,7 @@ export async function POST(request: NextRequest) {
             followsUp: followsUpId ? { stem: (await loadVQuestion(createSupabaseAnonClient(), followsUpId).catch(() => null))?.text ?? null } : null,
             myQuestions: ownId ? buildMyQuestionDeps(createSupabaseServerClient(), createSupabaseAnonClient(), ownId) : null,
             questionTools: settings.explainEnabled
-              ? buildQuestionToolDeps(ownId, tappedFrom(asked, message), {
+              ? buildQuestionToolDeps(ownId, tappedFrom(asked, message), notesTappedFrom(notesBrief !== null, message), {
                   onSimilar: (id) => (similarQuestionId = id),
                   onMatch: (id) => (matchQuestionId = id),
                   onLimit: (limit) => (limitHit = limit),
