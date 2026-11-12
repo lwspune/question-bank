@@ -75,6 +75,7 @@ describe("EXPERIMENTS", () => {
       "chapter-share",
       "chapter-tests",
       "checkout-contact",
+      "checkout-return",
       "clat",
       "ebook-store",
       "email-cap",

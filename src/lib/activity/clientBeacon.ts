@@ -72,7 +72,7 @@ type ClientEvent =
     }
   | {
       kind: "paywall_event";
-      step: "shown" | "checkout_dismissed";
+      step: "shown" | "checkout_dismissed" | "dismissed";
       gate: PaywallGate;
       planId?: string;
       box?: DownloadBox;

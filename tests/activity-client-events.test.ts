@@ -136,6 +136,36 @@ describe("bookCheckoutEvent", () => {
   });
 });
 
+describe("the checkout-didn't-complete bar (2026-11-12)", () => {
+  it("records the bar seen once a day, which is what counts its days", () => {
+    const r = parseClientEvent({ kind: "paywall_event", step: "shown", gate: "return", planId: "practice-pass-6m" }, "u1", NOW);
+    expect(r).toEqual({
+      ok: true,
+      value: {
+        kind: "paywall_event",
+        metadata: { step: "shown", gate: "return" },
+        refId: "practice-pass-6m",
+        refKind: "plan",
+        dedupeKey: "paywall:shown:return:u1:2026-09-27",
+      },
+    });
+  });
+
+  it("records Not now once a day", () => {
+    const r = parseClientEvent({ kind: "paywall_event", step: "dismissed", gate: "return", planId: "practice-pass-6m" }, "u1", NOW);
+    expect(r).toEqual({
+      ok: true,
+      value: {
+        kind: "paywall_event",
+        metadata: { step: "dismissed", gate: "return" },
+        refId: "practice-pass-6m",
+        refKind: "plan",
+        dedupeKey: "paywall:dismissed:return:u1:2026-09-27",
+      },
+    });
+  });
+});
+
 describe("checkoutGate", () => {
   it("accepts the download gate", () => {
     expect(checkoutGate("teacher")).toBe("teacher");
@@ -147,6 +177,10 @@ describe("checkoutGate", () => {
   // V's hourly limit sells Premium in place since 2026-11-07 (0226).
   it("accepts V's hourly limit", () => {
     expect(checkoutGate("v_hourly")).toBe("v_hourly");
+  });
+  // The "checkout didn't complete" bar sells in place since 2026-11-12.
+  it("accepts the checkout-didn't-complete bar", () => {
+    expect(checkoutGate("return")).toBe("return");
   });
   it("defaults to pricing for a missing or unknown value", () => {
     expect(checkoutGate(undefined)).toBe("pricing");

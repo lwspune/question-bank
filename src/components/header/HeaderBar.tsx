@@ -23,6 +23,7 @@ import { usePulse } from "@/lib/viewer/usePulse";
 import { fifthTabFor } from "@/lib/nav/fifthTab";
 import ReadingBeacon from "./ReadingBeacon";
 import IntlHeaderBar from "./IntlHeaderBar";
+import CheckoutReturnBar from "@/components/billing/CheckoutReturnBar";
 import { useIntlSite } from "@/lib/sites/useIntlSite";
 
 /**
@@ -182,6 +183,10 @@ export default function HeaderBar({
           </div>
         </div>
       </header>
+
+      {/* "Your checkout didn't complete" (2026-11-12): a student's own pass
+          checkout left on an earlier day, from the pulse. Never staff. */}
+      {session && !session.isStaff && <CheckoutReturnBar pass={pulse?.leftCheckout ?? null} />}
 
       {/* Phone navigation. Rendered here so both navs share one resolution of
           the exam cookie and the session — see MobileTabBar. */}

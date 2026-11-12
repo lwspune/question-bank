@@ -6,6 +6,7 @@ import { sendActivity } from "@/lib/activity/clientBeacon";
 import type { DownloadBox } from "@/lib/activity/clientEvents";
 import { trackFunnel } from "@/lib/analytics/trackFunnel";
 import { checkoutContactOptions } from "@/lib/billing/checkoutOptions";
+import { invalidatePulse } from "@/lib/viewer/usePulse";
 
 /** Minimal shape of the Razorpay Checkout global we use. */
 type RazorpayOptions = {
@@ -41,7 +42,8 @@ declare global {
  * daily answer limit on the bank, board and guides (2026-10-25); "v_chat" the
  * same limit met inside V (2026-10-28); "revision_sheet" the /board chapter
  * revision-sheet box (2026-11-03); "v_hourly" V's hourly limit, which sells
- * the Premium Pass (2026-11-07, 0226).
+ * the Premium Pass (2026-11-07, 0226); "checkout_return" the bar that brings
+ * back a checkout left on an earlier day (2026-11-12).
  */
 export type CheckoutSurface =
   | "download_box"
@@ -52,10 +54,11 @@ export type CheckoutSurface =
   | "ebook"
   | "reveal_wall"
   | "v_chat"
-  | "v_hourly";
+  | "v_hourly"
+  | "checkout_return";
 
 /** The paywall gate the server logs for each surface (see checkoutGate). */
-export const GATE: Record<CheckoutSurface, "teacher" | "pricing" | "reveals" | "v_hourly"> = {
+export const GATE: Record<CheckoutSurface, "teacher" | "pricing" | "reveals" | "v_hourly" | "return"> = {
   download_box: "teacher",
   paper_download: "teacher",
   formula_sheet: "teacher",
@@ -65,6 +68,8 @@ export const GATE: Record<CheckoutSurface, "teacher" | "pricing" | "reveals" | "
   reveal_wall: "reveals",
   v_chat: "reveals",
   v_hourly: "v_hourly",
+  // "Your checkout didn't complete" on a later day (2026-11-12, lib/billing/leftCheckout).
+  checkout_return: "return",
 };
 
 const SCRIPT_SRC = "https://checkout.razorpay.com/v1/checkout.js";
@@ -129,6 +134,12 @@ export function useCheckout({
     setBusy(true);
     // An ebook's checkout events name the book (2026-10-20), so a drop-off can be placed per book.
     const funnelProps: Record<string, string> = ebookSlug ? { surface, slug: ebookSlug } : { surface };
+    // Money was taken: refetch the header's pulse at once, so nothing that
+    // reads it (the "checkout didn't complete" bar) shows the old state.
+    const finish = (outcome: CheckoutOutcome) => {
+      invalidatePulse();
+      onDone(outcome);
+    };
     const fail = (message: string) => {
       trackFunnel("checkout_failed", funnelProps);
       toast.error(message);
@@ -140,7 +151,7 @@ export function useCheckout({
       trackFunnel("checkout_failed", funnelProps);
       toast.error(message || "Payment received. Access will activate shortly. Check your account.");
       setBusy(false);
-      onDone("pending");
+      finish("pending");
     };
     try {
       await loadRazorpay();
@@ -188,13 +199,13 @@ export function useCheckout({
               trackFunnel("checkout_paid", funnelProps);
               toast.success(ebookSlug ? "Payment successful. Your book is ready to download." : "Payment successful. Access unlocked!");
               setBusy(false);
-              onDone("paid");
+              finish("paid");
             } else if (verifyRes.status === 202) {
               // Paid, not yet captured: the order.paid webhook grants it shortly.
               trackFunnel("checkout_paid", funnelProps);
               toast.info(verify.error || "Payment received. Access will activate shortly.");
               setBusy(false);
-              onDone("pending");
+              finish("pending");
             } else {
               paidButUnverified(verify.error);
             }
