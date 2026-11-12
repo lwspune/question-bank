@@ -52,6 +52,11 @@ describe("buildResultHeadline", () => {
     expect(h.detail).toContain("120");
   });
 
+  it("writes the unanswered line without an em dash (owner rule)", () => {
+    const h = buildResultHeadline(summary(21, 9, 108));
+    expect(h.detail).toBe("108 left unanswered: that's the clock, not the syllabus.");
+  });
+
   it("omits the unanswered line when every question was answered", () => {
     const h = buildResultHeadline(summary(100, 50, 0));
     expect(h.detail).toBeNull();

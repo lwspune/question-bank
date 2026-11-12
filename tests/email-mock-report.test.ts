@@ -129,6 +129,19 @@ describe("buildMockReport — easy questions left blank", () => {
     expect(r!.pacing!.marksLeft).toBeCloseTo(PACING_FLOOR * 2.5);
   });
 
+  it("leaves a never-opened GRACE question out of pacing: its marks were already awarded", () => {
+    // NDA 2025 (II) Paper I, 2026-11-12: 2 grace questions never opened made the
+    // card say "never reached 110, worth 275 marks" beside the score's "108 left".
+    const facts = [
+      ...Array.from({ length: PACING_FLOOR }, (_, i) => fact({ q: `n${i}`, p: i + 1, r: null, rc: false })),
+      fact({ q: "g1", p: 90, r: null, rc: false, g: true }),
+      fact({ q: "g2", p: 91, r: null, rc: false, g: true }),
+    ];
+    const r = buildMockReport(payload(facts), ATTEMPT, new Map(), new Date());
+    expect(r!.pacing!.neverReached).toBe(PACING_FLOOR);
+    expect(r!.pacing!.marksLeft).toBeCloseTo(PACING_FLOOR * 2.5);
+  });
+
   it("stays silent on pacing below the floor — two unreached questions is not a finding", () => {
     const facts = [fact({ q: "n1", r: null, rc: false }), fact({ q: "n2", p: 2, r: null, rc: false })];
     const r = buildMockReport(payload(facts), ATTEMPT, new Map(), new Date());

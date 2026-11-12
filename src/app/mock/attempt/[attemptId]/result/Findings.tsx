@@ -3,7 +3,6 @@ import { ArrowRight, Clock, Target, XCircle } from "lucide-react";
 import { formatDwell } from "@/lib/email/templates";
 import { formatMarks, formatWhere, type MockReport } from "@/lib/email/mockReport";
 import { goPracticeHref } from "@/lib/performance/links";
-import { drillHref } from "@/lib/drill/from";
 
 /**
  * "What to fix next" — the diagnosis, at the moment the student is looking at
@@ -34,7 +33,7 @@ import { drillHref } from "@/lib/drill/from";
  * fact about a QUESTION. Nothing here compares this student to another one;
  * that is the line the engagement gate draws, and it holds.
  */
-export default function Findings({ report, attemptId }: { report: MockReport; attemptId: string }) {
+export default function Findings({ report }: { report: MockReport }) {
   if (!report.hasFindings) return null;
 
   return (
@@ -92,8 +91,7 @@ export default function Findings({ report, attemptId }: { report: MockReport; at
             <span className="font-medium text-foreground">
               {report.pacing.neverReached} questions
             </span>
-            , worth {formatMarks(report.pacing.marksLeft)} marks you didn&apos;t get a shot at. That&apos;s
-            the clock, not the syllabus.
+            , worth {formatMarks(report.pacing.marksLeft)} marks you didn&apos;t get a shot at.
           </p>
         </Block>
       )}
@@ -132,27 +130,13 @@ export default function Findings({ report, attemptId }: { report: MockReport; at
         </Block>
       )}
 
-      {/* The card names what is broken; this is the only control that DOES
-          something about it. It leads because a diagnosis nobody can act on is
-          where this surface started — /drill serves these same questions back,
-          which is the deliberate-practice half of the engagement gate. It is
-          offered on every result, not only a bad one: the pool is built from
-          every paper they have sat, so there is something to fix after a good
-          sitting too. */}
-      <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:items-center">
-        <Link
-          // Scoped to THIS attempt, the same target as the headline button
-          // above, so the two CTAs on the page agree about where "fix" goes.
-          href={drillHref("findings", attemptId)}
-          prefetch={false}
-          className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-brand px-5 text-base font-medium text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-        >
-          <Target className="h-5 w-5" aria-hidden />
-          Fix five of these now
-        </Link>
+      {/* No drill button of its own (2026-11-12): the score card's "Fix these
+          mistakes" opens the same drill one screen up, and two blue buttons to
+          one place read as two different things. */}
+      <div className="mt-4">
         <Link
           href="/performance"
-          className="inline-flex h-12 items-center justify-center gap-1.5 rounded-xl px-4 text-sm font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:underline"
+          className="-ml-4 inline-flex h-11 items-center justify-center gap-1.5 rounded-xl px-4 text-sm font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:underline"
         >
           Your full performance across all papers
           <ArrowRight className="h-3.5 w-3.5" aria-hidden />

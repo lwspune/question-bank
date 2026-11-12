@@ -52,7 +52,7 @@ export function buildResultHeadline(s: ResultHeadlineInput): ResultHeadline {
 
   const detail =
     unanswered > 0
-      ? `${unanswered} left unanswered — that's the clock, not the syllabus.`
+      ? `${unanswered} left unanswered: that's the clock, not the syllabus.`
       : null;
 
   if (attempted === 0) {

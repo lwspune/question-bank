@@ -574,6 +574,8 @@ export type ReviewItem = {
   partial: boolean;
   /** The marks this question earned, as the score counted them. */
   marksEarned: number;
+  /** Seconds the student spent on it (0 = never opened); the review's time line. */
+  timeSpentSecs?: number;
   solution: string | null;
   solutionImageUrl: string | null;
   /** Animated solution (0184), already checked; null when there is none. */
@@ -673,6 +675,7 @@ export async function getAttemptReview(
         verdict: outcome.verdict,
         partial: outcome.partial,
         marksEarned: outcome.marks,
+        timeSpentSecs: saved?.timeSpentSecs ?? 0,
         solution: c?.solution ?? null,
         solutionImageUrl: c?.solutionImageUrl ?? null,
         solutionVisual: c?.solutionVisual ?? null,

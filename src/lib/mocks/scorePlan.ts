@@ -235,7 +235,8 @@ export function buildScorePlan(input: ScorePlanInput): ScorePlan | null {
 
   // ── attempt strategy, by the exam's own marking ──
   const reachedBlank = mine.filter((f) => f.rc && !answered(f) && !f.g).length;
-  const neverReached = mine.filter((f) => !f.rc).length;
+  // Grace questions score whether opened or not, so they are never a blank to fill.
+  const neverReached = mine.filter((f) => !f.rc && !f.g).length;
   let strategy: ScorePlan["strategy"] = null;
   if (pen === 0) {
     const blanks = reachedBlank + neverReached;
