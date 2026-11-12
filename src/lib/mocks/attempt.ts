@@ -27,10 +27,14 @@ export type PaletteState =
   | "not_visited"
   | "not_answered"
   | "answered"
+  | "answered_flagged"
   | "flagged";
 
 /** The palette colour for one question, from its saved answer row (if any).
- *  Flag is an overlay that wins over answered/not-answered (CBT convention).
+ *  A marked question splits in two (the NTA screen does the same): marked
+ *  with an answer (`answered_flagged`, graded like any answer) and marked with
+ *  none (`flagged`). Drawn alike, a student could not see which marked ones
+ *  still need an answer.
  *
  *  "Answered" comes from isAnswered, which reads BOTH response columns — a
  *  selectedLabel-only test would render every answered JEE Section-B (NAT)
@@ -40,8 +44,9 @@ export function paletteState(
   row: (SavedResponse & { isFlagged: boolean }) | undefined
 ): PaletteState {
   if (!row) return "not_visited";
-  if (row.isFlagged) return "flagged";
-  return isAnswered(row) ? "answered" : "not_answered";
+  const answered = isAnswered(row);
+  if (row.isFlagged) return answered ? "answered_flagged" : "flagged";
+  return answered ? "answered" : "not_answered";
 }
 
 export type MockGradeQuestion = {
