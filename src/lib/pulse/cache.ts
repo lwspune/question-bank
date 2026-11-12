@@ -11,6 +11,7 @@
  */
 
 import { isPathExam, type PathPulse } from "@/lib/path/model";
+import type { PassCta } from "@/lib/billing/plans";
 
 export type PulseExam = {
   label: string;
@@ -43,6 +44,10 @@ export type Pulse = {
    *  avatar menu's "reply to your feedback" line. Optional for the same reason
    *  as `exam`: an older entry shows no line until it expires. */
   replies?: number;
+  /** A pass checkout opened on an earlier day and left unpaid, for the
+   *  "Your checkout didn't complete" bar (2026-11-12, lib/billing/leftCheckout).
+   *  Optional for the same reason as `exam`. */
+  leftCheckout?: PassCta | null;
 };
 
 export type PulseWeak = { chapterId: string; name: string; place: string; due: number };
@@ -143,7 +148,45 @@ export function parsePulseEntry(raw: string | null): PulseEntry | null {
     if (!isCount(o.replies)) return null;
     replies = o.replies;
   }
-  return { at: o.at, due: o.due, week: { done: week.done, goal: week.goal as number | null }, exam, totals, weak, chapterDue, path, replies };
+  let leftCheckout: PassCta | null = null;
+  if (o.leftCheckout !== undefined && o.leftCheckout !== null) {
+    leftCheckout = parsePassCta(o.leftCheckout);
+    if (!leftCheckout) return null;
+  }
+  return {
+    at: o.at,
+    due: o.due,
+    week: { done: week.done, goal: week.goal as number | null },
+    exam,
+    totals,
+    weak,
+    chapterDue,
+    path,
+    replies,
+    leftCheckout,
+  };
+}
+
+/** A pass offer exactly as passCta builds it, or null. */
+function parsePassCta(v: unknown): PassCta | null {
+  if (typeof v !== "object" || v === null) return null;
+  const p = v as Record<string, unknown>;
+  for (const k of ["planId", "label", "price", "length", "urlKey"] as const) {
+    if (typeof p[k] !== "string" || (p[k] as string).length === 0) return null;
+  }
+  if (!Array.isArray(p.perks) || !p.perks.every((x) => typeof x === "string")) return null;
+  if (typeof p.downloads !== "boolean") return null;
+  if (p.parentLink !== undefined && typeof p.parentLink !== "boolean") return null;
+  return {
+    planId: p.planId as string,
+    label: p.label as string,
+    price: p.price as string,
+    length: p.length as string,
+    urlKey: p.urlKey as string,
+    perks: [...(p.perks as string[])],
+    downloads: p.downloads,
+    ...(p.parentLink !== undefined ? { parentLink: p.parentLink as boolean } : {}),
+  };
 }
 
 

@@ -29,7 +29,7 @@ describe("parsePulseEntry", () => {
     const e = parsePulseEntry(JSON.stringify(entry(0)));
     // `exam` is always present on the parsed shape (null when absent) so a
     // consumer never has to distinguish undefined from null.
-    expect(e).toEqual({ ...entry(0), exam: null, totals: null, weak: [], chapterDue: {}, path: null, replies: 0 });
+    expect(e).toEqual({ ...entry(0), exam: null, totals: null, weak: [], chapterDue: {}, path: null, replies: 0, leftCheckout: null });
   });
 
   it("rejects junk, partial shapes and negative counts", () => {
@@ -143,6 +143,30 @@ describe("parsePulseEntry: unread replies to feedback (migration 0243)", () => {
   it("refuses the whole entry when the count is malformed", () => {
     for (const bad of [-1, 1.5, "1", {}]) {
       expect(parsePulseEntry(JSON.stringify({ ...entry(0), replies: bad })), JSON.stringify(bad)).toBeNull();
+    }
+  });
+});
+
+describe("parsePulseEntry: a checkout left unpaid (2026-11-12)", () => {
+  const pass = {
+    planId: "practice-pass-6m",
+    label: "Practice Pass",
+    price: "₹199",
+    length: "6 months",
+    urlKey: "practice",
+    perks: ["Unlimited answers"],
+    downloads: false,
+    parentLink: true,
+  };
+  it("is null when absent (an entry cached before it existed)", () => {
+    expect(parsePulseEntry(JSON.stringify(entry(0)))?.leftCheckout).toBeNull();
+  });
+  it("carries the pass through", () => {
+    expect(parsePulseEntry(JSON.stringify({ ...entry(0), leftCheckout: pass }))?.leftCheckout).toEqual(pass);
+  });
+  it("refuses the whole entry when the pass is malformed", () => {
+    for (const bad of ["x", { ...pass, planId: 5 }, { ...pass, perks: "a" }, { ...pass, downloads: "no" }, { ...pass, price: undefined }]) {
+      expect(parsePulseEntry(JSON.stringify({ ...entry(0), leftCheckout: bad })), JSON.stringify(bad)).toBeNull();
     }
   });
 });

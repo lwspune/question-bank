@@ -299,6 +299,12 @@ export const CHECKOUT_CONTACT_PAID_BASELINE_PCT = 45;
 /** "checkout-contact": the same window's students with NO saved mobile, the share who paid (12 of 48). */
 export const CHECKOUT_NO_CONTACT_PAID_BASELINE_PCT = 25;
 /**
+ * "checkout-return": of students who left a checkout without paying in that
+ * sitting (45 days to 2026-11-12), the share who paid on a later day with no
+ * nudge (12 of 83).
+ */
+export const CHECKOUT_RETURN_LATER_PAID_BASELINE_PCT = 14;
+/**
  * "answer-limit-copy": of students who met the answer limit in the 30 days to
  * 2026-11-11, the share who opened checkout from it (35 of 360) and who bought
  * a pass afterwards (16 of 360), staff left out.
@@ -432,7 +438,8 @@ export type Readout =
   | "review-traps"
   | "repeat-line"
   | "answer-limit-copy"
-  | "checkout-contact";
+  | "checkout-contact"
+  | "checkout-return";
 
 export type Experiment = {
   id: string;
@@ -1255,11 +1262,25 @@ export const EXPERIMENTS: readonly Experiment[] = [
       "The order route returns the student's saved mobile (+91 form) and the checkout passes it to Razorpay with the email, and every checkout sets Razorpay's hidden.contact (the contact field optional and not shown), so a student with or without a saved mobile skips Razorpay's \"Enter mobile & email to continue\" form. Each checkout_opened row records hasContact.",
     why: "On 2026-11-12 two of three students who opened checkout closed it within 6 seconds (leaving takes two taps), both with a mobile saved with us that we never sent. A test account showed Razorpay's first screen is an empty mobile field. In 30 days 99 students opened checkout and 35 paid.",
     metric:
-      "Checkout-to-paid per student who opened checkout, split by checkout_opened metadata.hasContact; each group is compared with its own rate before (23 of 51 with a mobile, 12 of 48 without)",
+      "Checkout-to-paid in the same sitting (within an hour of opening) per student who opened checkout, split by checkout_opened metadata.hasContact; each group is compared with its own rate before (23 of 51 with a mobile, 12 of 48 without). Same sitting only since 2026-11-12, so a later payment brought by the checkout-return bar is not counted here",
     rule: `Keep it (it costs nothing) and judge the size: it worked if students with a saved mobile pay at above ${CHECKOUT_CONTACT_PAID_BASELINE_PCT}% and students without one above ${CHECKOUT_NO_CONTACT_PAID_BASELINE_PCT}%. If neither moves, the mobile form was not what stopped them, and the next look is the price.`,
     liveSince: "2026-11-12",
     windowDays: 21,
     readout: "checkout-contact",
+    status: "running",
+  },
+  {
+    id: "checkout-return",
+    title: "Your checkout didn't complete: a bar on a later day",
+    change:
+      "A student who opened a pass checkout and did not pay sees a bar under the header on the first page they open on a later day: \"Your checkout didn't complete. The Practice Pass gives you unlimited practice for 6 months, and the more questions you practise, the more marks you get.\" with Complete payment (Razorpay in place, their own price), Ask a parent to pay and Not now. Up to 2 days within 7 days of the checkout; Not now or a payment stops it.",
+    why: "45 days to 2026-11-12: 110 students opened checkout, 71 never paid, and 43 of those 71 came back on their own (27 the next day). Nothing reminded them. Owner's wording: practice is what improves the score.",
+    metric:
+      "Students who left a checkout unpaid, and the share who paid on a later day; the bar's chain from paywall_event gate return: shown, then checkout_opened, then paid",
+    rule: `Keep it if more than ${CHECKOUT_RETURN_LATER_PAID_BASELINE_PCT}% of students who leave a checkout pay on a later day (12 of 83 before, with no reminder).`,
+    liveSince: "2026-11-12",
+    windowDays: 28,
+    readout: "checkout-return",
     status: "running",
   },
 

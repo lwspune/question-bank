@@ -64,6 +64,8 @@ export const PAYWALL_GATES = [
   "v_hourly",
   /** A parent's payment page, /pay/<code> (0244, 2026-11-09). */
   "parent",
+  /** "Your checkout didn't complete" on a later day (2026-11-12, lib/billing/leftCheckout). */
+  "return",
 ] as const;
 export type PaywallGate = (typeof PAYWALL_GATES)[number];
 
@@ -84,6 +86,8 @@ export const PAYWALL_STEPS = [
   "parent_link_created",
   "parent_link_opened",
   "parent_checkout_opened",
+  /** "Not now" on an offer that stops for good once closed (the "return" bar, 2026-11-12). */
+  "dismissed",
 ] as const;
 export type PaywallStep = (typeof PAYWALL_STEPS)[number];
 
@@ -102,7 +106,7 @@ export function checkoutBox(v: unknown): DownloadBox | undefined {
 }
 
 /** Steps a client may report. The others are written by the billing routes. */
-const CLIENT_STEPS: ReadonlySet<string> = new Set<PaywallStep>(["shown", "checkout_dismissed", "declined"]);
+const CLIENT_STEPS: ReadonlySet<string> = new Set<PaywallStep>(["shown", "checkout_dismissed", "declined", "dismissed"]);
 const GATE_SET: ReadonlySet<string> = new Set(PAYWALL_GATES);
 const MAX_PLAN_ID = 64;
 
@@ -121,7 +125,7 @@ function isPlainObject(v: unknown): v is Record<string, unknown> {
  * else is "pricing", the old assumption.
  */
 export function checkoutGate(v: unknown): PaywallGate {
-  return v === "teacher" || v === "reveals" || v === "v_hourly" ? v : "pricing";
+  return v === "teacher" || v === "reveals" || v === "v_hourly" || v === "return" ? v : "pricing";
 }
 
 export function paywallEvent(
@@ -136,10 +140,11 @@ export function paywallEvent(
     event.refId = planId;
     event.refKind = "plan";
   }
-  if (step === "shown" && dedupe) {
+  if ((step === "shown" || step === "dismissed") && dedupe) {
     // One impression per box per day when the box is named, so a student who
-    // met the gate on /browse first is still counted on a past paper.
-    event.dedupeKey = `paywall:shown:${gate}:${box ? `${box}:` : ""}${dedupe.userId}:${istDayKey(dedupe.now)}`;
+    // met the gate on /browse first is still counted on a past paper. A Not
+    // now is one a day too: the first one is what stops the offer.
+    event.dedupeKey = `paywall:${step}:${gate}:${box ? `${box}:` : ""}${dedupe.userId}:${istDayKey(dedupe.now)}`;
   }
   return event;
 }

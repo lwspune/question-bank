@@ -265,6 +265,10 @@ async function main() {
         // Read by hand: paywall_event checkout_opened by metadata.hasContact, then razorpay entitlements.
         line = "by hand: checkout_opened by metadata.hasContact, and which of those students paid (baselines 23 of 51, 12 of 48)";
         break;
+      case "checkout-return":
+        // Read by hand: leavers who paid on a later day, and paywall_event gate return (shown, checkout_opened, dismissed).
+        line = "by hand: leavers paying on a later day (baseline 12 of 83), and the gate=return chain shown > checkout > paid";
+        break;
       case "review-traps":
         // Read by hand: surface_viewed review_traps by action (shown, expand, playbook).
         line = "by hand: surface_viewed review_traps by action";

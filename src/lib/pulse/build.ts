@@ -24,6 +24,7 @@ import { resolveExamDate } from "@/lib/exam/calendar";
 import type { Pulse } from "./cache";
 import { isPathExam, pathPulseState, type PathExam } from "@/lib/path/model";
 import { countUnreadReplies } from "@/lib/feedback/replyService";
+import { readLeftCheckout } from "@/lib/billing/leftCheckoutService";
 
 export async function buildPulse(
   db: SupabaseClient,
@@ -31,7 +32,7 @@ export async function buildPulse(
   now: Date,
   counts: { week: Promise<OwnWeekly>; answers: Promise<AnswerTotals | null> }
 ): Promise<Required<Pulse>> {
-  const [ladder, week, profile, answers, focusExam, replies] = await Promise.all([
+  const [ladder, week, profile, answers, focusExam, replies, leftCheckout] = await Promise.all([
     getOwnLadder(db, userId, now),
     counts.week,
     getOwnProfile(db, userId),
@@ -50,6 +51,11 @@ export async function buildPulse(
     countUnreadReplies(db, userId).catch((e: unknown) => {
       console.error("pulse replies read failed", e instanceof Error ? e.message : e);
       return 0;
+    }),
+    // A pass checkout left on an earlier day (2026-11-12). A failed read shows no bar.
+    readLeftCheckout(db, userId, now).catch((e: unknown) => {
+      console.error("pulse left checkout read failed", e instanceof Error ? e.message : e);
+      return null;
     }),
   ]);
   const countdown = resolveExamDate(profile, now);
@@ -70,7 +76,7 @@ export async function buildPulse(
   // Class 12 board among their exams. A failed read shows no path line.
   const active = profile.targetExams.some(isPathExam) ? await activePathExam(db, userId) : undefined;
   const path = active === undefined ? null : pathPulseState(profile.targetExams, active);
-  return { due: focused.length, week, exam, totals, weak, chapterDue, path, replies };
+  return { due: focused.length, week, exam, totals, weak, chapterDue, path, replies, leftCheckout };
 }
 
 /** The active path's board, null with none, undefined when the read failed. */
