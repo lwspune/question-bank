@@ -76,13 +76,6 @@ export const FUNNEL_EVENTS = [
   /** V's launcher was opened (fires once per page session). */
   "chat_launcher_click",
   /**
-   * A chapter share button was tapped (2026-10-01); props: channel, surface
-   * ("questions" | "notes"). Intent only — the arrival half is the
-   * utm_campaign=chapter-share signups. No `_shown` partner: the card is always
-   * on the page, so page views of /questions and /notes chapters are the scale.
-   */
-  "chapter_share_click",
-  /**
    * A visitor signed in with the Google button inside the download box
    * (2026-10-04), so they can buy without leaving /browse. Its scale is
    * `teacher_gate_shown` with signedIn=false.

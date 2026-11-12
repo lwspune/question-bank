@@ -17,6 +17,7 @@ import {
   viewSignupCountries,
   viewNorthStar,
   type ArmCounts,
+  onboardingArm,
 } from "@/lib/growth/snapshot";
 import { MIN_LIFT_N } from "@/lib/pmf/snapshot";
 
@@ -315,5 +316,27 @@ describe("viewSignupCountries", () => {
     expect(v.total).toBe(0);
     expect(v.rows).toEqual([]);
     expect(v.unrecordedPct).toBeNull();
+  });
+});
+
+// Moved from tests/how-it-works.test.ts when the practice-first split was
+// removed from the welcome step (2026-11-11): the readout still compares the
+// two halves, and migration 0129's SQL must keep splitting the same way.
+describe("onboardingArm (the halves the practice-first readout compares)", () => {
+  it("splits on the first hex digit of the user id: even = mock-first, odd = practice-first", () => {
+    expect(onboardingArm("0a1b2c3d-0000-4000-8000-000000000000")).toBe("mock-first");
+    expect(onboardingArm("8a1b2c3d-0000-4000-8000-000000000000")).toBe("mock-first");
+    expect(onboardingArm("1a1b2c3d-0000-4000-8000-000000000000")).toBe("practice-first");
+    expect(onboardingArm("F01b2c3d-0000-4000-8000-000000000000")).toBe("practice-first");
+  });
+
+  it("puts a malformed id in mock-first rather than throwing", () => {
+    expect(onboardingArm("")).toBe("mock-first");
+    expect(onboardingArm("zzz")).toBe("mock-first");
+  });
+
+  it("gives each half exactly eight of the sixteen possible first digits", () => {
+    const arms = "0123456789abcdef".split("").map((d) => onboardingArm(`${d}0000000-0000-4000-8000-000000000000`));
+    expect(arms.filter((a) => a === "practice-first")).toHaveLength(8);
   });
 });

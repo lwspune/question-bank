@@ -276,3 +276,17 @@ describe("--scroll-x: a sideways table scrolled before the shot (2026-11-11)", (
     expect(js).toContain("scrollLeft = ");
   });
 });
+
+describe("--bottom", () => {
+  // A full-page capture stops at 6,000 px, so a long page's last section (where
+  // a closing card sits) never makes it onto the sheet. --bottom captures the
+  // last screen instead.
+  it("is off by default and on when passed", () => {
+    expect(parseShotArgs(["--pages=/notes"]).bottom).toBe(false);
+    expect(parseShotArgs(["--pages=/notes", "--bottom"]).bottom).toBe(true);
+  });
+
+  it("cannot be combined with --full, which already starts at the top", () => {
+    expect(() => parseShotArgs(["--pages=/notes", "--bottom", "--full"])).toThrow(/--bottom/);
+  });
+});

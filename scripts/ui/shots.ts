@@ -25,6 +25,7 @@
  * What it cannot show: a REAL student's data. A screen behind ONE tap (a dialog,
  * a sheet) can be shown with `--click="<button text>"`, and a few taps deep with
  * `--click="A >> B"` (each matched by its text or its aria-label).
+ * `--bottom` captures the page's last screen (a `--full` capture stops at 6,000 px).
  * `--scroll-x[=n]` scrolls the n-th sideways table into view and to its right end.
  * `--no-fullscreen` makes the page read full screen as unavailable, as on an
  * iPhone, so a full-screen fallback can be captured (with --click).
@@ -101,7 +102,7 @@ async function evaluate(cdp: Cdp, expression: string): Promise<unknown> {
   return res.result?.result?.value;
 }
 
-async function capture(cdp: Cdp, c: Capture, waitMs: number, fullPage: boolean, dir: string, click: string[] | null, scrollX: number | null) {
+async function capture(cdp: Cdp, c: Capture, waitMs: number, fullPage: boolean, dir: string, click: string[] | null, scrollX: number | null, bottom = false) {
   const vp = VIEWPORTS[c.viewport];
   await cdp.send("Emulation.setDeviceMetricsOverride", { width: vp.width, height: vp.height, deviceScaleFactor: vp.scale, mobile: vp.mobile });
   await cdp.send("Emulation.setUserAgentOverride", { userAgent: vp.mobile ? PHONE_UA : "" });
@@ -112,6 +113,11 @@ async function capture(cdp: Cdp, c: Capture, waitMs: number, fullPage: boolean, 
   // The theme is a class on <html> (next-themes); set it outright so a stored
   // preference cannot override the run.
   await evaluate(cdp, `(() => { const h = document.documentElement; h.classList.toggle('dark', ${c.theme === "dark"}); h.style.colorScheme = '${c.theme}'; })()`);
+  // `next dev` opens its error overlay over the page for any console error,
+  // including dev-only warnings that never reach production. It lives in
+  // <nextjs-portal>, which a production page never has, so removing it changes
+  // nothing on the live side.
+  await evaluate(cdp, "document.querySelectorAll('nextjs-portal').forEach((n) => n.remove())");
   await sleep(400);
   for (const tap of click ?? []) {
     if (!(await evaluate(cdp, clickScript(tap)))) throw new Error(`--click: no visible button or link starting "${tap}" on ${c.url}`);
@@ -120,6 +126,10 @@ async function capture(cdp: Cdp, c: Capture, waitMs: number, fullPage: boolean, 
   if (scrollX !== null) {
     if (!(await evaluate(cdp, scrollXScript(scrollX)))) throw new Error(`--scroll-x: no sideways table number ${scrollX} on ${c.url}`);
     await sleep(600);
+  }
+  if (bottom) {
+    await evaluate(cdp, "window.scrollTo(0, document.documentElement.scrollHeight)");
+    await sleep(800);
   }
   let params: object = { format: "png" };
   if (fullPage) {
@@ -180,7 +190,7 @@ async function main() {
     for (const c of plan) {
       if (args.phase !== "both" && c.target !== args.phase) continue;
       process.stdout.write(`${c.target.padEnd(6)} ${c.viewport.padEnd(7)} ${c.theme.padEnd(5)} ${c.url} ... `);
-      await capture(cdp, c, args.waitMs, args.fullPage, dir, args.click, args.scrollX);
+      await capture(cdp, c, args.waitMs, args.fullPage, dir, args.click, args.scrollX, args.bottom);
       console.log("ok");
     }
     // The sheet needs both sides; a before-only run stops here.

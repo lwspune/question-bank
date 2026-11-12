@@ -30,6 +30,8 @@ export type ShotArgs = {
   themes: Theme[];
   waitMs: number;
   fullPage: boolean;
+  /** Capture the page's last screen (a full-page capture stops at 6,000 px). */
+  bottom: boolean;
   out: string | null;
   title: string;
   /** "before" / "after" capture one side only (a local-only change: shoot
@@ -133,6 +135,7 @@ export function parseShotArgs(argv: string[]): ShotArgs {
   if (phase !== "before" && phase !== "after" && phase !== "both") throw new Error(`--phase must be before, after or both, not "${phase}"`);
   const asStudent = asStudentArg(value("as-student"));
   if (flag("with-pass") && !asStudent) throw new Error("--with-pass needs --as-student=<exam,...>: there is no signed-in student to hold the pass");
+  if (flag("bottom") && flag("full")) throw new Error("--bottom and --full cannot be combined: --full captures from the top");
   const viewports: Viewport[] = flag("phone") && !flag("desktop") ? ["phone"] : flag("desktop") && !flag("phone") ? ["desktop"] : ["phone", "desktop"];
   return {
     pages,
@@ -144,6 +147,7 @@ export function parseShotArgs(argv: string[]): ShotArgs {
     themes: flag("dark") ? ["light", "dark"] : ["light"],
     waitMs: Number(value("wait") ?? 8000),
     fullPage: flag("full"),
+    bottom: flag("bottom"),
     out: value("out") ?? null,
     title: value("title") ?? "Before / after",
     phase,

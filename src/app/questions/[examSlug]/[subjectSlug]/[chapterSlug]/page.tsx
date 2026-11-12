@@ -44,7 +44,6 @@ import { mockCta } from "@/lib/notes/keepGoing";
 import { mockCtaCopy, withChapterTest } from "@/lib/mocks/chapterTests";
 import { listChapterTests } from "@/lib/mocks/chapterTestsQuery";
 import { examHomeHref } from "@/lib/exam/examHome";
-import ChapterShareCard from "@/components/ChapterShareCard";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import RememberVisit from "@/components/visits/RememberVisit";
 import { canonicalFor } from "@/lib/sites/intl";
@@ -355,15 +354,6 @@ export default async function ChapterQuestionsPage(props: Params) {
             </Button>
           </div>
         )}
-
-        <ChapterShareCard
-          path={landingHref(landing)}
-          chapterName={landing.chapterName}
-          examDisplay={getExamBySlug(landing.examSlug)?.displayName ?? landing.examName}
-          questionCount={landing.questionCount}
-          practiceOnly={landing.practiceOnly}
-          surface="questions"
-        />
 
         <SiblingLinks siblings={siblings} />
       </main>

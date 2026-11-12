@@ -9,7 +9,7 @@ import {
 } from "@/lib/growth/registry";
 import { ACTIVITY_KINDS } from "@/lib/activity/events";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
-import { loopForArm } from "@/lib/education/howItWorks";
+import { hasPaperMocks } from "@/lib/education/howItWorks";
 import { growthParams } from "@/lib/growth/query";
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
@@ -172,10 +172,8 @@ describe("READINGS", () => {
 });
 
 describe("growthParams onboarding population", () => {
-  it("is exactly the exams whose welcome loop the practice-first arm changes", () => {
-    const changed = EXAM_REGISTRY.filter(
-      (e) => loopForArm(e, "practice-first").kind === "practice"
-    ).map((e) => e.slug);
+  it("is exactly the exams whose welcome loop the practice-first arm changed (past-paper mocks)", () => {
+    const changed = EXAM_REGISTRY.filter(hasPaperMocks).map((e) => e.slug);
     expect(growthParams().p_mock_exams).toEqual(changed);
   });
 

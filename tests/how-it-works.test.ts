@@ -9,16 +9,15 @@
  * and a practice-only exam gets the bank loop with /browse as its first step.
  */
 import { describe, it, expect } from "vitest";
+import * as howItWorks from "@/lib/education/howItWorks";
 import {
-  chapterPickerHref,
   loopFor,
-  loopForArm,
-  onboardingArm,
   welcomeDestination,
   WELCOME_DEFAULT_NEXT,
   type Loop,
 } from "@/lib/education/howItWorks";
-import { examHomeHref } from "@/lib/exam/examHome";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { EXAM_REGISTRY, getExamBySlug, type ExamEntry } from "@/lib/exam/examContext";
 
 function stepsOf(loop: Loop) {
@@ -103,82 +102,21 @@ describe("welcomeDestination", () => {
   });
 });
 
-// The practice-first experiment (2026-10-01): half of new students with a
-// mock exam are sent to practise one chapter before sitting a paper.
-describe("onboardingArm", () => {
-  it("splits on the first hex digit of the user id: even = control, odd = practice-first", () => {
-    expect(onboardingArm("0a1b2c3d-0000-4000-8000-000000000000")).toBe("mock-first");
-    expect(onboardingArm("8a1b2c3d-0000-4000-8000-000000000000")).toBe("mock-first");
-    expect(onboardingArm("1a1b2c3d-0000-4000-8000-000000000000")).toBe("practice-first");
-    expect(onboardingArm("F01b2c3d-0000-4000-8000-000000000000")).toBe("practice-first");
+// The practice-first experiment (2026-10-01) was ended on 2026-11-11 with no
+// clear difference (control slightly ahead): every student now gets loopFor.
+describe("the practice-first split is gone", () => {
+  it("howItWorks no longer exports the split", () => {
+    expect("onboardingArm" in howItWorks).toBe(false);
+    expect("loopForArm" in howItWorks).toBe(false);
+    expect("chapterPickerHref" in howItWorks).toBe(false);
   });
 
-  it("is stable for one user, so a reload never flips the screen", () => {
-    const id = "7c9e6679-7425-40de-944b-e07fc1f90ae7";
-    expect(onboardingArm(id)).toBe(onboardingArm(id));
-  });
-
-  it("puts a malformed id in the control arm rather than throwing", () => {
-    expect(onboardingArm("")).toBe("mock-first");
-    expect(onboardingArm("zzz")).toBe("mock-first");
-  });
-
-  it("gives each arm exactly half of the sixteen possible first digits", () => {
-    const arms = "0123456789abcdef".split("").map((d) => onboardingArm(`${d}0000000-0000-4000-8000-000000000000`));
-    expect(arms.filter((a) => a === "practice-first")).toHaveLength(8);
-  });
-});
-
-describe("chapterPickerHref", () => {
-  it("is the exam home for every exam except NDA", () => {
-    for (const slug of ["mht-cet", "jee-mains", "cds", "neet", "upsc-cse"]) {
-      expect(chapterPickerHref(slug)).toBe(examHomeHref(slug));
-    }
-  });
-
-  it("is the NDA section of /questions for NDA, whose home lists guides rather than chapters", () => {
-    expect(chapterPickerHref("nda")).toBe("/questions#nda");
-  });
-});
-
-describe("loopForArm", () => {
-  const cet = getExamBySlug("mht-cet")!;
-
-  it("the control arm gets exactly today's loop", () => {
-    expect(loopForArm(cet, "mock-first")).toEqual(loopFor(cet));
-  });
-
-  it("practice-first, for an exam with mocks: chapter practice → a past paper → the drill", () => {
-    const loop = loopForArm(cet, "practice-first");
-    expect(loop.kind).toBe("practice");
-    expect(loop.examLabel).toBe(cet.displayName);
-    expect(stepsOf(loop)).toEqual(["/exams/mht-cet", "/mock/exam/mht-cet", "/drill?from=start"]);
-    expect(loop.steps[0].cta).toBe("Practise a chapter");
-  });
-
-  it("practice-first leaves board and practice-only exams alone: they already start on practice", () => {
-    const board = getExamBySlug("mh-hsc-12")!;
-    expect(loopForArm(board, "practice-first")).toEqual(loopFor(board));
-  });
-
-  it("practice-first with no exam (skipped onboarding) keeps the general loop", () => {
-    expect(loopForArm(null, "practice-first")).toEqual(loopFor(null));
-  });
-});
-
-describe("welcomeDestination for the practice-first loop", () => {
-  const loop = loopForArm(getExamBySlug("mht-cet"), "practice-first");
-
-  it("leads with chapter practice and offers the full paper as the secondary", () => {
-    const d = welcomeDestination(WELCOME_DEFAULT_NEXT, loop);
-    expect(d.primary).toEqual({ href: "/exams/mht-cet", label: "Practise a chapter" });
-    expect(d.secondary).toEqual({ href: "/mock/exam/mht-cet", label: "Sit a paper" });
-  });
-
-  it("still honours a specific next as the primary", () => {
-    const d = welcomeDestination("/mock/mht-cet-2025-paper-1", loop);
-    expect(d.primary).toEqual({ href: "/mock/mht-cet-2025-paper-1", label: "Continue" });
-    expect(d.secondary.href).toBe("/exams/mht-cet");
+  it("the welcome step renders loopFor for every student, with no arm", () => {
+    const onboarding = readFileSync(join(process.cwd(), "src/app/welcome/ExamOnboarding.tsx"), "utf8");
+    const page = readFileSync(join(process.cwd(), "src/app/welcome/page.tsx"), "utf8");
+    expect(onboarding).toMatch(/\bloopFor\(/);
+    expect(onboarding).not.toMatch(/\barm\b/);
+    expect(page).not.toMatch(/onboardingArm|\barm=/);
   });
 });
 
@@ -187,7 +125,7 @@ describe("paper buttons read as English (a / an)", () => {
   it("an NDA, an MHT-CET; a CDS, a JEE Mains", () => {
     expect(loopFor(getExamBySlug("nda")).steps[0].cta).toBe("Start an NDA paper");
     expect(loopFor(getExamBySlug("cds")).steps[0].cta).toBe("Start a CDS paper");
-    expect(loopForArm(getExamBySlug("mht-cet")!, "practice-first").steps[1].cta).toBe("Start an MHT-CET paper");
-    expect(loopForArm(getExamBySlug("jee-mains")!, "practice-first").steps[1].cta).toBe("Start a JEE Mains paper");
+    expect(loopFor(getExamBySlug("mht-cet")).steps[0].cta).toBe("Start an MHT-CET paper");
+    expect(loopFor(getExamBySlug("jee-mains")).steps[0].cta).toBe("Start a JEE Mains paper");
   });
 });
