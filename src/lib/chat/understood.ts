@@ -9,6 +9,7 @@
  * Pure. Spec: tests/chat-understood.test.ts.
  */
 import type { ToolCallLog } from "./anthropic";
+import { lostStepOf } from "./stepByStep";
 
 /** The message a No sends for the student. */
 export const NOT_UNDERSTOOD = "I didn't understand. Please explain it more simply.";
@@ -30,9 +31,9 @@ export function stuckStepOf(message: string | null | undefined): number | null {
   return m ? Number(m[1]) : null;
 }
 
-/** A No, plain or naming a step. */
+/** A No: plain, naming a step of V's reply, or "Lost me here" on a step of our solution (lib/chat/stepByStep). */
 export function isNotUnderstoodMessage(message: string | null | undefined): boolean {
-  return message === NOT_UNDERSTOOD || stuckStepOf(message) !== null;
+  return message === NOT_UNDERSTOOD || stuckStepOf(message) !== null || lostStepOf(message) !== null;
 }
 
 /** The most step buttons offered: they sit in one row on a phone. */

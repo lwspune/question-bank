@@ -18,6 +18,7 @@ import { ABUSE_REPLY } from "./abuse";
 import { NOT_UNDERSTOOD } from "./understood";
 import { languageLine, type VLanguage } from "./language";
 import { followUpTailLine } from "./followUp";
+import { stepTailLine } from "./stepByStep";
 import type { ExamEntry } from "@/lib/exam/examContext";
 
 export type ChatExamFact = {
@@ -372,6 +373,8 @@ export function buildSystemTail(who: {
   language?: VLanguage | null;
   /** "Show me where I went wrong" on a follow-up card: the question V explained before (V_LEARNING_LOOP.md step 2). */
   followsUp?: { stem: string | null } | null;
+  /** "Lost me here" on a step of our solution (lib/chat/stepByStep.ts): the step they are stuck on. */
+  solutionStep?: { step: number; total: number; text: string } | null;
 }): string {
   const parts: string[] = [];
   if (who.language) parts.push(languageLine(who.language));
@@ -384,6 +387,9 @@ export function buildSystemTail(who: {
   // 2026-11-10: on a follow-up the earlier explanation is the point, so V is told to build on it.
   if (who.question && who.followsUp) {
     parts.push(followUpTailLine(who.followsUp));
+  } else if (who.question && who.solutionStep) {
+    // 2026-11-12: the explanation they were reading is the point here, as on a follow-up.
+    parts.push(stepTailLine(who.solutionStep));
   } else if (who.notesBrief || who.question) {
     // 2026-11-08: "My earlier reply did not match it, please disregard it" (rule 12 alone did not hold it).
     parts.push("Your earlier replies were about other questions and were right for them: do not mention, correct or take them back.");

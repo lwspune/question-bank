@@ -4,9 +4,10 @@
  */
 import { PREDEFINED_QUESTIONS } from "@/lib/chat/faq";
 import { BUILDER_STEP_LABELS } from "@/lib/chat/builderSteps";
+import { STEP_EVENT_LABELS } from "@/lib/chat/stepByStep";
 
 export type ChatInteractionRow = {
-  eventType: "launcher_open" | "faq_click" | "typed_question" | "builder_step" | "hourly_limit";
+  eventType: "launcher_open" | "faq_click" | "typed_question" | "builder_step" | "hourly_limit" | "step_by_step";
   questionId: string | null;
   createdAt: string;
   /** A typed question's (masked) text, migration 0145. */
@@ -71,6 +72,10 @@ export type ChatInteractionSummary = {
   }[];
   /** The practice-test builder's funnel (migration 0157), every step listed. */
   builder: { step: string; label: string; count: number }[];
+  /** "Teach me step by step" (migration 0252): taps per action, in funnel order. */
+  steps: { action: string; label: string; count: number }[];
+  /** "Lost me here" by the step it was tapped on (1-based), lowest step first. */
+  lostAt: { step: number; count: number }[];
 };
 
 const LABELS = new Map<string, string>(PREDEFINED_QUESTIONS.map((q) => [q.id, q.label]));
@@ -82,6 +87,8 @@ export function summarizeChatInteractions(rows: readonly ChatInteractionRow[]): 
   const counts = new Map<string, number>();
   const typed: ChatInteractionSummary["typed"] = [];
   const builderCounts = new Map<string, number>();
+  const stepCounts = new Map<string, number>();
+  const lostCounts = new Map<number, number>();
 
   for (const r of rows) {
     if (r.eventType === "launcher_open") {
@@ -95,6 +102,14 @@ export function summarizeChatInteractions(rows: readonly ChatInteractionRow[]): 
     }
     if (r.eventType === "builder_step") {
       if (r.questionId) builderCounts.set(r.questionId, (builderCounts.get(r.questionId) ?? 0) + 1);
+      continue;
+    }
+    // A step tap (0252), coded "<action>:<step>": never an FAQ tap.
+    if (r.eventType === "step_by_step") {
+      const [action, step] = (r.questionId ?? "").split(":");
+      if (action) stepCounts.set(action, (stepCounts.get(action) ?? 0) + 1);
+      const n = Number(step);
+      if (action === "lost" && Number.isInteger(n) && n > 0) lostCounts.set(n, (lostCounts.get(n) ?? 0) + 1);
       continue;
     }
     if (r.eventType === "typed_question") {
@@ -121,7 +136,10 @@ export function summarizeChatInteractions(rows: readonly ChatInteractionRow[]): 
 
   const builder = BUILDER_STEP_LABELS.map(({ step, label }) => ({ step, label, count: builderCounts.get(step) ?? 0 }));
 
-  return { totalOpens, totalClicks, byQuestion, totalTyped: typed.length, typed, builder, totalHourlyLimited };
+  const steps = STEP_EVENT_LABELS.map(({ action, label }) => ({ action, label, count: stepCounts.get(action) ?? 0 }));
+  const lostAt = [...lostCounts.entries()].map(([step, count]) => ({ step, count })).sort((a, b) => a.step - b.step);
+
+  return { totalOpens, totalClicks, byQuestion, totalTyped: typed.length, typed, builder, steps, lostAt, totalHourlyLimited };
 }
 
 /** One India-time day of V's AI use, as chat_ai_usage_by_day() (migration 0162) adds it up. */
