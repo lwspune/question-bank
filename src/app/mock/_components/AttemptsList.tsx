@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Check, ChevronRight, Minus, Play, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { UserAttempt } from "@/lib/mocks/query";
+import { displayMockTitle } from "@/lib/mocks/hub";
 
 /** Only the exceptions are labelled (2026-10-11): nearly every row was
  *  "Submitted", which said nothing. A finished row shows its date alone. */
@@ -73,17 +74,22 @@ export default function AttemptsList({
               className="group flex items-center gap-4 p-3 transition-colors hover:bg-accent/40 focus-visible:bg-accent/40 focus-visible:outline-none sm:p-4"
             >
               <div className="min-w-0 flex-1">
+                {/* On a phone the title gets the row's full width, up to two
+                    lines, and the type tag drops to the date line (2026-11-12):
+                    beside the score it was cut to "MHT-CET Appl...". */}
                 {showMock && (
                   <p className="flex items-center gap-2 text-sm font-medium">
-                    <span className="truncate">{a.mockTitle}</span>
-                    {typeLabel(a) && (
-                      <span className="shrink-0 rounded border px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
-                        {typeLabel(a)}
-                      </span>
-                    )}
+                    <span className="line-clamp-2 sm:line-clamp-1">{displayMockTitle(a.mockTitle)}</span>
+                    {typeLabel(a) && <TypeTag label={typeLabel(a)!} className="hidden sm:inline-block" />}
                   </p>
                 )}
-                <p className={cn("text-xs", showMock ? "text-muted-foreground" : "font-medium")}>
+                <p className={cn("mt-0.5 text-xs", showMock ? "text-muted-foreground" : "font-medium")}>
+                  {showMock && typeLabel(a) && (
+                    <>
+                      <TypeTag label={typeLabel(a)!} className="sm:hidden" />
+                      <span className="text-muted-foreground sm:hidden"> · </span>
+                    </>
+                  )}
                   {s && (
                     <>
                       <span className={s.style}>{s.label}</span>
@@ -130,5 +136,18 @@ export default function AttemptsList({
         );
       })}
     </ul>
+  );
+}
+
+function TypeTag({ label, className }: { label: string; className?: string }) {
+  return (
+    <span
+      className={cn(
+        "shrink-0 rounded border px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-muted-foreground",
+        className
+      )}
+    >
+      {label}
+    </span>
   );
 }

@@ -95,7 +95,8 @@ export function MockAttemptBadge({ mockId }: { mockId: string }) {
         "inline-flex shrink-0 items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-medium tabular-nums",
         live
           ? "border-brand-accent/30 bg-brand-accent/10 text-brand-accent"
-          : "border-emerald-600/30 bg-emerald-600/10 text-emerald-700 dark:text-emerald-400"
+          // Neutral (2026-11-12): green read as "well done" on a 0/300.
+          : "border-border bg-muted text-muted-foreground"
       )}
     >
       <Icon className="h-3 w-3" aria-hidden />

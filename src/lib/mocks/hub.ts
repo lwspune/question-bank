@@ -21,6 +21,16 @@ export function shortMockTitle(title: string, examName: string): string {
   return s.replace(/\s+—\s+/g, " · ");
 }
 
+/**
+ * A mock title as shown on its own pages: the exam name kept, the stored em
+ * dashes swapped for middle dots (no em dashes in visible text, owner rule
+ * 2026-10-05). "NDA 2026 (II) · Paper II · GAT" is how the stored title reads
+ * once shown. Spec: tests/mock-hub.test.ts.
+ */
+export function displayMockTitle(title: string): string {
+  return title.replace(/\s+—\s+/g, " · ");
+}
+
 /** One type's first rows, in its list page's order, and how many it has in all. */
 export function hubRows(
   type: MockTypeSlug,

@@ -109,6 +109,7 @@ async function MockFamilyPage({ family }: { family: MockFamilyNav }) {
   return (
     <GuideShell
       guideTitle="Mock Tests"
+      sideNavLabel="Exams"
       sideNav={mockSideNav(family.slug)}
       breadcrumbs={[{ href: "/mock", label: "Mocks" }, { label: family.name }]}
     >
@@ -197,6 +198,7 @@ export default async function MockExamTypePicker(props: { params: Promise<Params
   return (
     <GuideShell
       guideTitle="Mock Tests"
+      sideNavLabel="Exams"
       sideNav={mockSideNav(params.examSlug)}
       breadcrumbs={[
         { href: "/mock", label: "Mocks" },
@@ -204,8 +206,9 @@ export default async function MockExamTypePicker(props: { params: Promise<Params
         { label: exam.displayName },
       ]}
     >
+      {/* No eyebrow (2026-11-12): it repeated the exam name the title already
+          says, and on a phone the hero pushed the next paper under the fold. */}
       <GuideHero
-        eyebrow={`${exam.displayName} · Timed mock tests`}
         title={`${exam.examName} Mock Tests`}
         subtitle={mockHubSubtitle(
           exam.examName,
@@ -221,25 +224,29 @@ export default async function MockExamTypePicker(props: { params: Promise<Params
             <History className="h-4 w-4" aria-hidden />
             My attempts
           </Link>
+          {/* Secondary, like My attempts (2026-11-12): sitting a paper is this
+              page's job, so Start on the next-paper card is the one filled button. */}
           {hasPastPapers && (
             <Link
               href={mockDownloadHref(exam.slug)}
-              className="inline-flex items-center gap-1.5 rounded-md bg-brand px-3 py-2 text-sm font-medium text-brand-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="inline-flex items-center gap-1.5 rounded-md border px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <Download className="h-4 w-4" aria-hidden />
-              Download past papers
+              Download papers
             </Link>
           )}
         </div>
       </GuideHero>
-
-      <ResultsStrip examSlugs={[exam.slug]} className="mb-6" />
 
       <OwnAttemptsProvider>
         <NextMockCard pastIds={pastIds} mocks={rowById} />
         <MockHubTabs examSlug={exam.slug} tabs={tabs} />
       </OwnAttemptsProvider>
       {soonLine && <p className="mt-4 text-sm text-muted-foreground">{soonLine}</p>}
+
+      {/* Below the papers (2026-11-12): on a phone it sat above the student's
+          own next paper and pushed Start under the tab bar. */}
+      <ResultsStrip examSlugs={[exam.slug]} className="mt-8" />
     </GuideShell>
   );
 }

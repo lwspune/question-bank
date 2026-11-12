@@ -26,6 +26,7 @@ import ScorePlanCard from "./ScorePlanCard";
 import { buildScorePlan, type ScorePlan } from "@/lib/mocks/scorePlan";
 import { loadChapterWeights } from "@/lib/me/startNextServer";
 import ScoreCard from "./ScoreCard";
+import { displayMockTitle } from "@/lib/mocks/hub";
 import ReviewFilterShell from "./ReviewFilterShell";
 import { getUserAttempts } from "@/lib/mocks/query";
 import { formatElapsed, previousComparable } from "@/lib/mocks/attemptHistory";
@@ -137,7 +138,7 @@ export default async function MockResultPage(props: { params: Promise<Params> })
     <>
       <AppHeader />
       <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
-        <p className="text-sm text-muted-foreground">{mock.title}</p>
+        <p className="text-sm text-muted-foreground">{displayMockTitle(mock.title)}</p>
         <h1 className="mt-1 text-2xl font-bold tracking-tight">Your result</h1>
         {res.status === "expired" && (
           <p className="mt-1 text-sm text-amber-600">Time ran out, so the test was auto-submitted.</p>

@@ -115,7 +115,7 @@ function Group({ group, showSourceBadge }: { group: MockGroup; showSourceBadge: 
               )}
               <MockAttemptBadge mockId={m.id} />
             </div>
-            <h3 className="pr-24 font-semibold leading-snug group-hover:text-brand-accent">
+            <h3 className="pr-32 font-semibold leading-snug group-hover:text-brand-accent">
               {m.title}
             </h3>
             <dl
@@ -124,7 +124,7 @@ function Group({ group, showSourceBadge }: { group: MockGroup; showSourceBadge: 
                 // One badge clears the title's first line and never reaches
                 // this row. TWO stacked badges can, so the stats reserve
                 // room only where a source badge is also drawn.
-                showSourceBadge && "pr-24"
+                showSourceBadge && "pr-32"
               )}
             >
               <div className="inline-flex items-center gap-1.5">
