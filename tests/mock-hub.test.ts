@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { shortMockTitle, hubRows, pickNextMock, HUB_MOCK_ROWS } from "@/lib/mocks/hub";
+import { shortMockTitle, displayMockTitle, hubRows, pickNextMock, HUB_MOCK_ROWS } from "@/lib/mocks/hub";
 import type { MockAttemptSummary } from "@/lib/mocks/attempted";
 
 /**
@@ -76,5 +76,19 @@ describe("pickNextMock", () => {
 
   it("treats a student with no attempts as starting from the newest paper", () => {
     expect(pickNextMock(past, all, new Map())).toEqual({ kind: "next", mockId: "p26" });
+  });
+});
+
+describe("displayMockTitle", () => {
+  it("keeps the exam name and swaps the stored em dashes for middle dots", () => {
+    // Titles are stored with em dashes; visible text carries none (owner rule).
+    expect(displayMockTitle("NDA 2026 (II) — Paper II — General Ability Test")).toBe(
+      "NDA 2026 (II) · Paper II · General Ability Test"
+    );
+  });
+  it("leaves a title without em dashes alone, hyphens included", () => {
+    expect(displayMockTitle("MHT-CET Physics practice test: most-asked chapters")).toBe(
+      "MHT-CET Physics practice test: most-asked chapters"
+    );
   });
 });

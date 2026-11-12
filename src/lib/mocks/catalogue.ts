@@ -398,10 +398,10 @@ export function mockKindNote(m: {
       m.source === "pyq"
         ? `${m.totalQuestions} past-paper questions`
         : `${m.totalQuestions} questions from the question bank`;
-    return `A sectional test: ${from} on one part of the ${m.examName} syllabus — not a full paper.`;
+    return `A sectional test: ${from} on one part of the ${m.examName} syllabus, not a full paper.`;
   }
   if (m.source === "practice") {
-    return `A full-length practice paper built to the ${m.examName} blueprint — the real pattern, timing and marking, but it is not a past paper.`;
+    return `A full-length practice paper built to the ${m.examName} blueprint: the real pattern, timing and marking, but it is not a past paper.`;
   }
-  return `The real ${m.examName} paper, served whole — the same questions in the same order, on the official marking scheme.`;
+  return `The real ${m.examName} paper, served whole: the same questions in the same order, on the official marking scheme.`;
 }

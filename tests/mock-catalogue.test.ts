@@ -382,6 +382,12 @@ describe("mockKindNote — the honesty line on the instructions page", () => {
     }
   });
 
+  it("writes no em dash in any note (owner rule: they read as AI-written)", () => {
+    for (const source of ["pyq", "practice"] as const)
+      for (const scope of ["full", "sectional"] as const)
+        expect(note({ source, scope, examName: "NDA", totalQuestions: 25 })).not.toMatch(/—/);
+  });
+
   it("says a past paper is the real thing", () => {
     const text = note({ source: "pyq", scope: "full", examName: "NDA", totalQuestions: 120 });
     expect(text).toContain("real NDA paper");

@@ -184,8 +184,9 @@ describe("attemptBadge", () => {
     expect(attemptBadge(S({ count: 1 }))?.label).toBe("68/100");
   });
 
-  it("shows the retake count alongside the best score", () => {
-    expect(attemptBadge(S({ count: 3 }))?.label).toBe("×3 · 68/100");
+  it("shows the retake count in words alongside the best score", () => {
+    // "×3 · 68/100" read as a code; say what the number is.
+    expect(attemptBadge(S({ count: 3 }))?.label).toBe("3 tries · best 68/100");
   });
 
   it("says Attempted when a sitting is not yet graded", () => {
@@ -194,7 +195,7 @@ describe("attemptBadge", () => {
     ).toBe("Attempted");
     expect(
       attemptBadge(S({ count: 2, bestScore: null, maxScore: null }))?.label
-    ).toBe("Attempted ×2");
+    ).toBe("2 tries");
   });
 
   it("rounds a fractional score rather than printing 33.329999", () => {

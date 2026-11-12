@@ -154,7 +154,7 @@ export function attemptBadge(
     // Sat, but not yet graded — the sweep runs hourly, so this is a real state
     // a student can land on, and it must not pretend to a score it lacks.
     return {
-      label: s.count === 1 ? "Attempted" : `Attempted ×${s.count}`,
+      label: s.count === 1 ? "Attempted" : `${s.count} tries`,
       ariaLabel: `Attempted ${timesInWords(s.count)}, not yet graded`,
       tone: "done",
     };
@@ -174,7 +174,8 @@ export function attemptBadge(
   }
 
   return {
-    label: `×${s.count} · ${score}/${max}`,
+    // In words (2026-11-12): "×2 · 2/300" read as a code.
+    label: `${s.count} tries · best ${score}/${max}`,
     ariaLabel: `Attempted ${timesInWords(s.count)}, best score ${score} out of ${max}`,
     tone: "done",
   };
