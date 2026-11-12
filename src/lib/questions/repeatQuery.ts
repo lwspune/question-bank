@@ -8,15 +8,13 @@
  * queryQuestionsByIds on purpose: the Word export, the paper builder and V
  * read questions there and have no use for the line.
  *
- * Ids go in the URL, so they are chunked at 200 (the request line overflows
- * well before the 1000-row result cap). A question sits in one or two groups,
- * so a chunk returns a few hundred rows at most.
+ * Ids go in the URL, so readInChunks splits them (the request line overflows
+ * well before the 1000-row result cap) and pages each chunk's rows.
  * Spec: tests/repeat-line.integration.test.ts.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { readInChunks } from "@/lib/supabase/readInChunks";
 import { repeatLine, type RepeatGroup, type RepeatLine } from "./repeatLine";
-
-const CHUNK = 200;
 
 /** PostgREST returns a to-one embed as an object; the client's inferred type says array. Take either. */
 type OneOrMany<T> = T | T[] | null;
@@ -30,25 +28,31 @@ export async function loadRepeatLines(client: SupabaseClient, ids: readonly stri
   const unique = [...new Set(ids)];
   if (unique.length === 0) return out;
 
-  const groupsOf = new Map<string, Map<string, RepeatGroup>>();
-  for (let i = 0; i < unique.length; i += CHUNK) {
-    const chunk = unique.slice(i, i + CHUNK);
-    const { data, error } = await client
+  const rows = await readInChunks<Raw>(unique, (chunk, from, to) =>
+    client
       .from("homework_plan_group_questions")
       .select("question_id, n, group:homework_plan_groups!inner(tier, sittings, plan:homework_plans!inner(slug))")
       // RLS already hides an unpublished plan, but not from the service role.
       .eq("group.plan.published", true)
-      .in("question_id", chunk);
-    if (error) throw new Error(`repeat lines: ${error.message}`);
-    for (const r of (data ?? []) as Raw[]) {
-      const group = one(r.group);
-      const plan = group ? one(group.plan) : null;
-      if (!group || !plan) continue;
-      const groups = groupsOf.get(r.question_id) ?? new Map<string, RepeatGroup>();
-      // A case study lists each part as its own member row of the same group.
-      groups.set(`${plan.slug} ${r.n}`, { tier: group.tier, sittings: group.sittings, n: r.n, planSlug: plan.slug });
-      groupsOf.set(r.question_id, groups);
-    }
+      .in("question_id", chunk)
+      // A stable order, so paging past 1000 rows never skips or repeats one.
+      .order("question_id")
+      .order("plan_id")
+      .order("n")
+      .order("position")
+      .order("sub")
+      .range(from, to)
+  );
+
+  const groupsOf = new Map<string, Map<string, RepeatGroup>>();
+  for (const r of rows) {
+    const group = one(r.group);
+    const plan = group ? one(group.plan) : null;
+    if (!group || !plan) continue;
+    const groups = groupsOf.get(r.question_id) ?? new Map<string, RepeatGroup>();
+    // A case study lists each part as its own member row of the same group.
+    groups.set(`${plan.slug} ${r.n}`, { tier: group.tier, sittings: group.sittings, n: r.n, planSlug: plan.slug });
+    groupsOf.set(r.question_id, groups);
   }
 
   for (const [questionId, groups] of groupsOf) {
