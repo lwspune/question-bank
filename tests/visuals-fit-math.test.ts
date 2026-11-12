@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { fittedSize } from "@/lib/visuals/fitMath";
+import { fitMathLine, fittedSize } from "@/lib/visuals/fitMath";
 
 // A maths line is drawn at a size estimated from its text, then measured in the
 // browser: wider than its box, it shrinks to fit (owner review, 2026-10-29:
@@ -19,5 +19,36 @@ describe("fittedSize", () => {
   it("never goes below a readable floor, and ignores a box that has not been laid out", () => {
     expect(fittedSize(16, 320, 2000)).toBe(9);
     expect(fittedSize(16, 0, 500)).toBe(16);
+  });
+});
+
+// The line is laid over the picture as HTML (components/visuals/SceneSvg), so its
+// size is in the picture's own units: --viz-u is one box unit in CSS pixels.
+describe("fitMathLine", () => {
+  const line = (base: number, clientWidth: number, widthAt: (px: number) => number) => {
+    const el = {
+      dataset: { vizMath: String(base) },
+      style: { fontSize: "" },
+      clientWidth,
+      get scrollWidth() {
+        const m = /\* ([\d.]+)\)$/.exec(el.style.fontSize);
+        return widthAt(m ? Number(m[1]) : base);
+      },
+    };
+    return el;
+  };
+
+  it("writes a line that fits at its size in box units", () => {
+    const el = line(16, 320, () => 300);
+    expect(fitMathLine(el as unknown as HTMLElement)).toBe(true);
+    expect(el.style.fontSize).toBe("calc(var(--viz-u, 1px) * 16)");
+  });
+
+  it("shrinks a line that is too wide, still in box units", () => {
+    const el = line(16, 320, (size) => size * 25);
+    expect(fitMathLine(el as unknown as HTMLElement)).toBe(true);
+    const size = Number(/\* ([\d.]+)\)$/.exec(el.style.fontSize)![1]);
+    expect(size).toBeLessThan(16);
+    expect(size * 25).toBeLessThanOrEqual(320);
   });
 });

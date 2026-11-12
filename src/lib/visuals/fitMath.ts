@@ -30,16 +30,19 @@ export function fitMathLines(root: ParentNode, force = false): void {
 }
 
 /**
- * Fits one line: KaTeX's width does not scale exactly with the font size, so
+ * Fits one line, its size in the picture's box units (components/visuals/SceneSvg
+ * lays the line over the picture as HTML). KaTeX's width does not scale exactly with the font size, so
  * one shrink can leave it a pixel over; it shrinks again, at most three times.
  * Self-contained apart from fittedSize, so the review sheet can embed both.
  */
 export function fitMathLine(el: HTMLElement): boolean {
+  // In box units (--viz-u, set by SceneSvg on the picture's wrapper), so the line scales with the picture.
+  const px = (n: number) => "calc(var(--viz-u, 1px) * " + n + ")";
   let size = Number(el.dataset.vizMath);
-  el.style.fontSize = `${size}px`;
+  el.style.fontSize = px(size);
   for (let i = 0; i < 3 && el.scrollWidth > el.clientWidth && size > 9; i++) {
     size = fittedSize(size, el.clientWidth, el.scrollWidth);
-    el.style.fontSize = `${size}px`;
+    el.style.fontSize = px(size);
   }
   return el.scrollWidth <= el.clientWidth + 1;
 }
