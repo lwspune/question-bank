@@ -41,6 +41,11 @@ const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
 /** The Review traps panel's steps (src/app/review/ChapterTraps). */
 export const REVIEW_TRAPS_ACTIONS: ReadonlySet<string> = new Set(["shown", "expand", "playbook"]);
 export const STUCK_OFFER_ACTIONS: ReadonlySet<string> = new Set(["shown", "teach", "easier", "keep", "returned", "try_after"]);
+/** The repeat line (2026-11-12, lib/questions/repeatLine): seen, or See all tapped; on which screen. */
+export const REPEAT_LINE_ACTIONS: ReadonlySet<string> = new Set(["shown", "see_all"]);
+export const REPEAT_LINE_FROM = ["card", "drill", "mock_review"] as const;
+export type RepeatLineFrom = (typeof REPEAT_LINE_FROM)[number];
+const REPEAT_LINE_FROM_SET: ReadonlySet<string> = new Set(REPEAT_LINE_FROM);
 
 /** Where a paywall met the student. Five are the 0134 limits (2026-10-05):
  *  chapter tests, the drill, daily answers, saves, the projected score.
@@ -284,6 +289,20 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
           kind: "surface_viewed",
           metadata: { surface: "review_traps", chapterId: raw.chapterId, action: raw.action },
           dedupeKey: `view:review_traps:${raw.action}:${raw.chapterId}:${userId}:${istDayKey(now)}`,
+        },
+      };
+    }
+    // The repeat line (2026-11-12, lib/questions/repeatLine): seen and See all, per question, screen and day.
+    if (raw.surface === "repeat_line") {
+      if (typeof raw.questionId !== "string" || !UUID_RE.test(raw.questionId)) return { ok: false, error: "Invalid question id." };
+      if (typeof raw.action !== "string" || !REPEAT_LINE_ACTIONS.has(raw.action)) return { ok: false, error: "Unknown step." };
+      if (typeof raw.from !== "string" || !REPEAT_LINE_FROM_SET.has(raw.from)) return { ok: false, error: "Unknown page." };
+      return {
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "repeat_line", questionId: raw.questionId, action: raw.action, from: raw.from },
+          dedupeKey: `view:repeat_line:${raw.action}:${raw.from}:${raw.questionId}:${userId}:${istDayKey(now)}`,
         },
       };
     }

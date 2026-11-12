@@ -13,6 +13,7 @@ import { BilingualOption, BilingualSolution, BilingualStem, QuestionLangSwitch }
 import { hasMarathi } from "@/lib/i18n/bilingual";
 import CancelledNotice from "@/components/question/CancelledNotice";
 import SolutionViews from "@/components/visuals/SolutionViews";
+import RepeatLineView from "@/components/question/RepeatLineView";
 
 /**
  * The per-question review list for one attempt.
@@ -36,9 +37,12 @@ import SolutionViews from "@/components/visuals/SolutionViews";
 export default function AttemptReviewList({
   items,
   supabaseUrl,
+  recordRepeat = "tap",
 }: {
   items: ReviewItem[];
   supabaseUrl: string;
+  /** "none" on a staff view of a student's attempt, so staff taps are not counted as the student's. */
+  recordRepeat?: "tap" | "none";
 }) {
   return (
     // Registry so a teacher walking the class through a paper can step from one
@@ -51,14 +55,22 @@ export default function AttemptReviewList({
       )}
       <ol className="mt-4 space-y-4">
         {items.map((item) => (
-          <ReviewCard key={item.position} item={item} supabaseUrl={supabaseUrl} />
+          <ReviewCard key={item.position} item={item} supabaseUrl={supabaseUrl} recordRepeat={recordRepeat} />
         ))}
       </ol>
     </PresentRegistry>
   );
 }
 
-function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: string }) {
+function ReviewCard({
+  item,
+  supabaseUrl,
+  recordRepeat,
+}: {
+  item: ReviewItem;
+  supabaseUrl: string;
+  recordRepeat: "tap" | "none";
+}) {
   const isMsq = item.format === "msq";
   const border = item.grace
     ? "border-l-amber-500"
@@ -183,6 +195,13 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
           );
         })}
       </ul>
+      )}
+
+      {/* The repeat line (2026-11-12): the review is after the mock, so it is no hint here. */}
+      {item.repeat && !item.cancelledNote && (
+        <div className="mt-3">
+          <RepeatLineView line={item.repeat} questionId={item.questionId} from="mock_review" record={recordRepeat} />
+        </div>
       )}
 
       {item.solution && (

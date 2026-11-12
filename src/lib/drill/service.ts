@@ -6,6 +6,8 @@
  * RLS-bound client, so `user_activity`'s own-row policy is the authorization
  * and there is no service-role call for a route to mis-gate.
  */
+import type { RepeatLine } from "@/lib/questions/repeatLine";
+import { loadRepeatLinesSafe } from "@/lib/questions/repeatQuery";
 import "server-only";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { logActivity, logActivityOnce } from "@/lib/activity/service";
@@ -53,7 +55,8 @@ export const DRILL_SURFACE = "drill";
 
 /** A served question, flagged when it is NEW to this student (the daily-set
  *  fill, ENGAGEMENT_SPEC.md B2) rather than one they got wrong before. */
-export type ServedQuestion = DrillQuestion & { isNew: boolean };
+/** `repeat`: the "Asked in 3 papers" line shown after the answer (lib/questions/repeatLine). */
+export type ServedQuestion = DrillQuestion & { isNew: boolean; repeat: RepeatLine | null };
 
 export type OwnDrill = {
   questions: ServedQuestion[];
@@ -205,9 +208,14 @@ export async function getOwnDrill(
   const set = composeDailySet(picked, fresh, size);
   if (set.length === 0) return { questions: [], fresh: 0, dueTotal: drillable.length, scope, allowance, focusExam };
 
-  const loaded = await loadDrillQuestions(db, set.map((s) => s.questionId));
+  const ids = set.map((s) => s.questionId);
+  const [loaded, repeats] = await Promise.all([loadDrillQuestions(db, ids), loadRepeatLinesSafe(db, ids)]);
   const origin = new Map(set.map((s) => [s.questionId, s.origin]));
-  const questions: ServedQuestion[] = loaded.map((q) => ({ ...q, isNew: origin.get(q.id) === "new" }));
+  const questions: ServedQuestion[] = loaded.map((q) => ({
+    ...q,
+    isNew: origin.get(q.id) === "new",
+    repeat: repeats.get(q.id) ?? null,
+  }));
 
   return {
     questions,

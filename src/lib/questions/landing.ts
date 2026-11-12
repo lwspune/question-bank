@@ -296,7 +296,8 @@ export async function loadLandingQuestions(
     createSupabaseAnonClient(),
     null,
     parseFilters(landingFilterParams(landing)),
-    LANDING_PAGE_SIZE
+    LANDING_PAGE_SIZE,
+    { withRepeatLines: true }
   );
 }
 

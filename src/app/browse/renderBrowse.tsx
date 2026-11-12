@@ -279,6 +279,7 @@ export default async function renderBrowse(req: BrowseRequest) {
         queryQuestions(supabase, null, filters, DEFAULT_PAGE_SIZE, {
           includeRawProvenance: canEditContent,
           onPageIds: startTagLookup,
+          withRepeatLines: true,
         }),
     showLanding ? loadLandingPanel() : Promise.resolve(null),
     // slug → uuid, cached hourly and already paid for by the header. Needed

@@ -10,7 +10,7 @@
  * the same one twice from one page instance.
  */
 import type { Surface } from "./views";
-import type { DownloadBox, PaywallGate, VIEW_BROWSERS } from "./clientEvents";
+import type { DownloadBox, PaywallGate, RepeatLineFrom, VIEW_BROWSERS } from "./clientEvents";
 import type { DeclineReason } from "@/lib/billing/declineReasons";
 import type { ChapterFixFrom } from "@/lib/drill/from";
 import type { StartNextFrom } from "@/lib/me/startNext";
@@ -54,6 +54,14 @@ type ClientEvent =
       surface: "review_traps";
       chapterId: string;
       action: "shown" | "expand" | "playbook";
+    }
+  | {
+      /** The repeat line seen, or its See all tapped (lib/questions/repeatLine). */
+      kind: "surface_viewed";
+      surface: "repeat_line";
+      questionId: string;
+      action: "shown" | "see_all";
+      from: RepeatLineFrom;
     }
   | {
       /** A Start next chapter's Start tapped. */
