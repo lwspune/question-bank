@@ -500,3 +500,33 @@ describe("parseClientEvent - the Review traps panel", () => {
     expect(parseClientEvent({ kind: "surface_viewed", surface: "review_traps", chapterId: "x", action: "shown" }, "u1", NOW).ok).toBe(false);
   });
 });
+
+// The repeat line under an answered question (2026-11-12, lib/questions/repeatLine):
+// seen and See all, per question, screen and day.
+describe("parseClientEvent - the repeat line", () => {
+  const RQ = "0b5e55ed-1b2c-4d3e-9f00-112233445566";
+
+  it("records each step with its question and screen, once per question per day", () => {
+    for (const action of ["shown", "see_all"]) {
+      for (const from of ["card", "drill", "mock_review"]) {
+        expect(
+          parseClientEvent({ kind: "surface_viewed", surface: "repeat_line", questionId: RQ, action, from }, "u1", NOW)
+        ).toEqual({
+          ok: true,
+          value: {
+            kind: "surface_viewed",
+            metadata: { surface: "repeat_line", questionId: RQ, action, from },
+            dedupeKey: `view:repeat_line:${action}:${from}:${RQ}:u1:2026-09-27`,
+          },
+        });
+      }
+    }
+  });
+
+  it("refuses an unknown step, screen or question id", () => {
+    const ok = { kind: "surface_viewed", surface: "repeat_line", questionId: RQ, action: "shown", from: "card" };
+    expect(parseClientEvent({ ...ok, action: "bought" }, "u1", NOW).ok).toBe(false);
+    expect(parseClientEvent({ ...ok, from: "mock_runner" }, "u1", NOW).ok).toBe(false);
+    expect(parseClientEvent({ ...ok, questionId: "x" }, "u1", NOW).ok).toBe(false);
+  });
+});

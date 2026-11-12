@@ -93,6 +93,10 @@ export const SURFACES = [
   // The Review tab's traps panel on one chapter (2026-11-11, src/app/review/ChapterTraps):
   // metadata.action (shown, expand = Show more, playbook = the playbook link) and metadata.chapterId.
   "review_traps",
+  // The repeat line under an answered question (2026-11-12, lib/questions/repeatLine):
+  // metadata.action (shown, see_all), metadata.questionId and metadata.from
+  // (card, drill, mock_review).
+  "repeat_line",
 ] as const;
 
 export type Surface = (typeof SURFACES)[number];
