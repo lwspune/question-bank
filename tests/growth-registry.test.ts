@@ -99,6 +99,7 @@ describe("EXPERIMENTS", () => {
       "premium-limits",
       "pyq-wording",
       "referrals",
+      "repeat-line",
       "resource-chips",
       "review-traps",
       "score-plan",

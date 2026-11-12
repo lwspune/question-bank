@@ -265,6 +265,10 @@ async function main() {
         // Read by hand: surface_viewed review_traps by action (shown, expand, playbook).
         line = "by hand: surface_viewed review_traps by action";
         break;
+      case "repeat-line":
+        // Read by hand: surface_viewed repeat_line by action and from, plus the 14-day fix rate of line-question misses.
+        line = "by hand: surface_viewed repeat_line by action, and the 14-day fix rate (baseline 16.9%)";
+        break;
       case "mock-before-start":
         // Read by hand: fair full attempts' skipped share, split by the card's line kind.
         line = "by hand: mock_attempts skipped share on fair full attempts, by blind-gain / rule-out / no-penalty paper";

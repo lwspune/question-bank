@@ -858,6 +858,13 @@ export default async function GrowthPage() {
             Show more, drop it under 5%.
           </p>
         );
+      case "repeat-line":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if misses on questions with the line get
+            fixed within 14 days 3+ points more often than before (16.9%), or 5%+ of shown lines get a See all tap.
+          </p>
+        );
       case "mock-before-start":
         return (
           <p className="text-sm text-muted-foreground">

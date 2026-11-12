@@ -412,6 +412,7 @@ export type Readout =
   | "stuck-offer"
   | "mock-before-start"
   | "review-traps"
+  | "repeat-line"
   | "answer-limit-copy";
 
 export type Experiment = {
@@ -867,6 +868,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-11",
     windowDays: 28,
     readout: "review-traps",
+    status: "running",
+  },
+  {
+    id: "repeat-line",
+    title: "Asked in 3 papers: the repeat line under an answered question",
+    change:
+      "After a student answers, one quiet line between the options and the solution says how often the question came back: \"Asked in 3 papers: NDA 1 2017, NDA 1 2021, NDA 2 2024 (new numbers in 2)\" for an exact repeat in 2+ papers, \"Questions like this were asked 9 times, 2022 to 2026\" for a type asked 5+ times, with See all N to the homework group page. On bank cards (/browse, chapter pages, Review, formula pages), the Fix your mistakes drill and mock review; never in a running mock. From the homework plans' reviewed repeat analysis, 31 subjects.",
+    why: "The repeat analysis showed only on the homework pages. In the 30 days to 2026-11-12, 29.9% of bank answers were on a question that would carry the line (18.0% an exact repeat). A miss on a question that keeps coming back is the one most worth fixing; owner picked the quiet line over a box (2026-11-12).",
+    metric:
+      "surface_viewed repeat_line: shown (card, drill) and see_all (card, drill, mock_review) per question and day; then the share of misses on line questions answered right within 14 days. Baseline (misses 44 to 14 days before 2026-11-12): 16.9% of 2,062 misses on line questions, 17.1% on questions in no plan, 18.8% in a plan without a line",
+    rule: "Keep it if misses on line questions get fixed within 14 days 3+ points more often than the 16.9% baseline while the other misses stay within a point of theirs, or 5%+ of shown lines get a See all tap. Drop it if neither moves.",
+    liveSince: "2026-11-12",
+    windowDays: 28,
+    readout: "repeat-line",
     status: "running",
   },
   {
