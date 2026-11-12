@@ -203,6 +203,15 @@ describe("attempt strategy follows the exam's marking", () => {
     const plan = buildScorePlan(input(facts, {}, [attempt({ totalQuestions: 22 })]))!;
     expect(plan.strategy).toMatchObject({ kind: "never_blank", blanks: 2, breakEvenOneIn: null });
   });
+
+  it("does not count a never-opened grace question as a blank to fill: it already scores", () => {
+    const facts = paper().map((f) => ({ ...f, nm: 0 }));
+    seq = 100;
+    facts.push(fact({ s: 0, c: 0, ok: null, nm: 0 }), fact({ s: 0, c: 0, ok: null, nm: 0, rc: false }));
+    facts.push({ ...fact({ s: 0, c: 0, ok: null, nm: 0, rc: false }), g: true });
+    const plan = buildScorePlan(input(facts, {}, [attempt({ totalQuestions: 23 })]))!;
+    expect(plan.strategy).toMatchObject({ kind: "never_blank", blanks: 2 });
+  });
 });
 
 describe("sections follow the paper, not the subject", () => {

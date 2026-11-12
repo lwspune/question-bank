@@ -233,8 +233,12 @@ export function buildMockReport(
   for (const f of mine) {
     const verdict = verdictOfFact(f);
     if (!f.rc) {
-      neverReached++;
-      marksLeft += f.m;
+      // A grace question already scores, opened or not: its marks are not
+      // "marks you didn't get a shot at" (2026-11-12, see the test).
+      if (!f.g) {
+        neverReached++;
+        marksLeft += f.m;
+      }
       continue;
     }
     if (!isAnswered(f) && !f.g) {
