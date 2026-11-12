@@ -14,7 +14,7 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
-import { onboardingArm, type OnboardingArm } from "@/lib/education/howItWorks";
+import { onboardingArm, type OnboardingArm } from "@/lib/growth/snapshot";
 import { NORTH_STAR_KINDS } from "@/lib/growth/registry";
 import type { GrowthSnapshotRaw } from "@/lib/growth/query";
 import { testRunId } from "./helpers/runId";

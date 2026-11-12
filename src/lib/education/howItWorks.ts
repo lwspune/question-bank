@@ -20,8 +20,7 @@ import { withArticle } from "@/lib/text/article";
 import type { ExamEntry } from "@/lib/exam/examContext";
 import { drillHref } from "@/lib/drill/from";
 
-/** "practice" is the practice-first experiment's loop — see onboardingArm. */
-export type LoopKind = "mock" | "bank" | "practice";
+export type LoopKind = "mock" | "bank";
 
 export type LoopStep = {
   /** Imperative, three to five words: "Sit a real past paper." */
@@ -112,79 +111,9 @@ export function loopFor(exam: ExamEntry | null | undefined): Loop {
   return bankLoop(exam);
 }
 
-/** Mocks that are past papers: a board exam's mocks are chapter tests. The
- *  practice-first arm and its growth readout both key on this. */
+/** Mocks that are past papers: a board exam's mocks are chapter tests. */
 export function hasPaperMocks(exam: ExamEntry): boolean {
   return exam.hasMocks === true && exam.boardExam !== true;
-}
-
-/**
- * THE PRACTICE-FIRST EXPERIMENT (2026-10-01, growth readout). Half of new
- * students with a mock exam see this loop on the welcome step instead of the
- * mock loop: practise one chapter, then sit a paper, then fix what you missed.
- *
- * WHY: a full paper is a hard first step (27% of attempts are abandoned; the
- * median MHT-CET Paper II attempt answers 8%), and bank practice carries the
- * largest retention lift measured on /dashboard/pmf. That lift is a
- * correlation, so it is tested on half rather than shipped to everyone.
- *
- * ONLY THE WELCOME STEP CHANGES. /start and the welcome email keep loopFor.
- */
-export type OnboardingArm = "mock-first" | "practice-first";
-
-/**
- * Even first hex digit of the user id = control, odd = practice-first. Fixed
- * per account and needs no stored column: the readout recomputes it in SQL as
- *   ('x' || left(user_id::text, 1))::bit(4)::int % 2 = 1   -- practice-first
- * A malformed id falls into the control arm.
- */
-export function onboardingArm(userId: string): OnboardingArm {
-  const digit = parseInt(userId.charAt(0), 16);
-  return Number.isNaN(digit) || digit % 2 === 0 ? "mock-first" : "practice-first";
-}
-
-/**
- * Where "Practise a chapter" opens: the page listing the exam's chapter pages.
- * The exam home for every exam but NDA, whose home (/nda) lists guides, not
- * chapters — NDA goes to its section of /questions. Mirrors examHomeHref, which
- * is not imported because this module must stay free of Next/DB imports (the
- * welcome email script runs it in plain Node); the spec pins the two together.
- */
-export function chapterPickerHref(slug: string): string {
-  return slug === "nda" ? "/questions#nda" : `/exams/${slug}`;
-}
-
-function practiceFirstLoop(exam: ExamEntry): Loop {
-  return {
-    kind: "practice",
-    examLabel: exam.displayName,
-    steps: [
-      {
-        title: "Practise one chapter.",
-        body: "Pick the chapter you are studying. Answer each question first, then tap Show answer.",
-        href: chapterPickerHref(exam.slug),
-        cta: "Practise a chapter",
-      },
-      {
-        title: "Sit a real past paper when ready.",
-        body: "Timed and auto-graded, the exact questions of one sitting. Answer what you can and leave the rest.",
-        href: `/mock/exam/${exam.slug}`,
-        cta: `Start ${withArticle(exam.displayName)} paper`,
-      },
-      {
-        title: "Fix what you missed.",
-        body: "Five of the questions you got wrong, with solutions. A question you get right goes quiet; one you miss comes back round.",
-        href: drillHref("start"),
-        cta: "Fix your mistakes",
-      },
-    ],
-  };
-}
-
-/** The welcome step's loop for one arm. Exams without paper mocks are unaffected. */
-export function loopForArm(exam: ExamEntry | null | undefined, arm: OnboardingArm): Loop {
-  if (arm === "practice-first" && exam && hasPaperMocks(exam)) return practiceFirstLoop(exam);
-  return loopFor(exam);
 }
 
 export type Destination = { href: string; label: string };
@@ -201,12 +130,7 @@ export function welcomeDestination(
   loop: Loop
 ): { primary: Destination; secondary: Destination } {
   const entry: Destination = { href: loop.steps[0].href, label: loop.steps[0].cta };
-  // In the practice loop the paper is step 2, and it is the one other thing
-  // worth offering on this screen; elsewhere the fallback is the bank.
-  const fallback: Destination =
-    loop.kind === "practice"
-      ? { href: loop.steps[1].href, label: "Sit a paper" }
-      : { href: WELCOME_DEFAULT_NEXT, label: "Browse the bank" };
+  const fallback: Destination = { href: WELCOME_DEFAULT_NEXT, label: "Browse the bank" };
   if (next === WELCOME_DEFAULT_NEXT || next === entry.href) {
     return { primary: entry, secondary: fallback };
   }

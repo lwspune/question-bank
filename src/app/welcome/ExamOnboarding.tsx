@@ -12,7 +12,7 @@ import { getExamBySlug, isExamSlug, type ExamSlug } from "@/lib/exam/examContext
 import TierExamChips from "@/components/TierExamChips";
 import { setExamCookie } from "@/lib/exam/examCookie";
 import { STAGES, STAGE_LABELS, examQuestionVisible, type Stage } from "@/lib/profile/onboarding";
-import { loopForArm, welcomeDestination, type OnboardingArm } from "@/lib/education/howItWorks";
+import { loopFor, welcomeDestination } from "@/lib/education/howItWorks";
 
 /**
  * Post-signup intent capture — the first "staggered" ask, now TWO screens.
@@ -39,12 +39,9 @@ const STAGE_OPTIONS = STAGES.map((s) => ({ value: s, label: STAGE_LABELS[s] }));
 export default function ExamOnboarding({
   next,
   initialExam,
-  arm,
 }: {
   next: string;
   initialExam: ExamSlug | null;
-  /** The practice-first experiment's arm, fixed per account (onboardingArm). */
-  arm: OnboardingArm;
 }) {
   const router = useRouter();
   const [exams, setExams] = useState<ExamSlug[]>(
@@ -112,7 +109,7 @@ export default function ExamOnboarding({
 
   if (primary !== null) {
     const exam = primary === "none" ? null : getExamBySlug(primary);
-    const loop = loopForArm(exam, arm);
+    const loop = loopFor(exam);
     const dest = welcomeDestination(next, loop);
     return (
       <main className="flex min-h-screen items-center justify-center bg-muted/30 px-4 py-12 sm:px-6">
@@ -126,9 +123,7 @@ export default function ExamOnboarding({
           <p className="mt-2 text-sm text-muted-foreground">
             {loop.kind === "mock"
               ? "Three steps, about five minutes a day after the first sitting."
-              : loop.kind === "practice"
-                ? "Start small: one chapter, about ten minutes."
-                : "Three habits that make the textbook stick."}
+              : "Three habits that make the textbook stick."}
           </p>
 
           <div className="mt-6">

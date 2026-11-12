@@ -12,7 +12,6 @@
  * Spec: tests/growth-snapshot.test.ts.
  */
 import { INSTRUMENT_CHANGED_SINCE, MIN_LIFT_N } from "@/lib/pmf/snapshot";
-import type { OnboardingArm } from "@/lib/education/howItWorks";
 import { countryName } from "@/lib/acquisition/country";
 import {
   CHAPTER_TESTS_ANSWERED_KEEP,
@@ -176,6 +175,21 @@ export function viewSignupCountries(raw: SignupCountries): SignupCountriesView {
 }
 
 /* ── Practice-first onboarding ──────────────────────────────────────────── */
+
+/**
+ * The two halves the practice-first readout compares. The experiment ended on
+ * 2026-11-11 and every student now sees the mock-first welcome step, but
+ * get_growth_snapshot (migration 0129) still splits accounts this way, so the
+ * definition lives here, beside the readout, to keep the SQL and TS in step:
+ *   ('x' || left(user_id::text, 1))::bit(4)::int % 2 = 1   -- practice-first
+ * Even first hex digit = mock-first; a malformed id falls into mock-first.
+ */
+export type OnboardingArm = "mock-first" | "practice-first";
+
+export function onboardingArm(userId: string): OnboardingArm {
+  const digit = parseInt(userId.charAt(0), 16);
+  return Number.isNaN(digit) || digit % 2 === 0 ? "mock-first" : "practice-first";
+}
 
 export type ArmCounts = {
   arm: OnboardingArm;
