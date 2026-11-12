@@ -631,6 +631,7 @@ export default function MockRunner({
               onJump={goTo}
               cellClass="h-9"
               cols="grid-cols-6"
+              legendCols="grid-cols-1"
             />
           </div>
         </aside>
@@ -682,6 +683,7 @@ export default function MockRunner({
             onJump={goTo}
             cellClass="h-11"
             cols="grid-cols-5"
+            legendCols="grid-cols-2"
           />
         </SheetContent>
       </Sheet>
@@ -776,6 +778,7 @@ function PaletteGrid({
   onJump,
   cellClass,
   cols,
+  legendCols,
 }: {
   groups: SectionGroup[];
   questions: RunnerState["questions"];
@@ -786,11 +789,13 @@ function PaletteGrid({
   onJump: (i: number) => void;
   cellClass: string;
   cols: string;
+  /** The legend's columns: one in the narrow desktop sidebar, two in the phone panel. */
+  legendCols: string;
 }) {
   const multi = groups.length > 1;
   return (
     <>
-      <ul className="mb-4 grid grid-cols-1 gap-y-1 text-xs text-muted-foreground min-[360px]:grid-cols-2 min-[360px]:gap-x-3">
+      <ul className={cn("mb-4 grid gap-x-3 gap-y-1 text-xs text-muted-foreground", legendCols)}>
         {LEGEND.map((l) => (
           <li key={l.state} className="flex items-center gap-1.5">
             <span className={cn("relative inline-block h-3 w-3 shrink-0 rounded-sm border", PALETTE_STYLE[l.state])} aria-hidden>
@@ -798,7 +803,9 @@ function PaletteGrid({
                 <span className="absolute -right-1 -top-1 h-2 w-2 rounded-full bg-emerald-600" />
               )}
             </span>
-            {l.label} · <span className="tabular-nums">{counts[l.state]}</span>
+            <span>
+              {l.label} · <span className="tabular-nums">{counts[l.state]}</span>
+            </span>
           </li>
         ))}
       </ul>
@@ -808,9 +815,9 @@ function PaletteGrid({
           <section key={g.key} className="mb-4 last:mb-0" aria-label={multi ? g.label : "Questions"}>
             {multi && (
               <div className="mb-2 flex items-baseline justify-between gap-2">
-                <h3 className="text-sm font-semibold">
+                <h3 className="min-w-0 text-sm font-semibold">
                   {g.label}{" "}
-                  <span className="font-normal text-muted-foreground">
+                  <span className="whitespace-nowrap font-normal text-muted-foreground">
                     · Q{g.first}–{g.last}
                   </span>
                 </h3>
