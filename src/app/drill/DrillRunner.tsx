@@ -14,6 +14,7 @@ import { drillVSays, progressLine } from "@/lib/drill/progress";
 import { scopeCopy, type DrillScope as Scope } from "@/lib/drill/scope";
 import { drillHref } from "@/lib/drill/from";
 import PushOptIn from "@/components/push/PushOptIn";
+import RepeatLineView from "@/components/question/RepeatLineView";
 import { VaultPointsStatus } from "@/components/billing/useFixPoints";
 
 // The scope's shape and every line about it live in lib/drill/scope (2026-11-06).
@@ -387,6 +388,9 @@ export default function DrillRunner({
                 >
                   {progressLine(answered.progress)}
                 </p>
+              )}
+              {question.repeat && (
+                <RepeatLineView line={question.repeat} questionId={question.id} from="drill" record="all" />
               )}
               {/* Animated first where the question has a checked visual; Still is the block as before.
                   A written question's model answer is already open above. */}

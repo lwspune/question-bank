@@ -5,6 +5,8 @@
  * belt-and-suspenders. Grading (gradeMock) + timing (remainingSecs) are the pure
  * helpers in attempt.ts — this layer only does the DB reads/writes around them.
  */
+import type { RepeatLine } from "@/lib/questions/repeatLine";
+import { loadRepeatLinesSafe } from "@/lib/questions/repeatQuery";
 import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Translation } from "@/lib/i18n/bilingual";
@@ -583,6 +585,8 @@ export type ReviewItem = {
   translations?: { mr?: Translation };
   /** Officially cancelled by the exam body (0119) — shown in place of the NTA grace note. */
   cancelledNote?: string | null;
+  /** "Asked in 3 papers: ..." (lib/questions/repeatLine), shown above the solution. */
+  repeat?: RepeatLine | null;
 };
 
 export type AttemptReview = {
@@ -611,10 +615,11 @@ export async function getAttemptReview(
   if (!mock) throw new MockError(404, "Mock test not found");
   if (attempt.status === "in_progress") return { status: "in_progress", slug: mock.slug, review: null };
 
-  const [summary, content, answers] = await Promise.all([
+  const [summary, content, answers, repeats] = await Promise.all([
     readAttemptSummary(db, userId, attemptId),
     loadReviewQuestions(db, mock.questions),
     loadSavedAnswers(db, attemptId),
+    loadRepeatLinesSafe(db, mock.questions.map((q) => q.questionId)),
   ]);
 
   const items: ReviewItem[] = mock.questions
@@ -673,6 +678,7 @@ export async function getAttemptReview(
         solutionVisual: c?.solutionVisual ?? null,
         grace,
         cancelledNote: c?.cancelledNote ?? null,
+        repeat: repeats.get(s.questionId) ?? null,
         ...(c?.translations ? { translations: c.translations } : {}),
       };
     });

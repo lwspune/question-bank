@@ -4,6 +4,8 @@ import type { Filters, Difficulty, QuestionFormat } from "./filters";
 import { publicPyqNote, type PublicQuestionKind } from "./publicPyqNote";
 import { translationsFromRows, type Translation } from "@/lib/i18n/bilingual";
 import { usableVisual } from "@/lib/visuals/visual";
+import type { RepeatLine } from "./repeatLine";
+import { loadRepeatLinesSafe } from "./repeatQuery";
 
 export type OptionRow = {
   label: "A" | "B" | "C" | "D" | "E";
@@ -67,6 +69,12 @@ export type QuestionRow = {
    * mark any pick right or wrong. Absent/null for every normal question.
    */
   cancelledNote?: string | null;
+  /**
+   * "Asked in 3 papers: ..." under the answered question (2026-11-12,
+   * lib/questions/repeatLine.ts). Only when the caller asked for it
+   * (`withRepeatLines`); absent or null = no line.
+   */
+  repeat?: RepeatLine | null;
 };
 
 /**
@@ -122,6 +130,8 @@ export async function queryQuestions(
      * Kick work off and return; this function does not await it.
      */
     onPageIds?: (ids: string[]) => void;
+    /** Attach each row's repeat line (lib/questions/repeatQuery.ts). Card screens only. */
+    withRepeatLines?: boolean;
   }
 ): Promise<QueryResult> {
   // Principle filter resolves to a question-id list via the tag table BEFORE
@@ -306,6 +316,7 @@ export async function queryQuestions(
   // through to the result — see the ordering tests in tests/browse-query.test.ts.
   const rows = await queryQuestionsByIds(client, pageIds, {
     includeRawProvenance: opts?.includeRawProvenance,
+    withRepeatLines: opts?.withRepeatLines,
   });
 
   return { totalCount, rows };
@@ -334,9 +345,14 @@ export async function queryQuestions(
 export async function queryQuestionsByIds(
   client: SupabaseClient,
   ids: string[],
-  opts?: { includeRawProvenance?: boolean }
+  opts?: {
+    includeRawProvenance?: boolean;
+    /** Attach each row's repeat line, read in parallel with the rows. Card screens only. */
+    withRepeatLines?: boolean;
+  }
 ): Promise<QuestionRow[]> {
   if (ids.length === 0) return [];
+  const repeatLines = opts?.withRepeatLines ? loadRepeatLinesSafe(client, ids) : null;
 
   const { data, error } = await client
     .from("questions")
@@ -431,6 +447,11 @@ export async function queryQuestionsByIds(
       translations: translationsFromRows(r.question_translations, r.options),
       cancelledNote: r.cancelled_note,
     });
+  }
+
+  if (repeatLines) {
+    const lines = await repeatLines;
+    for (const [id, row] of byId) row.repeat = lines.get(id) ?? null;
   }
 
   // Preserve the caller's order; skip ids that didn't resolve.

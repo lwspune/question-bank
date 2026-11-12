@@ -151,7 +151,7 @@ async function cardsInOrder(
   includeRawProvenance: boolean
 ): Promise<QuestionRow[]> {
   if (ids.length === 0) return [];
-  const rows = await queryQuestionsByIds(db, ids, { includeRawProvenance });
+  const rows = await queryQuestionsByIds(db, ids, { includeRawProvenance, withRepeatLines: true });
   const byId = new Map(rows.map((q) => [q.id, q]));
   return ids.flatMap((id) => {
     const q = byId.get(id);

@@ -109,7 +109,7 @@ export default async function FormulaPage(props: Params) {
 
   const db = createSupabaseAnonClient();
   const [loaded, practiceIds] = await Promise.all([
-    queryQuestionsByIds(db, topic.questionIds),
+    queryQuestionsByIds(db, topic.questionIds, { withRepeatLines: true }),
     loadPracticeIds(db, topic.questionIds),
   ]);
   const rows = sortForLearning(loaded);

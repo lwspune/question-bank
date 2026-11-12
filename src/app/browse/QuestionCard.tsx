@@ -44,6 +44,7 @@ import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
 import RevealLockedLink from "@/components/reveal/RevealLockedLink";
 import { RevealDailyLink, RevealDailyPrompt } from "@/components/reveal/RevealDailyLimit";
 import FixNudgeLine from "@/components/reveal/FixNudgeLine";
+import RepeatLineView from "@/components/question/RepeatLineView";
 import StuckOfferLine from "@/components/reveal/StuckOfferLine";
 import BackFromNotesLine from "@/components/reveal/BackFromNotesLine";
 import { dismissStuckOffer } from "@/components/reveal/stuckOfferStore";
@@ -666,6 +667,12 @@ export default function QuestionCard({
               ) : (
                 <RevealSignInPrompt key={blockedTaps} surface={surface} />
               ))}
+
+            {/* The repeat line (2026-11-12): after the answer only, never before
+                (it would be a hint). Rows carry it only where the loader asked. */}
+            {question.repeat && !cancelled && (revealed || (isOpenFormat && showSolution)) && (
+              <RepeatLineView line={question.repeat} questionId={question.id} from="card" record={meter.signedIn ? "all" : "none"} />
+            )}
 
             {/* Every fifth wrong bank answer of the day: the misses are saved in
                 Fix your mistakes (lib/drill/fixNudge). Nothing on other cards. */}

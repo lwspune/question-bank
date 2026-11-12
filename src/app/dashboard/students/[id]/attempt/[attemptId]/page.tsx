@@ -104,7 +104,7 @@ export default async function AdminAttemptReviewPage(props: { params: Promise<Pa
         <h2 className="mt-8 text-lg font-semibold">
           Review — all {res.review.items.length} questions
         </h2>
-        <AttemptReviewList items={res.review.items} supabaseUrl={supabaseUrl} />
+        <AttemptReviewList items={res.review.items} supabaseUrl={supabaseUrl} recordRepeat="none" />
       </main>
     </>
   );
