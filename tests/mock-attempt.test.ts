@@ -47,9 +47,12 @@ describe("paletteState", () => {
   it("is answered when a selection exists", () => {
     expect(paletteState({ ...pick("B"), isFlagged: false })).toBe("answered");
   });
-  it("flagged overrides answered/not_answered", () => {
-    expect(paletteState({ ...pick("C"), isFlagged: true })).toBe("flagged");
+  it("a marked question with no answer is flagged", () => {
     expect(paletteState({ ...blank, isFlagged: true })).toBe("flagged");
+  });
+  it("a marked question WITH an answer is its own state, not plain flagged", () => {
+    // The student must be able to tell which marked questions still need an answer.
+    expect(paletteState({ ...pick("C"), isFlagged: true })).toBe("answered_flagged");
   });
 });
 
