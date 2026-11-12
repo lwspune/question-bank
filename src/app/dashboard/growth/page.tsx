@@ -66,6 +66,8 @@ import {
   V_FOLLOW_UP_KEEP_PCT,
   V_FIX_LINE_KEEP_PCT,
   V_RETRY_YES_KEEP_PCT,
+  V_STEPS_START_KEEP_PCT,
+  V_STEPS_FINISH_KEEP_PCT,
   SCORE_PLAN_DRILL_KEEP_PCT,
   STUCK_OFFER_LEAVE_BASELINE_PCT,
   ANSWER_LIMIT_COPY_CHECKOUT_BASELINE_PCT,
@@ -899,6 +901,14 @@ export default async function GrowthPage() {
           <p className="text-sm text-muted-foreground">
             Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if {V_RETRY_YES_KEEP_PCT}%+ of answered
             second tries get a Yes (was 2 of 7).
+          </p>
+        );
+      case "v-step-by-step":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} from the step-by-step funnel on /dashboard/chat:
+            keep it if {V_STEPS_START_KEEP_PCT}%+ of the explanations it goes under get a start and {V_STEPS_FINISH_KEEP_PCT}%+
+            of starts reach the last step.
           </p>
         );
       case "v-fix-line":

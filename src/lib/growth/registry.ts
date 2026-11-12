@@ -267,6 +267,14 @@ export const V_FIX_LINE_KEEP_PCT = 10;
 export const V_RETRY_YES_KEEP_PCT = 50;
 
 /**
+ * "v-step-by-step" (V_SPEC.md section 0, step 1): keep "Teach me step by step"
+ * if at least V_STEPS_START_KEEP_PCT of the explanations it goes under get a
+ * start, and at least V_STEPS_FINISH_KEEP_PCT of starts reach the last step (%).
+ */
+export const V_STEPS_START_KEEP_PCT = 10;
+export const V_STEPS_FINISH_KEEP_PCT = 50;
+
+/**
  * "score-plan": keep "How to raise your score" if at least this share of the
  * fair full-paper attempts it shows on start the Fix list within a day (%).
  * Baseline with "What to fix next", 36 fair attempts (60 to 14 days before
@@ -408,6 +416,7 @@ export type Readout =
   | "v-follow-up-loop"
   | "v-fix-line"
   | "v-better-retry"
+  | "v-step-by-step"
   | "score-plan"
   | "stuck-offer"
   | "mock-before-start"
@@ -952,6 +961,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-10",
     windowDays: 28,
     readout: "v-better-retry",
+    status: "running",
+  },
+  {
+    id: "v-step-by-step",
+    title: "Teach me step by step, under V's explanation",
+    change:
+      "Under V's explanation of an MCQ or numeric question whose solution has 2+ steps, a \"Teach me step by step\" button shows our stored solution one step at a time (the animation drawing the same step when the question has one), with \"Got it, next step\" and \"Lost me here\" between steps. Lost me here asks V about that step alone and offers to continue after its reply; no AI call per step.",
+    why: "V_SPEC.md section 0: a tutor checks as it goes and waits, and V gave one reply and a Yes/No at the end (24 Yes, 24 No to 637 explanations in 30 days). 40% of the questions students asked V about have an animation whose steps were already tied to the solution, and the rest cut into a median 4 sentences.",
+    metric:
+      "chat_interactions event_type step_by_step (migration 0252): open, next, lost (by step), done; against Ask V explanations of questions that qualify (/dashboard/chat shows the funnel); then the verified-learning rate (npm run v:learning) of students who started it",
+    rule: `Keep it if ${V_STEPS_START_KEEP_PCT}%+ of the explanations it goes under get a start and ${V_STEPS_FINISH_KEEP_PCT}%+ of starts reach the last step; read the verified-learning rate beside it as a trend (thin).`,
+    liveSince: "2026-11-12",
+    windowDays: 28,
+    readout: "v-step-by-step",
     status: "running",
   },
   {
