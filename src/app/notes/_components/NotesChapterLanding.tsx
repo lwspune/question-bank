@@ -40,7 +40,6 @@ import { printHandoutHref } from "@/lib/notes/printDoc";
 import ConceptWeightTable from "./ConceptWeightTable";
 import { listChapterLandings, landingHref } from "@/lib/questions/landing";
 import { findChapterLanding } from "@/lib/questions/findLanding";
-import ChapterShareCard from "@/components/ChapterShareCard";
 import { mockCtaCopy, withChapterTest } from "@/lib/mocks/chapterTests";
 import { listChapterTests } from "@/lib/mocks/chapterTestsQuery";
 import { canonicalFor } from "@/lib/sites/intl";
@@ -455,18 +454,6 @@ export default async function NotesChapterLanding({ chapter }: Props) {
           examDisplay={mock.examDisplay}
           copy={mockCtaCopy(mock)}
           page="chapter"
-        />
-      )}
-      {questionsLanding && (
-        <ChapterShareCard
-          path={landingHref(questionsLanding)}
-          chapterName={questionsLanding.chapterName}
-          examDisplay={
-            getExamBySlug(questionsLanding.examSlug)?.displayName ?? questionsLanding.examName
-          }
-          questionCount={questionsLanding.questionCount}
-          practiceOnly={questionsLanding.practiceOnly}
-          surface="notes"
         />
       )}
       {mock && (

@@ -25,7 +25,6 @@ describe("FUNNEL_EVENTS", () => {
       "notes_test_bar_click",
       "notes_mock_card_click",
       "chat_launcher_click",
-      "chapter_share_click",
       "download_box_signin",
       "checkout_opened",
       "checkout_paid",
