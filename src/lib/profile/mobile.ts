@@ -85,3 +85,13 @@ export function whatsappHref(mobile: string | null | undefined): string | null {
   const normalized = normalizeMobile(mobile);
   return normalized ? `https://wa.me/${normalized}` : null;
 }
+
+/**
+ * A stored mobile as Razorpay's checkout prefills it (`+91XXXXXXXXXX`), or null.
+ * Without one Razorpay opens on "Enter mobile & email to continue" before any
+ * way to pay (seen 2026-11-12); null leaves that screen as it was.
+ */
+export function razorpayContact(mobile: string | null | undefined): string | null {
+  const normalized = normalizeMobile(mobile);
+  return normalized ? `+${normalized}` : null;
+}

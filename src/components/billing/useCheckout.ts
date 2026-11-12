@@ -14,7 +14,7 @@ type RazorpayOptions = {
   currency: string;
   name: string;
   description?: string;
-  prefill?: { email?: string };
+  prefill?: { email?: string; contact?: string };
   theme?: { color?: string };
   handler: (resp: RazorpaySuccess) => void;
   modal?: { ondismiss?: () => void };
@@ -157,6 +157,8 @@ export function useCheckout({
         keyId?: string;
         planLabel?: string;
         email?: string;
+        /** The saved mobile, +91 form (2026-11-12): without it Razorpay opens on a mobile-number form. */
+        contact?: string;
         error?: string;
       };
       if (!orderRes.ok || !order.orderId || !order.keyId) {
@@ -170,7 +172,10 @@ export function useCheckout({
         currency: order.currency ?? "INR",
         name: "PYQ Vault",
         description: order.planLabel,
-        prefill: order.email ? { email: order.email } : undefined,
+        prefill:
+          order.email || order.contact
+            ? { ...(order.email ? { email: order.email } : {}), ...(order.contact ? { contact: order.contact } : {}) }
+            : undefined,
         theme: { color: "#1d4ed8" },
         handler: async (resp) => {
           try {

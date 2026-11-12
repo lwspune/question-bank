@@ -70,6 +70,7 @@ import {
   V_STEPS_FINISH_KEEP_PCT,
   SCORE_PLAN_DRILL_KEEP_PCT,
   STUCK_OFFER_LEAVE_BASELINE_PCT,
+  CHECKOUT_CONTACT_PAID_BASELINE_PCT,
   ANSWER_LIMIT_COPY_CHECKOUT_BASELINE_PCT,
   ANSWER_LIMIT_COPY_BUY_BASELINE_PCT,
   V_REVEAL_FOLLOWUP_MAX_DROP,
@@ -879,6 +880,13 @@ export default async function GrowthPage() {
           <p className="text-sm text-muted-foreground">
             Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if fewer than {STUCK_OFFER_LEAVE_BASELINE_PCT}%
             leave right after an offer, or Teach and Easier lead to more right answers on the subtopic than Keep going.
+          </p>
+        );
+      case "checkout-contact":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: it worked if students whose checkout carried
+            their mobile pay at above {CHECKOUT_CONTACT_PAID_BASELINE_PCT}% (23 of 51 before, when it was not sent).
           </p>
         );
       case "answer-limit-copy":
