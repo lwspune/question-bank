@@ -121,6 +121,7 @@ describe("EXPERIMENTS", () => {
       "v-premium-hourly",
       "v-progress",
       "v-reveal",
+      "v-step-by-step",
       "v-strategy",
       "visual-solutions",
       "why-not-buy",
