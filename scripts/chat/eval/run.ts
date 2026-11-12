@@ -50,6 +50,8 @@ import { answerIn } from "../../../src/lib/chat/askVEvent";
 import { conceptSources } from "../../../src/lib/chat/conceptSearchServer";
 import { parseNotesRefKey } from "../../../src/lib/chat/notesItem";
 import { loadNotesItemBrief } from "../../../src/lib/chat/notesItemServer";
+import { loadSolutionSteps } from "../../../src/lib/chat/solutionStepsServer";
+import { lostStepOf, stuckOn } from "../../../src/lib/chat/stepByStep";
 import { aiAnswerCostUsd } from "../../../src/lib/chat/interactions";
 import type { ModelTurn } from "../../../src/lib/chat/conversation";
 import type { SavedPlan } from "../../../src/lib/chat/weekPlan";
@@ -232,9 +234,14 @@ async function main() {
     const notesBrief = notesRef ? await loadNotesItemBrief(c.page_path, notesRef) : null;
     // A follow-up card's Ask V (0250), told the explained question's stem as the route does.
     const followsUp = c.follows_up_question_id ? { stem: (await loadVQuestion(anon, c.follows_up_question_id))?.text ?? null } : null;
+    // "Lost me here" on a step of our solution (2026-11-12), told the step as the route does.
+    const solutionStep =
+      c.asked_question_id && lostStepOf(c.message) !== null
+        ? stuckOn((await loadSolutionSteps(anon, c.asked_question_id))?.steps ?? null, c.message)
+        : null;
     const r = await answerWithV({
       anon,
-      context: { ...contextFor(c, notesBrief), followsUp },
+      context: { ...contextFor(c, notesBrief), followsUp, solutionStep },
       message: c.message,
       replyTo: c.reply_to,
       history: c.history,

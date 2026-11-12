@@ -7,6 +7,11 @@
  * the stored solution cut at its sentences (lib/visuals/visual stepTexts),
  * never rewritten; when the steps cannot be trusted against it, the picture
  * plays on its own and the whole solution sits below it.
+ *
+ * With `step` (V's "Teach me step by step", 2026-11-12) the host drives it:
+ * the picture draws that step (the ones before it already drawn), never plays
+ * on by itself, and shows no buttons or text of its own, since the host shows
+ * the step's words and the Next button.
  */
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { CheckCircle2, ChevronLeft, ChevronRight, Play } from "lucide-react";
@@ -38,10 +43,13 @@ export default function AnimatedSolution({
   visual: raw,
   solution,
   onEvent,
+  step,
 }: {
   visual: unknown;
   solution: string | null;
   onEvent?: PlayerEventHandler;
+  /** The step to show, 0-based, when the host steps through the solution itself. */
+  step?: number;
 }) {
   // Parsed and checked again here: a chat turn kept on the device can be edited,
   // so the player never trusts that the server's check still holds.
@@ -50,18 +58,21 @@ export default function AnimatedSolution({
     return r.ok && checkVisual(r.visual).ok ? r.visual : null;
   }, [raw]);
   if (!parsed) return solution ? <BlockText text={solution} solution /> : null;
-  return <Player visual={parsed} solution={solution} onEvent={onEvent} />;
+  return <Player visual={parsed} solution={step === undefined ? solution : null} onEvent={onEvent} step={step} />;
 }
 
 function Player({
   visual,
   solution,
   onEvent,
+  step,
 }: {
   visual: Extract<ReturnType<typeof parseSolutionVisual>, { ok: true }>["visual"];
   solution: string | null;
   onEvent?: PlayerEventHandler;
+  step?: number;
 }) {
+  const hosted = step !== undefined;
   const scene = getScene(visual.scene)!;
   const params = visual.params;
   const steps = visual.steps;
@@ -85,13 +96,19 @@ function Player({
   onEventRef.current = onEvent;
   // How far the student got (lib/visuals/progress), set up with the motion setting below.
   const progress = useRef<Progress | null>(null);
+  // Hosted: the step asked for, and whether the picture has been seen yet (it waits until then).
+  const stepRef = useRef(step);
+  stepRef.current = step;
+  const seenRef = useRef(false);
+  const goToRef = useRef<(k: number) => void>(() => {});
 
   useEffect(() => {
     // Reduced motion: show the finished picture, never animate unasked.
     const reduced = prefersReducedMotion();
     progress.current = createProgress(steps.length, { reduced });
     if (reduced) {
-      const last = steps.length - 1;
+      // Hosted: that step finished; otherwise the finished picture.
+      const last = Math.min(stepRef.current ?? steps.length - 1, steps.length - 1);
       setPos({ step: last, beat: steps[last].beats.length - 1, t: 1 });
     }
     // Play when at least 40% of the picture is on screen, so a visual lower down
@@ -101,7 +118,10 @@ function Player({
     // only ever sees the final picture and so can never finish.
     const start = () => {
       onEventRef.current?.("shown", { motion: reduced ? "reduced" : "full", steps: steps.length });
-      if (!reduced) void playAllRef.current();
+      seenRef.current = true;
+      if (reduced) return;
+      if (stepRef.current !== undefined) goToRef.current(stepRef.current);
+      else void playAllRef.current();
     };
     const el = frame.current;
     if (!el || typeof IntersectionObserver === "undefined") {
@@ -204,6 +224,14 @@ function Player({
   }
 
   playAllRef.current = playAll;
+  goToRef.current = goTo;
+
+  // Hosted: the host moved to another step, so draw it.
+  useEffect(() => {
+    // Reduced motion: goTo draws each beat finished at once (animateBeat), so it never animates.
+    if (step === undefined || !seenRef.current) return;
+    goToRef.current(step);
+  }, [step]);
 
   const status = slider && sliderValue !== undefined ? scene.status?.(params, sliderValue) : undefined;
   const sliderId = `viz-slider-${visual.fingerprint}`;
@@ -248,6 +276,16 @@ function Player({
             </div>
           )}
 
+          {hosted ? (
+            <button
+              type="button"
+              onClick={() => goTo(pos.step)}
+              className="inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 font-sans text-xs font-medium hover:border-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <Play className="h-3.5 w-3.5" aria-hidden />
+              Play this step again
+            </button>
+          ) : (
           <div className="flex flex-wrap items-center gap-2 font-sans">
             <button
               type="button"
@@ -279,6 +317,7 @@ function Player({
               Step {pos.step + 1} of {steps.length}
             </span>
           </div>
+          )}
 
           {showsCheckLine({ checkOk: check.ok, isStaff }) && (
             <p className="flex items-start gap-1.5 rounded-md bg-emerald-50 px-2.5 py-1.5 font-sans text-xs text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-200">

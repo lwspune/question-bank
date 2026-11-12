@@ -108,6 +108,8 @@ export async function loadVContext(
     notesBrief?: string | null;
     /** "Show me where I went wrong" on a follow-up card: the question V explained before (V_LEARNING_LOOP.md step 2). */
     followsUp?: { stem: string | null } | null;
+    /** "Lost me here" on a step of our solution (lib/chat/stepByStep stuckOn): the step they are stuck on. */
+    solutionStep?: { step: number; total: number; text: string } | null;
     /** explain_concept's data sources (lib/chat/conceptSearchServer.ts conceptSources); offered with the question tools. */
     concepts?: Pick<ConceptToolDeps, "searchBank" | "loadNotesIndex" | "loadNotesConcept"> | null;
     /** The signed-in student's recent questions and saves (lib/chat/myQuestions.ts); absent when signed out. */
@@ -166,6 +168,7 @@ export async function loadVContext(
     question: opts.questionTools ? (opts.question ?? null) : null,
     notesBrief: opts.questionTools ? (opts.notesBrief ?? null) : null,
     followsUp: opts.questionTools ? (opts.followsUp ?? null) : null,
+    solutionStep: opts.questionTools ? (opts.solutionStep ?? null) : null,
     language: opts.language ?? null,
   });
 

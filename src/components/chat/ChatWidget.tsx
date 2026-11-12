@@ -5,7 +5,7 @@ import { useIntlSite } from "@/lib/sites/useIntlSite";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { usePublicPathname } from "@/lib/nav/usePublicPathname";
-import { CalendarCheck, Check, ListChecks, Plus, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, TrendingUp, X } from "lucide-react";
+import { ArrowRight, CalendarCheck, Check, Footprints, ListChecks, Plus, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, TrendingUp, X } from "lucide-react";
 import { toast } from "sonner";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { useVFeatures } from "@/lib/chat/useVExplain";
@@ -14,6 +14,7 @@ import { vPlacement } from "@/lib/chat/placement";
 import { launcherHiddenAfterScroll } from "@/lib/chat/launcherScroll";
 import { panelBox, type PanelBox } from "@/lib/chat/panelBox";
 import { NOT_UNDERSTOOD, replySteps, stuckStepMessage } from "@/lib/chat/understood";
+import { lostStepMessage } from "@/lib/chat/stepByStep";
 import { figureSrc } from "@/lib/chat/solutionFigure";
 import { SESSION_IDLE_MS, quoteSnippet, type HistoryTurn } from "@/lib/chat/conversation";
 import {
@@ -95,6 +96,8 @@ import { reportVisual } from "@/lib/visuals/usageBeacon";
 
 // The animated-solution player loads only when a reply carries a visual.
 const VAnimatedSolution = dynamic(() => import("@/components/visuals/AnimatedSolution"));
+// "Teach me step by step" loads only when tapped.
+const VStepCard = dynamic(() => import("./VStepCard"));
 
 /**
  * One message in the window. An assistant turn may carry `links` (the paths
@@ -128,6 +131,16 @@ type ChatTurn = HistoryTurn & {
   stepChoices?: number;
   /** A step (or "All of it") was picked, so the buttons go. */
   stepSent?: boolean;
+  /** "Teach me step by step" goes under this explanation: its solution has steps (2026-11-12). */
+  stepByStep?: boolean;
+  /** ...and was tapped, so the button goes. */
+  stepsTaken?: boolean;
+  /** The step-by-step card: the question's solution, one step at a time from `start` (0-based). Transient. */
+  steps?: { questionId: string; start: number };
+  /** V's answer to "Lost me here": the next step to continue from, when there is one. */
+  resume?: { questionId: string; next: number; total: number };
+  /** ...and Continue was tapped. */
+  resumeTaken?: boolean;
 };
 
 /** What the device keeps of a turn: no face, no errors. */
@@ -135,7 +148,20 @@ function keepable(turns: readonly ChatTurn[]): HistoryTurn[] {
   return turns
     .filter((t) => !t.transient)
     .map((t) => {
-      const { avatar: _avatar, transient: _transient, reveal: _reveal, offer: _offer, hourlyOffer: _hourly, ...rest } = t;
+      // Step by step lives on this screen only: the server serves steps for today's explanations alone.
+      const {
+        avatar: _avatar,
+        transient: _transient,
+        reveal: _reveal,
+        offer: _offer,
+        hourlyOffer: _hourly,
+        stepByStep: _stepByStep,
+        stepsTaken: _stepsTaken,
+        steps: _steps,
+        resume: _resume,
+        resumeTaken: _resumeTaken,
+        ...rest
+      } = t;
       return rest as HistoryTurn;
     });
 }
@@ -619,6 +645,42 @@ export default function ChatWidget() {
   }
 
   /**
+   * "Teach me step by step" under explanation `index` (V_SPEC.md section 0, step 1): the stored
+   * solution one step at a time, as a card. No AI call, so it uses none of the hour's messages.
+   */
+  function teachStepByStep(index: number) {
+    const turn = turns[index];
+    if (sending || !turn || turn.role !== "assistant" || !turn.explainedQuestionId) return;
+    const questionId = turn.explainedQuestionId;
+    setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, stepsTaken: true } : t)));
+    addTurn({ role: "user", text: "Teach me step by step", transient: true });
+    addTurn({ role: "assistant", avatar: "idle", text: "Here's the solution, one step at a time.", steps: { questionId, start: 0 }, transient: true });
+  }
+
+  /**
+   * "Lost me here" on step `step` (0-based) of the card for `questionId`: V explains that step
+   * (it is told the step's text, lib/chat/stepByStep stepTailLine), and its reply offers to continue.
+   */
+  function stepLost(questionId: string, step: number, total: number) {
+    // The tapped question's pick, when the card is about it; else none known.
+    const chose = asked && !asked.notes && asked.questionId === questionId ? asked.chose : null;
+    const next = step + 1;
+    void askTyped(lostStepMessage(step + 1), { questionId, chose }, {
+      hideAsked: true,
+      ...(next < total ? { replyExtra: { resume: { questionId, next, total } } } : {}),
+    });
+  }
+
+  /** "Continue" under V's answer to "Lost me here": the card again, from the next step. */
+  function continueSteps(index: number) {
+    const turn = turns[index];
+    if (sending || !turn || turn.role !== "assistant" || !turn.resume) return;
+    const { questionId, next } = turn.resume;
+    setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, resumeTaken: true } : t)));
+    addTurn({ role: "assistant", avatar: "idle", text: "Let's carry on.", steps: { questionId, start: next }, transient: true });
+  }
+
+  /**
    * Another question from `questionId`'s subtopic, as a card to try: under an explanation, and
    * after a right follow-up (2026-11-10). `after` is the explained question, when there is one.
    */
@@ -702,7 +764,11 @@ export default function ChatWidget() {
   }
 
   /** Send the draft, or `override` (an Ask V or a button). `about` is the question it is about. */
-  async function askTyped(override?: string, about?: AskVDetail | null) {
+  async function askTyped(
+    override?: string,
+    about?: AskVDetail | null,
+    opts: { replyExtra?: Pick<ChatTurn, "resume">; hideAsked?: boolean } = {}
+  ) {
     const text = (override ?? draft).trim();
     if (sending || !text) return;
     focusTurnRef.current = null;
@@ -712,7 +778,7 @@ export default function ChatWidget() {
     const question = about === null ? null : (about ?? (fresh ? null : asked));
     const replyTo = override === undefined && !fresh ? replyingTo : null;
     // An Ask V tap shows its question above the message (owner, 2026-10-23).
-    const askedCard = about ? askedCardOf(about, pathname) : null;
+    const askedCard = about && !opts.hideAsked ? askedCardOf(about, pathname) : null;
     addTurn({
       role: "user",
       text,
@@ -755,6 +821,8 @@ export default function ChatWidget() {
         solutionVisualQuestionId?: string;
         /** The bank question V explained, for "One more like this" (2026-11-08). */
         explainedQuestionId?: string;
+        /** Its solution has steps: "Teach me step by step" goes under the reply (2026-11-12). */
+        stepByStep?: boolean;
         /** The day's free answers stopped an explanation: the pass offer goes under the reply (2026-10-28). */
         passOffer?: unknown;
         /** Abuse after the calm line (lib/chat/abuse.ts): V says nothing. */
@@ -813,6 +881,8 @@ export default function ChatWidget() {
               ...(data.solutionVisual && typeof data.solutionVisual === "object" ? { visual: data.solutionVisual } : {}),
               ...(typeof data.solutionVisualQuestionId === "string" ? { visualQuestionId: data.solutionVisualQuestionId } : {}),
               ...(typeof data.explainedQuestionId === "string" ? { explainedQuestionId: data.explainedQuestionId } : {}),
+              ...(data.stepByStep === true ? { stepByStep: true } : {}),
+              ...(opts.replyExtra ?? {}),
             }
           : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan, path, reveal: true }
       );
@@ -1050,18 +1120,59 @@ export default function ChatWidget() {
                       )}
                     </div>
                   )}
-                  {rateable && t.explained && t.explainedQuestionId && !t.moreTaken && !signInNeeded && (
+                  {rateable &&
+                    t.explained &&
+                    t.explainedQuestionId &&
+                    !signInNeeded &&
+                    (!t.moreTaken || (t.stepByStep && !t.stepsTaken && !t.resume)) && (
+                    <div className="ml-9 mt-1 flex flex-wrap gap-1.5">
+                      {!t.moreTaken && (
+                        <button
+                          type="button"
+                          disabled={sending}
+                          onClick={() => void oneMoreLikeThis(i)}
+                          className="inline-flex h-8 items-center gap-1.5 rounded-full border border-border bg-card px-3 text-xs font-medium text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+                        >
+                          <Plus className="h-3.5 w-3.5" aria-hidden />
+                          One more like this
+                        </button>
+                      )}
+                      {/* Not under V's answer to "Lost me here": Continue below takes the student back to the steps. */}
+                      {t.stepByStep && !t.stepsTaken && !t.resume && (
+                        <button
+                          type="button"
+                          disabled={sending}
+                          onClick={() => teachStepByStep(i)}
+                          className="inline-flex h-8 items-center gap-1.5 rounded-full border border-border bg-card px-3 text-xs font-medium text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+                        >
+                          <Footprints className="h-3.5 w-3.5" aria-hidden />
+                          Teach me step by step
+                        </button>
+                      )}
+                    </div>
+                  )}
+                  {t.resume && !t.resumeTaken && !t.reveal && (
                     <div className="ml-9 mt-1">
                       <button
                         type="button"
                         disabled={sending}
-                        onClick={() => void oneMoreLikeThis(i)}
-                        className="inline-flex h-8 items-center gap-1.5 rounded-full border border-border bg-card px-3 text-xs font-medium text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+                        onClick={() => continueSteps(i)}
+                        className="inline-flex h-8 items-center gap-1.5 rounded-full bg-brand px-3 text-xs font-semibold text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50"
                       >
-                        <Plus className="h-3.5 w-3.5" aria-hidden />
-                        One more like this
+                        Continue: step {t.resume.next + 1} of {t.resume.total}
+                        <ArrowRight className="h-3.5 w-3.5" aria-hidden />
                       </button>
                     </div>
+                  )}
+                  {t.steps && (
+                    <VStepCard
+                      questionId={t.steps.questionId}
+                      start={t.steps.start}
+                      busy={sending}
+                      onLost={(step, total) => stepLost(t.steps!.questionId, step, total)}
+                      onMore={() => void moreLike(t.steps!.questionId, t.steps!.questionId)}
+                      onGrow={() => listRef.current?.scrollTo({ top: listRef.current.scrollHeight })}
+                    />
                   )}
                   {t.offer && !t.reveal && (
                     <div className="ml-9 max-w-[calc(100%-2.25rem)]">

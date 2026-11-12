@@ -29,7 +29,7 @@ step towards the vision says how it should move that number.
 | tries again differently when it did not land | partly: better second try, "Which step lost you?" |
 | shows it on a board | partly: 20k animated solutions, but they play on their own, not with V's words |
 | asks first: "what did you try, where are you stuck?" | missing |
-| checks as it goes and waits for the answer | missing (only a Yes/No at the end) |
+| checks as it goes and waits for the answer | partly: "Teach me step by step" (2026-11-12) waits for a tap between steps; no question of its own yet |
 | remembers the student and their past mistakes | missing (language + last 2 exchanges) |
 | takes any doubt: a textbook, a coaching sheet, a photo | missing (bank questions only, no photos) |
 | has time: a session of 10-20 turns | blocked by the 5-an-hour free cap |
@@ -73,7 +73,7 @@ job it improves, and is tested on that job's cases (section 4).
 | `reflect` | "how am I doing?", "good at Maths, bad at GAT" | `my_progress`; the "How's my progress" button opens a card built without AI (`lib/chat/progressCard.ts`, 2026-10-27) | answers the question they asked | typed: no per-subject split |
 | `help` | payment, app, homework, "is it free" | site facts | the right next step | gaps: app install, homework |
 | `chat` | greetings, role-play, gibberish, abuse | none | one friendly line back to studying; abuse gets the fixed line | works |
-| `tutor` | "teach me this step by step", "I still don't get it" | the stored solution, one step at a time (section 0) | the student gets a different question on the subtopic right within 7 days | not built (step 1 of section 0) |
+| `tutor` | "teach me this step by step", "I still don't get it" | the stored solution, one step at a time (section 0) | the student gets a different question on the subtopic right within 7 days | step 1 built 2026-11-12 (the button under an explanation); typed requests still get an ordinary explanation |
 
 ## 2. Where V's knowledge comes from (the ladder)
 
@@ -171,6 +171,19 @@ is enforced in `facts.ts` or the tools; the date is when it was made.
   of: that step in full with the numbers, the idea it needs first, or a tiny
   example. After a No on a reply with numbered steps the chat asks "Which step
   lost you?" with a button per step; a step message counts as a No everywhere.
+- **Teach me step by step shows OUR solution, not V's words (owner, 2026-11-12, section 0 step 1).**
+  Under an explanation of an MCQ or numeric question whose solution cuts into
+  2+ steps (`lib/chat/solutionSteps.ts`: an animation's own steps, else
+  sentences, short ones joined, at most 6), the chat shows the stored
+  solution one step at a time with "Got it, next step" and "Lost me here".
+  No AI call per step, so it is always right and uses none of the hour's
+  messages; the animation draws the same step. "Lost me here" sends V "I'm
+  stuck on step N of the solution" and V is told that step's text
+  (`stepTailLine`); it counts as a No everywhere and puts the question on
+  the Fix list. Not offered to a student who asked V for another language
+  (the solutions are English), nor on written answers (MCQ first). Every
+  tap is a `step_by_step` row (migration 0252), read on /dashboard/chat.
+  Experiment `v-step-by-step`, read 2026-12-10.
 - **Parked:** withdrawn UPSC questions (V says the pick "is marked wrong"; 10
   such questions; re-raise only when the owner does); the mock result page
   being wider than a phone.
@@ -234,7 +247,7 @@ reads everything else from the stored row.
 4. **The learning loop** (2026-11-10, planned, not built): V sees whether its
    explanation worked and remembers the student. Audit, baseline and build
    order in [V_LEARNING_LOOP.md](V_LEARNING_LOOP.md).
-5. **The tutor** (2026-11-11, vision agreed, nothing built): the step ladder in
+5. **The tutor** (2026-11-11, vision agreed; step 1 built 2026-11-12): the step ladder in
    section 0, one step at a time.
 
 ## 7. The weekly review (Thursdays, first 2026-10-29)

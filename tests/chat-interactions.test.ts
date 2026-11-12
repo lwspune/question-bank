@@ -267,3 +267,30 @@ describe("summarizeChatInteractions: the practice-test builder (migration 0157)"
     ]);
   });
 });
+
+describe("summarizeChatInteractions: Teach me step by step (migration 0252)", () => {
+  it("counts each action apart from FAQ taps, in funnel order, and where students got lost", () => {
+    const s = summarizeChatInteractions([
+      row("step_by_step", "open:1"),
+      row("step_by_step", "open:1"),
+      row("step_by_step", "next:1"),
+      row("step_by_step", "lost:2"),
+      row("step_by_step", "lost:2"),
+      row("step_by_step", "lost:1"),
+      row("step_by_step", "done:3"),
+      row("faq_click", "exams"),
+    ]);
+    expect(s.totalClicks).toBe(1);
+    expect(s.byQuestion.map((q) => q.id)).toEqual(["exams"]);
+    expect(s.steps).toEqual([
+      { action: "open", label: "Started step by step", count: 2 },
+      { action: "next", label: "Got it, next step", count: 1 },
+      { action: "lost", label: "Lost me here", count: 3 },
+      { action: "done", label: "Reached the last step", count: 1 },
+    ]);
+    expect(s.lostAt).toEqual([
+      { step: 1, count: 1 },
+      { step: 2, count: 2 },
+    ]);
+  });
+});

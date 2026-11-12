@@ -49,6 +49,8 @@ export type RecordChatInteraction = InConversation &
     | { eventType: "builder_step"; step: BuilderStepId; userId: string | null }
     /** Migration 0226: a message V's hourly limit stopped, kept with no reply. */
     | { eventType: "hourly_limit"; message: string; userId: string | null }
+    /** Migration 0252: one tap of "Teach me step by step", coded "<action>:<step>" (lib/chat/stepByStep stepEventCode). */
+    | { eventType: "step_by_step"; code: string; questionId: string; userId: string }
   );
 
 /**
@@ -81,9 +83,16 @@ export async function recordChatInteraction(
             ? input.questionId
             : input.eventType === "builder_step"
               ? input.step
-              : null,
+              : input.eventType === "step_by_step"
+                ? input.code
+                : null,
         message: input.eventType === "typed_question" || input.eventType === "hourly_limit" ? input.message : null,
-        asked_question_id: input.eventType === "typed_question" ? (input.askedQuestionId ?? null) : null,
+        asked_question_id:
+          input.eventType === "typed_question"
+            ? (input.askedQuestionId ?? null)
+            : input.eventType === "step_by_step"
+              ? input.questionId
+              : null,
         asked_notes_item: input.eventType === "typed_question" ? (input.askedNotesItem ?? null) : null,
         reply_to_id: input.eventType === "typed_question" ? (input.replyToId ?? null) : null,
         user_id: input.userId,
