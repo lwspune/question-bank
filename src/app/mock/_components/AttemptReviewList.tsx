@@ -1,4 +1,5 @@
-import { Check, CircleDot, X, Minus, Gift } from "lucide-react";
+import { Check, CircleDot, Clock, X, Minus, Gift } from "lucide-react";
+import { questionTimeLine } from "@/lib/mocks/startPage";
 import { formatNumericKey } from "@/lib/questions/formatKey";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import { cn } from "@/lib/utils";
@@ -38,9 +39,12 @@ export default function AttemptReviewList({
   items,
   supabaseUrl,
   recordRepeat = "tap",
+  pace,
 }: {
   items: ReviewItem[];
   supabaseUrl: string;
+  /** The paper's length and size: each card then shows the time spent beside its pace. */
+  pace?: { durationSecs: number; totalQuestions: number };
   /** "none" on a staff view of a student's attempt, so staff taps are not counted as the student's. */
   recordRepeat?: "tap" | "none";
 }) {
@@ -55,7 +59,7 @@ export default function AttemptReviewList({
       )}
       <ol className="mt-4 space-y-4">
         {items.map((item) => (
-          <ReviewCard key={item.position} item={item} supabaseUrl={supabaseUrl} recordRepeat={recordRepeat} />
+          <ReviewCard key={item.position} item={item} supabaseUrl={supabaseUrl} recordRepeat={recordRepeat} pace={pace} />
         ))}
       </ol>
     </PresentRegistry>
@@ -66,11 +70,14 @@ function ReviewCard({
   item,
   supabaseUrl,
   recordRepeat,
+  pace,
 }: {
   item: ReviewItem;
   supabaseUrl: string;
   recordRepeat: "tap" | "none";
+  pace?: { durationSecs: number; totalQuestions: number };
 }) {
+  const timeLine = pace ? questionTimeLine(item.timeSpentSecs ?? 0, pace.durationSecs, pace.totalQuestions) : null;
   const isMsq = item.format === "msq";
   const border = item.grace
     ? "border-l-amber-500"
@@ -95,6 +102,12 @@ function ReviewCard({
           className="ml-auto"
           surface="mock"
         />
+        {timeLine && (
+          <span className="inline-flex shrink-0 items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] text-muted-foreground tabular-nums">
+            <Clock className="h-3 w-3" aria-hidden />
+            {timeLine}
+          </span>
+        )}
         {item.grace ? (
           <span className="inline-flex items-center gap-1 text-xs font-medium text-amber-700 dark:text-amber-400">
             <Gift className="h-3.5 w-3.5" aria-hidden />

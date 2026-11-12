@@ -41,9 +41,29 @@ import { buildMockReport, type MockReport } from "@/lib/email/mockReport";
 import { readPeerAccuracy } from "@/lib/email/mockReportService";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
-export const metadata: Metadata = { robots: { index: false } };
-
 type Params = { attemptId: string };
+
+/**
+ * "Your result · NDA 2025 (II) · Paper I · Mathematics" in the browser tab
+ * (2026-11-12): it showed the site's generic title. One small own-row read
+ * (RLS); any failure falls back to "Your result" rather than failing the page.
+ */
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const { attemptId } = await props.params;
+  let title = "Your result";
+  try {
+    const { data } = await createSupabaseServerClient()
+      .from("mock_attempts")
+      .select("mock:mock_tests(title)")
+      .eq("id", attemptId)
+      .maybeSingle();
+    const mockTitle = (data?.mock as { title?: string } | null)?.title;
+    if (mockTitle) title = `Your result · ${displayMockTitle(mockTitle)}`;
+  } catch (e) {
+    console.error("mock result title failed", e);
+  }
+  return { title, robots: { index: false } };
+}
 
 export default async function MockResultPage(props: { params: Promise<Params> }) {
   const params = await props.params;
@@ -168,7 +188,7 @@ export default async function MockResultPage(props: { params: Promise<Params> })
             all three stay above the review, which on a 150-question paper is
             the bottom of the page and would bury them. */}
         {/* A fair full paper gets "How to raise your score"; anything else keeps "What to fix next" (lib/mocks/scorePlan). */}
-        {plan ? <ScorePlanCard plan={plan} attemptId={params.attemptId} /> : report && <Findings report={report} attemptId={params.attemptId} />}
+        {plan ? <ScorePlanCard plan={plan} attemptId={params.attemptId} /> : report && <Findings report={report} />}
 
         {together && <TogetherCard state={together} />}
 
@@ -211,7 +231,11 @@ export default async function MockResultPage(props: { params: Promise<Params> })
 
         <h2 className="mt-8 text-lg font-semibold">Review your answers</h2>
         <ReviewFilterShell items={res.review!.items.map((i) => ({ position: i.position, verdict: i.verdict, partial: i.partial }))}>
-          <AttemptReviewList items={res.review!.items} supabaseUrl={supabaseUrl} />
+          <AttemptReviewList
+            items={res.review!.items}
+            supabaseUrl={supabaseUrl}
+            pace={{ durationSecs: mock.durationSecs, totalQuestions: mock.totalQuestions }}
+          />
         </ReviewFilterShell>
       </main>
     </>
