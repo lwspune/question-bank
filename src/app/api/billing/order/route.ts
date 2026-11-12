@@ -15,6 +15,8 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { readReferralDiscount } from "@/lib/referrals/service";
 import { loadEntitlements } from "@/lib/entitlements/query";
 import { stampUpgradeNotes, upgradeFor, type Upgrade } from "@/lib/billing/upgrade";
+import { getOwnMobile } from "@/lib/profile/service";
+import { razorpayContact } from "@/lib/profile/mobile";
 
 export const maxDuration = 30;
 
@@ -41,6 +43,8 @@ export async function POST(request: NextRequest) {
     box?: unknown;
   } | null;
   const db = createSupabaseServerClient();
+  // The saved mobile, read beside the order so it costs no extra wait.
+  const contactRead = readContact(db, user.id);
 
   // An ebook (2026-10-20): the price is this buyer's, decided here.
   if (typeof body?.ebookSlug === "string" && body.ebookSlug) {
@@ -57,6 +61,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Could not start checkout" }, { status: 502 });
     }
     await logActivity(db, user.id, withCountry(bookCheckoutEvent(terms.slug), readCountry(request.headers)));
+    const contact = await contactRead;
     return NextResponse.json({
       orderId: result.orderId,
       amount: result.amount,
@@ -64,6 +69,7 @@ export async function POST(request: NextRequest) {
       keyId,
       planLabel: terms.title,
       email: user.email,
+      ...(contact ? { contact } : {}),
     });
   }
 
@@ -111,14 +117,11 @@ export async function POST(request: NextRequest) {
     console.error("razorpay createOrder failed:", result.error);
     return NextResponse.json({ error: "Could not start checkout" }, { status: 502 });
   }
-  await logActivity(
-    db,
-    user.id,
-    withCountry(
-      paywallEvent("checkout_opened", checkoutGate(body?.gate), plan.id, undefined, checkoutBox(body?.box)),
-      country
-    )
-  );
+  const contact = await contactRead;
+  const opened = paywallEvent("checkout_opened", checkoutGate(body?.gate), plan.id, undefined, checkoutBox(body?.box));
+  // Whether Razorpay got a mobile, so checkout-to-paid can be read with and without it.
+  opened.metadata = { ...opened.metadata, hasContact: contact !== null };
+  await logActivity(db, user.id, withCountry(opened, country));
 
   return NextResponse.json({
     orderId: result.orderId,
@@ -127,5 +130,20 @@ export async function POST(request: NextRequest) {
     keyId,
     planLabel: plan.label,
     email: user.email,
+    ...(contact ? { contact } : {}),
   });
+}
+
+/**
+ * The student's saved mobile as Razorpay prefills it, or null. Without it
+ * Razorpay opens on a mobile-number form before any way to pay (2026-11-12).
+ * Never rejects: a failed read only means Razorpay asks, as it did before.
+ */
+async function readContact(db: ReturnType<typeof createSupabaseServerClient>, userId: string): Promise<string | null> {
+  try {
+    return razorpayContact((await getOwnMobile(db, userId)).mobile);
+  } catch (err) {
+    console.error("order: mobile read failed", err);
+    return null;
+  }
 }

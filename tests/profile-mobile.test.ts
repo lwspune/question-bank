@@ -5,7 +5,22 @@ import {
   needsMobile,
   validateMobileSubmission,
   whatsappHref,
+  razorpayContact,
 } from "@/lib/profile/mobile";
+
+describe("razorpayContact", () => {
+  it("turns a stored mobile into the +91 form Razorpay's checkout prefills", () => {
+    expect(razorpayContact("919876543210")).toBe("+919876543210");
+    expect(razorpayContact("9876543210")).toBe("+919876543210");
+  });
+
+  it("gives nothing for a missing or malformed number, so Razorpay asks as before", () => {
+    expect(razorpayContact(null)).toBeNull();
+    expect(razorpayContact(undefined)).toBeNull();
+    expect(razorpayContact("")).toBeNull();
+    expect(razorpayContact("911234567890")).toBeNull();
+  });
+});
 
 describe("normalizeMobile (relocated, still canonical)", () => {
   it("normalises + validates the Indian mobile shape", () => {

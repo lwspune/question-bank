@@ -261,6 +261,10 @@ async function main() {
         // Read by hand: surface_viewed stuck_offer by action, then the student's next answers.
         line = "by hand: surface_viewed stuck_offer (shown, teach, easier, keep) and the next answers on the subtopic";
         break;
+      case "checkout-contact":
+        // Read by hand: paywall_event checkout_opened by metadata.hasContact, then razorpay entitlements.
+        line = "by hand: checkout_opened by metadata.hasContact, and which of those students paid (baselines 23 of 51, 12 of 48)";
+        break;
       case "review-traps":
         // Read by hand: surface_viewed review_traps by action (shown, expand, playbook).
         line = "by hand: surface_viewed review_traps by action";
