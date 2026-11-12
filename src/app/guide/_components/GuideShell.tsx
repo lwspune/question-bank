@@ -20,6 +20,8 @@ type Props = {
    *  nav, for three cards across. Reading pages leave it off and keep a
    *  comfortable line length. */
   wide?: boolean;
+  /** The phone side-nav button's label (default "Sections"). */
+  sideNavLabel?: string;
 };
 
 /**
@@ -35,6 +37,7 @@ export default function GuideShell({
   landingHref,
   rail,
   wide,
+  sideNavLabel,
 }: Props) {
   return (
     <>
@@ -44,7 +47,7 @@ export default function GuideShell({
             as its own full-width row it pushed every page's content down. */}
         <div className="flex items-center justify-between gap-2">
           <Breadcrumbs items={breadcrumbs} className="min-w-0 flex-1" />
-          <GuideSideNavSheet guideTitle={guideTitle} items={sideNav} landingHref={landingHref} />
+          <GuideSideNavSheet guideTitle={guideTitle} items={sideNav} landingHref={landingHref} sheetLabel={sideNavLabel} />
         </div>
         <div
           className={cn(

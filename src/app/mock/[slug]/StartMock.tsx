@@ -14,6 +14,7 @@ import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import { pricingHref } from "@/lib/billing/checkoutReturn";
 import { lockedPassLine } from "@/lib/mocks/passLine";
 import { useDiscountedPass, VaultPointsOfferNote } from "@/components/billing/useFixPoints";
+import { formatTimeLeft } from "@/lib/mocks/startPage";
 
 /**
  * Starts (or resumes) an attempt, then routes into the runner.
@@ -36,7 +37,10 @@ export default function StartMock({
   unit = "mock",
   isPastPaper = false,
   invite = null,
+  resumeSecsLeft = null,
 }: {
+  /** Time left on the student's open attempt (lib/mocks/startPage); null = none open. */
+  resumeSecsLeft?: number | null;
   slug: string;
   /** A friend's invite code (migration 0166): sent with the start so the paper starts free. */
   invite?: string | null;
@@ -53,6 +57,7 @@ export default function StartMock({
   const [loading, setLoading] = useState(false);
   const [lang, setLang] = useQuestionLang();
   const [state, setState] = useState<MockStartState>(startState);
+  const resume = resumeSecsLeft !== null;
 
   async function start() {
     setLoading(true);
@@ -85,9 +90,12 @@ export default function StartMock({
       ) : (
         <Play className="h-4 w-4" aria-hidden />
       )}
-      {loading ? "Starting…" : "Start test"}
+      {loading ? "Starting…" : resume ? `Resume test · ${formatTimeLeft(resumeSecsLeft)} left` : "Start test"}
     </Button>
   );
+  const resumeNote = resume ? (
+    <p className="mt-2 text-center text-xs text-muted-foreground">Your answers so far are saved.</p>
+  ) : null;
   if (state.kind === "locked") {
     return (
       <MockPassCard limit={state.limit} unit={state.unit} pass={mockPass} slug={slug} isPastPaper={isPastPaper} />
@@ -105,7 +113,7 @@ export default function StartMock({
     return (
       <div>
         {button}
-        {freeNote}
+        {resume ? resumeNote : freeNote}
       </div>
     );
   }
@@ -121,7 +129,7 @@ export default function StartMock({
         <LanguageSwitch value={lang} onChange={setLang} size="md" className="mt-3" />
       </div>
       {button}
-      {freeNote}
+      {resume ? resumeNote : freeNote}
     </div>
   );
 }

@@ -80,6 +80,7 @@ export default async function MockTypeList(props: { params: Promise<Params> }) {
   return (
     <GuideShell
       guideTitle="Mock Tests"
+      sideNavLabel="Exams"
       sideNav={mockSideNav(params.examSlug)}
       breadcrumbs={[
         { href: "/mock", label: "Mocks" },

@@ -33,6 +33,9 @@ type Props = {
    *  light up on every sub-route. Defaults to the first item's href, which
    *  matches the convention that Overview is always the first nav entry. */
   landingHref?: string;
+  /** The phone button's label; "Sections" unless the list is something else
+   *  (the mock pages list exams). */
+  sheetLabel?: string;
 };
 
 /**
@@ -107,14 +110,14 @@ function NavList({
 }
 
 /** Below `lg`: a small "Sections" button that opens the list in a Sheet. */
-export function GuideSideNavSheet({ guideTitle, items, landingHref }: Props) {
+export function GuideSideNavSheet({ guideTitle, items, landingHref, sheetLabel = "Sections" }: Props) {
   const [open, setOpen] = useState(false);
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button variant="outline" size="sm" className="h-8 shrink-0 rounded-full px-3 lg:hidden">
           <Menu className="h-4 w-4" aria-hidden />
-          Sections
+          {sheetLabel}
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="w-72 p-0">

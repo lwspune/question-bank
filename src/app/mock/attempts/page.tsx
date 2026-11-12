@@ -59,7 +59,12 @@ export default async function MyAttemptsPage(props: { searchParams: Promise<{ su
         ) : (
           <>
             {options.length > 1 && (
-              <nav aria-label="Filter by subject" className="mt-5 flex flex-wrap gap-2">
+              // One row that scrolls sideways on a phone (2026-11-12): wrapped,
+              // long subject names took five rows before the first attempt.
+              <nav
+                aria-label="Filter by subject"
+                className="-mx-4 mt-5 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0"
+              >
                 <FilterChip href="/mock/attempts" active={!selected} label="All" count={attempts.length} />
                 {options.map((o) => (
                   <FilterChip
@@ -97,7 +102,7 @@ function FilterChip({ href, active, label, count }: { href: string; active: bool
       prefetch={false}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "rounded-full border px-3 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+        "shrink-0 whitespace-nowrap rounded-full border px-3 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
         active ? "border-foreground bg-foreground text-background" : "bg-card hover:bg-accent"
       )}
     >

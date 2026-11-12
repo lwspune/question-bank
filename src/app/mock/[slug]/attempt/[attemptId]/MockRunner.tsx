@@ -38,6 +38,8 @@ import {
   type SectionGroup,
 } from "@/lib/mocks/runner";
 import { msqInstruction, toggleTick } from "@/lib/questions/msq";
+import { formatTimeLeft } from "@/lib/mocks/startPage";
+import { displayMockTitle } from "@/lib/mocks/hub";
 import LanguageSwitch from "@/components/i18n/LanguageSwitch";
 import { hasMarathi, optionVersions, stemVersions } from "@/lib/i18n/bilingual";
 import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
@@ -103,13 +105,6 @@ function fmtClock(secs: number) {
   return h > 0 ? `${h}:${pad(m)}:${pad(s)}` : `${pad(m)}:${pad(s)}`;
 }
 
-/** "1 h 42 m" / "9 m" for the Submit confirm. */
-function fmtLeft(secs: number) {
-  const h = Math.floor(secs / 3600);
-  const m = Math.floor((secs % 3600) / 60);
-  if (h > 0) return `${h} h ${m} m`;
-  return m > 0 ? `${m} m` : `${secs} s`;
-}
 
 function isTextField(target: EventTarget | null): boolean {
   if (!(target instanceof HTMLElement)) return false;
@@ -401,7 +396,7 @@ export default function MockRunner({
       <header className="sticky top-0 z-20 border-b bg-background/95 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center gap-2 px-3 py-2 sm:gap-3 sm:px-6">
           <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-semibold">{mock.title}</p>
+            <p className="truncate text-sm font-semibold">{displayMockTitle(mock.title)}</p>
           </div>
           <SaveStatus unsaved={unsaved} />
           <div
@@ -902,7 +897,7 @@ function SubmitConfirm({
           <DialogDescription className="mt-1 text-sm text-muted-foreground">
             {remaining > 0 ? (
               <>
-                <strong className="text-foreground">{fmtLeft(remaining)}</strong> is still on the clock. Once you submit,
+                <strong className="text-foreground">{formatTimeLeft(remaining)}</strong> is still on the clock. Once you submit,
                 you can&apos;t change an answer.
               </>
             ) : (

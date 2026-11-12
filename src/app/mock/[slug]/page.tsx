@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BookOpen, Clock, FileText, Trophy, CheckCircle2, XCircle, MinusCircle, LogIn, Info, Users } from "lucide-react";
+import { BookOpen, ChevronLeft, Clock, FileText, Trophy, CheckCircle2, XCircle, MinusCircle, LogIn, Info, Users } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { Button } from "@/components/ui/button";
 import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
@@ -35,6 +35,9 @@ import { INVITE_PARAM, isInviteCode } from "@/lib/practiceTests/mockInvite";
 import { getOrCreateInvite, readInvite } from "@/lib/practiceTests/mockInviteService";
 import { readFirstNames } from "@/lib/practiceTests/togetherService";
 import { canonicalFor, planSiteForPath } from "@/lib/sites/intl";
+import { displayMockTitle } from "@/lib/mocks/hub";
+import { getMockExam } from "@/lib/mocks/mocksNav";
+import { openAttemptSecsLeft } from "@/lib/mocks/startPage";
 
 type Params = { slug: string };
 
@@ -135,6 +138,8 @@ export default async function MockInstructions(
     : null;
 
   const mins = Math.round(mock.durationSecs / 60);
+  // An open attempt on this paper: the button says Resume and how long is left.
+  const resumeSecsLeft = openAttemptSecsLeft(myAttempts);
   // A whole past paper can also be downloaded (2026-10-07); a chapter test or
   // a practice paper is not a paper anyone sat, so it cannot.
   const isPastPaper = mock.source === "pyq" && mock.scope === "full";
@@ -149,6 +154,7 @@ export default async function MockInstructions(
   // Service role: a numeric question read as MCQ would get a wrong line, so the
   // format read must not lose rows to RLS. Best-effort: a failure shows no card.
   const examSlug = getExamByName(mock.examName)?.slug ?? null;
+  const examNav = examSlug ? getMockExam(examSlug) : null;
   const beforeLines = await loadBeforeYouStart(admin, mock, examSlug).catch((e) => {
     console.error("mock page: before-you-start failed", e);
     return [];
@@ -168,11 +174,25 @@ export default async function MockInstructions(
     <>
       <AppHeader />
       <main className="mx-auto max-w-2xl px-4 py-8 sm:px-6">
-        <Link href="/mock" className="text-sm text-muted-foreground hover:text-foreground">
-          ← All mock tests
+        {/* Back to this exam's papers (2026-11-12), not the all-exams picker. */}
+        <Link
+          href={examNav ? `/mock/exam/${examNav.slug}` : "/mock"}
+          className="inline-flex items-center gap-1 rounded-sm text-sm text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          <ChevronLeft className="h-3.5 w-3.5" aria-hidden />
+          {examNav ? `${examNav.displayName} mock tests` : "All mock tests"}
         </Link>
 
-        <h1 className="mt-4 text-2xl font-bold tracking-tight">{mock.title}</h1>
+        <h1 className="mt-4 text-2xl font-bold tracking-tight">{displayMockTitle(mock.title)}</h1>
+        {mock.sections.length > 1 && (
+          <ul className="mt-2 flex flex-wrap gap-1.5" aria-label="Sections">
+            {mock.sections.map((sec) => (
+              <li key={sec.key} className="rounded-full border bg-card px-2.5 py-1 text-xs text-muted-foreground">
+                {sec.label} · <span className="tabular-nums">{sec.count}</span>
+              </li>
+            ))}
+          </ul>
+        )}
         {assigned && (
           <p
             className={
@@ -196,6 +216,69 @@ export default async function MockInstructions(
           <Stat icon={FileText} value={String(mock.totalQuestions)} label="questions" />
           <Stat icon={Trophy} value={String(mock.totalMarks)} label="marks" />
           <Stat icon={Clock} value={`${mins}`} label="minutes" />
+        </div>
+
+        {/* Start sits under the three numbers (2026-11-12): below the
+            instructions it was under the phone's tab bar, at 1,018 px on an
+            844 px screen. The marking stays one scroll down. */}
+        <div className="mt-6">
+          {fromFriend && (
+            <p className="mb-3 flex items-start gap-2 rounded-lg border border-brand-accent/30 bg-brand/10 p-3 text-sm">
+              <Users className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
+              <span>
+                {senderName ?? "A friend"} sent you this paper. It&apos;s free for you, and when you have both finished
+                you each see what the other missed.
+              </span>
+            </p>
+          )}
+          {user ? (
+            <StartMock
+              slug={mock.slug}
+              bilingual={bilingual}
+              startState={startState}
+              mockPass={mockPass}
+              unit={mock.scope === "sectional" ? "chapter_test" : "mock"}
+              isPastPaper={isPastPaper}
+              invite={fromFriend ? withCode : null}
+              resumeSecsLeft={resumeSecsLeft}
+            />
+          ) : (
+            <div className="rounded-lg border border-dashed p-5 text-center">
+              <p className="text-sm text-muted-foreground">Sign in to take this timed mock and save your score.</p>
+              <Button asChild variant="brand" className="mt-3">
+                <Link
+                  href={`/login?next=${encodeURIComponent(
+                    `/mock/${mock.slug}${fromFriend && withCode ? `?${INVITE_PARAM}=${withCode}` : ""}`
+                  )}`}
+                >
+                  <LogIn className="h-4 w-4" aria-hidden />
+                  Sign in to start
+                </Link>
+              </Button>
+            </div>
+          )}
+          {myInvite && (
+            <div className="mt-3">
+              <SendToFriend
+                target={{ kind: "mock", slug: mock.slug, invite: myInvite }}
+                title={mock.title}
+                questions={mock.totalQuestions}
+                minutes={mins}
+              />
+            </div>
+          )}
+          {isPastPaper && (
+            <div className="mt-3 space-y-3">
+              <PaperDownload slug={mock.slug} paperTitle={mock.title} bilingual={bilingual} />
+              <Link
+                href={paperPageHref(mock.slug)}
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-accent underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+              >
+                <BookOpen className="h-4 w-4" aria-hidden />
+                Read the whole paper with answers, free
+              </Link>
+            </div>
+          )}
         </div>
 
         <p className="mt-6 flex items-start gap-2 rounded-lg border bg-muted/40 p-4 text-sm text-muted-foreground">
@@ -251,65 +334,6 @@ export default async function MockInstructions(
         </section>
 
         <BeforeYouStart lines={beforeLines} guide={paperGuide} />
-
-        <div className="mt-6">
-          {fromFriend && (
-            <p className="mb-3 flex items-start gap-2 rounded-lg border border-brand-accent/30 bg-brand/10 p-3 text-sm">
-              <Users className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
-              <span>
-                {senderName ?? "A friend"} sent you this paper. It&apos;s free for you, and when you have both finished
-                you each see what the other missed.
-              </span>
-            </p>
-          )}
-          {user ? (
-            <StartMock
-              slug={mock.slug}
-              bilingual={bilingual}
-              startState={startState}
-              mockPass={mockPass}
-              unit={mock.scope === "sectional" ? "chapter_test" : "mock"}
-              isPastPaper={isPastPaper}
-              invite={fromFriend ? withCode : null}
-            />
-          ) : (
-            <div className="rounded-lg border border-dashed p-5 text-center">
-              <p className="text-sm text-muted-foreground">Sign in to take this timed mock and save your score.</p>
-              <Button asChild variant="brand" className="mt-3">
-                <Link
-                  href={`/login?next=${encodeURIComponent(
-                    `/mock/${mock.slug}${fromFriend && withCode ? `?${INVITE_PARAM}=${withCode}` : ""}`
-                  )}`}
-                >
-                  <LogIn className="h-4 w-4" aria-hidden />
-                  Sign in to start
-                </Link>
-              </Button>
-            </div>
-          )}
-          {myInvite && (
-            <div className="mt-3">
-              <SendToFriend
-                target={{ kind: "mock", slug: mock.slug, invite: myInvite }}
-                title={mock.title}
-                questions={mock.totalQuestions}
-                minutes={mins}
-              />
-            </div>
-          )}
-          {isPastPaper && (
-            <div className="mt-3 space-y-3">
-              <PaperDownload slug={mock.slug} paperTitle={mock.title} bilingual={bilingual} />
-              <Link
-                href={paperPageHref(mock.slug)}
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-accent underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
-              >
-                <BookOpen className="h-4 w-4" aria-hidden />
-                Read the whole paper with answers, free
-              </Link>
-            </div>
-          )}
-        </div>
 
         {myAttempts.length > 0 && (
           <section className="mt-8">

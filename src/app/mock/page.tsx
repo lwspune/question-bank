@@ -95,6 +95,7 @@ export default async function MockCatalogue() {
     <GuideShell
       wide
       guideTitle="Mock Tests"
+      sideNavLabel="Exams"
       sideNav={mockSideNav()}
       breadcrumbs={[{ href: "/mock", label: "Mocks" }, { label: "All exams" }]}
     >
