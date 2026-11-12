@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { sendActivity } from "@/lib/activity/clientBeacon";
 import type { DownloadBox } from "@/lib/activity/clientEvents";
 import { trackFunnel } from "@/lib/analytics/trackFunnel";
+import { checkoutContactOptions } from "@/lib/billing/checkoutOptions";
 
 /** Minimal shape of the Razorpay Checkout global we use. */
 type RazorpayOptions = {
@@ -15,6 +16,7 @@ type RazorpayOptions = {
   name: string;
   description?: string;
   prefill?: { email?: string; contact?: string };
+  hidden?: { contact?: boolean; email?: boolean };
   theme?: { color?: string };
   handler: (resp: RazorpaySuccess) => void;
   modal?: { ondismiss?: () => void };
@@ -172,10 +174,7 @@ export function useCheckout({
         currency: order.currency ?? "INR",
         name: "PYQ Vault",
         description: order.planLabel,
-        prefill:
-          order.email || order.contact
-            ? { ...(order.email ? { email: order.email } : {}), ...(order.contact ? { contact: order.contact } : {}) }
-            : undefined,
+        ...checkoutContactOptions({ email: order.email, contact: order.contact }),
         theme: { color: "#1d4ed8" },
         handler: async (resp) => {
           try {

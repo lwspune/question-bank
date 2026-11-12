@@ -263,7 +263,7 @@ async function main() {
         break;
       case "checkout-contact":
         // Read by hand: paywall_event checkout_opened by metadata.hasContact, then razorpay entitlements.
-        line = "by hand: checkout_opened by metadata.hasContact, and which of those students paid (baseline 23 of 51)";
+        line = "by hand: checkout_opened by metadata.hasContact, and which of those students paid (baselines 23 of 51, 12 of 48)";
         break;
       case "review-traps":
         // Read by hand: surface_viewed review_traps by action (shown, expand, playbook).

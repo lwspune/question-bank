@@ -296,6 +296,8 @@ export const STUCK_OFFER_LEAVE_BASELINE_PCT = 14;
  * the clean comparison (students without one paid 12 of 48).
  */
 export const CHECKOUT_CONTACT_PAID_BASELINE_PCT = 45;
+/** "checkout-contact": the same window's students with NO saved mobile, the share who paid (12 of 48). */
+export const CHECKOUT_NO_CONTACT_PAID_BASELINE_PCT = 25;
 /**
  * "answer-limit-copy": of students who met the answer limit in the 30 days to
  * 2026-11-11, the share who opened checkout from it (35 of 360) and who bought
@@ -1248,13 +1250,13 @@ export const EXPERIMENTS: readonly Experiment[] = [
   },
   {
     id: "checkout-contact",
-    title: "Send the saved mobile to Razorpay's checkout",
+    title: "No mobile-number form before Razorpay's ways to pay",
     change:
-      "The order route returns the student's saved mobile (+91 form) and the checkout passes it to Razorpay with the email, so a student with a mobile on file skips Razorpay's \"Enter mobile & email to continue\" form and lands on the ways to pay. Each checkout_opened row records hasContact.",
+      "The order route returns the student's saved mobile (+91 form) and the checkout passes it to Razorpay with the email, and every checkout sets Razorpay's hidden.contact (the contact field optional and not shown), so a student with or without a saved mobile skips Razorpay's \"Enter mobile & email to continue\" form. Each checkout_opened row records hasContact.",
     why: "On 2026-11-12 two of three students who opened checkout closed it within 6 seconds (leaving takes two taps), both with a mobile saved with us that we never sent. A test account showed Razorpay's first screen is an empty mobile field. In 30 days 99 students opened checkout and 35 paid.",
     metric:
-      "Checkout-to-paid per student who opened checkout, split by checkout_opened metadata.hasContact; the with-mobile group is compared with its own rate before (23 of 51)",
-    rule: `Keep it (it costs nothing) and judge the size: it worked if students whose checkout carried a mobile pay at above ${CHECKOUT_CONTACT_PAID_BASELINE_PCT}%. If they do not, the mobile form was not what stopped them, and the next look is the price.`,
+      "Checkout-to-paid per student who opened checkout, split by checkout_opened metadata.hasContact; each group is compared with its own rate before (23 of 51 with a mobile, 12 of 48 without)",
+    rule: `Keep it (it costs nothing) and judge the size: it worked if students with a saved mobile pay at above ${CHECKOUT_CONTACT_PAID_BASELINE_PCT}% and students without one above ${CHECKOUT_NO_CONTACT_PAID_BASELINE_PCT}%. If neither moves, the mobile form was not what stopped them, and the next look is the price.`,
     liveSince: "2026-11-12",
     windowDays: 21,
     readout: "checkout-contact",
