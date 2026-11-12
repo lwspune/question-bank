@@ -93,7 +93,7 @@ function ReviewCard({
        card is the anchor for its own question. Position, not question id: it
        is what the student saw on the paper and what the card names. */
     <li id={`q${item.position}`} data-verdict={item.verdict} className={cn("scroll-mt-20 rounded-lg border border-l-4 bg-card p-4", border)}>
-      <div className="flex items-center justify-between gap-2">
+      <div className="flex flex-wrap items-center justify-between gap-2">
         <span className="font-mono text-xs text-muted-foreground">Q{item.position}</span>
         <PresentButton
           question={fromReviewItem(item)}
@@ -103,9 +103,13 @@ function ReviewCard({
           surface="mock"
         />
         {timeLine && (
-          <span className="inline-flex shrink-0 items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] text-muted-foreground tabular-nums">
-            <Clock className="h-3 w-3" aria-hidden />
-            {timeLine}
+          // Its own line on a phone, under Q and the verdict: inline, it
+          // pushed "Wrong" past the card's edge at 390 px.
+          <span className="order-last basis-full sm:order-none sm:basis-auto">
+            <span className="inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] text-muted-foreground tabular-nums">
+              <Clock className="h-3 w-3" aria-hidden />
+              {timeLine}
+            </span>
           </span>
         )}
         {item.grace ? (
