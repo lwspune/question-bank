@@ -357,6 +357,52 @@ It is b.
     expect(checkShift([bare], [sheet(1, "A", "B")], CATALOG, SECTIONS).problems.join()).toMatch(/Q1.*blind.*note/);
   });
 
+  // A settlement that adopts SSC's key must also rewrite the solution: CHSL shipped ~15 rows whose
+  // answer was the key while the solution still concluded our blind option ("Complex" shown,
+  // the solution arguing "Annoying"), because only the header lines were edited.
+  describe("an adopted key's solution must argue the answer, not the blind option", () => {
+    const block = (solution: string, opts = ["Annoying", "Uncertain", "Irritating", "Complex"]) =>
+      parseTranscript(`=== 1
+chapter: Series
+subtopic: Letter Series
+difficulty: EASY
+answer: D
+blind: A
+note: judgement item, SSC's key adopted
+stem:
+Next?
+A: ${opts[0]}
+B: ${opts[1]}
+C: ${opts[2]}
+D: ${opts[3]}
+solution:
+${solution}
+`)[0];
+    const problems = (q: ReturnType<typeof block>) => checkShift([q], [sheet(1, "A", "D")], CATALOG, SECTIONS).problems.join();
+
+    it("flags a last paragraph that names the blind option and not the answer", () => {
+      expect(problems(block("Vexing troubles you.\n\nSo its meaning is \"annoying\"."))).toMatch(/Q1.*solution.*blind option A/);
+    });
+
+    it("flags a numeric blind option concluded in the last paragraph", () => {
+      const q = block("In 1992 magazines rose.\n\nMagazines rose in every year, so the answer is 3.", ["3", "1", "4", "2"]);
+      expect(problems(q)).toMatch(/Q1.*solution.*blind option A/);
+    });
+
+    it("flags \"option N\" pointing at the blind option", () => {
+      expect(problems(block("The pieces fit as in option 1.", ["[figure]", "[figure]", "[figure]", "[figure]"]))).toMatch(/Q1.*solution.*blind option A/);
+    });
+
+    it("accepts a last paragraph that names the answer, even beside the blind option", () => {
+      expect(problems(block("It is hard to deal with.\n\nSSC's key reads it as \"complex\"; \"annoying\" is the other reading."))).toBe("");
+      expect(problems(block("So it is option 4, not option 1.", ["[figure]", "[figure]", "[figure]", "[figure]"]))).toBe("");
+    });
+
+    it("accepts a last paragraph that names neither", () => {
+      expect(problems(block("The word describes a hard problem."))).toBe("");
+    });
+  });
+
   it("in blind mode says nothing about the key, so a drafting agent can check its work without seeing it", () => {
     const wrong = { ...series(1, "C"), blind: "D" as const };
     const r = checkShift([wrong, series(2, "A")], [sheet(1, "A", "B"), sheet(2, "A", "B")], CATALOG, SECTIONS, { compareKey: false });
