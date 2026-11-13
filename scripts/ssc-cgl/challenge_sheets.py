@@ -49,12 +49,23 @@ def blank_rows(a):
 
 def column_edge(a):
     """Where the left column ends in this crop (crop x): just right of its vertical rule (page x
-    ~128-145, by page), or, on a frameless page, x 121 (the key cells end at 120, text starts 124)."""
+    ~128-152, by page), or, on a frameless page, x 121 (the key cells end at 120, text starts 124).
+
+    The FIRST rule in the window, never the last: on the three-language print (20 Nov) text
+    starts at x 146 and a figure's tall line at x 149 also reads as a rule, so the last one
+    painted over first letters and the left of every figure. The window reaches x 156 because
+    that print's rule can sit at x 150 (outside it, the frameless default left the "Q.No: 100"
+    label half painted, and a sliver of key colour beside it)."""
     s = a.astype(int).sum(axis=2)
-    lo, hi = 112 - CROP_X[0], 150 - CROP_X[0]
-    grey = ((s[:, lo:hi] > 300) & (s[:, lo:hi] < 720)).mean(axis=0)
-    xs = np.nonzero(grey > 0.5)[0]
-    return int(lo + xs[-1] + 2) if len(xs) else 121 - CROP_X[0]
+    lo, hi = 112 - CROP_X[0], 156 - CROP_X[0]
+    grey = ((s[:, lo:hi] > 300) & (s[:, lo:hi] < 720)).mean(axis=0) > 0.5
+    xs = np.nonzero(grey)[0]
+    if not len(xs):
+        return 121 - CROP_X[0]
+    end = int(xs[0])
+    while end + 1 < len(grey) and grey[end + 1]:
+        end += 1
+    return lo + end + 2
 
 
 def squeeze(a):

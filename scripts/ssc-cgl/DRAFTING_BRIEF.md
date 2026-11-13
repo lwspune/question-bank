@@ -75,7 +75,11 @@ numbers "1." to "4." are stamped by us (the column that held the key is painted 
 option can start a little below its number when it continues on the next page. Questions in
 Quantitative Aptitude and General Awareness print each line in English and then Hindi: write the
 English only. A question printed in Hindi alone follows the Hindi-only rule above. A pale
-watermark (Oliveboard's) lies across some pages: ignore it.
+watermark (Oliveboard's) lies across some pages: ignore it. Some shifts print a third language
+(Kannada) under the Hindi: still English only. A picture prints once per language, one copy
+under another: describe it once. A stray mark left of a stem (".00", "'5": the end of a long
+"Q.No" label) or a leftover status word ("Answered") is not part of the question. Units inside
+maths are upright: `\(\text{cm}^2\)`, never `\(cm^2\)`.
 
 So in CHSL the `subject:` line belongs to **PART-D**, and passage sets (a "Comprehension:" cloze
 or reading passage) are in **PART-A**. Everything said below about CGL's PART-B (General
