@@ -193,13 +193,14 @@ export type Day = {
   /**
    * "tcs": a 2022-2024 TCS response sheet, text with the key as the option colour (tcs.ts),
    * read by assemble-tcs.ts. "raster": the CGL 2025 Tier II sheet, the TCS print scanned to page
-   * pictures with no text layer at all. Absent: the 2025 challenge-module render (assemble.ts).
+   * pictures with no text layer at all. "challenge": the challenge-module render scanned to page
+   * pictures (CHSL 2025, challenge.ts). Absent: the 2025 challenge-module render (assemble.ts).
    */
-  format?: "tcs" | "raster";
+  format?: "tcs" | "raster" | "challenge";
   /** TCS only: the day's slots in shift order, as the sheets print Exam Time */
   slots?: string[];
   /** One file per SHIFT (2022) instead of one per day: shift -> file. `file`/`url` are unused. */
-  shiftFiles?: Record<number, { file: string; url: string }>;
+  shiftFiles?: Record<number, { file: string; url: string; order?: Part[] }>;
   /** The page range (tcs_extract.py --pages) of the day file's TEXT sheets, when it also holds scans. */
   pages?: string;
   /**
@@ -256,6 +257,38 @@ const chsl_2024 = (dd: string, docId: string, extra: Pick<Day, "untitledFirstSec
   provisionalKey: true,
   format: "tcs",
   slots: ["9:00 AM - 10:00 AM"],
+});
+
+/**
+ * SSC CHSL 2025 Tier I (13-30 Nov 2025): AglaSem hosts none. PW hosts 17 shifts as Google Drive
+ * PDFs of SSC's challenge-module sheet (the 2025 render, key as the coloured left cell), each
+ * page one PICTURE with a partial OCR layer and a watermark (Oliveboard's, baked in; PW's logo
+ * as a separate picture, never read). challenge_extract.py + challenge.ts read the pixels. One
+ * file per shift, so a day lists its shifts in shiftFiles. Whether a sheet carries SSC's tentative
+ * or final key is not printed on it, so the key counts as provisional.
+ */
+const chsl_2025 = (dd: string, docs: Record<number, string | { id: string; order: Part[] }>): Day => ({
+  exam: "chsl",
+  tier: 1,
+  date: `2025-11-${dd}`,
+  shifts: 3,
+  present: Object.keys(docs).map(Number),
+  layout: CHSL_LAYOUT,
+  file: "",
+  url: "",
+  provisionalKey: true,
+  format: "challenge",
+  shiftFiles: Object.fromEntries(
+    Object.entries(docs).map(([n, doc]) => [
+      n,
+      {
+        file: join(CHSL_SOURCE_ROOT, "2025_Tier1", `SSC_CHSL_2025_Tier1_${dd}Nov_S${n}_PW.pdf`),
+        url: `https://drive.google.com/file/d/${typeof doc === "string" ? doc : doc.id}/view`,
+        // the parts' order in PW's file, when not A, B, C, D (read off each capture's first Q.No)
+        ...(typeof doc === "string" ? {} : { order: doc.order }),
+      },
+    ])
+  ),
 });
 
 /**
@@ -457,6 +490,20 @@ export const DAYS: Record<string, Day> = {
   "chsl-t1-2024-07-09": chsl_2024("09", "47abfaec-88e0-11f1-b03c-0aa932765c8b"),
   "chsl-t1-2024-07-10": chsl_2024("10", "46c1ad2a-88e0-11f1-925d-0aa932765c8b"),
   "chsl-t1-2024-07-11": chsl_2024("11", "4585cb4e-88e0-11f1-92c5-0aa932765c8b"),
+  // SSC CHSL 2025 Tier I (13-30 Nov 2025): only PW hosts SSC's own sheets, 17 shifts.
+  "chsl-t1-2025-11-14": chsl_2025("14", { 3: "12GjefNS0Qe6rrN4ovS4JA4I2aQt8uVei" }),
+  "chsl-t1-2025-11-15": chsl_2025("15", { 1: { id: "1YDEHlE7N6EnUVXOBBgxuN_LZiPvNSA4p", order: ["A", "D", "C", "B"] }, 3: "1DeNw_zhtqXzA-TUWQVe4-Xi42YpOZno1" }),
+  "chsl-t1-2025-11-17": chsl_2025("17", { 1: "1bEYLc2Cuj19zFMPr-xrNwmQ-PsHXeTKJ" }),
+  "chsl-t1-2025-11-18": chsl_2025("18", { 1: "1lnYqWPh4NdcMJMkiGGNQhL3DCoz7zUkh" }),
+  "chsl-t1-2025-11-19": chsl_2025("19", { 2: "1PWPVlUuEU6bB_bDrOXrwUnpAL1lfVOj7" }),
+  "chsl-t1-2025-11-20": chsl_2025("20", { 1: "1tZKZ1FtZOwPvdMWOouFPI9vGL9f9GZR_" }),
+  "chsl-t1-2025-11-21": chsl_2025("21", { 1: "14D8_DwMF-29d46tDJ9Up5I4UP3iHviEC", 3: "1DUgySz8UziksPzOJwH2wMaG7N72VhctJ" }),
+  "chsl-t1-2025-11-22": chsl_2025("22", { 2: "1nwaePC5sjoQK-rsSgfBcKAiskaX4HPCY" }),
+  "chsl-t1-2025-11-25": chsl_2025("25", { 1: "12DnI57cULIbViNiiHjjOG8pwbl9ps_Xq", 2: "17sPMnCczOMi-Lu0tH6YJuheCB9jxhP4g", 3: "1mt7BqrL8uJNbERv_SUZ4mCHDLBrgVtoV" }),
+  "chsl-t1-2025-11-26": chsl_2025("26", { 2: { id: "1PWu7D5kmnDlVXkvTTh3ZR0ThxQg4HEKL", order: ["A", "C", "B", "D"] } }),
+  "chsl-t1-2025-11-27": chsl_2025("27", { 1: "1nbM05gj97QFkaXLhiKZQfxfaxW753Eyq" }),
+  "chsl-t1-2025-11-28": chsl_2025("28", { 1: "1tg4SF5FXKWRyVWH-ruwDrn8sRdFgnrzt" }),
+  "chsl-t1-2025-11-29": chsl_2025("29", { 1: "1go-fpkf7FaL7YP50d3uL1_5BdHn3gAFO" }),
 };
 
 /** pyqMonth is a month NAME, as everywhere in the bank ("September"), never a number. */
@@ -492,7 +539,7 @@ export const SHIFTS: Record<string, Shift> = Object.fromEntries(
  * Every TCS file, in day order: `dir` is its out/ folder (tcs_extract.py's dayId). A day
  * hosted as one file per shift (2022) lists each, with the shift it holds.
  */
-export type TcsFile = { dir: string; day: Day; file: string; shift?: number; pages?: string };
+export type TcsFile = { dir: string; day: Day; file: string; shift?: number; pages?: string; order?: Part[] };
 export function tcsFiles(): TcsFile[] {
   return Object.entries(DAYS)
     .filter(([, d]) => d.format === "tcs" && !d.sheetIn)
@@ -506,6 +553,16 @@ export function tcsFiles(): TcsFile[] {
       const text = textShifts.length ? [{ dir, day, file: day.file, ...(day.pages ? { pages: day.pages } : {}) }] : [];
       return [...text, ...scans];
     });
+}
+
+/** Every scanned challenge-module file (CHSL 2025), one per shift: `dir` is its out/ folder. */
+export function challengeFiles(): TcsFile[] {
+  return Object.entries(DAYS)
+    .filter(([, d]) => d.format === "challenge")
+    .sort(([a], [b]) => a.localeCompare(b))
+    .flatMap(([dir, day]) =>
+      Object.entries(day.shiftFiles ?? {}).map(([n, f]) => ({ dir: `${dir}-s${n}`, day, file: f.file, shift: Number(n), ...(f.order ? { order: f.order } : {}) }))
+    );
 }
 
 export function requireShift(id: string | undefined): Shift & { id: string } {
