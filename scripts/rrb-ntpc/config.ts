@@ -6,8 +6,8 @@ import type { Section } from "../ssc-cgl/config";
 export { CREATED_BY, ORG_ID } from "../ssc-cgl/config";
 
 export const EXAM_NAME = "RRB NTPC";
-/** Created by seed-exam.ts; empty until then (commit.ts refuses to run without it). */
-export const EXAM_ID = "";
+/** Created by seed-exam.ts on 2026-11-13. */
+export const EXAM_ID = "6a5566ad-8bc9-4e6e-a679-5ceb2a369627";
 export function requireExamId(): string {
   if (!EXAM_ID) throw new Error("EXAM_ID is empty: run scripts/rrb-ntpc/seed-exam.ts --apply and paste the id into config.ts");
   return EXAM_ID;
