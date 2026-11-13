@@ -508,5 +508,233 @@
   "before": "97b038f3",
   "solution": "Write \\(\\frac{5\\tan x}{\\tan x-2}=\\frac{5\\sin x}{\\sin x-2\\cos x}\\) and put \\(5\\sin x=A(\\sin x-2\\cos x)+B(\\cos x+2\\sin x)\\), since \\(\\cos x+2\\sin x\\) is the derivative of \\(\\sin x-2\\cos x\\). Comparing coefficients: \\(A+2B=5\\) and \\(-2A+B=0\\), so \\(A=1,\\ B=2\\). Hence the integral is \\(x+2\\log|\\sin x-2\\cos x|+c\\), so \\(a=2\\). Matches option C.",
   "note": "the stored working named the method without doing it (and wrote B times sec^2 x times denom.); the coefficients are now shown"
+ },
+ {
+  "id": "d30259d8-9d74-4cfa-8221-e147c48f0065",
+  "before": "f65a2217",
+  "solution": "New mean \\(= p\\bar{x}-q = 10\\): \\(20p-q=10\\). New SD \\(= |p|\\sigma = 1\\): \\(|p|\\cdot2=1\\), so \\(p=\\pm\\frac{1}{2}\\). \\(p=\\frac{1}{2}\\) gives \\(q=0\\), which is excluded, so \\(p=-\\frac{1}{2}\\): \\(-10-q=10\\), \\(q=-20\\). Matches option A: \\(-20\\).",
+  "note": "sentence 2 chose p = -1/2 without saying p = +1/2 gives q = 0, which the stem excludes (q != 0)"
+ },
+ {
+  "id": "2d472872-935f-48ea-92de-aa92b305a3f8",
+  "before": "6df30492",
+  "solution": "B1 fixed at position 2. G1 and G2 must be adjacent; they can't be at position 2. Among the free places \\(\\{1,3,4,5\\}\\) only \\((3,4)\\) and \\((4,5)\\) are consecutive; \\((1,3)\\) is not. Valid adjacent pairs among {1,3,4,5}: (3,4),(4,5). G1G2 pair: 2! arrangements each. Remaining 2 students fill remaining 2 spots: 2!. Total = \\(2\\times 2!\\times 2! = 8\\). Matches option C: 8.",
+  "note": "sentence 2 listed {3,4} twice and {1,3} before correcting itself; now states the two consecutive pairs"
+ },
+ {
+  "id": "b593c2aa-66bf-4a29-b244-6287b160d45e",
+  "before": "ba113c60",
+  "solution": "Case I (millions = 2): \\(6!/3! = 120\\); Case II (millions = 3): \\(6!/(2!\\cdot2!) = 180\\); Case III (millions = 4): \\(6!/(2!\\cdot3!) = 60\\); total \\(= 120 + 180 + 60 = 360\\). Matches option C: 360.",
+  "note": "Case III was left unfinished (6!/3! div ...); it is 6!/(2!.3!) = 60, and 120 + 180 + 60 = 360"
+ },
+ {
+  "id": "f9706877-700e-4184-afcb-3b68882724b1",
+  "before": "2caa602e",
+  "solution": "\\(P_1=\\frac{2}{7},P_2=\\frac{3}{7},P_3=\\frac{4}{7}\\); P(majority favour) \\(=\\) (critics 1, 2 only) + (1, 3 only) + (2, 3 only) + (all three) \\(=\\frac{2\\cdot3\\cdot3+2\\cdot4\\cdot4+5\\cdot3\\cdot4+2\\cdot3\\cdot4}{343}=\\frac{18+32+60+24}{343}=\\frac{134}{343}\\). Matches option D.",
+  "note": "the working stated only the result 134/343; now shows the four cases (18 + 32 + 60 + 24) that sum to it"
+ },
+ {
+  "id": "d2329ce1-b9b7-4dc8-b3b7-6624aa40384f",
+  "before": "11803898",
+  "solution": "\\(P(A)=\\tfrac{2}{7},P(B)=\\tfrac{3}{7},P(C)=\\tfrac{4}{7}\\). Majority favours: \\(P=P(AB\\bar{C})+P(A\\bar{B}C)+P(\\bar{A}BC)+P(ABC)=\\tfrac{18+32+60+24}{343}=\\dfrac{134}{343}\\). Matches option D.",
+  "note": "terms were listed out of order against their labels: P(A B' C)=2*4*4=32 and P(A' B C)=5*3*4=60, so 18+32+60+24"
+ },
+ {
+  "id": "0e904ff2-fab1-4cf3-95d6-4844c62dae13",
+  "before": "eca86b81",
+  "solution": "Total outcomes = 36. Favorable: the prime sums that occur are 2, 3, 5, 7 and 13. Counting favorable ordered pairs: sum 2: \\((1,1)\\); sum 3: \\((1,2),(2,1)\\); sum 5: \\((2,3),(3,2)\\); sum 7: \\((2,5),(5,2)\\); sum 13: \\((2,11),(11,2)\\); 9 in all. \\(P=\\frac{9}{36}=\\frac{1}{4}\\). Matches option A.",
+  "note": "the prime sums listed (11 and 19, and 17 in the note) do not all occur; the sums that do are 2, 3, 5, 7, 13; the nine pairs are now shown"
+ },
+ {
+  "id": "12568f1c-efbd-42e4-94a8-8ab4f28489d3",
+  "before": "026558c6",
+  "solution": "From constraints \\(0\\leq p_i\\leq1\\): \\(-\\frac{1}{3}\\leq p\\leq\\frac{1}{4}\\). Mean \\(= \\frac{2-9p}{4}\\). Range: \\(-\\frac{1}{16} \\leq \\text{Mean} \\leq \\frac{5}{4}\\). Matches option D: \\(-\\frac{1}{16}\\) and \\(\\frac{5}{4}\\).",
+  "note": "the minimum is -1/16 (mean (2-9p)/4 at p = 1/4), not -11/6; the stored lines followed our wrong option text"
+ },
+ {
+  "id": "3a4d1785-0316-4f11-9ed4-c3479458212e",
+  "before": "db377e02",
+  "solution": "\\(\\int_{1/4}^{1/3}3(1-2x^2)\\,dx=\\left[3x-2x^3\\right]_{1/4}^{1/3}=\\dfrac{179}{864}\\). Matches option C: \\(\\dfrac{179}{864}\\).",
+  "note": "the integrand and antiderivative carried the extra 3/4 of the miscopied stem; with the paper's f(x) = 3(1-2x^2) the same limits give 179/864"
+ },
+ {
+  "id": "273f6021-0a77-4ed7-a33f-8e893c833efd",
+  "before": "06af9d1f",
+  "solution": "The stem gives no leading coefficients and the limit is finite only if they are equal, so take both polynomials monic: \\(p(x) = (x - 1)(x - \\alpha)\\) and \\(q(x) = (x - 1)(x - \\beta)\\). Then \\(r(x) = 2x^2 - (2 + \\alpha + \\beta)x + (\\alpha + \\beta)\\).\n\nIts roots are \\(\\alpha\\) and \\(\\beta\\): sum \\(\\alpha + \\beta = \\dfrac{2 + \\alpha + \\beta}{2}\\) gives \\(\\alpha + \\beta = 2\\), and product \\(\\alpha\\beta = \\dfrac{\\alpha + \\beta}{2} = 1\\). So \\(\\alpha = \\beta = 1\\).\n\nThen \\(p = q = (x - 1)^2\\), so \\(\\sqrt{p(x)} - \\sqrt{q(x)} = 0\\) and the limit is \\(0\\).",
+  "note": "the monic assumption is now justified (with unequal leading coefficients the limit is infinite)"
+ },
+ {
+  "id": "7254602a-133d-4e04-b9b2-3754ba469a5f",
+  "before": "bb07a336",
+  "solution": "Substituting standard formulas and taking limit as \\(n\\to\\infty\\): dominant terms give \\(\\frac{(n^2/2)(n^4/4)}{4\\cdot n^6/9}=\\frac{9}{32}\\). The numerator is \\(n^6/8\\), so the ratio is \\(\\frac{n^6/8}{4n^6/9}=\\frac{9}{32}\\). Matches option C.",
+  "note": "S1 ~ n^2/2 (not n^4/4): the printed fraction tends to infinity; and the 'detailed evaluation' line now shows the n^6/8 step"
+ },
+ {
+  "id": "bcd06daf-3bfb-44f1-be20-26ee2e5b31d7",
+  "before": "cae20ee3",
+  "solution": "Let \\(t=\\tan\\frac{\\pi}{8}\\); \\(\\tan\\frac{\\pi}{4}=\\frac{2t}{1-t^2}=1\\) gives \\(t^2+2t-1=0\\Rightarrow t=-1\\pm\\sqrt{2}\\), and \\(t>0\\), so \\(t=\\sqrt{2}-1\\). Matches option C.",
+  "note": "the stored line gave the quadratic without saying t = tan(pi/8) or where it comes from (double-angle formula at pi/4)"
+ },
+ {
+  "id": "e13a4cdc-cb1b-430e-80f7-d27887e5f526",
+  "before": "8cc16b28",
+  "solution": "\\(\\sqrt3\\csc20^\\circ-\\sec20^\\circ = \\frac{2(\\frac{\\sqrt3}{2}\\cos20^\\circ-\\frac{1}{2}\\sin20^\\circ)}{\\sin20^\\circ\\cos20^\\circ} = \\frac{2\\sin60^\\circ\\cos20^\\circ - 2\\cos60^\\circ\\sin20^\\circ}{\\frac{1}{2}\\sin40^\\circ} = \\frac{2\\sin40^\\circ}{\\frac{1}{2}\\sin40^\\circ} = 4\\). Matches option C.",
+  "note": "lost root on the 3 (sqrt3 csc 20); 4( ) should be 2( ); last fraction lacked the 1/2 in its denominator (as written it gave 8)"
+ },
+ {
+  "id": "5fcadb96-0b6f-470e-9e0e-1e120d0e2f1c",
+  "before": "e48af821",
+  "solution": "A vector coplanar with \\(\\vec{a},\\vec{b}\\) and orthogonal to \\(\\vec{c}\\) is \\((\\vec{a}\\times\\vec{b})\\times\\vec{c}\\), where \\(\\vec{a}\\times\\vec{b} = -\\hat{j}+\\hat{k}\\); computing gives \\(-8\\hat{i}+3\\hat{j}+3\\hat{k}\\); magnitude \\(=\\sqrt{82}\\). Matches option C: \\(\\frac{-8\\hat{i}+3\\hat{j}+3\\hat{k}}{\\sqrt{82}}\\).",
+  "note": "c x (a x b) is +8i - 3j - 3k, the negative of the printed vector; -8i + 3j + 3k is (a x b) x c, which the paper's own solution computes. Added a x b = -j + k (the working shown)"
+ },
+ {
+  "id": "43e330f4-ae1a-49a1-ac88-fc8afb76d84d",
+  "before": "84765660",
+  "solution": "DC gives resistance \\( R = 12/4 = 3\\,\\Omega \\). For AC: \\( Z = 12/2.4 = 5\\,\\Omega \\). \\( X_{L} = \\sqrt{Z^{2}-R^{2}} = 4\\,\\Omega \\). \\( L = \\frac{X_{L}}{2\\pi f} = \\frac{4}{100\\pi} = \\frac{4}{\\pi}\\times10^{-2} \\) H. Matches option C: \\( \\frac{4}{\\pi}\\times10^{-2} \\) H.",
+  "note": "4/(100 pi) = (4/pi) x 10^-2 H, not 4 pi x 10^-2; the paper's options C and D are (4/pi) x 10^-2 and (8/pi) x 10^-2 (see copy.json)"
+ },
+ {
+  "id": "63a6fb38-a8cc-46df-93e5-2e10802cfbc6",
+  "before": "97e01bbc",
+  "solution": "Inductor current lags the voltage by \\(90^\\circ\\) and capacitor current leads it by \\(90^\\circ\\), so they are in phase opposition. Net current \\(= |I_L - I_C| = |0.9-0.6| = 0.3\\,A\\). Matches option D.",
+  "note": "physics reversed: the inductor current LAGS the voltage by 90 degrees and the capacitor current LEADS it (the paper's own solution has it backwards); they are still in phase opposition, so the answer is unchanged"
+ },
+ {
+  "id": "6cc952f3-3b79-401e-b53f-191fd88ee549",
+  "before": "e5514896",
+  "solution": "Given \\(X_L = 2R\\) and \\(X_C = R/2\\). \\(Z = \\sqrt{R^2 + (X_L - X_C)^2} = \\sqrt{R^2 + (3R/2)^2} = \\frac{\\sqrt{13}}{2}R\\). Phase: \\(\\phi = \\tan^{-1}\\dfrac{3R/2}{R} = \\tan^{-1}(3/2)\\). Matches option B: \\(\\frac{\\sqrt{13}}{2}R,\\, \\tan^{-1}\\left(\\frac{3}{2}\\right)\\).",
+  "note": "tan^-1 applies to the whole ratio (3R/2)/R, not to 3R/2 first"
+ },
+ {
+  "id": "7ad62dd5-5197-4207-aa81-0695c7bc72a7",
+  "before": "8eedc91d",
+  "solution": "\\(\\tan\\phi = \\frac{X_L - X_C}{R}\\); \\(X_L = 2\\pi\\cdot50\\cdot\\frac{300}{\\pi}\\times10^{-3} = 30\\,\\Omega\\), \\(X_C = 10\\,\\Omega\\), so \\(\\tan\\phi = \\frac{20}{20} = 1\\). Matches option C: \\(\\tan^{-1}(1)\\).",
+  "note": "the numerator's pi was extra: L = (300/pi) mH = (300/pi) x 10^-3 H"
+ },
+ {
+  "id": "88c2cf7e-bbd6-49ca-a40f-e2c80aa870d9",
+  "before": "f702e37d",
+  "solution": "Initially \\(X_C=R\\), so \\(Z=\\sqrt{R^2+R^2}=\\sqrt2\\,R\\) and \\(I_0=\\dfrac{V_0}{\\sqrt2\\,R}\\). When \\(\\omega\\to\\dfrac{\\omega}{\\sqrt3}\\), \\(X_C=\\dfrac{1}{(\\omega/\\sqrt3)C}=\\sqrt3\\,R\\), so \\(Z'=\\sqrt{R^2+(\\sqrt3\\,R)^2}=2R\\) and the new peak current \\(I_0'=\\dfrac{V_0}{2R}=\\dfrac{I_0}{\\sqrt2}\\). Matches option B: \\(\\dfrac{I_0}{\\sqrt2}\\).",
+  "note": "the paper's frequency change is omega/sqrt3, not omega/3; with it Z' = 2R and I0' = I0/sqrt2 (option B), as the paper's key works"
+ },
+ {
+  "id": "e8f69b59-504d-49aa-ba18-5a5e4ecc215e",
+  "before": "be87ef88",
+  "solution": "Case I: \\(e(4.8) = hc/\\lambda - \\phi_0\\); Case II: \\(e(1.6) = hc/2\\lambda - \\phi_0\\). Solving (three times Case II, equated with Case I): \\(hc/2\\lambda = 2\\phi_0\\), so \\(\\phi_0 = hc/4\\lambda\\) and threshold \\(\\lambda_0 = 4\\lambda\\). Matches option B: \\(4\\lambda\\).",
+  "note": "3 x (hc/2 lambda - phi0) = 4.8e = hc/lambda - phi0 gives hc/2 lambda = 2 phi0, not 3hc/2 lambda; the next line phi0 = hc/4 lambda and the key follow; the step 'three times Case II' added"
+ },
+ {
+  "id": "ed0e3647-138c-44ee-a6e5-e02a28a9c5a8",
+  "before": "74c17e71",
+  "solution": "From \\(eV=\\frac{hc}{\\lambda}-\\frac{hc}{\\lambda_{0}}\\) and \\(\\frac{eV}{6}=\\frac{hc}{3\\lambda}-\\frac{hc}{\\lambda_{0}}\\): multiplying the second by 6 gives \\(eV=\\frac{2hc}{\\lambda}-\\frac{6hc}{\\lambda_{0}}\\); equating with the first, \\(\\frac{5}{\\lambda_{0}}=\\frac{1}{\\lambda}\\), so \\(\\lambda_{0}=5\\lambda\\). Matches option D: \\(5\\lambda\\).",
+  "note": "added the working the earlier text skipped: 6 x (second equation) equated with the first gives 5/lambda0 = 1/lambda"
+ },
+ {
+  "id": "f961c878-412e-44d2-a65d-ed1c4f09275e",
+  "before": "5dfb6648",
+  "solution": "Using Einstein's equation: \\(K_1 = \\frac{hc}{\\lambda_1} - \\phi\\) and \\(K_2 = \\frac{hc}{\\lambda_2} - \\phi\\). Since \\(\\lambda_1 = 3\\lambda_2\\), subtracting gives \\(K_2 - K_1 = \\frac{2hc}{3\\lambda_2}\\), and substituting back, \\(K_1 = \\frac{hc}{3\\lambda_2} - \\phi\\) while \\(\\frac{K_2}{3} = \\frac{hc}{3\\lambda_2} - \\frac{\\phi}{3}\\), so \\(K_1 - \\frac{K_2}{3} = -\\frac{2\\phi}{3} < 0\\) and \\(K_1 < \\frac{K_2}{3}\\). Matches option B: \\(K_1 < \\frac{K_2}{3}\\).",
+  "note": "added the substitution the earlier text only asserted: K1 - K2/3 = -2 phi/3 < 0"
+ },
+ {
+  "id": "956a5713-148e-4080-95ab-096af32a0d19",
+  "before": "1ea8769f",
+  "solution": "From \\(L = \\frac{\\mu_0 N^2 A}{l}\\), find \\(l = 4\\pi\\times10^{-4}\\ \\text{m}\\). Then \\(B = \\frac{\\mu_0 NI}{l} = 0.2\\ \\text{Wb/m}^2\\). Matches option A: 0.2.",
+  "note": "l = mu0 N^2 A / L = 4pi x 10^-7 x 10^4 x 10^-4 / 10^-3 = 4pi x 10^-4 m, which is what gives B = 0.2; the stored 10^-3 would give 0.02"
+ },
+ {
+  "id": "c26553a8-129b-4d9e-a383-e2bdf7066295",
+  "before": "3e170791",
+  "solution": "Applying KVL: \\(V_{A}-V_{B}=IR+L\\frac{dI}{dt}+\\varepsilon = 2(12)+6(-1)+12 = 30\\,\\text{V}\\) (from answer key reasoning). Matches option A: 30 V.",
+  "note": "stored line 2(12)+6(1)+12 = 30 does not add up (it is 42); the paper's own working is V_AB = 24 + 6(-1) + 12 = 30, so the L dI/dt term is added with dI/dt = -1"
+ },
+ {
+  "id": "8a292f5f-0a7a-4a9f-ae2e-7ffff703caf6",
+  "before": "5f64c6f5",
+  "solution": "Radius \\(r=\\dfrac{d}{2}=1.75\\,cm=1.75\\times10^{-2}\\,m\\). Total charge \\(q=\\sigma\\times4\\pi r^2\\). Flux \\(\\phi=\\dfrac{q}{\\varepsilon_0}=\\dfrac{4\\pi r^2\\sigma}{\\varepsilon_0}=\\dfrac{4\\times3.14\\times(1.75\\times10^{-2})^2\\times20\\times10^{-6}}{8.85\\times10^{-12}}\\approx8.693\\times10^{3}\\), which the paper truncates to \\(8.692\\times10^{3}\\) (in \\(N\\,m^2/C\\)).",
+  "note": "the line works out to 8692.66 = 8.693 x 10^3; option A prints the truncated 8.692 x 10^3"
+ },
+ {
+  "id": "589b941d-b31e-4863-abab-859ad8130c6d",
+  "before": "5e7eb011",
+  "solution": "Series: \\(U_1 = \\frac{1}{2}(C_1/n_1)(36)\\); parallel: \\(U_2 = \\frac{1}{2}(n_2 C_2)(4)\\). Setting equal: \\(C_2 = \\dfrac{9C_1}{n_1 n_2}\\). Matches option D.",
+  "note": "from the stored line (1/2)(C_1/n_1)(36) = (1/2)(n_2 C_2)(4), C_2 = 9C_1/(n_1 n_2); the paper's option D prints exactly that"
+ },
+ {
+  "id": "d27581b4-306b-461f-a77f-9937a6be6d64",
+  "before": "bce312e5",
+  "solution": "3 capacitors in parallel give \\(C_{parallel}=6\\,\\mu F\\). That group in series with the other four capacitors: \\(\\frac{1}{C_{eq}}=\\frac{1}{6}+\\frac{1}{2}+\\frac{1}{2}+\\frac{1}{2}+\\frac{1}{2}=\\frac{13}{6}\\), giving \\(C_{eq}=\\frac{6}{13}\\,\\mu F\\). Matches option C: 3 in parallel and 4 in series.",
+  "note": "seven capacitors = one parallel group of 3 (6 uF) + 4 single 2 uF in series, not four groups; 4/6 + 3/2 = 13/6 was wrong working"
+ },
+ {
+  "id": "f1f02e6e-ba50-4011-bb03-593a1462ba59",
+  "before": "2800d88d",
+  "solution": "Electric force \\(qE\\) acts vertically upward on the bob (as in the figure), so the effective gravity is \\(g_{eff} = g - qE/m\\). Period: \\(T = 2\\pi\\sqrt{\\frac{L}{g - qE/m}}\\). Matches option C: \\(2\\pi\\left(\\frac{L}{g-\\frac{qE}{m}}\\right)^{1/2}\\).",
+  "note": "horizontal contradicted 'upward' and g - qE/m; the paper's key subtracts qE/m from g"
+ },
+ {
+  "id": "fa674505-82ec-47e0-9a53-4f5e7e1ee46f",
+  "before": "1edc8716",
+  "solution": "Zero field point is beyond the smaller (negative) charge. Setting field magnitudes equal: \\(\\frac{10q}{(L+r)^2}=\\frac{4q}{r^2}\\), solving gives \\(r=\\frac{L}{\\sqrt{5/2}-1}=\\frac{\\sqrt{2}\\,L}{\\sqrt{5}-\\sqrt{2}}\\) to the right of B. Matches option A.",
+  "note": "L/(sqrt(5/2)-1) = sqrt2 L/(sqrt5-sqrt2) (about 1.72 L), not 2/(sqrt5-2) (about 8.47); the paper's option (a) prints sqrt2/(sqrt5-sqrt2)"
+ },
+ {
+  "id": "fbbeca16-3cef-4497-b6d3-5751436e5034",
+  "before": "0867c4f7",
+  "solution": "Setting energies equal: \\(\\frac{1}{2}C_p V_p^2 = \\frac{1}{2}C_s V_s^2\\). With \\(C_1=x, C_2=2x\\): \\(C_p=3x\\), \\(C_s=\\frac{2x}{3}\\). Thus \\(\\frac{V_p^2}{V_s^2}=\\frac{C_s}{C_p}=\\frac{2}{9}\\), giving \\(V_p:V_s=\\sqrt{2}:3\\). Matches option B: \\(\\sqrt{2}:3\\).",
+  "note": "sqrt(2/9) = sqrt2/3, so V_p:V_s = sqrt2:3; the paper's option B prints sqrt2:3 (our copy of A and B had lost the roots, see copy.json)"
+ },
+ {
+  "id": "77edce64-e6e2-4b1f-b90e-ebcf35668568",
+  "before": "1d6d42c2",
+  "solution": "Side of triangle \\(a=L/3\\). \\(m_2\\) at midpoint: distances to two near corners \\(= L/6\\), to opposite corner \\(= \\frac{\\sqrt{3}}{2}\\cdot\\frac{L}{3}=\\frac{L\\sqrt{3}}{6}\\). The forces from the two near particles are along the side, equal and opposite, so they cancel; only the force from the opposite corner remains. Net force \\(=\\frac{Gm_1m_2}{(L\\sqrt{3}/6)^2}=\\frac{12Gm_1m_2}{L^2}\\). Matches option D.",
+  "note": "the near forces cancel exactly (equal and opposite along the side); no vertical components; the opposite corner's force is worked out instead of jumping to 12"
+ },
+ {
+  "id": "6751cba9-323a-4148-90f5-b5c75d6bf92a",
+  "before": "2d8ee351",
+  "solution": "CALCULATE has letters C,A,L,C,U,L,A,T,E (consonants: C,C,L,L,T = 5; vowels: A,A,U,E). Ends both C: the other 7 letters A,A,L,L,U,T,E give \\(\\frac{7!}{2!\\,2!}=1260\\) words; ends both L: the other 7 letters A,A,C,C,U,T,E give likewise \\(1260\\). Ends C and L (2 orders): the other 7 letters A,A,C,L,U,T,E give \\(\\frac{7!}{2!}=2520\\), so \\(2\\times2520=5040\\). Ends T and C (2 orders): the other 7 letters A,A,C,L,L,U,E give \\(\\frac{7!}{2!\\,2!}=1260\\), so \\(2\\times1260=2520\\); ends T and L likewise give \\(2520\\). Total \\(=1260+1260+5040+2520+2520=12600=\\frac{5\\times7!}{2}\\). Matches option C.",
+  "note": "stored line gave (5P2/2!)(7!/2!) = 5 x 7! (option A), not the keyed 5 x 7!/2; replaced by a count over the end consonants that totals 12600 = 5 x 7!/2"
+ },
+ {
+  "id": "8c8ac6f9-3175-4a20-969f-8b065a9856ba",
+  "before": "11998357",
+  "solution": "\\(P(\\overline{A}\\cap\\overline{B}\\cap C)=P(C)-P(A\\cap C)-P(B\\cap C)+P(A\\cap B\\cap C)\\). By pairwise independence and \\(P(A\\cap B\\cap C)=0\\): \\(P(\\overline{A}\\cap\\overline{B}\\cap C)=P(C)\\left[1-P(A)-P(B)\\right]\\). So \\(P(\\overline{A}\\cap\\overline{B}/C)=\\frac{P(\\overline{A}\\cap\\overline{B}\\cap C)}{P(C)}=1-P(A)-P(B)=P(\\overline{A})-P(B)\\). Matches option C: \\(P(\\overline{A})-P(B)\\).",
+  "note": "stored line used P(A)P(B)=0 (not given) and ended P(A) - P(B); the correct value is 1 - P(A) - P(B) = P(A bar) - P(B), the paper's option (c)"
+ },
+ {
+  "id": "5044c336-d253-4f30-b2ed-9e4388120959",
+  "before": "ac9d73d4",
+  "solution": "For H.P. the reciprocals are in A.P.: \\(\\frac{2}{\\sin\\theta}=\\frac{1}{\\sin(\\theta-\\alpha)}+\\frac{1}{\\sin(\\theta+\\alpha)}=\\frac{\\sin(\\theta+\\alpha)+\\sin(\\theta-\\alpha)}{\\sin(\\theta-\\alpha)\\sin(\\theta+\\alpha)}\\). Using \\(\\sin(\\theta+\\alpha)+\\sin(\\theta-\\alpha)=2\\sin\\theta\\cos\\alpha\\) and \\(\\sin(\\theta-\\alpha)\\sin(\\theta+\\alpha)=\\sin^2\\theta-\\sin^2\\alpha\\): \\(\\sin^2\\theta-\\sin^2\\alpha=\\sin^2\\theta\\cos\\alpha\\). So \\(\\sin^2\\theta(1-\\cos\\alpha)=\\sin^2\\alpha=(1-\\cos\\alpha)(1+\\cos\\alpha)\\), giving \\(\\sin^2\\theta=1+\\cos\\alpha\\) and \\(\\cos^2\\theta=-\\cos\\alpha=1-2\\cos^2\\frac{\\alpha}{2}\\). Matches option A.",
+  "note": "stored lines said the harmonic-mean test gives cos(alpha) = 1 and then jumped to the answer; replaced by the real derivation (reciprocals in A.P.) reaching cos^2(theta) = -cos(alpha) = 1 - 2cos^2(alpha/2)"
+ },
+ {
+  "id": "59a76927-87bb-4297-9681-1039a8f91123",
+  "before": "37a5c27c",
+  "solution": "\\(\\cos2B=\\dfrac{1-\\tan^2B}{1+\\tan^2B}\\) and, dividing the top and bottom by \\(\\cos A\\cos C\\), \\(\\dfrac{\\cos(A+C)}{\\cos(A-C)}=\\dfrac{1-\\tan A\\tan C}{1+\\tan A\\tan C}\\). Equating and cross-multiplying gives \\(\\tan^2B=\\tan A\\tan C\\), which is the condition for GP. Matches option A.",
+  "note": "the stored line jumped to tan^2 B = tanA tanC ('expanding and simplifying'); now shows the tan substitution and the equating"
+ },
+ {
+  "id": "7e1cbe10-8620-423f-8818-0a60f75add67",
+  "before": "0275d74d",
+  "solution": "\\(\\sin^2\\beta-\\sin^2\\gamma=\\sin(\\beta+\\gamma)\\sin(\\beta-\\gamma)\\), and \\(\\sin(\\beta+\\gamma)=\\sin(\\pi-\\alpha)=\\sin\\alpha\\). So the expression is \\(\\sin\\alpha\\left[\\sin(\\beta+\\gamma)+\\sin(\\beta-\\gamma)\\right]=2\\sin\\alpha\\sin\\beta\\cos\\gamma\\). Matches option D: \\(2\\sin\\alpha\\sin\\beta\\cos\\gamma\\).",
+  "note": "the stored line named 'sum-to-product' and stated the result; now shows sin^2 b - sin^2 g = sin(b+g)sin(b-g) with sin(b+g) = sin a"
+ },
+ {
+  "id": "971cdc88-1eb4-4798-8d35-607f8784d4a0",
+  "before": "e89f5418",
+  "solution": "With \\(c=\\cos\\frac{x+y}{2}\\) and \\(d=\\cos\\frac{x-y}{2}\\): \\(\\cos x+\\cos y=2cd\\) and \\(\\cos(x+y)=2c^2-1\\). The equation becomes \\(2cd-2c^2+1=\\frac{3}{2}\\), i.e. \\(2c^2-2cd+\\frac{1}{2}=0\\), a quadratic in \\(c\\). For real \\(c\\) the discriminant \\(4d^2-4\\geq0\\), so \\(d^2\\geq1\\); as \\(|d|\\leq1\\), \\(d=\\pm1\\), i.e. \\(x-y\\) is a multiple of \\(2\\pi\\), the option's \\(x=y\\). Matches option C.",
+  "note": "the stored line only named the method; now shows c and d, the quadratic in c = cos((x+y)/2), and the discriminant"
+ },
+ {
+  "id": "d6e21919-9f64-4714-84b8-bc156627ea2e",
+  "before": "4befbd16",
+  "solution": "Substitute \\(x=\\sin\\theta\\) with \\(|\\theta|\\leq\\frac{\\pi}{2}\\); then \\(\\sqrt{1\\pm\\sin\\theta}=\\cos\\frac{\\theta}{2}\\pm\\sin\\frac{\\theta}{2}\\), so \\(\\tan x=\\dfrac{1+\\cos\\frac{\\theta}{2}-\\sin\\frac{\\theta}{2}}{1+\\cos\\frac{\\theta}{2}+\\sin\\frac{\\theta}{2}}=\\dfrac{2\\cos^2\\frac{\\theta}{4}-2\\sin\\frac{\\theta}{4}\\cos\\frac{\\theta}{4}}{2\\cos^2\\frac{\\theta}{4}+2\\sin\\frac{\\theta}{4}\\cos\\frac{\\theta}{4}}=\\dfrac{1-\\tan\\frac{\\theta}{4}}{1+\\tan\\frac{\\theta}{4}}=\\tan\\left(\\frac{\\pi}{4}-\\frac{\\theta}{4}\\right)\\). So \\(x=\\frac{\\pi}{4}-\\frac{\\theta}{4}\\Rightarrow4x=\\pi-\\theta\\Rightarrow\\sin4x=\\sin(\\pi-\\theta)=\\sin\\theta=x\\). Matches option A.",
+  "note": "the stored line skipped the half-angle simplification ('simplify both sides ... to get'); now written out, with the range of theta it needs"
+ },
+ {
+  "id": "5500512e-1766-4c60-97b9-d55edd5cb9b7",
+  "before": "cee98d0f",
+  "solution": "Using Kirchhoff's current law at the junctions: \\(I_1 = 20 - 15 = 5\\) A. Then \\(I_2 = 5 + 3 = 8\\) A and \\(I_3 = 15 - 5 = 10\\) A. Hence \\(I = I_2 + I_3 = 18\\) A.",
+  "note": "stored text described the figure (20 in, 15 out, 3 in, 5 in), which does not add to 18; replaced by the paper's own KCL working, which gives I = 18 A"
  }
 ]
