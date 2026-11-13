@@ -1272,7 +1272,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     metric:
       "Checkout-to-paid in the same sitting (within an hour of opening) per student who opened checkout, split by checkout_opened metadata.hasContact; each group is compared with its own rate before (23 of 51 with a mobile, 12 of 48 without). Same sitting only since 2026-11-12, so a later payment brought by the checkout-return bar is not counted here",
     rule: `Keep it (it costs nothing) and judge the size: it worked if students with a saved mobile pay at above ${CHECKOUT_CONTACT_PAID_BASELINE_PCT}% and students without one above ${CHECKOUT_NO_CONTACT_PAID_BASELINE_PCT}%. If neither moves, the mobile form was not what stopped them, and the next look is the price.`,
-    liveSince: "2026-11-12",
+    liveSince: "2026-11-13",
     windowDays: 21,
     readout: "checkout-contact",
     status: "running",
@@ -1286,7 +1286,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     metric:
       "Students who left a checkout unpaid, and the share who paid on a later day; the bar's chain from paywall_event gate return: shown, then checkout_opened, then paid",
     rule: `Keep it if more than ${CHECKOUT_RETURN_LATER_PAID_BASELINE_PCT}% of students who leave a checkout pay on a later day (12 of 83 before, with no reminder).`,
-    liveSince: "2026-11-12",
+    liveSince: "2026-11-13",
     windowDays: 28,
     readout: "checkout-return",
     status: "running",
