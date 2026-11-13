@@ -45,7 +45,7 @@ Free, public past-year-question paper builder for Indian entrance exams. Anyone 
 
 **SSC CGL Tier II** (`ssc-cgl-tier-2`, graduate, mocks) — PUBLIC since 2026-10-17: Paper 1 of every CGL cycle 2019-2025, 12 sittings, 1,600 q (2 held PRIVATE: washed-out count-the-squares figures), its own exam row with a 12th subject, Computer Knowledge. CGL 2019-2021 were Quantitative Abilities alone (100 q); from CGL 2022, five modules numbered 1-150. CGL 2025 is a SCAN with no text layer at all: `raster*.py/ts` read its key from tick pixels and cut its figures from the page. Blind 1,576/1,600 against SSC's key (README "Tier II"). Mocks: two per sitting, Sections I and II ranked (130 q, +3/-1) and Computer Knowledge apart (qualifying), MOCKS.md. Same lane, README "Tier II".
 
-**SSC CHSL** (`ssc-chsl`, graduate, mocks; picker family "SSC" with both CGL tiers, the old `/mock/exam/ssc-cgl-tiers` 308s to `/mock/exam/ssc`) — rows PUBLIC since 2026-11-13: Tier I, 9 shifts of 2024 (TCS text prints) and 15 of 2025 (PW's scans of SSC's challenge-module sheet, key read from cell colour by `challenge*.py/ts`, 41 figure questions cut from the scan), 2,385 q (8 held PRIVATE). Blind 96-100% per shift vs SSC's key; where SSC's key is plainly wrong ours stays, with a notice. 24 mocks (+2/-0.5, 60 min). CHSL 2026 not held yet; 14 Nov 2025 S3 (another print) unread. Same lane, README "CHSL".
+**SSC CHSL** (`ssc-chsl`, graduate, mocks; family "SSC" with CGL) — PUBLIC 2026-11-13: Tier I 2024 (9 shifts) + 2025 (15, scans), 2,385 q, 24 mocks. Same lane, README "CHSL".
 
 A separate `question_kind` axis (`pyq` | `practice`) splits the past-year corpus from the supplementary practice bank *within* an exam — see the Multi-tenancy section below.
 
