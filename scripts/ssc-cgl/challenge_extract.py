@@ -120,12 +120,14 @@ def measure(a, frame=False):
     dn = np.vstack([seg[2:], seg[-2:]])
     darker = (seg < np.minimum(up, dn) - 12) & (seg > 300)
     # A question box's own bottom border on the CPO 2025 print is a dark, shadowed band, darker
-    # than the 300 floor that keeps text out; a row that is dark across 95% of the width is a
-    # border, never text (a text line cannot fill the width).
+    # than the 300 floor that keeps text out. It runs the box's whole width (x 150-1150 here,
+    # dark across 97%); text never does, not even a bold Devanagari line, whose headstroke
+    # breaks between words (12 Dec 2025 S2 Q43's Hindi stem read as a border on the 700-1080 band).
     # (only on that print, `frame`: the scans never needed it, so their reading cannot move)
     # a box's bottom border is 2+ dark rows (2 where a page foot cuts it); a 1-row darker option
     # line is only a rule
-    solid = ((seg < 450).mean(axis=1) >= 0.95) if frame else np.zeros(len(seg), bool)
+    wide = s[:, 150:1150]
+    solid = ((wide < 450).mean(axis=1) >= 0.97) if frame else np.zeros(len(seg), bool)
     thick = runs(solid, 2, 0)
     solid = np.zeros(len(seg), bool)
     for y0, y1 in thick:
@@ -140,6 +142,12 @@ def measure(a, frame=False):
     mr, mg, mb = med[:, 0], med[:, 1], med[:, 2]
     beige = (abs(mr - 215) < 15) & (abs(mg - 202) < 15) & (abs(mb - 182) < 15)
     grey = (mr > 105) & (mr < 165) & (abs(mr - mb) < 15) & (abs(mr - mg) < 15)
+    if frame:
+        # on the browser print a dense bold Hindi line has a grey MEDIAN too (12 Dec 2025 S2
+        # Q43): a bar is grey in most of its pixels, not just its median
+        c = a[:, 200:1000]
+        px = (c[..., 0] > 105) & (c[..., 0] < 165) & (abs(c[..., 0] - c[..., 2]) < 15) & (abs(c[..., 0] - c[..., 1]) < 15)
+        grey &= px.mean(axis=1) >= 0.85
     fillers = runs(beige, 6, 2)
     bars = runs(grey, 8, 2)
     rules = [y for y in rules if not any(f0 - 3 <= y <= f1 + 3 for f0, f1 in fillers)]
