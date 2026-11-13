@@ -123,9 +123,10 @@ def measure(a, frame=False):
     # than the 300 floor that keeps text out; a row that is dark across 95% of the width is a
     # border, never text (a text line cannot fill the width).
     # (only on that print, `frame`: the scans never needed it, so their reading cannot move)
-    # a box's bottom border is 3+ dark rows; a 1-row darker option line is only a rule
+    # a box's bottom border is 2+ dark rows (2 where a page foot cuts it); a 1-row darker option
+    # line is only a rule
     solid = ((seg < 450).mean(axis=1) >= 0.95) if frame else np.zeros(len(seg), bool)
-    thick = runs(solid, 3, 0)
+    thick = runs(solid, 2, 0)
     solid = np.zeros(len(seg), bool)
     for y0, y1 in thick:
         solid[y0:y1] = True
@@ -185,6 +186,10 @@ def main():
         # ends at a page foot gets the page break as its boundary in challenge.ts).
         if m["top_bare"] and (page_frame or (pages and pages[-1]["end_bare"])):
             m["rules"] = m["rules"][1:]
+        # ...and closes the cut box with a frame at its foot, which would split a row (and its
+        # key cell, printed on both pages) in two (CPO 11 Dec 2025 S2 Q1). A solid bottom stays.
+        if page_frame and m["end_bare"] and m["rules"] and m["rules"][-1] not in m["solid"]:
+            m["rules"] = m["rules"][:-1]
         pages.append({"page": pno + 1, "vector": vector, **m})
     with open(os.path.join(out, "challenge.json"), "w", encoding="utf8") as f:
         json.dump({"pdf": pdf, "pages": pages}, f)
