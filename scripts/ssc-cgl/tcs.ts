@@ -62,7 +62,11 @@ const PANEL_LABEL = /^(Question ID|Option \d ID|Status|Chosen Option)\s*:/;
 const LABELS = ["A", "B", "C", "D"] as const;
 
 const MAX_LINE = 40; // points: a text line, even a stacked fraction, is far shorter
-const NOISE = /^(aglasem\.c?o?m?|For more Question Papers.*|Page \d+ of \d+|asem\.com|a)$/i;
+// The CHSL 2024 prints add AglaSem's banner ("SSC CHSL 2024 Question Paper Tier 1", with a
+// stray direction mark) and a print header ("CHSL Exam 2024 Tier I (02-07-2024 - 9-00 AM - ...)")
+// at the top of every page: with no Question ID panel to close a question, either would join
+// the last option of a question that runs over the page break.
+const NOISE = /^(aglasem\.c?o?m?|For more Question Papers.*|Page \d+ of \d+|asem\.com|a|SSC CHSL \d{4} Question Paper Tier \d[\u202a-\u202e]*|CHSL Exam \d{4} Tier I+ \(.*\))$/i;
 
 function minutes(time: string): number {
   const m = /(\d{1,2}):(\d{2})\s*([AP]M)/i.exec(time);

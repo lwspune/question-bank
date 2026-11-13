@@ -538,6 +538,18 @@ describe("assembleTcs, SSC CHSL Tier I (2024 sheets)", () => {
     expect(last.regions.every((r) => r.page < 60)).toBe(true);
   });
 
+  it("drops AglaSem's CHSL page banner and print header: they join no option and stretch no region", () => {
+    const g = shift(2, "9:00 AM - 10:00 AM", () => 0, CHSL);
+    // the CHSL sheets print no Question ID panel, so nothing closes a question but the next label
+    g.spans = g.spans.filter((s) => !/^(Question ID|6306)/.test(s.text));
+    // Q25 is the English section's last, alone on page 14; the next page opens with the host's lines
+    g.spans.push(span(15, 3, "SSC CHSL 2024 Question Paper Tier 1‬", { x0: 424 }), span(15, 30, "CHSL Exam 2024 Tier I (02-07-2024 - 9-00 AM - 10-00 AM)", { x0: 165 }));
+    const qs = assembleTcs(g, { layout: CHSL_LAYOUT });
+    const q25 = qs.find((q) => q.number === 25)!;
+    expect(q25.options[3]).toBe("opt 25d");
+    expect(q25.regions.map((r) => r.page)).toEqual([14]);
+  });
+
   it("files a CHSL sheet under chsl-t1-<its date>-s<shift>", () => {
     const qs = assembleTcs(shift(2, "9:00 AM - 10:00 AM", () => 0, CHSL), { layout: CHSL_LAYOUT }).map((q) => ({ ...q, date: "2024-07-02" }));
     const got = groupTcsShifts("chsl-t1", [{ dir: "chsl-t1-2024-07-02", questions: qs }]);
