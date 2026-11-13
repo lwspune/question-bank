@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,7 +11,7 @@ import { getExamBySlug, isExamSlug, type ExamSlug } from "@/lib/exam/examContext
 import TierExamChips from "@/components/TierExamChips";
 import { setExamCookie } from "@/lib/exam/examCookie";
 import { STAGES, STAGE_LABELS, examQuestionVisible, type Stage } from "@/lib/profile/onboarding";
-import { loopFor, welcomeDestination } from "@/lib/education/howItWorks";
+import { loopFor, showsLoopAfterWelcome, welcomeDestination } from "@/lib/education/howItWorks";
 
 /**
  * Post-signup intent capture — the first "staggered" ask, now TWO screens.
@@ -24,15 +23,19 @@ import { loopFor, welcomeDestination } from "@/lib/education/howItWorks";
  * second. Asked once — onboarded_at is stamped on both Continue and Skip.
  *
  * Screen 2 (2026-09-24, STUDENT_EDUCATION_SPEC.md §4 item 2): the three-step
- * loop for the exam they just chose, and one button into step 1 of it. This
- * is the ONLY screen every student passes through, and until now it was spent
- * entirely on a form: 149 of 193 mock-takers had used a mock and nothing else.
+ * loop for the exam they just chose, and one button into step 1 of it: 149 of
+ * 193 mock-takers had used a mock and nothing else.
+ *
+ * WHO SEES SCREEN 2 (owner, 2026-11-13): only a student with no specific page
+ * to go back to, where step 1 is the main button (showsLoopAfterWelcome). A
+ * student who came from a chapter page or tapped a paper goes straight back to
+ * it after screen 1. Until 2026-11-13 the Continue button refreshed the page,
+ * the server then saw an onboarded student and redirected, so from 2026-09-24
+ * nobody who picked an exam ever saw screen 2; only skippers did.
  *
  * `onboarded_at` is stamped by screen 1, so a student who closes the tab on
  * screen 2 is never asked the exam question again and simply misses the loop
- * once — the cheaper failure. A SPECIFIC ?next= (a mock tapped before sign-up)
- * stays the primary button; redirecting a specific intent is what the
- * engagement gate forbids. See welcomeDestination().
+ * once, the cheaper failure. See welcomeDestination() for the buttons.
  *
  * Screen 1 as a CONFIRM (2026-11-13): when the page they came from names an
  * exam (`guess`, lib/exam/examFromPath), screen 1 asks "Preparing for
@@ -52,7 +55,6 @@ export default function ExamOnboarding({
   /** The exam the page they came from names, to confirm; null asks cold. */
   guess: ExamSlug | null;
 }) {
-  const router = useRouter();
   const guessed = guess && isExamSlug(guess) ? getExamBySlug(guess) : null;
   // The confirm view while there is a guess and they have not asked to choose.
   const [confirming, setConfirming] = useState(guessed !== null);
@@ -90,10 +92,10 @@ export default function ExamOnboarding({
       const chosen = await save(targets, stage);
       if (chosen && isExamSlug(chosen)) setExamCookie(chosen);
       toast.success("You're all set.");
-      // The server components behind the next page read the cookie fresh;
-      // refresh now so the header's exam-aware hrefs are right when we leave.
-      router.refresh();
-      setPrimary(chosen && isExamSlug(chosen) ? chosen : "none");
+      // No router.refresh() here (2026-11-13): it re-ran this page on the
+      // server, which now saw an onboarded student and redirected to `next`,
+      // so nobody who picked an exam ever saw screen 2 (from 2026-09-24).
+      after(chosen && isExamSlug(chosen) ? chosen : "none");
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Could not save. Please try again.");
     } finally {
@@ -112,7 +114,22 @@ export default function ExamOnboarding({
     } finally {
       setSubmitting(null);
     }
-    setPrimary("none");
+    after("none");
+  }
+
+  /**
+   * Where a student goes once screen 1 is answered: back to the specific page
+   * they came from, with a full load so the header reads the new exam cookie
+   * (what the old refresh was for), or on to screen 2 when they have nowhere
+   * specific to go (showsLoopAfterWelcome, owner 2026-11-13).
+   */
+  function after(chosen: ExamSlug | "none") {
+    const loop = loopFor(chosen === "none" ? null : getExamBySlug(chosen));
+    if (showsLoopAfterWelcome(next, loop)) {
+      setPrimary(chosen);
+      return;
+    }
+    window.location.assign(next);
   }
 
   const busy = submitting !== null;
