@@ -526,6 +526,8 @@ export const HELD: Record<string, number[]> = {
   "chsl-t1-2024-07-04-s1": [66],
   // CHSL 5 Jul 2024 Q67 (a table) and Q75 (a pie chart): no question printed under either.
   "chsl-t1-2024-07-05-s1": [67, 75],
+  // CHSL 8 Jul 2024 Q62: cut off after "If the marked price of the": no price, no question.
+  "chsl-t1-2024-07-08-s1": [62],
 };
 
 export const OUT = join(__dirname, "out"); // gitignored: page images, geometry, reading sheets
