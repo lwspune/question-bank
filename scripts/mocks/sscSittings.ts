@@ -226,6 +226,8 @@ export type ChslSitting = {
   title: string;
   graceNumbers: number[];
   heldSubjects: string[];
+  /** repeats.json: a question SSC printed twice keeps one bank row, served at its own slot */
+  overrides: SscOverride[];
 };
 
 const CHSL_SUBJECT_AT = ["English", "Reasoning", "Quantitative Aptitude"];
@@ -233,7 +235,8 @@ const CHSL_SUBJECT_AT = ["English", "Reasoning", "Quantitative Aptitude"];
 export function deriveChslSittings(
   shifts: Record<string, Shift>,
   transcripts: Record<string, TranscriptQuestion[]>,
-  held: Record<string, number[]>
+  held: Record<string, number[]>,
+  repeats: Record<string, Repeat[]> = {}
 ): ChslSitting[] {
   return Object.entries(shifts)
     .filter(([id, s]) => transcripts[id] && s.day.startsWith("chsl-t1-"))
@@ -245,6 +248,12 @@ export function deriveChslSittings(
         if (!q) throw new Error(`${id}: HELD names Q${n}, which its transcript does not hold`);
         return CHSL_SUBJECT_AT[Math.floor((n - 1) / 25)] ?? q.subject!;
       });
+      const overrides = (repeats[id] ?? []).map((r) => {
+        const q = byNumber.get(r.number);
+        if (!q) throw new Error(`${id}: repeats.json names Q${r.number}, which its transcript does not hold`);
+        const subjectName = CHSL_SUBJECT_AT[Math.floor((r.number - 1) / 25)] ?? q.subject!;
+        return { questionNumber: r.number, questionId: r.questionId, subjectName, answer: q.answer };
+      });
       return {
         key: id,
         sourceFile: s.sourceFile,
@@ -253,16 +262,18 @@ export function deriveChslSittings(
         title: `SSC CHSL ${s.pyqNote}`,
         graceNumbers: blocks.filter((q) => q.flawed).map((q) => q.number),
         heldSubjects,
+        overrides,
       };
     });
 }
 
-/** The live registry: every committed CHSL shift, read from its transcript. */
+/** The live registry: every committed CHSL shift, read from its transcript and repeats.json. */
 export function chslSittings(): ChslSitting[] {
   const transcripts: Record<string, TranscriptQuestion[]> = {};
   for (const [id, s] of Object.entries(SHIFTS)) {
     const f = join(TRANSCRIPTS, `${id}.txt`);
     if (s.day.startsWith("chsl-t1-") && existsSync(f)) transcripts[id] = parseTranscript(readFileSync(f, "utf8"));
   }
-  return deriveChslSittings(SHIFTS, transcripts, HELD);
+  const repeats: Record<string, Repeat[]> = JSON.parse(readFileSync(join(TRANSCRIPTS, "..", "repeats.json"), "utf8"));
+  return deriveChslSittings(SHIFTS, transcripts, HELD, repeats);
 }

@@ -871,7 +871,8 @@ async function buildSscT2(db: SupabaseClient, run: RunState): Promise<void> {
 }
 
 /**
- * SSC CHSL Tier I (sscSittings.ts chslSittings): one mock per shift. Every flawed question
+ * SSC CHSL Tier I (sscSittings.ts chslSittings): one mock per shift. A question SSC printed
+ * twice comes back at its own slot by id (repeats.json, as for CGL); every flawed question
  * rides as grace; a sitting with HELD questions is built against its own counts (withHeld).
  */
 async function buildChsl(db: SupabaseClient, run: RunState): Promise<void> {
@@ -884,7 +885,13 @@ async function buildChsl(db: SupabaseClient, run: RunState): Promise<void> {
         year: s.year,
         slug: s.slug,
         title: s.title,
-        prepare: (rows) => rows.map((r) => (grace.has(Number(r.questionNumber)) ? { ...r, grace: true } : r)),
+        prepare: (rows) => {
+          const out: PaperQuestionRow[] = [...rows];
+          for (const ov of s.overrides) {
+            out.push({ id: ov.questionId, sourceRow: ov.questionNumber, questionNumber: String(ov.questionNumber), subjectName: ov.subjectName, answer: { kind: "mcq", label: ov.answer } });
+          }
+          return out.map((r) => (grace.has(Number(r.questionNumber)) ? { ...r, grace: true } : r));
+        },
       },
     ], run, "sscSittings.ts");
   }

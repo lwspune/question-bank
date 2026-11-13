@@ -226,6 +226,7 @@ describe("deriveChslSittings (SSC CHSL Tier I)", () => {
         title: "SSC CHSL Tier I, 1 Jul 2024, Shift 1",
         graceNumbers: [],
         heldSubjects: [],
+        overrides: [],
       },
     ]);
     // and CGL's own derivation never takes a CHSL shift
@@ -240,6 +241,25 @@ describe("deriveChslSittings (SSC CHSL Tier I)", () => {
 
   it("refuses a held number its transcript does not hold", () => {
     expect(() => deriveChslSittings(MIXED, { "chsl-t1-2024-07-03-s1": paper().slice(0, 50) }, { "chsl-t1-2024-07-03-s1": [63] })).toThrow(/HELD names Q63/);
+  });
+
+  it("brings a repeat SSC printed twice back at its own slot (18 Nov 2025 S1 Q35 = Q34)", () => {
+    const s = deriveChslSittings(
+      MIXED,
+      { "chsl-t1-2024-07-01-s1": paper({ 35: { answer: "C" }, 80: { answer: "D", subject: "Polity" } }) },
+      {},
+      { "chsl-t1-2024-07-01-s1": [
+        { number: 35, questionId: "q-34", first: "SSC_CHSL_T1_2024-07-01_S1 Q34" },
+        { number: 80, questionId: "q-12", first: "SSC_CHSL_T1_2024-07-02_S1 Q90" },
+      ] }
+    );
+    expect(s[0].overrides).toEqual([
+      { questionNumber: 35, questionId: "q-34", subjectName: "Reasoning", answer: "C" },
+      { questionNumber: 80, questionId: "q-12", subjectName: "Polity", answer: "D" },
+    ]);
+    expect(() =>
+      deriveChslSittings(MIXED, { "chsl-t1-2024-07-01-s1": paper().slice(0, 30) }, {}, { "chsl-t1-2024-07-01-s1": [{ number: 35, questionId: "x", first: "y" }] })
+    ).toThrow(/repeats.json names Q35/);
   });
 
   it("builds against CHSL's blueprint: 4 x 25 in CHSL order, +2/-0.5, 60 minutes, held questions off their section", () => {
