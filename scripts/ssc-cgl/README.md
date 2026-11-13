@@ -15,6 +15,14 @@ own exam "SSC CGL Tier II" (`ssc-cgl-tier-2`), grouped with Tier I as picker fam
 2019-2021 are Quantitative Abilities alone (100 q); CGL 2022 on, the five modules (150 q). 20 mocks.
 See "Tier II" below.**
 
+**SSC CHSL Tier I (2026-11-13): its own exam "SSC CHSL" (`ssc-chsl`), picker family "SSC" with
+CGL. 24 shifts: 2024 (9, AglaSem's TCS prints, same reader as CGL 2024) and 2025 (15, PW's scans
+of SSC's challenge-module sheet), 2,393 rows, 2,385 PUBLIC since 2026-11-13 (the 8 HELD 2024 questions
+stay PRIVATE). Same lane, `Day.exam = "chsl"`, ids `chsl-t1-...`; CHSL prints English, Reasoning,
+Quant, General Awareness (`CHSL_LAYOUT`). Blind agreement with SSC's key 96-100% per shift; where
+SSC's key is plainly wrong ours is kept with a notice. Mocks: `SSC_CHSL_T1_PAPER`, one per shift,
+`npx tsx scripts/mocks/build.ts --paper=ssc-chsl --apply --publish`. See "CHSL 2025" below.**
+
 **Flawed questions are PUBLIC with a notice and ride as grace.** A `flawed: yes` block (defective as
 printed, or a key we dispute) must carry a `notice:` line for students (build.ts refuses one
 without); `studentSolution` puts it above the solution, and `publish.ts` copies it to the bank
@@ -320,6 +328,32 @@ in place by `repair.ts` (keeps the id, recomputes content_hash). GA answers rest
 Q111, Q118.
 
 Mocks (2026-10-17, owner): two per five-module sitting, built by `scripts/mocks/sscSittings.ts` `sscT2Sittings`: Sections I and II as ranked (130 q, 390 marks, 2 hours, +3/-1) and Computer Knowledge alone (20 q, 15 min), since SSC marks it qualifying only. A HELD question is left out and its section counted one short. CGL 2019-2021 (Quantitative Abilities alone) get one mock each on `SSC_CGL_T2_QUANT_PAPER` (100 q, 200 marks, 2 hours, +2/-0.5). Rebuild: `npx tsx scripts/mocks/build.ts --paper=ssc-cgl-tier-2 --apply --publish`.
+
+## CHSL 2025: the challenge-module scan
+
+SSC posted no CHSL 2025 response sheets anyone re-hosts as text; the only copies are PW's 17 Drive
+PDFs (`C:\Vilas\LWS_Pune\SSC\CHSL\2025_Tier1\`): SSC's challenge-module page, captured as page
+pictures, PART by PART (the capture order is per file, `order` in config), with Oliveboard's
+watermark baked in and PW's logo laid over. CHSL 2026 Tier I has not been held yet.
+
+- **Read** (`challenge_extract.py` -> `challenge.ts` -> `assemble-challenge.ts`): per page, the blue
+  "Click Here to Challenge" markers start questions, PART buttons start captures, and pale table
+  rules bound the option rows. The key is the row holding a green or yellow cell (red is the
+  candidate's wrong pick). A capture's first page shows only the candidate's pick, so a question
+  there can have no key (`key: null`, reported as unkeyed).
+- **Traps found by agent disagreements, each fixed with a test** (`tests/ssc-cgl-challenge.test.ts`):
+  the grey "Not Answered" bar's bottom edge read as a rule (key one letter up); a page break that is
+  itself an option boundary (the row ends at the page foot); the stem box's top rule counted as an
+  option boundary (only rules below the "Q.No" label count). When a reader change moves a key, every
+  moved key is checked against the page picture before it is kept.
+- **Sheets** (`challenge_sheets.py`): the key column is painted out to the FIRST column rule (the
+  last one was a figure's line on the three-language print and ate first letters), "1."-"4." are
+  stamped, blank runs squeezed; any key colour near the column fails the run.
+- **Figures** (`challenge_figures.py <shift> <n>:<kind> ...`): the first copy (one per language) of
+  the tall ink shapes in the stem's or option's band, key column painted, watermark whitened except
+  on a photo, key colour fatal; writes `figures/<shift>/` and `out/<shift>/figure-review.png`. 41
+  figure questions in 2025, every crop looked at.
+- **14 Nov 2025 Shift 3** is another print (frameless, two lines per option, 1167 px): not read.
 
 ## Not read yet (source problems, not ours)
 
