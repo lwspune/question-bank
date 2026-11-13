@@ -246,6 +246,25 @@ describe("assembleChallenge", () => {
     expect(q100.optionRows[0]).toEqual({ page: last.page + 1, y0: 0, y1: 60 });
   });
 
+  it("ends a question's options at its box's solid bottom border, not at the next box's top (CPO 9 Dec 2025 S1 Q42)", () => {
+    const pages = paper(99);
+    const last = pages[pages.length - 1];
+    last.marks.push({ y0: 1300, y1: 1338 });
+    last.rules.push(1350);
+    last.labels.push({ y0: 1360, y1: 1373 });
+    // A/B (the stem's bottom), B/C, C/D, D/E, then the box's solid bottom at 1600, and the next
+    // box's top at 1700, whose challenge marker prints overleaf
+    last.rules.push(1400, 1450, 1500, 1550, 1600, 1700);
+    last.solid = [1600];
+    last.cells.push({ kind: "yellow", y0: 1401, y1: 1449 });
+    pages.push(page(last.page + 1, { marks: [{ y0: 70, y1: 108 }], rules: [], lines: [{ y0: 20, y1: 35 }] }));
+    // a 101st marker overleaf would break the count, so this paper has 99 + this one = 100
+    pages[pages.length - 1].marks = [];
+    const q100 = assembleChallenge(pages, CHSL_LAYOUT)[99];
+    expect(q100.key).toBe("A");
+    expect(q100.optionRows.map((r) => [r.y0, r.y1])).toEqual([[1400, 1450], [1450, 1500], [1500, 1550], [1550, 1600]]);
+  });
+
   it("refuses a question with no key cell or two", () => {
     const none = paper(100);
     none[0].cells.shift();
