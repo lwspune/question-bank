@@ -5,6 +5,12 @@ under the **RRB NTPC** exam (`question_kind='pyq'`). Scope so far: **Graduate le
 CEN 06/2025, sat 16-27 March 2026: 24 shifts of 100 questions.** Not yet: Graduate CBT 2, the
 Class 12 level (a separate exam), the June 2025 sitting (cycle CEN 05/2024, not found hosted).
 
+**Status (2026-11-13): all 24 shifts committed, 2,400 rows, all PRIVATE** (Mathematics 720,
+Reasoning 720, General Awareness 960: NTPC's 30/30/40 per paper). Blind agreement with RRB's
+tentative key **2,383/2,400 (99.3%)**; 18 rows flawed with a student notice, 6 with RRB's figures.
+No question repeats across the 24 shifts. Not yet built: the EXAM_REGISTRY entry, mocks, publishing
+(each needs the owner's OK and a before/after sheet).
+
 Eleven subjects: Mathematics, Reasoning, the eight General Awareness subjects CDS and SSC CGL use
 (History, Geography, Polity, Economics, Physics, Chemistry, Biology, Current Affairs) and Computer
 Knowledge (NTPC asks one to three basic computer questions a paper).
@@ -75,6 +81,29 @@ key); `build.ts` compares it with RRB's key and refuses a disagreement without a
 judgement item or a key that is defensible keeps RRB's key with `blind:`; a question with two right
 options or none is `flawed: yes` with a student `notice:` (it rides as grace in a mock).
 
-| shift | blind vs key | key adopted (all flawed) | not independent |
-|---|---|---|---|
-| 16 Mar S1 | 97/100 | Q32 (two pairs exceed China's border), Q54 (industry and services both grew), Q85 (as printed no option is last to arrive AND last to leave) | Q89 (a fact search showed the question) |
+| shift | blind vs key | key adopted | ours kept (flawed) | other flawed | not independent |
+|---|---|---|---|---|---|
+| 16 Mar S1 | 97/100 | Q32 (two pairs exceed China's border), Q54 (industry and services both grew), Q85 (as printed no option is last to arrive AND last to leave): all flawed | none | none | Q89 |
+| 16 Mar S2 | 100/100 | none | none | none | none |
+| 16 Mar S3 | 100/100 | none | none | Q38 (ending ad hoc T-bills = ending automatic monetisation) | none |
+| 17 Mar S1 | 100/100 | none | none | Q79 (box stack allows 4 or 2 above C) | none |
+| 17 Mar S2 | 99/100 | Q29 (public apathy vs betrayal: Ghadar), flawed | none | none | none |
+| 17 Mar S3 | 100/100 | none | none | none | none |
+| 18 Mar S1 | 100/100 | none | none | none | none |
+| 18 Mar S2 | 98/100 | Q6 (Sleep keeps the session open; judgement) | Q61 (the 1991 instrument is the IEM; the key's form does not exist) | none | none |
+| 18 Mar S3 | 100/100 | none | none | none | none |
+| 19 Mar S1 | 100/100 | none | none | none | none |
+| 19 Mar S2 | 99/100 | none | Q87 (citizenship by descent needs one citizen parent; the key says both) | none | none |
+| 19 Mar S3 | 100/100 | none | none | none | Q14 (read another shift's settled solution) |
+| 22 Mar S1 | 100/100 | none | none | none | none |
+| 22 Mar S2 | 98/100 | Q33 (our count missed the N after '='); Q55 (microprocessors vs ICs), flawed | none | none | none |
+| 22 Mar S3 | 99/100 | none | Q30 (Article 165 is the Advocate-General, not the oath) | none | none |
+| 24 Mar S1 | 100/100 | none | none | none | none |
+| 24 Mar S2 | 99/100 | none | Q35 (DST's announced ESTIC 2025 theme is B; nothing supports the key's D) | none | none |
+| 24 Mar S3 | 100/100 | none | none | none | none |
+| 25 Mar S1 | 98/100 | Q5 (mining and capital goods both slowed), flawed | Q90 (two orders fit both statements; key says sufficient) | none | Q5 |
+| 25 Mar S2 | 100/100 | none | none | none | none |
+| 25 Mar S3 | 99/100 | none | Q97 (a glacier makes a U-shaped valley; key says V) | none | none |
+| 27 Mar S1 | 99/100 | none | Q77 (the RTI report was the Second ARC's) | Q9 (true minimum 186 is below every option) | none |
+| 27 Mar S2 | 99/100 | Q47 (black soil: one rabi crop vs two seasons), flawed | none | none | none |
+| 27 Mar S3 | 99/100 | Q57 (statement 1 outdated by the exam: Radhakrishnan became Vice-President), flawed | none | none | none |
