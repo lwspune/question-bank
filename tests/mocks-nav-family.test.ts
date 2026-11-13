@@ -16,17 +16,20 @@ import type { MockListItem } from "@/lib/mocks/query";
  * exams (Prelims + five Mains); listing them flat buried the rest of the rail.
  */
 describe("mock families", () => {
-  it("collapses MPSC, IPMAT and SSC CGL — each has 2+ mock exams — and nothing else", () => {
-    expect(getMockFamilies().map((f) => f.slug)).toEqual(["ipmat", "mpsc", "ssc-cgl-tiers"]);
+  it("collapses MPSC, IPMAT and SSC — each has 2+ mock exams — and nothing else", () => {
+    expect(getMockFamilies().map((f) => f.slug)).toEqual(["ipmat", "mpsc", "ssc"]);
   });
 
   it("a family slug is a URL segment: dashes for spaces, and the axis added when the name is already an exam's slug", () => {
-    // "SSC CGL" lowercased is "ssc cgl" (a space in a URL) and dashed is "ssc-cgl",
-    // which is Tier I's own exam page. So the family page is /mock/exam/ssc-cgl-tiers.
-    const ssc = getMockFamily("ssc-cgl-tiers")!;
-    expect(ssc.name).toBe("SSC CGL");
+    // Until CHSL joined (2026-11-13) the family was "SSC CGL", whose dashed name is Tier I's own
+    // exam page, so its page was /mock/exam/ssc-cgl-tiers (now a redirect to /mock/exam/ssc).
+    const ssc = getMockFamily("ssc")!;
+    expect(ssc.name).toBe("SSC");
+    expect(ssc.stages.map((s) => s.stage)).toEqual(["CGL", "CHSL"]);
     expect(ssc.stages[0].members.map((m) => m.slug)).toEqual(["ssc-cgl", "ssc-cgl-tier-2"]);
-    expect(mockFamilyOf("ssc-cgl")?.slug).toBe("ssc-cgl-tiers");
+    expect(ssc.stages[1].members.map((m) => m.slug)).toEqual(["ssc-chsl"]);
+    expect(mockFamilyOf("ssc-cgl")?.slug).toBe("ssc");
+    expect(mockFamilyOf("ssc-chsl")?.slug).toBe("ssc");
     for (const f of getMockFamilies()) expect(f.slug).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
   });
 

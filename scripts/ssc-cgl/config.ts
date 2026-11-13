@@ -25,8 +25,8 @@ export const EXAMS: Record<Tier, { name: string; id: string }> = {
  * and its ids start `chsl-`, so no CGL id, source_file or mock moved.
  */
 export type ExamKey = "cgl" | "chsl";
-// created by seed-exam.ts --exam=chsl; empty until then (requireExamIdOf refuses to commit)
-export const CHSL_EXAM: { name: string; id: string } = { name: "SSC CHSL", id: "" };
+// created by seed-exam.ts --exam=chsl on 2026-11-13
+export const CHSL_EXAM: { name: string; id: string } = { name: "SSC CHSL", id: "a0179454-aef6-46d6-8fd8-7af42e24eefe" };
 
 export const EXAM_NAME = EXAMS[1].name;
 /** `SSC CGL`, created by seed-exam.ts on 2026-10-16, when the pilot shifts were ready to commit. */

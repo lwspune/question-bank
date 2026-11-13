@@ -63,9 +63,9 @@ export type MockFamilyNav = {
 const urlSegment = slugify;
 
 /**
- * A family page's slug: its name dashed ("SSC CGL" -> "ssc-cgl"). When that is already an
- * exam's own page, as "ssc-cgl" is Tier I's, the family's axis is added ("ssc-cgl-tiers"),
- * so neither page shadows the other.
+ * A family page's slug: its name dashed ("SSC" -> "ssc"). When that is already an exam's own
+ * page, the family's axis is added: the family was "SSC CGL" until 2026-11-13, whose dashed
+ * name is Tier I's page, so it lived at "ssc-cgl-tiers" (now a redirect, next.config.mjs).
  */
 function familySlug(family: string, axis: string | undefined): string {
   const base = urlSegment(family);
