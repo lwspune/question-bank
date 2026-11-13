@@ -99,7 +99,9 @@ section, 200 questions numbered straight through** (the red label is the number 
 So everything below about CGL's PART-B (General Awareness, `subject:`) and PART-D (English, passage
 sets) applies to CPO's B and D as written. CPO 2024 (`cpo-t1-2024-...`) is the TCS text print
 (`text.txt`, options "1." to "4."); CPO 2025 (`cpo-t1-2025-...`) is the challenge-module sheet, read
-like CHSL 2025. CPO is a graduate-level exam: rate difficulty on the Tier I scale. English only.
+like CHSL 2025: no `text.txt`, every line in English then Hindi (write the English), the option
+numbers stamped by us. Its pages carry a "https://sscstudy.com/" footer and Oliveboard's pale
+watermark: ignore both. CPO is a graduate-level exam: rate difficulty on the Tier I scale. English only.
 
 ## Rules
 
