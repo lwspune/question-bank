@@ -319,6 +319,8 @@ export type ShiftCheck = {
   disagreements: string[];
   /** Questions where our blind answer differed and SSC's key was adopted on review. */
   adopted: string[];
+  /** Questions the sheet shows no key for: ours stands (re-derived on review), never counted. */
+  unkeyed: string[];
   /** Blind answers (the blind: header where present, else the answer) that match the key. */
   blindAgreement: { agree: number; of: number };
   subjects: Map<number, string>;
@@ -332,7 +334,7 @@ export type ShiftCheck = {
  */
 export function checkShift(
   transcript: TranscriptQuestion[],
-  sheet: { number: number; part: Part; key: Label }[],
+  sheet: { number: number; part: Part; key: Label | null }[],
   catalog: Record<string, { chapter: string; subtopics: string[] }[]>,
   sections: Partial<Record<Part, string[]>>,
   opts: { compareKey?: boolean } = {}
@@ -343,7 +345,11 @@ export function checkShift(
   const problems: string[] = [];
   const disagreements: string[] = [];
   const adopted: string[] = [];
+  // a sheet that shows no key for a question (CHSL 2025: a capture's vector first page marks only
+  // the candidate's own choice): ours stands, re-derived on review, and is listed, never counted
+  const unkeyed: string[] = [];
   let agree = 0;
+  let keyed = 0;
   const subjects = new Map<number, string>();
   const byNumber = new Map(sheet.map((s) => [s.number, s]));
 
@@ -371,6 +377,11 @@ export function checkShift(
 
     if (!compareKey) continue;
     if (q.flawed && !q.notice) p("is flawed but carries no notice: line for students");
+    if (s.key === null) {
+      unkeyed.push(`Q${q.number} ours ${q.answer}: the sheet shows no key`);
+      continue;
+    }
+    keyed++;
     if (q.blind !== undefined) {
       if (q.blind === q.answer) p(`blind answer ${q.blind} is the same as the answer: drop the blind: line`);
       else if (!q.note) p(`blind answer ${q.blind} needs a note saying why the key was adopted`);
@@ -385,8 +396,8 @@ export function checkShift(
 
   const done = new Set(transcript.map((q) => q.number));
   const missing = sheet.map((s) => s.number).filter((n) => !done.has(n)).sort((a, b) => a - b);
-  const of = compareKey ? transcript.length : 0;
-  return { problems, disagreements, adopted, blindAgreement: { agree, of }, subjects, missing };
+  const of = compareKey ? keyed : 0;
+  return { problems, disagreements, adopted, unkeyed, blindAgreement: { agree, of }, subjects, missing };
 }
 
 /**

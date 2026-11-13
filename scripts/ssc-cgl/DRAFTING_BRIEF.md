@@ -68,6 +68,15 @@ sections come in a DIFFERENT order:
 | C | 51-75 | Quantitative Aptitude | Quantitative Aptitude |
 | D | 76-100 | General Awareness | name it: `subject:` as PART-B below |
 
+**CHSL 2025 (`chsl-t1-2025-...`) is a SCAN**: SSC's challenge-module sheet saved as page pictures
+(PW's copies). There is **no `text.txt`**: type everything from `sheets/`. Each question shows its
+red number (write that one) and the "Click Here to Challenge Question No.: n" bar; the option
+numbers "1." to "4." are stamped by us (the column that held the key is painted out), and an
+option can start a little below its number when it continues on the next page. Questions in
+Quantitative Aptitude and General Awareness print each line in English and then Hindi: write the
+English only. A question printed in Hindi alone follows the Hindi-only rule above. A pale
+watermark (Oliveboard's) lies across some pages: ignore it.
+
 So in CHSL the `subject:` line belongs to **PART-D**, and passage sets (a "Comprehension:" cloze
 or reading passage) are in **PART-A**. Everything said below about CGL's PART-B (General
 Awareness) applies to CHSL's PART-D, and about CGL's PART-D (English) to CHSL's PART-A. CHSL

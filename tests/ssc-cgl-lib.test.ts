@@ -271,6 +271,14 @@ describe("checkShift", () => {
     parseTranscript(`=== ${n}\nchapter: Series\nsubtopic: Letter Series\ndifficulty: EASY\nanswer: ${answer}\nstem:\nNext?\nA: a\nB: b\nC: c\nD: d\nsolution:\nIt is b.\n`)[0];
   const sheet = (n: number, part: "A" | "B", key: "A" | "B" | "C" | "D") => ({ number: n, part, key });
 
+  it("counts no agreement and no disagreement where the sheet shows no key (CHSL 2025's vector pages), and lists it", () => {
+    const r = checkShift([series(1, "C"), series(2)], [{ number: 1, part: "A", key: null }, sheet(2, "A", "B")], CATALOG, SECTIONS);
+    expect(r.problems).toEqual([]);
+    expect(r.disagreements).toEqual([]);
+    expect(r.blindAgreement).toEqual({ agree: 1, of: 1 });
+    expect(r.unkeyed).toEqual(["Q1 ours C: the sheet shows no key"]);
+  });
+
   it("accepts a question filed inside its part's catalog and agreeing with the key", () => {
     const r = checkShift([series(1)], [sheet(1, "A", "B")], CATALOG, SECTIONS);
     expect(r.problems).toEqual([]);
