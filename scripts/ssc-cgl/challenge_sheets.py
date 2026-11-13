@@ -63,6 +63,11 @@ def column_edge(a, frame=False):
     lo, hi = 112 - CROP_X[0], (176 if frame else 156) - CROP_X[0]
     frac = ((s[:, lo:hi] > 300) & (s[:, lo:hi] < 720)).mean(axis=0)
     if frame:
+        # count only rows that hold something: a capture's last page can be two option rows and
+        # then blank paper (9 Dec 2025 S2 Q100), which drowns the rule in empty rows
+        used = s.min(axis=1) < 700
+        if used.any():
+            frac = ((s[used, lo:hi] > 300) & (s[used, lo:hi] < 720)).mean(axis=0)
         # ...and a shaded row band can lift every column to a quarter, so the rule is the column
         # that stands out: the strongest, at least twice the band's median, and its neighbours
         peak = int(np.argmax(frac))
