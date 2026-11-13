@@ -1,0 +1,3688 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "03e0866b-de21-4142-9102-7a66d8f431b3",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "8\\times\\tfrac18 = 1",
+              "f": "8*(1/8)",
+              "value": "1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "6\\times\\tfrac12 = 3",
+              "f": "6*(1/2)",
+              "value": "3"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "1 + 3 = 4\\ \\text{atoms}",
+              "f": "1+3",
+              "value": "4"
+            }
+          ],
+          "answer": "4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "0b8db6d9",
+        "answer": {
+          "value": 4,
+          "label": "4 atoms"
+        }
+      }
+    },
+    {
+      "id": "050f220a-3dbb-4d69-80d4-362000aa71cc",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\rho = \\dfrac{ZM}{a^3N_A},\\quad Z = 1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "M = \\rho\\,a^3N_A = 9.3\\times22.6 = 210.2\\ \\text{g mol}^{-1}",
+              "f": "9.3*22.6",
+              "value": "210.2",
+              "dp": 1
+            }
+          ],
+          "answer": "210.2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "d445f4bf",
+        "answer": {
+          "value": 210.2,
+          "label": "210.2 g/mol"
+        }
+      }
+    },
+    {
+      "id": "06e09384-1794-4e80-8822-ad58df50aeea",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\rho = \\dfrac{ZM}{a^3N_A}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "Z = \\dfrac{\\rho\\,a^3N_A}{M} = \\dfrac{2.7\\times40}{27} = 4",
+              "f": "2.7*40/27",
+              "value": "4"
+            }
+          ],
+          "answer": "4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "3cca911f",
+        "answer": {
+          "value": 4,
+          "label": "4 atoms"
+        }
+      }
+    },
+    {
+      "id": "06ec63ad-18c3-41cf-a809-d3ae462ed612",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "100\\% - 74\\% = 26\\%",
+              "f": "100-74",
+              "value": "26"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "0.26\\times1.25\\times10^{-22} = 3.25\\times10^{-23}\\ \\text{cm}^3",
+              "f": "0.26*1.25*10^(-22)",
+              "value": "3.25*10^(-23)",
+              "sf": 3
+            }
+          ],
+          "answer": "3.25*10^(-23)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "213d7826",
+        "answer": {
+          "value": 3.25e-23,
+          "label": "3.25 × 10⁻²³ cm³"
+        }
+      }
+    },
+    {
+      "id": "0de3ea86-7617-42d4-9cf5-664da391c477",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "V = \\dfrac{ZM}{\\rho N_A},\\quad Z = 4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "4\\times63.5 = 254",
+              "f": "4*63.5",
+              "value": "254"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "V = \\dfrac{254}{5.5\\times10^{24}} = 4.618\\times10^{-23}\\ \\text{cm}^3",
+              "f": "254/(5.5*10^24)",
+              "value": "4.618*10^(-23)",
+              "sf": 4
+            }
+          ],
+          "answer": "4.618*10^(-23)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f455a762",
+        "answer": {
+          "value": 4.618e-23,
+          "label": "4.618 × 10⁻²³ cm³"
+        }
+      }
+    },
+    {
+      "id": "18f17834-ee3d-43bd-993f-b31644e92516",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\rho = \\dfrac{ZM}{N_Aa^3},\\quad Z = 1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "N_Aa^3 = 6.022\\times10^{23}\\times(3.36\\times10^{-8})^3 = 22.84",
+              "f": "6.022*10^23*(3.36*10^(-8))^3",
+              "value": "22.84",
+              "sf": 4
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\rho = \\dfrac{209}{22.84} \\approx 9.15\\ \\text{g cm}^{-3}",
+              "f": "209/22.84",
+              "value": "9.15",
+              "dp": 2
+            }
+          ],
+          "answer": "9.15"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "aa60de3a",
+        "answer": {
+          "value": 9.15,
+          "label": "9.15 g/cm³"
+        }
+      }
+    },
+    {
+      "id": "1a9e0841-5940-4559-af4b-7e79caf53488",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "M = \\dfrac{\\rho a^3N_A}{n},\\quad n = 4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "M = \\dfrac{10\\times(4\\times10^{-8})^3\\times6.022\\times10^{23}}{4} = 96.35",
+              "f": "10*(4*10^(-8))^3*6.022*10^23/4",
+              "value": "96.35",
+              "sf": 4
+            }
+          ],
+          "answer": "96.35"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "fb95e2c7",
+        "answer": {
+          "value": 96.35,
+          "label": "96.35 g/mol"
+        }
+      }
+    },
+    {
+      "id": "1ba2c5a6-da0a-4266-aeb5-b8c6d4a08e7f",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "a = 2r"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "a = 2\\times167.3 = 334.6\\ \\text{pm}",
+              "f": "2*167.3",
+              "value": "334.6",
+              "dp": 1
+            }
+          ],
+          "answer": "334.6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "220a3822",
+        "answer": {
+          "value": 334.6,
+          "label": "334.6 pm"
+        }
+      }
+    },
+    {
+      "id": "1c229bba-b336-4f6e-a5d7-199729e732fa",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\rho a^3 = \\text{mass of one cell}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{90}{1.8\\times10^{-22}} = 5\\times10^{23}\\ \\text{cells}",
+              "f": "90/(1.8*10^(-22))",
+              "value": "5*10^23",
+              "sf": 1
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2\\times5\\times10^{23} = 1.0\\times10^{24}\\ \\text{atoms}",
+              "f": "2*5*10^23",
+              "value": "1.0*10^24",
+              "sf": 2
+            }
+          ],
+          "answer": "1.0*10^24"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "7f411b14",
+        "answer": {
+          "value": 1e+24,
+          "label": "1.0 × 10²⁴ atoms"
+        }
+      }
+    },
+    {
+      "id": "1cd54768-c5a1-4716-9fab-e0ab77390f2b",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{BCC: } Z = 2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2\\times56 = 112",
+              "f": "2*56",
+              "value": "112"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "V = \\dfrac{112}{4.8\\times10^{24}} = 2.33\\times10^{-23}\\ \\text{cm}^3",
+              "f": "112/(4.8*10^24)",
+              "value": "2.33*10^(-23)",
+              "sf": 3
+            }
+          ],
+          "answer": "2.33*10^(-23)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c253184a",
+        "answer": {
+          "value": 2.33e-23,
+          "label": "2.33 × 10⁻²³ cm³"
+        }
+      }
+    },
+    {
+      "id": "2070e761-a206-4123-a5d7-a430584e737e",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "a = 2r = 800\\ \\text{pm}",
+              "f": "2*400",
+              "value": "800"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V = a^3 = (800\\times10^{-10})^3 = 5.12\\times10^{-22}\\ \\text{cm}^3",
+              "f": "(800*10^(-10))^3",
+              "value": "5.12*10^(-22)",
+              "sf": 3
+            }
+          ],
+          "answer": "5.12*10^(-22)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "3f8d858e",
+        "answer": {
+          "value": 5.120000000000001e-22,
+          "label": "5.12 × 10⁻²² cm³"
+        }
+      }
+    },
+    {
+      "id": "2281f950-8c48-41dd-bffa-a0dc6d80e2a6",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "ZM = 4\\times108 = 432",
+              "f": "4*108",
+              "value": "432"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "VN_A = 6.84\\times10^{-23}\\times6.022\\times10^{23} = 41.19",
+              "f": "6.84*10^(-23)*6.022*10^23",
+              "value": "41.19",
+              "sf": 4
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\rho = \\dfrac{432}{41.19} = 10.49\\ \\text{g cm}^{-3}",
+              "f": "432/41.19",
+              "value": "10.49",
+              "dp": 2
+            }
+          ],
+          "answer": "10.49"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a28d9084",
+        "answer": {
+          "value": 10.49,
+          "label": "10.49 g/cm³"
+        }
+      }
+    },
+    {
+      "id": "228a7d72-5207-40ed-bb1c-1b1940396a13",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "a^3 = \\dfrac{nM}{\\rho N_A},\\quad n = 4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "nM = 4\\times27 = 108",
+              "f": "4*27",
+              "value": "108"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "a^3 = \\dfrac{108}{16.0\\times10^{23}} = 6.75\\times10^{-23}\\ \\text{cm}^3",
+              "f": "108/(16.0*10^23)",
+              "value": "6.75*10^(-23)",
+              "sf": 3
+            }
+          ],
+          "answer": "6.75*10^(-23)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "80fd8d5c",
+        "answer": {
+          "value": 6.749999999999999e-23,
+          "label": "6.75 × 10⁻²³ cm³"
+        }
+      }
+    },
+    {
+      "id": "24d2f264-0f28-4ee7-8833-4ad82317dd10",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\mathrm{A}:\\ 8\\times\\tfrac18 = 1",
+              "f": "8*(1/8)",
+              "value": "1"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\mathrm{B}:\\ 1\\ \\text{atom at the body centre}"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "\\text{Formula} = \\mathrm{AB}"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "cf372678",
+        "answer": {
+          "value": 1,
+          "label": "AB"
+        }
+      }
+    },
+    {
+      "id": "25f174ac-91dd-489d-9a9e-c63c8d1815e3",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{two tetrahedral voids per particle}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2\\times0.8\\times6.022\\times10^{23} = 9.635\\times10^{23}",
+              "f": "2*0.8*6.022*10^23",
+              "value": "9.635*10^23",
+              "sf": 4
+            }
+          ],
+          "answer": "9.635*10^23"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "f8fbd9f7",
+        "answer": {
+          "value": 9.635000000000001e+23,
+          "label": "9.635 × 10²³"
+        }
+      }
+    },
+    {
+      "id": "26a6a4cb-40fe-4eb8-9fbc-54c9e35edf2b",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\rho a^3 = 7.2\\times10^{-22}\\ \\text{g (one cell)}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{10.8}{7.2\\times10^{-22}} = 1.5\\times10^{22}\\ \\text{cells}",
+              "f": "10.8/(7.2*10^(-22))",
+              "value": "1.5*10^22",
+              "sf": 2
+            }
+          ],
+          "answer": "1.5*10^22"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "d8366981",
+        "answer": {
+          "value": 1.5e+22,
+          "label": "1.5 × 10²²"
+        }
+      }
+    },
+    {
+      "id": "26fe1310-b839-4fb9-89ff-eaca18563888",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "a = 2\\sqrt2\\,r = 509.1\\ \\text{pm} = 5.091\\times10^{-8}\\ \\text{cm}",
+              "f": "2*sqrt(2)*180",
+              "value": "509.1",
+              "dp": 1
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "a^3 = (5.091\\times10^{-8})^3 = 1.32\\times10^{-22}\\ \\text{cm}^3",
+              "f": "(5.091*10^(-8))^3",
+              "value": "1.32*10^(-22)",
+              "sf": 3
+            }
+          ],
+          "answer": "1.32*10^(-22)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "a59c42e5",
+        "answer": {
+          "value": 1.32e-22,
+          "label": "1.32 × 10⁻²² cm³"
+        }
+      }
+    },
+    {
+      "id": "283845c6-3895-488b-ac1f-12752a128cbc",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{moles} = 0.60/60 = 0.01",
+              "f": "0.60/60",
+              "value": "0.01"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{atoms} = 0.01\\times6.022\\times10^{23}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{0.01\\times6.022\\times10^{23}}{4} = 1.5\\times10^{21}",
+              "f": "0.01*6.022*10^23/4",
+              "value": "1.5*10^21",
+              "sf": 2
+            }
+          ],
+          "answer": "1.5*10^21"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "de1f99e8",
+        "answer": {
+          "value": 1.5e+21,
+          "label": "1.5 × 10²¹ cells"
+        }
+      }
+    },
+    {
+      "id": "286255d4-da92-409a-a007-fb4d700b91a0",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "r = \\dfrac{\\sqrt2}{4}a = 0.3535\\,a"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "a = \\dfrac{128}{0.3535} = 362\\ \\text{pm}",
+              "f": "128/0.3535",
+              "value": "362",
+              "dp": 0
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "362\\ \\text{pm} = 3.62\\times10^{-8}\\ \\text{cm}",
+              "f": "362*10^(-10)",
+              "value": "3.62*10^(-8)",
+              "sf": 3
+            }
+          ],
+          "answer": "3.62*10^(-8)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "7a931089",
+        "answer": {
+          "value": 3.62e-8,
+          "label": "3.62 × 10⁻⁸ cm"
+        }
+      }
+    },
+    {
+      "id": "292e6b01-391f-4711-8a28-93540f397577",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "a = 2\\sqrt2\\,r"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "a = 2\\sqrt2\\times144 = 407.3\\ \\text{pm}",
+              "f": "2*sqrt(2)*144",
+              "value": "407.3",
+              "dp": 1
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "407.3\\ \\text{pm} = 4.07\\times10^{-8}\\ \\text{cm}",
+              "f": "407.3*10^(-10)",
+              "value": "4.07*10^(-8)",
+              "sf": 3
+            }
+          ],
+          "answer": "4.07*10^(-8)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "6c47d503",
+        "answer": {
+          "value": 4.07e-8,
+          "label": "4.07 × 10⁻⁸ cm"
+        }
+      }
+    },
+    {
+      "id": "2c85b64f-3082-4917-b14b-37cc4899d3ea",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "4r = \\sqrt3\\,a"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "a = \\dfrac{4\\times186}{1.732} = 429.6\\ \\text{pm}",
+              "f": "4*186/1.732",
+              "value": "429.6",
+              "dp": 1
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "a = 4.296\\times10^{-8}\\ \\text{cm}",
+              "f": "429.6*10^(-10)",
+              "value": "4.296*10^(-8)",
+              "sf": 4
+            }
+          ],
+          "answer": "4.296*10^(-8)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "ee5f9587",
+        "answer": {
+          "value": 4.296e-8,
+          "label": "4.296 × 10⁻⁸ cm"
+        }
+      }
+    },
+    {
+      "id": "2f3e107d-c428-484c-a525-37d63118200d",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "4r = \\sqrt2\\,a"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "r = \\dfrac{a}{2\\sqrt2} = \\dfrac{392}{2.828} = 138.6\\ \\text{pm}",
+              "f": "392/2.828",
+              "value": "138.6",
+              "dp": 1
+            }
+          ],
+          "answer": "138.6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "ee426cbb",
+        "answer": {
+          "value": 138.6,
+          "label": "138.6 pm"
+        }
+      }
+    },
+    {
+      "id": "2f4f8a22-14e7-409a-8442-65c641f82295",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "a^3 = (3.9\\times10^{-8})^3 = 5.932\\times10^{-23}\\ \\text{cm}^3",
+              "f": "(3.9*10^(-8))^3",
+              "value": "5.932*10^(-23)",
+              "sf": 4
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{fcc packing is } 74\\%\\ \\Rightarrow\\ \\text{void} = 0.26"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "0.26\\times5.932\\times10^{-23} = 1.542\\times10^{-23}\\ \\text{cm}^3",
+              "f": "0.26*5.932*10^(-23)",
+              "value": "1.542*10^(-23)",
+              "sf": 4
+            }
+          ],
+          "answer": "1.542*10^(-23)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "9a281561",
+        "answer": {
+          "value": 1.542e-23,
+          "label": "1.542 × 10⁻²³ cm³"
+        }
+      }
+    },
+    {
+      "id": "34aae99a-7d37-4b45-8b40-a08f1a10dd83",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{ccp anions B: tetrahedral voids} = 2\\mathrm{B}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\mathrm{A} = \\tfrac13\\times2\\mathrm{B} = \\tfrac23\\,\\mathrm{B}",
+              "f": "(1/3)*2",
+              "value": "2/3"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "\\mathrm{A}:\\mathrm{B} = \\tfrac23:1 = 2:3"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "\\text{Formula } \\mathrm{A_2B_3}"
+            }
+          ],
+          "answer": "2/3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "00d6332d",
+        "answer": {
+          "value": 0.6666666666666666,
+          "label": "A₂B₃"
+        }
+      }
+    },
+    {
+      "id": "387ee696-c946-414f-8475-df88ce0c1caf",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "100\\% - 74\\% = 26\\%",
+              "f": "100-74",
+              "value": "26"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "0.26\\times6.4\\times10^{-23} = 1.664\\times10^{-23}\\ \\text{cm}^3",
+              "f": "0.26*6.4*10^(-23)",
+              "value": "1.664*10^(-23)",
+              "sf": 4
+            }
+          ],
+          "answer": "1.664*10^(-23)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "e2c00774",
+        "answer": {
+          "value": 1.664e-23,
+          "label": "1.664 × 10⁻²³ cm³"
+        }
+      }
+    },
+    {
+      "id": "3c8ffeaa-0ae5-47d6-9f51-96fb50c13853",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "9.0\\times4.445\\times10^{-23} = 4.0\\times10^{-22}\\ \\text{g}",
+              "f": "9.0*4.445*10^(-23)",
+              "value": "4.0*10^(-22)",
+              "sf": 2
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{100}{4.0\\times10^{-22}} = 2.5\\times10^{23}\\ \\text{cells}",
+              "f": "100/(4.0*10^(-22))",
+              "value": "2.5*10^23",
+              "sf": 2
+            }
+          ],
+          "answer": "2.5*10^23"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "88ec0c4a",
+        "answer": {
+          "value": 2.5000000000000003e+23,
+          "label": "2.5 × 10²³ cells"
+        }
+      }
+    },
+    {
+      "id": "3f87eb10-0ca2-4c78-96f0-76ae737a2841",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\rho a^3 = \\text{mass of one unit cell}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{1.625}{3.25\\times10^{-22}} = 5\\times10^{21}\\ \\text{cells}",
+              "f": "1.625/(3.25*10^(-22))",
+              "value": "5*10^21",
+              "sf": 1
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2\\times5\\times10^{21} = 1.0\\times10^{22}\\ \\text{atoms}",
+              "f": "2*5*10^21",
+              "value": "1.0*10^22",
+              "sf": 2
+            }
+          ],
+          "answer": "1.0*10^22"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "3570a84f",
+        "answer": {
+          "value": 1e+22,
+          "label": "1.0 × 10²² atoms"
+        }
+      }
+    },
+    {
+      "id": "40f0808e-aaad-4092-b656-5b9a05472ef5",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{FCC: } z = 4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\rho = \\dfrac{4\\times63}{28} = 9.0\\ \\text{g cm}^{-3}",
+              "f": "4*63/28",
+              "value": "9.0",
+              "dp": 1
+            }
+          ],
+          "answer": "9.0"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "752a5c0f",
+        "answer": {
+          "value": 9,
+          "label": "9.0 g/cm³"
+        }
+      }
+    },
+    {
+      "id": "41afbfda-8983-4ad4-b2d4-a94a76a4b7c4",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{octahedral} = 0.3N_A = 1.8066\\times10^{23}",
+              "f": "0.3*6.022*10^23",
+              "value": "1.8066*10^23",
+              "sf": 5
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{tetrahedral} = 2\\times1.8066\\times10^{23} = 3.6132\\times10^{23}",
+              "f": "2*1.8066*10^23",
+              "value": "3.6132*10^23",
+              "sf": 5
+            }
+          ],
+          "answer": "1.8066*10^23"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "0f284474",
+        "answer": {
+          "value": 1.8066000000000003e+23,
+          "label": "1.8066 × 10²³; 3.6132 × 10²³"
+        }
+      }
+    },
+    {
+      "id": "42b52361-8751-4297-b04a-8e27054359d3",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{BCC packing efficiency} = 68\\%"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "0.68\\times1.5\\times10^{-22} = 1.02\\times10^{-22}\\ \\text{cm}^3",
+              "f": "0.68*1.5*10^(-22)",
+              "value": "1.02*10^(-22)",
+              "sf": 3
+            }
+          ],
+          "answer": "1.02*10^(-22)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "68284c86",
+        "answer": {
+          "value": 1.02e-22,
+          "label": "1.02 × 10⁻²² cm³"
+        }
+      }
+    },
+    {
+      "id": "4353ea17-d6ce-4f3f-8738-3898f0845cc6",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{BCC: } r = \\dfrac{\\sqrt3}{4}a"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V = \\tfrac43\\pi\\left(\\dfrac{\\sqrt3\\,a}{4}\\right)^3 = \\dfrac{\\sqrt3\\,\\pi a^3}{16}",
+              "f": "4/3*pi*(sqrt(3)*a/4)^3",
+              "value": "sqrt(3)*pi*a^3/16"
+            }
+          ],
+          "answer": "sqrt(3)*pi*a^3/16",
+          "vars": {
+            "a": "2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "2846dc0a",
+        "answer": {
+          "value": 2.7206990463513265,
+          "label": "√3πa³/16"
+        }
+      }
+    },
+    {
+      "id": "43ead8b1-d52e-489e-8505-5eaf5601ede4",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{packing } 52.4\\%\\ \\Rightarrow\\ \\text{void } 47.6\\%"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V = \\dfrac{2.0\\times10^{-23}}{0.476} = 4.2\\times10^{-23}\\ \\text{cm}^3",
+              "f": "2.0*10^(-23)/0.476",
+              "value": "4.2*10^(-23)",
+              "sf": 2
+            }
+          ],
+          "answer": "4.2*10^(-23)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "4a007885",
+        "answer": {
+          "value": 4.2e-23,
+          "label": "4.2 × 10⁻²³ cm³"
+        }
+      }
+    },
+    {
+      "id": "489bb8d5-60a3-4567-90e7-e4689bfc1bc4",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{fcc packing efficiency} = 74\\%"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "0.74\\times1.6\\times10^{-23} = 1.184\\times10^{-23}\\ \\text{cm}^3",
+              "f": "0.74*1.6*10^(-23)",
+              "value": "1.184*10^(-23)",
+              "sf": 4
+            }
+          ],
+          "answer": "1.184*10^(-23)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "36b7d8a0",
+        "answer": {
+          "value": 1.1839999999999999e-23,
+          "label": "1.184 × 10⁻²³ cm³"
+        }
+      }
+    },
+    {
+      "id": "52802994-619f-42b0-b918-417b0dfa51b5",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "N\\ \\text{anions}\\ \\Rightarrow\\ \\text{tetrahedral voids} = 2N"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2N = 10\\quad (N = 5)",
+              "f": "2*N",
+              "value": "10"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{cations} = \\tfrac12\\times2N = N",
+              "f": "(1/2)*2*N",
+              "value": "N"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "\\text{Ratio } 1:1,\\ \\mathrm{AB}"
+            }
+          ],
+          "answer": "((1/2)*2*N)/N",
+          "vars": {
+            "N": "5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "b14c8dc2",
+        "answer": {
+          "value": 1,
+          "label": "AB"
+        }
+      }
+    },
+    {
+      "id": "5703291c-fe5d-4d40-89d9-1a035a1e36b8",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{ccp: } \\mathrm{B} = N"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{tetrahedral voids} = 2N",
+              "f": "2*N",
+              "value": "2*N"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\mathrm{A} = \\tfrac13\\times2N = \\tfrac{2N}{3}",
+              "f": "(1/3)*2*N",
+              "value": "2*N/3"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\mathrm{A}:\\mathrm{B} = \\tfrac{2N}{3}:N = 2:3",
+              "f": "(2*N/3)/N",
+              "value": "2/3"
+            },
+            {
+              "step": "s5",
+              "kind": "note",
+              "tex": "\\mathrm{A_2B_3}"
+            }
+          ],
+          "answer": "2/3",
+          "vars": {
+            "N": "6"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "35710a7f",
+        "answer": {
+          "value": 0.6666666666666666,
+          "label": "A₂B₃"
+        }
+      }
+    },
+    {
+      "id": "5914fdd2-065f-48a9-add2-cf4c8211c703",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "r = \\dfrac{a}{2\\sqrt2}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "r = \\dfrac{200}{2.828} = 70.7\\ \\text{pm}",
+              "f": "200/2.828",
+              "value": "70.7",
+              "dp": 1
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "70.7\\ \\text{pm} = 7.07\\times10^{-9}\\ \\text{cm}",
+              "f": "70.7*10^(-10)",
+              "value": "7.07*10^(-9)",
+              "sf": 3
+            }
+          ],
+          "answer": "7.07*10^(-9)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "0ed019b7",
+        "answer": {
+          "value": 7.070000000000001e-9,
+          "label": "7.07 × 10⁻⁹ cm"
+        }
+      }
+    },
+    {
+      "id": "5a599013-9cb6-4629-ac20-12d4e95ff70d",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{fcc packing efficiency} = 74\\%"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "V = 0.74\\times V_{cell} = 0.74\\times6.4\\times10^{-23}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "V = 4.736\\times10^{-23}\\ \\text{cm}^3",
+              "f": "0.74*6.4*10^(-23)",
+              "value": "4.736*10^(-23)",
+              "sf": 4
+            }
+          ],
+          "answer": "4.736*10^(-23)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "461523bf",
+        "answer": {
+          "value": 4.7359999999999995e-23,
+          "label": "4.736 × 10⁻²³ cm³"
+        }
+      }
+    },
+    {
+      "id": "5dc9bdd1-23b9-40ea-8004-9c5a955c86b3",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "a^3 = (3.36\\times10^{-8})^3 = 3.793\\times10^{-23}\\ \\text{cm}^3",
+              "f": "(3.36*10^(-8))^3",
+              "value": "3.793*10^(-23)",
+              "sf": 4
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{\\pi}{6} = 52.36\\% = 0.5236",
+              "f": "pi/6",
+              "value": "0.5236",
+              "dp": 4
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "3.793\\times10^{-23}\\times(1-0.5236) = 1.807\\times10^{-23}\\ \\text{cm}^3",
+              "f": "3.793*10^(-23)*(1-0.5236)",
+              "value": "1.807*10^(-23)",
+              "sf": 4
+            }
+          ],
+          "answer": "1.807*10^(-23)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "374e7381",
+        "answer": {
+          "value": 1.807e-23,
+          "label": "1.807 × 10⁻²³ cm³"
+        }
+      }
+    },
+    {
+      "id": "5e9062a7-62f9-4346-b5b0-7327aca97c9a",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "(2\\times10^{-8})^3 = 8\\times10^{-24}\\ \\text{cm}^3",
+              "f": "(2*10^(-8))^3",
+              "value": "8*10^(-24)",
+              "sf": 1
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{8\\times10^{-24}} = 1.25\\times10^{23}",
+              "f": "1/(8*10^(-24))",
+              "value": "1.25*10^23",
+              "sf": 3
+            }
+          ],
+          "answer": "1.25*10^23"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "13f62af2",
+        "answer": {
+          "value": 1.2500000000000001e+23,
+          "label": "1.25 × 10²³"
+        }
+      }
+    },
+    {
+      "id": "5f04b893-73a9-4244-acdc-23554c12367d",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "4r = a\\sqrt2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "r = \\dfrac{405\\times1.414}{4} \\approx 143.2\\ \\text{pm}",
+              "f": "405*1.414/4",
+              "value": "143.2",
+              "dp": 1
+            }
+          ],
+          "answer": "143.2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "9c94e1f6",
+        "answer": {
+          "value": 143.2,
+          "label": "143.2 pm"
+        }
+      }
+    },
+    {
+      "id": "60ce19ee-9b4d-4c09-bf78-db7407cd043b",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{atoms} = \\dfrac{x\\,n}{\\rho a^3}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{fcc: } n = 4"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{1\\times4}{6.8\\times10^{-22}} = 5.882\\times10^{21}",
+              "f": "1*4/(6.8*10^(-22))",
+              "value": "5.882*10^21",
+              "sf": 4
+            }
+          ],
+          "answer": "5.882*10^21"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a181e2ba",
+        "answer": {
+          "value": 5.882e+21,
+          "label": "5.882 × 10²¹ atoms"
+        }
+      }
+    },
+    {
+      "id": "615a62a9-b5f1-4748-a5ed-9c8db20dc6a5",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{bcc: } Z = 2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "a^3 = (4\\times10^{-8})^3 = 6.4\\times10^{-23}\\ \\text{cm}^3",
+              "f": "(4*10^(-8))^3",
+              "value": "6.4*10^(-23)",
+              "sf": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "M = \\dfrac{3.5\\times6.4\\times10^{-23}\\times6.022\\times10^{23}}{2} = \\dfrac{134.9}{2} = 67.4",
+              "f": "3.5*6.4*10^(-23)*6.022*10^23/2",
+              "value": "67.4",
+              "dp": 1
+            }
+          ],
+          "answer": "67.4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "7a355aba",
+        "answer": {
+          "value": 67.4,
+          "label": "67.4 g/mol"
+        }
+      }
+    },
+    {
+      "id": "62c0aeb9-8fff-43c1-96ed-97a77d28277a",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{bcc: } n = 2"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\rho = \\dfrac{M\\times2}{a^3N_A}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "M = \\dfrac{8.6\\times22}{2} = 94.6\\ \\text{g mol}^{-1}",
+              "f": "8.6*22/2",
+              "value": "94.6",
+              "dp": 1
+            }
+          ],
+          "answer": "94.6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "241a81c5",
+        "answer": {
+          "value": 94.6,
+          "label": "94.6 g/mol"
+        }
+      }
+    },
+    {
+      "id": "63191176-859d-4d62-80b1-c3d400edc022",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "Z = \\dfrac{\\rho\\,N_A a^3}{M} = \\dfrac{8.6\\times21.5}{92.0}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "8.6\\times21.5 = 184.9",
+              "f": "8.6*21.5",
+              "value": "184.9",
+              "dp": 1
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "Z = \\dfrac{184.9}{92} = 2",
+              "f": "184.9/92",
+              "value": "2",
+              "dp": 0
+            }
+          ],
+          "answer": "2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "108b64e9",
+        "answer": {
+          "value": 2,
+          "label": "2 atoms"
+        }
+      }
+    },
+    {
+      "id": "63be0e1b-1530-446f-961d-8a83b7edf3b4",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{fcc void fraction} = 26\\% = 0.26"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "V_{void} = V_{cell}\\times0.26"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "V_{cell} = \\dfrac{4.16\\times10^{-24}}{0.26} = 1.6\\times10^{-23}\\ \\text{cm}^3",
+              "f": "4.16*10^(-24)/0.26",
+              "value": "1.6*10^(-23)",
+              "sf": 2
+            }
+          ],
+          "answer": "1.6*10^(-23)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "ebe498e1",
+        "answer": {
+          "value": 1.6000000000000002e-23,
+          "label": "1.6 × 10⁻²³ cm³"
+        }
+      }
+    },
+    {
+      "id": "63f253b6-065d-4104-8211-f73ff0c7eb94",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\rho a^3 = 3.2\\times10^{-22}\\ \\text{g (one cell)}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "n = \\dfrac{3.2\\times10^{-22}}{8.0\\times10^{-23}} = 4",
+              "f": "3.2*10^(-22)/(8.0*10^(-23))",
+              "value": "4"
+            }
+          ],
+          "answer": "4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "e760d23c",
+        "answer": {
+          "value": 4,
+          "label": "4 particles"
+        }
+      }
+    },
+    {
+      "id": "6539ac7f-41a7-4c5e-9aa0-89b402a9095a",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Ag is fcc}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{\\pi}{3\\sqrt2}\\times100 \\approx 74.0\\%",
+              "f": "pi/(3*sqrt(2))*100",
+              "value": "74.0",
+              "dp": 1
+            }
+          ],
+          "answer": "74.0"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "c47db1b5",
+        "answer": {
+          "value": 74,
+          "label": "74.0%"
+        }
+      }
+    },
+    {
+      "id": "6742870b-9435-4c61-b2a0-3029efee1203",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\rho a^3 = \\text{mass of one cell};\\ \\text{bcc: 2 atoms}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{2}{6.6\\times10^{-22}} = 3.03\\times10^{21}\\ \\text{atoms}",
+              "f": "2/(6.6*10^(-22))",
+              "value": "3.03*10^21",
+              "sf": 3
+            }
+          ],
+          "answer": "3.03*10^21"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "18208168",
+        "answer": {
+          "value": 3.03e+21,
+          "label": "3.03 × 10²¹ atoms"
+        }
+      }
+    },
+    {
+      "id": "6964cbf5-e9d9-4973-bef1-96bf73a5ec4a",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{bcc: } r = \\dfrac{\\sqrt3}{4}a"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "r = 0.433\\times4.3\\times10^{-8} = 1.86\\times10^{-8}\\ \\text{cm}",
+              "f": "0.433*4.3*10^(-8)",
+              "value": "1.86*10^(-8)",
+              "sf": 3
+            }
+          ],
+          "answer": "1.86*10^(-8)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "062586b8",
+        "answer": {
+          "value": 1.86e-8,
+          "label": "1.86 × 10⁻⁸ cm"
+        }
+      }
+    },
+    {
+      "id": "69ffefb5-e9c1-4d36-a6a5-0a49c6c98f89",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "5\\times2 = 10\\ \\text{atoms}",
+              "f": "5*2",
+              "value": "10"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{mass} = \\dfrac{10\\times23}{6.022\\times10^{23}} = 3.819\\times10^{-22}\\ \\text{g}",
+              "f": "10*23/(6.022*10^23)",
+              "value": "3.819*10^(-22)",
+              "sf": 4
+            }
+          ],
+          "answer": "3.819*10^(-22)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "5b6c7521",
+        "answer": {
+          "value": 3.819e-22,
+          "label": "3.819 × 10⁻²² g"
+        }
+      }
+    },
+    {
+      "id": "6c3a1a38-6c97-4664-ad4e-f90e80334da0",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{BCC: } n = 2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "M = \\dfrac{10\\times(3\\times10^{-8})^3\\times6.022\\times10^{23}}{2} = 81.3",
+              "f": "10*(3*10^(-8))^3*6.022*10^23/2",
+              "value": "81.3",
+              "dp": 1
+            }
+          ],
+          "answer": "81.3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "a598c411",
+        "answer": {
+          "value": 81.3,
+          "label": "81.3 g/mol"
+        }
+      }
+    },
+    {
+      "id": "6ecab743-a3da-44d3-9ae6-0e2c56fcc3cc",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{fcc is } 26\\%\\ \\text{void}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V = \\dfrac{1.66\\times10^{-23}}{0.26} = 6.385\\times10^{-23}\\ \\text{cm}^3",
+              "f": "1.66*10^(-23)/0.26",
+              "value": "6.385*10^(-23)",
+              "sf": 4
+            }
+          ],
+          "answer": "6.385*10^(-23)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "08b9bb83",
+        "answer": {
+          "value": 6.385e-23,
+          "label": "6.385 × 10⁻²³ cm³"
+        }
+      }
+    },
+    {
+      "id": "742f8725-edb9-4d37-aa42-5c840fb3ec78",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{ccp: } 4\\ \\mathrm{B^-}\\ \\text{per cell}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{tetrahedral voids} = 2\\times4 = 8",
+              "f": "2*4",
+              "value": "8"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\mathrm{A^+} = \\tfrac12\\times8 = 4",
+              "f": "8/2",
+              "value": "4"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\mathrm{A}:\\mathrm{B} = 4:4 = 1:1",
+              "f": "4/4",
+              "value": "1"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "9a0cbd05",
+        "answer": {
+          "value": 1,
+          "label": "AB"
+        }
+      }
+    },
+    {
+      "id": "7542b233-e406-48dd-99af-a143d7787e3e",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "a = 2\\sqrt2\\times106.05 = 300\\ \\text{pm}",
+              "f": "2*sqrt(2)*106.05",
+              "value": "300",
+              "dp": 0
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V = a^3 = (300\\times10^{-10})^3 = 2.7\\times10^{-23}\\ \\text{cm}^3",
+              "f": "(300*10^(-10))^3",
+              "value": "2.7*10^(-23)",
+              "sf": 2
+            }
+          ],
+          "answer": "2.7*10^(-23)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "128d0bec",
+        "answer": {
+          "value": 2.7e-23,
+          "label": "2.7 × 10⁻²³ cm³"
+        }
+      }
+    },
+    {
+      "id": "77cbdc28-6691-42cc-b43a-e6eab0840054",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{fcc: } n = 4"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{atoms in } x\\ \\text{g} = \\dfrac{x\\,n}{\\rho a^3}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{1\\times4}{1.728\\times10^{-22}} = 2.315\\times10^{22}",
+              "f": "1*4/(1.728*10^(-22))",
+              "value": "2.315*10^22",
+              "sf": 4
+            }
+          ],
+          "answer": "2.315*10^22"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "4eaffe5f",
+        "answer": {
+          "value": 2.315e+22,
+          "label": "2.315 × 10²² atoms"
+        }
+      }
+    },
+    {
+      "id": "7874d87f-af5e-47bd-b21f-e59927c0f27a",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{cells} = \\dfrac{V}{a^3}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{3.448\\times10^{-23}} = 2.90\\times10^{22}",
+              "f": "1/(3.448*10^(-23))",
+              "value": "2.90*10^22",
+              "sf": 3
+            }
+          ],
+          "answer": "2.90*10^22"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "b8c20fa3",
+        "answer": {
+          "value": 2.9e+22,
+          "label": "2.90 × 10²²"
+        }
+      }
+    },
+    {
+      "id": "7cb1329a-a6ac-418a-8b16-734a287f9385",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\rho = \\dfrac{Z\\cdot M}{a^3N_A}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "M = \\dfrac{21\\times36}{4} = 189\\ \\text{g mol}^{-1}",
+              "f": "21*36/4",
+              "value": "189"
+            }
+          ],
+          "answer": "189"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "dc09025a",
+        "answer": {
+          "value": 189,
+          "label": "189 g/mol"
+        }
+      }
+    },
+    {
+      "id": "7d361e83-6ff4-40a7-9c14-0b6bb1b43244",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\rho = \\dfrac{zM}{a^3N_A},\\quad z = 4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "4\\times27 = 108",
+              "f": "4*27",
+              "value": "108"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\rho = \\dfrac{108}{38.5} = 2.8\\ \\text{g cm}^{-3}",
+              "f": "108/38.5",
+              "value": "2.8",
+              "dp": 1
+            }
+          ],
+          "answer": "2.8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a22ae0ae",
+        "answer": {
+          "value": 2.8,
+          "label": "2.8 g/cm³"
+        }
+      }
+    },
+    {
+      "id": "81c14060-1951-48d3-9373-cf19d805f1b2",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{corners: } 8\\times\\tfrac18 = 1",
+              "f": "8*(1/8)",
+              "value": "1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{top and bottom centres: } 2\\times\\tfrac12 = 1",
+              "f": "2*(1/2)",
+              "value": "1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "1 + 1 = 2",
+              "f": "1+1",
+              "value": "2"
+            }
+          ],
+          "answer": "2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "3a60852c",
+        "answer": {
+          "value": 2,
+          "label": "2 particles"
+        }
+      }
+    },
+    {
+      "id": "836ce897-34b4-40fb-a64d-440ea45d0612",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "Z = \\dfrac{d\\cdot a^3N_A}{M}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "20\\times38 = 760",
+              "f": "20*38",
+              "value": "760"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "Z = \\dfrac{760}{190} = 4",
+              "f": "760/190",
+              "value": "4"
+            }
+          ],
+          "answer": "4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "54c8478d",
+        "answer": {
+          "value": 4,
+          "label": "4 atoms"
+        }
+      }
+    },
+    {
+      "id": "856ba04c-912c-4220-a16c-bb19397e93f5",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\mathrm{A}:\\ \\tfrac18\\times8 = 1",
+              "f": "(1/8)*8",
+              "value": "1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\mathrm{B}:\\ \\tfrac12\\times6 = 3",
+              "f": "(1/2)*6",
+              "value": "3"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "\\text{Formula } \\mathrm{AB_3}"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "fa8da5a7",
+        "answer": {
+          "value": 3,
+          "label": "AB₃"
+        }
+      }
+    },
+    {
+      "id": "869dd2dd-fbb4-4bca-a681-204caace799f",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{BCC: 2 atoms per cell}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "a\\sqrt3 = 4r\\ \\Rightarrow\\ r = \\dfrac{a\\sqrt3}{4}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "V = 2\\times\\tfrac43\\pi r^3 = \\dfrac{\\sqrt3\\,\\pi a^3}{8}",
+              "f": "2*4/3*pi*(sqrt(3)*a/4)^3",
+              "value": "sqrt(3)*pi*a^3/8"
+            }
+          ],
+          "answer": "sqrt(3)*pi*a^3/8",
+          "vars": {
+            "a": "2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "778c5842",
+        "answer": {
+          "value": 5.441398092702653,
+          "label": "√3πa³/8"
+        }
+      }
+    },
+    {
+      "id": "8c277736-23e8-4f5c-bc9d-ac7f15ee87ad",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\mathrm{A}:\\ 7\\times\\tfrac18 = \\tfrac78",
+              "f": "7*(1/8)",
+              "value": "7/8"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\mathrm{B}:\\ 6\\times\\tfrac12 = 3",
+              "f": "6*(1/2)",
+              "value": "3"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\mathrm{A_{7/8}B_3}\\times8:\\ \\mathrm{A}\\ 8\\times\\tfrac78 = 7",
+              "f": "8*(7/8)",
+              "value": "7"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\mathrm{B}:\\ 8\\times3 = 24",
+              "f": "8*3",
+              "value": "24"
+            }
+          ],
+          "answer": "7"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "dc1d476d",
+        "answer": {
+          "value": 7,
+          "label": "A₇B₂₄"
+        }
+      }
+    },
+    {
+      "id": "8e386ebe-785f-4b17-ae05-c70defc944ec",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{8 corners and 1 body centre}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "8\\times\\tfrac18 + 1 = 2\\ \\text{particles}",
+              "f": "8*(1/8)+1",
+              "value": "2"
+            }
+          ],
+          "answer": "2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "b6a2e369",
+        "answer": {
+          "value": 2,
+          "label": "2 particles"
+        }
+      }
+    },
+    {
+      "id": "90d2bf36-9213-454d-a597-e20e0d96e590",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\rho = \\dfrac{nM}{a^3N_A},\\quad n = 2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\rho = \\dfrac{2\\times225}{75} = 6.0\\ \\text{g cm}^{-3}",
+              "f": "2*225/75",
+              "value": "6.0",
+              "dp": 1
+            }
+          ],
+          "answer": "6.0"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "66cd11aa",
+        "answer": {
+          "value": 6,
+          "label": "6.0 g/cm³"
+        }
+      }
+    },
+    {
+      "id": "946d5def-e1f5-43e3-8287-91cee9793c3f",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "M = \\dfrac{\\rho a^3N_A}{Z},\\quad Z = 4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "a^3 = (3.608\\times10^{-8})^3 = 4.697\\times10^{-23}\\ \\text{cm}^3",
+              "f": "(3.608*10^(-8))^3",
+              "value": "4.697*10^(-23)",
+              "sf": 4
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "M = \\dfrac{8.92\\times4.697\\times10^{-23}\\times6.022\\times10^{23}}{4} = \\dfrac{252.3}{4} = 63.1",
+              "f": "8.92*4.697*10^(-23)*6.022*10^23/4",
+              "value": "63.1",
+              "dp": 1
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "M \\approx 63\\ \\text{g/mol}",
+              "f": "8.92*4.697*10^(-23)*6.022*10^23/4",
+              "value": "63",
+              "dp": 0
+            }
+          ],
+          "answer": "63"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "a230bf90",
+        "answer": {
+          "value": 63,
+          "label": "63 g/mol"
+        }
+      }
+    },
+    {
+      "id": "97158073-bf1c-4951-8292-56070844d6b9",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{bcc packing efficiency} = 0.68"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "0.68\\times8.0\\times10^{-23} = 5.44\\times10^{-23}\\ \\text{cm}^3",
+              "f": "0.68*8.0*10^(-23)",
+              "value": "5.44*10^(-23)",
+              "sf": 3
+            }
+          ],
+          "answer": "5.44*10^(-23)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "1e8a1b05",
+        "answer": {
+          "value": 5.44e-23,
+          "label": "5.44 × 10⁻²³ cm³"
+        }
+      }
+    },
+    {
+      "id": "99bc754d-8589-4019-88a0-4943a91c61d9",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "M = \\dfrac{D\\times a^3N_A}{Z},\\quad Z = 4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "M = \\dfrac{2.7\\times40}{4} = 27\\ \\text{g/mol}",
+              "f": "2.7*40/4",
+              "value": "27"
+            }
+          ],
+          "answer": "27"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "4d9267f7",
+        "answer": {
+          "value": 27,
+          "label": "27 g/mol"
+        }
+      }
+    },
+    {
+      "id": "9bae4436-227c-45da-b02f-0e7b67d4eb59",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "0.6\\times6.022\\times10^{23} = 3.613\\times10^{23}\\ \\text{atoms}",
+              "f": "0.6*6.022*10^23",
+              "value": "3.613*10^23",
+              "sf": 4
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{tetrahedral} = 2\\times3.613\\times10^{23} = 7.226\\times10^{23}",
+              "f": "2*3.613*10^23",
+              "value": "7.226*10^23",
+              "sf": 4
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "3.613\\times10^{23} + 7.226\\times10^{23} = 1.084\\times10^{24}",
+              "f": "3.613*10^23+7.226*10^23",
+              "value": "1.084*10^24",
+              "sf": 4
+            }
+          ],
+          "answer": "1.084*10^24"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "78a2beab",
+        "answer": {
+          "value": 1.084e+24,
+          "label": "1.084 × 10²⁴"
+        }
+      }
+    },
+    {
+      "id": "9e319472-b4d1-452d-84cf-9828588636da",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "0.4\\times6.022\\times10^{23} = 2.4088\\times10^{23}\\ \\text{atoms}",
+              "f": "0.4*6.022*10^23",
+              "value": "2.4088*10^23",
+              "sf": 5
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{tetrahedral} = 2\\times2.4088\\times10^{23} = 4.8176\\times10^{23}",
+              "f": "2*2.4088*10^23",
+              "value": "4.8176*10^23",
+              "sf": 5
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2.4088\\times10^{23} + 4.8176\\times10^{23} = 7.2264\\times10^{23}",
+              "f": "2.4088*10^23+4.8176*10^23",
+              "value": "7.2264*10^23",
+              "sf": 5
+            }
+          ],
+          "answer": "7.2264*10^23"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f1e564cd",
+        "answer": {
+          "value": 7.226400000000001e+23,
+          "label": "7.2264 × 10²³"
+        }
+      }
+    },
+    {
+      "id": "a1484324-706b-4dfd-9344-bf7a6ccd6f96",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{simple cubic: } Z = 1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "d = \\dfrac{1\\times210}{21.5} = 9.77\\ \\text{g cm}^{-3}",
+              "f": "1*210/21.5",
+              "value": "9.77",
+              "dp": 2
+            }
+          ],
+          "answer": "9.77"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "31d8b5bf",
+        "answer": {
+          "value": 9.77,
+          "label": "9.77 g/cm³"
+        }
+      }
+    },
+    {
+      "id": "a176d857-fbc5-4da7-a101-306ebd799802",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "8\\times\\tfrac18 = 1\\ \\text{anion} + 1\\ \\text{cation}:\\ Z = 1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V = \\dfrac{1\\times168.6}{4\\times6.022\\times10^{23}} = 7.0\\times10^{-23}\\ \\text{cm}^3",
+              "f": "168.6/(4*6.022*10^23)",
+              "value": "7.0*10^(-23)",
+              "sf": 2
+            }
+          ],
+          "answer": "7.0*10^(-23)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "ae19ebbe",
+        "answer": {
+          "value": 7e-23,
+          "label": "7.0 × 10⁻²³ cm³"
+        }
+      }
+    },
+    {
+      "id": "a20db6b4-57e1-44f3-980d-2be7d9e4a444",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "V = \\tfrac43\\pi r^3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "(1.90\\times10^{-8})^3 = 6.859\\times10^{-24}",
+              "f": "(1.9*10^(-8))^3",
+              "value": "6.859*10^(-24)",
+              "sf": 4
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "V = 4.189\\times6.859\\times10^{-24} = 2.873\\times10^{-23}\\ \\text{cm}^3",
+              "f": "4.189*6.859*10^(-24)",
+              "value": "2.873*10^(-23)",
+              "sf": 4
+            }
+          ],
+          "answer": "2.873*10^(-23)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "40ec3d77",
+        "answer": {
+          "value": 2.873e-23,
+          "label": "2.873 × 10⁻²³ cm³"
+        }
+      }
+    },
+    {
+      "id": "a3c421ee-3f32-4dfd-a058-b514dffe32f6",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{two tetrahedral voids per particle}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2\\times0.5\\times6.022\\times10^{23} = 6.022\\times10^{23}",
+              "f": "2*0.5*6.022*10^23",
+              "value": "6.022*10^23",
+              "sf": 4
+            }
+          ],
+          "answer": "6.022*10^23"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "1c664f7c",
+        "answer": {
+          "value": 6.022000000000001e+23,
+          "label": "6.022 × 10²³"
+        }
+      }
+    },
+    {
+      "id": "a5abbc99-4cfc-48b8-a64c-6f5c31615ff7",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "r = \\dfrac{a}{2}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "r = \\dfrac{334.7}{2} = 167.35\\ \\text{pm}",
+              "f": "334.7/2",
+              "value": "167.35",
+              "dp": 2
+            }
+          ],
+          "answer": "167.35"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "b5626d27",
+        "answer": {
+          "value": 167.35,
+          "label": "167.35 pm"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
