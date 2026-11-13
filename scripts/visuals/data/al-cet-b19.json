@@ -1,0 +1,4115 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "026a8847-ceee-49fd-b8c1-18dfdc5e7be9",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "eV = \\dfrac{hc}{\\lambda} - W_0",
+              "f": "el*V",
+              "value": "h*c/lam - W0",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{hc}{W_0+eV}",
+              "f": "lam",
+              "value": "h*c/(W0+el*V)",
+              "step": "s2"
+            }
+          ],
+          "answer": "h*c/(W0+el*V)",
+          "vars": {
+            "h": "2",
+            "c": "3",
+            "W0": "1",
+            "el": "1.5",
+            "V": "2",
+            "lam": "h*c/(W0+el*V)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "cee5410e",
+        "answer": {
+          "value": 1.5,
+          "label": "λ = hc/(W₀+eV)"
+        }
+      }
+    },
+    {
+      "id": "0706492c-9dba-499a-8932-0e8a360a8f10",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "V_0 = \\dfrac{h}{e}f - \\dfrac{\\phi}{e}",
+              "f": "V0",
+              "value": "(h/el)*f - phi/el",
+              "step": "s1"
+            },
+            {
+              "kind": "note",
+              "tex": "\\text{slope} = \\dfrac{h}{e}",
+              "note": "the work function is not in the slope",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{slope ratio} = 1:1",
+              "f": "(h/el)/(h/el)",
+              "value": "1",
+              "step": "s3"
+            }
+          ],
+          "answer": "(h/el)/(h/el)",
+          "vars": {
+            "h": "2",
+            "el": "1.5",
+            "f": "4",
+            "phi": "1",
+            "V0": "(h/el)*f - phi/el"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "2212b80c",
+        "answer": {
+          "value": 1,
+          "label": "slope ratio = 1 : 1"
+        }
+      }
+    },
+    {
+      "id": "071c1177-b31a-482f-87e0-c4f8f1f74216",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\lambda_p = \\dfrac{hc}{E}",
+              "f": "lamp",
+              "value": "h*c/E",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_e = \\dfrac{h}{\\sqrt{2mE}}",
+              "f": "lame",
+              "value": "h/sqrt(2*m*E)",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{\\lambda_e}{\\lambda_p} = \\dfrac{E}{c\\sqrt{2mE}}",
+              "f": "lame/lamp",
+              "value": "E/(c*sqrt(2*m*E))",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "= \\dfrac{\\sqrt{E}}{c\\sqrt{2m}}",
+              "f": "lame/lamp",
+              "value": "sqrt(E)/(c*sqrt(2*m))",
+              "note": "proportional to √E, that is √E : 1",
+              "step": "s4"
+            }
+          ],
+          "answer": "lame/lamp",
+          "vars": {
+            "h": "2",
+            "c": "3",
+            "m": "1.5",
+            "E": "4",
+            "lamp": "h*c/E",
+            "lame": "h/sqrt(2*m*E)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "7ff564c0",
+        "answer": {
+          "value": 0.3849001794597506,
+          "label": "λe/λp ∝ √E : 1"
+        }
+      }
+    },
+    {
+      "id": "0915e5e4-41f8-46e2-bcee-dc586fd46b66",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "KE_1 = 3\\phi - \\phi = 2\\phi",
+              "f": "K1",
+              "value": "2*phi",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "KE_2 = 9\\phi - \\phi = 8\\phi",
+              "f": "K2",
+              "value": "8*phi",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{v_2^2}{v_1^2} = \\dfrac{8\\phi}{2\\phi} = 4",
+              "f": "8*phi/(2*phi)",
+              "value": "4",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "v_2 = 2v_1 = 12\\times10^6\\ \\text{m/s}",
+              "f": "2*6*10^6",
+              "value": "12*10^6",
+              "sf": 2,
+              "step": "s4"
+            }
+          ],
+          "answer": "12*10^6",
+          "vars": {
+            "phi": "2",
+            "K1": "3*phi - phi",
+            "K2": "9*phi - phi"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "667c777c",
+        "answer": {
+          "value": 12000000,
+          "label": "12 × 10⁶ m/s"
+        }
+      }
+    },
+    {
+      "id": "09ecb7af-81bf-458e-9a62-e7294fdaedfd",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{h}{\\sqrt{2meV}}",
+              "f": "lam",
+              "value": "h/sqrt(2*m*el*V)",
+              "note": "so λ ∝ 1/√V",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda' = \\dfrac{\\lambda}{\\sqrt{2}}",
+              "f": "lam2",
+              "value": "lam/sqrt(2)",
+              "step": "s2"
+            }
+          ],
+          "answer": "lam2/lam",
+          "vars": {
+            "h": "2",
+            "m": "1.5",
+            "el": "1.2",
+            "V": "3",
+            "lam": "h/sqrt(2*m*el*V)",
+            "lam2": "h/sqrt(2*m*el*(2*V))"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "c3a21fb0",
+        "answer": {
+          "value": 0.7071067811865475,
+          "label": "λ′/λ = 1/√2"
+        }
+      }
+    },
+    {
+      "id": "0acae477-9358-4c53-a52b-c61f45844685",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\lambda \\propto 1/\\sqrt{V}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{\\lambda_2}{\\lambda_1} = \\sqrt{\\dfrac{16}{64}} = \\dfrac{1}{2}",
+              "f": "sqrt(16/64)",
+              "value": "1/2",
+              "step": "s2"
+            }
+          ],
+          "answer": "sqrt(16/64)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "51dbc7b3",
+        "answer": {
+          "value": 0.5,
+          "label": "λ₂/λ₁ = 1/2"
+        }
+      }
+    },
+    {
+      "id": "0b0ac91c-911d-42f0-aee8-56610a7a0ffa",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\lambda_p = \\dfrac{hc}{E}",
+              "f": "lamp",
+              "value": "h*c/E",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_e = \\dfrac{h}{\\sqrt{2mE}}",
+              "f": "lame",
+              "value": "h/sqrt(2*m*E)",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{\\lambda_p}{\\lambda_e} = \\dfrac{c\\sqrt{2mE}}{E}",
+              "f": "lamp/lame",
+              "value": "c*sqrt(2*m*E)/E",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "= c\\sqrt{\\dfrac{2m}{E}}",
+              "f": "lamp/lame",
+              "value": "c*sqrt(2*m/E)",
+              "step": "s4"
+            }
+          ],
+          "answer": "lamp/lame",
+          "vars": {
+            "h": "2",
+            "c": "3",
+            "m": "1.5",
+            "E": "4",
+            "lamp": "h*c/E",
+            "lame": "h/sqrt(2*m*E)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "99d15d5f",
+        "answer": {
+          "value": 2.5980762113533156,
+          "label": "λp/λe = c√(2m/E)"
+        }
+      }
+    },
+    {
+      "id": "0b72d4ea-e60f-4510-95e2-194fe11fb7ba",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "K_1 = 2W",
+              "f": "K1",
+              "value": "2*W",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "K_2 = 4W",
+              "f": "K2",
+              "value": "4*W",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "v_1 : v_2 = 1 : \\sqrt{2}",
+              "f": "sqrt(K1/K2)",
+              "value": "1/sqrt(2)",
+              "note": "v ∝ √K",
+              "step": "s3"
+            }
+          ],
+          "answer": "sqrt(K1/K2)",
+          "vars": {
+            "W": "2",
+            "K1": "3*W - W",
+            "K2": "5*W - W"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "3dbe394d",
+        "answer": {
+          "value": 0.7071067811865476,
+          "label": "v₁ : v₂ = 1 : √2"
+        }
+      }
+    },
+    {
+      "id": "0cf7c46d-7544-42c4-a180-420b573e531b",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\tfrac12 mV^2 = \\dfrac{hc}{\\lambda_1} - \\phi_0",
+              "f": "m*V^2/2",
+              "value": "h*c/lam1 - phi0",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\tfrac12 m(2V)^2 = \\dfrac{hc}{\\lambda_2} - \\phi_0",
+              "f": "m*(2*V)^2/2",
+              "value": "h*c/lam2 - phi0",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "4\\left(\\dfrac{hc}{\\lambda_1}-\\phi_0\\right) = \\dfrac{hc}{\\lambda_2}-\\phi_0",
+              "f": "4*(h*c/lam1-phi0)",
+              "value": "h*c/lam2-phi0",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\phi_0 = \\dfrac{hc}{3}\\left[\\dfrac{4}{\\lambda_1}-\\dfrac{1}{\\lambda_2}\\right]",
+              "f": "phi0",
+              "value": "h*c/3*(4/lam1-1/lam2)",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "= \\dfrac{hc}{3\\lambda_1\\lambda_2}(4\\lambda_2-\\lambda_1)",
+              "f": "phi0",
+              "value": "h*c*(4*lam2-lam1)/(3*lam1*lam2)",
+              "step": "s5"
+            }
+          ],
+          "answer": "phi0",
+          "vars": {
+            "h": "2",
+            "c": "3",
+            "lam1": "4",
+            "lam2": "2",
+            "m": "1",
+            "phi0": "h*c/3*(4/lam1-1/lam2)",
+            "V": "sqrt(2*(h*c/lam1-phi0)/m)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "7bb80df4",
+        "answer": {
+          "value": 1,
+          "label": "φ₀ = hc(4λ₂−λ₁)/(3λ₁λ₂)"
+        }
+      }
+    },
+    {
+      "id": "11f5f588-938a-4769-a8c0-976a6eeaff6a",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "n\\lambda = 2\\pi r",
+              "f": "n*lam",
+              "value": "2*pi*r",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{2\\pi r}{n}",
+              "f": "lam",
+              "value": "2*pi*r/n",
+              "step": "s2"
+            }
+          ],
+          "answer": "2*pi*r/n",
+          "vars": {
+            "n": "3",
+            "r": "2",
+            "lam": "2*pi*r/n"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "459caa1a",
+        "answer": {
+          "value": 4.1887902047863905,
+          "label": "λ = 2πr/n"
+        }
+      }
+    },
+    {
+      "id": "1562678c-211b-4156-a7ba-d780456f1e35",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "n\\lambda = 2\\pi r",
+              "f": "n*lam",
+              "value": "2*pi*r",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{2\\pi r}{n}",
+              "f": "lam",
+              "value": "2*pi*r/n",
+              "step": "s2"
+            }
+          ],
+          "answer": "2*pi*r/n",
+          "vars": {
+            "n": "3",
+            "r": "2",
+            "lam": "2*pi*r/n"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "49b734eb",
+        "answer": {
+          "value": 4.1887902047863905,
+          "label": "λ = 2πr/n"
+        }
+      }
+    },
+    {
+      "id": "164f6ad7-cd61-46f0-822a-1aef74b69ca9",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\phi_B = 2\\phi_A",
+              "f": "phiB",
+              "value": "2*phiA",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_A = hf - \\phi_A",
+              "f": "EA",
+              "value": "h*f-phiA",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_B = 2hf - 2\\phi_A",
+              "f": "EB",
+              "value": "2*h*f-2*phiA",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_B = 2(hf - \\phi_A)",
+              "f": "EB",
+              "value": "2*(h*f-phiA)",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_A : E_B = 1 : 2",
+              "f": "EA/EB",
+              "value": "1/2",
+              "step": "s5"
+            }
+          ],
+          "answer": "EA/EB",
+          "vars": {
+            "h": "2",
+            "f": "3",
+            "phiA": "1",
+            "phiB": "2*phiA",
+            "EA": "h*f-phiA",
+            "EB": "2*h*f-phiB"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "0b67def8",
+        "answer": {
+          "value": 0.5,
+          "label": "E_A : E_B = 1 : 2"
+        }
+      }
+    },
+    {
+      "id": "16ac3ff7-c67b-4c2d-81de-08b9c7aefc3f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "n = 3 \\to n = 1",
+              "note": "third orbit to ground state",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "E = 13.6\\times\\dfrac{8}{9} \\approx 12.1\\ \\text{eV}",
+              "f": "13.6*(1/1^2-1/3^2)",
+              "value": "12.1",
+              "dp": 1,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "eV_s = 12.1 - 4.1 = 8\\ \\text{eV}",
+              "f": "12.1-4.1",
+              "value": "8",
+              "step": "s3"
+            }
+          ],
+          "answer": "12.1-4.1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f8cfa511",
+        "answer": {
+          "value": 8,
+          "label": "V_s ≈ 8 V"
+        }
+      }
+    },
+    {
+      "id": "17182769-c42b-4fed-b68a-818b97a9c099",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{h}{\\sqrt{2mK}}",
+              "f": "lam",
+              "value": "h/sqrt(2*m*K)",
+              "note": "so λ ∝ 1/√K",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "K' = 3K:\\ \\lambda'/\\lambda = \\dfrac{1}{\\sqrt{3}}",
+              "f": "lam2/lam",
+              "value": "1/sqrt(3)",
+              "step": "s2"
+            }
+          ],
+          "answer": "lam2/lam",
+          "vars": {
+            "h": "2",
+            "m": "1.5",
+            "K": "4",
+            "lam": "h/sqrt(2*m*K)",
+            "lam2": "h/sqrt(2*m*3*K)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "328c4d28",
+        "answer": {
+          "value": 0.5773502691896256,
+          "label": "λ′/λ = 1/√3"
+        }
+      }
+    },
+    {
+      "id": "17b156bc-95e3-40b3-ac8d-93efa40c98d0",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "KE_1 = \\dfrac{hc}{\\lambda} - \\phi",
+              "f": "KE1",
+              "value": "h*c/lam-phi",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "KE_2 = \\dfrac{2hc}{\\lambda} - \\phi",
+              "f": "KE2",
+              "value": "2*h*c/lam-phi",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "4\\left(\\dfrac{hc}{\\lambda}-\\phi\\right) = \\dfrac{2hc}{\\lambda}-\\phi",
+              "f": "4*(h*c/lam-phi)",
+              "value": "2*h*c/lam-phi",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{4hc}{\\lambda} - 4\\phi = \\dfrac{2hc}{\\lambda} - \\phi",
+              "f": "4*h*c/lam-4*phi",
+              "value": "2*h*c/lam-phi",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{2hc}{\\lambda} = 3\\phi",
+              "f": "2*h*c/lam",
+              "value": "3*phi",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\phi = \\dfrac{2hc}{3\\lambda}",
+              "f": "phi",
+              "value": "2*h*c/(3*lam)",
+              "step": "s6"
+            }
+          ],
+          "answer": "phi",
+          "vars": {
+            "h": "2",
+            "c": "3",
+            "lam": "4",
+            "phi": "2*h*c/(3*lam)",
+            "KE1": "h*c/lam-phi",
+            "KE2": "2*h*c/lam-phi"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "a3312a46",
+        "answer": {
+          "value": 1,
+          "label": "φ = 2hc/(3λ)"
+        }
+      }
+    },
+    {
+      "id": "1ad52ff1-2136-4112-add3-4c958fe27230",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "E_1 = 2\\phi_0:\\ KE_1 = \\phi_0",
+              "f": "KE1",
+              "value": "phi0",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_2 = 3\\phi_0:\\ KE_2 = 2\\phi_0",
+              "f": "KE2",
+              "value": "2*phi0",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{V_1}{V_2} = \\sqrt{\\dfrac{KE_1}{KE_2}} = \\sqrt{\\dfrac12} = \\dfrac{1}{\\sqrt{2}}",
+              "f": "sqrt(KE1/KE2)",
+              "value": "1/sqrt(2)",
+              "note": "KE = ½mV²",
+              "step": "s3"
+            }
+          ],
+          "answer": "sqrt(KE1/KE2)",
+          "vars": {
+            "phi0": "2",
+            "KE1": "2*phi0-phi0",
+            "KE2": "3*phi0-phi0"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "d9c41481",
+        "answer": {
+          "value": 0.7071067811865476,
+          "label": "V₁/V₂ = 1/√2"
+        }
+      }
+    },
+    {
+      "id": "1f354a73-2777-494d-bc7c-3ee533ab7078",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{hc}{\\lambda_1} = \\phi + eV_1\\ \\text{(i)}",
+              "f": "h*c/lam1",
+              "value": "phi+eV1",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{hc}{3\\lambda_1} = \\phi + \\dfrac{eV_1}{6}\\ \\text{(ii)}",
+              "f": "h*c/(3*lam1)",
+              "value": "phi+eV1/6",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{2hc}{\\lambda_1} = 6\\phi + eV_1\\ \\text{(iii)}",
+              "f": "2*h*c/lam1",
+              "value": "6*phi+eV1",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{hc}{\\lambda_1} = 5\\phi",
+              "f": "h*c/lam1",
+              "value": "5*phi",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{hc}{\\lambda_1} = \\dfrac{5hc}{\\lambda_0}",
+              "f": "h*c/lam1",
+              "value": "5*h*c/lam0",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_0 = 5\\lambda_1",
+              "f": "lam0",
+              "value": "5*lam1",
+              "step": "s6"
+            }
+          ],
+          "answer": "lam0/lam1",
+          "vars": {
+            "h": "2",
+            "c": "3",
+            "lam1": "1",
+            "lam0": "5*lam1",
+            "phi": "h*c/lam0",
+            "eV1": "h*c/lam1-phi"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "c15d22f8",
+        "answer": {
+          "value": 5,
+          "label": "λ₀ = 5λ₁"
+        }
+      }
+    },
+    {
+      "id": "20f6ca15-edf7-4bf7-9ecb-8d48ac3e05b5",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\lambda \\propto \\dfrac{1}{\\sqrt{K}}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda' = \\dfrac{1}{4}\\lambda",
+              "f": "1/sqrt(16)",
+              "value": "1/4",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{decrease} = 75\\%",
+              "f": "100*(1-1/4)",
+              "value": "75",
+              "step": "s3"
+            }
+          ],
+          "answer": "100*(1-1/4)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "fe985a4e",
+        "answer": {
+          "value": 75,
+          "label": "75% decrease"
+        }
+      }
+    },
+    {
+      "id": "222adf96-7294-4c24-8c1f-47220afdaceb",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{h}{\\sqrt{2mK}}",
+              "f": "lam",
+              "value": "h/sqrt(2*m*K)",
+              "note": "so λ ∝ 1/√K",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "K \\to 2K:\\ \\lambda' = \\dfrac{\\lambda}{\\sqrt{2}}",
+              "f": "lam2",
+              "value": "lam/sqrt(2)",
+              "step": "s2"
+            }
+          ],
+          "answer": "lam2/lam",
+          "vars": {
+            "h": "2",
+            "m": "1.5",
+            "K": "4",
+            "lam": "h/sqrt(2*m*K)",
+            "lam2": "h/sqrt(2*m*2*K)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "edc84365",
+        "answer": {
+          "value": 0.7071067811865476,
+          "label": "λ′/λ = 1/√2"
+        }
+      }
+    },
+    {
+      "id": "224c0465-8b76-455e-b988-32d6a13d07d3",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "eV = \\dfrac{hc}{\\lambda} - \\phi",
+              "f": "eV",
+              "value": "h*c/lam-phi",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{eV}{4} = \\dfrac{hc}{2\\lambda} - \\phi",
+              "f": "eV/4",
+              "value": "h*c/(2*lam)-phi",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\phi = \\dfrac{hc}{3\\lambda}",
+              "f": "phi",
+              "value": "h*c/(3*lam)",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_0 = 3\\lambda",
+              "f": "lam0",
+              "value": "3*lam",
+              "step": "s4"
+            }
+          ],
+          "answer": "lam0",
+          "vars": {
+            "h": "2",
+            "c": "3",
+            "lam": "1",
+            "phi": "h*c/(3*lam)",
+            "eV": "h*c/lam-phi",
+            "lam0": "h*c/phi"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "0d6180c7",
+        "answer": {
+          "value": 3,
+          "label": "λ₀ = 3λ"
+        }
+      }
+    },
+    {
+      "id": "2325a92c-bccf-4256-8e8e-92d0b5052516",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\tfrac12 mV_1^2 = hF_0",
+              "f": "m*V1^2/2",
+              "value": "h*F0",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\tfrac12 mV_2^2 = 4hF_0",
+              "f": "m*V2^2/2",
+              "value": "4*h*F0",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{V_1^2}{V_2^2} = \\dfrac14",
+              "f": "V1^2/V2^2",
+              "value": "1/4",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{V_1}{V_2} = \\dfrac12",
+              "f": "V1/V2",
+              "value": "1/2",
+              "step": "s4"
+            }
+          ],
+          "answer": "V1/V2",
+          "vars": {
+            "h": "2",
+            "F0": "3",
+            "m": "1.5",
+            "V1": "sqrt(2*h*F0/m)",
+            "V2": "sqrt(2*4*h*F0/m)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "bfe45163",
+        "answer": {
+          "value": 0.5,
+          "label": "V₁/V₂ = 1/2"
+        }
+      }
+    },
+    {
+      "id": "248dffb1-68fa-4c06-ad8b-6341cc7a9cd2",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\lambda \\propto \\dfrac{1}{\\sqrt{V}}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "1.5 = \\sqrt{\\dfrac{V_1}{V_2}}",
+              "f": "1.5",
+              "value": "sqrt(R)",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{V_1}{V_2} = \\dfrac{9}{4}",
+              "f": "1.5^2",
+              "value": "9/4",
+              "step": "s3"
+            }
+          ],
+          "answer": "R",
+          "vars": {
+            "R": "9/4"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "609bfb6a",
+        "answer": {
+          "value": 2.25,
+          "label": "V₁/V₂ = 9 : 4"
+        }
+      }
+    },
+    {
+      "id": "287ffedf-567a-4e3f-8f63-677a144269ee",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{hc}{\\lambda} = W_0 + eV",
+              "f": "h*c/lam",
+              "value": "W0+el*V",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{hc}{W_0 + eV}",
+              "f": "lam",
+              "value": "h*c/(W0+el*V)",
+              "step": "s2"
+            }
+          ],
+          "answer": "h*c/(W0+el*V)",
+          "vars": {
+            "h": "2",
+            "c": "3",
+            "W0": "1",
+            "el": "1.5",
+            "V": "2",
+            "lam": "h*c/(W0+el*V)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "34fafa55",
+        "answer": {
+          "value": 1.5,
+          "label": "λ = hc/(W₀+eV)"
+        }
+      }
+    },
+    {
+      "id": "2a8cb3e1-cd06-435d-8862-f4623bd3a77e",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\lambda \\propto \\dfrac{1}{\\sqrt{T}}",
+              "note": "v ∝ √T for a thermal neutron",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{\\lambda_{927}}{\\lambda_{27}} = \\sqrt{\\dfrac{27+273}{927+273}}",
+              "f": "sqrt((27+273)/(927+273))",
+              "value": "sqrt(300/1200)",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "= \\sqrt{\\dfrac{300}{1200}} = \\dfrac12",
+              "f": "sqrt(300/1200)",
+              "value": "1/2",
+              "note": "so λ₉₂₇ = λ₀/2",
+              "step": "s3"
+            }
+          ],
+          "answer": "sqrt(300/1200)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "2ea299ed",
+        "answer": {
+          "value": 0.5,
+          "label": "λ₉₂₇ = λ₀/2"
+        }
+      }
+    },
+    {
+      "id": "2dcc908c-0c2d-466c-8fa0-0da13da8a860",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{hc}{\\lambda}-\\dfrac{hc}{\\lambda_0} = eV",
+              "f": "h*c/lam-h*c/lam0",
+              "value": "eV",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{hc}{3\\lambda}-\\dfrac{hc}{\\lambda_0} = \\dfrac{eV}{6}",
+              "f": "h*c/(3*lam)-h*c/lam0",
+              "value": "eV/6",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_0 = 5\\lambda",
+              "f": "lam0",
+              "value": "5*lam",
+              "note": "dividing and solving",
+              "step": "s3"
+            }
+          ],
+          "answer": "lam0",
+          "vars": {
+            "h": "2",
+            "c": "3",
+            "lam": "1",
+            "lam0": "5*lam",
+            "eV": "h*c/lam-h*c/lam0"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "0d3603d9",
+        "answer": {
+          "value": 5,
+          "label": "λ₀ = 5λ"
+        }
+      }
+    },
+    {
+      "id": "343ee157-9a06-46c4-8d57-a1151297928f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\tfrac12 mV_1^2 = hn_1 - \\phi",
+              "f": "m*V1^2/2",
+              "value": "h*n1-phi",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\tfrac12 mV_2^2 = hn_2 - \\phi",
+              "f": "m*V2^2/2",
+              "value": "h*n2-phi",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\tfrac12 m(V_1^2 - V_2^2) = h(n_1 - n_2)",
+              "f": "m*(V1^2-V2^2)/2",
+              "value": "h*(n1-n2)",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "V_1^2 - V_2^2 = \\dfrac{2h}{m}(n_1 - n_2)",
+              "f": "V1^2-V2^2",
+              "value": "2*h/m*(n1-n2)",
+              "step": "s4"
+            }
+          ],
+          "answer": "2*h/m*(n1-n2)",
+          "vars": {
+            "h": "2",
+            "m": "1.5",
+            "n1": "5",
+            "n2": "3",
+            "phi": "1",
+            "V1": "sqrt(2*(h*n1-phi)/m)",
+            "V2": "sqrt(2*(h*n2-phi)/m)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "3ad69558",
+        "answer": {
+          "value": 5.333333333333333,
+          "label": "V₁²−V₂² = (2h/m)(n₁−n₂)"
+        }
+      }
+    },
+    {
+      "id": "37ad1eff-6701-44d8-9943-43d62e80313f",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "E_p = \\dfrac{hc}{\\lambda_p} = \\dfrac{hc}{2\\lambda_e}",
+              "f": "h*c/lamp",
+              "value": "h*c/(2*lame)",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_e = \\dfrac{p^2}{2m} = \\dfrac{h^2}{2m\\lambda_e^2}",
+              "f": "p^2/(2*m)",
+              "value": "h^2/(2*m*lame^2)",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{E_p}{E_e} = \\dfrac{hc}{2\\lambda_e}\\cdot\\dfrac{2m\\lambda_e^2}{h^2}",
+              "f": "Ep/Ee",
+              "value": "h*c/(2*lame)*(2*m*lame^2/h^2)",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "= \\dfrac{mc\\lambda_e}{h} = \\dfrac{mc}{p}",
+              "f": "m*c*lame/h",
+              "value": "m*c/p",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "= \\dfrac{mc}{m(c/100)} = 10^2",
+              "f": "m*c/(m*(c/100))",
+              "value": "10^2",
+              "step": "s5"
+            }
+          ],
+          "answer": "Ep/Ee",
+          "vars": {
+            "h": "1.5",
+            "m": "2",
+            "c": "3",
+            "p": "m*c/100",
+            "lame": "h/p",
+            "lamp": "2*lame",
+            "Ep": "h*c/lamp",
+            "Ee": "p^2/(2*m)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "c707278c",
+        "answer": {
+          "value": 100,
+          "label": "E_p/E_e = 10²"
+        }
+      }
+    },
+    {
+      "id": "394c0c45-5c11-416f-85a0-c89da787bf90",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "E_1\\lambda_1 = hc - W_0\\lambda_1",
+              "f": "E1*lam1",
+              "value": "h*c-W0*lam1",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_2\\lambda_2 = hc - W_0\\lambda_2",
+              "f": "E2*lam2",
+              "value": "h*c-W0*lam2",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "W_0(\\lambda_2 - \\lambda_1) = E_1\\lambda_1 - E_2\\lambda_2",
+              "f": "W0*(lam2-lam1)",
+              "value": "E1*lam1-E2*lam2",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "W_0 = \\dfrac{E_1\\lambda_1 - E_2\\lambda_2}{\\lambda_2 - \\lambda_1}",
+              "f": "W0",
+              "value": "(E1*lam1-E2*lam2)/(lam2-lam1)",
+              "step": "s4"
+            }
+          ],
+          "answer": "W0",
+          "vars": {
+            "h": "2",
+            "c": "3",
+            "W0": "1",
+            "lam1": "2",
+            "lam2": "3",
+            "E1": "h*c/lam1-W0",
+            "E2": "h*c/lam2-W0"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "6ddca3f9",
+        "answer": {
+          "value": 1,
+          "label": "W₀ = (E₁λ₁−E₂λ₂)/(λ₂−λ₁)"
+        }
+      }
+    },
+    {
+      "id": "3a4e3a05-039d-4098-a257-b27bc641ac63",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "KE_2 = k\\,KE_1",
+              "f": "KE2",
+              "value": "k*KE1",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\nu_2 - \\nu_0 = k(\\nu_1 - \\nu_0)",
+              "f": "n2-n0",
+              "value": "k*(n1-n0)",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "= k\\nu_1 - k\\nu_0",
+              "f": "k*(n1-n0)",
+              "value": "k*n1-k*n0",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\nu_0(k-1) = k\\nu_1 - \\nu_2",
+              "f": "n0*(k-1)",
+              "value": "k*n1-n2",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\nu_0 = \\dfrac{k\\nu_1 - \\nu_2}{k-1}",
+              "f": "n0",
+              "value": "(k*n1-n2)/(k-1)",
+              "step": "s5"
+            }
+          ],
+          "answer": "n0",
+          "vars": {
+            "h": "2",
+            "n0": "1",
+            "n1": "5",
+            "n2": "3",
+            "k": "0.5",
+            "KE1": "h*(n1-n0)",
+            "KE2": "h*(n2-n0)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "9c515d80",
+        "answer": {
+          "value": 1,
+          "label": "ν₀ = (kν₁−ν₂)/(k−1)"
+        }
+      }
+    },
+    {
+      "id": "3e6e6789-3543-4034-b670-523f441cfb63",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "KE_1 = 2\\phi - \\phi = \\phi",
+              "f": "2*phi-phi",
+              "value": "phi",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "KE_2 = 3\\phi - \\phi = 2\\phi",
+              "f": "3*phi-phi",
+              "value": "2*phi",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{\\frac12 mv_1^2}{\\frac12 mv_2^2} = \\dfrac12",
+              "f": "phi/(2*phi)",
+              "value": "1/2",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "V_1 : V_2 = 1 : \\sqrt{2}",
+              "f": "sqrt(1/2)",
+              "value": "1/sqrt(2)",
+              "step": "s4"
+            }
+          ],
+          "answer": "sqrt(1/2)",
+          "vars": {
+            "phi": "2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "4df24909",
+        "answer": {
+          "value": 0.7071067811865476,
+          "label": "V₁ : V₂ = 1 : √2"
+        }
+      }
+    },
+    {
+      "id": "453a8f92-03ad-45b1-b4db-42a4f4abb9f9",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "E_0 = \\dfrac{hc}{\\lambda} - \\phi",
+              "f": "E0",
+              "value": "h*c/lam-phi",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "4E_0 = \\dfrac{3hc}{\\lambda} - \\phi",
+              "f": "4*E0",
+              "value": "3*h*c/lam-phi",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\phi = \\dfrac{hc}{3\\lambda}",
+              "f": "phi",
+              "value": "h*c/(3*lam)",
+              "step": "s3"
+            }
+          ],
+          "answer": "phi",
+          "vars": {
+            "h": "2",
+            "c": "3",
+            "lam": "1",
+            "phi": "h*c/(3*lam)",
+            "E0": "h*c/lam-phi"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "eb5a3a5a",
+        "answer": {
+          "value": 2,
+          "label": "φ = hc/(3λ)"
+        }
+      }
+    },
+    {
+      "id": "464a7d94-4365-4239-8a59-34069e7cdcad",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "K = \\dfrac{hc}{\\lambda}",
+              "f": "K",
+              "value": "h*c/lam",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_1 = \\dfrac{h}{\\sqrt{2mK}}",
+              "f": "lam1",
+              "value": "h/sqrt(2*m*K)",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "= \\dfrac{h}{\\sqrt{2m\\,hc/\\lambda}}",
+              "f": "lam1",
+              "value": "h/sqrt(2*m*(h*c/lam))",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "= \\dfrac{h\\sqrt{\\lambda}}{\\sqrt{2mhc}}",
+              "f": "lam1",
+              "value": "h*sqrt(lam)/sqrt(2*m*h*c)",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_1^2 = \\dfrac{h^2\\lambda}{2mhc}",
+              "f": "lam1^2",
+              "value": "h^2*lam/(2*m*h*c)",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{\\lambda}{\\lambda_1^2} = \\dfrac{2mhc}{h^2}",
+              "f": "lam/lam1^2",
+              "value": "2*m*h*c/h^2",
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "= \\dfrac{2mc}{h}",
+              "f": "lam/lam1^2",
+              "value": "2*m*c/h",
+              "step": "s7"
+            }
+          ],
+          "answer": "lam/lam1^2",
+          "vars": {
+            "h": "2",
+            "c": "3",
+            "m": "1.5",
+            "lam": "4",
+            "K": "h*c/lam",
+            "lam1": "h/sqrt(2*m*K)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s5",
+              "s6",
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "e02195a0",
+        "answer": {
+          "value": 4.499999999999999,
+          "label": "λ : λ₁² = 2mc : h"
+        }
+      }
+    },
+    {
+      "id": "486740bf-a23e-41df-b54e-2754830e031a",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\lambda \\propto \\dfrac{1}{\\sqrt{mT}}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{\\lambda_H}{\\lambda_{He}} = \\sqrt{\\dfrac{2\\times400}{1\\times300}} = \\sqrt{\\dfrac{8}{3}}",
+              "f": "sqrt(2*400/(1*300))",
+              "value": "sqrt(8/3)",
+              "step": "s2"
+            }
+          ],
+          "answer": "sqrt(2*400/(1*300))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "96820024",
+        "answer": {
+          "value": 1.632993161855452,
+          "label": "λH/λHe = √(8/3)"
+        }
+      }
+    },
+    {
+      "id": "4bda0e4e-5d9c-4f71-80e7-2d743efe3a6d",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "E_p = \\dfrac{hc}{\\lambda_p} = \\dfrac{hc}{2\\lambda_e}",
+              "f": "Ep",
+              "value": "h*c/(2*lame)",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_e = \\tfrac12 mv^2",
+              "f": "Ee",
+              "value": "m*v^2/2",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_e = \\dfrac{h}{mv}",
+              "f": "lame",
+              "value": "h/(m*v)",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{E_p}{E_e} = \\dfrac{hc}{2\\lambda_e}\\cdot\\dfrac{2}{mv^2}",
+              "f": "Ep/Ee",
+              "value": "h*c/(2*lame)*(2/(m*v^2))",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "= \\dfrac{hc}{\\lambda_e mv^2}",
+              "f": "Ep/Ee",
+              "value": "h*c/(lame*m*v^2)",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "= \\dfrac{hc\\cdot mv}{h\\,mv^2}",
+              "f": "Ep/Ee",
+              "value": "h*c*m*v/(h*m*v^2)",
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "= \\dfrac{c}{v} = 100",
+              "f": "c/v",
+              "value": "100",
+              "step": "s7"
+            }
+          ],
+          "answer": "Ep/Ee",
+          "vars": {
+            "h": "1.5",
+            "m": "2",
+            "c": "300",
+            "v": "c/100",
+            "lame": "h/(m*v)",
+            "lamp": "2*lame",
+            "Ep": "h*c/lamp",
+            "Ee": "m*v^2/2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4",
+              "s5",
+              "s6",
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "048752d0",
+        "answer": {
+          "value": 100,
+          "label": "E_p/E_e = 10²"
+        }
+      }
+    },
+    {
+      "id": "4eaa3f12-e21b-413b-ad35-5ba88042b91e",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\lambda_{th} = \\dfrac{hc}{\\phi}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{\\lambda_{Na}}{\\lambda_{Cu}} = \\dfrac{\\phi_{Cu}}{\\phi_{Na}} = \\dfrac{4.5}{2.3} \\approx 2",
+              "f": "4.5/2.3",
+              "value": "2",
+              "dp": 0,
+              "step": "s2"
+            }
+          ],
+          "answer": "2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "5bfc2049",
+        "answer": {
+          "value": 2,
+          "label": "λNa : λCu ≈ 2 : 1"
+        }
+      }
+    },
+    {
+      "id": "519bce3c-95c8-456e-978d-8ba7583c4ae2",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{3hc}{\\lambda} - \\phi = 4\\left(\\dfrac{hc}{\\lambda} - \\phi\\right)",
+              "f": "3*h*c/lam-phi",
+              "value": "4*(h*c/lam-phi)",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "3\\phi = \\dfrac{hc}{\\lambda}",
+              "f": "3*phi",
+              "value": "h*c/lam",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\phi = \\dfrac{hc}{3\\lambda}",
+              "f": "phi",
+              "value": "h*c/(3*lam)",
+              "step": "s3"
+            }
+          ],
+          "answer": "phi",
+          "vars": {
+            "h": "2",
+            "c": "3",
+            "lam": "1",
+            "phi": "h*c/(3*lam)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "6f1c3432",
+        "answer": {
+          "value": 2,
+          "label": "φ = hc/(3λ)"
+        }
+      }
+    },
+    {
+      "id": "533732d0-a76f-4813-ad22-bc7f166ec07d",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "E_{ph} = \\dfrac{hc}{\\lambda}",
+              "f": "Eph",
+              "value": "h*c/lam",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{h}{\\sqrt{2m\\,KE}}",
+              "f": "lam",
+              "value": "h/sqrt(2*m*KE)",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "KE = \\dfrac{h^2}{2m\\lambda^2}",
+              "f": "KE",
+              "value": "h^2/(2*m*lam^2)",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{KE}{E_{ph}} = \\dfrac{h^2/2m\\lambda^2}{hc/\\lambda}",
+              "f": "KE/Eph",
+              "value": "(h^2/(2*m*lam^2))/(h*c/lam)",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "= \\dfrac{h}{2\\lambda mc}",
+              "f": "KE/Eph",
+              "value": "h/(2*lam*m*c)",
+              "step": "s5"
+            }
+          ],
+          "answer": "KE/Eph",
+          "vars": {
+            "h": "2",
+            "c": "3",
+            "m": "1.5",
+            "lam": "4",
+            "Eph": "h*c/lam",
+            "KE": "h^2/(2*m*lam^2)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "b2cf7402",
+        "answer": {
+          "value": 0.05555555555555555,
+          "label": "KE/E_ph = h/(2λmc)"
+        }
+      }
+    },
+    {
+      "id": "548729fd-e098-437f-8743-28f96e59a68c",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\lambda_1 = \\dfrac{h}{\\sqrt{2mE}}",
+              "f": "lam1",
+              "value": "h/sqrt(2*m*E)",
+              "note": "proportional to E^(−1/2)",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_2 = \\dfrac{hc}{E}",
+              "f": "lam2",
+              "value": "h*c/E",
+              "note": "proportional to E^(−1)",
+              "step": "s2"
+            },
+            {
+              "kind": "note",
+              "tex": "\\dfrac{\\lambda_1}{\\lambda_2} \\propto \\sqrt{E}",
+              "step": "s3"
+            }
+          ],
+          "answer": "lam1/lam2",
+          "vars": {
+            "h": "2",
+            "c": "3",
+            "m": "1.5",
+            "E": "4",
+            "lam1": "h/sqrt(2*m*E)",
+            "lam2": "h*c/E"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "bb0d3fc5",
+        "answer": {
+          "value": 0.3849001794597506,
+          "label": "λ₁/λ₂ ∝ √E"
+        }
+      }
+    },
+    {
+      "id": "57f0d3c3-4954-410f-a215-27a7680865b8",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\lambda_p = \\dfrac{hc}{E}",
+              "f": "lamp",
+              "value": "h*c/E",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_e = \\dfrac{h}{\\sqrt{2mE}}",
+              "f": "lame",
+              "value": "h/sqrt(2*m*E)",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{\\lambda_p}{\\lambda_e} = c\\sqrt{\\dfrac{2m}{E}}",
+              "f": "lamp/lame",
+              "value": "c*sqrt(2*m/E)",
+              "step": "s3"
+            }
+          ],
+          "answer": "lamp/lame",
+          "vars": {
+            "h": "2",
+            "c": "3",
+            "m": "1.5",
+            "E": "4",
+            "lamp": "h*c/E",
+            "lame": "h/sqrt(2*m*E)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "8502cbba",
+        "answer": {
+          "value": 2.5980762113533156,
+          "label": "λp/λe = c√(2m/E)"
+        }
+      }
+    },
+    {
+      "id": "5af0ced9-296d-41fc-9fb2-a341fc73dd8b",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{h}{\\sqrt{2mqV}}",
+              "f": "lamp",
+              "value": "h/sqrt(2*mp*qp*V)",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "m_\\alpha q_\\alpha = 8\\,m_p q_p",
+              "f": "ma*qa",
+              "value": "8*mp*qp",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{\\lambda_\\alpha}{\\lambda_p} = \\dfrac{1}{\\sqrt{8}}",
+              "f": "lama/lamp",
+              "value": "1/sqrt(8)",
+              "step": "s3"
+            }
+          ],
+          "answer": "(lamp/lama)^2",
+          "vars": {
+            "h": "2",
+            "V": "3",
+            "mp": "1",
+            "qp": "1",
+            "ma": "4",
+            "qa": "2",
+            "lamp": "h/sqrt(2*mp*qp*V)",
+            "lama": "h/sqrt(2*ma*qa*V)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f6a2b464",
+        "answer": {
+          "value": 8.000000000000002,
+          "label": "m = 8"
+        }
+      }
+    },
+    {
+      "id": "61d1bb88-7a36-4274-8db1-28fd6734c7dd",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "KE_{max} = eV_s",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "KE_{max} = 1.6\\times10^{-19}\\times10 = 1.6\\times10^{-18}\\ \\text{J}",
+              "f": "1.6*10^(-19)*10",
+              "value": "1.6*10^(-18)",
+              "sf": 2,
+              "step": "s2"
+            }
+          ],
+          "answer": "1.6*10^(-18)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "09d02670",
+        "answer": {
+          "value": 1.6000000000000002e-18,
+          "label": "1.6 × 10⁻¹⁸ J"
+        }
+      }
+    },
+    {
+      "id": "647b9830-c0d2-46cc-b35c-711b73708600",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "eV = \\dfrac{hc}{\\lambda} - \\phi",
+              "f": "eV",
+              "value": "h*c/lam-phi",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{eV}{12} = \\dfrac{hc}{6\\lambda} - \\phi",
+              "f": "eV/12",
+              "value": "h*c/(6*lam)-phi",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "eV = \\dfrac{2hc}{\\lambda} - 12\\phi",
+              "f": "eV",
+              "value": "2*h*c/lam-12*phi",
+              "note": "multiplying the second by 12",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{hc}{\\lambda} - \\phi = \\dfrac{2hc}{\\lambda} - 12\\phi",
+              "f": "h*c/lam-phi",
+              "value": "2*h*c/lam-12*phi",
+              "note": "equating",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\phi = \\dfrac{hc}{11\\lambda}",
+              "f": "phi",
+              "value": "h*c/(11*lam)",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_0 = 11\\lambda",
+              "f": "lam0",
+              "value": "11*lam",
+              "step": "s6"
+            }
+          ],
+          "answer": "lam0",
+          "vars": {
+            "h": "2",
+            "c": "3",
+            "lam": "1",
+            "phi": "h*c/(11*lam)",
+            "eV": "h*c/lam-phi",
+            "lam0": "h*c/phi"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4",
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "fd35e57e",
+        "answer": {
+          "value": 11,
+          "label": "λ₀ = 11λ"
+        }
+      }
+    },
+    {
+      "id": "6504d828-b08e-437d-b2ce-31d0fc753342",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "eV_0 = h(v - v_0)",
+              "f": "el*V0",
+              "value": "h*(v-nu0)",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "e\\dfrac{V_0}{4} = h\\left(\\dfrac{v}{2} - v_0\\right)",
+              "f": "el*V0/4",
+              "value": "h*(v/2-nu0)",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "v_0 = \\dfrac{v}{3}",
+              "f": "nu0",
+              "value": "v/3",
+              "note": "dividing and solving",
+              "step": "s3"
+            }
+          ],
+          "answer": "nu0",
+          "vars": {
+            "h": "2",
+            "v": "3",
+            "nu0": "v/3",
+            "el": "1",
+            "V0": "h*(v-nu0)/el"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "afd22f69",
+        "answer": {
+          "value": 1,
+          "label": "v₀ = v/3"
+        }
+      }
+    },
+    {
+      "id": "660dcb2b-b9aa-4780-a7af-df3496c372c7",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "KE_1 = 3W - W = 2W",
+              "f": "3*W-W",
+              "value": "2*W",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "KE_2 = 5W - W = 4W",
+              "f": "5*W-W",
+              "value": "4*W",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "v_1 : v_2 = \\sqrt{2} : \\sqrt{4} = 1 : \\sqrt{2}",
+              "f": "sqrt(2)/sqrt(4)",
+              "value": "1/sqrt(2)",
+              "note": "v ∝ √K",
+              "step": "s3"
+            }
+          ],
+          "answer": "sqrt(2)/sqrt(4)",
+          "vars": {
+            "W": "2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "6e832134",
+        "answer": {
+          "value": 0.7071067811865476,
+          "label": "v₁ : v₂ = 1 : √2"
+        }
+      }
+    },
+    {
+      "id": "67814957-0029-44a5-bae9-5a24e4be5202",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{hc}{\\lambda} = \\phi_0 + 4eV_0",
+              "f": "h*c/lam",
+              "value": "phi0+4*eV0",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{hc}{3\\lambda} = \\phi_0 + eV_0",
+              "f": "h*c/(3*lam)",
+              "value": "phi0+eV0",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\phi_0 = \\dfrac{hc}{9\\lambda}",
+              "f": "phi0",
+              "value": "h*c/(9*lam)",
+              "note": "subtracting",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_0 = 9\\lambda",
+              "f": "lam0",
+              "value": "9*lam",
+              "step": "s4"
+            }
+          ],
+          "answer": "lam0",
+          "vars": {
+            "h": "2",
+            "c": "3",
+            "lam": "1",
+            "phi0": "h*c/(9*lam)",
+            "eV0": "h*c/(3*lam)-phi0",
+            "lam0": "h*c/phi0"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "c04e1ace",
+        "answer": {
+          "value": 9,
+          "label": "λ₀ = 9λ"
+        }
+      }
+    },
+    {
+      "id": "6ba56841-819b-4f06-823d-b60b62ff7853",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "KE = 10 - \\Phi_0",
+              "f": "KE",
+              "value": "10-Phi0",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "p = mv = \\sqrt{2m(10 - \\Phi_0)}",
+              "f": "m*v",
+              "value": "sqrt(2*m*(10-Phi0))",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "R = \\dfrac{mv}{eB} = \\dfrac{\\sqrt{2m(10-\\Phi_0)}}{eB}",
+              "f": "m*v/(el*B)",
+              "value": "sqrt(2*m*(10-Phi0))/(el*B)",
+              "step": "s3"
+            }
+          ],
+          "answer": "R",
+          "vars": {
+            "m": "1.5",
+            "Phi0": "4",
+            "el": "1.2",
+            "B": "2",
+            "KE": "10-Phi0",
+            "v": "sqrt(2*KE/m)",
+            "R": "m*v/(el*B)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "8c125371",
+        "answer": {
+          "value": 1.767766952966369,
+          "label": "R = √(2m(10−Φ₀))/(eB)"
+        }
+      }
+    },
+    {
+      "id": "6d381188-8df6-4c6b-8e7c-fdd9ca072950",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{h}{\\sqrt{2mqV}}",
+              "f": "lamp",
+              "value": "h/sqrt(2*mp*qp*V)",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{\\lambda_p}{\\lambda_\\alpha} = \\sqrt{\\dfrac{4\\times2}{1}} = 2\\sqrt{2}",
+              "f": "lamp/lama",
+              "value": "2*sqrt(2)",
+              "step": "s2"
+            }
+          ],
+          "answer": "lamp/lama",
+          "vars": {
+            "h": "2",
+            "V": "3",
+            "mp": "1",
+            "qp": "1",
+            "ma": "4*mp",
+            "qa": "2*qp",
+            "lamp": "h/sqrt(2*mp*qp*V)",
+            "lama": "h/sqrt(2*ma*qa*V)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "f708ca24",
+        "answer": {
+          "value": 2.8284271247461903,
+          "label": "λp/λα = 2√2"
+        }
+      }
+    },
+    {
+      "id": "6d74f6a1-4039-467e-b129-20f42096ba59",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "p = eEt",
+              "step": "s1"
+            },
+            {
+              "kind": "expr",
+              "tex": "\\lambda = \\dfrac{h}{eEt}",
+              "f": "h/(el*Ef*x)",
+              "domain": [
+                0.5,
+                4
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "deriv",
+              "tex": "\\dfrac{d\\lambda}{dt} = -\\dfrac{h}{eEt^2}",
+              "f": "-h/(el*Ef*x^2)",
+              "step": "s3"
+            }
+          ],
+          "answer": "-h/(el*Ef*tt^2)",
+          "vars": {
+            "h": "2",
+            "el": "1.5",
+            "Ef": "2",
+            "tt": "3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "fd143a4f",
+        "answer": {
+          "value": -0.07407407407407407,
+          "label": "dλ/dt = −h/(eEt²)"
+        }
+      }
+    },
+    {
+      "id": "741d2e89-9cbe-4118-a6e8-836dccc526a4",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "KE_1 = 2\\phi - \\phi = \\phi",
+              "f": "2*phi-phi",
+              "value": "phi",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "KE_2 = 5\\phi - \\phi = 4\\phi",
+              "f": "5*phi-phi",
+              "value": "4*phi",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{v_1}{v_2} = \\sqrt{\\dfrac{\\phi}{4\\phi}} = \\dfrac12",
+              "f": "sqrt(phi/(4*phi))",
+              "value": "1/2",
+              "note": "v ∝ √KE",
+              "step": "s3"
+            }
+          ],
+          "answer": "sqrt(phi/(4*phi))",
+          "vars": {
+            "phi": "2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e2b19790",
+        "answer": {
+          "value": 0.5,
+          "label": "v₁ : v₂ = 1 : 2"
+        }
+      }
+    },
+    {
+      "id": "74421b2e-0774-4be3-a24e-7fe9149c6ac3",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{h}{\\sqrt{2mqV}}",
+              "f": "lam",
+              "value": "h/sqrt(2*m*q*V)",
+              "note": "so λ ∝ 1/√V",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "V \\to 2V:\\ \\lambda' = \\dfrac{\\lambda}{\\sqrt{2}}",
+              "f": "lam2",
+              "value": "lam/sqrt(2)",
+              "step": "s2"
+            }
+          ],
+          "answer": "lam2/lam",
+          "vars": {
+            "h": "2",
+            "m": "1.5",
+            "q": "1.2",
+            "V": "3",
+            "lam": "h/sqrt(2*m*q*V)",
+            "lam2": "h/sqrt(2*m*q*(2*V))"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "6c9bb31c",
+        "answer": {
+          "value": 0.7071067811865475,
+          "label": "λ′/λ = 1/√2"
+        }
+      }
+    },
+    {
+      "id": "7930d6ef-8b4a-44cc-a6db-08dbf2e2cfda",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\tfrac12 mv^2 = h(3\\nu) - h\\nu = 2h\\nu",
+              "f": "m*v^2/2",
+              "value": "2*h*nu",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "v = \\sqrt{\\dfrac{4h\\nu}{m}}",
+              "f": "v",
+              "value": "sqrt(4*h*nu/m)",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "v = 2\\sqrt{\\dfrac{h\\nu}{m}}",
+              "f": "v",
+              "value": "2*sqrt(h*nu/m)",
+              "step": "s3"
+            }
+          ],
+          "answer": "v",
+          "vars": {
+            "h": "2",
+            "nu": "3",
+            "m": "1.5",
+            "v": "sqrt(4*h*nu/m)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a516e775",
+        "answer": {
+          "value": 4,
+          "label": "v = 2√(hν/m)"
+        }
+      }
+    },
+    {
+      "id": "7f50c53b-7f51-44a6-ae24-df66f8deffee",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "E = \\dfrac{1240}{310} = 4.0\\ \\text{eV}",
+              "f": "1240/310",
+              "value": "4",
+              "dp": 1,
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "V_0 = E - \\phi = 4.0 - 1.13 \\approx 2.87\\ \\text{V}",
+              "f": "4.0-1.13",
+              "value": "2.87",
+              "dp": 2,
+              "step": "s2"
+            }
+          ],
+          "answer": "4.0-1.13"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "f10d2625",
+        "answer": {
+          "value": 2.87,
+          "label": "V₀ ≈ 2.87 V"
+        }
+      }
+    },
+    {
+      "id": "80f0248e-7d01-4504-a66f-21c1b7215a22",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "10.1 + 2.65 = 12.75\\ \\text{eV}",
+              "f": "10.1+2.65",
+              "value": "12.75",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "12.75 = 13.6 - 0.85\\ \\text{eV}",
+              "f": "13.6-0.85",
+              "value": "12.75",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "0.85 = \\dfrac{13.6}{16}",
+              "f": "13.6/16",
+              "value": "0.85",
+              "step": "s3"
+            },
+            {
+              "kind": "note",
+              "tex": "n = 4",
+              "step": "s4"
+            }
+          ],
+          "answer": "4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "614a8aa8",
+        "answer": {
+          "value": 4,
+          "label": "n = 4"
+        }
+      }
+    },
+    {
+      "id": "82cf2302-c0fd-4ad2-949a-289f06047b3c",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "E = \\dfrac{6.6\\times10^{-34}\\times3\\times10^8}{6\\times10^{-7}} = 3.3\\times10^{-19}\\ \\text{J}",
+              "f": "6.6*10^(-34)*3*10^8/(6*10^(-7))",
+              "value": "3.3*10^(-19)",
+              "sf": 2,
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "N = \\dfrac{3.3\\times10^{-3}}{3.3\\times10^{-19}} = 10^{16}\\ \\text{per second}",
+              "f": "3.3*10^(-3)/(3.3*10^(-19))",
+              "value": "10^16",
+              "sf": 2,
+              "step": "s2"
+            }
+          ],
+          "answer": "10^16"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "82175fb1",
+        "answer": {
+          "value": 10000000000000000,
+          "label": "10¹⁶ photons per second"
+        }
+      }
+    },
+    {
+      "id": "83c67e39-94e5-45c1-846a-f93fe2ea07fe",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "KE_1 = h(2f_0 - f_0) = hf_0",
+              "f": "KE1",
+              "value": "h*f0",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "KE_2 = h(5f_0 - f_0) = 4hf_0",
+              "f": "KE2",
+              "value": "4*h*f0",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "v_1 : v_2 = 1 : 2",
+              "f": "sqrt(KE1/KE2)",
+              "value": "1/2",
+              "note": "v ∝ √KE",
+              "step": "s3"
+            }
+          ],
+          "answer": "sqrt(KE1/KE2)",
+          "vars": {
+            "h": "2",
+            "f0": "3",
+            "KE1": "h*(2*f0-f0)",
+            "KE2": "h*(5*f0-f0)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a728c353",
+        "answer": {
+          "value": 0.5,
+          "label": "v₁ : v₂ = 1 : 2"
+        }
+      }
+    },
+    {
+      "id": "8615d068-07d9-476e-8713-c6cea0da339e",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{\\nu_1 - \\nu_0}{\\nu_2 - \\nu_0} = \\dfrac{3}{K}",
+              "f": "(n1-n0)/(n2-n0)",
+              "value": "3/K",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "K\\nu_1 - K\\nu_0 = 3\\nu_2 - 3\\nu_0",
+              "f": "K*n1-K*n0",
+              "value": "3*n2-3*n0",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\nu_0 = \\dfrac{K\\nu_1 - 3\\nu_2}{K - 3}",
+              "f": "n0",
+              "value": "(K*n1-3*n2)/(K-3)",
+              "step": "s3"
+            }
+          ],
+          "answer": "n0",
+          "vars": {
+            "n0": "1",
+            "n1": "5",
+            "n2": "3",
+            "K": "1.5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "b0687b24",
+        "answer": {
+          "value": 1,
+          "label": "ν₀ = (Kν₁−3ν₂)/(K−3)"
+        }
+      }
+    },
+    {
+      "id": "87b8965a-e606-4417-8b7f-41a41471590b",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "KE_1 = h(v_1 - v_0)",
+              "f": "KE1",
+              "value": "h*(v1-v0)",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "KE_2 = h(v_2 - v_0)",
+              "f": "KE2",
+              "value": "h*(v2-v0)",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{KE_1}{KE_2} = \\dfrac{1}{x}",
+              "f": "KE1/KE2",
+              "value": "1/xx",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "x(v_1 - v_0) = v_2 - v_0",
+              "f": "xx*(v1-v0)",
+              "value": "v2-v0",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "v_0 = \\dfrac{xv_1 - v_2}{x - 1}",
+              "f": "v0",
+              "value": "(xx*v1-v2)/(xx-1)",
+              "step": "s5"
+            }
+          ],
+          "answer": "v0",
+          "vars": {
+            "h": "2",
+            "v0": "1",
+            "v1": "5",
+            "v2": "3",
+            "xx": "0.5",
+            "KE1": "h*(v1-v0)",
+            "KE2": "h*(v2-v0)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "ea70819f",
+        "answer": {
+          "value": 1,
+          "label": "v₀ = (xv₁−v₂)/(x−1)"
+        }
+      }
+    },
+    {
+      "id": "8b48362e-fb5c-4d0b-94a0-33373b0555d1",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\phi_0 = h\\nu",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\tfrac12 mv^2 = h(4\\nu) - h\\nu = 3h\\nu",
+              "f": "m*v^2/2",
+              "value": "3*h*nu",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "v = \\sqrt{\\dfrac{6h\\nu}{m}}",
+              "f": "v",
+              "value": "sqrt(6*h*nu/m)",
+              "step": "s3"
+            }
+          ],
+          "answer": "v",
+          "vars": {
+            "h": "2",
+            "nu": "3",
+            "m": "1.5",
+            "v": "sqrt(6*h*nu/m)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "7c49bada",
+        "answer": {
+          "value": 4.898979485566356,
+          "label": "v = √(6hν/m)"
+        }
+      }
+    },
+    {
+      "id": "8e967ead-8df0-47ee-806c-51470c4d845a",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "K = h\\nu - W_0",
+              "f": "K",
+              "value": "h*nu-W0",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "K' = 2h\\nu - W_0",
+              "f": "K2",
+              "value": "2*h*nu-W0",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "K' = K + h\\nu",
+              "f": "K2",
+              "value": "K+h*nu",
+              "step": "s3"
+            }
+          ],
+          "answer": "K2",
+          "vars": {
+            "h": "2",
+            "nu": "3",
+            "W0": "1",
+            "K": "h*nu-W0",
+            "K2": "2*h*nu-W0"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "b18abb46",
+        "answer": {
+          "value": 11,
+          "label": "K′ = K + hν"
+        }
+      }
+    },
+    {
+      "id": "93bd7f76-f3aa-4f31-b2e8-edf13de39047",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{hc}{\\lambda} = \\dfrac{p^2}{2m}",
+              "f": "h*c/lam",
+              "value": "p^2/(2*m)",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "= \\dfrac{h^2}{2m\\lambda_1^2}",
+              "f": "p^2/(2*m)",
+              "value": "h^2/(2*m*lam1^2)",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{2mc\\lambda_1^2}{h}",
+              "f": "lam",
+              "value": "2*m*c*lam1^2/h",
+              "note": "proportional to λ₁²",
+              "step": "s3"
+            }
+          ],
+          "answer": "lam",
+          "vars": {
+            "h": "2",
+            "c": "3",
+            "m": "1.5",
+            "lam1": "2",
+            "p": "h/lam1",
+            "lam": "2*m*c*lam1^2/h"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "5eaac348",
+        "answer": {
+          "value": 18,
+          "label": "λ = 2mcλ₁²/h"
+        }
+      }
+    },
+    {
+      "id": "93bf776f-52bb-4c5b-9125-14bd30868178",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{h}{\\sqrt{2meV}}",
+              "f": "lam",
+              "value": "h/sqrt(2*m*el*V1)",
+              "note": "so λ ∝ 1/√V",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "V_2 = \\dfrac{V_1}{4}",
+              "f": "V2",
+              "value": "V1/4",
+              "note": "doubling λ",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{V_1}{V_2} = 4 : 1",
+              "f": "V1/V2",
+              "value": "4",
+              "step": "s3"
+            }
+          ],
+          "answer": "V1/V2",
+          "vars": {
+            "h": "2",
+            "m": "1.5",
+            "el": "1.2",
+            "V1": "3",
+            "lam": "h/sqrt(2*m*el*V1)",
+            "lam2": "2*lam",
+            "V2": "h^2/(2*m*el*lam2^2)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e33a5811",
+        "answer": {
+          "value": 4,
+          "label": "V₁ : V₂ = 4 : 1"
+        }
+      }
+    },
+    {
+      "id": "9551f197-c910-4f8a-adda-bdb8768f5a60",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "2\\pi r = n\\lambda",
+              "f": "2*pi*r",
+              "value": "n*lam",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{2\\pi r}{n}",
+              "f": "lam",
+              "value": "2*pi*r/n",
+              "step": "s2"
+            },
+            {
+              "kind": "note",
+              "tex": "\\lambda \\propto \\dfrac{n^2}{n} = n",
+              "note": "since r ∝ n²",
+              "step": "s3"
+            }
+          ],
+          "answer": "lam/(2*pi*r1)",
+          "vars": {
+            "n": "3",
+            "r1": "2",
+            "r": "n^2*r1",
+            "lam": "2*pi*r/n"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "146ef9da",
+        "answer": {
+          "value": 3,
+          "label": "λ ∝ n"
+        }
+      }
+    },
+    {
+      "id": "9862fa23-ab4a-4a8d-bebd-dbd247e1431f",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "4.8e = \\dfrac{hc}{\\lambda} - \\phi",
+              "f": "4.8*el",
+              "value": "h*c/lam-phi",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "1.6e = \\dfrac{hc}{2\\lambda} - \\phi",
+              "f": "1.6*el",
+              "value": "h*c/(2*lam)-phi",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\phi = \\dfrac{hc}{4\\lambda}",
+              "f": "phi",
+              "value": "h*c/(4*lam)",
+              "note": "dividing and solving",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_T = 4\\lambda",
+              "f": "lamT",
+              "value": "4*lam",
+              "step": "s4"
+            }
+          ],
+          "answer": "lamT",
+          "vars": {
+            "h": "2",
+            "c": "3.2",
+            "lam": "1",
+            "el": "1",
+            "phi": "h*c/(4*lam)",
+            "lamT": "h*c/phi"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "40d1d2a7",
+        "answer": {
+          "value": 4,
+          "label": "λ_T = 4λ"
+        }
+      }
+    },
+    {
+      "id": "9f41006b-8527-4747-acc4-9297498a75ea",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "n\\lambda_n = 2\\pi r_n",
+              "f": "n*lam",
+              "value": "2*pi*rn",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "r_n = n^2 r",
+              "f": "rn",
+              "value": "n^2*r",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_n = \\dfrac{2\\pi n^2 r}{n} = 2\\pi nr",
+              "f": "lam",
+              "value": "2*pi*n*r",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_4 = 8\\pi r",
+              "f": "lam",
+              "value": "8*pi*r",
+              "step": "s4"
+            }
+          ],
+          "answer": "lam",
+          "vars": {
+            "n": "4",
+            "r": "2",
+            "rn": "n^2*r",
+            "lam": "2*pi*rn/n"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "f64d5516",
+        "answer": {
+          "value": 50.26548245743669,
+          "label": "λ₄ = 8πr"
+        }
+      }
+    },
+    {
+      "id": "9f99f216-24e4-4199-a3af-2ee0e9379aa1",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "eV = \\dfrac{hc}{\\lambda} - \\phi",
+              "f": "eV",
+              "value": "h*c/lam-phi",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{eV}{3} = \\dfrac{hc}{2\\lambda} - \\phi",
+              "f": "eV/3",
+              "value": "h*c/(2*lam)-phi",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "eV = \\dfrac{3hc}{4\\lambda}",
+              "f": "eV",
+              "value": "3*h*c/(4*lam)",
+              "note": "subtracting",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\phi = \\dfrac{hc}{4\\lambda}",
+              "f": "phi",
+              "value": "h*c/(4*lam)",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_0 = 4\\lambda",
+              "f": "lam0",
+              "value": "4*lam",
+              "step": "s5"
+            }
+          ],
+          "answer": "lam0",
+          "vars": {
+            "h": "2",
+            "c": "3",
+            "lam": "1",
+            "phi": "h*c/(4*lam)",
+            "eV": "3*h*c/(4*lam)",
+            "lam0": "h*c/phi"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "d0e70292",
+        "answer": {
+          "value": 4,
+          "label": "λ₀ = 4λ"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
