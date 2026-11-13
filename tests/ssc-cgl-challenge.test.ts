@@ -172,6 +172,14 @@ describe("assembleChallenge", () => {
     expect([...qs.map((q) => q.number)].sort((x, y) => x - y)).toEqual(Array.from({ length: 100 }, (_, i) => i + 1));
   });
 
+  it("ignores a blue mark in a capture's header, above its PART buttons on the same page", () => {
+    const pages = paper(100);
+    for (const k of [1, 2, 3]) pages[k * 5].breaks = [50];
+    // the capture opening on pages[5] prints a blue bar in its header box, above the buttons
+    pages[5].marks.unshift({ y0: 20, y1: 40 });
+    expect(assembleChallenge(pages, CHSL_LAYOUT)).toHaveLength(100);
+  });
+
   it("refuses a capture that does not hold its part's 25 questions", () => {
     const pages = paper(100);
     pages[5].breaks = [50];

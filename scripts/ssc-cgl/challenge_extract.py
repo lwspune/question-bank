@@ -153,9 +153,10 @@ def main():
         a = page_array(doc, doc[pno])
         if a is None:
             continue
-        # a vector page (each capture's first) has no page picture: it was rendered, not scanned
+        # each capture's first page was saved with a real text layer (rendered, not scanned, or a page
+        # picture with the text laid over it): it colours only the candidate's own choice
         imgs = doc[pno].get_images(full=True)
-        vector = not imgs or max(x[2] for x in imgs) < 1000
+        vector = not imgs or max(x[2] for x in imgs) < 1000 or len(doc[pno].get_text().strip()) > 200
         pages.append({"page": pno + 1, "vector": vector, **measure(a)})
     with open(os.path.join(out, "challenge.json"), "w", encoding="utf8") as f:
         json.dump({"pdf": pdf, "pages": pages}, f)

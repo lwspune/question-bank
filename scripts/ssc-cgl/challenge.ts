@@ -66,7 +66,10 @@ const before = (a: Pos, b: Pos) => a.page < b.page || (a.page === b.page && a.y 
  */
 export function assembleChallenge(pages: ChallengePage[], layout: Section[], order?: Part[]): ChallengeQuestion[] {
   const sorted = [...pages].sort((a, b) => a.page - b.page);
-  const marks: Pos[] = sorted.flatMap((p) => p.marks.map((m) => ({ page: p.page, y: m.y0 })));
+  // A capture opens on a fresh page: a blue mark above its PART buttons is the header's, no question.
+  const marks: Pos[] = sorted.flatMap((p) =>
+    p.marks.filter((m) => !(p.breaks ?? []).some((b) => m.y0 < b)).map((m) => ({ page: p.page, y: m.y0 }))
+  );
   const want = layout.reduce((n, s) => n + s.count, 0);
   if (marks.length !== want) throw new Error(`${marks.length} questions, expected ${want}`);
   const heightOf = new Map(sorted.map((p) => [p.page, p.height]));
