@@ -17,7 +17,7 @@
 import { createClient } from "@supabase/supabase-js";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { OUT, requireExamId, requireShift, tierOf } from "./config";
+import { OUT, requireExamIdOf, requireShift } from "./config";
 import { parseCommitRows, type CommitRow } from "./rows";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -32,7 +32,7 @@ async function main() {
   const only = new Set(nums("only"));
   const allow = new Set(nums("allow"));
   if (!only.size) throw new Error("name the questions: --only=20,21");
-  const examId = requireExamId(tierOf(shift.id));
+  const examId = requireExamIdOf(shift.id);
 
   const file = join(OUT, shift.id, "rows.json");
   if (!existsSync(file)) throw new Error(`${file} not found: run build.ts ${shift.id} first`);

@@ -16,7 +16,7 @@ import { createClient } from "@supabase/supabase-js";
 import { copyFileSync, existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, join } from "node:path";
 import { uploadImage } from "../../src/lib/storage/images";
-import { ORG_ID, requireExamId, requireShift, tierOf } from "./config";
+import { ORG_ID, requireExamIdOf, requireShift } from "./config";
 import { figureRow, rowHash } from "./liveFigures";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -51,7 +51,7 @@ async function main() {
   if (!changed.length) return console.log("nothing to change: every picture in --from matches the current one");
 
   const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
-  const examId = requireExamId(tierOf(shift.id));
+  const examId = requireExamIdOf(shift.id);
   const { data: q, error } = await db
     .from("questions")
     .select("id, image_url, content_hash, options(id, label, image_url)")

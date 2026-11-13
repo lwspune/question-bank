@@ -2,7 +2,7 @@
  * Turn every TCS file's geometry (tcs_extract.py) into questions, one folder per shift.
  *
  *   python -P scripts/ssc-cgl/tcs_extract.py <dayId> "<pdf>"     (each TCS day in DAYS)
- *   npx tsx scripts/ssc-cgl/assemble-tcs.ts --year=2024 [--tier=2]   (--year is the SITTING year)
+ *   npx tsx scripts/ssc-cgl/assemble-tcs.ts --year=2024 [--tier=2] [--exam=chsl]   (--year is the SITTING year)
  *
  * A file with no text layer (the 2022 vector print) is read by vector.ts instead, its date
  * and shift taken from config (DAYS[...].shiftFiles), since its header is glyphs.
@@ -17,7 +17,7 @@
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { OUT, SHIFTS, layoutOf, tcsFiles } from "./config";
+import { OUT, SHIFTS, idPrefix, layoutOf, tcsFiles, type ExamKey } from "./config";
 import {
   assembleTcs,
   groupTcsShifts,
@@ -41,10 +41,12 @@ function main() {
   const year = process.argv
     .find((a) => a.startsWith("--year="))
     ?.slice("--year=".length);
-  if (!year) throw new Error("usage: assemble-tcs.ts --year=YYYY [--tier=2]");
+  if (!year) throw new Error("usage: assemble-tcs.ts --year=YYYY [--tier=2] [--exam=chsl]");
+  const exam = (process.argv.find((a) => a.startsWith("--exam="))?.slice("--exam=".length) ?? "cgl") as ExamKey;
+  if (exam !== "cgl" && exam !== "chsl") throw new Error(`--exam=${exam}: cgl or chsl`);
   const tier = Number(process.argv.find((a) => a.startsWith("--tier="))?.slice("--tier=".length) ?? 1);
   const files = tcsFiles()
-    .filter(({ day }) => day.date.startsWith(year) && day.tier === tier)
+    .filter(({ day }) => day.date.startsWith(year) && day.tier === tier && (day.exam ?? "cgl") === exam)
     .map(({ dir, day, file, shift, pages }) => {
       const path = join(OUT, dir, "geometry.json");
       if (!existsSync(path))
@@ -76,6 +78,7 @@ function main() {
             slots: day.slots,
             layout: layoutOf(day),
             ...(day.headerless ? { headerless: { date: day.date } } : {}),
+            ...(day.untitledFirstSection ? { untitledFirstSection: true } : {}),
           });
       } catch (e) {
         throw new Error(`${dir}: ${(e as Error).message}`);
@@ -85,7 +88,8 @@ function main() {
   const tiers = [...new Set(files.map((f) => f.tier))];
   if (tiers.length !== 1)
     throw new Error(`TCS files of more than one tier: ${tiers.join(", ")}`);
-  const shifts = groupTcsShifts(tiers[0], files);
+  const prefix = idPrefix({ exam, tier: tiers[0] as 1 | 2 });
+  const shifts = groupTcsShifts(prefix, files);
 
   for (const [id, { dir, questions }] of shifts) {
     if (!SHIFTS[id])
@@ -145,7 +149,7 @@ function main() {
   }
   const missing = Object.keys(SHIFTS).filter(
     (id) =>
-      SHIFTS[id].day.startsWith(`t${tiers[0]}-${year}`) && !shifts.has(id),
+      SHIFTS[id].day.startsWith(`${prefix}-${year}`) && !shifts.has(id),
   );
   if (missing.length)
     console.log(`registered but in no file: ${missing.join(", ")}`);
