@@ -27,6 +27,16 @@ const STAGE_SET = new Set<string>(STAGES);
  * The exam tier a stated stage belongs to (EXAM_TIER_SPEC.md §3.2). The five
  * stages collapse onto three tiers; a dropper is re-sitting a Class 11–12 exam.
  */
+/**
+ * The stages that fit an exam's tier, in chip order: the reverse of
+ * tierOfStage. The welcome confirm screen (2026-11-13) offers only these, so
+ * MHT-CET never shows "College / other"; a school or graduate exam has one,
+ * which the screen does not ask (the exam already says it).
+ */
+export function stagesForTier(tier: ExamTier): Stage[] {
+  return STAGES.filter((s) => tierOfStage(s) === tier);
+}
+
 export function tierOfStage(stage: Stage | null | undefined): ExamTier | null {
   switch (stage) {
     case "class-9-10":

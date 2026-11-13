@@ -10,7 +10,7 @@ import HowItWorks from "@/components/HowItWorks";
 import { getExamBySlug, isExamSlug, type ExamSlug } from "@/lib/exam/examContext";
 import TierExamChips from "@/components/TierExamChips";
 import { setExamCookie } from "@/lib/exam/examCookie";
-import { STAGES, STAGE_LABELS, examQuestionVisible, type Stage } from "@/lib/profile/onboarding";
+import { STAGES, STAGE_LABELS, examQuestionVisible, stagesForTier, type Stage } from "@/lib/profile/onboarding";
 import { loopFor, showsLoopAfterWelcome, welcomeDestination } from "@/lib/education/howItWorks";
 
 /**
@@ -41,9 +41,10 @@ import { loopFor, showsLoopAfterWelcome, welcomeDestination } from "@/lib/educat
  * exam (`guess`, lib/exam/examFromPath), screen 1 asks "Preparing for
  * MHT-CET?" with one button instead of class-then-exam chips. 35% of sign-ups
  * left screen 1 without an answer and 46% of students have no exam; they never
- * pick one later. The class stays, as one OPTIONAL row: 95% gave it on the old
- * screen, and the GoPost leads feed, staff rosters and /me's stage nudge read
- * it. "Choose a different exam" opens the old screen, empty.
+ * pick one later. The class stays, as one OPTIONAL row of only the classes that
+ * fit the exam (stagesForTier: no "College / other" for MHT-CET; none shown for
+ * a school or graduate exam, which has one): 95% gave it on the old screen, and
+ * the GoPost leads feed, staff rosters and /me's stage nudge read it. "Choose a different exam" opens the old screen, empty.
  */
 const STAGE_OPTIONS = STAGES.map((s) => ({ value: s, label: STAGE_LABELS[s] }));
 
@@ -58,6 +59,9 @@ export default function ExamOnboarding({
   const guessed = guess && isExamSlug(guess) ? getExamBySlug(guess) : null;
   // The confirm view while there is a guess and they have not asked to choose.
   const [confirming, setConfirming] = useState(guessed !== null);
+  // Only the classes that fit the exam (no "College / other" for MHT-CET); a
+  // school or graduate exam has one, so its row is not shown at all.
+  const confirmStages = guessed ? stagesForTier(guessed.tier) : [];
   const [exams, setExams] = useState<ExamSlug[]>([]);
   const [stage, setStage] = useState<Stage | null>(null);
   const [showExams, setShowExams] = useState(false);
@@ -207,16 +211,18 @@ export default function ExamOnboarding({
               {submitting !== "continue" && <ArrowRight className="h-4 w-4" aria-hidden />}
             </Button>
           </div>
-          <div className="mt-7">
-            <ProfileChips
-              legend="Your class (optional)"
-              legendStyle="question"
-              options={STAGE_OPTIONS}
-              selected={stage ? [stage] : []}
-              onToggle={(v) => setStage(stage === v ? null : (v as Stage))}
-              disabled={busy}
-            />
-          </div>
+          {confirmStages.length > 1 && (
+            <div className="mt-7">
+              <ProfileChips
+                legend="Your class (optional)"
+                legendStyle="question"
+                options={confirmStages.map((s) => ({ value: s, label: STAGE_LABELS[s] }))}
+                selected={stage ? [stage] : []}
+                onToggle={(v) => setStage(stage === v ? null : (v as Stage))}
+                disabled={busy}
+              />
+            </div>
+          )}
           <div className="mt-7 flex flex-wrap items-center justify-between gap-3">
             <button
               type="button"

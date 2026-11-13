@@ -5,6 +5,7 @@ import { examQuestionVisible,
   sanitizeTargetExams,
   needsOnboarding,
   primaryExam,
+  stagesForTier,
   validateOnboardingSubmission,
 } from "@/lib/profile/onboarding";
 
@@ -159,5 +160,22 @@ describe("examQuestionVisible (/welcome step 1)", () => {
 
   it("shown on request ('see every exam')", () => {
     expect(examQuestionVisible({ stage: null, selectedCount: 0, showAnyway: true })).toBe(true);
+  });
+});
+
+// The confirm screen's class row (owner, 2026-11-13): "College / other" makes
+// no sense for MHT-CET. Only the classes whose tier is the exam's tier.
+describe("stagesForTier", () => {
+  it("offers a senior exam (MHT-CET, JEE, NDA) Class 11, Class 12 and Repeating a year", () => {
+    expect(stagesForTier("senior")).toEqual(["class-11", "class-12", "dropper"]);
+  });
+
+  it("leaves a school or graduate exam one class, which the screen does not ask", () => {
+    expect(stagesForTier("school")).toEqual(["class-9-10"]);
+    expect(stagesForTier("graduate")).toEqual(["college"]);
+  });
+
+  it("agrees with tierOfStage in both directions", () => {
+    for (const s of STAGES) expect(stagesForTier(tierOfStage(s)!)).toContain(s);
   });
 });
