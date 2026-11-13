@@ -1,0 +1,2460 @@
+{
+ "//": "Assembled from agent drafts (sketch).",
+ "visuals": [
+  {
+   "id": "25e40db3-2509-40b5-86aa-9f4b86d2ba26",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "view": {
+      "x": [
+       -3.5,
+       8.5
+      ],
+      "y": [
+       -6,
+       3
+      ]
+     },
+     "axes": true,
+     "points": {
+      "O": [
+       0,
+       0
+      ],
+      "P": [
+       1,
+       -2
+      ],
+      "C": [
+       4,
+       -3
+      ],
+      "T": [
+       3,
+       -1
+      ],
+      "Q": [
+       5,
+       0
+      ]
+     },
+     "items": [
+      {
+       "kind": "line",
+       "through": [
+        "P",
+        "T"
+       ],
+       "step": "s1",
+       "label": "x − 2y = 5",
+       "labelAt": [
+        5.6,
+        0.3
+       ],
+       "pos": "ne"
+      },
+      {
+       "kind": "circle",
+       "center": "O",
+       "r": "sqrt(r1)",
+       "step": "s1"
+      },
+      {
+       "kind": "point",
+       "at": "P",
+       "step": "s1",
+       "label": "(1, −2)",
+       "pos": "sw"
+      },
+      {
+       "kind": "circle",
+       "center": "C",
+       "r": "sqrt(r2)",
+       "step": "s2"
+      },
+      {
+       "kind": "point",
+       "at": "C",
+       "step": "s2",
+       "label": "(4, −3)",
+       "pos": "se"
+      },
+      {
+       "kind": "segment",
+       "from": "C",
+       "to": "T",
+       "step": "s3",
+       "dash": true
+      },
+      {
+       "kind": "point",
+       "at": "T",
+       "step": "s3",
+       "label": "(3, −1)",
+       "pos": "nw"
+      },
+      {
+       "kind": "label",
+       "at": [
+        -3.2,
+        -4.6
+       ],
+       "text": "point of contact (3, −1)",
+       "step": "s3",
+       "tone": "good"
+      }
+     ],
+     "assert": [
+      "1-2*(-2) = 5",
+      "3-2*(-1) = 5",
+      "1^2+(-2)^2 = r1",
+      "(3-4)^2+(-1+3)^2 = r2",
+      "(3-4)*2+(-1+3)*1 = 0"
+     ],
+     "answer": "3",
+     "vars": {
+      "r1": "5",
+      "r2": "4^2+3^2-20"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "9965465f",
+    "answer": {
+     "value": 3,
+     "label": "(3, −1)"
+    }
+   }
+  },
+  {
+   "id": "346eaeee-b97b-4f01-81f9-38d3427be8e1",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "view": {
+      "x": [
+       -4,
+       12
+      ],
+      "y": [
+       -3.5,
+       8.5
+      ]
+     },
+     "axes": true,
+     "points": {
+      "C": [
+       3,
+       2.5
+      ],
+      "A": [
+       -1,
+       3
+      ],
+      "B": [
+       7,
+       2
+      ],
+      "T": [
+       7.5,
+       6
+      ]
+     },
+     "items": [
+      {
+       "kind": "circle",
+       "center": "C",
+       "r": "sqrt(r2)",
+       "step": "s1"
+      },
+      {
+       "kind": "point",
+       "at": "C",
+       "step": "s1",
+       "label": "(3, 5/2)",
+       "pos": "s"
+      },
+      {
+       "kind": "point",
+       "at": "A",
+       "step": "s1",
+       "label": "(−1, 3)",
+       "pos": "nw"
+      },
+      {
+       "kind": "segment",
+       "from": "A",
+       "to": "B",
+       "step": "s2",
+       "dash": true
+      },
+      {
+       "kind": "point",
+       "at": "B",
+       "step": "s2",
+       "label": "(7, 2)",
+       "pos": "se"
+      },
+      {
+       "kind": "line",
+       "through": [
+        "B",
+        "T"
+       ],
+       "step": "s3",
+       "label": "8x − y − 54 = 0",
+       "labelAt": [
+        7.6,
+        6.8
+       ],
+       "pos": "e"
+      }
+     ],
+     "assert": [
+      "(7-3)^2+(2-5/2)^2 = r2",
+      "(-1+7)/2 = 3",
+      "(3+2)/2 = 5/2",
+      "8*7-2-54 = 0",
+      "4*1+(-1/2)*8 = 0"
+     ],
+     "answer": "8",
+     "vars": {
+      "r2": "(-1-3)^2+(3-5/2)^2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "08aab74a",
+    "answer": {
+     "value": 8,
+     "label": "8x−y−54=0"
+    }
+   }
+  },
+  {
+   "id": "7608471a-6b70-4eb9-a607-a8e03a6bdeb6",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "view": {
+      "x": [
+       -9,
+       11
+      ],
+      "y": [
+       -9,
+       6
+      ]
+     },
+     "axes": true,
+     "points": {
+      "C": [
+       1,
+       -1
+      ],
+      "P": [
+       5,
+       2
+      ],
+      "Q": [
+       4,
+       1
+      ]
+     },
+     "items": [
+      {
+       "kind": "line",
+       "through": [
+        "C",
+        "P"
+       ],
+       "step": "s1",
+       "label": "3x − 4y = 7",
+       "labelAt": [
+        -5,
+        -6.2
+       ],
+       "pos": "s"
+      },
+      {
+       "kind": "line",
+       "through": [
+        "C",
+        "Q"
+       ],
+       "step": "s1",
+       "label": "2x − 3y = 5",
+       "labelAt": [
+        8.3,
+        3.4
+       ],
+       "pos": "se"
+      },
+      {
+       "kind": "point",
+       "at": "C",
+       "step": "s2",
+       "label": "C(1, −1)",
+       "pos": "ne"
+      },
+      {
+       "kind": "circle",
+       "center": "C",
+       "r": "sqrt(r2)",
+       "step": "s3"
+      },
+      {
+       "kind": "label",
+       "at": [
+        -8.5,
+        4.5
+       ],
+       "text": "area 49π, r² = 49",
+       "step": "s3",
+       "tone": "good"
+      }
+     ],
+     "assert": [
+      "3*1-4*(-1) = 7",
+      "2*1-3*(-1) = 5",
+      "3*5-4*2 = 7",
+      "2*4-3*1 = 5",
+      "pi*r2 = 49*pi"
+     ],
+     "answer": "r2",
+     "vars": {
+      "r2": "49"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "49a9919e",
+    "answer": {
+     "value": 49,
+     "label": "(x−1)²+(y+1)²=49"
+    }
+   }
+  },
+  {
+   "id": "8edcf558-ddba-4adb-8bb3-c3422383acd2",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "view": {
+      "x": [
+       -2.4,
+       2.4
+      ],
+      "y": [
+       -1.8,
+       1.8
+      ]
+     },
+     "axes": true,
+     "points": {
+      "O": [
+       0,
+       0
+      ],
+      "P": [
+       -0.5,
+       0
+      ],
+      "Q": [
+       0.5,
+       0
+      ],
+      "T1": [
+       -0.5,
+       0.5
+      ],
+      "T2": [
+       0.5,
+       0.5
+      ],
+      "T3": [
+       -0.5,
+       -0.5
+      ],
+      "T4": [
+       0.5,
+       -0.5
+      ],
+      "U": [
+       0,
+       1
+      ]
+     },
+     "items": [
+      {
+       "kind": "circle",
+       "center": "P",
+       "r": "r1",
+       "step": "s1"
+      },
+      {
+       "kind": "point",
+       "at": "P",
+       "step": "s1",
+       "label": "C₁(−1/2, 0)",
+       "pos": "sw"
+      },
+      {
+       "kind": "circle",
+       "center": "Q",
+       "r": "r2",
+       "step": "s2",
+       "tone": "brand"
+      },
+      {
+       "kind": "point",
+       "at": "Q",
+       "step": "s2",
+       "label": "C₂(1/2, 0)",
+       "pos": "se"
+      },
+      {
+       "kind": "point",
+       "at": "O",
+       "step": "s3"
+      },
+      {
+       "kind": "label",
+       "at": [
+        -2.2,
+        1.5
+       ],
+       "text": "d = 1 = r₁ + r₂",
+       "step": "s3",
+       "tone": "good"
+      },
+      {
+       "kind": "line",
+       "through": [
+        "T1",
+        "T2"
+       ],
+       "step": "s4",
+       "label": "y = 1/2",
+       "labelAt": [
+        1.5,
+        0.5
+       ],
+       "pos": "n"
+      },
+      {
+       "kind": "line",
+       "through": [
+        "T3",
+        "T4"
+       ],
+       "step": "s4",
+       "label": "y = −1/2",
+       "labelAt": [
+        1.5,
+        -0.5
+       ],
+       "pos": "s"
+      },
+      {
+       "kind": "line",
+       "through": [
+        "O",
+        "U"
+       ],
+       "step": "s4",
+       "label": "x = 0",
+       "labelAt": [
+        0.03,
+        1.5
+       ],
+       "pos": "e"
+      }
+     ],
+     "assert": [
+      "d = r1 + r2",
+      "0.5 = r1",
+      "0.5 = r2",
+      "1/2-(-1/2) = d"
+     ],
+     "answer": "3",
+     "vars": {
+      "r1": "1/2",
+      "r2": "1/2",
+      "d": "1"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "d38d5ba2",
+    "answer": {
+     "value": 3,
+     "label": "3"
+    }
+   }
+  },
+  {
+   "id": "964fe44c-b8e3-4198-b56f-1fa3e8300783",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "view": {
+      "x": [
+       -6.5,
+       10.5
+      ],
+      "y": [
+       -5,
+       7.5
+      ]
+     },
+     "axes": true,
+     "points": {
+      "A": [
+       -2,
+       -2
+      ],
+      "B": [
+       6,
+       -2
+      ],
+      "Cc": [
+       6,
+       5
+      ],
+      "D": [
+       -2,
+       5
+      ],
+      "M": [
+       2,
+       1.5
+      ]
+     },
+     "items": [
+      {
+       "kind": "polygon",
+       "points": [
+        "A",
+        "B",
+        "Cc",
+        "D"
+       ],
+       "step": "s1"
+      },
+      {
+       "kind": "point",
+       "at": "A",
+       "step": "s1",
+       "label": "(−2, −2)",
+       "pos": "sw"
+      },
+      {
+       "kind": "point",
+       "at": "B",
+       "step": "s1",
+       "label": "(6, −2)",
+       "pos": "se"
+      },
+      {
+       "kind": "point",
+       "at": "Cc",
+       "step": "s1",
+       "label": "(6, 5)",
+       "pos": "ne"
+      },
+      {
+       "kind": "point",
+       "at": "D",
+       "step": "s1",
+       "label": "(−2, 5)",
+       "pos": "nw"
+      },
+      {
+       "kind": "segment",
+       "from": "A",
+       "to": "Cc",
+       "step": "s2",
+       "dash": true
+      },
+      {
+       "kind": "point",
+       "at": "M",
+       "step": "s2",
+       "label": "(2, 3/2)",
+       "pos": "se"
+      },
+      {
+       "kind": "circle",
+       "center": "M",
+       "r": "sqrt(r2)",
+       "step": "s3",
+       "tone": "brand"
+      },
+      {
+       "kind": "label",
+       "at": [
+        -6,
+        6.6
+       ],
+       "text": "x² + y² − 4x − 3y − 22 = 0",
+       "step": "s3",
+       "tone": "good"
+      }
+     ],
+     "assert": [
+      "(-2-2)^2+(-2-3/2)^2 = r2",
+      "(6-2)^2+(5-3/2)^2 = r2",
+      "6^2+5^2-4*6-3*5-22 = 0",
+      "(-2)^2+(-2)^2-4*(-2)-3*(-2)-22 = 0",
+      "(-2+6)/2 = 2",
+      "(-2+5)/2 = 3/2"
+     ],
+     "answer": "-22",
+     "vars": {
+      "r2": "((6+2)^2+(5+2)^2)/4"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "cc480db6",
+    "answer": {
+     "value": -22,
+     "label": "x²+y²−4x−3y−22=0"
+    }
+   }
+  },
+  {
+   "id": "a6fa53ff-e57e-4354-b9d4-dabcfb1d062c",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "view": {
+      "x": [
+       -6,
+       5
+      ],
+      "y": [
+       -4,
+       4.5
+      ]
+     },
+     "axes": true,
+     "points": {
+      "C": [
+       -1,
+       1
+      ],
+      "P": [
+       -2,
+       -1
+      ],
+      "Q": [
+       0,
+       -2
+      ],
+      "R": [
+       -4,
+       0
+      ]
+     },
+     "items": [
+      {
+       "kind": "line",
+       "through": [
+        "R",
+        "Q"
+       ],
+       "step": "s1",
+       "label": "x + 2y + 4 = 0",
+       "labelAt": [
+        1.4,
+        -3.3
+       ],
+       "pos": "s"
+      },
+      {
+       "kind": "point",
+       "at": "C",
+       "step": "s1",
+       "label": "C(−1, 1)",
+       "pos": "nw"
+      },
+      {
+       "kind": "segment",
+       "from": "C",
+       "to": "P",
+       "step": "s2",
+       "dash": true
+      },
+      {
+       "kind": "angle",
+       "at": "P",
+       "from": "C",
+       "to": "Q",
+       "step": "s2"
+      },
+      {
+       "kind": "point",
+       "at": "P",
+       "step": "s3",
+       "label": "P(−2, −1)",
+       "pos": "sw"
+      },
+      {
+       "kind": "circle",
+       "center": "C",
+       "r": "sqrt(r2)",
+       "step": "s3",
+       "tone": "brand"
+      },
+      {
+       "kind": "label",
+       "at": [
+        -5.8,
+        3.4
+       ],
+       "text": "contact P(−2, −1)",
+       "step": "s3",
+       "tone": "good"
+      }
+     ],
+     "assert": [
+      "-2+2*(-1)+4 = 0",
+      "(-2+1)*2+(-1-1)*(-1) = 0",
+      "abs(-1+2*1+4)/sqrt(5) = sqrt(r2)"
+     ],
+     "answer": "-2",
+     "vars": {
+      "r2": "(-2+1)^2+(-1-1)^2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "2ab52aeb",
+    "answer": {
+     "value": -2,
+     "label": "(−2, −1)"
+    }
+   }
+  },
+  {
+   "id": "af101b51-63c8-4a6c-9307-cd91b6442aa1",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "view": {
+      "x": [
+       -3,
+       5
+      ],
+      "y": [
+       -1.5,
+       4.5
+      ]
+     },
+     "axes": true,
+     "points": {
+      "C": [
+       1,
+       2
+      ],
+      "P": [
+       1,
+       1
+      ],
+      "A": [
+       3,
+       0
+      ],
+      "B": [
+       0,
+       3
+      ],
+      "D": [
+       -1,
+       0
+      ],
+      "E": [
+       0,
+       1
+      ]
+     },
+     "items": [
+      {
+       "kind": "line",
+       "through": [
+        "A",
+        "B"
+       ],
+       "step": "s1",
+       "label": "x + y = 3",
+       "labelAt": [
+        3.3,
+        -0.6
+       ],
+       "pos": "e"
+      },
+      {
+       "kind": "line",
+       "through": [
+        "D",
+        "E"
+       ],
+       "step": "s1",
+       "label": "x − y = −1",
+       "labelAt": [
+        3.2,
+        4.2
+       ],
+       "pos": "e"
+      },
+      {
+       "kind": "point",
+       "at": "C",
+       "step": "s2",
+       "label": "C(1, 2)",
+       "pos": "nw"
+      },
+      {
+       "kind": "point",
+       "at": "P",
+       "step": "s3",
+       "label": "(1, 1)",
+       "pos": "s"
+      },
+      {
+       "kind": "circle",
+       "center": "C",
+       "r": "r",
+       "step": "s3",
+       "tone": "brand"
+      },
+      {
+       "kind": "label",
+       "at": [
+        -2.8,
+        3.8
+       ],
+       "text": "r = 1",
+       "step": "s3",
+       "tone": "good"
+      }
+     ],
+     "assert": [
+      "1+2 = 3",
+      "1-2 = -1",
+      "(1-1)^2+(2-1)^2 = r^2",
+      "3+0 = 3",
+      "0-1 = -1"
+     ],
+     "answer": "r",
+     "vars": {
+      "r": "1"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "8eb8ec69",
+    "answer": {
+     "value": 1,
+     "label": "(x−1)²+(y−2)²=1"
+    }
+   }
+  },
+  {
+   "id": "eaacc7de-ebff-488d-ae23-9458e2cc1537",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "view": {
+      "x": [
+       -6.5,
+       10.5
+      ],
+      "y": [
+       -5,
+       7.5
+      ]
+     },
+     "axes": true,
+     "points": {
+      "A": [
+       -2,
+       -2
+      ],
+      "B": [
+       6,
+       -2
+      ],
+      "Cc": [
+       6,
+       5
+      ],
+      "D": [
+       -2,
+       5
+      ],
+      "M": [
+       2,
+       1.5
+      ]
+     },
+     "items": [
+      {
+       "kind": "polygon",
+       "points": [
+        "A",
+        "B",
+        "Cc",
+        "D"
+       ],
+       "step": "s1"
+      },
+      {
+       "kind": "point",
+       "at": "A",
+       "step": "s1",
+       "label": "(−2, −2)",
+       "pos": "sw"
+      },
+      {
+       "kind": "point",
+       "at": "B",
+       "step": "s1",
+       "label": "(6, −2)",
+       "pos": "se"
+      },
+      {
+       "kind": "point",
+       "at": "Cc",
+       "step": "s1",
+       "label": "(6, 5)",
+       "pos": "ne"
+      },
+      {
+       "kind": "point",
+       "at": "D",
+       "step": "s1",
+       "label": "(−2, 5)",
+       "pos": "nw"
+      },
+      {
+       "kind": "segment",
+       "from": "A",
+       "to": "Cc",
+       "step": "s2",
+       "dash": true
+      },
+      {
+       "kind": "point",
+       "at": "M",
+       "step": "s2",
+       "label": "(2, 3/2)",
+       "pos": "se"
+      },
+      {
+       "kind": "circle",
+       "center": "M",
+       "r": "sqrt(r2)",
+       "step": "s3",
+       "tone": "brand"
+      },
+      {
+       "kind": "label",
+       "at": [
+        -6,
+        6.6
+       ],
+       "text": "x² + y² − 4x − 3y − 22 = 0",
+       "step": "s3",
+       "tone": "good"
+      }
+     ],
+     "assert": [
+      "(-2-2)^2+(-2-3/2)^2 = r2",
+      "(6-2)^2+(5-3/2)^2 = r2",
+      "6^2+5^2-4*6-3*5-22 = 0",
+      "(-2)^2+(-2)^2-4*(-2)-3*(-2)-22 = 0",
+      "(-2+6)/2 = 2",
+      "(-2+5)/2 = 3/2"
+     ],
+     "answer": "-22",
+     "vars": {
+      "r2": "((6+2)^2+(5+2)^2)/4"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "18f48c21",
+    "answer": {
+     "value": -22,
+     "label": "x²+y²−4x−3y−22=0"
+    }
+   }
+  },
+  {
+   "id": "05acf100-27b1-4eef-b0f3-469735c61c3a",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "view": {
+      "x": [
+       -2,
+       8
+      ],
+      "y": [
+       -1,
+       7.5
+      ]
+     },
+     "axes": true,
+     "points": {
+      "O": [
+       0,
+       0
+      ],
+      "A": [
+       3,
+       0
+      ],
+      "B": [
+       0,
+       3
+      ],
+      "P": [
+       0,
+       6
+      ],
+      "Q": [
+       1,
+       6
+      ]
+     },
+     "items": [
+      {
+       "kind": "line",
+       "through": [
+        "A",
+        "B"
+       ],
+       "step": "s1",
+       "label": "x + y = 3",
+       "labelAt": [
+        2.2,
+        1.3
+       ],
+       "pos": "ne"
+      },
+      {
+       "kind": "line",
+       "through": [
+        "P",
+        "Q"
+       ],
+       "step": "s1",
+       "label": "y = 6",
+       "labelAt": [
+        5,
+        6
+       ],
+       "pos": "n"
+      },
+      {
+       "kind": "polygon",
+       "points": [
+        "O",
+        "A",
+        "B"
+       ],
+       "step": "s2",
+       "tone": "brand"
+      },
+      {
+       "kind": "point",
+       "at": "A",
+       "step": "s2",
+       "label": "(3, 0)",
+       "pos": "s"
+      },
+      {
+       "kind": "point",
+       "at": "B",
+       "step": "s2",
+       "label": "(0, 3)",
+       "pos": "w"
+      },
+      {
+       "kind": "point",
+       "at": "O",
+       "step": "s2",
+       "label": "(0, 0)",
+       "pos": "sw"
+      },
+      {
+       "kind": "label",
+       "at": [
+        3.6,
+        3.6
+       ],
+       "text": "bounded triangle",
+       "step": "s3",
+       "tone": "good"
+      }
+     ],
+     "assert": [
+      "3+0 = 3",
+      "0+3 = 3",
+      "3 < 6"
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "15356aa6",
+    "answer": {
+     "value": 3,
+     "label": "bounded triangle"
+    }
+   }
+  },
+  {
+   "id": "31814309-fd8d-4b17-a411-db14ad889b08",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "view": {
+      "x": [
+       -6,
+       26
+      ],
+      "y": [
+       -4,
+       27
+      ]
+     },
+     "axes": true,
+     "points": {
+      "O": [
+       0,
+       0
+      ],
+      "C": [
+       10,
+       10
+      ],
+      "D": [
+       10,
+       20
+      ],
+      "B": [
+       0,
+       25
+      ]
+     },
+     "items": [
+      {
+       "kind": "polygon",
+       "points": [
+        "O",
+        "C",
+        "D",
+        "B"
+       ],
+       "step": "s1",
+       "tone": "brand"
+      },
+      {
+       "kind": "point",
+       "at": "O",
+       "step": "s1",
+       "label": "O(0, 0)",
+       "pos": "ne"
+      },
+      {
+       "kind": "point",
+       "at": "C",
+       "step": "s1",
+       "label": "C(10, 10)",
+       "pos": "se"
+      },
+      {
+       "kind": "point",
+       "at": "D",
+       "step": "s1",
+       "label": "D(10, 20)",
+       "pos": "se"
+      },
+      {
+       "kind": "point",
+       "at": "B",
+       "step": "s1",
+       "label": "B(0, 25)",
+       "pos": "ne"
+      },
+      {
+       "kind": "label",
+       "at": [
+        1,
+        -2.5
+       ],
+       "text": "z = 0",
+       "step": "s2",
+       "tone": "muted"
+      },
+      {
+       "kind": "label",
+       "at": [
+        12,
+        9
+       ],
+       "text": "z = 70",
+       "step": "s2",
+       "tone": "muted"
+      },
+      {
+       "kind": "label",
+       "at": [
+        12,
+        19
+       ],
+       "text": "z = 110",
+       "step": "s2",
+       "tone": "muted"
+      },
+      {
+       "kind": "label",
+       "at": [
+        1,
+        21
+       ],
+       "text": "z = 100",
+       "step": "s2",
+       "tone": "muted"
+      },
+      {
+       "kind": "point",
+       "at": "D",
+       "step": "s3",
+       "tone": "good"
+      },
+      {
+       "kind": "label",
+       "at": [
+        12,
+        23.5
+       ],
+       "text": "max z = 110 at D",
+       "step": "s3",
+       "tone": "good"
+      }
+     ],
+     "assert": [
+      "3*0+4*0 = 0",
+      "3*10+4*10 = 70",
+      "3*10+4*20 = 110",
+      "3*0+4*25 = 100"
+     ],
+     "answer": "3*10+4*20"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "5ee5987d",
+    "answer": {
+     "value": 110,
+     "label": "110"
+    }
+   }
+  },
+  {
+   "id": "3821aaff-e003-4669-8b16-af6d6c58edca",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "view": {
+      "x": [
+       -1,
+       9
+      ],
+      "y": [
+       -1,
+       6
+      ]
+     },
+     "axes": true,
+     "points": {
+      "A": [
+       2,
+       0
+      ],
+      "B": [
+       2,
+       3
+      ],
+      "C": [
+       3,
+       4
+      ],
+      "D": [
+       6,
+       4
+      ]
+     },
+     "items": [
+      {
+       "kind": "line",
+       "through": [
+        "A",
+        "D"
+       ],
+       "step": "s1",
+       "label": "y = x − 2",
+       "labelAt": [
+        7.2,
+        4.9
+       ],
+       "pos": "s"
+      },
+      {
+       "kind": "line",
+       "through": [
+        "B",
+        "C"
+       ],
+       "step": "s1",
+       "label": "y = x + 1",
+       "labelAt": [
+        0,
+        1
+       ],
+       "pos": "nw"
+      },
+      {
+       "kind": "line",
+       "through": [
+        "A",
+        "B"
+       ],
+       "step": "s1",
+       "label": "x = 2",
+       "labelAt": [
+        2,
+        -0.7
+       ],
+       "pos": "w"
+      },
+      {
+       "kind": "line",
+       "through": [
+        "C",
+        "D"
+       ],
+       "step": "s1",
+       "label": "y = 4",
+       "labelAt": [
+        7.6,
+        4
+       ],
+       "pos": "ne"
+      },
+      {
+       "kind": "polygon",
+       "points": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "step": "s2",
+       "tone": "brand"
+      },
+      {
+       "kind": "point",
+       "at": "A",
+       "step": "s3",
+       "label": "(2, 0)",
+       "pos": "s"
+      },
+      {
+       "kind": "point",
+       "at": "B",
+       "step": "s3",
+       "label": "(2, 3)",
+       "pos": "w"
+      },
+      {
+       "kind": "point",
+       "at": "C",
+       "step": "s3",
+       "label": "(3, 4)",
+       "pos": "nw"
+      },
+      {
+       "kind": "point",
+       "at": "D",
+       "step": "s3",
+       "label": "(6, 4)",
+       "pos": "se"
+      }
+     ],
+     "assert": [
+      "0 = 2-2",
+      "4 = 6-2",
+      "3 = 2+1",
+      "4 = 3+1"
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "2501df94",
+    "answer": {
+     "value": 4,
+     "label": "option B"
+    }
+   }
+  },
+  {
+   "id": "47c6bf8d-60ce-4515-ac2b-7038fb354b3d",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "view": {
+      "x": [
+       -1,
+       5
+      ],
+      "y": [
+       -1,
+       4.5
+      ]
+     },
+     "axes": true,
+     "points": {
+      "O": [
+       0,
+       0
+      ],
+      "A": [
+       3,
+       0
+      ],
+      "B": [
+       3,
+       2
+      ],
+      "C": [
+       2,
+       3
+      ],
+      "D": [
+       0,
+       3
+      ]
+     },
+     "items": [
+      {
+       "kind": "polygon",
+       "points": [
+        "O",
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "step": "s1",
+       "tone": "brand"
+      },
+      {
+       "kind": "point",
+       "at": "O",
+       "step": "s1",
+       "label": "(0, 0)",
+       "pos": "sw"
+      },
+      {
+       "kind": "point",
+       "at": "A",
+       "step": "s1",
+       "label": "(3, 0)",
+       "pos": "s"
+      },
+      {
+       "kind": "point",
+       "at": "B",
+       "step": "s1",
+       "label": "(3, 2)",
+       "pos": "e"
+      },
+      {
+       "kind": "point",
+       "at": "C",
+       "step": "s1",
+       "label": "(2, 3)",
+       "pos": "ne"
+      },
+      {
+       "kind": "point",
+       "at": "D",
+       "step": "s1",
+       "label": "(0, 3)",
+       "pos": "w"
+      },
+      {
+       "kind": "point",
+       "at": "C",
+       "step": "s2",
+       "tone": "good"
+      },
+      {
+       "kind": "label",
+       "at": [
+        -0.8,
+        4
+       ],
+       "text": "z = 20 + 75 = 95 at (2, 3)",
+       "step": "s2",
+       "tone": "good"
+      }
+     ],
+     "assert": [
+      "10*2+25*3 = 95",
+      "10*3+25*2 < 95",
+      "10*0+25*3 < 95",
+      "10*3+25*0 < 95"
+     ],
+     "answer": "10*2+25*3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "572686c5",
+    "answer": {
+     "value": 95,
+     "label": "95"
+    }
+   }
+  },
+  {
+   "id": "47e9b742-ad22-451b-a0aa-86f3f2f8bcae",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "view": {
+      "x": [
+       -1,
+       5
+      ],
+      "y": [
+       -1,
+       4.5
+      ]
+     },
+     "axes": true,
+     "points": {
+      "A": [
+       1,
+       0
+      ],
+      "B": [
+       2,
+       0
+      ],
+      "C": [
+       2,
+       1
+      ],
+      "D": [
+       0,
+       1
+      ],
+      "P": [
+       4,
+       0
+      ],
+      "Q": [
+       0,
+       4
+      ]
+     },
+     "items": [
+      {
+       "kind": "line",
+       "through": [
+        "P",
+        "Q"
+       ],
+       "step": "s1",
+       "label": "x + y = 4",
+       "labelAt": [
+        3.3,
+        1.2
+       ],
+       "pos": "ne"
+      },
+      {
+       "kind": "line",
+       "through": [
+        "B",
+        "C"
+       ],
+       "step": "s1",
+       "label": "x = 2",
+       "labelAt": [
+        2.05,
+        2.2
+       ],
+       "pos": "e"
+      },
+      {
+       "kind": "line",
+       "through": [
+        "D",
+        "C"
+       ],
+       "step": "s1",
+       "label": "y = 1",
+       "labelAt": [
+        4.2,
+        1.1
+       ],
+       "pos": "n"
+      },
+      {
+       "kind": "line",
+       "through": [
+        "A",
+        "D"
+       ],
+       "step": "s1",
+       "label": "x + y = 1",
+       "labelAt": [
+        -0.9,
+        1.9
+       ],
+       "pos": "e"
+      },
+      {
+       "kind": "polygon",
+       "points": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "step": "s2",
+       "tone": "brand"
+      },
+      {
+       "kind": "point",
+       "at": "A",
+       "step": "s3",
+       "label": "(1, 0)",
+       "pos": "s"
+      },
+      {
+       "kind": "point",
+       "at": "B",
+       "step": "s3",
+       "label": "(2, 0)",
+       "pos": "s"
+      },
+      {
+       "kind": "point",
+       "at": "C",
+       "step": "s3",
+       "label": "(2, 1)",
+       "pos": "ne"
+      },
+      {
+       "kind": "point",
+       "at": "D",
+       "step": "s3",
+       "label": "(0, 1)",
+       "pos": "nw"
+      },
+      {
+       "kind": "label",
+       "at": [
+        0.2,
+        3.5
+       ],
+       "text": "corners: option C",
+       "step": "s4",
+       "tone": "good"
+      }
+     ],
+     "assert": [
+      "1+0 = 1",
+      "0+1 = 1",
+      "2+0 < 4",
+      "2+1 < 4",
+      "0+1 < 4"
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "c6f32695",
+    "answer": {
+     "value": 4,
+     "label": "option C"
+    }
+   }
+  },
+  {
+   "id": "85abeef0-b80e-4649-9003-cca06d34ff73",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "view": {
+      "x": [
+       -2,
+       9
+      ],
+      "y": [
+       -1.5,
+       8.5
+      ]
+     },
+     "axes": true,
+     "points": {
+      "O": [
+       0,
+       0
+      ],
+      "A": [
+       6,
+       0
+      ],
+      "B": [
+       6,
+       4
+      ],
+      "C": [
+       3,
+       7
+      ],
+      "D": [
+       0,
+       5
+      ]
+     },
+     "items": [
+      {
+       "kind": "polygon",
+       "points": [
+        "O",
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "step": "s1",
+       "tone": "brand"
+      },
+      {
+       "kind": "point",
+       "at": "O",
+       "step": "s1",
+       "label": "O",
+       "pos": "sw"
+      },
+      {
+       "kind": "point",
+       "at": "A",
+       "step": "s1",
+       "label": "A",
+       "pos": "s"
+      },
+      {
+       "kind": "point",
+       "at": "B",
+       "step": "s1",
+       "label": "B",
+       "pos": "e"
+      },
+      {
+       "kind": "point",
+       "at": "C",
+       "step": "s1",
+       "label": "C",
+       "pos": "n"
+      },
+      {
+       "kind": "point",
+       "at": "D",
+       "step": "s1",
+       "label": "D",
+       "pos": "w"
+      },
+      {
+       "kind": "label",
+       "at": [
+        -1.8,
+        -1
+       ],
+       "text": "z = 0",
+       "step": "s2",
+       "tone": "muted"
+      },
+      {
+       "kind": "label",
+       "at": [
+        6.3,
+        0.4
+       ],
+       "text": "z = 24",
+       "step": "s2",
+       "tone": "muted"
+      },
+      {
+       "kind": "label",
+       "at": [
+        6.3,
+        3.2
+       ],
+       "text": "z = 36",
+       "step": "s2",
+       "tone": "muted"
+      },
+      {
+       "kind": "label",
+       "at": [
+        3.3,
+        7.6
+       ],
+       "text": "z = 33",
+       "step": "s2",
+       "tone": "muted"
+      },
+      {
+       "kind": "label",
+       "at": [
+        -1.9,
+        4.2
+       ],
+       "text": "z = 15",
+       "step": "s2",
+       "tone": "muted"
+      },
+      {
+       "kind": "point",
+       "at": "B",
+       "step": "s3",
+       "tone": "good"
+      },
+      {
+       "kind": "label",
+       "at": [
+        6.3,
+        6
+       ],
+       "text": "max z = 36 at B",
+       "step": "s3",
+       "tone": "good"
+      }
+     ],
+     "assert": [
+      "4*0+3*0 = 0",
+      "4*6+3*0 = 24",
+      "4*6+3*4 = 36",
+      "4*3+3*7 = 33",
+      "4*0+3*5 = 15"
+     ],
+     "answer": "4*6+3*4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "cd2cdb7d",
+    "answer": {
+     "value": 36,
+     "label": "36"
+    }
+   }
+  },
+  {
+   "id": "92a1f786-a9bf-4714-a01b-9694bbdf1a37",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "view": {
+      "x": [
+       -8,
+       12
+      ],
+      "y": [
+       -3,
+       13
+      ]
+     },
+     "axes": true,
+     "points": {
+      "A": [
+       3,
+       2
+      ],
+      "B": [
+       4,
+       2
+      ],
+      "C": [
+       4,
+       12
+      ],
+      "D": [
+       "1/3",
+       "14/3"
+      ],
+      "P": [
+       0,
+       4
+      ],
+      "Q": [
+       5,
+       0
+      ]
+     },
+     "items": [
+      {
+       "kind": "line",
+       "through": [
+        "P",
+        "C"
+       ],
+       "step": "s1",
+       "label": "y = 2x + 4",
+       "labelAt": [
+        -2.4,
+        -0.8
+       ],
+       "pos": "e"
+      },
+      {
+       "kind": "line",
+       "through": [
+        "Q",
+        "A"
+       ],
+       "step": "s1",
+       "label": "x + y = 5",
+       "labelAt": [
+        6,
+        -1
+       ],
+       "pos": "ne"
+      },
+      {
+       "kind": "line",
+       "through": [
+        "B",
+        "C"
+       ],
+       "step": "s1",
+       "label": "x = 4",
+       "labelAt": [
+        4.2,
+        9
+       ],
+       "pos": "e"
+      },
+      {
+       "kind": "line",
+       "through": [
+        "A",
+        "B"
+       ],
+       "step": "s1",
+       "label": "y = 2",
+       "labelAt": [
+        8,
+        2
+       ],
+       "pos": "n"
+      },
+      {
+       "kind": "polygon",
+       "points": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "step": "s2",
+       "tone": "brand"
+      },
+      {
+       "kind": "point",
+       "at": "A",
+       "step": "s3",
+       "label": "(3, 2)",
+       "pos": "sw"
+      },
+      {
+       "kind": "point",
+       "at": "B",
+       "step": "s3",
+       "label": "(4, 2)",
+       "pos": "se"
+      },
+      {
+       "kind": "point",
+       "at": "C",
+       "step": "s3",
+       "label": "(4, 12)",
+       "pos": "ne"
+      },
+      {
+       "kind": "point",
+       "at": "D",
+       "step": "s3",
+       "label": "(1/3, 14/3)",
+       "pos": "nw"
+      },
+      {
+       "kind": "label",
+       "at": [
+        -7.5,
+        11
+       ],
+       "text": "4 corner points, bounded",
+       "step": "s3",
+       "tone": "good"
+      }
+     ],
+     "assert": [
+      "2*4+4 = 12",
+      "3+2 = 5",
+      "1/3+14/3 = 5",
+      "14/3 = 2*(1/3)+4",
+      "4+2 > 5"
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "41b857ce",
+    "answer": {
+     "value": 4,
+     "label": "4 corner points"
+    }
+   }
+  },
+  {
+   "id": "b7ec3949-eb7c-410f-a67b-21ab29e3814a",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "view": {
+      "x": [
+       -1,
+       5
+      ],
+      "y": [
+       -1,
+       3.5
+      ]
+     },
+     "axes": true,
+     "points": {
+      "A": [
+       "8/3",
+       2
+      ],
+      "B": [
+       3,
+       2
+      ],
+      "C": [
+       3,
+       0
+      ],
+      "D": [
+       2,
+       0
+      ]
+     },
+     "items": [
+      {
+       "kind": "line",
+       "through": [
+        "D",
+        "A"
+       ],
+       "step": "s1",
+       "label": "3x − y = 6",
+       "labelAt": [
+        1.8,
+        -0.6
+       ],
+       "pos": "w"
+      },
+      {
+       "kind": "line",
+       "through": [
+        "C",
+        "B"
+       ],
+       "step": "s1",
+       "label": "x = 3",
+       "labelAt": [
+        3.05,
+        2.8
+       ],
+       "pos": "e"
+      },
+      {
+       "kind": "line",
+       "through": [
+        "A",
+        "B"
+       ],
+       "step": "s1",
+       "label": "y = 2",
+       "labelAt": [
+        4.2,
+        2
+       ],
+       "pos": "n"
+      },
+      {
+       "kind": "polygon",
+       "points": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "step": "s2",
+       "tone": "brand"
+      },
+      {
+       "kind": "point",
+       "at": "A",
+       "step": "s3",
+       "label": "(8/3, 2)",
+       "pos": "nw"
+      },
+      {
+       "kind": "point",
+       "at": "B",
+       "step": "s3",
+       "label": "(3, 2)",
+       "pos": "ne"
+      },
+      {
+       "kind": "point",
+       "at": "C",
+       "step": "s3",
+       "label": "(3, 0)",
+       "pos": "se"
+      },
+      {
+       "kind": "point",
+       "at": "D",
+       "step": "s3",
+       "label": "(2, 0)",
+       "pos": "sw"
+      }
+     ],
+     "assert": [
+      "3*2-0 = 6",
+      "3*(8/3)-2 = 6",
+      "3*3-0 > 6",
+      "3 = 3"
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "b66a7672",
+    "answer": {
+     "value": 4,
+     "label": "4 corner points"
+    }
+   }
+  }
+ ],
+ "decided": []
+}

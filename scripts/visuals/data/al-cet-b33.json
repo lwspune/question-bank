@@ -1,0 +1,4469 @@
+{
+ "//": "Assembled from agent drafts (algebraSteps).",
+ "visuals": [
+  {
+   "id": "00014117-4bbf-4fd1-850c-78ede7f991ce",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "A_2 = 4A_1 \\Rightarrow r_2 = 2r_1",
+       "note": "area 4a means twice the radius",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "h \\propto \\dfrac{1}{r}",
+       "note": "rise is inversely proportional to r",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{h_2}{h_1} = \\dfrac{1}{2}",
+       "f": "1/2",
+       "value": "0.5",
+       "note": "so the water rises to h/2",
+       "step": "s3"
+      }
+     ],
+     "answer": "1/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "98c3af8e",
+    "answer": {
+     "value": 0.5,
+     "label": "h₂/h₁ = 1/2"
+    }
+   }
+  },
+  {
+   "id": "000b04f2-db2d-45f5-924a-31ac660359ae",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "P_g = 4H - H = 3H",
+       "f": "4*H-H",
+       "value": "3*H",
+       "note": "gauge pressure at the bottom",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "v = \\sqrt{\\dfrac{2\\times 3H}{\\rho}}",
+       "f": "sqrt(2*3*H/rho)",
+       "value": "sqrt(6*H/rho)",
+       "note": "speed of outflow",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "v = \\sqrt{\\dfrac{6H}{\\rho}}",
+       "note": "matches option C",
+       "step": "s3"
+      }
+     ],
+     "answer": "sqrt(6*H/rho)",
+     "vars": {
+      "H": 2,
+      "rho": 1000
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "8836f413",
+    "answer": {
+     "value": 0.10954451150103323,
+     "label": "v = √(6H/ρ)"
+    }
+   }
+  },
+  {
+   "id": "01d364e5-43ec-4d83-8fc9-90c488a2b8fa",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "h \\propto \\dfrac{1}{g}",
+       "note": "capillary rise goes as 1/g",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "g_d = g\\left(1-\\dfrac{d}{R}\\right)",
+       "note": "g is smaller in the mine, so h rises",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{h_2}{h_1} = \\dfrac{1}{1-d/R}",
+       "f": "g/(g*(1-d/R))",
+       "value": "1/(1-d/R)",
+       "note": "ratio of the two values of g",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{h_2}{h_1} = \\dfrac{R}{R-d}",
+       "f": "1/(1-d/R)",
+       "value": "R/(R-d)",
+       "note": "same ratio, simplified",
+       "step": "s4"
+      }
+     ],
+     "answer": "R/(R-d)",
+     "vars": {
+      "R": 6400,
+      "d": 100,
+      "g": 9.8
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "682f4b56",
+    "answer": {
+     "value": 1.0158730158730158,
+     "label": "h₂/h₁ = R/(R−d)"
+    }
+   }
+  },
+  {
+   "id": "03df9049-10b0-4407-85c5-19fcf6f78786",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "F = 2\\pi r\\,T",
+       "note": "force = circumference × T",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "2\\pi r = \\dfrac{F}{T} = \\dfrac{108\\times10^{-5}}{7.2\\times10^{-2}}",
+       "f": "108*10^(-5)/(7.2*10^(-2))",
+       "value": "1.5*10^(-2)",
+       "note": "108 dyne = 108 × 10⁻⁵ N",
+       "sf": 2,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "2\\pi r = 1.5\\ \\text{cm}",
+       "f": "1.5*10^(-2)*100",
+       "value": "1.5",
+       "note": "1.5 × 10⁻² m in cm",
+       "sf": 2,
+       "step": "s3"
+      }
+     ],
+     "answer": "1.5*10^(-2)*100"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "f9982a5b",
+    "answer": {
+     "value": 1.5,
+     "label": "1.5 cm"
+    }
+   }
+  },
+  {
+   "id": "0da9e93c-eaa1-4fd0-a57b-18e43f1ad591",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\Delta P = \\dfrac{4T}{R}",
+       "note": "excess pressure in a soap bubble",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "T = \\dfrac{\\Delta P\\cdot R}{4}",
+       "note": "make T the subject",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "T = \\dfrac{50\\times 2}{4} = 25",
+       "f": "50*2/4",
+       "value": "25",
+       "note": "T in dyne/cm",
+       "step": "s3"
+      }
+     ],
+     "answer": "50*2/4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "bb90a163",
+    "answer": {
+     "value": 25,
+     "label": "25 dyne/cm"
+    }
+   }
+  },
+  {
+   "id": "0f070ca0-bd99-4e06-8494-88dba674478c",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "d^2 V = d_1^2 V_1",
+       "note": "continuity: flow through each section",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "d_1^2 = \\dfrac{d^2 V}{V_1}",
+       "f": "d^2*V/V1",
+       "value": "(d*sqrt(V/V1))^2",
+       "note": "divide by V₁",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "d_1 = d\\sqrt{\\dfrac{V}{V_1}}",
+       "f": "d*sqrt(V/V1)",
+       "value": "sqrt(d^2*V/V1)",
+       "note": "take the square root",
+       "step": "s3"
+      }
+     ],
+     "answer": "d*sqrt(V/V1)",
+     "vars": {
+      "d": 2,
+      "V": 3,
+      "V1": 5
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "dfcaabaf",
+    "answer": {
+     "value": 1.5491933384829668,
+     "label": "d₁ = d√(V/V₁)"
+    }
+   }
+  },
+  {
+   "id": "1014a55d-1373-4a9f-928a-9a84a0580704",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "r = \\dfrac{R}{n^{1/3}}",
+       "note": "volume is conserved",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "W = T\\left(n\\cdot4\\pi r^2 - 4\\pi R^2\\right)",
+       "f": "T*(n*4*pi*(R/n^(1/3))^2-4*pi*R^2)",
+       "value": "4*pi*R^2*T*(n^(1/3)-1)",
+       "note": "W = T × (change in area)",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "W = 4\\pi R^2 T\\left(n^{1/3}-1\\right)",
+       "note": "matches option B",
+       "step": "s3"
+      }
+     ],
+     "answer": "4*pi*R^2*T*(n^(1/3)-1)",
+     "vars": {
+      "R": 2,
+      "n": 8,
+      "T": 3
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "335a1e03",
+    "answer": {
+     "value": 150.79644737231007,
+     "label": "W = 4πR²T(n^(1/3)−1)"
+    }
+   }
+  },
+  {
+   "id": "10e8724c-c01c-4217-ab73-82d3d3e8c2cd",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "1000\\cdot\\tfrac{4}{3}\\pi r^3 = \\tfrac{4}{3}\\pi R^3",
+       "note": "volume is conserved",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "R = 10r",
+       "f": "(1000*r^3)^(1/3)",
+       "value": "10*r",
+       "note": "cube root of 1000",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "E_i = 1000\\times4\\pi r^2 T",
+       "note": "initial surface energy",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "E_f = 4\\pi(10r)^2 T = 400\\pi r^2 T",
+       "f": "4*pi*(10*r)^2*T",
+       "value": "400*pi*r^2*T",
+       "note": "final surface energy",
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{E_f}{E_i} = \\dfrac{400\\pi r^2}{1000\\times4\\pi r^2} = \\dfrac{1}{10}",
+       "f": "400*pi*r^2/(1000*4*pi*r^2)",
+       "value": "1/10",
+       "note": "ratio of final to initial",
+       "step": "s5"
+      }
+     ],
+     "answer": "400*pi*r^2/(1000*4*pi*r^2)",
+     "vars": {
+      "r": 2,
+      "T": 3
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3",
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "d7b5fb0c",
+    "answer": {
+     "value": 0.1,
+     "label": "E_f : E_i = 1 : 10"
+    }
+   }
+  },
+  {
+   "id": "130e4e65-d68b-4207-b9ac-c62f6396aafb",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\Delta P \\propto \\dfrac{1}{r}",
+       "note": "excess pressure goes as 1/r",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "P_A = 4P_B \\Rightarrow r_A = \\dfrac{r_B}{4}",
+       "note": "A has the smaller radius",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{m_A}{m_B} = \\left(\\dfrac{1}{4}\\right)^3 = \\dfrac{1}{64}",
+       "f": "(1/4)^3",
+       "value": "1/64",
+       "note": "mass goes as r³",
+       "step": "s3"
+      }
+     ],
+     "answer": "(1/4)^3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "907d8b9e",
+    "answer": {
+     "value": 0.015625,
+     "label": "m_A : m_B = 1 : 64"
+    }
+   }
+  },
+  {
+   "id": "1352f75b-01ad-4ef8-a7a8-400e5a578647",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "h \\propto \\dfrac{T}{\\rho}",
+       "note": "same tube, same angle of contact",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{h_A}{h_B} = \\dfrac{6/4}{5/3}",
+       "f": "(6/4)/(5/3)",
+       "value": "(3/2)/(5/3)",
+       "note": "T and ρ ratios put in",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{h_A}{h_B} = \\dfrac{3/2}{5/3} = \\dfrac{9}{10}",
+       "f": "(3/2)/(5/3)",
+       "value": "9/10",
+       "note": "matches option B",
+       "step": "s3"
+      }
+     ],
+     "answer": "(6/4)/(5/3)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "fb423e9b",
+    "answer": {
+     "value": 0.8999999999999999,
+     "label": "h_A : h_B = 9 : 10"
+    }
+   }
+  },
+  {
+   "id": "13dd96f4-7ba9-4484-bf34-48091a3bca3c",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "v_2 = \\dfrac{10}{5}\\times1 = 2\\ \\text{m/s}",
+       "f": "10/5*1",
+       "value": "2",
+       "note": "continuity: A₁v₁ = A₂v₂",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "P_1 + \\tfrac12\\rho v_1^2 = P_2 + \\tfrac12\\rho v_2^2",
+       "note": "Bernoulli, horizontal pipe",
+       "step": "s2"
+      },
+      {
+       "kind": "eq",
+       "tex": "2000 + \\tfrac12(1000)(1)^2 = P_2 + \\tfrac12(1000)(2)^2",
+       "lhs": "2000+0.5*1000*1^2",
+       "rhs": "x+0.5*1000*2^2",
+       "roots": [
+        "500"
+       ],
+       "note": "solve for P₂",
+       "step": "s3"
+      },
+      {
+       "kind": "note",
+       "tex": "P_2 = 500\\ \\text{Pa}",
+       "note": "pressure at the narrow section",
+       "step": "s4"
+      }
+     ],
+     "answer": "500"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "7c62ed86",
+    "answer": {
+     "value": 500,
+     "label": "500 Pa"
+    }
+   }
+  },
+  {
+   "id": "144d2a77-d4af-4e14-9b97-5217ea5fbd8c",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{r_1}{r_2} = \\sqrt{\\dfrac{9}{4}} = \\dfrac{3}{2}",
+       "f": "sqrt(9/4)",
+       "value": "3/2",
+       "note": "v_T ∝ r², so r₁²/r₂² = 9/4",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{V_1}{V_2} = \\left(\\dfrac{3}{2}\\right)^3 = \\dfrac{27}{8}",
+       "f": "(3/2)^3",
+       "value": "27/8",
+       "note": "V = (4/3)πr³, so V ∝ r³",
+       "step": "s2"
+      }
+     ],
+     "answer": "(3/2)^3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "6fe7cb6f",
+    "answer": {
+     "value": 3.375,
+     "label": "V₁ : V₂ = 27 : 8"
+    }
+   }
+  },
+  {
+   "id": "1579a759-462f-4fea-8e2e-e786561f59c1",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "\\Delta A = 72 - 30 = 42\\ \\text{cm}^2",
+       "f": "8*9-6*5",
+       "value": "42",
+       "note": "8×9 minus 6×5",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "T = \\dfrac{4\\times10^{-4}}{2\\times42\\times10^{-4}} = 0.048 \\approx 0.05",
+       "f": "4*10^(-4)/(2*42*10^(-4))",
+       "value": "0.05",
+       "note": "a film has two surfaces, in N/m",
+       "dp": 2,
+       "step": "s2"
+      }
+     ],
+     "answer": "0.05"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "530b5fc2",
+    "answer": {
+     "value": 0.05,
+     "label": "0.05 N/m"
+    }
+   }
+  },
+  {
+   "id": "16fc52a6-6038-41a7-a75a-de53d7486450",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\text{extra force} = A\\varrho g x",
+       "note": "pushed down by x, buoyancy rises",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "k = A\\varrho g",
+       "note": "acts like a spring constant",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "f = \\dfrac{1}{2\\pi}\\sqrt{\\dfrac{A\\varrho g}{m}}",
+       "f": "sqrt(A*rho*g/m)/(2*pi)",
+       "value": "(1/(2*pi))*sqrt(A*rho*g/m)",
+       "note": "matches option C",
+       "step": "s3"
+      }
+     ],
+     "answer": "(1/(2*pi))*sqrt(A*rho*g/m)",
+     "vars": {
+      "A": 2,
+      "rho": 1000,
+      "g": 9.8,
+      "m": 3
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "c52f8c02",
+    "answer": {
+     "value": 12.864340893175148,
+     "label": "f = (1/2π)√(Aρg/m)"
+    }
+   }
+  },
+  {
+   "id": "18cc6ddd-d438-416c-ad2f-3a4083abbb22",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "v \\propto r^2",
+       "note": "terminal velocity",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "r_{new} = 2^{1/3}r",
+       "note": "volume doubles",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "v_{new} = 5\\times\\left(2^{1/3}\\right)^2 = 5\\times4^{1/3}",
+       "f": "5*(2^(1/3))^2",
+       "value": "5*4^(1/3)",
+       "note": "in cm/s",
+       "step": "s3"
+      }
+     ],
+     "answer": "5*4^(1/3)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "cf0bc6c4",
+    "answer": {
+     "value": 7.937005259840997,
+     "label": "5×4^(1/3) cm/s"
+    }
+   }
+  },
+  {
+   "id": "1a102158-fbbc-4fad-889e-9cbc3878daa8",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "F_v = Mg - \\dfrac{M}{d}\\cdot\\dfrac{d}{2}\\,g",
+       "note": "at terminal speed: weight − buoyancy",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "F_v = Mg - \\dfrac{Mg}{2} = \\dfrac{Mg}{2}",
+       "f": "M*g-(M/d)*(d/2)*g",
+       "value": "M*g/2",
+       "note": "viscous force",
+       "step": "s2"
+      }
+     ],
+     "answer": "M*g/2",
+     "vars": {
+      "M": 2,
+      "d": 3,
+      "g": 9.8
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "ee123e5c",
+    "answer": {
+     "value": 9.8,
+     "label": "F = Mg/2"
+    }
+   }
+  },
+  {
+   "id": "1a2ac873-2142-48c9-9b1c-6369f7b70510",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "h \\propto \\dfrac{T}{\\rho}",
+       "note": "same tube, same angle of contact",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "T,\\ \\rho \\text{ both double}",
+       "note": "so T/ρ is unchanged",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "h = 5\\ \\text{cm} = 0.05\\ \\text{m}",
+       "f": "5/100",
+       "value": "0.05",
+       "note": "same rise as in liquid A",
+       "step": "s3"
+      }
+     ],
+     "answer": "5/100"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "7a5f97bd",
+    "answer": {
+     "value": 0.05,
+     "label": "0.05 m"
+    }
+   }
+  },
+  {
+   "id": "1a9204ff-edca-4333-bcb2-1bfdec4db39e",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\tfrac43\\pi R^3 = 512\\times\\tfrac43\\pi r^3",
+       "note": "volume is conserved",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "R = 8r",
+       "f": "(512*r^3)^(1/3)",
+       "value": "8*r",
+       "note": "cube root of 512",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "E \\propto \\text{area}",
+       "note": "surface energy goes with area",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "512(4\\pi r^2) = 512\\cdot4\\pi\\left(\\dfrac{R}{8}\\right)^2",
+       "f": "512*4*pi*r^2",
+       "value": "512*4*pi*(R/8)^2",
+       "note": "total area of the droplets",
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "512\\cdot4\\pi\\left(\\dfrac{R}{8}\\right)^2 = 8(4\\pi R^2)",
+       "f": "512*4*pi*(R/8)^2",
+       "value": "8*(4*pi*R^2)",
+       "note": "512 ÷ 64 = 8",
+       "step": "s5"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{E_2}{E_1} = 8",
+       "f": "8*(4*pi*R^2)/(4*pi*R^2)",
+       "value": "8",
+       "note": "so E₂ = 8E",
+       "step": "s6"
+      }
+     ],
+     "answer": "8*(4*pi*R^2)/(4*pi*R^2)",
+     "vars": {
+      "r": 1.5,
+      "R": "8*r"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "68462591",
+    "answer": {
+     "value": 8,
+     "label": "E₂/E₁ = 8"
+    }
+   }
+  },
+  {
+   "id": "1adcefec-8838-4e21-9f3d-8043b3dc1c0f",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "t = \\dfrac{0.04}{20} = 0.002\\ \\text{cm}",
+       "f": "0.04/20",
+       "value": "0.002",
+       "note": "film thickness",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "F = \\dfrac{2TA}{t}",
+       "note": "film pulls with two surfaces",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "T = \\dfrac{Ft}{2A} = \\dfrac{16\\times10^5\\times0.002}{40} = 80",
+       "f": "16*10^5*0.002/40",
+       "value": "80",
+       "note": "T in dyne/cm",
+       "step": "s3"
+      }
+     ],
+     "answer": "16*10^5*0.002/40"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "6bbf434b",
+    "answer": {
+     "value": 80,
+     "label": "80 dyne/cm"
+    }
+   }
+  },
+  {
+   "id": "1ba09a02-47b4-46ff-9e1e-e389c9bb8f0e",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "R^3 = 2r^3",
+       "note": "volume is conserved",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "R = 2^{1/3}r",
+       "f": "(2*r^3)^(1/3)",
+       "value": "2^(1/3)*r",
+       "note": "cube root",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{\\text{after}}{\\text{before}} = \\dfrac{R^2}{2r^2} = 2^{-1/3}",
+       "f": "(2^(1/3)*r)^2/(2*r^2)",
+       "value": "2^(-1/3)",
+       "note": "energy goes with area: 2^(2/3)/2",
+       "step": "s3"
+      }
+     ],
+     "answer": "(2^(1/3)*r)^2/(2*r^2)",
+     "vars": {
+      "r": 1.5
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "20506074",
+    "answer": {
+     "value": 0.7937005259840997,
+     "label": "after : before = 2^(−1/3) : 1"
+    }
+   }
+  },
+  {
+   "id": "22bef64b-4c2f-4fa2-87f6-9a1c56b76e36",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\Delta P = \\tfrac12\\rho\\left(v_2^2 - v_1^2\\right)",
+       "note": "Bernoulli, horizontal pipe",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "v_1 = 0.5\\,v_2",
+       "note": "continuity: A₁v₁ = A₂v₂, A₁ = 2A₂",
+       "step": "s2"
+      },
+      {
+       "kind": "eq",
+       "tex": "3 = \\tfrac12(1250)\\left(v_2^2 - (0.5v_2)^2\\right)",
+       "lhs": "3",
+       "rhs": "0.5*1250*(x^2-(0.5*x)^2)",
+       "roots": [
+        "0.08"
+       ],
+       "note": "solve for v₂ in m/s",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "Q = A_2 v_2 = 5\\times10^{-4}\\times0.08 = 4\\times10^{-5}",
+       "f": "5*10^(-4)*0.08",
+       "value": "4*10^(-5)",
+       "note": "rate of flow in m³/s",
+       "sf": 1,
+       "step": "s4"
+      }
+     ],
+     "answer": "5*10^(-4)*0.08"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "638b4d08",
+    "answer": {
+     "value": 4e-05,
+     "label": "4×10⁻⁵ m³/s"
+    }
+   }
+  },
+  {
+   "id": "22c0e9c2-c4eb-4f87-86f9-66e183ccfff5",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\dfrac{v_A}{h_A} = \\dfrac{v_B}{h_B}",
+       "note": "v/h is constant in steady flow",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "v_B = 12\\times\\dfrac{90}{40} = 27\\ \\text{cm/s}",
+       "f": "12*90/40",
+       "value": "27",
+       "note": "h_B = 90 cm, h_A = 40 cm",
+       "step": "s2"
+      }
+     ],
+     "answer": "12*90/40"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "f8d2efc2",
+    "answer": {
+     "value": 27,
+     "label": "27 cm/s"
+    }
+   }
+  },
+  {
+   "id": "22f481d3-d058-4f13-a569-c0cb3da7735e",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "Q = \\pi r^2 v",
+       "note": "continuity",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "v = \\dfrac{\\pi\\times10^{-1}}{\\pi(0.1)^2}",
+       "f": "pi*10^(-1)/(pi*0.1^2)",
+       "value": "10^(-1)/10^(-2)",
+       "note": "Q in m³/s and r = 0.1 m",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "v = \\dfrac{10^{-1}}{10^{-2}} = 10\\ \\text{m/s}",
+       "f": "10^(-1)/10^(-2)",
+       "value": "10",
+       "note": "π cancels",
+       "step": "s3"
+      }
+     ],
+     "answer": "10^(-1)/10^(-2)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "3bba6be8",
+    "answer": {
+     "value": 10,
+     "label": "10 m/s"
+    }
+   }
+  },
+  {
+   "id": "24e56e72-29c0-4249-904f-bf4debf65ccf",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "R^3 = 1000r^3",
+       "note": "volume is conserved",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "R = 10r",
+       "f": "(1000*r^3)^(1/3)",
+       "value": "10*r",
+       "note": "cube root of 1000",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{A_f}{A_i} = \\dfrac{R^2}{1000r^2} = \\dfrac{100}{1000} = \\dfrac{1}{10}",
+       "f": "(10*r)^2/(1000*r^2)",
+       "value": "1/10",
+       "note": "final area : initial area",
+       "step": "s3"
+      }
+     ],
+     "answer": "(10*r)^2/(1000*r^2)",
+     "vars": {
+      "r": 2
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "59db9743",
+    "answer": {
+     "value": 0.1,
+     "label": "final : initial = 1 : 10"
+    }
+   }
+  },
+  {
+   "id": "25da4d60-c151-42ae-8601-34ec19798ba0",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "v \\propto r^2",
+       "note": "terminal velocity",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "R = 2^{1/3}r",
+       "f": "(2*r^3)^(1/3)",
+       "value": "2^(1/3)*r",
+       "note": "volume conservation: R³ = 2r³",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "v' = V\\cdot\\dfrac{R^2}{r^2} = V\\cdot2^{2/3}",
+       "f": "V*(2^(1/3)*r)^2/r^2",
+       "value": "V*2^(2/3)",
+       "note": "matches option C",
+       "step": "s3"
+      }
+     ],
+     "answer": "V*2^(2/3)",
+     "vars": {
+      "V": 5,
+      "r": 1.5
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "c282a18b",
+    "answer": {
+     "value": 7.937005259840997,
+     "label": "v' = 2^(2/3) V"
+    }
+   }
+  },
+  {
+   "id": "27bd9051-b001-4a9d-b193-4362ec44e5f1",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\dfrac{F_1}{A_1} = \\dfrac{F_2}{A_2}",
+       "note": "Pascal's law",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "A \\propto d^2",
+       "note": "area goes as diameter squared",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "F_2 = \\dfrac{d_2^2}{d_1^2}F_1",
+       "f": "F1/d1^2*d2^2",
+       "value": "d2^2/d1^2*F1",
+       "note": "matches option D",
+       "step": "s3"
+      }
+     ],
+     "answer": "d2^2/d1^2*F1",
+     "vars": {
+      "F1": 2,
+      "d1": 1.5,
+      "d2": 4
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "e4207af5",
+    "answer": {
+     "value": 14.222222222222221,
+     "label": "F₂ = (d₂²/d₁²)F₁"
+    }
+   }
+  },
+  {
+   "id": "2856ad45-f74a-49c9-b6dc-9332b3348ed6",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "A_A v_A = A_B v_B",
+       "note": "continuity, A ∝ R²",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "\\pi R^2 V = \\pi\\left(\\dfrac{R}{3}\\right)^2 v_B",
+       "note": "put in the two radii",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "v_B = \\dfrac{R^2}{R^2/9}V = 9V",
+       "f": "R^2/((R/3)^2)*V",
+       "value": "9*V",
+       "note": "matches option D",
+       "step": "s3"
+      }
+     ],
+     "answer": "R^2/((R/3)^2)*V",
+     "vars": {
+      "R": 2,
+      "V": 3
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "6ceadaa8",
+    "answer": {
+     "value": 27,
+     "label": "v_B = 9V"
+    }
+   }
+  },
+  {
+   "id": "2a69f6f6-cae7-47de-94e4-ef4e56536aac",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "r = \\dfrac{R}{4}",
+       "note": "each of the 64 droplets",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "A_{new} = 64\\times4\\pi\\dfrac{R^2}{16} = 16\\pi R^2",
+       "f": "64*4*pi*R^2/16",
+       "value": "16*pi*R^2",
+       "note": "new total area",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "\\Delta A = 12\\pi R^2",
+       "note": "increase in area",
+       "step": "s3"
+      },
+      {
+       "kind": "note",
+       "tex": "W = 12\\pi R^2 T",
+       "note": "work = T × increase in area",
+       "step": "s4"
+      }
+     ],
+     "answer": "12*pi*R^2*T",
+     "vars": {
+      "R": 2,
+      "T": 3
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "f4f8c665",
+    "answer": {
+     "value": 452.3893421169302,
+     "label": "W = 12πR²T"
+    }
+   }
+  },
+  {
+   "id": "2ba39ffc-3cfb-4947-b119-e134049f71ff",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "t = \\dfrac{0.01}{10} = 10^{-3}\\ \\text{cm}",
+       "f": "0.01/10",
+       "value": "10^(-3)",
+       "note": "film thickness",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "t = 10^{-3}\\ \\text{cm} = 10^{-5}\\ \\text{m}",
+       "f": "10^(-3)/100",
+       "value": "10^(-5)",
+       "note": "cm to m; A = 10⁻³ m²",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "F = \\dfrac{2TA}{t}",
+       "note": "pressure is lower by 2T/t",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "F = \\dfrac{2\\times0.07\\times10^{-3}}{10^{-5}} = 14\\ \\text{N}",
+       "f": "2*0.07*10^(-3)/10^(-5)",
+       "value": "14",
+       "note": "T = 70 dyne/cm = 0.07 N/m",
+       "step": "s4"
+      }
+     ],
+     "answer": "2*0.07*10^(-3)/10^(-5)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "9fd77f59",
+    "answer": {
+     "value": 14,
+     "label": "14 N"
+    }
+   }
+  },
+  {
+   "id": "2df9292e-9628-40f4-8c4f-2cdbeed71f5a",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\Delta P = \\dfrac{4T}{R}",
+       "note": "excess pressure in a soap bubble",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "\\dfrac{\\Delta P_1}{\\Delta P_2} = \\dfrac{R_2}{R_1} = 3",
+       "note": "so R₁ : R₂ = 1 : 3",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{V_1}{V_2} = \\dfrac{R_1^3}{R_2^3} = \\dfrac{1}{27}",
+       "f": "(1/3)^3",
+       "value": "1/27",
+       "note": "matches option D",
+       "step": "s3"
+      }
+     ],
+     "answer": "(1/3)^3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "18b39e09",
+    "answer": {
+     "value": 0.03703703703703703,
+     "label": "V₁ : V₂ = 1 : 27"
+    }
+   }
+  },
+  {
+   "id": "2feb41bf-d347-47e9-af1a-205fdb44563b",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "d = \\dfrac{D}{4}",
+       "note": "each of the 64 small bubbles",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "A_{before} = 2\\pi D^2",
+       "note": "a bubble has two surfaces",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "A_{after} = 64\\times2\\pi\\dfrac{D^2}{16} = 8\\pi D^2",
+       "f": "64*2*pi*D^2/16",
+       "value": "8*pi*D^2",
+       "note": "total area of the 64 bubbles",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta E = (8\\pi D^2 - 2\\pi D^2)\\,T = 6\\pi TD^2",
+       "f": "(8*pi*D^2-2*pi*D^2)*T",
+       "value": "6*pi*T*D^2",
+       "note": "change in surface energy",
+       "step": "s4"
+      }
+     ],
+     "answer": "6*pi*T*D^2",
+     "vars": {
+      "D": 2,
+      "T": 3
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "79254321",
+    "answer": {
+     "value": 226.1946710584651,
+     "label": "ΔE = 6πTD²"
+    }
+   }
+  },
+  {
+   "id": "306d06b3-1488-47dd-a139-a6ca4a3c42d7",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "B = W + F",
+       "note": "constant velocity: net force is zero",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "B = 4V\\rho_1 g,\\quad W = V\\rho_1 g",
+       "note": "buoyancy and weight",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "F = 4V\\rho_1 g - V\\rho_1 g = 3V\\rho_1 g",
+       "f": "4*V*rho1*g-V*rho1*g",
+       "value": "3*V*rho1*g",
+       "note": "friction on the ball",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{F}{W} = \\dfrac{3V\\rho_1 g}{V\\rho_1 g} = 3",
+       "f": "3*V*rho1*g/(V*rho1*g)",
+       "value": "3",
+       "note": "friction : weight = 3 : 1",
+       "step": "s4"
+      }
+     ],
+     "answer": "3*V*rho1*g/(V*rho1*g)",
+     "vars": {
+      "V": 2,
+      "rho1": 1000,
+      "g": 9.8
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "63d0955b",
+    "answer": {
+     "value": 3.0000000000000004,
+     "label": "F : W = 3 : 1"
+    }
+   }
+  },
+  {
+   "id": "32548bb4-e97a-454c-9483-f262d5cab56a",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "v \\propto r^2(\\rho - \\sigma)",
+       "note": "terminal velocity",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "r_A^2(\\rho_A - \\sigma) = r_B^2(\\rho_B - \\sigma)",
+       "note": "equal speeds",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\left(\\dfrac{r_A}{r_B}\\right)^2 = \\dfrac{8.5-2.5}{11.5-2.5} = \\dfrac{6}{9}",
+       "f": "(8.5-2.5)/(11.5-2.5)",
+       "value": "6/9",
+       "note": "densities in 10³ kg/m³",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{r_A}{r_B} = \\sqrt{\\dfrac{2}{3}}",
+       "f": "sqrt(6/9)",
+       "value": "sqrt(2/3)",
+       "note": "matches option B",
+       "step": "s4"
+      }
+     ],
+     "answer": "sqrt(6/9)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "60c6cdee",
+    "answer": {
+     "value": 0.816496580927726,
+     "label": "r_A : r_B = √(2/3)"
+    }
+   }
+  },
+  {
+   "id": "32a6692c-83a3-402b-8e35-c79cb8af79ef",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "m \\propto r^3",
+       "note": "same material, same density",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "r_{new} = 8^{1/3}\\,r = 2r",
+       "f": "8^(1/3)",
+       "value": "2",
+       "note": "mass 8 times, so r doubles",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "V_{new} = 2^2 V_0 = 4V_0",
+       "f": "2^2*V0",
+       "value": "4*V0",
+       "note": "V_T ∝ r²",
+       "step": "s3"
+      }
+     ],
+     "answer": "2^2*V0",
+     "vars": {
+      "V0": 3
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "ae5c6df3",
+    "answer": {
+     "value": 12,
+     "label": "V = 4V₀"
+    }
+   }
+  },
+  {
+   "id": "365b1970-0aab-478e-9e9d-22d3d27225d6",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\Delta P = \\dfrac{2T}{r}",
+       "note": "inversely proportional to r",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "r_A = \\dfrac{r_B}{4}",
+       "note": "A has the larger excess pressure",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{m_A}{m_B} = \\left(\\dfrac{1}{4}\\right)^3 = \\dfrac{1}{64}",
+       "f": "(1/4)^3",
+       "value": "1/64",
+       "note": "mass goes as r³",
+       "step": "s3"
+      }
+     ],
+     "answer": "(1/4)^3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "4aea66f1",
+    "answer": {
+     "value": 0.015625,
+     "label": "m_A : m_B = 1 : 64"
+    }
+   }
+  },
+  {
+   "id": "36c568cf-8a72-4595-8126-f7003da125d9",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "R = 3r",
+       "f": "(27*r^3)^(1/3)",
+       "value": "3*r",
+       "note": "volume conservation",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "v \\propto R^2",
+       "note": "terminal velocity",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "v' = 3^2\\times1 = 9\\ \\text{cm/s}",
+       "f": "3^2*1",
+       "value": "9",
+       "note": "1 cm/s for each small drop",
+       "step": "s3"
+      }
+     ],
+     "answer": "3^2*1",
+     "vars": {
+      "r": 2
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "02fe3c71",
+    "answer": {
+     "value": 9,
+     "label": "9 cm/s"
+    }
+   }
+  },
+  {
+   "id": "37d26c56-da94-46e4-9039-4ef55ace5f2e",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "h = \\dfrac{2T\\cos\\theta}{r\\rho g}",
+       "note": "capillary rise",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "\\dfrac{2T}{r\\rho g} = 6\\ \\text{cm}",
+       "note": "for water",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "h = \\dfrac{2(2T)(0.5)}{r(2\\rho)g}",
+       "f": "2*(2*T)*0.5/(r*(2*rho)*g)",
+       "value": "2*T/(2*r*rho*g)",
+       "note": "for the new liquid",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "h = \\dfrac{6}{2} = 3\\ \\text{cm}",
+       "f": "6/2",
+       "value": "3",
+       "note": "T and cos θ cancel; density halves it",
+       "step": "s4"
+      }
+     ],
+     "answer": "6/2",
+     "vars": {
+      "T": 0.07,
+      "r": 0.001,
+      "rho": 1000,
+      "g": 9.8
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "ed4d6475",
+    "answer": {
+     "value": 3,
+     "label": "3 cm"
+    }
+   }
+  },
+  {
+   "id": "3c7eab41-8700-41ae-a193-6810d353284a",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "4\\pi r_1^2T + 4\\pi r_2^2T = 4\\pi R^2T",
+       "note": "surface energy is conserved",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "R^2 = r_1^2 + r_2^2",
+       "f": "(4*pi*r1^2*T+4*pi*r2^2*T)/(4*pi*T)",
+       "value": "r1^2+r2^2",
+       "note": "divide by 4πT",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "R = \\sqrt{r_1^2 + r_2^2}",
+       "f": "sqrt((4*pi*r1^2*T+4*pi*r2^2*T)/(4*pi*T))",
+       "value": "sqrt(r1^2+r2^2)",
+       "note": "matches option C",
+       "step": "s3"
+      }
+     ],
+     "answer": "sqrt(r1^2+r2^2)",
+     "vars": {
+      "r1": 3,
+      "r2": 4,
+      "T": 0.07
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "d301fcd1",
+    "answer": {
+     "value": 5,
+     "label": "R = √(r₁² + r₂²)"
+    }
+   }
+  },
+  {
+   "id": "3d412846-68d2-4211-96dd-58da9bdd5f24",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "eq",
+       "tex": "P_0 + \\dfrac{\\rho g h}{2} = \\dfrac{2}{3}\\left(P_0 + \\rho g h\\right)",
+       "lhs": "P0+rho*g*x/2",
+       "rhs": "2/3*(P0+rho*g*x)",
+       "roots": [
+        "2*P0/(rho*g)"
+       ],
+       "note": "half depth = 2/3 of bottom pressure",
+       "step": "s1"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{P_0}{3} = \\dfrac{\\rho g h}{6}",
+       "lhs": "P0/3",
+       "rhs": "rho*g*x/6",
+       "roots": [
+        "2*P0/(rho*g)"
+       ],
+       "note": "collect the P₀ terms",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "h = \\dfrac{2P_0}{\\rho g}",
+       "note": "matches option A",
+       "step": "s3"
+      }
+     ],
+     "answer": "2*P0/(rho*g)",
+     "vars": {
+      "P0": 100000,
+      "rho": 1000,
+      "g": 10
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "256ddc82",
+    "answer": {
+     "value": 20,
+     "label": "h = 2P₀/(ρg)"
+    }
+   }
+  },
+  {
+   "id": "3d51ff4b-8d13-43df-bbce-1b000c164397",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "h \\propto \\dfrac{1}{r}",
+       "note": "capillary rise",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "\\pi r^2 \\to \\tfrac13\\pi r^2 \\Rightarrow r \\to \\dfrac{r}{\\sqrt3}",
+       "note": "area reduced to one third",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "h' = \\sqrt3\\,h = 3\\sqrt3\\ \\text{cm}",
+       "f": "sqrt(3)*3",
+       "value": "3*3^(1/2)",
+       "note": "matches option A",
+       "step": "s3"
+      }
+     ],
+     "answer": "sqrt(3)*3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "a036e598",
+    "answer": {
+     "value": 5.196152422706632,
+     "label": "3√3 cm"
+    }
+   }
+  },
+  {
+   "id": "3df26804-95d1-413b-8c98-8fb498e1112a",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "n = \\dfrac{R^3}{r^3}",
+       "note": "volume is conserved",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta A = 4\\pi\\left(nr^2 - R^2\\right) = 4\\pi\\left(\\dfrac{R^3}{r} - R^2\\right)",
+       "f": "4*pi*((R^3/r^3)*r^2-R^2)",
+       "value": "4*pi*(R^3/r-R^2)",
+       "note": "extra surface",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "E = 4\\pi TR^2\\left[\\dfrac{R}{r} - 1\\right]",
+       "f": "4*pi*T*(R^3/r-R^2)",
+       "value": "4*pi*T*R^2*(R/r-1)",
+       "note": "energy = T × extra surface",
+       "step": "s3"
+      }
+     ],
+     "answer": "4*pi*T*R^2*(R/r-1)",
+     "vars": {
+      "R": 2,
+      "r": 0.5,
+      "T": 3
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "6ff07e07",
+    "answer": {
+     "value": 452.3893421169302,
+     "label": "E = 4πTR²[R/r − 1]"
+    }
+   }
+  },
+  {
+   "id": "3f95cb5b-e27d-4aed-9484-9a1ef08cab68",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "v_1^2 = 2g(h+x),\\quad v_2^2 = 2gx",
+       "note": "lower hole at depth h+x, upper at x",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "\\text{thrust} = \\rho A v^2",
+       "note": "from each jet",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "F = \\rho A\\left(v_1^2 - v_2^2\\right) = 2\\rho A g h",
+       "f": "rho*A*(2*g*(h+xd)-2*g*xd)",
+       "value": "2*rho*A*g*h",
+       "note": "net horizontal force, so F ∝ h",
+       "step": "s3"
+      }
+     ],
+     "answer": "2*rho*A*g*h",
+     "vars": {
+      "rho": 1000,
+      "A": 0.01,
+      "g": 9.8,
+      "h": 1.5,
+      "xd": 0.8
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "e80a7245",
+    "answer": {
+     "value": 294,
+     "label": "F = 2ρAgh ∝ h"
+    }
+   }
+  },
+  {
+   "id": "42c3bb0f-b1af-4917-aaf6-1463688fc933",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\Delta P = \\dfrac{2T}{r}",
+       "note": "inversely proportional to r",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "r_A = \\dfrac{r_B}{4}",
+       "note": "four times the pressure, a quarter radius",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{m_A}{m_B} = \\left(\\dfrac{1}{4}\\right)^3 = \\dfrac{1}{64}",
+       "f": "(1/4)^3",
+       "value": "1/64",
+       "note": "mass goes as r³",
+       "step": "s3"
+      }
+     ],
+     "answer": "(1/4)^3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "99bc834a",
+    "answer": {
+     "value": 0.015625,
+     "label": "m_A : m_B = 1 : 64"
+    }
+   }
+  },
+  {
+   "id": "4404509d-002e-4959-97a2-5242e69f9e94",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\text{reaction of a jet} = \\rho A v^2 = 2\\rho A g h",
+       "note": "one jet",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "\\text{the two jets push opposite ways}",
+       "note": "so the forces subtract",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "F = 2\\rho A g h_2 - 2\\rho A g h_1 = 2\\rho A g (h_2 - h_1)",
+       "f": "2*rho*A*g*h2-2*rho*A*g*h1",
+       "value": "2*rho*A*g*(h2-h1)",
+       "note": "net force",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "F = 2\\rho A g x",
+       "f": "2*rho*A*g*(h2-h1)",
+       "value": "2*rho*A*g*xd",
+       "note": "h₂ − h₁ = x",
+       "step": "s4"
+      }
+     ],
+     "answer": "2*rho*A*g*xd",
+     "vars": {
+      "rho": 1000,
+      "A": 0.01,
+      "g": 9.8,
+      "xd": 0.8,
+      "h1": 1.2,
+      "h2": "h1+xd"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "b74f24f7",
+    "answer": {
+     "value": 156.8,
+     "label": "F = 2ρAgx"
+    }
+   }
+  },
+  {
+   "id": "44285c7a-2ba0-4488-8028-0feb928cdff8",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "4\\pi a^2 T + 4\\pi b^2 T = 4\\pi R^2 T",
+       "note": "surface energy is conserved",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "R^2 = a^2 + b^2",
+       "f": "(4*pi*a^2*T+4*pi*b^2*T)/(4*pi*T)",
+       "value": "a^2+b^2",
+       "note": "divide by 4πT",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "R = \\sqrt{a^2 + b^2}",
+       "f": "sqrt((4*pi*a^2*T+4*pi*b^2*T)/(4*pi*T))",
+       "value": "sqrt(a^2+b^2)",
+       "note": "matches option C",
+       "step": "s3"
+      }
+     ],
+     "answer": "sqrt(a^2+b^2)",
+     "vars": {
+      "a": 3,
+      "b": 4,
+      "T": 0.07
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "62fb313c",
+    "answer": {
+     "value": 5,
+     "label": "R = √(a² + b²)"
+    }
+   }
+  },
+  {
+   "id": "454c09a7-b562-414e-b214-0ae35a86a873",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "R = n^{1/3}r",
+       "note": "volume is conserved",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "v \\propto r^2",
+       "note": "terminal velocity",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "v_{new} = \\left(n^{1/3}\\right)^2 v = n^{2/3}v",
+       "f": "(n^(1/3))^2",
+       "value": "n^(2/3)",
+       "note": "so x = n^(2/3)",
+       "step": "s3"
+      }
+     ],
+     "answer": "(n^(1/3))^2",
+     "vars": {
+      "n": 8
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "1cec0644",
+    "answer": {
+     "value": 4,
+     "label": "x = n^(2/3)"
+    }
+   }
+  },
+  {
+   "id": "47536a34-76b0-4053-9dcf-f04635ed35a9",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "V_2 = \\dfrac{A_1V_1}{A_2}",
+       "note": "continuity",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "P_2 = P_1 + \\dfrac{\\varrho}{2}\\left(V_1^2 - V_2^2\\right)",
+       "f": "P1+rho/2*(V1^2-(A1*V1/A2)^2)",
+       "value": "P1+rho*V1^2/2*(1-A1^2/A2^2)",
+       "note": "Bernoulli, horizontal pipe",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "P_2 = P_1 + \\dfrac{\\varrho V_1^2}{2A_2^2}\\left(A_2^2 - A_1^2\\right)",
+       "f": "P1+rho*V1^2/2*(1-A1^2/A2^2)",
+       "value": "P1+rho*V1^2/(2*A2^2)*(A2^2-A1^2)",
+       "note": "matches option B",
+       "step": "s3"
+      }
+     ],
+     "answer": "P1+rho*V1^2/(2*A2^2)*(A2^2-A1^2)",
+     "vars": {
+      "rho": 1000,
+      "A1": 2,
+      "A2": 3,
+      "V1": 4,
+      "P1": 5000
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "52ca562c",
+    "answer": {
+     "value": 9444.444444444445,
+     "label": "P₂ = P₁ + ρV₁²(A₂²−A₁²)/2A₂²"
+    }
+   }
+  },
+  {
+   "id": "47749fcf-f1fc-475c-9f31-f3e5c4fe8b6a",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "P = \\dfrac{2T}{r}",
+       "note": "excess pressure of a drop",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "r_1 = \\dfrac{r_2}{4}",
+       "note": "four times the pressure, a quarter radius",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{m_1}{m_2} = \\left(\\dfrac{1}{4}\\right)^3 = \\dfrac{1}{64}",
+       "f": "(1/4)^3",
+       "value": "1/64",
+       "note": "mass goes as r³",
+       "step": "s3"
+      }
+     ],
+     "answer": "(1/4)^3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "56dae444",
+    "answer": {
+     "value": 0.015625,
+     "label": "m₁ : m₂ = 1 : 64"
+    }
+   }
+  },
+  {
+   "id": "48af1cf6-684e-4c08-9390-031160d8980d",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "r = \\dfrac{R}{4}",
+       "note": "64 droplets, volume conserved",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "W = T\\left(64\\cdot4\\pi r^2 - 4\\pi R^2\\right)",
+       "f": "T*(64*4*pi*(R/4)^2-4*pi*R^2)",
+       "value": "T*4*pi*R^2*(64/16-1)",
+       "note": "T × increase in area",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "W = 4\\pi R^2T\\left(64\\cdot\\dfrac{1}{16} - 1\\right) = 12\\pi TR^2",
+       "f": "T*4*pi*R^2*(64*(1/16)-1)",
+       "value": "12*pi*T*R^2",
+       "note": "matches option B",
+       "step": "s3"
+      }
+     ],
+     "answer": "12*pi*T*R^2",
+     "vars": {
+      "R": 2,
+      "T": 3
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "ee8ab4e7",
+    "answer": {
+     "value": 452.3893421169302,
+     "label": "W = 12πTR²"
+    }
+   }
+  },
+  {
+   "id": "4ab7ba26-d5a5-47b2-93ff-f7f1b1f0d381",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "h' = 3h",
+       "note": "rise is inversely proportional to r",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "m' = \\pi\\left(\\dfrac{r}{3}\\right)^2\\cdot3h\\cdot\\rho = \\dfrac{m}{3}",
+       "f": "pi*(r/3)^2*(3*h)*rho",
+       "value": "m/3",
+       "note": "m = πr²hρ",
+       "step": "s2"
+      }
+     ],
+     "answer": "m/3",
+     "vars": {
+      "r": 2,
+      "h": 3,
+      "rho": 1000,
+      "m": "pi*r^2*h*rho"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "4bde2719",
+    "answer": {
+     "value": 12566.370614359172,
+     "label": "m' = m/3"
+    }
+   }
+  },
+  {
+   "id": "4b31bc1c-3352-4d7e-91da-fedfbe7ea021",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "E = 4\\pi R^2T",
+       "note": "energy of the big drop",
+       "step": "s1"
+      },
+      {
+       "kind": "eq",
+       "tex": "n\\cdot4\\pi r^2T - 4\\pi R^2T = 3\\cdot4\\pi R^2T",
+       "lhs": "x*4*pi*r^2*T-4*pi*R^2*T",
+       "rhs": "3*4*pi*R^2*T",
+       "roots": [
+        "4*R^2/r^2"
+       ],
+       "note": "loss = new area − old area",
+       "step": "s2"
+      },
+      {
+       "kind": "eq",
+       "tex": "nr^2 = 4R^2",
+       "lhs": "x*r^2",
+       "rhs": "4*R^2",
+       "roots": [
+        "4*R^2/r^2"
+       ],
+       "note": "cancel 4πT and collect",
+       "step": "s3"
+      },
+      {
+       "kind": "note",
+       "tex": "n = \\dfrac{4R^2}{r^2}",
+       "note": "matches option D",
+       "step": "s4"
+      }
+     ],
+     "answer": "4*R^2/r^2",
+     "vars": {
+      "R": 2,
+      "r": 0.5,
+      "T": 3
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "bf474470",
+    "answer": {
+     "value": 64,
+     "label": "n = 4R²/r²"
+    }
+   }
+  },
+  {
+   "id": "4df753a5-a88e-430d-8fc4-67f0c46a8455",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\text{weight} = \\text{total buoyancy}",
+       "note": "half in mercury, half in oil",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "\\rho V = \\dfrac{V}{2}\\left(13.6 + 0.6\\right)",
+       "note": "densities in g/cm³",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\rho = \\dfrac{13.6 + 0.6}{2} = 7.1\\ \\text{g/cm}^3",
+       "f": "(13.6+0.6)/2",
+       "value": "7.1",
+       "note": "density of the sphere",
+       "step": "s3"
+      }
+     ],
+     "answer": "(13.6+0.6)/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "dbd5c57e",
+    "answer": {
+     "value": 7.1,
+     "label": "7.1 g/cm³"
+    }
+   }
+  },
+  {
+   "id": "4e225740-e00c-4625-946e-29c88db2a344",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\Delta P = \\tfrac12\\rho v^2",
+       "note": "Bernoulli's theorem for rotating fluid",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta P = \\tfrac12 d(\\omega R)^2 = \\dfrac{\\omega^2R^2d}{2}",
+       "f": "0.5*d*(w*R)^2",
+       "value": "w^2*R^2*d/2",
+       "note": "speed at the rim is ωR",
+       "step": "s2"
+      }
+     ],
+     "answer": "w^2*R^2*d/2",
+     "vars": {
+      "w": 3,
+      "R": 2,
+      "d": 1000
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "5174a6f7",
+    "answer": {
+     "value": 18000,
+     "label": "ΔP = ω²R²d/2"
+    }
+   }
+  },
+  {
+   "id": "4ed673f4-a0ae-4524-8176-84845e4ae552",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "h \\propto \\dfrac{1}{r} \\Rightarrow h' = 3h",
+       "note": "radius r/3",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "m' = \\rho\\pi\\left(\\dfrac{r}{3}\\right)^2(3h) = \\dfrac{m}{3}",
+       "f": "rho*pi*(r/3)^2*(3*h)",
+       "value": "m/3",
+       "note": "m = ρπr²h",
+       "step": "s2"
+      }
+     ],
+     "answer": "m/3",
+     "vars": {
+      "r": 2,
+      "h": 3,
+      "rho": 1000,
+      "m": "rho*pi*r^2*h"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "15135231",
+    "answer": {
+     "value": 12566.370614359172,
+     "label": "m' = m/3"
+    }
+   }
+  },
+  {
+   "id": "5354a5c1-aeae-415f-8d6b-7791aed09428",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "R^3 = 512r^3",
+       "note": "volume is conserved",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "r = \\dfrac{R}{8}",
+       "f": "(R^3/512)^(1/3)",
+       "value": "R/8",
+       "note": "cube root of 512",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "SE \\propto n\\,r^2",
+       "note": "surface energy goes with total area",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{\\text{new SE}}{\\text{old SE}} = \\dfrac{512r^2}{R^2} = \\dfrac{512}{64}",
+       "f": "512*(R/8)^2/R^2",
+       "value": "512/64",
+       "note": "put r = R/8",
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{\\text{new SE}}{\\text{old SE}} = 8",
+       "f": "512/64",
+       "value": "8",
+       "note": "so the new energy is 8E",
+       "step": "s5"
+      }
+     ],
+     "answer": "512/64",
+     "vars": {
+      "R": 2
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "7568f6b0",
+    "answer": {
+     "value": 8,
+     "label": "new SE / old SE = 8"
+    }
+   }
+  },
+  {
+   "id": "55259faa-e664-4561-97d4-8f5b9ac15beb",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "r = \\dfrac{R}{10}",
+       "f": "(R^3/1000)^(1/3)",
+       "value": "R/10",
+       "note": "volume is conserved",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta E = T\\left(1000\\cdot4\\pi r^2 - 4\\pi R^2\\right)",
+       "f": "T*(1000*4*pi*(R/10)^2-4*pi*R^2)",
+       "value": "4*pi*T*R^2*(10-1)",
+       "note": "T × change in area",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta E = 4\\pi TR^2(10-1) = 36\\pi R^2T",
+       "f": "4*pi*T*R^2*(10-1)",
+       "value": "36*pi*R^2*T",
+       "note": "matches option D",
+       "step": "s3"
+      }
+     ],
+     "answer": "36*pi*R^2*T",
+     "vars": {
+      "R": 2,
+      "T": 3
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "2f2feb40",
+    "answer": {
+     "value": 1357.1680263507906,
+     "label": "ΔE = 36πR²T"
+    }
+   }
+  },
+  {
+   "id": "55e31f3c-e6a9-4fd9-a197-3b15067c492b",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\pi R^2 v = n\\pi r^2 v'",
+       "note": "continuity",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "v' = \\dfrac{R^2v}{nr^2}",
+       "f": "pi*R^2*v/(n*pi*r^2)",
+       "value": "R^2*v/(n*r^2)",
+       "note": "matches option B",
+       "step": "s2"
+      }
+     ],
+     "answer": "R^2*v/(n*r^2)",
+     "vars": {
+      "R": 2,
+      "v": 3,
+      "n": 4,
+      "r": 0.5
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "751d19ed",
+    "answer": {
+     "value": 12,
+     "label": "v' = R²v/(nr²)"
+    }
+   }
+  },
+  {
+   "id": "5bf4891e-d570-4c83-bd4f-74a200421292",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "r = \\dfrac{R}{10}",
+       "f": "(R^3/1000)^(1/3)",
+       "value": "R/10",
+       "note": "R³ = 1000 r³",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "V = T(4\\pi R^2)",
+       "note": "original surface energy",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "V' = 1000\\cdot T\\cdot4\\pi\\dfrac{R^2}{100} = 10\\,T(4\\pi R^2)",
+       "f": "1000*T*4*pi*(R/10)^2",
+       "value": "10*T*4*pi*R^2",
+       "note": "total of the droplets",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{V'}{V} = 10",
+       "f": "1000*T*4*pi*(R/10)^2/(T*4*pi*R^2)",
+       "value": "10",
+       "note": "so V′ = 10V",
+       "step": "s4"
+      }
+     ],
+     "answer": "1000*T*4*pi*(R/10)^2/(T*4*pi*R^2)",
+     "vars": {
+      "R": 2,
+      "T": 3
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "28135f7a",
+    "answer": {
+     "value": 10.000000000000002,
+     "label": "V′/V = 10"
+    }
+   }
+  },
+  {
+   "id": "5e09e937-0ada-4326-a808-fd4f91539787",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "P = \\dfrac{2T}{r}",
+       "note": "excess pressure of a drop",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "\\dfrac{P_1}{P_2} = \\dfrac{r_2}{r_1} = 3 \\Rightarrow r_1 = \\dfrac{r_2}{3}",
+       "note": "three times the pressure",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{m_1}{m_2} = \\dfrac{r_1^3}{r_2^3} = \\dfrac{1}{27}",
+       "f": "(1/3)^3",
+       "value": "1/27",
+       "note": "matches option D",
+       "step": "s3"
+      }
+     ],
+     "answer": "(1/3)^3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "00d88c4c",
+    "answer": {
+     "value": 0.03703703703703703,
+     "label": "m₁ : m₂ = 1 : 27"
+    }
+   }
+  },
+  {
+   "id": "5eeba8f8-bf37-46f3-8f50-27f1659434b0",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\tfrac43\\pi R^3 = \\tfrac43\\pi\\left(R_1^3 + R_2^3 + R_3^3\\right)",
+       "note": "volume is conserved",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "R = \\left(R_1^3 + R_2^3 + R_3^3\\right)^{1/3}",
+       "f": "(4/3*pi*(R1^3+R2^3+R3^3)/(4/3*pi))^(1/3)",
+       "value": "(R1^3+R2^3+R3^3)^(1/3)",
+       "note": "cancel 4π/3, cube root",
+       "step": "s2"
+      }
+     ],
+     "answer": "(R1^3+R2^3+R3^3)^(1/3)",
+     "vars": {
+      "R1": 1,
+      "R2": 2,
+      "R3": 3
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "ccd5bdee",
+    "answer": {
+     "value": 3.3019272488946263,
+     "label": "R = (R₁³+R₂³+R₃³)^(1/3)"
+    }
+   }
+  },
+  {
+   "id": "5f5565f7-78fa-4325-a0b0-be225688a6cf",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "\\rho g h = 3H",
+       "f": "rho*g*h",
+       "value": "3*H",
+       "note": "gauge pressure",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "v = \\sqrt{2gh} = \\sqrt{\\dfrac{6H}{\\rho}}",
+       "f": "sqrt(2*g*h)",
+       "value": "sqrt(6*H/rho)",
+       "note": "speed of outflow",
+       "step": "s2"
+      }
+     ],
+     "answer": "sqrt(2*g*h)",
+     "vars": {
+      "H": 2,
+      "rho": 1000,
+      "g": 10,
+      "h": "3*H/(rho*g)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "c4f24f79",
+    "answer": {
+     "value": 0.10954451150103321,
+     "label": "v = √(6H/ρ)"
+    }
+   }
+  },
+  {
+   "id": "61ffaba9-db22-4f7f-883d-a9261d47df03",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\tfrac43\\pi R^3 = 125\\times\\tfrac43\\pi r^3",
+       "note": "volume is conserved",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "R = 5r",
+       "f": "(125*r^3)^(1/3)",
+       "value": "5*r",
+       "note": "cube root of 125",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "v_{big} = 0.04\\times\\left(\\dfrac{R}{r}\\right)^2 = 0.04\\times25 = 1\\ \\text{m/s}",
+       "f": "0.04*(5*r/r)^2",
+       "value": "1",
+       "note": "v ∝ r², and 4 cm/s = 0.04 m/s",
+       "step": "s3"
+      }
+     ],
+     "answer": "0.04*(5*r/r)^2",
+     "vars": {
+      "r": 2
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "686787a0",
+    "answer": {
+     "value": 1,
+     "label": "1 m/s"
+    }
+   }
+  },
+  {
+   "id": "6422eb7d-d439-43f5-8b0e-edd525a5b4ce",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\dfrac{F_1}{A_1} = \\dfrac{F_2}{A_2}",
+       "note": "Pascal's law",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "A \\propto d^2",
+       "note": "area goes as diameter squared",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "F_2 = \\dfrac{d_2^2}{d_1^2}F_1",
+       "f": "F1/d1^2*d2^2",
+       "value": "d2^2/d1^2*F1",
+       "note": "matches option A",
+       "step": "s3"
+      }
+     ],
+     "answer": "d2^2/d1^2*F1",
+     "vars": {
+      "F1": 2,
+      "d1": 1.5,
+      "d2": 4
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "c956987d",
+    "answer": {
+     "value": 14.222222222222221,
+     "label": "F₂ = (d₂²/d₁²)F₁"
+    }
+   }
+  },
+  {
+   "id": "67f816e2-4449-48a1-a7a5-161881eb80c7",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "P = \\dfrac{4T}{r}",
+       "note": "PV is conserved on coalescence",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{4T}{r_1}\\cdot\\tfrac43\\pi r_1^3 + \\dfrac{4T}{r_2}\\cdot\\tfrac43\\pi r_2^3 = \\dfrac{4T}{r}\\cdot\\tfrac43\\pi r^3",
+       "f": "(4*T/r1)*4/3*pi*r1^3+(4*T/r2)*4/3*pi*r2^3",
+       "value": "(4*T/R)*4/3*pi*R^3",
+       "note": "put in P and V for each bubble",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "r = \\left(r_1^2 + r_2^2\\right)^{1/2}",
+       "f": "(r1^2+r2^2)^(1/2)",
+       "value": "R",
+       "note": "from r₁² + r₂² = r²",
+       "step": "s3"
+      }
+     ],
+     "answer": "(r1^2+r2^2)^(1/2)",
+     "vars": {
+      "r1": 3,
+      "r2": 4,
+      "T": 0.07,
+      "R": "sqrt(r1^2+r2^2)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "f4fb7926",
+    "answer": {
+     "value": 5,
+     "label": "r = (r₁² + r₂²)^(1/2)"
+    }
+   }
+  },
+  {
+   "id": "6a8cca01-7931-4d60-bb2c-1f294d9d4521",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "R = n^{1/3}r",
+       "note": "volume is conserved",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "E_{drops} = n\\times4\\pi r^2T",
+       "note": "surface energy of the n droplets",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "E_{big} = 4\\pi R^2T = n^{2/3}\\times4\\pi r^2T",
+       "f": "(n^(1/3)*r)^2*4*pi*T",
+       "value": "n^(2/3)*4*pi*r^2*T",
+       "note": "surface energy of the big drop",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{E_{drops}}{E_{big}} = \\dfrac{n}{n^{2/3}} = n^{1/3}",
+       "f": "n/n^(2/3)",
+       "value": "n^(1/3)",
+       "note": "cube root of n",
+       "step": "s4"
+      }
+     ],
+     "answer": "n/n^(2/3)",
+     "vars": {
+      "n": 8,
+      "r": 1,
+      "T": 3
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "2a2da4d2",
+    "answer": {
+     "value": 2.0000000000000004,
+     "label": "E_drops : E_big = ∛n : 1"
+    }
+   }
+  },
+  {
+   "id": "6cf3cc6e-a591-4a01-842e-567df01c299b",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "V\\rho g = \\dfrac{V}{2}(13.6)g + \\dfrac{V}{2}(0.8)g",
+       "note": "weight = total buoyancy",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\rho = \\dfrac{13.6 + 0.8}{2} = 7.2\\ \\text{gm/cm}^3",
+       "f": "(13.6+0.8)/2",
+       "value": "7.2",
+       "note": "density of the sphere",
+       "step": "s2"
+      }
+     ],
+     "answer": "(13.6+0.8)/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "79f028da",
+    "answer": {
+     "value": 7.2,
+     "label": "7.2 gm/cm³"
+    }
+   }
+  },
+  {
+   "id": "6f8cfe4c-be17-4972-95f2-36ba857b8bb5",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "A\\left|\\dfrac{dh}{dt}\\right| = av",
+       "note": "continuity: tank surface and tap",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\left|\\dfrac{dh}{dt}\\right| = \\dfrac{500\\times10^{-6}\\times0.3}{750\\times10^{-4}} = 2\\times10^{-3}\\ \\text{m/s}",
+       "f": "500*10^(-6)*0.3/(750*10^(-4))",
+       "value": "2*10^(-3)",
+       "note": "areas in m², speed 30 cm/s = 0.3 m/s",
+       "sf": 1,
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "y = 2",
+       "note": "dh/dt = y × 10⁻³ m/s",
+       "step": "s3"
+      }
+     ],
+     "answer": "500*10^(-6)*0.3/(750*10^(-4))*1000"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "f7aec438",
+    "answer": {
+     "value": 2,
+     "label": "y = 2"
+    }
+   }
+  },
+  {
+   "id": "6fe9d625-1462-4af1-afd0-cb10cd882f4f",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "h \\propto \\dfrac{T}{\\rho}",
+       "note": "same tube radius, same angle of contact",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{h_1}{h_2} = \\dfrac{T_1}{T_2}\\cdot\\dfrac{\\rho_2}{\\rho_1} = \\dfrac{6}{5}\\cdot\\dfrac{3}{4}",
+       "f": "6/5*3/4",
+       "value": "18/20",
+       "note": "ratios of T and ρ put in",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{h_1}{h_2} = \\dfrac{18}{20} = 0.9",
+       "f": "18/20",
+       "value": "0.9",
+       "note": "matches option D",
+       "step": "s3"
+      }
+     ],
+     "answer": "18/20"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "c4d0cae8",
+    "answer": {
+     "value": 0.9,
+     "label": "h₁/h₂ = 0.9"
+    }
+   }
+  },
+  {
+   "id": "729a1f96-876d-49d7-860c-2ba40d70657d",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "eq",
+       "tex": "P + \\tfrac12\\rho v^2 = P_2 + \\tfrac12\\rho(3v)^2",
+       "lhs": "P+0.5*rho*v^2",
+       "rhs": "x+0.5*rho*(3*v)^2",
+       "roots": [
+        "P-4*rho*v^2"
+       ],
+       "note": "Bernoulli, horizontal pipe",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "P_2 = P - \\tfrac12\\rho\\left(9v^2 - v^2\\right) = P - 4\\rho v^2",
+       "f": "P-0.5*rho*(9*v^2-v^2)",
+       "value": "P-4*rho*v^2",
+       "note": "matches option D",
+       "step": "s2"
+      }
+     ],
+     "answer": "P-4*rho*v^2",
+     "vars": {
+      "P": 100000,
+      "rho": 1000,
+      "v": 2
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "2d81a7f7",
+    "answer": {
+     "value": 84000,
+     "label": "P₂ = P − 4ρv²"
+    }
+   }
+  },
+  {
+   "id": "759f75c1-61ce-42f1-a5a6-9d940b833fe5",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\Delta P = \\dfrac{4T}{R}",
+       "note": "inversely proportional to R",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "R_1 = \\dfrac{R_2}{3}",
+       "note": "three times the pressure",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{V_1}{V_2} = \\dfrac{1}{27}",
+       "f": "(1/3)^3",
+       "value": "1/27",
+       "note": "volume goes as R³",
+       "step": "s3"
+      }
+     ],
+     "answer": "(1/3)^3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "af8ffb37",
+    "answer": {
+     "value": 0.03703703703703703,
+     "label": "V₁ : V₂ = 1 : 27"
+    }
+   }
+  },
+  {
+   "id": "75e33389-d2b5-4ec5-a07a-e7003e93c9b5",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "v \\propto (\\rho - \\sigma)",
+       "note": "same size, same liquid",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "v = 0.2\\times\\dfrac{10.5 - 1.5}{19.5 - 1.5}",
+       "f": "0.2*(10.5-1.5)/(19.5-1.5)",
+       "value": "0.2*9/18",
+       "note": "silver from gold's 0.2 m/s",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "v = 0.2\\times\\dfrac{9}{18} = 0.1\\ \\text{m/s}",
+       "f": "0.2*9/18",
+       "value": "0.1",
+       "note": "terminal speed of silver",
+       "step": "s3"
+      }
+     ],
+     "answer": "0.2*9/18"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "26479b4a",
+    "answer": {
+     "value": 0.1,
+     "label": "0.1 m/s"
+    }
+   }
+  },
+  {
+   "id": "760213b8-b848-4d66-9965-4861bc61a7e3",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "4a \\Rightarrow r_2 = 2r_1",
+       "note": "area goes as r²",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "h \\propto \\dfrac{1}{r}",
+       "note": "capillary rise",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{h_2}{h_1} = \\dfrac{r_1}{r_2} = \\dfrac{1}{2}",
+       "f": "r1/(2*r1)",
+       "value": "1/2",
+       "note": "so the water rises to h/2",
+       "step": "s3"
+      }
+     ],
+     "answer": "r1/(2*r1)",
+     "vars": {
+      "r1": 2
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "48dfc4b0",
+    "answer": {
+     "value": 0.5,
+     "label": "h₂/h₁ = 1/2"
+    }
+   }
+  },
+  {
+   "id": "799a90c1-cc3f-4bf7-ac65-b2f6e591a53d",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "1000\\times\\tfrac43\\pi r^3 = \\tfrac43\\pi R^3",
+       "note": "volume is conserved",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "R = 10r",
+       "f": "(1000*r^3)^(1/3)",
+       "value": "10*r",
+       "note": "cube root of 1000",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{E_f}{E_i} = \\dfrac{T\\cdot4\\pi R^2}{1000\\,T\\cdot4\\pi r^2} = \\dfrac{100r^2}{1000r^2}",
+       "f": "T*4*pi*(10*r)^2/(1000*T*4*pi*r^2)",
+       "value": "100*r^2/(1000*r^2)",
+       "note": "final : initial surface energy",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{E_f}{E_i} = \\dfrac{1}{10}",
+       "f": "100*r^2/(1000*r^2)",
+       "value": "1/10",
+       "note": "so the ratio is 1 : 10",
+       "step": "s4"
+      }
+     ],
+     "answer": "100*r^2/(1000*r^2)",
+     "vars": {
+      "r": 2,
+      "T": 3
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "aaa96d2b",
+    "answer": {
+     "value": 0.1,
+     "label": "E_f : E_i = 1 : 10"
+    }
+   }
+  },
+  {
+   "id": "7b87be48-a046-4029-84d3-c5702d620326",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\Delta P = \\dfrac{4T}{R}",
+       "note": "so P ∝ 1/R",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "P_1 = 3P_2 \\Rightarrow R_1 = \\dfrac{R_2}{3}",
+       "note": "three times the pressure",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{V_1}{V_2} = \\left(\\dfrac{R_1}{R_2}\\right)^3 = \\dfrac{1}{27}",
+       "f": "(1/3)^3",
+       "value": "1/27",
+       "note": "volume goes as R³",
+       "step": "s3"
+      }
+     ],
+     "answer": "(1/3)^3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "d249dec0",
+    "answer": {
+     "value": 0.03703703703703703,
+     "label": "V₁ : V₂ = 1 : 27"
+    }
+   }
+  },
+  {
+   "id": "7be9c204-e2ab-41d8-bc41-47819dc7334e",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "F_v = \\text{weight} - \\text{buoyancy}",
+       "note": "at terminal velocity",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "F_v = mg - V\\sigma_2 g",
+       "f": "m*g-V*s2*g",
+       "value": "m*g-(m/s1)*s2*g",
+       "note": "V = m/σ₁",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "F_v = mg - \\dfrac{m}{\\sigma_1}\\sigma_2 g = mg\\left(1 - \\dfrac{\\sigma_2}{\\sigma_1}\\right)",
+       "f": "m*g-(m/s1)*s2*g",
+       "value": "m*g*(1-s2/s1)",
+       "note": "matches option C",
+       "step": "s3"
+      }
+     ],
+     "answer": "m*g*(1-s2/s1)",
+     "vars": {
+      "m": 2,
+      "g": 9.8,
+      "s1": 8000,
+      "s2": 1000,
+      "V": "m/s1"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "03a5413e",
+    "answer": {
+     "value": 17.150000000000002,
+     "label": "F = mg(1 − σ₂/σ₁)"
+    }
+   }
+  },
+  {
+   "id": "7d095352-c15f-4c87-99b8-1dca38a56867",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\Delta P = \\dfrac{4T}{r}",
+       "note": "excess pressure in a soap bubble",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "r = \\dfrac{4\\times3.2\\times10^{-2}}{25.6} = 0.5\\times10^{-2}\\ \\text{m}",
+       "f": "4*3.2*10^(-2)/25.6",
+       "value": "0.5*10^(-2)",
+       "note": "radius of the bubble",
+       "sf": 1,
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "d = 1\\ \\text{cm}",
+       "note": "the diameter, option C",
+       "step": "s3"
+      }
+     ],
+     "answer": "4*3.2*10^(-2)/25.6*2*100"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "09e451aa",
+    "answer": {
+     "value": 1,
+     "label": "1 cm"
+    }
+   }
+  },
+  {
+   "id": "7e1738c4-60a1-496f-9f5c-3ec26731e81c",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "F = \\text{weight} - \\text{buoyancy}",
+       "note": "at terminal velocity",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "F = \\tfrac43\\cdot\\tfrac{22}{7}\\cdot(10^{-3})^3\\cdot9000\\cdot9.8 = 3.696\\times10^{-4}\\ \\text{N}",
+       "f": "4/3*22/7*(10^(-3))^3*9000*9.8",
+       "value": "3.696*10^(-4)",
+       "note": "r = 1 mm, ρ − σ = 9000 kg/m³",
+       "sf": 4,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "F = 3696\\times10^{-7}\\ \\text{N}",
+       "f": "3.696*10^(-4)",
+       "value": "3696*10^(-7)",
+       "note": "same force, written as 3696 × 10⁻ˣ",
+       "sf": 4,
+       "step": "s3"
+      },
+      {
+       "kind": "note",
+       "tex": "x = 7",
+       "note": "matches option C",
+       "step": "s4"
+      }
+     ],
+     "answer": "7"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "ec85339f",
+    "answer": {
+     "value": 7,
+     "label": "x = 7"
+    }
+   }
+  }
+ ],
+ "decided": []
+}

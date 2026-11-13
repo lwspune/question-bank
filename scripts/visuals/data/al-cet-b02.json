@@ -1,0 +1,46 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "822dcfc5-80e4-4a84-9203-97d949592a3b",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "2\\,\\mathrm{C_2H_5OH} + 2\\,\\mathrm{Na} \\rightarrow 2\\,\\mathrm{C_2H_5ONa} + \\mathrm{H_2}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "n(\\mathrm{H_2}) = {{1:6}} \\times \\dfrac{1}{2} = {{2:3}}\\ \\text{mol}",
+              "f": "6*(1/2)",
+              "value": "3",
+              "note": "2 mol ethanol give 1 mol H₂"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "a22f3c71",
+        "answer": {
+          "value": 3,
+          "label": "3 mol"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

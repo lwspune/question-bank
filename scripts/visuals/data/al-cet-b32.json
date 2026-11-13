@@ -1,0 +1,4310 @@
+{
+ "//": "Assembled from agent drafts (algebraSteps).",
+ "visuals": [
+  {
+   "id": "95a6d191-ca89-439c-b99e-e333713dedcb",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "x = \\dfrac{A}{\\sqrt{2}}",
+       "note": "KE is half the total energy at"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\omega = \\dfrac{2\\pi}{4} = \\dfrac{\\pi}{2}",
+       "f": "2*pi/4",
+       "value": "pi/2",
+       "note": "x = A sin ωt from the mean position"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "\\sin\\dfrac{\\pi t}{2} = \\dfrac{1}{\\sqrt{2}}",
+       "lhs": "sin(pi*x/2)",
+       "rhs": "1/sqrt(2)",
+       "roots": [
+        "0.5"
+       ]
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "\\dfrac{\\pi t}{2} = \\dfrac{\\pi}{4}",
+       "lhs": "pi*x/2",
+       "rhs": "pi/4",
+       "roots": [
+        "0.5"
+       ]
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "t = 0.5\\ \\text{s}",
+       "f": "pi/4*2/pi",
+       "value": "0.5"
+      }
+     ],
+     "answer": "0.5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "201bb38c",
+    "answer": {
+     "value": 0.5,
+     "label": "0.5 s"
+    }
+   }
+  },
+  {
+   "id": "97ff3c85-9e65-481a-8865-4688d60d39e2",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "E = \\dfrac{1}{2}m\\omega^2A^2,\\quad \\omega^2 = \\dfrac{g}{l}",
+       "note": "amplitude A stays the same"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "E \\propto \\omega^2 \\propto \\dfrac{1}{l}"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{\\omega'^2}{\\omega^2} = \\dfrac{1}{1/4} = 4",
+       "f": "1/(1/4)",
+       "value": "4",
+       "note": "length becomes l/4"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\dfrac{E'}{E} = 4",
+       "f": "1/(1/4)",
+       "value": "4",
+       "note": "total energy becomes 4 times"
+      }
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "15d2aa49",
+    "answer": {
+     "value": 4,
+     "label": "E'/E = 4"
+    }
+   }
+  },
+  {
+   "id": "9829579c-ff60-4cb2-80b9-2da1a7095fb2",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "A = \\dfrac{mg}{k}",
+       "note": "spring unstretched at the highest point"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "k = m(2\\pi\\times 10)^2"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "A = \\dfrac{g}{4\\pi^2\\times 100} = \\dfrac{10}{400\\pi^2}",
+       "f": "10/(4*pi^2*100)",
+       "value": "10/(400*pi^2)"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "v_{max} = \\omega A = 2\\pi\\times 10\\times\\dfrac{10}{400\\pi^2} = \\dfrac{1}{2\\pi}",
+       "f": "2*pi*10*10/(400*pi^2)",
+       "value": "1/(2*pi)",
+       "note": "v_max in m/s"
+      }
+     ],
+     "answer": "1/(2*pi)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "446521a1",
+    "answer": {
+     "value": 0.15915494309189535,
+     "label": "1/(2π) m/s"
+    }
+   }
+  },
+  {
+   "id": "99816799-9ad3-4b35-a7d4-fa0523c05f59",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "L": "2",
+      "g": "9.8",
+      "th": "0.1",
+      "t0": "1.3",
+      "w": "sqrt(g/L)"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\theta' = \\theta\\cos\\omega t,\\quad \\omega = \\sqrt{\\dfrac{g}{L}}",
+       "note": "angular displacement of the bob"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "x = L\\theta' = L\\theta\\cos\\omega t",
+       "f": "L*(th*cos(w*t0))",
+       "value": "L*th*cos(w*t0)",
+       "note": "linear displacement"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "x = L\\theta\\cos\\sqrt{\\dfrac{g}{L}}\\,t",
+       "f": "L*th*cos(sqrt(g/L)*t0)",
+       "value": "L*th*cos(w*t0)"
+      }
+     ],
+     "answer": "L*th*cos(sqrt(g/L)*t0)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "e0ae33f0",
+    "answer": {
+     "value": -0.19307496089428428,
+     "label": "x = Lθ cos(√(g/L)·t)"
+    }
+   }
+  },
+  {
+   "id": "9bbee203-4fd2-4599-8a2e-6cb4c3af13bf",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "v_{max} = \\sqrt{2\\times 8} = 4\\ \\text{m/s}",
+       "f": "sqrt(2*8)",
+       "value": "4"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\omega = \\dfrac{2\\pi}{4} = \\dfrac{\\pi}{2}",
+       "f": "2*pi/4",
+       "value": "pi/2"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "a_{max} = \\omega v_{max} = 2\\pi\\ \\text{m/s}^2",
+       "f": "pi/2*4",
+       "value": "2*pi",
+       "note": "option C"
+      }
+     ],
+     "answer": "2*pi"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "92468ff9",
+    "answer": {
+     "value": 6.283185307179586,
+     "label": "2π m/s²"
+    }
+   }
+  },
+  {
+   "id": "a957486e-a76a-4c72-b0f9-2f42c3f71d39",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "A": "2",
+      "k": "3",
+      "E": "0.5*k*A^2"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "x = A\\sin\\dfrac{\\pi}{6} = \\dfrac{A}{2}",
+       "f": "A*sin(pi/6)",
+       "value": "A/2",
+       "note": "t = T/12, so ωt = 2π/T · T/12 = π/6"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "PE = \\dfrac{1}{2}k\\left(\\dfrac{A}{2}\\right)^2 = \\dfrac{E}{4}",
+       "f": "0.5*k*(A/2)^2",
+       "value": "0.5*k*A^2/4",
+       "note": "E = ½kA²"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "KE = E - \\dfrac{E}{4} = \\dfrac{3E}{4}",
+       "f": "E-E/4",
+       "value": "3*E/4"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "PE : KE = 1 : 3",
+       "f": "(E/4)/(3*E/4)",
+       "value": "1/3"
+      }
+     ],
+     "answer": "1/3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "eb774fd4",
+    "answer": {
+     "value": 0.3333333333333333,
+     "label": "PE : KE = 1 : 3"
+    }
+   }
+  },
+  {
+   "id": "ab26d3aa-9a29-4088-91bc-0c9c85e7d96b",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\dfrac{v^2}{2} = \\dfrac{v'^2}{2} + gl(1-\\cos60^\\circ)",
+       "note": "energy conserved, lowest point to 60°"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "\\dfrac{16}{2} = \\dfrac{v'^2}{2} + 10(1)(1-0.5)",
+       "lhs": "16/2",
+       "rhs": "x^2/2+10*1*(1-0.5)",
+       "roots": [
+        "sqrt(6)"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "8 = \\dfrac{v'^2}{2} + 5",
+       "lhs": "8",
+       "rhs": "x^2/2+5",
+       "roots": [
+        "sqrt(6)"
+       ]
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "v'^2 = 6",
+       "lhs": "x^2",
+       "rhs": "6",
+       "roots": [
+        "sqrt(6)"
+       ]
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "v' = \\sqrt{6}\\ \\text{m/s}",
+       "f": "sqrt(6)",
+       "value": "sqrt(6)"
+      }
+     ],
+     "answer": "sqrt(6)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "cce251b2",
+    "answer": {
+     "value": 2.449489742783178,
+     "label": "√6 m/s"
+    }
+   }
+  },
+  {
+   "id": "ab573c58-98b5-40a3-9f77-3583d6009ee2",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "E = \\dfrac{1}{2}m\\omega^2A^2,\\quad \\omega^2 = \\dfrac{g}{L}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{\\omega'^2}{\\omega^2} = \\dfrac{1}{1/3} = 3",
+       "f": "1/(1/3)",
+       "value": "3",
+       "note": "length becomes one third"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{E'}{E} = 3",
+       "f": "1/(1/3)",
+       "value": "3",
+       "note": "the energy triples too"
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "8646acbd",
+    "answer": {
+     "value": 3,
+     "label": "E'/E = 3"
+    }
+   }
+  },
+  {
+   "id": "ab8cb03f-b5b1-409a-bdea-fe48856534f3",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "d": "600",
+      "rho": "1000",
+      "L": "0.2",
+      "g": "9.8"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "k = \\rho L^2 g",
+       "note": "pushed down y: extra buoyancy ρL²gy"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "m = dL^3"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "T = 2\\pi\\sqrt{\\dfrac{dL^3}{\\rho L^2 g}}"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "T = 2\\pi\\sqrt{\\dfrac{Ld}{\\rho g}}",
+       "f": "2*pi*sqrt(d*L^3/(rho*L^2*g))",
+       "value": "2*pi*sqrt(L*d/(rho*g))"
+      }
+     ],
+     "answer": "2*pi*sqrt(L*d/(rho*g))"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "1e2c2e1a",
+    "answer": {
+     "value": 0.6952763444526192,
+     "label": "T = 2π√(Ld/(ρg))"
+    }
+   }
+  },
+  {
+   "id": "ae1be205-d665-44ce-aeb0-6efa1b54c751",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\omega = \\dfrac{\\pi}{8}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{phase} = \\dfrac{\\pi}{4}",
+       "note": "2 s after the mean position"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "v = A\\omega\\cos\\dfrac{\\pi}{4}"
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "\\dfrac{A\\pi}{8\\sqrt{2}} = 4",
+       "lhs": "x*pi/(8*sqrt(2))",
+       "rhs": "4",
+       "roots": [
+        "32*sqrt(2)/pi"
+       ]
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "A = \\dfrac{32\\sqrt{2}}{\\pi}\\ \\text{m}",
+       "f": "4*8*sqrt(2)/pi",
+       "value": "32*sqrt(2)/pi"
+      }
+     ],
+     "answer": "32*sqrt(2)/pi"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "790eb494",
+    "answer": {
+     "value": 14.405061058513699,
+     "label": "32√2/π m"
+    }
+   }
+  },
+  {
+   "id": "b159a628-5682-432b-adcb-a6e51c6016d4",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "K": "3",
+      "m": "2"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "f = \\dfrac{1}{2\\pi}\\sqrt{\\dfrac{2K}{m}}",
+       "note": "K_eff = 2K, springs on opposite sides"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "f' = \\dfrac{1}{2\\pi}\\sqrt{\\dfrac{K}{m}}",
+       "note": "S₂ removed: one spring K"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{f'}{f} = \\dfrac{1}{\\sqrt{2}}",
+       "f": "(1/(2*pi))*sqrt(K/m)/((1/(2*pi))*sqrt(2*K/m))",
+       "value": "1/sqrt(2)"
+      }
+     ],
+     "answer": "1/sqrt(2)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "18ae5474",
+    "answer": {
+     "value": 0.7071067811865475,
+     "label": "f'/f = 1/√2"
+    }
+   }
+  },
+  {
+   "id": "b179582b-13fd-4db4-b98c-4a75d4986efa",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "T \\propto \\sqrt{m}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "m = 400\\ \\text{g},\\quad T = 3\\ \\text{s}",
+       "note": "500 g removed"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "T = 3\\sqrt{\\dfrac{100}{400}} = 1.5\\ \\text{s}",
+       "f": "3*sqrt(100/400)",
+       "value": "1.5",
+       "note": "100 g left"
+      }
+     ],
+     "answer": "3*sqrt(100/400)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "5a3bf590",
+    "answer": {
+     "value": 1.5,
+     "label": "1.5 s"
+    }
+   }
+  },
+  {
+   "id": "b1f29f0c-975a-4ee3-adda-b30fb1ce900d",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "A": "2"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{T.E.} = \\dfrac{1}{2}m\\omega^2A^2"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{K.E.} = \\dfrac{1}{2}m\\omega^2(A^2 - x^2)"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "A^2 = n(A^2 - x^2)",
+       "lhs": "A^2",
+       "rhs": "x*(A^2-(sqrt(3)/2*A)^2)",
+       "roots": [
+        "4"
+       ],
+       "note": "T.E. = n × K.E. at x = (√3/2)A"
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "A^2 = nA^2\\left(1 - \\dfrac{3}{4}\\right)",
+       "lhs": "A^2",
+       "rhs": "x*A^2*(1-3/4)",
+       "roots": [
+        "4"
+       ]
+      },
+      {
+       "step": "s5",
+       "kind": "eq",
+       "tex": "A^2 = \\dfrac{n}{4}A^2",
+       "lhs": "A^2",
+       "rhs": "x/4*A^2",
+       "roots": [
+        "4"
+       ]
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "n = 4",
+       "f": "A^2/(A^2/4)",
+       "value": "4"
+      }
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s4",
+       "s5",
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "1b268cb4",
+    "answer": {
+     "value": 4,
+     "label": "n = 4"
+    }
+   }
+  },
+  {
+   "id": "b2296b09-b4f5-45db-8abf-224a7e7778e9",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "L2": "1",
+      "L1": "2*L2"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "E = \\dfrac{1}{2}m\\dfrac{g}{L}a^2"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "a^2 \\propto L",
+       "note": "equal energy and equal mass"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{a_A}{a_B} = \\sqrt{2}",
+       "f": "sqrt(L1/L2)",
+       "value": "sqrt(2)",
+       "note": "L₁ = 2L₂, so B has the smaller amplitude"
+      }
+     ],
+     "answer": "sqrt(2)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "c9512c58",
+    "answer": {
+     "value": 1.4142135623730951,
+     "label": "a_A/a_B = √2"
+    }
+   }
+  },
+  {
+   "id": "b2fce067-7f0f-4a1e-b7ff-c14ecba63210",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "K1": "4",
+      "K2": "9",
+      "A1": "1"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "v_{max} = A\\omega = A\\sqrt{\\dfrac{K}{m}}"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "A_1\\sqrt{K_1} = A_2\\sqrt{K_2}",
+       "lhs": "A1*sqrt(K1)",
+       "rhs": "x*sqrt(K2)",
+       "roots": [
+        "A1*sqrt(K1/K2)"
+       ],
+       "note": "equal maximum velocities"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{A_2}{A_1} = \\sqrt{\\dfrac{K_1}{K_2}}",
+       "f": "(A1*sqrt(K1/K2))/A1",
+       "value": "sqrt(K1/K2)"
+      }
+     ],
+     "answer": "sqrt(K1/K2)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "331f2400",
+    "answer": {
+     "value": 0.6666666666666666,
+     "label": "A_B/A_A = √(K1/K2)"
+    }
+   }
+  },
+  {
+   "id": "b332b6d0-4dae-4cd3-8005-8df0b03fda49",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "K": "1"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "k_a = K,\\quad k_b = \\dfrac{K}{2},\\quad k_c = 2K",
+       "note": "(b) two in series, (c) two in parallel"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "T \\propto \\dfrac{1}{\\sqrt{k}}"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{T_b}{T_a} = \\sqrt{2}",
+       "f": "sqrt(K/(K/2))",
+       "value": "sqrt(2)"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\dfrac{T_c}{T_a} = \\dfrac{1}{\\sqrt{2}}",
+       "f": "sqrt(K/(2*K))",
+       "value": "1/sqrt(2)"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "\\dfrac{T_b}{T_c} = 2",
+       "f": "sqrt(K/(K/2))/sqrt(K/(2*K))",
+       "value": "2"
+      }
+     ],
+     "answer": "2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "d923043a",
+    "answer": {
+     "value": 2,
+     "label": "T_b/T_c = 2"
+    }
+   }
+  },
+  {
+   "id": "b4c04578-fdcd-40fb-a04d-46bd26936c68",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "r": "2",
+      "lam": "0.25"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "\\dfrac{x^2}{r^2} = \\lambda",
+       "lhs": "x^2/r^2",
+       "rhs": "lam",
+       "roots": [
+        "r*sqrt(lam)"
+       ],
+       "note": "PE / TE = x² / r²"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "x = r\\sqrt{\\lambda}",
+       "f": "sqrt(lam*r^2)",
+       "value": "r*sqrt(lam)"
+      }
+     ],
+     "answer": "r*sqrt(lam)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "2791def8",
+    "answer": {
+     "value": 1,
+     "label": "x = r√λ"
+    }
+   }
+  },
+  {
+   "id": "b8553d85-bef3-45fe-a8af-abf174f750c5",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "A": "2"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "x = A\\sin\\dfrac{\\pi t}{4}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "x(1) = A\\sin\\dfrac{\\pi}{4} = \\dfrac{A}{\\sqrt{2}}",
+       "f": "A*sin(pi/4)",
+       "value": "A/sqrt(2)"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "x(2) = A\\sin\\dfrac{\\pi}{2} = A",
+       "f": "A*sin(pi/2)",
+       "value": "A",
+       "note": "still moving outward"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "\\dfrac{A}{\\sqrt{2}}\\quad\\text{and}\\quad A - \\dfrac{A}{\\sqrt{2}}",
+       "note": "distances in the 1st and 2nd second"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "\\dfrac{A - A/\\sqrt{2}}{A/\\sqrt{2}} = \\sqrt{2} - 1",
+       "f": "(A-A/sqrt(2))/(A/sqrt(2))",
+       "value": "sqrt(2)-1"
+      }
+     ],
+     "answer": "sqrt(2)-1"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "08318b7a",
+    "answer": {
+     "value": 0.41421356237309515,
+     "label": "2nd : 1st = √2 − 1"
+    }
+   }
+  },
+  {
+   "id": "bb42bff2-8432-4674-81bb-21f67f8a4f78",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "l1": "2",
+      "l2": "3",
+      "th1": "0.5",
+      "th2": "th1*l2/l1"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{angular acceleration} = \\dfrac{g}{\\ell}\\theta"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{\\theta_1}{\\ell_1} = \\dfrac{\\theta_2}{\\ell_2}",
+       "f": "th1/l1",
+       "value": "th2/l2",
+       "note": "equal angular accelerations"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\theta_1\\ell_2 = \\theta_2\\ell_1",
+       "f": "th1*l2",
+       "value": "th2*l1"
+      }
+     ],
+     "answer": "th1*l2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "f2109b70",
+    "answer": {
+     "value": 1.5,
+     "label": "θ₁ℓ₂ = θ₂ℓ₁"
+    }
+   }
+  },
+  {
+   "id": "bb8d612d-165a-4eeb-a811-30fc6993c9f4",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "m1": "4"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "T \\propto \\sqrt{m}"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "\\dfrac{m_1 + m_2}{m_1} = \\dfrac{9}{4}",
+       "lhs": "(m1+x)/m1",
+       "rhs": "9/4",
+       "roots": [
+        "5"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{m_2}{m_1} = \\dfrac{5}{4}",
+       "f": "9/4-1",
+       "value": "5/4"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "m_1 : m_2 = 4 : 5",
+       "f": "1/(5/4)",
+       "value": "4/5"
+      }
+     ],
+     "answer": "1/(5/4)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "1a608d94",
+    "answer": {
+     "value": 0.8,
+     "label": "m1 : m2 = 4 : 5"
+    }
+   }
+  },
+  {
+   "id": "bee714ce-4d45-45ab-9245-c142611243c6",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "k": "3"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "k \\to 2k\\ \\Rightarrow\\ k_{eff} \\to 2k_{eff}",
+       "note": "same arrangement"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "T \\propto \\dfrac{1}{\\sqrt{k}}"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{T_1}{T_2} = \\sqrt{2} : 1",
+       "f": "sqrt(2*k)/sqrt(k)",
+       "value": "sqrt(2)"
+      }
+     ],
+     "answer": "sqrt(2)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "fb5febc3",
+    "answer": {
+     "value": 1.4142135623730951,
+     "label": "T1 : T2 = √2 : 1"
+    }
+   }
+  },
+  {
+   "id": "c26bd624-b383-4607-afa6-b976bf525bf2",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "g": "9.8",
+      "l1": "2",
+      "l2": "1",
+      "T1": "2*pi*sqrt(l1/g)",
+      "T2": "2*pi*sqrt(l2/g)"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "l = \\dfrac{T^2 g}{4\\pi^2}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "l_1 - l_2 = \\dfrac{(T_1^2 - T_2^2)g}{4\\pi^2}",
+       "f": "l1-l2",
+       "value": "(T1^2-T2^2)*g/(4*pi^2)"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "T = 2\\pi\\sqrt{\\dfrac{l_1-l_2}{g}} = \\sqrt{T_1^2 - T_2^2}",
+       "f": "2*pi*sqrt((l1-l2)/g)",
+       "value": "sqrt(T1^2-T2^2)"
+      }
+     ],
+     "answer": "sqrt(T1^2-T2^2)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "b7821359",
+    "answer": {
+     "value": 2.007089923154493,
+     "label": "T = √(T1² − T2²)"
+    }
+   }
+  },
+  {
+   "id": "c2887b04-6a67-479f-b510-ca496bd1f0c0",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "R": "5",
+      "h": "2",
+      "ls": "1",
+      "lh": "ls*R^2/(R+h)^2"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\dfrac{l_h}{l_s} = \\dfrac{R^2}{(R+h)^2}",
+       "f": "lh/ls",
+       "value": "R^2/(R+h)^2",
+       "note": "seconds pendulum: l ∝ g"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "R\\sqrt{l_s} = (R+h)\\sqrt{l_h}",
+       "f": "R*sqrt(ls)",
+       "value": "(R+h)*sqrt(lh)"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "R = \\dfrac{h\\sqrt{l_h}}{\\sqrt{l_s} - \\sqrt{l_h}}",
+       "f": "R",
+       "value": "h*sqrt(lh)/(sqrt(ls)-sqrt(lh))"
+      }
+     ],
+     "answer": "R"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "0744340f",
+    "answer": {
+     "value": 5,
+     "label": "R = h√lh/(√ls − √lh)"
+    }
+   }
+  },
+  {
+   "id": "c3b8b7da-5b97-47af-940f-1db8ed8915c0",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "A": "sqrt(2)",
+      "x1": "A*sin(pi/4)",
+      "x2": "A*sin(pi/2)"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\omega = \\dfrac{2\\pi}{8} = \\dfrac{\\pi}{4}\\ \\text{rad/s}",
+       "f": "2*pi/8",
+       "value": "pi/4",
+       "note": "x = A sin ωt from the mean position"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "x_1 = A\\sin\\dfrac{\\pi}{4} = \\dfrac{A}{\\sqrt{2}}",
+       "f": "A*sin(pi/4)",
+       "value": "A/sqrt(2)",
+       "note": "position at t = 1 s"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "x_2 = A\\sin\\dfrac{\\pi}{2} = A",
+       "f": "A*sin(pi/2)",
+       "value": "A",
+       "note": "position at t = 2 s"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "x_2 - x_1 = A - \\dfrac{A}{\\sqrt{2}}",
+       "f": "x2-x1",
+       "value": "A-A/sqrt(2)",
+       "note": "distance in the 2nd second"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "\\dfrac{x_1}{x_2 - x_1} = \\dfrac{1}{\\sqrt{2} - 1}",
+       "f": "x1/(x2-x1)",
+       "value": "1/(sqrt(2)-1)",
+       "note": "distance in the 1st second is x₁"
+      }
+     ],
+     "answer": "1/(sqrt(2)-1)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "d6faea0c",
+    "answer": {
+     "value": 2.4142135623730945,
+     "label": "1st : 2nd = 1 : (√2 − 1)"
+    }
+   }
+  },
+  {
+   "id": "c3d5de89-2d7b-4bf8-9a51-b59b6ee69e35",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\omega t = \\dfrac{\\pi}{6}",
+       "note": "x = A sin ωt at t = T/12"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{KE}{PE} = \\dfrac{\\cos^2 30^\\circ}{\\sin^2 30^\\circ} = \\dfrac{3/4}{1/4}",
+       "f": "cos(rad(30))^2/sin(rad(30))^2",
+       "value": "(3/4)/(1/4)"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{KE}{PE} = 3 : 1",
+       "f": "(3/4)/(1/4)",
+       "value": "3"
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "2aa9a91d",
+    "answer": {
+     "value": 3,
+     "label": "KE : PE = 3 : 1"
+    }
+   }
+  },
+  {
+   "id": "c4353d5f-3cb3-4e48-90e4-c1e92b1a4dc9",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "k": "3"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "k_{eff} = 2k",
+       "note": "mass between the two springs"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "k_{eff} = k",
+       "note": "one spring removed"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{f'}{F} = \\dfrac{1}{\\sqrt{2}}",
+       "f": "sqrt(k/(2*k))",
+       "value": "1/sqrt(2)",
+       "note": "k_eff halves"
+      }
+     ],
+     "answer": "1/sqrt(2)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "8fa2cf22",
+    "answer": {
+     "value": 0.7071067811865475,
+     "label": "f'/F = 1/√2"
+    }
+   }
+  },
+  {
+   "id": "c4d88bca-1032-448b-978b-bce16e1122d5",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "KE = \\dfrac{1}{2}k(A^2 - x^2)"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "\\dfrac{1}{2}k(0.01 - 0.0025) = 0.25",
+       "lhs": "0.5*x*(0.01-0.0025)",
+       "rhs": "0.25",
+       "roots": [
+        "0.5/0.0075"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "k = \\dfrac{0.5}{0.0075} \\approx 66.7",
+       "f": "0.5/0.0075",
+       "value": "66.7",
+       "dp": 1
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "k \\approx 67\\ \\text{N m}^{-1}",
+       "f": "0.5/0.0075",
+       "value": "67",
+       "dp": 0,
+       "note": "nearly 67"
+      }
+     ],
+     "answer": "67"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "7eca993c",
+    "answer": {
+     "value": 67,
+     "label": "67 N/m"
+    }
+   }
+  },
+  {
+   "id": "c5db99a1-bd3f-4215-b450-981d907b21b9",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "l = R = 1.6\\ \\text{m}",
+       "note": "sphere in a watch glass acts as a pendulum"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "T = 2\\pi\\sqrt{\\dfrac{R}{g}} = 2\\pi\\sqrt{0.16}",
+       "f": "2*pi*sqrt(1.6/10)",
+       "value": "2*pi*sqrt(0.16)"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "T = 0.8\\pi\\ \\text{s}",
+       "f": "2*pi*sqrt(0.16)",
+       "value": "0.8*pi"
+      }
+     ],
+     "answer": "0.8*pi"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "aca1d6bf",
+    "answer": {
+     "value": 2.5132741228718345,
+     "label": "0.8π s"
+    }
+   }
+  },
+  {
+   "id": "c5e4866d-cc25-4174-9514-e47c4e7f677d",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "K": "3",
+      "M": "2"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\dfrac{2K\\cdot 2K}{2K + 2K} = K",
+       "f": "2*K*2*K/(2*K+2*K)",
+       "value": "K",
+       "note": "left: two 2K springs in series"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "K + 2K = 3K",
+       "f": "K+2*K",
+       "value": "3*K",
+       "note": "right: K and 2K in parallel"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "K_{eff} = K + 3K = 4K",
+       "f": "K+3*K",
+       "value": "4*K",
+       "note": "one side stretches, the other compresses"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "f = \\dfrac{1}{2\\pi}\\sqrt{\\dfrac{4K}{M}}",
+       "f": "1/(2*pi)*sqrt((K+3*K)/M)",
+       "value": "1/(2*pi)*sqrt(4*K/M)"
+      }
+     ],
+     "answer": "1/(2*pi)*sqrt(4*K/M)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "776c6cb2",
+    "answer": {
+     "value": 0.38984840061683806,
+     "label": "f = (1/2π)√(4K/M)"
+    }
+   }
+  },
+  {
+   "id": "c7b6297d-7dcd-478a-ae37-27bcc8042d10",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "k": "4",
+      "m1": "3",
+      "m2": "1",
+      "A": "2"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "v = A\\sqrt{\\dfrac{k}{m_1}}",
+       "note": "at the mean position"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "v_1 = \\dfrac{m_1 v}{m_1 + m_2}",
+       "note": "momentum is conserved"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "A_1 = A\\sqrt{\\dfrac{m_1}{m_1 + m_2}}",
+       "f": "(m1*A*sqrt(k/m1)/(m1+m2))*sqrt((m1+m2)/k)",
+       "value": "A*sqrt(m1/(m1+m2))",
+       "note": "A₁ = v₁ √((m₁+m₂)/k)"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\dfrac{A}{A_1} = \\left[\\dfrac{m_1 + m_2}{m_1}\\right]^{1/2}",
+       "f": "A/(A*sqrt(m1/(m1+m2)))",
+       "value": "((m1+m2)/m1)^(1/2)"
+      }
+     ],
+     "answer": "((m1+m2)/m1)^(1/2)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "359d24bc",
+    "answer": {
+     "value": 1.1547005383792515,
+     "label": "A/A1 = √((m1+m2)/m1)"
+    }
+   }
+  },
+  {
+   "id": "c92dc6da-6e86-4772-94dc-7fba7e8bfdd7",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "T1": "3",
+      "T2": "4",
+      "T": "sqrt(1/(1/T1^2+1/T2^2))"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "k = k_1 + k_2",
+       "note": "spring constants add"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{1}{T^2} = \\dfrac{1}{T_1^2} + \\dfrac{1}{T_2^2}",
+       "f": "1/T^2",
+       "value": "1/T1^2+1/T2^2",
+       "note": "k ∝ 1/T²"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "T = \\sqrt{\\dfrac{T_1^2T_2^2}{T_1^2 + T_2^2}}",
+       "f": "T",
+       "value": "sqrt(T1^2*T2^2/(T1^2+T2^2))"
+      }
+     ],
+     "answer": "sqrt(T1^2*T2^2/(T1^2+T2^2))"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "43439c08",
+    "answer": {
+     "value": 2.4,
+     "label": "T = √(T1²T2²/(T1²+T2²))"
+    }
+   }
+  },
+  {
+   "id": "cd1511b0-a80a-40b5-85f8-6db042798daa",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "m": "3"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "T = 2\\pi\\sqrt{\\dfrac{m}{k}},\\quad T \\propto \\sqrt{m}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{T_2}{T_1} = \\sqrt{\\dfrac{4m}{m}} = 2",
+       "f": "sqrt(4*m/m)",
+       "value": "2"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "T_2 = 2\\times 2 = 4\\ \\text{s}",
+       "f": "2*2",
+       "value": "4"
+      }
+     ],
+     "answer": "2*2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "f9786088",
+    "answer": {
+     "value": 4,
+     "label": "4 s"
+    }
+   }
+  },
+  {
+   "id": "cd1e415f-960c-450b-9ea9-a15c8637b796",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "T1": "3",
+      "T2": "4",
+      "T": "sqrt(1/(1/T1^2+1/T2^2))"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "k \\propto \\dfrac{1}{T^2}",
+       "note": "each force has its own constant"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{1}{T^2} = \\dfrac{1}{T_1^2} + \\dfrac{1}{T_2^2}",
+       "f": "1/T^2",
+       "value": "1/T1^2+1/T2^2",
+       "note": "together k = k₁ + k₂"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "T^2 = \\dfrac{T_1^2T_2^2}{T_1^2 + T_2^2}",
+       "f": "T^2",
+       "value": "T1^2*T2^2/(T1^2+T2^2)"
+      }
+     ],
+     "answer": "T1^2*T2^2/(T1^2+T2^2)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "fc4477a3",
+    "answer": {
+     "value": 5.76,
+     "label": "T² = T1²T2²/(T1²+T2²)"
+    }
+   }
+  },
+  {
+   "id": "ceaf2823-aa1f-46ce-82b1-bbbf3cff0c31",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "K": "2",
+      "a": "3",
+      "m": "5",
+      "xd": "0.4"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\omega^2 = 4\\pi^2\\cdot\\dfrac{Ka}{\\pi m} = \\dfrac{4\\pi Ka}{m}",
+       "f": "4*pi^2*K*a/(pi*m)",
+       "value": "4*pi*K*a/m",
+       "note": "ω = 2πf"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "PE = \\dfrac{1}{2}m\\omega^2x^2 = 2\\pi Kax^2",
+       "f": "0.5*m*(4*pi*K*a/m)*xd^2",
+       "value": "2*pi*K*a*xd^2"
+      }
+     ],
+     "answer": "2*pi*K*a*xd^2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "1a44497a",
+    "answer": {
+     "value": 6.031857894892404,
+     "label": "PE = 2πKax²"
+    }
+   }
+  },
+  {
+   "id": "d05c865d-905d-4d3e-9164-a28bdbbeb880",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "L": "5",
+      "d": "3",
+      "g": "9.8"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "PQ = 2d,\\quad PR = QR = L",
+       "note": "O is the midpoint of PQ"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "OR = \\sqrt{L^2 - d^2}",
+       "f": "sqrt(L^2-d^2)",
+       "value": "4"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "T = 2\\pi\\sqrt{\\dfrac{OR}{g}}",
+       "note": "swings about PQ, effective length OR"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "T = 2\\pi\\sqrt{\\dfrac{(L^2 - d^2)^{1/2}}{g}}",
+       "f": "2*pi*sqrt(4/g)",
+       "value": "2*pi*sqrt((L^2-d^2)^(1/2)/g)"
+      }
+     ],
+     "answer": "2*pi*sqrt((L^2-d^2)^(1/2)/g)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "e70d8772",
+    "answer": {
+     "value": 4.014179846308986,
+     "label": "T = 2π√(√(L²−d²)/g)"
+    }
+   }
+  },
+  {
+   "id": "d118d7fa-24ab-47c8-97f3-c7103f785164",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "T = 2\\pi\\sqrt{\\dfrac{m}{k}}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{m}{k} = \\dfrac{36}{4\\pi^2} = \\dfrac{9}{\\pi^2}",
+       "f": "36/(4*pi^2)",
+       "value": "9/pi^2",
+       "note": "T² / 4π² with T = 6 s"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "mg = kx",
+       "note": "at rest"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "x = \\dfrac{m}{k}g = \\dfrac{9}{\\pi^2}\\times\\pi^2 = 9\\ \\text{m}",
+       "f": "9/pi^2*pi^2",
+       "value": "9",
+       "note": "using g = π² = 10"
+      }
+     ],
+     "answer": "9"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "08bbaa89",
+    "answer": {
+     "value": 9,
+     "label": "9 m"
+    }
+   }
+  },
+  {
+   "id": "d2456ee1-7fe0-43da-ab29-303faee88142",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "A": "1",
+      "w": "2"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "expr",
+       "tex": "x = A\\cos\\left(\\omega t + \\dfrac{\\pi}{6}\\right)",
+       "f": "A*cos(w*x+pi/6)"
+      },
+      {
+       "step": "s2",
+       "kind": "deriv",
+       "tex": "v = -A\\omega\\sin\\left(\\omega t + \\dfrac{\\pi}{6}\\right)",
+       "f": "-A*w*sin(w*x+pi/6)",
+       "note": "v = dx/dt"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "\\omega t + \\dfrac{\\pi}{6} = \\dfrac{\\pi}{2}",
+       "lhs": "w*x+pi/6",
+       "rhs": "pi/2",
+       "roots": [
+        "pi/(3*w)"
+       ],
+       "note": "speed is maximum when"
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "\\omega t = \\dfrac{\\pi}{3}",
+       "lhs": "w*x",
+       "rhs": "pi/3",
+       "roots": [
+        "pi/(3*w)"
+       ]
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "t = \\dfrac{\\pi}{3\\omega}\\ \\text{s}",
+       "f": "(pi/3)/w",
+       "value": "pi/(3*w)"
+      }
+     ],
+     "answer": "pi/(3*w)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "d0086d63",
+    "answer": {
+     "value": 0.5235987755982988,
+     "label": "t = π/(3ω)"
+    }
+   }
+  },
+  {
+   "id": "d5a15192-dd3f-42f3-bc4a-88c2df1f0104",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "w": "2",
+      "A": "5",
+      "x1": "3",
+      "x2": "4",
+      "V1": "w*sqrt(A^2-x1^2)",
+      "V2": "w*sqrt(A^2-x2^2)"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "V_1^2 = \\omega^2(A^2 - x_1^2)",
+       "f": "V1^2",
+       "value": "w^2*(A^2-x1^2)",
+       "note": "from V = ω√(A² − x²)"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "V_2^2 = \\omega^2(A^2 - x_2^2)",
+       "f": "V2^2",
+       "value": "w^2*(A^2-x2^2)"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "A^2 = \\dfrac{V_1^2x_2^2 - V_2^2x_1^2}{V_1^2 - V_2^2}",
+       "f": "A^2",
+       "value": "(V1^2*x2^2-V2^2*x1^2)/(V1^2-V2^2)",
+       "note": "solving the two equations"
+      }
+     ],
+     "answer": "(V1^2*x2^2-V2^2*x1^2)/(V1^2-V2^2)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "76f92b80",
+    "answer": {
+     "value": 25,
+     "label": "A² = (V1²x2²−V2²x1²)/(V1²−V2²)"
+    }
+   }
+  },
+  {
+   "id": "d73bce1a-f506-4917-9726-1d816247d9b0",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "T \\propto \\dfrac{1}{\\sqrt{k}}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "T_1 = 2T_2",
+       "f": "sqrt(16/4)",
+       "value": "2",
+       "note": "k = 4 and 16 N/m"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{T_1 + T_2}{T_1 - T_2} = \\dfrac{3T_2}{T_2} = 3 : 1",
+       "f": "(2+1)/(2-1)",
+       "value": "3"
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "207819e4",
+    "answer": {
+     "value": 3,
+     "label": "(T1+T2)/(T1−T2) = 3 : 1"
+    }
+   }
+  },
+  {
+   "id": "d7eda072-b9d4-4b70-bd79-f6ab3cfce896",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "T": "24"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "KE = E\\cos^2(\\omega t) = 0.75E"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "\\cos\\omega t = \\dfrac{\\sqrt{3}}{2}",
+       "lhs": "cos(x)",
+       "rhs": "sqrt(3)/2",
+       "roots": [
+        "pi/6"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\omega t = 30^\\circ = \\dfrac{\\pi}{6}",
+       "f": "rad(30)",
+       "value": "pi/6"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "t = \\dfrac{\\pi/6}{2\\pi/T} = \\dfrac{T}{12}",
+       "f": "(pi/6)/(2*pi/T)",
+       "value": "T/12"
+      }
+     ],
+     "answer": "1/12"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "4f08f950",
+    "answer": {
+     "value": 0.08333333333333333,
+     "label": "t = T/12"
+    }
+   }
+  },
+  {
+   "id": "d96a862c-44a0-462a-9384-235779c71d60",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "w": "2*pi",
+      "T": "2*pi/w"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\omega = 2\\pi",
+       "note": "compare with x = A cos ωt"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "T = \\dfrac{2\\pi}{\\omega} = 1\\ \\text{s}",
+       "f": "2*pi/w",
+       "value": "1"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{T}{4} = \\dfrac{1}{4}\\ \\text{s}",
+       "f": "T/4",
+       "value": "1/4",
+       "note": "starts at the extreme position"
+      }
+     ],
+     "answer": "T/4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "a1f601ed",
+    "answer": {
+     "value": 0.25,
+     "label": "1/4 s"
+    }
+   }
+  },
+  {
+   "id": "d9dc9f4a-18ec-493b-b29d-a116e8c1893b",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "m": "1",
+      "g": "10"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "T_{max} = mg + \\dfrac{mv^2}{l}",
+       "note": "at the lowest point"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "T_{min} = mg\\cos\\theta",
+       "note": "at the amplitude"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\dfrac{mv^2}{l} = 2mg(1 - \\cos\\theta)",
+       "note": "energy"
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "mg + 2mg(1 - \\cos\\theta) = 4mg\\cos\\theta",
+       "lhs": "m*g+2*m*g*(1-x)",
+       "rhs": "4*m*g*x",
+       "roots": [
+        "0.5"
+       ],
+       "note": "T_max = 4 T_min"
+      },
+      {
+       "step": "s5",
+       "kind": "eq",
+       "tex": "3 = 6\\cos\\theta",
+       "lhs": "3",
+       "rhs": "6*x",
+       "roots": [
+        "0.5"
+       ]
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "\\cos\\theta = \\dfrac{1}{2}",
+       "f": "3/6",
+       "value": "1/2"
+      }
+     ],
+     "answer": "0.5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s5",
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "bff0fae0",
+    "answer": {
+     "value": 0.5,
+     "label": "θ = cos⁻¹(0.5)"
+    }
+   }
+  },
+  {
+   "id": "dba033f5-fdb0-459c-8aa9-4321a89cce2b",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "m1": "4"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "T = 2\\pi\\sqrt{\\dfrac{m_1}{K}}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\dfrac{3}{2}T = 2\\pi\\sqrt{\\dfrac{m_1 + m_2}{K}}"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "\\dfrac{9}{4} = \\dfrac{m_1 + m_2}{m_1}",
+       "lhs": "9/4",
+       "rhs": "(m1+x)/m1",
+       "roots": [
+        "5"
+       ],
+       "note": "squaring the ratio"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\dfrac{m_2}{m_1} = \\dfrac{5}{4}",
+       "f": "9/4-1",
+       "value": "5/4"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "m_1 : m_2 = 4 : 5",
+       "f": "1/(5/4)",
+       "value": "4/5"
+      }
+     ],
+     "answer": "1/(5/4)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3",
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "4804ad2c",
+    "answer": {
+     "value": 0.8,
+     "label": "m1 : m2 = 4 : 5"
+    }
+   }
+  },
+  {
+   "id": "ddb95aa6-8ca6-4854-a1e7-8f461be80243",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "A^2 = y_0^2 + \\left(\\dfrac{v_0}{\\omega}\\right)^2",
+       "note": "y₀ = 2 cm, v₀ = 2π cm/s, ω = π"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "A^2 = 4 + \\left(\\dfrac{2\\pi}{\\pi}\\right)^2 = 8",
+       "f": "4+(2*pi/pi)^2",
+       "value": "8"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "A = \\sqrt{8} = 2\\sqrt{2}\\ \\text{cm}",
+       "f": "sqrt(8)",
+       "value": "2*sqrt(2)"
+      }
+     ],
+     "answer": "2*sqrt(2)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "fc24e6b8",
+    "answer": {
+     "value": 2.8284271247461903,
+     "label": "2√2 cm"
+    }
+   }
+  },
+  {
+   "id": "de1086c6-b653-4cf3-beeb-91305697011b",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "T": "4",
+      "A": "2",
+      "w": "2*pi/T"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "v_{max} = A\\omega = A\\dfrac{2\\pi}{T}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\omega' = \\dfrac{2\\pi}{T/3} = 3\\omega",
+       "f": "2*pi/(T/3)",
+       "value": "3*w",
+       "note": "T' = T/3, A' = 2A"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "v'_{max} = 2A\\cdot 3\\omega = 6A\\omega = 6V",
+       "f": "2*A*(3*w)",
+       "value": "6*A*w"
+      }
+     ],
+     "answer": "2*3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "9ede9e9f",
+    "answer": {
+     "value": 6,
+     "label": "v'/V = 6"
+    }
+   }
+  },
+  {
+   "id": "de740c61-983a-428d-bcd3-f42fca3f7c48",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "k": "3",
+      "A": "4"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "\\dfrac{1}{2}k(A^2 - x^2) = \\dfrac{1}{2}kx^2",
+       "lhs": "0.5*k*(A^2-x^2)",
+       "rhs": "0.5*k*x^2",
+       "roots": [
+        "A/sqrt(2)"
+       ],
+       "note": "KE equals PE"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "x = \\dfrac{A}{\\sqrt{2}} = \\dfrac{4}{\\sqrt{2}} = 2\\sqrt{2}\\ \\text{cm}",
+       "f": "4/sqrt(2)",
+       "value": "2*sqrt(2)"
+      }
+     ],
+     "answer": "2*sqrt(2)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "ef276c51",
+    "answer": {
+     "value": 2.8284271247461903,
+     "label": "2√2 cm"
+    }
+   }
+  },
+  {
+   "id": "e0325b8f-351c-406e-af82-e943d65a980e",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "A": "3"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "KE = 1.25\\,PE \\Rightarrow E = 2.25\\,PE"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "\\dfrac{x^2}{A^2} = \\dfrac{1}{2.25}",
+       "lhs": "x^2/A^2",
+       "rhs": "1/2.25",
+       "roots": [
+        "2"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "x = \\dfrac{3}{1.5} = 2\\ \\text{cm}",
+       "f": "3/1.5",
+       "value": "2"
+      }
+     ],
+     "answer": "2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "be3a577c",
+    "answer": {
+     "value": 2,
+     "label": "2 cm"
+    }
+   }
+  },
+  {
+   "id": "e1045dd9-5e81-4ade-939f-976e731e9eed",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "w": "2",
+      "A": "4"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "\\omega\\sqrt{A^2 - x^2} = \\dfrac{\\omega A}{4}",
+       "lhs": "w*sqrt(A^2-x^2)",
+       "rhs": "w*A/4",
+       "roots": [
+        "A*sqrt(15)/4"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "x^2 = \\dfrac{15}{16}A^2",
+       "lhs": "x^2",
+       "rhs": "15/16*A^2",
+       "roots": [
+        "A*sqrt(15)/4"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "x = \\dfrac{A\\sqrt{15}}{4}",
+       "f": "sqrt(15/16*A^2)",
+       "value": "A*sqrt(15)/4"
+      }
+     ],
+     "answer": "sqrt(15)/4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "a0a13d2d",
+    "answer": {
+     "value": 0.9682458365518543,
+     "label": "x/A = √15/4"
+    }
+   }
+  },
+  {
+   "id": "e17a0ce2-7947-44fb-82f3-28728161fdbb",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "g": "9.8",
+      "L1": "2",
+      "L2": "1",
+      "T1": "2*pi*sqrt(L1/g)",
+      "T2": "2*pi*sqrt(L2/g)"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "T^2 \\propto L"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "T = \\sqrt{T_1^2 - T_2^2}",
+       "f": "2*pi*sqrt((L1-L2)/g)",
+       "value": "sqrt(T1^2-T2^2)",
+       "note": "period for length L₁ − L₂"
+      }
+     ],
+     "answer": "sqrt(T1^2-T2^2)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "87e1b00a",
+    "answer": {
+     "value": 2.007089923154493,
+     "label": "T = √(T1² − T2²)"
+    }
+   }
+  },
+  {
+   "id": "e544d27b-28e0-4bdc-8f77-7789728fdffc",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "h": "5",
+      "g": "10",
+      "tf": "sqrt(2*h/g)"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "t = \\sqrt{\\dfrac{2h}{g}}",
+       "note": "fall time, equal to the rise time"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "T = 2\\sqrt{\\dfrac{2h}{g}}",
+       "f": "2*sqrt(2*h/g)",
+       "value": "2*tf"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "f = \\dfrac{1}{T} = \\dfrac{1}{2}\\sqrt{\\dfrac{g}{2h}}",
+       "f": "1/(2*sqrt(2*h/g))",
+       "value": "0.5*sqrt(g/(2*h))"
+      }
+     ],
+     "answer": "0.5*sqrt(g/(2*h))"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "6a8134da",
+    "answer": {
+     "value": 0.5,
+     "label": "f = (1/2)√(g/2h)"
+    }
+   }
+  },
+  {
+   "id": "e818c70b-9184-4fed-b5ae-daab21cc45d1",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "w": "2"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "v = \\omega\\sqrt{A^2 - x^2}"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "64 = \\omega^2(A^2 - 9)",
+       "lhs": "64",
+       "rhs": "w^2*(x-9)",
+       "roots": [
+        "25"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "36 = \\omega^2(A^2 - 16)",
+       "lhs": "36",
+       "rhs": "w^2*(x-16)",
+       "roots": [
+        "25"
+       ]
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "A^2 = 25,\\quad \\omega = 2\\ \\text{rad/s}",
+       "f": "sqrt(64/(25-9))",
+       "value": "2",
+       "note": "dividing and solving"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "T = \\dfrac{2\\pi}{\\omega} = \\pi\\ \\text{s}",
+       "f": "2*pi/2",
+       "value": "pi"
+      }
+     ],
+     "answer": "pi"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "0a7fc915",
+    "answer": {
+     "value": 3.141592653589793,
+     "label": "π s"
+    }
+   }
+  },
+  {
+   "id": "e9792eb5-a2ac-4e1c-bcee-6c3720c83fdb",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "A": "3"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "KE = \\dfrac{5}{4}PE"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "A^2 - x^2 = \\dfrac{5}{4}x^2",
+       "lhs": "A^2-x^2",
+       "rhs": "5/4*x^2",
+       "roots": [
+        "2*A/3"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "x = \\dfrac{2A}{3} = 2\\ \\text{cm}",
+       "f": "2*3/3",
+       "value": "2"
+      }
+     ],
+     "answer": "2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "a696193b",
+    "answer": {
+     "value": 2,
+     "label": "2 cm"
+    }
+   }
+  },
+  {
+   "id": "ec1fc331-b74e-4deb-b526-4e13a0993a08",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\Delta\\phi = \\dfrac{2\\pi}{T}\\Delta t"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\Delta\\phi = \\dfrac{2\\pi}{12}\\times 1 = \\dfrac{\\pi}{6}",
+       "f": "2*pi/12*1",
+       "value": "pi/6"
+      }
+     ],
+     "answer": "pi/6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "35ee8065",
+    "answer": {
+     "value": 0.5235987755982988,
+     "label": "π/6 rad"
+    }
+   }
+  },
+  {
+   "id": "ecff9517-bbeb-4a06-9cf9-e444ed49bef8",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "a = \\ddot{y} = 2k = 2\\ \\text{m/s}^2",
+       "f": "2*1",
+       "value": "2",
+       "note": "y = kt², k = 1 m/s², upward"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "g' = g + a = 12\\ \\text{m/s}^2",
+       "f": "10+2",
+       "value": "12"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\dfrac{T_1^2}{T_2^2} = \\dfrac{l/g}{l/g'} = \\dfrac{g'}{g}"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\dfrac{g'}{g} = \\dfrac{12}{10} = \\dfrac{6}{5}",
+       "f": "12/10",
+       "value": "6/5"
+      }
+     ],
+     "answer": "12/10"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "b40cc3c7",
+    "answer": {
+     "value": 1.2,
+     "label": "T1²/T2² = 6/5"
+    }
+   }
+  },
+  {
+   "id": "ee720c26-993c-41dd-8ed0-0af10d822d62",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\omega = \\sqrt{\\dfrac{k}{m}} = 1\\ \\text{rad/s}",
+       "f": "sqrt(10/10)",
+       "value": "1"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "0.4 = \\sqrt{0.25 - x^2}",
+       "lhs": "0.4",
+       "rhs": "sqrt(0.25-x^2)",
+       "roots": [
+        "0.3"
+       ],
+       "note": "v = ω√(A² − x²)"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "x^2 = 0.09",
+       "lhs": "x^2",
+       "rhs": "0.09",
+       "roots": [
+        "0.3"
+       ]
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "x = 0.3\\ \\text{m}",
+       "f": "sqrt(0.09)",
+       "value": "0.3"
+      }
+     ],
+     "answer": "0.3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "00036c48",
+    "answer": {
+     "value": 0.3,
+     "label": "0.3 m"
+    }
+   }
+  },
+  {
+   "id": "f0787f2f-09ef-4c4d-8e7e-ac64b84b0dec",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "w": "2",
+      "A": "5",
+      "x1": "3",
+      "x2": "4",
+      "v1": "w*sqrt(A^2-x1^2)",
+      "v2": "w*sqrt(A^2-x2^2)"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "v_1^2 = \\omega^2(A^2 - x_1^2)",
+       "f": "v1^2",
+       "value": "w^2*(A^2-x1^2)"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "v_2^2 = \\omega^2(A^2 - x_2^2)",
+       "f": "v2^2",
+       "value": "w^2*(A^2-x2^2)"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "v_2^2 - v_1^2 = \\omega^2(x_1^2 - x_2^2)",
+       "f": "v2^2-v1^2",
+       "value": "w^2*(x1^2-x2^2)",
+       "note": "subtracting"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\omega = \\sqrt{\\dfrac{v_2^2 - v_1^2}{x_1^2 - x_2^2}}",
+       "f": "w",
+       "value": "sqrt((v2^2-v1^2)/(x1^2-x2^2))"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "T = \\dfrac{2\\pi}{\\omega}",
+       "f": "2*pi/w",
+       "value": "2*pi/sqrt((v2^2-v1^2)/(x1^2-x2^2))"
+      }
+     ],
+     "answer": "2*pi/sqrt((v2^2-v1^2)/(x1^2-x2^2))"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "d8493f02",
+    "answer": {
+     "value": 3.141592653589793,
+     "label": "T = 2π/ω"
+    }
+   }
+  },
+  {
+   "id": "f13ca7f0-de45-465d-a14c-5e7a3275180d",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "K": "6",
+      "n": "2",
+      "l2": "1",
+      "l": "(n+1)*l2",
+      "l1": "n*l2"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "K\\,l = \\text{const}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "K_1 = \\dfrac{Kl}{l_1} = \\dfrac{Kl}{nl_2}",
+       "f": "K*l/l1",
+       "value": "K*l/(n*l2)"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "K_1 = K\\cdot\\dfrac{n+1}{n}",
+       "f": "K*l/(n*l2)",
+       "value": "K*(n+1)/n"
+      }
+     ],
+     "answer": "K*(n+1)/n"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "a273267a",
+    "answer": {
+     "value": 9,
+     "label": "K₁ = K(n+1)/n"
+    }
+   }
+  },
+  {
+   "id": "f2321684-5e75-40e6-92fd-3116f0db4ee6",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "a": "2",
+      "w": "3",
+      "ph": "0.5"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "expr",
+       "tex": "x = a\\sin(\\omega t - \\phi)",
+       "f": "a*sin(w*x-ph)"
+      },
+      {
+       "step": "s2",
+       "kind": "deriv",
+       "tex": "v = a\\omega\\cos(\\omega t - \\phi)",
+       "f": "a*w*cos(w*x-ph)",
+       "note": "v = dx/dt"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "v = a\\omega\\cos(\\phi - \\phi) = a\\omega\\cos 0 = a\\omega",
+       "f": "a*w*cos(w*(ph/w)-ph)",
+       "value": "a*w",
+       "note": "at t = φ/ω"
+      }
+     ],
+     "answer": "a*w"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "f224965b",
+    "answer": {
+     "value": 6,
+     "label": "v = aω"
+    }
+   }
+  },
+  {
+   "id": "f6e96953-7b04-4d3e-b591-01a17d611628",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "l": "1.5",
+      "g": "10",
+      "T": "2*pi*sqrt(l/g)"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "g' = g + \\dfrac{g}{3} = \\dfrac{4g}{3}",
+       "f": "g+g/3",
+       "value": "4*g/3",
+       "note": "accelerating upwards"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "T' = 2\\pi\\sqrt{\\dfrac{l}{4g/3}} = T\\sqrt{\\dfrac{3}{4}}",
+       "f": "2*pi*sqrt(l/(4*g/3))",
+       "value": "T*sqrt(3/4)"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "T' = \\dfrac{\\sqrt{3}}{2}T",
+       "f": "T*sqrt(3/4)",
+       "value": "sqrt(3)/2*T"
+      }
+     ],
+     "answer": "sqrt(3)/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "9ffb6daf",
+    "answer": {
+     "value": 0.8660254037844386,
+     "label": "T'/T = √3/2"
+    }
+   }
+  },
+  {
+   "id": "f7062b88-1011-4eac-a83b-f819953e4a46",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "m": "2",
+      "w": "3",
+      "A": "1.5"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "x = A\\sin\\dfrac{\\pi}{6} = \\dfrac{A}{2}",
+       "f": "A*sin(pi/6)",
+       "value": "A/2",
+       "note": "at t = T/12, ωt = π/6"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "PE = \\dfrac{1}{2}m\\omega^2\\left(\\dfrac{A}{2}\\right)^2",
+       "f": "0.5*m*w^2*(A/2)^2",
+       "value": "m*w^2*A^2/8",
+       "note": "= (1/8) m ω² A²"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "KE = \\dfrac{1}{2}m\\omega^2\\left(A^2 - \\dfrac{A^2}{4}\\right)",
+       "f": "0.5*m*w^2*(A^2-A^2/4)",
+       "value": "3*m*w^2*A^2/8",
+       "note": "= (3/8) m ω² A²"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "PE : KE = 1 : 3",
+       "f": "(m*w^2*A^2/8)/(3*m*w^2*A^2/8)",
+       "value": "1/3"
+      }
+     ],
+     "answer": "1/3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "f02f6591",
+    "answer": {
+     "value": 0.3333333333333333,
+     "label": "PE : KE = 1 : 3"
+    }
+   }
+  },
+  {
+   "id": "f807bed2-9495-431b-8db3-f869e118281c",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "m": "2",
+      "w": "3",
+      "A": "1.5"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "KE = \\dfrac{1}{2}m\\omega^2\\left(A^2 - \\dfrac{A^2}{4}\\right)",
+       "f": "0.5*m*w^2*(A^2-A^2/4)",
+       "value": "3*m*w^2*A^2/8",
+       "note": "= (3/8) m ω² A² at x = A/2"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "PE = \\dfrac{1}{2}m\\omega^2\\,\\dfrac{A^2}{4}",
+       "f": "0.5*m*w^2*A^2/4",
+       "value": "m*w^2*A^2/8",
+       "note": "= (1/8) m ω² A²"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{KE}{PE} = \\dfrac{3}{1}",
+       "f": "(3*m*w^2*A^2/8)/(m*w^2*A^2/8)",
+       "value": "3"
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "e4008a4c",
+    "answer": {
+     "value": 3,
+     "label": "KE : PE = 3 : 1"
+    }
+   }
+  },
+  {
+   "id": "f8349165-6981-47bc-8e5a-4021ecdd439a",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "m": "2",
+      "g": "9.8",
+      "L": "1.5",
+      "A": "0.1",
+      "w": "sqrt(g/L)"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "PE = \\dfrac{1}{2}m\\omega^2A^2 = \\dfrac{1}{2}m\\dfrac{g}{L}A^2",
+       "f": "0.5*m*w^2*A^2",
+       "value": "0.5*m*(g/L)*A^2",
+       "note": "at the extreme, all energy is PE"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "PE = \\dfrac{mgA^2}{2L}",
+       "f": "0.5*m*(g/L)*A^2",
+       "value": "m*g*A^2/(2*L)"
+      }
+     ],
+     "answer": "m*g*A^2/(2*L)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "aecc2dbd",
+    "answer": {
+     "value": 0.06533333333333335,
+     "label": "PE = mgA²/(2L)"
+    }
+   }
+  },
+  {
+   "id": "fb2dfe2d-6fc7-4695-8254-e738c0646f33",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "X": "9"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "T = 2\\pi\\sqrt{\\dfrac{m}{k}},\\quad T \\propto \\sqrt{m}"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "\\sqrt{\\dfrac{x+Y}{x}} = \\dfrac{4}{3}",
+       "lhs": "sqrt((X+x)/X)",
+       "rhs": "4/3",
+       "roots": [
+        "7"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "\\dfrac{x+Y}{x} = \\dfrac{16}{9}",
+       "lhs": "(X+x)/X",
+       "rhs": "16/9",
+       "roots": [
+        "7"
+       ]
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "1 + \\dfrac{Y}{x} = \\dfrac{16}{9}",
+       "lhs": "1+x/X",
+       "rhs": "16/9",
+       "roots": [
+        "7"
+       ]
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "\\dfrac{Y}{x} = \\dfrac{7}{9}",
+       "f": "16/9-1",
+       "value": "7/9"
+      }
+     ],
+     "answer": "16/9-1"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "bd38308d",
+    "answer": {
+     "value": 0.7777777777777777,
+     "label": "Y : x = 7 : 9"
+    }
+   }
+  },
+  {
+   "id": "fb9a3d91-dd36-4bf6-afa0-be871f1a341e",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "g": "10"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "g' = g + \\dfrac{g}{4} = \\dfrac{5g}{4}",
+       "f": "g+g/4",
+       "value": "5*g/4",
+       "note": "lift moving upwards"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "T' = \\sqrt{5}\\times\\sqrt{\\dfrac{4}{5}} = 2\\ \\text{s}",
+       "f": "sqrt(5)*sqrt(4/5)",
+       "value": "2"
+      }
+     ],
+     "answer": "2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "30103b83",
+    "answer": {
+     "value": 2,
+     "label": "2 s"
+    }
+   }
+  },
+  {
+   "id": "fc406b46-a089-4bba-a62c-100a776eaf98",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "g": "10"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "g' = \\dfrac{g}{(1+1)^2} = \\dfrac{g}{4}",
+       "f": "g/(1+1)^2",
+       "value": "g/4",
+       "note": "at height R"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "T \\propto \\dfrac{1}{\\sqrt{g}}"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "x = \\sqrt{\\dfrac{g}{g/4}} = 2",
+       "f": "sqrt(g/(g/4))",
+       "value": "2",
+       "note": "the period doubles"
+      }
+     ],
+     "answer": "2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "8c70d331",
+    "answer": {
+     "value": 2,
+     "label": "x = 2"
+    }
+   }
+  },
+  {
+   "id": "fc579194-2313-4f7f-ad0e-5df14bdecfb2",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "v_{max} = A\\omega"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\omega = \\dfrac{4.4}{7\\times 10^{-3}} = \\dfrac{4400}{7}\\ \\text{rad/s}",
+       "f": "4.4/(7*10^(-3))",
+       "value": "4400/7"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "T = \\dfrac{2\\pi}{\\omega} = \\dfrac{2\\times(22/7)}{4400/7} = \\dfrac{44}{4400}",
+       "f": "2*(22/7)/(4400/7)",
+       "value": "44/4400"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "T = 0.01\\ \\text{s}",
+       "f": "44/4400",
+       "value": "0.01"
+      }
+     ],
+     "answer": "44/4400"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "b86fb263",
+    "answer": {
+     "value": 0.01,
+     "label": "0.01 s"
+    }
+   }
+  },
+  {
+   "id": "fd9fbf56-ecd0-4f5b-b4da-3b83dbff5fe0",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "kx = mg \\Rightarrow \\dfrac{m}{k} = \\dfrac{x}{g}",
+       "note": "amplitude = static extension"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "T = 2\\pi\\sqrt{\\dfrac{x}{g}} = 0.1\\ \\text{s}"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "x = \\dfrac{g}{4\\pi^2}(0.1)^2 = \\dfrac{10}{400\\pi^2}",
+       "f": "10/(4*pi^2)*0.1^2",
+       "value": "10/(400*pi^2)"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "x = \\dfrac{1}{40\\pi^2}\\ \\text{m}",
+       "f": "10/(400*pi^2)",
+       "value": "1/(40*pi^2)"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "v_{max} = x\\cdot\\dfrac{2\\pi}{T} = \\dfrac{1}{40\\pi^2}\\cdot\\dfrac{2\\pi}{0.1}",
+       "f": "1/(40*pi^2)*2*pi/0.1",
+       "value": "1/(40*pi^2)*20*pi"
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "v_{max} = \\dfrac{1}{40\\pi^2}\\cdot 20\\pi = \\dfrac{1}{2\\pi}\\ \\text{m/s}",
+       "f": "1/(40*pi^2)*20*pi",
+       "value": "1/(2*pi)"
+      }
+     ],
+     "answer": "1/(2*pi)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s5",
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "bb5ac883",
+    "answer": {
+     "value": 0.15915494309189535,
+     "label": "1/(2π) m/s"
+    }
+   }
+  },
+  {
+   "id": "ff36da95-ced9-4a2c-a986-d8890a09624e",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "T = 2\\pi\\sqrt{\\dfrac{m}{k_{eff}}},\\quad k_{eff} = 2K"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "2 = 2\\pi\\sqrt{\\dfrac{12}{2K}}",
+       "lhs": "2",
+       "rhs": "2*pi*sqrt(12/(2*x))",
+       "roots": [
+        "6*pi^2"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "K = 6\\pi^2 = 60\\ \\text{N m}^{-1}",
+       "f": "6*10",
+       "value": "60",
+       "note": "using π² = 10"
+      }
+     ],
+     "answer": "6*10"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "ef536041",
+    "answer": {
+     "value": 60,
+     "label": "60 N/m"
+    }
+   }
+  }
+ ],
+ "decided": []
+}

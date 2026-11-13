@@ -1,0 +1,93 @@
+{
+  "//": "Assembled from agent drafts (lpRegion).",
+  "visuals": [
+    {
+      "id": "cf369d87-3a6d-4db2-b228-85a3aa8031be",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              6
+            ],
+            "y": [
+              0,
+              9
+            ]
+          },
+          "constraints": [
+            {
+              "a": 0,
+              "b": 1,
+              "op": ">=",
+              "c": 3
+            },
+            {
+              "a": -1,
+              "b": 1,
+              "op": "<=",
+              "c": 3
+            },
+            {
+              "a": 2,
+              "b": 3,
+              "op": ">=",
+              "c": 12
+            },
+            {
+              "a": 1,
+              "b": 0,
+              "op": "<=",
+              "c": 4
+            }
+          ],
+          "objective": {
+            "a": 3,
+            "b": 5,
+            "label": "Z = 3x + 5y"
+          },
+          "ask": {
+            "kind": "min",
+            "label": "min Z = 19.5 at D(3/2, 3)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "region",
+              "corners"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "sweep"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "9aafc722",
+        "answer": {
+          "value": 19.5,
+          "label": "19.5"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

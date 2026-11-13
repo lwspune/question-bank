@@ -1,0 +1,3071 @@
+{
+ "//": "Assembled from agent drafts (algebraSteps).",
+ "visuals": [
+  {
+   "id": "50249cb1-497e-4fc9-85b8-8802b448b63c",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\dfrac{x}{a}+\\dfrac{y}{b}=1"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "b=3a:\\quad \\dfrac{x}{a}+\\dfrac{y}{3a}=1"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "\\dfrac1a+\\dfrac1a=1 \\Rightarrow a=2",
+       "lhs": "1/x+1/x",
+       "rhs": "1",
+       "roots": [
+        "2"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "b = 3a = 6",
+       "f": "3*2",
+       "value": "6"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "\\dfrac x2+\\dfrac y6=1 \\Rightarrow 3x+y=6"
+      }
+     ],
+     "answer": "6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "d32c6f31",
+    "answer": {
+     "value": 6,
+     "label": "3x+y=6"
+    }
+   }
+  },
+  {
+   "id": "72a55b41-e46e-445c-b4dd-79ab5f81558e",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{foot} = (2+t,\\ 3+t)"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "5+2t=11 \\Rightarrow t=3",
+       "lhs": "5+2*x",
+       "rhs": "11",
+       "roots": [
+        "3"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "x = 2+3 = 5",
+       "f": "2+3",
+       "value": "5"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "y = 3+3 = 6",
+       "f": "3+3",
+       "value": "6"
+      }
+     ],
+     "answer": "2+3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "7da9c675",
+    "answer": {
+     "value": 5,
+     "label": "(5, 6)"
+    }
+   }
+  },
+  {
+   "id": "73f2ae30-a513-4b90-9112-d07418fad2db",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "M_x = \\dfrac{2-4}{2} = -1",
+       "f": "(2-4)/2",
+       "value": "-1"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "M_y = \\dfrac{1+5}{2} = 3",
+       "f": "(1+5)/2",
+       "value": "3"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "-1+12=p \\Rightarrow p=11",
+       "f": "-1+12",
+       "value": "11"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "3+4k=11 \\Rightarrow k=2",
+       "lhs": "3+4*x",
+       "rhs": "11",
+       "roots": [
+        "2"
+       ]
+      }
+     ],
+     "answer": "2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "d7d5c5e2",
+    "answer": {
+     "value": 2,
+     "label": "k = 2"
+    }
+   }
+  },
+  {
+   "id": "75fb30fb-57db-4995-9e67-1a5af1b566d9",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "A=(5,12),\\quad \\theta=30^\\circ"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "y' = x\\sin30^\\circ + y\\cos30^\\circ = \\dfrac52+6\\sqrt3",
+       "f": "5*sin(rad(30))+12*cos(rad(30))",
+       "value": "5/2+6*sqrt(3)",
+       "note": "rotation formula for the ordinate"
+      }
+     ],
+     "answer": "5/2+6*sqrt(3)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "c10eb472",
+    "answer": {
+     "value": 12.892304845413264,
+     "label": "5/2 + 6√3"
+    }
+   }
+  },
+  {
+   "id": "7beef721-a702-4dd8-ab07-69b58889213b",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "l_1: 4x+3y=10,\\quad l_2: 8x+6y+5=0"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{i.e. } 4x+3y=-\\tfrac52"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\text{both have slope } -\\tfrac43",
+       "note": "parallel; O divides AB as d1 : d2"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "d_1 = \\dfrac{|{-10}|}{\\sqrt{4^2+3^2}} = \\dfrac{10}{5} = 2",
+       "f": "10/sqrt(4^2+3^2)",
+       "value": "2"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "d_2 = \\dfrac{|5|}{\\sqrt{8^2+6^2}} = \\dfrac{5}{10} = \\dfrac12",
+       "f": "5/sqrt(8^2+6^2)",
+       "value": "1/2"
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "AO:OB = d_1:d_2 = 2:\\tfrac12 = 4:1",
+       "f": "2/(1/2)",
+       "value": "4"
+      }
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "a7fd00c0",
+    "answer": {
+     "value": 4,
+     "label": "4 : 1"
+    }
+   }
+  },
+  {
+   "id": "8700ce1c-8d75-4ae2-abcd-1a54e9b9e401",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "AC \\perp BD",
+       "note": "diagonals of a rhombus bisect at 90°"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "M = (-2,\\,2)\\ \\text{(midpoint of } AC)"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "m_{AC} = \\dfrac{10}{-8} = -\\dfrac54",
+       "f": "10/(-8)",
+       "value": "-5/4"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "m_{BD} = \\dfrac45",
+       "f": "-1/(-5/4)",
+       "value": "4/5"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "y-2=\\tfrac45(x+2) \\Rightarrow 4x-5y+18=0"
+      }
+     ],
+     "answer": "4/5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "db3e36bc",
+    "answer": {
+     "value": 0.8,
+     "label": "4x-5y+18=0"
+    }
+   }
+  },
+  {
+   "id": "8d623e8f-b07c-4c14-a6d7-052b0d986141",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "P = \\left(-\\tfrac25,\\,-\\tfrac{14}{5}\\right)"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "m = \\dfrac{5+14/5}{2/5} = \\dfrac{39}{2}",
+       "f": "(5+14/5)/(2/5)",
+       "value": "39/2"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "y=\\tfrac{39}{2}x+5 \\Rightarrow 39x-2y+10=0"
+      }
+     ],
+     "answer": "39/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "fc64211e",
+    "answer": {
+     "value": 19.5,
+     "label": "39x-2y+10=0"
+    }
+   }
+  },
+  {
+   "id": "9b34c366-273f-41c0-8166-1244c5f5abb8",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "3x+4(mx+1)=9 \\Rightarrow (3+4m)x=5"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "x=\\dfrac{5}{3+4m}"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "3+4m \\in \\{1,-1,5,-5\\}"
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "3+4m=1 \\Rightarrow m=-\\tfrac12",
+       "lhs": "3+4*x",
+       "rhs": "1",
+       "roots": [
+        "-1/2"
+       ],
+       "note": "not an integer"
+      },
+      {
+       "step": "s5",
+       "kind": "eq",
+       "tex": "3+4m=-1 \\Rightarrow m=-1",
+       "lhs": "3+4*x",
+       "rhs": "-1",
+       "roots": [
+        "-1"
+       ]
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "x = \\dfrac{5}{3+4(-1)} = -5",
+       "f": "5/(3+4*(-1))",
+       "value": "-5",
+       "note": "acceptable"
+      },
+      {
+       "step": "s6",
+       "kind": "eq",
+       "tex": "3+4m=5 \\Rightarrow m=\\tfrac12",
+       "lhs": "3+4*x",
+       "rhs": "5",
+       "roots": [
+        "1/2"
+       ],
+       "note": "not an integer"
+      },
+      {
+       "step": "s7",
+       "kind": "eq",
+       "tex": "3+4m=-5 \\Rightarrow m=-2",
+       "lhs": "3+4*x",
+       "rhs": "-5",
+       "roots": [
+        "-2"
+       ]
+      },
+      {
+       "step": "s7",
+       "kind": "calc",
+       "tex": "x = \\dfrac{5}{3+4(-2)} = -1",
+       "f": "5/(3+4*(-2))",
+       "value": "-1",
+       "note": "acceptable"
+      },
+      {
+       "step": "s8",
+       "kind": "note",
+       "tex": "m=-1\\ \\text{and}\\ m=-2"
+      }
+     ],
+     "answer": "2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s5"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s6"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s7"
+      ]
+     },
+     {
+      "from": 10,
+      "beats": [
+       "s8"
+      ]
+     }
+    ],
+    "fingerprint": "729511a4",
+    "answer": {
+     "value": 2,
+     "label": "2 values"
+    }
+   }
+  },
+  {
+   "id": "a6e9199c-761c-4436-ab58-e3f94824d9d8",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "P = \\left(-\\tfrac25,\\,-\\tfrac{14}{5}\\right)"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "m = \\dfrac{5+14/5}{2/5} = \\dfrac{39}{2}",
+       "f": "(5+14/5)/(2/5)",
+       "value": "39/2"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "y=\\tfrac{39}{2}x+5 \\Rightarrow 39x-2y+10=0"
+      }
+     ],
+     "answer": "39/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "c526aa99",
+    "answer": {
+     "value": 19.5,
+     "label": "39x-2y+10=0"
+    }
+   }
+  },
+  {
+   "id": "b58aabc9-37d5-44c2-a69a-eadc063cf4f4",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "r = \\sqrt{9+9} = 3\\sqrt2",
+       "f": "sqrt(9+9)",
+       "value": "3*sqrt(2)"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\theta = \\tan^{-1}1 = \\dfrac\\pi4",
+       "f": "atan(1)",
+       "value": "pi/4"
+      }
+     ],
+     "answer": "3*sqrt(2)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     }
+    ],
+    "fingerprint": "71b1630f",
+    "answer": {
+     "value": 4.242640687119286,
+     "label": "(3√2, π/4)"
+    }
+   }
+  },
+  {
+   "id": "cc2a562b-1b75-4381-af1a-1f7b4cebdc28",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "m_1=\\tfrac12"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "\\tan45^\\circ=\\left|\\dfrac{m-m_1}{1+m\\,m_1}\\right|=1",
+       "lhs": "abs((x-1/2)/(1+x*(1/2)))",
+       "rhs": "1",
+       "roots": [
+        "3",
+        "-1/3"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "m=3\\ \\text{or}\\ m=-\\tfrac13"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "y-2=3(x-3)\\Rightarrow 3x-y-7=0"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "y-2=-\\tfrac13(x-3)\\Rightarrow x+3y-9=0"
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "dbb1f50a",
+    "answer": {
+     "value": 3,
+     "label": "3x-y-7=0, x+3y-9=0"
+    }
+   }
+  },
+  {
+   "id": "ccf1a633-eef0-4c14-a433-9b848bc75529",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "m_{BC} = \\dfrac{-2+3}{3-2} = 1",
+       "f": "(-2+3)/(3-2)",
+       "value": "1"
+      },
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{altitude from } A:\\ y+6=-(x-1) \\Rightarrow y=-x-5"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "m_{AC} = \\dfrac{-2+6}{3-1} = 2",
+       "f": "(-2+6)/(3-1)",
+       "value": "2"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{altitude from } B:\\ y+3=-\\tfrac12(x-2)",
+       "note": "so y = −x/2 − 2"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "-x-5=-\\dfrac x2-2 \\Rightarrow x=-6",
+       "lhs": "-x-5",
+       "rhs": "-x/2-2",
+       "roots": [
+        "-6"
+       ]
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "\\text{orthocentre} = (-6,\\,1)"
+      }
+     ],
+     "answer": "-6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "66b2d77c",
+    "answer": {
+     "value": -6,
+     "label": "(-6, 1)"
+    }
+   }
+  },
+  {
+   "id": "d3bcb73c-6fb2-4659-b148-dce4f767c53c",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "m_{l_1} = \\dfrac{4-2}{-3-1} = -\\dfrac12",
+       "f": "(4-2)/(-3-1)",
+       "value": "-1/2"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "m_{l_2} = 2"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "x+2y=5,\\quad 2x-y=5"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "x=3,\\ y=1"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "h=3,\\ k=1 \\Rightarrow \\dfrac kh = \\dfrac13",
+       "f": "1/3",
+       "value": "1/3"
+      }
+     ],
+     "answer": "1/3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "956fa04c",
+    "answer": {
+     "value": 0.3333333333333333,
+     "label": "1/3"
+    }
+   }
+  },
+  {
+   "id": "e3447762-1eb3-4be0-abbe-e58ce7f72aa2",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{centre} = (3,2)"
+      },
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "2=6+c \\Rightarrow c=-4",
+       "lhs": "2",
+       "rhs": "6+x",
+       "roots": [
+        "-4"
+       ]
+      },
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "y=2x-4"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "(2,0):\\ 2(2)-4 = 0",
+       "f": "2*2-4",
+       "value": "0"
+      }
+     ],
+     "answer": "2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     }
+    ],
+    "fingerprint": "ff4d6306",
+    "answer": {
+     "value": 2,
+     "label": "(2, 0)"
+    }
+   }
+  },
+  {
+   "id": "e9ca26c3-ca50-440a-955f-aa1cca65c981",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "d=\\dfrac{|c|}{\\sqrt{a^2+b^2}}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "(A)\\ \\dfrac45 = 0.8",
+       "f": "4/sqrt(3^2+4^2)",
+       "value": "0.8"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "(B)\\ \\dfrac5{\\sqrt{13}} \\approx 1.39",
+       "f": "5/sqrt(2^2+3^2)",
+       "value": "1.39",
+       "dp": 2
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "(C)\\ \\dfrac{12}{5} = 2.4",
+       "f": "12/sqrt(4^2+3^2)",
+       "value": "2.4"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "(D)\\ \\dfrac3{\\sqrt{29}} \\approx 0.557",
+       "f": "3/sqrt(5^2+2^2)",
+       "value": "0.557",
+       "dp": 3
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\text{least: option (D)}"
+      }
+     ],
+     "answer": "3/sqrt(29)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "d6b7e09a",
+    "answer": {
+     "value": 0.5570860145311556,
+     "label": "5x-2y=3 (D)"
+    }
+   }
+  },
+  {
+   "id": "ee0ecd03-37b3-47ce-bfd7-1d68dbec730f",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "A=(x,0),\\ B=(0,y)"
+      },
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "(-4,1)=\\left(\\dfrac{2x}{3},\\dfrac y3\\right)"
+      },
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "-4=\\dfrac{2x}{3} \\Rightarrow x=-6",
+       "lhs": "-4",
+       "rhs": "2*x/3",
+       "roots": [
+        "-6"
+       ]
+      },
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "1=\\dfrac y3 \\Rightarrow y=3",
+       "lhs": "1",
+       "rhs": "x/3",
+       "roots": [
+        "3"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "m = \\dfrac{3-0}{0+6} = \\dfrac12",
+       "f": "(3-0)/(0+6)",
+       "value": "1/2"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "x-2y+6=0"
+      }
+     ],
+     "answer": "1/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "dd924349",
+    "answer": {
+     "value": 0.5,
+     "label": "x-2y+6=0"
+    }
+   }
+  },
+  {
+   "id": "f3096259-d783-404b-973d-5fe8808aa634",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{midpoint} = (1,2)"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "m=\\dfrac{2-6}{1+3}=-1",
+       "f": "(2-6)/(1+3)",
+       "value": "-1"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\theta=\\dfrac{3\\pi}{4}",
+       "f": "pi+atan(-1)",
+       "value": "3*pi/4"
+      }
+     ],
+     "answer": "pi+atan(-1)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "cb67b5e4",
+    "answer": {
+     "value": 2.356194490192345,
+     "label": "3π/4"
+    }
+   }
+  },
+  {
+   "id": "fe5af1fc-1eaa-4625-8c74-36a70cb2aace",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "30^\\circ-15^\\circ=15^\\circ"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{slope}=\\tan15^\\circ=2-\\sqrt3",
+       "f": "tan(rad(15))",
+       "value": "2-sqrt(3)"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "y=(2-\\sqrt3)(x-2)"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\text{i.e. } (2-\\sqrt3)x-y-4+2\\sqrt3=0"
+      }
+     ],
+     "answer": "2-sqrt(3)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "c0094e10",
+    "answer": {
+     "value": 0.2679491924311228,
+     "label": "(2-√3)x-y-4+2√3=0"
+    }
+   }
+  },
+  {
+   "id": "03c45815-7448-4cc2-8cdc-b49c43b04803",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "p": "2",
+      "q": "1"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "z=(p+iq)^3=p^3-3pq^2+i(3p^2q-q^3)"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "x=p^3-3pq^2,\\quad y=3p^2q-q^3"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac xp=p^2-3q^2",
+       "f": "(p^3-3*p*q^2)/p",
+       "value": "p^2-3*q^2"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac yq=3p^2-q^2",
+       "f": "(3*p^2*q-q^3)/q",
+       "value": "3*p^2-q^2"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{Sum}=4p^2-4q^2=4(p^2-q^2)",
+       "f": "p^2-3*q^2+3*p^2-q^2",
+       "value": "4*(p^2-q^2)"
+      }
+     ],
+     "answer": "4*(p^2-q^2)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "4fd40e97",
+    "answer": {
+     "value": 12,
+     "label": "4(p²−q²)"
+    }
+   }
+  },
+  {
+   "id": "206e4366-388e-4f8f-9f4f-218e183f7a6a",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "xp": "3/5",
+      "yp": "4/5"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "|z|=1 \\Rightarrow x^2+y^2=1"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mathrm{Re}(w)=\\dfrac{x^2+y^2-1}{(x+1)^2+y^2}=0",
+       "f": "(xp^2+yp^2-1)/((xp+1)^2+yp^2)",
+       "value": "0"
+      }
+     ],
+     "answer": "(xp^2+yp^2-1)/((xp+1)^2+yp^2)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "24ed0cfa",
+    "answer": {
+     "value": 0,
+     "label": "0"
+    }
+   }
+  },
+  {
+   "id": "21fbba84-7114-49ce-8eda-eb37e99758c1",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "z=\\dfrac{(1+i\\sqrt3)(\\sqrt3+i)}{(\\sqrt3-i)(\\sqrt3+i)}"
+      },
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "=\\dfrac{\\sqrt3+i+3i+i^2\\sqrt3}{4}"
+      },
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "=\\dfrac{4i}{4}=i,\\quad \\arg z=\\dfrac\\pi2"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\arg z=\\arg(1+i\\sqrt3)-\\arg(\\sqrt3-i)"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "=\\dfrac\\pi3-\\left(-\\dfrac\\pi6\\right)=\\dfrac\\pi2",
+       "f": "atan(sqrt(3))-atan(-1/sqrt(3))",
+       "value": "pi/2"
+      }
+     ],
+     "answer": "pi/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "b23dad0b",
+    "answer": {
+     "value": 1.5707963267948966,
+     "label": "π/2"
+    }
+   }
+  },
+  {
+   "id": "26bb615a-8015-47b6-9835-5d8e58bade6f",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "z=\\dfrac{1-i}2=\\dfrac12-\\dfrac i2"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "|z|=\\dfrac1{\\sqrt2}",
+       "f": "sqrt((1/2)^2+(-1/2)^2)",
+       "value": "1/sqrt(2)"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\arg z=-\\dfrac\\pi4",
+       "f": "atan((-1/2)/(1/2))",
+       "value": "-pi/4"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{i.e. } \\theta=2\\pi-\\dfrac\\pi4=\\dfrac{7\\pi}4",
+       "f": "2*pi-pi/4",
+       "value": "7*pi/4"
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "z=\\dfrac1{\\sqrt2}\\left(\\cos\\dfrac{7\\pi}4+i\\sin\\dfrac{7\\pi}4\\right)"
+      }
+     ],
+     "answer": "1/sqrt(2)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3",
+       "s4"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "83fd4471",
+    "answer": {
+     "value": 0.7071067811865475,
+     "label": "r = 1/√2, θ = 7π/4"
+    }
+   }
+  },
+  {
+   "id": "2cfda9a1-e93f-4b2e-bcc9-073f3a7b211c",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "Z=\\dfrac{-2(1-\\sqrt3\\,i)}{4}=-\\dfrac12+\\dfrac{\\sqrt3}2i"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\arg Z=\\pi-\\dfrac\\pi3=\\dfrac{2\\pi}3",
+       "f": "pi+atan((sqrt(3)/2)/(-1/2))",
+       "value": "2*pi/3",
+       "note": "second quadrant"
+      }
+     ],
+     "answer": "2*pi/3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "8df7e722",
+    "answer": {
+     "value": 2.0943951023931953,
+     "label": "2π/3"
+    }
+   }
+  },
+  {
+   "id": "31694971-83f2-48cc-93cc-5a8b3ccc164d",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\overline{Z_1}=2-i,\\quad \\overline{Z_2}=3+4i"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\dfrac{2-i}{3+4i}=\\dfrac{(2-i)(3-4i)}{25}=\\dfrac{2-11i}{25}"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "a=\\dfrac2{25},\\quad b=-\\dfrac{11}{25}"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "-7a+b=-\\dfrac{14}{25}-\\dfrac{11}{25}=-1",
+       "f": "-7*(2/25)+(-11/25)",
+       "value": "-1"
+      }
+     ],
+     "answer": "-1"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "4666b48c",
+    "answer": {
+     "value": -1,
+     "label": "−1"
+    }
+   }
+  },
+  {
+   "id": "42287c42-5627-472a-b6a8-cb8f9b92577b",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "n": "40",
+      "xv": "-10"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "z=x+10i"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "(2x-n)+20i=(2i-1)(2x+n+20i)"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\text{equate real and imaginary parts}"
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "2x-n=-2x-n-40 \\Rightarrow x=-10",
+       "lhs": "2*x-n",
+       "rhs": "-2*x-n-40",
+       "roots": [
+        "-10"
+       ]
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "20=4x+2n-20 \\Rightarrow n=40",
+       "lhs": "20",
+       "rhs": "4*xv+2*x-20",
+       "roots": [
+        "40"
+       ]
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "n=40,\\quad \\mathrm{Re}(z)=-10"
+      }
+     ],
+     "answer": "n"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "a714c6fe",
+    "answer": {
+     "value": 40,
+     "label": "n = 40, Re z = −10"
+    }
+   }
+  },
+  {
+   "id": "47b23ecd-1985-4378-8a04-f2673c415f45",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "-1+\\sqrt{-3}=-1+i\\sqrt3"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "r=2",
+       "f": "sqrt((-1)^2+sqrt(3)^2)",
+       "value": "2"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\cos\\theta=-\\dfrac12",
+       "f": "cos(2*pi/3)",
+       "value": "-1/2"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\sin\\theta=\\dfrac{\\sqrt3}2",
+       "f": "sin(2*pi/3)",
+       "value": "sqrt(3)/2"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "\\theta=\\dfrac{2\\pi}3",
+       "f": "atan2(sqrt(3),-1)",
+       "value": "2*pi/3",
+       "note": "second quadrant"
+      }
+     ],
+     "answer": "2*pi/3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3",
+       "s4"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "9d000fe4",
+    "answer": {
+     "value": 2.0943951023931953,
+     "label": "2π/3"
+    }
+   }
+  },
+  {
+   "id": "535cd736-e7c1-4923-ae20-b368455abd23",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "(1+i)^2=2i"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "z=\\dfrac{2i}{a-i}=\\dfrac{2i(a+i)}{a^2+1}"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "=\\dfrac{-2+2ai}{a^2+1}"
+      },
+      {
+       "step": "s4",
+       "kind": "expr",
+       "tex": "|z|^2=\\dfrac{4+4a^2}{(a^2+1)^2}",
+       "f": "(4+4*x^2)/(x^2+1)^2"
+      },
+      {
+       "step": "s5",
+       "kind": "expr",
+       "tex": "=\\dfrac4{a^2+1}",
+       "f": "4/(x^2+1)"
+      },
+      {
+       "step": "s6",
+       "kind": "eq",
+       "tex": "\\dfrac4{a^2+1}=\\dfrac45 \\Rightarrow a^2=4 \\Rightarrow a=2",
+       "lhs": "4/(x^2+1)",
+       "rhs": "4/5",
+       "roots": [
+        "2"
+       ]
+      },
+      {
+       "step": "s7",
+       "kind": "note",
+       "tex": "z=\\dfrac{-2+4i}5=-\\dfrac25+\\dfrac45i"
+      }
+     ],
+     "answer": "-2/5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4",
+       "s5",
+       "s6"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s7"
+      ]
+     }
+    ],
+    "fingerprint": "ddc4829b",
+    "answer": {
+     "value": -0.4,
+     "label": "−2/5 + 4i/5"
+    }
+   }
+  },
+  {
+   "id": "582a084b-0be2-477d-9a80-ff74ad4ca69c",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "z=x+10i"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "2z-n=(2i-1)(2z+n)"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "2z-n=4iz+2in-2z-n \\Rightarrow 4z-4iz=2in"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "4z(1-i)=2in"
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "z=\\dfrac{in}{2(1-i)}=\\dfrac{in(1+i)}{2\\cdot2}"
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "=\\dfrac{in-n}4=-\\dfrac n4+\\dfrac n4i"
+      },
+      {
+       "step": "s6",
+       "kind": "eq",
+       "tex": "\\dfrac n4=10 \\Rightarrow n=40",
+       "lhs": "x/4",
+       "rhs": "10",
+       "roots": [
+        "40"
+       ]
+      },
+      {
+       "step": "s7",
+       "kind": "calc",
+       "tex": "\\mathrm{Re}(z)=-\\dfrac{40}4=-10",
+       "f": "-40/4",
+       "value": "-10"
+      }
+     ],
+     "answer": "40"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s6"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s7"
+      ]
+     }
+    ],
+    "fingerprint": "067ed929",
+    "answer": {
+     "value": 40,
+     "label": "n = 40, Re z = −10"
+    }
+   }
+  },
+  {
+   "id": "5e510c0d-ad56-4905-a6f8-e2cb4956a0ae",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "w^3=1,\\quad 1+w+w^2=0"
+      },
+      {
+       "step": "s2",
+       "kind": "expr",
+       "tex": "3+w+3w^2=3+w+3(-1-w)",
+       "f": "3+x+3*(-1-x)"
+      },
+      {
+       "step": "s2",
+       "kind": "expr",
+       "tex": "=-2w",
+       "f": "-2*x"
+      },
+      {
+       "step": "s3",
+       "kind": "expr",
+       "tex": "u=(-2w)^4",
+       "f": "(-2*x)^4",
+       "restart": true
+      },
+      {
+       "step": "s3",
+       "kind": "expr",
+       "tex": "=16w^4",
+       "f": "16*x^4"
+      },
+      {
+       "step": "s3",
+       "kind": "expr",
+       "tex": "=16w^3\\cdot w",
+       "f": "16*x^3*x"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "=16w",
+       "note": "using w³ = 1"
+      }
+     ],
+     "answer": "16"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "ae114ee6",
+    "answer": {
+     "value": 16,
+     "label": "16w"
+    }
+   }
+  },
+  {
+   "id": "6abbaa45-3c64-4f33-a1b6-298764ee19e7",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "r=\\sqrt{(-2\\sqrt3)^2+2^2}=\\sqrt{12+4}=4",
+       "f": "sqrt((-2*sqrt(3))^2+2^2)",
+       "value": "4"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\tan\\theta=\\dfrac2{-2\\sqrt3}=-\\dfrac1{\\sqrt3}",
+       "f": "2/(-2*sqrt(3))",
+       "value": "-1/sqrt(3)"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\theta=\\pi-\\dfrac\\pi6=\\dfrac{5\\pi}6",
+       "f": "pi+atan(-1/sqrt(3))",
+       "value": "5*pi/6",
+       "note": "second quadrant"
+      }
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "1ec79d03",
+    "answer": {
+     "value": 4,
+     "label": "(4, 5π/6)"
+    }
+   }
+  },
+  {
+   "id": "7d995954-9e62-4202-9e38-ebb2c8faf200",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "x+2=\\sqrt3\\,i \\Rightarrow x^2+4x+7=0"
+      },
+      {
+       "step": "s2",
+       "kind": "expr",
+       "tex": "P(x)=2x^4+5x^3+7x^2-x+38",
+       "f": "2*x^4+5*x^3+7*x^2-x+38"
+      },
+      {
+       "step": "s2",
+       "kind": "expr",
+       "tex": "=(x^2+4x+7)(2x^2-3x+5)+3",
+       "f": "(x^2+4*x+7)*(2*x^2-3*x+5)+3"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "=0+3=3"
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "f987ae55",
+    "answer": {
+     "value": 3,
+     "label": "3"
+    }
+   }
+  },
+  {
+   "id": "862fa020-7b20-4367-8f45-b8051e1d1c31",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "n": "5"
+     },
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\dfrac1\\omega=\\omega^2,\\quad \\dfrac1{\\omega^2}=\\omega"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "T_r=(r+1)(r+\\omega^2)(r+\\omega)"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "(r+\\omega)(r+\\omega^2)=r^2+r(\\omega+\\omega^2)+\\omega^3=r^2-r+1"
+      },
+      {
+       "step": "s4",
+       "kind": "expr",
+       "tex": "T_r=(r+1)(r^2-r+1)",
+       "f": "(x+1)*(x^2-x+1)"
+      },
+      {
+       "step": "s4",
+       "kind": "expr",
+       "tex": "=r^3+1",
+       "f": "x^3+1"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "\\sum_{r=1}^{n}(r^3+1)=\\left[\\dfrac{n(n+1)}2\\right]^2+n",
+       "f": "(1^3+1)+(2^3+1)+(3^3+1)+(4^3+1)+(5^3+1)",
+       "value": "(n*(n+1)/2)^2+n"
+      }
+     ],
+     "answer": "(n*(n+1)/2)^2+n"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "3855d493",
+    "answer": {
+     "value": 230,
+     "label": "[n(n+1)/2]²+n"
+    }
+   }
+  },
+  {
+   "id": "8732d3b8-359d-49fe-950b-18825116c173",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "1+i\\sqrt3=2e^{i\\pi/3}"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "(1+i\\sqrt3)^8=256\\,e^{i8\\pi/3}",
+       "f": "2^8",
+       "value": "256",
+       "note": "modulus 2⁸"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{principal arg of } \\dfrac{8\\pi}3=\\dfrac{2\\pi}3",
+       "f": "8*pi/3-2*pi",
+       "value": "2*pi/3"
+      }
+     ],
+     "answer": "2^8"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "2117f66b",
+    "answer": {
+     "value": 256,
+     "label": "256 and 2π/3"
+    }
+   }
+  },
+  {
+   "id": "9295bfb4-3524-45b9-b300-a516789ecf53",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "z=\\dfrac{3-4\\sin^2\\theta+8i\\sin\\theta}{1+4\\sin^2\\theta}"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "3-4\\sin^2\\theta=0",
+       "lhs": "3-4*sin(x)^2",
+       "rhs": "0",
+       "roots": [
+        "pi/3"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sin^2\\theta=\\dfrac34=\\sin^2\\dfrac\\pi3",
+       "f": "sin(pi/3)^2",
+       "value": "3/4"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\Rightarrow \\theta=n\\pi\\pm\\dfrac\\pi3"
+      }
+     ],
+     "answer": "pi/3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "4d09b9b0",
+    "answer": {
+     "value": 1.0471975511965976,
+     "label": "nπ ± π/3"
+    }
+   }
+  },
+  {
+   "id": "9c403686-dcb0-41fd-8eb4-f65859e4711b",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "3x+2=6x+3 \\Rightarrow x=-\\tfrac13",
+       "lhs": "3*x+2",
+       "rhs": "6*x+3",
+       "roots": [
+        "-1/3"
+       ],
+       "note": "conjugates: real parts equal"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "5y-3=2y-4 \\Rightarrow y=-\\tfrac13",
+       "lhs": "5*x-3",
+       "rhs": "2*x-4",
+       "roots": [
+        "-1/3"
+       ],
+       "note": "imaginary parts equal"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{x-y}{x+y}=\\dfrac0{-2/3}=0",
+       "f": "0/(-2/3)",
+       "value": "0"
+      }
+     ],
+     "answer": "0"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "33ccbd86",
+    "answer": {
+     "value": 0,
+     "label": "0"
+    }
+   }
+  },
+  {
+   "id": "a4df5b6b-06e8-4527-aded-d1faa2087fdc",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "|\\sqrt{6+8i}|=\\sqrt{|6+8i|}"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "=\\sqrt{\\sqrt{36+64}}=\\sqrt{\\sqrt{100}}=\\sqrt{10}",
+       "f": "sqrt(sqrt(36+64))",
+       "value": "sqrt(10)"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\sqrt{10}=\\sqrt2\\cdot\\sqrt5",
+       "f": "sqrt(2)*sqrt(5)",
+       "value": "sqrt(10)"
+      }
+     ],
+     "answer": "sqrt(10)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     }
+    ],
+    "fingerprint": "cc8934c4",
+    "answer": {
+     "value": 3.1622776601683795,
+     "label": "√2·√5"
+    }
+   }
+  },
+  {
+   "id": "b2267cf0-6806-4987-a823-e0a2e8ed5f16",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\left(-2-\\tfrac13i\\right)^3=\\dfrac{(-6-i)^3}{27}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "(-6-i)^3=(-6)^3+3(-6)^2(-i)+3(-6)(-i)^2+(-i)^3"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "=-216-108i+18+i=-198-107i"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{real part: } -216+18=-198",
+       "f": "-216+18",
+       "value": "-198"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "\\text{imaginary part: } -108+1=-107",
+       "f": "-108+1",
+       "value": "-107"
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "y-x=-107+198=91",
+       "f": "-107+198",
+       "value": "91"
+      }
+     ],
+     "answer": "91"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4",
+       "s5"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "3dbd69d9",
+    "answer": {
+     "value": 91,
+     "label": "91"
+    }
+   }
+  },
+  {
+   "id": "b576d097-afda-48c1-b053-b0b16e399547",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "z=\\cos\\dfrac\\pi6+i\\sin\\dfrac\\pi6"
+      },
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "z^{69}=\\cos\\dfrac{69\\pi}6+i\\sin\\dfrac{69\\pi}6"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{69\\pi}6=12\\pi-\\dfrac\\pi2",
+       "f": "12*pi-pi/2",
+       "value": "69*pi/6"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\sin\\dfrac{69\\pi}6=-1",
+       "f": "sin(69*pi/6)",
+       "value": "-1"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "z^{69}=-i"
+      }
+     ],
+     "answer": "sin(69*pi/6)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "12e1d767",
+    "answer": {
+     "value": -1,
+     "label": "−i"
+    }
+   }
+  },
+  {
+   "id": "cbc42080-bdc4-48e8-8510-0221c78c2cdc",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "x=3+4i,\\quad x^2-6x+25=0"
+      },
+      {
+       "step": "s2",
+       "kind": "expr",
+       "tex": "P(x)=2x^3-11x^2+44x+27",
+       "f": "2*x^3-11*x^2+44*x+27"
+      },
+      {
+       "step": "s2",
+       "kind": "expr",
+       "tex": "=(x^2-6x+25)(2x+1)+2",
+       "f": "(x^2-6*x+25)*(2*x+1)+2"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "=0+2=2"
+      }
+     ],
+     "answer": "2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "8b871484",
+    "answer": {
+     "value": 2,
+     "label": "2"
+    }
+   }
+  },
+  {
+   "id": "cde4631a-1ceb-4a44-9098-736a25ac634d",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "(1+i)^2=2i"
+      },
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "z=\\dfrac{2i}{a-i}=\\dfrac{2i(a+i)}{a^2+1}"
+      },
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "=\\dfrac{-2+2ai}{a^2+1},\\quad |z|=\\dfrac2{\\sqrt{a^2+1}}"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "\\dfrac2{\\sqrt{a^2+1}}=\\sqrt{\\dfrac25}",
+       "lhs": "2/sqrt(x^2+1)",
+       "rhs": "sqrt(2/5)",
+       "roots": [
+        "3"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "\\dfrac4{a^2+1}=\\dfrac25 \\Rightarrow a^2=9 \\Rightarrow a=3",
+       "lhs": "4/(x^2+1)",
+       "rhs": "2/5",
+       "roots": [
+        "3"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "z=\\dfrac{-2+6i}{10}=-\\dfrac15+\\dfrac35i"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\bar z=-\\dfrac15-\\dfrac35i"
+      }
+     ],
+     "answer": "-1/5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "12a27ead",
+    "answer": {
+     "value": -0.2,
+     "label": "−1/5 − 3i/5"
+    }
+   }
+  },
+  {
+   "id": "d2d9585c-71df-42ee-96cc-a8ca847641b7",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "i^{40}=1,\\ i^{35}=i^{32}\\cdot i^3=-i,\\ i^{17}=i"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "Z_1=4+5i+6i+2=6+11i"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "Z_1+Z_2=5+12i"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "|Z_1+Z_2|=\\sqrt{25+144}=13",
+       "f": "sqrt(25+144)",
+       "value": "13"
+      }
+     ],
+     "answer": "13"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "6d9ed98e",
+    "answer": {
+     "value": 13,
+     "label": "13"
+    }
+   }
+  },
+  {
+   "id": "d52a37bd-7499-4773-8470-a85a590d2ad6",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\overline{-7+24i}=-7-24i"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "|{-7-24i}|=\\sqrt{49+576}=\\sqrt{625}=25",
+       "f": "sqrt(49+576)",
+       "value": "25"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\sqrt{|z|}=\\sqrt{25}=5",
+       "f": "sqrt(25)",
+       "value": "5"
+      }
+     ],
+     "answer": "5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "b93ca10c",
+    "answer": {
+     "value": 5,
+     "label": "5"
+    }
+   }
+  },
+  {
+   "id": "df6bf26e-bc3b-40ac-b9b0-13609d7d6d21",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "z=\\dfrac{2i}{a+i}"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "|z|=\\dfrac2{\\sqrt{a^2+1}}=\\dfrac2{\\sqrt5}\\Rightarrow a=2",
+       "lhs": "2/sqrt(x^2+1)",
+       "rhs": "2/sqrt(5)",
+       "roots": [
+        "2"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "z=\\dfrac{2i}{2+i}=\\dfrac{2+4i}5"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "\\bar z=\\dfrac25-\\dfrac45i"
+      }
+     ],
+     "answer": "2/5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "895e4505",
+    "answer": {
+     "value": 0.4,
+     "label": "2/5 − 4i/5"
+    }
+   }
+  },
+  {
+   "id": "f0b86c94-2a0b-4132-8faa-b3c08f7a5662",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "|z_1z_2|=3\\cdot4=12",
+       "f": "3*4",
+       "value": "12"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\arg(z_1z_2)=\\dfrac{5\\pi}{12}+\\dfrac\\pi{12}=\\dfrac\\pi2",
+       "f": "5*pi/12+pi/12",
+       "value": "pi/2"
+      },
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "z_1z_2=12e^{i\\pi/2}=12i"
+      }
+     ],
+     "answer": "12"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     }
+    ],
+    "fingerprint": "7774021a",
+    "answer": {
+     "value": 12,
+     "label": "12i"
+    }
+   }
+  },
+  {
+   "id": "f1b09046-3fe7-48b8-8f5a-43f6459053c3",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\omega^{10}=\\omega,\\quad \\omega^{23}=\\omega^2"
+      },
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\omega^{10}+\\omega^{23}=-1"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\sin\\left(-\\pi-\\dfrac\\pi4\\right)=-\\sin\\dfrac{5\\pi}4=\\dfrac1{\\sqrt2}",
+       "f": "sin(-pi-pi/4)",
+       "value": "1/sqrt(2)"
+      }
+     ],
+     "answer": "1/sqrt(2)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "4618ade0",
+    "answer": {
+     "value": 0.7071067811865475,
+     "label": "1/√2"
+    }
+   }
+  },
+  {
+   "id": "fc83f271-76d6-491c-9213-d6b0bb8d5355",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "|\\sqrt3+i|=\\sqrt{3+1}=2",
+       "f": "sqrt(3+1)",
+       "value": "2"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "|3i+4|=|4+3i|=5",
+       "f": "sqrt(16+9)",
+       "value": "5"
+      },
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "|8+6i|=10",
+       "f": "sqrt(64+36)",
+       "value": "10"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "|z|=\\dfrac{|\\sqrt3+i|^3\\,|3i+4|^2}{|8+6i|^2}"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "=\\dfrac{2^3\\cdot5^2}{10^2}=\\dfrac{8\\cdot25}{100}=2",
+       "f": "2^3*5^2/10^2",
+       "value": "2"
+      }
+     ],
+     "answer": "2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "83eb4b7c",
+    "answer": {
+     "value": 2,
+     "label": "2"
+    }
+   }
+  }
+ ],
+ "decided": []
+}

@@ -1,0 +1,3245 @@
+{
+ "//": "Assembled from agent drafts (algebraSteps).",
+ "visuals": [
+  {
+   "id": "03a658a3-3a47-4660-b9b1-2bbfe48a8f03",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "f_{\\text{pipe}} = \\dfrac{320}{4\\times 0.8}",
+       "note": "closed pipe, fundamental",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{320}{4\\times 0.8} = 100\\ \\text{Hz}",
+       "f": "320/(4*0.8)",
+       "value": "100",
+       "step": "s2"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{1}{0.5}\\sqrt{\\dfrac{50}{\\mu}} = 100",
+       "lhs": "1/0.5*sqrt(50/x)",
+       "rhs": "100",
+       "roots": [
+        "0.02"
+       ],
+       "note": "string's second harmonic",
+       "step": "s3"
+      },
+      {
+       "kind": "note",
+       "tex": "\\mu = 0.02\\ \\text{kg/m}",
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "m = 0.02\\times 0.5 = 0.01\\ \\text{kg} = 10\\ \\text{g}",
+       "f": "0.02*0.5",
+       "value": "0.01",
+       "note": "string is 0.5 m long",
+       "step": "s5"
+      }
+     ],
+     "answer": "10"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "e8e1805c",
+    "answer": {
+     "value": 10,
+     "label": "10 g"
+    }
+   }
+  },
+  {
+   "id": "0a485510-975e-4e06-b79a-22c2d7e01c41",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "f_{28} = f_1 + 27x = 2f_1 \\Rightarrow f_1 = 27x",
+       "note": "last fork is an octave of the first",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "f_{12} = f_1 + 11x = 27x + 11x",
+       "note": "12th fork",
+       "step": "s2"
+      },
+      {
+       "kind": "eq",
+       "tex": "38x = 152 \\Rightarrow x = 4",
+       "lhs": "38*x",
+       "rhs": "152",
+       "roots": [
+        "4"
+       ],
+       "note": "beats per second",
+       "step": "s3"
+      }
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "32c8c3ad",
+    "answer": {
+     "value": 4,
+     "label": "4 beats/s"
+    }
+   }
+  },
+  {
+   "id": "0f0f60c0-f243-4dca-ae0b-13d38e44db66",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "L = 10\\log_{10}(I/I_0)",
+       "note": "decibel scale",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{I_2}{I_1} = 10^{(60-30)/10} = 10^3 = 1000",
+       "f": "10^((60-30)/10)",
+       "value": "1000",
+       "note": "30 dB difference",
+       "step": "s2"
+      }
+     ],
+     "answer": "1000"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "c78642a1",
+    "answer": {
+     "value": 1000,
+     "label": "1000 (ratio I2/I1)"
+    }
+   }
+  },
+  {
+   "id": "20660e8a-a8c5-40eb-ace8-65b651a31686",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{f'}{n} = \\dfrac{V+V/10}{V-V/10} = \\dfrac{1.1}{0.9}",
+       "f": "(1+1/10)/(1-1/10)",
+       "value": "1.1/0.9",
+       "note": "Doppler formula",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{1.1}{0.9} = \\dfrac{11}{9} \\approx 1.22",
+       "f": "1.1/0.9",
+       "value": "1.22",
+       "dp": 2,
+       "step": "s2"
+      }
+     ],
+     "answer": "1.22"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "7ae48b10",
+    "answer": {
+     "value": 1.22,
+     "label": "1.22n"
+    }
+   }
+  },
+  {
+   "id": "262c2b45-bea5-477d-9ab5-04a6b62a87df",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "\\lambda = \\dfrac{0.8}{4} = 0.2\\ \\text{m}",
+       "f": "0.8/4",
+       "value": "0.2",
+       "note": "five crests span four wavelengths",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "f = \\dfrac{v}{\\lambda} = \\dfrac{56}{0.2} = 280\\ \\text{Hz}",
+       "f": "56/0.2",
+       "value": "280",
+       "step": "s2"
+      }
+     ],
+     "answer": "280"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "c37bae54",
+    "answer": {
+     "value": 280,
+     "label": "280 Hz"
+    }
+   }
+  },
+  {
+   "id": "33d93f09-e711-4288-a6c1-33622837dea6",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{v}{0.500} - \\dfrac{v}{0.505} = 6",
+       "lhs": "x/0.5-x/0.505",
+       "rhs": "6",
+       "roots": [
+        "303"
+       ],
+       "note": "frequencies differ by 6 Hz",
+       "step": "s1"
+      },
+      {
+       "kind": "eq",
+       "tex": "v\\times\\dfrac{0.005}{0.2525} = 6",
+       "lhs": "x*0.005/0.2525",
+       "rhs": "6",
+       "roots": [
+        "303"
+       ],
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "v = 303\\ \\text{m/s}",
+       "step": "s3"
+      }
+     ],
+     "answer": "303"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "9945f626",
+    "answer": {
+     "value": 303,
+     "label": "303 m/s"
+    }
+   }
+  },
+  {
+   "id": "3470508b-fadc-4a52-a62e-23d6d26ac5fc",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "n": "500",
+      "v": "340"
+     },
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "n' = n\\dfrac{v}{v+v_s}",
+       "note": "source receding",
+       "step": "s1"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{n}{2} = n\\dfrac{v}{v+v_s}",
+       "lhs": "n/2",
+       "rhs": "n*v/(v+x)",
+       "roots": [
+        "v"
+       ],
+       "step": "s2"
+      },
+      {
+       "kind": "eq",
+       "tex": "v + v_s = 2v",
+       "lhs": "v+x",
+       "rhs": "2*v",
+       "roots": [
+        "v"
+       ],
+       "step": "s3"
+      },
+      {
+       "kind": "note",
+       "tex": "v_s = v",
+       "note": "speed of the source equals v",
+       "step": "s4"
+      }
+     ],
+     "answer": "v"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "5a005b19",
+    "answer": {
+     "value": 340,
+     "label": "v_s = V"
+    }
+   }
+  },
+  {
+   "id": "379cb06c-74f0-4522-a9b2-e51bb765ef4a",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "f = f_0\\dfrac{v-v_0}{v}",
+       "note": "driver moves away from the siren",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "f/f_0 = 0.94",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "v_0 = 330\\times(1-0.94) = 19.8\\ \\text{m/s}",
+       "f": "330*(1-0.94)",
+       "value": "19.8",
+       "note": "v_0 = v(1 − 0.94)",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "s = \\dfrac{19.8^2}{2\\times 2} \\approx 98\\ \\text{m}",
+       "f": "19.8^2/4",
+       "value": "98",
+       "note": "u = 0, a = 2 m/s²",
+       "dp": 0,
+       "step": "s4"
+      }
+     ],
+     "answer": "98"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "eb1ec45d",
+    "answer": {
+     "value": 98,
+     "label": "98 m"
+    }
+   }
+  },
+  {
+   "id": "3902be19-ece2-4e45-b0b3-007e8f711cc6",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "72\\ \\text{km/h} = 20\\ \\text{m/s}",
+       "note": "speed of train",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "f_1 = 510\\times\\dfrac{320}{300} = 544\\ \\text{Hz}",
+       "f": "510*320/300",
+       "value": "544",
+       "note": "approaching",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "f_2 = 510\\times\\dfrac{320}{340} = 480\\ \\text{Hz}",
+       "f": "510*320/340",
+       "value": "480",
+       "note": "receding",
+       "step": "s3"
+      }
+     ],
+     "answer": "544"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "dc214507",
+    "answer": {
+     "value": 544,
+     "label": "544 Hz, 480 Hz"
+    }
+   }
+  },
+  {
+   "id": "450a4fa8-5377-4ad0-90b5-e46dbf148c2b",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "l = \\dfrac{(2N-1)\\times 340}{4\\times 340}\\times 100 = (2N-1)\\times 25\\ \\text{cm}",
+       "f": "340/(4*340)*100",
+       "value": "25",
+       "note": "closed pipe resonance",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "\\text{possible lengths: } 25\\ \\text{cm},\\ 75\\ \\text{cm}",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\text{water} = 120 - 75 = 45\\ \\text{cm}",
+       "f": "120-75",
+       "value": "45",
+       "note": "minimum water: resonance at 75 cm",
+       "step": "s3"
+      }
+     ],
+     "answer": "45"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "491cb6bb",
+    "answer": {
+     "value": 45,
+     "label": "45 cm"
+    }
+   }
+  },
+  {
+   "id": "49696460-e591-41f5-bf91-cf7cfd06ac5f",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "v = \\sqrt{\\dfrac{\\gamma P}{\\rho}},\\ \\rho\\ \\text{constant}",
+       "note": "so P ∝ v²",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{P_2}{P_1} = 1.4^2 = 1.96",
+       "f": "1.4^2",
+       "value": "1.96",
+       "note": "ratio P₂ / P₁",
+       "step": "s2"
+      }
+     ],
+     "answer": "1.96"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "c553de61",
+    "answer": {
+     "value": 1.96,
+     "label": "P2/P1 = 1.96"
+    }
+   }
+  },
+  {
+   "id": "4e46eab1-de44-4b9d-81b6-6f57e3c476a1",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "n' = \\left(\\dfrac{v+v_o}{v}\\right)n,\\quad v_o = \\dfrac{v}{5}",
+       "note": "observer moving towards the source",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "n' = \\left(1+\\dfrac15\\right)n = \\dfrac{6}{5}n",
+       "f": "1+1/5",
+       "value": "6/5",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "n'-n = \\dfrac{1}{5}n = 20\\%\\ \\text{of}\\ n",
+       "f": "6/5-1",
+       "value": "1/5",
+       "note": "percentage increase",
+       "step": "s3"
+      }
+     ],
+     "answer": "20"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "7438aa4b",
+    "answer": {
+     "value": 20,
+     "label": "20%"
+    }
+   }
+  },
+  {
+   "id": "52962dbc-c369-4d84-a0bf-2b2232f56e6b",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "V": "330"
+     },
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "F_1 = F\\dfrac{V+V_1}{V},\\quad F_2 = F\\dfrac{V-V_1}{V}",
+       "step": "s1"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{F_1}{F_2} = \\dfrac{V+V_1}{V-V_1} = 2",
+       "lhs": "(V+x)/(V-x)",
+       "rhs": "2",
+       "roots": [
+        "V/3"
+       ],
+       "step": "s2"
+      },
+      {
+       "kind": "eq",
+       "tex": "V + V_1 = 2V - 2V_1",
+       "lhs": "V+x",
+       "rhs": "2*V-2*x",
+       "roots": [
+        "V/3"
+       ],
+       "step": "s3"
+      },
+      {
+       "kind": "eq",
+       "tex": "3V_1 = V",
+       "lhs": "3*x",
+       "rhs": "V",
+       "roots": [
+        "V/3"
+       ],
+       "step": "s4"
+      },
+      {
+       "kind": "note",
+       "tex": "\\dfrac{V}{V_1} = 3",
+       "note": "ratio of V to V₁",
+       "step": "s5"
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "be8b48aa",
+    "answer": {
+     "value": 3,
+     "label": "V/V1 = 3"
+    }
+   }
+  },
+  {
+   "id": "52bfb380-9ebf-42b8-af39-b39a0bf1b06c",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\text{open pipe: fundamental } n",
+       "note": "same length for both pipes",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "\\text{first overtone} = 2n",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "\\text{closed: fundamental } \\dfrac{n}{2},\\ \\text{second overtone } \\dfrac{5n}{2}",
+       "step": "s3"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{5n}{2} - 2n = 100",
+       "lhs": "5*x/2-2*x",
+       "rhs": "100",
+       "roots": [
+        "200"
+       ],
+       "note": "difference is 100 Hz",
+       "step": "s4"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{n}{2} = 100 \\Rightarrow n = 200",
+       "lhs": "x/2",
+       "rhs": "100",
+       "roots": [
+        "200"
+       ],
+       "step": "s5"
+      }
+     ],
+     "answer": "200"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "0a940d87",
+    "answer": {
+     "value": 200,
+     "label": "200 Hz"
+    }
+   }
+  },
+  {
+   "id": "56345c57-34cf-4492-b2ba-bf366ee7681a",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "M = \\dfrac{1(4)+2(32)}{3} = \\dfrac{68}{3}\\ \\text{g/mol}",
+       "f": "(1*4+2*32)/3",
+       "value": "68/3",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "C_V = \\dfrac{1(\\frac32 R)+2(\\frac52 R)}{3} = \\dfrac{13}{6}R",
+       "f": "(1*3/2+2*5/2)/3",
+       "value": "13/6",
+       "note": "also C_P = 19R/6, γ = 19/13",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "v = \\sqrt{\\dfrac{(19/13)(8.314)(300)}{0.02267}} \\approx 401\\ \\text{m/s}",
+       "f": "sqrt((19/13)*8.314*300/0.02267)",
+       "value": "401",
+       "dp": 0,
+       "step": "s3"
+      }
+     ],
+     "answer": "401"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "3e5f060e",
+    "answer": {
+     "value": 401,
+     "label": "401 m/s"
+    }
+   }
+  },
+  {
+   "id": "5b2fdda8-3186-4e38-937a-a307d8b4d30d",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "n = n_0\\dfrac{v}{v-v_s},\\quad v_s = \\dfrac{v}{10}",
+       "note": "source moving towards the observer",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{n}{n_0} = \\dfrac{v}{v - v/10} = \\dfrac{10}{9}",
+       "f": "1/(1-1/10)",
+       "value": "10/9",
+       "note": "ratio of apparent to real",
+       "step": "s2"
+      }
+     ],
+     "answer": "10/9"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "99525180",
+    "answer": {
+     "value": 1.1111111111111112,
+     "label": "10/9 (apparent : real)"
+    }
+   }
+  },
+  {
+   "id": "5c5a26a2-4daf-45c4-9796-7499c8725d81",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "2d_1 = 3v,\\quad 2d_2 = 5v",
+       "step": "s1"
+      },
+      {
+       "kind": "eq",
+       "tex": "d_1 + d_2 = 4v = 1360\\ \\text{m}",
+       "lhs": "4*x",
+       "rhs": "1360",
+       "roots": [
+        "340"
+       ],
+       "note": "the cliffs are d₁ + d₂ apart",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "v = 340\\ \\text{m/s}",
+       "step": "s3"
+      }
+     ],
+     "answer": "340"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "b303e72a",
+    "answer": {
+     "value": 340,
+     "label": "340 m/s"
+    }
+   }
+  },
+  {
+   "id": "74690b9a-1a8a-412d-b6f8-395ceeb1c1f0",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "v": "340",
+      "L": "1.5"
+     },
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "n = \\dfrac{v}{4L}",
+       "note": "fundamental of the closed pipe",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "n' = \\dfrac{3v}{2XL}",
+       "note": "second overtone: 3rd harmonic, open pipe",
+       "step": "s2"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{v}{4L} = \\dfrac{3v}{2XL}",
+       "lhs": "v/(4*L)",
+       "rhs": "3*v/(2*x*L)",
+       "roots": [
+        "6"
+       ],
+       "note": "setting n = n′",
+       "step": "s3"
+      },
+      {
+       "kind": "eq",
+       "tex": "X = \\dfrac{3\\times 4L}{2L} = 6",
+       "lhs": "x",
+       "rhs": "3*4*L/(2*L)",
+       "roots": [
+        "6"
+       ],
+       "step": "s4"
+      }
+     ],
+     "answer": "6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "9d787270",
+    "answer": {
+     "value": 6,
+     "label": "X = 6"
+    }
+   }
+  },
+  {
+   "id": "7aed8963-246a-4d75-bd28-2de8e6b09498",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "n": "500",
+      "V": "340",
+      "Vs": "30"
+     },
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "n_1 = \\dfrac{nV}{V-V_s},\\quad n_2 = \\dfrac{nV}{V+V_s}",
+       "note": "approaching, then receding",
+       "step": "s1"
+      },
+      {
+       "kind": "expr",
+       "tex": "n_1 - n_2 = nV\\left(\\dfrac{1}{V-V_s} - \\dfrac{1}{V+V_s}\\right)",
+       "f": "n*V*(1/(V-x)-1/(V+x))",
+       "step": "s2"
+      },
+      {
+       "kind": "expr",
+       "tex": "= \\dfrac{2nVV_s}{V^2 - V_s^2}",
+       "f": "2*n*V*x/(V^2-x^2)",
+       "step": "s3"
+      }
+     ],
+     "answer": "2*n*V*Vs/(V^2-Vs^2)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "bf156a3d",
+    "answer": {
+     "value": 88.92763731473408,
+     "label": "2nVVs/(V²−Vs²)"
+    }
+   }
+  },
+  {
+   "id": "81cde333-3a52-447e-aa89-63a41edb2d12",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\lambda = \\dfrac{v}{f}",
+       "note": "the frequency stays the same",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\lambda_{\\text{air}} = \\dfrac{350}{700} = 0.5\\ \\text{m}",
+       "f": "350/700",
+       "value": "0.5",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\lambda_{\\text{brass}} = \\dfrac{3500}{700} = 5\\ \\text{m}",
+       "f": "3500/700",
+       "value": "5",
+       "note": "the speed rises 10 times",
+       "step": "s3"
+      }
+     ],
+     "answer": "10"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "0713634e",
+    "answer": {
+     "value": 10,
+     "label": "wavelength ×10"
+    }
+   }
+  },
+  {
+   "id": "8998c8f3-e3cd-4715-959a-b3b274b46527",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\dfrac{\\lambda}{4} = 25\\ \\text{cm}",
+       "note": "first resonance (air column length)",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "\\dfrac{5\\lambda}{4} = 125\\ \\text{cm}",
+       "note": "resonance at 5λ/4 = 125 cm",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\text{water} = 150 - 125 = 25\\ \\text{cm}",
+       "f": "150-125",
+       "value": "25",
+       "note": "minimum height of water",
+       "step": "s3"
+      }
+     ],
+     "answer": "25"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "22bbdf6c",
+    "answer": {
+     "value": 25,
+     "label": "25 cm"
+    }
+   }
+  },
+  {
+   "id": "91379f8e-70db-4f48-827a-4c4b7db38276",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "V": "330"
+     },
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "F_1 = \\dfrac{V+V_1}{V}F,\\quad F_2 = \\dfrac{V-V_1}{V}F",
+       "note": "source stationary",
+       "step": "s1"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{F_1}{F_2} = \\dfrac{V+V_1}{V-V_1} = 2",
+       "lhs": "(V+x)/(V-x)",
+       "rhs": "2",
+       "roots": [
+        "V/3"
+       ],
+       "step": "s2"
+      },
+      {
+       "kind": "eq",
+       "tex": "2V - 2V_1 = V + V_1",
+       "lhs": "2*V-2*x",
+       "rhs": "V+x",
+       "roots": [
+        "V/3"
+       ],
+       "step": "s3"
+      },
+      {
+       "kind": "eq",
+       "tex": "V = 3V_1",
+       "lhs": "V",
+       "rhs": "3*x",
+       "roots": [
+        "V/3"
+       ],
+       "step": "s4"
+      },
+      {
+       "kind": "note",
+       "tex": "\\dfrac{V}{V_1} = 3",
+       "note": "ratio of V to V₁",
+       "step": "s5"
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "ab26d9f5",
+    "answer": {
+     "value": 3,
+     "label": "V/V1 = 3"
+    }
+   }
+  },
+  {
+   "id": "926b3022-528c-4972-81d8-383676c4f1b4",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "V": "340",
+      "L": "0.8"
+     },
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "25\\%\\ \\text{of}\\ L\\ \\text{exposed}\\to\\text{closed pipe of length}\\ L/4",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "f_c = \\dfrac{V}{4(L/4)} = \\dfrac{V}{L}",
+       "f": "V/(4*(L/4))",
+       "value": "V/L",
+       "note": "fundamental of the dipped pipe",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{V}{L} = 2\\cdot\\dfrac{V}{2L} = 2f_0",
+       "f": "V/L",
+       "value": "2*(V/(2*L))",
+       "step": "s3"
+      },
+      {
+       "kind": "note",
+       "tex": "\\text{ratio } 2:1",
+       "note": "dipped pipe : string",
+       "step": "s4"
+      }
+     ],
+     "answer": "2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "42f197fb",
+    "answer": {
+     "value": 2,
+     "label": "2 : 1"
+    }
+   }
+  },
+  {
+   "id": "98bb87a4-c27b-4344-9cc5-8e551e49058a",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "L2": "1.2"
+     },
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "f = \\dfrac{n}{2L\\pi r}\\sqrt{\\dfrac{T}{\\rho}}",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "f_1 = \\dfrac{2}{2L_1\\pi(2r)}\\sqrt{\\dfrac{T}{\\rho}}",
+       "note": "first overtone of wire 1 (n = 2)",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "f_2 = \\dfrac{3}{2L_2\\pi r}\\sqrt{\\dfrac{T}{\\rho}}",
+       "note": "second overtone of wire 2 (n = 3)",
+       "step": "s3"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{1}{2L_1} = \\dfrac{3}{2L_2}",
+       "lhs": "1/(2*x)",
+       "rhs": "3/(2*L2)",
+       "roots": [
+        "L2/3"
+       ],
+       "note": "setting f₁ = f₂",
+       "step": "s4"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{L_1}{L_2} = \\dfrac{1}{3}",
+       "lhs": "x/L2",
+       "rhs": "1/3",
+       "roots": [
+        "L2/3"
+       ],
+       "step": "s5"
+      }
+     ],
+     "answer": "1/3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "4544feaa",
+    "answer": {
+     "value": 0.3333333333333333,
+     "label": "L1 : L2 = 1 : 3"
+    }
+   }
+  },
+  {
+   "id": "98ec6f72-3440-4a5d-9b52-18e8813e14cd",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "v": "340",
+      "lo": "1.2"
+     },
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "f_c = \\dfrac{9v}{4l_c}",
+       "note": "fourth overtone of closed pipe: 9th harmonic",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "f_o = \\dfrac{6v}{2l_o} = \\dfrac{3v}{l_o}",
+       "f": "6*v/(2*lo)",
+       "value": "3*v/lo",
+       "note": "fifth overtone of open pipe: 6th harmonic",
+       "step": "s2"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{9v}{4l_c} = \\dfrac{3v}{l_o}",
+       "lhs": "9*v/(4*x)",
+       "rhs": "3*v/lo",
+       "roots": [
+        "3*lo/4"
+       ],
+       "note": "setting f_c = f_o",
+       "step": "s3"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{l_c}{l_o} = \\dfrac{9}{12} = \\dfrac{3}{4}",
+       "lhs": "x/lo",
+       "rhs": "9/12",
+       "roots": [
+        "3*lo/4"
+       ],
+       "step": "s4"
+      }
+     ],
+     "answer": "3/4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "53164b3f",
+    "answer": {
+     "value": 0.75,
+     "label": "l_c : l_o = 3 : 4"
+    }
+   }
+  },
+  {
+   "id": "a33f9936-7785-481b-8931-456c7d921cd5",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "\\sqrt{\\dfrac{5/3}{4}\\cdot\\dfrac{28}{7/5}}",
+       "f": "sqrt((5/3)/4*28/(7/5))",
+       "value": "sqrt(5/12*20)",
+       "note": "v ∝ √(γ/M)",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "= \\sqrt{\\dfrac{5}{12}\\times 20} = \\sqrt{\\dfrac{25}{3}}",
+       "f": "sqrt(5/12*20)",
+       "value": "sqrt(25/3)",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\sqrt{\\dfrac{25}{3}} = \\dfrac{5}{\\sqrt{3}}",
+       "f": "sqrt(25/3)",
+       "value": "5/sqrt(3)",
+       "note": "ratio v(He) : v(N₂)",
+       "step": "s3"
+      }
+     ],
+     "answer": "5/sqrt(3)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "8560f5d8",
+    "answer": {
+     "value": 2.886751345948129,
+     "label": "5/√3 (ratio He : N2)"
+    }
+   }
+  },
+  {
+   "id": "a3b725cc-1096-408c-9fc2-78387f37b0ea",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "f = \\dfrac{nv}{2L}",
+       "note": "open pipe",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "n = \\dfrac{2Lf}{v} = \\dfrac{2\\times 0.60\\times 2200}{330} = 8",
+       "f": "2*0.6*2200/330",
+       "value": "8",
+       "step": "s2"
+      }
+     ],
+     "answer": "8"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "e66ef045",
+    "answer": {
+     "value": 8,
+     "label": "8th harmonic"
+    }
+   }
+  },
+  {
+   "id": "a65a57c9-ceaf-49fd-941f-3d7f3d1fa45f",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "V": "330"
+     },
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "v_s = V/3,\\ \\ v_o = V/5",
+       "note": "source approaching, observer receding",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "f' = f\\dfrac{V - V/5}{V - V/3}",
+       "f": "(V-V/5)/(V-V/3)",
+       "value": "(4*V/5)/(2*V/3)",
+       "note": "Doppler formula",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "= f\\dfrac{4V/5}{2V/3} = \\dfrac{6}{5}f",
+       "f": "(4*V/5)/(2*V/3)",
+       "value": "6/5",
+       "step": "s3"
+      }
+     ],
+     "answer": "6/5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "263d67ee",
+    "answer": {
+     "value": 1.2,
+     "label": "6f/5"
+    }
+   }
+  },
+  {
+   "id": "a73377ab-00b6-4463-896e-95decf779cf0",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "\\lambda = \\dfrac{332}{415} = 0.8\\ \\text{m}",
+       "f": "332/415",
+       "value": "0.8",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{\\lambda}{4} = 20\\ \\text{cm}",
+       "f": "0.8*100/4",
+       "value": "20",
+       "note": "closed pipe: odd multiples of λ/4",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "20,\\ 60,\\ 100,\\ 140\\ \\text{cm};\\ 40\\ \\text{cm is not one}",
+       "step": "s3"
+      }
+     ],
+     "answer": "40"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "e41f510e",
+    "answer": {
+     "value": 40,
+     "label": "40 cm is not a resonance"
+    }
+   }
+  },
+  {
+   "id": "a7ea825f-cd80-44f8-b02c-f48f146949b8",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "v": "340",
+      "Lo": "1.6"
+     },
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\text{closed, first overtone: } f = \\dfrac{3v}{4L_c}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\text{open, first overtone: } f = \\dfrac{2v}{2L_o} = \\dfrac{v}{L_o}",
+       "f": "2*v/(2*Lo)",
+       "value": "v/Lo",
+       "step": "s2"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{3v}{4L_c} = \\dfrac{v}{L_o}",
+       "lhs": "3*v/(4*x)",
+       "rhs": "v/Lo",
+       "roots": [
+        "3*Lo/4"
+       ],
+       "note": "setting equal",
+       "step": "s3"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{L_c}{L_o} = \\dfrac{3}{4}",
+       "lhs": "x/Lo",
+       "rhs": "3/4",
+       "roots": [
+        "3*Lo/4"
+       ],
+       "step": "s4"
+      }
+     ],
+     "answer": "3/4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "32074af5",
+    "answer": {
+     "value": 0.75,
+     "label": "L_c : L_o = 3 : 4"
+    }
+   }
+  },
+  {
+   "id": "aa61380d-c036-4363-b82e-47948d5a99a3",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "n": "400",
+      "V": "340",
+      "V1": "20"
+     },
+     "lines": [
+      {
+       "kind": "expr",
+       "tex": "n_1 = n\\dfrac{V}{V-V_1}",
+       "f": "n*V/(V-x)",
+       "note": "wall is the observer, source approaching",
+       "step": "s1"
+      },
+      {
+       "kind": "expr",
+       "tex": "n_2 = n_1\\dfrac{V+V_1}{V}",
+       "f": "n*V/(V-x)*(V+x)/V",
+       "note": "driver as observer, moving towards the wall",
+       "restart": true,
+       "step": "s2"
+      },
+      {
+       "kind": "expr",
+       "tex": "= \\dfrac{V+V_1}{V-V_1}n",
+       "f": "(V+x)/(V-x)*n",
+       "step": "s3"
+      }
+     ],
+     "answer": "(V+V1)/(V-V1)*n"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "c280a088",
+    "answer": {
+     "value": 450,
+     "label": "(V+V1)n/(V−V1)"
+    }
+   }
+  },
+  {
+   "id": "b130709e-a182-454e-99f8-f0e98ab9ef65",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "f' = f\\dfrac{v+v_o}{v} = f\\left(1+\\dfrac{1}{5}\\right) = \\dfrac{6f}{5}",
+       "f": "1+1/5",
+       "value": "6/5",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "\\text{percentage increase} = 20\\%",
+       "step": "s2"
+      }
+     ],
+     "answer": "20"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "c9c0ecb0",
+    "answer": {
+     "value": 20,
+     "label": "20%"
+    }
+   }
+  },
+  {
+   "id": "b69487c6-bdce-4051-94c0-8165b97aaffb",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "V": "340"
+     },
+     "lines": [
+      {
+       "kind": "eq",
+       "tex": "n' = n\\dfrac{v+v_0}{v} = 3n",
+       "lhs": "(V+x)/V",
+       "rhs": "3",
+       "roots": [
+        "2*V"
+       ],
+       "note": "observer moves towards the source",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "v_0 = 2v",
+       "note": "twice the velocity of sound",
+       "step": "s2"
+      }
+     ],
+     "answer": "2*V"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "a105ede7",
+    "answer": {
+     "value": 680,
+     "label": "2v towards the source"
+    }
+   }
+  },
+  {
+   "id": "b7aedcb3-3fbc-4e28-bd9c-d5f40acd90a7",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "V": "330"
+     },
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "F' = \\left(\\dfrac{v\\pm V_1}{v}\\right)F",
+       "note": "+ approaching, − receding",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "F_1 = \\dfrac{v+V_1}{v}F,\\quad F_2 = \\dfrac{v-V_1}{v}F",
+       "step": "s2"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{F_1}{F_2} = \\dfrac{v+V_1}{v-V_1} = 2",
+       "lhs": "(V+x)/(V-x)",
+       "rhs": "2",
+       "roots": [
+        "V/3"
+       ],
+       "step": "s3"
+      },
+      {
+       "kind": "eq",
+       "tex": "v + V_1 = 2v - 2V_1",
+       "lhs": "V+x",
+       "rhs": "2*V-2*x",
+       "roots": [
+        "V/3"
+       ],
+       "step": "s4"
+      },
+      {
+       "kind": "eq",
+       "tex": "v = 3V_1",
+       "lhs": "V",
+       "rhs": "3*x",
+       "roots": [
+        "V/3"
+       ],
+       "step": "s5"
+      },
+      {
+       "kind": "note",
+       "tex": "\\dfrac{v}{V_1} = 3",
+       "note": "ratio of v to V₁",
+       "step": "s6"
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4",
+       "s5",
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "7209fd64",
+    "answer": {
+     "value": 3,
+     "label": "v/V1 = 3"
+    }
+   }
+  },
+  {
+   "id": "b85980cd-0dd4-4ae0-aafb-d1fc13893fbd",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "d_1 = \\dfrac{330\\times 1}{2} = 165\\ \\text{m}",
+       "f": "330*1/2",
+       "value": "165",
+       "note": "first echo, nearer cliff",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "d_2 = \\dfrac{330\\times 3}{2} = 495\\ \\text{m}",
+       "f": "330*3/2",
+       "value": "495",
+       "note": "second echo, farther cliff",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "\\text{the cliffs are } 660\\ \\text{m apart}",
+       "step": "s3"
+      }
+     ],
+     "answer": "660"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "3b5f93a7",
+    "answer": {
+     "value": 660,
+     "label": "660 m"
+    }
+   }
+  },
+  {
+   "id": "be21d23b-de8a-4752-a5b3-ad756df93f7c",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "V": "330"
+     },
+     "lines": [
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{F_1}{F_2} = \\dfrac{V+V_1}{V-V_1} = 2",
+       "lhs": "(V+x)/(V-x)",
+       "rhs": "2",
+       "roots": [
+        "V/3"
+       ],
+       "step": "s1"
+      },
+      {
+       "kind": "eq",
+       "tex": "V = 3V_1",
+       "lhs": "V",
+       "rhs": "3*x",
+       "roots": [
+        "V/3"
+       ],
+       "note": "ratio of V to V₁ is 3",
+       "step": "s2"
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "9efb0bd2",
+    "answer": {
+     "value": 3,
+     "label": "V/V1 = 3"
+    }
+   }
+  },
+  {
+   "id": "c02f301f-b287-4f1c-a0ab-9272f08d9284",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "V": "340"
+     },
+     "lines": [
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{f_b}{f_a} = \\dfrac{v+v_s}{v-v_s} = \\dfrac{11}{9}",
+       "lhs": "(V+x)/(V-x)",
+       "rhs": "11/9",
+       "roots": [
+        "V/10"
+       ],
+       "note": "Doppler effect",
+       "step": "s1"
+      },
+      {
+       "kind": "eq",
+       "tex": "11v - 11v_s = 9v + 9v_s",
+       "lhs": "11*V-11*x",
+       "rhs": "9*V+9*x",
+       "roots": [
+        "V/10"
+       ],
+       "step": "s2"
+      },
+      {
+       "kind": "eq",
+       "tex": "2v = 20v_s",
+       "lhs": "2*V",
+       "rhs": "20*x",
+       "roots": [
+        "V/10"
+       ],
+       "step": "s3"
+      },
+      {
+       "kind": "note",
+       "tex": "v_s = \\dfrac{v}{10}",
+       "note": "speed of the car",
+       "step": "s4"
+      }
+     ],
+     "answer": "V/10"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "c0958bd2",
+    "answer": {
+     "value": 34,
+     "label": "v/10"
+    }
+   }
+  },
+  {
+   "id": "c0ad7775-c8e5-4c5c-9eb1-09f046cf893f",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{f'}{f} = 0.7 = \\dfrac{v}{v+v_e}",
+       "lhs": "350/(350+x)",
+       "rhs": "0.7",
+       "roots": [
+        "150"
+       ],
+       "note": "pitch drops by 30%",
+       "step": "s1"
+      },
+      {
+       "kind": "eq",
+       "tex": "0.7(350+v_e) = 350 \\Rightarrow v_e = 150\\ \\text{m/s}",
+       "lhs": "0.7*(350+x)",
+       "rhs": "350",
+       "roots": [
+        "150"
+       ],
+       "step": "s2"
+      }
+     ],
+     "answer": "150"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "26b25018",
+    "answer": {
+     "value": 150,
+     "label": "150 m/s"
+    }
+   }
+  },
+  {
+   "id": "c29dfb95-0eaf-44d4-ae24-b5709f6acffc",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "\\lambda = \\dfrac{v}{f} = \\dfrac{320}{480} = \\dfrac{2}{3}\\ \\text{m}",
+       "f": "320/480",
+       "value": "2/3",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "180\\lambda = 180\\times\\dfrac{2}{3} = 120\\ \\text{m}",
+       "f": "180*2/3",
+       "value": "120",
+       "note": "distance after 180 vibrations",
+       "step": "s2"
+      }
+     ],
+     "answer": "120"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "149b9647",
+    "answer": {
+     "value": 120,
+     "label": "120 m"
+    }
+   }
+  },
+  {
+   "id": "c8022e83-b22f-480b-a307-c0be6013306e",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "v": "340",
+      "L0": "1.6"
+     },
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "f = \\dfrac{7v}{4L_c}",
+       "note": "third overtone of the closed pipe",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "f = \\dfrac{7v}{2L_0}",
+       "note": "sixth overtone of the open pipe",
+       "step": "s2"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{7v}{4L_c} = \\dfrac{7v}{2L_0}",
+       "lhs": "7*v/(4*x)",
+       "rhs": "7*v/(2*L0)",
+       "roots": [
+        "L0/2"
+       ],
+       "note": "setting equal",
+       "step": "s3"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{L_c}{L_0} = \\dfrac{1}{2}",
+       "lhs": "x/L0",
+       "rhs": "1/2",
+       "roots": [
+        "L0/2"
+       ],
+       "step": "s4"
+      }
+     ],
+     "answer": "1/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "791cee20",
+    "answer": {
+     "value": 0.5,
+     "label": "L_c : L_0 = 1 : 2"
+    }
+   }
+  },
+  {
+   "id": "c84d70c7-8c08-4c35-be6e-c7a8fe15985b",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "300\\times\\dfrac{330}{300} = 330\\ \\text{Hz}",
+       "f": "300*330/300",
+       "value": "330",
+       "note": "approaching",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "300\\times\\dfrac{330}{360} = 275\\ \\text{Hz}",
+       "f": "300*330/360",
+       "value": "275",
+       "note": "receding",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\text{difference} = 330 - 275 = 55\\ \\text{Hz}",
+       "f": "330-275",
+       "value": "55",
+       "step": "s3"
+      }
+     ],
+     "answer": "55"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "68ba6bad",
+    "answer": {
+     "value": 55,
+     "label": "55 Hz"
+    }
+   }
+  },
+  {
+   "id": "ca1bbeb9-dfb2-4549-9de5-1e922aeb4a6f",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "v": "340",
+      "L": "1.2"
+     },
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "f = \\dfrac{v}{2L}",
+       "note": "open pipe",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "f' = \\dfrac{v}{4(L/3)} = \\dfrac{3v}{4L}",
+       "f": "v/(4*(L/3))",
+       "value": "3*v/(4*L)",
+       "note": "air column L/3, closed at the water end",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{3v}{4L} = \\dfrac{3}{2}f",
+       "f": "3*v/(4*L)",
+       "value": "3/2*(v/(2*L))",
+       "step": "s3"
+      }
+     ],
+     "answer": "1.5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "f6c556c1",
+    "answer": {
+     "value": 1.5,
+     "label": "f' = 3f/2"
+    }
+   }
+  },
+  {
+   "id": "cbdd3810-b6ab-4422-b408-0656e3c6bd52",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "n": "100",
+      "A": "2"
+     },
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "E \\propto n^2A^2",
+       "note": "wave energy",
+       "step": "s1"
+      },
+      {
+       "kind": "eq",
+       "tex": "n^2A^2 = \\dfrac{n^2}{16}A_Q^2 \\Rightarrow A_Q = 4A",
+       "lhs": "n^2*A^2",
+       "rhs": "n^2/16*x^2",
+       "roots": [
+        "4*A"
+       ],
+       "note": "equal energies",
+       "step": "s2"
+      }
+     ],
+     "answer": "4*A"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "5aab14c7",
+    "answer": {
+     "value": 8,
+     "label": "A_Q = 4A"
+    }
+   }
+  },
+  {
+   "id": "cfc395ef-5a7e-4f52-9865-a2fe4d8ce29b",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "f1": "100",
+      "f2": "150"
+     },
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "f = \\dfrac{v}{2L} \\Rightarrow L = \\dfrac{v}{2f}",
+       "note": "open pipe",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "L_1 = \\dfrac{v}{2f_1},\\quad L_2 = \\dfrac{v}{2f_2}",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "L = L_1 + L_2,\\quad f = \\dfrac{v}{2L}",
+       "note": "pipes joined in series",
+       "step": "s3"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{1}{f} = \\dfrac{1}{f_1} + \\dfrac{1}{f_2}",
+       "lhs": "1/x",
+       "rhs": "1/f1+1/f2",
+       "roots": [
+        "f1*f2/(f1+f2)"
+       ],
+       "step": "s4"
+      },
+      {
+       "kind": "eq",
+       "tex": "f = \\dfrac{f_1 f_2}{f_1 + f_2}",
+       "lhs": "x",
+       "rhs": "f1*f2/(f1+f2)",
+       "roots": [
+        "f1*f2/(f1+f2)"
+       ],
+       "step": "s5"
+      }
+     ],
+     "answer": "f1*f2/(f1+f2)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "45440a58",
+    "answer": {
+     "value": 60,
+     "label": "f1f2/(f1+f2)"
+    }
+   }
+  },
+  {
+   "id": "d4656a23-c083-4981-809d-17b2fd159eb5",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "v": "340",
+      "L": "1.5"
+     },
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\text{same length } L \\text{ assumed}",
+       "note": "question does not say the lengths are equal",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "n_1 = \\dfrac{v}{2L}",
+       "note": "open pipe",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "n_2 = \\dfrac{v}{4L}",
+       "note": "closed pipe",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "n_1 = \\dfrac{v}{2L} = 2\\cdot\\dfrac{v}{4L} = 2n_2",
+       "f": "v/(2*L)",
+       "value": "2*(v/(4*L))",
+       "step": "s4"
+      }
+     ],
+     "answer": "2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "2ddbdab9",
+    "answer": {
+     "value": 2,
+     "label": "n1 = 2 n2"
+    }
+   }
+  },
+  {
+   "id": "deeb8a73-e773-4cbd-bd26-f7796c6c79eb",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "n": "100",
+      "A": "2"
+     },
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "E \\propto A^2\\omega^2 = A^2(2\\pi f)^2",
+       "step": "s1"
+      },
+      {
+       "kind": "eq",
+       "tex": "A_X^2 n^2 = A_Y^2\\left(\\dfrac{n}{3}\\right)^2",
+       "lhs": "A^2*n^2",
+       "rhs": "x^2*(n/3)^2",
+       "roots": [
+        "3*A"
+       ],
+       "note": "equal energies",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "A_Y = 3A_X = 3A",
+       "step": "s3"
+      }
+     ],
+     "answer": "3*A"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "3ed13919",
+    "answer": {
+     "value": 6,
+     "label": "A_Y = 3A"
+    }
+   }
+  },
+  {
+   "id": "def3133d-08e3-4e46-886f-7134fa7806f5",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "t": "0.004"
+     },
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "L = \\dfrac{\\lambda}{4},\\quad t = \\dfrac{L}{v} = \\dfrac{T}{4}",
+       "note": "fundamental mode of the closed pipe",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{1}{T} = \\dfrac{1}{4t} = \\dfrac{0.25}{t}",
+       "f": "1/(4*t)",
+       "value": "0.25/t",
+       "note": "frequency of the air column",
+       "step": "s2"
+      }
+     ],
+     "answer": "0.25/t"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "7faa3fe2",
+    "answer": {
+     "value": 62.5,
+     "label": "f = 0.25/t"
+    }
+   }
+  },
+  {
+   "id": "e2625ae5-b065-43ba-8d7c-2c1cf634d9cf",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "f \\propto \\sqrt{T}:\\quad \\dfrac{f_1}{f_2} = \\dfrac{15}{16}",
+       "note": "tensions 225 N and 256 N",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "f_1 = f - 6,\\quad f_2 = f + 6",
+       "note": "both tunings give 6 beats",
+       "step": "s2"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{f-6}{f+6} = \\dfrac{15}{16} \\Rightarrow f = 186",
+       "lhs": "(x-6)/(x+6)",
+       "rhs": "15/16",
+       "roots": [
+        "186"
+       ],
+       "step": "s3"
+      }
+     ],
+     "answer": "186"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "8205f25f",
+    "answer": {
+     "value": 186,
+     "label": "186 Hz"
+    }
+   }
+  },
+  {
+   "id": "e63ff937-47f7-46bb-a467-2ea87a75aaa8",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "v": "340",
+      "LB": "1.2"
+     },
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "f_A = \\dfrac{v}{4L_A}",
+       "note": "closed pipe fundamental",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "f_B = \\dfrac{3v}{2L_B}",
+       "note": "open pipe, 3rd harmonic",
+       "step": "s2"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{v}{4L_A} = \\dfrac{3v}{2L_B}",
+       "lhs": "v/(4*x)",
+       "rhs": "3*v/(2*LB)",
+       "roots": [
+        "LB/6"
+       ],
+       "note": "setting equal",
+       "step": "s3"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{L_A}{L_B} = \\dfrac{v/4}{3v/2} = \\dfrac{1}{6}",
+       "lhs": "x/LB",
+       "rhs": "(v/4)/(3*v/2)",
+       "roots": [
+        "LB/6"
+       ],
+       "step": "s4"
+      }
+     ],
+     "answer": "1/6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "35f66003",
+    "answer": {
+     "value": 0.16666666666666666,
+     "label": "L_A : L_B = 1 : 6"
+    }
+   }
+  },
+  {
+   "id": "e68a7892-b593-44f7-86d2-791b2361e367",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "vars": {
+      "t": "0.004"
+     },
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "L = \\dfrac{\\lambda}{4}",
+       "note": "fundamental of a pipe closed at one end",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "T = 4t",
+       "note": "t is the time to travel λ/4",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "f = \\dfrac{1}{T} = \\dfrac{1}{4t} = (4t)^{-1}",
+       "f": "1/(4*t)",
+       "value": "(4*t)^(-1)",
+       "step": "s3"
+      }
+     ],
+     "answer": "(4*t)^(-1)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "a9c86b53",
+    "answer": {
+     "value": 62.5,
+     "label": "f = (4t)^−1"
+    }
+   }
+  },
+  {
+   "id": "f2cd1ac8-0fd2-4df4-bb38-615d04a2ce79",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\text{open pipe: fundamental } n",
+       "note": "same length for both pipes",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "\\text{closed: fundamental } \\dfrac{n}{2},\\ \\text{third overtone } \\dfrac{7n}{2}",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "\\text{open, second overtone} = 3n",
+       "step": "s3"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{7n}{2} - 3n = 150",
+       "lhs": "7*x/2-3*x",
+       "rhs": "150",
+       "roots": [
+        "300"
+       ],
+       "note": "difference is 150 Hz",
+       "step": "s4"
+      },
+      {
+       "kind": "eq",
+       "tex": "\\dfrac{n}{2} = 150 \\Rightarrow n = 300",
+       "lhs": "x/2",
+       "rhs": "150",
+       "roots": [
+        "300"
+       ],
+       "step": "s5"
+      }
+     ],
+     "answer": "300"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "9f46da13",
+    "answer": {
+     "value": 300,
+     "label": "300 Hz"
+    }
+   }
+  },
+  {
+   "id": "f50d2111-40e1-40f2-aa3a-d8113178fc74",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "n_1 = \\text{first frequency}",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "n_{41} = n_1 + 40\\times 5 = n_1 + 200",
+       "note": "40 gaps of 5 beats",
+       "step": "s2"
+      },
+      {
+       "kind": "eq",
+       "tex": "n_{41} = 2n_1 \\Rightarrow n_1 = 200",
+       "lhs": "x+200",
+       "rhs": "2*x",
+       "roots": [
+        "200"
+       ],
+       "note": "last fork is double the first",
+       "step": "s3"
+      },
+      {
+       "kind": "note",
+       "tex": "n_1 = 200\\ \\text{Hz},\\quad n_{41} = 400\\ \\text{Hz}",
+       "step": "s4"
+      }
+     ],
+     "answer": "200"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "d8977030",
+    "answer": {
+     "value": 200,
+     "label": "200 Hz, 400 Hz"
+    }
+   }
+  },
+  {
+   "id": "f6216dbf-1cd7-46e5-90db-681e592e799d",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "f' = f\\dfrac{v}{v - v_s},\\quad v_s = \\dfrac{v}{10}",
+       "note": "source moving towards the observer",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "f' = f\\dfrac{v}{v - v/10} = \\dfrac{10}{9}f",
+       "f": "1/(1-1/10)",
+       "value": "10/9",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "f' : f = 10 : 9",
+       "step": "s3"
+      }
+     ],
+     "answer": "10/9"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "be7faadd",
+    "answer": {
+     "value": 1.1111111111111112,
+     "label": "10 : 9 (apparent : real)"
+    }
+   }
+  }
+ ],
+ "decided": []
+}

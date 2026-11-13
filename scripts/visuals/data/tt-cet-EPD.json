@@ -1,0 +1,56 @@
+{
+  "//": "Assembled from agent drafts (truthTable).",
+  "visuals": [
+    {
+      "id": "70e595dd-0a2b-442d-be5f-14752a2815b4",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "columns": [
+            {
+              "f": "~(p & p)",
+              "label": "∼(A ∧ A)"
+            },
+            {
+              "f": "~(q & q)",
+              "label": "∼(B ∧ B)"
+            },
+            {
+              "f": "~(p & p) & ~(q & q)",
+              "label": "∼A ∧ ∼B"
+            }
+          ],
+          "ask": {
+            "kind": "equivalent",
+            "a": "~(~(p & p) & ~(q & q))",
+            "b": "p | q",
+            "label": "Y = A + B (p = A, q = B)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "2d2bc84f",
+        "answer": {
+          "value": 1,
+          "label": "OR gate: option C"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

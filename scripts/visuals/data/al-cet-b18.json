@@ -1,0 +1,3653 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "045b974d-56bd-4660-a63e-3c95f9f1afa1",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "{}^4P_2",
+              "note": "women choose from chairs 1–4"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "{}^6P_3",
+              "note": "men choose from the remaining 6"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{}^4P_2 \\times {}^6P_3",
+              "f": "12*120",
+              "value": "1440",
+              "note": "total arrangements"
+            }
+          ],
+          "answer": "12*120"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "23a95e8d",
+        "answer": {
+          "value": 1440,
+          "label": "4P2 × 6P3"
+        }
+      }
+    },
+    {
+      "id": "0e80bd27-6800-4098-9b16-143ac8e9e0f9",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "{}^{10}C_5",
+              "note": "10Cr is greatest at r = 5"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "{}^{11}C_6",
+              "note": "11Cr is greatest at r = 5 (or 6)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{{}^{10}C_5}{{}^{11}C_6} = \\dfrac{252}{462} = \\dfrac{6}{11}",
+              "f": "252/462",
+              "value": "6/11",
+              "note": "the ratio"
+            }
+          ],
+          "answer": "252/462"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "2f58f28d",
+        "answer": {
+          "value": 0.5454545454545454,
+          "label": "6/11"
+        }
+      }
+    },
+    {
+      "id": "1cf531e9-a16f-4234-9667-ced080d24623",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "00,\\ 25,\\ 50,\\ 75",
+              "note": "divisible by 25: the last two digits"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "25,\\ 75",
+              "note": "from 1–7 without repeats: only these"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "5 \\times 4 = 20",
+              "f": "5*4",
+              "value": "20",
+              "note": "first two digits, for each ending"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "20 + 20 = 40",
+              "f": "20+20",
+              "value": "40",
+              "note": "total"
+            }
+          ],
+          "answer": "20+20"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "da804127",
+        "answer": {
+          "value": 40,
+          "label": "40"
+        }
+      }
+    },
+    {
+      "id": "24c97f82-0d99-4305-8820-c94c8f1927a0",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "{}^6C_4 \\times {}^4C_1 = 15 \\times 4 = 60",
+              "f": "15*4",
+              "value": "60",
+              "note": "case 0 boys, then the captain"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "{}^6C_3 \\times {}^4C_1 \\times {}^4C_1",
+              "note": "case 1 boy"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "= 20 \\times 4 \\times 4 = 320",
+              "f": "20*4*4",
+              "value": "320",
+              "note": "case 1 boy, worked out"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "60 + 320 = 380",
+              "f": "60+320",
+              "value": "380",
+              "note": "total"
+            }
+          ],
+          "answer": "60+320"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "00a449e1",
+        "answer": {
+          "value": 380,
+          "label": "380"
+        }
+      }
+    },
+    {
+      "id": "3000746d-8217-4af2-8160-d906f56e6662",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2^7 = 128",
+              "f": "2^7",
+              "value": "128",
+              "note": "answer sequences"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "128 - 1 = 127",
+              "f": "128-1",
+              "value": "127",
+              "note": "leave out the all-correct one"
+            }
+          ],
+          "answer": "128-1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "24832c92",
+        "answer": {
+          "value": 127,
+          "label": "127"
+        }
+      }
+    },
+    {
+      "id": "32c6f076-ebea-450d-bac8-5961f5f3cdcd",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "5! = 120",
+              "f": "120",
+              "value": "120",
+              "note": "the other 6 people in a circle"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{}^6P_2 = 30",
+              "f": "6*5",
+              "value": "30",
+              "note": "B₁ and G₁ into the 6 gaps"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "120 \\times 30 = 5 \\times 6!",
+              "f": "120*30",
+              "value": "5*720",
+              "note": "total"
+            }
+          ],
+          "answer": "5*720"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "3c1e8cf6",
+        "answer": {
+          "value": 3600,
+          "label": "5 × 6!"
+        }
+      }
+    },
+    {
+      "id": "36334b05-98fd-491e-8b48-ae79904ff958",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "ax^3 + bx^2 + cx + d = 0",
+              "note": "a ≠ 0: 5 choices for a"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "6 \\times 6 \\times 6",
+              "note": "b, c, d: 6 choices each, repeats allowed"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "5 \\times 6 \\times 6 \\times 6 = 1080",
+              "f": "5*6*6*6",
+              "value": "1080",
+              "note": "total"
+            }
+          ],
+          "answer": "5*6*6*6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "7392e621",
+        "answer": {
+          "value": 1080,
+          "label": "1080"
+        }
+      }
+    },
+    {
+      "id": "39be9db6-80bb-4e86-b1de-8988b341c29c",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{digit sum} = 3k",
+              "note": "the digit sum must be divisible by 3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\{1,2,3,4,5\\}:\\ 5! = 120",
+              "f": "120",
+              "value": "120",
+              "note": "digit sum 15"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\{0,1,2,4,5\\}:\\ 5! - 4! = 96",
+              "f": "120-24",
+              "value": "96",
+              "note": "digit sum 12, leading 0 excluded"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "120 + 96 = 216",
+              "f": "120+96",
+              "value": "216",
+              "note": "total"
+            }
+          ],
+          "answer": "120+96"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "d7da7c24",
+        "answer": {
+          "value": 216,
+          "label": "216"
+        }
+      }
+    },
+    {
+      "id": "3a27c0b6-d9fb-4322-b164-da8c0aedb41d",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "{}^4C_2",
+              "note": "positions for the 2 vowels"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "{}^5P_2",
+              "note": "two different vowels, in order"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "21^2",
+              "note": "two consonants, repeats allowed"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "{}^4C_2 \\times {}^5P_2 \\times 21^2",
+              "f": "6*20*441",
+              "value": "52920",
+              "note": "total"
+            }
+          ],
+          "answer": "6*20*441"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "893dba42",
+        "answer": {
+          "value": 52920,
+          "label": "4C2 × 5P2 × 21²"
+        }
+      }
+    },
+    {
+      "id": "3b59e271-fc34-42ff-832e-441e04e564b1",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "16\\ \\text{distinct}",
+              "note": "7 of the 23 balls are identical"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\sum_{j=5}^{12} {}^{16}C_j",
+              "note": "k identical balls and 12 − k distinct"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "4368 + 8008 + 11440 + 12870"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\cdots + 11440 + 8008 + 4368 + 1820 = 62322",
+              "f": "4368+8008+11440+12870+11440+8008+4368+1820",
+              "value": "62322",
+              "note": "the sum"
+            },
+            {
+              "step": "s5",
+              "kind": "note",
+              "tex": "{}^{18}C_6 + {}^{18}C_8",
+              "note": "option (A)"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "18564 + 43758 = 62322",
+              "f": "18564+43758",
+              "value": "62322",
+              "note": "the same count"
+            }
+          ],
+          "answer": "62322"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "58687d7f",
+        "answer": {
+          "value": 62322,
+          "label": "18C6 + 18C8"
+        }
+      }
+    },
+    {
+      "id": "50a3242d-ac19-4b98-a524-751bc8221660",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{\\binom{n-2}{3}}{\\binom{n-2}{5}} = \\dfrac{2}{3}"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "\\dfrac{5 \\cdot 4}{(n-5)(n-6)} = \\dfrac{2}{3}",
+              "lhs": "5*4/((x-5)*(x-6))",
+              "rhs": "2/3"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "(n-5)(n-6) = 30",
+              "lhs": "(x-5)*(x-6)",
+              "rhs": "30"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "n = 11"
+            }
+          ],
+          "answer": "11",
+          "roots": [
+            "11"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "31c0ce90",
+        "answer": {
+          "value": 11,
+          "label": "11"
+        }
+      }
+    },
+    {
+      "id": "55ebaab5-05e9-4470-aa8c-e1e7e09f1df2",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "25 - 5 - 6 = 14",
+              "f": "25-5-6",
+              "value": "14",
+              "note": "players left to choose from"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "11 - 6 = 5",
+              "f": "11-6",
+              "value": "5",
+              "note": "still to choose"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{}^{14}C_5 = 2002",
+              "f": "14*13*12*11*10/120",
+              "value": "2002",
+              "note": "teams"
+            }
+          ],
+          "answer": "14*13*12*11*10/120"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a31677aa",
+        "answer": {
+          "value": 2002,
+          "label": "2002"
+        }
+      }
+    },
+    {
+      "id": "56da11a6-9281-4c50-8af3-4fa6634fd515",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "(b, g) = (0,5),\\ (1,4),\\ (2,3)",
+              "note": "at least 2 girls, at most 2 boys"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\binom{8}{2}\\binom{5}{3} = 28 \\times 10 = 280",
+              "f": "28*10",
+              "value": "280",
+              "note": "2 boys, 3 girls"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\binom{8}{1}\\binom{5}{4} = 8 \\times 5 = 40",
+              "f": "8*5",
+              "value": "40",
+              "note": "1 boy, 4 girls"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\binom{5}{5} = 1",
+              "f": "1",
+              "value": "1",
+              "note": "0 boys, 5 girls"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "280 + 40 + 1 = 321",
+              "f": "280+40+1",
+              "value": "321",
+              "note": "total"
+            }
+          ],
+          "answer": "280+40+1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "ab85408a",
+        "answer": {
+          "value": 321,
+          "label": "321"
+        }
+      }
+    },
+    {
+      "id": "57620713-d4ce-4c1d-81a3-f99f8cb3db1c",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2 \\times {}^4C_2 = 12",
+              "f": "2*6",
+              "value": "12",
+              "note": "circle pairs"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{}^4C_2 = 6",
+              "f": "6",
+              "value": "6",
+              "note": "line pairs"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2 \\times 4 \\times 4 = 32",
+              "f": "2*4*4",
+              "value": "32",
+              "note": "each line meets each circle twice"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "12 + 6 + 32 = 50",
+              "f": "12+6+32",
+              "value": "50",
+              "note": "total"
+            }
+          ],
+          "answer": "12+6+32"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "3a5a8fd8",
+        "answer": {
+          "value": 50,
+          "label": "50"
+        }
+      }
+    },
+    {
+      "id": "5a7d6029-820e-4062-af61-c6aacb643ab8",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "1,\\ 3,\\ 5,\\ 7",
+              "note": "the odd places of the 8"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{}^4P_3 = 24",
+              "f": "4*3*2",
+              "value": "24",
+              "note": "the 3 girls in the odd places"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "5! = 120",
+              "f": "120",
+              "value": "120",
+              "note": "the 5 boys in the other 5 places"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "24 \\times 120 = 2880",
+              "f": "24*120",
+              "value": "2880",
+              "note": "total"
+            }
+          ],
+          "answer": "24*120"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "8ff93e69",
+        "answer": {
+          "value": 2880,
+          "label": "2880"
+        }
+      }
+    },
+    {
+      "id": "5cc3afd2-ba3c-40db-86a3-29d85a69f32f",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "{}^8C_2 = 28",
+              "f": "8*7/2",
+              "value": "28",
+              "note": "line–line"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2 \\cdot {}^4C_2 = 12",
+              "f": "2*6",
+              "value": "12",
+              "note": "circle–circle, 2 points a pair"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2 \\times (8 \\times 4) = 64",
+              "f": "2*8*4",
+              "value": "64",
+              "note": "line–circle: 32 pairs, 2 points each"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "28 + 12 + 64 = 104",
+              "f": "28+12+64",
+              "value": "104",
+              "note": "total"
+            }
+          ],
+          "answer": "28+12+64"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "096790d8",
+        "answer": {
+          "value": 104,
+          "label": "104"
+        }
+      }
+    },
+    {
+      "id": "5cd2bd76-4e64-4ff0-b7b3-fe31e5f0ea44",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "x = 10!",
+              "note": "no letter repeated"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\binom{10}{2} = 45",
+              "f": "10*9/2",
+              "value": "45",
+              "note": "choose the 2 repeated letters"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\binom{8}{6} = 28",
+              "f": "8*7/2",
+              "value": "28",
+              "note": "choose the 6 other letters"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "\\dfrac{10!}{2!\\,2!}",
+              "note": "arrange the 10 letters"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\dfrac{y}{x} = \\dfrac{45 \\cdot 28}{4} = 315",
+              "f": "45*28/4",
+              "value": "315",
+              "note": "the ratio"
+            }
+          ],
+          "answer": "45*28/4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "332126ea",
+        "answer": {
+          "value": 315,
+          "label": "315"
+        }
+      }
+    },
+    {
+      "id": "65f7ae28-fff0-409b-96ec-07e57b24cb34",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "\\dfrac{n(n-1)}{2} = 45",
+              "lhs": "x*(x-1)/2",
+              "rhs": "45"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "n(n-1) = 90",
+              "lhs": "x*(x-1)",
+              "rhs": "90"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "n(n-1) = 90 = 10 \\times 9",
+              "f": "10*9",
+              "value": "90"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "n = 10"
+            }
+          ],
+          "answer": "10",
+          "roots": [
+            "10"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "542c5ddd",
+        "answer": {
+          "value": 10,
+          "label": "10"
+        }
+      }
+    },
+    {
+      "id": "67cbea2e-3950-4a05-bc95-a36b142da612",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "(1,1,3),\\ (1,2,2)",
+              "note": "by symmetry, 3 arrangements of each"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "3 \\times 5 \\times 5 \\times 10 = 750",
+              "f": "3*5*5*10",
+              "value": "750",
+              "note": "(1,1,3): 3 × 5C1 · 5C1 · 5C3"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "3 \\times 5 \\times 10 \\times 10 = 1500",
+              "f": "3*5*10*10",
+              "value": "1500",
+              "note": "(1,2,2): 3 × 5C1 · 5C2 · 5C2"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "750 + 1500 = 2250",
+              "f": "750+1500",
+              "value": "2250",
+              "note": "total"
+            }
+          ],
+          "answer": "750+1500"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "56ac590a",
+        "answer": {
+          "value": 2250,
+          "label": "2250"
+        }
+      }
+    },
+    {
+      "id": "67ee42b2-fdba-4751-bc50-48f07a21c11a",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "2\\,{}^nC_5 = {}^nC_4 + {}^nC_6",
+              "note": "the three terms are in A.P."
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "2 = \\dfrac{5}{n-4} + \\dfrac{n-5}{6}",
+              "lhs": "2",
+              "rhs": "5/(x-4)+(x-5)/6",
+              "note": "dividing by nC5"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "n^2 - 21n + 98 = 0",
+              "lhs": "x^2-21*x+98",
+              "rhs": "0"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "n = 7 \\text{ or } 14"
+            }
+          ],
+          "answer": "7",
+          "roots": [
+            "7",
+            "14"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "71d65151",
+        "answer": {
+          "value": 7,
+          "label": "7 or 14"
+        }
+      }
+    },
+    {
+      "id": "6b92cdd8-8998-4d77-93a1-1cebf5001e69",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "3!",
+              "note": "order of the 3 subject blocks"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "2!\\,3!\\,4!",
+              "note": "books inside the blocks"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "6 \\times 2 \\times 6 \\times 24 = 1728",
+              "f": "6*2*6*24",
+              "value": "1728",
+              "note": "total"
+            }
+          ],
+          "answer": "6*2*6*24"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "5fd38946",
+        "answer": {
+          "value": 1728,
+          "label": "1728"
+        }
+      }
+    },
+    {
+      "id": "71c9d389-9aa4-4720-a635-d8f2b1d3afe9",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2^5 = 32",
+              "f": "2^5",
+              "value": "32",
+              "note": "answer sequences"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "32 - 1 = 31",
+              "f": "32-1",
+              "value": "31",
+              "note": "leave out the all-correct one"
+            }
+          ],
+          "answer": "32-1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "ac300361",
+        "answer": {
+          "value": 31,
+          "label": "31"
+        }
+      }
+    },
+    {
+      "id": "8bcb9f0a-2859-496b-b0c9-e0f11dcd7bd1",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "{}^{11}C_4 = 330",
+              "f": "11*10*9*8/24",
+              "value": "330",
+              "note": "any 4 points"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{}^5C_3 \\cdot {}^6C_1 = 60",
+              "f": "10*6",
+              "value": "60",
+              "note": "3 collinear + 1 other"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{}^5C_4 = 5",
+              "f": "5",
+              "value": "5",
+              "note": "4 collinear"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "330 - 60 - 5 = 265",
+              "f": "330-60-5",
+              "value": "265",
+              "note": "quadrilaterals"
+            }
+          ],
+          "answer": "330-60-5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "c6ebf62b",
+        "answer": {
+          "value": 265,
+          "label": "265"
+        }
+      }
+    },
+    {
+      "id": "938ec323-26eb-4032-be2b-e4ff38711099",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "10!",
+              "note": "all circular arrangements"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "2 \\times 9!",
+              "note": "the two together: a block of 10 units"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "10! - 2 \\times 9! = 8 \\times 9!",
+              "f": "3628800-2*362880",
+              "value": "8*362880",
+              "note": "never together"
+            }
+          ],
+          "answer": "8*362880"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "8054eee5",
+        "answer": {
+          "value": 2903040,
+          "label": "8 × 9!"
+        }
+      }
+    },
+    {
+      "id": "96eec994-78c2-4b78-9ae6-152a15281b73",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "\\dfrac{n(n-1)}{2} = 66",
+              "lhs": "x*(x-1)/2",
+              "rhs": "66"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "n(n-1) = 132",
+              "lhs": "x*(x-1)",
+              "rhs": "132"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "n = 12"
+            }
+          ],
+          "answer": "12",
+          "roots": [
+            "12"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c9e8108b",
+        "answer": {
+          "value": 12,
+          "label": "12"
+        }
+      }
+    },
+    {
+      "id": "99a2533b-c524-471c-bdfe-ae9fb09262a5",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\binom{6}{2}\\binom{5}{4} = 15 \\times 5 = 75",
+              "f": "15*5",
+              "value": "75",
+              "note": "2 from I, 4 from II"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\binom{6}{3}\\binom{5}{3} = 20 \\times 10 = 200",
+              "f": "20*10",
+              "value": "200",
+              "note": "(3, 3)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\binom{6}{4}\\binom{5}{2} = 15 \\times 10 = 150",
+              "f": "15*10",
+              "value": "150",
+              "note": "(4, 2)"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "75 + 200 + 150 = 425",
+              "f": "75+200+150",
+              "value": "425",
+              "note": "total"
+            }
+          ],
+          "answer": "75+200+150"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "8fa8e108",
+        "answer": {
+          "value": 425,
+          "label": "425"
+        }
+      }
+    },
+    {
+      "id": "a02af8ae-c539-4eda-abf2-0976b8b0a0b0",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\binom{8}{6}\\binom{5}{5} + \\binom{8}{7}\\binom{5}{4} + \\binom{8}{8}\\binom{5}{3}",
+              "note": "m: 6, 7 or 8 males"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "28 + 40 + 10 = 78",
+              "f": "28+40+10",
+              "value": "78",
+              "note": "m"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "n = 78",
+              "note": "by symmetry"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "m = n = 78"
+            }
+          ],
+          "answer": "28+40+10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "eb0bcbc1",
+        "answer": {
+          "value": 78,
+          "label": "78"
+        }
+      }
+    },
+    {
+      "id": "a16107a5-7994-4662-8980-46522c6eb13d",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{4!}{2!\\,2!} = 6",
+              "f": "24/4",
+              "value": "6",
+              "note": "3, 3, 5, 5 into the 4 even places"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{5!}{2!\\,3!} = 10",
+              "f": "120/12",
+              "value": "10",
+              "note": "2, 2, 8, 8, 8 into the 5 odd places"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "6 \\times 10 = 60",
+              "f": "6*10",
+              "value": "60",
+              "note": "total"
+            }
+          ],
+          "answer": "6*10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "2858a42a",
+        "answer": {
+          "value": 60,
+          "label": "60"
+        }
+      }
+    },
+    {
+      "id": "a18d6538-13c8-434a-90df-35a85e2df9e5",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "(6-1)! = 5! = 120",
+              "f": "120",
+              "value": "120",
+              "note": "seat the 6 boys round the table"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "6\\ \\text{gaps}",
+              "note": "between consecutive boys"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{}^6P_5 = 720",
+              "f": "6*5*4*3*2",
+              "value": "720",
+              "note": "the 5 girls in the gaps"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "120 \\times 720 = 86400",
+              "f": "120*720",
+              "value": "86400",
+              "note": "total"
+            }
+          ],
+          "answer": "120*720"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "4cd906ff",
+        "answer": {
+          "value": 86400,
+          "label": "86400"
+        }
+      }
+    },
+    {
+      "id": "a3384500-862f-4a15-83c4-5edeb6391d3a",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "{}^{n+4}C_{n+1} - {}^{n+3}C_n = {}^{n+4}C_3 - {}^{n+3}C_3"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "{}^{n+4}C_3 - {}^{n+3}C_3 = {}^{n+3}C_2"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "\\dfrac{(n+3)(n+2)}{2} = 15(n+2)",
+              "lhs": "(x+3)*(x+2)/2",
+              "rhs": "15*(x+2)"
+            },
+            {
+              "step": "s4",
+              "kind": "eq",
+              "tex": "n + 3 = 30",
+              "lhs": "x+3",
+              "rhs": "30"
+            },
+            {
+              "step": "s5",
+              "kind": "note",
+              "tex": "n = 27"
+            }
+          ],
+          "answer": "27",
+          "roots": [
+            "27"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "4f8e53b3",
+        "answer": {
+          "value": 27,
+          "label": "27"
+        }
+      }
+    },
+    {
+      "id": "a48ea1f6-d8be-4c5e-a687-1e38ca185bbc",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\binom{20}{3} = 1140",
+              "f": "20*19*18/6",
+              "value": "1140",
+              "note": "all triangles"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{two sides} = 20",
+              "note": "three consecutive vertices"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "20 \\times 16 = 320",
+              "f": "20*16",
+              "value": "320",
+              "note": "exactly one side, third vertex not adjacent"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "1140 - 20 - 320 = 800",
+              "f": "1140-20-320",
+              "value": "800",
+              "note": "no side"
+            }
+          ],
+          "answer": "1140-20-320"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "22cce584",
+        "answer": {
+          "value": 800,
+          "label": "800"
+        }
+      }
+    },
+    {
+      "id": "a7413b66-6b37-45ba-9642-3b5c84c36e84",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "4 \\text{ consonants},\\ 3 \\text{ vowels}",
+              "note": "S, L, P, R and O, A, U"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "C\\,V\\,C\\,V\\,C\\,V\\,C",
+              "note": "consonants in 4! ways, vowels in 3!"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "24 \\times 6 = 144",
+              "f": "24*6",
+              "value": "144",
+              "note": "total"
+            }
+          ],
+          "answer": "24*6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a9cb31a6",
+        "answer": {
+          "value": 144,
+          "label": "144"
+        }
+      }
+    },
+    {
+      "id": "a7a3f283-7a67-42c9-98a1-cbeec1cf4e86",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "I \\times 3,\\ T \\times 3,\\ N \\times 2",
+              "note": "11 letters"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\dfrac{11!}{3!\\,3!\\,2!}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{39916800}{72} = 554400",
+              "f": "39916800/72",
+              "value": "554400",
+              "note": "permutations"
+            }
+          ],
+          "answer": "39916800/72"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "addd6120",
+        "answer": {
+          "value": 554400,
+          "label": "554400"
+        }
+      }
+    },
+    {
+      "id": "aa6a68ce-bda3-4d06-b462-fd11ab0bd940",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\binom{7}{3} = 35",
+              "f": "7*6*5/6",
+              "value": "35",
+              "note": "3 consonants from 7"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\binom{4}{2} = 6",
+              "f": "4*3/2",
+              "value": "6",
+              "note": "2 vowels from 4"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "5! = 120",
+              "f": "120",
+              "value": "120",
+              "note": "arrange the 5 letters"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "35 \\times 6 \\times 120 = 25200",
+              "f": "35*6*120",
+              "value": "25200",
+              "note": "total"
+            }
+          ],
+          "answer": "35*6*120"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "a486c249",
+        "answer": {
+          "value": 25200,
+          "label": "25200"
+        }
+      }
+    },
+    {
+      "id": "aaff2ed7-fd2c-43ec-89e1-5faf5aaa4872",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "\\dfrac{n(n-3)}{2} = 54",
+              "lhs": "x*(x-3)/2",
+              "rhs": "54"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "n^2 - 3n - 108 = 0",
+              "lhs": "x^2-3*x-108",
+              "rhs": "0"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "n = 12"
+            }
+          ],
+          "answer": "12",
+          "roots": [
+            "12"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "44cd729e",
+        "answer": {
+          "value": 12,
+          "label": "12"
+        }
+      }
+    },
+    {
+      "id": "acbddc52-4ae5-477a-9cfb-1adde6ad18bf",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "3! = 6",
+              "f": "6",
+              "value": "6",
+              "note": "seat the 4 men round the table"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{}^4P_3 = 4!",
+              "f": "4*3*2",
+              "value": "24",
+              "note": "the women in 3 of the 4 gaps"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "3! \\times 4!",
+              "f": "6*24",
+              "value": "144",
+              "note": "total"
+            }
+          ],
+          "answer": "6*24"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e8ff83c7",
+        "answer": {
+          "value": 144,
+          "label": "3! × 4!"
+        }
+      }
+    },
+    {
+      "id": "af2161b4-929f-400a-b3e7-0576cf7992b4",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{4!}{3!} = 4",
+              "f": "24/6",
+              "value": "4",
+              "note": "arrange A, N, A, A"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{{}^5P_2}{2!} = 10",
+              "f": "20/2",
+              "value": "10",
+              "note": "2 M's into the 5 gaps"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "4 \\times 10 = 40",
+              "f": "4*10",
+              "value": "40",
+              "note": "total"
+            }
+          ],
+          "answer": "4*10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a8783a98",
+        "answer": {
+          "value": 40,
+          "label": "40"
+        }
+      }
+    },
+    {
+      "id": "b34a1aa8-1f50-42e1-8743-2c0d4dc6370a",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "\\dfrac{n(n-3)}{2} = 54",
+              "lhs": "x*(x-3)/2",
+              "rhs": "54"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "n^2 - 3n - 108 = 0",
+              "lhs": "x^2-3*x-108",
+              "rhs": "0"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "(n-12)(n+9) = 0",
+              "lhs": "(x-12)*(x+9)",
+              "rhs": "0"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "n = 12"
+            }
+          ],
+          "answer": "12",
+          "roots": [
+            "12"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "61ffe464",
+        "answer": {
+          "value": 12,
+          "label": "12"
+        }
+      }
+    },
+    {
+      "id": "b360d7d5-0526-4a42-9bd2-72651f011780",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "A, A, R, R, B, C, K",
+              "note": "letters of BARRACK"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{}^5P_4 = 120",
+              "f": "5*4*3*2",
+              "value": "120",
+              "note": "all different"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\binom{2}{1}\\binom{4}{2}\\dfrac{4!}{2!} = 144",
+              "f": "2*6*12",
+              "value": "144",
+              "note": "one pair and 2 different"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{4!}{2!\\,2!} = 6",
+              "f": "24/4",
+              "value": "6",
+              "note": "two pairs"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "120 + 144 + 6 = 270",
+              "f": "120+144+6",
+              "value": "270",
+              "note": "total"
+            }
+          ],
+          "answer": "120+144+6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "aa5e2539",
+        "answer": {
+          "value": 270,
+          "label": "270"
+        }
+      }
+    },
+    {
+      "id": "b4a6adc1-be5a-4d7b-98d7-e03835cf3878",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "9! = 362880",
+              "f": "362880",
+              "value": "362880",
+              "note": "all arrangements round the table"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "7! \\times 3! = 5040 \\times 6 = 30240",
+              "f": "5040*6",
+              "value": "30240",
+              "note": "the 3 special people together"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "362880 - 30240 = 332640",
+              "f": "362880-30240",
+              "value": "332640",
+              "note": "required"
+            }
+          ],
+          "answer": "362880-30240"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "da5a66b1",
+        "answer": {
+          "value": 332640,
+          "label": "332640"
+        }
+      }
+    },
+    {
+      "id": "b9728f8f-858f-495b-a5c0-44d23546ff8d",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "{}^3P_2 = 6",
+              "f": "3*2",
+              "value": "6",
+              "note": "girls at the two ends"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{seats } 3, \\dots, 7",
+              "note": "third girl avoids seats 2, 8: 5 choices"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "6! = 720",
+              "f": "720",
+              "value": "720",
+              "note": "boys in the other 6 seats"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{6 \\cdot 5 \\cdot 720}{9!} = \\dfrac{21600}{362880}",
+              "f": "6*5*720/362880",
+              "value": "21600/362880",
+              "note": "probability"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\dfrac{21600}{362880} = \\dfrac{5}{84}",
+              "f": "21600/362880",
+              "value": "5/84",
+              "note": "reduced"
+            }
+          ],
+          "answer": "5/84"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "f5c2b24e",
+        "answer": {
+          "value": 0.05952380952380952,
+          "label": "5/84"
+        }
+      }
+    },
+    {
+      "id": "bc38c0fe-9614-4e20-9575-76b14ac386ea",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "6 \\times 6 = 36",
+              "f": "6*6",
+              "value": "36",
+              "note": "two-digit numbers"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "6 \\times 6 \\times 5 = 180",
+              "f": "6*6*5",
+              "value": "180",
+              "note": "three-digit numbers"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "36 + 180 = 216",
+              "f": "36+180",
+              "value": "216",
+              "note": "total so far"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "10",
+              "note": "10 itself is excluded, and was counted"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "216 - 1 = 215",
+              "f": "216-1",
+              "value": "215",
+              "note": "the answer"
+            }
+          ],
+          "answer": "216-1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "62bca737",
+        "answer": {
+          "value": 215,
+          "label": "215"
+        }
+      }
+    },
+    {
+      "id": "c087f930-4d3c-4cf0-adda-1ddf9e3c9897",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "4,\\ 5\\ \\text{or}\\ 6",
+              "note": "hundreds digit of a three-digit number"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "3 \\times 5 \\times 4 = 60",
+              "f": "3*5*4",
+              "value": "60",
+              "note": "total"
+            }
+          ],
+          "answer": "3*5*4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "813b447b",
+        "answer": {
+          "value": 60,
+          "label": "60"
+        }
+      }
+    },
+    {
+      "id": "c4fa3ffa-6b14-44be-8e52-d4af3cb806e9",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\binom{21}{12} \\times 11! \\times 8!",
+              "note": "choose 12, then seat both round tables"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\dfrac{21!}{12!\\,9!} \\times 11! \\times 8!",
+              "note": "writing the binomial out"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{21!}{12 \\cdot 9} = \\dfrac{35}{9} \\times 19!",
+              "f": "51090942171709440000/108",
+              "value": "35/9*121645100408832000",
+              "note": "simplified"
+            }
+          ],
+          "answer": "35/9*121645100408832000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "76db080f",
+        "answer": {
+          "value": 473064279367680000,
+          "label": "35/9 × 19!"
+        }
+      }
+    },
+    {
+      "id": "c75ebab3-7342-4ab3-ab31-80c86c9d7bd4",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "T_n = \\binom{n}{3}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\binom{n+1}{3} - \\binom{n}{3} = \\binom{n}{2}"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "\\binom{n}{2} = 21",
+              "lhs": "x*(x-1)/2",
+              "rhs": "21"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "n = 7"
+            }
+          ],
+          "answer": "7",
+          "roots": [
+            "7"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "cdb86b4e",
+        "answer": {
+          "value": 7,
+          "label": "7"
+        }
+      }
+    },
+    {
+      "id": "c7fddc9d-44e9-45b1-a598-a02b1e021fe2",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "r\\ \\text{ladies},\\ 3-r\\ \\text{gentlemen}",
+              "note": "wife's side: 3 − r ladies, r gentlemen"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "r=0:\\ 1 \\cdot 1 \\cdot 1 \\cdot 1 = 1",
+              "f": "1",
+              "value": "1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "r=1:\\ 4 \\cdot 3 \\cdot 3 \\cdot 4 = 144",
+              "f": "4*3*3*4",
+              "value": "144"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "r=2:\\ 6 \\cdot 3 \\cdot 3 \\cdot 6 = 324",
+              "f": "6*3*3*6",
+              "value": "324"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "r=3:\\ 4 \\cdot 1 \\cdot 1 \\cdot 4 = 16",
+              "f": "4*1*1*4",
+              "value": "16"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "1 + 144 + 324 + 16 = 485",
+              "f": "1+144+324+16",
+              "value": "485",
+              "note": "sum over r = 0 to 3"
+            }
+          ],
+          "answer": "1+144+324+16"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "d50dc743",
+        "answer": {
+          "value": 485,
+          "label": "485"
+        }
+      }
+    },
+    {
+      "id": "cb8ad327-6353-44b7-8f37-607cd30571ea",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "A \\times 3",
+              "note": "HAVANA: 6 letters, A repeats 3 times"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{6!}{3!} = 120",
+              "f": "720/6",
+              "value": "120",
+              "note": "all arrangements"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{5!}{3!} \\times 2 = 20 \\times 2 = 40",
+              "f": "20*2",
+              "value": "40",
+              "note": "V and N together: a block, 2 orders"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "120 - 40 = 80",
+              "f": "120-40",
+              "value": "80",
+              "note": "V and N not together"
+            }
+          ],
+          "answer": "120-40"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "5a27fbea",
+        "answer": {
+          "value": 80,
+          "label": "80"
+        }
+      }
+    },
+    {
+      "id": "d67660c4-c482-4f5c-848e-080aa4200823",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "4! = 24",
+              "f": "24",
+              "value": "24",
+              "note": "4 items: P-unit, M-unit, C₁, C₂"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "3! = 6",
+              "f": "6",
+              "value": "6",
+              "note": "Physics books inside their unit"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "4! = 24",
+              "f": "24",
+              "value": "24",
+              "note": "Maths books inside their unit"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "24 \\times 6 \\times 24 = 3456",
+              "f": "24*6*24",
+              "value": "3456",
+              "note": "total"
+            }
+          ],
+          "answer": "24*6*24"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "1c6cd515",
+        "answer": {
+          "value": 3456,
+          "label": "3456"
+        }
+      }
+    },
+    {
+      "id": "d74fdf37-05f7-4c68-bbab-f5d51fb4fa31",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "{}^{15}C_7 = 6435",
+              "f": "15*14*13*12*11*10*9/5040",
+              "value": "6435",
+              "note": "greatest value of 15Cr"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{}^{12}C_6 = 924",
+              "f": "12*11*10*9*8*7/720",
+              "value": "924",
+              "note": "greatest value of 12Cr"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "6435 + 924 = 7359",
+              "f": "6435+924",
+              "value": "7359",
+              "note": "the sum"
+            }
+          ],
+          "answer": "6435+924"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "0bdd8456",
+        "answer": {
+          "value": 7359,
+          "label": "7359"
+        }
+      }
+    },
+    {
+      "id": "d75ff87c-964d-485e-bc76-778fc1088f6c",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "B_1:\\ \\text{position } 2",
+              "note": "B₁ is fixed"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "G_1 G_2",
+              "note": "adjacent, not in position 1"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "(3,4)\\ \\text{or}\\ (4,5)",
+              "note": "positions of the pair, 2 ways each"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "2 \\times 2 \\times 2 = 8",
+              "f": "2*2*2",
+              "value": "8",
+              "note": "total"
+            }
+          ],
+          "answer": "2*2*2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "ca0ab000",
+        "answer": {
+          "value": 8,
+          "label": "8"
+        }
+      }
+    },
+    {
+      "id": "ec21d3fe-aea2-4d8b-9fe9-83be4f694ba9",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "36 = 2^2 \\cdot 3^2",
+              "note": "gcd 2: divisible by 2, not by 4, not by 3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{998-100}{2} + 1 = 450",
+              "f": "(998-100)/2+1",
+              "value": "450",
+              "note": "3-digit multiples of 2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{996-102}{6} + 1 = 150",
+              "f": "(996-102)/6+1",
+              "value": "150",
+              "note": "also divisible by 3, i.e. by 6"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{996-100}{4} + 1 = 225",
+              "f": "(996-100)/4+1",
+              "value": "225",
+              "note": "divisible by 4"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\dfrac{996-108}{12} + 1 = 75",
+              "f": "(996-108)/12+1",
+              "value": "75",
+              "note": "divisible by 12, counted twice"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "450 - (150 + 225 - 75) = 150",
+              "f": "450-(150+225-75)",
+              "value": "150",
+              "note": "inclusion–exclusion"
+            }
+          ],
+          "answer": "450-(150+225-75)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "3425876c",
+        "answer": {
+          "value": 150,
+          "label": "150"
+        }
+      }
+    },
+    {
+      "id": "ef221a75-cffc-424b-ab82-26266697729e",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "5! = 120",
+              "f": "120",
+              "value": "120",
+              "note": "five-digit numbers using all the digits"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "3! = 6",
+              "f": "6",
+              "value": "6",
+              "note": "23___ is at most 24000"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "120 - 6 = 114",
+              "f": "120-6",
+              "value": "114",
+              "note": "answer"
+            }
+          ],
+          "answer": "120-6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e4cddd69",
+        "answer": {
+          "value": 114,
+          "label": "114"
+        }
+      }
+    },
+    {
+      "id": "f3e0ddeb-70f8-42aa-bc70-b3bf8f773b24",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\binom{5}{2}\\binom{7}{3} = 10 \\times 35 = 350",
+              "f": "10*35",
+              "value": "350",
+              "note": "no restriction"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\binom{5}{2}\\binom{5}{1} = 10 \\times 5 = 50",
+              "f": "10*5",
+              "value": "50",
+              "note": "teams with both A and B"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "350 - 50 = 300",
+              "f": "350-50",
+              "value": "300",
+              "note": "valid teams"
+            }
+          ],
+          "answer": "350-50"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "6d650ea7",
+        "answer": {
+          "value": 300,
+          "label": "300"
+        }
+      }
+    },
+    {
+      "id": "f829b00f-cc92-421a-84d8-21c0d7219b5c",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\binom{6}{4} = 15",
+              "f": "15",
+              "value": "15",
+              "note": "0 boys"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\binom{4}{1}\\binom{6}{3} = 4 \\times 20 = 80",
+              "f": "4*20",
+              "value": "80",
+              "note": "1 boy"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "15 + 80 = 95",
+              "f": "15+80",
+              "value": "95",
+              "note": "teams"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "95 \\times 4 = 380",
+              "f": "95*4",
+              "value": "380",
+              "note": "leader from the 4 members"
+            }
+          ],
+          "answer": "95*4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "eaf569eb",
+        "answer": {
+          "value": 380,
+          "label": "380"
+        }
+      }
+    },
+    {
+      "id": "f8e3df40-1639-44a0-89ff-a56147a409c8",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "\\dfrac{(n+3)(n+2)}{(n-2)(n+2)} = \\dfrac{11}{6}",
+              "lhs": "(x+3)*(x+2)/((x-2)*(x+2))",
+              "rhs": "11/6"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "\\dfrac{n+3}{n-2} = \\dfrac{11}{6}",
+              "lhs": "(x+3)/(x-2)",
+              "rhs": "11/6"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "6n + 18 = 11n - 22",
+              "lhs": "6*x+18",
+              "rhs": "11*x-22"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "n = 8:\\ 3n - 20 = 4",
+              "f": "3*8-20",
+              "value": "4",
+              "note": "the asked value"
+            }
+          ],
+          "answer": "3*8-20",
+          "roots": [
+            "8"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "5e2c0562",
+        "answer": {
+          "value": 4,
+          "label": "4"
+        }
+      }
+    },
+    {
+      "id": "f8f4f0c0-a4c2-47bf-92fa-5dcd4a660c90",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "4 \\mid \\text{last two digits}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "24,\\ 52,\\ 72",
+              "note": "possible endings from 2, 2, 4, 5, 7"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "3! = 6",
+              "f": "6",
+              "value": "6",
+              "note": "first three places, each ending"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "3 \\times 6 = 18",
+              "f": "3*6",
+              "value": "18",
+              "note": "numbers"
+            }
+          ],
+          "answer": "3*6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "6ca6543f",
+        "answer": {
+          "value": 18,
+          "label": "18"
+        }
+      }
+    },
+    {
+      "id": "f9380e35-1e54-4787-bddb-aa5e3363d32f",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "(n-1)!",
+              "note": "n different things round a circle"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{7!}{2} = 2520",
+              "f": "5040/2",
+              "value": "2520",
+              "note": "a necklace can be turned over"
+            }
+          ],
+          "answer": "5040/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "0d498abd",
+        "answer": {
+          "value": 2520,
+          "label": "2520"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

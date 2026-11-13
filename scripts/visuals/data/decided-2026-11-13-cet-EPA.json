@@ -1,0 +1,95 @@
+{
+ "visuals": [],
+ "decided": [
+  {
+   "id": "069ed358-2648-4744-89d3-0ccada866628",
+   "verdict": "none",
+   "reason": "stored text only states the two counts (10 and 10) and that they are equal; the solution is right (paper counts 10 each), no working to step through"
+  },
+  {
+   "id": "f6ef4c77-2939-4613-b43d-3e41210a7231",
+   "verdict": "none",
+   "reason": "stored line 0.05758 x 1.301 = 7.48e-2 is 7.491e-2 at its own precision (true value 7.489e-2); key D 7.48e-2 is the nearest option but not reached"
+  },
+  {
+   "id": "ac766602-e5a6-420b-bfc1-b645ba39fb41",
+   "verdict": "none",
+   "reason": "stored -2.303x8.314x298x2 = -11411 J is -11411.7 J (-11.412 kJ); key A -11.411 kJ is the truncated value, not reached"
+  },
+  {
+   "id": "de5cf17a-176d-4ad6-b5d9-ee0b2841a4bc",
+   "verdict": "none",
+   "reason": "stored -4988 x 0.693 = -3457.97 J is -3456.9 J (-3458.2 J with the paper's 2.303 x 0.3010); key C -3457.97 J is not reached"
+  },
+  {
+   "id": "fe4cd6ab-cbee-4f87-8184-d9fe1b190cba",
+   "verdict": "none",
+   "reason": "stored line gives -7976 J then the same value as -7.975 kJ; 2.303 x 2 x 8.314 x 298 x log 5 = 7976.8 J at its own precision, key D -7.975 kJ not reached"
+  },
+  {
+   "id": "71f01a41-c2dc-4567-9e80-e4c7d481581e",
+   "verdict": "none",
+   "reason": "stored line '16.76 x 10^-24 = 1.677 x 10^-23' is wrong (16.76e-24 = 1.676e-23; 4 x 4/3 pi (1e-8)^3 = 16.755e-24); key option D 1.677e-23 is not reached at the working's precision"
+  },
+  {
+   "id": "7be200ab-e0e6-4750-a0fa-0f70ee4e51dd",
+   "verdict": "none",
+   "reason": "stored working reaches 27.1 (0.45e-22 x 6.022e23 = 27.099); the paper's own working prints 2.709 x 10 ~ 27.0 and keys 27.0; key not reachable at the working's precision"
+  },
+  {
+   "id": "91d5b68c-c9e7-4072-803a-9071b8ddbc6a",
+   "verdict": "none",
+   "reason": "stored 7.518 x 10^21 is truncated (0.5/6.65e-23 = 7.5188e21, rounds 7.519); the key option prints 7.518; not reachable at the working's precision"
+  },
+  {
+   "id": "eb712b1f-9a3f-4a99-b9b7-4162478ca6cf",
+   "verdict": "none",
+   "reason": "stored 393/2.828 ~ 138.93 is wrong (393/2.8284 = 138.95, 393/2.828 = 138.97); key option 138.93 not reachable"
+  },
+  {
+   "id": "1b163332-f56b-43a3-bc8a-6c3650526005",
+   "verdict": "none",
+   "reason": "stored 0.36/1.86 = 0.193 is truncated (0.19355 rounds 0.194); key option 0.193 not reachable at the working's precision"
+  },
+  {
+   "id": "1ee595d5-222d-49fd-a638-d4d14878dbc1",
+   "verdict": "none",
+   "reason": "stored 0.54/(1.86 x 0.18) = 1.612 is truncated (1.6129 rounds 1.613); key option 1.612 not reachable at the working's precision"
+  },
+  {
+   "id": "2b4917a5-7fd2-4661-be47-00a00b076657",
+   "verdict": "none",
+   "reason": "stored 50 - 7.04 = 42.96 ~ 42.9 is truncated (rounds 43.0); the paper's own key prints '42.96 ~ eq 42.9'; key not reachable at the working's precision"
+  },
+  {
+   "id": "6881ab36-a6d1-4cab-8f93-e2e1373cf3a7",
+   "verdict": "none",
+   "reason": "stored 0.70/2.44 = 0.287 is right (0.2869); key option 0.286 is truncated, not reachable at the working's precision"
+  },
+  {
+   "id": "ba88e0d5-02e2-421d-ba33-31f9d16cb777",
+   "verdict": "none",
+   "reason": "stored 0.160 x 0.173 = 0.0277 is right (0.02773); key option 0.0276 not reachable at the working's precision"
+  },
+  {
+   "id": "1bc8fc26-87a1-406c-83f1-e62439bffc56",
+   "verdict": "none",
+   "reason": "stored 2.98e-23 is truncated (18/6.022e23 = 2.989e-23, rounds 2.99); key option prints 2.98; not reachable at the working's precision"
+  },
+  {
+   "id": "b5e97be7-8330-4076-924a-835072308205",
+   "verdict": "none",
+   "reason": "stored working reaches 1.2646e24 (the paper's own value); key option prints 1.264e24, not reachable at the working's precision"
+  },
+  {
+   "id": "c664b121-6cdb-4084-958a-2b564dee56d6",
+   "verdict": "none",
+   "reason": "working reaches 2.1436 m; key option prints 2.143 (truncated), not reachable at the working's precision"
+  },
+  {
+   "id": "e10cb7fc-871e-4f75-bb60-99fae4acfed9",
+   "verdict": "none",
+   "reason": "working reaches 5.06 mol; key option 5.0 is only the nearest option (paper rounds 5.05 to 5.0)"
+  }
+ ]
+}

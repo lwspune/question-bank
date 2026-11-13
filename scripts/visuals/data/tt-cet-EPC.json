@@ -1,0 +1,57 @@
+{
+  "//": "Assembled from agent drafts (truthTable).",
+  "visuals": [
+    {
+      "id": "adc64014-eced-4c26-8952-393b9b540cae",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "columns": [
+            {
+              "f": "~(~p | q) | (p & r)",
+              "label": "S"
+            },
+            {
+              "f": "~q & r",
+              "label": "Z"
+            }
+          ],
+          "ask": {
+            "kind": "equivalent",
+            "a": "(~(~p | q) | (p & r)) & (~q & r)",
+            "b": "(p & r) & ~q",
+            "label": "S ∧ Z ≡ (p ∧ r) ∧ ∼q"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "01c6f7cb",
+        "answer": {
+          "value": 1,
+          "label": "(p ∧ r) ∧ ∼q"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

@@ -1,0 +1,2110 @@
+{
+ "//": "Assembled from agent drafts (algebraSteps).",
+ "visuals": [
+  {
+   "id": "0973106a-8d71-42b7-907b-cdadc8c059aa",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{I_2Cl_6}:\\ \\text{each I is bonded to 3 Cl}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{Cl} = -1"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "x + 3(-1) = 0 \\Rightarrow x = +3",
+       "lhs": "x+3*(-1)",
+       "rhs": "0",
+       "roots": [
+        "3"
+       ]
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "e094954c",
+    "answer": {
+     "value": 3,
+     "label": "+3"
+    }
+   }
+  },
+  {
+   "id": "0719842a-0e0b-4ee5-a0de-055eace618ae",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "[\\mathrm{Ni(CN)_4}]^{2-}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{CN^-}:\\ \\text{one donor atom (C)}"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "4 \\times 1 = 4",
+       "f": "4*1",
+       "value": "4"
+      }
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "83fa39f8",
+    "answer": {
+     "value": 4,
+     "label": "4"
+    }
+   }
+  },
+  {
+   "id": "485314c8-4b2c-4488-8088-6255d6d88c93",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{complex ion is } 2+\\ (\\mathrm{SO_4^{2-}}\\text{ outside})"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "x - 1 = +2 \\Rightarrow x = +3",
+       "lhs": "x-1",
+       "rhs": "2",
+       "roots": [
+        "3"
+       ]
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "eaea8200",
+    "answer": {
+     "value": 3,
+     "label": "+3"
+    }
+   }
+  },
+  {
+   "id": "4fdf8018-ddbc-47f0-b4d7-0551dd9c368a",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Fe}\\ \\text{is in the 0 state}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{EAN} = 26 - 0 + 2 \\times 5 = 36",
+       "f": "26-0+2*5",
+       "value": "36"
+      }
+     ],
+     "answer": "36"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "57eb10b0",
+    "answer": {
+     "value": 36,
+     "label": "36"
+    }
+   }
+  },
+  {
+   "id": "797e6a7a-a6cd-4519-8c8b-3108ff8c1dd0",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{EAN} = Z - \\text{oxidation state} + 2 \\times (\\text{number of ligands})"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{EAN} = 27 - 3 + 12 = 36",
+       "f": "27-3+12",
+       "value": "36"
+      }
+     ],
+     "answer": "36"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "16ee4dfa",
+    "answer": {
+     "value": 36,
+     "label": "36"
+    }
+   }
+  },
+  {
+   "id": "80e87c56-9c71-4c91-aa68-a2f91aad35d3",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{EAN of each complex}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "[\\mathrm{Cr(CO)_6}]:\\ 24 + 12 = 36",
+       "f": "24+12",
+       "value": "36"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "[\\mathrm{Fe(CN)_6}]^{4-}:\\ 26 - 2 + 12 = 36",
+       "f": "26-2+12",
+       "value": "36"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "[\\mathrm{Co(NH_3)_6}]^{3+}:\\ 27 - 3 + 12 = 36",
+       "f": "27-3+12",
+       "value": "36"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "[\\mathrm{Fe(CN)_6}]^{3-}:\\ 26 - 3 + 12 = 35",
+       "f": "26-3+12",
+       "value": "35"
+      },
+      {
+       "step": "s6",
+       "kind": "note",
+       "tex": "\\text{only } [\\mathrm{Fe(CN)_6}]^{3-} \\text{ falls short of } 36"
+      }
+     ],
+     "answer": "26-3+12"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3",
+       "s4",
+       "s5"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "efea9d24",
+    "answer": {
+     "value": 35,
+     "label": "[Fe(CN)6]3-: 35"
+    }
+   }
+  },
+  {
+   "id": "815275d0-647a-45d4-bc33-4745d8a05c90",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{Let Pt oxidation state} = x"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "x + 6(-1) = -2 \\Rightarrow x = +4",
+       "lhs": "x+6*(-1)",
+       "rhs": "-2",
+       "roots": [
+        "4"
+       ]
+      }
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "98fc9049",
+    "answer": {
+     "value": 4,
+     "label": "+4"
+    }
+   }
+  },
+  {
+   "id": "8d2196a0-d251-4586-a7dd-c839982ba695",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{EAN} = Z - (\\text{oxidation state}) + 2 \\times (\\text{no. of ligands})"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{Zn}:\\ Z = 30,\\ \\text{oxidation state } +2,\\ 4\\ \\mathrm{NH_3}"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{EAN} = 30 - 2 + (4 \\times 2) = 30 - 2 + 8 = 36",
+       "f": "30-2+4*2",
+       "value": "36"
+      }
+     ],
+     "answer": "36"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "085f5a10",
+    "answer": {
+     "value": 36,
+     "label": "36"
+    }
+   }
+  },
+  {
+   "id": "8d7dc464-4bae-4584-9807-9577b8d7527a",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\text{coordination number} = 2 \\times 2 + 2 = 6",
+       "f": "2*2+2",
+       "value": "6"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{complex ion carries } +1\\ (\\mathrm{Cl^-}\\text{ outside})"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "x + 0 - 2 = +1 \\Rightarrow x = +3",
+       "lhs": "x+0-2",
+       "rhs": "1",
+       "roots": [
+        "3"
+       ]
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{sum} = 6 + 3 = 9",
+       "f": "6+3",
+       "value": "9"
+      }
+     ],
+     "answer": "6+3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "d3625581",
+    "answer": {
+     "value": 9,
+     "label": "9"
+    }
+   }
+  },
+  {
+   "id": "9bf861ba-3af2-4942-92c9-9152090763d7",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Pd}:\\ Z = 46,\\ \\mathrm{Pd^{4+}}\\text{ has 42 electrons}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{six ligands donate } 12"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{EAN} = 42 + 12 = 54",
+       "f": "42+12",
+       "value": "54"
+      }
+     ],
+     "answer": "42+12"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "9d70c237",
+    "answer": {
+     "value": 54,
+     "label": "54"
+    }
+   }
+  },
+  {
+   "id": "c5e0fe60-4ae8-401a-9778-620e51d9a702",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\mathrm{Cr^{3+}}:\\ 24 - 3 = 21\\ \\text{electrons}",
+       "f": "24-3",
+       "value": "21"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{three bidentate oxalates donate } 12"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\text{EAN} = 33"
+      }
+     ],
+     "answer": "33"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "735527fa",
+    "answer": {
+     "value": 33,
+     "label": "33"
+    }
+   }
+  },
+  {
+   "id": "d031ad92-6317-4305-b452-8495fadbc73a",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{EAN} = Z - \\text{charge} + \\text{electrons from ligands}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{EAN} = 30 - 2 + 4 \\times 2 = 36",
+       "f": "30-2+4*2",
+       "value": "36"
+      }
+     ],
+     "answer": "36"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "277820ad",
+    "answer": {
+     "value": 36,
+     "label": "36"
+    }
+   }
+  },
+  {
+   "id": "d17ac3e7-2c10-4872-a235-637bc71559f7",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mu = \\sqrt{n(n+2)}\\ \\text{BM}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "n = 1:\\ \\mu = \\sqrt{1 \\times 3} = \\sqrt{3} \\approx 1.73\\ \\text{BM}",
+       "f": "sqrt(1*3)",
+       "value": "1.73",
+       "dp": 2
+      }
+     ],
+     "answer": "sqrt(1*3)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "db9f5cb5",
+    "answer": {
+     "value": 1.7320508075688772,
+     "label": "1.73 BM"
+    }
+   }
+  },
+  {
+   "id": "f4228564-9dfe-44f4-8986-7f9578a25f88",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "[\\mathrm{Fe(CN)_6}]^{4-}:\\ Z = 26,\\ \\mathrm{Fe}\\ \\text{is } +2"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "6\\ \\mathrm{CN^-}\\ \\text{donate}\\ 6 \\times 2 = 12",
+       "f": "6*2",
+       "value": "12"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{EAN} = 26 - 2 + 12 = 36",
+       "f": "26-2+12",
+       "value": "36"
+      }
+     ],
+     "answer": "26-2+12"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "24e5ffef",
+    "answer": {
+     "value": 36,
+     "label": "36"
+    }
+   }
+  },
+  {
+   "id": "fd1efee4-cffd-46bb-82a3-d36341a8aaf7",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Fe}\\ \\text{is } +3"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{EAN} = 26 - 3 + 2 \\times 6 = 35",
+       "f": "26-3+2*6",
+       "value": "35"
+      }
+     ],
+     "answer": "26-3+2*6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "5fa5a4b1",
+    "answer": {
+     "value": 35,
+     "label": "35"
+    }
+   }
+  },
+  {
+   "id": "fd443733-4819-4aeb-8f71-736d652e62b8",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{EAN} = \\text{atomic no.} - \\text{ox. state} + \\text{electrons donated}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{Cu}:\\ Z = 29,\\ +2\\ \\text{state}"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "4\\ \\mathrm{NH_3}\\ \\text{donate 8 electrons}"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{EAN} = 29 - 2 + 8 = 35",
+       "f": "29-2+8",
+       "value": "35"
+      }
+     ],
+     "answer": "29-2+8"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "970bfee6",
+    "answer": {
+     "value": 35,
+     "label": "35"
+    }
+   }
+  },
+  {
+   "id": "38df9961-6192-49f0-b6a5-e4407cea3b82",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "x + 2(-2) = 0 \\Rightarrow x = +4",
+       "lhs": "x+2*(-2)",
+       "rhs": "0",
+       "roots": [
+        "4"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{Stock notation: } \\mathrm{Mn(IV)O_2}"
+      }
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "68a7f41c",
+    "answer": {
+     "value": 4,
+     "label": "Mn(IV)O2"
+    }
+   }
+  },
+  {
+   "id": "5b90d194-7199-4c31-9858-df355daf67af",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "\\mathrm{CrO_2Cl_2}:\\ x - 4 - 2 = 0 \\Rightarrow x = +6",
+       "lhs": "x-4-2",
+       "rhs": "0",
+       "roots": [
+        "6"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{Mn}\\ \\text{is } +7\\ \\text{in permanganate}"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\mathrm{Cr}\\ \\text{is } +3\\ \\text{in the other two}"
+      }
+     ],
+     "answer": "6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "ae9e2f2b",
+    "answer": {
+     "value": 6,
+     "label": "+6 in CrO2Cl2"
+    }
+   }
+  },
+  {
+   "id": "5bdd39ff-7568-4889-86b6-0484d8a046aa",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Cu^{2+}}:\\ 3d^9,\\ \\text{one unpaired electron}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mu = \\sqrt{n(n+2)} = \\sqrt{1 \\times 3} = 1.73\\ \\text{BM}",
+       "f": "sqrt(1*3)",
+       "value": "1.73",
+       "dp": 2
+      }
+     ],
+     "answer": "sqrt(1*3)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "ba78e737",
+    "answer": {
+     "value": 1.7320508075688772,
+     "label": "1.73 BM"
+    }
+   }
+  },
+  {
+   "id": "5ee42434-e101-4f8b-b4ac-92908f79ca70",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Fe^{3+}}:\\ 3d^5,\\ 5\\ \\text{unpaired electrons}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mu = \\sqrt{5 \\times 7} = 5.92\\ \\text{BM}",
+       "f": "sqrt(5*7)",
+       "value": "5.92",
+       "dp": 2
+      }
+     ],
+     "answer": "sqrt(5*7)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "262acbce",
+    "answer": {
+     "value": 5.916079783099616,
+     "label": "5.92 BM"
+    }
+   }
+  },
+  {
+   "id": "68912d48-b2ad-449e-a1d6-1bcd37fe80d2",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Mn^{2+}}:\\ 3d^5,\\ 5\\ \\text{unpaired electrons}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mu = \\sqrt{5 \\times 7} = 5.92\\ \\text{BM}",
+       "f": "sqrt(5*7)",
+       "value": "5.92",
+       "dp": 2
+      }
+     ],
+     "answer": "sqrt(5*7)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "5a0a8fd9",
+    "answer": {
+     "value": 5.916079783099616,
+     "label": "5.92 BM"
+    }
+   }
+  },
+  {
+   "id": "8e29c3f7-557c-441e-8067-549acea1ab14",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\sqrt{n(n + 2)} = 3.87"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "n(n + 2) = 15 \\Rightarrow n = 3",
+       "lhs": "x*(x+2)",
+       "rhs": "15",
+       "roots": [
+        "3"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\mathrm{Cr^{3+}}\\ \\text{is } 3d^3"
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "7d069458",
+    "answer": {
+     "value": 3,
+     "label": "3"
+    }
+   }
+  },
+  {
+   "id": "abe0c4ed-457b-456b-ab1c-1754512df69c",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Cu^{2+}}:\\ [\\mathrm{Ar}]3d^9,\\ \\text{one unpaired electron}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mu = \\sqrt{n(n+2)} = \\sqrt{1 \\times 3} = 1.73\\ \\text{BM}",
+       "f": "sqrt(1*3)",
+       "value": "1.73",
+       "dp": 2
+      }
+     ],
+     "answer": "sqrt(1*3)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "e868c1fc",
+    "answer": {
+     "value": 1.7320508075688772,
+     "label": "1.73 BM"
+    }
+   }
+  },
+  {
+   "id": "b709c848-927d-4ea9-bff4-d1d085038e9d",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Cr^{2+}}:\\ [\\mathrm{Ar}]3d^4,\\ \\text{four unpaired electrons}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mu = \\sqrt{4 \\times 6} = \\sqrt{24} = 4.90\\ \\text{BM}",
+       "f": "sqrt(4*6)",
+       "value": "4.90",
+       "dp": 2
+      }
+     ],
+     "answer": "sqrt(4*6)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "2c853e66",
+    "answer": {
+     "value": 4.898979485566356,
+     "label": "4.90 BM"
+    }
+   }
+  },
+  {
+   "id": "be8f4278-56e2-4c3d-aaaa-10dc16aa17c2",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Cu^{2+}}:\\ [\\mathrm{Ar}]3d^9,\\ \\text{1 unpaired electron}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\mu = \\sqrt{1(3)} = \\sqrt{3} = 1.73\\ \\text{BM}",
+       "f": "sqrt(1*3)",
+       "value": "1.73",
+       "dp": 2
+      }
+     ],
+     "answer": "sqrt(1*3)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "17f7959b",
+    "answer": {
+     "value": 1.7320508075688772,
+     "label": "1.73 BM"
+    }
+   }
+  },
+  {
+   "id": "3c6f540d-741c-40fb-943d-72f75ecb7eec",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{N_2^+}\\ \\text{has 13 electrons}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{MO configuration: } N_b = 9,\\ N_a = 4"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{bond order} = \\dfrac{9 - 4}{2} = 2.5",
+       "f": "(9-4)/2",
+       "value": "2.5"
+      }
+     ],
+     "answer": "(9-4)/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "0c783d0b",
+    "answer": {
+     "value": 2.5,
+     "label": "2.5"
+    }
+   }
+  },
+  {
+   "id": "464b19ad-372b-45f9-b9f7-cf89cc155549",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{F_2}\\ \\text{has 18 electrons}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{bond order} = \\dfrac{10 - 8}{2} = 1",
+       "f": "(10-8)/2",
+       "value": "1"
+      }
+     ],
+     "answer": "(10-8)/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "2a17af46",
+    "answer": {
+     "value": 1,
+     "label": "1"
+    }
+   }
+  },
+  {
+   "id": "4fc53d5d-894c-4575-a0df-0a02124e1fae",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Li_2}:\\ (\\sigma 1s)^2 (\\sigma^* 1s)^2 (\\sigma 2s)^2"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{bond order} = \\dfrac{4 - 2}{2} = 1",
+       "f": "(4-2)/2",
+       "value": "1"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\text{no unpaired electrons} \\to \\text{diamagnetic}"
+      }
+     ],
+     "answer": "(4-2)/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "27327e29",
+    "answer": {
+     "value": 1,
+     "label": "1, diamagnetic"
+    }
+   }
+  },
+  {
+   "id": "6acf7173-e8e7-472c-b44d-2861949b46a3",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{O_2^{2-}},\\ \\mathrm{F_2}:\\ \\text{18 electrons each}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{bond order} = \\dfrac{10 - 8}{2} = 1",
+       "f": "(10-8)/2",
+       "value": "1"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\mathrm{N_2},\\ \\mathrm{CO},\\ \\mathrm{NO^+}\\ (14\\ \\text{electrons}):\\ \\text{bond order } 3"
+      }
+     ],
+     "answer": "(10-8)/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "655d9314",
+    "answer": {
+     "value": 1,
+     "label": "bond order 1"
+    }
+   }
+  },
+  {
+   "id": "787507f6-5a37-462f-8fc4-e0de0ba62922",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "FC = V - L - B/2"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{CO}_2:\\ FC = 4 - 0 - \\dfrac{8}{2} = 0",
+       "f": "4-0-8/2",
+       "value": "0"
+      }
+     ],
+     "answer": "4-0-8/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "d1b0fe79",
+    "answer": {
+     "value": 0,
+     "label": "0"
+    }
+   }
+  },
+  {
+   "id": "7f6e3300-625c-441d-8d0f-51f61ac80e69",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{CO is isoelectronic with } \\mathrm{N_2}\\ (10\\ \\text{electrons})"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "(\\sigma 1s)^2 (\\sigma^* 1s)^2 (\\sigma 2s)^2 (\\sigma^* 2s)^2 (\\pi 2p)^4 (\\sigma 2p)^2"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{bond order} = \\dfrac{10 - 4}{2} = 3",
+       "f": "(10-4)/2",
+       "value": "3"
+      }
+     ],
+     "answer": "(10-4)/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "a762ca91",
+    "answer": {
+     "value": 3,
+     "label": "3"
+    }
+   }
+  },
+  {
+   "id": "8cc4324c-1496-4278-b53b-23859207e3bb",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{CO is isoelectronic with } \\mathrm{N_2}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{bond order} = \\dfrac{8 - 2}{2} = 3",
+       "f": "(8-2)/2",
+       "value": "3"
+      }
+     ],
+     "answer": "(8-2)/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "72940f0e",
+    "answer": {
+     "value": 3,
+     "label": "3"
+    }
+   }
+  },
+  {
+   "id": "97fd6c99-3bac-49f1-a059-4a313cace9c3",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\mathrm{O_2}:\\ \\dfrac{8 - 4}{2} = 2",
+       "f": "(8-4)/2",
+       "value": "2"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{N_2}\\ \\text{has 3},\\ \\mathrm{H_2}\\ \\text{has 1},\\ \\mathrm{F_2}\\ \\text{has 1}"
+      }
+     ],
+     "answer": "(8-4)/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "e68c00d4",
+    "answer": {
+     "value": 2,
+     "label": "2 (O2)"
+    }
+   }
+  },
+  {
+   "id": "e1952129-6ff2-4b10-bcd3-f0c288e0ef98",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{O_2}:\\ (\\sigma 1s)^2 (\\sigma^* 1s)^2 (\\sigma 2s)^2 (\\sigma^* 2s)^2 (\\sigma 2p)^2 (\\pi 2p)^4 (\\pi^* 2p)^2"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{bonding MOs: } 2 + 2 + 2 + 4 = 10",
+       "f": "2+2+2+4",
+       "value": "10"
+      }
+     ],
+     "answer": "2+2+2+4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "7a2733c2",
+    "answer": {
+     "value": 10,
+     "label": "10"
+    }
+   }
+  },
+  {
+   "id": "e7144a15-5979-450e-8060-187cb7d5f9c2",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{F_2}\\ \\text{has 18 electrons}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{bonding: } \\sigma 1s^2\\,\\sigma 2s^2\\,\\sigma 2p_z^2\\,\\pi 2p^4 = 10"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\text{antibonding: } \\sigma^* 1s^2\\,\\sigma^* 2s^2\\,\\pi^* 2p^4 = 8"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{bond order} = \\dfrac{10 - 8}{2} = 1",
+       "f": "(10-8)/2",
+       "value": "1"
+      }
+     ],
+     "answer": "10"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "756e3612",
+    "answer": {
+     "value": 10,
+     "label": "10 bonding, 8 antibonding"
+    }
+   }
+  },
+  {
+   "id": "ea7e6af8-8853-4416-9bfb-941b3bc14b9a",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "FC = V - N - \\dfrac{B}{2}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "V = 6,\\ N = 0,\\ 12\\ \\text{bonding electrons}"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "FC = 6 - 0 - 6 = 0",
+       "f": "6-0-6",
+       "value": "0"
+      }
+     ],
+     "answer": "6-0-6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "379d5b03",
+    "answer": {
+     "value": 0,
+     "label": "0"
+    }
+   }
+  },
+  {
+   "id": "ee4f12b6-1cd8-4d44-b3aa-26fbc9e41ccc",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{N_2}:\\ 10\\ \\text{bonding},\\ 4\\ \\text{antibonding electrons}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{bond order} = \\dfrac{10 - 4}{2} = 3",
+       "f": "(10-4)/2",
+       "value": "3"
+      }
+     ],
+     "answer": "(10-4)/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "911243cc",
+    "answer": {
+     "value": 3,
+     "label": "3"
+    }
+   }
+  },
+  {
+   "id": "f3920923-e315-4d8b-8baa-538b91c9d426",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{S has 2 S=O and 2 S-OH: 6 bonds, no lone pairs}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "FC = 6 - 0 - \\dfrac{12}{2} = 0",
+       "f": "6-0-12/2",
+       "value": "0"
+      }
+     ],
+     "answer": "6-0-12/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "f16dd029",
+    "answer": {
+     "value": 0,
+     "label": "0"
+    }
+   }
+  },
+  {
+   "id": "b773543a-db27-4609-ab69-b3fcad0d2423",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "6\\ \\text{g C} = 0.5\\ \\text{mol};\\ \\mathrm{C + O_2 \\rightarrow CO_2}\\ \\text{gives } 0.5\\ \\text{mol}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "0.5 \\times 22.4 = 11.2\\ \\text{dm}^3",
+       "f": "0.5*22.4",
+       "value": "11.2"
+      }
+     ],
+     "answer": "0.5*22.4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "b0dde43d",
+    "answer": {
+     "value": 11.2,
+     "label": "11.2 dm³"
+    }
+   }
+  },
+  {
+   "id": "545246c7-0563-41e4-b38f-c8b9bc804e11",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\%\\ \\text{atom economy} = \\dfrac{\\text{mass of desired product}}{\\text{sum of masses of all reactants}} \\times 100"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{180}{138 + 102} \\times 100 = \\dfrac{180}{240} \\times 100 = 75\\%",
+       "f": "180/(138+102)*100",
+       "value": "75"
+      }
+     ],
+     "answer": "180/(138+102)*100"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "a16d3754",
+    "answer": {
+     "value": 75,
+     "label": "75%"
+    }
+   }
+  },
+  {
+   "id": "9070014e-50e1-4803-a85b-865e9f0b0d2e",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{third member} = \\text{first member} + 2 \\times 14\\ \\text{g}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "46 + 28 = 74\\ \\text{g/mol}",
+       "f": "46+28",
+       "value": "74"
+      }
+     ],
+     "answer": "46+28"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "1d9539e5",
+    "answer": {
+     "value": 74,
+     "label": "74 g"
+    }
+   }
+  },
+  {
+   "id": "2d238326-138e-44ae-a249-2b63f0242111",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Cu}\\ (Z = 29):\\ [\\mathrm{Ar}]\\,3d^{10}4s^1"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\text{Period 4}\\ (n = 4)"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{Group: } 1 + 10 = 11",
+       "f": "1+10",
+       "value": "11"
+      }
+     ],
+     "answer": "1+10"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "a0038939",
+    "answer": {
+     "value": 11,
+     "label": "Group 11, Period 4"
+    }
+   }
+  },
+  {
+   "id": "9054b26f-7c08-43a1-83cd-9772a04f1676",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{P}:\\ [\\mathrm{Ne}]3s^2 3p^3,\\ \\text{5 valence electrons}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{valency} = 8 - 5 = 3\\ (\\text{as in } \\mathrm{PH_3})",
+       "f": "8-5",
+       "value": "3"
+      }
+     ],
+     "answer": "8-5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "b544412c",
+    "answer": {
+     "value": 3,
+     "label": "Valency 3, VE 5"
+    }
+   }
+  },
+  {
+   "id": "8c9c16ea-064a-432c-b9b8-a98b17cc4e56",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{CaC_2}:\\ \\mathrm{Ca}\\ \\text{is } +2,\\ \\text{two C share } -2,\\ \\text{each C is } -1"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{K_2C_2O_4}:\\ \\mathrm{K} = +1\\ (\\times 2 = +2),\\ \\mathrm{O} = -2\\ (\\times 4 = -8)"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "2 + 2x - 8 = 0 \\Rightarrow x = +3",
+       "lhs": "2+2*x-8",
+       "rhs": "0",
+       "roots": [
+        "3"
+       ]
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "cab22199",
+    "answer": {
+     "value": 3,
+     "label": "-1 and +3"
+    }
+   }
+  }
+ ],
+ "decided": []
+}

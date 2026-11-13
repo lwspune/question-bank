@@ -1,0 +1,374 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "3387ee88-ee03-402d-861a-c9f6833dff62",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "a": 4,
+            "ec": "1/sqrt(2)",
+            "b": "a*sqrt(1-ec^2)",
+            "c": "a*ec"
+          },
+          "view": {
+            "x": [
+              -5.6,
+              5.6
+            ],
+            "y": [
+              -4.2,
+              4.2
+            ]
+          },
+          "axes": true,
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "S": [
+              "c",
+              0
+            ],
+            "T": [
+              "-c",
+              0
+            ],
+            "B": [
+              0,
+              "b"
+            ]
+          },
+          "items": [
+            {
+              "kind": "curve",
+              "f": "b*sqrt(1-x^2/a^2)",
+              "x": [
+                -4,
+                4
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "curve",
+              "f": "-b*sqrt(1-x^2/a^2)",
+              "x": [
+                -4,
+                4
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "S",
+              "step": "s1",
+              "label": "S",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "at": "T",
+              "step": "s1",
+              "label": "S'",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1",
+              "label": "B",
+              "pos": "ne"
+            },
+            {
+              "kind": "point",
+              "at": "O",
+              "step": "s1",
+              "label": "O",
+              "pos": "sw"
+            },
+            {
+              "kind": "segment",
+              "from": "B",
+              "to": "S",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "segment",
+              "from": "B",
+              "to": "T",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "angle",
+              "at": "B",
+              "from": "S",
+              "to": "T",
+              "step": "s2",
+              "label": "90°"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "B",
+              "step": "s3",
+              "dash": true
+            },
+            {
+              "kind": "angle",
+              "at": "B",
+              "from": "O",
+              "to": "S",
+              "step": "s3",
+              "label": "45°",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -5.4,
+                -3
+              ],
+              "text": "OS = OB, so ae = b",
+              "step": "s3"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -5.4,
+                -3.7
+              ],
+              "text": "e² = 1/2, e = 1/√2",
+              "step": "s4",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "c = b",
+            "c*(-c) + b*b = 0",
+            "b^2 = a^2*(1-ec^2)"
+          ],
+          "answer": "ec"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "085ec0a9",
+        "answer": {
+          "value": 0.7071067811865475,
+          "label": "1/√2"
+        }
+      }
+    },
+    {
+      "id": "ede95403-26ee-43c2-b644-d0ba389697c7",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "a": 4,
+            "ec": "1/sqrt(2)",
+            "b": "a*sqrt(1-ec^2)",
+            "c": "a*ec"
+          },
+          "view": {
+            "x": [
+              -5.6,
+              5.6
+            ],
+            "y": [
+              -4.2,
+              4.2
+            ]
+          },
+          "axes": true,
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "S": [
+              "c",
+              0
+            ],
+            "T": [
+              "-c",
+              0
+            ],
+            "B": [
+              0,
+              "b"
+            ]
+          },
+          "items": [
+            {
+              "kind": "curve",
+              "f": "b*sqrt(1-x^2/a^2)",
+              "x": [
+                -4,
+                4
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "curve",
+              "f": "-b*sqrt(1-x^2/a^2)",
+              "x": [
+                -4,
+                4
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "S",
+              "step": "s1",
+              "label": "S",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "at": "T",
+              "step": "s1",
+              "label": "S'",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1",
+              "label": "B",
+              "pos": "ne"
+            },
+            {
+              "kind": "point",
+              "at": "O",
+              "step": "s1",
+              "label": "O",
+              "pos": "sw"
+            },
+            {
+              "kind": "segment",
+              "from": "B",
+              "to": "S",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "segment",
+              "from": "B",
+              "to": "T",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "angle",
+              "at": "B",
+              "from": "S",
+              "to": "T",
+              "step": "s2",
+              "label": "90°"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "B",
+              "step": "s3",
+              "dash": true
+            },
+            {
+              "kind": "angle",
+              "at": "B",
+              "from": "O",
+              "to": "S",
+              "step": "s3",
+              "label": "45°",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -5.4,
+                -3
+              ],
+              "text": "OS = OB, so ae = b",
+              "step": "s3"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -5.4,
+                -3.7
+              ],
+              "text": "e² = 1/2, e = 1/√2",
+              "step": "s4",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "c = b",
+            "c*(-c) + b*b = 0",
+            "b^2 = a^2*(1-ec^2)"
+          ],
+          "answer": "ec"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "ce911011",
+        "answer": {
+          "value": 0.7071067811865475,
+          "label": "1/√2"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

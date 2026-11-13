@@ -1,0 +1,3406 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "006c1f4e-c587-47fa-9759-1ce36a01f38d",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "np = 2,\\quad npq = 1 \\Rightarrow q = \\tfrac12,\\ p = \\tfrac12,\\ n = 4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P(X \\le 1) = \\left(\\tfrac12\\right)^4 + 4\\left(\\tfrac12\\right)^4",
+              "f": "(1/2)^4+4*(1/2)^4",
+              "value": "5/16"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "P(X \\le 1) = \\tfrac{5}{16} = 0.3125",
+              "f": "5/16",
+              "value": "0.3125"
+            }
+          ],
+          "answer": "5/16"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "39c6e842",
+        "answer": {
+          "value": 0.3125,
+          "label": "0.3125 = 5/16"
+        }
+      }
+    },
+    {
+      "id": "0e4c8bf5-1ad3-481b-aeaf-17d2c53e2ba1",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "P(\\text{at least once}) = 1-(0.6)^3",
+              "f": "1-0.6^3",
+              "value": "0.784"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P = 1 - 0.216 = 0.784",
+              "f": "1-0.216",
+              "value": "0.784"
+            }
+          ],
+          "answer": "1-0.6^3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "d2c540c2",
+        "answer": {
+          "value": 0.784,
+          "label": "0.784"
+        }
+      }
+    },
+    {
+      "id": "171be131-2bd3-42ca-b5b4-4eef6786a336",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "np = 8,\\ npq = 4 \\Rightarrow q = \\tfrac12,\\ p = \\tfrac12,\\ n = 16"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "P(X \\le 2) = \\binom{16}{0}+\\binom{16}{1}+\\binom{16}{2}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "1 + 16 + 120 = 137",
+              "f": "1+16+120",
+              "value": "137",
+              "note": "over 2¹⁶"
+            }
+          ],
+          "answer": "1+16+120"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "203a8665",
+        "answer": {
+          "value": 137,
+          "label": "K = 137"
+        }
+      }
+    },
+    {
+      "id": "171e63e8-7078-4082-8adc-d4defc5cbf87",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{mean} = np,\\quad \\text{variance} = npq"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "np + npq = \\tfrac{15}{2} \\Rightarrow np(1+q) = \\tfrac{15}{2}"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "10p(1+q) = \\tfrac{15}{2} \\Rightarrow p(1+q) = \\tfrac34"
+            },
+            {
+              "step": "s4",
+              "kind": "eq",
+              "tex": "p = 1-q:\\ (1-q)(1+q) = \\tfrac34",
+              "lhs": "(1-x)*(1+x)",
+              "rhs": "3/4",
+              "roots": [
+                "1/2"
+              ]
+            },
+            {
+              "step": "s5",
+              "kind": "eq",
+              "tex": "1 - q^2 = \\tfrac34 \\Rightarrow q = \\tfrac12,\\ p = \\tfrac12",
+              "lhs": "1-x^2",
+              "rhs": "3/4",
+              "roots": [
+                "1/2"
+              ],
+              "note": "q is the positive root"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\text{Variance} = npq = 10\\cdot\\tfrac12\\cdot\\tfrac12 = 2.5",
+              "f": "10*(1/2)*(1/2)",
+              "value": "2.5"
+            }
+          ],
+          "answer": "10*(1/2)*(1/2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "39bb90bd",
+        "answer": {
+          "value": 2.5,
+          "label": "2.5"
+        }
+      }
+    },
+    {
+      "id": "1ea42996-e837-47c1-8792-06a020e3b54c",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "n = 2,\\quad p = \\tfrac{4}{52} = \\tfrac{1}{13}",
+              "f": "4/52",
+              "value": "1/13"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Mean} = np = 2\\cdot\\tfrac{1}{13} = \\tfrac{2}{13}",
+              "f": "2*(1/13)",
+              "value": "2/13"
+            }
+          ],
+          "answer": "2*(1/13)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "ab04a32e",
+        "answer": {
+          "value": 0.15384615384615385,
+          "label": "2/13"
+        }
+      }
+    },
+    {
+      "id": "26ea055e-146c-493a-b93b-5f79edb1f727",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "np = 1,\\ npq = 0.75 \\Rightarrow q = \\tfrac34,\\ p = \\tfrac14,\\ n = 4"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{In units of } \\tfrac1{256}:\\ P(0)=81,\\ P(1)=108,\\ P(2)=54,\\ P(3)=12,\\ P(4)=1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "P(1) = 108 = 2 \\times 54 = 2P(2)",
+              "f": "2*54",
+              "value": "108"
+            }
+          ],
+          "answer": "2*54"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "654d4dcb",
+        "answer": {
+          "value": 108,
+          "label": "P(1) = 2P(2): 108 = 2·54"
+        }
+      }
+    },
+    {
+      "id": "2851feef-e0e4-4018-8d2e-6aabc9c2bdd8",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "p = \\tfrac13,\\quad q = \\tfrac23"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P(X \\ge 2) = 3\\left(\\tfrac13\\right)^2\\left(\\tfrac23\\right) + \\left(\\tfrac13\\right)^3",
+              "f": "3*(1/3)^2*(2/3)+(1/3)^3",
+              "value": "6/27+1/27"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "P(X \\ge 2) = \\tfrac{6}{27} + \\tfrac{1}{27} = \\tfrac{7}{27}",
+              "f": "6/27+1/27",
+              "value": "7/27"
+            }
+          ],
+          "answer": "6/27+1/27"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "2bf5b702",
+        "answer": {
+          "value": 0.25925925925925924,
+          "label": "7/27"
+        }
+      }
+    },
+    {
+      "id": "33a7083e-3f8e-4c8c-a07e-f8f95ab1b620",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "P(X = 4) = {}^8C_4(0.8)^4(0.2)^4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "70 \\times 0.0016 \\times (0.8)^4 = (0.112)(0.8)^4",
+              "f": "70*0.0016*0.8^4",
+              "value": "0.112*0.8^4"
+            }
+          ],
+          "answer": "0.112*0.8^4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "df0cd062",
+        "answer": {
+          "value": 0.04587520000000001,
+          "label": "(0.112)(0.8)⁴"
+        }
+      }
+    },
+    {
+      "id": "34be2a9b-c4f9-4c96-8c31-1f0cc25f8f56",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\binom{2}{1}\\left(\\tfrac12\\right)^1\\left(\\tfrac12\\right)^1 \\times \\left(\\tfrac12\\right)",
+              "note": "1 win in first 2, then a win on the 3rd"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2 \\times \\tfrac14 \\times \\tfrac12 = \\tfrac14",
+              "f": "2*(1/4)*(1/2)",
+              "value": "1/4"
+            }
+          ],
+          "answer": "2*(1/4)*(1/2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "d088db2c",
+        "answer": {
+          "value": 0.25,
+          "label": "1/4"
+        }
+      }
+    },
+    {
+      "id": "3d532ab9-5038-49e7-93f0-ba078bd486d3",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{unable to solve } 0 \\text{ or } 1 \\text{ problem}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "P = \\binom{50}{0}\\left(\\tfrac45\\right)^{50} + \\binom{50}{1}\\left(\\tfrac45\\right)^{49}\\left(\\tfrac15\\right)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "P = \\left(\\tfrac45\\right)^{49}\\left[\\tfrac45+\\tfrac{50}{5}\\right] = \\tfrac{54}{5}\\left(\\tfrac45\\right)^{49}",
+              "f": "(4/5)^49*(4/5+50/5)",
+              "value": "54/5*(4/5)^49"
+            }
+          ],
+          "answer": "54/5*(4/5)^49"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "9908e201",
+        "answer": {
+          "value": 0.00019267843851530512,
+          "label": "(54/5)(4/5)⁴⁹"
+        }
+      }
+    },
+    {
+      "id": "3eb9f491-00dc-4809-8bd3-acbfab476c93",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "p = \\tfrac45,\\quad q = \\tfrac15,\\quad n = 5"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "P(X=4) = {}^5C_4\\left(\\tfrac45\\right)^4\\left(\\tfrac15\\right)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "5\\left(\\tfrac45\\right)^4\\tfrac15 = \\left(\\tfrac45\\right)^4",
+              "f": "5*(4/5)^4*(1/5)",
+              "value": "(4/5)^4"
+            }
+          ],
+          "answer": "(4/5)^4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "b715b7f9",
+        "answer": {
+          "value": 0.4096000000000001,
+          "label": "(4/5)⁴"
+        }
+      }
+    },
+    {
+      "id": "408df548-ee6f-4940-9920-bd4dd7395d9f",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "p = \\tfrac16"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P(X=0) = \\left(\\tfrac56\\right)^2 = \\tfrac{25}{36}",
+              "f": "(5/6)^2",
+              "value": "25/36"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "P(X=1) = 2\\times\\tfrac16\\cdot\\tfrac56 = \\tfrac{10}{36} = \\tfrac{5}{18}",
+              "f": "2*(1/6)*(5/6)",
+              "value": "5/18"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "P(X=2) = \\left(\\tfrac16\\right)^2 = \\tfrac{1}{36}",
+              "f": "(1/6)^2",
+              "value": "1/36"
+            }
+          ],
+          "answer": "(5/6)^2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "a1c1144f",
+        "answer": {
+          "value": 0.6944444444444445,
+          "label": "25/36, 5/18, 1/36"
+        }
+      }
+    },
+    {
+      "id": "425b4a1a-f475-41f4-8b8f-723fd2c7b950",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "n = 6,\\quad p = 0.1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P(5) + P(6) = 6(0.1)^5(0.9) + (0.1)^6",
+              "f": "6*0.1^5*0.9+0.1^6",
+              "value": "55/10^6"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "P = \\tfrac{54 + 1}{10^6} = \\tfrac{55}{(10)^6}",
+              "f": "(54+1)/10^6",
+              "value": "55/10^6"
+            }
+          ],
+          "answer": "55/10^6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "86f8dc7c",
+        "answer": {
+          "value": 0.000055,
+          "label": "55/10⁶"
+        }
+      }
+    },
+    {
+      "id": "4726afa4-59a6-4ea5-ba1a-1a0482261a27",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\binom{100}{50}p^{50}(1-p)^{50} = \\binom{100}{51}p^{51}(1-p)^{49}"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "\\tfrac{1-p}{p} = \\tfrac{50}{51} \\Rightarrow p = \\tfrac{51}{101}",
+              "lhs": "(1-x)/x",
+              "rhs": "50/51",
+              "roots": [
+                "51/101"
+              ]
+            }
+          ],
+          "answer": "51/101"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "77a17ef7",
+        "answer": {
+          "value": 0.504950495049505,
+          "label": "51/101"
+        }
+      }
+    },
+    {
+      "id": "4d4ae058-0cf4-49b1-aca8-c81ca724c971",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "X \\sim \\text{Binomial}\\left(3, \\tfrac12\\right)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Var} = npq = 3\\times\\tfrac12\\times\\tfrac12 = \\tfrac34 = 0.75",
+              "f": "3*(1/2)*(1/2)",
+              "value": "0.75"
+            }
+          ],
+          "answer": "3*(1/2)*(1/2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "a86949ef",
+        "answer": {
+          "value": 0.75,
+          "label": "0.75"
+        }
+      }
+    },
+    {
+      "id": "55b692e0-1454-4bcd-906e-b4861f5f0740",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "20p = 8 \\Rightarrow p = 0.4",
+              "lhs": "20*x",
+              "rhs": "8",
+              "roots": [
+                "0.4"
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\mathrm{Var} = 8 \\times 0.6 = \\tfrac{24}{5}",
+              "f": "8*0.6",
+              "value": "24/5"
+            }
+          ],
+          "answer": "8*0.6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "bafdcbad",
+        "answer": {
+          "value": 4.8,
+          "label": "24/5"
+        }
+      }
+    },
+    {
+      "id": "595381d2-1efd-46ab-a712-cf6437a6ad0b",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "4c - (10-c) = 30 \\Rightarrow c = 8",
+              "lhs": "4*x-(10-x)",
+              "rhs": "30",
+              "roots": [
+                "8"
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "P = {}^{10}C_8\\left(\\tfrac14\\right)^8\\left(\\tfrac34\\right)^2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "P = \\tfrac{45 \\times 9}{4^{10}} = \\tfrac{405}{4^{10}}",
+              "f": "45*9/4^10",
+              "value": "405/4^10"
+            }
+          ],
+          "answer": "45*9/4^10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "9566408e",
+        "answer": {
+          "value": 0.00038623809814453125,
+          "label": "405/4¹⁰"
+        }
+      }
+    },
+    {
+      "id": "5ca6eb9b-3326-4321-bf84-f928f5f1d433",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{primes } 2, 3, 5 \\Rightarrow p = \\tfrac12"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P(\\text{no success}) = \\left(\\tfrac12\\right)^4 = \\tfrac{1}{16}",
+              "f": "(1/2)^4",
+              "value": "1/16"
+            }
+          ],
+          "answer": "(1/2)^4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "7e49d4d6",
+        "answer": {
+          "value": 0.0625,
+          "label": "1/16"
+        }
+      }
+    },
+    {
+      "id": "62944249-a66b-4e76-9181-e21ff52dbf91",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "np = 2,\\ npq = 1 \\Rightarrow q = \\tfrac12,\\ p = \\tfrac12,\\ n = 4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P(X>1) = 1 - P(0) - P(1) = 1 - \\tfrac{1}{16} - \\tfrac{4}{16} = \\tfrac{11}{16}",
+              "f": "1-1/16-4/16",
+              "value": "11/16"
+            }
+          ],
+          "answer": "1-1/16-4/16"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "57dda5b6",
+        "answer": {
+          "value": 0.6875,
+          "label": "11/16"
+        }
+      }
+    },
+    {
+      "id": "67b91581-541f-4277-8245-e3c774999d66",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "P(\\text{non-defective}) = \\tfrac{90}{100} = \\tfrac{9}{10}",
+              "f": "90/100",
+              "value": "9/10"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "P(\\text{none defective}) = \\left(\\tfrac{9}{10}\\right)^5",
+              "note": "5 draws, with replacement assumed"
+            }
+          ],
+          "answer": "(9/10)^5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "2c94fd36",
+        "answer": {
+          "value": 0.5904900000000001,
+          "label": "(9/10)⁵"
+        }
+      }
+    },
+    {
+      "id": "68622250-985a-4a19-aa72-16506967f2ae",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "p = \\tfrac16,\\quad q = \\tfrac56"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P(X=0) = \\tfrac{25}{36}",
+              "f": "25/36",
+              "value": "25/36"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "P(X=1) = 2\\cdot\\tfrac16\\cdot\\tfrac56 = \\tfrac{10}{36} = \\tfrac{5}{18}",
+              "f": "2*(1/6)*(5/6)",
+              "value": "5/18"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "P(X=2) = \\tfrac{1}{36}",
+              "f": "1/36",
+              "value": "1/36"
+            }
+          ],
+          "answer": "25/36"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "865a277a",
+        "answer": {
+          "value": 0.6944444444444444,
+          "label": "25/36, 5/18, 1/36"
+        }
+      }
+    },
+    {
+      "id": "69d7a877-fcb5-4165-a77c-bdf8eda547d0",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "n = 4"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\binom43 p^3 q = 3\\binom44 p^4"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "4p^3 q = 3p^4 \\Rightarrow 4q = 3p"
+            },
+            {
+              "step": "s4",
+              "kind": "eq",
+              "tex": "4(1-p) = 3p \\Rightarrow 4 = 7p \\Rightarrow p = \\tfrac47",
+              "lhs": "4*(1-x)",
+              "rhs": "3*x",
+              "roots": [
+                "4/7"
+              ]
+            }
+          ],
+          "answer": "4/7"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "0ab8bd55",
+        "answer": {
+          "value": 0.5714285714285714,
+          "label": "4/7"
+        }
+      }
+    },
+    {
+      "id": "6bc8ce4a-006a-42c5-ab6e-8ce20d202fa5",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "P(X \\le 2) = \\tfrac{1+5+10}{32} = \\tfrac12",
+              "f": "(1+5+10)/32",
+              "value": "1/2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P(X \\ge 3) = \\tfrac{10+5+1}{32} = \\tfrac12",
+              "f": "(10+5+1)/32",
+              "value": "1/2"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "P(X \\le 2) = P(X \\ge 3)",
+              "note": "the distribution is symmetric"
+            }
+          ],
+          "answer": "(1+5+10)/32"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "5c120f2b",
+        "answer": {
+          "value": 0.5,
+          "label": "both equal 1/2"
+        }
+      }
+    },
+    {
+      "id": "6ff0311a-64a0-4d30-b289-c70f32e07f09",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "P(X=1) = 2\\cdot\\tfrac{4}{52}\\cdot\\tfrac{48}{52} = \\tfrac{24}{169}",
+              "f": "2*(4/52)*(48/52)",
+              "value": "24/169"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P(X=2) = \\left(\\tfrac{4}{52}\\right)^2 = \\tfrac{1}{169}",
+              "f": "(4/52)^2",
+              "value": "1/169"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Sum} = \\tfrac{25}{169}",
+              "f": "24/169+1/169",
+              "value": "25/169"
+            }
+          ],
+          "answer": "24/169+1/169"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a503dacc",
+        "answer": {
+          "value": 0.14792899408284024,
+          "label": "25/169"
+        }
+      }
+    },
+    {
+      "id": "70a80b5b-d288-4cbd-a1a4-3eb6cb2d2692",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "9\\binom64 p^4q^2 = \\binom62 p^2q^4"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{Simplifying: } 9p^2 = q^2"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "3p = q = 1-p \\Rightarrow p = \\tfrac14",
+              "lhs": "3*x",
+              "rhs": "1-x",
+              "roots": [
+                "1/4"
+              ]
+            }
+          ],
+          "answer": "1/4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e9791b77",
+        "answer": {
+          "value": 0.25,
+          "label": "1/4"
+        }
+      }
+    },
+    {
+      "id": "7124e9bb-2af3-4cde-8dc2-d3044818410f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "P(\\text{doublet}) = \\tfrac{6}{36} = \\tfrac16",
+              "f": "6/36",
+              "value": "1/6"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P(\\text{at least one}) = 1-\\left(\\tfrac56\\right)^4 = 1-\\tfrac{625}{1296}",
+              "f": "1-(5/6)^4",
+              "value": "1-625/1296"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "1 - \\tfrac{625}{1296} = \\tfrac{671}{1296}",
+              "f": "1-625/1296",
+              "value": "671/1296",
+              "note": "P(at least one success)"
+            }
+          ],
+          "answer": "1-(5/6)^4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "ff374acf",
+        "answer": {
+          "value": 0.5177469135802468,
+          "label": "671/1296"
+        }
+      }
+    },
+    {
+      "id": "7c12a784-7fce-4f7e-9866-af3cce76e887",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "1-\\left(\\tfrac12\\right)^n > 0.99 \\Rightarrow \\left(\\tfrac12\\right)^n < 0.01"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "2^n > 100"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2^6 = 64 < 100",
+              "f": "2^6",
+              "value": "64"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "2^7 = 128 > 100",
+              "f": "2^7",
+              "value": "128"
+            },
+            {
+              "step": "s5",
+              "kind": "note",
+              "tex": "\\text{Minimum } n = 7"
+            }
+          ],
+          "answer": "7"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "f09e8380",
+        "answer": {
+          "value": 7,
+          "label": "n = 7"
+        }
+      }
+    },
+    {
+      "id": "7ce25450-c2ab-4ac5-9636-7c34fb751168",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "P = {}^{12}C_9(0.1)^9(0.9)^3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "220\\cdot\\tfrac{9^3}{10^{12}} = 22\\left(\\tfrac{9^3}{10^{11}}\\right)",
+              "f": "220*9^3/10^12",
+              "value": "22*(9^3/10^11)"
+            }
+          ],
+          "answer": "22*(9^3/10^11)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "fe36072c",
+        "answer": {
+          "value": 1.6038e-7,
+          "label": "22(9³/10¹¹)"
+        }
+      }
+    },
+    {
+      "id": "7d6d6465-5110-4db9-ba17-265221dc7cf0",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "p = \\tfrac{10}{100} = \\tfrac{1}{10},\\quad q = \\tfrac{9}{10}",
+              "f": "10/100",
+              "value": "1/10"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "P(X=3) = {}^6C_3\\left(\\tfrac1{10}\\right)^3\\left(\\tfrac9{10}\\right)^3"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "20\\cdot\\tfrac{729}{10^6} = \\tfrac{14580}{10^6}",
+              "f": "20*729/10^6",
+              "value": "14580/10^6"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "P(X=3) = \\tfrac{14580}{10^6} = 0.01458",
+              "f": "14580/10^6",
+              "value": "0.01458"
+            }
+          ],
+          "answer": "14580/10^6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "930c93e9",
+        "answer": {
+          "value": 0.01458,
+          "label": "0.01458"
+        }
+      }
+    },
+    {
+      "id": "81e4a608-c94d-4e8c-a4d9-22877b7f91cb",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "X \\sim B\\left(5, \\tfrac13\\right)"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "P(X\\ge4) = P(4)+P(5) = \\binom54\\left(\\tfrac13\\right)^4\\left(\\tfrac23\\right)+\\left(\\tfrac13\\right)^5"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "P = \\tfrac{10+1}{243} = \\tfrac{11}{3^5}",
+              "f": "(10+1)/243",
+              "value": "11/3^5"
+            }
+          ],
+          "answer": "(10+1)/243"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "4fc15aba",
+        "answer": {
+          "value": 0.04526748971193416,
+          "label": "11/3⁵"
+        }
+      }
+    },
+    {
+      "id": "826bff24-c4f7-42cb-b183-a197d9d3ebcd",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "P(5\\text{ tails}) = P(7\\text{ tails}) \\Rightarrow {}^nC_5 = {}^nC_7 \\Rightarrow n = 12"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "P(3\\text{ tails}) = {}^{12}C_3\\left(\\tfrac12\\right)^{12}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\tfrac{220}{2^{12}} = \\tfrac{55}{2^{10}}",
+              "f": "220/2^12",
+              "value": "55/2^10"
+            }
+          ],
+          "answer": "220/2^12"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f53b179e",
+        "answer": {
+          "value": 0.0537109375,
+          "label": "55/2¹⁰"
+        }
+      }
+    },
+    {
+      "id": "8388d89e-10aa-4369-bc6a-7975159cebc4",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "n = 5,\\ p = 0.1,\\ q = 0.9"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "P(X \\le 1) = P(0) + P(1) = q^5 + 5pq^4"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "P = \\left(\\tfrac9{10}\\right)^5 + 5\\cdot\\tfrac1{10}\\left(\\tfrac9{10}\\right)^4"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "P = \\tfrac{9^5}{10^5} + \\tfrac{5\\cdot 9^4}{10^5}",
+              "f": "(9/10)^5+5*(1/10)*(9/10)^4",
+              "value": "9^5/10^5+5*9^4/10^5"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "P = \\tfrac{9^4(9+5)}{10^5} = \\tfrac{14\\cdot 9^4}{10^5}",
+              "f": "9^5/10^5+5*9^4/10^5",
+              "value": "14*9^4/10^5"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "P = \\tfrac{14}{10}\\cdot\\tfrac{9^4}{10^4} = \\tfrac75\\left(\\tfrac9{10}\\right)^4",
+              "f": "14*9^4/10^5",
+              "value": "7/5*(9/10)^4"
+            }
+          ],
+          "answer": "7/5*(9/10)^4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "5e832665",
+        "answer": {
+          "value": 0.9185399999999999,
+          "label": "(7/5)(9/10)⁴"
+        }
+      }
+    },
+    {
+      "id": "84c8c063-5781-4b46-92c2-ab23768d2fd1",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "5q^{10} = 10pq^9 \\Rightarrow q = 2p"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "p + q = 1:\\ 3p = 1 \\Rightarrow p = \\tfrac13,\\ q = \\tfrac23",
+              "lhs": "3*x",
+              "rhs": "1",
+              "roots": [
+                "1/3"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "\\tfrac{P(X=5)}{P(X=6)} = \\tfrac{{}^{10}C_5\\, p^5q^5}{{}^{10}C_6\\, p^6q^4} = \\tfrac{{}^{10}C_5}{{}^{10}C_6}\\cdot\\tfrac qp"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\tfrac{6}{5}\\cdot 2 = \\tfrac{12}{5}",
+              "f": "6/5*2",
+              "value": "12/5"
+            }
+          ],
+          "answer": "6/5*2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "8835d171",
+        "answer": {
+          "value": 2.4,
+          "label": "12/5"
+        }
+      }
+    },
+    {
+      "id": "87fb5973-dd2a-45fe-8225-2b7010e0b433",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "P(X=r) = {}^{99}C_r\\left(\\tfrac12\\right)^{99}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "{}^{n}C_r \\text{ is maximum at } r = \\tfrac{n-1}{2} \\text{ and } r = \\tfrac{n+1}{2}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "r = \\tfrac{n-1}{2} = 49",
+              "f": "(99-1)/2",
+              "value": "49"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "r = \\tfrac{n+1}{2} = 50",
+              "f": "(99+1)/2",
+              "value": "50"
+            },
+            {
+              "step": "s5",
+              "kind": "note",
+              "tex": "\\text{Among the options, } r = 49"
+            }
+          ],
+          "answer": "(99-1)/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "a94a49e0",
+        "answer": {
+          "value": 49,
+          "label": "r = 49"
+        }
+      }
+    },
+    {
+      "id": "881459e6-c140-42a5-bf15-61c85519abae",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "p = \\tfrac{15}{25} = \\tfrac35,\\quad q = \\tfrac25,\\quad n = 10",
+              "f": "15/25",
+              "value": "3/5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Variance} = npq = 10\\times\\tfrac35\\times\\tfrac25 = \\tfrac{60}{25}",
+              "f": "10*(3/5)*(2/5)",
+              "value": "60/25"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Variance} = \\tfrac{60}{25} = \\tfrac{12}{5}",
+              "f": "60/25",
+              "value": "12/5"
+            }
+          ],
+          "answer": "60/25"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "08feef1b",
+        "answer": {
+          "value": 2.4,
+          "label": "12/5"
+        }
+      }
+    },
+    {
+      "id": "89c17c07-10c2-417d-83e7-5d5ffb1aa2c0",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "X \\sim B\\left(4, \\tfrac23\\right)"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "P(X\\le2) = \\binom40 q^4 + \\binom41 pq^3 + \\binom42 p^2q^2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "P = \\tfrac{1}{81}+\\tfrac{8}{81}+\\tfrac{24}{81} = \\tfrac{33}{81}",
+              "f": "1/81+8/81+24/81",
+              "value": "33/81"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "P = \\tfrac{33}{81} = \\tfrac{33}{3^4}",
+              "f": "33/81",
+              "value": "33/3^4"
+            }
+          ],
+          "answer": "33/81"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "d3911970",
+        "answer": {
+          "value": 0.4074074074074074,
+          "label": "33/3⁴"
+        }
+      }
+    },
+    {
+      "id": "8a9e9f6c-0121-437b-ac9f-26dae6aa28ed",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\tfrac{P(X=1)}{P(X=2)}:\\ \\tfrac{5q}{10p} = 2 \\Rightarrow q = 4p"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "p + q = 1 \\Rightarrow p = \\tfrac15,\\ q = \\tfrac45"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "P(X=4) = \\binom54\\left(\\tfrac15\\right)^4\\left(\\tfrac45\\right)"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "P(X=4) = 5\\cdot\\tfrac{4}{5^5} = \\tfrac{4}{625}",
+              "f": "5*4/5^5",
+              "value": "4/625"
+            }
+          ],
+          "answer": "5*4/5^5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "29078a5d",
+        "answer": {
+          "value": 0.0064,
+          "label": "4/625"
+        }
+      }
+    },
+    {
+      "id": "91406125-6a2b-4bb1-936a-db8909b0e34f",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "p = \\tfrac14:\\ {}^4C_2\\left(\\tfrac14\\right)^2\\left(\\tfrac34\\right)^2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\tfrac{6\\times9}{256} = \\tfrac{27}{128}",
+              "f": "6*9/256",
+              "value": "27/128"
+            }
+          ],
+          "answer": "6*9/256"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "df737657",
+        "answer": {
+          "value": 0.2109375,
+          "label": "27/128"
+        }
+      }
+    },
+    {
+      "id": "920d507e-872f-484d-a569-41790b6ef188",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "2\\binom43 p^3q = 3\\binom42 p^2q^2 \\Rightarrow 8p = 18q"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "4p = 9q = 9(1-p) \\Rightarrow p = \\tfrac9{13},\\ q = \\tfrac4{13}",
+              "lhs": "4*x",
+              "rhs": "9*(1-x)",
+              "roots": [
+                "9/13"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Variance} = npq = 4\\times\\tfrac9{13}\\times\\tfrac4{13} = \\tfrac{144}{169}",
+              "f": "4*(9/13)*(4/13)",
+              "value": "144/169"
+            }
+          ],
+          "answer": "4*(9/13)*(4/13)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a5744e89",
+        "answer": {
+          "value": 0.8520710059171598,
+          "label": "144/169"
+        }
+      }
+    },
+    {
+      "id": "93ce0380-fac1-4d36-8bbe-50ecdc049afa",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "{}^5C_3 p^3q^2 = 2\\cdot{}^5C_2 p^2q^3 \\Rightarrow p = 2q = \\tfrac23,\\ q = \\tfrac13"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P(X=0) = \\left(\\tfrac13\\right)^5 = \\tfrac{1}{243}",
+              "f": "(1/3)^5",
+              "value": "1/243"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Expected} = \\tfrac{6804}{243} = 28",
+              "f": "6804/243",
+              "value": "28"
+            }
+          ],
+          "answer": "6804/243"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "fb160d38",
+        "answer": {
+          "value": 28,
+          "label": "28"
+        }
+      }
+    },
+    {
+      "id": "94649236-d951-4e48-a46f-f105d3063dea",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "p = \\tfrac{4}{52} = \\tfrac{1}{13}",
+              "f": "4/52",
+              "value": "1/13"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Mean} = np = 2\\times\\tfrac{1}{13} = \\tfrac{2}{13}",
+              "f": "2*(1/13)",
+              "value": "2/13"
+            }
+          ],
+          "answer": "2*(1/13)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "43c69175",
+        "answer": {
+          "value": 0.15384615384615385,
+          "label": "2/13"
+        }
+      }
+    },
+    {
+      "id": "96f387a8-388f-4c17-99a5-5cfccfe9fc8e",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "1-\\left(\\tfrac12\\right)^n > 0.8 \\Rightarrow \\left(\\tfrac12\\right)^n < 0.2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "n = 2:\\ \\left(\\tfrac12\\right)^2 = 0.25",
+              "f": "(1/2)^2",
+              "value": "0.25"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "n = 3:\\ \\left(\\tfrac12\\right)^3 = 0.125",
+              "f": "(1/2)^3",
+              "value": "0.125"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "\\text{Least } n = 3"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "5d0fb9fe",
+        "answer": {
+          "value": 3,
+          "label": "n = 3"
+        }
+      }
+    },
+    {
+      "id": "9dc30751-79fb-4880-9898-6b49b47ab2e1",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "t^2 - 3t + 2 = 0 \\Rightarrow t = 1,\\ 2",
+              "lhs": "x^2-3*x+2",
+              "rhs": "0",
+              "roots": [
+                "1",
+                "2"
+              ],
+              "note": "mean and variance are the roots"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "np = 2,\\quad npq = 1"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "q = \\tfrac12,\\quad n = 4"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "P(X>0) = 1 - \\left(\\tfrac12\\right)^4 = \\tfrac{15}{16}",
+              "f": "1-(1/2)^4",
+              "value": "15/16"
+            }
+          ],
+          "answer": "1-(1/2)^4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "2b9fbdd3",
+        "answer": {
+          "value": 0.9375,
+          "label": "15/16"
+        }
+      }
+    },
+    {
+      "id": "a38cddde-8ed7-4a1b-a571-c94122898808",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "P(X \\le 2) = \\tfrac{{}^8C_0 + {}^8C_1 + {}^8C_2}{2^8}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\tfrac{1+8+28}{256} = \\tfrac{37}{256}",
+              "f": "(1+8+28)/256",
+              "value": "37/256"
+            }
+          ],
+          "answer": "(1+8+28)/256"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "e62b1790",
+        "answer": {
+          "value": 0.14453125,
+          "label": "37/256"
+        }
+      }
+    },
+    {
+      "id": "a44113e3-4e53-4332-ad80-97fa91779708",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "p = \\tfrac{4}{52} = \\tfrac{1}{13},\\quad n = 2",
+              "f": "4/52",
+              "value": "1/13"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Mean} = np = \\tfrac{2}{13}",
+              "f": "2*(1/13)",
+              "value": "2/13"
+            }
+          ],
+          "answer": "2*(1/13)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "03875393",
+        "answer": {
+          "value": 0.15384615384615385,
+          "label": "2/13"
+        }
+      }
+    },
+    {
+      "id": "ab12bc62-98e5-4aa6-93cf-e64b65bf6594",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "np + npq = 1.8"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "5p(2-p) = 1.8",
+              "lhs": "5*x*(2-x)",
+              "rhs": "1.8",
+              "roots": [
+                "1/5",
+                "9/5"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "25p^2 - 50p + 9 = 0",
+              "lhs": "25*x^2-50*x+9",
+              "rhs": "0",
+              "roots": [
+                "1/5",
+                "9/5"
+              ]
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "p = \\tfrac15 = 0.2"
+            },
+            {
+              "step": "s5",
+              "kind": "note",
+              "tex": "p = \\tfrac95 \\text{ rejected}"
+            }
+          ],
+          "answer": "1/5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "aa0a8d57",
+        "answer": {
+          "value": 0.2,
+          "label": "0.2"
+        }
+      }
+    },
+    {
+      "id": "ae421948-0ab5-44de-8cd8-cd119db20fad",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "np = 8,\\ npq = 4 \\Rightarrow q = \\tfrac12,\\ p = \\tfrac12,\\ n = 16"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "P(X\\le2) = \\left[\\binom{16}{0}+\\binom{16}{1}+\\binom{16}{2}\\right] \\div 2^{16}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\tfrac{1+16+120}{2^{16}} = \\tfrac{137}{2^{16}}",
+              "f": "(1+16+120)/2^16",
+              "value": "137/2^16"
+            }
+          ],
+          "answer": "1+16+120"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "6fd504a7",
+        "answer": {
+          "value": 137,
+          "label": "k = 137"
+        }
+      }
+    },
+    {
+      "id": "b2c0ac0d-d548-4cbc-825d-271447f7b79a",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "1 - (0.4)^5 = 1 - 0.01024",
+              "f": "1-0.4^5",
+              "value": "1-0.01024"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "1 - 0.01024 = 0.98976",
+              "f": "1-0.01024",
+              "value": "0.98976"
+            }
+          ],
+          "answer": "1-0.4^5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "703dd348",
+        "answer": {
+          "value": 0.98976,
+          "label": "0.98976"
+        }
+      }
+    },
+    {
+      "id": "b3566cd5-b3c3-4746-ac59-76fb6ef25b95",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "np = 2,\\ npq = 1:\\ q = \\tfrac12,\\ p = \\tfrac12,\\ n = 4"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "P(X\\ge1) = 1 - P(X=0) = 1 - \\binom40\\left(\\tfrac12\\right)^4"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "P(X\\ge1) = 1 - \\tfrac{1}{16} = \\tfrac{15}{16}",
+              "f": "1-1/16",
+              "value": "15/16"
+            }
+          ],
+          "answer": "1-1/16"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "7dc42a48",
+        "answer": {
+          "value": 0.9375,
+          "label": "15/16"
+        }
+      }
+    },
+    {
+      "id": "b99fa9d2-cb55-42c7-b843-b9b6f9918bae",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "p = \\tfrac13,\\ q = \\tfrac23,\\ n = 5"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "P(X\\ge4) = \\binom54\\left(\\tfrac13\\right)^4\\left(\\tfrac23\\right)+\\binom55\\left(\\tfrac13\\right)^5"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "P = \\tfrac{10}{243}+\\tfrac{1}{243} = \\tfrac{11}{243}",
+              "f": "10/243+1/243",
+              "value": "11/243"
+            }
+          ],
+          "answer": "10/243+1/243"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "b80a6acb",
+        "answer": {
+          "value": 0.04526748971193416,
+          "label": "11/243"
+        }
+      }
+    },
+    {
+      "id": "be9c7ddf-b582-436d-8d63-98bfd9477034",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "P(2\\le X\\le6) = 1 - \\tfrac{1+8+8+1}{256} = \\tfrac{238}{256}",
+              "f": "1-(1+8+8+1)/256",
+              "value": "238/256"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P = \\tfrac{238}{256} = \\tfrac{119}{128}",
+              "f": "238/256",
+              "value": "119/128"
+            }
+          ],
+          "answer": "238/256"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "5c38e0f6",
+        "answer": {
+          "value": 0.9296875,
+          "label": "119/128"
+        }
+      }
+    },
+    {
+      "id": "c1a4e984-658b-4001-8e83-8ff3e7aaf766",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "n = 3,\\quad p = \\tfrac12"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Variance} = npq = 3\\times\\tfrac12\\times\\tfrac12 = 0.75",
+              "f": "3*(1/2)*(1/2)",
+              "value": "0.75"
+            }
+          ],
+          "answer": "3*(1/2)*(1/2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "3e1a4755",
+        "answer": {
+          "value": 0.75,
+          "label": "0.75"
+        }
+      }
+    },
+    {
+      "id": "c3b1dd23-298c-42d2-b055-d856c4a1bd7f",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "E:\\ \\{38, 46, 64, 83\\}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "p = \\tfrac{4}{100} = \\tfrac{1}{25},\\quad q = \\tfrac{24}{25}",
+              "f": "4/100",
+              "value": "1/25"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "P(X\\ge3) = {}^4C_3\\left(\\tfrac1{25}\\right)^3\\left(\\tfrac{24}{25}\\right)+\\left(\\tfrac1{25}\\right)^4"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "P = \\left(\\tfrac1{25}\\right)^4(96+1) = \\tfrac{97}{(25)^4}",
+              "f": "(1/25)^4*(96+1)",
+              "value": "97/25^4"
+            }
+          ],
+          "answer": "97/25^4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "881c2e38",
+        "answer": {
+          "value": 0.00024832,
+          "label": "97/25⁴"
+        }
+      }
+    },
+    {
+      "id": "c4df4a20-a3e0-4de9-8bfd-835fbc6b2cf4",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "p = \\tfrac26 = \\tfrac13 \\text{ per die}",
+              "f": "2/6",
+              "value": "1/3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P(X\\ge2) = 1 - P(0) - P(1) = \\tfrac{33}{81} = \\tfrac{11}{27}",
+              "f": "33/81",
+              "value": "11/27"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Expected} = 27\\times\\tfrac{11}{27} = 11",
+              "f": "27*11/27",
+              "value": "11"
+            }
+          ],
+          "answer": "27*11/27"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "58841fa7",
+        "answer": {
+          "value": 11,
+          "label": "11"
+        }
+      }
+    },
+    {
+      "id": "c9ec51df-fe36-49a4-b1b8-c904da87ac9e",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "5pq^4 = 0.4096,\\quad 10p^2q^3 = 0.2048"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{Dividing: } \\tfrac{2p}{q} = \\tfrac12 \\Rightarrow p = \\tfrac15,\\ q = \\tfrac45"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "P(X=3) = \\binom53\\left(\\tfrac15\\right)^3\\left(\\tfrac45\\right)^2"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "10\\times\\tfrac{16}{3125} = \\tfrac{32}{625}",
+              "f": "10*16/3125",
+              "value": "32/625"
+            }
+          ],
+          "answer": "10*16/3125"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "87c9df71",
+        "answer": {
+          "value": 0.0512,
+          "label": "32/625"
+        }
+      }
+    },
+    {
+      "id": "ca65d960-f7c4-462a-a2fc-9793df2fb275",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "n = 2,\\quad p = \\tfrac{4}{52} = \\tfrac{1}{13}",
+              "f": "4/52",
+              "value": "1/13"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Mean} = np = 2\\times\\tfrac{1}{13} = \\tfrac{2}{13}",
+              "f": "2*(1/13)",
+              "value": "2/13"
+            }
+          ],
+          "answer": "2*(1/13)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "31d3e38a",
+        "answer": {
+          "value": 0.15384615384615385,
+          "label": "2/13"
+        }
+      }
+    },
+    {
+      "id": "cb85759c-f9a0-406e-b43f-78e3e87590f0",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "P(X\\ge2) = 1 - (0.6)^{10} - 10(0.4)(0.6)^9"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P = 1 - (0.6)^9(0.6+4)",
+              "f": "1-0.6^10-10*0.4*0.6^9",
+              "value": "1-0.6^9*(0.6+4)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "P = 1 - (0.6)^9(4.6)",
+              "f": "1-0.6^9*(0.6+4)",
+              "value": "1-0.6^9*4.6"
+            }
+          ],
+          "answer": "1-0.6^9*4.6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "70446dda",
+        "answer": {
+          "value": 0.9536425984,
+          "label": "1 − (0.6)⁹(4.6)"
+        }
+      }
+    },
+    {
+      "id": "cbc25d86-1f98-4859-a5f5-89d56587e76f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "15p^4q^2 = \\tfrac{135}{4096} \\Rightarrow p = \\tfrac14,\\ q = \\tfrac34",
+              "f": "15*(1/4)^4*(3/4)^2",
+              "value": "135/4096"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Var} = npq = 6\\cdot\\tfrac14\\cdot\\tfrac34 = \\tfrac98",
+              "f": "6*(1/4)*(3/4)",
+              "value": "9/8"
+            }
+          ],
+          "answer": "6*(1/4)*(3/4)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "6176287a",
+        "answer": {
+          "value": 1.125,
+          "label": "9/8"
+        }
+      }
+    },
+    {
+      "id": "ce87e66f-a6e1-46ea-bd7a-410f564b0bf8",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "3q^{33} = 33pq^{32} \\Rightarrow 3q = 33p \\Rightarrow q = 11p"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "p+q = 1:\\ 12p = 1 \\Rightarrow p = \\tfrac1{12},\\ q = \\tfrac{11}{12}",
+              "lhs": "12*x",
+              "rhs": "1",
+              "roots": [
+                "1/12"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Variance} = npq = 33\\cdot\\tfrac1{12}\\cdot\\tfrac{11}{12} = \\tfrac{363}{144}",
+              "f": "33*(1/12)*(11/12)",
+              "value": "363/144"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{Variance} = \\tfrac{363}{144} = \\tfrac{121}{48}",
+              "f": "363/144",
+              "value": "121/48"
+            }
+          ],
+          "answer": "363/144"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "9b19a86f",
+        "answer": {
+          "value": 2.5208333333333335,
+          "label": "121/48"
+        }
+      }
+    },
+    {
+      "id": "d8165fa9-5ed1-4059-a6f8-f9c8ca04407f",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "P(X=8) = {}^{11}C_8(0.6)^8(0.4)^3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "165\\times0.0168\\times0.064 = 0.1774",
+              "f": "165*0.0168*0.064",
+              "value": "0.1774",
+              "dp": 4
+            }
+          ],
+          "answer": "165*0.0168*0.064"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "36780463",
+        "answer": {
+          "value": 0.17740799999999998,
+          "label": "0.1774"
+        }
+      }
+    },
+    {
+      "id": "e613b6bb-a9e3-4801-ad2b-2c7b97c3f2b5",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "P(2\\le x\\le6) = 1 - P(X=0) - P(X=1)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P = 1 - \\tfrac{1+6}{64} = \\tfrac{57}{64}",
+              "f": "1-(1+6)/64",
+              "value": "57/64"
+            }
+          ],
+          "answer": "1-(1+6)/64"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "94104795",
+        "answer": {
+          "value": 0.890625,
+          "label": "57/64"
+        }
+      }
+    },
+    {
+      "id": "ea8f80d6-3a94-432d-aae2-151469515ec8",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "p = \\tfrac{6}{36} = \\tfrac16,\\quad q = \\tfrac56,\\quad n = 4",
+              "f": "6/36",
+              "value": "1/6"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "P(X=2) = \\binom42\\left(\\tfrac16\\right)^2\\left(\\tfrac56\\right)^2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "P = 6\\cdot\\tfrac{25}{1296} = \\tfrac{25}{216}",
+              "f": "6*25/1296",
+              "value": "25/216"
+            }
+          ],
+          "answer": "6*25/1296"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "55e7f70e",
+        "answer": {
+          "value": 0.11574074074074074,
+          "label": "25/216"
+        }
+      }
+    },
+    {
+      "id": "ef8d9961-cbba-4562-8a99-4e2587001df6",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "p = \\tfrac{4}{52} = \\tfrac{1}{13},\\quad q = \\tfrac{12}{13}",
+              "f": "4/52",
+              "value": "1/13"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P(X=1) = 2\\cdot\\tfrac1{13}\\cdot\\tfrac{12}{13} = \\tfrac{24}{169}",
+              "f": "2*(1/13)*(12/13)",
+              "value": "24/169"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "P(X=2) = \\tfrac{1}{169}"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{Sum} = \\tfrac{25}{169}",
+              "f": "24/169+1/169",
+              "value": "25/169"
+            }
+          ],
+          "answer": "24/169+1/169"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "f2b32150",
+        "answer": {
+          "value": 0.14792899408284024,
+          "label": "25/169"
+        }
+      }
+    },
+    {
+      "id": "f242fd53-af07-4d59-961e-e8f7e1a1c90b",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "q = \\tfrac16,\\quad p = \\tfrac56,\\quad n = 6"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "P(X=5) = {}^6C_5\\left(\\tfrac56\\right)^5\\left(\\tfrac16\\right)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "6\\cdot\\left(\\tfrac56\\right)^5\\cdot\\tfrac16 = \\left(\\tfrac56\\right)^5",
+              "f": "6*(5/6)^5*(1/6)",
+              "value": "(5/6)^5"
+            }
+          ],
+          "answer": "(5/6)^5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "18c4fca5",
+        "answer": {
+          "value": 0.401877572016461,
+          "label": "(5/6)⁵"
+        }
+      }
+    },
+    {
+      "id": "f3bef7e2-adf7-475b-8566-d9e97f9596ae",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\mu = np = 4\\cdot\\tfrac12 = 2",
+              "f": "4*(1/2)",
+              "value": "2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\sigma^2 = npq = 4\\cdot\\tfrac12\\cdot\\tfrac12 = 1",
+              "f": "4*(1/2)*(1/2)",
+              "value": "1"
+            }
+          ],
+          "answer": "4*(1/2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "82684e72",
+        "answer": {
+          "value": 2,
+          "label": "μ = 2, σ² = 1"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
