@@ -66,6 +66,24 @@ def first_figure(a, col):
     for b in boxes:
         if b[0].start >= y0 - 3 and b[0].stop <= y1 + 3 and b[1].start >= x0 - 40 and b[1].stop <= x1 + 40:
             x0, x1 = min(x0, b[1].start), max(x1, b[1].stop)
+    # ...and so do shapes TOUCHING it from above or below, repeated until nothing more joins: a
+    # mirror line's hatching and its "M"/"N" labels sit on the figure's top edge (CPO 9 Dec 2025
+    # S1 Q18 lost them). Four px is under any gap between a figure and the text or copy beside it.
+    # The mirror line is wider than the figure, so a touching shape need only overlap it sideways,
+    # up to three times its width (never a page-wide frame rule: 600 px at most)
+    grown = True
+    while grown:
+        grown = False
+        for b in boxes:
+            if b[0].start >= y0 and b[0].stop <= y1 and b[1].start >= x0 and b[1].stop <= x1:
+                continue
+            w = b[1].stop - b[1].start
+            beside = b[1].start >= x0 - 40 and b[1].stop <= x1 + 40
+            over = b[1].start < x1 and b[1].stop > x0 and w <= min(3 * (x1 - x0), 600)
+            if b[0].stop >= y0 - 4 and b[0].start <= y1 + 4 and (beside or over):
+                y0, y1 = min(y0, b[0].start), max(y1, b[0].stop)
+                x0, x1 = min(x0, b[1].start), max(x1, b[1].stop)
+                grown = True
     return x0, y0, x1, y1
 
 
@@ -75,7 +93,16 @@ def cut(a, box, what=""):
     # whiten the pale watermark on a line drawing; a photo (a quarter or more of it dark) keeps
     # its light tones, which whitening would burn out (25 Nov S1 Q90, Saturn)
     if (c.sum(axis=2) < INK).mean() < 0.25:
-        c[c.sum(axis=2) >= WATERMARK] = 255
+        s = c.sum(axis=2)
+        pale = (s >= WATERMARK) & (s < 700)
+        # ...but a figure's own pale RULED line is as light as the watermark (CPO 9 Dec 2025 S2
+        # Q34's middle line, sum ~560, was erased and the count changed): keep pale pixels in a
+        # column or row that pale ink covers for half the crop or more; the watermark is diagonal
+        # text and never fills one
+        ruled = np.zeros_like(pale)
+        ruled[:, pale.mean(axis=0) >= 0.5] = True
+        ruled[pale.mean(axis=1) >= 0.5, :] = True
+        c[(s >= WATERMARK) & ~(ruled & pale)] = 255
     if key_mask(c.astype(int)).any():
         km = key_mask(c.astype(int))
         ys, xs = np.nonzero(km)
