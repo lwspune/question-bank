@@ -29,6 +29,10 @@ that is the same picture again, at its own resolution.
 1. **Never open** `questions.json`, `geometry.json`, `rows.json`, anything under `img/`, or anything
    else under `scripts/rrb-ntpc/out/` except `sheets/` and your own draft. They hold RRB's key.
    Never open the source PDFs or download any paper: they show the key in colour.
+   **Never search or grep `scripts/rrb-ntpc/transcripts/`**: those are other shifts SETTLED
+   against the key, and RRB repeats facts across shifts, so a solution there can answer your
+   question. Read only the first five blocks of the one example named below, for format. Search
+   `catalog.json` for catalog names, never the transcripts.
 2. No database writes, no git, no edits to any repo file except your draft.
 3. Never run `build.ts` without `--blind`.
 4. Write your draft with the **Write tool** (a shell heredoc breaks on apostrophes and
@@ -90,6 +94,8 @@ solution:
   search. Search the FACT (names, dates, terms), never the question's own wording: quiz sites
   carry these exact questions with their answers, and seeing one ends the blind derivation. If a
   result shows this question with an answer anyway, say so in your report.
+- **Series counting** ("how many letters are immediately preceded by a symbol ..."): check every
+  item, the FIRST and LAST included. 22 Mar S2 Q33 missed the letter after an opening "=".
 - **Flawed:** if no option is right or two are, still give the best answer and add
   `flawed: yes` and `note: <why>` after `answer:`.
 - **Figures:** if a question needs a picture (figure, diagram, map, chart) to be answered, add
