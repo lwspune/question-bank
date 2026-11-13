@@ -77,8 +77,9 @@ solution:
   a negative option is `\(-1\)`) × ÷ → ← ≥ ≤ ≠ ≈ ∞ √ ∑ °
   ± · superscript or subscript digits, Greek letters, ½ ⅓ ¼ ¾, ∈ ∪ ∩. Write `\(\times\)`,
   `\(\ge\)`, `\(30^\circ\)`, `\(\sqrt{3}\)`, `\(\frac{a}{b}\)`, `\(\pi\)`, `\(\text{cm}^2\)`.
-  The rupee sign ₹ is fine. Write every dollar sign escaped, `\$`. Reasoning symbol series
-  (© @ £ € # &) are fine as printed, except `$`, which is `\$`.
+  The rupee sign ₹ is fine (keep it OUTSIDE maths). Write every dollar sign escaped, `\$`.
+  Reasoning symbol series (© @ £ € # &) are fine as printed, except `$`, which is `\$`, a
+  backslash, which is `\(\backslash\)`, and Ω, which is `\(\Omega\)`.
 - **Difficulty** on the NTPC scale (a graduate-level screening test, a step easier than SSC CGL):
   one-step or common-knowledge items EASY, two or three steps or a specific fact MODERATE, heavy
   working or an obscure fact HARD.
