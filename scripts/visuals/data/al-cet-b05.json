@@ -1,0 +1,6049 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "01088a51-9756-45f4-a4ab-ff35c3f72bbd",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\tan^{-1}\\left(\\dfrac{2x^{5/2}}{1 - x^5}\\right)",
+              "f": "atan(2*x^(5/2)/(1-x^5))",
+              "restart": true,
+              "domain": [
+                0.1,
+                0.9
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = 2\\tan^{-1}\\left(x^{5/2}\\right)",
+              "f": "2*atan(x^(5/2))",
+              "note": "t = x^(5/2)"
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "\\dfrac{dy}{dx} = \\dfrac{2}{1 + x^5} \\cdot \\dfrac{5}{2}x^{3/2}",
+              "f": "2/(1+x^5)*(5/2)*x^(3/2)"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "= \\dfrac{5x^{3/2}}{1 + x^5}",
+              "f": "5*x^(3/2)/(1+x^5)"
+            }
+          ],
+          "answer": "5*x0^(3/2)/(1+x0^5)",
+          "vars": {
+            "x0": "0.5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "160f8981",
+        "answer": {
+          "value": 1.7141982574219334,
+          "label": "5x^(3/2)/(1+x⁵)"
+        }
+      }
+    },
+    {
+      "id": "01448b36-dc77-45d3-8104-21279652737e",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\dfrac{x - x^2\\log x}{x^2 + x\\log x}",
+              "f": "(x-x^2*log(x))/(x^2+x*log(x))",
+              "restart": true,
+              "domain": [
+                0.7,
+                1.6
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "= \\dfrac{1 - x\\log x}{x + \\log x}",
+              "f": "(1-x*log(x))/(x+log(x))"
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\tan^{-1}\\left(\\dfrac{x + \\log x}{1 - x\\log x}\\right)",
+              "f": "atan((x+log(x))/(1-x*log(x)))",
+              "restart": true,
+              "domain": [
+                0.7,
+                1.6
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\tan^{-1}x + \\tan^{-1}(\\log x)",
+              "f": "atan(x)+atan(log(x))",
+              "note": "valid since x log x < 1"
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "\\dfrac{dy}{dx} = \\dfrac{1}{1 + x^2} + \\dfrac{1}{x[1 + (\\log x)^2]}",
+              "f": "1/(1+x^2)+1/(x*(1+log(x)^2))"
+            }
+          ],
+          "answer": "1/(1+x0^2)+1/(x0*(1+log(x0)^2))",
+          "vars": {
+            "x0": "1.2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "da8f5a25",
+        "answer": {
+          "value": 1.216359628127825,
+          "label": "1/(1+x²) + 1/(x[1+(log x)²])"
+        }
+      }
+    },
+    {
+      "id": "02d417d3-d7f3-447e-bfd5-1efb198123a6",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "h = f^2 + g^2,\\quad f' = g,\\quad g' = f'' = -f"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "h' = 2ff' + 2gg' = 2fg + 2g(-f) = 0",
+              "f": "2*f0*g0+2*g0*(-f0)",
+              "value": "0",
+              "note": "so h is constant"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "h(10) = h(5) = 11",
+              "f": "11",
+              "value": "11"
+            }
+          ],
+          "answer": "11",
+          "vars": {
+            "f0": "2",
+            "g0": "3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "21049acd",
+        "answer": {
+          "value": 11,
+          "label": "11"
+        }
+      }
+    },
+    {
+      "id": "0314d287-a544-4023-a4bd-74740cf51200",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "y\\log x + x\\log y = 0"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{dy}{dx} = -\\dfrac{y(y + x\\log y)}{x(x + y\\log x)}",
+              "f": "-y0*(y0+x0*log(y0))/(x0*(x0+y0*log(x0)))",
+              "value": "-y0^2*(1-log(x0))/(x0^2*(1-log(y0)))"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{dy}{dx} = \\dfrac{-y^2(1 - \\log x)}{x^2(1 - \\log y)}",
+              "f": "-y0^2*(1-log(x0))/(x0^2*(1-log(y0)))",
+              "value": "-y0*(y0+x0*log(y0))/(x0*(x0+y0*log(x0)))",
+              "note": "x log y = −y log x, y log x = −x log y"
+            }
+          ],
+          "answer": "-y0^2*(1-log(x0))/(x0^2*(1-log(y0)))",
+          "vars": {
+            "t": "2",
+            "x0": "t^(-1/(1+t))",
+            "y0": "t*x0"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "a25d2e57",
+        "answer": {
+          "value": -9.154450704213792,
+          "label": "-y²(1−log x)/(x²(1−log y))"
+        }
+      }
+    },
+    {
+      "id": "043b6886-7511-4b2e-a6a0-c50eb9887eb5",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "y^2 = (x - \\sin x) + y"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2y\\dfrac{dy}{dx} = (1 - \\cos x) + \\dfrac{dy}{dx}",
+              "f": "2*y0*p0",
+              "value": "(1-cos(x0))+p0"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{dy}{dx} = \\dfrac{1 - \\cos x}{2y - 1}",
+              "f": "(1-cos(x0))/(2*y0-1)",
+              "value": "p0"
+            }
+          ],
+          "answer": "(1-cos(x0))/(2*y0-1)",
+          "vars": {
+            "x0": "1",
+            "y0": "(1+sqrt(1+4*(x0-sin(x0))))/2",
+            "p0": "(1-cos(x0))/(2*y0-1)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "cea3ca63",
+        "answer": {
+          "value": 0.3596092680561667,
+          "label": "(1−cos x)/(2y−1)"
+        }
+      }
+    },
+    {
+      "id": "04425cc4-e9e1-4d11-bdc1-0cbc0a0cea6d",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "f' - g' = 4 - 2 = 2",
+              "f": "4-2",
+              "value": "2",
+              "note": "f′(1) = 4, g′(1) = 2"
+            },
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f - g = 2x + c"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f(2) - g(2) = 9 - 3 = 6 = 4 + c",
+              "f": "9-3",
+              "value": "4+2",
+              "note": "f(2) = 9, g(2) = 3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "c = 6 - 4 = 2",
+              "f": "6-4",
+              "value": "2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f(4) - g(4) = 8 + 2 = 10",
+              "f": "8+2",
+              "value": "10"
+            }
+          ],
+          "answer": "10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "65e442da",
+        "answer": {
+          "value": 10,
+          "label": "10"
+        }
+      }
+    },
+    {
+      "id": "04dfdbec-d562-4145-ab5d-10c04f55462f",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "y = 2\\sin\\theta,\\quad x = 2\\tan\\theta"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{dx}{dy} = \\sec^3\\theta",
+              "f": "(2/cos(th)^2)/(2*cos(th))",
+              "value": "1/cos(th)^3"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "4 + x^2 = 4\\sec^2\\theta",
+              "f": "4+(2*tan(th))^2",
+              "value": "4/cos(th)^2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "k = \\dfrac{\\sec^3\\theta}{4\\sec^2\\theta} = \\dfrac{\\sec\\theta}{4}",
+              "f": "(1/cos(th)^3)/(4/cos(th)^2)",
+              "value": "1/(4*cos(th))"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\sec\\theta = \\dfrac{\\tan\\theta}{\\sin\\theta} = \\dfrac{x}{y}",
+              "f": "1/cos(th)",
+              "value": "(2*tan(th))/(2*sin(th))"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "k = \\dfrac{x}{4y}",
+              "f": "1/(4*cos(th))",
+              "value": "(2*tan(th))/(4*(2*sin(th)))"
+            }
+          ],
+          "answer": "(2*tan(th))/(4*(2*sin(th)))",
+          "vars": {
+            "th": "0.7"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "607778d5",
+        "answer": {
+          "value": 0.3268648149333985,
+          "label": "k = x/(4y)"
+        }
+      }
+    },
+    {
+      "id": "050afe24-c258-4211-835c-d1741a411831",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\tan\\left(\\log\\dfrac{3 + 2x}{3 - 2x}\\right)",
+              "f": "tan(log((3+2*x)/(3-2*x)))",
+              "restart": true,
+              "domain": [
+                -0.8,
+                0.8
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\tan\\left(\\log(3 + 2x) - \\log(3 - 2x)\\right)",
+              "f": "tan(log(3+2*x)-log(3-2*x))"
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "\\dfrac{dy}{dx} = \\sec^2(\\ldots)\\left(\\dfrac{2}{3 + 2x} + \\dfrac{2}{3 - 2x}\\right)",
+              "f": "(1/cos(log((3+2*x)/(3-2*x)))^2)*(2/(3+2*x)+2/(3-2*x))"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "= \\sec^2(\\ldots)\\cdot\\dfrac{12}{9 - 4x^2}",
+              "f": "(1/cos(log((3+2*x)/(3-2*x)))^2)*12/(9-4*x^2)"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "A = 12,\\quad B = 9,\\quad C = -4"
+            }
+          ],
+          "answer": "12"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "b80930bf",
+        "answer": {
+          "value": 12,
+          "label": "A = 12, B = 9, C = -4"
+        }
+      }
+    },
+    {
+      "id": "0667e95b-2c10-46cb-aff3-1cba24a0e718",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "g'(x) = 2f[2f(x)+2] \\cdot f'[2f(x)+2] \\cdot 2f'(x)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2f(0)+2 = 2 \\cdot (-1) + 2 = 0",
+              "f": "2*(-1)+2",
+              "value": "0",
+              "note": "so f and f′ are taken at 0 again"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "g'(0) = 2 \\cdot (-1) \\cdot 1 \\cdot 2 = -4",
+              "f": "2*(-1)*1*2",
+              "value": "-4"
+            }
+          ],
+          "answer": "2*(-1)*1*2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "ccfcde7e",
+        "answer": {
+          "value": -4,
+          "label": "-4"
+        }
+      }
+    },
+    {
+      "id": "08277cbe-0558-4556-b97d-6757a5dda10f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\tan^{-1}\\sqrt{\\dfrac{1 + \\sin x}{1 - \\sin x}}",
+              "f": "atan(sqrt((1+sin(x))/(1-sin(x))))",
+              "restart": true,
+              "domain": [
+                0.1,
+                1.4
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\tan^{-1}\\left(\\dfrac{1 + \\tan\\frac{x}{2}}{1 - \\tan\\frac{x}{2}}\\right)",
+              "f": "atan((1+tan(x/2))/(1-tan(x/2)))"
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\dfrac{\\pi}{4} + \\dfrac{x}{2}",
+              "f": "pi/4+x/2"
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "y' = \\dfrac{1}{2}",
+              "f": "1/2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "y'\\left(\\dfrac{\\pi}{6}\\right) = \\dfrac{1}{2}",
+              "f": "1/2",
+              "value": "1/2"
+            }
+          ],
+          "answer": "1/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "6fda3337",
+        "answer": {
+          "value": 0.5,
+          "label": "1/2"
+        }
+      }
+    },
+    {
+      "id": "0a52890d-e765-49b8-834b-f6e357bde296",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{d}{dx}\\tan^{-1}(a + bx) = \\dfrac{b}{1 + (a + bx)^2}"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{at } x = 0:\\ \\dfrac{b}{1 + a^2} = 1",
+              "f": "b/(1+a^2)",
+              "value": "1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "b = 1 + a^2",
+              "f": "b",
+              "value": "1+a^2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "b^3 = 1 + 3a^2 + 3a^4 + a^6",
+              "f": "b^3",
+              "value": "1+3*a^2+3*a^4+a^6"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "a^6 - b^3 = -1 - 3a^2(1 + a^2) = -1 - 3a^2 b",
+              "f": "a^6-b^3",
+              "value": "-1-3*a^2*b"
+            }
+          ],
+          "answer": "-1-3*a^2*b",
+          "vars": {
+            "a": "0.8",
+            "b": "1+a^2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "de5e01a5",
+        "answer": {
+          "value": -4.148800000000001,
+          "label": "-1 − 3a²b"
+        }
+      }
+    },
+    {
+      "id": "0a7fdfff-933c-4f41-b7db-ddd594f0f261",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "u = x^y:\\quad \\dfrac{du}{dx} = x^y\\left(\\dfrac{y}{x} + \\log x\\dfrac{dy}{dx}\\right)"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "v = y^x:\\quad \\dfrac{dv}{dx} = y^x\\left(\\dfrac{x}{y}\\dfrac{dy}{dx} + \\log y\\right)"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "u + v = \\text{const} \\Rightarrow \\dfrac{du}{dx} + \\dfrac{dv}{dx} = 0"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "x^y = 1^2 = 1",
+              "f": "1^2",
+              "value": "1"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "y^x = 2^1 = 2",
+              "f": "2^1",
+              "value": "2"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "1\\left(2 + 0\\right) + 2\\left(\\tfrac{1}{2}\\dfrac{dy}{dx} + \\log 2\\right) = 0",
+              "f": "1*(2+0)+2*(1/2*p0+log(2))",
+              "value": "0"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "2 + \\dfrac{dy}{dx} + 2\\log 2 = 0",
+              "f": "2+p0+2*log(2)",
+              "value": "0"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\dfrac{dy}{dx} = -2(1 + \\log 2)",
+              "f": "-2-2*log(2)",
+              "value": "-2*(1+log(2))"
+            }
+          ],
+          "answer": "-2*(1+log(2))",
+          "vars": {
+            "p0": "-2*(1+log(2))"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "c7b24012",
+        "answer": {
+          "value": -3.386294361119891,
+          "label": "-2(1 + log 2)"
+        }
+      }
+    },
+    {
+      "id": "0cfbfe98-4174-4749-901f-036de0ca7419",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\sin^{-1}\\left(\\dfrac{\\log x^2}{1 + (\\log x)^2}\\right)",
+              "f": "asin(log(x^2)/(1+log(x)^2))",
+              "restart": true,
+              "domain": [
+                0.5,
+                1.5
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = 2\\tan^{-1}(\\log x)",
+              "f": "2*atan(log(x))"
+            },
+            {
+              "step": "s1",
+              "kind": "deriv",
+              "tex": "\\dfrac{dy}{dx} = \\dfrac{2}{x(1 + (\\log x)^2)}",
+              "f": "2/(x*(1+log(x)^2))"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "x = 1:\\ \\dfrac{dy}{dx} = 2",
+              "f": "2/(1*(1+0^2))",
+              "value": "2"
+            }
+          ],
+          "answer": "2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "2fc0300e",
+        "answer": {
+          "value": 2,
+          "label": "2"
+        }
+      }
+    },
+    {
+      "id": "10080c48-1297-496d-a8fa-373db8eff50f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\dfrac{dx}{dy} = \\dfrac{1}{1 + e^x}",
+              "f": "1/(1+exp(x))",
+              "restart": true
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "\\dfrac{d}{dx}\\left(\\dfrac{1}{1 + e^x}\\right) = \\dfrac{-e^x}{(1 + e^x)^2}",
+              "f": "-exp(x)/(1+exp(x))^2"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "\\dfrac{d^2x}{dy^2} = \\dfrac{-e^x}{(1 + e^x)^2}\\cdot\\dfrac{1}{1 + e^x}",
+              "f": "-exp(x)/(1+exp(x))^2*(1/(1+exp(x)))",
+              "restart": true
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "= \\dfrac{-e^x}{(1 + e^x)^3}",
+              "f": "-exp(x)/(1+exp(x))^3"
+            }
+          ],
+          "answer": "-exp(x0)/(1+exp(x0))^3",
+          "vars": {
+            "x0": "0.5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "b384da3e",
+        "answer": {
+          "value": -0.08872345867463688,
+          "label": "-e^x/(1+e^x)³"
+        }
+      }
+    },
+    {
+      "id": "108e8981-3caf-4cfd-80e5-0fbf2a438b0a",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "y'(5) = \\prod_{k \\neq 5}(5 - k) = 4!\\,(-1)^{95}\\,95!"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "4!\\,(-1)^{95} = -24",
+              "f": "24*(-1)^95",
+              "value": "-24",
+              "note": "so y′(5) = −24 · 95!"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\dfrac{100!}{^{100}C_5} = 5!\\,95! = 120 \\cdot 95!"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\lambda = -\\dfrac{24}{120} = -\\dfrac{1}{5}",
+              "f": "-24/120",
+              "value": "-1/5"
+            }
+          ],
+          "answer": "-24/120"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "97ef57f8",
+        "answer": {
+          "value": -0.2,
+          "label": "−1/5"
+        }
+      }
+    },
+    {
+      "id": "12a0250a-4db5-468e-8c80-7479e68bc43c",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "f(\\theta) = \\sin\\left(\\tan^{-1}\\dfrac{\\sin\\theta}{\\sqrt{\\cos 2\\theta}}\\right)",
+              "f": "sin(atan(sin(x)/sqrt(cos(2*x))))",
+              "restart": true,
+              "domain": [
+                -0.7,
+                0.7
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "f(\\theta) = \\sin\\left(\\sin^{-1}(\\tan\\theta)\\right)",
+              "f": "sin(asin(tan(x)))"
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "f(\\theta) = \\tan\\theta",
+              "f": "tan(x)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{d\\,f(\\theta)}{d(\\tan\\theta)} = 1",
+              "f": "1",
+              "value": "1"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "9f414911",
+        "answer": {
+          "value": 1,
+          "label": "1"
+        }
+      }
+    },
+    {
+      "id": "13475bec-5ae1-4b50-b865-a053efbfad47",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\dfrac{dx}{dy} = \\dfrac{1}{1 - e^x}",
+              "f": "1/(1-exp(x))",
+              "restart": true,
+              "domain": [
+                -3,
+                -0.3
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "\\dfrac{d}{dx}\\left(\\dfrac{1}{1 - e^x}\\right) = \\dfrac{e^x}{(1 - e^x)^2}",
+              "f": "exp(x)/(1-exp(x))^2"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "\\dfrac{d^2x}{dy^2} = \\dfrac{e^x}{(1 - e^x)^2}\\cdot\\dfrac{1}{1 - e^x}",
+              "f": "exp(x)/(1-exp(x))^2*(1/(1-exp(x)))",
+              "restart": true,
+              "domain": [
+                -3,
+                -0.3
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "= \\dfrac{e^x}{(1 - e^x)^3}",
+              "f": "exp(x)/(1-exp(x))^3"
+            }
+          ],
+          "answer": "exp(x0)/(1-exp(x0))^3",
+          "vars": {
+            "x0": "-0.5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "400a83f4",
+        "answer": {
+          "value": 9.956806510442492,
+          "label": "e^x/(1−e^x)³"
+        }
+      }
+    },
+    {
+      "id": "13caebee-1399-4858-96af-c75523396c75",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "8f(x) + 6f\\left(\\tfrac{1}{x}\\right) = x + 5"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "f(-1) = \\dfrac{2}{7}",
+              "f": "(8*(-1)+10-6/(-1))/28",
+              "value": "2/7"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "f'(-1) = \\dfrac{1}{2}",
+              "f": "(8+6/(-1)^2)/28",
+              "value": "1/2"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\dfrac{dy}{dx} = 2x\\,f(x) + x^2 f'(x)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2(-1)\\cdot\\dfrac{2}{7} + (-1)^2 \\cdot \\dfrac{1}{2} = -\\dfrac{4}{7} + \\dfrac{1}{2} = -\\dfrac{1}{14}",
+              "f": "2*(-1)*(2/7)+(-1)^2*(1/2)",
+              "value": "-1/14"
+            }
+          ],
+          "answer": "-1/14"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "bbed4b63",
+        "answer": {
+          "value": -0.07142857142857142,
+          "label": "−1/14"
+        }
+      }
+    },
+    {
+      "id": "185546b3-b0bf-49f7-90ed-fd731a7eacca",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{y' + 1}{\\sqrt{y + x}} + \\dfrac{y' - 1}{\\sqrt{y - x}} = 0"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "y' = \\dfrac{\\sqrt{y + x} - \\sqrt{y - x}}{\\sqrt{y + x} + \\sqrt{y - x}}",
+              "f": "(sqrt(y0+x0)-sqrt(y0-x0))/(sqrt(y0+x0)+sqrt(y0-x0))",
+              "value": "p0"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "y' = \\dfrac{2y - 2\\sqrt{y^2 - x^2}}{2x}",
+              "f": "(2*y0-2*sqrt(y0^2-x0^2))/(2*x0)",
+              "value": "p0"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "y' = \\dfrac{y}{x} - \\sqrt{\\dfrac{y^2}{x^2} - 1}",
+              "f": "y0/x0-sqrt(y0^2/x0^2-1)",
+              "value": "p0"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "K = \\dfrac{y}{x}",
+              "f": "y0/x0",
+              "value": "y0/x0"
+            }
+          ],
+          "answer": "y0/x0",
+          "vars": {
+            "x0": "1",
+            "y0": "2",
+            "p0": "(sqrt(y0+x0)-sqrt(y0-x0))/(sqrt(y0+x0)+sqrt(y0-x0))"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "052fd4e7",
+        "answer": {
+          "value": 2,
+          "label": "K = y/x"
+        }
+      }
+    },
+    {
+      "id": "18bc7dce-b01d-46c7-97e9-5a15107f081b",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{d^2y}{dx^2} = a(n+1)n\\,x^{n-1} + b\\,n(n+1)\\,x^{-n-2}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "x^2\\dfrac{d^2y}{dx^2} = n(n+1)\\left(ax^{n+1} + bx^{-n}\\right) = n(n+1)y",
+              "f": "x0^2*(a*(n+1)*n*x0^(n-1)+b*n*(n+1)*x0^(-n-2))",
+              "value": "n*(n+1)*(a*x0^(n+1)+b*x0^(-n))"
+            }
+          ],
+          "answer": "n*(n+1)*(a*x0^(n+1)+b*x0^(-n))",
+          "vars": {
+            "a": "2",
+            "b": "3",
+            "n": "2",
+            "x0": "1.5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "322a69f0",
+        "answer": {
+          "value": 48.5,
+          "label": "n(n+1)y"
+        }
+      }
+    },
+    {
+      "id": "191be380-e1e4-47a4-ad6b-3f19d82f715c",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{dx}{dt} = y",
+              "f": "a*cos(t0)+b*sin(t0)",
+              "value": "y0"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{dy}{dt} = -x",
+              "f": "-a*sin(t0)+b*cos(t0)",
+              "value": "-x0"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{dy}{dx} = -\\dfrac{x}{y}",
+              "f": "(-a*sin(t0)+b*cos(t0))/(a*cos(t0)+b*sin(t0))",
+              "value": "-x0/y0"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{d^2y}{dx^2} = -\\dfrac{y + x^2/y}{y^2} = -\\dfrac{x^2 + y^2}{y^3}",
+              "f": "-(y0+x0^2/y0)/y0^2",
+              "value": "-(x0^2+y0^2)/y0^3"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\dfrac{d^2y}{dx^2} = 0 \\Rightarrow x^2 + y^2 = 0"
+            }
+          ],
+          "answer": "0",
+          "vars": {
+            "a": "2",
+            "b": "3",
+            "t0": "0.4",
+            "x0": "a*sin(t0)-b*cos(t0)",
+            "y0": "a*cos(t0)+b*sin(t0)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "f273e42e",
+        "answer": {
+          "value": 0,
+          "label": "x² + y² = 0"
+        }
+      }
+    },
+    {
+      "id": "19f40e50-c2cd-470d-a49d-48845661c143",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "f(x) = \\log_{x^2}(\\log_e x)",
+              "f": "log(log(x))/log(x^2)",
+              "restart": true,
+              "domain": [
+                1.5,
+                4
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "f(x) = \\dfrac{\\log(\\log x)}{2\\log x}",
+              "f": "log(log(x))/(2*log(x))"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f'(e) = \\dfrac{1/2e - 0}{1} = \\dfrac{1}{2e}",
+              "f": "(1/(2*e)-0)/1",
+              "value": "1/(2*e)"
+            }
+          ],
+          "answer": "1/(2*e)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "e70cefc5",
+        "answer": {
+          "value": 0.18393972058572117,
+          "label": "1/(2e)"
+        }
+      }
+    },
+    {
+      "id": "1a30e3f5-ac69-4894-958d-a12a0ae8d7c5",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "f'(0^+) = 2",
+              "f": "cos(0)-1+2*cos(0)-2*(0-pi)*sin(0)",
+              "value": "2"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "f'(0^-) = 2",
+              "f": "-cos(0)+1+2*cos(0)-2*(0-pi)*sin(0)",
+              "value": "2"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "f \\text{ is differentiable everywhere}"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "K = \\emptyset"
+            }
+          ],
+          "answer": "2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f37c84ca",
+        "answer": {
+          "value": 2,
+          "label": "K = ∅"
+        }
+      }
+    },
+    {
+      "id": "1b0a3d18-cba6-4907-8724-0f078dcbce00",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "xy = e^{\\sin^{-1}t + \\cos^{-1}t} = e^{\\pi/2}",
+              "f": "x0*y0",
+              "value": "exp(pi/2)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "y + xy' = 0,\\quad y' = -\\dfrac{y}{x}",
+              "f": "(-y0/sqrt(1-t0^2))/(x0/sqrt(1-t0^2))",
+              "value": "-y0/x0"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "y'' = \\dfrac{2y}{x^2}",
+              "f": "-((-y0/x0)*x0-y0)/x0^2",
+              "value": "2*y0/x0^2"
+            }
+          ],
+          "answer": "2*y0/x0^2",
+          "vars": {
+            "t0": "0.3",
+            "x0": "exp(asin(t0))",
+            "y0": "exp(acos(t0))"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "6b9609a1",
+        "answer": {
+          "value": 3.8569069166036676,
+          "label": "2y/x²"
+        }
+      }
+    },
+    {
+      "id": "1b4223ba-1650-45fd-b1f2-67ad35a63376",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\cos^{-1}\\left(\\dfrac{x - 1/x}{x + 1/x}\\right)",
+              "f": "acos((x-1/x)/(x+1/x))",
+              "restart": true,
+              "domain": [
+                0.3,
+                4
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "= \\cos^{-1}\\left(\\dfrac{x^2 - 1}{x^2 + 1}\\right)",
+              "f": "acos((x^2-1)/(x^2+1))"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "y = \\pi - 2\\tan^{-1}x",
+              "f": "pi-2*atan(x)",
+              "note": "x = tan θ gives −cos 2θ"
+            },
+            {
+              "step": "s3",
+              "kind": "deriv",
+              "tex": "\\dfrac{dy}{dx} = \\dfrac{-2}{1 + x^2}",
+              "f": "-2/(1+x^2)"
+            }
+          ],
+          "answer": "-2/(1+x0^2)",
+          "vars": {
+            "x0": "1.5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "2f3b9b89",
+        "answer": {
+          "value": -0.6153846153846154,
+          "label": "-2/(1+x²)"
+        }
+      }
+    },
+    {
+      "id": "1cec7424-e390-4242-9595-bc85484e9611",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\dfrac{\\log(\\log x) - \\log(\\log 5)}{\\log 8}",
+              "f": "(log(log(x))-log(log(5)))/log(8)",
+              "restart": true,
+              "domain": [
+                1.5,
+                5
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "deriv",
+              "tex": "\\dfrac{dy}{dx} = \\dfrac{1}{\\log 8}\\cdot\\dfrac{1}{x\\log x}",
+              "f": "1/log(8)*(1/(x*log(x)))"
+            }
+          ],
+          "answer": "1/(log(8)*x0*log(x0))",
+          "vars": {
+            "x0": "2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "453d2a6b",
+        "answer": {
+          "value": 0.34689483016760136,
+          "label": "1/(x log 8 log x)"
+        }
+      }
+    },
+    {
+      "id": "1d53fca6-cf6d-44d6-8adb-29020af23b0c",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "u = \\log_{10}x,\\quad \\log_x 10 = \\dfrac{1}{u}"
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "w = \\dfrac{1}{u}",
+              "f": "1/x",
+              "restart": true,
+              "domain": [
+                0.3,
+                3
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "deriv",
+              "tex": "\\dfrac{dw}{du} = -\\dfrac{1}{u^2}",
+              "f": "-1/x^2"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{du}{dw} = \\dfrac{1}{-1/u^2} = -u^2 = -(\\log_{10}x)^2",
+              "f": "1/(-1/u0^2)",
+              "value": "-u0^2"
+            }
+          ],
+          "answer": "-u0^2",
+          "vars": {
+            "u0": "0.7"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "f11f8264",
+        "answer": {
+          "value": -0.48999999999999994,
+          "label": "-(log₁₀x)²"
+        }
+      }
+    },
+    {
+      "id": "1d9b17e9-8bdf-482b-aa96-30f33d7aac1f",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "h = f^2 + g^2,\\quad f' = g,\\quad g' = f'' = -f"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "h' = 2ff' + 2gg' = 2fg + 2g(-f) = 0",
+              "f": "2*f0*g0+2*g0*(-f0)",
+              "value": "0",
+              "note": "so h is constant"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "h(8) = h(2) = 7",
+              "f": "7",
+              "value": "7"
+            }
+          ],
+          "answer": "7",
+          "vars": {
+            "f0": "2",
+            "g0": "3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "ba7fce59",
+        "answer": {
+          "value": 7,
+          "label": "7"
+        }
+      }
+    },
+    {
+      "id": "22e86d86-4333-4b6a-9636-809bbfdb5fdc",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\ln y = 4x + \\tfrac{3}{4}\\ln(x-4) - \\tfrac{3}{4}\\ln(x+3)",
+              "f": "4*x+3/4*log(x-4)-3/4*log(x+3)",
+              "restart": true,
+              "domain": [
+                4.5,
+                8
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "\\dfrac{1}{y}\\dfrac{dy}{dx} = 4 + \\dfrac{3}{4(x-4)} - \\dfrac{3}{4(x+3)}",
+              "f": "4+3/(4*(x-4))-3/(4*(x+3))"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "= 4 + \\dfrac{21}{4(x-4)(x+3)}",
+              "f": "4+21/(4*(x-4)*(x+3))"
+            }
+          ],
+          "answer": "4+21/(4*(x0-4)*(x0+3))",
+          "vars": {
+            "x0": "5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "805abd57",
+        "answer": {
+          "value": 4.65625,
+          "label": "4 + 21/(4(x−4)(x+3))"
+        }
+      }
+    },
+    {
+      "id": "23c60964-fbb2-4bdc-98ef-ebadf60fa5a9",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "3f\\left(\\tfrac{1}{x}\\right) - 2f(x) = \\dfrac{1}{x}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "5f(x) = 3x + \\dfrac{2}{x}"
+            },
+            {
+              "step": "s3",
+              "kind": "expr",
+              "tex": "f(x) = \\dfrac{1}{5}\\left(3x + \\dfrac{2}{x}\\right)",
+              "f": "(3*x+2/x)/5",
+              "restart": true
+            },
+            {
+              "step": "s3",
+              "kind": "deriv",
+              "tex": "f'(x) = \\dfrac{1}{5}\\left(3 - \\dfrac{2}{x^2}\\right)",
+              "f": "(3-2/x^2)/5"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f'(2) = \\dfrac{1}{5}(3 - 0.5) = \\dfrac{1}{2}",
+              "f": "(3-0.5)/5",
+              "value": "1/2"
+            }
+          ],
+          "answer": "(3-0.5)/5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a78d9887",
+        "answer": {
+          "value": 0.5,
+          "label": "1/2"
+        }
+      }
+    },
+    {
+      "id": "23ff2157-797c-4711-9176-ebb5480a36bc",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\sin^{-1}\\left(\\dfrac{25 - x^2}{25 + x^2}\\right)",
+              "f": "asin((25-x^2)/(25+x^2))",
+              "restart": true,
+              "domain": [
+                0.3,
+                5
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\dfrac{\\pi}{2} - 2\\tan^{-1}\\dfrac{x}{5}",
+              "f": "pi/2-2*atan(x/5)",
+              "note": "x = 5 tan θ: the argument is cos 2θ"
+            },
+            {
+              "step": "s1",
+              "kind": "deriv",
+              "tex": "y' = -\\dfrac{10}{25 + x^2}",
+              "f": "-10/(25+x^2)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "y'(1) = -\\dfrac{10}{26} = -\\dfrac{5}{13}",
+              "f": "-10/26",
+              "value": "-5/13"
+            }
+          ],
+          "answer": "-10/26"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "26cbbf47",
+        "answer": {
+          "value": -0.38461538461538464,
+          "label": "-5/13"
+        }
+      }
+    },
+    {
+      "id": "24de5e9b-fbbf-4769-9581-faba06eb1bc6",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "f(0) = 0 + 4 = 4",
+              "f": "3*0^3+4*exp(0/2)",
+              "value": "4"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "f(x) = 3x^3 + 4e^{x/2}",
+              "f": "3*x^3+4*exp(x/2)",
+              "restart": true
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "f'(x) = 9x^2 + 2e^{x/2}",
+              "f": "9*x^2+2*exp(x/2)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f'(0) = 2",
+              "f": "9*0^2+2*exp(0)",
+              "value": "2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "g'(4) = \\dfrac{1}{f'(0)} = \\dfrac{1}{2}",
+              "f": "1/2",
+              "value": "1/2"
+            }
+          ],
+          "answer": "1/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "cfaf9ff6",
+        "answer": {
+          "value": 0.5,
+          "label": "1/2"
+        }
+      }
+    },
+    {
+      "id": "25d1d061-4f93-438f-aba5-0aed5d393a7e",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\cos 2a = \\dfrac{x^2 - y^2}{x^2 + y^2}",
+              "f": "cos(2*a0)",
+              "value": "(x0^2-y0^2)/(x0^2+y0^2)"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "= \\dfrac{1 - (y/x)^2}{1 + (y/x)^2}",
+              "f": "(x0^2-y0^2)/(x0^2+y0^2)",
+              "value": "(1-(y0/x0)^2)/(1+(y0/x0)^2)"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{y}{x} = \\tan a",
+              "f": "y0/x0",
+              "value": "tan(a0)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "y\\dfrac{dy}{dx} = x\\tan^2 a",
+              "f": "y0*tan(a0)",
+              "value": "x0*tan(a0)^2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f\\left(\\dfrac{2\\pi}{3}\\right) = \\tan^2\\dfrac{2\\pi}{3} = 3",
+              "f": "tan(2*pi/3)^2",
+              "value": "3"
+            }
+          ],
+          "answer": "3",
+          "vars": {
+            "a0": "0.6",
+            "x0": "1.5",
+            "y0": "x0*tan(a0)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "544cd8d3",
+        "answer": {
+          "value": 3,
+          "label": "3"
+        }
+      }
+    },
+    {
+      "id": "25f7b759-f5bb-49c4-be09-2ac59bb2d99d",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f = \\tan^{-1}x,\\quad f' = \\dfrac{1}{1 + x^2}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "u = \\dfrac{f}{f + 1},\\quad v = \\tan^{-1}f"
+            },
+            {
+              "step": "s3",
+              "kind": "expr",
+              "tex": "u = \\dfrac{f}{f + 1}",
+              "f": "atan(x)/(atan(x)+1)",
+              "restart": true,
+              "domain": [
+                0.1,
+                3
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "deriv",
+              "tex": "\\dfrac{du}{dx} = \\dfrac{f'}{(f + 1)^2}",
+              "f": "1/(1+x^2)/(atan(x)+1)^2"
+            },
+            {
+              "step": "s3",
+              "kind": "expr",
+              "tex": "v = \\tan^{-1}f",
+              "f": "atan(atan(x))",
+              "restart": true,
+              "domain": [
+                0.1,
+                3
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "deriv",
+              "tex": "\\dfrac{dv}{dx} = \\dfrac{f'}{1 + f^2}",
+              "f": "1/(1+x^2)/(1+atan(x)^2)"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{du}{dv} = \\dfrac{du/dx}{dv/dx} = \\dfrac{1 + f^2}{(f + 1)^2}",
+              "f": "(1/(1+x0^2)/(atan(x0)+1)^2)/(1/(1+x0^2)/(1+atan(x0)^2))",
+              "value": "(1+atan(x0)^2)/(atan(x0)+1)^2"
+            }
+          ],
+          "answer": "(1+atan(x0)^2)/(atan(x0)+1)^2",
+          "vars": {
+            "x0": "0.8"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "d51c7b11",
+        "answer": {
+          "value": 0.518859645636521,
+          "label": "(1+f²)/(1+f)², f = tan⁻¹x"
+        }
+      }
+    },
+    {
+      "id": "264b2e9f-53db-4324-8f58-154ab674a1af",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "x = \\tan\\theta,\\quad \\theta = \\tan^{-1}x"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "u = \\tan^{-1}\\dfrac{\\sqrt{1 + x^2} - 1}{x}",
+              "f": "atan((sqrt(1+x^2)-1)/x)",
+              "restart": true,
+              "domain": [
+                0.2,
+                0.9
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "expr",
+              "tex": "u = \\tan^{-1}\\left(\\tan\\dfrac{\\theta}{2}\\right)",
+              "f": "atan(tan(atan(x)/2))",
+              "note": "(sec θ − 1)/tan θ = tan(θ/2)"
+            },
+            {
+              "step": "s4",
+              "kind": "expr",
+              "tex": "u = \\dfrac{\\theta}{2} = \\dfrac{1}{2}\\tan^{-1}x",
+              "f": "atan(x)/2"
+            },
+            {
+              "step": "s4",
+              "kind": "deriv",
+              "tex": "\\dfrac{du}{dx} = \\dfrac{1}{2(1 + x^2)}",
+              "f": "1/(2*(1+x^2))"
+            },
+            {
+              "step": "s5",
+              "kind": "expr",
+              "tex": "v = \\sin^{-1}\\dfrac{2x}{1 + x^2}",
+              "f": "asin(2*x/(1+x^2))",
+              "restart": true,
+              "domain": [
+                0.2,
+                0.9
+              ]
+            },
+            {
+              "step": "s6",
+              "kind": "expr",
+              "tex": "v = 2\\theta = 2\\tan^{-1}x",
+              "f": "2*atan(x)",
+              "note": "2 tan θ/(1 + tan²θ) = sin 2θ"
+            },
+            {
+              "step": "s6",
+              "kind": "deriv",
+              "tex": "\\dfrac{dv}{dx} = \\dfrac{2}{1 + x^2}",
+              "f": "2/(1+x^2)"
+            },
+            {
+              "step": "s7",
+              "kind": "calc",
+              "tex": "\\dfrac{du}{dv} = \\dfrac{du/dx}{dv/dx} = \\dfrac{1}{2} \\cdot \\dfrac{1}{2} = \\dfrac{1}{4}",
+              "f": "(1/(2*(1+x0^2)))/(2/(1+x0^2))",
+              "value": "1/4"
+            }
+          ],
+          "answer": "1/4",
+          "vars": {
+            "x0": "0.5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "751fb3e1",
+        "answer": {
+          "value": 0.25,
+          "label": "1/4"
+        }
+      }
+    },
+    {
+      "id": "26daa9cf-f827-4925-8a5e-3d74fa224493",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\tan^{-1}\\left(\\sqrt{1 + x^2} - 1\\right)",
+              "f": "atan(sqrt(1+x^2)-1)",
+              "restart": true
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "\\dfrac{dy}{dx} = \\dfrac{1}{1 + (\\sqrt{1 + x^2} - 1)^2}\\cdot\\dfrac{d}{dx}(\\sqrt{1 + x^2} - 1)",
+              "f": "1/(1+(sqrt(1+x^2)-1)^2)*x/sqrt(1+x^2)"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "1 + (1 + x^2) - 2\\sqrt{1 + x^2} + 1 = x^2 + 3 - 2\\sqrt{1 + x^2}"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "\\dfrac{d}{dx}\\sqrt{1 + x^2} = \\dfrac{x}{\\sqrt{1 + x^2}}"
+            },
+            {
+              "step": "s5",
+              "kind": "expr",
+              "tex": "= \\dfrac{x}{\\sqrt{1 + x^2}\\left(x^2 - 2\\sqrt{1 + x^2} + 3\\right)}",
+              "f": "x/(sqrt(1+x^2)*(x^2-2*sqrt(1+x^2)+3))"
+            }
+          ],
+          "answer": "x0/(sqrt(1+x0^2)*(x0^2-2*sqrt(1+x0^2)+3))",
+          "vars": {
+            "x0": "1.5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "c87a98da",
+        "answer": {
+          "value": 0.5059752134093514,
+          "label": "x/(√(1+x²)(x²−2√(1+x²)+3))"
+        }
+      }
+    },
+    {
+      "id": "29fc6e65-62eb-4f38-83a0-6fb37b0b794f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "f(g(x)) = \\log\\dfrac{1 + g}{1 - g}",
+              "f": "log((1+(3*x+x^3)/(1+3*x^2))/(1-(3*x+x^3)/(1+3*x^2)))",
+              "restart": true,
+              "domain": [
+                -0.8,
+                0.8
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "= \\log\\dfrac{(1 + x)^3}{(1 - x)^3}",
+              "f": "log(((1+x)/(1-x))^3)"
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "f(g(x)) = 3\\log\\dfrac{1 + x}{1 - x} = 3f(x)",
+              "f": "3*log((1+x)/(1-x))"
+            },
+            {
+              "step": "s1",
+              "kind": "deriv",
+              "tex": "\\dfrac{d}{dx}f(g(x)) = 3f'(x)",
+              "f": "3*(2/(1-x^2))"
+            }
+          ],
+          "answer": "3*(2/(1-x0^2))",
+          "vars": {
+            "x0": "0.5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "a42d1a5a",
+        "answer": {
+          "value": 8,
+          "label": "3f′(x)"
+        }
+      }
+    },
+    {
+      "id": "2bd1d968-acb2-4f68-b723-4ad1e2113938",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "y^p = x^3 y,\\quad y^{p-1} = x^3"
+            },
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "y = 1 \\Rightarrow x = 1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "(p - 1)y^{p-2}y' = 3x^2",
+              "f": "(p0-1)*1^(p0-2)*(3/2)",
+              "value": "3*1^2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "y' = \\dfrac{3}{p - 1} = \\dfrac{3}{2}",
+              "f": "3/(p0-1)",
+              "value": "3/2"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "p = 3"
+            }
+          ],
+          "answer": "p0",
+          "vars": {
+            "p0": "3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "88466fd5",
+        "answer": {
+          "value": 3,
+          "label": "p = 3"
+        }
+      }
+    },
+    {
+      "id": "2c6229fa-368f-4565-93c4-da3e597e4872",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "u = \\sqrt{x^2 + 16},\\quad v = \\dfrac{x}{x - 1}"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "u = \\sqrt{x^2 + 16}",
+              "f": "sqrt(x^2+16)",
+              "restart": true,
+              "domain": [
+                2,
+                8
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "\\dfrac{du}{dx} = \\dfrac{x}{\\sqrt{x^2 + 16}}",
+              "f": "x/sqrt(x^2+16)"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "v = \\dfrac{x}{x - 1}",
+              "f": "x/(x-1)",
+              "restart": true,
+              "domain": [
+                2,
+                8
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "\\dfrac{dv}{dx} = \\dfrac{-1}{(x - 1)^2}",
+              "f": "-1/(x-1)^2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{du}{dv} = \\dfrac{x}{\\sqrt{x^2 + 16}} \\cdot \\left(-(x - 1)^2\\right)",
+              "f": "(5/sqrt(5^2+16))/(-1/(5-1)^2)",
+              "value": "5/sqrt(41)*(-(5-1)^2)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "x = 5:\\ \\dfrac{5}{\\sqrt{41}} \\cdot (-16) = -\\dfrac{80}{\\sqrt{41}}",
+              "f": "5/sqrt(41)*(-16)",
+              "value": "-80/sqrt(41)"
+            }
+          ],
+          "answer": "-80/sqrt(41)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "d31dd13f",
+        "answer": {
+          "value": -12.493900951088486,
+          "label": "−80/√41"
+        }
+      }
+    },
+    {
+      "id": "2e7fdb4d-1a55-40a4-a334-97c0f68ad170",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\dfrac{dy}{dx} = -\\dfrac{1}{\\sin y}",
+              "f": "-1/sin(x)",
+              "restart": true,
+              "domain": [
+                0.3,
+                2.8
+              ],
+              "note": "x = cos y"
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "\\dfrac{d}{dy}\\left(-\\dfrac{1}{\\sin y}\\right) = \\dfrac{\\cos y}{\\sin^2 y}",
+              "f": "cos(x)/sin(x)^2"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "\\dfrac{d^2y}{dx^2} = \\dfrac{\\cos y}{\\sin^2 y} \\cdot \\left(-\\dfrac{1}{\\sin y}\\right)",
+              "f": "cos(x)/sin(x)^2*(-1/sin(x))",
+              "restart": true,
+              "domain": [
+                0.3,
+                2.8
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "= -\\dfrac{\\cos y}{\\sin^3 y}",
+              "f": "-cos(x)/sin(x)^3"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "= -\\csc^2 y\\cot y",
+              "f": "-1/sin(x)^2*cos(x)/sin(x)"
+            }
+          ],
+          "answer": "-cos(x0)/sin(x0)^3",
+          "vars": {
+            "x0": "1"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "0e183d6c",
+        "answer": {
+          "value": -0.9068164393176695,
+          "label": "−csc²y cot y"
+        }
+      }
+    },
+    {
+      "id": "2e889b58-c23c-4820-a622-30962a638b9e",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{x}{y} + \\dfrac{y}{x} + 2 = 36",
+              "f": "x0/y0+y0/x0+2",
+              "value": "36"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "x^2 + y^2 = 34xy",
+              "f": "x0^2+y0^2",
+              "value": "34*x0*y0"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2x + 2yy' = 34y + 34xy'",
+              "f": "2*x0+2*y0*p0",
+              "value": "34*y0+34*x0*p0"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "y' = \\dfrac{34y - 2x}{2y - 34x} = \\dfrac{x - 17y}{17x - y}",
+              "f": "(34*y0-2*x0)/(2*y0-34*x0)",
+              "value": "(x0-17*y0)/(17*x0-y0)"
+            }
+          ],
+          "answer": "(x0-17*y0)/(17*x0-y0)",
+          "vars": {
+            "t": "17-sqrt(288)",
+            "x0": "1",
+            "y0": "t*x0",
+            "p0": "(x0-17*y0)/(17*x0-y0)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "39827324",
+        "answer": {
+          "value": 0.02943725152285791,
+          "label": "(x−17y)/(17x−y)"
+        }
+      }
+    },
+    {
+      "id": "2eb3daa4-8640-4101-a543-68f40281ac8d",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f = \\dfrac{1}{4}\\left(t + \\dfrac{t^3}{3} + \\dfrac{t^5}{5} + \\ldots\\right),\\quad t = x - 1"
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "f = \\dfrac{1}{8}\\log\\dfrac{1 + t}{1 - t}",
+              "f": "1/8*log((1+(x-1))/(1-(x-1)))",
+              "restart": true,
+              "domain": [
+                0.3,
+                1.7
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "f = \\dfrac{1}{8}\\log\\dfrac{x}{2 - x}",
+              "f": "1/8*log(x/(2-x))"
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "f'(x) = \\dfrac{1}{8}\\left(\\dfrac{1}{x} + \\dfrac{1}{2 - x}\\right)",
+              "f": "1/8*(1/x+1/(2-x))"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "= \\dfrac{1}{4x(2 - x)}",
+              "f": "1/(4*x*(2-x))"
+            }
+          ],
+          "answer": "1/(4*x0*(2-x0))",
+          "vars": {
+            "x0": "0.7"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "a374ae7f",
+        "answer": {
+          "value": 0.27472527472527475,
+          "label": "1/(4x(2−x))"
+        }
+      }
+    },
+    {
+      "id": "30b080a7-813a-40d8-acff-761b53ae4559",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{y'}{y} = 4\\sum_{k=1}^{n}\\dfrac{k}{kx + 1}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "x = 0:\\ y = 1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "y' = 4\\sum k = 4 \\cdot \\dfrac{n(n + 1)}{2} = 2n(n + 1)",
+              "f": "4*n0*(n0+1)/2",
+              "value": "2*n0*(n0+1)"
+            }
+          ],
+          "answer": "2*n0*(n0+1)",
+          "vars": {
+            "n0": "5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "d1dae6e7",
+        "answer": {
+          "value": 60,
+          "label": "2n(n+1)"
+        }
+      }
+    },
+    {
+      "id": "31aca70c-4931-47e0-839b-f1ba0eb09865",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "f(x) = \\cos x\\,\\cos 2x\\,\\cos 4x\\,\\cos 8x\\,\\cos 16x",
+              "f": "cos(x)*cos(2*x)*cos(4*x)*cos(8*x)*cos(16*x)",
+              "restart": true,
+              "domain": [
+                0.2,
+                1.2
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "f(x) = \\dfrac{\\sin 32x}{32\\sin x}",
+              "f": "sin(32*x)/(32*sin(x))"
+            },
+            {
+              "step": "s1",
+              "kind": "deriv",
+              "tex": "f'(x) = \\dfrac{32\\cos 32x\\sin x - \\sin 32x\\cos x}{32\\sin^2 x}",
+              "f": "(32*cos(32*x)*sin(x)-sin(32*x)*cos(x))/(32*sin(x)^2)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "x = \\dfrac{\\pi}{4}:\\ f' = \\dfrac{1}{\\sin(\\pi/4)} = \\sqrt{2}",
+              "f": "(32*cos(8*pi)*sin(pi/4)-sin(8*pi)*cos(pi/4))/(32*sin(pi/4)^2)",
+              "value": "sqrt(2)",
+              "dp": 6
+            }
+          ],
+          "answer": "sqrt(2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "c532fa63",
+        "answer": {
+          "value": 1.4142135623730951,
+          "label": "csc(π/4) = √2"
+        }
+      }
+    },
+    {
+      "id": "31acf395-cafe-4d69-b52e-ce59825638f2",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "x = \\dfrac{1 + \\log t}{t^2}",
+              "f": "(1+log(x))/x^2",
+              "restart": true,
+              "domain": [
+                0.5,
+                3
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "deriv",
+              "tex": "\\dfrac{dx}{dt} = \\dfrac{-1 - 2\\log t}{t^3}",
+              "f": "(-1-2*log(x))/x^3"
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\dfrac{3 + 2\\log t}{t}",
+              "f": "(3+2*log(x))/x",
+              "restart": true,
+              "domain": [
+                0.5,
+                3
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "deriv",
+              "tex": "\\dfrac{dy}{dt} = \\dfrac{-1 - 2\\log t}{t^2}",
+              "f": "(-1-2*log(x))/x^2"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{dy}{dx} = \\dfrac{t^3}{t^2} = t",
+              "f": "((-1-2*log(t0))/t0^2)/((-1-2*log(t0))/t0^3)",
+              "value": "t0"
+            }
+          ],
+          "answer": "t0",
+          "vars": {
+            "t0": "1.5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "a0e37b77",
+        "answer": {
+          "value": 1.5,
+          "label": "t"
+        }
+      }
+    },
+    {
+      "id": "32990241-fcd9-4192-9f41-6bc0672b713c",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\ln y = \\tan x\\cdot\\ln(\\sin x)",
+              "f": "tan(x)*log(sin(x))",
+              "restart": true,
+              "domain": [
+                0.2,
+                1.3
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "\\dfrac{1}{y}\\dfrac{dy}{dx} = \\sec^2 x\\cdot\\ln(\\sin x) + \\tan x\\cdot\\cot x",
+              "f": "1/cos(x)^2*log(sin(x))+tan(x)*cos(x)/sin(x)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{dy}{dx} = (\\sin x)^{\\tan x}\\left[1 + \\sec^2 x\\ln\\sin x\\right]",
+              "f": "sin(x0)^tan(x0)*(1/cos(x0)^2*log(sin(x0))+tan(x0)*cos(x0)/sin(x0))",
+              "value": "sin(x0)^tan(x0)*(1+1/cos(x0)^2*log(sin(x0)))"
+            }
+          ],
+          "answer": "sin(x0)^tan(x0)*(1+1/cos(x0)^2*log(sin(x0)))",
+          "vars": {
+            "x0": "0.9"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a78a459f",
+        "answer": {
+          "value": 0.2705179903263478,
+          "label": "y(1 + sec²x ln sin x)"
+        }
+      }
+    },
+    {
+      "id": "339d9abf-d1b9-4799-afd4-9f3e14908916",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "y\\log x + x\\log y = 0"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "y'\\log x + \\dfrac{y}{x} + \\log y + \\dfrac{x}{y}y' = 0",
+              "f": "p0*log(x0)+y0/x0+log(y0)+x0/y0*p0",
+              "value": "0"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "y' = -\\dfrac{y/x + \\log y}{\\log x + x/y}",
+              "f": "-(y0/x0+log(y0))/(log(x0)+x0/y0)",
+              "value": "p0"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "y' = -\\dfrac{y + x\\log y}{x + y\\log x}\\cdot\\dfrac{y}{x}",
+              "f": "-(y0+x0*log(y0))/(x0+y0*log(x0))*(y0/x0)",
+              "value": "p0"
+            }
+          ],
+          "answer": "p0",
+          "vars": {
+            "t": "2",
+            "x0": "t^(-1/(1+t))",
+            "y0": "t*x0",
+            "p0": "-(y0+x0*log(y0))/(x0+y0*log(x0))*(y0/x0)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "74170dc2",
+        "answer": {
+          "value": -9.154450704213788,
+          "label": "−(y+x log y)(y)/((x+y log x)x)"
+        }
+      }
+    },
+    {
+      "id": "343531f5-b1cf-409a-bedd-5ceb9a62e8ed",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "F = f(f(f(x))) + (f(x))^2"
+            },
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "F' = f'(f(f(x)))\\,f'(f(x))\\,f'(x) + 2f(x)f'(x)"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "x = 1:\\ f(1) = 1,\\quad f'(1) = 3"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "F' = 3 \\times 3 \\times 3 + 2 \\times 1 \\times 3 = 27 + 6 = 33",
+              "f": "3*3*3+2*1*3",
+              "value": "33"
+            }
+          ],
+          "answer": "3*3*3+2*1*3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "1034b084",
+        "answer": {
+          "value": 33,
+          "label": "33"
+        }
+      }
+    },
+    {
+      "id": "35267741-c186-46bc-996a-51c364af49b7",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "y = f(f(f(x))) + (f(x))^2"
+            },
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{dy}{dx} = f'(f(f(x)))\\,f'(f(x))\\,f'(x) + 2f(x)f'(x)"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "x = 1:\\ f(1) = 1,\\quad f'(1) = 3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "= f'(1)f'(1)f'(1) + 2f(1)f'(1) = 3 \\cdot 3 \\cdot 3 + 2 \\cdot 1 \\cdot 3 = 27 + 6 = 33",
+              "f": "3*3*3+2*1*3",
+              "value": "33"
+            }
+          ],
+          "answer": "3*3*3+2*1*3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "7a55e6de",
+        "answer": {
+          "value": 33,
+          "label": "33"
+        }
+      }
+    },
+    {
+      "id": "371243ef-f72d-4964-b515-e41cfe998bdb",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\log x^x",
+              "f": "log(x^x)",
+              "restart": true,
+              "domain": [
+                0.5,
+                5
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = x\\log x",
+              "f": "x*log(x)"
+            },
+            {
+              "step": "s1",
+              "kind": "deriv",
+              "tex": "\\dfrac{dy}{dx} = \\log x + 1",
+              "f": "log(x)+1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "x = e^2:\\ \\dfrac{dy}{dx} = 2 + 1 = 3,\\quad \\left(\\dfrac{dy}{dx}\\right)^2 = 9",
+              "f": "(log(exp(2))+1)^2",
+              "value": "9"
+            }
+          ],
+          "answer": "(log(exp(2))+1)^2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "71fc9a6d",
+        "answer": {
+          "value": 9,
+          "label": "9"
+        }
+      }
+    },
+    {
+      "id": "37c30d0c-07dd-42ee-94a9-6b9a803d7559",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\cos^{-1}(\\sin x)",
+              "f": "acos(sin(x))",
+              "restart": true,
+              "domain": [
+                1.7,
+                3
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\cos^{-1}\\left(\\cos\\left(x - \\dfrac{\\pi}{2}\\right)\\right)",
+              "f": "acos(cos(x-pi/2))",
+              "note": "π/2 < x < π: x − π/2 in (0, π/2)"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "y = x - \\dfrac{\\pi}{2}",
+              "f": "x-pi/2"
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "\\dfrac{dy}{dx} = 1",
+              "f": "1"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "39512c69",
+        "answer": {
+          "value": 1,
+          "label": "1"
+        }
+      }
+    },
+    {
+      "id": "37ce5549-b92b-41a5-8430-2159c6f1ed14",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "u = 3\\log x"
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\tan^{-1}\\dfrac{1 - u}{1 + u} + \\tan^{-1}\\dfrac{4 + u}{1 - 4u}",
+              "f": "atan((1-x)/(1+x))+atan((4+x)/(1-4*x))",
+              "restart": true,
+              "domain": [
+                -0.9,
+                0.2
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\left(\\dfrac{\\pi}{4} - \\tan^{-1}u\\right) + \\left(\\tan^{-1}4 + \\tan^{-1}u\\right)",
+              "f": "(pi/4-atan(x))+(atan(4)+atan(x))",
+              "note": "the interval keeps both formulas valid"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "y = \\dfrac{\\pi}{4} + \\tan^{-1}4",
+              "f": "pi/4+atan(4)"
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "\\dfrac{dy}{dx} = 0",
+              "f": "0"
+            }
+          ],
+          "answer": "0"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "a008cc63",
+        "answer": {
+          "value": 0,
+          "label": "0"
+        }
+      }
+    },
+    {
+      "id": "38b052e3-e01f-4243-b738-6da3ac45508e",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = 5\\log x + \\dfrac{4}{3}\\log(3x - 4) - \\dfrac{4}{3}\\log(x + 5)",
+              "f": "5*log(x)+4/3*log(3*x-4)-4/3*log(x+5)",
+              "restart": true,
+              "domain": [
+                1.5,
+                6
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "\\dfrac{dy}{dx} = \\dfrac{5}{x} + \\dfrac{4}{3}\\cdot\\dfrac{3}{3x - 4} - \\dfrac{4}{3}\\cdot\\dfrac{1}{x + 5}",
+              "f": "5/x+4/3*3/(3*x-4)-4/3*1/(x+5)"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "= \\dfrac{5}{x} + \\dfrac{4}{3x - 4} - \\dfrac{4}{3(x + 5)}",
+              "f": "5/x+4/(3*x-4)-4/(3*(x+5))"
+            }
+          ],
+          "answer": "5/x0+4/(3*x0-4)-4/(3*(x0+5))",
+          "vars": {
+            "x0": "2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "d2a561df",
+        "answer": {
+          "value": 4.309523809523809,
+          "label": "5/x + 4/(3x−4) − 4/(3(x+5))"
+        }
+      }
+    },
+    {
+      "id": "3a534103-fe39-4e99-8fbb-41da321c57db",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\log y = \\log x\\cdot\\log(\\log x)",
+              "f": "log(x)*log(log(x))",
+              "restart": true,
+              "domain": [
+                1.5,
+                5
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "deriv",
+              "tex": "\\dfrac{y'}{y} = \\dfrac{1}{x}\\left[\\log(\\log x) + 1\\right]",
+              "f": "(log(log(x))+1)/x"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f(x) = 1 + \\log(\\log x) = \\log(e\\log x)",
+              "f": "1+log(log(x0))",
+              "value": "log(e*log(x0))"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "= \\log\\left(\\log x^e\\right)",
+              "f": "log(e*log(x0))",
+              "value": "log(log(x0^e))"
+            }
+          ],
+          "answer": "log(log(x0^e))",
+          "vars": {
+            "x0": "3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "f82e47e1",
+        "answer": {
+          "value": 1.094047827616699,
+          "label": "log(log xᵉ)"
+        }
+      }
+    },
+    {
+      "id": "3c2028fd-7b65-40bf-938e-56579b6d321d",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "y = 2:\\ 12 - 5x = 0,\\quad x = \\dfrac{12}{5}",
+              "f": "12-5*(12/5)",
+              "value": "0"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "6yy' - 2y - 2xy' - 1 = 0",
+              "f": "6*2*p0-2*2-2*(12/5)*p0-1",
+              "value": "0"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "y' = \\dfrac{2y + 1}{6y - 2x} = \\dfrac{5}{12 - 24/5} = \\dfrac{25}{36}",
+              "f": "5/(12-24/5)",
+              "value": "25/36"
+            }
+          ],
+          "answer": "25/36",
+          "vars": {
+            "p0": "25/36"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "be1ca817",
+        "answer": {
+          "value": 0.6944444444444444,
+          "label": "25/36"
+        }
+      }
+    },
+    {
+      "id": "3ccc4a67-3471-4253-bec8-8e59b0876ca4",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "k x^{k-1} + k y^{k-1} y' = 0",
+              "f": "k0*x0^(k0-1)+k0*y0^(k0-1)*p0",
+              "value": "0"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{dy}{dx} = -\\left(\\dfrac{x}{y}\\right)^{k-1}",
+              "f": "-(x0/y0)^(k0-1)",
+              "value": "p0"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "-\\left(\\dfrac{x}{y}\\right)^{k-1} = -\\left(\\dfrac{y}{x}\\right)^{1/3}",
+              "f": "-(x0/y0)^(k0-1)",
+              "value": "-(y0/x0)^(1/3)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "k - 1 = -\\dfrac{1}{3} \\Rightarrow k = \\dfrac{2}{3}",
+              "f": "-1/3+1",
+              "value": "2/3"
+            }
+          ],
+          "answer": "k0",
+          "vars": {
+            "k0": "2/3",
+            "x0": "1",
+            "y0": "2",
+            "p0": "-(x0/y0)^(k0-1)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "15f8b74c",
+        "answer": {
+          "value": 0.6666666666666666,
+          "label": "k = 2/3"
+        }
+      }
+    },
+    {
+      "id": "3cdd58b2-6d41-4c63-b4bb-9de40992a735",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f(a + h) \\approx f(a) + h f'(a)"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "a = 1000,\\quad h = -2,\\quad f'(x) = \\dfrac{0.4343}{x}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\log_{10}998 \\approx 3 - 2 \\times \\dfrac{0.4343}{1000} = 3 - 0.0008686 = 2.9991314",
+              "f": "3-2*0.4343/1000",
+              "value": "2.9991314",
+              "dp": 7
+            }
+          ],
+          "answer": "3-2*0.4343/1000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "abe28b13",
+        "answer": {
+          "value": 2.9991314,
+          "label": "2.9991314"
+        }
+      }
+    },
+    {
+      "id": "3da0bbbc-d607-4854-ad2d-abd891a7a404",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\sqrt{y} = \\dfrac{1 - x}{1 + x}"
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\left(\\dfrac{1 - x}{1 + x}\\right)^2",
+              "f": "((1-x)/(1+x))^2",
+              "restart": true,
+              "domain": [
+                0.1,
+                0.9
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "deriv",
+              "tex": "\\dfrac{dy}{dx} = 2\\,\\dfrac{1 - x}{1 + x}\\cdot\\dfrac{-2}{(1 + x)^2}",
+              "f": "2*(1-x)/(1+x)*(-2)/(1+x)^2"
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "= \\dfrac{4(x - 1)}{(x + 1)^3}",
+              "f": "4*(x-1)/(x+1)^3"
+            }
+          ],
+          "answer": "4*(x0-1)/(x0+1)^3",
+          "vars": {
+            "x0": "0.5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "cae7edbd",
+        "answer": {
+          "value": -0.5925925925925926,
+          "label": "4(x−1)/(x+1)³"
+        }
+      }
+    },
+    {
+      "id": "41320c2c-7cb3-4116-8cf6-1d22992f5feb",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{dy}{dx} = \\dfrac{3t^2}{2at} = \\dfrac{3t}{2a}",
+              "f": "3*t0^2/(2*a0*t0)",
+              "value": "3*t0/(2*a0)"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{d^2y}{dx^2} = \\dfrac{3/(2a)}{2at} = \\dfrac{3}{4a^2 t}",
+              "f": "(3/(2*a0))/(2*a0*t0)",
+              "value": "3/(4*a0^2*t0)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "t = 1:\\ \\dfrac{3}{4a^2} = \\dfrac{3}{16}",
+              "f": "3/(4*a0^2*1)",
+              "value": "3/16"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "a = 2"
+            }
+          ],
+          "answer": "a0",
+          "vars": {
+            "a0": "2",
+            "t0": "1.3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "4bc918a7",
+        "answer": {
+          "value": 2,
+          "label": "a = 2"
+        }
+      }
+    },
+    {
+      "id": "427de549-357d-4adc-882d-bb25ce14e58a",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "f'(0) = \\ln 3",
+              "f": "3^0*log(3)",
+              "value": "log(3)"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "g'(0) = \\ln 4",
+              "f": "4^0*log(4)",
+              "value": "log(4)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{\\ln 3 - \\ln 4}{1 + \\ln 3\\cdot\\ln 4} = \\dfrac{\\ln(3/4)}{1 + (\\log 3)(\\log 4)}",
+              "f": "(log(3)-log(4))/(1+log(3)*log(4))",
+              "value": "log(3/4)/(1+log(3)*log(4))"
+            }
+          ],
+          "answer": "(log(3)-log(4))/(1+log(3)*log(4))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "d5db0a0c",
+        "answer": {
+          "value": -0.11402380898763238,
+          "label": "ln(3/4)/(1+ln3·ln4)"
+        }
+      }
+    },
+    {
+      "id": "4472c7de-1b76-4784-8e0f-926025dfd10b",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\lim_{x \\to a}\\dfrac{f(x) - f(a)}{g(x) - g(a)} = \\dfrac{f'(a)}{g'(a)}"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "f = \\cot^{-1}\\dfrac{3x - x^3}{1 - 3x^2}",
+              "f": "atan((1-3*x^2)/(3*x-x^3))",
+              "restart": true,
+              "domain": [
+                0.05,
+                0.45
+              ],
+              "note": "x = tan θ gives cot⁻¹(tan 3θ)"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "f = \\dfrac{\\pi}{2} - 3\\tan^{-1}x",
+              "f": "pi/2-3*atan(x)"
+            },
+            {
+              "step": "s3",
+              "kind": "deriv",
+              "tex": "f' = -\\dfrac{3}{1 + x^2}",
+              "f": "-3/(1+x^2)"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "g = \\cos^{-1}\\dfrac{1 - x^2}{1 + x^2}",
+              "f": "acos((1-x^2)/(1+x^2))",
+              "restart": true,
+              "domain": [
+                0.05,
+                0.45
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "g = 2\\tan^{-1}x",
+              "f": "2*atan(x)"
+            },
+            {
+              "step": "s3",
+              "kind": "deriv",
+              "tex": "g' = \\dfrac{2}{1 + x^2}",
+              "f": "2/(1+x^2)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{f'}{g'} = -\\dfrac{3}{2}",
+              "f": "(-3/(1+x0^2))/(2/(1+x0^2))",
+              "value": "-3/2"
+            }
+          ],
+          "answer": "-3/2",
+          "vars": {
+            "x0": "0.3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "03ba9a0a",
+        "answer": {
+          "value": -1.5,
+          "label": "−3/2"
+        }
+      }
+    },
+    {
+      "id": "46f4f532-ab53-458a-89d7-53a86c7770c0",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\lim = \\dfrac{f'(t)}{g'(t)}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "x = \\tan\\theta:\\ \\cot f = \\tan 3\\theta,\\quad \\sin g = \\cos 2\\theta"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "f = \\cot^{-1}\\dfrac{3x - x^3}{1 - 3x^2}",
+              "f": "atan((1-3*x^2)/(3*x-x^3))",
+              "restart": true,
+              "domain": [
+                0.05,
+                0.4
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "f = \\dfrac{\\pi}{2} - 3\\theta",
+              "f": "pi/2-3*atan(x)"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "g = \\sin^{-1}\\dfrac{1 - x^2}{1 + x^2}",
+              "f": "asin((1-x^2)/(1+x^2))",
+              "restart": true,
+              "domain": [
+                0.05,
+                0.4
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "g = \\dfrac{\\pi}{2} - 2\\theta",
+              "f": "pi/2-2*atan(x)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{df}{dg} = \\dfrac{-3}{-2} = \\dfrac{3}{2}",
+              "f": "(-3/(1+x0^2))/(-2/(1+x0^2))",
+              "value": "3/2"
+            }
+          ],
+          "answer": "3/2",
+          "vars": {
+            "x0": "0.3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "41ac116c",
+        "answer": {
+          "value": 1.5,
+          "label": "3/2"
+        }
+      }
+    },
+    {
+      "id": "4a368943-2e9d-4c0a-9147-caf3c1124b5f",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{1}{y}\\dfrac{dy}{dx} = 2\\sum_{k=1}^{n}\\dfrac{k}{kx + 1}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "x = 0:\\ y = 1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{dy}{dx} = 2\\sum k = 2 \\cdot \\dfrac{n(n + 1)}{2} = n(n + 1)",
+              "f": "2*n0*(n0+1)/2",
+              "value": "n0*(n0+1)"
+            }
+          ],
+          "answer": "n0*(n0+1)",
+          "vars": {
+            "n0": "5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "04d354c9",
+        "answer": {
+          "value": 30,
+          "label": "n(n+1)"
+        }
+      }
+    },
+    {
+      "id": "4ac2f79b-101f-4f10-ba93-fa60fa9827e7",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "x = \\tan\\theta"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "u = \\tan^{-1}\\dfrac{\\sqrt{1 + x^2} - 1}{x}",
+              "f": "atan((sqrt(1+x^2)-1)/x)",
+              "restart": true,
+              "domain": [
+                0.2,
+                0.9
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "u = \\tan^{-1}\\left(\\tan\\dfrac{\\theta}{2}\\right)",
+              "f": "atan(tan(atan(x)/2))",
+              "note": "(sec θ − 1)/tan θ = (1 − cos θ)/sin θ"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "u = \\dfrac{\\theta}{2} = \\dfrac{1}{2}\\tan^{-1}x",
+              "f": "atan(x)/2"
+            },
+            {
+              "step": "s3",
+              "kind": "expr",
+              "tex": "v = \\sin^{-1}\\dfrac{2x}{1 + x^2}",
+              "f": "asin(2*x/(1+x^2))",
+              "restart": true,
+              "domain": [
+                0.2,
+                0.9
+              ],
+              "note": "for |x| ≤ 1"
+            },
+            {
+              "step": "s3",
+              "kind": "expr",
+              "tex": "v = 2\\theta = 2\\tan^{-1}x",
+              "f": "2*atan(x)"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{du}{dv} = \\dfrac{1/2}{2} = \\dfrac{1}{4}",
+              "f": "(1/2)/2",
+              "value": "1/4"
+            }
+          ],
+          "answer": "1/4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "489d2943",
+        "answer": {
+          "value": 0.25,
+          "label": "1/4"
+        }
+      }
+    },
+    {
+      "id": "4c735fe7-6d34-444c-bf2f-9245bfd444ab",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "2^x = \\tan\\theta"
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\cos^{-1}\\dfrac{1 - 4^x}{1 + 4^x}",
+              "f": "acos((1-4^x)/(1+4^x))",
+              "restart": true,
+              "domain": [
+                -1.5,
+                2
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = 2\\theta = 2\\tan^{-1}(2^x)",
+              "f": "2*atan(2^x)"
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "\\dfrac{dy}{dx} = \\dfrac{2\\cdot 2^x\\log 2}{1 + 4^x}",
+              "f": "2*2^x*log(2)/(1+4^x)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "x = 1:\\ \\dfrac{4\\log 2}{5}",
+              "f": "2*2^1*log(2)/(1+4^1)",
+              "value": "4*log(2)/5"
+            }
+          ],
+          "answer": "4*log(2)/5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "939500f3",
+        "answer": {
+          "value": 0.5545177444479562,
+          "label": "4 log 2/5"
+        }
+      }
+    },
+    {
+      "id": "4ce28f20-5ecb-40e3-b6e6-1234af0aa8bd",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\sin y = y\\cos 2x"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\cos y\\,y' = y'\\cos 2x - 2y\\sin 2x",
+              "f": "cos(y0)*p0",
+              "value": "p0*cos(2*x0)-2*y0*sin(2*x0)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "y' = \\dfrac{2y\\sin 2x}{\\cos 2x - \\cos y}",
+              "f": "2*y0*sin(2*x0)/(cos(2*x0)-cos(y0))",
+              "value": "p0"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "f = \\sin 2x,\\quad g = \\cos 2x"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f^2 - g^2 = \\sin^2 2x - \\cos^2 2x = -\\cos 4x",
+              "f": "sin(2*x0)^2-cos(2*x0)^2",
+              "value": "-cos(4*x0)"
+            }
+          ],
+          "answer": "-cos(4*x0)",
+          "vars": {
+            "y0": "0.5",
+            "x0": "acos(sin(y0)/y0)/2",
+            "p0": "2*y0*sin(2*x0)/(cos(2*x0)-cos(y0))"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "ad43d5e2",
+        "answer": {
+          "value": -0.8387907765274412,
+          "label": "−cos 4x"
+        }
+      }
+    },
+    {
+      "id": "4d192432-ee40-4c17-aaac-cab64272a042",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\int_0^2 (5 - t)\\,dt = 8",
+              "f": "5*2-2^2/2",
+              "value": "8"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "x \\to 4:\\ 8 + \\dfrac{x^2}{2} + x - 4 \\to 16",
+              "f": "8+4^2/2+4-4",
+              "value": "16"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2(4) + 8 = 16",
+              "f": "2*4+8",
+              "value": "16",
+              "note": "the two pieces agree: continuous"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f'(4^+) = x + 1 = 5",
+              "f": "4+1",
+              "value": "5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f'(4^-) = 2",
+              "f": "2",
+              "value": "2",
+              "note": "5 ≠ 2: not differentiable at x = 4"
+            }
+          ],
+          "answer": "4+1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "85d2d2b7",
+        "answer": {
+          "value": 5,
+          "label": "cont., not diff. at 4"
+        }
+      }
+    },
+    {
+      "id": "4f77c777-5517-4a62-a491-0fd93cb85d4b",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "F'(x) = 2ff'\\cdot\\tfrac{1}{2} + 2gg'\\cdot\\tfrac{1}{2}",
+              "note": "f, g, f′, g′ evaluated at x/2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f' = g,\\ g' = -f:\\ F' = fg - gf = 0",
+              "f": "2*f0*g0*(1/2)+2*g0*(-f0)*(1/2)",
+              "value": "0"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "F(10) = F(5) = 5",
+              "f": "5",
+              "value": "5"
+            }
+          ],
+          "answer": "5",
+          "vars": {
+            "f0": "2",
+            "g0": "3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f6810c14",
+        "answer": {
+          "value": 5,
+          "label": "5"
+        }
+      }
+    },
+    {
+      "id": "50e11c57-477d-4bad-867c-57ed1fdb789b",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{d}{dx}\\log[f(e^x + 2x)] = \\dfrac{f'(e^x + 2x)}{f(e^x + 2x)}\\,(e^x + 2)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "x = 0:\\ \\dfrac{f'(1)}{f(1)}(1 + 2) = \\dfrac{2}{3}\\cdot 3 = 2",
+              "f": "2/3*(1+2)",
+              "value": "2"
+            }
+          ],
+          "answer": "2/3*(1+2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "3a1e52f8",
+        "answer": {
+          "value": 2,
+          "label": "2"
+        }
+      }
+    },
+    {
+      "id": "51956de4-cc3d-4747-b8af-d96c6f40e925",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\tan^{-1}\\dfrac{4\\sin 2x}{\\cos 2x - 6\\sin^2 x}",
+              "f": "atan(4*sin(2*x)/(cos(2*x)-6*sin(x)^2))",
+              "restart": true,
+              "domain": [
+                -0.3,
+                0.3
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\tan^{-1}\\dfrac{8\\tan x}{1 - 7\\tan^2 x}",
+              "f": "atan(8*tan(x)/(1-7*tan(x)^2))"
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\tan^{-1}(7\\tan x) + \\tan^{-1}(\\tan x)",
+              "f": "atan(7*tan(x))+atan(tan(x))"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "y = \\tan^{-1}(7\\tan x) + x",
+              "f": "atan(7*tan(x))+x"
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "\\dfrac{dy}{dx} = \\dfrac{7\\sec^2 x}{1 + 49\\tan^2 x} + 1",
+              "f": "7/cos(x)^2/(1+49*tan(x)^2)+1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "x = 0:\\ 7 + 1 = 8",
+              "f": "7/cos(0)^2/(1+49*tan(0)^2)+1",
+              "value": "8"
+            }
+          ],
+          "answer": "8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "4694aa3c",
+        "answer": {
+          "value": 8,
+          "label": "8"
+        }
+      }
+    },
+    {
+      "id": "51ede64f-73ec-4c7f-a5ea-b48384aa3265",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\cos A + \\cos B = a^3(\\sin A - \\sin B)",
+              "f": "cos(A0)+cos(B0)",
+              "value": "a3*(sin(A0)-sin(B0))",
+              "note": "x³ = sin A, y³ = sin B"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\cot\\dfrac{A - B}{2} = a^3",
+              "f": "1/tan((A0-B0)/2)",
+              "value": "a3"
+            },
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\sin^{-1}x^3 - \\sin^{-1}y^3 = \\text{constant}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{3x^2}{\\sqrt{1 - x^6}} = \\dfrac{3y^2}{\\sqrt{1 - y^6}}\\dfrac{dy}{dx}",
+              "f": "3*x0^2/sqrt(1-x0^6)",
+              "value": "3*y0^2/sqrt(1-y0^6)*p0"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{dy}{dx} = \\dfrac{x^2}{y^2}\\sqrt{\\dfrac{1 - y^6}{1 - x^6}}",
+              "f": "x0^2/y0^2*sqrt((1-y0^6)/(1-x0^6))",
+              "value": "p0"
+            }
+          ],
+          "answer": "x0^2/y0^2*sqrt((1-y0^6)/(1-x0^6))",
+          "vars": {
+            "A0": "0.9",
+            "B0": "0.4",
+            "a3": "1/tan((A0-B0)/2)",
+            "x0": "sin(A0)^(1/3)",
+            "y0": "sin(B0)^(1/3)",
+            "p0": "x0^2/y0^2*sqrt((1-y0^6)/(1-x0^6))"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "78dc6aae",
+        "answer": {
+          "value": 2.3611387863581834,
+          "label": "(x²/y²)√((1−y⁶)/(1−x⁶))"
+        }
+      }
+    },
+    {
+      "id": "520d8a50-149d-4349-b761-f4afbb10f22d",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{dx}{dy} = \\dfrac{12t^2}{12t^3} = \\dfrac{1}{t}",
+              "f": "12*t0^2/(12*t0^3)",
+              "value": "1/t0"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{d^2x}{dy^2} = \\dfrac{-1/t^2}{12t^3} = -\\dfrac{1}{12t^5}",
+              "f": "(-1/t0^2)/(12*t0^3)",
+              "value": "-1/(12*t0^5)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{ratio} = -\\dfrac{t^n}{12t^5} \\text{ is constant for } n = 5",
+              "f": "(-1/(12*t0^5))/((1/t0)^n0)",
+              "value": "-t0^n0/(12*t0^5)"
+            }
+          ],
+          "answer": "n0",
+          "vars": {
+            "t0": "1.3",
+            "n0": "5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "da04caa2",
+        "answer": {
+          "value": 5,
+          "label": "n = 5"
+        }
+      }
+    },
+    {
+      "id": "53569821-4597-4d0a-b828-37d76a602c80",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\sin(2\\sin^{-1}x)",
+              "f": "sin(2*asin(x))",
+              "restart": true,
+              "domain": [
+                -0.9,
+                0.9
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = 2x\\sqrt{1 - x^2}",
+              "f": "2*x*sqrt(1-x^2)"
+            },
+            {
+              "step": "s1",
+              "kind": "deriv",
+              "tex": "y' = 2\\sqrt{1 - x^2} - \\dfrac{2x^2}{\\sqrt{1 - x^2}}",
+              "f": "2*sqrt(1-x^2)-2*x^2/sqrt(1-x^2)"
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "= \\dfrac{2 - 4x^2}{\\sqrt{1 - x^2}}",
+              "f": "(2-4*x^2)/sqrt(1-x^2)"
+            }
+          ],
+          "answer": "(2-4*x0^2)/sqrt(1-x0^2)",
+          "vars": {
+            "x0": "0.5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "7f669d5d",
+        "answer": {
+          "value": 1.1547005383792517,
+          "label": "(2−4x²)/√(1−x²)"
+        }
+      }
+    },
+    {
+      "id": "573e0680-ccfa-4a05-b82e-2f0a7685a588",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "f(x) = \\log_{x^2}(\\log x)",
+              "f": "log(log(x))/log(x^2)",
+              "restart": true,
+              "domain": [
+                1.5,
+                4
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "f(x) = \\dfrac{\\ln(\\ln x)}{2\\ln x}",
+              "f": "log(log(x))/(2*log(x))"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "x = e:\\ f'(e) = \\dfrac{1}{2e}",
+              "f": "1/(2*e)",
+              "value": "1/(2*e)"
+            }
+          ],
+          "answer": "1/(2*e)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "221cd277",
+        "answer": {
+          "value": 0.18393972058572117,
+          "label": "1/(2e)"
+        }
+      }
+    },
+    {
+      "id": "5806c262-44a1-4748-831e-ba4b9b382478",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "x^2 = \\cos 2\\theta"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "y = \\tan^{-1}\\dfrac{\\sqrt{1 + x^2} - \\sqrt{1 - x^2}}{\\sqrt{1 + x^2} + \\sqrt{1 - x^2}}",
+              "f": "atan((sqrt(1+x^2)-sqrt(1-x^2))/(sqrt(1+x^2)+sqrt(1-x^2)))",
+              "restart": true,
+              "domain": [
+                0.1,
+                0.9
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "y = \\dfrac{\\pi}{4} - \\theta = \\dfrac{\\pi}{4} - \\dfrac{1}{2}\\cos^{-1}(x^2)",
+              "f": "pi/4-acos(x^2)/2",
+              "note": "(cos θ − sin θ)/(cos θ + sin θ)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{dy}{d(\\cos^{-1}x^2)} = -\\dfrac{1}{2}",
+              "f": "-1/2",
+              "value": "-1/2"
+            }
+          ],
+          "answer": "-1/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "99caaba8",
+        "answer": {
+          "value": -0.5,
+          "label": "−1/2"
+        }
+      }
+    },
+    {
+      "id": "59b3b164-8276-4b3a-be61-791437670414",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "f'(g(x))\\cdot g'(x) = 1",
+              "f": "(1/(1+g0^3))*(1+g0^3)",
+              "value": "1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "g'(x) = \\dfrac{1}{f'(g(x))} = 1 + (g(x))^3",
+              "f": "1/(1/(1+g0^3))",
+              "value": "1+g0^3"
+            }
+          ],
+          "answer": "1+g0^3",
+          "vars": {
+            "g0": "0.7"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "92c2ec43",
+        "answer": {
+          "value": 1.343,
+          "label": "1 + (g(x))³"
+        }
+      }
+    },
+    {
+      "id": "59e7b3a0-0dff-4efd-af95-a0ebdf81e060",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\lim_{x\\to 0}\\dfrac{f(x) - 5}{x} = f'(0) = 4"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "g'(x) = (2x + 2)f(x) + (x^2 + 2x + 1)f'(x)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "g'(0) = 2 \\times 5 + 1 \\times 4 = 14",
+              "f": "2*5+1*4",
+              "value": "14"
+            }
+          ],
+          "answer": "2*5+1*4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "02ac3f82",
+        "answer": {
+          "value": 14,
+          "label": "14"
+        }
+      }
+    },
+    {
+      "id": "5a8e5bce-81b5-4c75-8079-845860e48280",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{d}{dx}f(\\sin x) = f'(\\sin x)\\cos x = 3 \\times \\dfrac{1}{\\sqrt{2}}",
+              "f": "3*cos(pi/4)",
+              "value": "3/sqrt(2)"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{d}{dx}g(\\sec x) = g'(\\sec x)\\sec x\\tan x = 1 \\times \\sqrt{2} \\times 1",
+              "f": "1*(1/cos(pi/4))*tan(pi/4)",
+              "value": "sqrt(2)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{3/\\sqrt{2}}{\\sqrt{2}} = \\dfrac{3}{2}",
+              "f": "(3/sqrt(2))/sqrt(2)",
+              "value": "3/2"
+            }
+          ],
+          "answer": "(3/sqrt(2))/sqrt(2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "35d68e0c",
+        "answer": {
+          "value": 1.4999999999999998,
+          "label": "3/2"
+        }
+      }
+    },
+    {
+      "id": "5fac33c1-cf9f-49b4-987b-7419ceef79b3",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "F' = f'(f(f(1)))\\,f'(f(1))\\,f'(1) + 2f(1)f'(1)"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "= 3 \\cdot 3 \\cdot 3 + 2 \\cdot 1 \\cdot 3 = 27 + 6 = 33",
+              "f": "3*3*3+2*1*3",
+              "value": "33"
+            }
+          ],
+          "answer": "3*3*3+2*1*3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "9db0b983",
+        "answer": {
+          "value": 33,
+          "label": "33"
+        }
+      }
+    },
+    {
+      "id": "5fb3ccbe-1daa-4c8e-9f22-3ccfbecc01a0",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "x = \\csc^{-1}\\dfrac{1 + t^2}{2t} = \\sin^{-1}\\dfrac{2t}{1 + t^2}",
+              "f": "asin(2*x/(1+x^2))",
+              "restart": true,
+              "domain": [
+                0.1,
+                0.9
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "x = 2\\tan^{-1}t",
+              "f": "2*atan(x)"
+            },
+            {
+              "step": "s1",
+              "kind": "deriv",
+              "tex": "\\dfrac{dx}{dt} = \\dfrac{2}{1 + t^2}",
+              "f": "2/(1+x^2)"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "y = \\cot^{-1}\\dfrac{\\sqrt{1 - t^2}}{t} = \\tan^{-1}\\dfrac{t}{\\sqrt{1 - t^2}}",
+              "f": "atan(x/sqrt(1-x^2))",
+              "restart": true,
+              "domain": [
+                0.1,
+                0.9
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "y = \\sin^{-1}t",
+              "f": "asin(x)"
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "\\dfrac{dy}{dt} = \\dfrac{1}{\\sqrt{1 - t^2}}",
+              "f": "1/sqrt(1-x^2)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f(t) = \\dfrac{1 + t^2}{2\\sqrt{1 - t^2}}",
+              "f": "(1/sqrt(1-t0^2))/(2/(1+t0^2))",
+              "value": "(1+t0^2)/(2*sqrt(1-t0^2))"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "t = \\tan\\alpha:\\ \\dfrac{\\sec^2\\alpha}{2\\sqrt{\\cos 2\\alpha}/\\cos\\alpha} = \\dfrac{\\sec\\alpha}{2\\sqrt{\\cos 2\\alpha}}",
+              "f": "(1+tan(al)^2)/(2*sqrt(1-tan(al)^2))",
+              "value": "(1/cos(al))/(2*sqrt(cos(2*al)))"
+            }
+          ],
+          "answer": "(1/cos(al))/(2*sqrt(cos(2*al)))",
+          "vars": {
+            "al": "0.5",
+            "t0": "tan(al)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "ce2f652d",
+        "answer": {
+          "value": 0.7751104800208041,
+          "label": "sec α/(2√cos 2α)"
+        }
+      }
+    },
+    {
+      "id": "60350d46-f156-45b4-94cd-f7c397d609a1",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{both sides} = p"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "\\sqrt{y - p} = p \\Rightarrow y = p^2 + p",
+              "f": "x^2+x",
+              "restart": true
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "\\dfrac{dy}{dp} = 2p + 1",
+              "f": "2*x+1"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "\\sqrt{x + p} = p \\Rightarrow x = p^2 - p",
+              "f": "x^2-x",
+              "restart": true
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "\\dfrac{dx}{dp} = 2p - 1",
+              "f": "2*x-1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{dy}{dx} = \\dfrac{2p + 1}{2p - 1},\\quad p = \\dfrac{y - x}{2}",
+              "f": "(2*p0+1)/(2*p0-1)",
+              "value": "(y0-x0+1)/(y0-x0-1)",
+              "note": "2p = y − x"
+            }
+          ],
+          "answer": "(y0-x0+1)/(y0-x0-1)",
+          "vars": {
+            "p0": "1.3",
+            "y0": "p0^2+p0",
+            "x0": "p0^2-p0"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "ef7063c7",
+        "answer": {
+          "value": 2.25,
+          "label": "(y−x+1)/(y−x−1)"
+        }
+      }
+    },
+    {
+      "id": "6391fcd5-34a1-418d-ab24-07cd920119ca",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "y^{1/m} + y^{-1/m} = 2x \\Rightarrow y^{1/m} = x + \\sqrt{x^2 - 1}",
+              "f": "(x0+sqrt(x0^2-1))+1/(x0+sqrt(x0^2-1))",
+              "value": "2*x0"
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\left(x + \\sqrt{x^2 - 1}\\right)^m",
+              "f": "(x+sqrt(x^2-1))^m0",
+              "restart": true,
+              "domain": [
+                1.5,
+                4
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "\\dfrac{dy}{dx} = \\dfrac{my}{\\sqrt{x^2 - 1}}",
+              "f": "m0*(x+sqrt(x^2-1))^m0/sqrt(x^2-1)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "(x^2 - 1)\\left(\\dfrac{dy}{dx}\\right)^2 = m^2 y^2",
+              "f": "(x0^2-1)*(m0*(x0+sqrt(x0^2-1))^m0/sqrt(x0^2-1))^2",
+              "value": "m0^2*(x0+sqrt(x0^2-1))^(2*m0)"
+            }
+          ],
+          "answer": "m0^2*(x0+sqrt(x0^2-1))^(2*m0)",
+          "vars": {
+            "m0": "2",
+            "x0": "1.5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "ba6a29ed",
+        "answer": {
+          "value": 187.9148550549912,
+          "label": "m²y²"
+        }
+      }
+    },
+    {
+      "id": "63ee2a05-8236-44fc-86eb-3fe163e142b6",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f(x) = 3x^2 + 2xf'(1) + f''(2)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f'(1) = 6 + 2f'(1) \\Rightarrow f'(1) = -6",
+              "f": "6+2*(-6)",
+              "value": "-6"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f''(2) = 6",
+              "f": "6",
+              "value": "6"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f(x) = 3x^2 + 2x(-6) + 6 = 3x^2 - 12x + 6",
+              "f": "3*x0^2-12*x0+6",
+              "value": "3*x0^2+2*x0*(-6)+6"
+            }
+          ],
+          "answer": "3*x0^2-12*x0+6",
+          "vars": {
+            "x0": "1.5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "72531387",
+        "answer": {
+          "value": -5.25,
+          "label": "3x² − 12x + 6"
+        }
+      }
+    },
+    {
+      "id": "64850819-b76f-4cf4-9ed9-63d8437b9e40",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\sec(\\tan^{-1}x)",
+              "f": "1/cos(atan(x))",
+              "restart": true,
+              "domain": [
+                0.2,
+                3
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\sqrt{1 + x^2}",
+              "f": "sqrt(1+x^2)"
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "\\dfrac{dy}{dx} = \\dfrac{x}{\\sqrt{1 + x^2}}",
+              "f": "x/sqrt(1+x^2)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "x = 1:\\ \\dfrac{1}{\\sqrt{2}}",
+              "f": "1/sqrt(1+1^2)",
+              "value": "1/sqrt(2)"
+            }
+          ],
+          "answer": "1/sqrt(2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "ad213b1b",
+        "answer": {
+          "value": 0.7071067811865475,
+          "label": "1/√2"
+        }
+      }
+    },
+    {
+      "id": "64ac100b-2132-421e-9bf1-e8d81d6199ef",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{d}{dx}[f(f(f(x)))] = f'(f(f(1)))\\,f'(f(1))\\,f'(1) = 3 \\cdot 3 \\cdot 3 = 27",
+              "f": "3*3*3",
+              "value": "27"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{d}{dx}[(f(x))^2] = 2f(1)f'(1) = 6",
+              "f": "2*1*3",
+              "value": "6"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Total} = 27 + 6 = 33",
+              "f": "27+6",
+              "value": "33"
+            }
+          ],
+          "answer": "27+6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "ba0433c2",
+        "answer": {
+          "value": 33,
+          "label": "33"
+        }
+      }
+    },
+    {
+      "id": "65406d76-5e10-4cd9-a5f1-44ff4ab43991",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = x\\cdot 7^x",
+              "f": "x*7^x",
+              "restart": true
+            },
+            {
+              "step": "s1",
+              "kind": "deriv",
+              "tex": "\\dfrac{dy}{dx} = 7^x + x\\,7^x\\log 7",
+              "f": "7^x+x*7^x*log(7)"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "x = 1:\\ \\dfrac{dy}{dx} = 7(1 + \\log 7)",
+              "f": "7^1+1*7^1*log(7)",
+              "value": "7*(1+log(7))"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{dx}{dy} = \\dfrac{1}{7(\\log 7 + 1)}",
+              "f": "1/(7*(1+log(7)))",
+              "value": "1/(7*(log(7)+1))"
+            }
+          ],
+          "answer": "1/(7*(log(7)+1))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "ce8c020e",
+        "answer": {
+          "value": 0.04849338086667508,
+          "label": "1/(7(log 7 + 1))"
+        }
+      }
+    },
+    {
+      "id": "669908ac-90a5-43f2-bc5e-56669291e9f2",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y = \\cos^{-1}\\dfrac{a^2}{\\sqrt{x^4 + a^4}}",
+              "f": "acos(a0^2/sqrt(x^4+a0^4))",
+              "restart": true,
+              "domain": [
+                0.3,
+                3
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "y = \\tan^{-1}\\dfrac{x^2}{a^2}",
+              "f": "atan(x^2/a0^2)",
+              "note": "sin y = x²/√(x⁴ + a⁴), tan y = x²/a²"
+            },
+            {
+              "step": "s3",
+              "kind": "deriv",
+              "tex": "\\dfrac{dy}{dx} = \\dfrac{1}{1 + x^4/a^4}\\cdot\\dfrac{2x}{a^2}",
+              "f": "2*a0^2*x/(x^4+a0^4)"
+            },
+            {
+              "step": "s3",
+              "kind": "expr",
+              "tex": "= \\dfrac{2a^2 x}{x^4 + a^4}",
+              "f": "2*a0^2*x/(x^4+a0^4)"
+            }
+          ],
+          "answer": "2*a0^2*x0/(x0^4+a0^4)",
+          "vars": {
+            "a0": "1.5",
+            "x0": "1"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "df0a7b79",
+        "answer": {
+          "value": 0.7422680412371134,
+          "label": "2a²x/(x⁴+a⁴)"
+        }
+      }
+    },
+    {
+      "id": "67535d54-bd72-47a6-8322-57c147b02d5e",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "x = 0:\\ y = 1"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{y}\\dfrac{dy}{dx} = 1 + 0 + \\cdots = 1",
+              "f": "1/(1+0)+2*0/(1+0^2)",
+              "value": "1"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{dy}{dx} = 1",
+              "f": "1*1",
+              "value": "1"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "5d0c3342",
+        "answer": {
+          "value": 1,
+          "label": "1"
+        }
+      }
+    },
+    {
+      "id": "67d5c2dd-33c1-4936-8988-345e8063a04f",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{d\\,f(\\cos x)}{d\\,g(\\tan x)} = \\dfrac{f'(\\cos x)(-\\sin x)}{g'(\\tan x)\\sec^2 x}"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "x = \\dfrac{\\pi}{6}:\\ \\dfrac{4 \\times (-1/2)}{2 \\times 4/3} = -\\dfrac{3}{4}",
+              "f": "4*(-sin(pi/6))/(2*(1/cos(pi/6)^2))",
+              "value": "-3/4"
+            }
+          ],
+          "answer": "-3/4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "199e4420",
+        "answer": {
+          "value": -0.75,
+          "label": "−3/4"
+        }
+      }
+    },
+    {
+      "id": "68e5b837-4bf2-45ac-af6d-99aa0cb466eb",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "x = \\sin\\theta"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "\\sin^{-1}\\left(2x\\sqrt{1 - x^2}\\right)",
+              "f": "asin(2*x*sqrt(1-x^2))",
+              "restart": true,
+              "domain": [
+                -0.45,
+                0.45
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "= \\sin^{-1}(\\sin 2\\theta) = 2\\theta = 2\\sin^{-1}x",
+              "f": "2*asin(x)"
+            },
+            {
+              "step": "s3",
+              "kind": "expr",
+              "tex": "\\sin^{-1}(3x - 4x^3)",
+              "f": "asin(3*x-4*x^3)",
+              "restart": true,
+              "domain": [
+                -0.45,
+                0.45
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "expr",
+              "tex": "= \\sin^{-1}(\\sin 3\\theta) = 3\\theta = 3\\sin^{-1}x",
+              "f": "3*asin(x)"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{derivative} = \\dfrac{2}{3}",
+              "f": "(2/sqrt(1-x0^2))/(3/sqrt(1-x0^2))",
+              "value": "2/3"
+            }
+          ],
+          "answer": "2/3",
+          "vars": {
+            "x0": "0.3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "f1478a90",
+        "answer": {
+          "value": 0.6666666666666666,
+          "label": "2/3"
+        }
+      }
+    },
+    {
+      "id": "6910d6f3-9937-48a8-9686-4964a4be349e",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "f(x) = \\dfrac{\\sin^2 x}{1 + \\cot x} + \\dfrac{\\cos^2 x}{1 + \\tan x}",
+              "f": "sin(x)^2/(1+1/tan(x))+cos(x)^2/(1+tan(x))",
+              "restart": true,
+              "domain": [
+                0.2,
+                1.2
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "= \\dfrac{\\sin^3 x + \\cos^3 x}{\\sin x + \\cos x}",
+              "f": "(sin(x)^3+cos(x)^3)/(sin(x)+cos(x))"
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "= \\sin^2 x - \\sin x\\cos x + \\cos^2 x",
+              "f": "sin(x)^2-sin(x)*cos(x)+cos(x)^2"
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "= 1 - \\dfrac{\\sin 2x}{2}",
+              "f": "1-sin(2*x)/2"
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "f'(x) = -\\cos 2x",
+              "f": "-cos(2*x)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f'\\left(\\dfrac{\\pi}{6}\\right) = -\\cos\\dfrac{\\pi}{3} = -\\dfrac{1}{2}",
+              "f": "-cos(pi/3)",
+              "value": "-1/2"
+            }
+          ],
+          "answer": "-cos(pi/3)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "9d142b21",
+        "answer": {
+          "value": -0.5000000000000001,
+          "label": "−1/2"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
