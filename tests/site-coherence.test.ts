@@ -75,11 +75,12 @@ describe("entranceMockExamNames (/start's 'For an entrance exam' line)", () => {
   const names = entranceMockExamNames();
 
   it("lists every exam with the mock loop, each family once", () => {
-    for (const n of ["NDA", "CDS", "NEET", "MHT-CET", "JEE Mains", "IPMAT", "UCEED", "MPSC", "UPSC CSE", "SSC CGL", "SPI"]) {
+    for (const n of ["NDA", "CDS", "NEET", "MHT-CET", "JEE Mains", "IPMAT", "UCEED", "MPSC", "UPSC CSE", "SSC", "SPI"]) {
       expect(names).toContain(n);
     }
     expect(names.filter((n) => n === "MPSC")).toHaveLength(1);
-    expect(names.filter((n) => n.startsWith("SSC CGL"))).toHaveLength(1);
+    // one SSC family (CGL Tier I + II and CHSL since 2026-11-13), listed once
+    expect(names.filter((n) => n.startsWith("SSC"))).toHaveLength(1);
   });
 
   it("leaves out board exams (their loop is the book) and exams with no mocks", () => {
