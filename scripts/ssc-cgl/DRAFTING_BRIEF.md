@@ -3,7 +3,7 @@
 You draft one slice of one shift: the exact English question text, the four options, the
 classification, difficulty, YOUR OWN derived answer and a short solution. The main session
 reviews every block and compares your answers with SSC's key afterwards. Your answers must be
-derived blind. Repo (git worktree): `C:\Users\vilas\Downloads\qb-ssc`.
+derived blind. Repo (git worktree): the one your prompt names.
 
 ## Source: the only thing you may read for the questions
 
@@ -56,6 +56,22 @@ The CGL 2025 sheet (`t2-2026-01-18-s1`) is a SCAN: no `text.txt`, type everythin
 sheet. Its option numbers "1." to "4." are stamped by us at one place (the printed ones were
 removed); a long option may print its text on the line below its number. Difficulty on the **Tier II scale**: graduate level, a step above Tier I, so an
 item Tier I would call MODERATE is often EASY here; HARD is long working, rare words or obscure facts.
+
+**SSC CHSL Tier I (`chsl-t1-...`) is its own exam, printed like the 2024 CGL shifts above**
+(`text.txt`, red label = the number you write, options "1." to "4." as A to D), but its four
+sections come in a DIFFERENT order:
+
+| part | numbers | section as printed | subject |
+|---|---|---|---|
+| A | 1-25 | English Language | English |
+| B | 26-50 | General Intelligence | Reasoning |
+| C | 51-75 | Quantitative Aptitude | Quantitative Aptitude |
+| D | 76-100 | General Awareness | name it: `subject:` as PART-B below |
+
+So in CHSL the `subject:` line belongs to **PART-D**, and passage sets (a "Comprehension:" cloze
+or reading passage) are in **PART-A**. Everything said below about CGL's PART-B (General
+Awareness) applies to CHSL's PART-D, and about CGL's PART-D (English) to CHSL's PART-A. CHSL
+is a Class 12-level exam: rate difficulty on the same Tier I scale. The catalog is CGL's.
 
 ## Rules
 
