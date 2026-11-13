@@ -528,6 +528,8 @@ export const HELD: Record<string, number[]> = {
   "chsl-t1-2024-07-05-s1": [67, 75],
   // CHSL 8 Jul 2024 Q62: cut off after "If the marked price of the": no price, no question.
   "chsl-t1-2024-07-08-s1": [62],
+  // CHSL 9 Jul 2024 Q56: cut off after "from at least", and two bars it needs run off the graph.
+  "chsl-t1-2024-07-09-s1": [56],
 };
 
 export const OUT = join(__dirname, "out"); // gitignored: page images, geometry, reading sheets
