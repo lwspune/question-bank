@@ -305,6 +305,13 @@ export const CHECKOUT_NO_CONTACT_PAID_BASELINE_PCT = 25;
  */
 export const CHECKOUT_RETURN_LATER_PAID_BASELINE_PCT = 14;
 /**
+ * "welcome-exam-confirm": of the 2,021 students who signed up in the 30 days
+ * to 2026-11-12 (staff left out), the share who left /welcome with an exam
+ * (955), and the share who never answered its first screen at all (712).
+ */
+export const WELCOME_EXAM_PICKED_BASELINE_PCT = 47;
+export const WELCOME_SCREEN1_LEFT_BASELINE_PCT = 35;
+/**
  * "answer-limit-copy": of students who met the answer limit in the 30 days to
  * 2026-11-11, the share who opened checkout from it (35 of 360) and who bought
  * a pass afterwards (16 of 360), staff left out.
@@ -439,7 +446,8 @@ export type Readout =
   | "repeat-line"
   | "answer-limit-copy"
   | "checkout-contact"
-  | "checkout-return";
+  | "checkout-return"
+  | "welcome-exam-confirm";
 
 export type Experiment = {
   id: string;
@@ -1281,6 +1289,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-12",
     windowDays: 28,
     readout: "checkout-return",
+    status: "running",
+  },
+  {
+    id: "welcome-exam-confirm",
+    title: "Welcome screen confirms the exam the student came from",
+    change:
+      "When the page a new student came from names an exam (the exam they tapped, else the page they go back to, else the page they first landed on; lib/exam/examFromPath), the first welcome screen asks \"Preparing for MHT-CET?\" with one Yes, continue button, an optional class row, Choose a different exam (the old screen) and Skip for now. Before, it asked class then exam cold: a chapter page never set the exam cookie, so nothing was pre-selected.",
+    why: "In the 30 days to 2026-11-12, 712 of 2,021 new students (35%) left the first welcome screen unanswered and only 955 (47%) left with an exam; 46% of students since 2026-09-01 have no exam, and those who skip never pick one later. 57% land first on a chapter page that names its exam, mostly from ChatGPT.",
+    metric:
+      "New sign-ups (staff left out) by student_profiles: the share with target_exams set, and the share with onboarded_at still null after 24 hours; split by whether examFromPath(acq_landing) names an exam, since only those see the new screen",
+    rule: `Keep it if more than ${WELCOME_EXAM_PICKED_BASELINE_PCT}% of new students leave with an exam and fewer than ${WELCOME_SCREEN1_LEFT_BASELINE_PCT}% leave the first screen unanswered. If the share with an exam rises but students change the guessed exam later at /account more than rarely, the guess is wrong too often: look at which routes it came from.`,
+    liveSince: "2026-11-13",
+    windowDays: 14,
+    readout: "welcome-exam-confirm",
     status: "running",
   },
 

@@ -33,20 +33,30 @@ import { loopFor, welcomeDestination } from "@/lib/education/howItWorks";
  * once — the cheaper failure. A SPECIFIC ?next= (a mock tapped before sign-up)
  * stays the primary button; redirecting a specific intent is what the
  * engagement gate forbids. See welcomeDestination().
+ *
+ * Screen 1 as a CONFIRM (2026-11-13): when the page they came from names an
+ * exam (`guess`, lib/exam/examFromPath), screen 1 asks "Preparing for
+ * MHT-CET?" with one button instead of class-then-exam chips. 35% of sign-ups
+ * left screen 1 without an answer and 46% of students have no exam; they never
+ * pick one later. The class stays, as one OPTIONAL row: 95% gave it on the old
+ * screen, and the GoPost leads feed, staff rosters and /me's stage nudge read
+ * it. "Choose a different exam" opens the old screen, empty.
  */
 const STAGE_OPTIONS = STAGES.map((s) => ({ value: s, label: STAGE_LABELS[s] }));
 
 export default function ExamOnboarding({
   next,
-  initialExam,
+  guess,
 }: {
   next: string;
-  initialExam: ExamSlug | null;
+  /** The exam the page they came from names, to confirm; null asks cold. */
+  guess: ExamSlug | null;
 }) {
   const router = useRouter();
-  const [exams, setExams] = useState<ExamSlug[]>(
-    initialExam && isExamSlug(initialExam) ? [initialExam] : []
-  );
+  const guessed = guess && isExamSlug(guess) ? getExamBySlug(guess) : null;
+  // The confirm view while there is a guess and they have not asked to choose.
+  const [confirming, setConfirming] = useState(guessed !== null);
+  const [exams, setExams] = useState<ExamSlug[]>([]);
   const [stage, setStage] = useState<Stage | null>(null);
   const [showExams, setShowExams] = useState(false);
   const [submitting, setSubmitting] = useState<"continue" | "skip" | null>(null);
@@ -74,10 +84,10 @@ export default function ExamOnboarding({
     return data.primaryExam ?? null;
   }
 
-  async function onContinue() {
+  async function onContinue(targets: ExamSlug[]) {
     setSubmitting("continue");
     try {
-      const chosen = await save(exams, stage);
+      const chosen = await save(targets, stage);
       if (chosen && isExamSlug(chosen)) setExamCookie(chosen);
       toast.success("You're all set.");
       // The server components behind the next page read the cookie fresh;
@@ -157,6 +167,60 @@ export default function ExamOnboarding({
     );
   }
 
+  if (confirming && guessed) {
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-muted/30 px-4 py-12 sm:px-6">
+        <div className="w-full max-w-lg rounded-2xl border bg-card p-6 shadow-sm sm:p-8">
+          <BrandMark />
+          <p className="text-xs font-semibold uppercase tracking-wider text-brand-accent">Step 1 of 2</p>
+          <h1 className="mt-1 text-2xl font-semibold tracking-tight">Preparing for {guessed.displayName}?</h1>
+          <p className="mt-2 text-sm text-muted-foreground">
+            We&apos;ll put its questions, notes and past papers first. You can change this anytime.
+          </p>
+          <div className="mt-6">
+            <Button
+              type="button"
+              variant="brand"
+              size="lg"
+              className="h-12 w-full rounded-xl text-base"
+              disabled={busy}
+              onClick={() => onContinue([guessed.slug])}
+            >
+              {submitting === "continue" ? "Saving…" : "Yes, continue"}
+              {submitting !== "continue" && <ArrowRight className="h-4 w-4" aria-hidden />}
+            </Button>
+          </div>
+          <div className="mt-7">
+            <ProfileChips
+              legend="Your class (optional)"
+              legendStyle="question"
+              options={STAGE_OPTIONS}
+              selected={stage ? [stage] : []}
+              onToggle={(v) => setStage(stage === v ? null : (v as Stage))}
+              disabled={busy}
+            />
+          </div>
+          <div className="mt-7 flex flex-wrap items-center justify-between gap-3">
+            <button
+              type="button"
+              disabled={busy}
+              onClick={() => {
+                setConfirming(false);
+                setExams([]);
+              }}
+              className="rounded-sm text-sm font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+            >
+              Choose a different exam
+            </button>
+            <Button type="button" variant="ghost" disabled={busy} onClick={onSkip}>
+              {submitting === "skip" ? "…" : "Skip for now"}
+            </Button>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
   return (
     <main className="flex min-h-screen items-center justify-center bg-muted/30 px-6 py-12">
       <div className="w-full max-w-lg rounded-2xl border bg-card p-8 shadow-sm">
@@ -211,7 +275,7 @@ export default function ExamOnboarding({
             variant="brand"
             className="flex-1"
             disabled={busy || exams.length === 0}
-            onClick={onContinue}
+            onClick={() => onContinue(exams)}
           >
             {submitting === "continue" ? "Saving…" : "Continue"}
           </Button>
