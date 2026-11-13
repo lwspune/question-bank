@@ -131,6 +131,9 @@ def measure(a):
     fillers = runs(beige, 6, 2)
     bars = runs(grey, 8, 2)
     rules = [y for y in rules if not any(f0 - 3 <= y <= f1 + 3 for f0, f1 in fillers)]
+    # the status bar likewise: its top is the boundary (added below); its own edges are not (a
+    # rule read at its bottom edge had added a phantom row and shifted the key one letter up)
+    rules = [y for y in rules if not any(b0 - 3 <= y <= b1 + 6 for b0, b1 in bars)]
     rules = sorted(rules + [f0 for f0, _ in fillers] + [b0 for b0, _ in bars])
 
     ink = (s[:, TEXT_X[0] : TEXT_X[1]] < INK).any(axis=1)
