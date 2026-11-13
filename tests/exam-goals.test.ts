@@ -45,6 +45,7 @@ describe("every exam declares a goal", () => {
     ["upsc-cse", "government"],
     ["mpsc-group-b-c", "government"],
     ["ugc-net", "government"],
+    ["rrb-ntpc", "government"],
     ["ipmat-indore", "management"],
     ["jipmat", "management"],
     ["cbse-12", "boards"],

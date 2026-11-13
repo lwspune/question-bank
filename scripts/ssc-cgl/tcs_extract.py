@@ -129,11 +129,13 @@ def save_image(doc, b, xref, path):
 
 def main():
     if len(sys.argv) < 3:
-        sys.exit("usage: tcs_extract.py <dayId> <pdfPath> [--pages=FROM-TO]")
+        sys.exit("usage: tcs_extract.py <dayId> <pdfPath> [--pages=FROM-TO] [--out-root=DIR]")
     day, pdf = sys.argv[1], sys.argv[2]
     span_arg = next((a.split("=", 1)[1] for a in sys.argv[3:] if a.startswith("--pages=")), None)
     first, last = (int(x) for x in span_arg.split("-")) if span_arg else (1, 10**9)
-    out_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "out", day)
+    # Another lane reading the same TCS print (scripts/rrb-ntpc) keeps its output in its own out/.
+    out_root = next((a.split("=", 1)[1] for a in sys.argv[3:] if a.startswith("--out-root=")), None)
+    out_dir = os.path.join(out_root or os.path.join(os.path.dirname(os.path.abspath(__file__)), "out"), day)
     img_dir = os.path.join(out_dir, "img")
     os.makedirs(img_dir, exist_ok=True)
     doc = fitz.open(pdf)

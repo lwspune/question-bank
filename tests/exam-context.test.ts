@@ -470,6 +470,7 @@ describe("exam tiers", () => {
       "ssc-cgl-tier-2",
       "ssc-chsl",
       "ugc-net",
+      "rrb-ntpc",
     ],
   };
 
