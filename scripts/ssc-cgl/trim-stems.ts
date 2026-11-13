@@ -21,7 +21,7 @@ import { createClient } from "@supabase/supabase-js";
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { uploadImage } from "../../src/lib/storage/images";
-import { FIGURES, ORG_ID, SHIFTS, requireExamId, tierOf } from "./config";
+import { FIGURES, ORG_ID, SHIFTS, requireExamIdOf } from "./config";
 import { figureRow, rowHash } from "./liveFigures";
 import { keepKey, loadKeep, trimStemPng } from "./stemTrimImage";
 
@@ -86,7 +86,7 @@ async function main() {
   const skipped: string[] = [];
   for (const c of cands) {
     const shift = SHIFTS[c.shift];
-    const examId = requireExamId(tierOf(c.shift));
+    const examId = requireExamIdOf(c.shift);
     const { data: q, error } = await db
       .from("questions")
       .select("id, image_url, content_hash")

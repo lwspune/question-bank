@@ -19,6 +19,15 @@ export const EXAMS: Record<Tier, { name: string; id: string }> = {
   // created by seed-exam.ts --tier=2 on 2026-10-17
   2: { name: "SSC CGL Tier II", id: "66ab3f31-dbba-4a3d-a15e-7a9bbb7c7613" },
 };
+/**
+ * SSC CHSL Tier I rides this lane (owner, 2026-11-13): the same TCS response sheet and the same
+ * subjects and chapters as CGL Tier I, in its own exam row. A CHSL day declares `exam: "chsl"`
+ * and its ids start `chsl-`, so no CGL id, source_file or mock moved.
+ */
+export type ExamKey = "cgl" | "chsl";
+// created by seed-exam.ts --exam=chsl on 2026-11-13
+export const CHSL_EXAM: { name: string; id: string } = { name: "SSC CHSL", id: "a0179454-aef6-46d6-8fd8-7af42e24eefe" };
+
 export const EXAM_NAME = EXAMS[1].name;
 /** `SSC CGL`, created by seed-exam.ts on 2026-10-16, when the pilot shifts were ready to commit. */
 export const EXAM_ID = EXAMS[1].id;
@@ -56,6 +65,17 @@ export const LAYOUTS: Record<Tier, Section[]> = {
     { part: "E", match: /Computer Knowledge/i, count: 20, subjects: ["Computer Knowledge"] },
   ],
 };
+
+/**
+ * SSC CHSL Tier I: four sections of 25 in its own print order, English first, Reasoning
+ * printed as "General Intelligence". The subjects are CGL Tier I's.
+ */
+export const CHSL_LAYOUT: Section[] = [
+  { part: "A", match: /English/i, count: 25, subjects: ["English"] },
+  { part: "B", match: /General Intelligence|Reasoning/i, count: 25, subjects: ["Reasoning"] },
+  { part: "C", match: /Quantitative/i, count: 25, subjects: ["Quantitative Aptitude"] },
+  { part: "D", match: /General Awareness/i, count: 25, subjects: GA },
+];
 
 /**
  * Tier II Paper 1 BEFORE CGL 2022 was Quantitative Abilities alone: one section of 100
@@ -98,11 +118,33 @@ export function shiftSections(shiftId: string): Partial<Record<Part, string[]>> 
   return subjectsOf(layoutOf(DAYS[s.day]));
 }
 
-/** A shift id's tier: `t1-...` or `t2-...`. */
+/** A shift id's tier: `t1-...` or `t2-...`, after the exam's prefix (`chsl-t1-...`). */
 export function tierOf(shiftId: string): Tier {
-  const t = Number(/^t([12])-/.exec(shiftId)?.[1]);
+  const t = Number(/^(?:chsl-)?t([12])-/.exec(shiftId)?.[1]);
   if (t !== 1 && t !== 2) throw new Error(`"${shiftId}" names no tier (t1-/t2-)`);
   return t;
+}
+
+/** A shift or day id's exam: `chsl-...` is CHSL, every other id CGL. */
+export function examOf(id: string): ExamKey {
+  return id.startsWith("chsl-") ? "chsl" : "cgl";
+}
+
+/** The exam row a shift's questions go under. */
+export function examRowOf(shiftId: string): { name: string; id: string } {
+  return examOf(shiftId) === "chsl" ? CHSL_EXAM : EXAMS[tierOf(shiftId)];
+}
+
+/** That row's id, refused while the row is not yet created. */
+export function requireExamIdOf(shiftId: string): string {
+  const row = examRowOf(shiftId);
+  if (!row.id) throw new Error(`"${row.name}" has no exam id yet: run scripts/ssc-cgl/seed-exam.ts and paste the id into config.ts`);
+  return row.id;
+}
+
+/** The id prefix a day's shifts carry: `t1`, `t2`, or `chsl-t1`. */
+export function idPrefix(day: Pick<Day, "exam" | "tier">): string {
+  return `${day.exam === "chsl" ? "chsl-" : ""}t${day.tier}`;
 }
 
 export type Catalog = Record<string, { chapter: string; subtopics: string[] }[]>;
@@ -110,6 +152,7 @@ export type Catalog = Record<string, { chapter: string; subtopics: string[] }[]>
 export const CATALOG: Catalog = JSON.parse(readFileSync(join(__dirname, "catalog.json"), "utf8"));
 
 export const SOURCE_ROOT = "C:\\Vilas\\LWS_Pune\\SSC\\CGL";
+export const CHSL_SOURCE_ROOT = "C:\\Vilas\\LWS_Pune\\SSC\\CHSL";
 
 /**
  * One exam DAY = one PDF holding every shift of that day, as hosted by AglaSem: the
@@ -121,7 +164,12 @@ export const SOURCE_ROOT = "C:\\Vilas\\LWS_Pune\\SSC\\CGL";
  * (until 2026-02-08). Our answers are derived independently and compared with it.
  */
 export type Day = {
+  /** Absent: SSC CGL. "chsl": SSC CHSL (its own exam row; ids start `chsl-`). */
+  exam?: ExamKey;
   tier: Tier;
+  /** The sheet prints no heading over its FIRST section (CHSL 1 Jul 2024): the questions
+   * before any heading belong to the layout's first section. */
+  untitledFirstSection?: true;
   /** Tier II: the CGL cycle the paper belongs to ("Combined Graduate Level Examination 2024
    * Tier II", sat in Jan 2025). It is the paper's pyq_year; the sitting date stays in the note. */
   cycle?: number;
@@ -145,13 +193,14 @@ export type Day = {
   /**
    * "tcs": a 2022-2024 TCS response sheet, text with the key as the option colour (tcs.ts),
    * read by assemble-tcs.ts. "raster": the CGL 2025 Tier II sheet, the TCS print scanned to page
-   * pictures with no text layer at all. Absent: the 2025 challenge-module render (assemble.ts).
+   * pictures with no text layer at all. "challenge": the challenge-module render scanned to page
+   * pictures (CHSL 2025, challenge.ts). Absent: the 2025 challenge-module render (assemble.ts).
    */
-  format?: "tcs" | "raster";
+  format?: "tcs" | "raster" | "challenge";
   /** TCS only: the day's slots in shift order, as the sheets print Exam Time */
   slots?: string[];
   /** One file per SHIFT (2022) instead of one per day: shift -> file. `file`/`url` are unused. */
-  shiftFiles?: Record<number, { file: string; url: string }>;
+  shiftFiles?: Record<number, { file: string; url: string; order?: Part[] }>;
   /** The page range (tcs_extract.py --pages) of the day file's TEXT sheets, when it also holds scans. */
   pages?: string;
   /**
@@ -189,6 +238,57 @@ const t1_2024 = (dd: string, docId: string): Day => ({
   provisionalKey: true,
   format: "tcs",
   slots: SLOTS_2024_T1,
+});
+
+/**
+ * SSC CHSL 2024 Tier I (1-11 Jul 2024): AglaSem hosts ONE sheet per exam day, the 9:00 AM
+ * Shift 1, as a TCS response sheet (text layer, key as the green option, no Question ID panel).
+ * Its other shifts are not hosted. The key is the response sheet's, so provisional.
+ */
+const chsl_2024 = (dd: string, docId: string, extra: Pick<Day, "untitledFirstSection"> = {}): Day => ({
+  exam: "chsl",
+  tier: 1,
+  date: `2024-07-${dd}`,
+  shifts: 1,
+  ...extra,
+  layout: CHSL_LAYOUT,
+  file: join(CHSL_SOURCE_ROOT, "2024_Tier1", `SSC_CHSL_2024_Tier1_${dd}Jul_Shift1.pdf`),
+  url: `https://cdn.aglasem.com/aglasem-doc/${docId}/${docId}.pdf`,
+  provisionalKey: true,
+  format: "tcs",
+  slots: ["9:00 AM - 10:00 AM"],
+});
+
+/**
+ * SSC CHSL 2025 Tier I (13-30 Nov 2025): AglaSem hosts none. PW hosts 17 shifts as Google Drive
+ * PDFs of SSC's challenge-module sheet (the 2025 render, key as the coloured left cell), each
+ * page one PICTURE with a partial OCR layer and a watermark (Oliveboard's, baked in; PW's logo
+ * as a separate picture, never read). challenge_extract.py + challenge.ts read the pixels. One
+ * file per shift, so a day lists its shifts in shiftFiles. Whether a sheet carries SSC's tentative
+ * or final key is not printed on it, so the key counts as provisional.
+ */
+const chsl_2025 = (dd: string, docs: Record<number, string | { id: string; order: Part[] }>): Day => ({
+  exam: "chsl",
+  tier: 1,
+  date: `2025-11-${dd}`,
+  shifts: 3,
+  present: Object.keys(docs).map(Number),
+  layout: CHSL_LAYOUT,
+  file: "",
+  url: "",
+  provisionalKey: true,
+  format: "challenge",
+  shiftFiles: Object.fromEntries(
+    Object.entries(docs).map(([n, doc]) => [
+      n,
+      {
+        file: join(CHSL_SOURCE_ROOT, "2025_Tier1", `SSC_CHSL_2025_Tier1_${dd}Nov_S${n}_PW.pdf`),
+        url: `https://drive.google.com/file/d/${typeof doc === "string" ? doc : doc.id}/view`,
+        // the parts' order in PW's file, when not A, B, C, D (read off each capture's first Q.No)
+        ...(typeof doc === "string" ? {} : { order: doc.order }),
+      },
+    ])
+  ),
 });
 
 /**
@@ -380,6 +480,30 @@ export const DAYS: Record<string, Day> = {
     url: "https://cdn.aglasem.com/aglasem-doc/2d8e69ce-8c19-11f1-8775-0aa932765c8b/2d8e69ce-8c19-11f1-8775-0aa932765c8b.pdf",
     provisionalKey: true,
   },
+  // SSC CHSL 2024 Tier I. The 1 Jul sheet prints no "Section : English Language" over Q1.
+  "chsl-t1-2024-07-01": chsl_2024("01", "4cc8415c-88e0-11f1-b862-0aa932765c8b", { untitledFirstSection: true }),
+  "chsl-t1-2024-07-02": chsl_2024("02", "4bd66742-88e0-11f1-a004-0aa932765c8b"),
+  "chsl-t1-2024-07-03": chsl_2024("03", "4ac433ca-88e0-11f1-ac00-0aa932765c8b"),
+  "chsl-t1-2024-07-04": chsl_2024("04", "499f56aa-88e0-11f1-ac43-0aa932765c8b"),
+  "chsl-t1-2024-07-05": chsl_2024("05", "4461c7c2-88e0-11f1-bcd5-0aa932765c8b"),
+  "chsl-t1-2024-07-08": chsl_2024("08", "48ac9442-88e0-11f1-8289-0aa932765c8b"),
+  "chsl-t1-2024-07-09": chsl_2024("09", "47abfaec-88e0-11f1-b03c-0aa932765c8b"),
+  "chsl-t1-2024-07-10": chsl_2024("10", "46c1ad2a-88e0-11f1-925d-0aa932765c8b"),
+  "chsl-t1-2024-07-11": chsl_2024("11", "4585cb4e-88e0-11f1-92c5-0aa932765c8b"),
+  // SSC CHSL 2025 Tier I (13-30 Nov 2025): only PW hosts SSC's own sheets, 17 shifts.
+  "chsl-t1-2025-11-14": chsl_2025("14", { 3: "12GjefNS0Qe6rrN4ovS4JA4I2aQt8uVei" }),
+  "chsl-t1-2025-11-15": chsl_2025("15", { 1: { id: "1YDEHlE7N6EnUVXOBBgxuN_LZiPvNSA4p", order: ["A", "D", "C", "B"] }, 3: "1DeNw_zhtqXzA-TUWQVe4-Xi42YpOZno1" }),
+  "chsl-t1-2025-11-17": chsl_2025("17", { 1: "1bEYLc2Cuj19zFMPr-xrNwmQ-PsHXeTKJ" }),
+  "chsl-t1-2025-11-18": chsl_2025("18", { 1: "1lnYqWPh4NdcMJMkiGGNQhL3DCoz7zUkh" }),
+  "chsl-t1-2025-11-19": chsl_2025("19", { 2: "1PWPVlUuEU6bB_bDrOXrwUnpAL1lfVOj7" }),
+  "chsl-t1-2025-11-20": chsl_2025("20", { 1: "1tZKZ1FtZOwPvdMWOouFPI9vGL9f9GZR_" }),
+  "chsl-t1-2025-11-21": chsl_2025("21", { 1: "14D8_DwMF-29d46tDJ9Up5I4UP3iHviEC", 3: "1DUgySz8UziksPzOJwH2wMaG7N72VhctJ" }),
+  "chsl-t1-2025-11-22": chsl_2025("22", { 2: "1nwaePC5sjoQK-rsSgfBcKAiskaX4HPCY" }),
+  "chsl-t1-2025-11-25": chsl_2025("25", { 1: "12DnI57cULIbViNiiHjjOG8pwbl9ps_Xq", 2: "17sPMnCczOMi-Lu0tH6YJuheCB9jxhP4g", 3: "1mt7BqrL8uJNbERv_SUZ4mCHDLBrgVtoV" }),
+  "chsl-t1-2025-11-26": chsl_2025("26", { 2: { id: "1PWu7D5kmnDlVXkvTTh3ZR0ThxQg4HEKL", order: ["A", "C", "B", "D"] } }),
+  "chsl-t1-2025-11-27": chsl_2025("27", { 1: "1nbM05gj97QFkaXLhiKZQfxfaxW753Eyq" }),
+  "chsl-t1-2025-11-28": chsl_2025("28", { 1: "1tg4SF5FXKWRyVWH-ruwDrn8sRdFgnrzt" }),
+  "chsl-t1-2025-11-29": chsl_2025("29", { 1: "1go-fpkf7FaL7YP50d3uL1_5BdHn3gAFO" }),
 };
 
 /** pyqMonth is a month NAME, as everywhere in the bank ("September"), never a number. */
@@ -397,7 +521,7 @@ export const SHIFTS: Record<string, Shift> = Object.fromEntries(
         {
           day,
           shift,
-          sourceFile: `SSC_CGL_T${d.tier}_${d.date}_S${shift}`,
+          sourceFile: `SSC_${d.exam === "chsl" ? "CHSL" : "CGL"}_T${d.tier}_${d.date}_S${shift}`,
           pyqYear: d.cycle ?? y,
           pyqMonth: MONTHS[m - 1],
           // Tier II sits once a day, so its note names the cycle instead of a shift.
@@ -415,7 +539,7 @@ export const SHIFTS: Record<string, Shift> = Object.fromEntries(
  * Every TCS file, in day order: `dir` is its out/ folder (tcs_extract.py's dayId). A day
  * hosted as one file per shift (2022) lists each, with the shift it holds.
  */
-export type TcsFile = { dir: string; day: Day; file: string; shift?: number; pages?: string };
+export type TcsFile = { dir: string; day: Day; file: string; shift?: number; pages?: string; order?: Part[] };
 export function tcsFiles(): TcsFile[] {
   return Object.entries(DAYS)
     .filter(([, d]) => d.format === "tcs" && !d.sheetIn)
@@ -431,6 +555,16 @@ export function tcsFiles(): TcsFile[] {
     });
 }
 
+/** Every scanned challenge-module file (CHSL 2025), one per shift: `dir` is its out/ folder. */
+export function challengeFiles(): TcsFile[] {
+  return Object.entries(DAYS)
+    .filter(([, d]) => d.format === "challenge")
+    .sort(([a], [b]) => a.localeCompare(b))
+    .flatMap(([dir, day]) =>
+      Object.entries(day.shiftFiles ?? {}).map(([n, f]) => ({ dir: `${dir}-s${n}`, day, file: f.file, shift: Number(n), ...(f.order ? { order: f.order } : {}) }))
+    );
+}
+
 export function requireShift(id: string | undefined): Shift & { id: string } {
   if (!id || !SHIFTS[id]) throw new Error(`unknown shift "${id}". Known: ${Object.keys(SHIFTS).join(", ")}`);
   return { id, ...SHIFTS[id] };
@@ -443,6 +577,18 @@ export function requireShift(id: string | undefined): Shift & { id: string } {
  */
 export const HELD: Record<string, number[]> = {
   "t2-2026-01-18-s1": [35, 59],
+  // CHSL 3 Jul 2024 Q63: the question line under the pie chart is washed out of SSC's print.
+  "chsl-t1-2024-07-03-s1": [63],
+  // CHSL 4 Jul 2024 Q66: likewise, only the caption and the bar graph print; no question.
+  "chsl-t1-2024-07-04-s1": [66],
+  // CHSL 5 Jul 2024 Q67 (a table) and Q75 (a pie chart): no question printed under either.
+  "chsl-t1-2024-07-05-s1": [67, 75],
+  // CHSL 8 Jul 2024 Q62: cut off after "If the marked price of the": no price, no question.
+  "chsl-t1-2024-07-08-s1": [62],
+  // CHSL 9 Jul 2024 Q56: cut off after "from at least", and two bars it needs run off the graph.
+  "chsl-t1-2024-07-09-s1": [56],
+  // CHSL 10 Jul 2024 Q72 and Q75: the question line under each chart is washed out entirely.
+  "chsl-t1-2024-07-10-s1": [72, 75],
 };
 
 export const OUT = join(__dirname, "out"); // gitignored: page images, geometry, reading sheets

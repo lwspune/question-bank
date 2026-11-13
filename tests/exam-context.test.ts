@@ -99,11 +99,23 @@ describe("EXAM_REGISTRY", () => {
     const t2 = getExamBySlug("ssc-cgl-tier-2");
     expect(t2?.examName).toBe("SSC CGL Tier II");
     expect(t2?.tier).toBe("graduate");
-    expect([t1?.family, t1?.familyLabel, t1?.familyAxis]).toEqual(["SSC CGL", "Tier I", "Tier"]);
-    expect([t2?.family, t2?.familyLabel, t2?.familyAxis]).toEqual(["SSC CGL", "Tier II", "Tier"]);
+    // One "SSC" family since CHSL joined (owner, 2026-11-13): stage CGL -> Tier I / Tier II.
+    expect([t1?.family, t1?.familyStage, t1?.familyLabel, t1?.familyAxis]).toEqual(["SSC", "CGL", "Tier I", "Tier"]);
+    expect([t2?.family, t2?.familyStage, t2?.familyLabel, t2?.familyAxis]).toEqual(["SSC", "CGL", "Tier II", "Tier"]);
     expect(t2?.hasMocks).toBe(true);
     expect(t2?.pastPaperSolutions).toBe(true);
     expect(t2?.practiceOnly).not.toBe(true);
+  });
+
+  it("puts SSC CHSL in the SSC family as its own exam (stage CHSL), with mocks", () => {
+    const chsl = getExamBySlug("ssc-chsl");
+    expect(chsl?.examName).toBe("SSC CHSL");
+    expect(chsl?.tier).toBe("graduate");
+    expect(chsl?.goal).toBe("government");
+    expect([chsl?.family, chsl?.familyStage, chsl?.familyLabel, chsl?.familyAxis]).toEqual(["SSC", "CHSL", "Tier I", "Tier"]);
+    expect(chsl?.hasMocks).toBe(true);
+    expect(chsl?.pastPaperSolutions).toBe(true);
+    expect(chsl?.practiceOnly).not.toBe(true);
   });
 
   it("default exam slug is one of the registered slugs", () => {
@@ -456,6 +468,7 @@ describe("exam tiers", () => {
       "afcat",
       "ssc-cgl",
       "ssc-cgl-tier-2",
+      "ssc-chsl",
       "ugc-net",
       "rrb-ntpc",
     ],

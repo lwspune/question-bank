@@ -20,7 +20,7 @@ import { createClient } from "@supabase/supabase-js";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
-import { HELD, SHIFTS, TRANSCRIPTS, requireExamId, tierOf } from "./config";
+import { HELD, SHIFTS, TRANSCRIPTS, requireExamIdOf } from "./config";
 import { parseTranscript, studentSolution, type TranscriptQuestion } from "./lib";
 
 type DbRow = { id: string; questionNumber: string; solution: string | null };
@@ -75,7 +75,7 @@ async function main() {
 
   for (const id of ids) {
     const s = SHIFTS[id];
-    const examId = requireExamId(tierOf(id));
+    const examId = requireExamIdOf(id);
     const blocks = parseTranscript(readFileSync(join(TRANSCRIPTS, `${id}.txt`), "utf8"));
     const { data, error } = await db
       .from("questions")

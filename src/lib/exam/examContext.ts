@@ -45,6 +45,7 @@ export type ExamSlug =
   | "afcat"
   | "ssc-cgl"
   | "ssc-cgl-tier-2"
+  | "ssc-chsl"
   | "imat"
   | "spi"
   | "uceed"
@@ -1025,9 +1026,11 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // (113 shifts), read from SSC's own response sheets; every answer derived
     // blind and compared with SSC's key. A question defective as printed carries
     // a note above its solution and rides as grace in its mock. scripts/ssc-cgl/.
-    // One picker family with Tier II (owner, 2026-10-17): SSC CGL -> Tier I / Tier II.
+    // One picker family with Tier II (owner, 2026-10-17); since CHSL joined (owner,
+    // 2026-11-13) the family is "SSC": CGL -> Tier I / Tier II, CHSL -> Tier I.
     // The display name stays "SSC CGL", the name students search for Tier I by.
-    family: "SSC CGL",
+    family: "SSC",
+    familyStage: "CGL",
     familyLabel: "Tier I",
     familyAxis: "Tier",
     hasMocks: true, // one mock per shift
@@ -1045,12 +1048,34 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // modules, +3/-1, Computer Knowledge qualifying). Paper 1 of CGL 2024 (18 and
     // 20 Jan 2025) and CGL 2025 (18 Jan 2026), from SSC's response sheets, every
     // answer derived blind.
-    family: "SSC CGL",
+    family: "SSC",
+    familyStage: "CGL",
     familyLabel: "Tier II",
     familyAxis: "Tier",
     // Two mocks per sitting (owner, 2026-10-17): Sections I and II as ranked (130 q,
     // +3/-1) and Computer Knowledge, qualifying only, on its own 15 minutes.
     hasMocks: true,
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "ssc-chsl",
+    // SSC Combined Higher Secondary Level: Class 12 eligibility, but sat mostly by
+    // graduates and those preparing for CGL, so graduate (EXAM_TIER_SPEC.md).
+    tier: "graduate",
+    goal: "government",
+    displayName: "SSC CHSL",
+    examName: "SSC CHSL", // must match the `exams` DB row exactly
+    // CHSL 2024 Tier I (1-11 Jul 2024), Shift 1 of each of the nine days AglaSem
+    // hosts: 900 questions from SSC's own response sheets, read by the CGL lane
+    // (scripts/ssc-cgl/, `exam: "chsl"`), every answer derived blind and compared
+    // with SSC's key. Same paper shape as CGL Tier I: 4 x 25, +2/-0.5, 60 minutes.
+    family: "SSC",
+    familyStage: "CHSL",
+    familyLabel: "Tier I",
+    familyAxis: "Tier",
+    hasMocks: true, // one mock per shift
     pastPaperSolutions: true,
     guidesPath: null,
     notesPath: null,

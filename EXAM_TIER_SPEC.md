@@ -76,7 +76,7 @@ Assignments for the 18 entries:
 |---|---|
 | school | `foundation-course`, `mh-sb-9`, `mh-ssc-10`, `cbse-10`, `spi` (SPI entrance, sat in Class 10) |
 | senior | `nda`, `mht-cet`, `jee-mains`, `neet`, `worksheets-11-12`, `cbse-11`, `cbse-12`, `isc-12`, `mh-sb-11`, `mh-hsc-12`, `ipmat-indore`, `ipmat-rohtak`, `jipmat`, `uceed`, `imat` |
-| graduate | `cds`, `mpsc-group-b-c`, `mpsc-state-services-prelims`, `mpsc-forest-service-prelims`, `mpsc-agriculture-service-prelims`, the five MPSC Mains exams (`mpsc-state-services-mains`, `mpsc-group-b-combined-mains`, `mpsc-sti-mains`, `mpsc-aso-mains`, `mpsc-psi-mains`), `upsc-cse`, `afcat`, `ssc-cgl` |
+| graduate | `cds`, `mpsc-group-b-c`, `mpsc-state-services-prelims`, `mpsc-forest-service-prelims`, `mpsc-agriculture-service-prelims`, the five MPSC Mains exams (`mpsc-state-services-mains`, `mpsc-group-b-combined-mains`, `mpsc-sti-mains`, `mpsc-aso-mains`, `mpsc-psi-mains`), `upsc-cse`, `afcat`, `ssc-cgl`, `ssc-chsl` (SSC CHSL: Class 12 eligibility, sat mostly by graduates and CGL aspirants) |
 
 Future SSC, MPSC, CAPF, UPSC entries declare `tier: "graduate"` on the same
 line as their other flags. Because the field is required, TypeScript refuses

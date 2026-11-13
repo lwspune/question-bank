@@ -3,6 +3,7 @@
  *
  *   npx tsx scripts/ssc-cgl/seed-exam.ts          # dry-run: report only
  *   npx tsx scripts/ssc-cgl/seed-exam.ts --apply  # create it if absent
+ *   npx tsx scripts/ssc-cgl/seed-exam.ts --exam=chsl [--apply]   # the SSC CHSL row
  *
  * Idempotent: re-running creates nothing and re-prints the id, which becomes EXAM_ID
  * in config.ts.
@@ -14,7 +15,7 @@
  */
 import { createClient } from "@supabase/supabase-js";
 import { join } from "node:path";
-import { EXAMS, type Tier } from "./config";
+import { CHSL_EXAM, EXAMS, type Tier } from "./config";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -25,7 +26,9 @@ async function main() {
   const apply = process.argv.includes("--apply");
   const tier = Number(process.argv.find((a) => a.startsWith("--tier="))?.slice("--tier=".length) ?? 1) as Tier;
   if (!EXAMS[tier]) throw new Error(`--tier must be 1 or 2`);
-  const EXAM_NAME = EXAMS[tier].name;
+  // --exam=chsl: the SSC CHSL row (CHSL_EXAM), instead of a CGL tier's
+  const chsl = process.argv.includes("--exam=chsl");
+  const EXAM_NAME = chsl ? CHSL_EXAM.name : EXAMS[tier].name;
   const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
 
   const { data: existing, error } = await client.from("exams").select("id, name").eq("name", EXAM_NAME).maybeSingle();

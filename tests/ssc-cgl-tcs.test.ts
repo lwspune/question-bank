@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { LAYOUTS } from "../scripts/ssc-cgl/config";
+import { CHSL_LAYOUT, LAYOUTS } from "../scripts/ssc-cgl/config";
 import { assembleTcs, groupTcsShifts, shiftOfTime, type TcsGeometry, type TcsImage, type TcsQuestion, type TcsSpan } from "../scripts/ssc-cgl/tcs";
 
 // The TCS response sheet (SSC CGL 2022-2024) as text: "Q.n", the stem, "Ans", options
@@ -502,5 +502,57 @@ describe("groupTcsShifts", () => {
 
   it("refuses a sheet that prints no Exam Date", () => {
     expect(() => groupTcsShifts(1, [{ dir: "a", questions: sheet(0, null as unknown as string, 1) }])).toThrow(/no Exam Date/);
+  });
+});
+
+describe("assembleTcs, SSC CHSL Tier I (2024 sheets)", () => {
+  const CHSL: [string, number][] = [["English Language", 25], ["General Intelligence", 25], ["Quantitative Aptitude", 25], ["General Awareness", 25]];
+
+  it("reads the four sections in CHSL's order: English is PART-A, questions 1-25", () => {
+    const qs = assembleTcs(shift(2, "9:00 AM - 10:00 AM", () => 1, CHSL), { layout: CHSL_LAYOUT });
+    expect(qs).toHaveLength(100);
+    expect(qs.map((q) => q.part).join("")).toBe("A".repeat(25) + "B".repeat(25) + "C".repeat(25) + "D".repeat(25));
+    expect(qs[0]).toMatchObject({ part: "A", number: 1, key: "B" });
+  });
+
+  it("files the questions before any heading under the first section when the day says its sheet prints none (1 Jul 2024)", () => {
+    const g = shift(2, "9:00 AM - 10:00 AM", () => 0, CHSL);
+    // the fixture prints a no-break space after the colon, as the sheets do
+    g.spans = g.spans.filter((s) => !/^Section :\s*English Language$/.test(s.text));
+    expect(g.spans.some((s) => /English Language/.test(s.text))).toBe(false);
+    expect(() => assembleTcs(g, { layout: CHSL_LAYOUT })).toThrow(/Q1 comes before any Section heading/);
+    const qs = assembleTcs(g, { layout: CHSL_LAYOUT, untitledFirstSection: true });
+    expect(qs).toHaveLength(100);
+    expect(qs.slice(0, 25).every((q) => q.part === "A")).toBe(true);
+    expect(qs[25]).toMatchObject({ part: "B", number: 26 });
+  });
+
+  it("ends a sheet's last question at the next CHSL sheet's title", () => {
+    const strip = (g: TcsGeometry): TcsGeometry => ({ spans: g.spans.filter((s) => !/^(Question ID|6306)/.test(s.text)), images: g.images });
+    const a = strip(shift(2, "9:00 AM - 10:00 AM", () => 0, CHSL));
+    const b = strip(shift(60, "9:00 AM - 10:00 AM", () => 0, CHSL));
+    b.spans.push(span(60, 4, "Combined Higher Secondary Level Examination 2024 Tier I", { x0: 120 }), span(60, 7, "Exam Date", { x0: 50 }));
+    const qs = assembleTcs({ spans: [...a.spans, ...b.spans], images: [...a.images, ...b.images] }, { layout: CHSL_LAYOUT });
+    const last = qs.find((q) => q.sheet === 0 && q.number === 100)!;
+    expect(last.options[3]).toBe("opt 25d");
+    expect(last.regions.every((r) => r.page < 60)).toBe(true);
+  });
+
+  it("drops AglaSem's CHSL page banner and print header: they join no option and stretch no region", () => {
+    const g = shift(2, "9:00 AM - 10:00 AM", () => 0, CHSL);
+    // the CHSL sheets print no Question ID panel, so nothing closes a question but the next label
+    g.spans = g.spans.filter((s) => !/^(Question ID|6306)/.test(s.text));
+    // Q25 is the English section's last, alone on page 14; the next page opens with the host's lines
+    g.spans.push(span(15, 3, "SSC CHSL 2024 Question Paper Tier 1‬", { x0: 424 }), span(15, 30, "CHSL Exam 2024 Tier I (02-07-2024 - 9-00 AM - 10-00 AM)", { x0: 165 }));
+    const qs = assembleTcs(g, { layout: CHSL_LAYOUT });
+    const q25 = qs.find((q) => q.number === 25)!;
+    expect(q25.options[3]).toBe("opt 25d");
+    expect(q25.regions.map((r) => r.page)).toEqual([14]);
+  });
+
+  it("files a CHSL sheet under chsl-t1-<its date>-s<shift>", () => {
+    const qs = assembleTcs(shift(2, "9:00 AM - 10:00 AM", () => 0, CHSL), { layout: CHSL_LAYOUT }).map((q) => ({ ...q, date: "2024-07-02" }));
+    const got = groupTcsShifts("chsl-t1", [{ dir: "chsl-t1-2024-07-02", questions: qs }]);
+    expect([...got.keys()]).toEqual(["chsl-t1-2024-07-02-s1"]);
   });
 });

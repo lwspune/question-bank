@@ -84,9 +84,9 @@ describe("groupByGoal", () => {
   });
 
   it("keeps a family whole, as one node", () => {
-    const groups = groupByGoal(nodesOf([pill("ssc-cgl"), pill("ssc-cgl-tier-2"), pill("upsc-cse")]), resolve);
+    const groups = groupByGoal(nodesOf([pill("ssc-cgl"), pill("ssc-cgl-tier-2"), pill("ssc-chsl"), pill("upsc-cse")]), resolve);
     expect(groups).toHaveLength(1);
-    expect(groups[0].nodes.map(keyOf)).toEqual(["SSC CGL", "upsc-cse"]);
+    expect(groups[0].nodes.map(keyOf)).toEqual(["SSC", "upsc-cse"]);
   });
 
   it("leaves out goals with no exam on the page", () => {

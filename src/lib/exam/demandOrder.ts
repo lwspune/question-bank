@@ -24,7 +24,7 @@ export const EXAM_DEMAND_ORDER: readonly string[] = [
   "jee-mains",
   "mht-cet",
   "CBSE",
-  "SSC CGL",
+  "SSC", // the "SSC CGL" family until CHSL joined (2026-11-13); its demand is CGL's
   "MPSC",
   "nda",
   "worksheets-11-12",

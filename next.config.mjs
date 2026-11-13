@@ -72,6 +72,13 @@ const nextConfig = {
         permanent: false,
       },
       {
+        // 2026-11-13: SSC CHSL joined SSC CGL's picker family, renamed "SSC", so the
+        // family's mock page moved from /mock/exam/ssc-cgl-tiers to /mock/exam/ssc.
+        source: "/mock/exam/ssc-cgl-tiers",
+        destination: "/mock/exam/ssc",
+        permanent: true,
+      },
+      {
         // 2026-09-27: teacher access is bought, not requested. The lead form is
         // gone; the old URL (linked from emails, the sitemap and past gates)
         // lands on the pass card, which handles sign-in → payment. Since

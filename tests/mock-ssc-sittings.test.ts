@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { deriveSscSittings, deriveSscT2Sittings, t2Rows, withHeld } from "../scripts/mocks/sscSittings";
-import { SSC_CGL_T2_COMPUTER_PAPER, SSC_CGL_T2_PAPER, totalQuestions } from "../src/lib/mocks/blueprints";
+import { deriveChslSittings, deriveSscSittings, deriveSscT2Sittings, t2Rows, withHeld } from "../scripts/mocks/sscSittings";
+import { SSC_CGL_T2_COMPUTER_PAPER, SSC_CGL_T2_PAPER, SSC_CHSL_T1_PAPER, totalQuestions } from "../src/lib/mocks/blueprints";
 import type { PaperQuestionRow } from "../src/lib/mocks/reconstruct";
 import type { TranscriptQuestion } from "../scripts/ssc-cgl/lib";
 
@@ -198,5 +198,75 @@ describe("t2Rows", () => {
 
   it("the Computer Knowledge mock takes that module alone", () => {
     expect(t2Rows(rows, "computer").map((r) => r.questionNumber)).toEqual(["131", "150"]);
+  });
+});
+
+describe("deriveChslSittings (SSC CHSL Tier I)", () => {
+  const chslShift = (dd: string) => ({
+    day: `chsl-t1-2024-07-${dd}`,
+    shift: 1,
+    sourceFile: `SSC_CHSL_T1_2024-07-${dd}_S1`,
+    pyqYear: 2024,
+    pyqMonth: "July",
+    pyqNote: `Tier I, ${Number(dd)} Jul 2024, Shift 1`,
+  });
+  const MIXED = { ...SHIFTS, "chsl-t1-2024-07-01-s1": chslShift("01"), "chsl-t1-2024-07-03-s1": chslShift("03") };
+  // CHSL's print order: 1-25 English, 26-50 Reasoning, 51-75 Quant, 76-100 General Awareness
+  const paper = (extra: Record<number, Partial<TranscriptQuestion>> = {}) =>
+    Array.from({ length: 100 }, (_, i) => q(i + 1, { ...(i >= 75 ? { subject: "History" } : {}), ...extra[i + 1] }));
+
+  it("makes one CHSL mock per transcribed shift, never a CGL shift", () => {
+    const s = deriveChslSittings(MIXED, { "chsl-t1-2024-07-01-s1": paper(), "t1-2025-09-12-s1": paper() }, {});
+    expect(s).toEqual([
+      {
+        key: "chsl-t1-2024-07-01-s1",
+        sourceFile: "SSC_CHSL_T1_2024-07-01_S1",
+        year: 2024,
+        slug: "ssc-chsl-2024-07-01-s1",
+        title: "SSC CHSL Tier I, 1 Jul 2024, Shift 1",
+        graceNumbers: [],
+        heldSubjects: [],
+        overrides: [],
+      },
+    ]);
+    // and CGL's own derivation never takes a CHSL shift
+    expect(deriveSscSittings(MIXED, { "chsl-t1-2024-07-01-s1": paper() }, {}, {})).toEqual([]);
+  });
+
+  it("rides every flawed question as grace and names the subject of each held one", () => {
+    const s = deriveChslSittings(MIXED, { "chsl-t1-2024-07-03-s1": paper({ 60: { flawed: true }, 63: { flawed: true } }) }, { "chsl-t1-2024-07-03-s1": [63] });
+    expect(s[0].graceNumbers).toEqual([60, 63]);
+    expect(s[0].heldSubjects).toEqual(["Quantitative Aptitude"]);
+  });
+
+  it("refuses a held number its transcript does not hold", () => {
+    expect(() => deriveChslSittings(MIXED, { "chsl-t1-2024-07-03-s1": paper().slice(0, 50) }, { "chsl-t1-2024-07-03-s1": [63] })).toThrow(/HELD names Q63/);
+  });
+
+  it("brings a repeat SSC printed twice back at its own slot (18 Nov 2025 S1 Q35 = Q34)", () => {
+    const s = deriveChslSittings(
+      MIXED,
+      { "chsl-t1-2024-07-01-s1": paper({ 35: { answer: "C" }, 80: { answer: "D", subject: "Polity" } }) },
+      {},
+      { "chsl-t1-2024-07-01-s1": [
+        { number: 35, questionId: "q-34", first: "SSC_CHSL_T1_2024-07-01_S1 Q34" },
+        { number: 80, questionId: "q-12", first: "SSC_CHSL_T1_2024-07-02_S1 Q90" },
+      ] }
+    );
+    expect(s[0].overrides).toEqual([
+      { questionNumber: 35, questionId: "q-34", subjectName: "Reasoning", answer: "C" },
+      { questionNumber: 80, questionId: "q-12", subjectName: "Polity", answer: "D" },
+    ]);
+    expect(() =>
+      deriveChslSittings(MIXED, { "chsl-t1-2024-07-01-s1": paper().slice(0, 30) }, {}, { "chsl-t1-2024-07-01-s1": [{ number: 35, questionId: "x", first: "y" }] })
+    ).toThrow(/repeats.json names Q35/);
+  });
+
+  it("builds against CHSL's blueprint: 4 x 25 in CHSL order, +2/-0.5, 60 minutes, held questions off their section", () => {
+    expect(SSC_CHSL_T1_PAPER).toMatchObject({ examName: "SSC CHSL", examSlug: "ssc-chsl", durationSecs: 3600, marking: { correct: 2, wrong: -0.5 } });
+    expect(SSC_CHSL_T1_PAPER.sections.map((x) => [x.key, x.count])).toEqual([["english", 25], ["reasoning", 25], ["quantitative-aptitude", 25], ["general-awareness", 25]]);
+    expect(totalQuestions(SSC_CHSL_T1_PAPER)).toBe(100);
+    const two = withHeld(SSC_CHSL_T1_PAPER, ["Quantitative Aptitude", "Quantitative Aptitude"]);
+    expect(two.sections.find((x) => x.key === "quantitative-aptitude")!.count).toBe(23);
   });
 });

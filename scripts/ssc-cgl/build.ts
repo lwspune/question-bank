@@ -29,7 +29,7 @@ import { checkShift, literalDollar, parseTranscript, studentSolution, type Label
 const LABELS: Label[] = ["A", "B", "C", "D"];
 const RAW_UNICODE = /[×÷→←⇌≥≤≠≈∞√∑∏∫°±·²³¹⁰⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉αβγδεζηθλμνξπρστφχψωΩΔΣΠΘΦ½⅓¼¾∂∇∈∉⊆∪∩]/;
 
-type SheetQ = { number: number; part: Part; key: Label };
+type SheetQ = { number: number; part: Part; key: Label | null };
 
 function katexErr(text: string): string | null {
   for (const seg of parseLatex(text)) {
@@ -122,6 +122,10 @@ function main() {
   console.log(`blind agreement with ${keyName}: ${agree}/${of}`);
   console.log(`key adopted on review (blind answer differed): ${check.adopted.length}`);
   for (const d of check.adopted) console.log(`  ${d}`);
+  if (check.unkeyed.length) {
+    console.log(`no key on the sheet (ours stands, re-derive on review): ${check.unkeyed.length}`);
+    for (const d of check.unkeyed) console.log(`  ${d}`);
+  }
   console.log(`bank answer still differs from the key: ${check.disagreements.length}`);
   for (const d of check.disagreements) console.log(`  ${d}`);
   console.log(`problems: ${problems.length}`);

@@ -62,7 +62,11 @@ const PANEL_LABEL = /^(Question ID|Option \d ID|Status|Chosen Option)\s*:/;
 const LABELS = ["A", "B", "C", "D"] as const;
 
 const MAX_LINE = 40; // points: a text line, even a stacked fraction, is far shorter
-const NOISE = /^(aglasem\.c?o?m?|For more Question Papers.*|Page \d+ of \d+|asem\.com|a)$/i;
+// The CHSL 2024 prints add AglaSem's banner ("SSC CHSL 2024 Question Paper Tier 1", with a
+// stray direction mark) and a print header ("CHSL Exam 2024 Tier I (02-07-2024 - 9-00 AM - ...)")
+// at the top of every page: with no Question ID panel to close a question, either would join
+// the last option of a question that runs over the page break.
+const NOISE = /^(aglasem\.c?o?m?|For more Question Papers.*|Page \d+ of \d+|asem\.com|a|SSC CHSL \d{4} Question Paper Tier \d[\u202a-\u202e]*|CHSL Exam \d{4} Tier I+ \(.*\))$/i;
 
 function minutes(time: string): number {
   const m = /(\d{1,2}):(\d{2})\s*([AP]M)/i.exec(time);
@@ -184,6 +188,9 @@ export type TcsOptions = {
   layout?: Section[];
   /** A file that prints no Exam Date/Time header: it is one sheet of this date, Shift 1. */
   headerless?: { date: string };
+  /** The sheet prints no heading over its first section (CHSL 1 Jul 2024): a question before
+   * any heading belongs to the layout's first section. */
+  untitledFirstSection?: boolean;
 };
 
 /** "10/09/2024" (day first, as the sheets print it) -> "2024-09-10". */
@@ -356,7 +363,7 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
     }
     // A sheet's title opens the next sheet. A print with no Question ID panel (CGL 2024 Tier II)
     // never closes its last question, which would otherwise run on into this header.
-    if (s && /^Combined Graduate Level Examination/i.test(text)) {
+    if (s && /^Combined (Graduate|Higher Secondary) Level Examination/i.test(text)) {
       cur = null;
       passage = null;
       continue;
@@ -370,6 +377,7 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
     const q = s && /^Q\.(\d+)$/.exec(text);
     if (q && s.bold) {
       if (!shift) throw new Error(`Q${q[1]} on page ${s.page} comes before any Exam Time header`);
+      if (!part && opts.untitledFirstSection) part = layout[0].part;
       if (!part) throw new Error(`shift ${shift} Q${q[1]} comes before any Section heading`);
       const local = Number(q[1]);
       const count = layout.find((x) => x.part === part)!.count;
@@ -528,21 +536,23 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
 }
 
 /**
- * File every sheet of every TCS file under its shift id, t<tier>-<Exam Date>-s<slot>. A shift
+ * File every sheet of every TCS file under its shift id, <prefix>-<Exam Date>-s<slot>: the
+ * prefix is `t<tier>` for CGL (a bare tier number means that) or `chsl-t1` (config idPrefix). A shift
  * met twice (two candidates' sheets of one sitting) keeps the first copy when the two print
  * the same questions in the same order, and is refused when they do not.
  */
 export function groupTcsShifts(
-  tier: number,
+  prefix: number | string,
   files: { dir: string; questions: TcsQuestion[] }[]
 ): Map<string, { dir: string; questions: TcsQuestion[] }> {
+  const pre = typeof prefix === "number" ? `t${prefix}` : prefix;
   const out = new Map<string, { dir: string; questions: TcsQuestion[] }>();
   for (const f of files) {
     for (const sheet of [...new Set(f.questions.map((q) => q.sheet))]) {
       const qs = f.questions.filter((q) => q.sheet === sheet);
       const { date, shift } = qs[0];
       if (!date) throw new Error(`${f.dir} sheet ${sheet + 1} prints no Exam Date`);
-      const id = `t${tier}-${date}-s${shift}`;
+      const id = `${pre}-${date}-s${shift}`;
       const seen = out.get(id);
       if (!seen) {
         out.set(id, { dir: f.dir, questions: qs });

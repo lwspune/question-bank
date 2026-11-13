@@ -25,7 +25,7 @@ import { uploadImage } from "../../src/lib/storage/images";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { commitStaged } from "../../src/lib/upload/commit";
-import { CREATED_BY, DAYS, ORG_ID, OUT, requireExamId, requireShift, tierOf } from "./config";
+import { CREATED_BY, DAYS, ORG_ID, OUT, requireExamIdOf, requireShift } from "./config";
 import { parseCommitRows, type CommitRow as Row } from "./rows";
 
 function loadEnv() {
@@ -37,7 +37,7 @@ async function main() {
   const args = process.argv.slice(2);
   const shift = requireShift(args.find((a) => !a.startsWith("--")));
   const apply = args.includes("--apply");
-  const examId = requireExamId(tierOf(shift.id));
+  const examId = requireExamIdOf(shift.id);
 
   const file = join(OUT, shift.id, "rows.json");
   if (!existsSync(file)) throw new Error(`${file} not found: run build.ts ${shift.id} first`);
