@@ -1,0 +1,152 @@
+[
+ {
+  "id": "24b76023-4284-4d0a-9878-f35a30fb15c5",
+  "before": "0f0ec813",
+  "solution": "LHS \\(= \\tan(3x - \\pi/4) = \\sqrt{3}\\) gives \\(3x = n\\pi + \\frac{7\\pi}{12}\\), i.e. \\(x = \\frac{n\\pi}{3} + \\frac{7\\pi}{36}\\). So \\(p=3, q=36\\), \\(\\frac{p}{q}=\\frac{3}{36}=\\frac{1}{12}\\). Matches option B.",
+  "note": "the paper asks p/q (option b = 1/12), our stem copied pq and 112; p=3, q=36 gives p/q=1/12"
+ },
+ {
+  "id": "2d6d4a4b-396b-4eef-85e2-591010f5b6ce",
+  "before": "315c50b5",
+  "solution": "\\(\\cos\\theta\\cos 2\\theta = \\sin\\theta\\sin 2\\theta\\) gives \\(\\cos 3\\theta = 0\\), so \\(\\theta = \\dfrac{(2k + 1)\\pi}{6}\\).\n\nThe values with \\(\\cos\\theta = 0\\) (\\(\\theta = \\dfrac{\\pi}{2} + k\\pi\\)) make \\(\\sin 2\\theta = 0\\), so \\(\\cot 2\\theta\\) is undefined and they are excluded. What remains is \\(\\theta = n\\pi \\pm \\dfrac{\\pi}{6}\\).",
+  "note": "at cos t = 0, cot 2t is undefined (sin 2t = 0), the product is not 0"
+ },
+ {
+  "id": "6e8f6cb8-a5ae-4cc8-9d81-98c5d965e996",
+  "before": "269d71bf",
+  "solution": "First inequality: \\(\\sin x>\\frac{1}{2}\\Rightarrow x\\in(\\frac{\\pi}{6},\\frac{5\\pi}{6})\\cap\\mathbb{R}\\). Second: \\((x-2)(x+1)<0\\Rightarrow x\\in(-1,2)\\). Intersection: \\(x\\in(\\frac{\\pi}{6},2)\\). Matches option D.",
+  "note": "sin x > 1/2 holds on (pi/6, 5pi/6), not up to pi"
+ },
+ {
+  "id": "bb89dae2-329d-43a2-bf91-a799ee2767ad",
+  "before": "6755d995",
+  "solution": "Converting: \\(\\sin^{-1}\\frac{4}{5} = \\tan^{-1}\\frac{4}{3}\\), \\(\\sin^{-1}\\frac{5}{13} = \\tan^{-1}\\frac{5}{12}\\). Their sum = \\(\\tan^{-1}\\frac{63}{16}\\). Then \\(\\sin^{-1}\\frac{16}{65}=\\tan^{-1}\\frac{16}{63}\\), which adds to the sum to give total = \\(\\frac{\\pi}{2}\\). So expression = \\(2\\pi - \\frac{\\pi}{2} = \\frac{3\\pi}{2}\\). Matches option D.",
+  "note": "stem has sin^-1(16/65); show its tan form, which with tan^-1(63/16) gives pi/2"
+ },
+ {
+  "id": "c71ec247-c257-4c2f-a313-eb2d875df2aa",
+  "before": "6d9a0732",
+  "solution": "Discriminant \\(\\geq 0\\): \\(\\cos^2 p - 4(\\cos p-1)\\sin p \\geq 0\\). For \\(p\\in(0,\\pi)\\), \\(\\sin p > 0\\) and \\(\\cos p-1<0\\), so \\(-4(\\cos p-1)\\sin p>0\\); with \\(\\cos^2 p\\geq 0\\) the discriminant is non-negative throughout. Matches option D: \\((0,\\pi)\\).",
+  "note": "gives the missing reason the discriminant is >= 0 on (0, pi)"
+ },
+ {
+  "id": "d16991a1-04be-478c-8296-a84a3ad32c94",
+  "before": "f62b2e3d",
+  "solution": "Adding the three: \\(2(a+b+c)=24k\\), so \\(a+b+c=12k\\). Then \\(a=12k-(b+c)=4k\\), \\(b=12k-(c+a)=3k\\), \\(c=12k-(a+b)=5k\\): a 3-4-5 triangle, right-angled, with area \\(\\frac12\\cdot 3k\\cdot 4k=6k^2\\). So \\(\\dfrac{(A(\\triangle ABC))^2}{k^4}=36\\). Matches option (a).",
+  "note": "2(a+b+c)=24k gives a+b+c=12k (s would be 6k); the later lines use 12k as the sum; em dash replaced by a colon"
+ },
+ {
+  "id": "262a0841-24d8-4ee6-b736-85a072225049",
+  "before": "edbd629c",
+  "solution": "Volume = |scalar triple product| = \\(\\left|\\det\\begin{pmatrix}1&1&n\\\\2&4&-n\\\\1&n&3\\end{pmatrix}\\right| = |3n^2-5n+6| = 158\\). Solving \\(3n^2-5n-152=0\\) gives \\(n=8\\) (taking \\(n\\geq0\\)). Matches option A: 8.",
+  "note": "the determinant is 3n^2-5n+6; |..|=158 gives 3n^2-5n-152=0, n=8"
+ },
+ {
+  "id": "307a80f1-dbf6-4707-b025-ec918a29c3bb",
+  "before": "5b03a094",
+  "solution": "Set up linear system from component equations. Solving: \\(-x+y-z=4\\), \\(x-y-z=3\\), \\(x+y+z=5\\). Adding all: \\(x+y-z=12\\). From (ii)+(iii): \\(2x=8, x=4\\); (i)+(iii): \\(2y=9, y=9/2\\); (ii)+(i): \\(-2z=7, z=-7/2\\). \\(2x+y+z=8+9/2-7/2=9\\). Matches option C: 9.",
+  "note": "finished the unfinished line: adding the three equations gives x+y-z=12"
+ },
+ {
+  "id": "5b5bd8a6-f912-45c7-a7de-a508f59ad800",
+  "before": "6704f4ca",
+  "solution": "Area \\(= |(3\\vec{a}+2\\vec{b})\\times(\\vec{a}+3\\vec{b})| = |9(\\vec{a}\\times\\vec{b})+2(\\vec{b}\\times\\vec{a})| = |9-2||\\vec{a}\\times\\vec{b}| = 7\\times15 = 105\\). Matches option C: 105.",
+  "note": "the cross-product expansion has 2(b x a), not 4..."
+ },
+ {
+  "id": "b4f27ade-5352-452a-bb8b-ec18c9d57641",
+  "before": "f42d72ff",
+  "solution": "\\(\\vec{a} \\times \\vec{b} = \\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\2&1&-3\\\\1&-2&1\\end{vmatrix} = -5(\\hat{i}+\\hat{j}+\\hat{k})\\). Unit vector \\(= (\\hat{i}+\\hat{j}+\\hat{k})/\\sqrt{3}\\). Required vector \\(= 6/\\sqrt{3} \\times (\\hat{i}+\\hat{j}+\\hat{k}) = 2\\sqrt{3}(\\hat{i}+\\hat{j}+\\hat{k})\\). Matches option C: \\(2\\sqrt{3}(\\hat{i}+\\hat{j}+\\hat{k})\\).",
+  "note": "extra factor sqrt3 in the product line; 6/sqrt3 times the unit vector is 2sqrt3(i+j+k)"
+ },
+ {
+  "id": "bc49fac2-fe72-4d9c-af37-11003c4c57da",
+  "before": "869ab687",
+  "solution": "\\(|\\vec{b}\\times\\vec{c}|=\\sqrt{15} \\Rightarrow \\sin\\alpha = \\sqrt{15}/4 \\Rightarrow \\cos\\alpha = 1/4\\). \\(|\\vec{b}-2\\vec{c}|^2 = 16+4-4\\cdot4\\cdot1/4 = 16\\). \\(\\lambda^2 = 16 \\Rightarrow \\lambda = \\pm 4\\). Of \\(\\lambda=\\pm4\\) only \\(-4\\) is among the options, so \\(\\lambda = -4\\). Matches option B.",
+  "note": "the working never says why the sign is negative; only -4 is an option"
+ },
+ {
+  "id": "15113b17-ef0d-4763-9b55-675f695e5db6",
+  "before": "0b13eae2",
+  "solution": "Normal to plane containing the two lines: \\(\\vec{n}=(4,3,2)\\times(2,-4,3)=(17,-8,-22)\\). Required plane contains \\((3,2,4)\\) and is perpendicular to this plane. Checking option C: \\((17)(6)+(-8)(-67)+(-22)(29)=102+536-638=0\\), so it is perpendicular to that plane, and \\(3(6)+2(-67)+4(29)=18-134+116=0\\), so it contains \\((3,2,4)\\). Matches option C.",
+  "note": "the check tested only perpendicularity; adds that C contains (3,2,4)"
+ },
+ {
+  "id": "31e44764-78f1-4a29-b714-71a1a51505a2",
+  "before": "db443a0d",
+  "solution": "Normal of the plane containing lines (3,4,2) and (4,2,3): \\(\\vec{n_1} = (4,2,3)\\times(3,4,2) = (-8,1,10)\\); normal of required plane \\(= (2,3,4)\\times(-8,1,10) = (26,-52,26)\\); simplified: \\((1,-2,1)\\); equation \\(x-2y+z=0\\). Matches option C: \\(x-2y+z=0\\).",
+  "note": "first cross product has the wrong signs; (-8,1,10) then gives (26,-52,26) as printed"
+ },
+ {
+  "id": "5308005a-5a07-4174-ae69-60e26fed903c",
+  "before": "d6fe9478",
+  "solution": "Centroid: \\(\\frac{x_A+x_B+x_C}{3}=-1\\Rightarrow x_C=3(-1)-(3-4)=-3+1=-2\\). Similarly \\(y_C=0\\), \\(z_C=2\\). \\(C=(-2,0,2)\\). Matches option B.",
+  "note": "3-4+(-1)x3 is -4; centroid gives x_C = 3(-1)-(3-4) = -2"
+ },
+ {
+  "id": "592c9d16-774d-4cc1-a3f7-019c514deee5",
+  "before": "5167b07e",
+  "solution": "Setting \\(|3+4-12\\lambda+13|/13 = |-9-12+13|/13\\) gives \\(|20-12\\lambda| = 8\\). Solving: \\(\\lambda = 1\\) or \\(\\lambda = 7/3\\). Sum = \\(1 + 7/3 = 10/3\\). Matches option B.",
+  "note": "-4y with y=-1 is +4, not -4"
+ },
+ {
+  "id": "1fdae8bb-6f3a-49d5-a27e-e1248a16f035",
+  "before": "ec60ec63",
+  "solution": "\\(P = 4\\sqrt{A}\\), so \\(\\frac{dP}{dt} = \\frac{4}{2\\sqrt{A}} \\cdot \\frac{dA}{dt} = \\frac{2}{\\sqrt{A}} \\times (-3) = \\frac{-6}{\\sqrt{A}}\\). With side = 15: \\(\\frac{dP}{dt} = \\frac{2}{15} \\times 3 = \\frac{2}{5}\\) cm/sec (decreasing). Matches option B.",
+  "note": "2/sqrt(A) x (-3) is -6/sqrt(A); the -2/15 x 15/sqrt(A) form was wrong"
+ },
+ {
+  "id": "3a088969-77ae-4503-8c50-5a8fb05f8453",
+  "before": "caaf2f83",
+  "solution": "\\(f(a+h)\\approx f(a)+hf'(a)\\): \\(\\sin60^{\\circ}0'10''\\approx0.866+0.0000486\\times0.5=0.8660243\\). Matches option C.",
+  "note": "h = 10'' x 0.0000486 per second of arc; 0.000049 x 0.5 gives ...245, 0.0000486 x 0.5 gives ...243"
+ },
+ {
+  "id": "621485c1-b7af-4ad4-a156-b6eb425f8414",
+  "before": "44b8ef57",
+  "solution": "Slope of normal \\(=1\\) (parallel to the given line of slope 1), so the tangent slope is \\(dy/dx=-1\\). \\(1+\\log x=-1\\Rightarrow x=e^{-2},y=-2e^{-2}\\). Normal: \\(x-y=3e^{-2}\\). Matches option B.",
+  "note": "normal parallel to slope-1 line has slope 1, tangent slope -1"
+ },
+ {
+  "id": "a10a4a4d-9bd7-4895-8c81-b502493913bd",
+  "before": "8d11faa0",
+  "solution": "Set \\(S\\): \\(x^2-11x+30\\leq0\\Rightarrow(x-5)(x-6)\\leq0\\Rightarrow x\\in[5,6]\\). \\(f'(x)=9(x-1)(x-3)>0\\) on \\([5,6]\\), so \\(f\\) is increasing; max at \\(x=6\\): \\(f(6)=648-648+162-40=122\\). Matches option A: 122.",
+  "note": "f'(x)=9x^2-36x+27=9(x-1)(x-3), not 9(x-3)^2; still >0 on [5,6]"
+ },
+ {
+  "id": "adc7743f-8cdf-4ff8-9d77-48d8c88716f7",
+  "before": "ecdeae6c",
+  "solution": "\\(\\sin\\theta = y/5\\); differentiating: \\(\\cos\\theta\\,d\\theta/dt = (1/5)dy/dt\\); \\(\\cos\\theta = 4/5\\), \\(dy/dt = -0.1\\) m/s; \\(d\\theta/dt = (1/5)(-0.1)/(4/5) = -1/40 = -0.025\\) rad/s; decreasing at rate 0.025. Matches option D: 0.025.",
+  "note": "dtheta/dt=(1/5)(-0.1)/(4/5)=-1/40; the printed -10/(5x80) mixed cm/s with m and is not the working it follows"
+ },
+ {
+  "id": "db1a6175-ca48-4610-8aa7-97a5f97a76ae",
+  "before": "ef9e09ef",
+  "solution": "Flow rate \\(=1800\\,\\text{cm}^3/\\text{s}\\). Volume in bowl: \\(V=180\\pi x^2-\\frac{\\pi x^3}{3}\\). At \\(x=120\\): \\(\\frac{dV}{dt}=(360\\pi\\cdot120-120^2\\pi)\\frac{dx}{dt}\\Rightarrow\\frac{dx}{dt}=\\frac{1800}{240\\pi\\cdot120}=\\frac{1}{16\\pi}\\,\\text{cm/s}\\). Matches option C.",
+  "note": "360*120-120^2=240*120=28800, so dx/dt=1800/(28800 pi)=1/(16 pi); 240 pi*15 would give 1/(2 pi)"
+ },
+ {
+  "id": "f831607d-ab28-4394-9749-f8efa7c66c1e",
+  "before": "53b15746",
+  "solution": "Take \\(f(x) = x^{1/3}\\), \\(x = 64\\), \\(\\Delta x = -1\\). Then \\(f'(64) = \\dfrac{1}{3 \\cdot 64^{2/3}} = \\dfrac{1}{48}\\).\n\n\\(\\sqrt[3]{63} \\approx 4 - \\dfrac{1}{48} = 4 - 0.02083 = 3.97917\\), closest to option A: \\(3.9791\\).",
+  "note": "4-0.0208=3.9792 not 3.9791; exact 4-1/48=3.97917, so 3.9791 is the nearest option (the key is the truncation)"
+ },
+ {
+  "id": "472090e7-55ae-451c-8b7a-2476fb6b34dc",
+  "before": "e867ead2",
+  "solution": "For \\(hxy+gx+fy+c=0\\): using the condition \\(\\Delta=0\\) for the general second-degree equation with \\(A=B=0\\): \\(\\begin{vmatrix}0&h/2&g/2\\\\h/2&0&f/2\\\\g/2&f/2&c\\end{vmatrix}=0\\). Expanding determinant with \\(A=0,B=0,C=c,F=f/2,G=g/2,H=h/2\\): gives \\(\\dfrac{fgh}{4}-\\dfrac{ch^2}{4}=0\\), so \\(fg=ch\\) as \\(h\\neq0\\). Matches option A.",
+  "note": "[0] had an unfinished 'fgh - c h^2/...'; now the determinant, and [1] expands it to fgh/4 - ch^2/4 = 0"
+ },
+ {
+  "id": "a28782f1-b825-4244-818a-8fd366123633",
+  "before": "129dd1ff",
+  "solution": "Principal values: \\(\\tan^{-1}(-\\sqrt{3}) = -\\dfrac{\\pi}{3}\\) (range \\((-\\pi/2, \\pi/2)\\)); \\(\\sin^{-1}\\dfrac{1}{\\sqrt{2}} = \\dfrac{\\pi}{4}\\) (range \\([-\\pi/2, \\pi/2]\\)); \\(\\cos^{-1}\\left(-\\dfrac{1}{2}\\right) = \\dfrac{2\\pi}{3}\\) (range \\([0, \\pi]\\)). Sum \\(= -\\dfrac{\\pi}{3} - \\dfrac{\\pi}{4} + \\dfrac{2\\pi}{3} = \\dfrac{\\pi}{3} - \\dfrac{\\pi}{4} = \\dfrac{4\\pi - 3\\pi}{12} = \\dfrac{\\pi}{12}\\). Matches option C: \\(\\dfrac{\\pi}{12}\\).",
+  "note": "removed the editor's note about the stem; the paper prints sin^-1(1/sqrt2), as stored"
+ },
+ {
+  "id": "cf1fe413-41fb-4e68-a406-8136a4187b11",
+  "before": "0b634bd0",
+  "solution": "For \\(A\\cos x + B\\sin x = C\\) with two distinct roots on the principal half-cycle, the standard half-angle identity gives \\(\\tan\\!\\left(\\dfrac{\\alpha+\\beta}{2}\\right) = \\dfrac{B}{A}\\). Here \\(A = \\sqrt{3}\\,a\\), \\(B = 2b\\), and \\(\\alpha+\\beta = \\pi/3\\), so \\(\\tan(\\pi/6) = \\dfrac{1}{\\sqrt{3}} = \\dfrac{2b}{\\sqrt{3}\\,a}\\). Cross-multiplying: \\(\\sqrt{3}\\,a = 2b\\sqrt{3}\\), i.e. \\(a = 2b\\), so \\(\\dfrac{b}{a} = \\dfrac{1}{2} = 0.5\\). Matches option B: \\(0.5\\).",
+  "note": "removed the editor's note about the stem; the paper prints sqrt3 a cos x + 2b sin x = c, as stored"
+ }
+]
