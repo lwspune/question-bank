@@ -43,7 +43,15 @@ npx tsx scripts/rrb-ntpc/build.ts <shiftId> --partial   # compare with the key, 
 npx tsx scripts/rrb-ntpc/figures.ts <shiftId>           # only when a block declares figure:
 npx tsx scripts/rrb-ntpc/build.ts <shiftId>             # -> out/<shiftId>/rows.json
 npx tsx scripts/rrb-ntpc/commit.ts <shiftId> [--apply]  # PRIVATE, through commitStaged
+# once every shift is committed:
+npx tsx scripts/rrb-ntpc/grace.ts [--apply]             # flawed questions -> src/lib/mocks/flawed.json
+npx tsx scripts/rrb-ntpc/publish.ts [--apply]           # whole shifts -> PUBLIC (owner's OK)
+npx tsx scripts/mocks/build.ts --paper=rrb-ntpc --apply # 24 mocks as drafts; add --publish with the push
 ```
+
+Mocks (`RRB_NTPC_CBT_1`, `scripts/mocks/rrbNtpcSittings.ts`): 100 questions, 90 minutes, +1 / -1/3,
+ONE section carrying all eleven subjects, so each mock keeps RRB's printed order. Publish them in
+the same minutes as the push that carries the registry's `hasMocks`, as with every exam's mocks.
 
 Before the first commit: `seed-exam.ts --apply` (paste the id into config.ts), then
 `seed-subjects.ts --apply`. The catalog is `seed-catalog.ts` (SSC CGL's names, Quantitative Aptitude
