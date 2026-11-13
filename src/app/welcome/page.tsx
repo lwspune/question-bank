@@ -5,7 +5,8 @@ import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getOnboardingState } from "@/lib/profile/service";
 import { needsOnboarding } from "@/lib/profile/onboarding";
-import { isExamSlug } from "@/lib/exam/examContext";
+import { guessExam } from "@/lib/exam/examFromPath";
+import { readAcquisitionCookie } from "@/lib/acquisition/cookie";
 import ExamOnboarding from "./ExamOnboarding";
 
 export const dynamic = "force-dynamic";
@@ -37,12 +38,17 @@ export default async function WelcomePage(
   const state = await getOnboardingState(createSupabaseServerClient(), user.id);
   if (!needsOnboarding(state)) redirect(next);
 
-  // Pre-select the exam they were already browsing (the qb_exam cookie), so the
-  // first real ask is a confirm, not a cold question.
-  const cookieExam = (await cookies()).get("qb_exam")?.value;
-  const initialExam = isExamSlug(cookieExam) ? cookieExam : null;
+  // The exam to CONFIRM rather than ask cold (2026-11-13): the one they tapped
+  // (qb_exam), else the page they are going back to, else the page they first
+  // landed on (the qb_acq cookie sign-in reads). Most sign-ups start on a
+  // chapter page, which never sets qb_exam. Only offered: nothing is saved
+  // until they tap. See lib/exam/examFromPath.
+  const jar = await cookies();
+  const guess = guessExam({
+    cookie: jar.get("qb_exam")?.value,
+    next,
+    landing: readAcquisitionCookie(jar.get("qb_acq")?.value ?? null)?.landing,
+  });
 
-  return (
-    <ExamOnboarding next={next} initialExam={initialExam} />
-  );
+  return <ExamOnboarding next={next} guess={guess?.slug ?? null} />;
 }

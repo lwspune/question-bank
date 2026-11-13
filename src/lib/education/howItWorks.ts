@@ -125,6 +125,19 @@ export type Destination = { href: string; label: string };
  * feature is the pattern the engagement gate forbids. With the default next,
  * the loop's first step leads and the bank is the fallback.
  */
+/**
+ * Does the welcome screen show the loop after the exam question? Only when the
+ * student has no specific page to go back to (or that page IS the loop's first
+ * step), so the loop's first step is the main button there. A student going
+ * back to the chapter they came from, or a paper they tapped, goes straight
+ * there (owner, 2026-11-13). That had been the real behaviour for everyone who
+ * picked an exam since 2026-09-24, by accident: a refresh after saving
+ * bounced them past the screen, and only skippers ever saw it.
+ */
+export function showsLoopAfterWelcome(next: string, loop: Loop): boolean {
+  return next === WELCOME_DEFAULT_NEXT || next === loop.steps[0].href;
+}
+
 export function welcomeDestination(
   next: string,
   loop: Loop

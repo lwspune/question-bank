@@ -12,6 +12,7 @@ import { describe, it, expect } from "vitest";
 import * as howItWorks from "@/lib/education/howItWorks";
 import {
   loopFor,
+  showsLoopAfterWelcome,
   welcomeDestination,
   WELCOME_DEFAULT_NEXT,
   type Loop,
@@ -99,6 +100,34 @@ describe("welcomeDestination", () => {
     const d = welcomeDestination("/mock/exam/nda", loop);
     expect(d.primary.href).toBe("/mock/exam/nda");
     expect(d.secondary.href).toBe("/browse");
+  });
+});
+
+// Owner's call 2026-11-13: a student going back to a specific page goes
+// straight there; the loop screen is for students with nowhere to return to,
+// where its first step is the main button. Since 2026-09-24 this was already
+// what happened to every student who picked an exam (a refresh bounced them
+// past the screen); only skippers saw it.
+describe("showsLoopAfterWelcome", () => {
+  const loop = loopFor(getExamBySlug("nda"));
+
+  it("shows the loop when there is no specific page to return to", () => {
+    expect(showsLoopAfterWelcome(WELCOME_DEFAULT_NEXT, loop)).toBe(true);
+  });
+
+  it("shows the loop when the page to return to IS its first step", () => {
+    expect(showsLoopAfterWelcome("/mock/exam/nda", loop)).toBe(true);
+  });
+
+  it("skips the loop for a specific page: the chapter they came from, a paper they tapped", () => {
+    expect(showsLoopAfterWelcome("/questions/nda/maths/matrices", loop)).toBe(false);
+    expect(showsLoopAfterWelcome("/mock/nda-2025-sep-maths", loop)).toBe(false);
+  });
+
+  it("holds for the no-exam loop a skipper gets", () => {
+    const general = loopFor(null);
+    expect(showsLoopAfterWelcome(WELCOME_DEFAULT_NEXT, general)).toBe(true);
+    expect(showsLoopAfterWelcome("/questions/cds/english", general)).toBe(false);
   });
 });
 

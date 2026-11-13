@@ -126,6 +126,7 @@ describe("EXPERIMENTS", () => {
       "v-step-by-step",
       "v-strategy",
       "visual-solutions",
+      "welcome-exam-confirm",
       "why-not-buy",
     ]);
   });
