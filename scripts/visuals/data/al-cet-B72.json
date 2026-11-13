@@ -1,0 +1,967 @@
+{
+ "//": "Assembled from agent drafts (algebraSteps).",
+ "visuals": [
+  {
+   "id": "09711948-f9e5-44b7-8a54-a02ef5885cad",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Mn} = x",
+       "note": "Let Mn oxidation state = x"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "x + 4(-2) = -1",
+       "lhs": "x+4*(-2)",
+       "rhs": "-1"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "x - 8 = -1",
+       "lhs": "x-8",
+       "rhs": "-1"
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "x = +7",
+       "lhs": "x",
+       "rhs": "7"
+      }
+     ],
+     "answer": "7",
+     "roots": [
+      "7"
+     ]
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "7ce3cf06",
+    "answer": {
+     "value": 7,
+     "label": "+7"
+    }
+   }
+  },
+  {
+   "id": "1a9116c9-6c8b-4652-82c6-a334893e21a7",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{C_2O_4^{2-}}",
+       "note": "potassium oxalate"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "2x + 4(-2) = -2",
+       "lhs": "2*x+4*(-2)",
+       "rhs": "-2"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "2x = 6",
+       "lhs": "2*x",
+       "rhs": "6"
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "x = +3",
+       "lhs": "x",
+       "rhs": "3"
+      }
+     ],
+     "answer": "3",
+     "roots": [
+      "3"
+     ]
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "9d91bf02",
+    "answer": {
+     "value": 3,
+     "label": "+3"
+    }
+   }
+  },
+  {
+   "id": "1df02d68-f50c-46ed-be3f-0d46af2e5f5e",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{H_2SO_3}"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "2 + x - 6 = 0",
+       "lhs": "2+x-6",
+       "rhs": "0",
+       "roots": [
+        "4"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "x = +4",
+       "lhs": "x",
+       "rhs": "4",
+       "roots": [
+        "4"
+       ]
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "\\mathrm{H_2S_2O_7}"
+      },
+      {
+       "step": "s5",
+       "kind": "eq",
+       "tex": "2 + 2x - 14 = 0",
+       "lhs": "2+2*x-14",
+       "rhs": "0",
+       "roots": [
+        "6"
+       ]
+      },
+      {
+       "step": "s6",
+       "kind": "eq",
+       "tex": "x = +6",
+       "lhs": "x",
+       "rhs": "6",
+       "roots": [
+        "6"
+       ]
+      }
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s4",
+       "s5",
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "81786bc5",
+    "answer": {
+     "value": 4,
+     "label": "+4 and +6"
+    }
+   }
+  },
+  {
+   "id": "241e2c85-ae6e-49a6-9a0b-c5895970e5a0",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{CN^-}:\\ \\mathrm{C}\\ {+2}\\to{+4},\\ \\mathrm{N}\\ {-3}\\to{+2}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "2 + 5 = 7",
+       "f": "2+5",
+       "value": "7",
+       "note": "electrons lost by each CN⁻"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\mathrm{NO_3^-}:\\ \\mathrm{N}\\ {+5}\\to{+2}",
+       "note": "gains 3 electrons"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "7a = 3b,\\ a:b = 3:7",
+       "note": "electron balance"
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "a = 3,\\ b = 7"
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "c = a + b = 3 + 7 = 10",
+       "f": "3+7",
+       "value": "10",
+       "note": "charge balance"
+      },
+      {
+       "step": "s7",
+       "kind": "calc",
+       "tex": "\\text{O: } 3b = 21",
+       "f": "3*7",
+       "value": "21",
+       "note": "oxygen on the reactant side"
+      },
+      {
+       "step": "s8",
+       "kind": "calc",
+       "tex": "10 + 6 + 5 = 21",
+       "f": "10+6+5",
+       "value": "21",
+       "note": "oxygen on the product side"
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s6"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s7",
+       "s8"
+      ]
+     }
+    ],
+    "fingerprint": "af51e01c",
+    "answer": {
+     "value": 3,
+     "label": "3, 7, 10"
+    }
+   }
+  },
+  {
+   "id": "4403ff3d-a1b7-417f-96ef-07215a48fd8b",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "-1 + 6 + x(-1) = +3",
+       "lhs": "-1+6+x*(-1)",
+       "rhs": "3",
+       "note": "charge: left side = right side"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "5 - x = 3",
+       "lhs": "5-x",
+       "rhs": "3"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "x = 2",
+       "lhs": "x",
+       "rhs": "2"
+      }
+     ],
+     "answer": "2",
+     "roots": [
+      "2"
+     ]
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "924d685e",
+    "answer": {
+     "value": 2,
+     "label": "2"
+    }
+   }
+  },
+  {
+   "id": "5dc7e0a5-f595-4a45-a2b4-e68ef5495420",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "x + 6(-1) = -1",
+       "lhs": "x+6*(-1)",
+       "rhs": "-1",
+       "note": "P in PF₆⁻"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "x = +5",
+       "lhs": "x",
+       "rhs": "5"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "2y + 7(-2) = -4",
+       "lhs": "2*x+7*(-2)",
+       "rhs": "-4",
+       "note": "V in V₂O₇⁴⁻"
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "y = +5",
+       "lhs": "x",
+       "rhs": "5"
+      }
+     ],
+     "answer": "5",
+     "roots": [
+      "5"
+     ]
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "62b0baf7",
+    "answer": {
+     "value": 5,
+     "label": "+5 and +5"
+    }
+   }
+  },
+  {
+   "id": "6a46ece2-fb65-494f-88b2-1e1d20c4ee21",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "X_3(YZ_4)_3",
+       "note": "test this formula"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "3(+3) + 3[(+5) + 4(-2)] = 9 + 3(-3)",
+       "f": "3*3+3*(5+4*(-2))",
+       "value": "0"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "9 + 3(-3) = 9 - 9",
+       "f": "9+3*(-3)",
+       "value": "0"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "9 - 9 = 0",
+       "f": "9-9",
+       "value": "0",
+       "note": "sum of oxidation numbers is zero"
+      }
+     ],
+     "answer": "0"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "1cae4bd2",
+    "answer": {
+     "value": 0,
+     "label": "sum = 0: X₃(YZ₄)₃"
+    }
+   }
+  },
+  {
+   "id": "86a1eab3-6c84-4ccc-8341-2cda0d52bc6c",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Ca_3(PO_4)_2}",
+       "note": "Let oxidation number of P be x"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "3(+2) + 2x + 8(-2) = 0",
+       "lhs": "3*2+2*x+8*(-2)",
+       "rhs": "0"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "6 + 2x - 16 = 0",
+       "lhs": "6+2*x-16",
+       "rhs": "0"
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "x = +5",
+       "lhs": "x",
+       "rhs": "5"
+      }
+     ],
+     "answer": "5",
+     "roots": [
+      "5"
+     ]
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "0f71fbcd",
+    "answer": {
+     "value": 5,
+     "label": "+5"
+    }
+   }
+  },
+  {
+   "id": "9f92e313-2349-4251-8740-4857de3052bc",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "x - 4 = 0",
+       "lhs": "x-4",
+       "rhs": "0",
+       "note": "S in SO₂",
+       "roots": [
+        "4"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "x = +4",
+       "lhs": "x",
+       "rhs": "4",
+       "roots": [
+        "4"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "x - 8 = -2",
+       "lhs": "x-8",
+       "rhs": "-2",
+       "note": "S in SO₄²⁻",
+       "roots": [
+        "6"
+       ]
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "x = +6",
+       "lhs": "x",
+       "rhs": "6",
+       "roots": [
+        "6"
+       ]
+      }
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "f1c2716b",
+    "answer": {
+     "value": 4,
+     "label": "+4 and +6"
+    }
+   }
+  },
+  {
+   "id": "b0532d25-7daf-491b-acdf-77a0b71d4a9a",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "1 + x + 4(-2) = 0",
+       "lhs": "1+x+4*(-2)",
+       "rhs": "0",
+       "note": "Mn in KMnO₄",
+       "roots": [
+        "7"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "x = +7",
+       "lhs": "x",
+       "rhs": "7",
+       "roots": [
+        "7"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "y + 2(-2) = 0",
+       "lhs": "x+2*(-2)",
+       "rhs": "0",
+       "note": "Mn in MnO₂",
+       "roots": [
+        "4"
+       ]
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "y = +4",
+       "lhs": "x",
+       "rhs": "4",
+       "roots": [
+        "4"
+       ]
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "7 - 4 = 3",
+       "f": "7-4",
+       "value": "3",
+       "note": "difference"
+      }
+     ],
+     "answer": "3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "8626cc36",
+    "answer": {
+     "value": 3,
+     "label": "3"
+    }
+   }
+  },
+  {
+   "id": "ec4aad5e-97f1-4522-891a-6fc946c12c8b",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\mathrm{Mn}:\\ {+7}\\to{+2}",
+       "note": "Mn gains 5 electrons"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\mathrm{C_2O_4^{2-}}:\\ 2\\times({+3}\\to{+4})",
+       "note": "each oxalate loses 2 electrons"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "2 \\times 5 = 10 = 5 \\times 2",
+       "f": "2*5",
+       "value": "10",
+       "note": "2 MnO₄⁻ to 5 C₂O₄²⁻"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "8 + 20 = 28",
+       "f": "8+20",
+       "value": "28",
+       "note": "oxygen on the reactant side"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "20 + 8 = 28",
+       "f": "20+8",
+       "value": "28",
+       "note": "oxygen on the product side"
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "-2 - 10 + 16 = +4",
+       "f": "-2-10+16",
+       "value": "4",
+       "note": "charge on the reactant side"
+      }
+     ],
+     "answer": "2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4",
+       "s5",
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "de8c4055",
+    "answer": {
+     "value": 2,
+     "label": "2, 5, 16"
+    }
+   }
+  },
+  {
+   "id": "f171ad78-dcff-43c4-940e-04a5c8fa76b3",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "x + 4 = +1",
+       "lhs": "x+4",
+       "rhs": "1",
+       "note": "N in NH₄⁺",
+       "roots": [
+        "-3"
+       ]
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "x = -3",
+       "lhs": "x",
+       "rhs": "-3",
+       "roots": [
+        "-3"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "x - 4 = 0",
+       "lhs": "x-4",
+       "rhs": "0",
+       "note": "N in NO₂",
+       "roots": [
+        "4"
+       ]
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "x = +4",
+       "lhs": "x",
+       "rhs": "4",
+       "roots": [
+        "4"
+       ]
+      }
+     ],
+     "answer": "-3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "3547a7a8",
+    "answer": {
+     "value": -3,
+     "label": "-3 and +4"
+    }
+   }
+  },
+  {
+   "id": "f9edd568-e52e-46ae-a9c7-0b60a6a6051b",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "x + 4(-2) = -2",
+       "lhs": "x+4*(-2)",
+       "rhs": "-2",
+       "note": "Cr in CrO₄²⁻"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "x = +6",
+       "lhs": "x",
+       "rhs": "6"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "2(+1) + 2x + 7(-2) = 0",
+       "lhs": "2*1+2*x+7*(-2)",
+       "rhs": "0",
+       "note": "Cr in K₂Cr₂O₇"
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "x = +6",
+       "lhs": "x",
+       "rhs": "6"
+      }
+     ],
+     "answer": "6",
+     "roots": [
+      "6"
+     ]
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "8a839e06",
+    "answer": {
+     "value": 6,
+     "label": "+6 and +6"
+    }
+   }
+  }
+ ],
+ "decided": []
+}
