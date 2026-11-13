@@ -205,6 +205,19 @@ describe("validateCatalog", () => {
     expect(errors).toEqual([]);
     expect(warnings.join(" ")).toMatch(/subtopic/);
   });
+
+  // Another UPSC exam (CAPF Paper I) mixes GS and CSAT-type subjects in ONE
+  // paper, so CSE's Paper I / Paper II split cannot say what is legal there.
+  // An explicit list replaces it.
+  it("an explicit legal-subject list OVERRIDES the CSE paper split", () => {
+    const { errors } = validateCatalog([q()], CATALOG, 2, [q().subject]);
+    expect(errors).toEqual([]);
+  });
+
+  it("an explicit legal-subject list still REJECTS a subject outside it", () => {
+    const { errors } = validateCatalog([q()], CATALOG, 1, ["Basic Numeracy"]);
+    expect(errors.join(" ")).toMatch(/not a legal subject/);
+  });
 });
 
 describe("crosstab", () => {
