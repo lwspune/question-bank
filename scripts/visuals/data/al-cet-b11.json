@@ -1,0 +1,2437 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "87e8f815-0254-4ffd-b5f2-783e8d5575b3",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{dP}{dt}=\\dfrac{x}{100}P \\Rightarrow \\ln P=\\dfrac{x}{100}t+c"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\ln\\dfrac{200}{100}=\\ln 2=0.6931",
+              "f": "log(2)",
+              "value": "0.6931",
+              "dp": 4
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{x}{10}=0.6931 \\Rightarrow x=6.931",
+              "f": "0.6931*10",
+              "value": "6.931"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "x \\approx 6.93\\%"
+            }
+          ],
+          "answer": "6.93"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "95feea34",
+        "answer": {
+          "value": 6.93,
+          "label": "x ≈ 6.93 % per year"
+        }
+      }
+    },
+    {
+      "id": "8bcce5ae-6aa2-49e2-815d-0fe0cec09d92",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\dfrac{d^2y}{dx^2}=\\dfrac{1}{x}",
+              "f": "1/x",
+              "domain": [
+                0.2,
+                4
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "integral",
+              "tex": "\\dfrac{dy}{dx}=\\log x+c",
+              "f": "log(x)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\log 1 + c = 0 \\Rightarrow c = 0",
+              "f": "0-log(1)",
+              "value": "0"
+            },
+            {
+              "step": "s4",
+              "kind": "expr",
+              "tex": "\\dfrac{dy}{dx}=\\log x",
+              "f": "log(x)",
+              "restart": true,
+              "domain": [
+                0.2,
+                4
+              ]
+            },
+            {
+              "step": "s4",
+              "kind": "integral",
+              "tex": "y=x\\log x - x + k",
+              "f": "x*log(x)-x"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "1 = 0 - 1 + k \\Rightarrow k = 2",
+              "f": "1-(1*log(1)-1)",
+              "value": "2"
+            },
+            {
+              "step": "s6",
+              "kind": "note",
+              "tex": "y = x\\log x - x + 2"
+            }
+          ],
+          "answer": "2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "69ae7b46",
+        "answer": {
+          "value": 2,
+          "label": "k = 2: y = x log x − x + 2"
+        }
+      }
+    },
+    {
+      "id": "8c27baec-1827-4814-b28d-7038ca7f6f23",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{dy}{y+5}=dx \\Rightarrow y+5=Ce^{x}"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "y(0)=4 \\Rightarrow 4+5=C \\Rightarrow C=9",
+              "f": "4+5",
+              "value": "9"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "y(\\log 2)=9\\times 2-5=13",
+              "f": "9*exp(log(2))-5",
+              "value": "13"
+            }
+          ],
+          "answer": "13"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "ac87fdcb",
+        "answer": {
+          "value": 13,
+          "label": "y(log 2) = 13"
+        }
+      }
+    },
+    {
+      "id": "8d45cb97-143b-4a48-a1e5-6f773ed87a25",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "A=Pe^{rt},\\ P=2000,\\ r=0.10,\\ t=5"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "A=2000\\,e^{0.5}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "A=2000\\times 1.648=3296",
+              "f": "2000*1.648",
+              "value": "3296"
+            }
+          ],
+          "answer": "3296"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "7c8c08b8",
+        "answer": {
+          "value": 3296,
+          "label": "A = 3296"
+        }
+      }
+    },
+    {
+      "id": "90913e8c-c6e9-4c36-b894-7b5b4b1e62f6",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "t=x-y \\Rightarrow \\dfrac{dt}{dx}=1-t^2"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "\\dfrac{dt}{1-t^2}=dx",
+              "f": "1/(1-x^2)",
+              "domain": [
+                -0.9,
+                0.9
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "integral",
+              "tex": "x=\\tfrac12\\ln\\dfrac{1+t}{1-t}+c",
+              "f": "0.5*log((1+x)/(1-x))"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "y(1)=1 \\Rightarrow t=0:\\ 1=0+c,\\ c=1",
+              "f": "1-0.5*log((1+0)/(1-0))",
+              "value": "1"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "-\\ln\\dfrac{1-x+y}{1+x-y}=2(x-1)"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "f107e27b",
+        "answer": {
+          "value": 1,
+          "label": "c = 1, from y(1) = 1"
+        }
+      }
+    },
+    {
+      "id": "93a3f3f3-0b37-4f0a-9753-796ef092e98f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\dfrac{y\\,dy}{\\sqrt{1-y^2}}=dx",
+              "f": "x/sqrt(1-x^2)",
+              "domain": [
+                -0.9,
+                0.9
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "integral",
+              "tex": "-\\sqrt{1-y^2}=x+c",
+              "f": "-sqrt(1-x^2)"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "(x+c)^2+y^2=1"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "\\text{radius } 1,\\ \\text{centre } (-c,\\,0)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "r^2=1 \\Rightarrow r=1",
+              "f": "sqrt(1)",
+              "value": "1"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e8ef652e",
+        "answer": {
+          "value": 1,
+          "label": "radius 1, centre (−c, 0)"
+        }
+      }
+    },
+    {
+      "id": "9409c68f-a368-40bc-be76-051e8b122cb5",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{dy}{dx}+\\dfrac{6x^2}{1+x^3}y=\\dfrac{1+x^2}{1+x^3}"
+            },
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{IF}=(1+x^3)^2"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "y(1+x^3)^2=\\int(1+x^2)(1+x^3)\\,dx",
+              "f": "(1+x^2)*(1+x^3)",
+              "domain": [
+                -0.9,
+                3
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "integral",
+              "tex": "y(1+x^3)^2=x+\\dfrac{x^3}{3}+\\dfrac{x^4}{4}+\\dfrac{x^6}{6}+c",
+              "f": "x+x^3/3+x^4/4+x^6/6"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "s=2,\\ p,q,r=3,4,6:\\ \\text{LCM}=12",
+              "f": "12",
+              "value": "12"
+            }
+          ],
+          "answer": "12"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "2eb52dca",
+        "answer": {
+          "value": 12,
+          "label": "LCM = 12"
+        }
+      }
+    },
+    {
+      "id": "965de613-c3b3-41a2-9cd9-d1c6c58128ba",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "u=x+9y \\Rightarrow \\dfrac{du}{dx}=1+9u^2"
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\dfrac{du}{1+9u^2}=dx",
+              "f": "1/(1+9*x^2)"
+            },
+            {
+              "step": "s2",
+              "kind": "integral",
+              "tex": "\\tfrac13\\tan^{-1}(3u)=x+c",
+              "f": "atan(3*x)/3"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\tan^{-1}(3x+27y)=3x+3c"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "x=0,\\ y=\\tfrac1{27}:\\ \\tan^{-1}(1)=3c \\Rightarrow 3c=\\dfrac{\\pi}{4}",
+              "f": "atan(1)",
+              "value": "pi/4"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "3x+27y=\\tan\\left[3\\left(x+\\dfrac{\\pi}{12}\\right)\\right]"
+            }
+          ],
+          "answer": "pi/4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "cc9a0121",
+        "answer": {
+          "value": 0.7853981633974483,
+          "label": "3c = π/4 from the given point"
+        }
+      }
+    },
+    {
+      "id": "986249be-34bf-4bfd-ad76-716fd95355a6",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "(y')^2+y'-6=0 \\Rightarrow y'=2 \\text{ or } -3",
+              "lhs": "x^2+x-6",
+              "rhs": "0",
+              "roots": [
+                "2",
+                "-3"
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{increasing} \\Rightarrow y'=2"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "y=2x+5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "y(3)=2(3)+5=11",
+              "f": "2*3+5",
+              "value": "11"
+            }
+          ],
+          "answer": "11"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "7a8d0d1d",
+        "answer": {
+          "value": 11,
+          "label": "y(3) = 11"
+        }
+      }
+    },
+    {
+      "id": "9bc248ae-9e04-4425-874a-2ea63a624d3d",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\dfrac{dy}{dx}=\\dfrac{x^2+4x-9}{x+2}",
+              "f": "(x^2+4*x-9)/(x+2)",
+              "domain": [
+                -1.5,
+                3
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\dfrac{dy}{dx}=(x+2)-\\dfrac{13}{x+2}",
+              "f": "(x+2)-13/(x+2)"
+            },
+            {
+              "step": "s2",
+              "kind": "integral",
+              "tex": "y=\\dfrac{(x+2)^2}{2}-13\\ln|x+2|+c",
+              "f": "(x+2)^2/2-13*log(abs(x+2))"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "y(0)=0 \\Rightarrow c=13\\ln 2-2",
+              "f": "0-((0+2)^2/2-13*log(abs(0+2)))",
+              "value": "13*log(2)-2"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "y(-4)=2-13\\ln 2+13\\ln 2-2=0",
+              "f": "(-4+2)^2/2-13*log(abs(-4+2))+(13*log(2)-2)",
+              "value": "0"
+            }
+          ],
+          "answer": "0"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "5e04d0a9",
+        "answer": {
+          "value": 0,
+          "label": "y(−4) = 0"
+        }
+      }
+    },
+    {
+      "id": "9dbca263-f00a-4a0f-9c51-9181865e805a",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "y=vx:\\ v+xv'=\\dfrac{v}{1+v^2}"
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\dfrac{(1+v^2)\\,dv}{v^3}=-\\dfrac{dx}{x}",
+              "f": "(1+x^2)/x^3",
+              "domain": [
+                0.3,
+                4
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "integral",
+              "tex": "-\\dfrac{1}{2v^2}+\\log v=-\\log x+c",
+              "f": "-1/(2*x^2)+log(x)"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\log y=\\dfrac{x^2}{2y^2}+c"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "y(1)=1:\\ 0=\\tfrac12+c \\Rightarrow c=-\\tfrac12",
+              "f": "0-1/2",
+              "value": "-1/2"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "1=\\dfrac{x_0^2}{2e^2}-\\tfrac12 \\Rightarrow x_0^2=3e^2",
+              "f": "(1+1/2)*2*e^2",
+              "value": "3*e^2"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "x_0=\\pm\\sqrt{3}\\,e",
+              "f": "sqrt(3*e^2)",
+              "value": "sqrt(3)*e"
+            }
+          ],
+          "answer": "sqrt(3)*e"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "11a0d38f",
+        "answer": {
+          "value": 4.708202236182293,
+          "label": "x₀ = ±√3 e"
+        }
+      }
+    },
+    {
+      "id": "a69c52fa-9edf-4d6f-819c-dbba91d108a3",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\theta-20=60e^{-kt},\\ k=\\tfrac15\\ln\\tfrac32"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "60\\left(\\tfrac23\\right)^4=60\\cdot\\tfrac{16}{81}\\approx 11.85",
+              "f": "60*(2/3)^4",
+              "value": "11.85",
+              "dp": 2
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\theta=20+11.85=31.85^\\circ\\text{C}",
+              "f": "20+60*exp(-20*log(3/2)/5)",
+              "value": "31.85",
+              "dp": 2
+            }
+          ],
+          "answer": "31.85"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "4243e13a",
+        "answer": {
+          "value": 31.85,
+          "label": "31.85 °C after 20 min"
+        }
+      }
+    },
+    {
+      "id": "a91b4a5d-7b1c-4d37-aab2-7eb132eca2cb",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f f''-(f')^2=0"
+            },
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{d}{dx}\\left(\\dfrac{f'}{f}\\right)=\\dfrac{f f''-(f')^2}{f^2}=0"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{f'(x)}{f(x)}=\\dfrac{f'(0)}{f(0)}=\\dfrac{2}{1}=2",
+              "f": "2/1",
+              "value": "2"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "f'(x)=2f(x)"
+            }
+          ],
+          "answer": "2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "13045634",
+        "answer": {
+          "value": 2,
+          "label": "f′/f = 2"
+        }
+      }
+    },
+    {
+      "id": "b5fa0f86-232b-4880-bd63-0b69e1a176cc",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "5\\text{ yr}:\\ 64\\div 2=32\\ \\text{g}",
+              "f": "64/2",
+              "value": "32"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "10\\text{ yr}:\\ 32\\div 2=16\\ \\text{g}",
+              "f": "32/2",
+              "value": "16"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "15\\text{ yr}:\\ 16\\div 2=8\\ \\text{g}",
+              "f": "16/2",
+              "value": "8"
+            }
+          ],
+          "answer": "8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "8e66b5c3",
+        "answer": {
+          "value": 8,
+          "label": "8 g left after 15 years"
+        }
+      }
+    },
+    {
+      "id": "b795231f-4d06-4f59-96a6-f3b18407c082",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\dfrac{dx}{x}=\\dfrac{y\\,dy}{1+y^2}",
+              "f": "x/(1+x^2)"
+            },
+            {
+              "step": "s1",
+              "kind": "integral",
+              "tex": "\\ln x=\\tfrac12\\ln(1+y^2)+C",
+              "f": "0.5*log(1+x^2)"
+            },
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "x^2=c(1+y^2)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "x=1,\\ y=0:\\ 1=c(1+0)\\Rightarrow c=1",
+              "f": "1/(1+0^2)",
+              "value": "1"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "x^2=1+y^2\\Rightarrow x^2-y^2=1"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "05f1eda3",
+        "answer": {
+          "value": 1,
+          "label": "c = 1: x² − y² = 1, hyperbola"
+        }
+      }
+    },
+    {
+      "id": "b819c31a-5f54-4735-9674-cf58df334b73",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\dfrac{dA}{\\sqrt{A}}=-\\lambda\\,dt",
+              "f": "1/sqrt(x)",
+              "domain": [
+                0.5,
+                4
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "integral",
+              "tex": "2\\sqrt{A}=2\\sqrt{A_0}-\\lambda t",
+              "f": "2*sqrt(x)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2(200)=2(2000)-2\\lambda \\Rightarrow \\lambda=1800",
+              "f": "(2*2000-2*200)/2",
+              "value": "1800"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "0:\\ 4000=1800k \\Rightarrow k=\\dfrac{20}{9}",
+              "f": "4000/1800",
+              "value": "20/9"
+            }
+          ],
+          "answer": "20/9"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c31b7361",
+        "answer": {
+          "value": 2.2222222222222223,
+          "label": "k = 20/9 = 2 2/9 years"
+        }
+      }
+    },
+    {
+      "id": "b85f26cb-c16f-4389-bf1d-560cdc2db5dc",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "N=N_0e^{kt}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "10000=N_0e^{3k},\\quad 40000=N_0e^{5k}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "4=e^{2k}\\Rightarrow k=\\ln 2",
+              "f": "log(4)/2",
+              "value": "log(2)"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "N_0=\\dfrac{10000}{e^{3\\ln 2}}=\\dfrac{10000}{8}=1250",
+              "f": "10000/exp(3*log(2))",
+              "value": "1250"
+            }
+          ],
+          "answer": "1250"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "b6729e50",
+        "answer": {
+          "value": 1250,
+          "label": "N₀ = 1250 bacteria"
+        }
+      }
+    },
+    {
+      "id": "c214e687-c353-428d-897f-2c4f94e6b0a3",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\dfrac{dx}{\\sqrt{x}}=-k\\,dt",
+              "f": "1/sqrt(x)",
+              "domain": [
+                0.5,
+                4
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "integral",
+              "tex": "2\\sqrt{x}=-kt+c",
+              "f": "2*sqrt(x)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "t=0:\\ c=2\\sqrt{1000000}=2000",
+              "f": "2*sqrt(1000000)",
+              "value": "2000"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "200=-3k+2000 \\Rightarrow k=600",
+              "f": "(2000-200)/3",
+              "value": "600"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "0=-600T+2000 \\Rightarrow T=\\dfrac{10}{3}",
+              "f": "2000/600",
+              "value": "10/3"
+            }
+          ],
+          "answer": "10/3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "f31f33bb",
+        "answer": {
+          "value": 3.3333333333333335,
+          "label": "T = 10/3 years"
+        }
+      }
+    },
+    {
+      "id": "c37c4bf4-aaf4-46ac-9a09-cc92d054570a",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{centre of } x^2+y^2-2x-2y=0:\\ (1,1)"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "\\dfrac{dy}{y}=\\dfrac{2\\,dx}{x^2}",
+              "f": "2/x^2",
+              "domain": [
+                0.3,
+                4
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "integral",
+              "tex": "\\log|y|=-\\dfrac{2}{x}+c",
+              "f": "-2/x"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "(1,1):\\ 0=-2+c \\Rightarrow c=2",
+              "f": "log(1)+2/1",
+              "value": "2"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "\\log|y|=\\dfrac{2(x-1)}{x} \\Rightarrow x\\log|y|=2(x-1)"
+            }
+          ],
+          "answer": "2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "10c16046",
+        "answer": {
+          "value": 2,
+          "label": "c = 2: x log|y| = 2(x − 1)"
+        }
+      }
+    },
+    {
+      "id": "c794ad8f-4869-424c-96a2-afbd1d326707",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\deg f=n:\\ n=2(n-1) \\Rightarrow n=2"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "(2ax+b)^2=ax^2+bx+c \\Rightarrow c=b^2"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "4a^2=a \\Rightarrow a=\\tfrac14",
+              "lhs": "4*x^2",
+              "rhs": "x",
+              "roots": [
+                "1/4"
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "f=\\dfrac{x^2}{4}+bx+b^2=\\left(\\dfrac{x}{2}+b\\right)^2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f(2)=(1+b)^2=0 \\Rightarrow b=-1",
+              "f": "(1+(-1))^2",
+              "value": "0"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f(-2)=(-1-1)^2=4",
+              "f": "(-1-1)^2",
+              "value": "4"
+            }
+          ],
+          "answer": "4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "4dbf0d3d",
+        "answer": {
+          "value": 4,
+          "label": "f(−2) = 4"
+        }
+      }
+    },
+    {
+      "id": "c7e2b622-de93-4f37-a65a-847fe65df785",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "y+3=5e^{x}"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "x=\\log 2:\\ y+3=5e^{\\log 2}=10",
+              "f": "5*exp(log(2))",
+              "value": "10"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "y=10-3=7",
+              "f": "10-3",
+              "value": "7"
+            }
+          ],
+          "answer": "7"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "91169cc6",
+        "answer": {
+          "value": 7,
+          "label": "y(log 2) = 7"
+        }
+      }
+    },
+    {
+      "id": "c85db3c2-be26-4bdf-95ae-3a391b2d66e0",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{dr}{dt}=-k:\\ \\text{the radius falls uniformly}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{3-1}{4}=0.5\\ \\text{cm per month}",
+              "f": "(3-1)/4",
+              "value": "0.5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{3}{0.5}=6\\ \\text{months}",
+              "f": "3/0.5",
+              "value": "6"
+            }
+          ],
+          "answer": "6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "3632642d",
+        "answer": {
+          "value": 6,
+          "label": "6 months"
+        }
+      }
+    },
+    {
+      "id": "c991efcf-7c1c-4c20-9103-5793ff1dcff9",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{dx}{dy}-\\dfrac{x}{y}=1"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{IF}=\\dfrac{1}{y}"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "\\dfrac{d}{dy}\\left(x\\cdot\\dfrac1y\\right)=1\\cdot\\dfrac1y",
+              "f": "1/x",
+              "domain": [
+                0.3,
+                4
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "integral",
+              "tex": "\\dfrac{x}{y}=\\log y+c",
+              "f": "log(x)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "(0,1):\\ 0=\\log 1+c \\Rightarrow c=0",
+              "f": "0/1-log(1)",
+              "value": "0"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "\\log y=\\dfrac{x}{y} \\Rightarrow y=e^{x/y}"
+            }
+          ],
+          "answer": "0"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "3606f878",
+        "answer": {
+          "value": 0,
+          "label": "c = 0: y = e^(x/y)"
+        }
+      }
+    },
+    {
+      "id": "ca7a53a9-abc2-4c60-a7ff-acecb046dac2",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\dfrac{y\\,dy}{\\sqrt{1-y^2}}=dx",
+              "f": "x/sqrt(1-x^2)",
+              "domain": [
+                -0.9,
+                0.9
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "integral",
+              "tex": "-\\sqrt{1-y^2}=x+c",
+              "f": "-sqrt(1-x^2)"
+            },
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "(x+c)^2+y^2=1"
+            },
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{centre } (-c,\\,0) \\text{ on the X-axis}"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "r^2=1 \\Rightarrow r=1",
+              "f": "sqrt(1)",
+              "value": "1"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "b5f76563",
+        "answer": {
+          "value": 1,
+          "label": "radius 1, centre (−c, 0)"
+        }
+      }
+    },
+    {
+      "id": "cf267b98-8ff9-4133-a338-3bc4e0d9be65",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\dfrac{dy}{y-1}=\\dfrac{dx}{x(x+1)}",
+              "f": "1/(x*(x+1))",
+              "domain": [
+                0.3,
+                4
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\dfrac{dy}{y-1}=\\left(\\dfrac{1}{x}-\\dfrac{1}{x+1}\\right)dx",
+              "f": "1/x-1/(x+1)"
+            },
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "y-1=\\dfrac{kx}{x+1}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "(1,0):\\ -1=\\dfrac{k}{2} \\Rightarrow k=-2",
+              "f": "(0-1)*(1+1)/1",
+              "value": "-2"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "(y-1)(x+1)=-2x \\Rightarrow xy+x+y-1=0"
+            }
+          ],
+          "answer": "-2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "7e7cd36f",
+        "answer": {
+          "value": -2,
+          "label": "k = −2: xy + x + y − 1 = 0"
+        }
+      }
+    },
+    {
+      "id": "d1880113-b3ba-4fce-8469-64c290694716",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "\\dfrac{80-T}{100-T}=\\dfrac{65-T}{80-T}",
+              "lhs": "(80-x)/(100-x)",
+              "rhs": "(65-x)/(80-x)",
+              "roots": [
+                "20"
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "(80-T)^2=(100-T)(65-T)"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "6400-160T=6500-165T \\Rightarrow T=20",
+              "lhs": "6400-160*x",
+              "rhs": "6500-165*x",
+              "roots": [
+                "20"
+              ]
+            }
+          ],
+          "answer": "20"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "6c08df1d",
+        "answer": {
+          "value": 20,
+          "label": "T = 20 °C"
+        }
+      }
+    },
+    {
+      "id": "d492f367-a3d1-4b32-a24b-3708f5499918",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "k=\\tfrac{1}{30}\\ln\\tfrac{55}{25}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "T-25=55\\left(\\tfrac{25}{55}\\right)^2=55\\times\\tfrac{625}{3025}\\approx 11.36",
+              "f": "55*(25/55)^2",
+              "value": "11.36",
+              "dp": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "T\\approx 25+11.36=36.36^\\circ\\text{C}",
+              "f": "25+55*(25/55)^2",
+              "value": "36.36",
+              "dp": 2
+            }
+          ],
+          "answer": "36.36"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "b3dfe01b",
+        "answer": {
+          "value": 36.36,
+          "label": "T ≈ 36.36 °C after 1 hour"
+        }
+      }
+    },
+    {
+      "id": "d60d8e50-861c-4613-8e2e-3a67ac827f50",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{dV}{dt}\\propto -S \\Rightarrow \\dfrac{dr}{dt}=-k"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "r=-kt+c"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "t=0:\\ 3=-k(0)+c \\Rightarrow c=3",
+              "f": "3-0",
+              "value": "3"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "t=1:\\ 2=-k+3 \\Rightarrow k=1",
+              "f": "3-2",
+              "value": "1"
+            },
+            {
+              "step": "s5",
+              "kind": "note",
+              "tex": "r=3-t"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "313e2037",
+        "answer": {
+          "value": 1,
+          "label": "k = 1: r = 3 − t"
+        }
+      }
+    },
+    {
+      "id": "d6161f4e-f125-41f6-b036-2a89e05d34ba",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{dy}{dx}+\\dfrac{2x}{1+x^2}y=\\dfrac{4x^2}{1+x^2}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{IF}=1+x^2"
+            },
+            {
+              "step": "s3",
+              "kind": "expr",
+              "tex": "y(1+x^2)=\\int 4x^2\\,dx",
+              "f": "4*x^2"
+            },
+            {
+              "step": "s3",
+              "kind": "integral",
+              "tex": "y(1+x^2)=\\dfrac{4x^3}{3}+c",
+              "f": "4*x^3/3"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "(0,0):\\ 0=0+c \\Rightarrow c=0",
+              "f": "0-4*0^3/3",
+              "value": "0"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "3(1+x^2)y=4x^3"
+            }
+          ],
+          "answer": "0"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "241c5ca3",
+        "answer": {
+          "value": 0,
+          "label": "c = 0: 3(1 + x²)y = 4x³"
+        }
+      }
+    },
+    {
+      "id": "dbb53be7-3ab2-426c-a724-7dc1499435a0",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "Q=\\left(x+y\\dfrac{dy}{dx},\\,0\\right)"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "l(PQ)^2=\\left(y\\dfrac{dy}{dx}\\right)^2+y^2=k^2"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "y\\dfrac{dy}{dx}=\\pm\\sqrt{k^2-y^2}"
+            },
+            {
+              "step": "s3",
+              "kind": "expr",
+              "tex": "\\dfrac{y\\,dy}{\\sqrt{k^2-y^2}}=\\pm dx",
+              "f": "x/sqrt(k^2-x^2)",
+              "domain": [
+                -1.5,
+                1.5
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "integral",
+              "tex": "-\\sqrt{k^2-y^2}=\\pm x+c",
+              "f": "-sqrt(k^2-x^2)"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "(0,k):\\ -\\sqrt{k^2-k^2}=c \\Rightarrow c=0",
+              "f": "-sqrt(k^2-k^2)",
+              "value": "0"
+            },
+            {
+              "step": "s5",
+              "kind": "note",
+              "tex": "x^2+y^2=k^2"
+            }
+          ],
+          "answer": "0",
+          "vars": {
+            "k": 2
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "8fa38174",
+        "answer": {
+          "value": 0,
+          "label": "c = 0: x² + y² = k²"
+        }
+      }
+    },
+    {
+      "id": "decaf527-7af2-4b51-b8bb-eaef195373ab",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "m=\\dfrac{f'}{f}:\\ m^2+4m+1=0 \\Rightarrow m=-2\\pm\\sqrt{3}",
+              "lhs": "x^2+4*x+1",
+              "rhs": "0",
+              "roots": [
+                "-2+sqrt(3)",
+                "-2-sqrt(3)"
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\dfrac{f'}{f}=m \\Rightarrow f=c\\,e^{(-2\\pm\\sqrt{3})x}"
+            }
+          ],
+          "answer": "-2+sqrt(3)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "8a52a3ab",
+        "answer": {
+          "value": -0.2679491924311228,
+          "label": "m = −2 ± √3"
+        }
+      }
+    },
+    {
+      "id": "e3d2c88d-b61f-427a-961c-7bd0b7e9ceca",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{dP}{dt}=-kP \\Rightarrow \\log\\dfrac{P}{N}=-kt"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "t=1,\\ P=\\dfrac N2:\\ k=\\log 2",
+              "f": "-log(1/2)",
+              "value": "log(2)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "P=\\dfrac{N}{10}:\\ \\log 10=t\\log 2 \\Rightarrow t=\\log_2 10",
+              "f": "-log(1/10)/(-log(1/2))",
+              "value": "log(10)/log(2)"
+            }
+          ],
+          "answer": "log(10)/log(2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "37da3ba0",
+        "answer": {
+          "value": 3.3219280948873626,
+          "label": "t = log₂10 ≈ 3.32 hours"
+        }
+      }
+    },
+    {
+      "id": "eaacf084-0b31-4509-bfc6-65cd531937c3",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\dfrac{dy}{y+3}=dx",
+              "f": "1/(x+3)",
+              "domain": [
+                -2.5,
+                4
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "integral",
+              "tex": "\\ln(y+3)=x+c",
+              "f": "log(x+3)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "x=0,\\ y=2:\\ c=\\ln 5",
+              "f": "log(2+3)-0",
+              "value": "log(5)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "y+3=5e^{\\ln 2}=10",
+              "f": "5*exp(log(2))",
+              "value": "10"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "y=10-3=7",
+              "f": "10-3",
+              "value": "7"
+            }
+          ],
+          "answer": "7"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "721d06d3",
+        "answer": {
+          "value": 7,
+          "label": "y(log 2) = 7"
+        }
+      }
+    },
+    {
+      "id": "ed199ee1-1ef9-432a-8dc6-b7439bbfea1d",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{dy}{dx}+y=e^{-x},\\quad \\text{IF}=e^{x}"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "ye^x=\\int e^x\\cdot e^{-x}\\,dx",
+              "f": "exp(x)*exp(-x)"
+            },
+            {
+              "step": "s2",
+              "kind": "integral",
+              "tex": "ye^x=x+C",
+              "f": "x"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "(0,0):\\ 0=0+C \\Rightarrow C=0",
+              "f": "0-0",
+              "value": "0"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "ye^x=x \\Rightarrow ye^x-x=0"
+            }
+          ],
+          "answer": "0"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "e700a990",
+        "answer": {
+          "value": 0,
+          "label": "C = 0: ye^x − x = 0"
+        }
+      }
+    },
+    {
+      "id": "edeb0e68-9efd-446e-8a79-5f9a0aecb107",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{dx}{dt}=kx \\Rightarrow \\log x=kt+c"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "t=2,\\ x=1.1\\times10^5:\\ k=\\dfrac12\\log\\dfrac{11}{10}",
+              "f": "log(1.1)/2",
+              "value": "log(11/10)/2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac12\\log\\dfrac{11}{10}\\,t=\\log 2 \\Rightarrow t=\\dfrac{2\\log 2}{\\log\\frac{11}{10}}",
+              "f": "log(2)/(log(11/10)/2)",
+              "value": "2*log(2)/log(11/10)"
+            }
+          ],
+          "answer": "2*log(2)/log(11/10)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f05ff7eb",
+        "answer": {
+          "value": 14.545081794683426,
+          "label": "t ≈ 14.54 hours"
+        }
+      }
+    },
+    {
+      "id": "f35f0838-096a-43f5-af04-6c13ebbccd2e",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "(x+y)\\,dy=(x-y)\\,dx"
+            },
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "d(xy)+d\\!\\left(\\tfrac{y^2}{2}\\right)-d\\!\\left(\\tfrac{x^2}{2}\\right)=0"
+            },
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "x^2-2xy-y^2=c"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "(0,0):\\ 0-0-0=c \\Rightarrow c=0",
+              "f": "0^2-2*0*0-0^2",
+              "value": "0"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "x^2-2xy-y^2=0"
+            }
+          ],
+          "answer": "0"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "2e1408c8",
+        "answer": {
+          "value": 0,
+          "label": "c = 0: a pair of straight lines"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
