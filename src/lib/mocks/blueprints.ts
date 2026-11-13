@@ -867,6 +867,42 @@ export const UGC_NET_PAPER_1: MockPaperBlueprint = {
   sections: [{ key: "general-paper", label: "General Paper", subjects: ["General Paper"], count: 50 }],
 };
 
+/**
+ * RRB NTPC Graduate CBT 1, as RRB sets it: 100 MCQs in 90 minutes, 1 mark each, one third of a mark
+ * off for a wrong answer. The sheet prints ONE section with Mathematics (30), General Intelligence
+ * and Reasoning (30) and General Awareness (40) mixed in its own order, so the mock is one section
+ * carrying every subject (scripts/rrb-ntpc/config.ts SUBJECTS) and keeps RRB's order. A flawed
+ * question stays in as grace (src/lib/mocks/flawed.json), so the count never shortens.
+ */
+export const RRB_NTPC_CBT_1: MockPaperBlueprint = {
+  code: "cbt-1",
+  examName: "RRB NTPC",
+  examSlug: "rrb-ntpc",
+  paperLabel: "Graduate CBT 1",
+  durationSecs: 90 * 60,
+  marking: { correct: 1, wrong: -0.3333 },
+  sections: [
+    {
+      key: "cbt-1",
+      label: "Mathematics, Reasoning and General Awareness",
+      subjects: [
+        "Mathematics",
+        "Reasoning",
+        "History",
+        "Geography",
+        "Polity",
+        "Economics",
+        "Physics",
+        "Chemistry",
+        "Biology",
+        "Current Affairs",
+        "Computer Knowledge",
+      ],
+      count: 100,
+    },
+  ],
+};
+
 const CLAT_SECTIONS = [
   ["english", "English Language", 24],
   ["current-affairs", "Current Affairs including General Knowledge", 28],
@@ -1118,6 +1154,7 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   SPI_PAPER,
   IAT_PAPER,
   UGC_NET_PAPER_1,
+  RRB_NTPC_CBT_1,
   CLAT_PAPER,
   IMAT_PAPER,
   CBSE_10_CHAPTER_MCQ_PAPER,
