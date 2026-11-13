@@ -479,11 +479,11 @@ B: 2
 C: 4
 D: 13
 solution:
-From the third term on, each term is the sum of all the terms before it.
+Read as a Fibonacci-type series, each term is the sum of the two before it: \(0 + 1 = 1\), \(1 + 1 = 2\), \(1 + 2 = 3\), and later \(5 + 8 = 13\).
 
-\(0 + 1 = 1\), \(0 + 1 + 1 = 2\), \(0 + 1 + 1 + 2 = 4\), \(0 + 1 + 1 + 2 + 4 = 8\).
+On that reading 4 should be 3, so 4 breaks the sequence, as SSC's key has it (though 5 is then missing before 8).
 
-The next term should be \(0 + 1 + 1 + 2 + 4 + 8 = 16\), so 13 breaks the sequence. (Equivalently, from 1 onwards each term doubles: 1, 2, 4, 8, 16.)
+Read the other way, each term from the third on is the sum of all the terms before it (1, 2, 4, 8, 16), and 13 breaks it instead; that is why the question carries a note.
 
 === 28
 chapter: Blood Relations
@@ -1490,11 +1490,11 @@ D: 1, 2 and 3
 solution:
 1 is correct: an AM wave carries two sidebands at \(f_c \pm f_m\), so its bandwidth is \(2f_m\).
 
-2 is correct as usually taught: an FM wave has constant amplitude and its power is set by the carrier, with no power wasted in a large unmodulated carrier as in AM, so FM transmitters are the more power-efficient of the two.
-
 3 is correct: the phase of an FM wave varies as the integral of the message, so integrating the message and feeding it to a phase modulator gives FM (the Armstrong indirect method).
 
-All three statements are correct.
+SSC's key treats 2 as incorrect: FM needs a far wider bandwidth than AM and reaches only line of sight, so it is not the lower-power way to cover the same area. (Its transmitter is the more efficient, with no power spent on a large unmodulated carrier, which is why the question carries a note.)
+
+So the correct statements are 1 and 3 only.
 
 === 84
 subject: Polity
@@ -2405,11 +2405,9 @@ D: 1
 solution:
 Slope of \(2x - 3y = 6\) is \(\frac{2}{3}\). Slope of \(kx + y = 4\) is \(-k\).
 
-Perpendicular: \(\frac{2}{3} \times (-k) = -1\), so \(k = \frac{3}{2}\).
+Perpendicular: \(\frac{2}{3} \times (-k) = -1\), so \(k = \frac{3}{2}\), which is not among the options. (Had the second line been \(x + ky = 4\), the condition \(2(1) + (-3)k = 0\) would give \(k = \frac{2}{3}\).)
 
-(Check with \(a_1a_2 + b_1b_2 = 0\): \(2k + (-3)(1) = 0\) gives \(k = \frac{3}{2}\).)
-
-No option shows \(\frac{3}{2}\). If the second line were \(x + ky = 4\), the condition \(2(1) + (-3)k = 0\) gives \(k = \frac{2}{3}\), option B.
+SSC's key gives \(k = 1\), the answer shown, as the notice above explains.
 
 === 136
 chapter: Coordinate Geometry
@@ -3090,7 +3088,7 @@ B: such
 C: more
 D: as
 solution:
-The comparison of equality is "as ... as": "No other candidate is as qualified for the role as she is." "More" would need "than", and "such" cannot modify an adjective like "qualified". ("So ... as" is an older form used only in negative sentences; the standard pairing with the second "as" is "as".)
+In a negative comparison the traditional pairing is "so ... as": "No other candidate is so qualified for the role as she is." That is SSC's key. Modern usage also accepts "as ... as" here, which is why the question carries a note. "More" would need "than", and "such" cannot modify an adjective like "qualified".
 
 === 179
 chapter: Fill in the Blanks
@@ -3343,7 +3341,7 @@ B: She said, "I will have arrived before noon."
 C: She said, "I would arrive before noon."
 D: She said, "I had arrived before noon."
 solution:
-In reported speech "will/shall" moves back to "would", so "would arrive" goes back to a simple future in the direct form, with "she" becoming "I": She said, "I shall arrive before noon." B is the future perfect, C keeps the reported form, and D changes the meaning to a past event.
+"Would" in a reported sentence can stand for "would" in the speaker's own words, since "would" does not shift back any further. SSC's key keeps it: She said, "I would arrive before noon." Undoing the usual shift from "shall" gives "I shall arrive before noon" (A), the other reading noted above. B is the future perfect, and D changes the meaning to a past event.
 
 === 195
 chapter: Grammar
@@ -3360,7 +3358,9 @@ B: The primatologist said, "Grooming behaviour will be diminished if the troop h
 C: The primatologist said, "If the troop hierarchy had been destabilised, grooming behaviour would have diminished."
 D: The primatologist said, "Were the troop hierarchy destabilised, grooming behaviour must diminish."
 solution:
-Going from reported to direct speech, the backshifted forms return to the present: "would diminish" becomes "will diminish" and "were destabilised" becomes "is destabilised". Only B makes both changes. A simply repeats the reported tenses (and lacks its closing quotation mark), C moves the condition into the past perfect, and D replaces "will" with "must", changing a prediction into a necessity.
+The reported sentence is a hypothetical condition ("would diminish if ... were destabilised"). Such a condition keeps its form in direct speech, because "would" and the subjunctive "were" are not backshifted forms of anything else.
+
+So the direct speech repeats it: The primatologist said, "Grooming behaviour would diminish if the troop hierarchy were destabilised." (Option A prints no closing quotation mark.) B turns the verb into a passive future, C moves the condition into the past perfect, and D replaces "would" with "must".
 
 === 196
 chapter: Grammar
