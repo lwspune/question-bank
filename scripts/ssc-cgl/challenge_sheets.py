@@ -39,12 +39,27 @@ def key_mask(a):
     return green | yellow | red
 
 
-def squeeze(a):
-    """Cut long runs of blank rows (white, or the capture's beige page filler) to a short gap."""
+def blank_rows(a):
+    """Rows that hold nothing: white, or the capture's beige page filler."""
     s = a.astype(int).sum(axis=2)
     m = np.median(a.astype(int), axis=1)
     beige = (abs(m[:, 0] - 215) < 15) & (abs(m[:, 1] - 202) < 15) & (abs(m[:, 2] - 182) < 15)
-    blank = (s.min(axis=1) > 700) | beige
+    return (s.min(axis=1) > 700) | beige
+
+
+def column_edge(a):
+    """Where the left column ends in this crop (crop x): just right of its vertical rule (page x
+    ~128-145, by page), or, on a frameless page, x 121 (the key cells end at 120, text starts 124)."""
+    s = a.astype(int).sum(axis=2)
+    lo, hi = 112 - CROP_X[0], 150 - CROP_X[0]
+    grey = ((s[:, lo:hi] > 300) & (s[:, lo:hi] < 720)).mean(axis=0)
+    xs = np.nonzero(grey > 0.5)[0]
+    return int(lo + xs[-1] + 2) if len(xs) else 121 - CROP_X[0]
+
+
+def squeeze(a):
+    """Cut long runs of blank rows (white, or the capture's beige page filler) to a short gap."""
+    blank = blank_rows(a)
     keep = np.ones(len(blank), bool)
     y = 0
     while y < len(blank):
@@ -91,16 +106,17 @@ def main():
         carry = None
         for r in q["regions"]:
             a = page(r["page"])[r["y0"] : r["y1"], CROP_X[0] : CROP_X[1]].copy()
-            col = COLUMN_TO - CROP_X[0]
+            col = column_edge(a)
             # paint the column, then any key-coloured run that continues it to the right (a page
             # whose table sits further right draws its cells past the usual edge)
             km = key_mask(a.astype(int))
             for y in range(a.shape[0]):
                 # a cell's border can print one px inside its colour: paint to the right-most key
                 # pixel near the edge, skipping any gap
-                hits = np.nonzero(km[y, : col + 12])[0]
+                hits = np.nonzero(km[y, : col + GUARD])[0]
                 a[y, : max(col, int(hits[-1]) + 2 if len(hits) else 0)] = 255
-            if key_mask(a[:, : col + GUARD].astype(int)).any():
+            # checked 30 px past where the painting may reach, so a cell wider than expected fails
+            if key_mask(a[:, : col + GUARD + 30].astype(int)).any():
                 sys.exit(f"{shift} Q{q['number']}: a key colour survives at the masked column's edge")
             n_stray = int(key_mask(a.astype(int)).sum())
             if n_stray > 400:
@@ -116,11 +132,11 @@ def main():
                 if row["page"] == r["page"] and r["y0"] <= row["y0"] < r["y1"]:
                     y0 = row["y0"] - r["y0"]
                     y1 = min(row["y1"], r["y1"]) - r["y0"]
-                    body = a[y0 + 3 : max(y0 + 4, y1 - 3), col + 10 :].astype(int).sum(axis=2)
-                    if body.size and (body < 450).sum() < 20:
+                    if blank_rows(a[y0 + 3 : max(y0 + 4, y1 - 3), col + 10 :]).mean() > 0.97:
                         carry = k + 1
                         continue
-                    d.text((STAMP_X - CROP_X[0], y0 + 10), f"{k + 1}.", fill=(30, 30, 30), font=small)
+                    # beside the row's first line: centred on a one-line (frameless) row
+                    d.text((STAMP_X - CROP_X[0], y0 + (max(0, (y1 - y0 - 22) // 2) if y1 - y0 < 30 else 10)), f"{k + 1}.", fill=(30, 30, 30), font=small)
             # stamped first, then squeezed: the stamps sit on option rows, never on a blank run
             parts.append(Image.fromarray(squeeze(np.asarray(img))))
         h = sum(p.height for p in parts) + 44

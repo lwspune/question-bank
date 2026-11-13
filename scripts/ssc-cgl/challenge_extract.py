@@ -29,7 +29,7 @@ CELL_X = (62, 120)
 RULE_X = (700, 1080)
 TEXT_X = (134, 1060)
 MIN_CELL = 15  # rows: a key cell is a whole option row, 30+ px
-INK = 350  # an RGB sum below this is print
+INK = 450  # an RGB sum below this is print (light print sums ~350; the watermark ~540 and up)
 
 
 LOGO = (255, 266)  # PW's logo, laid over every page as its own picture
@@ -134,6 +134,11 @@ def measure(a):
     rules = sorted(rules + [f0 for f0, _ in fillers] + [b0 for b0, _ in bars])
 
     ink = (s[:, TEXT_X[0] : TEXT_X[1]] < INK).any(axis=1)
+    # A rule at the top of a page with nothing printed above it re-prints the boundary the previous
+    # page ended on (its filler's top): one boundary, so it is dropped (else a phantom row appears).
+    if rules and not ink[: rules[0]].any() and not any(c["y0"] < rules[0] for c in cells):
+        rules = rules[1:]
+
     lines = [{"y0": y0, "y1": y1} for y0, y1 in runs(ink, 6, 2)]
     return {"height": h, "width": w, "breaks": breaks, "marks": marks, "labels": labels, "cells": cells, "rules": rules, "lines": lines}
 
