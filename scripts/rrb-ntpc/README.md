@@ -5,11 +5,12 @@ under the **RRB NTPC** exam (`question_kind='pyq'`). Scope so far: **Graduate le
 CEN 06/2025, sat 16-27 March 2026: 24 shifts of 100 questions.** Not yet: Graduate CBT 2, the
 Class 12 level (a separate exam), the June 2025 sitting (cycle CEN 05/2024, not found hosted).
 
-**Status (2026-11-13): all 24 shifts committed, 2,400 rows, all PRIVATE** (Mathematics 720,
+**Status (2026-11-13): all 24 shifts, 2,400 rows, PUBLIC** (owner's OK; Mathematics 720,
 Reasoning 720, General Awareness 960: NTPC's 30/30/40 per paper). Blind agreement with RRB's
-tentative key **2,383/2,400 (99.3%)**; 18 rows flawed with a student notice, 6 with RRB's figures.
-No question repeats across the 24 shifts. Not yet built: the EXAM_REGISTRY entry, mocks, publishing
-(each needs the owner's OK and a before/after sheet).
+tentative key **2,383/2,400 (99.3%)**; 18 rows flawed with a student notice (grace in mocks), 6 with
+RRB's figures. No question repeats across the 24 shifts. EXAM_REGISTRY entry `rrb-ntpc` (graduate,
+government, mocks) merged; the 24 mocks are built as DRAFTS: publish them in the same minutes as the
+push (`npx tsx scripts/mocks/build.ts --paper=rrb-ntpc --apply --publish`).
 
 Eleven subjects: Mathematics, Reasoning, the eight General Awareness subjects CDS and SSC CGL use
 (History, Geography, Polity, Economics, Physics, Chemistry, Biology, Current Affairs) and Computer
