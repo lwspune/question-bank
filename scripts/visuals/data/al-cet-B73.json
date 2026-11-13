@@ -1,0 +1,3284 @@
+{
+ "//": "Assembled from agent drafts (algebraSteps).",
+ "visuals": [
+  {
+   "id": "05a22ec0-3a72-450c-aafa-5a5c101de07b",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\eta_1 = 0.5 \\Rightarrow T_L = 300\\ \\text{K}",
+       "note": "source at 600 K, efficiency 50%"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "0.70 = 1 - \\dfrac{300}{T_H'}",
+       "lhs": "0.7",
+       "rhs": "1-300/x",
+       "roots": [
+        "1000"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "T_H' = 1000\\ \\text{K}"
+      }
+     ],
+     "answer": "1000"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "96111ae4",
+    "answer": {
+     "value": 1000,
+     "label": "T_H' = 1000 K"
+    }
+   }
+  },
+  {
+   "id": "07158fc0-36d0-4f7b-bb7b-75a3a60d0f9c",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\dfrac{\\Delta U}{\\Delta Q} = \\dfrac{C_V}{C_P} = \\dfrac{1}{\\gamma}",
+       "note": "heated at constant pressure"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\gamma = \\dfrac{7}{5}\\ \\Rightarrow\\ \\dfrac{1}{\\gamma} = \\dfrac{5}{7}",
+       "f": "1/(7/5)",
+       "value": "5/7",
+       "note": "diatomic gas"
+      }
+     ],
+     "answer": "1/(7/5)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "2c320432",
+    "answer": {
+     "value": 0.7142857142857143,
+     "label": "ΔU/ΔQ = 5/7"
+    }
+   }
+  },
+  {
+   "id": "08574e5f-7c0e-408a-8908-829e213e36b2",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\gamma = \\dfrac{5}{3},\\ C_p = \\dfrac{5}{2}R,\\ C_v = \\dfrac{3}{2}R"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "W = nR\\Delta T,\\ \\ Q = \\dfrac{5}{2}nR\\Delta T"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{R}{5R/2} = \\dfrac{2}{5} = 40\\%",
+       "f": "(2/5)*100",
+       "value": "40"
+      }
+     ],
+     "answer": "(2/5)*100"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "3fb68132",
+    "answer": {
+     "value": 40,
+     "label": "40%"
+    }
+   }
+  },
+  {
+   "id": "0d2ce984-6498-429e-9e8d-b6c6a1d862d7",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{COP} = \\dfrac{T_2}{T_1 - T_2} = 5,\\ \\ T_2 = 260\\ \\text{K}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "T_1 = \\dfrac{6 \\times 260}{5} = 312\\ \\text{K}",
+       "f": "6*260/5",
+       "value": "312"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "312\\ \\text{K} = 39^\\circ\\text{C}",
+       "f": "312-273",
+       "value": "39"
+      }
+     ],
+     "answer": "312-273"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "20050ad7",
+    "answer": {
+     "value": 39,
+     "label": "39°C"
+    }
+   }
+  },
+  {
+   "id": "0f293d13-b8e1-421f-9f36-6c01a47b48ee",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "P \\propto T^{\\gamma/(\\gamma-1)},\\ \\ \\gamma = \\dfrac{5}{3}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "x = \\dfrac{5/3}{2/3} = 2.5",
+       "f": "(5/3)/(2/3)",
+       "value": "2.5"
+      }
+     ],
+     "answer": "(5/3)/(2/3)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "fa9a0f99",
+    "answer": {
+     "value": 2.5000000000000004,
+     "label": "x = 2.5"
+    }
+   }
+  },
+  {
+   "id": "0fd534bf-ec28-4255-8261-536f36dc1138",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "T V^{\\gamma-1} = \\text{constant},\\ \\ \\gamma = \\dfrac{3}{2}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "T_2 = T\\left(\\dfrac{1}{2}\\right)^{1/2} = \\dfrac{T}{\\sqrt{2}}",
+       "f": "T*(1/2)^(1/2)",
+       "value": "T/sqrt(2)"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "W = \\dfrac{R(T - T_2)}{\\gamma - 1} = 2RT\\left(1 - \\dfrac{1}{\\sqrt{2}}\\right)",
+       "f": "R*(T-T2)/(gamma-1)",
+       "value": "2*R*T*(1-1/sqrt(2))"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "2RT\\left(1 - \\dfrac{1}{\\sqrt{2}}\\right) = RT(2 - \\sqrt{2})",
+       "f": "2*R*T*(1-1/sqrt(2))",
+       "value": "R*T*(2-sqrt(2))"
+      }
+     ],
+     "answer": "R*T*(2-sqrt(2))",
+     "vars": {
+      "R": "2",
+      "T": "3",
+      "gamma": "3/2",
+      "T2": "T/sqrt(2)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "b7e93e10",
+    "answer": {
+     "value": 3.514718625761429,
+     "label": "W = RT(2 − √2)"
+    }
+   }
+  },
+  {
+   "id": "11096de5-96bf-4449-b44f-4b7b940bfbef",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\Delta Q = nC_p\\Delta T,\\ \\Delta U = nC_v\\Delta T,\\ \\Delta W = nR\\Delta T"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{\\Delta Q}{\\Delta U} = \\dfrac{C_p}{C_v} = \\gamma",
+       "f": "Cp/Cv",
+       "value": "gamma"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{\\Delta Q}{\\Delta W} = \\dfrac{C_p}{C_p - C_v} = \\dfrac{\\gamma}{\\gamma - 1}",
+       "f": "Cp/(Cp-Cv)",
+       "value": "gamma/(gamma-1)"
+      }
+     ],
+     "answer": "Cp/Cv",
+     "vars": {
+      "Cv": "3",
+      "Cp": "5",
+      "gamma": "Cp/Cv"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "a859b362",
+    "answer": {
+     "value": 1.6666666666666667,
+     "label": "γ ; γ/(γ−1)"
+    }
+   }
+  },
+  {
+   "id": "12371b72-16c1-4c28-9ad0-bc91650eaabb",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "Q = nC_p\\Delta T,\\ \\Delta U = nC_v\\Delta T,\\ W = Q - \\Delta U",
+       "note": "isobaric process"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{Q}{W} = \\dfrac{C_p}{C_p - C_v} = \\dfrac{C_p/C_v}{(C_p - C_v)/C_v}",
+       "f": "Cp/(Cp-Cv)",
+       "value": "(Cp/Cv)/((Cp-Cv)/Cv)"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{Q}{W} = \\dfrac{\\gamma}{\\gamma - 1}",
+       "f": "(Cp/Cv)/((Cp-Cv)/Cv)",
+       "value": "gamma/(gamma-1)"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\gamma = \\dfrac{5}{3}:\\ \\dfrac{\\gamma}{\\gamma - 1} = 2.5",
+       "f": "(5/3)/(5/3-1)",
+       "value": "2.5",
+       "note": "monoatomic check"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "\\dfrac{Q}{W} = \\dfrac{C_p}{R} = \\dfrac{(5/2)R}{R} = 2.5",
+       "f": "(5/2*R)/R",
+       "value": "2.5"
+      }
+     ],
+     "answer": "gamma/(gamma-1)",
+     "vars": {
+      "R": "2",
+      "Cv": "3",
+      "Cp": "5",
+      "gamma": "Cp/Cv"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "52cff8aa",
+    "answer": {
+     "value": 2.5,
+     "label": "Q/W = γ/(γ−1)"
+    }
+   }
+  },
+  {
+   "id": "162a28e4-20f4-4381-8f51-a8fc0372969e",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "T P^{\\frac{1-\\gamma}{\\gamma}} = \\text{const} \\Rightarrow P \\propto T^{\\frac{\\gamma}{\\gamma - 1}}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "x = \\dfrac{7/5}{7/5 - 1} = \\dfrac{7/5}{2/5} = 3.5",
+       "f": "(7/5)/(7/5-1)",
+       "value": "3.5",
+       "note": "diatomic: γ = 7/5"
+      }
+     ],
+     "answer": "(7/5)/(7/5-1)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "7021eeac",
+    "answer": {
+     "value": 3.5000000000000004,
+     "label": "x = 3.5"
+    }
+   }
+  },
+  {
+   "id": "20b0b2ff-f080-456f-8c64-3a43c406a764",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "L = 2256\\ \\text{J/g},\\ \\ P = 10^5\\ \\text{Pa}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "W = 10^5 \\times 1670 \\times 10^{-6} = 167\\ \\text{J}",
+       "f": "10^5*1670*10^(-6)",
+       "value": "167",
+       "sf": 3
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\Delta U = 2256 - 167 = 2089\\ \\text{J}",
+       "f": "2256-167",
+       "value": "2089"
+      }
+     ],
+     "answer": "2256-167"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "cf6886ae",
+    "answer": {
+     "value": 2089,
+     "label": "2089 J"
+    }
+   }
+  },
+  {
+   "id": "2197cb5e-db6f-4554-8c45-deca24fcd28f",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\dfrac{T_C}{T_H} = \\left(\\dfrac{V}{32V}\\right)^{\\gamma - 1}",
+       "note": "adiabatic expansion V → 32V"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{T_C}{T_H} = \\left(\\dfrac{1}{32}\\right)^{0.4} = \\dfrac{1}{4}",
+       "f": "(1/32)^0.4",
+       "value": "1/4"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\eta = 1 - \\dfrac{1}{4} = 0.75",
+       "f": "1-1/4",
+       "value": "0.75"
+      }
+     ],
+     "answer": "1-1/4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "e14a0728",
+    "answer": {
+     "value": 0.75,
+     "label": "η = 0.75"
+    }
+   }
+  },
+  {
+   "id": "2824f441-2993-4c50-a81a-abb2e6469ea5",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "PV = P_2(4V) \\Rightarrow P_2 = \\dfrac{P}{4}",
+       "lhs": "P*V",
+       "rhs": "x*4*V",
+       "roots": [
+        "P/4"
+       ],
+       "note": "isothermal expansion V → 4V"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "P_2(4V)^\\gamma = P_3 V^\\gamma",
+       "lhs": "P2*(4*V)^gamma",
+       "rhs": "x*V^gamma",
+       "roots": [
+        "P2*4^gamma"
+       ],
+       "note": "adiabatic compression 4V → V"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "P_3 = P_2\\cdot 4^{\\gamma} = \\dfrac{P}{4}\\cdot 4^{3/2}",
+       "f": "P2*4^gamma",
+       "value": "P/4*4^(3/2)",
+       "note": "γ = 3/2"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\dfrac{P}{4} \\times 8 = 2P",
+       "f": "P/4*8",
+       "value": "2*P"
+      }
+     ],
+     "answer": "2*P",
+     "vars": {
+      "P": "2",
+      "V": "3",
+      "gamma": "3/2",
+      "P2": "P/4"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "014ab623",
+    "answer": {
+     "value": 4,
+     "label": "P₃ = 2P"
+    }
+   }
+  },
+  {
+   "id": "3027298f-6bf4-4d60-a981-436042094e35",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\Delta Q = nC_p\\Delta T,\\ \\ \\Delta U = nC_v\\Delta T",
+       "note": "constant pressure"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{\\Delta U}{\\Delta Q} = \\dfrac{C_v}{C_p} = \\dfrac{1}{\\gamma} = \\dfrac{3}{5} = 60\\%",
+       "f": "(1/(5/3))*100",
+       "value": "60",
+       "note": "monoatomic: γ = 5/3"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\text{work} = 40\\%\\ (B)"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "A : B = 60 : 40 = 3 : 2",
+       "f": "60/40",
+       "value": "3/2"
+      }
+     ],
+     "answer": "60/40"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "a8f86214",
+    "answer": {
+     "value": 1.5,
+     "label": "A : B = 3 : 2"
+    }
+   }
+  },
+  {
+   "id": "3172b3d2-4b3b-4838-b7ac-587341b0e437",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\eta_1 = 1 - \\dfrac{T_2}{T_1} = \\dfrac{1}{6} \\Rightarrow T_2 = \\dfrac{5}{6}T_1"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\eta_2 = 1 - \\dfrac{T_2 - 57}{T_1} = \\dfrac{1}{3} \\Rightarrow \\dfrac{T_2-57}{T_1} = \\dfrac{2}{3}"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "\\dfrac{5}{6}T_1 - 57 = \\dfrac{2}{3}T_1 \\Rightarrow T_1 = 342\\ \\text{K}",
+       "lhs": "5/6*x-57",
+       "rhs": "2/3*x",
+       "roots": [
+        "342"
+       ]
+      }
+     ],
+     "answer": "342"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "9df79a63",
+    "answer": {
+     "value": 342,
+     "label": "T₁ = 342 K"
+    }
+   }
+  },
+  {
+   "id": "31a1bf71-d4ae-4e86-b8d6-48cc70bc5f52",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\dfrac{W}{Q} = \\dfrac{nR\\Delta T}{nC_p\\Delta T} = \\dfrac{R}{C_p}",
+       "note": "monoatomic gas, γ = 5/3"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{R}{C_p} = \\dfrac{R}{5R/2} = \\dfrac{2}{5}",
+       "f": "R/(5/2*R)",
+       "value": "2/5"
+      }
+     ],
+     "answer": "R/(5/2*R)",
+     "vars": {
+      "R": "2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "d79eb2ac",
+    "answer": {
+     "value": 0.4,
+     "label": "W/Q = 2/5"
+    }
+   }
+  },
+  {
+   "id": "32198f32-5c6c-4a6b-87f6-bc61f9b3cbef",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{isothermal } V \\to 3V:\\ \\ P_2 = \\dfrac{P}{3}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "P' = \\dfrac{P}{3}\\left(\\dfrac{1}{27}\\right)^{5/3} = \\dfrac{P}{3}\\cdot\\dfrac{1}{3^5}",
+       "f": "P/3*(1/27)^(5/3)",
+       "value": "P/3*1/3^5",
+       "note": "adiabatic 3V → 81V, γ = 5/3"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "P' = \\dfrac{P}{3^6}",
+       "f": "P/3*1/3^5",
+       "value": "P/3^6"
+      }
+     ],
+     "answer": "P/3^6",
+     "vars": {
+      "P": "2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "4aa2efd5",
+    "answer": {
+     "value": 0.0027434842249657062,
+     "label": "P' = P/3⁶"
+    }
+   }
+  },
+  {
+   "id": "34ba5188-94f3-4c89-a975-245dbd10bc45",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "1 - \\dfrac{T_2}{T_1} = 0.2 \\Rightarrow T_2 = 0.8T_1"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "1 - \\dfrac{T_2 - 45}{T_1} = 0.5 \\Rightarrow T_2 - 45 = 0.5T_1"
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "0.3T_1 = 45 \\Rightarrow T_1 = 150\\ \\text{K}",
+       "lhs": "0.3*x",
+       "rhs": "45",
+       "roots": [
+        "150"
+       ]
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "T_2 = 0.8T_1 = 0.8 \\times 150 = 120\\ \\text{K}",
+       "f": "0.8*150",
+       "value": "120"
+      }
+     ],
+     "answer": "150"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "16d24fdd",
+    "answer": {
+     "value": 150,
+     "label": "150 K, 120 K"
+    }
+   }
+  },
+  {
+   "id": "3ae66a45-ab94-41e1-84c2-9e0702062909",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "T_L = 600(1 - 0.4) = 360\\ \\text{K}",
+       "f": "600*(1-0.4)",
+       "value": "360",
+       "note": "sink temperature"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "1 - \\dfrac{360}{T_H} = 0.6 \\Rightarrow T_H = 900\\ \\text{K}",
+       "lhs": "1-360/x",
+       "rhs": "0.6",
+       "roots": [
+        "900"
+       ]
+      }
+     ],
+     "answer": "900"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "2731b143",
+    "answer": {
+     "value": 900,
+     "label": "T_H = 900 K"
+    }
+   }
+  },
+  {
+   "id": "3f3d7951-6bb9-4fa8-9480-f3896a109bf3",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{isothermal: } P_{2A} = 8P"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{adiabatic: } P_{2B} = 8^{5/3}P = 32P",
+       "f": "8^(5/3)*P",
+       "value": "32*P"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{P_{2A}}{P_{2B}} = \\dfrac{8}{32} = \\dfrac{1}{4}",
+       "f": "8*P/(32*P)",
+       "value": "1/4"
+      }
+     ],
+     "answer": "8*P/(32*P)",
+     "vars": {
+      "P": "2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "4baf16d5",
+    "answer": {
+     "value": 0.25,
+     "label": "P_A/P_B = 1/4"
+    }
+   }
+  },
+  {
+   "id": "400f76af-a399-4cff-a69b-03be0b454e64",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\Delta U = nC_v\\Delta T = \\dfrac{5}{2}(P_BV_B - P_AV_A)"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\Delta U = \\dfrac{5}{2}(2 \\times 6 - 5 \\times 4) = -20\\ \\text{kJ}",
+       "f": "5/2*(2*6-5*4)",
+       "value": "-20"
+      }
+     ],
+     "answer": "5/2*(2*6-5*4)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "de9fec14",
+    "answer": {
+     "value": -20,
+     "label": "ΔU = −20 kJ"
+    }
+   }
+  },
+  {
+   "id": "40121086-04a7-4c83-b37f-51e86b4efa93",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "W = P\\Delta V = PV",
+       "note": "constant pressure"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "C_v = \\dfrac{R}{\\gamma-1},\\ \\ P\\Delta V = nR\\Delta T"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\Delta U = nC_v\\Delta T = \\dfrac{P\\Delta V}{\\gamma-1} = \\dfrac{PV}{\\gamma-1}",
+       "f": "n*(R/(gamma-1))*dT",
+       "value": "P*V/(gamma-1)"
+      }
+     ],
+     "answer": "P*V/(gamma-1)",
+     "vars": {
+      "n": "1",
+      "R": "2",
+      "P": "1.5",
+      "V": "2",
+      "gamma": "1.4",
+      "dT": "P*V/(n*R)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "ca58f558",
+    "answer": {
+     "value": 7.500000000000002,
+     "label": "ΔU = PV/(γ−1)"
+    }
+   }
+  },
+  {
+   "id": "43c1c36d-0818-478a-a0bc-76695aebd515",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "C_p - C_v = R,\\ \\ \\gamma = \\dfrac{C_p}{C_v}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\gamma - 1 = \\dfrac{R}{C_v}",
+       "f": "gamma-1",
+       "value": "R/Cv",
+       "note": "dividing C_p − C_v = R by C_v"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "C_v = \\dfrac{R}{\\gamma - 1}",
+       "f": "Cv",
+       "value": "R/(gamma-1)"
+      }
+     ],
+     "answer": "R/(gamma-1)",
+     "vars": {
+      "R": "2",
+      "Cv": "3",
+      "Cp": "Cv+R",
+      "gamma": "Cp/Cv"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "38870f1e",
+    "answer": {
+     "value": 2.9999999999999996,
+     "label": "C_v = R/(γ−1)"
+    }
+   }
+  },
+  {
+   "id": "48815782-b08a-4de7-9ec3-1c7d6566d577",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "P \\propto T^{\\gamma/(\\gamma-1)}",
+       "note": "adiabatic process"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "\\dfrac{\\gamma}{\\gamma - 1} = 3 \\Rightarrow \\gamma = \\dfrac{3}{2}",
+       "lhs": "x/(x-1)",
+       "rhs": "3",
+       "roots": [
+        "3/2"
+       ]
+      }
+     ],
+     "answer": "3/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "1b21ee10",
+    "answer": {
+     "value": 1.5,
+     "label": "γ = 3/2"
+    }
+   }
+  },
+  {
+   "id": "4eca483b-4c26-4ecb-bedb-7d25d2c7456f",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\gamma = \\dfrac{7}{5},\\ \\ C_p = \\dfrac{7}{2}R"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "W = nR\\Delta T,\\ \\ Q = n\\dfrac{7}{2}R\\Delta T"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{W}{Q} = \\dfrac{R}{7R/2} = \\dfrac{2}{7}",
+       "f": "R/(7/2*R)",
+       "value": "2/7"
+      }
+     ],
+     "answer": "R/(7/2*R)",
+     "vars": {
+      "R": "2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "466b27fd",
+    "answer": {
+     "value": 0.2857142857142857,
+     "label": "W/Q = 2/7"
+    }
+   }
+  },
+  {
+   "id": "5714ef0d-cb31-4af5-be17-65fe11d52e96",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{isothermal: } P_2 = \\dfrac{P}{2}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "P_3 = P_2\\left(\\dfrac{2V}{16V}\\right)^{5/3} = \\dfrac{P}{2}\\times\\dfrac{1}{32}",
+       "f": "P2*(2*V/(16*V))^(5/3)",
+       "value": "P/2*1/32",
+       "note": "adiabatic 2V → 16V"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "P_3 = \\dfrac{P}{64}",
+       "f": "P/2*1/32",
+       "value": "P/64"
+      }
+     ],
+     "answer": "P/64",
+     "vars": {
+      "P": "2",
+      "V": "3",
+      "P2": "P/2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "e5e696b2",
+    "answer": {
+     "value": 0.03125,
+     "label": "P₃ = P/64"
+    }
+   }
+  },
+  {
+   "id": "5716d1c1-dba7-4e26-857d-dcdf31e6989b",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "T V^{\\gamma-1} = \\text{const}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "T_1 = 300\\ \\text{K},\\ \\gamma - 1 = \\dfrac{2}{3}"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "T_2 = T_1\\left(\\dfrac{V_1}{V_2}\\right)^{\\gamma-1} = 300 \\times 8^{2/3} = 300 \\times 4",
+       "f": "300*8^(2/3)",
+       "value": "300*4"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "T_2 = 1200\\ \\text{K}"
+      }
+     ],
+     "answer": "300*4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "f6e0d4b6",
+    "answer": {
+     "value": 1200,
+     "label": "T₂ = 1200 K"
+    }
+   }
+  },
+  {
+   "id": "591094ed-0a57-440a-ae39-f1189c098d22",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "R = 0.4C_v \\Rightarrow \\gamma = 1.4"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "P \\propto T^{\\gamma/(\\gamma-1)} = T^{1.4/0.4} = T^{7/2}",
+       "f": "1.4/0.4",
+       "value": "7/2"
+      }
+     ],
+     "answer": "7/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "19beb266",
+    "answer": {
+     "value": 3.5,
+     "label": "K = 7/2"
+    }
+   }
+  },
+  {
+   "id": "5a0ebb77-f126-40eb-844d-98f7fdc379b2",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "eq",
+       "tex": "0.5 = 1 - \\dfrac{T_2}{600} \\Rightarrow T_2 = 300\\ \\text{K}",
+       "lhs": "0.5",
+       "rhs": "1-x/600",
+       "roots": [
+        "300"
+       ],
+       "note": "sink temperature"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "0.7 = 1 - \\dfrac{300}{T_1} \\Rightarrow T_1 = 1000\\ \\text{K}",
+       "lhs": "0.7",
+       "rhs": "1-300/x",
+       "roots": [
+        "1000"
+       ],
+       "note": "50% + 20 points = 70%"
+      }
+     ],
+     "answer": "1000"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "a6402f1c",
+    "answer": {
+     "value": 1000,
+     "label": "T₁ = 1000 K"
+    }
+   }
+  },
+  {
+   "id": "5b248139-9aad-4612-bfe4-ba968209f16c",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "P_i = \\dfrac{P}{2},\\ \\ P_a = \\dfrac{P}{2^\\gamma}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{P_i}{P_a} = \\dfrac{P/2}{P/2^\\gamma} = 2^{\\gamma-1}",
+       "f": "(P/2)/(P/2^gamma)",
+       "value": "2^(gamma-1)"
+      }
+     ],
+     "answer": "2^(gamma-1)",
+     "vars": {
+      "P": "3",
+      "gamma": "1.5"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "eb8d6ef0",
+    "answer": {
+     "value": 1.4142135623730951,
+     "label": "P_i/P_a = 2^(γ−1)"
+    }
+   }
+  },
+  {
+   "id": "5f0468dc-6d05-4722-9b63-6ec6105b5842",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\eta = 1 - \\dfrac{T_2}{T_1} = 1 - \\dfrac{300}{500} = \\dfrac{2}{5}",
+       "f": "1-300/500",
+       "value": "2/5"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "W = \\eta Q = \\dfrac{2}{5} \\times 50 = 20\\ \\text{kJ}",
+       "f": "2/5*50",
+       "value": "20"
+      }
+     ],
+     "answer": "2/5*50"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "4a1e1542",
+    "answer": {
+     "value": 20,
+     "label": "W = 20 kJ"
+    }
+   }
+  },
+  {
+   "id": "64419c32-1ef2-45f1-8189-a07bcad762df",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{sudden} \\Rightarrow \\text{adiabatic}:\\ T_2 = T_1\\left(\\dfrac{V_1}{V_2}\\right)^{\\gamma-1}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "T_2 = 273 \\times 4^{0.5} = 546\\ \\text{K}",
+       "f": "273*4^0.5",
+       "value": "546"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\text{increase} = 273\\ \\text{K}"
+      }
+     ],
+     "answer": "273"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "c058fd5e",
+    "answer": {
+     "value": 273,
+     "label": "273 K"
+    }
+   }
+  },
+  {
+   "id": "6ae743d7-73c1-40f8-9eac-15fe902d1d23",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\eta = 1 - \\dfrac{500}{600} = \\dfrac{1}{6}",
+       "f": "1-500/600",
+       "value": "1/6"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "W = \\dfrac{6 \\times 10^4}{6} = 1 \\times 10^4\\ \\text{cal}",
+       "f": "6*10^4/6",
+       "value": "10^4",
+       "sf": 1
+      }
+     ],
+     "answer": "10^4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "f55ebe3f",
+    "answer": {
+     "value": 10000,
+     "label": "1 × 10⁴ cal"
+    }
+   }
+  },
+  {
+   "id": "6cc6f953-bf1e-46ed-bd8e-efa9c3cdceff",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "T V^{\\gamma-1} = \\text{constant}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{T_f}{T_i} = 32^{\\gamma-1} = 32^{7/5-1} = 32^{2/5}",
+       "f": "32^(7/5-1)",
+       "value": "32^(2/5)"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "32 = 2^5:\\ \\ 32^{2/5} = 2^2 = 4",
+       "f": "32^(2/5)",
+       "value": "2^2"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "T_f = xT_i \\Rightarrow x = 4"
+      }
+     ],
+     "answer": "4"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "3348eda8",
+    "answer": {
+     "value": 4,
+     "label": "x = 4"
+    }
+   }
+  },
+  {
+   "id": "711f6ce4-973c-4cc3-9d29-aa1e26d432a6",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "PV^\\gamma = \\text{const},\\ \\ \\gamma = \\dfrac{5}{3}",
+       "note": "sudden compression is adiabatic"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{P_2}{P_1} = \\left(\\dfrac{V_1}{V_2}\\right)^\\gamma = 8^{5/3} = 2^5 = 32",
+       "f": "8^(5/3)",
+       "value": "2^5"
+      }
+     ],
+     "answer": "2^5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "7f9f3ebd",
+    "answer": {
+     "value": 32,
+     "label": "P₂ : P₁ = 32 : 1"
+    }
+   }
+  },
+  {
+   "id": "73a6bfb8-9383-4310-9501-061c3f3c926e",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\dfrac{\\Delta W}{\\Delta Q} = \\dfrac{R}{C_p} = 1 - \\dfrac{1}{\\gamma}",
+       "note": "constant pressure"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "1 - \\dfrac{3}{5} = \\dfrac{2}{5} = 0.4 = 40\\%",
+       "f": "(1-3/5)*100",
+       "value": "40",
+       "note": "γ = 5/3"
+      }
+     ],
+     "answer": "(1-3/5)*100"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "0250ba6c",
+    "answer": {
+     "value": 40,
+     "label": "40%"
+    }
+   }
+  },
+  {
+   "id": "74561d2d-6234-4cef-96bb-f78e992d8d88",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{isothermal} \\Rightarrow \\Delta U = 0"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\Delta Q = \\Delta U + \\Delta W = 0 + (-150) = -150\\ \\text{J}",
+       "f": "0+(-150)",
+       "value": "-150",
+       "note": "negative Q: heat removed"
+      }
+     ],
+     "answer": "0+(-150)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "a8cd327a",
+    "answer": {
+     "value": -150,
+     "label": "Q = −150 J: 150 J removed"
+    }
+   }
+  },
+  {
+   "id": "75369fa4-35e4-486c-a5d4-3897f5334157",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "v_{rms} \\propto \\sqrt{T}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "v_{rms} \\to \\dfrac{1}{4}:\\ \\dfrac{T_1}{T_2} = 16"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "TV^{\\gamma-1} = \\text{const} \\Rightarrow \\left(\\dfrac{V_2}{V_1}\\right)^{\\gamma-1} = 16"
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "\\gamma - 1 = 0.5:\\ \\left(\\dfrac{V_2}{V_1}\\right)^{0.5} = 16 \\Rightarrow \\dfrac{V_2}{V_1} = 256",
+       "lhs": "x^0.5",
+       "rhs": "16",
+       "roots": [
+        "256"
+       ]
+      }
+     ],
+     "answer": "256"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "3c81c156",
+    "answer": {
+     "value": 256,
+     "label": "V₂/V₁ = 256"
+    }
+   }
+  },
+  {
+   "id": "7bf039af-f89b-4c12-890b-1ee1e895726d",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "W = \\dfrac{nR(T_i - T_f)}{\\gamma - 1}",
+       "note": "adiabatic work, n = 1"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "6R = \\dfrac{R(T - T_f)}{2/3} \\Rightarrow T - T_f = 4",
+       "lhs": "6*R",
+       "rhs": "R*(T-x)/(2/3)",
+       "roots": [
+        "T-4"
+       ]
+      }
+     ],
+     "answer": "T-4",
+     "vars": {
+      "R": "8.31",
+      "T": "300"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "5e42b7bc",
+    "answer": {
+     "value": 296,
+     "label": "T_f = (T − 4) K"
+    }
+   }
+  },
+  {
+   "id": "7c4af9db-0093-435e-9f35-249d39072bc4",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "Q = nC_P\\,dT_A",
+       "note": "cylinder A: constant pressure"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "Q = nC_V\\,dT_B",
+       "note": "cylinder B: constant volume"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "dT_B = \\dfrac{C_P}{C_V}\\,dT_A = \\gamma\\,dT_A",
+       "f": "Q/(n*Cv)",
+       "value": "gamma*dTA"
+      }
+     ],
+     "answer": "gamma*dTA",
+     "vars": {
+      "n": "1",
+      "Cp": "3.5",
+      "Cv": "2.5",
+      "gamma": "Cp/Cv",
+      "dTA": "2",
+      "Q": "n*Cp*dTA"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "c011d682",
+    "answer": {
+     "value": 2.8,
+     "label": "dT_B = γ dT_A"
+    }
+   }
+  },
+  {
+   "id": "7de71820-689d-43cd-af44-de820db680ac",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\beta = \\dfrac{1-\\eta}{\\eta} = \\dfrac{1}{\\eta} - 1",
+       "f": "(1-eta)/eta",
+       "value": "1/eta-1"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{1}{\\eta} = \\beta + 1 \\Rightarrow \\eta = \\dfrac{1}{\\beta + 1}",
+       "f": "eta",
+       "value": "1/(beta+1)"
+      }
+     ],
+     "answer": "1/(beta+1)",
+     "vars": {
+      "eta": "0.4",
+      "beta": "(1-eta)/eta"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "cb6e7859",
+    "answer": {
+     "value": 0.4,
+     "label": "η = 1/(β+1)"
+    }
+   }
+  },
+  {
+   "id": "825d6d09-86cd-473b-8720-4719ffa7116d",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "Q = nC_p\\Delta T,\\ \\ W = nR\\Delta T",
+       "note": "isobaric process"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{Q}{W} = \\dfrac{C_p}{R} = \\dfrac{\\gamma}{\\gamma - 1}",
+       "f": "Cp/R",
+       "value": "gamma/(gamma-1)"
+      }
+     ],
+     "answer": "gamma/(gamma-1)",
+     "vars": {
+      "R": "2",
+      "Cv": "3",
+      "Cp": "Cv+R",
+      "gamma": "Cp/Cv"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "7f5dbb3f",
+    "answer": {
+     "value": 2.5,
+     "label": "Q/W = γ/(γ−1)"
+    }
+   }
+  },
+  {
+   "id": "82ddce30-0bcb-4fcc-9531-107e17cc64f7",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\Delta U = Q - W"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{path } abc:\\ \\Delta U = 80 - 35 = 45\\ \\text{cal}",
+       "f": "80-35",
+       "value": "45"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{path } adc:\\ W = Q - \\Delta U = 65 - 45 = 20\\ \\text{cal}",
+       "f": "65-45",
+       "value": "20",
+       "note": "same ΔU"
+      }
+     ],
+     "answer": "65-45"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "ac34dfcb",
+    "answer": {
+     "value": 20,
+     "label": "W = 20 cal"
+    }
+   }
+  },
+  {
+   "id": "8766480b-56e1-493d-b01b-2626c7a82174",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\eta = 1 - \\dfrac{T_C}{T_H} = 1 - \\dfrac{300}{600} = 0.5",
+       "f": "1-300/600",
+       "value": "0.5"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "Q_H = \\dfrac{W}{\\eta} = \\dfrac{1.5}{0.5} = 3.0\\ \\text{kJ}",
+       "f": "1.5/0.5",
+       "value": "3"
+      }
+     ],
+     "answer": "1.5/0.5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "a50c544f",
+    "answer": {
+     "value": 3,
+     "label": "Q_H = 3.0 kJ"
+    }
+   }
+  },
+  {
+   "id": "8aed873b-505c-44ea-af6b-c42bf8c95865",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "T_1V_1^{\\gamma-1} = T_2V_2^{\\gamma-1},\\ \\ V \\propto L,\\ \\ \\gamma - 1 = \\dfrac{2}{3}"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "T_1L_1^{2/3} = T_2L_2^{2/3} \\Rightarrow \\dfrac{T_2}{T_1} = \\left(\\dfrac{L_1}{L_2}\\right)^{2/3}",
+       "lhs": "T1*L1^(2/3)",
+       "rhs": "x*L2^(2/3)",
+       "roots": [
+        "T1*(L1/L2)^(2/3)"
+       ]
+      }
+     ],
+     "answer": "(L1/L2)^(2/3)",
+     "vars": {
+      "T1": "300",
+      "L1": "2",
+      "L2": "3"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "d1ed5ae1",
+    "answer": {
+     "value": 0.7631428283688879,
+     "label": "T₂/T₁ = (L₁/L₂)^(2/3)"
+    }
+   }
+  },
+  {
+   "id": "90ccb962-0f63-44b8-a52b-6738e7b29d85",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "T_2 = T_1\\left(\\dfrac{V_1}{V_2}\\right)^{\\gamma-1},\\ \\ \\dfrac{V_1}{V_2} = \\dfrac{27}{8},\\ \\gamma - 1 = \\dfrac{2}{3}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "T_2 = 300 \\times \\left(\\dfrac{27}{8}\\right)^{2/3} = 300 \\times \\left(\\dfrac{3}{2}\\right)^2",
+       "f": "300*(27/8)^(2/3)",
+       "value": "300*(3/2)^2"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "T_2 = 300 \\times \\dfrac{9}{4} = 675\\ \\text{K}",
+       "f": "300*(3/2)^2",
+       "value": "675"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\text{rise} = 675 - 300 = 375\\ \\text{K}",
+       "f": "675-300",
+       "value": "375"
+      }
+     ],
+     "answer": "675-300"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "304aa5b1",
+    "answer": {
+     "value": 375,
+     "label": "rise = 375 K"
+    }
+   }
+  },
+  {
+   "id": "98443fd0-f799-4837-9048-7d19536a9ff7",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "TV^{\\gamma-1} = \\text{const},\\ \\ \\gamma = \\dfrac{5}{3}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{T_2}{T_1} = 27^{\\gamma-1} = 27^{2/3} = 9",
+       "f": "27^(2/3)",
+       "value": "9"
+      }
+     ],
+     "answer": "27^(2/3)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "a7158a69",
+    "answer": {
+     "value": 8.999999999999998,
+     "label": "x = 9"
+    }
+   }
+  },
+  {
+   "id": "98a729b6-36cf-4fde-a27a-f2aad2396f9a",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{work} = \\text{enclosed area (rectangle)}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "(5V_0 - 3V_0)(4P_0 - 2P_0) = 2V_0 \\cdot 2P_0 = 4P_0V_0",
+       "f": "(5*V0-3*V0)*(4*P0-2*P0)",
+       "value": "4*P0*V0"
+      }
+     ],
+     "answer": "4*P0*V0",
+     "vars": {
+      "P0": "2",
+      "V0": "3"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "66179bf1",
+    "answer": {
+     "value": 24,
+     "label": "|W| = 4P₀V₀"
+    }
+   }
+  },
+  {
+   "id": "9905cce7-3525-4325-8a69-91430819f6ca",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "C_v = C_p - R = 8 - 2 = 6\\ \\text{cal mol}^{-1}\\text{K}^{-1}",
+       "f": "8-2",
+       "value": "6"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\Delta U = nC_v\\Delta T = 6 \\times 6 \\times 15 = 540\\ \\text{cal}",
+       "f": "6*6*15",
+       "value": "540"
+      }
+     ],
+     "answer": "6*6*15"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "55fa27b1",
+    "answer": {
+     "value": 540,
+     "label": "ΔU = 540 cal"
+    }
+   }
+  },
+  {
+   "id": "99d0ddb8-a7af-4bd4-9f77-f6438a469723",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "W = P\\Delta V = 10^5 \\times 10^{-3} = 100\\ \\text{J}",
+       "f": "10^5*10^(-3)",
+       "value": "100"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\Delta U = 2.5P\\Delta V = 250\\ \\text{J}",
+       "f": "2.5*100",
+       "value": "250"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "Q = \\Delta U + W = 350\\ \\text{J}",
+       "f": "250+100",
+       "value": "350"
+      }
+     ],
+     "answer": "250+100"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "9955a4f7",
+    "answer": {
+     "value": 350,
+     "label": "Q = 350 J"
+    }
+   }
+  },
+  {
+   "id": "9ac5cae8-131f-449d-bd69-e5992380aa6d",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\eta = 30\\%,\\ \\ \\text{input} = 3\\ \\text{kW} = 3000\\ \\text{W}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\text{output power} = 0.30 \\times 3000 = 900\\ \\text{W}",
+       "f": "0.3*3000",
+       "value": "900"
+      }
+     ],
+     "answer": "0.3*3000"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "1485caf2",
+    "answer": {
+     "value": 900,
+     "label": "900 W"
+    }
+   }
+  },
+  {
+   "id": "a2209bfc-8b4f-457f-b874-2f01b8e3e45d",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "C_v = \\dfrac{R}{\\gamma-1},\\ \\ nR\\Delta T = P\\Delta V = PV"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\Delta U = nC_v\\Delta T = \\dfrac{PV}{\\gamma - 1}",
+       "f": "n*(R/(gamma-1))*dT",
+       "value": "P*V/(gamma-1)"
+      }
+     ],
+     "answer": "P*V/(gamma-1)",
+     "vars": {
+      "n": "1",
+      "R": "2",
+      "P": "1.5",
+      "V": "2",
+      "gamma": "1.4",
+      "dT": "P*V/(n*R)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "5af3fc8f",
+    "answer": {
+     "value": 7.500000000000002,
+     "label": "ΔU = PV/(γ−1)"
+    }
+   }
+  },
+  {
+   "id": "a843aa4d-78bd-4c4f-80c4-812a1a4f4435",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "T_2 = T \\cdot 2^{1-\\gamma} = \\dfrac{T}{\\sqrt{2}}",
+       "f": "T*2^(1-gamma)",
+       "value": "T/sqrt(2)",
+       "note": "γ = 3/2"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "W = \\dfrac{R(T - T_2)}{\\gamma - 1} = 2R\\left(T - \\dfrac{T}{\\sqrt{2}}\\right)",
+       "f": "R*(T-T2)/(gamma-1)",
+       "value": "2*R*(T-T/sqrt(2))"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "2R\\left(T - \\dfrac{T}{\\sqrt{2}}\\right) = RT(2 - \\sqrt{2})",
+       "f": "2*R*(T-T/sqrt(2))",
+       "value": "R*T*(2-sqrt(2))"
+      }
+     ],
+     "answer": "R*T*(2-sqrt(2))",
+     "vars": {
+      "R": "2",
+      "T": "3",
+      "gamma": "3/2",
+      "T2": "T/sqrt(2)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "67d0f5ec",
+    "answer": {
+     "value": 3.514718625761429,
+     "label": "W = RT(2 − √2)"
+    }
+   }
+  },
+  {
+   "id": "ac10f375-e8ba-46e2-86e8-b8149f23fc66",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{assume constant pressure}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{\\Delta W}{\\Delta Q} = 1 - \\dfrac{1}{\\gamma} = \\dfrac{2}{7}",
+       "f": "1-1/(7/5)",
+       "value": "2/7",
+       "note": "diatomic: γ = 7/5"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{\\Delta U}{\\Delta Q} = \\dfrac{1}{\\gamma} = \\dfrac{5}{7}",
+       "f": "1/(7/5)",
+       "value": "5/7"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "\\Delta W : \\Delta U : \\Delta Q = 2 : 5 : 7"
+      }
+     ],
+     "answer": "1-1/(7/5)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "9aa8e450",
+    "answer": {
+     "value": 0.2857142857142857,
+     "label": "ΔW:ΔU:ΔQ = 2 : 5 : 7"
+    }
+   }
+  },
+  {
+   "id": "b324b687-0bea-47d6-a1e2-99c2010460af",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "P_I = \\dfrac{P}{3},\\ \\ P_A = \\dfrac{P}{3^\\gamma}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{P_A}{P_I} = \\dfrac{P/3^\\gamma}{P/3} = 3^{1-\\gamma}",
+       "f": "(P/3^gamma)/(P/3)",
+       "value": "3^(1-gamma)"
+      }
+     ],
+     "answer": "3^(1-gamma)",
+     "vars": {
+      "P": "2",
+      "gamma": "1.5"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "edbfb6ab",
+    "answer": {
+     "value": 0.5773502691896257,
+     "label": "P_A/P_I = 3^(1−γ)"
+    }
+   }
+  },
+  {
+   "id": "b5339917-6e9c-4365-8211-d8f28943b457",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "TV^{\\gamma-1} = \\text{constant},\\ \\ \\gamma = \\dfrac{7}{5}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "x = 32^{0.4} = 2^2 = 4",
+       "f": "32^0.4",
+       "value": "2^2"
+      }
+     ],
+     "answer": "2^2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "069456ce",
+    "answer": {
+     "value": 4,
+     "label": "x = 4"
+    }
+   }
+  },
+  {
+   "id": "b6cdc841-cd2f-4053-a0ec-4aa1012871cd",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "T_1V_1^{\\gamma-1} = T_2V_2^{\\gamma-1},\\ \\ \\gamma = 1.5"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "T_2 = T_1(4)^{0.5} = 2T_1",
+       "f": "T1*4^0.5",
+       "value": "2*T1"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\Delta T = T_1 = 273\\ \\text{K (normal temperature)}"
+      }
+     ],
+     "answer": "T1",
+     "vars": {
+      "T1": "273"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "95379c0b",
+    "answer": {
+     "value": 273,
+     "label": "ΔT = 273 K"
+    }
+   }
+  },
+  {
+   "id": "bb912ce1-1a28-466b-a73c-0f6df0e2225d",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{adiabatic:}\\ P_2 = P_1\\left(\\dfrac{V_1}{V_2}\\right)^\\gamma"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "P_2 = 1 \\times 4^{1.5} = 8\\ \\text{atm}",
+       "f": "1*4^1.5",
+       "value": "8"
+      }
+     ],
+     "answer": "1*4^1.5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "3f3c5811",
+    "answer": {
+     "value": 8,
+     "label": "P₂ = 8 P₁"
+    }
+   }
+  },
+  {
+   "id": "bbfa19fa-4c2a-4544-9d30-2cf2dd3b6f91",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "C_P = \\dfrac{5}{2}R,\\ \\ C_V = \\dfrac{3}{2}R"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{\\Delta U}{\\Delta Q} = \\dfrac{C_V}{C_P} = \\dfrac{3}{5} = 60\\%",
+       "f": "(3/2*R)/(5/2*R)*100",
+       "value": "60"
+      }
+     ],
+     "answer": "(3/2*R)/(5/2*R)*100",
+     "vars": {
+      "R": "2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "66988693",
+    "answer": {
+     "value": 60,
+     "label": "60%"
+    }
+   }
+  },
+  {
+   "id": "beb7f861-4545-417f-803d-00e7789b803a",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "P \\propto T^{\\gamma/(\\gamma-1)}",
+       "note": "adiabatic change"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "x = \\dfrac{7/5}{2/5} = 3.5",
+       "f": "(7/5)/(2/5)",
+       "value": "3.5",
+       "note": "rigid diatomic: γ = 7/5"
+      }
+     ],
+     "answer": "(7/5)/(2/5)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "9b35d7a6",
+    "answer": {
+     "value": 3.4999999999999996,
+     "label": "x = 3.5"
+    }
+   }
+  },
+  {
+   "id": "c0485a87-a730-4ebb-be5b-67c4edc2c7e1",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\text{equal final pressures } P_f \\text{ after doubling the volume}"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "\\text{X: } P_iV = P_f(2V) \\Rightarrow P_{i,X} = 2P_f",
+       "lhs": "x*V",
+       "rhs": "Pf*2*V",
+       "roots": [
+        "2*Pf"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "\\text{Y: } P_iV^\\gamma = P_f(2V)^\\gamma \\Rightarrow P_{i,Y} = P_f \\cdot 2^{3/2}",
+       "lhs": "x*V^gamma",
+       "rhs": "Pf*(2*V)^gamma",
+       "roots": [
+        "Pf*2^(3/2)"
+       ],
+       "note": "γ = 3/2"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "P_{i,Y} = P_f \\cdot 2^{3/2} = 2\\sqrt{2}\\,P_f",
+       "f": "Pf*2^(3/2)",
+       "value": "2*sqrt(2)*Pf"
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "\\text{Z: isobaric, } P_{i,Z} = P_f"
+      },
+      {
+       "step": "s6",
+       "kind": "note",
+       "tex": "X : Y : Z = 2 : 2\\sqrt{2} : 1"
+      }
+     ],
+     "answer": "(2*Pf)/Pf",
+     "vars": {
+      "Pf": "1.5",
+      "V": "3",
+      "gamma": "3/2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s5"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "5804ecd1",
+    "answer": {
+     "value": 2,
+     "label": "X : Y : Z = 2 : 2√2 : 1"
+    }
+   }
+  },
+  {
+   "id": "c5653e29-e26a-49ef-8749-377bccccead2",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "Q = nC_p\\Delta T,\\ \\ W = nR\\Delta T = n(C_p - C_v)\\Delta T"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{W}{Q} = \\dfrac{C_p - C_v}{C_p} = 1 - \\dfrac{1}{\\gamma}",
+       "f": "(Cp-Cv)/Cp",
+       "value": "1-1/gamma"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "1 - \\dfrac{1}{\\gamma} = \\dfrac{\\gamma - 1}{\\gamma}",
+       "f": "1-1/gamma",
+       "value": "(gamma-1)/gamma"
+      }
+     ],
+     "answer": "(gamma-1)/gamma",
+     "vars": {
+      "Cv": "3",
+      "Cp": "5",
+      "gamma": "Cp/Cv"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "0040efe6",
+    "answer": {
+     "value": 0.4,
+     "label": "W/Q = (γ−1)/γ"
+    }
+   }
+  },
+  {
+   "id": "c9bbf7c9-a0f5-4d13-9bca-0529e1443822",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "TV^{\\gamma-1} = \\text{constant},\\ \\ \\gamma - 1 = \\dfrac{2}{3},\\ \\ V \\propto L"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{T_1}{T_2} = \\left(\\dfrac{L_2}{L_1}\\right)^{2/3}",
+       "f": "T1/T2",
+       "value": "(L2/L1)^(2/3)"
+      }
+     ],
+     "answer": "(L2/L1)^(2/3)",
+     "vars": {
+      "T1": "300",
+      "L1": "2",
+      "L2": "3",
+      "T2": "T1*(L1/L2)^(2/3)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "c350ce3c",
+    "answer": {
+     "value": 1.3103706971044482,
+     "label": "T₁/T₂ = (L₂/L₁)^(2/3)"
+    }
+   }
+  }
+ ],
+ "decided": []
+}
