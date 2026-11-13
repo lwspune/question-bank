@@ -78,11 +78,11 @@ describe("SSC CHSL 2024 Tier I", () => {
 describe("SSC CGL registry, untouched by CHSL", () => {
   // Fingerprints taken on 2026-11-13, before the lane learned a second exam.
   it("keeps every CGL shift and every CGL TCS file exactly as before", () => {
-    const cglShifts = Object.entries(SHIFTS).filter(([id]) => !id.startsWith("chsl-")).sort();
+    const cglShifts = Object.entries(SHIFTS).filter(([id]) => examOf(id) === "cgl").sort();
     expect(cglShifts).toHaveLength(156);
     expect(createHash("sha256").update(JSON.stringify(cglShifts)).digest("hex").slice(0, 16)).toBe("64309f4c0c25d4e7");
     const files = tcsFiles()
-      .filter((x) => x.day.exam !== "chsl")
+      .filter((x) => (x.day.exam ?? "cgl") === "cgl")
       .map((x) => [x.dir, x.file, x.shift ?? null, x.pages ?? null]);
     expect(createHash("sha256").update(JSON.stringify(files)).digest("hex").slice(0, 16)).toBe("5f88efb25ee11bd2");
   });
@@ -110,7 +110,7 @@ describe("SSC CHSL 2025 Tier I (PW's scanned challenge-module sheets)", () => {
 
   it("lists every scanned file for the challenge reader, not the TCS reader", () => {
     expect(tcsFiles().filter((f) => f.dir.startsWith("chsl-t1-2025-"))).toEqual([]);
-    const files = challengeFiles();
+    const files = challengeFiles().filter((f) => f.day.exam === "chsl");
     expect(files).toHaveLength(17);
     expect(files[0]).toMatchObject({ dir: "chsl-t1-2025-11-14-s3", shift: 3 });
   });
