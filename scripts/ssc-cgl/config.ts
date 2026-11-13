@@ -520,6 +520,8 @@ export function requireShift(id: string | undefined): Shift & { id: string } {
  */
 export const HELD: Record<string, number[]> = {
   "t2-2026-01-18-s1": [35, 59],
+  // CHSL 3 Jul 2024 Q63: the question line under the pie chart is washed out of SSC's print.
+  "chsl-t1-2024-07-03-s1": [63],
 };
 
 export const OUT = join(__dirname, "out"); // gitignored: page images, geometry, reading sheets
