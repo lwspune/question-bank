@@ -132,7 +132,11 @@ def main():
         carry = None
         for r in q["regions"]:
             a = page(r["page"])[r["y0"] : r["y1"], CROP_X[0] : CROP_X[1]].copy()
-            col = column_edge(a, frame)
+            # on the browser print the rule stands at one x down the whole page, but a short crop
+            # at a page break is mostly key cell and hides it: read it off the full page there
+            # (whichever reads further right: a capture's header page has grey shapes of its own;
+            # the text starts right of x 165, so painting to either rule never reaches it)
+            col = max(column_edge(a, True), column_edge(page(r["page"])[:, CROP_X[0] : CROP_X[1]], True)) if frame else column_edge(a)
             # paint the column, then any key-coloured run that continues it to the right (a page
             # whose table sits further right draws its cells past the usual edge)
             km = key_mask(a.astype(int))
