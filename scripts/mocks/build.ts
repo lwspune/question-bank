@@ -75,6 +75,7 @@ import {
   UPSC_GS1_PAPER,
   UPSC_CSAT_PAPER,
   SSC_CGL_T1_PAPER,
+  SSC_CHSL_T1_PAPER,
   SSC_CGL_T2_PAPER,
   SSC_CGL_T2_COMPUTER_PAPER,
   SSC_CGL_T2_QUANT_PAPER,
@@ -115,7 +116,7 @@ import { deriveMainsSittings, mainsBlueprint } from "./mpscMainsSittings";
 import { PAPERS as MPSC_MAINS_PAPERS } from "../mpsc-mains/config";
 import { deriveUpscSittings } from "./upscSittings";
 import { PAPERS as UPSC_PAPERS } from "../upsc/config";
-import { sscSittings, sscT2Sittings, t2Rows, withHeld } from "./sscSittings";
+import { chslSittings, sscSittings, sscT2Sittings, t2Rows, withHeld } from "./sscSittings";
 import { spiSittings } from "./spiSittings";
 import { imatSittings } from "./imatSittings";
 import { uceedSittings } from "./uceedSittings";
@@ -869,6 +870,26 @@ async function buildSscT2(db: SupabaseClient, run: RunState): Promise<void> {
   }
 }
 
+/**
+ * SSC CHSL Tier I (sscSittings.ts chslSittings): one mock per shift. Every flawed question
+ * rides as grace; a sitting with HELD questions is built against its own counts (withHeld).
+ */
+async function buildChsl(db: SupabaseClient, run: RunState): Promise<void> {
+  for (const s of chslSittings()) {
+    const grace = new Set(s.graceNumbers);
+    await buildFromSourceFiles(db, withHeld(SSC_CHSL_T1_PAPER, s.heldSubjects), [
+      {
+        key: s.key,
+        sourceFile: s.sourceFile,
+        year: s.year,
+        slug: s.slug,
+        title: s.title,
+        prepare: (rows) => rows.map((r) => (grace.has(Number(r.questionNumber)) ? { ...r, grace: true } : r)),
+      },
+    ], run, "sscSittings.ts");
+  }
+}
+
 /** UPSC sittings for ONE of its two papers, withdrawn items as grace. */
 function upscSittings(paper: 1 | 2): SourceFileSitting[] {
   return deriveUpscSittings(Object.values(UPSC_PAPERS))
@@ -911,6 +932,7 @@ async function main() {
   const runUpsc = !paperFilter || paperFilter === "upsc";
   const runSsc = !paperFilter || paperFilter === "ssc-cgl";
   const runSscT2 = !paperFilter || paperFilter === "ssc-cgl-tier-2";
+  const runChsl = !paperFilter || paperFilter === "ssc-chsl";
   const runSpi = !paperFilter || paperFilter === "spi";
   const runImat = !paperFilter || paperFilter === "imat";
   // Opt-in ONLY: the Mains rows are PRIVATE until those exams go public, and the
@@ -924,9 +946,9 @@ async function main() {
   const runUgcNet = paperFilter === "ugc-net";
   // Opt-in: CLAT rows are PRIVATE until the owner OKs them (scripts/clat/README.md).
   const runClat = paperFilter === "clat";
-  if (paperFilter && !runUceed && !runIat && !runUgcNet && !runClat && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runSpi && !runImat && !runMpscMains) {
+  if (paperFilter && !runUceed && !runIat && !runUgcNet && !runClat && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runChsl && !runSpi && !runImat && !runMpscMains) {
     throw new Error(
-      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, spi, imat, mpsc-mains, uceed, iat, ugc-net, clat)`
+      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, ssc-chsl, spi, imat, mpsc-mains, uceed, iat, ugc-net, clat)`
     );
   }
 
@@ -995,6 +1017,7 @@ async function main() {
   }
   if (runSsc) await buildFromSourceFiles(db, SSC_CGL_T1_PAPER, sscCglSittings(), run, "sscSittings.ts");
   if (runSscT2) await buildSscT2(db, run);
+  if (runChsl) await buildChsl(db, run);
   if (runSpi) await buildFromSourceFiles(db, SPI_PAPER, spiMockSittings(), run, "spiSittings.ts");
   if (runImat) await buildFromSourceFiles(db, IMAT_PAPER, imatMockSittings(), run, "imatSittings.ts");
   if (runMpscMains) await buildMpscMains(db, run);

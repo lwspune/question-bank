@@ -1,5 +1,5 @@
 /**
- * SSC CGL Tier I sittings for the mock builder: one mock per SHIFT, DERIVED from
+ * SSC CGL Tier I (and, at the end, SSC CHSL) sittings for the mock builder: one mock per SHIFT, DERIVED from
  * scripts/ssc-cgl/config.ts SHIFTS (the source_file each shift is committed under)
  * and the shift's transcript, the source of record.
  *
@@ -209,4 +209,60 @@ export function sscT2Sittings(): SscT2Sitting[] {
     const layout = layoutOf(DAYS[day]);
     return layout === LAYOUTS[2] ? "five-module" : layout === QUANT_PAPER1 ? "quant" : null;
   });
+}
+
+/**
+ * SSC CHSL Tier I sittings (2026-11-13): one mock per transcribed `chsl-` shift, against
+ * SSC_CHSL_T1_PAPER. Every flawed question rides as grace. A HELD question (no question
+ * printed, or the data it needs cut off) is never published, so the sitting is built
+ * against its own counts (withHeld), its subject read from the transcript block: CHSL
+ * prints 1-25 English, 26-50 Reasoning, 51-75 Quant, 76-100 General Awareness.
+ */
+export type ChslSitting = {
+  key: string;
+  sourceFile: string;
+  year: number;
+  slug: string;
+  title: string;
+  graceNumbers: number[];
+  heldSubjects: string[];
+};
+
+const CHSL_SUBJECT_AT = ["English", "Reasoning", "Quantitative Aptitude"];
+
+export function deriveChslSittings(
+  shifts: Record<string, Shift>,
+  transcripts: Record<string, TranscriptQuestion[]>,
+  held: Record<string, number[]>
+): ChslSitting[] {
+  return Object.entries(shifts)
+    .filter(([id, s]) => transcripts[id] && s.day.startsWith("chsl-t1-"))
+    .map(([id, s]) => {
+      const blocks = transcripts[id];
+      const byNumber = new Map(blocks.map((q) => [q.number, q]));
+      const heldSubjects = (held[id] ?? []).map((n) => {
+        const q = byNumber.get(n);
+        if (!q) throw new Error(`${id}: HELD names Q${n}, which its transcript does not hold`);
+        return CHSL_SUBJECT_AT[Math.floor((n - 1) / 25)] ?? q.subject!;
+      });
+      return {
+        key: id,
+        sourceFile: s.sourceFile,
+        year: s.pyqYear,
+        slug: `ssc-chsl-${id.slice("chsl-t1-".length)}`,
+        title: `SSC CHSL ${s.pyqNote}`,
+        graceNumbers: blocks.filter((q) => q.flawed).map((q) => q.number),
+        heldSubjects,
+      };
+    });
+}
+
+/** The live registry: every committed CHSL shift, read from its transcript. */
+export function chslSittings(): ChslSitting[] {
+  const transcripts: Record<string, TranscriptQuestion[]> = {};
+  for (const [id, s] of Object.entries(SHIFTS)) {
+    const f = join(TRANSCRIPTS, `${id}.txt`);
+    if (s.day.startsWith("chsl-t1-") && existsSync(f)) transcripts[id] = parseTranscript(readFileSync(f, "utf8"));
+  }
+  return deriveChslSittings(SHIFTS, transcripts, HELD);
 }

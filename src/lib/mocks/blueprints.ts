@@ -760,6 +760,26 @@ export const SSC_CGL_T1_PAPER: MockPaperBlueprint = {
 };
 
 /**
+ * SSC CHSL Tier I: the same paper shape as CGL Tier I (100 questions, 200 marks, 60
+ * minutes, +2 / -0.5, four parts of 25), in CHSL's own print order: English first,
+ * then General Intelligence, Quantitative Aptitude and General Awareness.
+ */
+export const SSC_CHSL_T1_PAPER: MockPaperBlueprint = {
+  code: "tier-1",
+  examName: "SSC CHSL",
+  examSlug: "ssc-chsl",
+  paperLabel: "Tier I",
+  durationSecs: 60 * 60,
+  marking: { correct: 2, wrong: -0.5 },
+  sections: [
+    { key: "english", label: "English Language", subjects: ["English"], count: 25 },
+    { key: "reasoning", label: "General Intelligence", subjects: ["Reasoning"], count: 25 },
+    { key: "quantitative-aptitude", label: "Quantitative Aptitude", subjects: ["Quantitative Aptitude"], count: 25 },
+    { key: "general-awareness", label: "General Awareness", subjects: SSC_GA, count: 25 },
+  ],
+};
+
+/**
  * SSC CGL Tier II Paper 1, the RANKED part (owner, 2026-10-17): Section I (Mathematical
  * Abilities 30, Reasoning 30) and Section II (English 45, General Awareness 25), an hour
  * each, +3 / -1: the 390 marks SSC ranks on. The runner has one clock, so the two hours
@@ -1112,6 +1132,7 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   UPSC_GS1_PAPER,
   UPSC_CSAT_PAPER,
   SSC_CGL_T1_PAPER,
+  SSC_CHSL_T1_PAPER,
   SSC_CGL_T2_PAPER,
   SSC_CGL_T2_COMPUTER_PAPER,
   SSC_CGL_T2_QUANT_PAPER,
