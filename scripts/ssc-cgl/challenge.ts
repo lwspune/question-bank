@@ -113,7 +113,7 @@ export function assembleChallenge(pages: ChallengePage[], layout: Section[], ord
     const inSpan = (pos: Pos) => !before(pos, start) && before(pos, next);
 
     // The rules of this question, excluding the next box's top border.
-    const rules: Pos[] = sorted
+    let rules: Pos[] = sorted
       .flatMap((p) =>
         p.rules
           .map((y) => ({ page: p.page, y }))
@@ -121,6 +121,13 @@ export function assembleChallenge(pages: ChallengePage[], layout: Section[], ord
       )
       // a doubled line (two rules a few pixels apart) is one row boundary: rows are 35+ px tall
       .filter((r, k, all) => k === 0 || all[k - 1].page !== r.page || r.y - all[k - 1].y >= MIN_ROW);
+    // Four boundaries and a page break between two of them: an option row ran to the page's foot and
+    // the next began the new page, neither printing a rule, so the break itself is the fifth. (With
+    // five already, a row split mid-row by the break is one row: no boundary is added.)
+    if (rules.length === 4) {
+      const k = rules.findIndex((r, j) => j > 0 && r.page > rules[j - 1].page);
+      if (k > 0) rules.splice(k, 0, { page: rules[k].page, y: 0 });
+    }
     let rows: { from: Pos; to: Pos }[];
     if (rules.length >= 5) {
       const last = rules.slice(-5);

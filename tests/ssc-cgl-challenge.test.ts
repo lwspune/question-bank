@@ -200,6 +200,21 @@ describe("assembleChallenge", () => {
     expect(assembleChallenge(pages, CHSL_LAYOUT)[99].key).toBe("C");
   });
 
+  it("takes the page break as the missing boundary when an option row simply ends at the page foot (17 Nov S1 Q51)", () => {
+    const pages = paper(99);
+    const last = pages[pages.length - 1];
+    last.marks.push({ y0: 1500, y1: 1538 });
+    last.labels.push({ y0: 1560, y1: 1573 });
+    // rules under the stem, A/B and B/C on this page; C runs to the foot; D starts overleaf, its
+    // bottom rule the only one there
+    last.rules.push(1600, 1640, 1680);
+    last.cells.push({ kind: "yellow", y0: 1681, y1: 1750 });
+    pages.push(page(last.page + 1, { rules: [60], lines: [{ y0: 20, y1: 35 }] }));
+    const q100 = assembleChallenge(pages, CHSL_LAYOUT)[99];
+    expect(q100.key).toBe("C");
+    expect(q100.optionRows[3]).toEqual({ page: last.page + 1, y0: 0, y1: 60 });
+  });
+
   it("refuses a question with no key cell or two", () => {
     const none = paper(100);
     none[0].cells.shift();

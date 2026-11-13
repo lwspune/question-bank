@@ -137,13 +137,13 @@ def measure(a):
     rules = sorted(rules + [f0 for f0, _ in fillers] + [b0 for b0, _ in bars])
 
     ink = (s[:, TEXT_X[0] : TEXT_X[1]] < INK).any(axis=1)
-    # A rule at the top of a page with nothing printed above it re-prints the boundary the previous
-    # page ended on (its filler's top): one boundary, so it is dropped (else a phantom row appears).
-    if rules and not ink[: rules[0]].any() and not any(c["y0"] < rules[0] for c in cells):
-        rules = rules[1:]
+    # whether the page's first rule has nothing printed above it, and whether the page ends on a
+    # boundary (nothing printed below its last rule): main() drops such a top rule only after such an end
+    top_bare = bool(rules) and not ink[: rules[0]].any() and not any(c["y0"] < rules[0] for c in cells)
+    end_bare = bool(rules) and not ink[rules[-1] + 3 :].any() and not any(c["y0"] > rules[-1] + 3 for c in cells)
 
     lines = [{"y0": y0, "y1": y1} for y0, y1 in runs(ink, 6, 2)]
-    return {"height": h, "width": w, "breaks": breaks, "marks": marks, "labels": labels, "cells": cells, "rules": rules, "lines": lines}
+    return {"height": h, "width": w, "top_bare": top_bare, "end_bare": end_bare, "breaks": breaks, "marks": marks, "labels": labels, "cells": cells, "rules": rules, "lines": lines}
 
 
 def main():
@@ -160,7 +160,13 @@ def main():
         # picture with the text laid over it): it colours only the candidate's own choice
         imgs = doc[pno].get_images(full=True)
         vector = not imgs or max(x[2] for x in imgs) < 1000 or len(doc[pno].get_text().strip()) > 200
-        pages.append({"page": pno + 1, "vector": vector, **measure(a)})
+        m = measure(a)
+        # The page before ended on a boundary (a rule, or its filler's top, with nothing printed
+        # below): a rule at this page's top with nothing above it prints that boundary again, so it
+        # is dropped. After a page that ends mid-row, that top rule is a real boundary and stays.
+        if pages and pages[-1]["end_bare"] and m["top_bare"]:
+            m["rules"] = m["rules"][1:]
+        pages.append({"page": pno + 1, "vector": vector, **m})
     with open(os.path.join(out, "challenge.json"), "w", encoding="utf8") as f:
         json.dump({"pdf": pdf, "pages": pages}, f)
     print(f"{d}: {len(pages)} pages, {sum(len(p['marks']) for p in pages)} markers, "
