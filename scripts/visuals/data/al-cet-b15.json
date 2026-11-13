@@ -1,0 +1,3545 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "03a6d0f2-4859-4578-86b8-39b1b599c25c",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "-1411 = 2(-393) + 2(-285) - \\Delta_f H^\\circ\\,(\\mathrm{C_2H_4})"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2(-393) + 2(-285) = {{1:-1356}}",
+              "f": "2*(-393)+2*(-285)",
+              "value": "-1356"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "-1411 = {{1:-1356}} - \\Delta_f H^\\circ"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\Delta_f H^\\circ = 1411 - 1356 = 55\\ \\text{kJ/mol}",
+              "f": "1411-1356",
+              "value": "55"
+            }
+          ],
+          "answer": "1411-1356"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "de932e8e",
+        "answer": {
+          "value": 55,
+          "label": "55 kJ/mol"
+        }
+      }
+    },
+    {
+      "id": "057548d8-e15a-4a43-9b6d-dbce7a2ed63d",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta G^\\circ = -2.303RT\\log K_p"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "-2.303\\times 8.314\\times 298 = -5705.8",
+              "f": "-2.303*8.314*298",
+              "value": "-5705.8",
+              "dp": 1
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\log(2\\times10^{17}) = 17.301",
+              "f": "log10(2*10^17)",
+              "value": "17.301",
+              "dp": 3
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\Delta G^\\circ = -5705.8\\times 17.301\\ \\text{J} = -98.716\\ \\text{kJ mol}^{-1}",
+              "f": "-5705.8*17.301/1000",
+              "value": "-98.716",
+              "dp": 3
+            }
+          ],
+          "answer": "-5705.8*17.301/1000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "a1760079",
+        "answer": {
+          "value": -98.71604579999999,
+          "label": "-98.716 kJ/mol"
+        }
+      }
+    },
+    {
+      "id": "08e5d806-e7de-4906-9aa4-0e42923a9506",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "W = -1\\times 10 = -10\\ \\text{dm}^3\\,\\text{bar}",
+              "f": "-1*10",
+              "value": "-10"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "-10\\ \\text{dm}^3\\,\\text{bar} = -1000\\ \\text{J}",
+              "f": "-10*100",
+              "value": "-1000"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta U = Q + W = 800 + (-1000) = -200\\ \\text{J}",
+              "f": "800+(-1000)",
+              "value": "-200"
+            }
+          ],
+          "answer": "800+(-1000)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "ac96fe1c",
+        "answer": {
+          "value": -200,
+          "label": "-200 J"
+        }
+      }
+    },
+    {
+      "id": "0d62d344-c025-4f2f-9aa9-16cf96463411",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta G = \\Delta H - T\\Delta S"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "31400 - 1273\\times 32 = 31400 - 40736",
+              "f": "31400-1273*32",
+              "value": "31400-40736"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta G = 31400 - 40736 = -9336\\ \\text{J}",
+              "f": "31400-40736",
+              "value": "-9336"
+            }
+          ],
+          "answer": "31400-40736"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "96927be8",
+        "answer": {
+          "value": -9336,
+          "label": "-9336 J"
+        }
+      }
+    },
+    {
+      "id": "0f62fb74-51b2-419c-a534-a8bfab9cd8f1",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "W = -P\\Delta V = -(10^5)(0.25\\times10^{-3}) = -25\\ \\text{J}",
+              "f": "-(10^5)*(0.25*10^(-3))",
+              "value": "-25"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta U = q + W = 150 - 25 = 125\\ \\text{J}",
+              "f": "150-25",
+              "value": "125"
+            }
+          ],
+          "answer": "150-25"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "8b1976bd",
+        "answer": {
+          "value": 125,
+          "label": "125 J"
+        }
+      }
+    },
+    {
+      "id": "12570346-fa47-418c-b71e-7fe801ca6943",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\Delta n_g = 1 - 3 = -2",
+              "f": "1-3",
+              "value": "-2"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\Delta H - \\Delta U = \\Delta n_g RT = -2RT"
+            }
+          ],
+          "answer": "1-3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "a9cfa71e",
+        "answer": {
+          "value": -2,
+          "label": "-2RT"
+        }
+      }
+    },
+    {
+      "id": "1469e90d-cbb6-4780-b36a-a63dc67ecad1",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "M(\\mathrm{C_2H_5OH}) = 46\\ \\text{g mol}^{-1}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "n = \\dfrac{11.5}{46} = 0.25\\ \\text{mol}",
+              "f": "11.5/46",
+              "value": "0.25"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta H_{vap} = \\dfrac{11.8}{0.25} = 47.2\\ \\text{kJ mol}^{-1}",
+              "f": "11.8/0.25",
+              "value": "47.2"
+            }
+          ],
+          "answer": "11.8/0.25"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e60c0ef5",
+        "answer": {
+          "value": 47.2,
+          "label": "47.2 kJ/mol"
+        }
+      }
+    },
+    {
+      "id": "14f85e85-20ec-4b9e-8800-e23e601b5891",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "W = -P_{ext}\\Delta V = -2\\times1.5 = -3\\ \\text{L atm}",
+              "f": "-2*1.5",
+              "value": "-3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "-3\\times 101.3 = -303.9\\ \\text{J}",
+              "f": "-3*101.3",
+              "value": "-303.9"
+            }
+          ],
+          "answer": "-3*101.3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "56e72e3f",
+        "answer": {
+          "value": -303.9,
+          "label": "-303.9 J"
+        }
+      }
+    },
+    {
+      "id": "16b17a66-3da0-488a-8521-ebfd5ff5483f",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta H = \\text{bonds broken} - \\text{bonds formed}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "(436+242) - 2(431) = 678 - 862",
+              "f": "(436+242)-2*431",
+              "value": "678-862"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta H = 678 - 862 = -184\\ \\text{kJ/mol}",
+              "f": "678-862",
+              "value": "-184"
+            }
+          ],
+          "answer": "678-862"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "0bdf4ad0",
+        "answer": {
+          "value": -184,
+          "label": "-184 kJ/mol"
+        }
+      }
+    },
+    {
+      "id": "184c44b0-3218-493a-9d81-3475ad7a4336",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta U = Q + W"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "W = -18\\ \\text{J (by system)},\\quad Q = +50\\ \\text{J}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta U = 50 + (-18) = +32\\ \\text{J}",
+              "f": "50+(-18)",
+              "value": "32"
+            }
+          ],
+          "answer": "50+(-18)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "be92468a",
+        "answer": {
+          "value": 32,
+          "label": "32 J"
+        }
+      }
+    },
+    {
+      "id": "1e51cb62-c7c4-48ba-ada0-856701b131f8",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "(\\mathrm{i}) - (\\mathrm{ii}):\\ \\mathrm{S + O_2 \\to SO_2}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta_f H = -5Y - (-3Y) = -2Y\\ \\text{kJ}",
+              "f": "-5*Y-(-3*Y)",
+              "value": "-2*Y"
+            }
+          ],
+          "answer": "-2*Y",
+          "vars": {
+            "Y": 2
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "1b1e259b",
+        "answer": {
+          "value": -4,
+          "label": "-2Y kJ"
+        }
+      }
+    },
+    {
+      "id": "1e72def6-4169-4bd4-a700-0b42330750ce",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "W = -P\\Delta V = -2\\times10^5\\times300\\times10^{-6} = -60\\ \\text{J}",
+              "f": "-2*10^5*300*10^(-6)",
+              "value": "-60"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta U = Q + W = 150 - 60 = 90\\ \\text{J}",
+              "f": "150-60",
+              "value": "90"
+            }
+          ],
+          "answer": "150-60"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "f780f958",
+        "answer": {
+          "value": 90,
+          "label": "90 J"
+        }
+      }
+    },
+    {
+      "id": "226911ce-e3ec-425b-a57d-e518c6346b49",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta G^\\circ = -2.303RT\\log K_p"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "-2.303\\times8.314\\times10^{-3}\\times298\\times\\log(3.356\\times10^{17}) \\approx -100\\ \\text{kJ}",
+              "f": "-2.303*8.314*10^(-3)*298*log10(3.356*10^17)",
+              "value": "-100",
+              "dp": 0
+            }
+          ],
+          "answer": "-100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "abc10caa",
+        "answer": {
+          "value": -100,
+          "label": "-100 kJ"
+        }
+      }
+    },
+    {
+      "id": "240d1bf0-e4f7-4928-b22b-33dc30e87a8e",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "W = -P_{ext}\\Delta V = -10^5\\times3\\times10^{-3} = -300\\ \\text{J}",
+              "f": "-10^5*3*10^(-3)",
+              "value": "-300"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta U = q + W = 210 - 300 = -90\\ \\text{J}",
+              "f": "210-300",
+              "value": "-90"
+            }
+          ],
+          "answer": "210-300"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "e4fae9a3",
+        "answer": {
+          "value": -90,
+          "label": "-90 J"
+        }
+      }
+    },
+    {
+      "id": "24b7fd29-8d0f-43f9-bd77-a045e26c4687",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta H = \\Delta U + \\Delta n_g RT"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\Delta n_g = 0\\ \\Rightarrow\\ \\Delta H = \\Delta U"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Option A: }\\Delta n_g = 2 - 2 = 0",
+              "f": "2-2",
+              "value": "0"
+            }
+          ],
+          "answer": "2-2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "9a259d04",
+        "answer": {
+          "value": 0,
+          "label": "Option A: Δn_g = 0"
+        }
+      }
+    },
+    {
+      "id": "25b1df32-1d30-419a-a8ce-6eca3aca14f8",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "W = -\\Delta n_g RT"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta n_g = 4 - (4+2) = -2",
+              "f": "4-(4+2)",
+              "value": "-2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "W = -(-2)\\times8.314\\times300 = 4988.4\\ \\text{J}",
+              "f": "-(-2)*8.314*300",
+              "value": "4988.4",
+              "dp": 1
+            }
+          ],
+          "answer": "-(-2)*8.314*300"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "9a1052d7",
+        "answer": {
+          "value": 4988.4,
+          "label": "4988.4 J"
+        }
+      }
+    },
+    {
+      "id": "25c088cb-68a7-40fe-8dd0-3c64d0e49a6f",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{3 C-H and 1 O-H cancel on both sides}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Broken: }335 + 431 = 766\\ \\text{kJ}",
+              "f": "335+431",
+              "value": "766"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Formed: }326 + 463 = 789\\ \\text{kJ}",
+              "f": "326+463",
+              "value": "789"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\Delta H = 766 - 789 = -23\\ \\text{kJ mol}^{-1}",
+              "f": "766-789",
+              "value": "-23"
+            }
+          ],
+          "answer": "766-789"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "87dec57d",
+        "answer": {
+          "value": -23,
+          "label": "-23 kJ/mol"
+        }
+      }
+    },
+    {
+      "id": "25e764aa-8003-41ae-9e28-278bd659d6f4",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Dissociation energy} = 433\\ \\text{kJ mol}^{-1}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "0.5\\times433 = 216.5\\ \\text{kJ}",
+              "f": "0.5*433",
+              "value": "216.5"
+            }
+          ],
+          "answer": "0.5*433"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "345f88e0",
+        "answer": {
+          "value": 216.5,
+          "label": "216.5 kJ"
+        }
+      }
+    },
+    {
+      "id": "28f04dd9-9d46-4114-b454-7296ae1cd83f",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta U = q + w"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta U = 40 + (-8) = 32\\ \\text{J}",
+              "f": "40+(-8)",
+              "value": "32",
+              "note": "work done BY the system is negative"
+            }
+          ],
+          "answer": "40+(-8)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "a3ed4906",
+        "answer": {
+          "value": 32,
+          "label": "32 J"
+        }
+      }
+    },
+    {
+      "id": "28f67945-9c26-4dd5-be98-43ddbf5a11e9",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta S_{surr} = -\\dfrac{\\Delta H_{sys}}{T}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "-\\dfrac{7000}{300} = -23.3\\ \\text{J K}^{-1}",
+              "f": "-7000/300",
+              "value": "-23.3",
+              "dp": 1
+            }
+          ],
+          "answer": "-7000/300"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "c6776001",
+        "answer": {
+          "value": -23.333333333333332,
+          "label": "-23.3 J/K"
+        }
+      }
+    },
+    {
+      "id": "2b517403-d91e-4342-80d5-c09e82545e9a",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "T = \\dfrac{\\Delta H}{\\Delta S}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "T = \\dfrac{-225000}{-150} = 1500\\ \\text{K}",
+              "f": "-225000/-150",
+              "value": "1500"
+            }
+          ],
+          "answer": "-225000/-150"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "5b1b0704",
+        "answer": {
+          "value": 1500,
+          "label": "1500 K"
+        }
+      }
+    },
+    {
+      "id": "2c9269ce-7314-4d1b-aab8-d2a5e7de79ba",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta U = q + w"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta U = -8000 + (-660) = -8660\\ \\text{J}",
+              "f": "-8000+(-660)",
+              "value": "-8660"
+            }
+          ],
+          "answer": "-8000+(-660)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "11c4d439",
+        "answer": {
+          "value": -8660,
+          "label": "-8660 J"
+        }
+      }
+    },
+    {
+      "id": "308e37e0-ed08-4831-8f7a-00d62994fa86",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\Delta S_{surr} = -\\dfrac{-150000}{300} = +500\\ \\text{J K}^{-1}",
+              "f": "150000/300",
+              "value": "500"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta S_{total} = 32 + 500 = 532\\ \\text{J K}^{-1}",
+              "f": "32+500",
+              "value": "532"
+            }
+          ],
+          "answer": "32+500"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "4c2a7ef8",
+        "answer": {
+          "value": 532,
+          "label": "532 J/K"
+        }
+      }
+    },
+    {
+      "id": "32082c67-db65-48de-8b1d-634de8b96ebe",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "W = -1\\times(20 - 15.5) = -4.5\\ \\text{dm}^3\\,\\text{atm}",
+              "f": "-1*(20-15.5)",
+              "value": "-4.5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "-4.5\\times101.325 = -456\\ \\text{J}",
+              "f": "-4.5*101.325",
+              "value": "-456",
+              "dp": 0
+            }
+          ],
+          "answer": "-456"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "7ec45081",
+        "answer": {
+          "value": -456,
+          "label": "-456 J"
+        }
+      }
+    },
+    {
+      "id": "32a093d1-2661-4322-81f9-24b8879ced51",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "W = -1.5\\times4 = -6\\ \\text{bar dm}^3",
+              "f": "-1.5*4",
+              "value": "-6"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "-6\\ \\text{bar dm}^3 = -600\\ \\text{J}",
+              "f": "-6*100",
+              "value": "-600"
+            }
+          ],
+          "answer": "-6*100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "e40b7f83",
+        "answer": {
+          "value": -600,
+          "label": "-600 J"
+        }
+      }
+    },
+    {
+      "id": "339c92b4-b4cd-498d-841e-ece6608af629",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{2 mol HCl formed: }\\Delta H = -194\\ \\text{kJ}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta_f H = \\dfrac{-194}{2} = -97\\ \\text{kJ}",
+              "f": "-194/2",
+              "value": "-97"
+            }
+          ],
+          "answer": "-194/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "6ade97d8",
+        "answer": {
+          "value": -97,
+          "label": "-97 kJ"
+        }
+      }
+    },
+    {
+      "id": "36ab957c-300a-4b1a-954c-0a085c9686a8",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "16\\ \\text{g methanol }(M = 32) = 0.5\\ \\text{mol}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta_{vap}H = \\dfrac{17.64}{0.5} = 35.28\\ \\text{kJ/mol}",
+              "f": "17.64/0.5",
+              "value": "35.28"
+            }
+          ],
+          "answer": "17.64/0.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "bd2d686f",
+        "answer": {
+          "value": 35.28,
+          "label": "35.28 kJ/mol"
+        }
+      }
+    },
+    {
+      "id": "392375a6-f0a3-49c5-a12c-07bb2c34a1f4",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "n = \\dfrac{13}{78} = 0.1667\\ \\text{mol}",
+              "f": "13/78",
+              "value": "0.1667",
+              "dp": 4
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta_{vap}H = \\dfrac{5.1}{0.1667} = 30.6\\ \\text{kJ mol}^{-1}",
+              "f": "5.1/0.1667",
+              "value": "30.6",
+              "dp": 1
+            }
+          ],
+          "answer": "30.6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "800da986",
+        "answer": {
+          "value": 30.6,
+          "label": "30.6 kJ/mol"
+        }
+      }
+    },
+    {
+      "id": "39c6740d-c699-4756-bf78-3928fbcbbc7b",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta U = Q + W = Q - W_{by\\ system}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta U = 40 - 8 = 32\\ \\text{J}",
+              "f": "40-8",
+              "value": "32",
+              "note": "work done by the system is negative"
+            }
+          ],
+          "answer": "40-8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "c5614aee",
+        "answer": {
+          "value": 32,
+          "label": "32 J"
+        }
+      }
+    },
+    {
+      "id": "3b7b35a7-5632-4a0e-94ba-1897b89bdf64",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "W = -P_{ext}\\Delta V"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta U = Q_P + W = Q_P - P\\,\\Delta V",
+              "f": "q+(-p*v)",
+              "value": "q-p*v"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "Q_P = \\Delta U + P\\,\\Delta V",
+              "f": "q",
+              "value": "(q-p*v)+p*v"
+            }
+          ],
+          "answer": "(q-p*v)+p*v",
+          "vars": {
+            "q": 5,
+            "p": 2,
+            "v": 3
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "b4f8cd47",
+        "answer": {
+          "value": 5,
+          "label": "Q_P = ΔU + P_ext ΔV"
+        }
+      }
+    },
+    {
+      "id": "3de31573-ec65-4754-ab7e-315dbeb62f46",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta G = \\Delta H - T\\Delta S = 0"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "T = \\dfrac{40000}{80} = 500\\ \\text{K}",
+              "f": "40000/80",
+              "value": "500"
+            }
+          ],
+          "answer": "40000/80"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "7c221966",
+        "answer": {
+          "value": 500,
+          "label": "500 K"
+        }
+      }
+    },
+    {
+      "id": "3e1c04f0-6765-4b0d-a8a7-04e7326a6466",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta U = Q + W"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "W = +20\\ \\text{kJ},\\quad Q = -10\\ \\text{kJ}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta U = -10 + 20 = +10\\ \\text{kJ}",
+              "f": "-10+20",
+              "value": "10"
+            }
+          ],
+          "answer": "-10+20"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "55e1ae1a",
+        "answer": {
+          "value": 10,
+          "label": "10 kJ"
+        }
+      }
+    },
+    {
+      "id": "3f4070a0-748d-42c8-bee2-595c6fe3d25a",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta_r H^\\circ = \\sum\\Delta_f H^\\circ_{p} - \\sum\\Delta_f H^\\circ_{r}",
+              "note": "p = products, r = reactants"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\Delta_f H^\\circ(\\mathrm{O_2}) = 0"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "[(-394)+2(-286)] - [(-75)] = -394 - 572 + 75",
+              "f": "((-394)+2*(-286))-(-75)",
+              "value": "-394-572+75"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\Delta_r H^\\circ = -394 - 572 + 75 = -891\\ \\text{kJ}",
+              "f": "-394-572+75",
+              "value": "-891"
+            }
+          ],
+          "answer": "-394-572+75"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "dcb6f0fd",
+        "answer": {
+          "value": -891,
+          "label": "-891 kJ"
+        }
+      }
+    },
+    {
+      "id": "4102bfef-ded4-4b84-b80d-4b0960a02bdc",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\Delta n_g = 1 - 3 = -2",
+              "f": "1-3",
+              "value": "-2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "(-2)(8.314\\times10^{-3})(300) = -4.99\\ \\text{kJ}",
+              "f": "(-2)*(8.314*10^(-3))*300",
+              "value": "-4.99",
+              "dp": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta H = \\Delta U + \\Delta n_g RT = -80 - 4.99 = -85.0\\ \\text{kJ}",
+              "f": "-80-4.99",
+              "value": "-85",
+              "dp": 1
+            }
+          ],
+          "answer": "-80-4.99"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c8bed77a",
+        "answer": {
+          "value": -84.99,
+          "label": "-85.0 kJ"
+        }
+      }
+    },
+    {
+      "id": "417925d0-5293-4702-8de0-f9ebe58d6b3a",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta_{soln}H = \\Delta_L H + \\Delta_{hyd}H"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta_{soln}H = 700 + (-680) = +20\\ \\text{kJ mol}^{-1}",
+              "f": "700+(-680)",
+              "value": "20"
+            }
+          ],
+          "answer": "700+(-680)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "b13393f3",
+        "answer": {
+          "value": 20,
+          "label": "20 kJ/mol"
+        }
+      }
+    },
+    {
+      "id": "42bfac7d-ef63-489e-9a9f-4e8e0fbfc987",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta U = q + W"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta U = 50 + 10 = 60\\ \\text{J}",
+              "f": "50+10",
+              "value": "60"
+            }
+          ],
+          "answer": "50+10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "0b031cda",
+        "answer": {
+          "value": 60,
+          "label": "60 J"
+        }
+      }
+    },
+    {
+      "id": "43a650b8-c707-46c1-82a9-1fb553048e0f",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\Delta n_g = 3 - 0 = 3",
+              "f": "3-0",
+              "value": "3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "W = -\\Delta n_g RT = -3\\times8.314\\times300 = -7483\\ \\text{J}",
+              "f": "-3*8.314*300",
+              "value": "-7483",
+              "dp": 0
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "-7483\\ \\text{J} = -7.483\\ \\text{kJ mol}^{-1}",
+              "f": "-7483/1000",
+              "value": "-7.483"
+            }
+          ],
+          "answer": "-7483/1000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "cc926faa",
+        "answer": {
+          "value": -7.483,
+          "label": "-7.483 kJ/mol"
+        }
+      }
+    },
+    {
+      "id": "470f86f6-1371-4251-a7fa-b1f3269be364",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\Delta n_g = 3 - (1+5) = -3",
+              "f": "3-(1+5)",
+              "value": "-3"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\Delta H - \\Delta U = \\Delta n_g RT = -3RT"
+            }
+          ],
+          "answer": "3-(1+5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "5b2b923e",
+        "answer": {
+          "value": -3,
+          "label": "-3RT"
+        }
+      }
+    },
+    {
+      "id": "49bae869-0bac-4312-9228-2ec74c8c1322",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\mathrm{CO + \\tfrac{1}{2}O_2 \\to CO_2}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta H = -393 - (-110) = -283\\ \\text{kJ mol}^{-1}",
+              "f": "-393-(-110)",
+              "value": "-283"
+            }
+          ],
+          "answer": "-393-(-110)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "db48758a",
+        "answer": {
+          "value": -283,
+          "label": "-283 kJ/mol"
+        }
+      }
+    },
+    {
+      "id": "4bb461d4-0f37-465f-80da-1fdcc2c4d29b",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "q = -4\\ \\text{kJ (released)},\\quad W = +12\\ \\text{kJ (on system)}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta U = q + W = 8\\ \\text{kJ}",
+              "f": "-4+12",
+              "value": "8"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "\\text{At constant }P:\\ \\Delta H = q = -4\\ \\text{kJ}"
+            }
+          ],
+          "answer": "-4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "118985b9",
+        "answer": {
+          "value": -4,
+          "label": "ΔH = -4 kJ, ΔU = 8 kJ"
+        }
+      }
+    },
+    {
+      "id": "4bb93827-4a08-4b87-847f-34063eecd185",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "W = -2.303\\,nRT\\log\\dfrac{P_1}{P_2}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "-2.303\\times1\\times8.314\\times300\\times\\log10 = -5744\\ \\text{J}",
+              "f": "-2.303*1*8.314*300*log10(10)",
+              "value": "-5744",
+              "dp": 0
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "-5744\\ \\text{J} = -5.744\\ \\text{kJ}",
+              "f": "-5744/1000",
+              "value": "-5.744"
+            }
+          ],
+          "answer": "-5744/1000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f3d8d7d3",
+        "answer": {
+          "value": -5.744,
+          "label": "-5.744 kJ"
+        }
+      }
+    },
+    {
+      "id": "4be27e21-1dea-44c5-8811-76b687ce3046",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\mathrm{C_2H_4 + HCl \\to C_2H_5Cl}:\\ \\text{HCl (150 mL) is limiting}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{gas volume falls by } 150\\ \\text{mL}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "W = -(1\\times10^5)(-150\\times10^{-6}) = +15\\ \\text{J}",
+              "f": "-(1*10^5)*(-150*10^(-6))",
+              "value": "15"
+            }
+          ],
+          "answer": "15"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a8596a96",
+        "answer": {
+          "value": 15,
+          "label": "+15 J"
+        }
+      }
+    },
+    {
+      "id": "4c99e036-0dc3-4142-a241-ea7e0f7e8bb6",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\Delta S_{surr} = -\\dfrac{-208.6\\times10^{3}}{298} = +700\\ \\text{J K}^{-1}",
+              "f": "208.6*10^3/298",
+              "value": "700",
+              "dp": 0
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta S_{total} = -36 + 700 = +664\\ \\text{J K}^{-1}",
+              "f": "-36+700",
+              "value": "664"
+            }
+          ],
+          "answer": "-36+700"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "628a17c4",
+        "answer": {
+          "value": 664,
+          "label": "664 J/K"
+        }
+      }
+    },
+    {
+      "id": "5049f286-d15f-424b-af85-84a395b71daa",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta U = q + w"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "q = +10\\ \\text{kJ},\\quad w = -25\\ \\text{kJ (by system)}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta U = 10 + (-25) = -15\\ \\text{kJ}",
+              "f": "10+(-25)",
+              "value": "-15"
+            }
+          ],
+          "answer": "10+(-25)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a6820e54",
+        "answer": {
+          "value": -15,
+          "label": "-15 kJ"
+        }
+      }
+    },
+    {
+      "id": "50d55641-ce2f-4756-92d5-62bbd3b7f833",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "w = -P_{ext}\\Delta V"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "w = -1.5\\times(10-5) = -7.5\\ \\text{dm}^3\\,\\text{bar}",
+              "f": "-1.5*(10-5)",
+              "value": "-7.5"
+            }
+          ],
+          "answer": "-1.5*(10-5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "88fe6111",
+        "answer": {
+          "value": -7.5,
+          "label": "-7.5 dm³ bar"
+        }
+      }
+    },
+    {
+      "id": "521d72c8-4bd3-4904-9fd3-5f4e82f8266f",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta H^\\circ = \\sum\\Delta_f H^\\circ_{p} - \\sum\\Delta_f H^\\circ_{r}",
+              "note": "p = products, r = reactants"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[2(-390)+3(-285)] - [(-280)+0] = [-780-855]+280",
+              "f": "(2*(-390)+3*(-285))-((-280)+0)",
+              "value": "(-780-855)+280"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta H^\\circ = -1635 + 280 = -1355\\ \\text{kJ}",
+              "f": "-1635+280",
+              "value": "-1355"
+            }
+          ],
+          "answer": "-1635+280"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "1d8fc2fb",
+        "answer": {
+          "value": -1355,
+          "label": "-1355 kJ"
+        }
+      }
+    },
+    {
+      "id": "55de7c8f-90cd-45f0-a168-e6ace71f38a6",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\Delta n_g = 2 - 3 = -1",
+              "f": "2-3",
+              "value": "-1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "-(-1)(8.314\\times10^{-3})(300) = +2.49\\ \\text{kJ}",
+              "f": "-(-1)*(8.314*10^(-3))*300",
+              "value": "2.49",
+              "dp": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta U = \\Delta H - \\Delta n_g RT = -1366.5 + 2.49 = -1364.0\\ \\text{kJ}",
+              "f": "-1366.5+2.49",
+              "value": "-1364",
+              "dp": 1
+            }
+          ],
+          "answer": "-1366.5+2.49"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "4af4f54e",
+        "answer": {
+          "value": -1364.01,
+          "label": "-1364.0 kJ/mol"
+        }
+      }
+    },
+    {
+      "id": "58a79f8b-ba43-4624-82e9-c825cf84c9d7",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{gases only: 0 product, 2 mol reactants}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta n = 0 - 2 = -2",
+              "f": "0-2",
+              "value": "-2"
+            }
+          ],
+          "answer": "0-2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "5398c1b3",
+        "answer": {
+          "value": -2,
+          "label": "Δn = -2"
+        }
+      }
+    },
+    {
+      "id": "5c9329f6-e74a-4d57-98f3-deb9a4a96dff",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\mathrm{C_6H_{10} + H_2 \\to C_6H_{12}}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\Delta H = \\sum\\Delta_c H(\\text{react}) - \\sum\\Delta_c H(\\text{prod})"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta H = (-3800 - 241) - (-3920) = -121\\ \\text{kJ mol}^{-1}",
+              "f": "(-3800-241)-(-3920)",
+              "value": "-121"
+            }
+          ],
+          "answer": "(-3800-241)-(-3920)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "fd24cf4a",
+        "answer": {
+          "value": -121,
+          "label": "-121 kJ/mol"
+        }
+      }
+    },
+    {
+      "id": "61ed6e0d-bbda-48a0-9d91-1a8da36d1e04",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\mathrm{C_6H_{10} + H_2 \\to C_6H_{12}}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta H = (-3800) + (-241) - (-3920) = -121\\ \\text{kJ}",
+              "f": "(-3800)+(-241)-(-3920)",
+              "value": "-121"
+            }
+          ],
+          "answer": "(-3800)+(-241)-(-3920)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "73054b7e",
+        "answer": {
+          "value": -121,
+          "label": "-121 kJ"
+        }
+      }
+    },
+    {
+      "id": "662cb1b4-008c-47a4-86d2-b5db62699a16",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Change-over at }\\Delta G = 0:\\ T = \\dfrac{\\Delta H}{\\Delta S}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "T = \\dfrac{-345000}{-123} = 2805\\ \\text{K}",
+              "f": "-345000/-123",
+              "value": "2805",
+              "dp": 0
+            }
+          ],
+          "answer": "2805"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "6953ab3b",
+        "answer": {
+          "value": 2805,
+          "label": "2805 K"
+        }
+      }
+    },
+    {
+      "id": "664250d7-cc0f-4e23-8b0e-b303c4ebddba",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "W = -2.303\\,nRT\\log\\dfrac{V_2}{V_1}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "-2.303\\times2\\times8.314\\times300\\times\\log(0.5) = 3458\\ \\text{J}",
+              "f": "-2.303*2*8.314*300*log10(0.5)",
+              "value": "3458",
+              "dp": 0
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "3458\\ \\text{J} \\approx 3.46\\ \\text{kJ}",
+              "f": "3458/1000",
+              "value": "3.46",
+              "dp": 2
+            }
+          ],
+          "answer": "3.46"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "dc5363d1",
+        "answer": {
+          "value": 3.46,
+          "label": "3.46 kJ"
+        }
+      }
+    },
+    {
+      "id": "6871cfcd-7227-4929-add3-f404c2d52587",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "w = -(2\\times10^5)(500\\times10^{-6}) = -100\\ \\text{J}",
+              "f": "-(2*10^5)*(500*10^(-6))",
+              "value": "-100"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta U = q + w = 200 + (-100) = +100\\ \\text{J}",
+              "f": "200+(-100)",
+              "value": "100"
+            }
+          ],
+          "answer": "200+(-100)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "8a9da4d1",
+        "answer": {
+          "value": 100,
+          "label": "100 J"
+        }
+      }
+    },
+    {
+      "id": "6f26a848-a638-4685-82a7-8f974d782c85",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "M(\\text{ethane}) = 30\\ \\text{g/mol}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{Moles in 3 g} = 0.1\\ \\text{mol}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta_r H^\\circ = \\dfrac{-8.84}{0.1} = -88.4\\ \\text{kJ/mol}",
+              "f": "-8.84/0.1",
+              "value": "-88.4"
+            }
+          ],
+          "answer": "-8.84/0.1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "36f887b8",
+        "answer": {
+          "value": -88.39999999999999,
+          "label": "-88.4 kJ/mol"
+        }
+      }
+    },
+    {
+      "id": "7420d485-5905-409f-900e-3f356a6aa55c",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "W = 2.303\\,nRT\\log\\dfrac{P_2}{P_1}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\log 2 = 0.3010",
+              "f": "log10(2)",
+              "value": "0.3010",
+              "dp": 4
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "W = 2.303\\times8.314\\times300\\times0.3010 = 1729\\ \\text{J}",
+              "f": "2.303*8.314*300*0.3010",
+              "value": "1729",
+              "dp": 0
+            }
+          ],
+          "answer": "1729"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "d6ae64a3",
+        "answer": {
+          "value": 1729,
+          "label": "1729 J"
+        }
+      }
+    },
+    {
+      "id": "77ba0057-cb0e-4bf5-8760-6d981a55fee8",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta U = Q + W"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "W = +20\\ \\text{kJ},\\quad Q = -10\\ \\text{kJ}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta U = -10 + 20 = +10\\ \\text{kJ}",
+              "f": "-10+20",
+              "value": "10"
+            }
+          ],
+          "answer": "-10+20"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "cdd4b72d",
+        "answer": {
+          "value": 10,
+          "label": "10 kJ"
+        }
+      }
+    },
+    {
+      "id": "783f104a-f83a-4cc1-af70-7c78d3d9da89",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\Delta S_{surr} = -\\dfrac{\\Delta H}{T} = \\dfrac{726000}{298} = 2436\\ \\text{J K}^{-1}",
+              "f": "726000/298",
+              "value": "2436",
+              "dp": 0
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta S_{total} = 2436 + 42 = 2478\\ \\text{J K}^{-1}",
+              "f": "2436+42",
+              "value": "2478"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2478\\ \\text{J K}^{-1} = 2.478\\ \\text{kJ K}^{-1}",
+              "f": "2478/1000",
+              "value": "2.478"
+            }
+          ],
+          "answer": "2478/1000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "661d3e4c",
+        "answer": {
+          "value": 2.478,
+          "label": "2.478 kJ/K"
+        }
+      }
+    },
+    {
+      "id": "7a0dc3aa-1322-451b-8e2c-0dcb9d30b18c",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta G < 0:\\ \\Delta H - T\\Delta S < 0"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\Delta H,\\ \\Delta S \\text{ both negative}\\ \\Rightarrow\\ T < \\dfrac{\\Delta H}{\\Delta S}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "T < \\dfrac{84200}{200} = 421\\ \\text{K}",
+              "f": "84200/200",
+              "value": "421"
+            }
+          ],
+          "answer": "84200/200"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "22b69f25",
+        "answer": {
+          "value": 421,
+          "label": "421 K"
+        }
+      }
+    },
+    {
+      "id": "7ae65c17-ae2d-4de2-9b8d-b0a4748751af",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "W = -P_{ext}(V_2 - V_1)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "-1.9\\times(2.5 - 0.3) = -1.9\\times2.2",
+              "f": "-1.9*(2.5-0.3)",
+              "value": "-1.9*2.2",
+              "note": "in dm³ bar"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "-1.9\\times2.2\\times100 = -418\\ \\text{J}",
+              "f": "-1.9*2.2*100",
+              "value": "-418"
+            }
+          ],
+          "answer": "-1.9*2.2*100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f919593f",
+        "answer": {
+          "value": -418,
+          "label": "-418 J"
+        }
+      }
+    },
+    {
+      "id": "7b521d43-ee7c-4bc7-94ba-ebabdc1c98b9",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "P_{ext} = -\\dfrac{W}{V_2 - V_1}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P_{ext} = \\dfrac{600}{5} = 120\\ \\text{J dm}^{-3}",
+              "f": "600/5",
+              "value": "120"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "P_{ext} = \\dfrac{120}{100} = 1.2\\ \\text{bar}",
+              "f": "120/100",
+              "value": "1.2",
+              "note": "1 bar dm³ = 100 J"
+            }
+          ],
+          "answer": "120/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "625d1aef",
+        "answer": {
+          "value": 1.2,
+          "label": "1.2 bar"
+        }
+      }
+    },
+    {
+      "id": "7eccd42a-095d-48a3-8829-3c6ffa75fd35",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Sublimation = fusion, then vaporisation}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta_{sub}H = 6.0 + 45.0 = 51.0\\ \\text{kJ}",
+              "f": "6.0+45.0",
+              "value": "51"
+            }
+          ],
+          "answer": "6.0+45.0"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "a829e98f",
+        "answer": {
+          "value": 51,
+          "label": "51.0 kJ"
+        }
+      }
+    },
+    {
+      "id": "7fa5c576-b0d0-4646-bc06-d3d8a19cb828",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta G = \\Delta H - T\\Delta S"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta G = 7 - 300\\times0.0248 = -0.44\\ \\text{kJ mol}^{-1}",
+              "f": "7-300*0.0248",
+              "value": "-0.44",
+              "dp": 2
+            }
+          ],
+          "answer": "-0.44"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "904cc061",
+        "answer": {
+          "value": -0.44,
+          "label": "-0.44 kJ/mol"
+        }
+      }
+    },
+    {
+      "id": "8226c882-0a5e-4ea2-8e08-1dd922b7a9e3",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta_r H^\\circ = \\sum\\Delta_f H^\\circ_{p} - \\sum\\Delta_f H^\\circ_{r}",
+              "note": "p = products, r = reactants"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[(-390)+2(-286)] - [(-75)+0] = -390 - 572 + 75",
+              "f": "((-390)+2*(-286))-((-75)+0)",
+              "value": "-390-572+75"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta_r H^\\circ = -887\\ \\text{kJ}",
+              "f": "-390-572+75",
+              "value": "-887"
+            }
+          ],
+          "answer": "-390-572+75"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e49c313f",
+        "answer": {
+          "value": -887,
+          "label": "-887 kJ"
+        }
+      }
+    },
+    {
+      "id": "844fdc36-f194-427c-80bb-bf81cae818a4",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta U = q + W"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta U = -4 + 8 = +4\\ \\text{kJ}",
+              "f": "-4+8",
+              "value": "4"
+            }
+          ],
+          "answer": "-4+8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "1a3cc98f",
+        "answer": {
+          "value": 4,
+          "label": "+4 kJ"
+        }
+      }
+    },
+    {
+      "id": "87548574-472a-407b-a800-2417909a2d11",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "W = -P_{ext}\\Delta V"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "500\\ \\text{J} = 5\\ \\text{dm}^3\\,\\text{bar}",
+              "f": "500/100",
+              "value": "5",
+              "note": "100 J = 1 dm³ bar"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "P_{ext} = \\dfrac{5}{4.5 - 2.5} = 2.5\\ \\text{bar}",
+              "f": "5/(4.5-2.5)",
+              "value": "2.5"
+            }
+          ],
+          "answer": "5/(4.5-2.5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "54205838",
+        "answer": {
+          "value": 2.5,
+          "label": "2.5 bar"
+        }
+      }
+    },
+    {
+      "id": "88e762a5-0375-4141-b680-5a5062091ffd",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Decomposing 2 mol }\\mathrm{H_2O}: +573.2\\ \\text{kJ}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Per mol: }\\dfrac{573.2}{2} = 286.6\\ \\text{kJ}",
+              "f": "573.2/2",
+              "value": "286.6"
+            }
+          ],
+          "answer": "573.2/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "20a9df65",
+        "answer": {
+          "value": 286.6,
+          "label": "286.6 kJ"
+        }
+      }
+    },
+    {
+      "id": "8b4320e1-803c-4a4b-93a6-6a180471e7c0",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Charles's law: }\\dfrac{V_1}{T_1} = \\dfrac{V_2}{T_2}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "T_2 = \\dfrac{6\\times300}{3} = 600\\ \\text{K}",
+              "f": "6*300/3",
+              "value": "600"
+            }
+          ],
+          "answer": "6*300/3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "8ed16891",
+        "answer": {
+          "value": 600,
+          "label": "600 K"
+        }
+      }
+    },
+    {
+      "id": "8b7408d7-349c-4091-82dc-f9845b429da5",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "W = -1.5\\times2.5 = -3.75\\ \\text{L atm}",
+              "f": "-1.5*2.5",
+              "value": "-3.75"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "-3.75\\times101.3 \\approx -380\\ \\text{J}",
+              "f": "-3.75*101.3",
+              "value": "-380",
+              "dp": 0
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "-380\\ \\text{J} = -0.380\\ \\text{kJ}",
+              "f": "-380/1000",
+              "value": "-0.38"
+            }
+          ],
+          "answer": "-380/1000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "7a754831",
+        "answer": {
+          "value": -0.38,
+          "label": "-0.380 kJ"
+        }
+      }
+    },
+    {
+      "id": "8c227802-de65-4bcc-a1c3-04422365ff0a",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "W = -2.303\\,nRT\\log_{10}\\dfrac{V_2}{V_1}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "-2.303\\times1\\times8.314\\times300 = -5744",
+              "f": "-2.303*1*8.314*300",
+              "value": "-5744",
+              "dp": 0
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "-5744\\times\\log_{10}(0.5) = +5744\\times0.3010 = 1729\\ \\text{J}",
+              "f": "5744*0.3010",
+              "value": "1729",
+              "dp": 0
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "1729\\ \\text{J} = 1.729\\ \\text{kJ}",
+              "f": "1729/1000",
+              "value": "1.729"
+            }
+          ],
+          "answer": "1729/1000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "7738db58",
+        "answer": {
+          "value": 1.729,
+          "label": "1.729 kJ"
+        }
+      }
+    },
+    {
+      "id": "8cdaa7ee-5ae8-4811-8e15-3274850c8c1c",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\Delta H = 4(-390) + 6(-285) - 2(-85) = -1560 - 1710 + 170",
+              "f": "4*(-390)+6*(-285)-2*(-85)",
+              "value": "-1560-1710+170"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta H = -1560 - 1710 + 170 = -3100\\ \\text{kJ}",
+              "f": "-1560-1710+170",
+              "value": "-3100"
+            }
+          ],
+          "answer": "-1560-1710+170"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "fbdb1563",
+        "answer": {
+          "value": -3100,
+          "label": "-3100 kJ"
+        }
+      }
+    },
+    {
+      "id": "92485cb1-1814-4ed9-906b-a4d608f25a89",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\tfrac12\\mathrm{H_2} + \\tfrac12\\mathrm{Cl_2} \\to \\mathrm{HCl}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Broken: }\\tfrac12(434) + \\tfrac12(242) = 338\\ \\text{kJ}",
+              "f": "0.5*434+0.5*242",
+              "value": "338"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "\\text{Formed: } 431\\ \\text{kJ}"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\Delta_f H = 338 - 431 = -93\\ \\text{kJ mol}^{-1}",
+              "f": "338-431",
+              "value": "-93"
+            }
+          ],
+          "answer": "338-431"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "cbc76db6",
+        "answer": {
+          "value": -93,
+          "label": "-93 kJ/mol"
+        }
+      }
+    },
+    {
+      "id": "981679b0-255f-42b4-91ed-c6c380a662d6",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "W = -P\\Delta V = -2\\times10 = -20\\ \\text{dm}^3\\,\\text{atm}",
+              "f": "-2*10",
+              "value": "-20"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "-20\\times101.32 = -2026.4\\ \\text{J}",
+              "f": "-20*101.32",
+              "value": "-2026.4"
+            }
+          ],
+          "answer": "-20*101.32"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "86d149ea",
+        "answer": {
+          "value": -2026.3999999999999,
+          "label": "-2026.4 J"
+        }
+      }
+    },
+    {
+      "id": "9aba18e3-c918-461f-b654-0bca1b1fc753",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\Delta H_{vap} = (-57) - (-68.3) = 11.3\\ \\text{kcal/mol}",
+              "f": "-57-(-68.3)",
+              "value": "11.3"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "9\\ \\text{g} = 0.5\\ \\text{mol (18 g per mol)}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Heat} = 0.5\\times11.3 = 5.65\\ \\text{kcal}",
+              "f": "0.5*11.3",
+              "value": "5.65"
+            }
+          ],
+          "answer": "0.5*11.3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "aae9cfff",
+        "answer": {
+          "value": 5.65,
+          "label": "5.65 kcal"
+        }
+      }
+    },
+    {
+      "id": "9d862f08-6191-41e1-bcba-9d18f2ed045e",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "w = -P_{ext}\\Delta V = -2\\times3 = -6\\ \\text{L bar}",
+              "f": "-2*3",
+              "value": "-6"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "-6\\ \\text{L bar} = -600\\ \\text{J}",
+              "f": "-6*100",
+              "value": "-600"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta U = q + w = 10000 - 600 = 9400\\ \\text{J}",
+              "f": "10000-600",
+              "value": "9400"
+            }
+          ],
+          "answer": "10000-600"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c0953f56",
+        "answer": {
+          "value": 9400,
+          "label": "9400 J"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
