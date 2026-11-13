@@ -736,5 +736,197 @@
   "before": "cee98d0f",
   "solution": "Using Kirchhoff's current law at the junctions: \\(I_1 = 20 - 15 = 5\\) A. Then \\(I_2 = 5 + 3 = 8\\) A and \\(I_3 = 15 - 5 = 10\\) A. Hence \\(I = I_2 + I_3 = 18\\) A.",
   "note": "stored text described the figure (20 in, 15 out, 3 in, 5 in), which does not add to 18; replaced by the paper's own KCL working, which gives I = 18 A"
+ },
+ {
+  "id": "fcb36902-fa63-440a-8912-4ca34694eb84",
+  "before": "f2162af1",
+  "solution": "\\(v_{rms} \\propto \\sqrt{T}\\) and for adiabatic process \\(TV^{\\gamma-1} = \\text{const}\\). Reducing \\(v_{rms}\\) 3 times means \\(T\\) reduces 9 times, so \\(V \\propto T^{-1/(\\gamma-1)} = T^{-2}\\); ratio \\(= 9^2 = 81\\). Matches option A: 81 times.",
+  "note": "sign of the exponent: TV^(gamma-1) = const gives V proportional to T^(-1/(gamma-1)) = T^(-2); T falls 9 times so V rises 9^2 = 81 times"
+ },
+ {
+  "id": "3167fbe0-ebd5-4e51-8557-37725e7cc982",
+  "before": "bc504c21",
+  "solution": "By conservation of momentum: \\(mv = Mv'\\), so \\(v'/v = m/M\\). Coefficient of restitution \\(e = (v_2 - v_1)/(u_1 - u_2) = v'/v = m/M\\). Matches option A: \\(\\frac{m}{M}\\).",
+  "note": "lost opening bracket in e = (v_2 - v_1)/(u_1 - u_2)"
+ },
+ {
+  "id": "c1ad6d40-b7c2-4534-ad98-b6b9fd689613",
+  "before": "236fae68",
+  "solution": "Final velocity of \\(m_1 = \\frac{v_1}{1.5} = \\frac{2v_1}{3}\\). For an elastic collision \\(v_1' = \\dfrac{(m_1 - m_2)v_1}{m_1 + m_2}\\); setting it equal to \\(\\dfrac{2v_1}{3}\\) gives \\(3(m_1 - m_2) = 2(m_1 + m_2)\\), so \\(\\dfrac{m_1}{m_2} = 5:1\\). Matches option C: 5:1.",
+  "note": "the step to 5:1 was skipped; shows the elastic-collision formula and the equation that gives 5"
+ },
+ {
+  "id": "d7258ef9-f5f1-4d90-8ca5-8fa36fe4b09c",
+  "before": "9f2bdf2c",
+  "solution": "\\(m = NI\\pi r^2\\). Setting \\(m_A = m_B\\): \\(N_A I_A \\pi (0.1)^2 = N_B I_B \\pi (0.2)^2\\), giving \\(N_A I_A = 4N_B I_B\\). Matches option C.",
+  "note": "the area is pi r^2, so m = N I pi r^2 (A pi r^2 counted it twice); next line already uses N I pi r^2"
+ },
+ {
+  "id": "66e4dbe8-9b07-4660-9bfe-bd2567f008ae",
+  "before": "8d406c94",
+  "solution": "\\(l=2\\pi r\\Rightarrow r=\\dfrac{l}{2\\pi}\\). \\(M=I\\pi r^2=\\dfrac{Il^2}{4\\pi}\\Rightarrow l^2=\\dfrac{4\\pi M}{I}\\Rightarrow l=\\left(\\dfrac{4\\pi M}{I}\\right)^{1/2}\\). Matches option C: \\(\\left(\\dfrac{4\\pi M}{I}\\right)^{1/2}\\).",
+  "note": "l^2 = 4 pi M/I gives l = (4 pi M/I)^(1/2), which is the paper's option (c) [4M pi/I]^(1/2); the stored 4(M/(pi I))^(1/2) was our miscopy of the option"
+ },
+ {
+  "id": "db256d1d-bbaf-4b81-9399-b792afcae718",
+  "before": "447feca5",
+  "solution": "Energy released \\(W=4\\pi T(nr^2-R^2)\\). With \\(nr^3=R^3\\): \\(W=4\\pi TR^3\\!\\left(\\frac{1}{r}-\\frac{1}{R}\\right)\\). Equating to KE: \\(\\frac{1}{2}\\cdot\\frac{4}{3}\\pi R^3\\rho v^2=W\\), giving \\(v=\\sqrt{\\frac{6T}{\\rho}\\!\\left(\\frac{1}{r}-\\frac{1}{R}\\right)}\\). Matches option D.",
+  "note": "volume conservation is n r^3 = R^3, not n R^3 = R^3"
+ },
+ {
+  "id": "e7c053a7-df5a-4e3d-b26c-4c5b271f037f",
+  "before": "40ab0a40",
+  "solution": "Reading the v-t graph (areas of the rectangular segments, signs by side of the time axis):\nDisplacement = \\((3\\times2) - (1\\times2) + (2\\times2) - (1\\times2) + (2\\times2)\\), that is the segment areas \\(6,-2,4,-2,4\\): displacement \\(= 6-2+4-2+4 = 10\\).\nDistance = \\(6+2+4+2+4 = 18\\).\n\\[\\frac{\\text{displacement}}{\\text{distance}} = \\frac{10}{18} = \\frac{5}{9}.\\]",
+  "note": "garbled product line; the paper's own solution prints (3x2)-(1x2)+(2x2)-(1x2)+(2x2) = 6-2+4-2+4 = 10"
+ },
+ {
+  "id": "0f96e811-bf46-4eb2-9216-b278ef5a9c84",
+  "before": "cfeccdd7",
+  "solution": "Apparent depth of P (at depth \\(d-h\\), where \\(d\\) is the depth of the mirror): \\(x_1 = (d-h)/\\mu\\). Apparent depth of image (at depth \\(d+h\\) below the surface): \\(x_2 = (d+h)/\\mu\\). Apparent distance between P and its image \\(= x_2 - x_1 = \\dfrac{(d+h)-(d-h)}{\\mu} = 2h/\\mu\\). Matches option B: \\(\\frac{2h}{\\mu}\\).",
+  "note": "P is at height h above the mirror, i.e. depth d-h; image at d+h; difference 2h/mu (the paper's own solution uses d)"
+ },
+ {
+  "id": "6f36036d-9aa5-480c-a241-1bbb3871e918",
+  "before": "c469c678",
+  "solution": "Magnification \\(m=-2\\Rightarrow v=-2u\\). Lens formula: \\(\\frac{1}{-2u}-\\frac{1}{u}=\\frac{1}{f}\\Rightarrow u=-1.5f\\), so the object distance is \\(1.5f\\). Matches option D: 1.5 f.",
+  "note": "with v = -2u the lens formula gives u = -1.5 f (object on the left); the distance is 1.5 f"
+ },
+ {
+  "id": "926f49df-3023-4f78-ab9c-5a01ca629430",
+  "before": "3ae89fba",
+  "solution": "In Bohr model, potential energy \\(\\propto -1/n^2\\), so \\(n=2\\) orbit has PE \\(-27.2/4 = -6.8\\) eV and \\(n=1\\) has \\(-27.2\\) eV. Since \\(-6.8 > -27.2\\), PE in \\(n=2\\) is greater (less negative), not less. Statement D is false. Matches option D.",
+  "note": "PE = 2E = -27.2/n^2 eV (total energy is -13.6/n^2); conclusion D unchanged"
+ },
+ {
+  "id": "94ac013c-0020-4d3e-9cca-4f2380565105",
+  "before": "2e38b003",
+  "solution": "Energy \\(\\propto \\frac{Z^2}{n^2}\\). For H, \\(n=2, Z=1\\): \\(E_H = E\\). For He, \\(n=3, Z=2\\): \\(E_{He} = \\frac{4/9}{1/4} E_H = \\frac{4}{9} \\cdot \\frac{4E}{1} = \\frac{16E}{9}\\). Matches option C: \\(\\frac{16E}{9}\\).",
+  "note": "E_H = E, so E_He = (4/9)/(1/4) E = 16E/9; the old line used E_H = 4E"
+ },
+ {
+  "id": "070880fe-ac97-414e-bf0c-ddd6ff3d5702",
+  "before": "b4644d00",
+  "solution": "From \\(t/0.04 = ft\\), \\(f = 1/0.04 = 25\\text{ Hz}\\). \\(a_{max} = \\omega^2 A = (2\\pi f)^2 \\times 3 = (50\\pi)^2 \\times 3 = 2500\\pi^2 \\times 3 = 25000 \\times 3 = 7.5 \\times 10^4\\text{ cm/s}^2\\). Matches option D: 25 Hz, \\(7.5 \\times 10^4\\text{ cm/s}^2\\).",
+  "note": "garbled line replaced by the working: omega = 50 pi, omega^2 = 2500 pi^2 = 25000 (pi^2 = 10), times A = 3 gives 7.5e4"
+ },
+ {
+  "id": "39acbeb0-524d-4795-80ef-caa792118690",
+  "before": "a1b07218",
+  "solution": "Fundamental \\(f \\propto \\frac{1}{L}\\sqrt{\\frac{T}{\\rho d^2}}\\) (mass per length \\(\\propto \\rho d^2\\)). After substitution, \\(\\frac{f_A}{f_B} = \\frac{1}{2}\\sqrt{\\frac{2}{2 \\times 4}} = \\frac{1}{4}\\): fundamental of A is \\(\\frac{1}{4}\\) that of B. The 3rd overtone (4th harmonic) of A equals fundamental of B. Matches option C: third.",
+  "note": "the substitution was never shown; added f_A/f_B = (1/2) sqrt(2/(2*4)) = 1/4 (1/4 is right, key C right)"
+ },
+ {
+  "id": "4cd9cec9-a28a-44f2-8869-10c704db0f11",
+  "before": "3da0273d",
+  "solution": "\\(v \\propto \\sqrt{T}\\); \\(v_{27} = 330\\sqrt{300/273} = 345.9\\) m/s; \\(\\lambda_{27} = 345.9/220 = 1.57\\) m; increase \\(= 1.57 - 1.50 = 0.07\\) m. Matches option D: 0.07 m.",
+  "note": "330 x sqrt(300/273) = 345.9 m/s, not 346.1; 1.57 and 0.07 unchanged"
+ },
+ {
+  "id": "52831131-a3bc-47d2-9766-e72264cf553d",
+  "before": "fc011bb8",
+  "solution": "Since \\(f\\propto\\frac{1}{l}\\) and beat frequency is 5 Hz, solving \\(f_1\\times0.97=f_2\\times0.96\\) with \\(f_2-f_1=5\\) gives \\(f_1=480\\ \\text{Hz}\\), \\(f_2=485\\ \\text{Hz}\\). Matches option D.",
+  "note": "f1 x 0.97 = f2 x 0.96 makes f2 the higher one, so f2 - f1 = 5"
+ },
+ {
+  "id": "ac81210b-02fc-4b91-adfb-d5fc6dd308b2",
+  "before": "e2c9ea1f",
+  "solution": "GCD of 90, 150, 210 = 30 Hz = fundamental. These are 3rd, 5th, 7th harmonics. Wavelength \\(\\lambda = 2L/n\\) for the fundamental: \\(\\lambda = 2 \\times 0.8 = 1.6\\) m, and for the 3rd harmonic \\(n=3\\): \\(\\lambda = 2 \\times 0.8/3 = 0.533\\) m. Speed \\(v = f\\lambda = 90 \\times (2 \\times 0.8/3) = 90 \\times 1.6/3 = 48\\) m/s. \\(v = f_0 \\times 2L = 30 \\times 1.6 = 48\\) m/s. Matches option C: 48 m/s.",
+  "note": "false start cleaned: v = 90 x (2x0.8/3) = 90 x 1.6/3 = 48 m/s (no stray x3, no trailing dots)"
+ },
+ {
+  "id": "c0d7b697-9f2c-44de-a34f-3e00ff961ad0",
+  "before": "3a091680",
+  "solution": "End correction \\(e = 0.6d = 1.2r\\). So \\(r = \\frac{0.8}{1.2} = \\frac{2}{3}\\) cm. Matches option B.",
+  "note": "open-pipe end correction is e = 0.6 d = 1.2 r (d = 2r), as the paper's working says; 0.6r was one end only"
+ },
+ {
+  "id": "ee4a9174-3de6-4ef2-9a1e-260609d24f32",
+  "before": "5dcb49f9",
+  "solution": "Maximum particle velocity \\(v_{max}=\\omega a=2\\pi n a\\). Wave velocity \\(v_w=\\frac{\\omega}{k}=\\frac{2\\pi n}{2\\pi/5}=5n\\). Ratio \\(=\\frac{v_{max}}{v_w}=\\frac{2\\pi n a}{5n}=\\frac{2\\pi a}{5}\\). Matches option B.",
+  "note": "garbled/unfinished lines replaced: v_w = omega/k = 2 pi n/(2 pi/5) = 5n; ratio = 2 pi n a/(5n) = 2 pi a/5"
+ },
+ {
+  "id": "f202324a-5d25-492f-a932-a41ccc5b4d13",
+  "before": "617b4fd8",
+  "solution": "Fundamental frequency \\(f \\propto \\sqrt{T}\\). So \\(\\frac{f}{f'} = \\sqrt{\\frac{T}{T+3}} = \\frac{2}{3}\\). Squaring: \\(\\frac{T}{T+3} = \\frac{4}{9}\\), giving \\(9T = 4T + 12\\), \\(T = 2.4\\,\\text{kg-wt}\\). Matches option C: \\(2.4\\,\\text{kg-wt}\\).",
+  "note": "unit is kg-wt, not kg.omega t"
+ },
+ {
+  "id": "0a4ad228-a120-46e4-81b0-8c894ad85a68",
+  "before": "2c227587",
+  "solution": "\\(\\frac{R'}{R} = \\frac{400^4 - 200^4}{600^4 - 200^4} = \\frac{256-16}{1296-16} = \\frac{240}{1280} = \\frac{3}{16}\\). Matches option A.",
+  "note": "the 10^8 cancels top and bottom, so no x10^8 in the ratio"
+ },
+ {
+  "id": "81529f35-58e5-42b2-8ce7-0a58ed8d0c81",
+  "before": "0ec759dc",
+  "solution": "\\(\\Delta L = L\\alpha\\Delta T = 10 \\times 1.3\\times10^{-5}\\times28 = 3.64\\times10^{-3}\\text{ m} = 3.64\\text{ mm}\\). Matches option C: 3.64 mm.",
+  "note": "the product is 3.64e-3 m; the old line wrote 3.64 for it, a unit slip (3.64 mm key unchanged)"
+ },
+ {
+  "id": "22510b27-3269-4b5b-b1ab-b4b7a80699cd",
+  "before": "48889d82",
+  "solution": "Position of 10th bright: \\(y_{10} = 10\\lambda D/d\\). Position of 3rd dark: \\(y_3' = 5\\lambda D/(2d)\\). Difference \\(= 15\\lambda D/(2d) = (10 - 2.5)\\lambda D/d = 7.5\\lambda \\times \\frac{1.2}{0.6 \\times 10^{-3}} = 15\\lambda \\times 10^3\\). Solving: \\(\\lambda = 8.85 \\times 10^{-3}/(15 \\times 10^3) = 5.9 \\times 10^{-7}\\) m \\(= 5900\\,\\text{\\AA}\\). Matches option C: \\(5900\\,\\text{\\AA}\\).",
+  "note": "stray 'x 2/2...' removed and the substitution D/d = 1.2/(0.6e-3) shown: 7.5 x 2000 = 15e3"
+ },
+ {
+  "id": "5a0ca517-2d40-4c61-b056-cba3c7eb29f7",
+  "before": "5c63c16a",
+  "solution": "\\(I_{\\max}/I_{\\min} = (\\sqrt{I_1}+\\sqrt{I_2})^2/(\\sqrt{I_1}-\\sqrt{I_2})^2\\). With \\(I_1=2I_2\\): numerator \\(= (\\sqrt{2}+1)^2 I_2 = (3+2\\sqrt{2})I_2\\), denominator \\(=(\\sqrt{2}-1)^2 I_2=(3-2\\sqrt{2})I_2\\), giving ratio \\(17+12\\sqrt{2} \\approx 34:1\\) (after full expansion \\((\\sqrt{2}+1)^2/(\\sqrt{2}-1)^2 = 17+12\\sqrt{2} \\approx 34\\)). Matches option B: 34:1.",
+  "note": "(3+2 sqrt2)/(3-2 sqrt2) = 17+12 sqrt2 = 33.97, so '= 34' is only approximate; key B 34:1 stays"
+ },
+ {
+  "id": "997c5a18-da1e-4b7b-9c0a-6da5cbb68759",
+  "before": "4f9512d2",
+  "solution": "First minimum: \\(a\\sin30^\\circ=\\lambda\\Rightarrow \\lambda=a\\sin30^\\circ\\). First secondary maximum at \\(a\\sin\\theta=\\frac{3\\lambda}{2}\\): dividing, \\(\\sin\\theta=\\frac{3}{2}\\cdot\\frac{1}{2}=\\frac{3}{4}\\). Matches option B: \\(\\sin^{-1}(3/4)\\).",
+  "note": "'a lambda = a sin30' is a typo for lambda = a sin30 (first minimum: a sin theta = lambda)"
+ },
+ {
+  "id": "3b41ca29-54b0-42e7-886f-517c7a5d6d5a",
+  "before": "fddd2ef1",
+  "solution": "Using \\(\\alpha = \\omega^2 x_1\\), \\(\\beta = \\omega^2 x_2\\) and \\(v^2 - u^2 = \\omega^2(x_1^2 - x_2^2)\\): distance \\(= x_2 - x_1 = \\frac{u^2 - v^2}{\\alpha + \\beta}\\). Matches option A.",
+  "note": "distance is x2 - x1 (alpha<beta so x2>x1); the paper's own working ends with x2 - x1 = (u^2-v^2)/(alpha+beta)"
+ },
+ {
+  "id": "e53a6bd2-fccf-484f-a823-317c5014a3f3",
+  "before": "f34d5880",
+  "solution": "\\(\\Delta\\phi = \\left(\\dfrac{2\\pi}{T_1} - \\dfrac{2\\pi}{T_2}\\right)t\\) with \\(T_1 = T,\\ T_2 = \\tfrac{3T}{2}\\), at \\(t = 2T\\).\n\\(\\Delta\\phi = \\left(2\\pi - \\dfrac{4\\pi}{3}\\right)\\dfrac{2T}{T} = \\dfrac{4\\pi}{3}\\,\\text{rad}\\).",
+  "note": "garbled line with '...' and 'evaluating per phase accumulated' made a clean equals chain; (2pi - 4pi/3)(2T/T) = 4pi/3 is right"
+ },
+ {
+  "id": "8a67575b-ef9d-4251-95fe-196dd583feeb",
+  "before": "35bf0767",
+  "solution": "Same mass and same material; solid sphere is more compact (smaller radius) so \\(R_s < R_h\\), and \\(I_{s} = \\dfrac{2}{5}MR_s^{2}\\), \\(I_{h} = \\dfrac{2}{3}MR_h^{2}\\).\n\\[\\frac{I_{s}}{I_{h}} = \\frac{2/5}{2/3}\\cdot\\frac{R_s^2}{R_h^2} = \\frac{3}{5}\\cdot\\frac{R_s^2}{R_h^2} < 1 \\Rightarrow I_{h} > I_{s}.\\]\nThe hollow sphere has mass distributed farther from the axis, so \\(I_{h} > I_{s}\\).",
+  "note": "same mass and same material means different radii (R_s < R_h); the old working compared at equal radius"
+ },
+ {
+  "id": "8a81e24f-3318-433b-9256-708d6489ae99",
+  "before": "ef3f9214",
+  "solution": "The axis passes through the centre of sphere 1, perpendicular to the rod. Sphere 1 rotates about its own diameter: \\(I_1 = \\frac{2}{5}MR^2\\). Sphere 2's centre is a distance \\(4R\\) from the axis, the rod's length being the centre-to-centre distance. Sphere 2 therefore has \\(h = 4R\\) in the parallel-axis theorem. By the parallel-axis theorem, \\(I_2 = \\frac{2}{5}MR^2 + M(4R)^2 = \\frac{2}{5}MR^2 + 16MR^2\\). The rod is massless. Total: \\(I = I_1 + I_2 = \\frac{2}{5}MR^2 + \\frac{2}{5}MR^2 + 16MR^2 = \\frac{4}{5}MR^2 + \\frac{80}{5}MR^2 = \\frac{84}{5}MR^2\\).",
+  "note": "removed the working's own doubt ('surfaces?'); the key and the paper's working take the centres 4R apart"
+ },
+ {
+  "id": "2c51a37e-641e-490a-bacb-4aac03d3b3ad",
+  "before": "61d17a41",
+  "solution": "By mass conservation (same density), the part still rolled up has mass \\(M_2 = M/4\\). Initial PE = \\(MgR\\); final PE = \\(M_2 g(R/2) = MgR/8\\). Change = \\(MgR - MgR/8 = \\frac{7}{8}MgR\\). Matches option B.",
+  "note": "M/4 is the mass of the part still rolled (radius R/2), not the unrolled portion"
+ },
+ {
+  "id": "70e595dd-0a2b-442d-be5f-14752a2815b4",
+  "before": "c28cf04a",
+  "solution": "The circuit implements \\(Y = \\overline{\\overline{A \\cdot A} \\cdot \\overline{B \\cdot B}} = \\overline{\\overline{A} \\cdot \\overline{B}}\\), applying De Morgan's: \\(Y = \\overline{\\overline{A + B}} = A + B\\) (OR gate). Truth table for OR gate matches option C.",
+  "note": "the circuit's output is the NAND of the two inverted inputs; the line lost its outer inversion (paper's AK: Y = bar(bar(A.A).bar(B.B)) = bar(bar A . bar B) = A + B)"
+ },
+ {
+  "id": "16677b23-9e86-4866-9bb2-54c306232a56",
+  "before": "68502ded",
+  "solution": "Change in angular momentum \\(=\\frac{h}{2\\pi}(n_2-n_1)=\\frac{6.63\\times10^{-34}}{2\\pi}(5-4)\\approx1.06\\times10^{-34}\\approx1\\times10^{-34}\\ \\text{Js}\\). Matches option C.",
+  "note": "6.63e-34/(2 pi) = 1.0552e-34, so 1.06e-34 to 3 s.f., not 1.05"
+ },
+ {
+  "id": "88b0b6d6-69f9-4f41-baac-e728f96a726b",
+  "before": "b10c5d47",
+  "solution": "Bohr quantisation: \\(mvR=\\dfrac{nh}{2\\pi}\\) (i). For motion in a transverse field, \\(qvB=\\dfrac{mv^2}{R}\\), so \\(mv=qBR\\) (ii). Multiplying (ii) by \\(R\\): \\(mvR=qBR^2\\); and from (i), \\(R=\\dfrac{nh}{2\\pi mv}\\). Using \\(qvB=\\dfrac{mv^2}{R}\\Rightarrow qBR=mv\\), combine with (i): \\(qBR\\cdot R=\\dfrac{nh}{2\\pi}\\Rightarrow qBR^2=\\dfrac{nh}{2\\pi}\\). Energy \\(E=\\dfrac{1}{2}mv^2=\\dfrac{1}{2}qBvR\\). Since \\(mv=qBR\\) and \\(mvR=\\dfrac{nh}{2\\pi}\\Rightarrow vR=\\dfrac{nh}{2\\pi m}\\). Thus \\(E=\\dfrac{1}{2}qB\\,vR=\\dfrac{1}{2}qB\\cdot\\dfrac{nh}{2\\pi m}=\\dfrac{nqBh}{4\\pi m}\\). For \\(n=2\\): \\(E=\\dfrac{qBh}{2\\pi m}\\).",
+  "note": "the unfinished fragments ('...', '(i).') written as full statements; same steps and numbers"
  }
 ]
