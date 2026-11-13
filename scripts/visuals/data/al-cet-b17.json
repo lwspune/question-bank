@@ -1,0 +1,51 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "ad548edb-90f2-401e-91a3-99b25417a032",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\mathrm{R{-}CONH_2}\\ \\to\\ \\mathrm{R{-}NH_2}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "M(\\mathrm{CO}) = 12 + 16 = {{1:28}}",
+              "f": "12+16",
+              "value": "28",
+              "note": "one carbon lost as CO"
+            }
+          ],
+          "answer": "28"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "361561a7",
+        "answer": {
+          "value": 28,
+          "label": "28 g mol⁻¹"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
