@@ -121,12 +121,20 @@ export function assembleChallenge(pages: ChallengePage[], layout: Section[], ord
       )
       // a doubled line (two rules a few pixels apart) is one row boundary: rows are 35+ px tall
       .filter((r, k, all) => k === 0 || all[k - 1].page !== r.page || r.y - all[k - 1].y >= MIN_ROW);
+    // The stem box's top rule sits above its "Q.No" label: never an option boundary (counted, it
+    // stood in for a page-break boundary and shifted every option one row; 17 Nov S1 Q76).
+    const label = sorted
+      .flatMap((p) => p.labels.map((l) => ({ page: p.page, y: l.y0 })))
+      .find((l) => inSpan(l));
+    if (label) rules = rules.filter((r) => before(label, r));
     // Four boundaries and a page break between two of them: an option row ran to the page's foot and
     // the next began the new page, neither printing a rule, so the break itself is the fifth. (With
     // five already, a row split mid-row by the break is one row: no boundary is added.)
+    // The break can also fall between the stem and option A (the stem filled the page's foot).
     if (rules.length === 4) {
-      const k = rules.findIndex((r, j) => j > 0 && r.page > rules[j - 1].page);
-      if (k > 0) rules.splice(k, 0, { page: rules[k].page, y: 0 });
+      const seq = label ? [label, ...rules] : rules;
+      const k = seq.findIndex((r, j) => j > 0 && r.page > seq[j - 1].page);
+      if (k > 0) rules.splice(label ? k - 1 : k, 0, { page: seq[k].page, y: 0 });
     }
     let rows: { from: Pos; to: Pos }[];
     if (rules.length >= 5) {
