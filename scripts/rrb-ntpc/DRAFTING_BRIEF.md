@@ -62,7 +62,8 @@ solution:
 - **Subject:** every block. Arithmetic, algebra, geometry, mensuration, trigonometry, statistics:
   Mathematics. Series, coding, analogies, seating, blood relations, syllogisms, directions,
   mirror images: Reasoning. General Awareness goes to the eight subjects (general science to
-  Physics, Chemistry or Biology; art, culture and heritage to History; static GK, sports, awards,
+  Physics, Chemistry or Biology; art, culture and heritage to History (music, dance, folk songs
+  and festivals to History > Indian Art and Culture); static GK, sports, awards,
   books, schemes, summits and recent events to Current Affairs), and basic computer questions to
   Computer Knowledge.
 - **Catalog:** chapter and subtopic must be exact names under your subject in
