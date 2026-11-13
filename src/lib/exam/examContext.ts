@@ -49,6 +49,7 @@ export type ExamSlug =
   | "spi"
   | "uceed"
   | "ugc-net"
+  | "rrb-ntpc"
   | "clat";
 
 /**
@@ -781,6 +782,23 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // PUBLIC since 2026-11-10: June 2024, 20 shifts, 1,000 q, every one with a
     // worked solution. One timed mock per shift (ugc-net-paper-1-*), MOCKS.md.
     hasMocks: true,
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "rrb-ntpc",
+    // RRB NTPC (Railway Recruitment Boards, Non-Technical Popular Categories),
+    // Graduate level CBT 1 of cycle CEN 06/2025, sat 16-27 March 2026: all 24
+    // shifts, 2,400 q, read from RRB's own response sheets and every answer
+    // derived blind against RRB's tentative key (scripts/rrb-ntpc/). Added
+    // 2026-11-13 on the owner's call (graduate focus). A flawed question
+    // carries a note above its solution and rides as grace in its mock.
+    tier: "graduate",
+    goal: "government",
+    displayName: "RRB NTPC",
+    examName: "RRB NTPC", // must match the `exams` DB row exactly
+    hasMocks: true, // one mock per shift (rrb-ntpc-graduate-cbt-1-*)
     pastPaperSolutions: true,
     guidesPath: null,
     notesPath: null,
