@@ -153,14 +153,17 @@ def key_pixels(img):
     return n
 
 
-def mask_page(doc, page):
+def mask_page(doc, page, option_letters=False):
     """Repaint key colours, white out icons, tick glyphs and the panel's lines."""
     # Option labels, read BEFORE the colours are repainted: "1." to "4." in green or red.
     # Any colour: the CGL 2021 Tier II print sets the option NUMBER black (only its picture
     # option carries no colour at all), so an icon is known by sitting left of the number.
+    # option_letters (RRB NTPC): the print labels options "A." to "D."; such a label counts only
+    # in a key colour, so a stem line "A. All birds can fly." is never taken for an option row.
     option_labels = [
         s["bbox"] for b in page.get_text("dict")["blocks"] if b["type"] == 0 for l in b["lines"] for s in l["spans"]
         if re.match(r"^[1-4]\.", s["text"].strip())
+        or (option_letters and re.match(r"^[A-D]\.", s["text"].strip()) and keyish(s["color"]))
     ]
     # The CGL 2024 Tier II print draws each whole page inside a Form XObject, so its colours
     # live in that stream, not the page's own: repaint both.
@@ -228,14 +231,17 @@ def label(img, text):
 
 def main():
     if len(sys.argv) < 2:
-        sys.exit("usage: tcs_sheets.py <shiftId>")
+        sys.exit("usage: tcs_sheets.py <shiftId> [--out-root=DIR] [--option-letters]")
     shift = sys.argv[1]
-    base = os.path.dirname(os.path.abspath(__file__))
-    qfile = os.path.join(base, "out", shift, "questions.json")
+    # Another lane reading the same TCS print (scripts/rrb-ntpc) keeps its output in its own out/.
+    out_root = next((a.split("=", 1)[1] for a in sys.argv[2:] if a.startswith("--out-root=")), None)
+    option_letters = "--option-letters" in sys.argv[2:]
+    base = out_root or os.path.join(os.path.dirname(os.path.abspath(__file__)), "out")
+    qfile = os.path.join(base, shift, "questions.json")
     data = json.load(open(qfile, encoding="utf8"))
     if data.get("format") != "tcs":
         sys.exit(f"{qfile} is not a TCS shift: use sheets.py")
-    out_dir = os.path.join(base, "out", shift, "sheets")
+    out_dir = os.path.join(base, shift, "sheets")
     os.makedirs(out_dir, exist_ok=True)
     for f in os.listdir(out_dir):  # a rerun's batches can split differently: never leave an old one
         if f.startswith("batch-") and f.endswith(".png"):
@@ -250,7 +256,7 @@ def main():
         for r in q["regions"]:
             page = doc[r["page"]]
             if r["page"] not in page_rows:
-                page_rows[r["page"]] = mask_page(doc, page)
+                page_rows[r["page"]] = mask_page(doc, page, option_letters)
                 white_scan_icons(page, [m for m in marks if m["page"] == r["page"]])
             clip = fitz.Rect(LEFT, r["y0"] - PAD, page.rect.width - 20, r["y1"] + PAD)
             check_masked(page, clip, f"{shift} Q{q['number']}")
