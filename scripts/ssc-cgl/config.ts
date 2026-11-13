@@ -522,6 +522,8 @@ export const HELD: Record<string, number[]> = {
   "t2-2026-01-18-s1": [35, 59],
   // CHSL 3 Jul 2024 Q63: the question line under the pie chart is washed out of SSC's print.
   "chsl-t1-2024-07-03-s1": [63],
+  // CHSL 4 Jul 2024 Q66: likewise, only the caption and the bar graph print; no question.
+  "chsl-t1-2024-07-04-s1": [66],
 };
 
 export const OUT = join(__dirname, "out"); // gitignored: page images, geometry, reading sheets
