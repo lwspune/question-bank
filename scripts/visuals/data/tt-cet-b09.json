@@ -1,0 +1,212 @@
+{
+ "//": "Assembled from agent drafts (truthTable).",
+ "visuals": [
+  {
+   "id": "a579d8e8-25ef-4a7d-9414-31443b03d8d2",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~(p|q)",
+       "label": "∼(p ∨ q)"
+      },
+      {
+       "f": "~(p&q)",
+       "label": "∼(p ∧ q)"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~(p|q) & ~(p&q)",
+      "b": "~(p|q)",
+      "label": "Y = NOR gate"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "baca2d45",
+    "answer": {
+     "value": 1,
+     "label": "NOR gate"
+    }
+   }
+  },
+  {
+   "id": "bbf8e6b9-6de2-41a3-b495-8000651c6a56",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~(q|r)",
+       "label": "∼(B ∨ C)"
+      }
+     ],
+     "ask": {
+      "kind": "evaluate",
+      "at": {
+       "p": true,
+       "q": false,
+       "r": false
+      },
+      "f": [
+       "p & ~(q|r)"
+      ],
+      "expect": [
+       true
+      ],
+      "label": "Y at A=1, B=0, C=0"
+     },
+     "letters": {
+      "p": "input A",
+      "q": "input B",
+      "r": "input C"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "b6c12eb5",
+    "answer": {
+     "value": 1,
+     "label": "A=1, B=0, C=0"
+    }
+   }
+  },
+  {
+   "id": "f679c2fb-e654-459a-8ebd-98387f068b40",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "~(p&q)",
+       "label": "∼(A ∧ B)"
+      },
+      {
+       "f": "~(~p|q)",
+       "label": "∼(∼A ∨ B)"
+      }
+     ],
+     "ask": {
+      "kind": "evaluate",
+      "at": {
+       "p": true,
+       "q": true
+      },
+      "f": [
+       "~(~(p&q) | ~(~p|q))"
+      ],
+      "expect": [
+       true
+      ],
+      "label": "Y at A=1, B=1"
+     },
+     "letters": {
+      "p": "input A",
+      "q": "input B"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "31d1f28d",
+    "answer": {
+     "value": 1,
+     "label": "A = 1, B = 1"
+    }
+   }
+  },
+  {
+   "id": "f953693f-f51f-494b-9f63-05610279e6a9",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "columns": [
+      {
+       "f": "p|q",
+       "label": "p ∨ q"
+      },
+      {
+       "f": "~((p|q)&(p|q))",
+       "label": "∼[(p∨q)∧(p∨q)]"
+      }
+     ],
+     "ask": {
+      "kind": "equivalent",
+      "a": "~((p|q)&(p|q))",
+      "b": "~(p|q)",
+      "label": "combination = NOR"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "12d34c33",
+    "answer": {
+     "value": 1,
+     "label": "NOR gate"
+    }
+   }
+  }
+ ],
+ "decided": []
+}
