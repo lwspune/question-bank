@@ -190,5 +190,323 @@
   "before": "f8d41875",
   "solution": "Using \\(\\sin2x = 2\\tan x/(1+\\tan^2x)\\) and substituting \\(t=\\tan x\\), integral reduces to \\(\\frac{1}{2}\\int_{1/\\sqrt{3}}^1\\frac{t^4}{t^{10}+1}dt\\). Further substituting \\(u=t^5\\) gives \\(\\frac{1}{10}\\int_{1/(9\\sqrt{3})}^1\\frac{du}{1+u^2}=\\frac{1}{10}\\left[\\frac{\\pi}{4} - \\tan^{-1}\\frac{1}{9\\sqrt{3}}\\right]\\). Matches option C.",
   "note": "t = tan x (not tan^5 x) gives (1/2) int t^4/(t^10+1) dt; u = t^5 gives (1/10) int_{1/(9 sqrt3)}^1 du/(1+u^2); (1/sqrt3)^5 = 1/(9 sqrt3); key C"
+ },
+ {
+  "id": "70ff5216-d825-4ec5-8617-eece264bc885",
+  "before": "8f853942",
+  "solution": "Substitute \\(x = \\cos\\theta\\): integral becomes \\(\\int_0^{\\pi/2} \\tan\\frac{\\theta}{2}\\sin\\theta\\,d\\theta\\). Since \\(\\tan\\frac{\\theta}{2}\\sin\\theta = 2\\sin^2\\frac{\\theta}{2} = 1-\\cos\\theta\\), the integral is \\(\\int_0^{\\pi/2}(1-\\cos\\theta)\\,d\\theta = \\frac{\\pi}{2} - 1\\). Alternatively, rationalize and use standard results. Common mistake: missing the constant term after integration.",
+  "note": "the simplification and the integral were not shown; added (tan(t/2) sin t = 2 sin^2(t/2) = 1 - cos t)"
+ },
+ {
+  "id": "9b4dc79f-4c36-405c-86a2-7b73737d0f3f",
+  "before": "6c969ae6",
+  "solution": "Rewrite as \\(\\int\\frac{\\sec^2 x}{\\tan^{4/3}x}dx\\); substitute \\(t=\\tan x\\) to get \\(\\int t^{-4/3}dt=-3t^{-1/3}\\Big|_{1/\\sqrt3}^{\\sqrt3}\\). Evaluating gives \\(3^{7/6}-3^{5/6}\\). Matches option B.",
+  "note": "t-limits: tan(pi/6)=1/sqrt3 and tan(pi/3)=sqrt3 (the x-limits were kept on a t-antiderivative)"
+ },
+ {
+  "id": "9397f3ed-26a6-4e33-95f2-f16c9b962e78",
+  "before": "ef748898",
+  "solution": "\\(x = 0, y = 0, z = 1\\) gives \\(1, 7, 2\\) in the three equations; the determinant is \\(13 \\ne 0\\), so this is the only solution.",
+  "note": "determinant of [[1,1,1],[2,-1,7],[3,1,2]] = (-9) - (-17) + 5 = 13, not 19"
+ },
+ {
+  "id": "a4e14438-c7a4-45b9-a8e6-ec0745ce1f8b",
+  "before": "abe825ba",
+  "solution": "If \\(B=A^{-1}\\) then \\(AB=I\\). Row 1 of \\(A\\) times column 1 of \\(B\\): \\(-2+7+c=1\\Rightarrow c=-4\\); row 1 times column 3: \\(b-2+1=0\\Rightarrow b=1\\); row 2 times column 1: \\(-2+7a+3c=0\\Rightarrow7a=14\\Rightarrow a=2\\). Then \\(4a+2b-c=8+2+4=14\\). Check: row 2 times column 2 gives \\(-a+3=1\\) for \\(a=2\\), as \\(AB=I\\) requires.",
+  "note": "the remark that row 2 x column 2 gives 1 != 0 was wrong: AB=I needs that entry to be 1, and -a+3=1 for a=2; B is A^-1 and the stem has no defect"
+ },
+ {
+  "id": "880ccb88-c0cf-4b5e-bf0d-042e37c83817",
+  "before": "c5dea7f6",
+  "solution": "\\(\\frac{dp}{dt} = kp \\Rightarrow p = p_0 e^{kt}\\). At \\(t=40\\): \\(80 = 40e^{40k}\\), so \\(e^{40k}=2\\). At \\(t=80\\): \\(p = 40 \\times e^{80k} = 40 \\times 4 = 160\\) thousand \\(= 160000\\). Matches option C: 160000.",
+  "note": "40 is in thousands: 40 x 4 = 160 thousand = 160000"
+ },
+ {
+  "id": "999b08cb-52b5-44df-a261-d66027ac8435",
+  "before": "2b7ca43a",
+  "solution": "Dividing by \\(x^2y^2\\) and regrouping: \\(d\\!\\left(-\\frac{1}{xy}\\right)+d(\\log x)-d(\\log y)=0\\Rightarrow\\log\\frac{x}{y}=\\frac{1}{xy}+k\\). Matches option B.",
+  "note": "d(log x)-d(log y) integrates to log(x/y), not log(xy)"
+ },
+ {
+  "id": "c91db3b2-6fa1-437c-94a0-58eae8ea2a39",
+  "before": "e0f41705",
+  "solution": "Newton's law: \\(\\frac{T-T_0}{T_1-T_0}=e^{-kt}\\). After 30 min: \\(\\frac{60-30}{80-30}=e^{-30k}\\Rightarrow e^{-30k}=3/5\\). After 60 min: \\(T-30 = 50\\cdot(3/5)^2=18\\), \\(T=48^{\\circ}C\\). Matches option C.",
+  "note": "denominator T_1 - T_0 (T_0 = 30 room, T_1 = 80), matching the next line (60-30)/(80-30)"
+ },
+ {
+  "id": "ca571a40-c968-4419-bba7-aa8c124d50b7",
+  "before": "5506293c",
+  "solution": "Family: \\(x^2+y^2=2bx\\). Differentiating and eliminating b: \\((x^2+y^2)^2=4x^2\\!\\left(x+y\\frac{dy}{dx}\\right)^2\\). Matches option A.",
+  "note": "stray trailing x^2 removed: (x^2+y^2)^2 = 4x^2 (x + y y')^2"
+ },
+ {
+  "id": "d37d549c-4077-43a2-a029-44a494d8347a",
+  "before": "e435e4b8",
+  "solution": "Dividing by \\(x\\log x\\): IF \\(= e^{\\int\\frac{1}{x\\log x}dx} = \\log x\\). Solution: \\(y\\log x = 2(x\\log x - x)+c\\). At \\(x=1\\), \\(y\\log x=0\\): \\(0=2(0-1)+c\\Rightarrow c=2\\). At \\(x=e\\): \\(y(e) = 0+2 = 2\\). Matches option A.",
+  "note": "y(1)=0 is not given by the stem: at x=1 the left side y log x is 0, so c=2; the value asked is y(e)"
+ },
+ {
+  "id": "29c999f7-484d-44cd-a839-12b074b25e61",
+  "before": "341bdb16",
+  "solution": "Separate variables: \\(\\frac{y+1}{y}dy = -e^x(\\cos^2x - \\sin2x)dx\\). Note \\(-e^x(\\cos^2x-\\sin2x) = -\\frac{d}{dx}[e^x\\cos^2x]\\). Integrating: \\(y + \\ln y = -e^x\\cos^2x + C\\). Apply \\(y=1, x=0\\): \\(1+0 = -1+C\\Rightarrow C=2\\). Hence \\(y+\\ln y + e^x\\cos^2x = 2\\). Common mistake: not recognising the RHS as an exact derivative.",
+  "note": "d/dx[e^x cos^2 x] = e^x(cos^2 x - sin 2x), so the RHS is MINUS that derivative: y+ln y = -e^x cos^2 x + C, C=2"
+ },
+ {
+  "id": "346a8a80-5a74-4436-90c0-cd771f1aae8d",
+  "before": "90dda702",
+  "solution": "Using substitution \\(y = vx\\) gives \\(\\sec^2 v\\, dv = -dx/x\\). Integrating: \\(\\tan v = -\\ln x + c\\). Applying \\((1, \\pi/4)\\): \\(c=1\\). So \\(y = x\\tan^{-1}\\left(\\ln\\frac{e}{x}\\right)\\). Matches option C.",
+  "note": "tan v = 1 - ln x = ln(e/x), so y = x tan^-1(ln(e/x)) (option C); 'ln ex' was a different expression"
+ },
+ {
+  "id": "46fa8d47-ff95-468f-b5df-f7dd5672ab1a",
+  "before": "29a35206",
+  "solution": "\\(C_3 e^{x+C_4} = C_3 e^{C_4} e^x = B e^x\\). So \\(y = (C_1 + C_2)e^x + B e^x = Ae^x\\): only 1 arbitrary constant. Order = 1. Matches option B: 1.",
+  "note": "(C1+C2)e^x + Be^x = Ae^x with A = C1+C2+B: one arbitrary constant, order 1"
+ },
+ {
+  "id": "635f9d0f-d604-4e0a-8de0-7eaa7fe65cc5",
+  "before": "01a50ea8",
+  "solution": "Tangent to \\(x^2=4y\\) (here \\(4a=4\\), so \\(a=1\\)) in slope form: \\(x=my+\\dfrac{1}{m}\\), i.e. \\(mx=m^2y+1\\). Replace \\(m=\\dfrac{dx}{dy}=\\dfrac{1}{dy/dx}\\): \\(x\\dfrac{dy}{dx}=y+\\left(\\dfrac{dy}{dx}\\right)^2\\). This is order 1, degree 2.",
+  "note": "m = dx/dy (the tangent x = my + 1/m has slope 1/m): mx = m^2 y + 1 gives x y' = y + y'^2"
+ },
+ {
+  "id": "95a20268-67b2-4f23-8aaf-3ea772ede2fc",
+  "before": "0ccb8477",
+  "solution": "Implicit differentiation w.r.t. \\( y \\). At \\( (\\pi/4,\\pi/4) \\): \\( \\cos x = \\cos y = 1/\\sqrt{2} \\). After differentiation and substitution: \\( \\frac{dx}{dy} = \\frac{(a+\\sqrt{2}\\,b\\cos x)\\sin y}{(a-\\sqrt{2}\\,b\\cos y)\\sin x} = \\frac{(a+b)\\cdot\\frac{1}{\\sqrt{2}}}{(a-b)\\cdot\\frac{1}{\\sqrt{2}}}  \\). Simplifies to \\( \\frac{a+b}{a-b} \\). Matches option B.",
+  "note": "dx/dy = (a + sqrt2 b cos x) sin y / ((a - sqrt2 b cos y) sin x) (stored had it inverted, with 2b); at pi/4 it is (a+b)/(a-b)"
+ },
+ {
+  "id": "9bbc46f2-e8d4-447f-a2a0-dcb89bdba5c4",
+  "before": "6f54340c",
+  "solution": "\\(\\frac{dy}{dx} = \\frac{10(\\sec^{10}\\theta+\\cos^{10}\\theta)}{\\sec\\theta+\\cos\\theta}\\). Since \\(\\sec\\theta\\cos\\theta=1\\), \\(x^2+4=(\\sec\\theta+\\cos\\theta)^2\\) and \\(y^2+4=(\\sec^{10}\\theta+\\cos^{10}\\theta)^2\\); squaring the result for \\(dy/dx\\) gives \\((x^2+4)(dy/dx)^2 = 100(y^2+4)\\), so \\(k = 100\\). Matches option D: 100.",
+  "note": "the identity was not shown: x^2+4 and y^2+4 are perfect squares because sec*cos = 1"
+ },
+ {
+  "id": "a47f7ea3-05be-40f2-9ee6-5ccbebbbdcee",
+  "before": "f81c6c7b",
+  "solution": "Differentiating \\(y^2=(x+c)^3\\): \\(2y\\,dy/dx = 3(x+c)^2\\). From \\(2y\\,y'=3(x+c)^2\\): \\((x+c)^2=\\frac{2y\\,y'}{3}\\), so \\((x+c)^3=y^2\\) gives \\(\\left(\\frac{2y\\,y'}{3}\\right)^{3/2}=y^2\\); squaring, \\(\\frac{8y^3y'^3}{27}=y^4\\), so \\(8(dy/dx)^3 = 27y\\). Matches option C.",
+  "note": "the working broke off at \\cdots; spelled out the elimination of c"
+ },
+ {
+  "id": "e4456aff-cc03-4099-a21c-55fba4d0ebeb",
+  "before": "cd98f403",
+  "solution": "This is a Bernoulli equation in \\(x(y)\\). Put \\(t=\\frac{1}{x}\\), so \\(\\frac{dt}{dy}=-\\frac{1}{x^2}\\frac{dx}{dy}\\); dividing the equation by \\(x^2\\) gives \\(\\frac{dt}{dy}-\\frac{t}{y}=-1\\). The integrating factor is \\(\\frac{1}{y}\\), so \\(\\frac{d}{dy}\\left(\\frac{t}{y}\\right)=-\\frac{1}{y}\\), giving \\(\\frac{t}{y}=-\\ln y+c\\). So \\(\\frac{1}{x} = cy - y\\ln y\\). Matches option B.",
+  "note": "worked solution for dx/dy + x/y = x^2 (the stem as printed in the paper)"
+ },
+ {
+  "id": "61cf70ca-8da9-43e4-bea2-5c79c2a72b5c",
+  "before": "d95e2781",
+  "solution": "Highest order derivative is \\(\\frac{d^3y}{dx^3}\\) (order \\(m=3\\)). Multiplying by \\(\\frac{d^3y}{dx^3}\\) clears the fraction, and then \\(\\frac{d^3y}{dx^3}\\) occurs to the power 2, so degree \\(n=2\\). \\(m^2+n^2=9+4=13\\). Matches option B: 13.",
+  "note": "stored [1] said degree 1 but [2] used n=2; the stem (as the paper prints it) gives n=2 after clearing the fraction"
+ },
+ {
+  "id": "a565bdb7-c2cb-4722-add3-2c635dd7a271",
+  "before": "54fca6d2",
+  "solution": "The continued fraction repeats, so \\(y=\\dfrac{\\sin x}{1+\\dfrac{\\cos x}{1+y}}\\), i.e. \\(y(1+y+\\cos x)=(1+y)\\sin x\\). Differentiating w.r.t. \\(x\\): \\(y'(1+2y+\\cos x-\\sin x)=y\\sin x+(1+y)\\cos x\\), which gives option A. Matches option A.",
+  "note": "stored [0] y(1+cos x - sin x) = sin x (1+y) is wrong (y(1+y+cos x) = (1+y) sin x); the differentiation is now shown"
+ },
+ {
+  "id": "292a63fe-afb9-4f4c-83f8-4476fc990779",
+  "before": "c796238a",
+  "solution": "Write \\(\\sin^{11/3}x\\cos^{1/3}x=\\tan^{11/3}x\\cos^{4}x\\), so the integrand is \\(\\tan^{-11/3}x\\,(1+\\tan^{2}x)\\sec^{2}x\\); substitute \\(t = \\tan x\\). After integration: \\(\\int t^{-11/3}(1+t^{2})\\,dt = -\\frac{3}{8}t^{-8/3} - \\frac{3}{2}t^{-2/3} = -\\left(\\frac{3}{8}\\tan^{-8/3}x + \\frac{3}{2}\\tan^{-2/3}x\\right)\\). So \\(f(x)=\\tan^{-8/3}x\\), \\(g(x)=\\tan^{-2/3}x\\). Matches option A.",
+  "note": "stem is the cube root of sin^11 x cos x with a minus outside the bracket; solution now derives the t-integral and the sign"
+ },
+ {
+  "id": "3e52f2dc-576f-4da8-a9c2-e027be12c9ec",
+  "before": "b6c1183a",
+  "solution": "Substituting \\(2x-1 = t^2\\): after integration, \\(= \\frac{\\sqrt{2x-1}\\,(x+4)}{3} + c = \\frac{(x+4)}{3}\\sqrt{2x-1} + c\\). Thus \\(f(x) = \\frac{x+4}{3}\\). Matches option B: \\(\\frac{1}{3}(x+4)\\).",
+  "note": "the integral's value lacked its square root, so the two sides were not equal"
+ },
+ {
+  "id": "581102aa-41ee-47ab-ac9a-2a16af2ae814",
+  "before": "1489aa07",
+  "solution": "Divide numerator and denominator by \\( \\cos^{2}x \\); let \\( t = \\tan x \\). Integral becomes \\( \\int\\frac{dx}{1+3\\sin^{2}x} = \\int\\frac{\\sec^{2}x\\,dx}{1+4\\tan^{2}x} = \\int\\frac{dt}{1+4t^{2}} \\). \\( \\frac{1}{4}\\int\\frac{dt}{t^{2}+(1/2)^{2}} = \\frac{1}{2}\\tan^{-1}(2t) + c \\), so \\( f(x) = 2\\tan x \\). Matches option A.",
+  "note": "dividing by cos^2 x gives sec^2 x/(1+4 tan^2 x), not the stored (1+t^2)+3t^2/(1+t^2) form; the arctan step is now shown"
+ },
+ {
+  "id": "ef99e693-90ba-4588-968e-c0b6363dc435",
+  "before": "eec7bcd0",
+  "solution": "Let \\( t = \\sec x \\), \\( dt = \\sec x\\tan x\\,dx \\). Integral \\( = \\int\\frac{dt}{9-16(t^{2}-1)} = \\int\\frac{dt}{25-16t^{2}} = \\frac{1}{40}\\log\\left|\\frac{5+4t}{5-4t}\\right|+c \\). Matches option B.",
+  "note": "the paper has no square root; with sqrt the 1/40 log form would not follow"
+ },
+ {
+  "id": "5e1fd41b-fa67-41fd-ab0d-70bcbe1b5b6c",
+  "before": "b5680f87",
+  "solution": "Substituting \\(\\log x=t\\): integral becomes \\(\\frac{1}{2}\\int(\\sec^2\\frac{t}{2}+2\\tan\\frac{t}{2})e^t\\,dt=\\tan\\frac{t}{2}\\cdot e^t+C=x\\tan\\frac{\\log x}{2}+C\\). Matches option D.",
+  "note": "sec^2 printed without its backslash"
+ },
+ {
+  "id": "d471e2d7-40ea-4690-9a9e-2910e638bc9d",
+  "before": "3102d4e8",
+  "solution": "Let \\(t = 3^{x/2}\\); as \\(x\\to 2\\), \\(t\\to 3\\). Numerator \\(\\to t^2+27/t^2-12\\), denominator \\(\\to 27/t^2-t\\). Both tend to \\(0\\) as \\(t\\to3\\); by L'Hôpital in \\(t\\): numerator \\(\\to 2t-54/t^{3} = 4\\), denominator \\(\\to -54/t^{3}-1 = -3\\), so the limit is \\(-4/3\\). Matches option A: \\(-4/3\\).",
+  "note": "the limit was stated, not derived; the derivatives in t are now worked"
+ },
+ {
+  "id": "e7db73f2-e7cc-467a-bfdd-4f9928840f43",
+  "before": "bb6825d1",
+  "solution": "Rationalise numerator and denominator; at \\(x=a\\): \\(\\lim = \\frac{(a+2x)-(3x)}{(3a+x)-(4x)}\\cdot\\frac{\\sqrt{3a+x}+2\\sqrt{x}}{\\sqrt{a+2x}+\\sqrt{3x}} = \\frac{a-x}{3(a-x)}\\cdot\\frac{4\\sqrt{a}}{2\\sqrt{3}\\sqrt{a}}=\\frac{1}{3}\\cdot\\frac{2}{\\sqrt{3}}=\\frac{2}{3\\sqrt{3}}\\). Matches option C.",
+  "note": "at x=a the second factor is 4 sqrt(a)/(2 sqrt3 sqrt a)=2/sqrt3; the stored 3sqrt a/(2 sqrt a) and 1/(2 sqrt3) = 2/(3 sqrt3)/1 were wrong"
+ },
+ {
+  "id": "1150c855-776d-4a82-bc9c-1d71adeaf534",
+  "before": "cdc8def5",
+  "solution": "RHL: rationalise to get \\(\\lim_{x\\to0^+}\\frac{\\sqrt{x}(\\sqrt{16+\\sqrt{x}}+4)}{\\sqrt{x}} \\to 8\\). LHL: \\(\\frac{k^2}{2}\\). For continuity: \\(k^2/2 = 8 \\Rightarrow k = 4\\). Matches option A.",
+  "note": "after rationalising, (16+sqrt x)-16 = sqrt x, so the denominator is sqrt x, not x"
+ },
+ {
+  "id": "4f517d2b-efb7-4648-a0e1-0d21efe2a079",
+  "before": "53997ab6",
+  "solution": "Rationalising twice: limit reduces to \\(\\frac{1}{(\\sqrt{2}+\\sqrt{2})(1+1)} = \\frac{1}{4\\sqrt{2}}\\). Matches option C.",
+  "note": "the extra 1 in the first factor made the product 2(1+2 sqrt2), not 4 sqrt2"
+ },
+ {
+  "id": "687ab536-820c-4b72-af8e-988a0f43862a",
+  "before": "7bad7a43",
+  "solution": "Factor denominator: \\(x^3-3x^2+2x = x(x-1)(x-2)\\). Combine fractions: \\(\\frac{x(x-1)-2}{x(x-1)(x-2)} = \\frac{x^2-x-2}{x(x-1)(x-2)} = \\frac{(x-2)(x+1)}{x(x-1)(x-2)}\\). Cancel \\((x-2)\\) and take limit: \\(\\frac{3}{2\\times1} = \\frac{3}{2}\\). Matches option C: \\(\\frac{3}{2}\\).",
+  "note": "the numerator of the second fraction is 2, not 2x; x^2-x-2 = (x-2)(x+1) then follows"
+ },
+ {
+  "id": "98dcc91e-abab-4280-907d-dc4fddea42a1",
+  "before": "94776df5",
+  "solution": "Substituting \\( t = \\pi/2-x \\to 0 \\): numerator: \\( \\frac{1-\\tan(x/2)}{1+\\tan(x/2)}=\\tan\\frac{t}{2}\\sim\\frac{t}{2} \\) and \\( 1-\\sin x=1-\\cos t\\sim\\frac{t^2}{2} \\), so \\( \\sim\\frac{t}{2}\\cdot\\frac{t^2}{2}=\\frac{t^3}{4} \\); denominator \\( \\sim 8t^3 \\). The limit is \\( \\frac{t^3/4}{8t^3} = \\frac{1}{32} \\). Matches option B: \\( 1/32 \\).",
+  "note": "numerator is ~ t^3/4 (not t^4 order); with denominator 8t^3 the limit is 1/32, now shown"
+ },
+ {
+  "id": "a30ef464-26b1-45bb-9f7e-ce543977e479",
+  "before": "b5d909ed",
+  "solution": "As \\(x\\to0^-\\), \\([x]=-1\\) and \\(|x|=-x\\). Expression: \\(\\frac{x(-1+(-x))\\sin(-1)}{-x}=\\frac{x(-1-x)(-\\sin1)}{-x}=-(-1-x)(-\\sin1)\\to-(-1)(-\\sin1)=-\\sin1\\). Matches option D.",
+  "note": "the factor x/(-x) = -1 was dropped, so (-1)(-sin1) = +sin1 did not equal the stated -sin1"
+ },
+ {
+  "id": "b34af94e-32a5-4e7f-9d4e-774327927d34",
+  "before": "a6d702b9",
+  "solution": "\\(\\lim_{x\\to 0}(1+\\tan x)^{\\csc x}/(1+\\sin x)^{\\csc x}\\). The base \\(\\to 1\\) while \\(\\csc x\\to\\infty\\), a \\(1^\\infty\\) form, so \\(\\lim = e^{\\lim \\csc x\\,(\\text{base}-1)}\\) with \\(\\text{base}-1=\\frac{\\tan x-\\sin x}{1+\\sin x}\\). Formal: \\(\\lim = e^{\\lim \\frac{\\csc x(\\tan x - \\sin x)}{1+\\sin x}} = e^{\\lim \\frac{1/\\cos x - 1}{1+\\sin x}} = e^0 = 1\\). Matches option B: 1.",
+  "note": "(1+0)/(1+0)=1 is invalid for a 1^infinity form; replaced by the exponent route, with the missing 1/(1+sin x) factor restored"
+ },
+ {
+  "id": "310497be-2dcc-46b8-9811-392c268f6604",
+  "before": "e4e2b155",
+  "solution": "Write \\(\\left(\\frac{x+2}{x+4}\\right)^2 = \\frac{x^2+4x+4}{(x+4)^2} = \\frac{x(x+4)}{(x+4)^2} + \\frac{4}{(x+4)^2} = \\frac{x}{x+4} + \\frac{4}{(x+4)^2}\\). With \\(f(x) = \\frac{x}{x+4}\\): \\(f'(x) = \\frac{4}{(x+4)^2}\\), so the integrand is \\(e^x[f(x)+f'(x)]\\) and \\(\\int e^x[f(x)+f'(x)]dx = e^x f(x) + c\\). Matches option A: \\(\\frac{e^x x}{x+4}+c\\).",
+  "note": "solution followed a misread stem (x+2)/(x+4)^2 and its own check failed; rewritten for the paper's ((x+2)/(x+4))^2 (the paper's key working)"
+ },
+ {
+  "id": "40f582d0-cf07-4ae1-b288-901905e55059",
+  "before": "c2950242",
+  "solution": "Using \\(\\sin x+\\sin^3x=\\sin x(1+\\sin^2x)\\) and \\(\\cos 2x=1-2\\sin^2x\\); substituting \\(\\cos x=t\\) gives \\(I=\\int\\frac{t^2-2}{2t^2-1}dt=\\frac{1}{2}\\int dt-\\frac{3}{2}\\int\\frac{dt}{2t^2-1}=\\frac{1}{2}t-\\frac{3}{4\\sqrt{2}}\\log\\left|\\frac{\\sqrt{2}t-1}{\\sqrt{2}t+1}\\right|+C\\), so \\(P=\\frac{1}{2}\\) and \\(Q=-\\frac{3}{4\\sqrt{2}}\\). Matches option B.",
+  "note": "working only stated P and Q; the integral is now worked (t = cos x), for the paper's log argument (sqrt2 cos x -1)/(sqrt2 cos x +1)"
+ },
+ {
+  "id": "9aae2667-aef5-4ffa-81ca-4fd23f357ee5",
+  "before": "e2a579c2",
+  "solution": "\\(\\left[\\frac{x}{2}\\right]\\) jumps by \\(1\\) at every even integer, so \\(f(x)=x\\left[\\frac{x}{2}\\right]\\) can be discontinuous only there. At \\(x=0\\) the jump is multiplied by \\(x=0\\), so \\(f\\) is continuous there. At \\(x=\\pm2,\\pm4,\\pm6,\\pm8\\) the jump is \\(x\\neq0\\), so \\(f\\) is discontinuous at these \\(8\\) points of \\((-10,10)\\). Matches option D.",
+  "note": "solution followed the wrong stem [x[x/2]] and listed -4..4; rewritten for x[x/2]"
+ },
+ {
+  "id": "e6d49c06-ee35-487e-bb43-f08c54b0fb73",
+  "before": "3677970b",
+  "solution": "With \\(x=\\sin t,\\ y=\\sin pt\\): \\(\\dfrac{dy}{dx}=\\dfrac{p\\sqrt{1-y^2}}{\\sqrt{1-x^2}}\\).\nWriting \\(\\sqrt{1-x^2}\\,y'=p\\cos pt\\) and differentiating again: \\(\\sqrt{1-x^2}\\,y''-\\dfrac{x}{\\sqrt{1-x^2}}\\,y'=-\\dfrac{p^2\\sin pt}{\\sqrt{1-x^2}}\\), so \\((1-x^2)y''-xy'=-p^2y\\) and \\((1-x^2)y''-xy'+p^2y=0\\).",
+  "note": "the stored line states the result of the second differentiation without doing it; the paper differentiates dy/dx = p cos pt / cos t again"
+ },
+ {
+  "id": "ed2e369f-5d29-40b4-9799-ace8f73abcda",
+  "before": "73bd9410",
+  "solution": "Put \\(x=\\tan\\theta\\) in \\(y=\\tan^{-1}\\!\\dfrac{\\sqrt{1+x^2}-1}x=\\dfrac\\theta2\\Rightarrow\\dfrac{dy}{d\\theta}=\\dfrac12\\). Put \\(x=\\sin\\theta\\) in \\(z=\\tan^{-1}\\!\\dfrac{2x\\sqrt{1-x^2}}{1-2x^2}=2\\theta\\Rightarrow\\dfrac{dz}{d\\theta}=2\\). Here \\(\\theta=\\tan^{-1}x\\) in the first and \\(\\theta=\\sin^{-1}x\\) in the second, so \\(y=\\tfrac12\\tan^{-1}x\\) and \\(z=2\\sin^{-1}x\\): \\(\\dfrac{dy}{dx}=\\dfrac{1}{2(1+x^2)}\\), \\(\\dfrac{dz}{dx}=\\dfrac{2}{\\sqrt{1-x^2}}\\), and at \\(x=0\\) \\(\\dfrac{dy}{dz}=\\dfrac{1/2}{2}=\\dfrac14\\).",
+  "note": "dy/dtheta / dz/dtheta is not dy/dz (different theta in the two substitutions) and the ratio is not independent of x; at x=0 it is 1/4"
+ },
+ {
+  "id": "f232541d-a646-4a25-9beb-7ecac489bcab",
+  "before": "6c1d9db6",
+  "solution": "Differentiating implicitly: \\(\\dfrac{1+y'}{x+y}=2xy'+2y\\); at \\(x=0\\), \\(\\log y=0\\) so \\(y=1\\), and \\(\\dfrac{1+y'}{1}=2\\), so \\(\\dfrac{dy}{dx}=1\\). Matches option A: 1.",
+  "note": "the working stated the result without the differentiated equation or its value at (0, 1)"
+ },
+ {
+  "id": "f2e27584-4537-42a5-a355-3aa7ce445697",
+  "before": "f4320586",
+  "solution": "Rewrite \\(y = \\frac{\\log\\tan x}{\\log\\sin x}\\). Using quotient rule and evaluating at \\(x = \\pi/4\\): the numerator is \\(2\\log\\sin\\frac{\\pi}{4} - 0 = -\\log 2\\) (the second term vanishes since \\(\\log\\tan(\\pi/4) = 0\\)) and the denominator is \\(\\left(\\log\\sin\\frac{\\pi}{4}\\right)^2 = \\frac{1}{4}\\log^2 2\\). Result = \\(\\dfrac{-\\log 2}{\\frac{1}{4}\\log^2 2} = -\\dfrac{4}{\\log 2}\\). Matches option C: \\(-\\dfrac{4}{\\log 2}\\).",
+  "note": "the value is -4/log 2 (the paper's own working), not -4 log 2; follows the option copy fix"
+ },
+ {
+  "id": "f484425a-4f27-4c04-8fcf-e519dbde932c",
+  "before": "8d3b1e01",
+  "solution": "Write \\(\\frac{6x\\sqrt{x}}{1-9x^3} = \\frac{2\\cdot3x\\sqrt{x}}{1-(3x\\sqrt{x})^2}\\). Let \\(u=3x\\sqrt{x}=3x^{3/2}\\), so \\(\\tan^{-1}\\) arg \\(= \\tan^{-1}(2u/(1-u^2)) = 2\\tan^{-1}u\\). Then \\(\\frac{d}{dx}[2\\tan^{-1}(3x^{3/2})] = \\frac{2}{1+9x^3}\\cdot\\frac{9}{2}\\sqrt{x} = \\frac{9\\sqrt{x}}{1+9x^3}\\) This is \\(\\sqrt{x}\\cdot\\frac{9}{1+9x^3}\\). Hence \\(g(x) = \\frac{9}{1+9x^3}\\). Matches option D.",
+  "note": "the derivative 9 sqrt(x)/(1+9x^3) = sqrt(x)·g(x) (stem restored by the copy fix); the stored lines wrote x·g(x) and then divided by sqrt x"
+ },
+ {
+  "id": "fc32abdc-b92e-45fc-9a6f-b802f3cff670",
+  "before": "dd1933fd",
+  "solution": "First term: \\(\\tan^{-1}\\!\\left(\\frac{3/2+x}{1-3x/2}\\right)=\\tan^{-1}(3/2)+\\tan^{-1}(x)\\). Second: \\(\\tan^{-1}\\dfrac{3x}{1+4x^2}=\\tan^{-1}\\dfrac{4x-x}{1+(4x)(x)}=\\tan^{-1}(4x)-\\tan^{-1}x\\), so \\(y = \\tan^{-1}(3/2)+\\tan^{-1}x+\\tan^{-1}(4x)-\\tan^{-1}x = C+\\tan^{-1}(4x)\\). \\(\\frac{dy}{dx}=\\frac{4}{1+16x^2}\\). Matches option B.",
+  "note": "the step was left as '...' and the x terms that cancel were never shown (the paper shows tan^-1 4x - tan^-1 x)"
+ },
+ {
+  "id": "ff28ea6f-99a9-4597-8c8d-e236a5b33208",
+  "before": "69d2385f",
+  "solution": "\\(h(x) = e^{\\sin^{-1}x}\\). \\(h'(x) = e^{\\sin^{-1}x} \\cdot \\frac{1}{\\sqrt{1-x^2}}\\). So \\(\\frac{h'(x)}{h(x)} = \\frac{1}{\\sqrt{1-x^2}}\\) and \\(\\left(\\frac{h'(x)}{h(x)}\\right)^2 = \\frac{1}{1-x^2}\\). The required value is \\(\\frac{1}{1-x^2}\\). Matches option C.",
+  "note": "the stem asks (h'/h)^2 (copy fix); the stored lines worked h'/h^2 and then h'/h"
+ },
+ {
+  "id": "0ad273b4-81b9-4ede-b3da-e28480b48408",
+  "before": "22f49a9e",
+  "solution": "Differentiate implicitly: \\(\\frac{1+y'}{x+y}=2(xy'+y)\\). At \\(x=0\\): \\(\\log y=0\\Rightarrow y=1\\). Substituting: \\(\\frac{1+y'}{1}=2(0\\cdot y'+1)\\Rightarrow y'=1\\). Matches option C.",
+  "note": "at x=0, y=1 the right side 2(xy'+y) is 2, not 2y'"
+ },
+ {
+  "id": "23749e1a-acae-4f74-8345-46304bd7094e",
+  "before": "6d79de7d",
+  "solution": "Simplify to get \\(y=\\frac{\\pi}{2}-2\\tan^{-1}(e^x)\\), so \\(y'=\\frac{-2e^x}{1+e^{2x}}\\). At \\(t=\\frac{1}{2}\\), \\(\\tan\\frac{y}{2}=\\frac{1}{\\sqrt{3}}\\), so \\(e^x=\\frac{1-\\tan(y/2)}{1+\\tan(y/2)}=\\frac{\\sqrt{3}-1}{\\sqrt{3}+1}\\); substituting gives \\(y'=-\\frac{1}{2}\\). Matches option B.",
+  "note": "y = pi/2 - 2 tan^-1(e^x) (the paper's own line); with the root restored tan(y/2) = 1/sqrt3 at t = 1/2, which gives e^x"
+ },
+ {
+  "id": "64b82c43-2488-43f0-af18-7016ca43a745",
+  "before": "74e0b2db",
+  "solution": "Let \\(x = \\cos\\theta\\). Then \\(\\tan^{-1}\\sqrt{\\dfrac{1-\\cos\\theta}{1+\\cos\\theta}} = \\tan^{-1}\\left(\\tan\\dfrac{\\theta}{2}\\right) = \\theta/2 = \\cos^{-1}x/2\\). Also \\(\\cos^{-1}(4x^3-3x) = \\cos^{-1}(\\cos 3\\theta) = 3\\theta = 3\\cos^{-1}x\\). Ratio of derivatives \\(= (1/2)/(3) = 1/6\\). Matches option D: \\(\\frac{1}{6}\\).",
+  "note": "the stored line drops the square root (and (1-cos)/(1+cos) = tan^2(theta/2), not tan(theta/2)); follows the stem copy fix"
+ },
+ {
+  "id": "09a84e05-b64e-4bce-b004-407fd8c102fd",
+  "before": "9807c6c8",
+  "solution": "Substituting \\(\\sin2x=\\frac{2\\tan x}{1+\\tan^2x}\\) and \\(t=\\tan x\\): integral becomes \\(\\frac{1}{2}\\int\\frac{1+t^2}{\\sqrt{t}}\\,dt\\), giving \\(A=\\frac{1}{2},B=\\frac{5}{2},C=\\frac{1}{5}\\). \\(5(A+B+C)=5\\cdot\\frac{16}{5}=16\\). Matches option C: 16.",
+  "note": "the integrand is (1+t^2)/(2 sqrt t); with 1/t the integral gives logs, not A=1/2, B=5/2, C=1/5"
+ },
+ {
+  "id": "06bd6abe-5be2-4e50-936e-e493bf7d41b1",
+  "before": "5edb4246",
+  "solution": "\\(\\frac{dy}{dx}=\\sec(\\tan^{-1}x)\\tan(\\tan^{-1}x)\\cdot\\frac{1}{1+x^2}=\\sqrt{1+x^2}\\cdot\\frac{x}{1+x^2}=\\frac{x}{\\sqrt{1+x^2}}\\). At \\(x=1\\): \\(\\frac{1}{\\sqrt{2}}\\). Matches option C: \\(\\frac{1}{\\sqrt{2}}\\).",
+  "note": "the stored derivative x/(1+x^2) and value 1/2 are wrong (sec(tan^-1 x) = sqrt(1+x^2)); the note about duplicate options B and C is dropped because the copy fix removes the duplicate"
+ },
+ {
+  "id": "30724f2d-c21a-438e-a4e7-d41027150910",
+  "before": "d59436fa",
+  "solution": "Rewrite each term using \\(\\tan^{-1}A-\\tan^{-1}B\\) and \\(\\tan^{-1}A+\\tan^{-1}B\\) formulas. \\(\\dfrac{\\log(e/x^2)}{\\log(ex^2)}=\\dfrac{1-2\\log x}{1+2\\log x}\\), so the first term is \\(\\tan^{-1}1-\\tan^{-1}(2\\log x)=\\dfrac{\\pi}{4}-\\tan^{-1}(2\\log x)\\). The second term is \\(\\tan^{-1}\\dfrac{4+2\\log x}{1-(4)(2\\log x)}=\\tan^{-1}4+\\tan^{-1}(2\\log x)\\). The expression simplifies to a constant, \\(y=\\dfrac{\\pi}{4}+\\tan^{-1}4\\); hence \\(\\dfrac{dy}{dx}=0\\). Matches option A.",
+  "note": "the rewrites were not shown; added them (key unchanged)"
+ },
+ {
+  "id": "7122e77b-cb7c-4f3d-b19c-40bd86444484",
+  "before": "5efe3443",
+  "solution": "Substituting \\(t = \\tan x\\): integrand becomes \\(\\frac{1}{\\sqrt{2}}\\int(t^{-1/2} + t^{3/2})dt = \\frac{1}{\\sqrt{2}}\\left(2\\sqrt{t}+\\frac{2}{5}t^{5/2}\\right)\\); simplification gives \\(\\sqrt{2}\\left(\\sqrt{\\tan x} + \\frac{1}{5}(\\tan x)^{5/2}\\right) + c\\). Matches option A.",
+  "note": "the stored constant 1/2 should be 1/sqrt2 (since sqrt(2 sin x cos x) leaves (1+t^2)/sqrt(2t)) and the result is sqrt2(...); the '· ...' stub is replaced by the integrated terms"
+ },
+ {
+  "id": "74ca7af4-2b6e-4509-b88d-48353426993a",
+  "before": "1b4b459a",
+  "solution": "Since \\(2+\\cos\\frac{x}{2}=2\\left(1+\\frac{1}{2}\\cos\\frac{x}{2}\\right)\\) and \\(\\frac{d}{dx}\\left(x+\\sin\\frac{x}{2}\\right)=1+\\frac{1}{2}\\cos\\frac{x}{2}\\), the integrand is \\(2\\cdot\\frac{(x+\\sin(x/2))'}{x+\\sin(x/2)}\\). So the integral is \\(2\\log\\left|x+\\sin\\frac{x}{2}\\right|+C\\). Matches option A.",
+  "note": "the stored working belonged to a different integrand ((2+cos x)/(2x+sin x)^2) and ended on a different result; rewritten for the paper's integrand"
+ },
+ {
+  "id": "ca849f2d-ed8b-4e8d-8ac0-b39bf1a8fe8f",
+  "before": "f7c91dc6",
+  "solution": "Using substitution \\(1-x=t^2\\): \\(x = 1-t^2\\), \\(dx=-2t\\,dt\\), integral becomes \\(-2\\int(1-t^2)^2\\,dt\\). After expanding and integrating, \\(-2\\left(t-\\frac{2t^3}{3}+\\frac{t^5}{5}\\right)=\\sqrt{1-x}\\left[-2+\\frac{4(1-x)}{3}-\\frac{2(1-x)^2}{5}\\right]=-\\frac{2}{15}\\sqrt{1-x}\\,(3x^2+4x+8)+c\\), so \\(p = -\\frac{2}{15}\\). Matches option A.",
+  "note": "the stored integral -2 int (1-t^2)^2 t^2 dt has an extra t^2 (the stem has sqrt in the denominator, restored by the copy fix); the expansion is now shown"
+ },
+ {
+  "id": "0a6058b7-a733-445d-a316-bbb1e2f496d9",
+  "before": "dc366c6f",
+  "solution": "Let \\(t = \\tan\\sqrt{x}\\), so \\(dt = \\frac{\\sec^2\\sqrt{x}}{2\\sqrt{x}}\\,dx\\). The integral becomes \\(2\\int t^4\\,dt = \\frac{2}{5}t^5 + C = \\frac{2}{5}\\left[\\tan\\sqrt{x}\\right]^5 + C\\). Matches option C.",
+  "note": "the stored working was abandoned ('Actually...', 1/sqrt x as a constant); with the stem restored the substitution t = tan sqrt x does it"
+ },
+ {
+  "id": "0caad04a-a782-4f9f-b1e7-163ae2f6409f",
+  "before": "97b038f3",
+  "solution": "Write \\(\\frac{5\\tan x}{\\tan x-2}=\\frac{5\\sin x}{\\sin x-2\\cos x}\\) and put \\(5\\sin x=A(\\sin x-2\\cos x)+B(\\cos x+2\\sin x)\\), since \\(\\cos x+2\\sin x\\) is the derivative of \\(\\sin x-2\\cos x\\). Comparing coefficients: \\(A+2B=5\\) and \\(-2A+B=0\\), so \\(A=1,\\ B=2\\). Hence the integral is \\(x+2\\log|\\sin x-2\\cos x|+c\\), so \\(a=2\\). Matches option C.",
+  "note": "the stored working named the method without doing it (and wrote B times sec^2 x times denom.); the coefficients are now shown"
  }
 ]
