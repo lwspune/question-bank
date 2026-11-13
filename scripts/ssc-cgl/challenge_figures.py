@@ -72,7 +72,10 @@ def first_figure(a, col):
 def cut(a, box, what=""):
     x0, y0, x1, y1 = box
     c = a[max(0, y0 - PAD) : y1 + PAD, max(0, x0 - PAD) : x1 + PAD].copy()
-    c[c.sum(axis=2) >= WATERMARK] = 255
+    # whiten the pale watermark on a line drawing; a photo (a quarter or more of it dark) keeps
+    # its light tones, which whitening would burn out (25 Nov S1 Q90, Saturn)
+    if (c.sum(axis=2) < INK).mean() < 0.25:
+        c[c.sum(axis=2) >= WATERMARK] = 255
     if key_mask(c.astype(int)).any():
         km = key_mask(c.astype(int))
         ys, xs = np.nonzero(km)
