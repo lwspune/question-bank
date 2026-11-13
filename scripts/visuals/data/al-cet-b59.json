@@ -1,0 +1,4045 @@
+{
+ "//": "Assembled from agent drafts (algebraSteps).",
+ "visuals": [
+  {
+   "id": "0347c39d-b759-4ff5-b9e6-8774e29e8b1f",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "N_s = N_p\\dfrac{V_s}{V_p}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "V_p = \\dfrac{1000}{5} = 200\\ \\text{V}",
+       "f": "1000/5",
+       "value": "200",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "N_s = 120 \\times \\dfrac{560}{200} = 336",
+       "f": "120*560/200",
+       "value": "336",
+       "step": "s3"
+      }
+     ],
+     "answer": "120*560/200"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "fc6a3d00",
+    "answer": {
+     "value": 336,
+     "label": "336 turns"
+    }
+   }
+  },
+  {
+   "id": "055f199e-2e4e-4ba8-a166-666706bcbb24",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\text{side} = 0.05\\ \\text{m},\\ v = 0.05\\ \\text{m/s}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "e = Blv = 40 \\times 0.05 \\times 0.05 = 0.1\\ \\text{V}",
+       "f": "40*0.05*0.05",
+       "value": "0.1",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "P = \\dfrac{e^2}{R} = \\dfrac{0.01}{10} = 10^{-3}\\ \\text{W}",
+       "f": "0.01/10",
+       "value": "0.001",
+       "sf": 1,
+       "step": "s3"
+      },
+      {
+       "kind": "note",
+       "tex": "W = 1.0 \\times 10^{-3}\\ \\text{J}",
+       "step": "s4"
+      }
+     ],
+     "answer": "0.01/10"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "4ec7baec",
+    "answer": {
+     "value": 0.001,
+     "label": "1.0 × 10⁻³ J"
+    }
+   }
+  },
+  {
+   "id": "076434cb-5c14-4d0e-b6d1-b325f40bc09e",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "L_1 = L_2 = \\dfrac{L}{2}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{1}{L_{net}} = \\dfrac{1}{L/2} + \\dfrac{1}{L/2} = \\dfrac{4}{L}",
+       "f": "1/(L/2)+1/(L/2)",
+       "value": "4/L",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "L_{net} = \\dfrac{L}{4}",
+       "f": "1/(4/L)",
+       "value": "L/4",
+       "step": "s3"
+      }
+     ],
+     "answer": "L/4",
+     "vars": {
+      "L": 2
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "5a144062",
+    "answer": {
+     "value": 0.5,
+     "label": "L/4"
+    }
+   }
+  },
+  {
+   "id": "076bf86c-da53-4bdb-9a84-d802676b944a",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "e = \\dfrac{n(\\Phi_1-\\Phi_2)}{t}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "R_{tot} = R + \\dfrac{R}{4} = \\dfrac{5R}{4}",
+       "f": "R+R/4",
+       "value": "5*R/4",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "I = \\dfrac{e}{5R/4} = \\dfrac{4n(\\Phi_1-\\Phi_2)}{5Rt}",
+       "f": "(n*(p1-p2)/t)/(5*R/4)",
+       "value": "4*n*(p1-p2)/(5*R*t)",
+       "step": "s3"
+      }
+     ],
+     "answer": "4*n*(p1-p2)/(5*R*t)",
+     "vars": {
+      "n": 10,
+      "R": 3,
+      "t": 2,
+      "p1": 5,
+      "p2": 2
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "eafc2625",
+    "answer": {
+     "value": 4,
+     "label": "4n(Φ₁−Φ₂)/(5Rt)"
+    }
+   }
+  },
+  {
+   "id": "07b7fce4-b8d5-46f5-8955-8bc0503db78b",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\varepsilon = Bvl,\\quad I = \\dfrac{Bvl}{R}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "F = BIl = \\dfrac{B^2l^2v}{R}",
+       "f": "B*(B*v*l/R)*l",
+       "value": "B^2*l^2*v/R",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "F = mg:\\ \\dfrac{B^2l^2v}{R} = mg",
+       "f": "B^2*l^2*v/R",
+       "value": "m*g",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "v_t = \\dfrac{mgR}{B^2l^2}",
+       "f": "m*g*R/(B^2*l^2)",
+       "value": "v",
+       "step": "s4"
+      }
+     ],
+     "answer": "v",
+     "vars": {
+      "B": 2,
+      "l": 0.5,
+      "R": 3,
+      "m": 0.2,
+      "g": 9.8,
+      "v": "m*g*R/(B^2*l^2)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "d56d8def",
+    "answer": {
+     "value": 5.880000000000001,
+     "label": "v = mgR/(B²l²)"
+    }
+   }
+  },
+  {
+   "id": "0840cefc-8b55-4caa-a825-3e02ee33ae19",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "F = BIL = B\\cdot\\dfrac{V}{R}\\cdot L = Mg",
+       "f": "B*(V/R)*L",
+       "value": "M*g",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "V = \\dfrac{MgR}{BL}",
+       "f": "M*g*R/(B*L)",
+       "value": "V",
+       "step": "s2"
+      }
+     ],
+     "answer": "V",
+     "vars": {
+      "B": 2,
+      "L": 0.5,
+      "R": 3,
+      "M": 0.4,
+      "g": 9.8,
+      "V": "M*g*R/(B*L)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "10acf8cc",
+    "answer": {
+     "value": 11.760000000000002,
+     "label": "V = MgR/(BL)"
+    }
+   }
+  },
+  {
+   "id": "08ceb2ca-b1f4-4086-a18e-e6dab6b19082",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "L = \\dfrac{\\mu_0N^2A}{l} \\propto \\dfrac{r^2}{l}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{L_1}{L_2} = \\dfrac{(1)^2/1}{(3)^2/3} = \\dfrac{1}{3}",
+       "f": "(1^2/1)/(3^2/3)",
+       "value": "1/3",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "L_1 : L_2 = 1 : 3",
+       "step": "s3"
+      }
+     ],
+     "answer": "(1^2/1)/(3^2/3)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "13b79a3c",
+    "answer": {
+     "value": 0.3333333333333333,
+     "label": "L₁ : L₂ = 1 : 3"
+    }
+   }
+  },
+  {
+   "id": "0a095405-f57a-47c2-9ae6-87a4d9940bf7",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "e_{max} = MI_0\\omega",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "e_{max} = 0.003 \\times 8 \\times 100\\pi = 2.4\\pi\\ \\text{V}",
+       "f": "0.003*8*100*pi",
+       "value": "2.4*pi",
+       "step": "s2"
+      }
+     ],
+     "answer": "0.003*8*100*pi"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "fe22a18b",
+    "answer": {
+     "value": 7.5398223686155035,
+     "label": "2.4π V"
+    }
+   }
+  },
+  {
+   "id": "0ae2163c-19df-4a34-aae6-c677d9688907",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "e = Blv,\\quad I = \\dfrac{Blv}{R}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "F = BIl = \\dfrac{B^2l^2v}{R}",
+       "f": "B*(B*l*v/R)*l",
+       "value": "B^2*l^2*v/R",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{B^2l^2v}{R} = mg",
+       "f": "B^2*l^2*v/R",
+       "value": "m*g",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "v = \\dfrac{mgR}{B^2l^2}",
+       "f": "m*g*R/(B^2*l^2)",
+       "value": "v",
+       "step": "s4"
+      }
+     ],
+     "answer": "v",
+     "vars": {
+      "B": 2,
+      "l": 0.5,
+      "R": 3,
+      "m": 0.2,
+      "g": 9.8,
+      "v": "m*g*R/(B^2*l^2)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "b88baa2f",
+    "answer": {
+     "value": 5.880000000000001,
+     "label": "v = mgR/(B²l²)"
+    }
+   }
+  },
+  {
+   "id": "0e388378-ad2c-4410-9e95-70179d86ad1f",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "U = \\dfrac{1}{2}LI^2",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "U' = \\dfrac{1}{2}L\\left(\\dfrac{I}{2}\\right)^2 = \\dfrac{U}{4}",
+       "f": "0.5*L*(I/2)^2",
+       "value": "U/4",
+       "step": "s2"
+      }
+     ],
+     "answer": "(0.5*L*(I/2)^2)/U",
+     "vars": {
+      "L": 2,
+      "I": 3,
+      "U": "0.5*L*I^2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "fe95c0ab",
+    "answer": {
+     "value": 0.25,
+     "label": "U' = U/4"
+    }
+   }
+  },
+  {
+   "id": "0f94a154-4b06-4d6d-bc99-f9ed37574d4e",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "e = \\dfrac{\\Delta\\phi}{\\Delta t}",
+       "note": "e.m.f. induced",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "I = \\dfrac{e}{R} = \\dfrac{\\Delta\\phi}{\\Delta t\\cdot R}",
+       "f": "(dphi/dt)/R",
+       "value": "dphi/(dt*R)",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "Q = I\\cdot\\Delta t = \\dfrac{\\Delta\\phi}{R}",
+       "f": "(dphi/(dt*R))*dt",
+       "value": "dphi/R",
+       "step": "s3"
+      }
+     ],
+     "answer": "dphi/(dt*R)",
+     "vars": {
+      "dphi": 6,
+      "dt": 2,
+      "R": 3
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "82a6dd46",
+    "answer": {
+     "value": 1,
+     "label": "I = Δφ/(Δt R); Q = Δφ/R"
+    }
+   }
+  },
+  {
+   "id": "113cd15f-3a68-4efd-aabb-8a12a19563da",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\phi = \\dfrac{\\mu_0 N I A}{l},\\quad L = \\dfrac{N\\phi}{I}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "L = \\dfrac{N\\phi}{I} = \\mu_0N^2\\dfrac{A}{l}",
+       "f": "N*(mu*N*I*A/l)/I",
+       "value": "mu*N^2*A/l",
+       "step": "s2"
+      }
+     ],
+     "answer": "mu*N^2*A/l",
+     "vars": {
+      "mu": 1.3,
+      "N": 10,
+      "I": 2,
+      "A": 0.5,
+      "l": 3
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "5dcb92d4",
+    "answer": {
+     "value": 21.666666666666668,
+     "label": "L = μ₀N²A/l"
+    }
+   }
+  },
+  {
+   "id": "1187cd25-3bc6-403b-aafc-281a3e9d96f0",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\vec{A} = L^2\\,\\hat{k}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\phi = \\vec{B}\\cdot\\vec{A} = 4B_0L^2",
+       "f": "B0*(2*0+3*0+4*1)*L^2",
+       "value": "4*B0*L^2",
+       "step": "s2"
+      }
+     ],
+     "answer": "4*B0*L^2",
+     "vars": {
+      "B0": 1.5,
+      "L": 2
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "75f67124",
+    "answer": {
+     "value": 24,
+     "label": "4B₀L² Wb"
+    }
+   }
+  },
+  {
+   "id": "138112b7-c168-4338-9071-fe656ec1ea35",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "e = \\dfrac{2NBA}{t}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "e = \\dfrac{2\\times1000\\times5\\times10^{-4}\\times0.1}{0.1} = 1\\ \\text{V}",
+       "f": "2*1000*5*10^(-4)*0.1/0.1",
+       "value": "1",
+       "step": "s2"
+      }
+     ],
+     "answer": "2*1000*5*10^(-4)*0.1/0.1"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "8c99486c",
+    "answer": {
+     "value": 1,
+     "label": "1 V"
+    }
+   }
+  },
+  {
+   "id": "1584f4cf-ca1e-4b3a-b353-7c2656c6df4c",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\text{segment of length } x:\\ \\dfrac{B\\omega x^2}{2}",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "|V_A-V_B| = \\dfrac{B\\omega}{2}\\left[\\left(\\dfrac{2l}{3}\\right)^2-\\left(\\dfrac{l}{3}\\right)^2\\right]",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "= \\dfrac{B\\omega}{2}\\cdot\\dfrac{3l^2}{9} = \\dfrac{Bl^2\\omega}{6}",
+       "f": "B*w/2*((2*l/3)^2-(l/3)^2)",
+       "value": "B*l^2*w/6",
+       "step": "s3"
+      }
+     ],
+     "answer": "B*l^2*w/6",
+     "vars": {
+      "B": 2,
+      "w": 3,
+      "l": 1.5
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "f71d022c",
+    "answer": {
+     "value": 2.25,
+     "label": "|V_A − V_B| = Bl²ω/6"
+    }
+   }
+  },
+  {
+   "id": "15a3301b-8fcb-4336-80b5-5239ae00dd65",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "e = \\dfrac{1}{2}B\\omega l^2,\\quad \\omega = 2\\pi n",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "e = \\dfrac{1}{2}B(2\\pi n)l^2 = B\\pi n l^2",
+       "f": "0.5*B*(2*pi*n)*l^2",
+       "value": "B*pi*n*l^2",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "n = \\dfrac{e}{\\pi B l^2}",
+       "f": "emf/(pi*B*l^2)",
+       "value": "n",
+       "step": "s3"
+      }
+     ],
+     "answer": "n",
+     "vars": {
+      "B": 2,
+      "l": 0.5,
+      "n": 3,
+      "emf": "B*pi*n*l^2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "52ba781c",
+    "answer": {
+     "value": 3,
+     "label": "n = e/(πBl²)"
+    }
+   }
+  },
+  {
+   "id": "1cb3c31b-7ec8-493a-bb19-275c068713a4",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "e = Blv",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "e = 0.8 \\times 0.4 \\times 7.0 = 2.24\\ \\text{V}",
+       "f": "0.8*0.4*7.0",
+       "value": "2.24",
+       "step": "s2"
+      }
+     ],
+     "answer": "0.8*0.4*7.0"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "f6508d4b",
+    "answer": {
+     "value": 2.24,
+     "label": "2.24 V"
+    }
+   }
+  },
+  {
+   "id": "1d1e23c0-496d-49ea-8f03-61490f4cb76c",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\text{side} = 0.05\\ \\text{m},\\ v = 0.05\\ \\text{m/s}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\varepsilon = Blv = 40 \\times 0.05 \\times 0.05 = 0.1\\ \\text{V}",
+       "f": "40*0.05*0.05",
+       "value": "0.1",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "I = \\dfrac{0.1}{10} = 0.01\\ \\text{A}",
+       "f": "0.1/10",
+       "value": "0.01",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "F = BIl = 40 \\times 0.01 \\times 0.05 = 0.02\\ \\text{N}",
+       "f": "40*0.01*0.05",
+       "value": "0.02",
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "W = F \\times l = 0.02 \\times 0.05 = 1\\times10^{-3}\\ \\text{J}",
+       "f": "0.02*0.05",
+       "value": "0.001",
+       "sf": 1,
+       "step": "s5"
+      }
+     ],
+     "answer": "0.02*0.05"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3",
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "33e95971",
+    "answer": {
+     "value": 0.001,
+     "label": "1 × 10⁻³ J"
+    }
+   }
+  },
+  {
+   "id": "1f94f0e3-7cd3-4dd9-b4b8-2cd0db3e72d7",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "L = \\mu_0\\dfrac{N^2A}{l} \\propto N^2",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "L_2 = \\mu_0\\dfrac{(2N)^2A}{l} = 4L_1",
+       "f": "mu*(2*N)^2*A/l",
+       "value": "4*mu*N^2*A/l",
+       "step": "s2"
+      }
+     ],
+     "answer": "(mu*(2*N)^2*A/l)/(mu*N^2*A/l)",
+     "vars": {
+      "mu": 1.3,
+      "N": 10,
+      "A": 0.5,
+      "l": 3
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "bb754f74",
+    "answer": {
+     "value": 4,
+     "label": "L₂ = 4L₁"
+    }
+   }
+  },
+  {
+   "id": "22efddba-ed4a-4ee6-aae2-f77999f8fc8f",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "2\\,H,\\ 3\\,H,\\ 4\\,H,\\ 6\\,H\\ \\text{in parallel}",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "\\dfrac{1}{L} = \\dfrac{1}{2}+\\dfrac{1}{3}+\\dfrac{1}{4}+\\dfrac{1}{6}",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "=\\dfrac{6+4+3+2}{12} = \\dfrac{15}{12} = \\dfrac{5}{4}",
+       "f": "1/2+1/3+1/4+1/6",
+       "value": "5/4",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "L = \\dfrac{4}{5}\\ \\text{H}",
+       "f": "1/(5/4)",
+       "value": "4/5",
+       "step": "s4"
+      }
+     ],
+     "answer": "1/(5/4)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "bddf44c6",
+    "answer": {
+     "value": 0.8,
+     "label": "4/5 H"
+    }
+   }
+  },
+  {
+   "id": "243ceba3-eb22-48f9-a656-1e1ffd0a475e",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "V_p = \\dfrac{P}{I_p} = \\dfrac{1000}{5} = 200\\ \\text{V}",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "\\dfrac{N_s}{N_p} = \\dfrac{V_s}{V_p} = \\dfrac{560}{200}",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "N_s = 120 \\times \\dfrac{560}{200} = 336",
+       "f": "120*560/200",
+       "value": "336",
+       "step": "s3"
+      }
+     ],
+     "answer": "120*560/200"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "6c637803",
+    "answer": {
+     "value": 336,
+     "label": "336 turns"
+    }
+   }
+  },
+  {
+   "id": "256c05f0-780b-4820-b209-e8c614048e44",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\text{e.m.f.} = BLV",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "P = \\dfrac{(BLV)^2}{R} = \\dfrac{B^2L^2V^2}{R}",
+       "f": "(B*L*V)^2/R",
+       "value": "B^2*L^2*V^2/R",
+       "step": "s2"
+      }
+     ],
+     "answer": "B^2*L^2*V^2/R",
+     "vars": {
+      "B": 2,
+      "L": 0.5,
+      "V": 3,
+      "R": 4
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "fce35619",
+    "answer": {
+     "value": 2.25,
+     "label": "P = B²L²V²/R"
+    }
+   }
+  },
+  {
+   "id": "296db28c-6c18-4101-b943-f4fbd3f7fff3",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\Phi = BA\\cos 60^\\circ",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Phi = \\dfrac{7}{22}\\times\\dfrac{22}{7}(0.2)^2\\times0.5 = 0.02\\ \\text{Wb}",
+       "f": "7/22*22/7*0.2^2*0.5",
+       "value": "0.02",
+       "step": "s2"
+      }
+     ],
+     "answer": "7/22*22/7*0.2^2*0.5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "c9455692",
+    "answer": {
+     "value": 0.020000000000000004,
+     "label": "0.02 Wb"
+    }
+   }
+  },
+  {
+   "id": "2ff5ebd8-125d-4e12-aea0-62ebe7cfa396",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "B = \\dfrac{\\mu_0 I}{2r_1}\\ \\text{at the centre}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Phi = B\\pi r_2^2 = \\dfrac{\\mu_0\\pi r_2^2 I}{2r_1}",
+       "f": "(mu*I/(2*r1))*pi*r2^2",
+       "value": "mu*pi*r2^2*I/(2*r1)",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "M = \\dfrac{\\Phi}{I} = \\dfrac{\\mu_0\\pi r_2^2}{2r_1}",
+       "f": "(mu*pi*r2^2*I/(2*r1))/I",
+       "value": "mu*pi*r2^2/(2*r1)",
+       "step": "s3"
+      }
+     ],
+     "answer": "mu*pi*r2^2/(2*r1)",
+     "vars": {
+      "mu": 1.3,
+      "I": 2,
+      "r1": 3,
+      "r2": 1
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "e094cb6e",
+    "answer": {
+     "value": 0.6806784082777885,
+     "label": "M = μ₀πr₂²/(2r₁)"
+    }
+   }
+  },
+  {
+   "id": "30462838-fd2b-4edd-bc17-81bb6d4f6823",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "e_{max} = MI_m\\omega",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "e_{max} = 0.008 \\times 5 \\times 200\\pi = 8\\pi\\ \\text{V}",
+       "f": "0.008*5*200*pi",
+       "value": "8*pi",
+       "step": "s2"
+      }
+     ],
+     "answer": "0.008*5*200*pi"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "cbd10cd2",
+    "answer": {
+     "value": 25.132741228718345,
+     "label": "8π V"
+    }
+   }
+  },
+  {
+   "id": "31493565-9c5b-4b8e-bcf2-2d61d7e96091",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "e = \\dfrac{NBA}{t}\\ \\Rightarrow\\ t = \\dfrac{NBA}{e}",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "t = \\dfrac{50\\times(4\\times10^{-2})\\times(100\\times10^{-4})}{0.1}",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "t = \\dfrac{50\\times4\\times10^{-2}\\times10^{-2}}{0.1} = 0.2\\ \\text{s}",
+       "f": "50*4*10^(-2)*10^(-2)/0.1",
+       "value": "0.2",
+       "step": "s3"
+      }
+     ],
+     "answer": "50*4*10^(-2)*10^(-2)/0.1"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "93219ba8",
+    "answer": {
+     "value": 0.19999999999999998,
+     "label": "0.2 s"
+    }
+   }
+  },
+  {
+   "id": "39c6a28b-314f-4bc7-9977-7d4572d00f95",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "B = \\dfrac{\\mu_0 I}{2r_1}\\ \\text{at the centre}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\phi = B\\cdot\\pi r_2^2",
+       "f": "(mu*I/(2*r1))*pi*r2^2",
+       "value": "mu*I*pi*r2^2/(2*r1)",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "M = \\dfrac{\\phi}{I} = \\dfrac{\\mu_0\\pi r_2^2}{2r_1}",
+       "f": "(mu*I*pi*r2^2/(2*r1))/I",
+       "value": "mu*pi*r2^2/(2*r1)",
+       "step": "s3"
+      }
+     ],
+     "answer": "mu*pi*r2^2/(2*r1)",
+     "vars": {
+      "mu": 1.3,
+      "I": 2,
+      "r1": 3,
+      "r2": 1
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "2704719c",
+    "answer": {
+     "value": 0.6806784082777885,
+     "label": "M = μ₀πr₂²/(2r₁)"
+    }
+   }
+  },
+  {
+   "id": "3b807a43-f6dd-4213-8dab-e61ab27029fe",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "L \\propto \\mu_r N^2",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "L' = 0.1 \\times 1000 \\times \\dfrac{1}{100} = 1\\ \\text{H}",
+       "f": "0.1*1000/100",
+       "value": "1",
+       "step": "s2"
+      }
+     ],
+     "answer": "0.1*1000/100"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "f0a0261e",
+    "answer": {
+     "value": 1,
+     "label": "1 H"
+    }
+   }
+  },
+  {
+   "id": "3e42bd7f-47b7-41bf-a321-307ee9b455c1",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "|e_P| = M\\dfrac{dI_Q}{dt}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "M = \\dfrac{15\\times10^{-3}}{10} = 1.5\\times10^{-3}\\ \\text{H}",
+       "f": "15*10^(-3)/10",
+       "value": "1.5*10^(-3)",
+       "sf": 2,
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "I_P = 1.8\\ \\text{A}",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\phi_Q = MI_P = 1.5\\times10^{-3}\\times1.8 = 2.7\\times10^{-3}\\ \\text{Wb}",
+       "f": "1.5*10^(-3)*1.8",
+       "value": "2.7*10^(-3)",
+       "sf": 2,
+       "step": "s4"
+      }
+     ],
+     "answer": "1.5*10^(-3)*1.8*1000"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "066d4048",
+    "answer": {
+     "value": 2.7,
+     "label": "2.7 mWb"
+    }
+   }
+  },
+  {
+   "id": "42f4cdb7-c0f6-4053-ba47-f4cc2883812e",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\dfrac{\\mu_0 I_1}{2r_1}\\ \\text{over the small loop}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Phi = \\dfrac{\\mu_0 I_1}{2r_1}\\,\\pi r_2^2",
+       "f": "mu*I1/(2*r1)*pi*r2^2",
+       "value": "mu*I1*pi*r2^2/(2*r1)",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "M = \\dfrac{\\Phi}{I_1} = \\dfrac{\\mu_0\\pi r_2^2}{2r_1}",
+       "f": "(mu*I1*pi*r2^2/(2*r1))/I1",
+       "value": "mu*pi*r2^2/(2*r1)",
+       "step": "s3"
+      },
+      {
+       "kind": "note",
+       "tex": "M \\propto \\dfrac{r_2^2}{r_1}",
+       "step": "s4"
+      }
+     ],
+     "answer": "r2^2/r1",
+     "vars": {
+      "mu": 1.3,
+      "I1": 2,
+      "r1": 3,
+      "r2": 1
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "44e52dbf",
+    "answer": {
+     "value": 0.3333333333333333,
+     "label": "M ∝ r₂²/r₁"
+    }
+   }
+  },
+  {
+   "id": "451cc11a-49f0-42ed-ac1a-b12b6cb5ca9d",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "e = M\\dfrac{\\Delta I}{\\Delta t}",
+       "step": "s1"
+      },
+      {
+       "kind": "eq",
+       "tex": "2000 = 2\\times\\dfrac{3}{\\Delta t}",
+       "lhs": "2000",
+       "rhs": "2*3/x",
+       "roots": [
+        "0.003"
+       ],
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta t = 3\\times10^{-3}\\ \\text{s}",
+       "f": "2*3/2000",
+       "value": "3*10^(-3)",
+       "sf": 1,
+       "step": "s3"
+      }
+     ],
+     "answer": "2*3/2000"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "e2f2dbd7",
+    "answer": {
+     "value": 0.003,
+     "label": "3 × 10⁻³ s"
+    }
+   }
+  },
+  {
+   "id": "45d1f698-0949-417d-8155-53ce90752bc7",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "\\Phi = BA = 2\\times\\pi(0.1)^2 = 0.02\\pi\\ \\text{Wb}",
+       "f": "2*pi*0.1^2",
+       "value": "0.02*pi",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "q = \\dfrac{\\Delta\\Phi}{R} = \\dfrac{0.02\\pi}{0.01} = 2\\pi\\ \\text{C}",
+       "f": "0.02*pi/0.01",
+       "value": "2*pi",
+       "step": "s2"
+      }
+     ],
+     "answer": "0.02*pi/0.01"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "2e5021b3",
+    "answer": {
+     "value": 6.283185307179586,
+     "label": "2π C"
+    }
+   }
+  },
+  {
+   "id": "478f897c-91ef-4378-aada-c5cc9bc4c8b5",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\text{5th second: } t = 4\\ \\text{to}\\ 5\\ \\text{s}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Phi(5)-\\Phi(4) = 166 - 115 = 51\\ \\text{Wb}",
+       "f": "(5*5^2+6*5+11)-(5*4^2+6*4+11)",
+       "value": "51",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "\\text{average e.m.f.} = 51\\ \\text{V}",
+       "step": "s3"
+      },
+      {
+       "kind": "note",
+       "tex": "=10t+6\\ \\text{at}\\ t = 4.5\\ \\text{s}",
+       "step": "s4"
+      }
+     ],
+     "answer": "(5*5^2+6*5+11)-(5*4^2+6*4+11)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "1cfc3528",
+    "answer": {
+     "value": 51,
+     "label": "51 V"
+    }
+   }
+  },
+  {
+   "id": "4abaa332-063c-47e2-a1a2-13a820518106",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "k = \\dfrac{M}{\\sqrt{L_1L_2}}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "k = \\dfrac{37.2}{\\sqrt{3600}} = \\dfrac{37.2}{60} = 0.62",
+       "f": "37.2/sqrt(3600)",
+       "value": "0.62",
+       "step": "s2"
+      }
+     ],
+     "answer": "37.2/sqrt(3600)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "c7f27e5e",
+    "answer": {
+     "value": 0.62,
+     "label": "k = 0.62"
+    }
+   }
+  },
+  {
+   "id": "4ad6e256-4e18-4180-9168-f251fe8c5f8f",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "L = \\mu_0 n^2 lA",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "l \\to 2l,\\quad A \\to 4A",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "L' = \\mu_0 n^2 (2l)(4A) = 8L",
+       "f": "mu*n^2*(2*l)*(4*A)",
+       "value": "8*mu*n^2*l*A",
+       "step": "s3"
+      }
+     ],
+     "answer": "(mu*n^2*(2*l)*(4*A))/(mu*n^2*l*A)",
+     "vars": {
+      "mu": 1.3,
+      "n": 5,
+      "l": 2,
+      "A": 0.5
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "e9c034c2",
+    "answer": {
+     "value": 8,
+     "label": "L' = 8L"
+    }
+   }
+  },
+  {
+   "id": "4d47898e-922c-4ae4-8041-957890f83eab",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "e = Blv,\\quad i = \\dfrac{Blv}{R}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "F = Bil = \\dfrac{B^2l^2v}{R}",
+       "f": "B*(B*l*v/R)*l",
+       "value": "B^2*l^2*v/R",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "mg = \\dfrac{B^2l^2v}{R}",
+       "f": "m*g",
+       "value": "B^2*l^2*v/R",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "v = \\dfrac{mgR}{B^2l^2}",
+       "f": "m*g*R/(B^2*l^2)",
+       "value": "v",
+       "step": "s4"
+      }
+     ],
+     "answer": "v",
+     "vars": {
+      "B": 2,
+      "l": 0.5,
+      "R": 3,
+      "m": 0.2,
+      "g": 9.8,
+      "v": "m*g*R/(B^2*l^2)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "0f116e0d",
+    "answer": {
+     "value": 5.880000000000001,
+     "label": "v = mgR/(B²l²)"
+    }
+   }
+  },
+  {
+   "id": "573bb117-92b3-421a-9a37-020773b3f1b2",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "L_1\\dfrac{dI_1}{dt} = L_2\\dfrac{dI_2}{dt}",
+       "note": "both share the same voltage",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "L_1I_1 = L_2I_2",
+       "f": "L1*I1",
+       "value": "L2*I2",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{I_2}{I_1} = \\dfrac{L_1}{L_2}",
+       "f": "I2/I1",
+       "value": "L1/L2",
+       "step": "s3"
+      }
+     ],
+     "answer": "L1/L2",
+     "vars": {
+      "L1": 2,
+      "L2": 3,
+      "I1": 3,
+      "I2": "L1*I1/L2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "0e542512",
+    "answer": {
+     "value": 0.6666666666666666,
+     "label": "I₂/I₁ = L₁/L₂"
+    }
+   }
+  },
+  {
+   "id": "58f1a1be-4412-468c-abb5-4e2e4c576c51",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "I = \\dfrac{E}{R}\\ \\text{is the same for both}",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "\\text{Energy stored} = \\dfrac{1}{2}LI^2",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{E_A}{E_B} = \\dfrac{L_A}{L_B} = \\dfrac{10}{10\\times10^{-3}} = 1000",
+       "f": "10/(10*10^(-3))",
+       "value": "1000",
+       "step": "s3"
+      }
+     ],
+     "answer": "10/(10*10^(-3))"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "ad3194e2",
+    "answer": {
+     "value": 1000,
+     "label": "E_A/E_B = 1000"
+    }
+   }
+  },
+  {
+   "id": "5ca29d28-ecf2-431e-8b50-196dfdc5bcec",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "e = -n\\dfrac{d\\phi}{dt}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "R' = R + \\dfrac{R}{2} = \\dfrac{3R}{2}",
+       "f": "R+R/2",
+       "value": "3*R/2",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "i = \\dfrac{e}{R'} = \\dfrac{n(\\phi_1-\\phi_2)}{t}\\cdot\\dfrac{2}{3R}",
+       "f": "(n*(p1-p2)/t)/(3*R/2)",
+       "value": "n*(p1-p2)/t*2/(3*R)",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "i = \\dfrac{2n(\\phi_1-\\phi_2)}{3Rt}",
+       "f": "n*(p1-p2)/t*2/(3*R)",
+       "value": "2*n*(p1-p2)/(3*R*t)",
+       "step": "s4"
+      }
+     ],
+     "answer": "2*n*(p1-p2)/(3*R*t)",
+     "vars": {
+      "n": 10,
+      "R": 3,
+      "t": 2,
+      "p1": 5,
+      "p2": 2
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "51db2183",
+    "answer": {
+     "value": 3.3333333333333335,
+     "label": "2n(φ₁−φ₂)/(3Rt)"
+    }
+   }
+  },
+  {
+   "id": "60b8ce11-3604-4541-994d-fb8c2abf79a5",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "B = \\dfrac{\\mu_0 I}{2R}\\ \\text{at the centre, nearly uniform}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "M = \\dfrac{\\mu_0\\pi r^2}{2R}",
+       "f": "(mu*I/(2*R))*pi*r^2/I",
+       "value": "mu*pi*r^2/(2*R)",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "M \\propto \\dfrac{r^2}{R}",
+       "step": "s3"
+      }
+     ],
+     "answer": "r^2/R",
+     "vars": {
+      "mu": 1.3,
+      "I": 2,
+      "R": 3,
+      "r": 1
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "7cee7796",
+    "answer": {
+     "value": 0.3333333333333333,
+     "label": "M ∝ r²/R"
+    }
+   }
+  },
+  {
+   "id": "6194eab2-18b9-4d43-8a04-7375f340f859",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\varepsilon = BLv",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "P = \\dfrac{\\varepsilon^2}{R} = \\dfrac{B^2L^2v^2}{R}",
+       "f": "(B*L*v)^2/R",
+       "value": "B^2*L^2*v^2/R",
+       "step": "s2"
+      }
+     ],
+     "answer": "B^2*L^2*v^2/R",
+     "vars": {
+      "B": 2,
+      "L": 0.5,
+      "v": 3,
+      "R": 4
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "c25419d5",
+    "answer": {
+     "value": 2.25,
+     "label": "P = B²L²v²/R"
+    }
+   }
+  },
+  {
+   "id": "61c9ed23-d113-4be4-8bab-17d7a583f29b",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "e = M\\dfrac{dI}{dt} = \\dfrac{MI}{t}",
+       "f": "M*(I/t)",
+       "value": "M*I/t",
+       "note": "this is across all N turns",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{e}{N} = \\dfrac{MI}{Nt}",
+       "f": "(M*I/t)/N",
+       "value": "M*I/(N*t)",
+       "step": "s2"
+      }
+     ],
+     "answer": "M*I/(N*t)",
+     "vars": {
+      "M": 2,
+      "I": 3,
+      "t": 0.5,
+      "N": 10
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "b1ce0ab0",
+    "answer": {
+     "value": 1.2,
+     "label": "MI/(Nt)"
+    }
+   }
+  },
+  {
+   "id": "66aaae55-b9ef-4973-bd99-1d474dfdc905",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "e = \\dfrac{A\\,\\Delta B}{\\Delta t}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "e = \\dfrac{3\\times0.04}{10} = 0.012\\ \\text{V}",
+       "f": "3*0.04/10",
+       "value": "0.012",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "0.012\\ \\text{V} = 12\\ \\text{mV}",
+       "f": "0.012*1000",
+       "value": "12",
+       "step": "s3"
+      }
+     ],
+     "answer": "3*0.04/10*1000"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "7b83a8c6",
+    "answer": {
+     "value": 12,
+     "label": "12 mV"
+    }
+   }
+  },
+  {
+   "id": "67a13213-a97d-4053-8868-20b9c61faa23",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\pi^2 = 10",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "e_0 = M\\omega I_0 = \\pi\\times10^{-3}\\times50\\pi\\times12 = 0.6\\pi^2",
+       "f": "pi*10^(-3)*50*pi*12",
+       "value": "0.6*pi^2",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "e_0 = 0.6\\pi^2 = 6\\ \\text{V}",
+       "f": "0.6*10",
+       "value": "6",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\omega L = 50\\pi\\times\\dfrac{60}{\\pi}\\times10^{-3} = 3\\ \\Omega",
+       "f": "50*pi*(60/pi)*10^(-3)",
+       "value": "3",
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "Z = \\sqrt{16+9} = 5\\ \\Omega",
+       "f": "sqrt(16+9)",
+       "value": "5",
+       "step": "s5"
+      },
+      {
+       "kind": "calc",
+       "tex": "I_{max} = \\dfrac{6}{5} = 1.2\\ \\text{A}",
+       "f": "6/5",
+       "value": "1.2",
+       "step": "s6"
+      }
+     ],
+     "answer": "6/5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s4",
+       "s5",
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "413908c9",
+    "answer": {
+     "value": 1.2,
+     "label": "1.2 A"
+    }
+   }
+  },
+  {
+   "id": "68a63c0d-acd1-4538-86be-6c066a909db3",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "e_0 = M\\omega I_0",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "e_0 = 1\\times(2\\pi\\times50)\\times\\dfrac{2}{\\pi} = 200\\ \\text{V}",
+       "f": "1*(2*pi*50)*2/pi",
+       "value": "200",
+       "step": "s2"
+      }
+     ],
+     "answer": "1*(2*pi*50)*2/pi"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "6401bb29",
+    "answer": {
+     "value": 200,
+     "label": "200 V"
+    }
+   }
+  },
+  {
+   "id": "6986a5a4-f39d-4eb9-9fd1-6d4b0b55d7a8",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "L = \\dfrac{\\mu_0N^2A}{l}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "L = \\dfrac{4\\pi\\times10^{-7}\\times10^6\\times10^{-3}}{0.1\\pi} = 4\\times10^{-3}\\ \\text{H}",
+       "f": "4*pi*10^(-7)*10^6*10^(-3)/(0.1*pi)",
+       "value": "4*10^(-3)",
+       "sf": 1,
+       "step": "s2"
+      }
+     ],
+     "answer": "4*pi*10^(-7)*10^6*10^(-3)/(0.1*pi)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "babcd068",
+    "answer": {
+     "value": 0.004,
+     "label": "4 mH"
+    }
+   }
+  },
+  {
+   "id": "6adbf627-540b-4d17-b5b6-62660afe9142",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "M = \\sqrt{L_1L_2}\\ \\text{for}\\ k = 1",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "M = \\sqrt{25\\times9} = \\sqrt{225} = 15\\ \\text{mH}",
+       "f": "sqrt(25*9)",
+       "value": "15",
+       "step": "s2"
+      }
+     ],
+     "answer": "sqrt(25*9)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "108bbc9d",
+    "answer": {
+     "value": 15,
+     "label": "15 mH"
+    }
+   }
+  },
+  {
+   "id": "6ca8afbd-8a2a-4067-bc0b-8620ab4582e1",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "V_{AB} = iR + L\\dfrac{di}{dt}",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "12 = 3R + L,\\qquad 6 = 3R - L",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "6R = 18",
+       "f": "12+6",
+       "value": "18",
+       "note": "adding the two equations",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "R = \\dfrac{18}{6} = 3\\ \\Omega",
+       "f": "18/6",
+       "value": "3",
+       "step": "s4"
+      },
+      {
+       "kind": "note",
+       "tex": "L = 3\\ \\text{H}",
+       "step": "s5"
+      }
+     ],
+     "answer": "18/6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3",
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "c9cce72f",
+    "answer": {
+     "value": 3,
+     "label": "R = 3 Ω"
+    }
+   }
+  },
+  {
+   "id": "6d8ed126-bd43-4990-ae34-3c53e3b98bd6",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "W = \\dfrac{1}{2}LI^2",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "I = 1\\ \\text{A}:\\ W = \\dfrac{1}{2}L",
+       "f": "0.5*L*1^2",
+       "value": "0.5*L",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "L = 2W",
+       "f": "2*(0.5*L)",
+       "value": "L",
+       "step": "s3"
+      }
+     ],
+     "answer": "2*(0.5*L)",
+     "vars": {
+      "L": 3
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "1043420b",
+    "answer": {
+     "value": 3,
+     "label": "L = 2W"
+    }
+   }
+  },
+  {
+   "id": "70ebd7f9-f7e3-40ff-a833-b2708c55a86b",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "L \\propto N^2\\ \\text{for a fixed length}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "N \\to 3N:\\ L \\propto (3N)^2 = 9N^2",
+       "f": "k*(3*N)^2",
+       "value": "9*k*N^2",
+       "step": "s2"
+      }
+     ],
+     "answer": "(k*(3*N)^2)/(k*N^2)",
+     "vars": {
+      "k": 2,
+      "N": 10
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "6c40df73",
+    "answer": {
+     "value": 9,
+     "label": "L' = 9L"
+    }
+   }
+  },
+  {
+   "id": "710f586f-4e18-459a-9cec-34f1b7463f87",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\text{Power} = LI\\dfrac{dI}{dt},\\ \\text{same rate}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "3LI_1 = LI_2\\ \\Rightarrow\\ I_2 = 3I_1",
+       "f": "3*L*I1",
+       "value": "L*I2",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{3LI_1^2}{L(3I_1)^2} = \\dfrac{1}{3}",
+       "f": "(3*L*I1^2)/(L*(3*I1)^2)",
+       "value": "1/3",
+       "step": "s3"
+      }
+     ],
+     "answer": "(3*L*I1^2)/(L*(3*I1)^2)",
+     "vars": {
+      "L": 2,
+      "I1": 1.5,
+      "I2": "3*I1"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "d290c1a3",
+    "answer": {
+     "value": 0.3333333333333333,
+     "label": "E₁ : E₂ = 1 : 3"
+    }
+   }
+  },
+  {
+   "id": "734865b9-272f-413e-9d31-dc2459a8ee2e",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "L_P = \\dfrac{0.7}{2} = 0.35\\ \\text{H}",
+       "f": "0.7/2",
+       "value": "0.35",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "L_{eq} = 0.35 + 0.85 = 1.20\\ \\text{H}",
+       "f": "0.35+0.85",
+       "value": "1.2",
+       "dp": 2,
+       "step": "s2"
+      }
+     ],
+     "answer": "0.35+0.85"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "c6279c0e",
+    "answer": {
+     "value": 1.2,
+     "label": "1.20 H"
+    }
+   }
+  },
+  {
+   "id": "73a9eb36-afb9-4b32-b20f-c11f3cade9b1",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\varepsilon_0 = NBA\\omega",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "P = \\dfrac{\\varepsilon_0^2}{2R} = \\dfrac{N^2A^2B^2\\omega^2}{2R}",
+       "f": "(N*B*A*w)^2/(2*R)",
+       "value": "N^2*A^2*B^2*w^2/(2*R)",
+       "step": "s2"
+      }
+     ],
+     "answer": "N^2*A^2*B^2*w^2/(2*R)",
+     "vars": {
+      "N": 10,
+      "A": 0.5,
+      "B": 2,
+      "w": 3,
+      "R": 4
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "713edae0",
+    "answer": {
+     "value": 112.5,
+     "label": "P = N²A²B²ω²/(2R)"
+    }
+   }
+  },
+  {
+   "id": "74fa5331-46a7-4ff8-b908-2cb4dfbdeb60",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "P_{in} = 920\\ \\text{W}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "P_s = 552\\ \\text{W}",
+       "f": "920*0.6",
+       "value": "552",
+       "note": "40% of the power is lost",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "I = \\dfrac{552}{2300} = 0.24\\ \\text{A}",
+       "f": "552/2300",
+       "value": "0.24",
+       "step": "s3"
+      }
+     ],
+     "answer": "552/2300"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "d88417db",
+    "answer": {
+     "value": 0.24,
+     "label": "0.24 A"
+    }
+   }
+  },
+  {
+   "id": "7596524e-380f-4e82-b189-000629281f12",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "e = B\\dfrac{dA}{dt} = 0.3\\times0.05 = 0.015\\ \\text{V}",
+       "f": "0.3*0.05",
+       "value": "0.015",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "P = \\dfrac{e^2}{R} = \\dfrac{2.25\\times10^{-4}}{1.5} = 150\\times10^{-6}\\ \\text{W}",
+       "f": "2.25*10^(-4)/1.5",
+       "value": "150*10^(-6)",
+       "sf": 3,
+       "step": "s2"
+      }
+     ],
+     "answer": "2.25*10^(-4)/1.5*10^6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "e9a98287",
+    "answer": {
+     "value": 150,
+     "label": "x = 150"
+    }
+   }
+  },
+  {
+   "id": "765c129f-8cf9-47d0-a6c0-67b78eb2bc64",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "L = \\dfrac{\\mu_0N^2A}{l}",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "x = 2\\pi rN,\\quad N = \\dfrac{x}{2\\pi r}",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "x = \\sqrt{\\dfrac{4\\pi Ll}{\\mu_0}} = \\sqrt{\\dfrac{4\\pi\\times10^{-3}\\times1}{4\\pi\\times10^{-7}}} = 10^2\\ \\text{m}",
+       "f": "sqrt(4*pi*10^(-3)*1/(4*pi*10^(-7)))",
+       "value": "100",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "10^2\\ \\text{m} = 0.10\\ \\text{km}",
+       "f": "100/1000",
+       "value": "0.1",
+       "dp": 2,
+       "step": "s4"
+      }
+     ],
+     "answer": "100/1000"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "b45d4a07",
+    "answer": {
+     "value": 0.1,
+     "label": "0.10 km"
+    }
+   }
+  },
+  {
+   "id": "78acf558-2ac7-41d8-8cf8-fd04bca245e4",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "\\phi_2 = 0.3\\phi_1 = 1.2\\times10^{-4}\\ \\text{Wb}",
+       "f": "0.3*4*10^(-4)",
+       "value": "1.2*10^(-4)",
+       "sf": 2,
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "|\\Delta\\phi| = 2.8\\times10^{-4}\\ \\text{Wb}",
+       "f": "4*10^(-4)-1.2*10^(-4)",
+       "value": "2.8*10^(-4)",
+       "sf": 2,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "t = \\dfrac{|\\Delta\\phi|}{e} = \\dfrac{2.8\\times10^{-4}}{0.56\\times10^{-3}} = 0.5\\ \\text{s}",
+       "f": "2.8*10^(-4)/(0.56*10^(-3))",
+       "value": "0.5",
+       "step": "s3"
+      }
+     ],
+     "answer": "2.8*10^(-4)/(0.56*10^(-3))"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "45677176",
+    "answer": {
+     "value": 0.4999999999999999,
+     "label": "0.5 s"
+    }
+   }
+  },
+  {
+   "id": "791e5faa-2ffb-44ee-b1a6-b1dc37255574",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "e_s = M\\dfrac{dI_p}{dt}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "dt = \\dfrac{M\\,dI_p}{e_s} = \\dfrac{(2)(6-3)}{2\\times10^3} = \\dfrac{6}{2000}",
+       "f": "2*(6-3)/(2*10^3)",
+       "value": "6/2000",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "dt = 3\\times10^{-3}\\ \\text{s}",
+       "f": "6/2000",
+       "value": "3*10^(-3)",
+       "sf": 1,
+       "step": "s3"
+      }
+     ],
+     "answer": "6/2000"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "01908311",
+    "answer": {
+     "value": 0.003,
+     "label": "3 × 10⁻³ s"
+    }
+   }
+  },
+  {
+   "id": "7ad75ea7-b517-479e-9926-78e33692d845",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "e_0 = M\\omega I_0",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "e_0 = 1\\times100\\pi\\times\\dfrac{2}{\\pi} = 200\\ \\text{V}",
+       "f": "1*100*pi*2/pi",
+       "value": "200",
+       "step": "s2"
+      }
+     ],
+     "answer": "1*100*pi*2/pi"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "375b8866",
+    "answer": {
+     "value": 200,
+     "label": "200 V"
+    }
+   }
+  },
+  {
+   "id": "7c61f099-20f4-4f41-9992-69ce11424c78",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "B = \\dfrac{\\mu_0I}{2(2r)} = \\dfrac{\\mu_0I}{4r}",
+       "f": "mu*I/(2*(2*r))",
+       "value": "mu*I/(4*r)",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Phi = \\dfrac{\\mu_0I}{4r}\\pi r^2,\\quad M = \\dfrac{\\mu_0\\pi r}{4}",
+       "f": "(mu*I/(4*r)*pi*r^2)/I",
+       "value": "mu*pi*r/4",
+       "step": "s2"
+      }
+     ],
+     "answer": "mu*pi*r/4",
+     "vars": {
+      "mu": 1.3,
+      "I": 2,
+      "r": 0.5
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "81c59cf4",
+    "answer": {
+     "value": 0.5105088062083414,
+     "label": "M = μ₀πr/4"
+    }
+   }
+  },
+  {
+   "id": "818f2845-6b41-4c0d-8414-05a7e8eff179",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "e_{max} = MI_0\\omega",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "e_{max} = 5\\times10^{-3}\\times10\\times100\\pi = 5\\pi\\ \\text{V}",
+       "f": "5*10^(-3)*10*100*pi",
+       "value": "5*pi",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "\\text{maximum when}\\ \\dfrac{dI}{dt}\\ \\text{is maximum}",
+       "step": "s3"
+      }
+     ],
+     "answer": "5*10^(-3)*10*100*pi"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "d0279679",
+    "answer": {
+     "value": 15.707963267948966,
+     "label": "5π V"
+    }
+   }
+  },
+  {
+   "id": "849085da-d1c7-45d3-9482-b774544b01aa",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\tfrac{1}{2}LI^2 = \\tfrac{1}{2}CV^2",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "C = \\dfrac{LI^2}{V^2} = \\dfrac{1}{(500)^2}\\times10^6 = 4\\ \\mu\\text{F}",
+       "f": "1/(500)^2*10^6",
+       "value": "4",
+       "step": "s2"
+      }
+     ],
+     "answer": "1/(500)^2*10^6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "0fea8970",
+    "answer": {
+     "value": 4,
+     "label": "4 μF"
+    }
+   }
+  },
+  {
+   "id": "84957879-90ab-407f-9ee6-da9cbe48d9df",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "L_{eq} = 30\\ \\text{mH}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "U = \\dfrac{1}{2}L_{eq}I^2 = \\dfrac{1}{2}\\times0.030\\times(2.2)^2 = 0.0726\\ \\text{J}",
+       "f": "0.5*0.030*2.2^2",
+       "value": "0.0726",
+       "dp": 4,
+       "step": "s2"
+      }
+     ],
+     "answer": "0.5*0.030*2.2^2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "23da6d04",
+    "answer": {
+     "value": 0.07260000000000001,
+     "label": "0.0726 J"
+    }
+   }
+  },
+  {
+   "id": "85b41057-8f40-425a-ac2e-0ad6c9013fcd",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "e = \\dfrac{N\\Delta\\phi}{\\Delta t}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta\\phi = BA = 2\\times10^{-2}\\times100\\times10^{-4} = 2\\times10^{-4}\\ \\text{Wb}",
+       "f": "2*10^(-2)*100*10^(-4)",
+       "value": "2*10^(-4)",
+       "sf": 1,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "t = \\dfrac{N\\Delta\\phi}{e} = \\dfrac{50\\times2\\times10^{-4}}{0.1} = 0.1\\ \\text{s}",
+       "f": "50*2*10^(-4)/0.1",
+       "value": "0.1",
+       "step": "s3"
+      }
+     ],
+     "answer": "50*2*10^(-4)/0.1"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "96f48e0f",
+    "answer": {
+     "value": 0.09999999999999999,
+     "label": "0.1 s"
+    }
+   }
+  },
+  {
+   "id": "860995d9-e6d7-4a34-9bf0-fa74d7225af7",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "M = \\dfrac{\\phi}{I}",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "B = \\dfrac{\\mu_0 I}{2r_1}\\ \\text{at the centre}",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\phi = B\\pi r_2^2 = \\dfrac{\\mu_0\\pi r_2^2}{2r_1}I",
+       "f": "(mu*I/(2*r1))*pi*r2^2",
+       "value": "mu*pi*r2^2*I/(2*r1)",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "M = \\dfrac{\\mu_0\\pi r_2^2}{2r_1}",
+       "f": "(mu*pi*r2^2*I/(2*r1))/I",
+       "value": "mu*pi*r2^2/(2*r1)",
+       "step": "s4"
+      }
+     ],
+     "answer": "mu*pi*r2^2/(2*r1)",
+     "vars": {
+      "mu": 1.3,
+      "I": 2,
+      "r1": 3,
+      "r2": 1
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "c50bc4ec",
+    "answer": {
+     "value": 0.6806784082777885,
+     "label": "M = μ₀πr₂²/(2r₁)"
+    }
+   }
+  },
+  {
+   "id": "8a7285b3-64e3-41f3-b77e-8c0992b48cd0",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "M = \\dfrac{10^{-3}}{3}\\ \\text{H}",
+       "f": "10^(-3)/3",
+       "value": "10^(-3)/3",
+       "sf": 1,
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\phi_P = M\\times2 = 0.667\\times10^{-3}\\ \\text{Wb}",
+       "f": "10^(-3)/3*2",
+       "value": "0.667*10^(-3)",
+       "sf": 3,
+       "step": "s2"
+      }
+     ],
+     "answer": "10^(-3)/3*2*1000"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "957ae89a",
+    "answer": {
+     "value": 0.6666666666666666,
+     "label": "x = 0.667"
+    }
+   }
+  },
+  {
+   "id": "8ec9aafa-53ab-41b3-960b-2973677c0976",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "L = \\dfrac{N\\phi}{I}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "L = \\dfrac{100\\times2.5\\times10^{-5}}{1} = 2.5\\times10^{-3}\\ \\text{H}",
+       "f": "100*2.5*10^(-5)/1",
+       "value": "2.5*10^(-3)",
+       "sf": 2,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "2.5\\times10^{-3}\\ \\text{H} = 2.5\\ \\text{mH}",
+       "f": "2.5*10^(-3)*1000",
+       "value": "2.5",
+       "step": "s3"
+      }
+     ],
+     "answer": "2.5*10^(-3)*1000"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "04ee8541",
+    "answer": {
+     "value": 2.5,
+     "label": "2.5 mH"
+    }
+   }
+  },
+  {
+   "id": "8ecab405-368d-48f0-87c9-ad2fa412dffd",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "180^\\circ\\ \\text{turn changes the flux linkage by}\\ 2NBA",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "q = \\dfrac{2\\times500\\times0.2\\times4\\times10^{-4}}{50} = 1.6\\times10^{-3}\\ \\text{C}",
+       "f": "2*500*0.2*4*10^(-4)/50",
+       "value": "1.6*10^(-3)",
+       "sf": 2,
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "x = 3",
+       "step": "s3"
+      }
+     ],
+     "answer": "-log10(2*500*0.2*4*10^(-4)/50/1.6)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "df6db03b",
+    "answer": {
+     "value": 3,
+     "label": "x = 3"
+    }
+   }
+  },
+  {
+   "id": "8f11b826-830a-49b9-ac17-0a6f449d04af",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "L \\propto \\mu_r N^2",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "L' = L\\times1000\\times\\left(\\dfrac{1}{10}\\right)^2 = 0.1\\times10 = 1\\ \\text{H}",
+       "f": "0.1*1000*(1/10)^2",
+       "value": "1",
+       "step": "s2"
+      }
+     ],
+     "answer": "0.1*1000*(1/10)^2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "d5a08b0d",
+    "answer": {
+     "value": 1.0000000000000002,
+     "label": "1 H"
+    }
+   }
+  },
+  {
+   "id": "8f46afe9-1338-45d9-a8ef-2d8971e384e0",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "1\\,H,\\ 2\\,H,\\ 3\\,H,\\ 4\\,H\\ \\text{all in parallel}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{1}{L} = 1+\\dfrac{1}{2}+\\dfrac{1}{3}+\\dfrac{1}{4} = \\dfrac{25}{12}",
+       "f": "1+1/2+1/3+1/4",
+       "value": "25/12",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "L = \\dfrac{12}{25}\\ \\text{H}",
+       "f": "1/(25/12)",
+       "value": "12/25",
+       "step": "s3"
+      }
+     ],
+     "answer": "1/(25/12)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "ceffacfb",
+    "answer": {
+     "value": 0.48,
+     "label": "12/25 H"
+    }
+   }
+  },
+  {
+   "id": "8fdb1277-4f6d-4b7d-ae36-05e001724963",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "e = \\dfrac{\\Delta\\phi}{\\Delta t}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "I = \\dfrac{e}{R} = \\dfrac{\\Delta\\phi}{R\\,\\Delta t}",
+       "f": "(dphi/dt)/R",
+       "value": "dphi/(R*dt)",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "Q = I\\cdot\\Delta t = \\dfrac{\\Delta\\phi}{R}",
+       "f": "(dphi/(R*dt))*dt",
+       "value": "dphi/R",
+       "step": "s3"
+      }
+     ],
+     "answer": "dphi/R",
+     "vars": {
+      "dphi": 6,
+      "dt": 2,
+      "R": 3
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "218ee80b",
+    "answer": {
+     "value": 2,
+     "label": "Q = Δφ/R"
+    }
+   }
+  },
+  {
+   "id": "903810d8-d87e-4953-82f5-a3ae145180f7",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "expr",
+       "tex": "\\phi = 50t^2 + 4",
+       "f": "50*x^2+4",
+       "step": "s1"
+      },
+      {
+       "kind": "deriv",
+       "tex": "|e| = \\dfrac{d\\phi}{dt} = 100t",
+       "f": "100*x",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "|e| = 100\\times2 = 200\\ \\text{V}",
+       "f": "100*2",
+       "value": "200",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "I = \\dfrac{e}{R} = \\dfrac{200}{400} = 0.5\\ \\text{A}",
+       "f": "200/400",
+       "value": "0.5",
+       "step": "s4"
+      }
+     ],
+     "answer": "200/400"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "c2722dfd",
+    "answer": {
+     "value": 0.5,
+     "label": "0.5 A"
+    }
+   }
+  },
+  {
+   "id": "90705e6d-df9b-468b-915d-c437c9974d55",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "P_p = I_pV_p = 5\\times220 = 1100\\ \\text{W}",
+       "f": "5*220",
+       "value": "1100",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "P_s = 550\\ \\text{W}",
+       "f": "1100*0.5",
+       "value": "550",
+       "note": "50% of the power is lost",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "I_s = \\dfrac{P_s}{V_s} = \\dfrac{550}{2200} = 0.25\\ \\text{A}",
+       "f": "550/2200",
+       "value": "0.25",
+       "step": "s3"
+      }
+     ],
+     "answer": "550/2200"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "cdc3c604",
+    "answer": {
+     "value": 0.25,
+     "label": "0.25 A"
+    }
+   }
+  },
+  {
+   "id": "93bb2bbe-467d-4f0c-bfc6-83ce5c0f2732",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\varepsilon = -\\dfrac{\\Delta\\phi}{\\Delta t}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "i = \\dfrac{\\varepsilon}{R},\\quad Q = i\\,\\Delta t = \\dfrac{\\Delta\\phi}{R}",
+       "f": "(dphi/dt/R)*dt",
+       "value": "dphi/R",
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "Q\\ \\text{depends only on}\\ \\Delta\\phi\\ \\text{and}\\ R",
+       "note": "not on the time taken",
+       "step": "s3"
+      }
+     ],
+     "answer": "dphi/R",
+     "vars": {
+      "dphi": 6,
+      "dt": 2,
+      "R": 3
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "296e4f90",
+    "answer": {
+     "value": 2,
+     "label": "Q = Δφ/R"
+    }
+   }
+  },
+  {
+   "id": "94613423-4647-46c8-b61d-d2ed4eda2716",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "L = \\mu_0n^2lA,\\quad n\\ \\text{constant}",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "l \\to 3l,\\quad A \\to 9A",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "L \\to \\mu_0n^2(3l)(9A) = 27L",
+       "f": "mu*n^2*(3*l)*(9*A)",
+       "value": "27*mu*n^2*l*A",
+       "step": "s3"
+      }
+     ],
+     "answer": "(mu*n^2*(3*l)*(9*A))/(mu*n^2*l*A)",
+     "vars": {
+      "mu": 1.3,
+      "n": 5,
+      "l": 2,
+      "A": 0.5
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "2deaf2fd",
+    "answer": {
+     "value": 27,
+     "label": "L' = 27L"
+    }
+   }
+  },
+  {
+   "id": "94e4bb5a-04c6-444a-9356-1d6889dca913",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "e = Blv",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "e = 5\\times10^{-5}\\times40\\times500 = 1\\ \\text{V}",
+       "f": "5*10^(-5)*40*500",
+       "value": "1",
+       "step": "s2"
+      }
+     ],
+     "answer": "5*10^(-5)*40*500"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "d94d5957",
+    "answer": {
+     "value": 1,
+     "label": "1 V"
+    }
+   }
+  },
+  {
+   "id": "95f54292-751e-4002-b183-ac9b50fcc0f6",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "K = \\dfrac{M}{\\sqrt{L_1L_2}}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "K = \\dfrac{45}{\\sqrt{75\\times48}} = \\dfrac{45}{60} = 0.75",
+       "f": "45/sqrt(75*48)",
+       "value": "0.75",
+       "step": "s2"
+      }
+     ],
+     "answer": "45/sqrt(75*48)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "ebc16f23",
+    "answer": {
+     "value": 0.75,
+     "label": "K = 0.75"
+    }
+   }
+  }
+ ],
+ "decided": []
+}
