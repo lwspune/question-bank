@@ -524,6 +524,8 @@ export const HELD: Record<string, number[]> = {
   "chsl-t1-2024-07-03-s1": [63],
   // CHSL 4 Jul 2024 Q66: likewise, only the caption and the bar graph print; no question.
   "chsl-t1-2024-07-04-s1": [66],
+  // CHSL 5 Jul 2024 Q67 (a table) and Q75 (a pie chart): no question printed under either.
+  "chsl-t1-2024-07-05-s1": [67, 75],
 };
 
 export const OUT = join(__dirname, "out"); // gitignored: page images, geometry, reading sheets
