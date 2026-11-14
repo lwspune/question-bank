@@ -68,7 +68,7 @@ type ClientEvent =
       kind: "surface_viewed";
       surface: "repeat_line";
       questionId: string;
-      action: "shown" | "see_all";
+      action: "shown" | "see_all" | "close" | "full_page";
       from: RepeatLineFrom;
     }
   | {

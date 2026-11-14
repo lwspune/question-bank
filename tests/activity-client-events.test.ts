@@ -541,7 +541,8 @@ describe("parseClientEvent - the repeat line", () => {
   const RQ = "0b5e55ed-1b2c-4d3e-9f00-112233445566";
 
   it("records each step with its question and screen, once per question per day", () => {
-    for (const action of ["shown", "see_all"]) {
+    // close and full_page (2026-11-15): See all opens a panel on the page; did they come back or leave?
+    for (const action of ["shown", "see_all", "close", "full_page"]) {
       for (const from of ["card", "drill", "mock_review"]) {
         expect(
           parseClientEvent({ kind: "surface_viewed", surface: "repeat_line", questionId: RQ, action, from }, "u1", NOW)

@@ -670,7 +670,13 @@ export default function QuestionCard({
             {/* The repeat line (2026-11-12): after the answer only, never before
                 (it would be a hint). Rows carry it only where the loader asked. */}
             {question.repeat && !cancelled && (revealed || (isOpenFormat && showSolution)) && (
-              <RepeatLineView line={question.repeat} questionId={question.id} from="card" record={meter.signedIn ? "all" : "none"} />
+              <RepeatLineView
+                line={question.repeat}
+                questionId={question.id}
+                from="card"
+                record={meter.signedIn ? "all" : "none"}
+                correct={picked ? correctLabels.includes(picked) : null}
+              />
             )}
 
             {/* The one line under a bank answer (lib/questions/teachingMoment):

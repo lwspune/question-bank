@@ -42,6 +42,7 @@ export default function HomeworkDayReader({
   supabaseUrl,
   planSlug,
   showChapter = true,
+  paperHeadings = false,
   day,
   nextDay = null,
 }: {
@@ -54,6 +55,8 @@ export default function HomeworkDayReader({
   /** For each slot's See all link (HomeworkSlotList). */
   planSlug?: string;
   showChapter?: boolean;
+  /** Head each slot with its paper, not "Question N" (HomeworkSlotList). */
+  paperHeadings?: boolean;
   /** The day shown: with it (and planSlug), a signed-in student sees progress. */
   day?: number;
   /** The day after this one, for the done card. */
@@ -157,6 +160,7 @@ export default function HomeworkDayReader({
         supabaseUrl={supabaseUrl}
         planSlug={planSlug}
         showChapter={showChapter}
+        paperHeadings={paperHeadings}
         revealed={revealed}
         blocked={blocked}
         lock={lock}

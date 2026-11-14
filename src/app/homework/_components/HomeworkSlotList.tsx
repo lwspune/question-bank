@@ -27,6 +27,7 @@ export default function HomeworkSlotList({
   supabaseUrl,
   planSlug,
   showChapter = true,
+  paperHeadings = false,
   idPrefix = "slot",
   revealed,
   blocked,
@@ -44,6 +45,10 @@ export default function HomeworkSlotList({
   planSlug?: string;
   /** Name the chapter above each slot. Off where the page is one chapter. */
   showChapter?: boolean;
+  /** Head each slot with its paper ("NDA 1 2021") instead of "Question N": the
+   *  repeat line's panel (2026-11-15), where the student's own question is left
+   *  out, so the numbers would start at 2. */
+  paperHeadings?: boolean;
   /** Prefix of each slot heading's id, unique on the page. */
   idPrefix?: string;
   revealed: Set<string>;
@@ -67,7 +72,7 @@ export default function HomeworkSlotList({
           <li key={s.position} aria-labelledby={`${idPrefix}-${s.position}`}>
             <div className="mb-2 flex items-baseline gap-2 border-b pb-1.5">
               <h2 id={`${idPrefix}-${s.position}`} className="text-base font-semibold text-foreground">
-                Question {s.position}
+                {paperHeadings && s.note ? s.note : `Question ${s.position}`}
                 {s.questions.length > 1 && (
                   <span className="font-normal text-muted-foreground"> (case study, {s.questions.length} parts)</span>
                 )}
@@ -80,7 +85,7 @@ export default function HomeworkSlotList({
                   <span className="font-medium text-foreground">{s.chapter}</span>.{" "}
                 </>
               )}
-              {s.note}
+              {paperHeadings ? null : s.note}
               {(() => {
                 const label = planSlug && s.group != null ? seeAllLabel(s.note) : null;
                 return label ? (
