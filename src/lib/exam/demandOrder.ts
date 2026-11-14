@@ -41,6 +41,7 @@ export const EXAM_DEMAND_ORDER: readonly string[] = [
   "ugc-net",
   "clat",
   "rrb-ntpc",
+  "capf-ac",
 ];
 
 function keyOf<T>(node: ExamFamilyNode<T>): string | undefined {

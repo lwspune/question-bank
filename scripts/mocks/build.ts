@@ -40,6 +40,7 @@
  *   npx tsx scripts/mocks/build.ts --paper=iat             # IISER IAT, one per committed year (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=ugc-net         # UGC NET Paper 1, one per committed shift (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=rrb-ntpc        # RRB NTPC Graduate CBT 1, one per shift (opt-in)
+ *   npx tsx scripts/mocks/build.ts --paper=capf            # UPSC CAPF (AC) Paper I, one per year (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=clat            # CLAT UG, one per committed year (opt-in)
  *   npx tsx scripts/mocks/build.ts --only=2026-jan-21-s1    # one JEE shift
  *   npx tsx scripts/mocks/build.ts --only=2024-Sep --apply --publish
@@ -86,6 +87,7 @@ import {
   iatPaper,
   UGC_NET_PAPER_1,
   RRB_NTPC_CBT_1,
+  CAPF_PAPER_1,
   clatPaper,
   type MockPaperBlueprint,
 } from "../../src/lib/mocks/blueprints";
@@ -125,6 +127,7 @@ import { uceedSittings } from "./uceedSittings";
 import { iatSittings } from "./iatSittings";
 import { ugcNetSittings } from "./ugcNetSittings";
 import { rrbNtpcSittings } from "./rrbNtpcSittings";
+import { capfSittings } from "./capfSittings";
 import { CLAT_MOCK_YEARS, clatSittings } from "./clatSittings";
 import { mockTestRow } from "../../src/lib/mocks/row";
 
@@ -823,6 +826,11 @@ async function buildRrbNtpc(db: SupabaseClient, run: RunState) {
   await buildFromSourceFiles(db, RRB_NTPC_CBT_1, rrbNtpcSittings(), run, "rrbNtpcSittings.ts");
 }
 
+/** UPSC CAPF (AC) Paper I, one mock per committed year (capfSittings.ts); dropped and defective questions ride as grace. */
+async function buildCapf(db: SupabaseClient, run: RunState) {
+  await buildFromSourceFiles(db, CAPF_PAPER_1, capfSittings(), run, "capfSittings.ts");
+}
+
 /** CLAT UG, one mock per committed year (clatSittings.ts) at that year's own section sizes; withdrawn questions ride as grace. */
 async function buildClat(db: SupabaseClient, run: RunState) {
   for (const s of clatSittings(CLAT_MOCK_YEARS)) {
@@ -963,9 +971,11 @@ async function main() {
   const runClat = paperFilter === "clat";
   // Opt-in: RRB NTPC (scripts/rrb-ntpc/README.md).
   const runRrbNtpc = paperFilter === "rrb-ntpc";
-  if (paperFilter && !runUceed && !runIat && !runUgcNet && !runClat && !runRrbNtpc && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runChsl && !runSpi && !runImat && !runMpscMains) {
+  // Opt-in: UPSC CAPF (AC) (scripts/capf/README.md).
+  const runCapf = paperFilter === "capf";
+  if (paperFilter && !runUceed && !runIat && !runUgcNet && !runClat && !runRrbNtpc && !runCapf && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runChsl && !runSpi && !runImat && !runMpscMains) {
     throw new Error(
-      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, ssc-chsl, spi, imat, mpsc-mains, uceed, iat, ugc-net, clat, rrb-ntpc)`
+      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, ssc-chsl, spi, imat, mpsc-mains, uceed, iat, ugc-net, clat, rrb-ntpc, capf)`
     );
   }
 
@@ -1043,6 +1053,7 @@ async function main() {
   if (runUgcNet) await buildUgcNet(db, run);
   if (runClat) await buildClat(db, run);
   if (runRrbNtpc) await buildRrbNtpc(db, run);
+  if (runCapf) await buildCapf(db, run);
 
   console.log(`\n${apply ? "Upserted" : "Would build"} ${run.built.n} mock(s)${publish ? " (published)" : apply ? " (draft)" : ""}.`);
   if (run.held.n) console.log(`${run.held.n} paper(s) held — cannot reconstruct whole (see ⊘ lines above).`);

@@ -282,11 +282,17 @@ function nearMatch(value: string, candidates: string[]): string | null {
 export function validateCatalog(
   questions: TQ[],
   catalog: Catalog,
-  paper: PaperNumber
+  paper: PaperNumber,
+  /**
+   * The subjects this paper may use, when CSE's Paper I / Paper II split does not
+   * apply. CAPF Paper I mixes GS subjects with reasoning and numeracy in one
+   * paper, so its lane passes its own list.
+   */
+  legalSubjects?: string[]
 ): { errors: string[]; warnings: string[] } {
   const errors: string[] = [];
   const warnings: string[] = [];
-  const legal = new Set(subjectsFor(paper));
+  const legal = new Set(legalSubjects ?? subjectsFor(paper));
   const roman = paper === 1 ? "I" : "II";
 
   for (const q of questions) {
@@ -298,6 +304,13 @@ export function validateCatalog(
       continue;
     }
     if (!legal.has(q.subject)) {
+      if (legalSubjects) {
+        errors.push(
+          `Q${q.number}: subject "${q.subject}" is not a legal subject for this paper — ` +
+            `it may only use: ${legalSubjects.join(", ")}`
+        );
+        continue;
+      }
       errors.push(
         `Q${q.number}: subject "${q.subject}" is not a Paper ${roman} subject — ` +
           `Paper ${roman} may only use: ${[...legal].join(", ")}`

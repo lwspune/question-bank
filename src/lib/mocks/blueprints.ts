@@ -923,6 +923,47 @@ export const RRB_NTPC_CBT_1: MockPaperBlueprint = {
   ],
 };
 
+/**
+ * UPSC CAPF (Assistant Commandants) Paper I, "General Ability and Intelligence",
+ * as UPSC sets it: 125 MCQs in 2 hours, 2 marks each, one third of a question's
+ * marks off for a wrong answer. The booklet prints no subject headings (current
+ * affairs, GK, science, computers, reasoning and arithmetic run mixed), so the
+ * mock is ONE section carrying every subject in scripts/capf/catalog.json and
+ * keeps UPSC's printed order. A dropped or defective question stays in as grace
+ * (src/lib/mocks/flawed.json), so the count never shortens.
+ */
+export const CAPF_PAPER_1: MockPaperBlueprint = {
+  code: "paper-1",
+  examName: "UPSC CAPF (AC)",
+  examSlug: "capf-ac",
+  paperLabel: "Paper I",
+  durationSecs: 120 * 60,
+  marking: { correct: 2, wrong: -0.6667 },
+  sections: [
+    {
+      key: "general-ability",
+      label: "General Ability and Intelligence",
+      subjects: [
+        "Polity and Governance",
+        "History",
+        "Geography",
+        "Economy",
+        "Environment and Ecology",
+        "Physics",
+        "Chemistry",
+        "Biology",
+        "Current Affairs and IR",
+        "Logical Reasoning and Analytical Ability",
+        "General Mental Ability",
+        "Basic Numeracy",
+        "Data Interpretation and Data Sufficiency",
+        "Computer Knowledge",
+      ],
+      count: 125,
+    },
+  ],
+};
+
 const CLAT_SECTIONS = [
   ["english", "English Language", 24],
   ["current-affairs", "Current Affairs including General Knowledge", 28],
@@ -1176,6 +1217,7 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   IAT_PAPER,
   UGC_NET_PAPER_1,
   RRB_NTPC_CBT_1,
+  CAPF_PAPER_1,
   CLAT_PAPER,
   IMAT_PAPER,
   CBSE_10_CHAPTER_MCQ_PAPER,
