@@ -106,6 +106,7 @@ describe("EXPERIMENTS", () => {
       "repeat-line",
       "resource-chips",
       "review-traps",
+      "same-mistake",
       "score-plan",
       "second-page",
       "self-mark",

@@ -290,6 +290,14 @@ export const SCORE_PLAN_DRILL_KEEP_PCT = 25;
  */
 export const STUCK_OFFER_LEAVE_BASELINE_PCT = 14;
 /**
+ * "same-mistake": a bank miss on a question the student had missed before, in
+ * the 4 weeks to 2026-10-31 (before the line existed): 151 moments by 61
+ * students, 22.5% fixed (answered right) within 14 days, 12.6% answered
+ * nothing more within 20 minutes. The bars the line is judged against.
+ */
+export const SAME_MISTAKE_FIXED_BASELINE_PCT = 22.5;
+export const SAME_MISTAKE_LEAVE_BASELINE_PCT = 12.6;
+/**
  * "checkout-contact": of students who opened checkout in the 30 days to
  * 2026-11-12 with a mobile saved with us, the share who paid (23 of 51). Their
  * mobile was NOT sent to Razorpay then, so the same group after the change is
@@ -460,6 +468,7 @@ export type Readout =
   | "v-step-by-step"
   | "score-plan"
   | "stuck-offer"
+  | "same-mistake"
   | "mock-before-start"
   | "review-traps"
   | "repeat-line"
@@ -965,6 +974,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-11",
     windowDays: 28,
     readout: "stuck-offer",
+    status: "running",
+  },
+  {
+    id: "same-mistake",
+    title: "Same mistake again",
+    change:
+      "On a bank question card, a miss on a question the student had missed before says so as the one line under the answer: \"You picked B here last time too (12 Nov).\", or names the other option, or the mock it was missed in. The line is one of the teaching moments (lib/questions/teachingMoment), which show at most one per answer; it comes before the stuck offer. The Fix nudge (every 5th miss) was retired in the same change.",
+    why: "Owner's call after the 2026-11-14 teaching-moments research: about 170 of these a month on the bank, and 59% picked the same wrong option again. Naming the repeat costs no new content and points the student at the step they keep missing.",
+    metric:
+      "Lines shown (surface_viewed teaching_moment, metadata.moment same_mistake); of those moments, the share answered right on the same question within 14 days, and the share with no answer within 20 minutes. Before/after, no held-back group (owner's call).",
+    rule: `Keep it if fixed-within-14-days rises 5+ points above ${SAME_MISTAKE_FIXED_BASELINE_PCT}% without leaving rising 5+ points above ${SAME_MISTAKE_LEAVE_BASELINE_PCT}%. Drop it if leaving rises 5+ points. About 150 moments a month, so a change under 5 points is noise.`,
+    liveSince: "2026-11-15",
+    windowDays: 42,
+    readout: "same-mistake",
     status: "running",
   },
   {

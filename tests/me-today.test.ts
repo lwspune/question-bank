@@ -26,7 +26,7 @@ describe("pickTodayAction", () => {
   });
 
   // Since 2026-10-02 a wrong answer in the bank enters the drill too, so
-  // "From your mocks" was untrue for most students (lib/drill/fixNudge.ts).
+  // "From your mocks" was untrue for most students (lib/questions/bankVerdict.ts).
   it("says the mistakes come from practice as well as mocks", () => {
     expect(pickTodayAction({ due: 5, mockHref: "/mock" }).subtitle).toBe(
       "From your practice and mocks, five at a time."

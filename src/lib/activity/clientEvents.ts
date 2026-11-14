@@ -41,6 +41,10 @@ const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
 /** The Review traps panel's steps (src/app/review/ChapterTraps). */
 export const REVIEW_TRAPS_ACTIONS: ReadonlySet<string> = new Set(["shown", "expand", "playbook"]);
 export const STUCK_OFFER_ACTIONS: ReadonlySet<string> = new Set(["shown", "teach", "easier", "keep", "returned", "try_after"]);
+/** The one line under a bank answer (2026-11-14, lib/questions/teachingMoment): moments with their own
+ *  event here, and their steps. The stuck offer keeps its own surface (its experiment predates this). */
+export const TEACHING_MOMENTS: ReadonlySet<string> = new Set(["same_mistake"]);
+export const TEACHING_MOMENT_ACTIONS: ReadonlySet<string> = new Set(["shown"]);
 /** The repeat line (2026-11-12, lib/questions/repeatLine): seen, or See all tapped; on which screen. */
 export const REPEAT_LINE_ACTIONS: ReadonlySet<string> = new Set(["shown", "see_all"]);
 export const REPEAT_LINE_FROM = ["card", "drill", "mock_review"] as const;
@@ -312,6 +316,20 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
       };
     }
     // The stuck offer (2026-11-10, lib/questions/stuckOffer): seen and each button, per question and day.
+    // A teaching moment (2026-11-14, lib/questions/teachingMoment): which one was seen, per question and day.
+    if (raw.surface === "teaching_moment") {
+      if (typeof raw.questionId !== "string" || !UUID_RE.test(raw.questionId)) return { ok: false, error: "Invalid question id." };
+      if (typeof raw.moment !== "string" || !TEACHING_MOMENTS.has(raw.moment)) return { ok: false, error: "Unknown moment." };
+      if (typeof raw.action !== "string" || !TEACHING_MOMENT_ACTIONS.has(raw.action)) return { ok: false, error: "Unknown step." };
+      return {
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "teaching_moment", moment: raw.moment, questionId: raw.questionId, action: raw.action },
+          dedupeKey: `view:teaching_moment:${raw.moment}:${raw.action}:${raw.questionId}:${userId}:${istDayKey(now)}`,
+        },
+      };
+    }
     if (raw.surface === "stuck_offer") {
       if (typeof raw.questionId !== "string" || !UUID_RE.test(raw.questionId)) return { ok: false, error: "Invalid question id." };
       if (typeof raw.action !== "string" || !STUCK_OFFER_ACTIONS.has(raw.action)) return { ok: false, error: "Unknown step." };

@@ -309,6 +309,10 @@ async function main() {
         // Read by hand: the v_chapter rows of the chapter-fix readout (views and drill starts).
         line = "by hand: scripts/drill/chapter-fix-readout.sql (v_chapter rows)";
         break;
+      case "same-mistake":
+        // Read by hand: the same query as the baseline, over the weeks since launch.
+        line = "by hand: scripts/moments/same-mistake-readout.sql";
+        break;
       case "install-app":
         // Read by hand: Vercel's app_opened / app_installed, and student_profiles.app_opened_at (migration 0255).
         line = "by hand: Vercel app_opened + student_profiles.app_opened_at";
