@@ -8,13 +8,15 @@
 // a CDS paper (--exam="CDS": "CDS 1 2024"), by cdsSittingLabel, and an SSC CGL
 // shift (--exam="SSC CGL": "14 Jul 2023 S3", up to four a day), by sscSittingLabel, and
 // a JEE Mains sitting (--exam="JEE Mains": "2 Apr 2026 S1", a 2022-2025 day "14 Jun 2022",
-// a 2021 paper "2021 Paper 7"), by jeeSittingLabel.
+// a 2021 paper "2021 Paper 7"), by jeeSittingLabel, and a NEET paper (--exam="NEET":
+// "NEET 2024", "Re-NEET 2024"), by neetSittingLabel.
 // Then the review follows scripts/homework/REVIEW_BRIEF.md, and scripts/homework/assemble.ts builds the plan file.
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { reprintSittings } from "@/lib/homework/reprints";
 import { isHomeworkPassage } from "@/lib/homework/slotContext";
+import { neetSyllabusCut } from "@/lib/homework/neetSyllabus";
 import { SHIFTS } from "../ssc-cgl/config";
 import { compareSittings, sittingFor, sscSittingLabel } from "@/lib/homework/sittings";
 
@@ -41,6 +43,7 @@ async function main() {
   const isSsc = examName === "SSC CGL";
   const isSscT2 = examName === "SSC CGL Tier II";
   const isJee = examName === "JEE Mains";
+  const isNeet = examName === "NEET";
   const sittingOf = (r: Row) => sittingFor(examName, r);
   // SSC CGL keeps one row for a question a later shift reprinted; repeats.json
   // names the reprints, so they count as sittings (lib/homework/reprints.ts).
@@ -75,6 +78,14 @@ async function main() {
     rows.splice(0, rows.length, ...rows.filter((r) => r.pyq_year >= 2021));
     if (leftOut.length) console.log(`left out ${leftOut.length} pre-2021 reprint rows`);
   }
+  // NEET: chapters cut from the 2024 syllabus keep only their 2024-on questions
+  // (lib/homework/neetSyllabus.ts), recorded in left-out.json like JEE's reprints.
+  if (isNeet) {
+    const cut = neetSyllabusCut(rows);
+    leftOut.push(...cut.leftOut);
+    rows.splice(0, rows.length, ...cut.kept);
+    if (cut.leftOut.length) console.log(`left out ${cut.leftOut.length} rows from chapters cut in 2024`);
+  }
 
   // A case study = rows of one paper sharing a real passage (not an instruction,
   // including a board section instruction such as Geography's "Give geographical
@@ -86,7 +97,7 @@ async function main() {
     (slots.get(key) ?? slots.set(key, []).get(key)!).push(r);
   }
   const paperOf = (r: Row) =>
-    isMh || isNda || isCet || isSsc || isSscT2 || isJee ? sittingOf(r) : /question paper ([\d/A-Z-]+)/.exec(r.pyq_note ?? "")?.[1] ?? r.source_file ?? "?";
+    isMh || isNda || isCet || isSsc || isSscT2 || isJee || isNeet ? sittingOf(r) : /question paper ([\d/A-Z-]+)/.exec(r.pyq_note ?? "")?.[1] ?? r.source_file ?? "?";
   const slotList = [...slots.values()].map((rs) => {
     rs.sort((a, b) => qnum(a.question_number) - qnum(b.question_number) || (a.question_number ?? "").localeCompare(b.question_number ?? ""));
     const lead = rs[0];
