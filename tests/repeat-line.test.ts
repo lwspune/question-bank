@@ -44,6 +44,8 @@ describe("repeatLine", () => {
       lead: "Asked in 3 papers",
       rest: ": NDA 1 2017, NDA 1 2021, NDA 2 2024 (new numbers in 2)",
       href: "/homework/nda-maths/group/196",
+      planSlug: "nda-maths",
+      n: 196,
       linkText: "See all 3",
     });
   });
@@ -84,6 +86,8 @@ describe("repeatLine", () => {
       lead: "Questions like this were asked 9 times",
       rest: ", 2022 to 2026, each with its own numbers",
       href: "/homework/mht-cet-physics/group/50",
+      planSlug: "mht-cet-physics",
+      n: 50,
       linkText: "See all 9",
     });
   });

@@ -390,7 +390,7 @@ export default function DrillRunner({
                 </p>
               )}
               {question.repeat && (
-                <RepeatLineView line={question.repeat} questionId={question.id} from="drill" record="all" />
+                <RepeatLineView line={question.repeat} questionId={question.id} from="drill" record="all" correct={answered?.correct ?? null} />
               )}
               {/* Animated first where the question has a checked visual; Still is the block as before.
                   A written question's model answer is already open above. */}

@@ -217,7 +217,13 @@ function ReviewCard({
       {/* The repeat line (2026-11-12): the review is after the mock, so it is no hint here. */}
       {item.repeat && !item.cancelledNote && (
         <div className="mt-3">
-          <RepeatLineView line={item.repeat} questionId={item.questionId} from="mock_review" record={recordRepeat} />
+          <RepeatLineView
+            line={item.repeat}
+            questionId={item.questionId}
+            from="mock_review"
+            record={recordRepeat}
+            correct={item.partial ? null : item.verdict === 1 ? true : item.verdict === -1 ? false : null}
+          />
         </div>
       )}
 

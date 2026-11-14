@@ -37,6 +37,9 @@ export type RepeatLine = {
   /** Printed after the lead; starts with its own punctuation, may be empty. */
   rest: string;
   href: string;
+  /** The group behind href, for the panel "See all" opens on the same page (2026-11-15). */
+  planSlug: string;
+  n: number;
   linkText: string;
 };
 
@@ -95,7 +98,16 @@ export function repeatLine(groups: readonly RepeatGroup[]): RepeatLine | null {
 
   if (group.tier === "type") {
     const rest = span ? `${spanText(span)}, each with its own numbers` : "";
-    return { kind: "type", count, lead: `Questions like this were asked ${count} times`, rest, href, linkText };
+    return {
+      kind: "type",
+      count,
+      lead: `Questions like this were asked ${count} times`,
+      rest,
+      href,
+      planSlug: group.planSlug,
+      n: group.n,
+      linkText,
+    };
   }
 
   const yearsOnly = labels.every((l) => /^\d{4}$/.test(l));
@@ -105,5 +117,5 @@ export function repeatLine(groups: readonly RepeatGroup[]): RepeatLine | null {
   let rest: string;
   if (count <= LIST_MAX) rest = `: ${labels.join(", ")}${changedNote}`;
   else rest = span ? `${spanText(span)}${changedNote}` : "";
-  return { kind: "repeat", count, lead, rest, href, linkText };
+  return { kind: "repeat", count, lead, rest, href, planSlug: group.planSlug, n: group.n, linkText };
 }

@@ -4,11 +4,9 @@ import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
-import { getPlanGroup } from "@/lib/homework/query";
-import { homeworkDayView } from "@/lib/homework/dayView";
-import { groupHeading, groupItems } from "@/lib/homework/chapters";
+import { loadGroupPage } from "@/lib/homework/groupPage";
+import { groupHeading } from "@/lib/homework/chapters";
 import { parseDayParam, planHref } from "@/lib/homework/links";
-import { loadBoardQuestions } from "@/lib/questionPapers/query";
 import HomeworkDayReader from "../../../_components/HomeworkDayReader";
 
 type Params = { planSlug: string; n: string };
@@ -30,17 +28,7 @@ async function load(params: Params) {
   // A group number has the shape of a day number: a whole number from 1.
   const n = parseDayParam(params.n);
   if (n === null) return null;
-  const client = createSupabaseAnonClient();
-  const page = await getPlanGroup(client, params.planSlug, n);
-  if (!page || page.members.length === 0) return null;
-  const items = groupItems(page.members);
-  const questions = await loadBoardQuestions(client, items.map((it) => it.questionId));
-  const view = homeworkDayView(items, questions);
-  if (!view.ok) {
-    console.error("homework group: questions unavailable", params.planSlug, n, view.missing);
-    return null;
-  }
-  return { ...page, slots: view.slots };
+  return loadGroupPage(createSupabaseAnonClient(), params.planSlug, n);
 }
 
 export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
