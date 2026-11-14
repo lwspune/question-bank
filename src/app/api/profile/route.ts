@@ -30,6 +30,8 @@ const BodySchema = z.object({
   whatsappOptIn: z.boolean().optional(),
   /** The browser-push ask was answered, either way (PUSH_SPEC.md §3). */
   pushPrompted: z.literal(true).optional(),
+  /** PYQ Vault was opened from its home-screen icon (2026-11-14, migration 0255). */
+  appOpened: z.literal(true).optional(),
   /** Weekly study-days goal (ENGAGEMENT_SPEC.md §A3; days since 2026-11-06): 1..7, or null to clear. */
   weeklyGoal: z.union([z.number(), z.string(), z.null()]).optional(),
   /** Own exam date (ENGAGEMENT_SPEC.md C3): YYYY-MM-DD, or null to clear. */
@@ -76,6 +78,7 @@ export async function PATCH(request: NextRequest) {
   // the ask-once gate in updateOwnProfile.
   if (body.whatsappOptIn !== undefined) patch.whatsappOptIn = body.whatsappOptIn;
   if (body.pushPrompted) patch.pushPrompted = true;
+  if (body.appOpened) patch.appOpened = true;
 
   // Weekly goal: an explicit null clears it; anything that does not sanitize
   // is rejected rather than silently nulled, because "clear my goal" and "I

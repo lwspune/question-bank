@@ -81,6 +81,9 @@ export function footerLinks(): FooterGroup[] {
         // The one page that says what the product is for — on every page so
         // an anon phone reader (no account menu) can find it too.
         { href: "/start", label: "How it works" },
+        // Installing to the home screen (2026-11-14). Here for visitors with no
+        // account menu; students asked V and the contact form for an app.
+        { href: "/app", label: "Get the app" },
         { href: "/blog", label: "Blog" },
         { href: "/about", label: "About" },
         // The in-app form first: it lands in /dashboard/feedback. The mailto

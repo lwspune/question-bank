@@ -108,6 +108,9 @@ export type ProfileUpdate = ProfileDetails & {
   whatsappOptIn?: boolean;
   /** Stamps push_prompted_at: the browser-push ask was answered, either way. */
   pushPrompted?: true;
+  /** Stamps app_opened_at: PYQ Vault was opened from its home-screen icon.
+   *  The database keeps the FIRST date (migration 0255), so repeats are harmless. */
+  appOpened?: true;
   /** Weekly sittings goal; null clears it. */
   weeklyGoal?: number | null;
   /** Own exam date (YYYY-MM-DD); null clears it so the calendar applies. */
@@ -145,6 +148,7 @@ export async function updateOwnProfile(
     row.whatsapp_prompted_at = new Date().toISOString(); // decided → ask once
   }
   if (patch.pushPrompted) row.push_prompted_at = new Date().toISOString();
+  if (patch.appOpened) row.app_opened_at = new Date().toISOString();
 
   const { error } = await db.from("student_profiles").upsert(row, { onConflict: "user_id" });
   if (error) throw new Error(error.message);

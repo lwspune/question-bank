@@ -9,6 +9,7 @@ import ClarityScript from "@/components/analytics/ClarityScript";
 import NavigationProgress from "@/components/NavigationProgress";
 import ChatWidget from "@/components/chat/ChatWidget";
 import PendingSelfMarkSaver from "@/components/reveal/PendingSelfMarkSaver";
+import AppInstallCapture from "@/components/install/AppInstallCapture";
 import { CartProvider } from "@/lib/cart/CartProvider";
 import { BookmarksProvider } from "@/lib/bookmarks/BookmarksProvider";
 import { MobilePromptProvider } from "@/lib/profile/MobilePromptProvider";
@@ -140,6 +141,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               signed in. One localStorage read per page; no server read at
               render, so prerendered routes stay cached. */}
           <PendingSelfMarkSaver />
+          {/* Installing PYQ Vault to the home screen: registers the service
+              worker, keeps Chrome's install prompt for /app, counts launches.
+              Renders nothing and reads no server API at render, so prerendered
+              routes stay cached. */}
+          <AppInstallCapture />
           </MobilePromptProvider>
           </BookmarksProvider>
         </CartProvider>

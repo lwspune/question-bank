@@ -77,6 +77,11 @@ describe("footerLinks", () => {
     expect(decodeURIComponent(mailto!)).toContain("PYQ Vault");
   });
 
+  it("About carries /app, the install page, for visitors with no account menu (2026-11-14)", () => {
+    const app = byTitle("About").links.find((l) => l.href === "/app");
+    expect(app?.label).toBe("Get the app");
+  });
+
   it("does not label the mailto as a question report (that is the in-app flag)", () => {
     const labels = byTitle("About").links.map((l) => l.label);
     expect(labels).not.toContain("Report a question");

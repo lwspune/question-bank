@@ -216,6 +216,11 @@ describe("NAV_FACTS", () => {
     expect(app).toMatch(/Play Store|App Store/);
   });
 
+  it("points 'is there an app?' at /app, the page with the install button (2026-11-14)", () => {
+    const app = NAV_FACTS.find((f) => /\bapp\b/i.test(f));
+    expect(app).toMatch(/^\/app:/);
+  });
+
   it("names the pages students asked V for", () => {
     const all = NAV_FACTS.join(" ");
     for (const path of ["/pricing", "/question-papers", "/board", "/guide", "/notes", "/signup"]) {
