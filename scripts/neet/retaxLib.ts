@@ -78,7 +78,7 @@ export function sourceKeyFor(
 }
 
 type Entry = { number: number | string; subject?: string; chapter?: string; subtopic?: string; stem?: string };
-const isQuestionFile = (v: unknown): v is Entry[] =>
+export const isQuestionFile = (v: unknown): v is Entry[] =>
   Array.isArray(v) && v.length > 0 && v.every((e) => e && typeof e === "object" && "number" in e && "chapter" in e && "stem" in e);
 
 /**
@@ -142,4 +142,32 @@ export function planToMoves(plan: RecutPlan, dumpRows: { id: string }[]): { erro
   for (const prefix of byPrefix.keys()) if (!placed.has(prefix)) errors.push(`${prefix}: not placed on any page`);
   const moves = dumpRows.map((r) => placed.get(r.id.slice(0, 8))).filter((m): m is Move => !!m);
   return { errors, moves };
+}
+
+/**
+ * Rewrite subject/chapter/subtopic of the entry numbered `number` IN THE FILE TEXT, so every other
+ * byte (inline option arrays, CRLF, a missing final newline) stays as it was. Re-serialising the
+ * whole file expanded every inline array and turned a 20-row move into a 2,700-line diff.
+ */
+export function patchEntryText(raw: string, number: string, to: Target): { text: string; matched: number } {
+  const esc = number.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const head = new RegExp(`"number"\\s*:\\s*(?:${esc}|"${esc}")\\s*(?=[,}\\r\\n])`, "g");
+  const starts = [...raw.matchAll(head)].map((m) => m.index!);
+  if (starts.length === 0) return { text: raw, matched: 0 };
+  let text = raw;
+  // Patch from the last match backwards so earlier offsets stay valid.
+  for (const start of [...starts].reverse()) {
+    const next = text.slice(start + 1).search(/"number"\s*:/);
+    const end = next === -1 ? text.length : start + 1 + next;
+    let seg = text.slice(start, end);
+    for (const [field, value] of [
+      ["subject", to.subject],
+      ["chapter", to.chapter],
+      ["subtopic", to.subtopic],
+    ] as const) {
+      seg = seg.replace(new RegExp(`("${field}"\\s*:\\s*)"(?:[^"\\\\]|\\\\.)*"`), (_m, pre) => pre + JSON.stringify(value));
+    }
+    text = text.slice(0, start) + seg + text.slice(end);
+  }
+  return { text, matched: starts.length };
 }

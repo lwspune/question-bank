@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { planMoves, planToMoves, sourceKeyFor, updateSourceEntries, type RowNow } from "../scripts/neet/retaxLib";
+import { patchEntryText, planMoves, planToMoves, sourceKeyFor, updateSourceEntries, type RowNow } from "../scripts/neet/retaxLib";
 
 const catalog = {
   Physics: ["Units and Measurements"],
@@ -153,5 +153,49 @@ describe("planToMoves", () => {
     expect(errors.some((e) => /zzzzzzzz.*not in the dump/.test(e))).toBe(true);
     expect(errors.some((e) => /bbbbbbbb.*not placed/.test(e))).toBe(true);
     expect(errors.some((e) => /cccccccc.*not placed/.test(e))).toBe(true);
+  });
+});
+
+describe("patchEntryText", () => {
+  const raw = [
+    "[",
+    "  {",
+    '    "number": 101,',
+    '    "subject": "Botany",',
+    '    "chapter": "Cell: The Unit of Life",',
+    '    "subtopic": "Enzymes",',
+    '    "options": ["a", "b", "c", "d"],',
+    '    "stem": "x"',
+    "  },",
+    "  {",
+    '    "number": 1010,',
+    '    "subject": "Botany",',
+    '    "chapter": "Cell: The Unit of Life",',
+    '    "subtopic": "Enzymes",',
+    '    "stem": "y"',
+    "  }",
+    "]",
+  ].join("\r\n");
+
+  it("rewrites only the three fields of the entry with that number, leaving every other byte alone", () => {
+    const { text, matched } = patchEntryText(raw, "101", { subject: "Zoology", chapter: "Biomolecules", subtopic: "Enzymes" });
+    expect(matched).toBe(1);
+    expect(text).toBe(
+      raw
+        .replace('"subject": "Botany",\r\n    "chapter": "Cell: The Unit of Life"', '"subject": "Zoology",\r\n    "chapter": "Biomolecules"')
+    );
+    expect(text).toContain('"options": ["a", "b", "c", "d"],');
+    expect(JSON.parse(text)[1]).toMatchObject({ number: 1010, subject: "Botany" });
+  });
+
+  it("escapes the new values as JSON and matches a number stored as a string", () => {
+    const r = raw.replace('"number": 101,', '"number": "101",');
+    const { text, matched } = patchEntryText(r, "101", { subject: "Botany", chapter: "A \"quoted\" one", subtopic: "B" });
+    expect(matched).toBe(1);
+    expect(JSON.parse(text)[0].chapter).toBe('A "quoted" one');
+  });
+
+  it("reports 0 for a number no entry has", () => {
+    expect(patchEntryText(raw, "7", { subject: "x", chapter: "y", subtopic: "z" }).matched).toBe(0);
   });
 });

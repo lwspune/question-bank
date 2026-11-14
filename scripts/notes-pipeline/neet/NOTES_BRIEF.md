@@ -86,6 +86,9 @@ how recent they are, counted from the dump ("none since 2022"), not as a syllabu
      shuffled quiz alone. No rep may test a fact the page has not taught.
    - At least 12 traps per chapter (a chapter under ~25 pyq rows: as many as it honestly has, at
      least one per concept), each stating the mistake and the right fact without pointing at another item.
+   - **Only facts you are sure NCERT states.** A list member added from memory (Living World put Salim
+     Ali among NCERT's unit-opening biologists; he is not one) is worse than a shorter list. When
+     unsure, leave the row out and name it in the report.
    - Every year, count and repeat you write ("asked three times", "two of them from 2024") is COUNTED
      from the dump with a one-line script, never estimated.
 4. **The intro** (`chapter.ts`): the first sentence states a bank fact ("Cell Cycle and Cell

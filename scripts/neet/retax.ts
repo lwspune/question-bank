@@ -22,7 +22,7 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { DATA as NEET_DATA, EXAM_ID, NEET_CHAPTERS, PAPERS } from "./config";
 import { DATA as PARIKSHA_DATA, TESTS } from "../pariksha/config";
-import { planMoves, planToMoves, sourceKeyFor, updateSourceEntries, type Move, type RecutPlan, type RowNow } from "./retaxLib";
+import { isQuestionFile, patchEntryText, planMoves, planToMoves, sourceKeyFor, type Move, type RecutPlan, type RowNow } from "./retaxLib";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!);
@@ -35,16 +35,11 @@ if (!mapPath) throw new Error("usage: retax.ts <moves.json> [--apply] [--allow-n
 
 const chunk = <T,>(a: T[], n: number) => Array.from({ length: Math.ceil(a.length / n) }, (_, i) => a.slice(i * n, i * n + n));
 
-/** Read a JSON file, remembering its line ending and whether it ends in one, so a rewrite keeps the file's own style. */
-type Loaded = { json: unknown; eol: string; trailing: boolean };
+/** A source file's text, and whether it is a list of question entries (figure maps etc. are skipped). */
+type Loaded = { raw: string; isQuestions: boolean };
 function load(path: string): Loaded {
   const raw = readFileSync(path, "utf8");
-  const eol = raw.includes("\r\n") ? "\r\n" : "\n";
-  return { json: JSON.parse(raw), eol, trailing: raw.endsWith("\n") };
-}
-function save(path: string, l: Loaded) {
-  const text = JSON.stringify(l.json, null, 2).replace(/\n/g, l.eol);
-  writeFileSync(path, l.trailing ? text + l.eol : text);
+  return { raw, isQuestions: isQuestionFile(JSON.parse(raw)) };
 }
 
 async function main() {
@@ -91,33 +86,50 @@ async function main() {
 
   const { errors, changes, unchanged } = planMoves(moves, rows, NEET_CHAPTERS);
 
-  // Source entries: load each paper's/test's question files once, apply changes in memory.
+  // Source entries, patched as text in memory. Rows the bank already has right are synced too, so a
+  // source file always converges on the plan even after an interrupted run.
   const neetPapers = Object.fromEntries(Object.values(PAPERS).map((p) => [p.id, p.sourceFile]));
   const parikshaTests = Object.fromEntries(Object.values(TESTS).map((t) => [t.id, t.sourceFile]));
   const files = new Map<string, Loaded>(); // full path -> loaded
   const dirty = new Set<string>();
-  for (const c of changes) {
-    const key = sourceKeyFor(c.sourceFile, neetPapers, parikshaTests);
+  const byRow = new Map(rows.map((r) => [r.id, r]));
+  const byMove = new Map(moves.map((m) => [m.id, m]));
+  const targets = [
+    ...changes.map((c) => ({ id: c.id, sourceFile: c.sourceFile, number: c.number, to: c.to })),
+    ...unchanged.map((id) => {
+      const r = byRow.get(id)!;
+      const m = byMove.get(id)!;
+      return { id, sourceFile: r.sourceFile, number: r.number, to: { subject: m.subject, chapter: m.chapter, subtopic: m.subtopic.trim() } };
+    }),
+  ];
+  for (const t of targets) {
+    const key = sourceKeyFor(t.sourceFile, neetPapers, parikshaTests);
     if (!key) {
-      if (!allowNoSource) errors.push(`${c.id}: no JSON source known for ${c.sourceFile} (pass --allow-no-source to move the bank row only)`);
+      if (!allowNoSource) errors.push(`${t.id}: no JSON source known for ${t.sourceFile} (pass --allow-no-source to move the bank row only)`);
       continue;
     }
     const dir = key.lane === "neet" ? NEET_DATA : PARIKSHA_DATA;
     const names = readdirSync(dir).filter((f) => f.startsWith(key.prefix) && f.endsWith(".json"));
-    const group: Record<string, unknown> = {};
+    const patched = new Map<string, string>();
+    let matched = 0;
     for (const n of names) {
       const p = join(dir, n);
       if (!files.has(p)) files.set(p, load(p));
-      group[n] = files.get(p)!.json;
+      const f = files.get(p)!;
+      if (!f.isQuestions) continue;
+      const r = patchEntryText(f.raw, t.number, t.to);
+      matched += r.matched;
+      if (r.matched) patched.set(p, r.text);
     }
-    const { updated, matched } = updateSourceEntries(group, c.number, c.to);
     if (matched !== 1) {
-      errors.push(`${c.id}: ${matched} source entries numbered ${c.number} under ${key.prefix}* (need exactly 1)`);
+      errors.push(`${t.id}: ${matched} source entries numbered ${t.number} under ${key.prefix}* (need exactly 1)`);
       continue;
     }
-    for (const [n, json] of Object.entries(updated)) {
-      files.get(join(dir, n))!.json = json;
-      dirty.add(join(dir, n));
+    for (const [p, text] of patched) {
+      if (text !== files.get(p)!.raw) {
+        files.get(p)!.raw = text;
+        dirty.add(p);
+      }
     }
   }
 
@@ -149,7 +161,7 @@ async function main() {
   console.log(`revert map: ${revertPath}`);
 
   // Source files.
-  for (const p of dirty) save(p, files.get(p)!);
+  for (const p of dirty) writeFileSync(p, files.get(p)!.raw);
 
   // Bank. Resolve or create subject / chapter / subtopic ids.
   const subjectIds = new Map<string, string>();
