@@ -25,11 +25,13 @@ describe("mock families", () => {
     // exam page, so its page was /mock/exam/ssc-cgl-tiers (now a redirect to /mock/exam/ssc).
     const ssc = getMockFamily("ssc")!;
     expect(ssc.name).toBe("SSC");
-    expect(ssc.stages.map((s) => s.stage)).toEqual(["CGL", "CHSL"]);
+    expect(ssc.stages.map((s) => s.stage)).toEqual(["CGL", "CHSL", "CPO"]);
     expect(ssc.stages[0].members.map((m) => m.slug)).toEqual(["ssc-cgl", "ssc-cgl-tier-2"]);
     expect(ssc.stages[1].members.map((m) => m.slug)).toEqual(["ssc-chsl"]);
+    expect(ssc.stages[2].members.map((m) => m.slug)).toEqual(["ssc-cpo"]);
     expect(mockFamilyOf("ssc-cgl")?.slug).toBe("ssc");
     expect(mockFamilyOf("ssc-chsl")?.slug).toBe("ssc");
+    expect(mockFamilyOf("ssc-cpo")?.slug).toBe("ssc");
     for (const f of getMockFamilies()) expect(f.slug).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
   });
 

@@ -107,6 +107,17 @@ describe("EXAM_REGISTRY", () => {
     expect(t2?.practiceOnly).not.toBe(true);
   });
 
+  it("puts SSC CPO in the SSC family as its own exam (stage CPO, Paper I), with mocks", () => {
+    const cpo = getExamBySlug("ssc-cpo");
+    expect(cpo?.examName).toBe("SSC CPO");
+    expect(cpo?.tier).toBe("graduate");
+    expect(cpo?.goal).toBe("government");
+    expect([cpo?.family, cpo?.familyStage, cpo?.familyLabel, cpo?.familyAxis]).toEqual(["SSC", "CPO", "Paper I", "Tier"]);
+    expect(cpo?.hasMocks).toBe(true);
+    expect(cpo?.pastPaperSolutions).toBe(true);
+    expect(cpo?.practiceOnly).not.toBe(true);
+  });
+
   it("puts SSC CHSL in the SSC family as its own exam (stage CHSL), with mocks", () => {
     const chsl = getExamBySlug("ssc-chsl");
     expect(chsl?.examName).toBe("SSC CHSL");
@@ -469,6 +480,7 @@ describe("exam tiers", () => {
       "ssc-cgl",
       "ssc-cgl-tier-2",
       "ssc-chsl",
+      "ssc-cpo",
       "ugc-net",
       "rrb-ntpc",
     ],

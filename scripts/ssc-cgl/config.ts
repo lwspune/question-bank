@@ -31,7 +31,7 @@ export const CHSL_EXAM: { name: string; id: string } = { name: "SSC CHSL", id: "
  * SSC CPO (Sub-Inspector in Delhi Police and CAPFs) Paper I rides this lane too (owner,
  * 2026-11-13): its own exam row, ids `cpo-`. The id is pasted in once seed-exam.ts creates it.
  */
-export const CPO_EXAM: { name: string; id: string } = { name: "SSC CPO", id: "" };
+export const CPO_EXAM: { name: string; id: string } = { name: "SSC CPO", id: "87fe8ad7-a22f-459b-b6ae-ac587e5e6b7b" };
 
 export const EXAM_NAME = EXAMS[1].name;
 /** `SSC CGL`, created by seed-exam.ts on 2026-10-16, when the pilot shifts were ready to commit. */
