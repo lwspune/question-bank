@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { cdsSittingLabel, cetSittingLabel, compareSittings, jeeSittingLabel, mhSittingLabel, ndaSittingLabel, sscSittingLabel, sscTier2SittingLabel } from "@/lib/homework/sittings";
+import { cdsSittingLabel, cetSittingLabel, compareSittings, jeeSittingLabel, mhSittingLabel, ndaSittingLabel, neetSittingLabel, sscSittingLabel, sscTier2SittingLabel } from "@/lib/homework/sittings";
 
 describe("compareSittings", () => {
   it("orders MH papers by date, not alphabetically", () => {
@@ -190,5 +190,26 @@ describe("jeeSittingLabel", () => {
   it("sorts 2021 papers, days and shifts by date", () => {
     const got = ["2 Apr 2026 S2", "14 Jun 2022", "2021 Paper 12", "2 Apr 2026 S1", "29 Jan 2023", "2021 Paper 3", "21 Jan 2026 S1"].sort(compareSittings);
     expect(got).toEqual(["2021 Paper 3", "2021 Paper 12", "14 Jun 2022", "29 Jan 2023", "21 Jan 2026 S1", "2 Apr 2026 S1", "2 Apr 2026 S2"]);
+  });
+});
+
+// NEET (2026-11-14): one paper a year, plus a Re-NEET retest in 2024 and 2026.
+// Both papers of a year are separate sittings, so a question in both counts twice.
+describe("neetSittingLabel", () => {
+  it("names the main paper and the retest apart", () => {
+    expect(neetSittingLabel(2024, "NEET (UG) 2024 — 05 May 2024")).toBe("NEET 2024");
+    expect(neetSittingLabel(2024, "Re-NEET (UG) 2024 — 23 Jun 2024")).toBe("Re-NEET 2024");
+    expect(neetSittingLabel(2021, "NEET (UG) 2021 — 12 Sep 2021")).toBe("NEET 2021");
+  });
+
+  it("refuses a note it cannot read, never guessing", () => {
+    expect(() => neetSittingLabel(2024, null)).toThrow(/note/);
+    expect(() => neetSittingLabel(2024, "NEET (UG) 2023 — 07 May 2023")).toThrow(/2024/);
+    expect(() => neetSittingLabel(2024, "NEET 2024 reprint")).toThrow(/NEET 2024 reprint/);
+  });
+
+  it("sorts by year, the retest after its year's paper", () => {
+    const got = ["Re-NEET 2026", "NEET 2024", "NEET 2026", "Re-NEET 2024", "NEET 2021"].sort(compareSittings);
+    expect(got).toEqual(["NEET 2021", "NEET 2024", "Re-NEET 2024", "NEET 2026", "Re-NEET 2026"]);
   });
 });

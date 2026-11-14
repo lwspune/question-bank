@@ -30,6 +30,9 @@ function dateKey(label: string): number {
     if (!(nda[1] in NDA_MONTH)) throw new Error(`cannot date sitting "${label}"`);
     return at(Number(nda[2]), NDA_MONTH[nda[1]]);
   }
+  // NEET (2026-11-14): the paper sits in May, a Re-NEET retest in June.
+  const neet = /^(Re-)?NEET (\d{4})$/.exec(label);
+  if (neet) return at(Number(neet[2]), neet[1] ? 5 : 4);
   const tier2 = /^(\d{1,2}) ([A-Z][a-z]{2}) (\d{4}) Tier II$/.exec(label);
   if (tier2 && MONTHS.includes(tier2[2])) return at(Number(tier2[3]), MONTHS.indexOf(tier2[2]), Number(tier2[1]));
   const cet = /^(?:(\d{1,2}) )?([A-Z][a-z]{2}) (\d{4}) S([1-4])$/.exec(label);
@@ -165,6 +168,22 @@ export function jeeSittingLabel(year: number, note: string | null): string {
 }
 
 /**
+ * A NEET paper's label (2026-11-14), "NEET 2024" or "Re-NEET 2024", read from
+ * the note the ingestion wrote ("Re-NEET (UG) 2024 — 23 Jun 2024"). 2024 and
+ * 2026 each held a retest with its own paper, so the two are separate sittings.
+ * Anything else is an error, never a guess.
+ */
+export function neetSittingLabel(year: number, note: string | null): string {
+  if (!note) throw new Error(`no note on a ${year} NEET row`);
+  const found = /^(Re-)?NEET \(UG\) (\d{4}) \S+ \d{1,2} [A-Za-z]+ (\d{4})$/.exec(note.trim());
+  if (!found) throw new Error(`cannot read the NEET paper in "${note}"`);
+  if (Number(found[2]) !== year || Number(found[3]) !== year) {
+    throw new Error(`NEET note "${note}" does not match its row's year ${year}`);
+  }
+  return `${found[1] ? "Re-" : ""}NEET ${year}`;
+}
+
+/**
  * A row's sitting label for the exam its plan belongs to (2026-11-06): the one
  * dispatch prep.ts and the new-question tool (homework:new) share, so a new
  * paper is labelled exactly as the plan's existing sittings are. A board or
@@ -181,5 +200,6 @@ export function sittingFor(
   if (examName === "SSC CGL") return sscSittingLabel(r.pyq_note);
   if (examName === "SSC CGL Tier II") return sscTier2SittingLabel(r.pyq_note);
   if (examName === "JEE Mains") return jeeSittingLabel(r.pyq_year, r.pyq_note);
+  if (examName === "NEET") return neetSittingLabel(r.pyq_year, r.pyq_note);
   return String(r.pyq_year);
 }
