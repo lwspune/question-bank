@@ -5408,6 +5408,7 @@ export type Database = {
         }[]
       }
       get_dashboard_stats: { Args: { p_org_id: string }; Returns: Json }
+      get_exam_feature_coverage: { Args: never; Returns: Json }
       get_format_mix: {
         Args: never
         Returns: {
