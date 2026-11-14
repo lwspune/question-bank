@@ -1,0 +1,3470 @@
+SSC CPO 2025 Paper I, 10 Dec 2025, Shift 2. Read from SSC's challenge-module sheet as printed from the browser (sscstudy's copy); the key is the coloured left cell, read from the pixels (challenge.ts) and painted out of the reading sheets.
+Drafted by agents, 25 questions each, from the reading sheets only (no key; DRAFTING_BRIEF.md);
+every block reviewed in the main session, then compared with the key (build.ts).
+Sections: PART-A Reasoning (1-50), PART-B General Awareness (51-100), PART-C Quantitative Aptitude (101-150), PART-D English (151-200).
+Format: scripts/ssc-cgl/lib.ts.
+
+=== 1
+chapter: Order, Ranking and Arrangement
+subtopic: Scheduling and Puzzles
+difficulty: EASY
+answer: D
+stem:
+The seminar in Chandigarh was held 3 days before the Delhi seminar. The seminar in Lucknow was 2 days after the Chandigarh seminar.
+If the Delhi seminar was on \(10^{\text{th}}\) March, when was the Lucknow seminar?
+A: \(6^{\text{th}}\) March
+B: \(7^{\text{th}}\) March
+C: \(8^{\text{th}}\) March
+D: \(9^{\text{th}}\) March
+solution:
+Delhi was on 10 March, so Chandigarh, 3 days earlier, was on 7 March.
+
+Lucknow was 2 days after Chandigarh: 7 + 2 = 9 March. In all, Lucknow is 1 day before Delhi, and 10 - 1 = 9.
+
+=== 2
+chapter: Order, Ranking and Arrangement
+subtopic: Scheduling and Puzzles
+difficulty: EASY
+answer: A
+stem:
+Trivandrum hosted its seminar on Wednesday. Kochi held its seminar 2 days before Trivandrum, Kozhikode hosted it 3 days after Trivandrum, and Alappuzha hosted it on the same day of the week as Kochi. On which day was Alappuzha's seminar?
+A: Monday
+B: Wednesday
+C: Friday
+D: Sunday
+solution:
+Kochi was 2 days before Wednesday, which is Monday. Alappuzha's seminar fell on the same day of the week as Kochi's, so it was on Monday. (Kozhikode, 3 days after Wednesday, was on Saturday; it does not affect the answer.)
+
+=== 3
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: A
+stem:
+What comes next in the series?
+2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, ?
+A: 11
+B: 12
+C: 9
+D: 15
+solution:
+Two series alternate. The odd places run 2, 3, 4, 5, 6, 7, 8 and the even places run 5, 6, 7, 8, 9, 10, each going up by 1.
+
+The missing term is in an even place, so it is 10 + 1 = 11. (Each even-place term is also 3 more than the term before it: 8 + 3 = 11.)
+
+=== 4
+chapter: Classification
+subtopic: Number Classification
+difficulty: EASY
+answer: D
+stem:
+Which of the following is the ODD one out?
+A: 11
+B: 17
+C: 23
+D: 27
+solution:
+11, 17 and 23 are prime numbers. 27 = \(3 \times 9\) = \(3^3\) is not prime, so 27 is the odd one out.
+
+=== 5
+chapter: Classification
+subtopic: Word Classification
+difficulty: EASY
+answer: C
+stem:
+Which is not hardware?
+A: Monitor
+B: Scanner
+C: Excel
+D: Printer
+solution:
+A monitor, a scanner and a printer are physical devices of a computer, that is, hardware. Excel is a spreadsheet program, which is software. So Excel is not hardware.
+
+=== 6
+chapter: Missing Number
+subtopic: Missing Number in Figures
+difficulty: MODERATE
+answer: B
+figure: stem
+stem:
+What will come in place of question mark [?] following the same pattern as given below?
+A: 288
+B: 333
+C: 345
+D: 272
+solution:
+The figure shows two triangles. The first has 8 at the top, 12 and 17 at the bottom corners and 232 inside; the second has 9 at the top, 16 and 21 at the bottom corners and ? inside.
+
+The inside number is the top number times the sum of the two bottom numbers: \(8 \times (12 + 17) = 8 \times 29 = 232\).
+
+So ? = \(9 \times (16 + 21) = 9 \times 37 = 333\). Check: \(9 \times 16 + 9 \times 21 = 144 + 189 = 333\).
+
+=== 7
+chapter: Coding-Decoding
+subtopic: Letter Shifts
+difficulty: EASY
+answer: C
+stem:
+In a certain code language, 'HATCH' is coded as '12, 5, 24, 7, 12', 'DEMON' is coded as '8, 9, 17, 19, 18'.
+How is 'READER' coded in the same language?
+A: 21, 12, 16, 8, 9, 22
+B: 22, 19, 5, 8, 9, 22
+C: 22, 9, 5, 8, 9, 22
+D: 23, 21, 26, 15, 23
+solution:
+Each letter is coded as its alphabet position plus 4. HATCH: H = 8, A = 1, T = 20, C = 3, H = 8 give 12, 5, 24, 7, 12. DEMON: D = 4, E = 5, M = 13, O = 15, N = 14 give 8, 9, 17, 19, 18.
+
+READER: R = 18, E = 5, A = 1, D = 4, E = 5, R = 18, so the code is 22, 9, 5, 8, 9, 22.
+
+=== 8
+chapter: Arithmetic Reasoning
+subtopic: Speed, Time and Work
+difficulty: EASY
+answer: A
+stem:
+A train 180 meters long takes 20 seconds to cross a platform 120 meters long. What is the speed of the train in km/h?
+A: 54 km/h
+B: 48 km/h
+C: 60 km/h
+D: 72 km/h
+solution:
+To cross the platform the train covers its own length plus the platform: 180 + 120 = 300 m in 20 s, which is 15 m/s.
+
+\(15 \times \frac{18}{5} = 54\) km/h. Check: at 54 km/h = 15 m/s, 20 s covers \(15 \times 20 = 300\) m.
+
+=== 9
+chapter: Arithmetic Reasoning
+subtopic: Speed, Time and Work
+difficulty: EASY
+answer: B
+stem:
+A boat covers 30 km downstream in 2 hours and the same distance upstream in 3 hours. Find the speed of the boat in still water.
+A: 10 km/h
+B: 12.5 km/h
+C: 11 km/h
+D: 8 km/h
+solution:
+Downstream speed = 30 / 2 = 15 km/h; upstream speed = 30 / 3 = 10 km/h.
+
+Speed in still water = (15 + 10) / 2 = 12.5 km/h (and the stream runs at (15 - 10) / 2 = 2.5 km/h; 12.5 + 2.5 = 15 and 12.5 - 2.5 = 10 check).
+
+=== 10
+chapter: Arithmetic Reasoning
+subtopic: Percentages and Interest
+difficulty: MODERATE
+answer: B
+stem:
+A dealer marked his goods 20% above cost price. He allows two successive discounts of 10% and 5%. What is his overall profit or loss percentage?
+A: 2.6% loss
+B: 2.6% profit
+C: 5% profit
+D: 5% loss
+solution:
+Take cost price = 100. Marked price = 120.
+
+After 10% off: 108. After a further 5% off: 108 - 5.4 = 102.6.
+
+Selling price 102.6 on cost 100 is a profit of 2.6%. Check: \(1.2 \times 0.9 \times 0.95 = 1.026\).
+
+=== 11
+chapter: Blood Relations
+subtopic: Family Puzzles
+difficulty: EASY
+answer: D
+stem:
+Directions: Study the following information carefully and answer the questions given below:
+
+In a family, there are 7 members - A, B, C, D, E, F, and G. D is the wife of F. G is the maternal grandfather of B. E is the only son of F. A is the mother of F. B is the daughter of D and sister of C.
+
+How is F related to G?
+A: Grandson
+B: Father-in-law
+C: Son
+D: Son-in-law
+solution:
+B is the daughter of D, and G is B's maternal grandfather, that is, the father of B's mother D.
+
+F is D's husband, so F is the husband of G's daughter: F is G's son-in-law.
+
+=== 12
+chapter: Blood Relations
+subtopic: Family Puzzles
+difficulty: EASY
+answer: B
+stem:
+Direction: These questions are based on the following information.
+
+There is a family of 7 members: Puja, Payal, Paras, Preet, Palak, Pia and Parth. In that family, there are 3 generations having 2 married couples among them. Preet is brother in law of Paras.
+Puja is daughter in law of Pia. Pia and Parth is married couple who has only 1 son. Palak is sister of Payal. Payal is daughter of Paras. Parth is father of Paras.
+Who is mother of Paras?
+A: Puja
+B: Pia
+C: Preet
+D: Payal
+solution:
+Pia and Parth are a married couple with only one son, and Parth is the father of Paras. So Paras is that son, and his mother is Pia.
+
+(Puja, Pia's daughter-in-law, is Paras's wife; Payal and Palak are their daughters; Preet is Puja's brother, hence Paras's brother-in-law.)
+
+=== 13
+chapter: Syllogism
+subtopic: Three-Statement Syllogism
+difficulty: MODERATE
+answer: A
+stem:
+Read the following statement carefully and identify the conclusion that follows.
+
+Statement:
+All engineers are graduates. Some graduates are teachers. No teacher is a doctor.
+
+**Conclusions:**
+I. Some engineers may be teachers.
+II. Some doctors are not engineers.
+A: Only I follows
+B: Only II follows
+C: Both I and II follow
+D: Neither I nor II follows
+solution:
+Engineers lie inside graduates, and only some graduates are teachers. Nothing links engineers to teachers, and nothing rules it out, so engineers and teachers may overlap: conclusion I, a possibility, follows.
+
+Doctors are kept apart only from teachers. Every doctor could be an engineer who is not a teacher, so "Some doctors are not engineers" is not certain: II does not follow. Only I follows.
+
+=== 14
+chapter: Embedded Figures and Pattern Completion
+subtopic: Pattern Completion
+difficulty: MODERATE
+answer: D
+figure: stem+options
+stem:
+Select the figure from the options that can replace the question mark (?) and complete the given pattern.
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+The pattern is a 2 by 2 grid with the bottom-left cell missing. The bottom-right cell is the top-left cell (a circle with a white arrow and a diagonal from top left to bottom right) flipped top to bottom: its diagonal now runs from bottom left to top right.
+
+So the bottom-left cell is the top-right cell flipped top to bottom. The top-right cell has an upright triangle with a hexagon, a diagonal from bottom left to top right and a black part at the lower left; flipped, the triangle points down, the diagonal runs from top left to bottom right and the black part is at the upper left.
+
+Option 4 shows exactly this. Option 1 has the diagonal the other way, and options 2 and 3 keep the triangle upright.
+
+=== 15
+chapter: Blood Relations
+subtopic: Coded Relations
+difficulty: MODERATE
+answer: C
+stem:
+'A % B' means 'A is the husband of B'.
+'A @ B' means 'A is the mother of B'.
+'A \$ B' means 'A is the sister of B'.
+'A & B' means 'A is the parent of B'.
+If, 'J % R, S \$ J, P % D & S', then how is P related to R?
+A: Father
+B: Uncle
+C: Father-in-law
+D: Brother
+solution:
+J % R: J is the husband of R. S \$ J: S is the sister of J. P % D: P is the husband of D. D & S: D is a parent of S.
+
+So D (a woman, P's wife) is the mother of S and of S's brother J, and P is J's father.
+
+R is J's wife, so P, her husband's father, is R's father-in-law.
+
+=== 16
+chapter: Classification
+subtopic: Word Classification
+difficulty: EASY
+answer: C
+stem:
+Three of the following words are alike in some manner and hence form a group. Which word does NOT belong to that group?
+
+(The words must be considered as meaningful English words and must not be grouped based on the number of letters/number of consonants/vowels in the word).
+A: Bhutan
+B: Nepal
+C: Singapore
+D: China
+solution:
+Bhutan, Nepal and China share a land border with India. Singapore does not; it is an island country in Southeast Asia. So Singapore does not belong.
+
+=== 17
+chapter: Series
+subtopic: Letter Series
+difficulty: EASY
+answer: B
+stem:
+What comes next?
+AZ, CY, EX, ?
+A: HV
+B: GW
+C: IU
+D: JT
+solution:
+The first letters go up by 2: A, C, E, G. The second letters go down by 1: Z, Y, X, W.
+
+So the next term is GW.
+
+=== 18
+chapter: Coding-Decoding
+subtopic: Letter Shifts
+difficulty: EASY
+answer: A
+stem:
+If 'A1B2' is coded as 'C3D4, ' then how will 'E5F6' be coded?
+A: G7H8
+B: g2h8
+C: I9J10
+D: i9j10
+solution:
+Each letter moves 2 places forward and each number goes up by 2: A to C, 1 to 3, B to D, 2 to 4.
+
+So E5F6 becomes G7H8 (E + 2 = G, 5 + 2 = 7, F + 2 = H, 6 + 2 = 8).
+
+=== 19
+chapter: Coding-Decoding
+subtopic: Letter Shifts
+difficulty: EASY
+answer: C
+stem:
+In a code, MOON is written as NPPM. How is STAR written?
+A: TUBS
+B: TUBF
+C: TUBQ
+D: TUBR
+solution:
+MOON to NPPM: M + 1 = N, O + 1 = P, O + 1 = P, and the last letter N - 1 = M. So the first three letters move 1 forward and the last moves 1 back.
+
+STAR: S + 1 = T, T + 1 = U, A + 1 = B, R - 1 = Q, giving TUBQ.
+
+=== 20
+chapter: Coding-Decoding
+subtopic: Reversal and Opposite Letters
+difficulty: EASY
+answer: D
+stem:
+If **MANGO** is written as **OGNAM**, how is **GUAVA** written?
+A: GVUAG
+B: AVUAG
+C: AVUUG
+D: AVAUG
+solution:
+OGNAM is MANGO written backwards. GUAVA written backwards is A, V, A, U, G, that is AVAUG.
+
+=== 21
+chapter: Classification
+subtopic: Word Classification
+difficulty: EASY
+answer: D
+stem:
+Find the ODD one out.
+A: Asia
+B: Africa
+C: Europe
+D: Gulf
+solution:
+Asia, Africa and Europe are continents. A gulf is a large inlet of the sea into the land, not a continent, so Gulf is the odd one out.
+
+=== 22
+chapter: Order, Ranking and Arrangement
+subtopic: Ranking and Position
+difficulty: EASY
+answer: A
+stem:
+In a row of 21 girls, When Rita was shifted by five places towards the right, she become 12th from the left end. What was her earlier position from the right end of the row?
+A: 15
+B: 17
+C: 18
+D: 19
+solution:
+Moving 5 places to the right raised her place from the left by 5, so earlier she was 12 - 5 = 7th from the left.
+
+From the right she was then 21 - 7 + 1 = 15th. Check: now 12th from the left she is 10th from the right, and moving right by 5 means she was 10 + 5 = 15th from the right before.
+
+=== 23
+chapter: Missing Number
+subtopic: Missing Number in Grids
+difficulty: EASY
+answer: D
+stem:
+Find the missing letter.
+
+| A | P | H |
+|---|---|---|
+| D | S | K |
+| G | V | ? |
+A: M
+B: H
+C: P
+D: N
+solution:
+Down each column the letters move 3 places forward: A, D, G; P, S, V; so H, K, then K + 3 = N.
+
+Check by rows: the third letter is 8 places before the second (P - 8 = H, S - 8 = K), so V - 8 = N.
+
+=== 24
+chapter: Classification
+subtopic: Word Classification
+difficulty: EASY
+answer: B
+stem:
+Find the odd one out in the given semantic series based on the pattern identified.
+
+Eagle, Emu, Peacock, Parrot
+A: Eagle
+B: Emu
+C: Peacock
+D: Parrot
+solution:
+Eagle, peacock and parrot are birds that can fly. The emu is a flightless bird, so Emu is the odd one out.
+
+=== 25
+chapter: Analogy
+subtopic: Square and Cube Rules
+difficulty: EASY
+answer: B
+stem:
+Complete the analogy.
+
+\(7^3\) : 343 :: \(6^3\) : ?
+A: 36
+B: 216
+C: 343
+D: 1296
+solution:
+\(7^3 = 7 \times 7 \times 7 = 343\): the first term is a cube and the second is its value.
+
+So \(6^3 = 6 \times 6 \times 6 = 216\).
+
+=== 26
+chapter: Classification
+subtopic: Letter, Number and Symbol Groups
+difficulty: EASY
+answer: B
+stem:
+Select the option that does NOT belong to the same category as the others:
+
+△, ○, □, ⬠
+A: △
+B: ○
+C: □
+D: ⬠
+solution:
+The triangle, the square and the pentagon are polygons, made of straight sides that meet at corners.
+
+The circle has no straight sides and no corners, so it is the odd one.
+
+=== 27
+chapter: Classification
+subtopic: Number Classification
+difficulty: EASY
+answer: C
+stem:
+Select the option that does NOT belong to the same category as the others:
+
+42, 56, 63, 84
+A: 42
+B: 56
+C: 63
+D: 84
+solution:
+\(42 = 14 \times 3\), \(56 = 14 \times 4\) and \(84 = 14 \times 6\): all three are even multiples of 7, that is, multiples of 14.
+
+\(63 = 7 \times 9\) is an odd multiple of 7 and not a multiple of 14, so 63 is the odd one.
+
+=== 28
+chapter: Order, Ranking and Arrangement
+subtopic: Scheduling and Puzzles
+difficulty: HARD
+answer: B
+flawed: yes
+note: Ambiguous. Reading house 1 as the top (V = 1), the clues fix Z at house 4 uniquely. Reading house 6 as the top (V = 6), several layouts fit and house 4 can hold W (X 5, W 4, Y 1, Z 2) or Z (X 3, W 2, Z 4, Y 5) or nobody named. Only W and Z are ever possible; Z fits both readings.
+notice: The clues do not fix a single answer unless house 1 is taken as the top; the answer shown uses that reading.
+stem:
+In six houses numbered 1–6: X lives at the odd-numbered house above W; Z lives between W and Y; Y does not live in even even-numbered house; V is at the top.
+
+Who lives at house 4?
+A: W
+B: Z
+C: Y
+D: X
+solution:
+Y lives in an odd house and X lives in an odd house, so neither lives at house 4. The answer is W or Z.
+
+Take the houses as stacked with house 1 at the top, so V is at house 1 and "above" means a smaller number. X and Y then share houses 3 and 5.
+
+If X = 3 and Y = 5, W must be below X (house 4 or 6), and no house lies strictly between W and Y. So X = 5 and Y = 3, W must be at 6, and Z, between W (6) and Y (3), is at house 4 (house 5 is X's).
+
+So Z lives at house 4. (With house 6 taken as the top, W at house 4 also fits, so the question is not tight.)
+
+=== 29
+chapter: Order, Ranking and Arrangement
+subtopic: Scheduling and Puzzles
+difficulty: EASY
+answer: D
+stem:
+Raj visited a city on an even day before both Meenu and Kavya.
+
+If Meenu went on the 18th and Kavya on the 20th, then when did Raj go?
+A: 22nd
+B: 17th
+C: 15th
+D: 12th
+solution:
+Raj went before both the 18th and the 20th, so before the 18th; this rules out the 22nd.
+
+Of the 17th, 15th and 12th, only the 12th is an even day. Raj went on the 12th.
+
+=== 30
+chapter: Alphabet and Number Tests
+subtopic: Word Formation
+difficulty: EASY
+answer: A
+stem:
+Which word can be formed using all the letters of T R O A I N L A?
+A: RATIONAL
+B: NOTARIL
+C: ORALINT
+D: TRINALO
+solution:
+The given letters are eight: T, R, O, A, I, N, L, A (A twice).
+
+RATIONAL uses R, A, T, I, O, N, A, L: exactly these eight letters. The other three options have only seven letters each (one A is missing) and are not words.
+
+=== 31
+chapter: Statement-Based Reasoning
+subtopic: Cause, Effect and Courses of Action
+difficulty: EASY
+answer: D
+stem:
+You are short of a key item during a presentation.
+
+What should you do?
+A: Stop presentation
+B: Borrow loudly from the audience
+C: Cancel and reschedule
+D: Improvise with available resources
+solution:
+The presentation can still go on: the sensible course is to adapt and carry on with what is at hand.
+
+Stopping, cancelling or disturbing the audience by borrowing loudly all spoil the presentation over one missing item. Improvising with available resources is best.
+
+=== 32
+chapter: Statement-Based Reasoning
+subtopic: Cause, Effect and Courses of Action
+difficulty: EASY
+answer: A
+stem:
+You’re working on a deadline but get an urgent family call.
+
+What’s the best decision?
+A: Answer to assess urgency
+B: Ignore the call
+C: Leave work without informing
+D: Switch off the phone
+solution:
+Answering the call lets you judge how urgent the family matter is and then plan between it and the deadline.
+
+Ignoring the call or switching off the phone may miss a real emergency, and leaving work without informing anyone is irresponsible. Answering to assess urgency is best.
+
+=== 33
+chapter: Statement-Based Reasoning
+subtopic: Cause, Effect and Courses of Action
+difficulty: EASY
+answer: B
+stem:
+Midway through a large event, you see a safety hazard, but the program is running smoothly.
+
+What is the best decision?
+A: Ignore and hope for the best
+B: Pause the event briefly to resolve the safety issue
+C: Wait until the event ends
+D: Delegate without inspecting
+solution:
+Safety of the people at a large event comes before keeping the programme running, so the hazard must be dealt with at once.
+
+Ignoring it or waiting until the end leaves people at risk, and delegating without inspecting may leave it unresolved. A brief pause to fix the hazard is best.
+
+=== 34
+chapter: Statement-Based Reasoning
+subtopic: Inferences
+difficulty: EASY
+answer: C
+stem:
+A school offers advanced classes to more students from affluent backgrounds than from poor backgrounds.
+
+What inference is valid?
+A: Poor students lack interest
+B: Affluent students perform better
+C: Possible socio-economic discrimination
+D: Classes are too full
+solution:
+The statement shows only an imbalance in who gets the advanced classes by economic background. This points to a possible socio-economic bias in how the places are given.
+
+Nothing is said about interest, performance or class size, so options 1, 2 and 4 go beyond the statement.
+
+=== 35
+chapter: Statement-Based Reasoning
+subtopic: Inferences
+difficulty: EASY
+answer: D
+stem:
+In a recruitment test, candidates from one state had their interviews scheduled in the morning, while others had theirs in the late evening after delays.
+
+Which inference is most valid?
+A: Candidates chose their slots
+B: Evening slots are better
+C: Morning candidates perform better
+D: Scheduling favoured one state
+solution:
+One state's candidates got the morning slots while the rest waited until late evening after delays, so the schedule treated one state better.
+
+Nothing says the candidates chose their slots, or how anyone performed, so the other options do not follow.
+
+=== 36
+chapter: Mathematical Operations
+subtopic: Symbol Substitution
+difficulty: EASY
+answer: A
+stem:
+If % = multiplication, @ = subtraction, \$ = addition, and # = division, what is 50 % 4 \$ 20 @ 15 # 5?
+A: 217
+B: 240
+C: 248
+D: 275
+solution:
+After substituting, the expression is \(50 \times 4 + 20 - 15 \div 5\).
+
+By BODMAS: \(50 \times 4 = 200\) and \(15 \div 5 = 3\), so 200 + 20 - 3 = 217.
+
+=== 37
+chapter: Mathematical Operations
+subtopic: Symbol Substitution
+difficulty: EASY
+answer: D
+stem:
+If \$ = division, @ = addition, # = subtraction, and % = multiplication, then what is 36 \$ 6 @ 4 % 3 # 5?
+A: 14
+B: 16
+C: 15
+D: 13
+solution:
+After substituting, the expression is \(36 \div 6 + 4 \times 3 - 5\).
+
+By BODMAS: \(36 \div 6 = 6\) and \(4 \times 3 = 12\), so 6 + 12 - 5 = 13.
+
+=== 38
+chapter: Arithmetic Reasoning
+subtopic: Percentages and Interest
+difficulty: MODERATE
+answer: B
+stem:
+The price of a commodity increases 5% annually from 400.
+
+What will be the approximate price at the end of the 4th year?
+A: 470
+B: 486
+C: 494
+D: 496
+solution:
+Each year the price is multiplied by 1.05: 400, then 420, 441, 463.05 and 486.20 at the end of the 4th year.
+
+Check: \(400 \times 1.05^4 = 400 \times 1.2155 = 486.2\), about 486.
+
+=== 39
+chapter: Arithmetic Reasoning
+subtopic: Percentages and Interest
+difficulty: MODERATE
+answer: B
+stem:
+The population of a town is 120,000, increasing 6% yearly.
+
+Estimate the population after 5 years.
+A: 170,000
+B: 160,587
+C: 170,980
+D: 180,000
+solution:
+Each year the population is multiplied by 1.06, so after 5 years it is \(120000 \times 1.06^5\).
+
+\(1.06^2 = 1.1236\), \(1.06^4 = 1.1236^2 = 1.26248\), and \(1.06^5 = 1.26248 \times 1.06 = 1.338226\).
+
+\(120000 \times 1.338226 = 160587\). Year by year as a check: 127,200, 134,832, 142,922, 151,497, 160,587.
+
+=== 40
+chapter: Blood Relations
+subtopic: Direct Relations
+difficulty: EASY
+answer: B
+stem:
+X is the son of Y, who is the brother of Z.
+
+How is X related to Z?
+A: Son
+B: Nephew
+C: Cousin
+D: Brother
+solution:
+Y is the brother of Z, and X is Y's son. A son of one's brother is one's nephew, whether Z is male or female.
+
+So X is Z's nephew.
+
+=== 41
+chapter: Inequalities
+subtopic: Coded Inequalities
+difficulty: EASY
+answer: A
+stem:
+Given ‘M \$ N’ means ‘M is not greater than or equal to N’, what can be concluded?
+A: M < N
+B: M \(\le\) N
+C: M > N
+D: M = N
+solution:
+"M is not greater than or equal to N" means M \(\ge\) N is false, so M is strictly less than N: M < N.
+
+M \(\le\) N would allow M = N, which the code rules out.
+
+=== 42
+chapter: Inequalities
+subtopic: Coded Inequalities
+difficulty: EASY
+answer: D
+stem:
+Symbols: P & Q \(\rightarrow\) P \(\le\) Q, P % Q \(\rightarrow\) P > Q.
+
+Statement: D & E % F.
+
+Which is correct?
+A: D < F
+B: D > F
+C: D = F
+D: Cannot be determined
+solution:
+D & E means D \(\le\) E, and E % F means E > F. So D \(\le\) E > F.
+
+The signs point opposite ways at E, so D and F cannot be compared: D may be less than, equal to or greater than F. It cannot be determined.
+
+=== 43
+chapter: Inequalities
+subtopic: Coded Inequalities
+difficulty: EASY
+answer: A
+stem:
+In a coded inequality system, A \$ B \(\rightarrow\) A = B, A # B \(\rightarrow\) A > B.
+
+Statement: A \$ B # C.
+
+Which inequality is correct?
+A: A = B and B > C
+B: A > C and B = C
+C: A > B and C < A
+D: Cannot be determined
+solution:
+A \$ B means A = B, and B # C means B > C. So A = B > C.
+
+Option 1 states exactly this. Option 2 has B = C and option 3 has A > B, both wrong (A > C itself is true, but each of those options pairs it with a false part).
+
+=== 44
+chapter: Syllogism
+subtopic: Two-Statement Syllogism
+difficulty: EASY
+answer: A
+stem:
+In the following question, two statements are followed by two conclusions. You have to assume the given statements to be true, even if they seem to be at variance with commonly known facts. Read both the conclusions and then decide which of the given conclusions logically follows from the statements.
+
+Statements:
+Some boys are engineers.
+All engineers are intelligent.
+
+Conclusions:
+I. Some boys are intelligent.
+II. All intelligent are engineers.
+A: Only conclusion I follows
+B: Only conclusion II follows
+C: Both conclusions I and II follow
+D: Neither conclusion I nor II follows
+solution:
+The boys who are engineers are intelligent, since all engineers are intelligent. So some boys are intelligent: I follows.
+
+All engineers are intelligent does not make all intelligent people engineers, so II does not follow.
+
+=== 45
+chapter: Syllogism
+subtopic: Two-Statement Syllogism
+difficulty: MODERATE
+answer: C
+stem:
+In the following question, two statements are followed by two conclusions. You have to assume the given statements to be true, even if they seem to be at variance with commonly known facts. Read both the conclusions and then decide which of the given conclusions logically follows from the statements.
+
+Statements:
+No poets are dancers.
+Some dancers are singers.
+
+Conclusions:
+I. Some singers are poets.
+II. No singer is poet.
+A: Only conclusion I follows
+B: Only conclusion II follows
+C: Neither conclusion I nor II follows
+D: Both conclusions I and II follow
+solution:
+The singers who are dancers are not poets, but the singers who are not dancers may or may not be poets. So neither "some singers are poets" nor "no singer is poet" is certain: neither follows by itself.
+
+The two conclusions do form a complementary pair (exactly one of them must be true), but no "either I or II" option is offered, so the answer is that neither follows.
+
+=== 46
+chapter: Syllogism
+subtopic: Two-Statement Syllogism
+difficulty: EASY
+answer: D
+stem:
+Statements:
+All metals are elements.
+Some elements are liquids
+
+Which conclusion logically follows?
+A: All liquids are metals
+B: Some metals are liquids
+C: Some liquids are metals
+D: Cannot say
+solution:
+The liquids are some of the elements, and the metals are some of the elements, but nothing says the two groups overlap. The liquid elements may all lie outside the metals.
+
+So "some metals are liquids" and "some liquids are metals" are not certain, and "all liquids are metals" certainly does not follow. No definite conclusion about metals and liquids can be drawn: cannot say.
+
+=== 47
+chapter: Order, Ranking and Arrangement
+subtopic: Linear and Circular Seating
+difficulty: EASY
+answer: D
+stem:
+Four neighbours A, B, C, D in a row.
+B is second; C is between B and D; who is first?
+A: D
+B: C
+C: B
+D: A
+solution:
+B is second. C lies between B and D, so C cannot be first; C is third and D is fourth.
+
+That leaves the first place for A: A, B, C, D.
+
+=== 48
+chapter: Mathematical Operations
+subtopic: Symbol Substitution
+difficulty: EASY
+answer: B
+stem:
+If % = addition, * = multiplication, # = subtraction, \$ = division: then calculate 20 % 6 * 3 # 8 \$ 4.
+A: 38
+B: 36
+C: 40
+D: 32
+solution:
+After substituting, the expression is \(20 + 6 \times 3 - 8 \div 4\).
+
+By BODMAS: \(6 \times 3 = 18\) and \(8 \div 4 = 2\), so 20 + 18 - 2 = 36.
+
+=== 49
+chapter: Syllogism
+subtopic: Two-Statement Syllogism
+difficulty: EASY
+answer: D
+stem:
+Statements:
+All tables are furniture.
+Some furniture is broken.
+
+Which conclusion is true?
+A: Some tables are broken
+B: All tables are broken
+C: No table is broken
+D: Some furniture are tables
+solution:
+All tables are furniture, so the tables are some of the furniture: some furniture are tables certainly holds.
+
+The broken furniture may or may not include tables, so options 1, 2 and 3 are not certain.
+
+=== 50
+chapter: Analogy
+subtopic: Word Analogy
+difficulty: EASY
+answer: B
+stem:
+Complete the analogy.
+
+Bread : Flour :: Brick : ?
+A: Stone
+B: Clay
+C: Water
+D: Sand
+solution:
+Bread is made from flour; in the same way a brick is made from clay.
+
+=== 51
+subject: Economics
+chapter: National Income, Growth and Development Indicators
+subtopic: Industrial Policy and Reforms
+difficulty: EASY
+answer: B
+stem:
+Governments are trying to make rules for businesses simpler and easier to understand. This approach is known as:
+A: Making rules harder
+B: Streamlining regulations
+C: Ignoring rules
+D: Creating more rules
+solution:
+Making rules for businesses simpler, fewer and easier to follow is called streamlining regulations (regulatory simplification), a key part of improving the ease of doing business.
+
+Making rules harder or creating more rules is the opposite, and ignoring rules is not a policy approach.
+
+=== 52
+subject: History
+chapter: Medieval India
+subtopic: Delhi Sultanate
+difficulty: MODERATE
+answer: C
+stem:
+Neither Malik Kafur nor Alauddin Khalji led campaigns against:
+A: Devagiri
+B: Warangal
+C: Vijayanagara
+D: Madurai
+solution:
+Alauddin Khalji's armies, many led by his general Malik Kafur, attacked Devagiri (the Yadavas), Warangal (the Kakatiyas), Dwarasamudra (the Hoysalas) and Madurai (the Pandyas) between 1296 and 1311.
+
+The Vijayanagara Empire was founded only in 1336 by Harihara and Bukka, long after Alauddin (died 1316) and Malik Kafur, so neither could have campaigned against it.
+
+=== 53
+subject: History
+chapter: Medieval India
+subtopic: Mughal Empire and Administration
+difficulty: MODERATE
+answer: C
+blind: D
+flawed: yes
+notice: Akbar and Aurangzeb both issued orders against Sati; the answer shown is SSC's key, Akbar, the emperor textbooks credit with acting against it.
+note: Judgement item: our blind answer D (Aurangzeb, whose 1663 order was an outright ban) and SSC's key C (Akbar, whose farmans forbade forced Sati) both fit. SSC's key is adopted.
+stem:
+Which Mughal emperor prohibited the practice of Sati and issued farmans to that effect?
+A: Babur
+B: Humayun
+C: Akbar
+D: Aurangzeb
+solution:
+Akbar issued farmans ordering his officials to stop any woman from being forced into Sati, and to let it happen only with her free consent and their permission. That is SSC's key.
+
+Aurangzeb went further than Akbar in 1663, ordering that no woman be allowed to burn in any land under Mughal control, which is why the question carries a note. Babur and Humayun issued no such orders.
+
+=== 54
+subject: Current Affairs
+chapter: Sports
+subtopic: Cricket — Records, Tournaments and Players
+difficulty: EASY
+answer: C
+stem:
+In cricket, what is the term for a delivery that swings away from a right-handed batsman after pitching?
+A: In swinger
+B: Off-spinner
+C: Out swinger
+D: Googly
+solution:
+An out swinger (outswinger) moves away from a right-handed batsman, towards the slips. An in swinger moves into the batsman.
+
+An off-spinner and a googly are spin deliveries that turn off the pitch rather than swing; the googly is a leg-spinner's ball that turns into the right-hander.
+
+=== 55
+subject: Polity
+chapter: Indian Constitution — Making, Foundation and Amendments
+subtopic: Federal Structure — States, UTs and Finance
+difficulty: EASY
+answer: D
+stem:
+Which Article empowers Parliament to alter state boundaries and form new states?
+A: Article 1
+B: Article 2
+C: Article 4
+D: Article 3
+solution:
+Article 3 lets Parliament, by law, form a new state, increase or reduce the area of a state, and alter its boundaries or name.
+
+Article 1 declares India a Union of States, Article 2 lets Parliament admit or establish new states from outside India, and Article 4 says laws under Articles 2 and 3 are not amendments of the Constitution under Article 368.
+
+=== 56
+subject: Current Affairs
+chapter: Sports
+subtopic: Cricket — Records, Tournaments and Players
+difficulty: MODERATE
+answer: A
+stem:
+The "Moin-ud-Dowla Gold Cup" is associated with which sport in India?
+A: Cricket
+B: Hockey
+C: Football
+D: Polo
+solution:
+The Moin-ud-Dowla Gold Cup is a cricket tournament held in Hyderabad, started in 1930 by Nawab Moin-ud-Dowla.
+
+Well-known trophies of other sports include the Beighton Cup (hockey) and the Durand Cup (football).
+
+=== 57
+subject: Economics
+chapter: Indian Economy
+subtopic: Five Year Plans and Indian Planning
+difficulty: EASY
+answer: B
+stem:
+Which of the following industrial sectors were prioritized during the Second Five-Year Plan?
+A: Textile industry and advertising industry
+B: Iron and steel industry, fertilizer industry, heavy engineering, and lignite projects
+C: Cottage industry and consumer goods industry
+D: Handicrafts and Information technology
+solution:
+The Second Five-Year Plan (1956-61), built on the Mahalanobis model, gave priority to heavy and basic industries: the Bhilai, Rourkela and Durgapur steel plants, fertilizer plants, heavy engineering and the Neyveli lignite project.
+
+Cottage, consumer goods and textile industries were not its focus, and information technology came decades later.
+
+=== 58
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Books, Literature and Authors
+difficulty: MODERATE
+answer: A
+flawed: yes
+note: The stem calls the author "Indian-origin", but NoViolet Bulawayo is Zimbabwean. She is still the only option who wrote We Need New Names (2013 Booker shortlist), so A is the answer.
+notice: The question calls the author Indian-origin, but NoViolet Bulawayo is Zimbabwean; she is the author of We Need New Names.
+stem:
+Which Indian-origin author’s debut novel, We Need New Names, was shortlisted for the Man Booker Prize in 2013?
+A: NoViolet Bulawayo
+B: Chigozie Obioma
+C: Aravind Adiga
+D: Jhumpa Lahiri
+solution:
+We Need New Names (2013) is the debut novel of the Zimbabwean writer NoViolet Bulawayo, and it was shortlisted for the 2013 Man Booker Prize. She is not of Indian origin, so the stem's description is wrong, but no other option wrote this novel.
+
+Jhumpa Lahiri was also on the 2013 shortlist, but for The Lowland, her second novel. Chigozie Obioma (Nigerian) was shortlisted in 2015 and 2019, and Aravind Adiga won in 2008 with The White Tiger.
+
+=== 59
+subject: Economics
+chapter: Indian Economy
+subtopic: Five Year Plans and Indian Planning
+difficulty: MODERATE
+answer: A
+stem:
+What was the primary objective of the “Gadgil Formula”?
+A: To determine the allocation of central assistance for state plans in India
+B: To focus on industrial growth in economically weaker states
+C: To provide equal financial support to all regions, regardless of their specific needs
+D: To distributes resources according to the state’s economic outputs
+solution:
+The Gadgil Formula, named after D. R. Gadgil and adopted for the Fourth Five-Year Plan (1969), set how central assistance for state plans was divided among the states, using weights for population, per capita income, tax effort, ongoing projects and special problems.
+
+It was not an equal-for-all rule, nor did it reward a state's output; a poorer state with lower per capita income got more.
+
+=== 60
+subject: Economics
+chapter: Indian Economy
+subtopic: Five Year Plans and Indian Planning
+difficulty: MODERATE
+answer: C
+stem:
+What role did Small-Scale Industries (SSIs) play in the 6th Five-Year Plan's trade strategy?
+A: They were discouraged in favor of large-scale units
+B: They were expected to focus only on local markets
+C: They were promoted as key exporters and employment generators
+D: They were merged with public sector units
+solution:
+The Sixth Plan (1980-85) aimed at removing poverty and generating employment, and it gave small-scale industries a bigger role in export promotion, treating them as major sources of both exports and jobs.
+
+Small-scale units were not discouraged, confined to local markets or merged with public sector units.
+
+=== 61
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Books, Literature and Authors
+difficulty: MODERATE
+answer: A
+flawed: yes
+note: The stem calls the author "British", but Nadine Gordimer was South African. She is still the author of The Conservationist (1974), so A is the answer.
+notice: The question calls the author British, but Nadine Gordimer was South African; she wrote The Conservationist.
+stem:
+Which Nobel-winning British author explored apartheid-era South Africa in her 1974 novel “The Conservationist”?
+A: Nadine Gordimer
+B: Doris Lessing
+C: Bessie Head
+D: J.M. Coetzee
+solution:
+The Conservationist (1974) is by Nadine Gordimer; it was joint winner of the 1974 Booker Prize, and Gordimer won the Nobel Prize in Literature in 1991. She was South African, not British, so the stem's description is wrong, but no other option wrote this novel.
+
+Doris Lessing (British Nobel winner, 2007) wrote The Grass Is Singing, Bessie Head wrote When Rain Clouds Gather, and J.M. Coetzee is a man.
+
+=== 62
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: EASY
+answer: B
+stem:
+How often are the National Games of India held?
+A: Annually
+B: Every 2 years
+C: Every 3 years
+D: Every 4 years
+solution:
+The National Games of India are meant to be held every two years (biennially), under the Indian Olympic Association, though in practice editions have often been delayed.
+
+=== 63
+subject: Current Affairs
+chapter: National Events, Persons and India General Knowledge
+subtopic: National Days, Festivals and Observances
+difficulty: EASY
+answer: C
+stem:
+In which Indian state is Onam celebrated?
+A: Karnataka
+B: Andhra Pradesh
+C: Kerala
+D: Maharashtra
+solution:
+Onam is the harvest festival of Kerala, celebrated in the Malayalam month of Chingam to welcome back King Mahabali.
+
+=== 64
+subject: History
+chapter: Modern India
+subtopic: British Economic Policy and Industrial India
+difficulty: EASY
+answer: C
+stem:
+The main purpose of the introduction of the railway network in India by the British was to:
+A: Facilitate the movement of Indian pilgrims across the country.
+B: Promote tourism and cultural exchange among different regions of India.
+C: Enhance the efficient transportation of raw materials and finished goods for British economic interests and to facilitate troop movement.
+D: Connect remote rural areas to urban centers for the benefit of local trade.
+solution:
+Railways (the first line opened in 1853) were built mainly to carry raw materials from the interior to the ports, to carry British manufactured goods inland, and to move troops quickly for control of the country.
+
+Pilgrim travel, tourism and local trade benefited only as side effects.
+
+=== 65
+subject: History
+chapter: Modern India
+subtopic: Quit India and Independence
+difficulty: EASY
+answer: B
+stem:
+The Indian Independence Act of 1947 marked the end of British rule but also led to the partition of India.
+Critically evaluate the arguments for and against the partition, considering the political, social, and economic consequences that followed.
+A: The partition was a universally welcomed decision that led to immediate peace and prosperity in both India and Pakistan.
+B: While advocated by the Muslim League as the only way to secure Muslim interests, the partition resulted in widespread violence, displacement, and long-lasting socio-political tensions, with arguments against it focusing on the potential for a united India with adequate minority safeguards.
+C: The British government unilaterally imposed the partition without any significant consultation with Indian leaders or consideration of its consequences.
+D: The partition was solely driven by economic factors, with both sides seeking control over specific resources and territories.
+solution:
+The Muslim League argued for Pakistan as the only safeguard for Muslim interests, while opponents held that a united India with proper minority safeguards was possible. Partition was followed by mass violence and the displacement of millions, and its tensions lasted.
+
+It was not universally welcomed or peaceful, it was accepted by the Congress and the League in the 3 June 1947 plan rather than imposed without consultation, and it was driven by political and communal factors, not solely economic ones.
+
+=== 66
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: New Criminal Laws and Other Acts
+difficulty: EASY
+answer: A
+stem:
+What does the principle of victim-centric justice emphasize?
+A: Emphasizing the rights of the victim, including speedy justice and rehabilitation
+B: Prioritizing the media coverage of the case
+C: Punishing the accused without trial
+D: Allowing victims to determine the punishment
+solution:
+Victim-centric justice puts the victim's rights and needs at the centre: being heard and kept informed, speedy justice, compensation and rehabilitation. India's new criminal laws (2023) describe themselves as victim-centric in this sense.
+
+It does not mean punishing without trial, letting victims fix the punishment, or giving priority to media coverage.
+
+=== 67
+subject: Current Affairs
+chapter: Defence and Military Exercises
+subtopic: Armed Forces — Organisation, Commands and Operations
+difficulty: MODERATE
+answer: C
+stem:
+Who was appointed as the Defence Secretary of India in November 2024?
+A: Ajay Kumar
+B: Anil Baijal
+C: Rajesh Kumar Singh
+D: Giridhar Aramane
+solution:
+Rajesh Kumar Singh, a 1989-batch IAS officer of the Kerala cadre, took charge as Defence Secretary on 1 November 2024, succeeding Giridhar Aramane, whose term ended on 31 October 2024.
+
+Ajay Kumar was Defence Secretary from 2019 to 2022, and Anil Baijal was Union Home Secretary and later Lieutenant Governor of Delhi.
+
+=== 68
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: EASY
+answer: B
+stem:
+Which genre of music is commonly associated with Kathak?
+A: Carnatic music
+B: Hindustani music
+C: Folk music
+D: Western classical music
+solution:
+Kathak, the classical dance of north India, is performed to Hindustani classical music, with tabla and pakhawaj rhythms and compositions such as thumri and bhajans.
+
+Carnatic music accompanies south Indian classical dances such as Bharatanatyam.
+
+=== 69
+subject: History
+chapter: Modern India
+subtopic: Freedom Movement — INC, Gandhi and Independence
+difficulty: MODERATE
+answer: A
+stem:
+Which of the following freedom fighters is also known as ‘Mother Teresa of Western Odisha’?
+A: Parbati Giri
+B: Rama Devi
+C: Sarala Devi
+D: Annapurna Maharana
+solution:
+Parbati Giri (1926-1995) of Bargarh joined the freedom movement as a girl, was jailed in the Quit India Movement, and after independence worked for orphans, the destitute and the sick in western Odisha, which earned her the name "Mother Teresa of Western Odisha".
+
+Rama Devi is remembered as "Maa" of Odisha, and Sarala Devi and Annapurna Maharana were other Odia women freedom fighters.
+
+=== 70
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: EASY
+answer: B
+stem:
+Which dance from Assam involves a group of dancers performing in circles or rows, often accompanied by drums and pipes, to celebrate the Bihu festival?
+A: Bagurumba
+B: Bihu
+C: Dhol Cholom
+D: Hojagiri
+solution:
+The Bihu dance is performed by groups of young men and women in circles or rows during the Bihu festival, to the dhol (drum) and pepa (buffalo-horn pipe).
+
+Bagurumba is a Bodo dance of Assam not tied to Bihu, Dhol Cholom is from Manipur, and Hojagiri is a Reang dance of Tripura.
+
+=== 71
+subject: History
+chapter: Medieval India
+subtopic: Other Medieval Kingdoms (Chola, Rajput, Ahom, Sikh)
+difficulty: MODERATE
+answer: A
+stem:
+Who is known as *Sungam Tavirtta Cholan*?
+A: Kulottunga I
+B: Rajendra III
+C: Rajaraja I
+D: Kulottunga III
+solution:
+Kulottunga I (1070-1122) abolished tolls (sungam) on trade, and so was called Sungam Tavirtta Cholan, "the Chola who abolished tolls".
+
+Rajaraja I built the Brihadeeswarar temple, while Kulottunga III and Rajendra III were later Chola rulers.
+
+=== 72
+subject: History
+chapter: Ancient India
+subtopic: Archaeology, Sites and Excavations
+difficulty: MODERATE
+answer: A
+stem:
+Identify the correctly matched pairs.
+
+1. Kalibangan – Fire altars
+2. Megasthenes – Arthashastra
+3. Chalcolithic culture – Use of both copper and stone
+A: 1 and 3 only
+B: 2 and 3 only
+C: 1 and 2 only
+D: 1, 2, and 3
+solution:
+1 is correct: fire altars were found at the Harappan site of Kalibangan in Rajasthan.
+
+2 is wrong: Megasthenes, the Greek envoy to Chandragupta Maurya's court, wrote the Indica; the Arthashastra is by Kautilya.
+
+3 is correct: Chalcolithic (copper-stone) cultures used both copper and stone tools.
+
+So 1 and 3 only.
+
+=== 73
+subject: Geography
+chapter: World and Human Geography
+subtopic: Population and Settlements
+difficulty: MODERATE
+answer: B
+stem:
+Consider the following Assertion (A) and Reason (R) and choose the CORRECT option.
+
+Assertion (A) - Modern technological development plays a very important role in determining the location of urban settlements.
+Reason (R) - The location of the earliest urban settlement was dependent upon water, building material and fertile land.
+A: Both A and R are true and R is the correct explanation of A.
+B: Both A and R are true but R is not the correct explanation of A.
+C: A is true, but R is false.
+D: A is false, but R is true.
+solution:
+Both statements are true. The earliest towns grew where water, building material and fertile land were available. Today modern technology, such as transport and water supply, lets urban settlements be located far from these resources, so it plays a major role in their location.
+
+R describes what decided the location of the earliest towns, not why technology matters today, so it does not explain A.
+
+=== 74
+subject: Current Affairs
+chapter: National Events, Persons and India General Knowledge
+subtopic: National Days, Festivals and Observances
+difficulty: EASY
+answer: B
+stem:
+What is the primary focus of the Sohrai festival celebrated in Jharkhand?
+A: Worshiping rivers
+B: Worshiping cattle
+C: Tributing forest deities
+D: Honoring tribal warriors
+solution:
+Sohrai is a harvest festival of Jharkhand's tribal communities, held after Diwali, in which cattle are bathed, decorated and worshipped, and houses are painted with Sohrai art.
+
+=== 75
+subject: History
+chapter: Medieval India
+subtopic: Bhakti and Sufi Movements
+difficulty: MODERATE
+answer: A
+stem:
+Which devotional song form in simple Kannada, promoted by the Haridasa Movement in Karnataka, is a cornerstone of its Carnatic music tradition?
+A: Devara Nama
+B: Vachana
+C: Janapada Geete
+D: Bhajan
+solution:
+The Haridasas, such as Purandara Dasa and Kanaka Dasa, composed Devara Namas (Dasa Padas), devotional songs in simple Kannada that became a foundation of Carnatic music.
+
+Vachanas are prose-poems of the Virashaiva saints such as Basavanna, and Janapada Geete means folk songs.
+
+=== 76
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: MODERATE
+answer: A
+stem:
+In which city is the headquarters of the Squash Rackets Federation of India (SRFI) situated?
+A: Chennai
+B: New Delhi
+C: Mumbai
+D: Kolkata
+solution:
+The Squash Rackets Federation of India, the national governing body for squash, has its headquarters in Chennai, Tamil Nadu, which also hosts the Indian Squash Academy.
+
+=== 77
+subject: Geography
+chapter: Climatology, Atmosphere and Weather
+subtopic: Humidity, Condensation, Clouds and Precipitation
+difficulty: EASY
+answer: C
+stem:
+In which of the following regions is convectional rainfall generally more intense due to higher availability of moisture?
+A: Over deserts
+B: On inland plateaus
+C: Over oceans
+D: Over leeward slopes
+solution:
+Convectional rainfall needs warm, moist air rising. Over oceans (and the equatorial belt next to them) evaporation keeps the air supplied with abundant moisture, so the rising air condenses into heavy showers.
+
+Deserts and inland plateaus are dry, and leeward slopes lie in the rain shadow where descending air is dry, so moisture there is scarce.
+
+=== 78
+subject: Current Affairs
+chapter: National Events, Persons and India General Knowledge
+subtopic: National Days, Festivals and Observances
+difficulty: EASY
+answer: B
+stem:
+On 6th July 2025, Prime Minister Narendra Modi paid tribute to which leader known for founding the Bharatiya Jana Sangh and sacrificing his life for India's unity and integrity?
+A: Pandit Deendayal Upadhyaya
+B: Dr. Syama Prasad Mookerjee
+C: Bal Gangadhar Tilak
+D: Lala Lajpat Rai
+solution:
+Dr. Syama Prasad Mookerjee was born on 6 July 1901, so his birth anniversary falls on 6 July. He founded the Bharatiya Jana Sangh in 1951 and died in detention in Kashmir in 1953 while campaigning against the separate status of Jammu and Kashmir.
+
+Deendayal Upadhyaya was a later Jana Sangh leader, not its founder; Tilak and Lajpat Rai belong to the freedom movement.
+
+=== 79
+subject: Geography
+chapter: Indian Geography — Physical Features
+subtopic: Mountains, Plateaus and Plains of India
+difficulty: EASY
+answer: D
+stem:
+**Read the statements given below carefully :**
+**Statement 1:** The Northern Plain is sparsely populated due to its frequent flooding and infertile soil.
+**Statement 2:** The plain lies adjacent to the Himalayas and is made up of rocky and arid terrain.
+Which of the above statements **is/are correct?**
+A: Only 1
+B: Only 2
+C: Both 1 and 2 are correct
+D: Neither 1 nor 2 is correct
+solution:
+The Northern Plain is made of fertile alluvium deposited by the Indus, Ganga and Brahmaputra river systems. It is one of the most densely populated regions of the world, so Statement 1 is wrong.
+
+It does lie south of the Himalayas, but it is flat, alluvial and well watered, not rocky and arid, so Statement 2 is wrong too.
+
+=== 80
+subject: Current Affairs
+chapter: Science and Technology
+subtopic: Space Technology and Astronomy
+difficulty: MODERATE
+answer: C
+stem:
+The TV-D1 test flight validated which system for the Gaganyaan mission?
+A: RCS
+B: LRA
+C: CES
+D: APXS
+solution:
+TV-D1 (Test Vehicle Demonstration 1), flown by ISRO from Sriharikota on 21 October 2023, tested the Crew Escape System (CES): it triggered an abort, separated the Crew Module and brought it down by parachute into the Bay of Bengal.
+
+APXS is the Alpha Particle X-ray Spectrometer carried on Chandrayaan's rover, not a Gaganyaan system.
+
+=== 81
+subject: Current Affairs
+chapter: Science and Technology
+subtopic: Space Technology and Astronomy
+difficulty: MODERATE
+answer: D
+stem:
+What is the primary function of the Solar Wind Ion Spectrometer (SWIS), included in the ASPEX payload on Aditya-L1?
+A: Records UV imagery of solar flare activity
+B: Monitors tremors and vibrations on the solar surface
+C: Observes changes in the Earth's geomagnetic field
+D: Detects directional flow of solar wind protons and helium nuclei
+solution:
+SWIS, part of the Aditya Solar wind Particle EXperiment (ASPEX), is a low-energy spectrometer that measures the solar wind ions, chiefly protons and alpha particles (helium nuclei), and their direction of arrival.
+
+UV imaging is done by SUIT, and the Earth's magnetic field environment by the magnetometer, not by SWIS.
+
+=== 82
+subject: Geography
+chapter: Indian Geography — Economy, Resources and Transport
+subtopic: Population, Census and Urbanisation
+difficulty: MODERATE
+answer: C
+stem:
+**Assertion (A) and Reason (R) are given below. Choose the correct option:**
+**Assertion (A):** Improvements in nutrition and public health reduce mortality rates.
+**Reason (R):** Lower mortality leads to an immediate fall in birth rates.
+A: Both A and R are true, and R is the correct explanation of A
+B: Both A and R are true, but R is not the correct explanation of A
+C: A is true, but R is false
+D: A is false, but R is true
+solution:
+A is true: better food, sanitation and medicine cut death rates, the second stage of the demographic transition.
+
+R is false: birth rates do not fall at once. They stay high for a long time after death rates fall, which is why population grows rapidly in that stage; fertility falls only later with education, urbanisation and changing social norms.
+
+=== 83
+subject: Geography
+chapter: Indian Geography — Economy, Resources and Transport
+subtopic: Minerals and Mining
+difficulty: EASY
+answer: A
+stem:
+Which of the following regions in India is best known as the "Ruhr of India" due to its rich mineral resources, particularly coal, and industrial development?
+A: Chota Nagpur Plateau
+B: Malwa Plateau
+C: Deccan Plateau
+D: Thar Desert
+solution:
+The Chota Nagpur Plateau (Jharkhand and adjoining areas) holds the Damodar valley coalfields along with iron ore, mica and bauxite, and supports industrial centres such as Jamshedpur, Bokaro and Dhanbad. Like Germany's coal-rich Ruhr region, it is called the "Ruhr of India".
+
+=== 84
+subject: Chemistry
+chapter: Chemistry in Everyday Life
+subtopic: Chemicals in Food and Daily Use
+difficulty: EASY
+answer: B
+stem:
+Which key compound gives garlic its characteristic sharp taste and strong smell?
+A: Allyl isothiocyanate
+B: Allicin
+C: Capsaicin
+D: Thymol
+solution:
+When garlic is crushed, the enzyme alliinase converts alliin into allicin, the sulphur compound behind its pungent taste and smell.
+
+Allyl isothiocyanate gives mustard and wasabi their bite, capsaicin is the heat of chilli peppers, and thymol is the aromatic compound of ajwain and thyme.
+
+=== 85
+subject: Biology
+chapter: Human Physiology
+subtopic: Nervous System and Sense Organs
+difficulty: MODERATE
+answer: A
+stem:
+Read the below statements about synaptic transmission:
+1. Synaptic cleft is the gap between two neurons.
+2. Neurotransmitters are released from presynaptic terminals.
+3. Axon hillock receives impulses from the next neuron.
+Which of the above statements are **correct?**
+A: Only 1 and 2 are correct
+B: Only 1 and 3 are correct
+C: Only 2 and 3 are correct
+D: 1, 2 and 3 all are correct
+solution:
+Statement 1 is correct: the synaptic cleft is the narrow gap between the presynaptic and postsynaptic neurons.
+
+Statement 2 is correct: when an impulse arrives, vesicles in the presynaptic axon terminals release neurotransmitters into the cleft.
+
+Statement 3 is wrong: impulses from another neuron are received by the dendrites and cell body. The axon hillock is where the axon leaves the cell body and where the action potential is generated, before it travels down the axon.
+
+=== 86
+subject: Physics
+chapter: Modern Physics
+subtopic: Quantum and Modern EM
+difficulty: MODERATE
+answer: A
+stem:
+**Read the following statements about the de Broglie hypothesis and wave-particle duality:**
+1.As a particle's momentum increases, its associated de Broglie wavelength becomes shorter.
+2. The de Broglie wavelength is significant for macroscopic objects moving at high speeds.
+3. The wave-particle duality applies to photons but not to material particles.
+Which of the above statements are **correct?**
+A: 1 only
+B: 1 and 2 only
+C: 2 and 3 only
+D: 1, 2 and 3
+solution:
+The de Broglie wavelength is \(\lambda = \frac{h}{p}\), so a larger momentum gives a shorter wavelength: statement 1 is correct.
+
+For a macroscopic object the momentum is huge compared with Planck's constant (\(6.63 \times 10^{-34}\) J s), so the wavelength is vanishingly small and undetectable, and a higher speed makes it smaller still: statement 2 is wrong.
+
+De Broglie's whole point was that material particles such as electrons also behave as waves (confirmed by electron diffraction): statement 3 is wrong.
+
+=== 87
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: New Criminal Laws and Other Acts
+difficulty: MODERATE
+answer: B
+stem:
+The Bharatiya Nagarik Suraksha Sanhita(BNSS) introduces significant changes regarding the use of technology in criminal justice. Which of these is a key technological integration mandated by Bharatiya Nagarik Suraksha Sanhita(BNSS)?
+A: Mandatory use of Artificial Intelligence for investigations.
+B: Videography of search and seizure operations and crime scenes.
+C: Robot-assisted policing.
+D: Automated judgment delivery system.
+solution:
+The BNSS, 2023 (in force from 1 July 2024) requires search and seizure to be recorded by audio-video electronic means, preferably on a mobile phone, and requires forensic experts to visit and video-record the crime scene for offences punishable with seven years or more.
+
+It also allows electronic summons, e-FIRs and trials by video conferencing, but it mandates nothing like AI investigation, robot policing or automated judgments.
+
+=== 88
+subject: Current Affairs
+chapter: Government Schemes, Policy and Governance
+subtopic: Governance, Policy and Union Territory Reform
+difficulty: MODERATE
+answer: A
+stem:
+Match the government schemes with their correct objectives and choose the correct option:
+
+| Government schemes: | Objectives: |
+|---|---|
+| A. Dak Karmayogi | i. Infra monitoring |
+| B. India Post Payments Bank (IPPB) | ii. Capacity building for government personnel |
+| C. Aadhaar-enabled Payment System (AePS) | iii. Aadhaar-based cashless banking |
+| D. PRAGATI | iv. Financial inclusion through doorstep banking |
+A: A-ii, B-iv, C-iii, D-i
+B: A-ii, B-i, C-iv, D-iii
+C: A-iv, B-iii, C-i, D-ii
+D: A-i, B-iii, C-ii, D-iv
+solution:
+Dak Karmayogi is the Department of Posts' e-learning portal for training its employees, part of Mission Karmayogi: capacity building (ii).
+
+India Post Payments Bank delivers banking at the doorstep through postmen and Gramin Dak Sevaks: financial inclusion (iv).
+
+AePS lets a customer withdraw cash or pay using Aadhaar number and biometric authentication: Aadhaar-based banking (iii).
+
+PRAGATI (Pro-Active Governance And Timely Implementation) is the Prime Minister's platform for reviewing and monitoring major infrastructure projects (i).
+
+=== 89
+subject: Economics
+chapter: Indian Economy
+subtopic: Government Schemes — Agriculture and Livestock
+difficulty: EASY
+answer: C
+stem:
+SHC scheme is implemented by which ministry?
+A: Ministry of Environment, Forest and Climate Change (MoEFCC)
+B: Ministry of Jal Shakti
+C: Ministry of Agriculture and Farmers Welfare (MoA&FW)
+D: Ministry of Statistics and Programme Implementation (MoSPI)
+solution:
+The Soil Health Card (SHC) scheme, launched in 2015 at Suratgarh, Rajasthan, gives farmers a card reporting the nutrient status of their soil with fertiliser advice. It is run by the Department of Agriculture and Farmers Welfare under the Ministry of Agriculture and Farmers Welfare.
+
+=== 90
+subject: Economics
+chapter: Money, Banking and Public Finance
+subtopic: Union Budget and Fiscal Policy
+difficulty: EASY
+answer: B
+stem:
+What does the Finance Bill presented in the Budget mainly contain?
+A: Details of government borrowing plans
+B: Proposals related to tax changes or rules
+C: Estimates of state-level expenditure only
+D: Monetary policy statements of RBI
+solution:
+The Finance Bill, presented with the Union Budget, gives effect to the government's proposals for imposing, abolishing, altering or regulating taxes for the coming year. It is usually passed as a money bill.
+
+Spending is authorised separately through the Demand for Grants and the Appropriation Bill, and monetary policy is the RBI's, not part of the Budget.
+
+=== 91
+subject: Economics
+chapter: Money, Banking and Public Finance
+subtopic: Union Budget and Fiscal Policy
+difficulty: EASY
+answer: C
+stem:
+Which of the following is an example of a capital receipt for the Indian government?
+A: Income tax collection
+B: Dividends received from Public Sector Undertakings (PSUs)
+C: Disinvestment proceeds from selling shares of PSUs
+D: Goods and Services Tax (GST) collection
+solution:
+A capital receipt either creates a liability or reduces the government's assets. Selling shares of PSUs reduces assets, so disinvestment proceeds are a capital receipt (as are borrowings and loan recoveries).
+
+Income tax and GST are tax revenue, and dividends from PSUs are non-tax revenue: all three are revenue receipts.
+
+=== 92
+subject: Economics
+chapter: Microeconomics — Demand, Supply and Market Structure
+subtopic: Basic Economic Concepts and Opportunity Cost
+difficulty: EASY
+answer: D
+stem:
+Which of the following **best describes** the concept of 'opportunity cost' in microeconomics?
+A: The cost of producing goods in the future
+B: The net gain from an investment
+C: The value of leisure forgone
+D: The value of the best alternative forgone
+solution:
+Opportunity cost is the value of the next best alternative given up when a choice is made.
+
+Leisure forgone is one possible opportunity cost (of working), but it is a special case, not the definition.
+
+=== 93
+subject: Current Affairs
+chapter: Environment, Ecology and Energy
+subtopic: Climate Change and Summits
+difficulty: MODERATE
+answer: A
+stem:
+The Climate Change Performance Index (CCPI) 2025 evaluates countries based on their performance in:
+A: GHG Emissions, Renewable Energy, Energy Use, Climate Policy
+B: Carbon Sequestration, Water Conservation, Biodiversity, Pollution Control
+C: Disaster Preparedness, Adaptation Strategies, Mitigation Funding, Policy Implementation
+D: Green Buildings, Sustainable Transport, Waste Management, Circular Economy
+solution:
+The CCPI, published by Germanwatch, NewClimate Institute and CAN, rates countries in four categories: GHG Emissions (40% of the score), Renewable Energy (20%), Energy Use (20%) and Climate Policy (20%). In CCPI 2025 India was ranked 10th.
+
+=== 94
+subject: Current Affairs
+chapter: International Affairs and Relations
+subtopic: International Organizations and Multilateral Bodies
+difficulty: EASY
+answer: C
+stem:
+The Women, Business and the Law Index 2025 is published by which international institution?
+A: UNDP
+B: UN Women
+C: World Bank
+D: OECD
+solution:
+Women, Business and the Law is a World Bank Group report that measures the laws and regulations affecting women's economic opportunity across economies.
+
+UNDP publishes the Human Development Report and the Gender Inequality Index; the OECD publishes the Social Institutions and Gender Index.
+
+=== 95
+subject: History
+chapter: Modern India
+subtopic: Revolt of 1857 and Popular Uprisings
+difficulty: MODERATE
+answer: C
+stem:
+**Read the following statements and mark the correct option:**
+**Assertion (A):** U Kiang Nangbah was hanged for revolting against British rule in the Jaintia Hills.
+**Reason (R):**  He led a successful revolt against British opium trade in the Khasi Hills.
+A: Both A and R are true, and R is the correct explanation of A.
+B: Both A and R are true, but R is not the correct explanation of A.
+C: A is true, but R is false.
+D: A is false, but R is true.
+solution:
+U Kiang Nangbah led the Jaintia uprising of 1860-62 against British interference in local religious customs and the new house tax and income tax. He was captured and publicly hanged at Jowai on 30 December 1862, so A is true.
+
+R is false: his revolt was in the Jaintia Hills, it was not about the opium trade, and it was suppressed rather than successful.
+
+=== 96
+subject: Geography
+chapter: Oceanography
+subtopic: Marine Ecosystems — Coral Reefs
+difficulty: MODERATE
+answer: C
+stem:
+Which organization provides coral bleaching alert services for Indian coral regions based on sea surface temperature data?
+A: Central Marine Fisheries Research Institute (CMFRI)
+B: Zoological Survey of India (ZSI)
+C: Indian National Centre for Ocean Information Services (INCOIS)
+D: Ministry of Environment, Forest and Climate Change
+solution:
+INCOIS, Hyderabad (under the Ministry of Earth Sciences), runs the Coral Bleaching Alert System, which uses satellite sea surface temperature to compute thermal stress (hotspots and degree heating weeks) over India's reefs such as the Andaman and Nicobar Islands, Lakshadweep, the Gulf of Mannar and the Gulf of Kachchh.
+
+=== 97
+subject: Geography
+chapter: Indian Geography — Economy, Resources and Transport
+subtopic: Manufacturing Industries
+difficulty: EASY
+answer: B
+stem:
+Based on the classification of industries by raw material source, which option below is **correctly** paired?
+A: Tea – Mineral-based industry
+B: Petrochemicals – Mineral-based industry
+C: Coffee – Mineral-based industry
+D: Woollen textile – Mineral-based industry
+solution:
+Petrochemicals are made from crude oil and natural gas, which are minerals, so it is a mineral-based industry.
+
+Tea and coffee processing are agro-based industries, and woollen textiles, using wool from sheep, are animal-based (pastoral) industries.
+
+=== 98
+subject: Polity
+chapter: Indian Constitution — Making, Foundation and Amendments
+subtopic: Centre-State Relations
+difficulty: MODERATE
+answer: A
+stem:
+Consider the following statements:
+1. Parliament can bar the jurisdiction of courts over inter-state water disputes.
+2. Article 262 empowers the Inter-State Council to adjudicate water disputes.
+Which of the above statements is/are correct?
+A: Only 1
+B: Only 2
+C: Both 1 and 2
+D: Neither 1 nor 2
+solution:
+Article 262(1) lets Parliament provide by law for adjudicating disputes over inter-state rivers, and Article 262(2) lets Parliament provide that neither the Supreme Court nor any other court shall exercise jurisdiction over such a dispute (done in the Inter-State River Water Disputes Act, 1956). Statement 1 is correct.
+
+Adjudication is by tribunals set up under that Act. The Inter-State Council is an advisory body under Article 263, so Statement 2 is wrong.
+
+=== 99
+subject: Economics
+chapter: Money, Banking and Public Finance
+subtopic: Taxation and Public Finance
+difficulty: MODERATE
+answer: A
+stem:
+Read the following statements carefully and choose the **correct** option regarding Assertion (A) and Reason (R).
+**Assertion (A):** Tax reforms post-1991 included lowering income tax rates.
+**Reason (R):** Lower tax rates were believed to increase tax compliance and reduce evasion.
+A: Both A and R are true and R is the correct explanation of A.
+B: Both A and R are true but R is not the correct explanation of A.
+C: A is true but R is false.
+D: A is false but R is true.
+solution:
+After 1991, on the Raja Chelliah Committee's recommendations, India cut the peak personal income tax and corporate tax rates and reduced the number of slabs, so A is true.
+
+The stated rationale was that moderate rates with a wider base would improve compliance and reduce evasion, raising revenue overall, so R is true and explains A.
+
+=== 100
+subject: Current Affairs
+chapter: Environment, Ecology and Energy
+subtopic: Environmental Campaigns, Disasters and Energy
+difficulty: EASY
+answer: C
+stem:
+Which of the following criteria is a primary requirement for a beach or marina to receive the international Blue Flag certification?
+A: Presence of luxury resorts and high-end tourism facilities.
+B: Exclusive access for private members or residents.
+C: High standards of water quality, environmental management, safety, and services.
+D: Location within a UNESCO World Heritage Site.
+solution:
+The Blue Flag, awarded by the Foundation for Environmental Education (Denmark), requires a beach or marina to meet strict criteria in four areas: water quality, environmental education and information, environmental management, and safety and services. A Blue Flag beach must also be publicly accessible, so exclusive access would disqualify it.
+
+=== 101
+chapter: Simple and Compound Interest
+subtopic: Finding the Rate, Time or Principal
+difficulty: EASY
+answer: A
+stem:
+A sum of money at simple interest doubles in 8 years. It will become four times in:
+A: 24 years
+B: 22 years
+C: 28 years
+D: 18 years
+solution:
+Doubling means the interest in 8 years equals the principal P, so the interest is P every 8 years.
+
+To become four times, the interest must be 3P, which takes \(3 \times 8 = 24\) years.
+
+(Check: rate \(= \frac{100}{8} = 12.5\%\) per annum; interest of \(300\%\) needs \(\frac{300}{12.5} = 24\) years.)
+
+=== 102
+chapter: Simple and Compound Interest
+subtopic: Simple Interest
+difficulty: EASY
+answer: A
+stem:
+The principal is 1600, the interest rate is 8%, and the time is 5 years. What will be the simple interest?
+A: 640
+B: 620
+C: 600
+D: 590
+solution:
+Simple interest \(= \frac{1600 \times 8 \times 5}{100} = 640\).
+
+(Check: one year's interest is 8% of 1600, which is 128, and \(128 \times 5 = 640\).)
+
+=== 103
+chapter: Simple and Compound Interest
+subtopic: Simple Interest
+difficulty: EASY
+answer: D
+stem:
+What will be the ratio of simple interest earned by a certain amount at the same rate of interest for 14 years and 18 years?
+A: 1:3
+B: 5:9
+C: 9:11
+D: 7:9
+solution:
+With the same principal and rate, simple interest is proportional to time.
+
+Ratio \(= 14 : 18 = 7 : 9\).
+
+(Check: with P = 100 and R = 1%, the interests are 14 and 18, ratio 7:9.)
+
+=== 104
+chapter: Number System
+subtopic: Rational and Irrational Numbers
+difficulty: EASY
+answer: A
+stem:
+The union of rational and irrational numbers is equal to:
+A: Real Numbers
+B: Natural Numbers
+C: Complex Numbers
+D: Whole Numbers
+solution:
+Every real number is either rational or irrational, and every rational or irrational number is real. So the union of the two sets is the set of real numbers.
+
+Natural and whole numbers are only part of the rationals; complex numbers include non-real numbers such as \(i\), which are neither rational nor irrational.
+
+=== 105
+chapter: Time, Speed and Distance
+subtopic: Average Speed and Speed–Time Ratios
+difficulty: EASY
+answer: D
+stem:
+The speeds of A and B are in the ratio 4:7. A takes 30 minutes more than B to reaches a destination. Time in which A reach the destination?
+A: 72 m
+B: 55 m
+C: 65 m
+D: 70 m
+solution:
+For the same distance, time is inversely proportional to speed, so the times of A and B are in the ratio 7:4.
+
+The difference of 3 parts is 30 minutes, so 1 part is 10 minutes, and A takes \(7 \times 10 = 70\) minutes.
+
+(Check: B takes 40 minutes, and \(70 - 40 = 30\); \(\frac{40}{70} = \frac{4}{7}\), the speed ratio.)
+
+=== 106
+chapter: Mensuration 3D
+subtopic: Cubes and Cuboids
+difficulty: EASY
+answer: A
+stem:
+A rectangular water tank is 1.5 m long, 1.2 m wide, and 0.8 m deep. How many liters of water can it hold? (Given:1 \(\text{m}^3\) = 1000 liters)
+A: 1440 liters
+B: 144 liters
+C: 14.4 liters
+D: 14400 liters
+solution:
+Volume \(= 1.5 \times 1.2 \times 0.8 = 1.44\ \text{m}^3\).
+
+In litres: \(1.44 \times 1000 = 1440\) liters.
+
+(Check: in cm, \(150 \times 120 \times 80 = 1440000\ \text{cm}^3 = 1440\) liters.)
+
+=== 107
+chapter: Mensuration 3D
+subtopic: Cubes and Cuboids
+difficulty: EASY
+answer: B
+stem:
+A storage container in the shape of a cuboid has a square base with sides of 7 cm and height of 10 cm. What is the difference between its total surface area and its lateral surface area?
+A: 49 \(\text{cm}^2\)
+B: 98 \(\text{cm}^2\)
+C: 140 \(\text{cm}^2\)
+D: 196 \(\text{cm}^2\)
+solution:
+Total surface area minus lateral surface area is the area of the top and the bottom: \(2 \times 7^2 = 98\ \text{cm}^2\).
+
+(Check: TSA \(= 2(49 + 70 + 70) = 378\), LSA \(= 4 \times 7 \times 10 = 280\), and \(378 - 280 = 98\).)
+
+=== 108
+chapter: Mensuration 3D
+subtopic: Cones
+difficulty: EASY
+answer: B
+stem:
+The total surface area of a cone is 616 \(\text{cm}^2\) and its base radius is 7 cm. Find the slant height.
+A: 22 cm
+B: 21 cm
+C: 20 cm
+D: 18 cm
+solution:
+Total surface area \(= \pi r(l + r) = \frac{22}{7} \times 7 \times (l + 7) = 22(l + 7) = 616\).
+
+So \(l + 7 = 28\) and \(l = 21\) cm.
+
+(Check: curved area \(= 22 \times 21 = 462\), base \(= 22 \times 7 = 154\), and \(462 + 154 = 616\).)
+
+=== 109
+chapter: Mensuration 3D
+subtopic: Frustums and Combined Solids
+difficulty: MODERATE
+answer: A
+stem:
+A cone has base radius 6 cm and slant height 10 cm. If a conical frustum is cut from it, the top radius is 3 cm and height is proportionally scaled. Find the height of the frustum.
+A: 4 cm
+B: 6 cm
+C: 8 cm
+D: 10 cm
+solution:
+Height of the cone \(= \sqrt{10^2 - 6^2} = 8\) cm.
+
+The cut leaves a small cone on top with radius 3 cm, half of 6 cm, so by similar triangles its height is half of 8, that is 4 cm.
+
+Height of the frustum \(= 8 - 4 = 4\) cm.
+
+(Check: the radius shrinks by \(\frac{6}{8} = 0.75\) cm per cm of height going up; from 6 to 3 is a drop of 3 cm in radius, which takes \(\frac{3}{0.75} = 4\) cm of height.)
+
+=== 110
+chapter: Algebraic Identities and Simplification
+subtopic: Sums and Products of Three Variables
+difficulty: MODERATE
+answer: C
+stem:
+If (a + b + c) = 20 and \((a^2+b^2+c^2) = 200\), find the value of\((a - b)^2 + ((b - c)^2 + (c - a)^2\).
+A: 300
+B: -200
+C: 200
+D: 123
+solution:
+\((a + b + c)^2 = a^2 + b^2 + c^2 + 2(ab + bc + ca)\), so \(400 = 200 + 2(ab + bc + ca)\) and \(ab + bc + ca = 100\).
+
+\((a - b)^2 + (b - c)^2 + (c - a)^2 = 2(a^2 + b^2 + c^2) - 2(ab + bc + ca) = 400 - 200 = 200\).
+
+(Check: a sum of squares cannot be negative, which rules out -200; and the values are possible since \(200 \ge \frac{20^2}{3}\).)
+
+=== 111
+chapter: Surds, Indices and Simplification
+subtopic: Exponential Equations
+difficulty: EASY
+answer: B
+stem:
+If \(4^{(x+2)} + 7 = 1031\) then find the value of X.
+A: 2
+B: 3
+C: 7
+D: 5
+solution:
+\(4^{x+2} = 1031 - 7 = 1024 = 4^5\).
+
+So \(x + 2 = 5\) and \(x = 3\).
+
+(Check: \(4^5 = 1024\) and \(1024 + 7 = 1031\).)
+
+=== 112
+chapter: Algebraic Identities and Simplification
+subtopic: Cubes of a Binomial
+difficulty: EASY
+answer: D
+stem:
+If a + b = 7, is the value of \(a^3 + b^3\) + 21ab = ?
+A: 231
+B: 443
+C: 121
+D: 343
+solution:
+\((a + b)^3 = a^3 + b^3 + 3ab(a + b)\), so \(343 = a^3 + b^3 + 21ab\).
+
+So \(a^3 + b^3 + 21ab = 343\).
+
+(Check: with a = 3, b = 4: \(27 + 64 + 21 \times 12 = 91 + 252 = 343\).)
+
+=== 113
+chapter: Mensuration 3D
+subtopic: Prisms and Pyramids
+difficulty: EASY
+answer: A
+stem:
+The base of a right prism is a regular hexagon with side length 6 cm. The height of the prism is \(\frac{1}{\sqrt{3}}\) cm. Find the volume of the prism.
+A: 54 \(\text{cm}^3\)
+B: 58 \(\text{cm}^3\)
+C: 63 \(\text{cm}^3\)
+D: 67 \(\text{cm}^3\)
+solution:
+Area of the hexagon \(= \frac{3\sqrt{3}}{2} \times 6^2 = 54\sqrt{3}\ \text{cm}^2\).
+
+Volume \(= 54\sqrt{3} \times \frac{1}{\sqrt{3}} = 54\ \text{cm}^3\).
+
+(Check: the hexagon is 6 equilateral triangles of area \(\frac{\sqrt{3}}{4} \times 36 = 9\sqrt{3}\) each, total \(54\sqrt{3}\).)
+
+=== 114
+chapter: Mensuration 3D
+subtopic: Prisms and Pyramids
+difficulty: EASY
+answer: D
+note: SSC printed the options in cubic centimetres; an area is in square centimetres. The value 120 is right, so the answer is unaffected.
+stem:
+What is the lateral surface area of a square pyramid with base side 10 cm and slant height 6 cm?
+A: 180 \(\text{cm}^3\)
+B: 280 \(\text{cm}^3\)
+C: 240 \(\text{cm}^3\)
+D: 120 \(\text{cm}^3\)
+solution:
+Lateral surface area \(= \frac{1}{2} \times \text{perimeter of base} \times \text{slant height} = \frac{1}{2} \times 40 \times 6 = 120\ \text{cm}^2\).
+
+(Check: four triangular faces of area \(\frac{1}{2} \times 10 \times 6 = 30\) each, total 120. The options print the unit as \(\text{cm}^3\); an area is in \(\text{cm}^2\).)
+
+=== 115
+chapter: Surds, Indices and Simplification
+subtopic: Fractions and Decimals
+difficulty: EASY
+answer: A
+stem:
+Solve: \(\frac{2}{5} + 0.75^2\)
+A: 0.9625
+B: 0.8625
+C: 1.9652
+D: 0.6259
+solution:
+\(\frac{2}{5} = 0.4\) and \(0.75^2 = 0.5625\).
+
+Sum \(= 0.4 + 0.5625 = 0.9625\).
+
+(Check: as fractions, \(\frac{2}{5} + \frac{9}{16} = \frac{32 + 45}{80} = \frac{77}{80} = 0.9625\).)
+
+=== 116
+chapter: Linear Equations
+subtopic: Word Problems and Applications
+difficulty: MODERATE
+answer: C
+stem:
+A jar is \(\frac{3}{5}\) full with a solution. After adding 3.2 liters, it becomes \(\frac{7}{8}\) full. What is the total capacity of the jar?
+A: 24 L
+B: 20.5 L
+C: 11.64 L
+D: 18.28 L
+solution:
+The 3.2 liters fill \(\frac{7}{8} - \frac{3}{5} = \frac{35 - 24}{40} = \frac{11}{40}\) of the jar.
+
+Capacity \(= 3.2 \times \frac{40}{11} = \frac{128}{11} \approx 11.64\) L.
+
+(Check: \(\frac{11}{40} \times 11.636 = 3.2\).)
+
+=== 117
+chapter: Ratio, Proportion and Variation
+subtopic: Partnership
+difficulty: MODERATE
+answer: A
+stem:
+A, B, and C started a business investing Rs. 50,000, Rs. 70,000, and Rs. 90,000, respectively. After 6 months, C withdrew half of his capital. At the end of the year, what is the ratio of their profits?
+A: 20:28:27
+B: 20:27:28
+C: 28:20:27
+D: 27:28:20
+solution:
+Capital times months: A \(= 50000 \times 12 = 600000\); B \(= 70000 \times 12 = 840000\); C \(= 90000 \times 6 + 45000 \times 6 = 810000\).
+
+Ratio \(= 600000 : 840000 : 810000 = 20 : 28 : 27\) (dividing by 30000).
+
+(Check: in thousands per month, A 50, B 70 and C's average \(\frac{90 + 45}{2} = 67.5\); \(50 : 70 : 67.5 = 20 : 28 : 27\).)
+
+=== 118
+chapter: Mensuration 2D
+subtopic: Circumference, Wheels and Rings
+difficulty: EASY
+answer: A
+stem:
+The area of a circle is \(121\pi\ \text{cm}^2\). What is its radius?
+A: 11 cm
+B: 10 cm
+C: 12 cm
+D: 13 cm
+solution:
+\(\pi r^2 = 121\pi\), so \(r^2 = 121\) and \(r = 11\) cm.
+
+(Check: \(11^2 = 121\).)
+
+=== 119
+chapter: Lines, Angles and Polygons
+subtopic: Regular Polygons
+difficulty: EASY
+answer: D
+stem:
+Each interior angle of a regular polygon exceeds its exterior angle by \(150^\circ\). Determine the number of sides of the polygon.
+A: 23
+B: 26
+C: 25
+D: 24
+solution:
+Interior + exterior \(= 180^\circ\) and interior \(-\) exterior \(= 150^\circ\), so the exterior angle is \(15^\circ\).
+
+Number of sides \(= \frac{360}{15} = 24\).
+
+(Check: interior angle \(= 165^\circ\), and \(165 - 15 = 150\).)
+
+=== 120
+chapter: Mensuration 2D
+subtopic: Sector Area
+difficulty: EASY
+answer: D
+stem:
+A sector of a circle with radius 14 cm has a central angle of \(135^\circ\). Find the area of the sector.
+A: 331 \(\text{cm}^2\)
+B: 241 \(\text{cm}^2\)
+C: 235 \(\text{cm}^2\)
+D: 231 \(\text{cm}^2\)
+solution:
+Area \(= \frac{135}{360} \times \frac{22}{7} \times 14^2 = \frac{3}{8} \times 616 = 231\ \text{cm}^2\).
+
+(Check: the full circle is 616, an eighth is 77, and three eighths is 231.)
+
+=== 121
+chapter: Percentage, Profit and Loss
+subtopic: Percentage Word Problems
+difficulty: MODERATE
+answer: A
+stem:
+A man spends 80% of his income. His income has increased by 25%, but his expenditure remains the same.
+
+By what percent have his savings increased?
+A: 125%
+B: 150%
+C: 100%
+D: 200%
+solution:
+Take income 100: expenditure 80, savings 20.
+
+New income 125, expenditure 80, savings 45.
+
+Increase \(= \frac{45 - 20}{20} \times 100 = 125\%\).
+
+(Check: the whole extra income of 25 goes to savings, and 25 is \(125\%\) of 20.)
+
+=== 122
+chapter: Percentage, Profit and Loss
+subtopic: Percentage Word Problems
+difficulty: MODERATE
+answer: B
+stem:
+A reduction of 20% in the price of sugar enables a person to buy 5 kg more for Rs. 200. What is the original price per kg?
+A: Rs. 20
+B: Rs. 10
+C: Rs. 5
+D: Rs. 15
+solution:
+The 20% saving on Rs. 200 is Rs. 40, which buys the extra 5 kg, so the reduced price is \(\frac{40}{5} = 8\) per kg.
+
+Original price \(= \frac{8}{0.8} = 10\) per kg.
+
+(Check: at Rs. 10, Rs. 200 buys 20 kg; at Rs. 8 it buys 25 kg, 5 kg more.)
+
+=== 123
+chapter: Percentage, Profit and Loss
+subtopic: Successive Percentage Change
+difficulty: EASY
+answer: A
+stem:
+In a town, 20% of the population migrated to another city. Later, 25% of the remaining population left due to lack of jobs.
+
+If the final population is 48,000, what was the original population?
+A: 80,000
+B: 75,000
+C: 70,000
+D: 72,000
+solution:
+Final population \(= P \times 0.8 \times 0.75 = 0.6P = 48000\), so \(P = 80000\).
+
+(Check: 20% of 80,000 leaves 64,000; 25% of 64,000 is 16,000, leaving 48,000.)
+
+=== 124
+chapter: Circles
+subtopic: Chords and Perpendiculars
+difficulty: EASY
+answer: A
+stem:
+A circle has a radius of 15 cm. If a chord 24 cm long is drawn, what is the perpendicular distance from the center of the circle to the chord?
+A: 9 cm
+B: 10 cm
+C: 12 cm
+D: 13 cm
+solution:
+The perpendicular from the centre bisects the chord, so half the chord is 12 cm.
+
+Distance \(= \sqrt{15^2 - 12^2} = \sqrt{225 - 144} = \sqrt{81} = 9\) cm.
+
+(Check: 9, 12, 15 is the 3-4-5 triple scaled by 3.)
+
+=== 125
+chapter: Ratio, Proportion and Variation
+subtopic: Ratio Basics
+difficulty: EASY
+answer: B
+stem:
+In a bag, red, blue, and green balls are in the ratio 3:4:5. If there are 48 balls in total, how many are green?
+A: 15
+B: 20
+C: 25
+D: 18
+solution:
+Total parts \(= 3 + 4 + 5 = 12\), so one part is \(\frac{48}{12} = 4\) balls.
+
+Green \(= 5 \times 4 = 20\).
+
+(Check: red 12, blue 16, green 20, total 48.)
+
+=== 126
+chapter: Number System
+subtopic: Perfect Squares, Cubes and Difference of Squares
+difficulty: EASY
+answer: C
+stem:
+Which pair of numbers has a sum of 13 and whose squares differ by 65?
+A: 6 and 7
+B: 5 and 8
+C: 4 and 9
+D: 3 and 10
+solution:
+Let the numbers be a and b with \(a + b = 13\) and \(a^2 - b^2 = 65\).
+
+Then \(a - b = \frac{65}{13} = 5\), so \(a = 9\) and \(b = 4\).
+
+(Check: \(9^2 - 4^2 = 81 - 16 = 65\). The other pairs give \(49 - 36 = 13\), \(64 - 25 = 39\) and \(100 - 9 = 91\).)
+
+=== 127
+chapter: Quadrilaterals
+subtopic: Rhombus and Kite
+difficulty: EASY
+answer: A
+stem:
+A rhombus has all sides equal to 10 cm and one diagonal is 12 cm. What is the other diagonal?
+A: \(16\ \text{cm}\)
+B: \(\sqrt{176}\ \text{cm}\)
+C: \(12\ \text{cm}\)
+D: \(20\ \text{cm}\)
+solution:
+The diagonals of a rhombus bisect each other at right angles, so half of the known diagonal (6 cm), half of the other diagonal and a side (10 cm) form a right triangle.
+
+Half of the other diagonal \(= \sqrt{10^2 - 6^2} = \sqrt{64} = 8\) cm, so the other diagonal is 16 cm.
+
+(Check: \(d_1^2 + d_2^2 = 4a^2\): \(12^2 + 16^2 = 144 + 256 = 400 = 4 \times 10^2\).)
+
+=== 128
+chapter: Mensuration 2D
+subtopic: Equal Perimeters and Re-bent Wires
+difficulty: EASY
+answer: A
+stem:
+If a regular triangle and a regular square have the same perimeter, which has the longer side?
+A: Triangle
+B: Square
+C: Both equal
+D: Depends on area
+solution:
+Let the common perimeter be P. The triangle's side is \(\frac{P}{3}\) and the square's side is \(\frac{P}{4}\).
+
+Since \(\frac{P}{3} > \frac{P}{4}\), the triangle has the longer side.
+
+(Check with P = 12: triangle side 4, square side 3.)
+
+=== 129
+chapter: Mensuration 2D
+subtopic: Rectangles, Squares and Other Quadrilaterals
+difficulty: EASY
+answer: A
+stem:
+A rope is laid out to form a square enclosure. If 20 meters of rope remain unused after enclosing the square, and the area of the square is 100 \(\text{m}^2\), what was the original length of the rope?
+A: 60 m
+B: 80 m
+C: 100 m
+D: 120 m
+solution:
+Side of the square \(= \sqrt{100} = 10\) m, so the rope used \(= 4 \times 10 = 40\) m.
+
+Original length \(= 40 + 20 = 60\) m.
+
+(Check: 60 m less the 20 m left over is 40 m, a square of side 10 m and area 100 \(\text{m}^2\).)
+
+=== 130
+chapter: Ratio, Proportion and Variation
+subtopic: Ratio and Proportion
+difficulty: EASY
+answer: B
+stem:
+A recipe needs ingredients A, B, and C in the ratio 5:3:2. If the chef only has 400 grams of ingredient A, what is the total amount of the mixture he can make, maintaining the ratio?
+A: 600 g
+B: 800 g
+C: 1000 g
+D: 1200 g
+solution:
+A is 5 parts, so one part \(= \frac{400}{5} = 80\) g.
+
+Total \(= (5 + 3 + 2) \times 80 = 800\) g.
+
+(Check: A 400 g, B 240 g, C 160 g; sum 800 g, and A is \(\frac{5}{10}\) of it.)
+
+=== 131
+chapter: Percentage, Profit and Loss
+subtopic: Successive Discount and Marked Price
+difficulty: EASY
+answer: B
+stem:
+A seller marks up his product by 50% and offers two consecutive discounts of 10% each. What is his profit percentage?
+A: 20.5%
+B: 21.5%
+C: 22.5%
+D: 23.5%
+solution:
+Take the cost price as 100. Marked price = 150.
+
+After two 10% discounts: \(150 \times 0.9 \times 0.9 = 121.5\). Profit = 21.5%.
+
+(Check: two 10% discounts equal one discount of \(10 + 10 - \frac{10 \times 10}{100} = 19\%\); \(150 \times 0.81 = 121.5\).)
+
+=== 132
+chapter: Percentage, Profit and Loss
+subtopic: Successive Discount and Marked Price
+difficulty: EASY
+answer: D
+stem:
+A retailer offers 2 successive discounts of 15% and 10% on a product marked at Rs. 1,000. If his cost price is Rs. 700, what is his profit or loss percentage?
+A: 10.29% profit
+B: 10.29% loss
+C: 9.29% loss
+D: 9.29% profit
+solution:
+Selling price \(= 1000 \times 0.85 \times 0.90 = 765\).
+
+Profit \(= 765 - 700 = 65\), so profit % \(= \frac{65}{700} \times 100 \approx 9.29\%\).
+
+(Check: the single equivalent discount is \(15 + 10 - \frac{15 \times 10}{100} = 23.5\%\), and \(1000 - 235 = 765\), above the cost of 700, so it is a profit.)
+
+=== 133
+chapter: Percentage, Profit and Loss
+subtopic: Profit and Loss
+difficulty: MODERATE
+answer: D
+stem:
+An item is sold at a 20% profit. If the cost price and selling price are increased by Rs. 50 and Rs. 30 respectively, the profit percent becomes 10%. What is the original cost price?
+A: Rs. 100
+B: Rs. 450
+C: Rs. 600
+D: Rs. 250
+solution:
+Let the cost price be C. Then the selling price is 1.2C.
+
+New: \(1.2C + 30 = 1.1(C + 50)\), so \(1.2C + 30 = 1.1C + 55\), giving \(0.1C = 25\) and C = Rs. 250.
+
+(Check: CP 250, SP 300. New CP 300, new SP 330, profit \(\frac{30}{300} = 10\%\).)
+
+=== 134
+chapter: Surds, Indices and Simplification
+subtopic: Surds and Rationalisation
+difficulty: EASY
+answer: D
+stem:
+Simplify:\(\sqrt{12} + \sqrt{48}\)
+A: \(\sqrt{3}\)
+B: 1.21
+C: 6
+D: \(6\sqrt{3}\)
+solution:
+\(\sqrt{12} = 2\sqrt{3}\) and \(\sqrt{48} = 4\sqrt{3}\).
+
+Sum \(= 2\sqrt{3} + 4\sqrt{3} = 6\sqrt{3}\).
+
+(Check: \(\sqrt{12} \approx 3.464\), \(\sqrt{48} \approx 6.928\), sum \(\approx 10.392\), and \(6 \times 1.732 = 10.392\).)
+
+=== 135
+chapter: Percentage, Profit and Loss
+subtopic: Successive Percentage Change
+difficulty: EASY
+answer: A
+stem:
+In a rectangle, if length is increased by 20% and breadth is decreased by 20%, what is the percentage change in area?
+A: 4% decrease
+B: 4% increase
+C: No change
+D: 10% decrease
+solution:
+New area \(= 1.2 \times 0.8 = 0.96\) of the old area, a 4% decrease.
+
+(Check: net change \(= 20 - 20 + \frac{20 \times (-20)}{100} = -4\%\). With length 10 and breadth 10: area 100 becomes \(12 \times 8 = 96\).)
+
+=== 136
+chapter: Coordinate Geometry
+subtopic: Slope and Equation of a Line
+difficulty: EASY
+answer: A
+stem:
+If a line has x-intercept 4 and y-intercept -2, what is its equation in standard form?
+A: \(x - 2y = 4\)
+B: \(-x - 2y = 4\)
+C: \(-x + 2y = 4\)
+D: \(x + 2y = 4\)
+solution:
+Intercept form: \(\frac{x}{4} + \frac{y}{-2} = 1\). Multiply by 4: \(x - 2y = 4\).
+
+(Check: y = 0 gives x = 4, and x = 0 gives \(-2y = 4\), y = -2. Option C gives x = -4 and y = 2, the opposite intercepts.)
+
+=== 137
+chapter: Coordinate Geometry
+subtopic: Slope and Equation of a Line
+difficulty: EASY
+answer: D
+stem:
+If a line intersects the x-axis at (6,0) and the y-axis at (0,-4), what is the slope of the line?
+A: 1/2
+B: 1/3
+C: 3/2
+D: 2/3
+solution:
+Slope \(= \frac{-4 - 0}{0 - 6} = \frac{-4}{-6} = \frac{2}{3}\).
+
+(Check: the line is \(\frac{x}{6} + \frac{y}{-4} = 1\), that is \(2x - 3y = 12\), or \(y = \frac{2}{3}x - 4\), slope \(\frac{2}{3}\).)
+
+=== 138
+chapter: Ratio, Proportion and Variation
+subtopic: Mixtures and Alligation
+difficulty: MODERATE
+answer: C
+stem:
+Two alloys contain copper and zinc in the ratios 3:2 and 5:3. If equal masses of both are melted and mixed, what is the ratio of copper to zinc in the final alloy?
+A: 18:51
+B: 18:43
+C: 49:31
+D: 49:37
+solution:
+Take 40 kg of each alloy (40 is the LCM of 5 and 8).
+
+First alloy: copper \(\frac{3}{5} \times 40 = 24\), zinc 16. Second alloy: copper \(\frac{5}{8} \times 40 = 25\), zinc 15.
+
+Copper : zinc \(= (24 + 25) : (16 + 15) = 49 : 31\).
+
+(Check: copper fraction \(\frac{1}{2}\left(\frac{3}{5} + \frac{5}{8}\right) = \frac{49}{80}\), zinc \(\frac{31}{80}\), and the two add to 1.)
+
+=== 139
+chapter: Lines, Angles and Polygons
+subtopic: Lines, Angles and Parallels
+difficulty: EASY
+answer: C
+stem:
+IIf \(\angle A\) and \(\angle B\) are complementary and \(\angle A = 40^\circ\), what is \(\angle B\)?
+A: \(30^\circ\)
+B: \(40^\circ\)
+C: \(50^\circ\)
+D: \(60^\circ\)
+solution:
+Complementary angles add up to \(90^\circ\), so \(\angle B = 90^\circ - 40^\circ = 50^\circ\).
+
+(Check: \(40^\circ + 50^\circ = 90^\circ\).)
+
+=== 140
+chapter: Lines, Angles and Polygons
+subtopic: Lines, Angles and Parallels
+difficulty: EASY
+answer: D
+stem:
+Complement of an angle is \(12^\circ\) more than twice the angle. Find the angle.
+A: \(18^\circ\)
+B: \(22^\circ\)
+C: \(24^\circ\)
+D: \(26^\circ\)
+solution:
+Let the angle be x. Then \(90 - x = 2x + 12\), so \(3x = 78\) and \(x = 26^\circ\).
+
+(Check: complement \(= 64^\circ\), and \(2 \times 26 + 12 = 64\).)
+
+=== 141
+chapter: Lines, Angles and Polygons
+subtopic: Lines, Angles and Parallels
+difficulty: EASY
+answer: B
+note: SSC prints the stem starting with a lowercase "if"; capitalised here so the stem passes the render check.
+stem:
+If an angle is 4 times its complement, what is the angle?
+A: \(36^\circ\)
+B: \(72^\circ\)
+C: \(172^\circ\)
+D: \(7^\circ\)
+solution:
+Let the angle be x. Then \(x = 4(90 - x)\), so \(5x = 360\) and \(x = 72^\circ\).
+
+(Check: complement \(= 18^\circ\), and \(4 \times 18 = 72\).)
+
+=== 142
+chapter: Mensuration 3D
+subtopic: Cylinders
+difficulty: EASY
+answer: B
+stem:
+If the height of a cylinder is decreased by 10% and radius increased by 10%, then volume changes by:
+A: decreases by 1%
+B: increases by 8.9%
+C: decreases by 5.7%
+D: no change
+solution:
+Volume \(= \pi r^2 h\). New volume factor \(= 1.1^2 \times 0.9 = 1.21 \times 0.9 = 1.089\), an increase of 8.9%.
+
+(Check: r = 10, h = 10 gives \(1000\pi\); r = 11, h = 9 gives \(121 \times 9\,\pi = 1089\pi\), up 8.9%.)
+
+=== 143
+chapter: Mensuration 3D
+subtopic: Cylinders
+difficulty: MODERATE
+answer: C
+stem:
+A cylinder's radius and height are in a 2:5 ratio. Its volume is \(2000\pi\ \text{cm}^3\). Find the radius.
+A: 6.57 cm
+B: 8.29 cm
+C: 9.28 cm
+D: 10.99 cm
+solution:
+Let r = 2k and h = 5k. Then \(\pi (2k)^2 (5k) = 20\pi k^3 = 2000\pi\), so \(k^3 = 100\) and \(k = \sqrt[3]{100} \approx 4.642\).
+
+Radius \(= 2k \approx 9.28\) cm.
+
+(Check: \(r^3 = 8k^3 = 800\), and \(9.28^3 \approx 799.2\), while \(8.29^3 \approx 570\) and \(10.99^3 \approx 1327\).)
+
+=== 144
+chapter: Mensuration 3D
+subtopic: Prisms and Pyramids
+difficulty: EASY
+answer: D
+stem:
+A right prism has a square base of side 5 cm and a height of 12 cm. What is its total surface area?
+A: 340 \(\text{cm}^2\)
+B: 440 \(\text{cm}^2\)
+C: 370 \(\text{cm}^2\)
+D: 290 \(\text{cm}^2\)
+solution:
+Two square ends: \(2 \times 5^2 = 50\ \text{cm}^2\). Four side faces: \(4 \times 5 \times 12 = 240\ \text{cm}^2\).
+
+Total \(= 50 + 240 = 290\ \text{cm}^2\).
+
+(Check: as a cuboid 5 by 5 by 12: \(2(25 + 60 + 60) = 2 \times 145 = 290\).)
+
+=== 145
+chapter: Mensuration 3D
+subtopic: Spheres, Hemispheres and Shells
+difficulty: EASY
+answer: C
+stem:
+A brass hemispherical bowl has an inner diameter of 14 cm. Find the cost of painting its inner surface at the rate of ₹20 per \(\text{cm}^2\).
+A: ₹5360
+B: ₹5260
+C: ₹6160
+D: ₹4160
+solution:
+Inner radius = 7 cm. Inner curved surface \(= 2\pi r^2 = 2 \times \frac{22}{7} \times 49 = 308\ \text{cm}^2\).
+
+Cost \(= 308 \times 20 = ₹6160\).
+
+(Check: half of the sphere's surface \(4\pi r^2 = 616\) is 308.)
+
+=== 146
+chapter: Mensuration 3D
+subtopic: Spheres, Hemispheres and Shells
+difficulty: EASY
+answer: A
+stem:
+A cylinder and a hemisphere have the same radius. If the curved surface area of the hemisphere is 128 \(\text{cm}^2\), calculate the base area of the cylinder.
+A: 64 \(\text{cm}^2\)
+B: 54 \(\text{cm}^2\)
+C: 62 \(\text{cm}^2\)
+D: 42 \(\text{cm}^2\)
+solution:
+Curved surface of the hemisphere \(= 2\pi r^2 = 128\), so \(\pi r^2 = 64\).
+
+The cylinder's base is a circle of the same radius, so its area is \(\pi r^2 = 64\ \text{cm}^2\).
+
+(Check: the hemisphere's curved surface is exactly twice the area of its base circle, and \(2 \times 64 = 128\).)
+
+=== 147
+chapter: Mensuration 3D
+subtopic: Water — Immersion, Flow and Rainfall
+difficulty: MODERATE
+answer: D
+flawed: yes
+note: The exact radius is \(12\sqrt[3]{2} \approx 15.12\) cm (a cube root); every option prints a square root, so no option is correct as printed. D (\(12\sqrt{2}\)) is the intended answer with the cube root misprinted.
+notice: The correct radius is \(12\sqrt[3]{2}\) cm, a cube root; the options print a square root, so option D is taken as the intended answer.
+stem:
+A cylindrical container, 16 cm in radius, holds milk to a depth of 30 cm. If a solid hemisphere is submerged in the milk, the liquid level increases by 9 cm. Determine the radius of the hemispherical ball
+A: \(18\sqrt{2}\ \text{cm}\)
+B: \(16\sqrt{2}\ \text{cm}\)
+C: \(22\sqrt{2}\ \text{cm}\)
+D: \(12\sqrt{2}\ \text{cm}\)
+solution:
+Volume of milk displaced \(= \pi \times 16^2 \times 9 = 2304\pi\ \text{cm}^3\).
+
+This equals the hemisphere's volume: \(\frac{2}{3}\pi r^3 = 2304\pi\), so \(r^3 = 3456 = 1728 \times 2\) and \(r = 12\sqrt[3]{2} \approx 15.12\) cm.
+
+The options print \(\sqrt{2}\) where \(\sqrt[3]{2}\) is meant; with the cube root, option D is the answer.
+
+(Check: \(\frac{2}{3}\pi (12\sqrt[3]{2})^3 = \frac{2}{3}\pi \times 3456 = 2304\pi\). Read literally, \(12\sqrt{2} \approx 16.97\) cm would give a volume of about \(3258\pi\), not \(2304\pi\).)
+
+=== 148
+chapter: Circles
+subtopic: Tangents from an External Point
+difficulty: MODERATE
+answer: C
+flawed: yes
+note: The radius is \(\sqrt{12^2 - 9^2} = 3\sqrt{7} \approx 7.92\) m, so the diameter is about 15.84 m, which is not an option. C (7.92 m) is the radius; the question appears to have meant the radius. Also, the words "of the circle to the" in the stem are partly covered by the sscstudy.com footer on the sheet; they are read through it and agree with the Hindi.
+notice: The diameter works out to about 15.84 m, which is not among the options; option C is the radius, which is what the question appears to have meant.
+stem:
+Find the diameter of a circle, if the length of the tangent is 9 m and 12 m is the distance between the center of the circle to the external point. Given \(\sqrt{7} = 2.64(approx)\)
+A: 2.64 m
+B: 5.28 m
+C: 7.92 m
+D: 10.56 m
+solution:
+The radius to the point of contact is perpendicular to the tangent, so radius \(= \sqrt{12^2 - 9^2} = \sqrt{144 - 81} = \sqrt{63} = 3\sqrt{7} \approx 3 \times 2.64 = 7.92\) m.
+
+The diameter is therefore \(2 \times 7.92 = 15.84\) m, which is not an option. The options are multiples of 2.64, and 7.92 m (option C) is the radius, so C is taken as the intended answer.
+
+(Check: \(7.92^2 + 9^2 \approx 62.7 + 81 = 143.7 \approx 12^2\).)
+
+=== 149
+chapter: Mensuration 2D
+subtopic: Sector Area
+difficulty: EASY
+answer: B
+stem:
+What percentage of the circle is covered by a sector with a central angle of \(\frac{5\pi}{3}\) radians ?
+A: 50%
+B: 83.33%
+C: 90.54%
+D: 75%
+solution:
+A full circle is \(2\pi\) radians, so the share \(= \frac{5\pi/3}{2\pi} = \frac{5}{6} \approx 83.33\%\).
+
+(Check in degrees: \(\frac{5\pi}{3} = 300^\circ\), and \(\frac{300}{360} = \frac{5}{6}\).)
+
+=== 150
+chapter: Circles
+subtopic: Intersecting Chords and Power of a Point
+difficulty: EASY
+answer: A
+stem:
+In a circle, there are two chords, AB and CD, cross each other at point E, which is located inside the circle. Given that AE is 3 cm, EB is 2 cm, and CE is 6 cm, determine the length of ED.
+A: 1 cm
+B: 2 cm
+C: 3 cm
+D: 4 cm
+solution:
+For chords crossing inside a circle, \(AE \times EB = CE \times ED\).
+
+\(3 \times 2 = 6 \times ED\), so ED = 1 cm.
+
+(Check: both products are 6: \(3 \times 2 = 6\) and \(6 \times 1 = 6\).)
+
+=== 151
+chapter: Grammar
+subtopic: Sentence Grammar
+difficulty: MODERATE
+answer: A
+context:
+Read the passage and answer the questions:
+
+The annals of mountaineering history are adorned with figures whose daring transcended mere athleticism, embodying philosophical quests for transcendence against Earth's most formidable landscapes. Each mountaineer — whether treading the snows of Everest, the granite of Patagonia, or the arid heights of the Atlas Mountains — etched a distinct narrative of audacity and introspection.
+
+“Tenzing Norgay” and “Sir Edmund Hillary’s” epochal 1953 Everest ascent immortalized human perseverance, but figures such as “Reinhold Messner” redefined the boundaries further. Rejecting supplemental oxygen, Messner’s minimalist ethos emphasized purity over conquest, portraying mountains not as trophies but as sentient entities commanding reverence. Similarly, “Junko Tabei”, the first woman to summit Everest, symbolized the intersection of resilience and quiet defiance in an era resistant to female adventurers.
+
+The ethos of mountaineering diversified through the late 20th and early 21st centuries. Climbers like “Kilian Jornet”, blending ultra-marathon endurance with technical ascents, and “Nirmal Purja”, whose record-breaking summits shattered temporal assumptions, reveal a contemporary paradigm: mountains as arenas of rapid, almost transcendental athleticism. Meanwhile, indigenous climbers, long relegated to footnotes in expedition histories, increasingly assert their rightful place as stewards of sacred peaks.
+
+Thus, the saga of mountaineering resists reduction to mere feats of strength. It weaves a tapestry of cultures, philosophies, and personal odysseys — each ascent a dialectic between human fragility and the immutable majesty of the mountains.
+stem:
+In the sentence:
+"The annals of mountaineering history are adorned with figures whose daring transcended mere athleticism..."?
+
+**What is the grammatical role of the clause**
+"whose daring transcended mere athleticism"
+A: Adjective clause modifying "figures"
+B: Adverbial clause modifying "history"
+C: Noun clause acting as the subject
+D: Adjective phrase modifying "mountaineering"
+solution:
+The clause opens with the relative pronoun "whose" and describes the noun just before it, "figures" (which figures? those whose daring transcended athleticism). A relative clause describing a noun is an adjective clause. It is not adverbial (it does not modify a verb), not a noun clause (the subject of the sentence is "The annals"), and it is a clause with its own verb "transcended", not a phrase.
+
+=== 152
+chapter: Reading Comprehension
+subtopic: Word Meaning in Context
+difficulty: EASY
+answer: B
+context_from: 151
+stem:
+What is the meaning of the word **"epochal"** in the context:
+
+"Tenzing Norgay and Sir Edmund Hillary’s epochal 1953 Everest ascent..."
+A: Trivial
+B: Highly significant and historic
+C: Ordinary and recurrent
+D: Disastrous
+solution:
+"Epochal" means marking an epoch, that is, so important that it begins a new era. The first ascent of Everest in 1953, which "immortalized human perseverance", was highly significant and historic. "Trivial" and "ordinary" are the opposite, and nothing in the passage calls it a disaster.
+
+=== 153
+chapter: Reading Comprehension
+subtopic: Word Meaning in Context
+difficulty: MODERATE
+answer: C
+context_from: 151
+stem:
+What does the word **"dialectic"** most nearly imply in the phrase:
+
+"...each ascent a dialectic between human fragility and the immutable majesty of the mountains"?
+A: A silent observation
+B: A hostile confrontation
+C: A dialogue or interplay between opposing forces
+D: A scientific measurement
+solution:
+A "dialectic" is an exchange or tension between two opposing ideas or forces. Here the two sides are human fragility and the mountains' unchanging majesty, and each climb plays them against each other: an interplay of opposites. It is not silent, not simply hostile, and has nothing to do with measurement.
+
+=== 154
+chapter: Reading Comprehension
+subtopic: Main Idea, Author's View and Tone
+difficulty: EASY
+answer: C
+context_from: 151
+stem:
+Which of the following best summarizes the primary argument of the passage?
+A: Mountaineering is solely a test of physical endurance.
+B: Mountaineering history is dominated by Western adventurers.
+C: Mountaineering represents a confluence of physical challenge, cultural identity, and philosophical exploration.
+D: Technological advancements have made mountaineering effortless.
+solution:
+The passage concludes that mountaineering "resists reduction to mere feats of strength" and "weaves a tapestry of cultures, philosophies, and personal odysseys", and it opens with "philosophical quests". So it is a meeting of physical challenge, culture and philosophy. Option A is what the passage denies, B ignores Tenzing, Tabei, Purja and indigenous climbers, and D is never said.
+
+=== 155
+chapter: Reading Comprehension
+subtopic: Word Meaning in Context
+difficulty: EASY
+answer: B
+context_from: 151
+stem:
+Which word could best replace **"immutable"** in the phrase
+
+**"...the immutable majesty of the mountains..."**
+
+without significantly changing the meaning?
+A: Transient
+B: Unchanging
+C: Diminishing
+D: Fragile
+solution:
+"Immutable" means not able to change, so "unchanging". The mountains' lasting majesty is set against "human fragility". "Transient" and "diminishing" are near opposites, and "fragile" describes the humans, not the mountains.
+
+=== 156
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: B
+stem:
+Choose the correct one-word substitution for the blank in the sentence below.
+
+Despite the rise of digital art, Maya chose to specialize in _______, dedicating hours to perfecting each elegant stroke by hand.
+A: typography
+B: calligraphy
+C: cartography
+D: photography
+solution:
+"Calligraphy" is the art of beautiful handwriting, done stroke by stroke by hand. "Typography" is the arrangement of printed type, "cartography" is map making and "photography" uses a camera, so none is about hand-made strokes.
+
+=== 157
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: B
+stem:
+Choose the correct one-word substitution for the blank in the sentence below.
+
+Despite knowing the importance of the assignment, Rahul kept delaying it until the last minute — a clear case of _________.
+A: exaggeration
+B: procrastination
+C: temptation
+D: negotiation
+solution:
+Putting off a task again and again until the last moment is "procrastination". "Exaggeration" is overstating, "temptation" is a desire to do something, and "negotiation" is bargaining.
+
+=== 158
+chapter: Grammar
+subtopic: Articles: A, An and The
+difficulty: EASY
+answer: B
+stem:
+Fill in the blank with the appropriate article.
+
+Many experts argue that without ______ unequivocal global consensus, climate mitigation efforts will be severely undermined.
+A: a
+B: an
+C: the
+D: no article
+solution:
+"Consensus" here is used as a single, not yet existing agreement, so it takes the indefinite article. The next word "unequivocal" begins with a vowel sound ("un-"), so the article is "an": "without an unequivocal global consensus". "The" would point to a particular consensus already known, which is not meant.
+
+=== 159
+chapter: Grammar
+subtopic: Articles: A, An and The
+difficulty: MODERATE
+answer: C
+blind: D
+flawed: yes
+notice: Both "the law" and "law" with no article read well here; the answer shown is SSC's key.
+note: Judgement item: our blind answer D (no article, law as an abstract idea) and SSC's key C (the law, the body of law in force) both fit. SSC's key is adopted.
+stem:
+Fill in the blank with the appropriate article.
+
+Despite efforts to standardize practices, _____ law remains subject to cultural interpretation in many regions.
+A: a
+B: an
+C: the
+D: no article
+solution:
+SSC's key reads "law" as the body of law in force that the standardising efforts act on, which takes "the": "the law remains subject to cultural interpretation in many regions".
+
+Read as law in general, an abstract idea like "justice", it would take no article, which is why the question carries a note. "A law" would mean one particular statute, and "an" is wrong before a consonant sound. The answer is "the".
+
+=== 160
+chapter: Grammar
+subtopic: Phrasal Verbs with Prepositions and Particles
+difficulty: MODERATE
+answer: A
+stem:
+Improve the following sentence by replacing the underlined words with the correct phrasal verb.
+
+After months of training, she was ready \(\underline{\text{to go through}}\) the final exam.
+A: go in for
+B: go off
+C: went through
+D: go along
+solution:
+"Go in for" an examination means to take or sit it, which fits "ready to go in for the final exam". "Go off" means explode or leave, "go along" means proceed or agree, and "went through" is the wrong form after "to" (and "go through" means to experience or examine).
+
+=== 161
+chapter: Sentence Rearrangement
+subtopic: Ordering Sentences in a Paragraph
+difficulty: EASY
+answer: A
+stem:
+Which of the given options arranges the following sentences in the most logical sequence to form a meaningful paragraph?
+1. James Watson and Francis Crick, building on Rosalind Franklin’s X-ray diffraction images, proposed the model in 1953.
+2. Understanding DNA’s structure has led to developments in medicine, forensic science, and evolutionary research.
+3. Their findings demonstrated how DNA stores genetic information through base pairing.
+4. This discovery revolutionized biology, paving the way for advances in genetic engineering and biotechnology.
+5. The discovery of DNA’s double-helix structure was a major breakthrough in genetics.
+A: 5-1-3-4-2
+B: 2-4-3-1-5
+C: 3-1-4-2-5
+D: 1-2-4-3-5
+solution:
+Sentence 5 introduces the topic (the double helix). Sentence 1 says who proposed "the model" and when. Sentence 3 follows with "Their findings" (Watson and Crick's). Sentence 4 gives the effect ("This discovery revolutionized biology"), and sentence 2 closes with the wider uses today. So 5-1-3-4-2.
+
+=== 162
+chapter: Vocabulary
+subtopic: Synonyms
+difficulty: MODERATE
+answer: B
+stem:
+Select the most appropriate synonym of the given word: **DISPARAGING**
+A: Complimentary
+B: Belittling
+C: Flattering
+D: Kind
+solution:
+"Disparaging" means expressing a low opinion of someone, making them seem unimportant, so "belittling". "Complimentary", "flattering" and "kind" are all opposite in sense.
+
+=== 163
+chapter: Vocabulary
+subtopic: Synonyms
+difficulty: EASY
+answer: D
+stem:
+Select the most appropriate synonym of the given word: **ELUCIDATE**
+A: Confuse
+B: Darken
+C: Complicate
+D: Clarify
+solution:
+"Elucidate" means to make clear or explain, so "clarify". "Confuse", "darken" and "complicate" all mean the opposite.
+
+=== 164
+chapter: Vocabulary
+subtopic: Antonyms
+difficulty: EASY
+answer: C
+stem:
+Select the most appropriate antonym of the given word. **Tedious**
+A: Dull
+B: Boring
+C: Exciting
+D: Tiresome
+solution:
+"Tedious" means long, dull and tiring. Its opposite is "exciting". "Dull", "boring" and "tiresome" are synonyms of it.
+
+=== 165
+chapter: Vocabulary
+subtopic: Antonyms
+difficulty: EASY
+answer: D
+stem:
+Select the most appropriate antonym of the given word. **Covert**
+A: Secret
+B: Hidden
+C: Clandestine
+D: Overt
+solution:
+"Covert" means secret or concealed. Its opposite is "overt", done openly. "Secret", "hidden" and "clandestine" are synonyms.
+
+=== 166
+chapter: Vocabulary
+subtopic: Synonyms
+difficulty: MODERATE
+answer: D
+stem:
+Select the most appropriate synonym of the given word: **CAPITULATE**
+A: Defend
+B: Attack
+C: Resist
+D: Surrender
+solution:
+"Capitulate" means to give in or surrender, usually on agreed terms. "Defend", "attack" and "resist" all describe fighting on rather than giving up.
+
+=== 167
+chapter: Vocabulary
+subtopic: Synonyms
+difficulty: MODERATE
+answer: C
+stem:
+Select the most appropriate synonym of the given word: **EXCULPATE**
+A: Condemn
+B: Blame
+C: Exonerate
+D: Punish
+solution:
+"Exculpate" means to clear someone of blame or guilt, so "exonerate". "Condemn", "blame" and "punish" are the opposite of clearing someone (compare "culpable", guilty).
+
+=== 168
+chapter: Vocabulary
+subtopic: Antonyms
+difficulty: MODERATE
+answer: A
+stem:
+Select the most appropriate antonym of the given word. **Disparate**
+A: Alike
+B: Different
+C: Contrasting
+D: Dissimilar
+solution:
+"Disparate" means essentially different, not comparable. Its opposite is "alike". "Different", "contrasting" and "dissimilar" are synonyms.
+
+=== 169
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: MODERATE
+answer: B
+stem:
+Which of these is the **correct spelling** of a radical equality concept from Rawls?
+A: Egaliterianism
+B: Egalitarianism
+C: Egalatarianism
+D: Egalitairianism
+solution:
+The word comes from French "égal" (equal) + "-itarian": e-gal-i-tar-i-an-ism, spelt "Egalitarianism". The others misspell the middle: "-ter-" (A), "-lat-" (C) and "-tair-" (D).
+
+=== 170
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: A
+stem:
+Find the word that is **spelled correctly** and refers to an artistic viewpoint valuing beauty.
+A: Aesthetics
+B: Aestheticks
+C: Asthetic
+D: Atheistic
+solution:
+"Aesthetics" (the philosophy of beauty and taste) is spelt correctly. "Aestheticks" adds a "k", "Asthetic" drops the "e" after "A", and "atheistic" is a different word meaning not believing in God.
+
+=== 171
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: B
+stem:
+Spot the **correct spelling** of cross-species organ grafting.
+A: Xenotransplantion
+B: Xenotransplantation
+C: Zentransplantation
+D: Xenotransplantasion
+solution:
+"Xeno-" (foreign) + "transplantation" gives "Xenotransplantation", the transplanting of organs from one species to another. A drops the "-ta-", C misspells the prefix, and D writes "-sion" for "-tion".
+
+=== 172
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: MODERATE
+answer: A
+stem:
+Choose the correct **one-word substitute** for: 'One who uses long or obscure words.'
+A: Sesquipedalian
+B: Garrulous
+C: Sophist
+D: Verbose
+solution:
+"Sesquipedalian" (literally "a foot and a half long") describes a person given to using long words. "Garrulous" means excessively talkative, a "sophist" uses clever but false arguments, and "verbose" means using more words than needed, which is about quantity, not long or obscure words.
+
+=== 173
+chapter: Cloze Test
+subtopic: Collocations and the Precise Word
+difficulty: HARD
+answer: A
+context:
+**In the given passage, some words have been deleted. Read the passage intently and choose the most appropriate option to fill in each blank:**
+In the archipelago of epistemic fracture, where coherence is a relic and continuity a performative illusion, cognition unfolds not through linear causality but via stochastic pulses of informational detritus. Within this disjunctive matrix, agency is less a property of autonomous will than a side effect of algorithmic interpellation. Every action is **(1)**____ not as a result of volition but as an emergent behavior—calculated, inferred, and subtly modulated by systems of predictive design. Identity, in this terrain, ceases to be ontological and becomes computational: a fluid sequence of statistical probabilities encoded and re-encoded through bio-digital feedback loops. The notion of authorship is retrofitted, no longer a site of expression but a **(2)**____ node in a decentralized economy of semiotic production. Language, once the principal vessel of intentionality, now functions as a carrier signal for behavioral cues—optimized not for meaning but for engagement velocity. In this regime, dissent is not censored but **(3)**____—subtly realigned to serve the centripetal logics of monetized attention. The archive is not a memory but a battleground: past and present re-stitched according to the dictates of data retention, compliance heuristics, and platformed ontology. What remains is not truth but latency: the delay between perception and its **(4)**____ by computational governance. Thus, power no longer manifests through prohibition, but through calibration—redefining the limits of thinkability itself. In this techno-psychic schema, liberation is not absent but **(5)**____: detectable only in its strategic simulation.
+stem:
+What should come in the place of blank number **(1)**?
+A: instantiated
+B: rationalized
+C: evoked
+D: repressed
+solution:
+The blank needs a verb for how an action comes into being: "not as a result of volition but as an emergent behavior". "Instantiated" means brought into existence as a concrete instance, which fits the computational language of the passage (calculated, inferred, modulated by systems). "Rationalized" (justified after the fact) and "evoked" (called up, as a feeling) do not describe an action arising, and "repressed" would mean the action is held back, which contradicts its "emerging".
+
+=== 174
+chapter: Cloze Test
+subtopic: Word Partners and the Precise Word
+difficulty: HARD
+answer: A
+context_from: 173
+stem:
+What should come in the place of blank number **(2)**?
+A: transactional
+B: reflexive
+C: proprietary
+D: deterministic
+solution:
+Authorship is "no longer a site of expression" but a node "in a decentralized economy of semiotic production". In an economy, a node is a point where exchanges pass through, so "transactional node" completes the contrast with self-expression. "Proprietary" (privately owned) clashes with "decentralized", while "reflexive" and "deterministic" do not tie to the economy image.
+
+=== 175
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: MODERATE
+answer: A
+context_from: 173
+stem:
+What should come in the place of blank number **(3)**?
+A: co-opted
+B: inverted
+C: obfuscated
+D: delegated
+solution:
+The dash explains the blank: dissent is "subtly realigned to serve the centripetal logics of monetized attention". To "co-opt" is to absorb an opposing force and turn it to one's own use, which is exactly that. "Inverted" (turned upside down), "obfuscated" (made unclear) and "delegated" (handed to someone else) do not mean being made to serve the system.
+
+=== 176
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: HARD
+answer: B
+context_from: 173
+stem:
+What should come in the place of blank number **(4)**?
+A: ratification
+B: modulation
+C: gratification
+D: reconciliation
+solution:
+The passage says power now works "through calibration", and earlier that behaviour is "subtly modulated by systems of predictive design". The gap between perceiving something and having that perception adjusted by computational governance is its "modulation". "Ratification" is formal approval, "gratification" is pleasure, and "reconciliation" is settling a conflict; none of these describes systems quietly reshaping perception.
+
+=== 177
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: HARD
+answer: D
+blind: C
+flawed: yes
+notice: Both "phantomized" and "emulated" can complete the last sentence; the answer shown is SSC's key.
+note: Judgement item: our blind answer C (emulated, imitated) and SSC's key D (phantomized, reduced to a phantom) both fit "detectable only in its strategic simulation". SSC's key is adopted.
+context_from: 173
+stem:
+What should come in the place of blank number **(5)**?
+A: relegated
+B: aestheticized
+C: emulated
+D: phantomized
+solution:
+The words after the colon explain the blank: liberation is "detectable only in its strategic simulation", present only as an appearance, like a phantom. SSC's key is "phantomized", made into a phantom of itself. "Emulated" (imitated) also fits the idea of simulation, which is why the question carries a note. "Relegated" means pushed to a lower place, and "aestheticized" means turned into something to admire for its look.
+
+=== 178
+chapter: Vocabulary
+subtopic: Word Forms and Parts of Speech
+difficulty: EASY
+answer: A
+stem:
+Select the correct option:
+They treated the interim guidelines as ___, pending formal ratification.
+A: provisional
+B: provisionally
+C: provisioned
+D: provision
+solution:
+"Treat something as" is followed by an adjective (or noun phrase) describing it: the guidelines were treated as provisional, that is, temporary until ratified. "Provisionally" is an adverb, "provisioned" means supplied with food or stores, and "provision" (a noun) would need an article and does not mean temporary.
+
+=== 179
+chapter: Grammar
+subtopic: Prepositional Idioms and Fixed Phrases
+difficulty: EASY
+answer: A
+stem:
+Select the correct option:
+Her lecture ranged ___ quantum mechanics to cognitive linguistics.
+A: from
+B: between
+C: among
+D: over
+solution:
+The fixed pattern is "range from X to Y". "Between" pairs with "and", "among" is used for more than two things, and "over" does not pair with "to" here.
+
+=== 180
+chapter: Spotting Errors
+subtopic: Articles, Adjectives and Comparison
+difficulty: MODERATE
+answer: C
+stem:
+Find the part of the sentence that contains an error:
+The economist's analysis (1)/ was replete with insights (2)/ yet lacked the adequate context (3)/ for policy formulation. (4)/
+A: (1)
+B: (2)
+C: (3)
+D: (4)
+solution:
+"Context" here is general and not a particular context already mentioned, so it takes no definite article: "yet lacked adequate context". The other parts are correct ("replete with" is the right preposition).
+
+=== 181
+chapter: Spotting Errors
+subtopic: Articles, Adjectives and Comparison
+difficulty: EASY
+answer: B
+stem:
+Find the part of the sentence that contains an error:
+In response to an alarming spike in fraudulent transactions, (1)/ the bank introduced mechanism (2)/ to verify customer identities using two-factor authentication, (3)/ biometric checks, and behavioural patterns. (4)
+A: (1)
+B: (2)
+C: (3)
+D: (4)
+solution:
+"Mechanism" is a singular countable noun, so it needs an article: "the bank introduced a mechanism". The other parts are correct.
+
+=== 182
+chapter: Spotting Errors
+subtopic: Articles, Adjectives and Comparison
+difficulty: HARD
+answer: B
+stem:
+Find the part of the sentence that contains an error:
+Among all the diplomatic envoys stationed in the conflict zone, (1)/ she is undoubtedly more trusted and relied upon (2)/ by both factions of the civil war (3)/ than any other ambassador. (4)
+A: (1)
+B: (2)
+C: (3)
+D: (4)
+solution:
+"Among all the diplomatic envoys" picks one person out of a whole group, which calls for the superlative: "she is undoubtedly the most trusted and relied upon". The comparative "more trusted" clashes with that frame. Parts (1) and (3) are correct, and part (4) only repeats the comparison.
+
+=== 183
+chapter: Grammar
+subtopic: Active and Passive Voice
+difficulty: EASY
+answer: A
+stem:
+Change the following from active to passive:
+Did they invite you to the party?
+A: Were you invited to the party by them?
+B: Are you invited to the party by them?
+C: Have you been invited to the party by them?
+D: Had you been invited to the party by them?
+solution:
+"Did ... invite" is simple past, whose passive question is "Was/Were + subject + past participle". The object "you" becomes the subject: "Were you invited to the party by them?" B is present, C present perfect and D past perfect.
+
+=== 184
+chapter: Grammar
+subtopic: Active and Passive Voice
+difficulty: MODERATE
+answer: D
+stem:
+Change the following from active to passive:
+Will investors have perceived the subtle shift in policy?
+A: Will the subtle shift in policy be perceived by investors?
+B: Will the subtle shift in policy have perceived by investors?
+C: Will the subtle shift in policy has been perceived by investors?
+D: Will the subtle shift in policy have been perceived by investors?
+solution:
+"Will have perceived" is future perfect; its passive is "will have been + past participle": "Will the subtle shift in policy have been perceived by investors?" A is simple future, B lacks "been", and C uses "has" after "will".
+
+=== 185
+chapter: Grammar
+subtopic: Active and Passive Voice
+difficulty: MODERATE
+answer: D
+stem:
+Change the following from active to passive:
+No one could have anticipated such a diplomatic backlash.
+A: Such a diplomatic backlash could not be anticipated.
+B: Such a diplomatic backlash have not been anticipated.
+C: Such a diplomatic backlash was unanticipated.
+D: Such a diplomatic backlash could not have been anticipated.
+solution:
+"Could have anticipated" becomes "could have been anticipated" in the passive, and the negative "no one" becomes "not" with the doer dropped: "Such a diplomatic backlash could not have been anticipated." A loses "have", B drops the modal and has the wrong verb number, and C changes the verb altogether.
+
+=== 186
+chapter: Vocabulary
+subtopic: Homophones and Word Meaning
+difficulty: HARD
+answer: C
+flawed: yes
+note: "Patera" has no botanical meaning (it is a shallow libation dish, also a round ornament in architecture), so option C uses an invented sense; it is the only sentence that does not use the dish meaning.
+notice: "Patera" has no meaning connected with leaves, so no option shows a true homonym; C is the only sentence that does not use the libation-dish meaning.
+stem:
+Select the sentence containing the homonym of the highlighted word:
+The ancient **patera** was discovered near the temple ruins.
+A: The curator displayed a silver patera from Hellenistic Syria.
+B: The historian cited a patera in a Latin votive inscription.
+C: The botanist studied the shape of the leaf’s patera.
+D: The archaeologist cataloged a bronze patera for libation.
+solution:
+A homonym is the same word used with a different meaning. In the given sentence a "patera" is a shallow dish used in ancient times for pouring offerings (libations). Options A, B and D all use that same meaning (a silver dish, one named in a votive inscription, a bronze one for libation). Only C uses "patera" for something else, a part of a leaf, so it is the intended answer, even though the word has no such meaning in botany.
+
+=== 187
+chapter: Vocabulary
+subtopic: Homophones and Word Meaning
+difficulty: HARD
+answer: B
+stem:
+Select the sentence containing the homonym of the highlighted word:
+The cleric wore a **pallium** for the festival.
+A: The theologian interpreted the pallium as a symbol of grace.
+B: The physician noted a pallium over the patient’s brain.
+C: The vestment included the ancient pallium from Rome.
+D: The bishop draped the pallium ceremonially.
+solution:
+In the given sentence a "pallium" is a vestment, a band of wool worn over the shoulders by a pope or archbishop. In anatomy "pallium" also names the mantle of grey matter covering the brain (the cerebral cortex), which is the meaning in B. A, C and D all use the vestment meaning.
+
+=== 188
+chapter: Vocabulary
+subtopic: Homophones and Word Meaning
+difficulty: HARD
+answer: B
+stem:
+Select the sentence containing the homonym of the highlighted word:
+The bishop outlined the duties of a **prebendary**.
+A: The prebendary read the Epistle during Sunday Mass.
+B: The accountant filed taxes for a prebendary trust fund.
+C: The canon and prebendary sat near the choir.
+D: The cathedral housed relics named after a prebendary.
+solution:
+In the given sentence a "prebendary" is a person: a canon of a cathedral who receives a prebend (a share of its income). A, C and D all use that meaning (a prebendary reading the Epistle, sitting near the choir, giving his name to relics). In B "prebendary" is an adjective, "relating to a prebend", describing a trust fund, a different meaning of the same word.
+
+=== 189
+chapter: Grammar
+subtopic: Active and Passive Voice
+difficulty: EASY
+answer: C
+stem:
+Convert the sentence provided below from its passive voice structure to an active voice structure:
+A new strategy had been devised by the marketing team to increase sales.
+A: The marketing team has devised a new strategy to increase sales.
+B: The marketing team devises a new strategy to increase sales.
+C: The marketing team had devised a new strategy to increase sales.
+D: The marketing team was devising a new strategy to increase sales.
+solution:
+"Had been devised" is past perfect passive, so the active keeps the past perfect: "The marketing team had devised a new strategy to increase sales." A is present perfect, B simple present and D past continuous.
+
+=== 190
+chapter: Grammar
+subtopic: Active and Passive Voice
+difficulty: EASY
+answer: C
+stem:
+Convert the sentence provided below from its passive voice structure to an active voice structure:
+Has the proposal been reviewed by the advisory board yet?
+A: Is the advisory board reviewing the proposal?
+B: Did the advisory board review the proposal already?
+C: Has the advisory board reviewed the proposal yet?
+D: The proposal is under review by the advisory board.
+solution:
+"Has ... been reviewed" is present perfect passive; the active keeps the present perfect and the question form: "Has the advisory board reviewed the proposal yet?" A is present continuous, B simple past, and D is not a question and not active.
+
+=== 191
+chapter: Spotting Errors
+subtopic: Tenses and Verb Forms
+difficulty: EASY
+answer: C
+stem:
+Choose the most suitable option to replace the highlighted part of the sentence:
+I ***have seen him yesterday***.
+A: seen him yesterday
+B: had seen him yesterday
+C: saw him yesterday
+D: have saw him yesterday
+solution:
+A definite past time such as "yesterday" takes the simple past, not the present perfect: "I saw him yesterday." "I seen" is wrong, "had seen" needs a second, later past event, and "have saw" mixes the auxiliary with the past form.
+
+=== 192
+chapter: Spotting Errors
+subtopic: Agreement and Pronouns
+difficulty: EASY
+answer: A
+stem:
+Choose the most suitable option to replace the highlighted part of the sentence:
+The committee ***have submitted its final report***.
+A: has submitted its final report
+B: have submitted their final reports
+C: has submitted their final report
+D: had submitted its final report
+solution:
+The committee acts here as one body (it submits one report, "its" report), so the verb is singular: "has submitted its final report". B treats it as plural and changes "report" to "reports", C mixes singular "has" with plural "their", and D changes the tense without reason.
+
+=== 193
+chapter: Spotting Errors
+subtopic: Prepositions, Word Choice and Idioms
+difficulty: EASY
+answer: C
+stem:
+Choose the most suitable option to replace the highlighted part of the sentence:
+I prefer tea ***than coffee***.
+A: over coffee
+B: more than coffee
+C: to coffee
+D: instead of coffee
+solution:
+"Prefer" is followed by "to" when comparing two things: "I prefer tea to coffee." "Than" goes with comparatives such as "rather" or "more", not with "prefer"; "over" is informal, and the standard pattern is "prefer X to Y".
+
+=== 194
+chapter: Grammar
+subtopic: Direct and Indirect Speech
+difficulty: EASY
+answer: B
+stem:
+A sentence is provided in indirect speech. From the four given options, choose the one that most accurately conveys the sentence in its corresponding direct speech.
+He said that he would be moving to the capital soon.
+A: He said, "I would move to the capital soon."
+B: He said, "I will be moving to the capital soon."
+C: He said, "I shall move to the capital soon."
+D: He said, "I was moving to the capital soon."
+solution:
+In reported speech "will be moving" (future continuous) becomes "would be moving", so going back to direct speech gives "will be moving", with "he" becoming "I": He said, "I will be moving to the capital soon." A and C lose the continuous form, and D is past continuous.
+
+=== 195
+chapter: Grammar
+subtopic: Direct and Indirect Speech
+difficulty: MODERATE
+answer: C
+stem:
+A sentence is provided in indirect speech. From the four given options, choose the one that most accurately conveys the sentence in its corresponding direct speech.
+The philosopher remarked that, had the syllogism been valid, the paradox would not have arisen.
+A: The philosopher said, "If the syllogism is valid, the paradox does not arise."
+B: The philosopher said, "Had the syllogism been valid, the paradox would not arise."
+C: The philosopher said, "Had the syllogism been valid, the paradox would not have arisen."
+D: The philosopher said, "If syllogism is valid, paradox should not arise."
+solution:
+A third conditional (an unreal past condition, "had ... been ..., would not have arisen") does not change its tenses in reported speech, so the direct speech keeps the same words: "Had the syllogism been valid, the paradox would not have arisen." A and D turn it into a present condition, and B mixes the past condition with "would not arise".
+
+=== 196
+chapter: Grammar
+subtopic: Direct and Indirect Speech
+difficulty: EASY
+answer: B
+stem:
+A sentence is provided in direct speech. From the four given options, choose the one that most accurately conveys the sentence in its corresponding indirect speech.
+Tom said, “I have been working all day.”
+A: Tom said he had worked all day.
+B: Tom said he had been working all day.
+C: Tom said he has been working all day.
+D: Tom said he was working all day.
+solution:
+With a past reporting verb, the present perfect continuous "have been working" moves back to the past perfect continuous "had been working", and "I" becomes "he": Tom said he had been working all day. A drops the continuous form, C keeps the present tense, and D is past continuous.
+
+=== 197
+chapter: Grammar
+subtopic: Direct and Indirect Speech
+difficulty: EASY
+answer: C
+stem:
+A sentence is provided in direct speech. From the four given options, choose the one that most accurately conveys the sentence in its corresponding indirect speech.
+He said to me, “Where have you been all this while?”
+A: He asked me where had I been all that while.
+B: He asked me where I have been all that while.
+C: He asked me where I had been all that while.
+D: He asked where I was being all this while.
+solution:
+A reported question takes statement word order (subject before verb), "said to" becomes "asked", "have been" becomes "had been", "you" becomes "I" and "this" becomes "that": He asked me where I had been all that while. A keeps question order, B keeps the present perfect, and D changes the verb and keeps "this".
+
+=== 198
+chapter: Grammar
+subtopic: Direct and Indirect Speech
+difficulty: MODERATE
+answer: A
+stem:
+A sentence is provided in direct speech. From the four given options, choose the one that most accurately conveys the sentence in its corresponding indirect speech.
+He said, “I wish I had not wasted those years.”
+A: He said he wished he had not wasted those years.
+B: He said he wished not to waste those years.
+C: He said that he did not waste those years.
+D: He wished that he would not waste those years.
+solution:
+"I wish" becomes "he wished", and the past perfect after "wish" ("had not wasted", a regret about the past) cannot move back further, so it stays: He said he wished he had not wasted those years. B and D turn the regret into a wish about the future, and C loses the wish altogether.
+
+=== 199
+chapter: Sentence Rearrangement
+subtopic: Ordering Sentences in a Paragraph
+difficulty: EASY
+answer: C
+stem:
+Rearrange the following sentences in correct order to make a logical passage.
+1. The employee training program is created to improve skills.
+2. Feedback is gathered after training to assess effectiveness.
+3. The program is implemented and employees begin their training.
+4. Adjustments are made based on the feedback collected.
+A: 1-4-2-3
+B: 3-2-4-1
+C: 1-3-2-4
+D: 2-1-3-4
+solution:
+The steps follow their natural order: the program is created (1), then put into practice (3), feedback is gathered "after training" (2), and adjustments are made "based on the feedback collected" (4). So 1-3-2-4.
+
+=== 200
+chapter: Sentence Rearrangement
+subtopic: Ordering Sentences in a Paragraph
+difficulty: EASY
+answer: C
+stem:
+Rearrange the following sentences in correct order to make a logical passage.
+1. This can lead to environmental degradation.
+2. Rapid industrialization often brings economic growth.
+3. However, it frequently comes at a significant cost to the environment.
+4. Strict regulations are needed to mitigate these negative impacts.
+A: 2-1-3-4
+B: 3-4-2-1
+C: 2-3-1-4
+D: 2-4-1-3
+solution:
+Sentence 2 introduces the topic (industrialization brings growth). "However, it ..." (3) gives the downside, "This can lead to environmental degradation" (1) explains that cost, and 4 offers the remedy for "these negative impacts". So 2-3-1-4.
