@@ -26,11 +26,11 @@ SSC's key is plainly wrong ours is kept with a notice. Mocks: `SSC_CHSL_T1_PAPER
 **SSC CPO Paper I (2026-11-14): its own exam "SSC CPO" (`ssc-cpo`), stage CPO in the "SSC" family.
 16 shifts: 2024 (27-29 Jun, 8 shifts, PW's TCS prints, `cpo_2024`) and 2025 (9-12 Dec, 8 shifts,
 sscstudy's browser prints of the challenge-module sheet, `cpo_2025`, read with `--page-frame`),
-3,200 transcribed, 3,195 rows PRIVATE (5 are word-for-word repeats, repeats.json). Same lane,
+3,200 transcribed, 3,195 rows PUBLIC since 2026-11-14 (5 are word-for-word repeats, repeats.json). Same lane,
 `Day.exam = "cpo"`, ids `cpo-t1-...`; CPO prints 50 each of Reasoning, General Knowledge, Quant,
 English (`CPO_LAYOUT`). Blind agreement with SSC's key 95-100% per shift. Mocks: `SSC_CPO_P1_PAPER`
-(200 q, 2 h, +1/-0.25), one per shift, opt-in until the rows are PUBLIC:
-`npx tsx scripts/mocks/build.ts --paper=ssc-cpo --apply`. CPO 2026 Paper I is held 20-28 Nov 2026.**
+(200 q, 2 h, +1/-0.25), one per shift, 16 built as drafts 2026-11-14; publish after the deploy:
+`npx tsx scripts/mocks/build.ts --paper=ssc-cpo --apply --publish`. CPO 2026 Paper I is held 20-28 Nov 2026.**
 
 **Flawed questions are PUBLIC with a notice and ride as grace.** A `flawed: yes` block (defective as
 printed, or a key we dispute) must carry a `notice:` line for students (build.ts refuses one

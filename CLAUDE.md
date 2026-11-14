@@ -47,7 +47,7 @@ Free, public past-year-question paper builder for Indian entrance exams. Anyone 
 
 **SSC CGL Tier II** (`ssc-cgl-tier-2`, graduate, mocks) — PUBLIC since 2026-10-17: Paper 1 of every CGL cycle 2019-2025, 12 sittings, 1,600 q (2 held PRIVATE: washed-out count-the-squares figures), its own exam row with a 12th subject, Computer Knowledge. CGL 2019-2021 were Quantitative Abilities alone (100 q); from CGL 2022, five modules numbered 1-150. CGL 2025 is a SCAN with no text layer at all: `raster*.py/ts` read its key from tick pixels and cut its figures from the page. Blind 1,576/1,600 against SSC's key (README "Tier II"). Mocks: two per sitting, Sections I and II ranked (130 q, +3/-1) and Computer Knowledge apart (qualifying), MOCKS.md. Same lane, README "Tier II".
 
-**SSC CHSL** (`ssc-chsl`), **SSC CPO** (`ssc-cpo`): graduate, mocks, family "SSC". CHSL Tier I 2024-25, 2,385 q PUBLIC 11-13; CPO Paper I 2024-25, 3,195 q PRIVATE 11-14.
+**SSC CHSL** (`ssc-chsl`), **SSC CPO** (`ssc-cpo`): graduate, mocks, family "SSC". CHSL Tier I 2024-25, 2,385 q PUBLIC 11-13; CPO Paper I 2024-25, 3,195 q PUBLIC 11-14.
 
 A separate `question_kind` axis (`pyq` | `practice`) splits the past-year corpus from the supplementary practice bank *within* an exam — see the Multi-tenancy section below.
 
