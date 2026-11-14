@@ -68,3 +68,27 @@ npx tsx scripts/capf/commit.ts <year> [--apply]    # 9. commit PRIVATE
 
 The key's read stays OUTSIDE the repo until both passes are written, so no
 solver can see it; then it is copied to `data/<year>.key.json`.
+
+## Status (2026-11-14)
+
+**All nine papers, 2018-2026, are committed PRIVATE: 1,125 rows.** Not yet
+public: no EXAM_REGISTRY entry, no mocks.
+
+**The 2026 pilot, measured against UPSC's provisional key:** each blind pass
+122/124 (98.4%), HIGH confidence 104/104 and 106/106. The passes agreed on all
+125 and still shared both misses (Q5 LOW, Q101 MED with the key's answer as the
+named runner-up), so agreement alone does not catch a shared error. Both passes
+independently flagged Q41 as defective, and UPSC dropped it.
+
+**2018-2025 (no key):** two passes per paper agreed on 98.4-100%; every
+disagreement and every agreed answer below HIGH (12-39 per paper) went to a
+hand check, recorded in `data/<year>.adjudicated.json`:
+- `confirmed` rows say "checked by hand" on the row; `verified: false` rows
+  (looked at, fact not confirmable) say only "agreed".
+- 4 agreed answers were overruled by hand (2025 Q7, 2023 Q110 among them).
+- 21 items defective as printed (two right options, none right, misprint)
+  carry a **Note** above the solution and grace in mocks (`flawed.json`).
+
+**Hand-check rulings in a keyless year can be wrong.** If UPSC publishes a key
+for any of these years, add it to `config.ts` and re-score with keycheck: that
+is the only way to measure these papers.
