@@ -77,6 +77,7 @@ import {
   UPSC_CSAT_PAPER,
   SSC_CGL_T1_PAPER,
   SSC_CHSL_T1_PAPER,
+  SSC_CPO_P1_PAPER,
   SSC_CGL_T2_PAPER,
   SSC_CGL_T2_COMPUTER_PAPER,
   SSC_CGL_T2_QUANT_PAPER,
@@ -118,7 +119,7 @@ import { deriveMainsSittings, mainsBlueprint } from "./mpscMainsSittings";
 import { PAPERS as MPSC_MAINS_PAPERS } from "../mpsc-mains/config";
 import { deriveUpscSittings } from "./upscSittings";
 import { PAPERS as UPSC_PAPERS } from "../upsc/config";
-import { chslSittings, sscSittings, sscT2Sittings, t2Rows, withHeld } from "./sscSittings";
+import { chslSittings, cpoSittings, sscSittings, sscT2Sittings, t2Rows, withHeld, type ChslSitting } from "./sscSittings";
 import { spiSittings } from "./spiSittings";
 import { imatSittings } from "./imatSittings";
 import { uceedSittings } from "./uceedSittings";
@@ -884,9 +885,18 @@ async function buildSscT2(db: SupabaseClient, run: RunState): Promise<void> {
  * rides as grace; a sitting with HELD questions is built against its own counts (withHeld).
  */
 async function buildChsl(db: SupabaseClient, run: RunState): Promise<void> {
-  for (const s of chslSittings()) {
+  await buildSectioned(db, SSC_CHSL_T1_PAPER, chslSittings(), run);
+}
+
+/** SSC CPO Paper I (sscSittings.ts cpoSittings): the same per-shift build as CHSL. */
+async function buildCpo(db: SupabaseClient, run: RunState): Promise<void> {
+  await buildSectioned(db, SSC_CPO_P1_PAPER, cpoSittings(), run);
+}
+
+async function buildSectioned(db: SupabaseClient, blueprint: MockPaperBlueprint, sittings: ChslSitting[], run: RunState): Promise<void> {
+  for (const s of sittings) {
     const grace = new Set(s.graceNumbers);
-    await buildFromSourceFiles(db, withHeld(SSC_CHSL_T1_PAPER, s.heldSubjects), [
+    await buildFromSourceFiles(db, withHeld(blueprint, s.heldSubjects), [
       {
         key: s.key,
         sourceFile: s.sourceFile,
@@ -963,9 +973,11 @@ async function main() {
   const runClat = paperFilter === "clat";
   // Opt-in: RRB NTPC (scripts/rrb-ntpc/README.md).
   const runRrbNtpc = paperFilter === "rrb-ntpc";
-  if (paperFilter && !runUceed && !runIat && !runUgcNet && !runClat && !runRrbNtpc && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runChsl && !runSpi && !runImat && !runMpscMains) {
+  // Opt-in: SSC CPO rows are PRIVATE until the owner OKs them (scripts/ssc-cgl/README.md).
+  const runCpo = paperFilter === "ssc-cpo";
+  if (paperFilter && !runUceed && !runIat && !runUgcNet && !runClat && !runRrbNtpc && !runCpo && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runChsl && !runSpi && !runImat && !runMpscMains) {
     throw new Error(
-      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, ssc-chsl, spi, imat, mpsc-mains, uceed, iat, ugc-net, clat, rrb-ntpc)`
+      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, ssc-chsl, ssc-cpo, spi, imat, mpsc-mains, uceed, iat, ugc-net, clat, rrb-ntpc)`
     );
   }
 
@@ -1035,6 +1047,7 @@ async function main() {
   if (runSsc) await buildFromSourceFiles(db, SSC_CGL_T1_PAPER, sscCglSittings(), run, "sscSittings.ts");
   if (runSscT2) await buildSscT2(db, run);
   if (runChsl) await buildChsl(db, run);
+  if (runCpo) await buildCpo(db, run);
   if (runSpi) await buildFromSourceFiles(db, SPI_PAPER, spiMockSittings(), run, "spiSittings.ts");
   if (runImat) await buildFromSourceFiles(db, IMAT_PAPER, imatMockSittings(), run, "imatSittings.ts");
   if (runMpscMains) await buildMpscMains(db, run);

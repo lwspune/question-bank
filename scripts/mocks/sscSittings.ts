@@ -230,7 +230,56 @@ export type ChslSitting = {
   overrides: SscOverride[];
 };
 
-const CHSL_SUBJECT_AT = ["English", "Reasoning", "Quantitative Aptitude"];
+/**
+ * One mock per transcribed shift of an SSC exam whose paper prints fixed blocks of `size`
+ * questions in a set subject order. `subjectAt[i]` names block i's bank subject; a null is
+ * General Awareness, whose subject the transcript block carries itself.
+ */
+type SectionedExam = { dayPrefix: string; slugPrefix: string; titlePrefix: string; size: number; subjectAt: (string | null)[] };
+
+function deriveSectionedSittings(
+  exam: SectionedExam,
+  shifts: Record<string, Shift>,
+  transcripts: Record<string, TranscriptQuestion[]>,
+  held: Record<string, number[]>,
+  repeats: Record<string, Repeat[]>
+): ChslSitting[] {
+  const subjectOf = (n: number, q: TranscriptQuestion) => exam.subjectAt[Math.floor((n - 1) / exam.size)] ?? q.subject!;
+  return Object.entries(shifts)
+    .filter(([id, s]) => transcripts[id] && s.day.startsWith(exam.dayPrefix))
+    .map(([id, s]) => {
+      const blocks = transcripts[id];
+      const byNumber = new Map(blocks.map((q) => [q.number, q]));
+      const heldSubjects = (held[id] ?? []).map((n) => {
+        const q = byNumber.get(n);
+        if (!q) throw new Error(`${id}: HELD names Q${n}, which its transcript does not hold`);
+        return subjectOf(n, q);
+      });
+      const overrides = (repeats[id] ?? []).map((r) => {
+        const q = byNumber.get(r.number);
+        if (!q) throw new Error(`${id}: repeats.json names Q${r.number}, which its transcript does not hold`);
+        return { questionNumber: r.number, questionId: r.questionId, subjectName: subjectOf(r.number, q), answer: q.answer };
+      });
+      return {
+        key: id,
+        sourceFile: s.sourceFile,
+        year: s.pyqYear,
+        slug: `${exam.slugPrefix}${id.slice(exam.dayPrefix.length)}`,
+        title: `${exam.titlePrefix} ${s.pyqNote}`,
+        graceNumbers: blocks.filter((q) => q.flawed).map((q) => q.number),
+        heldSubjects,
+        overrides,
+      };
+    });
+}
+
+const CHSL: SectionedExam = {
+  dayPrefix: "chsl-t1-",
+  slugPrefix: "ssc-chsl-",
+  titlePrefix: "SSC CHSL",
+  size: 25,
+  subjectAt: ["English", "Reasoning", "Quantitative Aptitude", null],
+};
 
 export function deriveChslSittings(
   shifts: Record<string, Shift>,
@@ -238,33 +287,40 @@ export function deriveChslSittings(
   held: Record<string, number[]>,
   repeats: Record<string, Repeat[]> = {}
 ): ChslSitting[] {
-  return Object.entries(shifts)
-    .filter(([id, s]) => transcripts[id] && s.day.startsWith("chsl-t1-"))
-    .map(([id, s]) => {
-      const blocks = transcripts[id];
-      const byNumber = new Map(blocks.map((q) => [q.number, q]));
-      const heldSubjects = (held[id] ?? []).map((n) => {
-        const q = byNumber.get(n);
-        if (!q) throw new Error(`${id}: HELD names Q${n}, which its transcript does not hold`);
-        return CHSL_SUBJECT_AT[Math.floor((n - 1) / 25)] ?? q.subject!;
-      });
-      const overrides = (repeats[id] ?? []).map((r) => {
-        const q = byNumber.get(r.number);
-        if (!q) throw new Error(`${id}: repeats.json names Q${r.number}, which its transcript does not hold`);
-        const subjectName = CHSL_SUBJECT_AT[Math.floor((r.number - 1) / 25)] ?? q.subject!;
-        return { questionNumber: r.number, questionId: r.questionId, subjectName, answer: q.answer };
-      });
-      return {
-        key: id,
-        sourceFile: s.sourceFile,
-        year: s.pyqYear,
-        slug: `ssc-chsl-${id.slice("chsl-t1-".length)}`,
-        title: `SSC CHSL ${s.pyqNote}`,
-        graceNumbers: blocks.filter((q) => q.flawed).map((q) => q.number),
-        heldSubjects,
-        overrides,
-      };
-    });
+  return deriveSectionedSittings(CHSL, shifts, transcripts, held, repeats);
+}
+
+/**
+ * SSC CPO Paper I sittings (2026-11-14): one mock per transcribed `cpo-` shift, against
+ * SSC_CPO_P1_PAPER. CPO prints 1-50 Reasoning, 51-100 General Knowledge, 101-150 Quant,
+ * 151-200 English; flawed questions ride as grace, as in CHSL.
+ */
+const CPO: SectionedExam = {
+  dayPrefix: "cpo-t1-",
+  slugPrefix: "ssc-cpo-",
+  titlePrefix: "SSC CPO",
+  size: 50,
+  subjectAt: ["Reasoning", null, "Quantitative Aptitude", "English"],
+};
+
+export function deriveCpoSittings(
+  shifts: Record<string, Shift>,
+  transcripts: Record<string, TranscriptQuestion[]>,
+  held: Record<string, number[]>,
+  repeats: Record<string, Repeat[]> = {}
+): ChslSitting[] {
+  return deriveSectionedSittings(CPO, shifts, transcripts, held, repeats);
+}
+
+/** The live registry: every committed CPO shift, read from its transcript and repeats.json. */
+export function cpoSittings(): ChslSitting[] {
+  const transcripts: Record<string, TranscriptQuestion[]> = {};
+  for (const [id, s] of Object.entries(SHIFTS)) {
+    const f = join(TRANSCRIPTS, `${id}.txt`);
+    if (s.day.startsWith("cpo-t1-") && existsSync(f)) transcripts[id] = parseTranscript(readFileSync(f, "utf8"));
+  }
+  const repeats: Record<string, Repeat[]> = JSON.parse(readFileSync(join(TRANSCRIPTS, "..", "repeats.json"), "utf8"));
+  return deriveCpoSittings(SHIFTS, transcripts, HELD, repeats);
 }
 
 /** The live registry: every committed CHSL shift, read from its transcript and repeats.json. */
