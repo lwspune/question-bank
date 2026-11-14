@@ -117,6 +117,7 @@ export default function RepeatGroupPanel({
                 dayTitle={`${group.title}: ${group.label}`}
                 supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL ?? ""}
                 showChapter={false}
+                paperHeadings
               />
             </div>
           )}
