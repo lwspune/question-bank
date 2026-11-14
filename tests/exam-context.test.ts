@@ -471,6 +471,7 @@ describe("exam tiers", () => {
       "ssc-chsl",
       "ugc-net",
       "rrb-ntpc",
+      "capf-ac",
     ],
   };
 
