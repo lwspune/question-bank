@@ -78,4 +78,35 @@ describe("MeHeader", () => {
     expect(out).toContain("MHT-CET");
     expect(out).not.toContain('href="/account"');
   });
+
+  describe("a student with no exam chosen", () => {
+    const none: MeHeaderData = {
+      ...two,
+      focus: resolveFocus({ targets: [], saved: null, recent: null }),
+      examLinks: [],
+      suggestedExam: { slug: "cbse-12", displayName: "CBSE Class 12", card: "guess" },
+    };
+
+    it("shows the guess as their exam, marked as our guess, with Correct and Change", () => {
+      const out = render(none, { active: "home" });
+      expect(out).toContain("Your exam:");
+      expect(out).toContain("CBSE Class 12");
+      expect(out).toContain("(our guess)");
+      expect(out).toMatch(/<button[^>]*>Correct<\/button>/);
+      expect(out).toMatch(/<button[^>]*>Change<\/button>/);
+      expect(out).not.toContain("Studying for");
+    });
+
+    it("keeps the older card for accounts the welcome-screen test measures", () => {
+      const out = render({ ...none, suggestedExam: { ...none.suggestedExam!, card: "suggest" } }, { active: "home" });
+      expect(out).toContain("Studying for CBSE Class 12?");
+      expect(out).not.toContain("(our guess)");
+    });
+
+    it("tells staff what the student sees, with no button", () => {
+      const out = render(none, { readOnly: true });
+      expect(out).toContain("CBSE Class 12 (our guess)");
+      expect(out).not.toContain("<button");
+    });
+  });
 });

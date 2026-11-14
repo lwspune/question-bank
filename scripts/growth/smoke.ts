@@ -273,6 +273,10 @@ async function main() {
         // Read by hand: student_profiles of new sign-ups, target_exams set and onboarded_at null, split by examFromPath(acq_landing).
         line = "by hand: new sign-ups with an exam (baseline 47%) and first screen left unanswered (baseline 35%), split by a guessable landing";
         break;
+      case "exam-guess-card":
+        // Read by its own script: npm run profile:infer-exams -- --report (student_exam_guesses, migration 0254).
+        line = "by hand: profile:infer-exams --report, taps (Correct + Change) / card seen, and Change share of taps";
+        break;
       case "review-traps":
         // Read by hand: surface_viewed review_traps by action (shown, expand, playbook).
         line = "by hand: surface_viewed review_traps by action";

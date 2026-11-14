@@ -312,6 +312,13 @@ export const CHECKOUT_RETURN_LATER_PAID_BASELINE_PCT = 14;
 export const WELCOME_EXAM_PICKED_BASELINE_PCT = 47;
 export const WELCOME_SCREEN1_LEFT_BASELINE_PCT = 35;
 /**
+ * "exam-guess-card": keep "Your exam: X (our guess)" on Home if at least this
+ * share of students who see it tap Correct or Change within 14 days (%). The
+ * old "Studying for X?" card (2026-11-02) was never measured; on 2026-11-14
+ * 1,255 students with no exam had been shown it or nothing.
+ */
+export const EXAM_GUESS_CARD_TAP_KEEP_PCT = 20;
+/**
  * "answer-limit-copy": of students who met the answer limit in the 30 days to
  * 2026-11-11, the share who opened checkout from it (35 of 360) and who bought
  * a pass afterwards (16 of 360), staff left out.
@@ -447,7 +454,8 @@ export type Readout =
   | "answer-limit-copy"
   | "checkout-contact"
   | "checkout-return"
-  | "welcome-exam-confirm";
+  | "welcome-exam-confirm"
+  | "exam-guess-card";
 
 export type Experiment = {
   id: string;
@@ -1303,6 +1311,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-13",
     windowDays: 14,
     readout: "welcome-exam-confirm",
+    status: "running",
+  },
+  {
+    id: "exam-guess-card",
+    title: "Home shows a no-exam student the exam we guessed",
+    change:
+      "A student who never chose an exam sees \"Your exam: CBSE Class 12 (our guess)\" on Home with Correct and Change, in place of \"Studying for CBSE Class 12?\". The guess (80%+ of 3+ practised questions in one exam, else the page they first landed on) is stored in student_exam_guesses (migration 0254), backfilled on 2026-11-14 for 1,024 of 1,255 such students and refreshed daily (infer-exams.yml); target_exams is never written by it. Accounts from 2026-11-13 keep the old card until 2026-11-28, so the welcome-exam-confirm test stays clean.",
+    why: "1,260 students on www who signed up before 2026-11-13 had no exam, so Home could not offer Start next, the study plan or their exam's mocks; a CBSE 12 student with a pass ignored the old card on 4 visits. Tested against students who chose, the guess was right 94% of the time from practice and 92% from the first page.",
+    metric:
+      "student_exam_guesses (read with the report mode of `npm run profile:infer-exams`): of students who saw the card (card_seen_at), the share who tapped Correct or Change; Correct vs Change is the guess's accuracy as students judge it; and of guessed students who later chose an exam, the share whose choice includes the guess",
+    rule: `Keep it if ${EXAM_GUESS_CARD_TAP_KEEP_PCT}%+ of students who see it tap within 14 days and Change stays under 15% of taps. If Change is higher, look at which source (practice or landing) the changed guesses came from before the guess drives anything else on Home.`,
+    liveSince: "2026-11-14",
+    windowDays: 14,
+    readout: "exam-guess-card",
     status: "running",
   },
 

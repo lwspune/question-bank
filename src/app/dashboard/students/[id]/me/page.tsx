@@ -49,6 +49,7 @@ export default async function StudentMeViewPage(props: { params: Promise<Params>
     id,
     name: accountNameOf(meta),
     preferredName: typeof preferred === "string" ? preferred : null,
+    createdAt: found.user.created_at ?? null,
   };
   const heading = displayName(meta as { full_name?: string; name?: string }, found.user.email ?? null);
 

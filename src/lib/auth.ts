@@ -27,6 +27,8 @@ export type SessionUser = {
   name?: string | null;
   /** The name the student chose to be greeted by on /me (user_metadata.preferred_name). */
   preferredName?: string | null;
+  /** When the account was made (auth.users.created_at): which Home exam card it gets (lib/profile/examGuess). */
+  createdAt?: string | null;
 };
 
 export type SessionMember = {
@@ -48,6 +50,7 @@ export async function getSessionUser(): Promise<SessionUser | null> {
     email: user.email,
     name: accountNameOf(user.user_metadata),
     preferredName: typeof preferred === "string" ? preferred : null,
+    createdAt: user.created_at ?? null,
   };
 }
 

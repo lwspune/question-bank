@@ -2,6 +2,7 @@ import Link from "next/link";
 import { GraduationCap } from "lucide-react";
 import Greeting from "@/app/me/Greeting";
 import SuggestExamCard from "@/app/me/SuggestExamCard";
+import ExamGuessCard from "@/app/me/ExamGuessCard";
 import TabStrip, { type Tab } from "@/components/TabStrip";
 import FocusChips from "./FocusChips";
 import type { MeHeaderData } from "@/lib/me/header";
@@ -26,7 +27,9 @@ export const ME_TABS: readonly Tab<MeTab>[] = [
  * A student with two or more exams gets the exams as the FOCUS switch
  * (lib/me/focus): Home and Performance follow it. A one-exam student keeps the
  * chip they had, a link to their exam. With no exam: the exam their practice
- * points to, or a line asking them to choose.
+ * or first page points to, shown as "Your exam: X (our guess)" (or the older
+ * "Studying for X?" card while the welcome-screen test runs; lib/profile/
+ * examGuess), or a line asking them to choose.
  *
  * `readOnly` is the staff view of a student's /me: no control that saves, and
  * no student tab strip (the staff page has its own tabs). `active` absent: no
@@ -70,8 +73,12 @@ export default function MeHeader({
         ) : data.suggestedExam ? (
           readOnly ? (
             <p className="text-sm text-muted-foreground">
-              Here they see a card suggesting {data.suggestedExam.displayName} as their exam.
+              {data.suggestedExam.card === "guess"
+                ? `Here they see "Your exam: ${data.suggestedExam.displayName} (our guess)" with Correct and Change.`
+                : `Here they see a card suggesting ${data.suggestedExam.displayName} as their exam.`}
             </p>
+          ) : data.suggestedExam.card === "guess" ? (
+            <ExamGuessCard slug={data.suggestedExam.slug} examName={data.suggestedExam.displayName} />
           ) : (
             <SuggestExamCard slug={data.suggestedExam.slug} examName={data.suggestedExam.displayName} />
           )
