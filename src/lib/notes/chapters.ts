@@ -2441,6 +2441,51 @@ import {
   NEET_BO_RS_NOTES,
   NEET_BO_RS_SLUGS,
 } from "@/app/notes/neet-botany/respiration/_data";
+import {
+  NEET_BO_BC_CHAPTER,
+  NEET_BO_BC_NOTES,
+  NEET_BO_BC_SLUGS,
+} from "@/app/notes/neet-botany/biological-classification/_data";
+import {
+  NEET_BO_PG_CHAPTER,
+  NEET_BO_PG_NOTES,
+  NEET_BO_PG_SLUGS,
+} from "@/app/notes/neet-botany/plant-growth/_data";
+import {
+  NEET_BO_SR_CHAPTER,
+  NEET_BO_SR_NOTES,
+  NEET_BO_SR_SLUGS,
+} from "@/app/notes/neet-botany/sexual-reproduction/_data";
+import {
+  NEET_BO_PI_CHAPTER,
+  NEET_BO_PI_NOTES,
+  NEET_BO_PI_SLUGS,
+} from "@/app/notes/neet-botany/inheritance/_data";
+import {
+  NEET_BO_MB_CHAPTER,
+  NEET_BO_MB_NOTES,
+  NEET_BO_MB_SLUGS,
+} from "@/app/notes/neet-botany/molecular-basis/_data";
+import {
+  NEET_BO_MI_CHAPTER,
+  NEET_BO_MI_NOTES,
+  NEET_BO_MI_SLUGS,
+} from "@/app/notes/neet-botany/microbes/_data";
+import {
+  NEET_BO_OP_CHAPTER,
+  NEET_BO_OP_NOTES,
+  NEET_BO_OP_SLUGS,
+} from "@/app/notes/neet-botany/organisms-populations/_data";
+import {
+  NEET_BO_EC_CHAPTER,
+  NEET_BO_EC_NOTES,
+  NEET_BO_EC_SLUGS,
+} from "@/app/notes/neet-botany/ecosystem/_data";
+import {
+  NEET_BO_BD_CHAPTER,
+  NEET_BO_BD_NOTES,
+  NEET_BO_BD_SLUGS,
+} from "@/app/notes/neet-botany/biodiversity/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -7857,6 +7902,105 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: NEET_BO_RS_CHAPTER,
     notes: NEET_BO_RS_NOTES,
     slugs: NEET_BO_RS_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "biological-classification",
+    chipLabel: "Biological Classification notes",
+    chapter: NEET_BO_BC_CHAPTER,
+    notes: NEET_BO_BC_NOTES,
+    slugs: NEET_BO_BC_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "plant-growth",
+    chipLabel: "Plant Growth and Development notes",
+    chapter: NEET_BO_PG_CHAPTER,
+    notes: NEET_BO_PG_NOTES,
+    slugs: NEET_BO_PG_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "sexual-reproduction",
+    chipLabel: "Sexual Reproduction in Flowering Plants notes",
+    chapter: NEET_BO_SR_CHAPTER,
+    notes: NEET_BO_SR_NOTES,
+    slugs: NEET_BO_SR_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "inheritance",
+    chipLabel: "Principles of Inheritance and Variation notes",
+    chapter: NEET_BO_PI_CHAPTER,
+    notes: NEET_BO_PI_NOTES,
+    slugs: NEET_BO_PI_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "molecular-basis",
+    chipLabel: "Molecular Basis of Inheritance notes",
+    chapter: NEET_BO_MB_CHAPTER,
+    notes: NEET_BO_MB_NOTES,
+    slugs: NEET_BO_MB_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "microbes",
+    chipLabel: "Microbes in Human Welfare notes",
+    chapter: NEET_BO_MI_CHAPTER,
+    notes: NEET_BO_MI_NOTES,
+    slugs: NEET_BO_MI_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "organisms-populations",
+    chipLabel: "Organisms and Populations notes",
+    chapter: NEET_BO_OP_CHAPTER,
+    notes: NEET_BO_OP_NOTES,
+    slugs: NEET_BO_OP_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "ecosystem",
+    chipLabel: "Ecosystem notes",
+    chapter: NEET_BO_EC_CHAPTER,
+    notes: NEET_BO_EC_NOTES,
+    slugs: NEET_BO_EC_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "biodiversity",
+    chipLabel: "Biodiversity and Conservation notes",
+    chapter: NEET_BO_BD_CHAPTER,
+    notes: NEET_BO_BD_NOTES,
+    slugs: NEET_BO_BD_SLUGS,
   },
 ];
 

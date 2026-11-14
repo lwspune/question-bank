@@ -534,7 +534,16 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "neet-botany/morphology",
   "neet-botany/anatomy",
   "neet-botany/photosynthesis",
-  "neet-botany/respiration"
+  "neet-botany/respiration",
+  "neet-botany/biological-classification",
+  "neet-botany/plant-growth",
+  "neet-botany/sexual-reproduction",
+  "neet-botany/inheritance",
+  "neet-botany/molecular-basis",
+  "neet-botany/microbes",
+  "neet-botany/organisms-populations",
+  "neet-botany/ecosystem",
+  "neet-botany/biodiversity"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1069,4 +1078,13 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "neet-botany/anatomy": () => import("@/app/notes/neet-botany/anatomy/_data").then((m) => m.NEET_BO_AN_NOTES),
   "neet-botany/photosynthesis": () => import("@/app/notes/neet-botany/photosynthesis/_data").then((m) => m.NEET_BO_PS_NOTES),
   "neet-botany/respiration": () => import("@/app/notes/neet-botany/respiration/_data").then((m) => m.NEET_BO_RS_NOTES),
+  "neet-botany/biological-classification": () => import("@/app/notes/neet-botany/biological-classification/_data").then((m) => m.NEET_BO_BC_NOTES),
+  "neet-botany/plant-growth": () => import("@/app/notes/neet-botany/plant-growth/_data").then((m) => m.NEET_BO_PG_NOTES),
+  "neet-botany/sexual-reproduction": () => import("@/app/notes/neet-botany/sexual-reproduction/_data").then((m) => m.NEET_BO_SR_NOTES),
+  "neet-botany/inheritance": () => import("@/app/notes/neet-botany/inheritance/_data").then((m) => m.NEET_BO_PI_NOTES),
+  "neet-botany/molecular-basis": () => import("@/app/notes/neet-botany/molecular-basis/_data").then((m) => m.NEET_BO_MB_NOTES),
+  "neet-botany/microbes": () => import("@/app/notes/neet-botany/microbes/_data").then((m) => m.NEET_BO_MI_NOTES),
+  "neet-botany/organisms-populations": () => import("@/app/notes/neet-botany/organisms-populations/_data").then((m) => m.NEET_BO_OP_NOTES),
+  "neet-botany/ecosystem": () => import("@/app/notes/neet-botany/ecosystem/_data").then((m) => m.NEET_BO_EC_NOTES),
+  "neet-botany/biodiversity": () => import("@/app/notes/neet-botany/biodiversity/_data").then((m) => m.NEET_BO_BD_NOTES),
 };

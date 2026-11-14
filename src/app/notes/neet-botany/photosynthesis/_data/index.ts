@@ -11,7 +11,7 @@ export { NEET_BO_PS_CHAPTER } from "./chapter";
  * Keys are the URL slug AND the subtopic_slug in question_concept_tags, which is GLOBALLY unique
  * across NOTES_CHAPTERS — hence `nbo-ps-` here and `nbops-` on concept slugs.
  *
- * NCERT XI ch.13: pigments, light reaction, Calvin cycle, C4, photorespiration.
+ * NCERT XI ch.11: pigments, light reaction, Calvin cycle, C4, photorespiration.
  */
 export const NEET_BO_PS_NOTES: Record<string, SubtopicNote> = {
   "nbo-ps-light": NEET_BO_PS_LIGHT_NOTE,
