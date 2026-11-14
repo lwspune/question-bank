@@ -131,7 +131,11 @@ The transcript's `answer:` is ours, derived from the sheets (which never show th
 On review:
 - **Judgement items** (does a conclusion follow, is an assumption implicit) and facts we
   guessed: the bank carries SSC's key, and `blind:` keeps our original answer so the blind
-  accuracy is never rewritten.
+  accuracy is never rewritten. **Rewrite the solution too**, so it argues the answer shown and
+  names the other reading: changing only `answer:` left about 40 shipped CGL and CHSL rows
+  showing SSC's answer under a solution that concluded ours (fixed in place 2026-11-14).
+  `build.ts` fails a block whose last solution paragraph names the blind option and not the
+  answer; a paragraph naming neither still passes, so read it.
 - **Where the key looks wrong** (grammar, maths, fact): our answer stays, with a note, and the
   row is `flawed: yes`, so it stays PRIVATE until someone reviews it.
 
