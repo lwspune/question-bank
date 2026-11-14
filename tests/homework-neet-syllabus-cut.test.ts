@@ -18,7 +18,7 @@ describe("neetSyllabusCut (2026-11-14)", () => {
 
   it("names the chapters NMC dropped in 2024 that the bank holds", () => {
     expect([...NEET_CUT_CHAPTERS].sort()).toEqual([
-      "Chemistry in Everyday Life", "Digestion and Absorption", "Environmental Chemistry",
+      "Chemistry in Everyday Life", "Digestion and Absorption", "Environmental Chemistry", "Environmental Issues",
       "General Principles and Processes of Isolation of Elements", "Hydrogen", "Mineral Nutrition",
       "Polymers", "Solid State", "States of Matter", "Surface Chemistry", "The s-Block Elements", "Transport in Plants",
     ]);

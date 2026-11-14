@@ -22,6 +22,8 @@ export const NEET_CUT_CHAPTERS: ReadonlySet<string> = new Set([
   "Mineral Nutrition",
   // Zoology
   "Digestion and Absorption",
+  // Its one row (2022, a scrubber) was filed under Animal Kingdom until 2026-11-15.
+  "Environmental Issues",
 ]);
 
 const FIRST_YEAR_OF_NEW_SYLLABUS = 2024;
