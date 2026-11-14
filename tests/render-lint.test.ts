@@ -15,6 +15,13 @@ describe("renderCorruption", () => {
   it("does not flag a stem opening with a math zone", () => {
     expect(renderCorruption("\\(f(x)\\) is continuous", { isStem: true })).not.toContain("lowercase-start");
   });
+  // SSC CPO 10 Dec 2025 S1 Q88 opens "e-NAM is primarily aimed at ...": a name that is spelt
+  // lowercase, which capitalising would misspell. A lowercase letter followed by a hyphen or a
+  // capital is a coined name (e-NAM, mRNA, pH, iPhone), never a dropped lead-in.
+  it("does not flag a stem opening with a lowercase-led name", () => {
+    for (const s of ["e-NAM is primarily aimed at", "mRNA vaccines use", "pH of a solution is", "iPhone was launched"])
+      expect(renderCorruption(s, { isStem: true })).not.toContain("lowercase-start");
+  });
   it("ignores leading whitespace when testing the opener", () => {
     expect(renderCorruption("   the tangent at", { isStem: true })).toContain("lowercase-start");
   });

@@ -24,9 +24,14 @@ export const EXAMS: Record<Tier, { name: string; id: string }> = {
  * subjects and chapters as CGL Tier I, in its own exam row. A CHSL day declares `exam: "chsl"`
  * and its ids start `chsl-`, so no CGL id, source_file or mock moved.
  */
-export type ExamKey = "cgl" | "chsl";
+export type ExamKey = "cgl" | "chsl" | "cpo";
 // created by seed-exam.ts --exam=chsl on 2026-11-13
 export const CHSL_EXAM: { name: string; id: string } = { name: "SSC CHSL", id: "a0179454-aef6-46d6-8fd8-7af42e24eefe" };
+/**
+ * SSC CPO (Sub-Inspector in Delhi Police and CAPFs) Paper I rides this lane too (owner,
+ * 2026-11-13): its own exam row, ids `cpo-`. The id is pasted in once seed-exam.ts creates it.
+ */
+export const CPO_EXAM: { name: string; id: string } = { name: "SSC CPO", id: "87fe8ad7-a22f-459b-b6ae-ac587e5e6b7b" };
 
 export const EXAM_NAME = EXAMS[1].name;
 /** `SSC CGL`, created by seed-exam.ts on 2026-10-16, when the pilot shifts were ready to commit. */
@@ -78,6 +83,18 @@ export const CHSL_LAYOUT: Section[] = [
 ];
 
 /**
+ * SSC CPO Paper I: CGL Tier I's order with fifty a section, 200 questions numbered straight
+ * through: General Intelligence and Reasoning, General Knowledge and General Awareness,
+ * Quantitative Aptitude, English Comprehension.
+ */
+export const CPO_LAYOUT: Section[] = [
+  { part: "A", match: /General Intelligence|Reasoning/i, count: 50, subjects: ["Reasoning"] },
+  { part: "B", match: /General Knowledge|General Awareness/i, count: 50, subjects: GA },
+  { part: "C", match: /Quantitative/i, count: 50, subjects: ["Quantitative Aptitude"] },
+  { part: "D", match: /English/i, count: 50, subjects: ["English"] },
+];
+
+/**
  * Tier II Paper 1 BEFORE CGL 2022 was Quantitative Abilities alone: one section of 100
  * (English was a separate Paper 2, not ingested). A day of that pattern declares this layout.
  */
@@ -118,21 +135,22 @@ export function shiftSections(shiftId: string): Partial<Record<Part, string[]>> 
   return subjectsOf(layoutOf(DAYS[s.day]));
 }
 
-/** A shift id's tier: `t1-...` or `t2-...`, after the exam's prefix (`chsl-t1-...`). */
+/** A shift id's tier: `t1-...` or `t2-...`, after the exam's prefix (`chsl-t1-...`, `cpo-t1-...`). */
 export function tierOf(shiftId: string): Tier {
-  const t = Number(/^(?:chsl-)?t([12])-/.exec(shiftId)?.[1]);
+  const t = Number(/^(?:chsl-|cpo-)?t([12])-/.exec(shiftId)?.[1]);
   if (t !== 1 && t !== 2) throw new Error(`"${shiftId}" names no tier (t1-/t2-)`);
   return t;
 }
 
-/** A shift or day id's exam: `chsl-...` is CHSL, every other id CGL. */
+/** A shift or day id's exam: `chsl-...` is CHSL, `cpo-...` CPO, every other id CGL. */
 export function examOf(id: string): ExamKey {
-  return id.startsWith("chsl-") ? "chsl" : "cgl";
+  return id.startsWith("chsl-") ? "chsl" : id.startsWith("cpo-") ? "cpo" : "cgl";
 }
 
 /** The exam row a shift's questions go under. */
 export function examRowOf(shiftId: string): { name: string; id: string } {
-  return examOf(shiftId) === "chsl" ? CHSL_EXAM : EXAMS[tierOf(shiftId)];
+  const exam = examOf(shiftId);
+  return exam === "chsl" ? CHSL_EXAM : exam === "cpo" ? CPO_EXAM : EXAMS[tierOf(shiftId)];
 }
 
 /** That row's id, refused while the row is not yet created. */
@@ -142,9 +160,9 @@ export function requireExamIdOf(shiftId: string): string {
   return row.id;
 }
 
-/** The id prefix a day's shifts carry: `t1`, `t2`, or `chsl-t1`. */
+/** The id prefix a day's shifts carry: `t1`, `t2`, `chsl-t1` or `cpo-t1`. */
 export function idPrefix(day: Pick<Day, "exam" | "tier">): string {
-  return `${day.exam === "chsl" ? "chsl-" : ""}t${day.tier}`;
+  return `${day.exam && day.exam !== "cgl" ? `${day.exam}-` : ""}t${day.tier}`;
 }
 
 export type Catalog = Record<string, { chapter: string; subtopics: string[] }[]>;
@@ -153,6 +171,7 @@ export const CATALOG: Catalog = JSON.parse(readFileSync(join(__dirname, "catalog
 
 export const SOURCE_ROOT = "C:\\Vilas\\LWS_Pune\\SSC\\CGL";
 export const CHSL_SOURCE_ROOT = "C:\\Vilas\\LWS_Pune\\SSC\\CHSL";
+export const CPO_SOURCE_ROOT = "C:\\Vilas\\LWS_Pune\\SSC\\CPO";
 
 /**
  * One exam DAY = one PDF holding every shift of that day, as hosted by AglaSem: the
@@ -164,7 +183,7 @@ export const CHSL_SOURCE_ROOT = "C:\\Vilas\\LWS_Pune\\SSC\\CHSL";
  * (until 2026-02-08). Our answers are derived independently and compared with it.
  */
 export type Day = {
-  /** Absent: SSC CGL. "chsl": SSC CHSL (its own exam row; ids start `chsl-`). */
+  /** Absent: SSC CGL. "chsl": SSC CHSL, "cpo": SSC CPO (each its own exam row; ids start `chsl-` / `cpo-`). */
   exam?: ExamKey;
   tier: Tier;
   /** The sheet prints no heading over its FIRST section (CHSL 1 Jul 2024): the questions
@@ -289,6 +308,50 @@ const chsl_2025 = (dd: string, docs: Record<number, string | { id: string; order
       },
     ])
   ),
+});
+
+/**
+ * SSC CPO 2024 Paper I (27-29 Jun 2024): PW hosts all nine shifts as Google Drive PDFs, one per
+ * shift, each SSC's own TCS response sheet (text layer, Question and Option IDs, key as the tick)
+ * under a PW cover page. The key is the response sheet's, released with the tentative key.
+ */
+const cpo_2024 = (dd: string, ids: [string, string, string]): Day => ({
+  exam: "cpo",
+  tier: 1,
+  date: `2024-06-${dd}`,
+  shifts: 3,
+  layout: CPO_LAYOUT,
+  file: "",
+  url: "",
+  provisionalKey: true,
+  format: "tcs",
+  slots: ["9:00 AM - 11:00 AM", "12:30 PM - 2:30 PM", "4:00 PM - 6:00 PM"],
+  shiftFiles: Object.fromEntries(
+    ids.map((id, i) => [
+      i + 1,
+      { file: join(CPO_SOURCE_ROOT, "2024_Tier1", `SSC_CPO_2024_Tier1_${dd}Jun_S${i + 1}_PW.pdf`), url: `https://drive.google.com/file/d/${id}/view` },
+    ])
+  ),
+});
+
+/**
+ * SSC CPO 2025 Paper I (9-12 Dec 2025): sscstudy hosts one Google Drive PDF per exam day, SSC's
+ * challenge-module sheet printed from the browser (labels as text, the content as pictures, the
+ * key as the coloured left cell, Oliveboard's watermark). A day file holds Shift 1 then Shift 2,
+ * each as four captures (Q1-50, 51-100, 101-150, 151-200) under SSC's header page, so a shift is
+ * a page range (`shiftPages`). The key is the tentative one (released 24 Dec 2025).
+ */
+const cpo_2025 = (dd: string, driveId: string, pages: [string, string]): Day => ({
+  exam: "cpo",
+  tier: 1,
+  date: `2025-12-${dd}`,
+  shifts: 2,
+  layout: CPO_LAYOUT,
+  file: join(CPO_SOURCE_ROOT, "2025_Tier1", `SSC_CPO_2025_Tier1_${dd}Dec_AllShifts_sscstudy.pdf`),
+  url: `https://drive.google.com/file/d/${driveId}/view`,
+  provisionalKey: true,
+  format: "challenge",
+  shiftPages: { 1: pages[0], 2: pages[1] },
 });
 
 /**
@@ -504,6 +567,15 @@ export const DAYS: Record<string, Day> = {
   "chsl-t1-2025-11-27": chsl_2025("27", { 1: "1nbM05gj97QFkaXLhiKZQfxfaxW753Eyq" }),
   "chsl-t1-2025-11-28": chsl_2025("28", { 1: "1tg4SF5FXKWRyVWH-ruwDrn8sRdFgnrzt" }),
   "chsl-t1-2025-11-29": chsl_2025("29", { 1: "1go-fpkf7FaL7YP50d3uL1_5BdHn3gAFO" }),
+  // SSC CPO 2024 Paper I: PW's nine Drive files, one per shift.
+  "cpo-t1-2024-06-27": cpo_2024("27", ["1sf7dbcND2a1v3qWDavTiBQOXoga55Adi", "1qYv9EXozTOa4ZZPBdZWPoPqmV8Em7Y62", "11_mlY6lvc1kNfAApbGOluxbGnYqSOeXM"]),
+  "cpo-t1-2024-06-28": cpo_2024("28", ["15YQN9pEmOSAgvwW2v7O_AA_g3yZFmK7c", "1a1EJceXUl3wZwRnhf0lOftgz368ssc9l", "1Rn1XF12NndxZ_HbtQVgdr7JImiwudlHY"]),
+  "cpo-t1-2024-06-29": cpo_2024("29", ["1dBOjF8o1tJdWVQwwFGpm2IXd4nGh3g4W", "1RbSPO8slVNvY1ysqcuMLobMwtd4WgKpx", "1lniMXC3tlizrXYM5X0AJBxofWTU0q7Pi"]),
+  // SSC CPO 2025 Paper I: sscstudy's four day files; each shift's pages read off SSC's header pages.
+  "cpo-t1-2025-12-09": cpo_2025("09", "1Ki9P6665HSgkmM4UirDzGI9ZeYsTK9cw", ["1-72", "73-147"]),
+  "cpo-t1-2025-12-10": cpo_2025("10", "12bDgce42HckSBdszW97-AwFN2vJeaYvh", ["1-75", "76-146"]),
+  "cpo-t1-2025-12-11": cpo_2025("11", "1U2v_ufXTuLD_dgt5xpMvd9reaxM8WcP_", ["1-80", "81-155"]),
+  "cpo-t1-2025-12-12": cpo_2025("12", "1PShAaWQtEjCpd2IQ3ZIDeJE_rwQqaKqD", ["1-80", "81-161"]),
 };
 
 /** pyqMonth is a month NAME, as everywhere in the bank ("September"), never a number. */
@@ -521,14 +593,14 @@ export const SHIFTS: Record<string, Shift> = Object.fromEntries(
         {
           day,
           shift,
-          sourceFile: `SSC_${d.exam === "chsl" ? "CHSL" : "CGL"}_T${d.tier}_${d.date}_S${shift}`,
+          sourceFile: `SSC_${(d.exam ?? "cgl").toUpperCase()}_T${d.tier}_${d.date}_S${shift}`,
           pyqYear: d.cycle ?? y,
           pyqMonth: MONTHS[m - 1],
           // Tier II sits once a day, so its note names the cycle instead of a shift.
           pyqNote:
             d.tier === 2
               ? `Tier II (CGL ${d.cycle}), ${dd} ${MONTHS[m - 1].slice(0, 3)} ${y}`
-              : `Tier I, ${dd} ${MONTHS[m - 1].slice(0, 3)} ${y}, Shift ${shift}`,
+              : `${d.exam === "cpo" ? "Paper I" : "Tier I"}, ${dd} ${MONTHS[m - 1].slice(0, 3)} ${y}, Shift ${shift}`,
         },
       ] as const;
     });
@@ -555,14 +627,18 @@ export function tcsFiles(): TcsFile[] {
     });
 }
 
-/** Every scanned challenge-module file (CHSL 2025), one per shift: `dir` is its out/ folder. */
+/**
+ * Every challenge-module file, one per shift: `dir` is its out/ folder. A shift is its own file
+ * (CHSL 2025, `shiftFiles`) or a page range of its day file (CPO 2025, `shiftPages`).
+ */
 export function challengeFiles(): TcsFile[] {
   return Object.entries(DAYS)
     .filter(([, d]) => d.format === "challenge")
     .sort(([a], [b]) => a.localeCompare(b))
-    .flatMap(([dir, day]) =>
-      Object.entries(day.shiftFiles ?? {}).map(([n, f]) => ({ dir: `${dir}-s${n}`, day, file: f.file, shift: Number(n), ...(f.order ? { order: f.order } : {}) }))
-    );
+    .flatMap(([dir, day]) => [
+      ...Object.entries(day.shiftFiles ?? {}).map(([n, f]) => ({ dir: `${dir}-s${n}`, day, file: f.file, shift: Number(n), ...(f.order ? { order: f.order } : {}) })),
+      ...Object.entries(day.shiftPages ?? {}).map(([n, pages]) => ({ dir: `${dir}-s${n}`, day, file: day.file, shift: Number(n), pages })),
+    ]);
 }
 
 export function requireShift(id: string | undefined): Shift & { id: string } {

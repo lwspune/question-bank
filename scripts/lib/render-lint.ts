@@ -31,7 +31,10 @@ export function renderCorruption(value: string, opts: { isStem?: boolean } = {})
   // Class 3 — a stem whose first visible character is a lowercase letter began
   // mid-sentence. Only meaningful for the stem; options/solutions/context can
   // legitimately open lowercase.
-  if (opts.isStem && /^[a-z]/.test(value.replace(/^\s+/, ""))) flags.push("lowercase-start");
+  // A lowercase letter followed by a hyphen or a capital is a name spelt that way (e-NAM, mRNA,
+  // pH), never a dropped lead-in, so it passes.
+  const opener = value.replace(/^\s+/, "");
+  if (opts.isStem && /^[a-z]/.test(opener) && !/^[a-z]{1,2}(-|[A-Z])/.test(opener)) flags.push("lowercase-start");
 
   // Class 1 — both delimiter kinds present in the same field is the scramble.
   // An escaped `\$` is a literal dollar sign (parseLatex), not a delimiter.

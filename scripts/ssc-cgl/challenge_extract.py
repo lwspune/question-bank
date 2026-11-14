@@ -83,7 +83,7 @@ def runs(flags, min_len=1, gap=0):
     return out
 
 
-def measure(a):
+def measure(a, frame=False):
     h, w = a.shape[:2]
     r, g, b = a[..., 0], a[..., 1], a[..., 2]
     s = r + g + b
@@ -119,7 +119,21 @@ def measure(a):
     up = np.vstack([seg[:2], seg[:-2]])
     dn = np.vstack([seg[2:], seg[-2:]])
     darker = (seg < np.minimum(up, dn) - 12) & (seg > 300)
-    rules = [int((y0 + y1 - 1) // 2) for y0, y1 in runs(darker.mean(axis=1) >= 0.8, 1, 4)]
+    # A question box's own bottom border on the CPO 2025 print is a dark, shadowed band, darker
+    # than the 300 floor that keeps text out. It runs the box's whole width (x 150-1150 here,
+    # dark across 97%); text never does, not even a bold Devanagari line, whose headstroke
+    # breaks between words (12 Dec 2025 S2 Q43's Hindi stem read as a border on the 700-1080 band).
+    # (only on that print, `frame`: the scans never needed it, so their reading cannot move)
+    # a box's bottom border is 2+ dark rows (2 where a page foot cuts it); a 1-row darker option
+    # line is only a rule
+    wide = s[:, 150:1150]
+    solid = ((wide < 450).mean(axis=1) >= 0.97) if frame else np.zeros(len(seg), bool)
+    thick = runs(solid, 2, 0)
+    solid = np.zeros(len(seg), bool)
+    for y0, y1 in thick:
+        solid[y0:y1] = True
+    solids = [int((y0 + y1 - 1) // 2) for y0, y1 in thick]
+    rules = [int((y0 + y1 - 1) // 2) for y0, y1 in runs((darker.mean(axis=1) >= 0.8) | solid, 1, 4)]
 
     # The capture tool breaks pages between rows and fills the rest with a beige band: its top ends
     # the row above it (the row after starts on the next page), and its own edges are no boundary.
@@ -128,6 +142,12 @@ def measure(a):
     mr, mg, mb = med[:, 0], med[:, 1], med[:, 2]
     beige = (abs(mr - 215) < 15) & (abs(mg - 202) < 15) & (abs(mb - 182) < 15)
     grey = (mr > 105) & (mr < 165) & (abs(mr - mb) < 15) & (abs(mr - mg) < 15)
+    if frame:
+        # on the browser print a dense bold Hindi line has a grey MEDIAN too (12 Dec 2025 S2
+        # Q43): a bar is grey in most of its pixels, not just its median
+        c = a[:, 200:1000]
+        px = (c[..., 0] > 105) & (c[..., 0] < 165) & (abs(c[..., 0] - c[..., 2]) < 15) & (abs(c[..., 0] - c[..., 1]) < 15)
+        grey &= px.mean(axis=1) >= 0.85
     fillers = runs(beige, 6, 2)
     bars = runs(grey, 8, 2)
     rules = [y for y in rules if not any(f0 - 3 <= y <= f1 + 3 for f0, f1 in fillers)]
@@ -143,16 +163,21 @@ def measure(a):
     end_bare = bool(rules) and not ink[rules[-1] + 3 :].any() and not any(c["y0"] > rules[-1] + 3 for c in cells)
 
     lines = [{"y0": y0, "y1": y1} for y0, y1 in runs(ink, 6, 2)]
-    return {"height": h, "width": w, "top_bare": top_bare, "end_bare": end_bare, "breaks": breaks, "marks": marks, "labels": labels, "cells": cells, "rules": rules, "lines": lines}
+    return {"height": h, "width": w, "top_bare": top_bare, "end_bare": end_bare, "breaks": breaks, "marks": marks, "labels": labels, "cells": cells, "rules": rules, "solid": sorted([y for y in solids if y in rules] + ([b0 for b0, _ in bars] if frame else [])), "lines": lines}
 
 
 def main():
     d, pdf = sys.argv[1], sys.argv[2]
+    # --pages=FROM-TO (1-based, inclusive): one shift's pages of a day file (CPO 2025). Without
+    # it the whole file is one shift, its first page PW's cover (CHSL 2025), so it is skipped.
+    rng = next((a.split("=", 1)[1] for a in sys.argv[3:] if a.startswith("--pages=")), None)
+    page_frame = "--page-frame" in sys.argv[3:]
     out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "out", d)
     os.makedirs(out, exist_ok=True)
     doc = fitz.open(pdf)
+    first, last = (int(x) for x in rng.split("-")) if rng else (2, doc.page_count)
     pages = []
-    for pno in range(1, doc.page_count):
+    for pno in range(first - 1, last):
         a = page_array(doc, doc[pno])
         if a is None:
             continue
@@ -160,12 +185,19 @@ def main():
         # picture with the text laid over it): it colours only the candidate's own choice
         imgs = doc[pno].get_images(full=True)
         vector = not imgs or max(x[2] for x in imgs) < 1000 or len(doc[pno].get_text().strip()) > 200
-        m = measure(a)
+        m = measure(a, page_frame)
         # The page before ended on a boundary (a rule, or its filler's top, with nothing printed
         # below): a rule at this page's top with nothing above it prints that boundary again, so it
         # is dropped. After a page that ends mid-row, that top rule is a real boundary and stays.
-        if pages and pages[-1]["end_bare"] and m["top_bare"]:
+        # --page-frame (the CPO 2025 browser print): every page opens with the cut box's frame
+        # redrawn at its top, never a boundary, so a bare top rule always goes (a row that truly
+        # ends at a page foot gets the page break as its boundary in challenge.ts).
+        if m["top_bare"] and (page_frame or (pages and pages[-1]["end_bare"])):
             m["rules"] = m["rules"][1:]
+        # ...and closes the cut box with a frame at its foot, which would split a row (and its
+        # key cell, printed on both pages) in two (CPO 11 Dec 2025 S2 Q1). A solid bottom stays.
+        if page_frame and m["end_bare"] and m["rules"] and m["rules"][-1] not in m["solid"]:
+            m["rules"] = m["rules"][:-1]
         pages.append({"page": pno + 1, "vector": vector, **m})
     with open(os.path.join(out, "challenge.json"), "w", encoding="utf8") as f:
         json.dump({"pdf": pdf, "pages": pages}, f)

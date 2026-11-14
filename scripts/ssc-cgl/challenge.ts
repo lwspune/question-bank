@@ -32,6 +32,8 @@ export type ChallengePage = {
   cells: ChallengeCell[];
   /** y of each pale horizontal table rule */
   rules: number[];
+  /** the rules (also in `rules`) that are a box's solid bottom border (CPO 2025's print) */
+  solid?: number[];
   /** text lines in the option column (for frameless pages) */
   lines: ChallengeBand[];
   /** y of each row of PART buttons: PW's file is several captures, and each opens a new page with
@@ -127,6 +129,12 @@ export function assembleChallenge(pages: ChallengePage[], layout: Section[], ord
       .flatMap((p) => p.labels.map((l) => ({ page: p.page, y: l.y0 })))
       .find((l) => inSpan(l));
     if (label) rules = rules.filter((r) => before(label, r));
+    // A box ends at its own solid bottom border: a rule below it is the next box's top, printed
+    // on this page while that box's challenge marker went overleaf (CPO 9 Dec 2025 S1 Q42).
+    const bottom = sorted
+      .flatMap((p) => (p.solid ?? []).map((y) => ({ page: p.page, y })))
+      .find((s) => inSpan(s) && (!label || before(label, s)));
+    if (bottom) rules = rules.filter((r) => !before(bottom, r));
     // Four boundaries and a page break between two of them: an option row ran to the page's foot and
     // the next began the new page, neither printing a rule, so the break itself is the fifth. (With
     // five already, a row split mid-row by the break is one row: no boundary is added.)

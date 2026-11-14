@@ -294,6 +294,26 @@ export function studentSolution(q: Pick<TranscriptQuestion, "solution" | "notice
   return q.notice ? `**Note:** ${q.notice}\n\n${q.solution}` : q.solution;
 }
 
+/**
+ * True when an adopted key's solution still ends on our blind option: its last paragraph names
+ * the blind option (its text, or "option N") and never the answer. A settlement that edits only
+ * the header leaves exactly this (CHSL shipped ~15 such rows). Short texts match as whole words,
+ * so "3" is not found in "1993"; a paragraph naming neither, or both, passes.
+ */
+function concludesBlind(q: Pick<TranscriptQuestion, "solution" | "options" | "answer" | "blind">): boolean {
+  if (!q.blind) return false;
+  const norm = (t: string) => t.toLowerCase().replace(/[*"'“”‘’]/g, "").replace(/\s+/g, " ").trim();
+  const paras = q.solution.split(/\n\s*\n/).map((x) => x.trim()).filter(Boolean);
+  const last = norm(paras[paras.length - 1] ?? "");
+  const names = (label: Label) => {
+    const i = LABELS.indexOf(label);
+    const text = norm(q.options[i]);
+    const word = (w: string) => new RegExp(`(^|[^a-z0-9.])${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}($|[^a-z0-9])`).test(last);
+    return word(`option ${i + 1}`) || (text !== "[figure]" && text !== "" && word(text));
+  };
+  return names(q.blind) && !names(q.answer);
+}
+
 export function parseTranscript(text: string): TranscriptQuestion[] {
   const parsed: Parsed[] = [];
   const seen = new Set<number>();
@@ -386,6 +406,8 @@ export function checkShift(
       if (q.blind === q.answer) p(`blind answer ${q.blind} is the same as the answer: drop the blind: line`);
       else if (!q.note) p(`blind answer ${q.blind} needs a note saying why the key was adopted`);
       else if (q.answer === s.key) adopted.push(`Q${q.number} blind ${q.blind}, adopted key ${s.key} :: ${q.note}`);
+      if (q.blind !== q.answer && concludesBlind(q))
+        p(`solution still concludes the blind option ${q.blind}: rewrite it to argue the answer ${q.answer}`);
     }
     if ((q.blind ?? q.answer) === s.key) agree++;
     if (q.answer !== s.key) {

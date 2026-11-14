@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { deriveChslSittings, deriveSscSittings, deriveSscT2Sittings, t2Rows, withHeld } from "../scripts/mocks/sscSittings";
-import { SSC_CGL_T2_COMPUTER_PAPER, SSC_CGL_T2_PAPER, SSC_CHSL_T1_PAPER, totalQuestions } from "../src/lib/mocks/blueprints";
+import { deriveChslSittings, deriveCpoSittings, deriveSscSittings, deriveSscT2Sittings, t2Rows, withHeld } from "../scripts/mocks/sscSittings";
+import { SSC_CGL_T2_COMPUTER_PAPER, SSC_CGL_T2_PAPER, SSC_CHSL_T1_PAPER, SSC_CPO_P1_PAPER, totalQuestions } from "../src/lib/mocks/blueprints";
 import type { PaperQuestionRow } from "../src/lib/mocks/reconstruct";
 import type { TranscriptQuestion } from "../scripts/ssc-cgl/lib";
 
@@ -268,5 +268,79 @@ describe("deriveChslSittings (SSC CHSL Tier I)", () => {
     expect(totalQuestions(SSC_CHSL_T1_PAPER)).toBe(100);
     const two = withHeld(SSC_CHSL_T1_PAPER, ["Quantitative Aptitude", "Quantitative Aptitude"]);
     expect(two.sections.find((x) => x.key === "quantitative-aptitude")!.count).toBe(23);
+  });
+});
+
+describe("deriveCpoSittings (SSC CPO Paper I)", () => {
+  const cpoShift = (date: string, n: number) => ({
+    day: `cpo-t1-${date}`,
+    shift: n,
+    sourceFile: `SSC_CPO_T1_${date}_S${n}`,
+    pyqYear: Number(date.slice(0, 4)),
+    pyqMonth: "June",
+    pyqNote: `Paper I, ${Number(date.slice(8))} Jun ${date.slice(0, 4)}, Shift ${n}`,
+  });
+  const MIXED = {
+    ...SHIFTS,
+    "cpo-t1-2024-06-27-s1": cpoShift("2024-06-27", 1),
+    "cpo-t1-2024-06-27-s2": cpoShift("2024-06-27", 2),
+    "chsl-t1-2024-07-01-s1": { ...cpoShift("2024-07-01", 1), day: "chsl-t1-2024-07-01", sourceFile: "SSC_CHSL_T1_2024-07-01_S1" },
+  };
+  // CPO's print order: 1-50 Reasoning, 51-100 General Knowledge, 101-150 Quant, 151-200 English
+  const paper = (extra: Record<number, Partial<TranscriptQuestion>> = {}) =>
+    Array.from({ length: 200 }, (_, i) => q(i + 1, { ...(i >= 50 && i < 100 ? { subject: "History" } : {}), ...extra[i + 1] }));
+
+  it("makes one CPO mock per transcribed shift, never a CGL or CHSL shift", () => {
+    const s = deriveCpoSittings(MIXED, { "cpo-t1-2024-06-27-s1": paper(), "t1-2025-09-12-s1": paper(), "chsl-t1-2024-07-01-s1": paper() }, {});
+    expect(s).toEqual([
+      {
+        key: "cpo-t1-2024-06-27-s1",
+        sourceFile: "SSC_CPO_T1_2024-06-27_S1",
+        year: 2024,
+        slug: "ssc-cpo-2024-06-27-s1",
+        title: "SSC CPO Paper I, 27 Jun 2024, Shift 1",
+        graceNumbers: [],
+        heldSubjects: [],
+        overrides: [],
+      },
+    ]);
+    // and neither CGL's nor CHSL's derivation takes a CPO shift
+    expect(deriveSscSittings(MIXED, { "cpo-t1-2024-06-27-s1": paper() }, {}, {})).toEqual([]);
+    expect(deriveChslSittings(MIXED, { "cpo-t1-2024-06-27-s1": paper() }, {})).toEqual([]);
+  });
+
+  it("names each section's subject from the question number, General Knowledge from the block itself", () => {
+    const s = deriveCpoSittings(
+      MIXED,
+      { "cpo-t1-2024-06-27-s2": paper({ 120: { flawed: true }, 170: { flawed: true } }) },
+      { "cpo-t1-2024-06-27-s2": [10, 60, 120, 170] }
+    );
+    expect(s[0].graceNumbers).toEqual([120, 170]);
+    expect(s[0].heldSubjects).toEqual(["Reasoning", "History", "Quantitative Aptitude", "English"]);
+  });
+
+  it("brings a repeat back at its own slot, and refuses one its transcript does not hold", () => {
+    const s = deriveCpoSittings(
+      MIXED,
+      { "cpo-t1-2024-06-27-s1": paper({ 77: { answer: "B", subject: "Polity" }, 160: { answer: "D" } }) },
+      {},
+      { "cpo-t1-2024-06-27-s1": [
+        { number: 77, questionId: "q-1", first: "SSC_CPO_T1_2024-06-27_S2 Q55" },
+        { number: 160, questionId: "q-2", first: "SSC_CPO_T1_2024-06-28_S1 Q161" },
+      ] }
+    );
+    expect(s[0].overrides).toEqual([
+      { questionNumber: 77, questionId: "q-1", subjectName: "Polity", answer: "B" },
+      { questionNumber: 160, questionId: "q-2", subjectName: "English", answer: "D" },
+    ]);
+    expect(() =>
+      deriveCpoSittings(MIXED, { "cpo-t1-2024-06-27-s1": paper().slice(0, 30) }, {}, { "cpo-t1-2024-06-27-s1": [{ number: 160, questionId: "x", first: "y" }] })
+    ).toThrow(/repeats.json names Q160/);
+  });
+
+  it("builds against CPO's blueprint: 4 x 50 in CPO order, +1/-0.25, 120 minutes", () => {
+    expect(SSC_CPO_P1_PAPER).toMatchObject({ examName: "SSC CPO", examSlug: "ssc-cpo", durationSecs: 7200, marking: { correct: 1, wrong: -0.25 } });
+    expect(SSC_CPO_P1_PAPER.sections.map((x) => [x.key, x.count])).toEqual([["reasoning", 50], ["general-awareness", 50], ["quantitative-aptitude", 50], ["english", 50]]);
+    expect(totalQuestions(SSC_CPO_P1_PAPER)).toBe(200);
   });
 });

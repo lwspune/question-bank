@@ -12,7 +12,7 @@
  */
 import { createClient } from "@supabase/supabase-js";
 import { join } from "node:path";
-import { CHSL_EXAM, EXAMS, SUBJECTS, requireExamId, type Tier } from "./config";
+import { CHSL_EXAM, CPO_EXAM, EXAMS, SUBJECTS, requireExamId, type Tier } from "./config";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -22,11 +22,13 @@ async function main() {
   loadEnv();
   const apply = process.argv.includes("--apply");
   const tier = Number(process.argv.find((a) => a.startsWith("--tier="))?.slice("--tier=".length) ?? 1) as Tier;
-  // --exam=chsl: SSC CHSL takes CGL Tier I's subjects, under its own row
+  // --exam=chsl / --exam=cpo: SSC CHSL and SSC CPO take CGL Tier I's subjects, under their own rows
   const chsl = process.argv.includes("--exam=chsl");
+  const cpo = process.argv.includes("--exam=cpo");
   if (chsl && !CHSL_EXAM.id) throw new Error("CHSL_EXAM.id is empty: run seed-exam.ts --exam=chsl --apply first");
-  const examId = chsl ? CHSL_EXAM.id : requireExamId(tier);
-  const examName = chsl ? CHSL_EXAM.name : EXAMS[tier].name;
+  if (cpo && !CPO_EXAM.id) throw new Error("CPO_EXAM.id is empty: run seed-exam.ts --exam=cpo --apply first");
+  const examId = chsl ? CHSL_EXAM.id : cpo ? CPO_EXAM.id : requireExamId(tier);
+  const examName = chsl ? CHSL_EXAM.name : cpo ? CPO_EXAM.name : EXAMS[tier].name;
   const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
 
   const wanted = SUBJECTS(tier);

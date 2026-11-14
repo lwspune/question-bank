@@ -2,7 +2,7 @@
  * Turn every TCS file's geometry (tcs_extract.py) into questions, one folder per shift.
  *
  *   python -P scripts/ssc-cgl/tcs_extract.py <dayId> "<pdf>"     (each TCS day in DAYS)
- *   npx tsx scripts/ssc-cgl/assemble-tcs.ts --year=2024 [--tier=2] [--exam=chsl]   (--year is the SITTING year)
+ *   npx tsx scripts/ssc-cgl/assemble-tcs.ts --year=2024 [--tier=2] [--exam=chsl|cpo]   (--year is the SITTING year)
  *
  * A file with no text layer (the 2022 vector print) is read by vector.ts instead, its date
  * and shift taken from config (DAYS[...].shiftFiles), since its header is glyphs.
@@ -41,9 +41,9 @@ function main() {
   const year = process.argv
     .find((a) => a.startsWith("--year="))
     ?.slice("--year=".length);
-  if (!year) throw new Error("usage: assemble-tcs.ts --year=YYYY [--tier=2] [--exam=chsl]");
+  if (!year) throw new Error("usage: assemble-tcs.ts --year=YYYY [--tier=2] [--exam=chsl|cpo]");
   const exam = (process.argv.find((a) => a.startsWith("--exam="))?.slice("--exam=".length) ?? "cgl") as ExamKey;
-  if (exam !== "cgl" && exam !== "chsl") throw new Error(`--exam=${exam}: cgl or chsl`);
+  if (exam !== "cgl" && exam !== "chsl" && exam !== "cpo") throw new Error(`--exam=${exam}: cgl, chsl or cpo`);
   const tier = Number(process.argv.find((a) => a.startsWith("--tier="))?.slice("--tier=".length) ?? 1);
   const files = tcsFiles()
     .filter(({ day }) => day.date.startsWith(year) && day.tier === tier && (day.exam ?? "cgl") === exam)

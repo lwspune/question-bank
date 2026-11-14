@@ -86,6 +86,23 @@ or reading passage) are in **PART-A**. Everything said below about CGL's PART-B 
 Awareness) applies to CHSL's PART-D, and about CGL's PART-D (English) to CHSL's PART-A. CHSL
 is a Class 12-level exam: rate difficulty on the same Tier I scale. The catalog is CGL's.
 
+**SSC CPO Paper I (`cpo-t1-...`) is its own exam with CGL Tier I's section order but FIFTY a
+section, 200 questions numbered straight through** (the red label is the number you write):
+
+| part | numbers | section as printed | subject |
+|---|---|---|---|
+| A | 1-50 | General Intelligence and Reasoning | Reasoning |
+| B | 51-100 | General Knowledge and General Awareness | name it: `subject:` as PART-B below |
+| C | 101-150 | Quantitative Aptitude | Quantitative Aptitude |
+| D | 151-200 | English Comprehension | English |
+
+So everything below about CGL's PART-B (General Awareness, `subject:`) and PART-D (English, passage
+sets) applies to CPO's B and D as written. CPO 2024 (`cpo-t1-2024-...`) is the TCS text print
+(`text.txt`, options "1." to "4."); CPO 2025 (`cpo-t1-2025-...`) is the challenge-module sheet, read
+like CHSL 2025: no `text.txt`, every line in English then Hindi (write the English), the option
+numbers stamped by us. Its pages carry a "https://sscstudy.com/" footer and Oliveboard's pale
+watermark: ignore both. CPO is a graduate-level exam: rate difficulty on the Tier I scale. English only.
+
 ## Rules
 
 1. **Never open** `questions.json`, `geometry.json`, `rows.json` or anything else under

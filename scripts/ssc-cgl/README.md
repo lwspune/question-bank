@@ -23,6 +23,15 @@ Quant, General Awareness (`CHSL_LAYOUT`). Blind agreement with SSC's key 96-100%
 SSC's key is plainly wrong ours is kept with a notice. Mocks: `SSC_CHSL_T1_PAPER`, one per shift,
 `npx tsx scripts/mocks/build.ts --paper=ssc-chsl --apply --publish`. See "CHSL 2025" below.**
 
+**SSC CPO Paper I (2026-11-14): its own exam "SSC CPO" (`ssc-cpo`), stage CPO in the "SSC" family.
+16 shifts: 2024 (27-29 Jun, 8 shifts, PW's TCS prints, `cpo_2024`) and 2025 (9-12 Dec, 8 shifts,
+sscstudy's browser prints of the challenge-module sheet, `cpo_2025`, read with `--page-frame`),
+3,200 transcribed, 3,195 rows PRIVATE (5 are word-for-word repeats, repeats.json). Same lane,
+`Day.exam = "cpo"`, ids `cpo-t1-...`; CPO prints 50 each of Reasoning, General Knowledge, Quant,
+English (`CPO_LAYOUT`). Blind agreement with SSC's key 95-100% per shift. Mocks: `SSC_CPO_P1_PAPER`
+(200 q, 2 h, +1/-0.25), one per shift, opt-in until the rows are PUBLIC:
+`npx tsx scripts/mocks/build.ts --paper=ssc-cpo --apply`. CPO 2026 Paper I is held 20-28 Nov 2026.**
+
 **Flawed questions are PUBLIC with a notice and ride as grace.** A `flawed: yes` block (defective as
 printed, or a key we dispute) must carry a `notice:` line for students (build.ts refuses one
 without); `studentSolution` puts it above the solution, and `publish.ts` copies it to the bank
@@ -131,7 +140,11 @@ The transcript's `answer:` is ours, derived from the sheets (which never show th
 On review:
 - **Judgement items** (does a conclusion follow, is an assumption implicit) and facts we
   guessed: the bank carries SSC's key, and `blind:` keeps our original answer so the blind
-  accuracy is never rewritten.
+  accuracy is never rewritten. **Rewrite the solution too**, so it argues the answer shown and
+  names the other reading: changing only `answer:` left about 40 shipped CGL and CHSL rows
+  showing SSC's answer under a solution that concluded ours (fixed in place 2026-11-14).
+  `build.ts` fails a block whose last solution paragraph names the blind option and not the
+  answer; a paragraph naming neither still passes, so read it.
 - **Where the key looks wrong** (grammar, maths, fact): our answer stays, with a note, and the
   row is `flawed: yes`, so it stays PRIVATE until someone reviews it.
 
@@ -354,6 +367,11 @@ watermark baked in and PW's logo laid over. CHSL 2026 Tier I has not been held y
   on a photo, key colour fatal; writes `figures/<shift>/` and `out/<shift>/figure-review.png`. 41
   figure questions in 2025, every crop looked at.
 - **14 Nov 2025 Shift 3** is another print (frameless, two lines per option, 1167 px): not read.
+- **CPO 2025** (sscstudy's day files, two shifts each, `shiftPages`) prints a page frame: its top
+  rule, a thick dark box border ("solid", which ends the options) and a grey status bar all read
+  as rules without `--page-frame` (`challenge_extract.py`, `challenge_sheets.py`). Its figures:
+  touching shapes join the crop (a mirror line and its labels), a pale ruled line is kept, and a
+  stem drawn in two rows ("Figure 1" / "Figure 2") is cut by eye with `<n>:stem@Y0-Y1`.
 
 ## Not read yet (source problems, not ours)
 

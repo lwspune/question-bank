@@ -780,6 +780,27 @@ export const SSC_CHSL_T1_PAPER: MockPaperBlueprint = {
 };
 
 /**
+ * SSC CPO Paper I (Sub-Inspector in Delhi Police and CAPFs): 200 questions, 200 marks, two
+ * hours, +1 / -0.25, four parts of 50 in the order SSC prints them: General Intelligence and
+ * Reasoning, General Knowledge and General Awareness, Quantitative Aptitude, English
+ * Comprehension.
+ */
+export const SSC_CPO_P1_PAPER: MockPaperBlueprint = {
+  code: "paper-1",
+  examName: "SSC CPO",
+  examSlug: "ssc-cpo",
+  paperLabel: "Paper I",
+  durationSecs: 120 * 60,
+  marking: { correct: 1, wrong: -0.25 },
+  sections: [
+    { key: "reasoning", label: "General Intelligence and Reasoning", subjects: ["Reasoning"], count: 50 },
+    { key: "general-awareness", label: "General Knowledge and General Awareness", subjects: SSC_GA, count: 50 },
+    { key: "quantitative-aptitude", label: "Quantitative Aptitude", subjects: ["Quantitative Aptitude"], count: 50 },
+    { key: "english", label: "English Comprehension", subjects: ["English"], count: 50 },
+  ],
+};
+
+/**
  * SSC CGL Tier II Paper 1, the RANKED part (owner, 2026-10-17): Section I (Mathematical
  * Abilities 30, Reasoning 30) and Section II (English 45, General Awareness 25), an hour
  * each, +3 / -1: the 390 marks SSC ranks on. The runner has one clock, so the two hours
@@ -1210,6 +1231,7 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   UPSC_CSAT_PAPER,
   SSC_CGL_T1_PAPER,
   SSC_CHSL_T1_PAPER,
+  SSC_CPO_P1_PAPER,
   SSC_CGL_T2_PAPER,
   SSC_CGL_T2_COMPUTER_PAPER,
   SSC_CGL_T2_QUANT_PAPER,

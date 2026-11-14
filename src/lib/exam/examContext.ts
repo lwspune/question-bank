@@ -46,6 +46,7 @@ export type ExamSlug =
   | "ssc-cgl"
   | "ssc-cgl-tier-2"
   | "ssc-chsl"
+  | "ssc-cpo"
   | "imat"
   | "spi"
   | "uceed"
@@ -1094,6 +1095,26 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     family: "SSC",
     familyStage: "CHSL",
     familyLabel: "Tier I",
+    familyAxis: "Tier",
+    hasMocks: true, // one mock per shift
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "ssc-cpo",
+    // SSC CPO: Sub-Inspector in Delhi Police and the CAPFs, graduates only.
+    tier: "graduate",
+    goal: "government",
+    displayName: "SSC CPO",
+    examName: "SSC CPO", // must match the `exams` DB row exactly
+    // Paper I of CPO 2024 (27-29 Jun 2024, 8 shifts) and CPO 2025 (9-12 Dec 2025,
+    // 8 shifts): 3,200 questions from SSC's own response sheets, read by the CGL lane
+    // (scripts/ssc-cgl/, `exam: "cpo"`), every answer derived blind and compared with
+    // SSC's key. 4 x 50 (Reasoning, General Knowledge, Quant, English), +1/-0.25, 2 hours.
+    family: "SSC",
+    familyStage: "CPO",
+    familyLabel: "Paper I",
     familyAxis: "Tier",
     hasMocks: true, // one mock per shift
     pastPaperSolutions: true,
