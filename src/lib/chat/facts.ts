@@ -153,7 +153,7 @@ export const NAV_FACTS: readonly string[] = [
   "/signup: create a free account (Google or email).",
   "/pricing: the Premium Pass and how to buy it.",
   "/about: who runs PYQ Vault, and the contact form to write to the team about a payment, the pass or an account problem.",
-  "The app: there is no app in the Play Store or App Store, but the site installs like one. On a phone, open pyqvault.com in the browser and choose Add to Home screen (Chrome: the three-dot menu; iPhone Safari: the Share button). It then opens from the home screen in its own window, like an app.",
+  "/app: how to install the PYQ Vault app. There is no app in the Play Store or App Store, but the site installs like one: on Android, /app has an Install button (or Chrome's three-dot menu, then Add to Home screen); on iPhone, Safari's Share button, then Add to Home Screen. It then opens from the home screen in its own window, like an app.",
 ];
 
 /**

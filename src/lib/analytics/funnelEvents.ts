@@ -204,6 +204,23 @@ export const FUNNEL_EVENTS = [
    * many come back at all.
    */
   "back_to_question_restored",
+  /**
+   * The Install button on /app was tapped and Chrome's install box answered
+   * (2026-11-14, growth registry "install-app"); props: outcome ("accepted" |
+   * "dismissed"), platform ("android" | "desktop"). /app page views are its scale.
+   */
+  "app_install_click",
+  /**
+   * The browser says PYQ Vault was installed; prop: via ("button" = our Install
+   * button, "browser" = the browser's own menu or banner). Chrome and Edge only:
+   * an iPhone Add to Home Screen fires nothing, so read it beside app_opened.
+   */
+  "app_installed",
+  /**
+   * PYQ Vault was opened from its home-screen icon (it runs in its own window).
+   * Once per launch; no props. The one count that covers iPhone installs too.
+   */
+  "app_opened",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];

@@ -87,6 +87,7 @@ describe("EXPERIMENTS", () => {
       "homework-tab",
       "imat",
       "indexing",
+      "install-app",
       "learn",
       "mock-before-start",
       "mock-together",

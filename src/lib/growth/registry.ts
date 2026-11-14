@@ -319,6 +319,18 @@ export const WELCOME_SCREEN1_LEFT_BASELINE_PCT = 35;
  */
 export const EXAM_GUESS_CARD_TAP_KEEP_PCT = 20;
 /**
+ * "install-app": students (staff left out) who must open the installed app in
+ * the 4 weeks before a Play Store listing is worth building; about 8 had asked
+ * for an app in the 4 weeks before /app existed.
+ */
+export const INSTALL_APP_STUDENTS_KEEP = 30;
+/**
+ * "install-app": of 1,174 students active 17-30 Oct 2026, the share active on
+ * 3+ other IST days in the 14 days after their first day in that window (20.8%;
+ * 44.8% came back at all). Installed students must beat it.
+ */
+export const INSTALL_APP_RETURN_BASELINE_PCT = 21;
+/**
  * "answer-limit-copy": of students who met the answer limit in the 30 days to
  * 2026-11-11, the share who opened checkout from it (35 of 360) and who bought
  * a pass afterwards (16 of 360), staff left out.
@@ -455,7 +467,8 @@ export type Readout =
   | "checkout-contact"
   | "checkout-return"
   | "welcome-exam-confirm"
-  | "exam-guess-card";
+  | "exam-guess-card"
+  | "install-app";
 
 export type Experiment = {
   id: string;
@@ -1325,6 +1338,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-14",
     windowDays: 14,
     readout: "exam-guess-card",
+    status: "running",
+  },
+  {
+    id: "install-app",
+    title: "Install PYQ Vault from the site (/app)",
+    change:
+      "A public /app page installs PYQ Vault to the home screen: one Install button on Android Chrome, the Share steps on iPhone, \"open this in Chrome or Safari first\" inside Instagram or Facebook. The account menu (phones not yet running the app) and the footer link to it, and V's app answer points at it. The service worker now registers for every visitor, which some Chrome versions need before they offer an install; Chrome's own install bar stays suppressed, so the offer appears only where we put it.",
+    why: "About 8 students asked for an app in the four weeks to 2026-11-13 (7 asked V, 1 the contact form). The site already installed like an app, but nothing offered it. A Play Store listing comes next only if installs are real and installed students come back more.",
+    metric:
+      "Vercel events: app_install_click (outcome), app_installed (via button or browser), app_opened (launches from the icon, the one count that covers iPhone too), against /app page views. student_profiles.app_opened_at (migration 0255, staff left out): students who opened the installed app, and of those, the share active on 3+ other IST days in the 14 days after that date, against the share of all students active in the same weeks (20.8% of 1,174 who were active 17-30 Oct). Installers are self-selected keen students, so a higher share is a floor test, not proof the app caused it",
+    rule: `List it on the Play Store next (a Trusted Web Activity) if ${INSTALL_APP_STUDENTS_KEEP}+ students open the installed app in the 4 weeks AND their 3+-day return share beats ${INSTALL_APP_RETURN_BASELINE_PCT}%. Fewer installs: keep /app as it is and stop there.`,
+    liveSince: "2026-11-14",
+    windowDays: 28,
+    readout: "install-app",
     status: "running",
   },
 

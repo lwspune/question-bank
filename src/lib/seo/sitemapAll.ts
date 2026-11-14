@@ -827,6 +827,13 @@ export async function allSitemapEntries(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     },
     {
+      // How to install PYQ Vault on a phone (2026-11-14).
+      url: `${SITE_URL}/app`,
+      lastModified: buildDate,
+      changeFrequency: "yearly",
+      priority: 0.4,
+    },
+    {
       url: `${SITE_URL}/privacy`,
       lastModified: buildDate,
       changeFrequency: "yearly",

@@ -4316,6 +4316,7 @@ export type Database = {
           acq_medium: string | null
           acq_referrer_host: string | null
           acq_source: string | null
+          app_opened_at: string | null
           city: string | null
           consent: boolean
           created_at: string
@@ -4346,6 +4347,7 @@ export type Database = {
           acq_medium?: string | null
           acq_referrer_host?: string | null
           acq_source?: string | null
+          app_opened_at?: string | null
           city?: string | null
           consent?: boolean
           created_at?: string
@@ -4376,6 +4378,7 @@ export type Database = {
           acq_medium?: string | null
           acq_referrer_host?: string | null
           acq_source?: string | null
+          app_opened_at?: string | null
           city?: string | null
           consent?: boolean
           created_at?: string

@@ -50,6 +50,9 @@ describe("FUNNEL_EVENTS", () => {
       "back_to_question_shown",
       "back_to_question_click",
       "back_to_question_restored",
+      "app_install_click",
+      "app_installed",
+      "app_opened",
     ]);
   });
 
