@@ -150,6 +150,15 @@ export function planToMoves(plan: RecutPlan, dumpRows: { id: string }[]): { erro
  * whole file expanded every inline array and turned a 20-row move into a 2,700-line diff.
  */
 export function patchEntryText(raw: string, number: string, to: Target): { text: string; matched: number } {
+  return patchEntryFields(raw, number, { subject: to.subject, chapter: to.chapter, subtopic: to.subtopic });
+}
+
+/**
+ * The general form: rewrite any existing string fields of the entry numbered `number` (a solution,
+ * a stem), as text. Entries here start with "number", so an entry's fields run from its "number"
+ * to the next one. Throws when the entry lacks a field: appending one would change the file's shape.
+ */
+export function patchEntryFields(raw: string, number: string, fields: Record<string, string>): { text: string; matched: number } {
   const esc = number.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const head = new RegExp(`"number"\\s*:\\s*(?:${esc}|"${esc}")\\s*(?=[,}\\r\\n])`, "g");
   const starts = [...raw.matchAll(head)].map((m) => m.index!);
@@ -160,12 +169,10 @@ export function patchEntryText(raw: string, number: string, to: Target): { text:
     const next = text.slice(start + 1).search(/"number"\s*:/);
     const end = next === -1 ? text.length : start + 1 + next;
     let seg = text.slice(start, end);
-    for (const [field, value] of [
-      ["subject", to.subject],
-      ["chapter", to.chapter],
-      ["subtopic", to.subtopic],
-    ] as const) {
-      seg = seg.replace(new RegExp(`("${field}"\\s*:\\s*)"(?:[^"\\\\]|\\\\.)*"`), (_m, pre) => pre + JSON.stringify(value));
+    for (const [field, value] of Object.entries(fields)) {
+      const re = new RegExp(`("${field}"\\s*:\\s*)"(?:[^"\\\\]|\\\\.)*"`);
+      if (!re.test(seg)) throw new Error(`entry ${number} has no "${field}" string field`);
+      seg = seg.replace(re, (_m, pre) => pre + JSON.stringify(value));
     }
     text = text.slice(0, start) + seg + text.slice(end);
   }

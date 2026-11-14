@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { patchEntryText, planMoves, planToMoves, sourceKeyFor, updateSourceEntries, type RowNow } from "../scripts/neet/retaxLib";
+import { patchEntryFields, patchEntryText, planMoves, planToMoves, sourceKeyFor, updateSourceEntries, type RowNow } from "../scripts/neet/retaxLib";
 
 const catalog = {
   Physics: ["Units and Measurements"],
@@ -197,5 +197,20 @@ describe("patchEntryText", () => {
 
   it("reports 0 for a number no entry has", () => {
     expect(patchEntryText(raw, "7", { subject: "x", chapter: "y", subtopic: "z" }).matched).toBe(0);
+  });
+});
+
+describe("patchEntryFields", () => {
+  const raw = '[\n  {\n    "number": 5,\n    "stem": "Old \\\\(x\\\\)",\n    "solution": "NCERT-XI-61"\n  }\n]';
+
+  it("rewrites any named string fields of one entry, JSON-escaping backslashes and quotes", () => {
+    const sol = 'Because \\(a\\) is "right".';
+    const { text, matched } = patchEntryFields(raw, "5", { solution: sol });
+    expect(matched).toBe(1);
+    expect(JSON.parse(text)[0]).toEqual({ number: 5, stem: "Old \\(x\\)", solution: sol });
+  });
+
+  it("refuses a field the entry does not have, rather than appending one", () => {
+    expect(() => patchEntryFields(raw, "5", { reasoning: "x" })).toThrow(/reasoning/);
   });
 });
