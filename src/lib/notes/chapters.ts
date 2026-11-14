@@ -2401,6 +2401,46 @@ import {
   SSC_KINEMATICS_NOTES,
   SSC_KINEMATICS_SLUGS,
 } from "@/app/notes/ssc-cgl-physics/kinematics/_data";
+import {
+  NEET_BO_LW_CHAPTER,
+  NEET_BO_LW_NOTES,
+  NEET_BO_LW_SLUGS,
+} from "@/app/notes/neet-botany/living-world/_data";
+import {
+  NEET_BO_CE_CHAPTER,
+  NEET_BO_CE_NOTES,
+  NEET_BO_CE_SLUGS,
+} from "@/app/notes/neet-botany/cell-unit-of-life/_data";
+import {
+  NEET_BO_CC_CHAPTER,
+  NEET_BO_CC_NOTES,
+  NEET_BO_CC_SLUGS,
+} from "@/app/notes/neet-botany/cell-cycle/_data";
+import {
+  NEET_BO_PK_CHAPTER,
+  NEET_BO_PK_NOTES,
+  NEET_BO_PK_SLUGS,
+} from "@/app/notes/neet-botany/plant-kingdom/_data";
+import {
+  NEET_BO_MO_CHAPTER,
+  NEET_BO_MO_NOTES,
+  NEET_BO_MO_SLUGS,
+} from "@/app/notes/neet-botany/morphology/_data";
+import {
+  NEET_BO_AN_CHAPTER,
+  NEET_BO_AN_NOTES,
+  NEET_BO_AN_SLUGS,
+} from "@/app/notes/neet-botany/anatomy/_data";
+import {
+  NEET_BO_PS_CHAPTER,
+  NEET_BO_PS_NOTES,
+  NEET_BO_PS_SLUGS,
+} from "@/app/notes/neet-botany/photosynthesis/_data";
+import {
+  NEET_BO_RS_CHAPTER,
+  NEET_BO_RS_NOTES,
+  NEET_BO_RS_SLUGS,
+} from "@/app/notes/neet-botany/respiration/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -7728,6 +7768,95 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_KINEMATICS_CHAPTER,
     notes: SSC_KINEMATICS_NOTES,
     slugs: SSC_KINEMATICS_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "living-world",
+    chipLabel: "The Living World notes",
+    chapter: NEET_BO_LW_CHAPTER,
+    notes: NEET_BO_LW_NOTES,
+    slugs: NEET_BO_LW_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "cell-unit-of-life",
+    chipLabel: "Cell: The Unit of Life notes",
+    titleName: "Cell, the Unit of Life",
+    chapter: NEET_BO_CE_CHAPTER,
+    notes: NEET_BO_CE_NOTES,
+    slugs: NEET_BO_CE_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "cell-cycle",
+    chipLabel: "Cell Cycle and Cell Division notes",
+    chapter: NEET_BO_CC_CHAPTER,
+    notes: NEET_BO_CC_NOTES,
+    slugs: NEET_BO_CC_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "plant-kingdom",
+    chipLabel: "Plant Kingdom notes",
+    chapter: NEET_BO_PK_CHAPTER,
+    notes: NEET_BO_PK_NOTES,
+    slugs: NEET_BO_PK_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "morphology",
+    chipLabel: "Morphology of Flowering Plants notes",
+    chapter: NEET_BO_MO_CHAPTER,
+    notes: NEET_BO_MO_NOTES,
+    slugs: NEET_BO_MO_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "anatomy",
+    chipLabel: "Anatomy of Flowering Plants notes",
+    chapter: NEET_BO_AN_CHAPTER,
+    notes: NEET_BO_AN_NOTES,
+    slugs: NEET_BO_AN_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "photosynthesis",
+    chipLabel: "Photosynthesis in Higher Plants notes",
+    chapter: NEET_BO_PS_CHAPTER,
+    notes: NEET_BO_PS_NOTES,
+    slugs: NEET_BO_PS_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "respiration",
+    chipLabel: "Respiration in Plants notes",
+    chapter: NEET_BO_RS_CHAPTER,
+    notes: NEET_BO_RS_NOTES,
+    slugs: NEET_BO_RS_SLUGS,
   },
 ];
 

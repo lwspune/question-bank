@@ -10722,6 +10722,160 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 2,
       "traps": 2
     }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "living-world",
+    "chipLabel": "The Living World notes",
+    "slugs": [
+      "nbo-lw-naming",
+      "nbo-lw-categories"
+    ],
+    "chapterName": "The Living World",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 6,
+      "traps": 14
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "cell-unit-of-life",
+    "chipLabel": "Cell: The Unit of Life notes",
+    "titleName": "Cell, the Unit of Life",
+    "slugs": [
+      "nbo-ce-prokaryotic",
+      "nbo-ce-endomembrane",
+      "nbo-ce-organelles",
+      "nbo-ce-nucleus"
+    ],
+    "chapterName": "Cell: The Unit of Life",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 12,
+      "traps": 33
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "cell-cycle",
+    "chipLabel": "Cell Cycle and Cell Division notes",
+    "slugs": [
+      "nbo-cc-cycle",
+      "nbo-cc-meiosis"
+    ],
+    "chapterName": "Cell Cycle and Cell Division",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 5,
+      "traps": 19
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "plant-kingdom",
+    "chipLabel": "Plant Kingdom notes",
+    "slugs": [
+      "nbo-pk-algae",
+      "nbo-pk-bryophytes",
+      "nbo-pk-pteridophytes",
+      "nbo-pk-gymnosperms"
+    ],
+    "chapterName": "Plant Kingdom",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 13,
+      "traps": 31
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "morphology",
+    "chipLabel": "Morphology of Flowering Plants notes",
+    "slugs": [
+      "nbo-mo-organs",
+      "nbo-mo-flower",
+      "nbo-mo-gynoecium",
+      "nbo-mo-families"
+    ],
+    "chapterName": "Morphology of Flowering Plants",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 11,
+      "traps": 26
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "anatomy",
+    "chipLabel": "Anatomy of Flowering Plants notes",
+    "slugs": [
+      "nbo-an-tissues",
+      "nbo-an-organs",
+      "nbo-an-secondary"
+    ],
+    "chapterName": "Anatomy of Flowering Plants",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 9,
+      "traps": 27
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "photosynthesis",
+    "chipLabel": "Photosynthesis in Higher Plants notes",
+    "slugs": [
+      "nbo-ps-light",
+      "nbo-ps-calvin",
+      "nbo-ps-c4"
+    ],
+    "chapterName": "Photosynthesis in Higher Plants",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 7,
+      "traps": 24
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "respiration",
+    "chipLabel": "Respiration in Plants notes",
+    "slugs": [
+      "nbo-rs-glycolysis",
+      "nbo-rs-krebs",
+      "nbo-rs-yield"
+    ],
+    "chapterName": "Respiration in Plants",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 6,
+      "traps": 26
+    }
   }
 ];
 
@@ -11249,4 +11403,12 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "ssc-cgl-physics/sound": () => import("@/app/notes/ssc-cgl-physics/sound/_data").then((m) => ({ chapter: m.SSC_SOUND_CHAPTER, notes: m.SSC_SOUND_NOTES })),
   "ssc-cgl-physics/heat-thermodynamics": () => import("@/app/notes/ssc-cgl-physics/heat-thermodynamics/_data").then((m) => ({ chapter: m.SSC_HEAT_THERMODYNAMICS_CHAPTER, notes: m.SSC_HEAT_THERMODYNAMICS_NOTES })),
   "ssc-cgl-physics/kinematics": () => import("@/app/notes/ssc-cgl-physics/kinematics/_data").then((m) => ({ chapter: m.SSC_KINEMATICS_CHAPTER, notes: m.SSC_KINEMATICS_NOTES })),
+  "neet-botany/living-world": () => import("@/app/notes/neet-botany/living-world/_data").then((m) => ({ chapter: m.NEET_BO_LW_CHAPTER, notes: m.NEET_BO_LW_NOTES })),
+  "neet-botany/cell-unit-of-life": () => import("@/app/notes/neet-botany/cell-unit-of-life/_data").then((m) => ({ chapter: m.NEET_BO_CE_CHAPTER, notes: m.NEET_BO_CE_NOTES })),
+  "neet-botany/cell-cycle": () => import("@/app/notes/neet-botany/cell-cycle/_data").then((m) => ({ chapter: m.NEET_BO_CC_CHAPTER, notes: m.NEET_BO_CC_NOTES })),
+  "neet-botany/plant-kingdom": () => import("@/app/notes/neet-botany/plant-kingdom/_data").then((m) => ({ chapter: m.NEET_BO_PK_CHAPTER, notes: m.NEET_BO_PK_NOTES })),
+  "neet-botany/morphology": () => import("@/app/notes/neet-botany/morphology/_data").then((m) => ({ chapter: m.NEET_BO_MO_CHAPTER, notes: m.NEET_BO_MO_NOTES })),
+  "neet-botany/anatomy": () => import("@/app/notes/neet-botany/anatomy/_data").then((m) => ({ chapter: m.NEET_BO_AN_CHAPTER, notes: m.NEET_BO_AN_NOTES })),
+  "neet-botany/photosynthesis": () => import("@/app/notes/neet-botany/photosynthesis/_data").then((m) => ({ chapter: m.NEET_BO_PS_CHAPTER, notes: m.NEET_BO_PS_NOTES })),
+  "neet-botany/respiration": () => import("@/app/notes/neet-botany/respiration/_data").then((m) => ({ chapter: m.NEET_BO_RS_CHAPTER, notes: m.NEET_BO_RS_NOTES })),
 };

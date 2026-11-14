@@ -526,7 +526,15 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-physics/units-measurement",
   "ssc-cgl-physics/sound",
   "ssc-cgl-physics/heat-thermodynamics",
-  "ssc-cgl-physics/kinematics"
+  "ssc-cgl-physics/kinematics",
+  "neet-botany/living-world",
+  "neet-botany/cell-unit-of-life",
+  "neet-botany/cell-cycle",
+  "neet-botany/plant-kingdom",
+  "neet-botany/morphology",
+  "neet-botany/anatomy",
+  "neet-botany/photosynthesis",
+  "neet-botany/respiration"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1053,4 +1061,12 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-physics/sound": () => import("@/app/notes/ssc-cgl-physics/sound/_data").then((m) => m.SSC_SOUND_NOTES),
   "ssc-cgl-physics/heat-thermodynamics": () => import("@/app/notes/ssc-cgl-physics/heat-thermodynamics/_data").then((m) => m.SSC_HEAT_THERMODYNAMICS_NOTES),
   "ssc-cgl-physics/kinematics": () => import("@/app/notes/ssc-cgl-physics/kinematics/_data").then((m) => m.SSC_KINEMATICS_NOTES),
+  "neet-botany/living-world": () => import("@/app/notes/neet-botany/living-world/_data").then((m) => m.NEET_BO_LW_NOTES),
+  "neet-botany/cell-unit-of-life": () => import("@/app/notes/neet-botany/cell-unit-of-life/_data").then((m) => m.NEET_BO_CE_NOTES),
+  "neet-botany/cell-cycle": () => import("@/app/notes/neet-botany/cell-cycle/_data").then((m) => m.NEET_BO_CC_NOTES),
+  "neet-botany/plant-kingdom": () => import("@/app/notes/neet-botany/plant-kingdom/_data").then((m) => m.NEET_BO_PK_NOTES),
+  "neet-botany/morphology": () => import("@/app/notes/neet-botany/morphology/_data").then((m) => m.NEET_BO_MO_NOTES),
+  "neet-botany/anatomy": () => import("@/app/notes/neet-botany/anatomy/_data").then((m) => m.NEET_BO_AN_NOTES),
+  "neet-botany/photosynthesis": () => import("@/app/notes/neet-botany/photosynthesis/_data").then((m) => m.NEET_BO_PS_NOTES),
+  "neet-botany/respiration": () => import("@/app/notes/neet-botany/respiration/_data").then((m) => m.NEET_BO_RS_NOTES),
 };

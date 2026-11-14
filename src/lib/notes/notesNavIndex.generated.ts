@@ -3664,5 +3664,61 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL Physics",
     "chapterSlug": "kinematics",
     "subtopicCount": 1
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "living-world",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "cell-unit-of-life",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "cell-cycle",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "plant-kingdom",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "morphology",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "anatomy",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "photosynthesis",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "respiration",
+    "subtopicCount": 3
   }
 ];
