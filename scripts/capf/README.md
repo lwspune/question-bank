@@ -71,8 +71,9 @@ solver can see it; then it is copied to `data/<year>.key.json`.
 
 ## Status (2026-11-14)
 
-**All nine papers, 2018-2026, are committed PRIVATE: 1,125 rows.** Not yet
-public: no EXAM_REGISTRY entry, no mocks.
+**All nine papers, 2018-2026, are PUBLIC (2026-11-14): 1,125 rows,** with the
+`capf-ac` registry entry and 9 mocks built as DRAFTS (`capf-ac-paper-1-<year>`),
+to be published with the push (MOCKS.md).
 
 **The 2026 pilot, measured against UPSC's provisional key:** each blind pass
 122/124 (98.4%), HIGH confidence 104/104 and 106/106. The passes agreed on all
