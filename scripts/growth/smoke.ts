@@ -309,6 +309,10 @@ async function main() {
         // Read by hand: the v_chapter rows of the chapter-fix readout (views and drill starts).
         line = "by hand: scripts/drill/chapter-fix-readout.sql (v_chapter rows)";
         break;
+      case "same-mistake":
+        // Read by hand: the same query as the baseline, over the weeks since launch.
+        line = "by hand: scripts/moments/same-mistake-readout.sql";
+        break;
       case "v-follow-up-loop":
         // Read by hand: v_followups against Ask V explanations (migration 0250, V_LEARNING_LOOP.md step 2).
         line = "by hand: npm run v:learning";

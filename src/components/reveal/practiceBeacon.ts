@@ -11,9 +11,8 @@ import { milestoneMessage } from "@/lib/celebrate/milestones";
 import { crowdMessage, type CrowdTier } from "@/lib/celebrate/crowd";
 import { celebrateInTurn, type VMessage } from "@/components/celebrate/celebrate";
 import { invalidatePulse } from "@/lib/viewer/usePulse";
-import { parseFixNudge, showFixNudge } from "./fixNudgeStore";
-import { showStuckOffer } from "./stuckOfferStore";
-import { parseStuckOffer } from "@/lib/questions/stuckOffer";
+import { showMoment } from "./momentStore";
+import { parseMoment } from "@/lib/questions/teachingMoment";
 
 /**
  * Client-side queue for the answer-reveal practice signal.
@@ -47,9 +46,11 @@ import { parseStuckOffer } from "@/lib/questions/stuckOffer";
  * spent once shown. A milestone crossed on a beacon flush is awarded by the
  * next flush that asks, since the award is "the highest reached, if new".
  *
- * THE FIX NUDGE (2026-10-05) rides on the same reply: `fixNudge` names the
- * bank card whose wrong answer was the day's 5th, 10th, 15th… and that card
- * shows the line (fixNudgeStore). The due badge is refreshed with it.
+ * THE ONE LINE (2026-11-14) rides on the same reply: `moment` names the bank
+ * card just answered and the single teaching moment it shows
+ * (lib/questions/teachingMoment, momentStore). A moment comes with a wrong
+ * answer, which adds to Fix your mistakes, so the due badge is refreshed with
+ * it (the retired Fix nudge used to do that every fifth miss).
  */
 
 const ENDPOINT = "/api/activity/practice";
@@ -121,19 +122,17 @@ function send(json: string, useBeacon: boolean): void {
       .then(async (res) => {
         // 204 is the normal reply; only a 200 carries a milestone.
         if (res.status !== 200) return;
-        const reply = (await res.json()) as { milestone?: unknown; crowd?: unknown; fixNudge?: unknown; stuck?: unknown };
-        const nudge = parseFixNudge(reply.fixNudge);
-        if (nudge) showFixNudge(nudge);
-        // The stuck offer (2026-11-10): 3 of the last 4 on a subtopic wrong.
-        const stuck = parseStuckOffer(reply.stuck);
-        if (stuck) showStuckOffer(stuck);
+        const reply = (await res.json()) as { milestone?: unknown; crowd?: unknown; moment?: unknown };
+        // The one line under the answer (lib/questions/teachingMoment).
+        const moment = parseMoment(reply.moment);
+        if (moment) showMoment(moment);
         const messages: VMessage[] = [];
         if (reply.crowd === 70 || reply.crowd === 80 || reply.crowd === 90) {
           messages.push({ text: crowdMessage(reply.crowd as CrowdTier), face: "laugh" });
         }
         if (typeof reply.milestone === "number") messages.push({ text: milestoneMessage(reply.milestone), face: "talk" });
         celebrateInTurn(messages);
-        if (typeof reply.milestone === "number" || nudge) invalidatePulse();
+        if (typeof reply.milestone === "number" || moment) invalidatePulse();
       })
       .catch(() => {
         /* a lost practice signal is not worth surfacing to a student */

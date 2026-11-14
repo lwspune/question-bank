@@ -3,16 +3,16 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Lightbulb } from "lucide-react";
-import { stuckOfferLine } from "@/lib/questions/stuckOffer";
+import { stuckOfferLine, type StuckOffer } from "@/lib/questions/stuckOffer";
 import { askVText } from "@/lib/chat/askVEvent";
 import { sendActivity, sendActivityOnce } from "@/lib/activity/clientBeacon";
 import VQuestionCard from "@/components/chat/VQuestionCard";
-import { dismissStuckOffer, useStuckOffer } from "./stuckOfferStore";
+import { dismissMoment } from "./momentStore";
 
 /**
  * "3 of your last 4 on <subtopic> were wrong. Want help with the idea behind
  * it?" under a bank answer (owner, 2026-11-10). The rule is
- * lib/questions/stuckOffer; how the card learns it is stuckOfferStore.
+ * lib/questions/stuckOffer; it is one of the moments MomentLine draws (the one line under an answer).
  * Teach me the idea opens our notes for the subtopic (the card's own notes
  * chip link, with a way back: lib/browse/backToQuestion) or, with none, asks V for the idea; Try an easier one shows an
  * easier question from the subtopic here, as V's try card; Keep going folds it
@@ -24,23 +24,23 @@ const BUTTON =
 type Action = "teach" | "easier" | "keep";
 
 export default function StuckOfferLine({
+  offer,
   questionId,
   notesHref,
   onTeach,
 }: {
+  offer: StuckOffer;
   questionId: string;
   notesHref: string | null;
   /** Called as Teach me the idea opens the notes, so the card can save the way back. */
   onTeach?: (offer: { subtopic: string; easierId: string | null }) => void;
 }) {
-  const offer = useStuckOffer(questionId);
   const [easier, setEasier] = useState(false);
 
   useEffect(() => {
-    if (offer) sendActivityOnce(`stuck_offer:shown:${questionId}`, { kind: "surface_viewed", surface: "stuck_offer", questionId, action: "shown" });
-  }, [offer, questionId]);
+    sendActivityOnce(`stuck_offer:shown:${questionId}`, { kind: "surface_viewed", surface: "stuck_offer", questionId, action: "shown" });
+  }, [questionId]);
 
-  if (!offer) return null;
   const track = (action: Action) => sendActivity({ kind: "surface_viewed", surface: "stuck_offer", questionId, action });
 
   return (
@@ -95,7 +95,7 @@ export default function StuckOfferLine({
             className="inline-flex min-h-9 items-center rounded-lg px-2 text-sm text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             onClick={() => {
               track("keep");
-              dismissStuckOffer(questionId);
+              dismissMoment(questionId);
             }}
           >
             Keep going

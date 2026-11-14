@@ -564,3 +564,29 @@ describe("parseClientEvent - the repeat line", () => {
     expect(parseClientEvent({ ...ok, questionId: "x" }, "u1", NOW).ok).toBe(false);
   });
 });
+
+// The one line under a bank answer (2026-11-14, lib/questions/teachingMoment): which moment was seen.
+describe("parseClientEvent - a teaching moment", () => {
+  const TQ = "0f8fad5b-d9cb-469f-a165-70867728950e";
+
+  it("records Same mistake again as seen, once per question per day", () => {
+    expect(
+      parseClientEvent({ kind: "surface_viewed", surface: "teaching_moment", moment: "same_mistake", questionId: TQ, action: "shown" }, "u1", NOW)
+    ).toEqual({
+      ok: true,
+      value: {
+        kind: "surface_viewed",
+        metadata: { surface: "teaching_moment", moment: "same_mistake", questionId: TQ, action: "shown" },
+        dedupeKey: `view:teaching_moment:same_mistake:shown:${TQ}:u1:2026-09-27`,
+      },
+    });
+  });
+
+  it("refuses an unknown moment, step or question id", () => {
+    const ok = { kind: "surface_viewed", surface: "teaching_moment", moment: "same_mistake", questionId: TQ, action: "shown" };
+    expect(parseClientEvent(ok, "u1", NOW).ok).toBe(true);
+    expect(parseClientEvent({ ...ok, moment: "fix_nudge" }, "u1", NOW).ok).toBe(false);
+    expect(parseClientEvent({ ...ok, action: "bought" }, "u1", NOW).ok).toBe(false);
+    expect(parseClientEvent({ ...ok, questionId: "x" }, "u1", NOW).ok).toBe(false);
+  });
+});

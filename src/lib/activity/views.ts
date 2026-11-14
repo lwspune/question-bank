@@ -97,6 +97,9 @@ export const SURFACES = [
   // metadata.action (shown, see_all), metadata.questionId and metadata.from
   // (card, drill, mock_review).
   "repeat_line",
+  // The one line under a bank answer (2026-11-14, lib/questions/teachingMoment):
+  // metadata.moment (same_mistake), metadata.action (shown) and metadata.questionId.
+  "teaching_moment",
 ] as const;
 
 export type Surface = (typeof SURFACES)[number];

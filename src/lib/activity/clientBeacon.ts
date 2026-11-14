@@ -49,6 +49,14 @@ type ClientEvent =
       action: "shown" | "teach" | "easier" | "keep" | "returned" | "try_after";
     }
   | {
+      /** A teaching moment under a bank answer seen (lib/questions/teachingMoment). */
+      kind: "surface_viewed";
+      surface: "teaching_moment";
+      moment: "same_mistake";
+      questionId: string;
+      action: "shown";
+    }
+  | {
       /** The Review traps panel seen, opened (Show more) or its playbook link tapped. */
       kind: "surface_viewed";
       surface: "review_traps";

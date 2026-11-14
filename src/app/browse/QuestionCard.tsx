@@ -43,11 +43,10 @@ import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
 import RevealLockedLink from "@/components/reveal/RevealLockedLink";
 import { RevealDailyLink, RevealDailyPrompt } from "@/components/reveal/RevealDailyLimit";
-import FixNudgeLine from "@/components/reveal/FixNudgeLine";
 import RepeatLineView from "@/components/question/RepeatLineView";
-import StuckOfferLine from "@/components/reveal/StuckOfferLine";
+import MomentLine from "@/components/reveal/MomentLine";
 import BackFromNotesLine from "@/components/reveal/BackFromNotesLine";
-import { dismissStuckOffer } from "@/components/reveal/stuckOfferStore";
+import { dismissMoment } from "@/components/reveal/momentStore";
 import { clearBackTrip, readBackTrip, saveBackTrip } from "@/components/reveal/backToQuestionStore";
 import { questionAnchorId, returnsTo, type BackSource, type BackTrip } from "@/lib/browse/backToQuestion";
 import PresentButton from "@/components/present/PresentButton";
@@ -257,7 +256,7 @@ export default function QuestionCard({
     }
     if (a.showSolution) setShowSolution(true);
     // After Teach me the idea the offer has done its job: the card asks for one more try instead.
-    if (trip.source === "offer") dismissStuckOffer(question.id);
+    if (trip.source === "offer") dismissMoment(question.id);
     setBackFromNotes(trip);
     trackFunnel("back_to_question_restored", { from: trip.source, how: trip.viaPill ? "pill" : "back" });
     requestAnimationFrame(() => {
@@ -674,12 +673,12 @@ export default function QuestionCard({
               <RepeatLineView line={question.repeat} questionId={question.id} from="card" record={meter.signedIn ? "all" : "none"} />
             )}
 
-            {/* Every fifth wrong bank answer of the day: the misses are saved in
-                Fix your mistakes (lib/drill/fixNudge). Nothing on other cards. */}
-            {surface === "bank" && revealed && <FixNudgeLine questionId={question.id} />}
+            {/* The one line under a bank answer (lib/questions/teachingMoment):
+                at most one teaching moment, chosen by the practice route. */}
             {surface === "bank" && revealed && (
-              <StuckOfferLine
+              <MomentLine
                 questionId={question.id}
+                hasSolution={Boolean(question.solution)}
                 notesHref={resources?.notes?.href ?? null}
                 onTeach={(offer) => resources?.notes && leaveForNotes(resources.notes.href, "offer", offer)}
               />
