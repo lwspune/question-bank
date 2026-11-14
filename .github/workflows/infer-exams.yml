@@ -1,0 +1,42 @@
+name: Guess exams for students with none
+
+# Store the exam guess (migration 0254) for students who never chose an exam:
+# the exam behind 80%+ of their practice, else the one their first page names.
+# Home shows it as "Your exam: X (our guess)" with Correct and Change. It never
+# writes target_exams, which means the student CHOSE the exam.
+#
+# Daily, it takes accounts 3-5 days old with no guess, and anyone who answered
+# a question in the last 26 hours (lib/profile/examGuess `guessDue`). A guess
+# is written only when it is new or names a different exam; a failed read
+# never clears one. The 2026-11-14 backfill (--all) is not repeated here.
+#
+# 01:30 UTC = 07:00 IST: before the day's study, after the night's answers.
+#
+# --apply lives HERE and nowhere else, so `npm run profile:infer-exams` by
+# hand stays a dry run.
+
+on:
+  schedule:
+    - cron: "30 1 * * *"
+  workflow_dispatch: # run on demand from the Actions tab
+
+jobs:
+  infer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # MUST match ci.yml and package.json engines (">=22").
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Guess exams
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: npm run profile:infer-exams -- --apply

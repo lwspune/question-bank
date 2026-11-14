@@ -1,7 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { ExamIdMap } from "@/lib/exam/examNav";
-import { getNotesExamGroups } from "@/lib/notes/notesNav";
-import { suggestTargetExam } from "./suggestExam";
+import { inferStudentExam, type InferredExam } from "./suggestExam";
 
 /** The recent answers looked at: enough to see a pattern, cheap to read. */
 const RECENT_ANSWERS = 200;
@@ -9,16 +8,18 @@ const RECENT_ANSWERS = 200;
 const ID_CHUNK = 150;
 
 /**
- * The exam to suggest to a student with no target exam (suggestExam.ts), read
- * with the student's own client: user_activity and student_profiles are both
- * own-row readable, and PUBLIC questions are readable by anyone. Best effort:
- * any failed read returns null and /me shows its plain "Choose your exam".
+ * The exam to guess for a student with no target exam (suggestExam.ts), read
+ * with the student's own client (user_activity and student_profiles are both
+ * own-row readable, PUBLIC questions by anyone) or, in the daily guess job and
+ * the card's route, the service role. Best effort: any failed read returns
+ * null, which never clears a stored guess and shows /me's plain "Choose your
+ * exam".
  */
 export async function loadSuggestedExam(
   db: SupabaseClient,
   userId: string,
   examIds: ExamIdMap
-): Promise<string | null> {
+): Promise<InferredExam | null> {
   try {
     const [activity, profile] = await Promise.all([
       db
@@ -53,13 +54,8 @@ export async function loadSuggestedExam(
       }
     }
 
-    const examOfRoute = new Map(
-      getNotesExamGroups().flatMap((g) => g.subjects.map((s) => [s.subjectRoute, g.slug] as const))
-    );
-    return suggestTargetExam(
-      { practice, landing: (profile.data?.acq_landing as string | null) ?? null },
-      (route) => examOfRoute.get(route) ?? null
-    );
+    if (profile.error) throw profile.error;
+    return inferStudentExam({ practice, landing: (profile.data?.acq_landing as string | null) ?? null });
   } catch (e) {
     console.error("suggested exam read failed", e instanceof Error ? e.message : e);
     return null;

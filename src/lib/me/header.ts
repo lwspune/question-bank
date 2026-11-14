@@ -13,6 +13,9 @@ import { yourExamLinks, type ExamLink } from "@/lib/exam/examLinks";
 import { getOnboardingState } from "@/lib/profile/service";
 import { sanitizeTargetExams } from "@/lib/profile/onboarding";
 import { loadSuggestedExam } from "@/lib/profile/suggestExamServer";
+import { loadStoredGuess } from "@/lib/profile/examGuessServer";
+import { guessCardVariant, storedGuess } from "@/lib/profile/examGuess";
+import type { InferredExam } from "@/lib/profile/suggestExam";
 import { greetingFor, greetingName } from "./today";
 import { loadFocus } from "./focusServer";
 import { resolveFocus, type Focus } from "./focus";
@@ -23,13 +26,18 @@ export type MeHeaderData = {
   focus: Focus;
   /** The student's exams, each to its best page: the chips of a one-exam student. */
   examLinks: ExamLink[];
-  /** No exam chosen: the one their practice or first page points to. */
-  suggestedExam: { slug: string; displayName: string } | null;
+  /**
+   * No exam chosen: the one their practice or first page points to, stored
+   * (migration 0254) or worked out now. `card` picks Home's card: "guess" is
+   * "Your exam: X (our guess)", "suggest" the older "Studying for X?", kept for
+   * accounts the welcome-screen test measures until it ends.
+   */
+  suggestedExam: { slug: string; displayName: string; card: "guess" | "suggest" } | null;
 };
 
 export async function loadMeHeader(
   db: SupabaseClient,
-  user: { id: string; name?: string | null; preferredName?: string | null },
+  user: { id: string; name?: string | null; preferredName?: string | null; createdAt?: string | null },
   examIds: ExamIdMap,
   opts: { now?: Date; targets?: readonly string[] } = {}
 ): Promise<MeHeaderData> {
@@ -46,15 +54,33 @@ export async function loadMeHeader(
   const targets = sanitizeTargetExams([...rawTargets]);
   const focus = focusOrNull ?? resolveFocus({ targets, saved: null, recent: null });
   // No exam chosen: the one their practice or first page points to.
-  const suggestedSlug = targets.length === 0 ? await loadSuggestedExam(db, user.id, examIds) : null;
-  const suggested = suggestedSlug ? getExamBySlug(suggestedSlug) : null;
+  const guess = targets.length === 0 ? await loadGuess(db, user.id, examIds) : null;
+  const suggested = guess ? getExamBySlug(guess.slug) : null;
   return {
     greeting: greetingFor(istHour(now)),
     name: greetingName({ preferred_name: user.preferredName, full_name: user.name }),
     focus,
     examLinks: yourExamLinks(targets, examIds),
-    suggestedExam: suggested ? { slug: suggested.slug, displayName: suggested.displayName } : null,
+    suggestedExam: suggested
+      ? { slug: suggested.slug, displayName: suggested.displayName, card: guessCardVariant(user.createdAt, now) }
+      : null,
   };
+}
+
+/**
+ * The stored guess first (the daily job's, stable between visits), else the
+ * live one. None once the student tapped Change: they said it is wrong. A
+ * failed read of the stored guess falls back to the live one.
+ */
+async function loadGuess(db: SupabaseClient, userId: string, examIds: ExamIdMap): Promise<InferredExam | null> {
+  const stored = await loadStoredGuess(db, userId)
+    .then(storedGuess)
+    .catch((e: unknown) => {
+      console.error("stored exam guess read failed", e instanceof Error ? e.message : e);
+      return null;
+    });
+  if (stored === "declined") return null;
+  return stored ?? loadSuggestedExam(db, userId, examIds);
 }
 
 /** The hour of the day in India (0-23), for the greeting. */
