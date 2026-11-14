@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { planMoves, sourceKeyFor, updateSourceEntries, type RowNow } from "../scripts/neet/retaxLib";
+import { planMoves, planToMoves, sourceKeyFor, updateSourceEntries, type RowNow } from "../scripts/neet/retaxLib";
 
 const catalog = {
   Physics: ["Units and Measurements"],
@@ -119,5 +119,39 @@ describe("updateSourceEntries", () => {
   it("reports every match when two question files hold the same number, so the caller can refuse", () => {
     const dup = { ...files, "2022.zoology-b.json": [{ number: 151, subject: "Zoology", chapter: "Animal Kingdom", subtopic: "z", stem: "v" }] };
     expect(updateSourceEntries(dup, "151", { subject: "Botany", chapter: "x", subtopic: "y" }).matched).toBe(2);
+  });
+});
+
+describe("planToMoves", () => {
+  const dumpRows = [
+    { id: "aaaaaaaa-0000-0000-0000-000000000001" },
+    { id: "bbbbbbbb-0000-0000-0000-000000000002" },
+    { id: "cccccccc-0000-0000-0000-000000000003" },
+  ];
+  const base = { subject: "Botany", chapter: "Cell Cycle and Cell Division" };
+
+  it("turns pages of 8-character id prefixes into one move per row, refiles included", () => {
+    const { errors, moves } = planToMoves(
+      {
+        ...base,
+        pages: { "Mitosis": "aaaaaaaa bbbbbbbb" },
+        refile: { cccccccc: { subject: "Botany", chapter: "Cell: The Unit of Life", subtopic: "Nucleus", why: "about the nucleus" } },
+      },
+      dumpRows
+    );
+    expect(errors).toEqual([]);
+    expect(moves).toEqual([
+      { id: dumpRows[0].id, subject: "Botany", chapter: "Cell Cycle and Cell Division", subtopic: "Mitosis", why: "notes re-cut" },
+      { id: dumpRows[1].id, subject: "Botany", chapter: "Cell Cycle and Cell Division", subtopic: "Mitosis", why: "notes re-cut" },
+      { id: dumpRows[2].id, subject: "Botany", chapter: "Cell: The Unit of Life", subtopic: "Nucleus", why: "about the nucleus" },
+    ]);
+  });
+
+  it("refuses a row placed twice, a row left out, and a prefix the dump does not hold", () => {
+    const { errors } = planToMoves({ ...base, pages: { A: "aaaaaaaa zzzzzzzz", B: "aaaaaaaa" } }, dumpRows);
+    expect(errors.some((e) => /aaaaaaaa.*more than once/.test(e))).toBe(true);
+    expect(errors.some((e) => /zzzzzzzz.*not in the dump/.test(e))).toBe(true);
+    expect(errors.some((e) => /bbbbbbbb.*not placed/.test(e))).toBe(true);
+    expect(errors.some((e) => /cccccccc.*not placed/.test(e))).toBe(true);
   });
 });

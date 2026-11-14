@@ -4,6 +4,7 @@
  *
  *   npx tsx scripts/neet/retax.ts <moves.json>           # dry run
  *   npx tsx scripts/neet/retax.ts <moves.json> --apply   # write source files + bank
+ *   npx tsx scripts/neet/retax.ts <plan.json> [--apply]  # a notes re-cut plan (RecutPlan in retaxLib.ts)
  *
  * moves.json = [{ id, subject, chapter, subtopic, why }], full question UUIDs. The chapter
  * must be in config.ts NEET_CHAPTERS[subject]; a missing chapter or subtopic row is created.
@@ -21,7 +22,7 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { DATA as NEET_DATA, EXAM_ID, NEET_CHAPTERS, PAPERS } from "./config";
 import { DATA as PARIKSHA_DATA, TESTS } from "../pariksha/config";
-import { planMoves, sourceKeyFor, updateSourceEntries, type Move, type RowNow } from "./retaxLib";
+import { planMoves, planToMoves, sourceKeyFor, updateSourceEntries, type Move, type RecutPlan, type RowNow } from "./retaxLib";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!);
@@ -47,7 +48,22 @@ function save(path: string, l: Loaded) {
 }
 
 async function main() {
-  const moves: Move[] = JSON.parse(readFileSync(mapPath!, "utf8"));
+  // Either a move list, or a notes re-cut plan (pages of id prefixes) plus its chapter dump.
+  const input = JSON.parse(readFileSync(mapPath!, "utf8"));
+  let moves: Move[];
+  if (Array.isArray(input)) moves = input;
+  else {
+    const plan = input as RecutPlan;
+    if (!plan.dump) throw new Error("a re-cut plan needs \"dump\": the _cdsk_<code>.json it was written from");
+    const dump = JSON.parse(readFileSync(join("generated-papers", plan.dump), "utf8"));
+    const r = planToMoves(plan, dump.questions);
+    if (r.errors.length) {
+      for (const e of r.errors.slice(0, 30)) console.log(`  PLAN ERROR ${e}`);
+      console.log(`refusing: ${r.errors.length} plan errors`);
+      process.exit(1);
+    }
+    moves = r.moves;
+  }
 
   // Current state of every listed row, names resolved.
   const rows: (RowNow & { subjectId: string; chapterId: string; subtopicId: string })[] = [];

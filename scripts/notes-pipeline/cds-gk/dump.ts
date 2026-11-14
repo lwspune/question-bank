@@ -54,6 +54,7 @@ async function main() {
     const opts = [...(r.options ?? [])].sort((a: any, b: any) => a.label.localeCompare(b.label));
     return {
       id: r.id as string,
+      kind: r.question_kind as string,
       sitting: String(r.pyq_note ?? "").split(" — ")[0],
       year: r.pyq_year,
       number: r.question_number,
@@ -74,7 +75,7 @@ async function main() {
 
   const md: string[] = [];
   for (const q of questions) {
-    md.push(`### ${q.id.slice(0, 8)} | ${q.sitting} Q${q.number} | ${q.difficulty} | ${q.subtopic}${q.image ? " | IMG" : ""}${q.setId ? " | SET" : ""}`);
+    md.push(`### ${q.id.slice(0, 8)} | ${q.kind === "practice" ? "PRACTICE | " : ""}${q.sitting} Q${q.number} | ${q.difficulty} | ${q.subtopic}${q.image ? " | IMG" : ""}${q.setId ? " | SET" : ""}`);
     if (q.context) md.push(`CTX: ${q.context}`);
     md.push(`Q: ${q.text}`);
     md.push(`O: ${q.options.map((o) => `${o.label}${o.correct ? "*" : ""}) ${o.text}${o.image ? "[IMG]" : ""}`).join("  ")}`);

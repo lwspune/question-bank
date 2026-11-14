@@ -107,3 +107,39 @@ export function updateSourceEntries(
   }
   return { updated, matched };
 }
+
+/**
+ * A notes re-cut plan, as an agent writes it: page name -> space-separated 8-character id
+ * prefixes, plus rows that belong to another chapter. Every row of the chapter's dump must be
+ * placed exactly once (practice rows included: they share the subtopics).
+ */
+export type RecutPlan = {
+  /** The chapter dump in generated-papers/ (`_cdsk_<code>.json`). */
+  dump?: string;
+  subject: string;
+  chapter: string;
+  pages: Record<string, string>;
+  refile?: Record<string, Target & { why: string }>;
+};
+
+export function planToMoves(plan: RecutPlan, dumpRows: { id: string }[]): { errors: string[]; moves: Move[] } {
+  const errors: string[] = [];
+  const byPrefix = new Map(dumpRows.map((r) => [r.id.slice(0, 8), r.id]));
+  if (byPrefix.size !== dumpRows.length) errors.push("two dump rows share an 8-character prefix: place them by full id");
+  const placed = new Map<string, Move>();
+  const place = (prefix: string, m: Omit<Move, "id">) => {
+    const id = byPrefix.get(prefix);
+    if (!id) return errors.push(`${prefix}: not in the dump`);
+    if (placed.has(prefix)) return errors.push(`${prefix}: placed more than once`);
+    placed.set(prefix, { id, ...m });
+  };
+  for (const [page, list] of Object.entries(plan.pages)) {
+    for (const p of list.split(/\s+/).filter(Boolean)) {
+      place(p, { subject: plan.subject, chapter: plan.chapter, subtopic: page, why: "notes re-cut" });
+    }
+  }
+  for (const [p, t] of Object.entries(plan.refile ?? {})) place(p, t);
+  for (const prefix of byPrefix.keys()) if (!placed.has(prefix)) errors.push(`${prefix}: not placed on any page`);
+  const moves = dumpRows.map((r) => placed.get(r.id.slice(0, 8))).filter((m): m is Move => !!m);
+  return { errors, moves };
+}
