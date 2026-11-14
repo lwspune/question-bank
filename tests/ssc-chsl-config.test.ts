@@ -76,15 +76,17 @@ describe("SSC CHSL 2024 Tier I", () => {
 });
 
 describe("SSC CGL registry, untouched by CHSL", () => {
-  // Fingerprints taken on 2026-11-13, before the lane learned a second exam.
+  // Fingerprints taken on 2026-11-13, before the lane learned a second exam. File paths are
+  // hashed with "/" separators: `join()` builds them from a Windows root, so on the Linux CI
+  // runner the same path comes out half "\" and half "/" and a raw hash cannot match.
   it("keeps every CGL shift and every CGL TCS file exactly as before", () => {
     const cglShifts = Object.entries(SHIFTS).filter(([id]) => examOf(id) === "cgl").sort();
     expect(cglShifts).toHaveLength(156);
     expect(createHash("sha256").update(JSON.stringify(cglShifts)).digest("hex").slice(0, 16)).toBe("64309f4c0c25d4e7");
     const files = tcsFiles()
       .filter((x) => (x.day.exam ?? "cgl") === "cgl")
-      .map((x) => [x.dir, x.file, x.shift ?? null, x.pages ?? null]);
-    expect(createHash("sha256").update(JSON.stringify(files)).digest("hex").slice(0, 16)).toBe("5f88efb25ee11bd2");
+      .map((x) => [x.dir, x.file.replace(/\\/g, "/"), x.shift ?? null, x.pages ?? null]);
+    expect(createHash("sha256").update(JSON.stringify(files)).digest("hex").slice(0, 16)).toBe("06d1f119562e60b7");
   });
 });
 
