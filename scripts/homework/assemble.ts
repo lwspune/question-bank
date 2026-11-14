@@ -133,6 +133,8 @@ function main() {
       : examName === "JEE Mains"
       // Sittings mix 2021 papers, 2022-2025 days and 2026 shifts, so the summary names years only.
       ? `JEE Mains ${subjectName} past questions, ${/\d{4}/.exec(sittings[0])![0]} to ${/\d{4}/.exec(sittings[sittings.length - 1])![0]}, five a day. Questions NTA asked again and the question types it keeps asking come first, ranked together by how often they were asked, then every other question.`
+      : examName === "NEET"
+      ? `NEET ${subjectName} past questions from ${sittings.length} papers, ${/\d{4}/.exec(sittings[0])![0]} to ${/\d{4}/.exec(sittings[sittings.length - 1])![0]} (the 2024 and 2026 retests included), five a day. Questions NTA asked again and the question types it keeps asking come first, ranked together by how often they were asked, then every other question.`
       : examName === "MHT-CET"
       ? `MHT-CET ${subjectName} past questions from ${sittings.length} shifts, ${sittings[0].slice(-7, -3)} to ${sittings[sittings.length - 1].slice(-7, -3)}, five a day. Questions asked again in another shift and the question types that keep coming back come first, ranked together by how often they were asked, then every other question.`
       : isPapers
