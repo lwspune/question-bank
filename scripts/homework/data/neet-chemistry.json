@@ -1,0 +1,2616 @@
+{
+ "slug": "neet-chemistry",
+ "examName": "NEET",
+ "subjectName": "Chemistry",
+ "title": "NEET Chemistry",
+ "summary": "NEET Chemistry past questions from 8 papers, 2021 to 2026, five a day. The Re-NEET retests of 2024 and 2026 count as papers. Questions NTA asked again and the question types it keeps asking come first, ranked together by how often they were asked, then every other question.",
+ "perDay": 5,
+ "note": "Repeats are counted across papers: NEET 2021-2026 and the Re-NEET retests of 2024 and 2026, each its own sitting. Older questions from the chapters NMC dropped in 2024 are left out (lib/homework/neetSyllabus.ts); questions NTA dropped or made a bonus are left out. Groups were found by a chapter-by-chapter reading (scripts/homework/REVIEW_BRIEF_NEET.md) and checked in the main session.",
+ "sittings": [
+  "NEET 2021",
+  "NEET 2022",
+  "NEET 2023",
+  "NEET 2024",
+  "Re-NEET 2024",
+  "NEET 2025",
+  "NEET 2026",
+  "Re-NEET 2026"
+ ],
+ "excludedChapters": [],
+ "excludedQuestions": [
+  {
+   "id": "3fb985a4-5f11-4ae1-b6ee-b48aef13e3d7",
+   "reason": "NTA dropped NEET 2022 Q.93: the printed E cell makes every option wrong"
+  },
+  {
+   "id": "035e2cb6-690a-40c3-8b16-0c4d666b7a8d",
+   "reason": "Solid State left the NEET syllabus in 2024; this is a 2022 question"
+  },
+  {
+   "id": "0f4d01f2-840e-4820-b944-42af846a2246",
+   "reason": "The s-Block Elements left the NEET syllabus in 2024; this is a 2023 question"
+  },
+  {
+   "id": "0fcc4af3-a8c4-4624-bc8c-3143248e4c17",
+   "reason": "Surface Chemistry left the NEET syllabus in 2024; this is a 2023 question"
+  },
+  {
+   "id": "258b452d-ef85-4be9-aa1a-2a20115b35fb",
+   "reason": "States of Matter left the NEET syllabus in 2024; this is a 2022 question"
+  },
+  {
+   "id": "2e224a26-516a-4913-aed8-cd0c49f83b28",
+   "reason": "Chemistry in Everyday Life left the NEET syllabus in 2024; this is a 2022 question"
+  },
+  {
+   "id": "2e60cbbd-c205-4a54-abc2-876d8ca6ab08",
+   "reason": "States of Matter left the NEET syllabus in 2024; this is a 2022 question"
+  },
+  {
+   "id": "33c69e38-5068-4312-957a-1d60c5ed3a27",
+   "reason": "Solid State left the NEET syllabus in 2024; this is a 2023 question"
+  },
+  {
+   "id": "3402f25e-8939-46c6-8294-24e03a912e1d",
+   "reason": "States of Matter left the NEET syllabus in 2024; this is a 2021 question"
+  },
+  {
+   "id": "4e30685b-760e-4bf7-8aa0-8ae04d0478b7",
+   "reason": "Solid State left the NEET syllabus in 2024; this is a 2022 question"
+  },
+  {
+   "id": "51423f82-2f70-4409-94ef-799802596fdc",
+   "reason": "The s-Block Elements left the NEET syllabus in 2024; this is a 2021 question"
+  },
+  {
+   "id": "5357dfb1-5c4d-43bf-a260-0740156a1ea0",
+   "reason": "States of Matter left the NEET syllabus in 2024; this is a 2023 question"
+  },
+  {
+   "id": "56b149e0-9e01-4952-83d3-796bc6afc1e3",
+   "reason": "General Principles and Processes of Isolation of Elements left the NEET syllabus in 2024; this is a 2022 question"
+  },
+  {
+   "id": "7d49c9ab-1a17-4157-9d57-75ae5a9bc0ca",
+   "reason": "Surface Chemistry left the NEET syllabus in 2024; this is a 2021 question"
+  },
+  {
+   "id": "7d8116ad-b12b-4de3-b1c3-5a619e8a970c",
+   "reason": "The s-Block Elements left the NEET syllabus in 2024; this is a 2023 question"
+  },
+  {
+   "id": "84201168-3723-4be1-982a-8e967bd02859",
+   "reason": "States of Matter left the NEET syllabus in 2024; this is a 2023 question"
+  },
+  {
+   "id": "8c3314cb-a9e2-4e9e-9158-045bbfe81029",
+   "reason": "General Principles and Processes of Isolation of Elements left the NEET syllabus in 2024; this is a 2023 question"
+  },
+  {
+   "id": "8c896317-6042-4102-a8c5-728096c2d8e5",
+   "reason": "General Principles and Processes of Isolation of Elements left the NEET syllabus in 2024; this is a 2021 question"
+  },
+  {
+   "id": "9733ed53-1b76-4f14-a8ce-5cb23b0dff0f",
+   "reason": "Polymers left the NEET syllabus in 2024; this is a 2021 question"
+  },
+  {
+   "id": "97d4e96a-5ade-49c1-8964-12d8a6bc8af4",
+   "reason": "Solid State left the NEET syllabus in 2024; this is a 2021 question"
+  },
+  {
+   "id": "994c4751-81da-4a41-a4c7-ae147142d10d",
+   "reason": "Chemistry in Everyday Life left the NEET syllabus in 2024; this is a 2023 question"
+  },
+  {
+   "id": "9b45dd2a-050f-4729-a539-b02f1b869a48",
+   "reason": "Hydrogen left the NEET syllabus in 2024; this is a 2023 question"
+  },
+  {
+   "id": "a3b707a5-f5d5-4635-bb19-c7be9e5ea7a1",
+   "reason": "States of Matter left the NEET syllabus in 2024; this is a 2021 question"
+  },
+  {
+   "id": "a604010a-b9c7-4845-b93c-ce761632b8ae",
+   "reason": "Surface Chemistry left the NEET syllabus in 2024; this is a 2023 question"
+  },
+  {
+   "id": "a87bfb99-f5f9-4497-8ad0-2108788e5acc",
+   "reason": "Environmental Chemistry left the NEET syllabus in 2024; this is a 2022 question"
+  },
+  {
+   "id": "b58ba950-5bdf-4875-aed3-955ff5858456",
+   "reason": "Solid State left the NEET syllabus in 2024; this is a 2021 question"
+  },
+  {
+   "id": "bc321959-97fc-4d27-bff4-19c46e87d9bb",
+   "reason": "The s-Block Elements left the NEET syllabus in 2024; this is a 2022 question"
+  },
+  {
+   "id": "c6e8183a-f987-455d-a274-7c0fab380348",
+   "reason": "General Principles and Processes of Isolation of Elements left the NEET syllabus in 2024; this is a 2021 question"
+  },
+  {
+   "id": "cab46135-ddf6-4ffd-9714-6101f859b79b",
+   "reason": "Chemistry in Everyday Life left the NEET syllabus in 2024; this is a 2021 question"
+  },
+  {
+   "id": "d0271a7f-4767-4e21-9555-610e7754ab03",
+   "reason": "Solid State left the NEET syllabus in 2024; this is a 2023 question"
+  },
+  {
+   "id": "d4d0555a-a733-4b04-a5f8-f29e8da039d6",
+   "reason": "Polymers left the NEET syllabus in 2024; this is a 2022 question"
+  },
+  {
+   "id": "e03c5d53-360b-4a7a-a595-d00f88811157",
+   "reason": "The s-Block Elements left the NEET syllabus in 2024; this is a 2022 question"
+  },
+  {
+   "id": "f1a9a9b6-9f59-43d7-823a-95647c949a95",
+   "reason": "Environmental Chemistry left the NEET syllabus in 2024; this is a 2023 question"
+  },
+  {
+   "id": "f22c11ee-7fbb-452d-a4b8-4fcc04d67b01",
+   "reason": "Environmental Chemistry left the NEET syllabus in 2024; this is a 2021 question"
+  },
+  {
+   "id": "f287244e-21fa-4911-98fe-182a32d383d1",
+   "reason": "Surface Chemistry left the NEET syllabus in 2024; this is a 2022 question"
+  },
+  {
+   "id": "f584960b-2530-483a-acb9-9aba405eebbf",
+   "reason": "Hydrogen left the NEET syllabus in 2024; this is a 2022 question"
+  },
+  {
+   "id": "f73fc8b3-e942-4e75-824c-4cd73cede638",
+   "reason": "Polymers left the NEET syllabus in 2024; this is a 2023 question"
+  },
+  {
+   "id": "f99fe625-00c0-471f-8854-41d1315a497e",
+   "reason": "The s-Block Elements left the NEET syllabus in 2024; this is a 2021 question"
+  },
+  {
+   "id": "fee90395-fb61-4753-a26b-cb11fa91a7bf",
+   "reason": "Hydrogen left the NEET syllabus in 2024; this is a 2021 question"
+  }
+ ],
+ "excluded": [
+  "3fb985a4-5f11-4ae1-b6ee-b48aef13e3d7",
+  "035e2cb6-690a-40c3-8b16-0c4d666b7a8d",
+  "0f4d01f2-840e-4820-b944-42af846a2246",
+  "0fcc4af3-a8c4-4624-bc8c-3143248e4c17",
+  "258b452d-ef85-4be9-aa1a-2a20115b35fb",
+  "2e224a26-516a-4913-aed8-cd0c49f83b28",
+  "2e60cbbd-c205-4a54-abc2-876d8ca6ab08",
+  "33c69e38-5068-4312-957a-1d60c5ed3a27",
+  "3402f25e-8939-46c6-8294-24e03a912e1d",
+  "4e30685b-760e-4bf7-8aa0-8ae04d0478b7",
+  "51423f82-2f70-4409-94ef-799802596fdc",
+  "5357dfb1-5c4d-43bf-a260-0740156a1ea0",
+  "56b149e0-9e01-4952-83d3-796bc6afc1e3",
+  "7d49c9ab-1a17-4157-9d57-75ae5a9bc0ca",
+  "7d8116ad-b12b-4de3-b1c3-5a619e8a970c",
+  "84201168-3723-4be1-982a-8e967bd02859",
+  "8c3314cb-a9e2-4e9e-9158-045bbfe81029",
+  "8c896317-6042-4102-a8c5-728096c2d8e5",
+  "9733ed53-1b76-4f14-a8ce-5cb23b0dff0f",
+  "97d4e96a-5ade-49c1-8964-12d8a6bc8af4",
+  "994c4751-81da-4a41-a4c7-ae147142d10d",
+  "9b45dd2a-050f-4729-a539-b02f1b869a48",
+  "a3b707a5-f5d5-4635-bb19-c7be9e5ea7a1",
+  "a604010a-b9c7-4845-b93c-ce761632b8ae",
+  "a87bfb99-f5f9-4497-8ad0-2108788e5acc",
+  "b58ba950-5bdf-4875-aed3-955ff5858456",
+  "bc321959-97fc-4d27-bff4-19c46e87d9bb",
+  "c6e8183a-f987-455d-a274-7c0fab380348",
+  "cab46135-ddf6-4ffd-9714-6101f859b79b",
+  "d0271a7f-4767-4e21-9555-610e7754ab03",
+  "d4d0555a-a733-4b04-a5f8-f29e8da039d6",
+  "e03c5d53-360b-4a7a-a595-d00f88811157",
+  "f1a9a9b6-9f59-43d7-823a-95647c949a95",
+  "f22c11ee-7fbb-452d-a4b8-4fcc04d67b01",
+  "f287244e-21fa-4911-98fe-182a32d383d1",
+  "f584960b-2530-483a-acb9-9aba405eebbf",
+  "f73fc8b3-e942-4e75-824c-4cd73cede638",
+  "f99fe625-00c0-471f-8854-41d1315a497e",
+  "fee90395-fb61-4753-a26b-cb11fa91a7bf"
+ ],
+ "questions": [
+  {
+   "id": "00e6254c-2681-4b14-a791-5167b8892f44",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "0129091d-3e8a-428c-9840-ba5f81329ce7",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "01b26ed7-fd30-4733-b709-793b96b65055",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "01e54158-c3dc-40bf-a1f1-63408c4409de",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "02539b01-3b77-40d4-b938-1e08686300cd",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "02b190da-ef75-4519-a70e-0adda9f32c61",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "03b743c2-db29-4628-9694-2620b600c6cf",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "0587aaec-931d-4fdc-9238-0e62c20d1c12",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "062f3732-8ac8-4361-af8c-e26214a3e0ee",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "06ddb0b7-6e4e-4afa-9852-52fa51f27985",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "07c11416-ad2f-49a0-87fc-d3fc79f39e94",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "0856cb79-e2f5-4f9e-be18-c47c36de45c0",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "09362120-9128-4d1f-8df2-bc6c5c415ec9",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "0941912f-18f1-43fb-a08c-29a262b63771",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "098109ff-9335-4ddd-b417-6402e19f2e37",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "09dfb1f3-b69c-4ea8-9579-8be39b0633b6",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "0a40bfa7-3416-41f3-8fff-8c2b626ce937",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "0a4a4ced-6e7a-4274-b218-1acdf78ded61",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "0b4c6a0c-c9c2-42a5-9ec6-f6c09ca31067",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "0b9ff814-61e9-4608-96d9-8532719038e3",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "0d8d391a-a5c7-4680-b6d5-839732b18228",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "0f899ff8-5a4e-4573-8b9a-df757be54669",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "10e8d528-229f-488d-81bb-8df7e94fbe75",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "110baacc-321a-4c86-90d0-4964ad45b180",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "1258b085-90a6-49f2-bfa4-feccab8fb163",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "130af29f-76c0-4cd6-b2c4-d3ac233d17d3",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "13766888-2797-496e-8e75-0b95c1211763",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "1387bcb2-e8bb-430f-bee9-ec781fbd2ea5",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "14bd8331-71c4-4668-80f3-a6aaa2118fd5",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "14dca76d-caef-46c7-afcf-42e196c43e48",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "161939bb-895a-4630-b08f-3a4b92a58a9e",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "162cd0c9-8868-4921-92b0-35a7df88d732",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "1654ee55-326f-4cd9-8b1e-377622dd8278",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "16d392cb-d8dd-443f-a195-4dd51af7aef0",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "1754db94-1dc7-4b33-bd11-48f0eaba154d",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "192fe2af-5895-4638-b527-115175c9920e",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "1a4c58eb-ea32-4153-9d0d-d3c39ac053ca",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "1a721829-c16a-44af-80c7-1d7a7d7d5f26",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "1a93c59f-17ce-4cd6-a4b1-8516d518a6ce",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "1d276e4b-eb70-45c1-9a2a-68488f384850",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "1da6b707-d245-4218-b7da-ca3051dbf55c",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "1e71761a-9937-4005-b545-f9251e9f688d",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "1eaf9542-5b4b-4001-862d-109f4bcfe319",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "1faad48e-f80f-47ae-ad41-67dd32aa745d",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "1fc147e0-64b7-4bc5-8f82-8b37ff759e1e",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "20419e80-2b93-4a4d-ae37-0bc82485015b",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "2051e3bb-0a43-45c4-a4fb-0d6d3cfe6af4",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "212bbdde-3420-4c2c-9fd5-1780c4c6046a",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "212cbe08-ef79-40f7-be34-66ca710efbe6",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "2152ad15-6de9-4faa-b9d5-e1aa270cd8d6",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "21761850-23a3-4d84-9ecf-54c1f4e30c46",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "22eb644c-6607-47fc-9c9c-3f30b4d81995",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "232a98df-fe38-4f45-9126-a7e7d440cad6",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "25fc3651-03ed-415f-9825-dee901230f64",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "2602942b-4239-4991-adf0-5aef775a878a",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "26442b6c-da9e-4853-b9ea-506ce3583417",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "2648df17-ef18-4479-b62a-78f105e30795",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "278ba814-7407-4099-ba2c-f45794f8887b",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "27fc06a9-43b0-4b03-95b7-78df95f9c113",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "28284ac8-be90-44e5-92da-59a71f4f6eac",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "282bf62b-46d5-4545-8397-eacd0ce9bb1f",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "2881794e-be9b-4415-b5c8-e478c9ddb862",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "28aaf596-a574-4167-b413-73800fc6e40b",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "2913a49f-0fff-40ea-bbe5-35096e47b106",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "29759635-abbb-4a99-a2cd-270c7e8af7ca",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "29ee1d0d-1fad-4d48-8b91-b28a8c4d9858",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "2acc8e7e-940e-46c0-bf59-5a4395bfaad7",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "2b3d7dd9-4218-4535-a189-8cab4118118b",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "2b5d568e-55a2-48a5-b121-9df5276cf80f",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "2b6fee20-db1b-45ea-9235-2b6c60deaaec",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "2c6086fa-d136-4ccc-8937-7f5d548272d1",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "2ec2f478-13fc-4533-9fe5-403f4b795b51",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "2ec7fd71-f88b-49f7-9483-c8f16a77d9b5",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "30020e66-7a5d-458e-86f1-9c48c262db6c",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "3055f31a-1218-456d-9f10-64f720de4c75",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "309a87fb-8015-4455-a9d4-bc4d4220d70e",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "31374afb-8d33-4478-a734-ed51d05d81f0",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "31ffe844-5063-43cd-9dd9-80f88eca6344",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "32161669-665d-492b-a172-248964e15f29",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "33acee02-d9de-41f4-be5f-62123d8f56f4",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "347160d2-719e-4a1c-9507-b00893c4c742",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "34b11cd9-5a2a-4c2c-bbae-b5e6b79a6959",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "35482413-7a35-4ae6-b7f5-e4dd49d6932a",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "35c081e8-00ad-408e-a4e4-ec0d2bf36e9f",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "369ebb2d-a39e-4f3a-8e27-9c69b7cb56a1",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "36b19d84-063a-4ae3-b7ca-3ce77c22c6c1",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "37290c0a-4761-4557-8b86-f438938d2cb9",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "3736201d-f626-4ed1-ae5a-afb924eaf383",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "38395f44-4372-49a2-8e22-e6562d1c5ed0",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "387e3c4b-651b-4484-8617-45db04c138e9",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "3a390575-08c3-4d77-9a2e-db833b76a923",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "3bfb8359-af58-41af-bf43-9448917c77ba",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "3c2ca804-8629-4648-b22f-d0babdf7de6d",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "3c898c32-5608-4bfc-b416-b9e18b7b4b4b",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "3c922d4e-5f67-454e-a536-4c5cac70f5c9",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "3c97a3c7-2a98-43ca-8213-a764c2666b62",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "3d700032-5546-47eb-8eda-1c24ff7d91b1",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "3de9bc45-c0b3-4381-9e86-5c9ae97b02e6",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "3ded2fee-34f7-4c76-804a-ef33259a8cc2",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "4000bf21-0b34-4ff2-9076-2287a2bb3d1e",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "405b1a8d-c3b3-42db-951d-b56aacda3f3e",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "40dec421-6ac9-47f5-9173-75efce38c0c1",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "414b0779-82eb-43a6-b801-1bca4c524021",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "41b835b4-ba05-4440-95d6-687d1170604e",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "41e2eb9b-22ef-4a37-b398-c3990aed00a9",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "421337bf-8360-4054-9968-ad7c277af404",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "428fd03b-4b79-4219-9cd5-06694dd9a0a5",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "43c2906b-ce23-4a9e-9590-76bc332e1772",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "454056be-0e34-4e79-adfa-6a464b701648",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "45c3f4b8-8609-480b-ba37-2931147f9fa5",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "45c7be16-205f-461a-b2bb-e21dddb85753",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "460b3ec6-1b06-4493-b321-582513e0cba8",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "4618409e-7bf2-4c2e-9902-2118ff7383c5",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "46a7be9c-9785-4c48-a9a7-a7edc1b6e4b3",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "4788dfab-2f2e-46be-9aa3-d82f8f0ca84e",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "48338818-2477-41c9-8276-18bfcf001ac8",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "4a40726f-8aa6-4b91-831a-a9c955ef2f25",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "4a58db76-92df-4872-84c5-97fdfce0d951",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "4aeffdd4-ca44-4f21-8546-cf0e21084c54",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "4b9197c9-a6f9-4fd6-b364-479ebbda96c4",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "4c9d3fa3-49ae-4066-8bbf-42b9056e0cd6",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "50121179-649b-43a1-9533-c43d3e60fe04",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "5059743f-4b57-403f-a8c6-c7303698f4fc",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "5081923f-cb67-4272-ab25-937ebb34d4fa",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "50d100f4-4fb6-424d-8fd5-39323f7bf5f8",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "50ea3666-8400-4e7e-930d-ee4079f4d87a",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "5336d74a-cfdc-43ab-89bc-ddeda06ec42d",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "5518e05c-e896-438b-ba00-b785a253493b",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "557f559f-a581-4538-a509-673f42deae9c",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "558cac57-04ae-4aaf-85e7-d5befe7537c5",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "561af4c3-84aa-4de8-a69e-ccbfd68d748a",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "56b4240e-28c8-41f8-819f-a0c2448cae06",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "57406025-4973-437a-a7c3-442ab79f11c8",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "57f6455f-c1d9-42a7-a336-fda015462c05",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "5813cb0d-c06e-4ca6-9426-e900709f60f0",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "582d4c39-f79d-4531-8a2d-d26f15dc305f",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "597a6886-311a-4165-b0c5-7818ec1cc018",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "59be23c6-cfbf-4381-823f-98c42602dedd",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "5badf2de-59b4-4b34-9094-2ef929959872",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "5be81cf5-cc37-4f06-ba7d-1fb4656f8b4d",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "5c4cbefd-43b9-4d32-8ed3-9d69fa91f7c3",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "5c7839ab-940f-4806-a106-e305531e7f0d",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "5d1bd783-6ddf-41c5-b1b2-a3681f3c1add",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "5d4c14d3-7795-4cc9-ad7c-14e09dd39f07",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "5e05ba1c-5792-40d0-8e9b-25656628956d",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "5e50293a-ac5c-4c40-b2b0-47eaac7191b8",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "61814716-525a-475e-9cff-cdf8b10a306c",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "61bbca08-223b-460b-af1e-40e22bfd01c6",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "61c6df1a-cb62-4902-a256-5f20bf4e360f",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "642353eb-9dd7-4049-8838-73aa223c1321",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "65ab4b64-09bc-445d-89ea-edb47efde236",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "6694c863-ae05-467f-836b-f4677570bba4",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "6795f428-cd5c-4e1e-8005-2641feddf3b6",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "68762a92-15be-404e-9db6-b4dc1d2ae648",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "6892717f-233e-4ec9-91af-55039f42395c",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "696c53df-9890-4df5-9321-555d56a4abee",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "6a16fd60-efe1-4071-b748-cdf41d751831",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "6b352986-61b6-448f-af09-ceb649df5aff",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "6c8ec5c8-87db-433c-9b18-4771a045646e",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "6fbd9769-a035-4c78-b299-c942a07a3f45",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "701d4d96-8653-4573-adf0-7609e74f91a7",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "70f9f5a6-aedd-4feb-ba6f-27892c844c7a",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "73370967-395d-4122-8b9b-f2998a0cf153",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "73704c23-a920-4838-9c5a-651b0374d630",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "7483e05c-01e7-4c87-bd89-428872f05f06",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "760f99bb-f61e-41d2-824d-c96ac62bcc73",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "7734e860-107f-4498-ab48-ac6034cd419a",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "77839f3a-ee08-482d-8210-e7ca9094fa41",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "78b1e50e-7c21-4701-bfcc-2ee706b63c6f",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "7996bca4-088f-4301-8520-57b35e61257d",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "7a25aa9a-1b89-4c7c-87d0-b55f30d26bd0",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "7d451a6b-170a-47e7-85cf-6238aedb5e86",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "7eab257c-63ab-4d86-bd08-f2aafcbb227c",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "7f52fc65-c020-4a46-8c45-984faa32feea",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "7fe4a07f-8885-404e-997c-ff9dee855c8f",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "802f64bf-66c0-438c-bb6a-ef8de8c836cd",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "80d3d0ca-4efa-4dcb-98c2-f2cdcacedc6a",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "819f624a-3c36-4b8c-8d77-f5286ee6e4c1",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "840a494b-7c66-411f-b653-97c887ba0d21",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "8481383b-da26-4c3f-8039-5220fd1f90bf",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "855db9fb-507f-41a4-b05e-a1fd09c45cc6",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "85715a19-f1cc-4250-94ce-372bb560cac1",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "8571ed14-faa6-4a77-91b2-cb5e47658bde",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "86ddf7c5-837b-4947-a38c-0c840bf0c49b",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "870cf51f-bb53-4f66-8fef-c5bb106c093c",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "87218316-3060-49e9-a10e-6a2bb8666f15",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "8823b14d-9146-4004-90f6-69ec175b4c75",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "882e6e5a-9671-412a-a476-98f20d9f09c6",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "88552920-b7e9-4926-8f1e-01f1372dadbd",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "88d13090-2f6d-4c75-997c-67fa2e2310a0",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "88f2d6ca-b665-4f81-8e56-ba88cc7fb445",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "88fbfe58-92a3-4c58-8e75-0ad6d35667f9",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "8a176953-8d40-4d88-9f3d-e520dd774605",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "8c4d9619-735e-496a-bb8f-4d17ef420381",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "8d05a3da-82f7-48d3-be34-314fb17732e8",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "8d728201-7f6c-4062-9eec-5f46bc68d418",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "8e866383-69e8-4959-ade8-05d87e0ffc6a",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "8f63bc6d-bc62-4d8d-9e64-064e6160436b",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "8fb8a87a-6f4b-40dc-8fb0-64d8ebf34a2a",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "92095f79-6932-4565-ac85-89a608dd6e0f",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "92e41afa-8614-4201-92f9-37fca43f6c69",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "96958408-f166-42dd-9efe-cc94773f79c2",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "96cba27f-1fc4-4a1b-b8ff-873ddb8177fb",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "974dab5a-f731-451a-b096-a206b50267f3",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "977ccd66-55af-449e-b73e-6ee3103d6eac",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "97c8405a-5807-4d36-835c-82faabcb3d29",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "99e2644e-dbe1-41f3-8e42-1c004a10e800",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "9a18a5cf-747f-4b56-a4f1-f8af289598d3",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "9a1f530c-4ec9-4a2c-907f-b335cd200ffc",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "9bc10cad-8fcd-4f65-b345-f7286dc93fd6",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "9ee05faa-ff32-43a6-a210-62ab354d9e7a",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "9f469a6d-257e-413a-b8fb-2fc0b1c5d79d",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "9ff7b2d9-13b8-4480-9dcf-1b807915c348",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "a0363540-ae09-47dd-8a14-bace0174d2e3",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "a2428897-81af-444e-910c-b2de5435b22a",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "a2ac27df-9329-4be2-9df6-f91fdb66a7e0",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "a40b8818-9e26-4035-b16f-884b3d0359ff",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "a4f2820a-aa7a-49b9-a1c4-98e734a56b76",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "a5279e0d-b8cb-4c1c-8c8e-2f043c8b3082",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "a5aeffcc-849e-43ac-9dd7-fff04bcebbf7",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "a62df5c9-80a8-4895-b37e-6f738166c499",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "a6bd3542-2b37-4fd9-8d63-801e6043fede",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "a74ae6e3-3224-4a75-acef-86b29498459b",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "a77e5f16-9385-40fe-8dd2-60b7624d4bd1",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "a7a001a1-ec2a-4280-8d47-3ee6c33d1d94",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "a7b9324c-3cc5-4102-ac19-756a8db36172",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "a7d0cba2-a8d4-4d5d-b94f-7c907dcd0780",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "a931f537-604d-4843-acbd-75b4b256d50e",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "aa64b6f8-5345-4c22-b4a0-cf7d6f44c085",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "abcdf222-51c7-4e28-98ac-9b3c6463afd7",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "ac42313b-517f-4377-8fe0-999b6de1aabc",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "acd23f1e-f587-4951-af05-6baa1a9157a7",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "ae1ef709-0745-4c17-b7db-2e38b4b24f7a",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "af318b9d-a119-4f00-9f89-96eac921091d",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "b02bf22b-8288-4bff-9399-ec20ab457ad5",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "b07d5f3a-71de-43bf-85ec-0173a671ea4b",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "b1be16b7-58d3-4987-bb0a-e598c510fbf4",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "b29051a3-acf0-41f4-a5d7-818f3f6ef5e0",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "b348e8f2-27f7-429a-a012-8b9e1951b690",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "b3efd2e8-eb39-48e3-9bde-211d73237281",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "b7ff111b-8c25-43a8-a0ef-577a78ffb632",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "b81c48ac-2330-4357-9f8b-e2fcfc7d94fc",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "ba56b1ce-6c4b-43c3-9622-9d46e254e92d",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "bba7d309-8530-47cc-8f43-d1c1ed7713f5",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "bccf8f61-5226-4901-9b2a-77fda3ba6570",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "bec8df08-6014-4249-a04b-e8ef1a8f7934",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "bf7819f0-7432-4d98-b043-30aed72b768d",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "c05b2679-3802-4fb1-9fd9-da6d3b7392f8",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "c0c1d5e2-aed2-4b2c-a822-a4b724f33809",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "c1250686-e3c4-4069-a62b-d848026ade41",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "c32c1ba5-6397-48d9-ad0c-24ddcea1962e",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "c43bc011-d13c-409a-8e66-d8387c5daa86",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "c4a18baa-9ee2-4e46-beb9-a2cd51f56643",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "c69a14e1-2a5f-4f20-869d-e5f0c4f723fc",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "c84a260f-ab8e-4b26-9a37-73b0a6097807",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "c8f6eefc-e912-4d5b-b3d3-9b81366df23a",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "c901d7e2-f18c-4714-869c-bb4c627c25a1",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "c981a8e7-499f-4f00-b404-4d58aaaed7a1",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "c9b7a82d-bd78-493c-9f1a-4dcb2ce2f2b7",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "cab6591d-8679-497a-9fdb-7a91a5871fdd",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "cb4eec6b-4a06-4ab5-9208-3166ad5b8510",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "cb88dbad-e01a-4103-afcd-ff15cec811e9",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "cbc6b43e-bdac-43a5-89be-ba858059a0ae",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "cc0cf8cf-6405-4fdd-a5e7-f63917ae33fe",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "cc407d97-556e-4be9-a686-b0cbe3a26eba",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "cc5b02a0-6c81-4c91-af73-374c76b55a8b",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "cccc2cd5-cd7e-4240-a077-28bbe9e67be6",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "ce1c21ea-f9e6-487c-a0e4-6b55d7843df1",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "ce2d3619-989a-4faa-bb6d-53a03b12f9ae",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "ce3af2b5-3792-4fbc-8861-3dc527115e5a",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "ceeb82d2-25dd-48a8-968b-94498587714a",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "cf41ed07-85f5-44e1-976b-1c35dbf28f18",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "cfb0dcff-2134-47a8-bfb0-d6447bac9d7a",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "d0e84b1d-db3e-41ba-b3cd-1230a1b07c4b",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "d1385cf7-3033-459b-a2b0-702808e4faf4",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "d2067d1f-f953-4ccc-b45a-2e6564d37018",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "d217770c-520a-4ecc-ae1a-8c6882c6da36",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "d2f0257d-b1f8-4504-8686-64b3370a46dd",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "d45cea1f-8132-4606-9536-909cf6d96538",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "d4b46612-6670-46b6-8e49-0ab0f5769dfa",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "d4f339c0-18e2-4f60-849d-88c666fb689b",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "d554ec38-2511-4b1f-90b7-a4028b5fac3b",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "d5f8d92e-0bb9-4cbb-a992-2fdf93ef1627",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "d69a480b-f5c1-4329-b935-6d0ae99f6fc0",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "d8262869-ecfc-4b04-886d-5f1a28da6c4c",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "d86ac599-cf1b-4c85-8395-66f2adb03a27",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "d92802a9-be4e-44d8-866c-c706240efe2a",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "da0b4131-ddc1-410a-9e20-63c0dc08e647",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "db303386-e4b4-4cc7-b33b-c7feb9d6011b",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "dc3972ff-d421-4602-931c-95013a0793b9",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "dc47665b-99c5-4249-af9c-7aff18d4dcbb",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "dcda07c8-07b1-4fe2-a7c4-9122e7d215fe",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "dce153c3-65b4-4deb-8db9-cd7f34be8c68",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "dd576090-2c0c-4134-8d21-4e70ca2a90b2",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "dda87d94-009d-4a9c-91db-ecd02437741b",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "ddeaa578-bf16-4ec2-bb72-1ceb7d64f112",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "de07f17d-501e-46cb-ab3b-292c7ae08eb6",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "e1fc1d8c-b848-4535-a3ba-0289ac511ffa",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "e34ff5b0-dc1f-4097-afad-34a440c8dc66",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "e47fc3e6-153e-4789-b9ec-2ba750a75934",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "e4f1f8cc-e244-4214-9ee9-c18ee932c512",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "e5289f7f-e436-4f31-bfbc-a78315da6206",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "e5f58272-3f48-45b6-924e-ec24d4fb3563",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "e60f7897-8aa2-416b-b1bd-03f461d53d42",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "e645b49b-ebf3-4a23-8502-0f165cf1c3a3",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "e6b16d01-331d-4744-b8d9-50df67899dda",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "e6d54784-4a7d-4267-8e6a-3fda5a80d688",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "e6d5840f-4dd5-420f-8b51-1c170bc245e2",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "e6f871c3-f715-4b97-97f2-3dea93533656",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "e74739f0-6f68-4fd8-90cb-6f15ff2bcb5e",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "e762fd30-5d33-4010-b56b-b1de001e3a8c",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "e78d6b85-e70a-4c65-a8e1-d2f1b6b1a4f7",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "e7985585-3d0b-4cc4-bb97-28b041baf8c4",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "e7aedc3e-5821-49a2-a4c0-83c688025c53",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "e7c8f61a-5f34-4190-bae3-f9bd0c1fc3de",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "e97abedf-0ac2-48cb-98f7-b2996eb1c3a8",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "e9d0c612-21ed-4c44-a82f-cbd8457d7f43",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "e9d31c46-b6dc-434d-b9f6-384e465bc48d",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "e9e7e164-1d6a-49bd-b499-a311e07907c5",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "ea603a33-edab-4411-b853-833413afb8fc",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "eb65733c-1fab-4dd3-9ede-4428f1db21d4",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "ec3426fa-cd65-49db-a703-4bd16bb20e6d",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "ed0bee00-6663-47ee-8aae-7b654c9558da",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "ed451ff0-b7f9-4dbc-9a09-2447fccd73a4",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "ed587751-7c68-4eab-8baa-680502933bc4",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "ed92f2c0-04f8-40b5-b5e5-9714f3655ba3",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "ee166202-c562-4e4a-8871-38a9cd397c5d",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "ee1eda8f-b7d6-411c-8863-3b8facdcb569",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "f1fc8f37-1280-4f46-afd3-312cebbb97bc",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "f3f90208-d0fa-4f26-b55e-3c313038d070",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "f436fe5c-50fd-40be-8b30-9262202fd7f4",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "f46b6553-b59d-41e4-a151-6cbd077ae6d6",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "f4e54f3d-7e12-4556-b68d-837b3271f6cf",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "f537ebce-1f98-4595-afd1-ab0005fc739c",
+   "sitting": "Re-NEET 2024"
+  },
+  {
+   "id": "f6e0f526-5e96-4045-a48b-1a827c9dc310",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "f726cb62-5ce2-4f44-b884-6fa8af6b68f7",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "f80de171-7023-4028-8903-8365d3ad1473",
+   "sitting": "Re-NEET 2026"
+  },
+  {
+   "id": "f818c60b-7c97-46c8-888a-6da1a3d92d20",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "f834e980-b442-4b6b-aca1-c607823fa910",
+   "sitting": "NEET 2022"
+  },
+  {
+   "id": "f890a597-bb5b-40ac-b441-008d12e62cbf",
+   "sitting": "NEET 2026"
+  },
+  {
+   "id": "f908a415-49ce-4bc6-8baf-f7801d760970",
+   "sitting": "NEET 2021"
+  },
+  {
+   "id": "fb4cf046-7a9c-463a-95e0-542e75732cc5",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "fc3e88c8-ee32-412d-b1ae-67a85302d880",
+   "sitting": "NEET 2024"
+  },
+  {
+   "id": "fc9f1ef0-0671-470c-b29c-6331f9dcc375",
+   "sitting": "NEET 2023"
+  },
+  {
+   "id": "fd8848b6-c1d9-42d5-b62e-19e28ae35033",
+   "sitting": "NEET 2025"
+  },
+  {
+   "id": "ff089db9-61ea-461b-8277-20ff12d9775d",
+   "sitting": "NEET 2024"
+  }
+ ],
+ "groups": [
+  {
+   "tier": "repeat",
+   "label": "Lucas test: tertiary alcohols react instantly, primary alcohols slowest",
+   "sittings": [
+    "NEET 2022*",
+    "NEET 2024"
+   ],
+   "questionIds": [
+    "45c7be16-205f-461a-b2bb-e21dddb85753",
+    "2b6fee20-db1b-45ea-9235-2b6c60deaaec"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Alcohol formed when a Grignard reagent adds to an aldehyde or ketone",
+   "sittings": [
+    "NEET 2021",
+    "Re-NEET 2024"
+   ],
+   "questionIds": [
+    "7eab257c-63ab-4d86-bd08-f2aafcbb227c",
+    "8f63bc6d-bc62-4d8d-9e64-064e6160436b"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Hydroboration-oxidation of an alkene gives the anti-Markovnikov (primary) alcohol",
+   "sittings": [
+    "NEET 2024",
+    "Re-NEET 2024"
+   ],
+   "questionIds": [
+    "fc3e88c8-ee32-412d-b1ae-67a85302d880",
+    "2c6086fa-d136-4ccc-8937-7f5d548272d1"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Etard reaction: toluene with chromyl chloride gives benzaldehyde",
+   "sittings": [
+    "NEET 2021",
+    "Re-NEET 2026"
+   ],
+   "questionIds": [
+    "30020e66-7a5d-458e-86f1-9c48c262db6c",
+    "5518e05c-e896-438b-ba00-b785a253493b"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Product that cannot form in a crossed aldol condensation",
+   "sittings": [
+    "NEET 2022",
+    "Re-NEET 2026"
+   ],
+   "questionIds": [
+    "974dab5a-f731-451a-b096-a206b50267f3",
+    "f3f90208-d0fa-4f26-b55e-3c313038d070"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Which group each reducing agent reduces (NaBH4, LiAlH4, DIBAL-H)",
+   "sittings": [
+    "NEET 2021",
+    "Re-NEET 2024",
+    "NEET 2025"
+   ],
+   "questionIds": [
+    "8571ed14-faa6-4a77-91b2-cb5e47658bde",
+    "d92802a9-be4e-44d8-866c-c706240efe2a",
+    "d45cea1f-8132-4606-9536-909cf6d96538"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Primary amine with nitrous acid: aliphatic gives an alcohol, aromatic a diazonium salt",
+   "sittings": [
+    "NEET 2022",
+    "Re-NEET 2024",
+    "NEET 2026"
+   ],
+   "questionIds": [
+    "31374afb-8d33-4478-a734-ed51d05d81f0",
+    "0a40bfa7-3416-41f3-8fff-8c2b626ce937",
+    "7a25aa9a-1b89-4c7c-87d0-b55f30d26bd0",
+    "48338818-2477-41c9-8276-18bfcf001ac8"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Replacing the diazonium group (Sandmeyer, KI, ethanol): product or reagent",
+   "sittings": [
+    "NEET 2021",
+    "NEET 2023",
+    "Re-NEET 2024",
+    "NEET 2025"
+   ],
+   "questionIds": [
+    "06ddb0b7-6e4e-4afa-9852-52fa51f27985",
+    "ceeb82d2-25dd-48a8-968b-94498587714a",
+    "3d700032-5546-47eb-8eda-1c24ff7d91b1",
+    "5813cb0d-c06e-4ca6-9426-e900709f60f0"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Reactions and reagents that give a primary amine (nitrile reduction, Hoffmann bromamide)",
+   "sittings": [
+    "NEET 2023",
+    "NEET 2026",
+    "Re-NEET 2026"
+   ],
+   "questionIds": [
+    "454056be-0e34-4e79-adfa-6a464b701648",
+    "642353eb-9dd7-4049-8838-73aa223c1321",
+    "33acee02-d9de-41f4-be5f-62123d8f56f4"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Reactions aniline does or does not undergo (Friedel-Crafts, carbylamine, Gabriel)",
+   "sittings": [
+    "NEET 2024",
+    "Re-NEET 2024"
+   ],
+   "questionIds": [
+    "56b4240e-28c8-41f8-819f-a0c2448cae06",
+    "a4f2820a-aa7a-49b9-a1c4-98e734a56b76"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Vitamin and its deficiency disease",
+   "sittings": [
+    "NEET 2021",
+    "NEET 2025"
+   ],
+   "questionIds": [
+    "88fbfe58-92a3-4c58-8e75-0ad6d35667f9",
+    "347160d2-719e-4a1c-9507-b00893c4c742"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Match molecules to their VSEPR shapes",
+   "sittings": [
+    "NEET 2021",
+    "NEET 2024",
+    "Re-NEET 2026"
+   ],
+   "questionIds": [
+    "4618409e-7bf2-4c2e-9902-2118ff7383c5",
+    "dda87d94-009d-4a9c-91db-ecd02437741b",
+    "dce153c3-65b4-4deb-8db9-cd7f34be8c68"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Which molecule has a zero or non-zero dipole moment",
+   "sittings": [
+    "NEET 2021",
+    "Re-NEET 2024"
+   ],
+   "questionIds": [
+    "78b1e50e-7c21-4701-bfcc-2ee706b63c6f",
+    "57f6455f-c1d9-42a7-a336-fda015462c05"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Count sigma and pi bonds in given molecules",
+   "sittings": [
+    "NEET 2024",
+    "NEET 2026"
+   ],
+   "questionIds": [
+    "cc0cf8cf-6405-4fdd-a5e7-f63917ae33fe",
+    "7483e05c-01e7-4c87-bd89-428872f05f06"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Molecular orbital filling of a diatomic: energy order, HOMO, bond order, magnetism",
+   "sittings": [
+    "NEET 2022",
+    "NEET 2023",
+    "Re-NEET 2026"
+   ],
+   "questionIds": [
+    "fc9f1ef0-0671-470c-b29c-6331f9dcc375",
+    "701d4d96-8653-4573-adf0-7609e74f91a7",
+    "21761850-23a3-4d84-9ecf-54c1f4e30c46"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Bond enthalpy order of diatomic molecules (N2 > O2 > H2)",
+   "sittings": [
+    "Re-NEET 2024",
+    "NEET 2025"
+   ],
+   "questionIds": [
+    "0587aaec-931d-4fdc-9238-0e62c20d1c12",
+    "8d05a3da-82f7-48d3-be34-314fb17732e8"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Electrons around the central atom (exceptions to the octet rule)",
+   "sittings": [
+    "NEET 2021",
+    "NEET 2023"
+   ],
+   "questionIds": [
+    "9ff7b2d9-13b8-4480-9dcf-1b807915c348",
+    "ee166202-c562-4e4a-8871-38a9cd397c5d"
+   ]
+  },
+  {
+   "tier": "repeat",
+   "label": "Arrhenius plot: ln k against 1/T is a straight line with negative slope",
+   "sittings": [
+    "NEET 2024*",
+    "Re-NEET 2024"
+   ],
+   "questionIds": [
+    "db303386-e4b4-4cc7-b33b-c7feb9d6011b",
+    "a5279e0d-b8cb-4c1c-8c8e-2f043c8b3082"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Activation energy from rate constants at two temperatures",
+   "sittings": [
+    "NEET 2024",
+    "Re-NEET 2024"
+   ],
+   "questionIds": [
+    "c84a260f-ab8e-4b26-9a37-73b0a6097807",
+    "3a390575-08c3-4d77-9a2e-db833b76a923",
+    "0b4c6a0c-c9c2-42a5-9ec6-f6c09ca31067"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Activation energy or temperature from the Arrhenius line (slope = -Ea/R)",
+   "sittings": [
+    "NEET 2021",
+    "NEET 2026",
+    "Re-NEET 2026"
+   ],
+   "questionIds": [
+    "1fc147e0-64b7-4bc5-8f82-8b37ff759e1e",
+    "0a4a4ced-6e7a-4274-b218-1acdf78ded61",
+    "ed451ff0-b7f9-4dbc-9a09-2447fccd73a4"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "First-order integrated rate law: rate constant or time from concentrations or half-life",
+   "sittings": [
+    "NEET 2022",
+    "NEET 2025"
+   ],
+   "questionIds": [
+    "e9d0c612-21ed-4c44-a82f-cbd8457d7f43",
+    "b3efd2e8-eb39-48e3-9bde-211d73237281",
+    "cc5b02a0-6c81-4c91-af73-374c76b55a8b"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Order of reaction from the shape of a kinetics plot",
+   "sittings": [
+    "NEET 2022",
+    "NEET 2026"
+   ],
+   "questionIds": [
+    "ae1ef709-0745-4c17-b7db-2e38b4b24f7a",
+    "8481383b-da26-4c3f-8039-5220fd1f90bf"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Order of reaction from a rate law or rate data",
+   "sittings": [
+    "NEET 2023",
+    "Re-NEET 2024"
+   ],
+   "questionIds": [
+    "09362120-9128-4d1f-8df2-bc6c5c415ec9",
+    "35482413-7a35-4ae6-b7f5-e4dd49d6932a"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Order of first ionisation enthalpy across a period (Be/B and N/O exceptions)",
+   "sittings": [
+    "NEET 2024",
+    "Re-NEET 2026"
+   ],
+   "questionIds": [
+    "a2428897-81af-444e-910c-b2de5435b22a",
+    "cc407d97-556e-4be9-a686-b0cbe3a26eba"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Order of atomic and ionic size",
+   "sittings": [
+    "NEET 2023",
+    "Re-NEET 2024",
+    "NEET 2026"
+   ],
+   "questionIds": [
+    "e97abedf-0ac2-48cb-98f7-b2996eb1c3a8",
+    "309a87fb-8015-4455-a9d4-bc4d4220d70e",
+    "977ccd66-55af-449e-b73e-6ee3103d6eac"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Block of an element from its position or electron configuration",
+   "sittings": [
+    "Re-NEET 2024",
+    "NEET 2025"
+   ],
+   "questionIds": [
+    "561af4c3-84aa-4de8-a69e-ccbfd68d748a",
+    "02b190da-ef75-4519-a70e-0adda9f32c61"
+   ]
+  },
+  {
+   "tier": "repeat",
+   "label": "EDTA is a hexadentate ligand (two N and four O donors)",
+   "sittings": [
+    "NEET 2021*",
+    "Re-NEET 2024"
+   ],
+   "questionIds": [
+    "e7aedc3e-5821-49a2-a4c0-83c688025c53",
+    "7f52fc65-c020-4a46-8c45-984faa32feea"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Identify an ambidentate ligand",
+   "sittings": [
+    "Re-NEET 2024",
+    "NEET 2026"
+   ],
+   "questionIds": [
+    "e9e7e164-1d6a-49bd-b499-a311e07907c5",
+    "d5f8d92e-0bb9-4cbb-a992-2fdf93ef1627"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Homoleptic and heteroleptic complexes",
+   "sittings": [
+    "NEET 2023",
+    "NEET 2024"
+   ],
+   "questionIds": [
+    "36b19d84-063a-4ae3-b7ca-3ce77c22c6c1",
+    "2913a49f-0fff-40ea-bbe5-35096e47b106"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Match a complex to its type of isomerism",
+   "sittings": [
+    "NEET 2024",
+    "NEET 2026"
+   ],
+   "questionIds": [
+    "414b0779-82eb-43a6-b801-1bca4c524021",
+    "c43bc011-d13c-409a-8e66-d8387c5daa86"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Unpaired electrons and magnetic moment of a given complex ion",
+   "sittings": [
+    "NEET 2021",
+    "NEET 2024",
+    "NEET 2025",
+    "Re-NEET 2026"
+   ],
+   "questionIds": [
+    "01b26ed7-fd30-4733-b709-793b96b65055",
+    "0b9ff814-61e9-4608-96d9-8532719038e3",
+    "405b1a8d-c3b3-42db-951d-b56aacda3f3e",
+    "460b3ec6-1b06-4493-b321-582513e0cba8"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Spectrochemical series: ligand field strength and energy or wavelength absorbed",
+   "sittings": [
+    "NEET 2022",
+    "NEET 2025",
+    "Re-NEET 2026"
+   ],
+   "questionIds": [
+    "161939bb-895a-4630-b08f-3a4b92a58a9e",
+    "b1be16b7-58d3-4987-bb0a-e598c510fbf4",
+    "3c97a3c7-2a98-43ca-8213-a764c2666b62"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Number of ions a complex gives in solution (conductance, electrolyte type)",
+   "sittings": [
+    "NEET 2025",
+    "Re-NEET 2026"
+   ],
+   "questionIds": [
+    "14dca76d-caef-46c7-afcf-42e196c43e48",
+    "b29051a3-acf0-41f4-a5d7-818f3f6ef5e0"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "IUPAC name and formula of a coordination compound",
+   "sittings": [
+    "NEET 2022",
+    "Re-NEET 2026"
+   ],
+   "questionIds": [
+    "abcdf222-51c7-4e28-98ac-9b3c6463afd7",
+    "a40b8818-9e26-4035-b16f-884b3d0359ff"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Faraday's first law: mass deposited or Faradays needed in electrolysis",
+   "sittings": [
+    "NEET 2024",
+    "NEET 2026"
+   ],
+   "questionIds": [
+    "d8262869-ecfc-4b04-886d-5f1a28da6c4c",
+    "c4a18baa-9ee2-4e46-beb9-a2cd51f56643",
+    "65ab4b64-09bc-445d-89ea-edb47efde236"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Degree of dissociation or Ka of a weak acid from molar conductivity",
+   "sittings": [
+    "NEET 2021",
+    "NEET 2025"
+   ],
+   "questionIds": [
+    "760f99bb-f61e-41d2-824d-c96ac62bcc73",
+    "6694c863-ae05-467f-836b-f4677570bba4"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Limiting molar conductivity by Kohlrausch's law",
+   "sittings": [
+    "NEET 2021",
+    "Re-NEET 2026"
+   ],
+   "questionIds": [
+    "7734e860-107f-4498-ab48-ac6034cd419a",
+    "cf41ed07-85f5-44e1-976b-1c35dbf28f18"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Gibbs energy and electrode potential (Delta G = -nFE)",
+   "sittings": [
+    "Re-NEET 2024",
+    "Re-NEET 2026"
+   ],
+   "questionIds": [
+    "a62df5c9-80a8-4895-b37e-6f738166c499",
+    "cccc2cd5-cd7e-4240-a077-28bbe9e67be6"
+   ]
+  },
+  {
+   "tier": "repeat",
+   "label": "Phenolphthalein in the NaOH vs oxalic acid titration: colourless to pink",
+   "sittings": [
+    "Re-NEET 2024*",
+    "NEET 2026"
+   ],
+   "questionIds": [
+    "c0c1d5e2-aed2-4b2c-a822-a4b724f33809",
+    "1faad48e-f80f-47ae-ad41-67dd32aa745d"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Equilibria where Kp differs from Kc (change in moles of gas)",
+   "sittings": [
+    "NEET 2024",
+    "NEET 2025",
+    "NEET 2026"
+   ],
+   "questionIds": [
+    "b07d5f3a-71de-43bf-85ec-0173a671ea4b",
+    "ed587751-7c68-4eab-8baa-680502933bc4",
+    "9a1f530c-4ec9-4a2c-907f-b335cd200ffc"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "pH of a buffer (Henderson equation)",
+   "sittings": [
+    "NEET 2022",
+    "NEET 2026"
+   ],
+   "questionIds": [
+    "e6f871c3-f715-4b97-97f2-3dea93533656",
+    "77839f3a-ee08-482d-8210-e7ca9094fa41"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Conditions that shift an equilibrium forward (Le Chatelier)",
+   "sittings": [
+    "Re-NEET 2024",
+    "NEET 2025"
+   ],
+   "questionIds": [
+    "88d13090-2f6d-4c75-997c-67fa2e2310a0",
+    "2b3d7dd9-4218-4535-a189-8cab4118118b"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Solubility from Ksp, including the common ion effect",
+   "sittings": [
+    "Re-NEET 2024",
+    "Re-NEET 2026"
+   ],
+   "questionIds": [
+    "50d100f4-4fb6-424d-8fd5-39323f7bf5f8",
+    "a7a001a1-ec2a-4280-8d47-3ee6c33d1d94"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Equilibrium concentration or degree of dissociation from Kc",
+   "sittings": [
+    "NEET 2022",
+    "NEET 2024"
+   ],
+   "questionIds": [
+    "40dec421-6ac9-47f5-9173-75efce38c0c1",
+    "aa64b6f8-5345-4c22-b4a0-cf7d6f44c085"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "By-products when an alcohol reacts with PCl3 or PCl5",
+   "sittings": [
+    "NEET 2024",
+    "NEET 2026"
+   ],
+   "questionIds": [
+    "1da6b707-d245-4218-b7da-ca3051dbf55c",
+    "2ec7fd71-f88b-49f7-9483-c8f16a77d9b5"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Saytzeff product of dehydrohalogenation",
+   "sittings": [
+    "NEET 2021",
+    "NEET 2024"
+   ],
+   "questionIds": [
+    "e1fc1d8c-b848-4535-a3ba-0289ac511ffa",
+    "61814716-525a-475e-9cff-cdf8b10a306c"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Suitable method to prepare a haloarene",
+   "sittings": [
+    "NEET 2022",
+    "Re-NEET 2024"
+   ],
+   "questionIds": [
+    "582d4c39-f79d-4531-8a2d-d26f15dc305f",
+    "0856cb79-e2f5-4f9e-be18-c47c36de45c0"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Decarboxylation of a sodium carboxylate with soda lime (NaOH + CaO)",
+   "sittings": [
+    "NEET 2021",
+    "NEET 2023"
+   ],
+   "questionIds": [
+    "840a494b-7c66-411f-b653-97c887ba0d21",
+    "cb88dbad-e01a-4103-afcd-ff15cec811e9"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Aromatic or not by Huckel's rule",
+   "sittings": [
+    "NEET 2022",
+    "NEET 2023"
+   ],
+   "questionIds": [
+    "9ee05faa-ff32-43a6-a210-62ab354d9e7a",
+    "7fe4a07f-8885-404e-997c-ff9dee855c8f"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Tests for unsaturation (Baeyer's reagent, bromine water)",
+   "sittings": [
+    "Re-NEET 2024",
+    "NEET 2025"
+   ],
+   "questionIds": [
+    "f537ebce-1f98-4595-afd1-ab0005fc739c",
+    "130af29f-76c0-4cd6-b2c4-d3ac233d17d3"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Products of oxidative cleavage of an alkene (ozonolysis, acidic KMnO4)",
+   "sittings": [
+    "NEET 2022",
+    "NEET 2024"
+   ],
+   "questionIds": [
+    "ed0bee00-6663-47ee-8aae-7b654c9558da",
+    "8a176953-8d40-4d88-9f3d-e520dd774605"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Identify metamers",
+   "sittings": [
+    "NEET 2021",
+    "NEET 2026"
+   ],
+   "questionIds": [
+    "212bbdde-3420-4c2c-9fd5-1780c4c6046a",
+    "1a4c58eb-ea32-4153-9d0d-d3c39ac053ca"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Lassaigne's test: reactions and colours",
+   "sittings": [
+    "NEET 2023",
+    "NEET 2025",
+    "NEET 2026"
+   ],
+   "questionIds": [
+    "01e54158-c3dc-40bf-a1f1-63408c4409de",
+    "6795f428-cd5c-4e1e-8005-2641feddf3b6",
+    "ce3af2b5-3792-4fbc-8861-3dc527115e5a"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Method to separate or purify a given mixture",
+   "sittings": [
+    "NEET 2024",
+    "NEET 2025",
+    "NEET 2026"
+   ],
+   "questionIds": [
+    "d217770c-520a-4ecc-ae1a-8c6882c6da36",
+    "de07f17d-501e-46cb-ab3b-292c7ae08eb6",
+    "819f624a-3c36-4b8c-8d77-f5286ee6e4c1"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "IUPAC name of a given organic compound",
+   "sittings": [
+    "NEET 2021",
+    "NEET 2022",
+    "Re-NEET 2024"
+   ],
+   "questionIds": [
+    "5c7839ab-940f-4806-a106-e305531e7f0d",
+    "ea603a33-edab-4411-b853-833413afb8fc",
+    "dc3972ff-d421-4602-931c-95013a0793b9"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Oxidation state of an atom in given compounds",
+   "sittings": [
+    "NEET 2025",
+    "Re-NEET 2026"
+   ],
+   "questionIds": [
+    "e762fd30-5d33-4010-b56b-b1de001e3a8c",
+    "8c4d9619-735e-496a-bb8f-4d17ef420381"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Positive or negative deviation from Raoult's law (chloroform and acetone)",
+   "sittings": [
+    "NEET 2026",
+    "Re-NEET 2026"
+   ],
+   "questionIds": [
+    "2648df17-ef18-4479-b62a-78f105e30795",
+    "062f3732-8ac8-4361-af8c-e26214a3e0ee"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Vapour pressure of an ideal solution by Raoult's law",
+   "sittings": [
+    "NEET 2021",
+    "NEET 2025"
+   ],
+   "questionIds": [
+    "2acc8e7e-940e-46c0-bf59-5a4395bfaad7",
+    "37290c0a-4761-4557-8b86-f438938d2cb9"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Which solution has the higher colligative property (van't Hoff factor, molar mass)",
+   "sittings": [
+    "NEET 2021",
+    "NEET 2025"
+   ],
+   "questionIds": [
+    "4a58db76-92df-4872-84c5-97fdfce0d951",
+    "61bbca08-223b-460b-af1e-40e22bfd01c6"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Osmotic pressure pi = CRT (isotonic solutions, temperature from the slope)",
+   "sittings": [
+    "NEET 2024",
+    "Re-NEET 2024"
+   ],
+   "questionIds": [
+    "b02bf22b-8288-4bff-9399-ec20ab457ad5",
+    "6892717f-233e-4ec9-91af-55039f42395c"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Molarity and molality calculations",
+   "sittings": [
+    "NEET 2022",
+    "Re-NEET 2024",
+    "NEET 2026"
+   ],
+   "questionIds": [
+    "557f559f-a581-4538-a509-673f42deae9c",
+    "2ec2f478-13fc-4533-9fe5-403f4b795b51",
+    "e74739f0-6f68-4fd8-90cb-6f15ff2bcb5e"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Empirical formula from percentage composition",
+   "sittings": [
+    "NEET 2021",
+    "NEET 2024"
+   ],
+   "questionIds": [
+    "8823b14d-9146-4004-90f6-69ec175b4c75",
+    "278ba814-7407-4099-ba2c-f45794f8887b"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Number of atoms or molecules in a given mass (mole concept)",
+   "sittings": [
+    "NEET 2024",
+    "Re-NEET 2024",
+    "NEET 2025",
+    "NEET 2026"
+   ],
+   "questionIds": [
+    "e6d54784-4a7d-4267-8e6a-3fda5a80d688",
+    "b81c48ac-2330-4357-9f8b-e2fcfc7d94fc",
+    "882e6e5a-9671-412a-a476-98f20d9f09c6",
+    "70f9f5a6-aedd-4feb-ba6f-27892c844c7a"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Mass of reactant or product from a balanced equation (with percentage purity)",
+   "sittings": [
+    "NEET 2022",
+    "NEET 2023",
+    "NEET 2024",
+    "Re-NEET 2026"
+   ],
+   "questionIds": [
+    "4a40726f-8aa6-4b91-831a-a9c955ef2f25",
+    "e645b49b-ebf3-4a23-8502-0f165cf1c3a3",
+    "80d3d0ca-4efa-4dcb-98c2-f2cdcacedc6a",
+    "4b9197c9-a6f9-4fd6-b364-479ebbda96c4"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Radius or energy of a Bohr orbit of a hydrogen-like ion",
+   "sittings": [
+    "NEET 2022",
+    "NEET 2024",
+    "NEET 2025"
+   ],
+   "questionIds": [
+    "870cf51f-bb53-4f66-8fef-c5bb106c093c",
+    "32161669-665d-492b-a172-248964e15f29",
+    "f436fe5c-50fd-40be-8b30-9262202fd7f4"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Wavelength or wavenumber of a hydrogen spectral line (Rydberg formula)",
+   "sittings": [
+    "Re-NEET 2024",
+    "NEET 2025"
+   ],
+   "questionIds": [
+    "369ebb2d-a39e-4f3a-8e27-9c69b7cb56a1",
+    "e5289f7f-e436-4f31-bfbc-a78315da6206"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "What the quantum numbers n, l and m tell about an orbital",
+   "sittings": [
+    "NEET 2023",
+    "NEET 2024",
+    "NEET 2026"
+   ],
+   "questionIds": [
+    "4000bf21-0b34-4ff2-9076-2287a2bb3d1e",
+    "ce1c21ea-f9e6-487c-a0e4-6b55d7843df1",
+    "68762a92-15be-404e-9db6-b4dc1d2ae648"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Spin-only magnetic moment of transition metal ions",
+   "sittings": [
+    "NEET 2024",
+    "Re-NEET 2024",
+    "NEET 2026"
+   ],
+   "questionIds": [
+    "802f64bf-66c0-438c-bb6a-ef8de8c836cd",
+    "3bfb8359-af58-41af-bf43-9448917c77ba",
+    "28284ac8-be90-44e5-92da-59a71f4f6eac"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Unpaired electrons and magnetism of lanthanoid ions",
+   "sittings": [
+    "NEET 2024",
+    "NEET 2025",
+    "Re-NEET 2026"
+   ],
+   "questionIds": [
+    "ff089db9-61ea-461b-8277-20ff12d9775d",
+    "a0363540-ae09-47dd-8a14-bace0174d2e3",
+    "1d276e4b-eb70-45c1-9a2a-68488f384850"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Unusual oxidation states of lanthanoids (Ce4+, Tb4+, Eu2+, Yb2+)",
+   "sittings": [
+    "Re-NEET 2024",
+    "NEET 2026"
+   ],
+   "questionIds": [
+    "07c11416-ad2f-49a0-87fc-d3fc79f39e94",
+    "2051e3bb-0a43-45c4-a4fb-0d6d3cfe6af4"
+   ]
+  },
+  {
+   "tier": "repeat",
+   "label": "Boiling points of group 16 hydrides: H2O > H2Te > H2Se > H2S (hydrogen bonding in water)",
+   "sittings": [
+    "NEET 2022*",
+    "NEET 2024"
+   ],
+   "questionIds": [
+    "e47fc3e6-153e-4789-b9ec-2ba750a75934",
+    "92095f79-6932-4565-ac85-89a608dd6e0f"
+   ]
+  },
+  {
+   "tier": "repeat",
+   "label": "Acid strength of hydrogen halides: HF < HCl < HBr < HI",
+   "sittings": [
+    "NEET 2021*",
+    "Re-NEET 2024"
+   ],
+   "questionIds": [
+    "6c8ec5c8-87db-433c-9b18-4771a045646e",
+    "f908a415-49ce-4bc6-8baf-f7801d760970"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Acid strength of hydrides down a group",
+   "sittings": [
+    "NEET 2021",
+    "Re-NEET 2024"
+   ],
+   "questionIds": [
+    "f908a415-49ce-4bc6-8baf-f7801d760970",
+    "6c8ec5c8-87db-433c-9b18-4771a045646e",
+    "34b11cd9-5a2a-4c2c-bbae-b5e6b79a6959"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Properties of carbon allotropes (diamond, graphite)",
+   "sittings": [
+    "NEET 2022",
+    "NEET 2023"
+   ],
+   "questionIds": [
+    "2881794e-be9b-4415-b5c8-e478c9ddb862",
+    "8d728201-7f6c-4062-9eec-5f46bc68d418"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Shape and hybridisation of a p-block compound (xenon compounds, ClF3, PCl5)",
+   "sittings": [
+    "Re-NEET 2024",
+    "NEET 2025",
+    "NEET 2026"
+   ],
+   "questionIds": [
+    "3c2ca804-8629-4648-b22f-d0babdf7de6d",
+    "f6e0f526-5e96-4045-a48b-1a827c9dc310",
+    "dcda07c8-07b1-4fe2-a7c4-9122e7d215fe"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Correct or incorrect statements about bonding in group 15: p-pi p-pi bonds of nitrogen, d-pi bonds of P and As",
+   "sittings": [
+    "Re-NEET 2024",
+    "NEET 2026"
+   ],
+   "questionIds": [
+    "f890a597-bb5b-40ac-b441-008d12e62cbf",
+    "43c2906b-ce23-4a9e-9590-76bc332e1772"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Free (irreversible isothermal) expansion of an ideal gas: Delta U, w, q and Delta S",
+   "sittings": [
+    "NEET 2021",
+    "Re-NEET 2024",
+    "Re-NEET 2026"
+   ],
+   "questionIds": [
+    "f818c60b-7c97-46c8-888a-6da1a3d92d20",
+    "1754db94-1dc7-4b33-bd11-48f0eaba154d",
+    "13766888-2797-496e-8e75-0b95c1211763"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Delta H and Delta U relation (Delta H = Delta U + Delta n RT)",
+   "sittings": [
+    "NEET 2023",
+    "Re-NEET 2024",
+    "NEET 2026"
+   ],
+   "questionIds": [
+    "d554ec38-2511-4b1f-90b7-a4028b5fac3b",
+    "a931f537-604d-4843-acbd-75b4b256d50e",
+    "14bd8331-71c4-4668-80f3-a6aaa2118fd5"
+   ]
+  },
+  {
+   "tier": "type",
+   "label": "Standard Gibbs energy and the equilibrium constant (Delta G = -RT ln K)",
+   "sittings": [
+    "NEET 2023",
+    "Re-NEET 2026"
+   ],
+   "questionIds": [
+    "cab6591d-8679-497a-9fdb-7a91a5871fdd",
+    "99e2644e-dbe1-41f3-8e42-1c004a10e800"
+   ]
+  }
+ ]
+}
