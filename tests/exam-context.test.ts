@@ -483,6 +483,7 @@ describe("exam tiers", () => {
       "ssc-cpo",
       "ugc-net",
       "rrb-ntpc",
+      "capf-ac",
     ],
   };
 

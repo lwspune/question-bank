@@ -52,6 +52,7 @@ export type ExamSlug =
   | "uceed"
   | "ugc-net"
   | "rrb-ntpc"
+  | "capf-ac"
   | "clat";
 
 /**
@@ -801,6 +802,25 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     displayName: "RRB NTPC",
     examName: "RRB NTPC", // must match the `exams` DB row exactly
     hasMocks: true, // one mock per shift (rrb-ntpc-graduate-cbt-1-*)
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "capf-ac",
+    // UPSC CAPF (Assistant Commandants), the entry to the BSF, CRPF, CISF, ITBP
+    // and SSB officer cadre: Paper I only ("General Ability and Intelligence",
+    // 125 MCQs, +2 / -2/3, 2 hours), UPSC's own booklets 2018-2026
+    // (scripts/capf/). Added 2026-11-14 on the owner's call (graduate focus),
+    // with no student request yet. Only 2026 has a key (provisional); the other
+    // years are two blind solutions plus a hand check, and each row says which.
+    tier: "graduate",
+    goal: "defence",
+    displayName: "CAPF (AC)",
+    examName: "UPSC CAPF (AC)", // must match the `exams` DB row exactly
+    // PUBLIC since 2026-11-14: nine years, 1,125 q, every one with a worked
+    // solution. One timed mock per year (capf-ac-paper-1-*), MOCKS.md.
+    hasMocks: true,
     pastPaperSolutions: true,
     guidesPath: null,
     notesPath: null,
