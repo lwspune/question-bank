@@ -126,5 +126,6 @@ describe("sittingFor (2026-11-06): one labeller for every planned exam", () => {
     expect(sittingFor("JEE Mains", { pyq_year: 2026, pyq_month: null, pyq_note: "2 Apr 2026 Shift 1" })).toBe("2 Apr 2026 S1");
     expect(sittingFor("NDA", { pyq_year: 2024, pyq_month: "Apr", pyq_note: null })).toBe("NDA 1 2024");
     expect(sittingFor("SSC CGL", { pyq_year: 2023, pyq_month: null, pyq_note: "Tier I, 14 Jul 2023, Shift 3" })).toBe("14 Jul 2023 S3");
+    expect(sittingFor("NEET", { pyq_year: 2024, pyq_month: null, pyq_note: "Re-NEET (UG) 2024 — 23 Jun 2024" })).toBe("Re-NEET 2024");
   });
 });
