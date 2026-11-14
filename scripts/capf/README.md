@@ -85,8 +85,8 @@ disagreement and every agreed answer below HIGH (12-39 per paper) went to a
 hand check, recorded in `data/<year>.adjudicated.json`:
 - `confirmed` rows say "checked by hand" on the row; `verified: false` rows
   (looked at, fact not confirmable) say only "agreed".
-- 4 agreed answers were overruled by hand (2025 Q7, 2023 Q110 among them).
-- 21 items defective as printed (two right options, none right, misprint)
+- 2 agreed answers were overruled by hand (2025 Q7, 2023 Q110).
+- 19 items defective as printed (two right options, none right, misprint)
   carry a **Note** above the solution and grace in mocks (`flawed.json`).
 
 **Hand-check rulings in a keyless year can be wrong.** If UPSC publishes a key
