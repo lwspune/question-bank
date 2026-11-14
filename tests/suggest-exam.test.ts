@@ -1,20 +1,28 @@
 import { describe, expect, it } from "vitest";
-import { suggestTargetExam } from "@/lib/profile/suggestExam";
+import { inferStudentExam } from "@/lib/profile/suggestExam";
 
-describe("suggestTargetExam (for a student who never chose one)", () => {
-  const noRoute = () => null;
-
+describe("inferStudentExam (for a student who never chose one)", () => {
   it("names the exam they practised most, when it is clearly one", () => {
-    expect(suggestTargetExam({ practice: { "mht-cet": 9, nda: 1 }, landing: null }, noRoute)).toBe("mht-cet");
+    expect(inferStudentExam({ practice: { "mht-cet": 9, nda: 1 }, landing: null })).toEqual({
+      slug: "mht-cet",
+      source: "practice",
+    });
   });
 
   it("does not guess from too little or a mixed record", () => {
-    expect(suggestTargetExam({ practice: { "mht-cet": 2 }, landing: null }, noRoute)).toBeNull();
-    expect(suggestTargetExam({ practice: { "mht-cet": 5, "jee-mains": 5 }, landing: null }, noRoute)).toBeNull();
+    expect(inferStudentExam({ practice: { "mht-cet": 2 }, landing: null })).toBeNull();
+    expect(inferStudentExam({ practice: { "mht-cet": 5, "jee-mains": 5 }, landing: null })).toBeNull();
+  });
+
+  it("practice wins over the landing page when they disagree", () => {
+    expect(inferStudentExam({ practice: { "cbse-12": 10 }, landing: "/questions/nda/maths/matrices" })).toEqual({
+      slug: "cbse-12",
+      source: "practice",
+    });
   });
 
   it("falls back to the exam named by the page they first landed on", () => {
-    const s = (landing: string) => suggestTargetExam({ practice: {}, landing }, noRoute);
+    const s = (landing: string) => inferStudentExam({ practice: {}, landing })?.slug ?? null;
     expect(s("/questions/jee-mains/physics/optics")).toBe("jee-mains");
     expect(s("/exams/neet")).toBe("neet");
     expect(s("/mock/exam/cds")).toBe("cds");
@@ -22,14 +30,20 @@ describe("suggestTargetExam (for a student who never chose one)", () => {
     expect(s("/notes/nda")).toBe("nda");
     expect(s("/")).toBeNull();
     expect(s("/questions/not-an-exam/x")).toBeNull();
+    expect(inferStudentExam({ practice: {}, landing: "/exams/neet" })?.source).toBe("landing");
   });
 
-  it("maps a notes subject route to its exam", () => {
-    const route = (r: string) => (r === "mht-cet-maths" ? "mht-cet" : null);
-    expect(suggestTargetExam({ practice: {}, landing: "/notes/mht-cet-maths/differentiation" }, route)).toBe("mht-cet");
+  it("reads the landing page with the same rule as the welcome screen (examFromPath)", () => {
+    const s = (landing: string) => inferStudentExam({ practice: {}, landing })?.slug ?? null;
+    // A notes subject route, a mock paper slug, a formula sheet, an exam home.
+    expect(s("/notes/mht-cet-maths/differentiation")).toBe("mht-cet");
+    expect(s("/mock/mht-cet-2025-apr-19-s2-maths")).toBe("mht-cet");
+    expect(s("/formula/jee-mains-physics/optics")).toBe("jee-mains");
+    expect(s("/nda")).toBe("nda");
+    expect(s("/guide/ssc-cgl-tier-2-maths")).toBe("ssc-cgl-tier-2");
   });
 
   it("never suggests an exam from the international site", () => {
-    expect(suggestTargetExam({ practice: { imat: 9 }, landing: "/exams/imat" }, noRoute)).toBeNull();
+    expect(inferStudentExam({ practice: { imat: 9 }, landing: "/exams/imat" })).toBeNull();
   });
 });

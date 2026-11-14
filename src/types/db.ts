@@ -4277,6 +4277,36 @@ export type Database = {
         }
         Relationships: []
       }
+      student_exam_guesses: {
+        Row: {
+          card_answer: string | null
+          card_answered_at: string | null
+          card_seen_at: string | null
+          exam: string
+          guessed_at: string
+          source: string
+          user_id: string
+        }
+        Insert: {
+          card_answer?: string | null
+          card_answered_at?: string | null
+          card_seen_at?: string | null
+          exam: string
+          guessed_at?: string
+          source: string
+          user_id: string
+        }
+        Update: {
+          card_answer?: string | null
+          card_answered_at?: string | null
+          card_seen_at?: string | null
+          exam?: string
+          guessed_at?: string
+          source?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       student_profiles: {
         Row: {
           academic_stream: string | null
@@ -5408,6 +5438,7 @@ export type Database = {
         }[]
       }
       get_dashboard_stats: { Args: { p_org_id: string }; Returns: Json }
+      get_exam_feature_coverage: { Args: never; Returns: Json }
       get_format_mix: {
         Args: never
         Returns: {
