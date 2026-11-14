@@ -197,6 +197,10 @@ backslashes, so `\(` and `\frac` arrive corrupted and nobody can see it.
 
 Keep your tool output small: do not print whole files or images back.
 
+Write NO other files (no temp scripts, no image crops) and delete nothing. To
+check your JSON, use a one-line `node -e` that reads it. To look closer at a
+spot, view the existing page or column image; do not save crops.
+
 ---
 
 ## 9. Before you finish

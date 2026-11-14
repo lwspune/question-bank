@@ -101,14 +101,23 @@ export const PAPERS: Record<string, Paper> = {
   // indices 2-50 carrying Q1-Q125 (checked: i2 opens at Q1, i50 ends at Q125),
   // rough work i51-i54, English cover i55. 300 DPI.
   "2026": paper(2026, evens(2, 50), 300, "ProvAnsKeyCAPF-26-GenAbilityIntellg-220726.pdf"),
-  "2025": paper(2025, [], 0),
-  "2024": paper(2024, [], 0),
-  "2023": paper(2023, [], 0),
-  "2022": paper(2022, [], 0),
-  "2021": paper(2021, [], 0),
-  "2020": paper(2020, [], 0),
-  "2019": paper(2019, [], 0),
-  "2018": paper(2018, [], 0),
+  // Page maps below MEASURED with scripts/upsc/classify-pages.py's script
+  // detector (2026-11-14), which reproduced 2026's hand-checked map exactly.
+  // No key exists for these years: dual-blind + crosstab, hand check of every
+  // dispute and every LOW/MED item.
+  "2025": paper(2025, evens(2, 50), 300), // 56pp, like 2026
+  "2024": paper(2024, evens(2, 50), 400), // 56pp
+  "2023": paper(2023, evens(2, 38), 300), // 44pp: only 19 English pages
+  "2022": paper(2022, evens(2, 42), 300), // 48pp
+  "2021": paper(2021, evens(2, 42), 200), // 48pp
+  // 48pp; i43-i46 classify as Hindi (rough-work pages with Hindi headings).
+  "2020": paper(2020, evens(2, 42), 300),
+  // 48pp; i37 and i41 classify as English but are ODD, breaking the
+  // alternation: the CSE lane's known false positive (a Hindi page of mostly
+  // numerals). The English run is the clean even sequence.
+  "2019": paper(2019, evens(2, 42), 200),
+  // 48pp; a strip scan (three images per page) at ~103 DPI, readable at 200.
+  "2018": paper(2018, evens(2, 42), 103),
 };
 
 /** Where each booklet came from (upsc.gov.in/sites/default/files/<name>). */

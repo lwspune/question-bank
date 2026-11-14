@@ -25,7 +25,7 @@
  * filename, so one DELETE removes exactly this paper and nothing else.
  */
 import { createClient } from "@supabase/supabase-js";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { commitStaged } from "../../src/lib/upload/commit";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
@@ -69,11 +69,37 @@ async function main() {
   const keyed = !!answersRaw.source; // keycheck.ts writes `source`; crosstab.ts does not
 
   const built = buildRecords(questions, answers, { reconciled });
+  const working = new Map(answers.map((a) => [a.number, a.reasoning.trim()]));
   if (keyed) {
     // The key supplied the letter, so the shared "no official key" bracket is false.
-    const working = new Map(answers.map((a) => [a.number, a.reasoning.trim()]));
     for (const r of built) r.solution = working.get(Number(r.questionNumber)) ?? r.solution;
+  } else {
+    // No key: say so, plainly and without the shared bracket's em dash, and say
+    // which rows a person checked.
+    const checked = new Set<number>(answersRaw.checked ?? []);
+    const overruled = new Set<number>(answersRaw.overruled ?? []);
+    for (const r of built) {
+      const n = Number(r.questionNumber);
+      const how = overruled.has(n)
+        ? "Two independent solutions agreed on another answer; it was corrected by hand."
+        : reconciled.has(n)
+          ? "Two independent solutions disagreed; the answer was settled by hand."
+          : checked.has(n)
+            ? "Two independent solutions agreed, and the answer was checked by hand."
+            : "Two independent solutions agreed.";
+      r.solution = `${working.get(n) ?? ""} [Answer worked out by PYQ Vault: UPSC has not published a key for this paper. ${how}]`.trim();
+    }
   }
+  // A notice (a defective or ambiguous item) goes above the solution, the same
+  // "**Note:**" form the other lanes use; `grace` items go to flawed.json below.
+  const notices = new Map<number, string>(
+    answers.filter((a) => (a as { notice?: string }).notice).map((a) => [a.number, (a as { notice?: string }).notice!])
+  );
+  for (const r of built) {
+    const note = notices.get(Number(r.questionNumber));
+    if (note) r.solution = `**Note:** ${note}\n\n${r.solution}`;
+  }
+  const graceNumbers = answers.filter((a) => (a as { grace?: boolean }).grace).map((a) => a.number);
   const withdrawn = dropped.length
     ? buildWithdrawnRecords(questions, dropped, withdrawnNote(PROVISIONAL_KEYS.has(paper.id)))
     : [];
@@ -231,6 +257,28 @@ async function main() {
   if (uErr) throw new Error(`visibility update failed: ${uErr.message}`);
   console.log(`set ${count} rows to PRIVATE.`);
 
+  // Sync each row's solution. commitStaged skips a row whose content_hash
+  // already exists, so a re-run after a ruling changed (a fixed solution, a new
+  // notice) would otherwise leave the stored text stale. The solution is not
+  // part of content_hash, so this changes no id.
+  {
+    const { data: existing, error: sErr } = await client
+      .from("questions")
+      .select("id, question_number, solution")
+      .eq("exam_id", EXAM_ID)
+      .eq("source_file", paper.sourceFile);
+    if (sErr) throw new Error(`solution sync read failed: ${sErr.message}`);
+    let synced = 0;
+    for (const r of built) {
+      const row = (existing ?? []).find((e) => e.question_number === r.questionNumber);
+      if (!row || row.solution === r.solution) continue;
+      const { error: uErr2 } = await client.from("questions").update({ solution: r.solution }).eq("id", row.id);
+      if (uErr2) throw new Error(`Q${r.questionNumber}: solution sync failed: ${uErr2.message}`);
+      synced++;
+    }
+    console.log(`solutions: ${synced} updated in place.`);
+  }
+
   // Figures onto image_url, matched by question number within this paper.
   if (figureItems.length) {
     const { data: rows, error: fErr } = await client
@@ -254,6 +302,30 @@ async function main() {
       uploaded++;
     }
     console.log(`figures: ${uploaded} uploaded, ${figureItems.length - uploaded} already present or missing.`);
+  }
+
+  // Grace in every mock (owner policy 2026-10-29): src/lib/mocks/flawed.json is
+  // the one list the mock builders read.
+  if (graceNumbers.length) {
+    const { data: gRows, error: gErr } = await client
+      .from("questions")
+      .select("id, question_number")
+      .eq("exam_id", EXAM_ID)
+      .eq("source_file", paper.sourceFile)
+      .in("question_number", graceNumbers.map(String));
+    if (gErr) throw new Error(`grace row lookup failed: ${gErr.message}`);
+    const file = join(process.cwd(), "src", "lib", "mocks", "flawed.json");
+    const list: { id: string; reason: string }[] = JSON.parse(readFileSync(file, "utf8"));
+    const known = new Set(list.map((f) => f.id));
+    let added = 0;
+    for (const n of graceNumbers) {
+      const row = (gRows ?? []).find((r) => r.question_number === String(n));
+      if (!row || known.has(row.id)) continue;
+      list.push({ id: row.id, reason: `UPSC CAPF (AC) ${paper.pyqYear} Q${n}: ${notices.get(n)!.slice(0, 160)} (scripts/capf)` });
+      added++;
+    }
+    if (added) writeFileSync(file, JSON.stringify(list, null, 2) + "\n");
+    console.log(`grace: ${added} question(s) added to src/lib/mocks/flawed.json`);
   }
 
   const { count: linked } = await client

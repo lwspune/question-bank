@@ -125,12 +125,34 @@ function main() {
     }
   }
 
+  // CAPF: the 2026 pilot's two misses were AGREED rows the passes rated LOW and
+  // MED, so every agreed row below HIGH is checked by hand too. A ruling in the
+  // adjudicated file either confirms it (same letter) or overrules it.
+  const weak = rows.filter(
+    (r) => r.verdict === "AGREE" && [r.a, r.b].some((d) => (d?.confidence ?? "").toUpperCase() !== "HIGH")
+  );
+  const unchecked = weak.filter((r) => !adj[String(r.number)]);
+  if (weak.length) {
+    console.log(`\n--- ${weak.length} agreed row(s) below HIGH: hand check (${unchecked.length} not yet checked) ---`);
+    for (const r of unchecked) {
+      console.log(`Q${r.number}  ${r.a!.answer} (${r.a!.confidence}/${r.b!.confidence})  ${r.a!.value}`);
+    }
+  }
+
   if (!apply) {
     console.log(
-      `\n[dry-run] ${unresolved.length} unresolved. ` +
+      `\n[dry-run] ${unresolved.length} unresolved, ${unchecked.length} weak row(s) unchecked. ` +
         `Adjudicate them in ${adjFile}, then re-run with --apply.`
     );
     return;
+  }
+
+  if (unchecked.length) {
+    console.error(
+      `\nREFUSING to write answers: ${unchecked.length} agreed row(s) below HIGH not hand-checked ` +
+        `(${unchecked.map((r) => `Q${r.number}`).join(" ")}). Record a ruling for each in ${adjFile}.`
+    );
+    process.exit(1);
   }
 
   if (unresolved.length) {
@@ -145,32 +167,51 @@ function main() {
 
   const answers: Derivation[] = [];
   const reconciled: number[] = [];
+  const checked: number[] = [];
+  const overruled: number[] = []; // agreed rows a hand ruling changed
+  // A ruling's `why` is the adjudicator's own note and never reaches a student.
+  // `reasoning` (optional) is student-facing working that replaces the pass's;
+  // `notice` goes above the solution and `grace` marks a defective item for
+  // mocks (owner policy 2026-10-29); commit.ts applies both.
+  type Ruling = { answer: string; why: string; reasoning?: string; verified?: boolean; notice?: string; grace?: boolean };
+  const extras = (a: Ruling | undefined) => ({
+    ...(a?.notice ? { notice: a.notice } : {}),
+    ...(a?.grace ? { grace: true } : {}),
+  });
   for (const r of rows) {
-    if (r.verdict === "AGREE") {
-      answers.push(r.a!);
+    const a = adj[String(r.number)] as Ruling | undefined;
+    if (a?.grace && !a.notice?.trim()) {
+      console.error(`Q${r.number}: grace needs a notice telling students why`);
+      process.exit(1);
+    }
+    if (r.verdict === "AGREE" && (!a || a.answer.toUpperCase() === r.a!.answer.toUpperCase())) {
+      // confirmed by hand (keep the pass working); `verified: false` = looked at, could not confirm
+      if (a && a.verified !== false) checked.push(r.number);
+      answers.push({ ...r.a!, ...(a?.reasoning ? { reasoning: a.reasoning } : {}), ...extras(a) });
       continue;
     }
-    const a = adj[String(r.number)];
     reconciled.push(r.number);
+    if (r.verdict === "AGREE") overruled.push(r.number);
     // Keep whichever pass's reasoning matches the adjudicated letter, so the
     // stored solution argues for the answer we actually shipped. If neither
-    // does, the adjudicator's own `why` is the reasoning.
-    const match = [r.a, r.b].find((d) => d && d.answer.toUpperCase() === a.answer.toUpperCase());
+    // does, the ruling must carry its own reasoning (or `why`, written for students).
+    const match = [r.a, r.b].find((d) => d && d.answer.toUpperCase() === a!.answer.toUpperCase());
     answers.push({
       number: r.number,
-      answer: a.answer.toUpperCase(),
-      value: match?.value ?? a.why,
+      answer: a!.answer.toUpperCase(),
+      value: match?.value ?? a!.why,
       confidence: "MED",
-      reasoning: match?.reasoning ? `${match.reasoning} ${a.why}`.trim() : a.why,
+      reasoning: a!.reasoning ?? match?.reasoning ?? a!.why,
+      ...extras(a),
     });
   }
 
   const out = dataPath(paper.id, "answers");
   writeFileSync(
     out,
-    JSON.stringify({ paper: paper.id, reconciled, answers: answers.sort((x, y) => x.number - y.number) }, null, 2) + "\n"
+    JSON.stringify({ paper: paper.id, reconciled, overruled, checked, answers: answers.sort((x, y) => x.number - y.number) }, null, 2) + "\n"
   );
-  console.log(`\nwrote ${out}  (${answers.length} answers, ${reconciled.length} reconciled by hand)`);
+  console.log(`\nwrote ${out}  (${answers.length} answers, ${reconciled.length} reconciled by hand, ${checked.length} confirmed by hand)`);
 }
 
 main();
