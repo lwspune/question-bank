@@ -111,6 +111,8 @@ export const PRINT_CSS = `
 .popts { list-style: none; margin: 2.5mm 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1.2mm 4mm; font-size: 9pt; }
 .popts li { font-family: var(--font-serif), Georgia, serif; }
 .popts .ok { font-weight: 700; color: #065f46; }
+.pfig { display: block; max-width: 100%; max-height: 55mm; margin-top: 2mm; break-inside: avoid; }
+.popts .pfig { max-height: 28mm; margin-top: 1mm; }
 .psoln { margin-top: 2.5mm; padding-top: 2mm; border-top: 1px dashed #d4d4d8; font-size: 9pt; font-family: var(--font-serif), Georgia, serif; color: #3f3f46; line-height: 1.5; }
 
 /* ---- figures ---- */

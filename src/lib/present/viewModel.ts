@@ -167,21 +167,18 @@ export function fromWorkedExample(e: WorkedExample): PresentableQuestion {
     breadcrumb: composeBreadcrumb([e.chapter, e.subtopic], e.provenance),
     context: e.context,
     text: e.text,
-    // `loadWorkedExamples` does not select image columns, so there is nothing to
-    // carry here. A question whose stem needs a diagram is projected from
-    // /browse instead.
-    imageUrl: null,
+    imageUrl: e.imageUrl,
     options: e.options.map((o) => ({
       label: o.label,
       text: o.text,
-      imageUrl: null,
+      imageUrl: o.imageUrl,
       isCorrect: o.isCorrect,
     })),
     answer: answerOrNull({
       correctLabel: soleCorrectLabel(e.options),
       numericAnswer: null,
       solution: e.solution,
-      solutionImageUrl: null,
+      solutionImageUrl: e.solutionImageUrl,
     }),
     questionId: e.id,
     examName: e.examName,
