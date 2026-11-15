@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 526
+ * Entries: 544
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -537,4 +537,22 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/ssc-cgl-reasoning/statements": "2026-10-23T12:15:35+05:30",
   "/notes/ssc-cgl-reasoning/syllogism": "2026-10-23T12:00:22+05:30",
   "/notes/ssc-cgl-reasoning/venn-diagrams": "2026-10-23T12:08:14+05:30",
+  "/notes/ssc-cgl-tier-2-maths/algebraic-identities": "2026-11-15T21:54:38+05:30",
+  "/notes/ssc-cgl-tier-2-maths/averages": "2026-11-15T21:54:38+05:30",
+  "/notes/ssc-cgl-tier-2-maths/circles": "2026-11-15T21:54:38+05:30",
+  "/notes/ssc-cgl-tier-2-maths/data-interpretation": "2026-11-15T21:54:38+05:30",
+  "/notes/ssc-cgl-tier-2-maths/heights-distances": "2026-11-15T21:54:38+05:30",
+  "/notes/ssc-cgl-tier-2-maths/interest": "2026-11-15T21:54:38+05:30",
+  "/notes/ssc-cgl-tier-2-maths/linear-equations": "2026-11-15T21:54:38+05:30",
+  "/notes/ssc-cgl-tier-2-maths/mensuration-3d": "2026-11-15T21:54:38+05:30",
+  "/notes/ssc-cgl-tier-2-maths/number-system": "2026-11-15T21:54:38+05:30",
+  "/notes/ssc-cgl-tier-2-maths/percentage": "2026-11-15T21:54:38+05:30",
+  "/notes/ssc-cgl-tier-2-maths/quadrilaterals": "2026-11-15T21:54:38+05:30",
+  "/notes/ssc-cgl-tier-2-maths/ratio": "2026-11-15T21:54:38+05:30",
+  "/notes/ssc-cgl-tier-2-maths/statistics": "2026-11-15T21:54:38+05:30",
+  "/notes/ssc-cgl-tier-2-maths/surds-indices": "2026-11-15T21:54:38+05:30",
+  "/notes/ssc-cgl-tier-2-maths/time-work": "2026-11-15T21:54:38+05:30",
+  "/notes/ssc-cgl-tier-2-maths/triangles": "2026-11-15T21:54:38+05:30",
+  "/notes/ssc-cgl-tier-2-maths/trigonometry": "2026-11-15T21:54:38+05:30",
+  "/notes/ssc-cgl-tier-2-maths/tsd": "2026-11-15T21:54:38+05:30",
 };
