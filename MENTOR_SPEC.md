@@ -593,3 +593,58 @@ copied into git).
 corrections, other exams. The `board-path` experiment on /dashboard/growth
 gets the result.
 
+
+## 18. The plan follows the class (built 2026-11-15)
+
+**Why.** A week after the push, 83 Class 12 students had started the plan (56%
+of the 147 who saw the offer) and 44 of the 77 who started before 11-15 came
+back on a later day, but 8% of the tasks shown were done by the end of their
+day, no starter had finished a chapter, and 1 of 64 granted chapter tests was
+started. On plan days starters practised 1,236 questions and only 79 (6%) were
+on that day's plan chapter: the plan began at chapter 1 in book order, and
+students study the chapter their class is on. "Not taught yet" was one tap per
+chapter; 4 students used it. Only 2 Class 12 students had ever completed a
+chapter's Top 10, against 98 who finished a chapter test.
+
+**What changed (owner OK on the mockup, 2026-11-15).**
+- **"What has your class covered?"** after "Start my plan", and once for every
+  student already on the plan: a checklist per subject, chapters they already
+  worked on pre-ticked, "Start from chapter 1" to skip. Ticks live in
+  `study_path_covered` (migration 0261), saved whole by `set_path_covered` in
+  one transaction; `study_paths.covered_at` says it was answered. Reopened by
+  "Update what your class has covered"; never re-asked on a timer (owner).
+- **Waiting chapters.** With any ticks, an unticked chapter with no work in it
+  waits (it joins the set "Not taught yet" fills). Work in a chapter ends the
+  wait. No ticks = book order, as before.
+- **Work counts wherever it is done.** A chapter's work is its own parts (Top
+  10, sheet, test) or practice on ANY of its questions (the bank, /board, V),
+  read through `path_chapter_work` (0261), which aggregates in Postgres and
+  leaves the drill out (answering a Fix question must not pull an old chapter
+  forward). A chapter worked on in the last 7 days and not finished leads the
+  card, the most recent first (`today.ts` followCandidate).
+- **Switch chapter** replaces "Not taught yet" on each row: a bottom sheet,
+  taught chapters first, one pick; the Fix task and what is done stay. 3 a day
+  (counted from `path_switched` rows), because each switch lifts that
+  chapter's Top 10 from the free answer limit for the day. A chapter switched
+  to by a student with ticks becomes ticked. The `defer` action stays in the
+  API; old taps still count.
+- **Top 10 in parts of 5** (option A; option B, "a strong test counts for the
+  Top 10", declined for now so the readout keeps measuring the same "done"). A
+  Top 10 task carries `upTo` and is done at that count; a long day may hold
+  both parts. A chapter is still done only at all 10. Tasks stored before the
+  split keep the whole-10 rule.
+- **The card** opens on today's chapter with its three steps and what already
+  counted ("You took this chapter's test on Fri 13 Nov, so we've counted it").
+  V's offer and today text say the plan starts with what the class covered and
+  point a student whose class is elsewhere to Switch chapter.
+
+**Measured.** `npm run path:readout` FOLLOW THE CLASS: the checklist seen
+(`path_cover` view), answered and skipped (`path_covered`), median ticked,
+switches; and today's-task completion for students on the plan before the
+change, the 7 days before the first student save against the 7 days after
+(the same students both sides). Baseline: 8% (38 of 492, 2026-11-08 to 11-15).
+`npm run path:smoke` checks that a chapter worked on lately leads the card.
+
+**Not built:** option B; a periodic re-ask; following work done on another
+exam's copy of a chapter (an MHT-CET chapter test on Definite Integration does
+not count for the HSC chapter, since chapter ids differ by exam).
