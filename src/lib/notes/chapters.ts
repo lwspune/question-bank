@@ -2561,6 +2561,96 @@ import {
   NEET_ZO_BA_NOTES,
   NEET_ZO_BA_SLUGS,
 } from "@/app/notes/neet-zoology/biotech-applications/_data";
+import {
+  SSC2_PERCENTAGE_CHAPTER,
+  SSC2_PERCENTAGE_NOTES,
+  SSC2_PERCENTAGE_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-maths/percentage/_data";
+import {
+  SSC2_MENSURATION_3D_CHAPTER,
+  SSC2_MENSURATION_3D_NOTES,
+  SSC2_MENSURATION_3D_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-maths/mensuration-3d/_data";
+import {
+  SSC2_TRIGONOMETRY_CHAPTER,
+  SSC2_TRIGONOMETRY_NOTES,
+  SSC2_TRIGONOMETRY_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-maths/trigonometry/_data";
+import {
+  SSC2_RATIO_CHAPTER,
+  SSC2_RATIO_NOTES,
+  SSC2_RATIO_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-maths/ratio/_data";
+import {
+  SSC2_SURDS_INDICES_CHAPTER,
+  SSC2_SURDS_INDICES_NOTES,
+  SSC2_SURDS_INDICES_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-maths/surds-indices/_data";
+import {
+  SSC2_TRIANGLES_CHAPTER,
+  SSC2_TRIANGLES_NOTES,
+  SSC2_TRIANGLES_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-maths/triangles/_data";
+import {
+  SSC2_ALGEBRAIC_IDENTITIES_CHAPTER,
+  SSC2_ALGEBRAIC_IDENTITIES_NOTES,
+  SSC2_ALGEBRAIC_IDENTITIES_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-maths/algebraic-identities/_data";
+import {
+  SSC2_INTEREST_CHAPTER,
+  SSC2_INTEREST_NOTES,
+  SSC2_INTEREST_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-maths/interest/_data";
+import {
+  SSC2_NUMBER_SYSTEM_CHAPTER,
+  SSC2_NUMBER_SYSTEM_NOTES,
+  SSC2_NUMBER_SYSTEM_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-maths/number-system/_data";
+import {
+  SSC2_DATA_INTERPRETATION_CHAPTER,
+  SSC2_DATA_INTERPRETATION_NOTES,
+  SSC2_DATA_INTERPRETATION_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-maths/data-interpretation/_data";
+import {
+  SSC2_TIME_WORK_CHAPTER,
+  SSC2_TIME_WORK_NOTES,
+  SSC2_TIME_WORK_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-maths/time-work/_data";
+import {
+  SSC2_AVERAGES_CHAPTER,
+  SSC2_AVERAGES_NOTES,
+  SSC2_AVERAGES_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-maths/averages/_data";
+import {
+  SSC2_TSD_CHAPTER,
+  SSC2_TSD_NOTES,
+  SSC2_TSD_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-maths/tsd/_data";
+import {
+  SSC2_LINEAR_EQUATIONS_CHAPTER,
+  SSC2_LINEAR_EQUATIONS_NOTES,
+  SSC2_LINEAR_EQUATIONS_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-maths/linear-equations/_data";
+import {
+  SSC2_STATISTICS_CHAPTER,
+  SSC2_STATISTICS_NOTES,
+  SSC2_STATISTICS_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-maths/statistics/_data";
+import {
+  SSC2_CIRCLES_CHAPTER,
+  SSC2_CIRCLES_NOTES,
+  SSC2_CIRCLES_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-maths/circles/_data";
+import {
+  SSC2_HEIGHTS_DISTANCES_CHAPTER,
+  SSC2_HEIGHTS_DISTANCES_NOTES,
+  SSC2_HEIGHTS_DISTANCES_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-maths/heights-distances/_data";
+import {
+  SSC2_QUADRILATERALS_CHAPTER,
+  SSC2_QUADRILATERALS_NOTES,
+  SSC2_QUADRILATERALS_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-maths/quadrilaterals/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -8241,6 +8331,204 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: NEET_ZO_BA_CHAPTER,
     notes: NEET_ZO_BA_NOTES,
     slugs: NEET_ZO_BA_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-tier-2-maths",
+    subjectDisplay: "SSC CGL Tier II Maths",
+    chapterSlug: "percentage",
+    chipLabel: "Percentage, Profit and Loss notes",
+    chapter: SSC2_PERCENTAGE_CHAPTER,
+    notes: SSC2_PERCENTAGE_NOTES,
+    slugs: SSC2_PERCENTAGE_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-tier-2-maths",
+    subjectDisplay: "SSC CGL Tier II Maths",
+    chapterSlug: "mensuration-3d",
+    chipLabel: "Mensuration 3D notes",
+    chapter: SSC2_MENSURATION_3D_CHAPTER,
+    notes: SSC2_MENSURATION_3D_NOTES,
+    slugs: SSC2_MENSURATION_3D_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-tier-2-maths",
+    subjectDisplay: "SSC CGL Tier II Maths",
+    chapterSlug: "trigonometry",
+    chipLabel: "Trigonometric Ratios and Identities notes",
+    chapter: SSC2_TRIGONOMETRY_CHAPTER,
+    notes: SSC2_TRIGONOMETRY_NOTES,
+    slugs: SSC2_TRIGONOMETRY_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-tier-2-maths",
+    subjectDisplay: "SSC CGL Tier II Maths",
+    chapterSlug: "ratio",
+    chipLabel: "Ratio, Proportion and Variation notes",
+    chapter: SSC2_RATIO_CHAPTER,
+    notes: SSC2_RATIO_NOTES,
+    slugs: SSC2_RATIO_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-tier-2-maths",
+    subjectDisplay: "SSC CGL Tier II Maths",
+    chapterSlug: "surds-indices",
+    chipLabel: "Surds, Indices and Simplification notes",
+    chapter: SSC2_SURDS_INDICES_CHAPTER,
+    notes: SSC2_SURDS_INDICES_NOTES,
+    slugs: SSC2_SURDS_INDICES_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-tier-2-maths",
+    subjectDisplay: "SSC CGL Tier II Maths",
+    chapterSlug: "triangles",
+    chipLabel: "Triangles notes",
+    chapter: SSC2_TRIANGLES_CHAPTER,
+    notes: SSC2_TRIANGLES_NOTES,
+    slugs: SSC2_TRIANGLES_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-tier-2-maths",
+    subjectDisplay: "SSC CGL Tier II Maths",
+    chapterSlug: "algebraic-identities",
+    chipLabel: "Algebraic Identities and Simplification notes",
+    chapter: SSC2_ALGEBRAIC_IDENTITIES_CHAPTER,
+    notes: SSC2_ALGEBRAIC_IDENTITIES_NOTES,
+    slugs: SSC2_ALGEBRAIC_IDENTITIES_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-tier-2-maths",
+    subjectDisplay: "SSC CGL Tier II Maths",
+    chapterSlug: "interest",
+    chipLabel: "Simple and Compound Interest notes",
+    chapter: SSC2_INTEREST_CHAPTER,
+    notes: SSC2_INTEREST_NOTES,
+    slugs: SSC2_INTEREST_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-tier-2-maths",
+    subjectDisplay: "SSC CGL Tier II Maths",
+    chapterSlug: "number-system",
+    chipLabel: "Number System notes",
+    chapter: SSC2_NUMBER_SYSTEM_CHAPTER,
+    notes: SSC2_NUMBER_SYSTEM_NOTES,
+    slugs: SSC2_NUMBER_SYSTEM_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-tier-2-maths",
+    subjectDisplay: "SSC CGL Tier II Maths",
+    chapterSlug: "data-interpretation",
+    chipLabel: "Data Interpretation notes",
+    chapter: SSC2_DATA_INTERPRETATION_CHAPTER,
+    notes: SSC2_DATA_INTERPRETATION_NOTES,
+    slugs: SSC2_DATA_INTERPRETATION_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-tier-2-maths",
+    subjectDisplay: "SSC CGL Tier II Maths",
+    chapterSlug: "time-work",
+    chipLabel: "Time and Work notes",
+    chapter: SSC2_TIME_WORK_CHAPTER,
+    notes: SSC2_TIME_WORK_NOTES,
+    slugs: SSC2_TIME_WORK_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-tier-2-maths",
+    subjectDisplay: "SSC CGL Tier II Maths",
+    chapterSlug: "averages",
+    chipLabel: "Averages notes",
+    chapter: SSC2_AVERAGES_CHAPTER,
+    notes: SSC2_AVERAGES_NOTES,
+    slugs: SSC2_AVERAGES_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-tier-2-maths",
+    subjectDisplay: "SSC CGL Tier II Maths",
+    chapterSlug: "tsd",
+    chipLabel: "Time, Speed and Distance notes",
+    chapter: SSC2_TSD_CHAPTER,
+    notes: SSC2_TSD_NOTES,
+    slugs: SSC2_TSD_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-tier-2-maths",
+    subjectDisplay: "SSC CGL Tier II Maths",
+    chapterSlug: "linear-equations",
+    chipLabel: "Linear Equations notes",
+    chapter: SSC2_LINEAR_EQUATIONS_CHAPTER,
+    notes: SSC2_LINEAR_EQUATIONS_NOTES,
+    slugs: SSC2_LINEAR_EQUATIONS_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-tier-2-maths",
+    subjectDisplay: "SSC CGL Tier II Maths",
+    chapterSlug: "statistics",
+    chipLabel: "Statistics notes",
+    chapter: SSC2_STATISTICS_CHAPTER,
+    notes: SSC2_STATISTICS_NOTES,
+    slugs: SSC2_STATISTICS_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-tier-2-maths",
+    subjectDisplay: "SSC CGL Tier II Maths",
+    chapterSlug: "circles",
+    chipLabel: "Circles notes",
+    chapter: SSC2_CIRCLES_CHAPTER,
+    notes: SSC2_CIRCLES_NOTES,
+    slugs: SSC2_CIRCLES_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-tier-2-maths",
+    subjectDisplay: "SSC CGL Tier II Maths",
+    chapterSlug: "heights-distances",
+    chipLabel: "Heights and Distances notes",
+    chapter: SSC2_HEIGHTS_DISTANCES_CHAPTER,
+    notes: SSC2_HEIGHTS_DISTANCES_NOTES,
+    slugs: SSC2_HEIGHTS_DISTANCES_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-tier-2-maths",
+    subjectDisplay: "SSC CGL Tier II Maths",
+    chapterSlug: "quadrilaterals",
+    chipLabel: "Quadrilaterals notes",
+    chapter: SSC2_QUADRILATERALS_CHAPTER,
+    notes: SSC2_QUADRILATERALS_NOTES,
+    slugs: SSC2_QUADRILATERALS_SLUGS,
   },
 ];
 
