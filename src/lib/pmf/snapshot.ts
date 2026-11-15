@@ -190,6 +190,11 @@ export const TELEMETRY_KINDS: readonly string[] = [
   // Lighter / More on the board path (2026-11-08, migration 0230): a setting
   // changed, not a feature used; the path's own use is its tasks.
   "path_paced",
+  // The board plan's class checklist saved and Switch chapter (2026-11-15,
+  // migration 0261): settings of the plan, not a feature used; the plan's own
+  // use is its tasks, as with path_paced.
+  "path_covered",
+  "path_switched",
   // A No to "Did you understand?" under V's explanation (2026-11-08, migration
   // 0241): drill fuel, always beside the chat reply it answers. V's own use is
   // measured in chat_interactions, not here.
@@ -856,9 +861,9 @@ export const SURFACE_COVERAGE: SurfaceCoverage[] = [
   {
     surface: "Board path (/me Today card)",
     via: "study_paths + study_path_days (migration 0225); a chapter turning done writes user_activity path_chapter_done once; the work itself is the sheet view, Top 10 and test rows already counted on their own surfaces",
-    kinds: ["path_chapter_done", "path_paced"],
+    kinds: ["path_chapter_done", "path_paced", "path_covered", "path_switched"],
     tracked: "partial",
-    lost: "Shown tasks are stored per day (study_path_days), so task completion can be measured; a task opened but not finished leaves only the page view on its own surface. The start offer, the /board line, the weekly review, Pick up here and V's path card are surface_viewed rows (path_offer_me, path_offer_board, path_board_line, path_review, path_pickup, v_path, 2026-11-08) and Lighter / More is path_paced. npm run path:readout is the readout.",
+    lost: "Shown tasks are stored per day (study_path_days), so task completion can be measured; a task opened but not finished leaves only the page view on its own surface. The start offer, the /board line, the weekly review, Pick up here and V's path card are surface_viewed rows (path_offer_me, path_offer_board, path_board_line, path_review, path_pickup, v_path, 2026-11-08) and Lighter / More is path_paced. From 2026-11-15 the class checklist is path_cover (seen) and path_covered (saved), Switch chapter path_switched. npm run path:readout is the readout.",
   },
   {
     surface: "Blog (/blog)",

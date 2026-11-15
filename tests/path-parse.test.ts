@@ -23,6 +23,24 @@ describe("parsePathAction", () => {
       value: { action: "defer", chapterId: CHAPTER },
     });
   });
+  it("reads the class checklist and a switch (MENTOR_SPEC.md §18)", () => {
+    expect(parsePathAction({ action: "cover", chapterIds: [CHAPTER] })).toEqual({
+      ok: true,
+      value: { action: "cover", chapterIds: [CHAPTER] },
+    });
+    // "Start from chapter 1": the question answered with nothing ticked.
+    expect(parsePathAction({ action: "cover", chapterIds: [] })).toEqual({ ok: true, value: { action: "cover", chapterIds: [] } });
+    expect(parsePathAction({ action: "switch", chapterId: CHAPTER })).toEqual({
+      ok: true,
+      value: { action: "switch", chapterId: CHAPTER },
+    });
+  });
+  it("refuses a checklist with a bad id, repeats past the cap, or no list", () => {
+    expect(parsePathAction({ action: "cover", chapterIds: ["nope"] }).ok).toBe(false);
+    expect(parsePathAction({ action: "cover", chapterIds: Array.from({ length: 81 }, () => CHAPTER) }).ok).toBe(false);
+    expect(parsePathAction({ action: "cover" }).ok).toBe(false);
+    expect(parsePathAction({ action: "switch", chapterId: "x" }).ok).toBe(false);
+  });
   it("refuses another board, another stream, a bad chapter id and junk", () => {
     expect(parsePathAction({ action: "start", exam: "nda", stream: "pcm" }).ok).toBe(false);
     expect(parsePathAction({ action: "start", exam: "cbse-12", stream: "commerce" }).ok).toBe(false);

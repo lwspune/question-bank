@@ -34,6 +34,8 @@ export const KIND_LABELS: Record<ActivityKind, string> = {
   path_chapter_done: "Board path chapter done",
   path_paced: "Board path pace changed",
   v_not_understood: "Told V they did not understand",
+  path_covered: "Board plan: told what their class covered",
+  path_switched: "Board plan: switched chapter",
 };
 
 export type KindStat = { kind: string; events: number; users: number };

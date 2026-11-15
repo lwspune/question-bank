@@ -81,6 +81,13 @@ export const ACTIVITY_KINDS = [
   // and nothing that counts work does, so it never marks homework, a plan task
   // or an answered total. One per V reply (dedupe `v_not_understood:<reply id>`).
   "v_not_understood",
+  // The board plan follows the class (MENTOR_SPEC.md §18) — 0261. One row per
+  // save of "What has your class covered?" (metadata: ticked, of; ticked "0" is
+  // "Start from chapter 1") and per "Switch chapter" (refId = the chapter
+  // chosen, metadata: from). No dedupe: each is its own choice, and the day's
+  // path_switched rows are what caps switches at 3. Readout only, never a reward.
+  "path_covered",
+  "path_switched",
 ] as const;
 
 export type ActivityKind = (typeof ACTIVITY_KINDS)[number];

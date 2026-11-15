@@ -33,7 +33,15 @@ const chapter = (id: string, subject: PathChapter["subject"], name: string): Pat
 const CE = "0b6f3c1e-2a4d-4c8e-9f10-1a2b3c4d5e6f";
 const chapters = [chapter(CE, "physics", "Current Electricity"), chapter("sol", "chemistry", "Solutions")];
 
-function view(opts: { states?: Map<string, ChapterState>; tasks?: PathTask[]; today?: string; stream?: "pcm" | "pcb" } = {}) {
+function view(
+  opts: {
+    states?: Map<string, ChapterState>;
+    tasks?: PathTask[];
+    today?: string;
+    stream?: "pcm" | "pcb";
+    extra?: Partial<Parameters<typeof buildPathView>[0]>;
+  } = {}
+) {
   return buildPathView({
     exam: "cbse-12",
     subjects: ["physics", "chemistry"],
@@ -50,6 +58,7 @@ function view(opts: { states?: Map<string, ChapterState>; tasks?: PathTask[]; to
     today: opts.today ?? "2026-11-25",
     examDate: "2027-02-15",
     examOfficial: false,
+    ...opts.extra,
   });
 }
 
@@ -69,10 +78,12 @@ describe("the /me Today card on the path", () => {
     expect(out).toContain("about 51 min");
   });
 
-  it("marks a task done by work and offers 'Not taught yet' only on the rest", () => {
+  it("marks a task done by work; 'Not taught yet' gave way to Switch chapter (§18)", () => {
     const out = card({ path: view(), offer: null });
     expect(out).toContain("Done:");
-    expect(out.match(/>Not taught yet</g)).toHaveLength(2);
+    expect(out).not.toContain("Not taught yet");
+    expect(out).toContain("Studying a different chapter today?");
+    expect(out).toContain(">Switch chapter<");
   });
 
   it("says the board date is expected while it is not announced", () => {
@@ -102,6 +113,53 @@ describe("the /me Today card on the path", () => {
     const out = card({ path: view(), offer: null }, true);
     expect(out).not.toContain("<button");
     expect(out).toContain("Physics 0 of 1");
+  });
+});
+
+describe("the plan follows the class (§18)", () => {
+  const cover = { asked: false, ticked: new Set<string>(), practised: new Set([CE]) };
+
+  it("asks what the class has covered before the first card, practised chapters ticked", () => {
+    const out = card({ path: view({ extra: { cover } }), offer: null });
+    expect(out).toContain("What has your class covered?");
+    expect(out).toContain("You practised this");
+    expect(out).toContain("Make my plan (1 chapter to start)");
+    expect(out).toContain("Start from chapter 1");
+    // The checklist stands in for the tasks until it is answered.
+    expect(out).not.toContain(`href="/mock/cbse-12-chapter-${CE}"`);
+    expect(out.match(/type="checkbox"/g)).toHaveLength(2);
+    expect(out.match(/checked=""/g)).toHaveLength(1);
+  });
+
+  it("shows the card, with Update, once answered", () => {
+    const out = card({ path: view({ extra: { cover: { ...cover, asked: true, ticked: new Set([CE]) } } }), offer: null });
+    expect(out).not.toContain("What has your class covered?");
+    expect(out).toContain("Update what your class has covered");
+  });
+
+  it("shows today's chapter with its three steps and what already counted", () => {
+    const out = card({
+      path: view({ extra: { partAt: { sheetAt: new Map([[CE, "2026-11-20T05:00:00Z"]]), testAt: new Map() } } }),
+      offer: null,
+    });
+    expect(out).toContain("Current Electricity");
+    expect(out).toContain("Revision sheet");
+    expect(out).toContain("Chapter test");
+    expect(out).toContain("You&#x27;ve already worked 4 of its Top 10, so we&#x27;ve counted them.");
+  });
+
+  it("asks nothing and offers no switch in the staff view", () => {
+    const out = card({ path: view({ extra: { cover } }), offer: null }, true);
+    expect(out).not.toContain("What has your class covered?");
+    expect(out).not.toContain("Switch chapter");
+    expect(out).not.toContain("Update what your class has covered");
+    expect(out).not.toContain("<button");
+  });
+
+  it("says when the day's switches are used up", () => {
+    const out = card({ path: view({ extra: { switchesUsed: 3 } }), offer: null });
+    expect(out).not.toContain(">Switch chapter<");
+    expect(out).toContain("switched chapters 3 times today");
   });
 });
 

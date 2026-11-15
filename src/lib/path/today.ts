@@ -14,6 +14,13 @@
  *     else left it is served anyway.
  *   - The day stops at 80% of its minutes once it holds two tasks, so it does
  *     not overrun by a whole chapter test.
+ *   - The plan follows the class (§18, 2026-11-15): a chapter the student
+ *     worked on in the last 7 days (`recent`) comes before the next new one,
+ *     the most recent first, and "Switch chapter" (`focus`) puts the chosen
+ *     chapter first. Chapters the class has not covered arrive in `deferred`.
+ *   - A Top 10 task holds at most 5 questions (`upTo`, the count worked when
+ *     it is done), so each is finishable in one sitting (15 min); a chapter is
+ *     still done only at all 10.
  *
  * The server stores the day's pick (study_path_days) so the card stays the
  * same all day and the free-limit exemptions are read from it; a replan
@@ -22,6 +29,7 @@
  * Pure. Spec: tests/path-core.test.ts.
  */
 import {
+  MINUTES_PER_TOP_SLOT,
   QUEUE_ORDER,
   NOTHING_DONE,
   chapterDone,
@@ -39,11 +47,18 @@ export const MIN_TASKS = 2;
 export const MAX_TASKS = 4;
 export const FIX_MAX = 5;
 export const FIX_MINUTES_PER_QUESTION = 1.5;
+/** Top 10 questions a task holds (§18): two parts of 5, not one block of 10. */
+export const TOP_PART_SLOTS = 5;
 /** A day with two tasks stops once it reaches this share of its minutes. */
 export const STOP_SHARE = 0.8;
 
 export type PathTask =
-  | { kind: ChapterPart; chapterId: string; minutes: number }
+  | { kind: "sheet" | "test"; chapterId: string; minutes: number }
+  /**
+   * `upTo`: the Top 10 slots worked when this part is done (§18). Absent on a
+   * task stored before the split: then the part is the whole Top 10.
+   */
+  | { kind: "top"; chapterId: string; minutes: number; upTo?: number }
   | { kind: "fix"; questionIds: string[]; minutes: number }
   /** The revision weeks (Phase 3): a whole past board paper, timed. */
   | { kind: "paper"; paperId: string; minutes: number }
@@ -64,11 +79,20 @@ export type PaperState = { served: boolean; worked: number; of: number; done: bo
 
 const stateOf = (states: ReadonlyMap<string, ChapterState>, id: string) => states.get(id) ?? NOTHING_DONE;
 
-/** The state after a part is done, for picking the next task. */
-export function withPartDone(c: PathChapter, s: ChapterState, part: ChapterPart): ChapterState {
+/** The state after a part is done, for picking the next task. `upTo`: a Top 10 part's end. */
+export function withPartDone(c: PathChapter, s: ChapterState, part: ChapterPart, upTo?: number): ChapterState {
   if (part === "sheet") return { ...s, sheet: true };
-  if (part === "top") return { ...s, topWorked: c.top.length };
+  if (part === "top") return { ...s, topWorked: Math.max(s.topWorked, Math.min(upTo ?? c.top.length, c.top.length)) };
   return { ...s, test: true };
+}
+
+/** A chapter part as a task: a Top 10 part covers the next TOP_PART_SLOTS questions. */
+export function chapterTask(c: PathChapter, s: ChapterState, part: ChapterPart): ChapterTask {
+  if (part === "top") {
+    const upTo = Math.min(c.top.length, s.topWorked + TOP_PART_SLOTS);
+    return { kind: "top", chapterId: c.id, minutes: MINUTES_PER_TOP_SLOT * (upTo - s.topWorked), upTo };
+  }
+  return { kind: part, chapterId: c.id, minutes: partMinutes(c, s, part) };
 }
 
 export function pickToday(input: {
@@ -86,6 +110,10 @@ export function pickToday(input: {
   smallestFirst?: boolean;
   /** Fix questions a day: 5, or 10 in the revision weeks. */
   fixMax?: number;
+  /** Plan chapters worked on lately (FOLLOW_DAYS), with when: they come first (§18). */
+  recent?: ReadonlyMap<string, string>;
+  /** "Switch chapter": this chapter first, after what is kept (§18). */
+  focus?: string | null;
 }): PathTask[] {
   const sim = new Map(input.states);
   const tasks: PathTask[] = [];
@@ -96,7 +124,7 @@ export function pickToday(input: {
     spent += t.minutes;
     if (isChapterTask(t)) {
       const c = input.chapters.find((x) => x.id === t.chapterId);
-      if (c) sim.set(c.id, withPartDone(c, stateOf(sim, c.id), t.kind));
+      if (c) sim.set(c.id, withPartDone(c, stateOf(sim, c.id), t.kind, t.kind === "top" ? t.upTo : undefined));
     }
   };
 
@@ -115,17 +143,65 @@ export function pickToday(input: {
     queues.map((q) => [q, input.chapters.filter((c) => c.queue === q).reduce((s, c) => s + totalMinutes(c), 0)])
   );
 
+  // The chosen chapter starts the fill, whatever its subject or whether it waits.
+  let focus = input.focus ?? null;
   while (tasks.length < MAX_TASKS && !(tasks.length >= MIN_TASKS && spent >= STOP_SHARE * input.budget)) {
+    const chosen = focus ? partOf(input.chapters, sim, focus) : null;
+    focus = null;
     const next =
+      chosen ??
       continueChapter(tasks, input.chapters, sim, input.deferred) ??
+      (!input.smallestFirst && input.recent ? followCandidate(input.chapters, sim, input.deferred, input.recent) : null) ??
       (input.smallestFirst
         ? smallestCandidate(input.chapters, sim, input.deferred) ?? smallestCandidate(input.chapters, sim, new Set())
         : nextCandidate(input.chapters, sim, input.deferred, queues, totals) ??
           nextCandidate(input.chapters, sim, new Set(), queues, totals));
     if (!next) break;
-    add({ kind: next.part, chapterId: next.chapter.id, minutes: partMinutes(next.chapter, stateOf(sim, next.chapter.id), next.part) });
+    add(chapterTask(next.chapter, stateOf(sim, next.chapter.id), next.part));
   }
   return tasks;
+}
+
+/** A chapter's next part, or null when it is done or not in the plan. */
+function partOf(
+  chapters: readonly PathChapter[],
+  sim: ReadonlyMap<string, ChapterState>,
+  id: string
+): { chapter: PathChapter; part: ChapterPart } | null {
+  const chapter = chapters.find((c) => c.id === id);
+  const part = chapter ? nextPart(chapter, stateOf(sim, chapter.id)) : null;
+  return chapter && part ? { chapter, part } : null;
+}
+
+/**
+ * The chapter the student worked on most recently, not done and not waiting
+ * (§18): their class is on it, so the plan goes there. Ties by subject, then
+ * book order.
+ */
+function followCandidate(
+  chapters: readonly PathChapter[],
+  sim: ReadonlyMap<string, ChapterState>,
+  deferred: ReadonlySet<string>,
+  recent: ReadonlyMap<string, string>
+): { chapter: PathChapter; part: ChapterPart } | null {
+  let best: { chapter: PathChapter; part: ChapterPart; at: number } | null = null;
+  for (const c of chapters) {
+    const when = recent.get(c.id);
+    if (!when || deferred.has(c.id)) continue;
+    const part = nextPart(c, stateOf(sim, c.id));
+    if (!part) continue;
+    const at = Date.parse(when);
+    if (
+      !best ||
+      at > best.at ||
+      (at === best.at &&
+        (QUEUE_ORDER.indexOf(c.queue) < QUEUE_ORDER.indexOf(best.chapter.queue) ||
+          (c.queue === best.chapter.queue && c.rank < best.chapter.rank)))
+    ) {
+      best = { chapter: c, part, at };
+    }
+  }
+  return best && { chapter: best.chapter, part: best.part };
 }
 
 /** The next part of the chapter the day is already on, if it has one. */
@@ -216,7 +292,7 @@ export function taskDone(
   const s = stateOf(states, c.id);
   if (s.recordedDone) return true;
   if (task.kind === "sheet") return s.sheet;
-  if (task.kind === "top") return c.top.length === 0 || s.topWorked >= c.top.length;
+  if (task.kind === "top") return c.top.length === 0 || s.topWorked >= Math.min(task.upTo ?? c.top.length, c.top.length);
   return c.test === null || s.test;
 }
 
