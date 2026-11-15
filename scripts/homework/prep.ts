@@ -40,7 +40,10 @@ async function main() {
   const isMh = examName.startsWith("Maharashtra");
   const isNda = examName === "NDA";
   const isCet = examName === "MHT-CET";
-  const isSsc = examName === "SSC CGL";
+  // SSC CHSL and CPO (2026-11-16) name shifts as CGL does; their reprints sit in
+  // the same repeats.json under their own prefix.
+  const sscPrefix = ({ "SSC CGL": "t1-", "SSC CHSL": "chsl-t1-", "SSC CPO": "cpo-t1-" } as Record<string, string>)[examName];
+  const isSsc = sscPrefix !== undefined;
   const isSscT2 = examName === "SSC CGL Tier II";
   const isJee = examName === "JEE Mains";
   const isNeet = examName === "NEET";
@@ -50,7 +53,8 @@ async function main() {
   const reprints = isSsc
     ? reprintSittings(
         JSON.parse(readFileSync(join(process.cwd(), "scripts/ssc-cgl/repeats.json"), "utf8")),
-        (key) => (SHIFTS[key] ? sscSittingLabel(SHIFTS[key].pyqNote) : undefined)
+        (key) => (SHIFTS[key] ? sscSittingLabel(SHIFTS[key].pyqNote) : undefined),
+        sscPrefix
       )
     : new Map<string, string[]>();
   const c = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });

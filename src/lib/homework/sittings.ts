@@ -123,11 +123,12 @@ export function cetSittingLabel(year: number, month: string | null, note: string
 /**
  * An SSC CGL paper's label (2026-11-06): one shift, "14 Jul 2023 S3", read from
  * the note the ingestion wrote ("Tier I, 14 Jul 2023, Shift 3"). SSC holds up
- * to four shifts a day. Anything else is an error, never a guess.
+ * to four shifts a day. SSC CHSL rows read the same; SSC CPO rows say "Paper I"
+ * (2026-11-16). Anything else is an error, never a guess.
  */
 export function sscSittingLabel(note: string | null): string {
-  if (!note) throw new Error("no note on an SSC CGL row");
-  const found = /^Tier I, (\d{1,2}) ([A-Z][a-z]+) (\d{4}), Shift (\d)$/.exec(note.trim());
+  if (!note) throw new Error("no note on an SSC row");
+  const found = /^(?:Tier I|Paper I), (\d{1,2}) ([A-Z][a-z]+) (\d{4}), Shift (\d)$/.exec(note.trim());
   const m = found ? MONTHS.find((x) => found[2].startsWith(x)) : undefined;
   if (!found || !m || !/^[1-4]$/.test(found[4])) throw new Error(`cannot read the SSC shift in "${note}"`);
   return `${Number(found[1])} ${m} ${found[3]} S${found[4]}`;
@@ -204,7 +205,7 @@ export function sittingFor(
   if (examName === "NDA") return ndaSittingLabel(r.pyq_year, r.pyq_month);
   if (examName === "CDS") return cdsSittingLabel(r.pyq_year, r.pyq_month, r.pyq_note);
   if (examName === "MHT-CET") return cetSittingLabel(r.pyq_year, r.pyq_month, r.pyq_note);
-  if (examName === "SSC CGL") return sscSittingLabel(r.pyq_note);
+  if (examName === "SSC CGL" || examName === "SSC CHSL" || examName === "SSC CPO") return sscSittingLabel(r.pyq_note);
   if (examName === "SSC CGL Tier II") return sscTier2SittingLabel(r.pyq_note);
   if (examName === "JEE Mains") return jeeSittingLabel(r.pyq_year, r.pyq_note);
   if (examName === "NEET") return neetSittingLabel(r.pyq_year, r.pyq_note);

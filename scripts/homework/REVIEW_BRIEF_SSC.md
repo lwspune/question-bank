@@ -34,6 +34,20 @@ paper also has Reasoning, English, General Awareness and Computer Knowledge. So 
 papers and the other sections 8. Count repeats and types across these Tier II papers only; do not
 compare with Tier I. Everything else in this brief applies unchanged.
 
+## SSC CHSL and SSC CPO (if your work dir starts `chsl-` or `cpo-`)
+
+The same brief applies to two other SSC exams, each reviewed on its own:
+
+- **SSC CHSL Tier I**: 24 shifts, July 2024 and November 2025, work dirs
+  `generated-papers/homework/chsl-<subject>`.
+- **SSC CPO Paper I**: 16 shifts, June-July 2024 and December 2025, work dirs
+  `generated-papers/homework/cpo-<subject>`.
+
+Shifts are named exactly as for CGL (`1 Jul 2024 S1`). Count repeats and types across the
+shifts of THAT exam only: never compare with CGL or with the other exam, and never call a
+question a repeat because you remember it from another exam. With fewer shifts than CGL,
+expect even fewer repeat groups; a type still needs members from 2+ different shifts.
+
 ## What SSC does
 
 SSC writes fresh questions for almost every shift: in 113 shifts only about 14 questions were
