@@ -13,7 +13,7 @@ import { onSite, forSite, siteFillExam } from "@/lib/sites/siteScope";
 import { intlHostDecision, INTL_EXAMS } from "@/lib/sites/intl";
 import { drillHref, drillChapterHref } from "@/lib/drill/from";
 import { goPracticeHref } from "@/lib/performance/links";
-import { holdsSitePass } from "@/lib/billing/passScope";
+import { holdsSitePass, sitePassScopes } from "@/lib/billing/passScope";
 
 const IMAT = INTL_EXAMS[0].examName;
 
@@ -103,6 +103,11 @@ describe("holdsSitePass (which pass lifts a site's free limits)", () => {
   it("on intl, the international exam's pass, not the rupee www pass", () => {
     expect(holdsSitePass({ hasPass: false, passScopes: ["imat"] }, "intl")).toBe(true);
     expect(holdsSitePass({ hasPass: true, passScopes: ["mocks"] }, "intl")).toBe(false);
+  });
+
+  it("a free intl exam (ENEM, 2026-11-15) is not a pass intl sells, so it lifts nobody's limits", () => {
+    expect(sitePassScopes("intl")).not.toContain("free");
+    expect(holdsSitePass({ hasPass: false, passScopes: [] }, "intl")).toBe(false);
   });
 
   it("staff ('all') hold every site's pass", () => {

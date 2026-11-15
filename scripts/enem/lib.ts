@@ -34,6 +34,12 @@ export type EnemQuestion = {
   answer?: string;
   confidence?: string;
   notes?: string;
+  /**
+   * For a question defective as printed that INEP did not cancel (owner's policy,
+   * 2026-10-29: INEP's key kept, a notice above the solution, grace in mocks).
+   * Shown first in the solution, in bold, as the SSC lane does; outside the hash.
+   */
+  notice?: string;
 };
 
 export const SUBJECT_NAMES: Record<EnemSubject, string> = {
@@ -143,7 +149,7 @@ export function buildRow(year: number, q: EnemQuestion, key: KeyEntry, opts: { d
     text,
     // INEP's difficulty is its IRT parameters, not a band; MODERATE is the bank's neutral value.
     difficulty: "MODERATE",
-    solution: q.solution.trim() || undefined,
+    solution: q.notice?.trim() ? `**Nota:** ${q.notice.trim()}\n\n${q.solution.trim()}` : q.solution.trim() || undefined,
     options,
     contentHash: contentHash(text, printed, answer),
     ...(key === "ANULADO" ? { cancelledNote: cancelledNoteFor(year, opts.day) } : {}),

@@ -48,6 +48,10 @@ FIGURE_WORDS = re.compile(r"\b(figura|gr[áa]fico|tabela|quadro|imagem|ilustra|e
 
 def line_text(line):
     """A line's text with sub/superscripts marked as _{..} / ^{..} (from scripts/imat/extract.py)."""
+    # A font without a character map (2021) yields glyph codes as raw control
+    # bytes, which the repo forbids (tests/no-control-bytes): show them as U+FFFD.
+    for s in line["spans"]:
+        s["text"] = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", "�", s["text"])
     spans = [s for s in line["spans"] if s["text"]]
     if not spans:
         return ""

@@ -76,6 +76,19 @@ describe("buildRow", () => {
   });
 });
 
+describe("a question defective as printed (owner's policy, 2026-10-29)", () => {
+  it("keeps INEP's key and shows the notice above the solution, in bold", () => {
+    const notice = "Como impressa, a questão não tem alternativa correta.";
+    const row = buildRow(2022, { ...base, notice }, "E", { day: 2 });
+    expect(row.options.find((o) => o.isCorrect)?.label).toBe("E");
+    expect(row.solution).toBe(`**Nota:** ${notice}\n\n${base.solution}`);
+  });
+
+  it("leaves the hash alone: a notice added later changes no question id", () => {
+    expect(buildRow(2022, { ...base, notice: "x" }, "E", { day: 2 }).contentHash).toBe(buildRow(2022, base, "E", { day: 2 }).contentHash);
+  });
+});
+
 describe("notes", () => {
   it("fits the public provenance cap (under 48 characters)", () => {
     expect(pyqNoteFor(2025, 2)).toBe("ENEM 2025, 2º dia, caderno 7");
