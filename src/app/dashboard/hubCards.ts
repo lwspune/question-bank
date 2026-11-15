@@ -18,6 +18,7 @@ import {
   Flag,
   FlaskConical,
   Gem,
+  Globe,
   GraduationCap,
   HandHelping,
   HeartPulse,
@@ -196,6 +197,8 @@ export const HUB_SECTIONS: readonly HubSection[] = [
     cards: [
       card("/dashboard/competitors", Swords, "superadmin", "Competitors",
         "What rival apps and sites offer, where we stand on each feature, and the gaps worth closing."),
+      card("/dashboard/world-exams", Globe, "superadmin", "World exams",
+        "Exams in other countries screened as the next one we add: rights, size, verdict and the shortlist."),
       card("/dashboard/health", HeartPulse, "superadmin", "Database health",
         "Daily snapshots: disk spill, capacity against the plan caps, and the busiest queries."),
     ],
