@@ -95,6 +95,14 @@ describe("buildDuePushPayload", () => {
     expect(p.body).toBe("Trigonometry 3 · Vectors 2 · About 5 minutes.");
   });
 
+  it("opens with yesterday's fixes when there were any (V's day card, 2026-11-15)", () => {
+    const p = buildDuePushPayload({ summary: summary(["Trigonometry", 3], ["Vectors", 2]), clickToken: TOKEN, fixedYesterday: 3 });
+    expect(p.title).toBe("5 mistakes are waiting in Fix");
+    expect(p.body).toBe("Yesterday you fixed 3. Trigonometry 3 · Vectors 2 · About 5 minutes.");
+    const none = buildDuePushPayload({ summary: summary(["Vectors", 1]), clickToken: TOKEN, fixedYesterday: 0 });
+    expect(none.body).toBe("Vectors 1 · About a minute.");
+  });
+
   it("one question in one chapter", () => {
     const p = buildDuePushPayload({ summary: summary(["Vectors", 1]), clickToken: TOKEN });
     expect(p.title).toBe("1 mistake is waiting in Fix");
