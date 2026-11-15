@@ -364,6 +364,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-15 (thirteenth) — SSC CGL Tier II Maths notes, 18 chapters (`/notes/ssc-cgl-tier-2-maths`, no migration).**
+  - **Why:** Tier II cards had no notes chip (notes are looked up by exam name). Owner chose own pages over one shared text, which needs an exam-aware concept-tag key first.
+  - **Quant chapters with 10+ q:** 604 of 640 rows, 46 pages, all tagged; GK skipped. Not harder by our labels (Percentage: 58 EASY of 71).
+  - **Tier I's pipeline:** plans take `tier: 2`, `ship-notes.py --tier=2`, slugs `ssc2-`; Tier II yields names to Tier I in goLinks. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-15 (twelfth) — ENEM on intl: 2021-2025 Day 2 public, 5 free mocks, no notes yet (no migration).**
   - **450 q, INEP's key kept** (blind 442/443; 2022 Q145 defective, notice + grace); official acts (Lei 9.610 art. 8 IV), credits kept, comes down on request. Free (0210 'free').
   - **Mocks score right answers:** ENEM's IRT score cannot be reproduced, so the home says so. Built after the flip (the builder reads PUBLIC only).
