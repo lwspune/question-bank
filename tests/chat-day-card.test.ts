@@ -148,9 +148,9 @@ describe("buildDayCard", () => {
       { label: "Yesterday", value: "24 questions, 17 right (71%)" },
       { label: "Fixed", value: "3 mistakes cleared", tone: "good" },
       { label: "Moved up", value: "Trigonometry: now strong", tone: "good" },
-      { label: "Today", value: "6 mistakes waiting", detail: "About 5 minutes.", tone: "today" },
+      { label: "Today", value: "6 mistakes waiting", detail: "Start with 5: about 5 minutes.", tone: "today" },
     ]);
-    expect(card?.primary).toEqual({ label: "Fix 6 mistakes", href: "/drill?from=v_day", action: "drill" });
+    expect(card?.primary).toEqual({ label: "Fix 5 mistakes", href: "/drill?from=v_day", action: "drill" });
     expect(card?.secondary).toEqual({ label: "My full progress", href: "/performance", action: "performance" });
   });
 
@@ -171,9 +171,31 @@ describe("buildDayCard", () => {
     expect(card?.rows).toEqual([
       { label: "Last time", value: "12 questions, 8 right (67%)", detail: "Mostly Probability" },
       { label: "So far", value: "41 mistakes fixed in total", tone: "good" },
-      { label: "Today", value: "9 mistakes waiting", detail: "4 of them are from Probability.", tone: "today" },
+      { label: "Today", value: "9 mistakes waiting", detail: "Start with 5: about 5 minutes.", tone: "today" },
     ]);
     expect(JSON.stringify(card)).not.toMatch(/missed|streak/i);
+  });
+
+  it("with 5 or fewer waiting, says how many come from the chapter worked on last", () => {
+    const card = buildDayCard(
+      input({
+        days: [span("2026-11-11", 6, 3, { name: "Probability", answered: 6 })],
+        dueChapters: ["Probability", "Probability", "Probability", "Vectors"],
+      })
+    );
+    expect(card?.rows.at(-1)).toEqual({ label: "Today", value: "4 mistakes waiting", detail: "3 of them are from Probability.", tone: "today" });
+    expect(card?.primary.label).toBe("Fix 4 mistakes");
+  });
+
+  it("never asks for more than one drill: a big backlog starts with 5", () => {
+    const card = buildDayCard(input({ dueChapters: Array.from({ length: 472 }, () => "Differentiation") }));
+    expect(card?.rows).toEqual([{ label: "Today", value: "472 mistakes waiting", detail: "Start with 5: about 5 minutes.", tone: "today" }]);
+    expect(card?.primary.label).toBe("Fix 5 mistakes");
+  });
+
+  it("does not say \"Mostly\" about one or two answers", () => {
+    const card = buildDayCard(input({ days: [span("2026-11-14", 2, 2, { name: "Vectors", answered: 2 })] }));
+    expect(card?.rows[0]).toEqual({ label: "Yesterday", value: "2 questions, 2 right (100%)" });
   });
 
   it("names the top chapter only when it holds half the day's answers or more", () => {

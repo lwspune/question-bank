@@ -11,7 +11,7 @@ import { getOwnProfile } from "@/lib/profile/service";
 import { getOwnLadder } from "@/lib/drill/service";
 import { getOwnPerformance } from "@/lib/performance/service";
 import { selectAttempts } from "@/lib/performance/compute";
-import { getPathToday } from "@/lib/path/service";
+import { getActivePath, getPathToday } from "@/lib/path/service";
 import { isPathExam } from "@/lib/path/model";
 import { mockDays, movedUpSince, pickProgressExams } from "./progressCard";
 import { examByName, examBySlug, examIdOf } from "./progressCardServer";
@@ -40,15 +40,18 @@ export async function loadDayCard(
   userId: string,
   now: Date = new Date()
 ): Promise<DayCard | null> {
-  const [profile, perf, ladder] = await Promise.all([
+  const [profile, perf, ladder, active] = await Promise.all([
     getOwnProfile(db, userId),
     getOwnPerformance(),
     getOwnLadder(db, userId, now),
+    getActivePath(db, userId).catch(() => null),
   ]);
 
   const latest = perf ? selectAttempts(perf.attempts, perf.facts).kept.sort((a, b) => b.startedAt.localeCompare(a.startedAt))[0] : undefined;
+  // A student on the board plan gets the plan's exam: its task is the day's step,
+  // even when another exam comes first on their profile (real data, 2026-11-15).
   const picked = pickProgressExams({
-    asked: null,
+    asked: active && isPathExam(active.exam) ? active.exam : null,
     targetExams: profile.targetExams,
     latestMockExam: examByName(latest?.examName ?? null)?.slug ?? null,
   });

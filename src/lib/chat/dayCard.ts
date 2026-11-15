@@ -20,7 +20,7 @@
  *
  * Pure. Spec: tests/chat-day-card.test.ts.
  */
-import { questionState, type DrillEvent } from "@/lib/drill/select";
+import { DRILL_SIZE, questionState, type DrillEvent } from "@/lib/drill/select";
 import { drillHref } from "@/lib/drill/from";
 import { drillTimeLine } from "@/lib/push/core";
 import type { Band } from "@/lib/performance/masteryMap";
@@ -176,15 +176,20 @@ function answersText(d: DaySpan): string {
   return `${plural(d.answered, "question")}, ${d.right} right (${pct}%)`;
 }
 
+/** Under this many answers, "Mostly <chapter>" says nothing. */
+const MAIN_CHAPTER_MIN_ANSWERS = 3;
+
 /** The chapter that held half the day's answers or more, else null. */
 function mainChapter(d: DaySpan): string | null {
+  if (d.answered < MAIN_CHAPTER_MIN_ANSWERS) return null;
   return d.topChapter && d.topChapter.answered * 2 >= d.answered ? d.topChapter.name : null;
 }
 
 const PERFORMANCE: DayAction = { label: "My full progress", href: "/performance", action: "performance" };
 
+/** One drill at most: the drill serves DRILL_SIZE at a time, so "Fix 472" would promise what it does not do. */
 function fixAction(due: number): DayAction {
-  return { label: `Fix ${plural(due, "mistake")}`, href: drillHref("v_day"), action: "drill" };
+  return { label: `Fix ${plural(Math.min(due, DRILL_SIZE), "mistake")}`, href: drillHref("v_day"), action: "drill" };
 }
 
 /** The card, or null when there is nothing to say (V keeps its greeting). */
@@ -231,8 +236,14 @@ export function buildDayCard(input: DayCardInput): DayCard | null {
     );
   }
   if (due > 0 && !next) {
+    // A backlog bigger than one drill starts with one drill (real data: up to 472 waiting).
     const sameChapter = main ? input.dueChapters.filter((c) => c === main).length : 0;
-    const detail = sameChapter >= 2 && sameChapter < due ? `${sameChapter} of them are from ${main}.` : drillTimeLine(due);
+    const detail =
+      due > DRILL_SIZE
+        ? `Start with ${DRILL_SIZE}: ${drillTimeLine(DRILL_SIZE).charAt(0).toLowerCase()}${drillTimeLine(DRILL_SIZE).slice(1)}`
+        : sameChapter >= 2 && sameChapter < due
+          ? `${sameChapter} of them are from ${main}.`
+          : drillTimeLine(due);
     rows.push({ label: "Today", value: `${plural(due, "mistake")} waiting`, detail, tone: "today" });
   }
 
