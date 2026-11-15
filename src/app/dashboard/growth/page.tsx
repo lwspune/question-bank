@@ -68,6 +68,8 @@ import {
   V_RETRY_YES_KEEP_PCT,
   V_STEPS_START_KEEP_PCT,
   V_STEP_CHIPS_TAP_KEEP_PCT,
+  V_DAY_REPEAT_KEEP_PCT,
+  V_DAY_NEXT_STEP_KEEP_PCT,
   V_STEP_CHIPS_YES_KEEP_PCT,
   V_STEPS_FINISH_KEEP_PCT,
   SCORE_PLAN_DRILL_KEEP_PCT,
@@ -972,6 +974,14 @@ export default async function GrowthPage() {
           <p className="text-sm text-muted-foreground">
             Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if {V_RETRY_YES_KEEP_PCT}%+ of answered
             second tries get a Yes (was 2 of 7).
+          </p>
+        );
+      case "v-day-card":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with scripts/chat/day-card-readout.sql: keep it if{" "}
+            {V_DAY_REPEAT_KEEP_PCT}%+ of the students shown it see it on 2+ days (before: 7 of 31 for How&apos;s my progress) and{" "}
+            {V_DAY_NEXT_STEP_KEEP_PCT}%+ of showings lead to a tap that day.
           </p>
         );
       case "v-step-chips":
