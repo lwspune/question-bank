@@ -130,6 +130,15 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ## 2026-11-15
 
+### CDS English and GK items found during the homework review (left out of the plans, not changed)
+
+The repeat review for the eight CDS English and GK homework plans read every question. UPSC published no key for these papers, so the stored answers are our derivations. Ten are flawed as printed and left out of the homework plans (`excludedQuestions` in `scripts/homework/data/cds-*.json`); an eleventh stays in. Each still shows on /browse and in mocks as before. Decide per item whether it gets a `notice:` and grace (the defective-question policy); shipped rows are fixed in place.
+
+- **No printed option is correct (English word class):** 23c80baa (CDS 2 2021, "wandered around": no Adverb option, keyed Verb), eff05c95 (CDS 1 2020) and 47fda3a4 (CDS 1 2021) ("since" + a time is a preposition: no such option, keyed Adverb), fb2df23f (CDS 2 2022, "all good things": keyed Pronoun).
+- **Polity:** 619565cd (CDS 2 2021, Emergency made immune from review: the 38th Amendment is not offered, keyed 42nd); 93075de5 (CDS 2 2021, federal system: our own solution says all four statements are true); 437823aa (CDS 1 2022: both the 10% cap and the Attorney General wording are wrong); 6fea7930 (CDS 1 2023, Solicitor General: "chief legal advisor" and "constitutional post" are both wrong).
+- **Two options fit:** aa6b40c9 (Economics, CDS 2 2023, not under GST: customs duties keyed, petroleum taxes fit too); d2c6ca24 (Physics, magnetic field lines: "always parallel" is as wrong as the keyed "can cross").
+- **Check the print, answer clear (kept in the plan):** 324845c0 (Chemistry, CDS 1 2026): option (A) reads "1, 2, 3 and 4" though three statements are printed; keyed (D) "1 and 3 only".
+
 ### NDA GAT items found during the homework review (not changed)
 
 The repeat review for the eight NDA GAT homework plans read every question; these look defective as stored. None changes a plan's grouping. Each needs the printed paper or UPSC's key before any edit (shipped rows: fix in place, per the defective-question policy).
