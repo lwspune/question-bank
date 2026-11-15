@@ -7,11 +7,14 @@
  * whole list, and a full page is reported rather than silently cut.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
+import type { Database } from "@/types/db";
 import { parseExamRow, parseNoteRow, type WorldExam, type WorldExamNote } from "./model";
 
 const LIMIT = 1000;
 
-export async function fetchWorldExams(client: SupabaseClient): Promise<{ exams: WorldExam[]; notes: WorldExamNote[] }> {
+export async function fetchWorldExams(
+  client: SupabaseClient<Database>,
+): Promise<{ exams: WorldExam[]; notes: WorldExamNote[] }> {
   const [exams, notes] = await Promise.all([
     client.from("world_exams").select("*").order("id").limit(LIMIT),
     client.from("world_exam_notes").select("*").order("sort").order("id").limit(LIMIT),
