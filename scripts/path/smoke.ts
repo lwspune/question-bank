@@ -15,6 +15,12 @@
  * they had started a path today (no real path rows are read or written); it
  * renders no markup. Read-only: it never writes.
  *
+ * Following the class (§18, 2026-11-15): each student's practice per plan
+ * chapter is read through the SAME database function the card uses
+ * (path_chapter_work, 0261), and the check is that a chapter they worked on in
+ * the last 7 days and have not finished leads today's card. Where 0261 is not
+ * applied yet it says so and runs the rest.
+ *
  * Usage: npm run path:smoke [-- --students=N]   (N per board, default 8)
  */
 import { join } from "node:path";
@@ -38,9 +44,12 @@ import { foldStates } from "@/lib/path/fold";
 import { buildWeekReview, reviewLines } from "@/lib/path/review";
 import { projectWeek, weekText } from "@/lib/path/week";
 import { addDays } from "@/lib/path/pace";
+import { WORK_LOOKBACK_DAYS, mergeWork, recentWork } from "@/lib/path/covered";
 
 const perBoard = Number(process.argv.find((a) => a.startsWith("--students="))?.split("=")[1] ?? 8);
 const failures: string[] = [];
+let workReadable = true;
+const follows = { total: 0, led: 0 };
 const check = (ok: boolean, what: string) => {
   if (!ok) failures.push(what);
 };
@@ -135,11 +144,29 @@ async function main() {
     }
 
     for (const userId of recent) {
-      const { states, facts } = await readChapterStates(db, userId, chapters);
+      const { states, facts, lastWorkAt } = await readChapterStates(db, userId, chapters);
       const pool = await loadOwnPool(db, userId, now);
       const fix = fixQuestions(pool.drillable, new Set(chapters.map((c) => c.id)), istDayStartIso(now));
       const daily = startingDailyMinutes(pathRemainingMinutes(chapters, states), today, buffer);
-      const tasks = pickToday({ chapters, states, deferred: new Set(), budget: daily, fix });
+      // §18: the card's own read of practice per chapter, then the follow rule.
+      let practice = new Map<string, string>();
+      if (workReadable) {
+        const since = new Date(now.getTime() - WORK_LOOKBACK_DAYS * 86_400_000).toISOString();
+        const { data, error } = await db.rpc("path_chapter_work", { p_user: userId, p_since: since, p_chapters: chapters.map((c) => c.id) });
+        if (error) {
+          workReadable = false;
+          console.log(`  path_chapter_work unreadable here (${error.message}): the follow rule is not exercised`);
+        } else practice = new Map(((data ?? []) as { chapter_id: string; last_at: string }[]).map((r) => [r.chapter_id, r.last_at]));
+      }
+      const recentChapters = recentWork(mergeWork(lastWorkAt, practice), now);
+      const tasks = pickToday({ chapters, states, deferred: new Set(), budget: daily, fix, recent: recentChapters });
+      const followable = chapters.filter((c) => recentChapters.has(c.id) && !chapterDone(c, states.get(c.id)!));
+      const lead = tasks.find(isChapterTask);
+      if (followable.length > 0) {
+        follows.total++;
+        if (lead && followable.some((c) => c.id === lead.chapterId)) follows.led++;
+        check(!!lead && followable.some((c) => c.id === lead.chapterId), `${userId.slice(0, 8)}: worked on ${followable.length} chapters lately, none leads the card`);
+      }
       const ex = todayExemptions(tasks, chapters);
       const view = buildPathView({
         exam,
@@ -172,7 +199,7 @@ async function main() {
       );
       check(!/\b0 /.test(review.join(" ")), `${userId.slice(0, 8)}: a zero in the review`);
       const week = projectWeek({ chapters, states, deferred: new Set(), budget: daily, today, todayTasks: tasks });
-      const parts = week.flatMap((d) => d.tasks.flatMap((t) => (isChapterTask(t) ? [`${t.kind}:${t.chapterId}`] : [])));
+      const parts = week.flatMap((d) => d.tasks.flatMap((t) => (isChapterTask(t) ? [`${t.kind}:${t.chapterId}:${t.kind === "top" ? t.upTo : ""}`] : [])));
       check(new Set(parts).size === parts.length, `${userId.slice(0, 8)}: the coming days repeat a part`);
       const first = tasks.find(isChapterTask);
       const firstChapter = first ? chapters.find((c) => c.id === first.chapterId) : undefined;
@@ -205,11 +232,13 @@ async function main() {
       for (const l of weekText(week.slice(0, 3), chapters)) console.log(`      ${l}`);
       console.log(
         `  ${userId.slice(0, 8)}  done ${done}/${chapters.length} · ${daily} min/day · fix ${fix.length} · ` +
-          `today ${tasks.map((t) => (t.kind === "fix" ? `fix${t.questionIds.length}` : t.kind)).join("+")} (${view.todayMinutes} min) · ${view.pace.onTrack ? "on track" : `behind ${view.pace.behindDays}d`}`
+          `today ${tasks.map((t) => (t.kind === "fix" ? `fix${t.questionIds.length}` : t.kind)).join("+")} (${view.todayMinutes} min) · ${view.pace.onTrack ? "on track" : `behind ${view.pace.behindDays}d`}` +
+          ` · ${lead ? `leads ${chapters.find((c) => c.id === lead.chapterId)?.name}${followable.some((c) => c.id === lead.chapterId) ? " (worked on lately)" : ""}` : "no chapter"}`
       );
     }
   }
 
+  console.log(`\nfollow the class: ${follows.led} of ${follows.total} students with a chapter worked on lately have it leading the card`);
   if (failures.length) {
     console.error(`\nFAIL (${failures.length})`);
     for (const f of failures) console.error(`  - ${f}`);

@@ -10,6 +10,11 @@
  *     role ONLY. They carry the free-limit exemptions (§6), so a student must
  *     never be able to write them; the routes decide, never the browser.
  *
+ * FOLLOWS THE CLASS (§18, 2026-11-15). The student's ticks ("What has your
+ * class covered?", study_path_covered) and their practice on any of a plan
+ * chapter's questions (path_chapter_work, 0261) decide which chapters wait and
+ * which come first; "Switch chapter" replans today on the chosen one.
+ *
  * STABLE THROUGH THE DAY. Today's pick is stored on its first read of the IST
  * day and read back after, so the card does not reshuffle as work lands; done
  * is computed live. "Not taught yet" replans: it keeps the card's other tasks
@@ -43,6 +48,7 @@ import type { ProgressEvent } from "@/lib/homework/progress";
 import { REVISION_FIX_MAX, isRevision, paperWorked, pickRevisionDay, reviewPending } from "./revision";
 import type { RevisionInput } from "./week";
 import { activeDeferrals, type Deferral } from "./deferrals";
+import { WORK_LOOKBACK_DAYS, mergeWork, recentWork, switchesLeft, waitingChapters } from "./covered";
 import {
   PATH_SUBJECTS,
   STREAMS,
@@ -69,12 +75,14 @@ export type ActivePath = {
   subjects: PathSubject[];
   dailyMinutes: number;
   startedAt: string;
+  /** When "What has your class covered?" was last answered; null = never (the card asks). */
+  coveredAt: string | null;
 };
 
 export async function getActivePath(db: SupabaseClient, userId: string): Promise<ActivePath | null> {
   const { data, error } = await db
     .from("study_paths")
-    .select("id, exam_slug, subjects, daily_minutes, started_at")
+    .select("id, exam_slug, subjects, daily_minutes, started_at, covered_at")
     .eq("user_id", userId)
     .is("ended_at", null)
     .maybeSingle();
@@ -86,6 +94,7 @@ export async function getActivePath(db: SupabaseClient, userId: string): Promise
     subjects: ((data.subjects as string[]) ?? []).filter((s): s is PathSubject => (PATH_SUBJECTS as readonly string[]).includes(s)),
     dailyMinutes: data.daily_minutes as number,
     startedAt: data.started_at as string,
+    coveredAt: (data.covered_at as string | null) ?? null,
   };
 }
 
@@ -105,6 +114,40 @@ async function readDeferrals(db: SupabaseClient, pathId: string): Promise<Deferr
     (f, t) => db.from("study_path_deferrals").select("chapter_id, deferred_at").eq("path_id", pathId).order("id").range(f, t)
   );
   return rows.map((r) => ({ chapterId: r.chapter_id, at: r.deferred_at }));
+}
+
+/** The chapters the student ticked as taught (§18). */
+async function readCovered(db: SupabaseClient, pathId: string): Promise<Set<string>> {
+  const rows = await readAllPages<{ chapter_id: string }>((f, t) =>
+    db.from("study_path_covered").select("chapter_id").eq("path_id", pathId).order("chapter_id").range(f, t)
+  );
+  return new Set(rows.map((r) => r.chapter_id));
+}
+
+/**
+ * The latest practice on each plan chapter's questions since WORK_LOOKBACK_DAYS,
+ * on any page but the drill, aggregated in Postgres (0261 path_chapter_work).
+ * The Top 10, sheet and test reads (stateRead) see only a chapter's own parts;
+ * this sees the bank and /board questions where most of the work goes.
+ */
+async function readChapterWork(db: SupabaseClient, userId: string, chapterIds: readonly string[], now: Date): Promise<Map<string, string>> {
+  if (chapterIds.length === 0) return new Map();
+  const since = new Date(now.getTime() - WORK_LOOKBACK_DAYS * 86_400_000).toISOString();
+  const { data, error } = await db.rpc("path_chapter_work", { p_user: userId, p_since: since, p_chapters: [...chapterIds] });
+  if (error) throw new Error(`path chapter work: ${error.message}`);
+  return new Map(((data ?? []) as { chapter_id: string; last_at: string }[]).map((r) => [r.chapter_id, r.last_at]));
+}
+
+/** "Switch chapter" taps since the IST day began. */
+async function switchesToday(db: SupabaseClient, userId: string, dayStart: string): Promise<number> {
+  const { count, error } = await db
+    .from("user_activity")
+    .select("id", { count: "exact", head: true })
+    .eq("user_id", userId)
+    .eq("kind", "path_switched")
+    .gte("created_at", dayStart);
+  if (error) throw new Error(`path switches: ${error.message}`);
+  return count ?? 0;
 }
 
 type DayRow = { tasks: PathTask[]; fix_question_ids: string[] };
@@ -258,6 +301,8 @@ export type PathToday = {
   states: Map<string, ChapterState>;
   tasks: PathTask[];
   deferred: Set<string>;
+  /** Plan chapters worked on lately (§18), for the coming days. */
+  recent: Map<string, string>;
   /** The revision weeks' inputs (Phase 3), for the coming days; null before them. */
   revision: RevisionInput | null;
 };
@@ -272,7 +317,15 @@ type DayInputs = {
   states: Map<string, ChapterState>;
   lastWorkAt: Map<string, string>;
   facts: ChapterFacts;
+  /** "Not taught yet" taps still active, plus the chapters waiting for the class (§18). */
   deferred: Set<string>;
+  /** Plan chapters worked on in the last FOLLOW_DAYS: they come first (§18). */
+  recent: Map<string, string>;
+  /** Chapters ticked as taught (§18); empty = book order. */
+  ticked: Set<string>;
+  /** Plan chapters with any work in them, ever read (§18): the checklist's pre-ticks. */
+  worked: Set<string>;
+  switchesUsed: number;
   stored: DayRow | null;
   papers: PathPaper[];
   reviews: Map<string, string[]>;
@@ -294,12 +347,19 @@ async function loadDayInputs(
     getPathContent(path.exam, path.subjects),
     mode === "revision" ? getPathPapers(path.exam, path.subjects) : Promise.resolve([] as PathPaper[]),
   ]);
-  const [{ states, lastWorkAt, facts, sheetLastAt }, deferrals, stored] = await Promise.all([
+  const dayStart = istDayStartIso(now);
+  const [{ states, lastWorkAt: partWorkAt, facts, sheetLastAt }, deferrals, stored, ticked, practice, switchesUsed] = await Promise.all([
     readChapterStates(db, userId, chapters),
     readDeferrals(db, path.id),
     readDay(db, userId, day),
+    readCovered(db, path.id),
+    readChapterWork(db, userId, chapters.map((c) => c.id), now),
+    switchesToday(db, userId, dayStart),
   ]);
-  const dayStart = istDayStartIso(now);
+  // Work in a chapter = its own parts (stateRead) or practice on its questions.
+  const lastWorkAt = mergeWork(partWorkAt, practice);
+  const worked = new Set(lastWorkAt.keys());
+  const waiting = waitingChapters(chapters.map((c) => c.id), ticked, worked);
   return {
     day,
     dayStart,
@@ -311,7 +371,11 @@ async function loadDayInputs(
     states,
     lastWorkAt,
     facts,
-    deferred: activeDeferrals(deferrals, lastWorkAt, now),
+    deferred: new Set([...activeDeferrals(deferrals, lastWorkAt, now), ...waiting]),
+    recent: recentWork(lastWorkAt, now),
+    ticked,
+    worked,
+    switchesUsed,
     stored,
     papers,
     reviews: mode === "revision" ? reviewPending(chapters, facts) : new Map(),
@@ -362,7 +426,9 @@ function pickFor(
   budget: number,
   fix: readonly string[],
   paperStates: ReadonlyMap<string, PaperState>,
-  keep?: readonly PathTask[]
+  keep?: readonly PathTask[],
+  /** "Switch chapter": this chapter first (§18). */
+  focus?: string
 ): PathTask[] {
   if (inp.mode === "revision") {
     return pickRevisionDay({
@@ -380,7 +446,7 @@ function pickFor(
       sheetSeenAt: inp.sheetLastAt,
     });
   }
-  return pickToday({ chapters: inp.chapters, states: inp.states, deferred: inp.deferred, budget, fix, keep });
+  return pickToday({ chapters: inp.chapters, states: inp.states, deferred: inp.deferred, recent: inp.recent, budget, fix, keep, focus });
 }
 
 /** Ids a Fix or revise task asks to be worked today. */
@@ -443,6 +509,7 @@ export async function getPathToday(
     states,
     tasks,
     deferred: inp.deferred,
+    recent: inp.recent,
     revision:
       inp.mode === "revision"
         ? { buffer: inp.buffer, papers: inp.papers, paperStates, reviews: inp.reviews, sheetSeenAt: inp.sheetLastAt }
@@ -466,6 +533,10 @@ export async function getPathToday(
       papers: inp.papers,
       paperStates,
       sheetsToday: inp.sheetsToday,
+      partAt: { sheetAt: facts.sheetAt, testAt: facts.testAt },
+      taught: inp.ticked.size > 0 ? new Set([...inp.ticked, ...inp.worked]) : null,
+      switchesUsed: inp.switchesUsed,
+      cover: { asked: path.coveredAt !== null, ticked: inp.ticked, practised: inp.worked },
     }),
   };
 }
@@ -565,7 +636,7 @@ export async function startPath(
     }
     throw new Error(`path start: ${error.message}`);
   }
-  return { id: data.id as string, exam: input.exam, subjects, dailyMinutes, startedAt: data.started_at as string };
+  return { id: data.id as string, exam: input.exam, subjects, dailyMinutes, startedAt: data.started_at as string, coveredAt: null };
 }
 
 /** End the active path. Chapters done stay done: done comes from work (D7). */
@@ -588,7 +659,8 @@ async function replanToday(
   userId: string,
   path: ActivePath,
   now: Date,
-  keep: (task: PathTask, done: boolean) => boolean
+  keep: (task: PathTask, done: boolean) => boolean,
+  focus?: string
 ): Promise<void> {
   const profile = await getOwnProfile(db, userId);
   const board = boardDateFor(path.exam, profile, now);
@@ -600,8 +672,83 @@ async function replanToday(
   const kept = inp.stored.tasks.filter((t) =>
     keep(t, taskDone(t, inp.chapters, inp.states, fixAnswered, paperStates, inp.sheetsToday))
   );
-  const tasks = pickFor(inp, path.dailyMinutes, inp.stored.fix_question_ids ?? [], paperStates, kept);
+  const tasks = pickFor(inp, path.dailyMinutes, inp.stored.fix_question_ids ?? [], paperStates, kept, focus);
   await writeDay(userId, path.id, inp.day, tasks, inp.chapters, inp.papers, true);
+}
+
+/** The Fix task and whatever is done stay on the card through a replan (§18). */
+const keepFixAndDone = (t: PathTask, done: boolean) => t.kind === "fix" || done;
+
+/**
+ * "What has your class covered?" (§18): save the ticked chapters as the whole
+ * set (set_path_covered, one transaction), then replan today keeping the Fix
+ * task and what is done. [] is "Start from chapter 1": answered, book order.
+ */
+export async function setCovered(
+  db: SupabaseClient,
+  userId: string,
+  chapterIds: readonly string[],
+  now: Date = new Date()
+): Promise<void> {
+  const path = await getActivePath(db, userId);
+  if (!path) throw new PathError("You have no plan to change.", 409);
+  const chapters = await getPathContent(path.exam, path.subjects);
+  const inPlan = new Set(chapters.map((c) => c.id));
+  if (chapterIds.some((id) => !inPlan.has(id))) throw new PathError("That chapter is not in your plan.", 400);
+
+  const unique = [...new Set(chapterIds)];
+  const { error } = await db.rpc("set_path_covered", { p_path: path.id, p_chapters: unique });
+  if (error) throw new Error(`path cover: ${error.message}`);
+  // The readout's record (§18): best effort, never blocks the save.
+  await logActivity(db, userId, { kind: "path_covered", metadata: { ticked: String(unique.length), of: String(chapters.length) } }, now.getTime()).catch(
+    (e) => console.error("path cover event failed", e instanceof Error ? e.message : e)
+  );
+  await replanToday(db, userId, { ...path, coveredAt: now.toISOString() }, now, keepFixAndDone);
+}
+
+/**
+ * "Switch chapter" (§18): today's card turns to the chosen chapter, keeping the
+ * Fix task and what is done. SWITCHES_PER_DAY a day, because each switch
+ * lifts that chapter's Top 10 from the free answer limit for the day. A
+ * chapter chosen when the student has ticks counts as taught from now on.
+ */
+export async function switchChapter(
+  db: SupabaseClient,
+  userId: string,
+  chapterId: string,
+  now: Date = new Date()
+): Promise<void> {
+  const path = await getActivePath(db, userId);
+  if (!path) throw new PathError("You have no plan to change.", 409);
+  const chapters = await getPathContent(path.exam, path.subjects);
+  if (!chapters.some((c) => c.id === chapterId)) throw new PathError("That chapter is not in your plan.", 400);
+  const used = await switchesToday(db, userId, istDayStartIso(now));
+  if (switchesLeft(used) === 0) {
+    throw new PathError("You've switched chapters 3 times today. Your card keeps this one until tomorrow.", 429);
+  }
+
+  // Make sure today's card exists to switch (a switch before the first read of the day).
+  const profile = await getOwnProfile(db, userId);
+  const before = await getPathToday(db, userId, { write: true, profile, now });
+  if (!before) throw new PathError("You have no plan to change.", 409);
+  const from = before.tasks.find(isChapterTask)?.chapterId ?? null;
+
+  const ticked = await readCovered(db, path.id);
+  if (ticked.size > 0 && !ticked.has(chapterId)) {
+    const { error } = await db
+      .from("study_path_covered")
+      .upsert({ path_id: path.id, user_id: userId, chapter_id: chapterId }, { onConflict: "path_id,chapter_id", ignoreDuplicates: true });
+    if (error) throw new Error(`path switch tick: ${error.message}`);
+  }
+  await replanToday(db, userId, path, now, keepFixAndDone, chapterId);
+  // Counts toward the day's 3, and the readout (§18). Written after the switch
+  // took, so a failed switch never uses one up.
+  await logActivity(
+    db,
+    userId,
+    { kind: "path_switched", refId: chapterId, refKind: "chapter", metadata: from ? { from } : {} },
+    now.getTime()
+  ).catch((e) => console.error("path switch event failed", e instanceof Error ? e.message : e));
 }
 
 /**
@@ -726,6 +873,7 @@ export async function getPathForV(db: SupabaseClient, userId: string, now: Date 
       chapters: today.chapters,
       states: today.states,
       deferred: today.deferred,
+      recent: today.recent,
       budget: today.path.dailyMinutes,
       today: istDayKey(now),
       todayTasks: today.tasks,

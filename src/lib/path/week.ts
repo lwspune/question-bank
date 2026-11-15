@@ -32,6 +32,8 @@ export function projectWeek(p: {
   chapters: readonly PathChapter[];
   states: ReadonlyMap<string, ChapterState>;
   deferred: ReadonlySet<string>;
+  /** Plan chapters worked on lately: the coming days follow them too (§18). */
+  recent?: ReadonlyMap<string, string>;
   budget: number;
   today: string;
   todayTasks: readonly PathTask[];
@@ -48,7 +50,7 @@ export function projectWeek(p: {
     for (const t of tasks) {
       if (isChapterTask(t)) {
         const c = byId.get(t.chapterId);
-        if (c) sim.set(c.id, withPartDone(c, sim.get(c.id) ?? NOTHING_DONE, t.kind));
+        if (c) sim.set(c.id, withPartDone(c, sim.get(c.id) ?? NOTHING_DONE, t.kind, t.kind === "top" ? t.upTo : undefined));
       } else if (t.kind === "paper") {
         papers.set(t.paperId, { served: true, worked: 1, of: 1, done: true });
       } else if (t.kind === "revise") {
@@ -82,7 +84,7 @@ export function projectWeek(p: {
         buffer: p.revision.buffer,
         sheetSeenAt,
       });
-    } else tasks = pickToday({ chapters: p.chapters, states: sim, deferred: p.deferred, budget: p.budget, fix: [] });
+    } else tasks = pickToday({ chapters: p.chapters, states: sim, deferred: p.deferred, recent: p.recent, budget: p.budget, fix: [] });
     if (tasks.length === 0) {
       if (nothingLeft()) break;
       continue;
@@ -130,7 +132,8 @@ export function weekText(
         continue;
       }
       if (current && current.id === t.chapterId) {
-        current.parts.push(PART_WORD[t.kind]);
+        // Two Top 10 parts in a day read as one "Top 10" (§18).
+        if (current.parts[current.parts.length - 1] !== PART_WORD[t.kind]) current.parts.push(PART_WORD[t.kind]);
         groups[groups.length - 1] = `${byId.get(t.chapterId)?.name ?? "A chapter"}: ${current.parts.join(", ")}`;
       } else {
         current = { id: t.chapterId, parts: [PART_WORD[t.kind]] };
