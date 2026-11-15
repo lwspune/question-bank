@@ -1,7 +1,10 @@
 {
- "_": "SSC CGL Tier II /notes chapters (owner, 2026-11-15: Tier II gets its own notes, written to its own questions; GK skipped, too thin a chapter). Quantitative Aptitude chapters with 10+ PUBLIC questions, in bank-size order. abbr: subtopic slugs ssc2-<abbr>-*, concept slugs ssc2<abbr>-* (Tier I's abbrs, so a chapter reads the same on both tiers; the ssc2 prefix keeps them globally unique). Dump generated-papers/_cdsk_ssc2<abbr>.*, plan scripts/ssc-cgl/reshape-t2/<slug>.ts, tag map _tag-ssc2-<abbr>.json. Ship: python scripts/ssc-cgl/ship-notes.py <abbr> --tier=2.",
+ "_": "SSC CGL Tier II /notes chapters (owner, 2026-11-15: Tier II gets its own notes, written to its own questions; GK skipped, too thin a chapter). Chapters with 10+ PUBLIC questions in Quantitative Aptitude, English, Reasoning and Computer Knowledge (owner 2026-11-15: 'do all end to end'), in bank-size order within a subject. abbr: subtopic slugs ssc2-<abbr>-*, concept slugs ssc2<abbr>-* (Tier I's abbrs, so a chapter reads the same on both tiers; the ssc2 prefix keeps them globally unique). Dump generated-papers/_cdsk_ssc2<abbr>.*, plan scripts/ssc-cgl/reshape-t2/<slug>.ts, tag map _tag-ssc2-<abbr>.json. Ship: python scripts/ssc-cgl/ship-notes.py <abbr> --tier=2.",
  "routes": {
-  "Quantitative Aptitude": ["ssc-cgl-tier-2-maths", "SSC CGL Tier II Maths"]
+  "Quantitative Aptitude": ["ssc-cgl-tier-2-maths", "SSC CGL Tier II Maths"],
+  "English": ["ssc-cgl-tier-2-english", "SSC CGL Tier II English"],
+  "Reasoning": ["ssc-cgl-tier-2-reasoning", "SSC CGL Tier II Reasoning"],
+  "Computer Knowledge": ["ssc-cgl-tier-2-computer", "SSC CGL Tier II Computer Knowledge"]
  },
  "chapters": [
   {"subject": "Quantitative Aptitude", "chapter": "Percentage, Profit and Loss", "slug": "percentage", "abbr": "pp"},
@@ -21,6 +24,32 @@
   {"subject": "Quantitative Aptitude", "chapter": "Statistics", "slug": "statistics", "abbr": "st"},
   {"subject": "Quantitative Aptitude", "chapter": "Circles", "slug": "circles", "abbr": "ci"},
   {"subject": "Quantitative Aptitude", "chapter": "Heights and Distances", "slug": "heights-distances", "abbr": "hd"},
-  {"subject": "Quantitative Aptitude", "chapter": "Quadrilaterals", "slug": "quadrilaterals", "abbr": "qu"}
+  {"subject": "Quantitative Aptitude", "chapter": "Quadrilaterals", "slug": "quadrilaterals", "abbr": "qu"},
+  {"subject": "English", "chapter": "Reading Comprehension", "slug": "reading-comprehension", "abbr": "erc"},
+  {"subject": "English", "chapter": "Vocabulary", "slug": "vocabulary", "abbr": "evo"},
+  {"subject": "English", "chapter": "Grammar", "slug": "grammar", "abbr": "egr"},
+  {"subject": "English", "chapter": "Sentence Rearrangement", "slug": "sentence-rearrangement", "abbr": "esr"},
+  {"subject": "English", "chapter": "Cloze Test", "slug": "cloze-test", "abbr": "ecz"},
+  {"subject": "English", "chapter": "Spotting Errors", "slug": "spotting-errors", "abbr": "ese"},
+  {"subject": "English", "chapter": "Idioms and Phrases", "slug": "idioms-and-phrases", "abbr": "eid"},
+  {"subject": "English", "chapter": "Fill in the Blanks", "slug": "fill-in-the-blanks", "abbr": "efb"},
+  {"subject": "Reasoning", "chapter": "Non-Verbal Series and Analogy", "slug": "non-verbal", "abbr": "rnv"},
+  {"subject": "Reasoning", "chapter": "Statement-Based Reasoning", "slug": "statements", "abbr": "rst"},
+  {"subject": "Reasoning", "chapter": "Series", "slug": "series", "abbr": "rse"},
+  {"subject": "Reasoning", "chapter": "Coding-Decoding", "slug": "coding-decoding", "abbr": "rcd"},
+  {"subject": "Reasoning", "chapter": "Analogy", "slug": "analogy", "abbr": "ran"},
+  {"subject": "Reasoning", "chapter": "Mathematical Operations", "slug": "mathematical-operations", "abbr": "rmo"},
+  {"subject": "Reasoning", "chapter": "Blood Relations", "slug": "blood-relations", "abbr": "rbr"},
+  {"subject": "Reasoning", "chapter": "Order, Ranking and Arrangement", "slug": "order-ranking", "abbr": "ror"},
+  {"subject": "Reasoning", "chapter": "Embedded Figures and Pattern Completion", "slug": "embedded-figures", "abbr": "ref"},
+  {"subject": "Reasoning", "chapter": "Data Sufficiency", "slug": "data-sufficiency", "abbr": "rds"},
+  {"subject": "Reasoning", "chapter": "Classification", "slug": "classification", "abbr": "rcl"},
+  {"subject": "Reasoning", "chapter": "Alphabet and Number Tests", "slug": "alphabet-number", "abbr": "ral"},
+  {"subject": "Computer Knowledge", "chapter": "Computer Hardware", "slug": "hardware", "abbr": "chw"},
+  {"subject": "Computer Knowledge", "chapter": "MS Office", "slug": "ms-office", "abbr": "cms"},
+  {"subject": "Computer Knowledge", "chapter": "Internet and E-mail", "slug": "internet-email", "abbr": "cie"},
+  {"subject": "Computer Knowledge", "chapter": "Operating System and Software", "slug": "operating-system", "abbr": "cos"},
+  {"subject": "Computer Knowledge", "chapter": "Cyber Security", "slug": "cyber-security", "abbr": "ccs"},
+  {"subject": "Computer Knowledge", "chapter": "Computer Networks", "slug": "networks", "abbr": "cnw"}
  ]
 }
