@@ -1279,8 +1279,11 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-09",
     windowDays: 15,
     readout: "study-circle",
-    status: "running",
-  },  {
+    status: "decided",
+    decision:
+      "Read 2026-11-15, 9 days early: 6 of 157 students who saw it said Yes (3.8%), 14 said No, 137 never answered; Class 9-10 students 0 of 8. At that pace it would have ended near 18 Yes, under half the bar on both counts. Owner's call: drop it now. The card, its route and the Home read were removed the same day; the table and this readout stay. Do not bring back study circles, or matched strangers, without new evidence.",
+  },
+  {
     id: "ugc-net",
     title: "UGC NET Paper 1: a graduate exam nobody asked for",
     change:

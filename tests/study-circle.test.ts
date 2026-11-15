@@ -1,59 +1,16 @@
 /**
  * The study-circle button test (owner, 2026-11-09; migration 0247): a card on
  * Home asks whether a student would use a circle of friends they already
- * know. Nothing is built; this measures demand. Pure rules only.
+ * know. Nothing was built; it measured demand, and was retired 2026-11-15
+ * (tests/study-circle-retired.test.ts). The readout's pure rules stay.
  */
 import { describe, it, expect } from "vitest";
 import {
-  STUDY_CIRCLE_ENDS,
   STUDY_CIRCLE_MIN_YES,
   STUDY_CIRCLE_YES_RATE,
-  parseStudyCircleBody,
-  studyCircleAskDue,
   studyCircleVerdict,
   summariseStudyCircle,
 } from "@/lib/studyCircle/core";
-
-const BEFORE_END = new Date(STUDY_CIRCLE_ENDS.getTime() - 60_000);
-const AFTER_END = new Date(STUDY_CIRCLE_ENDS.getTime() + 60_000);
-
-describe("studyCircleAskDue", () => {
-  it("shows the card to a student with no row yet", () => {
-    expect(studyCircleAskDue(null, BEFORE_END)).toBe(true);
-  });
-  it("keeps showing it after it was seen but not answered", () => {
-    expect(studyCircleAskDue({ answer: null }, BEFORE_END)).toBe(true);
-  });
-  it("hides it once answered, Yes or No", () => {
-    expect(studyCircleAskDue({ answer: "yes" }, BEFORE_END)).toBe(false);
-    expect(studyCircleAskDue({ answer: "no" }, BEFORE_END)).toBe(false);
-  });
-  it("hides it for everyone once the test ends", () => {
-    expect(studyCircleAskDue(null, AFTER_END)).toBe(false);
-    expect(studyCircleAskDue(null, STUDY_CIRCLE_ENDS)).toBe(false);
-  });
-});
-
-describe("parseStudyCircleBody", () => {
-  it("accepts a shown event", () => {
-    expect(parseStudyCircleBody({ action: "shown" })).toEqual({ ok: true, value: { action: "shown" } });
-  });
-  it("accepts a Yes or a No", () => {
-    expect(parseStudyCircleBody({ action: "answer", answer: "yes" })).toEqual({
-      ok: true,
-      value: { action: "answer", answer: "yes" },
-    });
-    expect(parseStudyCircleBody({ action: "answer", answer: "no" })).toEqual({
-      ok: true,
-      value: { action: "answer", answer: "no" },
-    });
-  });
-  it("refuses anything else", () => {
-    for (const bad of [null, "x", {}, { action: "answer" }, { action: "answer", answer: "maybe" }, { action: "drop" }]) {
-      expect(parseStudyCircleBody(bad).ok).toBe(false);
-    }
-  });
-});
 
 describe("summariseStudyCircle", () => {
   const rows = [
