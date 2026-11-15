@@ -511,6 +511,7 @@ export type Readout =
   | "exam-guess-card"
   | "install-app"
   | "teacher-or-student"
+  | "notes-drill-panel"
   | "gulf-price";
 
 export type Experiment = {
@@ -966,6 +967,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-11",
     windowDays: 28,
     readout: "review-traps",
+    status: "running",
+  },
+  {
+    id: "notes-drill-panel",
+    title: "Notes drill links open a panel on the notes page",
+    change:
+      "A notes topic's \"Drill N more on <concept>\" and \"Drill all N questions\" open their questions in a panel on the same page (full screen on a phone, right side from sm), 20 at a time with Show more, using /browse's own question cards, instead of opening /browse as a new page. Close or Esc returns the student to the concept they were reading; \"Open in the bank\" keeps /browse (cart, Word export) one tap away. Teachers get the panel too (owner, 2026-11-15).",
+    why: "The links sent a student off the notes to /browse, and the way back (the Back to notes pill) landed at the top of the topic, not the concept. Panels on the page already carry See all (repeat line) and Teach me the idea (stuck offer). Nothing recorded a tap on these links before, so there is no before number.",
+    metric:
+      "surface_viewed notes_drill by action (open, more, close, full_page) and link (concept, topic), per topic and day; and the share of opens followed by a bank answer (practice row, surface bank) within 30 minutes. scripts/notes/notes-drill-readout.sql",
+    rule: "Keep it if a third or more of opens get an answer within 30 minutes and full_page stays under a quarter of opens. If full_page passes half, students want the full page: go back to the link.",
+    liveSince: "2026-11-15",
+    windowDays: 28,
+    readout: "notes-drill-panel",
     status: "running",
   },
   {

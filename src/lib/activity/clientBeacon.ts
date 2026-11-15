@@ -10,7 +10,7 @@
  * the same one twice from one page instance.
  */
 import type { Surface } from "./views";
-import type { DownloadBox, PaywallGate, RepeatLineFrom, VIEW_BROWSERS } from "./clientEvents";
+import type { DownloadBox, NotesDrillLink, PaywallGate, RepeatLineFrom, VIEW_BROWSERS } from "./clientEvents";
 import type { DeclineReason } from "@/lib/billing/declineReasons";
 import type { ChapterFixFrom } from "@/lib/drill/from";
 import type { StartNextFrom } from "@/lib/me/startNext";
@@ -47,6 +47,14 @@ type ClientEvent =
       surface: "stuck_offer";
       questionId: string;
       action: "shown" | "teach" | "easier" | "keep" | "returned" | "try_after" | "teach_close" | "full_notes";
+    }
+  | {
+      /** A notes drill link's panel opened, paged, closed or left for /browse (lib/notes/drillPanel). */
+      kind: "surface_viewed";
+      surface: "notes_drill";
+      action: "open" | "more" | "close" | "full_page";
+      link: NotesDrillLink;
+      subtopic: string;
     }
   | {
       /** A teaching moment under a bank answer seen (lib/questions/teachingMoment). */

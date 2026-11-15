@@ -92,6 +92,7 @@ describe("EXPERIMENTS", () => {
       "learn",
       "mock-before-start",
       "mock-together",
+      "notes-drill-panel",
       "notes-titles",
       "onboarding-arms",
       "paper-pages",
