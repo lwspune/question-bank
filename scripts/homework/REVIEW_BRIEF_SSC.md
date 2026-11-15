@@ -40,7 +40,7 @@ The same brief applies to two other SSC exams, each reviewed on its own:
 
 - **SSC CHSL Tier I**: 24 shifts, July 2024 and November 2025, work dirs
   `generated-papers/homework/chsl-<subject>`.
-- **SSC CPO Paper I**: 16 shifts, June-July 2024 and December 2025, work dirs
+- **SSC CPO Paper I**: 16 shifts, June 2024 and December 2025, work dirs
   `generated-papers/homework/cpo-<subject>`.
 
 Shifts are named exactly as for CGL (`1 Jul 2024 S1`). Count repeats and types across the
