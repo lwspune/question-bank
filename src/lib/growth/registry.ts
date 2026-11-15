@@ -1180,7 +1180,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     why: "The owner's call (9 Nov), against the data: of 33 buyers, none had fixed 10+ mistakes before paying, and 18 paid on their first day. The bet is that a reward makes students fix more mistakes and turns some of the learners who never pay into buyers.",
     metric:
       "Graded fixes per active student (fix_points_readout, the award's own rule) in the 30 days after against the 30 days before (baseline 9 Nov: 792 fixes by 138 of 1,312 active students, 0.60 each), and passes sold with points (entitlement note fix_points:<n>)",
-    rule: `Keep if fixes per active student rise ${FIX_POINTS_FIXES_LIFT_PCT}%+ AND ${FIX_POINTS_SALES_KEEP}+ passes sell with points. Miss either: switch it off.`,
+    rule: `Keep if fixes per active student rise ${FIX_POINTS_FIXES_LIFT_PCT}%+ AND ${FIX_POINTS_SALES_KEEP}+ passes sell with points. Miss either: switch it off. From 2026-11-15 Home shows the points as one line, "Vault Points: 2", whose Know more opens the full card in a panel (owner): its Fix your mistakes link is a tap deeper, so drill starts tagged me_points may drop for that reason alone.`,
     liveSince: "2026-11-09",
     windowDays: 30,
     readout: "fix-points",

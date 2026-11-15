@@ -15,10 +15,13 @@ import {
   vaultPointsLine,
   vaultPointsShort,
   vaultPointsLapseLine,
+  vaultPointsRowLabel,
+  vaultPointsWorth,
   type FixPointsView,
 } from "@/lib/billing/fixPoints";
 import { drillHref } from "@/lib/drill/from";
 import { Sparkles } from "lucide-react";
+import InfoRowPanel from "@/components/home/InfoRowPanel";
 
 let shared: Promise<FixPointsView | null> | null = null;
 
@@ -112,33 +115,43 @@ export function VaultPointsStatus({ fresh = false, className }: { fresh?: boolea
 }
 
 /**
- * The Vault Points card on /me Home (owner, 2026-11-09: every student sees
- * their points there). What they are worth, when the oldest run out, and the
- * one way to earn more today. Nothing until the read lands, and nothing on
- * the intl site (the route answers not eligible there).
+ * Vault Points on /me Home (owner, 2026-11-09: every student sees their points
+ * there). Since 2026-11-15 one line, "Vault Points: 2", whose Know more opens
+ * a panel with what they are worth, when the oldest run out, and the one way
+ * to earn more today. Nothing until the read lands, and nothing on the intl
+ * site (the route answers not eligible there).
  */
 export function VaultPointsCard() {
   const view = useFixPoints();
+  const [open, setOpen] = useState(false);
   const line = vaultPointsLine(view);
-  if (!view || !line) return null;
+  const label = vaultPointsRowLabel(view);
+  if (!view || !line || !label) return null;
   const lapse = vaultPointsLapseLine(view);
+  const worth = vaultPointsWorth(view);
   return (
-    <section aria-labelledby="vault-points-heading" className="rounded-xl border bg-card p-6">
-      <h2 id="vault-points-heading" className="flex items-center gap-2 text-sm font-semibold tracking-tight">
-        <Sparkles className="h-4 w-4 text-emerald-600 dark:text-emerald-400" aria-hidden />
-        Vault Points
-        <span className="ml-auto text-2xl font-bold tabular-nums">{view.points}</span>
-      </h2>
-      <p className="mt-2 text-sm text-muted-foreground">{line}</p>
-      {lapse && <p className="mt-1 text-xs text-muted-foreground">{lapse}</p>}
+    <InfoRowPanel
+      icon={<Sparkles className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />}
+      label={label}
+      title="Vault Points"
+      subtitle="Fix mistakes, take money off the pass"
+      open={open}
+      onOpenChange={setOpen}
+    >
+      <p className="flex items-baseline gap-3">
+        <span className="text-5xl font-bold tabular-nums">{view.points}</span>
+        {worth && <span className="text-base font-semibold text-emerald-700 dark:text-emerald-400">= {worth}</span>}
+      </p>
+      <p className="text-sm text-muted-foreground">{line}</p>
+      {lapse && <p className="text-xs text-muted-foreground">{lapse}</p>}
       <Link
         prefetch={false}
         href={drillHref("me_points")}
-        className="mt-3 inline-flex text-sm font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        className="flex min-h-11 w-full items-center justify-center rounded-md bg-brand px-4 text-sm font-semibold text-brand-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
       >
         Fix your mistakes
       </Link>
-    </section>
+    </InfoRowPanel>
   );
 }
 
