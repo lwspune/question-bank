@@ -20,6 +20,8 @@ import {
   vaultPointsLine,
   vaultPointsShort,
   vaultPointsLapseLine,
+  vaultPointsRowLabel,
+  vaultPointsWorth,
   pickBackfillFixes,
 } from "@/lib/billing/fixPoints";
 import { stampOrderNotes, planForPaidOrder, type Plan } from "@/lib/billing/plans";
@@ -212,6 +214,24 @@ describe("Vault Points copy (renamed from fix points, owner 2026-11-09)", () => 
   });
   it("is null before the read lands", () => {
     expect(vaultPointsLine(null)).toBeNull();
+  });
+
+  // Home's one-line row (owner, 2026-11-15): the count alone, with Know more
+  // opening the full explanation in a panel.
+  it("labels Home's one-line row with the count alone", () => {
+    expect(vaultPointsRowLabel(view(2))).toBe("Vault Points: 2");
+    expect(vaultPointsRowLabel(view(0))).toBe("Vault Points: 0");
+    expect(vaultPointsRowLabel(view(55))).toBe("Vault Points: 55");
+    expect(vaultPointsRowLabel(null)).toBeNull();
+  });
+  it("puts what the points are worth beside the big number in the panel", () => {
+    expect(vaultPointsWorth(view(2))).toBe("2% off the pass");
+    expect(vaultPointsWorth(view(12, true))).toBe("12% off your next pass");
+    expect(vaultPointsWorth(view(55))).toBe("the full 40% off the pass");
+  });
+  it("says nothing beside the number before the first point", () => {
+    expect(vaultPointsWorth(view(0))).toBeNull();
+    expect(vaultPointsWorth(null)).toBeNull();
   });
 
   it("has a short form for the avatar menu", () => {

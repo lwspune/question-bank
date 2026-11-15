@@ -1180,7 +1180,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     why: "The owner's call (9 Nov), against the data: of 33 buyers, none had fixed 10+ mistakes before paying, and 18 paid on their first day. The bet is that a reward makes students fix more mistakes and turns some of the learners who never pay into buyers.",
     metric:
       "Graded fixes per active student (fix_points_readout, the award's own rule) in the 30 days after against the 30 days before (baseline 9 Nov: 792 fixes by 138 of 1,312 active students, 0.60 each), and passes sold with points (entitlement note fix_points:<n>)",
-    rule: `Keep if fixes per active student rise ${FIX_POINTS_FIXES_LIFT_PCT}%+ AND ${FIX_POINTS_SALES_KEEP}+ passes sell with points. Miss either: switch it off.`,
+    rule: `Keep if fixes per active student rise ${FIX_POINTS_FIXES_LIFT_PCT}%+ AND ${FIX_POINTS_SALES_KEEP}+ passes sell with points. Miss either: switch it off. From 2026-11-15 Home shows the points as one line, "Vault Points: 2", whose Know more opens the full card in a panel (owner): its Fix your mistakes link is a tap deeper, so drill starts tagged me_points may drop for that reason alone.`,
     liveSince: "2026-11-09",
     windowDays: 30,
     readout: "fix-points",
@@ -1194,7 +1194,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     why: "The owner's call (9 Nov), against the data: students share under 1% of the time (18 real practise-together sends in 3 weeks, 0 joins; 4 sign-ups from any share, ever). The bet is that a reward on both sides makes a student send the link and a friend buy.",
     metric:
       "Passes bought by referred friends (referrals.paid_at), with the steps before it: links made (referral_codes), share taps (share_events kind referral), friends who signed up through a link (referrals). `npm run referrals:readout` lists every referred sale so a student inviting their own second account shows up.",
-    rule: `Keep if referred friends buy ${REFERRALS_SALES_KEEP}+ passes by the check date. Fewer: switch it off.`,
+    rule: `Keep if referred friends buy ${REFERRALS_SALES_KEEP}+ passes by the check date. Fewer: switch it off. From 2026-11-15 Home shows Invite a friend as one line whose Know more opens the offer and link in a panel (owner): the Get my invite link button is a tap deeper, so links made may drop for that reason alone.`,
     liveSince: "2026-11-10",
     readout: "referrals",
     status: "running",
@@ -1279,8 +1279,11 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-09",
     windowDays: 15,
     readout: "study-circle",
-    status: "running",
-  },  {
+    status: "decided",
+    decision:
+      "Read 2026-11-15, 9 days early: 6 of 157 students who saw it said Yes (3.8%), 14 said No, 137 never answered; Class 9-10 students 0 of 8. At that pace it would have ended near 18 Yes, under half the bar on both counts. Owner's call: drop it now. The card, its route and the Home read were removed the same day; the table and this readout stay. Do not bring back study circles, or matched strangers, without new evidence.",
+  },
+  {
     id: "ugc-net",
     title: "UGC NET Paper 1: a graduate exam nobody asked for",
     change:
