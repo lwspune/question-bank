@@ -13,6 +13,7 @@
  */
 import { decideWebhook, type WebhookDecision } from "./webhook";
 import { formatPrice, type PaidOrder, type PlanCurrency } from "./plans";
+import { SITE_URL } from "@/lib/brand";
 import { BRAND, INK, REPLY_TO, escapeHtml, type BuiltEmail } from "@/lib/email/templates";
 
 /** The fields of a Razorpay payment the check reads (`created_at` is in seconds). */
@@ -123,7 +124,7 @@ export function buildStrandedEmail(outcomes: readonly StrandedOutcome[], runUrl:
     sections.push({ heading: "Granted now (the buyer had paid but had nothing):", items: granted.map(line) });
   }
   const outro = [
-    "Neither the buyer's browser nor Razorpay's webhook granted these. Check the webhook in the Razorpay dashboard (Developers > Webhooks): the URL is https://www.pyqvault.com/api/billing/webhook, order.paid and refund.processed are ticked, it is active, and its secret matches RAZORPAY_WEBHOOK_SECRET in Vercel.",
+    `Neither the buyer's browser nor Razorpay's webhook granted these. Check the webhook in the Razorpay dashboard (Developers > Webhooks): the URL is ${SITE_URL}/api/billing/webhook, order.paid and refund.processed are ticked, it is active, and its secret matches RAZORPAY_WEBHOOK_SECRET in Vercel.`,
     `The run: ${runUrl}`,
   ];
 
