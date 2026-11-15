@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 544
+ * Entries: 570
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -537,6 +537,20 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/ssc-cgl-reasoning/statements": "2026-10-23T12:15:35+05:30",
   "/notes/ssc-cgl-reasoning/syllogism": "2026-10-23T12:00:22+05:30",
   "/notes/ssc-cgl-reasoning/venn-diagrams": "2026-10-23T12:08:14+05:30",
+  "/notes/ssc-cgl-tier-2-computer/cyber-security": "2026-11-15T23:51:23+05:30",
+  "/notes/ssc-cgl-tier-2-computer/hardware": "2026-11-15T23:51:23+05:30",
+  "/notes/ssc-cgl-tier-2-computer/internet-email": "2026-11-15T23:51:23+05:30",
+  "/notes/ssc-cgl-tier-2-computer/ms-office": "2026-11-15T23:51:23+05:30",
+  "/notes/ssc-cgl-tier-2-computer/networks": "2026-11-15T23:51:23+05:30",
+  "/notes/ssc-cgl-tier-2-computer/operating-system": "2026-11-15T23:51:23+05:30",
+  "/notes/ssc-cgl-tier-2-english/cloze-test": "2026-11-15T23:51:21+05:30",
+  "/notes/ssc-cgl-tier-2-english/fill-in-the-blanks": "2026-11-15T23:51:21+05:30",
+  "/notes/ssc-cgl-tier-2-english/grammar": "2026-11-15T23:51:21+05:30",
+  "/notes/ssc-cgl-tier-2-english/idioms-and-phrases": "2026-11-15T23:51:21+05:30",
+  "/notes/ssc-cgl-tier-2-english/reading-comprehension": "2026-11-15T23:51:21+05:30",
+  "/notes/ssc-cgl-tier-2-english/sentence-rearrangement": "2026-11-15T23:51:21+05:30",
+  "/notes/ssc-cgl-tier-2-english/spotting-errors": "2026-11-15T23:51:21+05:30",
+  "/notes/ssc-cgl-tier-2-english/vocabulary": "2026-11-15T23:51:21+05:30",
   "/notes/ssc-cgl-tier-2-maths/algebraic-identities": "2026-11-15T21:54:38+05:30",
   "/notes/ssc-cgl-tier-2-maths/averages": "2026-11-15T21:54:38+05:30",
   "/notes/ssc-cgl-tier-2-maths/circles": "2026-11-15T21:54:38+05:30",
@@ -555,4 +569,16 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/ssc-cgl-tier-2-maths/triangles": "2026-11-15T21:54:38+05:30",
   "/notes/ssc-cgl-tier-2-maths/trigonometry": "2026-11-15T21:54:38+05:30",
   "/notes/ssc-cgl-tier-2-maths/tsd": "2026-11-15T21:54:38+05:30",
+  "/notes/ssc-cgl-tier-2-reasoning/alphabet-number": "2026-11-15T23:51:22+05:30",
+  "/notes/ssc-cgl-tier-2-reasoning/analogy": "2026-11-15T23:51:22+05:30",
+  "/notes/ssc-cgl-tier-2-reasoning/blood-relations": "2026-11-15T23:51:22+05:30",
+  "/notes/ssc-cgl-tier-2-reasoning/classification": "2026-11-15T23:51:22+05:30",
+  "/notes/ssc-cgl-tier-2-reasoning/coding-decoding": "2026-11-15T23:51:22+05:30",
+  "/notes/ssc-cgl-tier-2-reasoning/data-sufficiency": "2026-11-15T23:51:22+05:30",
+  "/notes/ssc-cgl-tier-2-reasoning/embedded-figures": "2026-11-15T23:51:22+05:30",
+  "/notes/ssc-cgl-tier-2-reasoning/mathematical-operations": "2026-11-15T23:51:22+05:30",
+  "/notes/ssc-cgl-tier-2-reasoning/non-verbal": "2026-11-15T23:51:22+05:30",
+  "/notes/ssc-cgl-tier-2-reasoning/order-ranking": "2026-11-15T23:51:22+05:30",
+  "/notes/ssc-cgl-tier-2-reasoning/series": "2026-11-15T23:51:22+05:30",
+  "/notes/ssc-cgl-tier-2-reasoning/statements": "2026-11-15T23:51:22+05:30",
 };
