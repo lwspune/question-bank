@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import RememberVisit from "@/components/visits/RememberVisit";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowUpRight, BookOpen, Compass, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, Compass, Sparkles } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { hasSubjectGuide } from "@/lib/guide/guideCatalog";
-import BrowseLink from "@/app/guide/_components/BrowseLink";
+import { buildBrowseUrl } from "@/lib/guide/buildBrowseUrl";
 import ExpandableProse from "@/app/guide/_components/ExpandableProse";
 import { NotesOnThisPage, NotesReadingProgress } from "./NotesReadingAids";
 import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
@@ -34,6 +34,7 @@ import { listChapterTests } from "@/lib/mocks/chapterTestsQuery";
 import NotesTestBar from "./NotesTestBar";
 import BackToQuestionPill from "./BackToQuestionPill";
 import ConceptUnitCard from "./ConceptUnitCard";
+import NotesDrillButton from "./NotesDrillButton";
 import NotesPaywall from "./NotesPaywall";
 import PracticeGate from "./PracticeGate";
 import NotesProgressControls from "./NotesProgressControls";
@@ -205,19 +206,36 @@ export default async function NotesSubtopicPage({
   const subtopicUrl = `${base}/${subtopicSlug}`;
   const backLabel = `${chapterName} notes`;
 
-  const drill = (
-    <BrowseLink
-      examId={taxonomy.examId}
-      subjectId={taxonomy.subjectId}
-      subtopicIds={subtopicId ? [subtopicId] : []}
-      kind={notesBrowseKind(countKind)}
-      from={subtopicUrl}
-      fromLabel={backLabel}
-      variant="outline"
-    >
-      {drillCount > 0 ? `Drill all ${drillCount} questions` : "Open in the bank"}
-    </BrowseLink>
-  );
+  // Opens the topic's questions in a panel on this page (2026-11-15); /browse is
+  // the panel's "Open in the bank", and the only link when there is nothing to drill.
+  const drillHref = buildBrowseUrl({
+    examId: taxonomy.examId,
+    subjectId: taxonomy.subjectId,
+    subtopicIds: subtopicId ? [subtopicId] : [],
+    kind: notesBrowseKind(countKind),
+    from: subtopicUrl,
+    fromLabel: backLabel,
+  });
+  const drill =
+    drillCount > 0 && subtopicId ? (
+      <NotesDrillButton
+        link="topic"
+        label={`Drill all ${drillCount} questions`}
+        title={note.title}
+        description={`All ${drillCount} ${countKind === "pyq" ? "past-year questions" : "questions"} on this topic`}
+        source={{ kind: "subtopic", subtopicId, all: countKind === "all" }}
+        fullHref={drillHref}
+        subtopicSlug={subtopicSlug}
+      />
+    ) : (
+      <Link
+        href={drillHref}
+        className="inline-flex items-center gap-1.5 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+      >
+        <span>Open in the bank</span>
+        <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+      </Link>
+    );
 
   const sideNav = [
     { href: base, label: "Chapter overview" },

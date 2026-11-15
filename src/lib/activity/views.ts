@@ -104,6 +104,10 @@ export const SURFACES = [
   // migration 0258, lib/profile/userRole), with metadata.box. Written by
   // GET /api/profile/role when it says to ask: the answer rate's denominator.
   "role_question",
+  // A notes drill link opening its questions in a panel on the notes page (2026-11-15,
+  // lib/notes/drillPanel): metadata.action (open, more, close, full_page), metadata.link
+  // (concept, topic) and metadata.subtopic (the notes topic slug).
+  "notes_drill",
 ] as const;
 
 export type Surface = (typeof SURFACES)[number];
