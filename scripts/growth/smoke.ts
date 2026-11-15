@@ -329,6 +329,10 @@ async function main() {
         // Read by hand: answers, the answer rate per box and the behaviour rule's precision (migration 0258).
         line = "by hand: scripts/profile/teacher-student-readout.sql";
         break;
+      case "enem-interest":
+        // Read by hand: target_exams containing 'enem', and their ENEM mock attempts / answers.
+        line = "by hand: students with enem in target_exams, and their ENEM mocks and answers";
+        break;
       case "gulf-price":
         // Read by hand: Gulf students' pass revenue (entitlements by signup_country) per Gulf signup.
         line = "by hand: entitlements amount_paise for Gulf signup_country students per Gulf signup";

@@ -161,20 +161,20 @@ describe("today: the tasks (§4)", () => {
 
   const ids = (tasks: PathTask[]) => tasks.map((t) => (t.kind === "fix" || t.kind === "paper" ? t.kind : `${t.chapterId}:${t.kind}`));
 
-  it("works one chapter through its parts in order: the sheet, then its Top 10 while it is fresh", () => {
+  it("works one chapter through its parts in order: the sheet, then its Top 10 (in parts of 5, §18) while it is fresh", () => {
     const tasks = pickToday({ chapters: all, states: none, deferred: new Set(), budget: 55, fix: [] });
-    expect(ids(tasks)).toEqual(["p1:sheet", "p1:top", "p1:test"]);
+    expect(ids(tasks)).toEqual(["p1:sheet", "p1:top", "p1:top", "p1:test"]);
   });
 
   it("then turns to the subject furthest behind, so subjects interleave across days", () => {
     const states = new Map<string, ChapterState>([["p1", { sheet: true, topWorked: 10, test: false, recordedDone: false }]]);
     const tasks = pickToday({ chapters: all, states, deferred: new Set(), budget: 40, fix: [] });
-    expect(ids(tasks)).toEqual(["c1:sheet", "c1:top"]);
+    expect(ids(tasks)).toEqual(["c1:sheet", "c1:top", "c1:top"]);
   });
 
   it("stops at 80% of the day's minutes once it has two tasks, rather than overrun by a whole test", () => {
     const tasks = pickToday({ chapters: all, states: none, deferred: new Set(), budget: 45, fix: [] });
-    expect(ids(tasks)).toEqual(["p1:sheet", "p1:top"]);
+    expect(ids(tasks)).toEqual(["p1:sheet", "p1:top", "p1:top"]);
   });
 
   it("serves the subject furthest behind first", () => {
@@ -288,7 +288,7 @@ describe("the promise holds: a student who does every day's card finishes before
         for (const t of pickToday({ chapters, states, deferred: new Set(), budget, fix: [] })) {
           if (!isChapterTask(t)) continue;
           const s = states.get(t.chapterId) ?? fresh;
-          states.set(t.chapterId, t.kind === "sheet" ? { ...s, sheet: true } : t.kind === "top" ? { ...s, topWorked: 10 } : { ...s, test: true });
+          states.set(t.chapterId, t.kind === "sheet" ? { ...s, sheet: true } : t.kind === "top" ? { ...s, topWorked: t.upTo ?? 10 } : { ...s, test: true });
         }
       }
       day = addDays(day, 1);

@@ -370,6 +370,14 @@ export const GULF_PRICE_BASELINE_RUPEES_PER_STUDENT = 6;
 /** "gulf-price": Gulf sales needed in the window before the revenue line means anything. */
 export const GULF_PRICE_MIN_SALES = 2;
 /**
+ * "enem-interest": students choosing ENEM (target_exams) in 4 weeks for it to
+ * earn more work. IMAT drew 15 in its first two weeks on intl (24 by 11-15),
+ * with notes and English content; ENEM has neither.
+ */
+export const ENEM_STUDENTS_KEEP = 20;
+/** "enem-interest": ...of whom this many started a mock or answered 20+ questions. */
+export const ENEM_ACTIVE_KEEP = 5;
+/**
  * "answer-limit-copy": of students who met the answer limit in the 30 days to
  * 2026-11-11, the share who opened checkout from it (35 of 360) and who bought
  * a pass afterwards (16 of 360), staff left out.
@@ -512,7 +520,8 @@ export type Readout =
   | "install-app"
   | "teacher-or-student"
   | "notes-drill-panel"
-  | "gulf-price";
+  | "gulf-price"
+  | "enem-interest";
 
 export type Experiment = {
   id: string;
@@ -799,7 +808,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     why: "Owner, 2026-11-07: students do not know what to study or in what order, and a plan alone did not help (V's week plans: 6 of 68 chapter tasks done). MENTOR_SPEC.md.",
     metric:
       "Starters (target 150), starters active on 4+ days in their first 28 days (target 50%), on track at week 4 (40%), median chapters done (8), today's tasks done of tasks shown (35%), fixing mistakes on 2+ days (30%). Also chapter tests granted, the free-limit cost.",
-    rule: "Baselines (Class 12, 2026-11-07, npm run path:readout): no active student had a chapter done; 4+ active days CBSE 32%, HSC 28%; fixing on 2+ days 4%. Keep and build Phase 2 if starters beat the 4-day and chapters-done targets; if few start, read the start card first; if starters stop within a week, read which task they stop on.",
+    rule: "Baselines (Class 12, 2026-11-07, npm run path:readout): no active student had a chapter done; 4+ active days CBSE 32%, HSC 28%; fixing on 2+ days 4%. Keep and build Phase 2 if starters beat the 4-day and chapters-done targets; if few start, read the start card first; if starters stop within a week, read which task they stop on. Week 1 (to 2026-11-15): 83 started of 147 who saw the offer, but 8% of tasks were done and no chapter was finished, because 94% of the questions starters practised on plan days were on chapters the plan had not picked. So from the first student save of \"What has your class covered?\" (MENTOR_SPEC.md §18) the plan follows the class: ticked chapters first, unticked untouched ones wait, a chapter worked on in the last 7 days leads the card, Switch chapter (3 a day) replaces Not taught yet, and the Top 10 comes in parts of 5. Read the readout's FOLLOW THE CLASS section: the same students' tasks done in the 7 days before that save against the 7 days after.",
     liveSince: "2026-11-07",
     windowDays: 28,
     readout: "board-path",
@@ -1471,6 +1480,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-15",
     windowDays: 42,
     readout: "gulf-price",
+    status: "running",
+  },
+  {
+    id: "enem-interest",
+    title: "ENEM on the international site",
+    change:
+      "ENEM (Brazil) Day 2, 2021 to 2025, goes public on intl.pyqvault.com: 450 questions with worked solutions in Portuguese and 5 timed mocks, all free, no notes.",
+    why: "Five years of one exam is a cheap way to learn whether Brazilian students find us at all before writing Portuguese notes or adding 2016-2020 (owner: \"will help gauge interest\"). The big Portuguese sites own ENEM topic searches, so it may draw little.",
+    metric:
+      "Students who chose ENEM (student_profiles.target_exams) since going public, and how many of them started an ENEM mock or answered 20+ ENEM questions; ENEM page views and their countries from Vercel beside it",
+    rule: `Earn more work (2016-2020, then a 3-chapter notes pilot in Portuguese) if ${ENEM_STUDENTS_KEEP}+ students choose ENEM in 4 weeks and ${ENEM_ACTIVE_KEEP}+ of them use it. Fewer: leave ENEM as it is and add nothing.`,
+    liveSince: "2026-11-15",
+    windowDays: 28,
+    readout: "enem-interest",
     status: "running",
   },
 

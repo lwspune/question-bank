@@ -10,7 +10,7 @@
 import { describe, it, expect } from "vitest";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { INTL_EXAMS, LIVE_INTL_EXAMS, intlHostDecision, intlNavFor } from "@/lib/sites/intl";
+import { INTL_EXAMS, LIVE_INTL_EXAMS, intlHostDecision, intlNavFor, intlWelcomeTargets } from "@/lib/sites/intl";
 
 describe("live intl exams", () => {
   it("are the intl exams with public content", () => {
@@ -18,15 +18,17 @@ describe("live intl exams", () => {
     expect(INTL_EXAMS.filter((e) => !e.noPublicContent).map((e) => e.slug)).toEqual(LIVE_INTL_EXAMS.map((e) => e.slug));
   });
 
-  it("leave out ENEM until its rows are public, while routing already knows it", () => {
-    expect(INTL_EXAMS.map((e) => e.slug)).toContain("enem");
-    expect(LIVE_INTL_EXAMS.map((e) => e.slug)).not.toContain("enem");
+  it("include ENEM since its rows went public (2026-11-15), beside IMAT", () => {
+    expect(LIVE_INTL_EXAMS.map((e) => e.slug)).toEqual(expect.arrayContaining(["imat", "enem"]));
   });
 
-  it("decide where bare section links go: one live exam keeps them on its pages", () => {
-    if (LIVE_INTL_EXAMS.length !== 1) return;
-    const only = LIVE_INTL_EXAMS[0];
-    expect(intlHostDecision("/mock", "")).toEqual({ kind: "redirect", url: `/mock/exam/${only.slug}`, permanent: false });
+  it("send bare /notes and /formula to the one live exam WITH notes (IMAT), not home", () => {
+    expect(intlHostDecision("/notes", "")).toEqual({ kind: "redirect", url: "/notes/imat", permanent: false });
+    expect(intlHostDecision("/formula", "")).toEqual({ kind: "redirect", url: "/formula/imat", permanent: false });
+  });
+
+  it("send bare /mock home, where every live exam's mocks are listed, once there are two", () => {
+    expect(intlHostDecision("/mock", "")).toEqual({ kind: "redirect", url: "/", permanent: false });
   });
 
   it("gives an exam without notes (ENEM) no Notes tab, rather than a dead link", () => {
@@ -43,11 +45,39 @@ describe("live intl exams", () => {
   it.each([
     "src/app/intl/page.tsx",
     "src/components/footer/IntlFooter.tsx",
-    "src/app/intl/welcome/route.ts",
     "src/lib/mocks/mocksNav.ts",
   ])("%s lists only live intl exams", (f) => {
     const src = readFileSync(join(process.cwd(), f), "utf8");
     expect(src).toMatch(/LIVE_INTL_EXAMS/);
+    expect(src).not.toMatch(/\bINTL_EXAMS\b(?!\w)/);
+  });
+});
+
+/**
+ * The intl welcome step records a new student's intl exams. With two live
+ * exams it must record the one they signed up from, else an IMAT student is
+ * counted as an ENEM student (and mailed as one), and the other way round.
+ */
+describe("intl welcome targets", () => {
+  it.each([
+    ["/notes/imat/biology/cell-biology", ["imat"]],
+    ["/mock/exam/imat", ["imat"]],
+    ["/mock/exam/enem", ["enem"]],
+    ["/questions/enem/matematica/estatistica", ["enem"]],
+  ])("records only the exam %s belongs to", (next, want) => {
+    expect(intlWelcomeTargets(next)).toEqual(want);
+  });
+
+  it.each(["/", "/browse", "/me", "/mock/exam/nda", "not-a-path"])(
+    "records every live intl exam when %s names none of them",
+    (next) => {
+      expect(intlWelcomeTargets(next)).toEqual(LIVE_INTL_EXAMS.map((e) => e.slug));
+    }
+  );
+
+  it("is what the welcome route saves", () => {
+    const src = readFileSync(join(process.cwd(), "src/app/intl/welcome/route.ts"), "utf8");
+    expect(src).toMatch(/intlWelcomeTargets\(destination\)/);
     expect(src).not.toMatch(/\bINTL_EXAMS\b(?!\w)/);
   });
 });

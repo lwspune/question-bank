@@ -2,20 +2,21 @@ import type { NextRequest } from "next/server";
 import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { saveIntlTargets } from "@/lib/profile/service";
-import { LIVE_INTL_EXAMS, safeNextFrom } from "@/lib/sites/intl";
+import { intlWelcomeTargets, safeNextFrom } from "@/lib/sites/intl";
 
 /**
  * intl.pyqvault.com's /welcome (the middleware rewrites it here, 2026-10-30).
  * PYQ Vault's onboarding asks for Indian exams and a mobile number; an intl
- * student instead gets the international exams recorded on their profile, so
- * the email and push jobs can leave them out, and goes where they were headed.
+ * student instead gets the international exam they came for recorded on their
+ * profile (every live one when the page names none), so the email and push
+ * jobs can leave them out, and goes where they were headed.
  * Best-effort: a failed save never blocks the student.
  */
 export async function GET(request: NextRequest) {
   const destination = safeNextFrom(request.nextUrl.search);
   try {
     const user = await getSessionUser();
-    if (user) await saveIntlTargets(createSupabaseServerClient(), user, LIVE_INTL_EXAMS.map((e) => e.slug));
+    if (user) await saveIntlTargets(createSupabaseServerClient(), user, intlWelcomeTargets(destination));
   } catch (e) {
     console.error("intl welcome: saving the exam failed", e instanceof Error ? e.message : e);
   }
