@@ -22,10 +22,16 @@ export type WorkedExample = {
   source: SourceTag;
   /** The DB exam name; a free exam's example spends no daily answer (0210). */
   examName: string | null;
+  /** Storage path (or legacy full URL) of the question's figure; build the link with publicImageUrl. */
+  imageUrl: string | null;
+  /** The solution's figure, shown in the solution panel. */
+  solutionImageUrl: string | null;
   options: {
     label: "A" | "B" | "C" | "D";
     text: string;
     isCorrect: boolean;
+    /** A picture option (figure series, odd figure out) has empty text and only this. */
+    imageUrl: string | null;
   }[];
 };
 
@@ -46,12 +52,12 @@ export async function loadWorkedExamples(
     .from("questions")
     .select(
       `
-      id, text, context, difficulty, solution,
+      id, text, context, difficulty, solution, image_url, solution_image_url,
       question_number, pyq_year, pyq_month, pyq_note, question_kind,
       exam:exams!exam_id(name),
       chapter:chapters!chapter_id(name),
       subtopic:subtopics!subtopic_id(name),
-      options(label, text, is_correct)
+      options(label, text, is_correct, image_url)
     `
     )
     .in("id", ids);
@@ -63,6 +69,7 @@ export async function loadWorkedExamples(
     label: "A" | "B" | "C" | "D";
     text: string;
     is_correct: boolean;
+    image_url: string | null;
   };
   type Raw = {
     id: string;
@@ -70,6 +77,8 @@ export async function loadWorkedExamples(
     context: string | null;
     difficulty: Difficulty;
     solution: string | null;
+    image_url: string | null;
+    solution_image_url: string | null;
     question_number: string | null;
     question_kind: PublicQuestionKind | null;
     pyq_year: number | null;
@@ -114,11 +123,14 @@ export async function loadWorkedExamples(
         questionNumber: r.question_number,
       }),
       examName: flat(r.exam)?.name ?? null,
+      imageUrl: r.image_url ?? null,
+      solutionImageUrl: r.solution_image_url ?? null,
       options: (r.options ?? [])
         .map((o) => ({
           label: o.label,
           text: o.text,
           isCorrect: o.is_correct,
+          imageUrl: o.image_url ?? null,
         }))
         .sort((a, b) => a.label.localeCompare(b.label)),
     });

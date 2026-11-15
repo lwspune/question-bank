@@ -63,11 +63,13 @@ function makeWorkedExample(partial: Partial<WorkedExample> = {}): WorkedExample 
     provenance: "Q110 · Sep · 2023",
     source: { kind: "pyq", label: "NDA · Sep 2023 · Q110" },
     examName: "NDA",
+    imageUrl: null,
+    solutionImageUrl: null,
     options: [
-      { label: "A", text: "5", isCorrect: false },
-      { label: "B", text: "5.5", isCorrect: true },
-      { label: "C", text: "6", isCorrect: false },
-      { label: "D", text: "6.5", isCorrect: false },
+      { label: "A", text: "5", isCorrect: false, imageUrl: null },
+      { label: "B", text: "5.5", isCorrect: true, imageUrl: null },
+      { label: "C", text: "6", isCorrect: false, imageUrl: null },
+      { label: "D", text: "6.5", isCorrect: false, imageUrl: null },
     ],
     ...partial,
   };
@@ -230,7 +232,25 @@ describe("fromWorkedExample (/notes checkpoints + /guide)", () => {
     expect(p.breadcrumb).toBe("Statistics");
   });
 
-  it("has no images — the worked-example loader does not select them", () => {
+  it("carries the question, option and solution pictures (figure questions on /notes)", () => {
+    const p = fromWorkedExample(
+      makeWorkedExample({
+        imageUrl: "q/fig.png",
+        solutionImageUrl: "q/sol.png",
+        options: [
+          { label: "A", text: "", isCorrect: false, imageUrl: "q/a.png" },
+          { label: "B", text: "", isCorrect: true, imageUrl: "q/b.png" },
+          { label: "C", text: "", isCorrect: false, imageUrl: "q/c.png" },
+          { label: "D", text: "", isCorrect: false, imageUrl: "q/d.png" },
+        ],
+      })
+    );
+    expect(p.imageUrl).toBe("q/fig.png");
+    expect(p.options.map((o) => o.imageUrl)).toEqual(["q/a.png", "q/b.png", "q/c.png", "q/d.png"]);
+    expect(p.answer?.solutionImageUrl).toBe("q/sol.png");
+  });
+
+  it("keeps a picture-free question picture-free", () => {
     const p = fromWorkedExample(makeWorkedExample());
     expect(p.imageUrl).toBeNull();
     expect(p.options.every((o) => o.imageUrl === null)).toBe(true);

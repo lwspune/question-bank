@@ -21,6 +21,9 @@ const RUN_ID = testRunId();
 const ORG_NAME = `Worked Ctx Org ${RUN_ID}`;
 const USER_EMAIL = `worked-ctx-${RUN_ID}@test.local`;
 const PASSAGE = `For the next item that follow: P(1,2,3), Q(4,5,6) ${RUN_ID}`;
+const STEM_IMAGE = `worked-ctx/${RUN_ID}/stem.png`;
+const SOLUTION_IMAGE = `worked-ctx/${RUN_ID}/solution.png`;
+const OPTION_A_IMAGE = `worked-ctx/${RUN_ID}/a.png`;
 
 describe.skipIf(!HAS_ENV)("loadWorkedExamples — context round-trip", () => {
   let admin: SupabaseClient;
@@ -77,11 +80,18 @@ describe.skipIf(!HAS_ENV)("loadWorkedExamples — context round-trip", () => {
         pyq_year: PYEAR,
         pyq_month: PMONTH,
         pyq_note: PNOTE,
+        image_url: STEM_IMAGE,
+        solution_image_url: SOLUTION_IMAGE,
       })
       .select("id")
       .single();
     if (qCtxErr || !qCtx) throw new Error(`with-context insert: ${qCtxErr?.message ?? "no data"}`);
     withContextId = qCtx.id;
+    const { error: optErr } = await admin.from("options").insert([
+      { question_id: withContextId, label: "A", text: "", is_correct: false, image_url: OPTION_A_IMAGE },
+      { question_id: withContextId, label: "B", text: "b", is_correct: true },
+    ]);
+    if (optErr) throw new Error(`options insert: ${optErr.message}`);
 
     const { data: qNo, error: qNoErr } = await admin
       .from("questions")
@@ -149,6 +159,22 @@ describe.skipIf(!HAS_ENV)("loadWorkedExamples — context round-trip", () => {
       })
     );
     expect(row.source.label).toContain(`Q${QNUM}`);
+  });
+
+  it("carries the question, option and solution pictures (picture questions drew blank before)", async () => {
+    const [row] = await loadWorkedExamples(admin, [withContextId]);
+    expect(row.imageUrl).toBe(STEM_IMAGE);
+    expect(row.solutionImageUrl).toBe(SOLUTION_IMAGE);
+    expect(row.options.map((o) => [o.label, o.imageUrl])).toEqual([
+      ["A", OPTION_A_IMAGE],
+      ["B", null],
+    ]);
+  });
+
+  it("returns null pictures for a question without any", async () => {
+    const [row] = await loadWorkedExamples(admin, [withoutContextId]);
+    expect(row.imageUrl).toBeNull();
+    expect(row.solutionImageUrl).toBeNull();
   });
 
   it("returns null `provenance` when the question has no PYQ metadata", async () => {
