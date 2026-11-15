@@ -103,7 +103,7 @@ const COUNTRY_AWARE = [
 
 /** Reads plans without the buyer's country, on purpose. */
 const COUNTRY_FREE: Record<string, string> = {
-  "src/app/api/billing/webhook/route.ts": "grants from the order's own stamped plan",
+  "src/lib/billing/applyPaidOrder.ts": "grants from the order's own stamped plan; reads a plan only for its label in the parent-paid email",
   "src/app/api/billing/parent-verify/route.ts": "grants from the order's own stamped plan",
   "src/app/api/billing/parent-order/route.ts": "sells the plan fixed on the link when the student made it",
   "src/app/pay/[code]/page.tsx": "shows the plan fixed on the link when the student made it",
