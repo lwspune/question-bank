@@ -5316,6 +5316,111 @@ export type Database = {
         }
         Relationships: []
       }
+      world_exam_notes: {
+        Row: {
+          bullets: string[]
+          id: string
+          paragraphs: string[]
+          sort: number
+          sources: Json
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          bullets?: string[]
+          id: string
+          paragraphs?: string[]
+          sort?: number
+          sources?: Json
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          bullets?: string[]
+          id?: string
+          paragraphs?: string[]
+          sort?: number
+          sources?: Json
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      world_exams: {
+        Row: {
+          approximate: boolean
+          candidates: string
+          candidates_n: number | null
+          category: string
+          country: string
+          exam: string
+          format: string
+          id: string
+          language: string
+          main_risk: string | null
+          next_step: string | null
+          note: string
+          papers_released: string
+          region: string
+          revenue: Json | null
+          rights: string
+          rights_note: string
+          shortlist_rank: number | null
+          sources: Json
+          updated_at: string
+          verdict: string
+          why_passes: string | null
+        }
+        Insert: {
+          approximate?: boolean
+          candidates?: string
+          candidates_n?: number | null
+          category: string
+          country: string
+          exam: string
+          format?: string
+          id: string
+          language?: string
+          main_risk?: string | null
+          next_step?: string | null
+          note?: string
+          papers_released?: string
+          region: string
+          revenue?: Json | null
+          rights: string
+          rights_note?: string
+          shortlist_rank?: number | null
+          sources?: Json
+          updated_at?: string
+          verdict: string
+          why_passes?: string | null
+        }
+        Update: {
+          approximate?: boolean
+          candidates?: string
+          candidates_n?: number | null
+          category?: string
+          country?: string
+          exam?: string
+          format?: string
+          id?: string
+          language?: string
+          main_risk?: string | null
+          next_step?: string | null
+          note?: string
+          papers_released?: string
+          region?: string
+          revenue?: Json | null
+          rights?: string
+          rights_note?: string
+          shortlist_rank?: number | null
+          sources?: Json
+          updated_at?: string
+          verdict?: string
+          why_passes?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -5632,6 +5737,10 @@ export type Database = {
       learn_routing_window: { Args: never; Returns: number }
       learn_seed_chapter: { Args: { p: Json }; Returns: Json }
       learn_seed_courses: { Args: { p: Json }; Returns: Json }
+      load_world_exams: {
+        Args: { p_exams: Json; p_notes: Json; p_prune: boolean }
+        Returns: Json
+      }
       mark_feedback_replies_seen: { Args: never; Returns: number }
       match_chunks: {
         Args: {
