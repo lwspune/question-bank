@@ -23,10 +23,11 @@ export type PlanRow = {
   active: boolean;
   sort_order: number;
   countries?: string[] | null;
+  ends_on?: string | null;
 };
 
 export const PLAN_COLUMNS =
-  "id, label, blurb, perks, url_key, amount_paise, currency, site, duration_days, scope, active, sort_order, countries";
+  "id, label, blurb, perks, url_key, amount_paise, currency, site, duration_days, scope, active, sort_order, countries, ends_on";
 
 export function rowToPlan(r: PlanRow): Plan {
   const currency: PlanCurrency = r.currency === "USD" ? "USD" : "INR";
@@ -48,6 +49,7 @@ export function rowToPlan(r: PlanRow): Plan {
     active: r.active,
     sortOrder: r.sort_order,
     countries: r.countries ?? null,
+    endsOn: r.ends_on ?? null,
   };
 }
 

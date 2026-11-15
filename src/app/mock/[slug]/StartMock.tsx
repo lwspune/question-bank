@@ -27,7 +27,9 @@ import { formatTimeLeft } from "@/lib/mocks/startPage";
  * Free-test limits (migrations 0120 + 0134): past the free mocks, or the free
  * chapter tests (counted separately), the Start button becomes a pass card. The
  * page decides from my_mock_quota(); a 402 from the start route (a stale page,
- * a second tab) flips it here too.
+ * a second tab) flips it here too. On an exam that frees marked papers only
+ * (0256, IMAT) a marked paper says it is free, and any other paper shows the
+ * pass card naming the free ones.
  */
 export default function StartMock({
   slug,
@@ -38,7 +40,10 @@ export default function StartMock({
   isPastPaper = false,
   invite = null,
   resumeSecsLeft = null,
+  freePapers = [],
 }: {
+  /** The exam's papers marked free (0256), named on a pass-only card. */
+  freePapers?: { slug: string; title: string }[];
   /** Time left on the student's open attempt (lib/mocks/startPage); null = none open. */
   resumeSecsLeft?: number | null;
   slug: string;
@@ -98,11 +103,21 @@ export default function StartMock({
   ) : null;
   if (state.kind === "locked") {
     return (
-      <MockPassCard limit={state.limit} unit={state.unit} pass={mockPass} slug={slug} isPastPaper={isPastPaper} />
+      <MockPassCard
+        limit={state.limit}
+        unit={state.unit}
+        pass={mockPass}
+        slug={slug}
+        isPastPaper={isPastPaper}
+        passOnly={state.passOnly === true}
+        freePapers={freePapers}
+      />
     );
   }
   const freeNote =
-    state.kind === "free" ? (
+    state.kind === "free_paper" ? (
+      <p className="mt-2 text-center text-xs text-muted-foreground">This paper is free to try.</p>
+    ) : state.kind === "free" ? (
       <p className="mt-2 text-center text-xs text-muted-foreground">
         {state.left === 1
           ? `This is your last free ${testNoun(state.unit, 1)}.`
@@ -146,12 +161,17 @@ function MockPassCard({
   pass: offered,
   slug,
   isPastPaper,
+  passOnly = false,
+  freePapers = [],
 }: {
   limit: number;
   unit: TestUnit;
   pass: PassCta | null;
   slug: string;
   isPastPaper: boolean;
+  /** No free count opens this paper; only its exam's free papers are free (0256). */
+  passOnly?: boolean;
+  freePapers?: { slug: string; title: string }[];
 }) {
   // Fix Points (0245) lower the price shown; /pricing and the order route follow.
   const pass = useDiscountedPass(offered);
@@ -160,8 +180,26 @@ function MockPassCard({
     <div className="rounded-lg border-2 border-brand-accent/40 bg-card p-5 text-center">
       <Lock className="mx-auto h-5 w-5 text-brand-accent" aria-hidden />
       <p className="mt-2 font-semibold">
-        {limit > 0 ? `You've used your ${limit} free ${plural}` : `You've used your free ${plural}`}
+        {passOnly
+          ? "This paper comes with the pass"
+          : limit > 0
+            ? `You've used your ${limit} free ${plural}`
+            : `You've used your free ${plural}`}
       </p>
+      {passOnly && freePapers.length > 0 && (
+        <p className="mt-1 text-sm text-muted-foreground">
+          Free to try:{" "}
+          {freePapers.map((p, i) => (
+            <span key={p.slug}>
+              {i > 0 && (i === freePapers.length - 1 ? " and " : ", ")}
+              <Link href={`/mock/${p.slug}`} className="font-medium text-brand-accent underline underline-offset-2">
+                {p.title}
+              </Link>
+            </span>
+          ))}
+          .
+        </p>
+      )}
       <p className="mt-1 text-sm text-muted-foreground">
         {lockedPassLine({ pass, plural, isPastPaper })}
         Retaking a test you&apos;ve already started stays free.

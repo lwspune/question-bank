@@ -6,7 +6,7 @@ import AppHeader from "@/components/AppHeader";
 import { Button } from "@/components/ui/button";
 import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
 import { getSessionUser, getSessionMember } from "@/lib/auth";
-import { getMockBySlug, getUserAttempts } from "@/lib/mocks/query";
+import { getFreePapers, getMockBySlug, getUserAttempts } from "@/lib/mocks/query";
 import { markingCopy, sectionMarkingLines } from "@/lib/mocks/marking";
 import { mockKindNote } from "@/lib/mocks/catalogue";
 import StartMock from "./StartMock";
@@ -104,7 +104,15 @@ export default async function MockInstructions(
   // same question when the attempt starts.
   const examScope = passScopeForExam(getExamByName(mock.examName)?.slug);
   const examQuota = quota ? { ...quota, hasPass: holdsPassFor(quota, examScope) } : quota;
-  const startState = mockStartState(examQuota, myAttempts.length > 0, mock.scope, fromFriend !== null);
+  // An exam that frees marked papers only (0256, IMAT): this paper's own rule.
+  const startState = mockStartState(examQuota, myAttempts.length > 0, mock.scope, fromFriend !== null, {
+    markedOnly: mock.examFreesMarkedOnly === true,
+    isFree: mock.isFree === true,
+  });
+  const freePapers =
+    startState.kind === "locked" && startState.passOnly
+      ? await getFreePapers(createSupabaseAnonClient(), mock.examName)
+      : [];
   // The pass offered at the limit (null = none on sale; the card then links to
   // /pricing): the cheapest that lifts it, the Practice Pass on www (2026-11-03).
   const mockPass =
@@ -241,6 +249,7 @@ export default async function MockInstructions(
               isPastPaper={isPastPaper}
               invite={fromFriend ? withCode : null}
               resumeSecsLeft={resumeSecsLeft}
+              freePapers={freePapers}
             />
           ) : (
             <div className="rounded-lg border border-dashed p-5 text-center">

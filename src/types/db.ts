@@ -1427,16 +1427,19 @@ export type Database = {
       }
       exams: {
         Row: {
+          free_mocks_marked: boolean
           id: string
           name: string
           pass_scope: string
         }
         Insert: {
+          free_mocks_marked?: boolean
           id?: string
           name: string
           pass_scope?: string
         }
         Update: {
+          free_mocks_marked?: boolean
           id?: string
           name?: string
           pass_scope?: string
@@ -2670,6 +2673,7 @@ export type Database = {
           duration_secs: number
           exam_id: string
           id: string
+          is_free: boolean
           marking: Json
           owner_id: string | null
           paper_code: string
@@ -2692,6 +2696,7 @@ export type Database = {
           duration_secs: number
           exam_id: string
           id: string
+          is_free?: boolean
           marking: Json
           owner_id?: string | null
           paper_code: string
@@ -2714,6 +2719,7 @@ export type Database = {
           duration_secs?: number
           exam_id?: string
           id?: string
+          is_free?: boolean
           marking?: Json
           owner_id?: string | null
           paper_code?: string
@@ -3155,6 +3161,7 @@ export type Database = {
           created_at: string
           currency: string
           duration_days: number | null
+          ends_on: string | null
           id: string
           label: string
           perks: string[]
@@ -3172,6 +3179,7 @@ export type Database = {
           created_at?: string
           currency?: string
           duration_days?: number | null
+          ends_on?: string | null
           id: string
           label: string
           perks?: string[]
@@ -3189,6 +3197,7 @@ export type Database = {
           created_at?: string
           currency?: string
           duration_days?: number | null
+          ends_on?: string | null
           id?: string
           label?: string
           perks?: string[]

@@ -59,6 +59,12 @@ export type MockRow = {
   totalQuestions: number;
   totalMarks: number;
   examName: string;
+  /**
+   * Its exam frees MARKED papers only (0256, IMAT), and whether this is one.
+   * The trigger is the gate; these only decide the badge and the start copy.
+   */
+  examFreesMarkedOnly?: boolean;
+  isFree?: boolean;
 };
 
 export type MockListItem = Omit<MockRow, "questions" | "marking"> & {
@@ -78,7 +84,7 @@ export type MockListItem = Omit<MockRow, "questions" | "marking"> & {
  * about to triple.
  */
 const MOCK_LIST_SELECT =
-  "id, slug, paper_code, pyq_year, pyq_month, source, scope, title, duration_secs, marking, sections, total_questions, total_marks, exam:exams(name)";
+  "id, slug, paper_code, pyq_year, pyq_month, source, scope, title, duration_secs, marking, sections, total_questions, total_marks, is_free, exam:exams(name, free_mocks_marked)";
 
 /** The listing columns PLUS the snapshot — for the two single-mock reads, which
  *  genuinely need the ordered refs to deliver the test. */
@@ -87,7 +93,7 @@ const MOCK_SELECT = `${MOCK_LIST_SELECT}, questions`;
 /** Map every field except the snapshot. Shared so the list and the single-mock
  *  reads cannot drift in how they interpret a row. */
 function mapMockListItem(r: Record<string, unknown>): MockListItem {
-  const exam = (Array.isArray(r.exam) ? r.exam[0] : r.exam) as { name: string } | null;
+  const exam = (Array.isArray(r.exam) ? r.exam[0] : r.exam) as { name: string; free_mocks_marked?: boolean } | null;
   return {
     id: r.id as string,
     slug: r.slug as string,
@@ -106,6 +112,8 @@ function mapMockListItem(r: Record<string, unknown>): MockListItem {
     totalQuestions: r.total_questions as number,
     totalMarks: Number(r.total_marks),
     examName: exam?.name ?? "",
+    examFreesMarkedOnly: exam?.free_mocks_marked === true,
+    isFree: r.is_free === true,
   };
 }
 
@@ -143,6 +151,30 @@ export async function getPublishedMocks(db: SupabaseClient): Promise<MockListIte
     throw new Error(`getPublishedMocks: ${e instanceof Error ? e.message : String(e)}`);
   }
   return rows.map((r) => mapMockListItem(r));
+}
+
+/**
+ * An exam's published papers marked free (0256), oldest-sitting first then
+ * practice, for the pass card on its other papers. Empty on error: the card
+ * then just sells the pass.
+ */
+export async function getFreePapers(
+  db: SupabaseClient,
+  examName: string
+): Promise<{ slug: string; title: string }[]> {
+  const { data, error } = await db
+    .from("mock_tests")
+    .select("slug, title, exam:exams!inner(name)")
+    .eq("status", "published")
+    .eq("is_free", true)
+    .eq("exam.name", examName)
+    .order("pyq_year", { ascending: true, nullsFirst: false })
+    .order("slug", { ascending: true });
+  if (error) {
+    console.error("getFreePapers:", error.message);
+    return [];
+  }
+  return (data ?? []).map((r) => ({ slug: r.slug as string, title: r.title as string }));
 }
 
 /** One published mock by slug (includes the ordered snapshot). Null when absent. */

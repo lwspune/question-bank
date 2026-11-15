@@ -71,6 +71,12 @@ export type Plan = {
    * dollar payments and UPI is rupees only.
    */
   countries?: string[] | null;
+  /**
+   * A fixed last day (YYYY-MM-DD, India), migration 0256: every pass sold ends
+   * then, not `durationDays` from purchase (the IMAT pass ends after IMAT 2027).
+   * Once it has passed, a sale falls back to `durationDays`. Null or absent = none.
+   */
+  endsOn?: string | null;
 };
 
 export type PlanInput = Omit<Plan, "active">;
@@ -144,6 +150,9 @@ export function validatePlan(input: PlanInput): PlanValidation {
   if (input.durationDays !== null && (!Number.isInteger(input.durationDays) || input.durationDays <= 0)) {
     return { ok: false, field: "durationDays", message: "Duration is blank (lifetime) or a positive number of days." };
   }
+  if (input.endsOn != null && dayStartUtcMs(input.endsOn) === null) {
+    return { ok: false, field: "endsOn", message: "End date is blank or a date such as 2027-10-31." };
+  }
   if (input.scope === SCOPE_ALL || !SELLABLE_SCOPES.includes(input.scope)) {
     return { ok: false, field: "scope", message: `Scope must be one of: ${SELLABLE_SCOPES.join(", ")}.` };
   }
@@ -159,8 +168,50 @@ export function computeExpiry(nowMs: number, durationDays: number | null): strin
   return new Date(nowMs + durationDays * 86_400_000).toISOString();
 }
 
-/** Display helper: how long a plan lasts, e.g. "6 months", "1 year". */
-export function planLengthLabel(plan: Pick<Plan, "durationDays">): string {
+const DATE_RE = /^(\d{4})-(\d{2})-(\d{2})$/;
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const IST_OFFSET_MS = 5.5 * 3_600_000;
+
+/** UTC ms of a real YYYY-MM-DD's midnight, or null when it is not one. */
+function dayStartUtcMs(dateIso: string): number | null {
+  const m = DATE_RE.exec(dateIso);
+  if (!m) return null;
+  const [y, mo, d] = [Number(m[1]), Number(m[2]), Number(m[3])];
+  const utc = Date.UTC(y, mo - 1, d);
+  const back = new Date(utc);
+  return back.getUTCFullYear() === y && back.getUTCMonth() === mo - 1 && back.getUTCDate() === d ? utc : null;
+}
+
+/**
+ * When a pass sold now ends under the plan's fixed date (0256): the last second
+ * of that day in India. Null when the plan has no date, or the date is under a
+ * day away (a sale then uses `durationDays`, so it never sells a pass that is over).
+ */
+export function planEndsAt(plan: Pick<Plan, "endsOn">, nowMs: number): string | null {
+  if (!plan.endsOn) return null;
+  const start = dayStartUtcMs(plan.endsOn);
+  if (start === null) return null;
+  const end = start + 86_400_000 - IST_OFFSET_MS - 1000;
+  return end - nowMs < 86_400_000 ? null : new Date(end).toISOString();
+}
+
+/** "31 Oct 2027" from a YYYY-MM-DD. */
+function shortDate(dateIso: string): string {
+  const [y, mo, d] = dateIso.split("-").map(Number);
+  return `${d} ${MONTHS[mo - 1]} ${y}`;
+}
+
+/**
+ * Display helper: how long a plan lasts, e.g. "6 months", "1 year". A plan
+ * with a fixed end (0256) reads "11 months, until 31 Oct 2027" while it holds.
+ */
+export function planLengthLabel(plan: Pick<Plan, "durationDays" | "endsOn">, nowMs: number = Date.now()): string {
+  const fixedEnd = planEndsAt(plan, nowMs);
+  if (fixedEnd && plan.endsOn) {
+    const days = Math.ceil((Date.parse(fixedEnd) - nowMs) / 86_400_000);
+    const left = days < 60 ? `${days} days` : `${Math.floor(days / 30.44)} months`;
+    return `${left}, until ${shortDate(plan.endsOn)}`;
+  }
   if (plan.durationDays === null) return "lifetime";
   if (plan.durationDays === 365) return "1 year";
   if (plan.durationDays === 182) return "6 months";
@@ -270,8 +321,13 @@ export function resolveOrderPlan(plans: readonly Plan[], planId: string, country
 // The order contract
 // ────────────────────────────────────────────────────────────────────
 
-/** Razorpay notes are string-valued. Written by /api/billing/order only. */
-export function stampOrderNotes(plan: Plan, userId: string): Record<string, string> {
+/**
+ * Razorpay notes are string-valued. Written by /api/billing/order only. A plan
+ * with a fixed end (0256) also stamps `endsAt`, so the grant ends then even if
+ * the date on /dashboard/pricing changes while the checkout is open.
+ */
+export function stampOrderNotes(plan: Plan, userId: string, nowMs: number = Date.now()): Record<string, string> {
+  const endsAt = planEndsAt(plan, nowMs);
   return {
     userId,
     planId: plan.id,
@@ -279,6 +335,7 @@ export function stampOrderNotes(plan: Plan, userId: string): Record<string, stri
     currency: plan.currency,
     scope: plan.scope,
     durationDays: plan.durationDays === null ? "" : String(plan.durationDays),
+    ...(endsAt ? { endsAt } : {}),
   };
 }
 
@@ -347,9 +404,11 @@ export function planForPaidOrder(
     if (!Number.isInteger(d) || d <= 0) return { ok: false, reason: "order notes incomplete" };
     durationDays = d;
   }
+  // An upgrade's end (it keeps the held pass's end date) wins over a plan's fixed end (0256).
   let endsAt: string | undefined;
-  if ("upgradeEndsAt" in notes) {
-    const t = Date.parse(notes.upgradeEndsAt);
+  for (const key of ["upgradeEndsAt", "endsAt"] as const) {
+    if (endsAt || !(key in notes)) continue;
+    const t = Date.parse(notes[key]);
     if (!Number.isFinite(t)) return { ok: false, reason: "order notes incomplete" };
     endsAt = new Date(t).toISOString();
   }

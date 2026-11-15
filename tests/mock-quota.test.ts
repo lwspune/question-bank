@@ -122,3 +122,35 @@ describe("mockStartState: practice tests have a daily limit (migration 0156)", (
     expect(mockStartState(old, false, "custom")).toEqual({ kind: "open" });
   });
 });
+
+describe("mockStartState: an exam that frees marked papers only (0256, IMAT)", () => {
+  const free = { markedOnly: true, isFree: true };
+  const paid = { markedOnly: true, isFree: false };
+  it("says a marked paper is free, whatever the shared count", () => {
+    expect(mockStartState(q(0), false, "full", false, free)).toEqual({ kind: "free_paper" });
+    expect(mockStartState(q(3), false, "full", false, free)).toEqual({ kind: "free_paper" });
+  });
+  it("locks an unmarked paper behind the pass, even with shared mocks left", () => {
+    expect(mockStartState(q(0), false, "full", false, paid)).toEqual({
+      kind: "locked",
+      limit: 0,
+      unit: "mock",
+      passOnly: true,
+    });
+  });
+  it("is open for the exam's pass, a retake, a friend's invite, and with the limit off", () => {
+    expect(mockStartState(q(0, 3, true), false, "full", false, paid)).toEqual({ kind: "open" });
+    expect(mockStartState(q(0), true, "full", false, paid)).toEqual({ kind: "open" });
+    expect(mockStartState(q(0), false, "full", true, paid)).toEqual({ kind: "open" });
+    expect(mockStartState(q(0, null), false, "full", false, paid)).toEqual({ kind: "open" });
+    expect(mockStartState(q(0, null), false, "full", false, free)).toEqual({ kind: "open" });
+  });
+  it("leaves an exam without the rule on the shared count", () => {
+    expect(mockStartState(q(1), false, "full", false, { markedOnly: false, isFree: false })).toEqual({
+      kind: "free",
+      left: 2,
+      limit: 3,
+      unit: "mock",
+    });
+  });
+});

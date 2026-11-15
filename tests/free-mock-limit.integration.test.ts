@@ -23,6 +23,10 @@
  *     (`mocks`) does not let a student past the limit on an IMAT mock, and
  *     the IMAT pass does not on an Indian one; my_mock_quota lists the
  *     user's passes as `passScopes`
+ *   - an exam that frees MARKED papers only (migration 0256, IMAT): its papers
+ *     marked free always start, every other full mock there needs the exam's
+ *     pass, and none of its papers use the shared free mocks; the limit off
+ *     still blocks nothing
  *
  * The settings row is global, so this suite restores it in afterAll. Other
  * suites start at most one mock per user, so the limit cannot trip them.
@@ -43,7 +47,7 @@ const RUN_ID = testRunId();
 const FUTURE = new Date(Date.now() + 3600_000).toISOString();
 const ROLES = [
   "student", "early", "mockpass", "teacherpass", "staff", "off", "invited", "inviter", "imatpass", "mocksonimat",
-  "freeexam", "practicepass", "pathstudent",
+  "freeexam", "practicepass", "pathstudent", "marked", "markedpass", "markedoff",
 ] as const;
 type Role = (typeof ROLES)[number];
 
@@ -57,6 +61,9 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
   // An exam that asks for the IMAT pass (0206), and four full mocks in it.
   let imatExamId = "";
   const imatMockIds: string[] = [];
+  // An exam that frees marked papers only (0256): paper 0 is marked free.
+  let markedExamId = "";
+  const markedMockIds: string[] = [];
   // A free exam (0210, the Class 9-10 exams): its full mocks, chapter tests and
   // practice tests (practice tests are their owner's, so "freeexam"'s).
   let freeExamId = "";
@@ -82,6 +89,13 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
     clients[role]
       .from("mock_attempts")
       .insert({ mock_id: imatMockIds[idx], user_id: ids[role], expires_at: FUTURE })
+      .select("id")
+      .single();
+
+  const startMarked = (role: Role, idx: number) =>
+    clients[role]
+      .from("mock_attempts")
+      .insert({ mock_id: markedMockIds[idx], user_id: ids[role], expires_at: FUTURE })
       .select("id")
       .single();
 
@@ -174,6 +188,41 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
       imatMockIds.push(data!.id);
     }
 
+    const { data: markedExam, error: markedErr } = await admin
+      .from("exams")
+      .insert({ name: `Marked free exam ${RUN_ID}`, pass_scope: "imat", free_mocks_marked: true })
+      .select("id")
+      .single();
+    expect(markedErr).toBeNull();
+    markedExamId = markedExam!.id;
+    for (let i = 0; i < 3; i++) {
+      const { data, error } = await admin
+        .from("mock_tests")
+        .insert({
+          id: randomUUID(),
+          slug: `free-mock-limit-marked-${i}-${RUN_ID}`,
+          scope: "full",
+          exam_id: markedExamId,
+          paper_code: "maths",
+          pyq_year: 2099,
+          title: `Free mock limit marked ${i} ${RUN_ID}`,
+          duration_secs: 9000,
+          marking: { correct: 1.5, wrong: -0.4 },
+          sections: [{ key: "mathematics", label: "Mathematics", count: 1 }],
+          questions: [
+            { position: 1, questionId: q!.id, sectionKey: "mathematics", marks: 1.5, negMarks: -0.4 },
+          ],
+          total_questions: 1,
+          total_marks: 1.5,
+          status: "published",
+          is_free: i === 0,
+        })
+        .select("id")
+        .single();
+      expect(error).toBeNull();
+      markedMockIds.push(data!.id);
+    }
+
     const { data: freeExam, error: freeErr } = await admin
       .from("exams")
       .insert({ name: `zz test free exam ${RUN_ID}`, pass_scope: "free" })
@@ -209,6 +258,7 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
       { user_id: ids.mockpass, scope: "mocks", source: "manual", status: "active", note: `test ${RUN_ID}` },
       { user_id: ids.teacherpass, scope: "teacher", source: "manual", status: "active", note: `test ${RUN_ID}` },
       { user_id: ids.imatpass, scope: "imat", source: "manual", status: "active", note: `test ${RUN_ID}` },
+      { user_id: ids.markedpass, scope: "imat", source: "manual", status: "active", note: `test ${RUN_ID}` },
       { user_id: ids.mocksonimat, scope: "mocks", source: "manual", status: "active", note: `test ${RUN_ID}` },
       // The Practice Pass (0212): online limits lifted on the Indian exams.
       { user_id: ids.practicepass, scope: "practice", source: "manual", status: "active", note: `test ${RUN_ID}` },
@@ -258,11 +308,12 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
     }
     // Deleting the mocks cascades their attempts; deleting users cascades the rest.
     const all = [
-      ...mockIds, ...chapterIds, ...imatMockIds,
+      ...mockIds, ...chapterIds, ...imatMockIds, ...markedMockIds,
       ...freeTestIds.full, ...freeTestIds.sectional, ...freeTestIds.custom,
     ];
     if (all.length) await admin.from("mock_tests").delete().in("id", all);
     if (imatExamId) await admin.from("exams").delete().eq("id", imatExamId);
+    if (markedExamId) await admin.from("exams").delete().eq("id", markedExamId);
     if (freeExamId) await admin.from("exams").delete().eq("id", freeExamId);
     if (orgId) await admin.from("organizations").delete().eq("id", orgId);
     for (const role of ROLES) if (ids[role]) await admin.auth.admin.deleteUser(ids[role]);
@@ -362,6 +413,29 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
     for (let i = 0; i < 4; i++) expect((await startImat("imatpass", i)).error).toBeNull();
   });
 
+  it("starts a paper marked free and refuses an unmarked one on a marked-papers exam (0256)", async () => {
+    expect((await startMarked("marked", 0)).error).toBeNull();
+    expect((await startMarked("marked", 1)).error?.code).toBe("PT402");
+    expect((await startMarked("marked", 2)).error?.code).toBe("PT402");
+  });
+
+  it("does not count a marked-papers exam's papers against the shared free mocks (0256)", async () => {
+    const { data } = await clients.marked.rpc("my_mock_quota");
+    expect(data).toMatchObject({ limit: 3, used: 0 });
+    for (let i = 0; i < 3; i++) expect((await start("marked", i)).error).toBeNull();
+    // The shared mocks used up, the marked free paper still retakes, and stays free.
+    await admin
+      .from("mock_attempts")
+      .update({ status: "submitted" })
+      .eq("user_id", ids.marked)
+      .eq("mock_id", markedMockIds[0]);
+    expect((await startMarked("marked", 0)).error).toBeNull();
+  });
+
+  it("lets the exam's pass start every paper on a marked-papers exam (0256)", async () => {
+    for (let i = 0; i < 3; i++) expect((await startMarked("markedpass", i)).error).toBeNull();
+  });
+
   it("lists the user's passes in my_mock_quota and my_premium_limits", async () => {
     const { data: imat } = await clients.imatpass.rpc("my_mock_quota");
     expect(imat).toMatchObject({ hasPass: false, passScopes: ["imat"] });
@@ -395,6 +469,7 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
       .eq("id", true);
     for (let i = 0; i < 4; i++) expect((await start("off", i)).error).toBeNull();
     for (let i = 0; i < 2; i++) expect((await startChapter("off", i)).error).toBeNull();
+    for (let i = 0; i < 3; i++) expect((await startMarked("markedoff", i)).error).toBeNull();
     const { data } = await clients.off.rpc("my_mock_quota");
     expect(data).toMatchObject({ limit: null, chapterLimit: null });
     await admin

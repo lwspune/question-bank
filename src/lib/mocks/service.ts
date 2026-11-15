@@ -94,6 +94,10 @@ export async function startOrResumeAttempt(
         `${practiceUsedUpLine(limit)} Come back tomorrow, or get the Premium Pass for unlimited tests.`
       );
     }
+    // 0256: an unmarked paper on an exam that frees marked papers only (IMAT).
+    if (error.message.startsWith("This paper needs a pass")) {
+      throw new MockError(402, "This paper comes with the pass. Its free papers are marked Free in the list.");
+    }
     throw new MockError(402, "You've used your free mock tests. Get the Practice Pass to keep going.");
   }
 
