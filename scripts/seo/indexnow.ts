@@ -5,6 +5,7 @@
  *   npm run seo:indexnow -- --apply      # actually submit
  *   npm run seo:indexnow -- --only=/guide     # just one subtree
  *   npm run seo:indexnow -- --limit=50        # first N after filtering
+ *   npm run seo:indexnow -- --host=intl       # intl.pyqvault.com's sitemap (default www)
  *   npm run seo:indexnow -- --since=snap.json --save=snap.json
  *        # only URLs new or changed since the saved copy, then save the new one
  *
@@ -38,13 +39,15 @@ import {
   buildIndexNowPayloads,
   isValidIndexNowKey,
   INDEXNOW_ENDPOINT,
+  indexNowHost,
   parseSitemap,
   selectChangedUrls,
   type IndexNowPayload,
   type SitemapSnapshot,
 } from "../../src/lib/seo/indexnow";
 
-const HOST = "www.pyqvault.com";
+// `--host=intl` submits intl.pyqvault.com's own sitemap (2026-11-15); www by default.
+const HOST = indexNowHost(arg("host"));
 const SITE = `https://${HOST}`;
 
 /**
