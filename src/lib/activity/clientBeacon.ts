@@ -46,7 +46,7 @@ type ClientEvent =
       kind: "surface_viewed";
       surface: "stuck_offer";
       questionId: string;
-      action: "shown" | "teach" | "easier" | "keep" | "returned" | "try_after";
+      action: "shown" | "teach" | "easier" | "keep" | "returned" | "try_after" | "teach_close" | "full_notes";
     }
   | {
       /** A teaching moment under a bank answer seen (lib/questions/teachingMoment). */

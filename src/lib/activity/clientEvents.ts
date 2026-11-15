@@ -40,7 +40,18 @@ const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
  *  me the idea (2026-11-11): back on the question (returned), then Try one tapped (try_after). */
 /** The Review traps panel's steps (src/app/review/ChapterTraps). */
 export const REVIEW_TRAPS_ACTIONS: ReadonlySet<string> = new Set(["shown", "expand", "playbook"]);
-export const STUCK_OFFER_ACTIONS: ReadonlySet<string> = new Set(["shown", "teach", "easier", "keep", "returned", "try_after"]);
+/** The stuck offer's steps. teach_close and full_notes (2026-11-15): Teach opens a panel on the page,
+ *  closed (back on the question) or left for the full notes page. */
+export const STUCK_OFFER_ACTIONS: ReadonlySet<string> = new Set([
+  "shown",
+  "teach",
+  "easier",
+  "keep",
+  "returned",
+  "try_after",
+  "teach_close",
+  "full_notes",
+]);
 /** The one line under a bank answer (2026-11-14, lib/questions/teachingMoment): moments with their own
  *  event here, and their steps. The stuck offer keeps its own surface (its experiment predates this). */
 export const TEACHING_MOMENTS: ReadonlySet<string> = new Set(["same_mistake"]);

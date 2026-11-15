@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import dynamic from "next/dynamic";
 import { Lightbulb } from "lucide-react";
 import { stuckOfferLine, type StuckOffer } from "@/lib/questions/stuckOffer";
 import { askVText } from "@/lib/chat/askVEvent";
@@ -9,19 +9,24 @@ import { sendActivity, sendActivityOnce } from "@/lib/activity/clientBeacon";
 import VQuestionCard from "@/components/chat/VQuestionCard";
 import { dismissMoment } from "./momentStore";
 
+// Loaded on the first Teach tap only (2026-11-15): most offers are never
+// opened, and the notes blocks are not light.
+const TeachPanel = dynamic(() => import("./TeachPanel"), { ssr: false });
+
 /**
  * "3 of your last 4 on <subtopic> were wrong. Want help with the idea behind
  * it?" under a bank answer (owner, 2026-11-10). The rule is
  * lib/questions/stuckOffer; it is one of the moments MomentLine draws (the one line under an answer).
- * Teach me the idea opens our notes for the subtopic (the card's own notes
- * chip link, with a way back: lib/browse/backToQuestion) or, with none, asks V for the idea; Try an easier one shows an
+ * Teach me the idea opens our notes for the subtopic in a panel on the same
+ * page (TeachPanel, 2026-11-15; until then it left for the notes page), then
+ * offers "Now try one like it"; with no notes it asks V for the idea; Try an easier one shows an
  * easier question from the subtopic here, as V's try card; Keep going folds it
  * away. Each step is recorded (surface stuck_offer) for the experiment.
  */
 const BUTTON =
   "inline-flex min-h-9 items-center justify-center rounded-lg border bg-card px-3 py-1.5 text-sm font-semibold text-brand-accent transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
 
-type Action = "teach" | "easier" | "keep";
+type Action = "teach" | "easier" | "keep" | "teach_close" | "full_notes" | "try_after";
 
 export default function StuckOfferLine({
   offer,
@@ -36,6 +41,9 @@ export default function StuckOfferLine({
   onTeach?: (offer: { subtopic: string; easierId: string | null }) => void;
 }) {
   const [easier, setEasier] = useState(false);
+  const [teachOpen, setTeachOpen] = useState(false);
+  const [teachMounted, setTeachMounted] = useState(false);
+  const [taught, setTaught] = useState(false);
 
   useEffect(() => {
     sendActivityOnce(`stuck_offer:shown:${questionId}`, { kind: "surface_viewed", surface: "stuck_offer", questionId, action: "shown" });
@@ -54,18 +62,30 @@ export default function StuckOfferLine({
       </p>
       {!easier && (
         <div className="mt-2.5 flex flex-wrap items-center gap-2 pl-6">
-          {notesHref ? (
-            <Link
-              href={notesHref}
-              prefetch={false}
+          {taught && offer.easierId ? (
+            <button
+              type="button"
               className={BUTTON}
               onClick={() => {
-                onTeach?.({ subtopic: offer.subtopic, easierId: offer.easierId ?? null });
+                track("try_after");
+                setEasier(true);
+              }}
+            >
+              Now try one like it
+            </button>
+          ) : notesHref ? (
+            <button
+              type="button"
+              aria-haspopup="dialog"
+              className={BUTTON}
+              onClick={() => {
                 track("teach");
+                setTeachMounted(true);
+                setTeachOpen(true);
               }}
             >
               Teach me the idea
-            </Link>
+            </button>
           ) : (
             <button
               type="button"
@@ -78,7 +98,7 @@ export default function StuckOfferLine({
               Teach me the idea
             </button>
           )}
-          {offer.easierId && (
+          {offer.easierId && !taught && (
             <button
               type="button"
               className={BUTTON}
@@ -101,6 +121,23 @@ export default function StuckOfferLine({
             Keep going
           </button>
         </div>
+      )}
+      {teachMounted && notesHref && (
+        <TeachPanel
+          open={teachOpen}
+          onOpenChange={(next) => {
+            if (!next) {
+              track("teach_close");
+              setTaught(true);
+            }
+            setTeachOpen(next);
+          }}
+          notesHref={notesHref}
+          onFullNotes={() => {
+            track("full_notes");
+            onTeach?.({ subtopic: offer.subtopic, easierId: offer.easierId ?? null });
+          }}
+        />
       )}
       {easier && offer.easierId && (
         <div className="-ml-9 mt-1">
