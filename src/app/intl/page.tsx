@@ -7,7 +7,7 @@ import { EXAM_REGISTRY, type ExamEntry } from "@/lib/exam/examContext";
 import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
 import { globalBankLine, type KindCounts } from "@/lib/exam/questionCounts";
 import { getNotesExamGroup } from "@/lib/notes/notesNav";
-import { INTL_EXAMS, INTL_ORIGIN } from "@/lib/sites/intl";
+import { INTL_ORIGIN, LIVE_INTL_EXAMS } from "@/lib/sites/intl";
 
 /**
  * intl.pyqvault.com's home (2026-10-30). The middleware serves this page at
@@ -58,7 +58,7 @@ export default async function IntlHome() {
           </p>
         </header>
         <div className="grid gap-6">
-          {INTL_EXAMS.map((exam) => (
+          {LIVE_INTL_EXAMS.map((exam) => (
             <ExamCard key={exam.slug} exam={exam} questions={counts.get(exam.slug) ?? null} />
           ))}
         </div>
@@ -71,13 +71,19 @@ export default async function IntlHome() {
 function ExamCard({ exam, questions }: { exam: ExamEntry; questions: KindCounts | null }) {
   const notes = getNotesExamGroup(exam.slug);
   const chapters = notes?.subjects.reduce((n, s) => n + s.chapterCount, 0) ?? 0;
+  // An exam without notes (ENEM) shows no Notes card rather than a dead link.
+  const notesAction = exam.notesPath
+    ? [
+        {
+          href: exam.notesPath,
+          icon: BookOpen,
+          title: "Notes",
+          line: chapters > 0 ? `${chapters} chapters, every one with worked examples` : "Every chapter, with worked examples",
+        },
+      ]
+    : [];
   const actions = [
-    {
-      href: exam.notesPath ?? `/notes/${exam.slug}`,
-      icon: BookOpen,
-      title: "Notes",
-      line: chapters > 0 ? `${chapters} chapters, every one with worked examples` : "Every chapter, with worked examples",
-    },
+    ...notesAction,
     {
       href: `/mock/exam/${exam.slug}`,
       icon: ClipboardCheck,

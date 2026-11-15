@@ -35,6 +35,14 @@ const LOCAL_HOSTNAMES = new Set(["localhost", "127.0.0.1"]);
 /** The international exams, in registry order. */
 export const INTL_EXAMS: readonly ExamEntry[] = EXAM_REGISTRY.filter((e) => e.site === "intl");
 
+/**
+ * The intl exams students may SEE: those with public content. Routing uses
+ * INTL_EXAMS (an exam on its way in already belongs to intl); every list a
+ * student reads, and the bare section links, use this (2026-11-15, ENEM was
+ * registered and deployed before its rows went in). tests/intl-live-exams.
+ */
+export const LIVE_INTL_EXAMS: readonly ExamEntry[] = INTL_EXAMS.filter((e) => !e.noPublicContent);
+
 function splitHost(host: string | null | undefined): { name: string; port: string } {
   const [name = "", port = ""] = (host ?? "").trim().toLowerCase().split(":");
   return { name, port };
@@ -138,7 +146,7 @@ export function progressPathFor(site: PlanSite): string {
 
 /** A section index on intl: the one exam's own page while there is one exam, else the intl home. */
 function sectionIndex(pathname: string): string | null {
-  const only = INTL_EXAMS.length === 1 ? INTL_EXAMS[0] : null;
+  const only = LIVE_INTL_EXAMS.length === 1 ? LIVE_INTL_EXAMS[0] : null;
   switch (pathname) {
     case "/notes":
       return only?.notesPath ?? "/";
@@ -230,14 +238,19 @@ export function intlNavFor(pathname: string, opts: { signedIn?: boolean } = {}):
   const slug = intlExamOfPath(pathname);
   const exam = INTL_EXAMS.find((e) => e.slug === slug) ?? INTL_EXAMS[0];
   if (!exam) return [];
-  const notesHref = exam.notesPath ?? `/notes/${exam.slug}`;
   const section = (p: string) => pathname === p || pathname.startsWith(`${p}/`);
+  // An exam without notes (ENEM, 2026-11-15) gets no Notes tab, not a dead link.
+  const notes = exam.notesPath
+    ? [
+        {
+          label: "Notes",
+          href: exam.notesPath,
+          active: pathname === `/notes/${exam.slug}` || pathname.startsWith(`/notes/${exam.slug}-`) || section(`/formula/${exam.slug}`),
+        },
+      ]
+    : [];
   return [
-    {
-      label: "Notes",
-      href: notesHref,
-      active: pathname === `/notes/${exam.slug}` || pathname.startsWith(`/notes/${exam.slug}-`) || section(`/formula/${exam.slug}`),
-    },
+    ...notes,
     {
       label: "Mocks",
       href: `/mock/exam/${exam.slug}`,
