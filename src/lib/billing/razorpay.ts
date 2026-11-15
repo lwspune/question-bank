@@ -9,6 +9,7 @@
  */
 import { createHmac, timingSafeEqual } from "node:crypto";
 import type { PaidOrder } from "./plans";
+import type { RazorpayPayment } from "./reconcile";
 
 /** True when the server has the keys to take a payment (checkout won't 503).
  *  Drives the public-quiz results screen's premium-CTA gate — the CTA appears
@@ -99,6 +100,40 @@ export async function createOrder(input: {
       amount: data.amount ?? input.amountPaise,
       currency: data.currency ?? input.currency,
     };
+  } catch (err) {
+    return { ok: false, error: err instanceof Error ? err.message : String(err) };
+  }
+}
+
+/**
+ * Every payment Razorpay holds created at or after `fromSec` (seconds), newest
+ * first, 100 a page. Read by the payment check (scripts/billing/reconcile.ts).
+ */
+export async function listPayments(
+  fromSec: number
+): Promise<{ ok: true; payments: RazorpayPayment[] } | { ok: false; error: string }> {
+  const keyId = process.env.RAZORPAY_KEY_ID;
+  const keySecret = process.env.RAZORPAY_KEY_SECRET;
+  if (!keyId || !keySecret) return { ok: false, error: "Razorpay keys not configured" };
+  const auth = Buffer.from(`${keyId}:${keySecret}`).toString("base64");
+  const payments: RazorpayPayment[] = [];
+  try {
+    // A safety stop at 50 pages (5,000 payments), far above a 3-day window.
+    for (let skip = 0; skip < 5000; skip += 100) {
+      const res = await fetch(
+        `https://api.razorpay.com/v1/payments?from=${Math.floor(fromSec)}&count=100&skip=${skip}`,
+        { headers: { Authorization: `Basic ${auth}` }, cache: "no-store" }
+      );
+      const data = (await res.json().catch(() => null)) as
+        | { items?: RazorpayPayment[]; error?: { description?: string } }
+        | null;
+      if (!res.ok || !data?.items) {
+        return { ok: false, error: data?.error?.description ?? `Razorpay error ${res.status}` };
+      }
+      payments.push(...data.items);
+      if (data.items.length < 100) return { ok: true, payments };
+    }
+    return { ok: false, error: "more than 5,000 payments in the window" };
   } catch (err) {
     return { ok: false, error: err instanceof Error ? err.message : String(err) };
   }
