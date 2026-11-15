@@ -148,6 +148,17 @@ The repeat review for the eight NDA GAT homework plans read every question; thes
 - **Printed figure transcribed wrongly:** 27b08077 (Physics, NDA 2 2023, v = u + at) options say "distance-time graph" for what must be velocity-time graphs.
 - **Known flawed, solution already says so:** ebe34b3e (English, NDA 1 2021 Q.50) needs "had known", not offered.
 
+### SSC CGL GK items found during the homework review (left out of the plans or kept, not changed)
+
+The repeat review for the seven SSC CGL Tier I GK homework plans (History, Geography, Polity, Economics, Biology, Chemistry, Physics) read every question. The 14 rows whose solution already opens with a defect **Note:** were left out of the plans, as for English. Four more were left out because they would teach a wrong fact; none is changed in the bank (needs SSC's printed paper first):
+
+- **e46c5455** (History, 13 Sep 2024 S3): "Hindu College established in 1791", keyed Benaras. 1791 is the Sanskrit College, Benaras; Hindu College is Calcutta, 1817.
+- **971e2298** (Biology, 9 Sep 2024 S1): "best defines monoecious", keyed "a flower with both androecium and gynoecium" (that is a bisexual flower).
+- **584dfa3e** (Economics, 24 Sep 2025 S2): "largely excluded from industrial licensing after 1991", keyed alcohol, cigarettes, explosives: the sectors that STAYED under licensing.
+- **506f26a8** (Geography, 14 Jul 2023 S2): the keyed FALSE statement says "Baikal rocks"; garbled, intended word unknown.
+
+Kept in the plans but worth a look: **5ae50612** (Economics) option D garbled ("All 1,2 and 3 are three"); **d9f9d820** (Geography) option D reads "country"; **3f143f57** (Physics, Laws of Motion) is a civil-engineering question ("post tensioning suits long spans"), likely misfiled; **07af71e8** (Polity) statement C cites Article 280 for the Finance Commission's recommendations (Article 281 is "Recommendations"), key "A only" stands.
+
 ### Board PYQs: about 760 Maharashtra HSC 12 questions still show no marks (Step 2, not started)
 
 A student asked for "marks of each question" on board PYQs (feedback 2026-11-14). Step 1 shipped on branch `feat/board-pyq-marks`: /board's Board PYQs and Top 10 tabs show the printed marks wherever a stored whole paper carries the question and every paper agrees (`src/lib/board/pyqMarks.ts`). That covers all of CBSE 12 and 10, 2,032 of 2,070 SSC 10 and 1,488 of 2,246 HSC 12.
