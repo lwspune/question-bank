@@ -15,6 +15,8 @@
  * reads "Part of a 4-mark question".
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
+import type { Database } from "@/types/db";
+import { readInChunks } from "@/lib/supabase/readInChunks";
 
 export type BoardMarks = { kind: "whole"; marks: number } | { kind: "part"; ofMarks: number };
 
@@ -81,66 +83,56 @@ export function boardMarksLabel(m: BoardMarks): string {
   return `Part of ${article} ${m.ofMarks}-mark question`;
 }
 
-type RawItem = { question_id: string; paper_id: string; position: number; marks: number | string | null; part_of: number | null };
+type ItemRow = { question_id: string; paper_id: string; position: number; marks: number | null; part_of: number | null };
 
-const ID_CHUNK = 100; // `.in()` sits in the URL: ~200 uuids is the safe ceiling
-const PAGE = 1000; // PostgREST's row cap
+const ITEM_COLUMNS = "question_id, paper_id, position, marks, part_of";
 
 /** Every published-paper item of these questions, plus what their parts need. */
-export async function loadBoardPyqMarks(client: SupabaseClient, questionIds: readonly string[]): Promise<Record<string, BoardMarks>> {
+export async function loadBoardPyqMarks(client: SupabaseClient<Database>, questionIds: readonly string[]): Promise<Record<string, BoardMarks>> {
   const ids = [...new Set(questionIds)];
   if (!ids.length) return {};
-  const select = "question_id, paper_id, position, marks, part_of, board_papers!inner(published)";
 
-  const own: RawItem[] = [];
-  for (let i = 0; i < ids.length; i += ID_CHUNK) {
-    const chunk = ids.slice(i, i + ID_CHUNK);
-    for (let from = 0; ; from += PAGE) {
-      const { data, error } = await client
-        .from("board_paper_items")
-        .select(select)
-        .in("question_id", chunk)
-        .eq("board_papers.published", true)
-        .order("paper_id")
-        .order("position")
-        .range(from, from + PAGE - 1);
-      if (error) throw new Error(`board paper marks: ${error.message}`);
-      own.push(...((data ?? []) as unknown as RawItem[]));
-      if ((data ?? []).length < PAGE) break;
-    }
-  }
+  // (paper_id, position) is the primary key, so the order is unique, as paging needs.
+  const own = await readInChunks(ids, (chunk, from, to) =>
+    client
+      .from("board_paper_items")
+      .select(`${ITEM_COLUMNS}, board_papers!inner(published)`)
+      .in("question_id", chunk)
+      .eq("board_papers.published", true)
+      .order("paper_id")
+      .order("position")
+      .range(from, to)
+  );
 
   // Parts only matter in papers that have them (Maharashtra). Read those
   // papers' part rows, then the items the parts name, so a first part is
   // known to be a first part and a later part knows its question's marks.
   const papers = [...new Set(own.map((r) => r.paper_id))];
-  const extra: RawItem[] = [];
-  for (let i = 0; i < papers.length; i += ID_CHUNK) {
-    const { data, error } = await client
+  const parts: ItemRow[] = await readInChunks(papers, (chunk, from, to) =>
+    client
       .from("board_paper_items")
-      .select("question_id, paper_id, position, marks, part_of")
-      .in("paper_id", papers.slice(i, i + ID_CHUNK))
+      .select(ITEM_COLUMNS)
+      .in("paper_id", chunk)
       .not("part_of", "is", null)
-      .limit(PAGE);
-    if (error) throw new Error(`board paper parts: ${error.message}`);
-    extra.push(...((data ?? []) as RawItem[]));
-  }
-  const headPapers = [...new Set(extra.map((r) => r.paper_id))];
-  const headPositions = [...new Set(extra.map((r) => r.part_of!))];
-  if (headPapers.length) {
-    for (let i = 0; i < headPapers.length; i += ID_CHUNK) {
-      const { data, error } = await client
-        .from("board_paper_items")
-        .select("question_id, paper_id, position, marks, part_of")
-        .in("paper_id", headPapers.slice(i, i + ID_CHUNK))
-        .in("position", headPositions)
-        .limit(PAGE);
-      if (error) throw new Error(`board paper heads: ${error.message}`);
-      extra.push(...((data ?? []) as RawItem[]));
-    }
-  }
+      .order("paper_id")
+      .order("position")
+      .range(from, to)
+  );
+  const headPositions = [...new Set(parts.map((r) => r.part_of!))];
+  const heads: ItemRow[] = headPositions.length
+    ? await readInChunks([...new Set(parts.map((r) => r.paper_id))], (chunk, from, to) =>
+        client
+          .from("board_paper_items")
+          .select(ITEM_COLUMNS)
+          .in("paper_id", chunk)
+          .in("position", headPositions)
+          .order("paper_id")
+          .order("position")
+          .range(from, to)
+      )
+    : [];
 
-  const rows: PaperItemRow[] = [...own, ...extra].map((r) => ({
+  const rows: PaperItemRow[] = [...own, ...parts, ...heads].map((r) => ({
     questionId: r.question_id,
     paperId: r.paper_id,
     position: r.position,

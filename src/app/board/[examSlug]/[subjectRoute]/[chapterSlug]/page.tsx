@@ -171,7 +171,7 @@ async function loadTwins(questionIds: string[]): Promise<QuestionTwins> {
  */
 async function loadMarks(questionIds: string[]): Promise<Record<string, BoardMarks>> {
   try {
-    return await loadBoardPyqMarks(createSupabaseAnonClient(), questionIds);
+    return await loadBoardPyqMarks(createTypedAnonClient(), questionIds);
   } catch (e) {
     console.error("board chapter marks:", e instanceof Error ? e.message : e);
     return {};
