@@ -1,13 +1,11 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { verifyWebhookSignature } from "@/lib/billing/razorpay";
-import { grantExpiry, grantLengthLabel } from "@/lib/billing/plans";
-import { listActivePlans } from "@/lib/billing/plansQuery";
-import { emailParentPaid } from "@/lib/billing/parentPayService";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
-import { grantRazorpayEntitlement, revokeRazorpayEntitlement } from "@/lib/billing/grant";
+import { revokeRazorpayEntitlement } from "@/lib/billing/grant";
 import { decideWebhook, type WebhookBody } from "@/lib/billing/webhook";
-import { grantEbookPurchase, revokeEbookPurchase } from "@/lib/ebooks/grant";
-import { completeReferral, revokeReferralReward } from "@/lib/referrals/service";
+import { applyPaidOrder } from "@/lib/billing/applyPaidOrder";
+import { revokeEbookPurchase } from "@/lib/ebooks/grant";
+import { revokeReferralReward } from "@/lib/referrals/service";
 
 export const maxDuration = 30;
 
@@ -75,55 +73,18 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ received: true, revoked: pass.revoked + book.revoked });
   }
 
-  if (decision.action === "grant_ebook") {
-    const result = await grantEbookPurchase({
-      userId: decision.userId,
-      paymentId: decision.paymentId,
-      ebookSlug: decision.grant.ebookSlug,
-      amountPaise: decision.grant.amountPaise,
-    });
-    if (result.kind === "error") {
-      console.error("billing webhook: ebook grant failed", result.message);
-      return NextResponse.json({ error: "grant failed" }, { status: 500 });
-    }
-    return NextResponse.json({ received: true, granted: result.kind });
-  }
-
-  const result = await grantRazorpayEntitlement({
-    userId: decision.userId,
-    paymentId: decision.paymentId,
-    scope: decision.grant.scope,
-    expiresAt: grantExpiry(decision.grant, Date.now()),
-    amountPaise: decision.grant.amountPaise,
-    currency: decision.grant.currency,
-    note: decision.note,
-  });
+  // The pass or ebook, the referral reward and the parent email, shared with
+  // the payment check (scripts/billing/reconcile.ts). A failure answers 500 so
+  // Razorpay retries; the retry lands on "already granted" for the row.
+  const result = await applyPaidOrder(decision);
   if (result.kind === "error") {
-    console.error("billing webhook: grant failed", result.message);
-    return NextResponse.json({ error: "grant failed" }, { status: 500 });
-  }
-  // A friend's referral price (0249): reward the inviter. Run on "already
-  // granted" too, since verify may have granted and failed this step; the
-  // database makes a second completion a no-op. A failure answers 500 so
-  // Razorpay retries, and the retry lands on "already granted" again.
-  if (decision.referral) {
-    try {
-      await completeReferral(createSupabaseAdminClient(), decision.userId, decision.paymentId);
-    } catch (e) {
-      console.error("billing webhook: referral reward failed", e instanceof Error ? e.message : e);
+    if (result.stage === "referral") {
+      console.error("billing webhook: referral reward failed", result.message);
       return NextResponse.json({ error: "referral reward failed" }, { status: 500 });
     }
-  }
-  // A parent paid (2026-11-09): tell the student, from whichever grant is new.
-  if (result.kind === "ok" && decision.note) {
-    const admin = createSupabaseAdminClient();
-    const plan = (await listActivePlans(admin).catch(() => [])).find((p) => p.id === decision.grant.planId);
-    await emailParentPaid(admin, {
-      userId: decision.userId,
-      paymentId: decision.paymentId,
-      planLabel: plan?.label ?? "PYQ Vault pass",
-      length: grantLengthLabel(decision.grant, Date.now()),
-    });
+    const what = decision.action === "grant_ebook" ? "ebook grant" : "grant";
+    console.error(`billing webhook: ${what} failed`, result.message);
+    return NextResponse.json({ error: "grant failed" }, { status: 500 });
   }
   return NextResponse.json({ received: true, granted: result.kind });
 }
