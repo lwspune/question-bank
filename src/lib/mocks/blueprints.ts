@@ -847,6 +847,28 @@ export const IMAT_PAPER: MockPaperBlueprint = {
 };
 
 /**
+ * ENEM (Brazil) Day 2, as INEP prints it (booklet 7): 90 questions in 5 hours,
+ * five options A-E, Ciências da Natureza Q91-135 (bank subjects Física, Química,
+ * Biologia, in printed order) then Matemática Q136-180. ENEM's real score is IRT,
+ * which a mock cannot reproduce, so it scores raw correct answers: +1, nothing
+ * off. A question INEP cancelled rides as grace (scripts/mocks/enemSittings.ts),
+ * so the count never shortens. Subject names mirror scripts/enem/lib.ts.
+ */
+export const ENEM_DAY_2: MockPaperBlueprint = {
+  code: "day-2",
+  examName: "ENEM",
+  examSlug: "enem",
+  paperLabel: "2º dia",
+  durationSecs: 300 * 60,
+  marking: { correct: 1, wrong: 0 },
+  optionCount: 5,
+  sections: [
+    { key: "natureza", label: "Ciências da Natureza e suas Tecnologias", subjects: ["Física", "Química", "Biologia"], count: 45 },
+    { key: "matematica", label: "Matemática e suas Tecnologias", subjects: ["Matemática"], count: 45 },
+  ],
+};
+
+/**
  * SPI (Services Preparatory Institute) entrance examination, as printed in 2022: 150
  * questions in one booklet, 3 hours, +1 a right answer and 0.5 off a wrong one. Part 1
  * Mathematical Ability (its puzzles are filed under Reasoning) and Part 2 General Ability.
@@ -1242,6 +1264,7 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   CAPF_PAPER_1,
   CLAT_PAPER,
   IMAT_PAPER,
+  ENEM_DAY_2,
   CBSE_10_CHAPTER_MCQ_PAPER,
   CBSE_12_CHAPTER_MCQ_PAPER,
   MH_HSC_12_CHAPTER_MCQ_PAPER,

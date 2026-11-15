@@ -12,7 +12,11 @@
  *     by the END OF ITS OWN DAY (IST), so a task finished a week later does
  *     not flatter the day it was set;
  *   - chapter tests the path granted, and how many were started: what the
- *     free-limit exemption costs (§13).
+ *     free-limit exemption costs (§13);
+ *   - FOLLOW THE CLASS (§18, 2026-11-15): the checklist seen / answered /
+ *     skipped, switches, and today's-task completion for the students already
+ *     on the plan, 7 days before the change against 7 days after
+ *     (lib/path/followReadout).
  *
  * Read-only, service role, fed the readout's own reads.
  */
@@ -25,6 +29,7 @@ import { chapterParts, isFinishedTest, topWorked, type TopSlot } from "@/lib/pat
 import { isPathExam, type ChapterState, type PathChapter } from "@/lib/path/model";
 import { bufferStart, paceStatus } from "@/lib/path/pace";
 import { pathRemainingMinutes } from "@/lib/path/view";
+import { beforeAfter, followDay, summarizeFollow } from "@/lib/path/followReadout";
 
 const DAY_MS = 86_400_000;
 const IST_OFFSET_MS = 5.5 * 3_600_000;
@@ -67,7 +72,7 @@ type PathRow = {
   started_at: string;
   ended_at: string | null;
 };
-type DayRow = { user_id: string; day: string; tasks: { kind: string; chapterId?: string; questionIds?: string[] }[] };
+type DayRow = { user_id: string; day: string; tasks: { kind: string; chapterId?: string; questionIds?: string[]; upTo?: number }[] };
 
 const pct = (n: number, d: number) => (d ? `${Math.round((100 * n) / d)}%` : "-");
 const median = (xs: number[]) => {
@@ -212,7 +217,10 @@ export async function reportStarters(
   const chapterById = new Map(ctx.chapters.map((c) => [c.id, c]));
   let shown = 0;
   let doneByDay = 0;
+  const perDay: { user: string; day: string; shown: number; done: number }[] = [];
   for (const d of dayRows) {
+    const shownBefore = shown;
+    const doneBefore = doneByDay;
     const end = new Date(Date.parse(`${d.day}T00:00:00Z`) + DAY_MS - IST_OFFSET_MS).toISOString();
     const begin = new Date(Date.parse(end) - DAY_MS).toISOString();
     const evs = (byUser.get(d.user_id) ?? []).filter((e) => e.created_at < end);
@@ -227,13 +235,18 @@ export async function reportStarters(
       const c = t.chapterId ? chapterById.get(t.chapterId) : undefined;
       if (!c) continue;
       if (t.kind === "sheet" && evs.some((e) => e.kind === "surface_viewed" && e.surface === "board_revision" && e.path === c.revisionPath)) doneByDay++;
-      if (t.kind === "top" && topWorked(c.top, evs.filter((e) => MARK_KINDS.has(e.kind) && e.ref_id).map(toProgress)).complete) doneByDay++;
+      if (t.kind === "top") {
+        // A Top 10 part (§18) is done at its own end; a task from before the split at all 10.
+        const tw = topWorked(c.top, evs.filter((e) => MARK_KINDS.has(e.kind) && e.ref_id).map(toProgress));
+        if (tw.worked >= Math.min(t.upTo ?? tw.of, tw.of)) doneByDay++;
+      }
       if (
         t.kind === "test" &&
         ctx.attempts.some((a) => a.user_id === d.user_id && a.mock_id === c.testMockId && isFinishedTest(a) && (a.submitted_at ?? "") < end)
       )
         doneByDay++;
     }
+    perDay.push({ user: d.user_id, day: d.day, shown: shown - shownBefore, done: doneByDay - doneBefore });
   }
   console.log(`  today's tasks done by the end of their day: ${doneByDay} of ${shown} shown (${pct(doneByDay, shown)}), ${dayRows.length} student-days`);
 
@@ -245,4 +258,43 @@ export async function reportStarters(
   const g = (grants ?? []).filter((r) => !ctx.staff.has(r.user_id as string));
   const started = g.filter((r) => ctx.attempts.some((a) => a.user_id === r.user_id && a.mock_id === r.mock_id)).length;
   console.log(`  chapter tests granted ${g.length}, started ${started}`);
+
+  await reportFollow(db, ctx.staff, starters, perDay);
+}
+
+/** FOLLOW THE CLASS (§18): the checklist, switches, and completion before / after. */
+async function reportFollow(
+  db: SupabaseClient,
+  staff: ReadonlySet<string>,
+  starters: readonly PathRow[],
+  perDay: readonly { user: string; day: string; shown: number; done: number }[]
+): Promise<void> {
+  const [views, covered, switched] = await Promise.all([
+    readAllPages<{ user_id: string }>((f, t) =>
+      db.from("user_activity").select("user_id").eq("kind", "surface_viewed").eq("metadata->>surface", "path_cover").order("id").range(f, t)
+    ),
+    readAllPages<{ user_id: string; ticked: string | null; created_at: string }>((f, t) =>
+      db.from("user_activity").select("user_id, ticked:metadata->>ticked, created_at").eq("kind", "path_covered").order("id").range(f, t)
+    ),
+    readAllPages<{ user_id: string }>((f, t) => db.from("user_activity").select("user_id").eq("kind", "path_switched").order("id").range(f, t)),
+  ]);
+  const keep = (u: string) => !staff.has(u);
+  const saves = covered.filter((c) => keep(c.user_id));
+  const change = followDay(saves.map((c) => ({ user: c.user_id, day: istDayKey(new Date(c.created_at)) })));
+  const f = summarizeFollow({
+    coverViews: views.filter((v) => keep(v.user_id)).map((v) => ({ user: v.user_id })),
+    covered: saves.map((c) => ({ user: c.user_id, ticked: Number(c.ticked ?? 0) })),
+    switched: switched.filter((x) => keep(x.user_id)).map((x) => ({ user: x.user_id })),
+  });
+  console.log(`\nFOLLOW THE CLASS  (§18; ${change ? `first student save ${change}` : "no student has saved the checklist yet"})`);
+  console.log(`  "What has your class covered?" seen by ${f.seen} · answered ${f.answered} (skipped ${f.skipped}) · median ticked ${f.medianTicked}`);
+  console.log(`  Switch chapter: ${f.switches} taps by ${f.switchers} students`);
+  if (!change) return;
+  const startDay = new Map(starters.map((p) => [p.user_id, istDayKey(new Date(p.started_at))]));
+  const r = beforeAfter(perDay, startDay, change);
+  const line = (label: string, x: { shown: number; done: number; studentDays: number }) =>
+    `  ${label}: ${x.done} of ${x.shown} tasks done by the end of their day (${pct(x.done, x.shown)}), ${x.studentDays} student-days`;
+  console.log(`  the ${r.cohort} students on the plan before ${change}, 7 days each side:`);
+  console.log(line("before", r.before));
+  console.log(line("after ", r.after));
 }

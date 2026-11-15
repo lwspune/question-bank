@@ -285,6 +285,15 @@ export const V_STEP_CHIPS_TAP_KEEP_PCT = 15;
 export const V_STEP_CHIPS_YES_KEEP_PCT = 50;
 
 /**
+ * "v-day-card": keep V's "Your day" card if at least V_DAY_REPEAT_KEEP_PCT of
+ * the students shown it in the window see it on 2+ days (before: 7 of 31, 23%,
+ * opened "How's my progress" on 2+ days, 28 Oct to 15 Nov) and at least
+ * V_DAY_NEXT_STEP_KEEP_PCT of showings lead to a tap on the card that day.
+ */
+export const V_DAY_REPEAT_KEEP_PCT = 35;
+export const V_DAY_NEXT_STEP_KEEP_PCT = 25;
+
+/**
  * "score-plan": keep "How to raise your score" if at least this share of the
  * fair full-paper attempts it shows on start the Fix list within a day (%).
  * Baseline with "What to fix next", 36 fair attempts (60 to 14 days before
@@ -369,6 +378,14 @@ export const TEACHER_RULE_PRECISION_PCT = 70;
 export const GULF_PRICE_BASELINE_RUPEES_PER_STUDENT = 6;
 /** "gulf-price": Gulf sales needed in the window before the revenue line means anything. */
 export const GULF_PRICE_MIN_SALES = 2;
+/**
+ * "enem-interest": students choosing ENEM (target_exams) in 4 weeks for it to
+ * earn more work. IMAT drew 15 in its first two weeks on intl (24 by 11-15),
+ * with notes and English content; ENEM has neither.
+ */
+export const ENEM_STUDENTS_KEEP = 20;
+/** "enem-interest": ...of whom this many started a mock or answered 20+ questions. */
+export const ENEM_ACTIVE_KEEP = 5;
 /**
  * "answer-limit-copy": of students who met the answer limit in the 30 days to
  * 2026-11-11, the share who opened checkout from it (35 of 360) and who bought
@@ -498,6 +515,7 @@ export type Readout =
   | "v-better-retry"
   | "v-step-by-step"
   | "v-step-chips"
+  | "v-day-card"
   | "score-plan"
   | "stuck-offer"
   | "same-mistake"
@@ -512,7 +530,8 @@ export type Readout =
   | "install-app"
   | "teacher-or-student"
   | "notes-drill-panel"
-  | "gulf-price";
+  | "gulf-price"
+  | "enem-interest";
 
 export type Experiment = {
   id: string;
@@ -799,7 +818,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     why: "Owner, 2026-11-07: students do not know what to study or in what order, and a plan alone did not help (V's week plans: 6 of 68 chapter tasks done). MENTOR_SPEC.md.",
     metric:
       "Starters (target 150), starters active on 4+ days in their first 28 days (target 50%), on track at week 4 (40%), median chapters done (8), today's tasks done of tasks shown (35%), fixing mistakes on 2+ days (30%). Also chapter tests granted, the free-limit cost.",
-    rule: "Baselines (Class 12, 2026-11-07, npm run path:readout): no active student had a chapter done; 4+ active days CBSE 32%, HSC 28%; fixing on 2+ days 4%. Keep and build Phase 2 if starters beat the 4-day and chapters-done targets; if few start, read the start card first; if starters stop within a week, read which task they stop on.",
+    rule: "Baselines (Class 12, 2026-11-07, npm run path:readout): no active student had a chapter done; 4+ active days CBSE 32%, HSC 28%; fixing on 2+ days 4%. Keep and build Phase 2 if starters beat the 4-day and chapters-done targets; if few start, read the start card first; if starters stop within a week, read which task they stop on. Week 1 (to 2026-11-15): 83 started of 147 who saw the offer, but 8% of tasks were done and no chapter was finished, because 94% of the questions starters practised on plan days were on chapters the plan had not picked. So from the first student save of \"What has your class covered?\" (MENTOR_SPEC.md §18) the plan follows the class: ticked chapters first, unticked untouched ones wait, a chapter worked on in the last 7 days leads the card, Switch chapter (3 a day) replaces Not taught yet, and the Top 10 comes in parts of 5. Read the readout's FOLLOW THE CLASS section: the same students' tasks done in the 7 days before that save against the 7 days after.",
     liveSince: "2026-11-07",
     windowDays: 28,
     readout: "board-path",
@@ -939,7 +958,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-27",
     windowDays: 14,
     readout: "v-progress",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-15 (5 days after the check date), owner's OK: keep. 31 students opened it in the 18 days from the 28 Oct deploy (43 openings), and 17 of them (55%) started a drill or opened /performance within 30 minutes. Only 7 of the 31 opened it on 2+ days: students look once, so the next test is a card that waits for them, \"v-day-card\".",
   },
   {
     id: "v-pay-offer",
@@ -1096,6 +1117,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     status: "decided",
     decision:
       "Ended early on 2026-11-15 (owner), 25 days before its check: replaced by the step chips (v-step-chips). In 3 days it got 2 starts of about 39 chances, and one was a staff account, so 1 student; both starts reached the last step. A button under the reply drew as few taps as the Reply icon (0 uses) and \"Which step lost you?\" (0 picks), so the step help moved into the steps themselves. Its taps stay stored (step_by_step, open/next/lost/done).",
+  },
+  {
+    id: "v-day-card",
+    title: "V's \"Your day\" card, the first time a student opens V each day",
+    change:
+      "The first time a signed-in student opens V on a new India day, a card stands in for V's greeting: their last day (answers, mistakes fixed, chapters that moved up; \"Since your last visit\" with the date after a gap, never the days missed), then one thing for today (the board plan's task, else Fix, starting with 5). A dot on V's button says it is waiting. No AI call. The mistakes notification now opens with \"Yesterday you fixed N.\" when there were fixes.",
+    why: "\"How's my progress\" works once (55% of openers took a next step) but not as a habit: 7 of 31 opened it on a second day. Of 1,509 students active in the 28 days to 2026-11-15, 63% came on one day only and 34% of active days were followed by a visit the next day. A card waiting when they open V tests whether seeing their own day brings them back.",
+    metric:
+      "surface_viewed 'v_day' (one a day per student, metadata.card yesterday | since | fresh): students shown it and the share shown it on 2+ days; Vercel v_day_tap by action; drill_started from v_day the same day; next-day return of students shown it against the 34% of all active days. Read with scripts/chat/day-card-readout.sql",
+    rule: `Keep it if ${V_DAY_REPEAT_KEEP_PCT}%+ of the students shown it see it on 2+ days and ${V_DAY_NEXT_STEP_KEEP_PCT}%+ of showings lead to a tap that day. Students who open V are keener than most, so next-day return is reported beside, not judged on.`,
+    liveSince: "2026-11-15",
+    windowDays: 14,
+    readout: "v-day-card",
+    status: "running",
   },
   {
     id: "v-step-chips",
@@ -1473,6 +1508,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "gulf-price",
     status: "running",
   },
+  {
+    id: "enem-interest",
+    title: "ENEM on the international site",
+    change:
+      "ENEM (Brazil) Day 2, 2021 to 2025, goes public on intl.pyqvault.com: 450 questions with worked solutions in Portuguese and 5 timed mocks, all free, no notes.",
+    why: "Five years of one exam is a cheap way to learn whether Brazilian students find us at all before writing Portuguese notes or adding 2016-2020 (owner: \"will help gauge interest\"). The big Portuguese sites own ENEM topic searches, so it may draw little.",
+    metric:
+      "Students who chose ENEM (student_profiles.target_exams) since going public, and how many of them started an ENEM mock or answered 20+ ENEM questions; ENEM page views and their countries from Vercel beside it",
+    rule: `Earn more work (2016-2020, then a 3-chapter notes pilot in Portuguese) if ${ENEM_STUDENTS_KEEP}+ students choose ENEM in 4 weeks and ${ENEM_ACTIVE_KEEP}+ of them use it. Fewer: leave ENEM as it is and add nothing.`,
+    liveSince: "2026-11-15",
+    windowDays: 28,
+    readout: "enem-interest",
+    status: "running",
+  },
 
 ];
 
@@ -1797,13 +1846,13 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
   "v-progress-students": {
     label: "V: students who opened How's my progress",
     source: "user_activity surface_viewed with metadata.surface 'v_progress' (one a day per student), distinct user_id since liveSince",
-    entries: [],
+    entries: [{ on: "2026-11-15", value: 31, note: "28 Oct to 15 Nov, from user_activity; 43 openings" }],
   },
   "v-progress-next-step": {
     label: "V: progress-card openers who drilled or opened /performance within 30 minutes (%)",
     source:
       "user_activity: each 'v_progress' view followed within 30 minutes by drill_started, or by surface_viewed 'performance', for the same student",
-    entries: [],
+    entries: [{ on: "2026-11-15", value: 55, note: "17 of 31 openers drilled or opened /performance within 30 minutes" }],
   },
   "self-mark-tap-share": {
     label: "Written answers: reveals followed by an Understood / Review later tap (%)",

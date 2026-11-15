@@ -241,7 +241,10 @@ describe("week: the next days if each day's card is done", () => {
     expect(days[1].tasks[0]).toEqual({ kind: "sheet", chapterId: "c", minutes: 10 });
     expect(days[2].tasks[0]).toEqual({ kind: "test", chapterId: "a", minutes: 20 });
     // Never a chapter part twice across the days.
-    const parts = days.flatMap((d) => d.tasks.filter((t) => t.kind !== "fix").map((t) => `${t.kind}:${"chapterId" in t ? t.chapterId : ""}`));
+    // A Top 10 comes in parts of 5 (§18), each part once.
+    const parts = days.flatMap((d) =>
+      d.tasks.filter((t) => t.kind !== "fix").map((t) => `${t.kind}:${"chapterId" in t ? t.chapterId : ""}:${t.kind === "top" ? t.upTo : ""}`)
+    );
     expect(new Set(parts).size).toBe(parts.length);
   });
   it("adds no Fix task to a future day: which mistakes wait is not known yet", () => {

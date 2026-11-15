@@ -4,8 +4,10 @@
  * GET   today on the path ({ today }), or the start offer when there is no
  *       path ({ today: null, offer }). No-store: it is the student's own.
  * POST  { action: "start", exam, stream } · { action: "stop" } ·
- *       { action: "defer", chapterId } ("Not taught yet"). Answers with the
- *       day as it now stands.
+ *       { action: "defer", chapterId } ("Not taught yet") ·
+ *       { action: "pace", direction } · { action: "cover", chapterIds }
+ *       ("What has your class covered?") · { action: "switch", chapterId }
+ *       (§18). Answers with the day as it now stands.
  *
  * The body is checked before any database work. Reads and the student's own
  * writes go through their JWT (RLS); today's pick and the test grants are
@@ -19,7 +21,17 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { checkAndIncrement } from "@/lib/rate-limit";
 import { getOwnProfile } from "@/lib/profile/service";
 import { parsePathAction } from "@/lib/path/parse";
-import { PathError, deferChapter, getPathOffer, getPathToday, setPace, startPath, stopPath } from "@/lib/path/service";
+import {
+  PathError,
+  deferChapter,
+  getPathOffer,
+  getPathToday,
+  setCovered,
+  setPace,
+  startPath,
+  stopPath,
+  switchChapter,
+} from "@/lib/path/service";
 
 export const dynamic = "force-dynamic";
 
@@ -84,6 +96,10 @@ export async function POST(request: NextRequest) {
       await stopPath(db, user.id);
     } else if (action.action === "pace") {
       await setPace(db, user.id, action.direction);
+    } else if (action.action === "cover") {
+      await setCovered(db, user.id, action.chapterIds);
+    } else if (action.action === "switch") {
+      await switchChapter(db, user.id, action.chapterId);
     } else {
       await deferChapter(db, user.id, action.chapterId);
     }

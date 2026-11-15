@@ -305,6 +305,10 @@ async function main() {
         // Read by hand: chat_interactions replies to a No (plain or naming a step), understood Yes against No.
         line = "by hand: chat_interactions understood on replies to a No";
         break;
+      case "v-day-card":
+        // Read by hand: surface_viewed v_day by student and day, taps, drill starts from v_day.
+        line = "by hand: scripts/chat/day-card-readout.sql (v_day showings on 2+ days, drill starts from v_day)";
+        break;
       case "v-step-chips":
         // Read by hand: step_by_step rows coded tap/explain/reply against stepped explanations, and Yes on Explain replies.
         line = "by hand: chat_interactions step_by_step (tap, explain, reply) and understood on Explain replies";
@@ -328,6 +332,10 @@ async function main() {
       case "teacher-or-student":
         // Read by hand: answers, the answer rate per box and the behaviour rule's precision (migration 0258).
         line = "by hand: scripts/profile/teacher-student-readout.sql";
+        break;
+      case "enem-interest":
+        // Read by hand: target_exams containing 'enem', and their ENEM mock attempts / answers.
+        line = "by hand: students with enem in target_exams, and their ENEM mocks and answers";
         break;
       case "gulf-price":
         // Read by hand: Gulf students' pass revenue (entitlements by signup_country) per Gulf signup.

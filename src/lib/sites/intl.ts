@@ -18,6 +18,7 @@
  */
 import { SITE_URL } from "@/lib/brand";
 import { EXAM_REGISTRY, type ExamEntry, type ExamSlug } from "@/lib/exam/examContext";
+import { examFromPath } from "@/lib/exam/examFromPath";
 import type { PlanSite } from "@/lib/billing/plans";
 
 export const INTL_ORIGIN = "https://intl.pyqvault.com";
@@ -42,6 +43,18 @@ export const INTL_EXAMS: readonly ExamEntry[] = EXAM_REGISTRY.filter((e) => e.si
  * registered and deployed before its rows went in). tests/intl-live-exams.
  */
 export const LIVE_INTL_EXAMS: readonly ExamEntry[] = INTL_EXAMS.filter((e) => !e.noPublicContent);
+
+/**
+ * The intl exams to record on a new student's profile at the intl welcome
+ * step: the live exam named by the page they are headed to, else every live
+ * one. With IMAT and ENEM both live (2026-11-15), recording all of them would
+ * count every IMAT student as an ENEM student, and the other way round.
+ */
+export function intlWelcomeTargets(next: string): ExamSlug[] {
+  const named = examFromPath(next);
+  const live = LIVE_INTL_EXAMS.map((e) => e.slug);
+  return named && live.includes(named) ? [named] : live;
+}
 
 function splitHost(host: string | null | undefined): { name: string; port: string } {
   const [name = "", port = ""] = (host ?? "").trim().toLowerCase().split(":");
@@ -144,16 +157,23 @@ export function progressPathFor(site: PlanSite): string {
   return site === "intl" ? "/me/map" : "/performance";
 }
 
-/** A section index on intl: the one exam's own page while there is one exam, else the intl home. */
+/**
+ * A section index on intl: the one exam's own page while one exam has that
+ * section, else the intl home. Notes and formula sheets count only the live
+ * exams WITH notes (ENEM has none, so they stay on IMAT's); mocks count every
+ * live exam.
+ */
 function sectionIndex(pathname: string): string | null {
-  const only = LIVE_INTL_EXAMS.length === 1 ? LIVE_INTL_EXAMS[0] : null;
+  const one = (list: readonly ExamEntry[]) => (list.length === 1 ? list[0] : null);
+  const only = one(LIVE_INTL_EXAMS);
+  const onlyWithNotes = one(LIVE_INTL_EXAMS.filter((e) => e.notesPath));
   switch (pathname) {
     case "/notes":
-      return only?.notesPath ?? "/";
+      return onlyWithNotes?.notesPath ?? "/";
     case "/mock":
       return only ? `/mock/exam/${only.slug}` : "/";
     case "/formula":
-      return only ? `/formula/${only.slug}` : "/";
+      return onlyWithNotes ? `/formula/${onlyWithNotes.slug}` : "/";
     case "/exams":
     case "/questions":
     case "/me":

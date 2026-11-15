@@ -17,7 +17,8 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { attachRefs, dueQuestions, LADDER_KINDS, type DrillEvent } from "@/lib/drill/select";
 import { loadQuestionRefs } from "@/lib/drill/query";
-import type { NudgeCandidate } from "./dueNudge";
+import { istDayKey, type NudgeCandidate } from "./dueNudge";
+import { fixedBetween } from "@/lib/chat/dayCard";
 
 const PAGE = 1000;
 
@@ -79,12 +80,15 @@ export async function readDueCandidates(
   }
   const refs = await loadQuestionRefs(db, [...allDueIds]);
 
+  // Yesterday in India, for the push's "Yesterday you fixed N." (V's day card, 2026-11-15).
+  const yesterday = istDayKey(new Date(now.getTime() - 86_400_000));
   const out: NudgeCandidate[] = [];
   for (const [userId, due] of dueByUser) {
     out.push({
       userId,
       due: attachRefs(due, refs),
       lastDrillAt: lastDrillByUser.get(userId) ?? null,
+      fixedYesterday: fixedBetween(eventsByUser.get(userId) ?? [], yesterday),
     });
   }
   return out;

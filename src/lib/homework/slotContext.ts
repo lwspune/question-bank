@@ -30,10 +30,32 @@ const SECTION_OPENING =
  *  aluminium:" carries the stem its parts share. */
 const ATTEMPT_ONLY = /^attempt any \w+ of the following(?: questions)?\s*[.:]?\s*$/i;
 
+/** UPSC (NDA, CDS) English stores its section direction on every question of
+ *  the section (2026-11-15). They run up to ~530 characters, longer than any
+ *  board instruction, so they are known by their SHAPE: they open with
+ *  "Directions" and END by telling you how to answer ("... accordingly.",
+ *  "... indicated as (d)."). A Maths set opening the same way ends with the
+ *  data its parts share, and a cloze passage carries its blanks. */
+const UPSC_DIRECTION_MAX = 560;
+const UPSC_DIRECTION_OPENING = /^(?:\*\*)?directions\b/i;
+const UPSC_DIRECTION_ENDING =
+  /(?:accordingly|answer sheet|indicated as \(d\)|by the letter \(d\)|\(a\), \(b\), \(c\) (?:or|and) \(d\)|correct alternative|most appropriate expression)\s*\.?$/i;
+const HAS_BLANK = /_{3,}|\[\d+\]/;
+
+function isUpscDirection(c: string): boolean {
+  return (
+    c.length <= UPSC_DIRECTION_MAX &&
+    UPSC_DIRECTION_OPENING.test(c) &&
+    UPSC_DIRECTION_ENDING.test(c) &&
+    !HAS_BLANK.test(c)
+  );
+}
+
 export function isHomeworkPassage(context: string | null): boolean {
   const c = (context ?? "").trim();
   if (c.length === 0) return false;
   if (isInstructionOnlyContext(c)) return false;
   if (ATTEMPT_ONLY.test(c)) return false;
+  if (isUpscDirection(c)) return false;
   return !(c.length <= MAX_INSTRUCTION_LENGTH && SECTION_OPENING.test(c));
 }

@@ -3888,5 +3888,131 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "NEET Zoology",
     "chapterSlug": "biotech-applications",
     "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "percentage",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "mensuration-3d",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "trigonometry",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "ratio",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "surds-indices",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "triangles",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "algebraic-identities",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "interest",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "number-system",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "data-interpretation",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "time-work",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "averages",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "tsd",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "linear-equations",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "statistics",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "circles",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "heights-distances",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "quadrilaterals",
+    "subtopicCount": 1
   }
 ];

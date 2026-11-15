@@ -15,9 +15,9 @@ import { INTL_ORIGIN, LIVE_INTL_EXAMS } from "@/lib/sites/intl";
  */
 export const revalidate = 86400;
 
-const TITLE = "PYQ Vault Global: IMAT past papers, notes and mock tests";
+const TITLE = "PYQ Vault Global: IMAT and ENEM past papers and mock tests";
 const DESCRIPTION =
-  "Free IMAT practice: the ministry's past papers with worked solutions, original practice questions, notes for every chapter and timed mock tests.";
+  "Free IMAT and ENEM practice: official past papers with worked solutions and timed mock tests, plus IMAT notes for every chapter and original practice questions.";
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -30,6 +30,16 @@ export const metadata: Metadata = {
 const ABOUT: Record<string, string> = {
   imat:
     "The International Medical Admissions Test for English-taught medicine and dentistry at Italy's public universities: 60 questions in 100 minutes across logic, reading, biology, chemistry, physics and maths.",
+  enem:
+    "Brazil's Exame Nacional do Ensino Médio, the way into most Brazilian universities. Day 2 of every paper from 2021 to 2025, Ciências da Natureza and Matemática: 90 questions in 5 hours, each with a worked solution in Portuguese. Free.",
+};
+
+/**
+ * The mock card's line where "the official marking" is not true: ENEM is scored
+ * by IRT, which a mock cannot reproduce, so its mocks count right answers.
+ */
+const MOCK_LINE: Record<string, string> = {
+  enem: "Timed like the real Day 2, scored by right answers",
 };
 
 async function questionCounts(): Promise<Map<string, KindCounts>> {
@@ -88,7 +98,7 @@ function ExamCard({ exam, questions }: { exam: ExamEntry; questions: KindCounts 
       href: `/mock/exam/${exam.slug}`,
       icon: ClipboardCheck,
       title: "Mock tests",
-      line: "Timed, scored with the official marking",
+      line: MOCK_LINE[exam.slug] ?? "Timed, scored with the official marking",
     },
     {
       href: "/browse",

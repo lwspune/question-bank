@@ -426,8 +426,8 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     passScope: "free",
     // Its figures include third-party photos and charts (credited in print).
     noImageIndex: true,
-    // Until the rows go PUBLIC (they land PRIVATE after this is deployed).
-    noPublicContent: true,
+    // `noPublicContent` came off on 2026-11-15 with the push that let the 450
+    // rows (2021-2025, committed PRIVATE that day) go PUBLIC.
   },
   {
     slug: "mh-hsc-12",

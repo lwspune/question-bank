@@ -4495,6 +4495,42 @@ export type Database = {
         }
         Relationships: []
       }
+      study_path_covered: {
+        Row: {
+          chapter_id: string
+          path_id: string
+          ticked_at: string
+          user_id: string
+        }
+        Insert: {
+          chapter_id: string
+          path_id: string
+          ticked_at?: string
+          user_id: string
+        }
+        Update: {
+          chapter_id?: string
+          path_id?: string
+          ticked_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "study_path_covered_chapter_id_fkey"
+            columns: ["chapter_id"]
+            isOneToOne: false
+            referencedRelation: "chapters"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "study_path_covered_path_id_fkey"
+            columns: ["path_id"]
+            isOneToOne: false
+            referencedRelation: "study_paths"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       study_path_days: {
         Row: {
           created_at: string
@@ -4613,6 +4649,7 @@ export type Database = {
       }
       study_paths: {
         Row: {
+          covered_at: string | null
           daily_minutes: number
           ended_at: string | null
           exam_slug: string
@@ -4622,6 +4659,7 @@ export type Database = {
           user_id: string
         }
         Insert: {
+          covered_at?: string | null
           daily_minutes: number
           ended_at?: string | null
           exam_slug: string
@@ -4631,6 +4669,7 @@ export type Database = {
           user_id: string
         }
         Update: {
+          covered_at?: string | null
           daily_minutes?: number
           ended_at?: string | null
           exam_slug?: string
@@ -5593,6 +5632,7 @@ export type Database = {
           right_answers: number
         }[]
       }
+      get_own_day_card: { Args: { p_exam_id: string }; Returns: Json }
       get_own_performance: { Args: never; Returns: Json }
       get_own_practice_counts: {
         Args: never
@@ -5771,6 +5811,13 @@ export type Database = {
           year: number
         }[]
       }
+      path_chapter_work: {
+        Args: { p_chapters: string[]; p_since: string; p_user: string }
+        Returns: {
+          chapter_id: string
+          last_at: string
+        }[]
+      }
       public_pyq_year_counts: {
         Args: never
         Returns: {
@@ -5850,6 +5897,10 @@ export type Database = {
           checkout_students: number
           paywall_students: number
         }[]
+      }
+      set_path_covered: {
+        Args: { p_chapters: string[]; p_path: string }
+        Returns: undefined
       }
       start_premium_trial: { Args: { p_feature: string }; Returns: string }
       v_search_answers: {
