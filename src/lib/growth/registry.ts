@@ -1194,7 +1194,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     why: "The owner's call (9 Nov), against the data: students share under 1% of the time (18 real practise-together sends in 3 weeks, 0 joins; 4 sign-ups from any share, ever). The bet is that a reward on both sides makes a student send the link and a friend buy.",
     metric:
       "Passes bought by referred friends (referrals.paid_at), with the steps before it: links made (referral_codes), share taps (share_events kind referral), friends who signed up through a link (referrals). `npm run referrals:readout` lists every referred sale so a student inviting their own second account shows up.",
-    rule: `Keep if referred friends buy ${REFERRALS_SALES_KEEP}+ passes by the check date. Fewer: switch it off.`,
+    rule: `Keep if referred friends buy ${REFERRALS_SALES_KEEP}+ passes by the check date. Fewer: switch it off. From 2026-11-15 Home shows Invite a friend as one line whose Know more opens the offer and link in a panel (owner): the Get my invite link button is a tap deeper, so links made may drop for that reason alone.`,
     liveSince: "2026-11-10",
     readout: "referrals",
     status: "running",

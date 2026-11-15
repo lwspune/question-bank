@@ -17,6 +17,8 @@ import {
   referralLink,
   referralShareText,
   referralStatusLine,
+  referralOfferLine,
+  referralPanelSubtitle,
   shouldAttachReferral,
   orderCarriesReferral,
 } from "@/lib/referrals/referral";
@@ -163,6 +165,19 @@ describe("the inviter's card", () => {
     expect(referralStatusLine({ joined: 3, bought: 1, rewards: 1 })).toBe(
       "3 friends joined · 1 bought a pass · 30 of 180 free days earned."
     );
+  });
+
+  // Home's one-line row opens a panel (owner, 2026-11-15) that always explains
+  // the offer, with the friend count under it once anyone has joined.
+  it("has one offer line, the same one shown before anyone joins", () => {
+    expect(referralOfferLine()).toBe(
+      "A friend who signs up with your link gets 25% off a pass. When they buy one, you get 30 days of Premium free, up to 180 days."
+    );
+    expect(referralStatusLine({ joined: 0, bought: 0, rewards: 0 })).toBe(referralOfferLine());
+  });
+
+  it("sums the offer up in the panel's header", () => {
+    expect(referralPanelSubtitle()).toBe("25% off for them, 30 free days for you");
   });
 
   it("says when the free days are all used", () => {
