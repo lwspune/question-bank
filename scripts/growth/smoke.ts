@@ -281,6 +281,10 @@ async function main() {
         // Read by hand: surface_viewed review_traps by action (shown, expand, playbook).
         line = "by hand: surface_viewed review_traps by action";
         break;
+      case "notes-drill-panel":
+        // Read by hand: notes_drill steps, and opens followed by a bank answer within 30 minutes.
+        line = "by hand: scripts/notes/notes-drill-readout.sql";
+        break;
       case "repeat-line":
         // Read by hand: surface_viewed repeat_line by action and from, plus the 14-day fix rate of line-question misses.
         line = "by hand: surface_viewed repeat_line by action, and the 14-day fix rate (baseline 16.9%)";

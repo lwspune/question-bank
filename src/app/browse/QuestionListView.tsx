@@ -33,6 +33,8 @@ type Props = {
   /** The guide/notes backlinks per question id, resolved ON THE SERVER. A
    *  plain object so it can cross into a client component (a Map cannot). */
   resourcesById?: Record<string, QuestionResources>;
+  /** Hide each card's Add to paper toggle (the notes drill panel, where no cart is on screen). */
+  hideCart?: boolean;
 };
 
 /**
@@ -67,6 +69,7 @@ export default function QuestionListView({
   resourcesById,
   itemStats,
   paperLinks,
+  hideCart = false,
 }: Props) {
   const groups = groupBySet(questions);
   const idToIndex = new Map<string, number>();
@@ -97,6 +100,7 @@ export default function QuestionListView({
             resources={resourcesById?.[group.question.id]}
             itemStats={itemStats?.get(group.question.id)}
             paperHref={paperLinks?.get(group.question.id)}
+            hideCart={hideCart}
           />
         </li>
       );
@@ -122,6 +126,7 @@ export default function QuestionListView({
                   resources={resourcesById?.[q.id]}
                   itemStats={itemStats?.get(q.id)}
                   paperHref={paperLinks?.get(q.id)}
+                  hideCart={hideCart}
                 />
               </li>
             ))}
