@@ -12,6 +12,15 @@ import type { ProfileDetails } from "@/lib/profile/fields";
 import { logActivity } from "@/lib/activity/service";
 import { isNewAccount } from "@/lib/auth/oneTap";
 import { readAcquisitionCookie } from "@/lib/acquisition/cookie";
+import { isUserRole, type UserRole } from "@/lib/profile/userRole";
+
+/** The student's answer to "Are you a teacher or a student?" (0258), or null. */
+export async function getOwnUserRole(db: SupabaseClient, userId: string): Promise<UserRole | null> {
+  const { data, error } = await db.from("student_profiles").select("user_role").eq("user_id", userId).maybeSingle();
+  if (error) throw new Error(error.message);
+  const role = (data as { user_role?: unknown } | null)?.user_role;
+  return isUserRole(role) ? role : null;
+}
 
 /** The student's stored contact mobile (canonical 91XXXXXXXXXX), or null if not
  *  yet captured. Used by the mock-result gate to decide whether to ask. */
@@ -117,6 +126,8 @@ export type ProfileUpdate = ProfileDetails & {
   examDate?: string | null;
   /** The language V answers in (set_language, migration 0232); null clears it. */
   vLanguage?: "en" | "hinglish" | "hi" | "mr" | null;
+  /** "Are you a teacher or a student?" (migration 0258): stamps user_role_at with it. */
+  userRole?: UserRole;
 };
 
 /**
@@ -149,6 +160,10 @@ export async function updateOwnProfile(
   }
   if (patch.pushPrompted) row.push_prompted_at = new Date().toISOString();
   if (patch.appOpened) row.app_opened_at = new Date().toISOString();
+  if (patch.userRole !== undefined) {
+    row.user_role = patch.userRole;
+    row.user_role_at = new Date().toISOString(); // the database requires both together (0258)
+  }
 
   const { error } = await db.from("student_profiles").upsert(row, { onConflict: "user_id" });
   if (error) throw new Error(error.message);

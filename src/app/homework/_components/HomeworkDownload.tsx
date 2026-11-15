@@ -25,6 +25,7 @@ import { offerLine, offerTitle } from "@/lib/billing/offerCopy";
 import type { ExportViewerAccess } from "@/lib/export/viewerAccess";
 import type { PassOfferLead } from "@/lib/billing/passOfferLead";
 import PassOffer from "@/app/browse/PassOffer";
+import RoleQuestion from "@/components/profile/RoleQuestion";
 import { cn } from "@/lib/utils";
 
 /**
@@ -243,6 +244,8 @@ export default function HomeworkDownload({
                 {busy === "pdf" ? "Preparing…" : "PDF"}
               </Button>
             </DialogFooter>
+            {/* Under the buttons, in the download view only (lib/profile/userRole). */}
+            <RoleQuestion box="homework" enabled={signedIn && !isStaff} className="shrink-0" />
           </>
         ) : pass ? (
           <PassOffer

@@ -24,6 +24,7 @@ import { gatePriceLine } from "@/lib/billing/gateCopy";
 import { offerLine, offerTitle } from "@/lib/billing/offerCopy";
 import type { ExportViewerAccess } from "@/lib/export/viewerAccess";
 import PassOffer from "@/app/browse/PassOffer";
+import RoleQuestion from "@/components/profile/RoleQuestion";
 import type { CheckoutSurface } from "@/components/billing/useCheckout";
 
 /**
@@ -255,6 +256,8 @@ export default function SheetDownload({
                 {busy ? "Preparing…" : "Download PDF"}
               </Button>
             </DialogFooter>
+            {/* Under the buttons, in the download view only (lib/profile/userRole). */}
+            <RoleQuestion box={kind} enabled={signedIn && !access?.isStaff} className="shrink-0" />
           </>
         ) : pass ? (
           <PassOffer

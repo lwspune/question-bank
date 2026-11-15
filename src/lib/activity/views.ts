@@ -100,6 +100,10 @@ export const SURFACES = [
   // The one line under a bank answer (2026-11-14, lib/questions/teachingMoment):
   // metadata.moment (same_mistake), metadata.action (shown) and metadata.questionId.
   "teaching_moment",
+  // "Are you a teacher or a student?" under a download box's buttons (2026-11-15,
+  // migration 0258, lib/profile/userRole), with metadata.box. Written by
+  // GET /api/profile/role when it says to ask: the answer rate's denominator.
+  "role_question",
 ] as const;
 
 export type Surface = (typeof SURFACES)[number];
