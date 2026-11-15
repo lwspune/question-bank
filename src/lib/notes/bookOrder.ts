@@ -103,6 +103,25 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     ecosystem: { cls: 12, chapterNo: 12, book: "XII 12 Ecosystem" },
     biodiversity: { cls: 12, chapterNo: 13, book: "XII 13 Biodiversity and Conservation" },
   },
+  // NEET Zoology (2026-11-15): same book and numbering. Digestion and Absorption and
+  // Environmental Issues left the NEET syllabus in 2024 and get no notes.
+  "neet-zoology": {
+    "animal-kingdom": { cls: 11, chapterNo: 4, book: "XI 4 Animal Kingdom" },
+    "structural-organisation": { cls: 11, chapterNo: 7, book: "XI 7 Structural Organisation in Animals" },
+    biomolecules: { cls: 11, chapterNo: 9, book: "XI 9 Biomolecules" },
+    breathing: { cls: 11, chapterNo: 14, book: "XI 14 Breathing and Exchange of Gases" },
+    "body-fluids": { cls: 11, chapterNo: 15, book: "XI 15 Body Fluids and Circulation" },
+    excretion: { cls: 11, chapterNo: 16, book: "XI 16 Excretory Products and their Elimination" },
+    locomotion: { cls: 11, chapterNo: 17, book: "XI 17 Locomotion and Movement" },
+    "neural-control": { cls: 11, chapterNo: 18, book: "XI 18 Neural Control and Coordination" },
+    "chemical-coordination": { cls: 11, chapterNo: 19, book: "XI 19 Chemical Coordination and Integration" },
+    "human-reproduction": { cls: 12, chapterNo: 2, book: "XII 2 Human Reproduction" },
+    "reproductive-health": { cls: 12, chapterNo: 3, book: "XII 3 Reproductive Health" },
+    evolution: { cls: 12, chapterNo: 6, book: "XII 6 Evolution" },
+    "human-health": { cls: 12, chapterNo: 7, book: "XII 7 Human Health and Disease" },
+    "biotech-principles": { cls: 12, chapterNo: 9, book: "XII 9 Biotechnology: Principles and Processes" },
+    "biotech-applications": { cls: 12, chapterNo: 10, book: "XII 10 Biotechnology and its Applications" },
+  },
   "mht-cet-physics": {
     "units-and-measurement": { cls: 11, chapterNo: 1, book: "XI 1 Units and Measurements" },
     "motion-in-a-plane": { cls: 11, chapterNo: 3, book: "XI 3 Motion in a Plane" },

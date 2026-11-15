@@ -2486,6 +2486,36 @@ import {
   NEET_BO_BD_NOTES,
   NEET_BO_BD_SLUGS,
 } from "@/app/notes/neet-botany/biodiversity/_data";
+import {
+  NEET_ZO_AK_CHAPTER,
+  NEET_ZO_AK_NOTES,
+  NEET_ZO_AK_SLUGS,
+} from "@/app/notes/neet-zoology/animal-kingdom/_data";
+import {
+  NEET_ZO_SO_CHAPTER,
+  NEET_ZO_SO_NOTES,
+  NEET_ZO_SO_SLUGS,
+} from "@/app/notes/neet-zoology/structural-organisation/_data";
+import {
+  NEET_ZO_BM_CHAPTER,
+  NEET_ZO_BM_NOTES,
+  NEET_ZO_BM_SLUGS,
+} from "@/app/notes/neet-zoology/biomolecules/_data";
+import {
+  NEET_ZO_BR_CHAPTER,
+  NEET_ZO_BR_NOTES,
+  NEET_ZO_BR_SLUGS,
+} from "@/app/notes/neet-zoology/breathing/_data";
+import {
+  NEET_ZO_BF_CHAPTER,
+  NEET_ZO_BF_NOTES,
+  NEET_ZO_BF_SLUGS,
+} from "@/app/notes/neet-zoology/body-fluids/_data";
+import {
+  NEET_ZO_EX_CHAPTER,
+  NEET_ZO_EX_NOTES,
+  NEET_ZO_EX_SLUGS,
+} from "@/app/notes/neet-zoology/excretion/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -8001,6 +8031,72 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: NEET_BO_BD_CHAPTER,
     notes: NEET_BO_BD_NOTES,
     slugs: NEET_BO_BD_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Zoology",
+    subjectRoute: "neet-zoology",
+    subjectDisplay: "NEET Zoology",
+    chapterSlug: "animal-kingdom",
+    chipLabel: "Animal Kingdom notes",
+    chapter: NEET_ZO_AK_CHAPTER,
+    notes: NEET_ZO_AK_NOTES,
+    slugs: NEET_ZO_AK_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Zoology",
+    subjectRoute: "neet-zoology",
+    subjectDisplay: "NEET Zoology",
+    chapterSlug: "structural-organisation",
+    chipLabel: "Structural Organisation in Animals notes",
+    chapter: NEET_ZO_SO_CHAPTER,
+    notes: NEET_ZO_SO_NOTES,
+    slugs: NEET_ZO_SO_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Zoology",
+    subjectRoute: "neet-zoology",
+    subjectDisplay: "NEET Zoology",
+    chapterSlug: "biomolecules",
+    chipLabel: "Biomolecules notes",
+    chapter: NEET_ZO_BM_CHAPTER,
+    notes: NEET_ZO_BM_NOTES,
+    slugs: NEET_ZO_BM_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Zoology",
+    subjectRoute: "neet-zoology",
+    subjectDisplay: "NEET Zoology",
+    chapterSlug: "breathing",
+    chipLabel: "Breathing and Exchange of Gases notes",
+    chapter: NEET_ZO_BR_CHAPTER,
+    notes: NEET_ZO_BR_NOTES,
+    slugs: NEET_ZO_BR_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Zoology",
+    subjectRoute: "neet-zoology",
+    subjectDisplay: "NEET Zoology",
+    chapterSlug: "body-fluids",
+    chipLabel: "Body Fluids and Circulation notes",
+    chapter: NEET_ZO_BF_CHAPTER,
+    notes: NEET_ZO_BF_NOTES,
+    slugs: NEET_ZO_BF_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Zoology",
+    subjectRoute: "neet-zoology",
+    subjectDisplay: "NEET Zoology",
+    chapterSlug: "excretion",
+    chipLabel: "Excretory Products notes",
+    chapter: NEET_ZO_EX_CHAPTER,
+    notes: NEET_ZO_EX_NOTES,
+    slugs: NEET_ZO_EX_SLUGS,
   },
 ];
 

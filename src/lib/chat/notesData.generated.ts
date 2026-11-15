@@ -543,7 +543,13 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "neet-botany/microbes",
   "neet-botany/organisms-populations",
   "neet-botany/ecosystem",
-  "neet-botany/biodiversity"
+  "neet-botany/biodiversity",
+  "neet-zoology/animal-kingdom",
+  "neet-zoology/structural-organisation",
+  "neet-zoology/biomolecules",
+  "neet-zoology/breathing",
+  "neet-zoology/body-fluids",
+  "neet-zoology/excretion"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1087,4 +1093,10 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "neet-botany/organisms-populations": () => import("@/app/notes/neet-botany/organisms-populations/_data").then((m) => m.NEET_BO_OP_NOTES),
   "neet-botany/ecosystem": () => import("@/app/notes/neet-botany/ecosystem/_data").then((m) => m.NEET_BO_EC_NOTES),
   "neet-botany/biodiversity": () => import("@/app/notes/neet-botany/biodiversity/_data").then((m) => m.NEET_BO_BD_NOTES),
+  "neet-zoology/animal-kingdom": () => import("@/app/notes/neet-zoology/animal-kingdom/_data").then((m) => m.NEET_ZO_AK_NOTES),
+  "neet-zoology/structural-organisation": () => import("@/app/notes/neet-zoology/structural-organisation/_data").then((m) => m.NEET_ZO_SO_NOTES),
+  "neet-zoology/biomolecules": () => import("@/app/notes/neet-zoology/biomolecules/_data").then((m) => m.NEET_ZO_BM_NOTES),
+  "neet-zoology/breathing": () => import("@/app/notes/neet-zoology/breathing/_data").then((m) => m.NEET_ZO_BR_NOTES),
+  "neet-zoology/body-fluids": () => import("@/app/notes/neet-zoology/body-fluids/_data").then((m) => m.NEET_ZO_BF_NOTES),
+  "neet-zoology/excretion": () => import("@/app/notes/neet-zoology/excretion/_data").then((m) => m.NEET_ZO_EX_NOTES),
 };

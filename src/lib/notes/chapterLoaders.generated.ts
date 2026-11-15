@@ -11047,6 +11047,119 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 9,
       "traps": 23
     }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "animal-kingdom",
+    "chipLabel": "Animal Kingdom notes",
+    "slugs": [
+      "nzo-ak-basis",
+      "nzo-ak-nonchordates",
+      "nzo-ak-chordata",
+      "nzo-ak-vertebrates"
+    ],
+    "chapterName": "Animal Kingdom",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 11,
+      "traps": 36
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "structural-organisation",
+    "chipLabel": "Structural Organisation in Animals notes",
+    "slugs": [
+      "nzo-so-tissues",
+      "nzo-so-cockroach",
+      "nzo-so-frog"
+    ],
+    "chapterName": "Structural Organisation in Animals",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 10,
+      "traps": 27
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "biomolecules",
+    "chipLabel": "Biomolecules notes",
+    "slugs": [
+      "nzo-bm-blocks",
+      "nzo-bm-polymers",
+      "nzo-bm-enzymes"
+    ],
+    "chapterName": "Biomolecules",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 12,
+      "traps": 33
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "breathing",
+    "chipLabel": "Breathing and Exchange of Gases notes",
+    "slugs": [
+      "nzo-br-breathing",
+      "nzo-br-transport"
+    ],
+    "chapterName": "Breathing and Exchange of Gases",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 7,
+      "traps": 23
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "body-fluids",
+    "chipLabel": "Body Fluids and Circulation notes",
+    "slugs": [
+      "nzo-bf-blood",
+      "nzo-bf-heart"
+    ],
+    "chapterName": "Body Fluids and Circulation",
+    "formulaCounts": {
+      "formulas": 2,
+      "tables": 6,
+      "traps": 26
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "excretion",
+    "chipLabel": "Excretory Products notes",
+    "slugs": [
+      "nzo-ex-organs",
+      "nzo-ex-urine",
+      "nzo-ex-regulation"
+    ],
+    "chapterName": "Excretory Products and their Elimination",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 10,
+      "traps": 28
+    }
   }
 ];
 
@@ -11591,4 +11704,10 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "neet-botany/organisms-populations": () => import("@/app/notes/neet-botany/organisms-populations/_data").then((m) => ({ chapter: m.NEET_BO_OP_CHAPTER, notes: m.NEET_BO_OP_NOTES })),
   "neet-botany/ecosystem": () => import("@/app/notes/neet-botany/ecosystem/_data").then((m) => ({ chapter: m.NEET_BO_EC_CHAPTER, notes: m.NEET_BO_EC_NOTES })),
   "neet-botany/biodiversity": () => import("@/app/notes/neet-botany/biodiversity/_data").then((m) => ({ chapter: m.NEET_BO_BD_CHAPTER, notes: m.NEET_BO_BD_NOTES })),
+  "neet-zoology/animal-kingdom": () => import("@/app/notes/neet-zoology/animal-kingdom/_data").then((m) => ({ chapter: m.NEET_ZO_AK_CHAPTER, notes: m.NEET_ZO_AK_NOTES })),
+  "neet-zoology/structural-organisation": () => import("@/app/notes/neet-zoology/structural-organisation/_data").then((m) => ({ chapter: m.NEET_ZO_SO_CHAPTER, notes: m.NEET_ZO_SO_NOTES })),
+  "neet-zoology/biomolecules": () => import("@/app/notes/neet-zoology/biomolecules/_data").then((m) => ({ chapter: m.NEET_ZO_BM_CHAPTER, notes: m.NEET_ZO_BM_NOTES })),
+  "neet-zoology/breathing": () => import("@/app/notes/neet-zoology/breathing/_data").then((m) => ({ chapter: m.NEET_ZO_BR_CHAPTER, notes: m.NEET_ZO_BR_NOTES })),
+  "neet-zoology/body-fluids": () => import("@/app/notes/neet-zoology/body-fluids/_data").then((m) => ({ chapter: m.NEET_ZO_BF_CHAPTER, notes: m.NEET_ZO_BF_NOTES })),
+  "neet-zoology/excretion": () => import("@/app/notes/neet-zoology/excretion/_data").then((m) => ({ chapter: m.NEET_ZO_EX_CHAPTER, notes: m.NEET_ZO_EX_NOTES })),
 };
