@@ -216,7 +216,7 @@ export default async function ChatUsagePage() {
         </section>
 
         <section className="rounded-lg border">
-          <h2 className="border-b px-4 py-3 text-sm font-semibold">Teach me step by step</h2>
+          <h2 className="border-b px-4 py-3 text-sm font-semibold">Step chips under explanations</h2>
           <table className="w-full text-sm">
             <thead>
               <tr className="text-left text-xs text-muted-foreground">
@@ -235,10 +235,10 @@ export default async function ChatUsagePage() {
               ))}
             </tbody>
           </table>
-          {summary.lostAt.length > 0 && (
+          {summary.explainAt.length > 0 && (
             <p className="border-t px-4 py-2 text-xs text-muted-foreground">
-              Lost me here, by step:{" "}
-              {summary.lostAt.map((l) => `step ${l.step}: ${l.count.toLocaleString("en-IN")}`).join(" · ")}
+              Explain, by step:{" "}
+              {summary.explainAt.map((l) => `step ${l.step}: ${l.count.toLocaleString("en-IN")}`).join(" · ")}
             </p>
           )}
         </section>

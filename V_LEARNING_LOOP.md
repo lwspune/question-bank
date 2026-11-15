@@ -183,7 +183,7 @@ next, "Teach me step by step"). Shown twice, one drill start: too few to judge.
 The line stays on the chapter pages. The server no longer reads the explained
 question's chapter; the `v_chapter` tag stays so its rows still read. What
 replaces it under an explanation is part of V_SPEC.md section 0, step 1:
-"Teach me step by step", built 2026-11-12 (V_SPEC.md section 3).
+"Teach me step by step", built 2026-11-12 (V_SPEC.md section 3), replaced 2026-11-15 by the step chips (a bubble per step, Explain and Reply on a tapped one).
 
 ### Step 4. A better second try after a No: BUILT 2026-11-10
 
