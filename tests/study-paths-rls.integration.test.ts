@@ -9,6 +9,9 @@
  *     service role only (the free-limit exemptions come from them, so a
  *     student must not be able to write them)
  *   - user_activity takes `path_chapter_done`
+ *   - 0261: study_path_covered + set_path_covered (the class checklist, one
+ *     transaction, own active plan only) and path_chapter_work (practice per
+ *     chapter, the drill left out, own rows only)
  *
  * The free start of a granted test is pinned in
  * free-mock-limit.integration.test.ts, which owns the settings row.
@@ -34,6 +37,7 @@ describe.skipIf(!HAS_ENV)("study paths (migration 0225)", () => {
   const ids = {} as Record<Role, string>;
   const clients = {} as Record<Role, SupabaseClient>;
   let chapterId = "";
+  let questionId = "";
   let mockId = "";
   let samPath = "";
 
@@ -57,6 +61,7 @@ describe.skipIf(!HAS_ENV)("study paths (migration 0225)", () => {
       .single();
     expect(qErr).toBeNull();
     chapterId = q!.chapter_id;
+    questionId = q!.id;
     mockId = randomUUID();
     const { error: mErr } = await admin.from("mock_tests").insert({
       id: mockId,
@@ -202,5 +207,88 @@ describe.skipIf(!HAS_ENV)("study paths (migration 0225)", () => {
       });
       expect(error).toBeNull();
     }
+  });
+
+  describe("the class checklist and chapter work (0261)", () => {
+    let riyaPath = "";
+    let otherChapter = "";
+
+    beforeAll(async () => {
+      const { data, error } = await newPath("riya");
+      expect(error).toBeNull();
+      riyaPath = data!.id;
+      const { data: c } = await admin.from("chapters").select("id").neq("id", chapterId).limit(1).single();
+      otherChapter = c!.id;
+    });
+
+    const ticks = async (role: Role, path: string) =>
+      ((await clients[role].from("study_path_covered").select("chapter_id").eq("path_id", path)).data ?? []).map((r) => r.chapter_id).sort();
+
+    it("saves a student's ticks and stamps when they answered", async () => {
+      const { error } = await clients.riya.rpc("set_path_covered", { p_path: riyaPath, p_chapters: [chapterId, otherChapter, chapterId] });
+      expect(error).toBeNull();
+      expect(await ticks("riya", riyaPath)).toEqual([chapterId, otherChapter].sort());
+      const { data } = await clients.riya.from("study_paths").select("covered_at").eq("id", riyaPath).single();
+      expect(data!.covered_at).not.toBeNull();
+    });
+
+    it("replaces the whole set on the next save", async () => {
+      expect((await clients.riya.rpc("set_path_covered", { p_path: riyaPath, p_chapters: [otherChapter] })).error).toBeNull();
+      expect(await ticks("riya", riyaPath)).toEqual([otherChapter]);
+    });
+
+    it("leaves the old ticks whole when a save fails part way", async () => {
+      const { error } = await clients.riya.rpc("set_path_covered", { p_path: riyaPath, p_chapters: [chapterId, randomUUID()] });
+      expect(error).not.toBeNull();
+      expect(await ticks("riya", riyaPath)).toEqual([otherChapter]);
+    });
+
+    it("refuses another student's plan, and an ended one", async () => {
+      const theirs = await clients.sam.rpc("set_path_covered", { p_path: riyaPath, p_chapters: [chapterId] });
+      expect(theirs.error?.code).toBe("42501");
+      expect(await ticks("riya", riyaPath)).toEqual([otherChapter]);
+      const ended = await clients.sam.rpc("set_path_covered", { p_path: samPath, p_chapters: [chapterId] });
+      expect(ended.error?.code).toBe("42501");
+    });
+
+    it("keeps ticks private and writable only on the student's own active plan", async () => {
+      expect(await ticks("sam", riyaPath)).toEqual([]);
+      const write = await clients.sam.from("study_path_covered").insert({ path_id: riyaPath, user_id: ids.sam, chapter_id: chapterId });
+      expect(write.error?.code).toBe("42501");
+      const own = await clients.riya
+        .from("study_path_covered")
+        .upsert({ path_id: riyaPath, user_id: ids.riya, chapter_id: chapterId }, { onConflict: "path_id,chapter_id", ignoreDuplicates: true });
+      expect(own.error).toBeNull();
+    });
+
+    it("reads a chapter's latest practice, leaving the drill out, for the student's own rows only", async () => {
+      const at = (h: number) => new Date(Date.UTC(2026, 10, 10, h)).toISOString();
+      const rows = [
+        { kind: "question_practiced", metadata: { surface: "board" }, created_at: at(1) },
+        { kind: "answer_wrong", metadata: { surface: "bank" }, created_at: at(2) },
+        { kind: "answer_wrong", metadata: { surface: "drill" }, created_at: at(5) },
+      ];
+      for (const r of rows) {
+        const { error } = await clients.riya
+          .from("user_activity")
+          .insert({ user_id: ids.riya, ref_id: questionId, ref_kind: "question", ...r });
+        expect(error).toBeNull();
+      }
+      const args = { p_user: ids.riya, p_since: at(0), p_chapters: [chapterId, otherChapter] };
+      const { data, error } = await clients.riya.rpc("path_chapter_work", args);
+      expect(error).toBeNull();
+      expect(data).toHaveLength(1);
+      expect(data![0].chapter_id).toBe(chapterId);
+      expect(new Date(data![0].last_at).toISOString()).toBe(at(2));
+      expect((await clients.sam.rpc("path_chapter_work", args)).data ?? []).toHaveLength(0);
+      expect((await admin.rpc("path_chapter_work", args)).data).toHaveLength(1);
+    });
+
+    it("takes path_covered and path_switched events", async () => {
+      for (const kind of ["path_covered", "path_switched"]) {
+        const { error } = await clients.riya.from("user_activity").insert({ user_id: ids.riya, kind, ref_id: chapterId, metadata: {} });
+        expect(error).toBeNull();
+      }
+    });
   });
 });
