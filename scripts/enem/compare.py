@@ -41,7 +41,9 @@ def main():
             shape.append(f"Q{n}: subject {q.get('subject')!r}")
         for f in ("figure", "option_figures"):
             v = q.get(f)
-            if v and (not isinstance(v.get("page"), int) or len(v.get("box", [])) != 4):
+            box = v.get("box", []) if v else []
+            boxes = box if box and isinstance(box[0], list) else [box]
+            if v and (not isinstance(v.get("page"), int) or any(len(b) != 4 for b in boxes)):
                 shape.append(f"Q{n}: {f} needs page + 4-number box")
         for c in q.get("credit", []):
             if c.split(".")[0][:25] not in q["text"]:
