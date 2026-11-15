@@ -305,6 +305,8 @@ export type PathToday = {
   recent: Map<string, string>;
   /** The revision weeks' inputs (Phase 3), for the coming days; null before them. */
   revision: RevisionInput | null;
+  /** When each chapter's sheet, test and done were first seen, for V's day card (lib/chat/dayCard planDoneOn). */
+  facts: ChapterFacts;
 };
 
 /** Everything a day's pick reads, in chapters mode or the revision weeks (Phase 3). */
@@ -510,6 +512,7 @@ export async function getPathToday(
     tasks,
     deferred: inp.deferred,
     recent: inp.recent,
+    facts,
     revision:
       inp.mode === "revision"
         ? { buffer: inp.buffer, papers: inp.papers, paperStates, reviews: inp.reviews, sheetSeenAt: inp.sheetLastAt }

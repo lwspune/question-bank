@@ -44,17 +44,17 @@ type CardPayload = {
   notes: string[];
 };
 
-function examBySlug(slug: string): ProgressExam | null {
+export function examBySlug(slug: string): ProgressExam | null {
   const e = EXAM_REGISTRY.find((x) => x.slug === slug);
   return e ? { slug: e.slug, examName: e.examName, displayName: e.displayName } : null;
 }
 
-function examByName(name: string | null): ProgressExam | null {
+export function examByName(name: string | null): ProgressExam | null {
   const e = name ? EXAM_REGISTRY.find((x) => x.examName === name) : undefined;
   return e ? { slug: e.slug, examName: e.examName, displayName: e.displayName } : null;
 }
 
-async function examIdOf(db: SupabaseClient, examName: string): Promise<string | null> {
+export async function examIdOf(db: SupabaseClient, examName: string): Promise<string | null> {
   const { data, error } = await db.from("exams").select("id").eq("name", examName).maybeSingle();
   if (error) throw new Error(`progress card exam: ${error.message}`);
   return (data?.id as string | undefined) ?? null;

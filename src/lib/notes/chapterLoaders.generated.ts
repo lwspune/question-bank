@@ -11334,6 +11334,346 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 10,
       "traps": 26
     }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "percentage",
+    "chipLabel": "Percentage, Profit and Loss notes",
+    "slugs": [
+      "ssc2-pp-basics",
+      "ssc2-pp-successive",
+      "ssc2-pp-problems",
+      "ssc2-pp-profit",
+      "ssc2-pp-discount"
+    ],
+    "chapterName": "Percentage, Profit and Loss",
+    "formulaCounts": {
+      "formulas": 16,
+      "tables": 0,
+      "traps": 22
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "mensuration-3d",
+    "chipLabel": "Mensuration 3D notes",
+    "slugs": [
+      "ssc2-m3-prisms",
+      "ssc2-m3-cylinders",
+      "ssc2-m3-cones",
+      "ssc2-m3-spheres",
+      "ssc2-m3-scaling",
+      "ssc2-m3-recasting"
+    ],
+    "chapterName": "Mensuration 3D",
+    "formulaCounts": {
+      "formulas": 15,
+      "tables": 0,
+      "traps": 17
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "trigonometry",
+    "chipLabel": "Trigonometric Ratios and Identities notes",
+    "slugs": [
+      "ssc2-tg-values",
+      "ssc2-tg-triangle",
+      "ssc2-tg-complementary",
+      "ssc2-tg-identities"
+    ],
+    "chapterName": "Trigonometric Ratios and Identities",
+    "formulaCounts": {
+      "formulas": 11,
+      "tables": 0,
+      "traps": 12
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "ratio",
+    "chipLabel": "Ratio, Proportion and Variation notes",
+    "slugs": [
+      "ssc2-ra-basics",
+      "ssc2-ra-changing",
+      "ssc2-ra-income",
+      "ssc2-ra-partnership",
+      "ssc2-ra-mixtures"
+    ],
+    "chapterName": "Ratio, Proportion and Variation",
+    "formulaCounts": {
+      "formulas": 12,
+      "tables": 0,
+      "traps": 12
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "surds-indices",
+    "chipLabel": "Surds, Indices and Simplification notes",
+    "slugs": [
+      "ssc2-si-bodmas",
+      "ssc2-si-fractions",
+      "ssc2-si-indices",
+      "ssc2-si-surds"
+    ],
+    "chapterName": "Surds, Indices and Simplification",
+    "formulaCounts": {
+      "formulas": 11,
+      "tables": 0,
+      "traps": 11
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "triangles",
+    "chipLabel": "Triangles notes",
+    "slugs": [
+      "ssc2-tr-angles",
+      "ssc2-tr-sides",
+      "ssc2-tr-similarity",
+      "ssc2-tr-centres"
+    ],
+    "chapterName": "Triangles",
+    "formulaCounts": {
+      "formulas": 12,
+      "tables": 0,
+      "traps": 12
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "algebraic-identities",
+    "chipLabel": "Algebraic Identities and Simplification notes",
+    "slugs": [
+      "ssc2-ai-identities",
+      "ssc2-ai-reciprocal"
+    ],
+    "chapterName": "Algebraic Identities and Simplification",
+    "formulaCounts": {
+      "formulas": 6,
+      "tables": 0,
+      "traps": 6
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "interest",
+    "chipLabel": "Simple and Compound Interest notes",
+    "slugs": [
+      "ssc2-in-simple",
+      "ssc2-in-compound"
+    ],
+    "chapterName": "Simple and Compound Interest",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 0,
+      "traps": 5
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "number-system",
+    "chipLabel": "Number System notes",
+    "slugs": [
+      "ssc2-ns-divisibility",
+      "ssc2-ns-hcf",
+      "ssc2-ns-primes"
+    ],
+    "chapterName": "Number System",
+    "formulaCounts": {
+      "formulas": 8,
+      "tables": 0,
+      "traps": 8
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "data-interpretation",
+    "chipLabel": "Data Interpretation notes",
+    "slugs": [
+      "ssc2-di-graphs",
+      "ssc2-di-pies"
+    ],
+    "chapterName": "Data Interpretation",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 0,
+      "traps": 4
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "time-work",
+    "chipLabel": "Time and Work notes",
+    "slugs": [
+      "ssc2-tw-work",
+      "ssc2-tw-pipes"
+    ],
+    "chapterName": "Time and Work",
+    "formulaCounts": {
+      "formulas": 6,
+      "tables": 0,
+      "traps": 6
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "averages",
+    "chipLabel": "Averages notes",
+    "slugs": [
+      "ssc2-av-sum",
+      "ssc2-av-combined"
+    ],
+    "chapterName": "Averages",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 0,
+      "traps": 4
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "tsd",
+    "chipLabel": "Time, Speed and Distance notes",
+    "slugs": [
+      "ssc2-td-basics",
+      "ssc2-td-relative"
+    ],
+    "chapterName": "Time, Speed and Distance",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 0,
+      "traps": 5
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "linear-equations",
+    "chipLabel": "Linear Equations notes",
+    "slugs": [
+      "ssc2-le-systems",
+      "ssc2-le-words"
+    ],
+    "chapterName": "Linear Equations",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 0,
+      "traps": 5
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "statistics",
+    "chipLabel": "Statistics notes",
+    "slugs": [
+      "ssc2-st-ungrouped",
+      "ssc2-st-grouped"
+    ],
+    "chapterName": "Statistics",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 0,
+      "traps": 5
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "circles",
+    "chipLabel": "Circles notes",
+    "slugs": [
+      "ssc2-ci-angles",
+      "ssc2-ci-chords"
+    ],
+    "chapterName": "Circles",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 0,
+      "traps": 4
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "heights-distances",
+    "chipLabel": "Heights and Distances notes",
+    "slugs": [
+      "ssc2-hd-one",
+      "ssc2-hd-two"
+    ],
+    "chapterName": "Heights and Distances",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 0,
+      "traps": 4
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "quadrilaterals",
+    "chipLabel": "Quadrilaterals notes",
+    "slugs": [
+      "ssc2-qu-properties"
+    ],
+    "chapterName": "Quadrilaterals",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 0,
+      "traps": 3
+    }
   }
 ];
 
@@ -11893,4 +12233,22 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "neet-zoology/reproductive-health": () => import("@/app/notes/neet-zoology/reproductive-health/_data").then((m) => ({ chapter: m.NEET_ZO_RH_CHAPTER, notes: m.NEET_ZO_RH_NOTES })),
   "neet-zoology/biotech-principles": () => import("@/app/notes/neet-zoology/biotech-principles/_data").then((m) => ({ chapter: m.NEET_ZO_BP_CHAPTER, notes: m.NEET_ZO_BP_NOTES })),
   "neet-zoology/biotech-applications": () => import("@/app/notes/neet-zoology/biotech-applications/_data").then((m) => ({ chapter: m.NEET_ZO_BA_CHAPTER, notes: m.NEET_ZO_BA_NOTES })),
+  "ssc-cgl-tier-2-maths/percentage": () => import("@/app/notes/ssc-cgl-tier-2-maths/percentage/_data").then((m) => ({ chapter: m.SSC2_PERCENTAGE_CHAPTER, notes: m.SSC2_PERCENTAGE_NOTES })),
+  "ssc-cgl-tier-2-maths/mensuration-3d": () => import("@/app/notes/ssc-cgl-tier-2-maths/mensuration-3d/_data").then((m) => ({ chapter: m.SSC2_MENSURATION_3D_CHAPTER, notes: m.SSC2_MENSURATION_3D_NOTES })),
+  "ssc-cgl-tier-2-maths/trigonometry": () => import("@/app/notes/ssc-cgl-tier-2-maths/trigonometry/_data").then((m) => ({ chapter: m.SSC2_TRIGONOMETRY_CHAPTER, notes: m.SSC2_TRIGONOMETRY_NOTES })),
+  "ssc-cgl-tier-2-maths/ratio": () => import("@/app/notes/ssc-cgl-tier-2-maths/ratio/_data").then((m) => ({ chapter: m.SSC2_RATIO_CHAPTER, notes: m.SSC2_RATIO_NOTES })),
+  "ssc-cgl-tier-2-maths/surds-indices": () => import("@/app/notes/ssc-cgl-tier-2-maths/surds-indices/_data").then((m) => ({ chapter: m.SSC2_SURDS_INDICES_CHAPTER, notes: m.SSC2_SURDS_INDICES_NOTES })),
+  "ssc-cgl-tier-2-maths/triangles": () => import("@/app/notes/ssc-cgl-tier-2-maths/triangles/_data").then((m) => ({ chapter: m.SSC2_TRIANGLES_CHAPTER, notes: m.SSC2_TRIANGLES_NOTES })),
+  "ssc-cgl-tier-2-maths/algebraic-identities": () => import("@/app/notes/ssc-cgl-tier-2-maths/algebraic-identities/_data").then((m) => ({ chapter: m.SSC2_ALGEBRAIC_IDENTITIES_CHAPTER, notes: m.SSC2_ALGEBRAIC_IDENTITIES_NOTES })),
+  "ssc-cgl-tier-2-maths/interest": () => import("@/app/notes/ssc-cgl-tier-2-maths/interest/_data").then((m) => ({ chapter: m.SSC2_INTEREST_CHAPTER, notes: m.SSC2_INTEREST_NOTES })),
+  "ssc-cgl-tier-2-maths/number-system": () => import("@/app/notes/ssc-cgl-tier-2-maths/number-system/_data").then((m) => ({ chapter: m.SSC2_NUMBER_SYSTEM_CHAPTER, notes: m.SSC2_NUMBER_SYSTEM_NOTES })),
+  "ssc-cgl-tier-2-maths/data-interpretation": () => import("@/app/notes/ssc-cgl-tier-2-maths/data-interpretation/_data").then((m) => ({ chapter: m.SSC2_DATA_INTERPRETATION_CHAPTER, notes: m.SSC2_DATA_INTERPRETATION_NOTES })),
+  "ssc-cgl-tier-2-maths/time-work": () => import("@/app/notes/ssc-cgl-tier-2-maths/time-work/_data").then((m) => ({ chapter: m.SSC2_TIME_WORK_CHAPTER, notes: m.SSC2_TIME_WORK_NOTES })),
+  "ssc-cgl-tier-2-maths/averages": () => import("@/app/notes/ssc-cgl-tier-2-maths/averages/_data").then((m) => ({ chapter: m.SSC2_AVERAGES_CHAPTER, notes: m.SSC2_AVERAGES_NOTES })),
+  "ssc-cgl-tier-2-maths/tsd": () => import("@/app/notes/ssc-cgl-tier-2-maths/tsd/_data").then((m) => ({ chapter: m.SSC2_TSD_CHAPTER, notes: m.SSC2_TSD_NOTES })),
+  "ssc-cgl-tier-2-maths/linear-equations": () => import("@/app/notes/ssc-cgl-tier-2-maths/linear-equations/_data").then((m) => ({ chapter: m.SSC2_LINEAR_EQUATIONS_CHAPTER, notes: m.SSC2_LINEAR_EQUATIONS_NOTES })),
+  "ssc-cgl-tier-2-maths/statistics": () => import("@/app/notes/ssc-cgl-tier-2-maths/statistics/_data").then((m) => ({ chapter: m.SSC2_STATISTICS_CHAPTER, notes: m.SSC2_STATISTICS_NOTES })),
+  "ssc-cgl-tier-2-maths/circles": () => import("@/app/notes/ssc-cgl-tier-2-maths/circles/_data").then((m) => ({ chapter: m.SSC2_CIRCLES_CHAPTER, notes: m.SSC2_CIRCLES_NOTES })),
+  "ssc-cgl-tier-2-maths/heights-distances": () => import("@/app/notes/ssc-cgl-tier-2-maths/heights-distances/_data").then((m) => ({ chapter: m.SSC2_HEIGHTS_DISTANCES_CHAPTER, notes: m.SSC2_HEIGHTS_DISTANCES_NOTES })),
+  "ssc-cgl-tier-2-maths/quadrilaterals": () => import("@/app/notes/ssc-cgl-tier-2-maths/quadrilaterals/_data").then((m) => ({ chapter: m.SSC2_QUADRILATERALS_CHAPTER, notes: m.SSC2_QUADRILATERALS_NOTES })),
 };

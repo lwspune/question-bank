@@ -64,6 +64,8 @@ export type NudgeCandidate = {
   due: DueQuestion[];
   /** ISO of their most recent drill activity (a drill answer or completion), or null. */
   lastDrillAt: string | null;
+  /** Mistakes that became fixed yesterday (India day), for the push's first line (2026-11-15). */
+  fixedYesterday?: number;
 };
 
 export type DueSummary = {
@@ -78,6 +80,8 @@ export type NudgePick = {
   name: string;
   dedupeKey: string;
   summary: DueSummary;
+  /** Mistakes fixed yesterday, 0 when none: the push opens with it (V's day card, 2026-11-15). */
+  fixedYesterday: number;
 };
 
 export type NudgeSkipReason =
@@ -221,6 +225,7 @@ export function selectDueNudges(input: SelectInput): { picks: NudgePick[]; skipp
       name: s.name,
       dedupeKey,
       summary: summarizeDue(c.due),
+      fixedYesterday: c.fixedYesterday ?? 0,
     });
   }
 

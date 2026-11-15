@@ -5632,6 +5632,7 @@ export type Database = {
           right_answers: number
         }[]
       }
+      get_own_day_card: { Args: { p_exam_id: string }; Returns: Json }
       get_own_performance: { Args: never; Returns: Json }
       get_own_practice_counts: {
         Args: never

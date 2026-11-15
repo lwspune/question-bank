@@ -152,6 +152,12 @@ describe("selectDueNudges", () => {
     expect(r.picks[0].summary.total).toBe(3);
   });
 
+  it("carries yesterday's fixes to the pick, for the notification's first line (2026-11-15)", () => {
+    const r = selectDueNudges({ ...base, candidates: [candidate({ fixedYesterday: 3 })] });
+    expect(r.picks[0].fixedYesterday).toBe(3);
+    expect(selectDueNudges({ ...base, candidates: [candidate()] }).picks[0].fixedYesterday).toBe(0);
+  });
+
   it("skips when nothing is due", () => {
     const r = selectDueNudges({ ...base, candidates: [candidate({ due: [] })] });
     expect(r.picks).toHaveLength(0);

@@ -187,6 +187,29 @@ describe("chapter names shared with SSC CGL", () => {
   });
 });
 
+describe("chapter names shared with SSC CGL Tier II", () => {
+  // Tier II's catalog is Tier I's (one catalog.json), so its notes chapters carry
+  // Tier I's chapter and subtopic names and register after them. /go/learn has no
+  // exam, so Tier II must yield like Tier I does, or every existing link moves.
+  it("no Tier II chapter or subtopic takes a name an earlier chapter holds", () => {
+    const t2 = NOTES_CHAPTERS.filter((c) => c.examName === "SSC CGL Tier II");
+    expect(t2.length).toBeGreaterThan(0);
+    for (const c of t2) {
+      const name = c.chapter.chapterName;
+      if (NOTES_CHAPTERS.some((o) => o.examName !== "SSC CGL Tier II" && o.chapter.chapterName === name)) {
+        expect(getChapterByName(name)?.examName).not.toBe("SSC CGL Tier II");
+      }
+      for (const note of Object.values(c.notes)) {
+        const held = NOTES_CHAPTERS.some(
+          (o) => o.examName !== "SSC CGL Tier II" && o.chapter.chapterName === name &&
+            Object.values(o.notes).some((n) => n.subtopicName === note.subtopicName)
+        );
+        if (held) expect(getSubtopicByName(name, note.subtopicName)?.examName).not.toBe("SSC CGL Tier II");
+      }
+    }
+  });
+});
+
 describe("chapter names shared with JEE Mains", () => {
   // JEE chapters ship after the NDA and MHT-CET ones and reuse their names, so
   // they yield the same way CDS does rather than re-pointing existing links.

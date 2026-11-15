@@ -146,6 +146,12 @@ export const FUNNEL_EVENTS = [
    */
   "v_progress_tap",
   /**
+   * V's "Your day" card (2026-11-15, migration 0262), shown in place of V's
+   * greeting the first open of a day; prop: action (drill · performance ·
+   * plan). Showings are logged server-side (surface_viewed 'v_day').
+   */
+  "v_day_tap",
+  /**
    * V's "My plan for today" card (2026-11-08, MENTOR_SPEC.md Phase 2), for a
    * student on the board path; prop: action (open). Against starters it says
    * how many use V for the path rather than /me.

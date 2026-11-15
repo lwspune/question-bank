@@ -125,7 +125,7 @@ async function main() {
   for (const p of chosen) {
     if (limit !== undefined && sent >= limit) break;
     const clickToken = newClickToken();
-    const payload = buildDuePushPayload({ summary: p.summary, clickToken });
+    const payload = buildDuePushPayload({ summary: p.summary, clickToken, fixedYesterday: p.fixedYesterday });
     const browsers = subsByUser.get(p.userId) ?? [];
     console.log(`  push ${emailOf.get(p.userId) || p.userId} — ${payload.title} · ${payload.body} [${browsers.length} browser(s)]`);
     sent++;
