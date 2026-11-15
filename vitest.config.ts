@@ -72,5 +72,12 @@ export default defineConfig({
     // gate self-heals; a genuinely broken test fails both attempts, so real
     // regressions are not masked.
     retry: 1,
+    // Vitest 5 saves a processed copy of every source file to
+    // node_modules/.vitest-cache (on by default) and never deletes old ones.
+    // Every worktree links to the same node_modules, so every session's runs
+    // wrote there: it reached 12.2 GB and filled the C: drive on 2026-11-15.
+    // Off costs a slower start per run; results are identical. CI starts with
+    // an empty cache on every run anyway.
+    fsModuleCache: false,
   },
 });
