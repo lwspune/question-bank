@@ -29,6 +29,7 @@ import ChapterFixLine from "@/components/drill/ChapterFixLine";
 import BoardPathLine from "@/components/path/BoardPathLine";
 import { SUBJECT_NAME, isPathExam } from "@/lib/path/model";
 import { CHAPTER_FIX_FROM } from "@/lib/drill/from";
+import { loadBoardPyqMarks, type BoardMarks } from "@/lib/board/pyqMarks";
 
 type Params = { examSlug: string; subjectRoute: string; chapterSlug: string };
 
@@ -163,6 +164,20 @@ async function loadTwins(questionIds: string[]): Promise<QuestionTwins> {
   }
 }
 
+/**
+ * Printed marks of the board questions (a student's request, 2026-11-15).
+ * Loaded beside the twins, never in load(). A failed read drops the marks,
+ * never the page.
+ */
+async function loadMarks(questionIds: string[]): Promise<Record<string, BoardMarks>> {
+  try {
+    return await loadBoardPyqMarks(createTypedAnonClient(), questionIds);
+  } catch (e) {
+    console.error("board chapter marks:", e instanceof Error ? e.message : e);
+    return {};
+  }
+}
+
 export default async function BoardChapterPage(props: { params: Promise<Params> }) {
   const params = await props.params;
   const data = await load(params);
@@ -176,7 +191,11 @@ export default async function BoardChapterPage(props: { params: Promise<Params> 
     ...chapter.groups.flatMap((g) => g.blocks.flatMap((b) => b.questions.map((q) => q.id))),
     ...data.pyqSittings.flatMap((s) => s.questions.map((q) => q.id)),
   ];
-  const twins = await loadTwins(questionIds);
+  const pyqIds = [
+    ...data.pyqSittings.flatMap((s) => s.questions.map((q) => q.id)),
+    ...(data.top?.slots ?? []).flatMap((s) => s.questions.map((q) => q.id)),
+  ];
+  const [twins, printedMarks] = await Promise.all([loadTwins(questionIds), loadMarks(pyqIds)]);
 
   return (
     <>
@@ -223,6 +242,7 @@ export default async function BoardChapterPage(props: { params: Promise<Params> 
             supabaseUrl={supabaseUrl}
             chapterName={chapter.chapterName}
             examName={data.examName}
+            printedMarks={printedMarks}
           />
         </ExamTwinsProvider>
       </main>

@@ -27,6 +27,7 @@ import {
   type BoardSectionGroup,
   type SectionKind,
 } from "@/lib/board/query";
+import type { BoardMarks } from "@/lib/board/pyqMarks";
 
 /** A chapter's Top 10 PYQs (2026-10-13), loaded by lib/homework/chapterTop.ts. */
 export type BoardTopPyqs = ChapterTopPyqs;
@@ -70,6 +71,7 @@ export default function BoardReader({
   examName,
   top = null,
   revision = null,
+  printedMarks = {},
 }: {
   groups: BoardSectionGroup[];
   /** The chapter's board past-year questions, newest sitting first. Empty only
@@ -88,6 +90,9 @@ export default function BoardReader({
   top?: BoardTopPyqs | null;
   /** The chapter's quick-revision sheet, or null when it has none yet. */
   revision?: BoardRevision | null;
+  /** Printed marks of the board questions, where every paper agrees
+   *  (lib/board/pyqMarks). A question missing here shows no marks. */
+  printedMarks?: Readonly<Record<string, BoardMarks>>;
 }) {
   // Which panel is on screen. Opens on the textbook — /board is the book
   // reader and the URL names a chapter of it.
@@ -194,6 +199,7 @@ export default function BoardReader({
                 chapterName={chapterName}
                 examName={examName}
                 sittingIndex={i}
+                printedMarks={printedMarks}
                 revealed={revealed}
                 blocked={blocked}
                 lock={lock}
@@ -231,6 +237,7 @@ export default function BoardReader({
               planSlug={top.planSlug}
               showChapter={false}
               idPrefix="top"
+              printedMarks={printedMarks}
               revealed={revealed}
               blocked={blocked}
               lock={lock}
@@ -444,6 +451,7 @@ function PyqSitting({
   chapterName,
   examName,
   sittingIndex,
+  printedMarks,
   revealed,
   blocked,
   lock,
@@ -460,6 +468,7 @@ function PyqSitting({
   /** Position of this sitting in the panel, so the walk-through orders questions
    *  across sittings rather than restarting at 0 in each one. */
   sittingIndex: number;
+  printedMarks: Readonly<Record<string, BoardMarks>>;
   revealed: Set<string>;
   blocked: Set<string>;
   lock: RevealLock;
@@ -506,6 +515,7 @@ function PyqSitting({
                 onToggleReveal={() => onToggleReveal(q.id)}
                 pick={picks.get(q.id) ?? null}
                 onPick={(label) => onPick(q.id, label)}
+                marks={printedMarks[q.id]}
                 // The one honest bridge back to the book half. A PYQ has exactly
                 // ONE subtopic; a book section spans several, so the link only
                 // works in this direction.

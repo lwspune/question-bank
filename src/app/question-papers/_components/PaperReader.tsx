@@ -203,7 +203,7 @@ function PaperSections({
                       pick={picks.get(q.id) ?? null}
                       onPick={(label) => onPick(q.id, label)}
                       // A part's marks are its question's, shown once above.
-                      marks={it.marks ?? undefined}
+                      marks={it.marks != null ? { kind: "whole", marks: it.marks } : undefined}
                     />
                   </li>
                 );
