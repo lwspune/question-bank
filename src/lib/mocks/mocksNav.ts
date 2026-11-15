@@ -11,7 +11,7 @@
 
 import { slugify } from "@/lib/slug";
 import { EXAM_REGISTRY, PYQVAULT_EXAMS, getExamBySlug, type ExamEntry, type ExamSlug } from "@/lib/exam/examContext";
-import { INTL_EXAMS } from "@/lib/sites/intl";
+import { LIVE_INTL_EXAMS } from "@/lib/sites/intl";
 import { MOCK_TYPES, mocksOfType, type MockTypeSlug } from "@/lib/mocks/catalogue";
 // Type-only: keeps this module pure (no DB import at runtime).
 import type { MockListItem } from "@/lib/mocks/query";
@@ -28,7 +28,7 @@ export type MockExamNav = {
 /**
  * Exams that have published mock tests (`hasMocks`), in registry order. Lists
  * www's exams unless given another registry: the full EXAM_REGISTRY for the
- * pages to prerender, INTL_EXAMS for the intl site's switcher.
+ * pages to prerender, LIVE_INTL_EXAMS for the intl site's switcher.
  */
 export function getMockExams(registry: readonly ExamEntry[] = PYQVAULT_EXAMS): MockExamNav[] {
   return registry.filter((e) => e.hasMocks === true).map((e) => ({
@@ -118,7 +118,7 @@ export function mockSideNav(
     { href: intl ? "/" : "/mock", label: "All exams" },
   ];
   const seen = new Set<string>();
-  for (const e of getMockExams(intl ? INTL_EXAMS : PYQVAULT_EXAMS)) {
+  for (const e of getMockExams(intl ? LIVE_INTL_EXAMS : PYQVAULT_EXAMS)) {
     const fam = mockFamilyOf(e.slug);
     if (!fam) {
       out.push({ href: `/mock/exam/${e.slug}`, label: e.displayName });

@@ -48,6 +48,7 @@ export type ExamSlug =
   | "ssc-chsl"
   | "ssc-cpo"
   | "imat"
+  | "enem"
   | "spi"
   | "uceed"
   | "ugc-net"
@@ -401,6 +402,32 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     site: "intl",
     // Its own pass (2026-10-30): $19, or Rs 999 for buyers in India.
     passScope: "imat",
+  },
+  {
+    // ENEM (Brazil's national secondary-school exam, the entrance to its
+    // universities), 2026-11-15: Day 2 Natural Sciences + Mathematics, the
+    // last five years (owner: "will help gauge interest"). INEP publishes
+    // every paper and key; questions are official acts (Lei 9.610 art. 8 IV)
+    // and the adapted texts inside keep their printed credit (art. 46 III).
+    // Pipeline and source: scripts/enem/. Five options a question, A-E.
+    slug: "enem",
+    tier: "senior", // sat at the end of secondary school
+    goal: "science",
+    displayName: "ENEM",
+    examName: "ENEM", // must match the `exams` DB row exactly
+    guidesPath: null,
+    notesPath: null,
+    hasMocks: true,
+    // Worked solutions in Portuguese, written blind and checked against INEP's key.
+    pastPaperSolutions: true,
+    site: "intl",
+    // Free while it measures interest (owner): every limit lets it through and
+    // no pass is offered (0210's 'free' pass name).
+    passScope: "free",
+    // Its figures include third-party photos and charts (credited in print).
+    noImageIndex: true,
+    // Until the rows go PUBLIC (they land PRIVATE after this is deployed).
+    noPublicContent: true,
   },
   {
     slug: "mh-hsc-12",

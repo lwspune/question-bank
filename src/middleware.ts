@@ -121,6 +121,18 @@ export const config = {
     "/mock/(imat-.*)",
     "/questions/imat",
     "/questions/imat/:path*",
+    // ENEM (2026-11-15)
+    "/exams/enem",
+    "/notes/enem",
+    "/notes/(enem-.*)",
+    "/notes/print/(enem-.*)",
+    "/formula/enem",
+    "/formula/enem/:path*",
+    "/mock/exam/enem",
+    "/mock/exam/enem/:path*",
+    "/mock/(enem-.*)",
+    "/questions/enem",
+    "/questions/enem/:path*",
     {
       source: "/((?!_next/static|_next/image|api/).*)",
       missing: [{ type: "host", value: "www\\.pyqvault\\.com" }],

@@ -58,18 +58,21 @@ describe("which pass covers an exam", () => {
     expect(passScopeForExam("no-such-exam")).toBe(SCOPE_MOCKS);
   });
 
-  it("every intl exam names its own pass; a www exam takes the mocks pass or is free", () => {
+  it("every intl exam names its own pass or is free; a www exam takes the mocks pass or is free", () => {
     for (const e of EXAM_REGISTRY) {
-      if (e.site === "intl") expect([SCOPE_MOCKS, SCOPE_FREE], e.slug).not.toContain(passScopeForExam(e.slug));
+      // An intl exam never borrows www's pass; it sells its own, or (ENEM,
+      // owner 2026-11-15, while it measures interest) needs none.
+      if (e.site === "intl") expect(passScopeForExam(e.slug), e.slug).not.toBe(SCOPE_MOCKS);
       else expect([SCOPE_MOCKS, SCOPE_FREE], e.slug).toContain(passScopeForExam(e.slug));
     }
   });
 
-  it("the six Class 9-10 exams are free, and no other (owner, 2026-11-02; mirrors migration 0210)", () => {
+  it("the six Class 9-10 exams and ENEM are free, and no other (owner, 2026-11-02 and 2026-11-15; mirrors migration 0210)", () => {
     const free = EXAM_REGISTRY.filter((e) => passScopeForExam(e.slug) === SCOPE_FREE).map((e) => e.examName);
     expect(free.sort()).toEqual(
       [
         "CBSE Class 10",
+        "ENEM",
         "Foundation Course",
         "ICSE Class 10",
         "Maharashtra State Board Class 10",

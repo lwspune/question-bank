@@ -4,6 +4,7 @@
  */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { NextRequest } from "next/server";
+import { INTL_EXAMS } from "@/lib/sites/intl";
 
 let mockUser: { id: string } | null = null;
 
@@ -111,7 +112,8 @@ describe("middleware matcher scope", () => {
       expect(entry.startsWith("/((")).toBe(false);
       // A plain entry is a signed-in surface, or an intl page www must move
       // (lib/sites/intl; tests/intl-middleware.test.ts checks those in full).
-      const intlPage = entry === "/intl" || entry.startsWith("/intl/") || /imat/.test(entry);
+      const intlPage =
+        entry === "/intl" || entry.startsWith("/intl/") || INTL_EXAMS.some((e) => entry.includes(e.slug));
       // "/" exactly (2026-11-06): the homepage is cached and middleware routes
       // signed-in visitors off it (routeHome). A signed-out request makes no
       // auth call there, and it replaces a full page render per visit.

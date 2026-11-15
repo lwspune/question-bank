@@ -4,6 +4,7 @@ import { describe, it, expect } from "vitest";
 import {
   INTL_ORIGIN,
   INTL_EXAMS,
+  LIVE_INTL_EXAMS,
   isIntlHost,
   isFormerIntlHost,
   intlExamOfPath,
@@ -209,8 +210,9 @@ describe("intlHostDecision (the intl host)", () => {
     }
   });
 
-  it("sends a section index to the exam's own page while there is one exam, keeping the query", () => {
-    expect(INTL_EXAMS.length).toBe(1);
+  it("sends a section index to the exam's own page while there is one LIVE exam, keeping the query", () => {
+    // ENEM is registered but not live yet (noPublicContent, 2026-11-15): it does not count.
+    expect(LIVE_INTL_EXAMS.length).toBe(1);
     expect(intlHostDecision("/notes", "")).toEqual({ kind: "redirect", url: "/notes/imat", permanent: false });
     expect(intlHostDecision("/mock", "?a=1")).toEqual({ kind: "redirect", url: "/mock/exam/imat?a=1", permanent: false });
     expect(intlHostDecision("/formula", "")).toEqual({ kind: "redirect", url: "/formula/imat", permanent: false });
