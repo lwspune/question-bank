@@ -4,9 +4,9 @@ export const NEET_BO_OP_GROWTH_NOTE: SubtopicNote = {
   subtopicName: "Population Attributes and Growth",
   title: "Population Attributes and Growth",
   oneLineDefinition:
-    "What a population has that a single organism does not: birth and death rates, sex ratio, age pyramids and density, how density changes, and the exponential and logistic models of population growth.",
+    "What a population has that a single organism does not: birth and death rates, sex ratio, age pyramids and density, how density changes, the exponential and logistic models of population growth, and the adaptations that let organisms live in their habitat.",
   whyItMatters:
-    "Ten NEET questions: five EASY and five MODERATE. Five were on logistic growth, and the Verhulst-Pearl equation or its K came up in NEET 2024, NEET 2025 and NEET 2026. Exponential growth was asked twice: the base e in NEET 2021 and a sum with equal birth and death rates in Re-NEET 2026.",
+    "Eleven NEET questions: five EASY and six MODERATE. Five were on logistic growth, and the Verhulst-Pearl equation or its K came up in NEET 2024, NEET 2025 and NEET 2026. Exponential growth was asked twice: the base e in NEET 2021 and a sum with equal birth and death rates in Re-NEET 2026. Adaptations were asked once, as a match in NEET 2021, and none since.",
   concepts: [
     {
       kind: "reference" as const,
@@ -245,6 +245,60 @@ export const NEET_BO_OP_GROWTH_NOTE: SubtopicNote = {
         {
           title: "J is exponential, S is logistic",
           body: "The **J shaped** curve belongs to **exponential** growth with unlimited resources; the **S shaped** curve that levels off at K belongs to **logistic** growth.",
+        },
+      ],
+    },
+    {
+      kind: "reference" as const,
+      slug: "nboop-adaptations",
+      name: "Adaptations to the environment",
+      intuition:
+        "A population lives in its habitat because its members can cope with it. A seal in icy water, a rat in a desert with no water to drink and a lizard in the hot sand each carry some trick, in body shape, in how the body works or in what the animal does, that keeps it alive there.",
+      definition:
+        "Adaptations in NCERT:\n" +
+        "- An **adaptation** is any attribute of an organism (morphological, physiological or behavioural) that enables it to survive and reproduce in its habitat.\n" +
+        "- **Allen's rule:** mammals from colder climates generally have **shorter ears and limbs**, to keep heat loss low. Aquatic mammals such as **seals** in polar seas also have a thick layer of fat (**blubber**) below the skin that insulates them.\n" +
+        "- **Physiological:** the **kangaroo rat** of North American deserts meets its water needs by the **internal oxidation of fat** (water is a by-product) and can **concentrate its urine**, so it spends very little water on removing wastes.\n" +
+        "- **Behavioural:** **desert lizards** lack the physiological ability mammals have to deal with heat. They keep their body temperature fairly constant by behaviour: they **bask in the sun** when their body temperature drops, and **move into shade** when it gets too hot.\n" +
+        "- **At great depths:** many marine invertebrates and fish live deep in the ocean, where the pressure can be more than **100 times** normal atmospheric pressure.\n" +
+        "- People living at high altitudes in the Himalayas have a **higher red blood cell count** than people of the plains.",
+      table: {
+        columns: ["Kind of adaptation", "NCERT example", "What it does"],
+        rows: [
+          {
+            cells: ["Allen's rule", "Polar seal; mammals of cold climates", "Shorter ears and limbs keep heat loss low"],
+            noteAmber: "NEET 2021: Allen's rule with the polar seal, physiological with the kangaroo rat, behavioural with the desert lizard, biochemical with the marine fish at depth.",
+            pyqExampleId: "cffc7cb8-085f-4111-8a5a-0fa4ca746276",
+          },
+          { cells: ["Physiological", "Kangaroo rat", "Water from fat oxidation; very concentrated urine"] },
+          { cells: ["Behavioural", "Desert lizard", "Basks in the sun when cold, moves into shade when hot"] },
+          { cells: ["Biochemical", "Marine fish at great depths", "Lives under pressure over 100 times that at the surface"] },
+        ],
+      },
+      pyqExampleId: "cffc7cb8-085f-4111-8a5a-0fa4ca746276",
+      selfCheckExample: {
+        prompt: "A desert lizard lies on a sunny rock in the morning and hides under a bush at noon. Is this a physiological or a behavioural adaptation, and why does the lizard need it?",
+        steps: [
+          "The lizard changes where it is, not how its body works: that is behaviour.",
+          "NCERT says desert lizards lack the physiological ability mammals have to deal with high temperatures.",
+          "So they keep their body temperature fairly constant by moving between sun and shade.",
+        ],
+        answer: "A behavioural adaptation; it keeps the body temperature fairly constant without a physiological way to do so.",
+      },
+      practiceSet: [
+        { prompt: "What does the thick layer of fat under the skin of a polar seal do?", answer: "It insulates the seal (blubber) and cuts heat loss" },
+        { prompt: "Where does the kangaroo rat get its water, given that it hardly drinks?", answer: "From the internal oxidation of fat, where water is a by-product" },
+        { prompt: "Why do people living high in the Himalayas have a higher red blood cell count?", answer: "It is an adaptation to the thin air at high altitude, carrying more oxygen" },
+        { prompt: "Name the three kinds of attribute NCERT counts as adaptations.", answer: "Morphological, physiological and behavioural" },
+      ],
+      traps: [
+        {
+          title: "Allen's rule is about short extremities",
+          body: "**Allen's rule** says mammals of **colder** climates have **shorter** ears and limbs, to keep heat loss low. Longer ears belong to mammals of hot climates, where losing heat helps.",
+        },
+        {
+          title: "The desert lizard's trick is behaviour, not physiology",
+          body: "The **kangaroo rat** is NCERT's **physiological** example (fat oxidation, concentrated urine). The **desert lizard** is the **behavioural** one: it moves between sun and shade.",
         },
       ],
     },

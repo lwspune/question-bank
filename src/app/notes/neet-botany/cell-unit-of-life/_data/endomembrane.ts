@@ -6,7 +6,7 @@ export const NEET_BO_CE_ENDOMEMBRANE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "What the plasma membrane and the plant cell wall are made of, which four organelles form the endomembrane system, and what the ER, Golgi apparatus, lysosomes and vacuoles each do.",
   whyItMatters:
-    "Seven NEET questions from 2023 to 2026. Which organelles belong to the endomembrane system was asked three times (NEET 2023, NEET 2026 and Re-NEET 2026), and the cis and trans faces of the Golgi apparatus twice (Re-NEET 2024 and NEET 2025).",
+    "Nine NEET questions from 2021 to 2026. Which organelles belong to the endomembrane system was asked four times (NEET 2021, NEET 2023, NEET 2026 and Re-NEET 2026), and the cis and trans faces of the Golgi apparatus twice (Re-NEET 2024 and NEET 2025). NEET 2022 asked which statement about the endoplasmic reticulum is wrong.",
   concepts: [
     {
       kind: "reference" as const,

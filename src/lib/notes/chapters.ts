@@ -2486,6 +2486,81 @@ import {
   NEET_BO_BD_NOTES,
   NEET_BO_BD_SLUGS,
 } from "@/app/notes/neet-botany/biodiversity/_data";
+import {
+  NEET_ZO_AK_CHAPTER,
+  NEET_ZO_AK_NOTES,
+  NEET_ZO_AK_SLUGS,
+} from "@/app/notes/neet-zoology/animal-kingdom/_data";
+import {
+  NEET_ZO_SO_CHAPTER,
+  NEET_ZO_SO_NOTES,
+  NEET_ZO_SO_SLUGS,
+} from "@/app/notes/neet-zoology/structural-organisation/_data";
+import {
+  NEET_ZO_BM_CHAPTER,
+  NEET_ZO_BM_NOTES,
+  NEET_ZO_BM_SLUGS,
+} from "@/app/notes/neet-zoology/biomolecules/_data";
+import {
+  NEET_ZO_BR_CHAPTER,
+  NEET_ZO_BR_NOTES,
+  NEET_ZO_BR_SLUGS,
+} from "@/app/notes/neet-zoology/breathing/_data";
+import {
+  NEET_ZO_BF_CHAPTER,
+  NEET_ZO_BF_NOTES,
+  NEET_ZO_BF_SLUGS,
+} from "@/app/notes/neet-zoology/body-fluids/_data";
+import {
+  NEET_ZO_EX_CHAPTER,
+  NEET_ZO_EX_NOTES,
+  NEET_ZO_EX_SLUGS,
+} from "@/app/notes/neet-zoology/excretion/_data";
+import {
+  NEET_ZO_NC_CHAPTER,
+  NEET_ZO_NC_NOTES,
+  NEET_ZO_NC_SLUGS,
+} from "@/app/notes/neet-zoology/neural-control/_data";
+import {
+  NEET_ZO_LM_CHAPTER,
+  NEET_ZO_LM_NOTES,
+  NEET_ZO_LM_SLUGS,
+} from "@/app/notes/neet-zoology/locomotion/_data";
+import {
+  NEET_ZO_CC_CHAPTER,
+  NEET_ZO_CC_NOTES,
+  NEET_ZO_CC_SLUGS,
+} from "@/app/notes/neet-zoology/chemical-coordination/_data";
+import {
+  NEET_ZO_EV_CHAPTER,
+  NEET_ZO_EV_NOTES,
+  NEET_ZO_EV_SLUGS,
+} from "@/app/notes/neet-zoology/evolution/_data";
+import {
+  NEET_ZO_HR_CHAPTER,
+  NEET_ZO_HR_NOTES,
+  NEET_ZO_HR_SLUGS,
+} from "@/app/notes/neet-zoology/human-reproduction/_data";
+import {
+  NEET_ZO_HH_CHAPTER,
+  NEET_ZO_HH_NOTES,
+  NEET_ZO_HH_SLUGS,
+} from "@/app/notes/neet-zoology/human-health/_data";
+import {
+  NEET_ZO_RH_CHAPTER,
+  NEET_ZO_RH_NOTES,
+  NEET_ZO_RH_SLUGS,
+} from "@/app/notes/neet-zoology/reproductive-health/_data";
+import {
+  NEET_ZO_BP_CHAPTER,
+  NEET_ZO_BP_NOTES,
+  NEET_ZO_BP_SLUGS,
+} from "@/app/notes/neet-zoology/biotech-principles/_data";
+import {
+  NEET_ZO_BA_CHAPTER,
+  NEET_ZO_BA_NOTES,
+  NEET_ZO_BA_SLUGS,
+} from "@/app/notes/neet-zoology/biotech-applications/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -8001,6 +8076,171 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: NEET_BO_BD_CHAPTER,
     notes: NEET_BO_BD_NOTES,
     slugs: NEET_BO_BD_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Zoology",
+    subjectRoute: "neet-zoology",
+    subjectDisplay: "NEET Zoology",
+    chapterSlug: "animal-kingdom",
+    chipLabel: "Animal Kingdom notes",
+    chapter: NEET_ZO_AK_CHAPTER,
+    notes: NEET_ZO_AK_NOTES,
+    slugs: NEET_ZO_AK_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Zoology",
+    subjectRoute: "neet-zoology",
+    subjectDisplay: "NEET Zoology",
+    chapterSlug: "structural-organisation",
+    chipLabel: "Structural Organisation in Animals notes",
+    chapter: NEET_ZO_SO_CHAPTER,
+    notes: NEET_ZO_SO_NOTES,
+    slugs: NEET_ZO_SO_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Zoology",
+    subjectRoute: "neet-zoology",
+    subjectDisplay: "NEET Zoology",
+    chapterSlug: "biomolecules",
+    chipLabel: "Biomolecules notes",
+    chapter: NEET_ZO_BM_CHAPTER,
+    notes: NEET_ZO_BM_NOTES,
+    slugs: NEET_ZO_BM_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Zoology",
+    subjectRoute: "neet-zoology",
+    subjectDisplay: "NEET Zoology",
+    chapterSlug: "breathing",
+    chipLabel: "Breathing and Exchange of Gases notes",
+    chapter: NEET_ZO_BR_CHAPTER,
+    notes: NEET_ZO_BR_NOTES,
+    slugs: NEET_ZO_BR_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Zoology",
+    subjectRoute: "neet-zoology",
+    subjectDisplay: "NEET Zoology",
+    chapterSlug: "body-fluids",
+    chipLabel: "Body Fluids and Circulation notes",
+    chapter: NEET_ZO_BF_CHAPTER,
+    notes: NEET_ZO_BF_NOTES,
+    slugs: NEET_ZO_BF_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Zoology",
+    subjectRoute: "neet-zoology",
+    subjectDisplay: "NEET Zoology",
+    chapterSlug: "excretion",
+    chipLabel: "Excretory Products notes",
+    chapter: NEET_ZO_EX_CHAPTER,
+    notes: NEET_ZO_EX_NOTES,
+    slugs: NEET_ZO_EX_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Zoology",
+    subjectRoute: "neet-zoology",
+    subjectDisplay: "NEET Zoology",
+    chapterSlug: "neural-control",
+    chipLabel: "Neural Control and Coordination notes",
+    chapter: NEET_ZO_NC_CHAPTER,
+    notes: NEET_ZO_NC_NOTES,
+    slugs: NEET_ZO_NC_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Zoology",
+    subjectRoute: "neet-zoology",
+    subjectDisplay: "NEET Zoology",
+    chapterSlug: "locomotion",
+    chipLabel: "Locomotion and Movement notes",
+    chapter: NEET_ZO_LM_CHAPTER,
+    notes: NEET_ZO_LM_NOTES,
+    slugs: NEET_ZO_LM_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Zoology",
+    subjectRoute: "neet-zoology",
+    subjectDisplay: "NEET Zoology",
+    chapterSlug: "chemical-coordination",
+    chipLabel: "Chemical Coordination and Integration notes",
+    chapter: NEET_ZO_CC_CHAPTER,
+    notes: NEET_ZO_CC_NOTES,
+    slugs: NEET_ZO_CC_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Zoology",
+    subjectRoute: "neet-zoology",
+    subjectDisplay: "NEET Zoology",
+    chapterSlug: "evolution",
+    chipLabel: "Evolution notes",
+    chapter: NEET_ZO_EV_CHAPTER,
+    notes: NEET_ZO_EV_NOTES,
+    slugs: NEET_ZO_EV_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Zoology",
+    subjectRoute: "neet-zoology",
+    subjectDisplay: "NEET Zoology",
+    chapterSlug: "human-reproduction",
+    chipLabel: "Human Reproduction notes",
+    chapter: NEET_ZO_HR_CHAPTER,
+    notes: NEET_ZO_HR_NOTES,
+    slugs: NEET_ZO_HR_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Zoology",
+    subjectRoute: "neet-zoology",
+    subjectDisplay: "NEET Zoology",
+    chapterSlug: "human-health",
+    chipLabel: "Human Health and Disease notes",
+    chapter: NEET_ZO_HH_CHAPTER,
+    notes: NEET_ZO_HH_NOTES,
+    slugs: NEET_ZO_HH_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Zoology",
+    subjectRoute: "neet-zoology",
+    subjectDisplay: "NEET Zoology",
+    chapterSlug: "reproductive-health",
+    chipLabel: "Reproductive Health notes",
+    chapter: NEET_ZO_RH_CHAPTER,
+    notes: NEET_ZO_RH_NOTES,
+    slugs: NEET_ZO_RH_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Zoology",
+    subjectRoute: "neet-zoology",
+    subjectDisplay: "NEET Zoology",
+    chapterSlug: "biotech-principles",
+    chipLabel: "Biotechnology: Principles and Processes notes",
+    chapter: NEET_ZO_BP_CHAPTER,
+    notes: NEET_ZO_BP_NOTES,
+    slugs: NEET_ZO_BP_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Zoology",
+    subjectRoute: "neet-zoology",
+    subjectDisplay: "NEET Zoology",
+    chapterSlug: "biotech-applications",
+    chipLabel: "Biotechnology and its Applications notes",
+    chapter: NEET_ZO_BA_CHAPTER,
+    notes: NEET_ZO_BA_NOTES,
+    slugs: NEET_ZO_BA_SLUGS,
   },
 ];
 

@@ -6,7 +6,7 @@ export const NEET_BO_MB_REPLICATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The experiments of Griffith, Avery, MacLeod and McCarty, and Hershey and Chase that showed DNA is the genetic material, why DNA is a better store than RNA and the RNA world, the central dogma, and semiconservative replication with the Meselson and Stahl experiment and the replication enzymes.",
   whyItMatters:
-    "Seven NEET questions from 2021 to 2025. Hershey and Chase came up twice (NEET 2023 and NEET 2025), and NEET 2024 matched four scientists with their discoveries. NEET 2022 set the hardest question of the chapter: counting the E. coli cells free of heavy nitrogen after 60 minutes. Learn who did which experiment, on what, and what it proved.",
+    "Eight NEET questions from 2021 to 2025. Hershey and Chase came up twice (NEET 2023 and NEET 2025), and NEET 2024 matched four scientists with their discoveries. NEET 2022 set the hardest question of the chapter: counting the E. coli cells free of heavy nitrogen after 60 minutes. Learn who did which experiment, on what, and what it proved. NEET 2023 also asked whether RNA mutates faster than DNA.",
   concepts: [
     {
       kind: "reference" as const,

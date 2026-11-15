@@ -6,7 +6,7 @@ export const NEET_BO_CC_MEIOSIS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The division that halves the chromosome number: the five substages of prophase I and the event that marks each, the rest of meiosis I and meiosis II, and how meiosis differs from mitosis.",
   whyItMatters:
-    "Eleven NEET questions from 2021 to Re-NEET 2026. Six test the five substages of prophase I, and recombination nodules alone came up in 2022, 2023 and 2024. The stage where the centromere divides (anaphase II) was asked with the same stem in 2021 and 2023.",
+    "Thirteen NEET questions from 2021 to Re-NEET 2026. Seven test the five substages of prophase I, and recombination nodules alone came up in 2022, 2023 and 2024. The stage where the centromere divides (anaphase II) was asked with the same stem in 2021 and 2023.",
   concepts: [
     {
       kind: "reference" as const,
