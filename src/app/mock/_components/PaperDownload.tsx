@@ -28,6 +28,7 @@ import type { ExportViewerAccess } from "@/lib/export/viewerAccess";
 import type { PassOfferLead } from "@/lib/billing/passOfferLead";
 import type { DownloadBox } from "@/lib/activity/clientEvents";
 import PassOffer from "@/app/browse/PassOffer";
+import RoleQuestion from "@/components/profile/RoleQuestion";
 import { cn } from "@/lib/utils";
 
 type Kind = "paper" | "key";
@@ -303,6 +304,8 @@ export default function PaperDownload({
                 {busyKind === "paper" ? "Preparing…" : "Question paper"}
               </Button>
             </DialogFooter>
+            {/* Under the buttons, in the download view only (lib/profile/userRole). */}
+            <RoleQuestion box={box} enabled={signedIn && !access?.isStaff} className="shrink-0" />
           </>
         ) : pass ? (
           <PassOffer

@@ -39,6 +39,7 @@ import { gatePriceLine, selectionTitle } from "@/lib/billing/gateCopy";
 import { offerLine, offerTitle } from "@/lib/billing/offerCopy";
 import { downloadBoxStep, overCapCopy } from "@/lib/export/downloadBoxStep";
 import PassOffer from "./PassOffer";
+import RoleQuestion from "@/components/profile/RoleQuestion";
 
 type Mode = "filters" | "cart";
 type Kind = "paper" | "key" | "tags" | "ppt";
@@ -499,6 +500,10 @@ export default function DownloadDialog({
             </>
           )}
         </DialogFooter>
+        )}
+        {/* Under the buttons, in the download view only (lib/profile/userRole). */}
+        {showDownloadView && step === "download" && (
+          <RoleQuestion box="browse" enabled={isSignedIn && !isStaff} className="shrink-0" />
         )}
       </DialogContent>
     </Dialog>

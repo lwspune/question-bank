@@ -317,6 +317,10 @@ async function main() {
         // Read by hand: Vercel's app_opened / app_installed, and student_profiles.app_opened_at (migration 0255).
         line = "by hand: Vercel app_opened + student_profiles.app_opened_at";
         break;
+      case "teacher-or-student":
+        // Read by hand: answers, the answer rate per box and the behaviour rule's precision (migration 0258).
+        line = "by hand: scripts/profile/teacher-student-readout.sql";
+        break;
       case "gulf-price":
         // Read by hand: Gulf students' pass revenue (entitlements by signup_country) per Gulf signup.
         line = "by hand: entitlements amount_paise for Gulf signup_country students per Gulf signup";
