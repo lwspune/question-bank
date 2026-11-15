@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalH2, LegalList, LegalP, LegalPage } from "@/components/legal/LegalPage";
 import { CONTACT_EMAIL } from "@/lib/brand";
-import { formatPrice, planLengthLabel } from "@/lib/billing/plans";
+import { formatPrice, planBuyersNote, planLengthLabel } from "@/lib/billing/plans";
 import { listActivePlans } from "@/lib/billing/plansQuery";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 
@@ -25,7 +25,7 @@ export default async function RefundsPage() {
       ? "every pass sold on the pricing page"
       : plans.map(
           (p) =>
-            `the ${p.label} (${formatPrice(p.amountPaise, p.currency)} for ${planLengthLabel(p)}${p.site === "intl" ? ", sold on intl.pyqvault.com" : ""})`
+            `the ${p.label} (${formatPrice(p.amountPaise, p.currency)} for ${planLengthLabel(p)}${planBuyersNote(p) ? `, ${planBuyersNote(p)}` : ""}${p.site === "intl" ? ", sold on intl.pyqvault.com" : ""})`
         ).join(" and ");
 
   return (

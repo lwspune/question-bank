@@ -67,3 +67,23 @@ jobs:
         with:
           path: indexnow-sitemap.json
           key: indexnow-sitemap-${{ github.run_id }}
+
+      # intl.pyqvault.com (2026-11-15): its own sitemap, key location and saved
+      # copy, because IndexNow voids a whole batch on one off-host URL. Its 330
+      # URLs had never been sent; the first run sends them all once.
+      - name: Restore the last intl sitemap copy
+        uses: actions/cache/restore@v4
+        with:
+          path: indexnow-sitemap-intl.json
+          key: indexnow-intl-sitemap-${{ github.run_id }}
+          restore-keys: indexnow-intl-sitemap-
+
+      - name: Send new and changed intl pages
+        run: npm run seo:indexnow -- --host=intl --since=indexnow-sitemap-intl.json --save=indexnow-sitemap-intl.json --apply
+
+      - name: Save the intl sitemap copy for the next run
+        if: success()
+        uses: actions/cache/save@v4
+        with:
+          path: indexnow-sitemap-intl.json
+          key: indexnow-intl-sitemap-${{ github.run_id }}

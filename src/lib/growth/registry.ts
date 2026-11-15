@@ -352,6 +352,14 @@ export const TEACHER_STUDENT_ANSWERS_MIN = 200;
  */
 export const TEACHER_RULE_PRECISION_PCT = 70;
 /**
+ * "gulf-price": pass revenue per student who signed up from the six Gulf
+ * countries, 9 Oct (country recorded) to 15 Nov 2026, at the India prices:
+ * Rs 199 from 34 students, about Rs 6 each. The Gulf price must beat it.
+ */
+export const GULF_PRICE_BASELINE_RUPEES_PER_STUDENT = 6;
+/** "gulf-price": Gulf sales needed in the window before the revenue line means anything. */
+export const GULF_PRICE_MIN_SALES = 2;
+/**
  * "answer-limit-copy": of students who met the answer limit in the 30 days to
  * 2026-11-11, the share who opened checkout from it (35 of 360) and who bought
  * a pass afterwards (16 of 360), staff left out.
@@ -491,7 +499,8 @@ export type Readout =
   | "welcome-exam-confirm"
   | "exam-guess-card"
   | "install-app"
-  | "teacher-or-student";
+  | "teacher-or-student"
+  | "gulf-price";
 
 export type Experiment = {
   id: string;
@@ -1406,6 +1415,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-15",
     windowDays: 21,
     readout: "teacher-or-student",
+    status: "running",
+  },
+  {
+    id: "gulf-price",
+    title: "A Gulf price for the www passes",
+    change:
+      "Buyers in the UAE, Saudi Arabia, Qatar, Oman, Kuwait and Bahrain see and pay Rs 399 for the Practice Pass and Rs 999 for the Premium Pass (plans practice-pass-gulf and mock-pass-gulf, priced by country), instead of Rs 199 and Rs 499. Every price shown (pricing, walls, V, Fix Points, the checkout bar, the parent link) follows the buyer's country.",
+    why: "Students outside India are mostly Indian families in the Gulf (34 since 9 Oct, CBSE 12, NEET and JEE first), with higher incomes than India; 1 of them had paid, Rs 199. A higher price may earn more per student without losing the sale.",
+    metric:
+      "Pass revenue (entitlements.amount_paise, source razorpay) from students whose signup_country is one of the six, per such student who signed up in the window, against the same before (Rs 199 from 34). Read the Gulf passes sold and any Gulf checkouts left unpaid (paywall_event) beside it",
+    rule: `Keep the Gulf price if Gulf revenue per Gulf student beats Rs ${GULF_PRICE_BASELINE_RUPEES_PER_STUDENT} with at least ${GULF_PRICE_MIN_SALES} Gulf sales in the 6 weeks. Fewer sales, or less revenue per student: switch the two Gulf plans off, so Gulf buyers pay the India price again. The numbers are small, so this is a rough read, not proof.`,
+    liveSince: "2026-11-15",
+    windowDays: 42,
+    readout: "gulf-price",
     status: "running",
   },
 

@@ -80,6 +80,8 @@ import {
   INSTALL_APP_STUDENTS_KEEP,
   TEACHER_RULE_PRECISION_PCT,
   TEACHER_STUDENT_ANSWERS_MIN,
+  GULF_PRICE_BASELINE_RUPEES_PER_STUDENT,
+  GULF_PRICE_MIN_SALES,
   ANSWER_LIMIT_COPY_CHECKOUT_BASELINE_PCT,
   ANSWER_LIMIT_COPY_BUY_BASELINE_PCT,
   V_REVEAL_FOLLOWUP_MAX_DROP,
@@ -930,6 +932,14 @@ export default async function GrowthPage() {
             <code>scripts/profile/teacher-student-readout.sql</code>: use the labels if {TEACHER_STUDENT_ANSWERS_MIN}+
             accounts answer, and the behaviour rule for older accounts only if {TEACHER_RULE_PRECISION_PCT}%+ of the
             accounts it names say Teacher.
+          </p>
+        );
+      case "gulf-price":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep the Gulf price if Gulf students bring
+            more than Rs {GULF_PRICE_BASELINE_RUPEES_PER_STUDENT} each in pass sales (Rs 199 from 34 before) with at least{" "}
+            {GULF_PRICE_MIN_SALES} Gulf sales; otherwise switch the two Gulf plans off at /dashboard/pricing.
           </p>
         );
       case "checkout-return":

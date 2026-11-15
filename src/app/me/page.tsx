@@ -9,6 +9,8 @@ import { getOwnWeekly } from "@/lib/goals/service";
 import { loadMe } from "@/lib/me/load";
 import { getOwnAnswerTotals } from "@/lib/celebrate/service";
 import { buildPulse } from "@/lib/pulse/build";
+import { headers } from "next/headers";
+import { readCountry } from "@/lib/acquisition/country";
 import MeView from "./MeView";
 
 export const dynamic = "force-dynamic";
@@ -41,7 +43,11 @@ export default async function MePage() {
     // The pulse (due count, week, tiles, Weak spots), built with the page so
     // its numbers are in the HTML (2026-11-08): the same builder as
     // /api/me/pulse. A failed read is null, and the cards fetch it as before.
-    buildPulse(db, user.id, now, { week: weekly, answers: getOwnAnswerTotals(db) }).catch((e: unknown) => {
+    buildPulse(db, user.id, now, {
+      week: weekly,
+      answers: getOwnAnswerTotals(db),
+      country: readCountry(await headers()),
+    }).catch((e: unknown) => {
       console.error("me pulse failed", e instanceof Error ? e.message : e);
       return null;
     }),

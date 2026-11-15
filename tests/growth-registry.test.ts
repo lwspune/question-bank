@@ -83,6 +83,7 @@ describe("EXPERIMENTS", () => {
       "fix-points",
       "flashcards",
       "formula-pages",
+      "gulf-price",
       "homework-progress",
       "homework-tab",
       "imat",

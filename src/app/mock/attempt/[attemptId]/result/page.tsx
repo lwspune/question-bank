@@ -38,6 +38,7 @@ import { milestoneMessage } from "@/lib/celebrate/milestones";
 import { buildResultHeadline } from "@/lib/mocks/resultHeadline";
 import { getOwnPerformance } from "@/lib/performance/service";
 import { buildMockReport, type MockReport } from "@/lib/email/mockReport";
+import { planSiteForPath, progressPathFor } from "@/lib/sites/intl";
 import { readPeerAccuracy } from "@/lib/email/mockReportService";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
@@ -109,6 +110,8 @@ export default async function MockResultPage(props: { params: Promise<Params> })
   // the widget vs a filled state) and decide whether to offer the WhatsApp opt-in.
   const feedback = await getMockFeedback(db, params.attemptId);
   const { report, plan } = await loadFindings(params.attemptId, mock.slug);
+  // An intl paper's result links to intl's own progress page (2026-11-15).
+  const progressHref = progressPathFor(planSiteForPath(`/mock/${mock.slug}`));
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
   const multiSection = mock.sections.length > 1;
   // The headline is about what they ATTEMPTED (lib/mocks/resultHeadline.ts).
@@ -188,7 +191,11 @@ export default async function MockResultPage(props: { params: Promise<Params> })
             all three stay above the review, which on a 150-question paper is
             the bottom of the page and would bury them. */}
         {/* A fair full paper gets "How to raise your score"; anything else keeps "What to fix next" (lib/mocks/scorePlan). */}
-        {plan ? <ScorePlanCard plan={plan} attemptId={params.attemptId} /> : report && <Findings report={report} />}
+        {plan ? (
+          <ScorePlanCard plan={plan} attemptId={params.attemptId} progressHref={progressHref} />
+        ) : (
+          report && <Findings report={report} progressHref={progressHref} />
+        )}
 
         {together && <TogetherCard state={together} />}
 

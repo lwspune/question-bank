@@ -32,6 +32,22 @@
 /** The shared endpoint; participating engines forward between themselves. */
 export const INDEXNOW_ENDPOINT = "https://api.indexnow.org/indexnow";
 
+/** The sites we submit for, each its own run: IndexNow voids a batch with an off-host URL. */
+export const INDEXNOW_HOSTS = ["www.pyqvault.com", "intl.pyqvault.com"] as const;
+
+/**
+ * The host a run submits for, from `--host` ("www" | "intl" | a full host);
+ * www when absent. Anything else throws, so a typo never submits for a site
+ * we do not own.
+ */
+export function indexNowHost(arg: string | undefined): (typeof INDEXNOW_HOSTS)[number] {
+  if (arg === undefined || arg === "www") return INDEXNOW_HOSTS[0];
+  if (arg === "intl") return INDEXNOW_HOSTS[1];
+  const hit = INDEXNOW_HOSTS.find((h) => h === arg);
+  if (!hit) throw new Error(`Unknown IndexNow host ${JSON.stringify(arg)}: use www or intl.`);
+  return hit;
+}
+
 /** Protocol maximum per submission. */
 export const MAX_URLS_PER_SUBMISSION = 10000;
 

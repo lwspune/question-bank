@@ -127,6 +127,15 @@ function isShared(pathname: string): boolean {
   return /\/[^/]+\.[a-z0-9]+$/i.test(pathname);
 }
 
+/**
+ * A student's whole-progress page on `site`: www's /performance, which intl
+ * does not serve (a link there sent an intl student to www, signed out:
+ * each site keeps its own login cookie), so intl's is the map (2026-11-15).
+ */
+export function progressPathFor(site: PlanSite): string {
+  return site === "intl" ? "/me/map" : "/performance";
+}
+
 /** A section index on intl: the one exam's own page while there is one exam, else the intl home. */
 function sectionIndex(pathname: string): string | null {
   const only = INTL_EXAMS.length === 1 ? INTL_EXAMS[0] : null;
