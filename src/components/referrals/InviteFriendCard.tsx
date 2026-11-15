@@ -2,7 +2,9 @@
 
 /**
  * "Invite a friend" (referrals, migration 0249): the inviter's card on /me
- * Home, and its line in the avatar menu.
+ * Home, and its line in the avatar menu. Since 2026-11-15 the card is one
+ * line whose Know more opens a panel with the offer, the friend count and
+ * the link (owner, approved mockup).
  *
  * The link is made on the first tap of "Get my invite link", never on view,
  * so the readout's "links made" counts students who asked. Shares are logged
@@ -17,6 +19,8 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { buildWhatsappHref, type ShareChannel } from "@/lib/mocks/share";
 import { useFixPoints } from "@/components/billing/useFixPoints";
+import InfoRowPanel from "@/components/home/InfoRowPanel";
+import { referralOfferLine, referralPanelSubtitle } from "@/lib/referrals/referral";
 
 type Card = { code: string | null; link: string | null; shareText: string | null; line: string };
 
@@ -50,6 +54,18 @@ export default function InviteFriendCard() {
   const [making, setMaking] = useState(false);
   const [copied, setCopied] = useState(false);
   const [canNativeShare, setCanNativeShare] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  // The avatar menu's "Invite a friend" links to /me#invite: open the panel,
+  // on arrival and when the link is tapped while already on Home.
+  useEffect(() => {
+    const openOnHash = () => {
+      if (window.location.hash === "#invite") setOpen(true);
+    };
+    openOnHash();
+    window.addEventListener("hashchange", openOnHash);
+    return () => window.removeEventListener("hashchange", openOnHash);
+  }, []);
 
   useEffect(() => {
     let live = true;
@@ -101,58 +117,82 @@ export default function InviteFriendCard() {
     }
   }
 
+  const offer = referralOfferLine();
   return (
-    <section id="invite" aria-labelledby="invite-heading" className="scroll-mt-20 rounded-xl border bg-card p-6">
-      <h2 id="invite-heading" className="flex items-center gap-2 text-sm font-semibold tracking-tight">
-        <Gift className="h-4 w-4 text-brand-accent" aria-hidden />
-        Invite a friend
-      </h2>
-      <p className="mt-2 text-sm text-muted-foreground">{card.line}</p>
+    <InfoRowPanel
+      id="invite"
+      icon={<Gift className="h-4 w-4 text-brand-accent" />}
+      headerIcon={<Gift className="h-4 w-4 text-white" />}
+      label="Invite a friend"
+      title="Invite a friend"
+      subtitle={referralPanelSubtitle()}
+      open={open}
+      onOpenChange={(next) => {
+        setOpen(next);
+        // Drop the #invite left by the avatar menu, so its next tap opens the panel again.
+        if (!next && window.location.hash === "#invite") {
+          window.history.replaceState(null, "", window.location.pathname + window.location.search);
+        }
+      }}
+    >
+      <p className="text-sm text-muted-foreground">{offer}</p>
+      {/* Once anyone has joined, the card's line is the friend count. */}
+      {card.line !== offer && (
+        <p className="text-sm font-semibold text-emerald-700 dark:text-emerald-400">{card.line}</p>
+      )}
 
       {card.code && card.link && card.shareText ? (
-        <>
-          <p className="mt-3 truncate rounded-md border bg-muted/40 px-3 py-2 font-mono text-xs" aria-label="Your invite link">
+        <div className="space-y-3">
+          <p className="truncate rounded-md border bg-muted/40 px-3 py-2 font-mono text-xs" aria-label="Your invite link">
             {card.link}
           </p>
-          <div className="mt-3 flex flex-wrap items-center gap-2">
-            <Button
-              asChild
-              variant="outline"
-              size="sm"
-              className="border-brand-accent bg-card font-semibold text-brand-accent hover:bg-brand/10 hover:text-brand-accent"
+          <Button
+            asChild
+            variant="outline"
+            className="min-h-11 w-full border-brand-accent bg-card font-semibold text-brand-accent hover:bg-brand/10 hover:text-brand-accent"
+          >
+            <a
+              href={buildWhatsappHref(card.shareText)}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => logShare(card.code!, "whatsapp")}
             >
-              <a
-                href={buildWhatsappHref(card.shareText)}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => logShare(card.code!, "whatsapp")}
-              >
-                Send on WhatsApp
-              </a>
-            </Button>
+              Send on WhatsApp
+            </a>
+          </Button>
+          <div className="flex gap-2">
             {canNativeShare && (
-              <Button type="button" variant="outline" size="sm" onClick={() => nativeShare(card.code!, card.shareText!)}>
+              <Button
+                type="button"
+                variant="outline"
+                className="min-h-11 flex-1"
+                onClick={() => nativeShare(card.code!, card.shareText!)}
+              >
                 More apps
               </Button>
             )}
             <Button
               type="button"
-              variant="ghost"
-              size="sm"
+              variant="outline"
+              className="min-h-11 flex-1 text-muted-foreground"
               onClick={() => copyLink(card.code!, card.link!)}
-              className="text-muted-foreground"
             >
               {copied ? <Check className="h-3.5 w-3.5" aria-hidden /> : <Copy className="h-3.5 w-3.5" aria-hidden />}
               {copied ? "Copied" : "Copy link"}
             </Button>
           </div>
-        </>
+        </div>
       ) : (
-        <Button type="button" size="sm" className="mt-3" onClick={makeLink} disabled={making}>
+        <Button
+          type="button"
+          className="min-h-11 w-full bg-brand font-semibold text-brand-foreground hover:bg-brand hover:opacity-90"
+          onClick={makeLink}
+          disabled={making}
+        >
           {making ? "Making your link…" : "Get my invite link"}
         </Button>
       )}
-    </section>
+    </InfoRowPanel>
   );
 }
 

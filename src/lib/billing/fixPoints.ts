@@ -216,6 +216,18 @@ export function vaultPointsLine(v: FixPointsView | null): string | null {
   return `${vp(v.points)}: ${v.pct}% off ${target(v)}. Each mistake you fix adds 1%, up to ${v.maxPct}%. Points last 30 days.`;
 }
 
+/** Home's one-line row (owner, 2026-11-15): the count alone; Know more opens the rest. */
+export function vaultPointsRowLabel(v: FixPointsView | null): string | null {
+  return v ? `Vault Points: ${v.points}` : null;
+}
+
+/** Beside the big number in Home's Vault Points panel; nothing before the first point. */
+export function vaultPointsWorth(v: FixPointsView | null): string | null {
+  if (!v || v.points <= 0) return null;
+  if (v.pct >= v.maxPct) return `the full ${v.maxPct}% off ${target(v)}`;
+  return `${v.pct}% off ${target(v)}`;
+}
+
 /** The avatar menu's one line. */
 export function vaultPointsShort(v: FixPointsView | null): string | null {
   if (!v) return null;

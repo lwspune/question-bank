@@ -10722,6 +10722,331 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 2,
       "traps": 2
     }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "living-world",
+    "chipLabel": "The Living World notes",
+    "slugs": [
+      "nbo-lw-naming",
+      "nbo-lw-categories"
+    ],
+    "chapterName": "The Living World",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 6,
+      "traps": 14
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "cell-unit-of-life",
+    "chipLabel": "Cell: The Unit of Life notes",
+    "titleName": "Cell, the Unit of Life",
+    "slugs": [
+      "nbo-ce-prokaryotic",
+      "nbo-ce-endomembrane",
+      "nbo-ce-organelles",
+      "nbo-ce-nucleus"
+    ],
+    "chapterName": "Cell: The Unit of Life",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 12,
+      "traps": 33
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "cell-cycle",
+    "chipLabel": "Cell Cycle and Cell Division notes",
+    "slugs": [
+      "nbo-cc-cycle",
+      "nbo-cc-meiosis"
+    ],
+    "chapterName": "Cell Cycle and Cell Division",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 5,
+      "traps": 19
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "plant-kingdom",
+    "chipLabel": "Plant Kingdom notes",
+    "slugs": [
+      "nbo-pk-algae",
+      "nbo-pk-bryophytes",
+      "nbo-pk-pteridophytes",
+      "nbo-pk-gymnosperms"
+    ],
+    "chapterName": "Plant Kingdom",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 13,
+      "traps": 31
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "morphology",
+    "chipLabel": "Morphology of Flowering Plants notes",
+    "slugs": [
+      "nbo-mo-organs",
+      "nbo-mo-flower",
+      "nbo-mo-gynoecium",
+      "nbo-mo-families"
+    ],
+    "chapterName": "Morphology of Flowering Plants",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 11,
+      "traps": 26
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "anatomy",
+    "chipLabel": "Anatomy of Flowering Plants notes",
+    "slugs": [
+      "nbo-an-tissues",
+      "nbo-an-organs",
+      "nbo-an-secondary"
+    ],
+    "chapterName": "Anatomy of Flowering Plants",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 9,
+      "traps": 27
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "photosynthesis",
+    "chipLabel": "Photosynthesis in Higher Plants notes",
+    "slugs": [
+      "nbo-ps-light",
+      "nbo-ps-calvin",
+      "nbo-ps-c4"
+    ],
+    "chapterName": "Photosynthesis in Higher Plants",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 7,
+      "traps": 24
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "respiration",
+    "chipLabel": "Respiration in Plants notes",
+    "slugs": [
+      "nbo-rs-glycolysis",
+      "nbo-rs-krebs",
+      "nbo-rs-yield"
+    ],
+    "chapterName": "Respiration in Plants",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 6,
+      "traps": 26
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "biological-classification",
+    "chipLabel": "Biological Classification notes",
+    "slugs": [
+      "nbo-bc-kingdoms",
+      "nbo-bc-fungi",
+      "nbo-bc-viruses"
+    ],
+    "chapterName": "Biological Classification",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 8,
+      "traps": 22
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "plant-growth",
+    "chipLabel": "Plant Growth and Development notes",
+    "slugs": [
+      "nbo-pg-growth",
+      "nbo-pg-promoters",
+      "nbo-pg-ethylene"
+    ],
+    "chapterName": "Plant Growth and Development",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 10,
+      "traps": 19
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "sexual-reproduction",
+    "chipLabel": "Sexual Reproduction in Flowering Plants notes",
+    "slugs": [
+      "nbo-sr-gametophytes",
+      "nbo-sr-pollination",
+      "nbo-sr-fertilisation"
+    ],
+    "chapterName": "Sexual Reproduction in Flowering Plants",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 10,
+      "traps": 28
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "inheritance",
+    "chipLabel": "Principles of Inheritance and Variation notes",
+    "slugs": [
+      "nbo-pi-mendel",
+      "nbo-pi-deviations",
+      "nbo-pi-linkage",
+      "nbo-pi-disorders"
+    ],
+    "chapterName": "Principles of Inheritance and Variation",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 9,
+      "traps": 36
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "molecular-basis",
+    "chipLabel": "Molecular Basis of Inheritance notes",
+    "slugs": [
+      "nbo-mb-dna",
+      "nbo-mb-replication",
+      "nbo-mb-transcription",
+      "nbo-mb-translation",
+      "nbo-mb-operon",
+      "nbo-mb-genome"
+    ],
+    "chapterName": "Molecular Basis of Inheritance",
+    "formulaCounts": {
+      "formulas": 2,
+      "tables": 13,
+      "traps": 47
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "microbes",
+    "chipLabel": "Microbes in Human Welfare notes",
+    "slugs": [
+      "nbo-mi-uses"
+    ],
+    "chapterName": "Microbes in Human Welfare",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 3,
+      "traps": 11
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "organisms-populations",
+    "chipLabel": "Organisms and Populations notes",
+    "slugs": [
+      "nbo-op-growth",
+      "nbo-op-interactions"
+    ],
+    "chapterName": "Organisms and Populations",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 5,
+      "traps": 21
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "ecosystem",
+    "chipLabel": "Ecosystem notes",
+    "slugs": [
+      "nbo-ec-productivity",
+      "nbo-ec-energy"
+    ],
+    "chapterName": "Ecosystem",
+    "formulaCounts": {
+      "formulas": 2,
+      "tables": 6,
+      "traps": 20
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Botany",
+    "subjectRoute": "neet-botany",
+    "subjectDisplay": "NEET Botany",
+    "chapterSlug": "biodiversity",
+    "chipLabel": "Biodiversity and Conservation notes",
+    "slugs": [
+      "nbo-bd-patterns",
+      "nbo-bd-loss",
+      "nbo-bd-conservation"
+    ],
+    "chapterName": "Biodiversity and Conservation",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 9,
+      "traps": 23
+    }
   }
 ];
 
@@ -11249,4 +11574,21 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "ssc-cgl-physics/sound": () => import("@/app/notes/ssc-cgl-physics/sound/_data").then((m) => ({ chapter: m.SSC_SOUND_CHAPTER, notes: m.SSC_SOUND_NOTES })),
   "ssc-cgl-physics/heat-thermodynamics": () => import("@/app/notes/ssc-cgl-physics/heat-thermodynamics/_data").then((m) => ({ chapter: m.SSC_HEAT_THERMODYNAMICS_CHAPTER, notes: m.SSC_HEAT_THERMODYNAMICS_NOTES })),
   "ssc-cgl-physics/kinematics": () => import("@/app/notes/ssc-cgl-physics/kinematics/_data").then((m) => ({ chapter: m.SSC_KINEMATICS_CHAPTER, notes: m.SSC_KINEMATICS_NOTES })),
+  "neet-botany/living-world": () => import("@/app/notes/neet-botany/living-world/_data").then((m) => ({ chapter: m.NEET_BO_LW_CHAPTER, notes: m.NEET_BO_LW_NOTES })),
+  "neet-botany/cell-unit-of-life": () => import("@/app/notes/neet-botany/cell-unit-of-life/_data").then((m) => ({ chapter: m.NEET_BO_CE_CHAPTER, notes: m.NEET_BO_CE_NOTES })),
+  "neet-botany/cell-cycle": () => import("@/app/notes/neet-botany/cell-cycle/_data").then((m) => ({ chapter: m.NEET_BO_CC_CHAPTER, notes: m.NEET_BO_CC_NOTES })),
+  "neet-botany/plant-kingdom": () => import("@/app/notes/neet-botany/plant-kingdom/_data").then((m) => ({ chapter: m.NEET_BO_PK_CHAPTER, notes: m.NEET_BO_PK_NOTES })),
+  "neet-botany/morphology": () => import("@/app/notes/neet-botany/morphology/_data").then((m) => ({ chapter: m.NEET_BO_MO_CHAPTER, notes: m.NEET_BO_MO_NOTES })),
+  "neet-botany/anatomy": () => import("@/app/notes/neet-botany/anatomy/_data").then((m) => ({ chapter: m.NEET_BO_AN_CHAPTER, notes: m.NEET_BO_AN_NOTES })),
+  "neet-botany/photosynthesis": () => import("@/app/notes/neet-botany/photosynthesis/_data").then((m) => ({ chapter: m.NEET_BO_PS_CHAPTER, notes: m.NEET_BO_PS_NOTES })),
+  "neet-botany/respiration": () => import("@/app/notes/neet-botany/respiration/_data").then((m) => ({ chapter: m.NEET_BO_RS_CHAPTER, notes: m.NEET_BO_RS_NOTES })),
+  "neet-botany/biological-classification": () => import("@/app/notes/neet-botany/biological-classification/_data").then((m) => ({ chapter: m.NEET_BO_BC_CHAPTER, notes: m.NEET_BO_BC_NOTES })),
+  "neet-botany/plant-growth": () => import("@/app/notes/neet-botany/plant-growth/_data").then((m) => ({ chapter: m.NEET_BO_PG_CHAPTER, notes: m.NEET_BO_PG_NOTES })),
+  "neet-botany/sexual-reproduction": () => import("@/app/notes/neet-botany/sexual-reproduction/_data").then((m) => ({ chapter: m.NEET_BO_SR_CHAPTER, notes: m.NEET_BO_SR_NOTES })),
+  "neet-botany/inheritance": () => import("@/app/notes/neet-botany/inheritance/_data").then((m) => ({ chapter: m.NEET_BO_PI_CHAPTER, notes: m.NEET_BO_PI_NOTES })),
+  "neet-botany/molecular-basis": () => import("@/app/notes/neet-botany/molecular-basis/_data").then((m) => ({ chapter: m.NEET_BO_MB_CHAPTER, notes: m.NEET_BO_MB_NOTES })),
+  "neet-botany/microbes": () => import("@/app/notes/neet-botany/microbes/_data").then((m) => ({ chapter: m.NEET_BO_MI_CHAPTER, notes: m.NEET_BO_MI_NOTES })),
+  "neet-botany/organisms-populations": () => import("@/app/notes/neet-botany/organisms-populations/_data").then((m) => ({ chapter: m.NEET_BO_OP_CHAPTER, notes: m.NEET_BO_OP_NOTES })),
+  "neet-botany/ecosystem": () => import("@/app/notes/neet-botany/ecosystem/_data").then((m) => ({ chapter: m.NEET_BO_EC_CHAPTER, notes: m.NEET_BO_EC_NOTES })),
+  "neet-botany/biodiversity": () => import("@/app/notes/neet-botany/biodiversity/_data").then((m) => ({ chapter: m.NEET_BO_BD_CHAPTER, notes: m.NEET_BO_BD_NOTES })),
 };

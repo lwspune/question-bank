@@ -117,11 +117,21 @@ export function orderCarriesReferral(notes: Record<string, string> | null | unde
 
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
 
+/** What the offer is, in one line: the card's whole text before anyone joins,
+ *  and always the first line of Home's invite panel (2026-11-15). */
+export function referralOfferLine(): string {
+  const max = REFERRAL_MAX_REWARDS * REFERRAL_REWARD_DAYS;
+  return `A friend who signs up with your link gets ${REFERRAL_FRIEND_PCT}% off a pass. When they buy one, you get ${REFERRAL_REWARD_DAYS} days of Premium free, up to ${max} days.`;
+}
+
+/** The invite panel's header line. */
+export function referralPanelSubtitle(): string {
+  return `${REFERRAL_FRIEND_PCT}% off for them, ${REFERRAL_REWARD_DAYS} free days for you`;
+}
+
 export function referralStatusLine(s: { joined: number; bought: number; rewards: number }): string {
   const max = REFERRAL_MAX_REWARDS * REFERRAL_REWARD_DAYS;
-  if (s.joined <= 0) {
-    return `A friend who signs up with your link gets ${REFERRAL_FRIEND_PCT}% off a pass. When they buy one, you get ${REFERRAL_REWARD_DAYS} days of Premium free, up to ${max} days.`;
-  }
+  if (s.joined <= 0) return referralOfferLine();
   const head = `${plural(s.joined, "friend", "friends")} joined · ${s.bought} bought a pass`;
   if (s.rewards >= REFERRAL_MAX_REWARDS) {
     return `${head} · all ${max} free days earned. Friends still get ${REFERRAL_FRIEND_PCT}% off.`;
