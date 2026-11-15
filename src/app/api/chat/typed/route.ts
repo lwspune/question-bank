@@ -94,6 +94,7 @@ import { passOnSale } from "@/lib/billing/passOnSale";
 import { hourlyLimitLine, hourlyOutcome, vPassTier } from "@/lib/chat/hourlyLimit";
 import { loadEntitlements } from "@/lib/entitlements/query";
 import { SCOPE_DOWNLOADS } from "@/lib/entitlements/access";
+import { readCountry } from "@/lib/acquisition/country";
 import type { Performance } from "@/lib/performance/compute";
 
 // One AI answer can take two model calls (a chapter search, then the reply).
@@ -206,6 +207,8 @@ export async function POST(request: NextRequest) {
   try {
     const admin = createSupabaseAdminClient();
     const settings = await readChatSettings(admin);
+    // Every price V shows is the buyer's country price (2026-11-15).
+    const country = readCountry(request.headers);
 
     // Outside a request scope (route tests) the session read throws: treat as signed out.
     let userId: string | null = null;
@@ -249,7 +252,7 @@ export async function POST(request: NextRequest) {
           });
         }
         const line = hourlyLimitLine(outcome.limit, rl.retryAfter);
-        const pass = outcome.offerPremium ? await passOnSale("pyqvault", { scope: SCOPE_DOWNLOADS }) : null;
+        const pass = outcome.offerPremium ? await passOnSale("pyqvault", { scope: SCOPE_DOWNLOADS, country }) : null;
         return NextResponse.json(
           {
             error: line,
@@ -362,6 +365,7 @@ export async function POST(request: NextRequest) {
             : null;
           const context: VContextOptions = {
             page: pagePath,
+            country,
             signedIn: ownId !== null,
             profileExamSlugs: profile?.examSlugs ?? [],
             language: profile?.language ?? null,
@@ -469,7 +473,7 @@ export async function POST(request: NextRequest) {
         })()
       : [undefined, undefined, false];
     // Read only when the limit was met, so an ordinary reply reads no plans.
-    const passOffer = recorded.source === "ai" && limitHit !== null ? { limit: limitHit, pass: await passOnSale() } : null;
+    const passOffer = recorded.source === "ai" && limitHit !== null ? { limit: limitHit, pass: await passOnSale("pyqvault", { country }) } : null;
 
     // Only on an AI answer: a fallback reply never ran the tools.
     const questionFields =

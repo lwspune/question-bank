@@ -27,6 +27,7 @@ import {
   type Entitlement,
 } from "@/lib/entitlements/access";
 import { PERK_PLACEHOLDERS, unknownPerkPlaceholders } from "./perkLimits";
+import { countryName } from "@/lib/acquisition/country";
 
 export const SELLABLE_SCOPES: readonly string[] = [SCOPE_MOCKS, SCOPE_PRACTICE, SCOPE_TEACHER, SCOPE_IMAT, SCOPE_MCAT];
 
@@ -277,6 +278,18 @@ export function plansForBuyer(plans: readonly Plan[], site: PlanSite, country: s
   const eligible = plans.filter((p) => p.active && p.site === site && soldTo(p, country));
   const localScopes = new Set(eligible.filter((p) => p.countries != null).map((p) => p.scope));
   return eligible.filter((p) => p.countries != null || !localScopes.has(p.scope));
+}
+
+/**
+ * Who a country price is for, in words ("for buyers in United Arab Emirates
+ * and Saudi Arabia"), for the pages that list every pass (Terms, Refunds).
+ * Empty for a plan sold everywhere.
+ */
+export function planBuyersNote(plan: Pick<Plan, "countries">): string {
+  const names = (plan.countries ?? []).map(countryName);
+  if (names.length === 0) return "";
+  const list = names.length === 1 ? names[0] : `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
+  return `for buyers in ${list}`;
 }
 
 /**

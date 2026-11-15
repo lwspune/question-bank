@@ -30,7 +30,12 @@ export async function buildPulse(
   db: SupabaseClient,
   userId: string,
   now: Date,
-  counts: { week: Promise<OwnWeekly>; answers: Promise<AnswerTotals | null> }
+  counts: {
+    week: Promise<OwnWeekly>;
+    answers: Promise<AnswerTotals | null>;
+    /** The viewer's country (readCountry), so the checkout bar shows their country price; absent = sold-everywhere price. */
+    country?: string | null;
+  }
 ): Promise<Required<Pulse>> {
   const [ladder, week, profile, answers, focusExam, replies, leftCheckout] = await Promise.all([
     getOwnLadder(db, userId, now),
@@ -53,7 +58,7 @@ export async function buildPulse(
       return 0;
     }),
     // A pass checkout left on an earlier day (2026-11-12). A failed read shows no bar.
-    readLeftCheckout(db, userId, now).catch((e: unknown) => {
+    readLeftCheckout(db, userId, now, counts.country ?? null).catch((e: unknown) => {
       console.error("pulse left checkout read failed", e instanceof Error ? e.message : e);
       return null;
     }),

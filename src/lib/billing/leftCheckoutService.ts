@@ -11,10 +11,16 @@ import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { loadEntitlements } from "@/lib/entitlements/query";
 import { listActivePlansCached } from "@/lib/billing/plansQuery";
-import { passCta, type PassCta } from "@/lib/billing/plans";
+import { passCta, resolveOrderPlan, type PassCta } from "@/lib/billing/plans";
 import { LEFT_CHECKOUT_WINDOW_DAYS, leftCheckoutCandidate, stillUnpaid, type PaywallRow } from "./leftCheckout";
 
-export async function readLeftCheckout(db: SupabaseClient, userId: string, now: Date): Promise<PassCta | null> {
+/** `country`: the viewer's (readCountry), so the bar shows the price checkout would charge them. */
+export async function readLeftCheckout(
+  db: SupabaseClient,
+  userId: string,
+  now: Date,
+  country: string | null = null
+): Promise<PassCta | null> {
   const since = new Date(now.getTime() - LEFT_CHECKOUT_WINDOW_DAYS * 86_400_000).toISOString();
   const { data, error } = await db
     .from("user_activity")
@@ -38,8 +44,10 @@ export async function readLeftCheckout(db: SupabaseClient, userId: string, now: 
   const candidate = leftCheckoutCandidate(rows, now);
   if (!candidate) return null;
   const [grants, plans] = await Promise.all([loadEntitlements(db, userId), listActivePlansCached()]);
-  // The www header shows the bar, so only a www pass.
-  const plan = plans.find((p) => p.id === candidate.planId && p.active && p.site === "pyqvault");
+  // The www header shows the bar, so only a www pass, at the price checkout
+  // would charge this viewer: the same pass at their country price (2026-11-15).
+  const left = candidate.planId ? resolveOrderPlan(plans, candidate.planId, country) : null;
+  const plan = left && left.site === "pyqvault" ? left : null;
   if (!plan) return null;
   return stillUnpaid(candidate, grants, plan.scope, now) ? passCta(plan) : null;
 }

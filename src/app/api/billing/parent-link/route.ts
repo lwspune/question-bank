@@ -3,7 +3,8 @@ import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { listActivePlans } from "@/lib/billing/plansQuery";
-import { formatPrice, ownsPlan, planLengthLabel } from "@/lib/billing/plans";
+import { formatPrice, ownsPlan, planLengthLabel, resolveOrderPlan } from "@/lib/billing/plans";
+import { readCountry } from "@/lib/acquisition/country";
 import { upgradePricePaise } from "@/lib/billing/upgrade";
 import { loadEntitlements } from "@/lib/entitlements/query";
 import { parentFirstName, parentPayUrl, parentShareText } from "@/lib/billing/parentLink";
@@ -26,7 +27,11 @@ export async function POST(request: NextRequest) {
   const body = (await request.json().catch(() => null)) as { planId?: unknown; gate?: unknown; box?: unknown } | null;
   const db = createSupabaseServerClient();
   const plans = await listActivePlans(db);
-  const plan = plans.find((p) => p.id === body?.planId && p.site === "pyqvault" && p.currency === "INR") ?? null;
+  // The STUDENT's country price, fixed on the link now (owner, 2026-11-15): a
+  // parent in India paying for a student in the UAE pays the UAE price, and
+  // /pay and the parent's order both sell the plan the link names.
+  const asked = typeof body?.planId === "string" ? resolveOrderPlan(plans, body.planId, readCountry(request.headers)) : null;
+  const plan = asked && asked.site === "pyqvault" && asked.currency === "INR" ? asked : null;
   if (!plan) return NextResponse.json({ error: "Unknown pass" }, { status: 400 });
 
   const admin = createSupabaseAdminClient();
