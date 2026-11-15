@@ -500,11 +500,15 @@ const NEET_SITTINGS: NeetSitting[] = [
     key: "neet-2022", sourceFile: "NEET_UG_2022.pdf", year: 2022, isRe: false,
     questionCount: 200, durationSecs: 200 * 60, graceNumbers: [93, 128], overrides: [],
   },
-  { key: "neet-2023", sourceFile: "NEET_UG_2023.pdf", year: 2023, isRe: false, questionCount: 200, durationSecs: 200 * 60, graceNumbers: [], overrides: [] },
+  // Q191 (inbreeding) — defective as printed: option A is not an advantage either,
+  // so two options fit. Our call, not NTA's (owner policy 2026-10-29) → grace.
+  { key: "neet-2023", sourceFile: "NEET_UG_2023.pdf", year: 2023, isRe: false, questionCount: 200, durationSecs: 200 * 60, graceNumbers: [191], overrides: [] },
   { key: "neet-2024", sourceFile: "NEET_UG_2024.pdf", year: 2024, isRe: false, questionCount: 200, durationSecs: 200 * 60, graceNumbers: [], overrides: [] },
   { key: "neet-2024-re", sourceFile: "RE_NEET_UG_2024.pdf", year: 2024, isRe: true, questionCount: 200, durationSecs: 200 * 60, graceNumbers: [], overrides: [] },
   { key: "neet-2025", sourceFile: "NEET_UG_2025.pdf", year: 2025, isRe: false, questionCount: 180, durationSecs: 180 * 60, graceNumbers: [], overrides: [] },
-  { key: "neet-2026", sourceFile: "NEET_UG_2026.pdf", year: 2026, isRe: false, questionCount: 180, durationSecs: 180 * 60, graceNumbers: [], overrides: [] },
+  // Q176 (cell membrane) — defective as printed: E (glycocalyx) is also true, and
+  // no option lists A, B, D and E. Our call, not NTA's (owner policy 2026-10-29) → grace.
+  { key: "neet-2026", sourceFile: "NEET_UG_2026.pdf", year: 2026, isRe: false, questionCount: 180, durationSecs: 180 * 60, graceNumbers: [176], overrides: [] },
   // Q26 (vernier) — NTA Bonus, computed value not among options → grace.
   { key: "neet-2026-re", sourceFile: "RE_NEET_UG_2026.pdf", year: 2026, isRe: true, questionCount: 180, durationSecs: 180 * 60, graceNumbers: [26], overrides: [] },
 ];
