@@ -148,26 +148,81 @@ function bands(perf: Performance, examName: string): Map<string, { chapter: stri
   return out;
 }
 
+/**
+ * Chapters of this exam whose band is higher now than it was at `since`, with
+ * the band they reached, biggest jump first. The same rule as the card's
+ * "Moved up this week"; V's day card (lib/chat/dayCard) runs it from the start
+ * of the student's last day.
+ */
+export function movedUpSince(
+  payload: StudentPerformancePayload,
+  examName: string,
+  now: Date,
+  since: Date,
+  max: number = MAX_MOVED_UP
+): { chapter: string; band: Band }[] {
+  const nowBands = bands(buildPerformance(payload, now), examName);
+  if (nowBands.size === 0) return [];
+  const before = { ...payload, attempts: payload.attempts.filter((a) => Date.parse(a.startedAt) < since.getTime()) };
+  const thenBands = bands(buildPerformance(before, since), examName);
+  const moved: { chapter: string; band: Band; by: number }[] = [];
+  for (const [key, { chapter, band }] of nowBands) {
+    const then = thenBands.get(key);
+    if (then && RANK[band] > RANK[then.band]) moved.push({ chapter, band, by: RANK[band] - RANK[then.band] });
+  }
+  return moved
+    .sort((a, b) => b.by - a.by || a.chapter.localeCompare(b.chapter))
+    .slice(0, max)
+    .map(({ chapter, band }) => ({ chapter, band }));
+}
+
 function chaptersLine(payload: StudentPerformancePayload, examName: string, now: Date, weekStart: Date): ProgressCard["chapters"] {
   const nowBands = bands(buildPerformance(payload, now), examName);
   if (nowBands.size === 0) return null;
-  const before = { ...payload, attempts: payload.attempts.filter((a) => Date.parse(a.startedAt) < weekStart.getTime()) };
-  const thenBands = bands(buildPerformance(before, weekStart), examName);
-
   const counts = { strong: 0, mid: 0, weak: 0 };
-  const moved: { chapter: string; by: number }[] = [];
-  for (const [key, { chapter, band }] of nowBands) {
+  for (const { band } of nowBands.values()) {
     if (band === "mastered") counts.strong++;
     else if (band === "mid") counts.mid++;
     else counts.weak++;
-    const then = thenBands.get(key);
-    if (then && RANK[band] > RANK[then.band]) moved.push({ chapter, by: RANK[band] - RANK[then.band] });
   }
-  const movedUp = moved
-    .sort((a, b) => b.by - a.by || a.chapter.localeCompare(b.chapter))
-    .slice(0, MAX_MOVED_UP)
-    .map((m) => m.chapter);
-  return { ...counts, movedUp };
+  return { ...counts, movedUp: movedUpSince(payload, examName, now, weekStart).map((m) => m.chapter) };
+}
+
+const IST_OFFSET_MS = 5.5 * 3_600_000;
+
+/**
+ * Graded mock answers of this exam per India day (by hand-in time), with each
+ * day's most-answered chapter: the mock half of V's day card, whose practice
+ * half comes from get_own_day_card (0262). Sorted by day.
+ */
+export function mockDays(
+  payload: StudentPerformancePayload,
+  examName: string
+): { day: string; answered: number; right: number; topChapter: { name: string; answered: number } | null }[] {
+  const dayOf = new Map<string, string>();
+  for (const a of selectAttempts(payload.attempts, payload.facts).kept) {
+    if (a.examName !== examName) continue;
+    dayOf.set(a.attemptId, new Date(Date.parse(a.submittedAt ?? a.startedAt) + IST_OFFSET_MS).toISOString().slice(0, 10));
+  }
+  const days = new Map<string, { answered: number; right: number; chapters: Map<string, number> }>();
+  for (const f of payload.facts) {
+    const day = dayOf.get(f.a);
+    if (!day) continue;
+    const v = verdictOfFact(f);
+    if (v === 0) continue;
+    const d = days.get(day) ?? { answered: 0, right: 0, chapters: new Map<string, number>() };
+    d.answered++;
+    if (v === 1) d.right++;
+    const name = payload.dims.chapters[f.c] ?? "";
+    if (name) d.chapters.set(name, (d.chapters.get(name) ?? 0) + 1);
+    days.set(day, d);
+  }
+  return [...days.entries()]
+    .sort(([x], [y]) => x.localeCompare(y))
+    .map(([day, d]) => {
+      const top = [...d.chapters.entries()].sort((x, y) => y[1] - x[1] || x[0].localeCompare(y[0]))[0];
+      return { day, answered: d.answered, right: d.right, topChapter: top ? { name: top[0], answered: top[1] } : null };
+    });
 }
 
 /** Graded mock answers per chapter of this exam, keyed "subject|chapter". */
