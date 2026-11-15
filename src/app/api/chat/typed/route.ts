@@ -54,7 +54,9 @@ import {
   isConversationId,
   modelHistory,
   replyContext,
+  stepQuestionIdOf,
 } from "@/lib/chat/conversation";
+import { replyParts } from "@/lib/chat/stepChips";
 import { createProgressMemo } from "@/lib/chat/progress";
 import { getOwnPerformance } from "@/lib/performance/service";
 import { buildPerformance } from "@/lib/performance/compute";
@@ -81,8 +83,6 @@ import { parseVLanguage, type VLanguage } from "@/lib/chat/language";
 import { loadSimilarId, loadVQuestion, searchVQuestions } from "@/lib/chat/questionToolsServer";
 import { explainedQuestionId } from "@/lib/chat/solutionFigure";
 import { loadSolutionFigures, loadSolutionVisuals } from "@/lib/chat/solutionFigureServer";
-import { loadSolutionSteps } from "@/lib/chat/solutionStepsServer";
-import { lostStepOf, stepByStepOffered, stuckOn } from "@/lib/chat/stepByStep";
 import { conceptSources } from "@/lib/chat/conceptSearchServer";
 import { revealedToday, spendVReveal } from "@/lib/chat/questionReveal";
 import { weakFromPerformance, type PlanDeps } from "@/lib/chat/weekPlan";
@@ -218,7 +218,7 @@ export async function POST(request: NextRequest) {
       userId = null;
     }
 
-    let raw: { message?: unknown; conversationId?: unknown; pagePath?: unknown; question?: unknown; replyTo?: unknown };
+    let raw: { message?: unknown; conversationId?: unknown; pagePath?: unknown; question?: unknown; replyTo?: unknown; replyStep?: unknown };
     try {
       raw = (await request.json()) as typeof raw;
     } catch {
@@ -286,6 +286,12 @@ export async function POST(request: NextRequest) {
     const session = ownConversation ? currentSession(earlier, Date.now()) : [];
     // "Reply" on an earlier message (0174): honoured only for one in this session, so a stale or foreign id is dropped.
     const replyTarget = findReplyTarget(session, isConversationId(raw.replyTo) ? raw.replyTo : null);
+    // Reply on one step of a stepped explanation (step chips, 0259): kept only when the reply has that step.
+    const replyStep =
+      replyTarget && typeof raw.replyStep === "number" && Number.isInteger(raw.replyStep) && raw.replyStep >= 1 &&
+      raw.replyStep <= (replyParts(replyTarget.reply ?? "")?.steps.length ?? 0)
+        ? raw.replyStep
+        : null;
 
     // Abuse (owner, 2026-10-20): one calm line, then no reply at all. No AI call, and a
     // signed-out visitor's question is not used up. Kept, so the dashboard shows it.
@@ -335,8 +341,6 @@ export async function POST(request: NextRequest) {
     let planShown = false;
     // Set when the plan tools answered from the board path: the chat window shows the path card.
     let pathShown = false;
-    // The language the student saved for V, read with the profile: step by step is offered in English only.
-    let vLanguage: VLanguage | null = null;
     let recorded: {
       text: string;
       source: "ai" | "ai_failed" | "fallback";
@@ -358,11 +362,6 @@ export async function POST(request: NextRequest) {
           const ownId = userId;
           const notesBrief = askedNotes ? await loadNotesItemBrief(pagePath, askedNotes) : null;
           const profile = ownId ? await readProfileForV(ownId) : null;
-          vLanguage = profile?.language ?? null;
-          // "Lost me here" on a step of our solution (2026-11-12): V is told that step's text.
-          const solutionStep = asked && settings.explainEnabled && lostStepOf(message) !== null
-            ? stuckOn((await loadSolutionSteps(createSupabaseAnonClient(), asked.id))?.steps ?? null, message)
-            : null;
           const context: VContextOptions = {
             page: pagePath,
             country,
@@ -374,7 +373,6 @@ export async function POST(request: NextRequest) {
             notesBrief,
             // Only its stem: V is told which question it explained, and its memory holds the explanation.
             followsUp: followsUpId ? { stem: (await loadVQuestion(createSupabaseAnonClient(), followsUpId).catch(() => null))?.text ?? null } : null,
-            solutionStep,
             myQuestions: ownId ? buildMyQuestionDeps(createSupabaseServerClient(), createSupabaseAnonClient(), ownId) : null,
             questionTools: settings.explainEnabled
               ? buildQuestionToolDeps(ownId, tappedFrom(asked, message), notesTappedFrom(notesBrief !== null, message), {
@@ -402,7 +400,7 @@ export async function POST(request: NextRequest) {
             context,
             // The message is stored as typed; V alone is told what it replies to.
             message,
-            replyTo: replyTarget ? replyContext(replyTarget) : null,
+            replyTo: replyTarget ? replyContext(replyTarget, replyStep) : null,
             history,
           });
           if (result.ok) {
@@ -454,24 +452,24 @@ export async function POST(request: NextRequest) {
       // A notes question has no id: its key on its own page (0181), so V's memory can label the tap.
       askedNotesItem: !asked && askedNotes && notesPageOf(pagePath) ? notesRefKey(askedNotes) : null,
       replyToId: replyTarget?.id ?? null,
+      replyToStep: replyStep,
     });
 
     // The explained question's solution figure, shown under the reply; V is never told (owner, 2026-10-24).
     const explainedId = recorded.source === "ai" ? explainedQuestionId(recorded.toolCalls) : null;
-    const [solutionFigure, solutionVisual, stepByStep] = explainedId
+    const [solutionFigure, solutionVisual] = explainedId
       ? await (async () => {
           const anon = createSupabaseAnonClient();
-          const [figures, visuals, steps] = await Promise.all([
-            loadSolutionFigures(anon, [explainedId]),
-            loadSolutionVisuals(anon, [explainedId]),
-            // "Teach me step by step" goes under the reply when the solution has steps (2026-11-12).
-            userId ? loadSolutionSteps(anon, explainedId) : Promise.resolve(null),
-          ]);
-          const offered =
-            steps !== null && stepByStepOffered({ format: steps.format, stepCount: steps.steps.length, language: vLanguage });
-          return [figures.get(explainedId), visuals.get(explainedId), offered] as const;
+          const [figures, visuals] = await Promise.all([loadSolutionFigures(anon, [explainedId]), loadSolutionVisuals(anon, [explainedId])]);
+          return [figures.get(explainedId), visuals.get(explainedId)] as const;
         })()
-      : [undefined, undefined, false];
+      : [undefined, undefined];
+    // A stepped explanation's steps can be tapped for Explain and Reply (step chips, 2026-11-15).
+    // Signed in only: the taps are counted against the student, and a Reply needs a session.
+    const stepQuestionId =
+      recorded.source === "ai" && userId !== null
+        ? stepQuestionIdOf({ reply, toolCalls: recorded.toolCalls, message, askedQuestionId: asked?.id ?? null })
+        : null;
     // Read only when the limit was met, so an ordinary reply reads no plans.
     const passOffer = recorded.source === "ai" && limitHit !== null ? { limit: limitHit, pass: await passOnSale("pyqvault", { country }) } : null;
 
@@ -489,7 +487,7 @@ export async function POST(request: NextRequest) {
             ...(solutionVisual ? { solutionVisual, solutionVisualQuestionId: explainedId } : {}),
             // "One more like this" under the explanation picks from this question's subtopic (2026-11-08).
             ...(explainedId ? { explainedQuestionId: explainedId } : {}),
-            ...(stepByStep ? { stepByStep: true } : {}),
+            ...(stepQuestionId ? { stepQuestionId } : {}),
             ...(passOffer ? { passOffer } : {}),
           }
         : {};

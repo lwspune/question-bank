@@ -761,6 +761,7 @@ export type Database = {
           reply_links: string[] | null
           reply_source: string | null
           reply_to_id: string | null
+          reply_to_step: number | null
           seen_at: string | null
           tokens_in: number | null
           tokens_out: number | null
@@ -788,6 +789,7 @@ export type Database = {
           reply_links?: string[] | null
           reply_source?: string | null
           reply_to_id?: string | null
+          reply_to_step?: number | null
           seen_at?: string | null
           tokens_in?: number | null
           tokens_out?: number | null
@@ -815,6 +817,7 @@ export type Database = {
           reply_links?: string[] | null
           reply_source?: string | null
           reply_to_id?: string | null
+          reply_to_step?: number | null
           seen_at?: string | null
           tokens_in?: number | null
           tokens_out?: number | null

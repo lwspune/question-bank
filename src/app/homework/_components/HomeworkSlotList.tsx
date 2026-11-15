@@ -21,6 +21,7 @@ import BoardQuestionItem, { type RevealLock } from "@/app/board/BoardQuestionIte
 import { ExamTwinLine } from "@/components/crossExam/ExamTwins";
 import type { QuestionMark } from "@/lib/homework/progress";
 import type { SelfMark } from "@/lib/questions/selfMark";
+import type { BoardMarks } from "@/lib/board/pyqMarks";
 
 export default function HomeworkSlotList({
   slots,
@@ -37,6 +38,7 @@ export default function HomeworkSlotList({
   onPick,
   marks,
   due,
+  printedMarks,
 }: {
   slots: HomeworkSlot<BoardQuestion>[];
   supabaseUrl: string;
@@ -62,6 +64,8 @@ export default function HomeworkSlotList({
   marks?: Readonly<Record<string, QuestionMark | undefined>>;
   /** Questions waiting in Fix your mistakes. */
   due?: ReadonlySet<string>;
+  /** Printed board marks per question (the /board Top tab). Absent elsewhere. */
+  printedMarks?: Readonly<Record<string, BoardMarks>>;
 }) {
   let order = 0;
   return (
@@ -133,6 +137,7 @@ export default function HomeworkSlotList({
                       pick={picks.get(q.id) ?? null}
                       onPick={(label) => onPick(q.id, label)}
                       selfMarked={selfMarkOf(marks?.[q.id])}
+                      marks={printedMarks?.[q.id]}
                       meta={<ExamTwinLine questionId={q.id} />}
                     />
                   </div>

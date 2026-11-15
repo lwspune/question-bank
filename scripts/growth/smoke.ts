@@ -305,6 +305,10 @@ async function main() {
         // Read by hand: chat_interactions replies to a No (plain or naming a step), understood Yes against No.
         line = "by hand: chat_interactions understood on replies to a No";
         break;
+      case "v-step-chips":
+        // Read by hand: step_by_step rows coded tap/explain/reply against stepped explanations, and Yes on Explain replies.
+        line = "by hand: chat_interactions step_by_step (tap, explain, reply) and understood on Explain replies";
+        break;
       case "v-step-by-step":
         // Read by hand: the step_by_step rows (migration 0252) against Ask V explanations of qualifying questions.
         line = "by hand: chat_interactions step_by_step (open, next, lost, done) and npm run v:learning";

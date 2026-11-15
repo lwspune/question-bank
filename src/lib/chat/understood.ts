@@ -9,7 +9,7 @@
  * Pure. Spec: tests/chat-understood.test.ts.
  */
 import type { ToolCallLog } from "./anthropic";
-import { lostStepOf } from "./stepByStep";
+import { explainStepOf } from "./stepChips";
 
 /** The message a No sends for the student. */
 export const NOT_UNDERSTOOD = "I didn't understand. Please explain it more simply.";
@@ -31,9 +31,23 @@ export function stuckStepOf(message: string | null | undefined): number | null {
   return m ? Number(m[1]) : null;
 }
 
-/** A No: plain, naming a step of V's reply, or "Lost me here" on a step of our solution (lib/chat/stepByStep). */
+/**
+ * "Lost me here" on a step of our stored solution: the retired "Teach me step
+ * by step" card (2026-11-12 to 2026-11-15). Read so its stored rows still count as a No.
+ */
+const LOST_RE = /^I'm stuck on step ([1-9]\d?) of the solution\. Please explain it more simply\.$/;
+
+/**
+ * A No: plain, naming a step of V's reply, Explain on a step (lib/chat/stepChips,
+ * 2026-11-15), or a retired "Lost me here".
+ */
 export function isNotUnderstoodMessage(message: string | null | undefined): boolean {
-  return message === NOT_UNDERSTOOD || stuckStepOf(message) !== null || lostStepOf(message) !== null;
+  return (
+    message === NOT_UNDERSTOOD ||
+    stuckStepOf(message) !== null ||
+    explainStepOf(message) !== null ||
+    (!!message && LOST_RE.test(message))
+  );
 }
 
 /** The most step buttons offered: they sit in one row on a phone. */

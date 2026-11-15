@@ -27,6 +27,7 @@ import { BilingualOption, BilingualSolution, BilingualStem } from "@/components/
 import SolutionViews from "@/components/visuals/SolutionViews";
 import SelfMarkButtons from "@/components/reveal/SelfMarkButtons";
 import type { SelfMark } from "@/lib/questions/selfMark";
+import { boardMarksLabel, type BoardMarks } from "@/lib/board/pyqMarks";
 
 function questionHasAnswer(q: BoardQuestion): boolean {
   return !!q.solution || q.options.some((o) => o.isCorrect);
@@ -68,8 +69,9 @@ export default function BoardQuestionItem({
    *  describes the question, never the answer, so it must not sit inside the
    *  reveal-gated block. */
   meta?: ReactNode;
-  /** Printed marks, on a past paper (/question-papers). Absent on /board. */
-  marks?: number;
+  /** Printed marks: a past paper's item (/question-papers), or every paper a
+   *  board PYQ sits in when they agree (/board, lib/board/pyqMarks). */
+  marks?: BoardMarks;
   /** The student's earlier Understood / Review later on this question, where
    *  the page knows it (a homework day). */
   selfMarked?: SelfMark | null;
@@ -95,7 +97,7 @@ export default function BoardQuestionItem({
         )}
         {marks !== undefined && (
           <span className="mt-0.5 shrink-0 text-xs font-medium text-muted-foreground">
-            {marks} {marks === 1 ? "mark" : "marks"}
+            {boardMarksLabel(marks)}
           </span>
         )}
         <div className="order-last min-w-0 basis-full font-serif text-[15px] leading-relaxed sm:order-none sm:flex-1 [&_.katex]:max-w-full">
