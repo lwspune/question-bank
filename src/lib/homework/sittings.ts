@@ -85,9 +85,16 @@ export function ndaSittingLabel(year: number, month: string | null): string {
 /**
  * A CDS paper's label (2026-11-05), "CDS 1 2024": the bank files CDS 1 under
  * April and CDS 2 under September, like NDA. Any other month is an error.
+ * English and GK rows carry no month (2026-11-15): their note names the paper,
+ * "CDS (I) 2017 — English", and its year must match the row's.
  */
-export function cdsSittingLabel(year: number, month: string | null): string {
-  if (!month) throw new Error(`no month on a ${year} CDS row`);
+export function cdsSittingLabel(year: number, month: string | null, note: string | null = null): string {
+  if (!month) {
+    const m = /CDS \((I{1,2})\) (\d{4})/.exec(note ?? "");
+    if (!m) throw new Error(`no month or paper in the note on a ${year} CDS row`);
+    if (Number(m[2]) !== year) throw new Error(`note names ${m[2]} on a ${year} CDS row`);
+    return `CDS ${m[1].length} ${year}`;
+  }
   if (month.startsWith("Apr")) return `CDS 1 ${year}`;
   if (month.startsWith("Sep")) return `CDS 2 ${year}`;
   throw new Error(`unknown CDS month "${month}" on a ${year} row`);
@@ -195,7 +202,7 @@ export function sittingFor(
 ): string {
   if (examName.startsWith("Maharashtra")) return mhSittingLabel(r.pyq_year, r.pyq_month);
   if (examName === "NDA") return ndaSittingLabel(r.pyq_year, r.pyq_month);
-  if (examName === "CDS") return cdsSittingLabel(r.pyq_year, r.pyq_month);
+  if (examName === "CDS") return cdsSittingLabel(r.pyq_year, r.pyq_month, r.pyq_note);
   if (examName === "MHT-CET") return cetSittingLabel(r.pyq_year, r.pyq_month, r.pyq_note);
   if (examName === "SSC CGL") return sscSittingLabel(r.pyq_note);
   if (examName === "SSC CGL Tier II") return sscTier2SittingLabel(r.pyq_note);
