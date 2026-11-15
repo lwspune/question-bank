@@ -187,6 +187,7 @@ export default async function MockExamTypePicker(props: { params: Promise<Params
     slug: m.slug,
     title: shortMockTitle(m.title, exam.examName),
     meta: `${m.totalQuestions} questions · ${Math.round(m.durationSecs / 60)} min`,
+    free: m.examFreesMarkedOnly === true && m.isFree === true,
   });
   const tabs: HubMockTab[] = open.map((card) => {
     const { items, total } = hubRows(card.slug, examMocks);

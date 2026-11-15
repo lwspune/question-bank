@@ -19,7 +19,7 @@ export function practiceUsedUpLine(limit: number): string {
 
 /** The line on the built-test card, or null when starting costs nothing. */
 export function practiceCardLine(state: MockStartState | null): string | null {
-  if (!state || state.kind === "open") return null;
+  if (!state || state.kind === "open" || state.kind === "free_paper") return null;
   if (state.kind === "locked") return practiceUsedUpLine(state.limit);
   if (state.limit === 1) return "Starting it uses today's free practice test.";
   if (state.left === 1) return "This is your last free practice test today.";
@@ -30,7 +30,8 @@ export type PracticeBuilderNote = { kind: "count" | "usedUp"; text: string };
 
 /** The note under V's first question, before any step is answered. */
 export function practiceBuilderNote(state: MockStartState | null): PracticeBuilderNote | null {
-  if (!state || state.kind === "open") return null;
+  // A practice test is never a marked free paper (that rule is full mocks only, 0256).
+  if (!state || state.kind === "open" || state.kind === "free_paper") return null;
   if (state.kind === "locked") {
     // A zero limit has no "tomorrow" to promise.
     const next = state.limit > 0 ? " More tomorrow, or get the Practice Pass for unlimited tests." : "";

@@ -5,7 +5,8 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { MockAttemptBadge, useOwnAttempts } from "./OwnAttempts";
 
-export type HubMockRow = { id: string; slug: string; title: string; meta: string };
+/** `free`: a paper marked free on an exam that frees marked papers only (0256, IMAT). */
+export type HubMockRow = { id: string; slug: string; title: string; meta: string; free?: boolean };
 export type HubMockTab = { slug: string; label: string; total: number; href: string; rows: HubMockRow[] };
 
 /**
@@ -105,7 +106,14 @@ export default function MockHubTabs({ examSlug, tabs }: { examSlug: string; tabs
                   className="flex items-center justify-between gap-3 px-4 py-3 transition-colors hover:bg-brand/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
                 >
                   <span className="min-w-0">
-                    <span className="block text-[15px] font-medium">{r.title}</span>
+                    <span className="block text-[15px] font-medium">
+                      {r.title}
+                      {r.free && (
+                        <span className="ml-2 rounded border border-brand-accent/40 px-1.5 py-0.5 align-middle text-[10px] font-semibold uppercase tracking-wide text-brand-accent">
+                          Free
+                        </span>
+                      )}
+                    </span>
                     <span className="block text-xs text-muted-foreground tabular-nums">{r.meta}</span>
                   </span>
                   <RowStatus mockId={r.id} />
