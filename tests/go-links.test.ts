@@ -180,8 +180,12 @@ describe("chapter names shared with SSC CGL", () => {
   it("no SSC CGL chapter takes a name another exam's chapter holds", () => {
     const ssc = NOTES_CHAPTERS.filter((c) => c.examName === "SSC CGL");
     expect(ssc.length).toBeGreaterThan(0);
+    // Tier II registers after Tier I and yields to it (its own describe below),
+    // so a name Tier I shares only with Tier II stays Tier I's.
     for (const c of ssc) {
-      const other = NOTES_CHAPTERS.some((o) => o.examName !== "SSC CGL" && o.chapter.chapterName === c.chapter.chapterName);
+      const other = NOTES_CHAPTERS.some(
+        (o) => o.examName !== "SSC CGL" && o.examName !== "SSC CGL Tier II" && o.chapter.chapterName === c.chapter.chapterName
+      );
       if (other) expect(getChapterByName(c.chapter.chapterName)?.examName).not.toBe("SSC CGL");
     }
   });

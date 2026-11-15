@@ -11674,6 +11674,457 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 0,
       "traps": 3
     }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "English",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "fill-in-the-blanks",
+    "chipLabel": "Fill in the Blanks notes",
+    "slugs": [
+      "ssc2-efb-blanks"
+    ],
+    "chapterName": "Fill in the Blanks",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "English",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "idioms-and-phrases",
+    "chipLabel": "Idioms and Phrases notes",
+    "slugs": [
+      "ssc2-eid-idioms"
+    ],
+    "chapterName": "Idioms and Phrases",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 2,
+      "traps": 4
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "English",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "spotting-errors",
+    "chipLabel": "Spotting Errors notes",
+    "slugs": [
+      "ssc2-ese-verbs",
+      "ssc2-ese-words"
+    ],
+    "chapterName": "Spotting Errors",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 7
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "English",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "cloze-test",
+    "chipLabel": "Cloze Test notes",
+    "slugs": [
+      "ssc2-ecz-grammar",
+      "ssc2-ecz-meaning"
+    ],
+    "chapterName": "Cloze Test",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 5
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "English",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "sentence-rearrangement",
+    "chipLabel": "Sentence Rearrangement notes",
+    "slugs": [
+      "ssc2-esr-paragraph",
+      "ssc2-esr-parts"
+    ],
+    "chapterName": "Sentence Rearrangement",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 5
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "English",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "grammar",
+    "chipLabel": "Grammar notes",
+    "slugs": [
+      "ssc2-egr-voice",
+      "ssc2-egr-speech",
+      "ssc2-egr-blanks"
+    ],
+    "chapterName": "Grammar",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 5,
+      "traps": 8
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "English",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "vocabulary",
+    "chipLabel": "Vocabulary notes",
+    "slugs": [
+      "ssc2-evo-meaning",
+      "ssc2-evo-oneword",
+      "ssc2-evo-spelling"
+    ],
+    "chapterName": "Vocabulary",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 6,
+      "traps": 6
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "English",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "reading-comprehension",
+    "chipLabel": "Reading Comprehension notes",
+    "slugs": [
+      "ssc2-erc-facts",
+      "ssc2-erc-ideas",
+      "ssc2-erc-words"
+    ],
+    "chapterName": "Reading Comprehension",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 2,
+      "traps": 8
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "series",
+    "chipLabel": "Series notes",
+    "slugs": [
+      "ssc2-rse-series"
+    ],
+    "chapterName": "Series",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 0,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "mathematical-operations",
+    "chipLabel": "Mathematical Operations notes",
+    "slugs": [
+      "ssc2-rmo-ops"
+    ],
+    "chapterName": "Mathematical Operations",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 0,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "data-sufficiency",
+    "chipLabel": "Data Sufficiency notes",
+    "slugs": [
+      "ssc2-rds-ds"
+    ],
+    "chapterName": "Data Sufficiency",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 2
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "blood-relations",
+    "chipLabel": "Blood Relations notes",
+    "slugs": [
+      "ssc2-rbr-relations"
+    ],
+    "chapterName": "Blood Relations",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 2
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "order-ranking",
+    "chipLabel": "Order, Ranking and Arrangement notes",
+    "slugs": [
+      "ssc2-ror-order"
+    ],
+    "chapterName": "Order, Ranking and Arrangement",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 0,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "coding-decoding",
+    "chipLabel": "Coding-Decoding notes",
+    "slugs": [
+      "ssc2-rcd-codes"
+    ],
+    "chapterName": "Coding-Decoding",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 0,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "analogy",
+    "chipLabel": "Analogy notes",
+    "slugs": [
+      "ssc2-ran-analogy"
+    ],
+    "chapterName": "Analogy",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 0,
+      "traps": 2
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "classification",
+    "chipLabel": "Classification notes",
+    "slugs": [
+      "ssc2-rcl-odd"
+    ],
+    "chapterName": "Classification",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 2
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "alphabet-number",
+    "chipLabel": "Alphabet and Number Tests notes",
+    "slugs": [
+      "ssc2-ral-words"
+    ],
+    "chapterName": "Alphabet and Number Tests",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 2
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "statements",
+    "chipLabel": "Statement-Based Reasoning notes",
+    "slugs": [
+      "ssc2-rst-logic"
+    ],
+    "chapterName": "Statement-Based Reasoning",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "non-verbal",
+    "chipLabel": "Non-Verbal Series and Analogy notes",
+    "slugs": [
+      "ssc2-rnv-figures"
+    ],
+    "chapterName": "Non-Verbal Series and Analogy",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "embedded-figures",
+    "chipLabel": "Embedded Figures and Pattern Completion notes",
+    "slugs": [
+      "ssc2-ref-figures"
+    ],
+    "chapterName": "Embedded Figures and Pattern Completion",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 2
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Computer Knowledge",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "hardware",
+    "chipLabel": "Computer Hardware notes",
+    "slugs": [
+      "ssc2-chw-hw"
+    ],
+    "chapterName": "Computer Hardware",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 3,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Computer Knowledge",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "ms-office",
+    "chipLabel": "MS Office notes",
+    "slugs": [
+      "ssc2-cms-office"
+    ],
+    "chapterName": "MS Office",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 3,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Computer Knowledge",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "internet-email",
+    "chipLabel": "Internet and E-mail notes",
+    "slugs": [
+      "ssc2-cie-net"
+    ],
+    "chapterName": "Internet and E-mail",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 3,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Computer Knowledge",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "operating-system",
+    "chipLabel": "Operating System and Software notes",
+    "slugs": [
+      "ssc2-cos-os"
+    ],
+    "chapterName": "Operating System and Software",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 3,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Computer Knowledge",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "cyber-security",
+    "chipLabel": "Cyber Security notes",
+    "slugs": [
+      "ssc2-ccs-sec"
+    ],
+    "chapterName": "Cyber Security",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 2,
+      "traps": 2
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Computer Knowledge",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "networks",
+    "chipLabel": "Computer Networks notes",
+    "slugs": [
+      "ssc2-cnw-nw"
+    ],
+    "chapterName": "Computer Networks",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 2,
+      "traps": 2
+    }
   }
 ];
 
@@ -12251,4 +12702,30 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "ssc-cgl-tier-2-maths/circles": () => import("@/app/notes/ssc-cgl-tier-2-maths/circles/_data").then((m) => ({ chapter: m.SSC2_CIRCLES_CHAPTER, notes: m.SSC2_CIRCLES_NOTES })),
   "ssc-cgl-tier-2-maths/heights-distances": () => import("@/app/notes/ssc-cgl-tier-2-maths/heights-distances/_data").then((m) => ({ chapter: m.SSC2_HEIGHTS_DISTANCES_CHAPTER, notes: m.SSC2_HEIGHTS_DISTANCES_NOTES })),
   "ssc-cgl-tier-2-maths/quadrilaterals": () => import("@/app/notes/ssc-cgl-tier-2-maths/quadrilaterals/_data").then((m) => ({ chapter: m.SSC2_QUADRILATERALS_CHAPTER, notes: m.SSC2_QUADRILATERALS_NOTES })),
+  "ssc-cgl-tier-2-english/fill-in-the-blanks": () => import("@/app/notes/ssc-cgl-tier-2-english/fill-in-the-blanks/_data").then((m) => ({ chapter: m.SSC2_FILL_IN_THE_BLANKS_CHAPTER, notes: m.SSC2_FILL_IN_THE_BLANKS_NOTES })),
+  "ssc-cgl-tier-2-english/idioms-and-phrases": () => import("@/app/notes/ssc-cgl-tier-2-english/idioms-and-phrases/_data").then((m) => ({ chapter: m.SSC2_IDIOMS_AND_PHRASES_CHAPTER, notes: m.SSC2_IDIOMS_AND_PHRASES_NOTES })),
+  "ssc-cgl-tier-2-english/spotting-errors": () => import("@/app/notes/ssc-cgl-tier-2-english/spotting-errors/_data").then((m) => ({ chapter: m.SSC2_SPOTTING_ERRORS_CHAPTER, notes: m.SSC2_SPOTTING_ERRORS_NOTES })),
+  "ssc-cgl-tier-2-english/cloze-test": () => import("@/app/notes/ssc-cgl-tier-2-english/cloze-test/_data").then((m) => ({ chapter: m.SSC2_CLOZE_TEST_CHAPTER, notes: m.SSC2_CLOZE_TEST_NOTES })),
+  "ssc-cgl-tier-2-english/sentence-rearrangement": () => import("@/app/notes/ssc-cgl-tier-2-english/sentence-rearrangement/_data").then((m) => ({ chapter: m.SSC2_SENTENCE_REARRANGEMENT_CHAPTER, notes: m.SSC2_SENTENCE_REARRANGEMENT_NOTES })),
+  "ssc-cgl-tier-2-english/grammar": () => import("@/app/notes/ssc-cgl-tier-2-english/grammar/_data").then((m) => ({ chapter: m.SSC2_GRAMMAR_CHAPTER, notes: m.SSC2_GRAMMAR_NOTES })),
+  "ssc-cgl-tier-2-english/vocabulary": () => import("@/app/notes/ssc-cgl-tier-2-english/vocabulary/_data").then((m) => ({ chapter: m.SSC2_VOCABULARY_CHAPTER, notes: m.SSC2_VOCABULARY_NOTES })),
+  "ssc-cgl-tier-2-english/reading-comprehension": () => import("@/app/notes/ssc-cgl-tier-2-english/reading-comprehension/_data").then((m) => ({ chapter: m.SSC2_READING_COMPREHENSION_CHAPTER, notes: m.SSC2_READING_COMPREHENSION_NOTES })),
+  "ssc-cgl-tier-2-reasoning/series": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/series/_data").then((m) => ({ chapter: m.SSC2_SERIES_CHAPTER, notes: m.SSC2_SERIES_NOTES })),
+  "ssc-cgl-tier-2-reasoning/mathematical-operations": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/mathematical-operations/_data").then((m) => ({ chapter: m.SSC2_MATHEMATICAL_OPERATIONS_CHAPTER, notes: m.SSC2_MATHEMATICAL_OPERATIONS_NOTES })),
+  "ssc-cgl-tier-2-reasoning/data-sufficiency": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/data-sufficiency/_data").then((m) => ({ chapter: m.SSC2_DATA_SUFFICIENCY_CHAPTER, notes: m.SSC2_DATA_SUFFICIENCY_NOTES })),
+  "ssc-cgl-tier-2-reasoning/blood-relations": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/blood-relations/_data").then((m) => ({ chapter: m.SSC2_BLOOD_RELATIONS_CHAPTER, notes: m.SSC2_BLOOD_RELATIONS_NOTES })),
+  "ssc-cgl-tier-2-reasoning/order-ranking": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/order-ranking/_data").then((m) => ({ chapter: m.SSC2_ORDER_RANKING_CHAPTER, notes: m.SSC2_ORDER_RANKING_NOTES })),
+  "ssc-cgl-tier-2-reasoning/coding-decoding": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/coding-decoding/_data").then((m) => ({ chapter: m.SSC2_CODING_DECODING_CHAPTER, notes: m.SSC2_CODING_DECODING_NOTES })),
+  "ssc-cgl-tier-2-reasoning/analogy": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/analogy/_data").then((m) => ({ chapter: m.SSC2_ANALOGY_CHAPTER, notes: m.SSC2_ANALOGY_NOTES })),
+  "ssc-cgl-tier-2-reasoning/classification": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/classification/_data").then((m) => ({ chapter: m.SSC2_CLASSIFICATION_CHAPTER, notes: m.SSC2_CLASSIFICATION_NOTES })),
+  "ssc-cgl-tier-2-reasoning/alphabet-number": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/alphabet-number/_data").then((m) => ({ chapter: m.SSC2_ALPHABET_NUMBER_CHAPTER, notes: m.SSC2_ALPHABET_NUMBER_NOTES })),
+  "ssc-cgl-tier-2-reasoning/statements": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/statements/_data").then((m) => ({ chapter: m.SSC2_STATEMENTS_CHAPTER, notes: m.SSC2_STATEMENTS_NOTES })),
+  "ssc-cgl-tier-2-reasoning/non-verbal": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/non-verbal/_data").then((m) => ({ chapter: m.SSC2_NON_VERBAL_CHAPTER, notes: m.SSC2_NON_VERBAL_NOTES })),
+  "ssc-cgl-tier-2-reasoning/embedded-figures": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/embedded-figures/_data").then((m) => ({ chapter: m.SSC2_EMBEDDED_FIGURES_CHAPTER, notes: m.SSC2_EMBEDDED_FIGURES_NOTES })),
+  "ssc-cgl-tier-2-computer/hardware": () => import("@/app/notes/ssc-cgl-tier-2-computer/hardware/_data").then((m) => ({ chapter: m.SSC2_HARDWARE_CHAPTER, notes: m.SSC2_HARDWARE_NOTES })),
+  "ssc-cgl-tier-2-computer/ms-office": () => import("@/app/notes/ssc-cgl-tier-2-computer/ms-office/_data").then((m) => ({ chapter: m.SSC2_MS_OFFICE_CHAPTER, notes: m.SSC2_MS_OFFICE_NOTES })),
+  "ssc-cgl-tier-2-computer/internet-email": () => import("@/app/notes/ssc-cgl-tier-2-computer/internet-email/_data").then((m) => ({ chapter: m.SSC2_INTERNET_EMAIL_CHAPTER, notes: m.SSC2_INTERNET_EMAIL_NOTES })),
+  "ssc-cgl-tier-2-computer/operating-system": () => import("@/app/notes/ssc-cgl-tier-2-computer/operating-system/_data").then((m) => ({ chapter: m.SSC2_OPERATING_SYSTEM_CHAPTER, notes: m.SSC2_OPERATING_SYSTEM_NOTES })),
+  "ssc-cgl-tier-2-computer/cyber-security": () => import("@/app/notes/ssc-cgl-tier-2-computer/cyber-security/_data").then((m) => ({ chapter: m.SSC2_CYBER_SECURITY_CHAPTER, notes: m.SSC2_CYBER_SECURITY_NOTES })),
+  "ssc-cgl-tier-2-computer/networks": () => import("@/app/notes/ssc-cgl-tier-2-computer/networks/_data").then((m) => ({ chapter: m.SSC2_NETWORKS_CHAPTER, notes: m.SSC2_NETWORKS_NOTES })),
 };
