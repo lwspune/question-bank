@@ -104,9 +104,31 @@ describe("MHT-CET notes follow the Balbharati book order (Class XI, then XII)", 
     ]);
   });
 
-  it("places every MHT-CET chapter — a new one cannot ship unplaced", () => {
+  it("NEET Botany, in NCERT order (Class XI then XII)", () => {
+    expect(slugs("neet-botany")).toEqual([
+      "living-world",
+      "biological-classification",
+      "plant-kingdom",
+      "morphology",
+      "anatomy",
+      "cell-unit-of-life",
+      "cell-cycle",
+      "photosynthesis",
+      "respiration",
+      "plant-growth",
+      "sexual-reproduction",
+      "inheritance",
+      "molecular-basis",
+      "microbes",
+      "organisms-populations",
+      "ecosystem",
+      "biodiversity",
+    ]);
+  });
+
+  it("places every MHT-CET and NEET chapter — a new one cannot ship unplaced", () => {
     const unplaced = NOTES_CHAPTERS.filter(
-      (c) => c.subjectRoute.startsWith("mht-cet-") && !BOOK_POSITION[c.subjectRoute]?.[c.chapterSlug]
+      (c) => (c.subjectRoute.startsWith("mht-cet-") || c.subjectRoute.startsWith("neet-")) && !BOOK_POSITION[c.subjectRoute]?.[c.chapterSlug]
     ).map((c) => `${c.subjectRoute}/${c.chapterSlug}`);
     expect(unplaced).toEqual([]);
   });

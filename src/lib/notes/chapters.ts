@@ -2401,6 +2401,91 @@ import {
   SSC_KINEMATICS_NOTES,
   SSC_KINEMATICS_SLUGS,
 } from "@/app/notes/ssc-cgl-physics/kinematics/_data";
+import {
+  NEET_BO_LW_CHAPTER,
+  NEET_BO_LW_NOTES,
+  NEET_BO_LW_SLUGS,
+} from "@/app/notes/neet-botany/living-world/_data";
+import {
+  NEET_BO_CE_CHAPTER,
+  NEET_BO_CE_NOTES,
+  NEET_BO_CE_SLUGS,
+} from "@/app/notes/neet-botany/cell-unit-of-life/_data";
+import {
+  NEET_BO_CC_CHAPTER,
+  NEET_BO_CC_NOTES,
+  NEET_BO_CC_SLUGS,
+} from "@/app/notes/neet-botany/cell-cycle/_data";
+import {
+  NEET_BO_PK_CHAPTER,
+  NEET_BO_PK_NOTES,
+  NEET_BO_PK_SLUGS,
+} from "@/app/notes/neet-botany/plant-kingdom/_data";
+import {
+  NEET_BO_MO_CHAPTER,
+  NEET_BO_MO_NOTES,
+  NEET_BO_MO_SLUGS,
+} from "@/app/notes/neet-botany/morphology/_data";
+import {
+  NEET_BO_AN_CHAPTER,
+  NEET_BO_AN_NOTES,
+  NEET_BO_AN_SLUGS,
+} from "@/app/notes/neet-botany/anatomy/_data";
+import {
+  NEET_BO_PS_CHAPTER,
+  NEET_BO_PS_NOTES,
+  NEET_BO_PS_SLUGS,
+} from "@/app/notes/neet-botany/photosynthesis/_data";
+import {
+  NEET_BO_RS_CHAPTER,
+  NEET_BO_RS_NOTES,
+  NEET_BO_RS_SLUGS,
+} from "@/app/notes/neet-botany/respiration/_data";
+import {
+  NEET_BO_BC_CHAPTER,
+  NEET_BO_BC_NOTES,
+  NEET_BO_BC_SLUGS,
+} from "@/app/notes/neet-botany/biological-classification/_data";
+import {
+  NEET_BO_PG_CHAPTER,
+  NEET_BO_PG_NOTES,
+  NEET_BO_PG_SLUGS,
+} from "@/app/notes/neet-botany/plant-growth/_data";
+import {
+  NEET_BO_SR_CHAPTER,
+  NEET_BO_SR_NOTES,
+  NEET_BO_SR_SLUGS,
+} from "@/app/notes/neet-botany/sexual-reproduction/_data";
+import {
+  NEET_BO_PI_CHAPTER,
+  NEET_BO_PI_NOTES,
+  NEET_BO_PI_SLUGS,
+} from "@/app/notes/neet-botany/inheritance/_data";
+import {
+  NEET_BO_MB_CHAPTER,
+  NEET_BO_MB_NOTES,
+  NEET_BO_MB_SLUGS,
+} from "@/app/notes/neet-botany/molecular-basis/_data";
+import {
+  NEET_BO_MI_CHAPTER,
+  NEET_BO_MI_NOTES,
+  NEET_BO_MI_SLUGS,
+} from "@/app/notes/neet-botany/microbes/_data";
+import {
+  NEET_BO_OP_CHAPTER,
+  NEET_BO_OP_NOTES,
+  NEET_BO_OP_SLUGS,
+} from "@/app/notes/neet-botany/organisms-populations/_data";
+import {
+  NEET_BO_EC_CHAPTER,
+  NEET_BO_EC_NOTES,
+  NEET_BO_EC_SLUGS,
+} from "@/app/notes/neet-botany/ecosystem/_data";
+import {
+  NEET_BO_BD_CHAPTER,
+  NEET_BO_BD_NOTES,
+  NEET_BO_BD_SLUGS,
+} from "@/app/notes/neet-botany/biodiversity/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -7728,6 +7813,194 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_KINEMATICS_CHAPTER,
     notes: SSC_KINEMATICS_NOTES,
     slugs: SSC_KINEMATICS_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "living-world",
+    chipLabel: "The Living World notes",
+    chapter: NEET_BO_LW_CHAPTER,
+    notes: NEET_BO_LW_NOTES,
+    slugs: NEET_BO_LW_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "cell-unit-of-life",
+    chipLabel: "Cell: The Unit of Life notes",
+    titleName: "Cell, the Unit of Life",
+    chapter: NEET_BO_CE_CHAPTER,
+    notes: NEET_BO_CE_NOTES,
+    slugs: NEET_BO_CE_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "cell-cycle",
+    chipLabel: "Cell Cycle and Cell Division notes",
+    chapter: NEET_BO_CC_CHAPTER,
+    notes: NEET_BO_CC_NOTES,
+    slugs: NEET_BO_CC_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "plant-kingdom",
+    chipLabel: "Plant Kingdom notes",
+    chapter: NEET_BO_PK_CHAPTER,
+    notes: NEET_BO_PK_NOTES,
+    slugs: NEET_BO_PK_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "morphology",
+    chipLabel: "Morphology of Flowering Plants notes",
+    chapter: NEET_BO_MO_CHAPTER,
+    notes: NEET_BO_MO_NOTES,
+    slugs: NEET_BO_MO_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "anatomy",
+    chipLabel: "Anatomy of Flowering Plants notes",
+    chapter: NEET_BO_AN_CHAPTER,
+    notes: NEET_BO_AN_NOTES,
+    slugs: NEET_BO_AN_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "photosynthesis",
+    chipLabel: "Photosynthesis in Higher Plants notes",
+    chapter: NEET_BO_PS_CHAPTER,
+    notes: NEET_BO_PS_NOTES,
+    slugs: NEET_BO_PS_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "respiration",
+    chipLabel: "Respiration in Plants notes",
+    chapter: NEET_BO_RS_CHAPTER,
+    notes: NEET_BO_RS_NOTES,
+    slugs: NEET_BO_RS_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "biological-classification",
+    chipLabel: "Biological Classification notes",
+    chapter: NEET_BO_BC_CHAPTER,
+    notes: NEET_BO_BC_NOTES,
+    slugs: NEET_BO_BC_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "plant-growth",
+    chipLabel: "Plant Growth and Development notes",
+    chapter: NEET_BO_PG_CHAPTER,
+    notes: NEET_BO_PG_NOTES,
+    slugs: NEET_BO_PG_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "sexual-reproduction",
+    chipLabel: "Sexual Reproduction in Flowering Plants notes",
+    chapter: NEET_BO_SR_CHAPTER,
+    notes: NEET_BO_SR_NOTES,
+    slugs: NEET_BO_SR_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "inheritance",
+    chipLabel: "Principles of Inheritance and Variation notes",
+    chapter: NEET_BO_PI_CHAPTER,
+    notes: NEET_BO_PI_NOTES,
+    slugs: NEET_BO_PI_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "molecular-basis",
+    chipLabel: "Molecular Basis of Inheritance notes",
+    chapter: NEET_BO_MB_CHAPTER,
+    notes: NEET_BO_MB_NOTES,
+    slugs: NEET_BO_MB_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "microbes",
+    chipLabel: "Microbes in Human Welfare notes",
+    chapter: NEET_BO_MI_CHAPTER,
+    notes: NEET_BO_MI_NOTES,
+    slugs: NEET_BO_MI_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "organisms-populations",
+    chipLabel: "Organisms and Populations notes",
+    chapter: NEET_BO_OP_CHAPTER,
+    notes: NEET_BO_OP_NOTES,
+    slugs: NEET_BO_OP_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "ecosystem",
+    chipLabel: "Ecosystem notes",
+    chapter: NEET_BO_EC_CHAPTER,
+    notes: NEET_BO_EC_NOTES,
+    slugs: NEET_BO_EC_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Botany",
+    subjectRoute: "neet-botany",
+    subjectDisplay: "NEET Botany",
+    chapterSlug: "biodiversity",
+    chipLabel: "Biodiversity and Conservation notes",
+    chapter: NEET_BO_BD_CHAPTER,
+    notes: NEET_BO_BD_NOTES,
+    slugs: NEET_BO_BD_SLUGS,
   },
 ];
 

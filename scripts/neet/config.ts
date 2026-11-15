@@ -249,5 +249,9 @@ export const NEET_CHAPTERS: Record<NeetSubject, string[]> = {
     "Human Health and Disease",
     "Biotechnology: Principles and Processes",
     "Biotechnology and its Applications",
+    // Added 2026-11-15 for rows the Zoology section printed with no other home: NCERT XI
+    // Biomolecules (still on the syllabus) and XII Environmental Issues (dropped in 2024).
+    "Biomolecules",
+    "Environmental Issues",
   ],
 };
