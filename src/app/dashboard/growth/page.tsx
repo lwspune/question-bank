@@ -84,6 +84,8 @@ import {
   TEACHER_STUDENT_ANSWERS_MIN,
   GULF_PRICE_BASELINE_RUPEES_PER_STUDENT,
   GULF_PRICE_MIN_SALES,
+  ENEM_STUDENTS_KEEP,
+  ENEM_ACTIVE_KEEP,
   ANSWER_LIMIT_COPY_CHECKOUT_BASELINE_PCT,
   ANSWER_LIMIT_COPY_BUY_BASELINE_PCT,
   V_REVEAL_FOLLOWUP_MAX_DROP,
@@ -934,6 +936,14 @@ export default async function GrowthPage() {
             <code>scripts/profile/teacher-student-readout.sql</code>: use the labels if {TEACHER_STUDENT_ANSWERS_MIN}+
             accounts answer, and the behaviour rule for older accounts only if {TEACHER_RULE_PRECISION_PCT}%+ of the
             accounts it names say Teacher.
+          </p>
+        );
+      case "enem-interest":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: add 2016-2020 and a notes pilot if{" "}
+            {ENEM_STUDENTS_KEEP}+ students choose ENEM and {ENEM_ACTIVE_KEEP}+ of them start a mock or answer 20+
+            questions; otherwise leave ENEM as it is.
           </p>
         );
       case "gulf-price":

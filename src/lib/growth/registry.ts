@@ -370,6 +370,14 @@ export const GULF_PRICE_BASELINE_RUPEES_PER_STUDENT = 6;
 /** "gulf-price": Gulf sales needed in the window before the revenue line means anything. */
 export const GULF_PRICE_MIN_SALES = 2;
 /**
+ * "enem-interest": students choosing ENEM (target_exams) in 4 weeks for it to
+ * earn more work. IMAT drew 15 in its first two weeks on intl (24 by 11-15),
+ * with notes and English content; ENEM has neither.
+ */
+export const ENEM_STUDENTS_KEEP = 20;
+/** "enem-interest": ...of whom this many started a mock or answered 20+ questions. */
+export const ENEM_ACTIVE_KEEP = 5;
+/**
  * "answer-limit-copy": of students who met the answer limit in the 30 days to
  * 2026-11-11, the share who opened checkout from it (35 of 360) and who bought
  * a pass afterwards (16 of 360), staff left out.
@@ -512,7 +520,8 @@ export type Readout =
   | "install-app"
   | "teacher-or-student"
   | "notes-drill-panel"
-  | "gulf-price";
+  | "gulf-price"
+  | "enem-interest";
 
 export type Experiment = {
   id: string;
@@ -1471,6 +1480,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-15",
     windowDays: 42,
     readout: "gulf-price",
+    status: "running",
+  },
+  {
+    id: "enem-interest",
+    title: "ENEM on the international site",
+    change:
+      "ENEM (Brazil) Day 2, 2021 to 2025, goes public on intl.pyqvault.com: 450 questions with worked solutions in Portuguese and 5 timed mocks, all free, no notes.",
+    why: "Five years of one exam is a cheap way to learn whether Brazilian students find us at all before writing Portuguese notes or adding 2016-2020 (owner: \"will help gauge interest\"). The big Portuguese sites own ENEM topic searches, so it may draw little.",
+    metric:
+      "Students who chose ENEM (student_profiles.target_exams) since going public, and how many of them started an ENEM mock or answered 20+ ENEM questions; ENEM page views and their countries from Vercel beside it",
+    rule: `Earn more work (2016-2020, then a 3-chapter notes pilot in Portuguese) if ${ENEM_STUDENTS_KEEP}+ students choose ENEM in 4 weeks and ${ENEM_ACTIVE_KEEP}+ of them use it. Fewer: leave ENEM as it is and add nothing.`,
+    liveSince: "2026-11-15",
+    windowDays: 28,
+    readout: "enem-interest",
     status: "running",
   },
 
