@@ -21,7 +21,16 @@ const mins = (m: number) => (m < 10 ? formatMarks(m) : String(Math.round(m)));
 
 type Action = { key: string; icon: typeof Target; title: string; body: React.ReactNode };
 
-export default function ScorePlanCard({ plan, attemptId }: { plan: ScorePlan; attemptId: string }) {
+export default function ScorePlanCard({
+  plan,
+  attemptId,
+  progressHref,
+}: {
+  plan: ScorePlan;
+  attemptId: string;
+  /** The site's own progress page (lib/sites/intl progressPathFor): intl's is the map. */
+  progressHref: string;
+}) {
   const actions: Action[] = [];
 
   if (plan.easy) {
@@ -255,7 +264,7 @@ export default function ScorePlanCard({ plan, attemptId }: { plan: ScorePlan; at
       </div>
 
       <Link
-        href="/performance"
+        href={progressHref}
         prefetch={false}
         className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:underline"
       >

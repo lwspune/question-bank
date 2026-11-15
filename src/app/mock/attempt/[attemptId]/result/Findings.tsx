@@ -33,7 +33,14 @@ import { goPracticeHref } from "@/lib/performance/links";
  * fact about a QUESTION. Nothing here compares this student to another one;
  * that is the line the engagement gate draws, and it holds.
  */
-export default function Findings({ report }: { report: MockReport }) {
+export default function Findings({
+  report,
+  progressHref,
+}: {
+  report: MockReport;
+  /** The site's own progress page (lib/sites/intl progressPathFor): intl's is the map. */
+  progressHref: string;
+}) {
   if (!report.hasFindings) return null;
 
   return (
@@ -135,7 +142,7 @@ export default function Findings({ report }: { report: MockReport }) {
           one place read as two different things. */}
       <div className="mt-4">
         <Link
-          href="/performance"
+          href={progressHref}
           className="-ml-4 inline-flex h-11 items-center justify-center gap-1.5 rounded-xl px-4 text-sm font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:underline"
         >
           Your full performance across all papers
