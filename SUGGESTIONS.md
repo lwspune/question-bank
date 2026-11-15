@@ -130,6 +130,15 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ## 2026-11-15
 
+### NDA GAT items found during the homework review (not changed)
+
+The repeat review for the eight NDA GAT homework plans read every question; these look defective as stored. None changes a plan's grouping. Each needs the printed paper or UPSC's key before any edit (shipped rows: fix in place, per the defective-question policy).
+
+- **Two "No error" options, one underlined part lost:** cca345ed (English, NDA 2 2018 Q.1, "a honest man") and 91702209 (NDA 1 2021 Q.31). The keyed TEXT is right; the option letters are shifted.
+- **Key doubtful:** 6dba1ff3 (English, NDA 1 2022 Q.7) keyed "No error" though "Once considered ninth planet" lacks "the" (taken out of the "missing article" type); 4b2e4791 (NDA 1 2025 Q.50) "will" and "shall" both fit, keyed shall; 831abf6d (NDA 1 2026 Q.41) keyed (a) "The project staff are"; 4cd4da82 (Chemistry, NDA 2 2024 Q.58) "which element is polyatomic": phosphorus is keyed, but sulphur (S8) is polyatomic too.
+- **Printed figure transcribed wrongly:** 27b08077 (Physics, NDA 2 2023, v = u + at) options say "distance-time graph" for what must be velocity-time graphs.
+- **Known flawed, solution already says so:** ebe34b3e (English, NDA 1 2021 Q.50) needs "had known", not offered.
+
 ### Board PYQs: about 760 Maharashtra HSC 12 questions still show no marks (Step 2, not started)
 
 A student asked for "marks of each question" on board PYQs (feedback 2026-11-14). Step 1 shipped on branch `feat/board-pyq-marks`: /board's Board PYQs and Top 10 tabs show the printed marks wherever a stored whole paper carries the question and every paper agrees (`src/lib/board/pyqMarks.ts`). That covers all of CBSE 12 and 10, 2,032 of 2,070 SSC 10 and 1,488 of 2,246 HSC 12.
