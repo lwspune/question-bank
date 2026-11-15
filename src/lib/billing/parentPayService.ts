@@ -1,8 +1,12 @@
 /**
  * "Ask a parent to pay" (2026-11-09): the server reads and the student's email.
  * The rules live in the pure parentLink.ts; this module fetches and records.
+ *
+ * Not "server-only" (2026-11-15): the payment check (scripts/billing/reconcile.ts)
+ * runs under tsx, where that marker has nothing to resolve to, and it must
+ * send the same "your parent paid" email the webhook sends. Every function
+ * takes its client as a parameter, like the email services.
  */
-import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { sendEmail, type SendPayload, type SendResult } from "@/lib/email/resend";

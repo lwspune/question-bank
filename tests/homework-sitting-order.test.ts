@@ -72,6 +72,17 @@ describe("cdsSittingLabel", () => {
     expect(() => cdsSittingLabel(2024, null)).toThrow(/2024/);
     expect(() => cdsSittingLabel(2024, "Feb")).toThrow(/Feb/);
   });
+
+  // English and GK rows carry no month; the paper is in the note (2026-11-15).
+  it("reads CDS (I)/(II) from the note when the month is empty", () => {
+    expect(cdsSittingLabel(2017, null, "CDS (I) 2017 — English")).toBe("CDS 1 2017");
+    expect(cdsSittingLabel(2016, null, "CDS (II) 2016 — General Knowledge [No official answer key is published]")).toBe("CDS 2 2016");
+  });
+
+  it("refuses a note naming another year, or no paper", () => {
+    expect(() => cdsSittingLabel(2018, null, "CDS (I) 2017 — English")).toThrow(/2017/);
+    expect(() => cdsSittingLabel(2018, null, "General Knowledge")).toThrow(/2018/);
+  });
 });
 
 // MHT-CET (2026-11-04): a paper is one SHIFT, named by its date and shift as

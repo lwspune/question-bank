@@ -130,6 +130,15 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ## 2026-11-15
 
+### CDS English and GK items found during the homework review (left out of the plans, not changed)
+
+The repeat review for the eight CDS English and GK homework plans read every question. UPSC published no key for these papers, so the stored answers are our derivations. Ten are flawed as printed and left out of the homework plans (`excludedQuestions` in `scripts/homework/data/cds-*.json`); an eleventh stays in. Each still shows on /browse and in mocks as before. Decide per item whether it gets a `notice:` and grace (the defective-question policy); shipped rows are fixed in place.
+
+- **No printed option is correct (English word class):** 23c80baa (CDS 2 2021, "wandered around": no Adverb option, keyed Verb), eff05c95 (CDS 1 2020) and 47fda3a4 (CDS 1 2021) ("since" + a time is a preposition: no such option, keyed Adverb), fb2df23f (CDS 2 2022, "all good things": keyed Pronoun).
+- **Polity:** 619565cd (CDS 2 2021, Emergency made immune from review: the 38th Amendment is not offered, keyed 42nd); 93075de5 (CDS 2 2021, federal system: our own solution says all four statements are true); 437823aa (CDS 1 2022: both the 10% cap and the Attorney General wording are wrong); 6fea7930 (CDS 1 2023, Solicitor General: "chief legal advisor" and "constitutional post" are both wrong).
+- **Two options fit:** aa6b40c9 (Economics, CDS 2 2023, not under GST: customs duties keyed, petroleum taxes fit too); d2c6ca24 (Physics, magnetic field lines: "always parallel" is as wrong as the keyed "can cross").
+- **Check the print, answer clear (kept in the plan):** 324845c0 (Chemistry, CDS 1 2026): option (A) reads "1, 2, 3 and 4" though three statements are printed; keyed (D) "1 and 3 only".
+
 ### NDA GAT items found during the homework review (not changed)
 
 The repeat review for the eight NDA GAT homework plans read every question; these look defective as stored. None changes a plan's grouping. Each needs the printed paper or UPSC's key before any edit (shipped rows: fix in place, per the defective-question policy).
@@ -138,6 +147,17 @@ The repeat review for the eight NDA GAT homework plans read every question; thes
 - **Key doubtful:** 6dba1ff3 (English, NDA 1 2022 Q.7) keyed "No error" though "Once considered ninth planet" lacks "the" (taken out of the "missing article" type); 4b2e4791 (NDA 1 2025 Q.50) "will" and "shall" both fit, keyed shall; 831abf6d (NDA 1 2026 Q.41) keyed (a) "The project staff are"; 4cd4da82 (Chemistry, NDA 2 2024 Q.58) "which element is polyatomic": phosphorus is keyed, but sulphur (S8) is polyatomic too.
 - **Printed figure transcribed wrongly:** 27b08077 (Physics, NDA 2 2023, v = u + at) options say "distance-time graph" for what must be velocity-time graphs.
 - **Known flawed, solution already says so:** ebe34b3e (English, NDA 1 2021 Q.50) needs "had known", not offered.
+
+### SSC CGL GK items found during the homework review (left out of the plans or kept, not changed)
+
+The repeat review for the seven SSC CGL Tier I GK homework plans (History, Geography, Polity, Economics, Biology, Chemistry, Physics) read every question. The 14 rows whose solution already opens with a defect **Note:** were left out of the plans, as for English. Four more were left out because they would teach a wrong fact; none is changed in the bank (needs SSC's printed paper first):
+
+- **e46c5455** (History, 13 Sep 2024 S3): "Hindu College established in 1791", keyed Benaras. 1791 is the Sanskrit College, Benaras; Hindu College is Calcutta, 1817.
+- **971e2298** (Biology, 9 Sep 2024 S1): "best defines monoecious", keyed "a flower with both androecium and gynoecium" (that is a bisexual flower).
+- **584dfa3e** (Economics, 24 Sep 2025 S2): "largely excluded from industrial licensing after 1991", keyed alcohol, cigarettes, explosives: the sectors that STAYED under licensing.
+- **506f26a8** (Geography, 14 Jul 2023 S2): the keyed FALSE statement says "Baikal rocks"; garbled, intended word unknown.
+
+Kept in the plans but worth a look: **5ae50612** (Economics) option D garbled ("All 1,2 and 3 are three"); **d9f9d820** (Geography) option D reads "country"; **3f143f57** (Physics, Laws of Motion) is a civil-engineering question ("post tensioning suits long spans"), likely misfiled; **07af71e8** (Polity) statement C cites Article 280 for the Finance Commission's recommendations (Article 281 is "Recommendations"), key "A only" stands.
 
 ### Board PYQs: about 760 Maharashtra HSC 12 questions still show no marks (Step 2, not started)
 

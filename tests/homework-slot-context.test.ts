@@ -91,6 +91,37 @@ describe("isHomeworkPassage", () => {
     }
   });
 
+  /** CDS English (2026-11-15) stores a one-line SUMMARY of the direction on
+   *  most rows, and some printed directions end on the Lists. */
+  it("is false for a short one-line Directions summary and a List direction", () => {
+    for (const c of [
+      "Directions: find error in underlined part or No error",
+      "Directions: opposite in meaning to the underlined word",
+      "Directions: order six-sentence passage; S1 and S6 fixed, order P,Q,R,S",
+      "Directions: part of speech of the underlined word",
+      "Directions: combine the two sentences into one; choose the option that does it most appropriately",
+      "Directions: judge whether the underlined word is used correctly in each of sentences S1 and S2",
+      "Directions: Match List I with List II and select the answer using the code given below the Lists:",
+      "Directions: Match List I (word/expression/specialised term) with List II (meaning) and select the answer using the code given below the Lists.",
+      "Directions: Identify the most appropriate meaning for the words given below and mark your response accordingly on the Answer Sheet.",
+      "Directions: Each item in this section has a sentence with three underlined parts labelled (a), (b) and (c). Read each sentence to determine whether there is an error in any underlined part and indicate your response. If there is no error, indicate your response as (d).",
+      "Directions: Match List I with List II and select the correct answer using the code given below the Lists : List I (Word/Expression), List II (Meaning).",
+    ]) {
+      expect(isHomeworkPassage(c), c.slice(0, 60)).toBe(false);
+    }
+  });
+
+  it("keeps a short Directions line that carries a set's data, or a passage", () => {
+    for (const c of [
+      "Directions for the following two (02) items: Let f(x) = x + 1.",
+      "Directions: Let \\(p = 2\\) and \\(q = 3\\).",
+      "Directions: fill the blanks. The ___(1)___ sat on the mat.",
+      "Directions: select the word group that fits each blank\n\nPassage\nThe difficult thing about ___(91)___ the science of habits is that most people want it.",
+    ]) {
+      expect(isHomeworkPassage(c), c.slice(0, 60)).toBe(true);
+    }
+  });
+
   it("keeps a UPSC passage or data set that opens with Directions", () => {
     for (const c of [
       // NDA Maths sets: short, but they end with the data the parts share.
