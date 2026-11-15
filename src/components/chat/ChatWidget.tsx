@@ -76,6 +76,9 @@ import { parseVPassOffer, type VPassOffer as PassOffer } from "@/lib/chat/passOf
 import { parseHourlyLimit, type HourlyLimitReply } from "@/lib/chat/hourlyLimit";
 import { liftDailyLimit } from "@/components/reveal/useRevealMeter";
 import VProgressCard from "./VProgressCard";
+import VDayCard from "./VDayCard";
+import type { DayCard } from "@/lib/chat/dayCard";
+import { dayCardDue, readSeenDay, writeSeenDay } from "@/lib/chat/daySeen";
 import VPathCard from "./VPathCard";
 import {
   ASK_V_EVENT,
@@ -227,6 +230,17 @@ export default function ChatWidget() {
   // The header's shared read (no extra request): the button shows once there is something to show.
   const pulse = usePulse(signedIn && features.progress);
   const showProgress = !!pulse && ((pulse.totals?.answered ?? 0) > 0 || pulse.due > 0);
+  // "Your day" (2026-11-15, lib/chat/dayCard): the first open of an India day
+  // shows the student's day in place of the greeting; a dot on the button says
+  // it is waiting. Never over an unread reply.
+  const [day, setDay] = useState<DayCard | null>(null);
+  const [dayLoading, setDayLoading] = useState(false);
+  const [dayDot, setDayDot] = useState(false);
+  useEffect(() => {
+    setDayDot(
+      dayCardDue({ signedIn, enabled: features.progress, hasSomething: showProgress, unread, seenDay: readSeenDay(), now: new Date() })
+    );
+  }, [signedIn, features.progress, showProgress, unread]);
   // "My plan for today" (Phase 2): only for a student on the board path, from the same shared read.
   const showPath = pulse?.path?.state === "on";
   // "Ask V about this question" (2026-10-19): the question this conversation is about, sent with each message.
@@ -446,6 +460,34 @@ export default function ChatWidget() {
     return { id, fresh: true };
   }
 
+  /** Is today's card waiting? Read when asked, so a new India day is noticed without a reload. */
+  function dayDue(): boolean {
+    return dayCardDue({
+      signedIn,
+      enabled: features.progress,
+      hasSomething: showProgress,
+      unread,
+      seenDay: readSeenDay(),
+      now: new Date(),
+    });
+  }
+
+  async function loadDay() {
+    setDayLoading(true);
+    try {
+      const res = await fetch("/api/chat/progress?view=day", { cache: "no-store" });
+      if (!res.ok) return; // V keeps its greeting; the next open tries again.
+      const j = (await res.json()) as { day: DayCard | null };
+      writeSeenDay(new Date());
+      setDayDot(false);
+      setDay(j.day);
+    } catch {
+      // Offline: the greeting stands.
+    } finally {
+      setDayLoading(false);
+    }
+  }
+
   function openChat() {
     const { id: sessionId } = currentSessionId();
     // Once per mount, so reopening the panel doesn't inflate /dashboard/chat's open count.
@@ -459,6 +501,7 @@ export default function ChatWidget() {
       }).catch(() => {});
     }
     void loadAccountConversation();
+    if (mode === "chat" && dayDue()) void loadDay();
     setOpen(true);
   }
 
@@ -965,7 +1008,7 @@ export default function ChatWidget() {
           ) : (
           <>
           <div ref={listRef} className="flex-1 space-y-4 overflow-y-auto px-4 py-4">
-            {[GREETING, ...turns].map((t, n) => {
+            {[day ? { ...GREETING, text: day.greeting } : dayLoading ? { ...GREETING, text: "Welcome back." } : GREETING, ...turns].map((t, n) => {
               // n - 1 indexes `turns`; the greeting is never stored.
               const i = n - 1;
               if (t.role === "user") {
@@ -1182,6 +1225,10 @@ export default function ChatWidget() {
                   )}
                   {t.plan && !t.reveal && <VPlanCard onNavigate={close} />}
                   {t.progress && <VProgressCard onNavigate={close} />}
+                  {n === 0 && day && <VDayCard card={day} onNavigate={close} />}
+                  {n === 0 && !day && dayLoading && (
+                    <div className="ml-9 mt-2 h-44 animate-pulse rounded-xl border bg-muted/40" aria-hidden />
+                  )}
                   {t.path && !t.reveal && <VPathCard onNavigate={close} />}
                 </div>
               );
@@ -1319,7 +1366,9 @@ export default function ChatWidget() {
             ? "Close chat with V"
             : unread > 0
               ? `Chat with V, ${unread} new ${unread === 1 ? "reply" : "replies"}`
-              : "Chat with V"
+              : dayDot
+                ? "Chat with V, your day is ready"
+                : "Chat with V"
         }
         aria-expanded={open}
         title="Chat with V"
@@ -1332,6 +1381,9 @@ export default function ChatWidget() {
           <X className="h-5 w-5 text-foreground" aria-hidden />
         ) : (
           <VFace avatar="idle" className="h-9 w-9 object-contain sm:h-12 sm:w-12" />
+        )}
+        {!open && unread === 0 && dayDot && (
+          <span aria-hidden className="absolute right-0 top-0 h-3 w-3 rounded-full bg-brand ring-2 ring-background sm:right-0.5 sm:top-0.5" />
         )}
         {!open && unread > 0 && (
           <span

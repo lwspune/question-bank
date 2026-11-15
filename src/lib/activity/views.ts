@@ -51,6 +51,10 @@ export const SURFACES = [
   // V's "How's my progress" card was opened (2026-10-27, migration 0191),
   // written by GET /api/chat/progress: how many look, and whether they drill after.
   "v_progress",
+  // V's "Your day" card shown in place of the greeting, the first open of a day
+  // (2026-11-15, migration 0262), with metadata.card yesterday | since | fresh:
+  // growth experiment "v-day-card" reads whether students come back to it.
+  "v_day",
   // The Learn tab (2026-10-28): "learn" is a reading surface (every Learn page, by address);
   // "learn_start" is the student's first move through a lesson's slides, with the lesson's
   // address. Until then nothing told "nobody came" from "came and left before a question".

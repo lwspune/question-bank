@@ -285,6 +285,15 @@ export const V_STEP_CHIPS_TAP_KEEP_PCT = 15;
 export const V_STEP_CHIPS_YES_KEEP_PCT = 50;
 
 /**
+ * "v-day-card": keep V's "Your day" card if at least V_DAY_REPEAT_KEEP_PCT of
+ * the students shown it in the window see it on 2+ days (before: 7 of 31, 23%,
+ * opened "How's my progress" on 2+ days, 28 Oct to 15 Nov) and at least
+ * V_DAY_NEXT_STEP_KEEP_PCT of showings lead to a tap on the card that day.
+ */
+export const V_DAY_REPEAT_KEEP_PCT = 35;
+export const V_DAY_NEXT_STEP_KEEP_PCT = 25;
+
+/**
  * "score-plan": keep "How to raise your score" if at least this share of the
  * fair full-paper attempts it shows on start the Fix list within a day (%).
  * Baseline with "What to fix next", 36 fair attempts (60 to 14 days before
@@ -506,6 +515,7 @@ export type Readout =
   | "v-better-retry"
   | "v-step-by-step"
   | "v-step-chips"
+  | "v-day-card"
   | "score-plan"
   | "stuck-offer"
   | "same-mistake"
@@ -948,7 +958,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-27",
     windowDays: 14,
     readout: "v-progress",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-15 (5 days after the check date), owner's OK: keep. 31 students opened it in the 18 days from the 28 Oct deploy (43 openings), and 17 of them (55%) started a drill or opened /performance within 30 minutes. Only 7 of the 31 opened it on 2+ days: students look once, so the next test is a card that waits for them, \"v-day-card\".",
   },
   {
     id: "v-pay-offer",
@@ -1105,6 +1117,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     status: "decided",
     decision:
       "Ended early on 2026-11-15 (owner), 25 days before its check: replaced by the step chips (v-step-chips). In 3 days it got 2 starts of about 39 chances, and one was a staff account, so 1 student; both starts reached the last step. A button under the reply drew as few taps as the Reply icon (0 uses) and \"Which step lost you?\" (0 picks), so the step help moved into the steps themselves. Its taps stay stored (step_by_step, open/next/lost/done).",
+  },
+  {
+    id: "v-day-card",
+    title: "V's \"Your day\" card, the first time a student opens V each day",
+    change:
+      "The first time a signed-in student opens V on a new India day, a card stands in for V's greeting: their last day (answers, mistakes fixed, chapters that moved up; \"Since your last visit\" with the date after a gap, never the days missed), then one thing for today (the board plan's task, else Fix, starting with 5). A dot on V's button says it is waiting. No AI call. The mistakes notification now opens with \"Yesterday you fixed N.\" when there were fixes.",
+    why: "\"How's my progress\" works once (55% of openers took a next step) but not as a habit: 7 of 31 opened it on a second day. Of 1,509 students active in the 28 days to 2026-11-15, 63% came on one day only and 34% of active days were followed by a visit the next day. A card waiting when they open V tests whether seeing their own day brings them back.",
+    metric:
+      "surface_viewed 'v_day' (one a day per student, metadata.card yesterday | since | fresh): students shown it and the share shown it on 2+ days; Vercel v_day_tap by action; drill_started from v_day the same day; next-day return of students shown it against the 34% of all active days. Read with scripts/chat/day-card-readout.sql",
+    rule: `Keep it if ${V_DAY_REPEAT_KEEP_PCT}%+ of the students shown it see it on 2+ days and ${V_DAY_NEXT_STEP_KEEP_PCT}%+ of showings lead to a tap that day. Students who open V are keener than most, so next-day return is reported beside, not judged on.`,
+    liveSince: "2026-11-15",
+    windowDays: 14,
+    readout: "v-day-card",
+    status: "running",
   },
   {
     id: "v-step-chips",
@@ -1820,13 +1846,13 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
   "v-progress-students": {
     label: "V: students who opened How's my progress",
     source: "user_activity surface_viewed with metadata.surface 'v_progress' (one a day per student), distinct user_id since liveSince",
-    entries: [],
+    entries: [{ on: "2026-11-15", value: 31, note: "28 Oct to 15 Nov, from user_activity; 43 openings" }],
   },
   "v-progress-next-step": {
     label: "V: progress-card openers who drilled or opened /performance within 30 minutes (%)",
     source:
       "user_activity: each 'v_progress' view followed within 30 minutes by drill_started, or by surface_viewed 'performance', for the same student",
-    entries: [],
+    entries: [{ on: "2026-11-15", value: 55, note: "17 of 31 openers drilled or opened /performance within 30 minutes" }],
   },
   "self-mark-tap-share": {
     label: "Written answers: reveals followed by an Understood / Review later tap (%)",

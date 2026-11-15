@@ -71,7 +71,7 @@ job it improves, and is tested on that job's cases (section 4).
 | `explain_concept` | "derive the potential due to a point charge", "what is active transport" | `explain_concept` (section 2) | a correct, grounded explanation | built 2026-10-22 (step 2) |
 | `practise` | "test me on NLM", "mini test" | the practice-test builder, `similar_question` | the student starts practising | works |
 | `plan` | "plan my week", "4 months left" | `plan_week`, `my_plan`, `exam_strategy` | a plan is made and shown | typed only since 2026-10-27; follow-through low (5 of 63 chapter days done) |
-| `reflect` | "how am I doing?", "good at Maths, bad at GAT" | `my_progress`; the "How's my progress" button opens a card built without AI (`lib/chat/progressCard.ts`, 2026-10-27) | answers the question they asked | typed: no per-subject split |
+| `reflect` | "how am I doing?", "good at Maths, bad at GAT" | `my_progress`; the "How's my progress" button opens a card built without AI (`lib/chat/progressCard.ts`, 2026-10-27); the first open of a day shows the "Your day" card (`lib/chat/dayCard.ts`, 2026-11-15) | answers the question they asked | typed: no per-subject split |
 | `help` | payment, app, homework, "is it free" | site facts | the right next step | gaps: app install, homework |
 | `chat` | greetings, role-play, gibberish, abuse | none | one friendly line back to studying; abuse gets the fixed line | works |
 | `tutor` | "teach me this step by step", "I still don't get it" | V's explanation from the stored solution, a bubble per numbered step (section 0) | the student gets a different question on the subtopic right within 7 days | step 1 built 2026-11-15 (step chips; "Teach me step by step" 2026-11-12 to 11-15, retired); typed requests get an ordinary explanation |
@@ -416,6 +416,12 @@ reads everything else from the stored row.
   3 runs in 4 on main as well (V calls its earlier reply a mistake and echoes
   "stored" from the old reply in the history): a separate slip, not this
   change.
+- 2026-11-15: the "Your day" card (owner, migration 0262): the first time a
+  student opens V on a new India day, a card stands in for the greeting (last
+  day, fixes, chapters moved up, one step for today), with a dot on V's
+  button. Built from numbers, no model call, so no v:eval case moves. How's my
+  progress kept (31 openers, 55% next step, 7 on a second day). Growth
+  experiment `v-day-card`.
 - 2026-11-11: vision agreed (section 0): V becomes like a live human tutor,
   done when the student can solve a new one alone (verified learning), in tiny
   steps; any rule in section 3 may be revisited with the owner's OK. New job
