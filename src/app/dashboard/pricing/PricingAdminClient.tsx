@@ -22,6 +22,7 @@ import {
   formatPrice,
   parseCountries,
   planCurrencyFor,
+  planEndsAt,
   planLengthLabel,
   validatePlan,
   type Plan,
@@ -51,6 +52,8 @@ type Draft = {
   /** The price in whole currency units (rupees or dollars), as typed. */
   rupees: string;
   durationDays: string;
+  /** A fixed last day, YYYY-MM-DD (0256); blank = none. */
+  endsOn: string;
   scope: string;
   sortOrder: string;
   active: boolean;
@@ -79,6 +82,7 @@ function toDraft(p: Plan | null): Draft {
         countries: (p.countries ?? []).join(", "),
         rupees: String(p.amountPaise / 100),
         durationDays: p.durationDays === null ? "" : String(p.durationDays),
+        endsOn: p.endsOn ?? "",
         scope: p.scope,
         sortOrder: String(p.sortOrder),
         active: p.active,
@@ -94,6 +98,7 @@ function toDraft(p: Plan | null): Draft {
         countries: "",
         rupees: "",
         durationDays: "365",
+        endsOn: "",
         scope: SELLABLE_SCOPES[0],
         sortOrder: "10",
         active: true,
@@ -115,6 +120,7 @@ function fromDraft(d: Draft): PlanInput & { active: boolean } {
     site: d.site,
     countries,
     durationDays: d.durationDays.trim() === "" ? null : Number(d.durationDays),
+    endsOn: d.endsOn.trim() === "" ? null : d.endsOn.trim(),
     scope: d.scope,
     sortOrder: Number(d.sortOrder),
     active: d.active,
@@ -231,6 +237,12 @@ export default function PricingAdminClient({ initialPlans, initialSettings, load
                       <code>{p.scope}</code> · <code>/pricing?plan={p.urlKey}</code> · id{" "}
                       <code>{p.id}</code>
                     </p>
+                    {p.endsOn && !planEndsAt(p, Date.now()) && (
+                      <p className="text-sm font-medium text-amber-700 dark:text-amber-400">
+                        Its end date ({p.endsOn}) has passed, so it now sells{" "}
+                        {p.durationDays === null ? "for life" : `${p.durationDays} days`}. Set the next exam&apos;s date.
+                      </p>
+                    )}
                   </div>
                   <Button
                     variant="outline"
@@ -350,7 +362,7 @@ export default function PricingAdminClient({ initialPlans, initialSettings, load
                 />
               </div>
 
-              <div className="grid gap-3 sm:grid-cols-3">
+              <div className="grid gap-3 sm:grid-cols-2">
                 <div className="space-y-1">
                   <Label htmlFor="plan-rupees">
                     Price ({planCurrencyFor(draft.site, parseCountries(draft.countries)) === "USD" ? "$" : "₹"})
@@ -375,6 +387,19 @@ export default function PricingAdminClient({ initialPlans, initialSettings, load
                     value={draft.durationDays}
                     onChange={(e) => setDraft({ ...draft, durationDays: e.target.value })}
                   />
+                </div>
+                <div className="space-y-1">
+                  <Label htmlFor="plan-ends-on">Ends on (blank = none)</Label>
+                  <Input
+                    id="plan-ends-on"
+                    type="date"
+                    value={draft.endsOn}
+                    onChange={(e) => setDraft({ ...draft, endsOn: e.target.value })}
+                    aria-describedby="plan-ends-on-help"
+                  />
+                  <p id="plan-ends-on-help" className="text-xs text-muted-foreground">
+                    Every pass sold ends on this day. After it, sales use the days.
+                  </p>
                 </div>
                 <div className="space-y-1">
                   <Label htmlFor="plan-sort">Order</Label>

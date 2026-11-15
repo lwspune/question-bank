@@ -75,6 +75,7 @@ export async function upsertPlan(input: PlanInput & { active: boolean }): Promis
     site: input.site,
     countries: input.countries ?? null,
     duration_days: input.durationDays,
+    ends_on: input.endsOn ?? null,
     scope: input.scope,
     active: input.active,
     sort_order: input.sortOrder,
