@@ -14,6 +14,7 @@ import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/
 export default function InfoRowPanel({
   id,
   icon,
+  headerIcon,
   label,
   title,
   subtitle,
@@ -24,6 +25,8 @@ export default function InfoRowPanel({
   /** The row's anchor (the avatar menu links to /me#invite). */
   id?: string;
   icon: ReactNode;
+  /** The icon on the panel's blue header, when the row's colour would not show on it. */
+  headerIcon?: ReactNode;
   label: string;
   title: string;
   subtitle: string;
@@ -57,7 +60,7 @@ export default function InfoRowPanel({
         >
           <div className="hero-brand flex shrink-0 items-center gap-3 px-4 pb-3 pr-16 pt-[max(0.75rem,env(safe-area-inset-top))] font-sans sm:pt-3">
             <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/25" aria-hidden>
-              {icon}
+              {headerIcon ?? icon}
             </span>
             <div className="min-w-0">
               <SheetTitle className="truncate text-base font-semibold leading-tight text-white">{title}</SheetTitle>

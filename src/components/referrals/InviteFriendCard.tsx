@@ -122,6 +122,7 @@ export default function InviteFriendCard() {
     <InfoRowPanel
       id="invite"
       icon={<Gift className="h-4 w-4 text-brand-accent" />}
+      headerIcon={<Gift className="h-4 w-4 text-white" />}
       label="Invite a friend"
       title="Invite a friend"
       subtitle={referralPanelSubtitle()}
