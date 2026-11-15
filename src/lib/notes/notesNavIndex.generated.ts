@@ -3825,5 +3825,68 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "NEET Zoology",
     "chapterSlug": "excretion",
     "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "neural-control",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "locomotion",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "chemical-coordination",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "evolution",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "human-reproduction",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "human-health",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "reproductive-health",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "biotech-principles",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "biotech-applications",
+    "subtopicCount": 3
   }
 ];

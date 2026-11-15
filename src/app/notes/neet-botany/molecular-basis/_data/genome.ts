@@ -6,7 +6,7 @@ export const NEET_BO_MB_GENOME_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The goals, methods and findings of the Human Genome Project, and how DNA fingerprinting uses repetitive DNA, satellite DNA and VNTRs to tell people apart.",
   whyItMatters:
-    "Five NEET questions from 2021 to 2025: none since 2025. Three are on the Human Genome Project (sequence annotation in NEET 2022, ESTs in NEET 2023, the chromosome with most genes in NEET 2025) and two on DNA fingerprinting (repetitive DNA in NEET 2021, DNA polymorphism in NEET 2022). Each turns on one exact NCERT term or number.",
+    "Six NEET questions from 2021 to 2026. Three are on the Human Genome Project (sequence annotation in NEET 2022, ESTs in NEET 2023, the chromosome with most genes in NEET 2025) and three on DNA fingerprinting (repetitive DNA in NEET 2021, DNA polymorphism in NEET 2022, the order of its steps in NEET 2026). Each turns on one exact NCERT term or number.",
   concepts: [
     {
       kind: "reference" as const,

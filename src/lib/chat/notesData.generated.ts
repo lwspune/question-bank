@@ -549,7 +549,16 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "neet-zoology/biomolecules",
   "neet-zoology/breathing",
   "neet-zoology/body-fluids",
-  "neet-zoology/excretion"
+  "neet-zoology/excretion",
+  "neet-zoology/neural-control",
+  "neet-zoology/locomotion",
+  "neet-zoology/chemical-coordination",
+  "neet-zoology/evolution",
+  "neet-zoology/human-reproduction",
+  "neet-zoology/human-health",
+  "neet-zoology/reproductive-health",
+  "neet-zoology/biotech-principles",
+  "neet-zoology/biotech-applications"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1099,4 +1108,13 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "neet-zoology/breathing": () => import("@/app/notes/neet-zoology/breathing/_data").then((m) => m.NEET_ZO_BR_NOTES),
   "neet-zoology/body-fluids": () => import("@/app/notes/neet-zoology/body-fluids/_data").then((m) => m.NEET_ZO_BF_NOTES),
   "neet-zoology/excretion": () => import("@/app/notes/neet-zoology/excretion/_data").then((m) => m.NEET_ZO_EX_NOTES),
+  "neet-zoology/neural-control": () => import("@/app/notes/neet-zoology/neural-control/_data").then((m) => m.NEET_ZO_NC_NOTES),
+  "neet-zoology/locomotion": () => import("@/app/notes/neet-zoology/locomotion/_data").then((m) => m.NEET_ZO_LM_NOTES),
+  "neet-zoology/chemical-coordination": () => import("@/app/notes/neet-zoology/chemical-coordination/_data").then((m) => m.NEET_ZO_CC_NOTES),
+  "neet-zoology/evolution": () => import("@/app/notes/neet-zoology/evolution/_data").then((m) => m.NEET_ZO_EV_NOTES),
+  "neet-zoology/human-reproduction": () => import("@/app/notes/neet-zoology/human-reproduction/_data").then((m) => m.NEET_ZO_HR_NOTES),
+  "neet-zoology/human-health": () => import("@/app/notes/neet-zoology/human-health/_data").then((m) => m.NEET_ZO_HH_NOTES),
+  "neet-zoology/reproductive-health": () => import("@/app/notes/neet-zoology/reproductive-health/_data").then((m) => m.NEET_ZO_RH_NOTES),
+  "neet-zoology/biotech-principles": () => import("@/app/notes/neet-zoology/biotech-principles/_data").then((m) => m.NEET_ZO_BP_NOTES),
+  "neet-zoology/biotech-applications": () => import("@/app/notes/neet-zoology/biotech-applications/_data").then((m) => m.NEET_ZO_BA_NOTES),
 };

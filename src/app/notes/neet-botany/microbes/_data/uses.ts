@@ -6,7 +6,7 @@ export const NEET_BO_MI_USES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Which microbe makes which product: curd, bread, toddy and cheese at home, and drinks, antibiotics, organic acids, enzymes and medicines in industry.",
   whyItMatters:
-    "Five NEET questions from 2024 to 2026, four of them on which microbe makes which product. NEET 2024 and Re-NEET 2024 each set a match-the-columns on microbes and their products, NEET 2025 asked about household microbes and non-distilled drinks, and NEET 2026 asked what makes the holes in Swiss cheese.",
+    "Ten NEET questions from 2021 to 2026, nine of them on which microbe makes which product or what it is used for. NEET 2021, NEET 2024, Re-NEET 2024 and NEET 2026 each set a match-the-columns on microbes and their products, NEET 2022 asked which fungus makes cyclosporin A, streptokinase as a clot buster came up in NEET 2025 and Re-NEET 2026, NEET 2025 asked about household microbes and non-distilled drinks, and NEET 2026 asked what makes the holes in Swiss cheese.",
   concepts: [
     {
       kind: "reference" as const,

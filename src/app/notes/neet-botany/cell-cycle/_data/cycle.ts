@@ -6,7 +6,7 @@ export const NEET_BO_CC_CYCLE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The phases of the cell cycle in order (G1, S, G2, M and the quiescent G0), what the DNA content does in each, the four stages of mitosis with cytokinesis, and why mitosis matters.",
   whyItMatters:
-    "Thirteen NEET questions from 2021 to 2026. Four are match-the-columns on what happens in G1, S, G2, M and the quiescent stage, two ask the order of the phases, and three are on mitosis: where spindle fibres attach, what they do, and which animal makes its gametes by mitosis. NEET 2021 also asked two on the S phase: the chromosome number after it, and when the centriole duplicates.",
+    "Fourteen NEET questions from 2021 to 2026. Four are match-the-columns on what happens in G1, S, G2, M and the quiescent stage, two ask the order of the phases, and four are on mitosis: where spindle fibres attach, what they do, which animal makes its gametes by mitosis, and which statement about mitosis is wrong (NEET 2022). NEET 2021 also asked two on the S phase: the chromosome number after it, and when the centriole duplicates.",
   concepts: [
     {
       kind: "reference" as const,

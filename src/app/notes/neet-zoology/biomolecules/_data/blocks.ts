@@ -6,7 +6,7 @@ export const NEET_ZO_BM_BLOCKS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "How a tissue is analysed for its chemicals, what primary and secondary metabolites are, and the small building blocks of life: amino acids, lipids, sugars, nitrogen bases and nucleotides.",
   whyItMatters:
-    "Nine NEET questions from 2021 to 2026. Four are about lipids (NEET 2021, NEET 2022, NEET 2024 and Re-NEET 2024), and lecithin turns up in every one of the four. NEET 2026 asked two statement questions, one on amino acids and one on purines and other biomolecules, and a match question on metabolites. Re-NEET 2026 asked which elements make up most of the body by weight.",
+    "Ten NEET questions from 2021 to 2026. Four are about lipids (NEET 2021, NEET 2022, NEET 2024 and Re-NEET 2024), and lecithin turns up in every one of the four. NEET 2026 asked two statement questions, one on amino acids and one on purines and other biomolecules, and a match question on metabolites. Re-NEET 2026 asked which elements make up most of the body by weight, and NEET 2021 which pair of toxin, lectin and other metabolites was wrong.",
   concepts: [
     {
       kind: "reference" as const,

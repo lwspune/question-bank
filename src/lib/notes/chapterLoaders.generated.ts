@@ -11007,8 +11007,8 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
     "chapterName": "Organisms and Populations",
     "formulaCounts": {
       "formulas": 3,
-      "tables": 5,
-      "traps": 21
+      "tables": 6,
+      "traps": 23
     }
   },
   {
@@ -11159,6 +11159,180 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "formulas": 0,
       "tables": 10,
       "traps": 28
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "neural-control",
+    "chipLabel": "Neural Control and Coordination notes",
+    "slugs": [
+      "nzo-nc-neuron",
+      "nzo-nc-brain"
+    ],
+    "chapterName": "Neural Control and Coordination",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 5,
+      "traps": 18
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "locomotion",
+    "chipLabel": "Locomotion and Movement notes",
+    "slugs": [
+      "nzo-lm-muscle",
+      "nzo-lm-skeleton",
+      "nzo-lm-joints"
+    ],
+    "chapterName": "Locomotion and Movement",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 10,
+      "traps": 25
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "chemical-coordination",
+    "chipLabel": "Chemical Coordination and Integration notes",
+    "slugs": [
+      "nzo-cc-pituitary",
+      "nzo-cc-adrenal",
+      "nzo-cc-action"
+    ],
+    "chapterName": "Chemical Coordination and Integration",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 10,
+      "traps": 27
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "evolution",
+    "chipLabel": "Evolution notes",
+    "slugs": [
+      "nzo-ev-evidences",
+      "nzo-ev-radiation",
+      "nzo-ev-hardy",
+      "nzo-ev-history"
+    ],
+    "chapterName": "Evolution",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 11,
+      "traps": 26
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "human-reproduction",
+    "chipLabel": "Human Reproduction notes",
+    "slugs": [
+      "nzo-hr-systems",
+      "nzo-hr-gametogenesis",
+      "nzo-hr-cycle",
+      "nzo-hr-pregnancy"
+    ],
+    "chapterName": "Human Reproduction",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 13,
+      "traps": 31
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "human-health",
+    "chipLabel": "Human Health and Disease notes",
+    "slugs": [
+      "nzo-hh-diseases",
+      "nzo-hh-immunity",
+      "nzo-hh-cancer",
+      "nzo-hh-drugs"
+    ],
+    "chapterName": "Human Health and Disease",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 10,
+      "traps": 34
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "reproductive-health",
+    "chipLabel": "Reproductive Health notes",
+    "slugs": [
+      "nzo-rh-contraception",
+      "nzo-rh-mtp",
+      "nzo-rh-infertility"
+    ],
+    "chapterName": "Reproductive Health",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 8,
+      "traps": 23
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "biotech-principles",
+    "chipLabel": "Biotechnology: Principles and Processes notes",
+    "slugs": [
+      "nzo-bp-restriction",
+      "nzo-bp-vectors",
+      "nzo-bp-pcr",
+      "nzo-bp-processes"
+    ],
+    "chapterName": "Biotechnology: Principles and Processes",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 12,
+      "traps": 30
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "biotech-applications",
+    "chipLabel": "Biotechnology and its Applications notes",
+    "slugs": [
+      "nzo-ba-agriculture",
+      "nzo-ba-medicine",
+      "nzo-ba-transgenic"
+    ],
+    "chapterName": "Biotechnology and its Applications",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 10,
+      "traps": 26
     }
   }
 ];
@@ -11710,4 +11884,13 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "neet-zoology/breathing": () => import("@/app/notes/neet-zoology/breathing/_data").then((m) => ({ chapter: m.NEET_ZO_BR_CHAPTER, notes: m.NEET_ZO_BR_NOTES })),
   "neet-zoology/body-fluids": () => import("@/app/notes/neet-zoology/body-fluids/_data").then((m) => ({ chapter: m.NEET_ZO_BF_CHAPTER, notes: m.NEET_ZO_BF_NOTES })),
   "neet-zoology/excretion": () => import("@/app/notes/neet-zoology/excretion/_data").then((m) => ({ chapter: m.NEET_ZO_EX_CHAPTER, notes: m.NEET_ZO_EX_NOTES })),
+  "neet-zoology/neural-control": () => import("@/app/notes/neet-zoology/neural-control/_data").then((m) => ({ chapter: m.NEET_ZO_NC_CHAPTER, notes: m.NEET_ZO_NC_NOTES })),
+  "neet-zoology/locomotion": () => import("@/app/notes/neet-zoology/locomotion/_data").then((m) => ({ chapter: m.NEET_ZO_LM_CHAPTER, notes: m.NEET_ZO_LM_NOTES })),
+  "neet-zoology/chemical-coordination": () => import("@/app/notes/neet-zoology/chemical-coordination/_data").then((m) => ({ chapter: m.NEET_ZO_CC_CHAPTER, notes: m.NEET_ZO_CC_NOTES })),
+  "neet-zoology/evolution": () => import("@/app/notes/neet-zoology/evolution/_data").then((m) => ({ chapter: m.NEET_ZO_EV_CHAPTER, notes: m.NEET_ZO_EV_NOTES })),
+  "neet-zoology/human-reproduction": () => import("@/app/notes/neet-zoology/human-reproduction/_data").then((m) => ({ chapter: m.NEET_ZO_HR_CHAPTER, notes: m.NEET_ZO_HR_NOTES })),
+  "neet-zoology/human-health": () => import("@/app/notes/neet-zoology/human-health/_data").then((m) => ({ chapter: m.NEET_ZO_HH_CHAPTER, notes: m.NEET_ZO_HH_NOTES })),
+  "neet-zoology/reproductive-health": () => import("@/app/notes/neet-zoology/reproductive-health/_data").then((m) => ({ chapter: m.NEET_ZO_RH_CHAPTER, notes: m.NEET_ZO_RH_NOTES })),
+  "neet-zoology/biotech-principles": () => import("@/app/notes/neet-zoology/biotech-principles/_data").then((m) => ({ chapter: m.NEET_ZO_BP_CHAPTER, notes: m.NEET_ZO_BP_NOTES })),
+  "neet-zoology/biotech-applications": () => import("@/app/notes/neet-zoology/biotech-applications/_data").then((m) => ({ chapter: m.NEET_ZO_BA_CHAPTER, notes: m.NEET_ZO_BA_NOTES })),
 };

@@ -4,8 +4,8 @@ export const NEET_ZO_BM_CHAPTER: ChapterNote = {
   chapterName: "Biomolecules",
   title: "Biomolecules: NEET Zoology",
   intro:
-    "Biomolecules has 30 past-year questions in NEET Zoology, from 2021 to 2026: 4 EASY and 26 MODERATE. " +
-    "Every one of the eight papers since 2021 asked at least one, and 20 of the 30 are from 2024 or later. " +
+    "Biomolecules has 31 past-year questions in NEET Zoology, from 2021 to 2026: 4 EASY and 27 MODERATE. " +
+    "Every one of the eight papers since 2021 asked at least one, and 20 of the 31 are from 2024 or later. " +
     "Enzymes alone account for 12, the largest share. " +
     "The questions turn on exact NCERT lines: which class of enzyme leaves a double bond, which cofactor carboxypeptidase needs, how many carbons palmitic acid has, which end of a protein is the N-terminal. " +
     "So learn each fact with its NCERT example, and the name it is usually confused with. " +
