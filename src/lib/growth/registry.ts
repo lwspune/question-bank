@@ -275,6 +275,16 @@ export const V_STEPS_START_KEEP_PCT = 10;
 export const V_STEPS_FINISH_KEEP_PCT = 50;
 
 /**
+ * "v-step-chips" (owner, 2026-11-15): keep the step bubbles and their chips if
+ * at least V_STEP_CHIPS_TAP_KEEP_PCT of the stepped explanations get a step
+ * tapped, and at least V_STEP_CHIPS_YES_KEEP_PCT of V's answers to Explain that
+ * the student answers get a Yes (%). Before: "Which step lost you?" got 0 picks
+ * from 2026-11-10, the Reply icon 0 uses since 2026-10-21.
+ */
+export const V_STEP_CHIPS_TAP_KEEP_PCT = 15;
+export const V_STEP_CHIPS_YES_KEEP_PCT = 50;
+
+/**
  * "score-plan": keep "How to raise your score" if at least this share of the
  * fair full-paper attempts it shows on start the Fix list within a day (%).
  * Baseline with "What to fix next", 36 fair attempts (60 to 14 days before
@@ -487,6 +497,7 @@ export type Readout =
   | "v-fix-line"
   | "v-better-retry"
   | "v-step-by-step"
+  | "v-step-chips"
   | "score-plan"
   | "stuck-offer"
   | "same-mistake"
@@ -1048,7 +1059,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
       "After a No, a reply with numbered steps asks \"Which step lost you?\" (a button per step, and All of it), and V's second try must differ: the named step, or the one its first reply rushed, shown in full with the numbers, or the idea it needs first, or a tiny example (rule 7).",
     why: "Second tries were the first steps reworded, once word for word, and still skipped the hard step (\"do this for every entry\", \"using the quadratic formula\"). Of 21 second tries (23 Oct to 9 Nov), students answered Yes 2 times and No again 5 times.",
     metric:
-      "chat_interactions: replies to a No (message I didn't understand..., plain or naming a step) answered Yes against No; step messages against plain ones (which steps students name)",
+      "chat_interactions: replies to a No (message I didn't understand..., plain or naming a step) answered Yes against No; step messages against plain ones (which steps students name). From 2026-11-15 leave out \"Explain step N more simply.\": that is the step chips (v-step-chips), not a second try after a No",
     rule: `Keep it if ${V_RETRY_YES_KEEP_PCT}%+ of answered second tries get a Yes (was 2 of 7).`,
     liveSince: "2026-11-10",
     windowDays: 28,
@@ -1067,6 +1078,22 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-12",
     windowDays: 28,
     readout: "v-step-by-step",
+    status: "decided",
+    decision:
+      "Ended early on 2026-11-15 (owner), 25 days before its check: replaced by the step chips (v-step-chips). In 3 days it got 2 starts of about 39 chances, and one was a staff account, so 1 student; both starts reached the last step. A button under the reply drew as few taps as the Reply icon (0 uses) and \"Which step lost you?\" (0 picks), so the step help moved into the steps themselves. Its taps stay stored (step_by_step, open/next/lost/done).",
+  },
+  {
+    id: "v-step-chips",
+    title: "Tap a step of V's explanation for Explain or Reply",
+    change:
+      "V's explanation of a question, when its steps are numbered, is shown as a bubble per step (the opening line, each step, the answer). Tapping a step shows Explain (V explains that step alone, and the question goes to Fix your mistakes like a No) and Reply (that step quoted above the typing box). V's rule 7 now asks for numbered steps. Replaced \"Teach me step by step\".",
+    why: "Students ask about one step in their own words (\"where did the 9y\u00b2 go\", \"explain clearly step 2\"): about 1 typed follow-up to an explanation in 10, 30 days to 2026-11-15. The buttons kept under a reply got nothing (Reply 0 uses since 10-21, \"Which step lost you?\" 0 picks since 11-10, Teach me step by step 1 student start). Only 22% of explanations had numbered steps.",
+    metric:
+      "chat_interactions event_type step_by_step coded tap / explain / reply (by step, /dashboard/chat), against stepped explanations (signed-in AI replies that explained a question with 2+ numbered steps); understood Yes against No on V's answers to \"Explain step N more simply.\"; replies with reply_to_step (0259)",
+    rule: `Keep it if ${V_STEP_CHIPS_TAP_KEEP_PCT}%+ of stepped explanations get a step tapped and ${V_STEP_CHIPS_YES_KEEP_PCT}%+ of answered Explain replies get a Yes; if taps are high but Yes is low, read the Explain replies before changing the layout.`,
+    liveSince: "2026-11-15",
+    windowDays: 28,
+    readout: "v-step-chips",
     status: "running",
   },
   {

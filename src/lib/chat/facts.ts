@@ -16,9 +16,9 @@ import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import { MAX_CHAPTERS } from "@/lib/practiceTests/builder";
 import { ABUSE_REPLY } from "./abuse";
 import { NOT_UNDERSTOOD } from "./understood";
+import { explainStepMessage } from "./stepChips";
 import { languageLine, type VLanguage } from "./language";
 import { followUpTailLine } from "./followUp";
-import { stepTailLine } from "./stepByStep";
 import type { ExamEntry } from "@/lib/exam/examContext";
 
 export type ChatExamFact = {
@@ -233,12 +233,12 @@ const NO_EXPLAIN_RULE = `7. You cannot see the question a student is looking at,
 const EXPLAIN_RULE = `7. Questions. You can explain a question from its solution. When the student tapped Ask V, the question is named at the end. When they paste or type out a question with options, call find_question and ask whether the first match is theirs before explaining it. If find_question finds nothing, call explain_concept with the question's topic (rule 7a).
 - When they tap Ask V or ask you to explain, explain it straight away: do not ask whether they want a hint or the full solution.
 - Give a hint only when they ask for one: call get_question and give the first idea in one or two lines. Never give the answer or say which option is right.
-- Explaining: call explain_question. Explain only from the solution it returns, in short steps, each on its own line, in their language. If they picked an option, start with why their pick is right or where it goes wrong. Write maths inside \\( \\).
+- Explaining: call explain_question. Explain only from the solution it returns, in short numbered steps (1., 2., 3.), one step a line, in their language. If they picked an option, start with one line on why their pick is right or where it goes wrong, before step 1. After the last step, leave a blank line, then give the answer. Write maths inside \\( \\).
 - Never work out your own answer, and never say the answer is wrong. If they think it is wrong, tell them to tap Report on the question.
 - Call it "the solution" or "the answer", never "stored": that is our word, not theirs.
 - If the solution has a slip (a typo, a wrong step) but its answer is right, call report_solution_issue once with what is wrong, explain with the correct working, and add at most one short line about the slip.
 - Answer only what they asked, and add nothing after it. Call similar_question only when they ask for another question to try; never offer one yourself. You cannot write new questions: similar_question gives one of ours, so never promise to make one.
-- When they say "${NOT_UNDERSTOOD}", or that they did not understand one step, never send the same explanation again. Find the step that lost them: the one they named, or else the one your last reply rushed or skipped (such as "do this for every entry" or "using the formula" without showing it). Then do ONE of these: show that step in full with the actual numbers; or first explain the idea that step needs, in two or three lines, then redo it; or show the method on a tiny example with simpler numbers, then the real one. When they named a step, explain only that step. If they say they did not understand again, use a way you have not used yet, best a tiny example, and never walk the same steps again. Number your steps 1., 2., 3. Do not ask which step is unclear: buttons under your reply ask it. Plain words, one idea a line.
+- When they say "${NOT_UNDERSTOOD}", or "${explainStepMessage(2).replace("2", "N")}", or that they did not understand one step, never send the same explanation again. Find the step that lost them: the one they named, or else the one your last reply rushed or skipped (such as "do this for every entry" or "using the formula" without showing it). Then do ONE of these: show that step in full with the actual numbers; or first explain the idea that step needs, in two or three lines, then redo it; or show the method on a tiny example with simpler numbers, then the real one. When they named a step, explain only that step. If they say they did not understand again, use a way you have not used yet, best a tiny example, and never walk the same steps again. Number your steps 1., 2., 3. Do not ask which step is unclear: buttons under your reply ask it. Plain words, one idea a line.
 - If explain_question says they are signed out or out of free answers, say only that, kindly, as it tells you to.`;
 
 /**
@@ -373,8 +373,6 @@ export function buildSystemTail(who: {
   language?: VLanguage | null;
   /** "Show me where I went wrong" on a follow-up card: the question V explained before (V_LEARNING_LOOP.md step 2). */
   followsUp?: { stem: string | null } | null;
-  /** "Lost me here" on a step of our solution (lib/chat/stepByStep.ts): the step they are stuck on. */
-  solutionStep?: { step: number; total: number; text: string } | null;
 }): string {
   const parts: string[] = [];
   if (who.language) parts.push(languageLine(who.language));
@@ -387,9 +385,6 @@ export function buildSystemTail(who: {
   // 2026-11-10: on a follow-up the earlier explanation is the point, so V is told to build on it.
   if (who.question && who.followsUp) {
     parts.push(followUpTailLine(who.followsUp));
-  } else if (who.question && who.solutionStep) {
-    // 2026-11-12: the explanation they were reading is the point here, as on a follow-up.
-    parts.push(stepTailLine(who.solutionStep));
   } else if (who.notesBrief || who.question) {
     // 2026-11-08: "My earlier reply did not match it, please disregard it" (rule 12 alone did not hold it).
     parts.push("Your earlier replies were about other questions and were right for them: do not mention, correct or take them back.");

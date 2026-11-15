@@ -18,7 +18,8 @@ import type { ToolCallLog } from "./anthropic";
 import { chosenIn, isAskVMessage, type AskedCard } from "./askVEvent";
 import { parseNotesRefKey } from "./notesItem";
 import { explainedQuestionId } from "./solutionFigure";
-import { isExplanation } from "./understood";
+import { isExplanation, notUnderstoodQuestionId } from "./understood";
+import { replyParts, replyStepContext } from "./stepChips";
 
 export type ConversationRow = {
   id: string;
@@ -47,6 +48,8 @@ export type ConversationRow = {
   understood?: boolean | null;
   /** The earlier message this one replies to (0174). */
   replyToId?: string | null;
+  /** The step of that message's explanation it replies to, 1-based (step chips, 0259). */
+  replyToStep?: number | null;
 };
 
 const PAGE_PATH_RE = /^\/[A-Za-z0-9/_.~-]*$/;
@@ -154,10 +157,17 @@ export function findReplyTarget<T extends ConversationRow>(rows: readonly T[], i
 const REPLY_QUESTION_MAX = 300;
 const REPLY_ANSWER_MAX = 1200;
 
-/** What V is told before a message that replies to an earlier one. The stored message stays as typed. */
-export function replyContext(target: ConversationRow): string {
+/**
+ * What V is told before a message that replies to an earlier one. The stored
+ * message stays as typed. A Reply on one step of a stepped explanation (step
+ * chips, 2026-11-15) tells V that step alone.
+ */
+export function replyContext(target: ConversationRow, step?: number | null): string {
   const what = aboutOf(target);
   const about = what ? ` about ${what}` : "";
+  const stepLine = step ? replyStepContext(target.reply!, step) : null;
+  if (stepLine) return what ? `${stepLine}
+[That explanation was about ${what}.]` : stepLine;
   return [
     `[The student is replying to an earlier exchange${about}.`,
     `They had asked: ${questionOf(target)!.slice(0, REPLY_QUESTION_MAX)}`,
@@ -166,6 +176,23 @@ export function replyContext(target: ConversationRow): string {
 }
 
 const QUOTE_MAX = 140;
+
+/** The quote above a reply: the step replied to (step chips), else the message's first line. */
+function replyQuote(target: ConversationRow, step: number | null | undefined): string {
+  const parts = step ? replyParts(target.reply!) : null;
+  if (parts && step && step <= parts.steps.length) return quoteSnippet(`Step ${step}: ${parts.steps[step - 1]}`);
+  return quoteSnippet(target.reply!);
+}
+
+/**
+ * The question whose explanation this reply's steps belong to, so its steps can
+ * be tapped (step chips, 2026-11-15): an explanation with numbered steps, of a
+ * question V explained or, on a re-explanation, the one tapped. Else null.
+ */
+export function stepQuestionIdOf(r: { reply: string | null; toolCalls?: ToolCallLog[] | null; message: string | null; askedQuestionId?: string | null }): string | null {
+  if (!r.reply || !isExplanation(r.toolCalls, r.message) || !replyParts(r.reply)) return null;
+  return notUnderstoodQuestionId({ toolCalls: r.toolCalls, message: r.message, askedQuestionId: r.askedQuestionId });
+}
 
 /** The start of a message, for the quote above a reply: its first line, never cut inside maths. */
 export function quoteSnippet(text: string): string {
@@ -204,6 +231,8 @@ export type HistoryTurn =
       visualQuestionId?: string;
       /** The bank question an explanation explained: "One more like this" picks from its subtopic (2026-11-08). */
       explainedQuestionId?: string;
+      /** A stepped explanation's question: its steps can be tapped for Explain and Reply (step chips, 2026-11-15). */
+      stepQuestionId?: string;
     };
 
 /**
@@ -223,13 +252,14 @@ export function historyTurns(
     turns.push({
       role: "user",
       text,
-      ...(target ? { quote: quoteSnippet(target.reply!) } : {}),
+      ...(target ? { quote: replyQuote(target, r.replyToStep) } : {}),
       ...(asked ? { asked } : {}),
     });
     if (r.replySource === "ai") {
       const explainedId = explainedQuestionId(r.toolCalls);
       const figure = explainedId ? figures?.get(explainedId) : undefined;
       const visual = explainedId ? visuals?.get(explainedId) : undefined;
+      const stepId = stepQuestionIdOf({ reply: r.reply, toolCalls: r.toolCalls, message: text, askedQuestionId: r.askedQuestionId });
       turns.push({
         role: "assistant",
         text: r.reply!,
@@ -242,6 +272,7 @@ export function historyTurns(
         ...(figure ? { figure } : {}),
         ...(visual ? { visual, visualQuestionId: explainedId! } : {}),
         ...(explainedId ? { explainedQuestionId: explainedId } : {}),
+        ...(stepId ? { stepQuestionId: stepId } : {}),
       });
     } else if (r.replySource === "followup") {
       turns.push({ role: "assistant", text: r.reply!, links: r.replyLinks ?? [], source: "followup" });
@@ -266,6 +297,8 @@ export type ConversationTurn = {
   quote: string | null;
   /** The answer to "Did you understand?"; null when not asked or not answered (0182). */
   understood: boolean | null;
+  /** The student saw this reply as a bubble per step, which they could tap (step chips, 2026-11-15). */
+  stepped: boolean;
 };
 
 export type Conversation = {
@@ -308,8 +341,10 @@ export function groupConversations(rows: readonly ConversationRow[]): Conversati
           toolCalls: r.toolCalls ?? null,
           links: r.replyLinks ?? [],
           asked: askedCardOfRow(r, question),
-          quote: target ? quoteSnippet(target.reply!) : null,
+          quote: target ? replyQuote(target, r.replyToStep) : null,
           understood: r.understood ?? null,
+          stepped:
+            r.signedIn && r.replySource === "ai" && stepQuestionIdOf({ reply: r.reply, toolCalls: r.toolCalls, message: question, askedQuestionId: r.askedQuestionId }) !== null,
         };
       }),
     });

@@ -129,6 +129,7 @@ describe("EXPERIMENTS", () => {
       "v-progress",
       "v-reveal",
       "v-step-by-step",
+      "v-step-chips",
       "v-strategy",
       "visual-solutions",
       "welcome-exam-confirm",
