@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalH2, LegalList, LegalP, LegalPage } from "@/components/legal/LegalPage";
 import { CONTACT_EMAIL } from "@/lib/brand";
-import { formatPrice, planLengthLabel } from "@/lib/billing/plans";
+import { formatPrice, planBuyersNote, planLengthLabel } from "@/lib/billing/plans";
 import { listActivePlans, readFreeMockLimit } from "@/lib/billing/plansQuery";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 
@@ -64,7 +64,8 @@ export default async function TermsPage() {
         items={plans.map((p) => (
           <>
             <strong>{p.label}</strong>: {formatPrice(p.amountPaise, p.currency)} for{" "}
-            {planLengthLabel(p)}. {p.blurb}
+            {planLengthLabel(p)}
+            {planBuyersNote(p) ? `, ${planBuyersNote(p)}` : ""}. {p.blurb}
           </>
         ))}
       />

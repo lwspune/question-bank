@@ -10,6 +10,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { EXAM_REGISTRY, PYQVAULT_EXAMS } from "@/lib/exam/examContext";
 import { listActivePlans, readFreeLimits } from "@/lib/billing/plansQuery";
+import { plansForBuyer } from "@/lib/billing/plans";
 import { getCachedExamCatalog, type ExamCatalog } from "@/lib/exam/allExamStats";
 import { listChapterSearchRows } from "./subtopicIndex";
 import {
@@ -88,6 +89,8 @@ export async function loadVContext(
     /** Each exam's past-year count for its fact; defaults to the day-cached catalogue (a script, outside Next, passes an uncached one). */
     loadExamCatalog?: () => Promise<ExamCatalog>;
     page?: string | null;
+    /** The buyer's country (readCountry), so V quotes the price they would pay; null = sold-everywhere prices. */
+    country?: string | null;
     /** False: a signed-out visitor, whose question is their only one (lib/chat/anonLimit.ts). */
     signedIn?: boolean;
     /** The student's own results, for my_progress (lib/chat/progress.ts). Absent when signed out. */
@@ -140,8 +143,9 @@ export async function loadVContext(
   );
   const system = buildSystemPrompt({
     exams,
-    // V speaks to www's students: the intl site's USD pass is not theirs to buy (0203).
-    plans: buildPlanFacts(plans.filter((p) => p.site === "pyqvault")),
+    // V speaks to www's students: the intl site's USD pass is not theirs to buy
+    // (0203), and a country price (the Gulf's) only to a buyer in that country.
+    plans: buildPlanFacts(plansForBuyer(plans, "pyqvault", opts.country ?? null)),
     free: buildFreeFacts(limits),
     bankTotal: catalog?.allPublicQuestions ?? 0,
     nav: NAV_FACTS,

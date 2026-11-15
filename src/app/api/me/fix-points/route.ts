@@ -21,6 +21,8 @@ import { readFixPoints } from "@/lib/billing/fixPointsService";
 import { readReferralDiscount } from "@/lib/referrals/service";
 import { fixPointsView } from "@/lib/billing/fixPoints";
 import { isIntlHost } from "@/lib/sites/intl";
+import { plansForBuyer } from "@/lib/billing/plans";
+import { readCountry } from "@/lib/acquisition/country";
 
 export const dynamic = "force-dynamic";
 
@@ -42,7 +44,9 @@ export async function GET(request: NextRequest) {
     const admin = createSupabaseAdminClient();
     const [balance, plans, hasPass, referralPct, rows] = await Promise.all([
       readFixPoints(admin, user.id, now),
-      listActivePlans(db),
+      // Only the passes this buyer can buy, at their country price (2026-11-15):
+      // /pricing shows the same list, so the prices here match its cards.
+      listActivePlans(db).then((all) => plansForBuyer(all, "pyqvault", readCountry(request.headers))),
       userHasAnyAccess(db, user.id, sitePassScopes("pyqvault"), now.getTime()),
       readReferralDiscount(admin, user.id).catch((e: unknown) => {
         console.error("referral read failed", e);

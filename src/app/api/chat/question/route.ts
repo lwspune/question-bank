@@ -37,6 +37,7 @@ import { settleFollowUp } from "@/lib/chat/followUpServer";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import { parseNotesItemRef } from "@/lib/chat/notesItem";
 import { loadNotesItemCard } from "@/lib/chat/notesItemServer";
+import { readCountry } from "@/lib/acquisition/country";
 
 export const dynamic = "force-dynamic";
 
@@ -133,7 +134,7 @@ export async function POST(request: NextRequest) {
     const check = await claimVReveal(db, asked.id);
     // The card sells the pass in place, as the bank's wall does (2026-10-28).
     if (check.kind === "limit") {
-      return NextResponse.json({ ok: false, limit: check.limit, pass: await passOnSale() }, { status: 200 });
+      return NextResponse.json({ ok: false, limit: check.limit, pass: await passOnSale("pyqvault", { country: readCountry(request.headers) }) }, { status: 200 });
     }
     if (!settings.followUpFree) await settle();
 

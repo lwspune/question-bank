@@ -23,6 +23,8 @@
  * `no-store` is essential: per-user, never held by a CDN.
  */
 import { NextResponse } from "next/server";
+import { headers } from "next/headers";
+import { readCountry } from "@/lib/acquisition/country";
 import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { logActivityOnce } from "@/lib/activity/service";
@@ -56,6 +58,7 @@ export async function GET() {
     const pulse = await buildPulse(db, user.id, now, {
       week: getOwnWeekly(db, user.id, now),
       answers: getOwnAnswerTotals(db),
+      country: readCountry(await headers()),
     });
     return NextResponse.json(pulse, { headers: NO_STORE });
   } catch (e) {
