@@ -52,9 +52,18 @@ describe.skipIf(!HAS_ENV)("get_chapter_profile", () => {
   });
 
   it("splits by difficulty to exactly the facet count of every chapter", async () => {
+    // The facet RPC is security invoker with no visibility filter of its own,
+    // so the service role would also count PRIVATE rows (the seed has one).
+    // The landing page reads it as anon, PUBLIC only, which is the count the
+    // header must agree with.
+    const anon = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      { auth: { persistSession: false } }
+    );
     const [profile, facets] = await Promise.all([
       db.rpc("get_chapter_profile", { p_subject_id: subjectId, p_kind: "pyq" }),
-      db.rpc("get_chapter_facets", {
+      anon.rpc("get_chapter_facets", {
         p_exam_id: null,
         p_subject_id: subjectId,
         p_difficulties: null,
