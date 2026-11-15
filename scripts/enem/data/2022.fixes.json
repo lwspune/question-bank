@@ -1,0 +1,79 @@
+{
+  "_note": "Changes after review, applied by scripts/enem/assemble.py (2026-11-15).",
+  "145": {
+    "why": "Defective as printed (owner's policy 2026-10-29, case 3): 6 000 more gems than TWO basic packs gives 10 000 gems and 500 000 coins, not an option. INEP's key is E (400 000 = 8 000 gems, 6 000 more than ONE pack). Key kept, notice, grace in mocks (data/flawed.json).",
+    "notice": "Como impressa, esta questão não tem alternativa correta. Com 6 000 gemas a mais do que em dois pacotes básicos (4 000 gemas), o pacote especial teria 10 000 gemas e, mantida a proporção do pacote básico (50 moedas por gema), 500 000 moedas de ouro, valor que não está entre as alternativas. O gabarito oficial do INEP é E (400 000), que corresponde a 8 000 gemas, isto é, 6 000 a mais do que em um único pacote básico. Mantemos o gabarito do INEP; nos simulados do PYQ Vault, esta questão conta como acerto para todos.",
+    "solution": "No pacote básico há \\(\\frac{100\\,000}{2\\,000} = 50\\) moedas de ouro por gema. Lido como impresso, o pacote especial teria \\(4\\,000 + 6\\,000 = 10\\,000\\) gemas e, portanto, \\(10\\,000 \\times 50 = 500\\,000\\) moedas, valor que não aparece nas alternativas. O gabarito do INEP (E) corresponde a contar as 6 000 gemas a mais sobre um único pacote básico: \\(2\\,000 + 6\\,000 = 8\\,000\\) gemas e \\(8\\,000 \\times 50 = 400\\,000\\) moedas."
+  },
+  "143": {
+    "why": "Both figures are needed: Figure 1 (the net) and Figure 2 (the cube).",
+    "figure": {
+      "page": 19,
+      "box": [
+        [
+          180,
+          788,
+          440,
+          1015
+        ],
+        [
+          195,
+          1172,
+          425,
+          1430
+        ]
+      ],
+      "what": "Figura 1 (planificação) e Figura 2 (cubo)"
+    }
+  },
+  "103": {
+    "why": "The options box swept in the left column (stem text, a second copy of the figure). One box per drawn option instead, in order A-E, measured from the first crop. B-E start right of the column rule; C runs low enough for its P arrow.",
+    "option_figures": [
+      {
+        "page": 6,
+        "box": [
+          58,
+          1048,
+          425,
+          1392
+        ]
+      },
+      {
+        "page": 6,
+        "box": [
+          575,
+          145,
+          942,
+          432
+        ]
+      },
+      {
+        "page": 6,
+        "box": [
+          575,
+          458,
+          942,
+          802
+        ]
+      },
+      {
+        "page": 6,
+        "box": [
+          575,
+          815,
+          942,
+          1098
+        ]
+      },
+      {
+        "page": 6,
+        "box": [
+          575,
+          1128,
+          942,
+          1442
+        ]
+      }
+    ]
+  }
+}
