@@ -339,6 +339,19 @@ export const INSTALL_APP_STUDENTS_KEEP = 30;
  */
 export const INSTALL_APP_RETURN_BASELINE_PCT = 21;
 /**
+ * "teacher-or-student": answers needed in the 3 weeks before the labels are
+ * worth using. Before the question, the only labels were 96 tutor-interest
+ * answers (7 teachers), too few to test a behaviour rule against.
+ */
+export const TEACHER_STUDENT_ANSWERS_MIN = 200;
+/**
+ * "teacher-or-student": the share of accounts the behaviour rule names (answer
+ * keys downloaded, under 10 answers, no mock, 40%+ of activity Mon-Sat 9-16
+ * IST) that must answer Teacher before the rule labels accounts that never
+ * answered. Below it, the rule is a guess and stays unused.
+ */
+export const TEACHER_RULE_PRECISION_PCT = 70;
+/**
  * "answer-limit-copy": of students who met the answer limit in the 30 days to
  * 2026-11-11, the share who opened checkout from it (35 of 360) and who bought
  * a pass afterwards (16 of 360), staff left out.
@@ -477,7 +490,8 @@ export type Readout =
   | "checkout-return"
   | "welcome-exam-confirm"
   | "exam-guess-card"
-  | "install-app";
+  | "install-app"
+  | "teacher-or-student";
 
 export type Experiment = {
   id: string;
@@ -1378,6 +1392,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-14",
     windowDays: 28,
     readout: "install-app",
+    status: "running",
+  },
+  {
+    id: "teacher-or-student",
+    title: "Ask \"Are you a teacher or a student?\" in the download boxes",
+    change:
+      "Every download box (/browse, mock and board papers, homework, formula and revision sheets) shows one line under its download buttons, in the download view only: \"Are you a teacher or a student?\" with Teacher and Student. Asked once per account, never signed out or to staff; the answer is student_profiles.user_role (migration 0258), seeded with the 96 tutor-interest answers.",
+    why: "The download box made 273 accounts from 1 Oct to 1 Nov 2026, the third-largest signup route, but only 37% of them ever studied (100% of accounts that began by answering a question). Some are teachers, some wanted one file, and nothing told them apart: 6 self-declared teachers with activity were too few to test a behaviour rule.",
+    metric:
+      "Answers (student_profiles.user_role_at since the merge) by role, and the answer rate per box (surface_viewed role_question, metadata.box, against answers). Then the behaviour rule's precision against the answers. All in scripts/profile/teacher-student-readout.sql.",
+    rule: `Use the labels if ${TEACHER_STUDENT_ANSWERS_MIN}+ accounts answer in 3 weeks: count teachers apart in readouts, and label accounts that never answered with the behaviour rule only if ${TEACHER_RULE_PRECISION_PCT}%+ of the accounts it names say Teacher. Fewer answers: move the question to after the file downloads.`,
+    liveSince: "2026-11-15",
+    windowDays: 21,
+    readout: "teacher-or-student",
     status: "running",
   },
 

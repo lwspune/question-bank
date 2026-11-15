@@ -78,6 +78,8 @@ import {
   EXAM_GUESS_CARD_TAP_KEEP_PCT,
   INSTALL_APP_RETURN_BASELINE_PCT,
   INSTALL_APP_STUDENTS_KEEP,
+  TEACHER_RULE_PRECISION_PCT,
+  TEACHER_STUDENT_ANSWERS_MIN,
   ANSWER_LIMIT_COPY_CHECKOUT_BASELINE_PCT,
   ANSWER_LIMIT_COPY_BUY_BASELINE_PCT,
   V_REVEAL_FOLLOWUP_MAX_DROP,
@@ -919,6 +921,15 @@ export default async function GrowthPage() {
             Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: Vercel&rsquo;s app_opened and app_installed
             beside student_profiles.app_opened_at. List it on the Play Store next if {INSTALL_APP_STUDENTS_KEEP}+ students
             open the installed app and more than {INSTALL_APP_RETURN_BASELINE_PCT}% of them come back on 3+ days within 14.
+          </p>
+        );
+      case "teacher-or-student":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with{" "}
+            <code>scripts/profile/teacher-student-readout.sql</code>: use the labels if {TEACHER_STUDENT_ANSWERS_MIN}+
+            accounts answer, and the behaviour rule for older accounts only if {TEACHER_RULE_PRECISION_PCT}%+ of the
+            accounts it names say Teacher.
           </p>
         );
       case "checkout-return":

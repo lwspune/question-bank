@@ -317,6 +317,10 @@ async function main() {
         // Read by hand: Vercel's app_opened / app_installed, and student_profiles.app_opened_at (migration 0255).
         line = "by hand: Vercel app_opened + student_profiles.app_opened_at";
         break;
+      case "teacher-or-student":
+        // Read by hand: answers, the answer rate per box and the behaviour rule's precision (migration 0258).
+        line = "by hand: scripts/profile/teacher-student-readout.sql";
+        break;
       case "v-follow-up-loop":
         // Read by hand: v_followups against Ask V explanations (migration 0250, V_LEARNING_LOOP.md step 2).
         line = "by hand: npm run v:learning";
