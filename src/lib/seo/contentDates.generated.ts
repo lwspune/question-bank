@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 517
+ * Entries: 526
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -358,25 +358,34 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/neet-botany/anatomy": "2026-11-15T01:44:07+05:30",
   "/notes/neet-botany/biodiversity": "2026-11-15T02:09:20+05:30",
   "/notes/neet-botany/biological-classification": "2026-11-15T02:09:20+05:30",
-  "/notes/neet-botany/cell-cycle": "2026-11-15T12:08:04+05:30",
+  "/notes/neet-botany/cell-cycle": "2026-11-15T13:54:16+05:30",
   "/notes/neet-botany/cell-unit-of-life": "2026-11-15T12:08:04+05:30",
   "/notes/neet-botany/ecosystem": "2026-11-15T02:09:20+05:30",
-  "/notes/neet-botany/inheritance": "2026-11-15T02:09:20+05:30",
+  "/notes/neet-botany/inheritance": "2026-11-15T13:54:16+05:30",
   "/notes/neet-botany/living-world": "2026-11-15T01:44:07+05:30",
-  "/notes/neet-botany/microbes": "2026-11-15T02:09:20+05:30",
-  "/notes/neet-botany/molecular-basis": "2026-11-15T02:09:20+05:30",
+  "/notes/neet-botany/microbes": "2026-11-15T13:54:16+05:30",
+  "/notes/neet-botany/molecular-basis": "2026-11-15T13:54:16+05:30",
   "/notes/neet-botany/morphology": "2026-11-15T01:44:07+05:30",
-  "/notes/neet-botany/organisms-populations": "2026-11-15T02:09:20+05:30",
+  "/notes/neet-botany/organisms-populations": "2026-11-15T13:54:16+05:30",
   "/notes/neet-botany/photosynthesis": "2026-11-15T02:09:20+05:30",
   "/notes/neet-botany/plant-growth": "2026-11-15T02:09:20+05:30",
   "/notes/neet-botany/plant-kingdom": "2026-11-15T01:44:07+05:30",
   "/notes/neet-botany/respiration": "2026-11-15T02:09:20+05:30",
   "/notes/neet-botany/sexual-reproduction": "2026-11-15T02:09:20+05:30",
   "/notes/neet-zoology/animal-kingdom": "2026-11-15T12:08:04+05:30",
-  "/notes/neet-zoology/biomolecules": "2026-11-15T12:08:04+05:30",
+  "/notes/neet-zoology/biomolecules": "2026-11-15T13:54:16+05:30",
+  "/notes/neet-zoology/biotech-applications": "2026-11-15T13:54:16+05:30",
+  "/notes/neet-zoology/biotech-principles": "2026-11-15T13:54:16+05:30",
   "/notes/neet-zoology/body-fluids": "2026-11-15T12:08:04+05:30",
   "/notes/neet-zoology/breathing": "2026-11-15T12:08:04+05:30",
+  "/notes/neet-zoology/chemical-coordination": "2026-11-15T13:54:16+05:30",
+  "/notes/neet-zoology/evolution": "2026-11-15T13:54:16+05:30",
   "/notes/neet-zoology/excretion": "2026-11-15T12:08:04+05:30",
+  "/notes/neet-zoology/human-health": "2026-11-15T13:54:16+05:30",
+  "/notes/neet-zoology/human-reproduction": "2026-11-15T13:54:16+05:30",
+  "/notes/neet-zoology/locomotion": "2026-11-15T13:54:16+05:30",
+  "/notes/neet-zoology/neural-control": "2026-11-15T13:54:16+05:30",
+  "/notes/neet-zoology/reproductive-health": "2026-11-15T13:54:16+05:30",
   "/notes/neet-zoology/structural-organisation": "2026-11-15T12:08:04+05:30",
   "/notes/spi-biology/biodiversity-classification": "2026-10-22T19:21:59+05:30",
   "/notes/spi-biology/cell-biology": "2026-10-22T19:21:59+05:30",
