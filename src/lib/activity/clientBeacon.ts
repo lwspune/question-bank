@@ -103,6 +103,15 @@ type ClientEvent =
       onClose?: boolean;
       planId?: string;
       box?: DownloadBox;
+    }
+  | {
+      /** A finished /play round (lib/play, migration 0267). */
+      kind: "play_round";
+      level: number;
+      correct: number;
+      wrong: number;
+      points: number;
+      cleared: boolean;
     };
 
 export function sendActivity(event: ClientEvent): void {

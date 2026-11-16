@@ -239,6 +239,17 @@ export const FUNNEL_EVENTS = [
   /** "Tell me when the key is out" was tapped; props: calc, outcome ("saved" | "signin"). */
   "score_calc_alert",
   /**
+   * The header's Play button was tapped (2026-11-16); prop: from (the section
+   * the visitor was in). The way in to /play, the calculation game.
+   */
+  "play_link_click",
+  /**
+   * A /play round reached its 60 seconds, signed in or not; props: level,
+   * cleared, signedIn. Signed-out rounds leave no other trace (signed-in ones
+   * are also user_activity play_round, migration 0267).
+   */
+  "play_round_end",
+  /**
    * A Google sign-in on /login or /signup where the server could not see the
    * new session at first (2026-11-16, lib/auth/oneTap nextStepAfterSessionCheck);
    * props: outcome ("recovered" = seen on the second try, "failed" = still not,
