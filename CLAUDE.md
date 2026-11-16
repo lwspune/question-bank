@@ -369,6 +369,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-16 (seventh) — Play: a calculation game at /play, in the header beside Ebooks and Classes (migration 0267).**
+  - **Why:** owner sees students weak at everyday sums; studying is a chore. 26% of SSC CGL and 24% of MHT-CET mocks ran out of time. Matiks' duels and ratings fail the engagement gate, so: combo, personal best, a ghost race against your own best round, 8 levels opened at 80%+.
+  - **Header fit:** "PYQ Vault" hides below 640 px, pills 4 px narrower, label "Play": fits 360 px with ~5 px spare. `ui:shots --narrow` checks 360 px.
+  - **Progress in localStorage for everyone;** a signed-in round writes `play_round` (telemetry, never counted as work). Browser check caught fractional `performance.now()` times breaking the saved progress.
+  - **Experiment `play-games`:** per player, study days 7 after the first round vs 7 before. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-16 (fifth) — Classes replaces Tutor: an interest form for the owner's offline classes in Pune (migration 0265).**
   - **Why:** of 88 tutoring Yes, 75 wanted ONLINE (owner: too hard to build), 1 was in Pune. tutor-interest + tutor-price closed; /tutor 308s to /classes; /me price card gone.
   - **Anyone may answer** (a parent may have no account). One lead per MOBILE: upsert on it, never sending called_at, created_at or a signed-out user_id.
