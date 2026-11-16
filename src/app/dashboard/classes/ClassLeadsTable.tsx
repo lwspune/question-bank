@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Download, MessageCircle, Phone } from "lucide-react";
+import { Download, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { courseLabel, toClassLeadsCsv, type ClassLead } from "@/lib/classes/interest";
@@ -14,7 +14,7 @@ function fmtDay(iso: string): string {
 }
 
 /**
- * The class leads list (migration 0265): tap to call or WhatsApp, tick
+ * The class leads list (migration 0265): WhatsApp the number, tick
  * "Called" (POST /api/admin/class-leads), and download what is on screen as a
  * CSV that keeps every digit of the mobile (lib/classes/interest toClassLeadsCsv).
  */
@@ -96,14 +96,9 @@ export default function ClassLeadsTable({ leads }: { leads: ClassLead[] }) {
                   </td>
                   <td className="whitespace-nowrap py-2 pr-3">
                     <div className="tabular-nums">{formatMobile(l.mobile)}</div>
+                    {/* WhatsApp only, never a phone-call link: the staff surfaces'
+                        contract (tests/whatsapp-links.test.ts). */}
                     <div className="mt-1 flex gap-3 text-xs">
-                      <a
-                        href={`tel:+${l.mobile}`}
-                        className="inline-flex items-center gap-1 rounded text-brand-accent underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                        aria-label={`Call ${l.name ?? formatMobile(l.mobile)}`}
-                      >
-                        <Phone className="h-3.5 w-3.5" aria-hidden /> Call
-                      </a>
                       {wa && (
                         <a
                           href={wa}

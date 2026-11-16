@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 
 /**
  * /dashboard/classes: leads for offline classes in Pune (migration 0265), Pune
- * first, newest first, with tap-to-call, WhatsApp, a "Called" tick and a CSV.
+ * first, newest first, with a WhatsApp link (never a phone-call link, tests/whatsapp-links.test.ts), a "Called" tick and a CSV.
  * Names and phone numbers, so superadmin only (owner, 2026-11-16).
  */
 export default async function ClassLeadsPage() {

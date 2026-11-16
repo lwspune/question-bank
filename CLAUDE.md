@@ -371,7 +371,7 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 - **2026-11-16 (fourth) — Classes replaces Tutor: an interest form for the owner's offline classes in Pune (migration 0265).**
   - **Why:** of 88 tutoring Yes, 75 wanted ONLINE (owner: too hard to build), 1 was in Pune. tutor-interest + tutor-price closed; /tutor 308s to /classes; /me price card gone.
   - **Anyone may answer** (a parent may have no account). One lead per MOBILE: upsert on it, never sending called_at, created_at or a signed-out user_id.
-  - **Superadmin `/dashboard/classes`:** Pune first, call, Called tick, CSV. Experiment `offline-classes`: 10+ Pune leads in 4 weeks keeps the button. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
+  - **Superadmin `/dashboard/classes`:** Pune first, WhatsApp, Called tick, CSV. Experiment `offline-classes`: 10+ Pune leads in 4 weeks keeps the button. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-16 (third) — NEET Physics and Chemistry /notes, 48 chapters: every NEET subject now has notes.**
   - **Physics:** all 28 NCERT chapters with a past-year row, 384 pyq tagged (100%). **Chemistry:** the 20 chapters asked since 2023, 347 of 385; the 9 not asked since 2023 get none (owner-approved plan).
   - **Brief `NOTES_BRIEF_PC.md`, two hand-written model chapters, agents for the rest (max 3);** every worked number re-derived in review, no key disputed.

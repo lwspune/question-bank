@@ -1,6 +1,7 @@
 import "server-only";
 import type { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import type { ClassLead } from "@/lib/classes/interest";
+import { readAllPages } from "@/lib/supabase/readAllPages";
 
 type Admin = ReturnType<typeof createSupabaseAdminClient>;
 
@@ -18,25 +19,21 @@ type Row = {
   updated_at: string;
 };
 
-const PAGE = 1000; // PostgREST's row cap: page, never trust one read past it
-
 /**
  * Every offline-class lead (migration 0265), with the account's email where a
  * signed-in visitor left it. Service role: the table has no read policy, so
- * call this only after a superadmin check.
+ * call this only after a superadmin check. Paged past PostgREST's 1000-row cap,
+ * ordered by a unique key so no row repeats or drops between pages.
  */
 export async function loadClassLeads(admin: Admin): Promise<ClassLead[]> {
-  const rows: Row[] = [];
-  for (let from = 0; ; from += PAGE) {
-    const { data, error } = await admin
+  const rows = await readAllPages<Row>((from, to) =>
+    admin
       .from("class_interest")
       .select("id, user_id, name, courses, city, is_pune, mobile, from_section, called_at, created_at, updated_at")
       .order("created_at", { ascending: false })
-      .range(from, from + PAGE - 1);
-    if (error) throw new Error(`class leads read failed: ${error.message}`);
-    rows.push(...((data ?? []) as Row[]));
-    if (!data || data.length < PAGE) break;
-  }
+      .order("id")
+      .range(from, to)
+  );
 
   // Leads are few and most are signed out, so one lookup per account is cheap.
   const userIds = Array.from(new Set(rows.map((r) => r.user_id).filter((id): id is string => !!id)));
