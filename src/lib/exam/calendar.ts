@@ -45,20 +45,20 @@ export const CALENDAR_GRACE_DAYS = 14;
 const PATTERN = "expected from the usual pattern; not yet announced";
 
 export const EXAM_CALENDAR: readonly SittingEntry[] = [
-  { exam: "jee-mains", sitting: "2027-Jan", label: "JEE Main 2027 (January)", date: "2027-01-24", official: false, source: PATTERN },
+  { exam: "jee-mains", sitting: "2027-Jan", label: "JEE Main 2027 (January)", date: "2027-01-20", official: true, source: "NTA, JEE (Main) 2027 Information Bulletin (24 Oct 2026); NTA calls the dates tentative: 20-24 and 28 Jan 2027" },
   { exam: "mh-hsc-12", sitting: "2027", label: "HSC boards 2027", date: "2027-02-11", official: false, source: PATTERN },
   { exam: "cbse-10", sitting: "2027", label: "CBSE Class 10 boards 2027", date: "2027-02-15", official: false, source: PATTERN },
   { exam: "cbse-12", sitting: "2027", label: "CBSE Class 12 boards 2027", date: "2027-02-15", official: false, source: PATTERN },
   { exam: "mh-ssc-10", sitting: "2027", label: "SSC boards 2027", date: "2027-03-01", official: false, source: PATTERN },
-  { exam: "jee-mains", sitting: "2027-Apr", label: "JEE Main 2027 (April)", date: "2027-04-04", official: false, source: PATTERN },
-  { exam: "nda", sitting: "2027-I", label: "NDA 2027 (I)", date: "2027-04-11", official: true, source: "UPSC, confirmed by the user 2026-09-24" },
+  { exam: "jee-mains", sitting: "2027-Apr", label: "JEE Main 2027 (April)", date: "2027-04-02", official: true, source: "NTA, JEE (Main) 2027 Information Bulletin (24 Oct 2026); NTA calls the dates tentative: 2-7 Apr 2027" },
+  { exam: "nda", sitting: "2027-I", label: "NDA 2027 (I)", date: "2027-04-11", official: true, source: "UPSC Calendar of examinations 2027 (uploaded 20 May 2026); first confirmed by the user 2026-09-24" },
   { exam: "cds", sitting: "2027-I", label: "CDS 2027 (I)", date: "2027-04-11", official: false, source: "expected alongside NDA 2027 (I), which UPSC set for 11 April 2027; CDS itself not confirmed" },
   { exam: "mht-cet", sitting: "2027", label: "MHT-CET 2027", date: "2027-04-20", official: false, source: PATTERN },
   { exam: "neet", sitting: "2027", label: "NEET 2027", date: "2027-05-02", official: false, source: PATTERN },
   { exam: "ipmat-indore", sitting: "2027", label: "IPMAT Indore 2027", date: "2027-05-09", official: false, source: PATTERN },
   { exam: "ipmat-rohtak", sitting: "2027", label: "IPMAT Rohtak 2027", date: "2027-05-09", official: false, source: PATTERN },
   { exam: "jipmat", sitting: "2027", label: "JIPMAT 2027", date: "2027-05-09", official: false, source: PATTERN },
-  { exam: "nda", sitting: "2027-II", label: "NDA 2027 (II)", date: "2027-09-05", official: false, source: PATTERN },
+  { exam: "nda", sitting: "2027-II", label: "NDA 2027 (II)", date: "2027-09-19", official: true, source: "UPSC Calendar of examinations 2027 (uploaded 20 May 2026)" },
   { exam: "cds", sitting: "2027-II", label: "CDS 2027 (II)", date: "2027-09-05", official: false, source: PATTERN },
 ];
 
