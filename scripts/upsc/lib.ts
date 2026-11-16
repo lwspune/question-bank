@@ -697,7 +697,7 @@ function findDirectionsPreamble(s: string): string | null {
 }
 
 /** A GFM pipe table needs a `|---|---|` separator, or the renderer prints literal pipes. */
-function findTableWithoutSeparator(s: string): string | null {
+export function findTableWithoutSeparator(s: string): string | null {
   const lines = s.split("\n");
   for (let i = 0; i < lines.length; i++) {
     const looksLikeRow = /^\s*\|.*\|\s*$/.test(lines[i]);
