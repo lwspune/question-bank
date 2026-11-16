@@ -90,10 +90,11 @@ brief asks for the runner-up in its own `runnerUp` field, which no student sees.
 
 ## Status (2026-11-16)
 
-**All six papers committed PRIVATE: 900 rows, every one with its Hindi
-translation, 21 figures, 27 RPSC-deleted items as CANCELLED rows.** Not yet
-PUBLIC: no registry entry, no mocks, and the site cannot show Hindi until the
-parked `feat/ssc-cgl-hindi` i18n commits are ported to main.
+**All six papers PUBLIC (2026-11-16): 900 rows, every one with its Hindi
+translation, 21 figures, 27 RPSC-deleted items as CANCELLED rows (grace in
+mocks).** Registry `rpsc-ras` (bilingual, `secondLang: "hi"`, default English).
+Six mocks `rpsc-ras-prelims-<year>` built as DRAFTS; publish with the push:
+`npx tsx scripts/mocks/build.ts --paper=ras --apply --publish`.
 
 Blind accuracy against RPSC's final keys (two passes per paper):
 

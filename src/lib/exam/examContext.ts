@@ -874,10 +874,10 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     examName: "RPSC RAS (Prelims)", // must match the `exams` DB row exactly
     bilingual: true,
     secondLang: "hi",
-    // 900 rows committed PRIVATE on 2026-11-16; comes off with the flip to
-    // PUBLIC, and hasMocks goes true once the six mocks are published.
-    noPublicContent: true,
-    hasMocks: false,
+    // PUBLIC since 2026-11-16: six cycles, 900 q, every one with a worked
+    // solution and its Hindi print. One timed mock per year
+    // (rpsc-ras-prelims-*), built as drafts, published with the push.
+    hasMocks: true,
     pastPaperSolutions: true,
     guidesPath: null,
     notesPath: null,
