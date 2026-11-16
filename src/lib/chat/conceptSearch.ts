@@ -180,7 +180,8 @@ function trimTo(s: string, n: number): string {
 export const NOTHING_FOUND =
   `Nothing in our question bank or notes matches this. If it is a concept, definition or derivation from the syllabus, ` +
   `give a short general explanation from what you know. ` +
-  `Never solve a new numeric problem this way, never give an answer to a question from a paper, and never use it for PYQ Vault, prices or exam dates. ` +
+  `A numeric problem the student typed: work it out in full, with the final answer (rule 7b). ` +
+  `Never give an answer to a question from a paper this way, and never use it for PYQ Vault, prices or exam dates. ` +
   `If the student sent their own working or answer, you may still check it step by step and say whether it is right (rule 7b).`;
 
 const SEARCH_FAILED =

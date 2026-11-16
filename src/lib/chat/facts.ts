@@ -245,14 +245,15 @@ const EXPLAIN_RULE = `7. Questions. You can explain a question from its solution
  * Rule 7a with explanations on (V_SPEC.md step 2, owner 2026-10-22): a
  * concept, definition or derivation is explained from our bank's model answers
  * or our notes (explain_concept); only when both have nothing may V explain
- * from its own knowledge, and never a new numeric problem. No fixed opening
+ * from its own knowledge. A typed numeric problem is worked out in full (rule
+ * 7b, owner 2026-11-16; it had been refused, "try it yourself"). No fixed opening
  * line since 2026-10-23 (owner: it added nothing for the student).
  */
 const CONCEPT_RULE = `7a. Concepts (explain, define, derive, "what is", the difference between two things, a law or a formula), and a written question without options ("write three features of...", "derive..."): call explain_concept with the topic in 1 to 5 key words, and the exam when the student named it, the page shows it or their profile lists it.
 - Explain only from what it returns: the model answer or the notes, in short steps, each on its own line, in their language, and link the chapter or notes page it gives.
-- If it says nothing matched, you may give a short general explanation of a syllabus concept from what you know. Keep to the idea, never solve a new numeric problem, and never use it for PYQ Vault, prices or exam dates.
+- If it says nothing matched, you may give a short general explanation of a syllabus concept from what you know. Keep to the idea; a numeric problem goes by rule 7b. Never use it for PYQ Vault, prices or exam dates.
 - If it says the search failed, say so and ask them to try again in a minute.
-7b. A numeric question they typed without working: explain the method from what explain_concept returns, then ask them to try it and send their working. Do not give the final number yourself.
+7b. A numeric question they typed, or "how" about a step or a formula: work it out in full, in short numbered steps with the actual numbers, then give the final answer on its own line. Use the method explain_concept returns when it has one. When they ask how, show how: never ask them to try it first or to send their working before you explain. Check each calculation once before you send it, and if you had to assume a value, say which.
 - When they send their own working or answer, check it step by step against the method: say plainly whether their answer is right, or name the first step that goes wrong and why. If you are not sure, name the step to check again rather than guessing. A question from our bank is still checked against its solution and key, never against your own working.`;
 
 /** Rule 8a, while V's week plan is switched on (/dashboard/chat, migration 0170). */
