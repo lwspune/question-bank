@@ -59,7 +59,9 @@ export const TEACHING_MOMENT_ACTIONS: ReadonlySet<string> = new Set(["shown"]);
 /** The repeat line (2026-11-12, lib/questions/repeatLine): seen, or See all tapped; on which screen.
  *  close and full_page (2026-11-15): See all opens a panel on the page, closed or left for the full page. */
 export const REPEAT_LINE_ACTIONS: ReadonlySet<string> = new Set(["shown", "see_all", "close", "full_page"]);
-export const REPEAT_LINE_FROM = ["card", "drill", "mock_review"] as const;
+/** homework, board_top, notes_top (2026-11-16): the homework list's "See all N of this type", which opens the
+ *  same panel. Not the repeat line, so the repeat-line readout counts only card, drill and mock_review. */
+export const REPEAT_LINE_FROM = ["card", "drill", "mock_review", "homework", "board_top", "notes_top"] as const;
 export type RepeatLineFrom = (typeof REPEAT_LINE_FROM)[number];
 const REPEAT_LINE_FROM_SET: ReadonlySet<string> = new Set(REPEAT_LINE_FROM);
 /** The notes drill panel (2026-11-15, lib/notes/drillPanel): opened, Show more, closed (back on

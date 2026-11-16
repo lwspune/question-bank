@@ -16,6 +16,7 @@ import type { ChapterTopPyqs } from "@/lib/homework/chapterTop";
 import { useBoardReveal } from "@/app/board/useBoardReveal";
 import HomeworkSlotList from "@/app/homework/_components/HomeworkSlotList";
 import PaperDownload from "@/app/mock/_components/PaperDownload";
+import type { RepeatLineFrom } from "@/lib/activity/clientEvents";
 
 export default function NotesTopPyqs({
   top,
@@ -23,6 +24,7 @@ export default function NotesTopPyqs({
   chapterName,
   supabaseUrl,
   className = "mt-10",
+  seeAllFrom = "notes_top",
 }: {
   top: ChapterTopPyqs;
   /** The DB exams.name, for the free-answer meter. */
@@ -31,6 +33,8 @@ export default function NotesTopPyqs({
   supabaseUrl: string;
   /** Spacing above the section: a notes chapter sets it apart, the homework page leads with it. */
   className?: string;
+  /** The screen a See all tap is recorded under: notes, or the Homework tab's chapter page. */
+  seeAllFrom?: RepeatLineFrom;
 }) {
   const byId = useMemo(() => {
     const m = new Map<string, BoardQuestion>();
@@ -72,6 +76,7 @@ export default function NotesTopPyqs({
           planSlug={top.planSlug}
           showChapter={false}
           idPrefix="top"
+          seeAllFrom={seeAllFrom}
           revealed={revealed}
           blocked={blocked}
           lock={lock}
