@@ -12774,6 +12774,160 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 5,
       "traps": 31
     }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "amines",
+    "chipLabel": "Amines notes",
+    "slugs": [
+      "nch-am-prep",
+      "nch-am-reactions",
+      "nch-am-diazonium"
+    ],
+    "chapterName": "Amines",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 5,
+      "traps": 24
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "chemical-kinetics",
+    "chipLabel": "Chemical Kinetics notes",
+    "slugs": [
+      "nch-ck-rate",
+      "nch-ck-integrated",
+      "nch-ck-temperature"
+    ],
+    "chapterName": "Chemical Kinetics",
+    "formulaCounts": {
+      "formulas": 9,
+      "tables": 1,
+      "traps": 26
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "organic-basic-principles",
+    "chipLabel": "Organic Chemistry Basic Principles notes",
+    "slugs": [
+      "nch-oc-naming",
+      "nch-oc-effects",
+      "nch-oc-purification"
+    ],
+    "chapterName": "Organic Chemistry – Some Basic Principles and Techniques",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 6,
+      "traps": 33
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "structure-of-atom",
+    "chipLabel": "Structure of Atom notes",
+    "slugs": [
+      "nch-sa-particles",
+      "nch-sa-bohr",
+      "nch-sa-orbitals"
+    ],
+    "chapterName": "Structure of Atom",
+    "formulaCounts": {
+      "formulas": 8,
+      "tables": 1,
+      "traps": 19
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "thermodynamics",
+    "chipLabel": "Chemical Thermodynamics notes",
+    "slugs": [
+      "nch-th-first-law",
+      "nch-th-enthalpy",
+      "nch-th-spontaneity"
+    ],
+    "chapterName": "Thermodynamics",
+    "formulaCounts": {
+      "formulas": 8,
+      "tables": 1,
+      "traps": 27
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "equilibrium",
+    "chipLabel": "Equilibrium notes",
+    "slugs": [
+      "nch-eq-constants",
+      "nch-eq-shifts",
+      "nch-eq-acids",
+      "nch-eq-salts",
+      "nch-eq-ksp"
+    ],
+    "chapterName": "Equilibrium",
+    "formulaCounts": {
+      "formulas": 10,
+      "tables": 4,
+      "traps": 30
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "solutions",
+    "chipLabel": "Solutions notes",
+    "slugs": [
+      "nch-so-concentration",
+      "nch-so-raoult",
+      "nch-so-colligative"
+    ],
+    "chapterName": "Solutions",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 2,
+      "traps": 18
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "electrochemistry",
+    "chipLabel": "Electrochemistry notes",
+    "slugs": [
+      "nch-ec-cells",
+      "nch-ec-conductance",
+      "nch-ec-electrolysis"
+    ],
+    "chapterName": "Electrochemistry",
+    "formulaCounts": {
+      "formulas": 8,
+      "tables": 2,
+      "traps": 24
+    }
   }
 ];
 
@@ -13411,4 +13565,12 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "neet-chemistry/aldehydes-ketones-and-carboxylic-acids": () => import("@/app/notes/neet-chemistry/aldehydes-ketones-and-carboxylic-acids/_data").then((m) => ({ chapter: m.NEET_CH_AK_CHAPTER, notes: m.NEET_CH_AK_NOTES })),
   "neet-chemistry/d-and-f-block-elements": () => import("@/app/notes/neet-chemistry/d-and-f-block-elements/_data").then((m) => ({ chapter: m.NEET_CH_DF_CHAPTER, notes: m.NEET_CH_DF_NOTES })),
   "neet-chemistry/hydrocarbons": () => import("@/app/notes/neet-chemistry/hydrocarbons/_data").then((m) => ({ chapter: m.NEET_CH_HC_CHAPTER, notes: m.NEET_CH_HC_NOTES })),
+  "neet-chemistry/amines": () => import("@/app/notes/neet-chemistry/amines/_data").then((m) => ({ chapter: m.NEET_CH_AM_CHAPTER, notes: m.NEET_CH_AM_NOTES })),
+  "neet-chemistry/chemical-kinetics": () => import("@/app/notes/neet-chemistry/chemical-kinetics/_data").then((m) => ({ chapter: m.NEET_CH_CK_CHAPTER, notes: m.NEET_CH_CK_NOTES })),
+  "neet-chemistry/organic-basic-principles": () => import("@/app/notes/neet-chemistry/organic-basic-principles/_data").then((m) => ({ chapter: m.NEET_CH_OC_CHAPTER, notes: m.NEET_CH_OC_NOTES })),
+  "neet-chemistry/structure-of-atom": () => import("@/app/notes/neet-chemistry/structure-of-atom/_data").then((m) => ({ chapter: m.NEET_CH_SA_CHAPTER, notes: m.NEET_CH_SA_NOTES })),
+  "neet-chemistry/thermodynamics": () => import("@/app/notes/neet-chemistry/thermodynamics/_data").then((m) => ({ chapter: m.NEET_CH_TH_CHAPTER, notes: m.NEET_CH_TH_NOTES })),
+  "neet-chemistry/equilibrium": () => import("@/app/notes/neet-chemistry/equilibrium/_data").then((m) => ({ chapter: m.NEET_CH_EQ_CHAPTER, notes: m.NEET_CH_EQ_NOTES })),
+  "neet-chemistry/solutions": () => import("@/app/notes/neet-chemistry/solutions/_data").then((m) => ({ chapter: m.NEET_CH_SO_CHAPTER, notes: m.NEET_CH_SO_NOTES })),
+  "neet-chemistry/electrochemistry": () => import("@/app/notes/neet-chemistry/electrochemistry/_data").then((m) => ({ chapter: m.NEET_CH_EC_CHAPTER, notes: m.NEET_CH_EC_NOTES })),
 };

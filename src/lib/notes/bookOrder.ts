@@ -156,12 +156,20 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
   // NEET Chemistry (2026-11-16): NCERT Chemistry, 2023 rationalised numbering. The p-Block
   // Elements left the rationalised book but stays on the NEET syllabus (old XI 11 and XII 7).
   "neet-chemistry": {
+    "structure-of-atom": { cls: 11, chapterNo: 2, book: "XI 2 Structure of Atom" },
     "chemical-bonding": { cls: 11, chapterNo: 4, book: "XI 4 Chemical Bonding and Molecular Structure" },
+    thermodynamics: { cls: 11, chapterNo: 5, book: "XI 5 Thermodynamics" },
+    equilibrium: { cls: 11, chapterNo: 6, book: "XI 6 Equilibrium" },
+    "organic-basic-principles": { cls: 11, chapterNo: 8, book: "XI 8 Organic Chemistry: Some Basic Principles and Techniques" },
     hydrocarbons: { cls: 11, chapterNo: 9, book: "XI 9 Hydrocarbons" },
+    solutions: { cls: 12, chapterNo: 1, book: "XII 1 Solutions" },
+    electrochemistry: { cls: 12, chapterNo: 2, book: "XII 2 Electrochemistry" },
+    "chemical-kinetics": { cls: 12, chapterNo: 3, book: "XII 3 Chemical Kinetics" },
     "p-block-elements": { cls: 12, chapterNo: 4, within: 1, book: "Old XII 7 The p-Block Elements (groups 13 to 18), placed before the d- and f-block as in the pre-2023 book" },
     "d-and-f-block-elements": { cls: 12, chapterNo: 4, within: 2, book: "XII 4 The d- and f-Block Elements" },
     "coordination-compounds": { cls: 12, chapterNo: 5, book: "XII 5 Coordination Compounds" },
     "aldehydes-ketones-and-carboxylic-acids": { cls: 12, chapterNo: 8, book: "XII 8 Aldehydes, Ketones and Carboxylic Acids" },
+    amines: { cls: 12, chapterNo: 9, book: "XII 9 Amines" },
   },
   "mht-cet-physics": {
     "units-and-measurement": { cls: 11, chapterNo: 1, book: "XI 1 Units and Measurements" },

@@ -4434,5 +4434,61 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "NEET Chemistry",
     "chapterSlug": "hydrocarbons",
     "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "amines",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "chemical-kinetics",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "organic-basic-principles",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "structure-of-atom",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "thermodynamics",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "equilibrium",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "solutions",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "electrochemistry",
+    "subtopicCount": 3
   }
 ];

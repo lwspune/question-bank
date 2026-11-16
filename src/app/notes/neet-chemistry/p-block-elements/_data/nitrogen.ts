@@ -6,7 +6,7 @@ export const NEET_CH_PB_NITROGEN_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Group 15: why nitrogen behaves differently from phosphorus and the heavier members, the hydrides, oxides and halides of the group with the structure of PCl₅, and nitric acid with the brown ring test and other tests for ions.",
   whyItMatters:
-    "Six NEET questions from 2024 to 2026. Two ask what makes nitrogen different from phosphorus and arsenic (Re-NEET 2024 and NEET 2026). One checks the hydrides and pentoxides of the group (2025), one the bond lengths in PCl₅ (Re-NEET 2024), one matches four laboratory tests, among them the brown ring test for nitrate, to the ions they detect (Re-NEET 2024), and one matches four cations to their groups in salt analysis (2025).",
+    "Seven NEET questions from 2024 to 2026. Two ask what makes nitrogen different from phosphorus and arsenic (Re-NEET 2024 and NEET 2026). One checks the hydrides and pentoxides of the group (2025), one the bond lengths in PCl₅ (Re-NEET 2024), one matches four laboratory tests, among them the brown ring test for nitrate, to the ions they detect (Re-NEET 2024), and two put cations in their groups in salt analysis (NEET 2024 and 2025).",
   concepts: [
     {
       kind: "reference" as const,

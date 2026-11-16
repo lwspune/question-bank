@@ -2951,6 +2951,46 @@ import {
   NEET_CH_HC_NOTES,
   NEET_CH_HC_SLUGS,
 } from "@/app/notes/neet-chemistry/hydrocarbons/_data";
+import {
+  NEET_CH_AM_CHAPTER,
+  NEET_CH_AM_NOTES,
+  NEET_CH_AM_SLUGS,
+} from "@/app/notes/neet-chemistry/amines/_data";
+import {
+  NEET_CH_CK_CHAPTER,
+  NEET_CH_CK_NOTES,
+  NEET_CH_CK_SLUGS,
+} from "@/app/notes/neet-chemistry/chemical-kinetics/_data";
+import {
+  NEET_CH_OC_CHAPTER,
+  NEET_CH_OC_NOTES,
+  NEET_CH_OC_SLUGS,
+} from "@/app/notes/neet-chemistry/organic-basic-principles/_data";
+import {
+  NEET_CH_SA_CHAPTER,
+  NEET_CH_SA_NOTES,
+  NEET_CH_SA_SLUGS,
+} from "@/app/notes/neet-chemistry/structure-of-atom/_data";
+import {
+  NEET_CH_TH_CHAPTER,
+  NEET_CH_TH_NOTES,
+  NEET_CH_TH_SLUGS,
+} from "@/app/notes/neet-chemistry/thermodynamics/_data";
+import {
+  NEET_CH_EQ_CHAPTER,
+  NEET_CH_EQ_NOTES,
+  NEET_CH_EQ_SLUGS,
+} from "@/app/notes/neet-chemistry/equilibrium/_data";
+import {
+  NEET_CH_SO_CHAPTER,
+  NEET_CH_SO_NOTES,
+  NEET_CH_SO_SLUGS,
+} from "@/app/notes/neet-chemistry/solutions/_data";
+import {
+  NEET_CH_EC_CHAPTER,
+  NEET_CH_EC_NOTES,
+  NEET_CH_EC_SLUGS,
+} from "@/app/notes/neet-chemistry/electrochemistry/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -9489,6 +9529,94 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: NEET_CH_HC_CHAPTER,
     notes: NEET_CH_HC_NOTES,
     slugs: NEET_CH_HC_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Chemistry",
+    subjectRoute: "neet-chemistry",
+    subjectDisplay: "NEET Chemistry",
+    chapterSlug: "amines",
+    chipLabel: "Amines notes",
+    chapter: NEET_CH_AM_CHAPTER,
+    notes: NEET_CH_AM_NOTES,
+    slugs: NEET_CH_AM_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Chemistry",
+    subjectRoute: "neet-chemistry",
+    subjectDisplay: "NEET Chemistry",
+    chapterSlug: "chemical-kinetics",
+    chipLabel: "Chemical Kinetics notes",
+    chapter: NEET_CH_CK_CHAPTER,
+    notes: NEET_CH_CK_NOTES,
+    slugs: NEET_CH_CK_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Chemistry",
+    subjectRoute: "neet-chemistry",
+    subjectDisplay: "NEET Chemistry",
+    chapterSlug: "organic-basic-principles",
+    chipLabel: "Organic Chemistry Basic Principles notes",
+    chapter: NEET_CH_OC_CHAPTER,
+    notes: NEET_CH_OC_NOTES,
+    slugs: NEET_CH_OC_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Chemistry",
+    subjectRoute: "neet-chemistry",
+    subjectDisplay: "NEET Chemistry",
+    chapterSlug: "structure-of-atom",
+    chipLabel: "Structure of Atom notes",
+    chapter: NEET_CH_SA_CHAPTER,
+    notes: NEET_CH_SA_NOTES,
+    slugs: NEET_CH_SA_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Chemistry",
+    subjectRoute: "neet-chemistry",
+    subjectDisplay: "NEET Chemistry",
+    chapterSlug: "thermodynamics",
+    chipLabel: "Chemical Thermodynamics notes",
+    chapter: NEET_CH_TH_CHAPTER,
+    notes: NEET_CH_TH_NOTES,
+    slugs: NEET_CH_TH_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Chemistry",
+    subjectRoute: "neet-chemistry",
+    subjectDisplay: "NEET Chemistry",
+    chapterSlug: "equilibrium",
+    chipLabel: "Equilibrium notes",
+    chapter: NEET_CH_EQ_CHAPTER,
+    notes: NEET_CH_EQ_NOTES,
+    slugs: NEET_CH_EQ_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Chemistry",
+    subjectRoute: "neet-chemistry",
+    subjectDisplay: "NEET Chemistry",
+    chapterSlug: "solutions",
+    chipLabel: "Solutions notes",
+    chapter: NEET_CH_SO_CHAPTER,
+    notes: NEET_CH_SO_NOTES,
+    slugs: NEET_CH_SO_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Chemistry",
+    subjectRoute: "neet-chemistry",
+    subjectDisplay: "NEET Chemistry",
+    chapterSlug: "electrochemistry",
+    chipLabel: "Electrochemistry notes",
+    chapter: NEET_CH_EC_CHAPTER,
+    notes: NEET_CH_EC_NOTES,
+    slugs: NEET_CH_EC_SLUGS,
   },
 ];
 

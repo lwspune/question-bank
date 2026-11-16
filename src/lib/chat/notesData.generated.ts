@@ -636,7 +636,15 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "neet-chemistry/p-block-elements",
   "neet-chemistry/aldehydes-ketones-and-carboxylic-acids",
   "neet-chemistry/d-and-f-block-elements",
-  "neet-chemistry/hydrocarbons"
+  "neet-chemistry/hydrocarbons",
+  "neet-chemistry/amines",
+  "neet-chemistry/chemical-kinetics",
+  "neet-chemistry/organic-basic-principles",
+  "neet-chemistry/structure-of-atom",
+  "neet-chemistry/thermodynamics",
+  "neet-chemistry/equilibrium",
+  "neet-chemistry/solutions",
+  "neet-chemistry/electrochemistry"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1273,4 +1281,12 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "neet-chemistry/aldehydes-ketones-and-carboxylic-acids": () => import("@/app/notes/neet-chemistry/aldehydes-ketones-and-carboxylic-acids/_data").then((m) => m.NEET_CH_AK_NOTES),
   "neet-chemistry/d-and-f-block-elements": () => import("@/app/notes/neet-chemistry/d-and-f-block-elements/_data").then((m) => m.NEET_CH_DF_NOTES),
   "neet-chemistry/hydrocarbons": () => import("@/app/notes/neet-chemistry/hydrocarbons/_data").then((m) => m.NEET_CH_HC_NOTES),
+  "neet-chemistry/amines": () => import("@/app/notes/neet-chemistry/amines/_data").then((m) => m.NEET_CH_AM_NOTES),
+  "neet-chemistry/chemical-kinetics": () => import("@/app/notes/neet-chemistry/chemical-kinetics/_data").then((m) => m.NEET_CH_CK_NOTES),
+  "neet-chemistry/organic-basic-principles": () => import("@/app/notes/neet-chemistry/organic-basic-principles/_data").then((m) => m.NEET_CH_OC_NOTES),
+  "neet-chemistry/structure-of-atom": () => import("@/app/notes/neet-chemistry/structure-of-atom/_data").then((m) => m.NEET_CH_SA_NOTES),
+  "neet-chemistry/thermodynamics": () => import("@/app/notes/neet-chemistry/thermodynamics/_data").then((m) => m.NEET_CH_TH_NOTES),
+  "neet-chemistry/equilibrium": () => import("@/app/notes/neet-chemistry/equilibrium/_data").then((m) => m.NEET_CH_EQ_NOTES),
+  "neet-chemistry/solutions": () => import("@/app/notes/neet-chemistry/solutions/_data").then((m) => m.NEET_CH_SO_NOTES),
+  "neet-chemistry/electrochemistry": () => import("@/app/notes/neet-chemistry/electrochemistry/_data").then((m) => m.NEET_CH_EC_NOTES),
 };
