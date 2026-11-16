@@ -4322,6 +4322,99 @@ export type Database = {
           },
         ]
       }
+      score_alerts: {
+        Row: {
+          calculator: string
+          created_at: string
+          sent_at: string | null
+          user_id: string
+        }
+        Insert: {
+          calculator: string
+          created_at?: string
+          sent_at?: string | null
+          user_id: string
+        }
+        Update: {
+          calculator?: string
+          created_at?: string
+          sent_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      score_checks: {
+        Row: {
+          calculator: string
+          created_at: string
+          id: string
+          max_marks: number
+          sections: Json
+          sheet_hash: string
+          sitting: string
+          total: number
+          user_id: string | null
+        }
+        Insert: {
+          calculator: string
+          created_at?: string
+          id?: string
+          max_marks: number
+          sections: Json
+          sheet_hash: string
+          sitting: string
+          total: number
+          user_id?: string | null
+        }
+        Update: {
+          calculator?: string
+          created_at?: string
+          id?: string
+          max_marks?: number
+          sections?: Json
+          sheet_hash?: string
+          sitting?: string
+          total?: number
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      score_keys: {
+        Row: {
+          calculator: string
+          drop_policy: string
+          id: string
+          key: Json
+          loaded_at: string
+          region: string
+          sitting: string
+          source_url: string
+          status: string
+        }
+        Insert: {
+          calculator: string
+          drop_policy: string
+          id?: string
+          key: Json
+          loaded_at?: string
+          region: string
+          sitting: string
+          source_url: string
+          status: string
+        }
+        Update: {
+          calculator?: string
+          drop_policy?: string
+          id?: string
+          key?: Json
+          loaded_at?: string
+          region?: string
+          sitting?: string
+          source_url?: string
+          status?: string
+        }
+        Relationships: []
+      }
       share_events: {
         Row: {
           channel: string
@@ -5959,6 +6052,14 @@ export type Database = {
         Returns: {
           checkout_students: number
           paywall_students: number
+        }[]
+      }
+      score_check_spread: {
+        Args: { p_calculator: string; p_sitting: string }
+        Returns: {
+          bucket: number
+          n: number
+          sheets: number
         }[]
       }
       set_path_covered: {
