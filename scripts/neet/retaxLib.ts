@@ -157,11 +157,16 @@ export function patchEntryText(raw: string, number: string, to: Target): { text:
  * The general form: rewrite any existing string fields of the entry numbered `number` (a solution,
  * a stem), as text. Entries here start with "number", so an entry's fields run from its "number"
  * to the next one. Throws when the entry lacks a field: appending one would change the file's shape.
+ *
+ * A GPCC book entry is also found by its "ref" ("28.1 Q57"): the bank stores that ref as the
+ * question number, while the entry's own "number" is just its position in the file.
  */
 export function patchEntryFields(raw: string, number: string, fields: Record<string, string>): { text: string; matched: number } {
   const esc = number.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const head = new RegExp(`"number"\\s*:\\s*(?:${esc}|"${esc}")\\s*(?=[,}\\r\\n])`, "g");
-  const starts = [...raw.matchAll(head)].map((m) => m.index!);
+  const byRef = new RegExp(`"ref"\\s*:\\s*"${esc}"`, "g");
+  const refStarts = [...raw.matchAll(byRef)].map((m) => raw.lastIndexOf('"number"', m.index!)).filter((i) => i >= 0);
+  const starts = [...new Set([...[...raw.matchAll(head)].map((m) => m.index!), ...refStarts])].sort((a, b) => a - b);
   if (starts.length === 0) return { text: raw, matched: 0 };
   let text = raw;
   // Patch from the last match backwards so earlier offsets stay valid.

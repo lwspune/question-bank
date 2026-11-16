@@ -214,3 +214,44 @@ describe("patchEntryFields", () => {
     expect(() => patchEntryFields(raw, "5", { reasoning: "x" })).toThrow(/reasoning/);
   });
 });
+
+// A GPCC book file numbers its entries 1..n but the bank's question_number is the entry's "ref"
+// ("28.1 Q57"), so a re-cut that matched "number" only refused every GPCC row (2026-11-16).
+describe("patchEntryText on a GPCC file (matched by ref)", () => {
+  const raw = [
+    "[",
+    "  {",
+    '    "number": 1,',
+    '    "ref": "28.1 Q1",',
+    '    "subject": "Physics",',
+    '    "chapter": "Semiconductor Electronics",',
+    '    "subtopic": "Old A",',
+    '    "stem": "x"',
+    "  },",
+    "  {",
+    '    "number": 57,',
+    '    "ref": "28.1 Q57",',
+    '    "subject": "Physics",',
+    '    "chapter": "Semiconductor Electronics",',
+    '    "subtopic": "Old B",',
+    '    "stem": "y"',
+    "  }",
+    "]",
+  ].join("\n");
+
+  it("finds the one entry whose ref is the question number and rewrites only it", () => {
+    const { text, matched } = patchEntryText(raw, "28.1 Q57", { subject: "Physics", chapter: "Semiconductor Electronics", subtopic: "Logic Gates" });
+    expect(matched).toBe(1);
+    const parsed = JSON.parse(text);
+    expect(parsed[0].subtopic).toBe("Old A");
+    expect(parsed[1]).toMatchObject({ number: 57, ref: "28.1 Q57", subtopic: "Logic Gates" });
+  });
+
+  it("does not match a ref that merely ends with the number", () => {
+    expect(patchEntryText(raw, "Q57", { subject: "x", chapter: "y", subtopic: "z" }).matched).toBe(0);
+  });
+
+  it("still matches an integer number, and never double-counts an entry", () => {
+    expect(patchEntryText(raw, "57", { subject: "Physics", chapter: "Semiconductor Electronics", subtopic: "z" }).matched).toBe(1);
+  });
+});
