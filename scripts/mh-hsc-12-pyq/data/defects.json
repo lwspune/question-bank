@@ -866,6 +866,24 @@
         "source": "Maths 2016 paper.pdf, page 3, Q.6 (B) iii: 'b. Also find its value at x = 0.5 and 9.'",
         "why": "The compilation wrote P(x) where the paper asks for the value of the c.d.f. Applied AFTER the superscript fix above, so its `from` is that fix's `to`.",
         "consequence": "Answer unchanged; found 2026-11-04 by the HSC 12 revision-sheet rollout."
+      },
+      {
+        "ref": "electrochemistry-12-pyq#4",
+        "tag": "[Q.12 OR, 2019]",
+        "from": "The molar conductivity of \\(0.05\\text{ M }\\text{BaCl}_{2}\\) solution at \\(25^{\\circ}\\text{C}\\) is 223 Ω^-1^cm^2^mol^-1^. What is its conductivity?",
+        "to": "The molar conductivity of \\(0.05\\text{ M }\\text{BaCl}_{2}\\) solution at \\(25^{\\circ}\\text{C}\\) is \\(223\\ \\Omega^{-1}\\ \\text{cm}^{2}\\ \\text{mol}^{-1}\\). What is its conductivity?",
+        "source": "The live row (unchanged information); the compilation docx prints the unit run as pandoc superscripts (Ω^-1^cm^2^mol^-1^).",
+        "why": "Pandoc's ^x^ superscript syntax printed literally on /browse, /board and in Word papers: KaTeX reads only inside math zones. Units moved into one math zone; no number or word changed. #5 was corrected in the bank earlier without a record here, so a re-extract would have reverted it.",
+        "consequence": "Unit renders as a superscripted unit; content_hash recomputed in place 2026-11-17 (#4) and already matching (#5)."
+      },
+      {
+        "ref": "electrochemistry-12-pyq#5",
+        "tag": "[Q.2.viii]",
+        "from": "Calculate molar conductivity for \\(0.5\\text{ M }\\text{BaCl}_{2}\\) if its conductivity at \\(298\\text{ K}\\) is 0.01 Ω^-1^ cm^-1^.",
+        "to": "Calculate molar conductivity for 0.5 M \\(\\mathrm{BaCl_2}\\) if its conductivity at 298 K is \\(0.01\\ \\Omega^{-1}\\ \\mathrm{cm^{-1}}\\).",
+        "source": "The live row (unchanged information); the compilation docx prints the unit run as pandoc superscripts (Ω^-1^cm^2^mol^-1^).",
+        "why": "Pandoc's ^x^ superscript syntax printed literally on /browse, /board and in Word papers: KaTeX reads only inside math zones. Units moved into one math zone; no number or word changed. #5 was corrected in the bank earlier without a record here, so a re-extract would have reverted it.",
+        "consequence": "Unit renders as a superscripted unit; content_hash recomputed in place 2026-11-17 (#4) and already matching (#5)."
       }
     ]
   },
