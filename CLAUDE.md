@@ -369,6 +369,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-16 (eighth) — Learning games: existing games mapped to our exams, private `/dashboard/games` (0268).**
+  - **Content only in the database** (owner: page and list private), the 0260 pattern; `npm run games:load` from a file outside the repo.
+  - **Gate verdict computed from mechanics, never stored,** so a row cannot say "passes" beside a leaderboard.
+  - **Matrix = subjects x the six goals;** empty cells are the gaps (59 of 84). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-16 (fifth) — Classes replaces Tutor: an interest form for the owner's offline classes in Pune (migration 0265).**
   - **Why:** of 88 tutoring Yes, 75 wanted ONLINE (owner: too hard to build), 1 was in Pune. tutor-interest + tutor-price closed; /tutor 308s to /classes; /me price card gone.
   - **Anyone may answer** (a parent may have no account). One lead per MOBILE: upsert on it, never sending called_at, created_at or a signed-out user_id.
