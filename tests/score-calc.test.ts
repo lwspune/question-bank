@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   SCORE_CALCULATORS,
+  LIVE_CALCULATORS,
   calculatorBySlug,
   computeScore,
   type SheetItem,
@@ -28,6 +29,10 @@ describe("SCORE_CALCULATORS", () => {
       // A sheet is checked question by question, so every part needs a fixed count.
       for (const s of c.blueprint.sections) expect(s.count, `${c.slug} ${s.key}`).toBeGreaterThan(0);
     }
+  });
+
+  it("puts only calculators with a checked reader live (SSC waits for its browser reader)", () => {
+    expect(LIVE_CALCULATORS.map((c) => c.slug)).toEqual(["jee-main"]);
   });
 
   it("returns undefined for an unknown slug", () => {

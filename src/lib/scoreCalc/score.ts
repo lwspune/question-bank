@@ -34,14 +34,20 @@ export interface ScoreCalculator {
   title: string;
   source: SheetSource;
   blueprint: MockPaperBlueprint;
+  /** Has a page. False until its reader is built and checked on a real sheet. */
+  live: boolean;
+  /** Where to practise next: the exam's past-paper mocks. */
+  practiceHref: string;
 }
 
 export const SCORE_CALCULATORS: readonly ScoreCalculator[] = [
-  { slug: "ssc-cgl", title: "SSC CGL Tier I", source: "ssc-sheet", blueprint: SSC_CGL_T1_PAPER },
-  { slug: "ssc-chsl", title: "SSC CHSL Tier I", source: "ssc-sheet", blueprint: SSC_CHSL_T1_PAPER },
-  { slug: "ssc-cpo", title: "SSC CPO Paper I", source: "ssc-sheet", blueprint: SSC_CPO_P1_PAPER },
-  { slug: "jee-main", title: "JEE Main", source: "nta-key", blueprint: JEE_MAINS_PAPER },
+  { slug: "jee-main", title: "JEE Main", source: "nta-key", blueprint: JEE_MAINS_PAPER, live: true, practiceHref: "/mock/exam/jee-mains" },
+  { slug: "ssc-cgl", title: "SSC CGL Tier I", source: "ssc-sheet", blueprint: SSC_CGL_T1_PAPER, live: false, practiceHref: "/mock/exam/ssc-cgl" },
+  { slug: "ssc-chsl", title: "SSC CHSL Tier I", source: "ssc-sheet", blueprint: SSC_CHSL_T1_PAPER, live: false, practiceHref: "/mock/exam/ssc-chsl" },
+  { slug: "ssc-cpo", title: "SSC CPO Paper I", source: "ssc-sheet", blueprint: SSC_CPO_P1_PAPER, live: false, practiceHref: "/mock/exam/ssc-cpo" },
 ];
+
+export const LIVE_CALCULATORS = SCORE_CALCULATORS.filter((c) => c.live);
 
 export function calculatorBySlug(slug: string): ScoreCalculator | undefined {
   return SCORE_CALCULATORS.find((c) => c.slug === slug);
