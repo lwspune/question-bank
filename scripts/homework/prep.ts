@@ -40,17 +40,23 @@ async function main() {
   const isMh = examName.startsWith("Maharashtra");
   const isNda = examName === "NDA";
   const isCet = examName === "MHT-CET";
-  const isSsc = examName === "SSC CGL";
+  // SSC CHSL and CPO (2026-11-16) name shifts as CGL does; their reprints sit in
+  // the same repeats.json under their own prefix.
+  const sscPrefix = ({ "SSC CGL": "t1-", "SSC CHSL": "chsl-t1-", "SSC CPO": "cpo-t1-" } as Record<string, string>)[examName];
+  const isSsc = sscPrefix !== undefined;
   const isSscT2 = examName === "SSC CGL Tier II";
   const isJee = examName === "JEE Mains";
   const isNeet = examName === "NEET";
+  // UPSC CAPF (AC) (2026-11-16): one Paper I a year, so its paper is its year.
+  const isCapf = examName === "UPSC CAPF (AC)";
   const sittingOf = (r: Row) => sittingFor(examName, r);
   // SSC CGL keeps one row for a question a later shift reprinted; repeats.json
   // names the reprints, so they count as sittings (lib/homework/reprints.ts).
   const reprints = isSsc
     ? reprintSittings(
         JSON.parse(readFileSync(join(process.cwd(), "scripts/ssc-cgl/repeats.json"), "utf8")),
-        (key) => (SHIFTS[key] ? sscSittingLabel(SHIFTS[key].pyqNote) : undefined)
+        (key) => (SHIFTS[key] ? sscSittingLabel(SHIFTS[key].pyqNote) : undefined),
+        sscPrefix
       )
     : new Map<string, string[]>();
   const c = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
@@ -97,7 +103,7 @@ async function main() {
     (slots.get(key) ?? slots.set(key, []).get(key)!).push(r);
   }
   const paperOf = (r: Row) =>
-    isMh || isNda || isCet || isSsc || isSscT2 || isJee || isNeet ? sittingOf(r) : /question paper ([\d/A-Z-]+)/.exec(r.pyq_note ?? "")?.[1] ?? r.source_file ?? "?";
+    isMh || isNda || isCet || isSsc || isSscT2 || isJee || isNeet || isCapf ? sittingOf(r) : /question paper ([\d/A-Z-]+)/.exec(r.pyq_note ?? "")?.[1] ?? r.source_file ?? "?";
   const slotList = [...slots.values()].map((rs) => {
     rs.sort((a, b) => qnum(a.question_number) - qnum(b.question_number) || (a.question_number ?? "").localeCompare(b.question_number ?? ""));
     const lead = rs[0];

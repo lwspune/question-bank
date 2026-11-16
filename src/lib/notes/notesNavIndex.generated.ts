@@ -4014,5 +4014,187 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL Tier II Maths",
     "chapterSlug": "quadrilaterals",
     "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "fill-in-the-blanks",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "idioms-and-phrases",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "spotting-errors",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "cloze-test",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "sentence-rearrangement",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "grammar",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "vocabulary",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "reading-comprehension",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "series",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "mathematical-operations",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "data-sufficiency",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "blood-relations",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "order-ranking",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "coding-decoding",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "analogy",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "classification",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "alphabet-number",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "statements",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "non-verbal",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "embedded-figures",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "hardware",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "ms-office",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "internet-email",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "operating-system",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "cyber-security",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "networks",
+    "subtopicCount": 1
   }
 ];

@@ -2651,6 +2651,136 @@ import {
   SSC2_QUADRILATERALS_NOTES,
   SSC2_QUADRILATERALS_SLUGS,
 } from "@/app/notes/ssc-cgl-tier-2-maths/quadrilaterals/_data";
+import {
+  SSC2_FILL_IN_THE_BLANKS_CHAPTER,
+  SSC2_FILL_IN_THE_BLANKS_NOTES,
+  SSC2_FILL_IN_THE_BLANKS_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-english/fill-in-the-blanks/_data";
+import {
+  SSC2_IDIOMS_AND_PHRASES_CHAPTER,
+  SSC2_IDIOMS_AND_PHRASES_NOTES,
+  SSC2_IDIOMS_AND_PHRASES_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-english/idioms-and-phrases/_data";
+import {
+  SSC2_SPOTTING_ERRORS_CHAPTER,
+  SSC2_SPOTTING_ERRORS_NOTES,
+  SSC2_SPOTTING_ERRORS_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-english/spotting-errors/_data";
+import {
+  SSC2_CLOZE_TEST_CHAPTER,
+  SSC2_CLOZE_TEST_NOTES,
+  SSC2_CLOZE_TEST_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-english/cloze-test/_data";
+import {
+  SSC2_SENTENCE_REARRANGEMENT_CHAPTER,
+  SSC2_SENTENCE_REARRANGEMENT_NOTES,
+  SSC2_SENTENCE_REARRANGEMENT_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-english/sentence-rearrangement/_data";
+import {
+  SSC2_GRAMMAR_CHAPTER,
+  SSC2_GRAMMAR_NOTES,
+  SSC2_GRAMMAR_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-english/grammar/_data";
+import {
+  SSC2_VOCABULARY_CHAPTER,
+  SSC2_VOCABULARY_NOTES,
+  SSC2_VOCABULARY_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-english/vocabulary/_data";
+import {
+  SSC2_READING_COMPREHENSION_CHAPTER,
+  SSC2_READING_COMPREHENSION_NOTES,
+  SSC2_READING_COMPREHENSION_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-english/reading-comprehension/_data";
+import {
+  SSC2_SERIES_CHAPTER,
+  SSC2_SERIES_NOTES,
+  SSC2_SERIES_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-reasoning/series/_data";
+import {
+  SSC2_MATHEMATICAL_OPERATIONS_CHAPTER,
+  SSC2_MATHEMATICAL_OPERATIONS_NOTES,
+  SSC2_MATHEMATICAL_OPERATIONS_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-reasoning/mathematical-operations/_data";
+import {
+  SSC2_DATA_SUFFICIENCY_CHAPTER,
+  SSC2_DATA_SUFFICIENCY_NOTES,
+  SSC2_DATA_SUFFICIENCY_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-reasoning/data-sufficiency/_data";
+import {
+  SSC2_BLOOD_RELATIONS_CHAPTER,
+  SSC2_BLOOD_RELATIONS_NOTES,
+  SSC2_BLOOD_RELATIONS_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-reasoning/blood-relations/_data";
+import {
+  SSC2_ORDER_RANKING_CHAPTER,
+  SSC2_ORDER_RANKING_NOTES,
+  SSC2_ORDER_RANKING_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-reasoning/order-ranking/_data";
+import {
+  SSC2_CODING_DECODING_CHAPTER,
+  SSC2_CODING_DECODING_NOTES,
+  SSC2_CODING_DECODING_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-reasoning/coding-decoding/_data";
+import {
+  SSC2_ANALOGY_CHAPTER,
+  SSC2_ANALOGY_NOTES,
+  SSC2_ANALOGY_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-reasoning/analogy/_data";
+import {
+  SSC2_CLASSIFICATION_CHAPTER,
+  SSC2_CLASSIFICATION_NOTES,
+  SSC2_CLASSIFICATION_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-reasoning/classification/_data";
+import {
+  SSC2_ALPHABET_NUMBER_CHAPTER,
+  SSC2_ALPHABET_NUMBER_NOTES,
+  SSC2_ALPHABET_NUMBER_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-reasoning/alphabet-number/_data";
+import {
+  SSC2_STATEMENTS_CHAPTER,
+  SSC2_STATEMENTS_NOTES,
+  SSC2_STATEMENTS_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-reasoning/statements/_data";
+import {
+  SSC2_NON_VERBAL_CHAPTER,
+  SSC2_NON_VERBAL_NOTES,
+  SSC2_NON_VERBAL_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-reasoning/non-verbal/_data";
+import {
+  SSC2_EMBEDDED_FIGURES_CHAPTER,
+  SSC2_EMBEDDED_FIGURES_NOTES,
+  SSC2_EMBEDDED_FIGURES_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-reasoning/embedded-figures/_data";
+import {
+  SSC2_HARDWARE_CHAPTER,
+  SSC2_HARDWARE_NOTES,
+  SSC2_HARDWARE_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-computer/hardware/_data";
+import {
+  SSC2_MS_OFFICE_CHAPTER,
+  SSC2_MS_OFFICE_NOTES,
+  SSC2_MS_OFFICE_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-computer/ms-office/_data";
+import {
+  SSC2_INTERNET_EMAIL_CHAPTER,
+  SSC2_INTERNET_EMAIL_NOTES,
+  SSC2_INTERNET_EMAIL_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-computer/internet-email/_data";
+import {
+  SSC2_OPERATING_SYSTEM_CHAPTER,
+  SSC2_OPERATING_SYSTEM_NOTES,
+  SSC2_OPERATING_SYSTEM_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-computer/operating-system/_data";
+import {
+  SSC2_CYBER_SECURITY_CHAPTER,
+  SSC2_CYBER_SECURITY_NOTES,
+  SSC2_CYBER_SECURITY_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-computer/cyber-security/_data";
+import {
+  SSC2_NETWORKS_CHAPTER,
+  SSC2_NETWORKS_NOTES,
+  SSC2_NETWORKS_SLUGS,
+} from "@/app/notes/ssc-cgl-tier-2-computer/networks/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -8529,6 +8659,292 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC2_QUADRILATERALS_CHAPTER,
     notes: SSC2_QUADRILATERALS_NOTES,
     slugs: SSC2_QUADRILATERALS_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "English",
+    subjectRoute: "ssc-cgl-tier-2-english",
+    subjectDisplay: "SSC CGL Tier II English",
+    chapterSlug: "fill-in-the-blanks",
+    chipLabel: "Fill in the Blanks notes",
+    chapter: SSC2_FILL_IN_THE_BLANKS_CHAPTER,
+    notes: SSC2_FILL_IN_THE_BLANKS_NOTES,
+    slugs: SSC2_FILL_IN_THE_BLANKS_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "English",
+    subjectRoute: "ssc-cgl-tier-2-english",
+    subjectDisplay: "SSC CGL Tier II English",
+    chapterSlug: "idioms-and-phrases",
+    chipLabel: "Idioms and Phrases notes",
+    chapter: SSC2_IDIOMS_AND_PHRASES_CHAPTER,
+    notes: SSC2_IDIOMS_AND_PHRASES_NOTES,
+    slugs: SSC2_IDIOMS_AND_PHRASES_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "English",
+    subjectRoute: "ssc-cgl-tier-2-english",
+    subjectDisplay: "SSC CGL Tier II English",
+    chapterSlug: "spotting-errors",
+    chipLabel: "Spotting Errors notes",
+    chapter: SSC2_SPOTTING_ERRORS_CHAPTER,
+    notes: SSC2_SPOTTING_ERRORS_NOTES,
+    slugs: SSC2_SPOTTING_ERRORS_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "English",
+    subjectRoute: "ssc-cgl-tier-2-english",
+    subjectDisplay: "SSC CGL Tier II English",
+    chapterSlug: "cloze-test",
+    chipLabel: "Cloze Test notes",
+    chapter: SSC2_CLOZE_TEST_CHAPTER,
+    notes: SSC2_CLOZE_TEST_NOTES,
+    slugs: SSC2_CLOZE_TEST_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "English",
+    subjectRoute: "ssc-cgl-tier-2-english",
+    subjectDisplay: "SSC CGL Tier II English",
+    chapterSlug: "sentence-rearrangement",
+    chipLabel: "Sentence Rearrangement notes",
+    chapter: SSC2_SENTENCE_REARRANGEMENT_CHAPTER,
+    notes: SSC2_SENTENCE_REARRANGEMENT_NOTES,
+    slugs: SSC2_SENTENCE_REARRANGEMENT_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "English",
+    subjectRoute: "ssc-cgl-tier-2-english",
+    subjectDisplay: "SSC CGL Tier II English",
+    chapterSlug: "grammar",
+    chipLabel: "Grammar notes",
+    chapter: SSC2_GRAMMAR_CHAPTER,
+    notes: SSC2_GRAMMAR_NOTES,
+    slugs: SSC2_GRAMMAR_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "English",
+    subjectRoute: "ssc-cgl-tier-2-english",
+    subjectDisplay: "SSC CGL Tier II English",
+    chapterSlug: "vocabulary",
+    chipLabel: "Vocabulary notes",
+    chapter: SSC2_VOCABULARY_CHAPTER,
+    notes: SSC2_VOCABULARY_NOTES,
+    slugs: SSC2_VOCABULARY_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "English",
+    subjectRoute: "ssc-cgl-tier-2-english",
+    subjectDisplay: "SSC CGL Tier II English",
+    chapterSlug: "reading-comprehension",
+    chipLabel: "Reading Comprehension notes",
+    chapter: SSC2_READING_COMPREHENSION_CHAPTER,
+    notes: SSC2_READING_COMPREHENSION_NOTES,
+    slugs: SSC2_READING_COMPREHENSION_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-tier-2-reasoning",
+    subjectDisplay: "SSC CGL Tier II Reasoning",
+    chapterSlug: "series",
+    chipLabel: "Series notes",
+    chapter: SSC2_SERIES_CHAPTER,
+    notes: SSC2_SERIES_NOTES,
+    slugs: SSC2_SERIES_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-tier-2-reasoning",
+    subjectDisplay: "SSC CGL Tier II Reasoning",
+    chapterSlug: "mathematical-operations",
+    chipLabel: "Mathematical Operations notes",
+    chapter: SSC2_MATHEMATICAL_OPERATIONS_CHAPTER,
+    notes: SSC2_MATHEMATICAL_OPERATIONS_NOTES,
+    slugs: SSC2_MATHEMATICAL_OPERATIONS_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-tier-2-reasoning",
+    subjectDisplay: "SSC CGL Tier II Reasoning",
+    chapterSlug: "data-sufficiency",
+    chipLabel: "Data Sufficiency notes",
+    chapter: SSC2_DATA_SUFFICIENCY_CHAPTER,
+    notes: SSC2_DATA_SUFFICIENCY_NOTES,
+    slugs: SSC2_DATA_SUFFICIENCY_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-tier-2-reasoning",
+    subjectDisplay: "SSC CGL Tier II Reasoning",
+    chapterSlug: "blood-relations",
+    chipLabel: "Blood Relations notes",
+    chapter: SSC2_BLOOD_RELATIONS_CHAPTER,
+    notes: SSC2_BLOOD_RELATIONS_NOTES,
+    slugs: SSC2_BLOOD_RELATIONS_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-tier-2-reasoning",
+    subjectDisplay: "SSC CGL Tier II Reasoning",
+    chapterSlug: "order-ranking",
+    chipLabel: "Order, Ranking and Arrangement notes",
+    chapter: SSC2_ORDER_RANKING_CHAPTER,
+    notes: SSC2_ORDER_RANKING_NOTES,
+    slugs: SSC2_ORDER_RANKING_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-tier-2-reasoning",
+    subjectDisplay: "SSC CGL Tier II Reasoning",
+    chapterSlug: "coding-decoding",
+    chipLabel: "Coding-Decoding notes",
+    chapter: SSC2_CODING_DECODING_CHAPTER,
+    notes: SSC2_CODING_DECODING_NOTES,
+    slugs: SSC2_CODING_DECODING_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-tier-2-reasoning",
+    subjectDisplay: "SSC CGL Tier II Reasoning",
+    chapterSlug: "analogy",
+    chipLabel: "Analogy notes",
+    chapter: SSC2_ANALOGY_CHAPTER,
+    notes: SSC2_ANALOGY_NOTES,
+    slugs: SSC2_ANALOGY_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-tier-2-reasoning",
+    subjectDisplay: "SSC CGL Tier II Reasoning",
+    chapterSlug: "classification",
+    chipLabel: "Classification notes",
+    chapter: SSC2_CLASSIFICATION_CHAPTER,
+    notes: SSC2_CLASSIFICATION_NOTES,
+    slugs: SSC2_CLASSIFICATION_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-tier-2-reasoning",
+    subjectDisplay: "SSC CGL Tier II Reasoning",
+    chapterSlug: "alphabet-number",
+    chipLabel: "Alphabet and Number Tests notes",
+    chapter: SSC2_ALPHABET_NUMBER_CHAPTER,
+    notes: SSC2_ALPHABET_NUMBER_NOTES,
+    slugs: SSC2_ALPHABET_NUMBER_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-tier-2-reasoning",
+    subjectDisplay: "SSC CGL Tier II Reasoning",
+    chapterSlug: "statements",
+    chipLabel: "Statement-Based Reasoning notes",
+    chapter: SSC2_STATEMENTS_CHAPTER,
+    notes: SSC2_STATEMENTS_NOTES,
+    slugs: SSC2_STATEMENTS_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-tier-2-reasoning",
+    subjectDisplay: "SSC CGL Tier II Reasoning",
+    chapterSlug: "non-verbal",
+    chipLabel: "Non-Verbal Series and Analogy notes",
+    chapter: SSC2_NON_VERBAL_CHAPTER,
+    notes: SSC2_NON_VERBAL_NOTES,
+    slugs: SSC2_NON_VERBAL_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-tier-2-reasoning",
+    subjectDisplay: "SSC CGL Tier II Reasoning",
+    chapterSlug: "embedded-figures",
+    chipLabel: "Embedded Figures and Pattern Completion notes",
+    chapter: SSC2_EMBEDDED_FIGURES_CHAPTER,
+    notes: SSC2_EMBEDDED_FIGURES_NOTES,
+    slugs: SSC2_EMBEDDED_FIGURES_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Computer Knowledge",
+    subjectRoute: "ssc-cgl-tier-2-computer",
+    subjectDisplay: "SSC CGL Tier II Computer Knowledge",
+    chapterSlug: "hardware",
+    chipLabel: "Computer Hardware notes",
+    chapter: SSC2_HARDWARE_CHAPTER,
+    notes: SSC2_HARDWARE_NOTES,
+    slugs: SSC2_HARDWARE_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Computer Knowledge",
+    subjectRoute: "ssc-cgl-tier-2-computer",
+    subjectDisplay: "SSC CGL Tier II Computer Knowledge",
+    chapterSlug: "ms-office",
+    chipLabel: "MS Office notes",
+    chapter: SSC2_MS_OFFICE_CHAPTER,
+    notes: SSC2_MS_OFFICE_NOTES,
+    slugs: SSC2_MS_OFFICE_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Computer Knowledge",
+    subjectRoute: "ssc-cgl-tier-2-computer",
+    subjectDisplay: "SSC CGL Tier II Computer Knowledge",
+    chapterSlug: "internet-email",
+    chipLabel: "Internet and E-mail notes",
+    chapter: SSC2_INTERNET_EMAIL_CHAPTER,
+    notes: SSC2_INTERNET_EMAIL_NOTES,
+    slugs: SSC2_INTERNET_EMAIL_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Computer Knowledge",
+    subjectRoute: "ssc-cgl-tier-2-computer",
+    subjectDisplay: "SSC CGL Tier II Computer Knowledge",
+    chapterSlug: "operating-system",
+    chipLabel: "Operating System and Software notes",
+    chapter: SSC2_OPERATING_SYSTEM_CHAPTER,
+    notes: SSC2_OPERATING_SYSTEM_NOTES,
+    slugs: SSC2_OPERATING_SYSTEM_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Computer Knowledge",
+    subjectRoute: "ssc-cgl-tier-2-computer",
+    subjectDisplay: "SSC CGL Tier II Computer Knowledge",
+    chapterSlug: "cyber-security",
+    chipLabel: "Cyber Security notes",
+    chapter: SSC2_CYBER_SECURITY_CHAPTER,
+    notes: SSC2_CYBER_SECURITY_NOTES,
+    slugs: SSC2_CYBER_SECURITY_SLUGS,
+  },
+  {
+    examName: "SSC CGL Tier II",
+    subjectName: "Computer Knowledge",
+    subjectRoute: "ssc-cgl-tier-2-computer",
+    subjectDisplay: "SSC CGL Tier II Computer Knowledge",
+    chapterSlug: "networks",
+    chipLabel: "Computer Networks notes",
+    chapter: SSC2_NETWORKS_CHAPTER,
+    notes: SSC2_NETWORKS_NOTES,
+    slugs: SSC2_NETWORKS_SLUGS,
   },
 ];
 

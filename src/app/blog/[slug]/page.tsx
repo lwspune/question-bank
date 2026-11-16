@@ -1,27 +1,44 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, CalendarDays, Clock } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import { BlogFaqJsonLd, BlogPostingJsonLd } from "../_components/BlogJsonLd";
+import ArticleBody, { ArticleSources } from "../_components/ArticleBody";
+import PostFrame from "../_components/PostFrame";
 import { POST_CONTENTS } from "../_posts/contents";
-import { BLOG_SLUGS, listPosts, postBySlug } from "@/lib/blog/posts";
-import { formatPostDate } from "@/lib/blog/format";
+import { BLOG_SLUGS, postBySlug } from "@/lib/blog/posts";
+import { getBlogCatalog, getPublishedArticles } from "@/lib/blog/articles";
+import type { CatalogPost } from "@/lib/blog/catalog";
 
 export const revalidate = 86400;
 
-/** Prerender every post — this is what makes /blog/* static (●) rather than ƒ. */
-export function generateStaticParams() {
-  return BLOG_SLUGS.map((slug) => ({ slug }));
+/**
+ * Prerender every post — this is what makes /blog/* static (●) rather than ƒ.
+ *
+ * Database posts (migration 0263) are included when the read works; when it
+ * does not, the build still succeeds with the code posts, and a database post
+ * renders on its first visit instead (dynamicParams is on), then stays cached.
+ */
+export async function generateStaticParams() {
+  let dbSlugs: string[] = [];
+  try {
+    dbSlugs = (await getBlogCatalog()).filter((p) => p.source === "db").map((p) => p.slug);
+  } catch (e) {
+    console.error("blog generateStaticParams: articles read failed", e instanceof Error ? e.message : e);
+  }
+  return [...BLOG_SLUGS, ...dbSlugs].map((slug) => ({ slug }));
 }
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ slug: string }>;
-  }
-): Promise<Metadata> {
-  const params = await props.params;
-  const post = postBySlug(params.slug);
+/** A code post, else a published database post (never an evergreen page: those live under /exams). */
+async function findPost(slug: string): Promise<CatalogPost | null> {
+  const code = postBySlug(slug);
+  if (code) return { ...code, source: "code" };
+  const db = (await getPublishedArticles()).find((a) => a.slug === slug && a.kind !== "evergreen");
+  return db ?? null;
+}
+
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await props.params;
+  const post = await findPost(slug);
   if (!post) return {};
   return {
     title: post.title,
@@ -39,72 +56,37 @@ export async function generateMetadata(
 }
 
 export default async function BlogPostPage(props: { params: Promise<{ slug: string }> }) {
-  const params = await props.params;
-  const post = postBySlug(params.slug);
-  const Body = POST_CONTENTS[params.slug];
-  // Both guards matter: an unregistered slug, and a registered one whose body
-  // was never wired into POST_CONTENTS. The second would otherwise throw.
-  if (!post || !Body) notFound();
+  const { slug } = await props.params;
+  const post = await findPost(slug);
+  // A code post needs its body wired into POST_CONTENTS as well; without it the
+  // page would throw, so it 404s instead.
+  const Body = post?.source === "code" ? POST_CONTENTS[slug] : null;
+  if (!post || (post.source === "code" && !Body)) notFound();
+
+  const catalog = await getBlogCatalog();
 
   return (
     <GuideShell
       guideTitle="Blog"
       sideNav={[
         { href: "/blog", label: "All posts" },
-        ...listPosts().map((p) => ({ href: `/blog/${p.slug}`, label: p.title })),
+        ...catalog.map((p) => ({ href: `/blog/${p.slug}`, label: p.title })),
       ]}
       landingHref="/blog"
       breadcrumbs={[{ href: "/blog", label: "Blog" }, { label: post.title }]}
     >
       <BlogPostingJsonLd post={post} />
       <BlogFaqJsonLd post={post} />
-
-      <header className="mb-10 sm:mb-12">
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
-          <span className="inline-flex items-center gap-1.5">
-            <CalendarDays className="h-3.5 w-3.5" aria-hidden />
-            <time dateTime={post.datePublished}>{formatPostDate(post.datePublished)}</time>
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <Clock className="h-3.5 w-3.5" aria-hidden />
-            {post.readingMinutes} min read
-          </span>
-        </div>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-          {post.title}
-        </h1>
-        <p className="mt-4 max-w-2xl font-serif text-base leading-relaxed text-muted-foreground sm:text-lg">
-          {post.description}
-        </p>
-      </header>
-
-      <Body />
-
-      {post.faq && post.faq.length > 0 && (
-        <section aria-labelledby="faq-heading" className="mt-14">
-          <h2 id="faq-heading" className="text-2xl font-bold tracking-tight sm:text-3xl">
-            Questions people ask
-          </h2>
-          <dl className="mt-6 space-y-6">
-            {post.faq.map((f) => (
-              <div key={f.q}>
-                <dt className="font-semibold">{f.q}</dt>
-                <dd className="mt-1.5 font-serif text-base leading-relaxed text-muted-foreground sm:text-lg">{f.a}</dd>
-              </div>
-            ))}
-          </dl>
-        </section>
-      )}
-
-      <div className="mt-16 border-t pt-6">
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-accent transition-colors hover:text-brand-accent/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
-          All posts
-        </Link>
-      </div>
+      <PostFrame post={post}>
+        {post.source === "code" && Body ? (
+          <Body />
+        ) : post.source === "db" ? (
+          <>
+            <ArticleBody body={post.body} />
+            <ArticleSources sources={post.sources} />
+          </>
+        ) : null}
+      </PostFrame>
     </GuideShell>
   );
 }

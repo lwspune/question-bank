@@ -5,6 +5,9 @@ import type { WorkedExample } from "@/lib/guide/loadWorkedExamples";
 import CheckpointSelfScore from "./CheckpointSelfScore";
 import BlockText from "@/components/math/BlockText";
 import KatexRenderer from "@/components/math/KatexRenderer";
+import { publicImageUrl } from "@/lib/storage/imageUrl";
+
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
 
 type Props = {
   /** Resolved bank rows for the 5 checkpoint ids, in interleaved order. */
@@ -88,6 +91,14 @@ export function CheckpointPreview({ question, total }: { question: WorkedExample
       <div className="font-serif text-[15px] leading-relaxed">
         <BlockText text={question.text} />
       </div>
+      {question.imageUrl && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={publicImageUrl(SUPABASE_URL, question.imageUrl)}
+          alt="Question diagram"
+          className="max-h-64 w-auto max-w-full rounded border"
+        />
+      )}
       <ol className="space-y-2">
         {question.options.map((o) => (
           <li key={o.label} className="flex items-center gap-3 rounded-xl border-[1.5px] px-3 py-2.5 font-serif text-[15px]">
@@ -95,6 +106,14 @@ export function CheckpointPreview({ question, total }: { question: WorkedExample
               {o.label}
             </span>
             <KatexRenderer text={o.text} />
+            {o.imageUrl && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={publicImageUrl(SUPABASE_URL, o.imageUrl)}
+                alt={`Option ${o.label} image`}
+                className="max-h-32 w-auto max-w-full rounded border bg-background"
+              />
+            )}
           </li>
         ))}
       </ol>

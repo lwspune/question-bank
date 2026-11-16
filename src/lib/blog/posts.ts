@@ -19,10 +19,13 @@
  */
 
 import type { FaqEntry } from "./faq";
+import type { ArticleKind } from "./kinds";
 
 export type BlogPost = {
   /** URL segment AND the sitemap key. Lowercase kebab, enforced by test. */
   slug: string;
+  /** news / data / evergreen (lib/blog/kinds.ts); the `blog-posts` experiment compares them. */
+  kind: ArticleKind;
   title: string;
   /** Meta description + SERP snippet. Kept <=160 chars so Google doesn't truncate. */
   description: string;
@@ -44,6 +47,7 @@ export type BlogPost = {
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "mht-cet-2027-december-attempt-moved-after-boards",
+    kind: "news",
     title: "MHT-CET 2027: December attempt dropped, both after boards",
     description:
       "MHT-CET 2027 will not start in December: both attempts are now expected after the HSC boards. The dates so far, and how to use the time.",
@@ -84,6 +88,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "nda-2-2026-gat-paper-analysis",
+    kind: "data",
     title: "NDA II 2026 GAT: what changed in English and GK",
     description:
       "NDA II 2026 GAT against every paper since 2017: voice and speech questions are brand new, and Polity has finally drawn level with History.",
@@ -94,6 +99,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "nda-2-2026-maths-paper-analysis",
+    kind: "data",
     title: "NDA II 2026 Maths: what the paper actually asked for",
     description:
       "NDA II 2026 Maths against every paper since 2017: Probability is now the biggest chapter, Statistics has halved, and two questions punish autopilot.",

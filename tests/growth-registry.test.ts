@@ -69,6 +69,7 @@ describe("EXPERIMENTS", () => {
     expect(readouts).toEqual([
       "answer-limit",
       "answer-limit-copy",
+      "blog-posts",
       "board-path",
       "box-buy",
       "chapter-fix",

@@ -137,6 +137,12 @@ describe("sscSittingLabel", () => {
     expect(() => sscSittingLabel("Tier I, 14 Jul 2023")).toThrow(/14 Jul 2023/);
     expect(() => sscSittingLabel(null)).toThrow(/note/);
     expect(() => sscSittingLabel("Tier I, 14 Jul 2023, Shift 5")).toThrow(/Shift 5/);
+    expect(() => sscSittingLabel("Paper II, 9 Dec 2025, Shift 1")).toThrow(/Paper II/);
+  });
+
+  // SSC CPO (2026-11-16): its rows say "Paper I", not "Tier I".
+  it("reads a CPO Paper I note the same way", () => {
+    expect(sscSittingLabel("Paper I, 9 Dec 2025, Shift 2")).toBe("9 Dec 2025 S2");
   });
 });
 
