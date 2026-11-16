@@ -293,7 +293,7 @@
     "stem": "In an oscillating spring mass system, a spring is connected to a box filled with sand. As the box oscillates, sand leaks slowly out of the box vertically so that the average frequency \\(\\omega(t)\\) and average amplitude \\(A(t)\\) of the system change with time \\(t\\). Which one of the following options schematically depicts these changes correctly?",
     "options": ["\\(\\omega(t)\\) increasing, \\(A(t)\\) constant", "\\(\\omega(t)\\) increasing, \\(A(t)\\) decreasing", "\\(\\omega(t)\\) increasing, \\(A(t)\\) increasing", "\\(\\omega(t)\\) decreasing, \\(A(t)\\) decreasing"],
     "answer": 2,
-    "solution": "At any point of time, \\(T = 2\\pi\\sqrt{\\frac{m}{k}}\\). Here \\(m\\) is decreasing, so time period \\(T\\) decreases. Since \\(\\omega = \\frac{2\\pi}{T}\\), as mass leaks, \\(\\omega\\) increases. Also \\(mg = kx_0\\), so equilibrium length \\(x_0 = \\frac{mg}{k}\\) decreases as \\(m\\) decreases, hence the amplitude also decreases. So \\(\\omega(t)\\) increases and \\(A(t)\\) decreases.",
+    "solution": "At any point of time, \\(T = 2\\pi\\sqrt{\\frac{m}{k}}\\). Here \\(m\\) is decreasing, so the time period \\(T\\) decreases and \\(\\omega = \\frac{2\\pi}{T} = \\sqrt{\\frac{k}{m}}\\) increases.\nThe sand that leaks out moves with the box as it leaves, so it carries away its own kinetic energy. Averaged over a cycle, a small mass \\(dm\\) carries away energy \\(dm \\cdot \\frac{1}{4}\\omega^2A^2 = \\frac{E}{2m}\\,dm\\), where \\(E = \\frac{1}{2}kA^2 = \\frac{1}{2}m\\omega^2A^2\\).\nSo \\(\\frac{dE}{E} = \\frac{1}{2}\\frac{dm}{m}\\), which gives \\(E \\propto \\sqrt{m}\\). With \\(k\\) fixed, \\(\\frac{1}{2}kA^2 = E\\) gives \\(A \\propto m^{1/4}\\), so the amplitude decreases as the sand leaks out.\nSo \\(\\omega(t)\\) increases and \\(A(t)\\) decreases.",
     "difficulty": "MODERATE",
     "confidence": "HIGH",
     "hasFigure": true
@@ -397,7 +397,7 @@
     "stem": "The radius of Martian orbit around the Sun is about 4 times the radius of the orbit of Mercury. The Martian year is 687 Earth days. Then which of the following is the length of 1 year on Mercury?",
     "options": ["88 earth days", "225 earth days", "172 earth days", "124 earth days"],
     "answer": 1,
-    "solution": "Applying Kepler's 3rd law: \\(T^2 \\propto R^3\\). Radius of Martian orbit \\(R' = 4R\\). \\(\\left(\\frac{T'}{T}\\right)^2 = \\left(\\frac{R'}{R}\\right)^3 = \\left(\\frac{4R}{R}\\right)^3 = 4^3 = 64 \\Rightarrow \\frac{T'}{T} = 8\\). Length of 1 year on Mercury \\(= T = \\frac{T'}{8} = \\frac{687}{8} = 85.88\\) days \\(\\approx 88\\) earth days.",
+    "solution": "Applying Kepler's 3rd law: \\(T^2 \\propto R^3\\). Radius of Martian orbit \\(R' = 4R\\). \\(\\left(\\frac{T'}{T}\\right)^2 = \\left(\\frac{R'}{R}\\right)^3 = \\left(\\frac{4R}{R}\\right)^3 = 4^3 = 64 \\Rightarrow \\frac{T'}{T} = 8\\). Length of 1 year on Mercury \\(= T = \\frac{T'}{8} = \\frac{687}{8} = 85.88\\) days. The question says the radius is only about 4 times, so the answer is about 86 days, and the nearest option is 88 earth days.",
     "difficulty": "MODERATE",
     "confidence": "HIGH",
     "hasFigure": false

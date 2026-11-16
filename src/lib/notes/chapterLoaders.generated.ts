@@ -12928,6 +12928,119 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 2,
       "traps": 24
     }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "some-basic-concepts",
+    "chipLabel": "Some Basic Concepts notes",
+    "slugs": [
+      "nch-sb-measurement",
+      "nch-sb-mole",
+      "nch-sb-stoichiometry"
+    ],
+    "chapterName": "Some Basic Concepts of Chemistry",
+    "formulaCounts": {
+      "formulas": 7,
+      "tables": 2,
+      "traps": 19
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "classification-of-elements",
+    "chipLabel": "Periodic Table notes",
+    "slugs": [
+      "nch-cp-table",
+      "nch-cp-size",
+      "nch-cp-properties"
+    ],
+    "chapterName": "Classification of Elements and Periodicity in Properties",
+    "formulaCounts": {
+      "formulas": 2,
+      "tables": 7,
+      "traps": 24
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "redox-reactions",
+    "chipLabel": "Redox Reactions notes",
+    "slugs": [
+      "nch-rr-oxidation",
+      "nch-rr-reactions"
+    ],
+    "chapterName": "Redox Reactions",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 3,
+      "traps": 16
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "haloalkanes-and-haloarenes",
+    "chipLabel": "Haloalkanes and Haloarenes notes",
+    "slugs": [
+      "nch-ha-prep",
+      "nch-ha-substitution",
+      "nch-ha-elimination"
+    ],
+    "chapterName": "Haloalkanes and Haloarenes",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 5,
+      "traps": 28
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "alcohols-phenols-and-ethers",
+    "chipLabel": "Alcohols, Phenols and Ethers notes",
+    "slugs": [
+      "nch-al-prep",
+      "nch-al-reactions",
+      "nch-al-phenols-ethers"
+    ],
+    "chapterName": "Alcohols, Phenols and Ethers",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 6,
+      "traps": 20
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "biomolecules",
+    "chipLabel": "Chemistry Biomolecules notes",
+    "slugs": [
+      "nch-bm-carbohydrates",
+      "nch-bm-proteins",
+      "nch-bm-vitamins"
+    ],
+    "chapterName": "Biomolecules",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 7,
+      "traps": 22
+    }
   }
 ];
 
@@ -13573,4 +13686,10 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "neet-chemistry/equilibrium": () => import("@/app/notes/neet-chemistry/equilibrium/_data").then((m) => ({ chapter: m.NEET_CH_EQ_CHAPTER, notes: m.NEET_CH_EQ_NOTES })),
   "neet-chemistry/solutions": () => import("@/app/notes/neet-chemistry/solutions/_data").then((m) => ({ chapter: m.NEET_CH_SO_CHAPTER, notes: m.NEET_CH_SO_NOTES })),
   "neet-chemistry/electrochemistry": () => import("@/app/notes/neet-chemistry/electrochemistry/_data").then((m) => ({ chapter: m.NEET_CH_EC_CHAPTER, notes: m.NEET_CH_EC_NOTES })),
+  "neet-chemistry/some-basic-concepts": () => import("@/app/notes/neet-chemistry/some-basic-concepts/_data").then((m) => ({ chapter: m.NEET_CH_SB_CHAPTER, notes: m.NEET_CH_SB_NOTES })),
+  "neet-chemistry/classification-of-elements": () => import("@/app/notes/neet-chemistry/classification-of-elements/_data").then((m) => ({ chapter: m.NEET_CH_CP_CHAPTER, notes: m.NEET_CH_CP_NOTES })),
+  "neet-chemistry/redox-reactions": () => import("@/app/notes/neet-chemistry/redox-reactions/_data").then((m) => ({ chapter: m.NEET_CH_RR_CHAPTER, notes: m.NEET_CH_RR_NOTES })),
+  "neet-chemistry/haloalkanes-and-haloarenes": () => import("@/app/notes/neet-chemistry/haloalkanes-and-haloarenes/_data").then((m) => ({ chapter: m.NEET_CH_HA_CHAPTER, notes: m.NEET_CH_HA_NOTES })),
+  "neet-chemistry/alcohols-phenols-and-ethers": () => import("@/app/notes/neet-chemistry/alcohols-phenols-and-ethers/_data").then((m) => ({ chapter: m.NEET_CH_AL_CHAPTER, notes: m.NEET_CH_AL_NOTES })),
+  "neet-chemistry/biomolecules": () => import("@/app/notes/neet-chemistry/biomolecules/_data").then((m) => ({ chapter: m.NEET_CH_BM_CHAPTER, notes: m.NEET_CH_BM_NOTES })),
 };

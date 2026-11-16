@@ -2991,6 +2991,36 @@ import {
   NEET_CH_EC_NOTES,
   NEET_CH_EC_SLUGS,
 } from "@/app/notes/neet-chemistry/electrochemistry/_data";
+import {
+  NEET_CH_SB_CHAPTER,
+  NEET_CH_SB_NOTES,
+  NEET_CH_SB_SLUGS,
+} from "@/app/notes/neet-chemistry/some-basic-concepts/_data";
+import {
+  NEET_CH_CP_CHAPTER,
+  NEET_CH_CP_NOTES,
+  NEET_CH_CP_SLUGS,
+} from "@/app/notes/neet-chemistry/classification-of-elements/_data";
+import {
+  NEET_CH_RR_CHAPTER,
+  NEET_CH_RR_NOTES,
+  NEET_CH_RR_SLUGS,
+} from "@/app/notes/neet-chemistry/redox-reactions/_data";
+import {
+  NEET_CH_HA_CHAPTER,
+  NEET_CH_HA_NOTES,
+  NEET_CH_HA_SLUGS,
+} from "@/app/notes/neet-chemistry/haloalkanes-and-haloarenes/_data";
+import {
+  NEET_CH_AL_CHAPTER,
+  NEET_CH_AL_NOTES,
+  NEET_CH_AL_SLUGS,
+} from "@/app/notes/neet-chemistry/alcohols-phenols-and-ethers/_data";
+import {
+  NEET_CH_BM_CHAPTER,
+  NEET_CH_BM_NOTES,
+  NEET_CH_BM_SLUGS,
+} from "@/app/notes/neet-chemistry/biomolecules/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -9617,6 +9647,72 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: NEET_CH_EC_CHAPTER,
     notes: NEET_CH_EC_NOTES,
     slugs: NEET_CH_EC_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Chemistry",
+    subjectRoute: "neet-chemistry",
+    subjectDisplay: "NEET Chemistry",
+    chapterSlug: "some-basic-concepts",
+    chipLabel: "Some Basic Concepts notes",
+    chapter: NEET_CH_SB_CHAPTER,
+    notes: NEET_CH_SB_NOTES,
+    slugs: NEET_CH_SB_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Chemistry",
+    subjectRoute: "neet-chemistry",
+    subjectDisplay: "NEET Chemistry",
+    chapterSlug: "classification-of-elements",
+    chipLabel: "Periodic Table notes",
+    chapter: NEET_CH_CP_CHAPTER,
+    notes: NEET_CH_CP_NOTES,
+    slugs: NEET_CH_CP_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Chemistry",
+    subjectRoute: "neet-chemistry",
+    subjectDisplay: "NEET Chemistry",
+    chapterSlug: "redox-reactions",
+    chipLabel: "Redox Reactions notes",
+    chapter: NEET_CH_RR_CHAPTER,
+    notes: NEET_CH_RR_NOTES,
+    slugs: NEET_CH_RR_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Chemistry",
+    subjectRoute: "neet-chemistry",
+    subjectDisplay: "NEET Chemistry",
+    chapterSlug: "haloalkanes-and-haloarenes",
+    chipLabel: "Haloalkanes and Haloarenes notes",
+    chapter: NEET_CH_HA_CHAPTER,
+    notes: NEET_CH_HA_NOTES,
+    slugs: NEET_CH_HA_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Chemistry",
+    subjectRoute: "neet-chemistry",
+    subjectDisplay: "NEET Chemistry",
+    chapterSlug: "alcohols-phenols-and-ethers",
+    chipLabel: "Alcohols, Phenols and Ethers notes",
+    chapter: NEET_CH_AL_CHAPTER,
+    notes: NEET_CH_AL_NOTES,
+    slugs: NEET_CH_AL_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Chemistry",
+    subjectRoute: "neet-chemistry",
+    subjectDisplay: "NEET Chemistry",
+    chapterSlug: "biomolecules",
+    chipLabel: "Chemistry Biomolecules notes",
+    chapter: NEET_CH_BM_CHAPTER,
+    notes: NEET_CH_BM_NOTES,
+    slugs: NEET_CH_BM_SLUGS,
   },
 ];
 

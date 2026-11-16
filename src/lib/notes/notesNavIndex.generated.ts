@@ -4490,5 +4490,47 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "NEET Chemistry",
     "chapterSlug": "electrochemistry",
     "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "some-basic-concepts",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "classification-of-elements",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "redox-reactions",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "haloalkanes-and-haloarenes",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "alcohols-phenols-and-ethers",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "biomolecules",
+    "subtopicCount": 3
   }
 ];

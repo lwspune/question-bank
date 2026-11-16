@@ -356,7 +356,7 @@
     "stem": "The standard heat of formation, in kcal/mol of \\(\\text{Ba}^{2+}\\) is : [Given: standard heat of formation of \\(\\text{SO}_4^{2-}\\) ion (aq) = \\(-216\\) kcal/mol, standard heat of crystallisation of \\(\\text{BaSO}_4\\text{(s)} = -4.5\\) kcal/mol, standard heat of formation of \\(\\text{BaSO}_4\\text{(s)} = -349\\) kcal/mol]",
     "options": ["\\(-128.5\\)", "\\(-133.0\\)", "\\(+133.0\\)", "\\(+220.5\\)"],
     "answer": 1,
-    "solution": "Given: (1) \\(\\text{S} + 2\\text{O}_2 + 2e^{-} \\rightarrow \\text{SO}_4^{2-}\\), \\(\\Delta H_f = -216\\); (2) \\(\\text{Ba}^{2+}\\text{(g)} + \\text{SO}_4^{2-}\\text{(g)} \\rightarrow \\text{BaSO}_4\\text{(s)}\\), \\(\\Delta H_{cryst} = -4.5\\); (3) \\(\\text{Ba} + \\text{S} + 2\\text{O}_2 \\rightarrow \\text{BaSO}_4\\text{(s)}\\), \\(\\Delta H_{f(\\text{BaSO}_4)} = -349\\). The target (4) is \\(\\text{Ba(s)} \\rightarrow \\text{Ba}^{2+}\\text{(g)} + 2e^{-}\\). Applying (3) \\(-\\) (1) \\(-\\) (2): \\(-349 - (-4.5) - (-216) = -349 + 4.5 + 216 = -128.5\\) kcal/mol.",
+    "solution": "Given: (1) \\(\\Delta_f H(\\text{SO}_4^{2-}, \\text{aq}) = -216\\) kcal/mol; (2) crystallisation, \\(\\text{Ba}^{2+}\\text{(aq)} + \\text{SO}_4^{2-}\\text{(aq)} \\rightarrow \\text{BaSO}_4\\text{(s)}\\), \\(\\Delta H_{cryst} = -4.5\\) kcal/mol; (3) \\(\\Delta_f H(\\text{BaSO}_4, \\text{s}) = -349\\) kcal/mol.\nBy Hess's law, forming \\(\\text{BaSO}_4\\text{(s)}\\) from its elements equals forming the two aqueous ions and then crystallising them:\n\\(\\Delta_f H(\\text{BaSO}_4, \\text{s}) = \\Delta_f H(\\text{Ba}^{2+}, \\text{aq}) + \\Delta_f H(\\text{SO}_4^{2-}, \\text{aq}) + \\Delta H_{cryst}\\)\n\\(-349 = \\Delta_f H(\\text{Ba}^{2+}, \\text{aq}) - 216 - 4.5\\)\n\\(\\Delta_f H(\\text{Ba}^{2+}, \\text{aq}) = -349 + 216 + 4.5 = -128.5\\) kcal/mol.",
     "difficulty": "HARD", "confidence": "HIGH", "hasFigure": false
   },
   {
@@ -365,7 +365,7 @@
     "stem": "Total number of possible isomers (both structural as well as stereoisomers) of cyclic ethers of molecular formula \\(\\text{C}_4\\text{H}_8\\text{O}\\) is :",
     "options": ["6", "8", "10", "11"],
     "answer": 3,
-    "solution": "For cyclic ethers the O must be in the ring. Counting each structural isomer with its stereoisomers (where a chiral centre is present): 2-methyloxetane 2(d,l pair); oxetane substituted 1; tetrahydrofuran 1; 2-methylepoxide (isomer) 1; 2,3-dimethyloxirane meso 1 + (d,l) 2; ethyloxirane 2(d,l pair); etc. Total number of isomers = 2 + 1 + 1 + 1 + 2 + 1 + 2 = 10.",
+    "solution": "In a cyclic ether the oxygen is part of the ring. Try each ring size and place the carbons that are left as side groups; a structure with one chiral carbon counts twice.\nFive-membered ring (O and 4 C): oxolane (tetrahydrofuran), no chiral carbon: 1.\nFour-membered ring (O and 3 C) with a methyl group: 2-methyloxetane has a chiral carbon: 2. 3-Methyloxetane has none: 1.\nThree-membered ring (O and 2 C) with two more carbons: ethyloxirane has a chiral carbon: 2. 2,2-Dimethyloxirane has none: 1. 2,3-Dimethyloxirane has a cis form (meso, 1) and a trans pair of enantiomers (2): 3.\nTotal: 1 + 2 + 1 + 2 + 1 + 3 = 10.",
     "difficulty": "HARD", "confidence": "MED", "hasFigure": true
   },
   {

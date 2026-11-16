@@ -644,7 +644,13 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "neet-chemistry/thermodynamics",
   "neet-chemistry/equilibrium",
   "neet-chemistry/solutions",
-  "neet-chemistry/electrochemistry"
+  "neet-chemistry/electrochemistry",
+  "neet-chemistry/some-basic-concepts",
+  "neet-chemistry/classification-of-elements",
+  "neet-chemistry/redox-reactions",
+  "neet-chemistry/haloalkanes-and-haloarenes",
+  "neet-chemistry/alcohols-phenols-and-ethers",
+  "neet-chemistry/biomolecules"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1289,4 +1295,10 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "neet-chemistry/equilibrium": () => import("@/app/notes/neet-chemistry/equilibrium/_data").then((m) => m.NEET_CH_EQ_NOTES),
   "neet-chemistry/solutions": () => import("@/app/notes/neet-chemistry/solutions/_data").then((m) => m.NEET_CH_SO_NOTES),
   "neet-chemistry/electrochemistry": () => import("@/app/notes/neet-chemistry/electrochemistry/_data").then((m) => m.NEET_CH_EC_NOTES),
+  "neet-chemistry/some-basic-concepts": () => import("@/app/notes/neet-chemistry/some-basic-concepts/_data").then((m) => m.NEET_CH_SB_NOTES),
+  "neet-chemistry/classification-of-elements": () => import("@/app/notes/neet-chemistry/classification-of-elements/_data").then((m) => m.NEET_CH_CP_NOTES),
+  "neet-chemistry/redox-reactions": () => import("@/app/notes/neet-chemistry/redox-reactions/_data").then((m) => m.NEET_CH_RR_NOTES),
+  "neet-chemistry/haloalkanes-and-haloarenes": () => import("@/app/notes/neet-chemistry/haloalkanes-and-haloarenes/_data").then((m) => m.NEET_CH_HA_NOTES),
+  "neet-chemistry/alcohols-phenols-and-ethers": () => import("@/app/notes/neet-chemistry/alcohols-phenols-and-ethers/_data").then((m) => m.NEET_CH_AL_NOTES),
+  "neet-chemistry/biomolecules": () => import("@/app/notes/neet-chemistry/biomolecules/_data").then((m) => m.NEET_CH_BM_NOTES),
 };

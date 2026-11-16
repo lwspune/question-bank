@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 604
+ * Entries: 612
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -373,11 +373,19 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/neet-botany/respiration": "2026-11-15T02:09:20+05:30",
   "/notes/neet-botany/sexual-reproduction": "2026-11-15T02:09:20+05:30",
   "/notes/neet-chemistry/aldehydes-ketones-and-carboxylic-acids": "2026-11-16T12:13:25+05:30",
+  "/notes/neet-chemistry/amines": "2026-11-16T12:55:32+05:30",
   "/notes/neet-chemistry/chemical-bonding": "2026-11-16T11:20:25+05:30",
+  "/notes/neet-chemistry/chemical-kinetics": "2026-11-16T12:55:32+05:30",
   "/notes/neet-chemistry/coordination-compounds": "2026-11-16T12:13:25+05:30",
   "/notes/neet-chemistry/d-and-f-block-elements": "2026-11-16T12:13:25+05:30",
+  "/notes/neet-chemistry/electrochemistry": "2026-11-16T12:55:32+05:30",
+  "/notes/neet-chemistry/equilibrium": "2026-11-16T12:55:32+05:30",
   "/notes/neet-chemistry/hydrocarbons": "2026-11-16T12:13:25+05:30",
-  "/notes/neet-chemistry/p-block-elements": "2026-11-16T12:13:25+05:30",
+  "/notes/neet-chemistry/organic-basic-principles": "2026-11-16T12:55:32+05:30",
+  "/notes/neet-chemistry/p-block-elements": "2026-11-16T12:55:32+05:30",
+  "/notes/neet-chemistry/solutions": "2026-11-16T12:55:32+05:30",
+  "/notes/neet-chemistry/structure-of-atom": "2026-11-16T12:55:32+05:30",
+  "/notes/neet-chemistry/thermodynamics": "2026-11-16T12:55:32+05:30",
   "/notes/neet-physics/alternating-current": "2026-11-16T11:20:25+05:30",
   "/notes/neet-physics/atoms": "2026-11-16T12:13:25+05:30",
   "/notes/neet-physics/current-electricity": "2026-11-16T11:20:25+05:30",

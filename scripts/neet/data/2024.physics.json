@@ -462,7 +462,7 @@
     "stem": "A parallel plate capacitor is charged by connecting it to a battery through a resistor. If \\(I\\) is the current in the circuit, then in the gap between the plates:",
     "options": ["There is no current", "Displacement current of magnitude equal to \\(I\\) flows in the same direction as \\(I\\)", "Displacement current of magnitude equal to \\(I\\) flows in a direction opposite to that of \\(I\\)", "Displacement current of magnitude greater than \\(I\\) flows but can be in any direction"],
     "answer": "Answer (2)",
-    "solution": "According to modified Ampere's law, \\(\\oint B \\cdot dl = \\mu_0(I_C + I_D)\\).\nFor Loop \\(L_1\\): \\(I_C \\neq 0\\) and \\(I_D = 0\\).\nFor Loop \\(L_2\\): \\(I_C = 0\\) and \\(I_D \\neq 0\\).\nDue to KCL: \\(I_C = I_D\\).",
+    "solution": "According to the modified Ampere's law, \\(\\oint B \\cdot dl = \\mu_0(I_C + I_D)\\).\nIn the wires the current is a conduction current, \\(I_C = I\\). In the gap between the plates no charge flows, so \\(I_C = 0\\), but the electric field there grows as the plates charge, giving a displacement current \\(I_D = \\varepsilon_0\\dfrac{d\\Phi_E}{dt} = \\dfrac{dq}{dt} = I\\).\nSo the current is the same all round the circuit: in the gap a displacement current equal to \\(I\\) flows, in the same direction as \\(I\\).",
     "difficulty": "MODERATE",
     "confidence": "HIGH",
     "hasFigure": false
