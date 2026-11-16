@@ -102,6 +102,20 @@ describe("solutionProblems", () => {
     expect(solutionProblems("The gaps are (5-3 = 2) and (8 - 5 = 3).").join()).toMatch(/lost its backslashes/);
   });
 
+  it("flags a power or subscript written outside maths delimiters, which prints as text", () => {
+    // A real b45 draft (2026-11-16): ionic charges in plain prose.
+    const bare = "Calcium loses two electrons to form Ca^{2+}, and each chlorine atom gains one to form Cl^-.";
+    expect(solutionProblems(bare).join()).toMatch(/power or subscript outside maths/);
+    expect(solutionProblems("The area is x^2 = 25.").join()).toMatch(/power or subscript outside maths/);
+    expect(solutionProblems("Here v_0 is the initial speed.").join()).toMatch(/power or subscript outside maths/);
+  });
+
+  it("allows powers and subscripts inside maths, and underscores in ordinary text", () => {
+    expect(solutionProblems("Product: \\(2x^2 = 50\\), so \\(\\mu_0\\) is fixed.\n\\[ \\pi r^2 h \\]")).toEqual([]);
+    expect(solutionProblems("Ions: \\(\\text{Ca}^{2+}\\) and \\(\\text{Cl}^{-}\\).")).toEqual([]);
+    expect(solutionProblems("See the file name_list for details.")).toEqual([]);
+  });
+
   it("allows ordinary words that are also maths names", () => {
     expect(solutionProblems("He tried three times, and the text divides into two parts.")).toEqual([]);
     expect(solutionProblems("Read options (a) and (b) again.")).toEqual([]);

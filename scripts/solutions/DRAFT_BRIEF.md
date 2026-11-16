@@ -143,4 +143,29 @@ Question (`mcq`): "Two 10 g particles with 1 μC each sit on a table with
 }
 ```
 
+## Web-checked pass (only when your prompt says so)
+
+A retry of questions earlier solvers skipped for facts they could not
+confirm (current affairs, dates, state facts). Rules from b42/b43 (Sonnet
+agents barely searched there and one broke the source rule; Opus did the
+work):
+
+- Search the FACT, never the question. Never paste the stem or the options
+  into a search: that finds quiz, coaching and answer-key pages, which only
+  copy someone's key.
+- Never use quiz, MCQ, coaching, "answer key" or test-series sites, or any
+  page that shows this question with an answer. Use primary or reliable
+  sources: government sites (gov.in, nic.in, maharashtra.gov.in, PIB),
+  official bodies (UN, RBI, ISRO, ministries), established newspapers,
+  encyclopaedias.
+- Settle a fact only on a source you actually read that states it. One
+  source is enough when it is the primary one (the ministry, the body
+  itself); otherwise two that agree. If sources disagree or are thin, skip.
+- Never settle a question by elimination alone.
+- The solution states the fact plainly; do not cite URLs in it. Add a
+  `"sources": ["<url>", ...]` field to each draft you solved this way, so
+  the main session can check it.
+- Search as much as you need: a skip because you did not search is the
+  failure this pass exists to fix.
+
 When done, reply with one line: how many solved, how many skipped.
