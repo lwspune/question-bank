@@ -64,6 +64,17 @@ Decisions log).
   never touched: their `content_hash` starts with `SEED_CONTENT_HASH_PREFIX`
   (`tests/helpers/testdb.ts`, shared with `seed.ts`), and a fixture must never use
   that prefix.
+- **One test run at a time per machine (2026-11-15).** A run takes a lock
+  file (`%TEMP%\qb-testdb-locks\<ref>.lock`) in the global setup and frees it
+  after its cleanup sweep; a second run, from any session or worktree, waits
+  and prints `[testdb lock] waiting: ... in use by vitest in <folder>`.
+  `testdb:reset` takes it too. A killed run's lock is taken over at once (its
+  process is gone), and any lock over an hour old is treated as dead. Watch
+  mode skips the lock. A run gives up after 30 minutes, naming the holder and
+  the file to delete if that run is dead. CI runs on GitHub, so this lock does
+  not cover CI against local runs. Why: two runs at once flipped each other's
+  shared rows (`paywall_settings`), lost fixtures and starved DNS, which caused 6
+  of the 9 red pushes between 5 and 14 Nov. Code: `tests/helpers/testdbLock.ts`.
 - **taxonomy.json seeds MHT-CET only** (it derives from the MHT-CET reference
   Excel; other exams were auto-created by uploads in prod). Tests needing
   other real taxonomy belong in the prod-contract list.

@@ -64,7 +64,8 @@ import {
   sweepUntilClean,
 } from "./global-teardown-helpers";
 import { readRunIds } from "./helpers/runIdRegistry";
-import { SEED_CONTENT_HASH_PREFIX } from "./helpers/testdb";
+import { extractProjectRef, SEED_CONTENT_HASH_PREFIX } from "./helpers/testdb";
+import { acquireTestDbLock, testDbLockPath } from "./helpers/testdbLock";
 import { resolveSupabaseTestEnv } from "./helpers/testenv";
 
 /** What one sweep may delete: this run's ids, and stale rows as of `now`. */
@@ -74,35 +75,59 @@ export type SweepScope = { own: ReadonlySet<string>; now: Date };
 const RUNS_ROOT = path.join(tmpdir(), "qb-test-runs");
 
 export default async function setup(project: TestProject) {
+  // ONE RUN AT A TIME per test project on this machine (tests/helpers/testdbLock.ts):
+  // a second session's run waits here until this one's sweep below is done.
+  // Watch mode skips it, or an open `test:watch` would block every push.
+  const release = await takeTestDbLock(project);
+  process.once("exit", release); // a crash still frees it; a kill is caught as a dead pid
+
   const runDir = path.join(RUNS_ROOT, randomUUID());
   mkdirSync(runDir, { recursive: true });
   project.provide("testRunDir", runDir);
   removeOldRunDirs(runDir);
 
   return async function teardown(): Promise<void> {
-    // Same env resolution as tests/setup.ts — globalSetup does NOT go through
-    // setupFiles, and before this it read .env.local directly, which would
-    // have swept PROD while the workers wrote to the test project.
-    resolveSupabaseTestEnv();
-
-    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-    if (!url || !key) return; // tests skipped — nothing to clean
-
-    const admin = createClient(url, key, { auth: { persistSession: false } });
-    const scope: SweepScope = { own: readRunIds(runDir), now: new Date() };
-
     try {
-      await sweepTestData(admin, scope);
+      // Same env resolution as tests/setup.ts — globalSetup does NOT go through
+      // setupFiles, and before this it read .env.local directly, which would
+      // have swept PROD while the workers wrote to the test project.
+      resolveSupabaseTestEnv();
 
-      // GUARDRAIL — fail the run loudly if THIS run's pollution (or a stale
-      // leftover) survived. Resilient to the delete-visibility race: re-sweeps
-      // + re-checks before throwing on a leak that genuinely persists.
-      await assertNoLeakedTestData(admin, scope);
+      const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+      const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+      if (!url || !key) return; // tests skipped — nothing to clean
+
+      const admin = createClient(url, key, { auth: { persistSession: false } });
+      const scope: SweepScope = { own: readRunIds(runDir), now: new Date() };
+
+      try {
+        await sweepTestData(admin, scope);
+
+        // GUARDRAIL — fail the run loudly if THIS run's pollution (or a stale
+        // leftover) survived. Resilient to the delete-visibility race: re-sweeps
+        // + re-checks before throwing on a leak that genuinely persists.
+        await assertNoLeakedTestData(admin, scope);
+      } finally {
+        rmSync(runDir, { recursive: true, force: true });
+      }
     } finally {
-      rmSync(runDir, { recursive: true, force: true });
+      release();
     }
   };
+}
+
+/** Take the test-database lock, or a no-op when there is no test database or in watch mode. */
+async function takeTestDbLock(project: TestProject): Promise<() => void> {
+  if (project.vitest.config.watch) return () => {};
+  resolveSupabaseTestEnv();
+  const ref = extractProjectRef(process.env.NEXT_PUBLIC_SUPABASE_URL);
+  if (!ref) return () => {}; // no test database: the DB files skip
+  return acquireTestDbLock(testDbLockPath(ref), {
+    pid: process.pid,
+    cwd: process.cwd(),
+    startedAt: new Date().toISOString(),
+    what: "vitest",
+  });
 }
 
 /** A killed run never removes its folder: drop any older than a day. */
