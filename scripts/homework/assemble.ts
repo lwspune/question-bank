@@ -127,7 +127,7 @@ function main() {
     summary: examName === "NDA" || examName === "CDS"
       ? `${examName} ${subjectName} past questions, ${sittings[0]} to ${sittings[sittings.length - 1]}, five a day. Questions UPSC asked again and the question types it keeps asking come first, ranked together by how often they were asked, then every other question.${slots.some((s) => s.rows.length > 1) ? " A set of linked items counts as one question." : ""}`
       : examName === "UPSC CAPF (AC)"
-      ? `UPSC CAPF (AC) Paper I ${subjectName} past questions, ${sittings[0]} to ${sittings[sittings.length - 1]}, five a day. Questions UPSC asked again and the question types it keeps asking come first, ranked together by how often they were asked, then every other question.${slots.some((s) => s.rows.length > 1) ? " A set of linked items counts as one question." : ""}`
+      ? `CAPF (AC) Paper I ${subjectName} past questions, ${sittings[0]} to ${sittings[sittings.length - 1]}, five a day. Questions UPSC asked again and the question types it keeps asking come first, ranked together by how often they were asked, then every other question.${slots.some((s) => s.rows.length > 1) ? " A set of linked items counts as one question." : ""}`
       : examName === "SSC CGL Tier II"
       ? `SSC CGL Tier II ${subjectName} past questions from ${sittings.length} papers, ${sittings[0].slice(-12, -8)} to ${sittings[sittings.length - 1].slice(-12, -8)}, five a day. Questions SSC asked again and the question types it keeps asking come first, ranked together by how often they were asked, then every other question.${slots.some((s) => s.rows.length > 1) ? " A set of linked items counts as one question." : ""}`
       : examName === "SSC CHSL" || examName === "SSC CPO"
