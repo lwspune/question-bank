@@ -89,4 +89,21 @@ describe("whatsappHref", () => {
     expect(whatsappHref(null)).toBeNull();
     expect(whatsappHref(undefined)).toBeNull();
   });
+
+  // The roster's Message button opens the chat with a check-in already typed.
+  it("adds a pre-filled message, encoded so spaces, ? and : survive", () => {
+    expect(whatsappHref("919876543210", "Hi Aarav, how is it going? Reply: yes")).toBe(
+      "https://wa.me/919876543210?text=Hi%20Aarav%2C%20how%20is%20it%20going%3F%20Reply%3A%20yes"
+    );
+  });
+
+  it("leaves the plain chat link when the message is empty or missing", () => {
+    expect(whatsappHref("919876543210", "")).toBe("https://wa.me/919876543210");
+    expect(whatsappHref("919876543210", "   ")).toBe("https://wa.me/919876543210");
+    expect(whatsappHref("919876543210", undefined)).toBe("https://wa.me/919876543210");
+  });
+
+  it("still gives null for a bad number even with a message", () => {
+    expect(whatsappHref("98765", "Hi")).toBeNull();
+  });
 });

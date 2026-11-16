@@ -23,6 +23,7 @@ export default function WhatsappLink({
   children,
   className,
   icon = true,
+  text,
 }: {
   mobile: string | null | undefined;
   /** Display text. Defaults to the number as stored. */
@@ -30,8 +31,10 @@ export default function WhatsappLink({
   className?: string;
   /** Hide the icon where the row already carries one. */
   icon?: boolean;
+  /** A message to open the chat with, already typed. Staff still press send. */
+  text?: string;
 }) {
-  const href = whatsappHref(mobile);
+  const href = whatsappHref(mobile, text);
   const label = children ?? mobile ?? "";
 
   if (!href) return <span className={className}>{label}</span>;

@@ -24,6 +24,7 @@ function row(over: Partial<StudentRosterRow> = {}): StudentRosterRow {
     city: null,
     stage: null,
     targetExams: [],
+    checkInExam: null,
     whatsappOptIn: false,
     mocksSubmitted: 0,
     mocksStarted: 0,
