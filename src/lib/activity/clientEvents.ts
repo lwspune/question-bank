@@ -12,6 +12,7 @@ import { istDayKey } from "@/lib/email/dueNudge";
 import { AFTER_CHECKOUT_ONLY, isDeclineReason, type DeclineReason } from "@/lib/billing/declineReasons";
 import { CHAPTER_FIX_FROM } from "@/lib/drill/from";
 import { START_NEXT_FROM } from "@/lib/me/startNext";
+import { levelById } from "@/lib/play/levels";
 import type { ActivityEvent } from "./events";
 import { boardChapterPath, isReadingSurface, isSurface, learnLessonPath, readingViewFor, viewDedupeKey } from "./views";
 
@@ -445,5 +446,32 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
     };
   }
 
+  if (raw.kind === "play_round") return parsePlayRound(raw);
+
   return { ok: false, error: "That kind cannot be written by a client." };
+}
+
+/** Ceilings a 60-second /play round cannot reach honestly (4 points a right answer x 10 x 200). */
+const PLAY_MAX_ANSWERS = 200;
+const PLAY_MAX_POINTS = 20_000;
+const PLAY_KEYS = new Set(["kind", "level", "correct", "wrong", "points", "cleared"]);
+
+function parsePlayRound(raw: Record<string, unknown>): ParseClientEventResult {
+  if (Object.keys(raw).some((k) => !PLAY_KEYS.has(k))) return { ok: false, error: "Unknown field on a play round." };
+  const level = levelById(raw.level);
+  if (!level) return { ok: false, error: "Unknown level." };
+  const count = (v: unknown, max: number): v is number =>
+    typeof v === "number" && Number.isInteger(v) && v >= 0 && v <= max;
+  if (!count(raw.correct, PLAY_MAX_ANSWERS) || !count(raw.wrong, PLAY_MAX_ANSWERS)) {
+    return { ok: false, error: "Invalid counts." };
+  }
+  if (!count(raw.points, PLAY_MAX_POINTS)) return { ok: false, error: "Invalid points." };
+  if (typeof raw.cleared !== "boolean") return { ok: false, error: "Invalid cleared." };
+  return {
+    ok: true,
+    value: {
+      kind: "play_round",
+      metadata: { level: level.id, correct: raw.correct, wrong: raw.wrong, points: raw.points, cleared: raw.cleared },
+    },
+  };
 }

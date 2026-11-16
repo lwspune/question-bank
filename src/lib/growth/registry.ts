@@ -466,6 +466,8 @@ export const TUTOR_PRICE_MIN_ANSWERS = 15;
  * Before it, 1 of 88 tutoring Yes answers was someone in Pune open to offline.
  */
 export const CLASS_LEADS_PUNE_KEEP = 10;
+/** "play-games": signed-in students who finish a /play round in 4 weeks, the floor for reading the rule at all. */
+export const PLAY_PLAYERS_MIN = 50;
 
 /** The ISO date `days` (by default `EXPERIMENT_WINDOW_DAYS`) after `liveSince`. */
 export function checkOn(liveSince: string, days: number = EXPERIMENT_WINDOW_DAYS): string {
@@ -547,7 +549,8 @@ export type Readout =
   | "notes-drill-panel"
   | "gulf-price"
   | "enem-interest"
-  | "offline-classes";
+  | "offline-classes"
+  | "play-games";
 
 export type Experiment = {
   id: string;
@@ -907,7 +910,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
       "A Books button in the header opens /store. Three kinds of book, sold apart from the pass (20% off for pass holders): Formula Books and Notes Books (Rs 49 each) for MHT-CET Maths, Physics and Chemistry, and the MHT-CET Maths PYQ Book (Rs 149, every past question 2021-2026 with full solutions). Each buyer's copy carries their email on every page, five downloads. After buying, \"Want this as a printed book?\" takes a free tap and an optional pincode. 2026-11-16 (owner): after 10 sales, all Repeated or Chapter-wise PYQs books on the boards, every other kind went off sale (Formula, Notes, Solved Papers, Textbook Solutions; one bought Solved Papers book stays on so its buyer keeps their page), and ten Repeated PYQs books were added for JEE Mains, MHT-CET and SSC CGL, plus CBSE 12 Biology. Read sales per book across that date.",
     why: "The owner wants to sell printed books. This tests the cheap half first: which kind of book students pay for, at what price, and how many buyers want it printed (and where).",
     metric:
-      "Per book, signed-in students: opened its page and took its sample (user_activity surface_viewed, store / ebook_sample), bought and revenue (ebook_purchases), refunds, printed-copy taps and pincodes (ebook_print_interest), downloads. Signed-out visits, header Ebooks taps (ebook_store_link_click) and checkout steps per book (checkout_* with slug) in Vercel, read by hand. The header Ebooks button went from an outlined box to a tinted pill in the deploy that merged slicker Phase 1 (2026-11-10), so read header taps across that date with care",
+      "Per book, signed-in students: opened its page and took its sample (user_activity surface_viewed, store / ebook_sample), bought and revenue (ebook_purchases), refunds, printed-copy taps and pincodes (ebook_print_interest), downloads. Signed-out visits, header Ebooks taps (ebook_store_link_click) and checkout steps per book (checkout_* with slug) in Vercel, read by hand. The header Ebooks button went from an outlined box to a tinted pill in the deploy that merged slicker Phase 1 (2026-11-10), so read header taps across that date with care. On 2026-11-16 a Play button joined Ebooks and Classes (play-games) and the pills got 4 px narrower on phones: another date to read across",
     rule: "No decision rule yet: we have no data on what students pay for a book (owner, 2026-10-20). Watch the numbers; once 30-50 buyers have asked for a printed copy, consider a paid pre-order window.",
     liveSince: "2026-10-20",
     readout: "ebook-store",
@@ -1428,11 +1431,25 @@ export const EXPERIMENTS: readonly Experiment[] = [
       "The header's Tutor button became Classes. /classes asks which course (NDA, CDS, AFCAT, MHT-CET, JEE, 10th Board, 12th Board, SSC CGL; one or more), Pune or another city (Pune first), an optional name and a mobile with consent, and promises a call within 2 days. Anyone can send it, signed in or not; one lead per mobile. Leads are listed Pune first on /dashboard/classes with WhatsApp, a Called tick and a CSV.",
     why: "The owner runs offline classes in Pune and wants to fill them. The 1:1 tutoring check showed demand, but mostly for online tutoring and from outside Pune (15 of about 3,050 student profiles name Pune), so this asks for something the team can act on: a number to call about a named course.",
     metric:
-      "Leads per week from class_interest (migration 0265), Pune vs other, by course; header Classes taps (classes_link_click) in Vercel by hand. Read with the team: of the Pune leads called, how many came for a demo or joined",
+      "Leads per week from class_interest (migration 0265), Pune vs other, by course; header Classes taps (classes_link_click) in Vercel by hand. Read with the team: of the Pune leads called, how many came for a demo or joined. A Play button went up beside Classes on its first day (play-games, 2026-11-16) and \"PYQ Vault\" hides on phones from then, so the whole window shares the header with it",
     rule: `Keep the button if it brings ${CLASS_LEADS_PUNE_KEEP}+ Pune leads in 4 weeks; below that, keep the form but take the button out of the header and link it only from Pune-facing pages.`,
     liveSince: "2026-11-16",
     windowDays: 28,
     readout: "offline-classes",
+    status: "running",
+  },
+  {
+    id: "play-games",
+    title: "Play: a calculation game in the header",
+    change:
+      "A Play button in the header (after Ebooks and Classes) opens /play: 60-second rounds of whole-number sums in 8 levels (add and subtract to 20, tables, division, two-digit sums, tables to 20, bigger times and divide, order of operations, two-digit times two-digit). A level is cleared by enough right answers at 80%+ and opens the next. Fun without rankings: a combo, a personal best and a race against your own best round. Anyone can play; progress is kept in the browser. To fit Play on a 360 px phone the words \"PYQ Vault\" now hide below 640 px (logo stays) and the header pills are 4 px narrower.",
+    why: "The owner sees students slip on everyday calculation in class, and studying is a chore, so a game may bring them back. The real question is whether it brings them back to STUDY, not just to the game.",
+    metric:
+      "Signed-in students with a play_round (migration 0267), rounds each, levels cleared; for players, study days (mocks, drill, bank answers) in the 7 days after their first round vs the 7 days before (scripts/play/readout.sql). Header Play taps (play_link_click) and every round signed in or out (play_round_end) in Vercel by hand. Classes and Ebooks are header buttons too: read their taps across 2026-11-16 with care",
+    rule: `Read once ${PLAY_PLAYERS_MIN}+ signed-in students have played. Keep Play in the header if players' study days after their first round are at least the days before (median) and a quarter or more play on 2+ days; if study days fall, the game is replacing study: move it off the header. Below ${PLAY_PLAYERS_MIN} players at the check, take the button out and link /play from mock results only.`,
+    liveSince: "2026-11-16",
+    windowDays: 28,
+    readout: "play-games",
     status: "running",
   },
   {

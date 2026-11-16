@@ -870,6 +870,13 @@ export async function allSitemapEntries(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     })),
     {
+      // The calculation game (2026-11-16): open to everyone, signed in or not.
+      url: `${SITE_URL}/play`,
+      lastModified: buildDate,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
       url: `${SITE_URL}/privacy`,
       lastModified: buildDate,
       changeFrequency: "yearly",

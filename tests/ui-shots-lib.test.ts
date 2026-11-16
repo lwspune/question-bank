@@ -83,6 +83,12 @@ describe("parseShotArgs", () => {
     expect(a.fullPage).toBe(true);
   });
 
+  it("--narrow adds a 360 px phone, the smallest common Android width (2026-11-16)", () => {
+    expect(parseShotArgs(["--pages=/", "--narrow"]).viewports).toEqual(["narrow", "phone", "desktop"]);
+    expect(parseShotArgs(["--pages=/", "--narrow", "--phone"]).viewports).toEqual(["narrow", "phone"]);
+    expect(VIEWPORTS.narrow).toEqual({ width: 360, height: 780, scale: 2, mobile: true });
+  });
+
   it("undoes Git Bash's path conversion and accepts paths without a slash", () => {
     // Git Bash rewrites an argument that starts with "/" into a Windows path,
     // so "--pages=/" arrives as "--pages=C:/Program Files/Git/". Found on the

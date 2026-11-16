@@ -199,6 +199,10 @@ export const TELEMETRY_KINDS: readonly string[] = [
   // 0241): drill fuel, always beside the chat reply it answers. V's own use is
   // measured in chat_interactions, not here.
   "v_not_understood",
+  // A finished /play round (2026-11-16, migration 0267). Not studying, so it is
+  // never "adoption" of a study feature; its question is whether players study
+  // MORE, read by the play-games experiment (scripts/play/readout.sql).
+  "play_round",
 ];
 
 export const FEATURE_LABELS: Partial<Record<ActivityKind, string>> = {
@@ -864,6 +868,13 @@ export const SURFACE_COVERAGE: SurfaceCoverage[] = [
     kinds: ["path_chapter_done", "path_paced", "path_covered", "path_switched"],
     tracked: "partial",
     lost: "Shown tasks are stored per day (study_path_days), so task completion can be measured; a task opened but not finished leaves only the page view on its own surface. The start offer, the /board line, the weekly review, Pick up here and V's path card are surface_viewed rows (path_offer_me, path_offer_board, path_board_line, path_review, path_pickup, v_path, 2026-11-08) and Lighter / More is path_paced. From 2026-11-15 the class checklist is path_cover (seen) and path_covered (saved), Switch chapter path_switched. npm run path:readout is the readout.",
+  },
+  {
+    surface: "Calculation game (/play)",
+    via: "user_activity play_round (migration 0267), signed in only; progress and best rounds live in the browser",
+    kinds: ["play_round"],
+    tracked: "partial",
+    lost: "Signed-out rounds are not recorded at all (only header Play taps, play_link_click, in Vercel by hand), and a round left before its 60 seconds end records nothing. Levels cleared and best rounds are per device (localStorage), so they never reach the server.",
   },
   {
     surface: "Blog (/blog)",
