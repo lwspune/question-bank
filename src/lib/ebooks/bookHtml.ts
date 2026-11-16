@@ -540,7 +540,8 @@ export function buildTextbookChapterHtml(input: TextbookChapterInput): string {
 
 const FRONT_CSS = `
 @page { size: A4; margin: 0; }
-.toc { padding: 22mm 20mm 26mm; }
+@page toc { size: A4; margin: 22mm 20mm 26mm; }
+.toc { page: toc; }
 .toc h2 { font-size: 22pt; margin: 0 0 4mm; }
 .toc .how { font-size: 10pt; color: var(--muted); margin: 0 0 8mm; line-height: 1.5; }
 .toc table { width: 100%; border-collapse: collapse; font-size: 10.5pt; }
@@ -566,6 +567,10 @@ const HOW: Record<EbookKind, string> = {
   textbook:
     "Each chapter follows the textbook: its sections in order, each with its solved examples and exercises, every question under the book's own number. The worked solution sits right under each question, so you can check your work as you go.",
 };
+
+/** A competitive exam's Repeated PYQs book (2026-11-16): no board set these papers. */
+const HOW_EXAM_REPEATS =
+  "Each chapter gathers the questions the exam has asked more than once, most-asked first, then the types of question it keeps coming back to. A line over each says when it was asked. The solutions close the chapter under the same numbers, so you can try them all before you check.";
 
 /** The gold seal on the cover, by kind. */
 const SEAL: Record<EbookKind, [string, string, string]> = {
@@ -605,6 +610,8 @@ export type EbookFrontInput = {
    * line for the buyer's name, which the download writes in (lib/ebooks/stamp).
    */
   cover: { over: string; main: string; edition: string; namePlate?: boolean };
+  /** Who set the papers (lib/ebooks/paperBooks RepeatsEbook): "exam" words a Repeated PYQs book without "the board". */
+  examiner?: "board" | "exam";
 };
 
 /** Navy and gold, full bleed. Shadows are safe here: the cover is one page and never breaks. */
@@ -693,7 +700,7 @@ export function buildEbookFrontHtml(input: EbookFrontInput): string {
     `<style>${PAPER_CSS}${THEME_CSS}${FRONT_CSS}${PREMIUM_CSS}</style></head><body style="--acc:${ACCENT[input.kind]}">` +
     premiumCoverHtml(input) +
     `<section class="toc"><div class="eyebrow">${KIND_LABEL[input.kind]} · ${esc(input.title)}</div><h2>Contents</h2>` +
-    `<p class="how">${HOW[input.kind]}</p><table><tbody>${rows}</tbody></table></section>` +
+    `<p class="how">${input.kind === "repeats" && input.examiner === "exam" ? HOW_EXAM_REPEATS : HOW[input.kind]}</p><table><tbody>${rows}</tbody></table></section>` +
     `</body></html>`
   );
 }

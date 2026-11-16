@@ -535,6 +535,42 @@ describe("buildRepeatsChapterHtml", () => {
   });
 });
 
+// Competitive-exam Repeated PYQs (2026-11-16): the front matter speaks of the
+// exam, never "the board", which set none of these papers.
+describe("buildEbookFrontHtml for a competitive exam's Repeated PYQs", () => {
+  const input = {
+    kind: "repeats" as const,
+    title: "JEE Mains Physics",
+    subtitle: "Every question asked again.",
+    stats: [{ value: "704", label: "questions" }],
+    preview: "",
+    chapters: [{ number: 1, name: "Units and Measurements", detail: "35 q", page: 3 }],
+    head: "",
+    cover: { over: "JEE Mains", main: "Physics", edition: "2026 Edition", namePlate: true },
+  };
+
+  it("says the exam asked them again", () => {
+    const html = buildEbookFrontHtml({ ...input, examiner: "exam" });
+    expect(html).toContain("the questions the exam has asked more than once");
+    expect(html).not.toMatch(/\bboard\b/);
+  });
+
+  it("keeps the board's wording when no examiner is named", () => {
+    expect(buildEbookFrontHtml(input)).toContain("the questions the board has asked more than once");
+  });
+
+  // Measured 2026-11-16: a 30-chapter contents list (MHT-CET Chemistry) ran
+  // under the page footer. Padding on the section applied only where it began
+  // and ended, never where the list broke onto a second page; page margins
+  // apply to every page the contents fills. The cover keeps no margin at all.
+  it("gives the contents its own page margins, so a long list stops above the footer", () => {
+    const html = buildEbookFrontHtml(input);
+    expect(html).toMatch(/\.toc \{[^}]*page: toc/);
+    expect(html).toMatch(/@page toc \{[^}]*margin: 22mm 20mm 26mm/);
+    expect(html).not.toMatch(/\.toc \{[^}]*padding/);
+  });
+});
+
 // ── Chapter-wise PYQs (board) ────────────────────────────────────────────────
 // Each marks group under its own heading, each question under the line saying
 // when it was asked, a case study's passage once; solutions on a fresh page

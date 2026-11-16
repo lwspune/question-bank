@@ -109,14 +109,41 @@ describe("parseArticleBody", () => {
     expect(blocks[2]).toMatchObject({ kind: "ul", items: [[{ kind: "text", text: "120 questions" }], [{ kind: "text", text: "2 hours" }]] });
     expect(blocks[3]).toMatchObject({ kind: "ol", items: [[{ kind: "text", text: "Read the passage" }], [{ kind: "text", text: "Answer" }]] });
     expect(blocks[5]).toEqual({ kind: "note", inlines: [{ kind: "text", text: "Reported, not yet notified." }] });
+    const t = (text: string) => [{ kind: "text", text }];
     expect(blocks[6]).toEqual({
       kind: "table",
-      headers: ["Section", "Questions"],
+      headers: [t("Section"), t("Questions")],
       rows: [
-        ["English", "24"],
-        ["Maths \\(|x|\\)", "12"],
+        [t("English"), t("24")],
+        [t("Maths \\(|x|\\)"), t("12")],
       ],
     });
+  });
+
+  it("reads links inside table cells, not just in prose (2026-11-16: they printed as raw markdown)", () => {
+    const blocks = parseArticleBody(
+      "| Subject | Chapter |\n|---|---|\n| Maths | [Conic Sections](/questions/jee-mains/maths/conic-sections) |"
+    );
+    expect(blocks).toEqual([
+      {
+        kind: "table",
+        headers: [[{ kind: "text", text: "Subject" }], [{ kind: "text", text: "Chapter" }]],
+        rows: [
+          [
+            [{ kind: "text", text: "Maths" }],
+            [
+              {
+                kind: "link",
+                text: "Conic Sections",
+                href: "/questions/jee-mains/maths/conic-sections",
+                external: false,
+                official: false,
+              },
+            ],
+          ],
+        ],
+      },
+    ]);
   });
 
   it("keeps a pipe line without a separator row as prose", () => {

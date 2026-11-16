@@ -25,9 +25,9 @@ import ShelfChips from "./ShelfChips";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Ebooks: formula, notes, PYQ and solved board papers to download",
+  title: "Ebooks: repeated and chapter-wise PYQs to download",
   description:
-    "Formula, notes and chapter-wise previous year question (PYQ) ebooks, and solved past board papers, with full solutions, as PDFs to download. Pay once, keep it.",
+    "Previous year question (PYQ) ebooks: the questions asked again and again, and every question chapter by chapter, with full solutions, as PDFs to download. Pay once, keep it.",
   alternates: { canonical: "/store" },
 };
 
@@ -36,7 +36,7 @@ const KIND_LINE: Record<StoreEbook["kind"], string> = {
   notes: "Every chapter taught",
   pyq: "Previous year questions, solved",
   papers: "Past board papers, solved",
-  repeats: "Questions the board asks again",
+  repeats: "Questions asked again and again",
   chapterwise: "Every board question, by chapter and marks",
   textbook: "Every textbook exercise, solved",
 };
@@ -54,7 +54,7 @@ export default async function StorePage() {
         <header className="hero-soft rounded-2xl px-5 py-8 text-center">
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Ebooks</h1>
           <p className="mx-auto mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">
-            Formula, notes, PYQ and solved board paper ebooks to download.
+            Repeated and chapter-wise PYQ ebooks, fully solved, to download.
           </p>
         </header>
 

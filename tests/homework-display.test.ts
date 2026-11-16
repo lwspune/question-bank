@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { shortNote, sectionsOf, planWording, seeAllLabel, isBoardPlanExam } from "@/lib/homework/display";
+import { shortNote, sectionsOf, planWording, seeAllLabel, isBoardPlanExam, groupPanelText } from "@/lib/homework/display";
 
 describe("shortNote", () => {
   it("shortens each kind of note the plan builder writes", () => {
@@ -83,5 +83,33 @@ describe("seeAllLabel", () => {
 
   it("offers nothing for a question asked once with no type", () => {
     expect(seeAllLabel("Asked once: Mar 2016")).toBeNull();
+  });
+});
+
+// See all opens the group in a panel on the same page (2026-11-16): its heading, from the slot's note.
+describe("groupPanelText", () => {
+  it("heads a type with its count and lists the papers, leaving \"This one\" to the panel's own line", () => {
+    expect(groupPanelText("This type asked 8 times: NDA 1 2017, NDA 2 2024. This one: NDA 2 2025")).toEqual({
+      title: "This type asked 8 times",
+      description: "NDA 1 2017, NDA 2 2024",
+    });
+  });
+
+  it("heads a repeat with its count and keeps the changed-numbers key", () => {
+    expect(groupPanelText("Asked 3 times: Mar 2016, Mar 2018*, Feb 2024 (* = numbers or wording changed that year)")).toEqual({
+      title: "Asked 3 times",
+      description: "Mar 2016, Mar 2018*, Feb 2024 (* = numbers or wording changed that year)",
+    });
+  });
+
+  it("heads a question asked once by its type, with no paper list", () => {
+    expect(groupPanelText("Asked once: Mar 2016 (same type asked 6 times)")).toEqual({
+      title: "This type asked 6 times",
+      description: "",
+    });
+  });
+
+  it("gives nothing for a note with no group", () => {
+    expect(groupPanelText("Asked once: Mar 2016")).toBeNull();
   });
 });

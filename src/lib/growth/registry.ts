@@ -461,6 +461,11 @@ export const FLASHCARDS_ANSWERS_PER_OPEN_KEEP = 3;
 export const TUTOR_STUDENT_YES_KEEP = 20;
 /** "tutor-price": answers each price needs before the three are compared (below it, run 2 more weeks). */
 export const TUTOR_PRICE_MIN_ANSWERS = 15;
+/**
+ * "offline-classes": Pune leads in 4 weeks for the header Classes button to stay.
+ * Before it, 1 of 88 tutoring Yes answers was someone in Pune open to offline.
+ */
+export const CLASS_LEADS_PUNE_KEEP = 10;
 
 /** The ISO date `days` (by default `EXPERIMENT_WINDOW_DAYS`) after `liveSince`. */
 export function checkOn(liveSince: string, days: number = EXPERIMENT_WINDOW_DAYS): string {
@@ -540,7 +545,8 @@ export type Readout =
   | "blog-posts"
   | "notes-drill-panel"
   | "gulf-price"
-  | "enem-interest";
+  | "enem-interest"
+  | "offline-classes";
 
 export type Experiment = {
   id: string;
@@ -879,7 +885,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     id: "ebook-store",
     title: "Book store: formula, notes and PYQ books as paid PDFs",
     change:
-      "A Books button in the header opens /store. Three kinds of book, sold apart from the pass (20% off for pass holders): Formula Books and Notes Books (Rs 49 each) for MHT-CET Maths, Physics and Chemistry, and the MHT-CET Maths PYQ Book (Rs 149, every past question 2021-2026 with full solutions). Each buyer's copy carries their email on every page, five downloads. After buying, \"Want this as a printed book?\" takes a free tap and an optional pincode.",
+      "A Books button in the header opens /store. Three kinds of book, sold apart from the pass (20% off for pass holders): Formula Books and Notes Books (Rs 49 each) for MHT-CET Maths, Physics and Chemistry, and the MHT-CET Maths PYQ Book (Rs 149, every past question 2021-2026 with full solutions). Each buyer's copy carries their email on every page, five downloads. After buying, \"Want this as a printed book?\" takes a free tap and an optional pincode. 2026-11-16 (owner): after 10 sales, all Repeated or Chapter-wise PYQs books on the boards, every other kind went off sale (Formula, Notes, Solved Papers, Textbook Solutions; one bought Solved Papers book stays on so its buyer keeps their page), and ten Repeated PYQs books were added for JEE Mains, MHT-CET and SSC CGL, plus CBSE 12 Biology. Read sales per book across that date.",
     why: "The owner wants to sell printed books. This tests the cheap half first: which kind of book students pay for, at what price, and how many buyers want it printed (and where).",
     metric:
       "Per book, signed-in students: opened its page and took its sample (user_activity surface_viewed, store / ebook_sample), bought and revenue (ebook_purchases), refunds, printed-copy taps and pincodes (ebook_print_interest), downloads. Signed-out visits, header Ebooks taps (ebook_store_link_click) and checkout steps per book (checkout_* with slug) in Vercel, read by hand. The header Ebooks button went from an outlined box to a tinted pill in the deploy that merged slicker Phase 1 (2026-11-10), so read header taps across that date with care",
@@ -1020,7 +1026,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
       "After a student answers, one quiet line between the options and the solution says how often the question came back: \"Asked in 3 papers: NDA 1 2017, NDA 1 2021, NDA 2 2024 (new numbers in 2)\" for an exact repeat in 2+ papers, \"Questions like this were asked 9 times, 2022 to 2026\" for a type asked 5+ times, with See all N to the homework group page. On bank cards (/browse, chapter pages, Review, formula pages), the Fix your mistakes drill and mock review; never in a running mock. From the homework plans' reviewed repeat analysis, 31 subjects. From 2026-11-15 See all opens the group in a panel on the same page instead of going to it (owner), with close and full_page recorded: read See all taps before and after that date apart.",
     why: "The repeat analysis showed only on the homework pages. In the 30 days to 2026-11-12, 29.9% of bank answers were on a question that would carry the line (18.0% an exact repeat). A miss on a question that keeps coming back is the one most worth fixing; owner picked the quiet line over a box (2026-11-12).",
     metric:
-      "surface_viewed repeat_line: shown (card, drill) and see_all (card, drill, mock_review) per question and day; then the share of misses on line questions answered right within 14 days. Baseline (misses 44 to 14 days before 2026-11-12): 16.9% of 2,062 misses on line questions, 17.1% on questions in no plan, 18.8% in a plan without a line",
+      "surface_viewed repeat_line: shown (card, drill) and see_all (card, drill, mock_review) per question and day; then the share of misses on line questions answered right within 14 days. Baseline (misses 44 to 14 days before 2026-11-12): 16.9% of 2,062 misses on line questions, 17.1% on questions in no plan, 18.8% in a plan without a line. Count only from card, drill and mock_review: from 2026-11-16 the homework list's See all (homework days, /board Top 10, notes Top PYQs) opens the same panel and records under the same surface as from homework, board_top and notes_top, which are not the line",
     rule: "Keep it if misses on line questions get fixed within 14 days 3+ points more often than the 16.9% baseline while the other misses stay within a point of theirs, or 5%+ of shown lines get a See all tap. Drop it if neither moves.",
     liveSince: "2026-11-12",
     windowDays: 28,
@@ -1360,7 +1366,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-27",
     windowDays: 21,
     readout: "tutor-interest",
-    status: "running",
+    status: "decided",
+    decision:
+      "Cleared the bar (52 student Yes by 7 Nov against 20), but 75 of 88 Yes answers asked for ONLINE tutoring, and the owner decided online tutoring is too hard to build (2026-11-16). Only 13 were open to offline, 1 of them in Pune. The Tutor button became Classes: an interest form for the owner's offline classes in Pune (experiment offline-classes). /tutor redirects there; the answers stay on /dashboard/tutor.",
   },
   {
     id: "tutor-price",
@@ -1374,6 +1382,22 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-07",
     windowDays: 21,
     readout: "tutor-price",
+    status: "decided",
+    decision:
+      "Ended early on 2026-11-16, 12 days before its check date, when the owner dropped 1:1 online tutoring: the price no longer decides anything. The answers given so far stay readable on /dashboard/tutor. The /me price card went with it.",
+  },
+  {
+    id: "offline-classes",
+    title: "Offline classes in Pune: who asks for a call?",
+    change:
+      "The header's Tutor button became Classes. /classes asks which course (NDA, CDS, AFCAT, MHT-CET, JEE, 10th Board, 12th Board, SSC CGL; one or more), Pune or another city (Pune first), an optional name and a mobile with consent, and promises a call within 2 days. Anyone can send it, signed in or not; one lead per mobile. Leads are listed Pune first on /dashboard/classes with WhatsApp, a Called tick and a CSV.",
+    why: "The owner runs offline classes in Pune and wants to fill them. The 1:1 tutoring check showed demand, but mostly for online tutoring and from outside Pune (15 of about 3,050 student profiles name Pune), so this asks for something the team can act on: a number to call about a named course.",
+    metric:
+      "Leads per week from class_interest (migration 0265), Pune vs other, by course; header Classes taps (classes_link_click) in Vercel by hand. Read with the team: of the Pune leads called, how many came for a demo or joined",
+    rule: `Keep the button if it brings ${CLASS_LEADS_PUNE_KEEP}+ Pune leads in 4 weeks; below that, keep the form but take the button out of the header and link it only from Pune-facing pages.`,
+    liveSince: "2026-11-16",
+    windowDays: 28,
+    readout: "offline-classes",
     status: "running",
   },
   {
@@ -1512,7 +1536,8 @@ export const EXPERIMENTS: readonly Experiment[] = [
     metric:
       "Signups whose first page was an article, by kind, as a share of all signups since the first database article (scripts/blog/readout.sql); Search Console clicks on /blog and /exams/*/syllabus pages, read by hand.",
     rule: `Per kind: keep writing it if its pages bring ${BLOG_SIGNUP_SHARE_KEEP_PCT}%+ of all signups in the 6 weeks, or ${BLOG_GSC_CLICKS_KEEP}+ Search Console clicks a week by the last week. Otherwise stop writing that kind; published pages stay.`,
-    liveSince: "2026-11-17",
+    // The first database article (the CLAT syllabus page) was published on 2026-11-16.
+    liveSince: "2026-11-16",
     windowDays: 42,
     readout: "blog-posts",
     status: "running",

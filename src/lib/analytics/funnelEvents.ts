@@ -134,11 +134,12 @@ export const FUNNEL_EVENTS = [
    */
   "ebook_store_link_click",
   /**
-   * The header's Tutor button was tapped (2026-10-27); prop: from (the
-   * section the visitor was in). Against tutor_interest rows (migration 0190)
-   * it says how many who looked went on to answer.
+   * The header's Classes button was tapped (2026-11-16; it was the Tutor
+   * button, `tutor_link_click`, from 2026-10-27); prop: from (the section the
+   * visitor was in). Against class_interest rows (migration 0265) it says how
+   * many who looked left a number.
    */
-  "tutor_link_click",
+  "classes_link_click",
   /**
    * V's "How's my progress" card (2026-10-27, migration 0191); prop: action
    * (open · drill · performance · exam). Opens are also logged server-side

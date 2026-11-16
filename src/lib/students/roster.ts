@@ -197,7 +197,7 @@ export function formatMobile(mobile: string | null): string {
  * The leading "+" of the display format is dropped so the cell does not start with a
  * formula character and pick up the injection guard's apostrophe.
  */
-function csvMobile(mobile: string | null): string {
+export function csvMobile(mobile: string | null): string {
   if (!mobile) return "";
   const m = /^91(\d{10})$/.exec(mobile);
   return m ? `91 ${m[1]}` : mobile;
@@ -214,7 +214,7 @@ function csvDate(iso: string | null): string {
  * onboarding free text), so a crafted value must not execute as a formula when the
  * file is opened in Excel or Sheets.
  */
-function cell(v: unknown): string {
+export function csvCell(v: unknown): string {
   if (v === null || v === undefined) return '""';
   let s = String(v);
   if (/^[=+\-@\t\r]/.test(s)) s = `'${s}`;
@@ -258,7 +258,7 @@ export function toRosterCsv(rows: readonly StudentRosterRow[]): string {
       r.whatsappOptIn ? "yes" : "no",
       r.provider,
     ]
-      .map(cell)
+      .map(csvCell)
       .join(",")
   );
   return [CSV_HEADER.join(","), ...lines].join("\n");

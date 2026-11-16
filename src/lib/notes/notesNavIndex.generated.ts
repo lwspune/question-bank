@@ -4196,5 +4196,341 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
     "chapterSlug": "networks",
     "subtopicCount": 1
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "current-electricity",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "units-and-measurements",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "electrostatic-potential",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "semiconductor-electronics",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "moving-charges-and-magnetism",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "rotational-motion",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "ray-optics",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "alternating-current",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "gravitation",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "dual-nature",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "oscillations",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "electromagnetic-waves",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "laws-of-motion",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "motion-in-a-straight-line",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "motion-in-a-plane",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "work-energy-and-power",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "mechanical-properties-of-solids",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "mechanical-properties-of-fluids",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "thermal-properties-of-matter",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "thermodynamics",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "kinetic-theory",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "waves",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "electric-charges-and-fields",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "magnetism-and-matter",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "electromagnetic-induction",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "atoms",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "nuclei",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "wave-optics",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "chemical-bonding",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "coordination-compounds",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "p-block-elements",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "aldehydes-ketones-and-carboxylic-acids",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "d-and-f-block-elements",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "hydrocarbons",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "amines",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "chemical-kinetics",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "organic-basic-principles",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "structure-of-atom",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "thermodynamics",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "equilibrium",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "solutions",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "electrochemistry",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "some-basic-concepts",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "classification-of-elements",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "redox-reactions",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "haloalkanes-and-haloarenes",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "alcohols-phenols-and-ethers",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "biomolecules",
+    "subtopicCount": 3
   }
 ];

@@ -113,7 +113,7 @@ export default function HeaderBar({
             <img src="/icons/mark-96.png" alt="" aria-hidden width={24} height={24} className="h-6 w-6 shrink-0" />
             {/* The wordmark used to hide below sm so the icon row could fit; the nav
                 has moved to MobileTabBar, so there is room for it again. */}
-            {/* Below 360 px the words give way so the Ebooks and Tutor labels fit;
+            {/* Below 360 px the words give way so the Ebooks and Classes labels fit;
                 the logo stays and the link keeps its name for screen readers. */}
             <span className="max-[359px]:sr-only">PYQ Vault</span>
             {/* The Premium Pass mark (2026-10-21). Drawn only once the session
@@ -143,8 +143,8 @@ export default function HeaderBar({
             {/* The ebook store (2026-10-20): its own button, apart from the study
                 tabs, at every width (owner: "a separate buy section on top"). */}
             <StoreLink />
-            {/* 1:1 tutoring interest check (2026-10-27), beside the store. */}
-            <TutorLink />
+            {/* Offline classes in Pune (2026-11-16; was the 1:1 tutoring check), beside the store. */}
+            <ClassesLink />
             {/* Theme toggle is visible to everyone, anon included. */}
             <ThemeToggle />
             {sessionLoading ? (
@@ -229,20 +229,23 @@ function StoreLink() {
   );
 }
 
-/** The 1:1 tutoring interest check (2026-10-27, migration 0190); `from` rides to the stored answer. */
-function TutorLink() {
+/**
+ * Offline classes in Pune (2026-11-16, migration 0265; the Tutor button from
+ * 2026-10-27 until then); `from` rides to the stored lead.
+ */
+function ClassesLink() {
   const pathname = usePublicPathname();
-  const active = pathname.startsWith("/tutor");
+  const active = pathname.startsWith("/classes");
   const from = pathname.split("/")[1] || "home";
   return (
     <Link
-      href={active ? "/tutor" : `/tutor?from=${encodeURIComponent(from)}`}
-      onClick={() => trackFunnel("tutor_link_click", { from })}
+      href={active ? "/classes" : `/classes?from=${encodeURIComponent(from)}`}
+      onClick={() => trackFunnel("classes_link_click", { from })}
       aria-current={active ? "page" : undefined}
       className={headerButtonClass(active)}
     >
       <GraduationCap className="hidden h-4 w-4 shrink-0 sm:block" aria-hidden />
-      <span>Tutor</span>
+      <span>Classes</span>
     </Link>
   );
 }

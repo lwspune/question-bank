@@ -92,16 +92,74 @@ describe("ebook catalog", () => {
     for (const b of PAPERS_EBOOKS) expect(b.rule, b.slug).toBe(b.examSlug.startsWith("cbse") ? "first-set-per-year" : "every");
   });
 
-  // Repeated PYQs (2026-10-26): one book per board subject with a homework plan.
-  it("has a Repeated PYQs book for each of the 17 board subjects with a homework plan", () => {
-    expect(REPEATS_EBOOKS).toHaveLength(17);
-    for (const b of REPEATS_EBOOKS) expect(getExamBySlug(b.examSlug)?.boardExam, b.slug).toBe(true);
-    expect(REPEATS_EBOOKS.map((b) => b.slug)).not.toContain("cbse-12-biology-repeated-pyqs");
+  // Repeated PYQs (2026-10-26): one book per board subject with a homework plan;
+  // CBSE 12 Biology joined once its plan existed (2026-11-16).
+  it("has a Repeated PYQs book for each of the 18 board subjects with a homework plan", () => {
+    const board = REPEATS_EBOOKS.filter((b) => b.examiner === "board");
+    expect(board).toHaveLength(18);
+    for (const b of board) expect(getExamBySlug(b.examSlug)?.boardExam, b.slug).toBe(true);
+    expect(board.map((b) => b.slug)).toContain("cbse-12-biology-repeated-pyqs");
   });
 
-  it("seeds a store row (0187) for exactly the Repeated PYQs books in the catalog", async () => {
+  // Competitive exams (2026-11-16): JEE Mains, MHT-CET and SSC CGL, from the
+  // same homework plans, the SSC general subjects as one book.
+  it("has ten competitive-exam Repeated PYQs books", () => {
+    expect(
+      REPEATS_EBOOKS.filter((b) => b.examiner === "exam")
+        .map((b) => b.slug)
+        .sort()
+    ).toEqual([
+      "jee-mains-chemistry-repeated-pyqs",
+      "jee-mains-maths-repeated-pyqs",
+      "jee-mains-physics-repeated-pyqs",
+      "mht-cet-chemistry-repeated-pyqs",
+      "mht-cet-maths-repeated-pyqs",
+      "mht-cet-physics-repeated-pyqs",
+      "ssc-cgl-english-repeated-pyqs",
+      "ssc-cgl-general-awareness-repeated-pyqs",
+      "ssc-cgl-quantitative-aptitude-repeated-pyqs",
+      "ssc-cgl-reasoning-repeated-pyqs",
+    ]);
+    for (const b of REPEATS_EBOOKS.filter((b) => b.examiner === "exam")) {
+      expect(getExamBySlug(b.examSlug)?.boardExam, b.slug).toBeFalsy();
+      expect(`${b.title} ${b.subtitle}`, b.slug).not.toMatch(/\bboard\b/i);
+    }
+  });
+
+  it("reads the SSC general subjects' seven plans into one book", () => {
+    const ga = getEbook("ssc-cgl-general-awareness-repeated-pyqs");
+    if (ga?.kind !== "repeats") throw new Error("the SSC General Awareness book is missing");
+    expect(ga.planSubjects).toEqual(["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology"]);
+    expect(ga.title).toBe("SSC CGL General Awareness");
+  });
+
+  it("orders the CET Maths Repeated PYQs book as the CET Maths PYQ book", () => {
+    const repeats = getEbook("mht-cet-maths-repeated-pyqs");
+    const pyq = getEbook("mht-cet-maths-pyq");
+    if (repeats?.kind !== "repeats" || pyq?.kind !== "pyq") throw new Error("a CET Maths book is missing");
+    const slug = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    expect(repeats.chapterOrder?.Maths?.map(slug)).toEqual([...pyq.chapterOrder]);
+  });
+
+  it("pins a chapter order, without repeats, for every subject a competitive-exam book reads", () => {
+    for (const b of REPEATS_EBOOKS.filter((b) => b.examiner === "exam")) {
+      for (const subject of b.planSubjects ?? [b.subject]) {
+        const order = b.chapterOrder?.[subject];
+        expect(order?.length, `${b.slug} ${subject}`).toBeGreaterThan(0);
+        expect(new Set(order).size, `${b.slug} ${subject}`).toBe(order!.length);
+      }
+    }
+  });
+
+  it("puts the CET books under the subject their other CET books carry", () => {
+    expect(getEbook("mht-cet-maths-repeated-pyqs")?.title).toBe("MHT-CET Mathematics");
+  });
+
+  it("seeds a store row (0187, 0264) for exactly the Repeated PYQs books in the catalog", async () => {
     const { readFileSync } = await import("node:fs");
-    const sql = readFileSync("supabase/migrations/0187_ebook_repeated_pyqs.sql", "utf8");
+    const sql = ["0187_ebook_repeated_pyqs.sql", "0264_ebook_more_repeated_pyqs.sql"]
+      .map((f) => readFileSync(`supabase/migrations/${f}`, "utf8"))
+      .join("\n");
     const seeded = Array.from(sql.matchAll(/\('([a-z0-9-]+-repeated-pyqs)'/g)).map((m) => m[1]);
     expect(seeded.sort()).toEqual(REPEATS_EBOOKS.map((b) => b.slug).sort());
   });

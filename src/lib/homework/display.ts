@@ -48,7 +48,25 @@ export function seeAllLabel(note: string): string | null {
   return null;
 }
 
-type PlanWording = { asker: string; questions: string; papers: string; answers: string };
+/**
+ * The heading of the panel a slot's See all opens on the same page
+ * (2026-11-16), from the same note: the count as the title, the papers below
+ * it. A type's "This one: X" is left out, since the panel's first line says
+ * which paper the student's question was. Null when the note has no group.
+ */
+export function groupPanelText(note: string): { title: string; description: string } | null {
+  const type = /^(This type asked \d+ times)(?::\s*(.*?))?(?:\.\s*This one:.*)?$/.exec(note);
+  if (type) return { title: type[1], description: type[2] ?? "" };
+  const onceOfType = /same type asked (\d+) times/.exec(note);
+  if (/^Asked once/.test(note)) {
+    return onceOfType ? { title: `This type asked ${onceOfType[1]} times`, description: "" } : null;
+  }
+  const again = /^(Asked \d+ times)(?::\s*(.*))?$/.exec(note);
+  if (again) return { title: again[1], description: again[2] ?? "" };
+  return null;
+}
+
+type PlanWording ={ asker: string; questions: string; papers: string; answers: string };
 
 /**
  * Plans whose papers no board sets (2026-11-04 on): UPSC sets NDA and CDS, the
