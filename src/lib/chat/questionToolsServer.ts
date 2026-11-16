@@ -56,7 +56,7 @@ async function loadMarksLine(anon: SupabaseClient, id: string): Promise<string |
       .eq("paper.published", true)
       .limit(10);
     if (error) throw new Error(error.message);
-    const items = (data ?? []) as unknown as RawItem[];
+    const items: RawItem[] = data ?? [];
     // A part carries no marks: its whole question (an earlier position of the same paper) does.
     const parents = new Map<string, { printedNumber: string; marks: number }>();
     const wanted = items.filter((i) => i.part_of !== null);
