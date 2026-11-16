@@ -1512,7 +1512,8 @@ export const EXPERIMENTS: readonly Experiment[] = [
     metric:
       "Signups whose first page was an article, by kind, as a share of all signups since the first database article (scripts/blog/readout.sql); Search Console clicks on /blog and /exams/*/syllabus pages, read by hand.",
     rule: `Per kind: keep writing it if its pages bring ${BLOG_SIGNUP_SHARE_KEEP_PCT}%+ of all signups in the 6 weeks, or ${BLOG_GSC_CLICKS_KEEP}+ Search Console clicks a week by the last week. Otherwise stop writing that kind; published pages stay.`,
-    liveSince: "2026-11-17",
+    // The first database article (the CLAT syllabus page) was published on 2026-11-16.
+    liveSince: "2026-11-16",
     windowDays: 42,
     readout: "blog-posts",
     status: "running",
