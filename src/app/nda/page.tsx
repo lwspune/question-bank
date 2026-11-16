@@ -14,6 +14,7 @@ import {
   Landmark,
   Languages,
   Leaf,
+  ListChecks,
   Newspaper,
   NotebookPen,
   Scale,
@@ -32,6 +33,8 @@ import { getPlanLinks } from "@/lib/homework/query";
 import { examHomeworkHref } from "@/lib/homework/links";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import ResultsStrip from "@/components/results/ResultsStrip";
+import { getEvergreenArticle } from "@/lib/blog/articles";
+import { syllabusHref } from "@/lib/blog/paths";
 
 export const revalidate = 86400;
 
@@ -127,6 +130,12 @@ export default async function NdaHomePage() {
     return [];
   });
   const homeworkHref = examHomeworkHref(plans, "NDA", "nda");
+  // The pattern and syllabus page (migration 0263), once its article is
+  // published; /exams/<slug> links it the same way. A failed read only drops the link.
+  const syllabus = await getEvergreenArticle("nda").catch((err) => {
+    console.error("nda home: syllabus article unavailable", err);
+    return null;
+  });
 
   return (
     <>
@@ -191,6 +200,15 @@ export default async function NdaHomePage() {
               <Files className="h-4 w-4" aria-hidden />
               Previous year question papers
             </Link>
+            {syllabus && (
+              <Link
+                href={syllabusHref("nda")}
+                className="inline-flex items-center gap-2 rounded-md border border-input bg-background px-4 py-2.5 text-sm font-semibold transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              >
+                <ListChecks className="h-4 w-4" aria-hidden />
+                Exam pattern and syllabus
+              </Link>
+            )}
             {homeworkHref && (
               <Link
                 href={homeworkHref}
