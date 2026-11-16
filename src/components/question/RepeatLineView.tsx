@@ -16,7 +16,7 @@
  * per question would be dozens of requests a page); "none" = signed out or a
  * staff view of a student's attempt.
  */
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { Repeat } from "lucide-react";
 import type { RepeatLine } from "@/lib/questions/repeatLine";
@@ -47,6 +47,7 @@ export default function RepeatLineView({
 }) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const opener = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (record !== "all") return;
@@ -81,6 +82,7 @@ export default function RepeatLineView({
           <span className="font-semibold">{line.lead}</span>
           {line.rest} ·{" "}
           <button
+            ref={opener}
             type="button"
             aria-haspopup="dialog"
             onClick={() => {
@@ -101,8 +103,13 @@ export default function RepeatLineView({
             if (!next) track("close");
             setOpen(next);
           }}
-          line={line}
-          questionId={questionId}
+          planSlug={line.planSlug}
+          n={line.n}
+          title={line.lead}
+          description={line.rest.replace(/^[:,]\s*/, "")}
+          href={line.href}
+          ownIds={[questionId]}
+          returnFocusTo={opener}
           correct={correct}
           onFullPage={() => track("full_page")}
         />

@@ -81,6 +81,7 @@ export default async function HomeworkTopChapterPage(props: { params: Promise<Pa
           chapterName={chapter.name}
           supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
           className="mt-6"
+          seeAllFrom="homework"
         />
 
         <nav aria-label="Other chapters" className="mt-10 flex items-center justify-between gap-3 border-t pt-4 text-sm">

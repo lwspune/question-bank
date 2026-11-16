@@ -7,16 +7,21 @@
  */
 import type { HomeworkSlot } from "@/lib/homework/dayView";
 
-/** The group's slots without the student's own question, and that question's paper. */
+/**
+ * The group's slots without the student's own question, and that question's
+ * paper. Several ids for the homework list (2026-11-16), where the student was
+ * on a whole case study: every part of it is left out.
+ */
 export function panelSlots<Q extends { id: string }>(
   slots: readonly HomeworkSlot<Q>[],
-  ownId: string
+  own: string | readonly string[]
 ): { slots: HomeworkSlot<Q>[]; ownSitting: string | null } {
+  const ownIds: ReadonlySet<string> = new Set(typeof own === "string" ? [own] : own);
   let ownSitting: string | null = null;
   const out: HomeworkSlot<Q>[] = [];
   for (const s of slots) {
-    if (s.questions.some((q) => q.id === ownId)) ownSitting = s.note || null;
-    const questions = s.questions.filter((q) => q.id !== ownId);
+    if (s.questions.some((q) => ownIds.has(q.id))) ownSitting = s.note || null;
+    const questions = s.questions.filter((q) => !ownIds.has(q.id));
     if (questions.length > 0) out.push({ ...s, questions });
   }
   return { slots: out, ownSitting };
