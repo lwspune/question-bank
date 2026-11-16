@@ -17,6 +17,7 @@ import { unstable_cache } from "next/cache";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Database } from "@/types/db";
 import { singleFlight } from "@/lib/cache/singleFlight";
+import { readAllPages } from "@/lib/supabase/readAllPages";
 import { buildFailureMemoMs } from "@/lib/cache/buildPhase";
 import { createTypedAnonClient } from "@/lib/supabase/server";
 import { createTypedAdminClient } from "@/lib/supabase/admin";
@@ -33,19 +34,16 @@ import {
 export const ARTICLES_CACHE_TAG = "articles";
 
 export async function listPublishedArticles(client: SupabaseClient<Database>): Promise<DbPost[]> {
-  const out: DbPost[] = [];
-  for (let from = 0; ; from += 1000) {
-    const { data, error } = await client
+  const rows = await readAllPages((from, to) =>
+    client
       .from("articles")
       .select(ARTICLE_PUBLIC_COLUMNS)
       .eq("status", "published")
       .order("date_published", { ascending: false })
       .order("slug")
-      .range(from, from + 999);
-    if (error) throw new Error(`articles: ${error.message}`);
-    out.push(...(data ?? []).map((r: ArticleRow) => articleRowToPost(r)));
-    if (!data || data.length < 1000) return out;
-  }
+      .range(from, to)
+  );
+  return rows.map((r: ArticleRow) => articleRowToPost(r));
 }
 
 const cachedArticles = unstable_cache(

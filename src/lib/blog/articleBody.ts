@@ -25,6 +25,7 @@
 import { maskMathZones } from "@/components/math/parseLatex";
 import { parseTableBlocks } from "@/components/math/parseTableBlocks";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
+import { slugify } from "@/lib/slug";
 import { BLOG_SLUGS } from "./posts";
 import type { FaqEntry } from "./faq";
 import { ARTICLE_KINDS, type ArticleKind } from "./kinds";
@@ -136,12 +137,7 @@ export type ArticleBlock =
   | { kind: "table"; headers: string[]; rows: string[][] };
 
 export function headingId(text: string): string {
-  return (
-    text
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "") || "section"
-  );
+  return slugify(text) || "section";
 }
 
 const BULLET_RE = /^[-*]\s+(.*)$/;
