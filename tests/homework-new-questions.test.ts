@@ -130,5 +130,7 @@ describe("sittingFor (2026-11-06): one labeller for every planned exam", () => {
     // SSC CHSL and SSC CPO (2026-11-16): one shift each, named like a CGL shift.
     expect(sittingFor("SSC CHSL", { pyq_year: 2024, pyq_month: null, pyq_note: "Tier I, 1 Jul 2024, Shift 1" })).toBe("1 Jul 2024 S1");
     expect(sittingFor("SSC CPO", { pyq_year: 2025, pyq_month: null, pyq_note: "Paper I, 9 Dec 2025, Shift 2" })).toBe("9 Dec 2025 S2");
+    // UPSC CAPF (AC) (2026-11-16): one Paper I a year, so the year names it.
+    expect(sittingFor("UPSC CAPF (AC)", { pyq_year: 2018, pyq_month: "Aug", pyq_note: "UPSC CAPF (AC) 2018 - Paper I General Ability and Intelligence" })).toBe("2018");
   });
 });

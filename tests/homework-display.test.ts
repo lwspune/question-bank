@@ -58,6 +58,11 @@ describe("planWording", () => {
     }
   });
 
+  it("names UPSC and past questions for UPSC CAPF (AC) (2026-11-16)", () => {
+    expect(planWording("UPSC CAPF (AC)")).toEqual({ asker: "UPSC", questions: "past questions", papers: "Past", answers: "worked solutions" });
+    expect(isBoardPlanExam("UPSC CAPF (AC)")).toBe(false);
+  });
+
   it("names SSC and past questions for SSC CGL", () => {
     expect(planWording("SSC CGL")).toEqual({ asker: "SSC", questions: "past questions", papers: "Past", answers: "worked solutions" });
   });
