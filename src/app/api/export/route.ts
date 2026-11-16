@@ -80,8 +80,8 @@ type ExportOptions = {
   /** Print `[JEE Mains 2016]` after each PYQ's stem. Question paper only. */
   includeSourceTag?: boolean;
   /**
-   * Printed language for questions that carry a translation (MPSC Marathi,
-   * migration 0118): "en" | "mr" | "both". Anything else is English, so an
+   * Printed language for questions that carry a translation (MPSC Marathi, SSC Hindi,
+   * migrations 0118 + 0171): "en" | "mr" | "hi" | "both". Anything else is English, so an
    * older client exports exactly as before.
    */
   lang?: string;

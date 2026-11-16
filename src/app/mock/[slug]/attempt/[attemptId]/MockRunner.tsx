@@ -41,7 +41,7 @@ import { msqInstruction, toggleTick } from "@/lib/questions/msq";
 import { formatTimeLeft } from "@/lib/mocks/startPage";
 import { displayMockTitle } from "@/lib/mocks/hub";
 import LanguageSwitch from "@/components/i18n/LanguageSwitch";
-import { hasMarathi, optionVersions, stemVersions } from "@/lib/i18n/bilingual";
+import { altLangOfAny, optionVersions, stemVersions } from "@/lib/i18n/bilingual";
 import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
 import type { RunnerState, SavedAnswer } from "@/lib/mocks/service";
 import type { OptionLabel } from "@/lib/mocks/answers";
@@ -125,8 +125,8 @@ export default function MockRunner({
   // A bilingual paper (MPSC prints Marathi + English) offers the same language
   // choice the student made on the instructions screen, switchable any time —
   // the printed booklet lets them read either version whenever they like.
-  const [langPref, setLangPref] = useQuestionLang();
-  const paperBilingual = useMemo(() => questions.some((x) => hasMarathi(x)), [questions]);
+  const paperAlt = useMemo(() => altLangOfAny(questions), [questions]);
+  const [langPref, setLangPref] = useQuestionLang(paperAlt);
   const [current, setCurrent] = useState(0);
   const [remaining, setRemaining] = useState(() => remainingSecs(attempt.expiresAt, Date.now()));
   const [paletteOpen, setPaletteOpen] = useState(false);
@@ -449,9 +449,9 @@ export default function MockRunner({
               +{q.marks} / {q.negMarks}
             </span>
           </div>
-          {paperBilingual && (
+          {paperAlt && (
             <div className="mt-2 flex justify-end">
-              <LanguageSwitch value={langPref} onChange={setLangPref} />
+              <LanguageSwitch value={langPref} onChange={setLangPref} alt={paperAlt} />
             </div>
           )}
 

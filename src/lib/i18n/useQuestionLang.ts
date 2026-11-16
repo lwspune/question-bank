@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useSyncExternalStore } from "react";
-import { parseLangPref, type QuestionLang } from "./bilingual";
+import { defaultLangFor, parseLangPref, type AltLang, type QuestionLang } from "./bilingual";
 
 /**
  * The viewer's question-language choice, shared by every card on the page.
@@ -13,19 +13,21 @@ import { parseLangPref, type QuestionLang } from "./bilingual";
  * every read/write is guarded — private windows can throw.
  *
  * One store + a window event, so switching on one card switches them all.
+ * `alt` is the page's (or question's) second language: until the viewer
+ * chooses, it decides the default (defaultLangFor: Hindi pages open in
+ * English, Marathi pages in both).
  */
 const KEY = "pv_question_lang";
 const EVENT = "pv-question-lang";
-export const DEFAULT_QUESTION_LANG: QuestionLang = "both";
 
 // Fallback when storage throws, so a choice still holds for this page view.
 let memory: QuestionLang | null = null;
 
-function read(): QuestionLang {
+function stored(): QuestionLang | null {
   try {
-    return parseLangPref(window.localStorage.getItem(KEY)) ?? memory ?? DEFAULT_QUESTION_LANG;
+    return parseLangPref(window.localStorage.getItem(KEY)) ?? memory;
   } catch {
-    return memory ?? DEFAULT_QUESTION_LANG;
+    return memory;
   }
 }
 
@@ -38,8 +40,10 @@ function subscribe(onChange: () => void) {
   };
 }
 
-export function useQuestionLang(): [QuestionLang, (lang: QuestionLang) => void] {
-  const lang = useSyncExternalStore(subscribe, read, () => DEFAULT_QUESTION_LANG);
+export function useQuestionLang(alt?: AltLang | null): [QuestionLang, (lang: QuestionLang) => void] {
+  const fallback = defaultLangFor(alt);
+  const read = useCallback(() => stored() ?? fallback, [fallback]);
+  const lang = useSyncExternalStore(subscribe, read, () => fallback);
   const set = useCallback((next: QuestionLang) => {
     memory = next;
     try {

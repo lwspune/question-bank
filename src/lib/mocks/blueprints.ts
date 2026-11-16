@@ -967,6 +967,56 @@ export const RRB_NTPC_CBT_1: MockPaperBlueprint = {
 };
 
 /**
+ * RPSC RAS/RTS Prelims, "General Knowledge and General Science", as RPSC sets
+ * it: 150 MCQs in 3 hours for 200 marks, so +4/3 a right answer and one third
+ * of that (-4/9) off a wrong one. The booklet prints no subject headings
+ * (Rajasthan GK, national GK, science, current affairs and reasoning run
+ * mixed), so the mock is ONE section carrying every subject in
+ * scripts/ras/catalog.json and keeps RPSC's printed order. An item RPSC
+ * deleted stays in as grace (scripts/mocks/rasSittings.ts), so the count never
+ * shortens.
+ *
+ * NOT MODELLED: from 2023 the booklet adds a fifth bubble, "Question not
+ * attempted", and RPSC deducts marks when more than 10% of items are left with
+ * no bubble at all. Online there is no bubble to forget, so a blank scores 0.
+ */
+export const RAS_PRELIMS: MockPaperBlueprint = {
+  code: "prelims",
+  examName: "RPSC RAS (Prelims)",
+  examSlug: "rpsc-ras",
+  paperLabel: "Prelims",
+  durationSecs: 180 * 60,
+  marking: { correct: 4 / 3, wrong: -4 / 9 },
+  sections: [
+    {
+      key: "gk-gs",
+      label: "General Knowledge and General Science",
+      subjects: [
+        "Rajasthan History, Art and Culture",
+        "Rajasthan Geography",
+        "Rajasthan Polity and Administration",
+        "Rajasthan Economy",
+        "Polity and Governance",
+        "History",
+        "Geography",
+        "Economy",
+        "Environment and Ecology",
+        "Physics",
+        "Chemistry",
+        "Biology",
+        "Current Affairs and IR",
+        "Logical Reasoning and Analytical Ability",
+        "General Mental Ability",
+        "Basic Numeracy",
+        "Data Interpretation and Data Sufficiency",
+        "Computer Knowledge",
+      ],
+      count: 150,
+    },
+  ],
+};
+
+/**
  * UPSC CAPF (Assistant Commandants) Paper I, "General Ability and Intelligence",
  * as UPSC sets it: 125 MCQs in 2 hours, 2 marks each, one third of a question's
  * marks off for a wrong answer. The booklet prints no subject headings (current
@@ -1262,6 +1312,7 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   UGC_NET_PAPER_1,
   RRB_NTPC_CBT_1,
   CAPF_PAPER_1,
+  RAS_PRELIMS,
   CLAT_PAPER,
   IMAT_PAPER,
   ENEM_DAY_2,

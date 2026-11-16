@@ -18,6 +18,7 @@ import {
   getExamIdByName,
 } from "@/lib/questions/taxonomy";
 import {
+  examAltLang,
   getExamByName,
   isPracticeOnlyExam,
   getExamBySlug,
@@ -46,7 +47,7 @@ import {
 import { getExamCatalogForRender } from "@/lib/exam/allExamStats";
 import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { QuestionLangSwitch } from "@/components/i18n/BilingualText";
-import { hasMarathi } from "@/lib/i18n/bilingual";
+import { altLangOfAny } from "@/lib/i18n/bilingual";
 import { listChapterLandings } from "@/lib/questions/landing";
 import { INTL_EXAMS, WWW_ORIGIN, intlOriginFor, isIntlHost } from "@/lib/sites/intl";
 import { examsForSite, isNicheExam } from "@/lib/sites/nicheExams";
@@ -332,16 +333,15 @@ export default async function renderBrowse(req: BrowseRequest) {
         ).catch(() => undefined);
 
   const examOpts = examsForSite(exams ?? [], intl).map((e) => ({ id: e.id, name: e.name }));
-  // A bilingual exam (MPSC prints Marathi + English) offers a print-language
-  // choice in the download dialog. Registry flag, not a count — see ExamEntry.
-  const bilingualExam =
-    getExamByName(examOpts.find((e) => e.id === filters.examId)?.name)?.bilingual === true;
+  // A bilingual exam (MPSC prints Marathi + English, SSC and RAS Hindi +
+  // English) offers a print-language choice in the download dialog. Registry
+  // flag, not a count — see ExamEntry.
+  const examAlt = examAltLang(getExamByName(examOpts.find((e) => e.id === filters.examId)?.name));
   // One page-level language switch, shown only where it can change something:
-  // a bilingual exam is filtered, or some row on this page carries Marathi
-  // (an unfiltered page can mix exams). Every other page renders unchanged.
-  const showLangSwitch =
-    questionsResult.rows.length > 0 &&
-    (bilingualExam || questionsResult.rows.some((r) => hasMarathi(r)));
+  // a bilingual exam is filtered, or some row on this page carries a
+  // translation (an unfiltered page can mix exams). Every other page renders
+  // unchanged.
+  const switchAlt = questionsResult.rows.length > 0 ? (altLangOfAny(questionsResult.rows) ?? examAlt) : null;
   const subjectOpts = (subjects ?? []).map((s) => ({ id: s.id, name: s.name }));
 
   // Merge facet counts onto chapter and subtopic options. Both are sorted by
@@ -406,9 +406,9 @@ export default async function renderBrowse(req: BrowseRequest) {
             )}
           </div>
           <div className="grid grid-cols-2 items-center gap-2 sm:flex sm:flex-wrap">
-            {showLangSwitch && (
+            {switchAlt && (
               <div className="col-span-2 sm:col-span-1">
-                <QuestionLangSwitch />
+                <QuestionLangSwitch alt={switchAlt} />
               </div>
             )}
             <div className="lg:hidden">
@@ -431,7 +431,7 @@ export default async function renderBrowse(req: BrowseRequest) {
               hasDownloadPass={hasDownloadPass}
               freeDownloadLeft={freeDownloadLeft}
               downloadPass={downloadPass}
-              bilingual={bilingualExam}
+              altLang={examAlt}
             />
           </div>
         </header>
@@ -534,7 +534,7 @@ export default async function renderBrowse(req: BrowseRequest) {
           hasDownloadPass,
           freeDownloadLeft,
           downloadPass,
-          bilingual: bilingualExam,
+          altLang: examAlt,
         }}
       />
       <Footer />

@@ -6,7 +6,7 @@ import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import { getMockExam, getMockExams, mockFamilyOf, mockSideNav } from "@/lib/mocks/mocksNav";
 import { groupMocksForType, mockDownloadHref } from "@/lib/mocks/catalogue";
-import { EXAM_REGISTRY, getExamByName, type ExamSlug } from "@/lib/exam/examContext";
+import { EXAM_REGISTRY, examAltLang, getExamByName, type ExamSlug } from "@/lib/exam/examContext";
 import { downloadPageTitle, paperPageHref, paperYearRange, plainPaperTitle } from "@/lib/mocks/paperPage";
 import {
   YEAR_NOTES,
@@ -78,7 +78,7 @@ export default async function MockDownloadList(props: { params: Promise<Params> 
   const groups = groupMocksForType("past-papers", papers);
   const open = openYearKeys(groups);
   const parent = mockFamilyOf(exam.slug);
-  const bilingual = getExamByName(exam.examName)?.bilingual === true;
+  const altLang = examAltLang(getExamByName(exam.examName));
   const solved = getExamByName(exam.examName)?.pastPaperSolutions === true;
   const yearNotes = YEAR_NOTES[exam.slug] ?? {};
 
@@ -196,7 +196,7 @@ export default async function MockDownloadList(props: { params: Promise<Params> 
                             </p>
                           </div>
                           <div className="shrink-0">
-                            <PaperDownload slug={m.slug} paperTitle={plainPaperTitle(m.title)} bilingual={bilingual} variant="row" />
+                            <PaperDownload slug={m.slug} paperTitle={plainPaperTitle(m.title)} altLang={altLang} variant="row" />
                           </div>
                         </li>
                       ))}

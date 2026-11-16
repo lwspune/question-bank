@@ -20,7 +20,7 @@ import { listActivePlans } from "@/lib/billing/plansQuery";
 import { logActivityOnce } from "@/lib/activity/service";
 import { surfaceViewedEvent } from "@/lib/activity/views";
 import { paywallEvent } from "@/lib/activity/clientEvents";
-import { getExamByName } from "@/lib/exam/examContext";
+import { examAltLang, getExamByName } from "@/lib/exam/examContext";
 import ShareMock from "./ShareMock";
 import BeforeYouStart from "./BeforeYouStart";
 import { loadBeforeYouStart } from "@/lib/mocks/beforeYouStartServer";
@@ -151,7 +151,7 @@ export default async function MockInstructions(
   // A whole past paper can also be downloaded (2026-10-07); a chapter test or
   // a practice paper is not a paper anyone sat, so it cannot.
   const isPastPaper = mock.source === "pyq" && mock.scope === "full";
-  const bilingual = getExamByName(mock.examName)?.bilingual === true;
+  const altLang = examAltLang(getExamByName(mock.examName));
   // Copy is derived, not hard-coded: MHT-CET has NO negative marking, and the
   // old wording asserted a penalty and told the reader to "skip if unsure" —
   // advice that costs marks when a blank scores the same as a wrong answer.
@@ -242,7 +242,7 @@ export default async function MockInstructions(
           {user ? (
             <StartMock
               slug={mock.slug}
-              bilingual={bilingual}
+              altLang={altLang}
               startState={startState}
               mockPass={mockPass}
               unit={mock.scope === "sectional" ? "chapter_test" : "mock"}
@@ -278,7 +278,7 @@ export default async function MockInstructions(
           )}
           {isPastPaper && (
             <div className="mt-3 space-y-3">
-              <PaperDownload slug={mock.slug} paperTitle={mock.title} bilingual={bilingual} />
+              <PaperDownload slug={mock.slug} paperTitle={mock.title} altLang={altLang} />
               <Link
                 href={paperPageHref(mock.slug)}
                 className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-accent underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"

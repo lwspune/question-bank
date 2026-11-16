@@ -10,6 +10,7 @@
  * notes subject for that exam (or an honest "coming soon" when none have
  * shipped) — derived from NOTES_CHAPTERS, so a new exam needs no new page.
  */
+import type { AltLang } from "@/lib/i18n/bilingual";
 
 export type ExamSlug =
   | "nda"
@@ -54,6 +55,7 @@ export type ExamSlug =
   | "ugc-net"
   | "rrb-ntpc"
   | "capf-ac"
+  | "rpsc-ras"
   | "clat";
 
 /**
@@ -168,6 +170,11 @@ export type ExamEntry = {
    * they show the switch wherever a question actually carries a translation.
    */
   bilingual?: boolean;
+  /**
+   * Which second language a `bilingual` exam prints: Marathi when absent (MPSC,
+   * MH SSC), Hindi for SSC (2026-10-20). Read through `examAltLang`.
+   */
+  secondLang?: AltLang;
   /**
    * The exam's PAST PAPERS (published `pyq` + `full` mocks) carry worked
    * solutions, not just answers: nine in ten questions or more. Decides whether
@@ -853,6 +860,29 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     notesPath: null,
   },
   {
+    slug: "rpsc-ras",
+    // RPSC RAS/RTS (Rajasthan State and Subordinate Services) Combined
+    // Competitive Prelims: the one objective paper, "General Knowledge and
+    // General Science", 150 MCQs, 200 marks, 3 hours, one-third negative.
+    // RPSC's own booklets and final keys for six cycles, 2013 (re-held 2015),
+    // 2016, 2018, 2021, 2023, 2024 (scripts/ras/). Added 2026-11-16 as the first
+    // state-PSC test on the owner's list. Printed in Hindi and English side by
+    // side: English is the canonical row, Hindi a translation (0118 + 0171).
+    tier: "graduate",
+    goal: "government",
+    displayName: "RAS (Prelims)",
+    examName: "RPSC RAS (Prelims)", // must match the `exams` DB row exactly
+    bilingual: true,
+    secondLang: "hi",
+    // PUBLIC since 2026-11-16: six cycles, 900 q, every one with a worked
+    // solution and its Hindi print. One timed mock per year
+    // (rpsc-ras-prelims-*), built as drafts, published with the push.
+    hasMocks: true,
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
     slug: "clat",
     // CLAT UG (Consortium of National Law Universities), the entrance to the NLUs'
     // five-year law programmes, sat after Class 12: 120 passage-based MCQs since
@@ -1199,6 +1229,11 @@ export function getExamBySlug(slug: string | null | undefined): ExamEntry | null
  * Null for a DB exam with no registry entry, which callers must treat as
  * "ungrouped", never as "drop it" — see groupExamFamilies.
  */
+/** The second language a bilingual exam prints, or null when it prints English only. */
+export function examAltLang(entry: ExamEntry | null | undefined): AltLang | null {
+  return entry?.bilingual ? (entry.secondLang ?? "mr") : null;
+}
+
 export function getExamByName(examName: string | null | undefined): ExamEntry | null {
   if (!examName) return null;
   return EXAM_REGISTRY.find((e) => e.examName === examName) ?? null;
