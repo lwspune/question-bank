@@ -54,6 +54,7 @@ type PlanWording = { asker: string; questions: string; papers: string; answers: 
  * Plans whose papers no board sets (2026-11-04 on): UPSC sets NDA and CDS, the
  * State CET Cell sets MHT-CET (2026-11-06; its plans said "board" until then),
  * SSC sets SSC CGL (2026-11-06) and SSC CHSL and CPO (2026-11-16), NTA sets JEE Mains (2026-11-06).
+ * UPSC sets CAPF (AC) (2026-11-16).
  */
 const NOT_BOARD: Readonly<Record<string, PlanWording>> = {
   NDA: { asker: "UPSC", questions: "past questions", papers: "Past", answers: "worked solutions" },
@@ -64,6 +65,7 @@ const NOT_BOARD: Readonly<Record<string, PlanWording>> = {
   "SSC CHSL": { asker: "SSC", questions: "past questions", papers: "Past", answers: "worked solutions" },
   "SSC CPO": { asker: "SSC", questions: "past questions", papers: "Past", answers: "worked solutions" },
   "JEE Mains": { asker: "NTA", questions: "past questions", papers: "Past", answers: "worked solutions" },
+  "UPSC CAPF (AC)": { asker: "UPSC", questions: "past questions", papers: "Past", answers: "worked solutions" },
 };
 
 const BOARD: PlanWording = { asker: "the board", questions: "board questions", papers: "Board", answers: "model answers" };
