@@ -14,9 +14,12 @@
  * BEFORE the question ID, which is why a question is read as everything up to
  * the next "Q.<n>").
  *
- * NOT YET CHECKED ON A REAL SHEET (2026-11-16): the fixture in
- * tests/score-calc-nta-sheet.test.ts is built in this shape. The first real
- * sheet replaces it before launch.
+ * CHECKED ON A REAL SHEET (2026-11-16): a JEE Main 2025 sheet saved as PDF and
+ * posted publicly, kept as an anonymised fixture (identity lines removed, every
+ * ID made up). Two things it taught: (1) read a PDF in READING order (pdf.js
+ * text items / `pdftotext -raw`), never page layout, where "Q.2" lands before
+ * question 1's details end; (2) the PDF breaks "Given Answer :" across lines.
+ * The live web page behind a pasted link is NOT yet checked on a real one.
  */
 import type { MockPaperBlueprint } from "@/lib/mocks/blueprints";
 import { gradeNtaItem, type NtaKeyEntry } from "./ntaKey";
@@ -34,7 +37,9 @@ function readQuestion(chunk: string): NtaResponse | null {
   const qid = /Question\s*I[dD]\s*:\s*(\d+)/.exec(chunk)?.[1];
   if (!qid) return null;
 
-  const given = /Given\s*Answer\s*:\s*(\S+)/i.exec(chunk)?.[1];
+  // A saved PDF breaks this label across lines ("Give / n / Ans / wer :"), so
+  // any whitespace may sit between its letters.
+  const given = /G\s*i\s*v\s*e\s*n\s*A\s*n\s*s\s*w\s*e\s*r\s*:\s*(\S+)/i.exec(chunk)?.[1];
   if (given !== undefined) return { questionId: qid, chosen: BLANK.test(given) ? null : given };
 
   const chosenNo = /Chosen\s*Option\s*:\s*(\S+)/i.exec(chunk)?.[1];

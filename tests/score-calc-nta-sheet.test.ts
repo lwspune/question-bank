@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { parseNtaResponseText, scoreNtaSheet, type NtaResponse } from "@/lib/scoreCalc/ntaSheet";
 import type { NtaKeyEntry } from "@/lib/scoreCalc/ntaKey";
@@ -86,6 +88,36 @@ describe("parseNtaResponseText", () => {
 
   it("finds nothing in a page that is not a response sheet", () => {
     expect(parseNtaResponseText("Hello, this is not a sheet")).toEqual([]);
+  });
+});
+
+/**
+ * REAL LAYOUT: a JEE Main 2025 (29 Jan, Shift 1) response sheet a coaching site
+ * posted publicly as a PDF, read in reading order (`pdftotext -raw`), with the
+ * candidate's identity lines removed and every question/option ID replaced by a
+ * made-up one (scratch script, 2026-11-16). The page had 75 questions, 36 of
+ * them "Status : Answered", and two "Not Attempted and Marked For Review".
+ */
+describe("parseNtaResponseText on a real sheet's layout", () => {
+  const real = readFileSync(join(__dirname, "fixtures/score-calc/nta-jee-response-sheet-anonymised.txt"), "utf8");
+  const rows = parseNtaResponseText(real);
+
+  it("finds every question once", () => {
+    expect(rows).toHaveLength(75);
+    expect(new Set(rows.map((r) => r.questionId)).size).toBe(75);
+  });
+
+  it("counts exactly the answered questions the sheet's statuses list", () => {
+    expect(rows.filter((r) => r.chosen !== null)).toHaveLength(36);
+  });
+
+  it("reads numeric answers whose label the PDF breaks across lines ('Give / n / Ans / wer :')", () => {
+    const numeric = rows.filter((r) => r.chosen !== null && !/^\d{9,}$/.test(r.chosen)).map((r) => r.chosen);
+    expect(numeric).toEqual(["0", "4", "11", "485", "125"]);
+  });
+
+  it("keeps the identity lines out of the fixture", () => {
+    expect(real).not.toMatch(/Candidate Name|Roll No|Application No/i);
   });
 });
 
