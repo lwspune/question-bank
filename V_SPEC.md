@@ -145,6 +145,10 @@ is enforced in `facts.ts` or the tools; the date is when it was made.
   "it gives the method and asks for their working": "5P3 = 60, how?" got "try
   it yourself" and a No, and a signed-out visitor was asked for working they
   could never send.
+- **V is told a question's marks and its other papers (owner, 2026-11-16).** The
+  marks its printed board paper gives it, and the repeat and type groups of the
+  homework plans (0216). With neither, V says it cannot see them, never that the
+  question was not repeated.
 - **An Ask V tap pins its question in code (2026-11-08).** The tools read the
   tapped question and pick, whatever id the model passes (`tappedFrom`): 12 of
   426 tap explanations had named the previous question. V never takes back an

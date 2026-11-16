@@ -129,7 +129,7 @@ function buildQuestionToolDeps(
   return {
     tapped,
     notesTapped,
-    loadQuestion: (id) => loadVQuestion(anon, id),
+    loadQuestion: (id) => loadVQuestion(anon, id, { extras: true }),
     spendReveal: userId ? (id) => spendVReveal(createSupabaseServerClient(), userId, id) : null,
     loadSimilar: async (q) =>
       loadSimilarId(anon, q, userId ? await revealedToday(createSupabaseServerClient(), userId, new Date()) : []),

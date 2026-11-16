@@ -170,7 +170,7 @@ async function main() {
             tapped: tappedFrom(question, c.message),
             // As live: a tap on a notes question pins it too (2026-11-11).
             notesTapped: notesTappedFrom(notesBrief !== null, c.message),
-            loadQuestion: (id) => loadVQuestion(anon, id),
+            loadQuestion: (id) => loadVQuestion(anon, id, { extras: true }),
             spendReveal: c.signed_in ? async () => ({ kind: "ok" as const, counts: false }) : null,
             loadSimilar: (vq) => loadSimilarId(anon, vq, []),
             searchQuestions: (text, chapterId) => searchVQuestions(anon, text, chapterId),

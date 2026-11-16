@@ -596,6 +596,14 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/A question from our bank is still checked against its solution and key/i);
   });
 
+  // Owner, 2026-11-16: "how many marks?" and "any other year?" are answered from the question's own lines.
+  it("has V answer marks and other papers from the question's Marks and Repeats lines, never guessing", () => {
+    const p = buildSystemPrompt({ ...base, explainEnabled: true });
+    expect(p).toMatch(/Marks and Repeats lines/);
+    expect(p).toMatch(/call get_question/);
+    expect(p).toMatch(/never say it was not asked in other papers/i);
+  });
+
   // Owner, 2026-11-16 ("yes" to not holding back): "5P3 = 60, how?" got "try it yourself" and a No;
   // a signed-out visitor (one question) who typed a full question was asked for working they could
   // never send. When a student asks how, V shows how, with the final answer.

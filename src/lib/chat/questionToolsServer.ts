@@ -6,6 +6,8 @@
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { queryQuestionsByIds } from "@/lib/questions/query";
+import { loadRepeatGroups } from "@/lib/questions/repeatQuery";
+import { marksLine, repeatsLine, type PaperMark } from "./questionExtras";
 import { matchPasted, pickSimilar, toVQuestion, type VQuestion } from "./questionTools";
 import type { QuestionMatch } from "./questionToolSet";
 
@@ -15,9 +17,86 @@ const SNIPPET_CHARS = 140;
 // search on its longest real words, which the stored stem also carries.
 const SEARCH_WORDS = [6, 4] as const;
 
-export async function loadVQuestion(anon: SupabaseClient, id: string): Promise<VQuestion | null> {
-  const rows = await queryQuestionsByIds(anon, [id]);
-  return rows[0] ? toVQuestion(rows[0]) : null;
+/**
+ * `extras` (V's tools, 2026-11-16): also its marks in a printed board paper and
+ * the other papers that asked it (lib/chat/questionExtras), so V can answer
+ * "how many marks?" and "any other year?". Best-effort: a failed read leaves
+ * the line out, and V is told to say it cannot see it, never to guess.
+ */
+export async function loadVQuestion(anon: SupabaseClient, id: string, opts: { extras?: boolean } = {}): Promise<VQuestion | null> {
+  const [rows, marks, repeats] = await Promise.all([
+    queryQuestionsByIds(anon, [id]),
+    opts.extras ? loadMarksLine(anon, id) : null,
+    opts.extras ? loadRepeatsLine(anon, id) : null,
+  ]);
+  if (!rows[0]) return null;
+  const q = toVQuestion(rows[0]);
+  return opts.extras ? { ...q, marks, repeats } : q;
+}
+
+type One<T> = T | T[] | null;
+const one = <T,>(v: One<T>): T | null => (Array.isArray(v) ? (v[0] ?? null) : v);
+
+type RawItem = {
+  paper_id: string;
+  position: number;
+  printed_number: string;
+  marks: number | null;
+  part_of: number | null;
+  paper: One<{ title: string; year: number }>;
+};
+
+/** Its marks in each published board paper that prints it (0146, parts 0147). Anon: published papers only. */
+async function loadMarksLine(anon: SupabaseClient, id: string): Promise<string | null> {
+  try {
+    const { data, error } = await anon
+      .from("board_paper_items")
+      .select("paper_id, position, printed_number, marks, part_of, paper:board_papers!inner(title, year)")
+      .eq("question_id", id)
+      .eq("paper.published", true)
+      .limit(10);
+    if (error) throw new Error(error.message);
+    const items = (data ?? []) as unknown as RawItem[];
+    // A part carries no marks: its whole question (an earlier position of the same paper) does.
+    const parents = new Map<string, { printedNumber: string; marks: number }>();
+    const wanted = items.filter((i) => i.part_of !== null);
+    if (wanted.length > 0) {
+      const { data: rows, error: e2 } = await anon
+        .from("board_paper_items")
+        .select("paper_id, position, printed_number, marks")
+        .in("paper_id", [...new Set(wanted.map((i) => i.paper_id))])
+        .in("position", [...new Set(wanted.map((i) => i.part_of as number))]);
+      if (e2) throw new Error(e2.message);
+      for (const r of (rows ?? []) as { paper_id: string; position: number; printed_number: string; marks: number | null }[]) {
+        if (r.marks !== null) parents.set(`${r.paper_id}:${r.position}`, { printedNumber: r.printed_number, marks: Number(r.marks) });
+      }
+    }
+    const papers: PaperMark[] = [];
+    for (const i of items) {
+      const paper = one(i.paper);
+      if (!paper) continue;
+      papers.push({
+        paperTitle: paper.title,
+        year: paper.year,
+        printedNumber: i.printed_number,
+        marks: i.marks === null ? null : Number(i.marks),
+        partOf: i.part_of === null ? null : (parents.get(`${i.paper_id}:${i.part_of}`) ?? null),
+      });
+    }
+    return marksLine(papers);
+  } catch (err) {
+    console.error("V: marks read failed", err);
+    return null;
+  }
+}
+
+async function loadRepeatsLine(anon: SupabaseClient, id: string): Promise<string | null> {
+  try {
+    return repeatsLine((await loadRepeatGroups(anon, [id])).get(id) ?? []);
+  } catch (err) {
+    console.error("V: repeats read failed", err);
+    return null;
+  }
 }
 
 /** A PUBLIC single-answer question from the same subtopic, not this one and not one opened today. */

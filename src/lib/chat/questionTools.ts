@@ -35,6 +35,10 @@ export type VQuestion = {
   subtopicId: string | null;
   /** Which past paper it is from, or that it is practice (originLine); null when unknown. */
   origin: string | null;
+  /** Its marks in a printed board paper (questionExtras marksLine); only when loaded for V's tools. */
+  marks?: string | null;
+  /** The other papers that asked it (questionExtras repeatsLine); only when loaded for V's tools. */
+  repeats?: string | null;
 };
 
 export function toVQuestion(row: QuestionRow): VQuestion {
@@ -124,6 +128,8 @@ function header(q: VQuestion): string[] {
   if (q.options.length > 0) lines.push(`Options: ${q.options.map((o) => `(${o.label}) ${o.text}`).join(" | ")}`);
   if (q.hasFigure) lines.push("This question has a figure you cannot see: explain only from the text and the solution.");
   if (q.origin) lines.push(q.origin);
+  if (q.marks) lines.push(q.marks);
+  if (q.repeats) lines.push(q.repeats);
   return lines;
 }
 
