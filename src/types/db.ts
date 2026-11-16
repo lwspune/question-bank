@@ -242,6 +242,69 @@ export type Database = {
           },
         ]
       }
+      articles: {
+        Row: {
+          body: string
+          created_at: string
+          date_modified: string | null
+          date_published: string | null
+          description: string
+          exam_slug: string | null
+          faq: Json
+          id: string
+          kind: string
+          pending: Json | null
+          reading_minutes: number
+          slug: string
+          sources: Json
+          status: string
+          tags: string[]
+          title: string
+          updated_at: string
+          watch: string | null
+        }
+        Insert: {
+          body: string
+          created_at?: string
+          date_modified?: string | null
+          date_published?: string | null
+          description: string
+          exam_slug?: string | null
+          faq?: Json
+          id?: string
+          kind: string
+          pending?: Json | null
+          reading_minutes: number
+          slug: string
+          sources?: Json
+          status?: string
+          tags: string[]
+          title: string
+          updated_at?: string
+          watch?: string | null
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          date_modified?: string | null
+          date_published?: string | null
+          description?: string
+          exam_slug?: string | null
+          faq?: Json
+          id?: string
+          kind?: string
+          pending?: Json | null
+          reading_minutes?: number
+          slug?: string
+          sources?: Json
+          status?: string
+          tags?: string[]
+          title?: string
+          updated_at?: string
+          watch?: string | null
+        }
+        Relationships: []
+      }
       attempt_answers: {
         Row: {
           attempt_id: string
