@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Reads the /dashboard/students roster through the get_student_roster RPC
  * (migration 0098) and maps it onto the view-model.
  *
@@ -40,7 +40,7 @@ export type RosterRpcRow = {
   last_active: string | null;
 };
 
-/** Postgres `numeric` arrives over PostgREST as a string â€” coerce, keeping null as null. */
+/** Postgres `numeric` arrives over PostgREST as a string — coerce, keeping null as null. */
 function num(v: number | string | null): number | null {
   if (v === null) return null;
   const n = typeof v === "string" ? Number(v) : v;
