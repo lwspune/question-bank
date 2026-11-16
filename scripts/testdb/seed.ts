@@ -34,7 +34,7 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { seedTaxonomy, type Taxonomy } from "../../src/lib/seed";
-import { ALLOWED_TEST_REFS, extractProjectRef } from "../../tests/helpers/testdb";
+import { ALLOWED_TEST_REFS, extractProjectRef, SEED_CONTENT_HASH_PREFIX } from "../../tests/helpers/testdb";
 
 config({ path: path.join(process.cwd(), ".env.test.local") });
 
@@ -229,7 +229,7 @@ async function main(): Promise<void> {
         pyq_year: 2018 + (idx % 5),
         // Subtopic segment only when present — keeps pre-existing seed hashes
         // stable so a re-run stays a no-op for them.
-        content_hash: `testdb-seed-${deck.exam}-${deck.subject}-${deck.chapter}${
+        content_hash: `${SEED_CONTENT_HASH_PREFIX}${deck.exam}-${deck.subject}-${deck.chapter}${
           deck.subtopic ? `-${deck.subtopic}` : ""
         }-${i}`
           .toLowerCase()

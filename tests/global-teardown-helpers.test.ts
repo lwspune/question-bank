@@ -5,7 +5,9 @@ import {
   hasRunIdToken,
   isTestAuthEmail,
   sweepUntilClean,
+  shouldSweepSeedOrgQuestion,
 } from "./global-teardown-helpers";
+import { SEED_CONTENT_HASH_PREFIX } from "./helpers/testdb";
 
 describe("global-teardown helpers", () => {
   describe("isTestOrgName", () => {
@@ -164,5 +166,42 @@ describe("global-teardown helpers", () => {
       );
       expect(delays).toEqual([750, 750]); // one sleep before each of the 2 retries
     });
+  });
+});
+
+// Tests that write questions into the REAL seed org ("LWS Pune") clean up only
+// in their own afterAll. A killed run, or an afterAll that timed out under load,
+// left its rows there for good: the org sweep never touches a real org. On
+// 2026-11-15 three PRIVATE leftovers failed chapter-profile for every session,
+// and five 2026-11-10 sync rows were still there.
+describe("shouldSweepSeedOrgQuestion", () => {
+  const NOW = new Date("2026-11-16T12:00:00Z");
+  const own = new Set(["a1b2c3d4"]);
+  const fresh = "2026-11-16T11:50:00Z";
+  const stale = "2026-11-16T05:00:00Z"; // 7 h old
+
+  it("never sweeps a seed question, however old, whatever its text", () => {
+    const seed = { text: "Seed question 1 (a1b2c3d4)", content_hash: `${SEED_CONTENT_HASH_PREFIX}nda-maths-1`, created_at: stale };
+    expect(shouldSweepSeedOrgQuestion(seed, own, NOW)).toBe(false);
+  });
+  it("sweeps this run's own fixture", () => {
+    const q = { text: "Explain a private self-mark test idea. (a1b2c3d4)", content_hash: "x", created_at: fresh };
+    expect(shouldSweepSeedOrgQuestion(q, own, NOW)).toBe(true);
+  });
+  it("leaves another live run's fresh fixture alone", () => {
+    const q = { text: "Explain the brimlocke vantoric. (9d6b8e01)", content_hash: "x", created_at: fresh };
+    expect(shouldSweepSeedOrgQuestion(q, own, NOW)).toBe(false);
+  });
+  it("sweeps any non-seed question past the stale age, id or not (a killed run's copy of a seed text)", () => {
+    const q = { text: "Seed question 1 for MHT-CET Maths Vectors: what is 1 + 1?", content_hash: "exam-twins-test-1", created_at: stale };
+    expect(shouldSweepSeedOrgQuestion(q, own, NOW)).toBe(true);
+  });
+  it("does not sweep an undatable non-seed row it does not own", () => {
+    const q = { text: "no id here", content_hash: "x", created_at: null };
+    expect(shouldSweepSeedOrgQuestion(q, own, NOW)).toBe(false);
+  });
+  it("treats a missing hash as not seed", () => {
+    const q = { text: "x", content_hash: null, created_at: stale };
+    expect(shouldSweepSeedOrgQuestion(q, own, NOW)).toBe(true);
   });
 });

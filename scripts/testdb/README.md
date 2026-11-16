@@ -55,6 +55,15 @@ Decisions log).
   leftovers). Before that, the first run to finish deleted every other live
   run's fixtures. A fixture named any other way lingers for 6 hours, and
   `tests/test-fixtures-use-run-id.test.ts` fails the file.
+- **Leftovers in the seed org are swept too (2026-11-16).** Several tests write
+  fixture questions into `LWS Pune` itself and clean up only in their own
+  afterAll, so a killed run left them there for good (three PRIVATE ones failed
+  `chapter-profile` for every session on 2026-11-15). The end-of-run sweep now
+  deletes any seed-org question carrying this run's id, or older than 6 hours,
+  clearing homework-plan and board-paper items that would block it. Seed rows are
+  never touched: their `content_hash` starts with `SEED_CONTENT_HASH_PREFIX`
+  (`tests/helpers/testdb.ts`, shared with `seed.ts`), and a fixture must never use
+  that prefix.
 - **taxonomy.json seeds MHT-CET only** (it derives from the MHT-CET reference
   Excel; other exams were auto-created by uploads in prod). Tests needing
   other real taxonomy belong in the prod-contract list.

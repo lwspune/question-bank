@@ -57,11 +57,14 @@ import type { TestProject } from "vitest/node";
 import {
   belongsToRun,
   isTestTaxonomyName,
+  REAL_ORG_NAMES,
   shouldSweepOrg,
+  shouldSweepSeedOrgQuestion,
   shouldSweepUser,
   sweepUntilClean,
 } from "./global-teardown-helpers";
 import { readRunIds } from "./helpers/runIdRegistry";
+import { SEED_CONTENT_HASH_PREFIX } from "./helpers/testdb";
 import { resolveSupabaseTestEnv } from "./helpers/testenv";
 
 /** What one sweep may delete: this run's ids, and stale rows as of `now`. */
@@ -123,7 +126,7 @@ function removeOldRunDirs(keep: string): void {
 }
 
 /**
- * The four-stage sweep. Idempotent + re-runnable, so the guardrail can call it
+ * The five-stage sweep. Idempotent + re-runnable, so the guardrail can call it
  * again when a post-sweep read still sees a (likely already-doomed) survivor.
  */
 export async function sweepTestData(admin: SupabaseClient, scope: SweepScope): Promise<void> {
@@ -139,6 +142,11 @@ export async function sweepTestData(admin: SupabaseClient, scope: SweepScope): P
     // Cascades questions (→ options/tags/reports), org_members, upload_jobs.
     await admin.from("organizations").delete().in("id", testOrgIds);
   }
+
+  // ── 1b) LEFTOVER QUESTIONS IN THE REAL SEED ORG ─────────────────────────
+  // The org sweep never touches a real org, but several tests write fixture
+  // questions into it and clean up only in their own afterAll (2026-11-16).
+  await sweepSeedOrgQuestions(admin, scope);
 
   // ── 2) TEST TAXONOMY (global, no org_id) ────────────────────────────────
   const { data: subjects } = await admin.from("subjects").select("id, name");
@@ -170,6 +178,40 @@ export async function sweepTestData(admin: SupabaseClient, scope: SweepScope): P
   }
 }
 
+/** Fixture questions a run left in the real seed org (shouldSweepSeedOrgQuestion).
+ *  Paged: a bare select stops at 1000 rows without saying so. */
+async function listSeedOrgLeftovers(admin: SupabaseClient, scope: SweepScope): Promise<string[]> {
+  const { data: orgs } = await admin.from("organizations").select("id").in("name", [...REAL_ORG_NAMES]);
+  const orgIds = (orgs ?? []).map((o) => o.id as string);
+  if (orgIds.length === 0) return [];
+  const ids: string[] = [];
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await admin
+      .from("questions")
+      .select("id, text, content_hash, created_at")
+      .in("org_id", orgIds)
+      .not("content_hash", "like", `${SEED_CONTENT_HASH_PREFIX}%`)
+      .order("id")
+      .range(from, from + 999);
+    if (error) break;
+    for (const q of data ?? []) if (shouldSweepSeedOrgQuestion(q, scope.own, scope.now)) ids.push(q.id);
+    if ((data ?? []).length < 1000) break;
+  }
+  return ids;
+}
+
+/** Delete this run's and stale fixture questions from the real seed org. */
+export async function sweepSeedOrgQuestions(admin: SupabaseClient, scope: SweepScope): Promise<void> {
+  const ids = await listSeedOrgLeftovers(admin, scope);
+  for (let i = 0; i < ids.length; i += 200) {
+    const chunk = ids.slice(i, i + 200); // .in() lives in the URL: keep it short
+    // RESTRICT foreign keys: a test homework plan or board paper still using it.
+    await admin.from("homework_plan_items").delete().in("question_id", chunk);
+    await admin.from("board_paper_items").delete().in("question_id", chunk);
+    await admin.from("questions").delete().in("id", chunk);
+  }
+}
+
 /** Page through auth.users and collect the test accounts this run may delete. */
 async function listTestAuthUserIds(admin: SupabaseClient, scope: SweepScope): Promise<string[]> {
   const ids: string[] = [];
@@ -197,6 +239,9 @@ export async function collectLeaks(admin: SupabaseClient, scope: SweepScope): Pr
     .filter((s) => isTestTaxonomyName(s.name) && belongsToRun(s.name, scope.own))
     .map((s) => s.name);
   if (leakedSubjects.length) problems.push(`subjects: ${leakedSubjects.join(", ")}`);
+
+  const leakedSeedOrgQuestions = await listSeedOrgLeftovers(admin, scope);
+  if (leakedSeedOrgQuestions.length) problems.push(`seed-org questions: ${leakedSeedOrgQuestions.join(", ")}`);
 
   const leakedUsers = await listTestAuthUserIds(admin, scope);
   if (leakedUsers.length) problems.push(`auth users: ${leakedUsers.length}`);
