@@ -84,6 +84,8 @@ import {
   INSTALL_APP_STUDENTS_KEEP,
   TEACHER_RULE_PRECISION_PCT,
   TEACHER_STUDENT_ANSWERS_MIN,
+  BLOG_SIGNUP_SHARE_KEEP_PCT,
+  BLOG_GSC_CLICKS_KEEP,
   GULF_PRICE_BASELINE_RUPEES_PER_STUDENT,
   GULF_PRICE_MIN_SALES,
   ENEM_STUDENTS_KEEP,
@@ -938,6 +940,14 @@ export default async function GrowthPage() {
             <code>scripts/profile/teacher-student-readout.sql</code>: use the labels if {TEACHER_STUDENT_ANSWERS_MIN}+
             accounts answer, and the behaviour rule for older accounts only if {TEACHER_RULE_PRECISION_PCT}%+ of the
             accounts it names say Teacher.
+          </p>
+        );
+      case "blog-posts":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with <code>scripts/blog/readout.sql</code> and
+            Search Console: per kind (news, data, evergreen), keep writing it if its pages bring{" "}
+            {BLOG_SIGNUP_SHARE_KEEP_PCT}%+ of all signups or {BLOG_GSC_CLICKS_KEEP}+ clicks a week by the last week.
           </p>
         );
       case "enem-interest":

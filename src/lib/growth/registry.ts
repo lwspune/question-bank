@@ -371,6 +371,14 @@ export const TEACHER_STUDENT_ANSWERS_MIN = 200;
  */
 export const TEACHER_RULE_PRECISION_PCT = 70;
 /**
+ * "blog-posts": the share of all signups in the window that must land first on
+ * one KIND of article (news, data, evergreen) for that kind to be kept. Before
+ * the database articles, 1 signup ever (2026-11-03) had landed on the blog.
+ */
+export const BLOG_SIGNUP_SHARE_KEEP_PCT = 1;
+/** "blog-posts": or, by the window's last week, this many Search Console clicks a week on that kind's pages. */
+export const BLOG_GSC_CLICKS_KEEP = 50;
+/**
  * "gulf-price": pass revenue per student who signed up from the six Gulf
  * countries, 9 Oct (country recorded) to 15 Nov 2026, at the India prices:
  * Rs 199 from 34 students, about Rs 6 each. The Gulf price must beat it.
@@ -529,6 +537,7 @@ export type Readout =
   | "exam-guess-card"
   | "install-app"
   | "teacher-or-student"
+  | "blog-posts"
   | "notes-drill-panel"
   | "gulf-price"
   | "enem-interest";
@@ -1492,6 +1501,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-15",
     windowDays: 21,
     readout: "teacher-or-student",
+    status: "running",
+  },
+  {
+    id: "blog-posts",
+    title: "Blog posts and exam syllabus pages, published without a deploy",
+    change:
+      "Articles live in the database (migration 0263): the /blog skill writes a draft, the owner reads it at /dashboard/blog and taps Publish. Three kinds: news (a date, a result, a change), data (an analysis on the bank's numbers) and evergreen (an exam's pattern, syllabus and marks at /exams/<exam>/syllabus). About 2-3 a week.",
+    why: "Students search exam dates, patterns and syllabi far more than chapter names, and many do not know them. Three blog posts in code (Sep-Oct 2026) brought 1 signup; whether more posts, of which kind, bring students is what this measures.",
+    metric:
+      "Signups whose first page was an article, by kind, as a share of all signups since the first database article (scripts/blog/readout.sql); Search Console clicks on /blog and /exams/*/syllabus pages, read by hand.",
+    rule: `Per kind: keep writing it if its pages bring ${BLOG_SIGNUP_SHARE_KEEP_PCT}%+ of all signups in the 6 weeks, or ${BLOG_GSC_CLICKS_KEEP}+ Search Console clicks a week by the last week. Otherwise stop writing that kind; published pages stay.`,
+    liveSince: "2026-11-17",
+    windowDays: 42,
+    readout: "blog-posts",
     status: "running",
   },
   {
