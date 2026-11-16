@@ -42,6 +42,51 @@ export function isRepeatNote(note: string): boolean {
 
 const LETTERS = "abcdefghijklmnopqrstuvwxyz";
 
+/**
+ * Number each row's chapter by its place in a pinned list of chapter names
+ * (2026-11-16). JEE and SSC chapters share order_index values (JEE Maths: 27
+ * chapters, 7 values), so their books pin the order instead. A chapter the
+ * list does not name throws: a re-cut taxonomy stops the build rather than
+ * dropping a chapter somewhere by accident.
+ */
+export function pinChapterOrder(rows: readonly RepeatPlanRow[], order: readonly string[]): RepeatPlanRow[] {
+  const place = new Map(order.map((name, i) => [name, i]));
+  const missing = [...new Set(rows.map((r) => r.chapterName).filter((name) => !place.has(name)))];
+  if (missing.length) throw new Error(`chapters missing from the pinned order: ${missing.join(", ")}`);
+  return rows.map((r) => ({ ...r, chapterOrder: place.get(r.chapterName)! }));
+}
+
+/**
+ * Several subjects' plans as one book (SSC CGL General Awareness, 2026-11-16):
+ * one chapter per SUBJECT, in turn. Inside it, the subject's chapters in
+ * order and each chapter's slots in the plan's order, renumbered 1..n. The
+ * first build gave each subject's chapters their own: 34 chapters, many of one
+ * or two questions, each on two near-empty pages. Each plan is grouped on its
+ * own, since two plans share day and position numbers. A one-subject book
+ * keeps its chapters as they are.
+ */
+export function repeatChaptersOfSubjects(plans: readonly { subject: string; rows: readonly RepeatPlanRow[] }[]): RepeatChapter[] {
+  if (plans.length === 1) return repeatChapters(plans[0].rows);
+  return plans.flatMap((p) => {
+    const slots = repeatChapters(p.rows).flatMap((c) => c.slots);
+    if (slots.length === 0) return [];
+    return [
+      {
+        chapterId: p.subject,
+        chapterName: p.subject,
+        slots: slots.map((s, i) => ({
+          ...s,
+          number: i + 1,
+          parts: s.parts.map((part, j) => ({
+            questionId: part.questionId,
+            label: s.parts.length === 1 ? String(i + 1) : `${i + 1} (${LETTERS[j] ?? j + 1})`,
+          })),
+        })),
+      },
+    ];
+  });
+}
+
 export function repeatChapters(rows: readonly RepeatPlanRow[]): RepeatChapter[] {
   const ordered = [...rows].sort((a, b) => a.day - b.day || a.position - b.position || a.sub - b.sub);
   const slots = new Map<string, RepeatPlanRow[]>();

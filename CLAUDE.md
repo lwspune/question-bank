@@ -368,6 +368,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-16 (fourth) — Ebooks: only Repeated and Chapter-wise PYQs on sale; 11 new Repeated PYQs books for JEE, CET, SSC CGL and CBSE 12 Biology (0264).**
+  - **Why:** 10 sales in 4 weeks, all those two kinds; JEE and SSC (most payers) had no book. Owner hid 55 others by hand, not a Solved Papers book one student owns (a hidden page 404s its download).
+  - **Repeats, not chapter-wise:** a competitive bank is 900+ pages a subject; a repeats book 69-310, from the homework plan alone.
+  - **Chapter order pinned by name** (`pinChapterOrder` throws on an unnamed one): JEE/SSC `order_index` is not a full order, CET's is writing order. SSC general subjects: one book, a chapter per subject.
+  - **Contents print on `@page toc`:** padding never applied past a page break. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-16 (third) — NEET Physics and Chemistry /notes, 48 chapters: every NEET subject now has notes.**
   - **Physics:** all 28 NCERT chapters with a past-year row, 384 pyq tagged (100%). **Chemistry:** the 20 chapters asked since 2023, 347 of 385; the 9 not asked since 2023 get none (owner-approved plan).
   - **Brief `NOTES_BRIEF_PC.md`, two hand-written model chapters, agents for the rest (max 3);** every worked number re-derived in review, no key disputed.
@@ -482,6 +487,7 @@ The load-bearing choices made during the initial scaffold. Every later phase res
   - **Owner's idea, measured first:** 629 such moments (267 students) in 30 days; 14% left right after. They had read three solutions and still missed.
   - **Rule (owner):** 3 wrong among the last 4 on the subtopic (3 of 3 counts), no sitting (18 of 376 streaks spanned days); shown only on the answer that makes it true, so no stored dismissal.
   - **Server spots it** in the practice reply (since 11-14 as the one line, after Same mistake again). Teach = the subtopic's notes in a panel on the page (since 11-15, `TeachPanel` + GET /api/notes/subtopic), else V via a new no-question event; Easier = an easy unanswered question in V's try card. Experiment `stuck-offer`. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
+
 ### 2026-10
 
 Archived to DECISIONS_HISTORY.md on 2026-11-05 (all ten had their long form there).

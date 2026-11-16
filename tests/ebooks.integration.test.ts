@@ -108,7 +108,13 @@ describe.skipIf(!HAS_ENV)("ebook store tables", () => {
   });
 
   it("seeds the seven books, priced by kind, all off sale", async () => {
-    const { data } = await admin.from("ebooks").select("slug, kind, price_paise, active").like("slug", "mht-cet-%").order("slug");
+    // The first seven kinds only: MHT-CET also has Repeated PYQs books since 0264.
+    const { data } = await admin
+      .from("ebooks")
+      .select("slug, kind, price_paise, active")
+      .like("slug", "mht-cet-%")
+      .in("kind", ["formula", "notes", "pyq"])
+      .order("slug");
     expect((data ?? []).map((r) => `${r.slug}:${r.kind}:${r.price_paise}:${r.active}`)).toEqual([
       "mht-cet-chemistry-formulas:formula:4900:false",
       "mht-cet-chemistry-notes:notes:4900:false",
@@ -117,6 +123,30 @@ describe.skipIf(!HAS_ENV)("ebook store tables", () => {
       "mht-cet-maths-pyq:pyq:14900:false",
       "mht-cet-physics-formulas:formula:4900:false",
       "mht-cet-physics-notes:notes:4900:false",
+    ]);
+  });
+
+  // 0264 (2026-11-16): the competitive exams' Repeated PYQs and CBSE 12
+  // Biology's, priced by size, every one off sale until the owner switches it on.
+  it("seeds the eleven 0264 Repeated PYQs books, priced by size, all off sale", async () => {
+    const { data } = await admin
+      .from("ebooks")
+      .select("slug, kind, price_paise, active")
+      .or("slug.like.jee-mains-%,slug.like.ssc-cgl-%,slug.like.mht-cet-%,slug.eq.cbse-12-biology-repeated-pyqs")
+      .eq("kind", "repeats")
+      .order("slug");
+    expect((data ?? []).map((r) => `${r.slug}:${r.price_paise}:${r.active}`)).toEqual([
+      "cbse-12-biology-repeated-pyqs:9900:false",
+      "jee-mains-chemistry-repeated-pyqs:14900:false",
+      "jee-mains-maths-repeated-pyqs:9900:false",
+      "jee-mains-physics-repeated-pyqs:14900:false",
+      "mht-cet-chemistry-repeated-pyqs:9900:false",
+      "mht-cet-maths-repeated-pyqs:9900:false",
+      "mht-cet-physics-repeated-pyqs:14900:false",
+      "ssc-cgl-english-repeated-pyqs:4900:false",
+      "ssc-cgl-general-awareness-repeated-pyqs:4900:false",
+      "ssc-cgl-quantitative-aptitude-repeated-pyqs:9900:false",
+      "ssc-cgl-reasoning-repeated-pyqs:9900:false",
     ]);
   });
 

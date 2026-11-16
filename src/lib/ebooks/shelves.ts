@@ -12,6 +12,8 @@ import { CHAPTERWISE_EBOOKS, PAPERS_EBOOKS, REPEATS_EBOOKS, TEXTBOOK_EBOOKS } fr
 
 export const SHELVES = [
   { key: "mht-cet", label: "MHT-CET", short: "MHT-CET" },
+  { key: "jee-mains", label: "JEE Mains", short: "JEE" },
+  { key: "ssc-cgl", label: "SSC CGL", short: "SSC CGL" },
   { key: "mh-hsc-12", label: "Maharashtra HSC Class 12", short: "HSC 12" },
   { key: "mh-sb-11", label: "Maharashtra Class 11", short: "MH 11" },
   { key: "mh-ssc-10", label: "Maharashtra SSC Class 10", short: "SSC 10" },
