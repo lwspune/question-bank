@@ -12125,6 +12125,922 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 2,
       "traps": 2
     }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "current-electricity",
+    "chipLabel": "Current Electricity notes",
+    "slugs": [
+      "nph-ce-drift",
+      "nph-ce-combinations",
+      "nph-ce-power",
+      "nph-ce-kirchhoff"
+    ],
+    "chapterName": "Current Electricity",
+    "formulaCounts": {
+      "formulas": 10,
+      "tables": 0,
+      "traps": 23
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "units-and-measurements",
+    "chipLabel": "Units and Measurements notes",
+    "slugs": [
+      "nph-um-units",
+      "nph-um-dims",
+      "nph-um-errors",
+      "nph-um-instruments"
+    ],
+    "chapterName": "Units and Measurements",
+    "formulaCounts": {
+      "formulas": 8,
+      "tables": 2,
+      "traps": 26
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "electrostatic-potential",
+    "chipLabel": "Electrostatic Potential notes",
+    "slugs": [
+      "nph-ep-potential",
+      "nph-ep-energy",
+      "nph-ep-capacitance",
+      "nph-ep-combinations"
+    ],
+    "chapterName": "Electrostatic Potential and Capacitance",
+    "formulaCounts": {
+      "formulas": 10,
+      "tables": 0,
+      "traps": 29
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "semiconductor-electronics",
+    "chipLabel": "Semiconductor Electronics notes",
+    "slugs": [
+      "nph-se-junction",
+      "nph-se-devices",
+      "nph-se-gates"
+    ],
+    "chapterName": "Semiconductor Electronics",
+    "formulaCounts": {
+      "formulas": 7,
+      "tables": 2,
+      "traps": 23
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "moving-charges-and-magnetism",
+    "chipLabel": "Moving Charges and Magnetism notes",
+    "slugs": [
+      "nph-mc-force",
+      "nph-mc-loops",
+      "nph-mc-ampere",
+      "nph-mc-dipole"
+    ],
+    "chapterName": "Moving Charges and Magnetism",
+    "formulaCounts": {
+      "formulas": 10,
+      "tables": 0,
+      "traps": 27
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "rotational-motion",
+    "chipLabel": "Rotational Motion notes",
+    "slugs": [
+      "nph-rm-com",
+      "nph-rm-torque",
+      "nph-rm-inertia",
+      "nph-rm-rotation"
+    ],
+    "chapterName": "System of Particles and Rotational Motion",
+    "formulaCounts": {
+      "formulas": 10,
+      "tables": 0,
+      "traps": 28
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "ray-optics",
+    "chipLabel": "Ray Optics notes",
+    "slugs": [
+      "nph-ro-reflection",
+      "nph-ro-lenses",
+      "nph-ro-prisms",
+      "nph-ro-instruments"
+    ],
+    "chapterName": "Ray Optics and Optical Instruments",
+    "formulaCounts": {
+      "formulas": 10,
+      "tables": 0,
+      "traps": 24
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "alternating-current",
+    "chipLabel": "Alternating Current notes",
+    "slugs": [
+      "nph-ac-reactance",
+      "nph-ac-lcr",
+      "nph-ac-transformer"
+    ],
+    "chapterName": "Alternating Current",
+    "formulaCounts": {
+      "formulas": 8,
+      "tables": 0,
+      "traps": 18
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "gravitation",
+    "chipLabel": "Gravitation notes",
+    "slugs": [
+      "nph-gr-field",
+      "nph-gr-energy",
+      "nph-gr-orbits"
+    ],
+    "chapterName": "Gravitation",
+    "formulaCounts": {
+      "formulas": 7,
+      "tables": 0,
+      "traps": 19
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "dual-nature",
+    "chipLabel": "Dual Nature notes",
+    "slugs": [
+      "nph-dn-photons",
+      "nph-dn-photoelectric",
+      "nph-dn-debroglie"
+    ],
+    "chapterName": "Dual Nature of Radiation and Matter",
+    "formulaCounts": {
+      "formulas": 7,
+      "tables": 2,
+      "traps": 20
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "oscillations",
+    "chipLabel": "Oscillations notes",
+    "slugs": [
+      "nph-os-equation",
+      "nph-os-periods",
+      "nph-os-energy"
+    ],
+    "chapterName": "Oscillations",
+    "formulaCounts": {
+      "formulas": 7,
+      "tables": 0,
+      "traps": 21
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "electromagnetic-waves",
+    "chipLabel": "Electromagnetic Waves notes",
+    "slugs": [
+      "nph-em-waves",
+      "nph-em-spectrum"
+    ],
+    "chapterName": "Electromagnetic Waves",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 2,
+      "traps": 19
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "laws-of-motion",
+    "chipLabel": "Laws of Motion notes",
+    "slugs": [
+      "nph-lm-newton",
+      "nph-lm-friction",
+      "nph-lm-circular"
+    ],
+    "chapterName": "Laws of Motion",
+    "formulaCounts": {
+      "formulas": 7,
+      "tables": 0,
+      "traps": 21
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "motion-in-a-straight-line",
+    "chipLabel": "Motion in a Straight Line notes",
+    "slugs": [
+      "nph-ms-velocity",
+      "nph-ms-graphs",
+      "nph-ms-equations"
+    ],
+    "chapterName": "Motion in a Straight Line",
+    "formulaCounts": {
+      "formulas": 9,
+      "tables": 0,
+      "traps": 25
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "motion-in-a-plane",
+    "chipLabel": "Motion in a Plane notes",
+    "slugs": [
+      "nph-mp-projectile",
+      "nph-mp-circular"
+    ],
+    "chapterName": "Motion in a Plane",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 0,
+      "traps": 18
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "work-energy-and-power",
+    "chipLabel": "Work Energy and Power notes",
+    "slugs": [
+      "nph-we-work",
+      "nph-we-energy",
+      "nph-we-power",
+      "nph-we-collisions"
+    ],
+    "chapterName": "Work, Energy and Power",
+    "formulaCounts": {
+      "formulas": 9,
+      "tables": 0,
+      "traps": 27
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "mechanical-properties-of-solids",
+    "chipLabel": "Solids notes",
+    "slugs": [
+      "nph-so-young",
+      "nph-so-moduli"
+    ],
+    "chapterName": "Mechanical Properties of Solids",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 1,
+      "traps": 14
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "mechanical-properties-of-fluids",
+    "chipLabel": "Fluids notes",
+    "slugs": [
+      "nph-fl-pressure",
+      "nph-fl-viscosity",
+      "nph-fl-surface"
+    ],
+    "chapterName": "Mechanical Properties of Fluids",
+    "formulaCounts": {
+      "formulas": 8,
+      "tables": 0,
+      "traps": 20
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "thermal-properties-of-matter",
+    "chipLabel": "Thermal Properties notes",
+    "slugs": [
+      "nph-tp-expansion",
+      "nph-tp-transfer"
+    ],
+    "chapterName": "Thermal Properties of Matter",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 1,
+      "traps": 13
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "thermodynamics",
+    "chipLabel": "Thermodynamics notes",
+    "slugs": [
+      "nph-td-first-law",
+      "nph-td-processes"
+    ],
+    "chapterName": "Thermodynamics",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 1,
+      "traps": 12
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "kinetic-theory",
+    "chipLabel": "Kinetic Theory notes",
+    "slugs": [
+      "nph-kt-gas-laws",
+      "nph-kt-kinetic"
+    ],
+    "chapterName": "Kinetic Theory",
+    "formulaCounts": {
+      "formulas": 7,
+      "tables": 0,
+      "traps": 16
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "waves",
+    "chipLabel": "Waves notes",
+    "slugs": [
+      "nph-wv-travelling",
+      "nph-wv-standing"
+    ],
+    "chapterName": "Waves",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 0,
+      "traps": 12
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "electric-charges-and-fields",
+    "chipLabel": "Electric Charges and Fields notes",
+    "slugs": [
+      "nph-ef-field",
+      "nph-ef-dipole",
+      "nph-ef-gauss"
+    ],
+    "chapterName": "Electric Charges and Fields",
+    "formulaCounts": {
+      "formulas": 7,
+      "tables": 0,
+      "traps": 22
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "magnetism-and-matter",
+    "chipLabel": "Magnetism and Matter notes",
+    "slugs": [
+      "nph-mm-dipole",
+      "nph-mm-materials"
+    ],
+    "chapterName": "Magnetism and Matter",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 1,
+      "traps": 14
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "electromagnetic-induction",
+    "chipLabel": "Electromagnetic Induction notes",
+    "slugs": [
+      "nph-ei-faraday",
+      "nph-ei-inductance"
+    ],
+    "chapterName": "Electromagnetic Induction",
+    "formulaCounts": {
+      "formulas": 7,
+      "tables": 1,
+      "traps": 21
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "atoms",
+    "chipLabel": "Atoms notes",
+    "slugs": [
+      "nph-at-rutherford",
+      "nph-at-bohr",
+      "nph-at-spectrum"
+    ],
+    "chapterName": "Atoms",
+    "formulaCounts": {
+      "formulas": 7,
+      "tables": 1,
+      "traps": 27
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "nuclei",
+    "chipLabel": "Nuclei notes",
+    "slugs": [
+      "nph-nu-size",
+      "nph-nu-energy",
+      "nph-nu-decay"
+    ],
+    "chapterName": "Nuclei",
+    "formulaCounts": {
+      "formulas": 6,
+      "tables": 1,
+      "traps": 24
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "wave-optics",
+    "chipLabel": "Wave Optics notes",
+    "slugs": [
+      "nph-wo-wavefronts",
+      "nph-wo-ydse",
+      "nph-wo-polarisation"
+    ],
+    "chapterName": "Wave Optics",
+    "formulaCounts": {
+      "formulas": 6,
+      "tables": 1,
+      "traps": 20
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "chemical-bonding",
+    "chipLabel": "Chemical Bonding notes",
+    "slugs": [
+      "nch-cb-lewis",
+      "nch-cb-shapes",
+      "nch-cb-polarity",
+      "nch-cb-mot"
+    ],
+    "chapterName": "Chemical Bonding and Molecular Structure",
+    "formulaCounts": {
+      "formulas": 2,
+      "tables": 8,
+      "traps": 22
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "coordination-compounds",
+    "chipLabel": "Coordination Compounds notes",
+    "slugs": [
+      "nch-cc-werner",
+      "nch-cc-isomerism",
+      "nch-cc-vbt",
+      "nch-cc-cft"
+    ],
+    "chapterName": "Coordination Compounds",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 8,
+      "traps": 28
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "p-block-elements",
+    "chipLabel": "p-Block Elements notes",
+    "slugs": [
+      "nch-pb-boron",
+      "nch-pb-nitrogen",
+      "nch-pb-oxygen",
+      "nch-pb-halogens"
+    ],
+    "chapterName": "The p-Block Elements",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 12,
+      "traps": 34
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "aldehydes-ketones-and-carboxylic-acids",
+    "chipLabel": "Aldehydes, Ketones and Carboxylic Acids notes",
+    "slugs": [
+      "nch-ak-prep",
+      "nch-ak-addition",
+      "nch-ak-tests",
+      "nch-ak-acids"
+    ],
+    "chapterName": "Aldehydes, Ketones and Carboxylic Acids",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 8,
+      "traps": 30
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "d-and-f-block-elements",
+    "chipLabel": "d- and f-Block Elements notes",
+    "slugs": [
+      "nch-df-properties",
+      "nch-df-magnetic",
+      "nch-df-compounds",
+      "nch-df-lanthanoids"
+    ],
+    "chapterName": "The d- and f-Block Elements",
+    "formulaCounts": {
+      "formulas": 2,
+      "tables": 10,
+      "traps": 27
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "hydrocarbons",
+    "chipLabel": "Hydrocarbons notes",
+    "slugs": [
+      "nch-hc-alkanes",
+      "nch-hc-alkenes",
+      "nch-hc-aromatic"
+    ],
+    "chapterName": "Hydrocarbons",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 5,
+      "traps": 31
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "amines",
+    "chipLabel": "Amines notes",
+    "slugs": [
+      "nch-am-prep",
+      "nch-am-reactions",
+      "nch-am-diazonium"
+    ],
+    "chapterName": "Amines",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 5,
+      "traps": 24
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "chemical-kinetics",
+    "chipLabel": "Chemical Kinetics notes",
+    "slugs": [
+      "nch-ck-rate",
+      "nch-ck-integrated",
+      "nch-ck-temperature"
+    ],
+    "chapterName": "Chemical Kinetics",
+    "formulaCounts": {
+      "formulas": 9,
+      "tables": 1,
+      "traps": 26
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "organic-basic-principles",
+    "chipLabel": "Organic Chemistry Basic Principles notes",
+    "slugs": [
+      "nch-oc-naming",
+      "nch-oc-effects",
+      "nch-oc-purification"
+    ],
+    "chapterName": "Organic Chemistry – Some Basic Principles and Techniques",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 6,
+      "traps": 33
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "structure-of-atom",
+    "chipLabel": "Structure of Atom notes",
+    "slugs": [
+      "nch-sa-particles",
+      "nch-sa-bohr",
+      "nch-sa-orbitals"
+    ],
+    "chapterName": "Structure of Atom",
+    "formulaCounts": {
+      "formulas": 8,
+      "tables": 1,
+      "traps": 19
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "thermodynamics",
+    "chipLabel": "Chemical Thermodynamics notes",
+    "slugs": [
+      "nch-th-first-law",
+      "nch-th-enthalpy",
+      "nch-th-spontaneity"
+    ],
+    "chapterName": "Thermodynamics",
+    "formulaCounts": {
+      "formulas": 8,
+      "tables": 1,
+      "traps": 27
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "equilibrium",
+    "chipLabel": "Equilibrium notes",
+    "slugs": [
+      "nch-eq-constants",
+      "nch-eq-shifts",
+      "nch-eq-acids",
+      "nch-eq-salts",
+      "nch-eq-ksp"
+    ],
+    "chapterName": "Equilibrium",
+    "formulaCounts": {
+      "formulas": 10,
+      "tables": 4,
+      "traps": 30
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "solutions",
+    "chipLabel": "Solutions notes",
+    "slugs": [
+      "nch-so-concentration",
+      "nch-so-raoult",
+      "nch-so-colligative"
+    ],
+    "chapterName": "Solutions",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 2,
+      "traps": 18
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "electrochemistry",
+    "chipLabel": "Electrochemistry notes",
+    "slugs": [
+      "nch-ec-cells",
+      "nch-ec-conductance",
+      "nch-ec-electrolysis"
+    ],
+    "chapterName": "Electrochemistry",
+    "formulaCounts": {
+      "formulas": 8,
+      "tables": 2,
+      "traps": 24
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "some-basic-concepts",
+    "chipLabel": "Some Basic Concepts notes",
+    "slugs": [
+      "nch-sb-measurement",
+      "nch-sb-mole",
+      "nch-sb-stoichiometry"
+    ],
+    "chapterName": "Some Basic Concepts of Chemistry",
+    "formulaCounts": {
+      "formulas": 7,
+      "tables": 2,
+      "traps": 19
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "classification-of-elements",
+    "chipLabel": "Periodic Table notes",
+    "slugs": [
+      "nch-cp-table",
+      "nch-cp-size",
+      "nch-cp-properties"
+    ],
+    "chapterName": "Classification of Elements and Periodicity in Properties",
+    "formulaCounts": {
+      "formulas": 2,
+      "tables": 7,
+      "traps": 24
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "redox-reactions",
+    "chipLabel": "Redox Reactions notes",
+    "slugs": [
+      "nch-rr-oxidation",
+      "nch-rr-reactions"
+    ],
+    "chapterName": "Redox Reactions",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 3,
+      "traps": 16
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "haloalkanes-and-haloarenes",
+    "chipLabel": "Haloalkanes and Haloarenes notes",
+    "slugs": [
+      "nch-ha-prep",
+      "nch-ha-substitution",
+      "nch-ha-elimination"
+    ],
+    "chapterName": "Haloalkanes and Haloarenes",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 5,
+      "traps": 28
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "alcohols-phenols-and-ethers",
+    "chipLabel": "Alcohols, Phenols and Ethers notes",
+    "slugs": [
+      "nch-al-prep",
+      "nch-al-reactions",
+      "nch-al-phenols-ethers"
+    ],
+    "chapterName": "Alcohols, Phenols and Ethers",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 6,
+      "traps": 20
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "biomolecules",
+    "chipLabel": "Chemistry Biomolecules notes",
+    "slugs": [
+      "nch-bm-carbohydrates",
+      "nch-bm-proteins",
+      "nch-bm-vitamins"
+    ],
+    "chapterName": "Biomolecules",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 7,
+      "traps": 22
+    }
   }
 ];
 
@@ -12728,4 +13644,52 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "ssc-cgl-tier-2-computer/operating-system": () => import("@/app/notes/ssc-cgl-tier-2-computer/operating-system/_data").then((m) => ({ chapter: m.SSC2_OPERATING_SYSTEM_CHAPTER, notes: m.SSC2_OPERATING_SYSTEM_NOTES })),
   "ssc-cgl-tier-2-computer/cyber-security": () => import("@/app/notes/ssc-cgl-tier-2-computer/cyber-security/_data").then((m) => ({ chapter: m.SSC2_CYBER_SECURITY_CHAPTER, notes: m.SSC2_CYBER_SECURITY_NOTES })),
   "ssc-cgl-tier-2-computer/networks": () => import("@/app/notes/ssc-cgl-tier-2-computer/networks/_data").then((m) => ({ chapter: m.SSC2_NETWORKS_CHAPTER, notes: m.SSC2_NETWORKS_NOTES })),
+  "neet-physics/current-electricity": () => import("@/app/notes/neet-physics/current-electricity/_data").then((m) => ({ chapter: m.NEET_PH_CE_CHAPTER, notes: m.NEET_PH_CE_NOTES })),
+  "neet-physics/units-and-measurements": () => import("@/app/notes/neet-physics/units-and-measurements/_data").then((m) => ({ chapter: m.NEET_PH_UM_CHAPTER, notes: m.NEET_PH_UM_NOTES })),
+  "neet-physics/electrostatic-potential": () => import("@/app/notes/neet-physics/electrostatic-potential/_data").then((m) => ({ chapter: m.NEET_PH_EP_CHAPTER, notes: m.NEET_PH_EP_NOTES })),
+  "neet-physics/semiconductor-electronics": () => import("@/app/notes/neet-physics/semiconductor-electronics/_data").then((m) => ({ chapter: m.NEET_PH_SE_CHAPTER, notes: m.NEET_PH_SE_NOTES })),
+  "neet-physics/moving-charges-and-magnetism": () => import("@/app/notes/neet-physics/moving-charges-and-magnetism/_data").then((m) => ({ chapter: m.NEET_PH_MC_CHAPTER, notes: m.NEET_PH_MC_NOTES })),
+  "neet-physics/rotational-motion": () => import("@/app/notes/neet-physics/rotational-motion/_data").then((m) => ({ chapter: m.NEET_PH_RM_CHAPTER, notes: m.NEET_PH_RM_NOTES })),
+  "neet-physics/ray-optics": () => import("@/app/notes/neet-physics/ray-optics/_data").then((m) => ({ chapter: m.NEET_PH_RO_CHAPTER, notes: m.NEET_PH_RO_NOTES })),
+  "neet-physics/alternating-current": () => import("@/app/notes/neet-physics/alternating-current/_data").then((m) => ({ chapter: m.NEET_PH_AC_CHAPTER, notes: m.NEET_PH_AC_NOTES })),
+  "neet-physics/gravitation": () => import("@/app/notes/neet-physics/gravitation/_data").then((m) => ({ chapter: m.NEET_PH_GR_CHAPTER, notes: m.NEET_PH_GR_NOTES })),
+  "neet-physics/dual-nature": () => import("@/app/notes/neet-physics/dual-nature/_data").then((m) => ({ chapter: m.NEET_PH_DN_CHAPTER, notes: m.NEET_PH_DN_NOTES })),
+  "neet-physics/oscillations": () => import("@/app/notes/neet-physics/oscillations/_data").then((m) => ({ chapter: m.NEET_PH_OS_CHAPTER, notes: m.NEET_PH_OS_NOTES })),
+  "neet-physics/electromagnetic-waves": () => import("@/app/notes/neet-physics/electromagnetic-waves/_data").then((m) => ({ chapter: m.NEET_PH_EM_CHAPTER, notes: m.NEET_PH_EM_NOTES })),
+  "neet-physics/laws-of-motion": () => import("@/app/notes/neet-physics/laws-of-motion/_data").then((m) => ({ chapter: m.NEET_PH_LM_CHAPTER, notes: m.NEET_PH_LM_NOTES })),
+  "neet-physics/motion-in-a-straight-line": () => import("@/app/notes/neet-physics/motion-in-a-straight-line/_data").then((m) => ({ chapter: m.NEET_PH_MS_CHAPTER, notes: m.NEET_PH_MS_NOTES })),
+  "neet-physics/motion-in-a-plane": () => import("@/app/notes/neet-physics/motion-in-a-plane/_data").then((m) => ({ chapter: m.NEET_PH_MP_CHAPTER, notes: m.NEET_PH_MP_NOTES })),
+  "neet-physics/work-energy-and-power": () => import("@/app/notes/neet-physics/work-energy-and-power/_data").then((m) => ({ chapter: m.NEET_PH_WE_CHAPTER, notes: m.NEET_PH_WE_NOTES })),
+  "neet-physics/mechanical-properties-of-solids": () => import("@/app/notes/neet-physics/mechanical-properties-of-solids/_data").then((m) => ({ chapter: m.NEET_PH_SO_CHAPTER, notes: m.NEET_PH_SO_NOTES })),
+  "neet-physics/mechanical-properties-of-fluids": () => import("@/app/notes/neet-physics/mechanical-properties-of-fluids/_data").then((m) => ({ chapter: m.NEET_PH_FL_CHAPTER, notes: m.NEET_PH_FL_NOTES })),
+  "neet-physics/thermal-properties-of-matter": () => import("@/app/notes/neet-physics/thermal-properties-of-matter/_data").then((m) => ({ chapter: m.NEET_PH_TP_CHAPTER, notes: m.NEET_PH_TP_NOTES })),
+  "neet-physics/thermodynamics": () => import("@/app/notes/neet-physics/thermodynamics/_data").then((m) => ({ chapter: m.NEET_PH_TD_CHAPTER, notes: m.NEET_PH_TD_NOTES })),
+  "neet-physics/kinetic-theory": () => import("@/app/notes/neet-physics/kinetic-theory/_data").then((m) => ({ chapter: m.NEET_PH_KT_CHAPTER, notes: m.NEET_PH_KT_NOTES })),
+  "neet-physics/waves": () => import("@/app/notes/neet-physics/waves/_data").then((m) => ({ chapter: m.NEET_PH_WV_CHAPTER, notes: m.NEET_PH_WV_NOTES })),
+  "neet-physics/electric-charges-and-fields": () => import("@/app/notes/neet-physics/electric-charges-and-fields/_data").then((m) => ({ chapter: m.NEET_PH_EF_CHAPTER, notes: m.NEET_PH_EF_NOTES })),
+  "neet-physics/magnetism-and-matter": () => import("@/app/notes/neet-physics/magnetism-and-matter/_data").then((m) => ({ chapter: m.NEET_PH_MM_CHAPTER, notes: m.NEET_PH_MM_NOTES })),
+  "neet-physics/electromagnetic-induction": () => import("@/app/notes/neet-physics/electromagnetic-induction/_data").then((m) => ({ chapter: m.NEET_PH_EI_CHAPTER, notes: m.NEET_PH_EI_NOTES })),
+  "neet-physics/atoms": () => import("@/app/notes/neet-physics/atoms/_data").then((m) => ({ chapter: m.NEET_PH_AT_CHAPTER, notes: m.NEET_PH_AT_NOTES })),
+  "neet-physics/nuclei": () => import("@/app/notes/neet-physics/nuclei/_data").then((m) => ({ chapter: m.NEET_PH_NU_CHAPTER, notes: m.NEET_PH_NU_NOTES })),
+  "neet-physics/wave-optics": () => import("@/app/notes/neet-physics/wave-optics/_data").then((m) => ({ chapter: m.NEET_PH_WO_CHAPTER, notes: m.NEET_PH_WO_NOTES })),
+  "neet-chemistry/chemical-bonding": () => import("@/app/notes/neet-chemistry/chemical-bonding/_data").then((m) => ({ chapter: m.NEET_CH_CB_CHAPTER, notes: m.NEET_CH_CB_NOTES })),
+  "neet-chemistry/coordination-compounds": () => import("@/app/notes/neet-chemistry/coordination-compounds/_data").then((m) => ({ chapter: m.NEET_CH_CC_CHAPTER, notes: m.NEET_CH_CC_NOTES })),
+  "neet-chemistry/p-block-elements": () => import("@/app/notes/neet-chemistry/p-block-elements/_data").then((m) => ({ chapter: m.NEET_CH_PB_CHAPTER, notes: m.NEET_CH_PB_NOTES })),
+  "neet-chemistry/aldehydes-ketones-and-carboxylic-acids": () => import("@/app/notes/neet-chemistry/aldehydes-ketones-and-carboxylic-acids/_data").then((m) => ({ chapter: m.NEET_CH_AK_CHAPTER, notes: m.NEET_CH_AK_NOTES })),
+  "neet-chemistry/d-and-f-block-elements": () => import("@/app/notes/neet-chemistry/d-and-f-block-elements/_data").then((m) => ({ chapter: m.NEET_CH_DF_CHAPTER, notes: m.NEET_CH_DF_NOTES })),
+  "neet-chemistry/hydrocarbons": () => import("@/app/notes/neet-chemistry/hydrocarbons/_data").then((m) => ({ chapter: m.NEET_CH_HC_CHAPTER, notes: m.NEET_CH_HC_NOTES })),
+  "neet-chemistry/amines": () => import("@/app/notes/neet-chemistry/amines/_data").then((m) => ({ chapter: m.NEET_CH_AM_CHAPTER, notes: m.NEET_CH_AM_NOTES })),
+  "neet-chemistry/chemical-kinetics": () => import("@/app/notes/neet-chemistry/chemical-kinetics/_data").then((m) => ({ chapter: m.NEET_CH_CK_CHAPTER, notes: m.NEET_CH_CK_NOTES })),
+  "neet-chemistry/organic-basic-principles": () => import("@/app/notes/neet-chemistry/organic-basic-principles/_data").then((m) => ({ chapter: m.NEET_CH_OC_CHAPTER, notes: m.NEET_CH_OC_NOTES })),
+  "neet-chemistry/structure-of-atom": () => import("@/app/notes/neet-chemistry/structure-of-atom/_data").then((m) => ({ chapter: m.NEET_CH_SA_CHAPTER, notes: m.NEET_CH_SA_NOTES })),
+  "neet-chemistry/thermodynamics": () => import("@/app/notes/neet-chemistry/thermodynamics/_data").then((m) => ({ chapter: m.NEET_CH_TH_CHAPTER, notes: m.NEET_CH_TH_NOTES })),
+  "neet-chemistry/equilibrium": () => import("@/app/notes/neet-chemistry/equilibrium/_data").then((m) => ({ chapter: m.NEET_CH_EQ_CHAPTER, notes: m.NEET_CH_EQ_NOTES })),
+  "neet-chemistry/solutions": () => import("@/app/notes/neet-chemistry/solutions/_data").then((m) => ({ chapter: m.NEET_CH_SO_CHAPTER, notes: m.NEET_CH_SO_NOTES })),
+  "neet-chemistry/electrochemistry": () => import("@/app/notes/neet-chemistry/electrochemistry/_data").then((m) => ({ chapter: m.NEET_CH_EC_CHAPTER, notes: m.NEET_CH_EC_NOTES })),
+  "neet-chemistry/some-basic-concepts": () => import("@/app/notes/neet-chemistry/some-basic-concepts/_data").then((m) => ({ chapter: m.NEET_CH_SB_CHAPTER, notes: m.NEET_CH_SB_NOTES })),
+  "neet-chemistry/classification-of-elements": () => import("@/app/notes/neet-chemistry/classification-of-elements/_data").then((m) => ({ chapter: m.NEET_CH_CP_CHAPTER, notes: m.NEET_CH_CP_NOTES })),
+  "neet-chemistry/redox-reactions": () => import("@/app/notes/neet-chemistry/redox-reactions/_data").then((m) => ({ chapter: m.NEET_CH_RR_CHAPTER, notes: m.NEET_CH_RR_NOTES })),
+  "neet-chemistry/haloalkanes-and-haloarenes": () => import("@/app/notes/neet-chemistry/haloalkanes-and-haloarenes/_data").then((m) => ({ chapter: m.NEET_CH_HA_CHAPTER, notes: m.NEET_CH_HA_NOTES })),
+  "neet-chemistry/alcohols-phenols-and-ethers": () => import("@/app/notes/neet-chemistry/alcohols-phenols-and-ethers/_data").then((m) => ({ chapter: m.NEET_CH_AL_CHAPTER, notes: m.NEET_CH_AL_NOTES })),
+  "neet-chemistry/biomolecules": () => import("@/app/notes/neet-chemistry/biomolecules/_data").then((m) => ({ chapter: m.NEET_CH_BM_CHAPTER, notes: m.NEET_CH_BM_NOTES })),
 };
