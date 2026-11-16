@@ -8,7 +8,7 @@
  * chapter a later part is filed under (the Top 10 rule, lib/homework/topPyqs).
  */
 import { describe, it, expect } from "vitest";
-import { isRepeatNote, repeatChapters, type RepeatPlanRow } from "@/lib/ebooks/repeats";
+import { isRepeatNote, pinChapterOrder, repeatChapters, repeatChaptersOfSubjects, type RepeatPlanRow } from "@/lib/ebooks/repeats";
 
 const row = (
   day: number,
@@ -80,5 +80,97 @@ describe("repeatChapters", () => {
 
   it("returns nothing for a plan with no repeats", () => {
     expect(repeatChapters([row(1, 1, "Asked once: 2024")])).toEqual([]);
+  });
+});
+
+// Competitive-exam books (2026-11-16): JEE and SSC chapters share order_index
+// values (JEE Maths: 27 chapters, 7 values), so their books pin the order by
+// chapter name, and a chapter the list does not name stops the build rather
+// than landing somewhere by accident.
+describe("pinChapterOrder", () => {
+  const rows = [
+    row(1, 1, "Asked 2 times: 2023, 2024", ["Vectors", 0]),
+    row(1, 2, "Asked 2 times: 2023, 2024", ["Limits", 0]),
+    row(1, 3, "Asked 2 times: 2023, 2024", ["Matrices", 0]),
+  ];
+
+  it("orders chapters by their place in the pinned list", () => {
+    const pinned = pinChapterOrder(rows, ["Matrices", "Limits", "Vectors"]);
+    expect(repeatChapters(pinned).map((c) => c.chapterName)).toEqual(["Matrices", "Limits", "Vectors"]);
+  });
+
+  it("refuses a chapter the list does not name", () => {
+    expect(() => pinChapterOrder(rows, ["Matrices", "Limits"])).toThrow(/Vectors/);
+  });
+
+  it("leaves the rows it was given unchanged", () => {
+    pinChapterOrder(rows, ["Matrices", "Limits", "Vectors"]);
+    expect(rows.map((r) => r.chapterOrder)).toEqual([0, 0, 0]);
+  });
+});
+
+// SSC CGL General Awareness (2026-11-16): one book from seven subjects' plans,
+// one chapter per SUBJECT. Its first build gave each subject's chapters their
+// own (34 chapters, many of 1-2 questions, each on two near-empty pages).
+// Inside a subject, its chapters' order, then the plan's. Two plans share day
+// and position numbers, so each is grouped on its own.
+describe("repeatChaptersOfSubjects", () => {
+  const history = [
+    row(1, 1, "Asked 2 times: 2023, 2024", ["Modern India", 1]),
+    row(1, 2, "Asked 2 times: 2023, 2024", ["Ancient India", 0]),
+    row(2, 1, "This type asked 2 times: 2023, 2024. This one: 2024", ["Modern India", 1]),
+  ];
+  const polity = [row(1, 1, "Asked 3 times: 2023, 2024, 2025", ["Fundamental Rights", 0], 1, "p1")];
+  const both = () =>
+    repeatChaptersOfSubjects([
+      { subject: "History", rows: history },
+      { subject: "Polity", rows: polity },
+    ]);
+
+  it("prints one chapter per subject, in turn", () => {
+    expect(both().map((c) => c.chapterName)).toEqual(["History", "Polity"]);
+  });
+
+  it("keeps a subject's chapters in order, then the plan's order, numbered 1..n", () => {
+    const historyCh = both()[0];
+    expect(historyCh.slots.map((s) => s.parts[0].questionId)).toEqual(["q1-2-1", "q1-1-1", "q2-1-1"]);
+    expect(historyCh.slots.map((s) => s.number)).toEqual([1, 2, 3]);
+    expect(historyCh.slots.map((s) => s.parts[0].label)).toEqual(["1", "2", "3"]);
+    expect(historyCh.slots.map((s) => s.kind)).toEqual(["repeat", "repeat", "type"]);
+  });
+
+  it("keeps a slot from one plan apart from the same day and position in another", () => {
+    expect(both()[1].slots[0].parts).toEqual([{ questionId: "p1", label: "1" }]);
+  });
+
+  it("relabels a case study's parts under its new number", () => {
+    const withCase = [
+      ...history,
+      row(3, 1, "Asked 2 times: 2023, 2025", ["Modern India", 1], 1, "c1"),
+      row(3, 1, "Asked 2 times: 2023, 2025", ["Modern India", 1], 2, "c2"),
+    ];
+    const ch = repeatChaptersOfSubjects([
+      { subject: "History", rows: withCase },
+      { subject: "Polity", rows: polity },
+    ])[0];
+    expect(ch.slots[3].parts).toEqual([
+      { questionId: "c1", label: "4 (a)" },
+      { questionId: "c2", label: "4 (b)" },
+    ]);
+  });
+
+  it("drops a subject with no repeats", () => {
+    const chapters = repeatChaptersOfSubjects([
+      { subject: "History", rows: history },
+      { subject: "Physics", rows: [row(1, 1, "Asked once: 2024")] },
+    ]);
+    expect(chapters.map((c) => c.chapterName)).toEqual(["History"]);
+  });
+
+  it("names a one-subject book's chapters plainly", () => {
+    expect(repeatChaptersOfSubjects([{ subject: "History", rows: history }]).map((c) => c.chapterName)).toEqual([
+      "Ancient India",
+      "Modern India",
+    ]);
   });
 });

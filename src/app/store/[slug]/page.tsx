@@ -58,8 +58,9 @@ const INSIDE: Record<StoreEbook["kind"], string[]> = {
     "Model answers for every written question",
   ],
   repeats: [
-    "Every question the board has asked more than once, most-asked first",
-    "Then the types of question it keeps coming back to",
+    // Worded for any examiner: the board books and, since 2026-11-16, JEE, CET and SSC.
+    "Every question asked more than once in past papers, most-asked first",
+    "Then the types of question that keep coming back",
     "When each was asked, on a line over the question",
     "A worked solution to every question at the end of its chapter",
   ],
