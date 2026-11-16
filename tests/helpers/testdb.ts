@@ -78,6 +78,11 @@ export function extractDbUrlRef(dbUrl: string | undefined | null): string | null
  * reset emptied it (2026-11-03); tests/testdb-reset-keeps.test.ts now fails on
  * any migration-seeded table left off this list.
  */
+/** Every seed question's content_hash starts with this (scripts/testdb/seed.ts),
+ *  and no test fixture's does: the end-of-run sweep uses it to tell the seed
+ *  org's real seed rows from a killed run's leftovers. */
+export const SEED_CONTENT_HASH_PREFIX = "testdb-seed-";
+
 export const RESET_KEEPS = new Set(["testdb_migrations", "paywall_settings", "plans", "chat_settings", "ebooks"]);
 
 /** The public tables testdb:reset empties, in the order given. */
