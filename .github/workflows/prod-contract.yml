@@ -36,6 +36,10 @@ jobs:
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Full history: the seo:dates check below reads each _data file's last
+          # commit date, and a shallow clone collapses git log to one commit.
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -79,6 +83,15 @@ jobs:
         if: ${{ !cancelled() }}
         timeout-minutes: 2
         run: set -o pipefail; npm run smoke:live-counts 2>&1 | tee live-counts.log
+      # The sitemap's <lastmod> for /notes and /guide is generated and committed
+      # (npm run seo:dates). Shipping a chapter without regenerating it raises no
+      # error anywhere: /guide/mht-cet-maths sat three weeks without a lastmod, and
+      # six NEET Chemistry chapters were missing on 2026-11-17. Not in prepush: at
+      # push time the content commit's date does not exist yet.
+      - name: Sitemap content dates are current
+        if: ${{ !cancelled() }}
+        timeout-minutes: 3
+        run: set -o pipefail; npm run seo:dates -- --check 2>&1 | tee seo-dates.log
       # Email the owner when any step above failed (TECH_DEBT_SPEC.md 1.2): GitHub's own
       # failure emails went unread while this check stayed red for 8 days in October.
       # Weekly npm audit summary in the job summary, Mondays (and on a manual run). Report only:
@@ -101,4 +114,4 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
-        run: npm run ops:notify-check-failure -- --workflow="Prod contract" --log=contract.log --log=notes-lint.log --log=live-counts.log --apply
+        run: npm run ops:notify-check-failure -- --workflow="Prod contract" --log=contract.log --log=notes-lint.log --log=live-counts.log --log=seo-dates.log --apply
