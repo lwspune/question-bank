@@ -35,7 +35,9 @@ describe.skipIf(!HAS_ENV)("/api/export/formula-sheet", () => {
     expect((await POST(post({}))).status).toBe(400);
     expect((await POST(post({ subjectRoute: "nda-maths" }))).status).toBe(400);
     expect((await POST(post({ subjectRoute: "nda-maths", chapterSlug: "" }))).status).toBe(400);
-  });
+    // The first import loads the whole /notes registry (over 650 chapters), which can pass
+    // 30 s on a loaded full run; the other registry-reading tests use the same allowance.
+  }, 120_000);
 
   it("refuses a chapter that is not in the notes registry", async () => {
     const { POST } = await import("@/app/api/export/formula-sheet/route");
