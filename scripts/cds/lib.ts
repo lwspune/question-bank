@@ -29,6 +29,9 @@ export type TQ = {
   difficulty: string; // EASY|MODERATE|HARD
   reasoning?: string;
   subtopic?: string; // required when the section has perQuestionSubtopic
+  /** Defective as printed (owner policy 2026-10-29): shown above the answer
+   *  line; the row also rides as grace through src/lib/mocks/flawed.json. */
+  notice?: string;
 };
 
 export type Underlines = {
@@ -245,7 +248,8 @@ export function buildRecords(
      * on it.]"). Adding one to CDS English is a product decision, not a
      * formatting one.
      */
-    const solution = `Answer: ${q.answer}. ${(q.reasoning || "").trim()}`.trim();
+    const answerLine = `Answer: ${q.answer}. ${(q.reasoning || "").trim()}`.trim();
+    const solution = q.notice ? `**Note:** ${q.notice.trim()}\n\n${answerLine}` : answerLine;
 
     const opt = (l: string) => options.find((o) => o.label === l)?.text ?? "";
     rows.push({
