@@ -7,11 +7,12 @@
  * (2026-10-13), which keeps its reveal state with the rest of the board page,
  * so the reveal state comes in from the caller.
  */
-import Link from "next/link";
-import { Check, ChevronRight, Clock } from "lucide-react";
+import { Check, Clock } from "lucide-react";
 import BlockText from "@/components/math/BlockText";
-import { seeAllLabel } from "@/lib/homework/display";
+import { groupPanelText, seeAllLabel } from "@/lib/homework/display";
 import { groupHref } from "@/lib/homework/links";
+import type { RepeatLineFrom } from "@/lib/activity/clientEvents";
+import SeeAllGroupLink from "./SeeAllGroupLink";
 import BoardPassage from "@/app/board/BoardPassage";
 import BoardLangSwitch from "@/app/board/BoardLangSwitch";
 import { fromBoardQuestion } from "@/lib/present/viewModel";
@@ -39,6 +40,7 @@ export default function HomeworkSlotList({
   marks,
   due,
   printedMarks,
+  seeAllFrom = "homework",
 }: {
   slots: HomeworkSlot<BoardQuestion>[];
   supabaseUrl: string;
@@ -66,6 +68,8 @@ export default function HomeworkSlotList({
   due?: ReadonlySet<string>;
   /** Printed board marks per question (the /board Top tab). Absent elsewhere. */
   printedMarks?: Readonly<Record<string, BoardMarks>>;
+  /** The screen a See all tap is recorded under: it opens the group in a panel (2026-11-16). */
+  seeAllFrom?: RepeatLineFrom;
 }) {
   let order = 0;
   return (
@@ -92,17 +96,21 @@ export default function HomeworkSlotList({
               {paperHeadings ? null : s.note}
               {(() => {
                 const label = planSlug && s.group != null ? seeAllLabel(s.note) : null;
-                return label ? (
+                const text = label ? groupPanelText(s.note) : null;
+                return label && text ? (
                   <>
                     {" "}
-                    <Link
+                    <SeeAllGroupLink
+                      label={label}
                       href={groupHref(planSlug!, s.group!)}
-                      prefetch={false}
-                      className="inline-flex items-center gap-0.5 whitespace-nowrap font-medium text-brand-accent hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                    >
-                      {label}
-                      <ChevronRight className="h-3.5 w-3.5" aria-hidden />
-                    </Link>
+                      planSlug={planSlug!}
+                      n={s.group!}
+                      title={text.title}
+                      description={text.description}
+                      ownIds={s.questions.map((q) => q.id)}
+                      correct={pickedCorrect(s.questions, picks)}
+                      from={seeAllFrom}
+                    />
                   </>
                 ) : null;
               })()}
@@ -149,6 +157,15 @@ export default function HomeworkSlotList({
       </ol>
     </>
   );
+}
+
+/** Right or wrong on a one-question slot whose option was picked; null otherwise (a case study, nothing picked). */
+function pickedCorrect(questions: readonly BoardQuestion[], picks: ReadonlyMap<string, string>): boolean | null {
+  if (questions.length !== 1) return null;
+  const q = questions[0];
+  const pick = picks.get(q.id);
+  if (pick === undefined) return null;
+  return q.options.find((o) => o.label === pick)?.isCorrect ?? null;
 }
 
 function selfMarkOf(m: QuestionMark | undefined): SelfMark | null {

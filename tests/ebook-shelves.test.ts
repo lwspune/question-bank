@@ -40,6 +40,25 @@ describe("shelfOf", () => {
     ]);
   });
 
+  // Competitive-exam Repeated PYQs (2026-11-16): JEE and SSC get shelves of their
+  // own, and a CET book sits beside that subject's Formula and Notes books.
+  it("puts a competitive-exam Repeated PYQs book on its exam's shelf", () => {
+    expect(shelfOf(book("jee-mains-physics-repeated-pyqs"))).toEqual({ shelf: "jee-mains", subject: "Physics" });
+    expect(shelfOf(book("ssc-cgl-general-awareness-repeated-pyqs"))).toEqual({ shelf: "ssc-cgl", subject: "General Awareness" });
+    expect(shelfOf(book("mht-cet-maths-repeated-pyqs"))).toEqual({ shelf: "mht-cet", subject: "Mathematics" });
+    expect(shelfOf(book("mht-cet-maths-formulas", "MHT-CET Mathematics Formula Book")).subject).toBe("Mathematics");
+  });
+
+  it("orders the JEE and SSC shelves after MHT-CET, before the boards", () => {
+    const keys = storeShelves([
+      book("cbse-12-physics-repeated-pyqs"),
+      book("ssc-cgl-reasoning-repeated-pyqs"),
+      book("jee-mains-maths-repeated-pyqs"),
+      book("mht-cet-physics-repeated-pyqs"),
+    ]).map((s) => s.key);
+    expect(keys).toEqual(["mht-cet", "jee-mains", "ssc-cgl", "cbse-12"]);
+  });
+
   it("sends a book the catalog does not know to More books, titled as stored", () => {
     expect(shelfOf(book("nda-maths-pyq", "NDA Mathematics PYQ Book"))).toEqual({ shelf: "more", subject: "NDA Mathematics PYQ Book" });
   });

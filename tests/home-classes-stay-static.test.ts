@@ -1,20 +1,21 @@
 /**
- * `/` and `/tutor` must stay CACHED pages (2026-11-06).
+ * `/` and `/classes` must stay CACHED pages (2026-11-06; `/classes` replaced
+ * `/tutor`, which this pinned, on 2026-11-16).
  *
  * Both used to read the session during server render: `/` to send signed-in
  * people to their own home, `/tutor` to show the form or a sign-in card. That
  * made every visit a fresh server render. On 2026-11-06 crawlers alone fetched
  * `/` ~1.4K and `/tutor` ~2.7K times a day (OAI-SearchBot follows the header
  * links), each one a paid render. The signed-in work now happens in middleware
- * (`/`) and in the browser (`/tutor`), and the pages read nothing about the
- * request.
+ * (`/`) and in the browser (the /classes form's prefill), and the pages read
+ * nothing about the request.
  *
  * A request read (cookies(), headers(), a session helper, the server Supabase
  * client) would silently make them per-request again and no build fails, so
  * this pins it in source, like tests/mock-catalogue-stays-static.test.ts.
  */
 import { describe, it, expect } from "vitest";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
 const read = (...p: string[]) => readFileSync(join(process.cwd(), ...p), "utf8");
@@ -35,7 +36,7 @@ const SERVER_FILES: string[][] = [
   ["src", "app", "page.tsx"],
   ["src", "components", "home", "HomeLanding.tsx"],
   ["src", "app", "home-exam", "[examSlug]", "page.tsx"],
-  ["src", "app", "tutor", "page.tsx"],
+  ["src", "app", "classes", "page.tsx"],
 ];
 
 describe("cached pages read nothing about the request", () => {
@@ -67,17 +68,24 @@ describe("the per-exam homepage copies", () => {
   });
 });
 
-describe("/tutor resolves the visitor in the browser", () => {
-  const island = read("src", "app", "tutor", "TutorGate.tsx");
+describe("/classes resolves the visitor in the browser", () => {
+  const island = read("src", "app", "classes", "ClassInterestForm.tsx");
 
   it("is a client island that asks only when a sign-in cookie exists", () => {
     expect(island.startsWith('"use client"')).toBe(true);
     expect(island).toContain("hasAuthCookie");
-    expect(island).toContain("/api/tutor-interest");
+    expect(island).toContain("/api/class-interest");
   });
 
   it("reads ?from= from the address bar, not useSearchParams (which would undo the prerender)", () => {
     expect(island).not.toContain("useSearchParams");
     expect(island).toContain("window.location.search");
+  });
+});
+
+describe("/tutor", () => {
+  it("has no page of its own: next.config redirects it to /classes", () => {
+    expect(existsSync(join(process.cwd(), "src", "app", "tutor", "page.tsx"))).toBe(false);
+    expect(read("next.config.mjs")).toMatch(/source:\s*"\/tutor",\s*destination:\s*"\/classes"/);
   });
 });

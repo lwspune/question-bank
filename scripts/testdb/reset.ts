@@ -19,6 +19,7 @@ import { execFileSync } from "node:child_process";
 import { Client } from "pg";
 import { createClient } from "@supabase/supabase-js";
 import { ALLOWED_TEST_REFS, extractDbUrlRef, extractProjectRef, tablesToTruncate } from "../../tests/helpers/testdb";
+import { acquireTestDbLock, testDbLockPath } from "../../tests/helpers/testdbLock";
 
 config({ path: path.join(process.cwd(), ".env.test.local") });
 
@@ -33,6 +34,23 @@ async function main(): Promise<void> {
   if (!apiRef || !ALLOWED_TEST_REFS.has(apiRef) || dbRef !== apiRef) {
     throw new Error("Refusing: env does not point at a single allow-listed test project");
   }
+
+  // Wait for any test run on this machine to finish: a reset under a running
+  // suite deletes its fixtures mid-test (tests/helpers/testdbLock.ts).
+  const release = await acquireTestDbLock(testDbLockPath(apiRef), {
+    pid: process.pid,
+    cwd: process.cwd(),
+    startedAt: new Date().toISOString(),
+    what: "testdb:reset",
+  });
+  try {
+    await resetAll(dbUrl, url, service);
+  } finally {
+    release();
+  }
+}
+
+async function resetAll(dbUrl: string, url: string, service: string): Promise<void> {
 
   // 1) truncate all public base tables (RESTART IDENTITY, CASCADE).
   const client = new Client({ connectionString: dbUrl });

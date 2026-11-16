@@ -56,7 +56,7 @@ import {
 } from "../../src/lib/ebooks/bookHtml";
 import { EBOOKS, ebookChapters, getEbook, isBoardEbook, type EbookChapter, type ChapterwiseEbook, type EbookDefinition, type PapersEbook, type RepeatsEbook, type TextbookEbook } from "../../src/lib/ebooks/catalog";
 import { pickBookPapers } from "../../src/lib/ebooks/boardPapers";
-import { repeatChapters, type RepeatPlanRow } from "../../src/lib/ebooks/repeats";
+import { pinChapterOrder, repeatChaptersOfSubjects, type RepeatPlanRow } from "../../src/lib/ebooks/repeats";
 import { chapterwiseChapters, groupLabel, type ChapterwiseSlot } from "../../src/lib/ebooks/chapterwise";
 import { bookContext } from "../../src/lib/ebooks/contexts";
 import { getBoardChapter, groupHasSubHeaders, listBoardChapters } from "../../src/lib/board/query";
@@ -389,12 +389,25 @@ async function buildRepeatChapters(
   totals: Totals,
   head: string
 ): Promise<{ built: Built[]; preview: string }> {
-  const plan = await loadPlanRows(anon, ebook);
-  const all = repeatChapters(plan.rows);
-  if (all.length === 0) throw new Error(`ebook ${ebook.slug}: plan ${plan.slug} has no repeats`);
+  // A book reads one subject's plan, or several in turn (SSC General Awareness);
+  // a pinned chapter order, where the book has one, replaces chapters.order_index.
+  const plans = [];
+  for (const subject of ebook.planSubjects ?? [ebook.subject]) {
+    const plan = await loadPlanRows(anon, { ...ebook, subject });
+    const order = ebook.chapterOrder?.[subject];
+    let rows = plan.rows;
+    try {
+      if (order) rows = pinChapterOrder(rows, order);
+    } catch (err) {
+      throw new Error(`ebook ${ebook.slug} ${subject}: ${err instanceof Error ? err.message : err}`);
+    }
+    console.log(`  plan ${plan.slug}`);
+    plans.push({ subject, rows });
+  }
+  const all = repeatChaptersOfSubjects(plans);
+  if (all.length === 0) throw new Error(`ebook ${ebook.slug}: its plans have no repeats`);
   const chapters = all.filter((c) => !only || only.includes(chapterSlug(c.chapterName)));
   if (chapters.length === 0) throw new Error(`--only matched none of: ${all.map((c) => chapterSlug(c.chapterName)).join(", ")}`);
-  console.log(`  plan ${plan.slug}`);
   const built: Built[] = [];
   let preview = "";
   for (const [i, c] of chapters.entries()) {
@@ -847,9 +860,11 @@ async function buildBook(
       : ebook.kind === "formula"
         ? formulaPreview(sheetChapter.chapter.notes!, sheetHead)
         : notesPreview(built[0].chapter.notes!, sheetHead);
-  // The MHT-CET books' covers carry a line for the buyer's name (2026-10-28);
-  // the board books' gain one when their covers are next printed.
-  const namePlate = !isBoardEbook(ebook);
+  // The MHT-CET books' covers carry a line for the buyer's name (2026-10-28),
+  // and so do the competitive-exam Repeated PYQs books, new in 2026-11-16; the
+  // board books gain one when their covers are next printed.
+  const examiner = ebook.kind === "repeats" ? ebook.examiner : undefined;
+  const namePlate = !isBoardEbook(ebook) || examiner === "exam";
 
   // Front matter last: its contents page needs every chapter's first page.
   const counts = await pageCounts(built.map((b) => b.pdf));
@@ -866,11 +881,13 @@ async function buildBook(
       subtitle: ebook.subtitle,
       stats: coverStats(ebook, built.length, totals),
       preview,
+      examiner,
       // The exam or board line over the subject; the edition is the newest year in the book.
       cover: isBoardEbook(ebook)
         ? {
             over: ebook.board,
             main: ebook.subjectTitle,
+            namePlate,
             // The newest year in the book; a textbook book names no years, so the year it was built.
             edition: `${totals.years.length ? Math.max(...totals.years) : new Date().getFullYear()} Edition`,
           }

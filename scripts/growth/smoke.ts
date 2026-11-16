@@ -349,6 +349,10 @@ async function main() {
         // Read by hand: Gulf students' pass revenue (entitlements by signup_country) per Gulf signup.
         line = "by hand: entitlements amount_paise for Gulf signup_country students per Gulf signup";
         break;
+      case "offline-classes":
+        // Read by hand: class_interest leads (migration 0265), Pune vs other, on /dashboard/classes.
+        line = "by hand: /dashboard/classes (class_interest, Pune leads in 4 weeks)";
+        break;
       case "v-follow-up-loop":
         // Read by hand: v_followups against Ask V explanations (migration 0250, V_LEARNING_LOOP.md step 2).
         line = "by hand: npm run v:learning";

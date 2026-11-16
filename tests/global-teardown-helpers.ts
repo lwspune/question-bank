@@ -1,4 +1,5 @@
 import { testRunId } from "./helpers/runId";
+import { SEED_CONTENT_HASH_PREFIX } from "./helpers/testdb";
 /**
  * Pure predicates for the global-teardown sweep. Extracted so they can be
  * unit-tested without a live DB.
@@ -111,6 +112,22 @@ export function shouldSweepUser(
 ): boolean {
   if (!isTestAuthEmail(user.email)) return false;
   return belongsToRun(user.email as string, own) || isStaleTestRow(user.created_at, now);
+}
+
+/**
+ * A question in a REAL org (the seed org, "LWS Pune") that this run may delete.
+ * Several tests write fixtures there and clean up only in their own afterAll, so
+ * a killed run left them for good. Never a seed question (its content_hash
+ * carries SEED_CONTENT_HASH_PREFIX); otherwise ours, or any row past
+ * STALE_HOURS. An undatable row we do not own is kept.
+ */
+export function shouldSweepSeedOrgQuestion(
+  q: { text?: string | null; content_hash?: string | null; created_at?: string | null },
+  own: ReadonlySet<string>,
+  now: Date
+): boolean {
+  if ((q.content_hash ?? "").startsWith(SEED_CONTENT_HASH_PREFIX)) return false;
+  return belongsToRun(q.text ?? "", own) || isStaleTestRow(q.created_at, now);
 }
 
 const defaultSleep = (ms: number): Promise<void> =>

@@ -31,6 +31,12 @@ describe("panelSlots", () => {
     expect(slots.map((s) => s.questions.map((q) => q.id))).toEqual([["a2"], ["b"]]);
   });
 
+  it("leaves out every part of a case study the student was on (the homework list, 2026-11-16)", () => {
+    const { slots, ownSitting } = panelSlots([slot(1, "NDA 1 2017", ["a", "a2"]), slot(2, "NDA 1 2021", ["b"])], ["a", "a2"]);
+    expect(slots.map((s) => s.questions.map((q) => q.id))).toEqual([["b"]]);
+    expect(ownSitting).toBe("NDA 1 2017");
+  });
+
   it("shows everything when the question is not in the group", () => {
     const { slots, ownSitting } = panelSlots(SLOTS, "zzz");
     expect(slots).toHaveLength(3);

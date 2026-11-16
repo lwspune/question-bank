@@ -57,11 +57,15 @@ import type { TestProject } from "vitest/node";
 import {
   belongsToRun,
   isTestTaxonomyName,
+  REAL_ORG_NAMES,
   shouldSweepOrg,
+  shouldSweepSeedOrgQuestion,
   shouldSweepUser,
   sweepUntilClean,
 } from "./global-teardown-helpers";
 import { readRunIds } from "./helpers/runIdRegistry";
+import { extractProjectRef, SEED_CONTENT_HASH_PREFIX } from "./helpers/testdb";
+import { acquireTestDbLock, testDbLockPath } from "./helpers/testdbLock";
 import { resolveSupabaseTestEnv } from "./helpers/testenv";
 
 /** What one sweep may delete: this run's ids, and stale rows as of `now`. */
@@ -71,35 +75,59 @@ export type SweepScope = { own: ReadonlySet<string>; now: Date };
 const RUNS_ROOT = path.join(tmpdir(), "qb-test-runs");
 
 export default async function setup(project: TestProject) {
+  // ONE RUN AT A TIME per test project on this machine (tests/helpers/testdbLock.ts):
+  // a second session's run waits here until this one's sweep below is done.
+  // Watch mode skips it, or an open `test:watch` would block every push.
+  const release = await takeTestDbLock(project);
+  process.once("exit", release); // a crash still frees it; a kill is caught as a dead pid
+
   const runDir = path.join(RUNS_ROOT, randomUUID());
   mkdirSync(runDir, { recursive: true });
   project.provide("testRunDir", runDir);
   removeOldRunDirs(runDir);
 
   return async function teardown(): Promise<void> {
-    // Same env resolution as tests/setup.ts — globalSetup does NOT go through
-    // setupFiles, and before this it read .env.local directly, which would
-    // have swept PROD while the workers wrote to the test project.
-    resolveSupabaseTestEnv();
-
-    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-    if (!url || !key) return; // tests skipped — nothing to clean
-
-    const admin = createClient(url, key, { auth: { persistSession: false } });
-    const scope: SweepScope = { own: readRunIds(runDir), now: new Date() };
-
     try {
-      await sweepTestData(admin, scope);
+      // Same env resolution as tests/setup.ts — globalSetup does NOT go through
+      // setupFiles, and before this it read .env.local directly, which would
+      // have swept PROD while the workers wrote to the test project.
+      resolveSupabaseTestEnv();
 
-      // GUARDRAIL — fail the run loudly if THIS run's pollution (or a stale
-      // leftover) survived. Resilient to the delete-visibility race: re-sweeps
-      // + re-checks before throwing on a leak that genuinely persists.
-      await assertNoLeakedTestData(admin, scope);
+      const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+      const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+      if (!url || !key) return; // tests skipped — nothing to clean
+
+      const admin = createClient(url, key, { auth: { persistSession: false } });
+      const scope: SweepScope = { own: readRunIds(runDir), now: new Date() };
+
+      try {
+        await sweepTestData(admin, scope);
+
+        // GUARDRAIL — fail the run loudly if THIS run's pollution (or a stale
+        // leftover) survived. Resilient to the delete-visibility race: re-sweeps
+        // + re-checks before throwing on a leak that genuinely persists.
+        await assertNoLeakedTestData(admin, scope);
+      } finally {
+        rmSync(runDir, { recursive: true, force: true });
+      }
     } finally {
-      rmSync(runDir, { recursive: true, force: true });
+      release();
     }
   };
+}
+
+/** Take the test-database lock, or a no-op when there is no test database or in watch mode. */
+async function takeTestDbLock(project: TestProject): Promise<() => void> {
+  if (project.vitest.config.watch) return () => {};
+  resolveSupabaseTestEnv();
+  const ref = extractProjectRef(process.env.NEXT_PUBLIC_SUPABASE_URL);
+  if (!ref) return () => {}; // no test database: the DB files skip
+  return acquireTestDbLock(testDbLockPath(ref), {
+    pid: process.pid,
+    cwd: process.cwd(),
+    startedAt: new Date().toISOString(),
+    what: "vitest",
+  });
 }
 
 /** A killed run never removes its folder: drop any older than a day. */
@@ -123,7 +151,7 @@ function removeOldRunDirs(keep: string): void {
 }
 
 /**
- * The four-stage sweep. Idempotent + re-runnable, so the guardrail can call it
+ * The five-stage sweep. Idempotent + re-runnable, so the guardrail can call it
  * again when a post-sweep read still sees a (likely already-doomed) survivor.
  */
 export async function sweepTestData(admin: SupabaseClient, scope: SweepScope): Promise<void> {
@@ -139,6 +167,11 @@ export async function sweepTestData(admin: SupabaseClient, scope: SweepScope): P
     // Cascades questions (→ options/tags/reports), org_members, upload_jobs.
     await admin.from("organizations").delete().in("id", testOrgIds);
   }
+
+  // ── 1b) LEFTOVER QUESTIONS IN THE REAL SEED ORG ─────────────────────────
+  // The org sweep never touches a real org, but several tests write fixture
+  // questions into it and clean up only in their own afterAll (2026-11-16).
+  await sweepSeedOrgQuestions(admin, scope);
 
   // ── 2) TEST TAXONOMY (global, no org_id) ────────────────────────────────
   const { data: subjects } = await admin.from("subjects").select("id, name");
@@ -170,6 +203,40 @@ export async function sweepTestData(admin: SupabaseClient, scope: SweepScope): P
   }
 }
 
+/** Fixture questions a run left in the real seed org (shouldSweepSeedOrgQuestion).
+ *  Paged: a bare select stops at 1000 rows without saying so. */
+async function listSeedOrgLeftovers(admin: SupabaseClient, scope: SweepScope): Promise<string[]> {
+  const { data: orgs } = await admin.from("organizations").select("id").in("name", [...REAL_ORG_NAMES]);
+  const orgIds = (orgs ?? []).map((o) => o.id as string);
+  if (orgIds.length === 0) return [];
+  const ids: string[] = [];
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await admin
+      .from("questions")
+      .select("id, text, content_hash, created_at")
+      .in("org_id", orgIds)
+      .not("content_hash", "like", `${SEED_CONTENT_HASH_PREFIX}%`)
+      .order("id")
+      .range(from, from + 999);
+    if (error) break;
+    for (const q of data ?? []) if (shouldSweepSeedOrgQuestion(q, scope.own, scope.now)) ids.push(q.id);
+    if ((data ?? []).length < 1000) break;
+  }
+  return ids;
+}
+
+/** Delete this run's and stale fixture questions from the real seed org. */
+export async function sweepSeedOrgQuestions(admin: SupabaseClient, scope: SweepScope): Promise<void> {
+  const ids = await listSeedOrgLeftovers(admin, scope);
+  for (let i = 0; i < ids.length; i += 200) {
+    const chunk = ids.slice(i, i + 200); // .in() lives in the URL: keep it short
+    // RESTRICT foreign keys: a test homework plan or board paper still using it.
+    await admin.from("homework_plan_items").delete().in("question_id", chunk);
+    await admin.from("board_paper_items").delete().in("question_id", chunk);
+    await admin.from("questions").delete().in("id", chunk);
+  }
+}
+
 /** Page through auth.users and collect the test accounts this run may delete. */
 async function listTestAuthUserIds(admin: SupabaseClient, scope: SweepScope): Promise<string[]> {
   const ids: string[] = [];
@@ -197,6 +264,9 @@ export async function collectLeaks(admin: SupabaseClient, scope: SweepScope): Pr
     .filter((s) => isTestTaxonomyName(s.name) && belongsToRun(s.name, scope.own))
     .map((s) => s.name);
   if (leakedSubjects.length) problems.push(`subjects: ${leakedSubjects.join(", ")}`);
+
+  const leakedSeedOrgQuestions = await listSeedOrgLeftovers(admin, scope);
+  if (leakedSeedOrgQuestions.length) problems.push(`seed-org questions: ${leakedSeedOrgQuestions.join(", ")}`);
 
   const leakedUsers = await listTestAuthUserIds(admin, scope);
   if (leakedUsers.length) problems.push(`auth users: ${leakedUsers.length}`);

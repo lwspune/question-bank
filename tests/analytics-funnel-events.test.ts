@@ -37,7 +37,7 @@ describe("FUNNEL_EVENTS", () => {
       "results_congratulate_click",
       "ebook_sample_click",
       "ebook_store_link_click",
-      "tutor_link_click",
+      "classes_link_click",
       "v_progress_tap",
       "v_day_tap",
       "v_path_tap",

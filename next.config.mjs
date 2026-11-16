@@ -72,6 +72,14 @@ const nextConfig = {
         permanent: false,
       },
       {
+        // 2026-11-16: the 1:1 tutoring check at /tutor (migration 0190) was
+        // replaced by the offline-classes form (migration 0265). /tutor was the
+        // header's Tutor button, so old links and crawlers land on the new form.
+        source: "/tutor",
+        destination: "/classes",
+        permanent: true,
+      },
+      {
         // 2026-11-13: SSC CHSL joined SSC CGL's picker family, renamed "SSC", so the
         // family's mock page moved from /mock/exam/ssc-cgl-tiers to /mock/exam/ssc.
         source: "/mock/exam/ssc-cgl-tiers",

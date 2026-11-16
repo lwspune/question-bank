@@ -237,6 +237,7 @@ export default function BoardReader({
               planSlug={top.planSlug}
               showChapter={false}
               idPrefix="top"
+              seeAllFrom="board_top"
               printedMarks={printedMarks}
               revealed={revealed}
               blocked={blocked}
