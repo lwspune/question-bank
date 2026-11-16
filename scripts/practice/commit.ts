@@ -16,7 +16,7 @@ import { spawnSync } from "node:child_process";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { commitStaged } from "../../src/lib/upload/commit";
-import { buildRecords, parseAnswerKey, missingNumbers, findLatexImbalance, type TranscribedQuestion } from "./lib";
+import { buildRecords, parseAnswerKey, missingNumbers, findLatexImbalance, practiceNoteFromSourceFile, type TranscribedQuestion } from "./lib";
 import {
   ORG_ID,
   EXAM_ID,
@@ -49,6 +49,10 @@ async function main() {
   const topicId = process.argv[2];
   const apply = process.argv.includes("--apply");
   const topic = requireTopic(topicId);
+  // The note names the file's own chapter; before 2026-11-17 every topic without one
+  // was stamped "Algebra / Sequence & Series". A topic of another shape must carry `note`.
+  const pyqNote = topic.note ?? practiceNoteFromSourceFile(topic.sourceFile);
+  if (!pyqNote) throw new Error(`${topic.sourceFile}: no note and none can be read from the file name; add note to config.ts`);
   loadEnv();
 
   const questions: TranscribedQuestion[] = JSON.parse(readFileSync(questionsJsonPath(topicId), "utf8"));
@@ -149,7 +153,7 @@ async function main() {
     rows,
     uploadJobId: jobId,
     pyqYear: null,
-    pyqNote: topic.note ?? "NDA Maths practice — Algebra / Sequence & Series",
+    pyqNote,
   });
   console.log(`commit: inserted=${result.inserted} skipped=${result.skipped} failed=${result.failed}`);
   for (const e of result.errors) console.log(`  err row ${e.sourceRow}: ${e.message}`);
