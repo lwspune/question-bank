@@ -64,7 +64,7 @@ export async function fetchSheetHtml(
       current = next.url;
       continue;
     }
-    if (!res.ok) return { ok: false, error: "NTA's site no longer shows this sheet. Check the link, or save the page and upload it." };
+    if (!res.ok) return { ok: false, error: "NTA's site does not show a sheet at this link. Check the link and try again." };
 
     const declared = Number(res.headers.get("content-length") ?? "0");
     if (declared > MAX_BYTES) return { ok: false, error: "This page is too large to be a response sheet." };
