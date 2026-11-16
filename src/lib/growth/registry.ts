@@ -799,7 +799,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "practice-friends",
     status: "decided",
     decision:
-      "Read 2026-11-16: 8 practice tests sent (6 in the two weeks, bar 10) and no friend ever started a copy. Remove the Practise together box from the practice-test result page (owner, 2026-11-16). The code change is separate, not yet made.",
+      "Read 2026-11-16: 8 practice tests sent (6 in the two weeks, bar 10) and no friend ever started a copy. Removed the Practise together box from the practice-test result page and from V's practice-test builder (owner, 2026-11-16); a link already sent still works.",
   },
   {
     id: "mock-together",
@@ -815,7 +815,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "mock-together",
     status: "decided",
     decision:
-      "Read 2026-11-16: 26 papers sent (12 in the two weeks, bar 10), but no friend has ever started one: mock_invite_joins is empty, staff included. Not a bug: the link carries the code through sign-in and the start route records the join; Vercel shows only 6 visitors on utm_campaign mock-together links in a month, and none pressed Start. Remove the Practise together box from the start page (owner, 2026-11-16). The code change is separate, not yet made.",
+      "Read 2026-11-16: 26 papers sent (12 in the two weeks, bar 10), but no friend has ever started one: mock_invite_joins is empty, staff included. Not a bug: the link carries the code through sign-in and the start route records the join; Vercel shows only 6 visitors on utm_campaign mock-together links in a month, and none pressed Start. Removed the Practise together box from the start page, which also stops making an invite row on every signed-in visit (owner, 2026-11-16); a link already sent still starts free.",
   },
   {
     id: "learn-class-12",
