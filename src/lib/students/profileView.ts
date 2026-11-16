@@ -87,6 +87,7 @@ const ACTIVITY_LABELS: Record<ActivityKind, string> = {
   v_not_understood: "Told V they did not understand a question",
   path_covered: "Told their board plan what the class has covered",
   path_switched: "Switched their board plan's chapter",
+  play_round: "Played a round of the calculation game",
 };
 
 const ACTIVITY_KIND_SET: ReadonlySet<string> = new Set(ACTIVITY_KINDS);

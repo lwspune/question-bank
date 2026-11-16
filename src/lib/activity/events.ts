@@ -88,6 +88,11 @@ export const ACTIVITY_KINDS = [
   // path_switched rows are what caps switches at 3. Readout only, never a reward.
   "path_covered",
   "path_switched",
+  // A finished /play round, signed in (metadata: level, correct, wrong,
+  // points, cleared) — 0267. One row per round, no dedupe. Readout only: it is
+  // NOT studying, so nothing that counts work, homework, plan tasks or answered
+  // totals reads it. The play-games experiment asks whether players study MORE.
+  "play_round",
 ] as const;
 
 export type ActivityKind = (typeof ACTIVITY_KINDS)[number];
