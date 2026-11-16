@@ -62,6 +62,13 @@
  *    scripts/reports/apply-fixes.ts); `N\cdot s` and other real products are
  *    left alone by the probe's own guard.
  *
+ * 11. DOUBLE_HYPHEN — pandoc's `--` for the source's en dash, minus sign or
+ *    fill-in blank, printed literally (55 public rows on 2026-11-17). Detection
+ *    only: the right repair depends on the sentence. `proseDoubleHyphen`.
+ *
+ * 12. PANDOC_SCRIPT — pandoc's `^x^` superscript / `~x~` subscript in prose
+ *    ("Ω^-1^", "2^nd^", "^10^C~3~"), printed literally. `prosePandocScript`.
+ *
  * Every detector reuses production helpers, so a false positive here is a real
  * disagreement worth investigating, not a probe artefact. Math zones are masked
  * by `normalizeNewlines` / `maskMathZones`, so `\neq` / `\nabla` / `\nu` and
@@ -78,6 +85,8 @@ import {
   isDashedTable,
   hasSplitCdots,
   mixedMatrixDelimiters,
+  proseDoubleHyphen,
+  prosePandocScript,
 } from "./lib/textProbes";
 import { pandocArtifactCount, stripPandocArtifacts } from "./lib/pandocArtifacts";
 import { hasHiddenArrowLabel } from "./lib/phantomArrows";
@@ -112,7 +121,9 @@ type Finding = {
     | "MIXED_MATRIX_DELIM"
     | "PHANTOM_ARROW"
     | "DASHED_TABLE"
-    | "SPLIT_CDOTS";
+    | "SPLIT_CDOTS"
+    | "DOUBLE_HYPHEN"
+    | "PANDOC_SCRIPT";
   sample: string;
 };
 
@@ -159,6 +170,15 @@ function inspect(r: Row): Finding[] {
         kind: "TABLE_NO_SEPARATOR",
         sample: value.slice(Math.max(0, at - 20), at + 90).replace(/\n/g, "⏎"),
       });
+    }
+    if (proseDoubleHyphen(value)) {
+      const at = Math.max(0, value.indexOf("--"));
+      out.push({ ...base, kind: "DOUBLE_HYPHEN", sample: value.slice(Math.max(0, at - 40), at + 40).replace(/\n/g, "⏎") });
+    }
+    if (prosePandocScript(value)) {
+      const m = /[\^~][^\s^~]{1,12}[\^~]/.exec(value);
+      const at = m ? m.index : 0;
+      out.push({ ...base, kind: "PANDOC_SCRIPT", sample: value.slice(Math.max(0, at - 40), at + 40).replace(/\n/g, "⏎") });
     }
     if (pandocArtifactCount(value) > 0) {
       const fixed = stripPandocArtifacts(value);
@@ -325,6 +345,8 @@ async function main() {
     "PHANTOM_ARROW",
     "DASHED_TABLE",
     "SPLIT_CDOTS",
+    "DOUBLE_HYPHEN",
+    "PANDOC_SCRIPT",
   ] as const) {
     const hits = byKind(kind);
     console.log(`${kind}: ${hits.length}`);

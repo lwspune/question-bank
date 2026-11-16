@@ -1,3 +1,5 @@
+import { maskMathZones } from "../../src/components/math/parseLatex";
+
 /**
  * Two stem-corruption probes, both earned by /dashboard/reports on 2026-07-28.
  * Pure so the false-positive boundary is pinned by tests — each probe's value is
@@ -259,4 +261,35 @@ export function hasSplitCdots(text: string): boolean {
 
 export function fixSplitCdots(text: string): string {
   return text.replace(SPLIT_CDOTS_RE, "\\cdots");
+}
+
+/**
+ * DOUBLE_HYPHEN — pandoc writes the source's en dash, minus sign and fill-in
+ * blank as `--`, which prints as a literal double hyphen on the page and in Word
+ * ("Exclusive -- OR gate", "List -- II", "option --1", "This is -- -- -- type").
+ * Found 2026-09-10 in the HSC lane, 55 PUBLIC rows bank-wide on 2026-11-17.
+ * Detection only: the same two characters mean a minus, a hyphen, a dash or a
+ * blank depending on the sentence, so every hit is repaired by hand.
+ * Not flagged: math zones, `|---|` separator rows, a horizontal rule, and a
+ * table cell holding only dashes (an empty entry, as the source prints it).
+ */
+export function proseDoubleHyphen(text: string): boolean {
+  const { masked } = maskMathZones(text);
+  for (const line of masked.split("\n")) {
+    if (/^\s*\|?[\s|:-]*\|?\s*$/.test(line) && line.includes("-")) continue; // separator row / rule
+    const withoutEmptyCells = line.replace(/\|\s*-+\s*(?=\|)/g, "|");
+    if (/(^|[^-])--([^-]|$)/.test(withoutEmptyCells)) return true;
+  }
+  return false;
+}
+
+/**
+ * PANDOC_SCRIPT — pandoc's markdown superscript `^x^` and subscript `~x~`
+ * ("Ω^-1^", "2^nd^", "^10^C~3~"). Nothing in the render path reads them, so
+ * outside a math zone the carets and tildes print as themselves. Repair puts the
+ * run in a math zone (units, combinations) or spells it out (ordinals).
+ */
+export function prosePandocScript(text: string): boolean {
+  const { masked } = maskMathZones(text);
+  return /\^[^\s^]{1,12}\^/.test(masked) || /[^\s~]~[^\s~]{1,12}~/.test(masked);
 }
