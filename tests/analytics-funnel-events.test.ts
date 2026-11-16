@@ -57,6 +57,7 @@ describe("FUNNEL_EVENTS", () => {
       "score_calc_check",
       "score_calc_share",
       "score_calc_alert",
+      "signin_session_check",
     ]);
   });
 

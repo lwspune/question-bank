@@ -8,7 +8,51 @@ import {
   googleButtonDestination,
   isNewAccount,
   ONE_TAP_SIGNUP_SOURCE,
+  sessionCheckOutcome,
+  nextStepAfterSessionCheck,
 } from "@/lib/auth/oneTap";
+
+/**
+ * After a Google sign-in on /login or /signup, ask the server whether it can see
+ * the new session before moving on (2026-11-16). In the ten days to 16 Nov, 8 of
+ * the 9 Google-button sign-ups whose session the server could not see right away
+ * never finished onboarding: /welcome treated them as signed out and sent them
+ * back to /login.
+ */
+describe("sessionCheckOutcome", () => {
+  it("reads 401 as a session the server cannot see", () => {
+    expect(sessionCheckOutcome(401)).toBe("unseen");
+  });
+
+  it("reads any other answer as seen (a failed save still means a session)", () => {
+    expect(sessionCheckOutcome(200)).toBe("seen");
+    expect(sessionCheckOutcome(500)).toBe("seen");
+  });
+
+  it("reads no answer (network error, timeout) as unknown", () => {
+    expect(sessionCheckOutcome(null)).toBe("unknown");
+  });
+});
+
+describe("nextStepAfterSessionCheck", () => {
+  it("moves on as before when the server sees the session first time", () => {
+    expect(nextStepAfterSessionCheck(1, "seen")).toBe("navigate");
+  });
+
+  it("asks once more when the server cannot see it", () => {
+    expect(nextStepAfterSessionCheck(1, "unseen")).toBe("retry");
+  });
+
+  it("loads the next page in full after a retry that worked, or with no answer", () => {
+    expect(nextStepAfterSessionCheck(2, "seen")).toBe("full-load");
+    expect(nextStepAfterSessionCheck(1, "unknown")).toBe("full-load");
+    expect(nextStepAfterSessionCheck(2, "unknown")).toBe("full-load");
+  });
+
+  it("stops and says so when the server still cannot see it", () => {
+    expect(nextStepAfterSessionCheck(2, "unseen")).toBe("fail");
+  });
+});
 
 const ID = "967773031774-ipoan0rqif44c61jpsf2nisrt6doipdc.apps.googleusercontent.com";
 

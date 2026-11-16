@@ -11,7 +11,9 @@ import {
   makeNonce,
   oneTapDestination,
   resolveGoogleClientId,
+  sessionCheckOutcome,
   shouldOfferOneTap,
+  type SessionCheckOutcome,
   DOWNLOAD_BOX_SIGNUP_SOURCE,
   ONE_TAP_SIGNUP_SOURCE,
 } from "@/lib/auth/oneTap";
@@ -85,7 +87,31 @@ function loadScript(): Promise<void> {
   return scriptLoad;
 }
 
-/** Signs in with Google's credential; stamps `source` (if any) on a brand-new account. */
+/**
+ * Ask the server, straight after a sign-in, whether it can see the session.
+ * POST /api/profile/acquisition doubles as the check: it saves a new account's
+ * channel and country (write-once, so a returning account changes nothing) and
+ * answers 401 when the server sees no session. Waits at most 5 seconds.
+ */
+export async function checkServerSession(): Promise<SessionCheckOutcome> {
+  const abort = new AbortController();
+  const timer = setTimeout(() => abort.abort(), 5_000);
+  try {
+    const res = await fetch("/api/profile/acquisition", { method: "POST", keepalive: true, signal: abort.signal });
+    return sessionCheckOutcome(res.status);
+  } catch {
+    return sessionCheckOutcome(null);
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+/**
+ * Signs in with Google's credential; stamps `source` (if any) on a brand-new
+ * account. Starts the server session check without waiting for it: /login and
+ * /signup wait for `serverCheck` before moving on, One Tap and the download box
+ * do not need to.
+ */
 async function signInWithCredential(credential: string, rawNonce: string, source: string | undefined) {
   const supabase = createSupabaseBrowserClient();
   const { data, error } = await supabase.auth.signInWithIdToken({
@@ -95,19 +121,17 @@ async function signInWithCredential(credential: string, rawNonce: string, source
   });
   if (error || !data.user) throw error ?? new Error("No user returned");
   const user = data.user;
+  const serverCheck = checkServerSession();
 
   // Attribution, best effort, for a genuinely new account only (see isNewAccount).
   if (isNewAccount(user.created_at, user.last_sign_in_at)) {
-    // Where they came from (the qb_acq cookie), saved now: the download box
-    // skips /welcome, which used to be the only place it was saved.
-    void fetch("/api/profile/acquisition", { method: "POST", keepalive: true }).catch(() => undefined);
     if (source && !user.user_metadata?.signup_source) {
       await supabase.auth
         .updateUser({ data: { signup_source: source } })
         .catch(() => undefined);
     }
   }
-  return { supabase, user };
+  return { supabase, user, serverCheck };
 }
 
 /**
@@ -203,7 +227,11 @@ export const googleButtonAvailable = CLIENT_ID !== null;
  */
 export async function renderGoogleButton(
   el: HTMLElement,
-  handlers: { onSignedIn: (userId: string) => void; onError: () => void },
+  handlers: {
+    /** `serverCheck` resolves once the server says whether it sees the new session. */
+    onSignedIn: (userId: string, serverCheck: Promise<SessionCheckOutcome>) => void;
+    onError: () => void;
+  },
   options: { theme?: "filled_blue" | "outline"; shape?: "rectangular" | "pill"; source?: string } = {}
 ): Promise<boolean> {
   if (!CLIENT_ID) return false;
@@ -221,7 +249,7 @@ export async function renderGoogleButton(
       cancel_on_tap_outside: true,
       callback: ({ credential }) => {
         signInWithCredential(credential, raw, "source" in options ? options.source : DOWNLOAD_BOX_SIGNUP_SOURCE)
-          .then(({ user }) => handlers.onSignedIn(user.id))
+          .then(({ user, serverCheck }) => handlers.onSignedIn(user.id, serverCheck))
           .catch(() => handlers.onError());
       },
     });

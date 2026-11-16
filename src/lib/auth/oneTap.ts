@@ -98,3 +98,36 @@ export function googleButtonDestination(state: OnboardingState, next: string | n
   const target = safeNextPath(next, home);
   return needsOnboarding(state) ? `/welcome?next=${encodeURIComponent(target)}` : target;
 }
+
+/**
+ * What the server said when asked, straight after a Google sign-in on the page,
+ * whether it can see the new session (POST /api/profile/acquisition, 2026-11-16).
+ * 401 = it cannot. Any other status = it can (a 500 is a failed save, not a
+ * missing session). No answer at all (network error, timeout) = unknown.
+ */
+export type SessionCheckOutcome = "seen" | "unseen" | "unknown";
+
+export function sessionCheckOutcome(status: number | null): SessionCheckOutcome {
+  if (status === null) return "unknown";
+  return status === 401 ? "unseen" : "seen";
+}
+
+/**
+ * What /login and /signup do after that check. In the ten days to 16 Nov, 8 of
+ * the 9 button sign-ups whose session the server could not see right away never
+ * finished onboarding: /welcome treated them as signed out and sent them back to
+ * /login, where some typed a password their Google account does not have.
+ *
+ *  - seen on the first try: move on as before (in-page navigation);
+ *  - unseen on the first try: ask once more after a moment;
+ *  - seen on the second try, or no answer: load the next page in full, which
+ *    sends the browser's cookies with a fresh document request;
+ *  - still unseen: stop and tell the person, instead of a sign-in form again.
+ */
+export type AfterSessionCheck = "navigate" | "retry" | "full-load" | "fail";
+
+export function nextStepAfterSessionCheck(attempt: 1 | 2, outcome: SessionCheckOutcome): AfterSessionCheck {
+  if (outcome === "unknown") return "full-load";
+  if (attempt === 1) return outcome === "seen" ? "navigate" : "retry";
+  return outcome === "seen" ? "full-load" : "fail";
+}

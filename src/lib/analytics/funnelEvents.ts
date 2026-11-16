@@ -238,6 +238,14 @@ export const FUNNEL_EVENTS = [
   "score_calc_share",
   /** "Tell me when the key is out" was tapped; props: calc, outcome ("saved" | "signin"). */
   "score_calc_alert",
+  /**
+   * A Google sign-in on /login or /signup where the server could not see the
+   * new session at first (2026-11-16, lib/auth/oneTap nextStepAfterSessionCheck);
+   * props: outcome ("recovered" = seen on the second try, "failed" = still not,
+   * "no_answer" = the check got no reply), page ("login" | "signup"). A normal
+   * sign-in sends nothing, so new accounts in the database are its scale.
+   */
+  "signin_session_check",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];
