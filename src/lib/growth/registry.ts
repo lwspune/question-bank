@@ -541,6 +541,7 @@ export type Readout =
   | "welcome-exam-confirm"
   | "exam-guess-card"
   | "install-app"
+  | "score-calculator"
   | "teacher-or-student"
   | "blog-posts"
   | "notes-drill-panel"
@@ -1511,6 +1512,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-14",
     windowDays: 28,
     readout: "install-app",
+    status: "running",
+  },
+  {
+    id: "score-calculator",
+    title: "Answer-key score calculators (/score-calculator)",
+    change:
+      "A free JEE Main score calculator: paste the response-sheet link, get marks on NTA's key subject by subject, share the score, and a \"tell me when the key is out\" alert before key day. SSC calculators follow once their browser reader is checked on a real sheet. The score needs no account; signing in only saves it.",
+    why: "Distribution, not product, is the bottleneck. On answer-key day thousands of students search for a score calculator, and a shared score brings the next student. Ranked first of the 2026-11-16 distribution tactics.",
+    metric:
+      "Vercel events score_calc_check (outcome scored | error), score_calc_share, score_calc_alert; score_checks rows per sitting (one per sheet); signups whose acq_landing starts /score-calculator; page views of /score-calculator/jee-main in key week",
+    rule: "Keep and build the SSC calculators if JEE Main 2027 Session 1 key week brings 1,000+ scored sheets AND 50+ signups landing on the calculator. Fewer: keep the page for search, build nothing more.",
+    liveSince: "2026-11-16",
+    windowDays: 90,
+    readout: "score-calculator",
     status: "running",
   },
   {

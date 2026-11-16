@@ -112,6 +112,7 @@ describe("EXPERIMENTS", () => {
       "resource-chips",
       "review-traps",
       "same-mistake",
+      "score-calculator",
       "score-plan",
       "second-page",
       "self-mark",

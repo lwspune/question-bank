@@ -1,3 +1,4 @@
+import { LIVE_CALCULATORS } from "@/lib/scoreCalc/score";
 import { SITE_URL } from "@/lib/brand";
 import { readAllPages } from "@/lib/supabase/readAllPages";
 import type { MetadataRoute } from "next";
@@ -855,6 +856,19 @@ export async function allSitemapEntries(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "yearly",
       priority: 0.4,
     },
+    {
+      // Answer-key score calculators (2026-11-16): the list, then one per live exam.
+      url: `${SITE_URL}/score-calculator`,
+      lastModified: buildDate,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    ...LIVE_CALCULATORS.map((c) => ({
+      url: `${SITE_URL}/score-calculator/${c.slug}`,
+      lastModified: buildDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    })),
     {
       url: `${SITE_URL}/privacy`,
       lastModified: buildDate,

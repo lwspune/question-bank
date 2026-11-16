@@ -934,6 +934,14 @@ export default async function GrowthPage() {
             open the installed app and more than {INSTALL_APP_RETURN_BASELINE_PCT}% of them come back on 3+ days within 14.
           </p>
         );
+      case "score-calculator":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand after JEE Main 2027 Session 1 key week: Vercel&rsquo;s score_calc_check (scored) and
+            score_calc_share, score_checks rows per sitting, and signups whose first page was a /score-calculator page.
+            Keep and build the SSC calculators at 1,000+ scored sheets and 50+ such signups.
+          </p>
+        );
       case "teacher-or-student":
         return (
           <p className="text-sm text-muted-foreground">

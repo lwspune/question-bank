@@ -329,6 +329,10 @@ async function main() {
         // Read by hand: Vercel's app_opened / app_installed, and student_profiles.app_opened_at (migration 0255).
         line = "by hand: Vercel app_opened + student_profiles.app_opened_at";
         break;
+      case "score-calculator":
+        // Read by hand: Vercel's score_calc_* events, score_checks rows per sitting, signups landing on /score-calculator.
+        line = "by hand: Vercel score_calc_check + score_checks per sitting + acq_landing /score-calculator";
+        break;
       case "teacher-or-student":
         // Read by hand: answers, the answer rate per box and the behaviour rule's precision (migration 0258).
         line = "by hand: scripts/profile/teacher-student-readout.sql";
