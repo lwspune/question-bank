@@ -210,7 +210,6 @@ describe("MeView, the path in the staff view", () => {
     mocks: summarizeUserMocks([]),
     continueItems: [],
     showNps: false,
-    tutorPriceAsk: null,
   } as unknown as MeData;
   const PULSE = { due: 0, week: { done: 3, goal: 4 }, exam: null, totals: { answered: 0, right: 0, fixed: 0 }, weak: [], chapterDue: {} } as unknown as Pulse;
   const render = (pathCard: MeData["pathCard"]) =>

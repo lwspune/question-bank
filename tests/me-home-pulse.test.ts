@@ -42,7 +42,6 @@ const data: MeData = {
   mocks: { completed: 0, bestPct: null, resumeAttempt: null } as unknown as MeData["mocks"],
   continueItems: [],
   showNps: false,
-  tutorPriceAsk: null,
   pathCard: { path: null, offer: null },
 };
 

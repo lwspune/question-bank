@@ -33,7 +33,6 @@ import { isStage, needsStageNudge, sanitizeTargetExams, type Stage } from "@/lib
 import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { firstMockHref, firstNotesHref } from "@/lib/exam/examLinks";
-import { loadTutorPriceAsk } from "@/lib/tutor/priceAsk";
 import { loadPathCard, type PathCard } from "@/lib/path/service";
 
 /** The header fields (greeting, exams, focus) plus the Home tab's own cards. */
@@ -53,8 +52,6 @@ export type MeData = MeHeaderData & {
   mocks: ReturnType<typeof summarizeUserMocks>;
   continueItems: ContinueItem[];
   showNps: boolean;
-  /** The 1:1 tutoring price question, for a student Yes that owes an answer (migration 0224). */
-  tutorPriceAsk: { price: number } | null;
   /** The board path (MENTOR_SPEC.md, migration 0225): today on it, or the start offer. */
   pathCard: PathCard;
   /** "Start next" (2026-11-09, migration 0242): the highest-value chapters of
@@ -74,7 +71,7 @@ export async function loadMe(
   // ROUND 1: every read that needs nothing from another, at once. Each read
   // that waits for another costs a database round trip (2026-11-08: the page
   // ran six in a row; the tabs' loading screens hide the rest of the wait).
-  const [attempts, notesRows, lastNpsAt, week, assigned, profile, examIds, header, tutorPriceAsk] =
+  const [attempts, notesRows, lastNpsAt, week, assigned, profile, examIds, header] =
     await Promise.all([
     getUserAttempts(db, user.id),
     listOwnNotesProgress(db, user.id),
@@ -89,11 +86,6 @@ export async function loadMe(
     getExamIdMap(),
     // The header (greeting, exams, focus), shared with /performance and /account.
     getExamIdMap().then((ids) => loadMeHeader(db, user, ids, { now })),
-    // The tutoring price question (2026-11-07). Best effort, like the cards below.
-    loadTutorPriceAsk(user.id, now).catch((e) => {
-      console.error("tutor price ask read failed", e instanceof Error ? e.message : e);
-      return null;
-    }),
   ]);
 
   const focusSlug = header.focus.filterExamName ? header.focus.selected : null;
@@ -182,7 +174,6 @@ export async function loadMe(
     mocks,
     continueItems,
     showNps,
-    tutorPriceAsk,
     pathCard,
     startNext,
   };
