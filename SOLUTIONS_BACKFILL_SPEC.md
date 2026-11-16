@@ -486,3 +486,57 @@ One line per batch: date, exam, written, disputed, skipped.
   those 203 are no longer without a solution; the whole-paper mocks grace
   them. MPSC now 6,240 of 7,179 with a solution; the ~940 left are the
   questions no solver could settle.
+- 2026-11-16, second pass (owner: "fix this", the 2,082 PUBLIC rows
+  without a solution; scope B + C + D + Mains grammar). Measured first:
+  189 are cancelled (left alone), 452 came from five MPSC papers added
+  on 11-04 after the backfill ended, ~494 were October Haiku skips no
+  stronger model had retried, ~147 were held disputes, ~800 were old
+  MPSC rows three solvers had declined.
+- 2026-11-16, b45 the five new MPSC papers (Group B 4 Jan 2026, Group C
+  11 Jan 2026, Group B 14 Jun 2026, State Services GS + CSAT 31 May
+  2026), Haiku: written 301 of 452, disputed 3, skipped 148 (2025-26
+  current affairs, Maharashtra facts). Read 37 and all 4 Marathi: one
+  ionic charge (Ca^{2+}) outside maths markers, which no check caught;
+  `solutionProblems` now refuses a power or subscript outside the
+  markers (tests/solution-text.test.ts).
+- 2026-11-16, b46 RETRY of the Foundation, NEET practice, IPMAT, JIPMAT
+  and NDA rows (641, Sonnet, told to mark broken questions "DEFECT:"):
+  written 216 that reached the key; read 30, held 2 (a hedged hepatitis
+  answer, an unbacked growth-rate claim), fixed 2 lost maths markers.
+  Disputed 78 and ~130 DEFECT skips, every one read by the main session
+  with its picture opened.
+- 2026-11-16, b48 the practice fixes that review produced (owner: "fix
+  the clear ones, list the rest"): 86 Foundation, NEET practice and NDA
+  practice rows changed in place, hash recomputed
+  (`scripts/reviews/apply-practice-key-fixes-2026-11-16.ts`, data and
+  reasons in `scripts/reviews/data/`): 45 keys flipped where the main
+  session, the blind solver and NCERT agree (e.g. an egg with 10
+  chromosomes gives 18 autosomes, not 9), 40 misprints corrected
+  (duplicate options, Excel-mangled ratios, wrong units, a figure
+  description that contradicted its figure), each with a solution. The
+  soda-lime row was first flipped and then reverted the same day: its
+  key is not clear (textbooks 3:1, reality 1:3). The Foundation sources
+  (`scripts/foundation/data`) carry the same edits, so a re-commit
+  reproduces the fixed rows. Past-paper keys (IPMAT, JIPMAT) were never
+  changed. The 104 questions not fixable on the evidence are listed in
+  SUGGESTIONS.md (2026-11-16). No fresh db:backup: pg_dump lost its
+  connection mid-COPY of `questions` three times ("SSL SYSCALL error:
+  EOF"); the 11:01 backup of the same day stood in, and every touched
+  row was saved first (`generated-papers/solutions/b48-practice-fixes`).
+- 2026-11-16, b49 web-checked Opus pass on the 151 new-paper rows b45
+  left (the rules now in DRAFT_BRIEF.md "Web-checked pass"): written 92,
+  disputed 1 (Karve's 1916 aims), skipped 58 (thin or disagreeing
+  sources, a few TWO-FIT/DEFECT). Every match read with its sources
+  (government sites, PIB, the Acts, the Economic Surveys, newspapers).
+  Yield by topic: current affairs 16-19 of 20, Maharashtra and history
+  facts 6-11 of 20.
+- 2026-11-16, b47 one Opus pass on the 264 MPSC Mains grammar rows three
+  solvers had declined, told to settle them from Walimbe, Molesworth,
+  Date-Karve or a dictionary it could open and never from memory:
+  written 44, disputed 2, skipped 218 (most "TWO-FIT": two options both
+  defensible by the references). Yield about 1 in 6, so a further pass
+  is not worth it. Every Marathi match read in full.
+- 2026-11-17, totals: 2,082 PUBLIC rows without a solution on 11-16,
+  1,344 after (189 of them cancelled): 653 solutions written
+  (301 + 216 + 92 + 44) plus 85 practice rows fixed with a solution.
+  Running total 11,844.
