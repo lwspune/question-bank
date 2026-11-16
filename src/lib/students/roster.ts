@@ -24,6 +24,8 @@ export type StudentRosterRow = {
   city: string | null;
   stage: string | null;
   targetExams: string[];
+  /** The exam the WhatsApp check-in names (lib/students/checkIn.ts): most mocks, else first chosen. */
+  checkInExam: string | null;
   whatsappOptIn: boolean;
   mocksSubmitted: number;
   mocksStarted: number;
