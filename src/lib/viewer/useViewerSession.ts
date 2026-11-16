@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { isSupabaseAuthCookieName } from "@/lib/auth-identity";
 import type { HeaderSession } from "@/lib/header-session";
+import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import { createIdentityTracker } from "@/lib/viewer/identityTracker";
 
 /**
  * The viewer's identity, resolved in the BROWSER and shared by every client
@@ -26,13 +28,54 @@ import type { HeaderSession } from "@/lib/header-session";
  * Supabase auth cookie means no session, and the bulk of this site's traffic is
  * anonymous. Those visitors never issue the request at all.
  *
- * The cached value is not invalidated on sign-out within the same page load.
- * That is deliberate and safe for what this drives: staff-only chrome over
- * content that is already public on the page. Nothing gated on it reveals data
- * a stale `true` would leak — the server re-checks on every route that matters.
+ * SIGN-IN AND SIGN-OUT ASK AGAIN (2026-11-16). Signing in on /login (password
+ * or Google) and signing out from the menu both move on WITHOUT a page reload,
+ * so a kept answer outlived the change: the header said "Sign in" after a sign-in
+ * until the person refreshed, and kept their name after a sign-out. The hook now
+ * listens to Supabase's auth events and, when the signed-in user changes
+ * (createIdentityTracker), drops the kept answer, asks again and tells every
+ * mounted hook. The server still re-checks on every route that matters; this
+ * only keeps the chrome honest.
  */
 
 let inFlight: Promise<HeaderSession | null> | null = null;
+
+type Listener = (session: HeaderSession | null) => void;
+const listeners = new Set<Listener>();
+
+/** Be told whenever the viewer's identity is asked again. Returns the unsubscribe. */
+export function subscribeViewerSession(listener: Listener): () => void {
+  listeners.add(listener);
+  return () => {
+    listeners.delete(listener);
+  };
+}
+
+/** Drop the kept answer, ask again, and tell every subscriber. */
+export async function refreshViewerSession(): Promise<HeaderSession | null> {
+  inFlight = null;
+  const session = await fetchViewerSession();
+  for (const listener of listeners) listener(session);
+  return session;
+}
+
+// One auth listener per page load, started by the first hook that mounts. The
+// browser client is a singleton and UserMenu already ships it on every page, so
+// this adds no bundle; for a signed-out visitor it reads cookies and makes no request.
+let authWatchStarted = false;
+
+function watchAuthChanges(): void {
+  if (authWatchStarted) return;
+  authWatchStarted = true;
+  const tracker = createIdentityTracker();
+  try {
+    createSupabaseBrowserClient().auth.onAuthStateChange((_event, session) => {
+      if (tracker.observe(session?.user?.id ?? null)) void refreshViewerSession();
+    });
+  } catch {
+    // No browser client (missing env in a preview): the header keeps today's behaviour.
+  }
+}
 
 /** A Supabase sign-in cookie is present (not proof of a live session; the server decides). */
 export function hasAuthCookie(): boolean {
@@ -84,8 +127,13 @@ export function useViewerSession(): ViewerSessionState {
     fetchViewerSession().then((session) => {
       if (active) setState({ session, loading: false });
     });
+    const unsubscribe = subscribeViewerSession((session) => {
+      if (active) setState({ session, loading: false });
+    });
+    watchAuthChanges();
     return () => {
       active = false;
+      unsubscribe();
     };
   }, []);
 

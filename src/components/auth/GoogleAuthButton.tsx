@@ -7,12 +7,14 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import GoogleSignInButton from "@/components/GoogleSignInButton";
 import {
+  checkServerSession,
   googleButtonAvailable,
   readOwnOnboardingState,
   readOwnRole,
   renderGoogleButton,
 } from "@/components/auth/useGoogleOneTap";
-import { googleButtonDestination } from "@/lib/auth/oneTap";
+import { googleButtonDestination, nextStepAfterSessionCheck } from "@/lib/auth/oneTap";
+import { trackFunnel } from "@/lib/analytics/trackFunnel";
 import { signedInHome } from "@/lib/auth/redirect";
 
 /**
@@ -41,6 +43,9 @@ export default function GoogleAuthButton({
   const slot = useRef<HTMLDivElement>(null);
   const [drawn, setDrawn] = useState<boolean | null>(googleButtonAvailable ? null : false);
   const [signingIn, setSigningIn] = useState(false);
+  // The server could not see the new session even after a second ask: say so,
+  // and offer Google's redirect sign-in, which sets the session from the server.
+  const [sessionLost, setSessionLost] = useState(false);
 
   useEffect(() => {
     if (!googleButtonAvailable || !slot.current) return;
@@ -48,15 +53,38 @@ export default function GoogleAuthButton({
     void renderGoogleButton(
       slot.current,
       {
-        onSignedIn: (userId) => {
+        onSignedIn: (userId, serverCheck) => {
           setSigningIn(true);
-          void Promise.all([
-            readOwnOnboardingState(userId).catch(() => ({ onboardedAt: null })),
-            readOwnRole(userId).catch(() => null),
-          ]).then(([state, role]) => {
-            router.replace(googleButtonDestination(state, next, signedInHome(role)));
-            router.refresh();
-          });
+          void (async () => {
+            const [state, role, first] = await Promise.all([
+              readOwnOnboardingState(userId).catch(() => ({ onboardedAt: null })),
+              readOwnRole(userId).catch(() => null),
+              serverCheck,
+            ]);
+            const destination = googleButtonDestination(state, next, signedInHome(role));
+            // Before moving on, make sure the server sees the session: if it does
+            // not, /welcome would send the person back to /login (lib/auth/oneTap).
+            let step = nextStepAfterSessionCheck(1, first);
+            const page = window.location.pathname.startsWith("/signup") ? "signup" : "login";
+            if (first === "unknown") trackFunnel("signin_session_check", { outcome: "no_answer", page });
+            if (step === "retry") {
+              await new Promise((resolve) => setTimeout(resolve, 1_500));
+              const second = await checkServerSession();
+              step = nextStepAfterSessionCheck(2, second);
+              const outcome = second === "seen" ? "recovered" : second === "unseen" ? "failed" : "no_answer";
+              trackFunnel("signin_session_check", { outcome, page });
+            }
+            if (step === "navigate") {
+              router.replace(destination);
+              router.refresh();
+            } else if (step === "full-load") {
+              window.location.assign(destination);
+            } else {
+              setSigningIn(false);
+              setSessionLost(true);
+              toast.error("Your browser didn't keep the sign-in. Please try again.");
+            }
+          })();
         },
         onError: () => {
           toast.error("Google sign-in didn't complete. Please try again.");
@@ -79,6 +107,17 @@ export default function GoogleAuthButton({
         <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
         Signing you in…
       </Button>
+    );
+  }
+  if (sessionLost) {
+    return (
+      <div className="space-y-3">
+        <p role="alert" className="text-sm text-destructive">
+          Your browser didn&apos;t keep the sign-in. Try again with the button below. If it happens again,
+          allow cookies for pyqvault.com in your browser settings.
+        </p>
+        <GoogleSignInButton next={next} signupSource={signupSource} />
+      </div>
     );
   }
   if (drawn === false) return <GoogleSignInButton next={next} signupSource={signupSource} />;

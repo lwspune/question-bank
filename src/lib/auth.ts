@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import type { User } from "@supabase/supabase-js";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import {
@@ -129,6 +130,21 @@ export async function getPageIdentity(): Promise<PageIdentity> {
  * actually displays.
  */
 export async function getHeaderSession(): Promise<HeaderSession | null> {
+  return (await getHeaderIdentity())?.session ?? null;
+}
+
+/**
+ * getHeaderSession plus what /api/me/header needs for the second-chance signup
+ * save (lib/profile/signupFacts): the auth user, the server client that read it,
+ * and the saved country. Kept apart from HeaderSession, which goes to the
+ * browser and must carry none of it.
+ */
+export async function getHeaderIdentity(): Promise<{
+  session: HeaderSession;
+  user: User;
+  db: ReturnType<typeof createSupabaseServerClient>;
+  signupCountry: string | null;
+} | null> {
   // Anon short-circuit: no Supabase cookie ⇒ no session to resolve.
   if (!hasSupabaseAuthCookie((await cookies()).getAll().map((c) => c.name))) {
     return null;
@@ -151,7 +167,7 @@ export async function getHeaderSession(): Promise<HeaderSession | null> {
     // feed on the cached index pages; a failed read yields empty defaults.
     supabase
       .from("student_profiles")
-      .select("stage, target_exams")
+      .select("stage, target_exams, signup_country")
       .eq("user_id", user.id)
       .maybeSingle(),
     // Own-row read (entitlements RLS, migration 0026) for the Premium diamond.
@@ -165,7 +181,7 @@ export async function getHeaderSession(): Promise<HeaderSession | null> {
   // not staff, so the org chip and Papers tab stay hidden.
   const isStaff = !!membership && !!org;
 
-  return {
+  const session: HeaderSession = {
     email: user.email,
     role: isStaff ? ((membership.role as "ADMIN" | "TEACHER") ?? null) : null,
     orgName: org?.name ?? null,
@@ -174,6 +190,8 @@ export async function getHeaderSession(): Promise<HeaderSession | null> {
     hasPass: hasPassFromEntitlements(entitlements, Date.now()),
     ...profileFieldsFromRow(profile),
   };
+  const country = (profile as { signup_country?: unknown } | null)?.signup_country;
+  return { session, user, db: supabase, signupCountry: typeof country === "string" ? country : null };
 }
 
 export async function requireAdmin(): Promise<SessionMember> {
