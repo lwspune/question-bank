@@ -21,7 +21,9 @@ import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getPlanLinks } from "@/lib/homework/query";
 import { examHomeworkHref } from "@/lib/homework/links";
 import { notFound, redirect } from "next/navigation";
-import { ArrowRight, BookOpen, CalendarDays, ClipboardCheck, Compass, Files, FileText, Library, NotebookPen } from "lucide-react";
+import { ArrowRight, BookOpen, CalendarDays, ClipboardCheck, Compass, Files, FileText, Library, ListChecks, NotebookPen } from "lucide-react";
+import { getEvergreenArticle } from "@/lib/blog/articles";
+import { syllabusHref } from "@/lib/blog/paths";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -124,8 +126,19 @@ export default async function ExamHomePage(props: Params) {
     return [];
   });
   const pastPapers = exam ? pastPaperHubLink(model.slug, exam.examName, mocks) : null;
+  // The exam's pattern and syllabus page (migration 0263), once its article is
+  // published. A failed read only drops the link, like the reads above.
+  const syllabus = await getEvergreenArticle(model.slug).catch((err) => {
+    console.error("exam home: syllabus article unavailable", err);
+    return null;
+  });
 
   const quickLinks = [
+    syllabus && {
+      href: syllabusHref(model.slug),
+      label: `${model.displayName} exam pattern, syllabus and marks`,
+      Icon: ListChecks,
+    },
     hasPapers && {
       href: `/question-papers/${model.slug}`,
       label: "Whole past question papers, with marks and answers",
