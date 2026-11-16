@@ -4,28 +4,28 @@ import { ArrowRight, CalendarDays, Clock } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import { BlogIndexJsonLd } from "./_components/BlogJsonLd";
-import { listPosts } from "@/lib/blog/posts";
+import { getBlogCatalog } from "@/lib/blog/articles";
 import { formatPostDate } from "@/lib/blog/format";
 
 // Static, revalidated daily — same profile as /notes and /guide. Nothing in
 // this tree reads cookies() or useSearchParams(), which is what keeps it
-// genuinely prerendered rather than merely labelled as such.
+// genuinely prerendered rather than merely labelled as such. A database post
+// (migration 0263) appears at once: Publish clears this page's cache.
 export const revalidate = 86400;
 
 const PAGE_TITLE = "Blog";
 const PAGE_INTRO =
-  "Paper analysis and exam trends, measured against the PYQ Vault bank rather than " +
-  "asserted from memory. Every number in a post is re-derived from the live question " +
-  "bank by an automated check, so it cannot quietly go stale.";
+  "Exam news, dates and paper analysis for Indian entrance exams. Every date links to the " +
+  "official notice, and every number comes from real past papers in the PYQ Vault bank.";
 
 export const metadata: Metadata = {
-  title: `${PAGE_TITLE} — Paper analysis from the PYQ Vault bank`,
+  title: `${PAGE_TITLE}: exam news and paper analysis`,
   description: PAGE_INTRO,
   alternates: { canonical: "/blog" },
 };
 
-export default function BlogIndex() {
-  const posts = listPosts();
+export default async function BlogIndex() {
+  const posts = await getBlogCatalog();
 
   return (
     <GuideShell
@@ -33,7 +33,7 @@ export default function BlogIndex() {
       sideNav={[{ href: "/blog", label: "All posts" }]}
       breadcrumbs={[{ label: "Blog" }]}
     >
-      <BlogIndexJsonLd description={PAGE_INTRO} />
+      <BlogIndexJsonLd description={PAGE_INTRO} posts={posts} />
       <GuideHero eyebrow="Blog" title={PAGE_TITLE} subtitle={PAGE_INTRO} />
 
       <ul className="space-y-4">
@@ -60,7 +60,7 @@ export default function BlogIndex() {
                 {post.description}
               </p>
               <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-brand-accent">
-                Read the analysis
+                {post.kind === "data" ? "Read the analysis" : "Read the post"}
                 <ArrowRight className="h-3.5 w-3.5" aria-hidden />
               </span>
             </Link>

@@ -1,6 +1,9 @@
 """Ship one drafted SSC CGL /notes chapter: apply its re-cut, register it, tag every row.
 
-Usage (repo root): python scripts/ssc-cgl/ship-notes.py <abbr> [--dry]
+Usage (repo root): python scripts/ssc-cgl/ship-notes.py <abbr> [--dry] [--tier=2]
+
+--tier=2 ships a Tier II chapter: its row in notes-manifest-t2.json, its plan in reshape-t2/, slugs
+`ssc2-<abbr>-*` (concepts `ssc2<abbr>*`), tag map _tag-ssc2-<abbr>.json, exam "SSC CGL Tier II".
 
 The chapter must be drafted per scripts/ssc-cgl/NOTES_BRIEF.md and reviewed first. Reads its row in
 scripts/ssc-cgl/notes-manifest.json; each page file is the subtopic slug minus `ssc-<abbr>-`, and its
@@ -15,9 +18,13 @@ import io, json, os, re, subprocess, sys
 ROOT = os.getcwd()
 abbr = sys.argv[1]
 dry = "--dry" in sys.argv
-manifest = json.load(io.open(os.path.join(ROOT, "scripts", "ssc-cgl", "notes-manifest.json"), encoding="utf-8"))
+t2 = "--tier=2" in sys.argv
+exam = "SSC CGL Tier II" if t2 else "SSC CGL"
+pre = "ssc2" if t2 else "ssc"
+manifest = json.load(io.open(os.path.join(ROOT, "scripts", "ssc-cgl", "notes-manifest-t2.json" if t2 else "notes-manifest.json"), encoding="utf-8"))
 row = next(c for c in manifest["chapters"] if c["abbr"] == abbr)
 route, display = manifest["routes"][row["subject"]]
+plan_dir = "reshape-t2" if t2 else "reshape"
 data = os.path.join(ROOT, "src", "app", "notes", route, row["slug"], "_data")
 
 chapter_src = io.open(os.path.join(data, "chapter.ts"), encoding="utf-8").read()
@@ -26,7 +33,7 @@ order = re.search(r"subtopicOrder:\s*\[([^\]]*)\]", chapter_src, re.S).group(1)
 slugs = re.findall(r'"([^"]+)"', order)
 pages = []
 for slug in slugs:
-    prefix = f"ssc-{abbr}-"
+    prefix = f"{pre}-{abbr}-"
     if not slug.startswith(prefix):
         sys.exit(f"slug {slug} does not start with {prefix}")
     f = slug[len(prefix):]
@@ -37,14 +44,14 @@ for slug in slugs:
     pages.append([slug, f, exports[0]])
 
 spec = {
-    "route": route, "exam": "SSC CGL", "subject": row["subject"], "display": display, "slug": row["slug"],
-    "const": const, "chip": row.get("chip", f'{row["chapter"]} notes'), "prefix": f"ssc-{abbr}", "cprefix": f"ssc{abbr}",
-    "blurb": f"Pages cut by reading every question (scripts/ssc-cgl/reshape/{row['slug']}.ts). Order matches `subtopicOrder`.",
+    "route": route, "exam": exam, "subject": row["subject"], "display": display, "slug": row["slug"],
+    "const": const, "chip": row.get("chip", f'{row["chapter"]} notes'), "prefix": f"{pre}-{abbr}", "cprefix": f"{pre}{abbr}",
+    "blurb": f"Pages cut by reading every question (scripts/ssc-cgl/{plan_dir}/{row['slug']}.ts). Order matches `subtopicOrder`.",
     "pages": pages,
 }
 if row.get("titleName"):  # a shorter page-title name when the DB chapter name is long or shared
     spec["titleName"] = row["titleName"]
-spec_path = os.path.join(ROOT, "generated-papers", f"_ssc_reg_{abbr}.json")
+spec_path = os.path.join(ROOT, "generated-papers", f"_{pre}_reg_{abbr}.json")
 io.open(spec_path, "w", encoding="utf-8").write(json.dumps(spec, indent=1, ensure_ascii=False))
 print(f"{row['chapter']}: {len(pages)} pages, const {const}")
 
@@ -56,8 +63,8 @@ def run(cmd):
         sys.exit(f"FAILED: {' '.join(cmd)}")
 
 
-plan = os.path.join("scripts", "ssc-cgl", "reshape", row["slug"] + ".ts")
-tag = os.path.join("generated-papers", f"_tag-ssc-{abbr}.json")
+plan = os.path.join("scripts", "ssc-cgl", plan_dir, row["slug"] + ".ts")
+tag = os.path.join("generated-papers", f"_tag-{pre}-{abbr}.json")
 run(["npx", "tsx", "scripts/ssc-cgl/reshape.ts", plan] + ([] if dry else ["--apply"]))
 if dry:
     run(["npx", "tsx", "scripts/notes-pipeline/jee/tag-chapter.ts", tag, "--dry"])

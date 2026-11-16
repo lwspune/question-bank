@@ -6,7 +6,7 @@ export const NEET_BO_PI_DISORDERS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "What a mutation is and what causes one, the symbols of a human pedigree, the single-gene (Mendelian) disorders and how each is inherited, the chance of a child in an X-linked cross, and the chromosomal disorders.",
   whyItMatters:
-    "Eleven NEET questions, from 2021 to Re-NEET 2026: the most asked page of the chapter. Six touch chromosomal disorders (Down's, Klinefelter's and Turner's syndromes, and aneuploidy against polyploidy). The other five test a single-gene disorder twice, a pedigree symbol, a mutagen and one pedigree probability.",
+    "Fourteen NEET questions, from 2021 to Re-NEET 2026: the most asked page of the chapter. Six touch chromosomal disorders (Down's, Klinefelter's and Turner's syndromes, and aneuploidy against polyploidy). The other eight test single-gene disorders five times (sickle-cell anaemia in NEET 2021 and NEET 2026, colour blindness in NEET 2022), a pedigree symbol, a mutagen and one pedigree probability.",
   concepts: [
     {
       kind: "reference" as const,

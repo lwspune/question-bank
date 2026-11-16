@@ -30,6 +30,17 @@ const NO_SHEET = [
   "ssc-cgl-reasoning/non-verbal",
   "ssc-cgl-reasoning/statements",
   "ssc-cgl-reasoning/syllogism",
+  "ssc-cgl-tier-2-english/cloze-test",
+  "ssc-cgl-tier-2-english/fill-in-the-blanks",
+  "ssc-cgl-tier-2-english/sentence-rearrangement",
+  "ssc-cgl-tier-2-english/spotting-errors",
+  "ssc-cgl-tier-2-reasoning/alphabet-number",
+  "ssc-cgl-tier-2-reasoning/blood-relations",
+  "ssc-cgl-tier-2-reasoning/classification",
+  "ssc-cgl-tier-2-reasoning/data-sufficiency",
+  "ssc-cgl-tier-2-reasoning/embedded-figures",
+  "ssc-cgl-tier-2-reasoning/non-verbal",
+  "ssc-cgl-tier-2-reasoning/statements",
 ];
 
 describe("formula sheet: every registered chapter", () => {

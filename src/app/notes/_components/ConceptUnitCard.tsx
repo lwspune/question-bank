@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { ArrowRight, ChevronRight, Dumbbell, Target } from "lucide-react";
+import { ChevronRight, Dumbbell } from "lucide-react";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import RichText from "@/components/math/RichText";
 import WorkedExampleCard from "@/app/guide/_components/WorkedExampleCard";
@@ -14,6 +13,7 @@ import PracticeGate from "./PracticeGate";
 import TrapCallout from "./TrapCallout";
 import ReferenceTableBlock from "./ReferenceTableBlock";
 import ReportConceptDialog from "./ReportConceptDialog";
+import NotesDrillButton from "./NotesDrillButton";
 import RegressionLineFit from "./visualizations/RegressionLineFit";
 import VarianceSquaredDeviations from "./visualizations/VarianceSquaredDeviations";
 import HistogramBinSlider from "./visualizations/HistogramBinSlider";
@@ -904,19 +904,20 @@ export default function ConceptUnitCard({
           />
         )}
         {drillQuestionIds.length > 0 && (
-          <Link
-            href={buildBrowseUrl({
+          <NotesDrillButton
+            link="concept"
+            label={`Drill ${drillQuestionIds.length} more on ${concept.name.toLowerCase()}`}
+            title={concept.name}
+            description={`${drillQuestionIds.length} more ${drillQuestionIds.length === 1 ? "question" : "questions"} on this idea`}
+            source={{ kind: "ids", ids: drillQuestionIds }}
+            fullHref={buildBrowseUrl({
               extraIds: drillQuestionIds,
               kind: browseKind,
               from: backHref,
               fromLabel: backLabel,
             })}
-            className="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-brand-accent hover:bg-brand/10"
-          >
-            <Target className="h-3.5 w-3.5" aria-hidden />
-            Drill {drillQuestionIds.length} more on {concept.name.toLowerCase()}
-            <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-          </Link>
+            subtopicSlug={subtopicSlug}
+          />
         )}
       </div>
     </section>

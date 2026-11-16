@@ -42,6 +42,7 @@ export const EXAM_DEMAND_ORDER: readonly string[] = [
   "clat",
   "rrb-ntpc",
   "capf-ac",
+  "rpsc-ras", // added 2026-11-16 with no demand data yet; move once students choose it
 ];
 
 function keyOf<T>(node: ExamFamilyNode<T>): string | undefined {

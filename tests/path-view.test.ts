@@ -98,9 +98,9 @@ describe("buildPathView", () => {
     expect(view.allDone).toBe(false);
   });
 
-  it("offers 'Not taught yet' only on a chapter task not yet done", () => {
-    expect(view.tasks.map((t) => t.canDefer)).toEqual([false, false, true, true]);
+  it("names each task's chapter; 'Not taught yet' gave way to Switch chapter (§18)", () => {
     expect(view.tasks[2].chapterId).toBe("ce");
+    expect(view.tasks.some((t) => "canDefer" in t)).toBe(false);
   });
 
   it("counts chapters done per subject and puts the pace in the status line", () => {

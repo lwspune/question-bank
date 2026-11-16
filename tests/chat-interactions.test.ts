@@ -268,27 +268,28 @@ describe("summarizeChatInteractions: the practice-test builder (migration 0157)"
   });
 });
 
-describe("summarizeChatInteractions: Teach me step by step (migration 0252)", () => {
-  it("counts each action apart from FAQ taps, in funnel order, and where students got lost", () => {
+describe("summarizeChatInteractions: step chips (event step_by_step, 0252; 2026-11-15)", () => {
+  it("counts each tap apart from FAQ taps, in funnel order, and which steps get Explain", () => {
     const s = summarizeChatInteractions([
+      row("step_by_step", "tap:1"),
+      row("step_by_step", "tap:2"),
+      row("step_by_step", "explain:2"),
+      row("step_by_step", "explain:2"),
+      row("step_by_step", "explain:1"),
+      row("step_by_step", "reply:3"),
+      // The retired "Teach me step by step" taps stay stored but are not this funnel.
       row("step_by_step", "open:1"),
-      row("step_by_step", "open:1"),
-      row("step_by_step", "next:1"),
       row("step_by_step", "lost:2"),
-      row("step_by_step", "lost:2"),
-      row("step_by_step", "lost:1"),
-      row("step_by_step", "done:3"),
       row("faq_click", "exams"),
     ]);
     expect(s.totalClicks).toBe(1);
     expect(s.byQuestion.map((q) => q.id)).toEqual(["exams"]);
     expect(s.steps).toEqual([
-      { action: "open", label: "Started step by step", count: 2 },
-      { action: "next", label: "Got it, next step", count: 1 },
-      { action: "lost", label: "Lost me here", count: 3 },
-      { action: "done", label: "Reached the last step", count: 1 },
+      { action: "tap", label: "Tapped a step", count: 2 },
+      { action: "explain", label: "Explain", count: 3 },
+      { action: "reply", label: "Reply", count: 1 },
     ]);
-    expect(s.lostAt).toEqual([
+    expect(s.explainAt).toEqual([
       { step: 1, count: 1 },
       { step: 2, count: 2 },
     ]);

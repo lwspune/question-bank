@@ -6,6 +6,11 @@
  * theirs, and it moves with every answer. Not found while the card is switched
  * off at /dashboard/chat.
  *
+ * `view=day` (2026-11-15, migration 0262) answers V's "Your day" card instead
+ * (lib/chat/dayCard.ts): the card that stands in for V's greeting the first
+ * time a student opens V each day. `{ day: null }` = nothing to say, and V
+ * keeps its greeting. Same switch as the progress card.
+ *
  * `exam` is only a preference: a slug that is not one of the student's own is
  * ignored (pickProgressExams), so the parameter cannot be used to read anything.
  */
@@ -15,6 +20,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { readChatSettings } from "@/lib/chat/settingsAdmin";
 import { loadProgressCard } from "@/lib/chat/progressCardServer";
+import { loadDayCard } from "@/lib/chat/dayCardServer";
 import { logActivityOnce } from "@/lib/activity/service";
 import { surfaceViewedEvent } from "@/lib/activity/views";
 
@@ -41,6 +47,15 @@ export async function GET(request: NextRequest) {
     }
     const db = createSupabaseServerClient();
     const now = new Date();
+    if (request.nextUrl.searchParams.get("view") === "day") {
+      const day = await loadDayCard(db, userId, now);
+      if (day) {
+        // One row a day: who saw it and which kind, for growth "v-day-card".
+        const seen = surfaceViewedEvent(userId, "v_day", now);
+        await logActivityOnce(db, userId, { ...seen, metadata: { ...seen.metadata, card: day.kind } });
+      }
+      return NextResponse.json({ day }, { headers: NO_STORE });
+    }
     const [card] = await Promise.all([
       loadProgressCard(db, userId, asked, now),
       // One row a day: how many students look, and whether they drill after (growth "v-progress").

@@ -5,7 +5,7 @@ import { useIntlSite } from "@/lib/sites/useIntlSite";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { usePublicPathname } from "@/lib/nav/usePublicPathname";
-import { ArrowRight, CalendarCheck, Check, Footprints, ListChecks, Plus, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, TrendingUp, X } from "lucide-react";
+import { CalendarCheck, Check, ListChecks, Plus, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, TrendingUp, X } from "lucide-react";
 import { toast } from "sonner";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { useVFeatures } from "@/lib/chat/useVExplain";
@@ -14,7 +14,7 @@ import { vPlacement } from "@/lib/chat/placement";
 import { launcherHiddenAfterScroll } from "@/lib/chat/launcherScroll";
 import { panelBox, type PanelBox } from "@/lib/chat/panelBox";
 import { NOT_UNDERSTOOD, replySteps, stuckStepMessage } from "@/lib/chat/understood";
-import { lostStepMessage } from "@/lib/chat/stepByStep";
+import { explainStepMessage, replyParts } from "@/lib/chat/stepChips";
 import { figureSrc } from "@/lib/chat/solutionFigure";
 import { SESSION_IDLE_MS, quoteSnippet, type HistoryTurn } from "@/lib/chat/conversation";
 import {
@@ -68,6 +68,7 @@ import VAskedCard from "./VAskedCard";
 import VFace, { type VAvatar } from "./VFace";
 import ReplyText from "./VReplyText";
 import VRevealReply from "./VRevealReply";
+import VStepReply from "./VStepReply";
 import VPlanCard from "./VPlanCard";
 import VPassOffer from "./VPassOffer";
 import VHourlyOffer from "./VHourlyOffer";
@@ -75,6 +76,9 @@ import { parseVPassOffer, type VPassOffer as PassOffer } from "@/lib/chat/passOf
 import { parseHourlyLimit, type HourlyLimitReply } from "@/lib/chat/hourlyLimit";
 import { liftDailyLimit } from "@/components/reveal/useRevealMeter";
 import VProgressCard from "./VProgressCard";
+import VDayCard from "./VDayCard";
+import type { DayCard } from "@/lib/chat/dayCard";
+import { dayCardDue, readSeenDay, writeSeenDay } from "@/lib/chat/daySeen";
 import VPathCard from "./VPathCard";
 import {
   ASK_V_EVENT,
@@ -97,7 +101,6 @@ import { reportVisual } from "@/lib/visuals/usageBeacon";
 // The animated-solution player loads only when a reply carries a visual.
 const VAnimatedSolution = dynamic(() => import("@/components/visuals/AnimatedSolution"));
 // "Teach me step by step" loads only when tapped.
-const VStepCard = dynamic(() => import("./VStepCard"));
 
 /**
  * One message in the window. An assistant turn may carry `links` (the paths
@@ -131,16 +134,8 @@ type ChatTurn = HistoryTurn & {
   stepChoices?: number;
   /** A step (or "All of it") was picked, so the buttons go. */
   stepSent?: boolean;
-  /** "Teach me step by step" goes under this explanation: its solution has steps (2026-11-12). */
-  stepByStep?: boolean;
-  /** ...and was tapped, so the button goes. */
-  stepsTaken?: boolean;
-  /** The step-by-step card: the question's solution, one step at a time from `start` (0-based). Transient. */
-  steps?: { questionId: string; start: number };
-  /** V's answer to "Lost me here": the next step to continue from, when there is one. */
-  resume?: { questionId: string; next: number; total: number };
-  /** ...and Continue was tapped. */
-  resumeTaken?: boolean;
+  /** A stepped explanation's tapped step, 0-based: its Explain and Reply chips show (2026-11-15). Never kept. */
+  tappedStep?: number;
 };
 
 /** What the device keeps of a turn: no face, no errors. */
@@ -148,18 +143,13 @@ function keepable(turns: readonly ChatTurn[]): HistoryTurn[] {
   return turns
     .filter((t) => !t.transient)
     .map((t) => {
-      // Step by step lives on this screen only: the server serves steps for today's explanations alone.
       const {
         avatar: _avatar,
         transient: _transient,
         reveal: _reveal,
         offer: _offer,
         hourlyOffer: _hourly,
-        stepByStep: _stepByStep,
-        stepsTaken: _stepsTaken,
-        steps: _steps,
-        resume: _resume,
-        resumeTaken: _resumeTaken,
+        tappedStep: _tappedStep,
         ...rest
       } = t;
       return rest as HistoryTurn;
@@ -240,12 +230,24 @@ export default function ChatWidget() {
   // The header's shared read (no extra request): the button shows once there is something to show.
   const pulse = usePulse(signedIn && features.progress);
   const showProgress = !!pulse && ((pulse.totals?.answered ?? 0) > 0 || pulse.due > 0);
+  // "Your day" (2026-11-15, lib/chat/dayCard): the first open of an India day
+  // shows the student's day in place of the greeting; a dot on the button says
+  // it is waiting. Never over an unread reply.
+  const [day, setDay] = useState<DayCard | null>(null);
+  const [dayLoading, setDayLoading] = useState(false);
+  const [dayDot, setDayDot] = useState(false);
+  useEffect(() => {
+    setDayDot(
+      dayCardDue({ signedIn, enabled: features.progress, hasSomething: showProgress, unread, seenDay: readSeenDay(), now: new Date() })
+    );
+  }, [signedIn, features.progress, showProgress, unread]);
   // "My plan for today" (Phase 2): only for a student on the board path, from the same shared read.
   const showPath = pulse?.path?.state === "on";
   // "Ask V about this question" (2026-10-19): the question this conversation is about, sent with each message.
   const [asked, setAsked] = useState<AskVDetail | null>(null);
   // "Reply" on one of V's replies (0174): the message the next typed message answers.
-  const [replyingTo, setReplyingTo] = useState<{ id: string; text: string } | null>(null);
+  // A Reply on one step of a stepped explanation (0259) carries the step, 1-based, and quotes only it.
+  const [replyingTo, setReplyingTo] = useState<{ id: string; text: string; step?: number } | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   // A question card's Ask V reaches the window through a window event; the handler sees this render's state.
   const onAskRef = useRef<(d: AskVDetail) => void>(() => {});
@@ -458,6 +460,34 @@ export default function ChatWidget() {
     return { id, fresh: true };
   }
 
+  /** Is today's card waiting? Read when asked, so a new India day is noticed without a reload. */
+  function dayDue(): boolean {
+    return dayCardDue({
+      signedIn,
+      enabled: features.progress,
+      hasSomething: showProgress,
+      unread,
+      seenDay: readSeenDay(),
+      now: new Date(),
+    });
+  }
+
+  async function loadDay() {
+    setDayLoading(true);
+    try {
+      const res = await fetch("/api/chat/progress?view=day", { cache: "no-store" });
+      if (!res.ok) return; // V keeps its greeting; the next open tries again.
+      const j = (await res.json()) as { day: DayCard | null };
+      writeSeenDay(new Date());
+      setDayDot(false);
+      setDay(j.day);
+    } catch {
+      // Offline: the greeting stands.
+    } finally {
+      setDayLoading(false);
+    }
+  }
+
   function openChat() {
     const { id: sessionId } = currentSessionId();
     // Once per mount, so reopening the panel doesn't inflate /dashboard/chat's open count.
@@ -471,6 +501,7 @@ export default function ChatWidget() {
       }).catch(() => {});
     }
     void loadAccountConversation();
+    if (mode === "chat" && dayDue()) void loadDay();
     setOpen(true);
   }
 
@@ -644,40 +675,56 @@ export default function ChatWidget() {
     if (!ok) setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, moreTaken: false } : t)));
   }
 
-  /**
-   * "Teach me step by step" under explanation `index` (V_SPEC.md section 0, step 1): the stored
-   * solution one step at a time, as a card. No AI call, so it uses none of the hour's messages.
-   */
-  function teachStepByStep(index: number) {
+  /** Count a step-chip tap (POST /api/chat/steps). Best effort: a lost count never stops the student. */
+  function countStep(questionId: string, action: "tap" | "explain" | "reply", step: number): Promise<unknown> {
+    return fetch("/api/chat/steps", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ questionId, action, step }),
+    }).catch(() => undefined);
+  }
+
+  /** A step of explanation `index` was tapped (0-based): its chips show, or close when it was open (2026-11-15). */
+  function tapStep(index: number, step: number) {
     const turn = turns[index];
-    if (sending || !turn || turn.role !== "assistant" || !turn.explainedQuestionId) return;
-    const questionId = turn.explainedQuestionId;
-    setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, stepsTaken: true } : t)));
-    addTurn({ role: "user", text: "Teach me step by step", transient: true });
-    addTurn({ role: "assistant", avatar: "idle", text: "Here's the solution, one step at a time.", steps: { questionId, start: 0 }, transient: true });
+    if (!turn || turn.role !== "assistant" || !turn.stepQuestionId) return;
+    const opening = turn.tappedStep !== step;
+    setTurns((all) =>
+      all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, tappedStep: opening ? step : undefined } : t))
+    );
+    if (opening) void countStep(turn.stepQuestionId, "tap", step);
   }
 
   /**
-   * "Lost me here" on step `step` (0-based) of the card for `questionId`: V explains that step
-   * (it is told the step's text, lib/chat/stepByStep stepTailLine), and its reply offers to continue.
+   * Explain on step `step` (0-based) of explanation `index`: V explains that step alone. The
+   * message replies to the explanation, so V is told the step's own text even when it has
+   * left V's memory, and the question goes to Fix your mistakes like a No.
    */
-  function stepLost(questionId: string, step: number, total: number) {
-    // The tapped question's pick, when the card is about it; else none known.
+  function explainStep(index: number, step: number) {
+    const turn = turns[index];
+    if (sending || !turn || turn.role !== "assistant" || !turn.id || !turn.stepQuestionId) return;
+    const questionId = turn.stepQuestionId;
+    // Explain sends the question to Fix your mistakes (server side): refresh the count once it is written.
+    void countStep(questionId, "explain", step).then(() => invalidatePulse());
+    setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, tappedStep: undefined } : t)));
+    // The tapped question's pick, when the explanation is about it; else none known.
     const chose = asked && !asked.notes && asked.questionId === questionId ? asked.chose : null;
-    const next = step + 1;
-    void askTyped(lostStepMessage(step + 1), { questionId, chose }, {
+    const stepText = replyParts(turn.text)?.steps[step] ?? "";
+    void askTyped(explainStepMessage(step + 1), { questionId, chose }, {
       hideAsked: true,
-      ...(next < total ? { replyExtra: { resume: { questionId, next, total } } } : {}),
+      replyTo: { id: turn.id, text: `Step ${step + 1}: ${stepText}`, step: step + 1 },
     });
   }
 
-  /** "Continue" under V's answer to "Lost me here": the card again, from the next step. */
-  function continueSteps(index: number) {
+  /** Reply on step `step` (0-based) of explanation `index`: the step is quoted above the typing box. */
+  function replyToStep(index: number, step: number) {
     const turn = turns[index];
-    if (sending || !turn || turn.role !== "assistant" || !turn.resume) return;
-    const { questionId, next } = turn.resume;
-    setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, resumeTaken: true } : t)));
-    addTurn({ role: "assistant", avatar: "idle", text: "Let's carry on.", steps: { questionId, start: next }, transient: true });
+    if (!turn || turn.role !== "assistant" || !turn.id || !turn.stepQuestionId) return;
+    void countStep(turn.stepQuestionId, "reply", step);
+    setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, tappedStep: undefined } : t)));
+    const stepText = replyParts(turn.text)?.steps[step] ?? "";
+    setReplyingTo({ id: turn.id, text: `Step ${step + 1}: ${stepText}`, step: step + 1 });
+    inputRef.current?.focus();
   }
 
   /**
@@ -767,7 +814,7 @@ export default function ChatWidget() {
   async function askTyped(
     override?: string,
     about?: AskVDetail | null,
-    opts: { replyExtra?: Pick<ChatTurn, "resume">; hideAsked?: boolean } = {}
+    opts: { replyTo?: { id: string; text: string; step?: number }; hideAsked?: boolean } = {}
   ) {
     const text = (override ?? draft).trim();
     if (sending || !text) return;
@@ -776,7 +823,8 @@ export default function ChatWidget() {
     // A new session drops the old tapped question and reply; a button send never carries a reply.
     // `about` null = explicitly no question (a concept request); undefined = the tapped one, if any.
     const question = about === null ? null : (about ?? (fresh ? null : asked));
-    const replyTo = override === undefined && !fresh ? replyingTo : null;
+    // Explain on a step replies to its explanation (opts.replyTo); a new session drops it, as the server would.
+    const replyTo = fresh ? null : (opts.replyTo ?? (override === undefined ? replyingTo : null));
     // An Ask V tap shows its question above the message (owner, 2026-10-23).
     const askedCard = about && !opts.hideAsked ? askedCardOf(about, pathname) : null;
     addTurn({
@@ -798,6 +846,7 @@ export default function ChatWidget() {
           pagePath: pathname,
           ...(question ? { question: questionForRequest(question) } : {}),
           ...(replyTo ? { replyTo: replyTo.id } : {}),
+          ...(replyTo?.step ? { replyStep: replyTo.step } : {}),
         }),
       });
       const data = (await res.json().catch(() => ({}))) as {
@@ -821,8 +870,8 @@ export default function ChatWidget() {
         solutionVisualQuestionId?: string;
         /** The bank question V explained, for "One more like this" (2026-11-08). */
         explainedQuestionId?: string;
-        /** Its solution has steps: "Teach me step by step" goes under the reply (2026-11-12). */
-        stepByStep?: boolean;
+        /** A stepped explanation's question: its steps can be tapped for Explain and Reply (2026-11-15). */
+        stepQuestionId?: string;
         /** The day's free answers stopped an explanation: the pass offer goes under the reply (2026-10-28). */
         passOffer?: unknown;
         /** Abuse after the calm line (lib/chat/abuse.ts): V says nothing. */
@@ -881,8 +930,7 @@ export default function ChatWidget() {
               ...(data.solutionVisual && typeof data.solutionVisual === "object" ? { visual: data.solutionVisual } : {}),
               ...(typeof data.solutionVisualQuestionId === "string" ? { visualQuestionId: data.solutionVisualQuestionId } : {}),
               ...(typeof data.explainedQuestionId === "string" ? { explainedQuestionId: data.explainedQuestionId } : {}),
-              ...(data.stepByStep === true ? { stepByStep: true } : {}),
-              ...(opts.replyExtra ?? {}),
+              ...(typeof data.stepQuestionId === "string" ? { stepQuestionId: data.stepQuestionId } : {}),
             }
           : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan, path, reveal: true }
       );
@@ -960,7 +1008,7 @@ export default function ChatWidget() {
           ) : (
           <>
           <div ref={listRef} className="flex-1 space-y-4 overflow-y-auto px-4 py-4">
-            {[GREETING, ...turns].map((t, n) => {
+            {[day ? { ...GREETING, text: day.greeting } : dayLoading ? { ...GREETING, text: "Welcome back." } : GREETING, ...turns].map((t, n) => {
               // n - 1 indexes `turns`; the greeting is never stored.
               const i = n - 1;
               if (t.role === "user") {
@@ -982,26 +1030,45 @@ export default function ChatWidget() {
               }
               // What goes under the reply waits until its last line is out.
               const rateable = t.source === "ai" && !!t.id && !t.reveal;
+              // A stepped explanation: a bubble per step, a tapped step's Explain and Reply (2026-11-15).
+              const parts = t.stepQuestionId && t.id && !signInNeeded ? replyParts(t.text) : null;
               // The solution's figure, when the question V explained has one. A saved turn is checked first.
               const figure = t.reveal ? null : figureSrc(t.figure, SUPABASE_URL);
               return (
                 <div key={n} className={`max-w-[90%] ${MESSAGE_IN}`}>
-                  <div className="flex items-end gap-2">
-                    <VFace avatar={t.reveal ? "talk" : (t.avatar ?? "idle")} className="h-7 w-7 shrink-0 object-contain" />
-                    <div className={V_BUBBLE}>
-                      {t.reveal ? (
-                        <VRevealReply
-                          text={t.text}
-                          links={t.links}
-                          onNavigate={close}
-                          onGrow={() => listRef.current?.scrollTo({ top: listRef.current.scrollHeight })}
-                          onDone={() => endReveal(i)}
-                        />
-                      ) : (
-                        <ReplyText text={t.text} links={t.links} onNavigate={close} />
-                      )}
+                  {parts ? (
+                    <VStepReply
+                      parts={parts}
+                      links={t.links}
+                      avatar={t.reveal ? "talk" : (t.avatar ?? "idle")}
+                      reveal={t.reveal}
+                      tapped={t.tappedStep ?? null}
+                      busy={sending}
+                      onTap={(step) => tapStep(i, step)}
+                      onExplain={(step) => explainStep(i, step)}
+                      onReply={(step) => replyToStep(i, step)}
+                      onNavigate={close}
+                      onGrow={() => listRef.current?.scrollTo({ top: listRef.current.scrollHeight })}
+                      onDone={() => endReveal(i)}
+                    />
+                  ) : (
+                    <div className="flex items-end gap-2">
+                      <VFace avatar={t.reveal ? "talk" : (t.avatar ?? "idle")} className="h-7 w-7 shrink-0 object-contain" />
+                      <div className={V_BUBBLE}>
+                        {t.reveal ? (
+                          <VRevealReply
+                            text={t.text}
+                            links={t.links}
+                            onNavigate={close}
+                            onGrow={() => listRef.current?.scrollTo({ top: listRef.current.scrollHeight })}
+                            onDone={() => endReveal(i)}
+                          />
+                        ) : (
+                          <ReplyText text={t.text} links={t.links} onNavigate={close} />
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  )}
                   {figure && (
                     <a
                       href={figure}
@@ -1120,59 +1187,18 @@ export default function ChatWidget() {
                       )}
                     </div>
                   )}
-                  {rateable &&
-                    t.explained &&
-                    t.explainedQuestionId &&
-                    !signInNeeded &&
-                    (!t.moreTaken || (t.stepByStep && !t.stepsTaken && !t.resume)) && (
+                  {rateable && t.explained && t.explainedQuestionId && !signInNeeded && !t.moreTaken && (
                     <div className="ml-9 mt-1 flex flex-wrap gap-1.5">
-                      {!t.moreTaken && (
-                        <button
-                          type="button"
-                          disabled={sending}
-                          onClick={() => void oneMoreLikeThis(i)}
-                          className="inline-flex h-8 items-center gap-1.5 rounded-full border border-border bg-card px-3 text-xs font-medium text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
-                        >
-                          <Plus className="h-3.5 w-3.5" aria-hidden />
-                          One more like this
-                        </button>
-                      )}
-                      {/* Not under V's answer to "Lost me here": Continue below takes the student back to the steps. */}
-                      {t.stepByStep && !t.stepsTaken && !t.resume && (
-                        <button
-                          type="button"
-                          disabled={sending}
-                          onClick={() => teachStepByStep(i)}
-                          className="inline-flex h-8 items-center gap-1.5 rounded-full border border-border bg-card px-3 text-xs font-medium text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
-                        >
-                          <Footprints className="h-3.5 w-3.5" aria-hidden />
-                          Teach me step by step
-                        </button>
-                      )}
-                    </div>
-                  )}
-                  {t.resume && !t.resumeTaken && !t.reveal && (
-                    <div className="ml-9 mt-1">
                       <button
                         type="button"
                         disabled={sending}
-                        onClick={() => continueSteps(i)}
-                        className="inline-flex h-8 items-center gap-1.5 rounded-full bg-brand px-3 text-xs font-semibold text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50"
+                        onClick={() => void oneMoreLikeThis(i)}
+                        className="inline-flex h-8 items-center gap-1.5 rounded-full border border-border bg-card px-3 text-xs font-medium text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
                       >
-                        Continue: step {t.resume.next + 1} of {t.resume.total}
-                        <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+                        <Plus className="h-3.5 w-3.5" aria-hidden />
+                        One more like this
                       </button>
                     </div>
-                  )}
-                  {t.steps && (
-                    <VStepCard
-                      questionId={t.steps.questionId}
-                      start={t.steps.start}
-                      busy={sending}
-                      onLost={(step, total) => stepLost(t.steps!.questionId, step, total)}
-                      onMore={() => void moreLike(t.steps!.questionId, t.steps!.questionId)}
-                      onGrow={() => listRef.current?.scrollTo({ top: listRef.current.scrollHeight })}
-                    />
                   )}
                   {t.offer && !t.reveal && (
                     <div className="ml-9 max-w-[calc(100%-2.25rem)]">
@@ -1199,6 +1225,10 @@ export default function ChatWidget() {
                   )}
                   {t.plan && !t.reveal && <VPlanCard onNavigate={close} />}
                   {t.progress && <VProgressCard onNavigate={close} />}
+                  {n === 0 && day && <VDayCard card={day} onNavigate={close} />}
+                  {n === 0 && !day && dayLoading && (
+                    <div className="ml-9 mt-2 h-44 animate-pulse rounded-xl border bg-muted/40" aria-hidden />
+                  )}
                   {t.path && !t.reveal && <VPathCard onNavigate={close} />}
                 </div>
               );
@@ -1336,7 +1366,9 @@ export default function ChatWidget() {
             ? "Close chat with V"
             : unread > 0
               ? `Chat with V, ${unread} new ${unread === 1 ? "reply" : "replies"}`
-              : "Chat with V"
+              : dayDot
+                ? "Chat with V, your day is ready"
+                : "Chat with V"
         }
         aria-expanded={open}
         title="Chat with V"
@@ -1349,6 +1381,9 @@ export default function ChatWidget() {
           <X className="h-5 w-5 text-foreground" aria-hidden />
         ) : (
           <VFace avatar="idle" className="h-9 w-9 object-contain sm:h-12 sm:w-12" />
+        )}
+        {!open && unread === 0 && dayDot && (
+          <span aria-hidden className="absolute right-0 top-0 h-3 w-3 rounded-full bg-brand ring-2 ring-background sm:right-0.5 sm:top-0.5" />
         )}
         {!open && unread > 0 && (
           <span

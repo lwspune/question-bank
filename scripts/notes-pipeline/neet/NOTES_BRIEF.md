@@ -5,9 +5,11 @@ session decides and writes.** Adapted from `scripts/notes-pipeline/cds-gk/NOTES_
 (2026-11-15, NEET Botany first). The method is NOTES_WORKFLOW.md (sections 0, 1, 1b) and the eight
 defect classes of NOTES_ARC_LEDGER.md.
 
-**The format model** is CDS Biology Cell Biology: `src/app/notes/cds-biology/cell-biology/_data/*`
-(page files + `chapter.ts`), and the tag-map shape in `generated-papers/_tag-cdsch-at.json`.
-Read them before writing anything. **NEET is deeper than CDS:** NEET asks NCERT Class XI/XII facts
+**The format model** is NEET Botany Cell: The Unit of Life (shipped 2026-11-15, at NEET depth):
+`src/app/notes/neet-botany/cell-unit-of-life/_data/*` (page files + `chapter.ts`; `index.ts` is
+written by the main session), and the tag-map shape in `generated-papers/_tag-cdsch-at.json`.
+Read them before writing anything. CDS Biology Cell Biology (`src/app/notes/cds-biology/cell-biology/`)
+is the older, shallower model; do not copy its depth. **NEET is deeper than CDS:** NEET asks NCERT Class XI/XII facts
 line by line, often as "select the correct statements A-D" or match-the-columns. Teach at NCERT
 depth: the tables must hold the exact NCERT facts the questions turn on (names, numbers, sequences,
 examples, exceptions), not a general-knowledge summary.

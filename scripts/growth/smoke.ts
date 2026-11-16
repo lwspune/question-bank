@@ -281,6 +281,10 @@ async function main() {
         // Read by hand: surface_viewed review_traps by action (shown, expand, playbook).
         line = "by hand: surface_viewed review_traps by action";
         break;
+      case "notes-drill-panel":
+        // Read by hand: notes_drill steps, and opens followed by a bank answer within 30 minutes.
+        line = "by hand: scripts/notes/notes-drill-readout.sql";
+        break;
       case "repeat-line":
         // Read by hand: surface_viewed repeat_line by action and from, plus the 14-day fix rate of line-question misses.
         line = "by hand: surface_viewed repeat_line by action, and the 14-day fix rate (baseline 16.9%)";
@@ -301,6 +305,14 @@ async function main() {
         // Read by hand: chat_interactions replies to a No (plain or naming a step), understood Yes against No.
         line = "by hand: chat_interactions understood on replies to a No";
         break;
+      case "v-day-card":
+        // Read by hand: surface_viewed v_day by student and day, taps, drill starts from v_day.
+        line = "by hand: scripts/chat/day-card-readout.sql (v_day showings on 2+ days, drill starts from v_day)";
+        break;
+      case "v-step-chips":
+        // Read by hand: step_by_step rows coded tap/explain/reply against stepped explanations, and Yes on Explain replies.
+        line = "by hand: chat_interactions step_by_step (tap, explain, reply) and understood on Explain replies";
+        break;
       case "v-step-by-step":
         // Read by hand: the step_by_step rows (migration 0252) against Ask V explanations of qualifying questions.
         line = "by hand: chat_interactions step_by_step (open, next, lost, done) and npm run v:learning";
@@ -320,6 +332,14 @@ async function main() {
       case "teacher-or-student":
         // Read by hand: answers, the answer rate per box and the behaviour rule's precision (migration 0258).
         line = "by hand: scripts/profile/teacher-student-readout.sql";
+        break;
+      case "blog-posts":
+        // Read by hand: signups by the kind of article they landed on (migration 0263), and Search Console clicks.
+        line = "by hand: scripts/blog/readout.sql + Search Console clicks on /blog and /exams/*/syllabus";
+        break;
+      case "enem-interest":
+        // Read by hand: target_exams containing 'enem', and their ENEM mock attempts / answers.
+        line = "by hand: students with enem in target_exams, and their ENEM mocks and answers";
         break;
       case "gulf-price":
         // Read by hand: Gulf students' pass revenue (entitlements by signup_country) per Gulf signup.

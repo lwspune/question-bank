@@ -3783,5 +3783,418 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "NEET Botany",
     "chapterSlug": "biodiversity",
     "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "animal-kingdom",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "structural-organisation",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "biomolecules",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "breathing",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "body-fluids",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "excretion",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "neural-control",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "locomotion",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "chemical-coordination",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "evolution",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "human-reproduction",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "human-health",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "reproductive-health",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "biotech-principles",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "biotech-applications",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "percentage",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "mensuration-3d",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "trigonometry",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "ratio",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "surds-indices",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "triangles",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "algebraic-identities",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "interest",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "number-system",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "data-interpretation",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "time-work",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "averages",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "tsd",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "linear-equations",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "statistics",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "circles",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "heights-distances",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "quadrilaterals",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "fill-in-the-blanks",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "idioms-and-phrases",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "spotting-errors",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "cloze-test",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "sentence-rearrangement",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "grammar",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "vocabulary",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "reading-comprehension",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "series",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "mathematical-operations",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "data-sufficiency",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "blood-relations",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "order-ranking",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "coding-decoding",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "analogy",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "classification",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "alphabet-number",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "statements",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "non-verbal",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "embedded-figures",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "hardware",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "ms-office",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "internet-email",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "operating-system",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "cyber-security",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "networks",
+    "subtopicCount": 1
   }
 ];

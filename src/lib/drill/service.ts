@@ -20,7 +20,7 @@ import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { loadFocus } from "@/lib/me/focusServer";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { composeDailySet, fillUnseen, loadOwnPool } from "./compose";
-import { fixedCount, questionState, scopeToAttempt, scopeToChapter, scopeToExam, selectDrill, DRILL_SIZE, type DueQuestion } from "./select";
+import { fixedCount, questionState, scopeToAttempt, scopeToChapter, scopeToExam, selectDrill, DRILL_SIZE, type DrillEvent, type DueQuestion } from "./select";
 import type { DrillScope } from "./scope";
 import { answerProgress, type AnswerProgress } from "./progress";
 import { awardAnsweredMilestone } from "@/lib/celebrate/service";
@@ -253,9 +253,9 @@ export async function getOwnLadder(
   db: ReturnType<typeof createSupabaseServerClient>,
   userId: string,
   now: Date = new Date()
-): Promise<{ due: DueQuestion[]; fixed: number }> {
+): Promise<{ due: DueQuestion[]; fixed: number; events: DrillEvent[] }> {
   const pool = await loadOwnPool(db, userId, now);
-  return { due: pool.drillable, fixed: fixedCount(pool.events, now) };
+  return { due: pool.drillable, fixed: fixedCount(pool.events, now), events: pool.events };
 }
 
 /**

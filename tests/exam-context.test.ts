@@ -462,6 +462,7 @@ describe("exam tiers", () => {
       "uceed",
       "iiser-iat",
       "imat",
+      "enem",
       "clat",
     ],
     graduate: [
@@ -484,6 +485,7 @@ describe("exam tiers", () => {
       "ugc-net",
       "rrb-ntpc",
       "capf-ac",
+      "rpsc-ras",
     ],
   };
 

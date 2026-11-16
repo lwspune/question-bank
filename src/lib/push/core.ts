@@ -91,14 +91,16 @@ export function drillTimeLine(total: number): string {
   return minutes <= 1 ? "About a minute." : `About ${minutes} minutes.`;
 }
 
-export function buildDuePushPayload(input: { summary: DueSummary; clickToken: string }): PushPayload {
+export function buildDuePushPayload(input: { summary: DueSummary; clickToken: string; fixedYesterday?: number }): PushPayload {
   const { summary, clickToken } = input;
+  // What went well first (V's day card, 2026-11-15): only when there was something.
+  const fixed = (input.fixedYesterday ?? 0) > 0 ? `Yesterday you fixed ${input.fixedYesterday}. ` : "";
   const named = summary.chapters.slice(0, MAX_CHAPTERS).map((c) => `${c.chapter} ${c.count}`);
   const leftOut = summary.chapters.length - named.length;
   const parts = leftOut > 0 ? [...named, `+${leftOut} more`] : named;
   return {
     title: pushTitle(summary.total),
-    body: [...parts, drillTimeLine(summary.total)].join(" · "),
+    body: fixed + [...parts, drillTimeLine(summary.total)].join(" · "),
     url: clickUrl(clickToken, drillHref("push")),
     tag: "due-nudge",
     icon: PUSH_ICON,

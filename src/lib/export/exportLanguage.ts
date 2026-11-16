@@ -7,7 +7,8 @@
  * `isCorrect` stays on the same option, because a translation is a
  * presentation of one question, never a second one.
  *
- * "both" stacks Marathi above English in the stem (the booklet's order) and
+ * "both" stacks the second language (Marathi or Hindi) above English in the
+ * stem (the booklet's order) and
  * joins options with " / " so each option stays one line in a two-column page.
  * The answer key's solution follows the same language choice.
  */

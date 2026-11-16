@@ -11,15 +11,17 @@ export type AssembledGroup = { tier: "repeat" | "type"; label: string; sittings:
 
 /**
  * Question id -> the shifts that reprinted it, from repeats.json ({ shiftKey:
- * [{ questionId }] }). Tier I shifts only ("t1-..."): Tier II is its own exam.
+ * [{ questionId }] }). Only the keys of one exam: CGL Tier I "t1-..." by default
+ * (Tier II is its own exam), "chsl-t1-" for SSC CHSL, "cpo-t1-" for SSC CPO.
  */
 export function reprintSittings(
   repeats: Record<string, readonly { questionId: string }[]>,
-  labelOf: (shiftKey: string) => string | undefined
+  labelOf: (shiftKey: string) => string | undefined,
+  prefix = "t1-"
 ): Map<string, string[]> {
   const out = new Map<string, string[]>();
   for (const [key, list] of Object.entries(repeats)) {
-    if (!key.startsWith("t1-")) continue;
+    if (!key.startsWith(prefix)) continue;
     const label = labelOf(key);
     if (!label) throw new Error(`cannot name the reprinting shift ${key}`);
     for (const r of list) (out.get(r.questionId) ?? out.set(r.questionId, []).get(r.questionId)!).push(label);

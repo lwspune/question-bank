@@ -4,6 +4,7 @@ import { describe, it, expect } from "vitest";
 import {
   INTL_ORIGIN,
   INTL_EXAMS,
+  LIVE_INTL_EXAMS,
   isIntlHost,
   isFormerIntlHost,
   intlExamOfPath,
@@ -209,10 +210,11 @@ describe("intlHostDecision (the intl host)", () => {
     }
   });
 
-  it("sends a section index to the exam's own page while there is one exam, keeping the query", () => {
-    expect(INTL_EXAMS.length).toBe(1);
+  it("sends a section index to the one live exam with that section, else home, keeping the query", () => {
+    // IMAT and ENEM are both live (2026-11-15); only IMAT has notes and formula sheets.
+    expect(LIVE_INTL_EXAMS.map((e) => e.slug)).toEqual(["imat", "enem"]);
     expect(intlHostDecision("/notes", "")).toEqual({ kind: "redirect", url: "/notes/imat", permanent: false });
-    expect(intlHostDecision("/mock", "?a=1")).toEqual({ kind: "redirect", url: "/mock/exam/imat?a=1", permanent: false });
+    expect(intlHostDecision("/mock", "?a=1")).toEqual({ kind: "redirect", url: "/?a=1", permanent: false });
     expect(intlHostDecision("/formula", "")).toEqual({ kind: "redirect", url: "/formula/imat", permanent: false });
     expect(intlHostDecision("/exams", "")).toEqual({ kind: "redirect", url: "/", permanent: false });
     expect(intlHostDecision("/questions", "")).toEqual({ kind: "redirect", url: "/", permanent: false });

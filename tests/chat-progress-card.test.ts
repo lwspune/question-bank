@@ -6,6 +6,8 @@
 import { describe, it, expect } from "vitest";
 import {
   buildProgressCard,
+  movedUpSince,
+  mockDays,
   progressRows,
   isEmptyCard,
   notesChaptersOf,
@@ -152,6 +154,32 @@ describe("buildProgressCard", () => {
     expect(card.chapters?.weak).toBe(0);
     expect(card.chapters?.strong).toBe(2);
     expect(card.chapters?.movedUp).toEqual(["Trigonometry"]);
+  });
+
+  it("movedUpSince names the chapters that went up since a given start, with their band now", () => {
+    const attempts = [
+      attempt("OLD", { startedAt: daysAgo(12), submittedAt: daysAgo(12) }),
+      attempt("N1", { startedAt: daysAgo(2), submittedAt: daysAgo(2) }),
+      attempt("N2", { startedAt: daysAgo(1), submittedAt: daysAgo(1) }),
+    ];
+    const facts = [...four("OLD", 0, 2), ...four("OLD", 1, 4), ...four("N1", 0, 4), ...four("N2", 0, 4)];
+    const p = payload(attempts, facts);
+    expect(movedUpSince(p, "NDA", NOW, new Date(NOW.getTime() - 3 * DAY))).toEqual([{ chapter: "Trigonometry", band: "mastered" }]);
+    // Nothing new since yesterday's start... except N2, which did not change Trigonometry's band any further.
+    expect(movedUpSince(p, "NDA", NOW, new Date(NOW.getTime() - 0.5 * DAY))).toEqual([]);
+    expect(movedUpSince(p, "CDS", NOW, new Date(NOW.getTime() - 3 * DAY))).toEqual([]);
+  });
+
+  it("mockDays gives graded mock answers per India day of the exam, with the top chapter", () => {
+    const attempts = [
+      attempt("A", { startedAt: daysAgo(1), submittedAt: daysAgo(1) }),
+      attempt("B", { startedAt: daysAgo(1), submittedAt: daysAgo(1), examName: "CDS" }),
+    ];
+    const facts = [...four("A", 0, 3), ...four("A", 1, 1).slice(0, 2), ...four("B", 0, 4)];
+    // 2026-10-26 18:00 IST.
+    expect(mockDays(payload(attempts, facts), "NDA")).toEqual([
+      { day: "2026-10-26", answered: 6, right: 4, topChapter: { name: "Trigonometry", answered: 4 } },
+    ]);
   });
 
   it("weighs the practised chapters by their share of the last 3 years' papers", () => {

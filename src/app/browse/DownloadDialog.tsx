@@ -26,6 +26,7 @@ import {
 import { cn } from "@/lib/utils";
 import type { Filters } from "@/lib/questions/filters";
 import LanguageSwitch from "@/components/i18n/LanguageSwitch";
+import { altLangName, type AltLang } from "@/lib/i18n/bilingual";
 import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
 import { useCart } from "@/lib/cart/CartProvider";
 import type { PassCta } from "@/lib/billing/plans";
@@ -72,8 +73,8 @@ export default function DownloadDialog({
   freeDownloadLeft = false,
   /** The pass on sale that unlocks downloads; null = none on sale, so no CTA. */
   downloadPass = null,
-  /** The filtered exam prints Marathi + English (MPSC) — offer a print language. */
-  bilingual = false,
+  /** The filtered exam's second print language (MPSC Marathi, SSC Hindi): offer a print language. */
+  altLang = null,
 }: {
   filters: Filters;
   totalCount: number;
@@ -86,7 +87,7 @@ export default function DownloadDialog({
   hasDownloadPass?: boolean;
   freeDownloadLeft?: boolean;
   downloadPass?: PassCta | null;
-  bilingual?: boolean;
+  altLang?: AltLang | null;
 }) {
   // Paper + key need org staff or the pass; anyone else sees the pass offer
   // instead — derived from the same gate the API enforces. `who` is typed so a
@@ -134,7 +135,7 @@ export default function DownloadDialog({
   const [groupBySubtopic, setGroupBySubtopic] = useState(false);
   const [includeSourceTag, setIncludeSourceTag] = useState(false);
   // Shared with the cards: a teacher reading in Marathi prints in Marathi.
-  const [lang, setLang] = useQuestionLang();
+  const [lang, setLang] = useQuestionLang(altLang);
   const [busyKind, setBusyKind] = useState<Kind | null>(null);
   // Bought in this box: the refreshed page grants the pass, and the download
   // view says so once, so the buyer knows the next tap is a file.
@@ -180,7 +181,7 @@ export default function DownloadDialog({
         includeSolutions,
         groupBySubtopic,
         includeSourceTag,
-        ...(bilingual ? { lang } : {}),
+        ...(altLang ? { lang } : {}),
       };
       const body =
         mode === "cart"
@@ -389,12 +390,13 @@ export default function DownloadDialog({
               disabled={busy}
             />
           </div>
-          {bilingual && (
+          {altLang && (
             <div className="space-y-1.5">
               <p className="text-sm font-medium">Print language</p>
-              <LanguageSwitch value={lang} onChange={setLang} />
+              <LanguageSwitch value={lang} onChange={setLang} alt={altLang} />
               <p className="text-xs text-muted-foreground">
-                Question Paper and Answer Key. &ldquo;Both&rdquo; prints Marathi above English, as the booklet does.
+                Question Paper and Answer Key. &ldquo;Both&rdquo; prints {altLangName(altLang)} above English, as the
+                paper does.
               </p>
             </div>
           )}

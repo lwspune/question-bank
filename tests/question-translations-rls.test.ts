@@ -11,6 +11,8 @@
  *   - the RPC refuses an option id that belongs to a different question, and
  *     writes NOTHING when it does (all-or-nothing)
  *   - an unsupported language is rejected by the table itself
+ *   - Hindi is accepted (0171), but a question carries at most ONE second
+ *     language, and an option's translation must match its question's
  *
  * Skipped when env is missing.
  */
@@ -42,8 +44,10 @@ describe.skipIf(!HAS_ENV)("question/option translations", () => {
   let privId: string;
   let pubOptionIds: string[] = [];
   let privOptionIds: string[] = [];
+  let hiId: string;
+  let hiOptionIds: string[] = [];
 
-  async function seedQuestion(visibility: "PUBLIC" | "PRIVATE", ex: string, sb: string, ch: string) {
+  async function seedQuestion(visibility: "PUBLIC" | "PRIVATE", ex: string, sb: string, ch: string, tag: string = visibility) {
     const { data: q } = await admin
       .from("questions")
       .insert({
@@ -51,9 +55,9 @@ describe.skipIf(!HAS_ENV)("question/option translations", () => {
         exam_id: ex,
         subject_id: sb,
         chapter_id: ch,
-        text: `tr-rls ${visibility} ${RUN_ID}`,
+        text: `tr-rls ${tag} ${RUN_ID}`,
         difficulty: "EASY",
-        content_hash: `tr-rls-${visibility}-${RUN_ID}`,
+        content_hash: `tr-rls-${tag}-${RUN_ID}`,
         created_by: adminId,
         visibility,
       })
@@ -94,6 +98,9 @@ describe.skipIf(!HAS_ENV)("question/option translations", () => {
     pubOptionIds = pub.optionIds;
     privId = priv.id;
     privOptionIds = priv.optionIds;
+    const hi = await seedQuestion("PUBLIC", ex!.id, sb!.id, ch!.id, "HINDI");
+    hiId = hi.id;
+    hiOptionIds = hi.optionIds;
 
     // Seed Marathi on both as service-role (bypasses RLS).
     await mustDo("seed question_translations", () =>
@@ -117,7 +124,7 @@ describe.skipIf(!HAS_ENV)("question/option translations", () => {
   });
 
   afterAll(async () => {
-    for (const id of [pubId, privId]) if (id) await admin.from("questions").delete().eq("id", id); // cascades
+    for (const id of [pubId, privId, hiId]) if (id) await admin.from("questions").delete().eq("id", id); // cascades
     if (orgId) await admin.from("organizations").delete().eq("id", orgId);
     for (const id of [adminId, superId]) if (id) await admin.auth.admin.deleteUser(id);
   });
@@ -192,6 +199,30 @@ describe.skipIf(!HAS_ENV)("question/option translations", () => {
 
   it("rejects an unsupported language at the table", async () => {
     const { error } = await admin.from("question_translations").insert({ question_id: privId, lang: "fr", text: "x" });
+    expect(error?.code).toBe("23514");
+  });
+
+  it("a SUPERADMIN writes a Hindi translation through the RPC (0171)", async () => {
+    const { error } = await superClient.rpc("put_question_translation", {
+      p_question_id: hiId,
+      p_lang: "hi",
+      p_text: "हिन्दी प्रश्न",
+      p_context: null,
+      p_solution: null,
+      p_options: hiOptionIds.map((id, i) => ({ option_id: id, text: `विकल्प ${i + 1}` })),
+    });
+    expect(error).toBeNull();
+    const { data } = await anonClient.from("question_translations").select("lang, text").eq("question_id", hiId);
+    expect(data).toEqual([{ lang: "hi", text: "हिन्दी प्रश्न" }]);
+  });
+
+  it("refuses a second language on a question that already has one", async () => {
+    const { error } = await admin.from("question_translations").insert({ question_id: pubId, lang: "hi", text: "दूसरी भाषा" });
+    expect(error?.code).toBe("23514");
+  });
+
+  it("refuses an option translation whose question has no translation in that language", async () => {
+    const { error } = await admin.from("option_translations").insert({ option_id: pubOptionIds[1], lang: "hi", text: "बेमेल" });
     expect(error?.code).toBe("23514");
   });
 });

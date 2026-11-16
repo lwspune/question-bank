@@ -294,7 +294,6 @@ describe("revision tasks: done, exemptions and the card", () => {
       detail: "Physics · 2025 (Set 1), 3 hours",
       href: "/question-papers/cbse-12/physics/phy-2025",
       progress: "1 of 3 checked",
-      canDefer: false,
     });
     expect(v.tasks[1]).toMatchObject({
       kind: "revise",

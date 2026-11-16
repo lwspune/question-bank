@@ -11,16 +11,19 @@ import { join } from "node:path";
  * download box, never read here.
  */
 const ROUTE = "src/app/mock/exam/[examSlug]/download/page.tsx";
+/** The page's paper reads, shared with the syllabus page since 2026-11-16. */
+const LOADER = "src/lib/mocks/paperFactsServer.ts";
 
 describe(ROUTE, () => {
-  const src = readFileSync(join(process.cwd(), ROUTE), "utf8");
+  const page = readFileSync(join(process.cwd(), ROUTE), "utf8");
+  const src = [page, readFileSync(join(process.cwd(), LOADER), "utf8")].join("\n");
 
   it("refreshes on a schedule instead of rendering per request", () => {
-    expect(src).toMatch(/export const revalidate = \d+;/);
+    expect(page).toMatch(/export const revalidate = \d+;/);
   });
 
   it("builds its pages ahead", () => {
-    expect(src).toMatch(/export (async )?function generateStaticParams/);
+    expect(page).toMatch(/export (async )?function generateStaticParams/);
   });
 
   it("reads nothing per-viewer on the server (which would make it dynamic)", () => {

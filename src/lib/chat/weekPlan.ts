@@ -255,12 +255,13 @@ function pathReply(p: Extract<PathForV, { kind: "on" }>, ask: "week" | "today"):
     ask === "week"
       ? "Today's card is shown below this reply and every day's card is on /me. In two or three sentences say what today holds and which chapters the coming days cover; do not make a different plan."
       : "Today's card is shown below this reply and on /me. Say what is done first, then the next task.",
+    "If they say their class is on a different chapter, tell them to tap Switch chapter on the card on /me, or Update what your class has covered there; do not change the plan yourself.",
   ].join("\n");
 }
 
 function offerReply(p: Extract<PathForV, { kind: "offer" }>): string {
   return [
-    `The student has a Class 12 board among their exams, no board plan yet, and nothing was planned or saved by this call. The board plan paces to the board exam (${p.examLine}): a few tasks a day, about ${p.minutes} minutes a day, 6 days a week, to finish every ${p.subjects} chapter (its revision sheet, Top 10 board questions and chapter test, in book order) before revision starts. A new card each day is on /me, where it starts with one tap.`,
+    `The student has a Class 12 board among their exams, no board plan yet, and nothing was planned or saved by this call. The board plan paces to the board exam (${p.examLine}): a few tasks a day, about ${p.minutes} minutes a day, 6 days a week, to finish every ${p.subjects} chapter (its revision sheet, Top 10 board questions and chapter test) before revision starts, starting with the chapters their class has covered. A new card each day is on /me, where it starts with one tap.`,
     "Offer it in one or two sentences and link /me; never say the board plan is ready or has started, and quote none of these lines. It is set to the board exam, not to a school test, a preboard or a coaching test: if they named an earlier test, say so and offer a one-week plan for that test instead, made by calling plan_week again with week_only true.",
   ].join("\n");
 }

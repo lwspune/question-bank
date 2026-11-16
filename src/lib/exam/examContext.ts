@@ -10,6 +10,7 @@
  * notes subject for that exam (or an honest "coming soon" when none have
  * shipped) — derived from NOTES_CHAPTERS, so a new exam needs no new page.
  */
+import type { AltLang } from "@/lib/i18n/bilingual";
 
 export type ExamSlug =
   | "nda"
@@ -48,11 +49,13 @@ export type ExamSlug =
   | "ssc-chsl"
   | "ssc-cpo"
   | "imat"
+  | "enem"
   | "spi"
   | "uceed"
   | "ugc-net"
   | "rrb-ntpc"
   | "capf-ac"
+  | "rpsc-ras"
   | "clat";
 
 /**
@@ -167,6 +170,11 @@ export type ExamEntry = {
    * they show the switch wherever a question actually carries a translation.
    */
   bilingual?: boolean;
+  /**
+   * Which second language a `bilingual` exam prints: Marathi when absent (MPSC,
+   * MH SSC), Hindi for SSC (2026-10-20). Read through `examAltLang`.
+   */
+  secondLang?: AltLang;
   /**
    * The exam's PAST PAPERS (published `pyq` + `full` mocks) carry worked
    * solutions, not just answers: nine in ten questions or more. Decides whether
@@ -401,6 +409,32 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     site: "intl",
     // Its own pass (2026-10-30): $19, or Rs 999 for buyers in India.
     passScope: "imat",
+  },
+  {
+    // ENEM (Brazil's national secondary-school exam, the entrance to its
+    // universities), 2026-11-15: Day 2 Natural Sciences + Mathematics, the
+    // last five years (owner: "will help gauge interest"). INEP publishes
+    // every paper and key; questions are official acts (Lei 9.610 art. 8 IV)
+    // and the adapted texts inside keep their printed credit (art. 46 III).
+    // Pipeline and source: scripts/enem/. Five options a question, A-E.
+    slug: "enem",
+    tier: "senior", // sat at the end of secondary school
+    goal: "science",
+    displayName: "ENEM",
+    examName: "ENEM", // must match the `exams` DB row exactly
+    guidesPath: null,
+    notesPath: null,
+    hasMocks: true,
+    // Worked solutions in Portuguese, written blind and checked against INEP's key.
+    pastPaperSolutions: true,
+    site: "intl",
+    // Free while it measures interest (owner): every limit lets it through and
+    // no pass is offered (0210's 'free' pass name).
+    passScope: "free",
+    // Its figures include third-party photos and charts (credited in print).
+    noImageIndex: true,
+    // `noPublicContent` came off on 2026-11-15 with the push that let the 450
+    // rows (2021-2025, committed PRIVATE that day) go PUBLIC.
   },
   {
     slug: "mh-hsc-12",
@@ -826,6 +860,29 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     notesPath: null,
   },
   {
+    slug: "rpsc-ras",
+    // RPSC RAS/RTS (Rajasthan State and Subordinate Services) Combined
+    // Competitive Prelims: the one objective paper, "General Knowledge and
+    // General Science", 150 MCQs, 200 marks, 3 hours, one-third negative.
+    // RPSC's own booklets and final keys for six cycles, 2013 (re-held 2015),
+    // 2016, 2018, 2021, 2023, 2024 (scripts/ras/). Added 2026-11-16 as the first
+    // state-PSC test on the owner's list. Printed in Hindi and English side by
+    // side: English is the canonical row, Hindi a translation (0118 + 0171).
+    tier: "graduate",
+    goal: "government",
+    displayName: "RAS (Prelims)",
+    examName: "RPSC RAS (Prelims)", // must match the `exams` DB row exactly
+    bilingual: true,
+    secondLang: "hi",
+    // PUBLIC since 2026-11-16: six cycles, 900 q, every one with a worked
+    // solution and its Hindi print. One timed mock per year
+    // (rpsc-ras-prelims-*), built as drafts, published with the push.
+    hasMocks: true,
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
     slug: "clat",
     // CLAT UG (Consortium of National Law Universities), the entrance to the NLUs'
     // five-year law programmes, sat after Class 12: 120 passage-based MCQs since
@@ -1172,6 +1229,11 @@ export function getExamBySlug(slug: string | null | undefined): ExamEntry | null
  * Null for a DB exam with no registry entry, which callers must treat as
  * "ungrouped", never as "drop it" — see groupExamFamilies.
  */
+/** The second language a bilingual exam prints, or null when it prints English only. */
+export function examAltLang(entry: ExamEntry | null | undefined): AltLang | null {
+  return entry?.bilingual ? (entry.secondLang ?? "mr") : null;
+}
+
 export function getExamByName(examName: string | null | undefined): ExamEntry | null {
   if (!examName) return null;
   return EXAM_REGISTRY.find((e) => e.examName === examName) ?? null;

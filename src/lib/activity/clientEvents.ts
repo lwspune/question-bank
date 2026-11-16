@@ -62,6 +62,13 @@ export const REPEAT_LINE_ACTIONS: ReadonlySet<string> = new Set(["shown", "see_a
 export const REPEAT_LINE_FROM = ["card", "drill", "mock_review"] as const;
 export type RepeatLineFrom = (typeof REPEAT_LINE_FROM)[number];
 const REPEAT_LINE_FROM_SET: ReadonlySet<string> = new Set(REPEAT_LINE_FROM);
+/** The notes drill panel (2026-11-15, lib/notes/drillPanel): opened, Show more, closed (back on
+ *  the notes) or left for /browse; from a concept card or the topic's Drill all. */
+export const NOTES_DRILL_ACTIONS: ReadonlySet<string> = new Set(["open", "more", "close", "full_page"]);
+export const NOTES_DRILL_LINKS = ["concept", "topic"] as const;
+export type NotesDrillLink = (typeof NOTES_DRILL_LINKS)[number];
+const NOTES_DRILL_LINK_SET: ReadonlySet<string> = new Set(NOTES_DRILL_LINKS);
+const NOTES_SLUG_RE = /^[a-z0-9][a-z0-9-]{0,99}$/;
 
 /** Where a paywall met the student. Five are the 0134 limits (2026-10-05):
  *  chapter tests, the drill, daily answers, saves, the projected score.
@@ -324,6 +331,20 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
           kind: "surface_viewed",
           metadata: { surface: "repeat_line", questionId: raw.questionId, action: raw.action, from: raw.from },
           dedupeKey: `view:repeat_line:${raw.action}:${raw.from}:${raw.questionId}:${userId}:${istDayKey(now)}`,
+        },
+      };
+    }
+    // The notes drill panel (2026-11-15): each step, per link, notes topic and day.
+    if (raw.surface === "notes_drill") {
+      if (typeof raw.action !== "string" || !NOTES_DRILL_ACTIONS.has(raw.action)) return { ok: false, error: "Unknown step." };
+      if (typeof raw.link !== "string" || !NOTES_DRILL_LINK_SET.has(raw.link)) return { ok: false, error: "Unknown link." };
+      if (typeof raw.subtopic !== "string" || !NOTES_SLUG_RE.test(raw.subtopic)) return { ok: false, error: "Invalid topic." };
+      return {
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "notes_drill", action: raw.action, link: raw.link, subtopic: raw.subtopic },
+          dedupeKey: `view:notes_drill:${raw.action}:${raw.link}:${raw.subtopic}:${userId}:${istDayKey(now)}`,
         },
       };
     }

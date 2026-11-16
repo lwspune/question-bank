@@ -23,12 +23,7 @@ import { optionMark } from "@/lib/questions/optionMark";
 import { msqOptionMark, msqVerdict, msqVerdictLine } from "@/lib/questions/msq";
 import { formatNumericKey } from "@/lib/questions/formatKey";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import ZoomableImage from "@/components/question/ZoomableImage";
 import type { OptionRow, QuestionRow } from "@/lib/questions/query";
 import { sourceTag } from "@/lib/questions/sourceTag";
 import { DIFFICULTY_LABEL, DIFFICULTY_TEXT } from "@/lib/questions/difficultyPill";
@@ -58,7 +53,7 @@ import AskVButton from "@/components/chat/AskVButton";
 import { ItemStatChip, ItemStatDetail } from "./ItemStats";
 import CancelledNotice from "@/components/question/CancelledNotice";
 import SolutionViews from "@/components/visuals/SolutionViews";
-import { optionVersions, solutionVersions, stemVersions } from "@/lib/i18n/bilingual";
+import { altLangOf, optionVersions, solutionVersions, stemVersions } from "@/lib/i18n/bilingual";
 import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
 import { singleItemStatKey, type ItemStatAggregate } from "@/lib/itemStats/types";
 import SelfMarkButtons from "@/components/reveal/SelfMarkButtons";
@@ -306,7 +301,7 @@ export default function QuestionCard({
   // Printed-language choice (MPSC papers carry Marathi). Shared page-wide; an
   // English-only question ignores it and renders exactly as before.
   // The switch itself lives once in the /browse header (QuestionLangSwitch).
-  const [langPref] = useQuestionLang();
+  const [langPref] = useQuestionLang(altLangOf(question));
   const stems = stemVersions(question, langPref);
   const solutions = solutionVersions(question, langPref);
   // Officially cancelled (migration 0119): no option is correct, so a pick is
@@ -525,7 +520,7 @@ export default function QuestionCard({
               </div>
             )}
 
-            {cancelled && <CancelledNotice note={question.cancelledNote!} />}
+            {cancelled && <CancelledNotice note={question.cancelledNote!} alt={altLangOf(question)} />}
 
             {!isOpenFormat && (
             <ol className="space-y-2">
@@ -906,46 +901,3 @@ function ResourceChip({
   );
 }
 
-function ZoomableImage({
-  src,
-  alt,
-  className,
-}: {
-  src: string;
-  alt: string;
-  className?: string;
-}) {
-  return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <button
-          type="button"
-          className="block cursor-zoom-in rounded transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-          aria-label={`Zoom: ${alt}`}
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={src} alt={alt} className={className} />
-        </button>
-      </DialogTrigger>
-      <DialogContent
-        className="max-w-4xl border-none bg-transparent p-0 shadow-none"
-        hideCloseButton
-      >
-        <div className="relative">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={src}
-            alt={alt}
-            className="mx-auto max-h-[85vh] w-auto rounded-lg bg-background"
-          />
-          <DialogClose
-            className="absolute right-2 top-2 inline-flex h-10 w-10 items-center justify-center rounded-full bg-background/90 text-foreground shadow-md ring-1 ring-border transition-colors hover:bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            aria-label="Close image"
-          >
-            <X className="h-5 w-5" aria-hidden />
-          </DialogClose>
-        </div>
-      </DialogContent>
-    </Dialog>
-  );
-}

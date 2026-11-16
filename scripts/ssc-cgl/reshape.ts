@@ -8,24 +8,27 @@
  *
  * THREE things move together, so a re-commit cannot undo the re-cut: the bank, the committed Tier I
  * transcripts (the source of record), and the catalog, which gains any new teaching name and keeps
- * every old one (Tier II rows still use them; recut.ts). A bank row joins its transcript block by
+ * every old one (the other tier's rows still use them; recut.ts). A bank row joins its transcript block by
  * source_file + source_row (the question number). A block skipped at commit as a repeat takes the
  * target of the row it repeats (repeats.json); any other block with no bank row needs an `extra`
  * entry. Any unresolved row or block, any prefix matching nothing, and any count that disagrees with
- * the plan's `expected` is a REFUSAL, checked before anything is written. Tier I only: Tier II is
- * its own exam and is never touched.
+ * the plan's `expected` is a REFUSAL, checked before anything is written. A plan re-cuts ONE tier:
+ * Tier I by default, Tier II when it says `tier: 2` (its own exam row and its own `t2-` transcripts),
+ * so a plan never touches the other tier's rows.
  */
 import { join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { CATALOG, EXAM_NAME, SHIFTS, TRANSCRIPTS } from "./config";
+import { CATALOG, EXAMS, SHIFTS, TRANSCRIPTS } from "./config";
 import { addCatalogSubtopics, formatAuthored, repeatTargets, type Authored, type Repeat } from "./recut";
 import { retagSubtopics } from "../spi/lib";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
 export type ReshapePlan = {
+  /** The tier whose rows this plan re-cuts; Tier I when absent (every Tier I plan predates it). */
+  tier?: 1 | 2;
   /** The chapter's subject; Quantitative Aptitude when absent (the Maths plans predate it). */
   subject?: string;
   chapter: string;
@@ -52,7 +55,7 @@ function die(msg: string, detail: string[] = []): never {
   process.exit(1);
 }
 
-async function resolveChapter(db: SupabaseClient, SUBJECT: string, chapter: string): Promise<string> {
+async function resolveChapter(db: SupabaseClient, EXAM_NAME: string, SUBJECT: string, chapter: string): Promise<string> {
   const { data, error } = await db.from("chapters").select("id, subjects!inner(name, exams!inner(name))").eq("name", chapter);
   if (error) throw error;
   const hits = (data ?? []).filter((c: any) => c.subjects?.exams?.name === EXAM_NAME && c.subjects?.name === SUBJECT);
@@ -66,8 +69,10 @@ async function main() {
   const plan = (await import(pathToFileURL(resolve(planPath)).href)).default as ReshapePlan;
   const { chapter, order, byPrefix, expected, total } = plan;
   const SUBJECT = plan.subject ?? "Quantitative Aptitude";
+  const TIER = plan.tier ?? 1;
+  const EXAM_NAME = EXAMS[TIER].name;
   const extra = plan.extra ?? {};
-  console.log(`${APPLY ? "=== APPLY ===" : "=== DRY RUN (pass --apply to write) ==="}  ${chapter}\n`);
+  console.log(`${APPLY ? "=== APPLY ===" : "=== DRY RUN (pass --apply to write) ==="}  ${EXAM_NAME} · ${chapter}\n`);
 
   for (const t of [...Object.keys(byPrefix), ...Object.keys(expected), ...Object.values(extra)]) {
     if (!order.includes(t)) die(`target "${t}" is not in the plan's order`);
@@ -81,7 +86,7 @@ async function main() {
   }
 
   const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
-  const chapterId = await resolveChapter(db, SUBJECT, chapter);
+  const chapterId = await resolveChapter(db, EXAM_NAME, SUBJECT, chapter);
 
   // Any visibility: a source subtopic is only safe to drop when NOTHING points at it.
   // Paged: PostgREST caps a response at 1000 rows, and Vocabulary has more.
@@ -96,8 +101,8 @@ async function main() {
   console.log(`chapter rows: ${all.length} (${pub.length} PUBLIC)`);
   if (pub.length !== total) die(`expected ${total} PUBLIC rows, got ${pub.length}`);
 
-  const tier1 = Object.entries(SHIFTS).filter(([id]) => id.startsWith("t1-"));
-  const fileToShift = new Map(tier1.map(([id, s]) => [s.sourceFile, id]));
+  const tierShifts = Object.entries(SHIFTS).filter(([id]) => id.startsWith(`t${TIER}-`));
+  const fileToShift = new Map(tierShifts.map(([id, s]) => [s.sourceFile, id]));
   const problems: string[] = [];
   const counts: Record<string, number> = {};
   const usedPrefix = new Set<string>();
@@ -143,7 +148,7 @@ async function main() {
   const shared = Object.entries(CATALOG).filter(([, cs]) => cs.some((c) => c.chapter === chapter)).length > 1;
   const filePlans: { path: string; text: string; changes: number }[] = [];
   const fileProblems: string[] = [];
-  for (const [sid] of tier1) {
+  for (const [sid] of tierShifts) {
     const path = join(TRANSCRIPTS, `${sid}.txt`);
     if (!existsSync(path)) continue;
     const targets = targetsByShift.get(sid) ?? new Map<number, string>();

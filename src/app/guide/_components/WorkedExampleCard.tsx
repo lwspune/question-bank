@@ -15,7 +15,11 @@ import { fromWorkedExample } from "@/lib/present/viewModel";
 import { optionMark } from "@/lib/questions/optionMark";
 import { DIFFICULTY_LABEL, DIFFICULTY_PILL } from "@/lib/questions/difficultyPill";
 import AskVButton from "@/components/chat/AskVButton";
+import ZoomableImage from "@/components/question/ZoomableImage";
+import { publicImageUrl } from "@/lib/storage/imageUrl";
 import type { WorkedExample } from "@/lib/guide/loadWorkedExamples";
+
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
 
 type Props = {
   rank: number;
@@ -114,6 +118,14 @@ export default function WorkedExampleCard({ rank, example }: Props) {
           <BlockText text={example.text} />
         </div>
 
+        {example.imageUrl && (
+          <ZoomableImage
+            src={publicImageUrl(SUPABASE_URL, example.imageUrl)}
+            alt="Question diagram"
+            className="max-h-64 w-auto max-w-full rounded border"
+          />
+        )}
+
         {example.options.length > 0 && (
           <ol className="space-y-2">
             {example.options.map((o) => {
@@ -167,6 +179,17 @@ export default function WorkedExampleCard({ rank, example }: Props) {
                       </span>
                     )}
                   </button>
+                  {o.imageUrl && (
+                    <div className="px-3 pb-2.5">
+                      <div className="ml-10">
+                        <ZoomableImage
+                          src={publicImageUrl(SUPABASE_URL, o.imageUrl)}
+                          alt={`Option ${o.label} image`}
+                          className="max-h-32 w-auto max-w-full rounded border bg-background"
+                        />
+                      </div>
+                    </div>
+                  )}
                 </li>
               );
             })}
@@ -185,6 +208,15 @@ export default function WorkedExampleCard({ rank, example }: Props) {
             <div className="mt-1.5 font-serif leading-relaxed">
               <BlockText text={example.solution} solution />
             </div>
+            {example.solutionImageUrl && (
+              <div className="pt-3">
+                <ZoomableImage
+                  src={publicImageUrl(SUPABASE_URL, example.solutionImageUrl)}
+                  alt="Solution diagram"
+                  className="max-h-64 w-auto max-w-full rounded border"
+                />
+              </div>
+            )}
           </div>
         )}
 

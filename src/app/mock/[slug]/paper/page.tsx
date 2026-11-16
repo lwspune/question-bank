@@ -11,7 +11,7 @@ import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getMockBySlug, loadReviewQuestions } from "@/lib/mocks/query";
 import { mockDownloadHref } from "@/lib/mocks/catalogue";
 import { markingCopy, sectionMarkingLines } from "@/lib/mocks/marking";
-import { getExamByName } from "@/lib/exam/examContext";
+import { examAltLang, getExamByName } from "@/lib/exam/examContext";
 import {
   buildPaperSections,
   isReadablePaper,
@@ -80,7 +80,7 @@ export default async function MockPaperPage(props: { params: Promise<Params> }) 
   const name = plainPaperTitle(mock.title);
   const marking = markingCopy(mock.marking);
   const bySection = sectionMarkingLines(mock.sections, mock.questions);
-  const bilingual = exam?.bilingual === true;
+  const altLang = examAltLang(exam);
 
   return (
     <>
@@ -133,7 +133,7 @@ export default async function MockPaperPage(props: { params: Promise<Params> }) 
                 Sit it as a timed mock
               </Link>
             </Button>
-            <PaperDownload slug={mock.slug} paperTitle={mock.title} bilingual={bilingual} variant="inline" />
+            <PaperDownload slug={mock.slug} paperTitle={mock.title} altLang={altLang} variant="inline" />
           </div>
         </header>
 

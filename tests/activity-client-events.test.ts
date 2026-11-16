@@ -567,6 +567,35 @@ describe("parseClientEvent - the repeat line", () => {
 });
 
 // The one line under a bank answer (2026-11-14, lib/questions/teachingMoment): which moment was seen.
+// The notes drill panel (2026-11-15): a notes drill link opens the questions on the page.
+describe("parseClientEvent - the notes drill panel", () => {
+  it("records each step, per link, topic and day", () => {
+    for (const action of ["open", "more", "close", "full_page"]) {
+      for (const link of ["concept", "topic"]) {
+        expect(
+          parseClientEvent({ kind: "surface_viewed", surface: "notes_drill", action, link, subtopic: "angle-between-lines" }, "u1", NOW)
+        ).toEqual({
+          ok: true,
+          value: {
+            kind: "surface_viewed",
+            metadata: { surface: "notes_drill", action, link, subtopic: "angle-between-lines" },
+            dedupeKey: `view:notes_drill:${action}:${link}:angle-between-lines:u1:2026-09-27`,
+          },
+        });
+      }
+    }
+  });
+
+  it("refuses an unknown step, link or topic", () => {
+    const ok = { kind: "surface_viewed", surface: "notes_drill", action: "open", link: "topic", subtopic: "foundations" };
+    expect(parseClientEvent(ok, "u1", NOW).ok).toBe(true);
+    expect(parseClientEvent({ ...ok, action: "bought" }, "u1", NOW).ok).toBe(false);
+    expect(parseClientEvent({ ...ok, link: "chapter" }, "u1", NOW).ok).toBe(false);
+    expect(parseClientEvent({ ...ok, subtopic: "Bad Slug!" }, "u1", NOW).ok).toBe(false);
+    expect(parseClientEvent({ ...ok, subtopic: undefined }, "u1", NOW).ok).toBe(false);
+  });
+});
+
 describe("parseClientEvent - a teaching moment", () => {
   const TQ = "0f8fad5b-d9cb-469f-a165-70867728950e";
 

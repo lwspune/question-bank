@@ -11007,8 +11007,8 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
     "chapterName": "Organisms and Populations",
     "formulaCounts": {
       "formulas": 3,
-      "tables": 5,
-      "traps": 21
+      "tables": 6,
+      "traps": 23
     }
   },
   {
@@ -11046,6 +11046,1084 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "formulas": 1,
       "tables": 9,
       "traps": 23
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "animal-kingdom",
+    "chipLabel": "Animal Kingdom notes",
+    "slugs": [
+      "nzo-ak-basis",
+      "nzo-ak-nonchordates",
+      "nzo-ak-chordata",
+      "nzo-ak-vertebrates"
+    ],
+    "chapterName": "Animal Kingdom",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 11,
+      "traps": 36
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "structural-organisation",
+    "chipLabel": "Structural Organisation in Animals notes",
+    "slugs": [
+      "nzo-so-tissues",
+      "nzo-so-cockroach",
+      "nzo-so-frog"
+    ],
+    "chapterName": "Structural Organisation in Animals",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 10,
+      "traps": 27
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "biomolecules",
+    "chipLabel": "Biomolecules notes",
+    "slugs": [
+      "nzo-bm-blocks",
+      "nzo-bm-polymers",
+      "nzo-bm-enzymes"
+    ],
+    "chapterName": "Biomolecules",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 12,
+      "traps": 33
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "breathing",
+    "chipLabel": "Breathing and Exchange of Gases notes",
+    "slugs": [
+      "nzo-br-breathing",
+      "nzo-br-transport"
+    ],
+    "chapterName": "Breathing and Exchange of Gases",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 7,
+      "traps": 23
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "body-fluids",
+    "chipLabel": "Body Fluids and Circulation notes",
+    "slugs": [
+      "nzo-bf-blood",
+      "nzo-bf-heart"
+    ],
+    "chapterName": "Body Fluids and Circulation",
+    "formulaCounts": {
+      "formulas": 2,
+      "tables": 6,
+      "traps": 26
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "excretion",
+    "chipLabel": "Excretory Products notes",
+    "slugs": [
+      "nzo-ex-organs",
+      "nzo-ex-urine",
+      "nzo-ex-regulation"
+    ],
+    "chapterName": "Excretory Products and their Elimination",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 10,
+      "traps": 28
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "neural-control",
+    "chipLabel": "Neural Control and Coordination notes",
+    "slugs": [
+      "nzo-nc-neuron",
+      "nzo-nc-brain"
+    ],
+    "chapterName": "Neural Control and Coordination",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 5,
+      "traps": 18
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "locomotion",
+    "chipLabel": "Locomotion and Movement notes",
+    "slugs": [
+      "nzo-lm-muscle",
+      "nzo-lm-skeleton",
+      "nzo-lm-joints"
+    ],
+    "chapterName": "Locomotion and Movement",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 10,
+      "traps": 25
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "chemical-coordination",
+    "chipLabel": "Chemical Coordination and Integration notes",
+    "slugs": [
+      "nzo-cc-pituitary",
+      "nzo-cc-adrenal",
+      "nzo-cc-action"
+    ],
+    "chapterName": "Chemical Coordination and Integration",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 10,
+      "traps": 27
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "evolution",
+    "chipLabel": "Evolution notes",
+    "slugs": [
+      "nzo-ev-evidences",
+      "nzo-ev-radiation",
+      "nzo-ev-hardy",
+      "nzo-ev-history"
+    ],
+    "chapterName": "Evolution",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 11,
+      "traps": 26
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "human-reproduction",
+    "chipLabel": "Human Reproduction notes",
+    "slugs": [
+      "nzo-hr-systems",
+      "nzo-hr-gametogenesis",
+      "nzo-hr-cycle",
+      "nzo-hr-pregnancy"
+    ],
+    "chapterName": "Human Reproduction",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 13,
+      "traps": 31
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "human-health",
+    "chipLabel": "Human Health and Disease notes",
+    "slugs": [
+      "nzo-hh-diseases",
+      "nzo-hh-immunity",
+      "nzo-hh-cancer",
+      "nzo-hh-drugs"
+    ],
+    "chapterName": "Human Health and Disease",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 10,
+      "traps": 34
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "reproductive-health",
+    "chipLabel": "Reproductive Health notes",
+    "slugs": [
+      "nzo-rh-contraception",
+      "nzo-rh-mtp",
+      "nzo-rh-infertility"
+    ],
+    "chapterName": "Reproductive Health",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 8,
+      "traps": 23
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "biotech-principles",
+    "chipLabel": "Biotechnology: Principles and Processes notes",
+    "slugs": [
+      "nzo-bp-restriction",
+      "nzo-bp-vectors",
+      "nzo-bp-pcr",
+      "nzo-bp-processes"
+    ],
+    "chapterName": "Biotechnology: Principles and Processes",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 12,
+      "traps": 30
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Zoology",
+    "subjectRoute": "neet-zoology",
+    "subjectDisplay": "NEET Zoology",
+    "chapterSlug": "biotech-applications",
+    "chipLabel": "Biotechnology and its Applications notes",
+    "slugs": [
+      "nzo-ba-agriculture",
+      "nzo-ba-medicine",
+      "nzo-ba-transgenic"
+    ],
+    "chapterName": "Biotechnology and its Applications",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 10,
+      "traps": 26
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "percentage",
+    "chipLabel": "Percentage, Profit and Loss notes",
+    "slugs": [
+      "ssc2-pp-basics",
+      "ssc2-pp-successive",
+      "ssc2-pp-problems",
+      "ssc2-pp-profit",
+      "ssc2-pp-discount"
+    ],
+    "chapterName": "Percentage, Profit and Loss",
+    "formulaCounts": {
+      "formulas": 16,
+      "tables": 0,
+      "traps": 22
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "mensuration-3d",
+    "chipLabel": "Mensuration 3D notes",
+    "slugs": [
+      "ssc2-m3-prisms",
+      "ssc2-m3-cylinders",
+      "ssc2-m3-cones",
+      "ssc2-m3-spheres",
+      "ssc2-m3-scaling",
+      "ssc2-m3-recasting"
+    ],
+    "chapterName": "Mensuration 3D",
+    "formulaCounts": {
+      "formulas": 15,
+      "tables": 0,
+      "traps": 17
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "trigonometry",
+    "chipLabel": "Trigonometric Ratios and Identities notes",
+    "slugs": [
+      "ssc2-tg-values",
+      "ssc2-tg-triangle",
+      "ssc2-tg-complementary",
+      "ssc2-tg-identities"
+    ],
+    "chapterName": "Trigonometric Ratios and Identities",
+    "formulaCounts": {
+      "formulas": 11,
+      "tables": 0,
+      "traps": 12
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "ratio",
+    "chipLabel": "Ratio, Proportion and Variation notes",
+    "slugs": [
+      "ssc2-ra-basics",
+      "ssc2-ra-changing",
+      "ssc2-ra-income",
+      "ssc2-ra-partnership",
+      "ssc2-ra-mixtures"
+    ],
+    "chapterName": "Ratio, Proportion and Variation",
+    "formulaCounts": {
+      "formulas": 12,
+      "tables": 0,
+      "traps": 12
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "surds-indices",
+    "chipLabel": "Surds, Indices and Simplification notes",
+    "slugs": [
+      "ssc2-si-bodmas",
+      "ssc2-si-fractions",
+      "ssc2-si-indices",
+      "ssc2-si-surds"
+    ],
+    "chapterName": "Surds, Indices and Simplification",
+    "formulaCounts": {
+      "formulas": 11,
+      "tables": 0,
+      "traps": 11
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "triangles",
+    "chipLabel": "Triangles notes",
+    "slugs": [
+      "ssc2-tr-angles",
+      "ssc2-tr-sides",
+      "ssc2-tr-similarity",
+      "ssc2-tr-centres"
+    ],
+    "chapterName": "Triangles",
+    "formulaCounts": {
+      "formulas": 12,
+      "tables": 0,
+      "traps": 12
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "algebraic-identities",
+    "chipLabel": "Algebraic Identities and Simplification notes",
+    "slugs": [
+      "ssc2-ai-identities",
+      "ssc2-ai-reciprocal"
+    ],
+    "chapterName": "Algebraic Identities and Simplification",
+    "formulaCounts": {
+      "formulas": 6,
+      "tables": 0,
+      "traps": 6
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "interest",
+    "chipLabel": "Simple and Compound Interest notes",
+    "slugs": [
+      "ssc2-in-simple",
+      "ssc2-in-compound"
+    ],
+    "chapterName": "Simple and Compound Interest",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 0,
+      "traps": 5
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "number-system",
+    "chipLabel": "Number System notes",
+    "slugs": [
+      "ssc2-ns-divisibility",
+      "ssc2-ns-hcf",
+      "ssc2-ns-primes"
+    ],
+    "chapterName": "Number System",
+    "formulaCounts": {
+      "formulas": 8,
+      "tables": 0,
+      "traps": 8
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "data-interpretation",
+    "chipLabel": "Data Interpretation notes",
+    "slugs": [
+      "ssc2-di-graphs",
+      "ssc2-di-pies"
+    ],
+    "chapterName": "Data Interpretation",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 0,
+      "traps": 4
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "time-work",
+    "chipLabel": "Time and Work notes",
+    "slugs": [
+      "ssc2-tw-work",
+      "ssc2-tw-pipes"
+    ],
+    "chapterName": "Time and Work",
+    "formulaCounts": {
+      "formulas": 6,
+      "tables": 0,
+      "traps": 6
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "averages",
+    "chipLabel": "Averages notes",
+    "slugs": [
+      "ssc2-av-sum",
+      "ssc2-av-combined"
+    ],
+    "chapterName": "Averages",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 0,
+      "traps": 4
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "tsd",
+    "chipLabel": "Time, Speed and Distance notes",
+    "slugs": [
+      "ssc2-td-basics",
+      "ssc2-td-relative"
+    ],
+    "chapterName": "Time, Speed and Distance",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 0,
+      "traps": 5
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "linear-equations",
+    "chipLabel": "Linear Equations notes",
+    "slugs": [
+      "ssc2-le-systems",
+      "ssc2-le-words"
+    ],
+    "chapterName": "Linear Equations",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 0,
+      "traps": 5
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "statistics",
+    "chipLabel": "Statistics notes",
+    "slugs": [
+      "ssc2-st-ungrouped",
+      "ssc2-st-grouped"
+    ],
+    "chapterName": "Statistics",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 0,
+      "traps": 5
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "circles",
+    "chipLabel": "Circles notes",
+    "slugs": [
+      "ssc2-ci-angles",
+      "ssc2-ci-chords"
+    ],
+    "chapterName": "Circles",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 0,
+      "traps": 4
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "heights-distances",
+    "chipLabel": "Heights and Distances notes",
+    "slugs": [
+      "ssc2-hd-one",
+      "ssc2-hd-two"
+    ],
+    "chapterName": "Heights and Distances",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 0,
+      "traps": 4
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Quantitative Aptitude",
+    "subjectRoute": "ssc-cgl-tier-2-maths",
+    "subjectDisplay": "SSC CGL Tier II Maths",
+    "chapterSlug": "quadrilaterals",
+    "chipLabel": "Quadrilaterals notes",
+    "slugs": [
+      "ssc2-qu-properties"
+    ],
+    "chapterName": "Quadrilaterals",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 0,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "English",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "fill-in-the-blanks",
+    "chipLabel": "Fill in the Blanks notes",
+    "slugs": [
+      "ssc2-efb-blanks"
+    ],
+    "chapterName": "Fill in the Blanks",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "English",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "idioms-and-phrases",
+    "chipLabel": "Idioms and Phrases notes",
+    "slugs": [
+      "ssc2-eid-idioms"
+    ],
+    "chapterName": "Idioms and Phrases",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 2,
+      "traps": 4
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "English",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "spotting-errors",
+    "chipLabel": "Spotting Errors notes",
+    "slugs": [
+      "ssc2-ese-verbs",
+      "ssc2-ese-words"
+    ],
+    "chapterName": "Spotting Errors",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 7
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "English",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "cloze-test",
+    "chipLabel": "Cloze Test notes",
+    "slugs": [
+      "ssc2-ecz-grammar",
+      "ssc2-ecz-meaning"
+    ],
+    "chapterName": "Cloze Test",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 5
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "English",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "sentence-rearrangement",
+    "chipLabel": "Sentence Rearrangement notes",
+    "slugs": [
+      "ssc2-esr-paragraph",
+      "ssc2-esr-parts"
+    ],
+    "chapterName": "Sentence Rearrangement",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 5
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "English",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "grammar",
+    "chipLabel": "Grammar notes",
+    "slugs": [
+      "ssc2-egr-voice",
+      "ssc2-egr-speech",
+      "ssc2-egr-blanks"
+    ],
+    "chapterName": "Grammar",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 5,
+      "traps": 8
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "English",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "vocabulary",
+    "chipLabel": "Vocabulary notes",
+    "slugs": [
+      "ssc2-evo-meaning",
+      "ssc2-evo-oneword",
+      "ssc2-evo-spelling"
+    ],
+    "chapterName": "Vocabulary",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 6,
+      "traps": 6
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "English",
+    "subjectRoute": "ssc-cgl-tier-2-english",
+    "subjectDisplay": "SSC CGL Tier II English",
+    "chapterSlug": "reading-comprehension",
+    "chipLabel": "Reading Comprehension notes",
+    "slugs": [
+      "ssc2-erc-facts",
+      "ssc2-erc-ideas",
+      "ssc2-erc-words"
+    ],
+    "chapterName": "Reading Comprehension",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 2,
+      "traps": 8
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "series",
+    "chipLabel": "Series notes",
+    "slugs": [
+      "ssc2-rse-series"
+    ],
+    "chapterName": "Series",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 0,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "mathematical-operations",
+    "chipLabel": "Mathematical Operations notes",
+    "slugs": [
+      "ssc2-rmo-ops"
+    ],
+    "chapterName": "Mathematical Operations",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 0,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "data-sufficiency",
+    "chipLabel": "Data Sufficiency notes",
+    "slugs": [
+      "ssc2-rds-ds"
+    ],
+    "chapterName": "Data Sufficiency",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 2
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "blood-relations",
+    "chipLabel": "Blood Relations notes",
+    "slugs": [
+      "ssc2-rbr-relations"
+    ],
+    "chapterName": "Blood Relations",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 2
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "order-ranking",
+    "chipLabel": "Order, Ranking and Arrangement notes",
+    "slugs": [
+      "ssc2-ror-order"
+    ],
+    "chapterName": "Order, Ranking and Arrangement",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 0,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "coding-decoding",
+    "chipLabel": "Coding-Decoding notes",
+    "slugs": [
+      "ssc2-rcd-codes"
+    ],
+    "chapterName": "Coding-Decoding",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 0,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "analogy",
+    "chipLabel": "Analogy notes",
+    "slugs": [
+      "ssc2-ran-analogy"
+    ],
+    "chapterName": "Analogy",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 0,
+      "traps": 2
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "classification",
+    "chipLabel": "Classification notes",
+    "slugs": [
+      "ssc2-rcl-odd"
+    ],
+    "chapterName": "Classification",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 2
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "alphabet-number",
+    "chipLabel": "Alphabet and Number Tests notes",
+    "slugs": [
+      "ssc2-ral-words"
+    ],
+    "chapterName": "Alphabet and Number Tests",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 2
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "statements",
+    "chipLabel": "Statement-Based Reasoning notes",
+    "slugs": [
+      "ssc2-rst-logic"
+    ],
+    "chapterName": "Statement-Based Reasoning",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "non-verbal",
+    "chipLabel": "Non-Verbal Series and Analogy notes",
+    "slugs": [
+      "ssc2-rnv-figures"
+    ],
+    "chapterName": "Non-Verbal Series and Analogy",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Reasoning",
+    "subjectRoute": "ssc-cgl-tier-2-reasoning",
+    "subjectDisplay": "SSC CGL Tier II Reasoning",
+    "chapterSlug": "embedded-figures",
+    "chipLabel": "Embedded Figures and Pattern Completion notes",
+    "slugs": [
+      "ssc2-ref-figures"
+    ],
+    "chapterName": "Embedded Figures and Pattern Completion",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 2
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Computer Knowledge",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "hardware",
+    "chipLabel": "Computer Hardware notes",
+    "slugs": [
+      "ssc2-chw-hw"
+    ],
+    "chapterName": "Computer Hardware",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 3,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Computer Knowledge",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "ms-office",
+    "chipLabel": "MS Office notes",
+    "slugs": [
+      "ssc2-cms-office"
+    ],
+    "chapterName": "MS Office",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 3,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Computer Knowledge",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "internet-email",
+    "chipLabel": "Internet and E-mail notes",
+    "slugs": [
+      "ssc2-cie-net"
+    ],
+    "chapterName": "Internet and E-mail",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 3,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Computer Knowledge",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "operating-system",
+    "chipLabel": "Operating System and Software notes",
+    "slugs": [
+      "ssc2-cos-os"
+    ],
+    "chapterName": "Operating System and Software",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 3,
+      "traps": 3
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Computer Knowledge",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "cyber-security",
+    "chipLabel": "Cyber Security notes",
+    "slugs": [
+      "ssc2-ccs-sec"
+    ],
+    "chapterName": "Cyber Security",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 2,
+      "traps": 2
+    }
+  },
+  {
+    "examName": "SSC CGL Tier II",
+    "subjectName": "Computer Knowledge",
+    "subjectRoute": "ssc-cgl-tier-2-computer",
+    "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
+    "chapterSlug": "networks",
+    "chipLabel": "Computer Networks notes",
+    "slugs": [
+      "ssc2-cnw-nw"
+    ],
+    "chapterName": "Computer Networks",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 2,
+      "traps": 2
     }
   }
 ];
@@ -11591,4 +12669,63 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "neet-botany/organisms-populations": () => import("@/app/notes/neet-botany/organisms-populations/_data").then((m) => ({ chapter: m.NEET_BO_OP_CHAPTER, notes: m.NEET_BO_OP_NOTES })),
   "neet-botany/ecosystem": () => import("@/app/notes/neet-botany/ecosystem/_data").then((m) => ({ chapter: m.NEET_BO_EC_CHAPTER, notes: m.NEET_BO_EC_NOTES })),
   "neet-botany/biodiversity": () => import("@/app/notes/neet-botany/biodiversity/_data").then((m) => ({ chapter: m.NEET_BO_BD_CHAPTER, notes: m.NEET_BO_BD_NOTES })),
+  "neet-zoology/animal-kingdom": () => import("@/app/notes/neet-zoology/animal-kingdom/_data").then((m) => ({ chapter: m.NEET_ZO_AK_CHAPTER, notes: m.NEET_ZO_AK_NOTES })),
+  "neet-zoology/structural-organisation": () => import("@/app/notes/neet-zoology/structural-organisation/_data").then((m) => ({ chapter: m.NEET_ZO_SO_CHAPTER, notes: m.NEET_ZO_SO_NOTES })),
+  "neet-zoology/biomolecules": () => import("@/app/notes/neet-zoology/biomolecules/_data").then((m) => ({ chapter: m.NEET_ZO_BM_CHAPTER, notes: m.NEET_ZO_BM_NOTES })),
+  "neet-zoology/breathing": () => import("@/app/notes/neet-zoology/breathing/_data").then((m) => ({ chapter: m.NEET_ZO_BR_CHAPTER, notes: m.NEET_ZO_BR_NOTES })),
+  "neet-zoology/body-fluids": () => import("@/app/notes/neet-zoology/body-fluids/_data").then((m) => ({ chapter: m.NEET_ZO_BF_CHAPTER, notes: m.NEET_ZO_BF_NOTES })),
+  "neet-zoology/excretion": () => import("@/app/notes/neet-zoology/excretion/_data").then((m) => ({ chapter: m.NEET_ZO_EX_CHAPTER, notes: m.NEET_ZO_EX_NOTES })),
+  "neet-zoology/neural-control": () => import("@/app/notes/neet-zoology/neural-control/_data").then((m) => ({ chapter: m.NEET_ZO_NC_CHAPTER, notes: m.NEET_ZO_NC_NOTES })),
+  "neet-zoology/locomotion": () => import("@/app/notes/neet-zoology/locomotion/_data").then((m) => ({ chapter: m.NEET_ZO_LM_CHAPTER, notes: m.NEET_ZO_LM_NOTES })),
+  "neet-zoology/chemical-coordination": () => import("@/app/notes/neet-zoology/chemical-coordination/_data").then((m) => ({ chapter: m.NEET_ZO_CC_CHAPTER, notes: m.NEET_ZO_CC_NOTES })),
+  "neet-zoology/evolution": () => import("@/app/notes/neet-zoology/evolution/_data").then((m) => ({ chapter: m.NEET_ZO_EV_CHAPTER, notes: m.NEET_ZO_EV_NOTES })),
+  "neet-zoology/human-reproduction": () => import("@/app/notes/neet-zoology/human-reproduction/_data").then((m) => ({ chapter: m.NEET_ZO_HR_CHAPTER, notes: m.NEET_ZO_HR_NOTES })),
+  "neet-zoology/human-health": () => import("@/app/notes/neet-zoology/human-health/_data").then((m) => ({ chapter: m.NEET_ZO_HH_CHAPTER, notes: m.NEET_ZO_HH_NOTES })),
+  "neet-zoology/reproductive-health": () => import("@/app/notes/neet-zoology/reproductive-health/_data").then((m) => ({ chapter: m.NEET_ZO_RH_CHAPTER, notes: m.NEET_ZO_RH_NOTES })),
+  "neet-zoology/biotech-principles": () => import("@/app/notes/neet-zoology/biotech-principles/_data").then((m) => ({ chapter: m.NEET_ZO_BP_CHAPTER, notes: m.NEET_ZO_BP_NOTES })),
+  "neet-zoology/biotech-applications": () => import("@/app/notes/neet-zoology/biotech-applications/_data").then((m) => ({ chapter: m.NEET_ZO_BA_CHAPTER, notes: m.NEET_ZO_BA_NOTES })),
+  "ssc-cgl-tier-2-maths/percentage": () => import("@/app/notes/ssc-cgl-tier-2-maths/percentage/_data").then((m) => ({ chapter: m.SSC2_PERCENTAGE_CHAPTER, notes: m.SSC2_PERCENTAGE_NOTES })),
+  "ssc-cgl-tier-2-maths/mensuration-3d": () => import("@/app/notes/ssc-cgl-tier-2-maths/mensuration-3d/_data").then((m) => ({ chapter: m.SSC2_MENSURATION_3D_CHAPTER, notes: m.SSC2_MENSURATION_3D_NOTES })),
+  "ssc-cgl-tier-2-maths/trigonometry": () => import("@/app/notes/ssc-cgl-tier-2-maths/trigonometry/_data").then((m) => ({ chapter: m.SSC2_TRIGONOMETRY_CHAPTER, notes: m.SSC2_TRIGONOMETRY_NOTES })),
+  "ssc-cgl-tier-2-maths/ratio": () => import("@/app/notes/ssc-cgl-tier-2-maths/ratio/_data").then((m) => ({ chapter: m.SSC2_RATIO_CHAPTER, notes: m.SSC2_RATIO_NOTES })),
+  "ssc-cgl-tier-2-maths/surds-indices": () => import("@/app/notes/ssc-cgl-tier-2-maths/surds-indices/_data").then((m) => ({ chapter: m.SSC2_SURDS_INDICES_CHAPTER, notes: m.SSC2_SURDS_INDICES_NOTES })),
+  "ssc-cgl-tier-2-maths/triangles": () => import("@/app/notes/ssc-cgl-tier-2-maths/triangles/_data").then((m) => ({ chapter: m.SSC2_TRIANGLES_CHAPTER, notes: m.SSC2_TRIANGLES_NOTES })),
+  "ssc-cgl-tier-2-maths/algebraic-identities": () => import("@/app/notes/ssc-cgl-tier-2-maths/algebraic-identities/_data").then((m) => ({ chapter: m.SSC2_ALGEBRAIC_IDENTITIES_CHAPTER, notes: m.SSC2_ALGEBRAIC_IDENTITIES_NOTES })),
+  "ssc-cgl-tier-2-maths/interest": () => import("@/app/notes/ssc-cgl-tier-2-maths/interest/_data").then((m) => ({ chapter: m.SSC2_INTEREST_CHAPTER, notes: m.SSC2_INTEREST_NOTES })),
+  "ssc-cgl-tier-2-maths/number-system": () => import("@/app/notes/ssc-cgl-tier-2-maths/number-system/_data").then((m) => ({ chapter: m.SSC2_NUMBER_SYSTEM_CHAPTER, notes: m.SSC2_NUMBER_SYSTEM_NOTES })),
+  "ssc-cgl-tier-2-maths/data-interpretation": () => import("@/app/notes/ssc-cgl-tier-2-maths/data-interpretation/_data").then((m) => ({ chapter: m.SSC2_DATA_INTERPRETATION_CHAPTER, notes: m.SSC2_DATA_INTERPRETATION_NOTES })),
+  "ssc-cgl-tier-2-maths/time-work": () => import("@/app/notes/ssc-cgl-tier-2-maths/time-work/_data").then((m) => ({ chapter: m.SSC2_TIME_WORK_CHAPTER, notes: m.SSC2_TIME_WORK_NOTES })),
+  "ssc-cgl-tier-2-maths/averages": () => import("@/app/notes/ssc-cgl-tier-2-maths/averages/_data").then((m) => ({ chapter: m.SSC2_AVERAGES_CHAPTER, notes: m.SSC2_AVERAGES_NOTES })),
+  "ssc-cgl-tier-2-maths/tsd": () => import("@/app/notes/ssc-cgl-tier-2-maths/tsd/_data").then((m) => ({ chapter: m.SSC2_TSD_CHAPTER, notes: m.SSC2_TSD_NOTES })),
+  "ssc-cgl-tier-2-maths/linear-equations": () => import("@/app/notes/ssc-cgl-tier-2-maths/linear-equations/_data").then((m) => ({ chapter: m.SSC2_LINEAR_EQUATIONS_CHAPTER, notes: m.SSC2_LINEAR_EQUATIONS_NOTES })),
+  "ssc-cgl-tier-2-maths/statistics": () => import("@/app/notes/ssc-cgl-tier-2-maths/statistics/_data").then((m) => ({ chapter: m.SSC2_STATISTICS_CHAPTER, notes: m.SSC2_STATISTICS_NOTES })),
+  "ssc-cgl-tier-2-maths/circles": () => import("@/app/notes/ssc-cgl-tier-2-maths/circles/_data").then((m) => ({ chapter: m.SSC2_CIRCLES_CHAPTER, notes: m.SSC2_CIRCLES_NOTES })),
+  "ssc-cgl-tier-2-maths/heights-distances": () => import("@/app/notes/ssc-cgl-tier-2-maths/heights-distances/_data").then((m) => ({ chapter: m.SSC2_HEIGHTS_DISTANCES_CHAPTER, notes: m.SSC2_HEIGHTS_DISTANCES_NOTES })),
+  "ssc-cgl-tier-2-maths/quadrilaterals": () => import("@/app/notes/ssc-cgl-tier-2-maths/quadrilaterals/_data").then((m) => ({ chapter: m.SSC2_QUADRILATERALS_CHAPTER, notes: m.SSC2_QUADRILATERALS_NOTES })),
+  "ssc-cgl-tier-2-english/fill-in-the-blanks": () => import("@/app/notes/ssc-cgl-tier-2-english/fill-in-the-blanks/_data").then((m) => ({ chapter: m.SSC2_FILL_IN_THE_BLANKS_CHAPTER, notes: m.SSC2_FILL_IN_THE_BLANKS_NOTES })),
+  "ssc-cgl-tier-2-english/idioms-and-phrases": () => import("@/app/notes/ssc-cgl-tier-2-english/idioms-and-phrases/_data").then((m) => ({ chapter: m.SSC2_IDIOMS_AND_PHRASES_CHAPTER, notes: m.SSC2_IDIOMS_AND_PHRASES_NOTES })),
+  "ssc-cgl-tier-2-english/spotting-errors": () => import("@/app/notes/ssc-cgl-tier-2-english/spotting-errors/_data").then((m) => ({ chapter: m.SSC2_SPOTTING_ERRORS_CHAPTER, notes: m.SSC2_SPOTTING_ERRORS_NOTES })),
+  "ssc-cgl-tier-2-english/cloze-test": () => import("@/app/notes/ssc-cgl-tier-2-english/cloze-test/_data").then((m) => ({ chapter: m.SSC2_CLOZE_TEST_CHAPTER, notes: m.SSC2_CLOZE_TEST_NOTES })),
+  "ssc-cgl-tier-2-english/sentence-rearrangement": () => import("@/app/notes/ssc-cgl-tier-2-english/sentence-rearrangement/_data").then((m) => ({ chapter: m.SSC2_SENTENCE_REARRANGEMENT_CHAPTER, notes: m.SSC2_SENTENCE_REARRANGEMENT_NOTES })),
+  "ssc-cgl-tier-2-english/grammar": () => import("@/app/notes/ssc-cgl-tier-2-english/grammar/_data").then((m) => ({ chapter: m.SSC2_GRAMMAR_CHAPTER, notes: m.SSC2_GRAMMAR_NOTES })),
+  "ssc-cgl-tier-2-english/vocabulary": () => import("@/app/notes/ssc-cgl-tier-2-english/vocabulary/_data").then((m) => ({ chapter: m.SSC2_VOCABULARY_CHAPTER, notes: m.SSC2_VOCABULARY_NOTES })),
+  "ssc-cgl-tier-2-english/reading-comprehension": () => import("@/app/notes/ssc-cgl-tier-2-english/reading-comprehension/_data").then((m) => ({ chapter: m.SSC2_READING_COMPREHENSION_CHAPTER, notes: m.SSC2_READING_COMPREHENSION_NOTES })),
+  "ssc-cgl-tier-2-reasoning/series": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/series/_data").then((m) => ({ chapter: m.SSC2_SERIES_CHAPTER, notes: m.SSC2_SERIES_NOTES })),
+  "ssc-cgl-tier-2-reasoning/mathematical-operations": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/mathematical-operations/_data").then((m) => ({ chapter: m.SSC2_MATHEMATICAL_OPERATIONS_CHAPTER, notes: m.SSC2_MATHEMATICAL_OPERATIONS_NOTES })),
+  "ssc-cgl-tier-2-reasoning/data-sufficiency": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/data-sufficiency/_data").then((m) => ({ chapter: m.SSC2_DATA_SUFFICIENCY_CHAPTER, notes: m.SSC2_DATA_SUFFICIENCY_NOTES })),
+  "ssc-cgl-tier-2-reasoning/blood-relations": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/blood-relations/_data").then((m) => ({ chapter: m.SSC2_BLOOD_RELATIONS_CHAPTER, notes: m.SSC2_BLOOD_RELATIONS_NOTES })),
+  "ssc-cgl-tier-2-reasoning/order-ranking": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/order-ranking/_data").then((m) => ({ chapter: m.SSC2_ORDER_RANKING_CHAPTER, notes: m.SSC2_ORDER_RANKING_NOTES })),
+  "ssc-cgl-tier-2-reasoning/coding-decoding": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/coding-decoding/_data").then((m) => ({ chapter: m.SSC2_CODING_DECODING_CHAPTER, notes: m.SSC2_CODING_DECODING_NOTES })),
+  "ssc-cgl-tier-2-reasoning/analogy": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/analogy/_data").then((m) => ({ chapter: m.SSC2_ANALOGY_CHAPTER, notes: m.SSC2_ANALOGY_NOTES })),
+  "ssc-cgl-tier-2-reasoning/classification": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/classification/_data").then((m) => ({ chapter: m.SSC2_CLASSIFICATION_CHAPTER, notes: m.SSC2_CLASSIFICATION_NOTES })),
+  "ssc-cgl-tier-2-reasoning/alphabet-number": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/alphabet-number/_data").then((m) => ({ chapter: m.SSC2_ALPHABET_NUMBER_CHAPTER, notes: m.SSC2_ALPHABET_NUMBER_NOTES })),
+  "ssc-cgl-tier-2-reasoning/statements": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/statements/_data").then((m) => ({ chapter: m.SSC2_STATEMENTS_CHAPTER, notes: m.SSC2_STATEMENTS_NOTES })),
+  "ssc-cgl-tier-2-reasoning/non-verbal": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/non-verbal/_data").then((m) => ({ chapter: m.SSC2_NON_VERBAL_CHAPTER, notes: m.SSC2_NON_VERBAL_NOTES })),
+  "ssc-cgl-tier-2-reasoning/embedded-figures": () => import("@/app/notes/ssc-cgl-tier-2-reasoning/embedded-figures/_data").then((m) => ({ chapter: m.SSC2_EMBEDDED_FIGURES_CHAPTER, notes: m.SSC2_EMBEDDED_FIGURES_NOTES })),
+  "ssc-cgl-tier-2-computer/hardware": () => import("@/app/notes/ssc-cgl-tier-2-computer/hardware/_data").then((m) => ({ chapter: m.SSC2_HARDWARE_CHAPTER, notes: m.SSC2_HARDWARE_NOTES })),
+  "ssc-cgl-tier-2-computer/ms-office": () => import("@/app/notes/ssc-cgl-tier-2-computer/ms-office/_data").then((m) => ({ chapter: m.SSC2_MS_OFFICE_CHAPTER, notes: m.SSC2_MS_OFFICE_NOTES })),
+  "ssc-cgl-tier-2-computer/internet-email": () => import("@/app/notes/ssc-cgl-tier-2-computer/internet-email/_data").then((m) => ({ chapter: m.SSC2_INTERNET_EMAIL_CHAPTER, notes: m.SSC2_INTERNET_EMAIL_NOTES })),
+  "ssc-cgl-tier-2-computer/operating-system": () => import("@/app/notes/ssc-cgl-tier-2-computer/operating-system/_data").then((m) => ({ chapter: m.SSC2_OPERATING_SYSTEM_CHAPTER, notes: m.SSC2_OPERATING_SYSTEM_NOTES })),
+  "ssc-cgl-tier-2-computer/cyber-security": () => import("@/app/notes/ssc-cgl-tier-2-computer/cyber-security/_data").then((m) => ({ chapter: m.SSC2_CYBER_SECURITY_CHAPTER, notes: m.SSC2_CYBER_SECURITY_NOTES })),
+  "ssc-cgl-tier-2-computer/networks": () => import("@/app/notes/ssc-cgl-tier-2-computer/networks/_data").then((m) => ({ chapter: m.SSC2_NETWORKS_CHAPTER, notes: m.SSC2_NETWORKS_NOTES })),
 };

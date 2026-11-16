@@ -72,6 +72,17 @@ describe("cdsSittingLabel", () => {
     expect(() => cdsSittingLabel(2024, null)).toThrow(/2024/);
     expect(() => cdsSittingLabel(2024, "Feb")).toThrow(/Feb/);
   });
+
+  // English and GK rows carry no month; the paper is in the note (2026-11-15).
+  it("reads CDS (I)/(II) from the note when the month is empty", () => {
+    expect(cdsSittingLabel(2017, null, "CDS (I) 2017 — English")).toBe("CDS 1 2017");
+    expect(cdsSittingLabel(2016, null, "CDS (II) 2016 — General Knowledge [No official answer key is published]")).toBe("CDS 2 2016");
+  });
+
+  it("refuses a note naming another year, or no paper", () => {
+    expect(() => cdsSittingLabel(2018, null, "CDS (I) 2017 — English")).toThrow(/2017/);
+    expect(() => cdsSittingLabel(2018, null, "General Knowledge")).toThrow(/2018/);
+  });
 });
 
 // MHT-CET (2026-11-04): a paper is one SHIFT, named by its date and shift as
@@ -126,6 +137,12 @@ describe("sscSittingLabel", () => {
     expect(() => sscSittingLabel("Tier I, 14 Jul 2023")).toThrow(/14 Jul 2023/);
     expect(() => sscSittingLabel(null)).toThrow(/note/);
     expect(() => sscSittingLabel("Tier I, 14 Jul 2023, Shift 5")).toThrow(/Shift 5/);
+    expect(() => sscSittingLabel("Paper II, 9 Dec 2025, Shift 1")).toThrow(/Paper II/);
+  });
+
+  // SSC CPO (2026-11-16): its rows say "Paper I", not "Tier I".
+  it("reads a CPO Paper I note the same way", () => {
+    expect(sscSittingLabel("Paper I, 9 Dec 2025, Shift 2")).toBe("9 Dec 2025 S2");
   });
 });
 

@@ -24,6 +24,9 @@ export const PATH_SURFACES = [
   "path_review",
   "path_pickup",
   "v_path",
+  // "What has your class covered?" shown (§18, 2026-11-15): the denominator
+  // for its saves (path_covered rows).
+  "path_cover",
 ] as const;
 export type PathSurface = (typeof PATH_SURFACES)[number];
 

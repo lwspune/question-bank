@@ -29,7 +29,7 @@ step towards the vision says how it should move that number.
 | tries again differently when it did not land | partly: better second try, "Which step lost you?" |
 | shows it on a board | partly: 20k animated solutions, but they play on their own, not with V's words |
 | asks first: "what did you try, where are you stuck?" | missing |
-| checks as it goes and waits for the answer | partly: "Teach me step by step" (2026-11-12) waits for a tap between steps; no question of its own yet |
+| checks as it goes and waits for the answer | partly: each step of an explanation is its own bubble, and a tapped step offers Explain and Reply (2026-11-15); no question of its own yet |
 | remembers the student and their past mistakes | missing (language + last 2 exchanges) |
 | takes any doubt: a textbook, a coaching sheet, a photo | missing (bank questions only, no photos) |
 | has time: a session of 10-20 turns | blocked by the 5-an-hour free cap |
@@ -47,8 +47,9 @@ merging. A tutor who teaches something wrong is worse than none.
 
 **The step ladder** (order may change as each step is measured):
 
-1. "Teach me step by step" on a bank question: one step at a time, a tap
-   check between steps, V waits; the animation moves with it.
+1. Step help inside the explanation (built 2026-11-15, after "Teach me step
+   by step" drew 1 student start in 3 days): a bubble per step, a tapped step
+   offers Explain and Reply.
 2. Ask first: on Ask V after a wrong pick, V asks what the student did.
 3. Session memory: the whole session, and the student's past mistakes on the
    topic.
@@ -70,10 +71,10 @@ job it improves, and is tested on that job's cases (section 4).
 | `explain_concept` | "derive the potential due to a point charge", "what is active transport" | `explain_concept` (section 2) | a correct, grounded explanation | built 2026-10-22 (step 2) |
 | `practise` | "test me on NLM", "mini test" | the practice-test builder, `similar_question` | the student starts practising | works |
 | `plan` | "plan my week", "4 months left" | `plan_week`, `my_plan`, `exam_strategy` | a plan is made and shown | typed only since 2026-10-27; follow-through low (5 of 63 chapter days done) |
-| `reflect` | "how am I doing?", "good at Maths, bad at GAT" | `my_progress`; the "How's my progress" button opens a card built without AI (`lib/chat/progressCard.ts`, 2026-10-27) | answers the question they asked | typed: no per-subject split |
+| `reflect` | "how am I doing?", "good at Maths, bad at GAT" | `my_progress`; the "How's my progress" button opens a card built without AI (`lib/chat/progressCard.ts`, 2026-10-27); the first open of a day shows the "Your day" card (`lib/chat/dayCard.ts`, 2026-11-15) | answers the question they asked | typed: no per-subject split |
 | `help` | payment, app, homework, "is it free" | site facts | the right next step | gaps: app install, homework |
 | `chat` | greetings, role-play, gibberish, abuse | none | one friendly line back to studying; abuse gets the fixed line | works |
-| `tutor` | "teach me this step by step", "I still don't get it" | the stored solution, one step at a time (section 0) | the student gets a different question on the subtopic right within 7 days | step 1 built 2026-11-12 (the button under an explanation); typed requests still get an ordinary explanation |
+| `tutor` | "teach me this step by step", "I still don't get it" | V's explanation from the stored solution, a bubble per numbered step (section 0) | the student gets a different question on the subtopic right within 7 days | step 1 built 2026-11-15 (step chips; "Teach me step by step" 2026-11-12 to 11-15, retired); typed requests get an ordinary explanation |
 
 ## 2. Where V's knowledge comes from (the ladder)
 
@@ -171,7 +172,19 @@ is enforced in `facts.ts` or the tools; the date is when it was made.
   of: that step in full with the numbers, the idea it needs first, or a tiny
   example. After a No on a reply with numbered steps the chat asks "Which step
   lost you?" with a button per step; a step message counts as a No everywhere.
-- **Teach me step by step shows OUR solution, not V's words (owner, 2026-11-12, section 0 step 1).**
+- **Step chips: Explain and Reply on a tapped step of V's own explanation (owner, 2026-11-15; replaces the next entry).**
+  Rule 7 asks for numbered steps (the line about their pick before step 1,
+  the answer after a blank line). A signed-in explanation of a question with
+  2+ numbered steps shows a bubble per step; tapping one shows Explain (sends
+  "Explain step N more simply." as a Reply to that step, so V is told the
+  step's text; a No everywhere, and the question goes on the Fix list) and
+  Reply (the step quoted; `reply_to_step`, migration 0259). Chips show only on
+  the tapped step: the owner picked that over chips on every step (clutter;
+  the Fix line went for the same reason on 11-11). Taps are `step_by_step`
+  rows coded tap/explain/reply. Retired with it: "Lost me here" and the
+  step card's animation moving with the steps (the animation still plays
+  under V's reply).
+- **RETIRED 2026-11-15: Teach me step by step showed OUR solution, not V's words (owner, 2026-11-12, section 0 step 1).**
   Under an explanation of an MCQ or numeric question whose solution cuts into
   2+ steps (`lib/chat/solutionSteps.ts`: an animation's own steps, else
   sentences, short ones joined, at most 6), the chat shows the stored
@@ -403,6 +416,12 @@ reads everything else from the stored row.
   3 runs in 4 on main as well (V calls its earlier reply a mistake and echoes
   "stored" from the old reply in the history): a separate slip, not this
   change.
+- 2026-11-15: the "Your day" card (owner, migration 0262): the first time a
+  student opens V on a new India day, a card stands in for the greeting (last
+  day, fixes, chapters moved up, one step for today), with a dot on V's
+  button. Built from numbers, no model call, so no v:eval case moves. How's my
+  progress kept (31 openers, 55% next step, 7 on a second day). Growth
+  experiment `v-day-card`.
 - 2026-11-11: vision agreed (section 0): V becomes like a live human tutor,
   done when the student can solve a new one alone (verified learning), in tiny
   steps; any rule in section 3 may be revisited with the owner's OK. New job

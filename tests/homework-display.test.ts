@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { shortNote, sectionsOf, planWording, seeAllLabel } from "@/lib/homework/display";
+import { shortNote, sectionsOf, planWording, seeAllLabel, isBoardPlanExam } from "@/lib/homework/display";
 
 describe("shortNote", () => {
   it("shortens each kind of note the plan builder writes", () => {
@@ -49,6 +49,18 @@ describe("planWording", () => {
 
   it("names NTA and past questions for JEE Mains, which no board sets", () => {
     expect(planWording("JEE Mains")).toEqual({ asker: "NTA", questions: "past questions", papers: "Past", answers: "worked solutions" });
+  });
+
+  it("names SSC and past questions for SSC CHSL and SSC CPO (2026-11-16)", () => {
+    for (const exam of ["SSC CHSL", "SSC CPO"]) {
+      expect(planWording(exam)).toEqual({ asker: "SSC", questions: "past questions", papers: "Past", answers: "worked solutions" });
+      expect(isBoardPlanExam(exam)).toBe(false);
+    }
+  });
+
+  it("names UPSC and past questions for UPSC CAPF (AC) (2026-11-16)", () => {
+    expect(planWording("UPSC CAPF (AC)")).toEqual({ asker: "UPSC", questions: "past questions", papers: "Past", answers: "worked solutions" });
+    expect(isBoardPlanExam("UPSC CAPF (AC)")).toBe(false);
   });
 
   it("names SSC and past questions for SSC CGL", () => {

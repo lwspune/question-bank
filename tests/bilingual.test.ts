@@ -1,6 +1,13 @@
 import { describe, expect, it } from "vitest";
 import {
+  altLangOf,
+  cancelledLine,
+  defaultLangFor,
   effectiveLang,
+  hasTranslation,
+  isLangChecked,
+  langLabel,
+  switchLangs,
   optionVersions,
   parseLangPref,
   scriptLang,
@@ -188,5 +195,115 @@ describe("monolingual Marathi rows", () => {
   it("leaves an English canonical row tagged en", () => {
     const en = { ...q, text: "Pick the synonym.", options: [{ label: "A" as const, text: "big" }] };
     expect(stemVersions(en, "mr")[0].lang).toBe("en");
+  });
+});
+
+/**
+ * HINDI (SSC CGL, 2026-10-20). SSC prints every non-English question in
+ * English and Hindi. Hindi is stored exactly like Marathi (a translation of
+ * the canonical English row, lang 'hi'); a question carries at most one
+ * second language, and the switch's middle button means "the other print",
+ * so a stored preference of "mr" still picks the Hindi on an SSC page and a
+ * stored "hi" still picks the Marathi on an MPSC page.
+ */
+describe("Hindi translations", () => {
+  const withHi: Bilingual = {
+    text: "A is the wife of B. How is D related to C?",
+    context: null,
+    options: [
+      { label: "A", text: "Granddaughter" },
+      { label: "B", text: "Daughter" },
+    ],
+    translations: {
+      hi: { text: "A, B की पत्नी है। D का C से क्या संबंध है?", context: null, options: { A: "पोती", B: "पुत्री" } },
+    },
+  };
+
+  it("parses a stored hi preference", () => {
+    expect(parseLangPref("hi")).toBe("hi");
+  });
+
+  it("names the question's second language", () => {
+    expect(altLangOf(withHi)).toBe("hi");
+    expect(altLangOf(withMr)).toBe("mr");
+    expect(altLangOf(englishOnly)).toBeNull();
+    expect(hasTranslation(withHi)).toBe(true);
+    expect(hasTranslation(englishOnly)).toBe(false);
+  });
+
+  it("treats either translated preference as 'the other print'", () => {
+    expect(effectiveLang("hi", withHi)).toBe("hi");
+    expect(effectiveLang("mr", withHi)).toBe("hi");
+    expect(effectiveLang("hi", withMr)).toBe("mr");
+    expect(effectiveLang("hi", englishOnly)).toBe("en");
+  });
+
+  it("shows the Hindi stem, tagged hi, and puts it first for both", () => {
+    expect(stemVersions(withHi, "hi")).toEqual([{ lang: "hi", text: withHi.translations!.hi!.text, context: null }]);
+    expect(stemVersions(withHi, "mr")[0].lang).toBe("hi");
+    expect(stemVersions(withHi, "both").map((v) => v.lang)).toEqual(["hi", "en"]);
+    expect(stemVersions(withHi, "en")).toEqual([{ lang: "en", text: withHi.text, context: null }]);
+  });
+
+  it("returns options in Hindi", () => {
+    expect(optionVersions(withHi, withHi.options[0], "both")).toEqual([
+      { lang: "hi", text: "पोती" },
+      { lang: "en", text: "Granddaughter" },
+    ]);
+  });
+
+  it("falls back to the English solution when there is no Hindi one", () => {
+    expect(solutionVersions({ ...withHi, solution: "Because." }, "hi")).toEqual([{ lang: "en", text: "Because." }]);
+  });
+
+  it("assembles a Hindi translation from embedded rows", () => {
+    expect(
+      translationsFromRows(
+        [{ lang: "hi", text: "प्रश्न", context: null }],
+        [{ label: "A", option_translations: [{ lang: "hi", text: "एक" }] }]
+      )
+    ).toEqual({ hi: { text: "प्रश्न", context: null, options: { A: "एक" } } });
+  });
+
+  it("labels the switch in the exam's own script", () => {
+    expect(switchLangs("hi")).toEqual(["en", "hi", "both"]);
+    expect(switchLangs("mr")).toEqual(["en", "mr", "both"]);
+    expect(langLabel("hi", "hi")).toBe("हिन्दी");
+    expect(langLabel("both", "hi")).toBe("Both / दोनों");
+    expect(langLabel("both", "mr")).toBe("Both / दोन्ही");
+    expect(langLabel("mr", "mr")).toBe("मराठी");
+  });
+
+  it("defaults SSC (Hindi) readers to English and MPSC (Marathi) readers to both (owner, 2026-10-20)", () => {
+    expect(defaultLangFor("hi")).toBe("en");
+    expect(defaultLangFor("mr")).toBe("both");
+    expect(defaultLangFor(null)).toBe("both");
+  });
+
+  it("marks the middle button checked for either translated preference", () => {
+    expect(isLangChecked("hi", "mr", "hi")).toBe(true);
+    expect(isLangChecked("hi", "hi", "hi")).toBe(true);
+    expect(isLangChecked("en", "mr", "hi")).toBe(false);
+    expect(isLangChecked("both", "both", "hi")).toBe(true);
+  });
+});
+
+describe("cancelledLine", () => {
+  it("says the question was cancelled in Marathi for a Marathi print", () => {
+    expect(cancelledLine("mr")).toEqual({
+      lang: "mr",
+      text: "हा प्रश्न आयोगाने अंतिम उत्तरतालिकेत रद्द केला आहे; कोणताही पर्याय बरोबर नाही.",
+    });
+  });
+
+  it("says it in Hindi for a Hindi print (RAS, SSC)", () => {
+    const line = cancelledLine("hi");
+    expect(line?.lang).toBe("hi");
+    expect(line?.text).toMatch(/रद्द/);
+    expect(line?.text).not.toMatch(/आयोगाने/); // not the Marathi sentence
+  });
+
+  it("adds no second line to an English-only question (CAPF, UPSC)", () => {
+    expect(cancelledLine(null)).toBeNull();
   });
 });

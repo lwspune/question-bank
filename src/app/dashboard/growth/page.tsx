@@ -67,6 +67,10 @@ import {
   V_FIX_LINE_KEEP_PCT,
   V_RETRY_YES_KEEP_PCT,
   V_STEPS_START_KEEP_PCT,
+  V_STEP_CHIPS_TAP_KEEP_PCT,
+  V_DAY_REPEAT_KEEP_PCT,
+  V_DAY_NEXT_STEP_KEEP_PCT,
+  V_STEP_CHIPS_YES_KEEP_PCT,
   V_STEPS_FINISH_KEEP_PCT,
   SCORE_PLAN_DRILL_KEEP_PCT,
   STUCK_OFFER_LEAVE_BASELINE_PCT,
@@ -80,8 +84,12 @@ import {
   INSTALL_APP_STUDENTS_KEEP,
   TEACHER_RULE_PRECISION_PCT,
   TEACHER_STUDENT_ANSWERS_MIN,
+  BLOG_SIGNUP_SHARE_KEEP_PCT,
+  BLOG_GSC_CLICKS_KEEP,
   GULF_PRICE_BASELINE_RUPEES_PER_STUDENT,
   GULF_PRICE_MIN_SALES,
+  ENEM_STUDENTS_KEEP,
+  ENEM_ACTIVE_KEEP,
   ANSWER_LIMIT_COPY_CHECKOUT_BASELINE_PCT,
   ANSWER_LIMIT_COPY_BUY_BASELINE_PCT,
   V_REVEAL_FOLLOWUP_MAX_DROP,
@@ -934,6 +942,22 @@ export default async function GrowthPage() {
             accounts it names say Teacher.
           </p>
         );
+      case "blog-posts":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with <code>scripts/blog/readout.sql</code> and
+            Search Console: per kind (news, data, evergreen), keep writing it if its pages bring{" "}
+            {BLOG_SIGNUP_SHARE_KEEP_PCT}%+ of all signups or {BLOG_GSC_CLICKS_KEEP}+ clicks a week by the last week.
+          </p>
+        );
+      case "enem-interest":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: add 2016-2020 and a notes pilot if{" "}
+            {ENEM_STUDENTS_KEEP}+ students choose ENEM and {ENEM_ACTIVE_KEEP}+ of them start a mock or answer 20+
+            questions; otherwise leave ENEM as it is.
+          </p>
+        );
       case "gulf-price":
         return (
           <p className="text-sm text-muted-foreground">
@@ -970,6 +994,22 @@ export default async function GrowthPage() {
           <p className="text-sm text-muted-foreground">
             Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if {V_RETRY_YES_KEEP_PCT}%+ of answered
             second tries get a Yes (was 2 of 7).
+          </p>
+        );
+      case "v-day-card":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with scripts/chat/day-card-readout.sql: keep it if{" "}
+            {V_DAY_REPEAT_KEEP_PCT}%+ of the students shown it see it on 2+ days (before: 7 of 31 for How&apos;s my progress) and{" "}
+            {V_DAY_NEXT_STEP_KEEP_PCT}%+ of showings lead to a tap that day.
+          </p>
+        );
+      case "v-step-chips":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} from the step chips funnel on /dashboard/chat:
+            keep it if {V_STEP_CHIPS_TAP_KEEP_PCT}%+ of stepped explanations get a step tapped and {V_STEP_CHIPS_YES_KEEP_PCT}%+
+            of answered Explain replies get a Yes.
           </p>
         );
       case "v-step-by-step":

@@ -19,10 +19,15 @@ export function passScopeForExam(slug: string | null | undefined): string {
   return getExamBySlug(slug)?.passScope ?? SCOPE_MOCKS;
 }
 
-/** The passes a site sells: www the Premium Pass, intl one per international exam. */
+/**
+ * The passes a site sells: www the Premium Pass, intl one per international exam.
+ * A free exam (ENEM, 2026-11-15) sells none: 'free' is held by everyone, so
+ * counting it here would lift every intl student's limits on the paid exams.
+ */
 export function sitePassScopes(site: PlanSite): string[] {
   if (site === "pyqvault") return [SCOPE_MOCKS];
-  return [...new Set(EXAM_REGISTRY.filter((e) => e.site === "intl").map((e) => passScopeForExam(e.slug)))];
+  const sold = EXAM_REGISTRY.filter((e) => e.site === "intl").map((e) => passScopeForExam(e.slug));
+  return [...new Set(sold.filter((s) => s !== SCOPE_FREE))];
 }
 
 /**

@@ -229,6 +229,59 @@ describe("replies to an earlier message", () => {
     const reply = typed("2026-10-21T10:07:00Z", "why 60?", "Because.", { id: "r4", replyToId: "gone" });
     expect(historyTurns([reply])[0]).toEqual({ role: "user", text: "why 60?" });
   });
+
+  // Reply on one step of a stepped explanation (step chips, 2026-11-15, migration 0259).
+  const STEPPED = "You picked (B).\n1. Group the terms.\n2. Add 9 and 4 to both sides.\n\nAnswer: (A)";
+  const stepped = typed("2026-10-21T10:08:00Z", "Explain this question.", STEPPED, { id: "r5", askedQuestionId: Q1 });
+
+  it("tells V only the step replied to, and which question it was about", () => {
+    const c = replyContext(stepped, 2);
+    expect(c).toContain("step 2 of 2");
+    expect(c).toContain("Add 9 and 4 to both sides.");
+    expect(c).not.toContain("Group the terms.");
+    expect(c).toContain(`question ${Q1}`);
+  });
+
+  it("falls back to the whole exchange when the step is not in the reply", () => {
+    expect(replyContext(stepped, 5)).toContain("replying to an earlier exchange");
+    expect(replyContext(stepped, null)).toContain("replying to an earlier exchange");
+  });
+
+  it("quotes the step, not the reply's first line, when the chat and the dashboard are rebuilt", () => {
+    const reply = typed("2026-10-21T10:09:00Z", "why 9?", "Half of -6, squared.", { id: "r6", replyToId: "r5", replyToStep: 2 });
+    expect(historyTurns([stepped, reply]).at(-2)).toEqual({ role: "user", text: "why 9?", quote: "Step 2: Add 9 and 4 to both sides." });
+    expect(groupConversations([stepped, reply])[0].turns.at(-1)!.quote).toBe("Step 2: Add 9 and 4 to both sides.");
+  });
+});
+
+describe("step chips: which explanations split into steps (2026-11-15)", () => {
+  const Q1 = "11111111-1111-4111-8111-111111111111";
+  const STEPPED = "1. Group the terms.\n2. Add 9 and 4.";
+  const explainCall = [{ name: "explain_question", input: { question_id: Q1 } }];
+
+  it("names the explained question on a stepped explanation, so the steps can be tapped", () => {
+    const row = typed("2026-10-21T10:00:00Z", "Explain this question.", STEPPED, { askedQuestionId: Q1, toolCalls: explainCall });
+    expect(historyTurns([row]).at(-1)).toMatchObject({ role: "assistant", stepQuestionId: Q1 });
+  });
+
+  it("names the tapped question on V's re-explanation, which calls no tool", () => {
+    const row = typed("2026-10-21T10:00:00Z", "Explain step 2 more simply.", STEPPED, { askedQuestionId: Q1 });
+    expect(historyTurns([row]).at(-1)).toMatchObject({ role: "assistant", stepQuestionId: Q1 });
+  });
+
+  it("tells the dashboard which replies the student saw as tappable steps: signed in only", () => {
+    const row = (signedIn: boolean) =>
+      typed("2026-10-21T10:00:00Z", "Explain this question.", STEPPED, { askedQuestionId: Q1, toolCalls: explainCall, signedIn });
+    expect(groupConversations([row(true)])[0].turns[0].stepped).toBe(true);
+    expect(groupConversations([row(false)])[0].turns[0].stepped).toBe(false);
+  });
+
+  it("names none on a reply without numbered steps, or one that explained no question", () => {
+    const plain = typed("2026-10-21T10:00:00Z", "Explain this question.", "One line.", { askedQuestionId: Q1, toolCalls: explainCall });
+    expect(historyTurns([plain]).at(-1)).not.toHaveProperty("stepQuestionId");
+    const chat = typed("2026-10-21T10:01:00Z", "hi", STEPPED);
+    expect(historyTurns([chat]).at(-1)).not.toHaveProperty("stepQuestionId");
+  });
 });
 
 describe("quoteSnippet", () => {

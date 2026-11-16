@@ -7,7 +7,7 @@ import { EXAM_REGISTRY, type ExamEntry } from "@/lib/exam/examContext";
 import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
 import { globalBankLine, type KindCounts } from "@/lib/exam/questionCounts";
 import { getNotesExamGroup } from "@/lib/notes/notesNav";
-import { INTL_EXAMS, INTL_ORIGIN } from "@/lib/sites/intl";
+import { INTL_ORIGIN, LIVE_INTL_EXAMS } from "@/lib/sites/intl";
 
 /**
  * intl.pyqvault.com's home (2026-10-30). The middleware serves this page at
@@ -15,9 +15,9 @@ import { INTL_EXAMS, INTL_ORIGIN } from "@/lib/sites/intl";
  */
 export const revalidate = 86400;
 
-const TITLE = "PYQ Vault Global: IMAT past papers, notes and mock tests";
+const TITLE = "PYQ Vault Global: IMAT and ENEM past papers and mock tests";
 const DESCRIPTION =
-  "Free IMAT practice: the ministry's past papers with worked solutions, original practice questions, notes for every chapter and timed mock tests.";
+  "Free IMAT and ENEM practice: official past papers with worked solutions and timed mock tests, plus IMAT notes for every chapter and original practice questions.";
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -30,6 +30,16 @@ export const metadata: Metadata = {
 const ABOUT: Record<string, string> = {
   imat:
     "The International Medical Admissions Test for English-taught medicine and dentistry at Italy's public universities: 60 questions in 100 minutes across logic, reading, biology, chemistry, physics and maths.",
+  enem:
+    "Brazil's Exame Nacional do Ensino Médio, the way into most Brazilian universities. Day 2 of every paper from 2021 to 2025, Ciências da Natureza and Matemática: 90 questions in 5 hours, each with a worked solution in Portuguese. Free.",
+};
+
+/**
+ * The mock card's line where "the official marking" is not true: ENEM is scored
+ * by IRT, which a mock cannot reproduce, so its mocks count right answers.
+ */
+const MOCK_LINE: Record<string, string> = {
+  enem: "Timed like the real Day 2, scored by right answers",
 };
 
 async function questionCounts(): Promise<Map<string, KindCounts>> {
@@ -58,7 +68,7 @@ export default async function IntlHome() {
           </p>
         </header>
         <div className="grid gap-6">
-          {INTL_EXAMS.map((exam) => (
+          {LIVE_INTL_EXAMS.map((exam) => (
             <ExamCard key={exam.slug} exam={exam} questions={counts.get(exam.slug) ?? null} />
           ))}
         </div>
@@ -71,18 +81,24 @@ export default async function IntlHome() {
 function ExamCard({ exam, questions }: { exam: ExamEntry; questions: KindCounts | null }) {
   const notes = getNotesExamGroup(exam.slug);
   const chapters = notes?.subjects.reduce((n, s) => n + s.chapterCount, 0) ?? 0;
+  // An exam without notes (ENEM) shows no Notes card rather than a dead link.
+  const notesAction = exam.notesPath
+    ? [
+        {
+          href: exam.notesPath,
+          icon: BookOpen,
+          title: "Notes",
+          line: chapters > 0 ? `${chapters} chapters, every one with worked examples` : "Every chapter, with worked examples",
+        },
+      ]
+    : [];
   const actions = [
-    {
-      href: exam.notesPath ?? `/notes/${exam.slug}`,
-      icon: BookOpen,
-      title: "Notes",
-      line: chapters > 0 ? `${chapters} chapters, every one with worked examples` : "Every chapter, with worked examples",
-    },
+    ...notesAction,
     {
       href: `/mock/exam/${exam.slug}`,
       icon: ClipboardCheck,
       title: "Mock tests",
-      line: "Timed, scored with the official marking",
+      line: MOCK_LINE[exam.slug] ?? "Timed, scored with the official marking",
     },
     {
       href: "/browse",

@@ -6,11 +6,13 @@ import MathText from "@/components/chat/MathText";
 import VAskedCard from "@/components/chat/VAskedCard";
 import VFace from "@/components/chat/VFace";
 import VReplyText from "@/components/chat/VReplyText";
+import VStepReply from "@/components/chat/VStepReply";
+import { replyParts } from "@/lib/chat/stepChips";
 import { USER_BUBBLE, V_BUBBLE } from "@/components/chat/chatStyles";
 
 export type ThreadTurn = Pick<
   ConversationTurn,
-  "question" | "reply" | "source" | "feedback" | "page" | "at" | "links" | "asked" | "quote" | "understood"
+  "question" | "reply" | "source" | "feedback" | "page" | "at" | "links" | "asked" | "quote" | "understood" | "stepped"
 >;
 
 const SOURCE_LABEL: Record<NonNullable<ThreadTurn["source"]>, string> = {
@@ -51,12 +53,20 @@ export default function ConversationThread({ summary, turns }: { summary: ReactN
                 </div>
               </div>
               <div className="max-w-[90%]">
-                <div className="flex items-end gap-2">
-                  <VFace avatar="idle" className="h-7 w-7 shrink-0 object-contain" />
-                  <div className={V_BUBBLE}>
-                    <VReplyText text={t.reply} links={t.links} />
-                  </div>
-                </div>
+                {(() => {
+                  // A bubble per step where the student saw one (step chips, 2026-11-15); never tappable here.
+                  const parts = t.stepped ? replyParts(t.reply) : null;
+                  return parts ? (
+                    <VStepReply parts={parts} links={t.links} avatar="idle" />
+                  ) : (
+                    <div className="flex items-end gap-2">
+                      <VFace avatar="idle" className="h-7 w-7 shrink-0 object-contain" />
+                      <div className={V_BUBBLE}>
+                        <VReplyText text={t.reply} links={t.links} />
+                      </div>
+                    </div>
+                  );
+                })()}
                 <p className="ml-9 mt-1 text-xs text-muted-foreground">
                   {t.source ? SOURCE_LABEL[t.source] : "fixed reply"}
                   {t.feedback === 1 && " · marked helpful"}

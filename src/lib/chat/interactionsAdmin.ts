@@ -29,6 +29,8 @@ export type RecordChatInteraction = InConversation &
         /** Migration 0181: a notes question instead, as notesRefKey (its page is pagePath). */
         askedNotesItem?: string | null;
         replyToId?: string | null;
+        /** Migration 0259: the step of that message's explanation it replies to (step chips), 1-based. */
+        replyToStep?: number | null;
         reply?: {
           text: string;
           /** ai_failed (migration 0162): the fixed reply, after an AI answer failed part-way; carries what it spent. */
@@ -49,7 +51,7 @@ export type RecordChatInteraction = InConversation &
     | { eventType: "builder_step"; step: BuilderStepId; userId: string | null }
     /** Migration 0226: a message V's hourly limit stopped, kept with no reply. */
     | { eventType: "hourly_limit"; message: string; userId: string | null }
-    /** Migration 0252: one tap of "Teach me step by step", coded "<action>:<step>" (lib/chat/stepByStep stepEventCode). */
+    /** Migration 0252: one step tap, coded "<action>:<step>": the step chips (lib/chat/stepChips stepTapCode) since 2026-11-15, "Teach me step by step" before. */
     | { eventType: "step_by_step"; code: string; questionId: string; userId: string }
   );
 
@@ -95,6 +97,7 @@ export async function recordChatInteraction(
               : null,
         asked_notes_item: input.eventType === "typed_question" ? (input.askedNotesItem ?? null) : null,
         reply_to_id: input.eventType === "typed_question" ? (input.replyToId ?? null) : null,
+        reply_to_step: input.eventType === "typed_question" && input.replyToId ? (input.replyToStep ?? null) : null,
         user_id: input.userId,
         conversation_id: input.conversationId ?? null,
         page_path: input.pagePath ?? null,
@@ -151,7 +154,7 @@ export async function listChatInteractions(limit = 5000): Promise<ChatInteractio
 }
 
 const CONVERSATION_COLUMNS =
-  "id, event_type, question_id, created_at, message, reply, reply_source, reply_links, feedback, conversation_id, page_path, user_id, seen_at, tool_calls, asked_question_id, asked_notes_item, reply_to_id, understood";
+  "id, event_type, question_id, created_at, message, reply, reply_source, reply_links, feedback, conversation_id, page_path, user_id, seen_at, tool_calls, asked_question_id, asked_notes_item, reply_to_id, reply_to_step, understood";
 
 type RawConversationRow = {
   id: string;
@@ -171,6 +174,7 @@ type RawConversationRow = {
   asked_question_id: string | null;
   asked_notes_item: string | null;
   reply_to_id: string | null;
+  reply_to_step: number | null;
   understood: boolean | null;
 };
 
@@ -193,6 +197,7 @@ function toConversationRow(r: RawConversationRow): ConversationRow & { userId: s
     askedQuestionId: r.asked_question_id,
     askedNotesItem: r.asked_notes_item,
     replyToId: r.reply_to_id,
+    replyToStep: r.reply_to_step,
     understood: r.understood,
     userId: r.user_id,
   };

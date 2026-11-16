@@ -242,6 +242,69 @@ export type Database = {
           },
         ]
       }
+      articles: {
+        Row: {
+          body: string
+          created_at: string
+          date_modified: string | null
+          date_published: string | null
+          description: string
+          exam_slug: string | null
+          faq: Json
+          id: string
+          kind: string
+          pending: Json | null
+          reading_minutes: number
+          slug: string
+          sources: Json
+          status: string
+          tags: string[]
+          title: string
+          updated_at: string
+          watch: string | null
+        }
+        Insert: {
+          body: string
+          created_at?: string
+          date_modified?: string | null
+          date_published?: string | null
+          description: string
+          exam_slug?: string | null
+          faq?: Json
+          id?: string
+          kind: string
+          pending?: Json | null
+          reading_minutes: number
+          slug: string
+          sources?: Json
+          status?: string
+          tags: string[]
+          title: string
+          updated_at?: string
+          watch?: string | null
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          date_modified?: string | null
+          date_published?: string | null
+          description?: string
+          exam_slug?: string | null
+          faq?: Json
+          id?: string
+          kind?: string
+          pending?: Json | null
+          reading_minutes?: number
+          slug?: string
+          sources?: Json
+          status?: string
+          tags?: string[]
+          title?: string
+          updated_at?: string
+          watch?: string | null
+        }
+        Relationships: []
+      }
       attempt_answers: {
         Row: {
           attempt_id: string
@@ -761,6 +824,7 @@ export type Database = {
           reply_links: string[] | null
           reply_source: string | null
           reply_to_id: string | null
+          reply_to_step: number | null
           seen_at: string | null
           tokens_in: number | null
           tokens_out: number | null
@@ -788,6 +852,7 @@ export type Database = {
           reply_links?: string[] | null
           reply_source?: string | null
           reply_to_id?: string | null
+          reply_to_step?: number | null
           seen_at?: string | null
           tokens_in?: number | null
           tokens_out?: number | null
@@ -815,6 +880,7 @@ export type Database = {
           reply_links?: string[] | null
           reply_source?: string | null
           reply_to_id?: string | null
+          reply_to_step?: number | null
           seen_at?: string | null
           tokens_in?: number | null
           tokens_out?: number | null
@@ -4492,6 +4558,42 @@ export type Database = {
         }
         Relationships: []
       }
+      study_path_covered: {
+        Row: {
+          chapter_id: string
+          path_id: string
+          ticked_at: string
+          user_id: string
+        }
+        Insert: {
+          chapter_id: string
+          path_id: string
+          ticked_at?: string
+          user_id: string
+        }
+        Update: {
+          chapter_id?: string
+          path_id?: string
+          ticked_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "study_path_covered_chapter_id_fkey"
+            columns: ["chapter_id"]
+            isOneToOne: false
+            referencedRelation: "chapters"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "study_path_covered_path_id_fkey"
+            columns: ["path_id"]
+            isOneToOne: false
+            referencedRelation: "study_paths"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       study_path_days: {
         Row: {
           created_at: string
@@ -4610,6 +4712,7 @@ export type Database = {
       }
       study_paths: {
         Row: {
+          covered_at: string | null
           daily_minutes: number
           ended_at: string | null
           exam_slug: string
@@ -4619,6 +4722,7 @@ export type Database = {
           user_id: string
         }
         Insert: {
+          covered_at?: string | null
           daily_minutes: number
           ended_at?: string | null
           exam_slug: string
@@ -4628,6 +4732,7 @@ export type Database = {
           user_id: string
         }
         Update: {
+          covered_at?: string | null
           daily_minutes?: number
           ended_at?: string | null
           exam_slug?: string
@@ -5313,6 +5418,111 @@ export type Database = {
         }
         Relationships: []
       }
+      world_exam_notes: {
+        Row: {
+          bullets: string[]
+          id: string
+          paragraphs: string[]
+          sort: number
+          sources: Json
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          bullets?: string[]
+          id: string
+          paragraphs?: string[]
+          sort?: number
+          sources?: Json
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          bullets?: string[]
+          id?: string
+          paragraphs?: string[]
+          sort?: number
+          sources?: Json
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      world_exams: {
+        Row: {
+          approximate: boolean
+          candidates: string
+          candidates_n: number | null
+          category: string
+          country: string
+          exam: string
+          format: string
+          id: string
+          language: string
+          main_risk: string | null
+          next_step: string | null
+          note: string
+          papers_released: string
+          region: string
+          revenue: Json | null
+          rights: string
+          rights_note: string
+          shortlist_rank: number | null
+          sources: Json
+          updated_at: string
+          verdict: string
+          why_passes: string | null
+        }
+        Insert: {
+          approximate?: boolean
+          candidates?: string
+          candidates_n?: number | null
+          category: string
+          country: string
+          exam: string
+          format?: string
+          id: string
+          language?: string
+          main_risk?: string | null
+          next_step?: string | null
+          note?: string
+          papers_released?: string
+          region: string
+          revenue?: Json | null
+          rights: string
+          rights_note?: string
+          shortlist_rank?: number | null
+          sources?: Json
+          updated_at?: string
+          verdict: string
+          why_passes?: string | null
+        }
+        Update: {
+          approximate?: boolean
+          candidates?: string
+          candidates_n?: number | null
+          category?: string
+          country?: string
+          exam?: string
+          format?: string
+          id?: string
+          language?: string
+          main_risk?: string | null
+          next_step?: string | null
+          note?: string
+          papers_released?: string
+          region?: string
+          revenue?: Json | null
+          rights?: string
+          rights_note?: string
+          shortlist_rank?: number | null
+          sources?: Json
+          updated_at?: string
+          verdict?: string
+          why_passes?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -5485,6 +5695,7 @@ export type Database = {
           right_answers: number
         }[]
       }
+      get_own_day_card: { Args: { p_exam_id: string }; Returns: Json }
       get_own_performance: { Args: never; Returns: Json }
       get_own_practice_counts: {
         Args: never
@@ -5629,6 +5840,10 @@ export type Database = {
       learn_routing_window: { Args: never; Returns: number }
       learn_seed_chapter: { Args: { p: Json }; Returns: Json }
       learn_seed_courses: { Args: { p: Json }; Returns: Json }
+      load_world_exams: {
+        Args: { p_exams: Json; p_notes: Json; p_prune: boolean }
+        Returns: Json
+      }
       mark_feedback_replies_seen: { Args: never; Returns: number }
       match_chunks: {
         Args: {
@@ -5657,6 +5872,13 @@ export type Database = {
           slug: string
           subject_name: string
           year: number
+        }[]
+      }
+      path_chapter_work: {
+        Args: { p_chapters: string[]; p_since: string; p_user: string }
+        Returns: {
+          chapter_id: string
+          last_at: string
         }[]
       }
       public_pyq_year_counts: {
@@ -5738,6 +5960,10 @@ export type Database = {
           checkout_students: number
           paywall_students: number
         }[]
+      }
+      set_path_covered: {
+        Args: { p_chapters: string[]; p_path: string }
+        Returns: undefined
       }
       start_premium_trial: { Args: { p_feature: string }; Returns: string }
       v_search_answers: {

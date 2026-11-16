@@ -10,6 +10,9 @@ import PrintButton from "./PrintButton";
 import HandoutAutoPrint from "./HandoutAutoPrint";
 import { WATERMARK_PNG_BASE64 } from "@/lib/export/watermark.generated";
 import { PRINT_CSS } from "./printStyles";
+import { publicImageUrl } from "@/lib/storage/imageUrl";
+
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
 
 /**
  * Printable chapter handout for /notes — every subtopic of one chapter laid
@@ -196,12 +199,20 @@ function ConceptBlock({
           <div className="ppyq-stem">
             <StaticBlockText text={pyq.text} />
           </div>
+          {pyq.imageUrl && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img className="pfig" src={publicImageUrl(SUPABASE_URL, pyq.imageUrl)} alt="Question diagram" />
+          )}
           {pyq.options.length > 0 && (
             <ol className="popts">
               {pyq.options.map((o) => (
                 <li key={o.label} className={o.isCorrect ? "ok" : undefined}>
                   ({o.label.toLowerCase()}) <StaticKatexRenderer text={o.text} />
                   {o.isCorrect ? " ✓" : ""}
+                  {o.imageUrl && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img className="pfig" src={publicImageUrl(SUPABASE_URL, o.imageUrl)} alt={`Option ${o.label} image`} />
+                  )}
                 </li>
               ))}
             </ol>
@@ -209,6 +220,10 @@ function ConceptBlock({
           {pyq.solution && (
             <div className="psoln">
               <StaticBlockText text={pyq.solution} solution />
+              {pyq.solutionImageUrl && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img className="pfig" src={publicImageUrl(SUPABASE_URL, pyq.solutionImageUrl)} alt="Solution diagram" />
+              )}
             </div>
           )}
         </div>

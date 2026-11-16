@@ -75,6 +75,35 @@ describe("the board plan says plan, never path", () => {
     expect(visibleText(h)).toContain("From chapters in your plan, 1 of 3 done");
   });
 
+  it("/me class checklist, today's chapter strip and Switch chapter (§18)", () => {
+    const base = view();
+    const ask = buildPathView({
+      exam: "cbse-12",
+      subjects: ["physics"],
+      stream: "pcm",
+      dailyMinutes: 45,
+      chapters: [CE],
+      states: new Map([["ce", { sheet: true, topWorked: 4, test: false, recordedDone: false }]]),
+      tasks: [{ kind: "top", chapterId: "ce", minutes: 15, upTo: 9 }],
+      fixAnswered: new Set(),
+      today: "2026-11-25",
+      examDate: "2027-02-15",
+      examOfficial: false,
+      cover: { asked: false, ticked: new Set(), practised: new Set(["ce"]) },
+    });
+    const checklist = html(createElement(PathCard, { initial: { path: ask, offer: null } }));
+    noPath(checklist);
+    expect(visibleText(checklist)).toContain("What has your class covered?");
+    const card = html(createElement(PathCard, { initial: { path: { ...ask, cover: { ...ask.cover!, asked: true } }, offer: null } }));
+    noPath(card);
+    expect(visibleText(card)).toContain("Update what your class has covered");
+    expect(visibleText(card)).toContain("Top 10: 5 more questions");
+    // Switch chapter shows with somewhere to switch to (the default card has a second chapter).
+    const two = html(createElement(PathCard, { initial: { path: { ...base, switchOptions: [{ id: "x", name: "Solutions", subjectLabel: "Chemistry", stepsDone: 0, stepsOf: 3, taught: false }] }, offer: null } }));
+    noPath(two);
+    expect(visibleText(two)).toContain("Switch chapter");
+  });
+
   it("/me Today card with every chapter done", () => {
     const h = html(createElement(PathCard, { initial: { path: allDone(), offer: null } }));
     noPath(h);

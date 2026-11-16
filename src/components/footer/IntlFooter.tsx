@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { legalLinks } from "@/lib/nav/footerLinks";
-import { INTL_EXAMS } from "@/lib/sites/intl";
+import { LIVE_INTL_EXAMS } from "@/lib/sites/intl";
 
 /**
  * The footer on intl.pyqvault.com (2026-10-30): each international exam's
@@ -15,27 +15,32 @@ export default function IntlFooter() {
           globally recognised exams. Free to browse.
         </p>
         <nav aria-label="Site links" className="mt-6 grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-4">
-          {INTL_EXAMS.map((exam) => (
+          {LIVE_INTL_EXAMS.map((exam) => (
             <div key={exam.slug}>
               <h2 className="mb-2 text-[11px] font-medium uppercase tracking-wide text-foreground/70">
                 {exam.displayName}
               </h2>
               <ul className="space-y-1.5">
-                <li>
-                  <Link href={exam.notesPath ?? `/notes/${exam.slug}`} className="transition-colors hover:text-foreground">
-                    Notes
-                  </Link>
-                </li>
+                {exam.notesPath && (
+                  <li>
+                    <Link href={exam.notesPath} className="transition-colors hover:text-foreground">
+                      Notes
+                    </Link>
+                  </li>
+                )}
                 <li>
                   <Link href={`/mock/exam/${exam.slug}`} className="transition-colors hover:text-foreground">
                     Mock tests
                   </Link>
                 </li>
-                <li>
-                  <Link href={`/formula/${exam.slug}`} className="transition-colors hover:text-foreground">
-                    Formula sheets
-                  </Link>
-                </li>
+                {/* Formula sheets are built from notes, so an exam without notes has none. */}
+                {exam.notesPath && (
+                  <li>
+                    <Link href={`/formula/${exam.slug}`} className="transition-colors hover:text-foreground">
+                      Formula sheets
+                    </Link>
+                  </li>
+                )}
               </ul>
             </div>
           ))}

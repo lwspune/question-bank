@@ -56,12 +56,18 @@ const NotesTopPyqs = dynamic(() => import("./NotesTopPyqs"));
  * comes from the subject's homework plan, so a subject needs a reviewed,
  * published plan first; NDA Maths is the first, CDS Maths the second
  * (2026-11-05), JEE Mains Maths, Physics and Chemistry next (2026-11-06; a JEE
- * chapter left out of its plan, as off the 2024 syllabus, shows no section).
+ * chapter left out of its plan, as off the 2024 syllabus, shows no section),
+ * NDA Physics, Chemistry, Biology and Geography after the NDA GAT plans
+ * (2026-11-15, owner OK'd).
  * Adding a subject changes its shipped notes pages, so it is the owner's call
  * each time.
  */
 const TOP_PYQS_SUBJECTS: ReadonlySet<string> = new Set([
   "nda-maths",
+  "nda-physics",
+  "nda-chemistry",
+  "nda-biology",
+  "nda-geography",
   "cds-maths",
   "jee-mains-maths",
   "jee-mains-physics",

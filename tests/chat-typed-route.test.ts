@@ -752,6 +752,37 @@ it("keeps the conversation: stores its id and page, returns the row id, and give
       expect(data).toEqual([{ message: `route-${RUN}-rep why`, reply_to_id: target }]);
     });
 
+    it("tells V only the step a Reply on one step is about, and stores the step (step chips, 0259)", async () => {
+      await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      askV.mockReset();
+      askV.mockResolvedValue({ ok: true, reply: "ok", tokensIn: 1, tokensOut: 1 });
+      const conversationId = randomUUID();
+      const target = await seed(conversationId, `route-${RUN}-step first`, 10, {
+        reply: "You picked (B).\n1. Group the terms.\n2. Add 9 and 4 to both sides.\n\nAnswer: (A)",
+      });
+      const { POST } = await import("@/app/api/chat/typed/route");
+      await POST(post({ message: `route-${RUN}-step why`, conversationId, replyTo: target, replyStep: 2 }));
+      // A step that is not in the reply, or not a step number at all, falls back to the whole exchange.
+      await POST(post({ message: `route-${RUN}-step far`, conversationId, replyTo: target, replyStep: 7 }));
+      await POST(post({ message: `route-${RUN}-step bad`, conversationId, replyTo: target, replyStep: "2" }));
+      const [one, far, bad] = askV.mock.calls.map((c) => c[0].message as string);
+      expect(one).toContain("step 2 of 2");
+      expect(one).toContain("Add 9 and 4 to both sides.");
+      expect(one).not.toContain("Group the terms.");
+      expect(far).toContain("replying to an earlier exchange");
+      expect(bad).toContain("replying to an earlier exchange");
+      const { data } = await admin
+        .from("chat_interactions")
+        .select("message, reply_to_step")
+        .in("message", [`route-${RUN}-step why`, `route-${RUN}-step far`, `route-${RUN}-step bad`])
+        .order("created_at");
+      expect(data).toEqual([
+        { message: `route-${RUN}-step why`, reply_to_step: 2 },
+        { message: `route-${RUN}-step far`, reply_to_step: null },
+        { message: `route-${RUN}-step bad`, reply_to_step: null },
+      ]);
+    });
+
     it("ignores a reply to a message from another conversation or an earlier session", async () => {
       await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
       askV.mockReset();

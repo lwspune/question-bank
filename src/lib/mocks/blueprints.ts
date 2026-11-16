@@ -847,6 +847,28 @@ export const IMAT_PAPER: MockPaperBlueprint = {
 };
 
 /**
+ * ENEM (Brazil) Day 2, as INEP prints it (booklet 7): 90 questions in 5 hours,
+ * five options A-E, Ciências da Natureza Q91-135 (bank subjects Física, Química,
+ * Biologia, in printed order) then Matemática Q136-180. ENEM's real score is IRT,
+ * which a mock cannot reproduce, so it scores raw correct answers: +1, nothing
+ * off. A question INEP cancelled rides as grace (scripts/mocks/enemSittings.ts),
+ * so the count never shortens. Subject names mirror scripts/enem/lib.ts.
+ */
+export const ENEM_DAY_2: MockPaperBlueprint = {
+  code: "day-2",
+  examName: "ENEM",
+  examSlug: "enem",
+  paperLabel: "2º dia",
+  durationSecs: 300 * 60,
+  marking: { correct: 1, wrong: 0 },
+  optionCount: 5,
+  sections: [
+    { key: "natureza", label: "Ciências da Natureza e suas Tecnologias", subjects: ["Física", "Química", "Biologia"], count: 45 },
+    { key: "matematica", label: "Matemática e suas Tecnologias", subjects: ["Matemática"], count: 45 },
+  ],
+};
+
+/**
  * SPI (Services Preparatory Institute) entrance examination, as printed in 2022: 150
  * questions in one booklet, 3 hours, +1 a right answer and 0.5 off a wrong one. Part 1
  * Mathematical Ability (its puzzles are filed under Reasoning) and Part 2 General Ability.
@@ -940,6 +962,56 @@ export const RRB_NTPC_CBT_1: MockPaperBlueprint = {
         "Computer Knowledge",
       ],
       count: 100,
+    },
+  ],
+};
+
+/**
+ * RPSC RAS/RTS Prelims, "General Knowledge and General Science", as RPSC sets
+ * it: 150 MCQs in 3 hours for 200 marks, so +4/3 a right answer and one third
+ * of that (-4/9) off a wrong one. The booklet prints no subject headings
+ * (Rajasthan GK, national GK, science, current affairs and reasoning run
+ * mixed), so the mock is ONE section carrying every subject in
+ * scripts/ras/catalog.json and keeps RPSC's printed order. An item RPSC
+ * deleted stays in as grace (scripts/mocks/rasSittings.ts), so the count never
+ * shortens.
+ *
+ * NOT MODELLED: from 2023 the booklet adds a fifth bubble, "Question not
+ * attempted", and RPSC deducts marks when more than 10% of items are left with
+ * no bubble at all. Online there is no bubble to forget, so a blank scores 0.
+ */
+export const RAS_PRELIMS: MockPaperBlueprint = {
+  code: "prelims",
+  examName: "RPSC RAS (Prelims)",
+  examSlug: "rpsc-ras",
+  paperLabel: "Prelims",
+  durationSecs: 180 * 60,
+  marking: { correct: 4 / 3, wrong: -4 / 9 },
+  sections: [
+    {
+      key: "gk-gs",
+      label: "General Knowledge and General Science",
+      subjects: [
+        "Rajasthan History, Art and Culture",
+        "Rajasthan Geography",
+        "Rajasthan Polity and Administration",
+        "Rajasthan Economy",
+        "Polity and Governance",
+        "History",
+        "Geography",
+        "Economy",
+        "Environment and Ecology",
+        "Physics",
+        "Chemistry",
+        "Biology",
+        "Current Affairs and IR",
+        "Logical Reasoning and Analytical Ability",
+        "General Mental Ability",
+        "Basic Numeracy",
+        "Data Interpretation and Data Sufficiency",
+        "Computer Knowledge",
+      ],
+      count: 150,
     },
   ],
 };
@@ -1240,8 +1312,10 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   UGC_NET_PAPER_1,
   RRB_NTPC_CBT_1,
   CAPF_PAPER_1,
+  RAS_PRELIMS,
   CLAT_PAPER,
   IMAT_PAPER,
+  ENEM_DAY_2,
   CBSE_10_CHAPTER_MCQ_PAPER,
   CBSE_12_CHAPTER_MCQ_PAPER,
   MH_HSC_12_CHAPTER_MCQ_PAPER,
