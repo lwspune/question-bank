@@ -113,8 +113,8 @@ describe.skipIf(!HAS_ENV)("practise together on mocks (migration 0166)", () => {
         .insert({ user_id: ids[role], scope: "mocks", source: "manual", status: "active", note: `test ${RUN_ID}` });
     }
     // A seeded exam by name, never "the first exam by name": free-mock-limit
-    // creates a "Marked free exam <run>" (free_mocks_marked) mid-run, which can
-    // sort first and turn every attempt here into "This paper needs a pass".
+    // creates a marked-papers exam (free_mocks_marked) mid-run, which once sorted
+    // first and turned every attempt here into "This paper needs a pass".
     const { data: exam } = await admin.from("exams").select("id").eq("name", "MHT-CET").single();
     examId = exam!.id;
     const { data: rows } = await admin
