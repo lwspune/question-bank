@@ -41,6 +41,12 @@ export function solutionProblems(text: string): string[] {
   // "3 \times 15" with no \( \) around it renders the backslash as text.
   const prose = text.replace(/\\\([\s\S]*?\\\)/g, "").replace(/\\\[[\s\S]*?\\\]/g, "");
   if (/\\[a-zA-Z]+/.test(prose)) out.push("LaTeX command outside maths delimiters");
+  // "Ca^{2+}", "x^2", "v_0" in prose print the caret or underscore as text (a real
+  // b45 draft, 2026-11-16). A bare word joined by "_" ("name_list") is not maths:
+  // only a single letter or digit before the mark counts for "_".
+  if (/[A-Za-z0-9)\]}]\^\{?[-+0-9A-Za-z]|(?<![A-Za-z0-9])[A-Za-z]_\{?[0-9A-Za-z]/.test(prose)) {
+    out.push("power or subscript outside maths delimiters");
+  }
   // Maths that lost EVERY backslash, delimiters included: "CH(_2)OH", "(2^3 = 8)",
   // "8 div 2". No check above sees it, since nothing is left to unbalance or
   // escape (a real b40 draft, 2026-11-03). "times" and "div" count only between
