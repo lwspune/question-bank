@@ -274,3 +274,24 @@ describe("report_solution_issue (a slip in our solution)", () => {
     expect(deps().tools.report_solution_issue).toBeUndefined();
   });
 });
+
+// Owner, 2026-11-16: "how many questions of this 2026 paper were repeated?" V could only give chapter shares.
+describe("paper_repeats (a whole paper's repeats)", () => {
+  it("reads the paper on the student's page and returns what it found", async () => {
+    let calls = 0;
+    const { tools } = deps({
+      loadPaperRepeats: async () => {
+        calls += 1;
+        return "MH SSC Science I March 2026 has 40 questions. 9 were asked as the same question in another paper too: ...";
+      },
+    });
+    const out = await tools.paper_repeats.run({});
+    expect(calls).toBe(1);
+    expect(out).toMatch(/^MH SSC Science I March 2026 has 40 questions\. 9 were asked/);
+    expect(out).toMatch(/never say a question was not asked before/i);
+  });
+
+  it("is not offered where it cannot read a paper (V's test runner without it)", () => {
+    expect(deps().tools.paper_repeats).toBeUndefined();
+  });
+});

@@ -604,6 +604,11 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/never say it was not asked in other papers/i);
   });
 
+  it("sends 'how many questions of this paper were repeated?' to paper_repeats", () => {
+    const p = buildSystemPrompt({ ...base, explainEnabled: true });
+    expect(p).toMatch(/how many questions of a past paper were repeated[^.]*call paper_repeats/i);
+  });
+
   // Owner, 2026-11-16 ("yes" to not holding back): "5P3 = 60, how?" got "try it yourself" and a No;
   // a signed-out visitor (one question) who typed a full question was asked for working they could
   // never send. When a student asks how, V shows how, with the final answer.

@@ -57,6 +57,11 @@ export type QuestionToolDeps = {
    * Absent where nothing may be filed (V's test runner): report_solution_issue is then not offered.
    */
   reportSolution?: (id: string, issue: string) => Promise<"filed" | "already" | "failed">;
+  /**
+   * The repeats of the past paper on the student's page (paper_repeats, 2026-11-16), bound to that page
+   * by the caller. Absent where there is no page to read: the tool is then not offered.
+   */
+  loadPaperRepeats?: () => Promise<string>;
 };
 
 const ISSUE_MAX = 500;
@@ -191,7 +196,25 @@ export function questionTools(d: QuestionToolDeps): VTool[] {
       },
     },
     ...(d.reportSolution ? [reportTool(d.reportSolution, load)] : []),
+    ...(d.loadPaperRepeats ? [paperRepeatsTool(d.loadPaperRepeats)] : []),
   ];
+}
+
+/**
+ * How many questions of the past paper on the student's page were asked in other papers too (owner,
+ * 2026-11-16): "how many were repeated from previous years?" got chapter shares. Reads the page's paper
+ * (lib/chat/paperRepeatsServer.ts), so it takes no input; "no repeat on record" is never "not repeated".
+ */
+function paperRepeatsTool(load: NonNullable<QuestionToolDeps["loadPaperRepeats"]>): VTool {
+  return {
+    name: "paper_repeats",
+    logResult: true,
+    description:
+      "How many questions of the past paper on the student's page (/question-papers/...) were also asked in other papers, as the same question or the same type. Use when they ask how many questions of this paper were repeated or came from earlier years. Takes no input.",
+    input_schema: { type: "object", properties: {} },
+    run: async () =>
+      `${await load()}\nAnswer from this only. Never say a question was not asked before: "no repeat on record" means our analysis has none.`,
+  };
 }
 
 /**

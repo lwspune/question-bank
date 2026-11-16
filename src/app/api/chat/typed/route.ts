@@ -81,6 +81,7 @@ import { buildMyQuestionDeps } from "@/lib/chat/myQuestionsServer";
 import { notesTappedFrom, tappedFrom, type QuestionToolDeps } from "@/lib/chat/questionToolSet";
 import { parseVLanguage, type VLanguage } from "@/lib/chat/language";
 import { loadSimilarId, loadVQuestion, searchVQuestions } from "@/lib/chat/questionToolsServer";
+import { loadPaperRepeats } from "@/lib/chat/paperRepeatsServer";
 import { explainedQuestionId } from "@/lib/chat/solutionFigure";
 import { loadSolutionFigures, loadSolutionVisuals } from "@/lib/chat/solutionFigureServer";
 import { conceptSources } from "@/lib/chat/conceptSearchServer";
@@ -123,6 +124,7 @@ function buildQuestionToolDeps(
   userId: string | null,
   tapped: QuestionToolDeps["tapped"],
   notesTapped: boolean,
+  pagePath: string | null,
   out: { onSimilar: (id: string) => void; onMatch: (id: string) => void; onLimit: (limit: number) => void }
 ): QuestionToolDeps {
   const anon = createSupabaseAnonClient();
@@ -140,6 +142,8 @@ function buildQuestionToolDeps(
     onLimit: out.onLimit,
     // A slip V spots in our solution reaches the team's report queue (migration 0183, 2026-10-23).
     reportSolution: (id, issue) => fileVSolutionReport(createSupabaseAdminClient(), id, issue),
+    // "How many of this paper were repeated?" reads the paper on the student's page (2026-11-16).
+    loadPaperRepeats: () => loadPaperRepeats(anon, pagePath),
   };
 }
 
@@ -375,7 +379,7 @@ export async function POST(request: NextRequest) {
             followsUp: followsUpId ? { stem: (await loadVQuestion(createSupabaseAnonClient(), followsUpId).catch(() => null))?.text ?? null } : null,
             myQuestions: ownId ? buildMyQuestionDeps(createSupabaseServerClient(), createSupabaseAnonClient(), ownId) : null,
             questionTools: settings.explainEnabled
-              ? buildQuestionToolDeps(ownId, tappedFrom(asked, message), notesTappedFrom(notesBrief !== null, message), {
+              ? buildQuestionToolDeps(ownId, tappedFrom(asked, message), notesTappedFrom(notesBrief !== null, message), pagePath, {
                   onSimilar: (id) => (similarQuestionId = id),
                   onMatch: (id) => (matchQuestionId = id),
                   onLimit: (limit) => (limitHit = limit),
