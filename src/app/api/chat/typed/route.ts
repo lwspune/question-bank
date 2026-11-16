@@ -441,6 +441,8 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    // A notes question has no id: its key on its own page (0181), so V's memory can label the tap.
+    const askedNotesItem = !asked && askedNotes && notesPageOf(pagePath) ? notesRefKey(askedNotes) : null;
     const id = await recordChatInteraction(admin, {
       eventType: "typed_question",
       message,
@@ -449,8 +451,7 @@ export async function POST(request: NextRequest) {
       conversationId,
       pagePath,
       askedQuestionId: asked?.id ?? null,
-      // A notes question has no id: its key on its own page (0181), so V's memory can label the tap.
-      askedNotesItem: !asked && askedNotes && notesPageOf(pagePath) ? notesRefKey(askedNotes) : null,
+      askedNotesItem,
       replyToId: replyTarget?.id ?? null,
       replyToStep: replyStep,
     });
@@ -482,7 +483,7 @@ export async function POST(request: NextRequest) {
             ...(planShown ? { planShown: true } : {}),
             ...(pathShown ? { pathShown: true } : {}),
             // An explanation asks "Did you understand?" under it (0182).
-            explained: isExplanation(recorded.toolCalls, message),
+            explained: isExplanation(recorded.toolCalls, message, askedNotesItem),
             ...(solutionFigure ? { solutionFigure } : {}),
             ...(solutionVisual ? { solutionVisual, solutionVisualQuestionId: explainedId } : {}),
             // "One more like this" under the explanation picks from this question's subtopic (2026-11-08).
