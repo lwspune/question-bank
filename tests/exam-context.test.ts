@@ -485,6 +485,7 @@ describe("exam tiers", () => {
       "ugc-net",
       "rrb-ntpc",
       "capf-ac",
+      "rpsc-ras",
     ],
   };
 

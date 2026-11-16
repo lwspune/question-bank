@@ -41,6 +41,7 @@
  *   npx tsx scripts/mocks/build.ts --paper=ugc-net         # UGC NET Paper 1, one per committed shift (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=rrb-ntpc        # RRB NTPC Graduate CBT 1, one per shift (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=capf            # UPSC CAPF (AC) Paper I, one per year (opt-in)
+ *   npx tsx scripts/mocks/build.ts --paper=ras             # RPSC RAS Prelims, one per year (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=enem            # ENEM Day 2, one per committed year (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=clat            # CLAT UG, one per committed year (opt-in)
  *   npx tsx scripts/mocks/build.ts --only=2026-jan-21-s1    # one JEE shift
@@ -90,6 +91,7 @@ import {
   UGC_NET_PAPER_1,
   RRB_NTPC_CBT_1,
   CAPF_PAPER_1,
+  RAS_PRELIMS,
   ENEM_DAY_2,
   clatPaper,
   type MockPaperBlueprint,
@@ -131,6 +133,7 @@ import { iatSittings } from "./iatSittings";
 import { ugcNetSittings } from "./ugcNetSittings";
 import { rrbNtpcSittings } from "./rrbNtpcSittings";
 import { capfSittings } from "./capfSittings";
+import { rasSittings } from "./rasSittings";
 import { enemSittings } from "./enemSittings";
 import { CLAT_MOCK_YEARS, clatSittings } from "./clatSittings";
 import { mockTestRow } from "../../src/lib/mocks/row";
@@ -839,6 +842,11 @@ async function buildCapf(db: SupabaseClient, run: RunState) {
   await buildFromSourceFiles(db, CAPF_PAPER_1, capfSittings(), run, "capfSittings.ts");
 }
 
+/** RPSC RAS Prelims, one mock per committed year (rasSittings.ts); RPSC-deleted questions ride as grace. */
+async function buildRas(db: SupabaseClient, run: RunState) {
+  await buildFromSourceFiles(db, RAS_PRELIMS, rasSittings(), run, "rasSittings.ts");
+}
+
 /** ENEM Day 2, one mock per committed year (enemSittings.ts); cancelled and defective questions ride as grace. */
 async function buildEnem(db: SupabaseClient, run: RunState) {
   await buildFromSourceFiles(db, ENEM_DAY_2, enemSittings(), run, "enemSittings.ts");
@@ -997,11 +1005,13 @@ async function main() {
   const runCpo = paperFilter === "ssc-cpo";
   // Opt-in: UPSC CAPF (AC) (scripts/capf/README.md).
   const runCapf = paperFilter === "capf";
+  // Opt-in: RPSC RAS Prelims rows are PRIVATE until the owner OKs them (scripts/ras/README.md).
+  const runRas = paperFilter === "ras";
   // Opt-in: ENEM rows are PRIVATE until the go-public step (scripts/enem/commit.ts).
   const runEnem = paperFilter === "enem";
-  if (paperFilter && !runEnem && !runUceed && !runIat && !runUgcNet && !runClat && !runRrbNtpc && !runCpo && !runCapf && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runChsl && !runSpi && !runImat && !runMpscMains) {
+  if (paperFilter && !runRas && !runEnem && !runUceed && !runIat && !runUgcNet && !runClat && !runRrbNtpc && !runCpo && !runCapf && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runChsl && !runSpi && !runImat && !runMpscMains) {
     throw new Error(
-      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, ssc-chsl, ssc-cpo, spi, imat, mpsc-mains, uceed, iat, ugc-net, clat, rrb-ntpc, capf, enem)`
+      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, ssc-chsl, ssc-cpo, spi, imat, mpsc-mains, uceed, iat, ugc-net, clat, rrb-ntpc, capf, ras, enem)`
     );
   }
 
@@ -1081,6 +1091,7 @@ async function main() {
   if (runClat) await buildClat(db, run);
   if (runRrbNtpc) await buildRrbNtpc(db, run);
   if (runCapf) await buildCapf(db, run);
+  if (runRas) await buildRas(db, run);
   if (runEnem) await buildEnem(db, run);
 
   console.log(`\n${apply ? "Upserted" : "Would build"} ${run.built.n} mock(s)${publish ? " (published)" : apply ? " (draft)" : ""}.`);

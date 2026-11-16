@@ -55,6 +55,7 @@ export type ExamSlug =
   | "ugc-net"
   | "rrb-ntpc"
   | "capf-ac"
+  | "rpsc-ras"
   | "clat";
 
 /**
@@ -854,6 +855,29 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // PUBLIC since 2026-11-14: nine years, 1,125 q, every one with a worked
     // solution. One timed mock per year (capf-ac-paper-1-*), MOCKS.md.
     hasMocks: true,
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "rpsc-ras",
+    // RPSC RAS/RTS (Rajasthan State and Subordinate Services) Combined
+    // Competitive Prelims: the one objective paper, "General Knowledge and
+    // General Science", 150 MCQs, 200 marks, 3 hours, one-third negative.
+    // RPSC's own booklets and final keys for six cycles, 2013 (re-held 2015),
+    // 2016, 2018, 2021, 2023, 2024 (scripts/ras/). Added 2026-11-16 as the first
+    // state-PSC test on the owner's list. Printed in Hindi and English side by
+    // side: English is the canonical row, Hindi a translation (0118 + 0171).
+    tier: "graduate",
+    goal: "government",
+    displayName: "RAS (Prelims)",
+    examName: "RPSC RAS (Prelims)", // must match the `exams` DB row exactly
+    bilingual: true,
+    secondLang: "hi",
+    // 900 rows committed PRIVATE on 2026-11-16; comes off with the flip to
+    // PUBLIC, and hasMocks goes true once the six mocks are published.
+    noPublicContent: true,
+    hasMocks: false,
     pastPaperSolutions: true,
     guidesPath: null,
     notesPath: null,

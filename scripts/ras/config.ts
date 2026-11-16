@@ -67,6 +67,8 @@ export type Paper = {
   pdf: string;
   /** The exam CYCLE ("RAS 2024"), which is how candidates name a paper. */
   pyqYear: number;
+  /** When the paper was sat, as RPSC prints it ("2 Feb 2025"): not always the cycle year. */
+  held: string;
   pyqNote: string;
   /** 0-based page indices carrying questions (both languages on each). */
   pages: number[];
@@ -87,6 +89,7 @@ const paper = (year: number, held: string, pages: number[], dpi: number, keyFile
   sourceFile: `RAS_Pre_${year}.pdf`,
   pdf: join(SOURCE_ROOT, `RAS_Pre_${year}.pdf`),
   pyqYear: year,
+  held,
   // SHORT ON PURPOSE: a public page shows `pyq_note` only under 48 characters
   // (publicPyqNote MAX_PUBLIC_PYQ_NOTE_LEN), so the long form ("RPSC RAS/RTS
   // Prelims 2024 (held 2 Feb 2025) - General Knowledge and General Science")
