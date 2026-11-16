@@ -26,6 +26,20 @@ other items that ask the same fact in other words.
 
 **A chapter file with only 1 item has nothing to compare: skip it** and write no output for it.
 
+## SSC CHSL and SSC CPO (if your work dir starts `chsl-` or `cpo-`)
+
+The same brief applies to two other SSC exams, each reviewed on its own:
+
+- **SSC CHSL Tier I**: 24 shifts, July 2024 and November 2025, work dirs
+  `generated-papers/homework/chsl-<subject>`.
+- **SSC CPO Paper I**: 16 shifts, June 2024 and December 2025, work dirs
+  `generated-papers/homework/cpo-<subject>`.
+
+Shifts are named exactly as for CGL (`1 Jul 2024 S1`). Count repeats and types across the
+shifts of THAT exam only: never compare with CGL or with the other exam, and never call a
+question a repeat because you remember it from another exam. With fewer shifts than CGL,
+expect even fewer repeat groups; a type still needs members from 2+ different shifts.
+
 ## What SSC does in General Awareness
 
 SSC rarely reprints a GK question word for word, but it asks the SAME FACT again in new words

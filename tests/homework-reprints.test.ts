@@ -26,6 +26,20 @@ describe("reprintSittings", () => {
     expect(Object.fromEntries(got)).toEqual({ q1: ["12 Sep 2025 S3", "14 Sep 2025 S3"], q2: ["14 Sep 2025 S3"] });
   });
 
+  // SSC CHSL and CPO (2026-11-16) share repeats.json; each plan reads its own exam's keys.
+  it("reads only the keys of the exam it is given", () => {
+    const repeats = {
+      "t1-2025-09-12-s3": [{ questionId: "q1" }],
+      "chsl-t1-2025-11-18-s1": [{ questionId: "c1" }],
+      "cpo-t1-2025-12-09-s2": [{ questionId: "p1" }],
+    };
+    const names: Record<string, string> = { ...labels, "chsl-t1-2025-11-18-s1": "18 Nov 2025 S1", "cpo-t1-2025-12-09-s2": "9 Dec 2025 S2" };
+    const of = (k: string) => names[k];
+    expect(Object.fromEntries(reprintSittings(repeats, of))).toEqual({ q1: ["12 Sep 2025 S3"] });
+    expect(Object.fromEntries(reprintSittings(repeats, of, "chsl-t1-"))).toEqual({ c1: ["18 Nov 2025 S1"] });
+    expect(Object.fromEntries(reprintSittings(repeats, of, "cpo-t1-"))).toEqual({ p1: ["9 Dec 2025 S2"] });
+  });
+
   it("refuses a shift it cannot name, never guessing", () => {
     expect(() => reprintSittings({ "t1-2030-01-01-s1": [{ questionId: "q1" }] }, labelOf)).toThrow(/t1-2030-01-01-s1/);
   });
