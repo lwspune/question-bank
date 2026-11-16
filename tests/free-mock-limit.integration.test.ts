@@ -156,7 +156,9 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
 
     const { data: imatExam, error: examErr } = await admin
       .from("exams")
-      .insert({ name: `Pass scope exam ${RUN_ID}`, pass_scope: "imat" })
+      // "zz " so a fixture exam never sorts first: nine other test files take
+      // "the first exam by name", and this one is deleted at the end (SUGGESTIONS.md ledger, 2026-11-16).
+      .insert({ name: `zz pass scope exam ${RUN_ID}`, pass_scope: "imat" })
       .select("id")
       .single();
     expect(examErr).toBeNull();
@@ -190,7 +192,7 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
 
     const { data: markedExam, error: markedErr } = await admin
       .from("exams")
-      .insert({ name: `Marked free exam ${RUN_ID}`, pass_scope: "imat", free_mocks_marked: true })
+      .insert({ name: `zz marked free exam ${RUN_ID}`, pass_scope: "imat", free_mocks_marked: true })
       .select("id")
       .single();
     expect(markedErr).toBeNull();

@@ -103,6 +103,7 @@ describe("EXPERIMENTS", () => {
       "pass-price",
       "pass-tiers",
       "performance-starter",
+      "play-games",
       "practice-friends",
       "practice-tests",
       "premium-limits",

@@ -353,6 +353,10 @@ async function main() {
         // Read by hand: class_interest leads (migration 0265), Pune vs other, on /dashboard/classes.
         line = "by hand: /dashboard/classes (class_interest, Pune leads in 4 weeks)";
         break;
+      case "play-games":
+        // Read by hand: play_round rows (migration 0267), players' study days before vs after the first round.
+        line = "by hand: scripts/play/readout.sql + Vercel play_link_click / play_round_end";
+        break;
       case "v-follow-up-loop":
         // Read by hand: v_followups against Ask V explanations (migration 0250, V_LEARNING_LOOP.md step 2).
         line = "by hand: npm run v:learning";

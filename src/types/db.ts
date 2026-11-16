@@ -938,6 +938,54 @@ export type Database = {
         }
         Relationships: []
       }
+      class_interest: {
+        Row: {
+          called_at: string | null
+          city: string
+          consent: boolean
+          courses: string[]
+          created_at: string
+          exam_slug: string | null
+          from_section: string | null
+          id: string
+          is_pune: boolean
+          mobile: string
+          name: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          called_at?: string | null
+          city: string
+          consent: boolean
+          courses: string[]
+          created_at?: string
+          exam_slug?: string | null
+          from_section?: string | null
+          id?: string
+          is_pune: boolean
+          mobile: string
+          name?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          called_at?: string | null
+          city?: string
+          consent?: boolean
+          courses?: string[]
+          created_at?: string
+          exam_slug?: string | null
+          from_section?: string | null
+          id?: string
+          is_pune?: boolean
+          mobile?: string
+          name?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       concept_reports: {
         Row: {
           category: Database["public"]["Enums"]["concept_report_category"]
@@ -2468,6 +2516,105 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      learning_game_notes: {
+        Row: {
+          bullets: string[]
+          id: string
+          paragraphs: string[]
+          sort: number
+          sources: Json
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          bullets?: string[]
+          id: string
+          paragraphs?: string[]
+          sort?: number
+          sources?: Json
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          bullets?: string[]
+          id?: string
+          paragraphs?: string[]
+          sort?: number
+          sources?: Json
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      learning_games: {
+        Row: {
+          audience: string
+          borrow: string
+          checked_on: string
+          evidence: string
+          evidence_note: string
+          fits: Json
+          how_it_plays: string
+          id: string
+          maker: string
+          mechanics: string[]
+          name: string
+          platform: string
+          price: string
+          scale: string
+          scale_as_of: string | null
+          sources: Json
+          subjects: string[]
+          updated_at: string
+          url: string
+          vendor_funded: boolean
+        }
+        Insert: {
+          audience?: string
+          borrow?: string
+          checked_on: string
+          evidence: string
+          evidence_note?: string
+          fits?: Json
+          how_it_plays: string
+          id: string
+          maker?: string
+          mechanics: string[]
+          name: string
+          platform: string
+          price?: string
+          scale?: string
+          scale_as_of?: string | null
+          sources?: Json
+          subjects: string[]
+          updated_at?: string
+          url: string
+          vendor_funded?: boolean
+        }
+        Update: {
+          audience?: string
+          borrow?: string
+          checked_on?: string
+          evidence?: string
+          evidence_note?: string
+          fits?: Json
+          how_it_plays?: string
+          id?: string
+          maker?: string
+          mechanics?: string[]
+          name?: string
+          platform?: string
+          price?: string
+          scale?: string
+          scale_as_of?: string | null
+          sources?: Json
+          subjects?: string[]
+          updated_at?: string
+          url?: string
+          vendor_funded?: boolean
+        }
+        Relationships: []
       }
       mock_assignments: {
         Row: {
@@ -5933,6 +6080,10 @@ export type Database = {
       learn_routing_window: { Args: never; Returns: number }
       learn_seed_chapter: { Args: { p: Json }; Returns: Json }
       learn_seed_courses: { Args: { p: Json }; Returns: Json }
+      load_learning_games: {
+        Args: { p_games: Json; p_notes: Json; p_prune: boolean }
+        Returns: Json
+      }
       load_world_exams: {
         Args: { p_exams: Json; p_notes: Json; p_prune: boolean }
         Returns: Json

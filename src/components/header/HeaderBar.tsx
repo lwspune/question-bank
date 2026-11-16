@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePublicPathname } from "@/lib/nav/usePublicPathname";
-import { Gem, GraduationCap, ShoppingBag } from "lucide-react";
+import { Gamepad2, Gem, GraduationCap, ShoppingBag } from "lucide-react";
 import { trackFunnel } from "@/lib/analytics/trackFunnel";
 import SignInLink from "@/components/reveal/SignInLink";
 import { Button } from "@/components/ui/button";
@@ -113,9 +113,11 @@ export default function HeaderBar({
             <img src="/icons/mark-96.png" alt="" aria-hidden width={24} height={24} className="h-6 w-6 shrink-0" />
             {/* The wordmark used to hide below sm so the icon row could fit; the nav
                 has moved to MobileTabBar, so there is room for it again. */}
-            {/* Below 360 px the words give way so the Ebooks and Classes labels fit;
-                the logo stays and the link keeps its name for screen readers. */}
-            <span className="max-[359px]:sr-only">PYQ Vault</span>
+            {/* On a phone (below 640 px) the words give way so Ebooks, Classes and
+                Play fit beside the theme toggle and Sign in, down to 360 px
+                (owner, 2026-11-16; was below 360 px only). The logo stays and the
+                link keeps its name for screen readers. */}
+            <span className="max-sm:sr-only">PYQ Vault</span>
             {/* The Premium Pass mark (2026-10-21). Drawn only once the session
                 lands, so the cached HTML stays the same for everyone. Part of
                 the brand link, not a link of its own; /account shows the pass. */}
@@ -139,12 +141,14 @@ export default function HeaderBar({
             showBooks={!!session?.isSuperadmin}
           />
 
-          <div className="ml-auto flex min-w-0 items-center gap-1.5 sm:gap-2">
+          <div className="ml-auto flex min-w-0 items-center gap-1 sm:gap-2">
             {/* The ebook store (2026-10-20): its own button, apart from the study
                 tabs, at every width (owner: "a separate buy section on top"). */}
             <StoreLink />
             {/* Offline classes in Pune (2026-11-16; was the 1:1 tutoring check), beside the store. */}
             <ClassesLink />
+            {/* The calculation game (2026-11-16), open to everyone, signed in or not. */}
+            <PlayLink />
             {/* Theme toggle is visible to everyone, anon included. */}
             <ThemeToggle />
             {sessionLoading ? (
@@ -176,7 +180,7 @@ export default function HeaderBar({
                 />
               </>
             ) : (
-              <Button asChild size="sm" className="shrink-0 rounded-full">
+              <Button asChild size="sm" className="shrink-0 rounded-full max-sm:px-2.5">
                 <SignInLink variant="header">Sign in</SignInLink>
               </Button>
             )}
@@ -204,7 +208,7 @@ export default function HeaderBar({
  */
 function headerButtonClass(active: boolean): string {
   return (
-    "inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full px-2.5 text-sm sm:px-3 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 " +
+    "inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full px-2 text-sm sm:px-3 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 " +
     (active ? "bg-brand text-brand-foreground" : "bg-accent text-brand-accent hover:bg-brand/15 dark:bg-secondary")
   );
 }
@@ -246,6 +250,28 @@ function ClassesLink() {
     >
       <GraduationCap className="hidden h-4 w-4 shrink-0 sm:block" aria-hidden />
       <span>Classes</span>
+    </Link>
+  );
+}
+
+/**
+ * The calculation game (2026-11-16): /play, timed rounds of basic sums in
+ * levels. "Play", not "Games": the owner picked the word that fits a 360 px
+ * phone (measured: header ~355 px with it). Experiment play-games.
+ */
+function PlayLink() {
+  const pathname = usePublicPathname();
+  const active = pathname.startsWith("/play");
+  return (
+    <Link
+      href="/play"
+      onClick={() => trackFunnel("play_link_click", { from: pathname.split("/")[1] || "home" })}
+      aria-current={active ? "page" : undefined}
+      aria-label="Play: calculation game"
+      className={headerButtonClass(active)}
+    >
+      <Gamepad2 className="hidden h-4 w-4 shrink-0 sm:block" aria-hidden />
+      <span>Play</span>
     </Link>
   );
 }

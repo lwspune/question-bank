@@ -4,12 +4,17 @@
  * Spec: tests/ui-shots-lib.test.ts.
  */
 
-export type Viewport = "phone" | "desktop";
+export type Viewport = "narrow" | "phone" | "desktop";
 export type Theme = "light" | "dark";
 export type Target = "before" | "after";
 
-/** Phone = a 390 px Android-class screen at 2x; desktop = a 1440 px laptop. */
+/**
+ * Phone = a 390 px Android-class screen at 2x; desktop = a 1440 px laptop.
+ * Narrow (`--narrow`) = a 360 px budget Android, the width the header must
+ * still fit (2026-11-16: Play joined Ebooks and Classes with ~5 px to spare).
+ */
 export const VIEWPORTS: Record<Viewport, { width: number; height: number; scale: number; mobile: boolean }> = {
+  narrow: { width: 360, height: 780, scale: 2, mobile: true },
   phone: { width: 390, height: 844, scale: 2, mobile: true },
   desktop: { width: 1440, height: 900, scale: 1, mobile: false },
 };
@@ -136,7 +141,8 @@ export function parseShotArgs(argv: string[]): ShotArgs {
   const asStudent = asStudentArg(value("as-student"));
   if (flag("with-pass") && !asStudent) throw new Error("--with-pass needs --as-student=<exam,...>: there is no signed-in student to hold the pass");
   if (flag("bottom") && flag("full")) throw new Error("--bottom and --full cannot be combined: --full captures from the top");
-  const viewports: Viewport[] = flag("phone") && !flag("desktop") ? ["phone"] : flag("desktop") && !flag("phone") ? ["desktop"] : ["phone", "desktop"];
+  const base: Viewport[] = flag("phone") && !flag("desktop") ? ["phone"] : flag("desktop") && !flag("phone") ? ["desktop"] : ["phone", "desktop"];
+  const viewports: Viewport[] = flag("narrow") ? ["narrow", ...base] : base;
   return {
     pages,
     targets: {
