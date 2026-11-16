@@ -1,0 +1,725 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "4637757d-502a-47c5-a0f7-485c0e3f6613",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{R}_P \\text{ em série com } \\text{R}_C",
+              "note": "fonte: 1,2V; aparelho: V"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "1{,}2V - V = 0{,}2V",
+              "f": "1.2-1",
+              "value": "0.2",
+              "note": "excesso fica no resistor (V = 1)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{R_P}{R_C} = \\dfrac{0{,}2V}{V} = 0{,}2",
+              "f": "0.2/1",
+              "value": "0.2"
+            }
+          ],
+          "answer": "0.2/1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "db45908d",
+        "answer": {
+          "value": 0.2,
+          "label": "RP = 0,2 RC, em série"
+        }
+      }
+    },
+    {
+      "id": "64210d19-594e-4b18-9104-0b819267abe9",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "P_{max} = 110 \\times 20 = 2\\,200\\ \\text{W}",
+              "f": "110*20",
+              "value": "2200"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "250 + 1\\,100 = 1\\,350\\ \\text{W}",
+              "f": "250+1100",
+              "value": "1350",
+              "note": "computador e ar sempre ligados"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2\\,200 - 1\\,350 = 850\\ \\text{W}",
+              "f": "2200-1350",
+              "value": "850",
+              "note": "sobra para as atividades"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "660 < 850:\\ \\text{impressora cabe}",
+              "note": "cafeteira (900 W) queima o fusível"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{atividades realizadas} = 1",
+              "f": "1",
+              "value": "1"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "b533a14c",
+        "answer": {
+          "value": 1,
+          "label": "1 atividade"
+        }
+      }
+    },
+    {
+      "id": "6ce3921b-afd1-40ae-964f-14602dc99628",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "U_R = 4{,}5 - 3{,}0 = 1{,}5\\ \\text{V}",
+              "f": "4.5-3",
+              "value": "1.5",
+              "note": "tensão no resistor em série"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "i = \\dfrac{1{,}5\\ \\text{V}}{1{,}5\\ \\text{k}\\Omega} = 1{,}0\\ \\text{mA}",
+              "f": "1.5/1.5",
+              "value": "1",
+              "note": "cada LED com seu resistor"
+            }
+          ],
+          "answer": "1.5/1.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "1dc1c302",
+        "answer": {
+          "value": 1,
+          "label": "1,0 mA por LED"
+        }
+      }
+    },
+    {
+      "id": "89bd2b8f-014c-402f-9275-6f33442369cc",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "r = \\dfrac{40 - 34}{7{,}5} = 0{,}8\\ \\Omega",
+              "f": "(40-34)/7.5",
+              "value": "0.8"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\varepsilon_{eq} = 3 \\times 40 = 120\\ \\text{V}",
+              "f": "3*40",
+              "value": "120",
+              "note": "3 placas em série"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "r_{eq} = 3 \\times 0{,}8 = 2{,}4\\ \\Omega",
+              "f": "3*0.8",
+              "value": "2.4"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "120 - 2{,}4 \\times 7{,}5 = 102\\ \\text{V}",
+              "f": "120-2.4*7.5",
+              "value": "102",
+              "note": "dentro de 95 V a 105 V"
+            }
+          ],
+          "answer": "3*40"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "f5ddec97",
+        "answer": {
+          "value": 120,
+          "label": "120 V com 2,4 Ω"
+        }
+      }
+    },
+    {
+      "id": "b528a93c-336b-4311-8195-37266b139548",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "E = \\dfrac{110}{5{,}0} = 22\\ \\text{kWh}",
+              "f": "110/5",
+              "value": "22"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P = 220 \\times 20 = 4\\,400\\ \\text{W} = 4{,}4\\ \\text{kW}",
+              "f": "220*20",
+              "value": "4400"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "t = \\dfrac{22}{4{,}4} = 5{,}0\\ \\text{h}",
+              "f": "22/4.4",
+              "value": "5",
+              "dp": 1
+            }
+          ],
+          "answer": "22/4.4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "9519a594",
+        "answer": {
+          "value": 5,
+          "label": "5,0 h"
+        }
+      }
+    },
+    {
+      "id": "bf76d7ee-9611-40a8-a298-48053b1edd14",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dot m = \\dfrac{3\\,000\\ \\text{g}}{60\\ \\text{s}} = 50\\ \\text{g/s}",
+              "f": "3000/60",
+              "value": "50",
+              "note": "3 L/min, nível superquente"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P = 50 \\times 4{,}2 \\times 30 = 6\\,300\\ \\text{W}",
+              "f": "50*4.2*30",
+              "value": "6300"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "i = \\dfrac{6\\,300}{220} \\approx 28{,}6\\ \\text{A}",
+              "f": "6300/220",
+              "value": "28.6",
+              "dp": 1
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{disjuntor} = 30\\ \\text{A}",
+              "f": "30",
+              "value": "30",
+              "note": "múltiplo de 5 A logo acima de 28,6"
+            }
+          ],
+          "answer": "30"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "ce0fde3f",
+        "answer": {
+          "value": 30,
+          "label": "30 A"
+        }
+      }
+    },
+    {
+      "id": "c96c7504-4a6e-4517-861f-f97e78074b07",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "P_{el} = 150\\ \\text{MW} = 1{,}5 \\times 10^{8}\\ \\text{W}",
+              "f": "150*10^6",
+              "value": "1.5*10^8",
+              "sf": 2
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P_{sol} = \\dfrac{1{,}5 \\times 10^{8}}{0{,}20} = 7{,}5 \\times 10^{8}\\ \\text{W}",
+              "f": "1.5*10^8/0.2",
+              "value": "7.5*10^8",
+              "sf": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "A = \\dfrac{7{,}5 \\times 10^{8}}{1\\,500} = 5 \\times 10^{5}\\ \\text{m}^2",
+              "f": "7.5*10^8/1500",
+              "value": "5*10^5",
+              "sf": 1
+            }
+          ],
+          "answer": "7.5*10^8/1500"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "0a160782",
+        "answer": {
+          "value": 500000,
+          "label": "500 000 m²"
+        }
+      }
+    },
+    {
+      "id": "cb0206fa-c5d8-43c1-b3f3-0f9319063783",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "R = \\dfrac{4{,}5^2}{4{,}5} = 4{,}5\\ \\Omega",
+              "f": "4.5^2/4.5",
+              "value": "4.5",
+              "note": "resistência da lâmpada"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\varepsilon = 1{,}5 + 1{,}5 - 1{,}5 = 1{,}5\\ \\text{V}",
+              "f": "1.5+1.5-1.5",
+              "value": "1.5",
+              "note": "uma pilha invertida"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "r_{tot} = 3 \\times 0{,}5 = 1{,}5\\ \\Omega",
+              "f": "3*0.5",
+              "value": "1.5",
+              "note": "resistências internas em série"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "i = \\dfrac{1{,}5}{4{,}5 + 1{,}5} = 0{,}25\\ \\text{A}",
+              "f": "1.5/(4.5+1.5)",
+              "value": "0.25"
+            }
+          ],
+          "answer": "1.5/(4.5+1.5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "00c2a421",
+        "answer": {
+          "value": 0.25,
+          "label": "0,25 A"
+        }
+      }
+    },
+    {
+      "id": "cc71c74a-77a7-4be3-9d94-e442e2a09ebe",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "R = \\rho \\dfrac{L}{A},\\ \\rho \\text{ constante}",
+              "note": "comparar L/A"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{312}{9} \\approx 34{,}7",
+              "f": "312/9",
+              "value": "34.7",
+              "note": "fio 1",
+              "dp": 1
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{47}{4} \\approx 11{,}8",
+              "f": "47/4",
+              "value": "11.8",
+              "note": "fio 2",
+              "dp": 1
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{54}{2} = 27",
+              "f": "54/2",
+              "value": "27",
+              "note": "fio 3"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\dfrac{106}{1} = 106",
+              "f": "106/1",
+              "value": "106",
+              "note": "fio 4"
+            }
+          ],
+          "answer": "106/1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "8c4ec327",
+        "answer": {
+          "value": 106,
+          "label": "R2 < R3 < R1 < R4"
+        }
+      }
+    },
+    {
+      "id": "e04400e4-5054-4dad-b20c-4e6a7e03c1a4",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "R = \\dfrac{U}{i}",
+              "note": "analogia com a lei de Ohm"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{510}{4} = 127{,}5",
+              "f": "510/4",
+              "value": "127.5",
+              "note": "rota 1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{608}{4} = 152",
+              "f": "608/4",
+              "value": "152",
+              "note": "rota 2"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{575}{3} \\approx 191{,}7",
+              "f": "575/3",
+              "value": "191.7",
+              "note": "rota 3",
+              "dp": 1
+            }
+          ],
+          "answer": "510/4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "2bcaa0df",
+        "answer": {
+          "value": 127.5,
+          "label": "ordem: 1, 2, 3"
+        }
+      }
+    },
+    {
+      "id": "ea3393b1-825a-4c89-88ce-8756766e95f2",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "U_{min} = 1\\,000 \\times 0{,}020 = 20\\ \\text{V}",
+              "f": "1000*0.02",
+              "value": "20",
+              "note": "parada respiratória: 20 a 100 mA"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "U_{max} = 1\\,000 \\times 0{,}100 = 100\\ \\text{V}",
+              "f": "1000*0.1",
+              "value": "100"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "U = 12 + 12 = 24\\ \\text{V}",
+              "f": "12+12",
+              "value": "24",
+              "note": "duas baterias em série, mesmo sentido"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "i = \\dfrac{24}{1\\,000} = 0{,}024\\ \\text{A}",
+              "f": "24/1000",
+              "value": "0.024",
+              "note": "24 mA, dentro da faixa"
+            }
+          ],
+          "answer": "24/1000*1000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "0e776bb0",
+        "answer": {
+          "value": 24,
+          "label": "24 mA: associação A"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

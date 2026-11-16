@@ -1,0 +1,176 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "1733bf41-b340-4c5a-8fd3-d4e02a92787a",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "1{,}4\\ \\text{mg/mL},\\quad V = 2\\ \\text{L},\\quad \\text{NaCl}=58{,}5,\\ \\text{Na}=23"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "1{,}4 \\times 2\\,000 = {{1:2\\,800}}\\ \\text{mg}",
+              "f": "1.4*2000",
+              "value": "2800"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{{1:2\\,800}}\\ \\text{mg} = 2{,}8\\ \\text{g de Na}^{+}",
+              "f": "2800/1000",
+              "value": "2.8"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "m_{\\text{NaCl}} = {{2:2{,}8}} \\times \\dfrac{58{,}5}{23} \\approx 7{,}1\\ \\text{g}",
+              "f": "2.8*58.5/23",
+              "value": "7.1",
+              "dp": 1,
+              "note": "proporção das massas molares"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\dfrac{7{,}1}{2} \\approx {{3:3{,}6}}\\ \\text{g por colher}",
+              "f": "2.8*58.5/23/2",
+              "value": "3.6",
+              "dp": 1,
+              "note": "duas colheres pequenas"
+            }
+          ],
+          "answer": "2.8*58.5/23/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "3ab57d03",
+        "answer": {
+          "value": 3.560869565217391,
+          "label": "3,6 g"
+        }
+      }
+    },
+    {
+      "id": "be4a1897-379b-427f-b75c-ba17f5b6b65c",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{perda} = 50\\% \\times m,\\quad \\text{resta} = c \\times (1-\\text{perda})"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{RB72}: 13{,}0 \\times 0{,}65 = 8{,}45",
+              "f": "13*0.65",
+              "value": "8.45",
+              "note": "g/L restantes"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{RB84}: 18{,}0 \\times 0{,}60 = 10{,}8",
+              "f": "18*0.6",
+              "value": "10.8",
+              "note": "g/L restantes"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{RB92}: 16{,}0 \\times 0{,}70 = {{1:11{,}2}}",
+              "f": "16*0.7",
+              "value": "11.2",
+              "note": "g/L restantes"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{SP79}: 14{,}0 \\times 0{,}75 = 10{,}5",
+              "f": "14*0.75",
+              "value": "10.5",
+              "note": "g/L restantes"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\text{SP80}: 17{,}0 \\times 0{,}55 = 9{,}35",
+              "f": "17*0.55",
+              "value": "9.35",
+              "note": "g/L restantes"
+            },
+            {
+              "step": "s7",
+              "kind": "note",
+              "tex": "\\text{maior} = {{1:11{,}2}}\\ \\text{g/L}",
+              "note": "maior teor: RB92"
+            }
+          ],
+          "answer": "16*0.7"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5",
+              "s6"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "f54c52fe",
+        "answer": {
+          "value": 11.2,
+          "label": "RB92: 11,2 g/L"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

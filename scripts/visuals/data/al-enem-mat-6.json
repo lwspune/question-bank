@@ -1,0 +1,814 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "79315bba-1889-4147-91b3-2efc32791310",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "V_c=\\pi\\cdot4^{2}\\cdot50=800\\pi\\ \\text{cm}^3",
+              "f": "pi*4^2*50",
+              "value": "800*pi",
+              "note": "volume do cilindro"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V_e=\\dfrac43\\pi(0{,}5)^3=\\dfrac{\\pi}{6}",
+              "f": "4/3*pi*0.5^3",
+              "value": "pi/6",
+              "note": "esfera de raio 0,5 cm"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "n=\\dfrac{800\\pi}{\\pi/6}=4\\,800",
+              "f": "800*pi/(pi/6)",
+              "value": "4800"
+            }
+          ],
+          "answer": "4800"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "efb101c7",
+        "answer": {
+          "value": 4800,
+          "label": "4 800 esferas"
+        }
+      }
+    },
+    {
+      "id": "85d285d7-1d49-4149-b6bc-c281883876d4",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "100\\cdot120\\cdot7=84\\,000\\ \\text{L}=84\\ \\text{m}^3",
+              "f": "100*120*7/1000",
+              "value": "84",
+              "note": "consumo em sete dias"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "A=3\\cdot2{,}5^{2}=18{,}75\\ \\text{m}^2",
+              "f": "3*2.5^2",
+              "value": "18.75",
+              "note": "raio = 2,5 m"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "h=\\dfrac{84}{18{,}75}=4{,}48\\ \\text{m}",
+              "f": "84/18.75",
+              "value": "4.48",
+              "dp": 2
+            }
+          ],
+          "answer": "4.48"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a15ea3e4",
+        "answer": {
+          "value": 4.48,
+          "label": "4,48 m"
+        }
+      }
+    },
+    {
+      "id": "95c7d997-26eb-4ffb-bb87-616df03c25dd",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "R=5,\\quad r=4,\\quad h=12",
+              "note": "tronco de cone, em cm"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "R^{2}+Rr+r^{2}=25+20+16=61",
+              "f": "25+20+16",
+              "value": "61"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "V=\\dfrac{3\\cdot12}{3}\\cdot61=732\\ \\text{cm}^3",
+              "f": "3*12/3*61",
+              "value": "732",
+              "note": "1 cm³ = 1 mL"
+            }
+          ],
+          "answer": "732"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "af27635a",
+        "answer": {
+          "value": 732,
+          "label": "732 mL"
+        }
+      }
+    },
+    {
+      "id": "b48a90a4-f912-41d1-b23b-c5716188c5e5",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "3\\cdot5^{2}\\cdot1{,}5=112{,}5\\ \\text{m}^3=112\\,500\\ \\text{L}",
+              "f": "3*5^2*1.5*1000",
+              "value": "112500",
+              "note": "volume que resta"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{112\\,500}{75\\cdot10}=150\\ \\text{L}",
+              "f": "112500/(75*10)",
+              "value": "150",
+              "note": "novo consumo por morador"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "200-150=50\\ \\text{L}",
+              "f": "200-150",
+              "value": "50",
+              "note": "economia por dia"
+            }
+          ],
+          "answer": "50"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "5daf4867",
+        "answer": {
+          "value": 50,
+          "label": "50 L por dia"
+        }
+      }
+    },
+    {
+      "id": "bcf61f1a-7b1a-4158-a936-4e43a2c4249c",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "V_{I}=A_b\\cdot P",
+              "note": "volume do modelo I"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V_{II}=\\dfrac{A_b}{2}\\cdot2P=1\\cdot A_bP",
+              "f": "1/2*2",
+              "value": "1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "V_{III}=\\dfrac{A_b}{4}\\cdot2P=0{,}5\\cdot A_bP",
+              "f": "1/4*2",
+              "value": "0.5",
+              "note": "metade do raio: um quarto da área"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "V_{IV}=2A_b\\cdot\\dfrac{P}{2}=1\\cdot A_bP",
+              "f": "2*1/2",
+              "value": "1"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "V_{V}=4A_b\\cdot\\dfrac{P}{2}=2\\cdot A_bP",
+              "f": "4*1/2",
+              "value": "2",
+              "note": "dobro do raio: quatro vezes a área"
+            }
+          ],
+          "answer": "2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "bc67cdd6",
+        "answer": {
+          "value": 2,
+          "label": "modelo V: 2·A_b·P"
+        }
+      }
+    },
+    {
+      "id": "c85e7236-7c7d-484a-a49b-ae25cb980fbf",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{3{,}2-0{,}5}{15-6}=\\dfrac{2{,}7}{9}=0{,}3\\ \\text{m/h}",
+              "f": "(3.2-0.5)/(15-6)",
+              "value": "0.3",
+              "note": "subida do nível por hora"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "3\\cdot0{,}3=0{,}9\\ \\text{m}^3/\\text{h}",
+              "f": "3*0.3",
+              "value": "0.9",
+              "note": "área da base × subida"
+            }
+          ],
+          "answer": "0.9"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "b57cff47",
+        "answer": {
+          "value": 0.9,
+          "label": "0,9 m³/h"
+        }
+      }
+    },
+    {
+      "id": "cb722655-e3b0-489b-8c47-052b697fe3a7",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "36-36\\cdot\\dfrac{3}{9}=36-12=24\\ \\text{cm}",
+              "f": "36-36*3/9",
+              "value": "24",
+              "note": "altura do tronco"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V_t=\\dfrac13\\pi(2\\,916-108)=936\\pi",
+              "f": "1/3*pi*(81*36-9*12)",
+              "value": "936*pi"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "V_c=\\pi\\cdot9\\cdot24=216\\pi",
+              "f": "pi*9*24",
+              "value": "216*pi",
+              "note": "furo: altura do tronco"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "720\\cdot3=2\\,160\\ \\text{cm}^3",
+              "f": "(936-216)*3",
+              "value": "2160",
+              "note": "π = 3"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "0{,}6\\cdot2\\,160=1\\,296\\ \\text{g}",
+              "f": "0.6*2160",
+              "value": "1296"
+            }
+          ],
+          "answer": "1296"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "e0820dff",
+        "answer": {
+          "value": 1296,
+          "label": "1 296 g"
+        }
+      }
+    },
+    {
+      "id": "d3196542-99b7-4789-85d6-b5df72f688db",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "F=1+1+5+25=32",
+              "f": "1+1+5+25",
+              "value": "32",
+              "note": "faces"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "A=\\dfrac{10+5+5\\cdot4+25\\cdot3}{2}=55",
+              "f": "(10+5+5*4+25*3)/2",
+              "value": "55",
+              "note": "cada aresta é contada duas vezes"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "V=A-F+2=55-32+2=25",
+              "f": "55-32+2",
+              "value": "25",
+              "note": "relação de Euler"
+            }
+          ],
+          "answer": "25"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "95f10977",
+        "answer": {
+          "value": 25,
+          "label": "25 vértices"
+        }
+      }
+    },
+    {
+      "id": "db13d5e5-6894-4f1e-ae9a-b3ddc3bee29f",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "3\\cdot1{,}0\\cdot0{,}25=0{,}75\\ \\text{m}^2",
+              "f": "3*1*0.25",
+              "value": "0.75",
+              "note": "pisos"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "3\\cdot1{,}0\\cdot0{,}20=0{,}60\\ \\text{m}^2",
+              "f": "3*1*0.2",
+              "value": "0.6",
+              "note": "espelhos"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "0{,}25\\,(0{,}2+0{,}4+0{,}6)=0{,}30\\ \\text{m}^2",
+              "f": "0.25*(0.2+0.4+0.6)",
+              "value": "0.3",
+              "note": "uma parede lateral"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "2\\cdot0{,}30=0{,}60\\ \\text{m}^2",
+              "f": "2*0.3",
+              "value": "0.6",
+              "note": "duas paredes laterais"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "0{,}75+0{,}60+0{,}60=1{,}95\\ \\text{m}^2",
+              "f": "0.75+0.6+0.6",
+              "value": "1.95"
+            }
+          ],
+          "answer": "1.95"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "5a94b972",
+        "answer": {
+          "value": 1.95,
+          "label": "1,95 m²"
+        }
+      }
+    },
+    {
+      "id": "e06d402e-1269-4552-874b-f903c1c28278",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2^{3}=8",
+              "f": "2^3",
+              "value": "8",
+              "note": "diâmetro dobra: volume × 8"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "150\\cdot8=1\\,200",
+              "f": "150*8",
+              "value": "1200",
+              "note": "docinhos de 2 cm equivalentes"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{1\\,200}{50}=24",
+              "f": "1200/50",
+              "value": "24"
+            }
+          ],
+          "answer": "24"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f83cdd91",
+        "answer": {
+          "value": 24,
+          "label": "24 porções"
+        }
+      }
+    },
+    {
+      "id": "e28bbed7-63fe-4116-a0e2-7536f10b4d2c",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2{,}5\\cdot1{,}5\\cdot2=7{,}5\\ \\text{dm}^3=7{,}5\\ \\text{L}",
+              "f": "2.5*1.5*2",
+              "value": "7.5",
+              "note": "sem garrafas"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "7{,}5-5=2{,}5\\ \\text{L}",
+              "f": "7.5-5",
+              "value": "2.5",
+              "note": "volume máximo das garrafas"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2{,}5\\div0{,}3\\approx8{,}3",
+              "f": "2.5/0.3",
+              "value": "8.3",
+              "dp": 1
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "n_{\\max}=8",
+              "note": "9 garrafas deixariam só 4,8 L"
+            }
+          ],
+          "answer": "8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "f72837d4",
+        "answer": {
+          "value": 8,
+          "label": "8 garrafas"
+        }
+      }
+    },
+    {
+      "id": "ed520419-14de-4172-93de-0b633d2855e3",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "r=\\dfrac{10}{2\\pi}=\\dfrac{5}{\\pi}",
+              "f": "10/(2*pi)",
+              "value": "5/pi",
+              "note": "altura 20 cm, circunferência 10 cm"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V_1=\\pi\\cdot\\dfrac{25}{\\pi^{2}}\\cdot20=\\dfrac{500}{\\pi}",
+              "f": "pi*25/pi^2*20",
+              "value": "500/pi"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "r=\\dfrac{20}{2\\pi}=\\dfrac{10}{\\pi}",
+              "f": "20/(2*pi)",
+              "value": "10/pi",
+              "note": "altura 10 cm, circunferência 20 cm"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "V_2=\\pi\\cdot\\dfrac{100}{\\pi^{2}}\\cdot10=\\dfrac{1\\,000}{\\pi}",
+              "f": "pi*100/pi^2*10",
+              "value": "1000/pi"
+            },
+            {
+              "step": "s5",
+              "kind": "note",
+              "tex": "V_{\\max}=\\dfrac{1\\,000}{\\pi}\\ \\text{cm}^3",
+              "note": "a maior capacidade"
+            }
+          ],
+          "answer": "1000/pi"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "9ff8ae00",
+        "answer": {
+          "value": 318.3098861837907,
+          "label": "1 000/π cm³"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

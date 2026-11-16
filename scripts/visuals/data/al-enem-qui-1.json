@@ -1,0 +1,267 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "a79cf7ce-e5d0-4b03-8033-e1cbdabf2fe9",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "m_0 = 500\\ \\text{g},\\quad t_{1/2} = 5\\ \\text{anos},\\quad t = 35\\ \\text{anos}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "n = \\dfrac{35}{5} = {{1:7}}",
+              "f": "35/5",
+              "value": "7",
+              "note": "número de meias-vidas"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "m = \\dfrac{500}{2^{ {{1:7}} }} = \\dfrac{500}{128}",
+              "f": "500/2^7",
+              "value": "500/128"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "m \\approx 3{,}9\\ \\text{g}",
+              "f": "500/128",
+              "value": "3.9",
+              "dp": 1
+            }
+          ],
+          "answer": "3.9"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "9cb1d733",
+        "answer": {
+          "value": 3.9,
+          "label": "3,9 g"
+        }
+      }
+    },
+    {
+      "id": "182f9aa4-3507-4743-aae9-00403d24f82d",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Escurecimento: } \\text{O}_2 \\text{ reduz e Ag oxida}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta E^0 = {{1:+1{,}23}} - ({{2:-0{,}69}}) = +1{,}92\\ \\text{V}",
+              "f": "1.23-(-0.69)",
+              "value": "1.92",
+              "note": "E° maior − E° menor"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "\\text{Clareamento: } \\text{Al oxida e Ag}_2\\text{S reduz}"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\Delta E^0 = {{2:-0{,}69}} - ({{3:-1{,}68}}) = +0{,}99\\ \\text{V}",
+              "f": "-0.69-(-1.68)",
+              "value": "0.99"
+            }
+          ],
+          "answer": "1.23-(-0.69)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "41ec0b37",
+        "answer": {
+          "value": 1.92,
+          "label": "+1,92 V e +0,99 V"
+        }
+      }
+    },
+    {
+      "id": "68cd1965-cf5a-4436-b3eb-3fdc6962dedf",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{I}_2 \\text{ reduz (cátodo)},\\ \\text{Li oxida (ânodo)}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta E^0 = 0{,}54 - (-3{,}05) = {{1:3{,}59}}\\ \\text{V}",
+              "f": "0.54-(-3.05)",
+              "value": "3.59",
+              "note": "fem de cada pilha"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "3 \\times {{1:3{,}59}} = 10{,}77\\ \\text{V}",
+              "f": "3*3.59",
+              "value": "10.77",
+              "note": "três pilhas em série"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "10{,}5 \\le 10{,}77 \\le 10{,}9\\ \\Rightarrow\\ \\text{IV}"
+            }
+          ],
+          "answer": "3*3.59"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "3d81d59f",
+        "answer": {
+          "value": 10.77,
+          "label": "10,77 V: dispositivo IV"
+        }
+      }
+    },
+    {
+      "id": "158ad516-4c34-4b3a-99aa-28697e160cdb",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "n_{\\text{Nb}} = \\dfrac{9\\,300}{93} = {{1:100}}\\ \\text{mol}",
+              "f": "9300/93",
+              "value": "100"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "n_{\\text{Al}} = {{1:100}} \\times \\dfrac{10}{6} \\approx 166{,}7\\ \\text{mol}",
+              "f": "100*10/6",
+              "value": "166.7",
+              "dp": 1
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "m = 166{,}7 \\times 27 \\approx 4\\,500\\ \\text{g}",
+              "f": "100*10/6*27",
+              "value": "4500",
+              "note": "quantidade estequiométrica"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "4{,}5 \\times 1{,}1 = 4{,}95\\ \\text{kg}",
+              "f": "4.5*1.1",
+              "value": "4.95",
+              "dp": 2,
+              "note": "excesso de 10%"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "m \\approx 5{,}0\\ \\text{kg}",
+              "f": "4.5*1.1",
+              "value": "5",
+              "dp": 1
+            }
+          ],
+          "answer": "5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "5b47312f",
+        "answer": {
+          "value": 5,
+          "label": "5,0 kg"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

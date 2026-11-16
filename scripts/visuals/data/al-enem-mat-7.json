@@ -1,0 +1,770 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "f06b3415-2ac9-46d9-a79e-6561129807bb",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{espessura } 3\\ \\text{mm} = 0{,}3\\ \\text{cm}",
+              "note": "círculo de raio 3 cm; quadrado inscrito"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{círculo: } 3{,}1 \\cdot 3^{2} = 27{,}9\\ \\text{cm}^{2}",
+              "f": "3.1*3^2",
+              "value": "27.9"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{quadrado: } \\dfrac{6^{2}}{2} = 18\\ \\text{cm}^{2}",
+              "f": "6^2/2",
+              "value": "18",
+              "note": "diagonal = diâmetro = 6 cm"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{ouro: } 27{,}9 - 18 = 9{,}9\\ \\text{cm}^{2}",
+              "f": "27.9-18",
+              "value": "9.9"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "9{,}9 \\cdot 0{,}3 = 2{,}97\\ \\text{cm}^{3}",
+              "f": "9.9*0.3",
+              "value": "2.97"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "100 \\cdot 2{,}97 = 297\\ \\text{cm}^{3}",
+              "f": "100*2.97",
+              "value": "297"
+            }
+          ],
+          "answer": "297"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "961145ff",
+        "answer": {
+          "value": 297,
+          "label": "297 cm³"
+        }
+      }
+    },
+    {
+      "id": "30e7f47a-017a-4b12-bf4f-55a7e855695a",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2\\pi r = 2 \\cdot 3 \\cdot 1\\,000 = 6\\,000\\ \\text{m}",
+              "f": "2*3*1000",
+              "value": "6000",
+              "note": "comprimento da ciclovia"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2 \\cdot 200 = 400\\ \\text{m}",
+              "f": "2*200",
+              "value": "400",
+              "note": "trecho protegido por policial"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{6\\,000}{400} = 15",
+              "f": "6000/400",
+              "value": "15"
+            }
+          ],
+          "answer": "15"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "5245bb7a",
+        "answer": {
+          "value": 15,
+          "label": "15 policiais"
+        }
+      }
+    },
+    {
+      "id": "3c7165ec-73c4-470a-947a-1038b82e6620",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{0{,}80}{0{,}01} = 80\\ \\text{cm}^{2}",
+              "f": "0.8/0.01",
+              "value": "80",
+              "note": "área máxima permitida"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{triângulo: } \\dfrac{144 \\cdot 1{,}7}{4} = 61{,}2",
+              "f": "144*1.7/4",
+              "value": "61.2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{quadrado: } 8^{2} = 64",
+              "f": "8^2",
+              "value": "64"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{retângulo: } 11 \\cdot 8 = 88",
+              "f": "11*8",
+              "value": "88"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{hexágono: } 6 \\cdot \\dfrac{36 \\cdot 1{,}7}{4} = 91{,}8",
+              "f": "6*36*1.7/4",
+              "value": "91.8"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\text{círculo: } 3 \\cdot 5^{2} = 75",
+              "f": "3*5^2",
+              "value": "75"
+            },
+            {
+              "step": "s7",
+              "kind": "note",
+              "tex": "88 > 80\\ \\text{e}\\ 91{,}8 > 80",
+              "note": "retângulo e hexágono passam do limite"
+            }
+          ],
+          "answer": "75"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              "s5",
+              "s6"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "abea9973",
+        "answer": {
+          "value": 75,
+          "label": "círculo, 75 cm²"
+        }
+      }
+    },
+    {
+      "id": "536581a1-d118-4de6-97b9-bc17d327fa19",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "110 \\times 75 = 8\\,250\\ \\text{m}^{2}",
+              "f": "110*75",
+              "value": "8250",
+              "note": "área antiga"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "105 \\times 68 = 7\\,140\\ \\text{m}^{2}",
+              "f": "105*68",
+              "value": "7140",
+              "note": "área nova"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "8\\,250 - 7\\,140 = 1\\,110\\ \\text{m}^{2}",
+              "f": "8250-7140",
+              "value": "1110"
+            }
+          ],
+          "answer": "1110"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f290a0d8",
+        "answer": {
+          "value": 1110,
+          "label": "1 110 m²"
+        }
+      }
+    },
+    {
+      "id": "57f2b359-70a3-4c57-ba6a-2130b6dccfe8",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "h = \\dfrac{\\ell\\sqrt{3}}{2},\\quad h = 8\\ \\text{cm}",
+              "note": "altura do triângulo equilátero"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\ell = \\dfrac{16}{\\sqrt{3}} = \\dfrac{16\\sqrt{3}}{3}",
+              "f": "16/sqrt(3)",
+              "value": "16*sqrt(3)/3"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "3\\ell = 16\\sqrt{3} \\approx 16 \\cdot 1{,}7 = 27{,}2\\ \\text{cm}",
+              "f": "16*1.7",
+              "value": "27.2",
+              "note": "perímetro; valor mais próximo: 27,18"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "\\approx 27{,}18\\ \\text{cm}",
+              "note": "alternativa D"
+            }
+          ],
+          "answer": "27.18"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "202b473d",
+        "answer": {
+          "value": 27.18,
+          "label": "27,18 cm"
+        }
+      }
+    },
+    {
+      "id": "a0f8fe29-e7ed-431a-a3fc-c7e4ab2cbcfa",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{perímetro} = k",
+              "note": "mesmo cerco para as três formas"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{triângulo: } \\dfrac{\\sqrt{3}}{4}\\left(\\dfrac{k}{3}\\right)^{2} = \\dfrac{k^{2}\\sqrt{3}}{36}",
+              "f": "sqrt(3)/4*(k/3)^2",
+              "value": "k^2*sqrt(3)/36"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{quadrado: } \\left(\\dfrac{k}{4}\\right)^{2} = \\dfrac{k^{2}}{16}",
+              "f": "(k/4)^2",
+              "value": "k^2/16"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{hexágono: } 6 \\cdot \\dfrac{\\sqrt{3}}{4}\\left(\\dfrac{k}{6}\\right)^{2} = \\dfrac{k^{2}\\sqrt{3}}{24}",
+              "f": "6*sqrt(3)/4*(k/6)^2",
+              "value": "k^2*sqrt(3)/24"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{\\sqrt{3}}{24} \\approx 0{,}072 > \\dfrac{1}{16} = 0{,}0625 > 0{,}048",
+              "f": "sqrt(3)/24",
+              "value": "0.072",
+              "dp": 3,
+              "note": "coeficientes de k²: hexágono é o maior"
+            }
+          ],
+          "answer": "k^2*sqrt(3)/24",
+          "vars": {
+            "k": "12"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "1b85ce04",
+        "answer": {
+          "value": 10.392304845413262,
+          "label": "hexágono, k²√3/24"
+        }
+      }
+    },
+    {
+      "id": "a5fe8643-a617-401b-ac3c-49988a30662b",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\ell = \\sqrt{400} = 20\\ \\text{m}",
+              "f": "sqrt(400)",
+              "value": "20",
+              "note": "lado da piscina"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "20 + 2 \\cdot 5 = 30\\ \\text{m}",
+              "f": "20+2*5",
+              "value": "30",
+              "note": "lado do quadrado externo"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "30^{2} = 900\\ \\text{m}^{2}",
+              "f": "30^2",
+              "value": "900",
+              "note": "área total, com a piscina"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "900 - 400 = 500\\ \\text{m}^{2}",
+              "f": "900-400",
+              "value": "500"
+            }
+          ],
+          "answer": "500"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "9dfe9968",
+        "answer": {
+          "value": 500,
+          "label": "500 m²"
+        }
+      }
+    },
+    {
+      "id": "ae5e9290-ba8a-4081-b91f-e41fb734e740",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "A = \\dfrac{\\alpha}{360} \\cdot \\pi R^{2},\\quad \\pi = 3",
+              "note": "área do setor circular"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{I: } \\dfrac{15}{360} \\cdot 3 \\cdot 20^{2} = 50",
+              "f": "15/360*3*400",
+              "value": "50"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{II: } \\dfrac{30}{360} \\cdot 3 \\cdot 22^{2} = 121",
+              "f": "30/360*3*484",
+              "value": "121"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{III: } \\dfrac{40}{360} \\cdot 3 \\cdot 12^{2} = 48",
+              "f": "40/360*3*144",
+              "value": "48"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{IV: } \\dfrac{60}{360} \\cdot 3 \\cdot 16^{2} = 128",
+              "f": "60/360*3*256",
+              "value": "128"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{V: } \\dfrac{90}{360} \\cdot 3 \\cdot 10^{2} = 75",
+              "f": "90/360*3*100",
+              "value": "75"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "\\text{II, IV e V: pelo menos } 70\\ \\text{m}^{2}",
+              "note": "o menor deles é o V: 75 m²"
+            }
+          ],
+          "answer": "75"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "b7e1a14b",
+        "answer": {
+          "value": 75,
+          "label": "tipo V, 75 m²"
+        }
+      }
+    },
+    {
+      "id": "d0b41a2f-64e7-4132-afbc-6a84506a9847",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2 \\cdot 15 = 30\\ \\text{cm}",
+              "f": "2*15",
+              "value": "30",
+              "note": "dois segmentos tangentes"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{150}{360} \\cdot 2 \\cdot 3 \\cdot 4 = 10\\ \\text{cm}",
+              "f": "150/360*2*3*4",
+              "value": "10",
+              "note": "arco na polia menor"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{210}{360} \\cdot 2 \\cdot 3 \\cdot 8 = 28\\ \\text{cm}",
+              "f": "210/360*2*3*8",
+              "value": "28",
+              "note": "arco na polia maior: 360° − 150°"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "30 + 10 + 28 = 68\\ \\text{cm}",
+              "f": "30+10+28",
+              "value": "68"
+            }
+          ],
+          "answer": "68"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "8ec60670",
+        "answer": {
+          "value": 68,
+          "label": "68 cm"
+        }
+      }
+    },
+    {
+      "id": "1a07b135-e3e8-4029-bb28-5c6b46aa9027",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "20\\,000\\ \\text{cm}^{3} = 20\\,000\\ \\text{mL}",
+              "f": "20000*1",
+              "value": "20000",
+              "note": "1 cm³ = 1 mL"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "20\\,000 \\div 250 = 80",
+              "f": "20000/250",
+              "value": "80",
+              "note": "taças por pote"
+            }
+          ],
+          "answer": "80"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "44f2afbc",
+        "answer": {
+          "value": 80,
+          "label": "80 taças"
+        }
+      }
+    },
+    {
+      "id": "311671b9-3ff1-48b5-9770-3693c0504432",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "5 \\cdot 281 = 1\\,405\\ \\text{s}",
+              "f": "5*281",
+              "value": "1405",
+              "note": "tempo total com pace 281 s/km"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "1\\,405 - 1\\,132 = 273\\ \\text{s}",
+              "f": "1405-1132",
+              "value": "273",
+              "note": "duração do 5º trecho"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "288 - 273 = 15\\ \\text{s}",
+              "f": "288-273",
+              "value": "15",
+              "note": "menor que o 4º trecho"
+            }
+          ],
+          "answer": "15"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "90620a06",
+        "answer": {
+          "value": 15,
+          "label": "15 s"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
