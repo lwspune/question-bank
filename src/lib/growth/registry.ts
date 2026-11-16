@@ -637,7 +637,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     rule: "Holds while nothing fails on quota. Revisit if the cap starts holding back mail students need.",
     liveSince: "2026-10-01",
     readout: "email-cap",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-16: no send failed on the quota in the last 7 days; the busiest day was 72 against the cap of 70. Kept: the 70-a-day cap stays as a standing rule (owner, 2026-11-16). Revisit if a job starts holding back mail students need.",
   },
   {
     id: "second-page",
@@ -663,7 +665,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     rule: `Keep it if ${BOX_BUY_MIN_SALES}+ passes sell through the box by the check date; otherwise look at the step where buyers stop before touching the price.`,
     liveSince: "2026-10-04",
     readout: "box-buy",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-16: 10 passes were bought 4 Oct to 1 Nov whose last checkout opened from a download box (gate teacher), against a bar of 2. Kept (owner, 2026-11-16). The per-100-visitors figure needs Vercel and was not read.",
   },
   {
     id: "resource-chips",
@@ -730,7 +734,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     rule: `Keep it if ${SPECIFIC_OFFER_CHECKOUT_PCT}%+ of students shown the offer on these boxes open checkout by the check date; if it holds, try the same lead on mocks. Below that, go back to the generic list.`,
     liveSince: "2026-10-15",
     readout: "specific-offer",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-16: 3 of 29 students shown the board-paper and homework offers opened checkout (10%), under the 20% bar; the generic /browse list got 28 of 159 (18%). Small numbers, but under the rule: go back to the generic list on those boxes (owner, 2026-11-16). The code change is separate, not yet made.",
   },
   {
     id: "paper-pages",
@@ -743,7 +749,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     rule: `Keep building on them if ${PAPER_PAGES_SIGNUPS_KEEP}+ signups first land on one, or ChatGPT names us in ${PAPER_PAGES_CHATGPT_KEEP}+ of the five prompts, by the check date; otherwise leave them as they are.`,
     liveSince: "2026-10-15",
     readout: "paper-pages",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-16: 105 signups first landed on a past paper page or list, 15 Oct to 12 Nov (bar 10). Kept: build on the paper pages (owner, 2026-11-16).",
   },
   {
     id: "notes-titles",
@@ -756,7 +764,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     rule: `Keep the wording if ${NOTES_TITLES_SHARE_KEEP_PCT}%+ of signups first land on a notes page, or ChatGPT names us in ${NOTES_TITLES_CHATGPT_KEEP}+ of the five prompts, by the check date; otherwise look again at what the winning pages say.`,
     liveSince: "2026-10-15",
     readout: "notes-titles",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-16: 154 of 1,929 signups (8.0%) first landed on a notes page, 15 Oct to 12 Nov, against 3.9% before and a bar of 6%. Kept (owner, 2026-11-16). Notes chapters were added in the same weeks, so not all of the rise is the titles.",
   },
   {
     id: "practice-tests",
@@ -769,7 +779,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     rule: `Keep it and build on it if students start ${PRACTICE_TESTS_STARTED_KEEP}+ practice tests and answer ${PRACTICE_TESTS_ANSWERED_KEEP_PCT}%+ of them on average by the check date; otherwise read the funnel for where students stop.`,
     liveSince: "2026-10-15",
     readout: "practice-tests",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-16: 24 practice tests started 15 Oct to 12 Nov (bar 30), 51.5% of each answered on average (bar 50%); 1 more started since. Under the rule on starts: left as it is, nothing more built on it (owner, 2026-11-16).",
   },
   {
     id: "practice-friends",
@@ -783,7 +795,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-16",
     windowDays: 14,
     readout: "practice-friends",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-16: 8 practice tests sent (6 in the two weeks, bar 10) and no friend ever started a copy. Remove the Practise together box from the practice-test result page (owner, 2026-11-16). The code change is separate, not yet made.",
   },
   {
     id: "mock-together",
@@ -934,7 +948,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-19",
     windowDays: 14,
     readout: "v-explain",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-16: 102 students got an explanation in the two weeks (bar 20), 199 to date. Only 3 similar-question cards were answered (2 right), too few to judge that half. Kept (owner, 2026-11-16).",
   },
   {
     id: "v-strategy",
@@ -947,7 +963,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-19",
     windowDays: 14,
     readout: "v-strategy",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-16: 15 replies used exam_strategy in the two weeks (bar 10), 22 to date; none of 8 weightage asks got a no-data reply. Kept (owner, 2026-11-16).",
   },
   {
     id: "v-plan",
@@ -960,7 +978,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-19",
     windowDays: 14,
     readout: "v-plan",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-16: 17 students made a plan in the two weeks (bar 10), but 25 of 104 tasks were done (24%, bar 30%) over 20 plans whose week ended. Chapter days are the skipped kind: 6 of 68, against drills 8 of 16 and mocks 11 of 20. Decided (owner, 2026-11-16): make chapter days smaller or drop them before anything else. The Plan my week button was already replaced by How's my progress.",
   },
   {
     id: "v-progress",
@@ -1218,7 +1238,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-31",
     windowDays: 14,
     readout: "visual-solutions",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-16 (npm run visuals:usage): 1,874 of 2,387 shown animations played to the end (79%, bar 50%) and 167 switched to Still (7%, limit 20%). No surface or exam passes 20% on real numbers (NDA 3 of 5, MHT-CET 19%). Kept: Animated stays the default everywhere (owner, 2026-11-16). On /drill only 30% finish, worth a look.",
   },
   {
     id: "self-mark",
