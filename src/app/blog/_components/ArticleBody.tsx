@@ -121,7 +121,7 @@ export default function ArticleBody({ body }: { body: string }) {
                     <tr>
                       {b.headers.map((h, j) => (
                         <th key={j} scope="col" className={`px-3 py-2 text-left font-semibold ${j > 0 ? "border-l" : ""}`}>
-                          <Text text={h} />
+                          <Inlines runs={h} />
                         </th>
                       ))}
                     </tr>
@@ -131,7 +131,7 @@ export default function ArticleBody({ body }: { body: string }) {
                       <tr key={r} className="border-t">
                         {row.map((cell, c) => (
                           <td key={c} className={`px-3 py-2 align-top ${c > 0 ? "border-l" : ""}`}>
-                            <Text text={cell} />
+                            <Inlines runs={cell} />
                           </td>
                         ))}
                       </tr>

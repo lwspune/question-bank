@@ -134,7 +134,8 @@ export type ArticleBlock =
   | { kind: "ul"; items: Inline[][] }
   | { kind: "ol"; items: Inline[][] }
   | { kind: "note"; inlines: Inline[] }
-  | { kind: "table"; headers: string[]; rows: string[][] };
+  // Cells are runs like a paragraph's, so a link in a cell is a link (2026-11-16: it printed as raw markdown).
+  | { kind: "table"; headers: Inline[][]; rows: Inline[][][] };
 
 export function headingId(text: string): string {
   return slugify(text) || "section";
@@ -183,7 +184,9 @@ export function parseArticleBody(body: string): ArticleBlock[] {
       if (parsed.some((b) => b.kind === "table")) {
         flush();
         for (const b of parsed) {
-          if (b.kind === "table") blocks.push({ kind: "table", headers: b.headers, rows: b.rows });
+          if (b.kind === "table") {
+            blocks.push({ kind: "table", headers: b.headers.map(splitLinks), rows: b.rows.map((r) => r.map(splitLinks)) });
+          }
           else if (b.text.trim()) blocks.push({ kind: "p", inlines: splitLinks(b.text.trim().replace(/\n/g, " ")) });
         }
       } else {

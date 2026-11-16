@@ -61,7 +61,13 @@ async function main() {
   if (article.title.length > 60) warnings.push(`Title is ${article.title.length} characters; Google shows about 60.`);
   const blocks = parseArticleBody(article.body);
   const links = blocks.flatMap((b) =>
-    b.kind === "p" || b.kind === "note" ? b.inlines : b.kind === "ul" || b.kind === "ol" ? b.items.flat() : []
+    b.kind === "p" || b.kind === "note"
+      ? b.inlines
+      : b.kind === "ul" || b.kind === "ol"
+        ? b.items.flat()
+        : b.kind === "table"
+          ? [...b.headers.flat(), ...b.rows.flat(2)]
+          : []
   );
   const internal = links.filter((l) => l.kind === "link" && !l.external).length;
   if (internal === 0) warnings.push("No link into the site (/mock, /question-papers, /notes...): add at least one.");
