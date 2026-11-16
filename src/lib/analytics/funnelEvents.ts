@@ -227,6 +227,16 @@ export const FUNNEL_EVENTS = [
    * Once per launch; no props. The one count that covers iPhone installs too.
    */
   "app_opened",
+  /**
+   * A score calculator check finished (2026-11-16, growth registry
+   * "score-calculator"); props: calc ("jee-main" | "ssc-cgl" ...), outcome
+   * ("scored" | "error"). Page views of /score-calculator/<calc> are its scale.
+   */
+  "score_calc_check",
+  /** The score was shared from the result; props: calc, via ("share" | "whatsapp"). */
+  "score_calc_share",
+  /** "Tell me when the key is out" was tapped; props: calc, outcome ("saved" | "signin"). */
+  "score_calc_alert",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];

@@ -54,6 +54,9 @@ describe("FUNNEL_EVENTS", () => {
       "app_install_click",
       "app_installed",
       "app_opened",
+      "score_calc_check",
+      "score_calc_share",
+      "score_calc_alert",
     ]);
   });
 
