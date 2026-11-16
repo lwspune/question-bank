@@ -1,12 +1,24 @@
 import { Ban } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { cancelledLine, type AltLang } from "@/lib/i18n/bilingual";
 
 /**
  * The officially-cancelled notice. The English note is the row's own
- * `cancelled_note` (it names the sitting); the Marathi line is fixed, so the
- * notice reads in both languages whatever the viewer chose.
+ * `cancelled_note` (it names the sitting); a second, fixed line repeats it in
+ * the question's own second print language (`alt`: Marathi for MPSC, Hindi for
+ * RAS and SSC), so the notice reads in both languages whatever the viewer
+ * chose. An English-only question gets no second line.
  */
-export default function CancelledNotice({ note, className }: { note: string; className?: string }) {
+export default function CancelledNotice({
+  note,
+  alt,
+  className,
+}: {
+  note: string;
+  alt: AltLang | null;
+  className?: string;
+}) {
+  const second = cancelledLine(alt);
   return (
     <div
       role="note"
@@ -20,7 +32,7 @@ export default function CancelledNotice({ note, className }: { note: string; cla
         <p>
           <strong>Officially cancelled.</strong> {note}
         </p>
-        <p lang="mr">हा प्रश्न आयोगाने अंतिम उत्तरतालिकेत रद्द केला आहे; कोणताही पर्याय बरोबर नाही.</p>
+        {second && <p lang={second.lang}>{second.text}</p>}
       </div>
     </div>
   );

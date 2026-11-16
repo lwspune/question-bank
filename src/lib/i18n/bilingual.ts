@@ -215,3 +215,18 @@ export function translationsFromRows(
   }
   return Object.keys(out).length ? out : undefined;
 }
+
+const CANCELLED_LINES: Record<AltLang, string> = {
+  mr: "हा प्रश्न आयोगाने अंतिम उत्तरतालिकेत रद्द केला आहे; कोणताही पर्याय बरोबर नाही.",
+  hi: "यह प्रश्न आयोग ने अंतिम उत्तर कुंजी में रद्द कर दिया है; कोई भी विकल्प सही नहीं है।",
+};
+
+/**
+ * The officially-cancelled notice's second line, in the question's own second
+ * print language, or null for an English-only question. Until 2026-11-16 the
+ * notice always printed the Marathi line, which showed Marathi on cancelled
+ * CAPF, UPSC and RAS (Hindi) items too.
+ */
+export function cancelledLine(alt: AltLang | null): { lang: AltLang; text: string } | null {
+  return alt ? { lang: alt, text: CANCELLED_LINES[alt] } : null;
+}

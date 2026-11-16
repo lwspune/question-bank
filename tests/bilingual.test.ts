@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   altLangOf,
+  cancelledLine,
   effectiveLang,
   hasTranslation,
   isLangChecked,
@@ -277,5 +278,25 @@ describe("Hindi translations", () => {
     expect(isLangChecked("hi", "hi", "hi")).toBe(true);
     expect(isLangChecked("en", "mr", "hi")).toBe(false);
     expect(isLangChecked("both", "both", "hi")).toBe(true);
+  });
+});
+
+describe("cancelledLine", () => {
+  it("says the question was cancelled in Marathi for a Marathi print", () => {
+    expect(cancelledLine("mr")).toEqual({
+      lang: "mr",
+      text: "हा प्रश्न आयोगाने अंतिम उत्तरतालिकेत रद्द केला आहे; कोणताही पर्याय बरोबर नाही.",
+    });
+  });
+
+  it("says it in Hindi for a Hindi print (RAS, SSC)", () => {
+    const line = cancelledLine("hi");
+    expect(line?.lang).toBe("hi");
+    expect(line?.text).toMatch(/रद्द/);
+    expect(line?.text).not.toMatch(/आयोगाने/); // not the Marathi sentence
+  });
+
+  it("adds no second line to an English-only question (CAPF, UPSC)", () => {
+    expect(cancelledLine(null)).toBeNull();
   });
 });

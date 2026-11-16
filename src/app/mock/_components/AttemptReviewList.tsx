@@ -11,7 +11,7 @@ import type { ReviewItem } from "@/lib/mocks/service";
 import AskVButton from "@/components/chat/AskVButton";
 import { askedFromReview } from "@/lib/chat/askVEvent";
 import { BilingualOption, BilingualSolution, BilingualStem, QuestionLangSwitch } from "@/components/i18n/BilingualText";
-import { altLangOfAny } from "@/lib/i18n/bilingual";
+import { altLangOf, altLangOfAny } from "@/lib/i18n/bilingual";
 import CancelledNotice from "@/components/question/CancelledNotice";
 import SolutionViews from "@/components/visuals/SolutionViews";
 import RepeatLineView from "@/components/question/RepeatLineView";
@@ -122,7 +122,7 @@ function ReviewCard({
           <VerdictBadge verdict={item.verdict} partial={item.partial} marks={item.marksEarned} />
         )}
       </div>
-      {item.cancelledNote && <CancelledNotice note={item.cancelledNote} className="mt-2" />}
+      {item.cancelledNote && <CancelledNotice note={item.cancelledNote} alt={altLangOf(item)} className="mt-2" />}
       {item.grace && !item.cancelledNote && (
         <p className="mt-2 rounded-md border border-amber-300 bg-amber-50 px-3 py-2 text-xs text-amber-800 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-300">
           Every candidate gets full marks for this question, whatever they answered: the exam

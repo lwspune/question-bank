@@ -58,7 +58,7 @@ import AskVButton from "@/components/chat/AskVButton";
 import { ItemStatChip, ItemStatDetail } from "./ItemStats";
 import CancelledNotice from "@/components/question/CancelledNotice";
 import SolutionViews from "@/components/visuals/SolutionViews";
-import { optionVersions, solutionVersions, stemVersions } from "@/lib/i18n/bilingual";
+import { altLangOf, optionVersions, solutionVersions, stemVersions } from "@/lib/i18n/bilingual";
 import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
 import { singleItemStatKey, type ItemStatAggregate } from "@/lib/itemStats/types";
 import SelfMarkButtons from "@/components/reveal/SelfMarkButtons";
@@ -525,7 +525,7 @@ export default function QuestionCard({
               </div>
             )}
 
-            {cancelled && <CancelledNotice note={question.cancelledNote!} />}
+            {cancelled && <CancelledNotice note={question.cancelledNote!} alt={altLangOf(question)} />}
 
             {!isOpenFormat && (
             <ol className="space-y-2">
