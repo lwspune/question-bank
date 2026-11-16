@@ -1,4 +1,5 @@
 /** Display helpers for the score calculator's result (pure; client and server). */
+import { SITE_URL } from "@/lib/brand";
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -22,7 +23,7 @@ export function formatMarks(n: number): string {
 }
 
 export function scoreShareText(p: { title: string; total: number; max: number; keyStatus: string; slug: string }): string {
-  const url = `https://www.pyqvault.com/score-calculator/${p.slug}?utm_source=share&utm_medium=score&utm_campaign=score-calc`;
+  const url = `${SITE_URL}/score-calculator/${p.slug}?utm_source=share&utm_medium=score&utm_campaign=score-calc`;
   const key = p.keyStatus === "final" ? "final" : "provisional";
   return `I scored ${formatMarks(p.total)}/${formatMarks(p.max)} in ${p.title} on NTA's ${key} key. Check yours in 10 seconds: ${url}`;
 }
