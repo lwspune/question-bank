@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Reads the /dashboard/students roster through the get_student_roster RPC
  * (migration 0098) and maps it onto the view-model.
  *
@@ -12,6 +12,8 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { displayName, providerLabel } from "./derive";
 import type { StudentRosterRow } from "./roster";
+import { checkInExamSlug, countMockExams } from "./checkIn";
+import { getExamByName } from "@/lib/exam/examContext";
 
 /** One row as the RPC returns it (snake_case, straight from Postgres). */
 export type RosterRpcRow = {
@@ -38,7 +40,7 @@ export type RosterRpcRow = {
   last_active: string | null;
 };
 
-/** Postgres `numeric` arrives over PostgREST as a string — coerce, keeping null as null. */
+/** Postgres `numeric` arrives over PostgREST as a string â€” coerce, keeping null as null. */
 function num(v: number | string | null): number | null {
   if (v === null) return null;
   const n = typeof v === "string" ? Number(v) : v;
@@ -46,6 +48,41 @@ function num(v: number | string | null): number | null {
 }
 
 const PAGE = 1000;
+
+/** A to-one embed: PostgREST returns an object, but the untyped client infers an array. */
+type Embedded<T> = T | T[] | null;
+type FinishedMockRow = { user_id: string; mock_tests: Embedded<{ exams: Embedded<{ name: string }> }> };
+
+function one<T>(v: Embedded<T>): T | null {
+  return Array.isArray(v) ? (v[0] ?? null) : v;
+}
+
+/**
+ * Every finished mock as (student, exam), for the check-in message's exam. Paged
+ * like the roster: ~1,800 rows today, past the 1000-row cap. Two columns each,
+ * so the read stays small however long the table grows.
+ */
+async function fetchFinishedMockExams(db: SupabaseClient): Promise<{ userId: string; examSlug: string }[]> {
+  const out: { userId: string; examSlug: string }[] = [];
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await db
+      .from("mock_attempts")
+      .select("user_id, mock_tests!inner(exams!inner(name))")
+      .not("submitted_at", "is", null)
+      .order("id")
+      .range(from, from + PAGE - 1);
+    if (error) throw new Error(`fetchFinishedMockExams: ${error.message}`);
+    const batch = (data ?? []) as FinishedMockRow[];
+    for (const r of batch) {
+      const test = one(r.mock_tests);
+      // The DB names an exam; the registry maps that name to the slug the message reads.
+      const slug = getExamByName(test ? one(test.exams)?.name : null)?.slug;
+      if (slug) out.push({ userId: r.user_id, examSlug: slug });
+    }
+    if (batch.length < PAGE) break;
+  }
+  return out;
+}
 
 export async function fetchStudentRoster(db: SupabaseClient): Promise<StudentRosterRow[]> {
   // Paged in 1000-row windows: a set-returning RPC is subject to the same PostgREST
@@ -63,6 +100,8 @@ export async function fetchStudentRoster(db: SupabaseClient): Promise<StudentRos
     if (batch.length < PAGE) break;
   }
 
+  const mockExams = countMockExams(await fetchFinishedMockExams(db));
+
   return raw
     .map((r) => ({
       id: r.user_id,
@@ -75,6 +114,7 @@ export async function fetchStudentRoster(db: SupabaseClient): Promise<StudentRos
       city: r.city,
       stage: r.stage,
       targetExams: r.target_exams ?? [],
+      checkInExam: checkInExamSlug(mockExams.get(r.user_id), r.target_exams ?? []),
       whatsappOptIn: r.whatsapp_opt_in,
       mocksSubmitted: r.mocks_submitted,
       mocksStarted: r.mocks_started,
