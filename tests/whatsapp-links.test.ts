@@ -45,6 +45,7 @@ const SURFACES = [
   join("src", "app", "dashboard", "students", "[id]", "page.tsx"),
   join("src", "app", "superadmin", "TeacherRequests.tsx"),
   join("src", "app", "superadmin", "ContactMessages.tsx"),
+  join("src", "app", "dashboard", "classes", "ClassLeadsTable.tsx"),
 ];
 
 function sourcesUnder(dir: string, out: string[] = []): string[] {

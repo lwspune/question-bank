@@ -461,6 +461,11 @@ export const FLASHCARDS_ANSWERS_PER_OPEN_KEEP = 3;
 export const TUTOR_STUDENT_YES_KEEP = 20;
 /** "tutor-price": answers each price needs before the three are compared (below it, run 2 more weeks). */
 export const TUTOR_PRICE_MIN_ANSWERS = 15;
+/**
+ * "offline-classes": Pune leads in 4 weeks for the header Classes button to stay.
+ * Before it, 1 of 88 tutoring Yes answers was someone in Pune open to offline.
+ */
+export const CLASS_LEADS_PUNE_KEEP = 10;
 
 /** The ISO date `days` (by default `EXPERIMENT_WINDOW_DAYS`) after `liveSince`. */
 export function checkOn(liveSince: string, days: number = EXPERIMENT_WINDOW_DAYS): string {
@@ -540,7 +545,8 @@ export type Readout =
   | "blog-posts"
   | "notes-drill-panel"
   | "gulf-price"
-  | "enem-interest";
+  | "enem-interest"
+  | "offline-classes";
 
 export type Experiment = {
   id: string;
@@ -1360,7 +1366,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-27",
     windowDays: 21,
     readout: "tutor-interest",
-    status: "running",
+    status: "decided",
+    decision:
+      "Cleared the bar (52 student Yes by 7 Nov against 20), but 75 of 88 Yes answers asked for ONLINE tutoring, and the owner decided online tutoring is too hard to build (2026-11-16). Only 13 were open to offline, 1 of them in Pune. The Tutor button became Classes: an interest form for the owner's offline classes in Pune (experiment offline-classes). /tutor redirects there; the answers stay on /dashboard/tutor.",
   },
   {
     id: "tutor-price",
@@ -1374,6 +1382,22 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-07",
     windowDays: 21,
     readout: "tutor-price",
+    status: "decided",
+    decision:
+      "Ended early on 2026-11-16, 12 days before its check date, when the owner dropped 1:1 online tutoring: the price no longer decides anything. The answers given so far stay readable on /dashboard/tutor. The /me price card went with it.",
+  },
+  {
+    id: "offline-classes",
+    title: "Offline classes in Pune: who asks for a call?",
+    change:
+      "The header's Tutor button became Classes. /classes asks which course (NDA, CDS, AFCAT, MHT-CET, JEE, 10th Board, 12th Board, SSC CGL; one or more), Pune or another city (Pune first), an optional name and a mobile with consent, and promises a call within 2 days. Anyone can send it, signed in or not; one lead per mobile. Leads are listed Pune first on /dashboard/classes with WhatsApp, a Called tick and a CSV.",
+    why: "The owner runs offline classes in Pune and wants to fill them. The 1:1 tutoring check showed demand, but mostly for online tutoring and from outside Pune (15 of about 3,050 student profiles name Pune), so this asks for something the team can act on: a number to call about a named course.",
+    metric:
+      "Leads per week from class_interest (migration 0265), Pune vs other, by course; header Classes taps (classes_link_click) in Vercel by hand. Read with the team: of the Pune leads called, how many came for a demo or joined",
+    rule: `Keep the button if it brings ${CLASS_LEADS_PUNE_KEEP}+ Pune leads in 4 weeks; below that, keep the form but take the button out of the header and link it only from Pune-facing pages.`,
+    liveSince: "2026-11-16",
+    windowDays: 28,
+    readout: "offline-classes",
     status: "running",
   },
   {
