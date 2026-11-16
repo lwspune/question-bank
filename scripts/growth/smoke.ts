@@ -333,6 +333,10 @@ async function main() {
         // Read by hand: answers, the answer rate per box and the behaviour rule's precision (migration 0258).
         line = "by hand: scripts/profile/teacher-student-readout.sql";
         break;
+      case "blog-posts":
+        // Read by hand: signups by the kind of article they landed on (migration 0263), and Search Console clicks.
+        line = "by hand: scripts/blog/readout.sql + Search Console clicks on /blog and /exams/*/syllabus";
+        break;
       case "enem-interest":
         // Read by hand: target_exams containing 'enem', and their ENEM mock attempts / answers.
         line = "by hand: students with enem in target_exams, and their ENEM mocks and answers";
