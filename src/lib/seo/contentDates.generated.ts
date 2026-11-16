@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 570
+ * Entries: 584
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -372,6 +372,20 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/neet-botany/plant-kingdom": "2026-11-15T01:44:07+05:30",
   "/notes/neet-botany/respiration": "2026-11-15T02:09:20+05:30",
   "/notes/neet-botany/sexual-reproduction": "2026-11-15T02:09:20+05:30",
+  "/notes/neet-chemistry/chemical-bonding": "2026-11-16T11:20:25+05:30",
+  "/notes/neet-physics/alternating-current": "2026-11-16T11:20:25+05:30",
+  "/notes/neet-physics/current-electricity": "2026-11-16T11:20:25+05:30",
+  "/notes/neet-physics/dual-nature": "2026-11-16T11:20:25+05:30",
+  "/notes/neet-physics/electromagnetic-waves": "2026-11-16T11:20:25+05:30",
+  "/notes/neet-physics/electrostatic-potential": "2026-11-16T11:20:25+05:30",
+  "/notes/neet-physics/gravitation": "2026-11-16T11:20:25+05:30",
+  "/notes/neet-physics/laws-of-motion": "2026-11-16T11:20:25+05:30",
+  "/notes/neet-physics/moving-charges-and-magnetism": "2026-11-16T11:20:25+05:30",
+  "/notes/neet-physics/oscillations": "2026-11-16T11:20:25+05:30",
+  "/notes/neet-physics/ray-optics": "2026-11-16T11:20:25+05:30",
+  "/notes/neet-physics/rotational-motion": "2026-11-16T11:20:25+05:30",
+  "/notes/neet-physics/semiconductor-electronics": "2026-11-16T11:20:25+05:30",
+  "/notes/neet-physics/units-and-measurements": "2026-11-16T11:20:25+05:30",
   "/notes/neet-zoology/animal-kingdom": "2026-11-15T12:08:04+05:30",
   "/notes/neet-zoology/biomolecules": "2026-11-15T13:54:16+05:30",
   "/notes/neet-zoology/biotech-applications": "2026-11-15T13:54:16+05:30",

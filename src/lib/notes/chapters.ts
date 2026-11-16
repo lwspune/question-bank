@@ -2851,6 +2851,106 @@ import {
   NEET_PH_LM_NOTES,
   NEET_PH_LM_SLUGS,
 } from "@/app/notes/neet-physics/laws-of-motion/_data";
+import {
+  NEET_PH_MS_CHAPTER,
+  NEET_PH_MS_NOTES,
+  NEET_PH_MS_SLUGS,
+} from "@/app/notes/neet-physics/motion-in-a-straight-line/_data";
+import {
+  NEET_PH_MP_CHAPTER,
+  NEET_PH_MP_NOTES,
+  NEET_PH_MP_SLUGS,
+} from "@/app/notes/neet-physics/motion-in-a-plane/_data";
+import {
+  NEET_PH_WE_CHAPTER,
+  NEET_PH_WE_NOTES,
+  NEET_PH_WE_SLUGS,
+} from "@/app/notes/neet-physics/work-energy-and-power/_data";
+import {
+  NEET_PH_SO_CHAPTER,
+  NEET_PH_SO_NOTES,
+  NEET_PH_SO_SLUGS,
+} from "@/app/notes/neet-physics/mechanical-properties-of-solids/_data";
+import {
+  NEET_PH_FL_CHAPTER,
+  NEET_PH_FL_NOTES,
+  NEET_PH_FL_SLUGS,
+} from "@/app/notes/neet-physics/mechanical-properties-of-fluids/_data";
+import {
+  NEET_PH_TP_CHAPTER,
+  NEET_PH_TP_NOTES,
+  NEET_PH_TP_SLUGS,
+} from "@/app/notes/neet-physics/thermal-properties-of-matter/_data";
+import {
+  NEET_PH_TD_CHAPTER,
+  NEET_PH_TD_NOTES,
+  NEET_PH_TD_SLUGS,
+} from "@/app/notes/neet-physics/thermodynamics/_data";
+import {
+  NEET_PH_KT_CHAPTER,
+  NEET_PH_KT_NOTES,
+  NEET_PH_KT_SLUGS,
+} from "@/app/notes/neet-physics/kinetic-theory/_data";
+import {
+  NEET_PH_WV_CHAPTER,
+  NEET_PH_WV_NOTES,
+  NEET_PH_WV_SLUGS,
+} from "@/app/notes/neet-physics/waves/_data";
+import {
+  NEET_PH_EF_CHAPTER,
+  NEET_PH_EF_NOTES,
+  NEET_PH_EF_SLUGS,
+} from "@/app/notes/neet-physics/electric-charges-and-fields/_data";
+import {
+  NEET_PH_MM_CHAPTER,
+  NEET_PH_MM_NOTES,
+  NEET_PH_MM_SLUGS,
+} from "@/app/notes/neet-physics/magnetism-and-matter/_data";
+import {
+  NEET_PH_EI_CHAPTER,
+  NEET_PH_EI_NOTES,
+  NEET_PH_EI_SLUGS,
+} from "@/app/notes/neet-physics/electromagnetic-induction/_data";
+import {
+  NEET_PH_AT_CHAPTER,
+  NEET_PH_AT_NOTES,
+  NEET_PH_AT_SLUGS,
+} from "@/app/notes/neet-physics/atoms/_data";
+import {
+  NEET_PH_NU_CHAPTER,
+  NEET_PH_NU_NOTES,
+  NEET_PH_NU_SLUGS,
+} from "@/app/notes/neet-physics/nuclei/_data";
+import {
+  NEET_PH_WO_CHAPTER,
+  NEET_PH_WO_NOTES,
+  NEET_PH_WO_SLUGS,
+} from "@/app/notes/neet-physics/wave-optics/_data";
+import {
+  NEET_CH_CC_CHAPTER,
+  NEET_CH_CC_NOTES,
+  NEET_CH_CC_SLUGS,
+} from "@/app/notes/neet-chemistry/coordination-compounds/_data";
+import {
+  NEET_CH_PB_CHAPTER,
+  NEET_CH_PB_NOTES,
+  NEET_CH_PB_SLUGS,
+} from "@/app/notes/neet-chemistry/p-block-elements/_data";
+import {
+  NEET_CH_AK_CHAPTER,
+  NEET_CH_AK_NOTES,
+  NEET_CH_AK_SLUGS,
+} from "@/app/notes/neet-chemistry/aldehydes-ketones-and-carboxylic-acids/_data";
+import {
+  NEET_CH_DF_CHAPTER,
+  NEET_CH_DF_NOTES,
+  NEET_CH_DF_SLUGS,
+} from "@/app/notes/neet-chemistry/d-and-f-block-elements/_data";
+import {
+  NEET_CH_HC_CHAPTER,
+  NEET_CH_HC_NOTES,
+  NEET_CH_HC_SLUGS,
+} from "@/app/notes/neet-chemistry/hydrocarbons/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -9161,6 +9261,171 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
   },
   {
     examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "motion-in-a-straight-line",
+    chipLabel: "Motion in a Straight Line notes",
+    chapter: NEET_PH_MS_CHAPTER,
+    notes: NEET_PH_MS_NOTES,
+    slugs: NEET_PH_MS_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "motion-in-a-plane",
+    chipLabel: "Motion in a Plane notes",
+    chapter: NEET_PH_MP_CHAPTER,
+    notes: NEET_PH_MP_NOTES,
+    slugs: NEET_PH_MP_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "work-energy-and-power",
+    chipLabel: "Work Energy and Power notes",
+    chapter: NEET_PH_WE_CHAPTER,
+    notes: NEET_PH_WE_NOTES,
+    slugs: NEET_PH_WE_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "mechanical-properties-of-solids",
+    chipLabel: "Solids notes",
+    chapter: NEET_PH_SO_CHAPTER,
+    notes: NEET_PH_SO_NOTES,
+    slugs: NEET_PH_SO_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "mechanical-properties-of-fluids",
+    chipLabel: "Fluids notes",
+    chapter: NEET_PH_FL_CHAPTER,
+    notes: NEET_PH_FL_NOTES,
+    slugs: NEET_PH_FL_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "thermal-properties-of-matter",
+    chipLabel: "Thermal Properties notes",
+    chapter: NEET_PH_TP_CHAPTER,
+    notes: NEET_PH_TP_NOTES,
+    slugs: NEET_PH_TP_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "thermodynamics",
+    chipLabel: "Thermodynamics notes",
+    chapter: NEET_PH_TD_CHAPTER,
+    notes: NEET_PH_TD_NOTES,
+    slugs: NEET_PH_TD_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "kinetic-theory",
+    chipLabel: "Kinetic Theory notes",
+    chapter: NEET_PH_KT_CHAPTER,
+    notes: NEET_PH_KT_NOTES,
+    slugs: NEET_PH_KT_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "waves",
+    chipLabel: "Waves notes",
+    chapter: NEET_PH_WV_CHAPTER,
+    notes: NEET_PH_WV_NOTES,
+    slugs: NEET_PH_WV_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "electric-charges-and-fields",
+    chipLabel: "Electric Charges and Fields notes",
+    chapter: NEET_PH_EF_CHAPTER,
+    notes: NEET_PH_EF_NOTES,
+    slugs: NEET_PH_EF_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "magnetism-and-matter",
+    chipLabel: "Magnetism and Matter notes",
+    chapter: NEET_PH_MM_CHAPTER,
+    notes: NEET_PH_MM_NOTES,
+    slugs: NEET_PH_MM_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "electromagnetic-induction",
+    chipLabel: "Electromagnetic Induction notes",
+    chapter: NEET_PH_EI_CHAPTER,
+    notes: NEET_PH_EI_NOTES,
+    slugs: NEET_PH_EI_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "atoms",
+    chipLabel: "Atoms notes",
+    chapter: NEET_PH_AT_CHAPTER,
+    notes: NEET_PH_AT_NOTES,
+    slugs: NEET_PH_AT_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "nuclei",
+    chipLabel: "Nuclei notes",
+    chapter: NEET_PH_NU_CHAPTER,
+    notes: NEET_PH_NU_NOTES,
+    slugs: NEET_PH_NU_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "wave-optics",
+    chipLabel: "Wave Optics notes",
+    chapter: NEET_PH_WO_CHAPTER,
+    notes: NEET_PH_WO_NOTES,
+    slugs: NEET_PH_WO_SLUGS,
+  },
+  {
+    examName: "NEET",
     subjectName: "Chemistry",
     subjectRoute: "neet-chemistry",
     subjectDisplay: "NEET Chemistry",
@@ -9169,6 +9434,61 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: NEET_CH_CB_CHAPTER,
     notes: NEET_CH_CB_NOTES,
     slugs: NEET_CH_CB_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Chemistry",
+    subjectRoute: "neet-chemistry",
+    subjectDisplay: "NEET Chemistry",
+    chapterSlug: "coordination-compounds",
+    chipLabel: "Coordination Compounds notes",
+    chapter: NEET_CH_CC_CHAPTER,
+    notes: NEET_CH_CC_NOTES,
+    slugs: NEET_CH_CC_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Chemistry",
+    subjectRoute: "neet-chemistry",
+    subjectDisplay: "NEET Chemistry",
+    chapterSlug: "p-block-elements",
+    chipLabel: "p-Block Elements notes",
+    chapter: NEET_CH_PB_CHAPTER,
+    notes: NEET_CH_PB_NOTES,
+    slugs: NEET_CH_PB_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Chemistry",
+    subjectRoute: "neet-chemistry",
+    subjectDisplay: "NEET Chemistry",
+    chapterSlug: "aldehydes-ketones-and-carboxylic-acids",
+    chipLabel: "Aldehydes, Ketones and Carboxylic Acids notes",
+    chapter: NEET_CH_AK_CHAPTER,
+    notes: NEET_CH_AK_NOTES,
+    slugs: NEET_CH_AK_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Chemistry",
+    subjectRoute: "neet-chemistry",
+    subjectDisplay: "NEET Chemistry",
+    chapterSlug: "d-and-f-block-elements",
+    chipLabel: "d- and f-Block Elements notes",
+    chapter: NEET_CH_DF_CHAPTER,
+    notes: NEET_CH_DF_NOTES,
+    slugs: NEET_CH_DF_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Chemistry",
+    subjectRoute: "neet-chemistry",
+    subjectDisplay: "NEET Chemistry",
+    chapterSlug: "hydrocarbons",
+    chipLabel: "Hydrocarbons notes",
+    chapter: NEET_CH_HC_CHAPTER,
+    notes: NEET_CH_HC_NOTES,
+    slugs: NEET_CH_HC_SLUGS,
   },
 ];
 

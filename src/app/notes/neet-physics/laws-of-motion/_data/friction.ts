@@ -27,23 +27,23 @@ export const NEET_PH_LM_FRICTION_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Masses of 3 kg and 2 kg hang from the two ends of a light string over a smooth fixed pulley. Find the acceleration and the tension (g = 10 m/s²).",
+          "Masses of 5 kg and 3 kg hang from the two ends of a light string over a smooth fixed pulley. Find the acceleration and the tension (g = 10 m/s²).",
         steps: [
-          "\\(a = \\dfrac{(3 - 2) \\times 10}{3 + 2} = 2\\ \\text{m/s}^{2}\\).",
-          "\\(T = \\dfrac{2 \\times 3 \\times 2 \\times 10}{5} = 24\\) N.",
-          "Check on the 2 kg mass, which rises: \\(T = 2(10 + 2) = 24\\) N.",
+          "\\(a = \\dfrac{(5 - 3) \\times 10}{5 + 3} = 2.5\\ \\text{m/s}^{2}\\).",
+          "\\(T = \\dfrac{2 \\times 5 \\times 3 \\times 10}{8} = 37.5\\) N.",
+          "Check on the 3 kg mass, which rises: \\(T = 3(10 + 2.5) = 37.5\\) N.",
         ],
-        answer: "\\(2\\ \\text{m/s}^{2}\\) and 24 N",
+        answer: "\\(2.5\\ \\text{m/s}^{2}\\) and 37.5 N",
       },
       selfCheckExample: {
         prompt:
-          "Blocks of 1 kg, 2 kg and 3 kg are tied in a line by light strings on a smooth table. A force of 12 N pulls the 3 kg block. Find the tension in each string.",
+          "Blocks of 1 kg, 3 kg and 4 kg are tied in a line by light strings on a smooth table. A force of 24 N pulls the 4 kg block. Find the tension in each string.",
         steps: [
-          "All three move together: \\(a = \\dfrac{12}{1 + 2 + 3} = 2\\ \\text{m/s}^{2}\\).",
-          "The string between the 1 kg and 2 kg blocks moves only the 1 kg block: \\(T = 1 \\times 2 = 2\\) N.",
-          "The string between the 2 kg and 3 kg blocks moves 1 + 2 = 3 kg: \\(T = 3 \\times 2 = 6\\) N.",
+          "All three move together: \\(a = \\dfrac{24}{1 + 3 + 4} = 3\\ \\text{m/s}^{2}\\).",
+          "The string between the 1 kg and 3 kg blocks moves only the 1 kg block: \\(T = 1 \\times 3 = 3\\) N.",
+          "The string between the 3 kg and 4 kg blocks moves 1 + 3 = 4 kg: \\(T = 4 \\times 3 = 12\\) N.",
         ],
-        answer: "2 N and 6 N",
+        answer: "3 N and 12 N",
       },
       practiceSet: [
         { prompt: "A 2 kg body hangs by a string in a lift moving up at constant velocity. What is the tension (g = 10 m/s²)?", answer: "20 N" },

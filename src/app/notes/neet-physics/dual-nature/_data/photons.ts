@@ -6,7 +6,7 @@ export const NEET_PH_DN_PHOTONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Light as a stream of packets called photons: the energy hν and momentum h/λ of one photon, how many photons a source gives out each second, and which experiments show light as a wave or as particles.",
   whyItMatters:
-    "Three NEET questions from 2021 to 2026. One counts the photons a 3.3 mW source gives out each second (2021), one asks which statements about a photon are true (2024), and one matches E = hν, interference, λ = h/p and the Compton effect to what each describes (2026).",
+    "Four NEET questions from 2021 to 2026. One counts the photons a 3.3 mW source gives out each second (2021), one asks how the shortest X-ray wavelength from electrons accelerated through V volts depends on V (2023), one asks which statements about a photon are true (2024), and one matches E = hν, interference, λ = h/p and the Compton effect to what each describes (2026).",
   concepts: [
     {
       kind: "formula" as const,
@@ -19,7 +19,8 @@ export const NEET_PH_DN_PHOTONS_NOTE: SubtopicNote = {
         "- Electron volt: \\(1\\ \\text{eV} = 1.6 \\times 10^{-19}\\) J. A quick rule: \\(E\\,(\\text{eV}) = \\dfrac{1240}{\\lambda\\,(\\text{nm})}\\).\n" +
         "- Momentum of one photon: \\(p = \\dfrac{h}{\\lambda} = \\dfrac{h\\nu}{c} = \\dfrac{E}{c}\\).\n" +
         "- **Properties of photons:** they travel at speed c in vacuum; all photons of one frequency have the same energy and momentum, whatever the intensity; they carry no charge, so electric and magnetic fields do not bend them.\n" +
-        "- In a collision between a photon and an electron, the total energy and the total momentum are conserved. The number of photons need not be: a photon can be absorbed or a new one created.",
+        "- In a collision between a photon and an electron, the total energy and the total momentum are conserved. The number of photons need not be: a photon can be absorbed or a new one created.\n" +
+        "- **Shortest X-ray wavelength:** an electron accelerated through V volts has energy eV. At most all of it becomes one photon, so \\(\\dfrac{hc}{\\lambda_{\\min}} = eV\\) and \\(\\lambda_{\\min} = \\dfrac{hc}{eV}\\), which goes as \\(\\dfrac{1}{V}\\).",
       formula: {
         label: "Photon energy and momentum",
         latex: "E = h\\nu = \\frac{hc}{\\lambda}, \\qquad p = \\frac{h}{\\lambda} = \\frac{E}{c}, \\qquad E\\,(\\text{eV}) = \\frac{1240}{\\lambda\\,(\\text{nm})}",
