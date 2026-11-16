@@ -267,7 +267,7 @@ export function historyTurns(
         links: r.replyLinks ?? [],
         source: "ai",
         feedback: r.feedback,
-        explained: isExplanation(r.toolCalls, text),
+        explained: isExplanation(r.toolCalls, text, r.askedNotesItem),
         understood: r.understood ?? null,
         ...(figure ? { figure } : {}),
         ...(visual ? { visual, visualQuestionId: explainedId! } : {}),

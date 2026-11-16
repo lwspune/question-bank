@@ -139,7 +139,11 @@ describe("formatConceptResult", () => {
     expect(out).toMatch(/short general explanation/i);
     expect(out).not.toMatch(/not from our question bank/i);
     expect(out).not.toMatch(/starts? exactly with/i);
-    expect(out).toMatch(/never .*numeric/i);
+    // 2026-11-16 (owner): a typed numeric problem is worked out in full (rule 7b), never refused.
+    expect(out).not.toMatch(/never solve a new numeric problem/i);
+    expect(out).toMatch(/numeric problem[^.]*work it out in full[^.]*rule 7b/i);
+    // A question from a paper is still answered from our key, never V's own working.
+    expect(out).toMatch(/never give an answer to a question from a paper/i);
   });
 });
 

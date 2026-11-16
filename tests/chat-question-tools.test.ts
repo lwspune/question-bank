@@ -128,6 +128,20 @@ describe("what V is shown of a question's paper", () => {
   it("adds no line when there is none", () => {
     expect(hintView(q())).not.toMatch(/past paper|practice question/i);
   });
+
+  // Owner, 2026-11-16: "how many marks is this?" and "any other year?" had no answer though the site knows both.
+  it("carries the marks and the other papers in the hint and the explanation", () => {
+    const marks = "Marks: Q. 27 in Maharashtra HSC Biology June 2026 carries 4 marks.";
+    const repeats = "Repeats: this same question was asked in 2 papers: Feb 2024, June 2026.";
+    for (const v of [hintView(q({ marks, repeats })), explainView(q({ marks, repeats }), null)]) {
+      expect(v).toContain(marks);
+      expect(v).toContain(repeats);
+    }
+  });
+
+  it("adds neither line when the question has no marks or repeats on record", () => {
+    expect(explainView(q(), null)).not.toMatch(/^Marks:|^Repeats:/m);
+  });
 });
 
 describe("explainView", () => {

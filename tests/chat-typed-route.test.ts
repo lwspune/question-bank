@@ -427,6 +427,8 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
         "find_question",
         // 2026-10-23: a slip in our solution reaches the team's report queue (migration 0183).
         "report_solution_issue",
+        // 2026-11-16: how many questions of the past paper on the page were repeated.
+        "paper_repeats",
         // V_SPEC.md step 2 (2026-10-22): concepts, under the same switch.
         "explain_concept",
       ]);

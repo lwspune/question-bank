@@ -569,7 +569,9 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/If it says nothing matched, you may give a short general explanation/);
     expect(p).not.toMatch(/not from our question bank/i);
     expect(p).not.toMatch(/Start it exactly with/);
-    expect(p).toMatch(/never solve a new numeric problem/i);
+    // 2026-11-16 (owner): a numeric problem is no longer refused; it goes by rule 7b.
+    expect(p).not.toMatch(/never solve a new numeric problem/i);
+    expect(p).toMatch(/a numeric problem goes by rule 7b/i);
     expect(p).toMatch(/search failed/i);
     // Links and the facts-only rule name the tool, so its pages are usable.
     expect(p).toMatch(/returned by [^.]*explain_concept/);
@@ -584,15 +586,40 @@ describe("buildSystemPrompt", () => {
   });
 
   // Owner, 2026-11-08: a student sent "2 x 1 + 1 x 2 + 3 x 1 = 7%" and V would not say it was right
-  // ("final sum khud check kar lijiye"). V may confirm a student's own working; it still never solves a
-  // bare numeric question for them, and a bank question is still checked against its solution and key.
+  // ("final sum khud check kar lijiye"). V may confirm a student's own working, and a bank question is
+  // still checked against its solution and key.
   it("has V check a student's own working step by step, and say plainly whether it is right", () => {
     const p = buildSystemPrompt({ ...base, explainEnabled: true });
     expect(p).toMatch(/their own working or answer/i);
     expect(p).toMatch(/say plainly whether their answer is right, or name the first step that goes wrong/i);
     expect(p).toMatch(/If you are not sure, name the step to check again/i);
-    expect(p).toMatch(/ask them to try it and send their working/i);
     expect(p).toMatch(/A question from our bank is still checked against its solution and key/i);
+  });
+
+  // Owner, 2026-11-16: "how many marks?" and "any other year?" are answered from the question's own lines.
+  it("has V answer marks and other papers from the question's Marks and Repeats lines, never guessing", () => {
+    const p = buildSystemPrompt({ ...base, explainEnabled: true });
+    expect(p).toMatch(/Marks and Repeats lines/);
+    expect(p).toMatch(/call get_question/);
+    expect(p).toMatch(/never say it was not asked in other papers/i);
+  });
+
+  it("sends 'how many questions of this paper were repeated?' to paper_repeats", () => {
+    const p = buildSystemPrompt({ ...base, explainEnabled: true });
+    expect(p).toMatch(/how many questions of a past paper were repeated[^.]*call paper_repeats/i);
+  });
+
+  // Owner, 2026-11-16 ("yes" to not holding back): "5P3 = 60, how?" got "try it yourself" and a No;
+  // a signed-out visitor (one question) who typed a full question was asked for working they could
+  // never send. When a student asks how, V shows how, with the final answer.
+  it("has V work a typed numeric question out in full and give the answer, never asking for their working first", () => {
+    const p = buildSystemPrompt({ ...base, explainEnabled: true });
+    expect(p).not.toMatch(/ask them to try it and send their working/i);
+    expect(p).not.toMatch(/Do not give the final number yourself/i);
+    expect(p).toMatch(/7b\. A numeric question they typed[^\n]*work it out in full/i);
+    expect(p).toMatch(/give the final answer/i);
+    expect(p).toMatch(/never ask them to try it first or to send their working/i);
+    expect(p).toMatch(/Check each calculation/i);
   });
 
   // 2026-11-07: "one more like question 4", then "17": V cannot see the page's numbering, and guessed.

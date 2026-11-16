@@ -45,6 +45,7 @@ import { loadExamCatalogPayload, shapeExamCatalog } from "../../../src/lib/exam/
 import { readChapterLandingsUncached } from "../../../src/lib/questions/landing";
 import { readSubtopicIndexUncached, withSubtopics } from "../../../src/lib/chat/subtopicIndex";
 import { loadSimilarId, loadVQuestion, searchVQuestions } from "../../../src/lib/chat/questionToolsServer";
+import { loadPaperRepeats } from "../../../src/lib/chat/paperRepeatsServer";
 import { notesTappedFrom, tappedFrom } from "../../../src/lib/chat/questionToolSet";
 import { answerIn } from "../../../src/lib/chat/askVEvent";
 import { conceptSources } from "../../../src/lib/chat/conceptSearchServer";
@@ -170,7 +171,7 @@ async function main() {
             tapped: tappedFrom(question, c.message),
             // As live: a tap on a notes question pins it too (2026-11-11).
             notesTapped: notesTappedFrom(notesBrief !== null, c.message),
-            loadQuestion: (id) => loadVQuestion(anon, id),
+            loadQuestion: (id) => loadVQuestion(anon, id, { extras: true }),
             spendReveal: c.signed_in ? async () => ({ kind: "ok" as const, counts: false }) : null,
             loadSimilar: (vq) => loadSimilarId(anon, vq, []),
             searchQuestions: (text, chapterId) => searchVQuestions(anon, text, chapterId),
@@ -179,6 +180,8 @@ async function main() {
             onExplained: () => {},
             // Writes nothing: the tool is offered, as live, so a case can see V use it.
             reportSolution: async () => "filed" as const,
+            // Read-only, as live: the paper on the case's page (2026-11-16).
+            loadPaperRepeats: () => loadPaperRepeats(anon, c.page_path),
           }
         : null,
       // A signed-in student with no mock results yet, as getOwnPerformance returns one (null means signed out).

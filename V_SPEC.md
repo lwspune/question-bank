@@ -94,7 +94,7 @@ is the last one.
    2026-10-22), with no fixed opening line: "General explanation (not from our
    question bank):" was dropped on 2026-10-23 (owner: it adds no value to the
    student).
-   Never to override an answer key, never a new numeric problem, and never for
+   Never to override an answer key, and never for
    site facts, prices, exam dates or what a future paper will ask. Only when
    rungs 1 and 2 found NOTHING: a failed search is not "nothing", and V says
    to try again instead.
@@ -137,9 +137,18 @@ is enforced in `facts.ts` or the tools; the date is when it was made.
   the cache and the find cases cost 2.5x as much. Cost per answer is on
   `/dashboard/chat` and in `npm run v:cost`.
 - **A student's own working may be checked (owner, 2026-11-08).** V says plainly
-  whether their answer is right or names the first wrong step (rule 7b). It
-  still never solves a bare numeric question for them: it gives the method and
-  asks for their working. A bank question is checked against its key.
+  whether their answer is right or names the first wrong step (rule 7b). A bank
+  question is checked against its key.
+- **When a student asks how, V shows how (owner, 2026-11-16).** A numeric
+  question they typed is worked out in full with the final answer; V never asks
+  them to try it first or to send their working. Replaces the 2026-11-08 line
+  "it gives the method and asks for their working": "5P3 = 60, how?" got "try
+  it yourself" and a No, and a signed-out visitor was asked for working they
+  could never send.
+- **V is told a question's marks and its other papers (owner, 2026-11-16).** The
+  marks its printed board paper gives it, and the repeat and type groups of the
+  homework plans (0216). With neither, V says it cannot see them, never that the
+  question was not repeated.
 - **An Ask V tap pins its question in code (2026-11-08).** The tools read the
   tapped question and pick, whatever id the model passes (`tappedFrom`): 12 of
   426 tap explanations had named the previous question. V never takes back an
@@ -426,3 +435,16 @@ reads everything else from the stored row.
   done when the student can solve a new one alone (verified learning), in tiny
   steps; any rule in section 3 may be revisited with the owner's OK. New job
   `tutor` (not built). Next: a mockup of step 1, "Teach me step by step".
+- 2026-11-16: review of every V reply of 14 days (659 messages, 168 students).
+  Every explanation that reached a student was right against the key; the
+  wrong ones were wrong-QUESTION explanations, none since the 11-11 pin.
+  Owner kept the 5-an-hour cap and the 15-a-day wall as they are. Shipped:
+  (1) a typed numeric question or "how?" is worked out in full with the
+  answer (rule 7b; "5P3 = 60, how?" had got "try it yourself"); (2) V is told
+  a question's board-paper marks and the other papers that asked it, and
+  paper_repeats counts a past paper's repeats; (3) notes taps and pinned taps
+  count as explanations, so they ask "Did you understand?" and a repeat tap
+  reopens them. Full run c899afcb 205/220: b4c50ae1 still encodes the old 7b
+  (expects no 7%) and bc8c0da3 expects "no CLAT" (live since 11-11); the
+  other new failures pass on rerun (run 7ea48498, 5/5). Invented apologies
+  ("correct my earlier reply") are rare since 11-08 but not gone: 2 in a week.

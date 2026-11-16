@@ -9,6 +9,7 @@
  * Pure. Spec: tests/chat-understood.test.ts.
  */
 import type { ToolCallLog } from "./anthropic";
+import { isAskVMessage } from "./askVEvent";
 import { explainStepOf } from "./stepChips";
 
 /** The message a No sends for the student. */
@@ -79,21 +80,42 @@ const EXPLAIN_TOOLS = new Set(["explain_question", "explain_concept"]);
  * "Did you understand?"). Its logged result says which: an explanation starts
  * "Question <id> from" (questionTools explainView). A call logged without its
  * result still counts, as before.
+ *
+ * The id the RESULT names, not the one V sent (2026-11-16): an Ask V tap pins
+ * the tapped question, so when V passes the previous question's id the tool
+ * still explains the tapped one. Judged by V's id, 13 such explanations in 8
+ * days lost "Did you understand?" and slipped past the repeat-tap check.
  */
+const RESULT_RE = /^Question (\S+) from /;
+
+/** The question an explain_question result explained, or null for a refusal. */
+function resultQuestionId(c: ToolCallLog): string | null {
+  return c.result === undefined ? null : (RESULT_RE.exec(c.result)?.[1] ?? null);
+}
+
 function explained(c: ToolCallLog): boolean {
   if (!EXPLAIN_TOOLS.has(c.name)) return false;
   if (c.name !== "explain_question" || c.result === undefined) return true;
-  const id = (c.input as { question_id?: unknown } | null)?.question_id;
-  return typeof id === "string" && c.result.startsWith(`Question ${id} from`);
+  return resultQuestionId(c) !== null;
 }
 
 /**
  * A reply asks "Did you understand?" only when V explained something: it used
  * an explain tool, or it answered a No (V re-explains from memory, often with
  * no tool: case 76a45899, 2026-10-23), so the question comes back each time.
+ *
+ * Or it answered an Ask V tap on a notes question (`askedNotesItem`, 0181,
+ * 2026-11-16): that question rides with the message, so V calls no tool, and
+ * until now no notes explanation asked "Did you understand?" or was found by
+ * the repeat-tap check (7 of 36 notes taps in 14 days were repeats).
  */
-export function isExplanation(toolCalls: readonly ToolCallLog[] | null | undefined, message?: string | null): boolean {
-  return isNotUnderstoodMessage(message) || (toolCalls ?? []).some(explained);
+export function isExplanation(
+  toolCalls: readonly ToolCallLog[] | null | undefined,
+  message?: string | null,
+  askedNotesItem?: string | null
+): boolean {
+  if (isNotUnderstoodMessage(message) || (toolCalls ?? []).some(explained)) return true;
+  return !!askedNotesItem && !!message && isAskVMessage(message);
 }
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -113,7 +135,7 @@ export function notUnderstoodQuestionId(input: {
 }): string | null {
   const call = (input.toolCalls ?? []).find((c) => c.name === "explain_question" && explained(c));
   const id = call
-    ? (call.input as { question_id?: unknown } | null)?.question_id
+    ? (resultQuestionId(call) ?? (call.input as { question_id?: unknown } | null)?.question_id)
     : isNotUnderstoodMessage(input.message)
       ? input.askedQuestionId
       : null;

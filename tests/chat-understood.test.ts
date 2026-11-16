@@ -58,6 +58,25 @@ describe("isExplanation: the replies that ask 'Did you understand?'", () => {
     expect(isExplanation(call(`Question ${id} from NDA, Mathematics ...`))).toBe(true);
   });
 
+  it("is an explanation when the pinned tap answered with another question than the id V sent (2026-11-16)", () => {
+    // 13 Ask V taps in 8 days: V passed the previous question's id, the pin explained the tapped one.
+    const tapped = "6e31692b-2037-4afd-84d6-e395d2dd8dd4";
+    const stale = "85576007-7c40-4c2e-a757-f6b4aa79b646";
+    const calls = [{ name: "explain_question", input: { question_id: stale }, result: `Question ${tapped} from CBSE Class 12, Chemistry ...` }];
+    expect(isExplanation(calls, "Explain this question.")).toBe(true);
+  });
+
+  it("is an explanation when V answered a notes tap: the question rides with the message, so no tool is called (2026-11-16)", () => {
+    expect(isExplanation([], "Explain this question.", "jstat-sums#0")).toBe(true);
+    expect(isExplanation(null, "I picked (B). Explain this question.", "cetdi-standard-forms-with-limits#self")).toBe(true);
+  });
+
+  it("is not for a notes follow-up or an untagged message: only the tap itself is an explanation", () => {
+    expect(isExplanation([], "Why you put tan", "cetdi-standard-forms-with-limits#0")).toBe(false);
+    expect(isExplanation([], "Explain this question.")).toBe(false);
+    expect(isExplanation([], "Explain this question.", null)).toBe(false);
+  });
+
   it("counts the reply to a No as an explanation, though V re-explains from memory with no tool", () => {
     // Case 76a45899, 2026-10-23: both runs re-explained without calling a tool; the question must come back.
     expect(isExplanation([], NOT_UNDERSTOOD)).toBe(true);
@@ -82,6 +101,15 @@ describe("the answer kept with the reply", () => {
     expect(replies.map((t) => ("understood" in t ? t.understood : undefined))).toEqual([false, true, null]);
   });
 
+  it("marks a notes tap's answer as an explanation in the rebuilt history, so a repeat tap reopens it (2026-11-16)", () => {
+    const notes = [
+      ai("2026-11-16T07:20:00Z", "Explain this question.", { toolCalls: null, pagePath: "/notes/imat-chemistry/organic-chemistry/imat-org-hydrocarbons", askedNotesItem: "imat-org-dou#self" }),
+      ai("2026-11-16T07:21:00Z", "why 12", { toolCalls: null, pagePath: "/notes/imat-chemistry/organic-chemistry/imat-org-hydrocarbons", askedNotesItem: "imat-org-dou#self" }),
+    ];
+    const replies = historyTurns(notes).filter((t) => t.role === "assistant");
+    expect(replies.map((t) => ("explained" in t ? t.explained : undefined))).toEqual([true, false]);
+  });
+
   it("shows the answer on the dashboard", () => {
     expect(groupConversations(rows)[0].turns.map((t) => t.understood)).toEqual([false, true, null]);
   });
@@ -100,6 +128,11 @@ describe("notUnderstoodQuestionId: the question a No belongs to", () => {
 
   it("takes the question V explained", () => {
     expect(notUnderstoodQuestionId({ toolCalls: [explained(Q)], message: "Explain this question.", askedQuestionId: ASKED })).toBe(Q);
+  });
+
+  it("takes the question the tool explained, not a stale id V sent (the pin answered with the tapped one)", () => {
+    const stale = { name: "explain_question", input: { question_id: ASKED }, result: `Question ${Q} from CBSE ...` };
+    expect(notUnderstoodQuestionId({ toolCalls: [stale], message: "Explain this question.", askedQuestionId: Q })).toBe(Q);
   });
 
   it("takes the asked question on V's re-explanation, which often calls no tool", () => {

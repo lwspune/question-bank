@@ -23,8 +23,12 @@ type Raw = { question_id: string; n: number; group: OneOrMany<RawGroup> };
 
 const one = <T,>(v: OneOrMany<T>): T | null => (Array.isArray(v) ? (v[0] ?? null) : v);
 
-export async function loadRepeatLines(client: SupabaseClient, ids: readonly string[]): Promise<Map<string, RepeatLine>> {
-  const out = new Map<string, RepeatLine>();
+/**
+ * Each question's groups, raw (2026-11-16): V is told every paper of them
+ * (lib/chat/questionExtras), the card only the strong ones (loadRepeatLines).
+ */
+export async function loadRepeatGroups(client: SupabaseClient, ids: readonly string[]): Promise<Map<string, RepeatGroup[]>> {
+  const out = new Map<string, RepeatGroup[]>();
   const unique = [...new Set(ids)];
   if (unique.length === 0) return out;
 
@@ -55,8 +59,14 @@ export async function loadRepeatLines(client: SupabaseClient, ids: readonly stri
     groupsOf.set(r.question_id, groups);
   }
 
-  for (const [questionId, groups] of groupsOf) {
-    const line = repeatLine([...groups.values()]);
+  for (const [questionId, groups] of groupsOf) out.set(questionId, [...groups.values()]);
+  return out;
+}
+
+export async function loadRepeatLines(client: SupabaseClient, ids: readonly string[]): Promise<Map<string, RepeatLine>> {
+  const out = new Map<string, RepeatLine>();
+  for (const [questionId, groups] of await loadRepeatGroups(client, ids)) {
+    const line = repeatLine(groups);
     if (line) out.set(questionId, line);
   }
   return out;
