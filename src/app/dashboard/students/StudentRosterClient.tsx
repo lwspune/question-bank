@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowDown, ArrowUp, ChevronsUpDown, Download } from "lucide-react";
 import StatCard from "@/app/dashboard/StatCard";
 import WhatsappLink from "@/components/contact/WhatsappLink";
+import { checkInMessage } from "@/lib/students/checkIn";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import {
   EXAM_UNSPECIFIED,
@@ -224,6 +225,15 @@ export default function StudentRosterClient({ rows }: { rows: StudentRosterRow[]
                       </WhatsappLink>{" "}
                       · {s.email}
                     </span>
+                    {s.mobile && (
+                      <WhatsappLink
+                        mobile={s.mobile}
+                        text={checkInMessage(s.name, s.checkInExam)}
+                        className="mt-1 rounded-md border px-2 py-0.5 text-xs font-medium text-foreground"
+                      >
+                        Message
+                      </WhatsappLink>
+                    )}
                   </td>
                   <td className="px-3 py-2 tabular-nums">
                     {s.mocksSubmitted}

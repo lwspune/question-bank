@@ -724,7 +724,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     rule: `Keep building on them (PYQ counts per formula next) if ${FORMULA_PAGES_INDEXED_KEEP}+ are indexed and ${FORMULA_PAGES_SIGNUPS_KEEP}+ signups first landed on one by the check date; otherwise leave them as they are and build nothing more on them.`,
     liveSince: "2026-10-10",
     readout: "formula-pages",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-16: 61 /formula/<exam>/<subject>/<chapter> pages had Google impressions in the last 3 months (Search Console, Performance filtered to /formula/; a page with impressions is indexed), against a bar of 40, and 11 signups first landed on one by the check date (bar 5). Kept: build on them, PYQ counts per formula next (owner, 2026-11-16).",
   },
   {
     id: "specific-offer",
@@ -800,7 +802,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "practice-friends",
     status: "decided",
     decision:
-      "Read 2026-11-16: 8 practice tests sent (6 in the two weeks, bar 10) and no friend ever started a copy. Remove the Practise together box from the practice-test result page (owner, 2026-11-16). The code change is separate, not yet made.",
+      "Read 2026-11-16: 8 practice tests sent (6 in the two weeks, bar 10) and no friend ever started a copy. Removed the Practise together box from the practice-test result page and from V's practice-test builder (owner, 2026-11-16); a link already sent still works.",
   },
   {
     id: "mock-together",
@@ -814,7 +816,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-17",
     windowDays: 14,
     readout: "mock-together",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-16: 26 papers sent (12 in the two weeks, bar 10), but no friend has ever started one: mock_invite_joins is empty, staff included. Not a bug: the link carries the code through sign-in and the start route records the join; Vercel shows only 6 visitors on utm_campaign mock-together links in a month, and none pressed Start. Removed the Practise together box from the start page, which also stops making an invite row on every signed-in visit (owner, 2026-11-16); a link already sent still starts free.",
   },
   {
     id: "learn-class-12",
@@ -923,7 +927,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     rule: `Keep the wording (and do the guide and notes prose next) if impressions for \"previous year\" queries reach ${PYQ_WORDING_IMPRESSIONS_KEEP_RATIO}x the window before by the check date; otherwise keep it anyway (it is our own name) but do not spend more on the prose.`,
     liveSince: "2026-10-16",
     readout: "pyq-wording",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-16 (Search Console, query containing \"previous year\"): 1 impression from 16 Oct to 12 Nov against 0 in the 28 days before. Too few searches to move, so under the 1.5x bar: the wording stays (it is our own name) and nothing more is spent on the guide and notes prose (owner, 2026-11-16).",
   },
   {
     id: "v-finder",
@@ -937,7 +943,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-19",
     windowDays: 14,
     readout: "v-finder",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-16: about 2 of 18 chapter asks in the two weeks got a false \"couldn't find\" (11%, bar 10%): GOC under JEE Mains (we have Organic Chemistry - Some Basic Principles and Techniques) and nouns under SSC CGL (asked on the SSC CGL Grammar page). Phase 1 shipped the same day anyway. Closed (owner, 2026-11-16); the two misses (a common short name, a topic inside a chapter) are the next fix to V's chapter search.",
   },
   {
     id: "v-explain",
@@ -1013,7 +1021,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-28",
     windowDays: 14,
     readout: "v-pay-offer",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-16 (Vercel, 28 Oct to 10 Nov): 30 visitors were shown the offer in V (reveal_daily_limit_hit, surface v) and 1 opened checkout from V (v_chat, 3%), 0 paid there; the bar was 10%. The bank's own wall did better (30 checkouts from reveal_wall). Under the rule: read the limit conversations before changing the words (owner, 2026-11-16).",
   },
   {
     id: "review-traps",
@@ -1378,7 +1388,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-23",
     windowDays: 14,
     readout: "v-reveal",
-    status: "running",
+    status: "decided",
+    decision:
+      "Read 2026-11-16: overall follow-ups fell from 39% to 33-34% (5+ points), but the mix moved: Ask V explanations went from 50 of 195 AI replies to 420 of 675, and they are followed up less (28% before, 21% after). Typed chats held: 63 of 145 (43%) before, 120 of 255 (47%) after. So the fall is the mix, not the reveal. Kept (owner, 2026-11-16).",
   },
   {
     id: "tutor-interest",
@@ -1793,7 +1805,7 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
   "formula-indexed": {
     label: "Indexed /formula/ pages",
     source: "Search Console → Pages → Indexed, filtered to URLs containing /formula/",
-    entries: [],
+    entries: [{ on: "2026-11-16", value: 61, note: "Chapter pages with Google impressions in 3 months (Performance, page contains /formula/), 53 on www; a lower bound on indexed" }],
   },
   "formula-signups": {
     label: "Signups whose first page was a /formula/ page",
@@ -1972,12 +1984,12 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
     label: "V: students shown the pass offer at the day's limit",
     source:
       "Vercel Analytics reveal_daily_limit_hit with surface 'v' (once per page session); cross-check chat_interactions tool_calls where explain_question's result starts \"The student has used today's\"",
-    entries: [],
+    entries: [{ on: "2026-11-16", value: 30, note: "Vercel visitors, 28 Oct to 10 Nov" }],
   },
   "v-pay-offer-checkout": {
     label: "V: students shown the offer who opened checkout (%)",
     source: "Vercel Analytics checkout_opened with surface 'v_chat' over v-pay-offer-shown; passes paid = checkout_paid, surface 'v_chat'",
-    entries: [],
+    entries: [{ on: "2026-11-16", value: 3, note: "1 of 30 opened checkout from v_chat, 0 paid" }],
   },
   "v-hourly-stopped": {
     label: "V: messages stopped by the hourly limit, a week (students)",
@@ -2045,7 +2057,7 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
     label: "Search impressions for \"previous year\" queries, after ÷ before",
     source:
       "Search Console → Performance → Search results → Query contains \"previous year\" → Compare the 28 days from 2026-10-16 with the 28 days before",
-    entries: [],
+    entries: [{ on: "2026-11-16", value: 0, note: "1 impression 16 Oct to 12 Nov against 0 the 28 days before: no ratio, too few searches" }],
   },
   "price-weekly-revenue": {
     label: "Pass revenue per week (Rs)",

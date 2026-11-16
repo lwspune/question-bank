@@ -81,9 +81,13 @@ export function validateMobileSubmission(input: MobileSubmission): MobileValidat
  * quiz_leads / student_profiles / teacher_access_requests / contact_messages,
  * checked 2026-09-21) — this guards the next write path, not the current rows.
  */
-export function whatsappHref(mobile: string | null | undefined): string | null {
+export function whatsappHref(mobile: string | null | undefined, text?: string): string | null {
   const normalized = normalizeMobile(mobile);
-  return normalized ? `https://wa.me/${normalized}` : null;
+  if (!normalized) return null;
+  const base = `https://wa.me/${normalized}`;
+  // `text` opens the chat with a message already typed; staff still press send.
+  const message = text?.trim();
+  return message ? `${base}?text=${encodeURIComponent(message)}` : base;
 }
 
 /**

@@ -30,9 +30,8 @@ import PaperDownload from "../_components/PaperDownload";
 import { paperPageHref } from "@/lib/mocks/paperPage";
 import { listMyAssignments } from "@/lib/assignments/service";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
-import SendToFriend from "@/components/practice/SendToFriend";
 import { INVITE_PARAM, isInviteCode } from "@/lib/practiceTests/mockInvite";
-import { getOrCreateInvite, readInvite } from "@/lib/practiceTests/mockInviteService";
+import { readInvite } from "@/lib/practiceTests/mockInviteService";
 import { readFirstNames } from "@/lib/practiceTests/togetherService";
 import { canonicalFor, planSiteForPath } from "@/lib/sites/intl";
 import { displayMockTitle } from "@/lib/mocks/hub";
@@ -70,9 +69,10 @@ export default async function MockInstructions(
       ])
     : [[], null];
 
-  // Practise together (migration 0166). Service role: the invite tables have
-  // no student policies. Best-effort, so a failure costs the box or the note,
-  // never the page.
+  // Practise together (migration 0166). The send box was removed 2026-11-16
+  // (no friend ever started a sent paper); a link already sent still starts
+  // free, so the receiving side stays. Service role: the invite tables have no
+  // student policies. Best-effort, so a failure costs the note, never the page.
   const admin = createSupabaseAdminClient();
   // Opened from a friend's link (?with=<code>): who sent it, unless it is the
   // viewer's own link.
@@ -88,14 +88,6 @@ export default async function MockInstructions(
   const senderName = fromFriend
     ? ((await readFirstNames(admin, [fromFriend.inviterId]).catch(() => null))?.get(fromFriend.inviterId) ?? null)
     : null;
-  // The viewer's own invite, for the box under Start.
-  const myInvite = user
-    ? await getOrCreateInvite(admin, mock.id, user.id).catch((e) => {
-        console.error("mock page: invite failed", e);
-        return null;
-      })
-    : null;
-
   // Free-test limits (0120 + 0134): open, "N free left", or locked. A chapter
   // test counts against its own limit; a retake of this paper is always open,
   // and so is a paper a friend sent (0166).
@@ -264,16 +256,6 @@ export default async function MockInstructions(
                   Sign in to start
                 </Link>
               </Button>
-            </div>
-          )}
-          {myInvite && (
-            <div className="mt-3">
-              <SendToFriend
-                target={{ kind: "mock", slug: mock.slug, invite: myInvite }}
-                title={mock.title}
-                questions={mock.totalQuestions}
-                minutes={mins}
-              />
             </div>
           )}
           {isPastPaper && (
