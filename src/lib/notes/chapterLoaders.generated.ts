@@ -12125,6 +12125,278 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 2,
       "traps": 2
     }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "current-electricity",
+    "chipLabel": "Current Electricity notes",
+    "slugs": [
+      "nph-ce-drift",
+      "nph-ce-combinations",
+      "nph-ce-power",
+      "nph-ce-kirchhoff"
+    ],
+    "chapterName": "Current Electricity",
+    "formulaCounts": {
+      "formulas": 10,
+      "tables": 0,
+      "traps": 23
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "units-and-measurements",
+    "chipLabel": "Units and Measurements notes",
+    "slugs": [
+      "nph-um-units",
+      "nph-um-dims",
+      "nph-um-errors",
+      "nph-um-instruments"
+    ],
+    "chapterName": "Units and Measurements",
+    "formulaCounts": {
+      "formulas": 8,
+      "tables": 2,
+      "traps": 26
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "electrostatic-potential",
+    "chipLabel": "Electrostatic Potential notes",
+    "slugs": [
+      "nph-ep-potential",
+      "nph-ep-energy",
+      "nph-ep-capacitance",
+      "nph-ep-combinations"
+    ],
+    "chapterName": "Electrostatic Potential and Capacitance",
+    "formulaCounts": {
+      "formulas": 10,
+      "tables": 0,
+      "traps": 29
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "semiconductor-electronics",
+    "chipLabel": "Semiconductor Electronics notes",
+    "slugs": [
+      "nph-se-junction",
+      "nph-se-devices",
+      "nph-se-gates"
+    ],
+    "chapterName": "Semiconductor Electronics",
+    "formulaCounts": {
+      "formulas": 7,
+      "tables": 2,
+      "traps": 23
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "moving-charges-and-magnetism",
+    "chipLabel": "Moving Charges and Magnetism notes",
+    "slugs": [
+      "nph-mc-force",
+      "nph-mc-loops",
+      "nph-mc-ampere",
+      "nph-mc-dipole"
+    ],
+    "chapterName": "Moving Charges and Magnetism",
+    "formulaCounts": {
+      "formulas": 10,
+      "tables": 0,
+      "traps": 27
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "rotational-motion",
+    "chipLabel": "Rotational Motion notes",
+    "slugs": [
+      "nph-rm-com",
+      "nph-rm-torque",
+      "nph-rm-inertia",
+      "nph-rm-rotation"
+    ],
+    "chapterName": "System of Particles and Rotational Motion",
+    "formulaCounts": {
+      "formulas": 10,
+      "tables": 0,
+      "traps": 28
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "ray-optics",
+    "chipLabel": "Ray Optics notes",
+    "slugs": [
+      "nph-ro-reflection",
+      "nph-ro-lenses",
+      "nph-ro-prisms",
+      "nph-ro-instruments"
+    ],
+    "chapterName": "Ray Optics and Optical Instruments",
+    "formulaCounts": {
+      "formulas": 10,
+      "tables": 0,
+      "traps": 24
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "alternating-current",
+    "chipLabel": "Alternating Current notes",
+    "slugs": [
+      "nph-ac-reactance",
+      "nph-ac-lcr",
+      "nph-ac-transformer"
+    ],
+    "chapterName": "Alternating Current",
+    "formulaCounts": {
+      "formulas": 8,
+      "tables": 0,
+      "traps": 18
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "gravitation",
+    "chipLabel": "Gravitation notes",
+    "slugs": [
+      "nph-gr-field",
+      "nph-gr-energy",
+      "nph-gr-orbits"
+    ],
+    "chapterName": "Gravitation",
+    "formulaCounts": {
+      "formulas": 7,
+      "tables": 0,
+      "traps": 19
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "dual-nature",
+    "chipLabel": "Dual Nature notes",
+    "slugs": [
+      "nph-dn-photons",
+      "nph-dn-photoelectric",
+      "nph-dn-debroglie"
+    ],
+    "chapterName": "Dual Nature of Radiation and Matter",
+    "formulaCounts": {
+      "formulas": 7,
+      "tables": 2,
+      "traps": 20
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "oscillations",
+    "chipLabel": "Oscillations notes",
+    "slugs": [
+      "nph-os-equation",
+      "nph-os-periods",
+      "nph-os-energy"
+    ],
+    "chapterName": "Oscillations",
+    "formulaCounts": {
+      "formulas": 7,
+      "tables": 0,
+      "traps": 21
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "electromagnetic-waves",
+    "chipLabel": "Electromagnetic Waves notes",
+    "slugs": [
+      "nph-em-waves",
+      "nph-em-spectrum"
+    ],
+    "chapterName": "Electromagnetic Waves",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 2,
+      "traps": 19
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Physics",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "laws-of-motion",
+    "chipLabel": "Laws of Motion notes",
+    "slugs": [
+      "nph-lm-newton",
+      "nph-lm-friction",
+      "nph-lm-circular"
+    ],
+    "chapterName": "Laws of Motion",
+    "formulaCounts": {
+      "formulas": 7,
+      "tables": 0,
+      "traps": 21
+    }
+  },
+  {
+    "examName": "NEET",
+    "subjectName": "Chemistry",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "chemical-bonding",
+    "chipLabel": "Chemical Bonding notes",
+    "slugs": [
+      "nch-cb-lewis",
+      "nch-cb-shapes",
+      "nch-cb-polarity",
+      "nch-cb-mot"
+    ],
+    "chapterName": "Chemical Bonding and Molecular Structure",
+    "formulaCounts": {
+      "formulas": 2,
+      "tables": 8,
+      "traps": 22
+    }
   }
 ];
 
@@ -12728,4 +13000,18 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "ssc-cgl-tier-2-computer/operating-system": () => import("@/app/notes/ssc-cgl-tier-2-computer/operating-system/_data").then((m) => ({ chapter: m.SSC2_OPERATING_SYSTEM_CHAPTER, notes: m.SSC2_OPERATING_SYSTEM_NOTES })),
   "ssc-cgl-tier-2-computer/cyber-security": () => import("@/app/notes/ssc-cgl-tier-2-computer/cyber-security/_data").then((m) => ({ chapter: m.SSC2_CYBER_SECURITY_CHAPTER, notes: m.SSC2_CYBER_SECURITY_NOTES })),
   "ssc-cgl-tier-2-computer/networks": () => import("@/app/notes/ssc-cgl-tier-2-computer/networks/_data").then((m) => ({ chapter: m.SSC2_NETWORKS_CHAPTER, notes: m.SSC2_NETWORKS_NOTES })),
+  "neet-physics/current-electricity": () => import("@/app/notes/neet-physics/current-electricity/_data").then((m) => ({ chapter: m.NEET_PH_CE_CHAPTER, notes: m.NEET_PH_CE_NOTES })),
+  "neet-physics/units-and-measurements": () => import("@/app/notes/neet-physics/units-and-measurements/_data").then((m) => ({ chapter: m.NEET_PH_UM_CHAPTER, notes: m.NEET_PH_UM_NOTES })),
+  "neet-physics/electrostatic-potential": () => import("@/app/notes/neet-physics/electrostatic-potential/_data").then((m) => ({ chapter: m.NEET_PH_EP_CHAPTER, notes: m.NEET_PH_EP_NOTES })),
+  "neet-physics/semiconductor-electronics": () => import("@/app/notes/neet-physics/semiconductor-electronics/_data").then((m) => ({ chapter: m.NEET_PH_SE_CHAPTER, notes: m.NEET_PH_SE_NOTES })),
+  "neet-physics/moving-charges-and-magnetism": () => import("@/app/notes/neet-physics/moving-charges-and-magnetism/_data").then((m) => ({ chapter: m.NEET_PH_MC_CHAPTER, notes: m.NEET_PH_MC_NOTES })),
+  "neet-physics/rotational-motion": () => import("@/app/notes/neet-physics/rotational-motion/_data").then((m) => ({ chapter: m.NEET_PH_RM_CHAPTER, notes: m.NEET_PH_RM_NOTES })),
+  "neet-physics/ray-optics": () => import("@/app/notes/neet-physics/ray-optics/_data").then((m) => ({ chapter: m.NEET_PH_RO_CHAPTER, notes: m.NEET_PH_RO_NOTES })),
+  "neet-physics/alternating-current": () => import("@/app/notes/neet-physics/alternating-current/_data").then((m) => ({ chapter: m.NEET_PH_AC_CHAPTER, notes: m.NEET_PH_AC_NOTES })),
+  "neet-physics/gravitation": () => import("@/app/notes/neet-physics/gravitation/_data").then((m) => ({ chapter: m.NEET_PH_GR_CHAPTER, notes: m.NEET_PH_GR_NOTES })),
+  "neet-physics/dual-nature": () => import("@/app/notes/neet-physics/dual-nature/_data").then((m) => ({ chapter: m.NEET_PH_DN_CHAPTER, notes: m.NEET_PH_DN_NOTES })),
+  "neet-physics/oscillations": () => import("@/app/notes/neet-physics/oscillations/_data").then((m) => ({ chapter: m.NEET_PH_OS_CHAPTER, notes: m.NEET_PH_OS_NOTES })),
+  "neet-physics/electromagnetic-waves": () => import("@/app/notes/neet-physics/electromagnetic-waves/_data").then((m) => ({ chapter: m.NEET_PH_EM_CHAPTER, notes: m.NEET_PH_EM_NOTES })),
+  "neet-physics/laws-of-motion": () => import("@/app/notes/neet-physics/laws-of-motion/_data").then((m) => ({ chapter: m.NEET_PH_LM_CHAPTER, notes: m.NEET_PH_LM_NOTES })),
+  "neet-chemistry/chemical-bonding": () => import("@/app/notes/neet-chemistry/chemical-bonding/_data").then((m) => ({ chapter: m.NEET_CH_CB_CHAPTER, notes: m.NEET_CH_CB_NOTES })),
 };

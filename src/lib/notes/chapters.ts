@@ -2781,6 +2781,76 @@ import {
   SSC2_NETWORKS_NOTES,
   SSC2_NETWORKS_SLUGS,
 } from "@/app/notes/ssc-cgl-tier-2-computer/networks/_data";
+import {
+  NEET_PH_CE_CHAPTER,
+  NEET_PH_CE_NOTES,
+  NEET_PH_CE_SLUGS,
+} from "@/app/notes/neet-physics/current-electricity/_data";
+import {
+  NEET_CH_CB_CHAPTER,
+  NEET_CH_CB_NOTES,
+  NEET_CH_CB_SLUGS,
+} from "@/app/notes/neet-chemistry/chemical-bonding/_data";
+import {
+  NEET_PH_UM_CHAPTER,
+  NEET_PH_UM_NOTES,
+  NEET_PH_UM_SLUGS,
+} from "@/app/notes/neet-physics/units-and-measurements/_data";
+import {
+  NEET_PH_EP_CHAPTER,
+  NEET_PH_EP_NOTES,
+  NEET_PH_EP_SLUGS,
+} from "@/app/notes/neet-physics/electrostatic-potential/_data";
+import {
+  NEET_PH_SE_CHAPTER,
+  NEET_PH_SE_NOTES,
+  NEET_PH_SE_SLUGS,
+} from "@/app/notes/neet-physics/semiconductor-electronics/_data";
+import {
+  NEET_PH_MC_CHAPTER,
+  NEET_PH_MC_NOTES,
+  NEET_PH_MC_SLUGS,
+} from "@/app/notes/neet-physics/moving-charges-and-magnetism/_data";
+import {
+  NEET_PH_RM_CHAPTER,
+  NEET_PH_RM_NOTES,
+  NEET_PH_RM_SLUGS,
+} from "@/app/notes/neet-physics/rotational-motion/_data";
+import {
+  NEET_PH_RO_CHAPTER,
+  NEET_PH_RO_NOTES,
+  NEET_PH_RO_SLUGS,
+} from "@/app/notes/neet-physics/ray-optics/_data";
+import {
+  NEET_PH_AC_CHAPTER,
+  NEET_PH_AC_NOTES,
+  NEET_PH_AC_SLUGS,
+} from "@/app/notes/neet-physics/alternating-current/_data";
+import {
+  NEET_PH_GR_CHAPTER,
+  NEET_PH_GR_NOTES,
+  NEET_PH_GR_SLUGS,
+} from "@/app/notes/neet-physics/gravitation/_data";
+import {
+  NEET_PH_DN_CHAPTER,
+  NEET_PH_DN_NOTES,
+  NEET_PH_DN_SLUGS,
+} from "@/app/notes/neet-physics/dual-nature/_data";
+import {
+  NEET_PH_OS_CHAPTER,
+  NEET_PH_OS_NOTES,
+  NEET_PH_OS_SLUGS,
+} from "@/app/notes/neet-physics/oscillations/_data";
+import {
+  NEET_PH_EM_CHAPTER,
+  NEET_PH_EM_NOTES,
+  NEET_PH_EM_SLUGS,
+} from "@/app/notes/neet-physics/electromagnetic-waves/_data";
+import {
+  NEET_PH_LM_CHAPTER,
+  NEET_PH_LM_NOTES,
+  NEET_PH_LM_SLUGS,
+} from "@/app/notes/neet-physics/laws-of-motion/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -8945,6 +9015,160 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC2_NETWORKS_CHAPTER,
     notes: SSC2_NETWORKS_NOTES,
     slugs: SSC2_NETWORKS_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "current-electricity",
+    chipLabel: "Current Electricity notes",
+    chapter: NEET_PH_CE_CHAPTER,
+    notes: NEET_PH_CE_NOTES,
+    slugs: NEET_PH_CE_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "units-and-measurements",
+    chipLabel: "Units and Measurements notes",
+    chapter: NEET_PH_UM_CHAPTER,
+    notes: NEET_PH_UM_NOTES,
+    slugs: NEET_PH_UM_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "electrostatic-potential",
+    chipLabel: "Electrostatic Potential notes",
+    chapter: NEET_PH_EP_CHAPTER,
+    notes: NEET_PH_EP_NOTES,
+    slugs: NEET_PH_EP_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "semiconductor-electronics",
+    chipLabel: "Semiconductor Electronics notes",
+    chapter: NEET_PH_SE_CHAPTER,
+    notes: NEET_PH_SE_NOTES,
+    slugs: NEET_PH_SE_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "moving-charges-and-magnetism",
+    chipLabel: "Moving Charges and Magnetism notes",
+    chapter: NEET_PH_MC_CHAPTER,
+    notes: NEET_PH_MC_NOTES,
+    slugs: NEET_PH_MC_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "rotational-motion",
+    chipLabel: "Rotational Motion notes",
+    chapter: NEET_PH_RM_CHAPTER,
+    notes: NEET_PH_RM_NOTES,
+    slugs: NEET_PH_RM_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "ray-optics",
+    chipLabel: "Ray Optics notes",
+    chapter: NEET_PH_RO_CHAPTER,
+    notes: NEET_PH_RO_NOTES,
+    slugs: NEET_PH_RO_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "alternating-current",
+    chipLabel: "Alternating Current notes",
+    chapter: NEET_PH_AC_CHAPTER,
+    notes: NEET_PH_AC_NOTES,
+    slugs: NEET_PH_AC_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "gravitation",
+    chipLabel: "Gravitation notes",
+    chapter: NEET_PH_GR_CHAPTER,
+    notes: NEET_PH_GR_NOTES,
+    slugs: NEET_PH_GR_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "dual-nature",
+    chipLabel: "Dual Nature notes",
+    chapter: NEET_PH_DN_CHAPTER,
+    notes: NEET_PH_DN_NOTES,
+    slugs: NEET_PH_DN_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "oscillations",
+    chipLabel: "Oscillations notes",
+    chapter: NEET_PH_OS_CHAPTER,
+    notes: NEET_PH_OS_NOTES,
+    slugs: NEET_PH_OS_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "electromagnetic-waves",
+    chipLabel: "Electromagnetic Waves notes",
+    chapter: NEET_PH_EM_CHAPTER,
+    notes: NEET_PH_EM_NOTES,
+    slugs: NEET_PH_EM_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Physics",
+    subjectRoute: "neet-physics",
+    subjectDisplay: "NEET Physics",
+    chapterSlug: "laws-of-motion",
+    chipLabel: "Laws of Motion notes",
+    chapter: NEET_PH_LM_CHAPTER,
+    notes: NEET_PH_LM_NOTES,
+    slugs: NEET_PH_LM_SLUGS,
+  },
+  {
+    examName: "NEET",
+    subjectName: "Chemistry",
+    subjectRoute: "neet-chemistry",
+    subjectDisplay: "NEET Chemistry",
+    chapterSlug: "chemical-bonding",
+    chipLabel: "Chemical Bonding notes",
+    chapter: NEET_CH_CB_CHAPTER,
+    notes: NEET_CH_CB_NOTES,
+    slugs: NEET_CH_CB_SLUGS,
   },
 ];
 

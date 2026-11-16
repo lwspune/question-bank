@@ -122,6 +122,27 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "biotech-principles": { cls: 12, chapterNo: 9, book: "XII 9 Biotechnology: Principles and Processes" },
     "biotech-applications": { cls: 12, chapterNo: 10, book: "XII 10 Biotechnology and its Applications" },
   },
+  // NEET Physics (2026-11-16): NCERT Physics, 2023 rationalised numbering (Class XI then XII).
+  "neet-physics": {
+    "units-and-measurements": { cls: 11, chapterNo: 1, book: "XI 1 Units and Measurements" },
+    "laws-of-motion": { cls: 11, chapterNo: 4, book: "XI 4 Laws of Motion" },
+    "rotational-motion": { cls: 11, chapterNo: 6, book: "XI 6 System of Particles and Rotational Motion" },
+    gravitation: { cls: 11, chapterNo: 7, book: "XI 7 Gravitation" },
+    oscillations: { cls: 11, chapterNo: 13, book: "XI 13 Oscillations" },
+    "electrostatic-potential": { cls: 12, chapterNo: 2, book: "XII 2 Electrostatic Potential and Capacitance" },
+    "current-electricity": { cls: 12, chapterNo: 3, book: "XII 3 Current Electricity" },
+    "moving-charges-and-magnetism": { cls: 12, chapterNo: 4, book: "XII 4 Moving Charges and Magnetism" },
+    "alternating-current": { cls: 12, chapterNo: 7, book: "XII 7 Alternating Current" },
+    "electromagnetic-waves": { cls: 12, chapterNo: 8, book: "XII 8 Electromagnetic Waves" },
+    "ray-optics": { cls: 12, chapterNo: 9, book: "XII 9 Ray Optics and Optical Instruments" },
+    "dual-nature": { cls: 12, chapterNo: 11, book: "XII 11 Dual Nature of Radiation and Matter" },
+    "semiconductor-electronics": { cls: 12, chapterNo: 14, book: "XII 14 Semiconductor Electronics" },
+  },
+  // NEET Chemistry (2026-11-16): NCERT Chemistry, 2023 rationalised numbering. The p-Block
+  // Elements left the rationalised book but stays on the NEET syllabus (old XI 11 and XII 7).
+  "neet-chemistry": {
+    "chemical-bonding": { cls: 11, chapterNo: 4, book: "XI 4 Chemical Bonding and Molecular Structure" },
+  },
   "mht-cet-physics": {
     "units-and-measurement": { cls: 11, chapterNo: 1, book: "XI 1 Units and Measurements" },
     "motion-in-a-plane": { cls: 11, chapterNo: 3, book: "XI 3 Motion in a Plane" },

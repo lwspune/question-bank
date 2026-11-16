@@ -602,7 +602,21 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-tier-2-computer/internet-email",
   "ssc-cgl-tier-2-computer/operating-system",
   "ssc-cgl-tier-2-computer/cyber-security",
-  "ssc-cgl-tier-2-computer/networks"
+  "ssc-cgl-tier-2-computer/networks",
+  "neet-physics/current-electricity",
+  "neet-physics/units-and-measurements",
+  "neet-physics/electrostatic-potential",
+  "neet-physics/semiconductor-electronics",
+  "neet-physics/moving-charges-and-magnetism",
+  "neet-physics/rotational-motion",
+  "neet-physics/ray-optics",
+  "neet-physics/alternating-current",
+  "neet-physics/gravitation",
+  "neet-physics/dual-nature",
+  "neet-physics/oscillations",
+  "neet-physics/electromagnetic-waves",
+  "neet-physics/laws-of-motion",
+  "neet-chemistry/chemical-bonding"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1205,4 +1219,18 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-tier-2-computer/operating-system": () => import("@/app/notes/ssc-cgl-tier-2-computer/operating-system/_data").then((m) => m.SSC2_OPERATING_SYSTEM_NOTES),
   "ssc-cgl-tier-2-computer/cyber-security": () => import("@/app/notes/ssc-cgl-tier-2-computer/cyber-security/_data").then((m) => m.SSC2_CYBER_SECURITY_NOTES),
   "ssc-cgl-tier-2-computer/networks": () => import("@/app/notes/ssc-cgl-tier-2-computer/networks/_data").then((m) => m.SSC2_NETWORKS_NOTES),
+  "neet-physics/current-electricity": () => import("@/app/notes/neet-physics/current-electricity/_data").then((m) => m.NEET_PH_CE_NOTES),
+  "neet-physics/units-and-measurements": () => import("@/app/notes/neet-physics/units-and-measurements/_data").then((m) => m.NEET_PH_UM_NOTES),
+  "neet-physics/electrostatic-potential": () => import("@/app/notes/neet-physics/electrostatic-potential/_data").then((m) => m.NEET_PH_EP_NOTES),
+  "neet-physics/semiconductor-electronics": () => import("@/app/notes/neet-physics/semiconductor-electronics/_data").then((m) => m.NEET_PH_SE_NOTES),
+  "neet-physics/moving-charges-and-magnetism": () => import("@/app/notes/neet-physics/moving-charges-and-magnetism/_data").then((m) => m.NEET_PH_MC_NOTES),
+  "neet-physics/rotational-motion": () => import("@/app/notes/neet-physics/rotational-motion/_data").then((m) => m.NEET_PH_RM_NOTES),
+  "neet-physics/ray-optics": () => import("@/app/notes/neet-physics/ray-optics/_data").then((m) => m.NEET_PH_RO_NOTES),
+  "neet-physics/alternating-current": () => import("@/app/notes/neet-physics/alternating-current/_data").then((m) => m.NEET_PH_AC_NOTES),
+  "neet-physics/gravitation": () => import("@/app/notes/neet-physics/gravitation/_data").then((m) => m.NEET_PH_GR_NOTES),
+  "neet-physics/dual-nature": () => import("@/app/notes/neet-physics/dual-nature/_data").then((m) => m.NEET_PH_DN_NOTES),
+  "neet-physics/oscillations": () => import("@/app/notes/neet-physics/oscillations/_data").then((m) => m.NEET_PH_OS_NOTES),
+  "neet-physics/electromagnetic-waves": () => import("@/app/notes/neet-physics/electromagnetic-waves/_data").then((m) => m.NEET_PH_EM_NOTES),
+  "neet-physics/laws-of-motion": () => import("@/app/notes/neet-physics/laws-of-motion/_data").then((m) => m.NEET_PH_LM_NOTES),
+  "neet-chemistry/chemical-bonding": () => import("@/app/notes/neet-chemistry/chemical-bonding/_data").then((m) => m.NEET_CH_CB_NOTES),
 };

@@ -4196,5 +4196,103 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL Tier II Computer Knowledge",
     "chapterSlug": "networks",
     "subtopicCount": 1
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "current-electricity",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "units-and-measurements",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "electrostatic-potential",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "semiconductor-electronics",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "moving-charges-and-magnetism",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "rotational-motion",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "ray-optics",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "alternating-current",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "gravitation",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "dual-nature",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "oscillations",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "electromagnetic-waves",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-physics",
+    "subjectDisplay": "NEET Physics",
+    "chapterSlug": "laws-of-motion",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "NEET",
+    "subjectRoute": "neet-chemistry",
+    "subjectDisplay": "NEET Chemistry",
+    "chapterSlug": "chemical-bonding",
+    "subtopicCount": 4
   }
 ];
