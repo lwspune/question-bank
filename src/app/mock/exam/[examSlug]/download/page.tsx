@@ -1,32 +1,26 @@
 import type { Metadata } from "next";
-import { cache } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronRight, FileText, History } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
-import { createSupabaseAnonClient } from "@/lib/supabase/server";
-import { getPublishedMocks } from "@/lib/mocks/query";
 import { getMockExam, getMockExams, mockFamilyOf, mockSideNav } from "@/lib/mocks/mocksNav";
-import { groupMocksForType, mocksOfType, mockDownloadHref } from "@/lib/mocks/catalogue";
-import { getBlueprint } from "@/lib/mocks/blueprints";
+import { groupMocksForType, mockDownloadHref } from "@/lib/mocks/catalogue";
 import { EXAM_REGISTRY, getExamByName, type ExamSlug } from "@/lib/exam/examContext";
-import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { downloadPageTitle, paperPageHref, paperYearRange, plainPaperTitle } from "@/lib/mocks/paperPage";
 import {
   YEAR_NOTES,
   newestSittingLabel,
   openYearKeys,
   paperCountLabel,
-  paperFacts,
-  paperTrends,
   pastPapersFaq,
   yearHeading,
 } from "@/lib/mocks/pastPapersPage";
-import { loadChapterWeights } from "@/lib/me/startNextServer";
-import { landingHref, listChapterLandings } from "@/lib/questions/landing";
+import { loadExamPaperFacts, pastPapersOf } from "@/lib/mocks/paperFactsServer";
 import { getSubjectGuides } from "@/lib/guide/guideCatalog";
 import PaperDownload from "../../../_components/PaperDownload";
+import PaperFactsList from "../../../_components/PaperFactsList";
+import PaperTrendCards, { trendsTitle as titleForTrends } from "../../../_components/PaperTrendCards";
 import { canonicalFor } from "@/lib/sites/intl";
 
 // Same refresh as the /mock lists beside it.
@@ -37,27 +31,6 @@ type Params = { examSlug: string };
 /** Every exam, including one with no past papers yet: an honest empty state beats a 404. */
 export function generateStaticParams(): Params[] {
   return getMockExams(EXAM_REGISTRY).map((e) => ({ examSlug: e.slug as string }));
-}
-
-/** One read per request, shared by the metadata and the page. */
-const pastPapersOf = cache(async (examName: string) => {
-  const all = await getPublishedMocks(createSupabaseAnonClient());
-  return mocksOfType(
-    all.filter((m) => m.examName === examName),
-    "past-papers"
-  );
-});
-
-/** subject + chapter -> its /questions landing, for the chapters this exam's papers ask most. */
-async function chapterHrefs(examName: string): Promise<(subject: string, chapter: string) => string | undefined> {
-  try {
-    const landings = (await listChapterLandings()).filter((l) => l.examName === examName);
-    const map = new Map(landings.map((l) => [`${l.subjectName}\u0000${l.chapterName}`, landingHref(l)]));
-    return (subject, chapter) => map.get(`${subject}\u0000${chapter}`);
-  } catch (e) {
-    console.error("past papers: chapter landings failed", e instanceof Error ? e.message : e);
-    return () => undefined;
-  }
 }
 
 /** The exam's strategy guides, where it has any: the one guide, or the exam's guide hub. */
@@ -100,7 +73,7 @@ export default async function MockDownloadList(props: { params: Promise<Params> 
   const exam = getMockExam(params.examSlug);
   if (!exam) notFound();
 
-  const papers = await pastPapersOf(exam.examName);
+  const { papers, facts, trends } = await loadExamPaperFacts(exam.slug, exam.examName);
   const range = paperYearRange(papers);
   const groups = groupMocksForType("past-papers", papers);
   const open = openYearKeys(groups);
@@ -109,18 +82,7 @@ export default async function MockDownloadList(props: { params: Promise<Params> 
   const solved = getExamByName(exam.examName)?.pastPaperSolutions === true;
   const yearNotes = YEAR_NOTES[exam.slug] ?? {};
 
-  const facts = paperFacts(papers, (code) => getBlueprint(exam.slug, code));
-  const examId = papers.length > 0 ? (await getExamIdMap())[exam.slug] : null;
-  const trends = examId
-    ? paperTrends(await loadChapterWeights(examId), facts, await chapterHrefs(exam.examName))
-    : [];
-  // One count in the heading only when every card averages the same papers
-  // (NDA: 19 and 19); MHT-CET has 58 Maths and 54 PCB papers, so each card says its own.
-  const trendCounts = [...new Set(trends.map((t) => t.papers))];
-  const trendsTitle =
-    trendCounts.length === 1
-      ? `What ${trendCounts[0]} sittings of ${exam.examName} papers show`
-      : `What the ${exam.examName} past papers show`;
+  const trendsTitle = titleForTrends(exam.examName, trends);
   const years = [...new Set(papers.map((m) => m.pyqYear).filter((y): y is number => y !== null))];
   const faq = pastPapersFaq({ examName: exam.examName, facts, years, paperCount: papers.length, solved, yearNotes });
   const newest = newestSittingLabel(papers);
@@ -175,35 +137,7 @@ export default async function MockDownloadList(props: { params: Promise<Params> 
               <h2 id="paper-facts" className={SECTION_TITLE}>
                 The {exam.examName} {facts.length === 1 ? "paper" : "papers"} at a glance
               </h2>
-              <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-                {facts.map((f) => (
-                  <li key={f.label} className="rounded-lg border bg-card p-4">
-                    <p className="font-semibold">{f.label}</p>
-                    <p className="mt-1 text-sm">
-                      {f.questions} questions · {f.marks} marks · {f.minutes} min
-                    </p>
-                    {f.sections && <p className="mt-1 text-sm text-muted-foreground">{f.sections}</p>}
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      {f.marking.kind === "one" ? (
-                        <>Marking: {f.marking.line}.</>
-                      ) : (
-                        <>
-                          Each section is marked differently:{" "}
-                          <Link
-                            href={`/mock/${f.newestSlug}`}
-                            className="rounded-sm font-medium text-brand-accent underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                          >
-                            see the newest paper&apos;s marking
-                          </Link>
-                          .
-                        </>
-                      )}
-                      {f.note && <> {f.note}</>}
-                    </p>
-                    {f.earlierText && <p className="mt-1 text-sm text-muted-foreground">{f.earlierText}</p>}
-                  </li>
-                ))}
-              </ul>
+              <PaperFactsList facts={facts} />
             </section>
           )}
 
@@ -281,47 +215,7 @@ export default async function MockDownloadList(props: { params: Promise<Params> 
               <p className="mt-2 text-sm text-muted-foreground">
                 Average questions a paper, counted from every published {exam.examName} past paper.
               </p>
-              <div className="mt-4 grid gap-3 lg:grid-cols-2">
-                {trends.map((card) => {
-                  const max = Math.max(...card.rows.map((r) => r.perPaper), 1);
-                  return (
-                    <div key={card.code} className="rounded-lg border bg-card p-4">
-                      <h3 className="font-semibold">
-                        {card.title}{" "}
-                        <span className="font-normal text-muted-foreground">
-                          (of {card.total}
-                          {trendCounts.length > 1 ? `, over ${card.papers} papers` : ""})
-                        </span>
-                      </h3>
-                      <ul className="mt-3 space-y-2">
-                        {card.rows.map((r) => (
-                          <li key={r.name} className="flex items-center gap-3 text-sm">
-                            <span className="w-36 shrink-0 break-words leading-snug sm:w-48">
-                              {r.href ? (
-                                <Link
-                                  href={r.href}
-                                  className="rounded-sm text-brand-accent underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                                >
-                                  {r.name}
-                                </Link>
-                              ) : (
-                                r.name
-                              )}
-                            </span>
-                            <span className="h-2.5 flex-1 rounded-full bg-muted" aria-hidden>
-                              <span
-                                className="block h-2.5 rounded-full bg-brand"
-                                style={{ width: `${Math.round((r.perPaper / max) * 100)}%` }}
-                              />
-                            </span>
-                            <span className="w-10 shrink-0 text-right font-semibold tabular-nums">{r.perPaper}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  );
-                })}
-              </div>
+              <PaperTrendCards trends={trends} />
               {guide && (
                 <Link
                   href={guide}

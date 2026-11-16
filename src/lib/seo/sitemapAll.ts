@@ -32,7 +32,10 @@ import { PLAYBOOK_SLUGS as JEE_CHEM_PLAYBOOK_SLUGS } from "@/app/guide/jee-mains
 import { ROUTES as JEE_PHYS_ROUTES } from "@/app/guide/jee-mains-physics/_data/jee-mains-physics";
 import { PLAYBOOK_SLUGS as JEE_PHYS_PLAYBOOK_SLUGS } from "@/app/guide/jee-mains-physics/_data/playbooks";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
-import { listPosts } from "@/lib/blog/posts";
+import { listPosts, type BlogPost } from "@/lib/blog/posts";
+import { getPublishedArticles } from "@/lib/blog/articles";
+import { mergeCatalog, type DbPost } from "@/lib/blog/catalog";
+import { syllabusHref } from "@/lib/blog/paths";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { listChapterLandings, landingHref } from "@/lib/questions/landing";
@@ -710,8 +713,20 @@ export async function allSitemapEntries(): Promise<MetadataRoute.Sitemap> {
    * JSON-LD publishes. Deriving a second date from git would let the sitemap and
    * the structured data disagree, and would move a post's date whenever someone
    * fixed a typo in a code comment.
+   *
+   * Database posts (migration 0263) carry the same two dates as columns. A
+   * failed read falls back to the code posts rather than failing the sitemap;
+   * Publish clears /sitemap.xml so a new post appears without a deploy.
    */
-  const posts = listPosts();
+  let posts: BlogPost[] = listPosts();
+  let evergreen: DbPost[] = [];
+  try {
+    const articles = await getPublishedArticles();
+    posts = mergeCatalog(listPosts(), articles);
+    evergreen = articles.filter((a) => a.kind === "evergreen" && a.examSlug && a.datePublished);
+  } catch (e) {
+    console.error("sitemap: articles read failed", e instanceof Error ? e.message : e);
+  }
   // Formula axis — the index plus one page per identity. Static, prerendered
   // and text-rich, and the only surface on the site addressed by what a
   // SOLUTION does rather than by taxonomy, so it has no duplicate elsewhere.
@@ -761,6 +776,13 @@ export async function allSitemapEntries(): Promise<MetadataRoute.Sitemap> {
       lastModified: parseIsoDate(p.dateModified ?? p.datePublished, buildDate),
       changeFrequency: "monthly" as const,
       priority: 0.7,
+    })),
+    // An exam's pattern, syllabus and marks page: a top search for every exam.
+    ...evergreen.map((a) => ({
+      url: `${SITE_URL}${syllabusHref(a.examSlug)}`,
+      lastModified: parseIsoDate(a.dateModified ?? a.datePublished, buildDate),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
     })),
   ];
 
