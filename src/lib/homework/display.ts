@@ -72,7 +72,8 @@ type PlanWording ={ asker: string; questions: string; papers: string; answers: s
 /**
  * Plans whose papers no board sets (2026-11-04 on): UPSC sets NDA and CDS, the
  * State CET Cell sets MHT-CET (2026-11-06; its plans said "board" until then),
- * SSC sets SSC CGL (2026-11-06) and SSC CHSL and CPO (2026-11-16), NTA sets JEE Mains (2026-11-06).
+ * SSC sets SSC CGL (2026-11-06) and SSC CHSL and CPO (2026-11-16), NTA sets JEE Mains (2026-11-06)
+ * and NEET (2026-11-17; its plans said "board" from 2026-11-14 until then).
  * UPSC sets CAPF (AC) (2026-11-16). Italy's university ministry sets IMAT (2026-11-17).
  */
 const NOT_BOARD: Readonly<Record<string, PlanWording>> = {
@@ -84,6 +85,7 @@ const NOT_BOARD: Readonly<Record<string, PlanWording>> = {
   "SSC CHSL": { asker: "SSC", questions: "past questions", papers: "Past", answers: "worked solutions" },
   "SSC CPO": { asker: "SSC", questions: "past questions", papers: "Past", answers: "worked solutions" },
   "JEE Mains": { asker: "NTA", questions: "past questions", papers: "Past", answers: "worked solutions" },
+  NEET: { asker: "NTA", questions: "past questions", papers: "Past", answers: "worked solutions" },
   "UPSC CAPF (AC)": { asker: "UPSC", questions: "past questions", papers: "Past", answers: "worked solutions" },
   IMAT: { asker: "the ministry", questions: "past questions", papers: "Past", answers: "worked solutions" },
 };
