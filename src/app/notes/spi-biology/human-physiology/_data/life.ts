@@ -6,7 +6,7 @@ export const SPI_HP_LIFE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The body digests food, breathes to release energy from it, carries everything around in the blood and throws out waste as urine.",
   whyItMatters:
-    "Eight questions in the bank, seven of them EASY: the acid of the stomach, the enzyme found in both saliva and pancreatic juice, where gases are exchanged, lime water and exhaled air, cramps after hard exercise, the element used in clotting, the four chambers of the heart and the path of urine. Each one is a single named fact.",
+    "Ten questions in the bank, nine of them EASY and two from the 2026 paper: the acid of the stomach, the enzyme found in both saliva and pancreatic juice, where gases are exchanged, lime water and exhaled air, cramps after hard exercise, the element used in clotting, the four chambers of the heart, the path of urine, the kidney's filtering units, and what protects the stomach lining from its own acid. Each one is a single named fact.",
   concepts: [
     {
       kind: "reference" as const,

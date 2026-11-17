@@ -6,7 +6,7 @@ export const SPI_GR_PREPOSITIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A preposition is a small word such as in, on, at, for or since that links a noun to the rest of the sentence and shows time, place or a fixed relation.",
   whyItMatters:
-    "Eleven questions in the bank, 10 EASY and 1 MODERATE. Each is a single blank with four prepositions, and the right one is set either by a rule of time or place or by the word just before the blank (decide on, jealous of).",
+    "Thirteen questions in the bank, 12 EASY and 1 MODERATE, two of them from the 2026 paper. Most are a single blank with four prepositions (the 2026 pair ask you to mend a wrong one instead), and the right one is set either by a rule of time or place or by the word just before the blank (decide on, jealous of).",
   concepts: [
     {
       kind: "reference" as const,

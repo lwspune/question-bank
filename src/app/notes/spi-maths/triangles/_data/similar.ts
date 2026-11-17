@@ -6,7 +6,7 @@ export const SPI_TR_SIMILAR_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Similar triangles have the same shape: equal angles and every side multiplied by the same number, and a line parallel to one side, or a line bisecting an angle, cuts the other sides in a fixed ratio.",
   whyItMatters:
-    "Eleven questions in the bank: seven EASY, two MODERATE and the chapter's two HARD ones. Nearly all come down to one proportion. The marks go when the wrong sides are paired, so the order of letters from the congruence page matters even more here.",
+    "Twelve questions in the bank, one from the 2026 paper: eight EASY, two MODERATE and the chapter's two HARD ones. Nearly all come down to one proportion. The marks go when the wrong sides are paired, so the order of letters from the congruence page matters even more here.",
   concepts: [
     {
       kind: "reference" as const,

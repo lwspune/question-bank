@@ -6,7 +6,7 @@ export const SPI_NS_TYPES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Every number belongs to a family (natural, whole, integer, even, odd), and every digit in it is worth the digit times the value of its place.",
   whyItMatters:
-    "Eight questions in the bank, four of them from the 2022 paper: four EASY and four MODERATE. They ask which family a number belongs to, what a digit is worth in its place, and how many digits or numbers a list holds. Each is quick once you count carefully.",
+    "Nine questions in the bank, four from the 2022 paper and one from the 2026 paper: five EASY and four MODERATE. They ask which family a number belongs to, what a digit is worth in its place, how many digits or numbers a list holds, and the last digit of a sum of powers. Each is quick once you count carefully.",
   concepts: [
     {
       kind: "reference" as const,

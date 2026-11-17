@@ -6,7 +6,7 @@ export const SPI_TG_RATIOS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "In a right triangle, each trigonometric ratio of an acute angle is one side divided by another, named by where the sides sit relative to that angle.",
   whyItMatters:
-    "Six questions in the bank, five EASY and one MODERATE: name the ratio, find every ratio from one given ratio, or turn a fraction of sines and cosines into tangents. Every later page in this chapter is built on these six ratios.",
+    "Seven questions in the bank, six EASY and one MODERATE, one from the 2026 paper: name the ratio, find every ratio from one given ratio, or turn a fraction of sines and cosines into tangents. Every later page in this chapter is built on these six ratios.",
   concepts: [
     {
       kind: "formula" as const,

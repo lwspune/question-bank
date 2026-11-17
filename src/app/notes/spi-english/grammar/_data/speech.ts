@@ -6,7 +6,7 @@ export const SPI_GR_SPEECH_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Reported (indirect) speech gives what someone said in your own words: after a past reporting verb the tense moves one step back, and the pronouns and time words change to fit the new speaker.",
   whyItMatters:
-    "Eleven questions in the bank, 6 MODERATE and 5 EASY, and five of them run the other way, from reported speech back to the speaker's own words. Three changes decide every one: the tense, the pronouns and the words for time and place.",
+    "Thirteen questions in the bank, 6 MODERATE and 7 EASY, two from the 2026 paper, and six of them run the other way, from reported speech back to the speaker's own words. Three changes decide every one: the tense, the pronouns and the words for time and place.",
   concepts: [
     {
       kind: "reference" as const,

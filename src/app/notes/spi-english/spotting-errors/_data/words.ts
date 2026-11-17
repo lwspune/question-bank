@@ -12,7 +12,7 @@ export const SPI_SE_WORDS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "After the verb and the preposition, check the smaller words: the pronoun's form, the comparing word, the pairs of joining words, and whether each word makes sense.",
   whyItMatters:
-    "Six questions in the bank test these words, one of them from the 2022 paper. Two are EASY and four MODERATE. Each rule is short, so these are quick marks once the rule is known.",
+    "Seven questions in the bank test these words, one from the 2022 paper and one from the 2026 paper. Two are EASY and five MODERATE. Each rule is short, so these are quick marks once the rule is known.",
   concepts: [
     {
       kind: "reference" as const,

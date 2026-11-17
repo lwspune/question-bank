@@ -6,7 +6,7 @@ export const SPI_SR_OPENING_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A jumbled sentence is rebuilt in two moves: find the part that can open it, then join the parts whose words must sit side by side.",
   whyItMatters:
-    "Six questions in the bank, three from the 2022 paper: five EASY and one MODERATE. Each sentence is cut into four parts P, Q, R and S, and in most of them the opening part and one fixed pair settle the order before you read the options.",
+    "Nine questions in the bank, three from the 2022 paper and three from the 2026 paper: seven EASY and two MODERATE. Each sentence is cut into four parts P, Q, R and S, and in most of them the opening part and one fixed pair settle the order before you read the options.",
   concepts: [
     {
       kind: "formula" as const,

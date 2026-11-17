@@ -6,7 +6,7 @@ export const SPI_M2_SECTORS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A sector is a slice of a circle cut by two radii; its area and arc are the same fraction of the whole circle as its angle is of 360°.",
   whyItMatters:
-    "Four questions in the bank, three MODERATE and one EASY: a sector from its angle, a sector from its perimeter, the area swept by a clock's minute hand, and a shaded region made of segments. One idea settles all four: a sector is the fraction θ/360 of the circle.",
+    "Six questions in the bank, five MODERATE and one EASY, two from the 2026 paper: sectors from their angle or perimeter, the area a clock's minute hand sweeps, and a shaded region made of segments. One idea settles them all: a sector is the fraction θ/360 of the circle.",
   concepts: [
     {
       kind: "formula" as const,

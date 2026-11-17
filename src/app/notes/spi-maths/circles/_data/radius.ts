@@ -6,7 +6,7 @@ export const SPI_CI_RADIUS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A tangent touches a circle at one point, and the radius drawn to that point meets the tangent at a right angle.",
   whyItMatters:
-    "Fourteen questions in the bank, thirteen of them EASY: what a tangent is, the gap between parallel tangents, and the length of a tangent from a right triangle. Almost every one is a single use of Pythagoras, so the mark is lost only by putting the right angle at the wrong corner.",
+    "Sixteen questions in the bank, fifteen of them EASY and two from the 2026 paper: what a tangent is, how many common tangents two circles can have, the gap between parallel tangents, and the length of a tangent or a radius from a right triangle. Almost every one is a single use of Pythagoras, so the mark is lost only by putting the right angle at the wrong corner.",
   concepts: [
     {
       kind: "reference" as const,

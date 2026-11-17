@@ -6,7 +6,7 @@ export const SPI_GR_TENSES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A tense is the form of the verb that shows when an action happens and whether it is finished or still going on.",
   whyItMatters:
-    "Fifteen questions in the bank: 11 EASY, 3 MODERATE and 1 HARD, and four of the five Grammar questions from the 2022 paper sit here. Most are settled by one time word in the sentence (ago, since, yet, by tomorrow), so find that word before you read the options.",
+    "Eighteen questions in the bank: 14 EASY, 3 MODERATE and 1 HARD. Four of the five Grammar questions from the 2022 paper sit here, and three from the 2026 paper. Most are settled by one time word in the sentence (ago, since, yet, by tomorrow), so find that word before you read the options.",
   concepts: [
     {
       kind: "reference" as const,

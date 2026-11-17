@@ -6,7 +6,7 @@ export const SPI_CR_EQUATIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A chemical equation shows reactants turning into products with the same atoms on both sides, and most reactions fall into a few named types.",
   whyItMatters:
-    "Six questions in the bank, three EASY, two MODERATE and one HARD, one of them from the 2022 paper (naming a combination reaction). The rest ask for the word reactants, the right state symbols, what colliding molecules need, the light green crystals that leave a reddish brown residue, and the name for a settled solid.",
+    "Eight questions in the bank, four EASY, three MODERATE and one HARD: one from the 2022 paper (naming a combination reaction) and two from the 2026 paper (a displacement reaction and a fast reaction). The rest ask for the word reactants, the right state symbols, what colliding molecules need, the light green crystals that leave a reddish brown residue, and the name for a settled solid.",
   concepts: [
     {
       kind: "formula" as const,

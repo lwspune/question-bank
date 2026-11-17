@@ -6,7 +6,7 @@ export const SPI_RC_INFERENCE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Some questions ask what the passage suggests, or what the writer means by a line. The answer is one short step from the words, never a guess and never a fact from outside.",
   whyItMatters:
-    "Eight questions in the bank, all on one passage from the 2022 paper: four EASY, two MODERATE and two HARD. The hard ones ask what a line suggests, or offer 'None of these' and 'Cannot be said', so you must know whether the passage states a point, implies it or never gives it.",
+    "Ten questions in the bank, eight on one passage from the 2022 paper and two on the 2026 paper's passage: four EASY, four MODERATE and two HARD. The hard ones ask what a line suggests, or offer 'None of these' and 'Cannot be said', so you must know whether the passage states a point, implies it or never gives it.",
   concepts: [
     {
       kind: "formula" as const,

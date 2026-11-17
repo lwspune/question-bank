@@ -6,7 +6,7 @@ export const SPI_GR_PASSIVE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "In the passive voice the thing that receives the action becomes the subject, and the verb becomes a form of be plus the past participle in the same tense as before.",
   whyItMatters:
-    "Fourteen questions in the bank, 12 EASY and 2 MODERATE, and every mock paper has some. The wrong options almost always keep the meaning but change the tense, so the whole skill is matching the form of be to the tense of the active verb.",
+    "Fifteen questions in the bank, 13 EASY and 2 MODERATE, one from the 2026 paper, and every mock paper has some. The wrong options almost always keep the meaning but change the tense, so the whole skill is matching the form of be to the tense of the active verb.",
   concepts: [
     {
       kind: "formula" as const,

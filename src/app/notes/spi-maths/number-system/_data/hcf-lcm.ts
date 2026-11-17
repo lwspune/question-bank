@@ -6,7 +6,7 @@ export const SPI_NS_HCF_LCM_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The HCF is the largest number that divides all the given numbers, and the LCM is the smallest number that all of them divide.",
   whyItMatters:
-    "Eleven questions in the bank, eight EASY and three MODERATE. Six are read straight off the prime factors, three ask for the largest number that divides two numbers (with or without a remainder), and two use the link between HCF, LCM and the product.",
+    "Fourteen questions in the bank, eleven EASY and three MODERATE, three from the 2026 paper. Eight are read straight off the prime factors, three ask for the largest number that divides two numbers (with or without a remainder), and three use the link between HCF, LCM and the product.",
   concepts: [
     {
       kind: "formula" as const,

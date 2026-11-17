@@ -6,7 +6,7 @@ export const SPI_ST_GROUPED_MEAN_NOTE: SubtopicNote = {
   oneLineDefinition:
     "For a frequency table, each class is stood in for by its class mark, and the mean is the sum of frequency times class mark divided by the total frequency.",
   whyItMatters:
-    "Ten questions in the bank, seven of them EASY. Most hand you the totals and ask for the mean or a missing number in one line, by the direct, assumed mean or step deviation formula. One HARD question asks for two missing frequencies from the mean and the total.",
+    "Twelve questions in the bank, nine of them EASY and two from the 2026 paper. Most hand you the totals and ask for the mean or a missing number in one line, by the direct, assumed mean or step deviation formula. One HARD question asks for two missing frequencies from the mean and the total.",
   concepts: [
     {
       kind: "formula" as const,

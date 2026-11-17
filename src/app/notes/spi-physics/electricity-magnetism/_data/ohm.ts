@@ -6,7 +6,7 @@ export const SPI_EM_OHM_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The current through a metal wire is proportional to the voltage across it, so V = IR, and the wire's resistance R depends on its length, its thickness and what it is made of.",
   whyItMatters:
-    "Five questions in the bank, three EASY and two MODERATE. Three are one line of V = IR, one reads a V against I graph, and one asks which metal resists current the most. The marks go on dividing the wrong way round and on forgetting that Ohm's law needs a steady temperature.",
+    "Six questions in the bank, three EASY and three MODERATE, one from the 2026 paper. Three are one line of V = IR, one reads a V against I graph, one asks which metal resists current the most, and one how a semiconductor's resistance changes when it is heated. The marks go on dividing the wrong way round and on forgetting that Ohm's law needs a steady temperature.",
   concepts: [
     {
       kind: "formula" as const,

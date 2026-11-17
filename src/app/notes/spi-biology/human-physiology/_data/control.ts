@@ -6,7 +6,7 @@ export const SPI_HP_CONTROL_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The brain and nerves send fast electrical messages, and the endocrine glands send slower chemical messages called hormones.",
   whyItMatters:
-    "Five questions in the bank, four of them EASY: the largest part of the brain, an involuntary action, the nerve from the ear, the direction an impulse travels through two neurons, and the endocrine glands that sit in the brain. Learn which part of the brain does what and where each gland is.",
+    "Six questions in the bank, five of them EASY and one from the 2026 paper: the largest part of the brain, an involuntary action, the nerve from the ear, the direction an impulse travels through two neurons, the endocrine glands that sit in the brain, and the name for the body's chemical messengers. Learn which part of the brain does what and where each gland is.",
   concepts: [
     {
       kind: "reference" as const,

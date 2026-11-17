@@ -6,7 +6,7 @@ export const SPI_LO_EYE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Defects of the eye are corrected with the right lens, a prism splits white light into seven colours because each bends by a different amount, and the air's shifting layers make stars twinkle.",
   whyItMatters:
-    "Six questions in the bank, five EASY and one MODERATE: the lens for astigmatism and for long sight, the name for a prism splitting white light, the colour glass bends least, why a twinkling star looks brighter, and the instrument for distant objects. All are recall, so the three tables on this page are the whole job.",
+    "Ten questions in the bank, seven EASY and three MODERATE, four from the 2026 paper: the lens for astigmatism and for long sight, the name for a prism splitting white light, the colour glass bends least, why a twinkling star looks brighter, the instrument for distant objects, where the eye bends light most, what lets it change its focus, and the lens power for a short-sighted eye. Nearly all are recall, so the three tables on this page are the whole job.",
   concepts: [
     {
       kind: "reference" as const,

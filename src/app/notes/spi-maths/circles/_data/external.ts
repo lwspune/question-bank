@@ -6,7 +6,7 @@ export const SPI_CI_EXTERNAL_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The two tangents from a point outside a circle are equal, and the angle between them and the angle between the radii add to 180 degrees.",
   whyItMatters:
-    "Twelve questions in the bank, five EASY and seven MODERATE: a third tangent cutting a pair of tangents, the angle between two tangents, a square of tangents and radii, and the circle inside a right triangle. One idea settles all of them: from any outside point, the two tangent pieces are equal.",
+    "Thirteen questions in the bank, five EASY and eight MODERATE, one from the 2026 paper: a third tangent cutting a pair of tangents, the angle between two tangents, a square of tangents and radii, the circle inside a right triangle, and the area two tangents and their radii enclose. One idea settles all of them: from any outside point, the two tangent pieces are equal.",
   concepts: [
     {
       kind: "formula" as const,
