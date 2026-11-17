@@ -258,8 +258,12 @@ export function buildRows(p: UpPaper, subject: UpSubject): ParsedRowPayload[] {
 export type SolverPass = { answers: Record<string, Label>; solutions: Record<string, { en: string; hi: string }> };
 /** Pass B: an independent, blind letter for every MCQ (English only, no solutions kept). */
 export type BlindPass = { answers: Record<string, Label> };
-/** A dispute settled by hand: the right letter and the solution that shows it. */
-export type Settled = Record<string, { answer: Label; en: string; hi: string; note?: string }>;
+/**
+ * Rows settled by hand: an MCQ dispute (the right letter and the solution that
+ * shows it), or a written row whose solution needed a person (a misprint). A
+ * written row carries no `answer`.
+ */
+export type Settled = Record<string, { answer?: Label; en: string; hi: string; note?: string }>;
 
 export const NO_KEY_NOTE = {
   en: "*Solution by PYQ Vault: UP Board does not publish an answer key.*",
