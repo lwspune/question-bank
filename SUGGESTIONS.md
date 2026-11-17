@@ -13,6 +13,7 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 | Learning | Existing-work candidate | Status (2026-06-10) |
 |---|---|---|
+| **A commit script that sets EVERY row of its source file PRIVATE hides a shipped chapter when rows are added to it (2026-11-17, suggestions sweep).** Adding five questions to the live MH HSC 12 Physics Ch.10 through scripts/stateboard/commit.ts hid its 33 PUBLIC rows for about ten minutes, until flip-public ran; stateboard/commit.ts now privatizes only the rows a run inserts (ids read before and after the commit). | The same `update({ visibility: "PRIVATE" }).eq("source_file", ...)` step sits in capf, cbse-12-pyq, cds, cds-gs, cds-maths, foundation, ipmat, jee, jee-practice and mh-hsc-12-geo-pyq commit scripts (grep `update({ visibility: "PRIVATE"`). Harmless for a first commit, dangerous for any re-commit into a published source. Needs a 360 per lane before porting the fix. | OPEN (logged 2026-11-17) |
 | **"The first exam by name" is not a stable fixture exam (2026-11-16, Play gate).** `free-mock-limit.integration.test.ts` creates `Marked free exam <run>` (free_mocks_marked) and an IMAT-scoped exam mid-run, then deletes them. A test that picks `from("exams").select("id").order("name").limit(1)` can land on one of them when the two files overlap: `mock-together` failed the full gate twice in a row with "This paper needs a pass" (PT402) and passed alone. Fixed there by `.eq("name", "MHT-CET")`, the lookup 10 other tests use. | The same lookup in 9 more files: acquisition-snapshot, free-mock-limit (its own line 121), mock-assignments-rls, mocks-rls, own-answers, practice-friend, practice-tests, practice-together, sync-by-ids-route. Each could hit the same overlap (a deleted fixture exam would also cascade-delete their mocks): practice-tests did, with an FK error, on the third gate run. **Done 2026-11-16 (owner OK) at the source:** free-mock-limit's two fixture exams now start "zz " like its third one, so none sorts first; the nine lookups are left as they are. A source-scan test forbidding the pattern is still open. | done (at the source) |
 | **A long `pyq_note` hides the sitting on public pages (2026-11-16, RAS ingestion).** `publicPyqNote` shows a pyq note only when it is under 48 characters (after the trailing-bracket strip) unless a `SITTING_LABEL_RULES` pattern extracts a label. RAS was committed with 83-86-character notes and was shortened in place before publishing ("RAS Prelims 2024, held 2 Feb 2025"); `scripts/ras/config.ts` says why. Check: `npm run audit:provenance` lists notes in the 48-93 gap. | **UPSC CAPF (AC)** (PUBLIC since 2026-11-14): its notes are "UPSC CAPF (AC) <year> - Paper I General Ability and Intelligence" (62 chars), which no sitting rule matches, so students likely see no sitting label. Confirm on a live card, then shorten or add a rule. Other recent lanes (CLAT, UGC NET, SSC CPO) are worth the same check. | identified (not analysed) |
 | **Blind-pass solutions shipped in solver voice (2026-11-16, RAS ingestion).** The derivation brief the CAPF/CSE lanes share asked solvers to name the runner-up INSIDE `reasoning`, and `reasoning` is stored as the student-facing solution. The RAS 2024 pilot found 43 of 149 solutions ending "Runner-up: ..." or saying "my recollection", "I associate", "recall points to". RAS fixed it going forward: `runnerUp` is its own field in `scripts/ras/DERIVATION_BRIEF.md`, and `scripts/ras/keycheck.ts` refuses any solution `solverVoice` (scripts/ras/lib.ts, tested) flags, with editorial rewrites in `data/<id>.edits.json`. | **UPSC CAPF (AC)**: 198 of 1,124 committed answers in `scripts/capf/data/*.answers.json` carry "Runner-up" (PUBLIC since 2026-11-14). The CSE lane (`scripts/upsc/`) and others using the same brief are unmeasured; run `solverVoice` over their answers files to size them. | identified (not analysed) |
@@ -131,9 +132,17 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 | **The MH State Board Class-10 textbook layer was ingested by 30 parallel agents on 2026-08-28, and four inconsistencies survive that are cheap to fix but touch SHIPPED rows.** (a) **Ref style is split six-and-six across the twelve Mathematics chapters** - `AGENT_BRIEF.md` said `Ex 1.1 Q3` where the older `MATHS_TRANSCRIPTION_BRIEF.md` and the shipped `pythagoras-10` say `Ex 1.1 Q.3`, and both documents were in play at once. (b) **`config.ts` carries near-duplicate subtopics** the ingest deliberately reused rather than renamed - Geometry has both `Property of an Angle Bisector of a Triangle` and `Property of Angle Bisector of a Triangle` (1 PYQ row each), and `Construction of an Angle Bisector` beside `Construction of Angle Bisector`; Mensuration has `Area of Combined Figures` beside `Areas of Combined Figures`; Heat has `Humidity` beside `Humidity and Relative Humidity` and `Anomalous Behaviour of Water` beside `Anomalous Expansion of Water`; Refraction has `Refractive Index` beside `Absolute Refractive Index`. (c) **Several configured subtopics receive ZERO textbook rows because the chapter no longer teaches them** - Financial Planning's `Income Tax - Assessment Year` and `Income, Expenditure and Savings` (this edition is GST + shares), Life Processes Part 1's seven osmosis/transpiration/transport/excretion/glands names (the chapter covers three topics, not ten), Co-ordinate Geometry's `Equation of a Line`, Mensuration's `Euler's Formula`, Trigonometry's `Angle in Standard Position`, Carbon Compounds' `Rancidity`, Environmental Management's `Control of Noise Pollution` and `Blue Revolution`, Heredity's `Mendel's Laws of Inheritance`. All are PYQ-era names from an older syllabus. (d) **Two questions have no good subtopic home at all** - Lenses `Ex Q5` (astronomical telescope, filed under `Simple Microscope`) and Mensuration `PS7 Q12` (a chord-property question filed under `Circumference of a Circle`). | **(a) is measured and mechanical**: 383 rows across 41 files, `normalise-maths-refs.ts` is written, dry-run and self-tested, and `question_number` sits outside `content_hash` while sections routing keys on the block prefix - so the rename moves nothing and `backfill-sections.ts` re-proves every ref still routes. It waits only so it cannot race an in-flight agent. **(b) and (c) are a RENAME/RE-FILE pass and are the expensive half**: every one of those names carries live board-PYQ rows, so a merge or rename re-files SHIPPED PYQ content, which is exactly what the ingest policy refused to do unilaterally. Note the asymmetry recorded on the CDS GK run - an ADDITION is cheaper the earlier it lands, but a RENAME costs the same whenever it is paid, so waiting for a settled corpus is correct rather than merely convenient. **(d) needs a taxonomy decision, not a fix**: a `Telescopes and Optical Instruments` subtopic under Lenses would be a genuine addition; `PS7 Q12`'s real home is a chord property that Mensuration has no slot for. | **Identified 2026-08-28 during the ingest; (a) READY and pending only the last agents, (b)(c)(d) NOT done.** Each was reported by the agent that hit it rather than acted on, because `config.ts` was off-limits to them by design. (b)-(d) need a 360 + permission: they touch shipped PYQ rows and a subtopic rename is visible on `/browse` filters and every notes/guide cross-reference that names one. |
 
+## 2026-11-17
+
+### NDA Maths mock-test practice solutions lost equations on import (found in the suggestions sweep, not changed)
+
+`NDA_Maths_Mock_Test_01..10.docx` (about 1,180 PUBLIC practice rows) came in through pandoc with three defects: equations that were images or OLE objects vanished, leaving solutions like "required probability =" or "middle term is  = 3rd term"; a hard-line-break backslash is left at the end of lines (`\)\` then a newline); and some stems say "as shown in the figure above" (worth an `audit:figures` read). A rough count of solutions with a gap after an `=`: Mock Tests 01-05 about 60 each, 06-08 about 30, 09 none, 10 six. The 10 rows that also carried `^x^` were rewritten on 2026-11-17 (scripts/reports/data/2026-11-17-pandoc-superscripts.json). The rest need the source .docx (render the equation images) or a solutions-backfill pass, chapter by chapter. Measure first: `select source_file, count(*) ... where solution ~ '=\s*$|=\s{2,}\S'`.
+
 ## 2026-11-16
 
 ### SSC CHSL and CPO items found during the homework review (not changed)
+
+**Status: DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): every row read against SSC's own sheet; every key equals SSC's. Notice + grace: 1dfc2974, 5a2d6231, c23a0a5e (transcripts flawed, publish.ts, flawed.json). 18f9eac9 regains its cloze passage (context_from: 191). The 'duplicate' CPO pair is SSC printing one stem twice in one shift with different options. The rest are SSC's own print, already explained in the solutions.**
 
 The repeat review for the 20 SSC CHSL and CPO homework plans read every question. Questions whose solution opens with a defect note were left out, as for CGL (CHSL 48 rows, CPO 108; Current Affairs, which has no plan, not counted). Three more are flawed as printed and are left out too (`excludedQuestions` in `scripts/homework/data/ssc-c*.json`). The rest below stay in the plans: the answer is clear and the solution explains the slip. Fix shipped rows in place, per the defective-question policy.
 
@@ -147,6 +156,8 @@ The repeat review for the 20 SSC CHSL and CPO homework plans read every question
 
 ### CDS English and GK items found during the homework review (left out of the plans, not changed)
 
+**Status: DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): read against the booklets; no UPSC key found for any pre-2026-II sitting. Notice + grace on 10 (6fea7930 key A -> C, the statement the item is built around); 324845c0 is fine, its solution no longer calls it defective. Notices recorded in cds/cds-gs data (CDS English gained a `notice` field).**
+
 The repeat review for the eight CDS English and GK homework plans read every question. UPSC published no key for these papers, so the stored answers are our derivations. Ten are flawed as printed and left out of the homework plans (`excludedQuestions` in `scripts/homework/data/cds-*.json`); an eleventh stays in. Each still shows on /browse and in mocks as before. Decide per item whether it gets a `notice:` and grace (the defective-question policy); shipped rows are fixed in place.
 
 - **No printed option is correct (English word class):** 23c80baa (CDS 2 2021, "wandered around": no Adverb option, keyed Verb), eff05c95 (CDS 1 2020) and 47fda3a4 (CDS 1 2021) ("since" + a time is a preposition: no such option, keyed Adverb), fb2df23f (CDS 2 2022, "all good things": keyed Pronoun).
@@ -156,6 +167,8 @@ The repeat review for the eight CDS English and GK homework plans read every que
 
 ### NDA GAT items found during the homework review (not changed)
 
+**Status: DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): cca345ed and 91702209 regain the lost part (a), key B -> C (UPSC key); 6dba1ff3 D -> A (UPSC key); 831abf6d A -> B (UPSC provisional key, re-check on the final); notice + grace on ebe34b3e (B -> C, UPSC key), 4cd4da82 (A -> B, NCERT), 4b2e4791, 27b08077 (rewritten solution).**
+
 The repeat review for the eight NDA GAT homework plans read every question; these look defective as stored. None changes a plan's grouping. Each needs the printed paper or UPSC's key before any edit (shipped rows: fix in place, per the defective-question policy).
 
 - **Two "No error" options, one underlined part lost:** cca345ed (English, NDA 2 2018 Q.1, "a honest man") and 91702209 (NDA 1 2021 Q.31). The keyed TEXT is right; the option letters are shifted.
@@ -164,6 +177,8 @@ The repeat review for the eight NDA GAT homework plans read every question; thes
 - **Known flawed, solution already says so:** ebe34b3e (English, NDA 1 2021 Q.50) needs "had known", not offered.
 
 ### SSC CGL GK items found during the homework review (left out of the plans or kept, not changed)
+
+**Status: DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): 584dfa3e notice + grace; 07af71e8's solution corrected (Art. 280(3) does list the recommendations). Fine as printed: e46c5455 (1791 Benares 'Hindoo College'), 971e2298, 506f26a8, 5ae50612, d9f9d820, 3f143f57 (no better chapter).**
 
 The repeat review for the seven SSC CGL Tier I GK homework plans (History, Geography, Polity, Economics, Biology, Chemistry, Physics) read every question. The 14 rows whose solution already opens with a defect **Note:** were left out of the plans, as for English. Four more were left out because they would teach a wrong fact; none is changed in the bank (needs SSC's printed paper first):
 
@@ -176,6 +191,8 @@ Kept in the plans but worth a look: **5ae50612** (Economics) option D garbled ("
 
 ### Board PYQs: about 760 Maharashtra HSC 12 questions still show no marks (Step 2, not started)
 
+**Status: OPEN 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): not started in the sweep.**
+
 A student asked for "marks of each question" on board PYQs (feedback 2026-11-14). Step 1 shipped on branch `feat/board-pyq-marks`: /board's Board PYQs and Top 10 tabs show the printed marks wherever a stored whole paper carries the question and every paper agrees (`src/lib/board/pyqMarks.ts`). That covers all of CBSE 12 and 10, 2,032 of 2,070 SSC 10 and 1,488 of 2,246 HSC 12.
 
 - **The HSC gap:** about 758 Maths, Physics and Chemistry rows came from the chapter-wise compilations (`scripts/mh-hsc-12-pyq/`, `Chapterwise_PYQs`), which never recorded marks, and sit in no stored paper. Next: check whether the raw board papers (`RAW_PAPERS` in `scripts/mh-hsc-12-pyq/config.ts`) print the marks, and either build those papers on /question-papers or store the marks another way. **Do not infer marks from the question number:** the HSC pattern changed around 2020, and a wrong mark is worse than none.
@@ -185,6 +202,8 @@ A student asked for "marks of each question" on board PYQs (feedback 2026-11-14)
 ## 2026-11-10
 
 ### Look and feel: what is left after the "slicker" Phases 1 and 2 (none started)
+
+**Status: OPEN 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): each piece is a UI change needing the owner's before/after sheet; not started in the sweep.**
 
 Phase 1 (compact phone page tops, calmer header, branded sign-in, short intros) and Phase 2 (one-line question cards, fitted formulas and pinned table columns, wide desktop list pages) are merged and pushed (merges `1095b4fc2` and `31d3cd097`). Review method and sheets: a live audit of 23 page types at 390 px and 1440 px.
 
@@ -200,6 +219,8 @@ Phase 1 (compact phone page tops, calmer header, branded sign-in, short intros) 
 
 ### Learn kept only in the avatar menu; an idea for its lessons in V (owner, not decided)
 
+**Status: TRIGGER 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): waits for the Learn readout (25 Nov).**
+
 - **State.** From 28 Oct to 8 Nov, 3 students mastered a Learn concept and none came back on a second day (the keep rule was 25 and 10). Since 2026-11-08 the avatar menu is Learn's only way in; the footer link and the board-chapter link are gone. The pages, the sitemap entries, the tables and `learn:import` stay, so this can be revisited. The experiment's check is still 25 Nov.
 - **Idea (owner): V teaches a concept from a Learn lesson** when a student asks to understand one. The owner is not sure there is demand. Before building anything, measure it: how many V messages a week ask to understand a concept (not to solve a question), and whether V's `explain_concept` (notes concept cards) already covers them. A Learn lesson exists only for Class 12 Maths, so count only those students.
 - **Later, if Learn is retired fully:** delete `src/app/learn`, `src/components/learn`, `src/lib/learn`, `/api/learn/*`, the import and check scripts and their tests, after checking that its pages get no search traffic. Keep the `learn_*` tables (students' progress).
@@ -207,6 +228,8 @@ Phase 1 (compact phone page tops, calmer header, branded sign-in, short intros) 
 ## 2026-11-05
 
 ### Follow-ups from the Next 16 upgrade (TECH_DEBT_SPEC.md 4.1-4.2), none done
+
+**Status: PARTLY DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): the principle pages now cache (anon client + revalidate, tested); database requests per day were flat across the 11-05 deploy (~400-500k tracked calls a day before and after). Still open by design: the 99 warnings are fixed by touch; middleware -> proxy needs a preview measurement; React 19 before Next 17.**
 
 - **99 React Compiler lint findings, now warnings.** eslint-config-next 16 brings eslint-plugin-react-hooks 7 (`set-state-in-effect` 53, `static-components` 15, `purity` 11, `refs` 10, `immutability` 7, `use-memo` 2, `preserve-manual-memoization` 1). They flag code that passed the Next 14 config; fixing them reworks shipped components, so `eslint.config.mjs` sets them to `warn`. Fix by touch, then turn each back to `error` when its count reaches 0.
 - **`middleware.ts` -> `proxy.ts`.** Next 16 deprecates the middleware name and prints a notice; it still works. The rename moves the code from the edge runtime to Node, which changes how Vercel runs and bills it: measure invocations and latency on a preview before switching.
@@ -218,11 +241,15 @@ Phase 1 (compact phone page tops, calmer header, branded sign-in, short intros) 
 
 ### NDA Maths items found during the Top 10 review (not changed)
 
+**Status: MOSTLY DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): Q6/Q14 lose the leaked set header; 104b7788 regains its fractions (stays in Linear Systems, the nearest chapter). Q37's move to Permutation & Combination / Geometric Counting is ready (scripts/reviews/data/2026-11-17-nda-maths-q37-move.json) but the write was refused by the session's permission check: the owner runs it, then swaps Q37 out of nda-chapter-maths-06-lines and rebuilds the NDA Maths homework plan.**
+
 - **NDA 2 2022 Q.6 and Q.14:** each context begins "Consider the following for the next three (03) items that follow:" but the question is a single statements question; the next questions stand alone. Misleading wording only; the passage itself is the question's own. Fix by dropping that phrase after checking the printed paper.
 - **NDA 2 2024 Q.37** (filed under Lines) counts the points where four lines meet a circle: a counting question, likely Permutation & Combination or Circles.
 - **104b7788** (NDA 1 2025, filed under Linear Inequalities) is a pair of linear equations (find x + y), not an inequality.
 
 ### Class 10 revision sheets: past-paper questions filed under a chapter that does not teach them (owner to decide)
+
+**Status: READY, NOT APPLIED 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): 71 MH SSC 10 rows matched (mostly word for word) to the chapter that teaches them, 1 kept; manifest scripts/reviews/data/2026-11-17-mh-ssc-10-moves.json passes a dry run of move-questions.ts. Chapter moves were refused by the session's permission check, so the owner applies it, then swaps the gold-plating row out of the Science I Effects of Electric Current chapter test and rebuilds the affected plans. CBSE 10 Triangles 2fe7e48e: kept.**
 
 Found while drafting the 56 MH SSC 10 and 27 CBSE 10 quick-revision sheets. Nothing was changed in the bank; each sheet leaves the question out of the chapter it is filed under, or keeps it as a "most asked" topic with a mistake note when the board keeps setting it there. A move is a 360 + ask (chapter tests, homework plans, Top 10 and /board lists follow the chapter).
 
@@ -281,17 +308,23 @@ Found while drafting the 70 HSC 12 quick-revision sheets (each agent read every 
 
 ### Free exams still meet the drill limit and the projected-score trial
 
+**Status: TRIGGER 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): no Class 9-10 student has hit the drill limit since 0210 (0 of 6 limit-days involved a free-exam question). Fix when one does.**
+
 Migration 0210 made the six Class 9-10 exams free: answers, mocks, chapter and practice tests, saves, V and downloads (downloads put back behind the pass 2026-11-05, owner). Two limits still apply to them: **15 drill questions a day** (`lib/drill/service.ts` reads one allowance for a whole set, and a set can mix exams) and **the 7-day projected-score trial** (`/performance`). Left out on purpose: the drill wall showed 15 times in 30 days across ALL students. Fix if a Class 9-10 student hits either: make the drill allowance skip free-exam questions (count and serve), and the projection open for a free exam. **Status: OPEN, low priority.**
 
 ## 2026-10-30
 
 ### Download passes are checked per SITE, not per exam
 
+**Status: TRIGGER 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): MCAT's plan is still inactive; fix when it goes on sale.**
+
 Per-exam pricing (migration 0206) makes the mock and save limits ask for the pass of the exact exam, but the three download routes (`/api/export`, `/api/export/formula-sheet`, `/api/export/access`), /browse's download box and the reveal meter's fallback ask for **any pass the request's site sells** (`passScopesFor(site)`), because a download names its content in five shapes (filters, ids, past paper, board paper, homework) and none cheaply carries the exam. Two consequences, both harmless today: (1) **once MCAT is live, an IMAT pass would also download MCAT papers on intl** (and an MCAT pass IMAT ones); (2) a hand-made API call to **www** for IMAT questions is judged by the www pass. Fix when MCAT goes on sale: resolve the exam per mode (a mock slug carries `examName`; filters carry `examId`) and ask `passScopesFor(site, exam)`. The reveal meter already sends its page's exam (`?exam=`) on intl pages. **Status: OPEN, do before MCAT's pass is switched on.** **Update 2026-11-02:** the per-mode exam resolver now exists for free exams (`lib/export/freeExamDownload.ts` resolves filters, ids, past paper, board paper, homework and formula sheet to an exam); reuse it to ask `passScopesFor(site, exam)` when MCAT goes on sale. **Update 2026-11-05:** that resolver was deleted when Class 9-10 downloads went back behind the pass (no caller left); recover it from git history (`git log --all -- src/lib/export/freeExamDownload.ts`) when MCAT needs it.
 
 ## 2026-10-27
 
 ### SSC CGL pictures: what the 2026-10-27 review could not fix
+
+**Status: CLOSED 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): both are limits of SSC's own print; nothing further can be recovered.**
 
 The review read all 751 picture questions by eye. Live: 331 stem pictures trimmed of the question sentence (`trim-stems.ts`), and 19 rows replaced with `refigure.ts` (log `scripts/ssc-cgl/refigure-log.json`): 2 Tier II scan figures enlarged (2026-01-18 Q48, Q49), 7 hand-cut where the sentence touched the figure, 5 charts redrawn from their printed numbers (`redraw_charts.py`), 5 small figures enlarged or re-laid out. Left, because the source itself is the problem:
 
@@ -313,6 +346,8 @@ Found while building the Repeated PYQs books (which print chapters in `chapters.
 
 ### The PDF download printer can hang on some PNG pictures, as the ebook builder did
 
+**Status: DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): printOnce redraws every PNG figure as a JPEG with a canvas in the page before printing (no new dependency; the watermark stays PNG), tested on a real browser.**
+
 Found while building the board Solved Papers books: an ordinary 803x650 RGB PNG (the labelled female reproductive system, solution picture of SSC Science and Technology II, July 2024, Q.4 (i)(a), question `4ff6f203-bdfd-478a-b0f0-2a00b0ae046e`) hung Chrome's PDF print for good whenever it fell near a page break. Printed alone it took 1 s; dropping it, or the same picture as a JPEG, printed the whole run in about 2 s; capping its size or changing the page-break rules did not help. The ebook build now turns every picture into a JPEG first (`asJpegs` in `scripts/ebooks/build.ts`, `sharp`, dev-only).
 
 **The paper and answer-key downloads use the same printer** (`lib/export/pdf/printPdf.ts`) and still embed PNGs. A download that hits this would wait out the print timeout and then serve the Word file instead (`buildPaperFile`'s fallback), so the student gets a file, late, in the wrong format. Not measured on Vercel's headless shell, which is a different Chromium build from local Edge. The fix there is the same conversion, but `sharp` would then be a runtime dependency of the export route, so it wants a decision: convert at upload time (store a JPEG beside each PNG) or at export time. **Status: logged, not done.**
@@ -327,6 +362,8 @@ Found while drafting animated solutions (batch fg-jee-aod-1). Question `a751d0d5
 
 ### Re-running SSC's catalog generator would now drop names live SSC rows use
 
+**Status: DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): seed-catalog.ts carries over every name a transcript still uses (catalogCarry.ts, tested) and no longer throws when CDS gains a name SSC added; a dry regeneration covers all 675 transcript names.**
+
 **Found:** building the SSC CGL Maths notes pipeline, 2026-10-23. `scripts/ssc-cgl/seed-catalog.ts` builds `catalog.json` by COPYING the CDS subjects' current chapter and subtopic names from the database. The CDS GK notes pass (2026-10-22/23) re-cut CDS's General Knowledge subtopics, but SSC's General Awareness rows were filed under the OLD CDS names and were not moved. A regenerated catalog would therefore lack names that live SSC rows (and their committed transcripts) carry, and the next `build.ts` of any shift would reject those rows.
 
 **Why it is not fixed now:** nothing regenerates the catalog unless someone runs the generator by hand, and the SSC notes re-cut (`scripts/ssc-cgl/reshape.ts`) only ever ADDS names. The fix is to make the generator keep every name an SSC transcript still uses (read the transcripts as a third source), with a test. Decide before the next CDS rename makes someone want to re-run it.
@@ -336,6 +373,8 @@ Found while drafting animated solutions (batch fg-jee-aod-1). Question `a751d0d5
 
 ### Guide prose that abbreviates a chapter name went stale with the bank, and no probe can separate it from a legitimate per-paper figure
 
+**Status: OPEN 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): not built in the sweep.**
+
 The ten-guide NDA II 2026 refresh re-derived every `OVERVIEW`, chapter table, trend row and strategy strand from the live bank and verified each sums to its subject total. What it could NOT do mechanically is narrative prose that names a chapter by an abbreviation — `Vocab 316`, `Indian Geography Economy chapter (81 q)` — because the name-matched updaters key on the exact DB chapter name. Every strand aggregate and component breakdown was corrected by hand and its arithmetic checked; a long tail of `N q` figures inside playbook and trap prose was not. A triage probe tests each `N q` against the set of live chapter/subtopic counts for that subject and flags ~100 candidates, but it is deliberately noisy: most hits are legitimate per-paper or per-year figures, not bank counts, so it is a human-review list and can never be a gate in its present form.
 
 **Why:** these are the numbers a student reads inside a sentence rather than in a table — the most persuasive place a wrong figure can sit, and the only place with no gate behind it. The tables are all asserted; the prose is not. And the gap reopens on EVERY ingest, not just this one.
@@ -343,6 +382,8 @@ The ten-guide NDA II 2026 refresh re-derived every `OVERVIEW`, chapter table, tr
 **How to apply:** the durable fix is to stop hand-writing counts in prose. Either (a) interpolate from the same `_data` constant the table already renders, so prose and table cannot disagree by construction, or (b) give each guide a small `PROSE_COUNTS` map that a test asserts against live taxonomy, the way `guide-nda-<subject>-playbooks.test.ts` already asserts drill targets still resolve. Until one of those exists, promote the triage probe into `scripts/` so the candidate list is at least reproducible instead of living in a scratchpad — and note that its noise is intrinsic: distinguishing "45 q in this chapter" from "45 q per paper" needs the sentence, not the number.
 
 ### Three NDA II 2026 questions have no `/notes` concept to sit on
+
+**Status: CLOSED 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): each gap is a single question (no other Kinematics PYQ uses relative velocity), so no ConceptUnit; they stay untagged on purpose and the new `npm run notes:untagged` makes every such gap visible (4,334 of 43,600 noted PYQs).**
 
 Step 4 of the post-upload ritual tagged 186 concepts across the 270 new rows and left exactly three untagged, because no existing `ConceptUnit` fits: two Biology (sphincter anatomy; external fertilisation) and one Physics (relative velocity). They are recorded as untagged rather than approximated onto a neighbouring concept.
 
@@ -352,6 +393,8 @@ Step 4 of the post-upload ritual tagged 186 concepts across the 270 new rows and
 
 ### Two NDA Maths chapters each call themselves the hardest, and neither is
 
+**Status: DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): measured, Height & Distance (69% HARD) is the hardest; Quadratic Equations, Properties of Triangle, Matrices and Trigonometric Identities reworded (Trig Identities also wrongly claimed 'biggest'). tests/notes-intro-superlatives.test.ts allows one claimant per subject.**
+
 `quadratic-equations`' intro says it has "the densest HARD profile of any NDA Maths topic"; `properties-of-triangle`' says it is "the toughest yield in NDA Maths". Measured over chapters with >=20 PYQs, the ranking is **Height & Distance 69.2% HARD**, Properties of Triangle 42.3%, Circles 39.3%, Quadratic Equations 37.3%. So one claim is fourth, the other second, and the actual leader claims nothing. The stated percentages beside them (40% and 45%) were stale and have been corrected to 37% and 42%; the SUPERLATIVES were deliberately left alone, because rewording them is an editorial voice decision rather than a number substitution.
 
 **Why:** a superlative is the most quotable sentence in an intro and the least likely to be re-checked, and two of them are now mutually contradictory in shipped, indexed copy (chapter intros feed `metadata.description`). Unlike a count, no test can derive the right wording.
@@ -360,6 +403,8 @@ Step 4 of the post-upload ritual tagged 186 concepts across the 270 new rows and
 
 ### The /notes intro-count test cannot see a claim that names no unit
 
+**Status: PARTLY DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): 'N of them HARD' claims are now checked against live HARD counts in the daily contract (all 18 match). Other bare 'N of them' claims are still unguarded.**
+
 `tests/notes-intro-counts.test.ts` (added 2026-09-14) matches `<N> PYQs|questions`, including the attributive `63-PYQ` form that initially hid two stale chapters. It still cannot see a bare count whose noun is elsewhere in the sentence — "central tendency and dispersion alone account for **119 of them**", "the hardest by raw HARD count (**47 of them**)", "only **6 of them** are EASY". Those were checked BY HAND this pass (2 of 12 were stale: Statistics 119 -> 122, plus the two percentages above) and are unguarded from here on.
 
 **Why:** they sit in the same sentence as the numbers that ARE guarded, so the guarded half will stay right while the unguarded half drifts — producing an intro that contradicts itself, which is worse than one that is uniformly stale.
@@ -367,6 +412,8 @@ Step 4 of the post-upload ritual tagged 186 concepts across the 270 new rows and
 **How to apply:** these are derivable in principle but not from the number alone — "119 of them" needs to know WHICH subtopics are meant. The cheap version is a test that flags any `\d+ of them` / `\d+% ... HARD` in an intro and requires it to appear in an allowlist of adjudicated claims, so a NEW one cannot be added silently and an existing one is re-read whenever the allowlist is touched. The expensive version is structured data (a `counts:` block on `ChapterNote` interpolated into the prose), which would also close the guide-prose item above.
 
 ### `seo:dates` is not part of shipping a guide, so a shipped guide sat for three weeks with no `<lastmod>`
+
+**Status: DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): the daily Prod contract runs seo:dates --check (full-history checkout) and emails on failure; the guide checklist names the step. It was stale again on the day (six NEET Chemistry chapters).**
 
 Running `npm run seo:dates` after the ten-guide commit added `/guide/mht-cet-maths` to `contentDates.generated.ts` for the FIRST time. That guide shipped 2026-08-22, so it had been in the sitemap with no per-page `<lastmod>` ever since — nobody had run the script in between. CLAUDE.md's Commands table does say to run it after shipping a notes chapter or guide, but GUIDE_TEMPLATES.md's per-new-guide plumbing checklist — the list a person actually works through when shipping a guide — does not carry the step.
 
@@ -378,6 +425,8 @@ Running `npm run seo:dates` after the ten-guide commit added `/guide/mht-cet-mat
 
 ### A relative import whose target is UNTRACKED passes every local gate and 500s in production
 
+**Status: DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): nda-tracker api/__tests__/trackedImports.test.js checks every function's relative import against git ls-files and flags extensionless ones (proved red both ways; merged to nda-tracker's local main, not pushed). The vault is covered already: CI typechecks a fresh checkout.**
+
 `api/quiz-import.js` in nda-tracker imported `./_env.js` while `api/_env.js` was untracked in git. `node --check` passed, all 297 tests passed, the Vercel build succeeded — and the deployed function crashed at module load with `ERR_MODULE_NOT_FOUND`, 500ing all three flows behind its `kind` discriminator (paper push, hydrate, quiz push) for ~50 minutes. **Neither a syntax check nor a test suite can distinguish a tracked file from an untracked one**, because both read the disk; Vercel builds from git. This is the second cause of the same runtime failure the cross-app memory already records (the first being extensionless imports under Node-ESM).
 
 **Why:** it is silent everywhere it could be caught, and it is guaranteed to recur — both repos routinely carry untracked in-flight work, and the trigger is simply committing a file that someone has also edited to add an import.
@@ -386,6 +435,8 @@ Running `npm run seo:dates` after the ten-guide commit added `/guide/mht-cet-mat
 
 ### The paper-push sitting chooser has never been rendered in a browser
 
+**Status: OPEN 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): needs the owner's click-through (behind a dialog on an auth-gated page).**
+
 `PaperDownload`'s sitting chooser (migration 0097) is an inline panel inside a Radix Dialog that does not exist in the DOM until the Download button is clicked, on an auth-gated `f` page. The full gate proves it compiles and 42 tests prove the logic; nothing proves it lays out.
 
 **Why:** every other verification for this feature is green, which is exactly the state in which an unrendered control ships broken. The repo has no jsdom/Playwright harness, so this cannot be closed headlessly.
@@ -393,6 +444,8 @@ Running `npm run seo:dates` after the ten-guide commit added `/guide/mht-cet-mat
 **How to apply:** push one paper twice end to end. First push should go straight through as sitting 1 with no dialog; the second should show the chooser listing sitting 1, with a label field and both buttons. Ideally use one of the nine pre-0097 drafts, which also exercises the 409-becomes-an-offer path — the only path that was tested against a mock rather than a live tracker.
 
 ### The vault cannot tell whether a pushed sitting has been conducted, so the chooser offers an action that may fail
+
+**Status: TRIGGER 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): worth building only when someone reports the wasted click.**
 
 "Update sitting N" is offered without knowing whether N has results, because only the tracker knows and it exposes no read endpoint (it is at 12/12 Vercel Hobby functions, so a new one costs a build). If the sitting turns out to be conducted the tracker 409s and the dialog re-renders correctly with only "Push as a new sitting" — it self-corrects in one click, but the round trip is wasted and the button was briefly a lie.
 
@@ -405,6 +458,8 @@ Running `npm run seo:dates` after the ten-guide commit added `/guide/mht-cet-mat
 ## 2026-09-10
 
 ### 13 same-tag groups in the Chemistry compilation are THREE different defects, and only one of them is a duplicate
+
+**Status: DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): read against the board papers. 8 copies retired (WITHHELD + withhold.ts; 6 were PUBLIC), the Chemistry plan rebuilt; Coordination 2022 Q.21 -> Q.20 and Vectors 2019 Q.9 -> Q.8 (OR) retagged (retag.ts); 5 groups are parts of one printed question and stay. Found on the way, still open: 2017 Q.2.v/vi numbering in Chemical Thermodynamics, Feb 2020 Q.31's bond-enthalpy part is in no row, KClO4 vs KClO3 in Feb 2020 Q.28, d-f-block#10 tagged 2022 Q.22 wrongly.**
 
 **Found 2026-09-10** while authoring the Chemistry board-PYQ waves. Three agents independently
 reported "the same printed question appears twice in this chapter" (Chemical Thermodynamics,
@@ -452,6 +507,8 @@ row's citation is wrong — so it needs its own 360 rather than riding along.
 
 ### The `^x^` superscript residue renders literally in two Electrochemistry stems
 
+**Status: DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): the remaining stem fixed in place and both recorded in defects.json; audit:text's new PANDOC_SCRIPT class found 9 more NDA practice rows, all fixed (7 solutions rewritten).**
+
 **Found 2026-09-10**, reported by the authoring agent. `electrochemistry-12-pyq#4` and `#5` carry
 `223 Ω^-1^cm^2^mol^-1^` and `0.01 Ω^-1^ cm^-1^` — pandoc's markdown superscript syntax, which
 nothing in this render path understands. KaTeX only reads inside `\(...\)`, so outside a math zone
@@ -472,6 +529,8 @@ authored after the extractor's current rules have been re-run.
 
 ### A shipped Maths option was repaired in `data/` only — re-running `assign.ts` would revert it
 
+**Status: DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): an optionsMistranscribed entry asserts --1 and writes -1; a fresh extract reads -1.**
+
 **Found 2026-09-10** while proving the new math-wrapped-blank rule left every already-committed
 `mh-hsc-12-pyq` chapter untouched. Diffing all 32 committed chapters against a fresh full
 re-extract found **exactly one field that drifted, and it is not the blank rule**:
@@ -490,6 +549,8 @@ asserting the current text, so it refuses on a mismatch rather than force-applyi
 row itself is already correct, so `content_hash` does not move and nothing needs a re-commit.
 
 ### 11 shipped rows carry a literal `--` where the printed page has an en dash
+
+**Status: DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): audit:text's new DOUBLE_HYPHEN class found 223 PUBLIC rows; 222 repaired one by one (one literal MIME --boundary kept) and carried into each lane's tracked sources; the HSC lane's probeRow now flags -- and ^x^ at ingest.**
 
 **Found in the same sweep.** Pandoc renders the source's en dash as a double hyphen, and 11 rows
 across four SHIPPED chapters carry it in both `data/` and the live DB — so it is not drift, it
@@ -516,6 +577,8 @@ is the cheap half and can land first.
 
 ### Gate `pyq_note` to superadmin on `/browse` — but it is doing TWO jobs and only one of them is staff-only
 
+**Status: OPEN 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): not started in the sweep.**
+
 **Asked for 2026-09-09** (user: *"lets make pyq_note visible only for superadmin"*), after a wrong note was found on a live practice question. Recorded here rather than built, because measuring the blast radius first showed the field is not the staff-only metadata the ask assumes.
 
 Where it renders — **exactly two consumers, both through `formatProvenance`**: the `/browse` QuestionCard bracket (`[Q42 · 10th May Shift 1 · 2023]`) and `/guide` worked-example citations (`loadWorkedExamples`). The Word export is NOT affected: `src/lib/export/sourceTag.ts` is deliberately exam + year only and says so in its own header. So the change is two call sites, not a schema or RLS change.
@@ -534,6 +597,8 @@ Scope, measured against the live bank:
 
 ### Move the errata bracket out of `solution` into its own column — but keep rendering the answer-affecting half
 
+**Status: OPEN 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): not started in the sweep.**
+
 **Asked for 2026-09-09** (user: *"should we strip errata bracket and put it in entirely new column? student facing solution shouldn't contain this"*). The objection is right — a `[Textbook…]` bracket glued into the middle of a derivation is editorial apparatus sitting in student-facing prose. The measurement says the extraction is right and a blanket *hide* is not.
 
 **1,229 PUBLIC rows carry a bracket** — 974 `[Textbook…]` + 265 `[Note:…]`, concentrated in the board corpora (MH Class 11 463 · MH HSC Class 12 358 · MH Class 10 177 · MH Class 9 101 · CBSE 12 61 · CBSE 11 30 · NDA 29 · MHT-CET 6 · JEE 4). They do two different jobs:
@@ -549,6 +614,8 @@ Scope, measured against the live bank:
 
 ### 3,040 NDA practice rows carry the wrong `pyq_note` — invisible today, wrong the moment anything reads it
 
+**Status: DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): 2,956 rows rewritten from their file names (the other 84 were right); commit.ts reads the note from the file name and refuses a topic with neither.**
+
 Every bulk-ingested NDA practice PDF is stamped `NDA Maths practice — Algebra / Sequence & Series` regardless of its actual chapter: a Vectors question from `NDA_Maths_Practice__3D__Vectors.pdf` claims Sequence & Series, and so do Circles, Probability, Limits, Conics and 24 more. **3,040 rows across 29 files and 29 chapters, 3,027 of them PUBLIC.** Only the three hand-built LWS test files (Matrices Test, Vectors Test B, APJ Mock 5) carry correct notes.
 
 **Why:** the exposure today is **zero to students**, and it is worth stating that plainly because the obvious reading is the opposite — `formatProvenance` drops `pyq_note` for NDA, so this string reaches no rendered surface. It is a latent defect rather than a live one. It matters anyway on two counts: the note is a claim about provenance that anything reading the column will believe (an export, a report, a future non-NDA-shaped renderer), and if the superadmin gate above is built, the staff surface it is gated TO is exactly where these 3,040 wrong strings would finally become visible.
@@ -556,6 +623,8 @@ Every bulk-ingested NDA practice PDF is stamped `NDA Maths practice — Algebra 
 **How to apply:** derive the note from `source_file` — the filenames already encode area and chapter (`NDA_Maths_Practice__Calculus__Limits_and_Continuity.pdf`) — as one `UPDATE` asserting the current wrong value in its `WHERE` so a re-run is a no-op and a partially-fixed corpus cannot be double-written. It touches no stem, option, key or `content_hash`, so nothing re-hashes and no paper or mock reference moves. Fix the ingestion script's note default in the same pass or the next practice batch reintroduces it.
 
 ### Port the State Board provenance gate into `scripts/ncert/` — the derived-answer stamp is currently a manual step nothing enforces
+
+**Status: DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): scripts/ncert/provenance.ts (tested) holds the rule; flip-public refuses an unstamped derived answer (proved on live chapters: Units/Redox pass, Class 12 Alcohols refused); stamp-provenance's dry run reports what remains.**
 
 `scripts/stateboard/flip-public.ts` REFUSES to publish an authored row carrying no `derived_model`, and the 2026-09-02 entry records exactly why: provenance belongs to COMMIT, not to publish, because a published derived answer that does not announce itself reads as an official key. **The NCERT lane has `stamp-provenance.ts` but NO such gate** — `scripts/ncert/flip-public.ts` publishes whatever it is pointed at, so stamping is a step someone has to remember. It has been forgotten on 28 of the 48 chapters this lane has cross-checked (see the backfill-ledger row of the same date).
 
@@ -567,6 +636,8 @@ A second, smaller defect in the same script: **`stamp-provenance.ts --dry` does 
 
 ### 4,800 PUBLIC MCQ rows ship with a correct key and NO working — measure whether each corpus intended one
 
+**Status: SUPERSEDED 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): the solutions backfill took it to 1,334 (that session continues). `npm run stats` now prints the count by exam, the standing probe asked for.**
+
 Measured 2026-09-09 across the whole bank: `visibility='PUBLIC'` MCQ rows with a NULL or empty `solution` number **4,800**, concentrated in **Foundation Course 2,659** (Chemistry 961 · Physics 902 · Biology 796), **NEET 1,769** (Physics 696 · Botany 406 · Chemistry 406 · Zoology 261), **MH State Board Class 11 Maths 132**, **JEE Mains 163** (Maths 120 · Physics 43), **MH State Board Class 9 Maths 59** and **NDA Maths 18**. CBSE Class 11 and Class 12 read **zero**, which is the useful control: it is evidence the NCERT lane's fix for this class held after the Integrals repair.
 
 **Why:** nothing detects it. `board:lint` checks section structure, `audit:keys` SKIPS a row with no solution by construction, and a NULL solution is legal in the schema — so the only symptom is a count nobody runs. This repo has shipped the defect once already (NCERT Integrals, 22 rows, closed 2026-08-17) and it recurred in NCERT Chemistry Cl-11 ch5 this session. **But the number is a measurement, not yet a finding**: for a PYQ MCQ the correct option may be the whole product, and for the two large corpora the answer is genuinely unknown from here — the Foundation worksheets ship no printed key at all, while the NEET source booklets DO carry worked solutions that were apparently never stored, which would make that 1,769 a lossy ingest rather than a design choice.
@@ -574,6 +645,8 @@ Measured 2026-09-09 across the whole bank: `visibility='PUBLIC'` MCQ rows with a
 **How to apply:** triage by corpus before repairing anything — for each of the six, read the pipeline's own README/config and answer "was a solution ever intended here?". Only then decide. The board and NCERT corpora are the unambiguous half: a `/board` row whose reveal shows nothing is a defect by that surface's own contract. Add the one-line count as a standing probe either way, so the next occurrence surfaces as a number rather than as a chapter someone happens to read.
 
 ### `mark-mcq-verify` records a `blind_rederivation` verdict it has no way to know was blind
+
+**Status: DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): all five lanes record blind_rederivation only with --independent, else solution_audit (buildMcqVerifyInputs, tested).**
 
 `scripts/ncert/dump-mcq.ts` correctly withholds `is_correct`, and that is the whole of the tool's protection. It is not enough: on this lane a **whole-chapter agent has already derived those same MCQ answers while transcribing**, so handing it the blind dump makes it compare its answer to its own — agreement is guaranteed, the run cannot go red, and `mark-mcq-verify` then writes a `question_reviews` row claiming the strongest evidence class this repo has. Caught 2026-09-09 and fixed in the *brief* (it now permits exactly one focused verifier, reading only rendered pages, as the sole sub-agent); the *tool* still cannot tell the two situations apart.
 
@@ -585,6 +658,8 @@ Measured 2026-09-09 across the whole bank: `visibility='PUBLIC'` MCQ rows with a
 
 ### 30 repeat groups in the MHT-CET Maths book are flagged and un-adjudicated
 
+**Status: MOSTLY DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): normaliseAnswer now ignores typesetting (\dfrac, one-character braces, a final full stop); review list 14 -> 10 and 11 more rows collapsed (103 in all). Left: 5 answer conflicts a person must read, 1 pair of different questions sharing a stem (figures), 4 chapter/subtopic splits (moves). One found defect fixed: 2023 4 May S2 Q117's options.**
+
 `npx tsx scripts/books/collapse-duplicates.ts --book=mht-cet-maths` collapses only groups the core calls SAFE; 30 of its 118 carry a `review` reason and were deliberately left alone — 16 answer-conflict, 18 chapter-or-subtopic-split, 1 figure (a group can carry several). Read them with `npx tsx scripts/books/duplicate-report.ts --review`.
 
 **Why:** refusing a group costs nothing — both copies then print and neither claims the other's sitting — so this is untidiness rather than a defect. The upside of clearing it is small and concrete: each resolved group removes one duplicated question from the printed book, and the answer-conflict ones may surface further bank defects the way the first seven did. Note three of the flags are known false positives (a trailing full stop, and LaTeX grouping braces such as `x^{2}` vs `x^2`), left in because tightening the key moves it towards the dangerous direction of two different answers comparing equal.
@@ -593,6 +668,8 @@ Measured 2026-09-09 across the whole bank: `visibility='PUBLIC'` MCQ rows with a
 
 ### The other 26 chapters of the MHT-CET Maths book have never been looked at
 
+**Status: OPEN 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): not started in the sweep.**
+
 The book is fully built across all 27 chapters — 2,228 rows synced, 92 collapsed, 2,136 printing, 0 dangling refs, 0 non-PUBLIC rows, 0 malformed keys — but only **Vectors** has been rendered and read. Everything else rests on the smoke test and the DB checks.
 
 **Why:** every `/books` route is superadmin-gated and `force-dynamic`, so `next build` never executes one; `scripts/books/smoke.ts` drives the loaders and `render-print.tsx` renders the print view, and neither proves a chapter LAYS OUT. The one defect that got through both this session — the print view rendering no provenance at all for a maths question — was found by looking at the page, not by any check.
@@ -600,6 +677,8 @@ The book is fully built across all 27 chapters — 2,228 rows synced, 92 collaps
 **How to apply:** render two or three heavy chapters rather than all 26 — Line and Plane (205), Applications of Derivative (183), Indefinite Integration (159) — with `npx tsx --tsconfig scripts/books/tsconfig.render.json scripts/books/render-print.tsx --book=mht-cet-maths --chapter=<slug>`. Check the contents-table ranges reconcile against the printed numbers, and that no KaTeX zone failed.
 
 ### The `.docx` export has never been built, for either book
+
+**Status: OPEN 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): not started in the sweep.**
 
 `/books` can assemble, curate, render and print a book; it cannot export one. The print view's own header says *"the Word file is authoritative"*, so strictly neither book is deliverable yet — print-to-PDF is the interim share path. Deferred on book 1 (2026-08-31, "we will do through script later") and still open.
 
@@ -611,6 +690,8 @@ The book is fully built across all 27 chapters — 2,228 rows synced, 92 collaps
 
 ### Dual Nature's 12 numerical rows carry no constants preamble — the fix is a delete-and-re-commit
 
+**Status: DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): no delete needed (rows corrected in place): 11 Ch.14 and 12 Ch.15 numericals carry a constants context (Ch.15 the book's own preamble); a re-commit of both chapters inserts nothing.**
+
 Ch.14's Exercises open straight at Q.1 with no shared constants block, and **all 12 of its numerical rows (`Ex Q.7`, `Q.9`–`Q.18`) have `context: null`** while needing \(h\), \(c\), \(e\), \(m_e\), \(m_p\) or \(m_n\). A student on `/browse` sees one question and no constants, so the row is under-determined as displayed. The authoring agent named the constants inside each solution as a mitigation and flagged this explicitly — but that is a mitigation, not a fix: the student still cannot *attempt* the question from the stem.
 
 **Why:** `context` is part of `subjectiveContentHash`, so this genuinely cannot be fixed in place — adding it changes each row's identity. It is the same defect already logged against Ch.15 Structure of Atoms and Nuclei, which means the Physics lane now has **two** chapters with it, and the shared cause is that the constants-preamble rule in `PHYSICS_AGENT_BRIEF.md` §3 only fires when the *book* prints a preamble. Where the book prints none but the questions still need constants, nothing catches it.
@@ -618,6 +699,8 @@ Ch.14's Exercises open straight at Q.1 with no shared constants block, and **all
 **How to apply:** decide first whether this is worth a re-commit at all — the cost is 12 rows deleted and re-committed with fresh UUIDs, which invalidates their `question_reviews` rows and requires re-running sections, solutions, provenance and the flip for those rows (the Oscillations `Ex Q.1 (v)` precedent documents the full chain). If yes, do Ch.14 and Ch.15 in one pass. If no, close it explicitly as accepted rather than leaving it open. Either way, consider widening the brief: "if a numerical needs a constant the stem does not supply, put it in `context` — whether or not the book prints a preamble."
 
 ### Five Ch.10 questions are printed inside the Ch.11 PDF and are absent from the bank entirely
+
+**Status: DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): transcribed from p.14, model answers, 'Answer in brief' section, stamped, PUBLIC, board:lint green. While adding them, stateboard commit.ts hid the 33 live Ch.10 rows for ~10 minutes (it privatized the whole source file); it now privatizes only rows it inserts.**
 
 p-13 of `11. Magnetic Materials.pdf` carries a separate blue box titled **`Exercise : Chapter 10`** holding five theory questions (force on a moving charge in E vs B fields, cyclotron, radial magnetic field, Biot–Savart, Ampère's law). They belong to Ch.10 Magnetic Fields due to Electric Current — and **Ch.10's own per-chapter PDF does not contain that page**, so the Ch.10 agent could never have seen them. Ch.10 shipped with 33 questions and no `Answer in brief` block at all, which is the corroborating tell.
 
@@ -627,6 +710,8 @@ p-13 of `11. Magnetic Materials.pdf` carries a separate blue box titled **`Exerc
 
 ### Verify (or drop) the two unverified EM Induction solved-example misprint claims
 
+**Status: DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): both confirmed on the page; 12.5's working corrected, both bracketed.**
+
 The EM Induction agent reported two printed defects in the book's own worked solutions that I deliberately did **not** bracket, because I never inspected those pages myself: `Solved Ex.12.5` printing an italic Latin `u` where π belongs in \(B = \mu_0 N i/(2\pi R)\), and `Solved Ex.12.6` printing `20·10⁻⁴ m` for a solenoid length of 20 cm (the agent's argument being that the printed `0.1257 mH` follows only from 0.20 m).
 
 **Why:** after two agents on this lane made checkably false claims about their own actions on the same day, I stopped asserting a book defect on an agent's word alone. Both claims are plausible and specific — and both concern *shipped, PUBLIC* worked solutions, so if `12.5` really does print π as `u` then students are reading a corrupted formula in a model answer. Leaving them unadjudicated is the one loose end in an otherwise fully-gated chapter.
@@ -634,6 +719,8 @@ The EM Induction agent reported two printed defects in the book's own worked sol
 **How to apply:** render `12. Electromagnetic Induction.pdf` pages p-14 and p-16 at high zoom and read the two lines directly. If confirmed: `12.6`'s is answer-affecting in its working (the final value is right), so it takes a corrected working + `[Textbook misprint: …]` via the now-ported `apply-solved-fixes.ts` + `apply-errata.ts`; `12.5`'s final \(L = 2.414\times10^{-3}\) H is correct, so it is preserve-and-bracket. If not confirmed, say so — a retracted claim is a result, and the Electrostatics agent's own retracted `k₃` misread is the precedent.
 
 ### 132 shipped mh-sb-11 Maths MCQs have a correct key and NO working — cause fixed, rows not backfilled
+
+**Status: CLOSED 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): live count is 0.**
 
 `scripts/mh-sb-11/dump-mcq.ts` printed a contract asking the verifying agent for a **`why`** field, while `apply-solutions.ts`'s MCQ branch read **`m.solution`** and did `if (!m.solution) continue`. So a verify file written to the printed contract updated **nothing**, and said so as `updated solution on 0 mcq row(s)` — which reads like *there were none to update*. Found twice independently on 2026-09-03 (by me while shipping the Physics pilot, and by the Electrostatics ingest agent on its own run). **The cause is fixed** — the applier now falls back to `why` with a <60-char "too thin to ship" refusal, the contract now says the text is published verbatim, and `apply-mcq-solutions.ts` reads the verify file directly. The already-shipped rows are untouched.
 
@@ -644,6 +731,8 @@ The EM Induction agent reported two printed defects in the book's own worked sol
 ## 2026-09-02
 
 ### Make `flip-public` refuse a `derivedAnswers` chapter that has never been cross-checked
+
+**Status: DONE 2026-11-17 (suggestions sweep, branch fix/suggestions-sweep): flip-public requires the complete dump-book-answers cross-check file whenever the book prints answers for the chapter (crossCheckGate.ts, tested); passed live on Ch.10.**
 
 `Rotational Dynamics` (Std XII Physics) reached one command from PUBLIC with its **mandatory step-6 answer-key cross-check never run**, and nothing in the pipeline could see it. Every positive signal was green: 40/40 rows committed and sectioned, all solutions applied, 6/6 MCQ keys blind-verified with 0 mismatches, `board:lint` green, three audits clean. `flip-public.ts` gates on derived-answer PROVENANCE only — it has no notion of whether the chapter was ever diffed against the book's printed `[Ans: …]` values. It was caught by hand, by noticing that all 8 already-shipped Physics chapters carry `data/<id>.book-answers.json` + `data/<id>.errata.json` and this one carried neither. Running the gate then found **2 real book-key errors in 11 keyed rows**, so it was not ceremony.
 
