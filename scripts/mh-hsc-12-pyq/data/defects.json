@@ -394,6 +394,19 @@
           }
         },
         "why": "OURS, not the board's — settled against the printed page. The compilation renders option C with an EMPTY radical, \\sqrt{}2, so it ships as a bare radical sign and the option reads as broken. Rendering Q.1(i) of the February 2023 paper at 340 dpi shows the board printed it correctly as 1/(sqrt(2) pi n d^2), with the radical covering only the 2 — and the other three options are transcribed faithfully, so the defect is isolated to this one radicand. The repair restores what the page shows; it does not choose between readings. This is also the KEYED option: the mean free path is lambda = 1/(sqrt(2) pi n d^2), and the rivals fail on dimensions (A and D carry nd rather than nd^2, so their reciprocals are areas) or omit the sqrt(2) (B)."
+      },
+      {
+        "ref": "differentiation-12-pyq#10",
+        "tag": "",
+        "source": "The live row and the committed data/ both read -1; the compilation's pandoc output writes the minus sign as --1 (found 2026-09-10 by diffing all 32 committed chapters against a fresh re-extract).",
+        "printed": "(C) -1",
+        "options": {
+          "C": {
+            "from": "--1",
+            "to": "-1"
+          }
+        },
+        "why": "The repair reached data/ but never this file, so a re-run of extract -> assign would have put the double hyphen back on a live PUBLIC option (SUGGESTIONS 2026-09-10). Recorded 2026-11-17."
       }
     ]
   },
