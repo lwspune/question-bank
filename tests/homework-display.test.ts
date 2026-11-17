@@ -63,6 +63,11 @@ describe("planWording", () => {
     expect(isBoardPlanExam("UPSC CAPF (AC)")).toBe(false);
   });
 
+  it("names NTA and past questions for NEET, which no board sets (2026-11-17; its plans said \"board\" from 2026-11-14)", () => {
+    expect(planWording("NEET")).toEqual({ asker: "NTA", questions: "past questions", papers: "Past", answers: "worked solutions" });
+    expect(isBoardPlanExam("NEET")).toBe(false);
+  });
+
   it("names the ministry and past questions for IMAT, which no board sets (2026-11-17)", () => {
     expect(planWording("IMAT")).toEqual({ asker: "the ministry", questions: "past questions", papers: "Past", answers: "worked solutions" });
     expect(isBoardPlanExam("IMAT")).toBe(false);
