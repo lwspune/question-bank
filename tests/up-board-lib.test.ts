@@ -194,6 +194,12 @@ describe("paperIssues (solved stage)", () => {
     expect(issues).toContain("B1a: no Hindi solution");
   });
 
+  it("does not read a hyphenated name such as touch-me-not as first person", () => {
+    const s = solved(written());
+    const ok = { ...s, solution: "The leaves of the touch-me-not plant fold at a touch." };
+    expect(paperIssues(paper([ok]), catalog, "solved")).toEqual([]);
+  });
+
   it("refuses a Hindi solution with no Devanagari and a solution in solver voice", () => {
     const s = solved(written());
     const issues = paperIssues(
