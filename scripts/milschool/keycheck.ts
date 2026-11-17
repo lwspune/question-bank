@@ -75,6 +75,23 @@ function main() {
   for (const [n, letters] of Object.entries(nta.multi)) {
     resolved[n] = resolveAccepted(letters, a.get(Number(n)), b.get(Number(n)));
   }
+
+  // Hand rulings (data/<id>.notices.json). `answer` CORRECTS the key: owner
+  // policy 2026-10-29 rule 2, for a source key that is wrong where the maths or
+  // fact is certain. It must come with a notice saying the official key differs.
+  const noticesFile = dataPath(paper.id, "notices");
+  const handNotices: Record<string, { notice: string; grace?: boolean; answer?: string }> = existsSync(noticesFile)
+    ? JSON.parse(readFileSync(noticesFile, "utf8"))
+    : {};
+  const corrected: number[] = [];
+  for (const [n, h] of Object.entries(handNotices)) {
+    if (!h.answer) continue;
+    const letter = h.answer.trim().toUpperCase();
+    if (!"ABCD".includes(letter) || letter.length !== 1) throw new Error(`notices.json Q${n}: answer ${h.answer} is not A-D`);
+    if (!h.notice) throw new Error(`notices.json Q${n}: a corrected key needs a notice`);
+    resolved[n] = letter;
+    corrected.push(Number(n));
+  }
   const key = parseOfficialKey(resolved, pat.questions);
 
   console.log(`${paper.id}  NTA ${paper.key.final ? "FINAL" : "PROVISIONAL"} key, booklet code ${paper.key.code}`);
@@ -123,13 +140,11 @@ function main() {
     };
   });
 
-  // Items defective as printed, settled by hand (data/<id>.notices.json):
-  // {"73": {"notice": "...", "grace": true}}. The key's letter is kept; the
-  // notice goes above the solution and `grace` puts it on the mock grace list.
-  const noticesFile = dataPath(paper.id, "notices");
-  const handNotices: Record<string, { notice: string; grace?: boolean }> = existsSync(noticesFile)
-    ? JSON.parse(readFileSync(noticesFile, "utf8"))
-    : {};
+  // Items settled by hand (data/<id>.notices.json, read above):
+  // {"73": {"notice": "...", "grace": true}} keeps the key's letter (rule 3);
+  // {"2": {"notice": "...", "answer": "A"}} corrects it (rule 2). The notice goes
+  // above the solution and `grace` puts it on the mock grace list.
+  if (corrected.length) console.log(`  key CORRECTED by hand (notice on each): Q${corrected.join(", Q")}`);
   for (const n of Object.keys(handNotices)) {
     if (!withNotice.some((d) => d.number === Number(n))) throw new Error(`notices.json names Q${n}, which has no answer`);
   }
