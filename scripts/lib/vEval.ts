@@ -77,6 +77,9 @@ export function parseExpect(raw: unknown): { ok: true; value: VExpect } | { ok: 
     for (const s of v as string[]) {
       if (PATH_KEYS.has(key) && !PATH_RE.test(s)) return { ok: false, error: `${key}: not a site path: ${s}` };
       if (PATTERN_KEYS.has(key)) {
+        // A control character means an escape was lost on the way in (a shell turned "\b" into a
+        // backspace, 2026-11-17): the pattern compiles but can never match a reply.
+        if (/[\x00-\x1f\x7f]/.test(s)) return { ok: false, error: `${key}: control character in pattern (a lost backslash?): ${JSON.stringify(s)}` };
         try {
           new RegExp(s, "i");
         } catch {

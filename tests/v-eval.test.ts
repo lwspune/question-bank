@@ -70,6 +70,14 @@ describe("parseExpect", () => {
     expect(parseExpect({ say: ["("] }).ok).toBe(false);
   });
 
+  it("refuses a pattern holding a control character: a mangled \\b or \\t that can never match", () => {
+    // A shell heredoc once turned "\\b9\\b" into backspace-9-backspace and "\\times" into tab + "imes"
+    // (2026-11-17): both compile, neither can ever match a reply, so the case failed for nothing.
+    expect(parseExpect({ say: ["\b9\b"] }).ok).toBe(false);
+    expect(parseExpect({ notSay: ["5 *(\times)"] }).ok).toBe(false);
+    expect(parseExpect({ say: [String.raw`\b(9|nine)\b`, String.raw`5 *(×|\\times) *4`] }).ok).toBe(true);
+  });
+
   it("refuses a link that is not a site path", () => {
     expect(parseExpect({ links: ["questions/x"] }).ok).toBe(false);
   });
