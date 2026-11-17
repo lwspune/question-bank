@@ -1049,6 +1049,17 @@ export const WITHHELD: Record<string, string> = {
   "583825fa-381f-4a08-9f9d-a2fc28e98432": "Mar 2014 calcination vs roasting: metallurgy, off the current syllabus",
   "d8be09a9-c6c9-4263-8d12-7fb2ecb95476": "Mar 2017 nitrogen pentahalides: group 15, off the current syllabus",
   "b96a7ef6-4e92-436b-9a43-891e93fbbbdc": "reworded copy of Mar 2022 Q.21 (993c6a85, kept): the paper prints no such Q.22 wording",
+  // 2026-11-17, the compilation's same-tag groups settled against the printed
+  // papers (SUGGESTIONS 2026-09-10): a second typed copy or a truncated copy of a
+  // question another row carries whole. Retired, never deleted.
+  "cbcf42bf-d232-429b-a7ca-dcb64b8724dc": "chem-thermodynamics#36: Mar 2017 Q.2.v typed twice; #3 matches the print",
+  "3a18a5a2-cd60-48e7-8d75-d01a7fd9d2bf": "chem-thermodynamics#43: truncated copy of Feb 2020 Q.31 (#8 is whole)",
+  "21454020-c9b9-4d8e-8f47-3adec2c71fd5": "coordination#23: copy of Feb 2020 Q.18 that says 'linkage' where the paper prints 'ionisation isomerism' (#4 kept)",
+  "db1d4b2e-9b0f-4c75-b5ba-9d409d41b129": "p-block#5: Mar 2018 Q.3.i(c) typed twice; #6 matches the print",
+  "5e07fb97-d69f-4fa0-95b8-30b87405858d": "p-block#17: truncated copy of Feb 2020 Q.28 (#26 is whole)",
+  "2e878242-3984-41d6-8faa-fa64143dad0b": "p-block#22: truncated copy of Mar 2024 Q.4 (#27 is whole)",
+  "019c76a1-175f-4d66-810a-c758b6a906bf": "polymers#6: Feb 2020 Q.23 typed twice; #12 matches the print",
+  "5ce4ff61-e52f-4f18-9205-af349a71b2c7": "polymers#7: truncated copy of Mar 2025 Q.26 (#23 is whole)",
 };
 
 export function requireChapter(id: string | undefined): Chapter {
