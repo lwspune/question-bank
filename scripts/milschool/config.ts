@@ -165,6 +165,26 @@ const RIMC_GK_MISSING: Record<string, { numbers: number[]; why: string }> = {
   "2020_dec": { numbers: [75], why: "the paper prints Q1-74 only (its instructions say 75; page 13 ends at Q74)" },
 };
 
+/** Written items that cannot be answered as printed: transcribed (their marks
+ *  count toward the printed total) but held from derivation and from the bank. */
+const RIMC_WRITTEN_HELD: Record<string, { numbers: number[]; why: string }> = {
+  "2018_dec:maths": { numbers: [25], why: "Q25 prints no second rate of interest, in English or Hindi" },
+};
+
+/** A written paper whose printed question marks do not add up to its printed
+ *  maximum. The merge gate checks the marks total to catch a dropped or doubled
+ *  part, so the total it expects here is the one the questions print, with why. */
+const RIMC_PRINTED_MARKS: Record<string, { marks: number; why: string }> = {
+  "2021_jun:english": {
+    marks: 130,
+    why: "Section C's heading says 55 but its questions print 60 (Q.11 prints one item twice); sections A and B match",
+  },
+  "2019_dec:english": {
+    marks: 135,
+    why: "Section B's heading and the instructions say 50 but its questions print 60 (Q3 '8x3=24'); sections A and C match",
+  },
+};
+
 const RIMC_PAPERS: Record<string, Paper> = Object.fromEntries(
   RIMC_SESSIONS.flatMap(({ s, docId, english, gk, maths }) => {
     const [y, m] = s.split("_");
@@ -188,6 +208,7 @@ const RIMC_PAPERS: Record<string, Paper> = Object.fromEntries(
                 },
               }
             : {}),
+          ...(RIMC_WRITTEN_HELD[`${s}:${sub.key}`] ? { held: RIMC_WRITTEN_HELD[`${s}:${sub.key}`] } : {}),
           id,
           exam: "rimc",
           paper: 1,
@@ -198,7 +219,7 @@ const RIMC_PAPERS: Record<string, Paper> = Object.fromEntries(
           docId,
           pyqYear: year,
           pyqNote: `RIMC ${MONTH[m]} ${year} (${sub.name})`,
-          pattern: sub.pattern,
+          pattern: RIMC_PRINTED_MARKS[`${s}:${sub.key}`] ? { ...sub.pattern, marks: RIMC_PRINTED_MARKS[`${s}:${sub.key}`].marks } : sub.pattern,
           ...(sub.written ? { format: "written" as const } : {}),
         },
       ];

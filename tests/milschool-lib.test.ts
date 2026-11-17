@@ -4,6 +4,7 @@ import {
   normaliseNtaKey,
   resolveAccepted,
   scoreAccepted,
+  solvableWritten,
   validateWritten,
   writtenPayload,
   type WrittenItem,
@@ -19,6 +20,16 @@ const item = (n: number, over: Partial<WrittenItem> = {}): WrittenItem => ({
   difficulty: "EASY",
   marks: 5,
   ...over,
+});
+
+describe("solvableWritten (a HELD item on a written paper)", () => {
+  it("drops held numbers and keeps the rest in order", () => {
+    const got = solvableWritten([item(1), item(2), item(3)], [2]);
+    expect(got.map((q) => q.number)).toEqual([1, 3]);
+  });
+  it("keeps every item when nothing is held", () => {
+    expect(solvableWritten([item(1), item(2)]).map((q) => q.number)).toEqual([1, 2]);
+  });
 });
 
 describe("validateWritten (RIMC written papers)", () => {

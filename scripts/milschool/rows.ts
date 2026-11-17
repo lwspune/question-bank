@@ -6,7 +6,7 @@ import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import { validateRow, type ParsedRowPayload } from "../../src/lib/upload/validate";
 import { dataPath, pattern, type Paper } from "./config";
 import { buildRecords, buildWithdrawnRecords, validateRows, type Derivation, type TQ } from "../upsc/lib";
-import { validateWritten, writtenPayload, type WrittenItem } from "./lib";
+import { solvableWritten, validateWritten, writtenPayload, type WrittenItem } from "./lib";
 
 const withdrawnNote = (provisional: boolean) =>
   `Dropped by NTA: its ${provisional ? "provisional " : "final "}answer key drops this question and it was not scored. ` +
@@ -49,7 +49,9 @@ function buildWrittenRows(paper: Paper, questions: TQ[], raw: WrittenAnswers): P
   const open = new Set(raw.open ?? []);
   const notices = new Map<number, string>();
   const parsed: ParsedRowPayload[] = [];
-  items.forEach((q, i) => {
+  // Numbering is validated over the whole transcription (a held item keeps
+  // its place); rows are built only for the items not held.
+  solvableWritten(items, paper.held?.numbers).forEach((q, i) => {
     const a = byN.get(q.number);
     if (!a || !a.solution?.trim()) {
       errs.push(`Q${q.number} (${q.label}): no model answer`);

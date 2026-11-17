@@ -39,6 +39,15 @@ export type WrittenItem = {
 
 const unbalancedMath = (s: string) => (s.match(/\\\(/g) ?? []).length !== (s.match(/\\\)/g) ?? []).length;
 
+/** A HELD item on a written paper (RIMC 2018 Dec Maths Q25: the second rate
+ *  of interest is printed in neither language) keeps its transcription, so
+ *  the merge gate's marks total still matches the printed maximum, but nothing
+ *  after the merge sees it: no derivation packet, no answer, no row. */
+export function solvableWritten<T extends { number: number }>(items: T[], held: number[] = []): T[] {
+  const h = new Set(held);
+  return items.filter((q) => !h.has(q.number));
+}
+
 export function validateWritten(items: WrittenItem[]): string[] {
   const errs: string[] = [];
   const seen = new Set<number>();

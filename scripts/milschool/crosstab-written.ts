@@ -21,7 +21,7 @@
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { DERIVED, dataPath, requirePaper } from "./config";
-import { compareWritten, type WrittenItem } from "./lib";
+import { compareWritten, solvableWritten, type WrittenItem } from "./lib";
 
 type Solved = { number: number; label?: string; finalAnswer?: string; solution: string; confidence?: string; open?: boolean };
 type Ruling = { pick?: "a" | "b"; finalAnswer?: string; solution?: string; why: string; notice?: string; grace?: boolean; verified?: boolean };
@@ -47,7 +47,10 @@ function main() {
   if (paper.format !== "written") throw new Error(`${paper.id} is an MCQ paper: use crosstab.ts`);
   const apply = args.includes("--apply");
 
-  const items: WrittenItem[] = JSON.parse(readFileSync(dataPath(paper.id, "merged"), "utf8")).questions;
+  const items: WrittenItem[] = solvableWritten(
+    JSON.parse(readFileSync(dataPath(paper.id, "merged"), "utf8")).questions as WrittenItem[],
+    paper.held?.numbers
+  );
   const A = loadPass(paper.id, "a");
   const B = loadPass(paper.id, "b");
   const adjFile = dataPath(paper.id, "adjudicated");

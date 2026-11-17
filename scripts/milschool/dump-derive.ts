@@ -30,6 +30,7 @@ import { figurePath } from "./figures";
 import { join } from "node:path";
 import { OUT, dataPath, expectedCount, pattern, requirePaper } from "./config";
 import type { TQ } from "../upsc/lib";
+import { solvableWritten } from "./lib";
 
 const DEFAULT_BATCH = 25;
 
@@ -52,7 +53,8 @@ function main() {
   if (!existsSync(merged)) {
     throw new Error(`${merged} not found — run merge.ts --apply first.`);
   }
-  const questions: TQ[] = JSON.parse(readFileSync(merged, "utf8")).questions;
+  // A written paper keeps a held item's transcription; it gets no packet.
+  const questions: TQ[] = solvableWritten(JSON.parse(readFileSync(merged, "utf8")).questions as TQ[], paper.held?.numbers);
   const pat = pattern(paper);
 
   // A written paper with no fixed item count (RIMC English) was already gated by
