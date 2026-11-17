@@ -13,7 +13,7 @@ import { intlNavFor } from "@/lib/sites/intl";
 
 /**
  * The header on intl.pyqvault.com (2026-10-30): the brand, the current exam's
- * Notes · Mocks · Questions, Progress once signed in (the map and the drill,
+ * Notes · Mocks · Homework (an exam with plans, 2026-11-17) · Questions, Progress once signed in (the map and the drill,
  * holding international exams alone since 2026-11-06), and sign-in. None of
  * PYQ Vault's Indian surfaces (Guides, Board, ebooks, tutor) appear here; the
  * owner's rule is that an international student sees no Indian exam.
@@ -28,15 +28,22 @@ export default function IntlHeaderBar({
   const pathname = usePathname() ?? "/";
   const links = intlNavFor(pathname, { signedIn: Boolean(email) });
 
-  const tabs = (
-    <nav aria-label="Main" className="flex items-center gap-1">
+  // The phone row is compact (2026-11-17): signed in, IMAT's five tabs
+  // (Notes, Mocks, Homework, Questions, Progress) must fit a 360 px phone, and
+  // it scrolls sideways rather than cut a tab off if a font runs wider.
+  const tabs = (compact: boolean) => (
+    <nav
+      aria-label="Main"
+      className={compact ? "flex items-center gap-0.5 overflow-x-auto [scrollbar-width:none]" : "flex items-center gap-1"}
+    >
       {links.map((l) => (
         <Link
           key={l.label}
           href={l.href}
           aria-current={l.active ? "page" : undefined}
           className={
-            "rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring " +
+            "shrink-0 whitespace-nowrap rounded-md py-1.5 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring " +
+            (compact ? "px-1.5 text-[13px] " : "px-2.5 text-sm ") +
             (l.active ? "bg-brand/10 text-brand-accent" : "text-muted-foreground hover:text-foreground")
           }
         >
@@ -57,7 +64,7 @@ export default function IntlHeaderBar({
             Global
           </span>
         </Link>
-        <div className="hidden sm:block">{tabs}</div>
+        <div className="hidden sm:block">{tabs(false)}</div>
         <div className="ml-auto flex items-center gap-2">
           <ThemeToggle />
           {sessionLoading ? (
@@ -71,7 +78,7 @@ export default function IntlHeaderBar({
           )}
         </div>
       </div>
-      <div className="border-t px-2 py-1 sm:hidden">{tabs}</div>
+      <div className="border-t px-2 py-1 sm:hidden">{tabs(true)}</div>
     </header>
   );
 }

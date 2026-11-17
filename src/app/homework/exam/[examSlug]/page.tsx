@@ -4,7 +4,8 @@ import { notFound } from "next/navigation";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
-import { PYQVAULT_EXAMS } from "@/lib/exam/examContext";
+import { EXAM_REGISTRY } from "@/lib/exam/examContext";
+import { homeworkDownloads } from "@/lib/homework/display";
 import { getPlanLinks, listPublishedPlans } from "@/lib/homework/query";
 import { homeworkSideNav } from "@/lib/homework/chapters";
 import { examHomeworkPageHref, HOMEWORK_HUB } from "@/lib/homework/links";
@@ -25,7 +26,9 @@ export function generateStaticParams(): Params[] {
 }
 
 function examFor(slug: string) {
-  return PYQVAULT_EXAMS.find((e) => e.slug === slug) ?? null;
+  // Every exam, intl ones too (IMAT, 2026-11-17): the middleware keeps an intl
+  // exam's page on the intl host.
+  return EXAM_REGISTRY.find((e) => e.slug === slug) ?? null;
 }
 
 export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
@@ -60,7 +63,7 @@ export default async function HomeworkExamPage(props: { params: Promise<Params> 
         title={`${exam.displayName} homework from past papers`}
         subtitle={
           plans.length
-            ? "Five past questions a day, the most repeated first. Do them here or download the day. Each subject also has the Top 10 PYQs of every chapter."
+            ? `Five past questions a day, the most repeated first. ${homeworkDownloads(exam.examName) ? "Do them here or download the day." : "Do them here, with the answers one tap away."} Each subject also has the Top 10 PYQs of every chapter.`
             : undefined
         }
       />

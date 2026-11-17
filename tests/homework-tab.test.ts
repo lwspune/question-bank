@@ -10,7 +10,7 @@ import {
   topChapterHref,
   topListHref,
 } from "@/lib/homework/links";
-import { chapterNeighbours, groupItems, groupHeading, groupPlansByExam, homeworkExamLabel, homeworkSideNav, planChapters } from "@/lib/homework/chapters";
+import { chapterNeighbours, groupItems, groupHeading, groupPlansByExam, homeworkExamLabel, homeworkSideNav, planChapters, wwwPlans } from "@/lib/homework/chapters";
 
 describe("homework addresses", () => {
   it("gives every exam its own homework page, and the hub lists every plan", () => {
@@ -139,6 +139,44 @@ describe("homeworkSideNav", () => {
   it("falls back to the subject's name, and to the exam's own name and no link off the registry", () => {
     const nav = homeworkSideNav([plan("x", "Odd title", "Some Board", "Botany")], "Some Board");
     expect(nav[1]).toEqual({ href: "/homework/x", label: "Botany", group: { label: "Some Board" } });
+  });
+});
+
+describe("homeworkSideNav on intl (2026-11-17)", () => {
+  // An intl plan's menu holds the international exams alone, and a www
+  // menu never lists an intl exam (the owner's rule: each site shows its own).
+  const plan = (slug: string, title: string, examName: string, subjectName: string) => ({ slug, title, examName, subjectName });
+  const plans = [
+    plan("nda-maths", "NDA Maths", "NDA", "Mathematics"),
+    plan("imat-biology", "IMAT Biology", "IMAT", "Biology"),
+    plan("imat-chemistry", "IMAT Chemistry", "IMAT", "Chemistry"),
+  ];
+
+  it("leaves IMAT out of the www hub menu", () => {
+    expect(homeworkSideNav(plans)).toEqual([
+      { href: "/homework", label: "All exams" },
+      { href: "/homework/exam/nda", label: "NDA" },
+    ]);
+  });
+
+  it("lists IMAT's plans inside IMAT, linked to its own homework page", () => {
+    const group = { label: "IMAT", href: "/homework/exam/imat" };
+    expect(homeworkSideNav(plans, "IMAT")).toEqual([
+      { href: "/homework", label: "All exams" },
+      { href: "/homework/imat-biology", label: "Biology", group },
+      { href: "/homework/imat-chemistry", label: "Chemistry", group },
+    ]);
+  });
+
+  it("names an intl exam by its registry name", () => {
+    expect(homeworkExamLabel("IMAT")).toBe("IMAT");
+  });
+});
+
+describe("wwwPlans", () => {
+  it("keeps www exams' plans and drops the international ones", () => {
+    const plans = [{ examName: "NDA" }, { examName: "IMAT" }, { examName: "CBSE Class 12" }];
+    expect(wwwPlans(plans).map((p) => p.examName)).toEqual(["NDA", "CBSE Class 12"]);
   });
 });
 

@@ -7,7 +7,7 @@
  * (lib/homework/query.ts loadChapterTop), so every listed chapter has a list.
  */
 import { slugify } from "@/lib/board/query";
-import { PYQVAULT_EXAMS } from "@/lib/exam/examContext";
+import { EXAM_REGISTRY, PYQVAULT_EXAMS } from "@/lib/exam/examContext";
 import type { SideNavGroup } from "@/lib/nav/sideNavGroups";
 import { examHomeworkPageHref, HOMEWORK_HUB, planHref } from "./links";
 
@@ -59,7 +59,14 @@ export function groupPlansByExam<P extends { examName: string }>(plans: readonly
 
 /** The site's short name for an exam ("MH SSC 10"), from its DB name; the DB name off the registry. */
 export function homeworkExamLabel(examName: string): string {
-  return PYQVAULT_EXAMS.find((e) => e.examName === examName)?.displayName ?? examName;
+  return EXAM_REGISTRY.find((e) => e.examName === examName)?.displayName ?? examName;
+}
+
+const isIntlExamName = (examName: string) => EXAM_REGISTRY.find((e) => e.examName === examName)?.site === "intl";
+
+/** The plans www lists: an international exam's plans live on intl alone (2026-11-17). */
+export function wwwPlans<P extends { examName: string }>(plans: readonly P[]): P[] {
+  return plans.filter((p) => !isIntlExamName(p.examName));
 }
 
 type NavPlan = { slug: string; title?: string; examName: string; subjectName: string };
@@ -77,15 +84,19 @@ export function homeworkSideNav(
   examName: string | null = null
 ): { href: string; label: string; group?: SideNavGroup }[] {
   const items: { href: string; label: string; group?: SideNavGroup }[] = [{ href: HOMEWORK_HUB, label: "All exams" }];
-  const groups = groupPlansByExam(plans);
+  // Each site lists its own exams (2026-11-17): an intl plan's menu holds the
+  // intl exams, every other menu (the www hub too) leaves them out.
+  const intl = examName !== null && isIntlExamName(examName);
+  const registry = intl ? EXAM_REGISTRY.filter((e) => e.site === "intl") : PYQVAULT_EXAMS;
+  const groups = groupPlansByExam(intl ? plans.filter((p) => isIntlExamName(p.examName)) : wwwPlans(plans));
   if (examName === null) {
     for (const g of groups) {
-      const exam = PYQVAULT_EXAMS.find((e) => e.examName === g.examName);
+      const exam = registry.find((e) => e.examName === g.examName);
       items.push({ href: exam ? examHomeworkPageHref(exam.slug) : planHref(g.plans[0].slug), label: exam?.displayName ?? g.examName });
     }
     return items;
   }
-  const exam = PYQVAULT_EXAMS.find((e) => e.examName === examName);
+  const exam = registry.find((e) => e.examName === examName);
   const group: SideNavGroup = exam ? { label: exam.displayName, href: examHomeworkPageHref(exam.slug) } : { label: examName };
   const mine = groups.find((g) => g.examName === examName)?.plans ?? [];
   if (mine.length === 0) {

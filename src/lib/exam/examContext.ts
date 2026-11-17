@@ -253,6 +253,14 @@ export type ExamEntry = {
    */
   site?: "intl";
   /**
+   * An intl exam with published daily homework plans (2026-11-17, IMAT first):
+   * the intl header shows a Homework tab and /homework on intl goes to this
+   * exam's homework page. Read by intl only, because its header renders from
+   * the path and cannot read the database; www lists its plans from the DB.
+   * Set it in the same change that publishes the exam's first plan.
+   */
+  homework?: boolean;
+  /**
    * The pass that covers this exam (2026-10-30, migration 0204, mirrored by
    * `exams.pass_scope`). Absent = the www Premium Pass (`mocks`). Every intl
    * exam names its own, so a www pass never unlocks it and its price can differ
@@ -425,6 +433,8 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // On intl.pyqvault.com, not www, since 2026-10-30 (owner): international
     // students should see no Indian exam, and www's lists leave it out.
     site: "intl",
+    // Daily homework from the 2023-2026 papers, on screen only (2026-11-17).
+    homework: true,
     // Its own pass (2026-10-30): $19, or Rs 999 for buyers in India.
     passScope: "imat",
   },

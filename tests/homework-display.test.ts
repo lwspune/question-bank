@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { shortNote, sectionsOf, planWording, seeAllLabel, isBoardPlanExam, groupPanelText } from "@/lib/homework/display";
+import { shortNote, sectionsOf, planWording, seeAllLabel, isBoardPlanExam, groupPanelText, homeworkDownloads } from "@/lib/homework/display";
 
 describe("shortNote", () => {
   it("shortens each kind of note the plan builder writes", () => {
@@ -63,6 +63,11 @@ describe("planWording", () => {
     expect(isBoardPlanExam("UPSC CAPF (AC)")).toBe(false);
   });
 
+  it("names the ministry and past questions for IMAT, which no board sets (2026-11-17)", () => {
+    expect(planWording("IMAT")).toEqual({ asker: "the ministry", questions: "past questions", papers: "Past", answers: "worked solutions" });
+    expect(isBoardPlanExam("IMAT")).toBe(false);
+  });
+
   it("names SSC and past questions for SSC CGL", () => {
     expect(planWording("SSC CGL")).toEqual({ asker: "SSC", questions: "past questions", papers: "Past", answers: "worked solutions" });
   });
@@ -111,5 +116,18 @@ describe("groupPanelText", () => {
 
   it("gives nothing for a note with no group", () => {
     expect(groupPanelText("Asked once: Mar 2016")).toBeNull();
+  });
+});
+
+describe("homeworkDownloads", () => {
+  // IMAT homework is on screen only (owner, 2026-11-17): the IMAT pass sells
+  // no downloads, so an intl plan shows no download box.
+  it("offers the day as a file on every www plan", () => {
+    for (const exam of ["NDA", "CBSE Class 12", "JEE Mains", "Some Board"]) expect(homeworkDownloads(exam), exam).toBe(true);
+  });
+
+  it("offers no file on an international exam's plan", () => {
+    expect(homeworkDownloads("IMAT")).toBe(false);
+    expect(homeworkDownloads("ENEM")).toBe(false);
   });
 });
