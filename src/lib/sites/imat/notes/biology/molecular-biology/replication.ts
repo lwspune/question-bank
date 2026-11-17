@@ -112,6 +112,7 @@ export const IMAT_BIO_MOL_REPLICATION_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-mol-leading-lagging",
+      visualizationSlug: "imat-replication-fork",
       name: "Leading and lagging strands and Okazaki fragments",
       intuition:
         "The fork opens in one direction, but the two template strands point opposite ways. DNA polymerase can only build 5′→3′. On one template that direction follows the opening fork, so the new strand grows smoothly. On the other it points away from the fork, so the strand has to be built in short pieces, each started again as more template is exposed.",

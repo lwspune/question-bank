@@ -11,6 +11,7 @@ export const IMAT_PHY_OSW_BEHAVIOUR_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-osw-em-spectrum",
+      visualizationSlug: "imat-em-spectrum",
       name: "The electromagnetic spectrum: order, wavelengths and uses",
       intuition:
         "Radio waves, light and X-rays are the same kind of wave: oscillating electric and magnetic fields. They differ only in wavelength, and so in frequency and in the energy each photon carries. Short wavelength means high frequency and high energy, which is why gamma rays, X-rays and ultraviolet can damage cells.",
@@ -106,6 +107,7 @@ export const IMAT_PHY_OSW_BEHAVIOUR_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-osw-interference",
+      visualizationSlug: "imat-superposition",
       name: "Superposition, coherence, interference and standing waves",
       intuition:
         "When two waves meet, their displacements simply add. Crest on crest gives a bigger wave; crest on trough cancels. For the pattern of loud and quiet spots to stay put, the two sources must keep in step, with a phase difference that never changes. That is coherence. Two waves travelling in opposite directions along a string add up to a standing wave, with points that never move.",

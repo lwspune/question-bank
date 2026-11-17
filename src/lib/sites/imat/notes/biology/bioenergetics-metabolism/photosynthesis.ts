@@ -11,6 +11,7 @@ export const IMAT_BIO_BEM_PHOTOSYNTHESIS_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-bem-chloroplast-equation",
+      visualizationSlug: "imat-chloroplast-reactions",
       name: "Photosynthesis: the overall equation and the chloroplast",
       intuition:
         "Photosynthesis runs the chemistry of respiration uphill. Light energy is used to pull electrons out of water and push them onto \\(\\mathrm{CO_2}\\), building sugar and releasing oxygen. In plants and algae it all happens in the chloroplast: light is captured on the thylakoid membranes, and sugar is built in the stroma around them.",

@@ -70,6 +70,7 @@ export const IMAT_CHE_ABP_PH_SCALE_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-abp-ph",
+      visualizationSlug: "acid-ph-scale-strip",
       name: "pH as a logarithmic scale of hydrogen ion concentration",
       intuition:
         "Hydrogen ion concentrations run from about 1 mol/L down to \\(10^{-14}\\) mol/L: awkward numbers. pH keeps only the power of ten and drops the minus sign. So each step of one pH unit is a factor of ten in \\([\\mathrm{H^+}]\\), and a lower pH means more hydrogen ions.",

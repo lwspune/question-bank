@@ -14,6 +14,7 @@ export const IMAT_BIO_HAP_CIRCULATION_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-hap-vessels",
+      visualizationSlug: "imat-double-circulation",
       name: "Double circulation and the main blood vessels",
       intuition:
         "Blood passes through the heart twice on every full circuit: once to be pumped to the lungs and once to be pumped to the body. Each organ changes the blood that leaves it, so every named vessel has a known content: the lungs add oxygen, the kidneys remove urea, the gut adds digested food.",
@@ -116,6 +117,7 @@ export const IMAT_BIO_HAP_CIRCULATION_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-hap-cardiac-cycle",
+      visualizationSlug: "imat-cardiac-cycle",
       name: "The cardiac cycle: pressure changes and valve positions",
       intuition:
         "Valves are passive flaps. A valve is pushed open when the pressure behind it is higher than the pressure in front, and slams shut when the pressure in front becomes higher. So if you know which chamber is squeezing, you can work out every valve.",

@@ -11,6 +11,7 @@ export const IMAT_BIO_CSM_CELL_TYPES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-csm-prokaryote-eukaryote",
+      visualizationSlug: "cell-prokaryote-eukaryote",
       name: "Prokaryotic and eukaryotic cells compared",
       intuition:
         "A prokaryotic cell is a single open room: DNA, ribosomes and enzymes all share one space. A eukaryotic cell is a house with many rooms, each sealed by membranes, so different jobs can run side by side without getting in each other's way. That division into compartments is the defining feature of eukaryotes.",
@@ -65,6 +66,7 @@ export const IMAT_BIO_CSM_CELL_TYPES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-csm-plant-animal",
+      visualizationSlug: "cell-animal-plant-structure",
       name: "Plant and animal cells compared",
       intuition:
         "Plant and animal cells share almost all their organelles, because both are eukaryotic. The differences follow from how a plant lives: it stands still, makes its own food from light, and holds itself up with water pressure inside a stiff wall.",

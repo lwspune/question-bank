@@ -153,6 +153,7 @@ export const IMAT_REA_HIS_TWENTIETH_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-his-eu-history",
+      visualizationSlug: "imat-eu-timeline",
       name: "How the European Union was built, treaty by treaty",
       intuition:
         "European integration began with coal and steel, the raw materials of war: if France and Germany shared them, a new war between them would be almost impossible. Each later treaty added more shared policies and more members. Learn each treaty with the city where it was signed and the one thing it created.",

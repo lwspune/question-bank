@@ -72,6 +72,7 @@ export const IMAT_PHY_KIN_ACCELERATED_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-kin-graphs",
+      visualizationSlug: "kin-velocity-time-graph",
       name: "Motion graphs: gradients and areas",
       intuition:
         "A graph is a picture of the whole motion. The steepness of a line tells you how fast the plotted quantity is changing, so the slope of a position graph is the velocity and the slope of a velocity graph is the acceleration. The area under a velocity graph adds up velocity × time strips, which is displacement.",

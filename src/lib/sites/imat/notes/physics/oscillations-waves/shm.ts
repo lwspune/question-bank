@@ -11,6 +11,7 @@ export const IMAT_PHY_OSW_SHM_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-osw-shm-motion",
+      visualizationSlug: "osc-shm-displacement-time",
       name: "Simple harmonic motion: displacement, velocity and acceleration",
       intuition:
         "Pull a mass on a spring aside and let go. The further it is from the centre, the harder it is pulled back, so it speeds up towards the centre, overshoots, slows down, stops at the far end and comes back. That pattern traces a cosine curve in time. The speed is greatest in the middle and zero at the two ends; the acceleration is the opposite, zero in the middle and greatest at the ends.",
@@ -126,6 +127,7 @@ export const IMAT_PHY_OSW_SHM_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-osw-periods",
+      visualizationSlug: "osc-pendulum-restoring-force",
       name: "The periods of a simple pendulum and a mass on a spring",
       intuition:
         "A longer pendulum takes longer to swing, and stronger gravity pulls it round faster. The mass of the bob does not matter, for the same reason all objects fall together. For a spring, a heavier mass is slower to get moving and a stiffer spring pulls harder, and gravity does not enter at all.",

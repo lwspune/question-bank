@@ -11,6 +11,7 @@ export const IMAT_MAT_NPL_NUMBERS_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-npl-number-sets",
+      visualizationSlug: "cds-rational-irrational-line",
       name: "The number sets ℕ, ℤ, ℚ and ℝ",
       intuition:
         "Each set fixes a problem of the one before it. You cannot subtract freely in the natural numbers, so the integers add negatives. You cannot always divide in the integers, so the rationals add fractions. Some lengths, like the diagonal of a unit square, are not fractions at all, and the irrationals fill those gaps to make the real number line.",

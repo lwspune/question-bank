@@ -11,6 +11,7 @@ export const IMAT_BIO_MBT_DNA_ANALYSIS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-mbt-pcr",
+      visualizationSlug: "imat-pcr-cycles",
       name: "The polymerase chain reaction (PCR)",
       intuition:
         "PCR is DNA replication in a test tube, repeated over and over. Heat replaces the helicase that would unzip DNA in a cell, and a heat-proof polymerase builds the new strands. Each cycle copies every strand present, so the number of copies doubles each time: a single molecule becomes about a billion after 30 cycles.",
@@ -71,6 +72,7 @@ export const IMAT_BIO_MBT_DNA_ANALYSIS_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-mbt-gel",
+      visualizationSlug: "imat-gel-electrophoresis",
       name: "Gel electrophoresis and DNA profiling",
       intuition:
         "Every nucleotide carries one negative phosphate group, so every DNA molecule has the same charge per unit length. In an electric field all fragments are pulled towards the positive electrode equally hard. The gel is a tangle of fibres that holds back long pieces more than short ones, so the fragments end up sorted by size alone.",

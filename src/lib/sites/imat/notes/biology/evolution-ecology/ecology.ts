@@ -55,6 +55,7 @@ export const IMAT_BIO_EVO_ECOLOGY_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-evo-energy-flow",
+      visualizationSlug: "eco-food-chain-pyramid",
       name: "Energy flow between trophic levels and the 10% rule",
       intuition:
         "Most of the energy an animal eats is burned in its own respiration and leaves as heat, or is never eaten at all (roots, bones) or passes out in faeces. Only a small part becomes new body tissue for the next level to eat. So energy shrinks fast up a food chain, which is why chains rarely have more than four or five levels.",
@@ -157,6 +158,7 @@ export const IMAT_BIO_EVO_ECOLOGY_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-evo-interactions",
+      visualizationSlug: "imat-population-growth",
       name: "Interactions between species and population growth",
       intuition:
         "Every species is affected by the others around it: some it eats, some eat it, some want the same food, some help it. When conditions change, the balance shifts: a change that hurts one competitor frees resources for the other.",

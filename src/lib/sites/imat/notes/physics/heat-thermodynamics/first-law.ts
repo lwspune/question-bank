@@ -66,6 +66,7 @@ export const IMAT_PHY_HTH_FIRST_LAW_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-hth-processes",
+      visualizationSlug: "ht-pv-process-diagram",
       name: "Isothermal, isobaric, isochoric and adiabatic processes",
       intuition:
         "Each named process holds one thing fixed, and that kills one term of the first law. Fix the temperature of an ideal gas and its internal energy cannot change. Fix the volume and no work is done. Block all heat flow and the only way to change the internal energy is through work.",

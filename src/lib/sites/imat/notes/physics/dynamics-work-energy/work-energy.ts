@@ -11,6 +11,7 @@ export const IMAT_PHY_DYN_WORK_ENERGY_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-dyn-work",
+      visualizationSlug: "wep-work-at-angle",
       name: "Work done by a force",
       intuition:
         "In physics, work is done only when a force moves something along the direction of the force. Holding a heavy bag still does no work on it, however tiring it feels. If the force is at an angle to the motion, only the part of the force along the motion counts.",

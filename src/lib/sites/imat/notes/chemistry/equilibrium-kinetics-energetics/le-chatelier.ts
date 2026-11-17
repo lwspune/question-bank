@@ -11,6 +11,7 @@ export const IMAT_CHE_EQK_LE_CHATELIER_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-eqk-lc-concentration",
+      visualizationSlug: "imat-le-chatelier",
       name: "Changing a concentration shifts the equilibrium to oppose it",
       intuition:
         "An equilibrium behaves as if it resists being pushed. Add more of a substance and the reaction that uses it up speeds up until a new balance is reached; take a substance away and the reaction that makes it takes over. Kc itself does not change: the concentrations rearrange until the ratio is back to the same value.",

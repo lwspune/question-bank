@@ -72,6 +72,7 @@ export const IMAT_CHE_BND_SHAPES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-bnd-shapes-table",
+      visualizationSlug: "imat-vsepr-shapes",
       name: "The VSEPR shapes and their bond angles",
       intuition:
         "Two domains go to opposite sides, three to the corners of a triangle, four to the corners of a tetrahedron. Lone pairs sit closer to the central atom than bonding pairs and push harder, so each lone pair squeezes the bond angles a little below the ideal value.",

@@ -11,6 +11,7 @@ export const IMAT_CHE_SOL_MIXTURES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-sol-terms",
+      visualizationSlug: "matt-colloid-tyndall",
       name: "Solutions and mixtures: the key terms",
       intuition:
         "A mixture keeps the separate substances in it, in any proportion. If the particles are spread so finely that every part of the sample is the same, the mixture is homogeneous and is called a solution. If you can see, or spin out, separate parts, it is heterogeneous.",
@@ -61,6 +62,7 @@ export const IMAT_CHE_SOL_MIXTURES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-sol-separation",
+      visualizationSlug: "matt-distillation-apparatus",
       name: "Separation techniques and when to use each",
       intuition:
         "To separate a mixture, find a property its parts do not share: particle size, boiling point, density, or how strongly each sticks to a surface. Each technique exploits one of these, so name the difference first and the technique follows.",

@@ -11,6 +11,7 @@ export const IMAT_PHY_MAG_FIELDS_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-mag-magnets",
+      visualizationSlug: "bar-magnet-field-lines",
       name: "Magnets, poles, field lines and the Earth's field",
       intuition:
         "Every magnet has a north pole and a south pole, and you can never get one without the other: cut a magnet in half and you get two smaller magnets. Like poles push apart and unlike poles pull together. Iron, nickel and cobalt are pulled by any magnet because the magnet turns them into temporary magnets, with the nearer end opposite to the pole that is close.",
@@ -60,6 +61,7 @@ export const IMAT_PHY_MAG_FIELDS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-mag-wire-field",
+      visualizationSlug: "magnetic-field-around-wire",
       name: "The magnetic field of a straight wire and of a solenoid",
       intuition:
         "A current makes a magnetic field that wraps round the wire in circles. The field is stronger near the wire and with more current. Wind the wire into a long coil (a solenoid) and the circles from all the turns add up inside it, giving a strong, nearly uniform field like that of a bar magnet.",
@@ -121,6 +123,7 @@ export const IMAT_PHY_MAG_FIELDS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-mag-force-wire",
+      visualizationSlug: "flemings-left-hand-rule",
       name: "The force on a current-carrying wire in a magnetic field",
       intuition:
         "A current in a magnetic field feels a push at right angles to both the current and the field. This is the motor effect: it is what turns an electric motor. The push is largest when the wire crosses the field at right angles and disappears when the wire runs along the field.",
@@ -176,6 +179,7 @@ export const IMAT_PHY_MAG_FIELDS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-mag-force-charge",
+      visualizationSlug: "magnetic-force-triad",
       name: "The force on a moving charge: F = qvB sinθ",
       intuition:
         "A current is just moving charges, so each moving charge in a field feels its own sideways push. Because the push is always at right angles to the motion, it can turn the particle but can never speed it up or slow it down. A charge at rest, or one moving along the field, feels nothing.",

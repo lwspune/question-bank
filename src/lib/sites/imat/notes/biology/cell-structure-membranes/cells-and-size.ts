@@ -176,6 +176,7 @@ export const IMAT_BIO_CSM_CELLS_SIZE_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-csm-sav",
+      visualizationSlug: "imat-sa-volume",
       name: "Surface area to volume ratio and the limit on cell size",
       intuition:
         "A cell takes in oxygen and food, and gets rid of waste, through its surface. What it needs depends on its volume. When a cell grows, its volume rises faster than its surface, so each unit of volume is served by less membrane. That is why cells stay small, and why big organisms need lungs, guts and blood vessels.",

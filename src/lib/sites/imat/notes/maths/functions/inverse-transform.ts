@@ -11,6 +11,7 @@ export const IMAT_MAT_FUN_INVERSE_TRANSFORM_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-fun-inverse",
+      visualizationSlug: "inverse-reflection-line",
       name: "Inverse functions: undoing a function",
       intuition:
         "If \\(f\\) turns 4 into 9, the inverse turns 9 back into 4. To find it, write \\(y = f(x)\\) and solve for \\(x\\): you get the input from the output. Inputs and outputs swap roles, so the domain of the inverse is the range of the original.",
@@ -71,6 +72,7 @@ export const IMAT_MAT_FUN_INVERSE_TRANSFORM_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-fun-transformations",
+      visualizationSlug: "imat-graph-transformations",
       name: "Transformations of graphs: shifts, stretches and reflections",
       intuition:
         "Changes outside the function act on the output, so they move the graph up or down or stretch it vertically, exactly as written. Changes inside the bracket act on the input, so they work backwards: \\(f(x - 3)\\) reaches each value 3 units later, which moves the graph right, not left.",

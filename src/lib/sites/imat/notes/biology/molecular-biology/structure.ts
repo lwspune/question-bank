@@ -64,6 +64,7 @@ export const IMAT_BIO_MOL_STRUCTURE_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-mol-double-helix",
+      visualizationSlug: "gen-dna-base-pairing",
       name: "The DNA double helix: backbone outside, paired bases inside",
       intuition:
         "Picture a twisted ladder. The two rails are sugar-phosphate backbones, and each rung is a pair of bases joined by hydrogen bonds. A purine always pairs with a pyrimidine, so every rung has the same length and the helix keeps the same width all along.",

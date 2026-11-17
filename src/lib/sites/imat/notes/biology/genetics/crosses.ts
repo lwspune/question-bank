@@ -11,6 +11,7 @@ export const IMAT_BIO_GEN_CROSSES_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-gen-monohybrid",
+      visualizationSlug: "imat-punnett-square",
       name: "Monohybrid crosses and the Punnett square",
       intuition:
         "Each parent gives each child one allele, picked at random. A Punnett square simply lists one parent's possible gametes across the top and the other parent's down the side, so every box is one equally likely child. Count the boxes and you have the expected ratios.",

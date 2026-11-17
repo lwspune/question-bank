@@ -59,6 +59,7 @@ export const IMAT_BIO_CSM_MEMBRANE_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-csm-fluid-mosaic",
+      visualizationSlug: "cell-fluid-mosaic-membrane",
       name: "The fluid mosaic model: proteins, cholesterol and carbohydrates",
       intuition:
         "Picture the bilayer as a thin film of oil with icebergs floating in it. The oil is the phospholipids, which drift sideways all the time; the icebergs are proteins, scattered like the tiles of a mosaic. Sugar chains stick out only on the outer face, where they act like name tags.",

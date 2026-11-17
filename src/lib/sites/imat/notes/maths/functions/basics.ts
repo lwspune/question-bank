@@ -11,6 +11,7 @@ export const IMAT_MAT_FUN_BASICS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-fun-domain-range",
+      visualizationSlug: "function-domain-range-graph",
       name: "Function, domain and range",
       intuition:
         "Think of a function as a machine: put in a number, get out exactly one number. Some inputs break the machine, such as dividing by zero or taking the logarithm of a negative number. The domain is the set of inputs that work; the range is the set of outputs the machine can actually produce.",
@@ -66,6 +67,7 @@ export const IMAT_MAT_FUN_BASICS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-fun-composition",
+      visualizationSlug: "composition-machine",
       name: "Composite functions: one function after another",
       intuition:
         "A composite function feeds the output of one machine straight into another. The order matters, because adding then squaring is not the same as squaring then adding. In \\(f(g(x))\\) the function nearest to \\(x\\), here \\(g\\), acts first.",

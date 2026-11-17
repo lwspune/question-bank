@@ -71,6 +71,7 @@ export const IMAT_PHY_FLU_PRESSURE_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-flu-hydrostatic",
+      visualizationSlug: "fluid-pressure-depth",
       name: "Pressure at a depth in a liquid (Stevin's law)",
       intuition:
         "At any depth, the liquid is holding up the column of liquid above it. A taller column weighs more, so the pressure rises steadily as you go down. Only the depth matters, not the width or shape of the container. A still liquid can only push straight against a surface, never along it, so its force on every wall is perpendicular to that wall.",
@@ -138,6 +139,7 @@ export const IMAT_PHY_FLU_PRESSURE_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-flu-pascal",
+      visualizationSlug: "pascal-hydraulic-press",
       name: "Pascal's principle and the hydraulic press",
       intuition:
         "Squeeze a closed bag of liquid at one spot and it bulges everywhere: the extra pressure reaches every point. A hydraulic press uses this. A small force on a small piston makes a pressure, and that same pressure acting on a large piston makes a large force. Nothing is free, though: the large piston moves only a short way.",

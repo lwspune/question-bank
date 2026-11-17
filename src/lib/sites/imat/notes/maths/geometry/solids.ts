@@ -65,6 +65,7 @@ export const IMAT_MAT_GEO_SOLIDS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-geo-scaling",
+      visualizationSlug: "imat-similar-scaling",
       name: "How area and volume scale with length",
       intuition:
         "Double every length of a cube and you can fit 4 small faces on each big face and 8 small cubes inside the big one. In general, scaling lengths by \\(k\\) scales areas by \\(k^2\\) and volumes by \\(k^3\\). The mass of a solid object goes with its volume.",

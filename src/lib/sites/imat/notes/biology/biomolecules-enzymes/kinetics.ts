@@ -11,6 +11,7 @@ export const IMAT_BIO_BMO_KINETICS_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-bmo-temperature-ph",
+      visualizationSlug: "imat-enzyme-temp-ph",
       name: "Effect of temperature and pH on enzyme activity",
       intuition:
         "Warming speeds molecules up, so they meet more often and with more energy, and the rate rises. But the enzyme's shape is held by weak bonds, and too much heat shakes them apart: the active site loses its shape and activity collapses. pH works on the same weak bonds, by changing the charges on R groups, so each enzyme works only inside a range of pH around its optimum.",
@@ -58,6 +59,7 @@ export const IMAT_BIO_BMO_KINETICS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-bmo-substrate-concentration",
+      visualizationSlug: "imat-michaelis-menten",
       name: "Substrate concentration, Vmax and Km",
       intuition:
         "With little substrate, most active sites are empty, so adding substrate fills more of them and the rate climbs almost in proportion. As substrate builds up, nearly every active site is busy all the time, and adding more cannot make the enzyme work faster. The rate levels off at a maximum set by how much enzyme there is.",
@@ -119,6 +121,7 @@ export const IMAT_BIO_BMO_KINETICS_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-bmo-inhibition",
+      visualizationSlug: "imat-enzyme-inhibition",
       name: "Competitive, non-competitive and irreversible inhibition",
       intuition:
         "A competitive inhibitor looks like the substrate and sits in the active site, so the two compete for the same seat: flood the enzyme with substrate and the substrate wins. A non-competitive inhibitor binds somewhere else and bends the enzyme out of shape, so no amount of substrate can help. The cell also uses inhibition on purpose, letting the end product of a pathway switch off its first enzyme.",

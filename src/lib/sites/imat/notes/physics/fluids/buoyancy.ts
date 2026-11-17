@@ -64,6 +64,7 @@ export const IMAT_PHY_FLU_BUOYANCY_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-flu-floating",
+      visualizationSlug: "archimedes-floating-block",
       name: "Floating and sinking by comparing densities",
       intuition:
         "Push a fully submerged object down and let go. If it is less dense than the liquid, the upthrust beats its weight and it rises until just enough is under the surface for the two to balance. If it is denser, it sinks, and the bottom of the container takes the rest of its weight. Since a liquid's density changes with temperature, the same object can float in cold liquid and sink in warm.",

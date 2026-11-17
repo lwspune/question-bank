@@ -11,6 +11,7 @@ export const IMAT_LOG_SPA_SOLIDS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-spa-painted-cube",
+      visualizationSlug: "imat-painted-cube",
       name: "Painted cubes: how many small cubes have 0, 1, 2 or 3 painted faces",
       intuition:
         "Paint the outside of a big cube made of \\(n \\times n \\times n\\) small cubes. The corner cubes show three faces, the cubes along the edges show two, the cubes in the middle of each face show one, and the cubes inside show none. Peel off one layer from every side and what is left is the unpainted core, a cube of side \\(n - 2\\).",
@@ -68,6 +69,7 @@ export const IMAT_LOG_SPA_SOLIDS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-spa-nets",
+      visualizationSlug: "imat-cube-net-fold",
       name: "Nets of a cube and finding opposite faces",
       intuition:
         "A net is a cube cut along some edges and laid flat: six squares joined edge to edge. When you fold it back, squares that share an edge become neighbours, and squares in a straight line with exactly one square between them end up facing each other. Every face has exactly one opposite, so once two pairs are found, the last two faces are the third pair.",

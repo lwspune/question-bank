@@ -77,6 +77,7 @@ export const IMAT_CHE_BND_TYPES_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-bnd-ionic",
+      visualizationSlug: "bond-ionic-covalent-formation",
       name: "Ionic bonds and the formula of an ionic compound",
       intuition:
         "A metal atom with one, two or three outer electrons loses them easily; a non-metal atom a few electrons short of a full shell gains them. Both end up with a noble gas configuration. The positive and negative ions then attract each other in every direction, so they pack into a huge lattice rather than forming separate molecules.",

@@ -193,6 +193,7 @@ export const IMAT_PHY_ELE_CHARGE_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-ele-field",
+      visualizationSlug: "field-lines-charge",
       name: "Electric field: force per unit charge, and field lines",
       intuition:
         "A charge changes the space around it, so that any other charge placed there feels a force. The electric field at a point is the force a +1 C test charge would feel there. Once you know the field, the force on any charge is just the charge times the field.",

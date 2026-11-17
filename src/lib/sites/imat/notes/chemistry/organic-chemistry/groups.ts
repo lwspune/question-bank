@@ -11,6 +11,7 @@ export const IMAT_CHE_ORG_GROUPS_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-org-group-table",
+      visualizationSlug: "carb-functional-groups",
       name: "The main functional groups and their families",
       intuition:
         "The carbon and hydrogen skeleton is mostly unreactive; the chemistry happens at the oxygen, nitrogen or halogen atoms. So organic chemists sort molecules by these groups. Learn each group by its atoms and by what they are bonded to, because two groups can share the same atoms in a different arrangement.",

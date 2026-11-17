@@ -114,6 +114,7 @@ export const IMAT_BIO_BMO_PROTEINS_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-bmo-protein-structure",
+      visualizationSlug: "biochem-protein-structure-levels",
       name: "The four levels of protein structure",
       intuition:
         "The amino acid sequence is like a string of beads. Hydrogen bonds along the backbone twist parts of the string into coils and pleats. Attractions between the R groups then fold the whole chain into one particular 3D shape. Some proteins also need several folded chains fitted together before they work.",

@@ -11,6 +11,7 @@ export const IMAT_MAT_GEO_ANGLES_TRIANGLES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-geo-angle-facts",
+      visualizationSlug: "imat-parallel-angles",
       name: "Angle facts for crossing lines and parallel lines",
       intuition:
         "A straight line is a half turn, 180°, and a full turn round a point is 360°. When a third line (a transversal) crosses two parallel lines, it meets both at the same slope, so the angles at the two crossings copy each other.",

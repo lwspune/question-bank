@@ -64,6 +64,7 @@ export const IMAT_PHY_DYN_FORCES_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-dyn-incline",
+      visualizationSlug: "lmf-friction-incline",
       name: "Forces on an inclined plane",
       intuition:
         "On a slope, gravity still pulls straight down, but only part of it tries to drag the body down the slope; the rest presses it into the surface. Splitting the weight into those two parts turns a slope problem into an ordinary straight-line problem. The steeper the slope, the bigger the part along it.",

@@ -11,6 +11,7 @@ export const IMAT_BIO_CSM_ENDOMEMBRANE_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-csm-nucleus",
+      visualizationSlug: "cell-organelle-map",
       name: "The nucleus, nuclear envelope and nucleolus",
       intuition:
         "The nucleus is the cell's library: the DNA stays inside, and working copies (mRNA) are sent out. Keeping DNA behind a membrane lets the cell control which messages leave. Inside the nucleus, one dense patch, the nucleolus, is a workshop for building ribosome parts.",

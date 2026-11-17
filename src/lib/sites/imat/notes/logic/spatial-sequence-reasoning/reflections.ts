@@ -77,6 +77,7 @@ export const IMAT_LOG_SPA_REFLECTIONS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-spa-folding",
+      visualizationSlug: "imat-paper-folding",
       name: "Folding, punching and unfolding paper",
       intuition:
         "Each fold doubles the number of layers, so one punch through the folded paper makes one hole per layer. Unfolding is reflecting: each hole appears again as its mirror image across the fold line. Undo the folds in reverse order, reflecting every hole you have so far.",

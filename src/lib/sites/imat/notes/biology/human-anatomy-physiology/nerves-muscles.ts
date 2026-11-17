@@ -15,6 +15,7 @@ export const IMAT_BIO_HAP_NERVES_MUSCLES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-hap-action-potential",
+      visualizationSlug: "imat-action-potential",
       name: "Resting potential, action potential and conduction speed",
       intuition:
         "A resting neurone is like a charged battery: pumps keep the inside negative. When a stimulus pushes the voltage past a threshold, sodium channels fly open, sodium rushes in, and the inside briefly turns positive. That flip spreads along the axon like a falling row of dominoes.",
@@ -65,6 +66,7 @@ export const IMAT_BIO_HAP_NERVES_MUSCLES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-hap-synapse",
+      visualizationSlug: "imat-synapse",
       name: "The cholinergic synapse and the neuromuscular junction",
       intuition:
         "Two neurones do not touch: there is a tiny gap. The electrical signal is turned into a chemical one, the chemical drifts across, and on the other side it is turned back into an electrical signal. Because only one side can release the chemical and only the other side can detect it, the signal goes one way.",
@@ -115,6 +117,7 @@ export const IMAT_BIO_HAP_NERVES_MUSCLES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-hap-reflex-autonomic",
+      visualizationSlug: "hp-reflex-arc",
       name: "Reflex arcs and the sympathetic and parasympathetic systems",
       intuition:
         "Some responses are too urgent, or too routine, to wait for conscious thought. A reflex runs through the spinal cord and back out in a fraction of a second. The organs inside you are run by the autonomic system, whose two halves pull in opposite directions, like an accelerator and a brake.",
@@ -167,6 +170,7 @@ export const IMAT_BIO_HAP_NERVES_MUSCLES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-hap-sarcomere",
+      visualizationSlug: "imat-sarcomere",
       name: "Muscle types, skeletal muscle structure and the sarcomere bands",
       intuition:
         "Skeletal muscle is built from repeating units called sarcomeres, lined up end to end. Inside each, thick and thin filaments overlap like interlocking fingers. When the muscle contracts the fingers slide further in, so the units get shorter, but no filament itself changes length.",
@@ -216,6 +220,7 @@ export const IMAT_BIO_HAP_NERVES_MUSCLES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-hap-contraction",
+      visualizationSlug: "imat-cross-bridge",
       name: "From nerve impulse to cross-bridge cycle: calcium, troponin and ATP",
       intuition:
         "At rest, a protein thread (tropomyosin) covers the places on actin where myosin wants to grab. Calcium is the key: it binds troponin, which drags tropomyosin out of the way. Myosin heads then grab, pull, let go and re-cock, over and over, and each release needs a fresh ATP.",

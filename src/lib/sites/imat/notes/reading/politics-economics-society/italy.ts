@@ -55,6 +55,7 @@ export const IMAT_REA_PES_ITALY_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-pes-italian-institutions",
+      visualizationSlug: "imat-italian-institutions",
       name: "Parliament, President of the Republic and Government of Italy",
       intuition:
         "Italian citizens elect only Parliament directly. Everything else flows from it: Parliament elects the President of the Republic, the President appoints the Prime Minister, and the Government survives only while both chambers support it. That chain is why Italy is a parliamentary republic.",

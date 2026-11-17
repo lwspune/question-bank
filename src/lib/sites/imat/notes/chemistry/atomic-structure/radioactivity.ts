@@ -11,6 +11,7 @@ export const IMAT_CHE_ATS_RADIOACTIVITY_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-ats-radiation-types",
+      visualizationSlug: "mp-radiation-penetration",
       name: "Alpha, beta and gamma radiation and what each does to the nucleus",
       intuition:
         "A nucleus with the wrong balance of protons and neutrons is unstable. A heavy nucleus can shed a compact package of two protons and two neutrons (alpha). A nucleus with too many neutrons turns a neutron into a proton and throws out an electron (beta-minus). Gamma rays carry away leftover energy without changing which nucleus it is.",
@@ -122,6 +123,7 @@ export const IMAT_CHE_ATS_RADIOACTIVITY_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-ats-half-life",
+      visualizationSlug: "imat-half-life-decay",
       name: "Half-life calculations",
       intuition:
         "Each unstable nucleus has the same chance of decaying in a given time, whatever has happened before. So in one half-life, half of whatever is left decays: a sample never runs out in a fixed time, it keeps halving. Count the half-lives, then halve that many times.",

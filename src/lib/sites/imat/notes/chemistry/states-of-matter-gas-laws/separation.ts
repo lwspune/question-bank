@@ -53,6 +53,7 @@ export const IMAT_CHE_GAS_SEPARATION_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-gas-separation",
+      visualizationSlug: "matt-distillation-apparatus",
       name: "Separation techniques: filtration, distillation, chromatography and others",
       intuition:
         "Every separation method uses one property in which the parts of a mixture differ. Different particle sizes suggest filtration, different boiling points suggest distillation, different attractions to a surface suggest chromatography. Name the difference first and the method follows.",

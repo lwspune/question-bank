@@ -61,6 +61,7 @@ export const IMAT_BIO_MBT_VIRUSES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-mbt-lytic-lysogenic",
+      visualizationSlug: "imat-lytic-lysogenic",
       name: "Lytic and lysogenic cycles of a bacteriophage",
       intuition:
         "Once a phage's DNA is inside a bacterium, it has two choices. It can take over at once, make hundreds of new phages and burst the cell. Or it can hide by joining the bacterial chromosome, riding along quietly each time the cell divides, until something triggers it to break out.",

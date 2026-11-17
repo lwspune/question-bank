@@ -11,6 +11,7 @@ export const IMAT_CHE_STO_TYPES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-sto-reaction-types",
+      visualizationSlug: "rxn-reaction-types",
       name: "The main types of chemical reaction",
       intuition:
         "Rather than memorise every reaction, learn the patterns. Two substances joining, one splitting, an element pushing another out of a compound, or two compounds swapping partners: once you see the pattern you can predict the products and balance the equation.",

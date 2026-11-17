@@ -11,6 +11,7 @@ export const IMAT_MAT_EQI_QUADRATICS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-eqi-quadratic-solve",
+      visualizationSlug: "qe-discriminant-parabola",
       name: "Solving quadratic equations and the discriminant",
       intuition:
         "If a product is zero, one of its factors must be zero, so a factorised quadratic gives its roots at once. When it will not factorise, the formula always works. The part under the square root, the discriminant, decides everything: positive gives two roots, zero gives one, negative gives none.",

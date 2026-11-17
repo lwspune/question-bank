@@ -62,6 +62,7 @@ export const IMAT_PHY_DYN_MOMENTS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-dyn-equilibrium",
+      visualizationSlug: "imat-moments-seesaw",
       name: "Equilibrium and the principle of moments",
       intuition:
         "A see-saw balances when the turning effect pushing one way equals the turning effect pushing the other way. A beam resting on supports must also not move up or down, so the supports must push up with exactly the total weight. Two conditions, two equations: that is enough to find two unknown forces.",

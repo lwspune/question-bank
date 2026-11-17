@@ -11,6 +11,7 @@ export const IMAT_BIO_BMO_WATER_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-bmo-hydrogen-bond",
+      visualizationSlug: "hyd-water-hydrogen-bonding",
       name: "Polar water and the hydrogen bond",
       intuition:
         "Oxygen pulls the shared electrons of each O-H bond towards itself, so the oxygen end of water is slightly negative and the hydrogen ends are slightly positive. The slightly positive hydrogen of one molecule is then attracted to the slightly negative oxygen of the next. That attraction is the hydrogen bond: much weaker than a covalent bond, and constantly breaking and re-forming.",
