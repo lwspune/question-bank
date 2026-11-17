@@ -90,3 +90,21 @@ describe("tallyNotesLive HARD counts (2026-11-17)", () => {
     expect(live.hardChapter.get(HSC) ?? 0).toBe(0);
   });
 });
+
+describe("tallyNotesLive class counts (2026-11-17)", () => {
+  const live = tallyNotesLive(
+    [
+      { chapter_id: "c-nda", subtopic_id: "t-sub", pyq_year: 2024, difficulty: "HARD", question_format: "numeric" },
+      { chapter_id: "c-nda", subtopic_id: "t-sub", pyq_year: 2026, difficulty: "EASY", question_format: "mcq" },
+      { chapter_id: "c-nda", subtopic_id: "t-parts", pyq_year: 2024, difficulty: "MODERATE", question_format: null },
+      { chapter_id: "c-hsc", subtopic_id: "t-parts", pyq_year: 2025, difficulty: null, question_format: "subjective" },
+    ],
+    tax
+  );
+  it("counts difficulty and format per chapter; a missing format is MCQ", () => {
+    expect(Object.fromEntries(live.classes.get(NDA)!)).toEqual({
+      HARD: 1, EASY: 1, MODERATE: 1, MODERATE_OR_HARD: 2, numeric: 1, mcq: 2,
+    });
+    expect(Object.fromEntries(live.classes.get(HSC)!)).toEqual({ subjective: 1 });
+  });
+});
