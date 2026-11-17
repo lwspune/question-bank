@@ -4,7 +4,7 @@
  *   npm run papers:build                         # DRY RUN: what would be written, what is refused
  *   npm run papers:build -- --apply              # write the papers, unpublished
  *   npm run papers:build -- --apply --publish    # write and publish
- *   npm run papers:build -- --exam=mh-ssc-10     # one board (cbse-10 · cbse-12 · mh-hsc-12 · mh-ssc-10)
+ *   npm run papers:build -- --exam=mh-ssc-10     # one board (cbse-10 · cbse-12 · mh-hsc-12 · mh-ssc-10 · up-board-10 · up-board-12)
  *   npm run papers:build -- --only=2025-55-1     # one group (or one paper slug)
  *
  * Sources, one per pipeline:
@@ -17,6 +17,10 @@
  *     pattern (./mhPatterns.ts, applied by src/lib/questionPapers/mhPattern.ts).
  *     Each question's fingerprint comes from the lane's OWN buildPaperRecords,
  *     the function its commit used, so it cannot drift from the bank.
+ *   - UP Board Class 10 and 12 (scripts/up-board/data): marks on every row,
+ *     fingerprints from the lane's own buildRows, and each paper's printed
+ *     "attempt any N parts" rules from data/attempt-rules.json
+ *     (src/lib/questionPapers/upManifest.ts).
  *
  * A paper is REFUSED, never written short: marks that do not reach the printed
  * maximum, a question outside its pattern, or a question that is not a PUBLIC
@@ -47,8 +51,12 @@ import * as hscGeo from "../mh-hsc-12-geo-pyq/config";
 import { buildPaperRecords as geoRecords } from "../mh-hsc-12-geo-pyq/lib";
 import * as ssc from "../mh-ssc-10/config";
 import { buildPaperRecords as sscRecords } from "../mh-ssc-10/lib";
+import { upManifest, type UpRules } from "../../src/lib/questionPapers/upManifest";
+import { SUBJECTS as UP_SUBJECTS, type UpSubjectKey } from "../up-board/config";
+import { buildRows as upRows, type UpPaper } from "../up-board/lib";
 
 const CBSE_DIR = join(process.cwd(), "scripts/cbse-12-pyq/data");
+const UP_DIR = join(process.cwd(), "scripts/up-board/data");
 /** CBSE's paper-code prefix → the exam and the bank's subject name (scripts/cbse-12-pyq/config.ts). */
 const CBSE_SUBJECTS: Record<string, { exam: "cbse-12" | "cbse-10"; subject: string }> = {
   "55": { exam: "cbse-12", subject: "Physics" },
@@ -64,6 +72,8 @@ const EXAMS: Record<string, string> = {
   "cbse-12": "CBSE Class 12",
   "mh-hsc-12": "Maharashtra HSC Class 12",
   "mh-ssc-10": "Maharashtra State Board Class 10",
+  "up-board-10": "UP Board Class 10",
+  "up-board-12": "UP Board Class 12",
 };
 
 const args = process.argv.slice(2);
@@ -244,6 +254,48 @@ function sscSources(): Candidate[] {
   return out;
 }
 
+/**
+ * UP Board papers. The printed maximum and any "attempt any N parts" choice
+ * come from data/attempt-rules.json (read off the papers); a paper absent from
+ * it offers no choice and prints 70. Every UP paper prints 3 hours 15 minutes.
+ */
+function upSources(): Candidate[] {
+  const out: Candidate[] = [];
+  const rulesPath = join(UP_DIR, "attempt-rules.json");
+  const rules = existsSync(rulesPath)
+    ? (JSON.parse(readFileSync(rulesPath, "utf8")) as Record<string, { maxMarks: number; groups?: UpRules["groups"] }>)
+    : {};
+  for (const file of readdirSync(UP_DIR).filter((f) => /^\d{4}-\d{3}-[A-Z]{2}\.questions\.json$/.test(f)).sort()) {
+    const id = file.replace(/\.questions\.json$/, "");
+    const paper = JSON.parse(readFileSync(join(UP_DIR, file), "utf8")) as UpPaper;
+    const subject = UP_SUBJECTS[paper.subject as UpSubjectKey];
+    const exam = subject.cls === 10 ? "up-board-10" : "up-board-12";
+    if (EXAM && EXAM !== exam) continue;
+    const [code, series] = paper.paper.split("-");
+    const r = upManifest(
+      {
+        slug: `${paper.year}-${code}-${series.toLowerCase()}`,
+        groupSlug: `${paper.year}-${code}-${series.toLowerCase()}`,
+        title: `${EXAMS[exam]} ${subject.subjectName} ${paper.year} (${code} ${series})`,
+        year: paper.year,
+        paperCode: `${code} (${series})`,
+      },
+      paper.questions.map((q) => ({
+        ref: q.ref,
+        questionNumber: q.questionNumber,
+        section: q.section ?? "",
+        marks: q.marks,
+        alternativeTo: q.alternativeTo ?? null,
+      })),
+      upRows(paper, subject).map((row) => row.contentHash),
+      { maxMarks: rules[id]?.maxMarks ?? 70, minutes: 195, groups: rules[id]?.groups ?? {} }
+    );
+    if (!r.ok) refused.push(r.reason);
+    else out.push({ exam, subjectName: subject.subjectName, subjects: [subject.subjectName], manifest: r.manifest });
+  }
+  return out;
+}
+
 async function idsByHash(admin: SupabaseClient, examId: string, hashes: string[]): Promise<Map<string, { id: string; subjectId: string }>> {
   const out = new Map<string, { id: string; subjectId: string }>();
   // "row:<id>" is a reviewed resolve (see resolvedRows): look the row up by id,
@@ -283,6 +335,7 @@ async function main() {
     ...(wanted("cbse-12") || wanted("cbse-10") ? cbseSources() : []),
     ...(wanted("mh-hsc-12") ? hscSources() : []),
     ...(wanted("mh-ssc-10") ? sscSources() : []),
+    ...(wanted("up-board-10") || wanted("up-board-12") ? upSources() : []),
   ].filter((c) => !ONLY || c.manifest.slug === ONLY || c.manifest.groupSlug === ONLY);
 
   const built: Built[] = [];

@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
-import { BOARD_EXAMS, getExamBySlug } from "@/lib/exam/examContext";
+import { QUESTION_PAPER_EXAMS, getExamBySlug, hasQuestionPapers } from "@/lib/exam/examContext";
 import { slugify } from "@/lib/board/query";
 import { getPublishedPapers } from "@/lib/questionPapers/query";
 
@@ -14,13 +14,13 @@ type Params = { examSlug: string };
 export const revalidate = 86400;
 
 export function generateStaticParams(): Params[] {
-  return BOARD_EXAMS.map((e) => ({ examSlug: e.slug }));
+  return QUESTION_PAPER_EXAMS.map((e) => ({ examSlug: e.slug }));
 }
 
 export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
   const params = await props.params;
   const exam = getExamBySlug(params.examSlug);
-  if (!exam?.boardExam) return { title: "Question papers" };
+  if (!exam || !hasQuestionPapers(exam)) return { title: "Question papers" };
   return {
     title: `${exam.displayName} past question papers with answers`,
     description: `Whole ${exam.displayName} board papers by subject and year, with marks and model answers.`,
@@ -31,7 +31,7 @@ export async function generateMetadata(props: { params: Promise<Params> }): Prom
 export default async function ExamPapers(props: { params: Promise<Params> }) {
   const params = await props.params;
   const exam = getExamBySlug(params.examSlug);
-  if (!exam?.boardExam) notFound();
+  if (!exam || !hasQuestionPapers(exam)) notFound();
   // No published papers yet is NOT a 404: this page is built ahead and cached
   // for a day, and a cached 404 would outlive the papers being published.
   const papers = (await getPublishedPapers()).filter((p) => p.examName === exam.examName);

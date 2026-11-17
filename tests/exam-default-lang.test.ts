@@ -23,3 +23,17 @@ describe("examDefaultLang", () => {
     }
   });
 });
+
+describe("hasQuestionPapers", () => {
+  it("gives /question-papers to a textbook board and to UP Board, which has papers but no textbook (2026-11-17)", async () => {
+    const { hasQuestionPapers, QUESTION_PAPER_EXAMS, BOARD_EXAMS } = await import("../src/lib/exam/examContext");
+    expect(hasQuestionPapers(getExamBySlug("cbse-12"))).toBe(true);
+    expect(hasQuestionPapers(getExamBySlug("up-board-10"))).toBe(true);
+    expect(hasQuestionPapers(getExamBySlug("up-board-12"))).toBe(true);
+    expect(hasQuestionPapers(getExamBySlug("nda"))).toBe(false);
+    expect(hasQuestionPapers(null)).toBe(false);
+    // UP gets the papers, never the empty /board reader.
+    expect(BOARD_EXAMS.map((e) => e.slug)).not.toContain("up-board-10");
+    expect(QUESTION_PAPER_EXAMS.map((e) => e.slug)).toEqual(expect.arrayContaining(["cbse-12", "up-board-10", "up-board-12"]));
+  });
+});

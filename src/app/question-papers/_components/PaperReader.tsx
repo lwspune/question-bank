@@ -185,7 +185,7 @@ function PaperSections({
                 const q = it.question;
                 return (
                   <li key={it.position}>
-                    {it.isAlternative && (
+                    {it.orBefore && (
                       <p className="my-2 text-center text-xs font-bold uppercase tracking-widest text-muted-foreground">
                         OR
                       </p>

@@ -138,6 +138,13 @@ export type ExamEntry = {
    */
   boardExam?: boolean;
   /**
+   * Whole board papers on /question-papers WITHOUT a textbook corpus, so no
+   * /board reader and no Board tab (`boardExam` gives both). UP Board
+   * (2026-11-17) is the first: its papers are in, its textbook is NCERT's and
+   * not ingested under it. Read through `hasQuestionPapers`.
+   */
+  pastPaperPages?: boolean;
+  /**
    * Exam has published mock tests (real PYQ papers served as timed, auto-graded
    * online tests at `/mock`). Drives the gated "Mocks" primary-nav tab — shown
    * only when the active exam actually has mocks, like Papers is member-gated.
@@ -660,8 +667,8 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     bilingual: true,
     secondLang: "hi",
     defaultLang: "hi",
-    pastPaperSolutions: true,
-    noPublicContent: true,
+    pastPaperSolutions: true, // PUBLIC since 2026-11-17, every row solved in both languages
+    pastPaperPages: true, // /question-papers, but no /board reader (isc-12's reason)
     board: "UP Board",
     std: 10,
   },
@@ -680,8 +687,8 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     bilingual: true,
     secondLang: "hi",
     defaultLang: "hi",
-    pastPaperSolutions: true,
-    noPublicContent: true,
+    pastPaperSolutions: true, // PUBLIC since 2026-11-17, every row solved in both languages
+    pastPaperPages: true, // /question-papers, but no /board reader (isc-12's reason)
     board: "UP Board",
     std: 12,
   },
@@ -1344,6 +1351,13 @@ export function examHasMocks(slug: string | null | undefined): boolean {
 export const BOARD_EXAMS: readonly ExamEntry[] = EXAM_REGISTRY.filter(
   (e) => e.boardExam === true
 );
+
+/** The exam has /question-papers pages: a textbook board, or a board with papers only. */
+export function hasQuestionPapers(entry: ExamEntry | null | undefined): boolean {
+  return entry?.boardExam === true || entry?.pastPaperPages === true;
+}
+
+export const QUESTION_PAPER_EXAMS: readonly ExamEntry[] = EXAM_REGISTRY.filter(hasQuestionPapers);
 
 /**
  * Distinct boards, in registry order — the written-paper builder's first
