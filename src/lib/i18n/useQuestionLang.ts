@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useSyncExternalStore } from "react";
+import { useCallback, useContext, useSyncExternalStore } from "react";
 import { defaultLangFor, parseLangPref, type AltLang, type QuestionLang } from "./bilingual";
+import { QuestionLangDefaultContext } from "./QuestionLangDefault";
 
 /**
  * The viewer's question-language choice, shared by every card on the page.
@@ -15,7 +16,8 @@ import { defaultLangFor, parseLangPref, type AltLang, type QuestionLang } from "
  * One store + a window event, so switching on one card switches them all.
  * `alt` is the page's (or question's) second language: until the viewer
  * chooses, it decides the default (defaultLangFor: Hindi pages open in
- * English, Marathi pages in both).
+ * English, Marathi pages in both), unless the page's exam names its own
+ * (QuestionLangDefaultProvider: UP Board opens in Hindi).
  */
 const KEY = "pv_question_lang";
 const EVENT = "pv-question-lang";
@@ -41,7 +43,7 @@ function subscribe(onChange: () => void) {
 }
 
 export function useQuestionLang(alt?: AltLang | null): [QuestionLang, (lang: QuestionLang) => void] {
-  const fallback = defaultLangFor(alt);
+  const fallback = defaultLangFor(alt, useContext(QuestionLangDefaultContext));
   const read = useCallback(() => stored() ?? fallback, [fallback]);
   const lang = useSyncExternalStore(subscribe, read, () => fallback);
   const set = useCallback((next: QuestionLang) => {

@@ -4,6 +4,8 @@ import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getRunnerState, MockError } from "@/lib/mocks/service";
 import MockRunner from "./MockRunner";
+import { QuestionLangDefaultProvider } from "@/lib/i18n/QuestionLangDefault";
+import { examDefaultLang, getExamByName } from "@/lib/exam/examContext";
 
 export const metadata: Metadata = { robots: { index: false } };
 
@@ -28,5 +30,9 @@ export default async function MockAttemptPage(props: { params: Promise<Params> }
     redirect(`/mock/attempt/${params.attemptId}/result`);
   }
 
-  return <MockRunner state={state} supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!} />;
+  return (
+    <QuestionLangDefaultProvider value={examDefaultLang(getExamByName(state.mock.examName))}>
+      <MockRunner state={state} supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!} />
+    </QuestionLangDefaultProvider>
+  );
 }
