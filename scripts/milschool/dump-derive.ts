@@ -55,7 +55,9 @@ function main() {
   const questions: TQ[] = JSON.parse(readFileSync(merged, "utf8")).questions;
   const pat = pattern(paper);
 
-  if (questions.length !== expectedCount(paper)) {
+  // A written paper with no fixed item count (RIMC English) was already gated by
+  // merge.ts on its 1..N numbering and its marks total.
+  if (!(paper.format === "written" && paper.pattern.questions === 0) && questions.length !== expectedCount(paper)) {
     throw new Error(
       `merged file holds ${questions.length} items but ${paper.id} expects ${expectedCount(paper)}. ` +
         `Refusing to emit packets from an incomplete paper.`

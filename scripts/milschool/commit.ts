@@ -92,7 +92,7 @@ async function main() {
     for (const e of errs.slice(0, 40)) console.log(`  - ${e}`);
     if (errs.length > 40) console.log(`  ... and ${errs.length - 40} more`);
   } else {
-    console.log(`VALIDATION: ok (${parsed.length} rows incl. ${rows.withdrawnCount} withdrawn, coverage 1..${pat.questions})`);
+    console.log(`VALIDATION: ok (${parsed.length} rows incl. ${rows.withdrawnCount} withdrawn, coverage 1..${paper.format === "written" ? parsed.length : pat.questions})`);
   }
 
   if (!apply) {
