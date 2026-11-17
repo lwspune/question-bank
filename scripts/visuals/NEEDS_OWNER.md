@@ -20,9 +20,7 @@ the key the nearest one) and were animated; settled below.
 
 The 274 rows found in the MHT-CET (153) and JEE Mains (121) animation runs were settled on 2026-11-13, each checked against its source paper; see below.
 
-| Question | Exam · chapter | Problem | Found |
-|---|---|---|---|
-| `be50a369` | IMAT 2025 Q51 · Mathematics · Numbers, Powers and Logarithms | **Duplicate options.** Our A and C both print a² + b² (keyed D, (a − 2b)², is right and unaffected). The source prints it so: MUR's CompitoInglese2025.pdf Q51 has B and E both a² + b², key A (a − 2b)². Recommendation, as `521dd092` below: a notice, no grace. A notice changes the solution, so its animation (al-imat-mat-3) must be re-tied with `--replace` after. | 2026-11-17, IMAT/ENEM animation run |
+None open.
 
 ## Settled
 
@@ -30,6 +28,7 @@ Owner policy (2026-10-29): the source paper decides first; a key the source itse
 
 | Question | Exam · chapter | Problem | Settled |
 |---|---|---|---|
+| `be50a369` | IMAT 2025 Q51 · Mathematics · Numbers, Powers and Logarithms | **Duplicate options.** Our A and C both print a² + b² (keyed D, (a − 2b)², is right and unaffected). The source prints it so: MUR's CompitoInglese2025.pdf Q51 has B and E both a² + b², key A (a − 2b)². | **2026-11-17:** Kept as printed (owner: a duplicate the original paper prints stays). The key is right and unaffected, so no notice, no grace, and its animation (al-imat-mat-3) stays as written. Source: MUR CompitoInglese2025.pdf Q51 |
 | `36832103` | JEE Mains · Physics · Current Electricity | **Figure missing.** The solution adds R_eq = 3 + 3 + 1 = 10 (the sum is 7); without the circuit the working cannot be checked. | **2026-11-13:** Stem and key right; the stored solution was wrong and is corrected. The figure is on the row (the row's 'figure missing' was wrong); the wire on the right shorts the 4 ohm loop, leaving 3 + (2 // 2) + 6 = 10 ohm. Source: JEE_Mains/PYQs/2023/25 jan.docx Q28; solutions 25 jan soln.docx |
 | `7afda126` | JEE Mains · Physics · Electrostatics | **Key vs stem.** The key q/2ε₀ is the flux through the curved surface; the stem and solution ask about the flat face. | **2026-11-13:** Defective as printed: notice above the solution, key kept, grace in mocks. Source: JEE_Mains/PYQs/2022/27 june.docx Q101; solutions 27 june soln.docx |
 | `897fc969` | JEE Mains · Physics · Electrostatics | **Defective as printed?** The solution itself says the keyed a/r ≈ 3 cannot balance the forces as drawn. | **2026-11-13:** Defective as printed: notice above the solution, key kept, grace in mocks. Source: JEE_Mains/PYQs/2025/23 jan.docx Q11; solutions 23 jan soln.docx |
