@@ -214,6 +214,25 @@ export const PAPERS: Record<string, Paper> = {
     pattern: AISSEE_6,
     key: { dir: "_pdf\\aissee_c6_2022_key.pdf", page: 10, code: "D", docId: "70888410-d518-11f1-8f07-0aa932765c8b", final: true },
   },
+  // 26 PDF pages, a scan (no text layer), Set A, SINGLE column, every item
+  // printed Hindi then English line by line. Order Maths 1-50, GK 51-75,
+  // Language 76-100, Intelligence 101-125. The Language section is printed
+  // twice: English on 16, 17 and the top of 18, then the Hindi alternative
+  // from the foot of 18 to the top of 21 (left out, as on every other paper).
+  // Intelligence starts at the foot of 21 and runs to Q125 on 26. NO KEY found.
+  "aissee-6-2020": {
+    id: "aissee-6-2020",
+    exam: "aissee-6",
+    paper: 1,
+    sourceFile: "AISSEE_2020_Class6_SetA.pdf",
+    pagesDir: "aissee\\c6_2020_qp",
+    pdf: "aissee_c6_2020_qp.pdf",
+    pages: [...range(2, 18), ...range(21, 26)],
+    docId: "15884cba-3543-11eb-8c7c-02f21f5619c4",
+    pyqYear: 2020,
+    pyqNote: "AISSEE 2020 Class 6 (5 January 2020, Set A)",
+    pattern: AISSEE_6,
+  },
   // 33 PDF pages: 1 AglaSem cover, 2 booklet cover (code A, EN/HOLAB/6/24,
   // English medium), 3-31 Q1-Q125, 32 rough work, 33 instructions. Language
   // section English in both columns; from Mathematics on, English LEFT and
