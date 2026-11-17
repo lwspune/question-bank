@@ -81,7 +81,7 @@ export const STRATEGY_HEADLINE = {
 export const RECALL_STRAND: StrategyStrand = {
   id: "recall",
   label:
-    "Recall — Indian Geography Economy · Indian Geography Physical · World and Human Geography (26 q · 50%)",
+    "Recall — Indian Geography Economy · Indian Geography Physical · World and Human Geography (178 q · 49%)",
   qCount: 178,
   pctOfBank: 49,
   pitch:
@@ -108,7 +108,7 @@ export const RECALL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~12 marks",
       studyHours: 8,
       summary:
-        "81 q · 24% HARD. The bank's largest chapter. Agriculture (36 q) is the giant subtopic — drill leading-producer-state tables. Minerals and Mining (14 q · 36% HARD) is the trap pocket — drill critical minerals cold. Reference-tables 'Mineral & Crop Producer States' cluster compounds the value.",
+        "83 q · 24% HARD. The bank's largest chapter. Agriculture (21 q) is the giant subtopic — drill leading-producer-state tables. Minerals and Mining (14 q · 36% HARD) is the trap pocket — drill critical minerals cold. Reference-tables 'Mineral & Crop Producer States' cluster compounds the value.",
     },
     {
       chapter: "Indian Geography — Physical Features",
@@ -124,7 +124,7 @@ export const RECALL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~10 marks",
       studyHours: 6,
       summary:
-        "67 q · 15% HARD. Indian Rivers (27 q) is the chapter's biggest subtopic — river↔state pairs, tributaries, alternative names + dams. Forests + Natural Vegetation (14 q · 29% HARD) carries the chapter's densest HARD pool now. Location, Extent and Frontiers (5 q) covers the sunrise gap, coastline and neighbours. Reference-tables 'Indian Rivers' + 'Mountain Peaks' clusters compound the value.",
+        "69 q · 14% HARD. Indian Rivers (27 q) is the chapter's biggest subtopic — river↔state pairs, tributaries, alternative names + dams. Forests + Natural Vegetation (15 q · 27% HARD) carries the chapter's densest HARD pool now. Location, Extent and Frontiers (5 q) covers the sunrise gap, coastline and neighbours. Reference-tables 'Indian Rivers' + 'Mountain Peaks' clusters compound the value.",
     },
     {
       chapter: "World and Human Geography",
@@ -138,14 +138,14 @@ export const RECALL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~3 marks",
       studyHours: 2,
       summary:
-        "25 q · 8% HARD — lightest %HARD chapter. Megacities + Population (15 q · 0% HARD) is pure recall — guaranteed marks. World Rivers (6 q · 33% HARD) tests Helmand-Hindu Kush, Suez/Panama canals, landlocked bodies (Caspian Sea, Lake Baikal). Read once, recognise on test day.",
+        "26 q · 12% HARD. Megacities + Population (16 q · 13% HARD) is mostly recall and near-guaranteed marks. World Rivers (6 q · 33% HARD) tests Helmand-Hindu Kush, Suez/Panama canals, landlocked bodies (Caspian Sea, Lake Baikal). Read once, recognise on test day.",
     },
   ],
 };
 
 export const APPLY_STRAND: StrategyStrand = {
   id: "apply",
-  label: "Apply — Climatology, Atmosphere and Weather · Earth's Structure, Landforms and Geological Time (80 q · 38%)",
+  label: "Apply — Climatology, Atmosphere and Weather · Earth's Structure, Landforms and Geological Time (145 q · 40%)",
   qCount: 145,
   pctOfBank: 40,
   pitch:
@@ -172,7 +172,7 @@ export const APPLY_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~6 marks",
       studyHours: 6,
       summary:
-        "57 q · 28% HARD — the densest-HARD chapter. Cyclones + Atmospheric Layers (16 + 12 = 28 q) are the giant subtopics. Atmospheric Pressure (6 q · 50% HARD) is small but HARD-dense. Mechanism-tracing dominates — drill the cyclogenesis + pressure-belt + Coriolis mechanisms cold.",
+        "65 q · 26% HARD — the densest-HARD chapter. Cyclones + Atmospheric Layers (17 + 14 = 31 q) are the giant subtopics. Atmospheric Pressure (8 q · 50% HARD) is small but HARD-dense. Mechanism-tracing dominates — drill the cyclogenesis + pressure-belt + Coriolis mechanisms cold.",
     },
     {
       chapter: "Earth's Structure, Landforms and Geological Time",
@@ -190,14 +190,14 @@ export const APPLY_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~8 marks",
       studyHours: 6,
       summary:
-        "74 q · 20% HARD. Earth's Interior + Plate Tectonics (15 q · 33% HARD) is the densest-HARD subtopic — drill plate-boundary types + seismic-wave layering cold. Landforms (15 q) + Rocks (15 q · 27% HARD) carry the bulk. Weathering (10 q · 0% HARD) is a guaranteed marks pocket — read once, done.",
+        "80 q · 19% HARD. Earth's Interior + Plate Tectonics (15 q · 33% HARD) is the densest-HARD subtopic — drill plate-boundary types + seismic-wave layering cold. Landforms (15 q) + Rocks (17 q · 24% HARD) carry the bulk. Weathering (12 q · 0% HARD) is a guaranteed marks pocket — read once, done.",
     },
   ],
 };
 
 export const VERIFY_STRAND: StrategyStrand = {
   id: "verify",
-  label: "Verify — Earth in Space, Maps and Coordinates · Oceanography (20 q · 12%)",
+  label: "Verify — Earth in Space, Maps and Coordinates · Oceanography (44 q · 12%)",
   qCount: 44,
   pctOfBank: 12,
   pitch:
@@ -205,7 +205,7 @@ export const VERIFY_STRAND: StrategyStrand = {
   approach: [
     "Drill the statement-evaluation execution mode separately from pure recall. The trap is partial-credit thinking — you can't get 'half the statements right'; you must judge each one true/false correctly. The option that lists exactly 2 correct statements (when there are 3 correct) is a distractor.",
     "Earth in Space Planets subtopic (4 q · 50% HARD) is the chapter's HARD pool. Terrestrial planets (Mercury, Venus, Earth, Mars) — small + dense + rocky + few/no moons + close to Sun. Jovian planets (Jupiter, Saturn, Uranus, Neptune) — large + low-density + gaseous + many moons + far from Sun. Distractor swaps a trait across the two groups (e.g. 'terrestrial planets have many moons').",
-    "Earth in Space Time Zones (3 q · 33% HARD) is small but HARD-dense. IST = UTC+5:30 (82.5°E meridian, passes through Mirzapur in UP, also Andhra Pradesh + Odisha + Chhattisgarh). London = UTC+0. So 12 noon Delhi = 06:30 London. Each 15° of longitude = 1 hour difference (east = ahead, west = behind). IDL = 180° meridian (with deviations through Bering Strait + around island groups).",
+    "Earth in Space Time Zones (4 q · 25% HARD) is small but HARD-dense. IST = UTC+5:30 (82.5°E meridian, passes through Mirzapur in UP, also Andhra Pradesh + Odisha + Chhattisgarh). London = UTC+0. So 12 noon Delhi = 06:30 London. Each 15° of longitude = 1 hour difference (east = ahead, west = behind). IDL = 180° meridian (with deviations through Bering Strait + around island groups).",
     "Oceanography Ocean Currents (8 q · 13% HARD) tests warm/cold current pairs and driving forces. Warm currents (towards poles): Gulf Stream, Kuroshio, Brazil. Cold currents (towards equator): California, Humboldt, Benguela, Labrador, West Wind Drift (Antarctic circumpolar). North Atlantic Drift = warm extension of Gulf Stream → why W Europe is mild. Factors driving currents: Coriolis + gravity + solar heating + wind + salinity-density differences.",
     "Oceanography Sea-Floor Topography (4 q · 25% HARD) tests mid-oceanic-ridge basics. Mid-Atlantic Ridge runs N-S through middle of Atlantic. Iceland sits on the ridge (volcanic). Hawaii sits on a HOTSPOT, NOT on a ridge — distractor lists Hawaii as ridge-associated. Galapagos is on a triple junction near the East Pacific Rise.",
   ],
@@ -224,7 +224,7 @@ export const VERIFY_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~3 marks",
       studyHours: 2.5,
       summary:
-        "22 q · 18% HARD. Latitude/Longitude (6 q · 0% HARD) is guaranteed marks. Planets (4 q · 50% HARD) is the HARD pool — terrestrial vs Jovian distinctions tested via multi-statement evaluation. Time Zones (3 q · 33% HARD) tests IST/UTC arithmetic.",
+        "24 q · 17% HARD. Latitude/Longitude (6 q · 0% HARD) is guaranteed marks. Planets (4 q · 50% HARD) is the HARD pool — terrestrial vs Jovian distinctions tested via multi-statement evaluation. Time Zones (4 q · 25% HARD) tests IST/UTC arithmetic.",
     },
     {
       chapter: "Oceanography",
@@ -239,7 +239,7 @@ export const VERIFY_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~2 marks",
       studyHours: 2,
       summary:
-        "19 q · 11% HARD. Ocean Currents (9 q · 11% HARD) tests warm/cold pairs + driving forces via multi-statement evaluation. Tides (5 q · 0% HARD) is pure recall — guaranteed marks. Ocean Waves and Sea-Floor Topography (5 q · 0% HARD) tests sea-floor zones + the Mariana Trench. Methodical statement evaluation matters.",
+        "20 q · 10% HARD. Ocean Currents (9 q · 11% HARD) tests warm/cold pairs + driving forces via multi-statement evaluation. Tides (5 q · 0% HARD) is pure recall — guaranteed marks. Ocean Waves and Sea-Floor Topography (5 q · 0% HARD) tests sea-floor zones + the Mariana Trench. Methodical statement evaluation matters.",
     },
   ],
 };

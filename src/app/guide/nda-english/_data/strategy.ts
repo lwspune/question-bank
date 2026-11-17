@@ -77,7 +77,7 @@ export const RECALL_BUCKET: StrategyBucket = {
       expectedYieldPerPaper: "12–14 marks",
       studyHours: 12,
       summary:
-        "316 q in 10 yrs. 49% of attempts are EASY. Build a 300-word list across the 13 vocab families. Confusable pairs + Word Definition are too sparse to dedicate time to — they'll fall out of the same word work.",
+        "333 q in 10 yrs. 49% of attempts are EASY. Build a 300-word list across the 13 vocab families. Confusable pairs + Word Definition are too sparse to dedicate time to — they'll fall out of the same word work.",
     },
     {
       chapter: "Idioms and Phrases",
@@ -87,14 +87,14 @@ export const RECALL_BUCKET: StrategyBucket = {
       expectedYieldPerPaper: "4–5 marks",
       studyHours: 4,
       summary:
-        "86 q / 85 unique idioms. Read them grouped by theme (body-parts, animals, colours, weather, money). The literal interpretation is almost always a wrong option — that's the trap shape NDA reuses.",
+        "96 q / 95 unique idioms. Read them grouped by theme (body-parts, animals, colours, weather, money). The literal interpretation is almost always a wrong option — that's the trap shape NDA reuses.",
     },
   ],
 };
 
 export const RULE_BUCKET: StrategyBucket = {
   id: "rule",
-  label: "Rule — Grammar and Spotting Errors (223 q / 25%)",
+  label: "Rule — Grammar and Spotting Errors (239 q / 25%)",
   qCount: 239,
   pctOfBank: 25,
   pitch:
@@ -119,7 +119,7 @@ export const RULE_BUCKET: StrategyBucket = {
       expectedYieldPerPaper: "5–6 marks",
       studyHours: 5,
       summary:
-        "115 q. The underline-format that tests rule recognition. Drill the 4 named subtopics; Mixed + No-Error are calibration practice once you're solid on the rest.",
+        "117 q. The underline-format that tests rule recognition. Drill the 5 named subtopics; Mixed + No-Error are calibration practice once you're solid on the rest.",
     },
     {
       chapter: "Grammar",
@@ -134,14 +134,14 @@ export const RULE_BUCKET: StrategyBucket = {
       expectedYieldPerPaper: "5–6 marks",
       studyHours: 5,
       summary:
-        "108 q, almost all post-2024. Sentence Completion + Connectors carry half the chapter (50 q). Drill Connectors aggressively — they test the same logic-of-discourse skill that Cloze and PQRS reward.",
+        "122 q, almost all post-2024. Sentence Completion + Connectors carry 50 of them. Drill Connectors aggressively — they test the same logic-of-discourse skill that Cloze and PQRS reward.",
     },
   ],
 };
 
 export const REASON_BUCKET: StrategyBucket = {
   id: "reason",
-  label: "Reason — RC, Rearrangement, FIB, Cloze (275 q / 31%)",
+  label: "Reason — RC, Rearrangement, FIB, Cloze (282 q / 30%)",
   qCount: 282,
   pctOfBank: 30,
   pitch:
@@ -163,7 +163,7 @@ export const REASON_BUCKET: StrategyBucket = {
       expectedYieldPerPaper: "5–7 marks",
       studyHours: 6,
       summary:
-        "114 q. PQRS is the bread (92 q), S1–S6 is the butter (22 q at 36% HARD). The hardest single subtopic in NDA English. Train opener/closer cue recognition.",
+        "119 q. PQRS is the bread (97 q), S1–S6 is the butter (22 q at 36% HARD). The hardest single subtopic in NDA English. Train opener/closer cue recognition.",
     },
     {
       chapter: "Reading Comprehension",
@@ -183,7 +183,7 @@ export const REASON_BUCKET: StrategyBucket = {
       expectedYieldPerPaper: "2–3 marks",
       studyHours: 2,
       summary:
-        "55 q. Sentence-scoped — vocabulary + collocation. Phrasal-verb subset (10 q) is rare; drill the contextual main bucket.",
+        "57 q. Sentence-scoped — vocabulary + collocation. Phrasal-verb subset (12 q) is rare; drill the contextual main bucket.",
     },
     {
       chapter: "Cloze Test",

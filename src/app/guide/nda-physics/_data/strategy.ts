@@ -81,7 +81,7 @@ export const STRATEGY_HEADLINE = {
 
 export const RECALL_STRAND: StrategyStrand = {
   id: "recall",
-  label: "Recall — Sound · Modern Physics · Astronomy · Energy · Units (79 q · 18% of bank)",
+  label: "Recall — Sound · Modern Physics · Astronomy · Energy · Units (80 q · 17% of bank)",
   qCount: 80,
   pctOfBank: 17,
   pitch:
@@ -106,7 +106,7 @@ export const RECALL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "3–4 marks",
       studyHours: 4,
       summary:
-        "34 q / 1 HARD in 10 yrs. Every subtopic at ≤15% HARD. Drill all four subtopics — there's no skip-list.",
+        "35 q / 1 HARD in 10 yrs. Every subtopic at ≤20% HARD. Drill all four subtopics — there's no skip-list.",
     },
     {
       chapter: "Modern Physics",
@@ -164,7 +164,7 @@ export const RECALL_STRAND: StrategyStrand = {
 
 export const APPLY_STRAND: StrategyStrand = {
   id: "apply",
-  label: "Apply — Light · Laws of Motion · Kinematics · WEP · Gravitation · Oscillations (215 q · 48%)",
+  label: "Apply — Light · Laws of Motion · Kinematics · WEP · Gravitation · Oscillations (232 q · 49%)",
   qCount: 232,
   pctOfBank: 49,
   pitch:
@@ -192,7 +192,7 @@ export const APPLY_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "8–9 marks",
       studyHours: 10,
       summary:
-        "Largest chapter (97 q). Half recall (Light Phenomena, Eye + Instruments — 42 q), half formula-apply (Reflection, Refraction, Lenses, Prisms — 55 q). Target the Lenses subtopic HARD pool (25% HARD) with sign-convention practice.",
+        "Largest chapter (102 q). Half recall (Light Phenomena, Eye + Instruments — 42 q), half formula-apply (Reflection, Refraction, Lenses, Prisms — 60 q). Target the Lenses subtopic HARD pool (31% HARD) with sign-convention practice.",
     },
     {
       chapter: "Laws of Motion and Forces",
@@ -209,7 +209,7 @@ export const APPLY_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "4–5 marks",
       studyHours: 5,
       summary:
-        "41 q · 10% HARD. Grew dramatically 2023–24 (3→10 q/year). Newton's three laws statement-truth dominates; collision + recoil-momentum is the second pillar. Drill all five subtopics.",
+        "44 q · 9% HARD. Grew dramatically 2023–24 (3→10 q/year). Newton's three laws statement-truth dominates; collision + recoil-momentum is the second pillar. Drill all five subtopics.",
     },
     {
       chapter: "Kinematics and Motion",
@@ -224,7 +224,7 @@ export const APPLY_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "2 marks",
       studyHours: 3,
       summary:
-        "24 q · 25% HARD. Small chapter, dense HARD load. Vectors and Position (3 q at 67% HARD) is a calculus-leaning topic — skip if rushed. Drill Equations of Motion (15 q) carefully — graph-reading is a distinct sub-skill.",
+        "27 q · 26% HARD. Small chapter, dense HARD load. Vectors and Position (6 q at 50% HARD) is a calculus-leaning topic — skip if rushed. Drill Equations of Motion (13 q) carefully — graph-reading is a distinct sub-skill.",
     },
     {
       chapter: "Work, Energy and Power",
@@ -240,7 +240,7 @@ export const APPLY_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "2 marks",
       studyHours: 3,
       summary:
-        "23 q · 9% HARD. KE↔PE conversions dominate. F·d cosθ definition (the 'no work done when perpendicular' trap). Simple Machines is the lever-class identification recall corner.",
+        "26 q · 12% HARD. KE↔PE conversions dominate. F·d cosθ definition (the 'no work done when perpendicular' trap). Simple Machines is the lever-class identification recall corner.",
     },
     {
       chapter: "Gravitation",
@@ -255,7 +255,7 @@ export const APPLY_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "1–2 marks",
       studyHours: 3,
       summary:
-        "17 q · 12% HARD. The 'planet-scaled' ratio shape recurs — given a new planet's R and ρ relative to Earth, compute g / escape velocity / orbital period. Kepler's third law T²∝R³ is the second pillar.",
+        "19 q · 11% HARD. The 'planet-scaled' ratio shape recurs — given a new planet's R and ρ relative to Earth, compute g / escape velocity / orbital period. Kepler's third law T²∝R³ is the second pillar.",
     },
     {
       chapter: "Oscillations and Waves",
@@ -269,14 +269,14 @@ export const APPLY_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "1 mark",
       studyHours: 2,
       summary:
-        "13 q · 15% HARD. The Simple Pendulum T=2π√(L/g) ratio-question is the recurring shape: change L by k, change g by m, find new T. Mass is irrelevant — that's the test.",
+        "14 q · 21% HARD. The Simple Pendulum T=2π√(L/g) ratio-question is the recurring shape: change L by k, change g by m, find new T. Mass is irrelevant — that's the test.",
     },
   ],
 };
 
 export const REASON_STRAND: StrategyStrand = {
   id: "reason",
-  label: "Reason — Electricity & Magnetism · Heat · Fluid Mechanics (155 q · 35%)",
+  label: "Reason — Electricity & Magnetism · Heat · Fluid Mechanics (161 q · 34%)",
   qCount: 161,
   pctOfBank: 34,
   pitch:
@@ -311,7 +311,7 @@ export const REASON_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "5–6 marks",
       studyHours: 10,
       summary:
-        "93 q · 22% HARD — the bank's biggest chapter for HARD. Combination of Resistors (16 q at 38% HARD) is the priority. Drill all nine subtopics; HARD-target Combination of Resistors and Power/Energy/Heating for extra reps.",
+        "97 q · 23% HARD — the bank's biggest chapter for HARD. Combination of Resistors (16 q at 38% HARD) is the priority. Drill all nine subtopics; HARD-target Combination of Resistors and Power/Energy/Heating for extra reps.",
     },
     {
       chapter: "Heat and Thermodynamics",
@@ -331,7 +331,7 @@ export const REASON_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "3 marks",
       studyHours: 5,
       summary:
-        "39 q · 21% HARD. Calorimetry mixing (13 q at 31% HARD) + Thermo Processes (6 q at 33% HARD) are the HARD pool. Temperature scales + Phase Change are the EASY plumbing.",
+        "40 q · 20% HARD. Calorimetry mixing (14 q at 29% HARD) + Thermo Processes (6 q at 33% HARD) are the HARD pool. Temperature scales + Phase Change are the EASY plumbing.",
     },
     {
       chapter: "Fluid Mechanics and Properties of Matter",
@@ -349,7 +349,7 @@ export const REASON_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "1–2 marks",
       studyHours: 3,
       summary:
-        "23 q · 30% HARD — the chapter with the highest %HARD in the bank. Both subtopics > 28% HARD. Drill ratio-trap templates: density mixing by equal volume vs equal mass, sealed packet pushed under in lighter/denser liquid.",
+        "24 q · 29% HARD — the chapter with the highest %HARD in the bank. Both subtopics at 25% HARD or more. Drill ratio-trap templates: density mixing by equal volume vs equal mass, sealed packet pushed under in lighter/denser liquid.",
     },
   ],
 };

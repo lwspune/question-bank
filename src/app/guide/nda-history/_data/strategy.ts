@@ -68,7 +68,7 @@ export const STRATEGY_HEADLINE = {
 
 export const CORNERSTONE_STRAND: StrategyStrand = {
   id: "cornerstone",
-  label: "Cornerstone — Modern India (122 q · 47%)",
+  label: "Cornerstone — Modern India (125 q · 46%)",
   qCount: 125,
   pctOfBank: 46,
   pitch:
@@ -96,14 +96,14 @@ export const CORNERSTONE_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~18 marks",
       studyHours: 12,
       summary:
-        "122 q · 34% HARD — bank's largest + densest-HARD chapter. Freedom Movement (56 q) is the chapter giant. 19thC Reform (17 q · 41% HARD) + British Economic (9 q · 44% HARD) carry the HARD pool. Drill all 6 subtopics; the timeline + named-pairs clusters compound directly here.",
+        "125 q · 33% HARD — bank's largest + densest-HARD chapter. Freedom Movement (58 q) is the chapter giant. 19thC Reform (18 q · 39% HARD) + British Economic (9 q · 44% HARD) carry the HARD pool. Drill all 6 subtopics; the timeline + named-pairs clusters compound directly here.",
     },
   ],
 };
 
 export const FOUNDATION_STRAND: StrategyStrand = {
   id: "foundation",
-  label: "Foundation Recall — Ancient India + Medieval India (53 q · 37%)",
+  label: "Foundation Recall — Ancient India + Medieval India (101 q · 38%)",
   qCount: 101,
   pctOfBank: 38,
   pitch:
@@ -131,7 +131,7 @@ export const FOUNDATION_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~5 marks",
       studyHours: 4,
       summary:
-        "44 q · 27% HARD. Most recall-heavy chapter (75% pure recall). Literature + Inscriptions (12 q · 42% HARD) is the densest %HARD subtopic and highest leverage. Buddhism/Jainism (6 q · 0% HARD) is a guaranteed marks pocket — read once, done.",
+        "48 q · 31% HARD. Most recall-heavy chapter (75% pure recall). Literature + Inscriptions (14 q · 43% HARD) is the densest %HARD subtopic and highest leverage. Buddhism/Jainism (7 q · 1 HARD) is a near-guaranteed marks pocket — read once, done.",
     },
     {
       chapter: "Medieval India",
@@ -148,14 +148,14 @@ export const FOUNDATION_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~6 marks",
       studyHours: 5,
       summary:
-        "53 q · 28% HARD. Diffuse HARD — 6 subtopics carry 3-3-3-3-2-1 HARDs, no cherry-pick lever (drill all). Travellers (11 q) + Mughals (10 q) + Vijayanagara (9 q) + Bhakti/Sufi (9 q) + Other Kingdoms (8 q) cover 51 of 53 q. Timeline + named-pairs clusters do most of the work.",
+        "53 q · 28% HARD. Diffuse HARD — 6 subtopics carry 3-3-3-3-2-1 HARDs, no cherry-pick lever (drill all). Travellers (11 q) + Mughals (10 q) + Vijayanagara (9 q) + Bhakti/Sufi (9 q) + Other Kingdoms (8 q) cover 47 of 53 q. Timeline + named-pairs clusters do most of the work.",
     },
   ],
 };
 
 export const QUICKWIN_STRAND: StrategyStrand = {
   id: "quickwin",
-  label: "Quick-Win — World History (41 q · 16%)",
+  label: "Quick-Win — World History (43 q · 16%)",
   qCount: 43,
   pctOfBank: 16,
   pitch:
@@ -181,7 +181,7 @@ export const QUICKWIN_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~5 marks",
       studyHours: 3,
       summary:
-        "41 q · 20% HARD — lightest %HARD chapter. 39% date-anchored (highest in History). Drill the chronology cluster cold and most answers fall out. Enlightenment + Political Revolutions (12 q · 25% HARD) is the densest %HARD subtopic — focus there for HARD-stretch.",
+        "43 q · 19% HARD — lightest %HARD chapter. 39% date-anchored (highest in History). Drill the chronology cluster cold and most answers fall out. Enlightenment + Political Revolutions (12 q · 25% HARD) is the densest %HARD subtopic — focus there for HARD-stretch.",
     },
   ],
 };
