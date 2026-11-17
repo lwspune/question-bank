@@ -39,10 +39,16 @@ rows** (blind passes 260/260); **Science 14 papers, 667 rows** (280 MCQs: the
 passes split on 2, both settled by hand, and agreed on a third, GM Q6, that the
 NCERT text overrules). Defective or print-difference MCQs carry a notice in both
 languages and grace (`src/lib/mocks/flawed.json`): 2 in Maths, 6 in Science.
-Class 12 PRIVATE: **Mathematics 13 papers** (2025-324-IC left out), **Physics 14
-papers** (the blind passes agreed on all 84 MCQs; three carry a notice and
+Class 12 PRIVATE: **Mathematics 13 papers, 445 rows** (2025-324-IC left out);
+**Physics 13 papers, 454 rows** (all the series upboardonline has: 2026 DS-DY
+has no DV; the blind passes agreed on all 78 MCQs; three carry a notice and
 grace: 2026 DX Q1(f) sign convention, DY Q1(e) the Hindi print, 2025 JS Q1(a)
-plane of polarisation). Chemistry in progress. **Biology skipped** (owner,
+plane of polarisation); **Chemistry 14 papers, 708 rows** (the passes agreed on
+83 of 84 MCQs, split on EE Q1(b), which has two right options; five carry a notice and grace: 2026 EE Q1(b) and 2025 KE Q1(b) two
+right options, 2026 EF Q1(a) and 2025 KF Q1(a) NaCl vs CaCl2 at 1% by mass,
+2025 KF Q1(e) 4 vs 5 amines). Six Chemistry rows test a topic the current NCERT
+book dropped (Schmidt, Frankland, Tischenko, chlorine, propyne): filed on the
+closest subtopic, `_flag` starts `NO CHAPTER:`. **Biology skipped** (owner,
 2026-11-17): its papers are rendered but not transcribed.
 
 ## Language
