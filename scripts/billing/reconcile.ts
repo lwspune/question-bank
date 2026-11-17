@@ -1,5 +1,6 @@
 /**
- * npm run billing:reconcile: grant captured Razorpay payments that nothing granted.
+ * npm run billing:reconcile: grant captured Razorpay payments, and paid Paddle
+ * transactions (0271), that nothing granted.
  *
  *   npm run billing:reconcile                 # DRY RUN: list what it would grant, write nothing
  *   npm run billing:reconcile -- --days=30    # look further back (default 3 days)
@@ -28,6 +29,12 @@ import {
   type StrandedOutcome,
 } from "../../src/lib/billing/reconcile";
 import { applyPaidOrder } from "../../src/lib/billing/applyPaidOrder";
+import {
+  decidePaddleTransaction,
+  isPaddleConfigured,
+  listPaidPaddleTransactions,
+  strandedPaddleTransactions,
+} from "../../src/lib/billing/paddle";
 import { readGraderEmails } from "../../src/lib/answerSheets/grader";
 import { sendEmail } from "../../src/lib/email/resend";
 
@@ -119,6 +126,8 @@ async function main() {
     );
   }
 
+  outcomes.push(...(await reconcilePaddle(admin, nowSec, days, apply)));
+
   for (const o of outcomes) {
     console.log(`  ${o.result.padEnd(15)} ${o.paymentId} ${o.orderId} ${o.amount} ${o.currency} ${o.what} ${o.detail}`);
   }
@@ -144,6 +153,57 @@ async function main() {
   }
   const grantFailed = outcomes.some((o) => o.result === "error");
   if (grantFailed || sendFailed > 0) process.exit(1);
+}
+
+/**
+ * Paddle's half (0271): paid Paddle transactions that no pass row names,
+ * granted by the webhook's own rule (decidePaddleTransaction). Skipped while
+ * no plan sells through Paddle; once one does, missing keys fail the run,
+ * because a check that silently does nothing is the problem this job fixes.
+ */
+async function reconcilePaddle(admin: SupabaseClient, nowSec: number, days: number, apply: boolean): Promise<StrandedOutcome[]> {
+  const { count, error } = await admin.from("plans").select("id", { count: "exact", head: true }).eq("payment_provider", "paddle");
+  if (error) throw new Error(`plans read failed: ${error.message}`);
+  if (!isPaddleConfigured()) {
+    if ((count ?? 0) > 0) throw new Error("A plan sells through Paddle but PADDLE_API_KEY / NEXT_PUBLIC_PADDLE_CLIENT_TOKEN are not set");
+    console.log("Paddle: no plan sells through it and no keys set; skipped.");
+    return [];
+  }
+  const listed = await listPaidPaddleTransactions(new Date((nowSec - days * 86400) * 1000).toISOString());
+  if (!listed.ok) throw new Error(`Paddle transactions read failed: ${listed.error}`);
+  const granted = await readGrantedRefs(admin, listed.transactions.map((t) => t.id));
+  const stranded = strandedPaddleTransactions(listed.transactions, granted, nowSec);
+  console.log(`Paddle, last ${days} day(s): ${listed.transactions.length} paid transactions, ${stranded.length} with no grant.`);
+
+  const outcomes: StrandedOutcome[] = [];
+  for (const t of stranded) {
+    const base = {
+      paymentId: t.id,
+      orderId: "Paddle",
+      amount: Number(t.items?.[0]?.price?.unit_price?.amount ?? 0),
+      currency: t.currency_code,
+      createdAt: Math.floor(Date.parse(t.created_at) / 1000),
+      what: "",
+      detail: "",
+    };
+    const decision = decidePaddleTransaction(t);
+    if (decision.action !== "grant") {
+      outcomes.push({ ...base, result: "skipped", detail: decision.action === "skip" ? decision.reason : decision.action });
+      continue;
+    }
+    const what = `${decision.grant.planId} (${decision.grant.scope})`;
+    if (!apply) {
+      outcomes.push({ ...base, what, result: "granted", detail: "dry run: would grant" });
+      continue;
+    }
+    const result = await applyPaidOrder(decision);
+    outcomes.push(
+      result.kind === "error"
+        ? { ...base, what, result: "error", detail: `${result.stage} failed: ${result.message}` }
+        : { ...base, what, result: result.kind === "ok" ? "granted" : "already_granted" }
+    );
+  }
+  return outcomes;
 }
 
 main().catch((e) => {

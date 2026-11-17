@@ -24,7 +24,7 @@ export default function PrivacyPage() {
   return (
     <LegalPage
       title="Privacy Policy"
-      updated="11 October 2026"
+      updated="17 November 2026"
       intro={
         <>
           PYQ Vault is run by Vilas Shinde, in Pune. This policy explains what we collect and
@@ -52,7 +52,7 @@ export default function PrivacyPage() {
           </>,
           <>
             <strong>Payments.</strong> If you buy premium, we keep a record of the purchase:
-            amount, date, plan, and the Razorpay order and payment IDs.
+            amount, date, plan, and the order and payment IDs from Razorpay or Paddle.
           </>,
           <>
             <strong>Public quizzes.</strong> When you take a public quiz and ask to see your
@@ -75,6 +75,13 @@ export default function PrivacyPage() {
         straight to Razorpay; we never see or store them. Razorpay handles them under its own
         privacy policy.
       </LegalP>
+      <LegalP>
+        A payment in US dollars on intl.pyqvault.com may instead be processed by{" "}
+        <strong>Paddle.com</strong>, our online reseller and the Merchant of Record for that
+        order. Paddle receives your name, email address, country and payment details to take the
+        payment and work out any sales tax, and handles them under its own privacy notice. It tells
+        us your email address, country and what you bought, so we can give you the pass.
+      </LegalP>
 
       <LegalH2>Why we collect it</LegalH2>
       <LegalList
@@ -96,7 +103,7 @@ export default function PrivacyPage() {
         Your information is stored securely and is accessible only to authorised PYQ Vault
         staff. We do <strong>not</strong> sell your data. We use a
         few trusted providers to run the site — hosting and database (Vercel, Supabase), email
-        delivery (Resend), payments (Razorpay) and AI for checking answer sheets and for answering questions you type to V, our site helper (Anthropic; email addresses and phone numbers are removed first) — and they process data only to provide that
+        delivery (Resend), payments (Razorpay, and Paddle for dollar payments on intl.pyqvault.com) and AI for checking answer sheets and for answering questions you type to V, our site helper (Anthropic; email addresses and phone numbers are removed first) — and they process data only to provide that
         service. We keep your information only as long as it is needed for the purposes above.
       </LegalP>
 

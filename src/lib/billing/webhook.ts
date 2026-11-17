@@ -19,7 +19,16 @@ export type WebhookDecision =
    * else null. `referral`: sold at a friend's referral price (0249), so the
    * inviter's reward is completed after the grant.
    */
-  | { action: "grant"; userId: string; paymentId: string; grant: OrderGrant; note: string | null; referral: boolean }
+  | {
+      action: "grant";
+      userId: string;
+      paymentId: string;
+      grant: OrderGrant;
+      note: string | null;
+      referral: boolean;
+      /** The gateway that took the money (0271); absent = Razorpay. */
+      provider?: "razorpay" | "paddle";
+    }
   | { action: "grant_ebook"; userId: string; paymentId: string; grant: EbookGrant }
   | { action: "revoke"; paymentId: string }
   | { action: "skip"; reason: string }

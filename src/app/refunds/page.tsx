@@ -31,7 +31,7 @@ export default async function RefundsPage() {
   return (
     <LegalPage
       title="Refund & Cancellation Policy"
-      updated="27 September 2026"
+      updated="17 November 2026"
       intro={
         <>
           This policy covers {passes}. Each is a one-time payment. If a pass is not right for
@@ -73,8 +73,20 @@ export default async function RefundsPage() {
         <Link href="/contact" className="text-brand-accent underline">
           contact page
         </Link>
-        . Add the payment date, and the Razorpay payment ID if you have it.
+        . Add the payment date, and the payment or order number from your receipt if you have
+        it.
       </LegalP>
+      {plans.some((p) => p.currency === "USD") && (
+        // Paddle, the Merchant of Record for dollar orders (0271), refunds them too.
+        <LegalP>
+          A payment in US dollars that our reseller Paddle processed can also be refunded through
+          Paddle: reply to Paddle&apos;s receipt email, or find your order at{" "}
+          <a href="https://www.paddle.net" className="text-brand-accent underline" rel="noopener noreferrer" target="_blank">
+            paddle.net
+          </a>
+          . The same {REFUND_DAYS} days apply.
+        </LegalP>
+      )}
 
       <LegalH2>When the money arrives</LegalH2>
       <LegalP>

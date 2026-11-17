@@ -78,6 +78,14 @@ export type Plan = {
    * Once it has passed, a sale falls back to `durationDays`. Null or absent = none.
    */
   endsOn?: string | null;
+  /**
+   * The gateway that sells it (migration 0271): Razorpay, or Paddle as
+   * Merchant of Record for the intl USD passes. Absent = Razorpay. Set by SQL,
+   * not the pricing form (OPERATIONS.md "Paddle").
+   */
+  paymentProvider?: "razorpay" | "paddle";
+  /** The Paddle product a Paddle plan sells as; its price is sent per transaction. */
+  paddleProductId?: string | null;
 };
 
 export type PlanInput = Omit<Plan, "active">;
