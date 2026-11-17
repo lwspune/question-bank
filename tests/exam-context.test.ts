@@ -129,6 +129,30 @@ describe("EXAM_REGISTRY", () => {
     expect(chsl?.practiceOnly).not.toBe(true);
   });
 
+  it("groups AISSEE, RMS CET and RIMC as one family, split by class, all free school-tier defence exams (owner, 2026-11-17)", () => {
+    const rows: [string, string, string, string][] = [
+      ["aissee-6", "AISSEE Class 6", "AISSEE", "Class 6"],
+      ["aissee-9", "AISSEE Class 9", "AISSEE", "Class 9"],
+      ["rms-cet-6", "RMS CET Class 6", "RMS CET", "Class 6"],
+      ["rms-cet-9", "RMS CET Class 9", "RMS CET", "Class 9"],
+      ["rimc", "RIMC", "RIMC", "Class 8"],
+    ];
+    for (const [slug, examName, stage, label] of rows) {
+      const e = getExamBySlug(slug);
+      expect(e?.examName).toBe(examName);
+      expect([e?.family, e?.familyStage, e?.familyLabel, e?.familyAxis]).toEqual([
+        "Sainik & Military Schools",
+        stage,
+        label,
+        "Class",
+      ]);
+      expect(e?.tier).toBe("school");
+      expect(e?.goal).toBe("defence");
+      expect(e?.passScope).toBe("free");
+      expect(e?.practiceOnly).not.toBe(true);
+    }
+  });
+
   it("default exam slug is one of the registered slugs", () => {
     const slugs = EXAM_REGISTRY.map((e) => e.slug);
     expect(slugs).toContain(DEFAULT_EXAM_SLUG);
@@ -444,7 +468,7 @@ import { EXAM_TIERS, TIER_LABELS, type ExamTier } from "@/lib/exam/examContext";
 
 describe("exam tiers", () => {
   const EXPECTED: Record<ExamTier, string[]> = {
-    school: ["foundation-course", "mh-sb-9", "mh-ssc-10", "cbse-10", "icse-10", "up-board-10", "spi"],
+    school: ["foundation-course", "mh-sb-9", "mh-ssc-10", "cbse-10", "icse-10", "up-board-10", "spi", "aissee-6", "aissee-9", "rms-cet-6", "rms-cet-9", "rimc"],
     senior: [
       "nda",
       "mht-cet",

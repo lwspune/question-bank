@@ -414,8 +414,16 @@ const KEY_LETTERS = new Set(["A", "B", "C", "D"]);
  * run of questions falling back to whatever we derived while the run reported
  * "verified against the official key". A partial key must never be mistaken for
  * a full one.
+ *
+ * `opts.skip`: numbers a paper deliberately holds out (scripts/milschool config
+ * `held`). Only those may be absent, and they are not recorded as dropped.
  */
-export function parseOfficialKey(raw: Record<string, string>, total: number): OfficialKey {
+export function parseOfficialKey(
+  raw: Record<string, string>,
+  total: number,
+  opts: { skip?: number[] } = {}
+): OfficialKey {
+  const skip = new Set(opts.skip ?? []);
   const answers = new Map<number, string>();
   const dropped: number[] = [];
 
@@ -437,7 +445,7 @@ export function parseOfficialKey(raw: Record<string, string>, total: number): Of
 
   const missing: number[] = [];
   for (let n = 1; n <= total; n++) {
-    if (!answers.has(n) && !dropped.includes(n)) missing.push(n);
+    if (!answers.has(n) && !dropped.includes(n) && !skip.has(n)) missing.push(n);
   }
   if (missing.length) {
     throw new Error(
