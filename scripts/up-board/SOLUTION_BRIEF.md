@@ -82,4 +82,11 @@ If the question as printed is defective (no option correct, a misprint that
 changes the answer), solve what is printed, and put one sentence in `doubts`.
 Never change the question.
 
+**When the Hindi and English print different questions** (the row's `_flag`
+says so, e.g. the English drops a word the Hindi keeps): open BOTH solutions
+with a note in that language, `**Note:** ...` / `**टिप्पणी:** ...`, saying
+in one sentence what each print says and which one the working follows (the
+one that has an answer, normally the complete one). Then solve that version.
+Put one sentence in `doubts` too, so the main session sees it.
+
 Report (at most 10 lines): MCQ count, rows solved, every `doubts` entry.

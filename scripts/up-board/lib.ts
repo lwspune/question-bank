@@ -41,6 +41,16 @@ export type UpQuestion = {
   context?: string;
   options?: { label: string; text: string }[];
   answer?: Label;
+  /**
+   * A defective MCQ where no printed option is right (settled by hand). Stored
+   * with no option marked correct, the CBSE `_noCorrectOption` shape.
+   */
+  noCorrectOption?: boolean;
+  /**
+   * Why this MCQ is given to every candidate in mocks (src/lib/mocks/flawed.json):
+   * defective as printed, or the two prints lead to different answers.
+   */
+  grace?: string;
   solution?: string;
   /** The ref of the question this one is the OR alternative to. Both are ingested. */
   alternativeTo?: string;
@@ -186,7 +196,9 @@ export function paperIssues(
     if (stage === "transcribed") {
       if (q.answer || q.solution || hi?.solution) out.push(`${id}: carries an answer at the transcribed stage`);
     } else {
-      if (q.format === "mcq" && !q.answer) out.push(`${id}: mcq has no answer`);
+      if (q.format === "mcq" && !q.answer && !q.noCorrectOption) out.push(`${id}: mcq has no answer`);
+      if (q.noCorrectOption && q.answer) out.push(`${id}: noCorrectOption but answer ${q.answer}`);
+      if (q.noCorrectOption && !q.grace) out.push(`${id}: noCorrectOption without a grace reason`);
       if (q.answer && !LABELS.includes(q.answer)) out.push(`${id}: answer "${q.answer}" is not A-D`);
       if (!q.solution?.trim()) out.push(`${id}: no English solution`);
       else {
@@ -243,13 +255,14 @@ export function buildRows(p: UpPaper, subject: UpSubject): ParsedRowPayload[] {
     if (q.format === "subjective") {
       return { ...base, questionFormat: "subjective" as const, options: [], contentHash: subjectiveContentHash(q.stem, q.context ?? null) };
     }
-    if (!q.answer) throw new Error(`${q.ref}: mcq has no answer`);
+    if (!q.answer && !q.noCorrectOption) throw new Error(`${q.ref}: mcq has no answer`);
     const opts = q.options ?? [];
     return {
       ...base,
       questionFormat: "mcq" as const,
       options: opts.map((o) => ({ label: o.label as OptionLabel, text: o.text, isCorrect: o.label === q.answer })),
-      contentHash: contentHash(q.stem, opts.map((o) => o.text), q.answer),
+      // A keyless row hashes with "" (the cbse-12-pyq / mh-hsc-12-pyq convention).
+      contentHash: contentHash(q.stem, opts.map((o) => o.text), q.answer ?? ""),
     };
   });
 }
@@ -263,7 +276,18 @@ export type BlindPass = { answers: Record<string, Label> };
  * shows it), or a written row whose solution needed a person (a misprint). A
  * written row carries no `answer`.
  */
-export type Settled = Record<string, { answer?: Label; en: string; hi: string; note?: string }>;
+export type Settled = Record<
+  string,
+  {
+    /** The letter; null = no printed option is right (defective MCQ). Absent on a written row. */
+    answer?: Label | null;
+    /** Grace in mocks, with the reason (src/lib/mocks/flawed.json). */
+    grace?: string;
+    en: string;
+    hi: string;
+    note?: string;
+  }
+>;
 
 export const NO_KEY_NOTE = {
   en: "*Solution by PYQ Vault: UP Board does not publish an answer key.*",
@@ -286,10 +310,13 @@ export function applySolutions(p: UpPaper, a: SolverPass, b: BlindPass, settled:
     const s = settled[q.ref];
     const sol = s ? { en: s.en, hi: s.hi } : a.solutions[q.ref];
     if (!sol?.en?.trim() || !sol?.hi?.trim()) throw new Error(`${q.ref}: no solution in pass A`);
-    const answer = q.format === "mcq" ? (s?.answer ?? agreed[q.ref]) : undefined;
+    const keyless = q.format === "mcq" && s?.answer === null;
+    const answer = q.format === "mcq" && !keyless ? (s?.answer ?? agreed[q.ref]) : undefined;
     return {
       ...q,
       ...(answer ? { answer } : {}),
+      ...(keyless ? { noCorrectOption: true } : {}),
+      ...(s?.grace ? { grace: s.grace } : {}),
       solution: `${sol.en.trim()}\n\n${NO_KEY_NOTE.en}`,
       hi: { ...q.hi, solution: `${sol.hi.trim()}\n\n${NO_KEY_NOTE.hi}` },
     };

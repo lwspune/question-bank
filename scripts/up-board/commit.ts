@@ -20,7 +20,7 @@
  * source_file first, or the edit inserts a second row.
  */
 import { createClient } from "@supabase/supabase-js";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { commitStaged } from "../../src/lib/upload/commit";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
@@ -157,6 +157,25 @@ async function main() {
     }
   }
   console.log(`solutions synced ${synced}, Hindi written ${translated}, figures uploaded ${figures}`);
+
+  // Grace in every mock (owner policy 2026-10-29): src/lib/mocks/flawed.json is
+  // the one list the mock builders read.
+  const graceRows = paper.questions
+    .map((q, i) => ({ q, row: mine.get(hashes[i]) }))
+    .filter(({ q, row }) => q.grace && row);
+  if (graceRows.length) {
+    const file = join(process.cwd(), "src", "lib", "mocks", "flawed.json");
+    const list: { id: string; reason: string }[] = JSON.parse(readFileSync(file, "utf8"));
+    const known = new Set(list.map((f) => f.id));
+    let added = 0;
+    for (const { q, row } of graceRows) {
+      if (known.has(row!.id)) continue;
+      list.push({ id: row!.id, reason: `UP Board ${paper.year} ${paper.paper} ${q.questionNumber}: ${q.grace!.slice(0, 160)} (scripts/up-board)` });
+      added++;
+    }
+    if (added) writeFileSync(file, JSON.stringify(list, null, 2) + "\n");
+    console.log(`grace: ${added} question(s) added to src/lib/mocks/flawed.json`);
+  }
 
   const { count: stillPublic } = await client
     .from("questions")

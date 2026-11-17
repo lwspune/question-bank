@@ -265,6 +265,32 @@ describe("applySolutions", () => {
     expect(out.questions[0].solution).toMatch(/^Settled/);
   });
 
+  it("settles a defective MCQ as having NO correct option, with grace, and builds it keyless", () => {
+    const out = applySolutions(paper([mcq()]), { answers: {}, solutions: {} }, { answers: {} }, {
+      Q2: { answer: null, grace: "no option is correct as printed", en: "**Note:** none of the options is right.", hi: "**टिप्पणी:** कोई विकल्प सही नहीं है।" },
+    });
+    const q = out.questions[0];
+    expect(q.answer).toBeUndefined();
+    expect(q.noCorrectOption).toBe(true);
+    expect(q.grace).toBe("no option is correct as printed");
+    expect(paperIssues(out, catalog, "solved")).toEqual([]);
+    const row = buildRows(out, SUBJECTS.maths10)[0];
+    expect(row.options.some((o) => o.isCorrect)).toBe(false);
+  });
+
+  it("keeps a settled key and marks it for grace (the two prints disagree)", () => {
+    const out = applySolutions(paper([mcq()]), { answers: { Q2: "B" }, solutions: {} }, { answers: { Q2: "B" } }, {
+      Q2: { answer: "B", grace: "the Hindi print gives another answer", en: "Note.", hi: "टिप्पणी।" },
+    });
+    expect(out.questions[0].answer).toBe("B");
+    expect(out.questions[0].grace).toBe("the Hindi print gives another answer");
+  });
+
+  it("refuses noCorrectOption together with an answer", () => {
+    const bad = solved({ ...mcq(), noCorrectOption: true });
+    expect(paperIssues(paper([bad]), catalog, "solved")).toContain("Q2: noCorrectOption but answer B");
+  });
+
   it("needs a solution for every row", () => {
     expect(() => applySolutions(paper([written()]), { answers: {}, solutions: {} }, { answers: {} }, {})).toThrow(
       /B1a: no solution/
