@@ -304,6 +304,10 @@ export const PAPERS: Record<string, Paper> = {
     pyqYear: 2022,
     pyqNote: "RMS CET 2022 Class 6 (Set C)",
     pattern: RMS_6,
+    // Q136 (three circles with numbers and letters round them): the labels are
+    // too small and blurred to read in this photo, and the options name two
+    // missing things where only one '?' shows. Held rather than published.
+    held: { numbers: [136], why: "Q136's figure labels are unreadable in the only copy" },
   },
   // 25 PDF pages: 1 AglaSem cover, 2-25 the booklet (clean scan, no cover
   // sheet). Part I: English p2-7, Hindi p8-9, Social Science p10-14;
@@ -360,6 +364,10 @@ export const PAPERS: Record<string, Paper> = {
     pyqYear: 2022,
     pyqNote: "RMS CET 2022 Class 9 (for session 2023-24)",
     pattern: RMS_9,
+    // The scan cuts the right edge of some pages. Lost connecting words were
+    // restored where the visible text and the options settle them (Q14, Q129,
+    // Q131, Q134, Q135). Q103 lost a NUMBER (the third face area): held.
+    held: { numbers: [103], why: "Q103's third face area is cut off the scan" },
   },
   // 33 PDF pages: 1 AglaSem cover, 2 booklet cover (code A, EN/HOLAB/6/24,
   // English medium), 3-31 Q1-Q125, 32 rough work, 33 instructions. Language
