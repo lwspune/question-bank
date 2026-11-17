@@ -156,6 +156,13 @@ figure AND any answer figures), nothing from the next item. One region per item;
 if several items share one chart, give each that region.
 
 4. Add `"FIGURE"` to `flags`.
+5. **If the stem's words are generic** ("Find the next pattern in the sequence.",
+   "Choose the correct mirror image.") and the options are `Figure (1)`-`(4)`,
+   end the stem with a short bracketed note naming what the picture shows:
+   `Find the next pattern in the sequence. [Figure: clock faces]`. Two such items
+   in one paper otherwise read identically, and a question's identity hash
+   (stem + options + answer) cannot tell them apart (AISSEE 2024 Q56 and Q61).
+   Name the objects only; never describe the pattern or hint at the answer.
 
 A table you can write as a pipe table is NOT a figure: transcribe it.
 

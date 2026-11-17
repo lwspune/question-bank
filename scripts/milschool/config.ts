@@ -27,6 +27,8 @@ export const CREATED_BY = "28528215-c968-40bf-abac-acdc19cc306f";
 
 /** Where the downloaded page JPGs live: <root>/<exam folder>/<paper folder>/NN.jpg. */
 export const SOURCE_ROOT = process.env.MILSCHOOL_SRC ?? "C:\\Vilas\\LWS_Pune\\Sainik_Schools\\papers";
+/** AglaSem's original PDFs (`<docId>/<docId>.pdf`), 2-3x sharper than the viewer JPGs. */
+export const PDF_ROOT = join(SOURCE_ROOT, "_pdf");
 /** Figure crops (uploaded to image_url), kept beside the sources. */
 export const FIGURE_ROOT = process.env.MILSCHOOL_FIGURES ?? "C:\\Vilas\\LWS_Pune\\Sainik_Schools\\figures";
 
@@ -67,7 +69,13 @@ export type Paper = {
   sourceFile: string;
   /** Folder under SOURCE_ROOT holding the page JPGs. */
   pagesDir: string;
-  /** 1-based JPG numbers carrying questions, in order. Empty = pre-pass not done. */
+  /**
+   * The original PDF in PDF_ROOT. When set, pages render from it (the viewer
+   * JPGs drop thin strokes). aissee-9-2025 keeps its JPGs: its figure regions
+   * were drawn on those renders.
+   */
+  pdf?: string;
+  /** 1-based page numbers carrying questions (JPG n = PDF page n). Empty = pre-pass not done. */
   pages: number[];
   /** AglaSem document id of the booklet. */
   docId: string;
@@ -106,6 +114,25 @@ export const PAPERS: Record<string, Paper> = {
     pattern: AISSEE_9,
     key: { dir: "aissee\\c9_2025_key", page: 4, code: "H", docId: "3bddf58c-859b-11f1-84d4-0aa932765c8b", final: true },
   },
+  // 31 PDF pages: 1 AglaSem cover, 2-29 Q1-Q150 (booklet "Set X", PA0926/X; no
+  // booklet cover in the scan), 30-31 a COACHING institute's answer table (not
+  // NTA's: never used). Options carry someone's grey highlighting: ignored.
+  // Exam 18.01.2026. NTA final key: digital PDF, page 2 = BOOK X, read from its
+  // text layer (two cells accept two options: Q85 1,4 and Q117 1,2).
+  "aissee-9-2026": {
+    id: "aissee-9-2026",
+    exam: "aissee-9",
+    paper: 1,
+    sourceFile: "AISSEE_2026_Class9_SetX.pdf",
+    pagesDir: "aissee\\c9_2026_qp",
+    pdf: "aissee_c9_2026_qp.pdf",
+    pages: range(2, 29),
+    docId: "4c4e225c-859b-11f1-906c-0aa932765c8b",
+    pyqYear: 2026,
+    pyqNote: "AISSEE 2026 Class 9 (18 January 2026, booklet Set X)",
+    pattern: AISSEE_9,
+    key: { dir: "_pdf\\aissee_c9_2026_key.pdf", page: 2, code: "X", docId: "3def1a0e-859b-11f1-8c57-0aa932765c8b", final: true },
+  },
   // 33 JPGs: 1 AglaSem cover, 2 booklet cover (code E, EN/VEDTRI/9/24), 3-31
   // Q1-Q150, 32-33 rough work. A clean scan, no serial watermark. Exam
   // 28.01.2024. NTA final key page 1 = code E.
@@ -115,6 +142,7 @@ export const PAPERS: Record<string, Paper> = {
     paper: 1,
     sourceFile: "AISSEE_2024_Class9_CodeE.pdf",
     pagesDir: "aissee\\c9_2024_qp",
+    pdf: "aissee_c9_2024_qp.pdf",
     pages: range(3, 31),
     docId: "7a055e60-cb9b-11ef-afa1-0a5e36bc6706",
     pyqYear: 2024,

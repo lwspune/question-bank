@@ -20,6 +20,7 @@ see scripts/capf/render.ts for why median, not mean, and why c2 is padded
 further back than c1). A phone photo (RMS) is skewed and has no clean gutter:
 the report then says gutterFound=false and the transcriber reads pNN.png.
 """
+import io
 import json
 import os
 import sys
@@ -30,24 +31,49 @@ HEADER = 0.035  # AglaSem's blue title band
 FOOTER = 0.035  # AglaSem's "aglasem.com ... Page n of N" line
 
 
+def load_page(src: str, n: int, dpi: int):
+    """Page n (1-based) as a greyscale image, from a PDF or from NN.jpg in a folder,
+    plus the header/footer fractions to trim.
+
+    The PDF is AglaSem's original download; its pages are 2-3x sharper than the
+    viewer JPGs, which drop thin strokes (a = prints as -, a + as |): measured
+    on AISSEE 2024 Q1-Q2, where the JPG lost three operators the PDF prints."""
+    if src.lower().endswith(".pdf"):
+        import fitz  # PyMuPDF
+
+        doc = fitz.open(src)
+        if n < 1 or n > doc.page_count:
+            return None, 0, 0
+        pix = doc[n - 1].get_pixmap(dpi=dpi)
+        return Image.open(io.BytesIO(pix.tobytes("png"))).convert("L"), 0.0, 0.0
+    path = os.path.join(src, f"{n:02d}.jpg")
+    if not os.path.exists(path):
+        return None, 0, 0
+    return Image.open(path).convert("L"), HEADER, FOOTER
+
+
 def main() -> None:
     src, out, pages_json = sys.argv[1], sys.argv[2], sys.argv[3]
     want_columns = "--no-columns" not in sys.argv
-    scale = 1.5
+    is_pdf = src.lower().endswith(".pdf")
+    scale = 1.0 if is_pdf else 1.5
+    dpi = 220
     for a in sys.argv:
         if a.startswith("--scale="):
             scale = float(a.split("=", 1)[1])
+        if a.startswith("--dpi="):
+            dpi = int(a.split("=", 1)[1])
     os.makedirs(out, exist_ok=True)
     report = {"pages": []}
     for n in json.loads(pages_json):
-        path = os.path.join(src, f"{n:02d}.jpg")
-        if not os.path.exists(path):
+        im, head, foot = load_page(src, n, dpi)
+        if im is None:
             report["pages"].append({"index": n, "error": "missing"})
             continue
-        im = Image.open(path).convert("L")
         W0, H0 = im.size
-        im = im.crop((0, int(H0 * HEADER), W0, int(H0 * (1 - FOOTER))))
-        im = im.resize((int(im.width * scale), int(im.height * scale)), Image.LANCZOS)
+        im = im.crop((0, int(H0 * head), W0, int(H0 * (1 - foot))))
+        if scale != 1.0:
+            im = im.resize((int(im.width * scale), int(im.height * scale)), Image.LANCZOS)
         W, H = im.size
         im.save(os.path.join(out, f"p{n:02d}.png"))
         entry = {"index": n, "width": W, "height": H}
