@@ -210,8 +210,12 @@ export function paperIssues(
       if (q.answer && !LABELS.includes(q.answer)) out.push(`${id}: answer "${q.answer}" is not A-D`);
       if (!q.solution?.trim()) out.push(`${id}: no English solution`);
       else {
-        // A hyphenated name ("touch-me-not") is not first person.
-        const voice = solverVoice(q.solution.replace(/\b[\w]+(?:-[\w]+)+\b/g, " "));
+        // A hyphenated name ("touch-me-not") is not first person, and neither
+        // is a phrase the solution copies from its own question ("Touch me not
+        // plant" in a matching table).
+        let own = q.solution.replace(/\b[\w]+(?:-[\w]+)+\b/g, " ");
+        for (const m of `${q.stem} ${q.context ?? ""}`.matchAll(/\S+\s+[Mm][ey]\s+\S+/g)) own = own.split(m[0]).join(" ");
+        const voice = solverVoice(own);
         if (voice.length) out.push(`${id}: solution reads as solver notes (${voice.join(", ")})`);
       }
       if (!lostHi) {
