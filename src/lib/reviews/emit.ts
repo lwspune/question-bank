@@ -64,6 +64,9 @@ export async function recordMcqVerifyReviews(
     artifactId: string;
     rows: readonly McqVerifyRow[];
     derivedModel?: string | null;
+    /** The operator's declaration that the verifier never saw the chapter's own
+     *  derivation (a fresh agent reading only rendered pages). */
+    independentVerifier?: boolean;
   }
 ): Promise<RecordReviewsResult> {
   const agreed = input.rows.filter((r) => r.matches_current === true && r.id);
@@ -71,22 +74,50 @@ export async function recordMcqVerifyReviews(
 
   const hashes = await hashesFor(db, agreed.map((r) => r.id));
   const runLabel = liveRunLabel(input.pipeline, input.artifactId, "mcq-verify");
+  return recordReviews(
+    db,
+    buildMcqVerifyInputs(agreed, hashes, runLabel, {
+      derivedModel: input.derivedModel,
+      independentVerifier: input.independentVerifier,
+    })
+  );
+}
 
+/**
+ * The review rows a verify run earns. WITHHOLDING THE KEY DOES NOT CREATE
+ * BLINDNESS when the same context produced the answer: a chapter agent that
+ * derived the MCQ keys while transcribing and then "verifies" the blind dump
+ * agrees with itself by construction (caught 2026-09-09). A false
+ * blind_rederivation is worse than none, because classifyForReview keys off
+ * `method` and it SUPPRESSES the later genuine blind pass. So the strong method
+ * needs the operator's declaration (`--independent` on mark-mcq-verify);
+ * without it the run records solution_audit, which a later pass may not skip.
+ */
+export function buildMcqVerifyInputs(
+  rows: readonly McqVerifyRow[],
+  hashes: ReadonlyMap<string, string>,
+  runLabel: string,
+  opts: { derivedModel?: string | null; independentVerifier?: boolean }
+): ReviewInput[] {
+  const independent = opts.independentVerifier === true;
   const inputs: ReviewInput[] = [];
-  for (const row of agreed) {
+  for (const row of rows) {
+    if (row.matches_current !== true || !row.id) continue;
     const hash = hashes.get(row.id);
     if (!hash) continue;
     inputs.push({
       questionId: row.id,
       reviewedContentHash: hash,
-      method: "blind_rederivation",
+      method: independent ? "blind_rederivation" : "solution_audit",
       verdict: "confirmed",
       runLabel,
-      derivedModel: input.derivedModel ?? null,
-      note: `blind re-derivation (${row.ref}) matched the committed key ${row.derived_answer ?? "?"}`,
+      derivedModel: opts.derivedModel ?? null,
+      note: independent
+        ? `blind re-derivation (${row.ref}) matched the committed key ${row.derived_answer ?? "?"}`
+        : `re-derivation (${row.ref}) matched the committed key ${row.derived_answer ?? "?"}; verifier not declared independent of the transcription`,
     });
   }
-  return recordReviews(db, inputs);
+  return inputs;
 }
 
 /**

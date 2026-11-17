@@ -68,7 +68,7 @@ export const STRATEGY_HEADLINE = {
 export const RECALL_STRAND: StrategyStrand = {
   id: "recall",
   label:
-    "Recall — Carbon · Matter · Industrial · Metals · Hydrogen · Everyday Life · Practical (144 q · 55%)",
+    "Recall — Carbon · Matter · Industrial · Metals · Hydrogen · Everyday Life · Practical (150 q · 54%)",
   qCount: 150,
   pctOfBank: 54,
   pitch:
@@ -94,7 +94,7 @@ export const RECALL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~8 marks",
       studyHours: 5,
       summary:
-        "45 q · 2 HARD across 10 yrs. Allotropes is the dominant subtopic — memorise the diamond/graphite/fullerene property table cold. Common Compounds is name↔formula↔use recall.",
+        "46 q · 2 HARD across 10 yrs. Allotropes is the dominant subtopic — memorise the diamond/graphite/fullerene property table cold. Common Compounds is name↔formula↔use recall.",
     },
     {
       chapter: "Matter and Its States",
@@ -110,7 +110,7 @@ export const RECALL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~5 marks",
       studyHours: 3,
       summary:
-        "30 q · 1 HARD across 10 yrs. Five small subtopics, each rule-of-thumb sized. Watch the colloid vs suspension distinction — 1 of 5 q is HARD.",
+        "32 q · 1 HARD across 10 yrs. Five small subtopics, each rule-of-thumb sized. Watch the colloid vs suspension distinction — 1 of 7 q is HARD.",
     },
     {
       chapter: "Industrial and Applied Chemistry",
@@ -141,7 +141,7 @@ export const RECALL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~3 marks",
       studyHours: 2,
       summary:
-        "17 q · ZERO HARD across 10 yrs. Pure recall. Memorise the reactivity series K-Na-Ca-Mg-Al-Zn-Fe-Cu-Hg-Ag-Au, the four major alloy compositions (brass, bronze, stainless steel, solder), galvanisation = zinc coating.",
+        "18 q · ZERO HARD across 10 yrs. Pure recall. Memorise the reactivity series K-Na-Ca-Mg-Al-Zn-Fe-Cu-Hg-Ag-Au, the four major alloy compositions (brass, bronze, stainless steel, solder), galvanisation = zinc coating.",
     },
     {
       chapter: "Hydrogen and Water",
@@ -155,7 +155,7 @@ export const RECALL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~2 marks",
       studyHours: 1.5,
       summary:
-        "11 q · 1 HARD across 10 yrs. Permanent (CaSO₄/MgSO₄) vs temporary (Ca(HCO₃)₂) hardness recall + softening methods. Water's anomalous max density at 4 °C.",
+        "13 q · 1 HARD across 10 yrs. Permanent (CaSO₄/MgSO₄) vs temporary (Ca(HCO₃)₂) hardness recall + softening methods. Water's anomalous max density at 4 °C.",
     },
     {
       chapter: "Chemistry in Everyday Life",
@@ -186,7 +186,7 @@ export const RECALL_STRAND: StrategyStrand = {
 export const RULE_STRAND: StrategyStrand = {
   id: "rule",
   label:
-    "Rule — Atomic Structure · Acids/Bases/Salts · Reactions · Bonding (109 q · 42%)",
+    "Rule — Atomic Structure · Acids/Bases/Salts · Reactions · Bonding (117 q · 42%)",
   qCount: 117,
   pctOfBank: 42,
   pitch:
@@ -227,7 +227,7 @@ export const RULE_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~6 marks",
       studyHours: 3,
       summary:
-        "33 q · 6% HARD. Five subtopics, each rule-of-thumb sized. Common Acids overlaps with /common-compounds — drill both side-by-side.",
+        "36 q · 8% HARD. Five subtopics, each rule-of-thumb sized. Common Acids overlaps with /common-compounds — drill both side-by-side.",
     },
     {
       chapter: "Chemical Reactions",
@@ -244,7 +244,7 @@ export const RULE_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~5 marks",
       studyHours: 3,
       summary:
-        "30 q · 10% HARD — the chapter's hot pool is Redox (10 q at 20% HARD). LEO RGO + oxidation-state assignment cracks 80% of redox questions.",
+        "32 q · 9% HARD — the chapter's hot pool is Redox (11 q at 18% HARD). LEO RGO + oxidation-state assignment cracks 80% of redox questions.",
     },
     {
       chapter: "Chemical Bonding",
@@ -258,14 +258,14 @@ export const RULE_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~2 marks",
       studyHours: 1,
       summary:
-        "11 q · ZERO HARD across 10 yrs. EN-difference > 1.7 ⟹ ionic; < 1.7 ⟹ covalent. Ox-state from sum-to-charge rule. Pure rule application.",
+        "14 q · ZERO HARD across 10 yrs. EN-difference > 1.7 ⟹ ionic; < 1.7 ⟹ covalent. Ox-state from sum-to-charge rule. Pure rule application.",
     },
   ],
 };
 
 export const CALCULATE_STRAND: StrategyStrand = {
   id: "calculate",
-  label: "Calculate — Mole Concept and Stoichiometry (9 q · 3%)",
+  label: "Calculate — Mole Concept and Stoichiometry (10 q · 4%)",
   qCount: 10,
   pctOfBank: 4,
   pitch:
@@ -287,7 +287,7 @@ export const CALCULATE_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~2 marks",
       studyHours: 2,
       summary:
-        "9 q · 1 HARD across 10 yrs. Small bucket, distinct skill. Drill the equivalent-weight calculation (the recurring tricky form) and the law-identification format.",
+        "10 q · 1 HARD across 10 yrs. Small bucket, distinct skill. Drill the equivalent-weight calculation (the recurring tricky form) and the law-identification format.",
     },
   ],
 };

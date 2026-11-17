@@ -13,7 +13,9 @@
  */
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { EXAM_ID, requireChapter } from "./config";
+import { existsSync, readFileSync } from "node:fs";
+import { DATA, EXAM_ID, questionsJsonPath, requireChapter } from "./config";
+import { crossCheckProblem } from "./crossCheckGate";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -64,6 +66,19 @@ async function assertProvenance(
   );
 }
 
+/** Step 6 for a derivedAnswers chapter: the book-answer dump exists and is
+ *  complete (crossCheckGate.ts says why). A no-op for any other chapter. */
+function assertCrossCheckDump(ch: ReturnType<typeof requireChapter>) {
+  if (!ch.derivedAnswers) return;
+  const transcribed: { bookAnswer?: string }[] = JSON.parse(readFileSync(questionsJsonPath(ch.id), "utf8"));
+  const keyed = transcribed.filter((q) => typeof q.bookAnswer === "string" && q.bookAnswer.trim()).length;
+  const dumpPath = join(DATA, `${ch.id}.book-answers.json`);
+  const dump = existsSync(dumpPath) ? JSON.parse(readFileSync(dumpPath, "utf8")) : null;
+  const problem = crossCheckProblem(keyed, dump);
+  if (problem) throw new Error(`refusing to publish ${ch.id}: ${problem}`);
+  console.log(keyed ? `cross-check dump OK: ${keyed} keyed row(s).` : "cross-check: the book prints no answers for this chapter.");
+}
+
 async function main() {
   const id = process.argv[2];
   const apply = process.argv.includes("--apply");
@@ -76,6 +91,7 @@ async function main() {
   });
 
   await assertProvenance(client, ch);
+  assertCrossCheckDump(ch);
 
   // Solved examples: subjective with a book solution.
   const { count: solvedCount } = await client

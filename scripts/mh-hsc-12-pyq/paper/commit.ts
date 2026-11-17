@@ -48,6 +48,7 @@ import { catalogFor } from "./catalog";
 import { grammarFor } from "./lib";
 import { buildPaperRecords, type PaperQuestion } from "../../mh-ssc-10/lib";
 import { commitStaged } from "../../../src/lib/upload/commit";
+import { privatizeNewRows, sourceFileIds } from "../../lib/privatizeNewRows";
 import { contentHash, subjectiveContentHash } from "../../../src/lib/upload/hash";
 
 function loadEnv() {
@@ -183,6 +184,9 @@ async function main() {
     jobId = job.id;
   }
 
+  // Ids before the commit: only rows this run inserts go PRIVATE (a re-commit
+  // into a published file must not hide it).
+  const before = await sourceFileIds(client, EXAM_ID, paper.sourceFile);
   const r = await commitStaged(client, {
     orgId: ORG_ID,
     examId: EXAM_ID,
@@ -197,13 +201,7 @@ async function main() {
   console.log(`\ncommit: inserted=${r.inserted} skipped=${r.skipped} failed=${r.failed}`);
   for (const e of r.errors) console.log(`  err row ${e.sourceRow}: ${e.message}`);
 
-  const { error: uErr, count } = await client
-    .from("questions")
-    .update({ visibility: "PRIVATE", question_kind: "pyq" }, { count: "exact" })
-    .eq("exam_id", EXAM_ID)
-    .eq("source_file", paper.sourceFile);
-  if (uErr) throw new Error(`kind/visibility update failed: ${uErr.message}`);
-  console.log(`set ${count} row(s) PRIVATE + question_kind='pyq'.`);
+  await privatizeNewRows(client, { examId: EXAM_ID, sourceFile: paper.sourceFile, before, questionKind: "pyq" });
 
   // Name what the exam-scoped content_hash absorbed. See the header.
   if (r.skipped) {

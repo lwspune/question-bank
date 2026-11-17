@@ -75,6 +75,20 @@ export function numberChapter(
 }
 
 /**
+ * How many questions a chapter prints: those in its sections that are not
+ * curated out. Not `all rows - excluded rows`: an excluded row need not be in
+ * any section, and subtracting it anyway made every MHT-CET Maths chapter page
+ * read 1 to 10 fewer questions than the print view printed (2026-11-17).
+ */
+export function printedTotal(sections: BookSection[], excludedIds: string[]): number {
+  const excluded = new Set(excludedIds);
+  let n = 0;
+  for (const section of sections)
+    for (const set of section.sets) for (const id of set.questionIds) if (!excluded.has(id)) n += 1;
+  return n;
+}
+
+/**
  * A run of printed numbers.
  *
  * `count` equals the span for every range this produces today, because

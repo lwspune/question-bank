@@ -1,0 +1,70 @@
+[
+ {
+  "id": "21a4976f-8412-411d-9946-244c4af01697",
+  "label": "MH HSC 12 Chemistry PYQ Electrochemistry Q.12 OR (2019)",
+  "reason": "SUGGESTIONS 2026-09-10 '^x^ residue': pandoc superscript syntax printed literally; unit run converted to one math zone, information unchanged (the same row's solution already writes 223 \\Omega^{-1} cm^2 mol^-1). Recorded in scripts/mh-hsc-12-pyq/data/defects.json stemsMistranscribed.",
+  "text": "The molar conductivity of \\(0.05\\text{ M }\\text{BaCl}_{2}\\) solution at \\(25^{\\circ}\\text{C}\\) is \\(223\\ \\Omega^{-1}\\ \\text{cm}^{2}\\ \\text{mol}^{-1}\\). What is its conductivity?"
+ },
+ {
+  "id": "00deeabd-5ac4-4a4a-8f58-d17d705adcb8",
+  "label": "NDA practice Mock Test 10 Q66",
+  "reason": "pandoc ^10^C~3~ printed literally and the final fraction lost on import (solution ended 'events='); solution rewritten, key B (1/40) re-derived: 3 favourable of 10C3 = 120.",
+  "solution": "Three different numbers can be chosen from 10 in \\({}^{10}C_{3} = 120\\) ways.\n\nThe product of two of them equals the third only for (2, 3, 6), (2, 4, 8) and (2, 5, 10), so there are 3 favourable choices.\n\nRequired probability \\(= \\frac{3}{120} = \\frac{1}{40}\\)."
+ },
+ {
+  "id": "9ccb1d8a-e72c-45f6-9083-dbfe518f6f6c",
+  "label": "NDA practice Mock Test 10 Q70",
+  "reason": "pandoc ^30^C~3~ printed literally and the 'consecutive' fraction lost on import; solution rewritten, key B (144/145) re-derived: 28 consecutive triples of 30C3 = 4060.",
+  "solution": "Three numbers can be chosen from 1 to 30 in \\({}^{30}C_{3} = 4060\\) ways.\n\nThree consecutive numbers are (1, 2, 3), (2, 3, 4), ..., (28, 29, 30): 28 choices. So the probability that they are consecutive is \\(\\frac{28}{4060} = \\frac{1}{145}\\).\n\nRequired probability \\(= 1 - \\frac{1}{145} = \\frac{144}{145}\\)."
+ },
+ {
+  "id": "5d127593-9b62-4029-bb0e-9afcb2596050",
+  "label": "NDA practice Mock Test 10 middle term of (2+3x)^4",
+  "reason": "pandoc 3^rd^ printed literally and the solution stopped before the coefficient; rewritten, key D (216) re-derived: T3 = 4C2 * 2^2 * 3^2 x^2.",
+  "solution": "For \\((x + y)^{n}\\) with n even, the middle term is the \\(\\left(\\frac{n}{2} + 1\\right)\\)th term. Here n = 4, so it is the 3rd term.\n\n\\(T_{3} = {}^{4}C_{2}\\,(2)^{2}(3x)^{2} = 6 \\times 4 \\times 9x^{2} = 216x^{2}\\)\n\nThe coefficient of the middle term is 216."
+ },
+ {
+  "id": "b82d2277-33d8-4c1c-aed4-9c45948f45f0",
+  "label": "NDA practice Mock Test 10 five Sundays in December",
+  "reason": "pandoc 5^th^ printed literally; solution reworded, key C (3/7) unchanged.",
+  "solution": "December has 31 days, that is 4 full weeks and 3 extra days. The 4 weeks give 4 Sundays.\n\nThere is a 5th Sunday only if one of the 3 extra days (December 1, 2 or 3) is a Sunday. December 1 can fall on any of the 7 days of the week, and 3 of these give 5 Sundays.\n\nRequired probability \\(= \\frac{3}{7}\\)."
+ },
+ {
+  "id": "ddfac4ab-e0ab-4035-bab8-aab5aecf1287",
+  "label": "NDA practice Mock Test 03 product of nine GP terms",
+  "reason": "pandoc ^th^ printed literally in all four options and the solution, plus stray line-break backslashes; options and solution rewritten, key D unchanged.",
+  "options": {
+   "A": "The 9th power of the 4th term",
+   "B": "The 4th power of the 9th term",
+   "C": "The 5th power of the 9th term",
+   "D": "The 9th power of the 5th term"
+  },
+  "solution": "Let the first nine terms be \\(a, ar, ar^{2}, \\ldots, ar^{8}\\).\n\nTheir product is \\(a^{9}\\,r^{1 + 2 + \\cdots + 8} = a^{9}r^{36} = \\left(ar^{4}\\right)^{9}\\).\n\n\\(ar^{4}\\) is the 5th term, so the product is the 9th power of the 5th term."
+ },
+ {
+  "id": "149a52f9-6f46-4bd7-b152-3acc2545d173",
+  "label": "NDA practice Mock Test 01 middle term of (1 - x/2)^8",
+  "reason": "pandoc 5^th^ printed literally and a raw 'th' after a fraction; solution reworded, key A (35x^4/8) re-derived.",
+  "solution": "\\(\\left(1 - \\frac{x}{2}\\right)^{8}\\) has 9 terms, so the middle term is the 5th.\n\n\\(T_{5} = {}^{8}C_{4}\\,(1)^{4}\\left(-\\frac{x}{2}\\right)^{4} = 70 \\times \\frac{x^{4}}{16} = \\frac{35x^{4}}{8}\\)"
+ },
+ {
+  "id": "9c100087-b42f-4573-bd37-131e0fa1d555",
+  "label": "NDA practice Mock Test 02 15th term of 3, 7, 13, 21, ...",
+  "reason": "pandoc 15^th^ printed literally in the stem and solution; the solution's method-of-differences array rendered a stray box symbol and line-break backslashes. Stem typo 'terms' fixed; solution rewritten, key D (241) re-derived: T_n = 3 + (n-1)(n+2).",
+  "text": "What is the 15th term of the series 3, 7, 13, 21, 31, 43, ...?",
+  "solution": "The differences between terms are 4, 6, 8, 10, 12, ..., an A.P. with first term 4 and common difference 2.\n\nSo \\(T_{n} = 3 + [4 + 6 + \\cdots \\text{ to } (n - 1) \\text{ terms}] = 3 + \\frac{n - 1}{2}\\,[2(4) + (n - 2)(2)] = 3 + (n - 1)(n + 2)\\).\n\nCheck: \\(T_{2} = 3 + 1 \\times 4 = 7\\), \\(T_{3} = 3 + 2 \\times 5 = 13\\).\n\n\\(T_{15} = 3 + 14 \\times 17 = 241\\)."
+ },
+ {
+  "id": "1132d2db-5867-44b3-a8e3-b7a2339d6115",
+  "label": "NDA practice Mock Test 04 second derivative of a sin^3 t w.r.t. a cos^3 t",
+  "reason": "pandoc 2^nd^ printed literally in the stem; stray line-break backslashes in the solution. Key A (4 sqrt2 / 3a) re-derived.",
+  "text": "The second derivative of \\(a\\sin^{3}t\\) with respect to \\(a\\cos^{3}t\\) at \\(t = \\frac{\\pi}{4}\\) is",
+  "solution": "Let \\(y = a\\sin^{3}t\\) and \\(x = a\\cos^{3}t\\). Then\n\n\\(\\frac{dy}{dx} = \\frac{3a\\sin^{2}t\\cos t}{-3a\\cos^{2}t\\sin t} = -\\tan t\\).\n\nDifferentiating again with respect to x:\n\n\\(\\frac{d^{2}y}{dx^{2}} = -\\sec^{2}t\\,\\frac{dt}{dx} = \\frac{-\\sec^{2}t}{-3a\\cos^{2}t\\sin t} = \\frac{\\sec^{4}t}{3a\\sin t}\\).\n\nAt \\(t = \\frac{\\pi}{4}\\): \\(\\sec^{4}t = 4\\) and \\(\\sin t = \\frac{1}{\\sqrt{2}}\\), so \\(\\frac{d^{2}y}{dx^{2}} = \\frac{4\\sqrt{2}}{3a}\\)."
+ },
+ {
+  "id": "15ce9ec4-5fe3-4888-868c-7312459df62a",
+  "label": "NDA practice Mock Test 05 A.P. terms in G.P.",
+  "reason": "pandoc 2^nd^/5^th^/9^th^ printed literally and the doubled 'of of' in the stem; key D (4/3) re-derived: r = 4d/3d.",
+  "text": "If the 2nd, 5th and 9th terms of a non-constant A.P. are in G.P., then the common ratio of this G.P. is:"
+ }
+]

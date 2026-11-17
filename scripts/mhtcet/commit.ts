@@ -16,6 +16,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { basename, join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { commitStaged } from "../../src/lib/upload/commit";
+import { privatizeNewRows, sourceFileIds } from "../lib/privatizeNewRows";
 import { contentHash } from "../../src/lib/upload/hash";
 import type { ParsedRowPayload } from "../../src/lib/upload/validate";
 import { commitText } from "./lib";
@@ -145,6 +146,9 @@ async function main() {
   }
   console.log(`upload job: ${jobId}`);
 
+  // Ids before the commit: only rows this run inserts go PRIVATE (a re-commit
+  // into a published file must not hide it).
+  const before = await sourceFileIds(client, EXAM_ID, sourceFile);
   const result = await commitStaged(client, {
     orgId: ORG_ID,
     examId: EXAM_ID,
@@ -167,13 +171,7 @@ async function main() {
     .is("upload_job_id", null);
 
   // Stay PRIVATE until verified + figures attached; flip-public.ts promotes.
-  const { error: vErr, count } = await client
-    .from("questions")
-    .update({ visibility: "PRIVATE" }, { count: "exact" })
-    .eq("exam_id", EXAM_ID)
-    .eq("source_file", sourceFile);
-  if (vErr) throw new Error(`visibility flip failed: ${vErr.message}`);
-  console.log(`set ${count} MHT-CET rows to PRIVATE.`);
+  await privatizeNewRows(client, { examId: EXAM_ID, sourceFile: sourceFile, before });
 
   const { count: linked } = await client
     .from("questions")

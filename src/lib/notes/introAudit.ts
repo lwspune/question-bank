@@ -38,6 +38,48 @@ export function extractCountClaims(text: string): number[] {
 }
 
 /**
+ * "22 of them HARD" / "3 of them are HARD": a count of HARD questions stated
+ * beside a bank count (2026-11-17, SUGGESTIONS 2026-09-14: the plain count claim
+ * above cannot see a number that names no unit, so these drifted unguarded).
+ * Checked against the chapter's or one subtopic's live HARD count.
+ */
+const HARD_CLAIM = /(\d{1,4}) of them (?:are |were )?(?:marked )?HARD\b/g;
+
+export function extractHardClaims(text: string): number[] {
+  return [...text.matchAll(HARD_CLAIM)].map((m) => Number(m[1]));
+}
+
+/**
+ * Every other "N of them" claim (2026-11-17, SUGGESTIONS 2026-09-14), classed by
+ * what follows it so the gate can check it against the matching live count:
+ * a difficulty ("820 of them EASY"), the numeric-answer format ("60 of them ask
+ * for a number") or MCQ ("169 of them are multiple choice"). `other` is a claim
+ * about content ("71 of them are linear equations") that no count can check;
+ * the gate requires it to be on a hand-checked list, so a new one cannot slip in.
+ * "N of them HARD" is extractHardClaims' and is skipped here.
+ */
+export type OfThemClass = "EASY" | "MODERATE" | "MODERATE_OR_HARD" | "numeric" | "mcq" | "other";
+
+const OF_THEM = /(\d[\d,]*) of (?:them|these|those)\b([^.;:]{0,60})/g;
+
+export function extractOfThemClaims(text: string): { n: number; cls: OfThemClass }[] {
+  const out: { n: number; cls: OfThemClass }[] = [];
+  for (const m of text.matchAll(OF_THEM)) {
+    const rest = m[2].replace(/^,?\s*(?:are|were)?\s*/, "");
+    let cls: OfThemClass;
+    if (/^(?:marked )?HARD\b/.test(rest)) continue;
+    else if (/^MODERATE or HARD\b/.test(rest)) cls = "MODERATE_OR_HARD";
+    else if (/^MODERATE\b/.test(rest)) cls = "MODERATE";
+    else if (/^EASY\b/.test(rest)) cls = "EASY";
+    else if (/^(?:ask for a (?:number|numerical answer)|have a numerical answer|numerical answer)\b/.test(rest)) cls = "numeric";
+    else if (/^multiple choice\b/.test(rest)) cls = "mcq";
+    else cls = "other";
+    out.push({ n: Number(m[1].replace(/,/g, "")), cls });
+  }
+  return out;
+}
+
+/**
  * The counts a chapter's prose may legitimately state: its own total, any one
  * subtopic's count, or the sum of TWO subtopics.
  *

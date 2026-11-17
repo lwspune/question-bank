@@ -65,6 +65,26 @@ async function main() {
   }
   console.log(`  TOTAL PUBLIC: ${grandTotal.toLocaleString("en-IN")}`);
 
+  // A standing count (2026-11-17, SUGGESTIONS 2026-09-09): a PUBLIC MCQ with a key
+  // and no working. Nothing else detects it (audit:keys skips a row with no
+  // solution, and NULL is legal), and it shipped twice before anyone counted.
+  console.log("\n=== PUBLIC MCQs with no working (by exam) ===");
+  let noWork = 0;
+  for (const e of exams ?? []) {
+    const { count } = await sb
+      .from("questions")
+      .select("*", { count: "exact", head: true })
+      .eq("exam_id", e.id)
+      .eq("visibility", "PUBLIC")
+      .eq("question_format", "mcq")
+      .or("solution.is.null,solution.eq.");
+    if (count) {
+      noWork += count;
+      console.log(`  ${e.name}: ${count.toLocaleString("en-IN")}`);
+    }
+  }
+  console.log(`  TOTAL: ${noWork.toLocaleString("en-IN")}   (untagged noted PYQs: npm run notes:untagged)`);
+
   const [chapters, subtopics, allQ] = await Promise.all([
     headCount(sb, "chapters"),
     headCount(sb, "subtopics"),

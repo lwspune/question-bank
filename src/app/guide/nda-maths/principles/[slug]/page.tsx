@@ -10,7 +10,7 @@ import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import WorkedExampleCard from "@/app/guide/_components/WorkedExampleCard";
 import RelatedPlaybooks from "@/app/guide/_components/RelatedPlaybooks";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { loadWorkedExamples } from "@/lib/guide/loadWorkedExamples";
 import { loadPrincipleQuestionIds } from "@/lib/tags/principleTags";
 import { ROUTES } from "../../_data/nda-maths";
@@ -26,6 +26,10 @@ const sideNav = ROUTES.map((r) => ({
   href: r.slug ? `/guide/nda-maths/${r.slug}` : "/guide/nda-maths",
   label: r.label,
 }));
+
+// Public content, the same for everyone: cached for a day like the other guide pages
+// (it read cookies until 2026-11-17 and rendered on every request).
+export const revalidate = 86400;
 
 export function generateStaticParams(): Params[] {
   return DETAIL_SLUGS.map((slug) => ({ slug }));
@@ -52,7 +56,7 @@ export default async function PrincipleDetail(props: { params: Promise<Params> }
   const detail = PRINCIPLE_DETAILS[params.slug];
   if (!principle || !detail) notFound();
 
-  const supabase = createSupabaseServerClient();
+  const supabase = createSupabaseAnonClient();
   const [examples, taggedMap] = await Promise.all([
     loadWorkedExamples(supabase, detail.exampleQuestionIds),
     loadPrincipleQuestionIds(supabase, [params.slug]),
@@ -223,7 +227,7 @@ export default async function PrincipleDetail(props: { params: Promise<Params> }
 /** Count distinct chapters a principle's tagged questions span. RLS-respecting
  *  (anon sees PUBLIC counts only). Empty input short-circuits to 0. */
 async function countDistinctChapters(
-  client: ReturnType<typeof createSupabaseServerClient>,
+  client: ReturnType<typeof createSupabaseAnonClient>,
   questionIds: string[]
 ): Promise<number> {
   if (questionIds.length === 0) return 0;

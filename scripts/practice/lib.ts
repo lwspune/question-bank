@@ -184,3 +184,19 @@ export function buildRecords(
 
   return { rows, flags };
 }
+
+const PRACTICE_AREAS: Record<string, string> = { "2D": "2D Geometry", "3D": "3D Geometry" };
+
+/**
+ * The provenance note for a bulk NDA Maths practice PDF, read from its file name
+ * (`NDA_Maths_Practice__<Area>__<Chapter>.pdf`). Returns null for any other name,
+ * so a topic that is not of that shape must carry its own `note`. Before
+ * 2026-11-17 commit.ts defaulted every topic to "Algebra / Sequence & Series".
+ */
+export function practiceNoteFromSourceFile(sourceFile: string): string | null {
+  const m = /^NDA_Maths_Practice__([^_]+(?:_[^_]+)*?)__(.+)\.pdf$/.exec(sourceFile);
+  if (!m) return null;
+  const area = PRACTICE_AREAS[m[1]] ?? m[1].replace(/_/g, " ");
+  const chapter = m[2].replace(/_and_/g, " & ").replace(/_/g, " ");
+  return `NDA Maths practice — ${area} / ${chapter}`;
+}

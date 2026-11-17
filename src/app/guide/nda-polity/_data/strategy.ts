@@ -74,7 +74,7 @@ export const STRATEGY_HEADLINE = {
 
 export const CORNERSTONE_STRAND: StrategyStrand = {
   id: "cornerstone",
-  label: "Cornerstone — Government Structure (36 q · 40%)",
+  label: "Cornerstone — Government Structure (37 q · 37%)",
   qCount: 37,
   pctOfBank: 37,
   pitch:
@@ -101,7 +101,7 @@ export const CORNERSTONE_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~6 marks",
       studyHours: 5,
       summary:
-        "36 q · 17% HARD — bank's largest chapter (40%) AND highest absolute HARDs. Constitutional Bodies (21 q · 10% HARD) is the chapter giant; Parliament (10 q · 30% HARD) carries the densest %HARD. Drill all 4 subtopics; the Bodies + Articles reference table compounds directly here.",
+        "37 q · 16% HARD — bank's largest chapter (37%) AND highest absolute HARDs. Constitutional Bodies (22 q · 9% HARD) is the chapter giant; Parliament (10 q · 30% HARD) carries the densest %HARD. Drill all 4 subtopics; the Bodies + Articles reference table compounds directly here.",
     },
   ],
 };
@@ -109,7 +109,7 @@ export const CORNERSTONE_STRAND: StrategyStrand = {
 export const FOUNDATION_STRAND: StrategyStrand = {
   id: "foundation",
   label:
-    "Foundation Recall — Indian Constitution + FR/DPSP/Local Governance (42 q · 47%)",
+    "Foundation Recall — Indian Constitution + FR/DPSP/Local Governance (46 q · 46%)",
   qCount: 46,
   pctOfBank: 46,
   pitch:
@@ -135,7 +135,7 @@ export const FOUNDATION_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~3 marks",
       studyHours: 3,
       summary:
-        "20 q · 15% HARD. Constitutional Amendments (11 q · 18% HARD) is the chapter giant — drill the major amendments (1st, 7th, 42nd, 44th, 73rd/74th, 86th, 101st, 103rd, 104th). Parts/Schedules cluster on /reference-tables compounds directly. Easy marks pocket on Making of Constitution + Federal Structure.",
+        "22 q · 14% HARD. Constitutional Amendments (11 q · 18% HARD) is the chapter giant — drill the major amendments (1st, 7th, 42nd, 44th, 73rd/74th, 86th, 101st, 103rd, 104th). Parts/Schedules cluster on /reference-tables compounds directly. Easy marks pocket on Making of Constitution + Federal Structure.",
     },
     {
       chapter: "Fundamental Rights, DPSP and Local Governance",
@@ -149,14 +149,14 @@ export const FOUNDATION_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~3 marks",
       studyHours: 3,
       summary:
-        "22 q · 14% HARD. FR/DPSP/FD (8 q · 0% HARD) is a guaranteed marks pocket — read FR articles 12–35 + DPSP 36–51 + FD 51A cold. Electoral Systems (9 q · 22% HARD) is densest %HARD — drill political party recognition + Fifth Schedule + 11th Schedule. Local Self-Government tests Article 243G powers + committees chronology.",
+        "24 q · 21% HARD. FR/DPSP/FD (8 q · 0% HARD) is a guaranteed marks pocket — read FR articles 12–35 + DPSP 36–51 + FD 51A cold. Local Self-Government (7 q · 43% HARD) is densest %HARD: it tests Article 243G powers + committees chronology. Electoral Systems (9 q · 22% HARD): drill political party recognition + Fifth Schedule + 11th Schedule.",
     },
   ],
 };
 
 export const SPECIALIST_STRAND: StrategyStrand = {
   id: "specialist",
-  label: "Specialist Wildcard — World Polity (12 q · 13%)",
+  label: "Specialist Wildcard — World Polity (16 q · 16%)",
   qCount: 16,
   pctOfBank: 16,
   pitch:
@@ -180,7 +180,7 @@ export const SPECIALIST_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~3 marks",
       studyHours: 2,
       summary:
-        "12 q · 42% HARD — smallest chapter, HARDEST %HARD. UN subtopic alone (5 q · 60% HARD) is the densest %HARD subtopic in the entire Polity bank. 50% multi-statement — drill statement-by-statement T/F discipline. Specialist Wildcard: skip rather than guess if not drilled cold.",
+        "16 q · 31% HARD — smallest chapter, HARDEST %HARD. UN subtopic alone (6 q · 50% HARD) is the densest %HARD subtopic in the entire Polity bank. 50% multi-statement — drill statement-by-statement T/F discipline. Specialist Wildcard: skip rather than guess if not drilled cold.",
     },
   ],
 };

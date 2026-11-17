@@ -58,6 +58,8 @@ import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { liveKey, loadNotesLive } from "../scripts/lib/notesLiveCounts";
 import {
   extractCountClaims,
+  extractHardClaims,
+  extractOfThemClaims,
   allowedCounts,
   isExemptCount,
   YEAR_LIKE_MIN,
@@ -82,6 +84,30 @@ const RANGE = /(\d{4})\s*[–—-]\s*(\d{4})/g;
  * not less. (The 76 chapters with no authored blurb derive theirs from the
  * intro's first sentence, which this already covers.)
  */
+/**
+ * Content claims checked by hand against the live bank on 2026-11-17, as
+ * "<route> <n>". Each is a sum of named subtopics, a year or kind subset, or a
+ * read of the questions. Adding one means checking it; the test above fails
+ * on any content claim not listed here.
+ */
+const CHECKED_CONTENT_CLAIMS = new Set([
+  "jee-mains-maths/differential-equations 71", // linear: Integrating Factor 27 + Using a Linear Solution 22 + Integrating Factors in Disguise 22
+  "jee-mains-maths/complex-numbers 59", // sets of points: Regions 26 + Lines and Circles 17 + Arcs and Conic Loci 16
+  "jee-mains-maths/application-of-derivatives 63", // max/min: Greatest and Least 26 + Local Maxima 19 + Optimisation 18
+  "jee-mains-maths/determinants 82", // the five linear-system subtopics 19+18+18+17+10
+  "jee-mains-maths/statistics 74", // stems naming variance, standard deviation or sigma: 74 of 88
+  "jee-mains-physics/electrostatics 81", // capacitors: 33 + 25 + 23
+  "cds-english/vocabulary 300", // the six Synonyms (151) + six Antonyms (149) subtopics
+  "afcat-maths/speed-time-distance 24", // question_kind pyq
+  "afcat-maths/decimals-fractions 13", // question_kind pyq
+  "afcat-maths/time-work 18", // question_kind pyq
+  "cds-economics/money-banking-finance 25", // pyq_year 2023 + 2024
+  "ssc-cgl-reasoning/mirror-images 119", // two solutions name a horizontal mirror; the third is read from its figure
+  "ssc-cgl-tier-2-reasoning/data-sufficiency 10", // seating or line-up stems: 10 of 14
+  "ssc-cgl-tier-2-reasoning/blood-relations 11", // symbol-code stems: 11 of 15
+  "ssc-cgl-tier-2-computer/networks 7", // switch / gateway / LAN-device stems: 7 of 11
+]);
+
 const claimText = (c: any) =>
   [c.chapter.intro, c.chapter.cardBlurb].filter(Boolean).join(" ");
 
@@ -90,6 +116,10 @@ type Live = {
   /** Every single subtopic count, plus every two-subtopic sum. */
   subtopic: Map<string, Set<number>>;
   maxYear: Map<string, number>;
+  /** Chapter HARD total plus every subtopic's HARD count and pair sum. */
+  hard: Map<string, Set<number>>;
+  /** Difficulty and format counts per chapter (lib/notesLiveCounts classes). */
+  classes: Map<string, Map<string, number>>;
 };
 
 /**
@@ -112,13 +142,17 @@ const key = liveKey;
  * ~54 GB of database reads per daily run (2026-11-08).
  */
 async function loadLive(db: SupabaseClient): Promise<Live> {
-  const { chapter, perSub, perYear, maxYear } = await loadNotesLive(db);
+  const { chapter, perSub, perYear, maxYear, hardChapter, hardPerSub, classes } = await loadNotesLive(db);
   // Singles AND pair sums, via the shared core.
   const subtopic = new Map<string, Set<number>>();
   for (const [k, m] of perSub) {
     subtopic.set(k, allowedCounts(chapter.get(k) ?? 0, [...m.values()], [...(perYear.get(k)?.values() ?? [])]));
   }
-  return { chapter, subtopic, maxYear };
+  const hard = new Map<string, Set<number>>();
+  for (const k of chapter.keys()) {
+    hard.set(k, allowedCounts(hardChapter.get(k) ?? 0, [...(hardPerSub.get(k)?.values() ?? [])]));
+  }
+  return { chapter, subtopic, maxYear, hard, classes };
 }
 
 describe.skipIf(!HAS_ENV)("/notes chapter intros state live bank counts", () => {
@@ -154,6 +188,47 @@ describe.skipIf(!HAS_ENV)("/notes chapter intros state live bank counts", () => 
           `${route}: intro/cardBlurb claims ${n}, live chapter ${total}` +
             ` (subtopic counts + pair sums: ${[...subs].sort((a, b) => b - a).join(", ")})`,
         );
+      }
+    }
+    expect(bad).toEqual([]);
+  });
+
+  // 2026-11-17 (SUGGESTIONS 2026-09-14): "22 of them HARD" sits in the same
+  // sentence as a guarded count, so it drifted while its neighbour stayed right.
+  it("every 'N of them HARD' in an intro matches the chapter's or a subtopic's live HARD count", () => {
+    const bad: string[] = [];
+    for (const c of NOTES_CHAPTERS as any[]) {
+      const k = key(c.examName, c.subjectName, c.chapter.chapterName);
+      const allowed = live.hard.get(k);
+      if (!allowed) continue;
+      for (const n of extractHardClaims(claimText(c))) {
+        if (allowed.has(n)) continue;
+        bad.push(`${c.subjectRoute}/${c.chapterSlug}: claims ${n} HARD (live: ${[...allowed].sort((a, b) => b - a).slice(0, 8).join(", ")})`);
+      }
+    }
+    expect(bad).toEqual([]);
+  });
+
+  // 2026-11-17 (SUGGESTIONS 2026-09-14): the other "N of them" claims. A
+  // difficulty or format claim must equal the chapter's live count; a claim
+  // about content ("71 of them are linear equations") no count can check, so it
+  // must be a chapter or subtopic count, or on CHECKED_CONTENT_CLAIMS below.
+  it("every other 'N of them' in an intro matches its live count or a hand-checked claim", () => {
+    const bad: string[] = [];
+    for (const c of NOTES_CHAPTERS as any[]) {
+      const route = `${c.subjectRoute}/${c.chapterSlug}`;
+      const k = key(c.examName, c.subjectName, c.chapter.chapterName);
+      const total = live.chapter.get(k);
+      if (total === undefined) continue;
+      const cls = live.classes.get(k) ?? new Map<string, number>();
+      const subs = live.subtopic.get(k) ?? new Set<number>();
+      for (const { n, cls: kind } of extractOfThemClaims(claimText(c))) {
+        if (kind !== "other") {
+          if ((cls.get(kind) ?? 0) !== n) bad.push(`${route}: claims ${n} of them ${kind}, live ${cls.get(kind) ?? 0}`);
+          continue;
+        }
+        if (n === total || subs.has(n) || CHECKED_CONTENT_CLAIMS.has(`${route} ${n}`)) continue;
+        bad.push(`${route}: content claim "${n} of them" is not a live count; check it by hand and add it to CHECKED_CONTENT_CLAIMS`);
       }
     }
     expect(bad).toEqual([]);

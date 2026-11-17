@@ -10,6 +10,8 @@ import {
   enumeratedItems,
   longestSentenceWords,
   leadsWithBankFact,
+  extractHardClaims,
+  extractOfThemClaims,
 } from "@/lib/notes/introAudit";
 
 describe("extractCountClaims", () => {
@@ -144,5 +146,37 @@ describe("leadsWithBankFact", () => {
     // "4 recognitions cover them" in its opening line is rare enough that the
     // probe's human read is the right filter, not a stricter regex.
     expect(leadsWithBankFact("")).toBe(false);
+  });
+});
+
+describe("extractHardClaims (2026-11-17)", () => {
+  it("reads 'N of them HARD' claims", () => {
+    expect(extractHardClaims("52 PYQs, 22 of them HARD. Later 7 PYQs, 3 of them are HARD.")).toEqual([22, 3]);
+    expect(extractHardClaims("121 practice questions, and only 15 of them are marked HARD.")).toEqual([15]);
+  });
+  it("ignores an 'of them' with no HARD", () => {
+    expect(extractHardClaims("central tendency alone account for 119 of them")).toEqual([]);
+  });
+});
+
+describe("extractOfThemClaims (2026-11-17)", () => {
+  it("classes difficulty claims", () => {
+    expect(extractOfThemClaims("Vocabulary has 1,036 questions, and 820 of them EASY.")).toEqual([{ n: 820, cls: "EASY" }]);
+    expect(extractOfThemClaims("26 past-year questions, 23 of them EASY")).toEqual([{ n: 23, cls: "EASY" }]);
+    expect(extractOfThemClaims("and 53 of them MODERATE.")).toEqual([{ n: 53, cls: "MODERATE" }]);
+    expect(extractOfThemClaims("and 65 of them MODERATE or HARD.")).toEqual([{ n: 65, cls: "MODERATE_OR_HARD" }]);
+  });
+  it("classes format claims", () => {
+    expect(extractOfThemClaims("and 60 of them ask for a number rather than an option.")).toEqual([{ n: 60, cls: "numeric" }]);
+    expect(extractOfThemClaims("and 46 of them ask for a numerical answer.")).toEqual([{ n: 46, cls: "numeric" }]);
+    expect(extractOfThemClaims("and 24 of them have a numerical answer rather than options.")).toEqual([{ n: 24, cls: "numeric" }]);
+    expect(extractOfThemClaims("and 75 of them are numerical answer.")).toEqual([{ n: 75, cls: "numeric" }]);
+    expect(extractOfThemClaims("and only 6 of them ask for a number.")).toEqual([{ n: 6, cls: "numeric" }]);
+    expect(extractOfThemClaims("and 169 of them are multiple choice.")).toEqual([{ n: 169, cls: "mcq" }]);
+  });
+  it("leaves HARD to extractHardClaims and the rest as other", () => {
+    expect(extractOfThemClaims("52 PYQs, 22 of them HARD.")).toEqual([]);
+    expect(extractOfThemClaims("and 71 of them are linear equations.")).toEqual([{ n: 71, cls: "other" }]);
+    expect(extractOfThemClaims("Capacitors take 81 of these, about one in three.")).toEqual([{ n: 81, cls: "other" }]);
   });
 });

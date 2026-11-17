@@ -283,3 +283,21 @@ describe("normaliseAnswer — stricter than the stem key, and that is the point"
     expect(normaliseAnswer("2 sqrt(29) + c")).toBe(normaliseAnswer("2sqrt(29)+c"));
   });
 });
+
+describe("normaliseAnswer: typesetting that never changes an answer (2026-11-17)", () => {
+  it("reads \\dfrac and \\tfrac as \\frac", () => {
+    expect(normaliseAnswer("\\(\\dfrac{\\pi}{3}\\)")).toBe(normaliseAnswer("\\(\\frac{\\pi}{3}\\)"));
+    expect(normaliseAnswer("\\(\\tfrac{134}{343}\\)")).toBe(normaliseAnswer("\\(\\frac{134}{343}\\)"));
+  });
+  it("drops braces round ONE character after ^ or _", () => {
+    expect(normaliseAnswer("\\(\\tan^{2}\\frac{a}{2}\\)")).toBe(normaliseAnswer("\\(\\tan^2\\frac{a}{2}\\)"));
+  });
+  it("keeps braces that are content or hold more than one character", () => {
+    expect(normaliseAnswer("{2}")).not.toBe(normaliseAnswer("2"));
+    expect(normaliseAnswer("x^{12}")).not.toBe(normaliseAnswer("x^12"));
+  });
+  it("drops a full stop that ENDS the answer, never one inside it", () => {
+    expect(normaliseAnswer("occurs at infinitely many points.")).toBe(normaliseAnswer("occurs at infinitely many points"));
+    expect(normaliseAnswer("0.5")).not.toBe(normaliseAnswer("05"));
+  });
+});
