@@ -2,22 +2,13 @@
 // service-role client, so scripts/play/smoke.ts can drive this same loader.
 import type { createTypedAdminClient } from "@/lib/supabase/admin";
 import { readAllPages } from "@/lib/supabase/readAllPages";
-import { displayName } from "@/lib/students/derive";
+import { readInChunks } from "@/lib/supabase/readInChunks";
+import { namesForUsers } from "@/lib/supabase/authUsers";
 import { buildPlayStats, STUDY_KINDS, type PlayRoundRow, type PlayStats, type StudyRow } from "@/lib/play/adminStats";
 
 type Admin = ReturnType<typeof createTypedAdminClient>;
 
 const WEEK_MS = 7 * 86_400_000;
-/** `.in()` puts the ids in the URL: chunk well under its length limit (CLAUDE.md). */
-const ID_CHUNK = 200;
-/** Name lookups at once (one auth admin call each). */
-const NAME_BATCH = 20;
-
-function chunks<T>(xs: T[], size: number): T[][] {
-  const out: T[][] = [];
-  for (let i = 0; i < xs.length; i += size) out.push(xs.slice(i, i + size));
-  return out;
-}
 
 /**
  * Everything /dashboard/play shows. Service role, so call it only after a
@@ -68,31 +59,22 @@ export async function loadPlayStats(admin: Admin, now: Date = new Date()): Promi
     const firsts = [...firstMs.values()];
     const from = new Date(Math.min(...firsts) - WEEK_MS).toISOString();
     const to = new Date(Math.max(...firsts) + WEEK_MS).toISOString();
-    for (const ids of chunks(userIds, ID_CHUNK)) {
-      const rows = await readAllPages<{ user_id: string; created_at: string }>((a, b) =>
-        admin
-          .from("user_activity")
-          .select("user_id, created_at")
-          .in("user_id", ids)
-          .in("kind", [...STUDY_KINDS])
-          .gte("created_at", from)
-          .lt("created_at", to)
-          .order("id")
-          .range(a, b)
-      );
-      for (const r of rows) study.push({ userId: r.user_id, createdAt: r.created_at });
-    }
+    // readInChunks: `.in()` puts the ids in the URL, so they go 200 at a time (CLAUDE.md).
+    const rows = await readInChunks<{ user_id: string; created_at: string }>(userIds, (ids, a, b) =>
+      admin
+        .from("user_activity")
+        .select("user_id, created_at")
+        .in("user_id", ids)
+        .in("kind", [...STUDY_KINDS])
+        .gte("created_at", from)
+        .lt("created_at", to)
+        .order("id")
+        .range(a, b)
+    );
+    for (const r of rows) study.push({ userId: r.user_id, createdAt: r.created_at });
   }
 
-  const names = new Map<string, string>();
-  for (const ids of chunks(userIds, NAME_BATCH)) {
-    await Promise.all(
-      ids.map(async (id) => {
-        const { data } = await admin.auth.admin.getUserById(id);
-        if (data.user) names.set(id, displayName(data.user.user_metadata, data.user.email ?? null));
-      })
-    );
-  }
+  const names = await namesForUsers(admin, userIds);
 
   return buildPlayStats({ rounds, study, names, now });
 }
