@@ -173,6 +173,13 @@ Measured on 2025 CM. Check it on your paper; report anything different.
   ref `B1i`, `B1ii`, questionNumber `"B1 (i)"`, `"B1 (ii)"`, section `"B"`. A
   question with no parts is one row, `B9`, `"B9"`. Sub-items inside a part
   (`(a)`, `(b)`, `(c)`, marked e.g. `1 + 1 + 1`) stay inside that row's stem.
+- **A question that is a list of separate items** ("Write short notes on
+  (i) ... (ii) ...", "Write the structural formulas of (i) ... (ii) ...",
+  "any two of the following") is split: one row per printed item, `B9i`,
+  `B9ii`, each with its own chapter, its share of the marks, and the shared
+  instruction repeated at the start of its stem in both languages ("Write a
+  short note on: Food chain"). "Any two" keeps every item, like Maths' "do any
+  five". (Decided 2026-11-17 after CM/CJ split and CN/CK kept one row.)
 - **OR** can sit on a whole question or on one part. The alternative gets
   `OR` added: ref `B4iiOR`, questionNumber `"B4 (ii) (OR)"`,
   `"alternativeTo": "B4ii"`; for a whole question `B11OR`, `"B11 (OR)"`.
