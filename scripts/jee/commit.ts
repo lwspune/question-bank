@@ -13,6 +13,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { commitStaged } from "../../src/lib/upload/commit";
+import { privatizeNewRows, sourceFileIds } from "../lib/privatizeNewRows";
 import { contentHash, numericContentHash } from "../../src/lib/upload/hash";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import type { ParsedRowPayload } from "../../src/lib/upload/validate";
@@ -178,6 +179,7 @@ async function main() {
   }
   console.log(`upload job: ${jobId}`);
 
+  const before = await sourceFileIds(client, EXAM_ID, sourceFile);
   const result = await commitStaged(client, {
     orgId: ORG_ID,
     examId: EXAM_ID,
@@ -200,33 +202,10 @@ async function main() {
     .eq("source_file", sourceFile)
     .is("upload_job_id", null);
 
-  // Freshly-committed rows stay PRIVATE until verified in /browse. The flip is
-  // scoped by `source_file`, which covers the WHOLE paper — so it must be
-  // narrowed to whatever slice this run actually committed, or a later pass takes
-  // an earlier pass's already-PUBLIC rows offline:
-  //   --numeric-only  → the numeric rows only (MCQ for the paper stay PUBLIC)
-  //   --subject=X     → subject X only (a second-subject pass over the same paper
-  //                     must not un-publish the first subject's live rows)
-  let flip = client
-    .from("questions")
-    .update({ visibility: "PRIVATE" }, { count: "exact" })
-    .eq("exam_id", EXAM_ID)
-    .eq("source_file", sourceFile);
-  if (numericOnly) flip = flip.eq("question_format", "numeric");
-  if (subject) {
-    const { data: subjectRow, error: sErr } = await client
-      .from("subjects")
-      .select("id")
-      .eq("exam_id", EXAM_ID)
-      .eq("name", subject)
-      .maybeSingle();
-    if (sErr) throw new Error(`subject lookup failed: ${sErr.message}`);
-    if (!subjectRow) throw new Error(`subject not found for the visibility flip: ${subject}`);
-    flip = flip.eq("subject_id", subjectRow.id);
-  }
-  const { error: vErr, count } = await flip;
-  if (vErr) throw new Error(`visibility flip failed: ${vErr.message}`);
-  console.log(`set ${count} JEE rows to PRIVATE.`);
+  // Freshly-committed rows stay PRIVATE until verified in /browse. Only the rows
+  // THIS run inserted: a later pass over the same paper (--numeric-only, a
+  // second --subject) must not take an earlier pass's PUBLIC rows offline.
+  await privatizeNewRows(client, { examId: EXAM_ID, sourceFile, before });
 
   // Finalize the job with accurate, run-count-independent totals.
   const { count: linked } = await client

@@ -20,6 +20,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { commitStaged } from "../../src/lib/upload/commit";
+import { privatizeNewRows, sourceFileIds } from "../lib/privatizeNewRows";
 import { assembleRows, keyCoverageWarnings, latexImbalances, type JQ } from "./lib";
 import { ORG_ID, EXAM_ID, CREATED_BY, SUBJECT_NAME, requireChapter, mergedJsonPath } from "./config";
 
@@ -100,6 +101,9 @@ async function main() {
   }
   console.log(`\nupload job: ${jobId}`);
 
+  // Ids before the commit: only rows this run inserts go PRIVATE (a re-commit
+  // into a published file must not hide it).
+  const before = await sourceFileIds(client, EXAM_ID, ch.sourceFile);
   const result = await commitStaged(client, {
     orgId: ORG_ID,
     examId: EXAM_ID,
@@ -113,13 +117,7 @@ async function main() {
   console.log(`commit: inserted=${result.inserted} skipped=${result.skipped} failed=${result.failed}`);
   for (const e of result.errors) console.log(`  err row ${e.sourceRow}: ${e.message}`);
 
-  const { error: uErr, count } = await client
-    .from("questions")
-    .update({ visibility: "PRIVATE", question_kind: "practice" }, { count: "exact" })
-    .eq("exam_id", EXAM_ID)
-    .eq("source_file", ch.sourceFile);
-  if (uErr) throw new Error(`kind/visibility update failed: ${uErr.message}`);
-  console.log(`set ${count} rows to PRIVATE + question_kind='practice'.`);
+  await privatizeNewRows(client, { examId: EXAM_ID, sourceFile: ch.sourceFile, before, questionKind: "practice" });
 
   const { count: linked } = await client
     .from("questions")

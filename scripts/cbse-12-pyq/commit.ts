@@ -212,6 +212,28 @@ async function main() {
     }
   }
 
+  // This paper's rows, by (org_id, exam_id, content_hash) narrowed to source_file
+  // (see the flip below for why the lookup goes by hash). Read BEFORE the commit
+  // too: a row that already existed keeps its visibility, so a re-commit into a
+  // published paper hides only what it adds (2026-11-17).
+  const ownIds = async (): Promise<string[]> => {
+    const hs = rows.map((r) => r.contentHash);
+    const out: string[] = [];
+    for (let i = 0; i < hs.length; i += 100) {
+      const { data, error: sErr } = await client
+        .from("questions")
+        .select("id")
+        .eq("org_id", ORG_ID)
+        .eq("exam_id", SUBJECT.examId)
+        .eq("source_file", src)
+        .in("content_hash", hs.slice(i, i + 100));
+      if (sErr) throw new Error(`id lookup failed: ${sErr.message}`);
+      out.push(...(data ?? []).map((d) => d.id as string));
+    }
+    return out;
+  };
+  const before = new Set(await ownIds());
+
   const res = await commitStaged(client, {
     orgId: ORG_ID,
     examId: SUBJECT.examId,
@@ -257,18 +279,7 @@ async function main() {
   // (org_id, exam_id, content_hash) index still drives the lookup; source_file
   // just narrows an already-tiny result set.
   const hashes = rows.map((r) => r.contentHash);
-  const ids: string[] = [];
-  for (let i = 0; i < hashes.length; i += 100) {
-    const { data, error: sErr } = await client
-      .from("questions")
-      .select("id")
-      .eq("org_id", ORG_ID)
-      .eq("exam_id", SUBJECT.examId)
-      .eq("source_file", src)
-      .in("content_hash", hashes.slice(i, i + 100));
-    if (sErr) throw new Error(`id lookup failed: ${sErr.message}`);
-    ids.push(...(data ?? []).map((d) => d.id as string));
-  }
+  const ids = await ownIds();
   // Fewer ids than rows is LEGITIMATE and expected: a row whose content already
   // exists under another source_file deduped away and is not ours to flip. More
   // ids than rows is impossible and would mean the filter failed.
@@ -304,21 +315,23 @@ async function main() {
     );
     for (const a of absorbed) console.log(`    ${a}`);
   }
-  for (let i = 0; i < ids.length; i += 100) {
+  const fresh = ids.filter((id) => !before.has(id));
+  if (before.size) console.log(`  ${before.size} row(s) existed before this run: their visibility is left alone.`);
+  for (let i = 0; i < fresh.length; i += 100) {
     const { error: uErr } = await client
       .from("questions")
       .update({ visibility: "PRIVATE", question_kind: "pyq" })
-      .in("id", ids.slice(i, i + 100));
+      .in("id", fresh.slice(i, i + 100));
     if (uErr) throw new Error(`flip failed: ${uErr.message}`);
   }
 
   // Verify by id too — same Seq Scan reason as the flip above.
   let stillPublic = 0;
-  for (let i = 0; i < ids.length; i += 100) {
+  for (let i = 0; i < fresh.length; i += 100) {
     const { count, error: vErr } = await client
       .from("questions")
       .select("id", { count: "exact", head: true })
-      .in("id", ids.slice(i, i + 100))
+      .in("id", fresh.slice(i, i + 100))
       .eq("visibility", "PUBLIC");
     if (vErr) throw new Error(`could not VERIFY visibility: ${vErr.message}`);
     stillPublic += count ?? 0;
@@ -326,11 +339,11 @@ async function main() {
   if (stillPublic) {
     console.error(
       `\n!! ${stillPublic} row(s) are STILL PUBLIC. Unreviewed content is live. Run now:\n` +
-        `   update questions set visibility='PRIVATE', question_kind='pyq' where source_file='${src}';`
+        `   update questions set visibility='PRIVATE', question_kind='pyq' where id in ('${fresh.join("','")}');`
     );
     process.exit(1);
   }
-  console.log(`verified: 0 rows PUBLIC for ${src}.`);
+  console.log(`verified: 0 of the ${fresh.length} new row(s) PUBLIC for ${src}.`);
 }
 
 main().catch((e) => {

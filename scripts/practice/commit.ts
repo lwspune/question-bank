@@ -16,6 +16,7 @@ import { spawnSync } from "node:child_process";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { commitStaged } from "../../src/lib/upload/commit";
+import { privatizeNewRows, sourceFileIds } from "../lib/privatizeNewRows";
 import { buildRecords, parseAnswerKey, missingNumbers, findLatexImbalance, practiceNoteFromSourceFile, type TranscribedQuestion } from "./lib";
 import {
   ORG_ID,
@@ -145,6 +146,9 @@ async function main() {
   }
   console.log(`\nupload job: ${jobId}`);
 
+  // Ids before the commit: only rows this run inserts go PRIVATE (a re-commit
+  // into a published file must not hide it).
+  const before = await sourceFileIds(client, EXAM_ID, sourceFile);
   const result = await commitStaged(client, {
     orgId: ORG_ID,
     examId: EXAM_ID,
@@ -160,13 +164,7 @@ async function main() {
 
   // Re-stamp kind + visibility for every row of this source (idempotent). Practice
   // questions are PRIVATE pending review; question_kind keeps them off PYQ surfaces.
-  const { error: uErr, count } = await client
-    .from("questions")
-    .update({ visibility: "PRIVATE", question_kind: "practice" }, { count: "exact" })
-    .eq("exam_id", EXAM_ID)
-    .eq("source_file", sourceFile);
-  if (uErr) throw new Error(`kind/visibility update failed: ${uErr.message}`);
-  console.log(`set ${count} rows to PRIVATE + question_kind='practice'.`);
+  await privatizeNewRows(client, { examId: EXAM_ID, sourceFile: sourceFile, before, questionKind: "practice" });
 
   const { count: linked } = await client
     .from("questions")

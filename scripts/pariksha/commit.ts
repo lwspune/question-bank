@@ -17,6 +17,7 @@ import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { commitStaged } from "../../src/lib/upload/commit";
+import { privatizeNewRows, sourceFileIds } from "../lib/privatizeNewRows";
 import { validateRow } from "../../src/lib/upload/validate";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import { buildRecords, normalizeQuestions, validateRows } from "./lib";
@@ -128,14 +129,15 @@ async function main() {
   }
   console.log(`\nupload job: ${jobId}`);
 
+  // Ids before the commit: only rows this run inserts go PRIVATE (a re-commit
+  // into a published file must not hide it).
+  const before = await sourceFileIds(client, EXAM_ID, test.sourceFile);
   const result = await commitStaged(client, { orgId: ORG_ID, examId: EXAM_ID, filename: test.sourceFile, createdBy: CREATED_BY, rows: parsed, uploadJobId: jobId, pyqYear: null, pyqNote: test.note });
   console.log(`commit: inserted=${result.inserted} skipped=${result.skipped} failed=${result.failed}`);
   for (const e of result.errors) console.log(`  err row ${e.sourceRow}: ${e.message}`);
 
   // Practice questions: PRIVATE pending review + question_kind='practice' (keeps them off PYQ surfaces).
-  const { error: uErr, count } = await client.from("questions").update({ visibility: "PRIVATE", question_kind: "practice" }, { count: "exact" }).eq("exam_id", EXAM_ID).eq("source_file", test.sourceFile);
-  if (uErr) throw new Error(`kind/visibility update failed: ${uErr.message}`);
-  console.log(`set ${count} rows to PRIVATE + question_kind='practice'.`);
+  await privatizeNewRows(client, { examId: EXAM_ID, sourceFile: test.sourceFile, before, questionKind: "practice" });
 
   const { count: linked } = await client.from("questions").select("id", { count: "exact", head: true }).eq("exam_id", EXAM_ID).eq("source_file", test.sourceFile);
   await client.from("upload_jobs").update({ status: "COMPLETED", total_rows: linked ?? 0, inserted: result.inserted, skipped: result.skipped, finished_at: new Date().toISOString() }).eq("id", jobId);

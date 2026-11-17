@@ -22,6 +22,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { commitStaged } from "../../src/lib/upload/commit";
+import { privatizeNewRows, sourceFileIds } from "../lib/privatizeNewRows";
 import { buildPyqRecords, groupBySitting, type PyqQuestion } from "./lib";
 import { ORG_ID, EXAM_ID, CREATED_BY, CHAPTERS, requireChapter, questionsJsonPath } from "./config";
 
@@ -112,6 +113,8 @@ async function main() {
   }
   console.log(`\nupload job: ${jobId}`);
 
+  // Ids before the commit: only rows this run inserts go PRIVATE.
+  const before = await sourceFileIds(client, EXAM_ID, ch.sourceFile);
   let inserted = 0, skipped = 0, failed = 0;
   for (const g of built) {
     const r = await commitStaged(client, {
@@ -125,11 +128,8 @@ async function main() {
   }
   console.log(`commit total: inserted=${inserted} skipped=${skipped} failed=${failed}`);
 
-  const { error: uErr, count } = await client.from("questions")
-    .update({ visibility: "PRIVATE", question_kind: "pyq" }, { count: "exact" })
-    .eq("exam_id", EXAM_ID).eq("source_file", ch.sourceFile);
-  if (uErr) throw new Error(`kind/visibility update failed: ${uErr.message}`);
-  console.log(`set ${count} rows to PRIVATE + question_kind='pyq'.`);
+  const vis = await privatizeNewRows(client, { examId: EXAM_ID, sourceFile: ch.sourceFile, before, questionKind: "pyq" });
+  const count = vis.inserted + vis.existing;
 
   // THE OTHER WAY A ROW DISAPPEARS, and until 2026-09-10 nothing reported it.
   //
