@@ -1,0 +1,247 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "b7c36772-6c03-4c36-9ad0-a50ec78ce31d",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "a = 0.50\\ \\text{m/s}^2,\\quad t = 40\\ \\text{s}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "v = at = 0.50 \\times 40 = {{1:20}}\\ \\text{m/s}",
+              "f": "0.5*40",
+              "value": "20"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "t_2 = 2.0\\ \\text{min} = 120\\ \\text{s}"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "d = {{1:20}} \\times 120 = 2400\\ \\text{m}",
+              "f": "20*120",
+              "value": "2400"
+            }
+          ],
+          "answer": "20"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "bb82f925",
+        "answer": {
+          "value": 20,
+          "label": "20 m/s; 2400 m"
+        }
+      }
+    },
+    {
+      "id": "dfe6e553-baca-4818-864f-0f362c60f681",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "0.25\\ \\text{mm} = {{1:250}}\\ \\mu\\text{m}",
+              "f": "0.25*1000",
+              "value": "250"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2.8 \\times 10^{-4}\\ \\text{m} = {{2:280}}\\ \\mu\\text{m}",
+              "f": "2.8*10^(-4)*10^6",
+              "value": "280"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "300\\ \\mu\\text{m}",
+              "note": "already in micrometres"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "{{1:250}} < {{2:280}} < 300",
+              "f": "250",
+              "value": "250",
+              "note": "narrowest to widest"
+            }
+          ],
+          "answer": "280"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "5d15f240",
+        "answer": {
+          "value": 280,
+          "label": "0.25 mm, 2.8×10⁻⁴ m, 300 µm"
+        }
+      }
+    },
+    {
+      "id": "953f8aef-cea3-4d7f-a140-d407e39399d6",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "x(t) = 4\\cos(2\\pi t)",
+              "f": "4*cos(2*pi*x)"
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "v(t) = -4\\omega\\sin(\\omega t) = -8\\pi\\sin(2\\pi t)",
+              "f": "-8*pi*sin(2*pi*x)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\omega t^* = 2\\pi \\times \\tfrac{1}{2} = {{1:\\pi}}",
+              "f": "2*pi*0.5",
+              "value": "pi"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "v = -8\\pi\\sin({{1:\\pi}}) = 0\\ \\text{m/s}",
+              "f": "-8*pi*sin(pi)",
+              "value": "0"
+            }
+          ],
+          "answer": "0"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "dcd6c4bd",
+        "answer": {
+          "value": 0,
+          "label": "0 m/s"
+        }
+      }
+    },
+    {
+      "id": "a0cd0147-f967-48d1-9103-d8aac2b54203",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "T = 2\\pi\\sqrt{L/g},\\quad L = 0.25,\\ g = 10,\\ \\pi^2 = 10"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "T^2 = \\dfrac{4 \\times 10 \\times 0.25}{10} = {{1:1.0}}",
+              "f": "4*10*0.25/10",
+              "value": "1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "T = \\sqrt{{{1:1.0}}} = 1.0\\ \\text{s}",
+              "f": "sqrt(1)",
+              "value": "1"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\tfrac{T}{2} = \\tfrac{1.0}{2} = 0.50\\ \\text{s}",
+              "f": "1/2",
+              "value": "0.5",
+              "note": "one end to the other is half a swing"
+            }
+          ],
+          "answer": "0.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "99701701",
+        "answer": {
+          "value": 0.5,
+          "label": "0.50 s"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

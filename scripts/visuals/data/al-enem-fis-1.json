@@ -1,0 +1,611 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "4dd342a5-f30f-45b9-8a76-02f659051a80",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "15 + 20 = 35\\ \\text{cm} = 0{,}35\\ \\text{m}",
+              "f": "(15+20)/100",
+              "value": "0.35",
+              "note": "diâmetro do feixe + espessura"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "v = 5{,}0\\ \\text{m/s}",
+              "note": "invasor mais rápido"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "t = \\dfrac{0{,}35}{5{,}0} = 0{,}07\\ \\text{s}",
+              "f": "0.35/5",
+              "value": "0.07"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "0{,}07\\ \\text{s} = 70\\ \\text{ms}",
+              "f": "0.07*1000",
+              "value": "70"
+            }
+          ],
+          "answer": "70"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "91741ef8",
+        "answer": {
+          "value": 70,
+          "label": "70 ms"
+        }
+      }
+    },
+    {
+      "id": "98ad6c1d-5fb1-4887-a555-2c08952111da",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{480}{100} = 4{,}8\\ \\text{h} = 288\\ \\text{min}",
+              "f": "480/100*60",
+              "value": "288",
+              "note": "carro rodando"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "10 \\times 3 = 30\\ \\text{min}",
+              "f": "10*3",
+              "value": "30",
+              "note": "tempo nas cabines"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "288 + 30 = 318\\ \\text{min}",
+              "f": "288+30",
+              "value": "318",
+              "note": "tempo total do carro"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{480}{80} = 6\\ \\text{h} = 360\\ \\text{min}",
+              "f": "480/80*60",
+              "value": "360",
+              "note": "caminhão, cobrança automática"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "360 - 318 = 42\\ \\text{min}",
+              "f": "360-318",
+              "value": "42"
+            }
+          ],
+          "answer": "42"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "ce78b301",
+        "answer": {
+          "value": 42,
+          "label": "42 min"
+        }
+      }
+    },
+    {
+      "id": "c9fc80f1-c2c9-4bbe-9467-23446804105e",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "v_n = 50,\\quad v_c = 30\\ \\text{m/min}",
+              "note": "nadador e corrente"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\sqrt{50^{2} - 30^{2}} = 40\\ \\text{m/min}",
+              "f": "sqrt(50^2-30^2)",
+              "value": "40",
+              "note": "componente ao longo do lado"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{800}{40} = 20\\ \\text{min}",
+              "f": "800/40",
+              "value": "20",
+              "note": "cada lado longo"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "2 \\times 20 = 40\\ \\text{min}",
+              "f": "2*20",
+              "value": "40"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\dfrac{400}{50-30} = 20\\ \\text{min}",
+              "f": "400/(50-30)",
+              "value": "20",
+              "note": "contra a corrente"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\dfrac{400}{50+30} = 5\\ \\text{min}",
+              "f": "400/(50+30)",
+              "value": "5",
+              "note": "a favor da corrente"
+            },
+            {
+              "step": "s7",
+              "kind": "calc",
+              "tex": "40 + 20 + 5 = 65\\ \\text{min}",
+              "f": "40+20+5",
+              "value": "65"
+            }
+          ],
+          "answer": "65"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "f15bf2f5",
+        "answer": {
+          "value": 65,
+          "label": "65 min"
+        }
+      }
+    },
+    {
+      "id": "dd86d814-ea28-45c5-a502-7c4eed77f5e3",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{20}{0{,}1} = 200\\ \\text{km/h}",
+              "f": "20/0.1",
+              "value": "200",
+              "note": "solo: Leste e Norte"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{0{,}1} = 10\\ \\text{km/h}",
+              "f": "1/0.1",
+              "value": "10",
+              "note": "solo: vertical, para cima"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "200 - 30 = 170\\ \\text{km/h}",
+              "f": "200-30",
+              "value": "170",
+              "note": "Leste: solo menos vento"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "200 - (-20) = 220\\ \\text{km/h}",
+              "f": "200-(-20)",
+              "value": "220",
+              "note": "Norte"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "10 - (-1) = 11\\ \\text{km/h}",
+              "f": "10-(-1)",
+              "value": "11",
+              "note": "vertical, para cima"
+            }
+          ],
+          "answer": "170"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "9eaaf88f",
+        "answer": {
+          "value": 170,
+          "label": "170 Leste; 220 Norte; 11 cima"
+        }
+      }
+    },
+    {
+      "id": "f3b1edb1-e9f5-4333-9ede-b7be9a44ba69",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "v_x = 0{,}6\\,v_0,\\quad v_y = 0{,}8\\,v_0",
+              "note": "componentes com θ = 53°"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "t = \\dfrac{120}{0{,}6\\,v_0} = \\dfrac{200}{v_0}",
+              "note": "120 m na horizontal"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "0{,}8 \\cdot 200 = 160",
+              "f": "0.8*200",
+              "value": "160",
+              "note": "v_y · t, sem o termo de g"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "v_0^{2} = \\dfrac{200\\,000}{160 - 35} = 1\\,600",
+              "f": "200000/(160-35)",
+              "value": "1600",
+              "note": "altura de 35 m acima de B"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "v_0 = \\sqrt{1\\,600} = 40\\ \\text{m/s}",
+              "f": "sqrt(1600)",
+              "value": "40"
+            }
+          ],
+          "answer": "40"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "97a2d046",
+        "answer": {
+          "value": 40,
+          "label": "40 m/s"
+        }
+      }
+    },
+    {
+      "id": "0bb90d57-2333-4395-aa8a-0d1ac7f74b23",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "T_{total} - mg = \\dfrac{m v^{2}}{L} = 2mg",
+              "note": "ponto mais baixo, v² = 2gL"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "T_{total} = 3mg = 3 \\cdot 24 \\cdot 10 = 720\\ \\text{N}",
+              "f": "3*24*10",
+              "value": "720"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{720}{2} = 360\\ \\text{N}",
+              "f": "720/2",
+              "value": "360",
+              "note": "dois segmentos de corda"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "1{,}25 \\cdot 360 = 450\\ \\text{N}",
+              "f": "1.25*360",
+              "value": "450",
+              "note": "margem de 25%"
+            }
+          ],
+          "answer": "450"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "3864eef5",
+        "answer": {
+          "value": 450,
+          "label": "450 N"
+        }
+      }
+    },
+    {
+      "id": "a29ff968-a4a7-483f-a6c7-2b7193f3d8b0",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "f = \\mu M g = 0{,}2 \\cdot 200 \\cdot 10 = 400\\ \\text{N}",
+              "f": "0.2*200*10",
+              "value": "400",
+              "note": "atrito estático máximo"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "F = Ma = 200 \\cdot 3 = 600\\ \\text{N}",
+              "f": "200*3",
+              "value": "600",
+              "note": "aceleração: força necessária"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "T_2 = 600 - 400 = 200\\ \\text{N}",
+              "f": "600-400",
+              "value": "200",
+              "note": "corda 2; T₁ = 0"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "F = 200 \\cdot 5 = 1\\,000\\ \\text{N}",
+              "f": "200*5",
+              "value": "1000",
+              "note": "frenagem: força necessária"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "T_1 = 1\\,000 - 400 = 600\\ \\text{N}",
+              "f": "1000-400",
+              "value": "600",
+              "note": "corda 1; T₂ = 0"
+            }
+          ],
+          "answer": "200"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "caec0a3e",
+        "answer": {
+          "value": 200,
+          "label": "acel.: T₂ = 200; fren.: T₁ = 600"
+        }
+      }
+    },
+    {
+      "id": "fafdb657-80c5-4cc1-a269-e12cb185e274",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "F = M_1\\,g",
+              "f": "F",
+              "value": "M1*g",
+              "note": "tipo 1: só polias fixas"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2F = M_2\\,g",
+              "f": "2*F",
+              "value": "M2*g",
+              "note": "tipo 2: polia móvel, dois trechos"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{M_2}{M_1} = 2",
+              "f": "M2/M1",
+              "value": "2"
+            }
+          ],
+          "answer": "M2/M1",
+          "vars": {
+            "M1": "2",
+            "g": "10",
+            "F": "M1*g",
+            "M2": "2*F/g"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c29c7eff",
+        "answer": {
+          "value": 2,
+          "label": "M₂/M₁ = 2"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

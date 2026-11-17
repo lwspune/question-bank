@@ -1,0 +1,226 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "5e78941c-03a4-455f-a23c-433c51da565f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "tm": "9000/(250+150)",
+            "dA": "250*tm",
+            "fr": "dA/9000"
+          },
+          "view": {
+            "x": [
+              -0.1,
+              1.1
+            ],
+            "y": [
+              -0.55,
+              0.45
+            ]
+          },
+          "points": {
+            "T1": [
+              0,
+              0
+            ],
+            "C1": [
+              0.2,
+              0
+            ],
+            "C2": [
+              0.5,
+              0
+            ],
+            "C3": [
+              0.6,
+              0
+            ],
+            "C4": [
+              0.7,
+              0
+            ],
+            "T2": [
+              1,
+              0
+            ],
+            "P": [
+              "fr",
+              0
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": "T1",
+              "to": "T2",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -0.08,
+                0.12
+              ],
+              "text": "Terminal 1",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.86,
+                0.12
+              ],
+              "text": "Terminal 2",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "P",
+              "step": "s1",
+              "label": "A e B: 0,625",
+              "pos": "n",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": "T1",
+              "to": "C1",
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "segment",
+              "from": "C1",
+              "to": "C2",
+              "step": "s2",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "C2",
+              "to": "C3",
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "segment",
+              "from": "C3",
+              "to": "C4",
+              "step": "s2",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "C4",
+              "to": "T2",
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.08,
+                -0.1
+              ],
+              "text": "I",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.33,
+                -0.1
+              ],
+              "text": "II",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.53,
+                -0.1
+              ],
+              "text": "III",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.63,
+                -0.1
+              ],
+              "text": "IV",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.83,
+                -0.1
+              ],
+              "text": "V",
+              "step": "s2"
+            },
+            {
+              "kind": "segment",
+              "from": "C3",
+              "to": "C4",
+              "step": "s3",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.1,
+                -0.35
+              ],
+              "text": "0,625 está na câmera IV (0,6 a 0,7)",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "tm = 22.5",
+            "dA = 5625",
+            "fr = 0.625",
+            "fr > 0.6",
+            "fr < 0.7"
+          ],
+          "answer": "fr"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "19bb3bdc",
+        "answer": {
+          "value": 0.625,
+          "label": "câmera IV (0,625)"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

@@ -1,0 +1,331 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "62c999ac-6fb0-4940-af99-71f89d46df28",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "dt1": "12-10",
+            "dt2": "20-16",
+            "tot": "dt1+dt2"
+          },
+          "view": {
+            "x": [
+              -2,
+              32
+            ],
+            "y": [
+              -12,
+              13
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "A": [
+              10,
+              0
+            ],
+            "B": [
+              12,
+              0
+            ],
+            "C": [
+              16,
+              0
+            ],
+            "D": [
+              20,
+              0
+            ],
+            "E": [
+              30,
+              0
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "E",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "O",
+              "step": "s1",
+              "label": "0",
+              "pos": "s"
+            },
+            {
+              "kind": "point",
+              "at": "E",
+              "step": "s1",
+              "label": "30 min",
+              "pos": "s"
+            },
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "B",
+              "step": "s2",
+              "tone": "bad"
+            },
+            {
+              "kind": "point",
+              "at": "A",
+              "step": "s2",
+              "label": "10",
+              "pos": "s"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s2",
+              "label": "12",
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                8.5,
+                3.5
+              ],
+              "text": "{dt1} min",
+              "step": "s2",
+              "tone": "bad"
+            },
+            {
+              "kind": "segment",
+              "from": "C",
+              "to": "D",
+              "step": "s3",
+              "tone": "bad"
+            },
+            {
+              "kind": "point",
+              "at": "C",
+              "step": "s3",
+              "label": "16",
+              "pos": "s"
+            },
+            {
+              "kind": "point",
+              "at": "D",
+              "step": "s3",
+              "label": "20",
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                16.5,
+                3.5
+              ],
+              "text": "{dt2} min",
+              "step": "s3",
+              "tone": "bad"
+            },
+            {
+              "kind": "label",
+              "at": [
+                7,
+                -8
+              ],
+              "text": "sem sinal: {tot} min",
+              "step": "s4",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "dt1 = 2",
+            "dt2 = 4",
+            "tot = 6"
+          ],
+          "answer": "tot"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "e7904a71",
+        "answer": {
+          "value": 6,
+          "label": "6 min"
+        }
+      }
+    },
+    {
+      "id": "8755783d-a8d6-42f6-8f10-525dd100af34",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "r": "3",
+            "th": "1",
+            "qx": "r*cos(th)",
+            "qy": "r*sin(th)",
+            "dg": "deg(th)"
+          },
+          "view": {
+            "x": [
+              -1,
+              5
+            ],
+            "y": [
+              -0.6,
+              3.9
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "P": [
+              "r",
+              0
+            ],
+            "Q": [
+              "qx",
+              "qy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "point",
+              "at": "O",
+              "step": "s1",
+              "label": "base",
+              "pos": "sw"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "P",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.2,
+                -0.35
+              ],
+              "text": "reta: 3 km",
+              "step": "s1"
+            },
+            {
+              "kind": "arc",
+              "center": "O",
+              "r": "r",
+              "from": 0,
+              "to": "dg",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.2,
+                1.5
+              ],
+              "text": "arco: 3 km",
+              "step": "s2"
+            },
+            {
+              "kind": "segment",
+              "from": "Q",
+              "to": "O",
+              "step": "s3",
+              "tone": "brand"
+            },
+            {
+              "kind": "point",
+              "at": "Q",
+              "step": "s3"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "O",
+                "P",
+                "Q"
+              ],
+              "step": "s4",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -0.9,
+                3.6
+              ],
+              "text": "setor circular: raio, arco, raio",
+              "step": "s4",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "qx^2 + qy^2 = r^2",
+            "r*th = 3"
+          ],
+          "answer": "r"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "836eafbc",
+        "answer": {
+          "value": 3,
+          "label": "setor circular (A)"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

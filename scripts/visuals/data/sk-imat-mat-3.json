@@ -1,0 +1,138 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "dd0fe496-0ed1-4bc4-866d-46fa02147ff0",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "px": 6,
+            "qy": 8,
+            "cx": "px/2",
+            "cy": "qy/2",
+            "d": "sqrt(px^2+qy^2)",
+            "r": "d/2"
+          },
+          "view": {
+            "x": [
+              -3,
+              13
+            ],
+            "y": [
+              -2,
+              10
+            ]
+          },
+          "axes": true,
+          "points": {
+            "P": [
+              "px",
+              0
+            ],
+            "Q": [
+              0,
+              "qy"
+            ],
+            "C": [
+              "cx",
+              "cy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "line",
+              "through": [
+                "P",
+                "Q"
+              ],
+              "step": "s1",
+              "label": "x/6 + y/8 = 1",
+              "labelAt": [
+                8.6,
+                1.2
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "point",
+              "at": "P",
+              "step": "s1",
+              "label": "P(6, 0)",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "at": "Q",
+              "step": "s1",
+              "label": "Q(0, 8)",
+              "pos": "ne"
+            },
+            {
+              "kind": "label",
+              "at": [
+                7,
+                -1.1
+              ],
+              "text": "PQ = {d}",
+              "step": "s2"
+            },
+            {
+              "kind": "circle",
+              "center": "C",
+              "r": "r",
+              "step": "s3",
+              "tone": "brand"
+            },
+            {
+              "kind": "point",
+              "at": "C",
+              "step": "s3",
+              "label": "C(3, 4)",
+              "pos": "sw"
+            },
+            {
+              "kind": "label",
+              "at": [
+                8.5,
+                8.4
+              ],
+              "text": "radius = {r}",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "cx/px + cy/qy = 1",
+            "r*2 = d",
+            "d = 10"
+          ],
+          "answer": "r"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "427732cc",
+        "answer": {
+          "value": 5,
+          "label": "5"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

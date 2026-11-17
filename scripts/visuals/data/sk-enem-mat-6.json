@@ -1,0 +1,155 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "b4e0d550-0b39-4223-9932-71000905ff5d",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "R": "16",
+            "gap": "1",
+            "side": "2*R+2*gap",
+            "half": "side/2",
+            "orig": "14",
+            "diff": "side-orig"
+          },
+          "view": {
+            "x": [
+              -40,
+              40
+            ],
+            "y": [
+              -34,
+              26
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "L": [
+              "-R",
+              0
+            ],
+            "Rr": [
+              "R",
+              0
+            ],
+            "P1": [
+              "-half",
+              "-half"
+            ],
+            "P2": [
+              "half",
+              "-half"
+            ],
+            "P3": [
+              "half",
+              "half"
+            ],
+            "P4": [
+              "-half",
+              "half"
+            ]
+          },
+          "items": [
+            {
+              "kind": "circle",
+              "center": "O",
+              "r": "R",
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": "L",
+              "to": "Rr",
+              "step": "s1",
+              "label": "diâmetro = 32 cm",
+              "labelAt": [
+                0,
+                3
+              ],
+              "pos": "n"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "P1",
+                "P2",
+                "P3",
+                "P4"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -30,
+                -24
+              ],
+              "text": "folga de 1 cm de cada lado",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -30,
+                -28
+              ],
+              "text": "lado = 32 + 2 = 34 cm",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -30,
+                -32
+              ],
+              "text": "34 − 14 = 20 cm a mais",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "side = 34",
+            "R*2 = 32",
+            "diff = 20",
+            "half - R = gap"
+          ],
+          "answer": "diff"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "496f970d",
+        "answer": {
+          "value": 20,
+          "label": "20 cm"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

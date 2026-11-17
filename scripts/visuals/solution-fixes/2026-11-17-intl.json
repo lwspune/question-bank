@@ -1,0 +1,20 @@
+[
+ {
+  "id": "d20bd112-0104-4eb9-9fa2-643c6e091f66",
+  "before": "50d8e2ea",
+  "solution": "Do gráfico: \\(10\\) motoristas com 1 viagem, \\(10\\) com 2, \\(55\\) com 3, \\(25\\) com 4, nenhum com 5, \\(50\\) com 6 e \\(10\\) com 7 (total \\(160\\)). A moda é \\(3\\). A mediana é a média do 80º e do 81º valores; as frequências acumuladas são \\(10, 20, 75, 100\\), então ambos valem \\(4\\) e a mediana é \\(4\\). A média é \\(\\frac{10 + 20 + 165 + 100 + 300 + 70}{160} = \\frac{665}{160} \\approx 4{,}16\\). Logo, moda \\(<\\) mediana \\(<\\) média.",
+  "note": "the terms 10+20+165+100+300+70 add to 665, not 655; mean 4,16 (key E unchanged: moda 3 < mediana 4 < média)"
+ },
+ {
+  "id": "9dd36024-9401-4637-a405-3ae85d241de1",
+  "before": "c32ce105",
+  "solution": "O valor financiado total é \\(1\\,500 \\times 1{,}2 = 1\\,800\\), em três parcelas de \\(600\\). Pagando \\(600\\) no ato, o cliente financia \\(1\\,500 - 600 = 900\\), quitados por duas parcelas de \\(600\\): \\(900 = \\frac{600}{1+i} + \\frac{600}{(1+i)^{2}}\\). Com \\(x = \\frac{1}{1+i}\\): \\(2x^{2} + 2x - 3 = 0\\), donde \\(x = \\frac{-2 + \\sqrt{28}}{4} = \\frac{3{,}2915}{4} \\approx 0{,}8229\\). Assim, \\(1 + i \\approx 1{,}215\\) e \\(i \\approx 21{,}5\\%\\) ao mês; a opção C (\\(20\\%\\)) é só o acréscimo nominal, sem considerar o tempo.",
+  "note": "rounding: (sqrt(28) - 2)/4 = 0,8229, so 1 + i = 1,215 and i = 21,5% (key D); 0,8225 gave 1,216, i.e. 21,6%"
+ },
+ {
+  "id": "79315bba-1889-4147-91b3-2efc32791310",
+  "before": "c604bc07",
+  "solution": "O volume do cilindro é \\(\\pi \\cdot 4^{2} \\cdot 50 = 800\\pi\\ \\text{cm}^{3}\\). Cada esfera tem raio \\(0,5\\) cm e volume \\(\\frac{4}{3}\\pi (0,5)^{3} = \\frac{\\pi}{6}\\ \\text{cm}^{3}\\). O número de esferas é \\(\\frac{800\\pi}{\\pi/6} = 4\\,800\\). Usar \\(r^{2}\\) em vez de \\(r^{3}\\) no volume da esfera daria \\(\\frac{800\\pi}{\\pi/3} = 2\\,400\\) (opção C).",
+  "note": "the trap named was false: radius 1 cm gives 600, not 1 200 (B); r² for r³ gives 2 400 (C). cm³ moved into LaTeX (the solutions check refuses Unicode maths)"
+ }
+]

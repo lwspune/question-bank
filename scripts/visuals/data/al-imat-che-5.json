@@ -1,0 +1,226 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "31c27da7-d338-41bf-a8e8-0b88d988d790",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{acidic: SO}_3,\\ \\text{CO}_2,\\ \\text{P}_4\\text{O}_{10} = {{1:3}}",
+              "f": "1+1+1",
+              "value": "3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{amphoteric: ZnO, Al}_2\\text{O}_3 = {{2:2}}",
+              "f": "1+1",
+              "value": "2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{basic: Na}_2\\text{O, CaO} = {{3:2}}",
+              "f": "1+1",
+              "value": "2"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "3 + 2 + 2 = 7\\ \\text{oxides}",
+              "f": "3+2+2",
+              "value": "7",
+              "note": "all seven oxides are placed"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "59cff5e1",
+        "answer": {
+          "value": 3,
+          "label": "acidic 3; amphoteric 2; basic 2"
+        }
+      }
+    },
+    {
+      "id": "e875e976-ca01-43b3-8a02-121fab173bdf",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Ca}^{2+}\\ \\text{needs total charge } 2-"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{NO}_3^-:\\ 1\\times {{1:2}} = 2",
+              "f": "1*2",
+              "value": "2",
+              "note": "two nitrates balance one calcium"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{PO}_4^{3-}:\\ 3\\times 2 = 2\\times 3 = 6",
+              "f": "3*2",
+              "value": "6",
+              "note": "3 Ca balance 2 phosphates"
+            }
+          ],
+          "answer": "2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "219d5be0",
+        "answer": {
+          "value": 2,
+          "label": "Ca(NO₃)₂, so CaNO₃ is wrong"
+        }
+      }
+    },
+    {
+      "id": "471b0bbb-8bf2-4fa6-97cb-4ae61aaee768",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{C}_3\\text{H}_6\\text{O}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{H if saturated} = 2(3)+2 = 8",
+              "f": "2*3+2",
+              "value": "8"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{unsaturation} = (8-6)/2 = 1",
+              "f": "(8-6)/2",
+              "value": "1",
+              "note": "one C=C, C=O or ring"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "468a21d6",
+        "answer": {
+          "value": 1,
+          "label": "one degree of unsaturation"
+        }
+      }
+    },
+    {
+      "id": "6970728d-cb77-403a-9f93-0df3da52e04b",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{C: } 6 - 0 + 1 = {{1:7}}",
+              "f": "6+1",
+              "value": "7"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{H: } 6 - 1 + 3 = {{2:8}}",
+              "f": "6-1+3",
+              "value": "8",
+              "note": "one H of the ring is replaced"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{O: } 0 + 1 = {{3:1}}",
+              "f": "0+1",
+              "value": "1"
+            }
+          ],
+          "answer": "7"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a8353253",
+        "answer": {
+          "value": 7,
+          "label": "C₇H₈O"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

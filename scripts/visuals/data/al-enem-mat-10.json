@@ -1,0 +1,1098 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "de7c7007-c474-42b6-86de-534a0bc2cddf",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Todas completas: R\\$ }35{,}00\\text{ cada}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "8\\cdot 35 = 280 < 300",
+              "f": "8*35",
+              "value": "280",
+              "note": "insuficiente"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "9\\cdot 35 = 315 \\geq 300",
+              "f": "9*35",
+              "value": "315",
+              "note": "atinge R$ 300,00"
+            }
+          ],
+          "answer": "9"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "87f64ab4",
+        "answer": {
+          "value": 9,
+          "label": "9 lavagens"
+        }
+      }
+    },
+    {
+      "id": "f75b1693-80ea-471b-bb75-e05d5de8dc9f",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{chegadas na região }j = \\text{coluna }j"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "1:\\ 0+0+2+1+1 = 4",
+              "f": "0+0+2+1+1",
+              "value": "4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2:\\ 4+0+2+0+2 = 8",
+              "f": "4+0+2+0+2",
+              "value": "8"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "3:\\ 2+6+0+2+0 = 10",
+              "f": "2+6+0+2+0",
+              "value": "10"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "4:\\ 2+2+3+0+4 = 11",
+              "f": "2+2+3+0+4",
+              "value": "11"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "5:\\ 5+3+0+4+0 = 12",
+              "f": "5+3+0+4+0",
+              "value": "12",
+              "note": "maior fluxo de chegada"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{região }5",
+              "f": "max(max(4,8),max(max(10,11),12))-7",
+              "value": "5"
+            }
+          ],
+          "answer": "5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "1e3a3f2f",
+        "answer": {
+          "value": 5,
+          "label": "Região 5"
+        }
+      }
+    },
+    {
+      "id": "f8ecadf3-5b3f-40b4-88a2-882202e1a1bd",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{tempo} = \\text{pessoas}\\times\\text{minutos}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{I: }5\\cdot12 = 60",
+              "f": "5*12",
+              "value": "60"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{II: }9\\cdot6 = 54",
+              "f": "9*6",
+              "value": "54"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{III: }6\\cdot5 = 30",
+              "f": "6*5",
+              "value": "30"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{IV: }2\\cdot15 = 30",
+              "f": "2*15",
+              "value": "30"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{V: }3\\cdot9 = 27",
+              "f": "3*9",
+              "value": "27",
+              "note": "menor tempo: caixa V"
+            }
+          ],
+          "answer": "3*9"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "523bec94",
+        "answer": {
+          "value": 27,
+          "label": "caixa V (27 min)"
+        }
+      }
+    },
+    {
+      "id": "00e65361-3db6-4898-ba9e-9785e7fa2e3c",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{maior altitude na tela} = 1\\text{ cm}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "5\\text{ km} = 5\\cdot100\\,000 = 500\\,000\\text{ cm}",
+              "f": "5*100000",
+              "value": "500000"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{escala} = 1 : 500\\,000",
+              "f": "500000/1",
+              "value": "500000",
+              "note": "1 cm na tela para 5 km reais"
+            }
+          ],
+          "answer": "500000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "26d601b5",
+        "answer": {
+          "value": 500000,
+          "label": "1 : 500.000"
+        }
+      }
+    },
+    {
+      "id": "05faeed4-72da-453b-bde4-53a4b4e58e57",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "d(R) = \\dfrac{N}{A}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "d(Q) = \\dfrac{N/2}{3A/4}",
+              "f": "(N/2)/(3*A/4)",
+              "value": "(1/2)*(4/3)*N/A"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "d(Q) = \\dfrac{1}{2}\\cdot\\dfrac{4}{3}\\cdot\\dfrac{N}{A}",
+              "f": "(1/2)*(4/3)*N/A",
+              "value": "(2/3)*N/A"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "d(Q) = \\dfrac{2}{3}\\,d(R)",
+              "f": "(2/3)*N/A",
+              "value": "(2/3)*(N/A)"
+            }
+          ],
+          "answer": "((N/2)/(3*A/4))/(N/A)",
+          "vars": {
+            "N": "120",
+            "A": "15"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "71f5784d",
+        "answer": {
+          "value": 0.6666666666666666,
+          "label": "d(Q) = 2/3 d(R)"
+        }
+      }
+    },
+    {
+      "id": "165e2f25-31af-4116-89ec-e8fd0b2c6c3e",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "R_E = \\dfrac{R_F}{2},\\quad T_E = 2T_F"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "L_E = c\\left(\\dfrac{R_F}{2}\\right)^2(2T_F)^4",
+              "f": "c*(R/2)^2*(2*T)^4",
+              "value": "c*R^2/4*16*T^4"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "L_E = c\\,\\dfrac{R_F^2}{4}\\cdot16\\,T_F^4",
+              "f": "c*R^2/4*16*T^4",
+              "value": "4*c*R^2*T^4"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "L_E = 4\\,c\\,R_F^2T_F^4 = 4L_F",
+              "f": "4*c*R^2*T^4",
+              "value": "4*(c*R^2*T^4)"
+            }
+          ],
+          "answer": "(c*(R/2)^2*(2*T)^4)/(c*R^2*T^4)",
+          "vars": {
+            "c": "1.5",
+            "R": "2",
+            "T": "3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "bc4e7c2a",
+        "answer": {
+          "value": 4,
+          "label": "L_E = 4 L_F"
+        }
+      }
+    },
+    {
+      "id": "246a5aab-7b01-4c45-a89f-eb64ea37450f",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "38{,}4\\text{ m} = 3\\,840\\text{ cm}",
+              "f": "38.4*100",
+              "value": "3840"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "1{,}68\\text{ m} = 168\\text{ cm}",
+              "f": "1.68*100",
+              "value": "168"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{160}{3\\,840} = \\dfrac{1}{24}",
+              "f": "160/3840",
+              "value": "1/24"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{7}{168} = \\dfrac{1}{24}",
+              "f": "7/168",
+              "value": "1/24",
+              "note": "as duas medidas dão 1 : 24"
+            }
+          ],
+          "answer": "3840/160"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "d7d47ab5",
+        "answer": {
+          "value": 24,
+          "label": "1 : 24"
+        }
+      }
+    },
+    {
+      "id": "2c699b4c-15c7-4278-b8fe-8dd1ed21a27b",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{20}{16} = 1{,}25\\text{ L}",
+              "f": "20/16",
+              "value": "1.25"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "1{,}25 - 0{,}1 = 1{,}15\\text{ L}",
+              "f": "1.25-0.1",
+              "value": "1.15"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{20}{1{,}15} \\approx 17{,}39",
+              "f": "20/1.15",
+              "value": "17.39",
+              "dp": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{desempenho} \\approx 17{,}4\\text{ km/L}",
+              "f": "20/1.15",
+              "value": "17.4",
+              "dp": 1
+            }
+          ],
+          "answer": "floor(10*20/1.15+0.5)/10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "03f6d644",
+        "answer": {
+          "value": 17.4,
+          "label": "17,4 km/L"
+        }
+      }
+    },
+    {
+      "id": "4c499762-97f4-4617-92ba-c4e8d05b0c5a",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "30\\times7 = 210\\text{ km}",
+              "f": "30*7",
+              "value": "210"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{210}{13} \\approx 16{,}15\\text{ m}^3",
+              "f": "210/13",
+              "value": "16.15",
+              "dp": 2,
+              "note": "capacidade mínima do cilindro"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "14 < 16{,}15 \\Rightarrow \\text{não basta}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{cilindro escolhido: }17\\text{ m}^3",
+              "f": "17",
+              "value": "17"
+            }
+          ],
+          "answer": "17"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "91fe359f",
+        "answer": {
+          "value": 17,
+          "label": "17 m³"
+        }
+      }
+    },
+    {
+      "id": "51c82220-f4dc-4cd3-804d-e1ca2ad9a709",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2\\cdot30 = 60\\text{ g por dia}",
+              "f": "2*30",
+              "value": "60"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "60\\cdot30 = 1\\,800\\text{ g}",
+              "f": "60*30",
+              "value": "1800"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "18\\cdot15 = 270\\text{ g por pacote}",
+              "f": "18*15",
+              "value": "270"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{1\\,800}{270} \\approx 6{,}67",
+              "f": "1800/270",
+              "value": "6.67",
+              "dp": 2,
+              "note": "6 pacotes não bastam"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{no mínimo }7\\text{ pacotes}",
+              "f": "floor(1800/270)+1",
+              "value": "7"
+            }
+          ],
+          "answer": "floor(1800/270)+1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "19415a48",
+        "answer": {
+          "value": 7,
+          "label": "7 pacotes"
+        }
+      }
+    },
+    {
+      "id": "5aaa1e2e-4db9-44ac-a8fa-f4f6aa7c78ea",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "20\\times52 = 1\\,040\\text{ anos Haab}",
+              "f": "20*52",
+              "value": "1040"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "1\\,040\\times365 = 379\\,600\\text{ dias}",
+              "f": "1040*365",
+              "value": "379600"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{379\\,600}{260} = 1\\,460",
+              "f": "379600/260",
+              "value": "1460"
+            }
+          ],
+          "answer": "379600/260"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "4b725a41",
+        "answer": {
+          "value": 1460,
+          "label": "1.460 anos Tzolkim"
+        }
+      }
+    },
+    {
+      "id": "688faba6-392d-4638-8676-1b32e5ee029f",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "3{,}8\\times50 = 190\\text{ cm}",
+              "f": "3.8*50",
+              "value": "190"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "1{,}6\\times50 = 80\\text{ cm}",
+              "f": "1.6*50",
+              "value": "80"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "190 - 10 = 180\\text{ cm} = 1{,}80\\text{ m}",
+              "f": "(190-10)/100",
+              "value": "1.8",
+              "note": "10 cm em cima"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "80 - 2\\cdot10 = 60\\text{ cm} = 0{,}60\\text{ m}",
+              "f": "(80-20)/100",
+              "value": "0.6",
+              "note": "10 cm em cada lateral"
+            }
+          ],
+          "answer": "(190-10)/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "75da42ac",
+        "answer": {
+          "value": 1.8,
+          "label": "1,80 m e 0,60 m"
+        }
+      }
+    },
+    {
+      "id": "71801cfd-e480-4827-81b6-d4449b8b88f8",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{2\\,500\\,000}{6\\,000} = \\dfrac{1\\,250}{3}\\text{ min}",
+              "f": "2500000/6000",
+              "value": "1250/3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "1{,}2\\times\\dfrac{1\\,250}{3} = 500\\text{ min}",
+              "f": "1.2*1250/3",
+              "value": "500"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{2\\,750\\,000}{500} = 5\\,500\\text{ L/min}",
+              "f": "2750000/500",
+              "value": "5500"
+            }
+          ],
+          "answer": "2750000/500"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "4d22a058",
+        "answer": {
+          "value": 5500,
+          "label": "5.500 L/min"
+        }
+      }
+    },
+    {
+      "id": "829dfe60-b621-4815-8170-8938747c6319",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "30\\text{ m} = 3\\,000\\text{ cm}"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{desenho: }20\\text{ cm};\\ \\text{obra: }3\\,000\\text{ cm}",
+              "f": "30*100",
+              "value": "3000"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{20}{3\\,000} = \\dfrac{1}{150}",
+              "f": "20/3000",
+              "value": "1/150",
+              "note": "escala 1 : 150"
+            }
+          ],
+          "answer": "3000/20"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "58664777",
+        "answer": {
+          "value": 150,
+          "label": "1 : 150"
+        }
+      }
+    },
+    {
+      "id": "972cc9a6-e464-4ab1-91aa-33493f4e6e97",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "1{,}4\\,m = 1{,}7\\quad(140\\%\\text{ da massa perdida})"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "m = \\dfrac{1{,}7}{1{,}4} \\approx 1{,}214\\text{ kg}",
+              "f": "1.7/1.4",
+              "value": "1.214",
+              "dp": 3
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{1{,}214}{1{,}5} \\approx 0{,}81\\text{ h}",
+              "f": "1.7/1.4/1.5",
+              "value": "0.81",
+              "dp": 2
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "0{,}81\\text{ h} \\approx 48{,}6\\text{ min}",
+              "f": "1.7/1.4/1.5*60",
+              "value": "48.6",
+              "dp": 1,
+              "note": "entre 45 e 55 minutos"
+            }
+          ],
+          "answer": "1.7/1.4/1.5*60"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "f2bb1291",
+        "answer": {
+          "value": 48.57142857142858,
+          "label": "cerca de 48,6 min"
+        }
+      }
+    },
+    {
+      "id": "97569243-fdcb-49f2-8c34-d66d50106a1a",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "1 : 200^2 = 1 : 40\\,000",
+              "f": "200^2",
+              "value": "40000"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "1\\,672\\text{ m}^2 = 16\\,720\\,000\\text{ cm}^2",
+              "f": "1672*10000",
+              "value": "16720000"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{16\\,720\\,000}{40\\,000} = 418\\text{ cm}^2",
+              "f": "16720000/40000",
+              "value": "418"
+            }
+          ],
+          "answer": "16720000/40000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "7c923f30",
+        "answer": {
+          "value": 418,
+          "label": "418 cm²"
+        }
+      }
+    },
+    {
+      "id": "a205b3e8-925a-44bc-be34-b49c51017a24",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{720}{3\\times6} = 40\\text{ por hora}",
+              "f": "720/(3*6)",
+              "value": "40"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "5\\times9\\times40 = 1\\,800",
+              "f": "5*9*40",
+              "value": "1800"
+            }
+          ],
+          "answer": "5*9*40"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "25b0f418",
+        "answer": {
+          "value": 1800,
+          "label": "1.800 tijolos"
+        }
+      }
+    },
+    {
+      "id": "b90a673a-2579-4130-bea2-08457d1e0890",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{365}{2} = 182{,}5\\text{ dias terrestres}",
+              "f": "365/2",
+              "value": "182.5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{182{,}5}{73} = 2{,}5\\text{ dias de Z}",
+              "f": "182.5/73",
+              "value": "2.5"
+            }
+          ],
+          "answer": "182.5/73"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "8ec1c4cd",
+        "answer": {
+          "value": 2.5,
+          "label": "2,5 dias de Z"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

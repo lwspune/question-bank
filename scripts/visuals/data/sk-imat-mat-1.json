@@ -1,0 +1,767 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "1f43418d-4c5e-4810-a493-1844518fd6a0",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "xs": "1",
+            "xmin": "0"
+          },
+          "view": {
+            "x": [
+              -0.5,
+              4.5
+            ],
+            "y": [
+              -0.5,
+              3.5
+            ]
+          },
+          "axes": true,
+          "points": {
+            "P": [
+              "xs",
+              "sqrt(2*xs)"
+            ],
+            "Q": [
+              "xs",
+              "1+xs"
+            ],
+            "L1": [
+              0,
+              1
+            ],
+            "L2": [
+              2,
+              3
+            ]
+          },
+          "items": [
+            {
+              "kind": "curve",
+              "f": "sqrt(2*x)",
+              "x": [
+                0,
+                4.5
+              ],
+              "step": "s1",
+              "label": "y = √(2x)",
+              "labelAt": [
+                3.6,
+                1.9
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "line",
+              "through": [
+                "L1",
+                "L2"
+              ],
+              "step": "s1",
+              "label": "y = 1 + x",
+              "labelAt": [
+                0.2,
+                2.8
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "segment",
+              "from": "P",
+              "to": "Q",
+              "dash": true,
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.3,
+                0.5
+              ],
+              "text": "line stays above curve",
+              "step": "s2",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "1+xs > sqrt(2*xs)",
+            "2*xs < (1+xs)^2"
+          ],
+          "answer": "xmin"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "8e85455e",
+        "answer": {
+          "value": 0,
+          "label": "all x ≥ 0"
+        }
+      }
+    },
+    {
+      "id": "298f7091-dfb8-4d03-b2c0-f70b31ca68ea",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "lo": "-2",
+            "hi": "3"
+          },
+          "view": {
+            "x": [
+              -6,
+              6
+            ],
+            "y": [
+              -1.2,
+              3.4
+            ]
+          },
+          "items": [
+            {
+              "kind": "label",
+              "at": [
+                -5.7,
+                2.6999999999999997
+              ],
+              "text": "x² > 4",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                -5,
+                2.4
+              ],
+              "to": [
+                -2,
+                2.4
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                2,
+                2.4
+              ],
+              "to": [
+                5,
+                2.4
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -5.7,
+                1.8
+              ],
+              "text": "3 − x > 0",
+              "step": "s2"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                -5,
+                1.5
+              ],
+              "to": [
+                3,
+                1.5
+              ],
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -5.7,
+                0.8999999999999999
+              ],
+              "text": "both",
+              "step": "s3"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                -5,
+                0.6
+              ],
+              "to": [
+                -2,
+                0.6
+              ],
+              "step": "s3",
+              "tone": "good"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                2,
+                0.6
+              ],
+              "to": [
+                3,
+                0.6
+              ],
+              "step": "s3",
+              "tone": "good"
+            },
+            {
+              "kind": "point",
+              "at": [
+                -2,
+                0.6
+              ],
+              "label": "−2",
+              "pos": "s",
+              "step": "s3",
+              "tone": "good"
+            },
+            {
+              "kind": "point",
+              "at": [
+                2,
+                0.6
+              ],
+              "label": "2",
+              "pos": "s",
+              "step": "s3",
+              "tone": "good"
+            },
+            {
+              "kind": "point",
+              "at": [
+                3,
+                0.6
+              ],
+              "label": "3",
+              "pos": "s",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "lo^2 = 4",
+            "3 - hi = 0"
+          ],
+          "answer": "hi"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "7a0f0411",
+        "answer": {
+          "value": 3,
+          "label": "x < −2 or 2 < x < 3"
+        }
+      }
+    },
+    {
+      "id": "51e549a0-f275-4d17-8e73-2f5f240d39b1",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "xa": "1",
+            "xb": "5",
+            "vx": "3",
+            "vy": "-4"
+          },
+          "view": {
+            "x": [
+              -2,
+              8
+            ],
+            "y": [
+              -5,
+              8
+            ]
+          },
+          "axes": true,
+          "points": {
+            "A": [
+              "xa",
+              0
+            ],
+            "B": [
+              "xb",
+              0
+            ],
+            "V": [
+              "vx",
+              "vy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "curve",
+              "f": "x^2-6*x+5",
+              "x": [
+                -0.4,
+                6.4
+              ],
+              "step": "s1",
+              "label": "y = x² − 6x + 5",
+              "labelAt": [
+                6,
+                6
+              ],
+              "pos": "w"
+            },
+            {
+              "kind": "point",
+              "at": "A",
+              "step": "s1",
+              "label": "1",
+              "pos": "nw"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1",
+              "label": "5",
+              "pos": "ne"
+            },
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "B",
+              "step": "s2",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -1.8,
+                -3
+              ],
+              "text": "y ≤ 0 between 1 and 5",
+              "step": "s2",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "xa^2 - 6*xa + 5 = 0",
+            "xb^2 - 6*xb + 5 = 0",
+            "vx^2 - 6*vx + 5 = vy"
+          ],
+          "answer": "xa"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "96dfebfb",
+        "answer": {
+          "value": 1,
+          "label": "1 ≤ x ≤ 5"
+        }
+      }
+    },
+    {
+      "id": "c279624f-ac0a-487a-b215-47ade6afbb62",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "disc": "36-4*2*5",
+            "vx": "3/2",
+            "vy": "2*vx^2-6*vx+5"
+          },
+          "view": {
+            "x": [
+              -4.5,
+              5.5
+            ],
+            "y": [
+              -1.5,
+              5.5
+            ]
+          },
+          "axes": true,
+          "points": {
+            "V": [
+              "vx",
+              "vy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "curve",
+              "f": "2*x^2-6*x+5",
+              "x": [
+                -0.05,
+                3.05
+              ],
+              "step": "s1",
+              "label": "y = 2x² − 6x + 5",
+              "labelAt": [
+                3.6,
+                4.6
+              ],
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "at": "V",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -4.3,
+                3.8
+              ],
+              "text": "discriminant = {disc}",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.4,
+                -1.1
+              ],
+              "text": "so all real x",
+              "step": "s2",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "at": [
+                2.5,
+                1.2
+              ],
+              "text": "vertex (1.5, 0.5)",
+              "step": "s1"
+            }
+          ],
+          "assert": [
+            "disc < 0",
+            "vy > 0"
+          ],
+          "answer": "disc"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "2247536b",
+        "answer": {
+          "value": -4,
+          "label": "all real x"
+        }
+      }
+    },
+    {
+      "id": "e3fbcba0-f0a2-4cb0-a37a-0f52c5f6cee1",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "lo": "2",
+            "hi": "3"
+          },
+          "view": {
+            "x": [
+              -6,
+              6
+            ],
+            "y": [
+              -1.2,
+              3.4
+            ]
+          },
+          "items": [
+            {
+              "kind": "label",
+              "at": [
+                -5.7,
+                2.6999999999999997
+              ],
+              "text": "x² − 9 < 0",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                -3,
+                2.4
+              ],
+              "to": [
+                3,
+                2.4
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -5.7,
+                1.8
+              ],
+              "text": "3x − 2 ≥ 4",
+              "step": "s2"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                2,
+                1.5
+              ],
+              "to": [
+                5,
+                1.5
+              ],
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -5.7,
+                0.8999999999999999
+              ],
+              "text": "both",
+              "step": "s3"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                2,
+                0.6
+              ],
+              "to": [
+                3,
+                0.6
+              ],
+              "step": "s3",
+              "tone": "good"
+            },
+            {
+              "kind": "point",
+              "at": [
+                2,
+                0.6
+              ],
+              "label": "2",
+              "pos": "s",
+              "step": "s3",
+              "tone": "good"
+            },
+            {
+              "kind": "point",
+              "at": [
+                3,
+                0.6
+              ],
+              "label": "3",
+              "pos": "s",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "lo^2 - 9 < 0",
+            "3*lo - 2 = 4",
+            "hi^2 = 9"
+          ],
+          "answer": "hi"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "9ac3d681",
+        "answer": {
+          "value": 3,
+          "label": "2 ≤ x < 3"
+        }
+      }
+    },
+    {
+      "id": "2be5eb0b-a606-43de-9e50-bcd773af89da",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "vx": "2/3",
+            "vy": "3*vx^2-4*vx+1"
+          },
+          "view": {
+            "x": [
+              -1.5,
+              3
+            ],
+            "y": [
+              -1.5,
+              3.5
+            ]
+          },
+          "axes": true,
+          "points": {
+            "V": [
+              "vx",
+              "vy"
+            ],
+            "R1": [
+              "1/3",
+              0
+            ],
+            "R2": [
+              1,
+              0
+            ]
+          },
+          "items": [
+            {
+              "kind": "curve",
+              "f": "3*x^2-4*x+1",
+              "x": [
+                -0.45,
+                1.79
+              ],
+              "step": "s1",
+              "label": "y = 3x² − 4x + 1",
+              "labelAt": [
+                1.9,
+                3
+              ],
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "at": "R1",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "R2",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "V",
+              "step": "s2",
+              "label": "V(2/3, −1/3)",
+              "pos": "s",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "3*(1/3)^2 - 4*(1/3) + 1 = 0",
+            "3*1^2 - 4*1 + 1 = 0",
+            "vy = -1/3"
+          ],
+          "answer": "vx"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "8b4ab968",
+        "answer": {
+          "value": 0.6666666666666666,
+          "label": "(2/3, −1/3)"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

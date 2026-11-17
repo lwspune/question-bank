@@ -1,0 +1,637 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "1257e0f8-10cc-48bb-ab11-27ba76fe085f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "{}^{56}_{26}\\text{Fe}^{2+}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "p = {{1:26}}",
+              "f": "26",
+              "value": "26",
+              "note": "atomic number"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "n = 56 - {{1:26}} = {{2:30}}",
+              "f": "56-26",
+              "value": "30",
+              "note": "mass number - protons"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "e = 26 - 2 = {{3:24}}",
+              "f": "26-2",
+              "value": "24",
+              "note": "2+ means two electrons lost"
+            }
+          ],
+          "answer": "26"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "bec509e1",
+        "answer": {
+          "value": 26,
+          "label": "p 26, n 30, e 24"
+        }
+      }
+    },
+    {
+      "id": "16e32ad3-13a6-4236-8a49-03ebb7273b69",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{SO}_4^{2-}:\\ Z(\\text{S}) = 16,\\ Z(\\text{O}) = 8"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "16 + 4 \\times 8 = {{1:48}}",
+              "f": "16+4*8",
+              "value": "48",
+              "note": "electrons of the neutral atoms"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{{1:48}} + 2 = {{2:50}}",
+              "f": "48+2",
+              "value": "50",
+              "note": "2- charge adds two electrons"
+            }
+          ],
+          "answer": "50"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "299c3cc4",
+        "answer": {
+          "value": 50,
+          "label": "50 electrons"
+        }
+      }
+    },
+    {
+      "id": "1cb3203a-4277-4bf8-97d6-c650c5eff2cb",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Ca}^{2+}\\ \\text{and}\\ \\text{Cl}^{-}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Ca}^{2+}: 20 - 2 = {{1:18}}",
+              "f": "20-2",
+              "value": "18"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Cl}^{-}: 17 + 1 = {{1:18}}",
+              "f": "17+1",
+              "value": "18",
+              "note": "both have the argon arrangement"
+            }
+          ],
+          "answer": "18"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "da5200cb",
+        "answer": {
+          "value": 18,
+          "label": "18 electrons each"
+        }
+      }
+    },
+    {
+      "id": "424dae72-5228-4a85-b7bc-c5641e9f71e7",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "A = 40,\\ n = 20"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "Z = 40 - 20 = {{1:20}}",
+              "f": "40-20",
+              "value": "20",
+              "note": "protons: calcium"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "e = {{1:20}} - 2 = {{2:18}}",
+              "f": "20-2",
+              "value": "18",
+              "note": "loses two electrons"
+            }
+          ],
+          "answer": "18"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "fa9a2f0b",
+        "answer": {
+          "value": 18,
+          "label": "18 electrons"
+        }
+      }
+    },
+    {
+      "id": "4b239bc3-4163-4d94-9b63-d604520f99bf",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Mg}: 12,\\quad \\text{O}: 8"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Mg}^{2+}: 12 - 2 = {{1:10}}",
+              "f": "12-2",
+              "value": "10"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{O}^{2-}: 8 + 2 = {{1:10}}",
+              "f": "8+2",
+              "value": "10",
+              "note": "both have the neon arrangement"
+            }
+          ],
+          "answer": "10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "8eb98137",
+        "answer": {
+          "value": 10,
+          "label": "10 and 10"
+        }
+      }
+    },
+    {
+      "id": "54d2635c-4bb2-427b-8e7e-dd9bd41b2091",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "{}^{32}_{16}\\text{S}^{2-}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "e = 16 + 2 = {{1:18}}",
+              "f": "16+2",
+              "value": "18"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2p^6 + 3p^6 = 6 + 6 = {{2:12}}",
+              "f": "6+6",
+              "value": "12",
+              "note": "p electrons: 2p and 3p"
+            }
+          ],
+          "answer": "12"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "0d0fdb06",
+        "answer": {
+          "value": 12,
+          "label": "12"
+        }
+      }
+    },
+    {
+      "id": "802aa352-ef4d-41cf-8dbb-f8f52040f0d9",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "{}^{40}_{20}\\text{Ca}^{2+}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "40 - 20 = {{1:20}}",
+              "f": "40-20",
+              "value": "20",
+              "note": "neutrons in calcium-40"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "39 - 19 = {{1:20}}",
+              "f": "39-19",
+              "value": "20",
+              "note": "neutrons in potassium-39"
+            }
+          ],
+          "answer": "20"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "4031cd74",
+        "answer": {
+          "value": 20,
+          "label": "20 neutrons"
+        }
+      }
+    },
+    {
+      "id": "86c103f3-cbf2-404c-aef4-53796ff9dfbe",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Cl}: 3s^2\\,3p^5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2 + 5 = {{1:7}}",
+              "f": "2+5",
+              "value": "7",
+              "note": "valence electrons of Cl"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{{1:7}} + 1 = {{2:8}}",
+              "f": "7+1",
+              "value": "8",
+              "note": "Cl⁻ gains one: an octet"
+            }
+          ],
+          "answer": "8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e7f85412",
+        "answer": {
+          "value": 8,
+          "label": "8"
+        }
+      }
+    },
+    {
+      "id": "9fad13ba-9c21-41c9-b240-0f343dcab531",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Ar},\\ \\text{K}^+,\\ \\text{Ne},\\ \\text{Na}^+,\\ \\text{Cl}^-"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{K}^+: 19 - 1 = {{1:18}}",
+              "f": "19-1",
+              "value": "18"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Cl}^-: 17 + 1 = {{1:18}}",
+              "f": "17+1",
+              "value": "18",
+              "note": "Ar, K⁺, Cl⁻ all 18"
+            }
+          ],
+          "answer": "18"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "db874ee1",
+        "answer": {
+          "value": 18,
+          "label": "18: 1, 2 and 5"
+        }
+      }
+    },
+    {
+      "id": "ab94b582-173b-4775-9674-b7c2948b8bd0",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "3 \\times {}^{35}\\text{Cl}\\ :\\ 1 \\times {}^{37}\\text{Cl}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "3 \\times 35 + 1 \\times 37 = {{1:142}}",
+              "f": "3*35+37",
+              "value": "142"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{{{1:142}}}{4} = {{2:35.5}}",
+              "f": "142/4",
+              "value": "35.5",
+              "note": "divide by 4 atoms"
+            }
+          ],
+          "answer": "35.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "6772028b",
+        "answer": {
+          "value": 35.5,
+          "label": "35.5"
+        }
+      }
+    },
+    {
+      "id": "b618668f-c2ad-4b04-89f5-af5ba957081a",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Ca}^{2+},\\ \\text{K},\\ \\text{Cl}^{-},\\ \\text{Ar}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Ca}^{2+}: 20 - 2 = {{1:18}}",
+              "f": "20-2",
+              "value": "18"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Cl}^{-}: 17 + 1 = {{1:18}}",
+              "f": "17+1",
+              "value": "18",
+              "note": "same electrons: B"
+            }
+          ],
+          "answer": "18"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "6302ce96",
+        "answer": {
+          "value": 18,
+          "label": "18 each"
+        }
+      }
+    },
+    {
+      "id": "d2126dfe-f7b1-4d68-8005-41c762920641",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "1s^2\\,2s^2\\,2p^6\\,3s^2\\,3p^2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2 + 2 + 6 + 2 = {{1:12}}",
+              "f": "2+2+6+2",
+              "value": "12",
+              "note": "electrons before 3p"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{{1:12}} + 2 = {{2:14}}",
+              "f": "12+2",
+              "value": "14",
+              "note": "silicon"
+            }
+          ],
+          "answer": "14"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "17352ac8",
+        "answer": {
+          "value": 14,
+          "label": "14"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

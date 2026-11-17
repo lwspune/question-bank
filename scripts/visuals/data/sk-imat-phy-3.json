@@ -1,0 +1,289 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "1903d345-089b-4712-998e-3e7a66847fb1",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "va": "120",
+            "vw": "50",
+            "vg": "sqrt(va^2+vw^2)",
+            "th": "deg(atan(vw/va))",
+            "ox": "0",
+            "ypp": "va"
+          },
+          "view": {
+            "x": [
+              -45,
+              115
+            ],
+            "y": [
+              -12,
+              138
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "P": [
+              0,
+              "va"
+            ],
+            "G": [
+              "vw",
+              "va"
+            ],
+            "Q": [
+              "vw",
+              0
+            ]
+          },
+          "items": [
+            {
+              "kind": "arrow",
+              "from": "O",
+              "to": "P",
+              "step": "s1",
+              "label": "120 m/s air",
+              "labelAt": [
+                -3,
+                60
+              ],
+              "pos": "w"
+            },
+            {
+              "kind": "arrow",
+              "from": "P",
+              "to": "G",
+              "step": "s1",
+              "tone": "amber",
+              "label": "50 m/s wind",
+              "labelAt": [
+                25,
+                126
+              ],
+              "pos": "n"
+            },
+            {
+              "kind": "arrow",
+              "from": "O",
+              "to": "G",
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                70,
+                40
+              ],
+              "text": "{vg} m/s",
+              "step": "s2",
+              "tone": "good"
+            },
+            {
+              "kind": "angle",
+              "at": "O",
+              "from": "P",
+              "to": "G",
+              "step": "s3",
+              "label": "θ"
+            }
+          ],
+          "assert": [
+            "vg = 130",
+            "vg^2 = va^2 + vw^2",
+            "tan(rad(th)) = vw/va"
+          ],
+          "answer": "vg"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "5bb6ec41",
+        "answer": {
+          "value": 130,
+          "label": "130 m/s; tan⁻¹(50/120)"
+        }
+      }
+    },
+    {
+      "id": "8c2b9eca-25e9-43c1-8f8a-5ff744b08879",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "n1": "7",
+            "e1": "5",
+            "s1": "2",
+            "e2": "7",
+            "ny": "n1-s1",
+            "ex": "e1+e2",
+            "dist": "sqrt(ny^2+ex^2)"
+          },
+          "view": {
+            "x": [
+              -4,
+              15
+            ],
+            "y": [
+              -2.5,
+              9.5
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "A": [
+              0,
+              "n1"
+            ],
+            "B": [
+              "e1",
+              "n1"
+            ],
+            "C": [
+              "e1",
+              "n1-s1"
+            ],
+            "D": [
+              "ex",
+              "ny"
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "A",
+              "step": "s1",
+              "label": "7 km N",
+              "labelAt": [
+                -0.3,
+                3.5
+              ],
+              "pos": "w"
+            },
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "B",
+              "step": "s1",
+              "label": "5 km E",
+              "labelAt": [
+                2.5,
+                7.4
+              ],
+              "pos": "n"
+            },
+            {
+              "kind": "segment",
+              "from": "B",
+              "to": "C",
+              "step": "s1",
+              "label": "2 km S",
+              "labelAt": [
+                5.3,
+                6
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "segment",
+              "from": "C",
+              "to": "D",
+              "step": "s1",
+              "label": "7 km E",
+              "labelAt": [
+                8.5,
+                5.4
+              ],
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "at": "O",
+              "step": "s1",
+              "label": "start",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "at": "D",
+              "step": "s2",
+              "label": "end",
+              "pos": "ne"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "D",
+              "step": "s3",
+              "tone": "brand",
+              "dash": true
+            },
+            {
+              "kind": "label",
+              "at": [
+                9,
+                1.2
+              ],
+              "text": "{dist} km from start",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "ny = 5",
+            "ex = 12",
+            "dist = 13"
+          ],
+          "answer": "dist"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "17787028",
+        "answer": {
+          "value": 13,
+          "label": "13 km"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

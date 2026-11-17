@@ -1,0 +1,279 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "abe3d9da-d4b2-4d4e-b2f1-aa8534f11a14",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Crossover values add along the chromosome}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{J-K}+\\text{K-L} = 8+12 = {{1:20}}",
+              "f": "8+12",
+              "value": "20",
+              "note": "equals J-L, so K is between J and L"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{K-L}+\\text{L-M} = 12+5 = {{2:17}}",
+              "f": "12+5",
+              "value": "17",
+              "note": "equals K-M, so L is between K and M"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{In KJLM: K-L} = 8+20 = {{3:28}}\\neq 12",
+              "f": "8+20",
+              "value": "28",
+              "note": "not 12, so KJLM fails"
+            }
+          ],
+          "answer": "8+12"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "27fb84e4",
+        "answer": {
+          "value": 20,
+          "label": "J, K, L, M"
+        }
+      }
+    },
+    {
+      "id": "f3bdeea4-3d0d-4f57-b1f0-61bd175b78ea",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{AaBb}\\times\\text{AaBb}: 2\\times 2 = {{1:4}}",
+              "f": "2*2",
+              "value": "4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{AaBb}\\times\\text{AAbb}: 1\\times 2 = {{2:2}}",
+              "f": "1*2",
+              "value": "2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "4-2 = {{3:2}}",
+              "f": "4-2",
+              "value": "2"
+            }
+          ],
+          "answer": "4-2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "1abf6959",
+        "answer": {
+          "value": 2,
+          "label": "2"
+        }
+      }
+    },
+    {
+      "id": "ff2565ef-9952-4fa5-8d8a-bbe6cb416c11",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Pp}\\times\\text{Pp}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P(\\text{carrier}) = \\dfrac{2}{4} = {{1:\\dfrac{1}{2}}}",
+              "f": "2/4",
+              "value": "1/2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "P(\\text{girl}) = {{2:\\dfrac{1}{2}}}",
+              "f": "1/2",
+              "value": "1/2"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{2}\\times\\dfrac{1}{2} = {{3:\\dfrac{1}{4}}}",
+              "f": "1/2*1/2",
+              "value": "1/4",
+              "note": "independent events multiply"
+            }
+          ],
+          "answer": "1/4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "5b7a76ba",
+        "answer": {
+          "value": 0.25,
+          "label": "1/4"
+        }
+      }
+    },
+    {
+      "id": "7916cf43-27cd-4b51-b5a1-9e540f2a7b4f",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Ring of 4000 bp, cuts at 500, 1500, 3200}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "1500-500 = {{1:1000}}",
+              "f": "1500-500",
+              "value": "1000"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "3200-1500 = {{2:1700}}",
+              "f": "3200-1500",
+              "value": "1700"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "(4000-3200)+500 = {{3:1300}}",
+              "f": "(4000-3200)+500",
+              "value": "1300",
+              "note": "round past the end of the ring"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "1000+1700+1300 = 4000",
+              "f": "1000+1700+1300",
+              "value": "4000",
+              "note": "check"
+            }
+          ],
+          "answer": "(4000-3200)+500"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "5416ed07",
+        "answer": {
+          "value": 1300,
+          "label": "1000, 1300 and 1700 bp"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

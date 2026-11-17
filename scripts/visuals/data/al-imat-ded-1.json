@@ -1,0 +1,171 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "aae5eeeb-b856-467e-ac09-20ad49c71990",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "d = \\dfrac{n(n-3)}{2}",
+              "note": "diagonals of an n-sided polygon"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{hexagon: } \\dfrac{6 \\cdot 3}{2} = {{1:9}}",
+              "f": "6*3/2",
+              "value": "9"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{octagon: } \\dfrac{8 \\cdot 5}{2} = 20",
+              "f": "8*5/2",
+              "value": "20"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{square: } \\dfrac{4 \\cdot 1}{2} = 2",
+              "f": "4*1/2",
+              "value": "2"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{pentagon: } \\dfrac{5 \\cdot 2}{2} = 5",
+              "f": "5*2/2",
+              "value": "5"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\text{triangle: } \\dfrac{3 \\cdot 0}{2} = 0",
+              "f": "3*0/2",
+              "value": "0"
+            }
+          ],
+          "answer": "6*3/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4",
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "284b05bb",
+        "answer": {
+          "value": 9,
+          "label": "Hexagon: 9 diagonals"
+        }
+      }
+    },
+    {
+      "id": "ee6f1d83-4055-491d-b465-a2ce9ca8944c",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{win} = 2,\\ \\text{runner-up} = 1",
+              "note": "5 different pairings, each once"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Ana} = 2 + 2 = 4",
+              "f": "2+2",
+              "value": "4"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Bea} = 2 + 1 + 1 = 4",
+              "f": "2+1+1",
+              "value": "4"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{Cleo} = 2 + 1 + 1 + 1 = {{1:5}}",
+              "f": "2+1+1+1",
+              "value": "5"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{Dora} = 2",
+              "f": "2",
+              "value": "2"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\max(4, 4, 5, 2) = {{1:5}}",
+              "f": "max(max(4,4),max(5,2))",
+              "value": "5",
+              "note": "Cleo has the most points"
+            }
+          ],
+          "answer": "2+1+1+1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "0dc8852d",
+        "answer": {
+          "value": 5,
+          "label": "Cleo (5 points)"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

@@ -1,0 +1,308 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "18734f93-b868-4210-b05d-2940b12c132d",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "d": "0.4",
+            "r": "d/2",
+            "F": "15",
+            "k": "0.01",
+            "tau": "F*d",
+            "t1": "F*r",
+            "h": "F*k"
+          },
+          "view": {
+            "x": [
+              -0.6,
+              0.6
+            ],
+            "y": [
+              -0.4,
+              0.5
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "A": [
+              "r",
+              0
+            ],
+            "B": [
+              "-r",
+              0
+            ],
+            "TA": [
+              "r",
+              "h"
+            ],
+            "TB": [
+              "-r",
+              "-h"
+            ]
+          },
+          "items": [
+            {
+              "kind": "circle",
+              "center": "O",
+              "r": "r",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "B",
+              "dash": true,
+              "step": "s1",
+              "label": "0.40 m",
+              "labelAt": [
+                0,
+                0.04
+              ],
+              "pos": "n"
+            },
+            {
+              "kind": "arrow",
+              "from": "A",
+              "to": "TA",
+              "step": "s1",
+              "tone": "brand",
+              "label": "15 N",
+              "labelAt": [
+                0.27,
+                0.1
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "arrow",
+              "from": "B",
+              "to": "TB",
+              "step": "s1",
+              "tone": "brand",
+              "label": "15 N",
+              "labelAt": [
+                -0.27,
+                -0.1
+              ],
+              "pos": "w"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -0.58,
+                -0.3
+              ],
+              "text": "torque = 15 × 0.40 = {tau} N m",
+              "step": "s2",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -0.58,
+                0.42
+              ],
+              "text": "one hand: 15 × 0.20 = {t1} N m",
+              "step": "s3",
+              "tone": "amber"
+            }
+          ],
+          "assert": [
+            "tau = 6",
+            "t1 = 3",
+            "r*2 = d"
+          ],
+          "answer": "tau"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "ed8901b5",
+        "answer": {
+          "value": 6,
+          "label": "6.0 N m"
+        }
+      }
+    },
+    {
+      "id": "bc0d759d-5b27-4989-b402-898dfc247713",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "k": "0.004",
+            "R": "(400*2+600*7)/8",
+            "Lf": "400+600-R",
+            "hL": "Lf*k",
+            "hR": "R*k",
+            "h4": "400*k",
+            "h6": "600*k"
+          },
+          "view": {
+            "x": [
+              -1.5,
+              9.5
+            ],
+            "y": [
+              -3.6,
+              4.4
+            ]
+          },
+          "points": {
+            "A": [
+              0,
+              0
+            ],
+            "B": [
+              8,
+              0
+            ],
+            "P4": [
+              2,
+              "h4"
+            ],
+            "P4b": [
+              2,
+              0
+            ],
+            "P6": [
+              7,
+              "h6"
+            ],
+            "P6b": [
+              7,
+              0
+            ],
+            "DL": [
+              0,
+              "-hL"
+            ],
+            "DR": [
+              8,
+              "-hR"
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "B",
+              "step": "s1",
+              "tone": "fg",
+              "label": "plank 8.0 m",
+              "labelAt": [
+                4,
+                -0.5
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "arrow",
+              "from": "P4",
+              "to": "P4b",
+              "step": "s1",
+              "tone": "amber",
+              "label": "400 N",
+              "labelAt": [
+                2.3,
+                1
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "arrow",
+              "from": "P6",
+              "to": "P6b",
+              "step": "s1",
+              "tone": "amber",
+              "label": "600 N",
+              "labelAt": [
+                7.3,
+                1.2
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "arrow",
+              "from": "DR",
+              "to": "B",
+              "step": "s2",
+              "tone": "brand",
+              "label": "right 625 N",
+              "labelAt": [
+                7.8,
+                -1.5
+              ],
+              "pos": "w"
+            },
+            {
+              "kind": "arrow",
+              "from": "DL",
+              "to": "A",
+              "step": "s3",
+              "tone": "good",
+              "label": "left 375 N",
+              "labelAt": [
+                0.3,
+                -1
+              ],
+              "pos": "e"
+            }
+          ],
+          "assert": [
+            "R*8 = 400*2+600*7",
+            "Lf + R = 1000",
+            "R = 625",
+            "Lf = 375"
+          ],
+          "answer": "Lf"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "368442e6",
+        "answer": {
+          "value": 375,
+          "label": "left 375 N, right 625 N"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
