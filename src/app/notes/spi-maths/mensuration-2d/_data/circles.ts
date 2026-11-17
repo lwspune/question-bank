@@ -6,7 +6,7 @@ export const SPI_M2_CIRCLES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The distance round a circle is 2πr and the space inside it is πr²; with π as 22/7, radii that are multiples of 7 give whole answers.",
   whyItMatters:
-    "Ten questions in the bank, five EASY and five MODERATE: wheels turning over a road, a wire bent from a circle into a square, a semicircular table top and a circle inside a square. Each is one of two formulas; the marks go on radius against diameter and on kilometres against centimetres.",
+    "Thirteen questions in the bank, seven EASY and six MODERATE, three from the 2026 paper: wheels turning over a road, a wire bent from a circle into a square, a semicircular table top or protractor, and a circle inside a square. Each is one of two formulas; the marks go on radius against diameter and on kilometres against centimetres.",
   concepts: [
     {
       kind: "formula" as const,

@@ -6,7 +6,7 @@ export const SPI_PO_ZEROES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The sum and the product of a polynomial's zeroes can be read straight from its coefficients, so you can build a polynomial from its zeroes or find a missing zero without solving.",
   whyItMatters:
-    "Nine questions in the bank: five EASY, two MODERATE and two HARD. They form a quadratic or cubic from its zeroes, find a third zero, or reason about the signs of zeroes. Each needs the sum and product rules, and a lost minus sign in −b/a is the commonest wrong option.",
+    "Fifteen questions in the bank, six of them from the 2026 paper: six EASY, seven MODERATE and two HARD. They form a quadratic or cubic from its zeroes, find a third zero, or reason about the signs of zeroes. Each needs the sum and product rules, and a lost minus sign in −b/a is the commonest wrong option.",
   concepts: [
     {
       kind: "formula" as const,

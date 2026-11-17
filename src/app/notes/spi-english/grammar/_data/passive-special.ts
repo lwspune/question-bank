@@ -6,7 +6,7 @@ export const SPI_GR_PASSIVE_SPECIAL_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Questions, modal verbs and verbs such as make, believe and know follow the same passive steps, with one extra rule each.",
   whyItMatters:
-    "Ten questions in the bank, 7 of them MODERATE and 3 EASY: the hardest share of any Grammar page. Each one adds a twist to the plain passive (who becomes by whom, a modal keeps its place, make takes to), and the wrong options are built on missing that twist.",
+    "Eleven questions in the bank, 7 of them MODERATE and 4 EASY (one from the 2026 paper): the hardest share of any Grammar page. Each one adds a twist to the plain passive (who becomes by whom, a modal keeps its place, make takes to), and the wrong options are built on missing that twist.",
   concepts: [
     {
       kind: "reference" as const,

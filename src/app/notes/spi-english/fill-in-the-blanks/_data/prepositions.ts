@@ -6,7 +6,7 @@ export const SPI_FB_PREPOSITIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A preposition gap is decided by what the small word must show (place, movement, tool, doer or purpose) or by the word before it, which takes a fixed partner.",
   whyItMatters:
-    "Ten questions in the bank, the largest group in this chapter: five EASY and five MODERATE. Half of them come from the sample paper's preposition set, and most hang on one fixed pair such as 'jump to' or 'success in'.",
+    "Eleven questions in the bank, the largest group in this chapter: six EASY and five MODERATE, one from the 2026 paper. Five come from the sample paper's preposition set, and most hang on one fixed pair such as 'jump to' or 'success in'.",
   concepts: [
     {
       kind: "reference" as const,

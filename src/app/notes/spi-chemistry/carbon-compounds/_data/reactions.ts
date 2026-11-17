@@ -6,7 +6,7 @@ export const SPI_CC_REACTIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Carbon compounds burn, are oxidised, add hydrogen or swap atoms, and two of them, ethanol and ethanoic acid, have reactions you must know by name.",
   whyItMatters:
-    "Five questions in the bank, three EASY and two MODERATE, one of them from the 2022 paper (the boiling point of ethanol). The rest ask which hydrocarbons add, what an aldehyde becomes when oxidised, what you see when sodium bicarbonate meets ethanoic acid, and which equation is saponification.",
+    "Six questions in the bank, four EASY and two MODERATE: one from the 2022 paper (the boiling point of ethanol) and one from the 2026 paper (the name for polymerisation). The rest ask which hydrocarbons add, what an aldehyde becomes when oxidised, what you see when sodium bicarbonate meets ethanoic acid, and which equation is saponification.",
   concepts: [
     {
       kind: "reference" as const,

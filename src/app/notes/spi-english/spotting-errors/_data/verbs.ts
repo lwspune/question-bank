@@ -12,7 +12,7 @@ export const SPI_SE_VERBS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The first check on any sentence is its verb: it must agree with its subject, it must be a full verb, and after some words it must take a fixed form.",
   whyItMatters:
-    "Nine questions in the bank turn on the verb, two of them from the 2022 paper. Five are EASY and four MODERATE. The verb is the commonest place for an error, so check it first in every sentence.",
+    "Thirteen questions in the bank turn on the verb, two from the 2022 paper and four from the 2026 paper. Five are EASY and eight MODERATE. The verb is the commonest place for an error, so check it first in every sentence.",
   concepts: [
     {
       kind: "reference" as const,

@@ -6,7 +6,7 @@ export const SPI_NS_RATIONALS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A rational number is one integer divided by another non-zero integer; you compare, add and take fractions of them with a common denominator.",
   whyItMatters:
-    "Ten questions in the bank, six EASY and four MODERATE. Three test what a rational number is and which one lies between two others, four are fraction sums and word problems, and three turn a recurring decimal into a fraction.",
+    "Eleven questions in the bank, seven EASY and four MODERATE, one from the 2026 paper. Three test what a rational number is and which one lies between two others, five are fraction sums and word problems, and three turn a recurring decimal into a fraction.",
   concepts: [
     {
       kind: "formula" as const,

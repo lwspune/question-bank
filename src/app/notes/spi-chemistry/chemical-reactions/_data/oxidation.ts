@@ -6,7 +6,7 @@ export const SPI_CR_OXIDATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Oxidation is gain of oxygen or loss of hydrogen, reduction is the reverse, and slow oxidation by air rusts iron and spoils oily food.",
   whyItMatters:
-    "Two questions in the bank, both EASY, and one is from the 2022 paper: what makes oily food go rancid and how to stop it, and what rust is chemically. Both are the same idea at work, oxidation by the air.",
+    "Three questions in the bank, all EASY, one from the 2022 paper and one from the 2026 paper: what makes oily food go rancid and how to stop it, what rust is chemically, and what reduction means. The first two are the same idea at work, oxidation by the air, and the third is its reverse.",
   concepts: [
     {
       kind: "formula" as const,

@@ -6,7 +6,7 @@ export const SPI_LE_CONSISTENCY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Every linear equation in x and y is a straight line, and comparing the ratios of two lines' coefficients tells you whether they cross once, run parallel, or are the same line.",
   whyItMatters:
-    "Fourteen questions in the bank, 10 EASY and 4 MODERATE. One table of three ratios answers nearly all of them: whether two lines cross, run parallel or lie on top of each other, and so whether the pair has one solution, none, or infinitely many.",
+    "Fifteen questions in the bank, 11 EASY and 4 MODERATE, one from the 2026 paper. One table of three ratios answers nearly all of them: whether two lines cross, run parallel or lie on top of each other, and so whether the pair has one solution, none, or infinitely many.",
   concepts: [
     {
       kind: "reference" as const,

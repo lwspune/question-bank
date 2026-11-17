@@ -6,7 +6,7 @@ export const SPI_EM_MAGNETIC_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A current makes a magnetic field around it, a current placed in a magnetic field feels a force (the motor), and a coil turned in a magnetic field makes a current (the generator).",
   whyItMatters:
-    "Five questions in the bank: three EASY, one MODERATE and one HARD. They ask the field inside a solenoid, which pole an anticlockwise current makes, what the forefinger stands for in Fleming's left hand rule, how often a generator's current reverses, and the torque on a coil. Each turns on one rule, so learn which rule goes with which device.",
+    "Nine questions in the bank, four of them from the 2026 paper: six EASY, two MODERATE and one HARD. They ask the field inside a solenoid or around a straight wire, which pole an anticlockwise current makes, what Fleming's left and right hand rules give, how an electromagnet's field follows its current, what a nail touching a magnet becomes, how often a generator's current reverses, and the torque on a coil. Each turns on one rule, so learn which rule goes with which device.",
   concepts: [
     {
       kind: "reference" as const,

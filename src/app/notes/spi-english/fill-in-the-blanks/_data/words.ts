@@ -6,7 +6,7 @@ export const SPI_FB_WORDS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A word gap is filled by the option that fits both the meaning of the sentence and the words it must sit beside.",
   whyItMatters:
-    "Five questions in the bank, all from the sample paper: four EASY and one MODERATE. Often two options mean nearly the same thing, and only one of them is the word English uses in that phrase.",
+    "Eight questions in the bank, seven EASY and one MODERATE: five from the sample paper and three from the 2026 paper. Often two options mean nearly the same thing, and only one of them is the word English uses in that phrase.",
   concepts: [
     {
       kind: "formula" as const,

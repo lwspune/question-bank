@@ -6,7 +6,7 @@ export const SPI_CC_HYDROCARBONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Carbon shares its four valence electrons to make covalent bonds, links to itself in chains and rings, and so forms whole families of hydrocarbons.",
   whyItMatters:
-    "Seven questions in the bank, two EASY and five MODERATE, and two of them are from the 2022 paper (naming a ring of six carbons drawn in a figure). The others count the covalent bonds in an alkane, pick out graphite, find a compound with one single and one triple bond, and test the homologous series and isomers.",
+    "Eight questions in the bank, two EASY and six MODERATE: two from the 2022 paper (naming a ring of six carbons drawn in a figure) and one from the 2026 paper (the bonds in pentane). The others count the covalent bonds in an alkane, pick out graphite, find a compound with one single and one triple bond, and test the homologous series and isomers.",
   concepts: [
     {
       kind: "formula" as const,

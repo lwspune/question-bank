@@ -6,7 +6,7 @@ export const SPI_ST_GROUPED_MEDIAN_NOTE: SubtopicNote = {
   oneLineDefinition:
     "For a frequency table, the median is found inside the class where the cumulative frequency first reaches half the total, and the mode inside the class with the highest frequency.",
   whyItMatters:
-    "Ten questions in the bank, six of them EASY. Four only ask you to recognise the median or mode formula or one of its letters, three work out a median from a table, and the rest find the median class or the mode. The one HARD question has classes with gaps between them.",
+    "Twelve questions in the bank, six of them EASY and two from the 2026 paper. Four only ask you to recognise the median or mode formula or one of its letters, three work out a median from a table, and the rest find the median class or the mode. Of the two HARD ones, one has classes with gaps between them and one finds two missing frequencies from the median.",
   concepts: [
     {
       kind: "formula" as const,

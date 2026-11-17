@@ -6,7 +6,7 @@ export const SPI_PO_BASICS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The degree of a polynomial is its highest power of x, its value at a number comes from putting that number in for x, and a zero is a value of x that makes it 0.",
   whyItMatters:
-    "Eight questions in the bank, seven of them EASY: name the degree, pick the linear polynomial, find a value, or count the zeroes on a graph. These are the quickest marks in the chapter, and they are lost to a squared negative number or to counting where a graph meets the wrong axis.",
+    "Nine questions in the bank, seven of them EASY and one from the 2026 paper: name the degree, pick the linear polynomial, find a value, or count the zeroes on a graph. These are the quickest marks in the chapter, and they are lost to a squared negative number or to counting where a graph meets the wrong axis.",
   concepts: [
     {
       kind: "reference" as const,

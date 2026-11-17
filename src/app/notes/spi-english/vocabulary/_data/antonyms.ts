@@ -6,7 +6,7 @@ export const SPI_VO_ANTONYMS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An antonym question asks for the option opposite in meaning to a word, and the usual wrong options are words that mean the same.",
   whyItMatters:
-    "Fourteen questions in the bank ask for the opposite, one of them from the 2022 paper, and five are MODERATE. In the harder ones three options are synonyms of the word, so the fastest route is to strike those and keep the one that turns the meaning round.",
+    "Eighteen questions in the bank ask for the opposite, one from the 2022 paper and four from the 2026 paper, and five are MODERATE. In the harder ones three options are synonyms of the word, so the fastest route is to strike those and keep the one that turns the meaning round.",
   concepts: [
     {
       kind: "formula" as const,

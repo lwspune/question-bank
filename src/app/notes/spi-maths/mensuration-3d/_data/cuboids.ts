@@ -6,7 +6,7 @@ export const SPI_M3_CUBOIDS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A cuboid has six rectangular faces in three equal pairs; its surface is the sum of their areas, its volume is length times breadth times height.",
   whyItMatters:
-    "Eleven questions in the bank, three of them from the 2022 paper: four EASY, six MODERATE and one HARD. They cover painting a box, sheet metal, bricks in a wall, earth from a pit and the longest rod in a room. The formulas are short; the marks go on units (inches, litres) and on which faces are counted.",
+    "Thirteen questions in the bank, three from the 2022 paper and two from the 2026 paper: five EASY, seven MODERATE and one HARD. They cover painting a box, sheet metal, bricks in a wall, earth from a pit and the longest rod in a room. The formulas are short; the marks go on units (inches, litres) and on which faces are counted.",
   concepts: [
     {
       kind: "formula" as const,

@@ -6,7 +6,7 @@ export const SPI_TG_VALUES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The ratios of 0°, 30°, 45°, 60° and 90° are known exact values, so an expression in them is plain arithmetic and an equation like sin 2θ = 1/2 gives the angle at once.",
   whyItMatters:
-    "Thirteen questions in the bank, the largest page in the chapter, and twelve are EASY. Six are arithmetic with these values, five give a value and ask for the angle, and two find the sides of a right triangle or a rectangle. All of them need the table on this page by heart.",
+    "Fourteen questions in the bank, thirteen of them EASY and one from the 2026 paper. Six are arithmetic with these values, six give a value and ask for the angle, and two find the sides of a right triangle or a rectangle. All of them need the table on this page by heart.",
   concepts: [
     {
       kind: "reference" as const,

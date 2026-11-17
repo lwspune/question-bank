@@ -12,7 +12,7 @@ export const SPI_SE_NO_ERROR_NOTE: SubtopicNote = {
   oneLineDefinition:
     "When every check passes, the answer is No error; mark it with confidence instead of inventing a mistake.",
   whyItMatters:
-    "Seven of the 33 questions in the bank have No error as the key, five of them on this page and one from the 2022 paper. One is EASY and four are MODERATE here: they are hard because the sentence looks unusual, not because it is wrong.",
+    "Seven of the 39 questions in the bank have No error as the key, five of them on this page and one from the 2022 paper. One is EASY and four are MODERATE here: they are hard because the sentence looks unusual, not because it is wrong.",
   concepts: [
     {
       kind: "formula" as const,

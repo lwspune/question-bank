@@ -6,7 +6,7 @@ export const SPI_PR_CARDS_BAGS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Count the cards, balls or letters that fit and divide by how many there are; for a 52-card deck, know its make-up by heart.",
   whyItMatters:
-    "Eighteen questions in the bank, the largest page, including the 2022 paper's question on drawing two queens. Half are a single card from a deck, the rest are bags of coloured balls, numbered cards and letters of a word, plus one on odds.",
+    "Twenty-one questions in the bank, the largest page, including the 2022 paper's question on drawing two queens and three from the 2026 paper. Nearly half are a single card from a deck, the rest are bags of coloured balls, numbered cards and letters of a word, plus one on odds.",
   concepts: [
     {
       kind: "reference" as const,

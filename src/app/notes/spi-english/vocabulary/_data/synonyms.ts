@@ -6,7 +6,7 @@ export const SPI_VO_SYNONYMS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A synonym question asks for the option nearest in meaning to a word, and the sentence around the word decides which of its meanings counts.",
   whyItMatters:
-    "Nineteen questions in the bank ask for the nearest meaning, one of them from the 2022 paper, and six are MODERATE. Most of the lost marks come from a word with two meanings, where the option you know best is the wrong sense.",
+    "Twenty-three questions in the bank ask for the nearest meaning, one from the 2022 paper and four from the 2026 paper, and seven are MODERATE. Most of the lost marks come from a word with two meanings, where the option you know best is the wrong sense.",
   concepts: [
     {
       kind: "formula" as const,

@@ -6,7 +6,7 @@ export const SPI_ID_MEANINGS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An idiom is a group of words whose meaning is not the meaning of its words, so 'smell a rat' means to suspect something wrong, not to notice a smell.",
   whyItMatters:
-    "Twenty questions in the bank ask what an idiom means, seventeen of them EASY. The wrong options are built from the idiom's own words read literally, so the student who knows the idiom gets the mark in seconds and the one who reads the words falls for the trap.",
+    "Twenty-two questions in the bank ask what an idiom means, eighteen of them EASY and two from the 2026 paper. The wrong options are built from the idiom's own words read literally, so the student who knows the idiom gets the mark in seconds and the one who reads the words falls for the trap.",
   concepts: [
     {
       kind: "formula" as const,

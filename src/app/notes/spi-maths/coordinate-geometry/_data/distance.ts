@@ -6,7 +6,7 @@ export const SPI_CG_DISTANCE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A point is fixed by its x and y coordinates, and the distance between two points is the square root of the sum of the squares of their x and y differences.",
   whyItMatters:
-    "Eleven questions in the bank: eight EASY, two MODERATE and the chapter's only HARD one. Four test the words (origin, abscissa, the equation of an axis); the rest put two points into the distance formula, forwards or backwards. The marks go on a minus sign or a lost second answer.",
+    "Fourteen questions in the bank, three from the 2026 paper: nine EASY, four MODERATE and the chapter's only HARD one. Four test the words (origin, abscissa, the equation of an axis); the rest put two points into the distance formula, forwards or backwards. The marks go on a minus sign or a lost second answer.",
   concepts: [
     {
       kind: "reference" as const,

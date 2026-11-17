@@ -6,7 +6,7 @@ export const SPI_PR_TWO_DICE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Two dice give 36 equally likely ordered pairs; count the pairs that fit, or multiply the chances for each die.",
   whyItMatters:
-    "Thirteen questions in the bank, one of them from the 2022 paper, and the chapter's MODERATE questions are mostly here. Sums, products, doublets and 'at least one six' all come from the same 6 by 6 grid, and the leap-year questions are the same idea with the two extra days as the pair.",
+    "Fourteen questions in the bank, one from the 2022 paper and one from the 2026 paper, and the chapter's MODERATE questions are mostly here. Sums, products, doublets and 'at least one six' all come from the same 6 by 6 grid, and the leap-year questions are the same idea with the two extra days as the pair.",
   concepts: [
     {
       kind: "formula" as const,

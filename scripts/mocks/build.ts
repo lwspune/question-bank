@@ -84,7 +84,7 @@ import {
   SSC_CGL_T2_PAPER,
   SSC_CGL_T2_COMPUTER_PAPER,
   SSC_CGL_T2_QUANT_PAPER,
-  SPI_PAPER,
+  spiPaperFor,
   IMAT_PAPER,
   uceedPaper,
   iatPaper,
@@ -763,21 +763,35 @@ function sscCglSittings(): SourceFileSitting[] {
 }
 
 /**
- * SPI entrance examination: one mock per past paper (spiSittings.ts). Every flawed question
+ * SPI entrance examination: one mock per past paper (spiSittings.ts), each at the scheme its
+ * own booklet prints (spiPaperFor: +1/-0.5 in 2022, +4/-1 from 2026). Every flawed question
  * rides as grace, since SPI publishes no key and each answer is our own derivation.
  */
-function spiMockSittings(): SourceFileSitting[] {
-  return spiSittings().map((s) => ({
-    key: s.key,
-    sourceFile: s.sourceFile,
-    year: s.year,
-    slug: s.slug,
-    title: s.title,
-    prepare: (rows) => {
-      const grace = new Set(s.graceNumbers);
-      return rows.map((r) => (grace.has(Number(r.questionNumber)) ? { ...r, grace: true } : r));
-    },
-  }));
+async function buildSpi(db: SupabaseClient, run: RunState) {
+  for (const s of spiSittings()) {
+    const grace = new Set(s.graceNumbers);
+    await buildFromSourceFiles(
+      db,
+      spiPaperFor(s.year),
+      [{
+        key: s.key,
+        sourceFile: s.sourceFile,
+        year: s.year,
+        slug: s.slug,
+        title: s.title,
+        prepare: (rows) => {
+          // A question re-asked from an earlier SPI paper has no row here; serve that row at its own slot.
+          const out: PaperQuestionRow[] = [...rows];
+          for (const ov of s.overrides) {
+            out.push({ id: ov.questionId, sourceRow: ov.questionNumber, questionNumber: String(ov.questionNumber), subjectName: ov.subjectName, answer: { kind: "mcq", label: ov.answer } });
+          }
+          return out.map((r) => (grace.has(Number(r.questionNumber)) ? { ...r, grace: true } : r));
+        },
+      }],
+      run,
+      "spiSittings.ts"
+    );
+  }
 }
 
 /**
@@ -1082,7 +1096,7 @@ async function main() {
   if (runSscT2) await buildSscT2(db, run);
   if (runChsl) await buildChsl(db, run);
   if (runCpo) await buildCpo(db, run);
-  if (runSpi) await buildFromSourceFiles(db, SPI_PAPER, spiMockSittings(), run, "spiSittings.ts");
+  if (runSpi) await buildSpi(db, run);
   if (runImat) await buildFromSourceFiles(db, IMAT_PAPER, imatMockSittings(), run, "imatSittings.ts");
   if (runMpscMains) await buildMpscMains(db, run);
   if (runUceed) await buildUceed(db, run);
