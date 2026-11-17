@@ -15,10 +15,22 @@
       "difficulty": "EASY",
       "stem": "The relation \\(R\\), defined by \\(R = \\{(T_1, T_2) : T_1\\) is similar to \\(T_2\\}\\), in the set \\(A\\) of all triangles, is",
       "options": [
-        { "label": "A", "text": "reflexive and symmetric, but not transitive" },
-        { "label": "B", "text": "reflexive and transitive, but not symmetric" },
-        { "label": "C", "text": "symmetric and transitive, but not reflexive" },
-        { "label": "D", "text": "reflexive, symmetric and also transitive" }
+        {
+          "label": "A",
+          "text": "reflexive and symmetric, but not transitive"
+        },
+        {
+          "label": "B",
+          "text": "reflexive and transitive, but not symmetric"
+        },
+        {
+          "label": "C",
+          "text": "symmetric and transitive, but not reflexive"
+        },
+        {
+          "label": "D",
+          "text": "reflexive, symmetric and also transitive"
+        }
       ],
       "hi": {
         "stem": "समस्त त्रिभुजों के समुच्चय \\(A\\) में, \\(R = \\{(T_1, T_2) : T_1, T_2\\) के समरूप है \\(\\}\\) द्वारा परिभाषित सम्बन्ध \\(R\\)",
@@ -27,9 +39,12 @@
           "स्वतुल्य और संक्रामक है, किन्तु सममित नहीं",
           "सममित और संक्रामक है, किन्तु स्वतुल्य नहीं",
           "स्वतुल्य है, सममित है और संक्रामक भी है"
-        ]
+        ],
+        "solution": "प्रत्येक त्रिभुज स्वयं के समरूप होता है, अतः \\(R\\) स्वतुल्य है। यदि \\(T_1\\), \\(T_2\\) के समरूप है, तो \\(T_2\\) भी \\(T_1\\) के समरूप है, अतः \\(R\\) सममित है। यदि \\(T_1\\), \\(T_2\\) के समरूप है और \\(T_2\\), \\(T_3\\) के समरूप है, तो \\(T_1\\), \\(T_3\\) के समरूप है, अतः \\(R\\) संक्रामक है। अतः \\(R\\) एक तुल्यता सम्बन्ध है, जो विकल्प स्वतुल्य है, सममित है और संक्रामक भी है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
       },
-      "_flag": "A rubber stamp crosses the \"=\" in the English set definition; the Hindi print shows it clearly."
+      "_flag": "A rubber stamp crosses the \"=\" in the English set definition; the Hindi print shows it clearly.",
+      "answer": "D",
+      "solution": "Every triangle is similar to itself, so \\(R\\) is reflexive. If \\(T_1\\) is similar to \\(T_2\\), then \\(T_2\\) is similar to \\(T_1\\), so \\(R\\) is symmetric. If \\(T_1\\) is similar to \\(T_2\\) and \\(T_2\\) is similar to \\(T_3\\), then \\(T_1\\) is similar to \\(T_3\\), so \\(R\\) is transitive. Hence \\(R\\) is an equivalence relation, which is the choice reflexive, symmetric and also transitive.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q1b",
@@ -42,10 +57,22 @@
       "difficulty": "EASY",
       "stem": "Let \\([x]\\) represents the greatest integer which is less than or equal to \\(x\\). Then the function \\(f : R \\rightarrow R\\) defined by \\(f(x) = [x]\\) will be",
       "options": [
-        { "label": "A", "text": "One-one and onto" },
-        { "label": "B", "text": "One-one, but not onto" },
-        { "label": "C", "text": "Onto, but not one-one" },
-        { "label": "D", "text": "Neither one-one nor onto" }
+        {
+          "label": "A",
+          "text": "One-one and onto"
+        },
+        {
+          "label": "B",
+          "text": "One-one, but not onto"
+        },
+        {
+          "label": "C",
+          "text": "Onto, but not one-one"
+        },
+        {
+          "label": "D",
+          "text": "Neither one-one nor onto"
+        }
       ],
       "hi": {
         "stem": "माना \\([x]\\) उस महत्तम पूर्णांक को प्रकट करता है, जो \\(x\\) से कम या उसके बराबर है। तब \\(f(x) = [x]\\) द्वारा परिभाषित फलन \\(f : R \\rightarrow R\\) होगा",
@@ -54,8 +81,11 @@
           "एकैकी, किन्तु आच्छादक नहीं",
           "आच्छादक, किन्तु एकैकी नहीं",
           "न तो एकैकी और न ही आच्छादक"
-        ]
-      }
+        ],
+        "solution": "यह फलन एकैकी नहीं है: उदाहरण के लिए \\(f(1.2) = f(1.5) = 1\\), जबकि \\(1.2 \\ne 1.5\\)। यह आच्छादक भी नहीं है: \\(f(x) = [x]\\) केवल पूर्णांक मान लेता है, अतः सहप्रान्त \\(R\\) की वास्तविक संख्या \\(0.5\\) का कोई पूर्व-प्रतिबिम्ब नहीं है। अतः फलन विकल्प न तो एकैकी और न ही आच्छादक है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "answer": "D",
+      "solution": "The function is not one-one: for example \\(f(1.2) = f(1.5) = 1\\), although \\(1.2 \\ne 1.5\\). It is not onto either: \\(f(x) = [x]\\) takes only integer values, so a real number such as \\(0.5\\) in the co-domain \\(R\\) has no pre-image. Hence the function is the choice neither one-one nor onto.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q1c",
@@ -68,16 +98,36 @@
       "difficulty": "EASY",
       "stem": "The order of the differential equation \\(\\left(\\frac{d^3y}{dx^3}\\right)^2 + \\log x \\left(\\frac{d^2y}{dx^2}\\right)^3 + 5y = \\cos x\\) will be",
       "options": [
-        { "label": "A", "text": "2" },
-        { "label": "B", "text": "3" },
-        { "label": "C", "text": "5" },
-        { "label": "D", "text": "6" }
+        {
+          "label": "A",
+          "text": "2"
+        },
+        {
+          "label": "B",
+          "text": "3"
+        },
+        {
+          "label": "C",
+          "text": "5"
+        },
+        {
+          "label": "D",
+          "text": "6"
+        }
       ],
       "hi": {
         "stem": "अवकल समीकरण \\(\\left(\\frac{d^3y}{dx^3}\\right)^2 + \\log x \\left(\\frac{d^2y}{dx^2}\\right)^3 + 5y = \\cos x\\) की कोटि है",
-        "options": ["2", "3", "5", "6"]
+        "options": [
+          "2",
+          "3",
+          "5",
+          "6"
+        ],
+        "solution": "किसी अवकल समीकरण की कोटि उसमें उपस्थित उच्चतम अवकलज की कोटि होती है। यहाँ उच्चतम अवकलज \\(\\frac{d^3y}{dx^3}\\) है, अतः कोटि 3 है, जो विकल्प 3 है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
       },
-      "_flag": "A rubber stamp crosses \"cos x\" in the English print; the Hindi print shows it clearly."
+      "_flag": "A rubber stamp crosses \"cos x\" in the English print; the Hindi print shows it clearly.",
+      "answer": "B",
+      "solution": "The order of a differential equation is the order of the highest derivative occurring in it. Here the highest derivative is \\(\\frac{d^3y}{dx^3}\\), so the order is 3, which is the choice 3.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q1d",
@@ -90,10 +140,22 @@
       "difficulty": "EASY",
       "stem": "If the coordinates of the points \\(P\\) and \\(Q\\) are respectively \\((2, 3, 0)\\) and \\((-1, -2, -4)\\), the vector \\(\\overrightarrow{PQ}\\) will be",
       "options": [
-        { "label": "A", "text": "\\(-3\\hat{i} - 5\\hat{j} + 4\\hat{k}\\)" },
-        { "label": "B", "text": "\\(3\\hat{i} + 5\\hat{j} + 4\\hat{k}\\)" },
-        { "label": "C", "text": "\\(-3\\hat{i} - 5\\hat{j} - 4\\hat{k}\\)" },
-        { "label": "D", "text": "\\(3\\hat{i} + 5\\hat{j} - 4\\hat{k}\\)" }
+        {
+          "label": "A",
+          "text": "\\(-3\\hat{i} - 5\\hat{j} + 4\\hat{k}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(3\\hat{i} + 5\\hat{j} + 4\\hat{k}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(-3\\hat{i} - 5\\hat{j} - 4\\hat{k}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(3\\hat{i} + 5\\hat{j} - 4\\hat{k}\\)"
+        }
       ],
       "hi": {
         "stem": "यदि बिन्दुओं \\(P\\) और \\(Q\\) के निर्देशांक क्रमशः \\((2, 3, 0)\\) एवं \\((-1, -2, -4)\\) हों, तो सदिश \\(\\overrightarrow{PQ}\\) होगा",
@@ -102,9 +164,12 @@
           "\\(3\\hat{i} + 5\\hat{j} + 4\\hat{k}\\)",
           "\\(-3\\hat{i} - 5\\hat{j} - 4\\hat{k}\\)",
           "\\(3\\hat{i} + 5\\hat{j} - 4\\hat{k}\\)"
-        ]
+        ],
+        "solution": "\\(\\overrightarrow{PQ}\\) = बिन्दु \\(Q\\) का स्थिति सदिश घटा बिन्दु \\(P\\) का स्थिति सदिश:\n\\(\\overrightarrow{PQ} = (-1-2)\\hat{i} + (-2-3)\\hat{j} + (-4-0)\\hat{k} = -3\\hat{i} - 5\\hat{j} - 4\\hat{k}\\), जो विकल्प \\(-3\\hat{i} - 5\\hat{j} - 4\\hat{k}\\) है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
       },
-      "_flag": "A pen mark covers the end of the Hindi line (\"तो सदिश\"); the word is completed from the sentence and the English \"the vector\"."
+      "_flag": "A pen mark covers the end of the Hindi line (\"तो सदिश\"); the word is completed from the sentence and the English \"the vector\".",
+      "answer": "C",
+      "solution": "\\(\\overrightarrow{PQ}\\) is the position vector of the point \\(Q\\) minus that of the point \\(P\\):\n\\(\\overrightarrow{PQ} = (-1-2)\\hat{i} + (-2-3)\\hat{j} + (-4-0)\\hat{k} = -3\\hat{i} - 5\\hat{j} - 4\\hat{k}\\), which is the choice \\(-3\\hat{i} - 5\\hat{j} - 4\\hat{k}\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q1e",
@@ -117,10 +182,22 @@
       "difficulty": "EASY",
       "stem": "If \\(2X + Y = \\begin{bmatrix} 1 & 0 \\\\ -3 & 2 \\end{bmatrix}\\) and \\(Y = \\begin{bmatrix} 3 & 2 \\\\ 1 & 4 \\end{bmatrix}\\), then \\(X\\) will be",
       "options": [
-        { "label": "A", "text": "\\(\\begin{bmatrix} -1 & -1 \\\\ -2 & -2 \\end{bmatrix}\\)" },
-        { "label": "B", "text": "\\(\\begin{bmatrix} -1 & -1 \\\\ -2 & -1 \\end{bmatrix}\\)" },
-        { "label": "C", "text": "\\(\\begin{bmatrix} -2 & -1 \\\\ -1 & -1 \\end{bmatrix}\\)" },
-        { "label": "D", "text": "\\(\\begin{bmatrix} -1 & -2 \\\\ -1 & -1 \\end{bmatrix}\\)" }
+        {
+          "label": "A",
+          "text": "\\(\\begin{bmatrix} -1 & -1 \\\\ -2 & -2 \\end{bmatrix}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\begin{bmatrix} -1 & -1 \\\\ -2 & -1 \\end{bmatrix}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\begin{bmatrix} -2 & -1 \\\\ -1 & -1 \\end{bmatrix}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\begin{bmatrix} -1 & -2 \\\\ -1 & -1 \\end{bmatrix}\\)"
+        }
       ],
       "hi": {
         "stem": "यदि \\(2X + Y = \\begin{bmatrix} 1 & 0 \\\\ -3 & 2 \\end{bmatrix}\\) तथा \\(Y = \\begin{bmatrix} 3 & 2 \\\\ 1 & 4 \\end{bmatrix}\\), तो \\(X\\) होगा",
@@ -129,8 +206,11 @@
           "\\(\\begin{bmatrix} -1 & -1 \\\\ -2 & -1 \\end{bmatrix}\\)",
           "\\(\\begin{bmatrix} -2 & -1 \\\\ -1 & -1 \\end{bmatrix}\\)",
           "\\(\\begin{bmatrix} -1 & -2 \\\\ -1 & -1 \\end{bmatrix}\\)"
-        ]
-      }
+        ],
+        "solution": "\\(2X + Y\\) में से आव्यूह \\(Y\\) घटाने पर:\n\\(2X = \\begin{bmatrix} 1-3 & 0-2 \\\\ -3-1 & 2-4 \\end{bmatrix} = \\begin{bmatrix} -2 & -2 \\\\ -4 & -2 \\end{bmatrix}\\), अतः \\(X = \\begin{bmatrix} -1 & -1 \\\\ -2 & -1 \\end{bmatrix}\\), जो विकल्प \\(\\begin{bmatrix} -1 & -1 \\\\ -2 & -1 \\end{bmatrix}\\) है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "answer": "B",
+      "solution": "Subtracting the matrix \\(Y\\) from \\(2X + Y\\):\n\\(2X = \\begin{bmatrix} 1-3 & 0-2 \\\\ -3-1 & 2-4 \\end{bmatrix} = \\begin{bmatrix} -2 & -2 \\\\ -4 & -2 \\end{bmatrix}\\), so \\(X = \\begin{bmatrix} -1 & -1 \\\\ -2 & -1 \\end{bmatrix}\\), which is the choice \\(\\begin{bmatrix} -1 & -1 \\\\ -2 & -1 \\end{bmatrix}\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q2a",
@@ -143,9 +223,11 @@
       "difficulty": "EASY",
       "stem": "Find the principal value of \\(\\operatorname{cosec}^{-1}(-\\sqrt{2})\\).",
       "hi": {
-        "stem": "\\(\\operatorname{cosec}^{-1}(-\\sqrt{2})\\) का मुख्य मान ज्ञात कीजिए।"
+        "stem": "\\(\\operatorname{cosec}^{-1}(-\\sqrt{2})\\) का मुख्य मान ज्ञात कीजिए।",
+        "solution": "\\(\\operatorname{cosec}^{-1}\\) की मुख्य मान शाखा \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right] - \\{0\\}\\) है। चूँकि \\(\\operatorname{cosec}\\left(-\\frac{\\pi}{4}\\right) = -\\operatorname{cosec}\\frac{\\pi}{4} = -\\sqrt{2}\\) तथा \\(-\\frac{\\pi}{4}\\) इस शाखा में है, अतः \\(\\operatorname{cosec}^{-1}(-\\sqrt{2})\\) का मुख्य मान \\(-\\frac{\\pi}{4}\\) है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
       },
-      "_flag": "A rubber stamp crosses the \"-1\" exponent in the English print; the Hindi print shows it clearly."
+      "_flag": "A rubber stamp crosses the \"-1\" exponent in the English print; the Hindi print shows it clearly.",
+      "solution": "The principal value branch of \\(\\operatorname{cosec}^{-1}\\) is \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right] - \\{0\\}\\). Since \\(\\operatorname{cosec}\\left(-\\frac{\\pi}{4}\\right) = -\\operatorname{cosec}\\frac{\\pi}{4} = -\\sqrt{2}\\) and \\(-\\frac{\\pi}{4}\\) lies in this branch, the principal value of \\(\\operatorname{cosec}^{-1}(-\\sqrt{2})\\) is \\(-\\frac{\\pi}{4}\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q2b",
@@ -158,8 +240,10 @@
       "difficulty": "EASY",
       "stem": "Test whether the function defined by \\(f(x) = x^2 - \\sin x + 5\\) is continuous at \\(x = \\pi\\).",
       "hi": {
-        "stem": "जाँच कीजिए कि क्या \\(f(x) = x^2 - \\sin x + 5\\) द्वारा परिभाषित फलन \\(x = \\pi\\) पर सतत है।"
-      }
+        "stem": "जाँच कीजिए कि क्या \\(f(x) = x^2 - \\sin x + 5\\) द्वारा परिभाषित फलन \\(x = \\pi\\) पर सतत है।",
+        "solution": "\\(x = \\pi\\) पर: \\(f(\\pi) = \\pi^2 - \\sin\\pi + 5 = \\pi^2 + 5\\)।\nचूँकि \\(x^2\\), \\(\\sin x\\) तथा अचर फलन सतत हैं, अतः \\(\\lim_{x \\to \\pi} f(x) = \\pi^2 - \\sin\\pi + 5 = \\pi^2 + 5\\)।\nचूँकि \\(\\lim_{x \\to \\pi} f(x) = f(\\pi)\\), अतः फलन \\(x = \\pi\\) पर सतत है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "At \\(x = \\pi\\): \\(f(\\pi) = \\pi^2 - \\sin\\pi + 5 = \\pi^2 + 5\\).\nSince \\(x^2\\), \\(\\sin x\\) and constants are continuous, \\(\\lim_{x \\to \\pi} f(x) = \\pi^2 - \\sin\\pi + 5 = \\pi^2 + 5\\).\nAs \\(\\lim_{x \\to \\pi} f(x) = f(\\pi)\\), the function is continuous at \\(x = \\pi\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q2c",
@@ -172,8 +256,10 @@
       "difficulty": "EASY",
       "stem": "Evaluate : \\(\\int \\operatorname{cosec} x (\\operatorname{cosec} x + \\cot x)\\, dx\\).",
       "hi": {
-        "stem": "\\(\\int \\operatorname{cosec} x (\\operatorname{cosec} x + \\cot x)\\, dx\\) का मान ज्ञात कीजिए।"
-      }
+        "stem": "\\(\\int \\operatorname{cosec} x (\\operatorname{cosec} x + \\cot x)\\, dx\\) का मान ज्ञात कीजिए।",
+        "solution": "समाकल्य को खोलकर मानक समाकलों का प्रयोग करने पर:\n\\(\\int \\operatorname{cosec} x(\\operatorname{cosec} x + \\cot x)\\,dx = \\int \\operatorname{cosec}^2 x\\,dx + \\int \\operatorname{cosec} x \\cot x\\,dx = -\\cot x - \\operatorname{cosec} x + C\\)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Expanding the integrand and using the standard integrals:\n\\(\\int \\operatorname{cosec} x(\\operatorname{cosec} x + \\cot x)\\,dx = \\int \\operatorname{cosec}^2 x\\,dx + \\int \\operatorname{cosec} x \\cot x\\,dx = -\\cot x - \\operatorname{cosec} x + C\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q2d",
@@ -186,8 +272,10 @@
       "difficulty": "EASY",
       "stem": "If \\(2P(A) = P(B) = \\frac{5}{13}\\) and \\(P(A/B) = \\frac{2}{5}\\), then find \\(P(A \\cup B)\\).",
       "hi": {
-        "stem": "यदि \\(2P(A) = P(B) = \\frac{5}{13}\\) और \\(P(A/B) = \\frac{2}{5}\\) तो \\(P(A \\cup B)\\) ज्ञात कीजिए।"
-      }
+        "stem": "यदि \\(2P(A) = P(B) = \\frac{5}{13}\\) और \\(P(A/B) = \\frac{2}{5}\\) तो \\(P(A \\cup B)\\) ज्ञात कीजिए।",
+        "solution": "यहाँ \\(P(B) = \\frac{5}{13}\\) तथा \\(P(A) = \\frac{5}{26}\\)।\n\\(P(A \\cap B) = P(A/B)\\,P(B) = \\frac{2}{5} \\times \\frac{5}{13} = \\frac{2}{13}\\)।\n\\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = \\frac{5}{26} + \\frac{10}{26} - \\frac{4}{26} = \\frac{11}{26}\\)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Here \\(P(B) = \\frac{5}{13}\\) and \\(P(A) = \\frac{5}{26}\\).\n\\(P(A \\cap B) = P(A/B)\\,P(B) = \\frac{2}{5} \\times \\frac{5}{13} = \\frac{2}{13}\\).\n\\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = \\frac{5}{26} + \\frac{10}{26} - \\frac{4}{26} = \\frac{11}{26}\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q2e",
@@ -200,8 +288,10 @@
       "difficulty": "EASY",
       "stem": "Find the direction-cosines of the \\(y\\)-axis.",
       "hi": {
-        "stem": "\\(y\\)-अक्ष की दिक्-कोज्यायें ज्ञात कीजिए।"
-      }
+        "stem": "\\(y\\)-अक्ष की दिक्-कोज्यायें ज्ञात कीजिए।",
+        "solution": "\\(y\\)-अक्ष, \\(x\\)-, \\(y\\)- तथा \\(z\\)-अक्षों से क्रमशः \\(90^\\circ\\), \\(0^\\circ\\) तथा \\(90^\\circ\\) के कोण बनाता है। अतः इसकी दिक्-कोज्याएँ \\(\\cos 90^\\circ, \\cos 0^\\circ, \\cos 90^\\circ\\) अर्थात् \\(0, 1, 0\\) हैं।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "The \\(y\\)-axis makes angles \\(90^\\circ\\), \\(0^\\circ\\) and \\(90^\\circ\\) with the \\(x\\)-, \\(y\\)- and \\(z\\)-axes. So its direction cosines are \\(\\cos 90^\\circ, \\cos 0^\\circ, \\cos 90^\\circ\\), that is, \\(0, 1, 0\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q3a",
@@ -214,8 +304,10 @@
       "difficulty": "MODERATE",
       "stem": "Differentiate \\(x^{\\sin x}\\) with respect to \\(x\\), while \\(x > 0\\).",
       "hi": {
-        "stem": "\\(x\\) के सापेक्ष \\(x^{\\sin x}\\) का अवकलन कीजिए, जबकि \\(x > 0\\) है।"
-      }
+        "stem": "\\(x\\) के सापेक्ष \\(x^{\\sin x}\\) का अवकलन कीजिए, जबकि \\(x > 0\\) है।",
+        "solution": "माना \\(y = x^{\\sin x}\\), \\(x > 0\\)। दोनों पक्षों का लघुगणक लेने पर:\n\\(\\log y = \\sin x \\log x\\)।\n\\(x\\) के सापेक्ष अवकलन करने पर:\n\\(\\frac{1}{y}\\frac{dy}{dx} = \\cos x \\log x + \\sin x \\cdot \\frac{1}{x}\\)।\nअतः \\(\\frac{dy}{dx} = x^{\\sin x}\\left(\\cos x \\log x + \\frac{\\sin x}{x}\\right)\\)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Let \\(y = x^{\\sin x}\\), \\(x > 0\\). Taking logarithms on both sides:\n\\(\\log y = \\sin x \\log x\\).\nDifferentiating with respect to \\(x\\):\n\\(\\frac{1}{y}\\frac{dy}{dx} = \\cos x \\log x + \\sin x \\cdot \\frac{1}{x}\\).\nHence \\(\\frac{dy}{dx} = x^{\\sin x}\\left(\\cos x \\log x + \\frac{\\sin x}{x}\\right)\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q3b",
@@ -228,8 +320,10 @@
       "difficulty": "EASY",
       "stem": "Evaluate : \\(\\int \\frac{dx}{\\sqrt{(x^2 - a^2)}}\\).",
       "hi": {
-        "stem": "\\(\\int \\frac{dx}{\\sqrt{(x^2 - a^2)}}\\) का मान ज्ञात कीजिए।"
-      }
+        "stem": "\\(\\int \\frac{dx}{\\sqrt{(x^2 - a^2)}}\\) का मान ज्ञात कीजिए।",
+        "solution": "माना \\(x = a\\sec\\theta\\), तब \\(dx = a\\sec\\theta\\tan\\theta\\,d\\theta\\) तथा \\(\\sqrt{x^2 - a^2} = a\\tan\\theta\\)।\n\\(\\int \\frac{dx}{\\sqrt{x^2 - a^2}} = \\int \\frac{a\\sec\\theta\\tan\\theta}{a\\tan\\theta}\\,d\\theta = \\int \\sec\\theta\\,d\\theta = \\log|\\sec\\theta + \\tan\\theta| + C_1\\)\n\\(= \\log\\left|\\frac{x}{a} + \\frac{\\sqrt{x^2 - a^2}}{a}\\right| + C_1 = \\log\\left|x + \\sqrt{x^2 - a^2}\\right| - \\log|a| + C_1\\)।\nअतः \\(\\int \\frac{dx}{\\sqrt{x^2 - a^2}} = \\log\\left|x + \\sqrt{x^2 - a^2}\\right| + C\\), जहाँ \\(C = C_1 - \\log|a|\\)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Put \\(x = a\\sec\\theta\\), so \\(dx = a\\sec\\theta\\tan\\theta\\,d\\theta\\) and \\(\\sqrt{x^2 - a^2} = a\\tan\\theta\\).\n\\(\\int \\frac{dx}{\\sqrt{x^2 - a^2}} = \\int \\frac{a\\sec\\theta\\tan\\theta}{a\\tan\\theta}\\,d\\theta = \\int \\sec\\theta\\,d\\theta = \\log|\\sec\\theta + \\tan\\theta| + C_1\\)\n\\(= \\log\\left|\\frac{x}{a} + \\frac{\\sqrt{x^2 - a^2}}{a}\\right| + C_1 = \\log\\left|x + \\sqrt{x^2 - a^2}\\right| - \\log|a| + C_1\\).\nHence \\(\\int \\frac{dx}{\\sqrt{x^2 - a^2}} = \\log\\left|x + \\sqrt{x^2 - a^2}\\right| + C\\), where \\(C = C_1 - \\log|a|\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q3c",
@@ -242,8 +336,10 @@
       "difficulty": "MODERATE",
       "stem": "Let a relation \\(R\\) be defined in the set \\(N \\times N\\) as follows :\n\\((a, b)\\, R\\, (c, d)\\) if and only if \\(a + d = b + c\\).\nProve that \\(R\\) is an equivalence relation.",
       "hi": {
-        "stem": "मान लीजिए कि समुच्चय \\(N \\times N\\) में एक सम्बन्ध \\(R\\) निम्नवत् परिभाषित है :\n\\((a, b)\\, R\\, (c, d)\\) यदि और केवल यदि \\(a + d = b + c\\).\nसिद्ध कीजिए कि \\(R\\) एक तुल्यता सम्बन्ध है।"
-      }
+        "stem": "मान लीजिए कि समुच्चय \\(N \\times N\\) में एक सम्बन्ध \\(R\\) निम्नवत् परिभाषित है :\n\\((a, b)\\, R\\, (c, d)\\) यदि और केवल यदि \\(a + d = b + c\\).\nसिद्ध कीजिए कि \\(R\\) एक तुल्यता सम्बन्ध है।",
+        "solution": "**स्वतुल्य:** किसी भी \\((a, b) \\in N \\times N\\) के लिए \\(a + b = b + a\\), अतः \\((a, b)\\,R\\,(a, b)\\)।\n\n**सममित:** माना \\((a, b)\\,R\\,(c, d)\\)। तब \\(a + d = b + c\\) अर्थात् \\(c + b = d + a\\), अतः \\((c, d)\\,R\\,(a, b)\\)।\n\n**संक्रामक:** माना \\((a, b)\\,R\\,(c, d)\\) तथा \\((c, d)\\,R\\,(e, f)\\)। तब \\(a + d = b + c\\) तथा \\(c + f = d + e\\)। जोड़ने पर \\(a + d + c + f = b + c + d + e\\), अतः \\(a + f = b + e\\) अर्थात् \\((a, b)\\,R\\,(e, f)\\)।\n\nचूँकि \\(R\\) स्वतुल्य, सममित तथा संक्रामक है, अतः \\(R\\) एक तुल्यता सम्बन्ध है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "**Reflexive:** for any \\((a, b) \\in N \\times N\\), \\(a + b = b + a\\), so \\((a, b)\\,R\\,(a, b)\\).\n\n**Symmetric:** let \\((a, b)\\,R\\,(c, d)\\). Then \\(a + d = b + c\\), that is, \\(c + b = d + a\\), so \\((c, d)\\,R\\,(a, b)\\).\n\n**Transitive:** let \\((a, b)\\,R\\,(c, d)\\) and \\((c, d)\\,R\\,(e, f)\\). Then \\(a + d = b + c\\) and \\(c + f = d + e\\). Adding, \\(a + d + c + f = b + c + d + e\\), so \\(a + f = b + e\\), that is, \\((a, b)\\,R\\,(e, f)\\).\n\nSince \\(R\\) is reflexive, symmetric and transitive, \\(R\\) is an equivalence relation.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q3d",
@@ -256,9 +352,11 @@
       "difficulty": "EASY",
       "stem": "Find the projection of the vector \\(\\vec{a} = 2\\hat{i} + 3\\hat{j} + 2\\hat{k}\\) on the vector \\(\\vec{b} = \\hat{i} + 2\\hat{j} + \\hat{k}\\).",
       "hi": {
-        "stem": "सदिश \\(\\vec{a} = 2\\hat{i} + 3\\hat{j} + 2\\hat{k}\\) का, सदिश \\(\\vec{b} = \\hat{i} + 2\\hat{j} + \\hat{k}\\) पर प्रक्षेप ज्ञात कीजिए।"
+        "stem": "सदिश \\(\\vec{a} = 2\\hat{i} + 3\\hat{j} + 2\\hat{k}\\) का, सदिश \\(\\vec{b} = \\hat{i} + 2\\hat{j} + \\hat{k}\\) पर प्रक्षेप ज्ञात कीजिए।",
+        "solution": "\\(\\vec{a}\\) का \\(\\vec{b}\\) पर प्रक्षेप \\(\\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{b}|}\\) होता है।\n\\(\\vec{a} \\cdot \\vec{b} = (2)(1) + (3)(2) + (2)(1) = 10\\) तथा \\(|\\vec{b}| = \\sqrt{1^2 + 2^2 + 1^2} = \\sqrt{6}\\)।\nअतः प्रक्षेप \\(\\frac{10}{\\sqrt{6}} = \\frac{5\\sqrt{6}}{3}\\) है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
       },
-      "_flag": "A pen mark covers the first term of b in the Hindi print; the English print shows it clearly."
+      "_flag": "A pen mark covers the first term of b in the Hindi print; the English print shows it clearly.",
+      "solution": "The projection of \\(\\vec{a}\\) on \\(\\vec{b}\\) is \\(\\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{b}|}\\).\n\\(\\vec{a} \\cdot \\vec{b} = (2)(1) + (3)(2) + (2)(1) = 10\\) and \\(|\\vec{b}| = \\sqrt{1^2 + 2^2 + 1^2} = \\sqrt{6}\\).\nSo the projection is \\(\\frac{10}{\\sqrt{6}} = \\frac{5\\sqrt{6}}{3}\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q4a",
@@ -271,8 +369,10 @@
       "difficulty": "EASY",
       "stem": "Evaluate : \\(\\int \\frac{dx}{(x+1)(x+2)}\\).",
       "hi": {
-        "stem": "\\(\\int \\frac{dx}{(x+1)(x+2)}\\) का मान ज्ञात कीजिए।"
-      }
+        "stem": "\\(\\int \\frac{dx}{(x+1)(x+2)}\\) का मान ज्ञात कीजिए।",
+        "solution": "आंशिक भिन्नों में वियोजित करने पर \\(\\frac{1}{(x+1)(x+2)} = \\frac{1}{x+1} - \\frac{1}{x+2}\\)।\nअतः \\(\\int \\frac{dx}{(x+1)(x+2)} = \\int \\frac{dx}{x+1} - \\int \\frac{dx}{x+2} = \\log|x+1| - \\log|x+2| + C = \\log\\left|\\frac{x+1}{x+2}\\right| + C\\)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "By partial fractions, \\(\\frac{1}{(x+1)(x+2)} = \\frac{1}{x+1} - \\frac{1}{x+2}\\).\nSo \\(\\int \\frac{dx}{(x+1)(x+2)} = \\int \\frac{dx}{x+1} - \\int \\frac{dx}{x+2} = \\log|x+1| - \\log|x+2| + C = \\log\\left|\\frac{x+1}{x+2}\\right| + C\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q4b",
@@ -285,9 +385,11 @@
       "difficulty": "MODERATE",
       "stem": "In a leap year, selected at random, find the probability that there are 53 Tuesdays.",
       "hi": {
-        "stem": "यादृच्छया चुने गये किसी अधिवर्ष में 53 मंगलवार होने की प्रायिकता ज्ञात कीजिए।"
+        "stem": "यादृच्छया चुने गये किसी अधिवर्ष में 53 मंगलवार होने की प्रायिकता ज्ञात कीजिए।",
+        "solution": "अधिवर्ष में 366 दिन होते हैं, अर्थात् 52 पूरे सप्ताह और 2 अतिरिक्त दिन। 52 सप्ताहों में 52 मंगलवार होते हैं, अतः 53 मंगलवार तभी होंगे जब 2 अतिरिक्त दिनों में से एक मंगलवार हो।\n2 अतिरिक्त दिन इन 7 समसम्भावी युग्मों में से कोई एक हो सकते हैं: (रविवार, सोमवार), (सोमवार, मंगलवार), (मंगलवार, बुधवार), (बुधवार, गुरुवार), (गुरुवार, शुक्रवार), (शुक्रवार, शनिवार), (शनिवार, रविवार)।\nइनमें से दो युग्मों में मंगलवार है, अतः अभीष्ट प्रायिकता \\(\\frac{2}{7}\\) है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
       },
-      "_flag": "Classical probability (53 Tuesdays in a leap year) has no subtopic of its own; filed under the closest, Conditional Probability."
+      "_flag": "Classical probability (53 Tuesdays in a leap year) has no subtopic of its own; filed under the closest, Conditional Probability.",
+      "solution": "A leap year has 366 days, that is, 52 complete weeks and 2 extra days. The 52 weeks give 52 Tuesdays, so there are 53 Tuesdays only if one of the 2 extra days is a Tuesday.\nThe 2 extra days can be any one of 7 equally likely pairs: (Sunday, Monday), (Monday, Tuesday), (Tuesday, Wednesday), (Wednesday, Thursday), (Thursday, Friday), (Friday, Saturday), (Saturday, Sunday).\nTwo of these pairs contain a Tuesday, so the required probability is \\(\\frac{2}{7}\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q4c",
@@ -300,8 +402,10 @@
       "difficulty": "EASY",
       "stem": "If \\(A = \\begin{bmatrix} \\cos\\alpha & \\sin\\alpha \\\\ -\\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\), verify that \\(A'A = I\\).",
       "hi": {
-        "stem": "यदि \\(A = \\begin{bmatrix} \\cos\\alpha & \\sin\\alpha \\\\ -\\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\), तो सत्यापित कीजिए कि \\(A'A = I\\)."
-      }
+        "stem": "यदि \\(A = \\begin{bmatrix} \\cos\\alpha & \\sin\\alpha \\\\ -\\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\), तो सत्यापित कीजिए कि \\(A'A = I\\).",
+        "solution": "आव्यूह \\(A\\) का परिवर्त \\(A' = \\begin{bmatrix} \\cos\\alpha & -\\sin\\alpha \\\\ \\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\) है।\n\\(A'A = \\begin{bmatrix} \\cos\\alpha & -\\sin\\alpha \\\\ \\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\begin{bmatrix} \\cos\\alpha & \\sin\\alpha \\\\ -\\sin\\alpha & \\cos\\alpha \\end{bmatrix} = \\begin{bmatrix} \\cos^2\\alpha + \\sin^2\\alpha & \\cos\\alpha\\sin\\alpha - \\sin\\alpha\\cos\\alpha \\\\ \\sin\\alpha\\cos\\alpha - \\cos\\alpha\\sin\\alpha & \\sin^2\\alpha + \\cos^2\\alpha \\end{bmatrix} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = I\\)।\nअतः \\(A'A = I\\) सत्यापित हुआ।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "The transpose of the matrix \\(A\\) is \\(A' = \\begin{bmatrix} \\cos\\alpha & -\\sin\\alpha \\\\ \\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\).\n\\(A'A = \\begin{bmatrix} \\cos\\alpha & -\\sin\\alpha \\\\ \\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\begin{bmatrix} \\cos\\alpha & \\sin\\alpha \\\\ -\\sin\\alpha & \\cos\\alpha \\end{bmatrix} = \\begin{bmatrix} \\cos^2\\alpha + \\sin^2\\alpha & \\cos\\alpha\\sin\\alpha - \\sin\\alpha\\cos\\alpha \\\\ \\sin\\alpha\\cos\\alpha - \\cos\\alpha\\sin\\alpha & \\sin^2\\alpha + \\cos^2\\alpha \\end{bmatrix} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = I\\).\nHence \\(A'A = I\\) is verified.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q4d",
@@ -314,8 +418,10 @@
       "difficulty": "EASY",
       "stem": "Show that the given function \\(f\\), \\(f(x) = x^3 - 3x^2 + 4x\\), \\(x \\in R\\) is an increasing function in \\(R\\).",
       "hi": {
-        "stem": "दर्शाइए कि प्रदत्त फलन \\(f\\), \\(f(x) = x^3 - 3x^2 + 4x\\), \\(x \\in R\\), \\(R\\) में वर्धमान फलन है।"
-      }
+        "stem": "दर्शाइए कि प्रदत्त फलन \\(f\\), \\(f(x) = x^3 - 3x^2 + 4x\\), \\(x \\in R\\), \\(R\\) में वर्धमान फलन है।",
+        "solution": "\\(f(x) = x^3 - 3x^2 + 4x\\), अतः \\(f'(x) = 3x^2 - 6x + 4 = 3(x^2 - 2x + 1) + 1 = 3(x - 1)^2 + 1\\)।\nचूँकि प्रत्येक वास्तविक \\(x\\) के लिए \\(3(x - 1)^2 \\ge 0\\), अतः सभी \\(x \\in R\\) के लिए \\(f'(x) \\ge 1 > 0\\)। अतः \\(f\\), \\(R\\) में वर्धमान फलन है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "\\(f(x) = x^3 - 3x^2 + 4x\\), so \\(f'(x) = 3x^2 - 6x + 4 = 3(x^2 - 2x + 1) + 1 = 3(x - 1)^2 + 1\\).\nSince \\(3(x - 1)^2 \\ge 0\\) for every real \\(x\\), \\(f'(x) \\ge 1 > 0\\) for all \\(x \\in R\\). Hence \\(f\\) is an increasing function in \\(R\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q5a",
@@ -328,9 +434,11 @@
       "difficulty": "MODERATE",
       "stem": "Find the value of the determinant \\(\\begin{vmatrix} a^2+1 & ab & ac \\\\ ab & b^2+1 & bc \\\\ ca & cb & c^2+1 \\end{vmatrix}\\).",
       "hi": {
-        "stem": "सारणिक \\(\\begin{vmatrix} a^2+1 & ab & ac \\\\ ab & b^2+1 & bc \\\\ ca & cb & c^2+1 \\end{vmatrix}\\) का मान ज्ञात कीजिए।"
+        "stem": "सारणिक \\(\\begin{vmatrix} a^2+1 & ab & ac \\\\ ab & b^2+1 & bc \\\\ ca & cb & c^2+1 \\end{vmatrix}\\) का मान ज्ञात कीजिए।",
+        "solution": "माना \\(\\Delta = \\begin{vmatrix} a^2+1 & ab & ac \\\\ ab & b^2+1 & bc \\\\ ca & cb & c^2+1 \\end{vmatrix}\\)। पहले \\(a, b, c\\) को शून्येतर मानते हैं।\n\n\\(R_1, R_2, R_3\\) को क्रमशः \\(a, b, c\\) से गुणा करके \\(abc\\) से भाग देने पर:\n\\(\\Delta = \\frac{1}{abc}\\begin{vmatrix} a(a^2+1) & a^2b & a^2c \\\\ ab^2 & b(b^2+1) & b^2c \\\\ ac^2 & bc^2 & c(c^2+1) \\end{vmatrix}\\)।\n\n\\(C_1, C_2, C_3\\) से क्रमशः \\(a, b, c\\) उभयनिष्ठ लेने पर:\n\\(\\Delta = \\frac{abc}{abc}\\begin{vmatrix} a^2+1 & a^2 & a^2 \\\\ b^2 & b^2+1 & b^2 \\\\ c^2 & c^2 & c^2+1 \\end{vmatrix} = \\begin{vmatrix} a^2+1 & a^2 & a^2 \\\\ b^2 & b^2+1 & b^2 \\\\ c^2 & c^2 & c^2+1 \\end{vmatrix}\\)।\n\n\\(C_2 \\rightarrow C_2 - C_1\\) तथा \\(C_3 \\rightarrow C_3 - C_1\\) का प्रयोग करने पर:\n\\(\\Delta = \\begin{vmatrix} a^2+1 & -1 & -1 \\\\ b^2 & 1 & 0 \\\\ c^2 & 0 & 1 \\end{vmatrix}\\)।\n\n\\(R_1\\) के अनुदिश प्रसार करने पर:\n\\(\\Delta = (a^2+1)(1 \\cdot 1 - 0 \\cdot 0) - (-1)(b^2 \\cdot 1 - 0 \\cdot c^2) + (-1)(b^2 \\cdot 0 - 1 \\cdot c^2)\\)\n\\(= a^2 + 1 + b^2 + c^2\\)।\n\nदोनों पक्ष \\(a, b, c\\) के बहुपद हैं, अतः यह परिणाम शून्य सहित सभी मानों के लिए सत्य है। अतः \\(\\Delta = 1 + a^2 + b^2 + c^2\\)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
       },
-      "_flag": "A rubber stamp crosses the left bar of the English determinant; the Hindi print shows it clearly."
+      "_flag": "A rubber stamp crosses the left bar of the English determinant; the Hindi print shows it clearly.",
+      "solution": "Let \\(\\Delta = \\begin{vmatrix} a^2+1 & ab & ac \\\\ ab & b^2+1 & bc \\\\ ca & cb & c^2+1 \\end{vmatrix}\\). First take \\(a, b, c\\) non-zero.\n\nMultiplying \\(R_1, R_2, R_3\\) by \\(a, b, c\\) respectively and dividing by \\(abc\\):\n\\(\\Delta = \\frac{1}{abc}\\begin{vmatrix} a(a^2+1) & a^2b & a^2c \\\\ ab^2 & b(b^2+1) & b^2c \\\\ ac^2 & bc^2 & c(c^2+1) \\end{vmatrix}\\).\n\nTaking \\(a, b, c\\) common from \\(C_1, C_2, C_3\\) respectively:\n\\(\\Delta = \\frac{abc}{abc}\\begin{vmatrix} a^2+1 & a^2 & a^2 \\\\ b^2 & b^2+1 & b^2 \\\\ c^2 & c^2 & c^2+1 \\end{vmatrix} = \\begin{vmatrix} a^2+1 & a^2 & a^2 \\\\ b^2 & b^2+1 & b^2 \\\\ c^2 & c^2 & c^2+1 \\end{vmatrix}\\).\n\nApplying \\(C_2 \\rightarrow C_2 - C_1\\) and \\(C_3 \\rightarrow C_3 - C_1\\):\n\\(\\Delta = \\begin{vmatrix} a^2+1 & -1 & -1 \\\\ b^2 & 1 & 0 \\\\ c^2 & 0 & 1 \\end{vmatrix}\\).\n\nExpanding along \\(R_1\\):\n\\(\\Delta = (a^2+1)(1 \\cdot 1 - 0 \\cdot 0) - (-1)(b^2 \\cdot 1 - 0 \\cdot c^2) + (-1)(b^2 \\cdot 0 - 1 \\cdot c^2)\\)\n\\(= a^2 + 1 + b^2 + c^2\\).\n\nBoth sides are polynomials in \\(a, b, c\\), so the result holds for all values, including zero. Hence \\(\\Delta = 1 + a^2 + b^2 + c^2\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q5b",
@@ -343,9 +451,11 @@
       "difficulty": "MODERATE",
       "stem": "If \\(y = (\\tan^{-1} x)^2\\), show that \\((x^2+1)^2 \\frac{d^2y}{dx^2} + 2x(x^2+1)\\frac{dy}{dx} = 2\\).",
       "hi": {
-        "stem": "यदि \\(y = (\\tan^{-1} x)^2\\), दर्शाइए कि \\((x^2+1)^2 \\frac{d^2y}{dx^2} + 2x(x^2+1)\\frac{dy}{dx} = 2\\)."
+        "stem": "यदि \\(y = (\\tan^{-1} x)^2\\), दर्शाइए कि \\((x^2+1)^2 \\frac{d^2y}{dx^2} + 2x(x^2+1)\\frac{dy}{dx} = 2\\).",
+        "solution": "दिया है \\(y = (\\tan^{-1} x)^2\\)। \\(x\\) के सापेक्ष अवकलन करने पर:\n\\(\\frac{dy}{dx} = 2\\tan^{-1} x \\cdot \\frac{1}{1+x^2}\\), अतः \\((1+x^2)\\frac{dy}{dx} = 2\\tan^{-1} x\\)।\n\n\\(x\\) के सापेक्ष पुनः अवकलन करने पर:\n\\((1+x^2)\\frac{d^2y}{dx^2} + 2x\\frac{dy}{dx} = \\frac{2}{1+x^2}\\)।\n\nदोनों पक्षों को \\((1+x^2)\\) से गुणा करने पर:\n\\((x^2+1)^2\\frac{d^2y}{dx^2} + 2x(x^2+1)\\frac{dy}{dx} = 2\\)।\nइति सिद्धम्।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
       },
-      "_flag": "A rubber stamp crosses \"+1)\" in the first bracket of the English print; the Hindi print shows it clearly."
+      "_flag": "A rubber stamp crosses \"+1)\" in the first bracket of the English print; the Hindi print shows it clearly.",
+      "solution": "Given \\(y = (\\tan^{-1} x)^2\\). Differentiating with respect to \\(x\\):\n\\(\\frac{dy}{dx} = 2\\tan^{-1} x \\cdot \\frac{1}{1+x^2}\\), so \\((1+x^2)\\frac{dy}{dx} = 2\\tan^{-1} x\\).\n\nDifferentiating again with respect to \\(x\\):\n\\((1+x^2)\\frac{d^2y}{dx^2} + 2x\\frac{dy}{dx} = \\frac{2}{1+x^2}\\).\n\nMultiplying both sides by \\((1+x^2)\\):\n\\((x^2+1)^2\\frac{d^2y}{dx^2} + 2x(x^2+1)\\frac{dy}{dx} = 2\\).\nHence proved.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q5c",
@@ -358,8 +468,10 @@
       "difficulty": "MODERATE",
       "stem": "Find the shortest distance between the lines whose vector equations are\n\\(\\vec{r} = (\\hat{i} + 2\\hat{j} + 3\\hat{k}) + \\lambda(\\hat{i} - 3\\hat{j} + 2\\hat{k})\\) and \\(\\vec{r} = 4\\hat{i} + 5\\hat{j} + 6\\hat{k} + \\mu(2\\hat{i} + 3\\hat{j} + \\hat{k})\\).",
       "hi": {
-        "stem": "रेखाएँ, जिनके सदिश समीकरण \\(\\vec{r} = (\\hat{i} + 2\\hat{j} + 3\\hat{k}) + \\lambda(\\hat{i} - 3\\hat{j} + 2\\hat{k})\\) और \\(\\vec{r} = 4\\hat{i} + 5\\hat{j} + 6\\hat{k} + \\mu(2\\hat{i} + 3\\hat{j} + \\hat{k})\\) है, के बीच की न्यूनतम दूरी ज्ञात कीजिए।"
-      }
+        "stem": "रेखाएँ, जिनके सदिश समीकरण \\(\\vec{r} = (\\hat{i} + 2\\hat{j} + 3\\hat{k}) + \\lambda(\\hat{i} - 3\\hat{j} + 2\\hat{k})\\) और \\(\\vec{r} = 4\\hat{i} + 5\\hat{j} + 6\\hat{k} + \\mu(2\\hat{i} + 3\\hat{j} + \\hat{k})\\) है, के बीच की न्यूनतम दूरी ज्ञात कीजिए।",
+        "solution": "\\(\\vec{r} = \\vec{a}_1 + \\lambda\\vec{b}_1\\) तथा \\(\\vec{r} = \\vec{a}_2 + \\mu\\vec{b}_2\\) से तुलना करने पर:\n\\(\\vec{a}_1 = \\hat{i} + 2\\hat{j} + 3\\hat{k}\\), \\(\\vec{b}_1 = \\hat{i} - 3\\hat{j} + 2\\hat{k}\\), \\(\\vec{a}_2 = 4\\hat{i} + 5\\hat{j} + 6\\hat{k}\\), \\(\\vec{b}_2 = 2\\hat{i} + 3\\hat{j} + \\hat{k}\\)।\n\nन्यूनतम दूरी \\(d = \\left|\\frac{(\\vec{b}_1 \\times \\vec{b}_2) \\cdot (\\vec{a}_2 - \\vec{a}_1)}{|\\vec{b}_1 \\times \\vec{b}_2|}\\right|\\)।\n\n\\(\\vec{a}_2 - \\vec{a}_1 = 3\\hat{i} + 3\\hat{j} + 3\\hat{k}\\)।\n\n\\(\\vec{b}_1 \\times \\vec{b}_2 = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 1 & -3 & 2 \\\\ 2 & 3 & 1 \\end{vmatrix} = \\hat{i}(-3 - 6) - \\hat{j}(1 - 4) + \\hat{k}(3 + 6) = -9\\hat{i} + 3\\hat{j} + 9\\hat{k}\\)।\n\n\\(|\\vec{b}_1 \\times \\vec{b}_2| = \\sqrt{81 + 9 + 81} = \\sqrt{171} = 3\\sqrt{19}\\)।\n\n\\((\\vec{b}_1 \\times \\vec{b}_2) \\cdot (\\vec{a}_2 - \\vec{a}_1) = (-9)(3) + (3)(3) + (9)(3) = -27 + 9 + 27 = 9\\)।\n\nअतः \\(d = \\frac{9}{3\\sqrt{19}} = \\frac{3}{\\sqrt{19}} = \\frac{3\\sqrt{19}}{19}\\) इकाई।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Comparing with \\(\\vec{r} = \\vec{a}_1 + \\lambda\\vec{b}_1\\) and \\(\\vec{r} = \\vec{a}_2 + \\mu\\vec{b}_2\\):\n\\(\\vec{a}_1 = \\hat{i} + 2\\hat{j} + 3\\hat{k}\\), \\(\\vec{b}_1 = \\hat{i} - 3\\hat{j} + 2\\hat{k}\\), \\(\\vec{a}_2 = 4\\hat{i} + 5\\hat{j} + 6\\hat{k}\\), \\(\\vec{b}_2 = 2\\hat{i} + 3\\hat{j} + \\hat{k}\\).\n\nThe shortest distance is \\(d = \\left|\\frac{(\\vec{b}_1 \\times \\vec{b}_2) \\cdot (\\vec{a}_2 - \\vec{a}_1)}{|\\vec{b}_1 \\times \\vec{b}_2|}\\right|\\).\n\n\\(\\vec{a}_2 - \\vec{a}_1 = 3\\hat{i} + 3\\hat{j} + 3\\hat{k}\\).\n\n\\(\\vec{b}_1 \\times \\vec{b}_2 = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 1 & -3 & 2 \\\\ 2 & 3 & 1 \\end{vmatrix} = \\hat{i}(-3 - 6) - \\hat{j}(1 - 4) + \\hat{k}(3 + 6) = -9\\hat{i} + 3\\hat{j} + 9\\hat{k}\\).\n\n\\(|\\vec{b}_1 \\times \\vec{b}_2| = \\sqrt{81 + 9 + 81} = \\sqrt{171} = 3\\sqrt{19}\\).\n\n\\((\\vec{b}_1 \\times \\vec{b}_2) \\cdot (\\vec{a}_2 - \\vec{a}_1) = (-9)(3) + (3)(3) + (9)(3) = -27 + 9 + 27 = 9\\).\n\nSo \\(d = \\frac{9}{3\\sqrt{19}} = \\frac{3}{\\sqrt{19}} = \\frac{3\\sqrt{19}}{19}\\) units.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q5d",
@@ -372,8 +484,10 @@
       "difficulty": "HARD",
       "stem": "Prove that \\(\\tan^{-1}\\left(\\frac{\\sqrt{1+x} - \\sqrt{1-x}}{\\sqrt{1+x} + \\sqrt{1-x}}\\right) = \\frac{\\pi}{4} - \\frac{1}{2}\\cos^{-1} x\\), where \\(-\\frac{1}{\\sqrt{2}} \\le x \\le 1\\).",
       "hi": {
-        "stem": "सिद्ध कीजिए कि \\(\\tan^{-1}\\left(\\frac{\\sqrt{1+x} - \\sqrt{1-x}}{\\sqrt{1+x} + \\sqrt{1-x}}\\right) = \\frac{\\pi}{4} - \\frac{1}{2}\\cos^{-1} x\\), जहाँ \\(-\\frac{1}{\\sqrt{2}} \\le x \\le 1\\)."
-      }
+        "stem": "सिद्ध कीजिए कि \\(\\tan^{-1}\\left(\\frac{\\sqrt{1+x} - \\sqrt{1-x}}{\\sqrt{1+x} + \\sqrt{1-x}}\\right) = \\frac{\\pi}{4} - \\frac{1}{2}\\cos^{-1} x\\), जहाँ \\(-\\frac{1}{\\sqrt{2}} \\le x \\le 1\\).",
+        "solution": "माना \\(x = \\cos 2\\theta\\)। चूँकि \\(-\\frac{1}{\\sqrt{2}} \\le x \\le 1\\), अतः \\(0 \\le 2\\theta \\le \\frac{3\\pi}{4}\\) अर्थात् \\(0 \\le \\theta \\le \\frac{3\\pi}{8}\\), तथा \\(\\theta = \\frac{1}{2}\\cos^{-1} x\\)।\n\nइस अन्तराल में \\(\\cos\\theta \\ge 0\\) तथा \\(\\sin\\theta \\ge 0\\), अतः\n\\(\\sqrt{1+x} = \\sqrt{1+\\cos 2\\theta} = \\sqrt{2\\cos^2\\theta} = \\sqrt{2}\\cos\\theta\\) तथा \\(\\sqrt{1-x} = \\sqrt{1-\\cos 2\\theta} = \\sqrt{2\\sin^2\\theta} = \\sqrt{2}\\sin\\theta\\)।\n\nतब\n\\(\\frac{\\sqrt{1+x} - \\sqrt{1-x}}{\\sqrt{1+x} + \\sqrt{1-x}} = \\frac{\\cos\\theta - \\sin\\theta}{\\cos\\theta + \\sin\\theta} = \\frac{1 - \\tan\\theta}{1 + \\tan\\theta} = \\tan\\left(\\frac{\\pi}{4} - \\theta\\right)\\)\n(अंश और हर को \\(\\cos\\theta\\) से भाग देने पर)।\n\nचूँकि \\(0 \\le \\theta \\le \\frac{3\\pi}{8}\\), अतः \\(-\\frac{\\pi}{8} \\le \\frac{\\pi}{4} - \\theta \\le \\frac{\\pi}{4}\\), जो \\(\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\) में है। अतः\n\\(\\text{बायाँ पक्ष} = \\tan^{-1}\\left[\\tan\\left(\\frac{\\pi}{4} - \\theta\\right)\\right] = \\frac{\\pi}{4} - \\theta = \\frac{\\pi}{4} - \\frac{1}{2}\\cos^{-1} x = \\text{दायाँ पक्ष}\\)।\nइति सिद्धम्।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Put \\(x = \\cos 2\\theta\\). Since \\(-\\frac{1}{\\sqrt{2}} \\le x \\le 1\\), we have \\(0 \\le 2\\theta \\le \\frac{3\\pi}{4}\\), that is, \\(0 \\le \\theta \\le \\frac{3\\pi}{8}\\), and \\(\\theta = \\frac{1}{2}\\cos^{-1} x\\).\n\nIn this range \\(\\cos\\theta \\ge 0\\) and \\(\\sin\\theta \\ge 0\\), so\n\\(\\sqrt{1+x} = \\sqrt{1+\\cos 2\\theta} = \\sqrt{2\\cos^2\\theta} = \\sqrt{2}\\cos\\theta\\) and \\(\\sqrt{1-x} = \\sqrt{1-\\cos 2\\theta} = \\sqrt{2\\sin^2\\theta} = \\sqrt{2}\\sin\\theta\\).\n\nThen\n\\(\\frac{\\sqrt{1+x} - \\sqrt{1-x}}{\\sqrt{1+x} + \\sqrt{1-x}} = \\frac{\\cos\\theta - \\sin\\theta}{\\cos\\theta + \\sin\\theta} = \\frac{1 - \\tan\\theta}{1 + \\tan\\theta} = \\tan\\left(\\frac{\\pi}{4} - \\theta\\right)\\)\n(dividing numerator and denominator by \\(\\cos\\theta\\)).\n\nSince \\(0 \\le \\theta \\le \\frac{3\\pi}{8}\\), \\(-\\frac{\\pi}{8} \\le \\frac{\\pi}{4} - \\theta \\le \\frac{\\pi}{4}\\), which lies in \\(\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\). Therefore\n\\(\\text{LHS} = \\tan^{-1}\\left[\\tan\\left(\\frac{\\pi}{4} - \\theta\\right)\\right] = \\frac{\\pi}{4} - \\theta = \\frac{\\pi}{4} - \\frac{1}{2}\\cos^{-1} x = \\text{RHS}\\).\nHence proved.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q5e",
@@ -386,8 +500,10 @@
       "difficulty": "MODERATE",
       "stem": "Find the general solution of the differential equation \\(x\\frac{dy}{dx} + 2y = x^2 \\ (x \\ne 0)\\).",
       "hi": {
-        "stem": "अवकल समीकरण \\(x\\frac{dy}{dx} + 2y = x^2 \\ (x \\ne 0)\\) का व्यापक हल ज्ञात कीजिए।"
-      }
+        "stem": "अवकल समीकरण \\(x\\frac{dy}{dx} + 2y = x^2 \\ (x \\ne 0)\\) का व्यापक हल ज्ञात कीजिए।",
+        "solution": "\\(x\\) से भाग देने पर (\\(x \\ne 0\\)):\n\\(\\frac{dy}{dx} + \\frac{2}{x}y = x\\)।\nयह \\(\\frac{dy}{dx} + Py = Q\\) के रूप का रैखिक अवकल समीकरण है, जहाँ \\(P = \\frac{2}{x}\\) तथा \\(Q = x\\)।\n\nसमाकलन गुणांक: \\(\\text{I.F.} = e^{\\int \\frac{2}{x}\\,dx} = e^{2\\log|x|} = x^2\\)।\n\nहल \\(y \\cdot \\text{I.F.} = \\int Q \\cdot \\text{I.F.}\\,dx + C\\) होता है:\n\\(y x^2 = \\int x \\cdot x^2\\,dx + C = \\frac{x^4}{4} + C\\)।\n\nअतः व्यापक हल \\(y = \\frac{x^2}{4} + C x^{-2}\\) है, जहाँ \\(C\\) स्वेच्छ अचर है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Dividing by \\(x\\) (\\(x \\ne 0\\)):\n\\(\\frac{dy}{dx} + \\frac{2}{x}y = x\\).\nThis is a linear differential equation of the form \\(\\frac{dy}{dx} + Py = Q\\) with \\(P = \\frac{2}{x}\\) and \\(Q = x\\).\n\nIntegrating factor: \\(\\text{I.F.} = e^{\\int \\frac{2}{x}\\,dx} = e^{2\\log|x|} = x^2\\).\n\nThe solution is \\(y \\cdot \\text{I.F.} = \\int Q \\cdot \\text{I.F.}\\,dx + C\\):\n\\(y x^2 = \\int x \\cdot x^2\\,dx + C = \\frac{x^4}{4} + C\\).\n\nHence the general solution is \\(y = \\frac{x^2}{4} + C x^{-2}\\), where \\(C\\) is an arbitrary constant.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q6a",
@@ -400,8 +516,10 @@
       "difficulty": "MODERATE",
       "stem": "A die was thrown twice and the sum of the numbers which appeared was found to be 6. Find the conditional probability that the number 4 appears at least once.",
       "hi": {
-        "stem": "एक पासे को दो बार उछाला गया और प्रकट हुई संख्याओं का योग 6 पाया गया। संख्या 4 के न्यूनतम एक बार प्रकट होने की सप्रतिबन्ध प्रायिकता ज्ञात कीजिए।"
-      }
+        "stem": "एक पासे को दो बार उछाला गया और प्रकट हुई संख्याओं का योग 6 पाया गया। संख्या 4 के न्यूनतम एक बार प्रकट होने की सप्रतिबन्ध प्रायिकता ज्ञात कीजिए।",
+        "solution": "एक पासे को दो बार उछालने पर प्रतिदर्श समष्टि में \\(6 \\times 6 = 36\\) समसम्भावी परिणाम होते हैं।\n\nमाना \\(E\\): संख्याओं का योग 6 है, तथा \\(F\\): संख्या 4 न्यूनतम एक बार प्रकट होती है।\n\\(E = \\{(1, 5), (2, 4), (3, 3), (4, 2), (5, 1)\\}\\), अतः \\(P(E) = \\frac{5}{36}\\)।\n\\(F = \\{(4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (1, 4), (2, 4), (3, 4), (5, 4), (6, 4)\\}\\)।\n\\(E \\cap F = \\{(2, 4), (4, 2)\\}\\), अतः \\(P(E \\cap F) = \\frac{2}{36}\\)।\n\nअभीष्ट प्रायिकता:\n\\(P(F/E) = \\frac{P(E \\cap F)}{P(E)} = \\frac{2/36}{5/36} = \\frac{2}{5}\\)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "When a die is thrown twice, the sample space has \\(6 \\times 6 = 36\\) equally likely outcomes.\n\nLet \\(E\\): the sum of the numbers is 6, and \\(F\\): the number 4 appears at least once.\n\\(E = \\{(1, 5), (2, 4), (3, 3), (4, 2), (5, 1)\\}\\), so \\(P(E) = \\frac{5}{36}\\).\n\\(F = \\{(4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (1, 4), (2, 4), (3, 4), (5, 4), (6, 4)\\}\\).\n\\(E \\cap F = \\{(2, 4), (4, 2)\\}\\), so \\(P(E \\cap F) = \\frac{2}{36}\\).\n\nRequired probability:\n\\(P(F/E) = \\frac{P(E \\cap F)}{P(E)} = \\frac{2/36}{5/36} = \\frac{2}{5}\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q6b",
@@ -414,9 +532,11 @@
       "difficulty": "MODERATE",
       "stem": "Maximize \\(Z = x + 2y\\) by graphical method under the constraints\n\\(x + y \\le 1, -x + y \\le 0, x \\ge 0, y \\ge 0\\).",
       "hi": {
-        "stem": "व्यवरोधों \\(x + y \\le 1, -x + y \\le 0, x \\ge 0, y \\ge 0\\) के अन्तर्गत \\(Z = x + 2y\\) का आलेखीय विधि से अधिकतमीकरण कीजिए।"
+        "stem": "व्यवरोधों \\(x + y \\le 1, -x + y \\le 0, x \\ge 0, y \\ge 0\\) के अन्तर्गत \\(Z = x + 2y\\) का आलेखीय विधि से अधिकतमीकरण कीजिए।",
+        "solution": "रेखाएँ \\(x + y = 1\\) (जो \\((1, 0)\\) तथा \\((0, 1)\\) से होकर जाती है) और \\(-x + y = 0\\) अर्थात् \\(y = x\\) (जो \\((0, 0)\\) तथा \\((1, 1)\\) से होकर जाती है) खींचिए।\n\n- \\(x + y \\le 1\\): मूलबिन्दु इसे सन्तुष्ट करता है, अतः क्षेत्र रेखा \\(x + y = 1\\) के मूलबिन्दु वाली ओर है।\n- \\(-x + y \\le 0\\) अर्थात् \\(y \\le x\\): बिन्दु \\((1, 0)\\) इसे सन्तुष्ट करता है, अतः क्षेत्र रेखा \\(y = x\\) के नीचे है।\n- \\(x \\ge 0, y \\ge 0\\): क्षेत्र प्रथम चतुर्थांश में है।\n\nरेखाएँ \\(x + y = 1\\) तथा \\(y = x\\) बिन्दु \\(\\left(\\frac{1}{2}, \\frac{1}{2}\\right)\\) पर मिलती हैं। अतः सुसंगत क्षेत्र कोणीय बिन्दुओं \\(O(0, 0)\\), \\(P(1, 0)\\) तथा \\(Q\\left(\\frac{1}{2}, \\frac{1}{2}\\right)\\) वाला त्रिभुज है। यह परिबद्ध है, अतः \\(Z\\) का अधिकतम मान किसी कोणीय बिन्दु पर होगा।\n\n| कोणीय बिन्दु | \\(Z = x + 2y\\) |\n|---|---|\n| \\(O(0, 0)\\) | \\(0\\) |\n| \\(P(1, 0)\\) | \\(1\\) |\n| \\(Q\\left(\\frac{1}{2}, \\frac{1}{2}\\right)\\) | \\(\\frac{1}{2} + 1 = \\frac{3}{2}\\) |\n\nअतः \\(Z\\) का अधिकतम मान \\(\\frac{3}{2}\\) है, जो \\(x = \\frac{1}{2}, y = \\frac{1}{2}\\) पर प्राप्त होता है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
       },
-      "_flag": "A rubber stamp crosses the last \"0\" of the English constraints; the Hindi print shows \\(y \\ge 0\\) clearly."
+      "_flag": "A rubber stamp crosses the last \"0\" of the English constraints; the Hindi print shows \\(y \\ge 0\\) clearly.",
+      "solution": "Draw the lines \\(x + y = 1\\) (through \\((1, 0)\\) and \\((0, 1)\\)) and \\(-x + y = 0\\), that is, \\(y = x\\) (through \\((0, 0)\\) and \\((1, 1)\\)).\n\n- \\(x + y \\le 1\\): the origin satisfies it, so the region is on the origin side of \\(x + y = 1\\).\n- \\(-x + y \\le 0\\), that is, \\(y \\le x\\): the point \\((1, 0)\\) satisfies it, so the region is below the line \\(y = x\\).\n- \\(x \\ge 0, y \\ge 0\\): the region is in the first quadrant.\n\nThe lines \\(x + y = 1\\) and \\(y = x\\) meet at \\(\\left(\\frac{1}{2}, \\frac{1}{2}\\right)\\). So the feasible region is the triangle with corner points \\(O(0, 0)\\), \\(P(1, 0)\\) and \\(Q\\left(\\frac{1}{2}, \\frac{1}{2}\\right)\\). It is bounded, so the maximum of \\(Z\\) occurs at a corner point.\n\n| Corner point | \\(Z = x + 2y\\) |\n|---|---|\n| \\(O(0, 0)\\) | \\(0\\) |\n| \\(P(1, 0)\\) | \\(1\\) |\n| \\(Q\\left(\\frac{1}{2}, \\frac{1}{2}\\right)\\) | \\(\\frac{1}{2} + 1 = \\frac{3}{2}\\) |\n\nHence the maximum value of \\(Z\\) is \\(\\frac{3}{2}\\), at \\(x = \\frac{1}{2}, y = \\frac{1}{2}\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q6c",
@@ -429,9 +549,11 @@
       "difficulty": "MODERATE",
       "stem": "Find the area of the parallelogram whose diagonals are\n\\(\\vec{a} = 3\\hat{i} + \\hat{j} - 2\\hat{k}\\) and \\(\\vec{b} = \\hat{i} - 3\\hat{j} + 4\\hat{k}\\).",
       "hi": {
-        "stem": "उस समान्तर चतुर्भुज का क्षेत्रफल ज्ञात कीजिए, जिसके विकर्ण \\(\\vec{a} = 3\\hat{i} + \\hat{j} - 2\\hat{k}\\) तथा \\(\\vec{b} = \\hat{i} - 3\\hat{j} + 4\\hat{k}\\) हैं।"
+        "stem": "उस समान्तर चतुर्भुज का क्षेत्रफल ज्ञात कीजिए, जिसके विकर्ण \\(\\vec{a} = 3\\hat{i} + \\hat{j} - 2\\hat{k}\\) तथा \\(\\vec{b} = \\hat{i} - 3\\hat{j} + 4\\hat{k}\\) हैं।",
+        "solution": "यदि \\(\\vec{a}\\) तथा \\(\\vec{b}\\) किसी समान्तर चतुर्भुज के विकर्ण हों, तो उसका क्षेत्रफल \\(\\frac{1}{2}|\\vec{a} \\times \\vec{b}|\\) होता है।\n\n\\(\\vec{a} \\times \\vec{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 3 & 1 & -2 \\\\ 1 & -3 & 4 \\end{vmatrix} = \\hat{i}(4 - 6) - \\hat{j}(12 + 2) + \\hat{k}(-9 - 1) = -2\\hat{i} - 14\\hat{j} - 10\\hat{k}\\)।\n\n\\(|\\vec{a} \\times \\vec{b}| = \\sqrt{4 + 196 + 100} = \\sqrt{300} = 10\\sqrt{3}\\)।\n\nअतः समान्तर चतुर्भुज का क्षेत्रफल \\(\\frac{1}{2} \\times 10\\sqrt{3} = 5\\sqrt{3}\\) वर्ग इकाई है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
       },
-      "_flag": "A rubber stamp crosses \"ज्ञात\" in the Hindi print; completed from the sentence and the English \"Find\"."
+      "_flag": "A rubber stamp crosses \"ज्ञात\" in the Hindi print; completed from the sentence and the English \"Find\".",
+      "solution": "If \\(\\vec{a}\\) and \\(\\vec{b}\\) are the diagonals of a parallelogram, its area is \\(\\frac{1}{2}|\\vec{a} \\times \\vec{b}|\\).\n\n\\(\\vec{a} \\times \\vec{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 3 & 1 & -2 \\\\ 1 & -3 & 4 \\end{vmatrix} = \\hat{i}(4 - 6) - \\hat{j}(12 + 2) + \\hat{k}(-9 - 1) = -2\\hat{i} - 14\\hat{j} - 10\\hat{k}\\).\n\n\\(|\\vec{a} \\times \\vec{b}| = \\sqrt{4 + 196 + 100} = \\sqrt{300} = 10\\sqrt{3}\\).\n\nHence the area of the parallelogram is \\(\\frac{1}{2} \\times 10\\sqrt{3} = 5\\sqrt{3}\\) square units.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q6d",
@@ -444,8 +566,10 @@
       "difficulty": "MODERATE",
       "stem": "If \\(\\theta\\) be the angle between two unit vectors \\(\\hat{a}\\) and \\(\\hat{b}\\), prove that\n\\(\\sin\\frac{\\theta}{2} = \\frac{1}{2}|\\hat{a} - \\hat{b}|\\).",
       "hi": {
-        "stem": "यदि दो इकाई सदिशों \\(\\hat{a}\\) और \\(\\hat{b}\\) के बीच का कोण \\(\\theta\\) हो, तो सिद्ध कीजिए कि\n\\(\\sin\\frac{\\theta}{2} = \\frac{1}{2}|\\hat{a} - \\hat{b}|\\)."
-      }
+        "stem": "यदि दो इकाई सदिशों \\(\\hat{a}\\) और \\(\\hat{b}\\) के बीच का कोण \\(\\theta\\) हो, तो सिद्ध कीजिए कि\n\\(\\sin\\frac{\\theta}{2} = \\frac{1}{2}|\\hat{a} - \\hat{b}|\\).",
+        "solution": "चूँकि \\(\\hat{a}\\) तथा \\(\\hat{b}\\) इकाई सदिश हैं, अतः \\(|\\hat{a}| = |\\hat{b}| = 1\\) तथा \\(\\hat{a} \\cdot \\hat{b} = \\cos\\theta\\)।\n\n\\(|\\hat{a} - \\hat{b}|^2 = (\\hat{a} - \\hat{b}) \\cdot (\\hat{a} - \\hat{b}) = |\\hat{a}|^2 - 2\\,\\hat{a} \\cdot \\hat{b} + |\\hat{b}|^2 = 1 - 2\\cos\\theta + 1 = 2(1 - \\cos\\theta) = 4\\sin^2\\frac{\\theta}{2}\\)।\n\nचूँकि \\(0 \\le \\theta \\le \\pi\\), अतः \\(\\sin\\frac{\\theta}{2} \\ge 0\\), इसलिए \\(|\\hat{a} - \\hat{b}| = 2\\sin\\frac{\\theta}{2}\\)।\n\nअतः \\(\\sin\\frac{\\theta}{2} = \\frac{1}{2}|\\hat{a} - \\hat{b}|\\)। इति सिद्धम्।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Since \\(\\hat{a}\\) and \\(\\hat{b}\\) are unit vectors, \\(|\\hat{a}| = |\\hat{b}| = 1\\) and \\(\\hat{a} \\cdot \\hat{b} = \\cos\\theta\\).\n\n\\(|\\hat{a} - \\hat{b}|^2 = (\\hat{a} - \\hat{b}) \\cdot (\\hat{a} - \\hat{b}) = |\\hat{a}|^2 - 2\\,\\hat{a} \\cdot \\hat{b} + |\\hat{b}|^2 = 1 - 2\\cos\\theta + 1 = 2(1 - \\cos\\theta) = 4\\sin^2\\frac{\\theta}{2}\\).\n\nSince \\(0 \\le \\theta \\le \\pi\\), \\(\\sin\\frac{\\theta}{2} \\ge 0\\), so \\(|\\hat{a} - \\hat{b}| = 2\\sin\\frac{\\theta}{2}\\).\n\nHence \\(\\sin\\frac{\\theta}{2} = \\frac{1}{2}|\\hat{a} - \\hat{b}|\\). Proved.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q6e",
@@ -458,9 +582,11 @@
       "difficulty": "MODERATE",
       "stem": "Sand is falling from a pipe at the rate of 12 \\(\\text{cm}^3\\)/second. The falling sand forms such a cone on the ground that its height is always one-sixth of the radius of its base. At which rate is the height of the cone formed by sand increasing while its height is 4 cm ?",
       "hi": {
-        "stem": "एक पाइप से रेत 12 सेमी\\(^3\\)/सेकण्ड की दर से गिर रही है। गिरती रेत जमीन पर एक ऐसा शंकु बनाती है जिसकी ऊँचाई सदैव आधार की त्रिज्या का छठा भाग है। रेत से बने शंकु की ऊँचाई किस दर से बढ़ रही है जबकि ऊँचाई 4 सेमी है ?"
+        "stem": "एक पाइप से रेत 12 सेमी\\(^3\\)/सेकण्ड की दर से गिर रही है। गिरती रेत जमीन पर एक ऐसा शंकु बनाती है जिसकी ऊँचाई सदैव आधार की त्रिज्या का छठा भाग है। रेत से बने शंकु की ऊँचाई किस दर से बढ़ रही है जबकि ऊँचाई 4 सेमी है ?",
+        "solution": "माना समय \\(t\\) पर शंकु की त्रिज्या \\(r\\), ऊँचाई \\(h\\) तथा आयतन \\(V\\) है। दिया है \\(\\frac{dV}{dt} = 12\\) सेमी\\(^3\\)/सेकण्ड तथा \\(h = \\frac{r}{6}\\) अर्थात् \\(r = 6h\\)।\n\n\\(V = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi (6h)^2 h = 12\\pi h^3\\)।\n\n\\(t\\) के सापेक्ष अवकलन करने पर:\n\\(\\frac{dV}{dt} = 36\\pi h^2 \\frac{dh}{dt}\\)।\n\nजब \\(h = 4\\) सेमी:\n\\(12 = 36\\pi (4)^2 \\frac{dh}{dt} = 576\\pi \\frac{dh}{dt}\\), अतः \\(\\frac{dh}{dt} = \\frac{12}{576\\pi} = \\frac{1}{48\\pi}\\)।\n\nअतः शंकु की ऊँचाई \\(\\frac{1}{48\\pi}\\) सेमी/सेकण्ड की दर से बढ़ रही है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
       },
-      "_flag": "A rubber stamp crosses \"cm\" in the English \"4 cm\" (the Hindi prints 4 सेमी) and crosses \"दर\" in the Hindi first line (the English prints \"rate\")."
+      "_flag": "A rubber stamp crosses \"cm\" in the English \"4 cm\" (the Hindi prints 4 सेमी) and crosses \"दर\" in the Hindi first line (the English prints \"rate\").",
+      "solution": "Let \\(r\\) be the radius, \\(h\\) the height and \\(V\\) the volume of the cone at time \\(t\\). Given \\(\\frac{dV}{dt} = 12\\) cm\\(^3\\)/s and \\(h = \\frac{r}{6}\\), that is, \\(r = 6h\\).\n\n\\(V = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi (6h)^2 h = 12\\pi h^3\\).\n\nDifferentiating with respect to \\(t\\):\n\\(\\frac{dV}{dt} = 36\\pi h^2 \\frac{dh}{dt}\\).\n\nWhen \\(h = 4\\) cm:\n\\(12 = 36\\pi (4)^2 \\frac{dh}{dt} = 576\\pi \\frac{dh}{dt}\\), so \\(\\frac{dh}{dt} = \\frac{12}{576\\pi} = \\frac{1}{48\\pi}\\).\n\nHence the height of the cone is increasing at the rate of \\(\\frac{1}{48\\pi}\\) cm/s.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q7a",
@@ -473,8 +599,10 @@
       "difficulty": "MODERATE",
       "stem": "Solve by matrix method the following system of equations :\n\\(2x + y + z = 1\\)\n\\(x - 2y - z = \\frac{3}{2}\\)\n\\(3y - 5z = 9\\).",
       "hi": {
-        "stem": "निम्नलिखित समीकरण निकाय को आव्यूह विधि से हल कीजिए :\n\\(2x + y + z = 1\\)\n\\(x - 2y - z = \\frac{3}{2}\\)\n\\(3y - 5z = 9\\)."
-      }
+        "stem": "निम्नलिखित समीकरण निकाय को आव्यूह विधि से हल कीजिए :\n\\(2x + y + z = 1\\)\n\\(x - 2y - z = \\frac{3}{2}\\)\n\\(3y - 5z = 9\\).",
+        "solution": "समीकरण निकाय को \\(AX = B\\) के रूप में लिखा जा सकता है, जहाँ\n\\(A = \\begin{bmatrix} 2 & 1 & 1 \\\\ 1 & -2 & -1 \\\\ 0 & 3 & -5 \\end{bmatrix}\\), \\(X = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 \\\\ \\frac{3}{2} \\\\ 9 \\end{bmatrix}\\)।\n\n**सारणिक:**\n\\(|A| = 2\\left[(-2)(-5) - (-1)(3)\\right] - 1\\left[(1)(-5) - (-1)(0)\\right] + 1\\left[(1)(3) - (-2)(0)\\right] = 2(13) + 5 + 3 = 34 \\ne 0\\)।\nअतः आव्यूह \\(A\\) व्युत्क्रमणीय है, \\(A^{-1}\\) का अस्तित्व है तथा निकाय का अद्वितीय हल \\(X = A^{-1}B\\) है।\n\n**सहखण्ड:**\n\\(A_{11} = (10 + 3) = 13\\), \\(A_{12} = -(-5 - 0) = 5\\), \\(A_{13} = (3 - 0) = 3\\)\n\\(A_{21} = -(-5 - 3) = 8\\), \\(A_{22} = (-10 - 0) = -10\\), \\(A_{23} = -(6 - 0) = -6\\)\n\\(A_{31} = (-1 + 2) = 1\\), \\(A_{32} = -(-2 - 1) = 3\\), \\(A_{33} = (-4 - 1) = -5\\)\n\n\\(\\operatorname{adj} A = \\begin{bmatrix} 13 & 8 & 1 \\\\ 5 & -10 & 3 \\\\ 3 & -6 & -5 \\end{bmatrix}\\), अतः \\(A^{-1} = \\frac{1}{34}\\begin{bmatrix} 13 & 8 & 1 \\\\ 5 & -10 & 3 \\\\ 3 & -6 & -5 \\end{bmatrix}\\)।\n\n**हल:**\n\\(X = A^{-1}B = \\frac{1}{34}\\begin{bmatrix} 13(1) + 8\\left(\\frac{3}{2}\\right) + 1(9) \\\\ 5(1) - 10\\left(\\frac{3}{2}\\right) + 3(9) \\\\ 3(1) - 6\\left(\\frac{3}{2}\\right) - 5(9) \\end{bmatrix} = \\frac{1}{34}\\begin{bmatrix} 13 + 12 + 9 \\\\ 5 - 15 + 27 \\\\ 3 - 9 - 45 \\end{bmatrix} = \\frac{1}{34}\\begin{bmatrix} 34 \\\\ 17 \\\\ -51 \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ \\frac{1}{2} \\\\ -\\frac{3}{2} \\end{bmatrix}\\)।\n\nअतः \\(x = 1\\), \\(y = \\frac{1}{2}\\), \\(z = -\\frac{3}{2}\\)।\n\nजाँच: \\(2 + \\frac{1}{2} - \\frac{3}{2} = 1\\), \\(1 - 1 + \\frac{3}{2} = \\frac{3}{2}\\), \\(\\frac{3}{2} + \\frac{15}{2} = 9\\)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "The system can be written as \\(AX = B\\), where\n\\(A = \\begin{bmatrix} 2 & 1 & 1 \\\\ 1 & -2 & -1 \\\\ 0 & 3 & -5 \\end{bmatrix}\\), \\(X = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 \\\\ \\frac{3}{2} \\\\ 9 \\end{bmatrix}\\).\n\n**Determinant:**\n\\(|A| = 2\\left[(-2)(-5) - (-1)(3)\\right] - 1\\left[(1)(-5) - (-1)(0)\\right] + 1\\left[(1)(3) - (-2)(0)\\right] = 2(13) + 5 + 3 = 34 \\ne 0\\).\nSo the matrix \\(A\\) is non-singular, \\(A^{-1}\\) exists and the system has a unique solution \\(X = A^{-1}B\\).\n\n**Cofactors:**\n\\(A_{11} = (10 + 3) = 13\\), \\(A_{12} = -(-5 - 0) = 5\\), \\(A_{13} = (3 - 0) = 3\\)\n\\(A_{21} = -(-5 - 3) = 8\\), \\(A_{22} = (-10 - 0) = -10\\), \\(A_{23} = -(6 - 0) = -6\\)\n\\(A_{31} = (-1 + 2) = 1\\), \\(A_{32} = -(-2 - 1) = 3\\), \\(A_{33} = (-4 - 1) = -5\\)\n\n\\(\\operatorname{adj} A = \\begin{bmatrix} 13 & 8 & 1 \\\\ 5 & -10 & 3 \\\\ 3 & -6 & -5 \\end{bmatrix}\\), so \\(A^{-1} = \\frac{1}{34}\\begin{bmatrix} 13 & 8 & 1 \\\\ 5 & -10 & 3 \\\\ 3 & -6 & -5 \\end{bmatrix}\\).\n\n**Solution:**\n\\(X = A^{-1}B = \\frac{1}{34}\\begin{bmatrix} 13(1) + 8\\left(\\frac{3}{2}\\right) + 1(9) \\\\ 5(1) - 10\\left(\\frac{3}{2}\\right) + 3(9) \\\\ 3(1) - 6\\left(\\frac{3}{2}\\right) - 5(9) \\end{bmatrix} = \\frac{1}{34}\\begin{bmatrix} 13 + 12 + 9 \\\\ 5 - 15 + 27 \\\\ 3 - 9 - 45 \\end{bmatrix} = \\frac{1}{34}\\begin{bmatrix} 34 \\\\ 17 \\\\ -51 \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ \\frac{1}{2} \\\\ -\\frac{3}{2} \\end{bmatrix}\\).\n\nHence \\(x = 1\\), \\(y = \\frac{1}{2}\\), \\(z = -\\frac{3}{2}\\).\n\nCheck: \\(2 + \\frac{1}{2} - \\frac{3}{2} = 1\\), \\(1 - 1 + \\frac{3}{2} = \\frac{3}{2}\\), \\(\\frac{3}{2} + \\frac{15}{2} = 9\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q7b",
@@ -487,8 +615,10 @@
       "difficulty": "MODERATE",
       "stem": "If \\(F(x) = \\begin{bmatrix} \\cos x & -\\sin x & 0 \\\\ \\sin x & \\cos x & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\), prove that \\(F(x)F(y) = F(x+y)\\).",
       "hi": {
-        "stem": "यदि \\(F(x) = \\begin{bmatrix} \\cos x & -\\sin x & 0 \\\\ \\sin x & \\cos x & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\), तो सिद्ध कीजिए कि \\(F(x)F(y) = F(x+y)\\)."
-      }
+        "stem": "यदि \\(F(x) = \\begin{bmatrix} \\cos x & -\\sin x & 0 \\\\ \\sin x & \\cos x & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\), तो सिद्ध कीजिए कि \\(F(x)F(y) = F(x+y)\\).",
+        "solution": "यहाँ \\(F(x) = \\begin{bmatrix} \\cos x & -\\sin x & 0 \\\\ \\sin x & \\cos x & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\) तथा \\(F(y) = \\begin{bmatrix} \\cos y & -\\sin y & 0 \\\\ \\sin y & \\cos y & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\)।\n\nपंक्ति को स्तम्भ से गुणा करने पर:\n\\(F(x)F(y) = \\begin{bmatrix} \\cos x\\cos y - \\sin x\\sin y & -\\cos x\\sin y - \\sin x\\cos y & 0 \\\\ \\sin x\\cos y + \\cos x\\sin y & -\\sin x\\sin y + \\cos x\\cos y & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\)।\n\n\\(\\cos(x+y) = \\cos x\\cos y - \\sin x\\sin y\\) तथा \\(\\sin(x+y) = \\sin x\\cos y + \\cos x\\sin y\\) का प्रयोग करने पर:\n\\(F(x)F(y) = \\begin{bmatrix} \\cos(x+y) & -\\sin(x+y) & 0 \\\\ \\sin(x+y) & \\cos(x+y) & 0 \\\\ 0 & 0 & 1 \\end{bmatrix} = F(x+y)\\)।\n\nअतः \\(F(x)F(y) = F(x+y)\\)। इति सिद्धम्।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "We have \\(F(x) = \\begin{bmatrix} \\cos x & -\\sin x & 0 \\\\ \\sin x & \\cos x & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\) and \\(F(y) = \\begin{bmatrix} \\cos y & -\\sin y & 0 \\\\ \\sin y & \\cos y & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\).\n\nMultiplying row by column:\n\\(F(x)F(y) = \\begin{bmatrix} \\cos x\\cos y - \\sin x\\sin y & -\\cos x\\sin y - \\sin x\\cos y & 0 \\\\ \\sin x\\cos y + \\cos x\\sin y & -\\sin x\\sin y + \\cos x\\cos y & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\).\n\nUsing \\(\\cos(x+y) = \\cos x\\cos y - \\sin x\\sin y\\) and \\(\\sin(x+y) = \\sin x\\cos y + \\cos x\\sin y\\):\n\\(F(x)F(y) = \\begin{bmatrix} \\cos(x+y) & -\\sin(x+y) & 0 \\\\ \\sin(x+y) & \\cos(x+y) & 0 \\\\ 0 & 0 & 1 \\end{bmatrix} = F(x+y)\\).\n\nHence \\(F(x)F(y) = F(x+y)\\). Proved.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q8a",
@@ -501,8 +631,10 @@
       "difficulty": "HARD",
       "stem": "Prove that the semi-vertical angle of the cone of given slant height and maximum volume is \\(\\tan^{-1}\\sqrt{2}\\).",
       "hi": {
-        "stem": "सिद्ध कीजिए कि दी हुई तिर्यक ऊँचाई और महत्तम आयतन वाले शंकु का अर्धशीर्ष कोण \\(\\tan^{-1}\\sqrt{2}\\) होता है।"
-      }
+        "stem": "सिद्ध कीजिए कि दी हुई तिर्यक ऊँचाई और महत्तम आयतन वाले शंकु का अर्धशीर्ष कोण \\(\\tan^{-1}\\sqrt{2}\\) होता है।",
+        "solution": "माना शंकु की दी हुई (नियत) तिर्यक ऊँचाई \\(l\\) तथा अर्धशीर्ष कोण \\(\\theta\\) है, \\(0 < \\theta < \\frac{\\pi}{2}\\)। तब त्रिज्या \\(r = l\\sin\\theta\\) तथा ऊँचाई \\(h = l\\cos\\theta\\)।\n\nआयतन:\n\\(V = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi l^3 \\sin^2\\theta \\cos\\theta\\)।\n\n\\(\\theta\\) के सापेक्ष अवकलन करने पर:\n\\(\\frac{dV}{d\\theta} = \\frac{1}{3}\\pi l^3\\left(2\\sin\\theta\\cos^2\\theta - \\sin^3\\theta\\right) = \\frac{1}{3}\\pi l^3 \\sin\\theta\\left(2\\cos^2\\theta - \\sin^2\\theta\\right)\\)।\n\nउच्चिष्ठ या निम्निष्ठ के लिए \\(\\frac{dV}{d\\theta} = 0\\)। चूँकि \\(\\sin\\theta \\ne 0\\):\n\\(2\\cos^2\\theta = \\sin^2\\theta \\Rightarrow \\tan^2\\theta = 2 \\Rightarrow \\tan\\theta = \\sqrt{2}\\) (क्योंकि \\(\\theta\\) न्यूनकोण है)।\n\nद्वितीय अवकलज:\n\\(\\frac{d^2V}{d\\theta^2} = \\frac{1}{3}\\pi l^3\\left(2\\cos^3\\theta - 4\\sin^2\\theta\\cos\\theta - 3\\sin^2\\theta\\cos\\theta\\right) = \\frac{1}{3}\\pi l^3 \\cos\\theta\\left(2\\cos^2\\theta - 7\\sin^2\\theta\\right)\\)।\n\nजब \\(\\tan\\theta = \\sqrt{2}\\): \\(\\cos^2\\theta = \\frac{1}{3}\\), \\(\\sin^2\\theta = \\frac{2}{3}\\), अतः \\(2\\cos^2\\theta - 7\\sin^2\\theta = \\frac{2}{3} - \\frac{14}{3} = -4 < 0\\) तथा \\(\\cos\\theta > 0\\)। इस प्रकार \\(\\frac{d^2V}{d\\theta^2} < 0\\)।\n\nअतः आयतन महत्तम है जब \\(\\tan\\theta = \\sqrt{2}\\), अर्थात् अर्धशीर्ष कोण \\(\\theta = \\tan^{-1}\\sqrt{2}\\) है। इति सिद्धम्।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Let \\(l\\) be the given (fixed) slant height and \\(\\theta\\) the semi-vertical angle of the cone, \\(0 < \\theta < \\frac{\\pi}{2}\\). Then the radius is \\(r = l\\sin\\theta\\) and the height is \\(h = l\\cos\\theta\\).\n\nVolume:\n\\(V = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi l^3 \\sin^2\\theta \\cos\\theta\\).\n\nDifferentiating with respect to \\(\\theta\\):\n\\(\\frac{dV}{d\\theta} = \\frac{1}{3}\\pi l^3\\left(2\\sin\\theta\\cos^2\\theta - \\sin^3\\theta\\right) = \\frac{1}{3}\\pi l^3 \\sin\\theta\\left(2\\cos^2\\theta - \\sin^2\\theta\\right)\\).\n\nFor a maximum or minimum, \\(\\frac{dV}{d\\theta} = 0\\). Since \\(\\sin\\theta \\ne 0\\):\n\\(2\\cos^2\\theta = \\sin^2\\theta \\Rightarrow \\tan^2\\theta = 2 \\Rightarrow \\tan\\theta = \\sqrt{2}\\) (as \\(\\theta\\) is acute).\n\nSecond derivative:\n\\(\\frac{d^2V}{d\\theta^2} = \\frac{1}{3}\\pi l^3\\left(2\\cos^3\\theta - 4\\sin^2\\theta\\cos\\theta - 3\\sin^2\\theta\\cos\\theta\\right) = \\frac{1}{3}\\pi l^3 \\cos\\theta\\left(2\\cos^2\\theta - 7\\sin^2\\theta\\right)\\).\n\nWhen \\(\\tan\\theta = \\sqrt{2}\\): \\(\\cos^2\\theta = \\frac{1}{3}\\), \\(\\sin^2\\theta = \\frac{2}{3}\\), so \\(2\\cos^2\\theta - 7\\sin^2\\theta = \\frac{2}{3} - \\frac{14}{3} = -4 < 0\\), and \\(\\cos\\theta > 0\\). Thus \\(\\frac{d^2V}{d\\theta^2} < 0\\).\n\nHence the volume is maximum when \\(\\tan\\theta = \\sqrt{2}\\), that is, the semi-vertical angle is \\(\\theta = \\tan^{-1}\\sqrt{2}\\). Proved.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q8b",
@@ -515,8 +647,10 @@
       "difficulty": "HARD",
       "stem": "Prove that \\(\\int_{0}^{\\pi/4} \\log(1 + \\tan x)\\, dx = \\frac{\\pi}{8}\\log 2\\).",
       "hi": {
-        "stem": "सिद्ध कीजिए कि \\(\\int_{0}^{\\pi/4} \\log(1 + \\tan x)\\, dx = \\frac{\\pi}{8}\\log 2\\)."
-      }
+        "stem": "सिद्ध कीजिए कि \\(\\int_{0}^{\\pi/4} \\log(1 + \\tan x)\\, dx = \\frac{\\pi}{8}\\log 2\\).",
+        "solution": "माना \\(I = \\int_{0}^{\\pi/4} \\log(1 + \\tan x)\\,dx\\)। \\(\\quad (1)\\)\n\nगुणधर्म \\(\\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a - x)\\,dx\\) का प्रयोग करने पर:\n\\(I = \\int_{0}^{\\pi/4} \\log\\left[1 + \\tan\\left(\\frac{\\pi}{4} - x\\right)\\right]dx\\)।\n\nअब \\(\\tan\\left(\\frac{\\pi}{4} - x\\right) = \\frac{1 - \\tan x}{1 + \\tan x}\\), अतः\n\\(1 + \\tan\\left(\\frac{\\pi}{4} - x\\right) = \\frac{1 + \\tan x + 1 - \\tan x}{1 + \\tan x} = \\frac{2}{1 + \\tan x}\\)।\n\nइसलिए\n\\(I = \\int_{0}^{\\pi/4} \\log\\frac{2}{1 + \\tan x}\\,dx = \\int_{0}^{\\pi/4} \\log 2\\,dx - \\int_{0}^{\\pi/4} \\log(1 + \\tan x)\\,dx = \\frac{\\pi}{4}\\log 2 - I\\), (1) से।\n\nअतः \\(2I = \\frac{\\pi}{4}\\log 2\\), तथा \\(I = \\frac{\\pi}{8}\\log 2\\)।\nअतः \\(\\int_{0}^{\\pi/4} \\log(1 + \\tan x)\\,dx = \\frac{\\pi}{8}\\log 2\\)। इति सिद्धम्।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Let \\(I = \\int_{0}^{\\pi/4} \\log(1 + \\tan x)\\,dx\\). \\(\\quad (1)\\)\n\nUsing the property \\(\\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a - x)\\,dx\\):\n\\(I = \\int_{0}^{\\pi/4} \\log\\left[1 + \\tan\\left(\\frac{\\pi}{4} - x\\right)\\right]dx\\).\n\nNow \\(\\tan\\left(\\frac{\\pi}{4} - x\\right) = \\frac{1 - \\tan x}{1 + \\tan x}\\), so\n\\(1 + \\tan\\left(\\frac{\\pi}{4} - x\\right) = \\frac{1 + \\tan x + 1 - \\tan x}{1 + \\tan x} = \\frac{2}{1 + \\tan x}\\).\n\nTherefore\n\\(I = \\int_{0}^{\\pi/4} \\log\\frac{2}{1 + \\tan x}\\,dx = \\int_{0}^{\\pi/4} \\log 2\\,dx - \\int_{0}^{\\pi/4} \\log(1 + \\tan x)\\,dx = \\frac{\\pi}{4}\\log 2 - I\\), using (1).\n\nSo \\(2I = \\frac{\\pi}{4}\\log 2\\), and \\(I = \\frac{\\pi}{8}\\log 2\\).\nHence \\(\\int_{0}^{\\pi/4} \\log(1 + \\tan x)\\,dx = \\frac{\\pi}{8}\\log 2\\). Proved.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q9a",
@@ -529,8 +663,10 @@
       "difficulty": "MODERATE",
       "stem": "Find the area of the region bounded by the ellipse \\(\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1\\).",
       "hi": {
-        "stem": "दीर्घवृत्त \\(\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1\\) से घिरे क्षेत्र का क्षेत्रफल ज्ञात कीजिए।"
-      }
+        "stem": "दीर्घवृत्त \\(\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1\\) से घिरे क्षेत्र का क्षेत्रफल ज्ञात कीजिए।",
+        "solution": "दीर्घवृत्त \\(\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1\\) दोनों अक्षों के परितः सममित है तथा \\(x\\)-अक्ष को \\((\\pm a, 0)\\) पर काटता है। अतः अभीष्ट क्षेत्रफल प्रथम चतुर्थांश के क्षेत्रफल का 4 गुना है।\n\nप्रथम चतुर्थांश में \\(y = \\frac{b}{a}\\sqrt{a^2 - x^2}\\), \\(0 \\le x \\le a\\)।\n\nअभीष्ट क्षेत्रफल\n\\(= 4\\int_{0}^{a} \\frac{b}{a}\\sqrt{a^2 - x^2}\\,dx = \\frac{4b}{a}\\left[\\frac{x}{2}\\sqrt{a^2 - x^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{x}{a}\\right]_{0}^{a}\\)\n\\(= \\frac{4b}{a}\\left[\\left(0 + \\frac{a^2}{2}\\sin^{-1} 1\\right) - (0 + 0)\\right] = \\frac{4b}{a} \\cdot \\frac{a^2}{2} \\cdot \\frac{\\pi}{2} = \\pi ab\\)।\n\nअतः दीर्घवृत्त से घिरे क्षेत्र का क्षेत्रफल \\(\\pi ab\\) वर्ग इकाई है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "The ellipse \\(\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1\\) is symmetric about both axes and meets the \\(x\\)-axis at \\((\\pm a, 0)\\). So the required area is 4 times the area in the first quadrant.\n\nIn the first quadrant, \\(y = \\frac{b}{a}\\sqrt{a^2 - x^2}\\), \\(0 \\le x \\le a\\).\n\nRequired area\n\\(= 4\\int_{0}^{a} \\frac{b}{a}\\sqrt{a^2 - x^2}\\,dx = \\frac{4b}{a}\\left[\\frac{x}{2}\\sqrt{a^2 - x^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{x}{a}\\right]_{0}^{a}\\)\n\\(= \\frac{4b}{a}\\left[\\left(0 + \\frac{a^2}{2}\\sin^{-1} 1\\right) - (0 + 0)\\right] = \\frac{4b}{a} \\cdot \\frac{a^2}{2} \\cdot \\frac{\\pi}{2} = \\pi ab\\).\n\nHence the area of the region bounded by the ellipse is \\(\\pi ab\\) square units.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     },
     {
       "ref": "Q9b",
@@ -543,8 +679,10 @@
       "difficulty": "MODERATE",
       "stem": "Find the general solution of the differential equation \\(y - x\\frac{dy}{dx} = x + y\\frac{dy}{dx}\\).",
       "hi": {
-        "stem": "अवकल समीकरण \\(y - x\\frac{dy}{dx} = x + y\\frac{dy}{dx}\\) का व्यापक हल ज्ञात कीजिए।"
-      }
+        "stem": "अवकल समीकरण \\(y - x\\frac{dy}{dx} = x + y\\frac{dy}{dx}\\) का व्यापक हल ज्ञात कीजिए।",
+        "solution": "\\(y - x\\frac{dy}{dx} = x + y\\frac{dy}{dx}\\) को पुनर्व्यवस्थित करने पर:\n\\(y - x = (x + y)\\frac{dy}{dx}\\), अतः \\(\\frac{dy}{dx} = \\frac{y - x}{x + y}\\)।\nदायाँ पक्ष शून्य घात का समघातीय फलन है, अतः यह एक समघातीय अवकल समीकरण है।\n\nमाना \\(y = vx\\), तब \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\):\n\\(v + x\\frac{dv}{dx} = \\frac{vx - x}{x + vx} = \\frac{v - 1}{1 + v}\\)\n\\(x\\frac{dv}{dx} = \\frac{v - 1}{1 + v} - v = \\frac{v - 1 - v - v^2}{1 + v} = -\\frac{1 + v^2}{1 + v}\\)।\n\nचरों को पृथक् करने पर:\n\\(\\frac{1 + v}{1 + v^2}\\,dv = -\\frac{dx}{x}\\), अर्थात् \\(\\left(\\frac{1}{1 + v^2} + \\frac{v}{1 + v^2}\\right)dv = -\\frac{dx}{x}\\)।\n\nसमाकलन करने पर:\n\\(\\tan^{-1} v + \\frac{1}{2}\\log(1 + v^2) = -\\log|x| + C\\)।\n\n\\(v = \\frac{y}{x}\\) रखने पर:\n\\(\\tan^{-1}\\frac{y}{x} + \\frac{1}{2}\\log\\frac{x^2 + y^2}{x^2} + \\log|x| = C\\)\n\\(\\tan^{-1}\\frac{y}{x} + \\frac{1}{2}\\log(x^2 + y^2) - \\log|x| + \\log|x| = C\\)।\n\nअतः व्यापक हल \\(\\tan^{-1}\\frac{y}{x} + \\frac{1}{2}\\log(x^2 + y^2) = C\\) है, जहाँ \\(C\\) स्वेच्छ अचर है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Rearranging \\(y - x\\frac{dy}{dx} = x + y\\frac{dy}{dx}\\):\n\\(y - x = (x + y)\\frac{dy}{dx}\\), so \\(\\frac{dy}{dx} = \\frac{y - x}{x + y}\\).\nThe right side is a homogeneous function of degree zero, so this is a homogeneous differential equation.\n\nPut \\(y = vx\\), so \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\):\n\\(v + x\\frac{dv}{dx} = \\frac{vx - x}{x + vx} = \\frac{v - 1}{1 + v}\\)\n\\(x\\frac{dv}{dx} = \\frac{v - 1}{1 + v} - v = \\frac{v - 1 - v - v^2}{1 + v} = -\\frac{1 + v^2}{1 + v}\\).\n\nSeparating the variables:\n\\(\\frac{1 + v}{1 + v^2}\\,dv = -\\frac{dx}{x}\\), that is, \\(\\left(\\frac{1}{1 + v^2} + \\frac{v}{1 + v^2}\\right)dv = -\\frac{dx}{x}\\).\n\nIntegrating:\n\\(\\tan^{-1} v + \\frac{1}{2}\\log(1 + v^2) = -\\log|x| + C\\).\n\nPutting \\(v = \\frac{y}{x}\\):\n\\(\\tan^{-1}\\frac{y}{x} + \\frac{1}{2}\\log\\frac{x^2 + y^2}{x^2} + \\log|x| = C\\)\n\\(\\tan^{-1}\\frac{y}{x} + \\frac{1}{2}\\log(x^2 + y^2) - \\log|x| + \\log|x| = C\\).\n\nHence the general solution is \\(\\tan^{-1}\\frac{y}{x} + \\frac{1}{2}\\log(x^2 + y^2) = C\\), where \\(C\\) is an arbitrary constant.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
     }
   ]
 }
