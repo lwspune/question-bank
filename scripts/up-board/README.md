@@ -51,6 +51,16 @@ book dropped (Schmidt, Frankland, Tischenko, chlorine, propyne): filed on the
 closest subtopic, `_flag` starts `NO CHAPTER:`. **Biology skipped** (owner,
 2026-11-17): its papers are rendered but not transcribed.
 
+**PUBLIC since 2026-11-17** (all 2,759 rows). Registry `up-board-10` /
+`up-board-12` open in Hindi (`defaultLang`). /question-papers: 67 papers
+written UNPUBLISHED (`npm run papers:build -- --exam=up-board-1x`), their
+printed "attempt any N" rules in `data/attempt-rules.json`. Chapter tests: 35
+built as DRAFTS (`scripts/mocks/build-sectional.ts --exam=up-board-1x`).
+**Push day:** publish both (`papers:build -- --exam=up-board-10 --apply
+--publish`, same for 12; `build-sectional.ts --exam=up-board-1x --apply
+--publish`) in the same step as the push. The empty Biology subject row under
+UP Class 12 is still in the bank (delete declined).
+
 ## Language
 
 Every question is printed in Hindi and English. English is the canonical row
