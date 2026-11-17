@@ -18,6 +18,12 @@ export type GrantRazorpayInput = {
   currency: "INR" | "USD";
   /** "parent_link:<code>" for a pass a parent paid (2026-11-09), read by /dashboard/sales. */
   note?: string | null;
+  /**
+   * The gateway that took the money (0271). The row's source stays 'razorpay'
+   * (it means "paid" to every report); payment_provider records which gateway.
+   * Absent = Razorpay. `paymentId` is then a Paddle transaction id (txn_...).
+   */
+  provider?: "razorpay" | "paddle";
 };
 
 export type GrantRazorpayResult =
@@ -40,6 +46,8 @@ export async function grantRazorpayEntitlement(
       amount_paise: input.amountPaise,
       currency: input.currency,
       note: input.note ?? null,
+      // Only a Paddle grant names its gateway, so a Razorpay insert reads exactly as it did before 0271.
+      ...(input.provider === "paddle" ? { payment_provider: "paddle" } : {}),
     });
     if (error) {
       // 23505 = unique violation on provider_ref → already granted. Idempotent.

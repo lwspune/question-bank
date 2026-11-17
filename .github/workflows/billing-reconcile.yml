@@ -1,6 +1,7 @@
 name: Grant missed payments
 
-# Grant captured Razorpay payments that nothing granted (2026-11-15).
+# Grant captured Razorpay payments that nothing granted (2026-11-15), and
+# paid Paddle transactions (2026-11-17, migration 0271).
 #
 # WHY A SCHEDULE. A pass is granted by the buyer's browser after checkout or
 # by Razorpay's order.paid webhook. On 2026-11-15 a ₹197 UPI payment got
@@ -47,6 +48,10 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           RAZORPAY_KEY_ID: ${{ secrets.RAZORPAY_KEY_ID }}
           RAZORPAY_KEY_SECRET: ${{ secrets.RAZORPAY_KEY_SECRET }}
+          # Paddle (0271): the intl dollar passes. Until a plan sells through
+          # Paddle the job skips it; after that, missing values fail the run.
+          PADDLE_API_KEY: ${{ secrets.PADDLE_API_KEY }}
+          NEXT_PUBLIC_PADDLE_CLIENT_TOKEN: ${{ secrets.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
         # --apply lives here and nowhere else: running it by hand stays a dry run.

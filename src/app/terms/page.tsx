@@ -5,6 +5,13 @@ import { CONTACT_EMAIL } from "@/lib/brand";
 import { formatPrice, planBuyersNote, planLengthLabel } from "@/lib/billing/plans";
 import { listActivePlans, readFreeMockLimit } from "@/lib/billing/plansQuery";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
+import { paymentTerms } from "@/lib/billing/paymentLine";
+import { EXAM_REGISTRY } from "@/lib/exam/examContext";
+
+/** "A", "A and B", "A, B and C". */
+function listJoin(items: string[]): string {
+  return items.length <= 1 ? (items[0] ?? "") : `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
+}
 
 export const revalidate = 86400;
 
@@ -21,11 +28,13 @@ export default async function TermsPage() {
   // revalidates it.
   const anon = createSupabaseAnonClient();
   const [plans, freeMocks] = await Promise.all([listActivePlans(anon), readFreeMockLimit(anon)]);
+  // The intl site's exams, from the registry, so a new one is named here without an edit.
+  const intlExams = listJoin(EXAM_REGISTRY.filter((e) => e.site === "intl").map((e) => e.displayName));
 
   return (
     <LegalPage
       title="Terms of Service"
-      updated="27 September 2026"
+      updated="17 November 2026"
       intro={
         <>
           PYQ Vault (pyqvault.com) is run by Vilas Shinde in Pune, Maharashtra, India. By using
@@ -36,7 +45,8 @@ export default async function TermsPage() {
       <LegalH2>The service</LegalH2>
       <LegalP>
         PYQ Vault is a past-year question bank and study site for Indian entrance and board
-        exams. Browsing questions, guides and notes needs no account and is free.{" "}
+        exams. On intl.pyqvault.com it also covers university entrance exams outside India
+        ({intlExams}). Browsing questions, guides and notes needs no account and is free.{" "}
         {freeMocks === null
           ? "With a free account you can take timed mock tests; paper downloads need a paid pass."
           : `With a free account you can take ${freeMocks} timed mock tests; more mock tests and paper downloads need a paid pass.`}
@@ -80,7 +90,8 @@ export default async function TermsPage() {
             It does <strong>not renew automatically</strong>. We never charge you again unless you
             choose to buy again.
           </>,
-          "Payments are processed by Razorpay. We do not see or store your card, UPI or bank details.",
+          // Razorpay, and Paddle as Merchant of Record for dollar passes (0271), from the passes on sale.
+          paymentTerms(plans),
           "We may change the price for future purchases. A change never affects access you have already paid for.",
           <>
             Refunds are covered by our{" "}

@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createOrder } from "@/lib/billing/razorpay";
+import { createPaddleTransaction, isPaddleConfigured, transactionBody } from "@/lib/billing/paddle";
 import { resolveOrderPlan, stampOrderNotes } from "@/lib/billing/plans";
 import { listActivePlans } from "@/lib/billing/plansQuery";
 import { logActivity } from "@/lib/activity/service";
@@ -31,10 +32,9 @@ export async function POST(request: NextRequest) {
   if (!user) {
     return NextResponse.json({ error: "Sign in to purchase" }, { status: 401 });
   }
+  // Razorpay's key is checked where Razorpay is used: a Paddle plan (0271) sells without it.
   const keyId = process.env.RAZORPAY_KEY_ID;
-  if (!keyId) {
-    return NextResponse.json({ error: "Payments are not configured yet" }, { status: 503 });
-  }
+  const notConfigured = () => NextResponse.json({ error: "Payments are not configured yet" }, { status: 503 });
 
   const body = (await request.json().catch(() => null)) as {
     planId?: string;
@@ -48,6 +48,7 @@ export async function POST(request: NextRequest) {
 
   // An ebook (2026-10-20): the price is this buyer's, decided here.
   if (typeof body?.ebookSlug === "string" && body.ebookSlug) {
+    if (!keyId) return notConfigured();
     const terms = await ebookOrderTerms(db, user.id, body.ebookSlug);
     if (!terms.ok) return NextResponse.json({ error: terms.error }, { status: terms.status });
     const result = await createOrder({
@@ -63,6 +64,7 @@ export async function POST(request: NextRequest) {
     await logActivity(db, user.id, withCountry(bookCheckoutEvent(terms.slug), readCountry(request.headers)));
     const contact = await contactRead;
     return NextResponse.json({
+      provider: "razorpay",
       orderId: result.orderId,
       amount: result.amount,
       currency: result.currency,
@@ -106,7 +108,33 @@ export async function POST(request: NextRequest) {
     else console.error("order: pass read for upgrade failed", e.reason);
   }
   const notes = stampDiscountNotes(stampUpgradeNotes(stampOrderNotes(plan, user.id), upgrade), plan, { points, referralPct });
+  const opened = paywallEvent("checkout_opened", checkoutGate(body?.gate), plan.id, undefined, checkoutBox(body?.box));
 
+  // Paddle, the Merchant of Record for the intl USD passes (0271): the same
+  // notes become the transaction's custom_data, and every grant reads them back.
+  if (plan.paymentProvider === "paddle") {
+    const clientToken = process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN;
+    if (!isPaddleConfigured() || !clientToken || !plan.paddleProductId) {
+      if (!plan.paddleProductId) console.error(`order: Paddle plan ${plan.id} has no paddle_product_id`);
+      return notConfigured();
+    }
+    const txn = await createPaddleTransaction(transactionBody(plan, notes));
+    if (!txn.ok) {
+      console.error("paddle createTransaction failed:", txn.error);
+      return NextResponse.json({ error: "Could not start checkout" }, { status: 502 });
+    }
+    opened.metadata = { ...opened.metadata, provider: "paddle" };
+    await logActivity(db, user.id, withCountry(opened, country));
+    return NextResponse.json({
+      provider: "paddle",
+      transactionId: txn.transactionId,
+      clientToken,
+      planLabel: plan.label,
+      email: user.email,
+    });
+  }
+
+  if (!keyId) return notConfigured();
   const result = await createOrder({
     amountPaise: Number(notes.amountPaise),
     currency: plan.currency,
@@ -118,12 +146,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Could not start checkout" }, { status: 502 });
   }
   const contact = await contactRead;
-  const opened = paywallEvent("checkout_opened", checkoutGate(body?.gate), plan.id, undefined, checkoutBox(body?.box));
   // Whether Razorpay got a mobile, so checkout-to-paid can be read with and without it.
   opened.metadata = { ...opened.metadata, hasContact: contact !== null };
   await logActivity(db, user.id, withCountry(opened, country));
 
   return NextResponse.json({
+    provider: "razorpay",
     orderId: result.orderId,
     amount: result.amount,
     currency: result.currency,
