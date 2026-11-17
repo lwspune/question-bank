@@ -195,7 +195,7 @@ async function main() {
       .eq("source_file", paper.sourceFile);
     if (sErr) throw new Error(`solution sync read failed: ${sErr.message}`);
     let synced = 0;
-    for (const r of built) {
+    for (const r of parsed) {
       const row = (existing ?? []).find((e) => e.question_number === r.questionNumber);
       if (!row || row.solution === r.solution) continue;
       const { error: uErr2 } = await client.from("questions").update({ solution: r.solution }).eq("id", row.id);

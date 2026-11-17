@@ -123,6 +123,21 @@ function main() {
     };
   });
 
+  // Items defective as printed, settled by hand (data/<id>.notices.json):
+  // {"73": {"notice": "...", "grace": true}}. The key's letter is kept; the
+  // notice goes above the solution and `grace` puts it on the mock grace list.
+  const noticesFile = dataPath(paper.id, "notices");
+  const handNotices: Record<string, { notice: string; grace?: boolean }> = existsSync(noticesFile)
+    ? JSON.parse(readFileSync(noticesFile, "utf8"))
+    : {};
+  for (const n of Object.keys(handNotices)) {
+    if (!withNotice.some((d) => d.number === Number(n))) throw new Error(`notices.json names Q${n}, which has no answer`);
+  }
+  const final = withNotice.map((d) => {
+    const h = handNotices[String(d.number)];
+    return h ? { ...d, notice: h.notice, ...(h.grace ? { grace: true } : {}) } : d;
+  });
+
   const out = dataPath(paper.id, "answers");
   writeFileSync(
     out,
@@ -133,7 +148,7 @@ function main() {
         dropped: key.dropped,
         multi: nta.multi,
         handSolutions: Object.keys(hand).map(Number).sort((x, y) => x - y),
-        answers: withNotice,
+        answers: final,
       },
       null,
       2
