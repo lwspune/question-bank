@@ -86,6 +86,11 @@ To fix a committed row's text, correct the BAND file, re-run merge, then
 hash with the same builder as commit (`rows.ts`) and ends by checking every
 live row of the paper against the build.
 
+To fix a committed FIGURE (commit uploads one only when the row has none),
+correct the band file, re-run merge and `crop.py`, look at the crop, then
+`refigure.ts <id> --q=<numbers> [--apply]`: it uploads the new file and points
+the row at it, leaving text, answer and hash alone.
+
 ## Written papers (RIMC Maths and English)
 
 RIMC's Maths (30 problems, 200 marks) and English (125 marks) are marked step by
@@ -126,5 +131,6 @@ All rows PRIVATE; no mocks yet.
 
 Held on purpose (config `held`): AISSEE C6 2023/2025 Q1-25 (Hindi language
 section of a Hindi-medium copy, owner); the RMS items in config; RIMC 2020 Dec
-GK Q75 (not printed) and Dec 2018 Maths Q25. Open: 12 committed AISSEE figures
-may have lost a grey fill in the clean step (SUGGESTIONS.md backfill ledger).
+GK Q75 (not printed) and Dec 2018 Maths Q25. Open (SUGGESTIONS.md ledger): the
+scan's printed serial number shows across many AISSEE C6 2026 and C9 2025
+figures.
