@@ -198,16 +198,24 @@ export function dedupeMergedRows(
  *
  * A blueprint with no suffixes behaves exactly as before, so `sourceFile` is
  * optional and ignored for every other exam.
+ *
+ * A section that declares `questionNumbers` takes only rows printed in that range
+ * (SPI 2026 prints Reasoning in both parts); a row with no number joins none of them.
  */
 export function assignSection(
   bp: MockPaperBlueprint,
   subjectName: string,
   sourceFile?: string | null,
-  format?: PaperFormat | null
+  format?: PaperFormat | null,
+  questionNumber?: number | null
 ): string | null {
   // A section picked by type takes only rows of that type; an unknown type joins none.
   const candidates = bp.sections.filter(
-    (s) => s.subjects.includes(subjectName) && (!s.formats || (format != null && s.formats.includes(format)))
+    (s) =>
+      s.subjects.includes(subjectName) &&
+      (!s.formats || (format != null && s.formats.includes(format))) &&
+      (!s.questionNumbers ||
+        (questionNumber != null && questionNumber >= s.questionNumbers.from && questionNumber <= s.questionNumbers.to))
   );
   if (candidates.length === 0) return null;
   // Unambiguous by subject, and the section asks for no suffix: done.
@@ -218,6 +226,12 @@ export function assignSection(
   if (!sourceFile) return null;
   const hit = suffixed.find((s) => sourceFile.endsWith(`-${s.sourceFileSuffix}`));
   return hit ? hit.key : null;
+}
+
+/** assignSection for a fetched row: its subject, source file, format and printed number. */
+function sectionOfRow(bp: MockPaperBlueprint, r: PaperQuestionRow): string | null {
+  const n = parseInt(String(r.questionNumber ?? ""), 10);
+  return assignSection(bp, r.subjectName, r.sourceFile, rowFormat(r), Number.isFinite(n) ? n : null);
 }
 
 /** NDA canonical: April = edition I, September = edition II. */
@@ -406,7 +420,7 @@ export function validatePaperRows(
   // Section membership + per-section counts.
   const perSection = new Map<string, number>();
   for (const r of rows) {
-    const key = assignSection(bp, r.subjectName, r.sourceFile, rowFormat(r));
+    const key = sectionOfRow(bp, r);
     if (!key) {
       issues.push(
         `Question ${r.id} (subject "${r.subjectName}") maps to no section in this paper`
@@ -443,7 +457,7 @@ export function validatePaperRows(
   // Duplicate ordering keys within a section would make the order ambiguous.
   const keys = new Map<string, Set<number>>();
   for (const r of rows) {
-    const sec = assignSection(bp, r.subjectName, r.sourceFile, rowFormat(r)) ?? "?";
+    const sec = sectionOfRow(bp, r) ?? "?";
     const set = keys.get(sec) ?? new Set<number>();
     const k = orderKey(r);
     if (set.has(k)) {
@@ -486,7 +500,7 @@ export function buildMockPaper(
   let position = 0;
   for (const section of bp.sections) {
     const sectionRows = orderPaperRows(
-      rows.filter((r) => assignSection(bp, r.subjectName, r.sourceFile, rowFormat(r)) === section.key)
+      rows.filter((r) => sectionOfRow(bp, r) === section.key)
     );
     // Per-SECTION marking, falling back to the paper's. Grading reads these
     // per-question values, so a section's scheme reaches the score without the

@@ -59,6 +59,12 @@ export type MockSectionBlueprint = {
    * only if its format is listed. Omitted everywhere else.
    */
   formats?: PaperFormat[];
+  /**
+   * The printed question numbers this section covers, when a subject appears in more
+   * than one section (SPI 2026: Reasoning in Part 1 and Part 2). A row joins only if
+   * its question_number is in range. Omitted everywhere else.
+   */
+  questionNumbers?: { from: number; to: number };
   /** How this section's multiple-select questions are marked (see MsqScheme). */
   msqScheme?: MsqScheme;
 };
@@ -891,6 +897,31 @@ export const SPI_PAPER: MockPaperBlueprint = {
   ],
 };
 
+/**
+ * SPI as printed in 2026 (EX-50/2026): the same two parts of 75 and 3 hours, but +4 a right
+ * answer and 1 off a wrong one, out of 600. Its own code, the MPSC_SSP_CSAT_2021_PAPER way, so
+ * getBlueprint resolves each scheme. It prints Reasoning in both parts (Q64, Q144-150), so each
+ * part is its printed numbers, not its subjects alone.
+ */
+export const SPI_2026_PAPER: MockPaperBlueprint = {
+  ...SPI_PAPER,
+  code: "paper-2026",
+  marking: { correct: 4, wrong: -1 },
+  sections: [
+    { ...SPI_PAPER.sections[0], questionNumbers: { from: 1, to: 75 } },
+    {
+      ...SPI_PAPER.sections[1],
+      subjects: [...SPI_PAPER.sections[1].subjects, "Reasoning"],
+      questionNumbers: { from: 76, to: 150 },
+    },
+  ],
+};
+
+/** The SPI scheme printed on that year's booklet: +1 / -0.5 up to 2022, +4 / -1 from 2026. */
+export function spiPaperFor(year: number): MockPaperBlueprint {
+  return year >= 2026 ? SPI_2026_PAPER : SPI_PAPER;
+}
+
 const IAT_SUBJECTS = ["Biology", "Chemistry", "Mathematics", "Physics"] as const;
 
 /**
@@ -1308,6 +1339,7 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   SSC_CGL_T2_COMPUTER_PAPER,
   SSC_CGL_T2_QUANT_PAPER,
   SPI_PAPER,
+  SPI_2026_PAPER,
   IAT_PAPER,
   UGC_NET_PAPER_1,
   RRB_NTPC_CBT_1,
