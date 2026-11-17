@@ -48,7 +48,8 @@ async function main() {
 
   const EXAM_ID = examIdOf(paper);
   const rows = buildPaperRows(paper);
-  const { questions, answers, answersRaw, keyed, reconciled, dropped, graceNumbers, notices, parsed, errs } = rows;
+  const { questions, answers, answersRaw, keyed, reconciled, dropped, graceNumbers, notices, parsed, errs, qnOf } = rows;
+  const expected = paper.format === "written" ? parsed.length : expectedCount(paper);
 
   console.log(`${paper.id}  ${EXAMS[paper.exam].name}  "${pyqNoteFor(paper)}"`);
   if (paper.key && !paper.key.final) {
@@ -212,11 +213,11 @@ async function main() {
       .select("id, question_number, image_url")
       .eq("exam_id", EXAM_ID)
       .eq("source_file", paper.sourceFile)
-      .in("question_number", figureItems.map(String));
+      .in("question_number", figureItems.map(qnOf));
     if (fErr) throw new Error(`figure row lookup failed: ${fErr.message}`);
     let uploaded = 0;
     for (const n of figureItems) {
-      const row = (rows ?? []).find((r) => r.question_number === String(n));
+      const row = (rows ?? []).find((r) => r.question_number === qnOf(n));
       if (!row) {
         console.log(`  !! Q${n}: no row found for its figure`);
         continue;
@@ -238,14 +239,14 @@ async function main() {
       .select("id, question_number")
       .eq("exam_id", EXAM_ID)
       .eq("source_file", paper.sourceFile)
-      .in("question_number", graceNumbers.map(String));
+      .in("question_number", graceNumbers.map(qnOf));
     if (gErr) throw new Error(`grace row lookup failed: ${gErr.message}`);
     const file = join(process.cwd(), "src", "lib", "mocks", "flawed.json");
     const list: { id: string; reason: string }[] = JSON.parse(readFileSync(file, "utf8"));
     const known = new Set(list.map((f) => f.id));
     let added = 0;
     for (const n of graceNumbers) {
-      const row = (gRows ?? []).find((r) => r.question_number === String(n));
+      const row = (gRows ?? []).find((r) => r.question_number === qnOf(n));
       if (!row || known.has(row.id)) continue;
       list.push({ id: row.id, reason: `${EXAMS[paper.exam].name} ${paper.pyqYear} Q${n}: ${notices.get(n)!.slice(0, 160)} (scripts/milschool)` });
       added++;
@@ -273,8 +274,8 @@ async function main() {
   console.log(`done. ${linked} rows linked to job ${jobId}.`);
   // Withdrawn items are loaded too (as CANCELLED rows), so a whole paper is all
   // of its items.
-  if ((linked ?? 0) !== expectedCount(paper)) {
-    console.log(`\n!! expected ${pat.questions} row(s) for this paper, found ${linked}.`);
+  if ((linked ?? 0) !== expected) {
+    console.log(`\n!! expected ${expected} row(s) for this paper, found ${linked}.`);
   }
 }
 

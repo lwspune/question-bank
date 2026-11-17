@@ -88,6 +88,10 @@ export type Paper = {
    *  section once held for a decision). Coverage expects them absent and
    *  fails if one turns up, so a hold is always written down, never silent. */
   held?: { numbers: number[]; why: string };
+  /** "written": no options, a model answer per item (RIMC Maths and English).
+   *  Coverage is the transcription's own 1..N numbering plus a marks total that
+   *  must equal the paper's printed maximum. Absent = an MCQ paper. */
+  format?: "written";
 };
 
 const range = (from: number, to: number): number[] => {
@@ -114,6 +118,101 @@ const RMS_9: Pattern = { questions: 200, marks: 200, minutes: 150 };
 // RMS Class 9's Section II is a Hindi LANGUAGE test (Q51-70), compulsory for
 // every candidate: transcribed IN HINDI as Hindi-only rows under the catalog's
 // "Hindi" subject (owner, 2026-11-17; the MPSC Mains Marathi pattern).
+
+// ---- RIMC (Rashtriya Indian Military College, Dehradun), Class 8 entry, two
+// sessions a year. Each session sets THREE separate papers, so each is its own
+// Paper here: English (written, 125 marks, 2 h: reading, writing, grammar),
+// General Knowledge (75 one-mark MCQs, Hindi + English, 1 h, no negative
+// marking) and Mathematics (written: Part A 20 x 5 + Part B 10 x 10 = 200,
+// 1 h 30 min, marked stepwise). Sources: AglaSem's PDFs, one per session
+// (2018-2021 scans; 2022 Dec and 2023 Jun have a text layer). RIMC publishes
+// no key: GK = two blind passes + crosstab; written = two blind solutions +
+// crosstab-written.ts, essays and letters one sample answer each.
+const RIMC_GK: Pattern = { questions: 75, marks: 75, minutes: 60 };
+const RIMC_MATHS: Pattern = { questions: 30, marks: 200, minutes: 90 };
+/** English rows follow the paper's own parts, so their count is as transcribed (0). */
+const RIMC_ENGLISH: Pattern = { questions: 0, marks: 125, minutes: 120 };
+
+const RIMC_SESSIONS: { s: string; docId: string; english: number[]; gk: number[]; maths: number[] }[] = [
+  { s: "2018_jun", docId: "832a5fa8-c18f-11ed-87d7-0a5e36bc6706", english: range(2, 5), gk: range(6, 11), maths: range(12, 14) },
+  { s: "2018_dec", docId: "8542000c-c18f-11ed-8137-0a5e36bc6706", english: range(2, 5), gk: range(6, 11), maths: range(12, 14) },
+  { s: "2019_jun", docId: "86ff665a-c18f-11ed-ae86-0a5e36bc6706", english: range(2, 5), gk: range(6, 12), maths: range(13, 15) },
+  { s: "2019_dec", docId: "88dde9c4-c18f-11ed-b7eb-0a5e36bc6706", english: range(2, 6), gk: range(7, 13), maths: range(14, 16) },
+  { s: "2020_jun", docId: "8a6ebe76-c18f-11ed-96f0-0a5e36bc6706", english: range(2, 5), gk: range(6, 11), maths: range(12, 14) },
+  { s: "2020_dec", docId: "8bee3b14-c18f-11ed-9deb-0a5e36bc6706", english: range(2, 6), gk: range(7, 13), maths: range(14, 17) },
+  { s: "2021_jun", docId: "8d96ef74-c18f-11ed-8f5e-0a5e36bc6706", english: range(2, 5), gk: range(6, 12), maths: range(13, 16) },
+  { s: "2021_dec", docId: "8fdcf878-c18f-11ed-918d-0a5e36bc6706", english: range(2, 5), gk: range(6, 11), maths: range(12, 14) },
+  { s: "2022_dec", docId: "da68192c-5a0a-11ee-bb2d-0a5e36bc6706", english: range(1, 4), gk: range(5, 12), maths: range(13, 16) },
+  { s: "2023_jun", docId: "dd04ae66-5a0a-11ee-911b-0a5e36bc6706", english: range(1, 4), gk: range(5, 12), maths: range(13, 16) },
+];
+
+const MONTH: Record<string, string> = { jun: "June", dec: "December" };
+
+/** GK items that are not four-option MCQs (a fill-in blank with no options, a
+ *  True/False, a five-choice match box). The bank stores an MCQ only with four
+ *  options, so these are HELD on the GK paper and live in a small companion
+ *  written paper `<gk id>-short` (moved by split-short.ts), one-mark short
+ *  answers. Keyed by session; filled in as each GK paper is transcribed. */
+const RIMC_GK_SHORT: Record<string, { numbers: number[]; why: string }> = {
+  "2023_jun": { numbers: [38], why: "Q38 is a True/False item" },
+  "2022_dec": { numbers: range(70, 75), why: "Q70-75 are fill-in-the-blank items with no options" },
+  "2021_dec": { numbers: range(71, 75), why: "Q71-75 match from a printed box of five choices" },
+};
+
+const RIMC_PAPERS: Record<string, Paper> = Object.fromEntries(
+  RIMC_SESSIONS.flatMap(({ s, docId, english, gk, maths }) => {
+    const [y, m] = s.split("_");
+    const year = Number(y);
+    const subjects = [
+      { key: "english", name: "English", pages: english, pattern: RIMC_ENGLISH, written: true },
+      { key: "gk", name: "General Knowledge", pages: gk, pattern: RIMC_GK, written: false },
+      { key: "maths", name: "Mathematics", pages: maths, pattern: RIMC_MATHS, written: true },
+    ];
+    const short = RIMC_GK_SHORT[s];
+    const papers = subjects.map((sub): [string, Paper] => {
+      const id = `rimc-${year}-${m}-${sub.key}`;
+      return [
+        id,
+        {
+          ...(sub.key === "gk" && short ? { held: { numbers: short.numbers, why: `${short.why}: moved to ${id}-short` } } : {}),
+          id,
+          exam: "rimc",
+          paper: 1,
+          sourceFile: `RIMC_${MONTH[m]}_${year}_${sub.name.replace(/ /g, "_")}.pdf`,
+          pagesDir: `rimc\\${s}`,
+          pdf: `rimc_${s}.pdf`,
+          pages: sub.pages,
+          docId,
+          pyqYear: year,
+          pyqNote: `RIMC ${MONTH[m]} ${year} (${sub.name})`,
+          pattern: sub.pattern,
+          ...(sub.written ? { format: "written" as const } : {}),
+        },
+      ];
+    });
+    if (short) {
+      const id = `rimc-${year}-${m}-gk-short`;
+      papers.push([
+        id,
+        {
+          id,
+          exam: "rimc",
+          paper: 1,
+          sourceFile: `RIMC_${MONTH[m]}_${year}_General_Knowledge_short_answers.pdf`,
+          pagesDir: `rimc\\${s}`,
+          pdf: `rimc_${s}.pdf`,
+          pages: gk,
+          docId,
+          pyqYear: year,
+          pyqNote: `RIMC ${MONTH[m]} ${year} (General Knowledge)`,
+          pattern: { questions: short.numbers.length, marks: short.numbers.length, minutes: 0 },
+          format: "written",
+        },
+      ]);
+    }
+    return papers;
+  })
+);
 
 export const PAPERS: Record<string, Paper> = {
   // 33 JPGs: 1 AglaSem cover, 2 booklet cover (code H, APR-9-25), 3 its back,
@@ -468,6 +567,7 @@ export const PAPERS: Record<string, Paper> = {
     pattern: AISSEE_9,
     key: { dir: "aissee\\c9_2024_key", page: 1, code: "E", docId: "7bdcc9c6-cb9b-11ef-8ca5-0a5e36bc6706", final: true },
   },
+  ...RIMC_PAPERS,
 };
 
 export function paperById(id: string | undefined): Paper {

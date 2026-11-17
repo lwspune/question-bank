@@ -6,6 +6,7 @@ import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import { validateRow, type ParsedRowPayload } from "../../src/lib/upload/validate";
 import { dataPath, pattern, type Paper } from "./config";
 import { buildRecords, buildWithdrawnRecords, validateRows, type Derivation, type TQ } from "../upsc/lib";
+import { validateWritten, writtenPayload, type WrittenItem } from "./lib";
 
 const withdrawnNote = (provisional: boolean) =>
   `Dropped by NTA: its ${provisional ? "provisional " : "final "}answer key drops this question and it was not scored. ` +
@@ -25,9 +26,87 @@ export type PaperRows = {
   /** Validated rows (incl. withdrawn), each with its contentHash. */
   parsed: ParsedRowPayload[];
   errs: string[];
+  /** The stored question_number of item n: "n" on an MCQ paper, the printed
+   *  label ("1(a)") on a written one. Figures and grace are matched by it. */
+  qnOf: (n: number) => string;
 };
 
+/** A written paper's answers file (crosstab-written.ts). */
+type WrittenAnswers = {
+  written: true;
+  answers: { number: number; solution: string; finalAnswer?: string; notice?: string; grace?: boolean }[];
+  reconciled?: number[];
+  checked?: number[];
+  open?: number[];
+};
+
+function buildWrittenRows(paper: Paper, questions: TQ[], raw: WrittenAnswers): PaperRows {
+  const items = questions as unknown as WrittenItem[];
+  const errs = validateWritten(items);
+  const byN = new Map(raw.answers.map((a) => [a.number, a]));
+  const reconciled = new Set(raw.reconciled ?? []);
+  const checked = new Set(raw.checked ?? []);
+  const open = new Set(raw.open ?? []);
+  const notices = new Map<number, string>();
+  const parsed: ParsedRowPayload[] = [];
+  items.forEach((q, i) => {
+    const a = byN.get(q.number);
+    if (!a || !a.solution?.trim()) {
+      errs.push(`Q${q.number} (${q.label}): no model answer`);
+      return;
+    }
+    const how = reconciled.has(q.number)
+      ? "Two independent solutions disagreed; the answer was settled by hand."
+      : checked.has(q.number)
+        ? "Two independent solutions agreed, and the answer was checked by hand."
+        : "Two independent solutions agreed.";
+    const bracket = open.has(q.number)
+      ? "[One sample answer written by PYQ Vault: this writing task has no single right answer.]"
+      : `[Answer worked out by PYQ Vault: RIMC has not published a key for this paper. ${how}]`;
+    let solution = `${a.solution.trim()}\n\n${bracket}`;
+    if (a.notice) {
+      notices.set(q.number, a.notice);
+      solution = `**Note:** ${a.notice}\n\n${solution}`;
+    }
+    const row = writtenPayload(
+      {
+        ...q,
+        stem: normalizeNewlines(q.stem),
+        ...(q.context ? { context: normalizeNewlines(q.context) } : {}),
+      },
+      normalizeNewlines(solution),
+      i + 1
+    );
+    parsed.push(row);
+  });
+  const labels = new Map(items.map((q) => [q.number, q.label]));
+  return {
+    questions,
+    answers: [],
+    answersRaw: raw as unknown as Record<string, unknown>,
+    keyed: false,
+    reconciled,
+    dropped: [],
+    graceNumbers: raw.answers.filter((a) => a.grace).map((a) => a.number),
+    notices,
+    builtCount: parsed.length,
+    withdrawnCount: 0,
+    parsed,
+    errs,
+    qnOf: (n) => labels.get(n) ?? String(n),
+  };
+}
+
 export function buildPaperRows(paper: Paper): PaperRows {
+  if (paper.format === "written") {
+    for (const f of [dataPath(paper.id, "merged"), dataPath(paper.id, "answers")]) {
+      if (!existsSync(f)) throw new Error(`${f} not found — run merge.ts / crosstab-written.ts --apply first.`);
+    }
+    const qs: TQ[] = JSON.parse(readFileSync(dataPath(paper.id, "merged"), "utf8")).questions;
+    const raw = JSON.parse(readFileSync(dataPath(paper.id, "answers"), "utf8"));
+    if (!raw.written) throw new Error(`${paper.id}: answers file is not a written paper's (run crosstab-written.ts)`);
+    return buildWrittenRows(paper, qs, raw);
+  }
   const pat = pattern(paper);
   const mergedFile = dataPath(paper.id, "merged");
   const answersFile = dataPath(paper.id, "answers");
@@ -127,5 +206,6 @@ export function buildPaperRows(paper: Paper): PaperRows {
     withdrawnCount: withdrawn.length,
     parsed,
     errs,
+    qnOf: (n) => String(n),
   };
 }

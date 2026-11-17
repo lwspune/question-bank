@@ -42,6 +42,7 @@ import {
   type Derivation,
   type TQ,
 } from "../upsc/lib";
+import { validateWritten, type WrittenItem } from "./lib";
 
 function loadBands(paperId: string): Band[] {
   // Match ONLY <paperId>.b<N>.json. A bare `<paperId>.*.json` glob would also
@@ -98,6 +99,39 @@ function main() {
   if (warnings.length) {
     console.log(`  ${warnings.length} subtopic warning(s) — these are how the catalog gets extended:`);
     for (const w of warnings) console.log(`    ~ ${w}`);
+  }
+
+  // --- written papers (RIMC Maths and English) ------------------------------
+  // No options, so no MCQ structure gate. Coverage is the transcription's own
+  // 1..N numbering (validateWritten), and the marks must add up to the paper's
+  // printed maximum: a dropped or doubled part changes the total, so this is
+  // the check a written paper has instead of a fixed item count.
+  if (paper.format === "written") {
+    const wErrs = validateWritten(questions as unknown as WrittenItem[]);
+    if (wErrs.length) fail("3W WRITTEN", wErrs);
+    const marks = questions.reduce((s, q) => s + Number((q as unknown as WrittenItem).marks ?? 0), 0);
+    const countErr = pat.questions > 0 && questions.length !== pat.questions ? [`${questions.length} items, the paper has ${pat.questions}`] : [];
+    if (marks !== pat.marks || countErr.length) {
+      fail("3W MARKS", [...countErr, ...(marks !== pat.marks ? [`marks add up to ${marks}, the paper is out of ${pat.marks}`] : [])]);
+    }
+    const open = questions.filter((q) => (q as unknown as WrittenItem).open).length;
+    console.log(`GATE 3W WRITTEN: ok (${questions.length} items numbered 1..${questions.length}, ${marks} marks, ${open} open-ended)`);
+    let wsets: TQ[];
+    try {
+      wsets = assignSetLabels(questions);
+    } catch (e) {
+      fail("3b SETS", [(e as Error).message]);
+      return;
+    }
+    console.log(`GATE 3b SETS: ok (${new Set(wsets.filter((q) => q.setLabel).map((q) => q.setLabel)).size} set(s))`);
+    if (!apply) {
+      console.log(`\n[dry-run] all gates passed. Pass --apply to write the merged file.`);
+      return;
+    }
+    const outW = dataPath(paper.id, "merged");
+    writeFileSync(outW, JSON.stringify({ paper: paper.id, questions: wsets }, null, 2) + "\n");
+    console.log(`\nwrote ${outW}`);
+    return;
   }
 
   // --- 3. coverage ---------------------------------------------------------

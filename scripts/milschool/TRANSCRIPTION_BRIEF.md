@@ -218,3 +218,19 @@ Write NO other files and delete nothing. To check your JSON, use a one-line
 
 Report in your final message, briefly: the item numbers you covered, items you
 flagged, figure items, and any page you worked around.
+
+---
+
+## 10. WRITTEN papers (RIMC Mathematics and English)
+
+Your task says when a paper is WRITTEN. Everything above applies, except:
+
+- **No options.** Each item is `{ "number", "label", "stem", "context"?, "subject", "chapter", "subtopic", "difficulty", "marks", "open"?, "figure"?, "flags"? }`. Never add an `options` field or an answer.
+- **`number`** is your running count, 1, 2, 3 ... across the whole paper with no gap. **`label`** is the number exactly as PRINTED ("1(a)", "Q.7", "Q.21 (ii)"), and must be unique.
+- **One row per separately marked part.** If a question prints marks per part ("(a) ... [2] (b) ... [3]"), each part is its own row with its own marks, and the shared lead-in (a passage, a poem, "Answer the following questions") goes verbatim into each part's `context`. A question marked as a whole is one row.
+- **A choice is one row.** "Attempt any one of the following" / "Write an essay on ANY ONE topic" is ONE row: the instruction plus every printed choice in the stem, with the marks for one answer.
+- **`marks`**: the marks printed for that row. Section totals printed in a heading ("SECTION A, 25 MARKS") are not rows. **Your rows' marks must add up to the paper's maximum** (your task gives it); if they do not, recount before you finish, and report any remaining difference.
+- **`open: true`** on an open-ended writing task with no single right answer: essay, letter, application, story, paragraph, notice, article, dialogue, diary entry. Not on comprehension or grammar items.
+- Maths items printed in Hindi and English: transcribe the English only; formulas and numbers printed once go in as printed, in `\( ... \)`.
+
+Before you finish (instead of the MCQ checks in section 9): every number 1..N present once, every label unique, every row has `marks` > 0, no options anywhere, the marks total matches, every `\(` closed, your JSON parses.

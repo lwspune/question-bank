@@ -33,6 +33,14 @@ import type { TQ } from "../upsc/lib";
 
 const DEFAULT_BATCH = 25;
 
+/** A written item's packet also carries its printed label, its marks (how much
+ *  working the answer needs) and whether it is an open-ended writing task. */
+const q0 = (written: boolean) => (q: TQ) => {
+  if (!written) return {};
+  const x = q as TQ & { label?: string; marks?: number; open?: boolean };
+  return { label: x.label, marks: x.marks, ...(x.open ? { open: true } : {}) };
+};
+
 function main() {
   const args = process.argv.slice(2);
   const positional = args.filter((a) => !a.startsWith("--"));
@@ -74,10 +82,12 @@ function main() {
 
   packets.forEach((items, k) => {
     const i = k + first - 1;
+    const w = q0(paper.format === "written");
     const blind = items.map((q) => ({
       number: q.number,
+      ...w(q),
       stem: q.stem,
-      options: q.options,
+      ...(paper.format === "written" ? {} : { options: q.options }),
       ...(q.context ? { context: q.context } : {}),
       // A figure item cannot be solved from text, so the deriver gets the crop.
       // The crop shows only what the page prints: no answer, no classification.

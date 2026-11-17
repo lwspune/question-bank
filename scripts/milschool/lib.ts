@@ -8,7 +8,110 @@
 //     correct letter, so it ships with the accepted letter a blind pass reached,
 //     a notice naming both, and grace in mocks (keycheck.ts).
 
+import { subjectiveContentHash } from "../../src/lib/upload/hash";
+import type { Difficulty, ParsedRowPayload } from "../../src/lib/upload/validate";
+
 const NUM_TO_LETTER: Record<string, string> = { "1": "A", "2": "B", "3": "C", "4": "D" };
+
+// ---------------------------------------------------------------------------
+// Written papers (RIMC Maths and English): no options, a model answer instead.
+// Each RIMC subject is its own paper, so a paper is either all-MCQ (the shared
+// UPSC machinery) or all-written (below); none mixes the two.
+
+/** One written item as transcribed. `number` is the lane's running count
+ *  (1..N, the coverage gate); `label` is the PRINTED number ("1(a)", "Q.7"),
+ *  which becomes the row's question_number. */
+export type WrittenItem = {
+  number: number;
+  label: string;
+  stem: string;
+  context?: string;
+  setLabel?: string;
+  subject: string;
+  chapter: string;
+  subtopic?: string;
+  difficulty: string;
+  marks: number;
+  /** An open-ended task (essay, letter, story): its answer is one sample, never compared. */
+  open?: boolean;
+  options?: unknown[];
+};
+
+const unbalancedMath = (s: string) => (s.match(/\\\(/g) ?? []).length !== (s.match(/\\\)/g) ?? []).length;
+
+export function validateWritten(items: WrittenItem[]): string[] {
+  const errs: string[] = [];
+  const seen = new Set<number>();
+  const labels = new Map<string, number>();
+  for (const q of items) {
+    const at = `Q${q.number}`;
+    if (seen.has(q.number)) errs.push(`${at}: numbered twice`);
+    seen.add(q.number);
+    if (!q.stem || !q.stem.trim()) errs.push(`${at}: empty stem`);
+    if (q.options && q.options.length) errs.push(`${at}: a written item carries options`);
+    if (!q.label || !q.label.trim()) errs.push(`${at}: printed label missing`);
+    else if (labels.has(q.label)) errs.push(`${at}: printed label ${q.label} is also Q${labels.get(q.label)}'s`);
+    else labels.set(q.label, q.number);
+    if (!(q.marks > 0)) errs.push(`${at}: marks missing`);
+    for (const [f, v] of [["stem", q.stem], ["context", q.context]] as const) {
+      if (v && unbalancedMath(v)) errs.push(`${at}: unbalanced \\( \\) delimiter in ${f}`);
+    }
+    if (!q.chapter) errs.push(`${at}: chapter missing`);
+  }
+  const max = Math.max(0, ...seen);
+  for (let n = 1; n <= max; n++) if (!seen.has(n)) errs.push(`Q${n}: missing (numbering must run 1..${max})`);
+  return errs;
+}
+
+/** Reduce a final answer to what matters for agreement: case, spacing, maths
+ *  delimiters, thousands commas, a currency word and a closing full stop. */
+function normAnswer(s: string): string {
+  return s
+    .toLowerCase()
+    .replace(/\\[()]/g, "")
+    .replace(/\$/g, "")
+    .replace(/(rs\.?|₹|inr)/g, "")
+    .replace(/(\d),(\d{3})\b/g, "$1$2")
+    .replace(/\s+/g, "")
+    .replace(/[.]+$/, "");
+}
+
+export function compareWritten(a: string | undefined, b: string | undefined, open = false): "AGREE" | "DISPUTE" | "OPEN" | "MISSING" {
+  if (open) return "OPEN";
+  if (a === undefined || b === undefined || !a.trim() || !b.trim()) return "MISSING";
+  const x = normAnswer(a);
+  const y = normAnswer(b);
+  if (x === y) return "AGREE";
+  const nx = Number(x);
+  const ny = Number(y);
+  if (x !== "" && y !== "" && Number.isFinite(nx) && Number.isFinite(ny) && nx === ny) return "AGREE";
+  return "DISPUTE";
+}
+
+const DIFF: Record<string, Difficulty> = { EASY: "EASY", MEDIUM: "MODERATE", MODERATE: "MODERATE", HARD: "HARD" };
+
+/** The row a written item becomes: subjective, no options, the model answer in
+ *  `solution`, hashed on stem + context (never the answer, so a later answer
+ *  fix keeps the row's identity). */
+export function writtenPayload(q: WrittenItem, solution: string, sourceRow: number): ParsedRowPayload {
+  const difficulty = DIFF[String(q.difficulty ?? "").toUpperCase()];
+  if (!difficulty) throw new Error(`Q${q.number}: difficulty ${JSON.stringify(q.difficulty)} is not EASY/MEDIUM/HARD`);
+  return {
+    sourceRow,
+    questionNumber: q.label,
+    ...(q.setLabel ? { setLabel: q.setLabel } : {}),
+    subjectName: q.subject,
+    chapterName: q.chapter,
+    ...(q.subtopic ? { subtopicName: q.subtopic } : {}),
+    ...(q.context ? { context: q.context } : {}),
+    text: q.stem,
+    difficulty,
+    solution,
+    questionFormat: "subjective",
+    options: [],
+    contentHash: subjectiveContentHash(q.stem, q.context ?? null),
+  };
+}
 
 export type NtaKey = {
   /** Question number -> letter, or "X" for a dropped item. Feeds parseOfficialKey. */

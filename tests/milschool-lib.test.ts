@@ -1,5 +1,77 @@
 import { describe, expect, it } from "vitest";
-import { normaliseNtaKey, resolveAccepted, scoreAccepted } from "../scripts/milschool/lib";
+import {
+  compareWritten,
+  normaliseNtaKey,
+  resolveAccepted,
+  scoreAccepted,
+  validateWritten,
+  writtenPayload,
+  type WrittenItem,
+} from "../scripts/milschool/lib";
+import { subjectiveContentHash } from "../src/lib/upload/hash";
+
+const item = (n: number, over: Partial<WrittenItem> = {}): WrittenItem => ({
+  number: n,
+  label: String(n),
+  stem: `Question ${n}`,
+  subject: "Mathematics",
+  chapter: "Numbers",
+  difficulty: "EASY",
+  marks: 5,
+  ...over,
+});
+
+describe("validateWritten (RIMC written papers)", () => {
+  it("accepts numbered written items 1..N", () => {
+    expect(validateWritten([item(1), item(2), item(3)])).toEqual([]);
+  });
+  it("refuses a gap or a repeat in the numbering", () => {
+    expect(validateWritten([item(1), item(3)]).join(" ")).toMatch(/Q2/);
+    expect(validateWritten([item(1), item(1)]).join(" ")).toMatch(/twice/);
+  });
+  it("refuses an empty stem, options, a missing printed label, no marks, unbalanced maths", () => {
+    expect(validateWritten([item(1, { stem: " " })]).join(" ")).toMatch(/stem/);
+    expect(validateWritten([item(1, { options: [{ label: "A", text: "x" }] })]).join(" ")).toMatch(/options/);
+    expect(validateWritten([item(1, { label: "" })]).join(" ")).toMatch(/label/);
+    expect(validateWritten([item(1, { marks: 0 })]).join(" ")).toMatch(/marks/);
+    expect(validateWritten([item(1, { stem: "Find \\(x + 1" })]).join(" ")).toMatch(/delimiter/);
+  });
+  it("refuses two items sharing a printed label (the label is the row's question number)", () => {
+    expect(validateWritten([item(1, { label: "1(a)" }), item(2, { label: "1(a)" })]).join(" ")).toMatch(/1\(a\)/);
+  });
+});
+
+describe("compareWritten", () => {
+  it("agrees on the same final answer written differently", () => {
+    expect(compareWritten("Rs. 3,600", "₹3600")).toBe("AGREE");
+    expect(compareWritten("\\(0.50\\)", "0.5")).toBe("AGREE");
+    expect(compareWritten("Mickey, Goofy", "mickey,goofy.")).toBe("AGREE");
+  });
+  it("disputes different answers, and reports a missing one", () => {
+    expect(compareWritten("12", "13")).toBe("DISPUTE");
+    expect(compareWritten("12", undefined)).toBe("MISSING");
+  });
+  it("never compares an open-ended item (essay, letter)", () => {
+    expect(compareWritten("an essay", "another essay", true)).toBe("OPEN");
+  });
+});
+
+describe("writtenPayload", () => {
+  it("builds a subjective row keyed on stem + context, numbered by the printed label", () => {
+    const p = writtenPayload(item(4, { label: "1(d)", context: "A passage." }), "The answer.", 7);
+    expect(p.questionFormat).toBe("subjective");
+    expect(p.options).toEqual([]);
+    expect(p.questionNumber).toBe("1(d)");
+    expect(p.solution).toBe("The answer.");
+    expect(p.sourceRow).toBe(7);
+    expect(p.contentHash).toBe(subjectiveContentHash("Question 4", "A passage."));
+    expect(p.difficulty).toBe("EASY");
+  });
+  it("maps MEDIUM to the bank's MODERATE and refuses an unknown difficulty", () => {
+    expect(writtenPayload(item(1, { difficulty: "MEDIUM" }), "s", 1).difficulty).toBe("MODERATE");
+    expect(() => writtenPayload(item(1, { difficulty: "TRICKY" }), "s", 1)).toThrow(/difficulty/);
+  });
+});
 
 const full = (n: number, fill = "1"): Record<string, string> =>
   Object.fromEntries(Array.from({ length: n }, (_, i) => [String(i + 1), fill]));
