@@ -52,14 +52,14 @@ export const EXAM_CALENDAR: readonly SittingEntry[] = [
   { exam: "mh-ssc-10", sitting: "2027", label: "SSC boards 2027", date: "2027-03-01", official: false, source: PATTERN },
   { exam: "jee-mains", sitting: "2027-Apr", label: "JEE Main 2027 (April)", date: "2027-04-02", official: true, source: "NTA, JEE (Main) 2027 Information Bulletin (24 Oct 2026); NTA calls the dates tentative: 2-7 Apr 2027" },
   { exam: "nda", sitting: "2027-I", label: "NDA 2027 (I)", date: "2027-04-11", official: true, source: "UPSC Calendar of examinations 2027 (uploaded 20 May 2026); first confirmed by the user 2026-09-24" },
-  { exam: "cds", sitting: "2027-I", label: "CDS 2027 (I)", date: "2027-04-11", official: false, source: "expected alongside NDA 2027 (I), which UPSC set for 11 April 2027; CDS itself not confirmed" },
-  { exam: "mht-cet", sitting: "2027", label: "MHT-CET 2027", date: "2027-04-20", official: false, source: PATTERN },
+  { exam: "cds", sitting: "2027-I", label: "CDS 2027 (I)", date: "2027-04-11", official: true, source: "UPSC Calendar of examinations 2027 (uploaded 20 May 2026): listed with NDA (I), 2027 on the same dates" },
+  { exam: "mht-cet", sitting: "2027", label: "MHT-CET 2027", date: "2027-04-16", official: true, source: "State CET Cell press note, 16 Nov 2026: PCM 16-26 Apr 2027 (PCB 8-13 Apr); the note calls the dates probable" },
   { exam: "neet", sitting: "2027", label: "NEET 2027", date: "2027-05-02", official: false, source: PATTERN },
   { exam: "ipmat-indore", sitting: "2027", label: "IPMAT Indore 2027", date: "2027-05-09", official: false, source: PATTERN },
   { exam: "ipmat-rohtak", sitting: "2027", label: "IPMAT Rohtak 2027", date: "2027-05-09", official: false, source: PATTERN },
   { exam: "jipmat", sitting: "2027", label: "JIPMAT 2027", date: "2027-05-09", official: false, source: PATTERN },
   { exam: "nda", sitting: "2027-II", label: "NDA 2027 (II)", date: "2027-09-19", official: true, source: "UPSC Calendar of examinations 2027 (uploaded 20 May 2026)" },
-  { exam: "cds", sitting: "2027-II", label: "CDS 2027 (II)", date: "2027-09-05", official: false, source: PATTERN },
+  { exam: "cds", sitting: "2027-II", label: "CDS 2027 (II)", date: "2027-09-19", official: true, source: "UPSC Calendar of examinations 2027 (uploaded 20 May 2026): listed with NDA (II), 2027 on the same dates" },
 ];
 
 const DAY_MS = 86_400_000;
