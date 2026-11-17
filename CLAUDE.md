@@ -369,6 +369,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-17 (second) — Store: Ebooks renamed, Defence Mania's CDS + AFCAT online courses linked as a counted trial (0269).**
+  - **Why:** test online-course demand (Testbook's model) without recording any; nothing agreed with the partner, so taps decide whether to ask for a deal.
+  - **New batches linked** (Sikandar 3.0 from 5 Dec, Crash Course from 20 Dec); start dates were only in the banner images. Shelf per exam via `ExamFeedList`, so CDS/AFCAT students see it first.
+  - **Counted by our own redirect + table** (signed-out too, unique by account or `qb_vid`); it always forwards, bots uncounted. Experiment `partner-courses`: 30+ students in 6 weeks. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-17 — IMAT notes figures: 1 across 671 concepts became 143 (78 borrowed, 64 new, 17 animated).**
   - **Borrowed figures checked against the IMAT text;** refused where they contradict it ("auricles", "dark reaction, no light needed") or name another exam.
   - **Shared stepper `StepFigure`:** opens on the complete last step (print and ebooks see every step listed); motion is CSS on `style.transform`, built by `svgTransform`, rounded because an unrounded style string was a hydration mismatch.

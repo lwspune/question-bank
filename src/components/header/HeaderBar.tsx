@@ -113,7 +113,7 @@ export default function HeaderBar({
             <img src="/icons/mark-96.png" alt="" aria-hidden width={24} height={24} className="h-6 w-6 shrink-0" />
             {/* The wordmark used to hide below sm so the icon row could fit; the nav
                 has moved to MobileTabBar, so there is room for it again. */}
-            {/* On a phone (below 640 px) the words give way so Ebooks, Classes and
+            {/* On a phone (below 640 px) the words give way so Store, Classes and
                 Play fit beside the theme toggle and Sign in, down to 360 px
                 (owner, 2026-11-16; was below 360 px only). The logo stays and the
                 link keeps its name for screen readers. */}
@@ -142,8 +142,9 @@ export default function HeaderBar({
           />
 
           <div className="ml-auto flex min-w-0 items-center gap-1 sm:gap-2">
-            {/* The ebook store (2026-10-20): its own button, apart from the study
-                tabs, at every width (owner: "a separate buy section on top"). */}
+            {/* The store (2026-10-20): its own button, apart from the study tabs,
+                at every width (owner: "a separate buy section on top"). Called
+                Ebooks until 2026-11-17, when partner courses joined the books. */}
             <StoreLink />
             {/* Offline classes in Pune (2026-11-16; was the 1:1 tutoring check), beside the store. */}
             <ClassesLink />
@@ -200,7 +201,7 @@ export default function HeaderBar({
 }
 
 /**
- * The header's Ebooks and Tutor buttons: soft tinted pills, filled when you are
+ * The header's Store and Classes buttons: soft tinted pills, filled when you are
  * on their page. Outlined boxes until 2026-11-10, when four outlined boxes in a
  * row (these two, the theme toggle and Sign in) made the header busy and none
  * stood out; Sign in is now the one solid button. Both stay visible: each is
@@ -228,7 +229,7 @@ function StoreLink() {
           meant (owner, 2026-11-02). Icon AND word overflowed a 390 px screen
           and cut "Sign in" off, so the icon shows from sm up; measured to fit
           at 360 px. */}
-      <span>Ebooks</span>
+      <span>Store</span>
     </Link>
   );
 }

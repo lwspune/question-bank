@@ -106,6 +106,7 @@ import {
   TUTOR_PRICE_MIN_ANSWERS,
   CLASS_LEADS_PUNE_KEEP,
   PLAY_PLAYERS_MIN,
+  PARTNER_COURSE_TAPPERS_KEEP,
   WHY_NOT_BUY_LEAD_PCT,
   WHY_NOT_BUY_MIN_ANSWERS,
   PARENT_PAY_KEEP,
@@ -977,6 +978,14 @@ export default async function GrowthPage() {
             Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with <code>scripts/play/readout.sql</code>:
             once {PLAY_PLAYERS_MIN}+ signed-in students have played, keep the header Play button if their study days
             after the first round hold up and a quarter play on 2+ days.
+          </p>
+        );
+      case "partner-courses":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with{" "}
+            <code>scripts/partner-courses/readout.sql</code>: take the courses to Defence Mania as a deal if{" "}
+            {PARTNER_COURSE_TAPPERS_KEEP}+ different students tap one; otherwise take the course shelves down.
           </p>
         );
       case "enem-interest":
