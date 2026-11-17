@@ -61,11 +61,12 @@ describe("SPI config", () => {
     );
   });
 
-  it("the 2022 paper is the only pyq paper, 150 questions, with derived answers", () => {
+  it("the 2022 and 2026 papers are the only pyq papers, 150 questions, with derived answers", () => {
     const p = requirePaper("2022");
     expect(p.kind).toBe("pyq");
     expect(p.answerSource).toBe("derived");
-    expect(PAPERS.filter((x) => x.kind === "pyq").map((x) => x.id)).toEqual(["2022"]);
+    expect(PAPERS.filter((x) => x.kind === "pyq").map((x) => x.id)).toEqual(["2022", "2026"]);
+    expect(requirePaper("2026")).toMatchObject({ kind: "pyq", answerSource: "derived", pyqYear: 2026 });
     for (const x of PAPERS) if (x.pyqNote) expect(x.pyqNote.length).toBeLessThan(48); // publicPyqNote's cap
     expect(p.parts.at(-1)!.to).toBe(150);
     expect(() => requirePaper("1999")).toThrow(/unknown paper/);

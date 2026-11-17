@@ -1459,6 +1459,7 @@ export type Database = {
           granted_by: string | null
           id: string
           note: string | null
+          payment_provider: string
           provider_ref: string | null
           scope: string
           source: string
@@ -1474,6 +1475,7 @@ export type Database = {
           granted_by?: string | null
           id?: string
           note?: string | null
+          payment_provider?: string
           provider_ref?: string | null
           scope?: string
           source: string
@@ -1489,6 +1491,7 @@ export type Database = {
           granted_by?: string | null
           id?: string
           note?: string | null
+          payment_provider?: string
           provider_ref?: string | null
           scope?: string
           source?: string
@@ -3377,6 +3380,8 @@ export type Database = {
           ends_on: string | null
           id: string
           label: string
+          paddle_product_id: string | null
+          payment_provider: string
           perks: string[]
           scope: string
           site: string
@@ -3395,6 +3400,8 @@ export type Database = {
           ends_on?: string | null
           id: string
           label: string
+          paddle_product_id?: string | null
+          payment_provider?: string
           perks?: string[]
           scope: string
           site?: string
@@ -3413,6 +3420,8 @@ export type Database = {
           ends_on?: string | null
           id?: string
           label?: string
+          paddle_product_id?: string | null
+          payment_provider?: string
           perks?: string[]
           scope?: string
           site?: string

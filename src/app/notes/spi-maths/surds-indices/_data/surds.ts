@@ -6,7 +6,7 @@ export const SPI_SI_SURDS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A surd is a root that cannot be simplified to a rational number; you simplify it, compare it, and clear it from a denominator with its conjugate.",
   whyItMatters:
-    "Eight questions in the bank, two EASY and six MODERATE, and two are from the 2022 paper. They ask you to take square roots of decimals, compare roots, clear a root from a denominator, and find the square root of a number like 7 plus a root.",
+    "Nine questions in the bank, three EASY and six MODERATE: two from the 2022 paper and one from the 2026 paper. They ask you to take square roots of decimals, compare roots, clear a root from a denominator, find the square root of a number like 7 plus a root, and find what makes a root rational.",
   concepts: [
     {
       kind: "formula" as const,

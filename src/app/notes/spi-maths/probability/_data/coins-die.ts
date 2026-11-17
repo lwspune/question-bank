@@ -6,7 +6,7 @@ export const SPI_PR_COINS_DIE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The probability of an event is the number of outcomes you want divided by the number of equally likely outcomes there are.",
   whyItMatters:
-    "Twelve questions in the bank, all EASY: a die thrown once, or two or three coins tossed. Each is one count over 6, 4 or 8, so the only way to lose the mark is to list the outcomes wrongly.",
+    "Thirteen questions in the bank, all EASY, one from the 2026 paper: a die thrown once, or two or three coins tossed. Each is one count over 6, 4 or 8, so the only way to lose the mark is to list the outcomes wrongly.",
   concepts: [
     {
       kind: "formula" as const,

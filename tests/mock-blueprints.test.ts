@@ -11,6 +11,8 @@ import {
   CDS_MATHS_PAPER,
   JEE_MAINS_PAPER,
   CBSE_10_CHAPTER_MCQ_PAPER,
+  UP_10_CHAPTER_MCQ_PAPER,
+  UP_12_CHAPTER_MCQ_PAPER,
   CBSE_12_CHAPTER_MCQ_PAPER,
   MH_HSC_12_CHAPTER_MCQ_PAPER,
   MH_SSC_10_CHAPTER_MCQ_PAPER,
@@ -372,6 +374,8 @@ describe("getBlueprint covers every exported blueprint", () => {
     MH_HSC_12_CHAPTER_MCQ_PAPER,
     MH_SSC_10_CHAPTER_MCQ_PAPER,
     MH_SSC_10_HUMANITIES_MCQ_PAPER,
+    UP_10_CHAPTER_MCQ_PAPER,
+    UP_12_CHAPTER_MCQ_PAPER,
     SSC_CGL_T1_PAPER,
     SSC_CGL_T2_PAPER,
     SSC_CGL_T2_COMPUTER_PAPER,
@@ -403,6 +407,8 @@ describe("board chapter-test papers", () => {
     MH_HSC_12_CHAPTER_MCQ_PAPER,
     MH_SSC_10_CHAPTER_MCQ_PAPER,
     MH_SSC_10_HUMANITIES_MCQ_PAPER,
+    UP_10_CHAPTER_MCQ_PAPER,
+    UP_12_CHAPTER_MCQ_PAPER,
   ];
 
   it.each(BOARD.map((bp) => [`${bp.examSlug}/${bp.code}`, bp] as const))(
@@ -413,7 +419,7 @@ describe("board chapter-test papers", () => {
   );
 
   it("maths and science papers run 90 seconds a question, humanities 60", () => {
-    for (const bp of [CBSE_10_CHAPTER_MCQ_PAPER, CBSE_12_CHAPTER_MCQ_PAPER, MH_HSC_12_CHAPTER_MCQ_PAPER, MH_SSC_10_CHAPTER_MCQ_PAPER]) {
+    for (const bp of [CBSE_10_CHAPTER_MCQ_PAPER, CBSE_12_CHAPTER_MCQ_PAPER, MH_HSC_12_CHAPTER_MCQ_PAPER, MH_SSC_10_CHAPTER_MCQ_PAPER, UP_10_CHAPTER_MCQ_PAPER, UP_12_CHAPTER_MCQ_PAPER]) {
       expect(bp.durationSecs / totalQuestions(bp)).toBe(90);
     }
     expect(MH_SSC_10_HUMANITIES_MCQ_PAPER.durationSecs / totalQuestions(MH_SSC_10_HUMANITIES_MCQ_PAPER)).toBe(60);
@@ -423,6 +429,9 @@ describe("board chapter-test papers", () => {
     const subjects = (bp: (typeof BOARD)[number]) => bp.sections.flatMap((s) => s.subjects);
     // Biology joined 2026-10-08, when its 72 board papers went PUBLIC.
     expect(subjects(CBSE_12_CHAPTER_MCQ_PAPER)).toEqual(["Physics", "Chemistry", "Mathematics", "Biology"]);
+    // UP Board (2026-11-17): Biology skipped (owner).
+    expect(subjects(UP_10_CHAPTER_MCQ_PAPER)).toEqual(["Mathematics", "Science"]);
+    expect(subjects(UP_12_CHAPTER_MCQ_PAPER)).toEqual(["Physics", "Chemistry", "Mathematics"]);
     // Biology joined 2026-10-14, when its Balbharati textbook MCQs went PUBLIC.
     expect(subjects(MH_HSC_12_CHAPTER_MCQ_PAPER)).toEqual(["Physics", "Chemistry", "Mathematics", "Biology"]);
     expect(subjects(MH_SSC_10_CHAPTER_MCQ_PAPER)).toEqual([

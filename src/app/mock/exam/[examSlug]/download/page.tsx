@@ -6,7 +6,8 @@ import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import { getMockExam, getMockExams, mockFamilyOf, mockSideNav } from "@/lib/mocks/mocksNav";
 import { groupMocksForType, mockDownloadHref } from "@/lib/mocks/catalogue";
-import { EXAM_REGISTRY, examAltLang, getExamByName, type ExamSlug } from "@/lib/exam/examContext";
+import { EXAM_REGISTRY, examAltLang, examDefaultLang, getExamByName, type ExamSlug } from "@/lib/exam/examContext";
+import { QuestionLangDefaultProvider } from "@/lib/i18n/QuestionLangDefault";
 import { downloadPageTitle, paperPageHref, paperYearRange, plainPaperTitle } from "@/lib/mocks/paperPage";
 import {
   YEAR_NOTES,
@@ -85,6 +86,7 @@ export default async function MockDownloadList(props: { params: Promise<Params> 
   const open = openYearKeys(groups);
   const parent = mockFamilyOf(exam.slug);
   const altLang = examAltLang(getExamByName(exam.examName));
+  const langDefault = examDefaultLang(getExamByName(exam.examName));
   const solved = getExamByName(exam.examName)?.pastPaperSolutions === true;
   const yearNotes = YEAR_NOTES[exam.slug] ?? {};
 
@@ -112,6 +114,7 @@ export default async function MockDownloadList(props: { params: Promise<Params> 
   });
 
   return (
+    <QuestionLangDefaultProvider value={langDefault}>
     <GuideShell guideTitle="Mock Tests" sideNavLabel="Exams" sideNav={mockSideNav(params.examSlug)} breadcrumbs={breadcrumbs}>
       <script
         type="application/ld+json"
@@ -264,5 +267,6 @@ export default async function MockDownloadList(props: { params: Promise<Params> 
         </div>
       )}
     </GuideShell>
+    </QuestionLangDefaultProvider>
   );
 }

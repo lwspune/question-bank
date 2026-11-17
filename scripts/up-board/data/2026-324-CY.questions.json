@@ -1,0 +1,702 @@
+{
+  "paper": "324-CY",
+  "year": 2026,
+  "subject": "maths12",
+  "pages": "8-page layout, each question in Hindi then English. 1 cover + instructions; 2 Q1 Hindi, Q1a-b English; 3 Q1c-e English, Q2 Hindi + English; 4 Q3 Hindi + English, Q4 Hindi; 5 Q4 English, Q5 Hindi, Q5a-b English; 6 Q5c-e English, Q6 Hindi + English; 7 Q7 Hindi + English, Q8 Hindi; 8 Q8 English, Q9 Hindi + English",
+  "questions": [
+    {
+      "ref": "Q1a",
+      "questionNumber": "1 (a)",
+      "section": "",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Relations and Functions",
+      "subtopic": "Composition and Invertible Functions",
+      "difficulty": "EASY",
+      "stem": "If \\(f : R \\rightarrow R\\) is given by \\(f(x) = (5 - x^5)^{1/5}\\), then \\(fof(x)\\) is equal to",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(x^{1/5}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(x\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(x^5\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(5 - x^5\\)"
+        }
+      ],
+      "hi": {
+        "stem": "यदि \\(f : R \\rightarrow R\\), \\(f(x) = (5 - x^5)^{1/5}\\) द्वारा प्रदत्त है, तो \\(fof(x)\\) बराबर है",
+        "options": [
+          "\\(x^{1/5}\\)",
+          "\\(x\\)",
+          "\\(x^5\\)",
+          "\\(5 - x^5\\)"
+        ],
+        "solution": "यहाँ \\(f(x) = (5 - x^5)^{1/5}\\), अतः \\((f(x))^5 = 5 - x^5\\)। तब\n\\(fof(x) = f(f(x)) = \\left(5 - (f(x))^5\\right)^{1/5} = \\left(5 - (5 - x^5)\\right)^{1/5} = (x^5)^{1/5} = x\\),\nजो विकल्प \\(x\\) है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "The Hindi exponent 1/5 is blurred in the scan; the English print settles it.",
+      "answer": "B",
+      "solution": "Here \\(f(x) = (5 - x^5)^{1/5}\\), so \\((f(x))^5 = 5 - x^5\\). Then\n\\(fof(x) = f(f(x)) = \\left(5 - (f(x))^5\\right)^{1/5} = \\left(5 - (5 - x^5)\\right)^{1/5} = (x^5)^{1/5} = x\\),\nwhich is the choice \\(x\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q1b",
+      "questionNumber": "1 (b)",
+      "section": "",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Integrals",
+      "subtopic": "Definite Integrals and the Fundamental Theorem",
+      "difficulty": "EASY",
+      "stem": "The value of \\(\\int_{2}^{2\\sqrt{3}} \\frac{dx}{4 + x^2}\\) is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{\\pi}{12}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{\\pi}{18}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{\\pi}{24}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{\\pi}{6}\\)"
+        }
+      ],
+      "hi": {
+        "stem": "\\(\\int_{2}^{2\\sqrt{3}} \\frac{dx}{4 + x^2}\\) का मान है",
+        "options": [
+          "\\(\\frac{\\pi}{12}\\)",
+          "\\(\\frac{\\pi}{18}\\)",
+          "\\(\\frac{\\pi}{24}\\)",
+          "\\(\\frac{\\pi}{6}\\)"
+        ],
+        "solution": "सूत्र \\(\\int \\frac{dx}{a^2 + x^2} = \\frac{1}{a}\\tan^{-1}\\frac{x}{a}\\) में \\(a = 2\\) रखने पर:\n\\(\\int_{2}^{2\\sqrt{3}} \\frac{dx}{4 + x^2} = \\frac{1}{2}\\left[\\tan^{-1}\\frac{x}{2}\\right]_{2}^{2\\sqrt{3}} = \\frac{1}{2}\\left(\\tan^{-1}\\sqrt{3} - \\tan^{-1}1\\right) = \\frac{1}{2}\\left(\\frac{\\pi}{3} - \\frac{\\pi}{4}\\right) = \\frac{\\pi}{24}\\),\nजो विकल्प \\(\\frac{\\pi}{24}\\) है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "answer": "C",
+      "solution": "Using \\(\\int \\frac{dx}{a^2 + x^2} = \\frac{1}{a}\\tan^{-1}\\frac{x}{a}\\) with \\(a = 2\\):\n\\(\\int_{2}^{2\\sqrt{3}} \\frac{dx}{4 + x^2} = \\frac{1}{2}\\left[\\tan^{-1}\\frac{x}{2}\\right]_{2}^{2\\sqrt{3}} = \\frac{1}{2}\\left(\\tan^{-1}\\sqrt{3} - \\tan^{-1}1\\right) = \\frac{1}{2}\\left(\\frac{\\pi}{3} - \\frac{\\pi}{4}\\right) = \\frac{\\pi}{24}\\),\nwhich is the choice \\(\\frac{\\pi}{24}\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q1c",
+      "questionNumber": "1 (c)",
+      "section": "",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Relations and Functions",
+      "subtopic": "Types of Relations",
+      "difficulty": "EASY",
+      "stem": "A relation \\(R\\) is defined in the set \\(N\\) as follows :\n\\(R = \\{(x, y) : y = x + 5, y > 5\\}\\)\nThen which of the following is correct ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\((6, 10) \\in R\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\((3, 6) \\in R\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\((4, 9) \\in R\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\((2, 6) \\in R\\)"
+        }
+      ],
+      "hi": {
+        "stem": "समुच्चय \\(N\\) में संबंध \\(R\\) निम्नवत् परिभाषित है\n\\(R = \\{(x, y) : y = x + 5, y > 5\\}\\)\nतब निम्नलिखित में से कौन सही है ?",
+        "options": [
+          "\\((6, 10) \\in R\\)",
+          "\\((3, 6) \\in R\\)",
+          "\\((4, 9) \\in R\\)",
+          "\\((2, 6) \\in R\\)"
+        ],
+        "solution": "युग्म \\((x, y)\\) संबंध \\(R\\) में तभी होगा जब \\(y = x + 5\\) हो (तब \\(x \\in N\\) के लिए \\(y > 5\\) स्वतः सत्य है)। \\((4, 9)\\) के लिए \\(4 + 5 = 9\\) तथा \\(9 > 5\\), अतः \\((4, 9) \\in R\\)। शेष युग्म संतुष्ट नहीं करते, क्योंकि \\(6 + 5 = 11 \\neq 10\\), \\(3 + 5 = 8 \\neq 6\\) तथा \\(2 + 5 = 7 \\neq 6\\)। अतः सही कथन \\((4, 9) \\in R\\) है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "answer": "C",
+      "solution": "The pair \\((x, y)\\) belongs to \\(R\\) only when \\(y = x + 5\\) (and then \\(y > 5\\) holds automatically for \\(x \\in N\\)). For \\((4, 9)\\): \\(4 + 5 = 9\\) and \\(9 > 5\\), so \\((4, 9) \\in R\\). The other pairs fail, since \\(6 + 5 = 11 \\neq 10\\), \\(3 + 5 = 8 \\neq 6\\) and \\(2 + 5 = 7 \\neq 6\\). So the correct statement is \\((4, 9) \\in R\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q1d",
+      "questionNumber": "1 (d)",
+      "section": "",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Integrals",
+      "subtopic": "Definite Integrals by Substitution",
+      "difficulty": "MODERATE",
+      "stem": "The value of \\(\\int_{0}^{\\pi/4} \\sin^3 2x \\cos 2x \\, dx\\) is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{1}{2}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{1}{4}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{1}{8}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{1}{16}\\)"
+        }
+      ],
+      "hi": {
+        "stem": "\\(\\int_{0}^{\\pi/4} \\sin^3 2x \\cos 2x \\, dx\\) का मान है",
+        "options": [
+          "\\(\\frac{1}{2}\\)",
+          "\\(\\frac{1}{4}\\)",
+          "\\(\\frac{1}{8}\\)",
+          "\\(\\frac{1}{16}\\)"
+        ],
+        "solution": "माना \\(\\sin 2x = t\\), तब \\(2\\cos 2x\\,dx = dt\\)। जब \\(x = 0\\), तब \\(t = 0\\); जब \\(x = \\frac{\\pi}{4}\\), तब \\(t = 1\\)। अतः\n\\(\\int_{0}^{\\pi/4} \\sin^3 2x \\cos 2x\\,dx = \\frac{1}{2}\\int_{0}^{1} t^3\\,dt = \\frac{1}{2}\\left[\\frac{t^4}{4}\\right]_{0}^{1} = \\frac{1}{8}\\),\nजो विकल्प \\(\\frac{1}{8}\\) है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "English option D is faint and reads like 1/10; the Hindi prints a clear 1/16, used for both.",
+      "answer": "C",
+      "solution": "Put \\(\\sin 2x = t\\), so \\(2\\cos 2x\\,dx = dt\\). When \\(x = 0\\), \\(t = 0\\); when \\(x = \\frac{\\pi}{4}\\), \\(t = 1\\). Then\n\\(\\int_{0}^{\\pi/4} \\sin^3 2x \\cos 2x\\,dx = \\frac{1}{2}\\int_{0}^{1} t^3\\,dt = \\frac{1}{2}\\left[\\frac{t^4}{4}\\right]_{0}^{1} = \\frac{1}{8}\\),\nwhich is the choice \\(\\frac{1}{8}\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q1e",
+      "questionNumber": "1 (e)",
+      "section": "",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Probability",
+      "subtopic": "Conditional Probability",
+      "difficulty": "EASY",
+      "stem": "The probability of impossible events is",
+      "options": [
+        {
+          "label": "A",
+          "text": "0"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{1}{2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{1}{3}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{1}{4}\\)"
+        }
+      ],
+      "hi": {
+        "stem": "असंभव घटनाओं की प्रायिकता होती है",
+        "options": [
+          "0",
+          "\\(\\frac{1}{2}\\)",
+          "\\(\\frac{1}{3}\\)",
+          "\\(\\frac{1}{4}\\)"
+        ],
+        "solution": "असंभव घटना का कोई भी अनुकूल परिणाम नहीं होता, अतः यह रिक्त समुच्चय \\(\\phi\\) है और \\(P(\\phi) = 0\\)। अतः उत्तर विकल्प 0 है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "Closest subtopic only: tests the basic fact P(impossible event) = 0, which no Class 12 subtopic covers.",
+      "answer": "A",
+      "solution": "An impossible event has no favourable outcome, so it is the empty set \\(\\phi\\) and \\(P(\\phi) = 0\\). The answer is the choice 0.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q2a",
+      "questionNumber": "2 (a)",
+      "section": "",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Evaluating Inverse Trigonometric Expressions",
+      "difficulty": "EASY",
+      "stem": "Find the value of \\(\\cos^{-1}\\left(\\frac{1}{2}\\right) + 2\\sin^{-1}\\left(\\frac{1}{2}\\right)\\).",
+      "hi": {
+        "stem": "\\(\\cos^{-1}\\left(\\frac{1}{2}\\right) + 2\\sin^{-1}\\left(\\frac{1}{2}\\right)\\) का मान ज्ञात कीजिए।",
+        "solution": "मुख्य मान \\(\\cos^{-1}\\left(\\frac{1}{2}\\right) = \\frac{\\pi}{3}\\) तथा \\(\\sin^{-1}\\left(\\frac{1}{2}\\right) = \\frac{\\pi}{6}\\) हैं। अतः\n\\(\\cos^{-1}\\left(\\frac{1}{2}\\right) + 2\\sin^{-1}\\left(\\frac{1}{2}\\right) = \\frac{\\pi}{3} + 2 \\cdot \\frac{\\pi}{6} = \\frac{2\\pi}{3}\\)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "The principal values are \\(\\cos^{-1}\\left(\\frac{1}{2}\\right) = \\frac{\\pi}{3}\\) and \\(\\sin^{-1}\\left(\\frac{1}{2}\\right) = \\frac{\\pi}{6}\\). Hence\n\\(\\cos^{-1}\\left(\\frac{1}{2}\\right) + 2\\sin^{-1}\\left(\\frac{1}{2}\\right) = \\frac{\\pi}{3} + 2 \\cdot \\frac{\\pi}{6} = \\frac{2\\pi}{3}\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q2b",
+      "questionNumber": "2 (b)",
+      "section": "",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Properties of Inverse Trigonometric Functions",
+      "difficulty": "EASY",
+      "stem": "Write \\(\\cot^{-1}\\left(\\frac{1}{\\sqrt{x^2 - 1}}\\right), x > 1\\) in the simplified form.",
+      "hi": {
+        "stem": "\\(\\cot^{-1}\\left(\\frac{1}{\\sqrt{x^2 - 1}}\\right), x > 1\\) को सरलतम रूप में लिखिए।",
+        "solution": "चूँकि \\(x > 1\\), माना \\(x = \\sec\\theta\\), जहाँ \\(\\theta \\in \\left(0, \\frac{\\pi}{2}\\right)\\)। तब \\(\\sqrt{x^2 - 1} = \\sqrt{\\sec^2\\theta - 1} = \\tan\\theta\\), अतः\n\\(\\cot^{-1}\\left(\\frac{1}{\\sqrt{x^2 - 1}}\\right) = \\cot^{-1}\\left(\\frac{1}{\\tan\\theta}\\right) = \\cot^{-1}(\\cot\\theta) = \\theta = \\sec^{-1} x\\)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Since \\(x > 1\\), put \\(x = \\sec\\theta\\) with \\(\\theta \\in \\left(0, \\frac{\\pi}{2}\\right)\\). Then \\(\\sqrt{x^2 - 1} = \\sqrt{\\sec^2\\theta - 1} = \\tan\\theta\\), so\n\\(\\cot^{-1}\\left(\\frac{1}{\\sqrt{x^2 - 1}}\\right) = \\cot^{-1}\\left(\\frac{1}{\\tan\\theta}\\right) = \\cot^{-1}(\\cot\\theta) = \\theta = \\sec^{-1} x\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q2c",
+      "questionNumber": "2 (c)",
+      "section": "",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Direction Cosines and Direction Ratios",
+      "difficulty": "EASY",
+      "stem": "If the direction ratios of a line are \\(3, -2, -6\\), then find its direction cosines.",
+      "hi": {
+        "stem": "यदि किसी रेखा के दिक्-अनुपात \\(3, -2, -6\\), तो इनकी दिक्-कोज्यायें ज्ञात कीजिए।",
+        "solution": "दिक्-अनुपात \\(a, b, c\\) हों तो दिक्-कोज्याएँ \\(\\frac{a}{\\sqrt{a^2+b^2+c^2}}, \\frac{b}{\\sqrt{a^2+b^2+c^2}}, \\frac{c}{\\sqrt{a^2+b^2+c^2}}\\) होती हैं। यहाँ \\(\\sqrt{3^2 + (-2)^2 + (-6)^2} = \\sqrt{49} = 7\\), अतः दिक्-कोज्याएँ \\(\\frac{3}{7}, -\\frac{2}{7}, -\\frac{6}{7}\\) हैं (विपरीत दिशा के लिए \\(-\\frac{3}{7}, \\frac{2}{7}, \\frac{6}{7}\\))।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "For direction ratios \\(a, b, c\\) the direction cosines are \\(\\frac{a}{\\sqrt{a^2+b^2+c^2}}, \\frac{b}{\\sqrt{a^2+b^2+c^2}}, \\frac{c}{\\sqrt{a^2+b^2+c^2}}\\). Here \\(\\sqrt{3^2 + (-2)^2 + (-6)^2} = \\sqrt{49} = 7\\), so the direction cosines are \\(\\frac{3}{7}, -\\frac{2}{7}, -\\frac{6}{7}\\) (or \\(-\\frac{3}{7}, \\frac{2}{7}, \\frac{6}{7}\\) for the opposite direction).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q2d",
+      "questionNumber": "2 (d)",
+      "section": "",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Scalar (Dot) Product and Projection",
+      "difficulty": "EASY",
+      "stem": "Find the angle between the vectors \\(\\vec{a} = \\hat{i} + \\hat{j} - \\hat{k}\\) and \\(\\vec{b} = \\hat{i} - \\hat{j} + \\hat{k}\\).",
+      "hi": {
+        "stem": "सदिशों \\(\\vec{a} = \\hat{i} + \\hat{j} - \\hat{k}\\) और \\(\\vec{b} = \\hat{i} - \\hat{j} + \\hat{k}\\) के बीच का कोण ज्ञात कीजिए।",
+        "solution": "यहाँ \\(\\vec{a} \\cdot \\vec{b} = (1)(1) + (1)(-1) + (-1)(1) = -1\\), \\(|\\vec{a}| = \\sqrt{3}\\) तथा \\(|\\vec{b}| = \\sqrt{3}\\)। अतः\n\\(\\cos\\theta = \\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{a}||\\vec{b}|} = \\frac{-1}{3}\\),\nऔर सदिशों के बीच का कोण \\(\\theta = \\cos^{-1}\\left(-\\frac{1}{3}\\right)\\) अर्थात् \\(\\pi - \\cos^{-1}\\frac{1}{3}\\) है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Here \\(\\vec{a} \\cdot \\vec{b} = (1)(1) + (1)(-1) + (-1)(1) = -1\\), \\(|\\vec{a}| = \\sqrt{3}\\) and \\(|\\vec{b}| = \\sqrt{3}\\). So\n\\(\\cos\\theta = \\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{a}||\\vec{b}|} = \\frac{-1}{3}\\),\nand the angle between the vectors is \\(\\theta = \\cos^{-1}\\left(-\\frac{1}{3}\\right)\\), that is, \\(\\pi - \\cos^{-1}\\frac{1}{3}\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q2e",
+      "questionNumber": "2 (e)",
+      "section": "",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Increasing and Decreasing Functions",
+      "difficulty": "EASY",
+      "stem": "Show that the given function \\(f(x) = x^3 - 6x^2 + 12x\\), \\(x \\in R\\) is increasing function on \\(R\\).",
+      "hi": {
+        "stem": "दिखाइए कि प्रदत्त फलन \\(f(x) = x^3 - 6x^2 + 12x\\), \\(x \\in R\\), \\(R\\) पर वर्धमान फलन है।",
+        "solution": "यहाँ \\(f'(x) = 3x^2 - 12x + 12 = 3(x^2 - 4x + 4) = 3(x - 2)^2\\)।\nअतः प्रत्येक \\(x \\in R\\) के लिए \\(f'(x) \\geq 0\\) है, और \\(f'(x) = 0\\) केवल एक बिन्दु \\(x = 2\\) पर है। अतः \\(f\\), \\(R\\) पर (निरंतर) वर्धमान फलन है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Here \\(f'(x) = 3x^2 - 12x + 12 = 3(x^2 - 4x + 4) = 3(x - 2)^2\\).\nSo \\(f'(x) \\geq 0\\) for every \\(x \\in R\\), and \\(f'(x) = 0\\) only at the single point \\(x = 2\\). Hence \\(f\\) is (strictly) increasing on \\(R\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q3a",
+      "questionNumber": "3 (a)",
+      "section": "",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Scalar (Dot) Product and Projection",
+      "difficulty": "EASY",
+      "stem": "If \\(\\vec{a} = 5\\hat{i} - \\hat{j} - 3\\hat{k}\\) and \\(\\vec{b} = \\hat{i} + 3\\hat{j} - 5\\hat{k}\\) are two vectors, then show that \\((\\vec{a} + \\vec{b})\\) and \\((\\vec{a} - \\vec{b})\\) are perpendicular.",
+      "hi": {
+        "stem": "यदि दो सदिश \\(\\vec{a} = 5\\hat{i} - \\hat{j} - 3\\hat{k}\\) एवं \\(\\vec{b} = \\hat{i} + 3\\hat{j} - 5\\hat{k}\\) हैं, तो दिखाइए कि \\((\\vec{a} + \\vec{b})\\) एवं \\((\\vec{a} - \\vec{b})\\) लम्बवत् हैं।",
+        "solution": "दो सदिश लम्बवत् होते हैं जब उनका अदिश गुणनफल शून्य हो।\n\\(\\vec{a} + \\vec{b} = (5 + 1)\\hat{i} + (-1 + 3)\\hat{j} + (-3 - 5)\\hat{k} = 6\\hat{i} + 2\\hat{j} - 8\\hat{k}\\)\n\\(\\vec{a} - \\vec{b} = (5 - 1)\\hat{i} + (-1 - 3)\\hat{j} + (-3 + 5)\\hat{k} = 4\\hat{i} - 4\\hat{j} + 2\\hat{k}\\)\n\\((\\vec{a} + \\vec{b}) \\cdot (\\vec{a} - \\vec{b}) = (6)(4) + (2)(-4) + (-8)(2) = 24 - 8 - 16 = 0\\)।\nअतः \\((\\vec{a} + \\vec{b})\\) एवं \\((\\vec{a} - \\vec{b})\\) लम्बवत् हैं।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A serial stamp crosses the Hindi word एवं before b; it is legible enough and matches the English.",
+      "solution": "Two vectors are perpendicular when their dot product is zero.\n\\(\\vec{a} + \\vec{b} = (5 + 1)\\hat{i} + (-1 + 3)\\hat{j} + (-3 - 5)\\hat{k} = 6\\hat{i} + 2\\hat{j} - 8\\hat{k}\\)\n\\(\\vec{a} - \\vec{b} = (5 - 1)\\hat{i} + (-1 - 3)\\hat{j} + (-3 + 5)\\hat{k} = 4\\hat{i} - 4\\hat{j} + 2\\hat{k}\\)\n\\((\\vec{a} + \\vec{b}) \\cdot (\\vec{a} - \\vec{b}) = (6)(4) + (2)(-4) + (-8)(2) = 24 - 8 - 16 = 0\\).\nHence \\((\\vec{a} + \\vec{b})\\) and \\((\\vec{a} - \\vec{b})\\) are perpendicular.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q3b",
+      "questionNumber": "3 (b)",
+      "section": "",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Independent Events",
+      "difficulty": "EASY",
+      "stem": "If \\(A\\) and \\(B\\) are independent events and \\(P(A) = 0.3\\) and \\(P(B) = 0.4\\), then find\n(i) \\(P(A \\cap B)\\),\n(ii) \\(P(A \\cup B)\\).",
+      "hi": {
+        "stem": "यदि \\(A\\) और \\(B\\) स्वतन्त्र घटनाएँ हैं तथा \\(P(A) = 0.3\\) एवं \\(P(B) = 0.4\\), तब\n(i) \\(P(A \\cap B)\\),\n(ii) \\(P(A \\cup B)\\) ज्ञात कीजिए।",
+        "solution": "स्वतंत्र घटनाओं के लिए \\(P(A \\cap B) = P(A) \\cdot P(B)\\)।\n(i) \\(P(A \\cap B) = 0.3 \\times 0.4 = 0.12\\)।\n(ii) \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 0.3 + 0.4 - 0.12 = 0.58\\)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "For independent events \\(P(A \\cap B) = P(A) \\cdot P(B)\\).\n(i) \\(P(A \\cap B) = 0.3 \\times 0.4 = 0.12\\).\n(ii) \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 0.3 + 0.4 - 0.12 = 0.58\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q3c",
+      "questionNumber": "3 (c)",
+      "section": "",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "Types of Relations",
+      "difficulty": "EASY",
+      "stem": "Prove that the relation given by \\(R = \\{(1, 1), (2, 2), (3, 3), (1, 2), (2, 3)\\}\\) in a set \\(\\{1, 2, 3\\}\\) is reflexive but not symmetric and not transitive.",
+      "hi": {
+        "stem": "सिद्ध कीजिए कि समुच्चय \\(\\{1, 2, 3\\}\\) में \\(R = \\{(1, 1), (2, 2), (3, 3), (1, 2), (2, 3)\\}\\) द्वारा प्रदत्त संबंध स्वतुल्य है परन्तु न तो सममित है और न संक्रामक है।",
+        "solution": "स्वतुल्य: \\((1, 1), (2, 2), (3, 3) \\in R\\), अर्थात् प्रत्येक \\(a \\in \\{1, 2, 3\\}\\) के लिए \\((a, a) \\in R\\)। अतः \\(R\\) स्वतुल्य है।\nसममित नहीं: \\((1, 2) \\in R\\) परन्तु \\((2, 1) \\notin R\\)। अतः \\(R\\) सममित नहीं है।\nसंक्रामक नहीं: \\((1, 2) \\in R\\) तथा \\((2, 3) \\in R\\), परन्तु \\((1, 3) \\notin R\\)। अतः \\(R\\) संक्रामक नहीं है।\nइस प्रकार \\(R\\) स्वतुल्य है परन्तु न तो सममित है और न संक्रामक।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Reflexive: \\((1, 1), (2, 2), (3, 3) \\in R\\), so \\((a, a) \\in R\\) for every \\(a \\in \\{1, 2, 3\\}\\). Hence \\(R\\) is reflexive.\nNot symmetric: \\((1, 2) \\in R\\) but \\((2, 1) \\notin R\\). Hence \\(R\\) is not symmetric.\nNot transitive: \\((1, 2) \\in R\\) and \\((2, 3) \\in R\\), but \\((1, 3) \\notin R\\). Hence \\(R\\) is not transitive.\nThus \\(R\\) is reflexive but neither symmetric nor transitive.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q3d",
+      "questionNumber": "3 (d)",
+      "section": "",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Properties of Inverse Trigonometric Functions",
+      "difficulty": "MODERATE",
+      "stem": "If \\(\\sin^{-1}(1 - x) - 2\\sin^{-1} x = \\frac{\\pi}{2}\\), then find the value of \\(x\\).",
+      "hi": {
+        "stem": "यदि \\(\\sin^{-1}(1 - x) - 2\\sin^{-1} x = \\frac{\\pi}{2}\\) तो \\(x\\) का मान ज्ञात कीजिए।",
+        "solution": "दिया है \\(\\sin^{-1}(1 - x) - 2\\sin^{-1} x = \\frac{\\pi}{2}\\), अतः \\(\\sin^{-1}(1 - x) = \\frac{\\pi}{2} + 2\\sin^{-1} x\\)।\nदोनों पक्षों का sine लेने पर: \\(1 - x = \\sin\\left(\\frac{\\pi}{2} + 2\\sin^{-1} x\\right) = \\cos(2\\sin^{-1} x)\\)।\nमाना \\(\\sin^{-1} x = y\\), तब \\(x = \\sin y\\) तथा \\(\\cos 2y = 1 - 2\\sin^2 y = 1 - 2x^2\\)।\nअतः \\(1 - x = 1 - 2x^2\\), अर्थात् \\(2x^2 - x = 0\\), अर्थात् \\(x(2x - 1) = 0\\), अतः \\(x = 0\\) या \\(x = \\frac{1}{2}\\)।\nजाँच: \\(x = \\frac{1}{2}\\) के लिए \\(\\sin^{-1}\\frac{1}{2} - 2\\sin^{-1}\\frac{1}{2} = -\\frac{\\pi}{6} \\neq \\frac{\\pi}{2}\\), अतः यह मान अस्वीकार्य है। \\(x = 0\\) के लिए \\(\\sin^{-1} 1 - 0 = \\frac{\\pi}{2}\\), जो समीकरण को संतुष्ट करता है।\nअतः \\(x = 0\\)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Given \\(\\sin^{-1}(1 - x) - 2\\sin^{-1} x = \\frac{\\pi}{2}\\), so \\(\\sin^{-1}(1 - x) = \\frac{\\pi}{2} + 2\\sin^{-1} x\\).\nTaking sine of both sides: \\(1 - x = \\sin\\left(\\frac{\\pi}{2} + 2\\sin^{-1} x\\right) = \\cos(2\\sin^{-1} x)\\).\nPut \\(\\sin^{-1} x = y\\), so \\(x = \\sin y\\) and \\(\\cos 2y = 1 - 2\\sin^2 y = 1 - 2x^2\\).\nThus \\(1 - x = 1 - 2x^2\\), i.e. \\(2x^2 - x = 0\\), i.e. \\(x(2x - 1) = 0\\), so \\(x = 0\\) or \\(x = \\frac{1}{2}\\).\nCheck: for \\(x = \\frac{1}{2}\\), \\(\\sin^{-1}\\frac{1}{2} - 2\\sin^{-1}\\frac{1}{2} = -\\frac{\\pi}{6} \\neq \\frac{\\pi}{2}\\), so it is rejected. For \\(x = 0\\), \\(\\sin^{-1} 1 - 0 = \\frac{\\pi}{2}\\), which satisfies the equation.\nHence \\(x = 0\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q4a",
+      "questionNumber": "4 (a)",
+      "section": "",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Scalar (Dot) Product and Projection",
+      "difficulty": "MODERATE",
+      "stem": "If \\((\\vec{a} + \\vec{b}) \\cdot (\\vec{a} - \\vec{b}) = 8\\) and \\(|\\vec{a}| = 8|\\vec{b}|\\) then find \\(|\\vec{a}|\\) and \\(|\\vec{b}|\\).",
+      "hi": {
+        "stem": "यदि \\((\\vec{a} + \\vec{b}) \\cdot (\\vec{a} - \\vec{b}) = 8\\) और \\(|\\vec{a}| = 8|\\vec{b}|\\) हों तो \\(|\\vec{a}|\\) एवं \\(|\\vec{b}|\\) ज्ञात कीजिए।",
+        "solution": "\\((\\vec{a} + \\vec{b}) \\cdot (\\vec{a} - \\vec{b}) = |\\vec{a}|^2 - |\\vec{b}|^2 = 8\\)।\n\\(|\\vec{a}| = 8|\\vec{b}|\\) रखने पर: \\(64|\\vec{b}|^2 - |\\vec{b}|^2 = 8\\), अतः \\(63|\\vec{b}|^2 = 8\\) तथा \\(|\\vec{b}|^2 = \\frac{8}{63}\\)।\nअतः \\(|\\vec{b}| = \\sqrt{\\frac{8}{63}} = \\frac{2\\sqrt{2}}{3\\sqrt{7}}\\) तथा \\(|\\vec{a}| = 8|\\vec{b}| = \\frac{16\\sqrt{2}}{3\\sqrt{7}}\\)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "In the English a serial stamp covers the first |a| of |a| = 8|b| and the first sign is faint; both taken from the clear Hindi.",
+      "solution": "\\((\\vec{a} + \\vec{b}) \\cdot (\\vec{a} - \\vec{b}) = |\\vec{a}|^2 - |\\vec{b}|^2 = 8\\).\nPutting \\(|\\vec{a}| = 8|\\vec{b}|\\): \\(64|\\vec{b}|^2 - |\\vec{b}|^2 = 8\\), so \\(63|\\vec{b}|^2 = 8\\) and \\(|\\vec{b}|^2 = \\frac{8}{63}\\).\nHence \\(|\\vec{b}| = \\sqrt{\\frac{8}{63}} = \\frac{2\\sqrt{2}}{3\\sqrt{7}}\\) and \\(|\\vec{a}| = 8|\\vec{b}| = \\frac{16\\sqrt{2}}{3\\sqrt{7}}\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q4b",
+      "questionNumber": "4 (b)",
+      "section": "",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Matrices",
+      "subtopic": "Addition and Scalar Multiplication",
+      "difficulty": "EASY",
+      "stem": "Simplify : \\(\\cos\\theta \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix} + \\sin\\theta \\begin{bmatrix} \\sin\\theta & -\\cos\\theta \\\\ \\cos\\theta & \\sin\\theta \\end{bmatrix}\\).",
+      "hi": {
+        "stem": "\\(\\cos\\theta \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix} + \\sin\\theta \\begin{bmatrix} \\sin\\theta & -\\cos\\theta \\\\ \\cos\\theta & \\sin\\theta \\end{bmatrix}\\) को सरल कीजिए।",
+        "solution": "प्रत्येक आव्यूह को उसके अदिश से गुणा करने पर:\n\\(\\cos\\theta \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix} = \\begin{bmatrix} \\cos^2\\theta & \\sin\\theta\\cos\\theta \\\\ -\\sin\\theta\\cos\\theta & \\cos^2\\theta \\end{bmatrix}\\)\n\\(\\sin\\theta \\begin{bmatrix} \\sin\\theta & -\\cos\\theta \\\\ \\cos\\theta & \\sin\\theta \\end{bmatrix} = \\begin{bmatrix} \\sin^2\\theta & -\\sin\\theta\\cos\\theta \\\\ \\sin\\theta\\cos\\theta & \\sin^2\\theta \\end{bmatrix}\\)\nजोड़ने पर: \\(\\begin{bmatrix} \\cos^2\\theta + \\sin^2\\theta & 0 \\\\ 0 & \\cos^2\\theta + \\sin^2\\theta \\end{bmatrix} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = I\\), जो कोटि 2 का तत्समक आव्यूह है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Multiplying each matrix by its scalar:\n\\(\\cos\\theta \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix} = \\begin{bmatrix} \\cos^2\\theta & \\sin\\theta\\cos\\theta \\\\ -\\sin\\theta\\cos\\theta & \\cos^2\\theta \\end{bmatrix}\\)\n\\(\\sin\\theta \\begin{bmatrix} \\sin\\theta & -\\cos\\theta \\\\ \\cos\\theta & \\sin\\theta \\end{bmatrix} = \\begin{bmatrix} \\sin^2\\theta & -\\sin\\theta\\cos\\theta \\\\ \\sin\\theta\\cos\\theta & \\sin^2\\theta \\end{bmatrix}\\)\nAdding: \\(\\begin{bmatrix} \\cos^2\\theta + \\sin^2\\theta & 0 \\\\ 0 & \\cos^2\\theta + \\sin^2\\theta \\end{bmatrix} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = I\\), the identity matrix of order 2.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q4c",
+      "questionNumber": "4 (c)",
+      "section": "",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Properties of Inverse Trigonometric Functions",
+      "difficulty": "MODERATE",
+      "stem": "Simplify : \\(\\tan^{-1}\\left(\\frac{3a^2x - x^3}{a^3 - 3ax^2}\\right)\\).",
+      "hi": {
+        "stem": "\\(\\tan^{-1}\\left(\\frac{3a^2x - x^3}{a^3 - 3ax^2}\\right)\\) को सरल कीजिए।",
+        "solution": "माना \\(x = a\\tan\\theta\\), तब \\(\\theta = \\tan^{-1}\\frac{x}{a}\\) (\\(a > 0\\) तथा \\(-\\frac{a}{\\sqrt{3}} < x < \\frac{a}{\\sqrt{3}}\\) लेने पर \\(-\\frac{\\pi}{6} < \\theta < \\frac{\\pi}{6}\\))। तब\n\\(\\frac{3a^2x - x^3}{a^3 - 3ax^2} = \\frac{3a^3\\tan\\theta - a^3\\tan^3\\theta}{a^3 - 3a^3\\tan^2\\theta} = \\frac{3\\tan\\theta - \\tan^3\\theta}{1 - 3\\tan^2\\theta} = \\tan 3\\theta\\)।\nअतः \\(\\tan^{-1}\\left(\\frac{3a^2x - x^3}{a^3 - 3ax^2}\\right) = \\tan^{-1}(\\tan 3\\theta) = 3\\theta = 3\\tan^{-1}\\frac{x}{a}\\)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Put \\(x = a\\tan\\theta\\), so \\(\\theta = \\tan^{-1}\\frac{x}{a}\\) (taking \\(a > 0\\) and \\(-\\frac{a}{\\sqrt{3}} < x < \\frac{a}{\\sqrt{3}}\\), so that \\(-\\frac{\\pi}{6} < \\theta < \\frac{\\pi}{6}\\)). Then\n\\(\\frac{3a^2x - x^3}{a^3 - 3ax^2} = \\frac{3a^3\\tan\\theta - a^3\\tan^3\\theta}{a^3 - 3a^3\\tan^2\\theta} = \\frac{3\\tan\\theta - \\tan^3\\theta}{1 - 3\\tan^2\\theta} = \\tan 3\\theta\\).\nSo \\(\\tan^{-1}\\left(\\frac{3a^2x - x^3}{a^3 - 3ax^2}\\right) = \\tan^{-1}(\\tan 3\\theta) = 3\\theta = 3\\tan^{-1}\\frac{x}{a}\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q4d",
+      "questionNumber": "4 (d)",
+      "section": "",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Addition of Vectors",
+      "difficulty": "EASY",
+      "stem": "Show that the points \\(A(2, 3, -4)\\), \\(B(1, -2, 3)\\) and \\(C(3, 8, -11)\\) are collinear.",
+      "hi": {
+        "stem": "दर्शाइए कि बिन्दु \\(A(2, 3, -4)\\), \\(B(1, -2, 3)\\) और \\(C(3, 8, -11)\\) संरेख हैं।",
+        "solution": "दिए गए बिन्दुओं के स्थिति सदिश लेकर:\n\\(\\overrightarrow{AB} = (1 - 2)\\hat{i} + (-2 - 3)\\hat{j} + (3 + 4)\\hat{k} = -\\hat{i} - 5\\hat{j} + 7\\hat{k}\\)\n\\(\\overrightarrow{BC} = (3 - 1)\\hat{i} + (8 + 2)\\hat{j} + (-11 - 3)\\hat{k} = 2\\hat{i} + 10\\hat{j} - 14\\hat{k}\\)\n\\(\\overrightarrow{AC} = (3 - 2)\\hat{i} + (8 - 3)\\hat{j} + (-11 + 4)\\hat{k} = \\hat{i} + 5\\hat{j} - 7\\hat{k}\\)\nअतः \\(|\\overrightarrow{AB}| = \\sqrt{1 + 25 + 49} = 5\\sqrt{3}\\), \\(|\\overrightarrow{BC}| = \\sqrt{4 + 100 + 196} = 10\\sqrt{3}\\), \\(|\\overrightarrow{AC}| = 5\\sqrt{3}\\)।\nचूँकि \\(|\\overrightarrow{BC}| = |\\overrightarrow{AB}| + |\\overrightarrow{AC}|\\) (तथा \\(\\overrightarrow{BC} = -2\\,\\overrightarrow{AB}\\)), अतः बिन्दु \\(A(2, 3, -4)\\), \\(B(1, -2, 3)\\) और \\(C(3, 8, -11)\\) संरेख हैं।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Find the vectors joining the points in pairs, using their position vectors.\n\\(\\overrightarrow{AB} = (1 - 2)\\hat{i} + (-2 - 3)\\hat{j} + (3 + 4)\\hat{k} = -\\hat{i} - 5\\hat{j} + 7\\hat{k}\\)\n\\(\\overrightarrow{BC} = (3 - 1)\\hat{i} + (8 + 2)\\hat{j} + (-11 - 3)\\hat{k} = 2\\hat{i} + 10\\hat{j} - 14\\hat{k}\\)\n\\(\\overrightarrow{AC} = (3 - 2)\\hat{i} + (8 - 3)\\hat{j} + (-11 + 4)\\hat{k} = \\hat{i} + 5\\hat{j} - 7\\hat{k}\\)\nSo \\(|\\overrightarrow{AB}| = \\sqrt{1 + 25 + 49} = 5\\sqrt{3}\\), \\(|\\overrightarrow{BC}| = \\sqrt{4 + 100 + 196} = 10\\sqrt{3}\\), \\(|\\overrightarrow{AC}| = 5\\sqrt{3}\\).\nSince \\(|\\overrightarrow{BC}| = |\\overrightarrow{AB}| + |\\overrightarrow{AC}|\\) (also \\(\\overrightarrow{BC} = -2\\,\\overrightarrow{AB}\\)), the points \\(A(2, 3, -4)\\), \\(B(1, -2, 3)\\) and \\(C(3, 8, -11)\\) are collinear.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q5a",
+      "questionNumber": "5 (a)",
+      "section": "",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Linear Programming",
+      "subtopic": "Graphical Solution and the Feasible Region",
+      "difficulty": "MODERATE",
+      "stem": "Find the minimum value of the objective function \\(Z = 3x + 5y\\) under the following constraints \\(x + 3y \\geq 3\\), \\(x + y \\geq 2\\), \\(x \\geq 0\\), \\(y \\geq 0\\) by graphical method.",
+      "hi": {
+        "stem": "आलेखीय विधि द्वारा उद्देश्य फलन \\(Z = 3x + 5y\\) का न्यूनतम मान निम्नलिखित अवरोधों के अंतर्गत ज्ञात कीजिए :\n\\(x + 3y \\geq 3\\), \\(x + y \\geq 2\\), \\(x \\geq 0\\), \\(y \\geq 0\\)",
+        "solution": "अवरोधों \\(x + 3y \\geq 3\\), \\(x + y \\geq 2\\), \\(x \\geq 0\\), \\(y \\geq 0\\) के अंतर्गत \\(Z = 3x + 5y\\) का न्यूनतम मान ज्ञात करना है।\nचरण 1 (सीमा रेखाएँ): रेखा \\(x + 3y = 3\\) बिन्दुओं \\((3, 0)\\) और \\((0, 1)\\) से होकर जाती है; रेखा \\(x + y = 2\\) बिन्दुओं \\((2, 0)\\) और \\((0, 2)\\) से होकर जाती है। मूल बिन्दु \\((0, 0)\\) किसी भी असमिका को संतुष्ट नहीं करता, अतः प्रत्येक अर्धतल अपनी रेखा के मूल बिन्दु से दूर वाली ओर है।\nचरण 2 (सुसंगत क्षेत्र): प्रथम चतुर्थांश में दोनों रेखाओं के ऊपर स्थित क्षेत्र। यह अपरिबद्ध है।\nचरण 3 (कोनीय बिन्दु): रेखाएँ \\(x + 3y = 3\\) तथा \\(x + y = 2\\) को घटाने पर \\(2y = 1\\), अतः \\(y = \\frac{1}{2}\\) तथा \\(x = \\frac{3}{2}\\)। कोनीय बिन्दु \\((0, 2)\\), \\(\\left(\\frac{3}{2}, \\frac{1}{2}\\right)\\) तथा \\((3, 0)\\) हैं।\nचरण 4 (\\(Z\\) के मान):\n\n| कोनीय बिन्दु | \\(Z = 3x + 5y\\) |\n|---|---|\n| \\((0, 2)\\) | \\(10\\) |\n| \\(\\left(\\frac{3}{2}, \\frac{1}{2}\\right)\\) | \\(\\frac{9}{2} + \\frac{5}{2} = 7\\) (न्यूनतम) |\n| \\((3, 0)\\) | \\(9\\) |\n\nचरण 5: क्षेत्र अपरिबद्ध है, अतः अर्धतल \\(3x + 5y < 7\\) खींचते हैं। इसका सुसंगत क्षेत्र से कोई उभयनिष्ठ बिन्दु नहीं है, अतः 7 ही न्यूनतम मान है।\nअतः \\(Z\\) का न्यूनतम मान 7 है, जो \\(x = \\frac{3}{2}\\), \\(y = \\frac{1}{2}\\) पर प्राप्त होता है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Minimise \\(Z = 3x + 5y\\) subject to \\(x + 3y \\geq 3\\), \\(x + y \\geq 2\\), \\(x \\geq 0\\), \\(y \\geq 0\\).\nStep 1 (boundary lines): \\(x + 3y = 3\\) passes through \\((3, 0)\\) and \\((0, 1)\\); \\(x + y = 2\\) passes through \\((2, 0)\\) and \\((0, 2)\\). Since \\((0, 0)\\) does not satisfy either inequality, each half-plane lies on the side of its line away from the origin.\nStep 2 (feasible region): the region in the first quadrant lying above both lines. It is unbounded.\nStep 3 (corner points): the lines meet where \\(x + 3y = 3\\) and \\(x + y = 2\\); subtracting, \\(2y = 1\\), so \\(y = \\frac{1}{2}\\) and \\(x = \\frac{3}{2}\\). The corner points are \\((0, 2)\\), \\(\\left(\\frac{3}{2}, \\frac{1}{2}\\right)\\) and \\((3, 0)\\).\nStep 4 (value of \\(Z\\)):\n\n| Corner point | \\(Z = 3x + 5y\\) |\n|---|---|\n| \\((0, 2)\\) | \\(10\\) |\n| \\(\\left(\\frac{3}{2}, \\frac{1}{2}\\right)\\) | \\(\\frac{9}{2} + \\frac{5}{2} = 7\\) (smallest) |\n| \\((3, 0)\\) | \\(9\\) |\n\nStep 5: since the region is unbounded, draw the half-plane \\(3x + 5y < 7\\). It has no point in common with the feasible region, so 7 is the minimum.\nHence the minimum value of \\(Z\\) is 7, at \\(x = \\frac{3}{2}\\), \\(y = \\frac{1}{2}\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q5b",
+      "questionNumber": "5 (b)",
+      "section": "",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Shortest Distance Between Two Lines",
+      "difficulty": "MODERATE",
+      "stem": "Find the minimum distance between the lines \\(\\vec{r} = \\hat{i} + \\hat{j} + \\lambda(2\\hat{i} - \\hat{j} + \\hat{k})\\) and \\(\\vec{r} = 2\\hat{i} - \\hat{j} - \\hat{k} + \\mu(3\\hat{i} - 5\\hat{j} - 2\\hat{k})\\).",
+      "hi": {
+        "stem": "रेखाओं \\(\\vec{r} = \\hat{i} + \\hat{j} + \\lambda(2\\hat{i} - \\hat{j} + \\hat{k})\\) और \\(\\vec{r} = 2\\hat{i} + \\hat{j} - \\hat{k} + \\mu(3\\hat{i} - 5\\hat{j} + 2\\hat{k})\\) के बीच की न्यूनतम दूरी ज्ञात कीजिए।",
+        "solution": "**टिप्पणी:** अंग्रेज़ी प्रश्न-पत्र में दूसरी रेखा \\(\\vec{r} = 2\\hat{i} - \\hat{j} - \\hat{k} + \\mu(3\\hat{i} - 5\\hat{j} - 2\\hat{k})\\) छपी है, जबकि हिन्दी प्रश्न-पत्र में (NCERT के अनुसार) \\(\\vec{r} = 2\\hat{i} + \\hat{j} - \\hat{k} + \\mu(3\\hat{i} - 5\\hat{j} + 2\\hat{k})\\) छपी है; नीचे पहले अंग्रेज़ी वाला रूप और फिर हिन्दी वाला रूप हल किया गया है।\n\nरेखाओं \\(\\vec{r} = \\vec{a_1} + \\lambda\\vec{b_1}\\) तथा \\(\\vec{r} = \\vec{a_2} + \\mu\\vec{b_2}\\) के बीच की न्यूनतम दूरी\n\\(d = \\left|\\frac{(\\vec{b_1} \\times \\vec{b_2}) \\cdot (\\vec{a_2} - \\vec{a_1})}{|\\vec{b_1} \\times \\vec{b_2}|}\\right|\\) होती है।\n\n**अंग्रेज़ी में छपा रूप।** यहाँ \\(\\vec{a_1} = \\hat{i} + \\hat{j}\\), \\(\\vec{b_1} = 2\\hat{i} - \\hat{j} + \\hat{k}\\), \\(\\vec{a_2} = 2\\hat{i} - \\hat{j} - \\hat{k}\\), \\(\\vec{b_2} = 3\\hat{i} - 5\\hat{j} - 2\\hat{k}\\)।\n\\(\\vec{a_2} - \\vec{a_1} = \\hat{i} - 2\\hat{j} - \\hat{k}\\)\n\\(\\vec{b_1} \\times \\vec{b_2} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & -1 & 1 \\\\ 3 & -5 & -2 \\end{vmatrix} = \\hat{i}(2 + 5) - \\hat{j}(-4 - 3) + \\hat{k}(-10 + 3) = 7\\hat{i} + 7\\hat{j} - 7\\hat{k}\\)\n\\(|\\vec{b_1} \\times \\vec{b_2}| = \\sqrt{49 + 49 + 49} = 7\\sqrt{3}\\)\n\\((\\vec{b_1} \\times \\vec{b_2}) \\cdot (\\vec{a_2} - \\vec{a_1}) = 7(1) + 7(-2) + (-7)(-1) = 7 - 14 + 7 = 0\\)\nअतः \\(d = \\frac{0}{7\\sqrt{3}} = 0\\)। न्यूनतम दूरी 0 है: रेखाएँ समांतर नहीं हैं और परस्पर प्रतिच्छेद करती हैं (बिन्दु \\(\\left(\\frac{5}{7}, \\frac{8}{7}, -\\frac{1}{7}\\right)\\) पर, जहाँ \\(\\lambda = -\\frac{1}{7}\\), \\(\\mu = -\\frac{3}{7}\\))।\n\n**हिन्दी में छपा रूप।** यहाँ \\(\\vec{a_2} = 2\\hat{i} + \\hat{j} - \\hat{k}\\), \\(\\vec{b_2} = 3\\hat{i} - 5\\hat{j} + 2\\hat{k}\\), तथा \\(\\vec{a_1}\\), \\(\\vec{b_1}\\) पहले जैसे।\n\\(\\vec{a_2} - \\vec{a_1} = \\hat{i} - \\hat{k}\\)\n\\(\\vec{b_1} \\times \\vec{b_2} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & -1 & 1 \\\\ 3 & -5 & 2 \\end{vmatrix} = \\hat{i}(-2 + 5) - \\hat{j}(4 - 3) + \\hat{k}(-10 + 3) = 3\\hat{i} - \\hat{j} - 7\\hat{k}\\)\n\\(|\\vec{b_1} \\times \\vec{b_2}| = \\sqrt{9 + 1 + 49} = \\sqrt{59}\\)\n\\((\\vec{b_1} \\times \\vec{b_2}) \\cdot (\\vec{a_2} - \\vec{a_1}) = 3(1) + (-1)(0) + (-7)(-1) = 10\\)\nअतः \\(d = \\frac{10}{\\sqrt{59}}\\) इकाई।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "The two prints genuinely differ (checked at full size by the main session: the English + before mu shows its vertical stroke, so the English minus signs are real). English: 2i - j - k + mu(3i - 5j - 2k); Hindi (= NCERT Ex 11.2 Q15): 2i + j - k + mu(3i - 5j + 2k). Solve the English as printed and give the Hindi version too, with a Note in both languages.",
+      "solution": "**Note:** The English print gives the second line as \\(\\vec{r} = 2\\hat{i} - \\hat{j} - \\hat{k} + \\mu(3\\hat{i} - 5\\hat{j} - 2\\hat{k})\\), while the Hindi print (as in NCERT) gives \\(\\vec{r} = 2\\hat{i} + \\hat{j} - \\hat{k} + \\mu(3\\hat{i} - 5\\hat{j} + 2\\hat{k})\\); the working below solves the English print first and then the Hindi print.\n\nFor lines \\(\\vec{r} = \\vec{a_1} + \\lambda\\vec{b_1}\\) and \\(\\vec{r} = \\vec{a_2} + \\mu\\vec{b_2}\\), the shortest distance is\n\\(d = \\left|\\frac{(\\vec{b_1} \\times \\vec{b_2}) \\cdot (\\vec{a_2} - \\vec{a_1})}{|\\vec{b_1} \\times \\vec{b_2}|}\\right|\\).\n\n**As printed in English.** Here \\(\\vec{a_1} = \\hat{i} + \\hat{j}\\), \\(\\vec{b_1} = 2\\hat{i} - \\hat{j} + \\hat{k}\\), \\(\\vec{a_2} = 2\\hat{i} - \\hat{j} - \\hat{k}\\), \\(\\vec{b_2} = 3\\hat{i} - 5\\hat{j} - 2\\hat{k}\\).\n\\(\\vec{a_2} - \\vec{a_1} = \\hat{i} - 2\\hat{j} - \\hat{k}\\)\n\\(\\vec{b_1} \\times \\vec{b_2} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & -1 & 1 \\\\ 3 & -5 & -2 \\end{vmatrix} = \\hat{i}(2 + 5) - \\hat{j}(-4 - 3) + \\hat{k}(-10 + 3) = 7\\hat{i} + 7\\hat{j} - 7\\hat{k}\\)\n\\(|\\vec{b_1} \\times \\vec{b_2}| = \\sqrt{49 + 49 + 49} = 7\\sqrt{3}\\)\n\\((\\vec{b_1} \\times \\vec{b_2}) \\cdot (\\vec{a_2} - \\vec{a_1}) = 7(1) + 7(-2) + (-7)(-1) = 7 - 14 + 7 = 0\\)\nSo \\(d = \\frac{0}{7\\sqrt{3}} = 0\\). The minimum distance is 0: the lines are not parallel and they intersect (at the point \\(\\left(\\frac{5}{7}, \\frac{8}{7}, -\\frac{1}{7}\\right)\\), given by \\(\\lambda = -\\frac{1}{7}\\), \\(\\mu = -\\frac{3}{7}\\)).\n\n**As printed in Hindi.** Here \\(\\vec{a_2} = 2\\hat{i} + \\hat{j} - \\hat{k}\\), \\(\\vec{b_2} = 3\\hat{i} - 5\\hat{j} + 2\\hat{k}\\), with \\(\\vec{a_1}\\), \\(\\vec{b_1}\\) as before.\n\\(\\vec{a_2} - \\vec{a_1} = \\hat{i} - \\hat{k}\\)\n\\(\\vec{b_1} \\times \\vec{b_2} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & -1 & 1 \\\\ 3 & -5 & 2 \\end{vmatrix} = \\hat{i}(-2 + 5) - \\hat{j}(4 - 3) + \\hat{k}(-10 + 3) = 3\\hat{i} - \\hat{j} - 7\\hat{k}\\)\n\\(|\\vec{b_1} \\times \\vec{b_2}| = \\sqrt{9 + 1 + 49} = \\sqrt{59}\\)\n\\((\\vec{b_1} \\times \\vec{b_2}) \\cdot (\\vec{a_2} - \\vec{a_1}) = 3(1) + (-1)(0) + (-7)(-1) = 10\\)\nSo \\(d = \\frac{10}{\\sqrt{59}}\\) units.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q5c",
+      "questionNumber": "5 (c)",
+      "section": "",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Second Order Derivatives",
+      "difficulty": "MODERATE",
+      "stem": "If \\(y = Ae^{mx} + Be^{nx}\\), then show that \\(\\frac{d^2y}{dx^2} - (m + n)\\frac{dy}{dx} + mny = 0\\).",
+      "hi": {
+        "stem": "यदि \\(y = Ae^{mx} + Be^{nx}\\) है, तो दिखाइए कि \\(\\frac{d^2y}{dx^2} - (m + n)\\frac{dy}{dx} + mny = 0\\).",
+        "solution": "दिया है \\(y = Ae^{mx} + Be^{nx}\\)।\n\\(x\\) के सापेक्ष अवकलन करने पर: \\(\\frac{dy}{dx} = Ame^{mx} + Bne^{nx}\\)।\nपुनः अवकलन करने पर: \\(\\frac{d^2y}{dx^2} = Am^2e^{mx} + Bn^2e^{nx}\\)।\nअब\n\\(\\frac{d^2y}{dx^2} - (m + n)\\frac{dy}{dx} + mny\\)\n\\(= Am^2e^{mx} + Bn^2e^{nx} - (m + n)(Ame^{mx} + Bne^{nx}) + mn(Ae^{mx} + Be^{nx})\\)\n\\(= Ae^{mx}\\left(m^2 - m^2 - mn + mn\\right) + Be^{nx}\\left(n^2 - mn - n^2 + mn\\right)\\)\n\\(= 0\\)।\nअतः \\(\\frac{d^2y}{dx^2} - (m + n)\\frac{dy}{dx} + mny = 0\\)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "The English exponents mx and nx are faint; the Hindi prints them clearly.",
+      "solution": "Given \\(y = Ae^{mx} + Be^{nx}\\).\nDifferentiating with respect to \\(x\\): \\(\\frac{dy}{dx} = Ame^{mx} + Bne^{nx}\\).\nDifferentiating again: \\(\\frac{d^2y}{dx^2} = Am^2e^{mx} + Bn^2e^{nx}\\).\nNow\n\\(\\frac{d^2y}{dx^2} - (m + n)\\frac{dy}{dx} + mny\\)\n\\(= Am^2e^{mx} + Bn^2e^{nx} - (m + n)(Ame^{mx} + Bne^{nx}) + mn(Ae^{mx} + Be^{nx})\\)\n\\(= Ae^{mx}\\left(m^2 - m^2 - mn + mn\\right) + Be^{nx}\\left(n^2 - mn - n^2 + mn\\right)\\)\n\\(= 0\\).\nHence \\(\\frac{d^2y}{dx^2} - (m + n)\\frac{dy}{dx} + mny = 0\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q5d",
+      "questionNumber": "5 (d)",
+      "section": "",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Continuity",
+      "difficulty": "MODERATE",
+      "stem": "Find the values of \\(a\\) and \\(b\\) for which the function defined by\n\\(f(x) = \\begin{cases} ax + 1, & \\text{if } x \\leq 3 \\\\ bx + 3, & \\text{if } x > 3 \\end{cases}\\)\nis continuous at \\(x = 3\\).",
+      "hi": {
+        "stem": "\\(a\\) और \\(b\\) के उन मानों को ज्ञात कीजिए, जिसके लिए फलन\n\\(f(x) = \\begin{cases} ax + 1, & \\text{यदि } x \\leq 3 \\\\ bx + 3, & \\text{यदि } x > 3 \\end{cases}\\)\nद्वारा परिभाषित है तथा \\(x = 3\\) पर संतत है।",
+        "solution": "\\(x = 3\\) पर सांतत्य के लिए बायाँ पक्ष सीमा = दायाँ पक्ष सीमा = \\(f(3)\\) होना चाहिए।\nमान: \\(f(3) = 3a + 1\\)।\nबायाँ पक्ष सीमा: \\(\\lim_{x \\to 3^-} f(x) = \\lim_{x \\to 3^-} (ax + 1) = 3a + 1\\)।\nदायाँ पक्ष सीमा: \\(\\lim_{x \\to 3^+} f(x) = \\lim_{x \\to 3^+} (bx + 3) = 3b + 3\\)।\nअतः \\(3a + 1 = 3b + 3\\), अर्थात् \\(3a - 3b = 2\\), अर्थात् \\(a = b + \\frac{2}{3}\\)।\nअतः \\(a\\) और \\(b\\) के वे सभी मान, जिनके लिए \\(a = b + \\frac{2}{3}\\) हो (जैसे \\(b = 0\\), \\(a = \\frac{2}{3}\\)), \\(f\\) को \\(x = 3\\) पर संतत बनाते हैं; ऐसे अनंत युग्म हैं।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "For continuity at \\(x = 3\\) we need left-hand limit = right-hand limit = \\(f(3)\\).\nValue: \\(f(3) = 3a + 1\\).\nLeft-hand limit: \\(\\lim_{x \\to 3^-} f(x) = \\lim_{x \\to 3^-} (ax + 1) = 3a + 1\\).\nRight-hand limit: \\(\\lim_{x \\to 3^+} f(x) = \\lim_{x \\to 3^+} (bx + 3) = 3b + 3\\).\nSo \\(3a + 1 = 3b + 3\\), i.e. \\(3a - 3b = 2\\), i.e. \\(a = b + \\frac{2}{3}\\).\nHence \\(f\\) is continuous at \\(x = 3\\) for all values of \\(a\\) and \\(b\\) satisfying \\(a = b + \\frac{2}{3}\\) (for example \\(b = 0\\), \\(a = \\frac{2}{3}\\)); there are infinitely many such pairs.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q5e",
+      "questionNumber": "5 (e)",
+      "section": "",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Determinant and its Properties",
+      "difficulty": "MODERATE",
+      "stem": "Find the value of the determinant \\(\\begin{vmatrix} 18 & 22 & -13 \\\\ 7 & -9 & 11 \\\\ -11 & 7 & 17 \\end{vmatrix}\\).",
+      "hi": {
+        "stem": "सारणिक \\(\\begin{vmatrix} 18 & 22 & -13 \\\\ 7 & -9 & 11 \\\\ -11 & 7 & 17 \\end{vmatrix}\\) का मान ज्ञात कीजिए।",
+        "solution": "माना \\(\\Delta = \\begin{vmatrix} 18 & 22 & -13 \\\\ 7 & -9 & 11 \\\\ -11 & 7 & 17 \\end{vmatrix}\\)। प्रथम पंक्ति के अनुदिश प्रसार करने पर:\n\\(\\Delta = 18\\begin{vmatrix} -9 & 11 \\\\ 7 & 17 \\end{vmatrix} - 22\\begin{vmatrix} 7 & 11 \\\\ -11 & 17 \\end{vmatrix} + (-13)\\begin{vmatrix} 7 & -9 \\\\ -11 & 7 \\end{vmatrix}\\)\n\\(= 18(-153 - 77) - 22(119 + 121) - 13(49 - 99)\\)\n\\(= 18(-230) - 22(240) - 13(-50)\\)\n\\(= -4140 - 5280 + 650\\)\n\\(= -8770\\)।\nअतः सारणिक का मान \\(-8770\\) है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Let \\(\\Delta = \\begin{vmatrix} 18 & 22 & -13 \\\\ 7 & -9 & 11 \\\\ -11 & 7 & 17 \\end{vmatrix}\\). Expanding along the first row:\n\\(\\Delta = 18\\begin{vmatrix} -9 & 11 \\\\ 7 & 17 \\end{vmatrix} - 22\\begin{vmatrix} 7 & 11 \\\\ -11 & 17 \\end{vmatrix} + (-13)\\begin{vmatrix} 7 & -9 \\\\ -11 & 7 \\end{vmatrix}\\)\n\\(= 18(-153 - 77) - 22(119 + 121) - 13(49 - 99)\\)\n\\(= 18(-230) - 22(240) - 13(-50)\\)\n\\(= -4140 - 5280 + 650\\)\n\\(= -8770\\).\nHence the value of the determinant is \\(-8770\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q6a",
+      "questionNumber": "6 (a)",
+      "section": "",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Scalar (Dot) Product and Projection",
+      "difficulty": "MODERATE",
+      "stem": "Three vectors \\(\\vec{a}\\), \\(\\vec{b}\\) and \\(\\vec{c}\\) satisfy the condition \\(\\vec{a} + \\vec{b} + \\vec{c} = 0\\). If \\(|\\vec{a}| = 3\\), \\(|\\vec{b}| = 4\\) and \\(|\\vec{c}| = 2\\), then find the value of \\(\\mu = \\vec{a} \\cdot \\vec{b} + \\vec{b} \\cdot \\vec{c} + \\vec{c} \\cdot \\vec{a}\\).",
+      "hi": {
+        "stem": "तीन सदिश \\(\\vec{a}\\), \\(\\vec{b}\\) एवं \\(\\vec{c}\\) प्रतिबन्ध \\(\\vec{a} + \\vec{b} + \\vec{c} = 0\\) को संतुष्ट करते हैं। यदि \\(|\\vec{a}| = 3\\), \\(|\\vec{b}| = 4\\) और \\(|\\vec{c}| = 2\\) तो \\(\\mu = \\vec{a} \\cdot \\vec{b} + \\vec{b} \\cdot \\vec{c} + \\vec{c} \\cdot \\vec{a}\\) का मान ज्ञात कीजिए।",
+        "solution": "चूँकि \\(\\vec{a} + \\vec{b} + \\vec{c} = \\vec{0}\\),\n\\((\\vec{a} + \\vec{b} + \\vec{c}) \\cdot (\\vec{a} + \\vec{b} + \\vec{c}) = 0\\)।\nप्रसार करने पर: \\(|\\vec{a}|^2 + |\\vec{b}|^2 + |\\vec{c}|^2 + 2(\\vec{a} \\cdot \\vec{b} + \\vec{b} \\cdot \\vec{c} + \\vec{c} \\cdot \\vec{a}) = 0\\)।\nमान रखने पर: \\(9 + 16 + 4 + 2\\mu = 0\\), अतः \\(2\\mu = -29\\)।\nअतः \\(\\mu = -\\frac{29}{2}\\)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Since \\(\\vec{a} + \\vec{b} + \\vec{c} = \\vec{0}\\),\n\\((\\vec{a} + \\vec{b} + \\vec{c}) \\cdot (\\vec{a} + \\vec{b} + \\vec{c}) = 0\\).\nExpanding: \\(|\\vec{a}|^2 + |\\vec{b}|^2 + |\\vec{c}|^2 + 2(\\vec{a} \\cdot \\vec{b} + \\vec{b} \\cdot \\vec{c} + \\vec{c} \\cdot \\vec{a}) = 0\\).\nPutting the values: \\(9 + 16 + 4 + 2\\mu = 0\\), so \\(2\\mu = -29\\).\nHence \\(\\mu = -\\frac{29}{2}\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q6b",
+      "questionNumber": "6 (b)",
+      "section": "",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima",
+      "difficulty": "HARD",
+      "stem": "Prove that the height of a cylinder of maximum volume, inscribed in the sphere of radius \\(R\\) is \\(\\frac{2R}{\\sqrt{3}}\\).",
+      "hi": {
+        "stem": "सिद्ध कीजिए कि एक \\(R\\) त्रिज्या के गोले के अंतर्गत अधिकतम आयतन के बेलन की ऊँचाई \\(\\frac{2R}{\\sqrt{3}}\\) है।",
+        "solution": "माना \\(R\\) त्रिज्या के गोले के अंतर्गत बेलन की ऊँचाई \\(h\\) तथा आधार की त्रिज्या \\(r\\) है। गोले का केन्द्र बेलन के अक्ष का मध्य-बिन्दु है, अतः आधार की परिधि तक खींची गई गोले की त्रिज्या भुजाओं \\(r\\), \\(\\frac{h}{2}\\) तथा कर्ण \\(R\\) वाला समकोण त्रिभुज बनाती है:\n\\(r^2 + \\frac{h^2}{4} = R^2\\), अतः \\(r^2 = R^2 - \\frac{h^2}{4}\\)।\nबेलन का आयतन: \\(V = \\pi r^2 h = \\pi\\left(R^2 - \\frac{h^2}{4}\\right)h = \\pi\\left(R^2h - \\frac{h^3}{4}\\right)\\)।\n\\(\\frac{dV}{dh} = \\pi\\left(R^2 - \\frac{3h^2}{4}\\right)\\), \\(\\frac{d^2V}{dh^2} = -\\frac{3\\pi h}{2}\\)।\nउच्चिष्ठ या निम्निष्ठ के लिए \\(\\frac{dV}{dh} = 0\\): \\(R^2 = \\frac{3h^2}{4}\\), अतः \\(h^2 = \\frac{4R^2}{3}\\) तथा \\(h = \\frac{2R}{\\sqrt{3}}\\) (ऊँचाई धनात्मक है)।\n\\(h = \\frac{2R}{\\sqrt{3}}\\) पर \\(\\frac{d^2V}{dh^2} = -\\frac{3\\pi}{2} \\cdot \\frac{2R}{\\sqrt{3}} = -\\sqrt{3}\\pi R < 0\\), अतः यहाँ आयतन अधिकतम है।\nअतः अधिकतम आयतन के बेलन की ऊँचाई \\(\\frac{2R}{\\sqrt{3}}\\) है (तथा अधिकतम आयतन \\(\\frac{4\\pi R^3}{3\\sqrt{3}}\\) है)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Let the cylinder inscribed in the sphere of radius \\(R\\) have height \\(h\\) and base radius \\(r\\). The centre of the sphere is the mid-point of the axis of the cylinder, so a radius of the sphere drawn to the rim of the base gives a right triangle with sides \\(r\\), \\(\\frac{h}{2}\\) and hypotenuse \\(R\\):\n\\(r^2 + \\frac{h^2}{4} = R^2\\), so \\(r^2 = R^2 - \\frac{h^2}{4}\\).\nVolume of the cylinder: \\(V = \\pi r^2 h = \\pi\\left(R^2 - \\frac{h^2}{4}\\right)h = \\pi\\left(R^2h - \\frac{h^3}{4}\\right)\\).\n\\(\\frac{dV}{dh} = \\pi\\left(R^2 - \\frac{3h^2}{4}\\right)\\), \\(\\frac{d^2V}{dh^2} = -\\frac{3\\pi h}{2}\\).\nFor a maximum or minimum, \\(\\frac{dV}{dh} = 0\\): \\(R^2 = \\frac{3h^2}{4}\\), so \\(h^2 = \\frac{4R^2}{3}\\) and \\(h = \\frac{2R}{\\sqrt{3}}\\) (height is positive).\nAt \\(h = \\frac{2R}{\\sqrt{3}}\\), \\(\\frac{d^2V}{dh^2} = -\\frac{3\\pi}{2} \\cdot \\frac{2R}{\\sqrt{3}} = -\\sqrt{3}\\pi R < 0\\), so the volume is maximum there.\nHence the height of the cylinder of maximum volume is \\(\\frac{2R}{\\sqrt{3}}\\) (and the maximum volume is \\(\\frac{4\\pi R^3}{3\\sqrt{3}}\\)).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q6c",
+      "questionNumber": "6 (c)",
+      "section": "",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Logarithmic Differentiation",
+      "difficulty": "MODERATE",
+      "stem": "Differentiate : \\(y = x^{\\sin x} + (\\cos x)^{\\tan x}\\).",
+      "hi": {
+        "stem": "अवकलन कीजिए : \\(y = x^{\\sin x} + (\\cos x)^{\\tan x}\\).",
+        "solution": "माना \\(u = x^{\\sin x}\\) तथा \\(v = (\\cos x)^{\\tan x}\\), तब \\(y = u + v\\) और \\(\\frac{dy}{dx} = \\frac{du}{dx} + \\frac{dv}{dx}\\)।\n\\(u\\) के लिए: \\(\\log u = \\sin x \\log x\\)। अवकलन करने पर \\(\\frac{1}{u}\\frac{du}{dx} = \\cos x \\log x + \\frac{\\sin x}{x}\\), अतः\n\\(\\frac{du}{dx} = x^{\\sin x}\\left(\\cos x \\log x + \\frac{\\sin x}{x}\\right)\\)।\n\\(v\\) के लिए: \\(\\log v = \\tan x \\log(\\cos x)\\)। अवकलन करने पर \\(\\frac{1}{v}\\frac{dv}{dx} = \\sec^2 x \\log(\\cos x) + \\tan x \\cdot \\frac{-\\sin x}{\\cos x} = \\sec^2 x \\log(\\cos x) - \\tan^2 x\\), अतः\n\\(\\frac{dv}{dx} = (\\cos x)^{\\tan x}\\left(\\sec^2 x \\log(\\cos x) - \\tan^2 x\\right)\\)।\nअतः\n\\(\\frac{dy}{dx} = x^{\\sin x}\\left(\\cos x \\log x + \\frac{\\sin x}{x}\\right) + (\\cos x)^{\\tan x}\\left(\\sec^2 x \\log(\\cos x) - \\tan^2 x\\right)\\)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Let \\(u = x^{\\sin x}\\) and \\(v = (\\cos x)^{\\tan x}\\), so \\(y = u + v\\) and \\(\\frac{dy}{dx} = \\frac{du}{dx} + \\frac{dv}{dx}\\).\nFor \\(u\\): \\(\\log u = \\sin x \\log x\\). Differentiating, \\(\\frac{1}{u}\\frac{du}{dx} = \\cos x \\log x + \\frac{\\sin x}{x}\\), so\n\\(\\frac{du}{dx} = x^{\\sin x}\\left(\\cos x \\log x + \\frac{\\sin x}{x}\\right)\\).\nFor \\(v\\): \\(\\log v = \\tan x \\log(\\cos x)\\). Differentiating, \\(\\frac{1}{v}\\frac{dv}{dx} = \\sec^2 x \\log(\\cos x) + \\tan x \\cdot \\frac{-\\sin x}{\\cos x} = \\sec^2 x \\log(\\cos x) - \\tan^2 x\\), so\n\\(\\frac{dv}{dx} = (\\cos x)^{\\tan x}\\left(\\sec^2 x \\log(\\cos x) - \\tan^2 x\\right)\\).\nHence\n\\(\\frac{dy}{dx} = x^{\\sin x}\\left(\\cos x \\log x + \\frac{\\sin x}{x}\\right) + (\\cos x)^{\\tan x}\\left(\\sec^2 x \\log(\\cos x) - \\tan^2 x\\right)\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q6d",
+      "questionNumber": "6 (d)",
+      "section": "",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Independent Events",
+      "difficulty": "MODERATE",
+      "stem": "Prove that if \\(E\\) and \\(F\\) are two independent events, then \\(E\\) and \\(F'\\) will also be independent.",
+      "hi": {
+        "stem": "सिद्ध कीजिए कि यदि \\(E\\) और \\(F\\) दो स्वतंत्र घटनाएँ हैं, तो \\(E\\) और \\(F'\\) भी स्वतंत्र होंगी।",
+        "solution": "चूँकि \\(E\\) और \\(F\\) स्वतंत्र हैं, अतः \\(P(E \\cap F) = P(E) \\cdot P(F)\\)।\nघटनाएँ \\(E \\cap F\\) तथा \\(E \\cap F'\\) परस्पर अपवर्जी हैं और \\(E = (E \\cap F) \\cup (E \\cap F')\\)। अतः\n\\(P(E) = P(E \\cap F) + P(E \\cap F')\\)\n\\(P(E \\cap F') = P(E) - P(E \\cap F) = P(E) - P(E) \\cdot P(F) = P(E)\\left(1 - P(F)\\right) = P(E) \\cdot P(F')\\)।\nअतः \\(E\\) और \\(F'\\) भी स्वतंत्र हैं।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Since \\(E\\) and \\(F\\) are independent, \\(P(E \\cap F) = P(E) \\cdot P(F)\\).\nThe events \\(E \\cap F\\) and \\(E \\cap F'\\) are mutually exclusive and \\(E = (E \\cap F) \\cup (E \\cap F')\\). So\n\\(P(E) = P(E \\cap F) + P(E \\cap F')\\)\n\\(P(E \\cap F') = P(E) - P(E \\cap F) = P(E) - P(E) \\cdot P(F) = P(E)\\left(1 - P(F)\\right) = P(E) \\cdot P(F')\\).\nHence \\(E\\) and \\(F'\\) are independent.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q6e",
+      "questionNumber": "6 (e)",
+      "section": "",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Under Simple Curves",
+      "difficulty": "MODERATE",
+      "stem": "Find the area, surrounded by line \\(y = 3x + 2\\), \\(x\\)-axis and abscissas \\(x = -1\\) and \\(x = 1\\).",
+      "hi": {
+        "stem": "रेखा \\(y = 3x + 2\\), \\(x\\)-अक्ष एवं भुजों \\(x = -1\\) एवं \\(x = 1\\) से घिरा क्षेत्रफल ज्ञात कीजिए।",
+        "solution": "रेखा \\(y = 3x + 2\\), \\(x\\)-अक्ष को \\(x = -\\frac{2}{3}\\) पर काटती है। \\(-1 \\leq x < -\\frac{2}{3}\\) के लिए रेखा \\(x\\)-अक्ष के नीचे और \\(-\\frac{2}{3} < x \\leq 1\\) के लिए ऊपर है, अतः क्षेत्रफल दो भागों में लिया जाता है।\n\\(A_1 = \\left|\\int_{-1}^{-2/3} (3x + 2)\\,dx\\right| = \\left|\\left[\\frac{3x^2}{2} + 2x\\right]_{-1}^{-2/3}\\right| = \\left|\\left(\\frac{2}{3} - \\frac{4}{3}\\right) - \\left(\\frac{3}{2} - 2\\right)\\right| = \\left|-\\frac{2}{3} + \\frac{1}{2}\\right| = \\frac{1}{6}\\)\n\\(A_2 = \\int_{-2/3}^{1} (3x + 2)\\,dx = \\left[\\frac{3x^2}{2} + 2x\\right]_{-2/3}^{1} = \\left(\\frac{3}{2} + 2\\right) - \\left(-\\frac{2}{3}\\right) = \\frac{7}{2} + \\frac{2}{3} = \\frac{25}{6}\\)\nअभीष्ट क्षेत्रफल \\(= \\frac{1}{6} + \\frac{25}{6} = \\frac{26}{6} = \\frac{13}{3}\\) वर्ग इकाई।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "In the English, x = -1 is faint at the page edge; the Hindi prints it clearly.",
+      "solution": "The line \\(y = 3x + 2\\) meets the \\(x\\)-axis at \\(x = -\\frac{2}{3}\\). For \\(-1 \\leq x < -\\frac{2}{3}\\) the line lies below the \\(x\\)-axis and for \\(-\\frac{2}{3} < x \\leq 1\\) it lies above, so the area is taken in two parts.\n\\(A_1 = \\left|\\int_{-1}^{-2/3} (3x + 2)\\,dx\\right| = \\left|\\left[\\frac{3x^2}{2} + 2x\\right]_{-1}^{-2/3}\\right| = \\left|\\left(\\frac{2}{3} - \\frac{4}{3}\\right) - \\left(\\frac{3}{2} - 2\\right)\\right| = \\left|-\\frac{2}{3} + \\frac{1}{2}\\right| = \\frac{1}{6}\\)\n\\(A_2 = \\int_{-2/3}^{1} (3x + 2)\\,dx = \\left[\\frac{3x^2}{2} + 2x\\right]_{-2/3}^{1} = \\left(\\frac{3}{2} + 2\\right) - \\left(-\\frac{2}{3}\\right) = \\frac{7}{2} + \\frac{2}{3} = \\frac{25}{6}\\)\nRequired area \\(= \\frac{1}{6} + \\frac{25}{6} = \\frac{26}{6} = \\frac{13}{3}\\) square units.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q7a",
+      "questionNumber": "7 (a)",
+      "section": "",
+      "marks": 8,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Solving System of Linear Equations",
+      "difficulty": "MODERATE",
+      "stem": "Solve the following system of equations :\n\\(3x - 2y + 3z = 8\\)\n\\(2x + y - z = 1\\)\n\\(4x - 3y + 2z = 4\\)\nby matrix method.",
+      "hi": {
+        "stem": "निम्नलिखित समीकरण निकाय\n\\(3x - 2y + 3z = 8\\)\n\\(2x + y - z = 1\\)\n\\(4x - 3y + 2z = 4\\)\nको आव्यूह विधि से हल कीजिए।",
+        "solution": "समीकरण निकाय \\(AX = P\\) के रूप में है, जहाँ गुणांक आव्यूह \\(A = \\begin{bmatrix} 3 & -2 & 3 \\\\ 2 & 1 & -1 \\\\ 4 & -3 & 2 \\end{bmatrix}\\), \\(X = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\) तथा \\(P = \\begin{bmatrix} 8 \\\\ 1 \\\\ 4 \\end{bmatrix}\\)।\n\\(|A| = 3(2 - 3) + 2(4 + 4) + 3(-6 - 4) = -3 + 16 - 30 = -17 \\neq 0\\), अतः \\(A^{-1}\\) का अस्तित्व है और निकाय का अद्वितीय हल \\(X = A^{-1}P\\) है।\nसहखंड:\n\\(A_{11} = -1\\), \\(A_{12} = -8\\), \\(A_{13} = -10\\)\n\\(A_{21} = -5\\), \\(A_{22} = -6\\), \\(A_{23} = 1\\)\n\\(A_{31} = -1\\), \\(A_{32} = 9\\), \\(A_{33} = 7\\)\n\\(\\text{adj}\\,A = \\begin{bmatrix} -1 & -5 & -1 \\\\ -8 & -6 & 9 \\\\ -10 & 1 & 7 \\end{bmatrix}\\), \\(A^{-1} = \\frac{1}{|A|}\\text{adj}\\,A = -\\frac{1}{17}\\begin{bmatrix} -1 & -5 & -1 \\\\ -8 & -6 & 9 \\\\ -10 & 1 & 7 \\end{bmatrix}\\)।\n\\(X = A^{-1}P = -\\frac{1}{17}\\begin{bmatrix} -8 - 5 - 4 \\\\ -64 - 6 + 36 \\\\ -80 + 1 + 28 \\end{bmatrix} = -\\frac{1}{17}\\begin{bmatrix} -17 \\\\ -34 \\\\ -51 \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ 2 \\\\ 3 \\end{bmatrix}\\)।\nअतः \\(x = 1\\), \\(y = 2\\), \\(z = 3\\)। (जाँच: \\(3 - 4 + 9 = 8\\), \\(2 + 2 - 3 = 1\\), \\(4 - 6 + 6 = 4\\)।)\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "The system is \\(AX = P\\), where the coefficient matrix is \\(A = \\begin{bmatrix} 3 & -2 & 3 \\\\ 2 & 1 & -1 \\\\ 4 & -3 & 2 \\end{bmatrix}\\), \\(X = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\) and \\(P = \\begin{bmatrix} 8 \\\\ 1 \\\\ 4 \\end{bmatrix}\\).\n\\(|A| = 3(2 - 3) + 2(4 + 4) + 3(-6 - 4) = -3 + 16 - 30 = -17 \\neq 0\\), so \\(A^{-1}\\) exists and the system has a unique solution \\(X = A^{-1}P\\).\nCofactors:\n\\(A_{11} = -1\\), \\(A_{12} = -8\\), \\(A_{13} = -10\\)\n\\(A_{21} = -5\\), \\(A_{22} = -6\\), \\(A_{23} = 1\\)\n\\(A_{31} = -1\\), \\(A_{32} = 9\\), \\(A_{33} = 7\\)\n\\(\\text{adj}\\,A = \\begin{bmatrix} -1 & -5 & -1 \\\\ -8 & -6 & 9 \\\\ -10 & 1 & 7 \\end{bmatrix}\\), \\(A^{-1} = \\frac{1}{|A|}\\text{adj}\\,A = -\\frac{1}{17}\\begin{bmatrix} -1 & -5 & -1 \\\\ -8 & -6 & 9 \\\\ -10 & 1 & 7 \\end{bmatrix}\\).\n\\(X = A^{-1}P = -\\frac{1}{17}\\begin{bmatrix} -8 - 5 - 4 \\\\ -64 - 6 + 36 \\\\ -80 + 1 + 28 \\end{bmatrix} = -\\frac{1}{17}\\begin{bmatrix} -17 \\\\ -34 \\\\ -51 \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ 2 \\\\ 3 \\end{bmatrix}\\).\nHence \\(x = 1\\), \\(y = 2\\), \\(z = 3\\). (Check: \\(3 - 4 + 9 = 8\\), \\(2 + 2 - 3 = 1\\), \\(4 - 6 + 6 = 4\\).)\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q7b",
+      "questionNumber": "7 (b)",
+      "section": "",
+      "marks": 8,
+      "format": "subjective",
+      "chapter": "Matrices",
+      "subtopic": "Symmetric and Skew-Symmetric Matrices",
+      "difficulty": "MODERATE",
+      "stem": "Express the matrix \\(B = \\begin{bmatrix} 2 & -2 & -4 \\\\ -1 & 3 & 4 \\\\ 1 & -2 & -3 \\end{bmatrix}\\) in the form of the sum of symmetric matrix and skew-symmetric matrix.",
+      "hi": {
+        "stem": "आव्यूह \\(B = \\begin{bmatrix} 2 & -2 & -4 \\\\ -1 & 3 & 4 \\\\ 1 & -2 & -3 \\end{bmatrix}\\) को एक सममित आव्यूह तथा एक विषम सममित आव्यूह के योगफल के रूप में व्यक्त कीजिए।",
+        "solution": "किसी भी वर्ग आव्यूह को \\(\\frac{1}{2}(B + B') + \\frac{1}{2}(B - B')\\) के रूप में लिखा जा सकता है, जहाँ पहला भाग सममित तथा दूसरा विषम सममित होता है।\n\\(B = \\begin{bmatrix} 2 & -2 & -4 \\\\ -1 & 3 & 4 \\\\ 1 & -2 & -3 \\end{bmatrix}\\), \\(B' = \\begin{bmatrix} 2 & -1 & 1 \\\\ -2 & 3 & -2 \\\\ -4 & 4 & -3 \\end{bmatrix}\\)।\n\\(P = \\frac{1}{2}(B + B') = \\frac{1}{2}\\begin{bmatrix} 4 & -3 & -3 \\\\ -3 & 6 & 2 \\\\ -3 & 2 & -6 \\end{bmatrix} = \\begin{bmatrix} 2 & -\\frac{3}{2} & -\\frac{3}{2} \\\\ -\\frac{3}{2} & 3 & 1 \\\\ -\\frac{3}{2} & 1 & -3 \\end{bmatrix}\\)।\n\\(P' = P\\), अतः \\(P\\) सममित आव्यूह है।\n\\(Q = \\frac{1}{2}(B - B') = \\frac{1}{2}\\begin{bmatrix} 0 & -1 & -5 \\\\ 1 & 0 & 6 \\\\ 5 & -6 & 0 \\end{bmatrix} = \\begin{bmatrix} 0 & -\\frac{1}{2} & -\\frac{5}{2} \\\\ \\frac{1}{2} & 0 & 3 \\\\ \\frac{5}{2} & -3 & 0 \\end{bmatrix}\\)।\n\\(Q' = \\begin{bmatrix} 0 & \\frac{1}{2} & \\frac{5}{2} \\\\ -\\frac{1}{2} & 0 & -3 \\\\ -\\frac{5}{2} & 3 & 0 \\end{bmatrix} = -Q\\), अतः \\(Q\\) विषम सममित आव्यूह है।\nअब \\(P + Q = \\begin{bmatrix} 2 & -2 & -4 \\\\ -1 & 3 & 4 \\\\ 1 & -2 & -3 \\end{bmatrix}\\), जो आव्यूह \\(B\\) है।\nअतः \\(B = \\begin{bmatrix} 2 & -\\frac{3}{2} & -\\frac{3}{2} \\\\ -\\frac{3}{2} & 3 & 1 \\\\ -\\frac{3}{2} & 1 & -3 \\end{bmatrix} + \\begin{bmatrix} 0 & -\\frac{1}{2} & -\\frac{5}{2} \\\\ \\frac{1}{2} & 0 & 3 \\\\ \\frac{5}{2} & -3 & 0 \\end{bmatrix}\\), जो एक सममित तथा एक विषम सममित आव्यूह का योगफल है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Any square matrix can be written as \\(\\frac{1}{2}(B + B') + \\frac{1}{2}(B - B')\\), where the first part is symmetric and the second skew-symmetric.\n\\(B = \\begin{bmatrix} 2 & -2 & -4 \\\\ -1 & 3 & 4 \\\\ 1 & -2 & -3 \\end{bmatrix}\\), \\(B' = \\begin{bmatrix} 2 & -1 & 1 \\\\ -2 & 3 & -2 \\\\ -4 & 4 & -3 \\end{bmatrix}\\).\n\\(P = \\frac{1}{2}(B + B') = \\frac{1}{2}\\begin{bmatrix} 4 & -3 & -3 \\\\ -3 & 6 & 2 \\\\ -3 & 2 & -6 \\end{bmatrix} = \\begin{bmatrix} 2 & -\\frac{3}{2} & -\\frac{3}{2} \\\\ -\\frac{3}{2} & 3 & 1 \\\\ -\\frac{3}{2} & 1 & -3 \\end{bmatrix}\\).\n\\(P' = P\\), so \\(P\\) is symmetric.\n\\(Q = \\frac{1}{2}(B - B') = \\frac{1}{2}\\begin{bmatrix} 0 & -1 & -5 \\\\ 1 & 0 & 6 \\\\ 5 & -6 & 0 \\end{bmatrix} = \\begin{bmatrix} 0 & -\\frac{1}{2} & -\\frac{5}{2} \\\\ \\frac{1}{2} & 0 & 3 \\\\ \\frac{5}{2} & -3 & 0 \\end{bmatrix}\\).\n\\(Q' = \\begin{bmatrix} 0 & \\frac{1}{2} & \\frac{5}{2} \\\\ -\\frac{1}{2} & 0 & -3 \\\\ -\\frac{5}{2} & 3 & 0 \\end{bmatrix} = -Q\\), so \\(Q\\) is skew-symmetric.\nNow \\(P + Q = \\begin{bmatrix} 2 & -2 & -4 \\\\ -1 & 3 & 4 \\\\ 1 & -2 & -3 \\end{bmatrix}\\), which is the matrix \\(B\\).\nHence \\(B = \\begin{bmatrix} 2 & -\\frac{3}{2} & -\\frac{3}{2} \\\\ -\\frac{3}{2} & 3 & 1 \\\\ -\\frac{3}{2} & 1 & -3 \\end{bmatrix} + \\begin{bmatrix} 0 & -\\frac{1}{2} & -\\frac{5}{2} \\\\ \\frac{1}{2} & 0 & 3 \\\\ \\frac{5}{2} & -3 & 0 \\end{bmatrix}\\), the sum of a symmetric and a skew-symmetric matrix.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q8a",
+      "questionNumber": "8 (a)",
+      "section": "",
+      "marks": 8,
+      "format": "subjective",
+      "chapter": "Differential Equations",
+      "subtopic": "Homogeneous Differential Equations",
+      "difficulty": "HARD",
+      "stem": "Solve the differential equation \\((x\\,dy - y\\,dx)\\,y \\sin\\left(\\frac{y}{x}\\right) = (y\\,dx + x\\,dy)\\,x \\cos\\left(\\frac{y}{x}\\right)\\).",
+      "hi": {
+        "stem": "अवकल समीकरण \\((x\\,dy - y\\,dx)\\,y \\sin\\left(\\frac{y}{x}\\right) = (y\\,dx + x\\,dy)\\,x \\cos\\left(\\frac{y}{x}\\right)\\) को हल कीजिए।",
+        "solution": "समीकरण का प्रसार करने पर:\n\\(xy\\sin\\left(\\frac{y}{x}\\right)dy - y^2\\sin\\left(\\frac{y}{x}\\right)dx = xy\\cos\\left(\\frac{y}{x}\\right)dx + x^2\\cos\\left(\\frac{y}{x}\\right)dy\\)\n\\(\\left[xy\\sin\\left(\\frac{y}{x}\\right) - x^2\\cos\\left(\\frac{y}{x}\\right)\\right]dy = \\left[xy\\cos\\left(\\frac{y}{x}\\right) + y^2\\sin\\left(\\frac{y}{x}\\right)\\right]dx\\)\n\\(\\frac{dy}{dx} = \\frac{xy\\cos\\left(\\frac{y}{x}\\right) + y^2\\sin\\left(\\frac{y}{x}\\right)}{xy\\sin\\left(\\frac{y}{x}\\right) - x^2\\cos\\left(\\frac{y}{x}\\right)}\\)।\nदायाँ पक्ष केवल \\(\\frac{y}{x}\\) का फलन है, अतः यह समघातीय अवकल समीकरण है। माना \\(y = vx\\), तब \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\)। अंश और हर को \\(x^2\\) से भाग देने पर:\n\\(v + x\\frac{dv}{dx} = \\frac{v\\cos v + v^2\\sin v}{v\\sin v - \\cos v}\\)\n\\(x\\frac{dv}{dx} = \\frac{v\\cos v + v^2\\sin v - v^2\\sin v + v\\cos v}{v\\sin v - \\cos v} = \\frac{2v\\cos v}{v\\sin v - \\cos v}\\)।\nचरों को पृथक करने पर:\n\\(\\frac{v\\sin v - \\cos v}{v\\cos v}\\,dv = \\frac{2\\,dx}{x}\\), अर्थात् \\(\\left(\\tan v - \\frac{1}{v}\\right)dv = \\frac{2\\,dx}{x}\\)।\nसमाकलन करने पर:\n\\(-\\log|\\cos v| - \\log|v| = 2\\log|x| + \\log|C_1|\\)\n\\(\\log\\left|\\frac{1}{v\\cos v}\\right| = \\log|C_1x^2|\\), अतः \\(\\frac{1}{v\\cos v} = \\pm C_1x^2\\), अर्थात् \\(x^2 v\\cos v = C\\) (जहाँ \\(C = \\pm\\frac{1}{C_1}\\))।\n\\(v = \\frac{y}{x}\\) रखने पर: \\(x^2 \\cdot \\frac{y}{x}\\cos\\left(\\frac{y}{x}\\right) = C\\)।\nअतः व्यापक हल \\(xy\\cos\\left(\\frac{y}{x}\\right) = C\\) है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Expanding the equation:\n\\(xy\\sin\\left(\\frac{y}{x}\\right)dy - y^2\\sin\\left(\\frac{y}{x}\\right)dx = xy\\cos\\left(\\frac{y}{x}\\right)dx + x^2\\cos\\left(\\frac{y}{x}\\right)dy\\)\n\\(\\left[xy\\sin\\left(\\frac{y}{x}\\right) - x^2\\cos\\left(\\frac{y}{x}\\right)\\right]dy = \\left[xy\\cos\\left(\\frac{y}{x}\\right) + y^2\\sin\\left(\\frac{y}{x}\\right)\\right]dx\\)\n\\(\\frac{dy}{dx} = \\frac{xy\\cos\\left(\\frac{y}{x}\\right) + y^2\\sin\\left(\\frac{y}{x}\\right)}{xy\\sin\\left(\\frac{y}{x}\\right) - x^2\\cos\\left(\\frac{y}{x}\\right)}\\).\nThe right side is a function of \\(\\frac{y}{x}\\) only, so the equation is homogeneous. Put \\(y = vx\\), so \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\). Dividing numerator and denominator by \\(x^2\\):\n\\(v + x\\frac{dv}{dx} = \\frac{v\\cos v + v^2\\sin v}{v\\sin v - \\cos v}\\)\n\\(x\\frac{dv}{dx} = \\frac{v\\cos v + v^2\\sin v - v^2\\sin v + v\\cos v}{v\\sin v - \\cos v} = \\frac{2v\\cos v}{v\\sin v - \\cos v}\\).\nSeparating the variables:\n\\(\\frac{v\\sin v - \\cos v}{v\\cos v}\\,dv = \\frac{2\\,dx}{x}\\), i.e. \\(\\left(\\tan v - \\frac{1}{v}\\right)dv = \\frac{2\\,dx}{x}\\).\nIntegrating:\n\\(-\\log|\\cos v| - \\log|v| = 2\\log|x| + \\log|C_1|\\)\n\\(\\log\\left|\\frac{1}{v\\cos v}\\right| = \\log|C_1x^2|\\), so \\(\\frac{1}{v\\cos v} = \\pm C_1x^2\\), i.e. \\(x^2 v\\cos v = C\\) (where \\(C = \\pm\\frac{1}{C_1}\\)).\nPutting \\(v = \\frac{y}{x}\\): \\(x^2 \\cdot \\frac{y}{x}\\cos\\left(\\frac{y}{x}\\right) = C\\).\nHence the general solution is \\(xy\\cos\\left(\\frac{y}{x}\\right) = C\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q8bi",
+      "questionNumber": "8 (b) (i)",
+      "section": "",
+      "marks": 4,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Properties of Definite Integrals",
+      "difficulty": "MODERATE",
+      "stem": "Find the value of\n\\(\\int_{-1}^{2} |x^3 - x| \\, dx\\)",
+      "hi": {
+        "stem": "मान ज्ञात कीजिए :\n\\(\\int_{-1}^{2} |x^3 - x| \\, dx\\)",
+        "solution": "\\(x^3 - x = x(x - 1)(x + 1)\\)। इसका चिह्न: \\([-1, 0]\\) पर \\(x^3 - x \\geq 0\\), \\([0, 1]\\) पर \\(x^3 - x \\leq 0\\), \\([1, 2]\\) पर \\(x^3 - x \\geq 0\\)। अतः\n\\(\\int_{-1}^{2} |x^3 - x|\\,dx = \\int_{-1}^{0} (x^3 - x)\\,dx - \\int_{0}^{1} (x^3 - x)\\,dx + \\int_{1}^{2} (x^3 - x)\\,dx\\)।\n\\(F(x) = \\frac{x^4}{4} - \\frac{x^2}{2}\\) लेने पर: \\(F(-1) = -\\frac{1}{4}\\), \\(F(0) = 0\\), \\(F(1) = -\\frac{1}{4}\\), \\(F(2) = 4 - 2 = 2\\)।\n\\(\\int_{-1}^{0} (x^3 - x)\\,dx = 0 - \\left(-\\frac{1}{4}\\right) = \\frac{1}{4}\\)\n\\(-\\int_{0}^{1} (x^3 - x)\\,dx = -\\left(-\\frac{1}{4} - 0\\right) = \\frac{1}{4}\\)\n\\(\\int_{1}^{2} (x^3 - x)\\,dx = 2 - \\left(-\\frac{1}{4}\\right) = \\frac{9}{4}\\)\nअतः \\(\\int_{-1}^{2} |x^3 - x|\\,dx = \\frac{1}{4} + \\frac{1}{4} + \\frac{9}{4} = \\frac{11}{4}\\)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "\\(x^3 - x = x(x - 1)(x + 1)\\). Its sign: \\(x^3 - x \\geq 0\\) on \\([-1, 0]\\), \\(x^3 - x \\leq 0\\) on \\([0, 1]\\), \\(x^3 - x \\geq 0\\) on \\([1, 2]\\). So\n\\(\\int_{-1}^{2} |x^3 - x|\\,dx = \\int_{-1}^{0} (x^3 - x)\\,dx - \\int_{0}^{1} (x^3 - x)\\,dx + \\int_{1}^{2} (x^3 - x)\\,dx\\).\nWith \\(F(x) = \\frac{x^4}{4} - \\frac{x^2}{2}\\): \\(F(-1) = -\\frac{1}{4}\\), \\(F(0) = 0\\), \\(F(1) = -\\frac{1}{4}\\), \\(F(2) = 4 - 2 = 2\\).\n\\(\\int_{-1}^{0} (x^3 - x)\\,dx = 0 - \\left(-\\frac{1}{4}\\right) = \\frac{1}{4}\\)\n\\(-\\int_{0}^{1} (x^3 - x)\\,dx = -\\left(-\\frac{1}{4} - 0\\right) = \\frac{1}{4}\\)\n\\(\\int_{1}^{2} (x^3 - x)\\,dx = 2 - \\left(-\\frac{1}{4}\\right) = \\frac{9}{4}\\)\nHence \\(\\int_{-1}^{2} |x^3 - x|\\,dx = \\frac{1}{4} + \\frac{1}{4} + \\frac{9}{4} = \\frac{11}{4}\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q8bii",
+      "questionNumber": "8 (b) (ii)",
+      "section": "",
+      "marks": 4,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Properties of Definite Integrals",
+      "difficulty": "MODERATE",
+      "stem": "Find the value of\n\\(\\int_{1}^{4} (|x - 1| + |x - 2| + |x - 3|) \\, dx\\)",
+      "hi": {
+        "stem": "मान ज्ञात कीजिए :\n\\(\\int_{1}^{4} (|x - 1| + |x - 2| + |x - 3|) \\, dx\\)",
+        "solution": "समाकल को तीन भागों में बाँटकर \\([1, 4]\\) पर प्रत्येक मापांक को उसके चिह्न के अनुसार हटाते हैं।\n\\(\\int_{1}^{4} |x - 1|\\,dx = \\int_{1}^{4} (x - 1)\\,dx = \\left[\\frac{(x - 1)^2}{2}\\right]_{1}^{4} = \\frac{9}{2}\\)\n\\(\\int_{1}^{4} |x - 2|\\,dx = \\int_{1}^{2} (2 - x)\\,dx + \\int_{2}^{4} (x - 2)\\,dx = \\left[-\\frac{(2 - x)^2}{2}\\right]_{1}^{2} + \\left[\\frac{(x - 2)^2}{2}\\right]_{2}^{4} = \\frac{1}{2} + 2 = \\frac{5}{2}\\)\n\\(\\int_{1}^{4} |x - 3|\\,dx = \\int_{1}^{3} (3 - x)\\,dx + \\int_{3}^{4} (x - 3)\\,dx = \\left[-\\frac{(3 - x)^2}{2}\\right]_{1}^{3} + \\left[\\frac{(x - 3)^2}{2}\\right]_{3}^{4} = 2 + \\frac{1}{2} = \\frac{5}{2}\\)\nअतः \\(\\int_{1}^{4} (|x - 1| + |x - 2| + |x - 3|)\\,dx = \\frac{9}{2} + \\frac{5}{2} + \\frac{5}{2} = \\frac{19}{2}\\)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Split the integral into three and remove each modulus by its sign on \\([1, 4]\\).\n\\(\\int_{1}^{4} |x - 1|\\,dx = \\int_{1}^{4} (x - 1)\\,dx = \\left[\\frac{(x - 1)^2}{2}\\right]_{1}^{4} = \\frac{9}{2}\\)\n\\(\\int_{1}^{4} |x - 2|\\,dx = \\int_{1}^{2} (2 - x)\\,dx + \\int_{2}^{4} (x - 2)\\,dx = \\left[-\\frac{(2 - x)^2}{2}\\right]_{1}^{2} + \\left[\\frac{(x - 2)^2}{2}\\right]_{2}^{4} = \\frac{1}{2} + 2 = \\frac{5}{2}\\)\n\\(\\int_{1}^{4} |x - 3|\\,dx = \\int_{1}^{3} (3 - x)\\,dx + \\int_{3}^{4} (x - 3)\\,dx = \\left[-\\frac{(3 - x)^2}{2}\\right]_{1}^{3} + \\left[\\frac{(x - 3)^2}{2}\\right]_{3}^{4} = 2 + \\frac{1}{2} = \\frac{5}{2}\\)\nHence \\(\\int_{1}^{4} (|x - 1| + |x - 2| + |x - 3|)\\,dx = \\frac{9}{2} + \\frac{5}{2} + \\frac{5}{2} = \\frac{19}{2}\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q9a",
+      "questionNumber": "9 (a)",
+      "section": "",
+      "marks": 8,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Integration by Partial Fractions",
+      "difficulty": "HARD",
+      "stem": "Find the value of integration \\(\\int \\frac{x^4}{(x - 1)(x^2 + 1)} \\, dx\\).",
+      "hi": {
+        "stem": "समाकल \\(\\int \\frac{x^4}{(x - 1)(x^2 + 1)} \\, dx\\) का मान ज्ञात कीजिए।",
+        "solution": "समाकल्य एक विषम भिन्न है, क्योंकि \\((x - 1)(x^2 + 1) = x^3 - x^2 + x - 1\\)। भाग देने पर: \\((x + 1)(x^3 - x^2 + x - 1) = x^4 - 1\\), अतः\n\\(\\frac{x^4}{(x - 1)(x^2 + 1)} = x + 1 + \\frac{1}{(x - 1)(x^2 + 1)}\\)।\nआंशिक भिन्न: माना \\(\\frac{1}{(x - 1)(x^2 + 1)} = \\frac{p}{x - 1} + \\frac{qx + r}{x^2 + 1}\\), तब \\(1 = p(x^2 + 1) + (qx + r)(x - 1)\\)।\n\\(x = 1\\) रखने पर: \\(1 = 2p\\), अतः \\(p = \\frac{1}{2}\\)।\n\\(x^2\\) के गुणांकों की तुलना से: \\(p + q = 0\\), अतः \\(q = -\\frac{1}{2}\\)।\nअचर पदों की तुलना से: \\(p - r = 1\\), अतः \\(r = -\\frac{1}{2}\\)।\nअतः \\(\\frac{x^4}{(x - 1)(x^2 + 1)} = x + 1 + \\frac{1}{2(x - 1)} - \\frac{1}{2}\\cdot\\frac{x}{x^2 + 1} - \\frac{1}{2}\\cdot\\frac{1}{x^2 + 1}\\)।\nप्रत्येक पद का समाकलन करने पर:\n\\(\\int \\frac{x^4}{(x - 1)(x^2 + 1)}\\,dx = \\frac{x^2}{2} + x + \\frac{1}{2}\\log|x - 1| - \\frac{1}{4}\\log(x^2 + 1) - \\frac{1}{2}\\tan^{-1} x + C\\),\nजहाँ \\(C\\) समाकलन अचर है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A serial stamp crosses the English denominator so its first factor reads like (x + 1); the clean Hindi prints (x - 1), used for both.",
+      "solution": "The integrand is an improper fraction, since \\((x - 1)(x^2 + 1) = x^3 - x^2 + x - 1\\). Dividing: \\((x + 1)(x^3 - x^2 + x - 1) = x^4 - 1\\), so\n\\(\\frac{x^4}{(x - 1)(x^2 + 1)} = x + 1 + \\frac{1}{(x - 1)(x^2 + 1)}\\).\nPartial fractions: let \\(\\frac{1}{(x - 1)(x^2 + 1)} = \\frac{p}{x - 1} + \\frac{qx + r}{x^2 + 1}\\), so \\(1 = p(x^2 + 1) + (qx + r)(x - 1)\\).\nPutting \\(x = 1\\): \\(1 = 2p\\), so \\(p = \\frac{1}{2}\\).\nComparing coefficients of \\(x^2\\): \\(p + q = 0\\), so \\(q = -\\frac{1}{2}\\).\nComparing constant terms: \\(p - r = 1\\), so \\(r = -\\frac{1}{2}\\).\nThus \\(\\frac{x^4}{(x - 1)(x^2 + 1)} = x + 1 + \\frac{1}{2(x - 1)} - \\frac{1}{2}\\cdot\\frac{x}{x^2 + 1} - \\frac{1}{2}\\cdot\\frac{1}{x^2 + 1}\\).\nIntegrating term by term:\n\\(\\int \\frac{x^4}{(x - 1)(x^2 + 1)}\\,dx = \\frac{x^2}{2} + x + \\frac{1}{2}\\log|x - 1| - \\frac{1}{4}\\log(x^2 + 1) - \\frac{1}{2}\\tan^{-1} x + C\\),\nwhere \\(C\\) is the constant of integration.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q9b",
+      "questionNumber": "9 (b)",
+      "section": "",
+      "marks": 8,
+      "format": "subjective",
+      "chapter": "Differential Equations",
+      "subtopic": "Variables Separable",
+      "difficulty": "HARD",
+      "stem": "Show that the general solution of the differential equation \\(\\frac{dy}{dx} + \\frac{y^2 + y + 1}{x^2 + x + 1} = 0\\) is \\(x + y + 1 = A(1 - x - y - 2xy)\\), in which \\(A\\) is a parameter.",
+      "hi": {
+        "stem": "दर्शाइए कि अवकल समीकरण \\(\\frac{dy}{dx} + \\frac{y^2 + y + 1}{x^2 + x + 1} = 0\\) का व्यापक हल \\(x + y + 1 = A(1 - x - y - 2xy)\\) है, जिसमें \\(A\\) एक प्राचल है।",
+        "solution": "चरों को पृथक करने पर:\n\\(\\frac{dy}{y^2 + y + 1} + \\frac{dx}{x^2 + x + 1} = 0\\)।\nचूँकि \\(y^2 + y + 1 = \\left(y + \\frac{1}{2}\\right)^2 + \\left(\\frac{\\sqrt{3}}{2}\\right)^2\\) और इसी प्रकार \\(x\\) के लिए, समाकलन करने पर\n\\(\\frac{2}{\\sqrt{3}}\\tan^{-1}\\left(\\frac{2y + 1}{\\sqrt{3}}\\right) + \\frac{2}{\\sqrt{3}}\\tan^{-1}\\left(\\frac{2x + 1}{\\sqrt{3}}\\right) = C_1\\)\n\\(\\tan^{-1}\\left(\\frac{2x + 1}{\\sqrt{3}}\\right) + \\tan^{-1}\\left(\\frac{2y + 1}{\\sqrt{3}}\\right) = \\frac{\\sqrt{3}}{2}C_1\\)।\n\\(\\tan^{-1} p + \\tan^{-1} q = \\tan^{-1}\\frac{p + q}{1 - pq}\\) का प्रयोग करने पर:\n\\(\\frac{p + q}{1 - pq} = \\frac{\\frac{2x + 2y + 2}{\\sqrt{3}}}{1 - \\frac{(2x + 1)(2y + 1)}{3}} = \\frac{\\frac{2(x + y + 1)}{\\sqrt{3}}}{\\frac{3 - 4xy - 2x - 2y - 1}{3}} = \\frac{\\frac{2(x + y + 1)}{\\sqrt{3}}}{\\frac{2(1 - x - y - 2xy)}{3}} = \\frac{\\sqrt{3}(x + y + 1)}{1 - x - y - 2xy}\\)।\nअतः \\(\\tan^{-1}\\left[\\frac{\\sqrt{3}(x + y + 1)}{1 - x - y - 2xy}\\right] = \\frac{\\sqrt{3}}{2}C_1\\), अर्थात्\n\\(\\frac{\\sqrt{3}(x + y + 1)}{1 - x - y - 2xy} = \\tan\\left(\\frac{\\sqrt{3}}{2}C_1\\right)\\)।\n\\(A = \\frac{1}{\\sqrt{3}}\\tan\\left(\\frac{\\sqrt{3}}{2}C_1\\right)\\) रखने पर:\n\\(x + y + 1 = A(1 - x - y - 2xy)\\),\nजो अभीष्ट व्यापक हल है, जहाँ \\(A\\) एक प्राचल है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Separating the variables:\n\\(\\frac{dy}{y^2 + y + 1} + \\frac{dx}{x^2 + x + 1} = 0\\).\nSince \\(y^2 + y + 1 = \\left(y + \\frac{1}{2}\\right)^2 + \\left(\\frac{\\sqrt{3}}{2}\\right)^2\\) and similarly for \\(x\\), integrating gives\n\\(\\frac{2}{\\sqrt{3}}\\tan^{-1}\\left(\\frac{2y + 1}{\\sqrt{3}}\\right) + \\frac{2}{\\sqrt{3}}\\tan^{-1}\\left(\\frac{2x + 1}{\\sqrt{3}}\\right) = C_1\\)\n\\(\\tan^{-1}\\left(\\frac{2x + 1}{\\sqrt{3}}\\right) + \\tan^{-1}\\left(\\frac{2y + 1}{\\sqrt{3}}\\right) = \\frac{\\sqrt{3}}{2}C_1\\).\nUsing \\(\\tan^{-1} p + \\tan^{-1} q = \\tan^{-1}\\frac{p + q}{1 - pq}\\):\n\\(\\frac{p + q}{1 - pq} = \\frac{\\frac{2x + 2y + 2}{\\sqrt{3}}}{1 - \\frac{(2x + 1)(2y + 1)}{3}} = \\frac{\\frac{2(x + y + 1)}{\\sqrt{3}}}{\\frac{3 - 4xy - 2x - 2y - 1}{3}} = \\frac{\\frac{2(x + y + 1)}{\\sqrt{3}}}{\\frac{2(1 - x - y - 2xy)}{3}} = \\frac{\\sqrt{3}(x + y + 1)}{1 - x - y - 2xy}\\).\nSo \\(\\tan^{-1}\\left[\\frac{\\sqrt{3}(x + y + 1)}{1 - x - y - 2xy}\\right] = \\frac{\\sqrt{3}}{2}C_1\\), i.e.\n\\(\\frac{\\sqrt{3}(x + y + 1)}{1 - x - y - 2xy} = \\tan\\left(\\frac{\\sqrt{3}}{2}C_1\\right)\\).\nPutting \\(A = \\frac{1}{\\sqrt{3}}\\tan\\left(\\frac{\\sqrt{3}}{2}C_1\\right)\\):\n\\(x + y + 1 = A(1 - x - y - 2xy)\\),\nwhich is the required general solution, \\(A\\) being a parameter.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    }
+  ]
+}

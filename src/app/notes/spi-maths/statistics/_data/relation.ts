@@ -6,7 +6,7 @@ export const SPI_ST_RELATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Mode is about 3 times the median minus 2 times the mean, and each kind of graph shows data in its own way.",
   whyItMatters:
-    "Seven questions in the bank, five of them EASY. Four rest on the one relation between mean, median and mode, and three ask which graph shows what: the axes of a histogram, the graph for parts of a whole, and the average a graph cannot give.",
+    "Eight questions in the bank, six of them EASY, one from the 2026 paper (what a cumulative frequency table is for). Four rest on the one relation between mean, median and mode, and three ask which graph shows what: the axes of a histogram, the graph for parts of a whole, and the average a graph cannot give.",
   concepts: [
     {
       kind: "formula" as const,

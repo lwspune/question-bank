@@ -26,12 +26,29 @@
  * builder sets `sourceRow = n`. No change to the pure core.
  */
 
+import type { MockAnswerKey } from "../../src/lib/mocks/answers";
+import type { PaperQuestionRow } from "../../src/lib/mocks/reconstruct";
+
 /** One printed question: either a row the bank already holds, or a new one. */
-export type PracticeQuestionRef =
+export type PracticeQuestionRef = (
   /** Mirrors an existing bank row (the dedup gate's DUP/MAYBE verdicts). */
   | { n: number; kind: "bank"; questionId: string }
   /** A row this ingest committed, addressed by its own source_file + number. */
-  | { n: number; kind: "new"; sourceFile: string; questionNumber: number };
+  | { n: number; kind: "new"; sourceFile: string; questionNumber: number }
+) & {
+  /** Flawed as printed: everyone gets its marks (SPI's practice papers, 2026-11-17). */
+  grace?: true;
+};
+
+/** A ref's mock row: the PRINTED number orders it (see the header), and grace rides along. */
+export function practiceRow(
+  q: PracticeQuestionRef,
+  id: string,
+  subjectName: string,
+  answer: MockAnswerKey | null
+): PaperQuestionRow {
+  return { id, sourceRow: q.n, questionNumber: String(q.n), subjectName, answer, ...(q.grace ? { grace: true } : {}) };
+}
 
 export type PracticeSitting = {
   /** Registry key, also matched by `--only`. */

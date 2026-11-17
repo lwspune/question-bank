@@ -280,6 +280,13 @@ describe("Hindi translations", () => {
     expect(defaultLangFor(null)).toBe("both");
   });
 
+  it("lets an exam that names its default win over the language rule (UP Board opens in Hindi, owner 2026-11-17)", () => {
+    expect(defaultLangFor("hi", "hi")).toBe("hi");
+    expect(defaultLangFor("hi", "both")).toBe("both");
+    expect(defaultLangFor("hi", null)).toBe("en");
+    expect(defaultLangFor("hi", undefined)).toBe("en");
+  });
+
   it("marks the middle button checked for either translated preference", () => {
     expect(isLangChecked("hi", "mr", "hi")).toBe(true);
     expect(isLangChecked("hi", "hi", "hi")).toBe(true);

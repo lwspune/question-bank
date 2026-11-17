@@ -6,7 +6,7 @@ export const SPI_LO_REFRACTION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Light bends when it passes from one medium into another because its speed changes; the refractive index n = c/v measures how much it slows, and a lens uses this bending to form images.",
   whyItMatters:
-    "Four questions in the bank, all MODERATE: which pair of media changes light the most, how the pins are lined up in the glass slab experiment, what water does to a lens's power, and the point where a convex lens gives u = v. Each needs a reason, not a recalled word, so learn why light bends as well as which way.",
+    "Six questions in the bank, four MODERATE and two EASY from the 2026 paper: which pair of media changes light the most, how the pins are lined up in the glass slab experiment, what water does to a lens's power, the point where a convex lens gives u = v, which way a ray bends leaving a denser medium, and how lenses form images. Most need a reason, not a recalled word, so learn why light bends as well as which way.",
   concepts: [
     {
       kind: "formula" as const,

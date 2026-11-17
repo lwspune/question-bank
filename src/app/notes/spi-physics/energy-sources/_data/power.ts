@@ -6,7 +6,7 @@ export const SPI_ES_POWER_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A power plant changes one form of energy into electrical energy, and a source is clean when using it gives out no smoke, harmful gases or dangerous waste.",
   whyItMatters:
-    "Five questions in the bank, four EASY and one MODERATE: the order of energy changes in a nuclear plant, which source is not clean, which pollutes least, why a dam site needs care, and what solar cells are made of. Each is one fact, so the mark goes to whoever knows the drawback of each source.",
+    "Six questions in the bank, four EASY and two MODERATE, one from the 2026 paper: the order of energy changes in a nuclear plant, which source is not clean, which pollutes least, why a dam site needs care, what solar cells are made of, and the main problem in using nuclear energy. Each is one fact, so the mark goes to whoever knows the drawback of each source.",
   concepts: [
     {
       kind: "reference" as const,

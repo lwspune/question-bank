@@ -38,11 +38,12 @@ const base = {
 };
 
 describe("landingLead", () => {
-  // IPMAT Indore is "some" (89% solved, 2026-10-26); answersPhrase's own test
+  // MPSC State Services Prelims is "some" (63% solved, 2026-10-26; IPMAT Indore
+  // reached "all" 2026-11-17); answersPhrase's own test
   // covers "none", which no exam declares any more.
   it("promises worked solutions for some for an exam where only some questions carry them", () => {
-    expect(landingLead({ ...base, examName: "IPMAT Indore", profile })).toBe(
-      "176 IPMAT Indore Mathematics previous year questions (PYQs) from 19 papers, 2017 to 2026, with answers, and worked solutions for some."
+    expect(landingLead({ ...base, examName: "MPSC State Services Prelims", profile })).toBe(
+      "176 MPSC State Services Prelims Mathematics previous year questions (PYQs) from 19 papers, 2017 to 2026, with answers, and worked solutions for some."
     );
   });
 

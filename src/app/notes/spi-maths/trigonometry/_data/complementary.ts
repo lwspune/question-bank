@@ -6,7 +6,7 @@ export const SPI_TG_COMPLEMENTARY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Two angles are complementary when they add to 90°, and a ratio of one equals the partner ratio of the other: sin of one is cos of the other.",
   whyItMatters:
-    "Six questions in the bank, four EASY and two MODERATE. Five switch a ratio to its partner using 90° minus the angle, and one is a long sum of squares that collapses when the terms are paired from the two ends.",
+    "Seven questions in the bank, four EASY and three MODERATE, one from the 2026 paper. Six switch a ratio to its partner using 90° minus the angle, and one is a long sum of squares that collapses when the terms are paired from the two ends.",
   concepts: [
     {
       kind: "formula" as const,

@@ -20,7 +20,8 @@ import { listActivePlans } from "@/lib/billing/plansQuery";
 import { logActivityOnce } from "@/lib/activity/service";
 import { surfaceViewedEvent } from "@/lib/activity/views";
 import { paywallEvent } from "@/lib/activity/clientEvents";
-import { examAltLang, getExamByName } from "@/lib/exam/examContext";
+import { examAltLang, examDefaultLang, getExamByName } from "@/lib/exam/examContext";
+import { QuestionLangDefaultProvider } from "@/lib/i18n/QuestionLangDefault";
 import ShareMock from "./ShareMock";
 import BeforeYouStart from "./BeforeYouStart";
 import { loadBeforeYouStart } from "@/lib/mocks/beforeYouStartServer";
@@ -144,6 +145,7 @@ export default async function MockInstructions(
   // a practice paper is not a paper anyone sat, so it cannot.
   const isPastPaper = mock.source === "pyq" && mock.scope === "full";
   const altLang = examAltLang(getExamByName(mock.examName));
+  const langDefault = examDefaultLang(getExamByName(mock.examName));
   // Copy is derived, not hard-coded: MHT-CET has NO negative marking, and the
   // old wording asserted a penalty and told the reader to "skip if unsure" —
   // advice that costs marks when a blank scores the same as a wrong answer.
@@ -171,7 +173,7 @@ export default async function MockInstructions(
   });
 
   return (
-    <>
+    <QuestionLangDefaultProvider value={langDefault}>
       <AppHeader />
       <main className="mx-auto max-w-2xl px-4 py-8 sm:px-6">
         {/* Back to this exam's papers (2026-11-12), not the all-exams picker. */}
@@ -333,7 +335,7 @@ export default async function MockInstructions(
           </section>
         )}
       </main>
-    </>
+    </QuestionLangDefaultProvider>
   );
 }
 

@@ -19,6 +19,8 @@ answers. No database writes, no git, no edits to any repo file except your outpu
 **Read the paper's instructions page first** (`p01-bottom.png` for 2022): it fixes the values
 to calculate with for the whole paper (2022: 1 inch = 2.5 cm, 1 mile = 1.6 km, pi = 3.14 or
 22/7, g = 9.8, square roots and decimal ratios to two decimals). Solve with those values.
+2026's instructions page fixes no values: use pi = 22/7 or 3.14, whichever the options are
+built on.
 
 ## Two jobs per question, in this order
 

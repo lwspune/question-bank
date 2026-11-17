@@ -6,7 +6,7 @@ export const SPI_OR_RANKS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A rank counts a person's place from one end of a line; an order puzzle builds the whole line from comparisons, then matches each person to a job by cutting what the clues forbid.",
   whyItMatters:
-    "Five questions in the bank: one EASY rank question from the Sample Paper, and a set of four from the 2022 paper on one puzzle about the incomes and jobs in a family (three MODERATE, one HARD). The puzzle set is won by writing the income line once and answering all four questions from it.",
+    "Six questions in the bank: two EASY rank questions, from the Sample Paper and the 2026 paper, and a set of four from the 2022 paper on one puzzle about the incomes and jobs in a family (three MODERATE, one HARD). The puzzle set is won by writing the income line once and answering all four questions from it.",
   concepts: [
     {
       kind: "formula" as const,

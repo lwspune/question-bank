@@ -87,7 +87,8 @@ export function intlOriginFor(host: string | null | undefined): string | null {
  * The international exam a path belongs to, or null. Covers every URL family
  * that serves one exam: its hub, notes (subject routes are `<slug>-<subject>`),
  * printable notes, formula pages, mock hub, mock papers (slugs are
- * `<slug>-<sitting>`) and the per-chapter question landings.
+ * `<slug>-<sitting>`), the per-chapter question landings, and its homework
+ * page and plans (plan slugs are `<slug>-<subject>`, 2026-11-17).
  */
 export function intlExamOfPath(pathname: string): ExamSlug | null {
   for (const exam of INTL_EXAMS) {
@@ -101,7 +102,9 @@ export function intlExamOfPath(pathname: string): ExamSlug | null {
       within(`/formula/${s}`) ||
       within(`/mock/exam/${s}`) ||
       pathname.startsWith(`/mock/${s}-`) ||
-      within(`/questions/${s}`)
+      within(`/questions/${s}`) ||
+      within(`/homework/exam/${s}`) ||
+      pathname.startsWith(`/homework/${s}-`)
     ) {
       return s;
     }
@@ -167,6 +170,7 @@ function sectionIndex(pathname: string): string | null {
   const one = (list: readonly ExamEntry[]) => (list.length === 1 ? list[0] : null);
   const only = one(LIVE_INTL_EXAMS);
   const onlyWithNotes = one(LIVE_INTL_EXAMS.filter((e) => e.notesPath));
+  const onlyWithHomework = one(LIVE_INTL_EXAMS.filter((e) => e.homework));
   switch (pathname) {
     case "/notes":
       return onlyWithNotes?.notesPath ?? "/";
@@ -174,6 +178,9 @@ function sectionIndex(pathname: string): string | null {
       return only ? `/mock/exam/${only.slug}` : "/";
     case "/formula":
       return onlyWithNotes ? `/formula/${onlyWithNotes.slug}` : "/";
+    // The homework pages' "Daily Homework" crumb links /homework (2026-11-17).
+    case "/homework":
+      return onlyWithHomework ? `/homework/exam/${onlyWithHomework.slug}` : "/";
     case "/exams":
     case "/questions":
     case "/me":
@@ -253,7 +260,7 @@ export function isIntlPagePath(pathname: string): boolean {
 
 export type IntlNavLink = { label: string; href: string; active: boolean };
 
-/** The intl header's tabs: the current exam's notes, mocks and bank (the first intl exam on a shared page). */
+/** The intl header's tabs: the current exam's notes, mocks, homework and bank (the first intl exam on a shared page). */
 export function intlNavFor(pathname: string, opts: { signedIn?: boolean } = {}): IntlNavLink[] {
   const slug = intlExamOfPath(pathname);
   const exam = INTL_EXAMS.find((e) => e.slug === slug) ?? INTL_EXAMS[0];
@@ -276,6 +283,16 @@ export function intlNavFor(pathname: string, opts: { signedIn?: boolean } = {}):
       href: `/mock/exam/${exam.slug}`,
       active: section(`/mock/exam/${exam.slug}`) || pathname.startsWith(`/mock/${exam.slug}-`) || section("/mock/attempt"),
     },
+    // Daily homework (2026-11-17): only an exam with plans gets the tab.
+    ...(exam.homework
+      ? [
+          {
+            label: "Homework",
+            href: `/homework/exam/${exam.slug}`,
+            active: section(`/homework/exam/${exam.slug}`) || pathname.startsWith(`/homework/${exam.slug}-`),
+          },
+        ]
+      : []),
     {
       label: "Questions",
       href: "/browse",

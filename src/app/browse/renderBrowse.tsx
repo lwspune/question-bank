@@ -19,6 +19,7 @@ import {
 } from "@/lib/questions/taxonomy";
 import {
   examAltLang,
+  examDefaultLang,
   getExamByName,
   isPracticeOnlyExam,
   getExamBySlug,
@@ -47,6 +48,7 @@ import {
 import { getExamCatalogForRender } from "@/lib/exam/allExamStats";
 import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { QuestionLangSwitch } from "@/components/i18n/BilingualText";
+import { QuestionLangDefaultProvider } from "@/lib/i18n/QuestionLangDefault";
 import { altLangOfAny } from "@/lib/i18n/bilingual";
 import { listChapterLandings } from "@/lib/questions/landing";
 import { INTL_EXAMS, WWW_ORIGIN, intlOriginFor, isIntlHost } from "@/lib/sites/intl";
@@ -336,7 +338,10 @@ export default async function renderBrowse(req: BrowseRequest) {
   // A bilingual exam (MPSC prints Marathi + English, SSC and RAS Hindi +
   // English) offers a print-language choice in the download dialog. Registry
   // flag, not a count — see ExamEntry.
-  const examAlt = examAltLang(getExamByName(examOpts.find((e) => e.id === filters.examId)?.name));
+  const filteredExam = getExamByName(examOpts.find((e) => e.id === filters.examId)?.name);
+  const examAlt = examAltLang(filteredExam);
+  // The language the filtered exam's questions open in (UP Board: Hindi).
+  const examLangDefault = examDefaultLang(filteredExam);
   // One page-level language switch, shown only where it can change something:
   // a bilingual exam is filtered, or some row on this page carries a
   // translation (an unfiltered page can mix exams). Every other page renders
@@ -380,7 +385,7 @@ export default async function renderBrowse(req: BrowseRequest) {
   // filter is active.
 
   return (
-    <>
+    <QuestionLangDefaultProvider value={examLangDefault}>
       <AppHeader />
       <main className="mx-auto max-w-7xl px-4 pb-28 pt-8 sm:px-6 sm:pb-32">
         {!filtered && (
@@ -538,7 +543,7 @@ export default async function renderBrowse(req: BrowseRequest) {
         }}
       />
       <Footer />
-    </>
+    </QuestionLangDefaultProvider>
   );
 }
 

@@ -24,10 +24,12 @@ export type PlanRow = {
   sort_order: number;
   countries?: string[] | null;
   ends_on?: string | null;
+  payment_provider?: string | null;
+  paddle_product_id?: string | null;
 };
 
 export const PLAN_COLUMNS =
-  "id, label, blurb, perks, url_key, amount_paise, currency, site, duration_days, scope, active, sort_order, countries, ends_on";
+  "id, label, blurb, perks, url_key, amount_paise, currency, site, duration_days, scope, active, sort_order, countries, ends_on, payment_provider, paddle_product_id";
 
 export function rowToPlan(r: PlanRow): Plan {
   const currency: PlanCurrency = r.currency === "USD" ? "USD" : "INR";
@@ -50,6 +52,9 @@ export function rowToPlan(r: PlanRow): Plan {
     sortOrder: r.sort_order,
     countries: r.countries ?? null,
     endsOn: r.ends_on ?? null,
+    // An unknown value sells through Razorpay, the gateway every plan used before 0271.
+    paymentProvider: r.payment_provider === "paddle" ? "paddle" : "razorpay",
+    paddleProductId: r.paddle_product_id ?? null,
   };
 }
 
@@ -115,7 +120,8 @@ const listActivePlansRemembered = unstable_cache(
     if (!limits) throw new Error("free_limits unreadable");
     return ((data ?? []) as PlanRow[]).map((r) => withLiveLimits(rowToPlan(r), limits));
   },
-  ["active-plans-v3"],
+  // v4 (0271): plans carry their gateway, so a copy remembered before it would sell a Paddle plan through Razorpay.
+  ["active-plans-v4"],
   { revalidate: 86400, tags: [PLANS_CACHE_TAG] }
 );
 

@@ -209,7 +209,7 @@ export default function PremiumControl({
             <DialogDescription>
               {toRevoke
                 ? paid
-                  ? `${name} paid for ${scopeLabel(toRevoke.scope)} through Razorpay. Revoking ends it now but does not refund the payment. To refund, do it in Razorpay: a full refund ends the pass by itself.`
+                  ? `${name} paid for ${scopeLabel(toRevoke.scope)} online. Revoking ends it now but does not refund the payment. To refund, do it in Razorpay, or in Paddle for a dollar pass bought on intl: a full refund ends the pass by itself.`
                   : `${name} loses ${scopeLabel(toRevoke.scope)} straight away.`
                 : null}
             </DialogDescription>

@@ -117,10 +117,11 @@ describe("buildExamHome", () => {
 });
 
 describe("examHomeDescription", () => {
-  // IPMAT Indore is "some" (89% solved, 2026-10-26); answersPhrase's own test
+  // MPSC State Services Prelims is "some" (63% solved, 2026-10-26; IPMAT Indore
+  // reached "all" 2026-11-17); answersPhrase's own test
   // covers "none", which no exam declares any more.
   it("promises worked solutions for some where only some questions carry them", () => {
-    const m = buildExamHome(getExamBySlug("ipmat-indore")!, [], {
+    const m = buildExamHome(getExamBySlug("mpsc-state-services-prelims")!, [], {
       examId: null,
       totalPublicQuestions: 670,
       hasShippedNotes: false,
@@ -131,7 +132,7 @@ describe("examHomeDescription", () => {
   });
 
   it("lists 'worked solutions for some' as one item when there are several extras", () => {
-    const withNotes = { ...getExamBySlug("ipmat-indore")!, notesPath: "/notes/ipmat-indore" };
+    const withNotes = { ...getExamBySlug("mpsc-state-services-prelims")!, notesPath: "/notes/mpsc-state-services-prelims" };
     const m = buildExamHome(withNotes, [], {
       examId: null,
       totalPublicQuestions: 670,

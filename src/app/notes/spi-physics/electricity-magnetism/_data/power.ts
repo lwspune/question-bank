@@ -6,7 +6,7 @@ export const SPI_EM_POWER_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Electric power is the energy used each second, P = VI; energy is power times time, billed in kilowatt hours; and a house circuit is kept safe by a fuse, a main switch and an earth wire.",
   whyItMatters:
-    "Eight questions in the bank, seven EASY and one MODERATE. Five are about power and energy (P = VI, a halved voltage, a bulb's energy in a minute, the kWh unit, why LEDs are preferred) and three are house wiring: the fuse, what a fuse wire must be, and what the main switch cuts. Units cost most of the marks: milliamperes, minutes and watt hours.",
+    "Nine questions in the bank, seven EASY and two MODERATE, one from the 2026 paper. Six are about power and energy (P = VI, a halved voltage, a bulb's energy in a minute, the heat in two resistors in series, the kWh unit, why LEDs are preferred) and three are house wiring: the fuse, what a fuse wire must be, and what the main switch cuts. Units cost most of the marks: milliamperes, minutes and watt hours.",
   concepts: [
     {
       kind: "formula" as const,

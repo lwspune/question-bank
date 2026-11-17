@@ -4,7 +4,7 @@ export const SPI_TRIANGLES_CHAPTER: ChapterNote = {
   chapterName: "Triangles",
   title: "Triangles: SPI Mathematics",
   intro:
-    "Triangles has 34 questions in the SPI bank, all from sample papers, a practice paper and LWS mock tests, and 26 of them are EASY. " +
+    "Triangles has 35 questions in the SPI bank, one from the 2026 paper and the rest from sample papers, a practice paper and LWS mock tests, and 27 of them are EASY. " +
     "Almost every one is a single step: an angle sum, a congruence rule named, a side found from a ratio or a square root. " +
     "Marks are lost on order rather than arithmetic: which corner matches which, which angle sits between two sides, which side is the hypotenuse, and whether a ratio should be squared.",
   cardBlurb:

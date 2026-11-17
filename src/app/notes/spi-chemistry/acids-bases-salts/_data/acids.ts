@@ -6,7 +6,7 @@ export const SPI_AB_ACIDS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An acid gives hydrogen ions in water and a base gives hydroxide ions; how fully they split decides their strength, and an indicator shows which one you have.",
   whyItMatters:
-    "Three questions in the bank, all EASY: what an acid contains that a base does not, the name for an acid that splits completely in water, and the indicator used most in the laboratory. Each is one definition, so the only risk is mixing up two similar words.",
+    "Four questions in the bank, all EASY, one from the 2026 paper: what an acid contains that a base does not, the name for an acid that splits completely in water, the indicator used most in the laboratory, and what a common salt solution does to litmus. Each is one definition, so the only risk is mixing up two similar words.",
   concepts: [
     {
       kind: "formula" as const,

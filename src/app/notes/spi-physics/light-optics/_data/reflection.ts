@@ -6,7 +6,7 @@ export const SPI_LO_REFLECTION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Light is a transverse electromagnetic wave that travels in straight lines, and when it bounces off a mirror the angle of reflection always equals the angle of incidence.",
   whyItMatters:
-    "Six questions in the bank, all EASY: what kind of wave light is, what a bundle of rays is called, whether the angle of reflection always equals the angle of incidence, and twice which mirror gives the widest view. Each is one fact, so a short table and the two laws of reflection cover the page.",
+    "Eight questions in the bank, seven EASY and one MODERATE, two from the 2026 paper: what kind of wave light is, what a bundle of rays is called, whether the angle of reflection always equals the angle of incidence, which mirror gives the widest view (twice) or a full image of a tall building, and where a concave mirror puts the image of an object at its focus. Each is one fact, so a short table and the two laws of reflection cover the page.",
   concepts: [
     {
       kind: "reference" as const,

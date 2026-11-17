@@ -6,7 +6,7 @@ export const SPI_QE_SOLVING_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A root is a value of x that makes the equation true; you find the roots by splitting the middle term or by the quadratic formula.",
   whyItMatters:
-    "Four questions in the bank, three EASY and one MODERATE: check which equation has a given root, factorise, or use the formula. Every option is a pair of numbers, so a sign slip in one factor lands you on a printed wrong pair.",
+    "Five questions in the bank, four EASY and one MODERATE, one from the 2026 paper: check which equation has a given root or find a coefficient from one, factorise, or use the formula. Every option is a pair of numbers, so a sign slip in one factor lands you on a printed wrong pair.",
   concepts: [
     {
       kind: "formula" as const,

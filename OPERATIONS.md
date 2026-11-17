@@ -153,6 +153,40 @@ The secret is read at request time via `process.env.SYNC_SHARED_SECRET`, so a re
 
 Checkout is dormant until 4 env vars are set in Vercel + `.env.local`: `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `NEXT_PUBLIC_RAZORPAY_KEY_ID` (= key id, publishable for the client), `RAZORPAY_WEBHOOK_SECRET`. Without them `/api/billing/order` returns 503 (the `/pricing` Buy button shows "not configured"). Create a webhook in the Razorpay dashboard → `https://www.pyqvault.com/api/billing/webhook`, subscribe to **`order.paid`** (grants the pass) **and `refund.processed`** (a FULL refund revokes it — the refund policy promises this; a partial refund leaves the pass alone), secret = `RAZORPAY_WEBHOOK_SECRET`. **Payment capture must be automatic** (Settings → Payment capture): an uncaptured order never reaches `paid`, so neither grant path fires. If `refund.processed` is ever missed, revoke by hand in `/dashboard/entitlements`. **A missed `order.paid` is caught by the payment check (2026-11-15):** `.github/workflows/billing-reconcile.yml` runs `npm run billing:reconcile -- --apply` every 30 minutes, grants any captured payment from the last 3 days that no pass or ebook row names (by the webhook's own rule), and emails the platform admins when it does. It needs GitHub secrets `RAZORPAY_KEY_ID` + `RAZORPAY_KEY_SECRET` (the same pair as Vercel). An email from it means the webhook missed a payment: check the webhook's settings and delivery log. To look further back by hand: `npm run billing:reconcile -- --days=30` (dry run). **Test mode needs no KYC**; KYC gates only live keys. Going live = swap the 4 vars to `rzp_live_…` values + repoint/add a live webhook (no code change). **Prices, lengths, perks and which passes are on sale are edited at `/dashboard/pricing`** (superadmin; `public.plans`, migration 0121) — no deploy. A price change never affects a checkout already open (the order notes carry the price as sold) or a pass already bought. A pass is taken off sale, never deleted. **The free-mock limit (migration 0120) is switched on from the same page:** tick the box, set the number, Save. Switching on stamps the date it counts from (mocks started earlier do not use a free slot); editing the number keeps that date. Every public page quotes the live number, or says nothing while it is off, so there is no ordering rule between deploy and switch-on. As of 2026-06-01 the account is **not yet created** — see [[project-paywall-build]].
 
+### Billing (Paddle): the intl dollar passes, going live
+
+**What it is (2026-11-17, migration 0271).** Paddle is the Merchant of Record for plans whose `plans.payment_provider = 'paddle'`: it sells the pass in its own name and collects the buyer's sales tax (EU VAT is owed from the first sale to an EU consumer). Everything in rupees stays on Razorpay. The order route picks the gateway from the plan the buyer's country chose, so an Indian visitor on intl still pays the rupee IMAT price through Razorpay. A Paddle pass is stored as a paid pass (`source = 'razorpay'`, which every report reads as "paid") with `payment_provider = 'paddle'` and the transaction id (`txn_...`) in `provider_ref`. Code: `src/lib/billing/paddle.ts`, `/api/billing/paddle/{verify,webhook}`, `src/components/billing/paddleCheckout.ts`.
+
+**Env (Vercel + `.env.local`; the payment check also needs the first two as GitHub secrets):**
+
+| Name | What |
+|---|---|
+| `PADDLE_API_KEY` | Server key. Permissions: transaction read/write, customer read/write, price read, product read, adjustment read. **Keys expire** (the sandbox one on 2027-02-15): set a reminder to rotate. |
+| `NEXT_PUBLIC_PADDLE_CLIENT_TOKEN` | Browser token for Paddle.js. `test_...` = sandbox, `live_...` = production. The server uses the SAME environment as this token, so the two can never point at different Paddles. |
+| `PADDLE_WEBHOOK_SECRET` | The notification destination's secret key. |
+| `PADDLE_ENV` | Informational only (`sandbox` / `production`). |
+
+**Paddle dashboard settings (do them in sandbox AND live):**
+1. Catalog → a product per pass (IMAT: "IMAT Premium Pass", tax category Standard digital goods). Its `pro_...` id goes in `plans.paddle_product_id`. A catalogue PRICE is optional: our server sends the plan's price with each transaction, so prices stay in `/dashboard/pricing`.
+2. Checkout → Website approval: `intl.pyqvault.com` (Paddle reviews live domains; sandbox approves at once).
+3. Checkout settings → Default payment link: `https://intl.pyqvault.com/pricing` (the pricing page opens `?_ptxn=` links).
+4. Developer tools → Notifications → New destination: URL `https://intl.pyqvault.com/api/billing/paddle/webhook`, events `transaction.completed`, `transaction.paid`, `adjustment.created`, `adjustment.updated`. Its secret key is `PADDLE_WEBHOOK_SECRET`.
+
+**Switch a plan to Paddle (after the live account is verified and the domain approved), and back:**
+```sql
+-- go live (product id from the LIVE dashboard, not the sandbox one)
+update public.plans set payment_provider = 'paddle', paddle_product_id = 'pro_...' where id = 'intl-pass-6m';
+-- roll back: nothing else changes, checkouts open Razorpay again
+update public.plans set payment_provider = 'razorpay' where id = 'intl-pass-6m';
+```
+Then save any plan at `/dashboard/pricing` (or wait a day) so the cached plan list on /browse refreshes. The Terms switch from "Razorpay or Paddle" to "Paddle" for dollar orders by themselves once every dollar plan is Paddle's (`paymentTerms`).
+
+**Refunds:** refund in the Paddle dashboard (Transactions → the order → Refund). Paddle sends `adjustment.updated`, and an approved FULL refund or a chargeback ends the pass (a partial refund does not), as Razorpay's full refund does.
+
+**If a payment was taken but no pass appeared:** the 30-minute payment check (`npm run billing:reconcile`, `billing-reconcile.yml`) lists Paddle's paid transactions too and grants any with no pass row. Run it by hand for a dry run.
+
+**Security rule worth knowing:** Paddle.js can open a checkout from the BROWSER with its own `custom_data`, so a grant only trusts a transaction with `origin = 'api'` and a one-off `custom` price, the two marks only our server (with the secret key) can make.
+
 ### Outbound email (Resend) — the mock-recommendation campaign
 
 **Provider:** Resend, account `official.lwspune`. Domain `pyqvault.com` **Verified**, region Tokyo (ap-northeast-1), DNS auto-configured at GoDaddy. Free tier = **100 emails/day, 3,000/month, 2 req/sec** (the 600ms throttle in [resend.ts](src/lib/email/resend.ts) is sized to that rate limit). Env: `RESEND_API_KEY` + `EMAIL_FROM` (`"PYQ Vault <mocks@pyqvault.com>"`), in THREE places: `.env.local` (hand-run scripts), GitHub repo secrets (the crons) **and Vercel Production** — the `/contact` alert to `hello@pyqvault.com` is sent by a ROUTE (`/api/contact` → `notifyNewContactMessage`), so it needs them on Vercel. They were missing there until 2026-10-06 and every contact alert silently never sent: the message row still saved and the sender still saw success, so only Resend's log (no send to `hello@` at all) showed it. A failed alert logs `contact notification not sent` in Vercel → Logs. Missing either ⇒ a script fails fast before touching an address.

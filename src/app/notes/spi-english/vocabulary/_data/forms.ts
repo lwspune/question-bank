@@ -6,7 +6,7 @@ export const SPI_VO_FORMS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "These questions test the form of a word: how it is spelt, which single word replaces a phrase, and which pairs of words English always uses together.",
   whyItMatters:
-    "Ten questions in the bank: five ask you to spot the misspelt word, four ask for one word that replaces a phrase, and one asks which pair of words does not belong together. Nine are EASY, so these are marks to collect quickly once the patterns are learnt.",
+    "Thirteen questions in the bank, three of them from the 2026 paper: seven are about spelling, five ask for one word that replaces a phrase, and one asks which pair of words does not belong together. Eleven are EASY, so these are marks to collect quickly once the patterns are learnt.",
   concepts: [
     {
       kind: "reference" as const,

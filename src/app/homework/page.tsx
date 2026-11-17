@@ -3,7 +3,7 @@ import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { listPublishedPlans } from "@/lib/homework/query";
-import { groupPlansByExam, homeworkExamLabel, homeworkSideNav } from "@/lib/homework/chapters";
+import { groupPlansByExam, homeworkExamLabel, homeworkSideNav, wwwPlans } from "@/lib/homework/chapters";
 import { slugify } from "@/lib/board/query";
 import PlanCard from "./_components/PlanCard";
 
@@ -24,7 +24,8 @@ export const metadata: Metadata = {
  * each plan ask the browser.
  */
 export default async function HomeworkIndex() {
-  const plans = await listPublishedPlans(createSupabaseAnonClient());
+  // www lists its own exams; an intl exam's plans are on intl (2026-11-17).
+  const plans = wwwPlans(await listPublishedPlans(createSupabaseAnonClient()));
   const groups = groupPlansByExam(plans);
 
   return (

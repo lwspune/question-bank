@@ -50,9 +50,13 @@ const ALT_LANGS: readonly AltLang[] = ["mr", "hi"];
  * The choice before a reader has made one. Marathi readers are the MPSC and MH
  * SSC audience, so "both" (the booklet's order). Most SSC readers here read
  * English, so a Hindi page opens in English with Hindi one tap away (owner,
- * 2026-10-20). A choice the reader makes is stored and wins everywhere.
+ * 2026-10-20). An exam can name its own default instead (`examDefault`, from
+ * the registry's `defaultLang`): UP Board opens in Hindi, because its readers
+ * are Hindi-medium (owner, 2026-11-17). A choice the reader makes is stored and
+ * wins everywhere.
  */
-export function defaultLangFor(alt: AltLang | null | undefined): QuestionLang {
+export function defaultLangFor(alt: AltLang | null | undefined, examDefault?: QuestionLang | null): QuestionLang {
+  if (examDefault) return examDefault;
   return alt === "hi" ? "en" : "both";
 }
 

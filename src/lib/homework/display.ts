@@ -2,6 +2,7 @@
  * What the homework page shows for a day. Pure.
  * Spec: tests/homework-display.test.ts.
  */
+import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 
 /** The plan builder's note, cut to a chip ("asked 6×"). */
 export function shortNote(note: string): string {
@@ -71,8 +72,9 @@ type PlanWording ={ asker: string; questions: string; papers: string; answers: s
 /**
  * Plans whose papers no board sets (2026-11-04 on): UPSC sets NDA and CDS, the
  * State CET Cell sets MHT-CET (2026-11-06; its plans said "board" until then),
- * SSC sets SSC CGL (2026-11-06) and SSC CHSL and CPO (2026-11-16), NTA sets JEE Mains (2026-11-06).
- * UPSC sets CAPF (AC) (2026-11-16).
+ * SSC sets SSC CGL (2026-11-06) and SSC CHSL and CPO (2026-11-16), NTA sets JEE Mains (2026-11-06)
+ * and NEET (2026-11-17; its plans said "board" from 2026-11-14 until then).
+ * UPSC sets CAPF (AC) (2026-11-16). Italy's university ministry sets IMAT (2026-11-17).
  */
 const NOT_BOARD: Readonly<Record<string, PlanWording>> = {
   NDA: { asker: "UPSC", questions: "past questions", papers: "Past", answers: "worked solutions" },
@@ -83,7 +85,9 @@ const NOT_BOARD: Readonly<Record<string, PlanWording>> = {
   "SSC CHSL": { asker: "SSC", questions: "past questions", papers: "Past", answers: "worked solutions" },
   "SSC CPO": { asker: "SSC", questions: "past questions", papers: "Past", answers: "worked solutions" },
   "JEE Mains": { asker: "NTA", questions: "past questions", papers: "Past", answers: "worked solutions" },
+  NEET: { asker: "NTA", questions: "past questions", papers: "Past", answers: "worked solutions" },
   "UPSC CAPF (AC)": { asker: "UPSC", questions: "past questions", papers: "Past", answers: "worked solutions" },
+  IMAT: { asker: "the ministry", questions: "past questions", papers: "Past", answers: "worked solutions" },
 };
 
 const BOARD: PlanWording = { asker: "the board", questions: "board questions", papers: "Board", answers: "model answers" };
@@ -100,4 +104,13 @@ export function isBoardPlanExam(examName: string | undefined): boolean {
  */
 export function planWording(examName: string): PlanWording {
   return NOT_BOARD[examName] ?? BOARD;
+}
+
+/**
+ * Whether a plan's days come as a file to download (2026-11-17). An
+ * international exam's homework is on screen only (owner): its pass sells no
+ * downloads, and the download rules are www's Premium Pass.
+ */
+export function homeworkDownloads(examName: string): boolean {
+  return EXAM_REGISTRY.find((e) => e.examName === examName)?.site !== "intl";
 }

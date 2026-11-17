@@ -16,6 +16,7 @@ import type { ChapterTopPyqs } from "@/lib/homework/chapterTop";
 import { useBoardReveal } from "@/app/board/useBoardReveal";
 import HomeworkSlotList from "@/app/homework/_components/HomeworkSlotList";
 import PaperDownload from "@/app/mock/_components/PaperDownload";
+import { homeworkDownloads } from "@/lib/homework/display";
 import type { RepeatLineFrom } from "@/lib/activity/clientEvents";
 
 export default function NotesTopPyqs({
@@ -63,11 +64,14 @@ export default function NotesTopPyqs({
             and in which papers.
           </p>
         </div>
-        <PaperDownload
-          slug={`top-pyqs-${top.planSlug}`}
-          paperTitle={top.title}
-          topPyqs={{ plan: top.planSlug, chapterId: top.chapterId }}
-        />
+        {/* An intl exam's homework is on screen only (2026-11-17). */}
+        {homeworkDownloads(examName) && (
+          <PaperDownload
+            slug={`top-pyqs-${top.planSlug}`}
+            paperTitle={top.title}
+            topPyqs={{ plan: top.planSlug, chapterId: top.chapterId }}
+          />
+        )}
       </div>
       <PresentRegistry>
         <HomeworkSlotList

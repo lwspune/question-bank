@@ -6,7 +6,7 @@ export const SPI_AT_TABLE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The modern periodic table puts the elements in order of atomic number, in 7 periods and 18 groups, so that size and metallic character change in a pattern you can predict.",
   whyItMatters:
-    "Seven questions in the bank, three EASY and four MODERATE, one of them from the 2022 paper: Newlands' octaves, the number of periods, which elements share a period, the shell that period 2 fills, the group of an element from its chloride, and the trends in size and metallic character.",
+    "Eight questions in the bank, four EASY and four MODERATE, one from the 2022 paper and one from the 2026 paper: Newlands' octaves, the number of periods, which elements share a period, the shell that period 2 fills, the group of an element from its chloride, the trends in size and metallic character, and what hydrogen resembles when it loses its electron.",
   concepts: [
     {
       kind: "reference" as const,

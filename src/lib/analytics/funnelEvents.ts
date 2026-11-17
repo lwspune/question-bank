@@ -240,7 +240,8 @@ export const FUNNEL_EVENTS = [
   "score_calc_alert",
   /**
    * The header's Play button was tapped (2026-11-16); prop: from (the section
-   * the visitor was in). The way in to /play, the calculation game.
+   * the visitor was in). The way in to /play, the games hub (2026-11-17; the
+   * calculation game alone before that).
    */
   "play_link_click",
   /**
@@ -249,6 +250,13 @@ export const FUNNEL_EVENTS = [
    * are also user_activity play_round, migration 0267).
    */
   "play_round_end",
+  /**
+   * An English word game finished (2026-11-17), signed in or not; props: game
+   * (word_builder | daily_word), signedIn, and correct + wrong (a Word Builder
+   * round's first tries) or solved + guesses (a Daily Word). Signed-in ones are
+   * also user_activity play_round with a game field.
+   */
+  "word_game_end",
   /**
    * A Google sign-in on /login or /signup where the server could not see the
    * new session at first (2026-11-16, lib/auth/oneTap nextStepAfterSessionCheck);

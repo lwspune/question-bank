@@ -13,6 +13,8 @@ import { needsMobile } from "@/lib/profile/mobile";
 import { resultPageAsk } from "@/lib/profile/push";
 import { drillHref } from "@/lib/drill/from";
 import AttemptReviewList from "@/app/mock/_components/AttemptReviewList";
+import { QuestionLangDefaultProvider } from "@/lib/i18n/QuestionLangDefault";
+import { examDefaultLang, getExamByName } from "@/lib/exam/examContext";
 import MobileGate from "./MobileGate";
 import MockFeedback from "./MockFeedback";
 import ShareResult from "./ShareResult";
@@ -229,11 +231,13 @@ export default async function MockResultPage(props: { params: Promise<Params> })
 
         <h2 className="mt-8 text-lg font-semibold">Review your answers</h2>
         <ReviewFilterShell items={res.review!.items.map((i) => ({ position: i.position, verdict: i.verdict, partial: i.partial }))}>
-          <AttemptReviewList
-            items={res.review!.items}
-            supabaseUrl={supabaseUrl}
-            pace={{ durationSecs: mock.durationSecs, totalQuestions: mock.totalQuestions }}
-          />
+          <QuestionLangDefaultProvider value={examDefaultLang(getExamByName(mock.examName))}>
+            <AttemptReviewList
+              items={res.review!.items}
+              supabaseUrl={supabaseUrl}
+              pace={{ durationSecs: mock.durationSecs, totalQuestions: mock.totalQuestions }}
+            />
+          </QuestionLangDefaultProvider>
         </ReviewFilterShell>
       </main>
     </>

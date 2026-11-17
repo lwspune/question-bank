@@ -6,7 +6,7 @@ export const SPI_M3_RECASTING_NOTE: SubtopicNote = {
   oneLineDefinition:
     "When a solid is melted and remade, or dropped into water, its volume stays the same: equate the old volume to the new one and solve.",
   whyItMatters:
-    "Six questions in the bank, five MODERATE and one EASY, one of them from the 2022 paper. Coins from a cuboid or a cylinder, spheres from a cylinder, and the rise of water when a ball is dropped in. Each is one division of two volumes from the earlier pages.",
+    "Seven questions in the bank, six MODERATE and one EASY, one from the 2022 paper and one from the 2026 paper. Coins from a cuboid or a cylinder, spheres from a cylinder, ice-cream cones from a brick, and the rise of water when a ball is dropped in. Each is one division of two volumes from the earlier pages.",
   concepts: [
     {
       kind: "formula" as const,

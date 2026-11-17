@@ -6,7 +6,7 @@ export const SPI_TG_IDENTITIES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An identity is an equation that holds for every angle. Three of them, all from Pythagoras, turn long expressions into a single number or a single ratio.",
   whyItMatters:
-    "Fourteen questions in the bank, nine EASY and five MODERATE. Four rest on sin²θ + cos²θ = 1, five on its sec and tan or cosec and cot forms, two simplify a square root, and three use an identity as a second equation or to remove the angle. Five of the chapter's nine MODERATE questions are on this page.",
+    "Seventeen questions in the bank, ten EASY and seven MODERATE, three from the 2026 paper. Five rest on sin²θ + cos²θ = 1, six on its sec and tan or cosec and cot forms, two simplify a square root, and four use an identity as a second equation or to remove the angle. Seven of the chapter's twelve MODERATE questions are on this page.",
   concepts: [
     {
       kind: "formula" as const,

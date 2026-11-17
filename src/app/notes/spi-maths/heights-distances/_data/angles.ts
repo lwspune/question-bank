@@ -6,7 +6,7 @@ export const SPI_HD_ANGLES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An angle of elevation is how far you look up from the horizontal to see an object, an angle of depression is how far you look down, and tan links the height to the distance along the ground.",
   whyItMatters:
-    "Eleven questions in the bank, all EASY. Ten are one right triangle with an upright height and flat ground, solved with tan: find a height, a distance or the angle. Five of those are a pole and its shadow under the sun, and the eleventh asks for the instrument that measures these angles.",
+    "Thirteen questions in the bank, all EASY, two from the 2026 paper. Twelve are one right triangle with an upright height and flat ground, solved with tan: find a height, a distance or the angle. Five of those are a pole and its shadow under the sun, and the last asks for the instrument that measures these angles.",
   concepts: [
     {
       kind: "formula" as const,
