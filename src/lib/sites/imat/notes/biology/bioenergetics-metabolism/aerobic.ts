@@ -119,6 +119,7 @@ export const IMAT_BIO_BEM_AEROBIC_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-bem-chemiosmosis",
+      visualizationSlug: "imat-chemiosmosis",
       name: "Chemiosmosis: the proton gradient drives ATP synthase",
       intuition:
         "The energy released along the chain is used to pump protons out of the matrix into the narrow space between the two membranes. The protons then flow back through ATP synthase, like water through a turbine, and the turning enzyme joins ADP and phosphate. Peter Mitchell called this chemiosmosis, and it is how most ATP on Earth is made.",

@@ -11,6 +11,7 @@ export const IMAT_REA_PES_ECONOMICS_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-pes-markets",
+      visualizationSlug: "imat-supply-demand",
       name: "Supply, demand and market prices",
       intuition:
         "In a market, buyers want more of a good when it is cheap and sellers offer more when it is expensive. The price settles where the two amounts match: the equilibrium. Anything that shifts the buyers' or the sellers' plans moves that price, in a direction you can work out.",

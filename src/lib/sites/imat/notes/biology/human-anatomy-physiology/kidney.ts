@@ -16,6 +16,7 @@ export const IMAT_BIO_HAP_KIDNEY_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-hap-nephron",
+      visualizationSlug: "hp-nephron-schematic",
       name: "The nephron: filtration, reabsorption and secretion",
       intuition:
         "The kidney works by throwing almost everything out and then taking back what it wants. High pressure squeezes a large volume of fluid out of the blood; the tubule then reclaims the glucose, salts and most of the water, and what is left becomes urine.",

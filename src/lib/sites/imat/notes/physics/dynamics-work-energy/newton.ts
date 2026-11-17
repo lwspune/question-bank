@@ -107,6 +107,7 @@ export const IMAT_PHY_DYN_NEWTON_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-dyn-second-law",
+      visualizationSlug: "lmf-free-body-diagram",
       name: "Newton's second law: resultant force equals mass times acceleration",
       intuition:
         "Push a trolley harder and it speeds up faster; load it with more mass and the same push speeds it up less. The acceleration follows the RESULTANT force, the sum of all the forces, not any single one. A constant resultant force gives a constant acceleration, so the velocity keeps rising steadily.",
@@ -171,6 +172,7 @@ export const IMAT_PHY_DYN_NEWTON_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-dyn-third-law",
+      visualizationSlug: "lmf-action-reaction-pair",
       name: "Newton's third law: action and reaction pairs",
       intuition:
         "You cannot push on something without it pushing back on you: lean on a wall and the wall holds you up. Every force is one half of an interaction between two bodies. The two halves are equal in size, opposite in direction, and act on different bodies, which is why they never cancel each other.",

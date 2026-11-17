@@ -11,6 +11,7 @@ export const IMAT_LOG_DED_SYLLOGISMS_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-ded-venn",
+      visualizationSlug: "imat-syllogism-venn",
       name: "Drawing all, some and no statements as Venn diagrams",
       intuition:
         "Each group is a circle, and each statement tells you something about one region of the picture. \"All A are B\" says the part of A outside B is empty. \"Some A are B\" says the overlap has at least one member. Once every statement is drawn, you read conclusions from the regions, not from the words.",

@@ -16,6 +16,7 @@ export const IMAT_BIO_HAP_BREATHING_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-hap-airways",
+      visualizationSlug: "hp-alveolus-gas-exchange",
       name: "The airway from the nose to the alveoli",
       intuition:
         "The upper airways clean, warm and moisten the air and are held open by cartilage. Only at the very end, in the alveoli, is the wall thin enough for gases to cross. Everything before that is just a pipe.",
@@ -116,6 +117,7 @@ export const IMAT_BIO_HAP_BREATHING_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-hap-minute-ventilation",
+      visualizationSlug: "hp-lung-volumes",
       name: "Minute ventilation and dead space",
       intuition:
         "The air you move each minute is the size of each breath times the number of breaths. But the last part of each breath stays in the trachea and bronchi, where no exchange happens, so only the rest reaches the alveoli.",
@@ -171,6 +173,7 @@ export const IMAT_BIO_HAP_BREATHING_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-hap-gas-transport",
+      visualizationSlug: "imat-oxygen-dissociation",
       name: "Carrying oxygen and carbon dioxide: haemoglobin and the Bohr effect",
       intuition:
         "Haemoglobin must grab oxygen in the lungs and let it go in the tissues. Its grip depends on conditions: where carbon dioxide, acid and heat are high (an active muscle), it loosens its grip and releases more oxygen, exactly where it is needed.",

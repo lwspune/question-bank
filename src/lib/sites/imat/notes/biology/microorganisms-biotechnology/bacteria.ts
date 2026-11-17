@@ -123,6 +123,7 @@ export const IMAT_BIO_MBT_BACTERIA_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-mbt-growth",
+      visualizationSlug: "imat-bacterial-growth-curve",
       name: "Binary fission and the bacterial growth curve",
       intuition:
         "In binary fission one cell copies its chromosome and splits into two identical cells. If every cell divides once per doubling time, the population multiplies by 2 each time: 1, 2, 4, 8, 16. That is exponential growth, so after n generations you multiply by \\(2^n\\), not by n. Growth stops when food runs out and waste builds up.",

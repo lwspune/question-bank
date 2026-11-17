@@ -11,6 +11,7 @@ export const IMAT_PHY_OPT_LENSES_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-opt-thin-lens",
+      visualizationSlug: "opt-convex-lens-rays",
       name: "Converging and diverging lenses and the thin lens equation",
       intuition:
         "A converging (convex) lens is thicker in the middle; it bends parallel rays together to a real focus. A diverging (concave) lens is thinner in the middle; it spreads them out as if they came from a focus in front of it. One equation links the object distance, the image distance and the focal length, and the signs tell you whether the image is real or virtual.",
@@ -127,6 +128,7 @@ export const IMAT_PHY_OPT_LENSES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-opt-eye",
+      visualizationSlug: "opt-human-eye",
       name: "The human eye, short sight and long sight",
       intuition:
         "The eye is a converging lens system that throws a real, inverted image onto the retina. Most of the bending happens at the cornea; the lens fine-tunes it by changing shape. If the eyeball is too long or too short for its lenses, the image lands in front of or behind the retina, and glasses shift it back.",

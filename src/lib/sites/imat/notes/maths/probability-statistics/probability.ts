@@ -11,6 +11,7 @@ export const IMAT_MAT_PST_PROBABILITY_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-pst-equally-likely",
+      visualizationSlug: "dice-sum-grid",
       name: "Probability from equally likely outcomes, and the complement",
       intuition:
         "When every outcome is equally likely, probability is a fraction: how many outcomes you want out of how many there are. With two dice it pays to picture the 6 by 6 grid of 36 ordered pairs, because a 2 then a 5 is a different outcome from a 5 then a 2. When the event you want is messy, count what you do not want and subtract from 1.",
@@ -62,6 +63,7 @@ export const IMAT_MAT_PST_PROBABILITY_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-pst-addition",
+      visualizationSlug: "venn-two-events",
       name: "The addition rule for 'A or B'",
       intuition:
         "Adding \\(P(A)\\) and \\(P(B)\\) counts the overlap, where both happen, twice, so you take it away once. Picture two overlapping circles in a box: the region covered by either circle is the two circles minus the lens they share. If the circles do not overlap, nothing is subtracted.",
@@ -113,6 +115,7 @@ export const IMAT_MAT_PST_PROBABILITY_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-pst-independent",
+      visualizationSlug: "coin-toss-tree",
       name: "Independent events and tree diagrams (with replacement)",
       intuition:
         "Two events are independent when one happening does not change the chance of the other: a coin has no memory. Then the chance of both is the product. A tree diagram draws each stage as branches; you multiply along a path and add the paths that give the result you want.",

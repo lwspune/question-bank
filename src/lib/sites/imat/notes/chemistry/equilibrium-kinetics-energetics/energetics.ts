@@ -68,6 +68,7 @@ export const IMAT_CHE_EQK_ENERGETICS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-eqk-energy-profile",
+      visualizationSlug: "imat-energy-profile",
       name: "Energy profiles and the activation energy",
       intuition:
         "Even an exothermic reaction does not simply run downhill. Bonds must first start to break, which needs energy, so the reactants have to climb over an energy barrier before they can fall to the products. The height of that barrier, measured from the reactants, is the activation energy.",

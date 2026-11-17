@@ -11,6 +11,7 @@ export const IMAT_CHE_PTB_ENERGY_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-ptb-ionisation-energy",
+      visualizationSlug: "imat-ionisation-jumps",
       name: "First and successive ionisation energies",
       intuition:
         "Ionisation energy is the price of pulling an electron off an atom. It is high when the electron is close to a strongly charged nucleus and low when it is far away and shielded by inner shells. That makes it the mirror image of atomic radius: small atoms hold their electrons tightly.",
@@ -169,6 +170,7 @@ export const IMAT_CHE_PTB_ENERGY_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-ptb-trend-summary",
+      visualizationSlug: "atom-periodic-trends",
       name: "Summary of the periodic trends across a period and down a group",
       intuition:
         "Every trend in this chapter comes from two causes. Across a period, the nuclear charge rises while the shell stays the same, so electrons are held more tightly. Down a group, a new shell is added each time, so the outer electrons are further away and more shielded. Work out which cause applies, and the direction of any trend follows.",

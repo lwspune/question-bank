@@ -59,6 +59,7 @@ export const IMAT_BIO_CDR_MEIOSIS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-cdr-meiosis-numbers",
+      visualizationSlug: "imat-meiosis-counts",
       name: "Chromosome number (n) and DNA content (c) at each stage of meiosis",
       intuition:
         "Track two numbers separately. The chromosome number halves once, in meiosis I. The DNA content doubles once, in S phase, and then halves twice. Fertilisation then joins two haploid gametes and restores the diploid number.",

@@ -11,6 +11,7 @@ export const IMAT_PHY_OSW_WAVES_SOUND_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-osw-wave-basics",
+      visualizationSlug: "osc-wave-types",
       name: "Transverse and longitudinal waves, and v = fλ",
       intuition:
         "Flick one end of a rope and a bump runs along it, but each bit of rope only moves up and down and comes back. A wave moves energy, not material. In one period the source sends out one wavelength, so the wave travels one wavelength per period: speed equals frequency times wavelength.",
@@ -65,6 +66,7 @@ export const IMAT_PHY_OSW_WAVES_SOUND_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-osw-sound",
+      visualizationSlug: "echo-geometry",
       name: "Sound: speed, pitch, loudness and echoes",
       intuition:
         "Sound is a chain of squeezes and stretches passed from molecule to molecule, so it needs something to travel through. It is fastest where the particles are tightly linked, in solids, and slowest in gases. An echo is the same sound returning from a surface, and it has to go there and back.",

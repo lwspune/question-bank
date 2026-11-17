@@ -64,6 +64,7 @@ export const IMAT_PHY_ELE_CURRENT_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-ele-ohm",
+      visualizationSlug: "iv-characteristic-graph",
       name: "Resistance and Ohm's law",
       intuition:
         "A voltage pushes charge round a circuit; resistance holds it back. For a metal wire at a steady temperature, double the push and you double the flow: the current is proportional to the voltage. That straight-line rule is Ohm's law, and the slope tells you the resistance.",
@@ -118,6 +119,7 @@ export const IMAT_PHY_ELE_CURRENT_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-ele-resistivity",
+      visualizationSlug: "resistance-wire-geometry",
       name: "Resistivity: how a wire's length and thickness set its resistance",
       intuition:
         "A longer wire is like a longer corridor: the charges have further to push through, so the resistance grows in proportion to the length. A thicker wire is like a wider corridor: more paths side by side, so the resistance falls as the cross-section area grows. The material itself sets the starting value, its resistivity.",

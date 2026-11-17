@@ -62,6 +62,7 @@ export const IMAT_CHE_BND_STRUCTURES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-bnd-giant",
+      visualizationSlug: "carb-allotrope-structures",
       name: "Diamond, graphite, silicon dioxide and the sodium chloride lattice",
       intuition:
         "Diamond and graphite are both pure carbon, yet one is the hardest natural material and the other is soft enough to write with. The difference is only how each carbon atom uses its four outer electrons: four bonds in three dimensions, or three bonds in flat sheets with one electron left free.",

@@ -215,6 +215,7 @@ export const IMAT_BIO_MOL_TRANSLATION_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-mol-translation-steps",
+      visualizationSlug: "imat-translation",
       name: "Translation on the ribosome: initiation, elongation, termination",
       intuition:
         "The ribosome slides along the mRNA one codon at a time. At each codon the right tRNA arrives with its amino acid, the ribosome moves the growing chain onto that amino acid, and the empty tRNA leaves. A stop codon ends the process.",

@@ -55,6 +55,7 @@ export const IMAT_PHY_OPT_REFLECTION_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-opt-curved-mirrors",
+      visualizationSlug: "opt-concave-mirror-rays",
       name: "Concave and convex mirrors: rays and images",
       intuition:
         "A concave mirror curves inwards like the inside of a spoon, and it gathers rays together. A convex mirror bulges outwards and spreads rays apart, so it shows a wide view. Where the image lands, and what it looks like, depends on where the object is compared with the focal point.",
@@ -107,6 +108,7 @@ export const IMAT_PHY_OPT_REFLECTION_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-opt-snell",
+      visualizationSlug: "imat-snell-refraction",
       name: "Refraction, refractive index and Snell's law",
       intuition:
         "Light slows down in glass and water. If it hits the surface at an angle, one side of the beam slows first and the beam swings round, like a car whose wheel on one side runs onto sand. Going into a slower medium it bends towards the normal; coming out into a faster one it bends away.",
@@ -162,6 +164,7 @@ export const IMAT_PHY_OPT_REFLECTION_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-opt-tir",
+      visualizationSlug: "opt-refraction-tir",
       name: "Total internal reflection and the critical angle",
       intuition:
         "Light leaving glass for air bends away from the normal. Tilt the ray more and more, and the refracted ray swings down until it skims along the surface. That angle is the critical angle. Any steeper, and no light gets out at all: it is all reflected back inside. Optical fibres use this to trap light along a bent glass thread.",

@@ -71,6 +71,7 @@ export const IMAT_CHE_ABP_TITRATION_BUFFERS_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-abp-indicators",
+      visualizationSlug: "imat-titration-curve",
       name: "Titration curves, equivalence point pH and indicators",
       intuition:
         "As base is added to an acid, the pH creeps up slowly, then leaps by several units around the equivalence point, then levels off. Where that leap is centred depends on the salt formed, since the salt itself may be acidic or basic. An indicator is a weak acid whose two forms have different colours, and it is useful only if its colour change falls inside the leap.",

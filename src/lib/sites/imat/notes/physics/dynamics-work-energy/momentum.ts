@@ -64,6 +64,7 @@ export const IMAT_PHY_DYN_MOMENTUM_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-dyn-collisions",
+      visualizationSlug: "imat-collision-momentum",
       name: "Conservation of momentum in collisions and explosions",
       intuition:
         "When two bodies collide, each pushes the other with an equal and opposite force for the same time, so whatever momentum one gains the other loses. With no outside force, the total momentum is the same before and after. Kinetic energy is a different story: some is usually turned into heat, sound and dents. Only in an elastic collision does all of it survive.",

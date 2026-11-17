@@ -67,6 +67,7 @@ export const IMAT_BIO_HAP_BRAIN_HORMONES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-hap-eye",
+      visualizationSlug: "hp-eye-cross-section",
       name: "The eye: its parts, rods and cones, and how light is detected",
       intuition:
         "The front of the eye focuses light, like a camera lens, onto the retina at the back. There, two kinds of light-sensitive cell turn light into nerve impulses: rods work in dim light but see no colour, cones need bright light but see colour and fine detail.",

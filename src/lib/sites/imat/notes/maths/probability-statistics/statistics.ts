@@ -11,6 +11,7 @@ export const IMAT_MAT_PST_STATISTICS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-pst-averages",
+      visualizationSlug: "median-middle-value",
       name: "Mean, median, mode and range",
       intuition:
         "The mean shares the total out equally; the median is the middle value once the data are in order; the mode is the most common value. The most useful trick is to turn a mean back into a total: if 5 numbers have mean 8, they add up to 40, whatever they are.",
@@ -63,6 +64,7 @@ export const IMAT_MAT_PST_STATISTICS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-pst-mean-changes",
+      visualizationSlug: "mean-balance-point",
       name: "Combined and weighted means, and how averages change when data change",
       intuition:
         "Two groups pooled together give a mean pulled towards the larger group, because the larger group contributes more to the total. When every value is shifted by the same amount, the centre moves but the spread does not; when every value is scaled, centre and spread both scale.",

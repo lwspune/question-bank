@@ -11,6 +11,7 @@ export const IMAT_PHY_KIN_DESCRIBING_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-kin-velocity",
+      visualizationSlug: "kin-position-time-graph",
       name: "Distance and displacement, speed and velocity",
       intuition:
         "Distance counts every step you take; displacement only cares where you end up compared with where you started, and in which direction. Speed and velocity follow the same split. A runner who finishes a lap where she began has covered a long distance at a good speed, yet her displacement and her average velocity are both zero.",

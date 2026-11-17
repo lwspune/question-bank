@@ -11,6 +11,7 @@ export const IMAT_CHE_RDX_CELLS_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-rdx-cell-types",
+      visualizationSlug: "imat-galvanic-cell",
       name: "Galvanic and electrolytic cells compared",
       intuition:
         "In both kinds of cell the two half-reactions happen at separate electrodes, and the electrons travel between them through a wire. In a galvanic cell the reaction runs by itself and the moving electrons are the electric current we use. In an electrolytic cell we pump electrons in with a supply to force a reaction that would not otherwise happen.",

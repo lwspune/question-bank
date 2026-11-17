@@ -11,6 +11,7 @@ export const IMAT_BIO_GEN_PEDIGREES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-gen-pedigree-patterns",
+      visualizationSlug: "imat-pedigree-symbols",
       name: "Reading a pedigree: symbols and the five inheritance patterns",
       intuition:
         "A pedigree question is a logic puzzle. A few family events can only happen under certain patterns: two unaffected parents with an affected child, two affected parents with an unaffected child, or a father passing a trait to his son. Find one such event, and it rules whole patterns in or out.",

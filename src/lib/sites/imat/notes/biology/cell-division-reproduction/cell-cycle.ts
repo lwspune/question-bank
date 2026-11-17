@@ -112,6 +112,7 @@ export const IMAT_BIO_CDR_CELL_CYCLE_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-cdr-mitosis-stages",
+      visualizationSlug: "imat-mitosis-steps",
       name: "The stages of mitosis in order: prophase, metaphase, anaphase, telophase",
       intuition:
         "Mitosis is a sorting job. First pack the long DNA threads into short chromosomes, line them up in the middle, pull each one apart into its two copies, then wrap a new nucleus round each group. Remember the order as PMAT, then cytokinesis.",

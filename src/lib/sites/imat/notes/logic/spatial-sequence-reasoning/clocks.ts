@@ -62,6 +62,7 @@ export const IMAT_LOG_SPA_CLOCKS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-spa-hand-angle",
+      visualizationSlug: "af-clock-angle",
       name: "The angle between the hour hand and the minute hand",
       intuition:
         "Measure both hands from 12 o'clock. The minute hand is at 6° per minute. The hour hand is at 30° per hour plus the extra 0.5° per minute it has crept since the hour began. The angle between them is the difference, and you take the smaller way round.",

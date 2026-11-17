@@ -76,6 +76,70 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import ImatSupplyDemand from "./visualizations/ImatSupplyDemand";
+import ImatEuTimeline from "./visualizations/ImatEuTimeline";
+import ImatItalianInstitutions from "./visualizations/ImatItalianInstitutions";
+import ImatVseprShapes from "./visualizations/ImatVseprShapes";
+import ImatTitrationCurve from "./visualizations/ImatTitrationCurve";
+import ImatEnergyProfile from "./visualizations/ImatEnergyProfile";
+import ImatCatalystProfile from "./visualizations/ImatCatalystProfile";
+import ImatLeChatelier from "./visualizations/ImatLeChatelier";
+import ImatAufbauFilling from "./visualizations/ImatAufbauFilling";
+import ImatHalfLifeDecay from "./visualizations/ImatHalfLifeDecay";
+import ImatMomentsSeesaw from "./visualizations/ImatMomentsSeesaw";
+import ImatSnellRefraction from "./visualizations/ImatSnellRefraction";
+import ImatEmSpectrum from "./visualizations/ImatEmSpectrum";
+import ImatSuperposition from "./visualizations/ImatSuperposition";
+import ImatCircularMotion from "./visualizations/ImatCircularMotion";
+import ImatCollisionMomentum from "./visualizations/ImatCollisionMomentum";
+import ImatSyllogismVenn from "./visualizations/ImatSyllogismVenn";
+import ImatPaintedCube from "./visualizations/ImatPaintedCube";
+import ImatGridRoutes from "./visualizations/ImatGridRoutes";
+import ImatSeatingCircle from "./visualizations/ImatSeatingCircle";
+import ImatPaperFolding from "./visualizations/ImatPaperFolding";
+import ImatCubeNetFold from "./visualizations/ImatCubeNetFold";
+import ImatCardiacCycle from "./visualizations/ImatCardiacCycle";
+import ImatDoubleCirculation from "./visualizations/ImatDoubleCirculation";
+import ImatActionPotential from "./visualizations/ImatActionPotential";
+import ImatSynapse from "./visualizations/ImatSynapse";
+import ImatSarcomere from "./visualizations/ImatSarcomere";
+import ImatCrossBridge from "./visualizations/ImatCrossBridge";
+import ImatOxygenDissociation from "./visualizations/ImatOxygenDissociation";
+import ImatHardyWeinberg from "./visualizations/ImatHardyWeinberg";
+import ImatSelectionTypes from "./visualizations/ImatSelectionTypes";
+import ImatPopulationGrowth from "./visualizations/ImatPopulationGrowth";
+import ImatBacterialGrowthCurve from "./visualizations/ImatBacterialGrowthCurve";
+import ImatLyticLysogenic from "./visualizations/ImatLyticLysogenic";
+import ImatSaVolume from "./visualizations/ImatSaVolume";
+import ImatMeiosisCounts from "./visualizations/ImatMeiosisCounts";
+import ImatReplicationFork from "./visualizations/ImatReplicationFork";
+import ImatTranscription from "./visualizations/ImatTranscription";
+import ImatTranslation from "./visualizations/ImatTranslation";
+import ImatPcrCycles from "./visualizations/ImatPcrCycles";
+import ImatGelElectrophoresis from "./visualizations/ImatGelElectrophoresis";
+import ImatChemiosmosis from "./visualizations/ImatChemiosmosis";
+import ImatChloroplastReactions from "./visualizations/ImatChloroplastReactions";
+import ImatEnzymeTempPh from "./visualizations/ImatEnzymeTempPh";
+import ImatMichaelisMenten from "./visualizations/ImatMichaelisMenten";
+import ImatEnzymeInhibition from "./visualizations/ImatEnzymeInhibition";
+import ImatPunnettSquare from "./visualizations/ImatPunnettSquare";
+import ImatPedigreeSymbols from "./visualizations/ImatPedigreeSymbols";
+import ImatBoyleCurve from "./visualizations/ImatBoyleCurve";
+import ImatCharlesLine from "./visualizations/ImatCharlesLine";
+import ImatPhaseDiagram from "./visualizations/ImatPhaseDiagram";
+import ImatGalvanicCell from "./visualizations/ImatGalvanicCell";
+import ImatChiralityMirror from "./visualizations/ImatChiralityMirror";
+import ImatCisTrans from "./visualizations/ImatCisTrans";
+import ImatIonisationJumps from "./visualizations/ImatIonisationJumps";
+import ImatGraphTransformations from "./visualizations/ImatGraphTransformations";
+import ImatTrigGraphs from "./visualizations/ImatTrigGraphs";
+import ImatSignChart from "./visualizations/ImatSignChart";
+import ImatSectorArc from "./visualizations/ImatSectorArc";
+import ImatSimilarScaling from "./visualizations/ImatSimilarScaling";
+import ImatParallelAngles from "./visualizations/ImatParallelAngles";
+import ImatStandardGraphs from "./visualizations/ImatStandardGraphs";
+import ImatRadianArc from "./visualizations/ImatRadianArc";
+import ImatMitosisSteps from "./visualizations/ImatMitosisSteps";
 import MagneticForceTriad from "./visualizations/MagneticForceTriad";
 import BarMagnetFieldLines from "./visualizations/BarMagnetFieldLines";
 import SolenoidFieldLines from "./visualizations/SolenoidFieldLines";
@@ -706,6 +770,134 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "imat-supply-demand":
+      return <ImatSupplyDemand />;
+    case "imat-eu-timeline":
+      return <ImatEuTimeline />;
+    case "imat-italian-institutions":
+      return <ImatItalianInstitutions />;
+    case "imat-vsepr-shapes":
+      return <ImatVseprShapes />;
+    case "imat-titration-curve":
+      return <ImatTitrationCurve />;
+    case "imat-energy-profile":
+      return <ImatEnergyProfile />;
+    case "imat-catalyst-profile":
+      return <ImatCatalystProfile />;
+    case "imat-le-chatelier":
+      return <ImatLeChatelier />;
+    case "imat-aufbau-filling":
+      return <ImatAufbauFilling />;
+    case "imat-half-life-decay":
+      return <ImatHalfLifeDecay />;
+    case "imat-moments-seesaw":
+      return <ImatMomentsSeesaw />;
+    case "imat-snell-refraction":
+      return <ImatSnellRefraction />;
+    case "imat-em-spectrum":
+      return <ImatEmSpectrum />;
+    case "imat-superposition":
+      return <ImatSuperposition />;
+    case "imat-circular-motion":
+      return <ImatCircularMotion />;
+    case "imat-collision-momentum":
+      return <ImatCollisionMomentum />;
+    case "imat-syllogism-venn":
+      return <ImatSyllogismVenn />;
+    case "imat-painted-cube":
+      return <ImatPaintedCube />;
+    case "imat-grid-routes":
+      return <ImatGridRoutes />;
+    case "imat-seating-circle":
+      return <ImatSeatingCircle />;
+    case "imat-paper-folding":
+      return <ImatPaperFolding />;
+    case "imat-cube-net-fold":
+      return <ImatCubeNetFold />;
+    case "imat-cardiac-cycle":
+      return <ImatCardiacCycle />;
+    case "imat-double-circulation":
+      return <ImatDoubleCirculation />;
+    case "imat-action-potential":
+      return <ImatActionPotential />;
+    case "imat-synapse":
+      return <ImatSynapse />;
+    case "imat-sarcomere":
+      return <ImatSarcomere />;
+    case "imat-cross-bridge":
+      return <ImatCrossBridge />;
+    case "imat-oxygen-dissociation":
+      return <ImatOxygenDissociation />;
+    case "imat-hardy-weinberg":
+      return <ImatHardyWeinberg />;
+    case "imat-selection-types":
+      return <ImatSelectionTypes />;
+    case "imat-population-growth":
+      return <ImatPopulationGrowth />;
+    case "imat-bacterial-growth-curve":
+      return <ImatBacterialGrowthCurve />;
+    case "imat-lytic-lysogenic":
+      return <ImatLyticLysogenic />;
+    case "imat-sa-volume":
+      return <ImatSaVolume />;
+    case "imat-meiosis-counts":
+      return <ImatMeiosisCounts />;
+    case "imat-replication-fork":
+      return <ImatReplicationFork />;
+    case "imat-transcription":
+      return <ImatTranscription />;
+    case "imat-translation":
+      return <ImatTranslation />;
+    case "imat-pcr-cycles":
+      return <ImatPcrCycles />;
+    case "imat-gel-electrophoresis":
+      return <ImatGelElectrophoresis />;
+    case "imat-chemiosmosis":
+      return <ImatChemiosmosis />;
+    case "imat-chloroplast-reactions":
+      return <ImatChloroplastReactions />;
+    case "imat-enzyme-temp-ph":
+      return <ImatEnzymeTempPh />;
+    case "imat-michaelis-menten":
+      return <ImatMichaelisMenten />;
+    case "imat-enzyme-inhibition":
+      return <ImatEnzymeInhibition />;
+    case "imat-punnett-square":
+      return <ImatPunnettSquare />;
+    case "imat-pedigree-symbols":
+      return <ImatPedigreeSymbols />;
+    case "imat-boyle-curve":
+      return <ImatBoyleCurve />;
+    case "imat-charles-line":
+      return <ImatCharlesLine />;
+    case "imat-phase-diagram":
+      return <ImatPhaseDiagram />;
+    case "imat-galvanic-cell":
+      return <ImatGalvanicCell />;
+    case "imat-chirality-mirror":
+      return <ImatChiralityMirror />;
+    case "imat-cis-trans":
+      return <ImatCisTrans />;
+    case "imat-ionisation-jumps":
+      return <ImatIonisationJumps />;
+    case "imat-graph-transformations":
+      return <ImatGraphTransformations />;
+    case "imat-trig-graphs":
+      return <ImatTrigGraphs />;
+    case "imat-sign-chart":
+      return <ImatSignChart />;
+    case "imat-sector-arc":
+      return <ImatSectorArc />;
+    case "imat-similar-scaling":
+      return <ImatSimilarScaling />;
+    case "imat-parallel-angles":
+      return <ImatParallelAngles />;
+    case "imat-standard-graphs":
+      return <ImatStandardGraphs />;
+    case "imat-radian-arc":
+      return <ImatRadianArc />;
+    case "imat-mitosis-steps":
+      return <ImatMitosisSteps />;
   }
 }
 

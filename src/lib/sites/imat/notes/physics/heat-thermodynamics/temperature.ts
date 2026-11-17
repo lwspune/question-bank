@@ -70,6 +70,7 @@ export const IMAT_PHY_HTH_TEMPERATURE_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-hth-transfer",
+      visualizationSlug: "ht-heat-transfer-modes",
       name: "Heat transfer: conduction, convection and radiation",
       intuition:
         "Energy can get from hot to cold in three ways. Particles can pass it hand to hand to their neighbours, warm fluid can carry it bodily by flowing, or it can travel as electromagnetic waves with no matter at all. Knowing which needs a medium answers most questions on this topic.",

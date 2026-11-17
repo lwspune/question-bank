@@ -11,6 +11,7 @@ export const IMAT_BIO_MOL_TRANSCRIPTION_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-mol-transcription-steps",
+      visualizationSlug: "imat-transcription",
       name: "The stages of transcription and where it happens",
       intuition:
         "A gene is a recipe kept safely in the DNA. Transcription makes a working copy in RNA, so the DNA never has to leave the nucleus. RNA polymerase does nearly everything itself: it finds the start, opens the helix, builds the RNA and lets go at the end.",

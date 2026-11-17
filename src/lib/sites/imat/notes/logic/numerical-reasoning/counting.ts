@@ -65,6 +65,7 @@ export const IMAT_LOG_NUR_COUNTING_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-nur-overlap",
+      visualizationSlug: "sets-venn-two",
       name: "Overlapping groups and Venn reasoning",
       intuition:
         "When two groups share members, adding their sizes counts the shared members twice. Subtract the overlap once and you get the number in at least one group. A quick Venn diagram, filling the overlap first and working outwards, keeps the regions straight.",

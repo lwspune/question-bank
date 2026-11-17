@@ -120,6 +120,7 @@ export const IMAT_CHE_EQK_RATES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-eqk-catalyst",
+      visualizationSlug: "imat-catalyst-profile",
       name: "Catalysts: a lower-energy route, not more product",
       intuition:
         "A catalyst is like a tunnel through a mountain. It offers the reactants a different route with a lower barrier, so more of them get through each second. The start and the end of the journey are unchanged, so the catalyst changes neither the energy released nor how far the reaction finally goes.",

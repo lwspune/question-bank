@@ -11,6 +11,7 @@ export const IMAT_PHY_DYN_CONSERVATION_POWER_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-dyn-energy-conservation",
+      visualizationSlug: "wep-energy-conservation-track",
       name: "Conservation of mechanical energy, and what friction does",
       intuition:
         "Energy is never made or destroyed, only moved from one store to another. A falling ball swaps potential energy for kinetic energy, joule for joule. When friction or air resistance acts, some of that energy leaves the mechanical stores as heat, so the mechanical energy falls even though the total energy is still conserved.",

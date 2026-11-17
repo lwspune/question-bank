@@ -11,6 +11,7 @@ export const IMAT_CHE_GAS_STATES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-gas-kinetic-model",
+      visualizationSlug: "matt-states-of-matter",
       name: "The three states of matter in the particle model",
       intuition:
         "Every substance is made of tiny particles (atoms, molecules or ions) that never stop moving. Forces of attraction pull them together; their motion pulls them apart. In a solid the attractions win, in a gas the motion wins, and a liquid sits in between.",
@@ -122,6 +123,7 @@ export const IMAT_CHE_GAS_STATES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-gas-water-anomaly",
+      visualizationSlug: "ht-anomalous-water-expansion",
       name: "Water is unusual: ice is less dense than liquid water",
       intuition:
         "For most substances the solid is the most tightly packed state. Water is different because of hydrogen bonding. In ice every molecule is held by hydrogen bonds in an open, cage-like lattice with a lot of empty space. When ice melts, part of that lattice collapses and the molecules crowd closer together.",

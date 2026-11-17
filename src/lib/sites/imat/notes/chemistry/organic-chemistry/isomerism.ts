@@ -68,6 +68,7 @@ export const IMAT_CHE_ORG_ISOMERISM_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-org-cis-trans",
+      visualizationSlug: "imat-cis-trans",
       name: "Cis/trans (geometric) isomerism around a C=C",
       intuition:
         "Groups on a single bond can spin round, but a double bond is locked by its π bond. So two groups on the carbons of a C=C can be fixed on the same side or on opposite sides. That gives two different molecules, but only if each carbon has two different things attached.",
@@ -117,6 +118,7 @@ export const IMAT_CHE_ORG_ISOMERISM_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-org-chirality",
+      visualizationSlug: "imat-chirality-mirror",
       name: "Chirality: chiral carbons and optical isomers",
       intuition:
         "Your left and right hands are mirror images, but you cannot lay one exactly on top of the other. A carbon with four different groups is the same: it and its mirror image are two different molecules. They behave identically in almost every way, which is why they are hard to tell apart.",

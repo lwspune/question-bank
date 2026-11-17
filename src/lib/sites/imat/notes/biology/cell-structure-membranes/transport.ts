@@ -62,6 +62,7 @@ export const IMAT_BIO_CSM_TRANSPORT_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-csm-osmosis",
+      visualizationSlug: "cell-osmosis-tonicity",
       name: "Osmosis, osmolarity and tonicity",
       intuition:
         "Water molecules diffuse too. Dissolved particles hold some water around them, so the side with more solute has fewer free water molecules. Water therefore moves across a membrane toward the side with more dissolved particles. What counts is the number of particles, not their kind, so a salt that splits into two ions counts twice.",

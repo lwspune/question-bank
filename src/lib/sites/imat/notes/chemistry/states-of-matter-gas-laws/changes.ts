@@ -115,6 +115,7 @@ export const IMAT_CHE_GAS_CHANGES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-gas-phase-diagram",
+      visualizationSlug: "imat-phase-diagram",
       name: "Phase diagrams in outline: triple point and critical point",
       intuition:
         "A phase diagram is a map with pressure up the side and temperature along the bottom. Each region shows which state is stable at that pressure and temperature, and the lines between regions are the conditions where two states can exist together. Reading it is just finding a point and seeing which region it is in.",

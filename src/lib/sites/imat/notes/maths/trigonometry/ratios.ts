@@ -11,6 +11,7 @@ export const IMAT_MAT_TRG_RATIOS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-trg-radians",
+      visualizationSlug: "imat-radian-arc",
       name: "Measuring angles in radians and degrees",
       intuition:
         "Wrap the radius of a circle along its edge: the angle it covers is one radian, a little under 60°. The whole edge is \\(2\\pi\\) radii long, so a full turn is \\(2\\pi\\) radians. Radians make arc lengths simple, which is why advanced formulas use them.",
@@ -62,6 +63,7 @@ export const IMAT_MAT_TRG_RATIOS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-trg-right-triangle",
+      visualizationSlug: "cds-trig-right-triangle",
       name: "Sine, cosine and tangent in a right triangle",
       intuition:
         "All right triangles with the same acute angle are similar, so the ratios of their sides depend only on that angle. Sine, cosine and tangent are names for those ratios. Turned round, they give a side: the side opposite an angle is the hypotenuse times the sine.",
@@ -160,6 +162,7 @@ export const IMAT_MAT_TRG_RATIOS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-trg-unit-circle",
+      visualizationSlug: "trig-astc-quadrants",
       name: "The unit circle: any angle, signs in four quadrants and sin² + cos² = 1",
       intuition:
         "Put a point on a circle of radius 1 and turn it anticlockwise from the positive x-axis by \\(\\theta\\). Its x-coordinate is \\(\\cos\\theta\\) and its y-coordinate is \\(\\sin\\theta\\). This works for any angle, and Pythagoras on the radius gives the most useful identity in trigonometry.",

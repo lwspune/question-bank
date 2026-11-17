@@ -11,6 +11,7 @@ export const IMAT_PHY_ELE_CIRCUITS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-ele-series-parallel",
+      visualizationSlug: "resistors-series-parallel",
       name: "Resistors in series and in parallel",
       intuition:
         "In series the current has to pass through every resistor in turn, so the obstacles add up. In parallel the current has several roads to choose from, so adding another road always makes the whole thing easier to get through. Collapse a network one group at a time, from the inside out.",
@@ -117,6 +118,7 @@ export const IMAT_PHY_ELE_CIRCUITS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-ele-emf",
+      visualizationSlug: "emf-internal-resistance",
       name: "EMF and internal resistance of a battery",
       intuition:
         "A battery is not a perfect voltage source. Its chemicals have some resistance of their own, so when current flows, some of the battery's energy is spent inside it. The more current you draw, the more voltage is lost inside and the less reaches the outside circuit.",

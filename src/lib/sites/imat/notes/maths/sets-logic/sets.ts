@@ -57,6 +57,7 @@ export const IMAT_MAT_SLG_SETS_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-slg-set-operations",
+      visualizationSlug: "set-operations-venn",
       name: "Union, intersection, difference, complement and Cartesian product",
       intuition:
         "Union collects, intersection keeps what is shared, difference removes, and complement takes everything else in the universe. The Cartesian product is different in kind: it does not combine elements but pairs them up, building a new set of ordered pairs.",
@@ -152,6 +153,7 @@ export const IMAT_MAT_SLG_SETS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-slg-venn-counting",
+      visualizationSlug: "sets-venn-three",
       name: "Counting with Venn diagrams: inclusion and exclusion",
       intuition:
         "Adding the sizes of two sets counts the shared elements twice, so subtract the overlap once. With three sets the pairwise overlaps are subtracted, but that removes the centre (in all three) once too often, so it is added back.",

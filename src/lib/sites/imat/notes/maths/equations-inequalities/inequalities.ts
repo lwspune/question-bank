@@ -65,6 +65,7 @@ export const IMAT_MAT_EQI_INEQUALITIES_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-eqi-quadratic-inequalities",
+      visualizationSlug: "imat-sign-chart",
       name: "Quadratic inequalities with a sign chart",
       intuition:
         "The graph of \\(ax^2 + bx + c\\) with \\(a > 0\\) is a parabola opening upwards. It is below the axis only between its roots and above it outside them. So find the roots, and the shape tells you the answer. With no roots the parabola never crosses the axis, so its sign never changes.",

@@ -11,6 +11,7 @@ export const IMAT_PHY_KIN_PROJECTILE_CIRCULAR_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-kin-projectile",
+      visualizationSlug: "kin-projectile-parabola",
       name: "Projectile motion: horizontal and vertical parts are independent",
       intuition:
         "Throw a ball sideways and drop another from the same height at the same moment: they land together. Gravity acts only downwards, so it changes the vertical motion and leaves the horizontal motion alone. Treat a projectile as two separate motions sharing one clock: steady speed across, free fall down.",
@@ -120,6 +121,7 @@ export const IMAT_PHY_KIN_PROJECTILE_CIRCULAR_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-kin-centripetal-acc",
+      visualizationSlug: "imat-circular-motion",
       name: "Centripetal acceleration: always towards the centre",
       intuition:
         "On a circle the speed can stay constant while the direction keeps turning. A change of direction is a change of velocity, so the body is accelerating. The change always points towards the centre, which is why this acceleration is called centripetal (centre-seeking).",

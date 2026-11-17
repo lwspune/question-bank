@@ -120,6 +120,7 @@ export const IMAT_BIO_EVO_MECHANISMS_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-evo-selection-types",
+      visualizationSlug: "imat-selection-types",
       name: "Directional, stabilising and disruptive selection",
       intuition:
         "Picture a bell-shaped curve of a trait, such as body size. Selection can push the whole curve one way, squeeze it towards the middle, or split it into two peaks. Which one happens depends on which part of the curve survives and breeds best.",
@@ -164,6 +165,7 @@ export const IMAT_BIO_EVO_MECHANISMS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-evo-hardy-weinberg",
+      visualizationSlug: "imat-hardy-weinberg",
       name: "The Hardy-Weinberg principle for allele and genotype frequencies",
       intuition:
         "If nothing is changing a population, its allele frequencies stay the same generation after generation, and the genotype frequencies follow from them by simple probability. You can only see the recessive homozygotes, so start from them and work back to the alleles.",

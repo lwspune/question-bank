@@ -65,6 +65,7 @@ export const IMAT_MAT_GEO_AREAS_CIRCLES_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-geo-circle-measure",
+      visualizationSlug: "imat-sector-arc",
       name: "Circle measures: circumference, area, arcs and sectors",
       intuition:
         "An arc is a fraction of the circumference and a sector is the same fraction of the area. The fraction is the angle at the centre out of 360°. So every arc or sector problem is the whole-circle formula times \\(\\theta/360\\).",
@@ -119,6 +120,7 @@ export const IMAT_MAT_GEO_AREAS_CIRCLES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-geo-circle-theorems",
+      visualizationSlug: "circ-inscribed-angle",
       name: "Circle facts: chords, tangents and inscribed angles",
       intuition:
         "Most circle theorems come from one picture: two radii make an isosceles triangle. From it you get the angle at the centre being twice the angle at the edge, and from that the angle in a semicircle, angles in the same segment and the tangent-chord rule.",

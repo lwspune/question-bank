@@ -11,6 +11,7 @@ export const IMAT_CHE_ATS_ORBITALS_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-ats-shells-subshells",
+      visualizationSlug: "atom-bohr-shells",
       name: "Shells, subshells and orbitals, and how many electrons each holds",
       intuition:
         "Electrons do not orbit like planets. Each one occupies an orbital, a region of space where it is likely to be found, and each orbital holds at most two electrons. Orbitals of the same shape and energy form a subshell, and the subshells of one energy level form a shell.",
@@ -102,6 +103,7 @@ export const IMAT_CHE_ATS_ORBITALS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-ats-aufbau-hund",
+      visualizationSlug: "imat-aufbau-filling",
       name: "Writing electron configurations with the Aufbau principle and Hund's rule",
       intuition:
         "Electrons go into the lowest energy orbitals available, like water filling the lowest part of a container first. The surprise is that 4s is slightly lower in energy than 3d in an empty atom, so it fills first. Inside a subshell, electrons repel each other, so they spread out one per orbital before any pair up.",

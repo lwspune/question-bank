@@ -57,6 +57,7 @@ export const IMAT_CHE_GAS_LAWS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-gas-boyle",
+      visualizationSlug: "imat-boyle-curve",
       name: "Boyle's law: pressure and volume at constant temperature",
       intuition:
         "Squeeze a gas into half the volume and each molecule has half as far to travel between hits on the walls, while the same number of molecules now hit a smaller area. The wall gets hit twice as often per square metre, so the pressure doubles. The molecules are not moving any faster, because the temperature has not changed.",
@@ -109,6 +110,7 @@ export const IMAT_CHE_GAS_LAWS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-gas-temperature-laws",
+      visualizationSlug: "imat-charles-line",
       name: "Charles's law and Gay-Lussac's law: the effect of temperature",
       intuition:
         "Heat a gas and its molecules move faster, hitting the walls harder and more often. If the container is rigid, the pressure rises. If the pressure is held constant, for example by a free piston, the gas expands instead. In both cases the change is proportional to the kelvin temperature, because that is what the kinetic energy follows.",

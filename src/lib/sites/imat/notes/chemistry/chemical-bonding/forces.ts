@@ -59,6 +59,7 @@ export const IMAT_CHE_BND_FORCES_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-bnd-hbond",
+      visualizationSlug: "hyd-water-hydrogen-bonding",
       name: "Hydrogen bonding: which substances have it",
       intuition:
         "N, O and F are small and very electronegative, so an H atom bonded to one of them is left almost bare of electrons. That exposed H is strongly attracted to a lone pair on an N, O or F atom of a neighbouring molecule. Without the N, O or F to strip the H, the effect does not happen.",

@@ -63,6 +63,7 @@ export const IMAT_LOG_SPA_GRIDS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-spa-grid-paths",
+      visualizationSlug: "imat-grid-routes",
       name: "Grids: counting shortest routes and reading numbered boards",
       intuition:
         "A shortest route across a street grid is just a list of moves, some east and some north. Every route uses the same number of each; routes differ only in the order. So counting routes means counting the ways to choose which moves are the north ones.",
@@ -114,6 +115,7 @@ export const IMAT_LOG_SPA_GRIDS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-spa-seating",
+      visualizationSlug: "imat-seating-circle",
       name: "Seating around a table: left and right when facing the centre",
       intuition:
         "People round a table face the middle, so their left and right are not yours. Seen from above, a person's left-hand neighbour is the next seat clockwise, and their right-hand neighbour is the next seat anticlockwise. Fix one person first; with a round table, rotating everyone changes nothing.",

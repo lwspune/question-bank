@@ -125,6 +125,7 @@ export const IMAT_PHY_MU_DIMENSIONS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-mu-vector-add",
+      visualizationSlug: "vector-addition",
       name: "Adding vectors and splitting them into components",
       intuition:
         "Walk 5 m east and then 12 m north: you are not 17 m from the start, because the two steps point in different directions. Vectors add tip to tail, and the result is the arrow from the first tail to the last tip. When two vectors are at right angles, Pythagoras gives its length. Any vector can also be split into two perpendicular parts, which is how most problems are solved.",

@@ -11,6 +11,7 @@ export const IMAT_MAT_TRG_GRAPHS_EQUATIONS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-trg-graphs-periods",
+      visualizationSlug: "imat-trig-graphs",
       name: "Graphs of sine, cosine and tangent: period and amplitude",
       intuition:
         "As the point goes round the unit circle again and again, its height traces the sine wave and its x-coordinate traces the cosine wave. After one full turn everything repeats, so the period is 360°. Multiplying the angle by \\(b\\) makes the point go round \\(b\\) times faster, so the wave repeats \\(b\\) times as often.",
@@ -122,6 +123,7 @@ export const IMAT_MAT_TRG_GRAPHS_EQUATIONS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-trg-sine-cosine-rules",
+      visualizationSlug: "pt-triangle-labeled",
       name: "The sine rule and the cosine rule for any triangle",
       intuition:
         "SOH CAH TOA needs a right angle. In any other triangle, the sine rule links each side to the angle facing it, and the cosine rule is Pythagoras with a correction term for an angle that is not 90°. When that angle is 90°, \\(\\cos 90^\\circ = 0\\) and the correction vanishes.",

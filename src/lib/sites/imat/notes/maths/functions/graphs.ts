@@ -66,6 +66,7 @@ export const IMAT_MAT_FUN_GRAPHS_NOTE: SubtopicNote = {
     {
       kind: "reference" as const,
       slug: "imat-fun-standard-graphs",
+      visualizationSlug: "imat-standard-graphs",
       name: "Shapes of power, reciprocal, exponential and logarithmic graphs",
       intuition:
         "You do not need to plot these graphs: learn where each one is defined, which values it can take and one or two points it always passes through. Exponentials and logarithms are mirror images of each other, which is why their domains and ranges swap.",
@@ -117,6 +118,7 @@ export const IMAT_MAT_FUN_GRAPHS_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "imat-fun-features",
+      visualizationSlug: "even-odd-symmetry",
       name: "Even and odd functions, increasing and decreasing, reading a graph",
       intuition:
         "Symmetry saves work. An even function looks the same in a mirror held along the y-axis; an odd function looks the same after a half turn about the origin. Most functions are neither. Reading a graph means turning its picture into statements: where it crosses the axes, where it turns, where it is above or below the x-axis.",
