@@ -258,9 +258,14 @@ Measured on 2026 Physics DW; check it on your paper and report differences.
   keeps both columns as a GFM pipe-table in the stem (header row + `|---|`
   separator), and its options are the printed pairings, e.g.
   `A-(d), B-(c), C-(e), D-(a), E-(b)`.
-- Q6 and Q7 carry whole-question OR alternatives (`Q6OR`, `Q6ORa` ...). A
-  "write short notes on / give the uses of the following" list gets one row
-  per item, as in Physics.
+- ORs sit on single PARTS (6a, 6b, 7a, 7b on DZ and EA): `Q6aOR`, or
+  `Q6aORi` ... when the alternative is a list; `alternativeTo` points at the
+  first row of the original part (`Q6ai`). A list ("write short notes on",
+  "give the uses of", or (i)/(ii)/(iii) separate questions with no shared
+  instruction) gets one row per item, so half marks (1.5, 2.5) occur; a part
+  naming two reactions in one sentence with no (i)/(ii) stays one row.
+- A misprinted formula (`[Ni(CH)4]2-` for `[Ni(CN)4]2-`) is kept as printed
+  with a `_flag`; the solution says what is meant.
 - A reaction asked as a scheme (`A -> [B] -> [C]`, a benzene ring with OH)
   is typed as LaTeX: `\(\mathrm{C_6H_5OH}\)`, reagents over the arrow with
   `\(\xrightarrow{\mathrm{CHCl_3,\ aq.\ NaOH}}\)`. Use a `figure` only when a
