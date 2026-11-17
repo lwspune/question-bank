@@ -88,6 +88,17 @@ export const EXTRA_CHAPTERS: Partial<Record<UpSubjectKey, Record<string, string[
   // Subtopic names are CBSE's (CLASS10_ADDENDUM §4, the old NCERT section
   // titles), so the two boards never fork a name.
   maths10: { Constructions: ["Division of a Line Segment", "Construction of Tangents to a Circle"] },
+  // 2025 Science papers examine both (CN Q13 alkali metals; CN Q7, B4ii and CO
+  // B3i electromagnetic induction). Periodic Classification uses CBSE's 2022
+  // subtopic names (CLASS10_ADDENDUM §4) without its "[Outdated]" chapter mark.
+  science10: {
+    "Periodic Classification of Elements": [
+      "Early Attempts at the Classification of Elements",
+      "Mendeleev's Periodic Table",
+      "The Modern Periodic Table",
+    ],
+    "Magnetic Effects of Electric Current": ["Electromagnetic Induction"],
+  },
 };
 
 /** chapter -> subtopics a UP row may use, for one subject. */
