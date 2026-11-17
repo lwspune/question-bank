@@ -119,6 +119,24 @@ export const PAPERS: Record<string, Paper> = {
     pattern: AISSEE_9,
     key: { dir: "aissee\\c9_2025_key", page: 4, code: "H", docId: "3bddf58c-859b-11f1-84d4-0aa932765c8b", final: true },
   },
+  // 22 PDF pages, a grey photocopy scan, SINGLE column, "Class IX SET A",
+  // English only: 2-22 Q1-Q150. Section order as 2021/2022 (Maths 1-50,
+  // English 51-75, General Science 76-100, Social Science 101-125,
+  // Intelligence 126-150; to be confirmed by the transcription). Exam
+  // 05.01.2020. NO KEY: two blind passes + hand check (crosstab.ts).
+  "aissee-9-2020": {
+    id: "aissee-9-2020",
+    exam: "aissee-9",
+    paper: 1,
+    sourceFile: "AISSEE_2020_Class9_SetA.pdf",
+    pagesDir: "aissee\\c9_2020_qp",
+    pdf: "aissee_c9_2020_qp.pdf",
+    pages: range(2, 22),
+    docId: "1e172ac2-3543-11eb-a831-02f21f5619c4",
+    pyqYear: 2020,
+    pyqNote: "AISSEE 2020 Class 9 (5 January 2020, Set A)",
+    pattern: AISSEE_9,
+  },
   // 24 PDF pages, a clean scan, SINGLE column, Set A (EN/BHALI/9/21): 2-22
   // Q1-Q150, 23-24 rough work. Section order as 2022 (Maths 1-50, English
   // 51-75, General Science 76-100, Social Science 101-125, Intelligence
