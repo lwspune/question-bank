@@ -111,6 +111,24 @@ takes the FIRST kind that fits; anything left keeps its still solution.
   across waves 1-3), 18 none, 7 left undecided (free-letter answers, one
   truncated key).
 
+- 2026-11-17, IMAT and ENEM, whole exams (1,371 PUBLIC; brief
+  `briefs/intl-draft.md`; one Sonnet pass per ~20 questions deciding sketch /
+  algebra / skip): 532 animated (IMAT 301, ENEM 231), 839 decided none. 429 of
+  the none were screened by script before any agent: Reading and General
+  Knowledge, Critical Thinking, and Biology whose solution does no
+  arithmetic, except Genetics and Molecular Biology, which went to agents
+  whole (the screen missed their counting). ENEM is Portuguese: labels,
+  notes and `\text{}` in Portuguese, the decimal comma braced (`2{,}5`), never
+  `{var}` for a non-whole number in a label. Review caught: a sketch's point
+  letters swapped against the stem's figure; quarter circles drawn as
+  5-point polygons (read as V shapes: use points every 10 degrees); a ceiling
+  sketch with lines 1 unit apart that no label placement could clear (made
+  algebra steps instead); `\pounds` written on euro questions (renders £:
+  check the currency on the sheet, grep the drafts for `\pounds`); words
+  typed bare in tex losing their spaces. Three ENEM solutions corrected
+  first (`solution-fixes/2026-11-17-intl.json`). A replacement character in
+  an agent's report was its console every time (the stored text had none).
+
 **Algebra steps rules** (`scenes/algebraSteps.ts`, spec `tests/visuals-algebra.test.ts`, brief `briefs/algebra-draft.md`):
 - Up to 10 lines, each KaTeX, on a step `s1`..`s8`. Each says how it is checked:
   `expr` (equals the previous expr line at sample x values), `eq` (every root
@@ -503,6 +521,8 @@ question's verdict, and its visual where the verdict is "animate", in the same
 pass as the transcription and solution. The main session runs `visuals:run`
 on the draft batch, looks at the sheet, and applies it with the questions.
 Wave 1 exams: JEE Mains and MHT-CET (every subject; the triage decides per question).
+IMAT and ENEM (intl site) since 2026-11-17: new papers (ENEM 2016-2020 is the
+next candidate) are drafted with `briefs/intl-draft.md` in the same pass.
 
 ## Is anyone watching? (2026-10-31)
 

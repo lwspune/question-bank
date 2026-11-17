@@ -1,0 +1,305 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "9216d618-ac90-426a-8a11-cf357ecac4dc",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Rb}^{+},\\ \\text{PO}_4^{3-}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Rb}_3\\text{PO}_4:\\ 3(+1)+(-3) = {{1:0}}",
+              "f": "3*1-3",
+              "value": "0",
+              "note": "balanced"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{RbPO}_4:\\ 1(+1)+(-3) = {{1:-2}}",
+              "f": "1-3",
+              "value": "-2",
+              "note": "not balanced, so wrong"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{Ga}_2(\\text{SO}_4)_3:\\ 2(+3)+3(-2) = 0",
+              "f": "2*3-3*2",
+              "value": "0"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{Mg}_3\\text{N}_2:\\ 3(+2)+2(-3) = 0",
+              "f": "3*2-2*3",
+              "value": "0"
+            }
+          ],
+          "answer": "1-3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "05f1cc8d",
+        "answer": {
+          "value": -2,
+          "label": "RbPO4: charge -2"
+        }
+      }
+    },
+    {
+      "id": "324d497e-c35c-4f8c-8b21-7af01787a9e0",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Pb: }+2\\to+4,\\quad \\text{Fe: }+3\\to+2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Pb loses } 4-2 = {{1:2}}\\ e^-",
+              "f": "4-2",
+              "value": "2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Fe gains } 3-2 = {{2:1}}\\ e^-",
+              "f": "3-2",
+              "value": "1"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{Fe per Pb} = {{1:2}}\\div{{2:1}} = 2",
+              "f": "2/1",
+              "value": "2",
+              "note": "2 Fe for each Pb"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{Br atoms, reactants: } 2+2\\times3 = 8",
+              "f": "2+2*3",
+              "value": "8"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\text{Br atoms, products: } 4+2\\times2 = 8",
+              "f": "4+2*2",
+              "value": "8",
+              "note": "balanced"
+            }
+          ],
+          "answer": "2/1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "ed9911e1",
+        "answer": {
+          "value": 2,
+          "label": "coefficients 1, 2, 1, 2"
+        }
+      }
+    },
+    {
+      "id": "779713ab-f209-4224-9956-21277bcaf171",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{H}=+1,\\quad \\text{O}=-2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{NH}_3:\\ N+3(+1)=0 \\Rightarrow N={{1:-3}}",
+              "f": "0-3*1",
+              "value": "-3"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{N}_2\\text{O}:\\ 2N-2=0 \\Rightarrow N={{1:1}}",
+              "f": "2/2",
+              "value": "1"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{NO}_2:\\ N+2(-2)=0 \\Rightarrow N={{1:4}}",
+              "f": "2*2",
+              "value": "4"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{HNO}_3:\\ 1+N-6=0 \\Rightarrow N={{1:5}}",
+              "f": "6-1",
+              "value": "5"
+            },
+            {
+              "step": "s6",
+              "kind": "note",
+              "tex": "-3,\\ +1,\\ +4,\\ +5",
+              "note": "no +2: that is NO"
+            }
+          ],
+          "answer": "0-3*1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "2c71e881",
+        "answer": {
+          "value": -3,
+          "label": "-3, +1, +4, +5"
+        }
+      }
+    },
+    {
+      "id": "81cb4a7b-ad76-41b8-a8b2-1dee0732a9e7",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{O}=-2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{CrO}_4^{2-}:\\ Cr-8=-2 \\Rightarrow Cr={{1:6}}",
+              "f": "-2+8",
+              "value": "6"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Cr}_2\\text{O}_7^{2-}:\\ 2Cr-14=-2 \\Rightarrow Cr={{1:6}}",
+              "f": "(-2+14)/2",
+              "value": "6"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{CrO}_2:\\ Cr-4=0 \\Rightarrow Cr={{2:4}}",
+              "f": "4",
+              "value": "4"
+            },
+            {
+              "step": "s5",
+              "kind": "note",
+              "tex": "\\text{Cr}^{3+}=+3,\\quad \\text{Cr}^{2+}=+2"
+            }
+          ],
+          "answer": "-2+8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "e4c0161f",
+        "answer": {
+          "value": 6,
+          "label": "1 and 3 (both +6)"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

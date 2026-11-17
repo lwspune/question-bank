@@ -1,0 +1,161 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "2f958072-b020-4f9d-bf1c-8caf9ed3657b",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{taxa} \\propto k_{ef}\\quad(\\text{mesma área},\\ \\Delta T,\\ d)",
+              "note": "mesma área, mesma ΔT e mesma espessura d"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{ferro: } k_{ef} = \\dfrac{8}{d} \\to {{1:8}}",
+              "f": "8",
+              "value": "8",
+              "note": "valores para d = 1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{alumínio: } k_{ef} = \\dfrac{20}{d} \\to {{2:20}}",
+              "f": "20",
+              "value": "20"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{d/2}{40} + \\dfrac{d/2}{5} = \\dfrac{9d}{80}",
+              "f": "0.5/40+0.5/5",
+              "value": "9/80"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "k_{ef} = \\dfrac{80}{9d} \\approx {{3:8{,}9}}",
+              "f": "1/(0.5/40+0.5/5)",
+              "value": "8.9",
+              "dp": 1,
+              "note": "cobre-aço em série"
+            },
+            {
+              "step": "s6",
+              "kind": "note",
+              "tex": "{{2:20}} > {{3:8{,}9}} > {{1:8}}",
+              "note": "alumínio > cobre-aço > ferro"
+            }
+          ],
+          "answer": "1/(0.5/40+0.5/5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "22a596c9",
+        "answer": {
+          "value": 8.88888888888889,
+          "label": "alumínio, cobre-aço, ferro"
+        }
+      }
+    },
+    {
+      "id": "516eee97-c13c-488e-8a9e-28e066643c15",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "Q = \\rho V c\\,\\Delta T \\Rightarrow \\Delta T \\propto \\dfrac{1}{\\rho c}",
+              "note": "mesma energia Q e mesmo volume V"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{água: } \\rho c = 1\\,000 \\times 4{,}2 = {{1:4\\,200}}",
+              "f": "1000*4.2",
+              "value": "4200"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{concreto: } \\rho c = 2\\,500 \\times 0{,}8 = {{2:2\\,000}}",
+              "f": "2500*0.8",
+              "value": "2000"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{\\Delta T_{conc}}{\\Delta T_{água}} = \\dfrac{ {{1:4\\,200}} }{ {{2:2\\,000}} } = 2{,}1",
+              "f": "4200/2000",
+              "value": "2.1"
+            }
+          ],
+          "answer": "4200/2000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "3f2dfbf9",
+        "answer": {
+          "value": 2.1,
+          "label": "2,1"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

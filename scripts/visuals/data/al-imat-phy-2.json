@@ -1,0 +1,694 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "4835ba11-a352-4a3e-beff-3c5fe2e36a4f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "P = 2922\\ \\text{W},\\quad I = 10\\ \\text{A}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "P = I^2 R",
+              "note": "so R = P / I²"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "R = \\dfrac{2922}{10^2} = 29.22\\ \\Omega",
+              "f": "2922/10^2",
+              "value": "29.22"
+            }
+          ],
+          "answer": "2922/10^2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "85418d28",
+        "answer": {
+          "value": 29.22,
+          "label": "29.22 Ω"
+        }
+      }
+    },
+    {
+      "id": "48e6ef66-a29e-4c06-8f32-a55db0341eca",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "R_{max} = 4 \\times 8.0 = 32\\ \\Omega",
+              "f": "4*8",
+              "value": "32",
+              "note": "all four in series"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "R_{min} = \\dfrac{8.0}{4} = 2.0\\ \\Omega",
+              "f": "8/4",
+              "value": "2",
+              "note": "all four in parallel"
+            }
+          ],
+          "answer": "4*8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "3edfb696",
+        "answer": {
+          "value": 32,
+          "label": "largest 32 Ω; smallest 2.0 Ω"
+        }
+      }
+    },
+    {
+      "id": "5a19a67f-8ca6-4e5e-8f30-74d64b2d08aa",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "V = 12\\ \\text{V},\\quad R = 4.0\\ \\Omega"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P = \\dfrac{V^2}{R} = \\dfrac{144}{4.0} = 36\\ \\text{W}",
+              "f": "12^2/4",
+              "value": "36"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "I = \\dfrac{12}{4.0} = 3.0\\ \\text{A},\\quad P = VI = 36\\ \\text{W}",
+              "f": "12*(12/4)",
+              "value": "36"
+            }
+          ],
+          "answer": "12^2/4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "58547aa4",
+        "answer": {
+          "value": 36,
+          "label": "36 W"
+        }
+      }
+    },
+    {
+      "id": "6ece1e4b-4f1a-42ee-bb57-ee1c8d07df26",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "R_{branch} = 10R",
+              "f": "10*1",
+              "value": "10",
+              "note": "10 resistors in series; R = 1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "R_{eq} = \\dfrac{10R}{100} = \\dfrac{R}{10}",
+              "f": "10/100",
+              "value": "0.1",
+              "note": "100 equal branches in parallel"
+            }
+          ],
+          "answer": "10/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "c4f22148",
+        "answer": {
+          "value": 0.1,
+          "label": "R/10"
+        }
+      }
+    },
+    {
+      "id": "7c2fa770-71c3-4733-ae28-f45fd9867ca9",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "R_p = \\dfrac{6.0 \\times 6.0}{6.0 + 6.0} = 3.0\\ \\Omega",
+              "f": "6*6/(6+6)",
+              "value": "3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "R_{tot} = 3.0 + 3.0 = 6.0\\ \\Omega",
+              "f": "3+3",
+              "value": "6"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "I_Y = \\dfrac{9.0}{6.0} = 1.5\\ \\text{A}",
+              "f": "9/6",
+              "value": "1.5"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "V_Z = 1.5 \\times 3.0 = 4.5\\ \\text{V}",
+              "f": "1.5*3",
+              "value": "4.5"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "I_X = \\dfrac{1.5}{2} = 0.75\\ \\text{A}",
+              "f": "1.5/2",
+              "value": "0.75",
+              "note": "current splits equally"
+            }
+          ],
+          "answer": "1.5/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "ab2ab61b",
+        "answer": {
+          "value": 0.75,
+          "label": "X 0.75 A; Y 1.5 A; Z 4.5 V"
+        }
+      }
+    },
+    {
+      "id": "cddd1023-bf8d-4b34-967d-2dc5e528fa06",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{series: } C_{tot} = \\dfrac{C}{3} = 0.333\\,C",
+              "f": "1/3",
+              "value": "0.333",
+              "dp": 3,
+              "note": "C = 1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{pair in series with one: } C_{tot} = 0.667\\,C",
+              "f": "1/(1/2+1)",
+              "value": "0.667",
+              "dp": 3
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{all parallel: } C_{tot} = 3C",
+              "f": "3*1",
+              "value": "3"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "\\text{order: } 3,\\ 1,\\ 2",
+              "note": "smallest first"
+            }
+          ],
+          "answer": "1/3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "952905ed",
+        "answer": {
+          "value": 0.3333333333333333,
+          "label": "3, 1, 2"
+        }
+      }
+    },
+    {
+      "id": "e5910b2c-2b98-48c5-930c-bfe31c0c150f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "I_{12} = \\dfrac{12}{12} = 1.0\\ \\text{A}",
+              "f": "12/12",
+              "value": "1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "R = 0:\\ I = \\dfrac{12}{6} = 2.0\\ \\text{A}",
+              "f": "12/6",
+              "value": "2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "R = 0:\\ I_{supply} = 1.0 + 2.0 = 3.0\\ \\text{A}",
+              "f": "1+2",
+              "value": "3"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "R = 6:\\ I = \\dfrac{12}{12} = 1.0\\ \\text{A}",
+              "f": "12/(6+6)",
+              "value": "1"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "R = 6:\\ I_{supply} = 1.0 + 1.0 = 2.0\\ \\text{A}",
+              "f": "1+1",
+              "value": "2",
+              "note": "current falls from 3.0 A to 2.0 A"
+            }
+          ],
+          "answer": "1+12/6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "26442e37",
+        "answer": {
+          "value": 3,
+          "label": "graph 2"
+        }
+      }
+    },
+    {
+      "id": "f54e984a-2bb6-4467-8832-797b842b1ed0",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "L = 3.0\\ \\text{m},\\ r = 5.0\\times 10^{-4}\\ \\text{m},\\ \\rho = 5.0\\times 10^{-7}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "A = \\pi r^2 = 2.5\\times 10^{-7}\\pi\\ \\text{m}^2",
+              "f": "pi*(5*10^(-4))^2",
+              "value": "2.5*10^(-7)*pi",
+              "sf": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "R = \\dfrac{\\rho L}{A} = \\dfrac{1.5\\times 10^{-6}}{2.5\\times 10^{-7}\\pi} = \\dfrac{6}{\\pi}\\ \\Omega",
+              "f": "5*10^(-7)*3/(pi*(5*10^(-4))^2)",
+              "value": "6/pi"
+            }
+          ],
+          "answer": "6/pi"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "d77f685e",
+        "answer": {
+          "value": 1.909859317102744,
+          "label": "6/π Ω"
+        }
+      }
+    },
+    {
+      "id": "0e124380-5737-4347-a1e8-2b5ac7727ce7",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "W = 60 \\times 10 = 600\\ \\text{N}",
+              "f": "60*10",
+              "value": "600"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "A = 1.0\\ \\text{cm}^2 = 1.0\\times 10^{-4}\\ \\text{m}^2",
+              "f": "1*10^(-4)",
+              "value": "10^(-4)",
+              "sf": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "p = \\dfrac{600}{10^{-4}} = 6.0\\times 10^{6}\\ \\text{Pa}",
+              "f": "600/10^(-4)",
+              "value": "6*10^6",
+              "sf": 2
+            }
+          ],
+          "answer": "600/10^(-4)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c1c350ad",
+        "answer": {
+          "value": 6000000,
+          "label": "6.0 × 10⁶ Pa"
+        }
+      }
+    },
+    {
+      "id": "8b8a0556-da66-4d9a-8ea7-84824db51b1b",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "V = \\dfrac{120}{1.5} = 80\\ \\text{mL}",
+              "f": "120/1.5",
+              "value": "80"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "U = 80\\ \\text{g} \\to 0.8\\ \\text{N}",
+              "f": "80/1000*10",
+              "value": "0.8"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "W = 0.120 \\times 10 = 1.2\\ \\text{N}",
+              "f": "0.12*10",
+              "value": "1.2"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "N = 1.2 - 0.8 = 0.4\\ \\text{N}",
+              "f": "1.2-0.8",
+              "value": "0.4"
+            }
+          ],
+          "answer": "0.12*10-80/1000*10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "5291cadf",
+        "answer": {
+          "value": 0.3999999999999999,
+          "label": "0.4 N"
+        }
+      }
+    },
+    {
+      "id": "e020dddd-586c-45e7-a2d4-f6c05dfd663c",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\rho g h = 1.0\\times 10^{5}\\ \\text{Pa}",
+              "note": "water adds one atmosphere"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "h = \\dfrac{10^{5}}{10^{3}\\cdot 9.8} \\approx 10\\ \\text{m}",
+              "f": "10^5/(10^3*9.8)",
+              "value": "10",
+              "dp": 0
+            }
+          ],
+          "answer": "10^5/(10^3*9.8)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "09354e8d",
+        "answer": {
+          "value": 10.204081632653061,
+          "label": "approximately 10 m"
+        }
+      }
+    },
+    {
+      "id": "e1d03c76-4943-40c3-a79c-f3a648bba31d",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\Delta p = 1000 \\times 10 \\times 2.0 = 20\\,000\\ \\text{Pa}",
+              "f": "1000*10*2",
+              "value": "20000",
+              "note": "20 kPa: 1 and 2 correct"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "p_P = 100 + 20 = 120\\ \\text{kPa}",
+              "f": "100+20",
+              "value": "120"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "p_Q = 100 + 40 = 140\\ \\text{kPa}",
+              "f": "100+40",
+              "value": "140",
+              "note": "not twice 120: 3 wrong"
+            }
+          ],
+          "answer": "1000*10*2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "599ec0b8",
+        "answer": {
+          "value": 20000,
+          "label": "1 and 2 only"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

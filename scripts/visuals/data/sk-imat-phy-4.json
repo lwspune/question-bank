@@ -1,0 +1,136 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "9f1273f5-6882-4811-b8b5-606c6ae8f3f6",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "east": "6",
+            "south": "8",
+            "dist": "sqrt(east^2+south^2)",
+            "hrs": "15/60",
+            "v": "dist/hrs"
+          },
+          "view": {
+            "x": [
+              -3,
+              11
+            ],
+            "y": [
+              -10,
+              0.5
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "A": [
+              "east",
+              0
+            ],
+            "B": [
+              "east",
+              "-south"
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "A",
+              "step": "s1",
+              "label": "east 6 km",
+              "labelAt": [
+                3,
+                0.1
+              ],
+              "pos": "n"
+            },
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "B",
+              "step": "s1",
+              "label": "south 8 km",
+              "labelAt": [
+                6.3,
+                -4
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "point",
+              "at": "O",
+              "step": "s1",
+              "label": "start",
+              "pos": "w"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1",
+              "label": "end",
+              "pos": "s"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "B",
+              "step": "s2",
+              "tone": "brand",
+              "label": "10 km",
+              "labelAt": [
+                1.5,
+                -5.5
+              ],
+              "pos": "w"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -2.5,
+                -8.5
+              ],
+              "text": "v = 10 / 0.25 = {v} km/h",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "dist = 10",
+            "hrs = 0.25",
+            "v = 40"
+          ],
+          "answer": "v"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "76661022",
+        "answer": {
+          "value": 40,
+          "label": "40 km/h"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

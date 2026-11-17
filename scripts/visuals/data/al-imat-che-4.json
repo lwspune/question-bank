@@ -1,0 +1,173 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "b35a3d41-73ee-4081-af1e-260bce95b975",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "K_w = 5.5\\times 10^{-14},\\quad [\\text{H}^+] = [\\text{OH}^-]"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[\\text{H}^+] = \\sqrt{5.5\\times 10^{-14}} \\approx 2.3\\times 10^{-7}",
+              "f": "sqrt(5.5*10^(-14))",
+              "value": "2.3*10^(-7)",
+              "sf": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{pH} = -\\log_{10}(2.3\\times 10^{-7}) \\approx 6.6",
+              "f": "-log10(sqrt(5.5*10^(-14)))",
+              "value": "6.6",
+              "dp": 1,
+              "note": "below 7, but still neutral"
+            }
+          ],
+          "answer": "-log10(sqrt(5.5*10^(-14)))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "0ec51f13",
+        "answer": {
+          "value": 6.629818655252878,
+          "label": "1 and 2 only"
+        }
+      }
+    },
+    {
+      "id": "d28a2466-8195-4a59-aeef-557a426610c8",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "K_c = \\dfrac{[\\text{HI}]^2}{[\\text{H}_2][\\text{I}_2]}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "K_c = \\dfrac{{{1:0.80^2}}}{0.20\\times 0.10} = \\dfrac{0.64}{0.020}",
+              "f": "0.80^2/(0.20*0.10)",
+              "value": "0.64/0.020",
+              "note": "the V terms cancel"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "K_c = 32",
+              "f": "0.64/0.020",
+              "value": "32"
+            }
+          ],
+          "answer": "0.64/0.020"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "7f7f562f",
+        "answer": {
+          "value": 32,
+          "label": "32"
+        }
+      }
+    },
+    {
+      "id": "078e4d97-a111-4d2d-b821-c006384e3358",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{K} = +1,\\ \\text{Mn} = +7,\\ \\text{O} = -2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{KMnO}_4:\\ +1 + 7 + 4(-2) = 0",
+              "f": "1+7+4*(-2)",
+              "value": "0",
+              "note": "neutral: the sum is zero"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{K}_2\\text{MnO}_4:\\ 2(+1) + 7 + 4(-2) = 1",
+              "f": "2*1+7+4*(-2)",
+              "value": "1",
+              "note": "not zero, so not this one"
+            }
+          ],
+          "answer": "1+7+4*(-2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "26ccc2e3",
+        "answer": {
+          "value": 0,
+          "label": "KMnO4"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
