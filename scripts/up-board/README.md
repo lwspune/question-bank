@@ -39,7 +39,11 @@ rows** (blind passes 260/260); **Science 14 papers, 667 rows** (280 MCQs: the
 passes split on 2, both settled by hand, and agreed on a third, GM Q6, that the
 NCERT text overrules). Defective or print-difference MCQs carry a notice in both
 languages and grace (`src/lib/mocks/flawed.json`): 2 in Maths, 6 in Science.
-Class 12 (54 papers) not started.
+Class 12 PRIVATE: **Mathematics 13 papers** (2025-324-IC left out), **Physics 14
+papers** (the blind passes agreed on all 84 MCQs; three carry a notice and
+grace: 2026 DX Q1(f) sign convention, DY Q1(e) the Hindi print, 2025 JS Q1(a)
+plane of polarisation). Chemistry in progress,
+then Biology.
 
 ## Language
 
