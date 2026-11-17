@@ -160,3 +160,27 @@ so in `_flag`; never invent a name.
 - every `_flag`, one line each;
 - figures: which refs;
 - the last line `validate.ts` printed.
+
+## 9. Class 10 Science (824)
+
+Measured on 2025 CM. Check it on your paper; report anything different.
+
+- **Part A (खण्ड-अ)**: 20 MCQs, numbered 1-20 straight through three
+  sub-sections (Physics, Chemistry, Biology). Refs `Q1`..`Q20`, questionNumber
+  `"1"`..`"20"`, section `"A"`. Exactly 20 MCQs (validate.ts checks).
+- **Part B (खण्ड-ब)**: written questions numbered 1-11 straight through the
+  same three sub-sections. Parts are printed `(i)`, `(ii)`. One row per part:
+  ref `B1i`, `B1ii`, questionNumber `"B1 (i)"`, `"B1 (ii)"`, section `"B"`. A
+  question with no parts is one row, `B9`, `"B9"`. Sub-items inside a part
+  (`(a)`, `(b)`, `(c)`, marked e.g. `1 + 1 + 1`) stay inside that row's stem.
+- **OR** can sit on a whole question or on one part. The alternative gets
+  `OR` added: ref `B4iiOR`, questionNumber `"B4 (ii) (OR)"`,
+  `"alternativeTo": "B4ii"`; for a whole question `B11OR`, `"B11 (OR)"`.
+- Chemistry: formulas and equations in maths, `\(\mathrm{CaSO_4 \cdot \frac{1}{2}H_2O}\)`,
+  states as printed `\(\mathrm{(aq)}\)`, arrows `\(\rightarrow\)`. A circuit,
+  ray diagram or labelled organ is a `figure`.
+- Chapter: the one the row TESTS. A Science paper may examine a topic the
+  current NCERT book dropped (e.g. Periodic Classification, Sources of Energy,
+  Management of Natural Resources). If no catalog chapter fits, use the closest
+  and put `NO CHAPTER: <topic>` at the start of `_flag`: the main session adds
+  the chapter UP still teaches.
