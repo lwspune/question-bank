@@ -238,3 +238,23 @@ it("STUDY_KINDS are the readout's study kinds, and never play_round", () => {
     ["drill_completed", "drill_started", "mock_submitted", "note_checkpoint", "question_practiced"].sort()
   );
 });
+
+describe("the arcade games (2026-11-18) on /dashboard/play", () => {
+  it("reads each new game by name and gives it a result line", () => {
+    for (const g of ["number_rain", "word_groups", "launch", "element_hunt", "timeline", "pin_it"]) {
+      expect(gameOf({ game: g })).toBe(g);
+    }
+    expect(gameOf({ game: "chess" })).toBe("other");
+    const s = buildPlayStats({
+      rounds: [
+        { userId: "a", createdAt: "2026-11-18T06:00:00Z", metadata: { game: "number_rain", world: 2, score: 340, blasts: 25, missed: 3 } },
+        { userId: "b", createdAt: "2026-11-18T06:01:00Z", metadata: { game: "launch", level: 4, hit: true, shots: 2 } },
+      ],
+      study: [],
+      names: new Map(),
+      now: new Date("2026-11-18T12:00:00Z"),
+    });
+    expect(s.games.map((g) => g.game)).toEqual(["number_rain", "launch"]);
+    expect(s.recent.find((r) => r.game === "launch")).toMatchObject({ result: "Level 4 · 2 shots", cleared: true });
+  });
+});

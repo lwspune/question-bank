@@ -18,7 +18,7 @@ import type { StartNextFrom } from "@/lib/me/startNext";
 const ENDPOINT = "/api/activity/event";
 const sent = new Set<string>();
 
-type ClientEvent =
+export type ClientEvent =
   | {
       kind: "surface_viewed";
       surface: Surface;
@@ -113,14 +113,12 @@ type ClientEvent =
       points: number;
       cleared: boolean;
     }
-  | {
-      /** A finished Word Builder round (lib/play/words/builder): first-try counts. */
-      kind: "play_round";
-      game: "word_builder";
-      correct: number;
-      wrong: number;
-      mastered: number;
-    }
+  | { kind: "play_round"; game: "number_rain"; world: number; score: number; blasts: number; missed: number }
+  | { kind: "play_round"; game: "word_groups"; puzzle: number; won: boolean; mistakes: number }
+  | { kind: "play_round"; game: "launch"; level: number; hit: boolean; shots: number }
+  | { kind: "play_round"; game: "element_hunt"; world: number; score: number; right: number; wrong: number }
+  | { kind: "play_round"; game: "timeline"; pack: string; placed: number; won: boolean }
+  | { kind: "play_round"; game: "pin_it"; pack: string; score: number }
   | {
       /** A finished Daily Word (lib/play/words/daily). */
       kind: "play_round";

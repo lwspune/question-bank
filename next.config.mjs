@@ -65,6 +65,13 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        // 2026-11-18: Word Builder left /play (owner: it is flashcards, not a
+        // game), so old links land on the games hub.
+        source: "/play/word-builder",
+        destination: "/play",
+        permanent: true,
+      },
+      {
         // 2026-11-07: every exam has /exams/<slug>, but /exams itself was a
         // 404. The list of exams is the homepage's "Choose your exam".
         source: "/exams",

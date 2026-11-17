@@ -23,14 +23,33 @@ export const STUDY_KINDS = [
   "note_checkpoint",
 ] as const;
 
-export type PlayGame = "maths" | "word_builder" | "daily_word" | "other";
+export type PlayGame =
+  | "maths"
+  | "word_builder"
+  | "daily_word"
+  | "number_rain"
+  | "word_groups"
+  | "launch"
+  | "element_hunt"
+  | "timeline"
+  | "pin_it"
+  | "other";
 
+/** maths and word_builder are the retired games (to 2026-11-18); their rows stay readable. */
 export const GAME_LABEL: Record<PlayGame, string> = {
-  maths: "Calculation",
-  word_builder: "Word Builder",
+  maths: "Calculation (old)",
+  word_builder: "Word Builder (old)",
   daily_word: "Daily Word",
+  number_rain: "Number Rain",
+  word_groups: "Word Groups",
+  launch: "Launch",
+  element_hunt: "Element Hunt",
+  timeline: "Timeline",
+  pin_it: "Pin It",
   other: "Other",
 };
+
+const KNOWN_GAMES = new Set<string>(["word_builder", "daily_word", "number_rain", "word_groups", "launch", "element_hunt", "timeline", "pin_it"]);
 
 export type PlayRoundRow = { userId: string; createdAt: string; metadata: Record<string, unknown> | null };
 export type StudyRow = { userId: string; createdAt: string };
@@ -62,7 +81,7 @@ function istDayStart(ms: number): number {
 export function gameOf(meta: Record<string, unknown> | null | undefined): PlayGame {
   const g = meta?.game;
   if (g === undefined || g === null) return "maths";
-  if (g === "word_builder" || g === "daily_word") return g;
+  if (typeof g === "string" && KNOWN_GAMES.has(g)) return g as PlayGame;
   return "other";
 }
 
@@ -171,6 +190,13 @@ function resultLine(r: Round): { result: string; cleared: boolean | null } {
       ? { result: `Solved in ${g} ${g === 1 ? "guess" : "guesses"}`, cleared: true }
       : { result: `Not solved in ${g} guesses`, cleared: false };
   }
+  if (r.game === "number_rain") return { result: `World ${num(m.world) ?? "?"} · ${num(m.score) ?? 0} points, ${num(m.blasts) ?? 0} blasted`, cleared: null };
+  if (r.game === "word_groups") return { result: `Puzzle ${num(m.puzzle) ?? "?"} · ${num(m.mistakes) ?? 0} mistakes`, cleared: m.won === true };
+  if (r.game === "launch") return { result: `Level ${num(m.level) ?? "?"} · ${num(m.shots) ?? 0} shots`, cleared: m.hit === true };
+  if (r.game === "element_hunt")
+    return { result: `World ${num(m.world) ?? "?"} · ${num(m.score) ?? 0} points, ${num(m.right) ?? 0} right, ${num(m.wrong) ?? 0} wrong`, cleared: null };
+  if (r.game === "timeline") return { result: `${String(m.pack ?? "?")} · ${num(m.placed) ?? 0} placed`, cleared: m.won === true };
+  if (r.game === "pin_it") return { result: `${String(m.pack ?? "?")} · ${num(m.score) ?? 0} of 5,000`, cleared: null };
   return { result: "A round", cleared: null };
 }
 
@@ -281,7 +307,18 @@ export function buildPlayStats(input: {
   });
 
   // --- games -----------------------------------------------------------------
-  const order: PlayGame[] = ["maths", "word_builder", "daily_word", "other"];
+  const order: PlayGame[] = [
+    "number_rain",
+    "word_groups",
+    "daily_word",
+    "launch",
+    "element_hunt",
+    "timeline",
+    "pin_it",
+    "maths",
+    "word_builder",
+    "other",
+  ];
   const games = order
     .map((game) => {
       const gr = rounds.filter((r) => r.game === game);
