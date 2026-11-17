@@ -27,6 +27,18 @@ the other language's copy where that one is clean (`figure.note` says so).
 | 2025-822-BV | scan skips pages 5-7, the English MCQs |
 | 2026 Biology EK, EM | 4 of 7 pages |
 
+**Rows that ship English-only** (`hiMissing`: the scan lost that row's Hindi;
+we never translate the board's paper): 2025 Science CL B6 (i), 2026 Science
+GP B3 (i).
+
+## Status (2026-11-17)
+
+Class 10 PRIVATE in the bank, nothing published: **Mathematics 13 papers, 485
+rows** (blind passes 260/260); **Science 14 papers, 667 rows** (280 MCQs; 3
+disputes and 2 shared misreadings settled by hand). Defective or print-difference
+MCQs carry a notice in both languages and grace (`src/lib/mocks/flawed.json`).
+Class 12 (54 papers) not started.
+
 ## Language
 
 Every question is printed in Hindi and English. English is the canonical row
