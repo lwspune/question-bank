@@ -29,6 +29,16 @@ def main() -> None:
         fig = q.get("figure")
         if not fig:
             continue
+        # `redrawn`: a lane-relative PNG used INSTEAD of the photo crop, for a
+        # figure a candidate's pen has made unreadable as printed (RMS 2024
+        # Class 6 Q128: lines traced over and numbers written in the parts).
+        # Redraw only what the print itself settles, and say how in the note.
+        if fig.get("redrawn"):
+            crop = Image.open(os.path.join(LANE, fig["redrawn"])).convert("RGB")
+            path = os.path.join(out, f"q{int(q['number']):03d}.png")
+            crop.save(path)
+            made.append((q["number"], fig.get("note", ""), crop))
+            continue
         page = int(fig["page"])
         src = Image.open(os.path.join(LANE, "out", paper, f"p{page:02d}.png")).convert("RGB")
         l, t, r, b = fig.get("region") or [0, 0, 1, 1]

@@ -316,7 +316,13 @@ export const PAPERS: Record<string, Paper> = {
     pyqYear: 2024,
     pyqNote: "RMS CET 2024 Class 9",
     pattern: RMS_9,
-    held: RMS_9_HINDI_HELD,
+    // Printed page 4 (Q10-18) was never scanned: PDF p3 is printed "Page 3",
+    // p4 is printed "Page 5" (the viewer JPGs are the same 25 pages). A full
+    // copy may sit in shauryabharat.com/?p=39824's embedded viewer (unchecked).
+    held: {
+      numbers: [...range(10, 18), ...RMS_9_HINDI_HELD.numbers],
+      why: "Q10-18 on printed page 4, missing from the only copy; Q51-70 Hindi language, held for the owner's decision on Hindi",
+    },
   },
   // 22 PDF pages: 1 AglaSem cover, 2 booklet cover (CET 2023, Class IX,
   // SET-A), 3-21 the questions, 22 blank. Faint phone photos at 435x718 px
