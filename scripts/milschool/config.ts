@@ -158,6 +158,44 @@ export const PAPERS: Record<string, Paper> = {
     pattern: AISSEE_9,
     key: { dir: "_pdf\\aissee_c9_2022_key.pdf", page: 2, code: "D", docId: "8e51f9ea-d518-11f1-8d5f-0aa932765c8b", final: true },
   },
+  // NTA's own typeset PDF (RAMA/ENG+HIN), 36 pages, SINGLE column. Booklet D.
+  // Pages 2-5 are the English Language section (Q1-25); from Mathematics on,
+  // each item is printed twice on facing pages, Hindi on the EVEN page and
+  // English on the ODD page, so only odd pages 7-33 are used. The 2022 SECTION
+  // ORDER differs: Language 1-25, Maths 26-75, General Knowledge 76-100,
+  // Intelligence 101-125. Exam 09.01.2022. Key page 10 = Book D, English.
+  "aissee-6-2022": {
+    id: "aissee-6-2022",
+    exam: "aissee-6",
+    paper: 1,
+    sourceFile: "AISSEE_2022_Class6_BookD.pdf",
+    pagesDir: "aissee\\c6_2022_qp",
+    pdf: "aissee_c6_2022_qp.pdf",
+    pages: [2, 3, 4, 5, ...range(7, 33).filter((n) => n % 2 === 1)],
+    docId: "b62aa53a-a68c-11ec-9136-0a5e36bc6706",
+    pyqYear: 2022,
+    pyqNote: "AISSEE 2022 Class 6 (9 January 2022, booklet D, English)",
+    pattern: AISSEE_6,
+    key: { dir: "_pdf\\aissee_c6_2022_key.pdf", page: 10, code: "D", docId: "70888410-d518-11f1-8f07-0aa932765c8b", final: true },
+  },
+  // 33 PDF pages: 1 AglaSem cover, 2 booklet cover (code A, EN/HOLAB/6/24,
+  // English medium), 3-31 Q1-Q125, 32 rough work, 33 instructions. Language
+  // section English in both columns; from Mathematics on, English LEFT and
+  // Hindi RIGHT. Exam 28.01.2024. NTA final key (digital) page 10 = code A.
+  "aissee-6-2024": {
+    id: "aissee-6-2024",
+    exam: "aissee-6",
+    paper: 1,
+    sourceFile: "AISSEE_2024_Class6_CodeA.pdf",
+    pagesDir: "aissee\\c6_2024_qp",
+    pdf: "aissee_c6_2024_qp.pdf",
+    pages: range(3, 31),
+    docId: "357aacf0-cb9b-11ef-adce-0a5e36bc6706",
+    pyqYear: 2024,
+    pyqNote: "AISSEE 2024 Class 6 (28 January 2024, booklet A, English)",
+    pattern: AISSEE_6,
+    key: { dir: "_pdf\\aissee_c6_2024_key.pdf", page: 10, code: "A", docId: "7bdcb06c-cb9b-11ef-afa7-0a5e36bc6706", final: true },
+  },
   // 29 PDF pages: 1 AglaSem cover, 2-29 Q1-Q125 (booklet Q, PA0626/Q, English
   // medium). From the Maths section on, each page prints English in the LEFT
   // column and the same item in Hindi on the right: transcribe English only.
