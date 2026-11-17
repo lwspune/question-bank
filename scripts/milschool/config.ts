@@ -269,6 +269,10 @@ export const PAPERS: Record<string, Paper> = {
     pyqYear: 2024,
     pyqNote: "RMS CET 2024 Class 6",
     pattern: RMS_6,
+    // Q145 (complete the hatched circle) turns on the hatching direction in
+    // each sector, which this photo is too coarse to show; both blind passes
+    // guessed. Held rather than published unanswerable.
+    held: { numbers: [145], why: "Q145's hatching is unreadable in the only copy" },
   },
   // 25 PDF pages: 1 AglaSem cover, 2 booklet cover (CET 2023, Class VI, SET-C,
   // 2 h 30 min), 3-25 the questions. Clean phone photos.
@@ -453,6 +457,9 @@ export function catalogFor(exam: ExamKey): Catalog {
 }
 
 export const subjectsOf = (exam: ExamKey): string[] => Object.keys(catalogFor(exam));
+
+/** Rows a paper should end with: its pattern's questions minus any held. */
+export const expectedCount = (paper: Paper): number => paper.pattern.questions - (paper.held?.numbers.length ?? 0);
 
 export const dataPath = (id: string, kind: string) => join(DATA, `${id}.${kind}.json`);
 

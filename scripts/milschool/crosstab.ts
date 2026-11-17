@@ -28,7 +28,7 @@
  */
 import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { DATA, DERIVED, dataPath, pattern, requirePaper } from "./config";
+import { DATA, DERIVED, dataPath, expectedCount, pattern, requirePaper } from "./config";
 import { crosstab, type CrosstabRow, type Derivation, type TQ } from "../upsc/lib";
 
 type Adjudication = { answer: string; why: string };
@@ -109,7 +109,7 @@ function main() {
     if (b) console.log(`  ${k.padEnd(5)} ${String(b.agree).padStart(3)}/${String(b.total).padEnd(3)}`);
   }
 
-  if (rows.length !== pat.questions) {
+  if (rows.length !== expectedCount(paper)) {
     console.log(`\n!! ${rows.length} items crosstabbed but ${paper.id} has ${pat.questions}.`);
   }
 

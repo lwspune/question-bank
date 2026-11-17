@@ -30,7 +30,7 @@ import { join } from "node:path";
 import { commitStaged } from "../../src/lib/upload/commit";
 import { uploadImage } from "../../src/lib/storage/images";
 import { checkFigureFile, figureWatermarkIssue } from "../lib/figures/watermark";
-import { CREATED_BY, EXAMS, ORG_ID, examIdOf, pattern, pyqNoteFor, requirePaper } from "./config";
+import { CREATED_BY, EXAMS, ORG_ID, examIdOf, expectedCount, pattern, pyqNoteFor, requirePaper } from "./config";
 import { figurePath } from "./figures";
 import type { TQ } from "../upsc/lib";
 import { buildPaperRows } from "./rows";
@@ -273,7 +273,7 @@ async function main() {
   console.log(`done. ${linked} rows linked to job ${jobId}.`);
   // Withdrawn items are loaded too (as CANCELLED rows), so a whole paper is all
   // of its items.
-  if ((linked ?? 0) !== pat.questions) {
+  if ((linked ?? 0) !== expectedCount(paper)) {
     console.log(`\n!! expected ${pat.questions} row(s) for this paper, found ${linked}.`);
   }
 }

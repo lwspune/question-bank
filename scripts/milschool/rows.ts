@@ -88,7 +88,7 @@ export function buildPaperRows(paper: Paper): PaperRows {
   }
 
   // Run each row through the SAME validator the Excel upload path uses.
-  const errs = validateRows(built, 1, pat.questions, { exclude: dropped });
+  const errs = validateRows(built, 1, pat.questions, { exclude: [...dropped, ...(paper.held?.numbers ?? [])] });
   const parsed: ParsedRowPayload[] = [];
   // Withdrawn rows carry answer CANCELLED, which validateRows (A-D only) would
   // reject, so they go through validateRow alone.

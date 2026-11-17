@@ -147,7 +147,7 @@ function main() {
     reasoning: "",
   }));
   const placeholderRows = buildRecords(sets, placeholder);
-  const structErrs = validateRows(placeholderRows, 1, pat.questions);
+  const structErrs = validateRows(placeholderRows, 1, pat.questions, { exclude: paper.held?.numbers });
   if (structErrs.length) fail("4 STRUCTURE", structErrs);
   console.log(`GATE 4 STRUCTURE: ok`);
 
