@@ -105,6 +105,18 @@ const AISSEE_9: Pattern = { questions: 150, marks: 400, minutes: 180 };
 // marking (printed on the 2024 booklet's cover). We take the ENGLISH-medium
 // booklet: 2023 and 2025's copies are Hindi-medium (Hindi language section).
 const AISSEE_6: Pattern = { questions: 125, marks: 300, minutes: 150 };
+// RMS CET (Rashtriya Military Schools, AE-2): 200 one-mark questions, 2 h 30 min
+// (printed on the 2023 covers). Class 6: English, General Knowledge,
+// Intelligence, Mathematics, 50 each. Class 9: Part I English 50, Hindi 20,
+// Social Science 30; Part II Mathematics 50, Science 50 (2022 + 2023 covers).
+const RMS_6: Pattern = { questions: 200, marks: 200, minutes: 150 };
+const RMS_9: Pattern = { questions: 200, marks: 200, minutes: 150 };
+/** RMS Class 9's Section II is a Hindi LANGUAGE test (Q51-70): held until the
+ *  owner decides on Hindi (asked 2026-11-17, with AISSEE Class 6 2023/2025). */
+const RMS_9_HINDI_HELD = {
+  numbers: Array.from({ length: 20 }, (_, i) => 51 + i),
+  why: "Hindi language section, held for the owner's decision on Hindi",
+};
 
 export const PAPERS: Record<string, Paper> = {
   // 33 JPGs: 1 AglaSem cover, 2 booklet cover (code H, APR-9-25), 3 its back,
@@ -236,6 +248,110 @@ export const PAPERS: Record<string, Paper> = {
     pyqYear: 2020,
     pyqNote: "AISSEE 2020 Class 6 (5 January 2020, Set A)",
     pattern: AISSEE_6,
+  },
+
+  // ---- RMS CET. Every copy is a candidate's: ticks, highlighter and pen
+  // working on the page, so the transcription brief's ignore-marks rule
+  // matters. NO KEY is published for any RMS sitting: two blind passes +
+  // crosstab, as AISSEE 2020/2021. Options print as (a)-(d) in a 2x2 grid.
+  // 38 PDF pages: 1 AglaSem cover, 2-38 the booklet (no cover sheet in this
+  // copy), phone photos with yellow highlighter. English p2-9, GK p10-21,
+  // Intelligence p22-30, Mathematics p31-38 (Q152 on p31).
+  "rms-cet-6-2024": {
+    id: "rms-cet-6-2024",
+    exam: "rms-cet-6",
+    paper: 1,
+    sourceFile: "RMS_CET_2024_Class6.pdf",
+    pagesDir: "rms\\2024_docA",
+    pdf: "rms_2024_docA.pdf",
+    pages: range(2, 38),
+    docId: "39cbf2ce-cebf-11ef-8b1b-0a5e36bc6706",
+    pyqYear: 2024,
+    pyqNote: "RMS CET 2024 Class 6",
+    pattern: RMS_6,
+  },
+  // 25 PDF pages: 1 AglaSem cover, 2 booklet cover (CET 2023, Class VI, SET-C,
+  // 2 h 30 min), 3-25 the questions. Clean phone photos.
+  "rms-cet-6-2023": {
+    id: "rms-cet-6-2023",
+    exam: "rms-cet-6",
+    paper: 1,
+    sourceFile: "RMS_CET_2023_Class6_SetC.pdf",
+    pagesDir: "rms\\2023_docA",
+    pdf: "rms_2023_docA.pdf",
+    pages: range(3, 25),
+    docId: "38291a96-cebf-11ef-b36c-0a5e36bc6706",
+    pyqYear: 2023,
+    pyqNote: "RMS CET 2023 Class 6 (Set C)",
+    pattern: RMS_6,
+  },
+  // 30 PDF pages = booklet pages 2-31 of 32 (Set C), warped phone photos at
+  // 771x1029 px, candidate pen strokes over chosen option letters. Questions
+  // numbered straight through under grouped directions ("I. ... (5 marks)").
+  "rms-cet-6-2022": {
+    id: "rms-cet-6-2022",
+    exam: "rms-cet-6",
+    paper: 1,
+    sourceFile: "RMS_CET_2022_Class6_SetC.pdf",
+    pagesDir: "rms\\2022_docA",
+    pdf: "rms_2022_docA.pdf",
+    pages: range(1, 30),
+    docId: "ba7ab85c-7f60-11ed-8dde-0a5e36bc6706",
+    pyqYear: 2022,
+    pyqNote: "RMS CET 2022 Class 6 (Set C)",
+    pattern: RMS_6,
+  },
+  // 25 PDF pages: 1 AglaSem cover, 2-25 the booklet (clean scan, no cover
+  // sheet). Part I: English p2-7, Hindi p8-9 (held), Social Science p10-14;
+  // Part II: Mathematics p15-20, Science p21-25.
+  "rms-cet-9-2024": {
+    id: "rms-cet-9-2024",
+    exam: "rms-cet-9",
+    paper: 1,
+    sourceFile: "RMS_CET_2024_Class9.pdf",
+    pagesDir: "rms\\2024_docB",
+    pdf: "rms_2024_docB.pdf",
+    pages: range(2, 25),
+    docId: "3ac1981e-cebf-11ef-b6f8-0a5e36bc6706",
+    pyqYear: 2024,
+    pyqNote: "RMS CET 2024 Class 9",
+    pattern: RMS_9,
+    held: RMS_9_HINDI_HELD,
+  },
+  // 22 PDF pages: 1 AglaSem cover, 2 booklet cover (CET 2023, Class IX,
+  // SET-A), 3-21 the questions, 22 blank. Faint phone photos at 435x718 px
+  // with red ticks: readable, but a tick can sit on an option letter (the
+  // 2x2 grid position gives the letter).
+  "rms-cet-9-2023": {
+    id: "rms-cet-9-2023",
+    exam: "rms-cet-9",
+    paper: 1,
+    sourceFile: "RMS_CET_2023_Class9_SetA.pdf",
+    pagesDir: "rms\\2023_docB",
+    pdf: "rms_2023_docB.pdf",
+    pages: range(3, 21),
+    docId: "38eda8ca-cebf-11ef-842c-0a5e36bc6706",
+    pyqYear: 2023,
+    pyqNote: "RMS CET 2023 Class 9 (Set A)",
+    pattern: RMS_9,
+    held: RMS_9_HINDI_HELD,
+  },
+  // 23 PDF pages: 1 booklet cover (CET 2022, Class IX, academic session
+  // 2023-24; English p2-8, Hindi p8-10, Social Science p11-13, then Part II),
+  // 2-23 the questions.
+  "rms-cet-9-2022": {
+    id: "rms-cet-9-2022",
+    exam: "rms-cet-9",
+    paper: 1,
+    sourceFile: "RMS_CET_2022_Class9.pdf",
+    pagesDir: "rms\\2022_docB",
+    pdf: "rms_2022_docB.pdf",
+    pages: range(2, 23),
+    docId: "9fd56fbc-7f90-11ed-9530-0a5e36bc6706",
+    pyqYear: 2022,
+    pyqNote: "RMS CET 2022 Class 9 (for session 2023-24)",
+    pattern: RMS_9,
+    held: RMS_9_HINDI_HELD,
   },
   // 33 PDF pages: 1 AglaSem cover, 2 booklet cover (code A, EN/HOLAB/6/24,
   // English medium), 3-31 Q1-Q125, 32 rough work, 33 instructions. Language
