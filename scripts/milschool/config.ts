@@ -138,6 +138,26 @@ export const PAPERS: Record<string, Paper> = {
     pattern: AISSEE_9,
     key: { dir: "_pdf\\aissee_c9_2026_key.pdf", page: 2, code: "X", docId: "3def1a0e-859b-11f1-8c57-0aa932765c8b", final: true },
   },
+  // A DIGITAL PDF with a text layer (NTA's own typeset file), 28 pages: 1 cover
+  // instructions, 2-26 Q1-Q150, 27-28 rough work. Booklet D (AMAR/ENG). The 2022
+  // SECTION ORDER differs from later years: Maths 1-50, English 51-75, General
+  // Science 76-100, Social Science 101-125, Intelligence 126-150. Exam
+  // 09.01.2022. NTA final key page 2 = Book Code D; its legend (F = 3,4 and
+  // J = 2,3,4) is stored as NTA's meaning (Q112 2,3,4; Q116 3,4).
+  "aissee-9-2022": {
+    id: "aissee-9-2022",
+    exam: "aissee-9",
+    paper: 1,
+    sourceFile: "AISSEE_2022_Class9_CodeD.pdf",
+    pagesDir: "aissee\\c9_2022_qp",
+    pdf: "aissee_c9_2022_qp.pdf",
+    pages: range(2, 26),
+    docId: "b62d1b9e-a68c-11ec-9c99-0a5e36bc6706",
+    pyqYear: 2022,
+    pyqNote: "AISSEE 2022 Class 9 (9 January 2022, booklet D)",
+    pattern: AISSEE_9,
+    key: { dir: "_pdf\\aissee_c9_2022_key.pdf", page: 2, code: "D", docId: "8e51f9ea-d518-11f1-8d5f-0aa932765c8b", final: true },
+  },
   // 29 PDF pages: 1 AglaSem cover, 2-29 Q1-Q125 (booklet Q, PA0626/Q, English
   // medium). From the Maths section on, each page prints English in the LEFT
   // column and the same item in Hindi on the right: transcribe English only.

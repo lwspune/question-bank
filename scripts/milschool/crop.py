@@ -13,7 +13,7 @@ import json
 import os
 import sys
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 
 FIGURE_ROOT = r"C:\Vilas\LWS_Pune\Sainik_Schools\figures"
 LANE = os.path.dirname(os.path.abspath(__file__))
@@ -50,6 +50,23 @@ def main() -> None:
         for el, et, er, eb in fig.get("erase", []):
             cw, ch = crop.size
             ImageDraw.Draw(crop).rectangle((round(el * cw), round(et * ch), round(er * cw), round(eb * ch)), fill="white")
+        # `relabel`: [{"box": [l, t, r, b], "text": "(3)"}] whitens the box and
+        # writes the printed label back cleanly. For an option label a reader
+        # circled in pen inside a picture-option figure (AISSEE 2026 Class 6):
+        # the circle is a hint to a solver and noise to a student.
+        for rl in fig.get("relabel", []):
+            cw, ch = crop.size
+            l, t, r, b = rl["box"]
+            box = (round(l * cw), round(t * ch), round(r * cw), round(b * ch))
+            d = ImageDraw.Draw(crop)
+            d.rectangle(box, fill="white")
+            size = max(10, int((box[3] - box[1]) * 0.45))
+            try:
+                font = ImageFont.truetype(r"C:\Windows\Fonts\times.ttf", size)
+            except OSError:
+                font = ImageFont.load_default()
+            tw = d.textlength(rl["text"], font=font)
+            d.text((box[0] + (box[2] - box[0] - tw) / 2, box[1] + (box[3] - box[1] - size) / 2), rl["text"], fill="black", font=font)
         path = os.path.join(out, f"q{int(q['number']):03d}.png")
         crop.save(path)
         made.append((q["number"], fig.get("note", ""), crop))
