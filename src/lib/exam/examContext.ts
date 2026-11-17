@@ -381,7 +381,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     goal: "defence",
     displayName: "Foundation",
     examName: "Foundation Course", // must match the `exams` DB row exactly
-    solutionCoverage: "some", // 87% solved (2026-10-26)
+    // solutionCoverage absent = "all": 2644/2852 = 92.7% solved (measured 2026-11-17)
     guidesPath: null, // no /guide subtree — falls back to the index
     notesPath: "/notes/foundation-course", // exam hub: "coming soon" until notes ship
     practiceOnly: true, // worksheet-only corpus → /browse defaults to the Practice view
@@ -792,7 +792,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     goal: "management",
     displayName: "IPMAT Indore",
     examName: "IPMAT Indore", // must match the `exams` DB row exactly
-    solutionCoverage: "some", // 89% solved (2026-10-26)
+    // solutionCoverage absent = "all": 630/670 = 94.0% solved (measured 2026-11-17)
     pastPaperSolutions: true, // 407/450 past-paper questions solved (2026-10-26)
     family: "IPMAT",
     familyLabel: "Indore",
@@ -831,7 +831,8 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // has its own name, and the `exams` row uses it. Only its label INSIDE the
     // family is "Jammu", so the picker reads Indore / Rohtak / Jammu.
     examName: "JIPMAT", // must match the `exams` DB row exactly
-    solutionCoverage: "some", // 89% solved (2026-10-26)
+    // solutionCoverage absent = "all": 541/581 = 93.1% solved (measured 2026-11-17)
+    pastPaperSolutions: true, // 371/400 past-paper questions solved (measured 2026-11-17)
     family: "IPMAT",
     familyLabel: "Jammu",
     familyAxis: "Institute", // the picker chooses between IIMs, not classes

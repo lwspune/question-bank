@@ -22,12 +22,12 @@ describe("classifySolutionShare", () => {
 });
 
 describe("solutionCoverageOf", () => {
-  it("reads the registry, absent meaning all (measured 2026-10-26)", () => {
+  it("reads the registry, absent meaning all (measured 2026-11-17)", () => {
     expect(solutionCoverageOf(getExamBySlug("jee-mains"))).toBe("all");
     expect(solutionCoverageOf(getExamBySlug("imat"))).toBe("all");
     expect(solutionCoverageOf(getExamBySlug("neet"))).toBe("all");
-    expect(solutionCoverageOf(getExamBySlug("ipmat-indore"))).toBe("some");
-    expect(solutionCoverageOf(getExamBySlug("foundation-course"))).toBe("some");
+    expect(solutionCoverageOf(getExamBySlug("ipmat-indore"))).toBe("all");
+    expect(solutionCoverageOf(getExamBySlug("ipmat-rohtak"))).toBe("some");
     // No exam declares "none" since the solutions backfill; the value still reads through.
     expect(solutionCoverageOf({ solutionCoverage: "none" })).toBe("none");
     expect(solutionCoverageOf(undefined)).toBe("all");
