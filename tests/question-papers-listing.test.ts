@@ -87,6 +87,21 @@ describe("assemblePaper — a paper's items with their questions", () => {
   it("returns null when a question is no longer available, rather than a short paper", () => {
     expect(assemblePaper(items, [q("x"), q("y")])).toBeNull();
   });
+
+  it("prints OR once before an alternative that runs over several rows (UP Board, 2026-11-17)", () => {
+    // Q6 (a) (i)-(ii) OR Q6 (a) OR (i)-(ii): every OR row replaces Q6 (a) (i).
+    const rows = [
+      { position: 1, printedNumber: "6 (a) (i)", section: "", marks: 1, alternativeTo: null, caseKey: null, questionId: "a" },
+      { position: 2, printedNumber: "6 (a) (ii)", section: "", marks: 1, alternativeTo: null, caseKey: null, questionId: "b" },
+      { position: 3, printedNumber: "6 (a) (OR) (i)", section: "", marks: 1, alternativeTo: 1, caseKey: null, questionId: "c" },
+      { position: 4, printedNumber: "6 (a) (OR) (ii)", section: "", marks: 1, alternativeTo: 1, caseKey: null, questionId: "d" },
+      { position: 5, printedNumber: "6 (b)", section: "", marks: 2, alternativeTo: null, caseKey: null, questionId: "e" },
+      { position: 6, printedNumber: "6 (b) (OR)", section: "", marks: 2, alternativeTo: 5, caseKey: null, questionId: "f" },
+    ];
+    const r = assemblePaper(rows, ["a", "b", "c", "d", "e", "f"].map(q))!;
+    expect(r.map((i) => i.orBefore)).toEqual([false, false, true, false, false, true]);
+    expect(r.map((i) => i.isAlternative)).toEqual([false, false, true, true, false, true]);
+  });
 });
 
 describe("paperSitemapPaths — every /question-papers page a crawler should find", () => {

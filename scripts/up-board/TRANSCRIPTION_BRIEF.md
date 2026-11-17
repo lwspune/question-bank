@@ -1,0 +1,284 @@
+# UP Board PYQ: transcription brief
+
+You transcribe ONE UP Board (UPMSP) question paper into JSON: every question in
+English AND in its Hindi print. You do NOT solve anything. Read this whole file
+first. Keep your tool output small (no dumping whole files back to yourself).
+
+Your output is a data file plus a short report (at most 15 lines).
+
+## 1. What you are given
+
+- `scripts/up-board/out/<paperId>/pNN.png`: every page of the scan, 150 dpi,
+  1-based. `contact.png` beside them is a thumbnail sheet of the whole paper:
+  start there.
+- `npx tsx scripts/up-board/catalog.ts <subject>`: the chapters and subtopics
+  you may use. Copy names EXACTLY.
+- You WRITE `scripts/up-board/data/<paperId>.questions.json`, then run
+  `npx tsx scripts/up-board/validate.ts <paperId>` until it prints `ok`.
+
+Write the file with the Write tool. Never through a shell heredoc (the shell
+eats backslashes, so `\theta` arrives broken).
+
+## 2. The scan
+
+- A scan of the board's printed paper, no text layer. Read the images.
+- **Every question is printed twice: Hindi, then English.** Two layouts exist:
+  12 pages (a whole section in Hindi, then the same section in English) and 8
+  pages (each question in Hindi, then in English). Find which yours is on the
+  contact sheet, then confirm at full size.
+- **Account for every page.** Pages print `[N of M]` at the foot. If a page is
+  missing, or one language of any question is missing, STOP: write no file and
+  report which pages are missing. A paper without its English is left out on
+  purpose (owner's rule); do not translate anything yourself.
+- **Ignore everything the board did not print:**
+  - the hoster's address `https://www.upboardonline.com`, which is stamped in
+    the footer and sometimes INSIDE a question's text;
+  - rubber-stamped serial numbers running down the page;
+  - a student's ticks, circles and pen marks on options. **A tick is never an
+    answer.**
+
+## 3. Transcribe as printed
+
+Never correct a question to what it "obviously" meant. If something looks
+wrong (a dropped sign, an option that matches nothing, Hindi and English
+saying different things), transcribe each language as printed and add `_flag`
+with one plain sentence about what you saw. If a digit is unreadable in one
+language, the other language usually settles it: say so in `_flag`.
+
+**A word cut at the page edge:** where only a letter or a word is lost and the
+sentence plus the other language leave one possible reading ("चाहि" ->
+"चाहिए", "measu" -> "measure"), complete it and say so in `_flag`. Never keep
+a half-word in the text. Where a whole line or clause of one language is lost,
+do not reconstruct it: keep the fragment and add `"hiMissing": "<reason>"` (the
+row then ships English-only).
+
+## 4. Rows
+
+- **Section A (MCQs):** one row per question. `ref` `"Q1"`..`"Q20"`.
+- **Written questions:** one row per lettered part: `(a)`/`(क)`, `(b)`/`(ख)`,
+  ... A part's own sub-items `(i)`, `(ii)` stay inside that row's stem.
+  `ref` like `"B1a"`, `"B2f"`. A question with no lettered parts is one row,
+  `"B3"`.
+- **"Do any five parts"**: transcribe ALL the parts printed.
+- **OR (अथवा)**: ingest BOTH. The first keeps its ref (`"B3a"`), the
+  alternative gets the next (`"B3b"`) plus `"alternativeTo": "B3a"`.
+- **`questionNumber`** is what a student sees, in English form. If the paper
+  numbers each section from 1 (Class 10 does), prefix the section letter on
+  written questions: `"B1 (a)"`, `"B3"`, and `"B3 (OR)"` for the alternative.
+  Section A stays `"1"`..`"20"`. If a paper numbers straight through, use the
+  printed number: `"5 (b)"`.
+- MCQ options printed `(A)-(D)` or `(i)-(iv)` are stored in printed order as
+  labels `A`..`D`.
+- `marks`: the marks printed against that row (for an MCQ, 1).
+
+## 5. Fields
+
+```json
+{
+  "paper": "822-BW",
+  "year": 2025,
+  "subject": "maths10",
+  "pages": "1 cover; 2-4 Section A Hindi; 5-7 Section A English; 8-12 Section B, each part Hindi then English",
+  "questions": [
+    {
+      "ref": "Q2",
+      "questionNumber": "2",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Probability",
+      "subtopic": "Probability with Cards, Dice and Coins",
+      "difficulty": "EASY",
+      "stem": "A die is thrown once, then the probability of getting an odd number will be :",
+      "options": [
+        { "label": "A", "text": "\\(\\frac{1}{6}\\)" },
+        { "label": "B", "text": "\\(\\frac{1}{2}\\)" },
+        { "label": "C", "text": "\\(\\frac{1}{3}\\)" },
+        { "label": "D", "text": "1" }
+      ],
+      "hi": {
+        "stem": "किसी पासे को एक बार फेंका जाता है, तो एक विषम संख्या के आने की प्रायिकता होगी :",
+        "options": ["\\(\\frac{1}{6}\\)", "\\(\\frac{1}{2}\\)", "\\(\\frac{1}{3}\\)", "1"]
+      }
+    },
+    {
+      "ref": "B1f",
+      "questionNumber": "B1 (f)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Probability from a Collection of Objects",
+      "difficulty": "EASY",
+      "stem": "A box contains 4 red marbles, 8 white marbles and 5 green marbles. One marble is taken out from the box at random. What is the probability that the marble taken out will be\n(i) red ?\n(ii) not green ?",
+      "hi": {
+        "stem": "एक डिब्बे में 4 लाल कंचे, 8 सफेद कंचे तथा 5 हरे कंचे हैं। इस डिब्बे में से एक कंचा यादृच्छया निकाला जाता है, तो इसकी क्या प्रायिकता होगी कि निकाला गया कंचा\n(i) लाल है ?\n(ii) हरा नहीं है ?"
+      }
+    }
+  ]
+}
+```
+
+(The page in `"pages"` is your page map: say what each page carries.)
+
+- `format`: `"mcq"` or `"subjective"`. Never write `answer` or `solution`.
+- `context`: only for text several rows share (a passage, a data table both
+  parts use), in both languages or neither.
+- `difficulty`: `EASY` (one step, recall), `MODERATE` (a few steps, the usual
+  board question), `HARD` (long, or a trap). Judge for a Class 10/12 board
+  student.
+- `figure`: when the question needs its printed figure (a diagram, a graph, a
+  circuit): `{ "page": <the ENGLISH print's page>, "region": [left, top,
+  right, bottom] as fractions of that page, "note": "what it shows" }`. Keep
+  every label inside the box; leave the question text out. Then CHECK it:
+  run `py scripts/up-board/crop.py <paperId>` and look at
+  `out/<paperId>/_figures.png`. No line of question or option text may show
+  above, below or beside the figure, and no label may be clipped; move the
+  region and re-run until both hold. Where a stamp crosses the figure and the
+  other language prints a clean copy, point the region at that copy and say so
+  in `note`. A figure only
+  printed once (shared by both languages) is fine: give that page. Write the
+  stem as printed; a figure's labels do not go into the text.
+- `_flag`: optional, one plain sentence.
+
+## 6. Text rules
+
+- **Maths in `\( ... \)`**, both languages, bank-wide convention. Not `$`.
+  Fractions `\frac{}{}`, roots `\sqrt{}`, degrees `60^\circ`, vectors
+  `\vec{a}`, unit vectors `\hat{i}`, matrices `\begin{bmatrix}`, determinants
+  `\begin{vmatrix}`. A plain number or unit outside an expression can stay
+  plain text (`21 cm`). Balance every `\(` with `\)`.
+- In Hindi, keep the maths exactly as in English, so numbers agree across
+  languages (validate.ts warns where they differ: look again at both pages).
+- **Hindi in Unicode Devanagari** as printed (`सेमी`, not "cm", if the Hindi
+  prints सेमी).
+- **Tables** as GFM pipe tables: a header row, then a `|---|---|` row, then
+  data rows.
+- A line break inside a field is a real newline (`\n` in JSON), never the two
+  characters backslash and n inside the text.
+- Chemistry: formulas in maths, `\(\mathrm{H_2SO_4}\)`, arrows
+  `\(\rightarrow\)`.
+
+## 7. Chapter and subtopic
+
+From `catalog.ts` only. A board paper covers the whole syllabus; pick the
+chapter the question TESTS. If nothing fits, use the closest subtopic and say
+so in `_flag`; never invent a name.
+
+## 8. Report (at most 15 lines)
+
+- the page map and layout (12-page or 8-page);
+- row counts: MCQ, written, OR alternatives; marks total of Section A and B as
+  printed;
+- every `_flag`, one line each;
+- figures: which refs;
+- the last line `validate.ts` printed.
+
+## 9. Class 10 Science (824)
+
+Measured on 2025 CM. Check it on your paper; report anything different.
+
+- **Part A (खण्ड-अ)**: 20 MCQs, numbered 1-20 straight through three
+  sub-sections (Physics, Chemistry, Biology). Refs `Q1`..`Q20`, questionNumber
+  `"1"`..`"20"`, section `"A"`. Exactly 20 MCQs (validate.ts checks).
+- **Part B (खण्ड-ब)**: written questions numbered 1-11 straight through the
+  same three sub-sections. Parts are printed `(i)`, `(ii)`. One row per part:
+  ref `B1i`, `B1ii`, questionNumber `"B1 (i)"`, `"B1 (ii)"`, section `"B"`. A
+  question with no parts is one row, `B9`, `"B9"`. Sub-items inside a part
+  (`(a)`, `(b)`, `(c)`, marked e.g. `1 + 1 + 1`) stay inside that row's stem.
+- **A question that is a list of separate items** ("Write short notes on
+  (i) ... (ii) ...", "Write the structural formulas of (i) ... (ii) ...",
+  "any two of the following") is split: one row per printed item, `B9i`,
+  `B9ii`, each with its own chapter, its share of the marks, and the shared
+  instruction repeated at the start of its stem in both languages ("Write a
+  short note on: Food chain"). "Any two" keeps every item, like Maths' "do any
+  five". (Decided 2026-11-17 after CM/CJ split and CN/CK kept one row.)
+- **OR** can sit on a whole question or on one part. The alternative gets
+  `OR` added: ref `B4iiOR`, questionNumber `"B4 (ii) (OR)"`,
+  `"alternativeTo": "B4ii"`; for a whole question `B11OR`, `"B11 (OR)"`.
+- Chemistry: formulas and equations in maths, `\(\mathrm{CaSO_4 \cdot \frac{1}{2}H_2O}\)`,
+  states as printed `\(\mathrm{(aq)}\)`, arrows `\(\rightarrow\)`. A circuit,
+  ray diagram or labelled organ is a `figure`.
+- Chapter: the one the row TESTS. A Science paper may examine a topic the
+  current NCERT book dropped (e.g. Periodic Classification, Sources of Energy,
+  Management of Natural Resources). If no catalog chapter fits, use the closest
+  and put `NO CHAPTER: <topic>` at the start of `_flag`: the main session adds
+  the chapter UP still teaches.
+
+## 10. Class 12 Mathematics (324)
+
+Measured on 2025 IC and 2026 CX. Check it on your paper; report anything
+different.
+
+- One paper of 100 marks, nine questions numbered 1-9 straight through, no
+  sections (`"section": ""`). Q1 = five MCQs (a)-(e), options printed `A)`-`D)`
+  or `i)`-`iv)`; Q2 = five 1-mark parts; Q3, Q4 = 2-mark parts; Q5, Q6 = 5-mark
+  parts; Q7-Q9 = "Do any one part" of (a)/(b), 8 marks each.
+- Refs: `Q1a` ... `Q9b`, questionNumber `"1 (a)"`, `"9 (b)"`. Hindi part labels
+  क/ख/ग/घ/ङ map to (a)-(e).
+- "Do any one part" / "any four" keeps EVERY printed part as its own row (no
+  `alternativeTo`: the paper prints them as parts, not as OR).
+- A part that lists separate items ("Solve the following: (i) ... (ii) ...")
+  gets one row per item: `Q8bi`, `Q8bii`, questionNumber `"8 (b) (i)"`, the
+  shared instruction repeated at the start of each stem.
+- Exactly 5 MCQs per paper (validate.ts checks).
+- **A page that reads "MISSING PAGE"** is the hoster's placeholder for a page it
+  never had: the paper is incomplete. Stop and report, as for any missing page.
+
+## 11. Class 12 Physics (346), Chemistry (347), Biology (348)
+
+Measured on 2026 Physics DW; check it on your paper and report differences.
+
+- Questions numbered 1-9 straight through Sections A-E (खण्ड अ-य). Put the
+  printed section letter in `"section"` (`"A"` ... `"E"`). Q1's parts are the
+  MCQs (6 in Physics DW; count what your paper prints and report it); the later
+  questions have parts (a)/(क) ... of 1, 2, 3 or 5 marks.
+- Refs: `Q1a`, questionNumber `"1 (a)"`. A whole-question OR: `Q6OR`,
+  `"6 (OR)"`, `"alternativeTo": "Q6"`; an OR on one part: `Q3cOR`,
+  `"3 (c) (OR)"`. An OR alternative made of parts: `Q6ORa`, `Q6ORb`.
+- "Any N" / "any one" keeps every printed part as its own row. A part that is a
+  list of separate items gets one row per item (`Q5ei`, `Q5eii`), with the
+  shared instruction repeated in each stem.
+- A part with sub-questions asked together on one thing (e.g. "(i) V is halved
+  (ii) l is doubled ... what happens to the drift velocity?") stays one row.
+- The printed list of physical constants on the last page is not a question:
+  do not make a row for it.
+- Chemistry: formulas and equations in `\(\mathrm{...}\)`, arrows
+  `\(\rightarrow\)`, structures as stacked LaTeX where needed (or a `figure`
+  when a drawn structure is the question). Biology: a diagram to label is a
+  `figure`; a diagram the student must draw is text only.
+- Chapter: the one the row TESTS; if nothing in the catalog fits, the closest
+  plus `NO CHAPTER: <topic>` at the start of `_flag`.
+
+### 11a. Chemistry (347), measured on 2026 DZ
+
+- 8 pages, 70 marks, questions 1-7 with NO section letters: put `""` in
+  `"section"`. Each question is printed in Hindi, then in English.
+- Q1 (a)-(f) are the MCQs (6 on DZ). A "match Column I with Column II" MCQ
+  keeps both columns as a GFM pipe-table in the stem (header row + `|---|`
+  separator), and its options are the printed pairings, e.g.
+  `A-(d), B-(c), C-(e), D-(a), E-(b)`.
+- ORs sit on single PARTS (6a, 6b, 7a, 7b on DZ and EA): `Q6aOR`, or
+  `Q6aORi` ... when the alternative is a list; `alternativeTo` points at the
+  first row of the original part (`Q6ai`). A list ("write short notes on",
+  "give the uses of", or (i)/(ii)/(iii) separate questions with no shared
+  instruction) gets one row per item, so half marks (1.5, 2.5) occur; a part
+  naming two reactions in one sentence with no (i)/(ii) stays one row.
+- A misprinted formula (`[Ni(CH)4]2-` for `[Ni(CN)4]2-`) is kept as printed
+  with a `_flag`; the solution says what is meant.
+- A reaction asked as a scheme (`A -> [B] -> [C]`, a benzene ring with OH)
+  is typed as LaTeX: `\(\mathrm{C_6H_5OH}\)`, reagents over the arrow with
+  `\(\xrightarrow{\mathrm{CHCl_3,\ aq.\ NaOH}}\)`. Use a `figure` only when a
+  drawn structure cannot be written as a formula.
+- Printed data (E° values, K_f, Λ° values) belongs in the stem of the row
+  that uses it, in both languages.
+- 2025 prints differ (measured on JZ ... KF): some are 15 large-print pages
+  whose footers say "[n of 16]" while the cover says 15 (nothing missing when
+  the last page ends with the closing rule); some are 7 or 8 pages ending
+  with the board's line "347(XX)-...". On KC and KD the OR covers the WHOLE
+  of Q6 / Q7, each side with its own (a)/(b): refs `Q6ORai`, `Q6ORbii`,
+  `alternativeTo` = `Q6ai`. Where marks are printed per letter (A-E) rather
+  than per item, a row's marks are the letters it asks for. An item further
+  split into (x)/(y), or (i)/(ii) inside (i)/(ii), goes one level deeper
+  (`Q5biix`, `Q5bi1`). A topic outside the catalog (Schmidt, Frankland,
+  Tischenko, p-block) is filed on the closest subtopic with `NO CHAPTER:`.

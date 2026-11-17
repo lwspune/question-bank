@@ -10,7 +10,7 @@
  * notes subject for that exam (or an honest "coming soon" when none have
  * shipped) — derived from NOTES_CHAPTERS, so a new exam needs no new page.
  */
-import type { AltLang } from "@/lib/i18n/bilingual";
+import type { AltLang, QuestionLang } from "@/lib/i18n/bilingual";
 
 export type ExamSlug =
   | "nda"
@@ -26,6 +26,8 @@ export type ExamSlug =
   | "isc-12"
   | "iiser-iat"
   | "icse-10"
+  | "up-board-10"
+  | "up-board-12"
   | "mh-sb-9"
   | "mh-sb-11"
   | "mh-ssc-10"
@@ -62,7 +64,7 @@ export type ExamSlug =
  * School boards the bank carries content for. NOT every exam has one — a
  * coaching/entrance exam (NDA, NEET, the Foundation Course) has no board.
  */
-export type Board = "Maharashtra State Board" | "CBSE" | "CISCE";
+export type Board = "Maharashtra State Board" | "CBSE" | "CISCE" | "UP Board";
 
 /** School class. */
 export type Std = 9 | 10 | 11 | 12;
@@ -136,6 +138,13 @@ export type ExamEntry = {
    */
   boardExam?: boolean;
   /**
+   * Whole board papers on /question-papers WITHOUT a textbook corpus, so no
+   * /board reader and no Board tab (`boardExam` gives both). UP Board
+   * (2026-11-17) is the first: its papers are in, its textbook is NCERT's and
+   * not ingested under it. Read through `hasQuestionPapers`.
+   */
+  pastPaperPages?: boolean;
+  /**
    * Exam has published mock tests (real PYQ papers served as timed, auto-graded
    * online tests at `/mock`). Drives the gated "Mocks" primary-nav tab — shown
    * only when the active exam actually has mocks, like Papers is member-gated.
@@ -175,6 +184,15 @@ export type ExamEntry = {
    * MH SSC), Hindi for SSC (2026-10-20). Read through `examAltLang`.
    */
   secondLang?: AltLang;
+  /**
+   * The language a `bilingual` exam's questions open in before the reader has
+   * chosen one. Absent = the language rule (`defaultLangFor`: a Hindi exam opens
+   * in English, a Marathi one in both). UP Board declares "hi": its readers are
+   * Hindi-medium (owner, 2026-11-17). Read through `examDefaultLang`; a page
+   * passes it to its questions with QuestionLangDefaultProvider.
+   * tests/exam-default-lang.test.ts holds it to one of the exam's own languages.
+   */
+  defaultLang?: QuestionLang;
   /**
    * The exam's PAST PAPERS (published `pyq` + `full` mocks) carry worked
    * solutions, not just answers: nine in ten questions or more. Decides whether
@@ -628,6 +646,57 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     mixedFormats: true,
     board: "CISCE",
     std: 10,
+  },
+  {
+    slug: "up-board-10",
+    passScope: "free", // Class 9-10: no pass needed (migration 0210)
+    tier: "school",
+    goal: "boards",
+    displayName: "UP Board Class 10",
+    examName: "UP Board Class 10", // must match the `exams` DB row exactly
+    guidesPath: null,
+    notesPath: null, // boards get no notes (owner)
+    // UPMSP's Class 10 board papers 2025 + 2026, Mathematics (822) + Science
+    // (824), from upboardonline.com scans of the board's own print
+    // (scripts/up-board/). PYQ-only, so NOT practiceOnly; NOT boardExam, for the
+    // isc-12 reason: no textbook-structured corpus. UPMSP publishes no key: every
+    // answer is derived twice blind and says so.
+    mixedFormats: true,
+    // Printed in Hindi and English; English is the canonical row, Hindi a
+    // translation (0118). Opens in Hindi: UP's readers are Hindi-medium.
+    bilingual: true,
+    secondLang: "hi",
+    defaultLang: "hi",
+    pastPaperSolutions: true, // PUBLIC since 2026-11-17, every row solved in both languages
+    // Chapter tests (scripts/mocks/build-sectional.ts --exam=up-board-1x): built
+    // as drafts 2026-11-17, published with the push that ships this entry.
+    hasMocks: true,
+    pastPaperPages: true, // /question-papers, but no /board reader (isc-12's reason)
+    board: "UP Board",
+    std: 10,
+  },
+  {
+    slug: "up-board-12",
+    tier: "senior",
+    goal: "boards",
+    displayName: "UP Board Class 12",
+    examName: "UP Board Class 12", // must match the `exams` DB row exactly
+    guidesPath: null,
+    notesPath: null, // boards get no notes (owner)
+    // UPMSP's Class 12 board papers 2025 + 2026, Mathematics (324), Physics
+    // (346), Chemistry (347); Biology skipped (owner, 2026-11-17). Same source,
+    // method and language set-up as up-board-10.
+    mixedFormats: true,
+    bilingual: true,
+    secondLang: "hi",
+    defaultLang: "hi",
+    pastPaperSolutions: true, // PUBLIC since 2026-11-17, every row solved in both languages
+    // Chapter tests (scripts/mocks/build-sectional.ts --exam=up-board-1x): built
+    // as drafts 2026-11-17, published with the push that ships this entry.
+    hasMocks: true,
+    pastPaperPages: true, // /question-papers, but no /board reader (isc-12's reason)
+    board: "UP Board",
+    std: 12,
   },
   {
     slug: "mh-sb-9",
@@ -1229,6 +1298,11 @@ export function getExamBySlug(slug: string | null | undefined): ExamEntry | null
  * Null for a DB exam with no registry entry, which callers must treat as
  * "ungrouped", never as "drop it" — see groupExamFamilies.
  */
+/** The language an exam's questions open in before the reader chooses, or null for the language rule. */
+export function examDefaultLang(entry: ExamEntry | null | undefined): QuestionLang | null {
+  return entry?.defaultLang ?? null;
+}
+
 /** The second language a bilingual exam prints, or null when it prints English only. */
 export function examAltLang(entry: ExamEntry | null | undefined): AltLang | null {
   return entry?.bilingual ? (entry.secondLang ?? "mr") : null;
@@ -1283,6 +1357,13 @@ export function examHasMocks(slug: string | null | undefined): boolean {
 export const BOARD_EXAMS: readonly ExamEntry[] = EXAM_REGISTRY.filter(
   (e) => e.boardExam === true
 );
+
+/** The exam has /question-papers pages: a textbook board, or a board with papers only. */
+export function hasQuestionPapers(entry: ExamEntry | null | undefined): boolean {
+  return entry?.boardExam === true || entry?.pastPaperPages === true;
+}
+
+export const QUESTION_PAPER_EXAMS: readonly ExamEntry[] = EXAM_REGISTRY.filter(hasQuestionPapers);
 
 /**
  * Distinct boards, in registry order — the written-paper builder's first

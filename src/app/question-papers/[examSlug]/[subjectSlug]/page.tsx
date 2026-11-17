@@ -5,7 +5,7 @@ import { ArrowRight, ChevronRight } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
-import { getExamBySlug } from "@/lib/exam/examContext";
+import { getExamBySlug, hasQuestionPapers } from "@/lib/exam/examContext";
 import { slugify } from "@/lib/board/query";
 import { getPublishedPapersFor, type PaperListingWithExam } from "@/lib/questionPapers/query";
 import { subjectListing } from "@/lib/questionPapers/listing";
@@ -33,7 +33,7 @@ export function generateStaticParams(): Params[] {
 
 async function load(params: Params) {
   const exam = getExamBySlug(params.examSlug);
-  if (!exam?.boardExam) return null;
+  if (!exam || !hasQuestionPapers(exam)) return null;
   const mine = (p: PaperListingWithExam) =>
     p.examName === exam.examName && slugify(p.subjectName) === params.subjectSlug;
   const papers = (await getPublishedPapersFor(mine)).filter(mine);

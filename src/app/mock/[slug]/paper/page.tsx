@@ -11,7 +11,8 @@ import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getMockBySlug, loadReviewQuestions } from "@/lib/mocks/query";
 import { mockDownloadHref } from "@/lib/mocks/catalogue";
 import { markingCopy, sectionMarkingLines } from "@/lib/mocks/marking";
-import { examAltLang, getExamByName } from "@/lib/exam/examContext";
+import { examAltLang, examDefaultLang, getExamByName } from "@/lib/exam/examContext";
+import { QuestionLangDefaultProvider } from "@/lib/i18n/QuestionLangDefault";
 import {
   buildPaperSections,
   isReadablePaper,
@@ -81,9 +82,10 @@ export default async function MockPaperPage(props: { params: Promise<Params> }) 
   const marking = markingCopy(mock.marking);
   const bySection = sectionMarkingLines(mock.sections, mock.questions);
   const altLang = examAltLang(exam);
+  const langDefault = examDefaultLang(exam);
 
   return (
-    <>
+    <QuestionLangDefaultProvider value={langDefault}>
       <AppHeader />
       <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
         <Breadcrumbs
@@ -155,6 +157,6 @@ export default async function MockPaperPage(props: { params: Promise<Params> }) 
         </div>
       </main>
       <Footer />
-    </>
+    </QuestionLangDefaultProvider>
   );
 }

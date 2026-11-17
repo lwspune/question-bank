@@ -1197,6 +1197,18 @@ export const MH_SSC_10_CHAPTER_MCQ_PAPER = boardPaper(
   ]
 );
 
+// UP Board (2026-11-17): the board's own MCQs from the 2025 + 2026 papers, by
+// chapter. Biology skipped (owner). Hindi and English, as printed.
+export const UP_10_CHAPTER_MCQ_PAPER = boardPaper(
+  "UP Board Class 10", "up-board-10", "chapter-mcq", "Chapter MCQs", STEM_SECS,
+  [["mathematics", "Mathematics"], ["science", "Science"]]
+);
+
+export const UP_12_CHAPTER_MCQ_PAPER = boardPaper(
+  "UP Board Class 12", "up-board-12", "chapter-mcq", "Chapter MCQs", STEM_SECS,
+  [["physics", "Physics"], ["chemistry", "Chemistry"], ["mathematics", "Mathematics"]]
+);
+
 export const MH_SSC_10_HUMANITIES_MCQ_PAPER = boardPaper(
   "Maharashtra State Board Class 10", "mh-ssc-10", "chapter-mcq-humanities", "Chapter MCQs: Social Science", HUMANITIES_SECS,
   [["history", "History"], ["political-science", "Political Science"], ["geography", "Geography"]]
@@ -1321,6 +1333,8 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   MH_HSC_12_CHAPTER_MCQ_PAPER,
   MH_SSC_10_CHAPTER_MCQ_PAPER,
   MH_SSC_10_HUMANITIES_MCQ_PAPER,
+  UP_10_CHAPTER_MCQ_PAPER,
+  UP_12_CHAPTER_MCQ_PAPER,
   // One code for every year; the label is the same, the build picks the year's blueprint.
   uceedPaper(2026),
 ];
