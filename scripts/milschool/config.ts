@@ -84,6 +84,10 @@ export type Paper = {
   pattern: Pattern;
   /** NTA's key: its folder under SOURCE_ROOT, and the JPG carrying this booklet's code. */
   key?: { dir: string; page: number; code: string; docId: string; final: boolean };
+  /** Question numbers deliberately NOT transcribed (e.g. a Hindi-language
+   *  section held for the owner's decision). Coverage expects them absent and
+   *  fails if one turns up, so a hold is always written down, never silent. */
+  held?: { numbers: number[]; why: string };
 };
 
 const range = (from: number, to: number): number[] => {

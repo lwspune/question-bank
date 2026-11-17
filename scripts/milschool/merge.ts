@@ -102,15 +102,22 @@ function main() {
 
   // --- 3. coverage ---------------------------------------------------------
   const nums = new Set(questions.map((q) => q.number));
+  const held = new Set(paper.held?.numbers ?? []);
   const missing: number[] = [];
-  for (let n = 1; n <= pat.questions; n++) if (!nums.has(n)) missing.push(n);
+  for (let n = 1; n <= pat.questions; n++) if (!nums.has(n) && !held.has(n)) missing.push(n);
   const extra = [...nums].filter((n) => n < 1 || n > pat.questions).sort((a, b) => a - b);
+  const heldPresent = [...nums].filter((n) => held.has(n)).sort((a, b) => a - b);
   const covErrs = [
     ...missing.map((n) => `missing Q${n}`),
     ...extra.map((n) => `Q${n} is outside 1..${pat.questions}`),
+    ...heldPresent.map((n) => `Q${n} is HELD (${paper.held!.why}) but was transcribed`),
   ];
   if (covErrs.length) fail("3 COVERAGE", covErrs);
-  console.log(`GATE 3 COVERAGE: ok (1..${pat.questions}, none missing, none out of range)`);
+  console.log(
+    `GATE 3 COVERAGE: ok (1..${pat.questions}, none missing, none out of range` +
+      (held.size ? `; ${held.size} held: ${paper.held!.why}` : "") +
+      `)`
+  );
 
   // --- 3b. sets ------------------------------------------------------------
   // Items sharing a passage become a SET, which commitStaged turns into a
