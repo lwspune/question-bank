@@ -18,7 +18,11 @@ the key the nearest one) and were animated; settled below.
 
 ## Open
 
-None. The 274 rows found in the MHT-CET (153) and JEE Mains (121) animation runs were settled on 2026-11-13, each checked against its source paper; see below.
+The 274 rows found in the MHT-CET (153) and JEE Mains (121) animation runs were settled on 2026-11-13, each checked against its source paper; see below.
+
+| Question | Exam · chapter | Problem | Found |
+|---|---|---|---|
+| `be50a369` | IMAT 2025 Q51 · Mathematics · Numbers, Powers and Logarithms | **Duplicate options.** Our A and C both print a² + b² (keyed D, (a − 2b)², is right and unaffected). The source prints it so: MUR's CompitoInglese2025.pdf Q51 has B and E both a² + b², key A (a − 2b)². Recommendation, as `521dd092` below: a notice, no grace. A notice changes the solution, so its animation (al-imat-mat-3) must be re-tied with `--replace` after. | 2026-11-17, IMAT/ENEM animation run |
 
 ## Settled
 

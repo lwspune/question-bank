@@ -43,6 +43,11 @@ a skip.
 ## IMAT (English)
 
 - Everything a student reads is English, as on the rest of the site.
+- Currency is the one the question prints (€ in most IMAT questions, £ in a
+  few): never swap one for the other. A console that cannot show € is not a
+  reason to write £ (2026-11-17: 8 drafts did, caught on the sheet).
+- Words inside tex go in `\\text{...}`: bare words lose their spaces
+  ("300 µm stays as it is" printed as one word).
 - Logical Reasoning: Numerical Reasoning and Data Interpretation are mostly
   algebra steps. A sequence ("next number"): algebra lines showing the rule
   (`calc` per term). Critical Thinking is argument analysis: skip, unless the
