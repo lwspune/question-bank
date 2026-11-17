@@ -86,16 +86,45 @@ To fix a committed row's text, correct the BAND file, re-run merge, then
 hash with the same builder as commit (`rows.ts`) and ends by checking every
 live row of the paper against the build.
 
-## Status
+## Written papers (RIMC Maths and English)
 
-- **aissee-9-2025** (code H): 150 rows PRIVATE, 13 figures, 2026-11-17. Each
-  blind pass 146/148 against NTA's final key, HIGH 141/141; both flagged the two
-  items NTA dropped (Q10, Q68). The two shared misses (Q58, Q61) were faint
-  figures, solved by hand from the page. Q100: NTA accepted (2) and (3), grace.
-  Transcribed from the viewer JPGs (before the PDF lesson), then proof-read
-  against the PDF: Q23 option (3) and eight NOT underlines corrected in place.
-- **aissee-9-2024** (code E): 150 rows PRIVATE, 12 figures. Each blind pass
-  149/150 against NTA's final key, passes agreed on all 150. Q73 (water image,
-  options (3) and (4) drawn almost alike): key kept, notice, grace.
-- **aissee-9-2026** (Set X): transcribed from the PDF, merged, 10 figures;
-  NTA final key read from its text layer (Q85 accepts 1,4; Q117 accepts 1,2).
+RIMC's Maths (30 problems, 200 marks) and English (125 marks) are marked step by
+step, so they ride as `subjective` rows (`format: "written"` in config). Every
+separately marked part is one row; the merge gate checks the marks total
+against the printed maximum instead of an item count.
+
+```sh
+# 2. TRANSCRIBE (TRANSCRIPTION_BRIEF.md section 10), 3. merge, 4. crop, 5. dump-derive as above
+# 6. two blind solutions per item: derived/<id>.{a,b}.pN.json (WRITTEN_DERIVATION_BRIEF.md)
+npx tsx scripts/milschool/crosstab-written.ts <id> [--apply]   # 7. rule every dispute + weak agreement
+npx tsx scripts/milschool/commit.ts <id> [--apply]             # 8. PRIVATE
+```
+
+- Rulings go in `data/<id>.adjudicated.json`: `pick` a/b, or `finalAnswer` +
+  `solution` to rewrite, plus `why`, an optional student-facing `notice`, and
+  `verified: false` where a fact could not be confirmed. Writing tasks
+  (`open: true`) keep one sample answer and are never compared.
+- A misprinted question is solved AS PRINTED when it can be (the answer the
+  setter likely meant goes in the notice); only an impossible one is solved in
+  its usual form.
+- `RIMC_WRITTEN_HELD`: an item that cannot be answered keeps its transcription
+  (its marks still count) but gets no packet and no row (Dec 2018 Maths Q25).
+- `RIMC_PRINTED_MARKS`: a paper whose questions print more marks than its
+  stated maximum (June 2021 English 130, Dec 2019 English 135).
+- Short GK answers (fill-ins, true/false) are held on the GK paper and moved to
+  `<gk id>-short` by `split-short.ts`.
+
+## Status (2026-11-17)
+
+All rows PRIVATE; no mocks yet.
+
+| Exam | Papers | Rows | Answers |
+|---|---|---|---|
+| AISSEE Class 6 / 9 | 6 + 6 | 700 + 900 | NTA final key; both blind passes scored against it |
+| RMS CET Class 6 / 9 | 3 + 3 | 593 + 590 | no key: two blind passes, every dispute ruled by hand |
+| RIMC (GK, Maths, English, 2018-2023) | 34 | 1,298 (567 written) | no key: as RMS; written items ruled part by part |
+
+Held on purpose (config `held`): AISSEE C6 2023/2025 Q1-25 (Hindi language
+section of a Hindi-medium copy, owner); the RMS items in config; RIMC 2020 Dec
+GK Q75 (not printed) and Dec 2018 Maths Q25. Open: 12 committed AISSEE figures
+may have lost a grey fill in the clean step (SUGGESTIONS.md backfill ledger).
