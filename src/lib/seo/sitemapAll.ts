@@ -869,13 +869,14 @@ export async function allSitemapEntries(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly" as const,
       priority: 0.8,
     })),
-    {
-      // The calculation game (2026-11-16): open to everyone, signed in or not.
-      url: `${SITE_URL}/play`,
+    // The /play games hub and its games (2026-11-16; a hub since 2026-11-17),
+    // open to everyone, signed in or not.
+    ...["/play", "/play/maths", "/play/word-builder", "/play/daily-word"].map((path) => ({
+      url: `${SITE_URL}${path}`,
       lastModified: buildDate,
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: 0.6,
-    },
+    })),
     {
       url: `${SITE_URL}/privacy`,
       lastModified: buildDate,

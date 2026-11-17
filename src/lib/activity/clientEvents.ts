@@ -456,7 +456,43 @@ const PLAY_MAX_ANSWERS = 200;
 const PLAY_MAX_POINTS = 20_000;
 const PLAY_KEYS = new Set(["kind", "level", "correct", "wrong", "points", "cleared"]);
 
+/** A Word Builder round asks 10 words; first-try right + wrong cannot pass that. */
+const WORD_ROUND_MAX = 10;
+const WORD_KEYS = new Set(["kind", "game", "correct", "wrong", "mastered"]);
+const DAILY_KEYS = new Set(["kind", "game", "solved", "guesses"]);
+
+/**
+ * The English games (2026-11-17) carry a `game` field; a maths round never
+ * does, so rows from before and after the /play hub read the same.
+ */
+function parseWordGame(raw: Record<string, unknown>): ParseClientEventResult {
+  const count = (v: unknown, max: number): v is number =>
+    typeof v === "number" && Number.isInteger(v) && v >= 0 && v <= max;
+  if (raw.game === "word_builder") {
+    if (Object.keys(raw).some((k) => !WORD_KEYS.has(k))) return { ok: false, error: "Unknown field on a play round." };
+    const { correct, wrong, mastered } = raw;
+    if (!count(correct, WORD_ROUND_MAX) || !count(wrong, WORD_ROUND_MAX) || correct + wrong > WORD_ROUND_MAX) {
+      return { ok: false, error: "Invalid counts." };
+    }
+    if (!count(mastered, WORD_ROUND_MAX)) return { ok: false, error: "Invalid mastered." };
+    return { ok: true, value: { kind: "play_round", metadata: { game: "word_builder", correct, wrong, mastered } } };
+  }
+  if (raw.game === "daily_word") {
+    if (Object.keys(raw).some((k) => !DAILY_KEYS.has(k))) return { ok: false, error: "Unknown field on a play round." };
+    const { solved, guesses } = raw;
+    if (typeof solved !== "boolean") return { ok: false, error: "Invalid solved." };
+    if (typeof guesses !== "number" || !Number.isInteger(guesses) || guesses < 1 || guesses > 6) {
+      return { ok: false, error: "Invalid guesses." };
+    }
+    // An unsolved word only ends when the sixth guess is used.
+    if (!solved && guesses !== 6) return { ok: false, error: "Invalid guesses." };
+    return { ok: true, value: { kind: "play_round", metadata: { game: "daily_word", solved, guesses } } };
+  }
+  return { ok: false, error: "Unknown game." };
+}
+
 function parsePlayRound(raw: Record<string, unknown>): ParseClientEventResult {
+  if ("game" in raw) return parseWordGame(raw);
   if (Object.keys(raw).some((k) => !PLAY_KEYS.has(k))) return { ok: false, error: "Unknown field on a play round." };
   const level = levelById(raw.level);
   if (!level) return { ok: false, error: "Unknown level." };

@@ -369,6 +369,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-17 (second) — /play becomes a games hub: a 3D subject ring (owner's pick) with two English word games from real past papers.**
+  - **Words = real synonym/antonym PYQs as they are** (`npm run play:words` → committed `public/data/play-words.json`, 1,049 words; 200 fit Daily Word). `publish_blocked` is NULL on PUBLIC rows: filter `is null`.
+  - **Word Builder:** mastered = right on 3 different India days, first answer of a day only. **Daily Word:** one word a day, no streak; the clue is the exam sentence with [?], never the key (it made the follow-up trivial).
+  - **Game only:** `play_round` + `metadata.game`, no migration; maths moved to `/play/maths`; the ring's movement is `components/ring/useCardRing.ts`, shared with the homepage. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
+
 - **2026-11-17 — IMAT notes figures: 1 across 671 concepts became 143 (78 borrowed, 64 new, 17 animated).**
   - **Borrowed figures checked against the IMAT text;** refused where they contradict it ("auricles", "dark reaction, no light needed") or name another exam.
   - **Shared stepper `StepFigure`:** opens on the complete last step (print and ebooks see every step listed); motion is CSS on `style.transform`, built by `svgTransform`, rounded because an unrounded style string was a hydration mismatch.

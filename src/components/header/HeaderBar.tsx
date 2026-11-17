@@ -147,7 +147,7 @@ export default function HeaderBar({
             <StoreLink />
             {/* Offline classes in Pune (2026-11-16; was the 1:1 tutoring check), beside the store. */}
             <ClassesLink />
-            {/* The calculation game (2026-11-16), open to everyone, signed in or not. */}
+            {/* The /play games (2026-11-16; a hub since 2026-11-17), open to everyone, signed in or not. */}
             <PlayLink />
             {/* Theme toggle is visible to everyone, anon included. */}
             <ThemeToggle />
@@ -255,8 +255,8 @@ function ClassesLink() {
 }
 
 /**
- * The calculation game (2026-11-16): /play, timed rounds of basic sums in
- * levels. "Play", not "Games": the owner picked the word that fits a 360 px
+ * The calculation game (2026-11-16), and from 2026-11-17 the /play hub of
+ * games (maths and English). "Play", not "Games": the owner picked the word that fits a 360 px
  * phone (measured: header ~355 px with it). Experiment play-games.
  */
 function PlayLink() {
@@ -267,7 +267,7 @@ function PlayLink() {
       href="/play"
       onClick={() => trackFunnel("play_link_click", { from: pathname.split("/")[1] || "home" })}
       aria-current={active ? "page" : undefined}
-      aria-label="Play: calculation game"
+      aria-label="Play: learning games"
       className={headerButtonClass(active)}
     >
       <Gamepad2 className="hidden h-4 w-4 shrink-0 sm:block" aria-hidden />
