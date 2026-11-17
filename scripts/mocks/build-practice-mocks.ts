@@ -43,7 +43,7 @@ import {
   type MockPaperSnapshot,
   type PaperQuestionRow,
 } from "../../src/lib/mocks/reconstruct";
-import type { PracticeQuestionRef } from "./practiceSittings";
+import { practiceRow, type PracticeQuestionRef } from "./practiceSittings";
 import { mockTestRow } from "../../src/lib/mocks/row";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -61,7 +61,7 @@ type SittingFile = {
 };
 
 const DATA = join(__dirname, "data");
-const SOURCES = ["nda2-2026-practice.json", "imat-practice.json"];
+const SOURCES = ["nda2-2026-practice.json", "imat-practice.json", "spi-practice.json"];
 
 /** `.in()` puts its filter in the URL — chunk it or PostgREST 400s past ~200 ids. */
 const CHUNK = 200;
@@ -181,14 +181,8 @@ async function main() {
       }
       const probs = rowProblems(r, optionCountOf(bp));
       if (probs.length) { issues.push(`n=${q.n}: ${r.id} — ${probs.join("; ")}`); continue; }
-      rows.push({
-        id: r.id,
-        // The PRINTED question number is this paper's ordering key — see the header.
-        sourceRow: q.n,
-        questionNumber: String(q.n),
-        subjectName: subjectOf.get(r.chapter_id) ?? "?",
-        answer: answerOf(r),
-      });
+      // The PRINTED question number is this paper's ordering key — see the header.
+      rows.push(practiceRow(q, r.id, subjectOf.get(r.chapter_id) ?? "?", answerOf(r)));
     }
 
     if (s.hold) {

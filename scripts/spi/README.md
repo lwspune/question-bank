@@ -16,7 +16,7 @@ Source folder: `C:\Vilas\LWS_Pune\Online Courses\SPI\QustionPaper`.
 | `01. QP_1` | "SPI GAT PAPER 2" + Maths, provenance unknown (`qp1-maths`, `qp1-gat`) | `practice` | GAT key (image), Maths key (text) | PUBLIC, 74 + 75 (Maths Q27 repeats Q12) |
 | `04-09` | LWS Pune "SPI and GSPI" Mock Tests 1-6, 150 each (`mock-1` ... `mock-6`) | `practice` | Mock 1 only (`SPI_Mock_Test_Answer_Key.xlsx`, with a Gemini column) | PUBLIC; each mock repeats some questions of the earlier ones, kept once |
 
-All papers went PUBLIC on 2026-10-21; 2026 on 2026-11-17. Each past paper is a timed mock (`scripts/mocks/build.ts --paper=spi`, 3 hours, flawed questions as grace) at the scheme its booklet prints (`spiPaperFor`): 2022 `SPI_PAPER`, +1 / -0.5 out of 150; 2026 `SPI_2026_PAPER`, +4 / -1 out of 600.
+All papers went PUBLIC on 2026-10-21; 2026 on 2026-11-17. Each past paper is a timed mock (`scripts/mocks/build.ts --paper=spi`, 3 hours, flawed questions as grace) at the scheme its booklet prints (`spiPaperFor`): 2022 `SPI_PAPER`, +1 / -0.5 out of 150; 2026 `SPI_2026_PAPER`, +4 / -1 out of 600. The eight practice papers are practice mocks at the 2026 pattern (MOCKS.md "SPI"; list written by `practice-mocks.ts`).
 
 Only the 2022 and 2026 papers are real sittings, so only they are `pyq` (owner, 2026-10-21). The text layer
 of the typed papers flattens powers and fractions (`52x - 1` is \(5^{2x-1}\)), so every paper is

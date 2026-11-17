@@ -917,6 +917,18 @@ export const SPI_2026_PAPER: MockPaperBlueprint = {
   ],
 };
 
+/**
+ * SPI practice mocks (the sample paper, Practice Paper 1, the LWS mocks): the 2026 pattern
+ * students will sit (owner, 2026-11-17), with each part's size taken from the paper's rows,
+ * because Practice Paper 1 prints one Maths question twice and so has 149 distinct questions.
+ * Every question is still a listed ref the builder must resolve, so nothing goes missing silently.
+ */
+export const SPI_PRACTICE_PAPER: MockPaperBlueprint = {
+  ...SPI_2026_PAPER,
+  code: "practice",
+  sections: SPI_2026_PAPER.sections.map(({ count: _count, ...s }) => s),
+};
+
 /** The SPI scheme printed on that year's booklet: +1 / -0.5 up to 2022, +4 / -1 from 2026. */
 export function spiPaperFor(year: number): MockPaperBlueprint {
   return year >= 2026 ? SPI_2026_PAPER : SPI_PAPER;
@@ -1340,6 +1352,7 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   SSC_CGL_T2_QUANT_PAPER,
   SPI_PAPER,
   SPI_2026_PAPER,
+  SPI_PRACTICE_PAPER,
   IAT_PAPER,
   UGC_NET_PAPER_1,
   RRB_NTPC_CBT_1,
