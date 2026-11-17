@@ -119,6 +119,24 @@ export const PAPERS: Record<string, Paper> = {
     pattern: AISSEE_9,
     key: { dir: "aissee\\c9_2025_key", page: 4, code: "H", docId: "3bddf58c-859b-11f1-84d4-0aa932765c8b", final: true },
   },
+  // 24 PDF pages, a clean scan, SINGLE column, Set A (EN/BHALI/9/21): 2-22
+  // Q1-Q150, 23-24 rough work. Section order as 2022 (Maths 1-50, English
+  // 51-75, General Science 76-100, Social Science 101-125, Intelligence
+  // 126-150). Exam 07.02.2021. NO KEY found for 2021: two blind passes +
+  // a hand check of every dispute and every answer below HIGH (crosstab.ts).
+  "aissee-9-2021": {
+    id: "aissee-9-2021",
+    exam: "aissee-9",
+    paper: 1,
+    sourceFile: "AISSEE_2021_Class9_SetA.pdf",
+    pagesDir: "aissee\\c9_2021_qp_setA",
+    pdf: "aissee_c9_2021_qp_setA.pdf",
+    pages: range(2, 22),
+    docId: "36909bec-a11d-11eb-9e01-02f21f5619c4",
+    pyqYear: 2021,
+    pyqNote: "AISSEE 2021 Class 9 (7 February 2021, Set A)",
+    pattern: AISSEE_9,
+  },
   // 31 PDF pages: 1 AglaSem cover, 2-29 Q1-Q150 (booklet "Set X", PA0926/X; no
   // booklet cover in the scan), 30-31 a COACHING institute's answer table (not
   // NTA's: never used). Options carry someone's grey highlighting: ignored.
