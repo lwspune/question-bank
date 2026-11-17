@@ -20,6 +20,8 @@ describe("checkHref", () => {
     expect(checkHref("https://jeemain.nta.nic.in/")).toMatchObject({ official: true });
     expect(checkHref("https://consortiumofnlus.ac.in/clat-2027/")).toMatchObject({ official: true });
     expect(checkHref("https://cetcell.mahacet.org/")).toMatchObject({ official: true });
+    // UGC's own NET site, where NTA's bulletin sends candidates for the syllabus.
+    expect(checkHref("https://www.ugcnetonline.in/syllabus-new.php")).toMatchObject({ official: true });
     expect(checkHref("https://www.cisce.org/")).toMatchObject({ official: true });
     expect(checkHref("https://indianexpress.com/x")).toEqual({ ok: true, external: true, official: false });
   });
