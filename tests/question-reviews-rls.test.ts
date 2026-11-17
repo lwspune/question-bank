@@ -190,6 +190,9 @@ describe.skipIf(!HAS_ENV)("question_reviews", () => {
         { id: questionId, ref: "Q2", derived_answer: "C", matches_current: false },
         { id: questionId, ref: "Q3", derived_answer: null },
       ],
+      // A blind_rederivation verdict needs a declared independent verifier
+      // (2026-11-17); without it the same row is recorded as a solution_audit.
+      independentVerifier: true,
     });
     expect(result.error).toBeUndefined();
     expect(result.written).toBe(1);
