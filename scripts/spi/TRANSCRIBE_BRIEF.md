@@ -26,13 +26,16 @@ calculate with for the whole paper (2022: 1 inch = 2.5 cm, 1 mile = 1.6 km, \(\p
 decimals). Solve with those values, not textbook ones, and where one decides the answer say so in
 the solution ("using the paper's value 1 inch = 2.5 cm"). A question that only works with the
 paper's value is NOT flawed. A paper with no instructions page (the sample papers, QP_1, the
-mocks) uses the same SPI conventions; say in the solution which value you used.
+mocks) uses the same SPI conventions; say in the solution which value you used. **2026's
+instructions page (`p01`) fixes no values** (only +4 / -1 marking): use \(\pi\) = 22/7 or 3.14,
+whichever the options are built on, and say which.
 
 **Numbering.** The 2022 booklet prints `001.`; the other papers print `Q1.`, `Q. 1:`, `1.` or
 `1)`. Write `=== <n>` with the printed number. A paper printed as two files (Maths, GAT) numbers
 each 1-75: the GAT file is its own paper, all General Ability, so every block needs `subject:`.
 
-The 2022 booklet prints numbers as `001.` to `150.`: write `=== 1` to `=== 150`. Options print
+The 2022 booklet prints numbers as `001.` to `150.`: write `=== 1` to `=== 150`. The 2026
+booklet is a ruled table, `Q. 1` in the left cell; Part 2 continues the numbering to 150. Options print
 inline as `(a) ... (b) ... (c) ... (d) ...`: write them as `A:` to `D:` in that order, one per line,
 without the `(a)`. Many options are "None of these": copy them as printed.
 
@@ -46,6 +49,14 @@ without the `(a)`. Many options are "None of these": copy them as printed.
    say in your report which answers rest on a search, and if a result showed this question
    with an answer anyway, say so.
 4. Keep tool output small. Do not open other agents' drafts.
+5. **Write the draft as you go**: every ~10 questions, Write the whole file again with what you
+   have. An agent can be stopped mid-slice, and only what is on disk survives.
+6. **Never write out a long literary passage word for word** (a reading-comprehension text from
+   a book). The output filter stops an agent that does, and the whole slice is lost (2022's Jim
+   Corbett passage, MPSC twice). Write its first sentence in `context:`, then the line
+   `[PASSAGE: main session fills from page NN]`, transcribe the questions on it as usual, and
+   name the passage and page in your report. Short direction lines and one-line sentences are
+   fine to copy.
 
 ## Format
 
@@ -75,6 +86,10 @@ solution:
   needs `subject:` on EVERY block: English, Physics, Chemistry, Biology, Geography, History,
   Polity, Economics, General Knowledge (defence forces and ranks, awards, persons, sports,
   schemes, events) or Reasoning.
+- **Subtopic: pick from the handout** `scripts/spi/out/<paperId>/subtopics.txt` (each chapter's
+  subtopics the bank already uses, busiest first). Coin a new name only when none fits, and list
+  every new name in your report. Left to themselves, the 2026 slices coined a name per question:
+  128 of 148 rows landed in subtopics no other SPI row used, and 117 had to be refiled.
 - **Chapter** must be an exact name under that subject in `CATALOG` (`scripts/spi/config.ts`;
   several contain em dashes: copy them). Maharashtra questions go to "Maharashtra Geography" or
   "History of Maharashtra". If nothing fits, use the closest and list the name you wish existed.

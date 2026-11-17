@@ -10,14 +10,15 @@ Source folder: `C:\Vilas\LWS_Pune\Online Courses\SPI\QustionPaper`.
 
 | Folder | What | Kind | Key | Status |
 |---|---|---|---|---|
+| `10. QP_10` | **SPI Entrance Examination 2026** (EX-50/2026), SPI's own upload (spicsn.com, May 2026): four CamScanner scans, Sets A-D, the same 150 questions with the blocks rotated inside each part (checked 2026-11-17, `out/2026/sets/map-*.txt`, not committed). Set A transcribed | `pyq` | none published | PUBLIC, 148 rows + 2 repeats of the sample paper (`repeats.json`) |
 | `03. QP_3` | **SPI Entrance Examination 2022**, a scanned candidate copy (16 pages, no text layer) | `pyq` | none published | PUBLIC, 150 rows |
 | `02. QP_2` | "Sample Paper SPI" watermark, Maths 75 + GAT 75 (papers `sample-maths`, `sample-gat`) | `practice` | none | PUBLIC, 75 + 75 |
 | `01. QP_1` | "SPI GAT PAPER 2" + Maths, provenance unknown (`qp1-maths`, `qp1-gat`) | `practice` | GAT key (image), Maths key (text) | PUBLIC, 74 + 75 (Maths Q27 repeats Q12) |
 | `04-09` | LWS Pune "SPI and GSPI" Mock Tests 1-6, 150 each (`mock-1` ... `mock-6`) | `practice` | Mock 1 only (`SPI_Mock_Test_Answer_Key.xlsx`, with a Gemini column) | PUBLIC; each mock repeats some questions of the earlier ones, kept once |
 
-All papers went PUBLIC on 2026-10-21. The 2022 paper is also a timed mock (`scripts/mocks/build.ts --paper=spi`, blueprint `SPI_PAPER`: +1 / -0.5, 3 hours, flawed questions as grace).
+All papers went PUBLIC on 2026-10-21; 2026 on 2026-11-17. Each past paper is a timed mock (`scripts/mocks/build.ts --paper=spi`, 3 hours, flawed questions as grace) at the scheme its booklet prints (`spiPaperFor`): 2022 `SPI_PAPER`, +1 / -0.5 out of 150; 2026 `SPI_2026_PAPER`, +4 / -1 out of 600.
 
-Only the 2022 paper is a real sitting, so only it is `pyq` (owner, 2026-10-21). The text layer
+Only the 2022 and 2026 papers are real sittings, so only they are `pyq` (owner, 2026-10-21). The text layer
 of the typed papers flattens powers and fractions (`52x - 1` is \(5^{2x-1}\)), so every paper is
 read from page images, never from its text.
 
@@ -43,7 +44,9 @@ read from page images, never from its text.
    question pages, parts.
 2. **Render** its pages: `python scripts/spi/render-pages.py <pdf> scripts/spi/out/<id>/pages <page> ...`
    (include the instructions page: it fixes the values to calculate with).
-3. **Pass 1, transcribe** (agents, at most 3 at once, one slice each, `TRANSCRIBE_BRIEF.md`):
+3. **Pass 1, transcribe** (agents, at most 3 at once, one slice each, `TRANSCRIBE_BRIEF.md`).
+   First run `npx tsx scripts/spi/subtopics-handout.ts <id>`: agents file each row under a
+   subtopic the bank already uses (`out/<id>/subtopics.txt`).
    drafts to `out/<id>/drafts/<from>-<to>.txt`, each checked with
    `npx tsx scripts/spi/build.ts <id> --file=<draft> --from=<a> --to=<b>`.
 4. **Merge** the drafts with `npx tsx scripts/spi/merge.ts <id> <draft> ...` (drops each draft's
@@ -91,3 +94,17 @@ read from page images, never from its text.
   Of the 7 disagreements (Q4, Q5, Q26, Q59, Q104, Q126, Q145) the blind answer was adopted on 6
   and pass 1 kept on Q59; each is settled in its `note:`. 9 questions are flawed as printed and
   carry a notice.
+
+## What the 2026 paper taught
+
+- **SPI re-uses its own sample paper.** 2026 Q141 and Q149 are the sample GAT paper's Q56 and
+  Q75 word for word, so content_hash (unique per exam) keeps one row. `repeats.json` names that
+  row and the mock serves it at its own slot with this transcript's key (the SSC CGL way);
+  `commit.ts` reports such a skip as "a repeat of an existing one". All three solves agreed.
+- **Reasoning sits in both parts** (Q64 in Part 1, Q144-150 in Part 2), so subject cannot split
+  the mock: `SPI_2026_PAPER`'s sections declare `questionNumbers` (1-75, 76-150).
+- **Subtopics drifted** until the handout existed: see `subtopics-handout.ts`.
+- **Result:** 150 blind answers against pass 1, 0 fidelity issues, 150 agreed. Q66 (strictly
+  "between" leaves no right option) and Q95 (two correct reported forms) are flawed with a notice.
+- **Do the sets differ?** No: one agent mapped every question of Sets B-D to Set A; only
+  "elevation(s)" and one direction line differ in wording.
