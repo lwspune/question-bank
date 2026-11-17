@@ -1,0 +1,439 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "00be8834-a675-465e-bfc4-4703c470dd93",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "n = \\dfrac{0.40}{40} = {{1:0.010}}\\ \\text{mol}",
+              "f": "0.40/40",
+              "value": "0.010",
+              "note": "M_r of NaOH = 40"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[\\text{OH}^-] = {{1:0.010}}\\ \\text{mol L}^{-1} = 10^{-2}",
+              "f": "0.010/1.0",
+              "value": "0.01"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{pOH} = -\\log_{10}(10^{-2}) = 2",
+              "f": "-log10(10^(-2))",
+              "value": "2"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{pH} = 14 - 2 = 12",
+              "f": "14-2",
+              "value": "12"
+            }
+          ],
+          "answer": "14-2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "59fa96ab",
+        "answer": {
+          "value": 12,
+          "label": "pH = 12"
+        }
+      }
+    },
+    {
+      "id": "0c4649ca-6c5c-4e6b-a488-877891f403a1",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "[\\text{H}^+]_P = {{1:0.020}}\\ \\text{mol L}^{-1}",
+              "f": "0.020",
+              "value": "0.020",
+              "note": "HCl gives one H⁺"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[\\text{H}^+]_Q = 2 \\times 0.010 = {{1:0.020}}",
+              "f": "2*0.010",
+              "value": "0.020",
+              "note": "H₂SO₄ gives two H⁺"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "n_P = 0.200 \\times 0.020 = 0.0040\\ \\text{mol}",
+              "f": "0.200*0.020",
+              "value": "0.0040"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "n_Q = 0.100 \\times 0.020 = 0.0020\\ \\text{mol}",
+              "f": "0.100*0.020",
+              "value": "0.0020"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{pH} = -\\log_{10}(0.020) \\approx 1.7",
+              "f": "-log10(0.020)",
+              "value": "1.7",
+              "dp": 1
+            }
+          ],
+          "answer": "0.200*0.020"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "1c627685",
+        "answer": {
+          "value": 0.004,
+          "label": "1 and 2 only"
+        }
+      }
+    },
+    {
+      "id": "2a2d1eee-40cb-4547-aef2-5342501f13ba",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "[\\text{H}^+] = 0.001 = 10^{-3}\\ \\text{mol L}^{-1}",
+              "f": "10^(-3)",
+              "value": "0.001"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{pH} = -\\log_{10}(10^{-3}) = 3",
+              "f": "-log10(10^(-3))",
+              "value": "3"
+            }
+          ],
+          "answer": "-log10(10^(-3))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "149a9905",
+        "answer": {
+          "value": 3,
+          "label": "pH = 3"
+        }
+      }
+    },
+    {
+      "id": "3908f3fe-345a-40ed-9332-115819de8b21",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "K_a = 1.0 \\times 10^{-5},\\quad c = 1.0 \\times 10^{-3}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[\\text{H}^+] \\approx \\sqrt{10^{-5} \\times 10^{-3}} = 10^{-4}",
+              "f": "sqrt(10^(-5)*10^(-3))",
+              "value": "10^(-4)",
+              "sf": 1
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{pH} = -\\log_{10}(10^{-4}) = 4",
+              "f": "-log10(10^(-4))",
+              "value": "4"
+            }
+          ],
+          "answer": "-log10(10^(-4))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "2c3c1c79",
+        "answer": {
+          "value": 4,
+          "label": "pH = 4"
+        }
+      }
+    },
+    {
+      "id": "41c8aee8-7990-48d0-adf1-e6ed51aa1fcc",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "n = 0.010 \\times 0.10 = 0.0010\\ \\text{mol}",
+              "f": "0.010*0.10",
+              "value": "0.0010"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[\\text{H}^+] = \\dfrac{0.0010}{1.0} = 10^{-3}\\ \\text{mol L}^{-1}",
+              "f": "0.0010/1.0",
+              "value": "0.001"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{pH} = -\\log_{10}(10^{-3}) = 3",
+              "f": "-log10(10^(-3))",
+              "value": "3"
+            }
+          ],
+          "answer": "-log10(10^(-3))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "2deac0a3",
+        "answer": {
+          "value": 3,
+          "label": "pH = 3"
+        }
+      }
+    },
+    {
+      "id": "7a2ea5f9-d869-4152-8037-0f662949571e",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "[\\text{OH}^-] = 2 \\times 0.050 = 0.10\\ \\text{mol L}^{-1}",
+              "f": "2*0.050",
+              "value": "0.10"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[\\text{H}^+] = \\dfrac{10^{-14}}{10^{-1}} = 10^{-13}",
+              "f": "10^(-14)/10^(-1)",
+              "value": "10^(-13)",
+              "sf": 1
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{pH} = -\\log_{10}(10^{-13}) = 13",
+              "f": "-log10(10^(-13))",
+              "value": "13"
+            }
+          ],
+          "answer": "-log10(10^(-13))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "99cfc210",
+        "answer": {
+          "value": 13,
+          "label": "pH = 13"
+        }
+      }
+    },
+    {
+      "id": "987672f8-472a-4d5f-a633-e1abff594acc",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "X:\\ \\text{pOH} = 14 - 11 = 3",
+              "f": "14-11",
+              "value": "3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "Y:\\ \\text{pOH} = 14 - 9 = 5",
+              "f": "14-9",
+              "value": "5"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{[\\text{OH}^-]_X}{[\\text{OH}^-]_Y} = \\dfrac{10^{-3}}{10^{-5}} = 100",
+              "f": "10^(-3)/10^(-5)",
+              "value": "100"
+            }
+          ],
+          "answer": "10^(-3)/10^(-5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e3ac32e3",
+        "answer": {
+          "value": 100,
+          "label": "X has 100 times more"
+        }
+      }
+    },
+    {
+      "id": "b4e5f5a5-57c4-49f8-8c4b-2899839ee25e",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{[\\text{H}^+]_1}{[\\text{H}^+]_2} = \\dfrac{10^{-2}}{10^{-4}} = 100",
+              "f": "10^(-2)/10^(-4)",
+              "value": "100",
+              "note": "100-fold dilution"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V_{final} = 100 \\times 1 = 100\\ \\text{mL}",
+              "f": "100*1",
+              "value": "100"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "V_{water} = 100 - 1 = 99\\ \\text{mL}",
+              "f": "100-1",
+              "value": "99"
+            }
+          ],
+          "answer": "100-1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "6e169017",
+        "answer": {
+          "value": 99,
+          "label": "99 mL"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

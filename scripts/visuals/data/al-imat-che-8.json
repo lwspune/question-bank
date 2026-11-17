@@ -1,0 +1,874 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "88f9f9d4-9eba-42e1-869b-73b043fd23b4",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\mathrm{MnO_2}:\\ x - 4 = 0 \\Rightarrow x = +4",
+              "f": "0-2*(-2)",
+              "value": "4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\mathrm{MnO_4^-}:\\ x - 8 = -1 \\Rightarrow x = +7",
+              "f": "-1-4*(-2)",
+              "value": "7"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\mathrm{MnO_4^{2-}}:\\ x - 8 = -2 \\Rightarrow x = +6",
+              "f": "-2-4*(-2)",
+              "value": "6"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\mathrm{Mn_2O_7}:\\ 2x - 14 = 0 \\Rightarrow x = +7",
+              "f": "(0-7*(-2))/2",
+              "value": "7"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\mathrm{MnCl_2}:\\ x - 2 = 0 \\Rightarrow x = +2",
+              "f": "0-2*(-1)",
+              "value": "2"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\mathrm{Mn_2O_3}:\\ 2x - 6 = 0 \\Rightarrow x = +3",
+              "f": "(0-3*(-2))/2",
+              "value": "3"
+            },
+            {
+              "step": "s7",
+              "kind": "note",
+              "tex": "\\mathrm{MnO_4^-}\\ \\text{and}\\ \\mathrm{Mn_2O_7}:\\ +7"
+            }
+          ],
+          "answer": "7"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              "s5",
+              "s6"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "471168d1",
+        "answer": {
+          "value": 7,
+          "label": "MnO4⁻ and Mn2O7: +7"
+        }
+      }
+    },
+    {
+      "id": "9586d0f8-058a-42bb-8b34-e5e47b73d52a",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\mathrm{Cu}: 0 \\to +2,\\quad {{1:2}}\\ e^-\\ \\text{lost}",
+              "f": "2-0",
+              "value": "2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\mathrm{N}: +5 \\to +2,\\quad {{2:3}}\\ e^-\\ \\text{gained}",
+              "f": "5-2",
+              "value": "3"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "3\\,\\mathrm{Cu}\\times 2 = 2\\,\\mathrm{NO}\\times 3 = 6\\ e^-",
+              "f": "3*2",
+              "value": "2*3"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\mathrm{HNO_3} = 3\\times 2 + 2 = 8",
+              "f": "3*2+2",
+              "value": "8",
+              "note": "6 as nitrate in Cu(NO₃)₂, 2 as NO"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\mathrm{H_2O} = 8 \\div 2 = 4",
+              "f": "8/2",
+              "value": "4"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "737eb84b",
+        "answer": {
+          "value": 3,
+          "label": "3, 8, 3, 2, 4"
+        }
+      }
+    },
+    {
+      "id": "b00944b0-477a-4353-870e-f161c6c7e59c",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\mathrm{Ca}_m\\mathrm{X}_2\\mathrm{O}_n:\\ 2m + 2x - 2n = 0"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2x = 2n - 2m",
+              "f": "2*(n-m)",
+              "value": "2*n-2*m"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "x = \\dfrac{2n - 2m}{2} = n - m",
+              "f": "(2*n-2*m)/2",
+              "value": "n-m"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "m = 2,\\ n = 8:\\ x = 8 - 2 = +6",
+              "f": "8-2",
+              "value": "6",
+              "note": "Ca₂S₂O₈ check"
+            }
+          ],
+          "answer": "n-m",
+          "vars": {
+            "m": "2",
+            "n": "8"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "253d7081",
+        "answer": {
+          "value": 6,
+          "label": "n − m"
+        }
+      }
+    },
+    {
+      "id": "b3fb1fde-c905-465a-b040-e0a6f38f0313",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\mathrm{HClO_2}:\\ \\mathrm{H} = +1,\\ 2\\,\\mathrm{O} = -4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "x + 1 - 4 = 0 \\Rightarrow x = +3",
+              "f": "4-1",
+              "value": "3"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\mathrm{HClO}:\\ x + 1 - 2 = 0 \\Rightarrow x = +1",
+              "f": "2-1",
+              "value": "1"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\mathrm{HClO_3}:\\ x + 1 - 6 = 0 \\Rightarrow x = +5",
+              "f": "6-1",
+              "value": "5"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "70d15784",
+        "answer": {
+          "value": 3,
+          "label": "HClO₂ (+3)"
+        }
+      }
+    },
+    {
+      "id": "bd1a526a-5319-4715-8489-4d3a04dfba7e",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\mathrm{H_2S}:\\ 2 + x = 0 \\Rightarrow x = -2",
+              "f": "0-2*1",
+              "value": "-2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\mathrm{SO_2}:\\ x - 4 = 0 \\Rightarrow x = +4",
+              "f": "0-2*(-2)",
+              "value": "4"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\mathrm{Na_2S_2O_3}:\\ 2 + 2x - 6 = 0 \\Rightarrow x = +2",
+              "f": "(6-2)/2",
+              "value": "2"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\mathrm{SO_3}:\\ x - 6 = 0 \\Rightarrow x = +6",
+              "f": "0-3*(-2)",
+              "value": "6"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\mathrm{H_2SO_4}:\\ 2 + x - 8 = 0 \\Rightarrow x = +6",
+              "f": "8-2",
+              "value": "6"
+            },
+            {
+              "step": "s6",
+              "kind": "note",
+              "tex": "\\{-2,\\ +2,\\ +4,\\ +6\\}"
+            }
+          ],
+          "answer": "-2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "1fc35b64",
+        "answer": {
+          "value": -2,
+          "label": "-2, +2, +4, +6"
+        }
+      }
+    },
+    {
+      "id": "ca2dece1-8514-4ac9-93b1-c4ae724acd17",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\mathrm{Zn}: 0 \\to +2,\\ \\text{change } +2",
+              "f": "2-0",
+              "value": "2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\mathrm{Ag_2O}:\\ 2x - 2 = 0 \\Rightarrow x = +1",
+              "f": "2/2",
+              "value": "1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\mathrm{Ag}: +1 \\to 0,\\ \\text{change } -1",
+              "f": "0-1",
+              "value": "-1"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "e^-\\ \\text{lost} = 2 = 2 \\times 1\\ \\text{gained}",
+              "f": "2*1",
+              "value": "2"
+            }
+          ],
+          "answer": "2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "30590086",
+        "answer": {
+          "value": 2,
+          "label": "Zn: 0→+2; Ag: +1→0"
+        }
+      }
+    },
+    {
+      "id": "caa4b857-2873-4d9e-84e1-73eb4d99875c",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\mathrm{I}: +3 \\to -1:\\ {{1:4}}\\ e^-\\ \\text{gained}",
+              "f": "3-(-1)",
+              "value": "4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\mathrm{I}: +3 \\to +5:\\ {{2:2}}\\ e^-\\ \\text{lost}",
+              "f": "5-3",
+              "value": "2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "1\\times 4 = 2\\times 2 = 4\\ e^-",
+              "f": "2*2",
+              "value": "1*4",
+              "note": "1 KI for 2 KIO₃"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\mathrm{KIO_2} = 1 + 2 = 3",
+              "f": "1+2",
+              "value": "3"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "f0bcafe5",
+        "answer": {
+          "value": 3,
+          "label": "3KIO₂ ⇌ KI + 2KIO₃"
+        }
+      }
+    },
+    {
+      "id": "20876859-d99d-4085-abe1-40974579437b",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "n = \\dfrac{30.0}{101} = 0.297\\ \\text{mol}",
+              "f": "30/101",
+              "value": "0.297",
+              "dp": 3
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "m = 100 + 30.0 = 130\\ \\text{g}",
+              "f": "100+30",
+              "value": "130"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "V = \\dfrac{130}{1.20 \\times 1000} = 0.1083\\ \\text{L}",
+              "f": "130/(1.2*1000)",
+              "value": "0.1083",
+              "dp": 4
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "c = \\dfrac{0.297}{0.1083} = 2.742\\ \\text{mol L}^{-1}",
+              "f": "(30/101)/(130/(1.2*1000))",
+              "value": "2.742",
+              "dp": 3
+            }
+          ],
+          "answer": "30*1000*1.2/(101*130)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "11e226b4",
+        "answer": {
+          "value": 2.7418126428027416,
+          "label": "2.74 mol/L"
+        }
+      }
+    },
+    {
+      "id": "22b5f394-e750-4fbd-91ab-18d63c9f55f4",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "n(\\mathrm{Na_2SO_4}) = 0.250 \\times 1.2 = 0.30\\ \\text{mol}",
+              "f": "0.25*1.2",
+              "value": "0.3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "n(\\mathrm{Na^+}) = 2 \\times 0.30 = 0.60\\ \\text{mol}",
+              "f": "2*0.3",
+              "value": "0.6"
+            }
+          ],
+          "answer": "0.6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "14640ade",
+        "answer": {
+          "value": 0.6,
+          "label": "0.60 mol"
+        }
+      }
+    },
+    {
+      "id": "59afe2bc-97c9-4dc6-94ce-35af78317f05",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "c_1V_1 = 0.25 \\times 15 = 3.75",
+              "f": "0.25*15",
+              "value": "3.75"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V_2 = \\dfrac{3.75}{0.05} = 75\\ \\text{mL}",
+              "f": "3.75/0.05",
+              "value": "75"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "75 - 15 = 60\\ \\text{mL}",
+              "f": "75-15",
+              "value": "60"
+            }
+          ],
+          "answer": "60"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a0238815",
+        "answer": {
+          "value": 60,
+          "label": "60 mL"
+        }
+      }
+    },
+    {
+      "id": "60a2612d-171e-4d4e-8a40-ec3e5d1cc0f2",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "n(\\mathrm{HCl}) = 0.0200 \\times 0.50 = 0.010\\ \\text{mol}",
+              "f": "0.02*0.5",
+              "value": "0.01"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "c(\\mathrm{KOH}) = \\dfrac{0.010}{0.0250} = 0.40\\ \\text{mol L}^{-1}",
+              "f": "0.01/0.025",
+              "value": "0.4"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "0.40 \\times 56 = 22.4\\ \\text{g L}^{-1}",
+              "f": "0.4*56",
+              "value": "22.4"
+            }
+          ],
+          "answer": "22.4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e16267ac",
+        "answer": {
+          "value": 22.4,
+          "label": "22.4 g/L"
+        }
+      }
+    },
+    {
+      "id": "7a52d828-e806-4503-b944-6738efcb4d17",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{5.0}{0.250} = 20\\ \\text{g L}^{-1}",
+              "f": "5/0.25",
+              "value": "20"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "20 \\times \\dfrac{10}{100} = 2.0\\ \\text{g L}^{-1}",
+              "f": "20*10/100",
+              "value": "2"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "c_{\\text{beaker}} = 2.0\\ \\text{g L}^{-1}",
+              "note": "pouring out 20 mL does not change c"
+            }
+          ],
+          "answer": "2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "8da13693",
+        "answer": {
+          "value": 2,
+          "label": "2.0 g/L"
+        }
+      }
+    },
+    {
+      "id": "9e6bdb4b-64e3-4a0c-9907-93f55580ffb5",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "M_r = 39 + 16 + 1 = 56",
+              "f": "39+16+1",
+              "value": "56"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "0.25 \\times 56 = 14\\ \\text{g L}^{-1}",
+              "f": "0.25*56",
+              "value": "14"
+            }
+          ],
+          "answer": "14"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "b1dc2d46",
+        "answer": {
+          "value": 14,
+          "label": "14 g/L"
+        }
+      }
+    },
+    {
+      "id": "bbfdf756-6aaa-4fdc-ac46-8134049ce4a1",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "80 \\times 2 = 160\\ \\text{g at } 60\\,^\\circ\\text{C}",
+              "f": "80*2",
+              "value": "160"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "30 \\times 2 = 60\\ \\text{g at } 20\\,^\\circ\\text{C}",
+              "f": "30*2",
+              "value": "60"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "160 - 60 = 100\\ \\text{g}",
+              "f": "160-60",
+              "value": "100"
+            }
+          ],
+          "answer": "100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "0b24ee6d",
+        "answer": {
+          "value": 100,
+          "label": "100 g"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

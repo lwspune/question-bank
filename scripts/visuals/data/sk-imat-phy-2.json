@@ -1,0 +1,471 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "e3ab5951-a9d2-45d8-888a-4d3ff2f2a091",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "Rp": "6*6/(6+6)",
+            "Rt": "1+Rp",
+            "I": "12/Rt",
+            "V1": "I*1"
+          },
+          "view": {
+            "x": [
+              -2,
+              8
+            ],
+            "y": [
+              -1.2,
+              4.9
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "P": [
+              0,
+              2
+            ],
+            "R1a": [
+              1,
+              2
+            ],
+            "R1b": [
+              2,
+              2
+            ],
+            "N1": [
+              4,
+              2
+            ],
+            "N2": [
+              6,
+              2
+            ],
+            "B1": [
+              4,
+              0
+            ],
+            "B2": [
+              6,
+              0
+            ],
+            "Ca": [
+              3.7,
+              0.5
+            ],
+            "Cb": [
+              4.3,
+              0.5
+            ],
+            "Cc": [
+              4.3,
+              1.5
+            ],
+            "Cd": [
+              3.7,
+              1.5
+            ],
+            "Da": [
+              5.7,
+              0.5
+            ],
+            "Db": [
+              6.3,
+              0.5
+            ],
+            "Dc": [
+              6.3,
+              1.5
+            ],
+            "Dd": [
+              5.7,
+              1.5
+            ],
+            "Et": [
+              4,
+              1.5
+            ],
+            "Eu": [
+              4,
+              0.5
+            ],
+            "Ft": [
+              6,
+              1.5
+            ],
+            "Fu": [
+              6,
+              0.5
+            ],
+            "Ra": [
+              1,
+              1.8
+            ],
+            "Rb": [
+              2,
+              1.8
+            ],
+            "Rc": [
+              2,
+              2.2
+            ],
+            "Rd": [
+              1,
+              2.2
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "B2",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "P",
+              "step": "s1",
+              "label": "12 V",
+              "labelAt": [
+                -0.3,
+                1
+              ],
+              "pos": "w"
+            },
+            {
+              "kind": "segment",
+              "from": "P",
+              "to": "R1a",
+              "step": "s1"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "Ra",
+                "Rb",
+                "Rc",
+                "Rd"
+              ],
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.5,
+                2.7
+              ],
+              "text": "1.0 Ω",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "R1b",
+              "to": "N2",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "N1",
+              "to": "Et",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "Eu",
+              "to": "B1",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "N2",
+              "to": "Ft",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "Fu",
+              "to": "B2",
+              "step": "s1"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "Ca",
+                "Cb",
+                "Cc",
+                "Cd"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "Da",
+                "Db",
+                "Dc",
+                "Dd"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4,
+                -0.6
+              ],
+              "text": "6.0 Ω",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6,
+                -0.6
+              ],
+              "text": "6.0 Ω",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -1.8,
+                4.45
+              ],
+              "text": "two 6.0 Ω make 3.0 Ω",
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -1.8,
+                3.9
+              ],
+              "text": "I = 12 / 4.0 = 3.0 A",
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.2,
+                4.45
+              ],
+              "text": "V across 1.0 Ω = 3.0 V",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "Rp = 3",
+            "Rt = 4",
+            "I = 3",
+            "12 - V1 = 9"
+          ],
+          "answer": "V1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "af73bd82",
+        "answer": {
+          "value": 3,
+          "label": "3.0 V"
+        }
+      }
+    },
+    {
+      "id": "b4f8d5d8-1386-433f-a817-4aec9c3d7c9a",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "g": 10,
+            "m": "500*2.7/1000",
+            "W": "m*g",
+            "B": "1000*0.0005*g",
+            "T": "W-B",
+            "s": "0.1"
+          },
+          "view": {
+            "x": [
+              -4,
+              4
+            ],
+            "y": [
+              -3.2,
+              2.6
+            ]
+          },
+          "points": {
+            "A": [
+              -0.5,
+              -0.5
+            ],
+            "Bp": [
+              0.5,
+              -0.5
+            ],
+            "C": [
+              0.5,
+              0.5
+            ],
+            "D": [
+              -0.5,
+              0.5
+            ],
+            "Tb": [
+              -0.25,
+              0.5
+            ],
+            "Tt": [
+              -0.25,
+              "0.5+T*s"
+            ],
+            "Ub": [
+              0.25,
+              0.5
+            ],
+            "Ut": [
+              0.25,
+              "0.5+B*s"
+            ],
+            "Wb": [
+              0,
+              -0.5
+            ],
+            "Wt": [
+              0,
+              "-0.5-W*s"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "Bp",
+                "C",
+                "D"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "arrow",
+              "from": "Wb",
+              "to": "Wt",
+              "step": "s1",
+              "tone": "bad",
+              "label": "weight 13.5 N",
+              "labelAt": [
+                0.3,
+                -1.9
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "arrow",
+              "from": "Ub",
+              "to": "Ut",
+              "step": "s2",
+              "tone": "good",
+              "label": "upthrust 5.0 N",
+              "labelAt": [
+                0.5,
+                1.2
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "arrow",
+              "from": "Tb",
+              "to": "Tt",
+              "step": "s3",
+              "tone": "brand",
+              "label": "tension T",
+              "labelAt": [
+                -0.4,
+                1.9
+              ],
+              "pos": "w"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -3.8,
+                -2.9
+              ],
+              "text": "T = 13.5 − 5.0 = 8.5 N",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "W = 13.5",
+            "B = 5",
+            "T = 8.5"
+          ],
+          "answer": "T"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "2b999cf5",
+        "answer": {
+          "value": 8.5,
+          "label": "8.5 N"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

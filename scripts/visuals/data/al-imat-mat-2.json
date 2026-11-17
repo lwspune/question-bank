@@ -1,0 +1,211 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "7ffc8f8c-adc2-444f-b90f-59536674cce0",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "(x-2)^2 + (y+3)^2 = 4^2",
+              "note": "centre (2, −3), radius 4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "-2 \\cdot 2 = -4",
+              "f": "-2*2",
+              "value": "-4",
+              "note": "x term: −4x"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2 \\cdot 3 = 6",
+              "f": "2*3",
+              "value": "6",
+              "note": "y term: +6y"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "4 + 9 - 16 = -3",
+              "f": "4+9-16",
+              "value": "-3",
+              "note": "constant"
+            },
+            {
+              "step": "s5",
+              "kind": "note",
+              "tex": "x^2 + y^2 - 4x + 6y - 3 = 0"
+            }
+          ],
+          "answer": "4+9-16"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "04acfea0",
+        "answer": {
+          "value": -3,
+          "label": "x²+y²−4x+6y−3=0"
+        }
+      }
+    },
+    {
+      "id": "a95c55d3-20aa-4a67-ba14-e39aee2dec19",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{cube of edge } x:\\ 6x^2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "a:\\ 6 \\cdot 1^2 = 6",
+              "f": "6*1^2",
+              "value": "6"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2a:\\ 6 \\cdot 2^2 = 24",
+              "f": "6*2^2",
+              "value": "24"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "3a:\\ 6 \\cdot 3^2 = 54",
+              "f": "6*3^2",
+              "value": "54"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "6 + 24 + 54 = 84",
+              "f": "6+24+54",
+              "value": "84",
+              "note": "total 84a²"
+            }
+          ],
+          "answer": "6+24+54"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "fb7e3c43",
+        "answer": {
+          "value": 84,
+          "label": "84a²"
+        }
+      }
+    },
+    {
+      "id": "a9d9f32d-0d66-4669-8415-95db662708a6",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "AB = \\tfrac{5}{4}h,\\quad BC = h"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "2\\left(\\tfrac{5}{4}h + h\\right) = 72",
+              "lhs": "2*(5/4*x+x)",
+              "rhs": "72"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "\\tfrac{9}{2}h = 72",
+              "lhs": "9/2*x",
+              "rhs": "72"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "h = 72 \\cdot \\tfrac{2}{9} = 16",
+              "f": "72*2/9",
+              "value": "16"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "AB = \\tfrac{5}{4} \\cdot 16 = 20",
+              "f": "5/4*16",
+              "value": "20"
+            }
+          ],
+          "answer": "5/4*16",
+          "roots": [
+            "16"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "60060bd2",
+        "answer": {
+          "value": 20,
+          "label": "AB = 20; BC = 16"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

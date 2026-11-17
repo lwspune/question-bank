@@ -1,0 +1,433 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "ee446804-d99f-4cc8-b95b-b10f8ba249b8",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{weight} = \\text{upthrust}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\rho A h g = \\sigma A d g",
+              "f": "rho*A*h*g",
+              "value": "sigma*A*d*g"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "d = \\dfrac{\\rho A h g}{\\sigma A g} = \\dfrac{\\rho h}{\\sigma}",
+              "f": "rho*A*h*g/(sigma*A*g)",
+              "value": "rho*h/sigma",
+              "note": "d is less than h because ρ < σ"
+            }
+          ],
+          "answer": "rho*h/sigma",
+          "vars": {
+            "rho": "0.8",
+            "sigma": "1",
+            "h": "5",
+            "A": "2",
+            "g": "10",
+            "d": "rho*h/sigma"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "4377ba2d",
+        "answer": {
+          "value": 4,
+          "label": "d = ρh/σ"
+        }
+      }
+    },
+    {
+      "id": "494db27c-1290-4298-8631-357c9638efd0",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "Q = mc\\Delta T \\Rightarrow c = \\dfrac{Q}{m\\Delta T}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta T = 80 - 30 = {{1:50}}\\ \\text{K}",
+              "f": "80-30",
+              "value": "50"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "c = \\dfrac{9750}{0.50 \\times {{1:50}}} = 390",
+              "f": "9750/(0.5*50)",
+              "value": "390",
+              "note": "J kg⁻¹ K⁻¹"
+            }
+          ],
+          "answer": "9750/(0.5*50)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "92809e10",
+        "answer": {
+          "value": 390,
+          "label": "390 J kg⁻¹ K⁻¹"
+        }
+      }
+    },
+    {
+      "id": "5fba5eab-e3cd-4bb9-bab4-552b378643cf",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "T = 25 + 273 = {{1:298}}\\ \\text{K}",
+              "f": "25+273",
+              "value": "298"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "T_f = \\dfrac{{{1:298}}}{2} = 149\\ \\text{K}",
+              "f": "298/2",
+              "value": "149",
+              "note": "V constant, so P ∝ T"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "149 - 273 = -124\\ ^\\circ\\text{C}",
+              "f": "149-273",
+              "value": "-124"
+            }
+          ],
+          "answer": "149-273"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "df7e7a3f",
+        "answer": {
+          "value": -124,
+          "label": "−124 °C"
+        }
+      }
+    },
+    {
+      "id": "72fb13f0-94cf-4390-b051-9b69b4ff7e92",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{heat lost by water} = \\text{heat gained by ice}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "Mc(T_1 - T_2) = m(L_f + cT_2)",
+              "f": "M*c*(T1-T2)",
+              "value": "m*(Lf+c*T2)",
+              "note": "melt, then warm from 0 °C to T₂"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "m = \\dfrac{Mc(T_1 - T_2)}{L_f + cT_2}",
+              "f": "M*c*(T1-T2)/(Lf+c*T2)",
+              "value": "m"
+            }
+          ],
+          "answer": "m",
+          "vars": {
+            "M": "2",
+            "c": "4",
+            "T1": "60",
+            "T2": "20",
+            "Lf": "300",
+            "m": "M*c*(T1-T2)/(Lf+c*T2)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "1dea69a0",
+        "answer": {
+          "value": 0.8421052631578947,
+          "label": "m = Mc(T₁−T₂)/(Lf+cT₂)"
+        }
+      }
+    },
+    {
+      "id": "9629c729-f1a4-449f-93ad-0ef38e374d18",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "E = Pt = 40 \\times 600 = {{1:24\\,000}}\\ \\text{J}",
+              "f": "40*600",
+              "value": "24000"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "L = \\dfrac{E}{m} = \\dfrac{{{1:24\\,000}}}{80} = 300\\ \\text{J/g}",
+              "f": "24000/80",
+              "value": "300"
+            }
+          ],
+          "answer": "24000/80"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "12aa6aa6",
+        "answer": {
+          "value": 300,
+          "label": "300 J/g"
+        }
+      }
+    },
+    {
+      "id": "c5b73716-dd3d-4029-9a5a-94efa86b9d5e",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "Q = 0.80 \\times 4200 \\times 80 = {{1:268\\,800}}\\ \\text{J}",
+              "f": "0.8*4200*80",
+              "value": "268800"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "t = \\dfrac{Q}{P} = \\dfrac{{{1:268\\,800}}}{2000} = 134\\ \\text{s}",
+              "f": "268800/2000",
+              "value": "134",
+              "dp": 0
+            }
+          ],
+          "answer": "floor(268800/2000+0.5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "460e1574",
+        "answer": {
+          "value": 134,
+          "label": "134 s"
+        }
+      }
+    },
+    {
+      "id": "489db305-3aba-4a91-971d-877098f1ad3d",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "v = \\omega r = 2.0 \\times 1.5 = 3.0\\ \\text{m/s}",
+              "f": "2*1.5",
+              "value": "3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "a = \\omega^2 r = 4.0 \\times 1.5 = 6.0\\ \\text{m/s}^2",
+              "f": "2^2*1.5",
+              "value": "6",
+              "note": "centripetal: the direction keeps changing"
+            }
+          ],
+          "answer": "2*1.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "5f147bca",
+        "answer": {
+          "value": 3,
+          "label": "row 3: 3.0 m/s, 6.0 m/s²"
+        }
+      }
+    },
+    {
+      "id": "936b6a09-087c-4a85-8a3a-7e0bdcd787a8",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "120 - 80 = {{1:40}}\\ \\text{km/h}",
+              "f": "120-80",
+              "value": "40",
+              "note": "A gains on B at this rate"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{40\\,000}{60} \\approx 667\\ \\text{m per minute}",
+              "f": "40000/60",
+              "value": "667",
+              "dp": 0
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "t = \\dfrac{500}{40\\,000/60} \\times 60 = 45\\ \\text{s}",
+              "f": "500/(40000/60)*60",
+              "value": "45",
+              "note": "45 s is under one minute"
+            }
+          ],
+          "answer": "500/(40000/60)*60"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "26f0bc37",
+        "answer": {
+          "value": 45,
+          "label": "overtaken after 45 s"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

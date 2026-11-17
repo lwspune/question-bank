@@ -1,0 +1,169 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "953a3d59-4293-4535-99f6-ed7fa116b7b0",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{C} = 6 + 1 = 7",
+              "f": "6+1",
+              "value": "7",
+              "note": "6 in the ring, 1 in the branch"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{H}_{\\text{open chain}} = 2(7) + 2 = 16",
+              "f": "2*7+2",
+              "value": "16",
+              "note": "no ring, only single bonds"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{H} = 16 - 2 - 2(2) = 10",
+              "f": "16-2-2*2",
+              "value": "10",
+              "note": "ring: −2; each double bond: −2"
+            }
+          ],
+          "answer": "16-2-2*2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "1f1fd9ad",
+        "answer": {
+          "value": 10,
+          "label": "C₇H₁₀"
+        }
+      }
+    },
+    {
+      "id": "bb9a9d17-e690-4144-8245-994b56bad98b",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{C}_7\\text{H}_{16}:\\ 2(7) + 2 = 16",
+              "f": "2*7+2",
+              "value": "16",
+              "note": "2,3-dimethylpentane"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{C}_6\\text{H}_{14}\\text{O}:\\ 2(6) + 2 = 14",
+              "f": "2*6+2",
+              "value": "14",
+              "note": "2-hexanol"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{C}_6\\text{H}_{12}:\\ 2(6) + 2 - 2 = 12",
+              "f": "2*6+2-2",
+              "value": "12",
+              "note": "the other three"
+            }
+          ],
+          "answer": "2*7+2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "79f8f78b",
+        "answer": {
+          "value": 16,
+          "label": "16 H"
+        }
+      }
+    },
+    {
+      "id": "c316e537-d244-4b45-97b3-d8e8422b9401",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{C}_n\\text{H}_{2n}\\text{O}_2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "n = 4:\\ \\text{H} = 2(4) = 8",
+              "f": "2*4",
+              "value": "8",
+              "note": "saturated open-chain acid with 4 C"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "10 - 8 = 2",
+              "f": "10-8",
+              "value": "2",
+              "note": "C₄H₁₀O₂ has 2 H too many"
+            }
+          ],
+          "answer": "2*4+2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c8a12f6a",
+        "answer": {
+          "value": 10,
+          "label": "C₄H₁₀O₂"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

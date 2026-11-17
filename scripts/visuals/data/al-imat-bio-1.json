@@ -1,0 +1,381 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "c5eafc25-549f-4fa0-b3a3-226f75dc6775",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{ATP energy} = 30 \\times 30.5 = {{1:915}}\\ \\text{kJ}",
+              "f": "30*30.5",
+              "value": "915"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{{{1:915}}}{2800} \\times 100 \\approx 33\\%",
+              "f": "915/2800*100",
+              "value": "33",
+              "note": "efficiency as a percentage",
+              "dp": 0
+            }
+          ],
+          "answer": "915/2800*100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "931fb456",
+        "answer": {
+          "value": 32.67857142857143,
+          "label": "33%"
+        }
+      }
+    },
+    {
+      "id": "a0288efe-d628-4774-a9c8-0146ae477d32",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "180 \\div 20 = {{1:9}}\\ \\text{divisions}",
+              "f": "180/20",
+              "value": "9"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2^{{{1:9}}} = 512",
+              "f": "2^9",
+              "value": "512",
+              "note": "each division doubles the cells"
+            }
+          ],
+          "answer": "2^9"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "9a49cdbc",
+        "answer": {
+          "value": 512,
+          "label": "512"
+        }
+      }
+    },
+    {
+      "id": "b329148e-6392-4e55-bbe3-957de070731c",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "1:\\ 50\\,000 \\div 10\\,000 = 5\\ \\mu\\text{m}",
+              "f": "50000/10000",
+              "value": "5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2:\\ 30\\,000 \\div 500 = 60\\ \\mu\\text{m}",
+              "f": "30000/500",
+              "value": "60"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "3:\\ 24\\,000 \\div 40\\,000 = 0.6\\ \\mu\\text{m}",
+              "f": "24000/40000",
+              "value": "0.6"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "4:\\ 9\\,000 \\div 1\\,500 = 6\\ \\mu\\text{m}",
+              "f": "9000/1500",
+              "value": "6"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "5:\\ 18\\,000 \\div 60\\,000 = {{1:0.3}}\\ \\mu\\text{m}",
+              "f": "18000/60000",
+              "value": "0.3",
+              "note": "smallest: structure 5"
+            }
+          ],
+          "answer": "18000/60000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "c639a190",
+        "answer": {
+          "value": 0.3,
+          "label": "Structure 5 (0.3 µm)"
+        }
+      }
+    },
+    {
+      "id": "fabf72d2-b69f-4392-a9ad-9aa5194f91c7",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "12\\ \\text{mm} \\div 400 = {{1:0.03}}\\ \\text{mm}",
+              "f": "12/400",
+              "value": "0.03"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "0.03\\ \\text{mm} = {{1:30}}\\ \\mu\\text{m}",
+              "f": "0.03*1000",
+              "value": "30",
+              "note": "a liver cell is about 20-30 micrometres"
+            }
+          ],
+          "answer": "12/400*1000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "dccdd9a8",
+        "answer": {
+          "value": 30,
+          "label": "30 µm: a liver cell"
+        }
+      }
+    },
+    {
+      "id": "21cdc060-28b4-4d03-a3e8-2462fc86d5e4",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{ends: } Y\\text{-}W = {{1:20}}",
+              "f": "20",
+              "value": "20"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "X\\text{-}Z = 20 - 6 - 4 = {{2:10}}",
+              "f": "20-6-4",
+              "value": "10",
+              "note": "order Y, X, Z, W"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "X\\text{-}W = {{2:10}} + 4 = 14",
+              "f": "10+4",
+              "value": "14",
+              "note": "matches the given X to W"
+            }
+          ],
+          "answer": "20"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "76fdda9c",
+        "answer": {
+          "value": 20,
+          "label": "Y X Z W"
+        }
+      }
+    },
+    {
+      "id": "42699416-732d-4877-9ea7-b5d3cce0e3ba",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "Aa \\times Aa:\\ \\text{3 genotypes}",
+              "f": "3",
+              "value": "3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "3 \\times 3 = {{1:9}}",
+              "f": "3*3",
+              "value": "9",
+              "note": "independent assortment"
+            }
+          ],
+          "answer": "3*3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "58c62153",
+        "answer": {
+          "value": 9,
+          "label": "9"
+        }
+      }
+    },
+    {
+      "id": "5a1df928-5dd5-4888-bdfc-2038ef349efd",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{alleles} = 5 \\times 2 = {{1:10}}",
+              "f": "5*2",
+              "value": "10"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "A: 2 + 1 + 1 + 0 + 2 = {{2:6}}",
+              "f": "2+1+1+0+2",
+              "value": "6"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{{{2:6}}}{{{1:10}}} = 0.6",
+              "f": "6/10",
+              "value": "0.6"
+            }
+          ],
+          "answer": "6/10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "2206dfa6",
+        "answer": {
+          "value": 0.6,
+          "label": "0.6"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

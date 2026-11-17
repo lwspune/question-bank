@@ -1,0 +1,251 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "37469a23-68da-40d2-bc99-1be80a8ad847",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{T} = \\text{A} = {{1:21}}\\%",
+              "f": "21",
+              "value": "21"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{A} + \\text{T} = 21 + 21 = {{2:42}}\\%",
+              "f": "21+21",
+              "value": "42"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{G} + \\text{C} = 100 - 42 = {{3:58}}\\%",
+              "f": "100-42",
+              "value": "58"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{C} = \\dfrac{58}{2} = 29\\%",
+              "f": "58/2",
+              "value": "29",
+              "note": "G pairs with C, so G = C"
+            }
+          ],
+          "answer": "58/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "b58a13fb",
+        "answer": {
+          "value": 29,
+          "label": "29%"
+        }
+      }
+    },
+    {
+      "id": "3beb0ca9-1361-44e2-83b5-85be7cd32d0d",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{G} = \\text{C} = 0.30 \\times 200 = {{1:60}}",
+              "f": "0.3*200",
+              "value": "60"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{A} = \\text{T} = \\dfrac{200 - 120}{2} = 40",
+              "f": "(200-120)/2",
+              "value": "40"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{H bonds} = 60 \\times 3 + 40 \\times 2 = {{2:260}}",
+              "f": "60*3+40*2",
+              "value": "260"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{phosphodiester} = 2 \\times (100 - 1) = {{3:198}}",
+              "f": "2*(100-1)",
+              "value": "198",
+              "note": "two strands of 100 nucleotides"
+            }
+          ],
+          "answer": "60*3+40*2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "0011147e",
+        "answer": {
+          "value": 260,
+          "label": "260 and 198"
+        }
+      }
+    },
+    {
+      "id": "657fed2e-d723-45b7-86db-90d820efac42",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{nucleotides} = \\text{sugars} = {{1:12}}",
+              "f": "12",
+              "value": "12",
+              "note": "one phosphate and one sugar each"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{base pairs} = \\dfrac{12}{2} = 6",
+              "f": "12/2",
+              "value": "6"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{purines} = {{2:6}}",
+              "f": "12/2",
+              "value": "6",
+              "note": "one purine in every pair"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{H bonds} = 2 \\times 2 + 4 \\times 3 = {{3:16}}",
+              "f": "2*2+4*3",
+              "value": "16",
+              "note": "2 A-T pairs, 4 G-C pairs"
+            }
+          ],
+          "answer": "2*2+4*3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "4897730a",
+        "answer": {
+          "value": 16,
+          "label": "6, 12, 16"
+        }
+      }
+    },
+    {
+      "id": "84e19154-825b-474c-a5c5-b18f98be257f",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "4^3 = {{1:64}}",
+              "f": "4^3",
+              "value": "64",
+              "note": "all possible codons"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{3}{64} \\times 100 \\approx {{2:4.7}}\\%",
+              "f": "3/64*100",
+              "value": "4.7",
+              "dp": 1,
+              "note": "3 stop codons: UAA, UAG, UGA"
+            }
+          ],
+          "answer": "3/64*100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "79fa92e7",
+        "answer": {
+          "value": 4.6875,
+          "label": "4.7%"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

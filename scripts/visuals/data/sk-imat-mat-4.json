@@ -1,0 +1,337 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "b4fa7544-14a1-41a5-b385-3b2bb1b9835e",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "n": "5"
+          },
+          "view": {
+            "x": [
+              -1,
+              7
+            ],
+            "y": [
+              -0.8,
+              5.6
+            ]
+          },
+          "axes": true,
+          "points": {
+            "P1": [
+              1,
+              4
+            ],
+            "P2": [
+              4,
+              1
+            ],
+            "P3": [
+              2,
+              2
+            ],
+            "P4": [
+              3,
+              3
+            ],
+            "P5": [
+              5,
+              5
+            ]
+          },
+          "items": [
+            {
+              "kind": "point",
+              "at": "P1",
+              "step": "s2",
+              "label": "(1,4)",
+              "pos": "ne"
+            },
+            {
+              "kind": "point",
+              "at": "P2",
+              "step": "s2",
+              "label": "(4,1)",
+              "pos": "ne"
+            },
+            {
+              "kind": "point",
+              "at": "P3",
+              "step": "s2",
+              "label": "(2,2)",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "at": "P4",
+              "step": "s2",
+              "label": "(3,3)",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "at": "P5",
+              "step": "s2",
+              "label": "(5,5)",
+              "pos": "se"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.2,
+                -0.5
+              ],
+              "text": "5 of 36 outcomes",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "1*4 = 4",
+            "4*1 = 4",
+            "2*2 = 4",
+            "3*3 = 9",
+            "5*5 = 25"
+          ],
+          "answer": "n/36"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "2cdb8b1f",
+        "answer": {
+          "value": 0.1388888888888889,
+          "label": "5/36"
+        }
+      }
+    },
+    {
+      "id": "8b99b2a1-c0cc-4820-b0b6-59fcd1d5ba1a",
+      "option": "E",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "mx": "sin(pi/2)^2+sin(pi/2)-2",
+            "mn": "sin(3*pi/2)^2+sin(3*pi/2)-2"
+          },
+          "view": {
+            "x": [
+              -1,
+              7
+            ],
+            "y": [
+              -4,
+              2
+            ]
+          },
+          "axes": true,
+          "items": [
+            {
+              "kind": "curve",
+              "f": "sin(x)^2+sin(x)-2",
+              "x": [
+                -1,
+                7
+              ],
+              "step": "s1",
+              "label": "y = sin²x + sin x − 2",
+              "labelAt": [
+                0.4,
+                -3.3
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.8,
+                1.4
+              ],
+              "text": "y never above 0",
+              "step": "s2",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "mx = 0",
+            "mn = -2"
+          ],
+          "answer": "mx"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "42f4af2c",
+        "answer": {
+          "value": 0,
+          "label": "E: always ≤ 0"
+        }
+      }
+    },
+    {
+      "id": "bdf569b2-81c1-4b3c-9905-a9e8a7da49d9",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "al": "rad(35)",
+            "c": "6",
+            "a": "c*sin(al)",
+            "b": "c*cos(al)"
+          },
+          "view": {
+            "x": [
+              -1.5,
+              6.5
+            ],
+            "y": [
+              -1.5,
+              4.5
+            ]
+          },
+          "points": {
+            "A": [
+              0,
+              0
+            ],
+            "B": [
+              "b",
+              0
+            ],
+            "C": [
+              "b",
+              "a"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "angle",
+              "at": "A",
+              "from": "B",
+              "to": "C",
+              "step": "s1",
+              "label": "α"
+            },
+            {
+              "kind": "angle",
+              "at": "B",
+              "from": "A",
+              "to": "C",
+              "step": "s1",
+              "label": "90°"
+            },
+            {
+              "kind": "label",
+              "at": [
+                5.6,
+                2
+              ],
+              "text": "a",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                2.4,
+                -0.8
+              ],
+              "text": "b",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.3,
+                2.3
+              ],
+              "text": "c",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -1.3,
+                3.9
+              ],
+              "text": "a = c sin α",
+              "step": "s2",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "a = c*sin(al)",
+            "b = c*cos(al)"
+          ],
+          "answer": "a/c"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "6f5c2406",
+        "answer": {
+          "value": 0.573576436351046,
+          "label": "a = c sin α"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
