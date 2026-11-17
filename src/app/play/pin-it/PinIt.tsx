@@ -158,7 +158,7 @@ export default function PinIt() {
           role="img"
           aria-label={place ? `Map of India. Tap where ${place.name} is.` : "Map of India"}
         >
-          <path d={INDIA_PATH} fill="#2b4a7a" stroke="#9fc4ff" strokeWidth={4} strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+          <path d={INDIA_PATH} fill="#2b4a7a" stroke="#9fc4ff" strokeWidth={1.25} strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
           {LANDMARKS.map((l) => {
             const p = toMap(l.lat, l.lon);
             return (

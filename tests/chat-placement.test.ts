@@ -38,6 +38,13 @@ describe("vPlacement", () => {
     expect(vPlacement("/browse", { hydrated: false, count: 3 }).aboveCart).toBe(false);
   });
 
+  it("hides V inside a /play game, whose keypad and controls it covered on a phone; keeps it on the hub", () => {
+    const empty = { hydrated: true, count: 0 };
+    for (const p of ["/play/maths", "/play/word-groups", "/play/pin-it/"]) expect(vPlacement(p, empty).hidden, p).toBe(true);
+    expect(vPlacement("/play", empty).hidden).toBe(false);
+    expect(vPlacement("/playbook", empty).hidden).toBe(false);
+  });
+
   it("does not lift V off /browse, where no cart pill is mounted", () => {
     expect(vPlacement("/notes/nda", { hydrated: true, count: 3 }).aboveCart).toBe(false);
   });

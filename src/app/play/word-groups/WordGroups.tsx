@@ -44,6 +44,9 @@ function shuffled<T>(xs: readonly T[], rng: () => number = Math.random): T[] {
 
 type Game = { id: number; state: GroupsState; tiles: string[]; sel: string[] };
 
+/** Long words get smaller type so a tile never breaks a word mid-letter on a 360 px phone. */
+const tileSize = (w: string) => (w.length <= 8 ? "text-[0.85rem]" : w.length <= 10 ? "text-[0.72rem]" : "text-[0.62rem]");
+
 /** A puzzle's first deal: shuffled the same way every time, so the cached page matches the browser. */
 const firstDeal = (p: Puzzle): Game => ({
   id: p.id,
@@ -217,7 +220,8 @@ export default function WordGroups() {
                   data-sel={on || undefined}
                   aria-pressed={on}
                   onClick={() => toggle(w)}
-                  className={`flex h-16 items-center justify-center rounded-xl px-1 text-[0.8rem] font-bold uppercase leading-tight [overflow-wrap:anywhere] transition-transform ${
+                  lang="en"
+                  className={`flex h-16 items-center justify-center rounded-xl px-1 text-center font-bold uppercase leading-tight tracking-tight [hyphens:auto] transition-transform ${tileSize(w)} ${
                     on ? "-translate-y-0.5 bg-[var(--pa-ink)] text-[var(--pa-night)]" : "bg-[var(--pa-night-3)] text-[var(--pa-ink)] shadow-[0_4px_0_#120d38]"
                   }`}
                 >
