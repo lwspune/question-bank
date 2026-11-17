@@ -56,7 +56,12 @@ export type ExamSlug =
   | "rrb-ntpc"
   | "capf-ac"
   | "rpsc-ras"
-  | "clat";
+  | "clat"
+  | "aissee-6"
+  | "aissee-9"
+  | "rms-cet-6"
+  | "rms-cet-9"
+  | "rimc";
 
 /**
  * School boards the bank carries content for. NOT every exam has one — a
@@ -1198,6 +1203,115 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     pastPaperSolutions: true,
     guidesPath: null,
     notesPath: "/notes/spi", // exam hub: live since 2026-10-21 (Mathematics, Probability)
+  },
+  // ── Sainik & Military Schools (owner, 2026-11-17: "aissee rms rimc and
+  // bifurcation in those"). Three entrances read as ONE family, the SSC
+  // pattern: stage = the exam (AISSEE / RMS CET / RIMC), label = the class it
+  // admits to. Each class is its own exam row, because a Class 5 child and a
+  // Class 8 child should never share a feed. All FREE ("those papers are free
+  // for our users"): passScope "free" here, exams.pass_scope = 'free' in the DB
+  // (scripts/milschool/seed-exams.ts). Sources are re-hosted scans of the
+  // original printed booklets (scripts/milschool/, README). Rows commit PRIVATE;
+  // `noPublicContent` comes off with the flip to PUBLIC.
+  {
+    slug: "aissee-6",
+    passScope: "free",
+    // All India Sainik Schools Entrance Examination, Class 6 admission (NTA).
+    // OMR multiple choice, 300 marks, 150 min, no negative marking; NTA's final
+    // key for 2022-2026.
+    tier: "school",
+    goal: "defence",
+    displayName: "AISSEE Class 6",
+    examName: "AISSEE Class 6", // must match the `exams` DB row exactly
+    family: "Sainik & Military Schools",
+    familyStage: "AISSEE",
+    familyLabel: "Class 6",
+    familyAxis: "Class",
+    noPublicContent: true,
+    hasMocks: false,
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "aissee-9",
+    passScope: "free",
+    // AISSEE, Class 9 admission (NTA): Maths 50 x 4 + Intelligence, English,
+    // General Science, Social Science 25 x 2 = 150 q / 400 marks / 180 min, no
+    // negative marking, English only. NTA's final key for 2022-2026.
+    tier: "school",
+    goal: "defence",
+    displayName: "AISSEE Class 9",
+    examName: "AISSEE Class 9", // must match the `exams` DB row exactly
+    family: "Sainik & Military Schools",
+    familyStage: "AISSEE",
+    familyLabel: "Class 9",
+    familyAxis: "Class",
+    noPublicContent: true,
+    hasMocks: false,
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "rms-cet-6",
+    passScope: "free",
+    // Rashtriya Military Schools Common Entrance Test, Class 6 admission:
+    // English, Intelligence, Maths, GK. No key is published: answers derived
+    // twice, blind, and hand-checked.
+    tier: "school",
+    goal: "defence",
+    displayName: "RMS CET Class 6",
+    examName: "RMS CET Class 6", // must match the `exams` DB row exactly
+    family: "Sainik & Military Schools",
+    familyStage: "RMS CET",
+    familyLabel: "Class 6",
+    familyAxis: "Class",
+    noPublicContent: true,
+    hasMocks: false,
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "rms-cet-9",
+    passScope: "free",
+    // RMS CET, Class 9 admission: English, Hindi, Maths, Science, Social
+    // Science. No key is published.
+    tier: "school",
+    goal: "defence",
+    displayName: "RMS CET Class 9",
+    examName: "RMS CET Class 9", // must match the `exams` DB row exactly
+    family: "Sainik & Military Schools",
+    familyStage: "RMS CET",
+    familyLabel: "Class 9",
+    familyAxis: "Class",
+    noPublicContent: true,
+    hasMocks: false,
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "rimc",
+    passScope: "free",
+    // Rashtriya Indian Military College, Dehradun: Class 8 admission, held in
+    // June and December. WRITTEN papers (Mathematics 200, English 125, General
+    // Knowledge 75), so its rows are written-answer questions with model
+    // answers; RIMC publishes no key.
+    tier: "school",
+    goal: "defence",
+    displayName: "RIMC",
+    examName: "RIMC", // must match the `exams` DB row exactly
+    family: "Sainik & Military Schools",
+    familyStage: "RIMC",
+    familyLabel: "Class 8",
+    familyAxis: "Class",
+    noPublicContent: true,
+    hasMocks: false,
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
   },
 ] as const;
 
