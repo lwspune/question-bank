@@ -620,7 +620,7 @@
     ],
     "answer": "A",
     "answerSource": "solution",
-    "solution": "To form a triangle, we need 3 points. 12 points are given. So,  can be formed. But, given that 7 points are on a straight line, selecting 3 points from this set will not form a triangle. So, the number of triangles formed =  =",
+    "solution": "A triangle needs 3 points that are not all on one line. From 12 points, \\(\\ ^{12}C_{3} = 220\\) triples can be chosen. A triple taken from the 7 collinear points gives no triangle, and there are \\(\\ ^{7}C_{3} = 35\\) such triples.\n\nSo the number of triangles \\(= 220 - 35 = 185\\).",
     "defects": []
   },
   {
@@ -1688,7 +1688,7 @@
     ],
     "answer": "A",
     "answerSource": "solution",
-    "solution": "Number of ways of picking 4 counterfeits gold coins out of 6 counterfeits coins =  Number of ways of picking 4 coins out of 15 gold coins =  \\(\\therefore\\) Required Probability = = \\(\\frac{15}{15 \\times 7 \\times 13}\\) = \\(\\frac{1}{91}\\)",
+    "solution": "Ways to pick 4 of the 6 counterfeit coins \\(= \\ ^{6}C_{4} = 15\\). Ways to pick any 4 of the 15 coins \\(= \\ ^{15}C_{4} = 1365\\).\n\n\\(\\therefore\\) Required probability \\(= \\frac{15}{1365} = \\frac{1}{91}\\)",
     "defects": []
   },
   {
@@ -1844,7 +1844,7 @@
     ],
     "answer": "A",
     "answerSource": "solution",
-    "solution": "Let x denote number of tails. Then, X is a binomial variate with parameters: x = 100 & p = \\(\\frac{1}{2}\\) \\(\\mathbf{\\therefore}\\) p(x=r) =  ; (r = 0,1,2,.....100) Required probability = P(x=1) + P(x=3)+.......+ P(x=99) = \\(\\left\\lbrack \\frac{1}{2} \\right\\rbrack^{100}\\)  = \\(\\frac{1}{2^{100}}\\).\\(\\ 2^{99}\\) = \\(\\frac{1}{2}\\)",
+    "solution": "Let \\(X\\) be the number of tails. \\(X\\) is binomial with \\(n = 100\\) and \\(p = \\frac{1}{2}\\), so \\(P(X = r) = \\ ^{100}C_{r}\\left(\\frac{1}{2}\\right)^{100}\\), \\(r = 0, 1, \\ldots, 100\\).\n\nRequired probability \\(= P(X = 1) + P(X = 3) + \\cdots + P(X = 99) = \\left(\\frac{1}{2}\\right)^{100}\\left(\\ ^{100}C_{1} + \\ ^{100}C_{3} + \\cdots + \\ ^{100}C_{99}\\right) = \\frac{2^{99}}{2^{100}} = \\frac{1}{2}\\)",
     "defects": []
   },
   {
@@ -1870,7 +1870,7 @@
     ],
     "answer": "A",
     "answerSource": "solution",
-    "solution": "Out of integers from 1 to 11, there are 5 even integers & 6 odd integers. Consider the following events: A = Both the numbers chosen are odd B = The sum of the numbers chosen is even \\(\\therefore\\) Required probability= P(A/B) = Probability that the two numbers chose are odd if it is given that the sum if the numbers chosen is even. =",
+    "solution": "Of the integers 1 to 11, 5 are even and 6 are odd. The sum of the two numbers is even when both are odd or both are even: \\(\\ ^{6}C_{2} + \\ ^{5}C_{2} = 15 + 10 = 25\\) pairs. Both are odd in \\(\\ ^{6}C_{2} = 15\\) of them.\n\n\\(\\therefore\\) Required probability \\(= \\frac{15}{25} = \\frac{3}{5}\\)",
     "defects": []
   },
   {
@@ -2234,7 +2234,7 @@
     ],
     "answer": "C",
     "answerSource": "solution",
-    "solution": "We have, f(x) = \\(\\left\\{ \\begin{array}{r} (x - 1)\\sin\\frac{1}{x - 1}\\ if\\ x \\neq 1 \\\\ 0\\ \\ \\ ,\\ \\ \\ \\ if\\ x = 1 \\end{array} \\right.\\) Rf'(1) = \\(\\lim_{h \\rightarrow 0}\\frac{f(1 + h) - f(1)}{h}\\) = \\(\\lim_{h \\rightarrow 0}\\frac{hsin\\frac{1}{h} - 0}{h}\\) = \\(\\lim_{h \\rightarrow 0}\\sin\\frac{1}{h}\\) = a finite number Let this finite number be \\(l\\) Lf'(1) = \\(\\lim_{h \\rightarrow 0}\\) sin\\(\\left( \\frac{1}{- h} \\right)\\)= - \\(\\lim_{h \\rightarrow 0}\\) sin\\(\\left( \\frac{1}{h} \\right)\\) = - (a finite number) = - \\(l\\) Thus R f'(1) \\(\\neq\\) L f'(1) \\(\\therefore\\) f is not differentiable at x=1 Also, f'(0) = \\(\\left\\lbrack \\sin\\frac{1}{x - 1} - \\frac{x - 1}{{(x - 1)}^{2}}\\cos\\left( \\frac{1}{x - 1} \\right) \\right\\rbrack\\)~x=0~ = - sin1 + cos1\\(\\therefore\\) f is differentiable at x=0",
+    "solution": "At \\(x = 1\\): \\(\\lim_{h \\rightarrow 0^{+}}\\frac{f(1 + h) - f(1)}{h} = \\lim_{h \\rightarrow 0^{+}}\\sin\\frac{1}{h}\\), which does not exist (it keeps swinging between \\(-1\\) and \\(1\\)). So \\(f\\) is not differentiable at \\(x = 1\\).\n\nNear \\(x = 0\\), \\(f(x) = (x - 1)\\sin\\frac{1}{x - 1}\\) is a product of differentiable functions, so \\(f\\) is differentiable there:\n\n\\[f'(x) = \\sin\\frac{1}{x - 1} - \\frac{1}{x - 1}\\cos\\frac{1}{x - 1},\\quad f'(0) = -\\sin 1 + \\cos 1\\]",
     "defects": []
   },
   {
