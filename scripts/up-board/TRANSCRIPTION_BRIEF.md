@@ -123,7 +123,13 @@ language, the other language usually settles it: say so in `_flag`.
 - `figure`: when the question needs its printed figure (a diagram, a graph, a
   circuit): `{ "page": <the ENGLISH print's page>, "region": [left, top,
   right, bottom] as fractions of that page, "note": "what it shows" }`. Keep
-  every label inside the box; leave the question text out. A figure only
+  every label inside the box; leave the question text out. Then CHECK it:
+  run `py scripts/up-board/crop.py <paperId>` and look at
+  `out/<paperId>/_figures.png`. No line of question or option text may show
+  above, below or beside the figure, and no label may be clipped; move the
+  region and re-run until both hold. Where a stamp crosses the figure and the
+  other language prints a clean copy, point the region at that copy and say so
+  in `note`. A figure only
   printed once (shared by both languages) is fine: give that page. Write the
   stem as printed; a figure's labels do not go into the text.
 - `_flag`: optional, one plain sentence.
