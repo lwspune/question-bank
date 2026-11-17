@@ -14,6 +14,8 @@
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { requireChapter } from "./config";
+import { unstampedProblem } from "./provenance";
+import { chapterStampTargets } from "./stamp-provenance";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -31,6 +33,26 @@ async function main() {
   });
 
   // Solved examples: subjective with a book solution.
+  // Provenance belongs to COMMIT; this refuses to publish without it (2026-11-17,
+  // the State Board lane's rule ported). Runs on the dry run too, so the gap shows
+  // before anyone types --apply. Re-flipping a chapter shipped before the stamp
+  // existed is refused too, on purpose: stamp it first.
+  const { refs } = chapterStampTargets(id, ch);
+  const { data: stampRows, error: sErr } = await client
+    .from("questions")
+    .select("question_number, derived_model")
+    .eq("exam_id", ch.examId)
+    .eq("source_file", ch.sourceFile);
+  if (sErr) throw new Error(`provenance check failed: ${sErr.message}`);
+  const unstamped = unstampedProblem(refs, stampRows ?? []);
+  if (unstamped) {
+    throw new Error(
+      `refusing to publish ${id}: ${unstamped}.\n  A derived answer that does not announce itself reads as an official key. ` +
+        `Run: npx tsx scripts/ncert/stamp-provenance.ts ${id} --apply`
+    );
+  }
+  console.log(`provenance OK: ${refs.length} derived answer(s) required a stamp, all stamped.`);
+
   const { count: solvedCount } = await client
     .from("questions")
     .select("id", { count: "exact", head: true })
