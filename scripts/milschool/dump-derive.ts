@@ -28,7 +28,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { figurePath } from "./figures";
 import { join } from "node:path";
-import { OUT, dataPath, pattern, requirePaper } from "./config";
+import { OUT, dataPath, expectedCount, pattern, requirePaper } from "./config";
 import type { TQ } from "../upsc/lib";
 
 const DEFAULT_BATCH = 25;
@@ -47,9 +47,9 @@ function main() {
   const questions: TQ[] = JSON.parse(readFileSync(merged, "utf8")).questions;
   const pat = pattern(paper);
 
-  if (questions.length !== pat.questions) {
+  if (questions.length !== expectedCount(paper)) {
     throw new Error(
-      `merged file holds ${questions.length} items but ${paper.id} has ${pat.questions}. ` +
+      `merged file holds ${questions.length} items but ${paper.id} expects ${expectedCount(paper)}. ` +
         `Refusing to emit packets from an incomplete paper.`
     );
   }
@@ -57,13 +57,23 @@ function main() {
   const dir = join(OUT, "derive");
   mkdirSync(dir, { recursive: true });
 
-  const sorted = [...questions].sort((a, b) => a.number - b.number);
+  // `--only=51-70 --first=5`: packets for a section added AFTER the passes ran
+  // (RMS 2024 Class 9's Hindi), numbered from p5 so the packets already
+  // derived are neither rewritten nor renumbered.
+  const only = process.argv.find((a) => a.startsWith("--only="))?.slice(7).split("-").map(Number);
+  const first = Number(process.argv.find((a) => a.startsWith("--first="))?.slice(8) ?? 1);
+  if (only && (only.length !== 2 || !only.every(Number.isFinite))) throw new Error(`bad --only: expected --only=<from>-<to>`);
+  const sorted = [...questions]
+    .sort((a, b) => a.number - b.number)
+    .filter((q) => !only || (q.number >= only[0] && q.number <= only[1]));
+  if (only && !sorted.length) throw new Error(`--only=${only.join("-")} matches no item`);
   const packets: TQ[][] = [];
   for (let i = 0; i < sorted.length; i += batch) packets.push(sorted.slice(i, i + batch));
 
-  console.log(`${paper.id}  ${sorted.length} items -> ${packets.length} packet(s) of <=${batch}\n`);
+  console.log(`${paper.id}  ${sorted.length} items -> ${packets.length} packet(s) of <=${batch}, from p${first}\n`);
 
-  packets.forEach((items, i) => {
+  packets.forEach((items, k) => {
+    const i = k + first - 1;
     const blind = items.map((q) => ({
       number: q.number,
       stem: q.stem,

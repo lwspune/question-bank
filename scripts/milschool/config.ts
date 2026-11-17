@@ -85,7 +85,7 @@ export type Paper = {
   /** NTA's key: its folder under SOURCE_ROOT, and the JPG carrying this booklet's code. */
   key?: { dir: string; page: number; code: string; docId: string; final: boolean };
   /** Question numbers deliberately NOT transcribed (e.g. a Hindi-language
-   *  section held for the owner's decision). Coverage expects them absent and
+   *  section once held for a decision). Coverage expects them absent and
    *  fails if one turns up, so a hold is always written down, never silent. */
   held?: { numbers: number[]; why: string };
 };
@@ -111,12 +111,9 @@ const AISSEE_6: Pattern = { questions: 125, marks: 300, minutes: 150 };
 // Social Science 30; Part II Mathematics 50, Science 50 (2022 + 2023 covers).
 const RMS_6: Pattern = { questions: 200, marks: 200, minutes: 150 };
 const RMS_9: Pattern = { questions: 200, marks: 200, minutes: 150 };
-/** RMS Class 9's Section II is a Hindi LANGUAGE test (Q51-70): held until the
- *  owner decides on Hindi (asked 2026-11-17, with AISSEE Class 6 2023/2025). */
-const RMS_9_HINDI_HELD = {
-  numbers: Array.from({ length: 20 }, (_, i) => 51 + i),
-  why: "Hindi language section, held for the owner's decision on Hindi",
-};
+// RMS Class 9's Section II is a Hindi LANGUAGE test (Q51-70), compulsory for
+// every candidate: transcribed IN HINDI as Hindi-only rows under the catalog's
+// "Hindi" subject (owner, 2026-11-17; the MPSC Mains Marathi pattern).
 
 export const PAPERS: Record<string, Paper> = {
   // 33 JPGs: 1 AglaSem cover, 2 booklet cover (code H, APR-9-25), 3 its back,
@@ -288,6 +285,9 @@ export const PAPERS: Record<string, Paper> = {
     pyqYear: 2023,
     pyqNote: "RMS CET 2023 Class 6 (Set C)",
     pattern: RMS_6,
+    // Q116 asks "Who is third to the left of 'D'?" and the booklet prints no
+    // arrangement for it, in Hindi or English (checked p15): unanswerable.
+    held: { numbers: [116], why: "Q116 is printed without the arrangement it asks about" },
   },
   // 30 PDF pages = booklet pages 2-31 of 32 (Set C), warped phone photos at
   // 771x1029 px, candidate pen strokes over chosen option letters. Questions
@@ -306,7 +306,7 @@ export const PAPERS: Record<string, Paper> = {
     pattern: RMS_6,
   },
   // 25 PDF pages: 1 AglaSem cover, 2-25 the booklet (clean scan, no cover
-  // sheet). Part I: English p2-7, Hindi p8-9 (held), Social Science p10-14;
+  // sheet). Part I: English p2-7, Hindi p8-9, Social Science p10-14;
   // Part II: Mathematics p15-20, Science p21-25.
   "rms-cet-9-2024": {
     id: "rms-cet-9-2024",
@@ -324,8 +324,8 @@ export const PAPERS: Record<string, Paper> = {
     // p4 is printed "Page 5" (the viewer JPGs are the same 25 pages). A full
     // copy may sit in shauryabharat.com/?p=39824's embedded viewer (unchecked).
     held: {
-      numbers: [...range(10, 18), ...RMS_9_HINDI_HELD.numbers],
-      why: "Q10-18 on printed page 4, missing from the only copy; Q51-70 Hindi language, held for the owner's decision on Hindi",
+      numbers: range(10, 18),
+      why: "Q10-18 on printed page 4, missing from the only copy",
     },
   },
   // 22 PDF pages: 1 AglaSem cover, 2 booklet cover (CET 2023, Class IX,
@@ -344,7 +344,6 @@ export const PAPERS: Record<string, Paper> = {
     pyqYear: 2023,
     pyqNote: "RMS CET 2023 Class 9 (Set A)",
     pattern: RMS_9,
-    held: RMS_9_HINDI_HELD,
   },
   // 23 PDF pages: 1 booklet cover (CET 2022, Class IX, academic session
   // 2023-24; English p2-8, Hindi p8-10, Social Science p11-13, then Part II),
@@ -361,7 +360,6 @@ export const PAPERS: Record<string, Paper> = {
     pyqYear: 2022,
     pyqNote: "RMS CET 2022 Class 9 (for session 2023-24)",
     pattern: RMS_9,
-    held: RMS_9_HINDI_HELD,
   },
   // 33 PDF pages: 1 AglaSem cover, 2 booklet cover (code A, EN/HOLAB/6/24,
   // English medium), 3-31 Q1-Q125, 32 rough work, 33 instructions. Language

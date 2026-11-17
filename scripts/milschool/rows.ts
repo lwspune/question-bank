@@ -55,8 +55,22 @@ export function buildPaperRows(paper: Paper): PaperRows {
     // No key: say so plainly, and say which rows a person checked.
     const checked = new Set<number>(answersRaw.checked ?? []);
     const overruled = new Set<number>(answersRaw.overruled ?? []);
+    const byNumber = new Map(questions.map((q) => [q.number, q]));
     for (const r of built) {
       const n = Number(r.questionNumber);
+      // A question printed only in Hindi (RMS Class 9's Hindi section) gets the
+      // note in Hindi, as MPSC Mains writes its note in the question's language.
+      if (byNumber.get(n)?.subject === "Hindi") {
+        const hiHow = overruled.has(n)
+          ? "दो स्वतंत्र हलों का उत्तर एक था; उसे जाँचकर बदला गया।"
+          : reconciled.has(n)
+            ? "दो स्वतंत्र हलों के उत्तर अलग थे; उत्तर जाँचकर तय किया गया।"
+            : checked.has(n)
+              ? "दो स्वतंत्र हलों का उत्तर एक आया, और उसे जाँचा भी गया।"
+              : "दो स्वतंत्र हलों का उत्तर एक आया।";
+        r.solution = `${working.get(n) ?? ""} [उत्तर PYQ Vault ने निकाला है: इस प्रश्नपत्र की उत्तर-कुंजी प्रकाशित नहीं हुई है। ${hiHow}]`.trim();
+        continue;
+      }
       const how = overruled.has(n)
         ? "Two independent solutions agreed on another answer; it was corrected by hand."
         : reconciled.has(n)
@@ -72,9 +86,11 @@ export function buildPaperRows(paper: Paper): PaperRows {
   const notices = new Map<number, string>(
     answers.filter((a) => (a as { notice?: string }).notice).map((a) => [a.number, (a as { notice?: string }).notice!])
   );
+  const hindi = new Set(questions.filter((q) => q.subject === "Hindi").map((q) => q.number));
   for (const r of built) {
-    const note = notices.get(Number(r.questionNumber));
-    if (note) r.solution = `**Note:** ${note}\n\n${r.solution}`;
+    const n = Number(r.questionNumber);
+    const note = notices.get(n);
+    if (note) r.solution = `${hindi.has(n) ? "**टिप्पणी:**" : "**Note:**"} ${note}\n\n${r.solution}`;
   }
   const graceNumbers = answers.filter((a) => (a as { grace?: boolean }).grace).map((a) => a.number);
   const withdrawn = dropped.length ? buildWithdrawnRecords(questions, dropped, withdrawnNote(!paper.key?.final)) : [];
