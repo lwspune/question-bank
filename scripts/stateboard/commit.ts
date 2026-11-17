@@ -82,6 +82,13 @@ async function main() {
   }
   console.log(`\nupload job: ${jobId}`);
 
+  // Rows already in the bank for this chapter (a re-commit after adding rows to a
+  // shipped chapter): they keep their visibility. A chapter is far under 1000 rows.
+  const { data: before, error: bErr } = await client
+    .from("questions").select("id").eq("exam_id", EXAM_ID).eq("source_file", ch.sourceFile);
+  if (bErr) throw new Error(`existing-row read failed: ${bErr.message}`);
+  const existing = new Set((before ?? []).map((r) => r.id as string));
+
   const result = await commitStaged(client, {
     orgId: ORG_ID, examId: EXAM_ID, filename: ch.sourceFile, createdBy: CREATED_BY,
     rows, uploadJobId: jobId, pyqYear: null, pyqNote: ch.note,
@@ -89,12 +96,26 @@ async function main() {
   console.log(`commit: inserted=${result.inserted} skipped=${result.skipped} failed=${result.failed}`);
   for (const e of result.errors) console.log(`  err row ${e.sourceRow}: ${e.message}`);
 
-  const { error: uErr, count } = await client
+  // PRIVATE only for the rows THIS run inserted. Until 2026-11-17 this stamped
+  // every row of the source file, so adding five rows to a shipped chapter (Ch.10
+  // Magnetic Fields) hid its 33 live questions until flip-public ran again.
+  const { error: kErr } = await client
     .from("questions")
-    .update({ visibility: "PRIVATE", question_kind: "practice" }, { count: "exact" })
+    .update({ question_kind: "practice" })
     .eq("exam_id", EXAM_ID).eq("source_file", ch.sourceFile);
-  if (uErr) throw new Error(`kind/visibility update failed: ${uErr.message}`);
-  console.log(`set ${count} rows to PRIVATE + question_kind='practice'.`);
+  if (kErr) throw new Error(`kind update failed: ${kErr.message}`);
+  const { data: after, error: aErr } = await client
+    .from("questions").select("id").eq("exam_id", EXAM_ID).eq("source_file", ch.sourceFile);
+  if (aErr) throw new Error(`row read failed: ${aErr.message}`);
+  const inserted = (after ?? []).map((r) => r.id as string).filter((id) => !existing.has(id));
+  let count = 0;
+  if (inserted.length) {
+    const { error: uErr, count: c } = await client
+      .from("questions").update({ visibility: "PRIVATE" }, { count: "exact" }).in("id", inserted);
+    if (uErr) throw new Error(`visibility update failed: ${uErr.message}`);
+    count = c ?? 0;
+  }
+  console.log(`set ${count} newly inserted row(s) to PRIVATE; ${existing.size} existing row(s) keep their visibility.`);
 
   const { count: linked } = await client
     .from("questions").select("id", { count: "exact", head: true })

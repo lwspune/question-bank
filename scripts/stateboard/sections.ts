@@ -712,6 +712,9 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
   "magnetic-fields-current-12-phy": [
     { group: "10. Magnetic Fields due to Electric Current — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.10."] },
     { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    // The book prints these five in an "Exercise : Chapter 10" box inside the Ch.11
+    // PDF (p.14, printed 264), so the Ch.10 file never had them (added 2026-11-17).
+    { group: "Exercises", label: "Answer in brief", kind: "exercise", refPrefixes: ["Ex Ch.10 Q."] },
     {
       group: "Exercises",
       label: "Solve the following",
