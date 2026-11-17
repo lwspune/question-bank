@@ -40,4 +40,44 @@ describe("play_round (a finished /play round, signed in)", () => {
   it("carries nothing else", () => {
     expect(parseClientEvent({ ...ok, surface: "start" }, "u1", NOW).ok).toBe(false);
   });
+
+  it("a maths round never carries a game field, so rows from before and after the hub read the same", () => {
+    expect(parseClientEvent({ ...ok, game: "maths" }, "u1", NOW).ok).toBe(false);
+  });
+});
+
+describe("play_round for the English games (2026-11-17)", () => {
+  const wb = { kind: "play_round", game: "word_builder", correct: 7, wrong: 3, mastered: 1 };
+  const dw = { kind: "play_round", game: "daily_word", solved: true, guesses: 3 };
+
+  it("records a Word Builder round: first-try right and wrong, and words mastered", () => {
+    expect(parseClientEvent(wb, "u1", NOW)).toEqual({
+      ok: true,
+      value: { kind: "play_round", metadata: { game: "word_builder", correct: 7, wrong: 3, mastered: 1 } },
+    });
+  });
+
+  it("refuses Word Builder counts a 10-word round cannot reach", () => {
+    for (const bad of [{ correct: 11 }, { wrong: -1 }, { correct: 6, wrong: 5 }, { mastered: 11 }, { mastered: 1.5 }, { level: 2 }]) {
+      expect(parseClientEvent({ ...wb, ...bad }, "u1", NOW).ok).toBe(false);
+    }
+  });
+
+  it("records a finished Daily Word: solved and how many guesses", () => {
+    expect(parseClientEvent(dw, "u1", NOW)).toEqual({
+      ok: true,
+      value: { kind: "play_round", metadata: { game: "daily_word", solved: true, guesses: 3 } },
+    });
+  });
+
+  it("refuses a Daily Word outside 1 to 6 guesses, or unsolved short of 6", () => {
+    for (const bad of [{ guesses: 0 }, { guesses: 7 }, { guesses: 2.5 }, { solved: "yes" }, { solved: false, guesses: 4 }, { correct: 1 }]) {
+      expect(parseClientEvent({ ...dw, ...bad }, "u1", NOW).ok).toBe(false);
+    }
+    expect(parseClientEvent({ ...dw, solved: false, guesses: 6 }, "u1", NOW).ok).toBe(true);
+  });
+
+  it("refuses an unknown game", () => {
+    expect(parseClientEvent({ ...wb, game: "chess" }, "u1", NOW).ok).toBe(false);
+  });
 });

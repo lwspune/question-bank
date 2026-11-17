@@ -112,6 +112,21 @@ type ClientEvent =
       wrong: number;
       points: number;
       cleared: boolean;
+    }
+  | {
+      /** A finished Word Builder round (lib/play/words/builder): first-try counts. */
+      kind: "play_round";
+      game: "word_builder";
+      correct: number;
+      wrong: number;
+      mastered: number;
+    }
+  | {
+      /** A finished Daily Word (lib/play/words/daily). */
+      kind: "play_round";
+      game: "daily_word";
+      solved: boolean;
+      guesses: number;
     };
 
 export function sendActivity(event: ClientEvent): void {
