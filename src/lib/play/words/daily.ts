@@ -114,7 +114,7 @@ export function shortDate(day: string): string {
   return `${d} ${MONTHS[m - 1]}`;
 }
 
-const SQUARE: Record<Mark, string> = { b: "🟦", o: "🟧", g: "⬜" };
+const SQUARE: Record<Mark, string> = { b: "🟩", o: "🟧", g: "⬛" };
 
 export function shareText(day: string, guesses: string[], answer: string, solved: boolean): string {
   return [

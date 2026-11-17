@@ -1,0 +1,154 @@
+/*
+ * /play arcade theme (2026-11-18). One dark look by design, in light and dark
+ * site modes alike: the games are their own world, apart from the study app.
+ * Every text colour here passes WCAG AA on --pa-night-2 (tests/play-arcade-contrast.test.ts).
+ */
+.arcade {
+  --pa-night: #140f33;
+  --pa-night-2: #1f1850;
+  --pa-night-3: #2b2266;
+  --pa-edge: #4a3ca0;
+  --pa-ink: #f3f0ff;
+  --pa-ink-dim: #b9b2e0;
+  --pa-mango: #ffb238;
+  --pa-mango-ink: #2a1700;
+  --pa-mango-deep: #c47a00;
+  --pa-coral: #ff6b80;
+  --pa-mint: #3ee6b0;
+  --pa-mint-ink: #05271c;
+  --pa-sky: #5cc8ff;
+  --pa-lilac: #b48cff;
+  --pa-lime: #9be15d;
+  background: var(--pa-night);
+  color: var(--pa-ink);
+  color-scheme: dark;
+}
+.arcade .pa-display {
+  font-family: var(--font-arcade), ui-rounded, "Arial Rounded MT Bold", system-ui, sans-serif;
+}
+.arcade :focus-visible {
+  outline: 3px solid var(--pa-sky);
+  outline-offset: 2px;
+}
+
+/* Buttons */
+.pa-btn {
+  font-family: var(--font-arcade), ui-rounded, system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  background: var(--pa-mango);
+  color: var(--pa-mango-ink);
+  border: 0;
+  border-radius: 1.1rem;
+  padding: 0.65rem 1.75rem;
+  box-shadow: 0 6px 0 var(--pa-mango-deep);
+  cursor: pointer;
+  transition: transform 0.08s, box-shadow 0.08s;
+  touch-action: manipulation;
+}
+.pa-btn:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--pa-mango-deep); }
+.pa-btn:disabled { opacity: 0.45; cursor: default; transform: none; box-shadow: 0 6px 0 var(--pa-mango-deep); }
+.pa-btn-ghost {
+  font-weight: 700;
+  font-size: 0.95rem;
+  background: transparent;
+  color: var(--pa-ink);
+  border: 2px solid var(--pa-night-3);
+  border-radius: 0.9rem;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.pa-btn-ghost:hover { border-color: var(--pa-edge); }
+.pa-icon-btn {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0;
+  border-radius: 0.8rem;
+  background: var(--pa-night-3);
+  color: var(--pa-ink);
+  cursor: pointer;
+}
+.pa-pill {
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--pa-night-3);
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+}
+.pa-key {
+  height: 3.25rem;
+  border: 0;
+  border-radius: 0.9rem;
+  background: var(--pa-night-3);
+  color: var(--pa-ink);
+  font-family: var(--font-arcade), ui-rounded, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 0 #120d38;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+}
+.pa-key:active { transform: translateY(3px); box-shadow: 0 1px 0 #120d38; }
+
+/* Game screen: a phone-shaped stage that fills small screens */
+.pa-stage {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.75rem;
+  background: var(--pa-night-2);
+  box-shadow: 0 0 0 2px #2d2470, 0 20px 50px #0007;
+}
+.pa-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  padding: 1.5rem;
+  text-align: center;
+  background: radial-gradient(circle at 50% 30%, #3a2a8a 0, var(--pa-night-2) 70%);
+}
+.pa-dim { color: var(--pa-ink-dim); }
+
+/* Motion */
+@keyframes pa-shake { 20% { transform: translateX(-8px); } 40% { transform: translateX(8px); } 60% { transform: translateX(-5px); } 80% { transform: translateX(5px); } }
+.pa-shake { animation: pa-shake 0.35s; }
+@keyframes pa-pop { 0% { transform: scale(0.85); } 60% { transform: scale(1.06); } 100% { transform: scale(1); } }
+.pa-pop { animation: pa-pop 0.35s; }
+@keyframes pa-up { to { transform: translateY(-50px); opacity: 0; } }
+.pa-float { position: absolute; pointer-events: none; z-index: 6; font-family: var(--font-arcade), system-ui, sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--pa-mango); animation: pa-up 0.7s forwards; }
+@keyframes pa-spark { to { transform: translate(var(--dx), var(--dy)); opacity: 0; } }
+.pa-spark { position: absolute; width: 7px; height: 7px; border-radius: 50%; pointer-events: none; animation: pa-spark 0.5s ease-out forwards; }
+@keyframes pa-fall { to { transform: translateY(560px) rotate(720deg); opacity: 0; } }
+.pa-confetti { position: absolute; width: 8px; height: 12px; border-radius: 2px; pointer-events: none; z-index: 40; animation: pa-fall 1.4s ease-in forwards; }
+@keyframes pa-banner { 0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; } 20% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; } 80% { opacity: 1; } 100% { opacity: 0; } }
+.pa-banner { position: absolute; left: 50%; top: 40%; z-index: 7; pointer-events: none; white-space: nowrap; font-family: var(--font-arcade), system-ui, sans-serif; font-weight: 800; font-size: 2.1rem; color: var(--pa-sky); text-shadow: 0 3px 0 #0006; animation: pa-banner 1s forwards; }
+@keyframes pa-flip { 0% { transform: rotateX(0); } 50% { transform: rotateX(90deg); } 100% { transform: rotateX(0); } }
+.pa-flip { animation: pa-flip 0.5s ease forwards; }
+@keyframes pa-bounce { 40% { transform: translateY(-16px); } }
+.pa-bounce { animation: pa-bounce 0.5s ease; }
+@keyframes pa-jump { 40% { transform: translateY(-12px); } }
+.pa-jump { animation: pa-jump 0.4s; }
+@keyframes pa-fade { to { opacity: 0; } }
+.pa-flash::after { content: ""; position: absolute; inset: 0; background: #ff6b8055; animation: pa-fade 0.3s forwards; pointer-events: none; }
+.pa-toast { position: absolute; left: 50%; top: 4.25rem; transform: translateX(-50%); z-index: 25; white-space: nowrap; background: var(--pa-ink); color: var(--pa-night); font-weight: 700; font-size: 0.875rem; border-radius: 0.6rem; padding: 0.35rem 0.75rem; animation: pa-fade 1.6s 0.6s forwards; }
+
+/* The /play hub ring on the dark stage */
+.arcade .sc-ring { --sc-cw: min(230px, 62cqi); }
+.arcade .sc-stage { height: 330px; }
+.arcade .sc-card { height: 300px; }
+.arcade .sc-face { color: #1b1240; border: 0; }
+.arcade .sc-face::before { display: none; }
+.arcade .sc-shade { background: var(--pa-night); }
+.arcade .sc-floor { background: radial-gradient(50% 50% at 50% 50%, rgb(255 178 56 / 0.35), transparent 70%); }
+
+@media (prefers-reduced-motion: reduce) {
+  .arcade *, .arcade *::before, .arcade *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition: none !important; }
+}

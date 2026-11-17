@@ -153,7 +153,7 @@ describe("shareText", () => {
   it("is the date, the score and the grid in squares, with the link", () => {
     const t = shareText("2026-11-17", ["plain", "claim", "cavil"], "cavil", true);
     expect(t).toBe(
-      ["PYQ Vault Daily Word, 17 Nov: 3/6", "⬜🟧🟧🟦⬜", "🟦🟧🟧🟦⬜", "🟦🟦🟦🟦🟦", "www.pyqvault.com/play/daily-word"].join("\n")
+      ["PYQ Vault Daily Word, 17 Nov: 3/6", "⬛🟧🟧🟩⬛", "🟩🟧🟧🟩⬛", "🟩🟩🟩🟩🟩", "www.pyqvault.com/play/daily-word"].join("\n")
     );
   });
 
