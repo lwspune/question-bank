@@ -37,7 +37,8 @@ async function main() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
   const id = process.argv[2];
   const apply = process.argv.includes("--apply");
-  if (!id || id.startsWith("--")) throw new Error("usage: commit.ts <paperId> [--apply]");
+  const replaceFigures = process.argv.includes("--replace-figures");
+  if (!id || id.startsWith("--")) throw new Error("usage: commit.ts <paperId> [--apply] [--replace-figures]");
 
   const paper = JSON.parse(readFileSync(join(DATA, `${id}.questions.json`), "utf8")) as UpPaper;
   const subject = SUBJECTS[paper.subject];
@@ -154,7 +155,9 @@ async function main() {
       if (tErr) problems.push(`${q.ref}: translation: ${tErr.message}`);
       else translated++;
     }
-    if (q.figure && !row.image_url) {
+    // --replace-figures re-uploads a figure whose crop was corrected after an
+    // earlier commit (a stored image is otherwise left alone).
+    if (q.figure && (!row.image_url || replaceFigures)) {
       const url = await uploadImage(client, ORG_ID, readFileSync(figurePath(id, q.ref)), "image/png");
       const { error: fErr } = await client.from("questions").update({ image_url: url }).eq("id", row.id);
       if (fErr) problems.push(`${q.ref}: image_url: ${fErr.message}`);
