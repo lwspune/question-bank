@@ -27,6 +27,7 @@ import {
 } from "./order";
 import { bookExams, type BookChapter, type BookDefinition } from "./registry";
 import { recurrenceLabels } from "./recurrence";
+import { printedTotal } from "./print";
 
 /** PostgREST truncates a `.select()` at 1000 rows, silently. Page under it. */
 const PAGE_SIZE = 1000;
@@ -464,7 +465,7 @@ export async function loadBookChapter(
     chapter,
     sections,
     questionsById,
-    total: orderedIds.length - excludedIds.length,
+    total: printedTotal(sections, excludedIds),
     assembled: row.syncedAt != null,
     excluded: excludedIds.length,
     excludedIds,
