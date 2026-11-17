@@ -90,3 +90,13 @@ one that has an answer, normally the complete one). Then solve that version.
 Put one sentence in `doubts` too, so the main session sees it.
 
 Report (at most 10 lines): MCQ count, rows solved, every `doubts` entry.
+
+## Science (824) and the Class 12 sciences
+
+- Answers follow the NCERT book of that class. A written answer is what a good
+  student writes for those marks: definitions, reasons, balanced chemical
+  equations (`\(\mathrm{...}\)`), numerical working with units.
+- A "draw a labelled diagram" part: no picture can be stored, so say what the
+  diagram shows and list its labels.
+- Hindi solutions use the standard Hindi-medium textbook terms (अपवर्तन,
+  प्रतिरोध, संक्षारण, प्रकाश-संश्लेषण ...), not transliterated English.

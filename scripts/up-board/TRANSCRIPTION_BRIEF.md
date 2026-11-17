@@ -45,6 +45,13 @@ saying different things), transcribe each language as printed and add `_flag`
 with one plain sentence about what you saw. If a digit is unreadable in one
 language, the other language usually settles it: say so in `_flag`.
 
+**A word cut at the page edge:** where only a letter or a word is lost and the
+sentence plus the other language leave one possible reading ("चाहि" ->
+"चाहिए", "measu" -> "measure"), complete it and say so in `_flag`. Never keep
+a half-word in the text. Where a whole line or clause of one language is lost,
+do not reconstruct it: keep the fragment and add `"hiMissing": "<reason>"` (the
+row then ships English-only).
+
 ## 4. Rows
 
 - **Section A (MCQs):** one row per question. `ref` `"Q1"`..`"Q20"`.
