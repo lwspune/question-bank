@@ -17,6 +17,7 @@ import {
   yearHeading,
 } from "@/lib/mocks/pastPapersPage";
 import { loadExamPaperFacts, pastPapersOf } from "@/lib/mocks/paperFactsServer";
+import { pastPapersJsonLd, serializeJsonLd } from "@/lib/mocks/pastPapersJsonLd";
 import { getSubjectGuides } from "@/lib/guide/guideCatalog";
 import PaperDownload from "../../../_components/PaperDownload";
 import PaperFactsList from "../../../_components/PaperFactsList";
@@ -50,9 +51,14 @@ export async function generateMetadata(props: { params: Promise<Params> }): Prom
   const solved = getExamByName(exam.examName)?.pastPaperSolutions === true;
   return {
     title: { absolute: downloadPageTitle(exam.examName, range, solved) },
-    description: `${exam.examName} previous year question papers${range ? ` from ${range}` : ""}, each exactly as it was set. Every paper is free to read online ${solved ? "with answers and worked solutions" : "with answers"}, or sit it as a timed mock. Your first PDF paper and answer key are free to download.`,
+    description: pageDescription(exam.examName, range, solved),
     alternates: { canonical: canonicalFor(mockDownloadHref(exam.slug)) },
   };
+}
+
+/** The meta description, shared with the page's JSON-LD so the two never differ. */
+function pageDescription(examName: string, range: string | null, solved: boolean): string {
+  return `${examName} previous year question papers${range ? ` from ${range}` : ""}, each exactly as it was set. Every paper is free to read online ${solved ? "with answers and worked solutions" : "with answers"}, or sit it as a timed mock. Your first PDF paper and answer key are free to download.`;
 }
 
 const SECTION_TITLE = "text-xl font-semibold tracking-tight";
@@ -88,21 +94,33 @@ export default async function MockDownloadList(props: { params: Promise<Params> 
   const newest = newestSittingLabel(papers);
   const guide = guideHref(exam.slug);
 
+  const heading = `${exam.examName} previous year question papers${range ? ` (${range})` : ""}`;
+  const breadcrumbs = [
+    { href: "/mock", label: "Mocks" },
+    ...(parent ? [{ href: `/mock/exam/${parent.slug}`, label: parent.name }] : []),
+    { href: `/mock/exam/${exam.slug}`, label: exam.displayName },
+    { label: "Past papers" },
+  ];
+  // For search engines only: built from the list, trail and FAQ rendered below.
+  const jsonLd = pastPapersJsonLd({
+    path: mockDownloadHref(exam.slug),
+    name: heading,
+    description: pageDescription(exam.examName, range, solved),
+    papers: groups.flatMap((g) => g.items).map((m) => ({ title: plainPaperTitle(m.title), href: paperPageHref(m.slug) })),
+    breadcrumbs,
+    faq,
+  });
+
   return (
-    <GuideShell
-      guideTitle="Mock Tests"
-      sideNavLabel="Exams"
-      sideNav={mockSideNav(params.examSlug)}
-      breadcrumbs={[
-        { href: "/mock", label: "Mocks" },
-        ...(parent ? [{ href: `/mock/exam/${parent.slug}`, label: parent.name }] : []),
-        { href: `/mock/exam/${exam.slug}`, label: exam.displayName },
-        { label: "Past papers" },
-      ]}
-    >
+    <GuideShell guideTitle="Mock Tests" sideNavLabel="Exams" sideNav={mockSideNav(params.examSlug)} breadcrumbs={breadcrumbs}>
+      <script
+        type="application/ld+json"
+        // Server-rendered from this page's own data; `<` escaped by serializeJsonLd.
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
+      />
       <GuideHero
         eyebrow={`${exam.displayName} · Past papers`}
-        title={`${exam.examName} previous year question papers${range ? ` (${range})` : ""}`}
+        title={heading}
         subtitle="Every paper as set. Read free, sit as a timed mock, or download a PDF."
       >
         <div className="flex flex-wrap items-center gap-2">
