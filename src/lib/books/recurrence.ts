@@ -141,12 +141,12 @@ export function normaliseStem(text: string): string {
  * duplicates when it is four distinct values.
  *
  * Erring towards FLAGGING is free here: a false conflict costs one look, and a
- * missed one silently deletes a distinct answer. Two known false-positive
- * sources are left in DELIBERATELY for that reason: a trailing full stop
- * ("...many points" vs "...many points.") and LaTeX grouping braces
- * ("x^{2}" vs "x^2"). Stripping either would move this key back towards the
- * dangerous direction — "{2}" and "2" are different answers, and "0.5" and "05"
- * more so. Measured cost on MHT-CET Maths: 3 false flags in 118 groups.
+ * missed one silently deletes a distinct answer. A trailing full stop and LaTeX
+ * grouping braces were first left in for that reason ("{2}" and "2" are
+ * different answers, and "0.5" and "05" more so). Since 2026-11-17 they are
+ * handled by NARROW rules that cannot reach those cases (a full stop only at the
+ * very end; braces only round one character after ^ or _), plus \dfrac read as
+ * \frac: 9 of the 14 flags then left on MHT-CET Maths were exactly these.
  */
 export function normaliseAnswer(text: string): string {
   return text
@@ -160,6 +160,13 @@ export function normaliseAnswer(text: string): string {
     .replace(/\$/g, "")
     .replace(/[‒-―−]/g, "-")
     .replace(/[_^]\{\}/g, "")
+    // Typesetting that never changes an answer (2026-11-17; 9 of the 14 flags left
+    // on MHT-CET Maths were these). Each rule is narrow on purpose: braces go only
+    // round ONE character after ^ or _ (x^{2} = x^2, but x^{12} and a set {2}
+    // stay), and only a full stop that ENDS the answer (0.5 vs 05 stay apart).
+    .replace(/\\[dt]frac/g, "\\frac")
+    .replace(/([_^])\{([^{}])\}/g, "$1$2")
+    .replace(/\s*\.\s*$/, "")
     .replace(/[^a-z0-9+*/^=<>()[\]{},.-]/g, "");
 }
 
