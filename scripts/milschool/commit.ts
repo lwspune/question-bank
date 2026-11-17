@@ -28,17 +28,12 @@ import { createClient } from "@supabase/supabase-js";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { commitStaged } from "../../src/lib/upload/commit";
-import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
-import { validateRow } from "../../src/lib/upload/validate";
 import { uploadImage } from "../../src/lib/storage/images";
 import { checkFigureFile, figureWatermarkIssue } from "../lib/figures/watermark";
-import { CREATED_BY, EXAMS, ORG_ID, dataPath, examIdOf, pattern, pyqNoteFor, requirePaper } from "./config";
+import { CREATED_BY, EXAMS, ORG_ID, examIdOf, pattern, pyqNoteFor, requirePaper } from "./config";
 import { figurePath } from "./figures";
-import { buildRecords, buildWithdrawnRecords, validateRows, type Derivation, type TQ } from "../upsc/lib";
-
-const withdrawnNote = (provisional: boolean) =>
-  `Dropped by NTA: its ${provisional ? "provisional " : "final "}answer key drops this question and it was not scored. ` +
-  `No option is marked correct. In PYQ Vault mocks it is awarded to every candidate.`;
+import type { TQ } from "../upsc/lib";
+import { buildPaperRows } from "./rows";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -51,99 +46,29 @@ async function main() {
   const apply = args.includes("--apply");
   const pat = pattern(paper);
 
-  const mergedFile = dataPath(paper.id, "merged");
-  const answersFile = dataPath(paper.id, "answers");
-  for (const f of [mergedFile, answersFile]) {
-    if (!existsSync(f)) throw new Error(`${f} not found — run merge.ts / crosstab.ts --apply first.`);
-  }
-
-  const questions: TQ[] = JSON.parse(readFileSync(mergedFile, "utf8")).questions;
-  const answersRaw = JSON.parse(readFileSync(answersFile, "utf8"));
-  const answers: Derivation[] = answersRaw.answers;
-  const reconciled = new Set<number>(answersRaw.reconciled ?? []);
-  // Questions the key WITHDREW. They carry no correct answer, so they are absent
-  // from the rows on purpose and must not read as a coverage failure.
-  const dropped: number[] = answersRaw.dropped ?? [];
-
   const EXAM_ID = examIdOf(paper);
-  const issuer = paper.exam.startsWith("aissee") ? "NTA" : paper.exam === "rimc" ? "RIMC" : "the Rashtriya Military Schools";
-  const keyed = !!answersRaw.source; // keycheck.ts writes `source`; crosstab.ts does not
-
-  const built = buildRecords(questions, answers, { reconciled });
-  const working = new Map(answers.map((a) => [a.number, a.reasoning.trim()]));
-  if (keyed) {
-    // The key supplied the letter, so the shared "no official key" bracket is false.
-    for (const r of built) r.solution = working.get(Number(r.questionNumber)) ?? r.solution;
-  } else {
-    // No key: say so, plainly and without the shared bracket's em dash, and say
-    // which rows a person checked.
-    const checked = new Set<number>(answersRaw.checked ?? []);
-    const overruled = new Set<number>(answersRaw.overruled ?? []);
-    for (const r of built) {
-      const n = Number(r.questionNumber);
-      const how = overruled.has(n)
-        ? "Two independent solutions agreed on another answer; it was corrected by hand."
-        : reconciled.has(n)
-          ? "Two independent solutions disagreed; the answer was settled by hand."
-          : checked.has(n)
-            ? "Two independent solutions agreed, and the answer was checked by hand."
-            : "Two independent solutions agreed.";
-      r.solution = `${working.get(n) ?? ""} [Answer worked out by PYQ Vault: ${issuer} has not published a key for this paper. ${how}]`.trim();
-    }
-  }
-  // A notice (a defective or ambiguous item) goes above the solution, the same
-  // "**Note:**" form the other lanes use; `grace` items go to flawed.json below.
-  const notices = new Map<number, string>(
-    answers.filter((a) => (a as { notice?: string }).notice).map((a) => [a.number, (a as { notice?: string }).notice!])
-  );
-  for (const r of built) {
-    const note = notices.get(Number(r.questionNumber));
-    if (note) r.solution = `**Note:** ${note}\n\n${r.solution}`;
-  }
-  const graceNumbers = answers.filter((a) => (a as { grace?: boolean }).grace).map((a) => a.number);
-  const withdrawn = dropped.length
-    ? buildWithdrawnRecords(questions, dropped, withdrawnNote(!paper.key?.final))
-    : [];
-  for (const r of withdrawn) {
-    r.question = normalizeNewlines(r.question);
-    if (r.context) r.context = normalizeNewlines(r.context);
-  }
-  // Normalise long-form text at the write boundary, mirroring the upload parser.
-  // `commitStaged` REJECTS a literal "\n" rather than repairing it, because
-  // content_hash is computed by the caller from the pre-normalisation text.
-  for (const r of built) {
-    r.question = normalizeNewlines(r.question);
-    if (r.context) r.context = normalizeNewlines(r.context);
-    if (r.solution) r.solution = normalizeNewlines(r.solution);
-  }
+  const rows = buildPaperRows(paper);
+  const { questions, answers, answersRaw, keyed, reconciled, dropped, graceNumbers, notices, parsed, errs } = rows;
 
   console.log(`${paper.id}  ${EXAMS[paper.exam].name}  "${pyqNoteFor(paper)}"`);
   if (paper.key && !paper.key.final) {
     console.log(
-      `!! PROVISIONAL KEY. Every row will carry that fact in its pyq_note.\n` +
-        `   Re-run keycheck against the FINAL key when it is published, and treat\n` +
+      `!! PROVISIONAL KEY. Every row will carry that fact in its pyq_note.
+` +
+        `   Re-run keycheck against the FINAL key when it is published, and treat
+` +
         `   any answer that moves as a correction rather than a re-derivation.`
     );
   }
   console.log(`source_file: ${paper.sourceFile}`);
-  console.log(`${questions.length} transcribed, ${answers.length} derived, ${built.length} rows assembled`);
+  console.log(`${questions.length} transcribed, ${answers.length} derived, ${rows.builtCount} rows assembled`);
   if (keyed) {
     const hand: number[] = answersRaw.handSolutions ?? [];
-    console.log(`letters from the key; working from a blind pass on ${answers.length - hand.length}, by hand on ${hand.length}\n`);
+    console.log(`letters from the key; working from a blind pass on ${answers.length - hand.length}, by hand on ${hand.length}
+`);
   } else {
-    console.log(`${reconciled.size} answer(s) reconciled by hand, ${answers.length - reconciled.size} agreed blind\n`);
-  }
-
-  // Run each row through the SAME validator the Excel upload path uses, so this
-  // pipeline cannot write a row shape the normal ingest would have rejected.
-  const errs = validateRows(built, 1, pat.questions, { exclude: dropped });
-  const parsed = [];
-  // Withdrawn rows carry answer CANCELLED, which validateRows (A-D only) would
-  // reject, so they go through validateRow alone, as the CSE loader did.
-  for (const r of [...built, ...withdrawn]) {
-    const v = validateRow(r);
-    if (v.errors.length) errs.push(`Q${r.questionNumber}: ${v.errors.join("; ")}`);
-    else parsed.push(v.parsed!);
+    console.log(`${reconciled.size} answer(s) reconciled by hand, ${answers.length - reconciled.size} agreed blind
+`);
   }
 
   // Every figure item needs its crop on disk, and the crop must not carry a
@@ -166,7 +91,7 @@ async function main() {
     for (const e of errs.slice(0, 40)) console.log(`  - ${e}`);
     if (errs.length > 40) console.log(`  ... and ${errs.length - 40} more`);
   } else {
-    console.log(`VALIDATION: ok (${parsed.length} rows incl. ${withdrawn.length} withdrawn, coverage 1..${pat.questions})`);
+    console.log(`VALIDATION: ok (${parsed.length} rows incl. ${rows.withdrawnCount} withdrawn, coverage 1..${pat.questions})`);
   }
 
   if (!apply) {
