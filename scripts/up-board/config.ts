@@ -99,6 +99,9 @@ export const EXTRA_CHAPTERS: Partial<Record<UpSubjectKey, Record<string, string[
     ],
     "Magnetic Effects of Electric Current": ["Electromagnetic Induction"],
   },
+  // 2025 IY Q6a examines tangents and normals, which the rationalised NCERT
+  // Class 12 book dropped (the cbse-12-pyq config notes the same gap).
+  maths12: { "Application of Derivatives": ["Tangents and Normals"] },
 };
 
 /** chapter -> subtopics a UP row may use, for one subject. */
