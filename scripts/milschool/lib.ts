@@ -68,7 +68,13 @@ export function validateWritten(items: WrittenItem[]): string[] {
 function normAnswer(s: string): string {
   return s
     .toLowerCase()
+    .replace(/^\s*\(\s*[a-e1-5]\s*\)\s*/, "") // a leading choice label: "(c) Mother Teresa"
+    .replace(/\b([a-z])\.\s*/g, "$1") // initials: "K. M. Munshi" -> "km munshi"
     .replace(/\\[()]/g, "")
+    // a closing remark in words, after an answer: "North 1, South 2 (North lost 1-2)".
+    // A bracket with no word in it ("(32, 16)") is part of the answer and stays.
+    .replace(/(\S)\s*\([^()]*[a-z]{2,}[^()]*\)\s*$/, "$1")
+    .replace(/\^\s*\{?\\circ\}?|°|\s*degrees?\b/g, "deg")
     .replace(/\$/g, "")
     .replace(/(rs\.?|₹|inr)/g, "")
     .replace(/(\d),(\d{3})\b/g, "$1$2")

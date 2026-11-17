@@ -47,6 +47,20 @@ describe("compareWritten", () => {
     expect(compareWritten("\\(0.50\\)", "0.5")).toBe("AGREE");
     expect(compareWritten("Mickey, Goofy", "mickey,goofy.")).toBe("AGREE");
   });
+  it("ignores a leading choice label and dots in initials", () => {
+    expect(compareWritten("Mother Teresa", "(c) Mother Teresa")).toBe("AGREE");
+    expect(compareWritten("KM Munshi", "(e) K. M. Munshi")).toBe("AGREE");
+    expect(compareWritten("(a) 12", "(b) 12")).toBe("AGREE");
+    // a decimal point is not an initial's dot
+    expect(compareWritten("1.5", "15")).toBe("DISPUTE");
+  });
+  it("reads degrees one way, and ignores a closing remark in brackets", () => {
+    expect(compareWritten("x = 70 degrees", "x = 70°")).toBe("AGREE");
+    expect(compareWritten("x = 70^\\circ", "x = 70°")).toBe("AGREE");
+    expect(compareWritten("North 1, South 2", "North 1, South 2 (North lost 1-2)")).toBe("AGREE");
+    // brackets inside an answer are kept
+    expect(compareWritten("(2, 2) and (32, 16)", "(2, 2) and (32, 17)")).toBe("DISPUTE");
+  });
   it("disputes different answers, and reports a missing one", () => {
     expect(compareWritten("12", "13")).toBe("DISPUTE");
     expect(compareWritten("12", undefined)).toBe("MISSING");

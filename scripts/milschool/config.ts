@@ -157,6 +157,12 @@ const RIMC_GK_SHORT: Record<string, { numbers: number[]; why: string }> = {
   "2023_jun": { numbers: [38], why: "Q38 is a True/False item" },
   "2022_dec": { numbers: range(70, 75), why: "Q70-75 are fill-in-the-blank items with no options" },
   "2021_dec": { numbers: range(71, 75), why: "Q71-75 match from a printed box of five choices" },
+  "2021_jun": { numbers: range(71, 75), why: "Q71-75 are fill-in-the-blank items with no options" },
+};
+
+/** GK numbers the paper itself never prints (checked on the page): held, not moved. */
+const RIMC_GK_MISSING: Record<string, { numbers: number[]; why: string }> = {
+  "2020_dec": { numbers: [75], why: "the paper prints Q1-74 only (its instructions say 75; page 13 ends at Q74)" },
 };
 
 const RIMC_PAPERS: Record<string, Paper> = Object.fromEntries(
@@ -174,7 +180,14 @@ const RIMC_PAPERS: Record<string, Paper> = Object.fromEntries(
       return [
         id,
         {
-          ...(sub.key === "gk" && short ? { held: { numbers: short.numbers, why: `${short.why}: moved to ${id}-short` } } : {}),
+          ...(sub.key === "gk" && (short || RIMC_GK_MISSING[s])
+            ? {
+                held: {
+                  numbers: [...(short?.numbers ?? []), ...(RIMC_GK_MISSING[s]?.numbers ?? [])],
+                  why: [short ? `${short.why}: moved to ${id}-short` : "", RIMC_GK_MISSING[s]?.why ?? ""].filter(Boolean).join("; "),
+                },
+              }
+            : {}),
           id,
           exam: "rimc",
           paper: 1,
