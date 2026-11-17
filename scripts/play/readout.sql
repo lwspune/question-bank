@@ -1,5 +1,6 @@
 -- play-games readout (src/lib/growth/registry.ts, migration 0267). Read-only.
 -- Run in the Supabase SQL editor or via execute_sql. Staff left out.
+-- /dashboard/play shows the same numbers live (src/lib/play/adminStats.ts).
 --
 -- 1. Players: signed-in students with a /play round, rounds each, levels cleared,
 --    and how many played on 2+ days.

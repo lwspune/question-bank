@@ -974,8 +974,11 @@ export default async function GrowthPage() {
       case "play-games":
         return (
           <p className="text-sm text-muted-foreground">
-            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with <code>scripts/play/readout.sql</code>:
-            once {PLAY_PLAYERS_MIN}+ signed-in students have played, keep the header Play button if their study days
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} from{" "}
+            <Link href="/dashboard/play" className="underline underline-offset-2 hover:text-foreground">
+              Play
+            </Link>
+            : once {PLAY_PLAYERS_MIN}+ signed-in students have played, keep the header Play button if their study days
             after the first round hold up and a quarter play on 2+ days.
           </p>
         );
