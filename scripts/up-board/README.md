@@ -42,8 +42,8 @@ languages and grace (`src/lib/mocks/flawed.json`): 2 in Maths, 6 in Science.
 Class 12 PRIVATE: **Mathematics 13 papers** (2025-324-IC left out), **Physics 14
 papers** (the blind passes agreed on all 84 MCQs; three carry a notice and
 grace: 2026 DX Q1(f) sign convention, DY Q1(e) the Hindi print, 2025 JS Q1(a)
-plane of polarisation). Chemistry in progress,
-then Biology.
+plane of polarisation). Chemistry in progress. **Biology skipped** (owner,
+2026-11-17): its papers are rendered but not transcribed.
 
 ## Language
 
