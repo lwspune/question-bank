@@ -72,6 +72,16 @@ describe("compareWritten", () => {
     // brackets inside an answer are kept
     expect(compareWritten("(2, 2) and (32, 16)", "(2, 2) and (32, 17)")).toBe("DISPUTE");
   });
+  it("ignores part and option labels on each ';'-separated part, and a full stop ending a part", () => {
+    expect(compareWritten("tiny; careless; retail", "(a) tiny; (b) careless; (c) retail")).toBe("AGREE");
+    expect(compareWritten("(i) Isolate; (iv) Straight forward", "(a) Isolate; (b) Straight forward")).toBe("AGREE");
+    expect(compareWritten("United we stand.; Rome was not built in a day", "(a) United we stand; (b) Rome was not built in a day.")).toBe("AGREE");
+    // a part that is ONLY a label is the answer itself and is kept
+    expect(compareWritten("(ii); (i)", "(iii); (i)")).toBe("DISPUTE");
+    expect(compareWritten("tiny; careless", "(a) tiny; (b) careful")).toBe("DISPUTE");
+    // a bracket holding an answer is not a label
+    expect(compareWritten("(x + 1)(x - 2)", "(x - 2)(x + 1)")).toBe("DISPUTE");
+  });
   it("disputes different answers, and reports a missing one", () => {
     expect(compareWritten("12", "13")).toBe("DISPUTE");
     expect(compareWritten("12", undefined)).toBe("MISSING");

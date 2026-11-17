@@ -74,10 +74,27 @@ export function validateWritten(items: WrittenItem[]): string[] {
 
 /** Reduce a final answer to what matters for agreement: case, spacing, maths
  *  delimiters, thousands commas, a currency word and a closing full stop. */
+/** A part or option label at the start of one answer part: "(a) ", "(iv) ", "(3) ". */
+const PART_LABEL = /^\s*\(\s*(?:[a-z]|[ivx]{1,4}|\d{1,2})\s*\)\s*/;
+
+/** Strip leading labels from one ";"-separated part ("(a) (ii) tiny" -> "tiny"),
+ *  unless the label IS the answer ("(ii)" stays), and a full stop ending it. */
+function stripPartLabels(part: string): string {
+  let s = part;
+  while (PART_LABEL.test(s)) {
+    const next = s.replace(PART_LABEL, "");
+    if (!next.trim()) break;
+    s = next;
+  }
+  return s.replace(/[.]+\s*$/, "");
+}
+
 function normAnswer(s: string): string {
   return s
     .toLowerCase()
-    .replace(/^\s*\(\s*[a-e1-5]\s*\)\s*/, "") // a leading choice label: "(c) Mother Teresa"
+    .split(";")
+    .map(stripPartLabels) // "(c) Mother Teresa"; "(a) tiny; (b) careless"
+    .join(";")
     .replace(/\b([a-z])\.\s*/g, "$1") // initials: "K. M. Munshi" -> "km munshi"
     .replace(/\\[()]/g, "")
     // a closing remark in words, after an answer: "North 1, South 2 (North lost 1-2)".
