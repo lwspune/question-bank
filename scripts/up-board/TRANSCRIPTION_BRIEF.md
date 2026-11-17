@@ -224,3 +224,28 @@ different.
 - Exactly 5 MCQs per paper (validate.ts checks).
 - **A page that reads "MISSING PAGE"** is the hoster's placeholder for a page it
   never had: the paper is incomplete. Stop and report, as for any missing page.
+
+## 11. Class 12 Physics (346), Chemistry (347), Biology (348)
+
+Measured on 2026 Physics DW; check it on your paper and report differences.
+
+- Questions numbered 1-9 straight through Sections A-E (खण्ड अ-य). Put the
+  printed section letter in `"section"` (`"A"` ... `"E"`). Q1's parts are the
+  MCQs (6 in Physics DW; count what your paper prints and report it); the later
+  questions have parts (a)/(क) ... of 1, 2, 3 or 5 marks.
+- Refs: `Q1a`, questionNumber `"1 (a)"`. A whole-question OR: `Q6OR`,
+  `"6 (OR)"`, `"alternativeTo": "Q6"`; an OR on one part: `Q3cOR`,
+  `"3 (c) (OR)"`. An OR alternative made of parts: `Q6ORa`, `Q6ORb`.
+- "Any N" / "any one" keeps every printed part as its own row. A part that is a
+  list of separate items gets one row per item (`Q5ei`, `Q5eii`), with the
+  shared instruction repeated in each stem.
+- A part with sub-questions asked together on one thing (e.g. "(i) V is halved
+  (ii) l is doubled ... what happens to the drift velocity?") stays one row.
+- The printed list of physical constants on the last page is not a question:
+  do not make a row for it.
+- Chemistry: formulas and equations in `\(\mathrm{...}\)`, arrows
+  `\(\rightarrow\)`, structures as stacked LaTeX where needed (or a `figure`
+  when a drawn structure is the question). Biology: a diagram to label is a
+  `figure`; a diagram the student must draw is text only.
+- Chapter: the one the row TESTS; if nothing in the catalog fits, the closest
+  plus `NO CHAPTER: <topic>` at the start of `_flag`.
