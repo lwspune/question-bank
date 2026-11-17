@@ -200,6 +200,12 @@ describe("paperIssues (solved stage)", () => {
     expect(paperIssues(paper([ok]), catalog, "solved")).toEqual([]);
   });
 
+  it("does not read algebra inside maths (z = my) as first person", () => {
+    const s = solved(written());
+    const ok = { ...s, solution: "Then \\(y = kx\\) and \\(z = my\\) for natural numbers k and m." };
+    expect(paperIssues(paper([ok]), catalog, "solved")).toEqual([]);
+  });
+
   it("does not read words the solution copies from its own question as first person", () => {
     const s = solved(written({ stem: "Match: | VI. Touch me not plant | (A) Stimulus |" }));
     const ok = { ...s, solution: "| VI. Touch me not plant | (A) Stimulus | the leaves fold at a touch." };
