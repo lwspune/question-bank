@@ -96,6 +96,11 @@ const range = (from: number, to: number): number[] => {
 // Science, Social Science 25 x 2 = 150 q / 400 marks / 180 min, no negative
 // marking (printed on the 2025 booklet's cover).
 const AISSEE_9: Pattern = { questions: 150, marks: 400, minutes: 180 };
+// AISSEE Class 6 (NTA era): Language 25 x 2, Mathematics 50 x 3, Intelligence
+// 25 x 2, General Knowledge 25 x 2 = 125 q / 300 marks / 150 min, no negative
+// marking (printed on the 2024 booklet's cover). We take the ENGLISH-medium
+// booklet: 2023 and 2025's copies are Hindi-medium (Hindi language section).
+const AISSEE_6: Pattern = { questions: 125, marks: 300, minutes: 150 };
 
 export const PAPERS: Record<string, Paper> = {
   // 33 JPGs: 1 AglaSem cover, 2 booklet cover (code H, APR-9-25), 3 its back,
@@ -132,6 +137,25 @@ export const PAPERS: Record<string, Paper> = {
     pyqNote: "AISSEE 2026 Class 9 (18 January 2026, booklet Set X)",
     pattern: AISSEE_9,
     key: { dir: "_pdf\\aissee_c9_2026_key.pdf", page: 2, code: "X", docId: "3def1a0e-859b-11f1-8c57-0aa932765c8b", final: true },
+  },
+  // 29 PDF pages: 1 AglaSem cover, 2-29 Q1-Q125 (booklet Q, PA0626/Q, English
+  // medium). From the Maths section on, each page prints English in the LEFT
+  // column and the same item in Hindi on the right: transcribe English only.
+  // A reader circled options in pen: ignored. Exam 18.01.2026. NTA final key
+  // (digital) page 10 = BOOK Q (English).
+  "aissee-6-2026": {
+    id: "aissee-6-2026",
+    exam: "aissee-6",
+    paper: 1,
+    sourceFile: "AISSEE_2026_Class6_BookQ.pdf",
+    pagesDir: "aissee\\c6_2026_qp",
+    pdf: "aissee_c6_2026_qp.pdf",
+    pages: range(2, 29),
+    docId: "4a1d7014-859b-11f1-a65e-0aa932765c8b",
+    pyqYear: 2026,
+    pyqNote: "AISSEE 2026 Class 6 (18 January 2026, booklet Q, English)",
+    pattern: AISSEE_6,
+    key: { dir: "_pdf\\aissee_c6_2026_key.pdf", page: 10, code: "Q", docId: "3d233a38-859b-11f1-9978-0aa932765c8b", final: true },
   },
   // 33 JPGs: 1 AglaSem cover, 2 booklet cover (code E, EN/VEDTRI/9/24), 3-31
   // Q1-Q150, 32-33 rough work. A clean scan, no serial watermark. Exam
