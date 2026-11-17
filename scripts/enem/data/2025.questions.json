@@ -2137,16 +2137,16 @@
    "chapter": "exponencial-logaritmo",
    "text": "Um empresário utiliza máquinas cuja pressão interna \\(P\\), em atmosfera, depende do tempo contínuo de utilização \\(t\\), em hora, e de um parâmetro positivo \\(K\\), que define o modelo da máquina, segundo a expressão:\n\n\\(P = 4 \\cdot \\log[-K \\cdot (t + 1) \\cdot (t - 19)]\\)\n\nO fabricante dessas máquinas recomenda ao usuário que a pressão interna desse tipo de máquina não ultrapasse 10 atmosferas durante seu funcionamento.\n\nO empresário pretende comprar novas máquinas desse tipo que deverão funcionar, diariamente, por um período contínuo de 10 horas. Para isso, precisa definir o modelo de máquina a ser adquirida escolhendo o maior valor possível do parâmetro \\(K\\), atendendo à recomendação do fabricante.\n\nO maior valor a ser escolhido para \\(K\\) é",
    "options": [
-    "\\(10^{0,5}\\)",
+    "\\(10^{0{,}5}\\)",
     "\\(10^{8}\\)",
-    "\\(\\frac{10^{2,5}}{84}\\)",
-    "\\(\\frac{10^{2,5}}{99}\\)",
+    "\\(\\frac{10^{2{,}5}}{84}\\)",
+    "\\(\\frac{10^{2{,}5}}{99}\\)",
     "\\(25 \\times 10^{-2}\\)"
    ],
    "credit": [],
    "figure": null,
    "option_figures": null,
-   "solution": "O argumento é \\(K(t + 1)(19 - t)\\); a parábola \\((t + 1)(19 - t)\\) tem vértice em \\(t = 9\\), dentro do intervalo de 0 a 10 horas, com valor máximo \\(10 \\cdot 10 = 100\\). A pressão é máxima em \\(t = 9\\): \\(4 \\log(100K) \\le 10\\) exige \\(\\log(100K) \\le 2{,}5\\), isto é, \\(100K \\le 10^{2,5}\\) e \\(K \\le 10^{0,5}\\). A opção \\(\\frac{10^{2,5}}{99}\\) avalia só no fim do período (\\(t = 10\\), valor 99) e ignora que o máximo ocorre em \\(t = 9\\).",
+   "solution": "O argumento é \\(K(t + 1)(19 - t)\\); a parábola \\((t + 1)(19 - t)\\) tem vértice em \\(t = 9\\), dentro do intervalo de 0 a 10 horas, com valor máximo \\(10 \\cdot 10 = 100\\). A pressão é máxima em \\(t = 9\\): \\(4 \\log(100K) \\le 10\\) exige \\(\\log(100K) \\le 2{,}5\\), isto é, \\(100K \\le 10^{2{,}5}\\) e \\(K \\le 10^{0{,}5}\\). A opção \\(\\frac{10^{2{,}5}}{99}\\) avalia só no fim do período (\\(t = 10\\), valor 99) e ignora que o máximo ocorre em \\(t = 9\\).",
    "answer": "A",
    "confidence": "HIGH",
    "notes": ""
