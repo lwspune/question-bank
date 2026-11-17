@@ -44,6 +44,12 @@ def main() -> None:
         if clean is not False:
             cut = 170 if clean is True else int(clean)
             crop = crop.point(lambda v, cut=cut: 255 if v > cut else v)
+        # `erase`: [[l, t, r, b], ...] as fractions of THIS crop, painted white.
+        # For a reader's pen mark inside a figure (AISSEE 2026 Q73: "+1" written
+        # beside a printed 12). Look at the crop after: it must remove only the mark.
+        for el, et, er, eb in fig.get("erase", []):
+            cw, ch = crop.size
+            ImageDraw.Draw(crop).rectangle((round(el * cw), round(et * ch), round(er * cw), round(eb * ch)), fill="white")
         path = os.path.join(out, f"q{int(q['number']):03d}.png")
         crop.save(path)
         made.append((q["number"], fig.get("note", ""), crop))

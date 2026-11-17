@@ -68,6 +68,23 @@ npx tsx scripts/milschool/commit.ts <id> [--apply]     # 8. commit PRIVATE
 A figure's `clean` (in its band file) may be `false` or a number: the default
 whitens anything lighter than 170, which erased the thin option lines of a
 figure series (AISSEE 2025 Q58: `clean: 200`) and a dotted path (Q61: 225).
+`erase: [[l, t, r, b]]` (fractions of the crop) whitens a reader's pen mark
+inside a figure (AISSEE 2026 Q73). Look at the crop after every change.
+
+A copy that a reader has marked (ticks, highlighter, working in the margin) is
+still the original print: the transcription brief tells agents to ignore every
+mark, and blind solvers only ever see the transcribed text. Some copies carry a
+COACHING institute's answer table on their last pages (AISSEE 2026 Class 9,
+pages 30-31): those pages are left out of `pages` and never used.
+
+A hand ruling on an item defective as printed goes in `data/<id>.notices.json`
+(`{"73": {"notice": "...", "grace": true}}`): keycheck keeps the key's letter,
+the notice goes above the solution, and `grace` adds it to the mock grace list.
+
+To fix a committed row's text, correct the BAND file, re-run merge, then
+`correct-in-place.ts <id> --q=<numbers> [--apply]`: it keeps ids, recomputes the
+hash with the same builder as commit (`rows.ts`) and ends by checking every
+live row of the paper against the build.
 
 ## Status
 
@@ -75,5 +92,10 @@ figure series (AISSEE 2025 Q58: `clean: 200`) and a dotted path (Q61: 225).
   blind pass 146/148 against NTA's final key, HIGH 141/141; both flagged the two
   items NTA dropped (Q10, Q68). The two shared misses (Q58, Q61) were faint
   figures, solved by hand from the page. Q100: NTA accepted (2) and (3), grace.
-  Transcribed from the viewer JPGs (before the PDF lesson): answers all agree
-  with the key, but stem text was not re-read against the PDF.
+  Transcribed from the viewer JPGs (before the PDF lesson), then proof-read
+  against the PDF: Q23 option (3) and eight NOT underlines corrected in place.
+- **aissee-9-2024** (code E): 150 rows PRIVATE, 12 figures. Each blind pass
+  149/150 against NTA's final key, passes agreed on all 150. Q73 (water image,
+  options (3) and (4) drawn almost alike): key kept, notice, grace.
+- **aissee-9-2026** (Set X): transcribed from the PDF, merged, 10 figures;
+  NTA final key read from its text layer (Q85 accepts 1,4; Q117 accepts 1,2).
