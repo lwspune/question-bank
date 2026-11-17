@@ -26,6 +26,7 @@ the other language's copy where that one is clean (`figure.note` says so).
 |---|---|
 | 2025-822-BV | scan skips pages 5-7, the English MCQs |
 | 2026 Biology EK, EM | 4 of 7 pages |
+| 2025-324-IC | pages 7-8 are the hoster's "MISSING PAGE" placeholders |
 
 **Rows that ship English-only** (`hiMissing`: the scan lost that row's Hindi;
 we never translate the board's paper): 2025 Science CL B6 (i), 2026 Science

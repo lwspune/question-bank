@@ -29,7 +29,7 @@ import { checkFigureFile, figureWatermarkIssue } from "../lib/figures/watermark"
 import { CREATED_BY, DATA, ORG_ID, SUBJECTS, examIdFor, subtopicCatalog } from "./config";
 import { buildRows, paperIssues, parityWarnings, pyqNoteFor, sourceFileFor, type UpPaper } from "./lib";
 
-const EXPECT_MCQ: Partial<Record<string, number>> = { maths10: 20, science10: 20 };
+const EXPECT_MCQ: Partial<Record<string, number>> = { maths10: 20, science10: 20, maths12: 5 };
 export const figurePath = (paperId: string, ref: string) => join(__dirname, "figures", paperId, `${ref}.png`);
 const nl = (s: string) => normalizeNewlines(s);
 

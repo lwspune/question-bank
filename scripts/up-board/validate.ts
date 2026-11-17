@@ -15,7 +15,7 @@ import { DATA, SUBJECTS, subtopicCatalog } from "./config";
 import { paperIssues, parityWarnings, type Stage, type UpPaper } from "./lib";
 
 /** MCQs a paper must carry, where the pattern fixes it. Class 10: Section A, 20 MCQs. */
-const EXPECT_MCQ: Partial<Record<string, number>> = { maths10: 20, science10: 20 };
+const EXPECT_MCQ: Partial<Record<string, number>> = { maths10: 20, science10: 20, maths12: 5 };
 
 function main() {
   const id = process.argv[2];

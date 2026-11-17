@@ -204,3 +204,23 @@ Measured on 2025 CM. Check it on your paper; report anything different.
   Management of Natural Resources). If no catalog chapter fits, use the closest
   and put `NO CHAPTER: <topic>` at the start of `_flag`: the main session adds
   the chapter UP still teaches.
+
+## 10. Class 12 Mathematics (324)
+
+Measured on 2025 IC and 2026 CX. Check it on your paper; report anything
+different.
+
+- One paper of 100 marks, nine questions numbered 1-9 straight through, no
+  sections (`"section": ""`). Q1 = five MCQs (a)-(e), options printed `A)`-`D)`
+  or `i)`-`iv)`; Q2 = five 1-mark parts; Q3, Q4 = 2-mark parts; Q5, Q6 = 5-mark
+  parts; Q7-Q9 = "Do any one part" of (a)/(b), 8 marks each.
+- Refs: `Q1a` ... `Q9b`, questionNumber `"1 (a)"`, `"9 (b)"`. Hindi part labels
+  क/ख/ग/घ/ङ map to (a)-(e).
+- "Do any one part" / "any four" keeps EVERY printed part as its own row (no
+  `alternativeTo`: the paper prints them as parts, not as OR).
+- A part that lists separate items ("Solve the following: (i) ... (ii) ...")
+  gets one row per item: `Q8bi`, `Q8bii`, questionNumber `"8 (b) (i)"`, the
+  shared instruction repeated at the start of each stem.
+- Exactly 5 MCQs per paper (validate.ts checks).
+- **A page that reads "MISSING PAGE"** is the hoster's placeholder for a page it
+  never had: the paper is incomplete. Stop and report, as for any missing page.
