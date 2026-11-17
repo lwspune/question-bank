@@ -1,21 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  type CSSProperties,
-  type KeyboardEvent as ReactKeyboardEvent,
-  type MouseEvent as ReactMouseEvent,
-  type PointerEvent as ReactPointerEvent,
-} from "react";
+import { useCallback, useEffect, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
 import { ArrowRight, BookOpen, Briefcase, ChevronLeft, ChevronRight, FlaskConical, Landmark, Pause, Play, Scale, Shield } from "lucide-react";
 import type { ExamGoal } from "@/lib/exam/examContext";
 import { slotStyle, wrapOffset } from "@/lib/exam/showcaseSlots";
 import type { ShowcaseCard } from "@/lib/exam/examShowcase";
 import { setExamCookie } from "@/lib/exam/examCookie";
+import { useCardRing } from "@/components/ring/useCardRing";
 
 /**
  * The 3D ring of exam cards in the homepage's navy panel (2026-11-09).
@@ -96,66 +88,31 @@ function RollingCount({ value, roll }: { value: number; roll: number }) {
 export default function ExamCarousel({ cards }: { cards: ShowcaseCard[] }) {
   const n = cards.length;
   const reduce = usePrefersReducedMotion();
-  const [active, setActive] = useState(0);
   const [userPaused, setUserPaused] = useState(false);
   const [hovered, setHovered] = useState(false);
-  const [dragPos, setDragPos] = useState<number | null>(null);
   const [rolls, setRolls] = useState(0);
   const [announce, setAnnounce] = useState("");
-  const stageRef = useRef<HTMLDivElement>(null);
-  const drag = useRef<{ x: number; id: number; moved: boolean; gap: number } | null>(null);
-  const suppressClick = useRef(false);
 
   const playing = !reduce && !userPaused;
 
-  const go = useCallback(
-    (to: number, byUser: boolean) => {
-      const next = ((to % n) + n) % n;
-      setActive(next);
+  // Declarations, not consts: the ring hook below takes them before stageRef exists.
+  function resetTilt() {
+    const face = stageRef.current?.querySelector<HTMLElement>("[data-active] .sc-face");
+    face?.style.setProperty("--tx", "0deg");
+    face?.style.setProperty("--ty", "0deg");
+  }
+
+  const onMove = useCallback(
+    (next: number, byUser: boolean) => {
       setRolls((r) => r + 1);
       if (byUser) setAnnounce(`${cards[next].name}, ${next + 1} of ${n}`);
     },
     [cards, n]
   );
 
-  const resetTilt = () => {
-    const face = stageRef.current?.querySelector<HTMLElement>("[data-active] .sc-face");
-    face?.style.setProperty("--tx", "0deg");
-    face?.style.setProperty("--ty", "0deg");
-  };
-
-  /** Pixels between neighbouring cards, measured from the live layout. */
-  const measureGap = (): number => {
-    const stage = stageRef.current;
-    const card = stage?.querySelector<HTMLElement>(".sc-card");
-    if (!stage || !card) return 240;
-    const w = stage.clientWidth;
-    const cw = card.offsetWidth;
-    return w < 640 ? cw * 0.86 : Math.min(cw * 0.78, w * 0.3);
-  };
-
-  const onPointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
-    if (e.button !== 0) return;
-    drag.current = { x: e.clientX, id: e.pointerId, moved: false, gap: measureGap() };
-  };
-  const onPointerMove = (e: ReactPointerEvent<HTMLDivElement>) => {
-    const d = drag.current;
-    if (d) {
-      const dx = e.clientX - d.x;
-      if (!d.moved && Math.abs(dx) > 6) {
-        d.moved = true;
-        resetTilt();
-        try {
-          stageRef.current?.setPointerCapture(d.id);
-        } catch {
-          /* capture is a nicety; dragging still works without it */
-        }
-      }
-      if (d.moved) setDragPos(active - dx / d.gap);
-      return;
-    }
+  function tilt(e: ReactPointerEvent<HTMLDivElement>, stage: HTMLDivElement) {
     if (reduce || e.pointerType !== "mouse") return;
-    const face = stageRef.current?.querySelector<HTMLElement>("[data-active] .sc-face");
+    const face = stage.querySelector<HTMLElement>("[data-active] .sc-face");
     if (!face) return;
     const r = face.getBoundingClientRect();
     if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) {
@@ -168,47 +125,16 @@ export default function ExamCarousel({ cards }: { cards: ShowcaseCard[] }) {
     face.style.setProperty("--tx", `${((0.5 - py) * 12).toFixed(1)}deg`);
     face.style.setProperty("--gx", `${(px * 100).toFixed(0)}%`);
     face.style.setProperty("--gy", `${(py * 100).toFixed(0)}%`);
-  };
-  const endDrag = (e: ReactPointerEvent<HTMLDivElement>) => {
-    const d = drag.current;
-    drag.current = null;
-    if (!d?.moved) return;
-    suppressClick.current = true;
-    const dx = e.clientX - d.x;
-    let steps = Math.round(-dx / d.gap);
-    if (steps === 0 && Math.abs(dx) > 40) steps = dx < 0 ? 1 : -1;
-    setDragPos(null);
-    go(active + steps, true);
-  };
+  }
 
-  // A tap on a side card brings it forward instead of following its link; a
-  // tap that ended a drag does nothing.
-  const onClickCapture = (e: ReactMouseEvent<HTMLDivElement>) => {
-    if (suppressClick.current) {
-      suppressClick.current = false;
-      e.preventDefault();
-      e.stopPropagation();
-      return;
-    }
-    const card = (e.target as HTMLElement).closest<HTMLElement>("[data-card-index]");
-    if (!card || card.hasAttribute("data-active")) return;
-    e.preventDefault();
-    e.stopPropagation();
-    go(Number(card.dataset.cardIndex), true);
-  };
-
-  const onKeyDown = (e: ReactKeyboardEvent<HTMLDivElement>) => {
-    if (e.key === "ArrowRight") {
-      e.preventDefault();
-      go(active + 1, true);
-    } else if (e.key === "ArrowLeft") {
-      e.preventDefault();
-      go(active - 1, true);
-    }
-  };
+  const { active, pos, dragging, go, stageRef, stageHandlers } = useCardRing({
+    count: n,
+    onMove,
+    onDragStart: resetTilt,
+    onHoverMove: tilt,
+  });
 
   if (n === 0) return null;
-  const pos = dragPos ?? active;
 
   return (
     <div
@@ -227,17 +153,12 @@ export default function ExamCarousel({ cards }: { cards: ShowcaseCard[] }) {
       <div
         ref={stageRef}
         className="sc-stage"
-        data-dragging={dragPos !== null || undefined}
+        data-dragging={dragging || undefined}
         tabIndex={0}
         role="region"
         aria-roledescription="carousel"
         aria-label="Exams. Use the left and right arrow keys to move."
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={endDrag}
-        onPointerCancel={endDrag}
-        onClickCapture={onClickCapture}
-        onKeyDown={onKeyDown}
+        {...stageHandlers}
       >
         {cards.map((card, i) => {
           const d = wrapOffset(i, pos, n);
@@ -285,7 +206,7 @@ export default function ExamCarousel({ cards }: { cards: ShowcaseCard[] }) {
                 className="sc-dot-fill"
                 data-run={(i === active && playing) || undefined}
                 onAnimationEnd={() => {
-                  if (i === active && playing && dragPos === null) go(active + 1, false);
+                  if (i === active && playing && !dragging) go(active + 1, false);
                 }}
               />
             </button>
