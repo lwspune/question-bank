@@ -53,6 +53,17 @@ def main() -> None:
         clean = fig.get("clean", True)
         if clean is not False:
             cut = 170 if clean is True else int(clean)
+            # A GREY FILL is printed ink too (a shaded square, a hatched region on a
+            # digital PDF). The clean step turns it white and the figure silently
+            # loses its meaning (RIMC 2023 Maths Q25: "four shaded squares", none
+            # left). Warn when a sizeable share of the crop is mid-grey and the
+            # figure did not choose its clean setting explicitly.
+            if "clean" not in fig:
+                hist = crop.convert("L").histogram()
+                grey = sum(hist[cut + 1 : 236]) / max(1, crop.width * crop.height)
+                if grey > 0.03:
+                    print(f"  !! Q{q['number']}: {grey:.0%} of the crop is mid-grey and would be erased by clean; "
+                          f"look at it, then set figure.clean (false, or a threshold)")
             crop = crop.point(lambda v, cut=cut: 255 if v > cut else v)
         # `erase`: [[l, t, r, b], ...] as fractions of THIS crop, painted white.
         # For a reader's pen mark inside a figure (AISSEE 2026 Q73: "+1" written
