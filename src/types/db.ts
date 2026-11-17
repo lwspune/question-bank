@@ -3311,6 +3311,33 @@ export type Database = {
           },
         ]
       }
+      partner_course_clicks: {
+        Row: {
+          course_id: string
+          created_at: string
+          exam_slug: string | null
+          id: string
+          user_id: string | null
+          visitor_id: string
+        }
+        Insert: {
+          course_id: string
+          created_at?: string
+          exam_slug?: string | null
+          id?: string
+          user_id?: string | null
+          visitor_id: string
+        }
+        Update: {
+          course_id?: string
+          created_at?: string
+          exam_slug?: string | null
+          id?: string
+          user_id?: string | null
+          visitor_id?: string
+        }
+        Relationships: []
+      }
       paywall_settings: {
         Row: {
           brand_name_line: boolean
