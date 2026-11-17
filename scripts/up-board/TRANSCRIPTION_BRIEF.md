@@ -272,3 +272,13 @@ Measured on 2026 Physics DW; check it on your paper and report differences.
   drawn structure cannot be written as a formula.
 - Printed data (E° values, K_f, Λ° values) belongs in the stem of the row
   that uses it, in both languages.
+- 2025 prints differ (measured on JZ ... KF): some are 15 large-print pages
+  whose footers say "[n of 16]" while the cover says 15 (nothing missing when
+  the last page ends with the closing rule); some are 7 or 8 pages ending
+  with the board's line "347(XX)-...". On KC and KD the OR covers the WHOLE
+  of Q6 / Q7, each side with its own (a)/(b): refs `Q6ORai`, `Q6ORbii`,
+  `alternativeTo` = `Q6ai`. Where marks are printed per letter (A-E) rather
+  than per item, a row's marks are the letters it asks for. An item further
+  split into (x)/(y), or (i)/(ii) inside (i)/(ii), goes one level deeper
+  (`Q5biix`, `Q5bi1`). A topic outside the catalog (Schmidt, Frankland,
+  Tischenko, p-block) is filed on the closest subtopic with `NO CHAPTER:`.
