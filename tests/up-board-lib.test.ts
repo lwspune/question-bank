@@ -114,6 +114,13 @@ describe("paperIssues (transcribed stage)", () => {
     expect(issues.some((i) => /B1a: subtopic "Euclid"/.test(i))).toBe(true);
   });
 
+  it("uses the bank's difficulty scale (EASY / MODERATE / HARD), refusing MEDIUM", () => {
+    expect(paperIssues(paper([mcq({ difficulty: "MODERATE" })]), catalog, "transcribed")).toEqual([]);
+    expect(paperIssues(paper([mcq({ difficulty: "MEDIUM" as never })]), catalog, "transcribed")).toContain(
+      'Q2: difficulty "MEDIUM" (want EASY, MODERATE or HARD)'
+    );
+  });
+
   it("fails a missing Hindi version, and Hindi with no Devanagari", () => {
     expect(paperIssues(paper([mcq({ hi: undefined as never })]), catalog, "transcribed")).toContain("Q2: no Hindi version (hi)");
     const english = mcq({ hi: { stem: "A die is thrown once.", options: ["1", "2", "3", "4"] } });

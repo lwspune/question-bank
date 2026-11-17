@@ -42,8 +42,8 @@ export const OUT = join(__dirname, "out"); // gitignored: rendered pages
 export const DATA = join(__dirname, "data"); // committed: transcriptions + answers
 
 /** Filled by seed-exam.ts --apply. Empty means "not seeded yet" and commit refuses. */
-export const EXAM_ID_UP_10 = "";
-export const EXAM_ID_UP_12 = "";
+export const EXAM_ID_UP_10 = "0e6321b1-e1c8-4959-8823-97f12b492f61"; // seed-exam.ts, 2026-11-17
+export const EXAM_ID_UP_12 = "89efd008-a1ac-4b58-8b02-5c8b337094f2"; // seed-exam.ts, 2026-11-17
 
 export const EXAM_NAME_UP_10 = "UP Board Class 10";
 export const EXAM_NAME_UP_12 = "UP Board Class 12";

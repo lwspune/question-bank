@@ -117,7 +117,7 @@ language, the other language usually settles it: say so in `_flag`.
 - `format`: `"mcq"` or `"subjective"`. Never write `answer` or `solution`.
 - `context`: only for text several rows share (a passage, a data table both
   parts use), in both languages or neither.
-- `difficulty`: `EASY` (one step, recall), `MEDIUM` (a few steps, the usual
+- `difficulty`: `EASY` (one step, recall), `MODERATE` (a few steps, the usual
   board question), `HARD` (long, or a trap). Judge for a Class 10/12 board
   student.
 - `figure`: when the question needs its printed figure (a diagram, a graph, a

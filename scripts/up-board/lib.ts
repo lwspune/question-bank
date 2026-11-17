@@ -35,7 +35,8 @@ export type UpQuestion = {
   format: "mcq" | "subjective";
   chapter: string;
   subtopic: string;
-  difficulty: "EASY" | "MEDIUM" | "HARD";
+  /** The bank's own scale (the `difficulty` enum, migration 0001). */
+  difficulty: "EASY" | "MODERATE" | "HARD";
   stem: string;
   context?: string;
   options?: { label: string; text: string }[];
@@ -123,7 +124,9 @@ export function paperIssues(
     const subs = catalog.get(q.chapter);
     if (!subs) out.push(`${id}: chapter "${q.chapter}" is not in the catalog`);
     else if (!subs.includes(q.subtopic)) out.push(`${id}: subtopic "${q.subtopic}" is not under ${q.chapter}`);
-    if (!["EASY", "MEDIUM", "HARD"].includes(q.difficulty)) out.push(`${id}: difficulty "${q.difficulty}"`);
+    if (!["EASY", "MODERATE", "HARD"].includes(q.difficulty)) {
+      out.push(`${id}: difficulty "${q.difficulty}" (want EASY, MODERATE or HARD)`);
+    }
 
     if (q.alternativeTo && !refs.has(q.alternativeTo)) out.push(`${id}: alternativeTo "${q.alternativeTo}" names no row`);
 
