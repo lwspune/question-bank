@@ -21,8 +21,13 @@ export type NtaKey = {
  * Turn a vision read of NTA's key (question -> cell text) into letters.
  * REFUSES an unreadable cell and a short key: a misread "5" or a missed column
  * must stop the run, never fall through to a derived answer.
+ *
+ * `held`: numbers the paper deliberately leaves out (config `held`, e.g. the
+ * Hindi language section of a Hindi-medium copy). Only those may be absent;
+ * they never become withdrawn (X) items.
  */
-export function normaliseNtaKey(raw: Record<string, string>, total: number): NtaKey {
+export function normaliseNtaKey(raw: Record<string, string>, total: number, held: number[] = []): NtaKey {
+  const skip = new Set(held);
   const key: Record<string, string> = {};
   const multi: Record<string, string[]> = {};
   for (const [k, v] of Object.entries(raw)) {
@@ -42,7 +47,7 @@ export function normaliseNtaKey(raw: Record<string, string>, total: number): Nta
     if (letters.length > 1) multi[String(n)] = letters;
   }
   const missing: number[] = [];
-  for (let n = 1; n <= total; n++) if (!(String(n) in key)) missing.push(n);
+  for (let n = 1; n <= total; n++) if (!(String(n) in key) && !skip.has(n)) missing.push(n);
   if (missing.length) {
     throw new Error(
       `key is missing ${missing.length} of ${total} question(s): Q${missing.slice(0, 12).join(", Q")}` +

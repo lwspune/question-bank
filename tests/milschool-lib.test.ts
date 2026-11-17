@@ -36,6 +36,18 @@ describe("normaliseNtaKey", () => {
   it("refuses a question number outside the paper", () => {
     expect(() => normaliseNtaKey({ ...full(2), "3": "1" }, 2)).toThrow(/outside/);
   });
+
+  it("accepts a key without the paper's HELD numbers, and only those", () => {
+    // AISSEE Class 6 2023/2025 Hindi-medium copies: Q1-25 (the Hindi language
+    // section) are held, so the stored key carries Q26-125 only.
+    const tail = Object.fromEntries(Array.from({ length: 3 }, (_, i) => [String(i + 3), "2"]));
+    const k = normaliseNtaKey(tail, 5, [1, 2]);
+    expect(Object.keys(k.key).sort()).toEqual(["3", "4", "5"]);
+    // A held number never comes back as a dropped (X) item.
+    expect(Object.values(k.key)).not.toContain("X");
+    // Missing a number that is NOT held is still a short key.
+    expect(() => normaliseNtaKey({ "4": "2", "5": "2" }, 5, [1, 2])).toThrow(/missing/);
+  });
 });
 
 describe("resolveAccepted", () => {

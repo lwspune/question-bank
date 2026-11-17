@@ -246,6 +246,48 @@ export const PAPERS: Record<string, Paper> = {
     pyqNote: "AISSEE 2020 Class 6 (5 January 2020, Set A)",
     pattern: AISSEE_6,
   },
+  // The 2023 and 2025 Class 6 copies on file are HINDI-MEDIUM. Owner
+  // (2026-11-17): take Maths, GK and Intelligence, which are printed in
+  // English too, and leave the Hindi language section (Q1-25) out.
+  // 2023: booklet K (HI/REETA/6/23, "HINDI + ENGLISH"): Hindi version pages
+  // 2-17, ENGLISH VERSION pages 18-30 = Q26-125 (Maths 26-75, GK 76-100,
+  // Intelligence 101-125), one column; candidate circled options in pen. NTA
+  // final key (digital) page 18 = set K: Q35, Q44, Q94 dropped; Q46 all four,
+  // Q82 1/2, Q114 3/4 accepted.
+  "aissee-6-2023": {
+    id: "aissee-6-2023",
+    exam: "aissee-6",
+    paper: 1,
+    sourceFile: "AISSEE_2023_Class6_BookK.pdf",
+    pagesDir: "aissee\\c6_2023_qp",
+    pdf: "aissee_c6_2023_qp.pdf",
+    pages: range(18, 30),
+    docId: "a5858b72-a2d6-11ed-8ed8-0a5e36bc6706",
+    pyqYear: 2023,
+    pyqNote: "AISSEE 2023 Class 6 (8 January 2023, booklet K, English version)",
+    pattern: AISSEE_6,
+    key: { dir: "_pdf\\aissee_c6_2023_key.pdf", page: 18, code: "K", docId: "09705f0e-02a4-11ee-9ffb-0a5e36bc6706", final: true },
+    held: { numbers: range(1, 25), why: "Q1-25 Hindi language section of a Hindi-medium copy, not taken (owner)" },
+  },
+  // 2025: HINDI booklet code A (APR-6-25), TWO columns, Hindi left and the
+  // same item in English right; Hindi language Q1-25 on pages 4-6, Maths from
+  // Q26 on page 7, to Q125 on page 31. Transcribe the right (English) column.
+  // NTA final key (digital) page 17 = code A (HINDI): Q109 accepts 1 and 3.
+  "aissee-6-2025": {
+    id: "aissee-6-2025",
+    exam: "aissee-6",
+    paper: 1,
+    sourceFile: "AISSEE_2025_Class6_Hindi_CodeA.pdf",
+    pagesDir: "aissee\\c6_2025_qp",
+    pdf: "aissee_c6_2025_qp.pdf",
+    pages: range(7, 31),
+    docId: "44c64aa0-859b-11f1-b1a9-0aa932765c8b",
+    pyqYear: 2025,
+    pyqNote: "AISSEE 2025 Class 6 (5 April 2025, booklet A, English text)",
+    pattern: AISSEE_6,
+    key: { dir: "_pdf\\aissee_c6_2025_key.pdf", page: 17, code: "A", docId: "3aee6d32-859b-11f1-ab96-0aa932765c8b", final: true },
+    held: { numbers: range(1, 25), why: "Q1-25 Hindi language section of a Hindi-medium copy, not taken (owner)" },
+  },
 
   // ---- RMS CET. Every copy is a candidate's: ticks, highlighter and pen
   // working on the page, so the transcription brief's ignore-marks rule
@@ -307,7 +349,10 @@ export const PAPERS: Record<string, Paper> = {
     // Q136 (three circles with numbers and letters round them): the labels are
     // too small and blurred to read in this photo, and the options name two
     // missing things where only one '?' shows. Held rather than published.
-    held: { numbers: [136], why: "Q136's figure labels are unreadable in the only copy" },
+    held: {
+      numbers: [108, 109, 111, 122, 136],
+      why: "figures too coarse in the only copy to settle (Q108, Q109, Q111, Q122: embedded figures the two blind solutions split on; Q136: labels unreadable)",
+    },
   },
   // 25 PDF pages: 1 AglaSem cover, 2-25 the booklet (clean scan, no cover
   // sheet). Part I: English p2-7, Hindi p8-9, Social Science p10-14;

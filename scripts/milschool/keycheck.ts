@@ -61,7 +61,7 @@ function main() {
 
   const keyFile = dataPath(paper.id, "key");
   if (!existsSync(keyFile)) throw new Error(`${keyFile} not found`);
-  const nta = normaliseNtaKey(JSON.parse(readFileSync(keyFile, "utf8")), pat.questions);
+  const nta = normaliseNtaKey(JSON.parse(readFileSync(keyFile, "utf8")), pat.questions, paper.held?.numbers);
 
   const passA = loadPass(paper.id, "a");
   const passB = loadPass(paper.id, "b");
@@ -92,7 +92,7 @@ function main() {
     resolved[n] = letter;
     corrected.push(Number(n));
   }
-  const key = parseOfficialKey(resolved, pat.questions);
+  const key = parseOfficialKey(resolved, pat.questions, { skip: paper.held?.numbers });
 
   console.log(`${paper.id}  NTA ${paper.key.final ? "FINAL" : "PROVISIONAL"} key, booklet code ${paper.key.code}`);
   console.log(`  questions ${pat.questions}, dropped ${key.dropped.length}${key.dropped.length ? ` (Q${key.dropped.join(", Q")})` : ""}`);
