@@ -38,6 +38,18 @@ export function extractCountClaims(text: string): number[] {
 }
 
 /**
+ * "22 of them HARD" / "3 of them are HARD": a count of HARD questions stated
+ * beside a bank count (2026-11-17, SUGGESTIONS 2026-09-14: the plain count claim
+ * above cannot see a number that names no unit, so these drifted unguarded).
+ * Checked against the chapter's or one subtopic's live HARD count.
+ */
+const HARD_CLAIM = /(\d{1,4}) of them (?:are |were )?HARD\b/g;
+
+export function extractHardClaims(text: string): number[] {
+  return [...text.matchAll(HARD_CLAIM)].map((m) => Number(m[1]));
+}
+
+/**
  * The counts a chapter's prose may legitimately state: its own total, any one
  * subtopic's count, or the sum of TWO subtopics.
  *

@@ -10,6 +10,7 @@ import {
   enumeratedItems,
   longestSentenceWords,
   leadsWithBankFact,
+  extractHardClaims,
 } from "@/lib/notes/introAudit";
 
 describe("extractCountClaims", () => {
@@ -144,5 +145,14 @@ describe("leadsWithBankFact", () => {
     // "4 recognitions cover them" in its opening line is rare enough that the
     // probe's human read is the right filter, not a stricter regex.
     expect(leadsWithBankFact("")).toBe(false);
+  });
+});
+
+describe("extractHardClaims (2026-11-17)", () => {
+  it("reads 'N of them HARD' claims", () => {
+    expect(extractHardClaims("52 PYQs, 22 of them HARD. Later 7 PYQs, 3 of them are HARD.")).toEqual([22, 3]);
+  });
+  it("ignores an 'of them' with no HARD", () => {
+    expect(extractHardClaims("central tendency alone account for 119 of them")).toEqual([]);
   });
 });

@@ -58,6 +58,7 @@ import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { liveKey, loadNotesLive } from "../scripts/lib/notesLiveCounts";
 import {
   extractCountClaims,
+  extractHardClaims,
   allowedCounts,
   isExemptCount,
   YEAR_LIKE_MIN,
@@ -90,6 +91,8 @@ type Live = {
   /** Every single subtopic count, plus every two-subtopic sum. */
   subtopic: Map<string, Set<number>>;
   maxYear: Map<string, number>;
+  /** Chapter HARD total plus every subtopic's HARD count and pair sum. */
+  hard: Map<string, Set<number>>;
 };
 
 /**
@@ -112,13 +115,17 @@ const key = liveKey;
  * ~54 GB of database reads per daily run (2026-11-08).
  */
 async function loadLive(db: SupabaseClient): Promise<Live> {
-  const { chapter, perSub, perYear, maxYear } = await loadNotesLive(db);
+  const { chapter, perSub, perYear, maxYear, hardChapter, hardPerSub } = await loadNotesLive(db);
   // Singles AND pair sums, via the shared core.
   const subtopic = new Map<string, Set<number>>();
   for (const [k, m] of perSub) {
     subtopic.set(k, allowedCounts(chapter.get(k) ?? 0, [...m.values()], [...(perYear.get(k)?.values() ?? [])]));
   }
-  return { chapter, subtopic, maxYear };
+  const hard = new Map<string, Set<number>>();
+  for (const k of chapter.keys()) {
+    hard.set(k, allowedCounts(hardChapter.get(k) ?? 0, [...(hardPerSub.get(k)?.values() ?? [])]));
+  }
+  return { chapter, subtopic, maxYear, hard };
 }
 
 describe.skipIf(!HAS_ENV)("/notes chapter intros state live bank counts", () => {
@@ -154,6 +161,22 @@ describe.skipIf(!HAS_ENV)("/notes chapter intros state live bank counts", () => 
           `${route}: intro/cardBlurb claims ${n}, live chapter ${total}` +
             ` (subtopic counts + pair sums: ${[...subs].sort((a, b) => b - a).join(", ")})`,
         );
+      }
+    }
+    expect(bad).toEqual([]);
+  });
+
+  // 2026-11-17 (SUGGESTIONS 2026-09-14): "22 of them HARD" sits in the same
+  // sentence as a guarded count, so it drifted while its neighbour stayed right.
+  it("every 'N of them HARD' in an intro matches the chapter's or a subtopic's live HARD count", () => {
+    const bad: string[] = [];
+    for (const c of NOTES_CHAPTERS as any[]) {
+      const k = key(c.examName, c.subjectName, c.chapter.chapterName);
+      const allowed = live.hard.get(k);
+      if (!allowed) continue;
+      for (const n of extractHardClaims(claimText(c))) {
+        if (allowed.has(n)) continue;
+        bad.push(`${c.subjectRoute}/${c.chapterSlug}: claims ${n} HARD (live: ${[...allowed].sort((a, b) => b - a).slice(0, 8).join(", ")})`);
       }
     }
     expect(bad).toEqual([]);

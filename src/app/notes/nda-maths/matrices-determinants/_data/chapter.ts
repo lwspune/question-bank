@@ -6,7 +6,7 @@ export const MATRICES_DETERMINANTS_CHAPTER: ChapterNote = {
   intro:
     "Matrices & Determinants is the single biggest scoring chapter in NDA Mathematics — " +
     "181 past-year questions across 2017–2026, around eight or nine marks on every paper. " +
-    "It is also the hardest: nearly a third of the questions are HARD, and two areas " +
+    "It is also demanding: nearly a third of the questions are HARD, and two areas " +
     "(determinant properties and special determinants) sit near 50% HARD. The chapter is " +
     "almost entirely a small set of rules applied carefully, so the payoff is in knowing " +
     "the properties cold and not falling for the standard traps. Work the six notes below in " +

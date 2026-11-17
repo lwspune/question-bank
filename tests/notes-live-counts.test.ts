@@ -73,3 +73,20 @@ describe("tallyNotesLive", () => {
     expect([...orphan.chapter.keys()]).toEqual([liveKey(undefined, undefined, undefined)]);
   });
 });
+
+describe("tallyNotesLive HARD counts (2026-11-17)", () => {
+  const live = tallyNotesLive(
+    [
+      { chapter_id: "c-nda", subtopic_id: "t-sub", pyq_year: 2024, difficulty: "HARD" },
+      { chapter_id: "c-nda", subtopic_id: "t-sub", pyq_year: 2026, difficulty: "EASY" },
+      { chapter_id: "c-nda", subtopic_id: "t-parts", pyq_year: 2024, difficulty: "HARD" },
+      { chapter_id: "c-hsc", subtopic_id: "t-parts", pyq_year: 2025, difficulty: null },
+    ],
+    tax
+  );
+  it("counts HARD rows per chapter and per subtopic", () => {
+    expect(live.hardChapter.get(NDA)).toBe(2);
+    expect(Object.fromEntries(live.hardPerSub.get(NDA)!)).toEqual({ "Integration by Substitution": 1, "Integration by Parts": 1 });
+    expect(live.hardChapter.get(HSC) ?? 0).toBe(0);
+  });
+});

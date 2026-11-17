@@ -4,8 +4,8 @@ export const TRIGONOMETRIC_IDENTITIES_CHAPTER: ChapterNote = {
   chapterName: "Trigonometric Identities",
   title: "Trigonometric Identities — NDA Mathematics",
   intro:
-    "Trigonometric Identities is the single biggest topic in NDA Mathematics — around 145 past-year " +
-    "questions across 2017–2026, and the hardest by raw HARD count (47 of them). It is also a foundation " +
+    "Trigonometric Identities is the second-biggest topic in NDA Mathematics, after Matrices & Determinants: around 145 past-year " +
+    "questions across 2017–2026, 47 of them HARD. It is also a foundation " +
     "for Trigonometric Equations, Inverse Trigonometry, Properties of Triangle, and Heights & Distances. " +
     "The whole chapter rewards one habit: recognising which identity a problem wants before grinding. " +
     "Work the five notes in order — first the standard values, signs by quadrant, and special angles; " +
