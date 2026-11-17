@@ -127,6 +127,17 @@ describe("paperIssues (transcribed stage)", () => {
     expect(paperIssues(paper([english]), catalog, "transcribed")).toContain("Q2: hi stem carries no Devanagari");
   });
 
+  it("accepts a row whose Hindi the scan lost, only with a recorded reason", () => {
+    const lost = written({ hi: { stem: "… लिखिए ।" }, hiMissing: "the page edge cuts off the Hindi line" });
+    expect(paperIssues(paper([lost]), catalog, "transcribed")).toEqual([]);
+    const s = solved(lost);
+    const noHiSol = { ...s, hi: { stem: s.hi.stem } };
+    expect(paperIssues(paper([noHiSol]), catalog, "solved")).toEqual([]);
+    expect(paperIssues(paper([written({ hiMissing: "  " })]), catalog, "transcribed")).toContain(
+      "B1a: hiMissing needs a reason"
+    );
+  });
+
   it("fails an MCQ without four options in either language, and a written row with options", () => {
     const three = mcq({ options: mcq().options!.slice(0, 3) });
     expect(paperIssues(paper([three]), catalog, "transcribed")).toContain("Q2: mcq needs options A-D, has A B C");

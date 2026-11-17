@@ -61,6 +61,11 @@ export type UpQuestion = {
    */
   figure?: { page: number; region?: [number, number, number, number]; note?: string };
   hi: UpHindi;
+  /**
+   * Why this row has no usable Hindi: the scan lost it (a page edge, a tear).
+   * The row ships English-only (no translation written); we never translate.
+   */
+  hiMissing?: string;
   /** What the transcriber saw and did not "fix": a misprint, an unclear digit. */
   _flag?: string;
 };
@@ -159,8 +164,10 @@ export function paperIssues(
       ["solution", q.solution],
       ...(q.options ?? []).map((o): [string, string] => [`option ${o.label}`, o.text]),
     ];
-    // Hindi
-    const hi = q.hi;
+    // Hindi (skipped, apart from its reason, where the scan lost it)
+    const lostHi = q.hiMissing !== undefined;
+    if (lostHi && !q.hiMissing!.trim()) out.push(`${id}: hiMissing needs a reason`);
+    const hi = lostHi ? undefined : q.hi;
     const hiFields: [string, string | undefined][] = hi
       ? [
           ["hi stem", hi.stem],
@@ -169,8 +176,9 @@ export function paperIssues(
           ...(hi.options ?? []).map((o, i): [string, string] => [`hi option ${LABELS[i] ?? i}`, o]),
         ]
       : [];
-    if (!hi) out.push(`${id}: no Hindi version (hi)`);
-    else {
+    if (!hi) {
+      if (!lostHi) out.push(`${id}: no Hindi version (hi)`);
+    } else {
       if (!hi.stem?.trim()) out.push(`${id}: hi stem is blank`);
       else if (!DEVANAGARI.test(hi.stem) && LATIN_WORD.test(prose(q.stem))) out.push(`${id}: hi stem carries no Devanagari`);
       if (q.format === "mcq") {
@@ -194,7 +202,7 @@ export function paperIssues(
     }
 
     if (stage === "transcribed") {
-      if (q.answer || q.solution || hi?.solution) out.push(`${id}: carries an answer at the transcribed stage`);
+      if (q.answer || q.solution || q.hi?.solution) out.push(`${id}: carries an answer at the transcribed stage`);
     } else {
       if (q.format === "mcq" && !q.answer && !q.noCorrectOption) out.push(`${id}: mcq has no answer`);
       if (q.noCorrectOption && q.answer) out.push(`${id}: noCorrectOption but answer ${q.answer}`);
@@ -205,8 +213,10 @@ export function paperIssues(
         const voice = solverVoice(q.solution);
         if (voice.length) out.push(`${id}: solution reads as solver notes (${voice.join(", ")})`);
       }
-      if (!hi?.solution?.trim()) out.push(`${id}: no Hindi solution`);
-      else if (!DEVANAGARI.test(hi.solution)) out.push(`${id}: hi solution carries no Devanagari`);
+      if (!lostHi) {
+        if (!hi?.solution?.trim()) out.push(`${id}: no Hindi solution`);
+        else if (!DEVANAGARI.test(hi.solution)) out.push(`${id}: hi solution carries no Devanagari`);
+      }
     }
   }
 
@@ -231,7 +241,7 @@ export function parityWarnings(q: UpQuestion): string[] {
     const b = numberBag(hi ?? "");
     if (!sameBag(a, b)) out.push(`${q.ref}: ${name} numbers differ: en ${a.join(" ") || "(none)"} hi ${b.join(" ") || "(none)"}`);
   };
-  if (!q.hi) return out;
+  if (!q.hi || q.hiMissing !== undefined) return out;
   pair("stem", q.stem, q.hi.stem);
   if (q.context || q.hi.context) pair("context", q.context, q.hi.context);
   (q.options ?? []).forEach((o, i) => pair(`option ${o.label}`, o.text, q.hi.options?.[i]));

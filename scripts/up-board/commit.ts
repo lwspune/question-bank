@@ -139,16 +139,21 @@ async function main() {
       problems.push(`${q.ref}: ${opts.length} options in the bank`);
       continue;
     }
-    const { error: tErr } = await client.rpc("put_question_translation", {
-      p_question_id: row.id,
-      p_lang: "hi",
-      p_text: nl(q.hi.stem),
-      p_context: q.hi.context ? nl(q.hi.context) : null,
-      p_solution: q.hi.solution ? nl(q.hi.solution) : null,
-      p_options: q.format === "mcq" ? opts.map((o, k) => ({ option_id: o.id, text: nl(q.hi.options![k]) })) : [],
-    });
-    if (tErr) problems.push(`${q.ref}: translation: ${tErr.message}`);
-    else translated++;
+    if (q.hiMissing !== undefined) {
+      // The scan lost this row's Hindi; it ships English-only, never our translation.
+      console.log(`  ${q.ref}: no Hindi written (${q.hiMissing})`);
+    } else {
+      const { error: tErr } = await client.rpc("put_question_translation", {
+        p_question_id: row.id,
+        p_lang: "hi",
+        p_text: nl(q.hi.stem),
+        p_context: q.hi.context ? nl(q.hi.context) : null,
+        p_solution: q.hi.solution ? nl(q.hi.solution) : null,
+        p_options: q.format === "mcq" ? opts.map((o, k) => ({ option_id: o.id, text: nl(q.hi.options![k]) })) : [],
+      });
+      if (tErr) problems.push(`${q.ref}: translation: ${tErr.message}`);
+      else translated++;
+    }
     if (q.figure && !row.image_url) {
       const url = await uploadImage(client, ORG_ID, readFileSync(figurePath(id, q.ref)), "image/png");
       const { error: fErr } = await client.from("questions").update({ image_url: url }).eq("id", row.id);
