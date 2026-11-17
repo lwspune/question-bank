@@ -249,3 +249,21 @@ Measured on 2026 Physics DW; check it on your paper and report differences.
   `figure`; a diagram the student must draw is text only.
 - Chapter: the one the row TESTS; if nothing in the catalog fits, the closest
   plus `NO CHAPTER: <topic>` at the start of `_flag`.
+
+### 11a. Chemistry (347), measured on 2026 DZ
+
+- 8 pages, 70 marks, questions 1-7 with NO section letters: put `""` in
+  `"section"`. Each question is printed in Hindi, then in English.
+- Q1 (a)-(f) are the MCQs (6 on DZ). A "match Column I with Column II" MCQ
+  keeps both columns as a GFM pipe-table in the stem (header row + `|---|`
+  separator), and its options are the printed pairings, e.g.
+  `A-(d), B-(c), C-(e), D-(a), E-(b)`.
+- Q6 and Q7 carry whole-question OR alternatives (`Q6OR`, `Q6ORa` ...). A
+  "write short notes on / give the uses of the following" list gets one row
+  per item, as in Physics.
+- A reaction asked as a scheme (`A -> [B] -> [C]`, a benzene ring with OH)
+  is typed as LaTeX: `\(\mathrm{C_6H_5OH}\)`, reagents over the arrow with
+  `\(\xrightarrow{\mathrm{CHCl_3,\ aq.\ NaOH}}\)`. Use a `figure` only when a
+  drawn structure cannot be written as a formula.
+- Printed data (E° values, K_f, Λ° values) belongs in the stem of the row
+  that uses it, in both languages.
