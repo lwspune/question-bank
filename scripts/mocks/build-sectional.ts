@@ -55,6 +55,8 @@ import {
   CDS_GK_PAPER,
   CDS_MATHS_PAPER,
   CBSE_10_CHAPTER_MCQ_PAPER,
+  UP_10_CHAPTER_MCQ_PAPER,
+  UP_12_CHAPTER_MCQ_PAPER,
   CBSE_12_CHAPTER_MCQ_PAPER,
   JEE_MAINS_PAPER,
   MH_HSC_12_CHAPTER_MCQ_PAPER,
@@ -225,6 +227,23 @@ const NCERT_12_PHYSICS = [
   "Nuclei",
   "Semiconductor Electronics: Materials, Devices and Simple Circuits",
 ];
+/** NCERT Class 12 Mathematics, in book order (Parts I and II, chapters 1-13). */
+const NCERT_12_MATHS = [
+  "Relations and Functions",
+  "Inverse Trigonometric Functions",
+  "Matrices",
+  "Determinants",
+  "Continuity and Differentiability",
+  "Application of Derivatives",
+  "Integrals",
+  "Application of Integrals",
+  "Differential Equations",
+  "Vector Algebra",
+  "Three Dimensional Geometry",
+  "Linear Programming",
+  "Probability",
+];
+
 const NCERT_12_CHEMISTRY = [
   "Solutions",
   "Electrochemistry",
@@ -497,6 +516,40 @@ const EXAMS: Record<string, ExamPlan> = {
       // is already NCERT book order here. The [Outdated] chapter holds content
       // the rationalised book dropped, so it gets no test.
       { bankSubject: "Biology", code: "biology", paper: CBSE_12_CHAPTER_MCQ_PAPER, sectionKey: "biology", weights: NONE, retired: new Set(["Organism and its Environment [Outdated]"]) },
+    ],
+  },
+  // UP Board (2026-11-17): the board's own MCQs only (no textbook layer under
+  // this exam), NCERT book order, the 10-question floor. Constructions and
+  // Periodic Classification are current for UP, so they are not retired.
+  "up-board-10": {
+    examName: "UP Board Class 10",
+    examSlug: "up-board-10",
+    kinds: ["pyq"],
+    looseInstructions: true,
+    bookOrder: true,
+    dataFile: dataFile("up-board-10"),
+    minPool: 10,
+    unratedAsModerate: true,
+    numericShare: 0,
+    subjects: [
+      { bankSubject: "Mathematics", code: "maths", paper: UP_10_CHAPTER_MCQ_PAPER, sectionKey: "mathematics", weights: NONE, chapterOrder: NCERT_10_MATHS },
+      { bankSubject: "Science", code: "science", paper: UP_10_CHAPTER_MCQ_PAPER, sectionKey: "science", weights: NONE, chapterOrder: NCERT_10_SCIENCE },
+    ],
+  },
+  "up-board-12": {
+    examName: "UP Board Class 12",
+    examSlug: "up-board-12",
+    kinds: ["pyq"],
+    looseInstructions: true,
+    bookOrder: true,
+    dataFile: dataFile("up-board-12"),
+    minPool: 10,
+    unratedAsModerate: true,
+    numericShare: 0,
+    subjects: [
+      { bankSubject: "Physics", code: "physics", paper: UP_12_CHAPTER_MCQ_PAPER, sectionKey: "physics", weights: NONE, chapterOrder: NCERT_12_PHYSICS },
+      { bankSubject: "Chemistry", code: "chemistry", paper: UP_12_CHAPTER_MCQ_PAPER, sectionKey: "chemistry", weights: NONE, chapterOrder: NCERT_12_CHEMISTRY },
+      { bankSubject: "Mathematics", code: "maths", paper: UP_12_CHAPTER_MCQ_PAPER, sectionKey: "mathematics", weights: NONE, chapterOrder: NCERT_12_MATHS },
     ],
   },
   "mh-hsc-12": {

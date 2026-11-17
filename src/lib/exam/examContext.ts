@@ -668,6 +668,9 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     secondLang: "hi",
     defaultLang: "hi",
     pastPaperSolutions: true, // PUBLIC since 2026-11-17, every row solved in both languages
+    // Chapter tests (scripts/mocks/build-sectional.ts --exam=up-board-1x): built
+    // as drafts 2026-11-17, published with the push that ships this entry.
+    hasMocks: true,
     pastPaperPages: true, // /question-papers, but no /board reader (isc-12's reason)
     board: "UP Board",
     std: 10,
@@ -688,6 +691,9 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     secondLang: "hi",
     defaultLang: "hi",
     pastPaperSolutions: true, // PUBLIC since 2026-11-17, every row solved in both languages
+    // Chapter tests (scripts/mocks/build-sectional.ts --exam=up-board-1x): built
+    // as drafts 2026-11-17, published with the push that ships this entry.
+    hasMocks: true,
     pastPaperPages: true, // /question-papers, but no /board reader (isc-12's reason)
     board: "UP Board",
     std: 12,
