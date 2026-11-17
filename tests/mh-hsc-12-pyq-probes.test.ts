@@ -109,3 +109,13 @@ describe("probeRow", () => {
     expect(d[0]).toMatchObject({ ref: "r#1", field: "option A" });
   });
 });
+
+describe("probeRow: pandoc marks (2026-11-17)", () => {
+  it("flags a double hyphen and a ^x^ superscript in prose", () => {
+    const d = probeRow("ch#1", [["stem", "Exclusive -- OR gate"], ["solution", "223 Ω^-1^cm^2^mol^-1^"]]);
+    expect(d.map((x) => x.field)).toEqual(["stem", "solution"]);
+  });
+  it("leaves a table separator and math alone", () => {
+    expect(probeRow("ch#1", [["stem", "| a | b |\n|---|---|\n| 1 | 2 |"], ["solution", "\\(x^2^y\\)"]])).toEqual([]);
+  });
+});

@@ -46,14 +46,23 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { DATA, questionsJsonPath, requireChapter, type Chapter } from "./config";
-
-type CrossCheckRow = { ref: string; verdict: string; note?: string };
-
-const DERIVED_MODEL = "claude-opus-5 (authored; NCERT key prints no answer for this question)";
-const DERIVED_MODEL_NO_KEY = "claude-opus-5 (authored; this NCERT book publishes no answer key)";
+import { requiredStampRefs, type CrossCheckRow } from "./provenance";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
+}
+
+/** The rows this chapter's rule requires to be stamped (provenance.ts). */
+export function chapterStampTargets(id: string, ch: Chapter): { refs: string[]; model: string } {
+  if (!ch.answersPdf) {
+    const qPath = questionsJsonPath(id);
+    if (!existsSync(qPath)) throw new Error(`no merged transcription at ${qPath} — run merge.ts first`);
+    const all: { ref: string }[] = JSON.parse(readFileSync(qPath, "utf8"));
+    return requiredStampRefs({ hasAnswerKey: false, questionRefs: all.map((r) => r.ref), crosscheck: null });
+  }
+  const path = join(DATA, `${id}.crosscheck.json`);
+  const crosscheck: CrossCheckRow[] | null = existsSync(path) ? JSON.parse(readFileSync(path, "utf8")) : null;
+  return requiredStampRefs({ hasAnswerKey: true, questionRefs: [], crosscheck });
 }
 
 async function main() {
@@ -62,82 +71,59 @@ async function main() {
   const ch = requireChapter(id);
   loadEnv();
 
-  // A BOOK WITH NO ANSWER KEY (Biology; config carries no `answersPdf`): there is
-  // no cross-check to read, and every authored answer is unconfirmed by
-  // construction. Stamp every row except worked examples. Read from config, not a
-  // flag, so the key-less case cannot be forgotten and a keyed chapter cannot opt
-  // into it.
-  if (!ch.answersPdf) {
-    const qPath = questionsJsonPath(id);
-    if (!existsSync(qPath)) throw new Error(`no merged transcription at ${qPath} — run merge.ts first`);
-    const all: { ref: string }[] = JSON.parse(readFileSync(qPath, "utf8"));
-    const keyless = all.filter((r) => !r.ref.startsWith("Eg ")).map((r) => ({ ref: r.ref, verdict: "NO-KEY-ENTRY" }));
-    console.log(`${id}: this book publishes no answer key — all ${keyless.length} row(s) are derived.`);
-    return stamp(ch, keyless, apply, DERIVED_MODEL_NO_KEY);
-  }
-
-  const path = join(DATA, `${id}.crosscheck.json`);
-  if (!existsSync(path)) {
-    throw new Error(
-      `no ${id}.crosscheck.json — run the answer-key cross-check FIRST. This script stamps ` +
-        `only the rows that pass recorded as NO-KEY-ENTRY, so without it there is no evidence ` +
-        `of which answers the book leaves unconfirmed.`
-    );
-  }
-  const rows: CrossCheckRow[] = JSON.parse(readFileSync(path, "utf8"));
-
-  const tally = new Map<string, number>();
-  for (const r of rows) tally.set(r.verdict, (tally.get(r.verdict) ?? 0) + 1);
-  console.log(`cross-check verdicts: ${[...tally].map(([k, n]) => `${k}=${n}`).join("  ")}`);
-
-  const targets = rows.filter((r) => r.verdict === "NO-KEY-ENTRY");
-  // Structural guard: a solved example carries the book's own solution and must
-  // never be claimed as derived. Its ref is "Eg <n>.<m>"; an exercise is "Ex ...".
-  const solved = targets.filter((r) => r.ref.startsWith("Eg "));
-  if (solved.length) {
-    throw new Error(
-      `${solved.length} NO-KEY-ENTRY row(s) are SOLVED examples (${solved.map((r) => r.ref).join(", ")}). ` +
-        `Those carry the book's own printed solution and are outside the cross-check by ` +
-        `construction — they must not be recorded as NO-KEY-ENTRY. Fix the cross-check output.`
-    );
-  }
-  return stamp(ch, targets, apply, DERIVED_MODEL);
-}
-
-async function stamp(ch: Chapter, targets: CrossCheckRow[], apply: boolean, model: string) {
-  console.log(`\n${targets.length} row(s) to stamp (verdict NO-KEY-ENTRY):`);
-  for (const r of targets) console.log(`  ${r.ref}`);
-  if (!targets.length) {
-    console.log("\nNothing to stamp — the key confirms every exercise answer in this chapter.");
-    return;
-  }
-
-  if (!apply) {
-    console.log(`\n[dry-run] pass --apply to stamp derived_model/derived_at on these ${targets.length} row(s).`);
+  const { refs, model } = chapterStampTargets(id, ch);
+  console.log(`${id}: ${refs.length} row(s) need the derived-answer stamp (${ch.answersPdf ? "NO-KEY-ENTRY in the cross-check" : "this book publishes no answer key"}).`);
+  if (!refs.length) {
+    console.log("Nothing to stamp — the key confirms every exercise answer in this chapter.");
     return;
   }
 
   const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
     auth: { persistSession: false },
   });
+  // What REMAINS, not what is in scope: before 2026-11-17 the dry run printed the
+  // same "would stamp N" before and after an apply, and that was misread as an
+  // apply that never ran.
+  const { data, error: rErr } = await client
+    .from("questions")
+    .select("question_number, derived_model")
+    .eq("exam_id", ch.examId)
+    .eq("source_file", ch.sourceFile);
+  if (rErr) throw new Error(`read failed: ${rErr.message}`);
+  const stampedAlready = new Set(
+    ((data ?? []) as { question_number: string | null; derived_model: string | null }[])
+      .filter((r) => r.derived_model)
+      .map((r) => r.question_number)
+  );
+  const remaining = refs.filter((r) => !stampedAlready.has(r));
+  console.log(`${refs.length - remaining.length} already stamped, ${remaining.length} remaining:`);
+  for (const r of remaining) console.log(`  ${r}`);
+  if (!remaining.length) return;
+
+  if (!apply) {
+    console.log(`\n[dry-run] pass --apply to stamp derived_model/derived_at on these ${remaining.length} row(s).`);
+    return;
+  }
 
   const now = new Date().toISOString();
   let stamped = 0;
-  for (const r of targets) {
+  for (const ref of remaining) {
     const { error, count } = await client
       .from("questions")
       .update({ derived_model: model, derived_at: now }, { count: "exact" })
       .eq("exam_id", ch.examId)
       .eq("source_file", ch.sourceFile)
-      .eq("question_number", r.ref);
-    if (error) throw new Error(`stamp failed for ${r.ref}: ${error.message}`);
-    if (count !== 1) throw new Error(`stamp for ${r.ref} matched ${count} rows (expected exactly 1)`);
+      .eq("question_number", ref);
+    if (error) throw new Error(`stamp failed for ${ref}: ${error.message}`);
+    if (count !== 1) throw new Error(`stamp for ${ref} matched ${count} rows (expected exactly 1)`);
     stamped++;
   }
   console.log(`\nstamped ${stamped} row(s) with derived_model + derived_at.`);
 }
 
-main().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
+}

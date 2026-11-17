@@ -206,7 +206,7 @@
     "pyqMonth": "March",
     "format": "subjective",
     "subtopic": "Logic Gates",
-    "stem": "Write the Boolean expression for Exclusive -- OR (X -- OR) gate.",
+    "stem": "Write the Boolean expression for Exclusive-OR (X-OR) gate.",
     "solution": "**Boolean expression for the Exclusive-OR (X-OR) gate.** The X-OR gate gives a high output only when its two inputs are at DIFFERENT logic levels, so\n\n\\( Y = A \\oplus B = A \\cdot \\overline{B} + \\overline{A} \\cdot B \\)\n\nIts truth table is\n\n| A | B | Y |\n|---|---|---|\n| 0 | 0 | 0 |\n| 0 | 1 | 1 |\n| 1 | 0 | 1 |\n| 1 | 1 | 0 |\n\nThe first two terms are high for the two rows in which exactly one input is high, and the output is low for the two rows in which the inputs agree.\n\n\\( \\therefore Y = A \\oplus B = A \\cdot \\overline{B} + \\overline{A} \\cdot B \\) is the Boolean expression for the X-OR gate.",
     "difficulty": "EASY"
   },

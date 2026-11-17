@@ -30,7 +30,13 @@ import { notesCountKind } from "../../src/lib/notes/countKind";
 export const liveKey = (exam: string | undefined, subject: string | undefined, chapter: string | undefined) =>
   `${exam}\t${subject}\t${chapter}`;
 
-export type LiveRow = { chapter_id: string | null; subtopic_id: string | null; pyq_year: number | null };
+export type LiveRow = {
+  chapter_id: string | null;
+  subtopic_id: string | null;
+  pyq_year: number | null;
+  difficulty?: string | null;
+  question_format?: string | null;
+};
 
 export type LiveTaxonomy = {
   exams: Map<string, string>;
@@ -47,13 +53,23 @@ export type NotesLive = {
   perYear: Map<string, Map<string, number>>;
   /** Per chapter: the newest PYQ year. */
   maxYear: Map<string, number>;
+  /** Per chapter: HARD rows (for "N of them HARD" claims, 2026-11-17). */
+  hardChapter: Map<string, number>;
+  /** Per chapter: subtopic name -> HARD rows. */
+  hardPerSub: Map<string, Map<string, number>>;
+  /**
+   * Per chapter: EASY / MODERATE / HARD / MODERATE_OR_HARD and numeric / mcq /
+   * subjective counts, for the other "N of them ..." claims (2026-11-17). A row
+   * with no format is an MCQ, as everywhere else.
+   */
+  classes: Map<string, Map<string, number>>;
 };
 
 const bump = (m: Map<string, number>, k: string) => m.set(k, (m.get(k) ?? 0) + 1);
 
 /** Count rows into the per-chapter maps. Pure. */
 export function tallyNotesLive(rows: Iterable<LiveRow>, tax: LiveTaxonomy): NotesLive {
-  const live: NotesLive = { chapter: new Map(), perSub: new Map(), perYear: new Map(), maxYear: new Map() };
+  const live: NotesLive = { chapter: new Map(), perSub: new Map(), perYear: new Map(), maxYear: new Map(), hardChapter: new Map(), hardPerSub: new Map(), classes: new Map() };
   for (const r of rows) {
     const chapter = r.chapter_id ? tax.chapters.get(r.chapter_id) : undefined;
     const subject = chapter ? tax.subjects.get(chapter.subjectId) : undefined;
@@ -63,6 +79,16 @@ export function tallyNotesLive(rows: Iterable<LiveRow>, tax: LiveTaxonomy): Note
     if (!live.perSub.has(k)) live.perSub.set(k, new Map());
     const sn = (r.subtopic_id && tax.subtopics.get(r.subtopic_id)) || "?";
     bump(live.perSub.get(k)!, sn);
+    if (r.difficulty === "HARD") {
+      bump(live.hardChapter, k);
+      if (!live.hardPerSub.has(k)) live.hardPerSub.set(k, new Map());
+      bump(live.hardPerSub.get(k)!, sn);
+    }
+    if (!live.classes.has(k)) live.classes.set(k, new Map());
+    const cls = live.classes.get(k)!;
+    if (r.difficulty) bump(cls, r.difficulty);
+    if (r.difficulty === "MODERATE" || r.difficulty === "HARD") bump(cls, "MODERATE_OR_HARD");
+    bump(cls, r.question_format ?? "mcq");
     if (r.pyq_year) {
       live.maxYear.set(k, Math.max(live.maxYear.get(k) ?? 0, r.pyq_year));
       if (!live.perYear.has(k)) live.perYear.set(k, new Map());
@@ -96,7 +122,7 @@ async function readRows(db: SupabaseClient, kind: "pyq" | "practice", examIds?: 
   const rows = await readAllByKeyset<Row>(async (last, limit) => {
     let q = db
       .from("questions")
-      .select("id, chapter_id, subtopic_id, pyq_year")
+      .select("id, chapter_id, subtopic_id, pyq_year, difficulty, question_format")
       .eq("visibility", "PUBLIC")
       .eq("question_kind", kind);
     if (examIds) q = q.in("exam_id", examIds);

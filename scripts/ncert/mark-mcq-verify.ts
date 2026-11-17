@@ -3,6 +3,9 @@
  *
  *   npx tsx scripts/ncert/mark-mcq-verify.ts <chapterId>          # report
  *   npx tsx scripts/ncert/mark-mcq-verify.ts <chapterId> --write  # patch the file
+ *   ... --write --independent   the verifier never saw this chapter's derivation (a
+ *       fresh agent reading only rendered pages): record blind_rederivation, else
+ *       solution_audit (src/lib/reviews/emit.ts buildMcqVerifyInputs says why)
  *
  * The verifying agent re-derives BLIND (dump-mcq.ts omits is_correct), so it
  * cannot self-report whether it agrees with the committed key — and it must not,
@@ -75,7 +78,7 @@ async function main() {
   if (write) {
     // Only agreeing rows are recorded; a MISMATCH is a flag awaiting human
     // adjudication, not a verdict (the grounding HELD-queue rule).
-    const result = await recordMcqVerifyReviews(db, { pipeline: "ncert", artifactId: id, rows: verified });
+    const result = await recordMcqVerifyReviews(db, { pipeline: "ncert", artifactId: id, rows: verified, independentVerifier: process.argv.includes("--independent") });
     console.log(formatRecordResult(result, "review provenance"));
   }
 

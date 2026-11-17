@@ -1,3 +1,4 @@
+import { proseDoubleHyphen, prosePandocScript } from "../lib/textProbes";
 /**
  * Text-defect probes for the board-PYQ corpus.
  *
@@ -113,6 +114,11 @@ export function probeRow(ref: string, fields: [string, string][]): Defect[] {
     const imb = mathImbalance(s);
     if (imb) out.push({ ref, field, reason: `${imb[0]} open vs ${imb[1]} close math delimiters` });
     if (tableWithoutSeparator(s)) out.push({ ref, field, reason: "pipe rows with no |---| separator" });
+    // Pandoc's -- (an en dash, minus or blank in the source) and ^x^ / ~x~ print
+    // literally. 11 shipped rows carried the first, 2 the second (SUGGESTIONS
+    // 2026-09-10); the repair depends on the sentence, so this flags, never fixes.
+    if (proseDoubleHyphen(s)) out.push({ ref, field, reason: "pandoc -- in prose (dash, minus, hyphen or blank?)" });
+    if (prosePandocScript(s)) out.push({ ref, field, reason: "pandoc ^x^ / ~x~ script in prose" });
   }
   return out;
 }

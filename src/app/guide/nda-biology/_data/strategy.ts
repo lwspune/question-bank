@@ -77,7 +77,7 @@ export const STRATEGY_HEADLINE = {
 export const RECALL_STRAND: StrategyStrand = {
   id: "recall",
   label:
-    "Recall — Human Physiology · Cell Biology · Microbiology · Biodiversity · Genetics (132 q · 69%)",
+    "Recall — Human Physiology · Cell Biology · Microbiology · Biodiversity · Genetics (138 q · 69%)",
   qCount: 138,
   pctOfBank: 69,
   pitch:
@@ -106,7 +106,7 @@ export const RECALL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~10 marks",
       studyHours: 5,
       summary:
-        "52 q · 1 HARD across 10 yrs. The largest chapter. Tissues + Nervous + Nutrition cover 24 of the 52 — drill these three subtopics first. Vitamin↔deficiency cluster on /reference-tables compounds the value.",
+        "55 q · 1 HARD across 10 yrs. The largest chapter. Tissues + Nervous + Nutrition cover 26 of the 55 — drill these three subtopics first. Vitamin↔deficiency cluster on /reference-tables compounds the value.",
     },
     {
       chapter: "Cell Biology",
@@ -125,7 +125,7 @@ export const RECALL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~8 marks",
       studyHours: 4,
       summary:
-        "44 q · 1 HARD across 10 yrs. Cell Organelles (17 q) is the dominant subtopic — memorise the ribosome/mitochondria/golgi/ER/nucleus function table cold. Osmosis (4 q, 25% HARD) is the chapter's lone Apply pocket.",
+        "46 q · 1 HARD across 10 yrs. Cell Organelles (17 q) is the dominant subtopic — memorise the ribosome/mitochondria/golgi/ER/nucleus function table cold. Osmosis (4 q, 25% HARD) is the chapter's lone Apply pocket.",
     },
     {
       chapter: "Microbiology and Disease",
@@ -153,7 +153,7 @@ export const RECALL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~2 marks",
       studyHours: 1.5,
       summary:
-        "11 q · ZERO HARD across 10 yrs. Pure classification recall. Sponges = Porifera, mollusks = soft-bodied + shell, bryophytes = non-vascular plants. Read the 5-kingdom + 4-plant-group + animal-phylum tables once, recognise on test day.",
+        "12 q · ZERO HARD across 10 yrs. Pure classification recall. Sponges = Porifera, mollusks = soft-bodied + shell, bryophytes = non-vascular plants. Read the 5-kingdom + 4-plant-group + animal-phylum tables once, recognise on test day.",
     },
     {
       chapter: "Genetics and Evolution",
@@ -173,7 +173,7 @@ export const RECALL_STRAND: StrategyStrand = {
 
 export const APPLY_STRAND: StrategyStrand = {
   id: "apply",
-  label: "Apply — Plant Biology · Reproduction (16 q · 22%)",
+  label: "Apply — Plant Biology · Reproduction (46 q · 23%)",
   qCount: 46,
   pctOfBank: 23,
   pitch:
@@ -198,7 +198,7 @@ export const APPLY_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~5 marks",
       studyHours: 4,
       summary:
-        "29 q · 1 HARD across 10 yrs. Plant Tissues + Photosynthesis are the giant subtopics (11 + 10 = 21 of 29). Drill xylem-vs-phloem direction, apical-vs-lateral meristem, light/dark reactions. The Transpiration subtopic (3 q · 33% HARD) is the Apply hot pocket.",
+        "30 q · 1 HARD across 10 yrs. Plant Tissues + Photosynthesis are the giant subtopics (12 + 10 = 22 of 30). Drill xylem-vs-phloem direction, apical-vs-lateral meristem, light/dark reactions. The Transpiration subtopic (3 q · 33% HARD) is the Apply hot pocket.",
     },
     {
       chapter: "Reproduction",
@@ -213,14 +213,14 @@ export const APPLY_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~2 marks",
       studyHours: 2,
       summary:
-        "13 q · 1 HARD across 10 yrs. Pollination + Fertilisation (7 q) is the biggest subtopic — self vs cross-pollination, double fertilisation arithmetic. Sexual Reproduction Principles (3 q, 33% HARD) is the chapter's HARD pocket.",
+        "16 q · 1 HARD across 10 yrs. Pollination + Fertilisation (9 q) is the biggest subtopic — self vs cross-pollination, double fertilisation arithmetic. Sexual Reproduction Principles (3 q, 33% HARD) is the chapter's HARD pocket.",
     },
   ],
 };
 
 export const VERIFY_STRAND: StrategyStrand = {
   id: "verify",
-  label: "Verify — Ecology and Environment · Biochemistry (4 q · 8%)",
+  label: "Verify — Ecology and Environment · Biochemistry (15 q · 8%)",
   qCount: 15,
   pctOfBank: 8,
   pitch:
@@ -242,7 +242,7 @@ export const VERIFY_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~2 marks",
       studyHours: 2,
       summary:
-        "12 q · ZERO HARD across 10 yrs. Half biome-identification (recall), half multi-statement Verify. Mutualism vs commensalism vs parasitism, biome features, food chain construction. Always state each statement explicitly before picking the option.",
+        "11 q · ZERO HARD across 10 yrs. Half biome-identification (recall), half multi-statement Verify. Mutualism vs commensalism vs parasitism, biome features, food chain construction. Always state each statement explicitly before picking the option.",
     },
     {
       chapter: "Biochemistry",

@@ -25,6 +25,35 @@ const WINDOWS_BROWSERS = [
 ];
 
 const TIMEOUT_MS = 45_000;
+
+/**
+ * Redraw every PNG figure as a JPEG, in the page, before printing (2026-11-17).
+ * An ordinary 803x650 RGB PNG near a page break hung Chrome's PDF print for good
+ * while building the ebooks; the same picture as a JPEG printed the run in ~2 s
+ * (scripts/ebooks/build.ts asJpegs, which uses sharp). Here a canvas does it, so
+ * the export route gains no native dependency. White background: a figure's
+ * transparency becomes the page colour. The watermark is skipped, since it must
+ * stay transparent over the text.
+ */
+const PNG_TO_JPEG = `(async () => {
+  const imgs = [...document.images].filter((i) => i.src.startsWith("data:image/png") && !i.classList.contains("watermark"));
+  for (const img of imgs) {
+    try {
+      await img.decode();
+      if (!img.naturalWidth) continue;
+      const c = document.createElement("canvas");
+      c.width = img.naturalWidth;
+      c.height = img.naturalHeight;
+      const ctx = c.getContext("2d");
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, c.width, c.height);
+      ctx.drawImage(img, 0, 0);
+      img.src = c.toDataURL("image/jpeg", 0.9);
+      await img.decode();
+    } catch (e) {}
+  }
+  return imgs.length;
+})()`;
 /** How much of the browser's error output a failure carries. */
 const OUTPUT_TAIL = 4000;
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -156,6 +185,7 @@ async function printOnce(html: string, timeoutMs: number): Promise<Buffer> {
       await cdp.send("Page.navigate", { url: pathToFileURL(file).href });
       for (let i = 0; i < timeoutMs / 50 && (await evaluate(cdp, "document.readyState")) !== "complete"; i++) await sleep(50);
       await evaluate(cdp, "document.fonts.ready.then(() => true)");
+      await evaluate(cdp, PNG_TO_JPEG);
       const res = (await cdp.send("Page.printToPDF", {
         printBackground: true,
         preferCSSPageSize: true,

@@ -3,6 +3,9 @@
  *
  *   npx tsx scripts/mh-sb-11/mark-mcq-verify.ts <chapterId>          # report
  *   npx tsx scripts/mh-sb-11/mark-mcq-verify.ts <chapterId> --write  # patch the file
+ *   ... --write --independent   the verifier never saw this chapter's derivation (a
+ *       fresh agent reading only rendered pages): record blind_rederivation, else
+ *       solution_audit (src/lib/reviews/emit.ts buildMcqVerifyInputs says why)
  *
  * The verifying agent re-derives BLIND (dump-mcq.ts omits is_correct), so it
  * cannot self-report whether it agrees with the committed key — and it must not,
@@ -79,7 +82,7 @@ async function main() {
     const result = await recordMcqVerifyReviews(db, {
       pipeline: "mh-sb-11",
       artifactId: id,
-      rows: verified,
+      rows: verified, independentVerifier: process.argv.includes("--independent"),
     });
     console.log(formatRecordResult(result, "review provenance"));
   }

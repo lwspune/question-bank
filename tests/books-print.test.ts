@@ -14,7 +14,7 @@
  *     has no holes for a reader to mistake for a typesetting fault.
  */
 import { describe, it, expect } from "vitest";
-import { chapterContents, numberChapter } from "../src/lib/books/print";
+import { chapterContents, numberChapter, printedTotal } from "../src/lib/books/print";
 import type { BookSection, BookSet } from "../src/lib/books/order";
 
 function section(key: "nda" | "cds", sets: string[][]): BookSection {
@@ -316,3 +316,17 @@ describe("chapterContents", () => {
 function rangeNumbers({ from, to }: { from: number; to: number }): number[] {
   return [...Array(to - from + 1)].map((_, i) => from + i);
 }
+
+// 2026-11-17: the chapter page said 180 questions where the print view printed
+// 190, because it subtracted curated-out rows that are not in any section.
+describe("printedTotal", () => {
+  it("counts the questions in the sections that are not excluded", () => {
+    expect(printedTotal(SECTIONS, ["b"])).toBe(4);
+  });
+  it("ignores excluded ids that no section holds", () => {
+    expect(printedTotal(SECTIONS, ["b", "zz", "yy"])).toBe(4);
+  });
+  it("agrees with numberChapter", () => {
+    expect(printedTotal(SECTIONS, ["b", "zz"])).toBe(numberChapter(SECTIONS, ["b", "zz"]).total);
+  });
+});

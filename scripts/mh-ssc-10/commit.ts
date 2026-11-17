@@ -20,6 +20,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { commitStaged } from "../../src/lib/upload/commit";
+import { privatizeNewRows, sourceFileIds } from "../lib/privatizeNewRows";
 import { buildPaperRecords, latexImbalances, type PaperQuestion } from "./lib";
 import { ORG_ID, EXAM_ID, CREATED_BY, requirePaper, paperCatalogs, questionsJsonPath } from "./config";
 
@@ -83,6 +84,9 @@ async function main() {
   }
   console.log(`\nupload job: ${jobId}`);
 
+  // Ids before the commit: only rows this run inserts go PRIVATE (a re-commit
+  // into a published file must not hide it).
+  const before = await sourceFileIds(client, EXAM_ID, paper.sourceFile);
   const result = await commitStaged(client, {
     orgId: ORG_ID, examId: EXAM_ID, filename: paper.sourceFile, createdBy: CREATED_BY,
     rows, uploadJobId: jobId, pyqYear: paper.year, pyqMonth: paper.month, pyqNote: paper.note,
@@ -90,12 +94,7 @@ async function main() {
   console.log(`commit: inserted=${result.inserted} skipped=${result.skipped} failed=${result.failed}`);
   for (const e of result.errors) console.log(`  err row ${e.sourceRow}: ${e.message}`);
 
-  const { error: uErr, count } = await client
-    .from("questions")
-    .update({ visibility: "PRIVATE", question_kind: "pyq" }, { count: "exact" })
-    .eq("exam_id", EXAM_ID).eq("source_file", paper.sourceFile);
-  if (uErr) throw new Error(`kind/visibility update failed: ${uErr.message}`);
-  console.log(`set ${count} rows to PRIVATE + question_kind='pyq'.`);
+  await privatizeNewRows(client, { examId: EXAM_ID, sourceFile: paper.sourceFile, before, questionKind: "pyq" });
 
   const { count: linked } = await client
     .from("questions").select("id", { count: "exact", head: true })

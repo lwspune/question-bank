@@ -222,3 +222,16 @@ describe("validateRows", () => {
     expect(validateRows(rows, 1, 2)).toContain("missing Q2");
   });
 });
+
+describe("buildRecords notice (2026-11-17)", () => {
+  it("puts a defective-question notice above the answer line", () => {
+    const s = [sec({ type: "synonyms", qFrom: 1, qTo: 1, setLabel: "S1" })];
+    const { rows } = buildRecords(s, [q({ number: 1, stem: "x", reasoning: "Because.", notice: "No option is exactly right." })], {});
+    expect(rows[0].solution).toBe("**Note:** No option is exactly right.\n\nAnswer: A. Because.");
+  });
+  it("leaves a row without a notice as before", () => {
+    const s = [sec({ type: "synonyms", qFrom: 1, qTo: 1, setLabel: "S1" })];
+    const { rows } = buildRecords(s, [q({ number: 1, stem: "x", reasoning: "Because." })], {});
+    expect(rows[0].solution).toBe("Answer: A. Because.");
+  });
+});

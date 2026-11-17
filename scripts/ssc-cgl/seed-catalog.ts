@@ -15,7 +15,9 @@
  * question fits nothing.
  */
 import { createClient } from "@supabase/supabase-js";
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { carryUsedNames, type Catalog } from "./catalogCarry";
+import { parseTranscript } from "./lib";
 import { join } from "node:path";
 
 type Chapter = { chapter: string; subtopics: string[] };
@@ -40,7 +42,12 @@ function merge(into: Chapter[], extra: Chapter[], where: string): Chapter[] {
       continue;
     }
     for (const s of e.subtopics) {
-      if (hit.subtopics.includes(s)) throw new Error(`${where} / ${e.chapter}: "${s}" is already there`);
+      // CDS can gain a name SSC added first (the 2026-10-22 GK notes pass added
+      // "Early Medieval Kingdoms"); the add is then redundant, not an error.
+      if (hit.subtopics.includes(s)) {
+        console.log(`note: ${where} / ${e.chapter}: "${s}" is now in CDS too; the authored add is redundant`);
+        continue;
+      }
       hit.subtopics.push(s);
     }
   }
@@ -80,8 +87,19 @@ async function main() {
     catalog[subject] = merge(catalog[subject], extra, subject);
   }
 
-  const sorted = Object.fromEntries(Object.keys(catalog).sort().map((k) => [k, catalog[k]]));
-  writeFileSync(join(__dirname, "catalog.json"), JSON.stringify(sorted, null, 2) + "\n", "utf8");
+  // Third source (2026-11-17): every name a committed transcript still uses. A CDS
+  // re-cut must not strand live SSC rows (catalogCarry.ts says why).
+  const catalogPath = join(__dirname, "catalog.json");
+  const previous: Catalog = existsSync(catalogPath) ? JSON.parse(readFileSync(catalogPath, "utf8")) : {};
+  const used = new Set<string>();
+  const dir = join(__dirname, "transcripts");
+  for (const f of readdirSync(dir).filter((x) => x.endsWith(".txt"))) {
+    for (const q of parseTranscript(readFileSync(join(dir, f), "utf8"))) used.add(`${q.chapter}\u0000${q.subtopic}`);
+  }
+  const { catalog: kept, carried } = carryUsedNames(catalog, previous, used);
+  for (const c of carried) console.log(`kept (a transcript still uses it): ${c}`);
+  const sorted = Object.fromEntries(Object.keys(kept).sort().map((k) => [k, kept[k]]));
+  writeFileSync(catalogPath, JSON.stringify(sorted, null, 2) + "\n", "utf8");
   for (const [s, cs] of Object.entries(sorted)) {
     console.log(`${s.padEnd(24)} ${String(cs.length).padStart(3)} chapters ${String(cs.reduce((n, c) => n + c.subtopics.length, 0)).padStart(4)} subtopics`);
   }
