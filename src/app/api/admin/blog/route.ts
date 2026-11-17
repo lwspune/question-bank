@@ -7,9 +7,10 @@
  * This is the ONLY way an article reaches readers: the draft script writes
  * drafts and waiting edits, never a live page. After a change it clears the
  * article cache and every page that shows it (the post or the exam's syllabus
- * page, /blog, the exam home, the sitemap), so it is live on the next load.
+ * page, /blog, the exam home, the sitemap), so it is live on the next load,
+ * and sends the changed pages to IndexNow (lib/blog/indexnow.ts).
  */
-import { NextResponse, type NextRequest } from "next/server";
+import { NextResponse, after, type NextRequest } from "next/server";
 import { revalidatePath, revalidateTag } from "next/cache";
 import { requireSuperadmin, HttpError } from "@/lib/auth";
 import { createTypedAdminClient } from "@/lib/supabase/admin";
@@ -19,6 +20,7 @@ import { PUBLISH_ACTIONS, planPublish } from "@/lib/blog/catalog";
 import { articlePath } from "@/lib/blog/paths";
 import { examHomeHref } from "@/lib/exam/examHome";
 import { ARTICLE_KINDS, type ArticleKind } from "@/lib/blog/kinds";
+import { articleIndexNowUrls, shouldNotifyIndexNow, submitArticleToIndexNow } from "@/lib/blog/indexnow";
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -65,6 +67,20 @@ export async function POST(request: NextRequest) {
     ]);
     if (row.exam_slug) paths.add(examHomeHref(row.exam_slug));
     for (const path of paths) revalidatePath(path);
+
+    // Tell IndexNow (Bing and ChatGPT search) at once, after the reply: it never
+    // delays or fails a publish, and the daily IndexNow workflow is the backstop.
+    if (shouldNotifyIndexNow(action)) {
+      const urls = articleIndexNowUrls({ kind: row.kind, slug: row.slug, examSlug: row.exam_slug });
+      after(async () => {
+        try {
+          const r = await submitArticleToIndexNow(urls);
+          if (!r.ok) console.error("blog publish: IndexNow did not accept", { slug: row.slug, status: r.status });
+        } catch (e) {
+          console.error("blog publish: IndexNow submit failed", row.slug, e instanceof Error ? e.message : e);
+        }
+      });
+    }
 
     return NextResponse.json({ ok: true });
   } catch (err) {
