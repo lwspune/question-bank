@@ -34,9 +34,10 @@ GP B3 (i).
 ## Status (2026-11-17)
 
 Class 10 PRIVATE in the bank, nothing published: **Mathematics 13 papers, 485
-rows** (blind passes 260/260); **Science 14 papers, 667 rows** (280 MCQs; 3
-disputes and 2 shared misreadings settled by hand). Defective or print-difference
-MCQs carry a notice in both languages and grace (`src/lib/mocks/flawed.json`).
+rows** (blind passes 260/260); **Science 14 papers, 667 rows** (280 MCQs: the
+passes split on 2, both settled by hand, and agreed on a third, GM Q6, that the
+NCERT text overrules). Defective or print-difference MCQs carry a notice in both
+languages and grace (`src/lib/mocks/flawed.json`): 2 in Maths, 6 in Science.
 Class 12 (54 papers) not started.
 
 ## Language
