@@ -4,6 +4,7 @@
  *
  *   npm run ui:shots -- --pages=/,/mock,/browse            # live site vs localhost:3000
  *   npm run ui:shots -- --pages=/pricing --dark --phone     # add dark mode, phone only
+ *   npm run ui:shots -- --pages=/board --tablet --laptop    # add 820 and 1024 px (the header's tight widths)
  *   npm run ui:shots -- --pages=/ --before=http://localhost:3001 --full --title="Hero"
  *
  *   A change that exists only on localhost has no live "before":
