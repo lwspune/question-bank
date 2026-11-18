@@ -15,11 +15,24 @@
  */
 import type { DailyReveals } from "./revealMeter";
 import { DAILY_REVEAL_SURFACES } from "./revealQuota";
+import { parseTrialEnded, parseTrialOffer, type TrialEnded, type TrialOffer } from "@/lib/billing/practiceTrial";
 
 export const CLAIM_REASONS = ["counted", "repeat", "limit", "pass", "free", "off", "path", "uncounted"] as const;
 export type ClaimReason = (typeof CLAIM_REASONS)[number];
 
-export type ClaimResult = { allowed: boolean; reason: ClaimReason; used: number | null; limit: number | null };
+/**
+ * `trialOffer` / `trialEnded` (migration 0273) ride only on a refusal at the
+ * limit: the 7-day Practice Pass offer, and the line after a trial ended.
+ * Absent from a reply (an older server) they read as null.
+ */
+export type ClaimResult = {
+  allowed: boolean;
+  reason: ClaimReason;
+  used: number | null;
+  limit: number | null;
+  trialOffer: TrialOffer | null;
+  trialEnded: TrialEnded | null;
+};
 
 type Rpc = (fn: "claim_reveal", args: { p_question_id: string; p_surface: string }) => PromiseLike<{ data: unknown; error: unknown }>;
 
@@ -54,7 +67,14 @@ export function parseClaim(data: unknown): ClaimResult | null {
   const used = d.used ?? null;
   const limit = d.limit ?? null;
   if (!isCount(used) || !isCount(limit)) return null;
-  return { allowed: d.allowed, reason: d.reason as ClaimReason, used, limit };
+  return {
+    allowed: d.allowed,
+    reason: d.reason as ClaimReason,
+    used,
+    limit,
+    trialOffer: parseTrialOffer(d.trialOffer),
+    trialEnded: parseTrialEnded(d.trialEnded),
+  };
 }
 
 /** Ask the server. Null when it cannot be asked or the reply makes no sense. */
@@ -75,7 +95,11 @@ export async function claimReveal(rpc: Rpc, questionId: string, surface: string)
  * never loaded. Anything else (a pass, a free exam, a path question) leaves
  * the copy as it was.
  */
-export function applyClaim(copy: DailyReveals | null, questionId: string, result: ClaimResult): DailyReveals | null {
+export function applyClaim(
+  copy: DailyReveals | null,
+  questionId: string,
+  result: Pick<ClaimResult, "allowed" | "reason" | "used" | "limit">
+): DailyReveals | null {
   if (result.limit === null || result.used === null) return copy;
   if (result.reason === "counted" || result.reason === "repeat") {
     const todayIds = copy?.todayIds ?? [];

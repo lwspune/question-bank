@@ -156,6 +156,7 @@ export default async function AccountPage() {
                               : "Lifetime access"}
                             {pass.source === "comp" && " · complimentary"}
                             {pass.source === "referral" && " · includes free days from your invites"}
+                            {pass.source === "trial" && " · 7-day pass"}
                           </p>
                           <Link
                             href={view.href}

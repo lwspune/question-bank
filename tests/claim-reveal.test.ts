@@ -38,8 +38,8 @@ describe("needsClaim: when the page must ask the server", () => {
 
 describe("parseClaim", () => {
   it("reads the server's reply", () => {
-    expect(parseClaim({ allowed: false, reason: "limit", used: 15, limit: 15 })).toEqual({ allowed: false, reason: "limit", used: 15, limit: 15 });
-    expect(parseClaim({ allowed: true, reason: "pass", used: null, limit: null })).toEqual({ allowed: true, reason: "pass", used: null, limit: null });
+    expect(parseClaim({ allowed: false, reason: "limit", used: 15, limit: 15 })).toEqual({ allowed: false, reason: "limit", used: 15, limit: 15, trialOffer: null, trialEnded: null });
+    expect(parseClaim({ allowed: true, reason: "pass", used: null, limit: null })).toEqual({ allowed: true, reason: "pass", used: null, limit: null, trialOffer: null, trialEnded: null });
   });
 
   it("refuses a reply it does not understand", () => {
@@ -52,7 +52,7 @@ describe("parseClaim", () => {
 describe("claimReveal", () => {
   it("returns the server's decision", async () => {
     const rpc = vi.fn().mockResolvedValue({ data: { allowed: true, reason: "counted", used: 3, limit: 15 }, error: null });
-    expect(await claimReveal(rpc, "q", "board")).toEqual({ allowed: true, reason: "counted", used: 3, limit: 15 });
+    expect(await claimReveal(rpc, "q", "board")).toEqual({ allowed: true, reason: "counted", used: 3, limit: 15, trialOffer: null, trialEnded: null });
     expect(rpc).toHaveBeenCalledWith("claim_reveal", { p_question_id: "q", p_surface: "board" });
   });
 

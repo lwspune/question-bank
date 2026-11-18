@@ -565,6 +565,15 @@ const LIMIT_ROWS: LimitRowSpec[] = [
     checkbox: "Free for a number of days after the student reveals it, then Premium Pass only",
   },
   {
+    which: "practiceTrial",
+    label: "7-day Practice Pass trial",
+    unit: "days at the answer limit",
+    field: "practiceTrialAfterDays",
+    suggested: 3,
+    checkbox:
+      "Offer a free 7-day Practice Pass on a student's Nth day at the answer limit (on 3 such days at most, once per account; nothing is granted until they tap Activate)",
+  },
+  {
     which: "practiceTests",
     label: "Practice tests a day",
     unit: "tests a day",

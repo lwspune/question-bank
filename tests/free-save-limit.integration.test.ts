@@ -34,7 +34,9 @@ const HAS_ENV =
 const PASSWORD = "free-save-limit-pw-1234";
 const RUN_ID = testRunId();
 // "reveal": the daily answer limit's own student (claim_reveal, migration 0228).
-const ROLES = ["student", "pass", "practice", "off", "freeexam", "reveal"] as const;
+// The 7-day Practice Pass trial (0273): "trial" earns and takes it, "vtrial" meets the limit
+// on V, "offered" has used all 3 offer days, "lapsed" once held a pass.
+const ROLES = ["student", "pass", "practice", "off", "freeexam", "reveal", "trial", "vtrial", "offered", "lapsed"] as const;
 type Role = (typeof ROLES)[number];
 
 describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)", () => {
@@ -131,15 +133,32 @@ describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)"
       note: `test ${RUN_ID}`,
     });
 
+    // A pass that has lapsed: this student is never offered the trial (0273).
+    await admin.from("entitlements").insert({
+      user_id: ids.lapsed,
+      scope: "practice",
+      source: "comp",
+      status: "active",
+      granted_at: new Date(Date.now() - 40 * 86_400_000).toISOString(),
+      expires_at: new Date(Date.now() - 10 * 86_400_000).toISOString(),
+      note: `test ${RUN_ID}`,
+    });
+
     const { data: prev, error: readErr } = await admin
       .from("paywall_settings")
-      .select("free_save_limit, free_drill_per_day, free_reveals_per_day, projection_trial_days")
+      .select("free_save_limit, free_drill_per_day, free_reveals_per_day, projection_trial_days, practice_trial_after_days")
       .single();
     expect(readErr).toBeNull();
     saved = prev;
     const { error: setErr } = await admin
       .from("paywall_settings")
-      .update({ free_save_limit: 2, free_drill_per_day: 15, free_reveals_per_day: 50, projection_trial_days: 7 })
+      .update({
+        free_save_limit: 2,
+        free_drill_per_day: 15,
+        free_reveals_per_day: 50,
+        projection_trial_days: 7,
+        practice_trial_after_days: 3,
+      })
       .eq("id", true);
     expect(setErr).toBeNull();
   });
@@ -364,6 +383,167 @@ describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)"
       });
       const { error } = await anonClient.rpc("claim_reveal", { p_question_id: questionIds[0], p_surface: "bank" });
       expect(error).not.toBeNull();
+    });
+  });
+
+  /**
+   * The 7-day Practice Pass trial (migration 0273). claim_reveal records every
+   * day a student is refused at the limit; on the 3rd such day (setting
+   * practice_trial_after_days) the refusal carries an offer, on at most 3 days
+   * at the limit, and never to a student who has ever held a pass. Nothing is
+   * granted until activate_practice_trial, and only on a day the offer showed.
+   */
+  describe("the 7-day Practice Pass trial (0273)", () => {
+    type Claim = {
+      allowed: boolean;
+      reason: string;
+      trialOffer: { days: number } | null;
+      trialEnded: { endedAt: string; answered: number } | null;
+    };
+    const claim = async (role: Role, questionId: string, surface = "bank") => {
+      const { data, error } = await clients[role].rpc("claim_reveal", { p_question_id: questionId, p_surface: surface });
+      expect(error).toBeNull();
+      return data as Claim;
+    };
+    const day = (back: number) => istDayKey(new Date(Date.now() - back * 86_400_000));
+    /** Today's 50 free answers, used up. */
+    const fillToday = async (role: Role) => {
+      const rows = Array.from({ length: 50 }, () => ({
+        user_id: ids[role],
+        ist_day: day(0),
+        question_id: randomUUID(),
+        surface: "bank",
+        counts: true,
+      }));
+      expect((await admin.from("daily_reveals").insert(rows)).error).toBeNull();
+    };
+    const limitDays = async (role: Role, ...back: number[]) => {
+      const rows = back.map((b) => ({ user_id: ids[role], ist_day: day(b) }));
+      expect((await admin.from("reveal_limit_days").insert(rows)).error).toBeNull();
+    };
+    const offerDays = async (role: Role) => {
+      const { data } = await admin.from("practice_trial_offers").select("ist_day").eq("user_id", ids[role]);
+      return (data ?? []).map((r) => r.ist_day as string).sort();
+    };
+    const activate = async (role: Role) => {
+      const { data, error } = await clients[role].rpc("activate_practice_trial");
+      expect(error).toBeNull();
+      return data as { ok: boolean; expiresAt?: string; reason?: string };
+    };
+
+    it("offers nothing on a student's 2nd day at the limit, and records the day", async () => {
+      await limitDays("trial", 5);
+      await fillToday("trial");
+      expect(await claim("trial", questionIds[0])).toMatchObject({ allowed: false, reason: "limit", trialOffer: null });
+      const { data } = await admin.from("reveal_limit_days").select("ist_day").eq("user_id", ids.trial);
+      expect((data ?? []).map((r) => r.ist_day).sort()).toEqual([day(5), day(0)].sort());
+      expect(await offerDays("trial")).toEqual([]);
+    });
+
+    it("offers the trial on the 3rd day at the limit, without granting anything", async () => {
+      await limitDays("trial", 3);
+      expect(await claim("trial", questionIds[0])).toMatchObject({ allowed: false, reason: "limit", trialOffer: { days: 7 } });
+      // A second refused tap the same day is the same offer day.
+      expect(await claim("trial", questionIds[1])).toMatchObject({ trialOffer: { days: 7 } });
+      expect(await offerDays("trial")).toEqual([day(0)]);
+      const { data } = await admin.from("entitlements").select("id").eq("user_id", ids.trial);
+      expect(data ?? []).toEqual([]);
+    });
+
+    it("activates a 7-day Practice Pass from the tap, once", async () => {
+      const before = Date.now();
+      const first = await activate("trial");
+      expect(first.ok).toBe(true);
+      const ends = Date.parse(first.expiresAt!);
+      expect(ends).toBeGreaterThanOrEqual(before + 7 * 86_400_000 - 60_000);
+      expect(ends).toBeLessThanOrEqual(Date.now() + 7 * 86_400_000 + 60_000);
+      // A double tap is the same pass.
+      expect((await activate("trial")).expiresAt).toBe(first.expiresAt);
+      const { data } = await admin.from("entitlements").select("scope, source, status, amount_paise").eq("user_id", ids.trial);
+      expect(data).toEqual([{ scope: "practice", source: "trial", status: "active", amount_paise: null }]);
+      // The pass lifts the limit at once.
+      expect(await claim("trial", questionIds[2])).toMatchObject({ allowed: true, reason: "pass" });
+    });
+
+    it("refuses Activate on a day the offer did not show", async () => {
+      expect(await activate("vtrial")).toMatchObject({ ok: false });
+      const { data } = await admin.from("entitlements").select("id").eq("user_id", ids.vtrial);
+      expect(data ?? []).toEqual([]);
+    });
+
+    it("records a day at the limit on V but shows the offer only on a page", async () => {
+      await limitDays("vtrial", 4, 2);
+      await fillToday("vtrial");
+      expect(await claim("vtrial", questionIds[0], "v")).toMatchObject({ allowed: false, reason: "limit", trialOffer: null });
+      expect(await offerDays("vtrial")).toEqual([]);
+      const { data } = await admin.from("reveal_limit_days").select("ist_day").eq("user_id", ids.vtrial);
+      expect((data ?? []).length).toBe(3);
+    });
+
+    it("shows the offer on 3 days at the limit at most, then never", async () => {
+      await limitDays("offered", 9, 8, 7);
+      const past = [9, 8, 7].map((b) => ({ user_id: ids.offered, ist_day: day(b) }));
+      expect((await admin.from("practice_trial_offers").insert(past)).error).toBeNull();
+      await fillToday("offered");
+      expect(await claim("offered", questionIds[0])).toMatchObject({ reason: "limit", trialOffer: null });
+      expect((await offerDays("offered")).length).toBe(3);
+      expect(await activate("offered")).toMatchObject({ ok: false });
+    });
+
+    it("never offers it to a student who once held a pass", async () => {
+      await limitDays("lapsed", 6, 5, 4);
+      await fillToday("lapsed");
+      expect(await claim("lapsed", questionIds[0])).toMatchObject({ reason: "limit", trialOffer: null });
+    });
+
+    it("puts the ended trial and its answers on the wall once it is over", async () => {
+      const granted = new Date(Date.now() - 8 * 86_400_000).toISOString();
+      const ended = new Date(Date.now() - 86_400_000).toISOString();
+      expect(
+        (await admin.from("entitlements").update({ granted_at: granted, expires_at: ended }).eq("user_id", ids.trial).eq("source", "trial"))
+          .error
+      ).toBeNull();
+      // Two answers inside the trial, one before it.
+      const at = (msAgo: number) => new Date(Date.now() - msAgo).toISOString();
+      const rows = [at(3 * 86_400_000), at(2 * 86_400_000), at(9 * 86_400_000)].map((created_at, i) => ({
+        user_id: ids.trial,
+        kind: "question_practiced",
+        ref_id: questionIds[i],
+        ref_kind: "question",
+        created_at,
+        metadata: { surface: "bank" },
+      }));
+      expect((await admin.from("user_activity").insert(rows)).error).toBeNull();
+      const r = await claim("trial", questionIds[3]);
+      expect(r).toMatchObject({ allowed: false, reason: "limit", trialOffer: null });
+      expect(r.trialEnded?.answered).toBe(2);
+      expect(Date.parse(r.trialEnded!.endedAt)).toBe(Date.parse(ended));
+      // Never a second trial, and an ended one is not "activated" again.
+      expect(await activate("trial")).toMatchObject({ ok: false });
+      const { data } = await admin.from("entitlements").select("id").eq("user_id", ids.trial);
+      expect((data ?? []).length).toBe(1);
+    });
+
+    it("lets a student read their own trial rows but never write them", async () => {
+      const own = await clients.trial.from("practice_trial_offers").select("ist_day");
+      expect((own.data ?? []).length).toBe(1);
+      const w1 = await clients.trial.from("practice_trial_offers").insert({ user_id: ids.trial, ist_day: day(1) });
+      expect(w1.error).not.toBeNull();
+      const w2 = await clients.trial.from("reveal_limit_days").insert({ user_id: ids.trial, ist_day: day(1) });
+      expect(w2.error).not.toBeNull();
+      const others = await clients.student.from("practice_trial_offers").select("ist_day").eq("user_id", ids.trial);
+      expect(others.data ?? []).toEqual([]);
+    });
+
+    it("offers nothing while the setting is off", async () => {
+      expect((await admin.from("paywall_settings").update({ practice_trial_after_days: null }).eq("id", true)).error).toBeNull();
+      try {
+        // vtrial has 3 days at the limit and has never been offered on a page.
+        expect(await claim("vtrial", questionIds[1])).toMatchObject({ reason: "limit", trialOffer: null });
+        expect(await offerDays("vtrial")).toEqual([]);
+      } finally {
+        await admin.from("paywall_settings").update({ practice_trial_after_days: 3 }).eq("id", true);
+      }
     });
   });
 

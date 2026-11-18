@@ -159,6 +159,8 @@ export default function QuestionCard({
   // migration 0228); a second tap meanwhile does nothing.
   const [revealPending, setRevealPending] = useState(false);
   const pendingRef = useRef(false);
+  // The tap the limit refused, re-run once the 7-day pass is activated (0273).
+  const retryRef = useRef<(() => void) | null>(null);
   async function tryReveal(chose?: OptionLabel): Promise<boolean> {
     if (pendingRef.current) return false;
     // The page reads the key by the SAME rule the server grades by, for the
@@ -189,6 +191,7 @@ export default function QuestionCard({
     // Not for a cancelled question: no option is right, so there is no verdict
     // to record (the server refuses it too; this keeps the request honest).
     const first = picked === null;
+    retryRef.current = () => void pickOption(label);
     if (!(await tryReveal(cancelled ? undefined : label))) return;
     setPicked(label);
     // A wrong FIRST pick opens the solution at once (lib/questions/autoOpen).
@@ -211,7 +214,9 @@ export default function QuestionCard({
     setTicks((t) => (t.includes(label) ? t.filter((l) => l !== label) : [...t, label].sort()));
   }
   async function checkMsq() {
-    if (ticks.length === 0 || !(await tryReveal())) return;
+    if (ticks.length === 0) return;
+    retryRef.current = () => void checkMsq();
+    if (!(await tryReveal())) return;
     setMsqChecked(true);
     const right = msqVerdict(ticks, correctLabels).kind === "all";
     if (!right && !showSolution && question.solution && !cancelled) openSolution();
@@ -265,6 +270,7 @@ export default function QuestionCard({
       setShowSolution(false);
       return;
     }
+    retryRef.current = () => void toggleSolution();
     if (await tryReveal()) openSolution();
   }
   function openSolution() {
@@ -657,7 +663,7 @@ export default function QuestionCard({
             {revealBlocked &&
               !revealed &&
               (meter.signedIn ? (
-                <RevealDailyPrompt key={blockedTaps} surface={surface} />
+                <RevealDailyPrompt key={blockedTaps} surface={surface} onUnlocked={() => retryRef.current?.()} />
               ) : (
                 <RevealSignInPrompt key={blockedTaps} surface={surface} />
               ))}

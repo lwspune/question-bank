@@ -17,6 +17,7 @@ const REST = {
   freeRevealsPerDay: null,
   freeSaveLimit: null,
   projectionTrialDays: null,
+  practiceTrialAfterDays: null,
   mockPapersPerDay: null,
   freePracticeTestsPerDay: null,
   brandWatermark: true,
@@ -79,6 +80,7 @@ describe("nextPaywallSettings: the premium limits", () => {
     freeRevealsPerDay: null,
     freeSaveLimit: null,
     projectionTrialDays: null,
+    practiceTrialAfterDays: null,
     mockPapersPerDay: null,
     freePracticeTestsPerDay: null,
     brandWatermark: true,
@@ -116,6 +118,7 @@ describe("nextPaywallSettings: the premium limits", () => {
     ["reveals", "freeRevealsPerDay", 50],
     ["saves", "freeSaveLimit", 100],
     ["projection", "projectionTrialDays", 7],
+    ["practiceTrial", "practiceTrialAfterDays", 3],
     ["paperDownloads", "mockPapersPerDay", 5],
     ["practiceTests", "freePracticeTestsPerDay", 1],
   ] as const)("%s sets %s and nothing else, with no date", (which, field, n) => {

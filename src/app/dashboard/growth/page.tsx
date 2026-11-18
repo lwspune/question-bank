@@ -89,6 +89,9 @@ import {
   GULF_PRICE_BASELINE_RUPEES_PER_STUDENT,
   GULF_PRICE_MIN_SALES,
   ENEM_STUDENTS_KEEP,
+  PRACTICE_TRIAL_BASELINE_PCT,
+  PRACTICE_TRIAL_KEEP_PCT,
+  PRACTICE_TRIAL_STOP_PCT,
   ENEM_ACTIVE_KEEP,
   ANSWER_LIMIT_COPY_CHECKOUT_BASELINE_PCT,
   ANSWER_LIMIT_COPY_BUY_BASELINE_PCT,
@@ -980,6 +983,15 @@ export default async function GrowthPage() {
             </Link>
             : once {PLAY_PLAYERS_MIN}+ signed-in students have played, keep the header Play button if their study days
             after the first round hold up and a quarter play on 2+ days.
+          </p>
+        );
+      case "practice-trial":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with scripts/billing/practice-trial-readout.sql:
+            keep the 7-day trial if {PRACTICE_TRIAL_KEEP_PCT}%+ of offered students buy a pass within 14 days of it
+            ending ({PRACTICE_TRIAL_BASELINE_PCT}% bought before, with no trial), switch it off at{" "}
+            {PRACTICE_TRIAL_STOP_PCT}% or less.
           </p>
         );
       case "enem-interest":

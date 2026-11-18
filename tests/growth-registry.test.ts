@@ -106,6 +106,7 @@ describe("EXPERIMENTS", () => {
       "play-games",
       "practice-friends",
       "practice-tests",
+      "practice-trial",
       "premium-limits",
       "pyq-wording",
       "referrals",
