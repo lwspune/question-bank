@@ -1291,8 +1291,10 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   // Class 8 child should never share a feed. All FREE ("those papers are free
   // for our users"): passScope "free" here, exams.pass_scope = 'free' in the DB
   // (scripts/milschool/seed-exams.ts). Sources are re-hosted scans of the
-  // original printed booklets (scripts/milschool/, README). Rows commit PRIVATE;
-  // `noPublicContent` comes off with the flip to PUBLIC.
+  // original printed booklets (scripts/milschool/, README). Rows commit PRIVATE
+  // and go PUBLIC by scripts/milschool/publish.ts. Mocks: one per whole AISSEE
+  // and RMS CET paper (scripts/mocks/milschoolSittings.ts); RMS CET Class 6 has
+  // none yet (every paper misses a question) and RIMC none (written papers).
   {
     slug: "aissee-6",
     passScope: "free",
@@ -1307,8 +1309,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     familyStage: "AISSEE",
     familyLabel: "Class 6",
     familyAxis: "Class",
-    noPublicContent: true,
-    hasMocks: false,
+    hasMocks: true,
     pastPaperSolutions: true,
     guidesPath: null,
     notesPath: null,
@@ -1327,8 +1328,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     familyStage: "AISSEE",
     familyLabel: "Class 9",
     familyAxis: "Class",
-    noPublicContent: true,
-    hasMocks: false,
+    hasMocks: true,
     pastPaperSolutions: true,
     guidesPath: null,
     notesPath: null,
@@ -1347,7 +1347,6 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     familyStage: "RMS CET",
     familyLabel: "Class 6",
     familyAxis: "Class",
-    noPublicContent: true,
     hasMocks: false,
     pastPaperSolutions: true,
     guidesPath: null,
@@ -1366,8 +1365,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     familyStage: "RMS CET",
     familyLabel: "Class 9",
     familyAxis: "Class",
-    noPublicContent: true,
-    hasMocks: false,
+    hasMocks: true,
     pastPaperSolutions: true,
     guidesPath: null,
     notesPath: null,
@@ -1387,7 +1385,6 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     familyStage: "RIMC",
     familyLabel: "Class 8",
     familyAxis: "Class",
-    noPublicContent: true,
     hasMocks: false,
     pastPaperSolutions: true,
     guidesPath: null,
