@@ -8,6 +8,7 @@ import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
 import { globalBankLine, type KindCounts } from "@/lib/exam/questionCounts";
 import { getNotesExamGroup } from "@/lib/notes/notesNav";
 import { INTL_ORIGIN, LIVE_INTL_EXAMS } from "@/lib/sites/intl";
+import { INTL_EXAM_ABOUT } from "@/lib/sites/intlExamAbout";
 
 /**
  * intl.pyqvault.com's home (2026-10-30). The middleware serves this page at
@@ -24,14 +25,6 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   alternates: { canonical: `${INTL_ORIGIN}/` },
   openGraph: { title: TITLE, description: DESCRIPTION, url: `${INTL_ORIGIN}/`, siteName: "PYQ Vault Global", type: "website" },
-};
-
-/** What each international exam is, in a sentence, for its card. */
-const ABOUT: Record<string, string> = {
-  imat:
-    "The International Medical Admissions Test for English-taught medicine and dentistry at Italy's public universities: 60 questions in 100 minutes across logic, reading, biology, chemistry, physics and maths.",
-  enem:
-    "Brazil's Exame Nacional do Ensino Médio, the way into most Brazilian universities. Day 2 of every paper from 2021 to 2025, Ciências da Natureza and Matemática: 90 questions in 5 hours, each with a worked solution in Portuguese. Free.",
 };
 
 /**
@@ -112,7 +105,7 @@ function ExamCard({ exam, questions }: { exam: ExamEntry; questions: KindCounts 
       <h2 id={`exam-${exam.slug}`} className="text-xl font-semibold">
         {exam.displayName}
       </h2>
-      {ABOUT[exam.slug] && <p className="mt-2 text-sm text-muted-foreground">{ABOUT[exam.slug]}</p>}
+      {INTL_EXAM_ABOUT[exam.slug] && <p className="mt-2 text-sm text-muted-foreground">{INTL_EXAM_ABOUT[exam.slug]}</p>}
       <ul className="mt-5 grid gap-3 sm:grid-cols-3">
         {actions.map((a) => (
           <li key={a.title}>

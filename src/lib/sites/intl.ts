@@ -44,16 +44,36 @@ export const INTL_EXAMS: readonly ExamEntry[] = EXAM_REGISTRY.filter((e) => e.si
  */
 export const LIVE_INTL_EXAMS: readonly ExamEntry[] = INTL_EXAMS.filter((e) => !e.noPublicContent);
 
+/** A live intl exam's slug, or null for anything else. */
+function liveIntlSlug(slug: string | null | undefined): ExamSlug | null {
+  return LIVE_INTL_EXAMS.find((e) => e.slug === slug)?.slug ?? null;
+}
+
 /**
- * The intl exams to record on a new student's profile at the intl welcome
- * step: the live exam named by the page they are headed to, else every live
- * one. With IMAT and ENEM both live (2026-11-15), recording all of them would
- * count every IMAT student as an ENEM student, and the other way round.
+ * The ONE intl exam to record on a new student's profile at the intl welcome
+ * step (owner, 2026-11-18): the live exam named by the page they are headed
+ * to, else by the page they first landed on (the qb_acq cookie), else the only
+ * live exam when there is one. Otherwise null, and the student picks on
+ * /welcome/exam. Saving every live exam when the page named none counted an
+ * IMAT student as an ENEM student (18 Nov: signed in from a page naming no
+ * exam, after landing on /notes/imat-chemistry).
  */
-export function intlWelcomeTargets(next: string): ExamSlug[] {
-  const named = examFromPath(next);
-  const live = LIVE_INTL_EXAMS.map((e) => e.slug);
-  return named && live.includes(named) ? [named] : live;
+export function intlWelcomeExam(input: { next: string; landing: string | null | undefined }): ExamSlug | null {
+  for (const path of [input.next, input.landing]) {
+    const slug = liveIntlSlug(examFromPath(path));
+    if (slug) return slug;
+  }
+  return LIVE_INTL_EXAMS.length === 1 ? LIVE_INTL_EXAMS[0].slug : null;
+}
+
+/** The exam a student tapped on /welcome/exam, if it is a live intl exam. */
+export function intlPickedExam(raw: unknown): ExamSlug | null {
+  return typeof raw === "string" ? liveIntlSlug(raw) : null;
+}
+
+/** The intl exam picker, sending the student on to `next` once they choose. */
+export function intlExamPickerPath(next: string): string {
+  return `/welcome/exam?next=${encodeURIComponent(next)}`;
 }
 
 function splitHost(host: string | null | undefined): { name: string; port: string } {
@@ -206,6 +226,8 @@ export function intlHostDecision(pathname: string, search: string): HostDecision
   // PYQ Vault's onboarding asks for Indian exams and a mobile number. On intl a
   // handler records the international exams instead and sends the student on.
   if (pathname === "/welcome") return { kind: "rewrite", path: `/intl/welcome${search}` };
+  // When the handler cannot tell the student's exam, they pick it here (2026-11-18).
+  if (pathname === "/welcome/exam") return { kind: "rewrite", path: `/intl/welcome/exam${search}` };
   const index = sectionIndex(pathname);
   if (index) return { kind: "redirect", url: `${index}${search}`, permanent: false };
   return { kind: "redirect", url: `${WWW_ORIGIN}${pathname}${search}`, permanent: true };
