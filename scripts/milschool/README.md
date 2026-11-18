@@ -71,6 +71,16 @@ figure series (AISSEE 2025 Q58: `clean: 200`) and a dotted path (Q61: 225).
 `erase: [[l, t, r, b]]` (fractions of the crop) whitens a reader's pen mark
 inside a figure (AISSEE 2026 Q73). Look at the crop after every change.
 
+Some scanned copies print the booklet's SERIAL NUMBER in grey digits down the
+page (AISSEE Class 6 2026, Class 9 2025 and 2026), and it lands across figures.
+It is grey, not the light-blue watermark `audit:watermark` measures, so no gate
+catches it: look for it on every contact sheet. Fix it in this order: a darker
+`clean` (100-110 cleared the halftone digits of the 2026 copies), then `erase`
+boxes over digits in white space, and only where the digits cross printed
+lines or labels, a redraw (`redraw.py`, every value from the print; Class 9
+2025 Q14, Q36, Q37). Fixed 2026-11-18 on 22 figures; every other paper here
+was checked and has none.
+
 A copy that a reader has marked (ticks, highlighter, working in the margin) is
 still the original print: the transcription brief tells agents to ignore every
 mark, and blind solvers only ever see the transcribed text. Some copies carry a
