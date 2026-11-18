@@ -13,6 +13,11 @@ import { AFTER_CHECKOUT_ONLY, isDeclineReason, type DeclineReason } from "@/lib/
 import { CHAPTER_FIX_FROM } from "@/lib/drill/from";
 import { START_NEXT_FROM } from "@/lib/me/startNext";
 import { levelById } from "@/lib/play/levels";
+import { PUZZLES } from "@/lib/play/data/wordGroups";
+import { LAUNCH_LEVELS, SHOTS } from "@/lib/play/launch";
+import { TIMELINE_PACKS } from "@/lib/play/data/timeline";
+import { PLACE_PACKS } from "@/lib/play/data/places";
+import { PLACES_PER_ROUND } from "@/lib/play/pin";
 import type { ActivityEvent } from "./events";
 import { boardChapterPath, isReadingSurface, isSurface, learnLessonPath, readingViewFor, viewDedupeKey } from "./views";
 
@@ -488,7 +493,55 @@ function parseWordGame(raw: Record<string, unknown>): ParseClientEventResult {
     if (!solved && guesses !== 6) return { ok: false, error: "Invalid guesses." };
     return { ok: true, value: { kind: "play_round", metadata: { game: "daily_word", solved, guesses } } };
   }
-  return { ok: false, error: "Unknown game." };
+  return parseArcadeGame(raw);
+}
+
+const isCount = (v: unknown, max: number): v is number => typeof v === "number" && Number.isInteger(v) && v >= 0 && v <= max;
+const TIMELINE_PACK_IDS = new Set(TIMELINE_PACKS.map((p) => p.id));
+const PLACE_PACK_IDS = new Set(PLACE_PACKS.map((p) => p.id));
+
+/**
+ * The arcade games (2026-11-18). Each field is checked against what a real
+ * game can produce; anything else, or an extra field, is refused. Ceilings
+ * are generous (a game has no clock limit) but finite.
+ */
+const ARCADE: Record<string, { keys: string[]; check: (r: Record<string, unknown>) => boolean }> = {
+  number_rain: {
+    keys: ["world", "score", "blasts", "missed"],
+    check: (r) => levelById(r.world) !== undefined && isCount(r.score, 100_000) && isCount(r.blasts, 5000) && isCount(r.missed, 3),
+  },
+  word_groups: {
+    keys: ["puzzle", "won", "mistakes"],
+    check: (r) => isCount(r.puzzle, PUZZLES.length) && (r.puzzle as number) >= 1 && typeof r.won === "boolean" && isCount(r.mistakes, 4),
+  },
+  launch: {
+    keys: ["level", "hit", "shots"],
+    check: (r) =>
+      isCount(r.level, LAUNCH_LEVELS.length) && (r.level as number) >= 1 && typeof r.hit === "boolean" && isCount(r.shots, SHOTS) && (r.shots as number) >= 1,
+  },
+  element_hunt: {
+    keys: ["world", "score", "right", "wrong"],
+    check: (r) => [1, 2, 3].includes(r.world as number) && isCount(r.score, 20_000) && isCount(r.right, 500) && isCount(r.wrong, 200),
+  },
+  timeline: {
+    keys: ["pack", "placed", "won"],
+    check: (r) => typeof r.pack === "string" && TIMELINE_PACK_IDS.has(r.pack) && isCount(r.placed, 100) && typeof r.won === "boolean",
+  },
+  pin_it: {
+    keys: ["pack", "score"],
+    check: (r) => typeof r.pack === "string" && PLACE_PACK_IDS.has(r.pack) && isCount(r.score, PLACES_PER_ROUND * 1000),
+  },
+};
+
+function parseArcadeGame(raw: Record<string, unknown>): ParseClientEventResult {
+  const spec = typeof raw.game === "string" ? ARCADE[raw.game] : undefined;
+  if (!spec) return { ok: false, error: "Unknown game." };
+  const allowed = new Set(["kind", "game", ...spec.keys]);
+  if (Object.keys(raw).some((k) => !allowed.has(k))) return { ok: false, error: "Unknown field on a play round." };
+  if (!spec.check(raw)) return { ok: false, error: "Invalid play round." };
+  const metadata: Record<string, unknown> = { game: raw.game };
+  for (const k of spec.keys) metadata[k] = raw[k];
+  return { ok: true, value: { kind: "play_round", metadata } };
 }
 
 function parsePlayRound(raw: Record<string, unknown>): ParseClientEventResult {

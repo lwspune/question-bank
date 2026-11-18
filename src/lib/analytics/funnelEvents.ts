@@ -245,18 +245,14 @@ export const FUNNEL_EVENTS = [
    */
   "play_link_click",
   /**
-   * A /play round reached its 60 seconds, signed in or not; props: level,
-   * cleared, signedIn. Signed-out rounds leave no other trace (signed-in ones
-   * are also user_activity play_round, migration 0267).
+   * A /play game finished, signed in or not (components/play/report); props:
+   * game (number_rain | word_groups | daily_word | launch | element_hunt |
+   * timeline | pin_it since 2026-11-18), signedIn, and a score or result.
+   * Before 2026-11-18: level + cleared for the speed game, and Word Builder and
+   * Daily Word sent word_game_end. Signed-in ones are also user_activity
+   * play_round (migration 0267).
    */
   "play_round_end",
-  /**
-   * An English word game finished (2026-11-17), signed in or not; props: game
-   * (word_builder | daily_word), signedIn, and correct + wrong (a Word Builder
-   * round's first tries) or solved + guesses (a Daily Word). Signed-in ones are
-   * also user_activity play_round with a game field.
-   */
-  "word_game_end",
   /**
    * A Google sign-in on /login or /signup where the server could not see the
    * new session at first (2026-11-16, lib/auth/oneTap nextStepAfterSessionCheck);

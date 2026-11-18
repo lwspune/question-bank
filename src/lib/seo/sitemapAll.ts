@@ -5,6 +5,7 @@ import type { MetadataRoute } from "next";
 import { ROUTES } from "@/app/guide/nda-maths/_data/nda-maths";
 import { DETAIL_SLUGS } from "@/app/guide/nda-maths/_data/principle-details";
 import { ROUTES as ENGLISH_ROUTES } from "@/app/guide/nda-english/_data/nda-english";
+import { PLAY_SUBJECTS } from "@/lib/play/hub";
 import { PLAYBOOK_SLUGS } from "@/app/guide/nda-english/_data/playbooks";
 import { ROUTES as PHYSICS_ROUTES } from "@/app/guide/nda-physics/_data/nda-physics";
 import { PLAYBOOK_SLUGS as PHYSICS_PLAYBOOK_SLUGS } from "@/app/guide/nda-physics/_data/playbooks";
@@ -869,9 +870,10 @@ export async function allSitemapEntries(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly" as const,
       priority: 0.8,
     })),
-    // The /play games hub and its games (2026-11-16; a hub since 2026-11-17),
-    // open to everyone, signed in or not.
-    ...["/play", "/play/maths", "/play/word-builder", "/play/daily-word"].map((path) => ({
+    // The /play games hub and its games (2026-11-16; a hub since 2026-11-17,
+    // seven arcade games since 2026-11-18), open to everyone, signed in or not.
+    // Derived from the hub, so a new game is listed without touching this.
+    ...["/play", ...PLAY_SUBJECTS.flatMap((s) => s.games.map((g) => g.href))].map((path) => ({
       url: `${SITE_URL}${path}`,
       lastModified: buildDate,
       changeFrequency: "monthly" as const,

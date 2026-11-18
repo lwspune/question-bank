@@ -11,19 +11,22 @@ const DRILL = /^\/drill(\/|$)/;
 // The sign-up step: V covered the exam chips on a phone, and a two-question
 // form is no place for a second voice (2026-10-05).
 const WELCOME = /^\/welcome\/?$/;
+// A /play game (2026-11-18): V covered Number Rain's delete key and sat over
+// the other games' controls. The /play hub keeps V.
+const PLAY_GAME = /^\/play\/[^/]+\/?$/;
 
 export type CartState = { hydrated: boolean; count: number };
 
 export type VPlacement = {
-  /** Focus surfaces: a timed exam, /drill whose bottom bar V would cover, and
-   *  the /welcome sign-up step. */
+  /** Focus surfaces: a timed exam, /drill whose bottom bar V would cover, the
+   *  /welcome sign-up step, and a /play game. */
   hidden: boolean;
   /** /browse's CartPill owns the same corner; V sits above it while it shows. */
   aboveCart: boolean;
 };
 
 export function vPlacement(pathname: string, cart: CartState): VPlacement {
-  const hidden = MOCK_RUNNER.test(pathname) || DRILL.test(pathname) || WELCOME.test(pathname);
+  const hidden = MOCK_RUNNER.test(pathname) || DRILL.test(pathname) || WELCOME.test(pathname) || PLAY_GAME.test(pathname);
   // Mirrors CartPill's own render condition (`!cart.hydrated || count === 0`
   // renders nothing), and CartPill is only mounted on /browse.
   const aboveCart = pathname === "/browse" && cart.hydrated && cart.count > 0;
