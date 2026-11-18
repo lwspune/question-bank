@@ -1,12 +1,14 @@
 /**
- * Build the English word games' word file from the bank (2026-11-17).
+ * Build Daily Word's word file from the bank (2026-11-17).
  *
- *   npm run play:words            # rewrite public/data/play-words.json + play-daily-words.json
+ *   npm run play:words            # rewrite public/data/play-daily-words.json
  *   npm run play:words -- --check # exit 1 if the committed file is stale
  *
  * Reads PUBLIC past-year MCQs in every synonym/antonym subtopic (read-only,
  * service role), keeps the ones with one marked word, one right answer and an
- * explanation (lib/play/words/extract), one entry per word. Cancelled and
+ * explanation (lib/play/words/extract), one entry per word, then keeps the
+ * ones that fit the Daily Word. The full list (play-words.json) went with Word
+ * Builder on 2026-11-18: nothing read it. Cancelled and
  * publish-blocked questions are left out: their keys are not to be trusted.
  * Committed rather than read at request time so the games cost the database
  * nothing and the Daily Word stays the same all day. Re-run after an English
@@ -21,7 +23,6 @@ import { isDailyCandidate } from "../../src/lib/play/words/daily";
 const local = path.join(process.cwd(), ".env.local");
 if (fs.existsSync(local)) require("dotenv").config({ path: local, override: true });
 
-const OUT = path.join(process.cwd(), "public", "data", "play-words.json");
 const OUT_DAILY = path.join(process.cwd(), "public", "data", "play-daily-words.json");
 const PAGE = 1000;
 const CHECK = process.argv.includes("--check");
@@ -91,21 +92,16 @@ async function main() {
     return e ? [e] : [];
   });
   const words = dedupeWords(entries);
-  const body = JSON.stringify({ v: 1, words }) + "\n";
 
   const byGroup = words.reduce<Record<string, number>>((acc, w) => ((acc[w.group] = (acc[w.group] ?? 0) + 1), acc), {});
   console.log(
     `read ${raw.length} questions, ${entries.length} playable, ${words.length} words ` +
       `(${Object.entries(byGroup).map(([g, n]) => `${g} ${n}`).join(", ")}), ` +
-      `${words.filter(isDailyCandidate).length} fit the Daily Word, ${(Buffer.byteLength(body) / 1024).toFixed(0)} KB`
+      `${words.filter(isDailyCandidate).length} fit the Daily Word`
   );
 
-  // Daily Word needs only its own words: a separate, much smaller file.
   const dailyBody = JSON.stringify({ v: 1, words: words.filter(isDailyCandidate) }) + "\n";
-  const files: [string, string][] = [
-    [OUT, body],
-    [OUT_DAILY, dailyBody],
-  ];
+  const files: [string, string][] = [[OUT_DAILY, dailyBody]];
 
   if (CHECK) {
     const stale = files.filter(([f, b]) => !fs.existsSync(f) || fs.readFileSync(f, "utf8") !== b);
@@ -116,7 +112,7 @@ async function main() {
     console.log("word files are current");
     return;
   }
-  fs.mkdirSync(path.dirname(OUT), { recursive: true });
+  fs.mkdirSync(path.dirname(OUT_DAILY), { recursive: true });
   for (const [f, b] of files) {
     fs.writeFileSync(f, b);
     console.log(`wrote ${path.relative(process.cwd(), f)} (${(Buffer.byteLength(b) / 1024).toFixed(0)} KB)`);

@@ -4,11 +4,10 @@ import { useEffect, useState } from "react";
 import { parseWordFile, type WordEntry } from "@/lib/play/words/extract";
 
 /**
- * The English games' word files (built by `npm run play:words`, served from
+ * Daily Word's word file (built by `npm run play:words`, served from
  * public/data), fetched once per page view and shared by every component that
- * asks for the same file.
+ * asks for it.
  */
-export const WORDS_URL = "/data/play-words.json";
 export const DAILY_WORDS_URL = "/data/play-daily-words.json";
 
 type State = { status: "loading" } | { status: "ready"; words: WordEntry[] } | { status: "error" };
