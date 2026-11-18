@@ -46,8 +46,13 @@ describe.skipIf(!HAS_ENV)("GET /api/homework/group", () => {
     const sizes = new Map<string, number>();
     for (const r of rows) sizes.set(key(r), (sizes.get(key(r)) ?? 0) + 1);
     const biggest = [...sizes].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]?.[0];
-    qs = rows.filter((r) => key(r) === biggest).slice(0, 3);
-    if (qs.length < 3) throw new Error("need 3 PUBLIC questions of one exam and subject in the test project");
+    // From the END of the pool: tests/repeat-line.integration.test.ts takes the
+    // first 4 of the same pool and also groups them, and CI runs the two files at
+    // once. Sharing a question let the repeat line read this plan's link instead
+    // of its own (CI failed on every push 11-15 to 11-18). 7 keeps the two apart.
+    const pool = rows.filter((r) => key(r) === biggest);
+    if (pool.length < 7) throw new Error("need 7 PUBLIC questions of one exam and subject in the test project");
+    qs = pool.slice(-3);
 
     const { error } = await admin.from("homework_plans").insert({
       id: planId,
