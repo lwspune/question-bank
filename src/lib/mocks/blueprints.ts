@@ -1321,6 +1321,98 @@ export function uceedPaper(year: number): MockPaperBlueprint {
   };
 }
 
+/**
+ * AISSEE (Sainik Schools, NTA), as printed on the booklet covers: no negative
+ * marking, and Mathematics worth more than every other section.
+ *   Class 6: Language 25 x 2, Mathematics 50 x 3, Intelligence 25 x 2,
+ *            General Knowledge 25 x 2 = 125 questions, 300 marks, 150 min.
+ *   Class 9: Mathematics 50 x 4, Intelligence, English, General Science,
+ *            Social Science 25 x 2 = 150 questions, 400 marks, 180 min.
+ * NTA moved the sections around between years (Class 6 2020 opens with
+ * Mathematics, 2022 on with the Language), so a mock takes its own paper's
+ * order (scripts/mocks/milschoolSittings.ts SECTION_ORDER) and the code stays
+ * one per class, the uceedPaper way. The Language section is the candidate's
+ * chosen language; ours is English.
+ */
+const AISSEE_SECTIONS: Record<6 | 9, Record<string, { label: string; count: number; correct: number }>> = {
+  6: {
+    English: { label: "Language (English)", count: 25, correct: 2 },
+    Mathematics: { label: "Mathematics", count: 50, correct: 3 },
+    Intelligence: { label: "Intelligence", count: 25, correct: 2 },
+    "General Knowledge": { label: "General Knowledge", count: 25, correct: 2 },
+  },
+  9: {
+    Mathematics: { label: "Mathematics", count: 50, correct: 4 },
+    Intelligence: { label: "Intelligence", count: 25, correct: 2 },
+    English: { label: "English", count: 25, correct: 2 },
+    "General Science": { label: "General Science", count: 25, correct: 2 },
+    "Social Science": { label: "Social Science", count: 25, correct: 2 },
+  },
+};
+
+export function aisseePaper(cls: 6 | 9, order: readonly string[]): MockPaperBlueprint {
+  const table = AISSEE_SECTIONS[cls];
+  const wanted = Object.keys(table).sort().join("|");
+  if ([...order].sort().join("|") !== wanted) {
+    throw new Error(`AISSEE Class ${cls} order must name each of ${wanted} once, got ${order.join(", ")}`);
+  }
+  return {
+    code: "paper",
+    examName: `AISSEE Class ${cls}`,
+    examSlug: `aissee-${cls}`,
+    paperLabel: `Class ${cls} entrance paper`,
+    durationSecs: (cls === 6 ? 150 : 180) * 60,
+    marking: { correct: 2, wrong: 0 },
+    sections: order.map((subject) => {
+      const s = table[subject];
+      return {
+        key: subject.toLowerCase().replace(/\s+/g, "-"),
+        label: s.label,
+        subjects: [subject],
+        count: s.count,
+        ...(s.correct !== 2 ? { marking: { correct: s.correct, wrong: 0 } } : {}),
+      };
+    }),
+  };
+}
+
+/**
+ * RMS CET (Rashtriya Military Schools, AE-2), as the 2023 cover prints it: 200
+ * one-mark questions in 2 h 30 min, "There is no negative marking". Class 6 is
+ * English, General Knowledge, Intelligence, Mathematics, 50 each; Class 9 is
+ * Part I English 50, Hindi 20 (a Hindi language test, its rows in Hindi),
+ * Social Science 30, and Part II Mathematics 50, Science 50.
+ */
+const rmsPaper = (cls: 6 | 9, sections: [string, number][]): MockPaperBlueprint => ({
+  code: "paper",
+  examName: `RMS CET Class ${cls}`,
+  examSlug: `rms-cet-${cls}`,
+  paperLabel: `Class ${cls} entrance paper`,
+  durationSecs: 150 * 60,
+  marking: { correct: 1, wrong: 0 },
+  sections: sections.map(([subject, count], i) => ({
+    key: subject.toLowerCase().replace(/\s+/g, "-"),
+    label: cls === 9 ? `Section ${["I", "II", "III", "IV", "V"][i]}: ${subject}` : subject,
+    subjects: [subject],
+    count,
+  })),
+});
+
+export const RMS_CET_6_PAPER = rmsPaper(6, [
+  ["English", 50],
+  ["General Knowledge", 50],
+  ["Intelligence", 50],
+  ["Mathematics", 50],
+]);
+
+export const RMS_CET_9_PAPER = rmsPaper(9, [
+  ["English", 50],
+  ["Hindi", 20],
+  ["Social Science", 30],
+  ["Mathematics", 50],
+  ["Science", 50],
+]);
+
 /** The NDA blueprints the build script's year+month discovery loop iterates. */
 export const MOCK_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   NDA_MATHS_PAPER,
@@ -1382,6 +1474,11 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   UP_12_CHAPTER_MCQ_PAPER,
   // One code for every year; the label is the same, the build picks the year's blueprint.
   uceedPaper(2026),
+  // The same per class: the build gives each paper its printed section order.
+  aisseePaper(6, ["English", "Mathematics", "Intelligence", "General Knowledge"]),
+  aisseePaper(9, ["Mathematics", "Intelligence", "English", "General Science", "Social Science"]),
+  RMS_CET_6_PAPER,
+  RMS_CET_9_PAPER,
 ];
 
 /** Sum of the DECLARED section counts (0 when a blueprint declares none). */
