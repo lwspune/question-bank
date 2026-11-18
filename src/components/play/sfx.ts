@@ -19,20 +19,20 @@ let ctx: AudioContext | null = null;
 function tone(freq: number, dur: number, type: OscillatorType = "sine", vol = 0.15, slide?: number) {
   if (typeof window === "undefined" || isMuted()) return;
   try {
-    const w: Window & { webkitAudioContext?: typeof AudioContext } = window;
+    const w: typeof globalThis & { webkitAudioContext?: typeof AudioContext } = window;
     const AC = w.AudioContext ?? w.webkitAudioContext;
     if (!AC) return;
-    ctx = ctx ?? new AC();
-    const t = ctx.currentTime;
-    const o = ctx.createOscillator();
-    const g = ctx.createGain();
+    const ac = (ctx = ctx ?? new AC());
+    const t = ac.currentTime;
+    const o = ac.createOscillator();
+    const g = ac.createGain();
     o.type = type;
     o.frequency.setValueAtTime(freq, t);
     if (slide) o.frequency.exponentialRampToValueAtTime(slide, t + dur);
     g.gain.setValueAtTime(vol, t);
     g.gain.exponentialRampToValueAtTime(0.001, t + dur);
     o.connect(g);
-    g.connect(ctx.destination);
+    g.connect(ac.destination);
     o.start(t);
     o.stop(t + dur);
   } catch {
