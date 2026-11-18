@@ -17,6 +17,7 @@ const SEEDED_BUT_RESET: Record<string, string> = {
   daily_reveals: "0228 backfills the day's answers of existing students, whose auth users testdb:reset deletes",
   mock_question_papers: "0238 backfills it from mock_tests, which testdb:reset empties too; its trigger refills it as mocks are written",
   student_profiles: "0258 backfills tutor-interest answers of existing students, whose auth users testdb:reset deletes",
+  reveal_limit_days: "0273 backfills existing students' days at the answer limit, whose auth users testdb:reset deletes",
 };
 
 function seededTables(): Map<string, string[]> {
