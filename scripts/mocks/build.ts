@@ -43,6 +43,7 @@
  *   npx tsx scripts/mocks/build.ts --paper=capf            # UPSC CAPF (AC) Paper I, one per year (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=ras             # RPSC RAS Prelims, one per year (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=enem            # ENEM Day 2, one per committed year (opt-in)
+ *   npx tsx scripts/mocks/build.ts --paper=milschool       # AISSEE + RMS CET, one per whole paper (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=clat            # CLAT UG, one per committed year (opt-in)
  *   npx tsx scripts/mocks/build.ts --only=2026-jan-21-s1    # one JEE shift
  *   npx tsx scripts/mocks/build.ts --only=2024-Sep --apply --publish
@@ -135,6 +136,7 @@ import { rrbNtpcSittings } from "./rrbNtpcSittings";
 import { capfSittings } from "./capfSittings";
 import { rasSittings } from "./rasSittings";
 import { enemSittings } from "./enemSittings";
+import { milschoolSittings } from "./milschoolSittings";
 import { CLAT_MOCK_YEARS, clatSittings } from "./clatSittings";
 import { mockTestRow } from "../../src/lib/mocks/row";
 
@@ -861,6 +863,18 @@ async function buildRas(db: SupabaseClient, run: RunState) {
   await buildFromSourceFiles(db, RAS_PRELIMS, rasSittings(), run, "rasSittings.ts");
 }
 
+/**
+ * AISSEE and RMS CET, one mock per whole paper (milschoolSittings.ts). Each
+ * paper has its own blueprint (AISSEE moved its sections between years), so the
+ * shared loop runs once per sitting; a paper missing questions is held.
+ */
+async function buildMilschool(db: SupabaseClient, run: RunState) {
+  for (const s of milschoolSittings()) {
+    if (run.only && s.key !== run.only && s.slug !== run.only) continue;
+    await buildFromSourceFiles(db, s.blueprint, [s], run, "milschoolSittings.ts");
+  }
+}
+
 /** ENEM Day 2, one mock per committed year (enemSittings.ts); cancelled and defective questions ride as grace. */
 async function buildEnem(db: SupabaseClient, run: RunState) {
   await buildFromSourceFiles(db, ENEM_DAY_2, enemSittings(), run, "enemSittings.ts");
@@ -1023,9 +1037,11 @@ async function main() {
   const runRas = paperFilter === "ras";
   // Opt-in: ENEM rows are PRIVATE until the go-public step (scripts/enem/commit.ts).
   const runEnem = paperFilter === "enem";
-  if (paperFilter && !runRas && !runEnem && !runUceed && !runIat && !runUgcNet && !runClat && !runRrbNtpc && !runCpo && !runCapf && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runChsl && !runSpi && !runImat && !runMpscMains) {
+  // Opt-in: AISSEE + RMS CET rows are PRIVATE until the go-public step (scripts/milschool/README.md).
+  const runMilschool = paperFilter === "milschool";
+  if (paperFilter && !runRas && !runEnem && !runMilschool && !runUceed && !runIat && !runUgcNet && !runClat && !runRrbNtpc && !runCpo && !runCapf && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runChsl && !runSpi && !runImat && !runMpscMains) {
     throw new Error(
-      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, ssc-chsl, ssc-cpo, spi, imat, mpsc-mains, uceed, iat, ugc-net, clat, rrb-ntpc, capf, ras, enem)`
+      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, ssc-chsl, ssc-cpo, spi, imat, mpsc-mains, uceed, iat, ugc-net, clat, rrb-ntpc, capf, ras, enem, milschool)`
     );
   }
 
@@ -1107,6 +1123,7 @@ async function main() {
   if (runCapf) await buildCapf(db, run);
   if (runRas) await buildRas(db, run);
   if (runEnem) await buildEnem(db, run);
+  if (runMilschool) await buildMilschool(db, run);
 
   console.log(`\n${apply ? "Upserted" : "Would build"} ${run.built.n} mock(s)${publish ? " (published)" : apply ? " (draft)" : ""}.`);
   if (run.held.n) console.log(`${run.held.n} paper(s) held — cannot reconstruct whole (see ⊘ lines above).`);

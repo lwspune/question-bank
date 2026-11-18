@@ -16,8 +16,17 @@ import type { MockListItem } from "@/lib/mocks/query";
  * exams (Prelims + five Mains); listing them flat buried the rest of the rail.
  */
 describe("mock families", () => {
-  it("collapses MPSC, IPMAT and SSC — each has 2+ mock exams — and nothing else", () => {
-    expect(getMockFamilies().map((f) => f.slug)).toEqual(["ipmat", "mpsc", "ssc"]);
+  it("collapses MPSC, IPMAT, SSC and the military schools — each has 2+ mock exams — and nothing else", () => {
+    expect(getMockFamilies().map((f) => f.slug)).toEqual(["ipmat", "mpsc", "ssc", "sainik-military-schools"]);
+  });
+
+  it("the military schools group by entrance, AISSEE before RMS CET, and RMS CET Class 6 is absent (no mocks)", () => {
+    const fam = getMockFamily("sainik-military-schools")!;
+    expect(fam.name).toBe("Sainik & Military Schools");
+    expect(fam.stages.map((s) => [s.stage, s.members.map((m) => m.slug)])).toEqual([
+      ["AISSEE", ["aissee-6", "aissee-9"]],
+      ["RMS CET", ["rms-cet-9"]],
+    ]);
   });
 
   it("a family slug is a URL segment: dashes for spaces, and the axis added when the name is already an exam's slug", () => {
