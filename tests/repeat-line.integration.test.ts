@@ -42,6 +42,8 @@ describe.skipIf(!HAS_ENV)("loadRepeatLines", () => {
     const sizes = new Map<string, number>();
     for (const r of rows) sizes.set(key(r), (sizes.get(key(r)) ?? 0) + 1);
     const biggest = [...sizes].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]?.[0];
+    // From the START of the pool; tests/homework-group-route.integration.test.ts
+    // groups the last 3 of it, so the two plans never share a question.
     qs = rows.filter((r) => key(r) === biggest).slice(0, 4);
     if (qs.length < 4) throw new Error("need 4 PUBLIC questions of one exam and subject in the test project");
 
