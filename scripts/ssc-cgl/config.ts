@@ -667,6 +667,8 @@ export const HELD: Record<string, number[]> = {
   "chsl-t1-2024-07-10-s1": [72, 75],
 };
 
-export const OUT = join(__dirname, "out"); // gitignored: page images, geometry, reading sheets
+// gitignored: page images, geometry, reading sheets. SSC_CGL_OUT moves it (a
+// session's scratchpad), so a re-extraction never fills the repo's disk.
+export const OUT = process.env.SSC_CGL_OUT || join(__dirname, "out");
 export const TRANSCRIPTS = join(__dirname, "transcripts"); // committed: the source of record
 export const FIGURES = join(__dirname, "figures"); // committed: SSC's own figure images, per shift

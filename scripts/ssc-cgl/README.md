@@ -381,9 +381,43 @@ watermark baked in and PW's logo laid over. CHSL 2026 Tier I has not been held y
 - **20 Sep 2025 beyond Shift 1**: pages 6-38 are a render with no text `Q.No` labels and pages
   39-42 are screenshots.
 
+## Hindi (2026-10-20, Tier I 2025)
+
+A Hindi-medium student asked V for SSC CGL in Hindi. Every non-English question's cell
+holds two images per field, English then Hindi (the English section, PART-D, prints
+English only), so the Hindi is **read** from SSC's own image, never translated. It is
+stored as a translation of the canonical English row (`lang 'hi'`, migrations 0118 +
+0171): hash, key, stats and mocks are untouched, and the site's language switch shows
+English / हिन्दी / Both wherever a row carries it. Solutions stay English (owner's call:
+question and options first, Hindi solutions later if Hindi use shows up).
+
+```sh
+export SSC_CGL_OUT=<scratchpad>/ssc-out                    # keep page images off the repo's disk
+python -P scripts/ssc-cgl/extract.py <dayId> "<day pdf>"   # as in Pipeline (~25 MB a day)
+npx tsx scripts/ssc-cgl/assemble.ts <dayId>
+python -P scripts/ssc-cgl/sheets.py <shiftId> --hindi      # -> $SSC_CGL_OUT/<shiftId>/hi-sheets/batch-*.png
+npx tsx scripts/ssc-cgl/hi-skeleton.ts <shiftId> [first] [last]   # numbering + maths, NO English wording
+# agents: one PART each, HINDI_BRIEF.md -> $SSC_CGL_OUT/<shiftId>/hi-drafts/part-<A|B|C>.txt
+npx tsx scripts/ssc-cgl/hi-check.ts <shiftId> --file=<draft> --partial
+# main session: read every block against the sheet, concatenate into hindi/<shiftId>.txt (committed)
+npx tsx scripts/ssc-cgl/hi-check.ts <shiftId>
+npx tsx scripts/ssc-cgl/hi-commit.ts <shiftId> [--apply]   # DRY RUN by default
+```
+
+- **No English wording reaches the reader**, the Marathi lane's lesson (a reader holding the
+  English drifts into translating it). The skeleton carries only the English row's maths
+  zones and its language-neutral options, so a formula is written alike in both prints.
+- **The checks are the Marathi lane's** `checkMarathiPaper`: structure, Devanagari share of
+  the stem, KaTeX, and the numbers of each question compared between the prints. Its
+  messages say "Marathi"; read "the second print".
+- **The two prints can say different things.** 18 Sep S1 Q50: the English says intra-state,
+  the Hindi अंतर-राज्यीय (inter-state). The Hindi is stored as printed.
+- A repeated question (`repeats.json`) is one row; the first shift written wins, and
+  `hi-commit.ts` refuses to overwrite a row whose Hindi already reads differently.
+
 ## Not built yet
 
 - **Figures for the 2025 render.** The TCS lane attaches figures (above); a 2025 question is
   all pictures, so its figures would need cropping from the render. None was needed so far.
-- **Hindi.** English only. Hindi can come later through the MPSC translation layer
-  (migration 0118) without changing `content_hash`.
+- **Hindi for 2023 and 2024, and Hindi solutions.** The TCS sheets print Hindi too, in a
+  text layer.

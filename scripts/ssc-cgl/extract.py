@@ -145,6 +145,11 @@ def markers_of(page, pno, edge, left=float("-inf"), right=float("inf")):
     return out
 
 
+def out_root():
+    """config.ts OUT: SSC_CGL_OUT when set, else out/ beside this script."""
+    return os.environ.get("SSC_CGL_OUT") or os.path.join(os.path.dirname(os.path.abspath(__file__)), "out")
+
+
 def main():
     if len(sys.argv) < 3:
         sys.exit("usage: extract.py <dayId> <pdfPath> [--pages=FROM-TO]")
@@ -153,7 +158,7 @@ def main():
     # readable Shift 1 on pages 2-5 and, after it, renders this reader cannot use yet.
     span = next((a.split("=", 1)[1] for a in sys.argv[3:] if a.startswith("--pages=")), None)
     first, last = (int(x) for x in span.split("-")) if span else (1, 10**9)
-    out_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "out", day)
+    out_dir = os.path.join(out_root(), day)
     img_dir = os.path.join(out_dir, "img")
     os.makedirs(img_dir, exist_ok=True)
     doc = fitz.open(pdf)
