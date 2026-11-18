@@ -3,7 +3,7 @@ import type { GroupLevel, Puzzle } from "../groups";
 /**
  * Word Groups puzzles (2026-11-18). Each group is four words with one shared
  * meaning, written around words from real SSC, NDA, CDS and MPSC synonym
- * questions (public/data/play-words.json). Near-synonym groups (talkative and
+ * questions (the bank's synonym subtopics). Near-synonym groups (talkative and
  * wordy, shy and withdrawn, frugal and stingy) are never in the same puzzle,
  * so each puzzle has one solution. Two blind solvers checked every puzzle
  * before it shipped (scripts/play/groups-check/). Colour 1 is the easiest
