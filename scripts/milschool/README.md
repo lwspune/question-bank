@@ -131,7 +131,11 @@ npx tsx scripts/milschool/commit.ts <id> [--apply]             # 8. PRIVATE
 
 ## Status (2026-11-17)
 
-All rows PRIVATE; no mocks yet.
+All rows PRIVATE until `npx tsx scripts/milschool/publish.ts --apply` (dry run
+without `--apply`; it refuses unless every paper holds exactly the rows commit.ts
+writes, each with a solution). Then the mocks: `npx tsx scripts/mocks/build.ts
+--paper=milschool --apply --publish`, 11 whole papers (MOCKS.md); the 7 papers
+with a held question stay held, and RIMC gets none.
 
 | Exam | Papers | Rows | Answers |
 |---|---|---|---|
@@ -141,6 +145,5 @@ All rows PRIVATE; no mocks yet.
 
 Held on purpose (config `held`): AISSEE C6 2023/2025 Q1-25 (Hindi language
 section of a Hindi-medium copy, owner); the RMS items in config; RIMC 2020 Dec
-GK Q75 (not printed) and Dec 2018 Maths Q25. Open (SUGGESTIONS.md ledger): the
-scan's printed serial number shows across many AISSEE C6 2026 and C9 2025
-figures.
+GK Q75 (not printed) and Dec 2018 Maths Q25. The scan's printed serial number on 22 AISSEE
+figures was cleared on 2026-11-18 (see the serial-number paragraph above).
