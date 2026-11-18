@@ -34,7 +34,7 @@ export default function UserMenu({
    *  and then the badge and the two lines below render; nothing is shown for
    *  a zero due count, because an empty badge is noise. */
   pulse?: Pulse | null;
-  /** The active exam's Guides link (lib/exam/examNav), for the phone-only Guides entry. */
+  /** The active exam's Guides link (lib/exam/examNav), for the Guides entry (every width since 2026-11-18). */
   guidesHref?: string;
   /** The active exam's Learn course, or the Learn hub (lib/exam/examNav). */
   learnHref?: string;
@@ -137,9 +137,11 @@ export default function UserMenu({
             </Link>
           )}
           {/*
-            Guides, Papers and Books are PHONE-ONLY entries (`sm:hidden`): from sm
+            Papers and Books are PHONE-ONLY entries (`sm:hidden`): from sm
             up they are tabs in PrimaryNav, and duplicating them here would give
-            two answers to "where do I go?". Below sm they are deliberately not
+            two answers to "where do I go?". Guides is here at EVERY width since
+            2026-11-18 (owner): its tab left PrimaryNav so the tabs fit beside
+            Ebooks, Classes and Play. Below sm they are deliberately not
             in the tab bar — that bar is a fixed five for every visitor, and
             Papers/Books are desktop work for ten staff against three hundred
             students. See lib/nav/mobileTabs.ts.
@@ -156,7 +158,7 @@ export default function UserMenu({
           */}
           <Link
             href={guidesHref}
-            className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none sm:hidden"
+            className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"
           >
             <BookOpen className="h-4 w-4" aria-hidden />
             Guides

@@ -89,6 +89,15 @@ describe("parseShotArgs", () => {
     expect(VIEWPORTS.narrow).toEqual({ width: 360, height: 780, scale: 2, mobile: true });
   });
 
+  it("--tablet and --laptop add 820 and 1024 px, the widths between phone and desktop (2026-11-18)", () => {
+    // The header overlapped only between these: a ~1000 px smart board showed
+    // it, while every sheet captured 390 and 1440 px and looked fine.
+    expect(parseShotArgs(["--pages=/", "--tablet", "--laptop"]).viewports).toEqual(["phone", "tablet", "laptop", "desktop"]);
+    expect(parseShotArgs(["--pages=/", "--narrow", "--laptop", "--desktop"]).viewports).toEqual(["narrow", "laptop", "desktop"]);
+    expect(VIEWPORTS.tablet).toEqual({ width: 820, height: 1180, scale: 1, mobile: false });
+    expect(VIEWPORTS.laptop).toEqual({ width: 1024, height: 768, scale: 1, mobile: false });
+  });
+
   it("undoes Git Bash's path conversion and accepts paths without a slash", () => {
     // Git Bash rewrites an argument that starts with "/" into a Windows path,
     // so "--pages=/" arrives as "--pages=C:/Program Files/Git/". Found on the

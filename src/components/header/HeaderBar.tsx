@@ -116,8 +116,9 @@ export default function HeaderBar({
             {/* On a phone (below 640 px) the words give way so Ebooks, Classes and
                 Play fit beside the theme toggle and Sign in, down to 360 px
                 (owner, 2026-11-16; was below 360 px only). The logo stays and the
-                link keeps its name for screen readers. */}
-            <span className="max-sm:sr-only">PYQ Vault</span>
+                link keeps its name for screen readers. Below lg since 2026-11-18:
+                at 820 px the study tabs and the avatar did not fit beside them. */}
+            <span className="max-lg:sr-only">PYQ Vault</span>
             {/* The Premium Pass mark (2026-10-21). Drawn only once the session
                 lands, so the cached HTML stays the same for everyone. Part of
                 the brand link, not a link of its own; /account shows the pass. */}
@@ -131,7 +132,6 @@ export default function HeaderBar({
 
           <PrimaryNav
             bankHref={nav.bankHref}
-            guidesHref={nav.guidesHref}
             notesHref={nav.notesHref}
             mockHref={nav.mockHref}
             boardHref={nav.boardHref}
@@ -223,11 +223,12 @@ function StoreLink() {
       aria-current={active ? "page" : undefined}
       className={headerButtonClass(active)}
     >
-      <ShoppingBag className="hidden h-4 w-4 shrink-0 sm:block" aria-hidden />
+      <ShoppingBag className="hidden h-4 w-4 shrink-0 lg:block" aria-hidden />
       {/* Words, not icons, on a phone: students did not know what the icons
           meant (owner, 2026-11-02). Icon AND word overflowed a 390 px screen
           and cut "Sign in" off, so the icon shows from sm up; measured to fit
-          at 360 px. */}
+          at 360 px. From lg up since 2026-11-18, for the same reason at
+          tablet widths, where the study tabs share the row. */}
       <span>Ebooks</span>
     </Link>
   );
@@ -248,7 +249,7 @@ function ClassesLink() {
       aria-current={active ? "page" : undefined}
       className={headerButtonClass(active)}
     >
-      <GraduationCap className="hidden h-4 w-4 shrink-0 sm:block" aria-hidden />
+      <GraduationCap className="hidden h-4 w-4 shrink-0 lg:block" aria-hidden />
       <span>Classes</span>
     </Link>
   );
@@ -270,7 +271,7 @@ function PlayLink() {
       aria-label="Play: learning games"
       className={headerButtonClass(active)}
     >
-      <Gamepad2 className="hidden h-4 w-4 shrink-0 sm:block" aria-hidden />
+      <Gamepad2 className="hidden h-4 w-4 shrink-0 lg:block" aria-hidden />
       <span>Play</span>
     </Link>
   );
