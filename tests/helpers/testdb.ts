@@ -97,6 +97,18 @@ export type TestDbVerdict =
   | { kind: "forbidden"; reason: string }; // anything else — refuse to run
 
 /**
+ * May the global teardown DELETE rows in the project at `url`? Only in an
+ * allow-listed test project. No flag opens it: PROD_CONTRACT and
+ * TESTDB_TRANSITION allow reading production, and a sweep is never a read.
+ * 2026-11-18: without this check the teardown swept production from a worktree
+ * that had .env.local but no .env.test.local, deleting 28,779 live questions.
+ */
+export function mayTeardownSweep(url: string | undefined): boolean {
+  const ref = extractProjectRef(url);
+  return ref !== null && ALLOWED_TEST_REFS.has(ref);
+}
+
+/**
  * Decide whether the suite may run against the given URL. Pure — env flags are
  * passed in so this is unit-testable.
  */
