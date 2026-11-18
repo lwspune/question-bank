@@ -114,7 +114,8 @@ describe.skipIf(!HAS_ENV)("commitStaged + visibility", () => {
     expect(await visibilityOf(row.contentHash)).toBe("PRIVATE");
   });
 
-  it("keeps the PUBLIC default when the option is omitted", async () => {
+  // Since 2026-11-18 visibility is required, so there is no "omitted" case left to test.
+  it("writes PUBLIC at insert when asked", async () => {
     const row = mcq(2, `Default probe ${RUN_ID}?`, ["uno", "due", "tre", "quattro"], "A");
     const result = await commitStaged(admin, {
       orgId,
@@ -122,6 +123,7 @@ describe.skipIf(!HAS_ENV)("commitStaged + visibility", () => {
       filename: `vis-default-${RUN_ID}.json`,
       createdBy: adminUserId,
       rows: [row],
+      visibility: "PUBLIC",
     });
     expect(result.errors).toEqual([]);
     expect(result.inserted).toBe(1);

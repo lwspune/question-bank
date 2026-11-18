@@ -95,6 +95,7 @@ describe.skipIf(!HAS_ENV)("commitStaged + pyq metadata", () => {
       pyqYear: 2025,
       pyqMonth: "May",
       pyqNote: "Shift I",
+      visibility: "PUBLIC",
     });
     expect(result.inserted).toBe(GOOD_ROWS.length);
 
@@ -141,6 +142,7 @@ describe.skipIf(!HAS_ENV)("commitStaged + pyq metadata", () => {
         filename: `pyq-${RUN_ID}-null.xlsx`,
         createdBy: adminUserId,
         rows: valid,
+        visibility: "PUBLIC",
       });
 
       const { data: questions } = await admin
@@ -188,6 +190,7 @@ describe.skipIf(!HAS_ENV)("commitStaged + pyq metadata", () => {
         createdBy: adminUserId,
         rows: valid,
         pyqYear: 2024,
+        visibility: "PUBLIC",
       });
 
       const { data: questions } = await admin

@@ -245,6 +245,7 @@ async function main() {
     // month is not printed on the paper, so it is left NULL rather than guessed.
     pyqMonth: null,
     pyqNote: pyqNote(SUBJECT, paper.year, paper.paper),
+    visibility: "PRIVATE", // at insert, so an interrupted run never leaves rows public (2026-11-18)
   });
   console.log(`\ninserted ${res.inserted} | skipped ${res.skipped} | failed ${res.failed}`);
   for (const e of res.errors) console.log(`  row ${e.sourceRow}: ${e.message}`);

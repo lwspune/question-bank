@@ -106,6 +106,7 @@ async function main() {
   const result = await commitStaged(client, {
     orgId: ORG_ID, examId, filename: spec.sourceFile, createdBy: CREATED_BY,
     rows, uploadJobId: jobId, pyqYear: null, pyqNote: spec.pyqNote,
+    visibility: "PRIVATE", // at insert, so an interrupted run never leaves rows public (2026-11-18)
   });
   console.log(`\ncommit: inserted=${result.inserted} skipped=${result.skipped} failed=${result.failed}`);
   for (const e of result.errors) console.log(`  err row ${e.sourceRow}: ${e.message}`);
