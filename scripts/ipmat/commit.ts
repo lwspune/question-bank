@@ -298,7 +298,7 @@ async function main() {
       rows,
       uploadJobId: jobId,
       pyqYear: paper.year,
-      // Left empty on purpose: one sitting a year, so pyq_year identifies it.,
+      // Left empty on purpose: one sitting a year, so pyq_year identifies it.
       visibility: "PRIVATE", // at insert, so an interrupted run never leaves rows public (2026-11-18)
     });
     inserted += result.inserted;
