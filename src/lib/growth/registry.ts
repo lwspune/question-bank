@@ -395,6 +395,15 @@ export const ENEM_STUDENTS_KEEP = 20;
 /** "enem-interest": ...of whom this many started a mock or answered 20+ questions. */
 export const ENEM_ACTIVE_KEEP = 5;
 /**
+ * "practice-trial": of students who met the answer limit on 3+ days from 13 Oct
+ * to 18 Nov 2026 with no trial, 4 of 67 (6%) bought a pass after their 3rd day.
+ */
+export const PRACTICE_TRIAL_BASELINE_PCT = 6;
+/** "practice-trial": keep at this share of offered students buying, or more. */
+export const PRACTICE_TRIAL_KEEP_PCT = 10;
+/** "practice-trial": switch off at this share or less. */
+export const PRACTICE_TRIAL_STOP_PCT = 3;
+/**
  * "answer-limit-copy": of students who met the answer limit in the 30 days to
  * 2026-11-11, the share who opened checkout from it (35 of 360) and who bought
  * a pass afterwards (16 of 360), staff left out.
@@ -550,7 +559,8 @@ export type Readout =
   | "gulf-price"
   | "enem-interest"
   | "offline-classes"
-  | "play-games";
+  | "play-games"
+  | "practice-trial";
 
 export type Experiment = {
   id: string;
@@ -1636,7 +1646,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "enem-interest",
     status: "running",
   },
-
+  {
+    id: "practice-trial",
+    title: "A 7-day Practice Pass on the 3rd day at the limit",
+    change:
+      "On a student's 3rd day at the daily answer limit, the wall offers a free 7-day Practice Pass instead of the Rs 199 offer (\"You are doing well. Here is your 7-day practice pass.\"). Nothing is granted until they tap Activate; the offer shows on 3 days at the limit at most, once per account, never to anyone who has held a pass. After it ends, the wall adds how many questions they answered in it (migration 0273).",
+    why: "12 of 20 pass sales from 3 to 18 Nov came within a day of a student's first day at the limit, so a trial earlier would give that moment away. Past the 3rd day only 4 of 46 buyers in six weeks had paid, while 63 students had met the limit on 3+ days and never bought. The owner asked for a trial (2026-11-18); a reverse trial lets them feel what the pass removes.",
+    metric:
+      "Of students offered (practice_trial_offers), the share who tap Activate (entitlements source 'trial') and the share who buy a pass (source 'razorpay') within 14 days of their trial ending, against 4 of 67 (6%) before; plus all pass sales against the weeks before, in case earlier buyers start waiting. scripts/billing/practice-trial-readout.sql",
+    rule: `Read at 6 weeks. Keep if ${PRACTICE_TRIAL_KEEP_PCT}%+ of offered students buy, switch it off at ${PRACTICE_TRIAL_STOP_PCT}% or less (at /dashboard/pricing), in between run 4 more weeks. Small numbers (about 13 students a week), so a rough read.`,
+    liveSince: "2026-11-19",
+    windowDays: 42,
+    readout: "practice-trial",
+    status: "running",
+  },
 ];
 
 export type DecidedAgainst = { title: string; decision: string; on: string; why: string };

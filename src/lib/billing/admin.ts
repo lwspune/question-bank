@@ -24,6 +24,7 @@ const SETTINGS_COLUMNS = {
   free_reveals_per_day: "freeRevealsPerDay",
   free_save_limit: "freeSaveLimit",
   projection_trial_days: "projectionTrialDays",
+  practice_trial_after_days: "practiceTrialAfterDays",
   mock_papers_per_day: "mockPapersPerDay",
   free_practice_tests_per_day: "freePracticeTestsPerDay",
   brand_watermark: "brandWatermark",

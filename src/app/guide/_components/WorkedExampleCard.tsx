@@ -51,8 +51,11 @@ export default function WorkedExampleCard({ rank, example }: Props) {
   const dailyGate = useDailyRevealGate(signedIn, loading, "guide");
   // The server decides a new answer (claim_reveal, 0228); a tap meanwhile does nothing.
   const pendingRef = useRef(false);
+  // The tap the limit refused, re-run once the 7-day pass is activated (0273).
+  const lastLabelRef = useRef<string | null>(null);
 
   const reveal = async (label: string | null) => {
+    lastLabelRef.current = label;
     if (!revealed) {
       if (pendingRef.current) return;
       pendingRef.current = true;
@@ -197,7 +200,9 @@ export default function WorkedExampleCard({ rank, example }: Props) {
         )}
 
         {/* Today's free answers are used (signed in, migration 0134). */}
-        {blockedTaps > 0 && !revealed && <RevealDailyPrompt key={blockedTaps} surface="guide" />}
+        {blockedTaps > 0 && !revealed && (
+          <RevealDailyPrompt key={blockedTaps} surface="guide" onUnlocked={() => void reveal(lastLabelRef.current)} />
+        )}
 
         {showSolution && example.solution && (
           <div className="rounded-xl border border-brand-accent/20 bg-brand-accent/5 p-3 text-sm motion-safe:animate-fade-in-up sm:p-4">

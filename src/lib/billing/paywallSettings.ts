@@ -25,6 +25,8 @@ export type PaywallSettings = {
   freeSaveLimit: number | null;
   /** Days the projected score stays free after the student reveals it. */
   projectionTrialDays: number | null;
+  /** Offer the 7-day Practice Pass on a student's Nth day at the answer limit (0273). */
+  practiceTrialAfterDays: number | null;
   /** Different whole past papers ANY account may download per IST day (0137). */
   mockPapersPerDay: number | null;
   /** Practice tests V builds that a free account may START per IST day (0156). */
@@ -42,6 +44,7 @@ export const PAYWALL_LIMITS = [
   "reveals",
   "saves",
   "projection",
+  "practiceTrial",
   "paperDownloads",
   "practiceTests",
 ] as const;
@@ -64,6 +67,7 @@ export const EMPTY_PAYWALL_SETTINGS: PaywallSettings = {
   freeRevealsPerDay: null,
   freeSaveLimit: null,
   projectionTrialDays: null,
+  practiceTrialAfterDays: null,
   mockPapersPerDay: null,
   freePracticeTestsPerDay: null,
   brandWatermark: true,
@@ -79,6 +83,7 @@ const FIELDS: Record<PaywallLimit, { value: keyof PaywallSettings; since?: keyof
   reveals: { value: "freeRevealsPerDay" },
   saves: { value: "freeSaveLimit" },
   projection: { value: "projectionTrialDays" },
+  practiceTrial: { value: "practiceTrialAfterDays" },
   paperDownloads: { value: "mockPapersPerDay" },
   practiceTests: { value: "freePracticeTestsPerDay" },
 };

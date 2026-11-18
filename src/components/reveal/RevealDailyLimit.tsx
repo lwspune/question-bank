@@ -3,7 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Check, Loader2, Lock } from "lucide-react";
+import { Check, Gift, Loader2, Lock } from "lucide-react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { GATE, useCheckout, type CheckoutOutcome, type CheckoutSurface } from "@/components/billing/useCheckout";
 import WhyNotNow from "@/components/billing/WhyNotNow";
@@ -14,7 +15,14 @@ import { pricingHref } from "@/lib/billing/checkoutReturn";
 import { answerLimitCopy, otherBenefits, perMonthLine } from "@/lib/billing/offerCopy";
 import type { PassCta } from "@/lib/billing/plans";
 import type { PracticeSurface } from "@/lib/questions/practiceBatch";
-import { dailyRevealLimit, dailyRevealPass } from "./useRevealMeter";
+import {
+  activatePracticeTrial,
+  dailyRevealLimit,
+  dailyRevealPass,
+  dailyTrialEnded,
+  dailyTrialOffer,
+} from "./useRevealMeter";
+import { TRIAL_OFFER_BODY, TRIAL_OFFER_TITLE, trialActiveLine, trialEndedLine } from "@/lib/billing/practiceTrial";
 import { useDiscountedPass, VaultPointsOfferNote } from "@/components/billing/useFixPoints";
 
 /**
@@ -64,13 +72,87 @@ export function RevealDailyLink({ surface }: { surface: PracticeSurface }) {
  * half hidden behind the V bubble on a phone. With no pass on sale (or the
  * plans read failed) it keeps that link.
  */
-export function RevealDailyPrompt({ surface }: { surface: PracticeSurface }) {
+export function RevealDailyPrompt({
+  surface,
+  onUnlocked,
+}: {
+  surface: PracticeSurface;
+  /** The 7-day pass was activated: the card may open the answer it was refused. */
+  onUnlocked?: () => void;
+}) {
   const pass = dailyRevealPass();
   const limit = dailyRevealLimit();
+  // On a student's 3rd day at the limit the server offers the 7-day Practice
+  // Pass (0273) in place of the paid offer: two offers in one box is too much.
+  if (dailyTrialOffer()) return <PracticeTrialOffer limit={limit} onUnlocked={onUnlocked} />;
   return pass ? (
     <RevealDailyOffer surface={surface} pass={pass} limit={limit} />
   ) : (
     <RevealDailyLinkPrompt surface={surface} limit={limit} />
+  );
+}
+
+/**
+ * The 7-day Practice Pass offer (migration 0273, owner 2026-11-18). Nothing is
+ * granted until Activate; the server checks again at the tap and counts the 7
+ * days from it. On success the card turns into one line and every card on the
+ * page opens (activatePracticeTrial lifts the limit, as a purchase does).
+ */
+export function PracticeTrialOffer({ limit, onUnlocked }: { limit: number | null; onUnlocked?: () => void }) {
+  const [busy, setBusy] = useState(false);
+  const [activeUntil, setActiveUntil] = useState<string | null>(null);
+
+  const onActivate = async () => {
+    setBusy(true);
+    const result = await activatePracticeTrial();
+    setBusy(false);
+    if (!result.ok) {
+      toast.error("Couldn't activate the pass. Please try again.");
+      return;
+    }
+    setActiveUntil(result.expiresAt);
+    toast.success(trialActiveLine(result.expiresAt));
+    onUnlocked?.();
+  };
+
+  if (activeUntil) {
+    return (
+      <p
+        role="status"
+        className="mt-3 flex items-center gap-2 rounded-lg border border-brand-accent/30 bg-brand-accent/5 px-3 py-2.5 font-sans text-sm text-foreground"
+      >
+        <Check className="h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
+        {trialActiveLine(activeUntil)}
+      </p>
+    );
+  }
+
+  return (
+    <div className="mt-3 space-y-3 rounded-xl border border-brand-accent/30 bg-brand-accent/5 p-4 font-sans text-sm animate-in fade-in zoom-in-95 duration-300">
+      <div className="space-y-1">
+        <p className="flex items-center gap-2 font-semibold text-foreground">
+          <Gift className="h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
+          {TRIAL_OFFER_TITLE}
+        </p>
+        <p className="text-muted-foreground">{TRIAL_OFFER_BODY}</p>
+      </div>
+      <Button variant="brand" className="w-full" onClick={onActivate} disabled={busy}>
+        {busy && <Loader2 className="h-4 w-4 animate-spin" aria-hidden />}
+        {busy ? "Activating…" : "Activate"}
+      </Button>
+      <p className="text-center text-xs text-muted-foreground">
+        Not now? {limit ? `${limit} more free answers` : "More free answers"} tomorrow.
+      </p>
+    </div>
+  );
+}
+
+/** The line after a trial ended (0273), above the paid offer. */
+function TrialEndedNote() {
+  const ended = dailyTrialEnded();
+  if (!ended) return null;
+  return (
+    <p className="rounded-lg border border-brand-accent/20 bg-card px-3 py-2 text-foreground">{trialEndedLine(ended)}</p>
   );
 }
 
@@ -134,6 +216,7 @@ export function RevealDailyOffer({
           <Lock className="h-4 w-4 shrink-0" aria-hidden />
           That&apos;s today&apos;s {limit ?? ""} free answers
         </p>
+        <TrialEndedNote />
         <p className="font-medium text-foreground">{copy.lead}</p>
         <p className="text-muted-foreground">{copy.body}</p>
         {others.length > 0 && (

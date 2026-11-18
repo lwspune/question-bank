@@ -8,7 +8,7 @@
  */
 
 /** `referral`: an inviter's free Premium days, earned when a friend paid (0249). */
-export type EntitlementSource = "razorpay" | "comp" | "manual" | "referral";
+export type EntitlementSource = "razorpay" | "comp" | "manual" | "referral" | "trial";
 export type EntitlementStatus = "active" | "expired" | "revoked" | "cancelled";
 
 /** The full-premium scope. A grant with this scope unlocks everything. */
