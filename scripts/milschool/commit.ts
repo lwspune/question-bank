@@ -162,6 +162,10 @@ async function main() {
     uploadJobId: jobId,
     pyqYear: paper.pyqYear,
     pyqNote: pyqNoteFor(paper),
+    // PRIVATE at insert (2026-11-18): rows used to land on the PUBLIC column
+    // default and be hidden by the update below, so a network error between the
+    // two left 27 AISSEE rows public for half an hour.
+    visibility: "PRIVATE",
   });
   console.log(`commit: inserted=${result.inserted} skipped=${result.skipped} failed=${result.failed}`);
   for (const e of result.errors) console.log(`  err row ${e.sourceRow}: ${e.message}`);
