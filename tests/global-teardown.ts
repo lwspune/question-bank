@@ -64,7 +64,7 @@ import {
   sweepUntilClean,
 } from "./global-teardown-helpers";
 import { readRunIds } from "./helpers/runIdRegistry";
-import { extractProjectRef, SEED_CONTENT_HASH_PREFIX } from "./helpers/testdb";
+import { extractProjectRef, mayTeardownSweep, SEED_CONTENT_HASH_PREFIX } from "./helpers/testdb";
 import { acquireTestDbLock, testDbLockPath } from "./helpers/testdbLock";
 import { resolveSupabaseTestEnv } from "./helpers/testenv";
 
@@ -96,6 +96,15 @@ export default async function setup(project: TestProject) {
       const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
       const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
       if (!url || !key) return; // tests skipped — nothing to clean
+      // The sweep deletes rows: never anywhere but the test project (2026-11-18,
+      // it swept production from a worktree without .env.test.local).
+      if (!mayTeardownSweep(url)) {
+        console.error(
+          `[global-teardown] REFUSED to sweep ${extractProjectRef(url) ?? url}: not the test project. ` +
+            "Nothing was deleted. Put the test project's settings in .env.test.local."
+        );
+        return;
+      }
 
       const admin = createClient(url, key, { auth: { persistSession: false } });
       const scope: SweepScope = { own: readRunIds(runDir), now: new Date() };
