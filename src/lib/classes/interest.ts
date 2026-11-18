@@ -16,12 +16,14 @@ import { csvCell, csvMobile } from "@/lib/students/roster";
 
 /**
  * The courses the owner offers, in the order they are shown (the defence exams
- * together; CDS and AFCAT added 2026-11-16). Mirrored by the table's CHECK.
+ * together; CDS and AFCAT added 2026-11-16, SPI 2026-11-18). Mirrored by the
+ * table's CHECK (0265, widened by 0272).
  */
 export const CLASS_COURSES = [
   { slug: "nda", label: "NDA" },
   { slug: "cds", label: "CDS" },
   { slug: "afcat", label: "AFCAT" },
+  { slug: "spi", label: "SPI" },
   { slug: "mht-cet", label: "MHT-CET" },
   { slug: "jee", label: "JEE" },
   { slug: "board-10", label: "10th Board" },

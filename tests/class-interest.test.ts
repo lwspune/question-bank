@@ -17,11 +17,12 @@ import {
 const ok = { courses: ["nda"], city: "pune", mobile: "98765 43210", consent: true };
 
 describe("CLASS_COURSES", () => {
-  it("offers the eight courses the owner named, the defence exams together", () => {
+  it("offers the nine courses the owner named, the defence exams together (SPI added 2026-11-18)", () => {
     expect(CLASS_COURSES.map((c) => c.label)).toEqual([
       "NDA",
       "CDS",
       "AFCAT",
+      "SPI",
       "MHT-CET",
       "JEE",
       "10th Board",
@@ -41,8 +42,8 @@ describe("validateClassInterest", () => {
   });
 
   it("keeps several courses, once each, in the catalogue's order", () => {
-    const v = validateClassInterest({ ...ok, courses: ["board-12", "afcat", "mht-cet", "cds", "board-12"] });
-    expect(v.ok && v.value.courses).toEqual(["cds", "afcat", "mht-cet", "board-12"]);
+    const v = validateClassInterest({ ...ok, courses: ["board-12", "spi", "afcat", "mht-cet", "cds", "board-12"] });
+    expect(v.ok && v.value.courses).toEqual(["cds", "afcat", "spi", "mht-cet", "board-12"]);
   });
 
   it("refuses no course, an unknown course, or a non-list", () => {
