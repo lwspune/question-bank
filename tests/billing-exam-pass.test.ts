@@ -67,7 +67,7 @@ describe("which pass covers an exam", () => {
     }
   });
 
-  it("the seven Class 9-10 exams and ENEM are free, and no other (owner, 2026-11-02, 2026-11-15 and 2026-11-17; mirrors migrations 0210 and 0270)", () => {
+  it("the seven Class 9-10 exams, ENEM and the military-school entrances are free, and no other (owner, 2026-11-02, 2026-11-15 and 2026-11-17; mirrors migrations 0210 and 0270)", () => {
     const free = EXAM_REGISTRY.filter((e) => passScopeForExam(e.slug) === SCOPE_FREE).map((e) => e.examName);
     expect(free.sort()).toEqual(
       [
@@ -79,6 +79,11 @@ describe("which pass covers an exam", () => {
         "Maharashtra State Board Class 9",
         "SPI",
         "UP Board Class 10",
+        "AISSEE Class 6",
+        "AISSEE Class 9",
+        "RMS CET Class 6",
+        "RMS CET Class 9",
+        "RIMC",
       ].sort()
     );
   });

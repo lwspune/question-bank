@@ -34,6 +34,13 @@ describe("parseOfficialKey", () => {
     expect(() => parseOfficialKey({ "1": "A", "2": "B" }, 3)).toThrow(/missing/i);
   });
 
+  it("accepts a key without the numbers a paper deliberately HOLDS, and only those", () => {
+    const k = parseOfficialKey({ "2": "B", "3": "C" }, 3, { skip: [1] });
+    expect(k.answers.has(1)).toBe(false);
+    expect(k.dropped).toEqual([]); // held is not withdrawn
+    expect(() => parseOfficialKey({ "3": "C" }, 3, { skip: [1] })).toThrow(/missing/i);
+  });
+
   it("REFUSES a key carrying a question outside 1..N", () => {
     expect(() => parseOfficialKey({ "1": "A", "2": "B", "3": "C", "9": "D" }, 3)).toThrow(/outside/i);
   });

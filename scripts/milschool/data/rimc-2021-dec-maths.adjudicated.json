@@ -1,0 +1,23 @@
+{
+  "1": { "why": "Same answer in both (co-prime numbers: HCF 1), with different examples." },
+  "9": { "why": "Both: stream 3 km/h, boat 8 km/h." },
+  "21": { "why": "Both about 57.5% (238 of 414), reading 'two & ninth' as two-ninths." },
+  "11": {
+    "pick": "a",
+    "why": "Checked the scan: only 6, 5, 126 and ? are printed, so the rule is not fixed. 126 = 5^3 + 1 fits both '(column top - 1)^3 + 1' (gives 65) and 'the other top cubed + 1' (gives 217).",
+    "notice": "Only one complete pair is printed, so more than one rule fits: 126 = 5 cubed + 1 can lead to 4 cubed + 1 = 65 (each top number less one, cubed, plus one) or to 6 cubed + 1 = 217 (the other top number cubed, plus one). The solution uses the first rule."
+  },
+  "29": {
+    "why": "Checked: A fills 1/24 and B 1/32 a minute; even together the whole time they need 96/7 = 13 5/7 minutes, so the tank cannot be full in 9 minutes. With 18 minutes, B is closed after 8 minutes (both solutions).",
+    "notice": "As printed the question cannot be done: even with both pipes open all the time, the tank takes 13 5/7 minutes to fill, so it cannot be full in 9 minutes. The solution takes the usual version of this question, where the tank is full in 18 minutes, which gives 8 minutes."
+  },
+  "4": {
+    "why": "Checked: (x - 1/x)^2 = 51 - 2 = 49, so x - 1/x = 7 or -7, and x^3 - 1/x^3 = (x - 1/x)^3 + 3(x - 1/x) = 364 or -364.",
+    "notice": "Since x - 1/x can be 7 or -7, the value can be 364 or -364. The solution takes x - 1/x = 7."
+  },
+  "23": { "why": "Checked: 'one & third' read as one-third; CSA 154, so 2 pi r^2 = 308, r = 7, h = 3.5, V = 539 m^3." },
+  "30": {
+    "why": "The third denominator is printed without its plus sign (x^c x^-a + 1); with the pattern restored (x^c + x^-a + 1) the sum is 1 (both solutions).",
+    "notice": "The third fraction is misprinted: its denominator should read x^c + x^-a + 1, following the pattern of the first two. With that, the value is 1."
+  }
+}

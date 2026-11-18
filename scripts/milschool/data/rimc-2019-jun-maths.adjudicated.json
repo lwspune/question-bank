@@ -1,0 +1,22 @@
+{
+  "19": { "pick": "a", "why": "Same answer in both (7 coins of Rs 5, 21 of Rs 2)." },
+  "26": { "pick": "a", "why": "Same answer in both (quotient 3x^3 - 2x^2 - 11x + 45, remainder -145x - 85)." },
+  "22": {
+    "pick": "a",
+    "why": "Checked: total Rs 10100; angles 3000, 2200, 400, 1200, 1500, 1800 out of 10100 of 360 = 106.9, 78.4, 14.3, 42.8, 53.5, 64.2 degrees.",
+    "notice": "The amounts add up to Rs 10,100, so none of the angles comes out to a whole number of degrees; one amount may be misprinted. The solution uses the table as printed and rounds each angle to one decimal place."
+  },
+  "3": {
+    "finalAnswer": "about 12.7 m",
+    "solution": "Take his starting point as the origin, with east and north as the two directions.\n\nNorth-east is exactly between north and east, so walking 17 m north-east moves him \\(\\frac{17}{\\sqrt{2}} \\approx 12.02\\) m east and \\(12.02\\) m north.\n\nWalking 8 m south then brings him back to \\(12.02 - 8 = 4.02\\) m north of the start, still \\(12.02\\) m east.\n\nBy Pythagoras, his distance from the start is \\(\\sqrt{12.02^2 + 4.02^2} = \\sqrt{144.5 + 16.2} = \\sqrt{160.7} \\approx 12.7\\) m.\n\nSo he is about 12.7 m from his initial position.",
+    "why": "Both passes gave 15 m from the 8-15-17 triple, which does not follow from the printed directions; as printed (17 m NE, then 8 m S) he ends about 12.7 m away. Solution rewritten for the printed version (2021 Jun Q27 precedent).",
+    "notice": "The answer usually given is 15 m, from the 8, 15, 17 right triangle, but that does not follow from the directions as printed. Walking 17 m north-east and then 8 m south leaves him about 12.7 m from where he started, which is the answer worked out here."
+  },
+  "9": { "why": "Checked: areas in the ratio 15 : 1 give radii, and so circumferences, in the ratio the square root of 15 : 1." },
+  "12": {
+    "why": "Checked: (22/7) x (5^2 - 3^2) x 210 = 22 x 16 x 30 = 10560 cm^3.",
+    "notice": "No price of copper is given, so \"value of copper\" is read as the volume of copper used."
+  },
+  "24": { "why": "Checked: (6a^2 - a + 3)(4a - 2) = 24a^3 - 16a^2 + 14a - 6; (3a^2 + a + 9)(a + 3) = 3a^3 + 10a^2 + 12a + 27." },
+  "29": { "why": "Checked: cost price 1000 / 0.95; selling price 1.08 x 1000 / 0.95 = 1080 / 0.95 = Rs 1136 16/19, about Rs 1136.84." }
+}
