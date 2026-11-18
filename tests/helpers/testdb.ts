@@ -97,6 +97,17 @@ export type TestDbVerdict =
   | { kind: "forbidden"; reason: string }; // anything else — refuse to run
 
 /**
+ * May a test run read the PRODUCTION settings file (.env.local) when the test
+ * project's settings are missing? Only when it asks to: the read-only
+ * prod-contract run (PROD_CONTRACT=1) or the old transition flag. Anything else
+ * gets no database, so its DB suites skip. 2026-11-18: the silent fallback
+ * pointed a whole run at production from a worktree without .env.test.local.
+ */
+export function mayUseProductionEnvFile(opts: { prodContract: boolean; transition: boolean }): boolean {
+  return opts.prodContract || opts.transition;
+}
+
+/**
  * May the global teardown DELETE rows in the project at `url`? Only in an
  * allow-listed test project. No flag opens it: PROD_CONTRACT and
  * TESTDB_TRANSITION allow reading production, and a sweep is never a read.
