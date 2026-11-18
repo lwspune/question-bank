@@ -241,6 +241,10 @@ describe("intlHostDecision (the intl host)", () => {
     expect(intlHostDecision("/welcome", "")).toEqual({ kind: "rewrite", path: "/intl/welcome" });
   });
 
+  it("serves intl's exam picker for a sign-up whose exam it cannot tell", () => {
+    expect(intlHostDecision("/welcome/exam", "?next=%2F")).toEqual({ kind: "rewrite", path: "/intl/welcome/exam?next=%2F" });
+  });
+
   it("sends every PYQ Vault page to www permanently, so no Indian exam is ever shown on intl", () => {
     expect(intlHostDecision("/notes/nda-maths", "?q=1")).toEqual({
       kind: "redirect",
