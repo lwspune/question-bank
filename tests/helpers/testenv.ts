@@ -12,6 +12,7 @@
 import { config } from "dotenv";
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { mayUseProductionEnvFile } from "./testdb";
 
 export function resolveSupabaseTestEnv(): void {
   const testEnvFile = path.join(process.cwd(), ".env.test.local");
@@ -29,7 +30,12 @@ export function resolveSupabaseTestEnv(): void {
     process.env.NEXT_PUBLIC_SUPABASE_URL = testUrl;
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY = testAnon;
     process.env.SUPABASE_SERVICE_ROLE_KEY = testService;
-  } else if (fs.existsSync(legacyEnvFile)) {
+  } else if (
+    mayUseProductionEnvFile({ prodContract, transition: process.env.TESTDB_TRANSITION === "1" }) &&
+    fs.existsSync(legacyEnvFile)
+  ) {
+    // Production settings only when asked for (read-only prod-contract run).
+    // Without them an ordinary run gets no database and its DB suites skip.
     config({ path: legacyEnvFile });
   }
 }

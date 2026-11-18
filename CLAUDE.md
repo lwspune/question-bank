@@ -374,6 +374,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-18 (second) — INCIDENT: a test run swept 28,779 live questions; all restored; two guards added.**
+  - **Cause:** `.env.local` copied into a worktree with no `.env.test.local`; testenv fell back to production and the global teardown (which never asked setup.ts's guard) deleted every LWS Pune question older than 6 h.
+  - **Restore:** the 17 Nov 09:01 IST dump in 1,500-question batches (one transaction crashed the 1 GB DB); post-backup rows re-committed from their pipelines; lost edits and student rows replayed from edge logs + `user_activity`.
+  - **Guards:** the teardown refuses any non-test project (`mayTeardownSweep`); testenv reads `.env.local` only under PROD_CONTRACT (`mayUseProductionEnvFile`). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-18 — Play becomes an arcade: seven games, a looser engagement gate inside /play.**
   - **Owner: "current games look like exam... resemble originals... let's not be prude".** Each game takes a known game's MECHANIC, never its name or look: Number Rain (falling sums; replaces the speed game at /play/maths), Word Groups, Daily Word (game feel, no exam question at the end), Launch (projectiles, g = 10), Element Hunt, Timeline, Pin It. Word Builder dropped (flashcards, not a game).
   - **Inside /play: lives, game over, random drops and scores are fine**; loot boxes, anything paid, streak freezes and named-peer rankings stay out.
