@@ -117,6 +117,7 @@ describe.skipIf(!HAS_ENV)("commitStaged + five options", () => {
       filename: `five-${RUN_ID}.json`,
       createdBy: adminUserId,
       rows: [row],
+      visibility: "PUBLIC",
     });
 
     expect(result.errors).toEqual([]);
@@ -140,6 +141,7 @@ describe.skipIf(!HAS_ENV)("commitStaged + five options", () => {
       filename: `four-${RUN_ID}.json`,
       createdBy: adminUserId,
       rows: [row],
+      visibility: "PUBLIC",
     });
 
     expect(result.errors).toEqual([]);

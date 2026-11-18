@@ -114,6 +114,7 @@ describe.skipIf(!HAS_ENV)("commitStaged — within-batch dedup", () => {
       filename: "dedup.xlsx",
       createdBy: adminUserId,
       rows,
+      visibility: "PUBLIC",
     });
 
     expect(result.inserted).toBe(1);

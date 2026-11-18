@@ -107,12 +107,12 @@ describe.skipIf(!HAS_ENV)("publish_blocked guard", () => {
     expect((await idOf(row.contentHash)).visibility).toBe("PRIVATE");
   });
 
-  it("refuses a blocked row that would land PUBLIC by default", async () => {
+  it("refuses a blocked row asked to land PUBLIC", async () => {
     const row = mcq(3, `Blocked default probe ${RUN_ID}?`, ["a1", "b1", "c1", "d1", "e1"], "A");
     await expect(
       commitStaged(admin, {
         orgId, examId, filename: `blocked-default-${RUN_ID}.json`, createdBy: adminUserId, rows: [row],
-        publishBlocked: REASON,
+        publishBlocked: REASON, visibility: "PUBLIC",
       })
     ).rejects.toThrow(/questions_publish_blocked_private/);
   });

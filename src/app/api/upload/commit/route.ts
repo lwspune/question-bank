@@ -78,6 +78,7 @@ export async function POST(request: NextRequest) {
         pyqYear: staged.pyqYear ?? null,
         pyqMonth: staged.pyqMonth ?? null,
         pyqNote: staged.pyqNote ?? null,
+        visibility: "PUBLIC", // the upload page publishes at insert, as it always has (column default since 0022)
       });
 
       await supabase

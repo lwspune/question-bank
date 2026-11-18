@@ -88,7 +88,7 @@ async function main() {
   }
   console.log(`\nupload job: ${jobId}`);
 
-  const result = await commitStaged(client, { orgId: ORG_ID, examId: EXAM_ID, filename: paper.sourceFile, createdBy: CREATED_BY, rows: parsed, uploadJobId: jobId, pyqYear: paper.pyqYear, pyqNote: paper.pyqNote });
+  const result = await commitStaged(client, { orgId: ORG_ID, examId: EXAM_ID, filename: paper.sourceFile, createdBy: CREATED_BY, rows: parsed, uploadJobId: jobId, pyqYear: paper.pyqYear, pyqNote: paper.pyqNote, visibility: "PRIVATE" });
   console.log(`commit: inserted=${result.inserted} skipped=${result.skipped} failed=${result.failed}`);
   for (const e of result.errors) console.log(`  err row ${e.sourceRow}: ${e.message}`);
 

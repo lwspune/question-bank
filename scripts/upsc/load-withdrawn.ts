@@ -69,6 +69,7 @@ async function main() {
       rows: parsed,
       pyqYear: paper.pyqYear,
       pyqNote: pyqNoteFor(paper),
+      visibility: "PRIVATE", // at insert, so an interrupted run never leaves rows public (2026-11-18)
     });
     const { count } = await db
       .from("questions")

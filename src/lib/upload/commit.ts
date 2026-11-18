@@ -14,12 +14,13 @@ export type CommitInput = {
   pyqMonth?: string | null;
   pyqNote?: string | null;
   /**
-   * Visibility written AT INSERT. Omitted = the column default (PUBLIC since
-   * migration 0022), exactly as before. A pipeline that must never be public
-   * passes "PRIVATE" here rather than flipping the rows after the insert,
-   * which leaves them public for a moment (NICHE_SITES_SPEC.md, IMAT).
+   * Visibility written AT INSERT. REQUIRED since 2026-11-18: every caller says
+   * it. An ingestion lane passes "PRIVATE" rather than inserting on the PUBLIC
+   * column default (migration 0022) and hiding the rows afterwards, which left
+   * them public whenever a run stopped in between (27 AISSEE rows, 30 minutes,
+   * after a network error). The upload page passes "PUBLIC".
    */
-  visibility?: "PUBLIC" | "PRIVATE";
+  visibility: "PUBLIC" | "PRIVATE";
   /**
    * Why these rows may never be published (migration 0141). The database then
    * refuses visibility = PUBLIC on them, so pass visibility "PRIVATE" too: a

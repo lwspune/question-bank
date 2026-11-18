@@ -132,7 +132,7 @@ async function main() {
   // Ids before the commit: only rows this run inserts go PRIVATE (a re-commit
   // into a published file must not hide it).
   const before = await sourceFileIds(client, EXAM_ID, test.sourceFile);
-  const result = await commitStaged(client, { orgId: ORG_ID, examId: EXAM_ID, filename: test.sourceFile, createdBy: CREATED_BY, rows: parsed, uploadJobId: jobId, pyqYear: null, pyqNote: test.note });
+  const result = await commitStaged(client, { orgId: ORG_ID, examId: EXAM_ID, filename: test.sourceFile, createdBy: CREATED_BY, rows: parsed, uploadJobId: jobId, pyqYear: null, pyqNote: test.note, visibility: "PRIVATE" });
   console.log(`commit: inserted=${result.inserted} skipped=${result.skipped} failed=${result.failed}`);
   for (const e of result.errors) console.log(`  err row ${e.sourceRow}: ${e.message}`);
 

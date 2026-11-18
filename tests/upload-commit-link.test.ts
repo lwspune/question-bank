@@ -89,6 +89,7 @@ describe.skipIf(!HAS_ENV)("commitStaged links inserted questions to upload_job_i
       createdBy: adminUserId,
       uploadJobId: jobId,
       rows: valid.map((v) => v.parsed!),
+      visibility: "PUBLIC",
     });
     expect(result.inserted).toBe(GOOD_ROWS.length);
 
@@ -125,6 +126,7 @@ describe.skipIf(!HAS_ENV)("commitStaged links inserted questions to upload_job_i
         filename: `nolink-${RUN_ID}.xlsx`,
         createdBy: adminUserId,
         rows: valid.map((v) => v.parsed!),
+        visibility: "PUBLIC",
       });
 
       const { data: questions } = await admin
