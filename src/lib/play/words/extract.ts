@@ -4,7 +4,7 @@
  * options, its key, its stored explanation). Nothing is written by hand.
  *
  * Pure: scripts/play/build-words.ts reads the bank and calls these to write
- * public/data/play-words.json, which the games fetch. Spec:
+ * public/data/play-daily-words.json, which Daily Word fetches. Spec:
  * tests/play-words-extract.test.ts.
  */
 
