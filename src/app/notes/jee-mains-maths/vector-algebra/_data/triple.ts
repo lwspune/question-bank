@@ -13,6 +13,7 @@ export const TRIPLE_VEC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jvec-stp",
       name: "Scalar triple product: volume and coplanarity",
+      visualizationSlug: "triple-product-box",
       intuition:
         "\\([\\vec a\\,\\vec b\\,\\vec c]=\\vec a\\cdot(\\vec b\\times\\vec c)\\) is the determinant of the three component rows, and its absolute value is the volume of the parallelepiped on the three edges. Zero volume means the three vectors lie in one plane. Four points are coplanar when the three edges from one of them are. Swapping two vectors changes the sign; a cyclic shift does not.",
       definition:

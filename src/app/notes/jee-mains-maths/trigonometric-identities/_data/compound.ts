@@ -13,6 +13,7 @@ export const COMPOUND_TI_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jti-quadrant",
       name: "Signs by quadrant",
+      visualizationSlug: "trig-astc-quadrants",
       intuition:
         "One given ratio fixes the others up to sign. A right triangle gives their sizes: \\(\\sin x=-\\frac35\\) means sides 3, 4 and 5. The quadrant then gives each sign. When the question is about \\(\\alpha+\\beta\\), place \\(\\alpha+\\beta\\) in its quadrant first.",
       definition:

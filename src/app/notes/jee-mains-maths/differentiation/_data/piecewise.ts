@@ -13,6 +13,7 @@ export const PIECEWISE_DIFF_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jdiff-join",
       name: "Where two pieces join",
+      visualizationSlug: "diff-piecewise-join",
       intuition:
         "A piecewise function is differentiable at a join exactly when the two pieces meet there and meet with the same slope. That gives two equations, so two unknown constants can be fixed. Continuity alone is not enough, since a corner is continuous. Equal slopes alone are not enough either: two pieces with the same slope at different heights make a jump.",
       definition:
@@ -107,6 +108,7 @@ export const PIECEWISE_DIFF_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jdiff-first-principles",
       name: "The derivative from its definition",
+      visualizationSlug: "diff-tangent-slope",
       intuition:
         "When a function has one formula away from a point and a separate value at it, the derivative there must come from the limit. For \\(x^2\\sin\\frac1x\\) with value 0 at 0, the difference quotient is \\(h\\sin\\frac1h\\to0\\), so \\(f'(0)=0\\); yet \\(f'(x)=2x\\sin\\frac1x-\\cos\\frac1x\\) has no limit at 0. The derivative exists everywhere but is not continuous. The limit also saves work: if \\(f(0)=0\\), then \\(f'(0)=\\lim\\frac{f(x)}{x}\\).",
       definition:

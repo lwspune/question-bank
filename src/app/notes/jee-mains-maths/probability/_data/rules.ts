@@ -13,6 +13,7 @@ export const RULES_PROB_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jprob-addition",
       name: "Addition rule and conditional probability",
+      visualizationSlug: "venn-two-events",
       intuition:
         "Most of these questions give two or three of \\(P(A)\\), \\(P(B)\\), \\(P(A\\cap B)\\), \\(P(A\\mid B)\\) and ask for another. Write everything in terms of \\(P(A)\\), \\(P(B)\\) and \\(P(A\\cap B)\\): \\(P(A\\cup B)=P(A)+P(B)-P(A\\cap B)\\) and \\(P(A\\mid B)=\\frac{P(A\\cap B)}{P(B)}\\). Complements follow: \\(P(A\\cap B')=P(A)-P(A\\cap B)\\), \\(P(A'\\cap B')=1-P(A\\cup B)\\).",
       definition:
@@ -59,6 +60,7 @@ export const RULES_PROB_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jprob-independent",
       name: "Independent events",
+      visualizationSlug: "exclusive-vs-independent",
       intuition:
         "Independent means \\(P(A\\cap B)=P(A)P(B)\\), and then every combination of the events and their complements also multiplies. 'Exactly one of \\(A,B\\)' is \\(P(A)P(B')+P(A')P(B)\\). With three independent events, 'only \\(E_1\\)' is \\(P(E_1)P(E_2')P(E_3')\\), and dividing by 'none' leaves \\(\\frac{P(E_1)}{1-P(E_1)}\\).",
       definition:

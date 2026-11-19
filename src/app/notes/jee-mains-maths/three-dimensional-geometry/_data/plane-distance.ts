@@ -13,6 +13,7 @@ export const PLANE_DISTANCE_3D_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "j3d-distance-point-plane",
       name: "Distance from a plane, parallel planes and sides of a plane",
+      visualizationSlug: "plane-with-normal",
       intuition:
         "Put a point into the left side of \\(ax+by+cz+d\\): the number you get, divided by \\(|\\vec n|\\), is its signed distance from the plane. Its size is the perpendicular distance and its sign tells which side the point is on. Parallel planes, once written with the same normal, are \\(\\frac{|d_1-d_2|}{|\\vec n|}\\) apart.",
       definition:

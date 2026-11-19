@@ -13,6 +13,7 @@ export const TRIANGLES_POT_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpot-sine-cosine",
       name: "The sine and cosine rules",
+      visualizationSlug: "pt-triangle-labeled",
       intuition:
         "The sine rule links each side with the angle opposite it and with the circumradius; the cosine rule finds an angle from three sides, or the third side from two sides and the angle between them. Given a side and an angle that is not between the known sides, the cosine rule gives a quadratic, and both roots may need checking.",
       definition:
@@ -102,6 +103,7 @@ export const TRIANGLES_POT_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpot-radii-area",
       name: "Area, inradius and circumradius",
+      visualizationSlug: "pt-circumcircle-incircle",
       intuition:
         "The area \\(\\Delta\\) connects everything: \\(\\Delta=rs\\) with the semi-perimeter \\(s\\), and \\(\\Delta=\\frac{abc}{4R}\\). Find the sides (or their ratio), the area by Heron's formula or \\(\\frac12bc\\sin A\\), and then \\(r\\) and \\(R\\) follow.",
       definition:

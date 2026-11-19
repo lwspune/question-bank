@@ -13,6 +13,7 @@ export const GEOMETRY_PNC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpnc-collinear",
       name: "Collinear points, parallel and concurrent lines",
+      visualizationSlug: "pc-geometric-counting-diagram",
       intuition:
         "Triangles from \\(n\\) points are \\(\\binom n3\\) minus the collinear triples: subtract \\(\\binom k3\\) for each line holding \\(k\\) points. Alternatively, when points lie on the sides of a figure, choose how many come from each side (at most two from any one side for a triangle's vertex set to work). For lines, \\(\\binom n2\\) pairs meet unless parallel; \\(k\\) concurrent lines give 1 point instead of \\(\\binom k2\\).",
       definition:

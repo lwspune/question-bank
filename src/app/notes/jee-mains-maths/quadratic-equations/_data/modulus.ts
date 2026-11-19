@@ -108,6 +108,7 @@ export const MODULUS_QE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jqe-greatest-integer",
       name: "Greatest integer and fractional part",
+      visualizationSlug: "greatest-integer-staircase",
       intuition:
         "Write \\(x=[x]+\\{x\\}\\), with \\([x]\\) an integer and \\(0\\le\\{x\\}<1\\). Two routes. Factor the equation and see what \\([x]\\) or \\(\\{x\\}\\) must equal — a factor that forces \\(\\{x\\}=3\\) gives nothing. Or put \\([x]=n\\), a constant: then \\(x\\) lies in \\([n,n+1)\\), the equation is a quadratic in \\(x\\), and only roots inside that interval count.",
       definition:

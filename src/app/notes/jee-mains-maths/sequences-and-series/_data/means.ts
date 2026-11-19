@@ -59,6 +59,7 @@ export const MEANS_SEQ_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jseq-means-inserted",
       name: "AM, GM and HM of two numbers, and means inserted between them",
+      visualizationSlug: "am-gm-hm-means",
       intuition:
         "For positive \\(a,b\\): \\(A=\\frac{a+b}2\\), \\(G=\\sqrt{ab}\\), \\(H=\\frac{2ab}{a+b}\\). Always \\(A\\ge G\\ge H\\), and \\(G^2=AH\\). Inserting \\(n\\) arithmetic means makes an AP of \\(n+2\\) terms, so the means add to \\(n\\) times the single AM. Inserting \\(n\\) geometric means makes a GP, so their product is \\(G^n\\).",
       definition:

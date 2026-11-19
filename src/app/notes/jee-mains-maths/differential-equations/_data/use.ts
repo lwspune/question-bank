@@ -105,6 +105,7 @@ export const USE_DE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jde-integrate-solution",
       name: "Integrating the solution: odd parts and areas",
+      visualizationSlug: "even-odd-symmetry",
       intuition:
         "Many questions ask for \\(\\int_{-a}^{a}y\\,dx\\) after solving. Split the solution into odd and even parts: the odd part integrates to zero on a symmetric interval, so only the even part needs work. For an area between the solution and a line, find where they meet and integrate the difference.",
       definition:

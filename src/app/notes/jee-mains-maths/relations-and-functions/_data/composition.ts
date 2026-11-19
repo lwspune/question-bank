@@ -13,6 +13,7 @@ export const COMPOSITION_FN_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jfn-compose",
       name: "Composing functions, and recovering one from the other",
+      visualizationSlug: "composition-machine",
       intuition:
         "\\((f\\circ g)(x)=f(g(x))\\): apply \\(g\\) first, then \\(f\\). To find \\(f\\) when \\(f(g(x))\\) is given, put \\(t=g(x)\\), write \\(x\\) in terms of \\(t\\), and substitute. When \\(f\\) and \\(g\\) are polynomials, the degree of \\(f\\circ g\\) is the product of the degrees, and matching leading coefficients fixes the unknowns.",
       definition:
@@ -57,6 +58,7 @@ export const COMPOSITION_FN_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jfn-inverse",
       name: "Inverse functions and self-inverse maps",
+      visualizationSlug: "inverse-reflection-line",
       intuition:
         "Write \\(y=f(x)\\) and solve for \\(x\\): that expression in \\(y\\) is \\(f^{-1}(y)\\). Only a one-one onto function has an inverse. A map \\(\\frac{ax+b}{cx+d}\\) is its own inverse, so \\(f(f(x))=x\\), exactly when \\(a+d=0\\). For an increasing function, the graph of \\(f^{-1}\\) is the mirror image in \\(y=x\\), so \\(f(x)=f^{-1}(x)\\) happens only on that line: solve \\(f(x)=x\\).",
       definition:

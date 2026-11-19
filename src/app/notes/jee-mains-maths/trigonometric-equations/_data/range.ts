@@ -61,6 +61,7 @@ export const RANGE_TEQ_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jteq-acos-bsin",
       name: "a cos x + b sin x = c by the auxiliary angle",
+      visualizationSlug: "trig-amplitude-phase",
       intuition:
         "Divide by \\(R=\\sqrt{a^2+b^2}\\). The left side becomes \\(R\\cos(x-\\varphi)\\), one ratio of one angle. Then solve \\(\\cos(x-\\varphi)=\\frac cR\\): there is no solution if \\(|c|>R\\), and otherwise two per period. When \\(\\varphi\\) is not a standard angle, use \\(t=\\tan\\frac x2\\) instead and solve a quadratic in \\(t\\).",
       definition:

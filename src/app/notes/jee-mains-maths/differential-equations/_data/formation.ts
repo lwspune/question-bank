@@ -13,6 +13,7 @@ export const FORMATION_DE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jde-eliminate",
       name: "Eliminating the constants of a family",
+      visualizationSlug: "defeq-family-of-curves",
       intuition:
         "A family with n arbitrary constants satisfies a differential equation of order n. Differentiate the family n times, then use the equations to remove every constant. For circles through two fixed points, or parabolas with a fixed axis direction, write the general member with as few constants as the conditions allow before differentiating.",
       definition:

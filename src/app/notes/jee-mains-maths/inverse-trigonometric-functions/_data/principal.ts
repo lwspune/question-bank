@@ -60,6 +60,7 @@ export const PRINCIPAL_ITF_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jitf-range",
       name: "Ranges and complementary pairs",
+      visualizationSlug: "it-principal-ranges",
       intuition:
         "To find a range, first find the set of values the argument takes, then push it through the inverse function, which is monotonic. When an expression mixes \\(\\sin^{-1}x\\) and \\(\\cos^{-1}x\\), replace one with \\(\\frac\\pi2\\) minus the other. The expression becomes a polynomial in one angle \\(a\\), and \\(a\\) runs over a known interval.",
       definition:

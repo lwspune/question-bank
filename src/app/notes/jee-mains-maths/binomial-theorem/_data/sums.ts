@@ -13,6 +13,7 @@ export const SUMS_BIN_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jbin-substitute",
       name: "Substituting x = 1, −1 and other values",
+      visualizationSlug: "bt-pascal-triangle",
       intuition:
         "Write \\(f(x)=\\sum a_rx^r\\). Then \\(f(1)\\) is the sum of all coefficients, \\(f(-1)\\) the alternating sum, and \\(\\frac{f(1)\\pm f(-1)}{2}\\) the sums of even- and odd-indexed coefficients. For \\((1+x)^n\\) this gives \\(2^n\\), 0 and \\(2^{n-1}\\). Alternating sums of an odd set of coefficients, or \\(x=i\\) and cube roots of unity, pick out other sub-sums.",
       definition:

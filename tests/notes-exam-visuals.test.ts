@@ -41,6 +41,7 @@ const MIN_FIGURES: Record<string, number> = {
   "mht-cet-chemistry": 33,
   "jee-mains-physics": 63,
   "jee-mains-chemistry": 29,
+  "jee-mains-maths": 62,
 };
 
 /** Figures placed on CET before this run, whose words were never checked against these rules. */
@@ -84,6 +85,7 @@ const SHIPPED_MATHS_HEADERS = new Set([
   "mean-deviation-spread",
   "magnetic-force-triad",
   "torque-moment",
+  "median-middle-value",
 ]);
 
 const placements = NOTES_CHAPTERS.filter((c) => EXAM_ROUTES.some((r) => c.subjectRoute.startsWith(r))).flatMap((c) =>

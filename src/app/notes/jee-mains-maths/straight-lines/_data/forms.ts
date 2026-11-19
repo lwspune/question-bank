@@ -13,6 +13,7 @@ export const FORMS_SL_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jsl-angle",
       name: "The angle between two lines",
+      visualizationSlug: "lines-angle-between-diagram",
       intuition:
         "The slope \\(m=\\tan\\theta\\) is the tangent of the angle a line makes with the positive x-axis. Two lines with slopes \\(m_1,m_2\\) meet at an angle whose tangent is \\(\\left|\\frac{m_1-m_2}{1+m_1m_2}\\right|\\). Run it backwards to find a line at a given angle to another: the modulus gives two answers, one on each side. Parallel lines have equal slopes; perpendicular lines have \\(m_1m_2=-1\\).",
       definition:

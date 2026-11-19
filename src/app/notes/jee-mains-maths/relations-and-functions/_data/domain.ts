@@ -58,6 +58,7 @@ export const DOMAIN_FN_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jfn-domain-nested",
       name: "Nested logarithms and greatest-integer parts",
+      visualizationSlug: "greatest-integer-staircase",
       intuition:
         "Work from the outside in. \\(\\log_a(\\log_bu)\\) needs \\(\\log_bu>0\\), which for \\(b>1\\) means \\(u>1\\); a third logarithm pushes the threshold up again, to \\(u>b\\). A base below 1 reverses each inequality. When the formula has \\([x]\\), put \\(n=[x]\\), solve for the integer \\(n\\) first, and then turn each allowed \\(n\\) into the interval \\([n,n+1)\\).",
       definition:

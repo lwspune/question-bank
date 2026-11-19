@@ -13,6 +13,7 @@ export const LINES_3D_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "j3d-direction-cosines",
       name: "Direction cosines and direction ratios",
+      visualizationSlug: "direction-cosines",
       intuition:
         "A line making angles \\(\\alpha\\), \\(\\beta\\), \\(\\gamma\\) with the three axes has direction cosines \\(l=\\cos\\alpha\\), \\(m=\\cos\\beta\\), \\(n=\\cos\\gamma\\), and these always satisfy \\(l^2+m^2+n^2=1\\). Any triple in the same proportion, such as \\((2,3,6)\\), is a set of direction ratios. To turn ratios into cosines, divide by their length.",
       definition:

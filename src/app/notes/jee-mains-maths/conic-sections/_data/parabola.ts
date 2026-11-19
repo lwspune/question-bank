@@ -13,6 +13,7 @@ export const PARABOLA_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcon-parabola-forms",
       name: "Standard and shifted forms: vertex, focus, directrix, latus rectum",
+      visualizationSlug: "conics-parabola-diagram",
       intuition:
         "In \\(y^2=4ax\\) the number \\(a\\) is the distance from the vertex to the focus, and everything else follows from it: the directrix is \\(a\\) behind the vertex and the latus rectum, the chord through the focus perpendicular to the axis, has length \\(4a\\). Any parabola with a horizontal or vertical axis becomes this shape after completing the square, with the vertex moved to \\((h,k)\\).",
       definition:

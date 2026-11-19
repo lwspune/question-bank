@@ -13,6 +13,7 @@ export const COUNTING_DIFF_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jdiff-corners",
       name: "Corners of modulus, max and min",
+      visualizationSlug: "diff-modulus-corner",
       intuition:
         "\\(|g(x)|\\) can have a corner only where \\(g(x)=0\\); \\(\\max\\{g,h\\}\\) and \\(\\min\\{g,h\\}\\) only where \\(g=h\\). Each such point is a candidate, and it is a real corner only if the slopes differ there. A factor that vanishes at the same point removes the corner: \\((x-a)|x-a|\\) is smooth. When several terms break at one point, add their slope jumps; they can cancel.",
       definition:
@@ -63,6 +64,7 @@ export const COUNTING_DIFF_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jdiff-jumps",
       name: "Jumps of the greatest integer function",
+      visualizationSlug: "greatest-integer-staircase",
       intuition:
         "\\([g(x)]\\) is constant while \\(g\\) stays between two integers, and it jumps where \\(g\\) crosses an integer. A jump is a discontinuity, and a function that is not continuous is not differentiable, so every jump counts for both. A peak exactly at an integer also counts: \\(5\\sin x\\) reaches 5 at \\(\\frac\\pi2\\), so \\([5\\sin x]\\) is 5 there and 4 on both sides. A trough at an integer does not: \\([x^2]\\) is 0 on both sides of 0.",
       definition:

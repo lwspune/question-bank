@@ -59,6 +59,7 @@ export const MODULUS_AOI_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jaoi-mod-quadratic",
       name: "The modulus of a quadratic",
+      visualizationSlug: "defint-absolute-value-fold",
       intuition:
         "\\(|f(x)|\\) keeps the parts of \\(y=f(x)\\) above the axis and reflects the parts below it. So \\(|x^2-a^2|\\) is the upward parabola outside \\([-a,a]\\) and the cap \\(a^2-x^2\\) inside it. For a product like \\(x|x-a|\\), the sign changes only at \\(x=a\\). Split at every zero of the quantity inside the modulus.",
       definition:

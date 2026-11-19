@@ -13,6 +13,7 @@ export const RELATION_COUNT_FN_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jfn-count-pairs",
       name: "Counting the pairs in a relation",
+      visualizationSlug: "sets-cartesian-grid",
       intuition:
         "Take the first element one value at a time and count its partners, then add. When a relation on \\(A\\times B\\) has a condition linking \\(a_1\\) with \\(b_2\\) and a separate condition linking \\(a_2\\) with \\(b_1\\), count each condition on its own and multiply. When the condition is 'sum on the left = sum on the right', list how often each sum occurs on each side and multiply the matching frequencies.",
       definition:

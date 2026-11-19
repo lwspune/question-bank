@@ -13,6 +13,7 @@ export const MONOTONIC_AOD_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jaod-sign",
       name: "The sign of the derivative",
+      visualizationSlug: "aod-sign-of-derivative",
       intuition:
         "A function increases where \\(f'>0\\) and decreases where \\(f'<0\\). Factor \\(f'\\), mark its zeros and the points where it or \\(f\\) is undefined, and read the sign on each interval. Zeros of \\(f'\\) at isolated points do not stop a function increasing: \\(x^3\\) increases everywhere.",
       definition:

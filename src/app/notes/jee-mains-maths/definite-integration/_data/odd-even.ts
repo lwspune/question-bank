@@ -13,6 +13,7 @@ export const ODD_EVEN_DI_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jdi-odd-even",
       name: "Odd parts vanish, even parts double",
+      visualizationSlug: "even-odd-symmetry",
       intuition:
         "On \\([-a,a]\\) an odd integrand contributes 0 and an even one contributes twice its integral on \\([0,a]\\). So split the integrand into its odd and even parts before doing anything else. A term like \\(\\frac{x^3}{x^2+2|x|+1}\\) is odd, because everything but \\(x^3\\) depends only on \\(|x|\\).",
       definition:
