@@ -68,6 +68,7 @@ export const MOT_BOND_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcbond-bond-order",
       name: "Bond order from the MO diagram",
+      visualizationSlug: "jee-mo-diagram",
       intuition:
         "Electrons in bonding orbitals hold the atoms together and electrons in antibonding orbitals push them apart. Bond order is the net count of shared pairs. A higher bond order means a shorter, stronger bond; a bond order of zero means the molecule does not exist.",
       definition:

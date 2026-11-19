@@ -76,6 +76,14 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import JeeCrystalFieldSplitting from "./visualizations/JeeCrystalFieldSplitting";
+import JeeMoDiagram from "./visualizations/JeeMoDiagram";
+import JeeRaoultDeviations from "./visualizations/JeeRaoultDeviations";
+import JeeReactionOrderPlots from "./visualizations/JeeReactionOrderPlots";
+import JeeArrheniusPlot from "./visualizations/JeeArrheniusPlot";
+import JeeRadialProbability from "./visualizations/JeeRadialProbability";
+import JeeBornHaber from "./visualizations/JeeBornHaber";
+import JeeComplexIsomers from "./visualizations/JeeComplexIsomers";
 import JeeMovingRodEmf from "./visualizations/JeeMovingRodEmf";
 import JeeMalusPolaroids from "./visualizations/JeeMalusPolaroids";
 import JeeGaussFieldGraphs from "./visualizations/JeeGaussFieldGraphs";
@@ -831,6 +839,22 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "jee-crystal-field-splitting":
+      return <JeeCrystalFieldSplitting />;
+    case "jee-mo-diagram":
+      return <JeeMoDiagram />;
+    case "jee-raoult-deviations":
+      return <JeeRaoultDeviations />;
+    case "jee-reaction-order-plots":
+      return <JeeReactionOrderPlots />;
+    case "jee-arrhenius-plot":
+      return <JeeArrheniusPlot />;
+    case "jee-radial-probability":
+      return <JeeRadialProbability />;
+    case "jee-born-haber":
+      return <JeeBornHaber />;
+    case "jee-complex-isomers":
+      return <JeeComplexIsomers />;
     case "jee-moving-rod-emf":
       return <JeeMovingRodEmf />;
     case "jee-malus-polaroids":

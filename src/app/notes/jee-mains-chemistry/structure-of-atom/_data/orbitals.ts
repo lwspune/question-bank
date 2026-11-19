@@ -68,6 +68,7 @@ export const ORBITALS_ATOM_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jcatom-probability-plots",
       name: "Probability plots, boundary surfaces and shapes",
+      visualizationSlug: "jee-radial-probability",
       intuition:
         "Two different plots describe an orbital. \\(\\psi^2\\) is the probability density at a point. The radial distribution \\(4\\pi r^2\\psi^2\\) is the probability of finding the electron in a thin shell at distance \\(r\\). For 1s, the density is highest at the nucleus, but the shell is most likely at \\(a_0\\), because a shell far out has more volume.",
       definition:

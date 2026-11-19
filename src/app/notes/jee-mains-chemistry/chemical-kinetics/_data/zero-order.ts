@@ -124,6 +124,7 @@ export const JEE_CH_KIN_ZERO_ORDER_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jckin-order-graphs",
       name: "Identifying zero and first order from the shape of a graph",
+      visualizationSlug: "jee-reaction-order-plots",
       intuition:
         "Each order has one pair of axes that gives a straight line. Zero order is straight in \\([A]\\) against \\(t\\); first order is straight in \\(\\ln[A]\\) against \\(t\\). Read which plot is straight and which way it slopes.",
       definition:

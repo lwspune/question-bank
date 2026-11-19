@@ -126,6 +126,7 @@ export const RAOULT_SOL_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jcsol-deviations",
       name: "Positive and negative deviations from Raoult's law",
+      visualizationSlug: "jee-raoult-deviations",
       intuition:
         "An ideal mixture has A–B attractions equal to the average of A–A and B–B. If the new A–B attractions are weaker, molecules escape more easily: the vapour pressure rises above the Raoult line (positive deviation). If they are stronger, often a new hydrogen bond, the vapour pressure falls below it (negative deviation).",
       definition:

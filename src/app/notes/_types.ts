@@ -477,6 +477,14 @@ export type VisualizationSlug =
   | "jee-logic-gate-switches"
   | "jee-magnetic-dipole-torque"
   | "jee-apparent-depth"
+  | "jee-crystal-field-splitting"
+  | "jee-mo-diagram"
+  | "jee-raoult-deviations"
+  | "jee-reaction-order-plots"
+  | "jee-arrhenius-plot"
+  | "jee-radial-probability"
+  | "jee-born-haber"
+  | "jee-complex-isomers"
   | "imat-chart-types";
 
 export type TrapCallout = {
