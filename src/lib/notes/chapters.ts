@@ -3091,6 +3091,21 @@ import {
   HB9_ATOMIC_NOTES,
   HB9_ATOMIC_SLUGS,
 } from "@/app/notes/homi-bhabha-9-chemistry/atomic-structure/_data";
+import {
+  HB9_ELECTRICITY_CHAPTER,
+  HB9_ELECTRICITY_NOTES,
+  HB9_ELECTRICITY_SLUGS,
+} from "@/app/notes/homi-bhabha-9-physics/current-electricity/_data";
+import {
+  HB9_LIGHT_CHAPTER,
+  HB9_LIGHT_NOTES,
+  HB9_LIGHT_SLUGS,
+} from "@/app/notes/homi-bhabha-9-physics/light/_data";
+import {
+  HB9_FORCE_CHAPTER,
+  HB9_FORCE_NOTES,
+  HB9_FORCE_SLUGS,
+} from "@/app/notes/homi-bhabha-9-physics/force-laws-of-motion/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -9871,6 +9886,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HB9_SOUND_CHAPTER,
     notes: HB9_SOUND_NOTES,
     slugs: HB9_SOUND_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Physics",
+    subjectRoute: "homi-bhabha-9-physics",
+    subjectDisplay: "Homi Bhabha Physics",
+    chapterSlug: "current-electricity",
+    chipLabel: "Current Electricity notes",
+    chapter: HB9_ELECTRICITY_CHAPTER,
+    notes: HB9_ELECTRICITY_NOTES,
+    slugs: HB9_ELECTRICITY_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Physics",
+    subjectRoute: "homi-bhabha-9-physics",
+    subjectDisplay: "Homi Bhabha Physics",
+    chapterSlug: "light",
+    chipLabel: "Light notes",
+    chapter: HB9_LIGHT_CHAPTER,
+    notes: HB9_LIGHT_NOTES,
+    slugs: HB9_LIGHT_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Physics",
+    subjectRoute: "homi-bhabha-9-physics",
+    subjectDisplay: "Homi Bhabha Physics",
+    chapterSlug: "force-laws-of-motion",
+    chipLabel: "Force and Laws of Motion notes",
+    chapter: HB9_FORCE_CHAPTER,
+    notes: HB9_FORCE_NOTES,
+    slugs: HB9_FORCE_SLUGS,
   },
   {
     examName: "Homi Bhabha Class 9",
