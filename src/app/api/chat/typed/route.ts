@@ -92,9 +92,9 @@ import { getPathForV } from "@/lib/path/service";
 import { getOwnProfile, updateOwnProfile } from "@/lib/profile/service";
 import { getOwnLadder } from "@/lib/drill/service";
 import { passOnSale } from "@/lib/billing/passOnSale";
-import { hourlyLimitLine, hourlyOutcome, vPassTier } from "@/lib/chat/hourlyLimit";
+import { hourlyLimitLine, hourlyOutcome, vOfferScope, vPassTier } from "@/lib/chat/hourlyLimit";
+import { planSiteForHost } from "@/lib/sites/intl";
 import { loadEntitlements } from "@/lib/entitlements/query";
-import { SCOPE_DOWNLOADS } from "@/lib/entitlements/access";
 import { readCountry } from "@/lib/acquisition/country";
 import type { Performance } from "@/lib/performance/compute";
 
@@ -215,6 +215,8 @@ export async function POST(request: NextRequest) {
     const settings = await readChatSettings(admin);
     // Every price V shows is the buyer's country price (2026-11-15).
     const country = readCountry(request.headers);
+    // V on intl.pyqvault.com (2026-11-19): its own exams, passes and pages there.
+    const site = planSiteForHost(request.headers.get("host"));
 
     // Outside a request scope (route tests) the session read throws: treat as signed out.
     let userId: string | null = null;
@@ -258,7 +260,8 @@ export async function POST(request: NextRequest) {
           });
         }
         const line = hourlyLimitLine(outcome.limit, rl.retryAfter);
-        const pass = outcome.offerPremium ? await passOnSale("pyqvault", { scope: SCOPE_DOWNLOADS, country }) : null;
+        const offerScope = vOfferScope(site, cleanPagePath(raw.pagePath));
+        const pass = outcome.offerPremium && offerScope ? await passOnSale(site, { scope: offerScope, country }) : null;
         return NextResponse.json(
           {
             error: line,
@@ -373,6 +376,7 @@ export async function POST(request: NextRequest) {
           const profile = ownId ? await readProfileForV(ownId) : null;
           const context: VContextOptions = {
             page: pagePath,
+            site,
             country,
             signedIn: ownId !== null,
             profileExamSlugs: profile?.examSlugs ?? [],
@@ -481,7 +485,12 @@ export async function POST(request: NextRequest) {
         ? stepQuestionIdOf({ reply, toolCalls: recorded.toolCalls, message, askedQuestionId: asked?.id ?? null })
         : null;
     // Read only when the limit was met, so an ordinary reply reads no plans.
-    const passOffer = recorded.source === "ai" && limitHit !== null ? { limit: limitHit, pass: await passOnSale("pyqvault", { country }) } : null;
+    // On intl the pass for the exam on the page (2026-11-19); www's offer is unchanged.
+    const limitScope = site === "intl" ? vOfferScope(site, pagePath) : undefined;
+    const passOffer =
+      recorded.source === "ai" && limitHit !== null && limitScope !== null
+        ? { limit: limitHit, pass: await passOnSale(site, { scope: limitScope, country }) }
+        : null;
 
     // Only on an AI answer: a fallback reply never ran the tools.
     const questionFields =

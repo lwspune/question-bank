@@ -78,6 +78,7 @@ export default function QuestionCard({
   breadcrumbFixed,
   hideCart = false,
   resources,
+  teachNotesHref = null,
   itemStats,
   surface = "bank",
   defaultExpanded = false,
@@ -104,6 +105,11 @@ export default function QuestionCard({
   hideCart?: boolean;
   /** Optional links to strategy guide + concept notes that explain this question's lever. */
   resources?: QuestionResources;
+  /**
+   * The notes page the card sits on (the notes drill panel, 2026-11-19): Teach me the idea opens it when the
+   * card has no notes link of its own. Without it the button messaged V on the very notes page it explains.
+   */
+  teachNotesHref?: string | null;
   /**
    * Pooled student performance. STAFF ONLY — the page does not fetch it for
    * anyone else, and the RLS policy on `question_item_stats` refuses it
@@ -686,7 +692,7 @@ export default function QuestionCard({
               <MomentLine
                 questionId={question.id}
                 hasSolution={Boolean(question.solution)}
-                notesHref={resources?.notes?.href ?? null}
+                notesHref={resources?.notes?.href ?? teachNotesHref ?? null}
                 onTeach={(offer) => resources?.notes && leaveForNotes(resources.notes.href, "offer", offer)}
               />
             )}

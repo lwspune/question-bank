@@ -407,6 +407,12 @@ export const ENEM_ACTIVE_KEEP = 5;
  * to 18 Nov 2026 with no trial, 4 of 67 (6%) bought a pass after their 3rd day.
  */
 export const PRACTICE_TRIAL_BASELINE_PCT = 6;
+/**
+ * "v-intl": international students (an intl exam in target_exams) who ask V a
+ * question in 3 weeks, and of them who come back to V on a second day.
+ */
+export const V_INTL_ASKERS_KEEP = 10;
+export const V_INTL_RETURNERS_KEEP = 3;
 /** "practice-trial": keep at this share of offered students buying, or more. */
 export const PRACTICE_TRIAL_KEEP_PCT = 10;
 /** "practice-trial": switch off at this share or less. */
@@ -569,7 +575,8 @@ export type Readout =
   | "enem-interest"
   | "offline-classes"
   | "play-games"
-  | "practice-trial";
+  | "practice-trial"
+  | "v-intl";
 
 export type Experiment = {
   id: string;
@@ -1681,6 +1688,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-19",
     windowDays: 42,
     readout: "practice-trial",
+    status: "running",
+  },
+  {
+    id: "v-intl",
+    title: "V on the international site",
+    change:
+      "V shows on intl.pyqvault.com, told only what is true there: IMAT and ENEM, the IMAT pass paid by card through Paddle (rupees for a buyer in India), intl's own pages, and replies in the student's language. Build a practice test stays www-only.",
+    why: "From 30 Oct V was hidden on intl while its Ask V buttons still sent: 3 IMAT students tapped, V answered, and they saw nothing (one tapped five times and hit the hourly limit). They were asking for it.",
+    metric:
+      "International students (an intl exam in student_profiles.target_exams) who sent V a typed question since it went live, how many came back to V on a second day, and their hourly-limit hits. scripts/chat/v-intl-readout.sql",
+    rule: `Read at 3 weeks. Keep V on intl and give it more intl work (an IMAT practice-test builder) if ${V_INTL_ASKERS_KEEP}+ international students ask it something and ${V_INTL_RETURNERS_KEEP}+ come back on a second day. Fewer: leave V on (it costs little) and add nothing more for intl.`,
+    liveSince: "2026-11-19",
+    windowDays: 21,
+    readout: "v-intl",
     status: "running",
   },
 ];

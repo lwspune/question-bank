@@ -23,7 +23,14 @@ import {
   GUIDE_FACTS,
   examFactFromEntry,
   buildNotesFacts,
+  buildIntlFreeFacts,
+  buildIntlNotesFacts,
+  INTL_NAV_FACTS,
+  type ChatSite,
 } from "./facts";
+import { LIVE_INTL_EXAMS } from "@/lib/sites/intl";
+import { forSite } from "@/lib/sites/siteScope";
+import { payMethods } from "@/lib/billing/paymentLine";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { chapterPath, findChapters, formatChapterHits, type ChapterSearchRow } from "./chapterSearch";
 import { pathsInReply } from "./replyLinks";
@@ -119,35 +126,50 @@ export async function loadVContext(
     language?: VLanguage | null;
     /** Saves a language asked for every reply (set_language); absent when signed out. */
     saveLanguage?: ((lang: VLanguage) => Promise<boolean>) | null;
+    /** The site V answers on (2026-11-19): www (the default) or intl.pyqvault.com. */
+    site?: ChatSite;
   } = {}
 ): Promise<VContext> {
-  const loadChapters = opts.loadChapters ?? listChapterSearchRows;
+  const site: ChatSite = opts.site ?? "pyqvault";
+  const intl = site === "intl";
+  // Each site's own exams only (2026-11-19): a chapter of the other site's exam redirects the student
+  // there, signed out (each site keeps its own login).
+  const allChapters = opts.loadChapters ?? listChapterSearchRows;
+  const loadChapters = async () => forSite(await allChapters(), (r) => r.examName, intl);
+  const registry = intl ? LIVE_INTL_EXAMS : PYQVAULT_EXAMS;
   // The bank total comes from the cached catalogue too (2026-11-08): it was its
   // own uncached count of every PUBLIC question on every message.
   const [plans, limits, catalog] = await Promise.all([
     listActivePlans(anon),
     readFreeLimits(anon),
-    (opts.loadExamCatalog ?? getCachedExamCatalog)().catch((err) => {
+    (opts.loadExamCatalog ?? (() => getCachedExamCatalog(registry)))().catch((err) => {
       console.error("V: exam catalogue unavailable", err);
       return null;
     }),
   ]);
   const pyqBySlug = catalog ? new Map(catalog.exams.map((e) => [e.slug, e.counts.pyq] as const)) : null;
 
-  const exams = buildExamFacts(PYQVAULT_EXAMS.map((e) => examFactFromEntry(e, pyqBySlug)));
+  const exams = buildExamFacts(registry.map((e) => examFactFromEntry(e, pyqBySlug)), site);
   // Never an exam with nothing public: its notes would point a student at an exam we do not show.
-  const notes = buildNotesFacts(
-    getNotesExamGroups().filter((g) => EXAM_REGISTRY.find((e) => e.slug === g.slug)?.noPublicContent !== true)
-  );
+  const notes = intl
+    ? buildIntlNotesFacts(LIVE_INTL_EXAMS)
+    : buildNotesFacts(
+        getNotesExamGroups().filter((g) => EXAM_REGISTRY.find((e) => e.slug === g.slug)?.noPublicContent !== true)
+      );
+  // Each site's passes (0203), and a country price (the Gulf's, IMAT's in rupees) only to a buyer there.
+  const onSale = plansForBuyer(plans, site, opts.country ?? null);
+  const nav = intl ? INTL_NAV_FACTS : NAV_FACTS;
+  const guides = intl ? [] : GUIDE_FACTS;
   const system = buildSystemPrompt({
+    site,
     exams,
-    // V speaks to www's students: the intl site's USD pass is not theirs to buy
-    // (0203), and a country price (the Gulf's) only to a buyer in that country.
-    plans: buildPlanFacts(plansForBuyer(plans, "pyqvault", opts.country ?? null)),
-    free: buildFreeFacts(limits),
-    bankTotal: catalog?.allPublicQuestions ?? 0,
-    nav: NAV_FACTS,
-    guides: GUIDE_FACTS,
+    plans: buildPlanFacts(onSale),
+    payBy: payMethods(onSale),
+    free: intl ? buildIntlFreeFacts(limits) : buildFreeFacts(limits),
+    // On intl, its own exams' total (the catalogue of LIVE_INTL_EXAMS); on www, every PUBLIC question.
+    bankTotal: (intl ? catalog?.totalPublicQuestions : catalog?.allPublicQuestions) ?? 0,
+    nav,
+    guides,
     notes,
     explainEnabled: Boolean(opts.questionTools),
     planEnabled: opts.planEnabled === true,
@@ -173,7 +195,7 @@ export async function loadVContext(
     language: opts.language ?? null,
   });
 
-  const allowedPaths = new Set(pathsInReply([...NAV_FACTS, ...GUIDE_FACTS, ...exams, ...notes].join("\n")));
+  const allowedPaths = new Set(pathsInReply([...nav, ...guides, ...exams, ...notes].join("\n")));
   if (opts.page) allowedPaths.add(opts.page);
 
   const findChaptersTool: VTool = {

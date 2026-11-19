@@ -5,6 +5,8 @@ import Link from "next/link";
 import { ArrowRight, Target, TrendingUp } from "lucide-react";
 import { trackFunnel } from "@/lib/analytics/trackFunnel";
 import type { ProgressCardView } from "@/lib/chat/progressCardServer";
+import { useIntlSite } from "@/lib/sites/useIntlSite";
+import { progressPathFor } from "@/lib/sites/intl";
 
 /**
  * V's "How's my progress" card (2026-10-27; lib/chat/progressCard.ts), shown
@@ -13,6 +15,8 @@ import type { ProgressCardView } from "@/lib/chat/progressCardServer";
  * steps only: the drill (when mistakes are waiting) and /performance.
  */
 export default function VProgressCard({ onNavigate }: { onNavigate?: () => void }) {
+  // Full progress is /me/map on intl, which serves no /performance (2026-11-19).
+  const progressPath = progressPathFor(useIntlSite() ? "intl" : "pyqvault");
   const [exam, setExam] = useState<string | null>(null);
   const [card, setCard] = useState<ProgressCardView | null>(null);
   const [state, setState] = useState<"loading" | "ready" | "none" | "failed">("loading");
@@ -126,7 +130,7 @@ export default function VProgressCard({ onNavigate }: { onNavigate?: () => void 
           </Link>
         )}
         <Link
-          href="/performance"
+          href={progressPath}
           onClick={() => go("performance")}
           className="inline-flex items-center gap-1 rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3.5 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
