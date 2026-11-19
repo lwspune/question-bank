@@ -49,8 +49,8 @@ import { loadPaperRepeats } from "../../../src/lib/chat/paperRepeatsServer";
 import { notesTappedFrom, tappedFrom } from "../../../src/lib/chat/questionToolSet";
 import { answerIn } from "../../../src/lib/chat/askVEvent";
 import { conceptSources } from "../../../src/lib/chat/conceptSearchServer";
-import { parseNotesRefKey } from "../../../src/lib/chat/notesItem";
-import { loadNotesItemBrief } from "../../../src/lib/chat/notesItemServer";
+import { notesPageOf, parseNotesRefKey } from "../../../src/lib/chat/notesItem";
+import { loadNotesItemBrief, loadNotesPasteBrief } from "../../../src/lib/chat/notesItemServer";
 import { aiAnswerCostUsd } from "../../../src/lib/chat/interactions";
 import type { ModelTurn } from "../../../src/lib/chat/conversation";
 import type { SavedPlan } from "../../../src/lib/chat/weekPlan";
@@ -175,6 +175,8 @@ async function main() {
             spendReveal: c.signed_in ? async () => ({ kind: "ok" as const, counts: false }) : null,
             loadSimilar: (vq) => loadSimilarId(anon, vq, []),
             searchQuestions: (text, chapterId) => searchVQuestions(anon, text, chapterId),
+            // As live: a paste on a notes page is looked for on that page first (2026-11-19).
+            ...(notesPageOf(c.page_path) ? { findNotesPaste: (text: string) => loadNotesPasteBrief(c.page_path, text) } : {}),
             onSimilar: () => {},
             onMatch: () => {},
             onExplained: () => {},

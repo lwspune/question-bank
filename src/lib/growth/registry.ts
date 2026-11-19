@@ -332,6 +332,14 @@ export const CHECKOUT_NO_CONTACT_PAID_BASELINE_PCT = 25;
  */
 export const CHECKOUT_RETURN_LATER_PAID_BASELINE_PCT = 14;
 /**
+ * "checkout-followup": of students who left a checkout unpaid (20 Oct to 12
+ * Nov, the follow-up's own rule), the share who paid within 7 days: 2 of 26
+ * with a mobile, 3 of 39 without. 8% both.
+ */
+export const CHECKOUT_FOLLOWUP_BASELINE_PCT = 8;
+/** Points the messageable group must beat the bar-only group by. */
+export const CHECKOUT_FOLLOWUP_KEEP_POINTS = 10;
+/**
  * "welcome-exam-confirm": of the 2,021 students who signed up in the 30 days
  * to 2026-11-12 (staff left out), the share who left /welcome with an exam
  * (955), and the share who never answered its first screen at all (712).
@@ -549,6 +557,7 @@ export type Readout =
   | "answer-limit-copy"
   | "checkout-contact"
   | "checkout-return"
+  | "checkout-followup"
   | "welcome-exam-confirm"
   | "exam-guess-card"
   | "install-app"
@@ -1526,11 +1535,25 @@ export const EXPERIMENTS: readonly Experiment[] = [
       "A student who opened a pass checkout and did not pay sees a bar under the header on the first page they open on a later day: \"Your checkout didn't complete. The Practice Pass gives you unlimited practice for 6 months, and the more questions you practise, the more marks you get.\" with Complete payment (Razorpay in place, their own price), Ask a parent to pay and Not now. Up to 2 days within 7 days of the checkout; Not now or a payment stops it.",
     why: "45 days to 2026-11-12: 110 students opened checkout, 71 never paid, and 43 of those 71 came back on their own (27 the next day). Nothing reminded them. Owner's wording: practice is what improves the score.",
     metric:
-      "Students who left a checkout unpaid, and the share who paid on a later day; the bar's chain from paywall_event gate return: shown, then checkout_opened, then paid",
+      "Students who left a checkout unpaid, and the share who paid on a later day; the bar's chain from paywall_event gate return: shown, then checkout_opened, then paid. From 2026-11-19 the owner also WhatsApps students with a mobile (checkout-followup, owner's choice to start before this readout), so read the bar on students WITHOUT a mobile too: only the bar reaches them",
     rule: `Keep it if more than ${CHECKOUT_RETURN_LATER_PAID_BASELINE_PCT}% of students who leave a checkout pay on a later day (12 of 83 before, with no reminder).`,
     liveSince: "2026-11-13",
     windowDays: 28,
     readout: "checkout-return",
+    status: "running",
+  },
+  {
+    id: "checkout-followup",
+    title: "The owner WhatsApps students who left a checkout unpaid",
+    change:
+      "At 18:00 IST the owner gets one email listing every student who opened a pass checkout in the last 24 hours and did not pay (once per student per 14 days, staff and intl passes left out), with where they met the offer, the reason they tapped, and a WhatsApp link that opens with a message typed: who they are, the pass and price, an offer to help, and the student's parent pay link. Students with no mobile are listed by email. The owner sends each by hand.",
+    why: "20 Oct to 12 Nov, 65 students left a checkout unpaid (26 with a mobile) and only 5 paid within 7 days. The bar (checkout-return) is the automatic reminder; a personal message from the founder answers the question or the parent problem the bar cannot.",
+    metric:
+      "Of students listed, the share who pay a pass within 7 days of leaving, those WITH a mobile (messageable) against those WITHOUT (bar only, same period), so the bar's effect cancels out. Before: 2 of 26 with a mobile, 3 of 39 without (8% each). scripts/billing/checkout-followup-readout.sql",
+    rule: `Read at 4 weeks. It worked if students with a mobile pay at ${CHECKOUT_FOLLOWUP_KEEP_POINTS}+ points above students without one (both were ${CHECKOUT_FOLLOWUP_BASELINE_PCT}% before). Small numbers (about 1 messageable student a day), so a rough read.`,
+    liveSince: "2026-11-19",
+    windowDays: 28,
+    readout: "checkout-followup",
     status: "running",
   },
   {

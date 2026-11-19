@@ -6,11 +6,12 @@ import AppHeader from "@/components/AppHeader";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
 import { loadEntitlements } from "@/lib/entitlements/query";
-import { formatPrice, ownsPlan, planLengthLabel, plansForBuyer, type Plan } from "@/lib/billing/plans";
+import { formatPrice, offersParentLink, ownsPlan, planLengthLabel, plansForBuyer, type Plan } from "@/lib/billing/plans";
 import { readCountry } from "@/lib/acquisition/country";
 import { planSiteForHost } from "@/lib/sites/intl";
 import { listActivePlans } from "@/lib/billing/plansQuery";
 import PricingClient from "./PricingClient";
+import AskParent from "@/components/billing/AskParent";
 import PaddleLinkResume from "./PaddleLinkResume";
 import { paymentLine } from "@/lib/billing/paymentLine";
 import { afterPurchasePath, pricingHref } from "@/lib/billing/checkoutReturn";
@@ -201,11 +202,18 @@ export default async function PricingPage(
                         </Link>
                       </div>
                     ) : user ? (
-                      <PricingClient
-                        planId={plan.id}
-                        returnTo={returnTo}
-                        buttonLabel={`${fixView?.credits[plan.id] ? "Upgrade to" : "Buy"} ${plan.label}: ${fixView?.prices[plan.id] ?? formatPrice(plan.amountPaise, plan.currency)}`}
-                      />
+                      <>
+                        <PricingClient
+                          planId={plan.id}
+                          returnTo={returnTo}
+                          buttonLabel={`${fixView?.credits[plan.id] ? "Upgrade to" : "Buy"} ${plan.label}: ${fixView?.prices[plan.id] ?? formatPrice(plan.amountPaise, plan.currency)}`}
+                        />
+                        {/* As under every pass offer (2026-11-19: a student asked V for it here). Not beside a
+                            points, referral or upgrade price, which the parent's link does not carry. */}
+                        {offersParentLink(plan) && !fixView?.prices[plan.id] && (
+                          <AskParent planId={plan.id} gate="pricing" className="mt-3" />
+                        )}
+                      </>
                     ) : (
                       <div className="space-y-2 text-center">
                         <Button href={`/login?next=${encodeURIComponent(next)}`}>Sign in to buy</Button>

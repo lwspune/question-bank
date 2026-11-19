@@ -167,6 +167,25 @@ describe("buildPlanFacts", () => {
     expect(facts[0]).toContain("Unlimited mocks");
     expect(facts[0]).toContain("PDF downloads");
   });
+
+});
+
+// 2026-11-19: "Does a practice pass available for all exam practice or just one" got "My information doesn't
+// say whether it covers every exam or only one". A pass is never tied to an exam (userHasAccess checks only the
+// scope), and V speaks only on www. It is rule 6c's, not a line among the passes: as a line there, V added it to
+// "is this a free website" and dropped /pricing (2 of 6 runs passed, main 3 of 4).
+describe("which exams a pass covers", () => {
+  const p = buildSystemPrompt({ exams: [], plans: [], bankTotal: 1, nav: NAV_FACTS });
+
+  it("rule 6c says one pass covers every exam, not one exam, and links /pricing", () => {
+    const rule = p.split("\n").find((l) => l.startsWith("6c."))!;
+    expect(rule).toMatch(/every exam on PYQ Vault, not just one/);
+    expect(rule).toMatch(/one exam or all of them[^.]*\/pricing/);
+  });
+
+  it("adds no line to the passes on sale", () => {
+    expect(buildPlanFacts([{ label: "Practice Pass", amountPaise: 19900, durationDays: 182, scope: "practice" }])).toHaveLength(1);
+  });
 });
 
 describe("buildFreeFacts", () => {
@@ -236,6 +255,22 @@ describe("NAV_FACTS", () => {
     expect(line).toBeDefined();
     expect(line).toMatch(/contact/i);
     expect(line).toMatch(/payment/i);
+  });
+
+  // 2026-11-19: "sign out button" got "I don't have details on where the sign-out button is".
+  it("says where Sign out is", () => {
+    const line = NAV_FACTS.find((f) => /sign out/i.test(f));
+    expect(line).toBeDefined();
+    expect(line).toMatch(/top right/i);
+  });
+
+  // 2026-11-19: "Ask parent to pay option" got "I don't have any information about a way to ask a parent to pay".
+  it("says where Ask a parent to pay is and that the parent needs no account", () => {
+    const line = NAV_FACTS.find((f) => /ask a parent to pay/i.test(f));
+    expect(line).toBeDefined();
+    expect(line).toMatch(/\/pricing/);
+    expect(line).toMatch(/WhatsApp/);
+    expect(line).toMatch(/no account/i);
   });
 
   it("names the student's own progress pages, so V can link them (2026-10-16)", () => {
@@ -630,6 +665,14 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/One more like this/);
     // The full eval run: "REMIND OF DOING Q 44 RETRY" stopped saving the question. A save still uses recent_questions.
     expect(p).toMatch(/To save or retry it, use recent_questions as above/);
+  });
+
+  // 2026-11-19 (case 62295886): on a new notes page, "This question explanation" with nothing attached got
+  // the noun question from the previous page explained again. Notes questions are never in recent_questions.
+  it("on a notes page asks which question, and never re-explains one from another page as 'this question'", () => {
+    const p = buildSystemPrompt({ ...base, explainEnabled: true });
+    expect(p).toMatch(/On a notes page .*tap Ask V on it or paste it/);
+    expect(p).toMatch(/explained earlier on another page is not "this question"/);
   });
 
   it("tells V it cannot write new questions", () => {
