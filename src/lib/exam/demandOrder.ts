@@ -40,7 +40,7 @@ export const EXAM_DEMAND_ORDER: readonly string[] = [
   "iiser-iat",
   "ugc-net",
   "clat",
-  "rrb-ntpc",
+  "RRB NTPC", // the "rrb-ntpc" exam until Undergraduate joined (2026-11-19); its demand is Graduate's
   "capf-ac",
   "rpsc-ras", // added 2026-11-16 with no demand data yet; move once students choose it
   "UP Board", // added 2026-11-17 with no demand data yet; move once students choose it
