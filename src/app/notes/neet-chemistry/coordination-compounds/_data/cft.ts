@@ -12,6 +12,7 @@ export const NEET_CH_CC_CFT_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nchcc-splitting",
       name: "Crystal field splitting and the spectrochemical series",
+      visualizationSlug: "jee-crystal-field-splitting",
       intuition:
         "Crystal field theory treats the ligands as negative charges (or the negative ends of dipoles) around the metal. In an octahedral complex the ligands come in along the x, y and z axes. The two d orbitals that point along the axes are pushed up in energy; the three that point between the axes are lower. The gap between the two sets is the crystal field splitting. A strong-field ligand makes a big gap, and then the d electrons would rather pair in the lower set than climb the gap.",
       definition:
