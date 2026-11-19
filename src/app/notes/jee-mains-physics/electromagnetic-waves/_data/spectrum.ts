@@ -13,6 +13,7 @@ export const SPECTRUM_EMW_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jpemw-spectrum-order",
       name: "Order and wavelength ranges of the electromagnetic spectrum",
+      visualizationSlug: "imat-em-spectrum",
       intuition:
         "Every band is the same kind of wave, travelling at c in vacuum; only the wavelength differs. Line them up from shortest to longest and the frequency and the photon energy fall in the same order. Learn the seven names in order and the rough edge of each band.",
       definition:

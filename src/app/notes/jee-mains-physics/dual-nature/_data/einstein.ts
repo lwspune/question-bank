@@ -13,6 +13,7 @@ export const EINSTEIN_DUAL_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpdual-one-source",
       name: "Einstein's photoelectric equation for one light",
+      visualizationSlug: "cet-photoelectric-threshold",
       intuition:
         "A photon gives all its energy to one electron. Part of it pays the work function to get the electron out; what is left is the kinetic energy of the fastest electron. The stopping potential is that kinetic energy measured in volts: an electron with 3 eV to spare is stopped by 3 V. Working in electron-volts keeps every step to one line.",
       definition:

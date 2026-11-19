@@ -13,6 +13,7 @@ export const LAWS_DUAL_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jpdual-pe-laws",
       name: "What frequency and intensity each control in the photoelectric effect",
+      visualizationSlug: "mp-photoelectric-setup",
       intuition:
         "One photon frees at most one electron, and it does so at once. The energy of each photon is set by the frequency, so the frequency decides whether an electron can leave and how much energy the fastest one carries. The intensity only sets how many photons arrive, so it decides how many electrons leave, never how fast. A wave picture of light cannot explain any of this, which is why the effect is the evidence for photons.",
       definition:
@@ -73,6 +74,7 @@ export const LAWS_DUAL_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jpdual-pe-graphs",
       name: "Reading photoelectric graphs",
+      visualizationSlug: "cet-photoelectric-graphs",
       intuition:
         "Rewrite Einstein's equation as V₀ = (h/e)ν − φ/e. That is a straight line in ν. Its slope is made only of constants of nature, so it is the same for every metal; the metal changes only where the line starts. The current-voltage curves follow from the laws: intensity raises the saturation current, frequency moves the cut-off voltage.",
       definition:

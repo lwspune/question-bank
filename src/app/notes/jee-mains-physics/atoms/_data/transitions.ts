@@ -13,6 +13,7 @@ export const TRANSITIONS_ATOM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpatom-photon-energy",
       name: "Photon energy and wavelength of a transition",
+      visualizationSlug: "mp-bohr-energy-levels",
       intuition:
         "When the electron falls from one level to another, the photon carries away exactly the gap between them. Work out the gap in electron-volts, then turn it into a wavelength with hc = 1240 eV nm. The gaps shrink as you go up the ladder, so the biggest photon energies, and the highest frequencies, come from jumps that end on the ground state.",
       definition:

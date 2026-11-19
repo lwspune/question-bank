@@ -13,6 +13,7 @@ export const PROJECTILE_PLANE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpplane-rht",
       name: "Time of flight, maximum height and range",
+      visualizationSlug: "kin-projectile-parabola",
       intuition:
         "Split the launch velocity in two. The horizontal part u cos θ never changes, because nothing acts sideways. The vertical part u sin θ is thrown straight up against g. So the time in the air comes from the vertical part alone, the height from the vertical part alone, and the range is the horizontal speed times the time in the air.",
       definition:

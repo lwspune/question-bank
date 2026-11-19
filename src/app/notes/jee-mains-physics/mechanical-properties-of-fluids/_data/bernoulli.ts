@@ -13,6 +13,7 @@ export const BERNOULLI_FLUID_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpfluid-pipe-flow",
       name: "Continuity and Bernoulli's equation in a pipe",
+      visualizationSlug: "cet-continuity-pipe",
       intuition:
         "A liquid cannot pile up inside a pipe, so the volume passing each section per second is the same: Av is constant. Where the pipe narrows, the liquid speeds up. It gains kinetic energy only if the liquid behind pushes harder than the liquid ahead, so the narrow part is at LOWER pressure. Bernoulli's equation is this energy balance written per unit volume.",
       definition:

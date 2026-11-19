@@ -13,6 +13,7 @@ export const GAS_LAWS_KTG_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpktg-gas-law",
       name: "One fixed amount of gas: P₁V₁/T₁ = P₂V₂/T₂",
+      visualizationSlug: "imat-boyle-curve",
       intuition:
         "For a fixed amount of gas, PV/T equals nR and so never changes. Hold any one of P, V and T, and the other two are tied: in a rigid sealed vessel the pressure rises in step with the kelvin temperature, and at constant temperature the volume grows as the pressure falls. A bubble rising through water is the classic case: the pressure on it drops from the water pressure at depth to the air pressure at the top.",
       definition:

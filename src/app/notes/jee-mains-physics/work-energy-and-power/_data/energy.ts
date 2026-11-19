@@ -134,6 +134,7 @@ export const ENERGY_WEP_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpwep-mech-energy",
       name: "Conservation of mechanical energy",
+      visualizationSlug: "wep-energy-conservation-track",
       intuition:
         "Normal reactions and the tension in an inextensible string are always at right angles to the motion, so they do no work. When only gravity and springs do work, kinetic plus potential energy stays the same. The speed at a point then depends only on how far the body has dropped, not on the shape of the track.",
       definition:

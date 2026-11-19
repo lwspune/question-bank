@@ -139,6 +139,7 @@ export const PHOTONS_DUAL_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpdual-threshold",
       name: "Work function, threshold frequency and threshold wavelength",
+      visualizationSlug: "cet-photoelectric-threshold",
       intuition:
         "An electron is held inside a metal. The least energy that frees one is the work function φ. A photon either has that much energy or it does not, and one photon acts on one electron. So there is a lowest frequency, and a longest wavelength, that can eject anything. Below it, no amount of brightness helps.",
       definition:

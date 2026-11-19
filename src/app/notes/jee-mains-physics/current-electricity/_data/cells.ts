@@ -13,6 +13,7 @@ export const CELLS_CE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpce-terminal-voltage",
       name: "EMF, internal resistance and terminal voltage",
+      visualizationSlug: "emf-internal-resistance",
       intuition:
         "Inside every real cell there is some resistance. When the cell delivers a current, part of its emf is used up pushing that current through itself, so less is left at the terminals. The more current it gives, the lower its terminal voltage. When a stronger source pushes current backwards through it, as in charging, the terminal voltage is higher than the emf.",
       definition:

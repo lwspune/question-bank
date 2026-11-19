@@ -13,6 +13,7 @@ export const DIPOLES_MM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpmm-dipole-field",
       name: "Magnetic dipole moment and the field of a bar magnet",
+      visualizationSlug: "bar-magnet-field-lines",
       intuition:
         "A bar magnet behaves like two poles of strength m a distance 2l apart, so its moment is m × 2l, pointing from S to N. A coil of current is the same kind of object with moment NIA. Far away, the field on the axis is twice the field on the equator at the same distance, and both fall as 1/r³. There are no single magnetic poles, so every field line closes on itself.",
       definition:

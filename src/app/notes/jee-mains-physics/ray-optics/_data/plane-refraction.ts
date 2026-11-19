@@ -13,6 +13,7 @@ export const PLANE_REFRACTION_RAY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpray-snell-slab",
       name: "Snell's law and the parallel slab",
+      visualizationSlug: "imat-snell-refraction",
       intuition:
         "Light slows down in an optically denser medium, n = c/v, and bends towards the normal. Snell's law links the angles measured from the normal on the two sides. A parallel-sided slab bends the ray in and bends it back out by the same amount, so the ray leaves parallel to its original direction, shifted sideways.",
       definition:

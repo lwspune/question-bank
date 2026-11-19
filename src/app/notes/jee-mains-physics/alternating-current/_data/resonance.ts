@@ -74,6 +74,7 @@ export const RESONANCE_AC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpac-res-current",
       name: "Current, impedance and power at resonance",
+      visualizationSlug: "cet-resonance-curve",
       intuition:
         "At resonance the reactances cancel, so the circuit behaves as if only R were there. The current is V/R, it is in step with the voltage, and the power is V²/R. L and C decide where resonance happens; only R decides how big the current gets. Below resonance the capacitor's reactance is larger, so the circuit is capacitive; above it, inductive.",
       definition:

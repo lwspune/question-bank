@@ -13,6 +13,7 @@ export const SPECTRA_ATOM_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jpatom-series-limits",
       name: "Hydrogen spectral series, first lines and series limits",
+      visualizationSlug: "cet-hydrogen-series",
       intuition:
         "Fix the lower level and let the upper level run up the ladder: that family of lines is a series. The first line comes from the next level up, the smallest jump, so it has the least energy and the LONGEST wavelength. The series limit comes from n = ∞, the biggest jump into that level, so it has the SHORTEST wavelength. Every wavelength is a simple fraction times 1/R, so one given wavelength fixes all the others.",
       definition:

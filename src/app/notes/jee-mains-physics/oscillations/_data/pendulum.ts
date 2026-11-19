@@ -13,6 +13,7 @@ export const PENDULUM_OSC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jposc-pendulum-basics",
       name: "Period of a simple pendulum and how it depends on length",
+      visualizationSlug: "osc-pendulum-restoring-force",
       intuition:
         "For small swings the pull back towards the lowest point is \\(mg\\theta\\), and the bob's mass cancels. So the period depends only on the length and on g, and grows as the square root of the length: four times the length, twice the period.",
       definition:

@@ -71,6 +71,7 @@ export const DIPOLE_ES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpes-dipole-torque",
       name: "Dipole in an external field: torque, energy and work",
+      visualizationSlug: "cet-dipole-torque",
       intuition:
         "In a uniform field the two charges feel equal and opposite forces, so the net force is zero but the pair is twisted towards the field. The energy is lowest when p points along E and highest when it points against it. Turning the dipole needs work equal to the change in that energy. In a field that varies, the two forces no longer cancel and the dipole is also pulled.",
       definition:

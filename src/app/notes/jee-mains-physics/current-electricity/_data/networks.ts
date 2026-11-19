@@ -13,6 +13,7 @@ export const NETWORKS_CE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpce-series-parallel",
       name: "Series, parallel and bent wires",
+      visualizationSlug: "resistors-series-parallel",
       intuition:
         "In series the same current passes through every resistor, so their voltages add and so do their resistances. In parallel every resistor has the same voltage, so their currents add and so do their conductances 1/R. A wire bent into a loop and tapped at two points is just two arcs in parallel, each with resistance in proportion to its length.",
       definition:

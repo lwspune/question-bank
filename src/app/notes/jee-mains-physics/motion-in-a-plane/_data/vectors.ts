@@ -13,6 +13,7 @@ export const VECTORS_PLANE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpplane-resultant",
       name: "Resultant of two vectors at an angle",
+      visualizationSlug: "vector-addition",
       intuition:
         "Place the tail of B at the head of A; the resultant runs from the tail of A to the head of B. Its size depends on the angle between them: largest (A + B) when they point the same way, smallest (|A − B|) when they are opposite, and √(A² + B²) when they are at right angles. Squaring the resultant turns every question about it into one line of algebra in cos θ.",
       definition:
@@ -70,6 +71,7 @@ export const VECTORS_PLANE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpplane-components",
       name: "Resolving vectors into components",
+      visualizationSlug: "magnitude-right-triangle",
       intuition:
         "Any vector in a plane is the sum of a piece along x and a piece along y. Resolve every vector this way, add all the x pieces and all the y pieces separately, and rebuild the resultant from the two totals. The only care needed is with the angle: the side adjacent to the given angle takes the cosine.",
       definition:
@@ -126,6 +128,7 @@ export const VECTORS_PLANE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpplane-products",
       name: "Dot product, cross product and projection",
+      visualizationSlug: "vector-projection",
       intuition:
         "The dot product measures how much two vectors point the same way: it is AB cos θ, a plain number, and zero when they are perpendicular. The cross product measures how much they point across each other: its size is AB sin θ, it points at right angles to both, and it is zero when they are parallel. In component form the dot product is a sum of three products and the cross product is a 3 × 3 determinant.",
       definition:

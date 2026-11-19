@@ -13,6 +13,7 @@ export const FIELD_ES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpes-point-field",
       name: "Field of point charges and null points",
+      visualizationSlug: "field-lines-charge",
       intuition:
         "A positive charge's field points away from it, a negative charge's towards it, and both fall as 1/r². With several charges, draw each field as an arrow at the point and add the arrows. A null point is where the arrows cancel: between two like charges, or outside two unlike charges on the side of the smaller one. Symmetry also cancels: equal charges at the corners of a regular polygon give no field at its centre.",
       definition:

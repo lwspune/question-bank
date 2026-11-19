@@ -130,6 +130,7 @@ export const PRISMS_RAY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpray-thin-prism-dispersion",
       name: "Thin prisms and dispersion",
+      visualizationSlug: "opt-prism-dispersion",
       intuition:
         "For a prism of small angle the deviation hardly depends on the angle of incidence: δ = (μ − 1)A. Because μ depends on colour, so does δ: violet is bent most, red least. Two thin prisms placed opposite ways can cancel the mean deviation and keep the colours spread, or cancel the spread and keep a deviation.",
       definition:
