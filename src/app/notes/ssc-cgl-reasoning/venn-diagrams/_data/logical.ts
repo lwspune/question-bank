@@ -12,6 +12,7 @@ export const SSC_RVD_LOGICAL_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrvdlo-apart",
       name: "Inside or apart",
+      visualizationSlug: "imat-syllogism-venn",
       intuition:
         "For any two classes, ask: is every member of one also in the other? If yes, its circle goes inside the other's. Do they share no members at all? Then the circles stand apart. These two answers settle most diagrams before you look at an option.",
       definition:

@@ -12,6 +12,7 @@ export const SSC2_M3_SCALING_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2m3sc-factors",
       name: "Scale factors for area and volume",
+      visualizationSlug: "imat-similar-scaling",
       intuition:
         "Double a sphere's radius and its surface becomes 4 times as big and its volume 8 times. Every percentage change in a solid works the same way: turn each change into a factor and multiply.",
       definition:

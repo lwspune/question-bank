@@ -12,6 +12,7 @@ export const SSC_RPF_QUARTER_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrpfqu-land",
       name: "Where the copies land",
+      visualizationSlug: "imat-paper-folding",
       intuition:
         "Folding a sheet in half twice stacks four layers. A cut through all four makes four holes, one in each quarter, placed like reflections of each other in the two fold lines. A cut that sits on a fold line joins its reflection and opens as one larger shape.",
       definition:

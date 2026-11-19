@@ -12,6 +12,7 @@ export const SSC_RVD_COUNTING_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrvdco-regions",
       name: "Reading one region at a time",
+      visualizationSlug: "sets-venn-three",
       intuition:
         "Three overlapping circles make seven regions: three where a circle stands alone, three where two circles overlap without the third, and one middle region inside all three. Every question names some of these regions, so name them first and only then add.",
       definition:

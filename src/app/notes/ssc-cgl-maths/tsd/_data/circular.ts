@@ -12,6 +12,7 @@ export const SSC_TD_CIRCULAR_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssctdct-first",
       name: "The first meeting on a circular track",
+      visualizationSlug: "af-circular-track",
       intuition:
         "Going the same way, the faster runner meets the slower one when he has run exactly one lap more, so the lap is the gap and the difference of the speeds closes it. Going opposite ways, they meet when their two distances add up to one lap, so the sum of the speeds closes it.",
       definition:

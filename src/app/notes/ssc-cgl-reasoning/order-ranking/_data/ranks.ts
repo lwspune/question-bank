@@ -144,6 +144,7 @@ export const SSC_ROR_RANKS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrorrk-seating",
       name: "Left and right in a row and around a circle",
+      visualizationSlug: "imat-seating-circle",
       intuition:
         "Left and right belong to the seated person, not to you. Turn yourself to face the way they face, and their right is your right. For a circle, picture yourself in a seat looking at the centre.",
       definition:

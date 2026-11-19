@@ -12,6 +12,7 @@ export const SSC2_DI_PIES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2dipc-degrees",
       name: "Degrees, percentages and counts",
+      visualizationSlug: "pie-chart-sectors",
       intuition:
         "A pie chart splits one total. Each sector is a share of 360 degrees, or of 100%. Comparing sectors of the same pie needs no total at all; turning a sector into a count needs the total once.",
       definition:

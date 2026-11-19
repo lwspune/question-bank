@@ -46,6 +46,10 @@ const MIN_FIGURES: Record<string, number> = {
   "neet-chemistry": 24,
   "neet-botany": 12,
   "neet-zoology": 9,
+  "ssc-cgl-maths": 23,
+  "ssc-cgl-tier-2-maths": 16,
+  "ssc-cgl-reasoning": 7,
+  "ssc-cgl-tier-2-reasoning": 1,
 };
 
 /** Figures placed on CET before this run, whose words were never checked against these rules. */
@@ -90,6 +94,8 @@ const SHIPPED_MATHS_HEADERS = new Set([
   "magnetic-force-triad",
   "torque-moment",
   "median-middle-value",
+  "pie-chart-sectors",
+  "mode-bar-plot",
 ]);
 
 const placements = NOTES_CHAPTERS.filter((c) => EXAM_ROUTES.some((r) => c.subjectRoute.startsWith(r))).flatMap((c) =>

@@ -12,6 +12,7 @@ export const SSC2_TG_COMPLEMENTARY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2tgco-pairs",
       name: "Complementary pairs",
+      visualizationSlug: "cds-trig-right-triangle",
       intuition:
         "Two angles that add to 90° swap their co-functions: the sine of one is the cosine of the other, the tangent of one is the cotangent of the other. A stem full of angles like 23° and 67° is asking you to pair them up.",
       definition:

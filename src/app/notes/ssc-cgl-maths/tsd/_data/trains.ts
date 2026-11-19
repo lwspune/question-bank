@@ -12,6 +12,7 @@ export const SSC_TD_TRAINS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssctdtr-length",
       name: "A train passing a pole, a platform or a standing train",
+      visualizationSlug: "af-train-platform",
       intuition:
         "A train has passed a pole only when its last coach goes by, so its engine has moved one full train length. To clear a platform the engine must run the platform's length and then the train's own length again.",
       definition:

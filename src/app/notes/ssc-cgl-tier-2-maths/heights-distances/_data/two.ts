@@ -12,6 +12,7 @@ export const SSC2_HD_TWO_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2hdtw-same",
       name: "Two angles on the same side",
+      visualizationSlug: "af-two-sightings",
       intuition:
         "When an observer, or a ship, moves towards a tower along one line, each angle gives a distance from the foot. The distance moved is the difference of the two.",
       definition:

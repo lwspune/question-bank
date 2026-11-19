@@ -12,6 +12,7 @@ export const SSC_NS_TYPES_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscnsty-families",
       name: "The families of numbers and how they nest",
+      visualizationSlug: "cds-rational-irrational-line",
       intuition:
         "Think of the families as boxes inside boxes. The counting numbers sit inside the whole numbers, which sit inside the integers, which sit inside the rationals. The irrationals sit beside the rationals, and the two together fill the real number line.",
       definition:
