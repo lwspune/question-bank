@@ -3121,6 +3121,46 @@ import {
   HB9_MICROBES_NOTES,
   HB9_MICROBES_SLUGS,
 } from "@/app/notes/homi-bhabha-9-biology/microbes/_data";
+import {
+  HB9_CARBON_CHAPTER,
+  HB9_CARBON_NOTES,
+  HB9_CARBON_SLUGS,
+} from "@/app/notes/homi-bhabha-9-chemistry/carbon-compounds/_data";
+import {
+  HB9_REACTIONS_CHAPTER,
+  HB9_REACTIONS_NOTES,
+  HB9_REACTIONS_SLUGS,
+} from "@/app/notes/homi-bhabha-9-chemistry/chemical-reactions/_data";
+import {
+  HB9_MATTER_CHAPTER,
+  HB9_MATTER_NOTES,
+  HB9_MATTER_SLUGS,
+} from "@/app/notes/homi-bhabha-9-chemistry/matter/_data";
+import {
+  HB9_METALS_CHAPTER,
+  HB9_METALS_NOTES,
+  HB9_METALS_SLUGS,
+} from "@/app/notes/homi-bhabha-9-chemistry/metals/_data";
+import {
+  HB9_WORK_CHAPTER,
+  HB9_WORK_NOTES,
+  HB9_WORK_SLUGS,
+} from "@/app/notes/homi-bhabha-9-physics/work-energy-power/_data";
+import {
+  HB9_SPACE_CHAPTER,
+  HB9_SPACE_NOTES,
+  HB9_SPACE_SLUGS,
+} from "@/app/notes/homi-bhabha-9-physics/space-astronomy/_data";
+import {
+  HB9_MOTION_CHAPTER,
+  HB9_MOTION_NOTES,
+  HB9_MOTION_SLUGS,
+} from "@/app/notes/homi-bhabha-9-physics/motion/_data";
+import {
+  HB9_HEAT_CHAPTER,
+  HB9_HEAT_NOTES,
+  HB9_HEAT_SLUGS,
+} from "@/app/notes/homi-bhabha-9-physics/heat/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -9937,6 +9977,50 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
   },
   {
     examName: "Homi Bhabha Class 9",
+    subjectName: "Physics",
+    subjectRoute: "homi-bhabha-9-physics",
+    subjectDisplay: "Homi Bhabha Physics",
+    chapterSlug: "work-energy-power",
+    chipLabel: "Work, Energy and Power notes",
+    chapter: HB9_WORK_CHAPTER,
+    notes: HB9_WORK_NOTES,
+    slugs: HB9_WORK_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Physics",
+    subjectRoute: "homi-bhabha-9-physics",
+    subjectDisplay: "Homi Bhabha Physics",
+    chapterSlug: "space-astronomy",
+    chipLabel: "Space and Astronomy notes",
+    chapter: HB9_SPACE_CHAPTER,
+    notes: HB9_SPACE_NOTES,
+    slugs: HB9_SPACE_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Physics",
+    subjectRoute: "homi-bhabha-9-physics",
+    subjectDisplay: "Homi Bhabha Physics",
+    chapterSlug: "motion",
+    chipLabel: "Motion notes",
+    chapter: HB9_MOTION_CHAPTER,
+    notes: HB9_MOTION_NOTES,
+    slugs: HB9_MOTION_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Physics",
+    subjectRoute: "homi-bhabha-9-physics",
+    subjectDisplay: "Homi Bhabha Physics",
+    chapterSlug: "heat",
+    chipLabel: "Heat notes",
+    chapter: HB9_HEAT_CHAPTER,
+    notes: HB9_HEAT_NOTES,
+    slugs: HB9_HEAT_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
     subjectName: "Biology",
     subjectRoute: "homi-bhabha-9-biology",
     subjectDisplay: "Homi Bhabha Biology",
@@ -10033,6 +10117,50 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HB9_ATOMIC_CHAPTER,
     notes: HB9_ATOMIC_NOTES,
     slugs: HB9_ATOMIC_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Chemistry",
+    subjectRoute: "homi-bhabha-9-chemistry",
+    subjectDisplay: "Homi Bhabha Chemistry",
+    chapterSlug: "carbon-compounds",
+    chipLabel: "Carbon and Its Compounds notes",
+    chapter: HB9_CARBON_CHAPTER,
+    notes: HB9_CARBON_NOTES,
+    slugs: HB9_CARBON_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Chemistry",
+    subjectRoute: "homi-bhabha-9-chemistry",
+    subjectDisplay: "Homi Bhabha Chemistry",
+    chapterSlug: "chemical-reactions",
+    chipLabel: "Chemical Reactions notes",
+    chapter: HB9_REACTIONS_CHAPTER,
+    notes: HB9_REACTIONS_NOTES,
+    slugs: HB9_REACTIONS_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Chemistry",
+    subjectRoute: "homi-bhabha-9-chemistry",
+    subjectDisplay: "Homi Bhabha Chemistry",
+    chapterSlug: "matter",
+    chipLabel: "Matter and Its Nature notes",
+    chapter: HB9_MATTER_CHAPTER,
+    notes: HB9_MATTER_NOTES,
+    slugs: HB9_MATTER_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Chemistry",
+    subjectRoute: "homi-bhabha-9-chemistry",
+    subjectDisplay: "Homi Bhabha Chemistry",
+    chapterSlug: "metals",
+    chipLabel: "Metals and Their Compounds notes",
+    chapter: HB9_METALS_CHAPTER,
+    notes: HB9_METALS_NOTES,
+    slugs: HB9_METALS_SLUGS,
   },
 ];
 
