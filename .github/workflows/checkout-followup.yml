@@ -1,0 +1,43 @@
+name: Checkout follow-up
+
+# Email the owner (every superadmin) the students who opened a pass checkout
+# in the last 24 hours and did not pay, each with a WhatsApp link that opens
+# with a message typed. The owner reads it and sends, one student at a time.
+# Nobody listed, no email. scripts/billing/checkout-followup.ts.
+#
+# 12:30 UTC IS 18:00 IST, beside the grading email. The window is the 24 hours
+# ending an hour before the run, so a checkout still open is left alone.
+#
+# One email a day from the shared 100/day Resend quota (see welcome.yml for
+# the budget).
+#
+# --apply lives HERE and nowhere else, so `npm run billing:followup` by hand
+# stays a dry run. --apply also makes each student's parent pay link.
+
+on:
+  schedule:
+    - cron: "30 12 * * *"
+  workflow_dispatch: # run on demand from the Actions tab
+
+jobs:
+  followup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # MUST match ci.yml and package.json engines (">=22").
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Email the owner
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+        run: npm run billing:followup -- --apply
