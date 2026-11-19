@@ -33,8 +33,12 @@ def main() -> None:
         # figure a candidate's pen has made unreadable as printed (RMS 2024
         # Class 6 Q128: lines traced over and numbers written in the parts).
         # Redraw only what the print itself settles, and say how in the note.
-        if fig.get("redrawn"):
-            crop = Image.open(os.path.join(LANE, fig["redrawn"])).convert("RGB")
+        # `cleaned`: the same, for a 300 dpi re-render of the printed figure with
+        # its faint strokes darkened and its margins trimmed (Homi Bhabha
+        # 2010/2017/2018): every mark is still the printed one.
+        replacement = fig.get("redrawn") or fig.get("cleaned")
+        if replacement:
+            crop = Image.open(os.path.join(LANE, replacement)).convert("RGB")
             path = os.path.join(out, f"q{int(q['number']):03d}.png")
             crop.save(path)
             made.append((q["number"], fig.get("note", ""), crop))

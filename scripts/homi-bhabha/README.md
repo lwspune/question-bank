@@ -91,6 +91,22 @@ A key's letters (A-D, "B or C", "DROP") are read twice by eye and diffed, and
 kept OUTSIDE the repo until both blind passes are written; `lib.ts`
 `normaliseKey` refuses an unreadable cell or a short key.
 
+## Figures that read badly as scanned
+
+A band file's `figure` may name a lane PNG that crop.py uses instead of the
+page crop; then `refigure.ts <id> --q=N,... --apply` (cwd = the main checkout)
+re-uploads a committed row's figure. Show the owner a before/after sheet first.
+
+- `cleaned`: `cleaned/<id>/qNNN.png`, the printed figure re-rendered at 300 dpi,
+  faint strokes darkened (tone curve, paper white from 238) and trimmed to its
+  ink. Every mark is the printed one. 2010's scan shows the next page through,
+  so its stored crops were darkened instead of re-rendered. Used for every
+  figure of 2010, 2017 and 2018 except the three below.
+- `redrawn`: `redrawn/<id>/qNNN.png` from `redraw.py`, only where the print
+  settles every value: 2018 Q10 (velocity-time graph), Q21 and Q72 (Venns).
+  2017 Q11 reads fine cleaned; 2017 Q75's stigma branches are too small to
+  count for certain, so it is not redrawn.
+
 ## Key notes per paper
 
 - `hb-9-2021-jan`: MSTA's print-out cuts off the right edge of some pasted
