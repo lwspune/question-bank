@@ -13,6 +13,7 @@ export const INSTRUMENTS_UNIT_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpunit-least-count",
       name: "Least count of a vernier and a screw gauge",
+      visualizationSlug: "jee-vernier-scale",
       intuition:
         "A vernier scale has divisions slightly shorter than the main scale's. Lined up from zero, the first vernier mark falls short of the first main mark by one least count, the second by two, and so on; the mark that coincides tells you how many least counts to add. A screw gauge instead turns rotation into distance: one full turn moves the spindle by the pitch, so one circular division moves it by pitch ÷ divisions.",
       definition:

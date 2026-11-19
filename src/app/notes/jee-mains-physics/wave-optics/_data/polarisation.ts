@@ -13,6 +13,7 @@ export const POLARISATION_WO_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpwo-malus",
       name: "One polaroid after another: Malus' law",
+      visualizationSlug: "jee-malus-polaroids",
       intuition:
         "Unpolarised light vibrates in every direction across the beam. A polaroid lets through only the part along its axis, which on average is half. The light that comes out is polarised along that axis. A second polaroid at angle θ passes only the component E cos θ of it, and intensity goes as the square: cos²θ.",
       definition:

@@ -468,6 +468,15 @@ export type VisualizationSlug =
   | "jee-prism-min-deviation"
   | "jee-binding-energy-curve"
   | "jee-maxwell-speeds"
+  | "jee-moving-rod-emf"
+  | "jee-malus-polaroids"
+  | "jee-gauss-field-graphs"
+  | "jee-terminal-velocity"
+  | "jee-wheatstone-bridge"
+  | "jee-vernier-scale"
+  | "jee-logic-gate-switches"
+  | "jee-magnetic-dipole-torque"
+  | "jee-apparent-depth"
   | "imat-chart-types";
 
 export type TrapCallout = {

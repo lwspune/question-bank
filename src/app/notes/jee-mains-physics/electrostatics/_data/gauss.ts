@@ -131,6 +131,7 @@ export const GAUSS_ES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpes-symmetric-gauss",
       name: "Gauss's law for spheres, shells and cylinders",
+      visualizationSlug: "jee-gauss-field-graphs",
       intuition:
         "When charge is arranged with full symmetry, the field has the same size everywhere on a matching surface: a sphere for a sphere, a cylinder for a long line. Gauss's law then reduces to field times area equals enclosed charge over ε₀. Inside a uniformly charged solid sphere, only the charge closer to the centre counts, so the field grows with r and peaks at the surface.",
       definition:

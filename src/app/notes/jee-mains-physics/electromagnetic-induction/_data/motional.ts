@@ -13,6 +13,7 @@ export const MOTIONAL_EMI_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpemi-moving-rod",
       name: "Motional emf of a moving rod",
+      visualizationSlug: "jee-moving-rod-emf",
       intuition:
         "Charges inside a moving conductor are carried across the field, so each feels a magnetic force qvB along the conductor. They pile up at one end until an electric field stops them, and that leaves an emf Blv between the ends. Only the parts that are mutually perpendicular count: the length across the motion, and the field component across both. In the earth's field, decide which component, horizontal or vertical, the rod actually cuts.",
       definition:

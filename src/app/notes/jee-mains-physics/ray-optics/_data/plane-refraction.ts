@@ -75,6 +75,7 @@ export const PLANE_REFRACTION_RAY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpray-apparent-depth",
       name: "Apparent depth and the normal shift",
+      visualizationSlug: "jee-apparent-depth",
       intuition:
         "Seen from straight above, an object under a liquid looks raised. Rays leaving the surface bend away from the normal, and the eye traces them back to a point higher up. For near-normal viewing the depth shrinks by the factor μ. Each layer of a stack shrinks by its own μ, and the apparent depths add.",
       definition:

@@ -76,6 +76,15 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import JeeMovingRodEmf from "./visualizations/JeeMovingRodEmf";
+import JeeMalusPolaroids from "./visualizations/JeeMalusPolaroids";
+import JeeGaussFieldGraphs from "./visualizations/JeeGaussFieldGraphs";
+import JeeTerminalVelocity from "./visualizations/JeeTerminalVelocity";
+import JeeWheatstoneBridge from "./visualizations/JeeWheatstoneBridge";
+import JeeVernierScale from "./visualizations/JeeVernierScale";
+import JeeLogicGateSwitches from "./visualizations/JeeLogicGateSwitches";
+import JeeMagneticDipoleTorque from "./visualizations/JeeMagneticDipoleTorque";
+import JeeApparentDepth from "./visualizations/JeeApparentDepth";
 import JeePvWorkArea from "./visualizations/JeePvWorkArea";
 import JeeForceDisplacementArea from "./visualizations/JeeForceDisplacementArea";
 import JeeStressStrain from "./visualizations/JeeStressStrain";
@@ -822,6 +831,24 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "jee-moving-rod-emf":
+      return <JeeMovingRodEmf />;
+    case "jee-malus-polaroids":
+      return <JeeMalusPolaroids />;
+    case "jee-gauss-field-graphs":
+      return <JeeGaussFieldGraphs />;
+    case "jee-terminal-velocity":
+      return <JeeTerminalVelocity />;
+    case "jee-wheatstone-bridge":
+      return <JeeWheatstoneBridge />;
+    case "jee-vernier-scale":
+      return <JeeVernierScale />;
+    case "jee-logic-gate-switches":
+      return <JeeLogicGateSwitches />;
+    case "jee-magnetic-dipole-torque":
+      return <JeeMagneticDipoleTorque />;
+    case "jee-apparent-depth":
+      return <JeeApparentDepth />;
     case "jee-pv-work-area":
       return <JeePvWorkArea />;
     case "jee-force-displacement-area":

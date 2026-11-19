@@ -13,6 +13,7 @@ export const TERMINAL_FLUID_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpfluid-terminal-speed",
       name: "The terminal-velocity formula",
+      visualizationSlug: "jee-terminal-velocity",
       intuition:
         "At first the ball accelerates. As it speeds up, the drag \\(6\\pi\\eta r v\\) grows, until drag plus buoyancy equals the weight. From then on it falls at a constant speed, the terminal velocity. Setting the forces equal gives the formula. An air bubble rising through a liquid is the same balance upside down: buoyancy pulls it up, drag holds it back, and its own weight is too small to count.",
       definition:

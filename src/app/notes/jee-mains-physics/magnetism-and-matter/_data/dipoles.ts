@@ -81,6 +81,7 @@ export const DIPOLES_MM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpmm-torque-energy",
       name: "Torque and potential energy of a dipole in a uniform field",
+      visualizationSlug: "jee-magnetic-dipole-torque",
       intuition:
         "A uniform field pulls the two poles of a magnet equally and oppositely, so there is no net force, only a torque that turns M towards B. The energy is lowest when M lies along B and highest when it points against B. The work needed to turn the dipole is the rise in this energy, so every work question is two values of −MB cos θ subtracted.",
       definition:
