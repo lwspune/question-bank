@@ -38,8 +38,8 @@
  *
  * NOT recorded here, deliberately: the other six wrong keys found in
  * GAT_NDA1_2022_PYQ.xlsx's rearrangement block (source Q23–Q26, Q29, Q30).
- * They were adjudicated against the same booklet but have NOT been corrected,
- * so there is no verdict to record — see the SUGGESTIONS.md backfill ledger.
+ * They were adjudicated against the same booklet and corrected on 2026-11-19;
+ * their verdicts are recorded by record-key-fixes-nda-2022-i-gat.ts.
  */
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
