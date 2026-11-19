@@ -122,6 +122,7 @@ export const NEET_CH_SA_ORBITALS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nchsa-filling",
       name: "Filling orbitals: the (n + l) rule, Pauli and Hund",
+      visualizationSlug: "imat-aufbau-filling",
       intuition:
         "Electrons go into the lowest energy orbital first, like filling a building from the ground floor. In atoms with many electrons the order is not simply by n: a 4s orbital is lower than 3d. The (n + l) rule gives the order, Pauli's principle limits each orbital to two electrons, and Hund's rule says how they spread over orbitals of equal energy.",
       definition:

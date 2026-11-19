@@ -126,6 +126,7 @@ export const NEET_PH_NU_DECAY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphnu-half-life",
       name: "Half-life and activity",
+      visualizationSlug: "imat-half-life-decay",
       intuition:
         "Each nucleus decays at random, but in a large sample a fixed share decays every second. So the more nuclei there are, the more decay per second: the activity is proportional to the number left. In every half-life, half of the nuclei still present decay, so the amount left goes 1, 1/2, 1/4, 1/8 and so on. The activity falls on the same clock.",
       definition:

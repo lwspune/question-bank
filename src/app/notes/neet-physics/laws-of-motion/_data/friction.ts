@@ -71,6 +71,7 @@ export const NEET_PH_LM_FRICTION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphlm-friction",
       name: "Static and kinetic friction",
+      visualizationSlug: "lmf-free-body-diagram",
       intuition:
         "Push a heavy box gently and it does not move: the floor pushes back with friction just as hard as you push. Static friction grows with your push only up to a limit. Push past that limit and the box slides, and a slightly smaller kinetic friction then acts on it.",
       definition:

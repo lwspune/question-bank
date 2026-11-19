@@ -84,6 +84,7 @@ export const NEET_PH_MP_PROJECTILE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphmp-projectile",
       name: "Projectile motion: the two parts of the velocity",
+      visualizationSlug: "kin-projectile-parabola",
       intuition:
         "Once a ball leaves the hand, the only force on it (ignoring air) is its weight, which is vertical. So nothing changes its horizontal velocity: that part stays the same all the way. The vertical part starts upward, falls by g every second, becomes zero at the top and then grows downward. Put the two parts together and the path is a parabola.",
       definition:

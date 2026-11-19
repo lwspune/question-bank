@@ -12,6 +12,7 @@ export const NEET_CH_SO_COLLIGATIVE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nchso-boiling-freezing",
       name: "Boiling point, freezing point and the van 't Hoff factor",
+      visualizationSlug: "cet-boiling-point-elevation",
       intuition:
         "A non-volatile solute takes up part of the surface, so fewer solvent molecules escape and the vapour pressure falls. The solution then has to be heated further before its vapour pressure reaches the atmospheric pressure, so it boils higher; it also freezes lower than the pure solvent. These changes depend only on how many solute particles there are, not on what they are. A salt that splits into ions gives more particles, and the van 't Hoff factor counts them.",
       definition:

@@ -12,6 +12,7 @@ export const NEET_PH_MC_FORCE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphmc-lorentz",
       name: "Magnetic force on a moving charge",
+      visualizationSlug: "magnetic-force-triad",
       intuition:
         "A magnetic field pushes only on charges that move, and it pushes sideways. The force is at right angles to both the velocity and the field. Because it is always sideways to the motion, it can turn a charge but never speed it up or slow it down.",
       definition:

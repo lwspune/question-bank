@@ -12,6 +12,7 @@ export const NEET_CH_HC_ALKENES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nchhc-alkene-isomerism",
       name: "The double bond, geometrical isomers and conjugation",
+      visualizationSlug: "imat-cis-trans",
       intuition:
         "A C=C double bond is one σ bond and one π bond. The π bond is made by sideways overlap of p orbitals, so the two carbons cannot turn about the bond without breaking it. That locked bond is why groups can sit on the same side (cis) or opposite sides (trans), and the two forms are different compounds. But if one carbon carries two identical groups, swapping sides changes nothing, so there is no cis-trans pair.",
       definition:

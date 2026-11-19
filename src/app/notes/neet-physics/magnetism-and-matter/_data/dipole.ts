@@ -135,6 +135,7 @@ export const NEET_PH_MM_DIPOLE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphmm-gauss",
       name: "Gauss's law for magnetism",
+      visualizationSlug: "bar-magnet-field-lines",
       intuition:
         "Break a bar magnet in two and each piece has its own north and south pole: no one has ever found a pole on its own. So magnetic field lines never start or stop anywhere. They leave the north pole, go round outside, and come back through the inside of the magnet from south to north, closing on themselves. Every line that enters a closed surface must also leave it, so the net magnetic flux out of any closed surface is zero.",
       definition:

@@ -12,6 +12,7 @@ export const NEET_PH_AC_LCR_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphac-impedance",
       name: "Impedance and phase angle",
+      visualizationSlug: "cet-lcr-phasors",
       intuition:
         "In series the same current flows through R, L and C. The voltage across R is in step with it, the voltage across L is a quarter cycle ahead and the voltage across C a quarter cycle behind. So the L and C voltages point opposite ways and partly cancel. What is left adds to the resistor's voltage at right angles, like the two short sides of a right triangle. The total opposition of the circuit is its impedance.",
       definition:
@@ -73,6 +74,7 @@ export const NEET_PH_AC_LCR_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphac-resonance",
       name: "Resonance in a series LCR circuit",
+      visualizationSlug: "cet-resonance-curve",
       intuition:
         "As the frequency rises, the inductor's reactance grows and the capacitor's falls. At one frequency the two are equal and cancel completely. Then only the resistor is left to oppose the current, so the impedance is the smallest it can be and the current the largest. This is resonance, and it is how a radio picks one station out of many.",
       definition:

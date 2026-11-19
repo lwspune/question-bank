@@ -76,6 +76,7 @@ export const NEET_CH_TH_ENTHALPY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ncht-reaction-enthalpy",
       name: "Reaction enthalpy and standard enthalpy of formation",
+      visualizationSlug: "imat-energy-profile",
       intuition:
         "A reaction either gives heat out or takes it in. If the products hold less enthalpy than the reactants, the difference is released: the reaction is exothermic and ΔH is negative. If the products hold more, the reaction must absorb heat: it is endothermic and ΔH is positive. To compare reactions fairly we fix the conditions, and we measure every compound from the same zero: its elements.",
       definition:
@@ -142,6 +143,7 @@ export const NEET_CH_TH_ENTHALPY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ncht-hess",
       name: "Hess's law and enthalpies of different types",
+      visualizationSlug: "cet-hess-cycle",
       intuition:
         "Enthalpy is a state function, so the enthalpy change from reactants to products is the same whether the reaction goes in one step or in several. That lets you treat thermochemical equations like algebra: add them, reverse them, multiply them, and their ΔH values follow along. Many enthalpies that cannot be measured directly, such as the formation of CO or the lattice enthalpy of a salt, are found this way.",
       definition:

@@ -70,6 +70,7 @@ export const NEET_PH_KT_GAS_LAWS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphkt-gas-graphs",
       name: "Boyle's and Charles's laws on a graph",
+      visualizationSlug: "imat-boyle-curve",
       intuition:
         "Hold one of P, V and T fixed and the ideal gas equation turns into a simple law between the other two. Each law has a shape on a graph, and NEET likes to give the graph and ask which line is at the higher pressure or temperature. The trick is always the same: fix one quantity by drawing a line across the graph, then compare the other.",
       definition:

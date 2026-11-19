@@ -126,6 +126,7 @@ export const NEET_PH_MS_GRAPHS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphms-graphs",
       name: "Slopes and areas of motion graphs",
+      visualizationSlug: "kin-velocity-time-graph",
       intuition:
         "Every motion graph hides two readings. The slope of a graph tells you the rate of change of what is plotted: the slope of position against time is the velocity, and the slope of velocity against time is the acceleration. The area under a graph adds things up over time: the area under velocity-time is the displacement, and the area under acceleration-time is the change in velocity.",
       definition:

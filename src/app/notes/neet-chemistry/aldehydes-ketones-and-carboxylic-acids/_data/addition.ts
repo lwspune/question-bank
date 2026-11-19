@@ -12,6 +12,7 @@ export const NEET_CH_AK_ADDITION_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nchak-nucleophilic-addition",
       name: "Nucleophilic addition to the carbonyl group",
+      visualizationSlug: "cet-carbonyl-addition",
       intuition:
         "Oxygen pulls the electrons of the C=O bond towards itself, leaving the carbon slightly positive. A nucleophile attacks that carbon, the π bond moves onto oxygen, and the flat carbon becomes tetrahedral. The oxygen then picks up a proton. With ammonia derivatives the addition product goes on to lose water, so a C=N bond replaces the C=O.",
       definition:

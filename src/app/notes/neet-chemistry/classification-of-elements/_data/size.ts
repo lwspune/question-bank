@@ -12,6 +12,7 @@ export const NEET_CH_CP_SIZE_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nchcp-atomic-radius",
       name: "Atomic radius across a period and down a group",
+      visualizationSlug: "atom-periodic-trends",
       intuition:
         "Across a period, each new electron goes into the same outer shell while the nuclear charge rises by one. The bigger effective nuclear charge pulls the whole electron cloud in, so the atom shrinks. Down a group, every step adds a new shell further from the nucleus, and the inner electrons shield the outer ones, so the atom grows.",
       definition:

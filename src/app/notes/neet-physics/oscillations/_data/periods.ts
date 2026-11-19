@@ -127,6 +127,7 @@ export const NEET_PH_OS_PERIODS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphos-pendulum",
       name: "The simple pendulum",
+      visualizationSlug: "osc-pendulum-restoring-force",
       intuition:
         "A small heavy bob on a light string swings about its lowest point. For small swings the pull of gravity back along the arc is about mgθ, which is proportional to the displacement, so the motion is SHM. The force constant works out as mg/L, and the mass cancels: the period depends only on the length and on g.",
       definition:

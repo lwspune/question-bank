@@ -128,6 +128,7 @@ export const NEET_PH_RM_INERTIA_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphrm-axis-theorems",
       name: "Parallel and perpendicular axis theorems",
+      visualizationSlug: "jee-parallel-axis",
       intuition:
         "The table gives I only about axes through the centre. The parallel axis theorem moves the axis sideways: the body now also swings its whole mass round a circle of radius d, which adds \\(Md^{2}\\). The perpendicular axis theorem works only for a flat body: the axis normal to the plane is the sum of two perpendicular axes lying in the plane.",
       definition:

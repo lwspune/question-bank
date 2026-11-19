@@ -58,6 +58,7 @@ export const NEET_CH_EQ_ACIDS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ncheq-ph",
       name: "Kw, pH and weak acids",
+      visualizationSlug: "acid-ph-scale-strip",
       intuition:
         "Even pure water ionises a little, into H⁺ and OH⁻, and the product of their concentrations is a constant at a given temperature. pH is just a short way of writing a tiny H⁺ concentration: take the log and change the sign. A weak acid ionises only partly, and how far it goes is set by its ionisation constant Ka.",
       definition:
@@ -121,6 +122,7 @@ export const NEET_CH_EQ_ACIDS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "ncheq-indicators",
       name: "Indicators in acid-base titrations",
+      visualizationSlug: "imat-titration-curve",
       intuition:
         "An indicator is a weak acid or weak base whose two forms have different colours, so it changes colour over a small range of pH. At the end point of a titration of a weak acid with a strong base, the salt formed makes the solution slightly alkaline. So the indicator chosen must change colour in the alkaline range. Phenolphthalein does: colourless in acid, pink in alkali.",
       definition:

@@ -12,6 +12,7 @@ export const NEET_PH_SE_DEVICES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphse-rectifier",
       name: "Half-wave and full-wave rectifiers",
+      visualizationSlug: "cet-rectifier-waves",
       intuition:
         "A diode lets current through one way only, so it can turn alternating current into current that flows one way. With one diode, only one half of each cycle gets through: a half-wave rectifier. With two diodes and a centre-tapped transformer, one diode conducts in each half, and both halves push current the same way through the load: a full-wave rectifier. The output still rises and falls, so a capacitor across the load is used to smooth it.",
       definition:

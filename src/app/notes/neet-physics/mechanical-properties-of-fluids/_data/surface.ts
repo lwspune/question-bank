@@ -124,6 +124,7 @@ export const NEET_PH_FL_SURFACE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphfl-capillary",
       name: "Angle of contact and capillary rise",
+      visualizationSlug: "surface-tension-meniscus",
       intuition:
         "Where a liquid meets a solid, two pulls compete: the liquid's molecules pull on each other, and the solid pulls on the liquid. If the solid wins, the liquid spreads, curves up the wall and climbs a narrow tube. Water on clean glass does this. If the liquid's own pull wins, as for mercury on glass, it curves down and sinks in the tube. The angle at which the surface meets the wall tells you which happened.",
       definition:

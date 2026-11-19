@@ -63,6 +63,7 @@ export const NEET_CH_BM_CARBS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nchbm-glucose",
       name: "Glucose: reactions and ring structure",
+      visualizationSlug: "cet-glucose-ring-closure",
       intuition:
         "Each reaction of glucose answers one question about its open chain. HI removes every oxygen and leaves n-hexane, so the six carbons lie in a straight chain. Hydroxylamine and HCN show a carbonyl group, and bromine water shows that it is an aldehyde. Acetic anhydride counts five OH groups. But glucose fails some aldehyde tests and comes in two crystalline forms. A ring explains both: the OH at C-5 adds to the aldehyde group.",
       definition:

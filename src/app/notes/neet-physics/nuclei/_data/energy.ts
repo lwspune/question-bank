@@ -71,6 +71,7 @@ export const NEET_PH_NU_ENERGY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphnu-fission-fusion",
       name: "Fission, fusion and the nuclear reactor",
+      visualizationSlug: "jee-binding-energy-curve",
       intuition:
         "Any change that moves nuclei higher on the binding-energy curve releases energy. A heavy nucleus near the bottom of the falling end can split into two middle nuclei, which are bound more tightly: that is fission. Two very light nuclei can join into one that is bound more tightly: that is fusion. In both, the products together have less mass than what you started with.",
       definition:

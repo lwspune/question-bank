@@ -133,6 +133,7 @@ export const NEET_PH_AT_SPECTRUM_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nphat-series",
       name: "The spectral series of hydrogen",
+      visualizationSlug: "cet-hydrogen-series",
       intuition:
         "All the lines that end on the same lower level make up one series, named after the scientist who found it. Lines ending on n = 1 are big jumps and lie in the ultraviolet; lines ending on n = 2 are the visible ones; lines ending on n = 3, 4 and 5 are small jumps and lie in the infrared. Learn the order of the lower levels, 1 to 5: Lyman, Balmer, Paschen, Brackett, Pfund.",
       definition:

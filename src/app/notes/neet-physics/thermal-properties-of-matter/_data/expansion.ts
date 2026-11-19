@@ -12,6 +12,7 @@ export const NEET_PH_TP_EXPANSION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphtp-expansion",
       name: "Linear, area and volume expansion",
+      visualizationSlug: "ht-anomalous-water-expansion",
       intuition:
         "Heat a solid and its particles vibrate more and push each other a little further apart. Every length in the body grows by the same small fraction, αΔT. An area has two lengths in it, so it grows by about twice that fraction; a volume has three, so it grows by about three times. A hole in a plate grows too, exactly as the piece of metal that would fill it.",
       definition:

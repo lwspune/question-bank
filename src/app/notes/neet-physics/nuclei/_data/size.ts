@@ -76,6 +76,7 @@ export const NEET_PH_NU_SIZE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphnu-mass-defect",
       name: "Mass defect, binding energy and the nuclear force",
+      visualizationSlug: "jee-binding-energy-curve",
       intuition:
         "Weigh the free protons and neutrons, then weigh the nucleus they make: the nucleus is lighter. The missing mass left as energy when the nucleus formed, by E = mc². To pull the nucleus apart you must put that energy back. That energy is the binding energy, and the force that holds the nucleons together is the strong, short-range nuclear force.",
       definition:

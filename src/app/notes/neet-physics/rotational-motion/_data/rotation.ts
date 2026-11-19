@@ -135,6 +135,7 @@ export const NEET_PH_RM_ROTATION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphrm-rolling",
       name: "Rolling without slipping",
+      visualizationSlug: "cet-rolling-energy-split",
       intuition:
         "A rolling wheel moves forward and spins at the same time. Without slipping, these two motions cancel exactly where the wheel touches the ground, so that point is at rest for an instant, and they add at the top. Its kinetic energy has two parts too: the motion of the centre and the spin about it.",
       definition:

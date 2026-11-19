@@ -12,6 +12,7 @@ export const NEET_PH_WO_YDSE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphwo-fringe-width",
       name: "Fringe width and fringe positions",
+      visualizationSlug: "cet-ydse-fringe-width",
       intuition:
         "Two slits a distance d apart act as two coherent sources, and a screen sits a distance D away. A point at height y above the centre is a little nearer one slit than the other, and that extra path grows steadily with y. Each time it grows by one wavelength the light goes from bright to dark and back to bright, so the fringes are evenly spaced stripes.",
       definition:

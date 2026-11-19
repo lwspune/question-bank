@@ -12,6 +12,7 @@ export const NEET_PH_GR_ORBITS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphgr-kepler",
       name: "Kepler's laws of planetary motion",
+      visualizationSlug: "grav-kepler-orbit",
       intuition:
         "Kepler found three rules by studying how the planets move. Orbits are ellipses, not perfect circles. A planet speeds up as it swings close to the sun and slows down far away. And planets farther out take much longer to go round, more than the extra distance alone would suggest.",
       definition:

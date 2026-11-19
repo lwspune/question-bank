@@ -76,6 +76,7 @@ export const NEET_PH_SO_MODULI_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nphso-materials",
       name: "The stress-strain curve and how materials behave",
+      visualizationSlug: "jee-stress-strain",
       intuition:
         "Pull a metal wire harder and harder and plot stress against strain. At first the graph is a straight line and the wire springs back. Past a point it stops springing back fully, then it flows, and at last it breaks. Different materials go through these stages differently, which is why steel is used for springs and girders and rubber for bands.",
       definition:

@@ -12,6 +12,7 @@ export const NEET_PH_RO_PRISMS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphro-deviation",
       name: "Deviation and minimum deviation",
+      visualizationSlug: "opt-prism-dispersion",
       intuition:
         "A prism bends a ray twice, once at each face, both times towards its base. The total turn is the angle of deviation. As the angle of incidence grows, the deviation first falls and then rises again, so there is one angle of incidence that gives the smallest deviation. At that point the ray passes through the prism symmetrically, and this is the easiest state in which to measure the glass's refractive index.",
       definition:

@@ -74,6 +74,7 @@ export const NEET_PH_TP_TRANSFER_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nphtp-convection-radiation",
       name: "Conduction, convection, radiation and insulators",
+      visualizationSlug: "ht-heat-transfer-modes",
       intuition:
         "Heat moves in three ways. In conduction it is passed from particle to particle while the material stays in place. In convection the warm fluid itself moves and carries the heat with it. In radiation it travels as electromagnetic waves and needs no medium at all. An insulator works by blocking these paths, and still, trapped air is one of the best.",
       definition:
