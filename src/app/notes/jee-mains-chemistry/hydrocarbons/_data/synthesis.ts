@@ -122,6 +122,7 @@ export const SYNTHESIS_HC_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jchc-arene-sequence",
       name: "Choosing the order of steps for a disubstituted benzene",
+      visualizationSlug: "cet-directing-effects",
       intuition:
         "The first group on the ring decides where the second goes. So work backwards from the target: if the two groups are meta, the first one put on must be a meta director; if they are ortho or para, it must be an ortho-para director. Two more rules narrow the choice: Friedel–Crafts cannot be done on a deactivated ring, and a group can be changed after it is placed (CH₃ to COOH, NO₂ to NH₂), which lets you use its directing effect before it changes.",
       definition:

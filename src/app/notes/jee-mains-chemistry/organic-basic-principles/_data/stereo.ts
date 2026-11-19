@@ -13,6 +13,7 @@ export const STEREO_GOC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcgoc-geometrical",
       name: "Geometrical isomerism and conformations",
+      visualizationSlug: "imat-cis-trans",
       intuition:
         "A C=C bond cannot rotate at room temperature. If each doubly bonded carbon carries two different groups, the groups can sit on the same side (cis) or on opposite sides (trans), and these are two separate compounds. A C–C single bond does rotate freely; the shapes it passes through are conformations, which cannot be separated.",
       definition:
@@ -74,6 +75,7 @@ export const STEREO_GOC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcgoc-chirality",
       name: "Chiral centres, meso compounds and optical purity",
+      visualizationSlug: "imat-chirality-mirror",
       intuition:
         "A carbon with four different groups has a mirror image that cannot be laid on top of it, like a left and a right hand. A molecule built on such a carbon is chiral and rotates plane-polarised light. A molecule with two chiral centres can still have a mirror plane; then it is its own mirror image, a meso compound, and it is optically inactive.",
       definition:

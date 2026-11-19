@@ -13,6 +13,7 @@ export const RAOULT_SOL_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcsol-total-pressure",
       name: "Total vapour pressure of an ideal mixture",
+      visualizationSlug: "cet-raoult-two-liquids",
       intuition:
         "Each liquid escapes in proportion to its share of the surface, so liquid A contributes \\(x_A p^\\circ_A\\) and liquid B contributes \\(x_B p^\\circ_B\\). The total is a straight line from \\(p^\\circ_B\\) (pure B) to \\(p^\\circ_A\\) (pure A). Two measured totals at two compositions give two linear equations for the two unknown pure vapour pressures.",
       definition:

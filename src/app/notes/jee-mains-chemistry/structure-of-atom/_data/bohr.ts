@@ -69,6 +69,7 @@ export const BOHR_ATOM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcatom-bohr-energy",
       name: "Orbit energy, kinetic and potential energy, and speed",
+      visualizationSlug: "mp-bohr-energy-levels",
       intuition:
         "A bound electron has negative total energy. Zero is the free electron at rest far away. The energy grows with \\(Z^2\\) and falls with \\(n^2\\), so inner orbits of heavier ions are much deeper. Kinetic energy is the size of the total energy, and potential energy is twice the total. The speed grows with \\(Z\\) and falls with \\(n\\).",
       definition:

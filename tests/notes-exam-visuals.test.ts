@@ -40,6 +40,7 @@ const MIN_FIGURES: Record<string, number> = {
   "mht-cet-physics": 40,
   "mht-cet-chemistry": 33,
   "jee-mains-physics": 63,
+  "jee-mains-chemistry": 29,
 };
 
 /** Figures placed on CET before this run, whose words were never checked against these rules. */

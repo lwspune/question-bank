@@ -119,6 +119,7 @@ export const CONFIGURATION_ATOM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcatom-configuration",
       name: "Configurations, exceptions and electron counts",
+      visualizationSlug: "imat-aufbau-filling",
       intuition:
         "Fill orbitals in \\((n+l)\\) order, one electron per orbital with parallel spins before any pairing (Hund), and at most two per orbital (Pauli). Chromium and copper break the order to reach a half-filled or full 3d. Once the configuration is written, any count by \\(l\\), by \\(m_l\\), or by noble-gas match is just reading it.",
       definition:

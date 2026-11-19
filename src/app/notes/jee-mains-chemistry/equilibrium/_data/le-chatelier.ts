@@ -13,6 +13,7 @@ export const LE_CHATELIER_EQ_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jceq-shift",
       name: "Which way the equilibrium shifts",
+      visualizationSlug: "imat-le-chatelier",
       intuition:
         "A system at equilibrium that is disturbed moves in the direction that partly undoes the change. Add a reactant and some of it is used up; squeeze the gas and it moves to fewer gas moles; heat it and it moves in the direction that absorbs heat. Only a change of temperature changes K itself.",
       definition:
