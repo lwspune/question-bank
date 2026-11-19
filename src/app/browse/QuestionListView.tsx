@@ -35,6 +35,8 @@ type Props = {
   resourcesById?: Record<string, QuestionResources>;
   /** Hide each card's Add to paper toggle (the notes drill panel, where no cart is on screen). */
   hideCart?: boolean;
+  /** The notes page these cards sit on (the notes drill panel): Teach me the idea opens it when a card has no notes link of its own. */
+  teachNotesHref?: string | null;
 };
 
 /**
@@ -70,6 +72,7 @@ export default function QuestionListView({
   itemStats,
   paperLinks,
   hideCart = false,
+  teachNotesHref = null,
 }: Props) {
   const groups = groupBySet(questions);
   const idToIndex = new Map<string, number>();
@@ -98,6 +101,7 @@ export default function QuestionListView({
             includeExam={includeExam}
             breadcrumbFixed={breadcrumbFixed}
             resources={resourcesById?.[group.question.id]}
+            teachNotesHref={teachNotesHref}
             itemStats={itemStats?.get(group.question.id)}
             paperHref={paperLinks?.get(group.question.id)}
             hideCart={hideCart}
@@ -124,6 +128,7 @@ export default function QuestionListView({
                   includeExam={includeExam}
                   breadcrumbFixed={breadcrumbFixed}
                   resources={resourcesById?.[q.id]}
+                  teachNotesHref={teachNotesHref}
                   itemStats={itemStats?.get(q.id)}
                   paperHref={paperLinks?.get(q.id)}
                   hideCart={hideCart}
