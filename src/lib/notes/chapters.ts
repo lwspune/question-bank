@@ -3196,6 +3196,26 @@ import {
   HB9_AIR_NOTES,
   HB9_AIR_SLUGS,
 } from "@/app/notes/homi-bhabha-9-chemistry/air-water-gases/_data";
+import {
+  HB9_PRESSURE_CHAPTER,
+  HB9_PRESSURE_NOTES,
+  HB9_PRESSURE_SLUGS,
+} from "@/app/notes/homi-bhabha-9-physics/pressure-buoyancy/_data";
+import {
+  HB9_MEASUREMENT_CHAPTER,
+  HB9_MEASUREMENT_NOTES,
+  HB9_MEASUREMENT_SLUGS,
+} from "@/app/notes/homi-bhabha-9-physics/measurement-units/_data";
+import {
+  HB9_ICT_CHAPTER,
+  HB9_ICT_NOTES,
+  HB9_ICT_SLUGS,
+} from "@/app/notes/homi-bhabha-9-physics/ict/_data";
+import {
+  HB9_GRAVITATION_CHAPTER,
+  HB9_GRAVITATION_NOTES,
+  HB9_GRAVITATION_SLUGS,
+} from "@/app/notes/homi-bhabha-9-physics/gravitation/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -10053,6 +10073,51 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HB9_HEAT_CHAPTER,
     notes: HB9_HEAT_NOTES,
     slugs: HB9_HEAT_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Physics",
+    subjectRoute: "homi-bhabha-9-physics",
+    subjectDisplay: "Homi Bhabha Physics",
+    chapterSlug: "pressure-buoyancy",
+    chipLabel: "Pressure and Buoyancy notes",
+    chapter: HB9_PRESSURE_CHAPTER,
+    notes: HB9_PRESSURE_NOTES,
+    slugs: HB9_PRESSURE_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Physics",
+    subjectRoute: "homi-bhabha-9-physics",
+    subjectDisplay: "Homi Bhabha Physics",
+    chapterSlug: "measurement-units",
+    chipLabel: "Measurement and Units notes",
+    chapter: HB9_MEASUREMENT_CHAPTER,
+    notes: HB9_MEASUREMENT_NOTES,
+    slugs: HB9_MEASUREMENT_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Physics",
+    subjectRoute: "homi-bhabha-9-physics",
+    subjectDisplay: "Homi Bhabha Physics",
+    chapterSlug: "ict",
+    chipLabel: "Information and Communication Technology notes",
+    titleName: "Information and Communication Technology",
+    chapter: HB9_ICT_CHAPTER,
+    notes: HB9_ICT_NOTES,
+    slugs: HB9_ICT_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Physics",
+    subjectRoute: "homi-bhabha-9-physics",
+    subjectDisplay: "Homi Bhabha Physics",
+    chapterSlug: "gravitation",
+    chipLabel: "Gravitation notes",
+    chapter: HB9_GRAVITATION_CHAPTER,
+    notes: HB9_GRAVITATION_NOTES,
+    slugs: HB9_GRAVITATION_SLUGS,
   },
   {
     examName: "Homi Bhabha Class 9",
