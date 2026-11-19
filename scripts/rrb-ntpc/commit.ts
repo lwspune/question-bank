@@ -31,7 +31,7 @@ async function main() {
   const args = process.argv.slice(2);
   const shift = requireShift(args.find((a) => !a.startsWith("--")));
   const apply = args.includes("--apply");
-  const examId = requireExamId();
+  const examId = requireExamId(shift.level);
 
   const file = join(OUT, shift.id, "rows.json");
   if (!existsSync(file)) throw new Error(`${file} not found: run build.ts ${shift.id} first`);

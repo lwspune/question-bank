@@ -14,7 +14,7 @@
  *   into whichever question is open (16 of 100), so it is dropped.
  */
 import { assembleTcs, type TcsGeometry, type TcsQuestion, type TcsSpan } from "../ssc-cgl/tcs";
-import { LAYOUT, SLOTS } from "./config";
+import { LEVELS, SLOTS, type Level } from "./config";
 
 /** Text left of this x is the host's, never RRB's: the question gutter ("Q.n", "Ans") starts at ~25. */
 const PAGE_MARGIN = 15;
@@ -88,10 +88,14 @@ export function optionIcons<B extends Box>(icons: B[], labels: Box[]): B[] {
   });
 }
 
-/** One NTPC sheet's questions, numbered 1-100, keyed, under the date and slot it prints. */
-export function assembleNtpc(g: TcsGeometry & { icons?: Box[] }): TcsQuestion[] {
+/**
+ * One NTPC sheet's questions, numbered 1-100, keyed, under the date and slot it prints. The level
+ * picks the paper's sections: Graduate prints one, Undergraduate three, numbered straight through.
+ */
+export function assembleNtpc(g: TcsGeometry & { icons?: Box[] }, level: Level = "graduate"): TcsQuestion[] {
   const norm = normaliseNtpcGeometry(g);
-  const questions = assembleTcs(norm, { slots: SLOTS, layout: LAYOUT });
+  const { layout, numberedThrough } = LEVELS[level];
+  const questions = assembleTcs(norm, { slots: SLOTS, layout, numberedThrough });
   // Option labels after renumbering: "1." to "4." in a key colour.
   const labels = norm.spans.filter((s) => /^[1-4]\.(\s|$)/.test(s.text.trim()) && keyColoured(s.color));
   return coverIcons(questions, optionIcons(g.icons ?? [], labels));

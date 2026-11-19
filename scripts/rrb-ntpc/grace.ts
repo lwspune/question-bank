@@ -43,7 +43,6 @@ async function main() {
   const { createClient } = require("@supabase/supabase-js") as typeof import("@supabase/supabase-js");
   const apply = process.argv.includes("--apply");
   const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
-  const examId = requireExamId();
 
   const list: { id: string; reason: string }[] = JSON.parse(readFileSync(FLAWED_JSON, "utf8"));
   const known = new Set(list.map((f) => f.id));
@@ -53,7 +52,7 @@ async function main() {
     const { data, error } = await db
       .from("questions")
       .select("id")
-      .eq("exam_id", examId)
+      .eq("exam_id", requireExamId(requireShift(f.shiftId).level))
       .eq("source_file", requireShift(f.shiftId).sourceFile)
       .eq("question_number", String(f.number))
       .maybeSingle();
