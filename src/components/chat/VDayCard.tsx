@@ -4,6 +4,8 @@ import Link from "next/link";
 import { ArrowRight, Play, Target, TrendingUp } from "lucide-react";
 import { trackFunnel } from "@/lib/analytics/trackFunnel";
 import type { DayAction, DayCard } from "@/lib/chat/dayCard";
+import { useIntlSite } from "@/lib/sites/useIntlSite";
+import { progressPathFor } from "@/lib/sites/intl";
 
 /**
  * V's "Your day" card (2026-11-15, lib/chat/dayCard.ts), under V's greeting
@@ -12,6 +14,9 @@ import type { DayAction, DayCard } from "@/lib/chat/dayCard";
  * button: today's plan task, else Fix, else full progress.
  */
 export default function VDayCard({ card, onNavigate }: { card: DayCard; onNavigate?: () => void }) {
+  // Full progress is /me/map on intl, which serves no /performance (2026-11-19).
+  const progressPath = progressPathFor(useIntlSite() ? "intl" : "pyqvault");
+  const hrefOf = (a: DayAction) => (a.action === "performance" ? progressPath : a.href);
   function go(a: DayAction) {
     trackFunnel("v_day_tap", { action: a.action });
     onNavigate?.();
@@ -43,7 +48,7 @@ export default function VDayCard({ card, onNavigate }: { card: DayCard; onNaviga
 
       <div className="mt-3 flex flex-wrap gap-2">
         <Link
-          href={card.primary.href}
+          href={hrefOf(card.primary)}
           onClick={() => go(card.primary)}
           className="inline-flex items-center gap-1 rounded-full bg-brand px-3.5 py-1.5 text-xs font-semibold text-brand-foreground shadow-sm transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
@@ -52,7 +57,7 @@ export default function VDayCard({ card, onNavigate }: { card: DayCard; onNaviga
         </Link>
         {card.secondary && (
           <Link
-            href={card.secondary.href}
+            href={hrefOf(card.secondary)}
             onClick={() => go(card.secondary!)}
             className="inline-flex items-center gap-1 rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3.5 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >

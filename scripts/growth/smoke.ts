@@ -345,6 +345,10 @@ async function main() {
         // Read by hand: signups by the kind of article they landed on (migration 0263), and Search Console clicks.
         line = "by hand: scripts/blog/readout.sql + Search Console clicks on /blog and /exams/*/syllabus";
         break;
+      case "v-intl":
+        // Read by hand: international students' typed questions to V and second days (V on intl, 2026-11-19).
+        line = "by hand: scripts/chat/v-intl-readout.sql";
+        break;
       case "enem-interest":
         // Read by hand: target_exams containing 'enem', and their ENEM mock attempts / answers.
         line = "by hand: students with enem in target_exams, and their ENEM mocks and answers";

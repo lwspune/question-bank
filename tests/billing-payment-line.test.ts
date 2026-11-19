@@ -5,7 +5,7 @@
  * while everyone else there sees the dollar pass sold through Paddle.
  */
 import { describe, it, expect } from "vitest";
-import { paymentLine, paymentTerms } from "@/lib/billing/paymentLine";
+import { payMethods, paymentLine, paymentTerms } from "@/lib/billing/paymentLine";
 import type { Plan } from "@/lib/billing/plans";
 
 const plan = (over: Partial<Plan>): Plan => ({
@@ -76,5 +76,19 @@ describe("paymentTerms", () => {
 
   it("never an em dash (the voice rule)", () => {
     for (const set of [[inr], [inr, usdRazorpay], [inr, usdPaddle]]) expect(paymentTerms(set)).not.toMatch(/—/);
+  });
+});
+
+// 2026-11-19 (V on intl): V told every buyer "pay by UPI, card or netbanking". The words follow the
+// passes shown, by the same rule as paymentLine, so an intl buyer abroad hears what Paddle takes.
+describe("payMethods: how V says to pay", () => {
+  it("names what each gateway takes", () => {
+    expect(payMethods([plan({ paymentProvider: "paddle", paddleProductId: "pro_1" })])).toBe("card or another method shown at checkout");
+    expect(payMethods([plan({ paymentProvider: "razorpay" })])).toBe("an international debit or credit card");
+    expect(payMethods([plan({ currency: "INR", site: "pyqvault", scope: "mocks" })])).toBe("UPI, card or netbanking");
+  });
+
+  it("falls back to www's words when nothing is on sale", () => {
+    expect(payMethods([])).toBe("UPI, card or netbanking");
   });
 });

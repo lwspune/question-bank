@@ -6,7 +6,7 @@
  * wait line (no upgrade price yet, so the card would read as a second charge).
  */
 import { describe, it, expect } from "vitest";
-import { hourlyLimitLine, hourlyOutcome, parseHourlyLimit, vPassTier } from "@/lib/chat/hourlyLimit";
+import { hourlyLimitLine, hourlyOutcome, parseHourlyLimit, vOfferScope, vPassTier } from "@/lib/chat/hourlyLimit";
 import type { Entitlement } from "@/lib/entitlements/access";
 
 const NOW = Date.UTC(2026, 10, 7, 12, 0);
@@ -31,6 +31,14 @@ describe("vPassTier", () => {
     expect(vPassTier([grant("mocks")], NOW)).toBe("premium");
     expect(vPassTier([grant("teacher")], NOW)).toBe("premium");
     expect(vPassTier([grant("all", { source: "comp" })], NOW)).toBe("premium");
+  });
+
+  // 2026-11-19 (V on intl): the IMAT pass gives everything www's Premium does (mocks, answers,
+  // downloads), yet V counted its holders as free: 5 an hour, then an offer of the rupee Premium Pass.
+  // The passes intl sells come from the registry (billing/passScope sitePassScopes): IMAT's today.
+  it("counts an international exam's pass as premium", () => {
+    expect(vPassTier([grant("imat")], NOW)).toBe("premium");
+    expect(vPassTier([grant("imat", { status: "revoked" })], NOW)).toBe("none");
   });
 
   it("counts the Practice Pass as a pass, not premium", () => {
@@ -127,5 +135,26 @@ describe("parseHourlyLimit (what the chat window reads)", () => {
     expect(parseHourlyLimit(undefined)).toBeNull();
     expect(parseHourlyLimit({ limit: 5 })).toBeNull();
     expect(parseHourlyLimit({ line: "", limit: 5 })).toBeNull();
+  });
+});
+
+// 2026-11-19 (V on intl): at the limit V offered www's rupee Premium Pass everywhere.
+describe("vOfferScope: which pass V offers at the hourly limit", () => {
+  it("offers www's Premium (downloads) on www, whatever the page", () => {
+    expect(vOfferScope("pyqvault", "/browse")).toBe("downloads");
+    expect(vOfferScope("pyqvault", null)).toBe("downloads");
+  });
+
+  it("offers the IMAT pass on an IMAT page on intl", () => {
+    expect(vOfferScope("intl", "/notes/imat-biology/bioenergetics-metabolism/imat-bem-energy")).toBe("imat");
+    expect(vOfferScope("intl", "/mock/exam/imat")).toBe("imat");
+  });
+
+  it("offers nothing on a free exam's page: ENEM has no pass to sell", () => {
+    expect(vOfferScope("intl", "/mock/exam/enem")).toBeNull();
+  });
+
+  it("on an intl page naming no exam, offers the one pass intl sells, while it sells one", () => {
+    expect(vOfferScope("intl", "/browse")).toBe("imat");
   });
 });
