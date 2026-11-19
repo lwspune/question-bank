@@ -378,7 +378,7 @@ The load-bearing choices made during the initial scaffold. Every later phase res
   - **Why:** a paying CGL student could not find static GK. The SSC lane copied CDS's GK split, whose brief filed dances, festivals, books, sports and "firsts" under Current Affairs, which notes, homework and ebooks skip as stale.
   - **Per question, not per topic:** static and dated rows share subtopics. All 1,711 SSC rows read (CGL I/II, CHSL, CPO); rule in `scripts/ssc-cgl/static-gk/README.md`.
   - **`static-gk/move.ts`** moves bank (one pg transaction), transcripts and catalog together; old mocks safe (`sectionKey` per question). Brief now files them under Static GK.
-  - NDA, CDS, RRB NTPC have the same mix: backfill ledger. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
+  - Same day for NDA, CDS, RRB NTPC (`move-gk-exams.ts`): 157 of 1,117 moved (they ask news), plus an armed-forces topic. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-18 (third) — A 7-day Practice Pass trial on the 3rd day at the answer limit (migration 0273).**
   - **Why the 3rd day:** 12 of 20 sales (3-18 Nov) came within a day of the first limit day; past the 3rd, 4 of 46 buyers paid and 63 students never did.
   - **Granted only on Activate**, on a day the offer showed: 3 such days at most, once per account, never after any pass, never on V. `claim_reveal` records limit days (`reveal_limit_days`, backfilled).
