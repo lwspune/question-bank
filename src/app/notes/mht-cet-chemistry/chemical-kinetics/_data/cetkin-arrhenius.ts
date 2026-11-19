@@ -109,6 +109,7 @@ export const ARRHENIUS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetkin-collision-theory",
       name: "Collision Theory: Only Effective Collisions Count",
+      visualizationSlug: "imat-energy-profile",
       intuition:
         "Molecules react only when they collide with energy at least \\(E_a\\) AND in the right orientation. The rate equals the frequency of EFFECTIVE collisions, which is a small fraction of all collisions — so the observed rate of a gas reaction is far below the collision frequency.",
       definition:

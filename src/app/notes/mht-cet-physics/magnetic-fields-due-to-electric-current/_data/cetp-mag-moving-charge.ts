@@ -15,6 +15,7 @@ export const MOVING_CHARGE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-mag-lorentz-force",
       name: "The Magnetic Force on a Moving Charge",
+      visualizationSlug: "magnetic-force-triad",
       intuition:
         "F = q(v × B): the force is perpendicular to the velocity, so it can turn the charge but never speed it up or slow it down — the work it does is always zero. Its size is qvB sin θ, so a charge moving along the field lines feels nothing. Work the cross product component by component when v and B are given as vectors. With an electric field too, the total is the Lorentz force qE + q(v × B). A cyclotron uses the magnetic force to bend and an alternating electric field to accelerate, so it works for any charged particle, positive or negative — but not for neutrons.",
       definition:

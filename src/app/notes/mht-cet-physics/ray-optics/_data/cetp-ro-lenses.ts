@@ -15,6 +15,7 @@ export const LENSES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-ro-lens-formula",
       name: "The Lens Formula and Magnification",
+      visualizationSlug: "opt-convex-lens-rays",
       intuition:
         "With the Cartesian convention, 1/v − 1/u = 1/f and m = v/u. For a real image n times the size of the object, v = −nu (opposite sides), so the object distance is f(1 + 1/n) and the image distance f(n + 1). The object and its real image are closest, 4f apart, when both sit at 2f. An air bubble in water is a double-convex lens of the rarer medium inside the denser, so it diverges. Chromatic aberration — colours focusing at different points — comes from dispersion in the lens. At a single spherical surface, μ₂/v − μ₁/u = (μ₂ − μ₁)/R.",
       definition:

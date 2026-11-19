@@ -15,6 +15,7 @@ export const PROCESSES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-td-process-identification",
       name: "Recognising Each Process",
+      visualizationSlug: "ht-pv-process-diagram",
       intuition:
         "Each process fixes one quantity. Isothermal: T constant, so ΔU = 0, PV = constant, a hyperbola on P–V, and all heat becomes work. Adiabatic: no heat exchanged, the system insulated, PV^γ = constant, and a steeper curve than the isothermal through the same point; the temperature changes. Isobaric: P constant, a horizontal line on P–V. Isochoric: V constant, a vertical line on P–V, no work, dQ = dU. A process PV^n = constant with zero specific heat must be adiabatic, so n = γ. On a p–T graph an isothermal is a vertical line.",
       definition:

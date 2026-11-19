@@ -115,6 +115,7 @@ export const TRIG_EQUATIONS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cettf-a-cos-plus-b-sin",
       name: "a cos x + b sin x = c — the R Form, When a Solution Exists, and Roots as a Pair",
+      visualizationSlug: "trig-amplitude-phase",
       intuition:
         "\\(a\\cos x + b\\sin x\\) is a single wave in disguise: it equals \\(R\\cos(x - \\phi)\\) with \\(R = \\sqrt{a^2 + b^2}\\). So it can never exceed \\(R\\) in size, which answers every 'for which k does a solution exist' question, and once written as one cosine it solves by the ordinary pattern.",
       definition:

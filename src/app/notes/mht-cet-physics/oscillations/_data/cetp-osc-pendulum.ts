@@ -15,6 +15,7 @@ export const PENDULUM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-osc-pendulum-period",
       name: "Period and Length",
+      visualizationSlug: "osc-pendulum-restoring-force",
       intuition:
         "T = 2π√(L/g): the period goes as the square root of the length and has nothing to do with the bob's mass or material. Four times the length doubles the period; frequencies 4 : 3 mean lengths 9 : 16; a 20% longer period needs 1.44 times the length. Lengths subtract as T²: a pendulum of length L₁ − L₂ has period √(T₁² − T₂²). The length is measured to the bob's centre of mass, so a leaking bob first lengthens its pendulum and then, once nearly empty, shortens it back.",
       definition:

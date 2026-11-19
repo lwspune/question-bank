@@ -56,6 +56,7 @@ export const ALKENE_STRUCTURE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetalk-isomers-hybridisation",
       name: "Isomers, Hybridisation and Alkadienes",
+      visualizationSlug: "imat-cis-trans",
       intuition:
         "Draw the carbon skeletons first, then place the double bond in every distinct position — that counts the structural isomers. Each double-bonded carbon is sp², every other carbon is sp³. Cis–trans isomers need two DIFFERENT groups on each end of the C=C.",
       definition:

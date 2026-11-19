@@ -62,6 +62,7 @@ export const ISOMERISM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetbp-chirality-and-optical-activity",
       name: "Chiral Carbons and Optical Activity",
+      visualizationSlug: "imat-chirality-mirror",
       intuition:
         "A carbon bonded to four DIFFERENT groups is a stereocentre; a molecule with one is chiral and rotates plane-polarised light. Check every candidate carbon: two identical substituents (two methyls, two ethyls, two hydrogens) kill it. Count the carbons that pass.",
       definition:

@@ -61,6 +61,7 @@ export const MECHANISM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetkin-intermediates-and-catalysts",
       name: "Intermediates: Made in One Step, Used in the Next; Catalysts: Used, Then Regenerated",
+      visualizationSlug: "imat-catalyst-profile",
       intuition:
         "Add the steps of a mechanism and cancel what appears on both sides. A species that cancels because it is PRODUCED first and CONSUMED later is an intermediate; one that is consumed first and regenerated later is a catalyst. Neither appears in the overall equation.",
       definition:

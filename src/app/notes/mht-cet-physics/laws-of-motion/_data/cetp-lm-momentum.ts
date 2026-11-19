@@ -58,6 +58,7 @@ export const MOMENTUM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-lm-collisions",
       name: "Collisions and the Coefficient of Restitution",
+      visualizationSlug: "imat-collision-momentum",
       intuition:
         "Momentum is conserved in every collision; kinetic energy only in an elastic one. The coefficient of restitution e = (speed of separation)/(speed of approach) is 1 when elastic and 0 when the bodies stick. Two equations — momentum and restitution — give both final velocities. A body that stops after hitting a stationary one of mass M gives e = m/M. Bodies that stick share one velocity, found component by component when they move at right angles. A ball dropped onto a surface rebounds to e²h.",
       definition:

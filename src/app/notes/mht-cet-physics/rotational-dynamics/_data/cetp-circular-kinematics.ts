@@ -13,6 +13,7 @@ export const CIRCULAR_KINEMATICS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-angular-velocity",
       name: "Angular Velocity, Linear Speed and Centripetal Acceleration",
+      visualizationSlug: "imat-circular-motion",
       intuition:
         "Every point of a turning body sweeps the same angle in the same time, so the angular velocity is shared; the linear speed grows with the distance from the axis. Two bodies with the same period therefore have the same ω, and their speeds and centripetal accelerations are in the ratio of their radii.",
       definition:

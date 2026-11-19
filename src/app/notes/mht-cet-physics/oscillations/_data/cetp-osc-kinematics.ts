@@ -58,6 +58,7 @@ export const KINEMATICS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-osc-phase-and-time",
       name: "Phase, and Time to Reach a Point",
+      visualizationSlug: "osc-shm-displacement-time",
       intuition:
         "Write x = A sin ωt if the particle starts at the mean position, x = A cos ωt if it starts at an extreme. The phase ωt then tells you where it is: from the mean position it reaches A/2 at ωt = π/6 (T/12), A/√2 at π/4 (T/8), and the extreme at π/2 (T/4). Each full oscillation adds 2π of phase. Velocity leads displacement by π/2 and acceleration is opposite to displacement, π out of phase — so force against time is the displacement graph turned upside down.",
       definition:

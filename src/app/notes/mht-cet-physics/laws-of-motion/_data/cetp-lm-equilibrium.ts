@@ -14,6 +14,7 @@ export const EQUILIBRIUM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-lm-equilibrium",
       name: "Moments, Reactions and the Centre of Mass",
+      visualizationSlug: "imat-moments-seesaw",
       intuition:
         "For balance, take moments about a point where an unknown force acts, so it drops out. A metre scale on a wedge at its centre balances when w × (its distance) = W × (the other distance). A rod on two knife-edges r apart, with its weight x from A, has reaction W(r − x)/r at A. At a knot held by strings the vector sum of the tensions is zero: two equal tensions T at θ to the vertical hold up 2T cos θ. The centre of mass of two particles is at (m₁x₁ + m₂x₂)/(m₁ + m₂), on the line between them; to keep it fixed, moving m₁ by d toward it must be balanced by moving m₂ by (m₁/m₂)d toward it too.",
       definition:
