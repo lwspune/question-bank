@@ -611,7 +611,7 @@ const provenance = (confidence: string, agreed: boolean) =>
 export function buildRecords(
   questions: TQ[],
   derivations: Derivation[],
-  opts: { reconciled?: Set<number> } = {}
+  opts: { reconciled?: Set<number>; keyed?: boolean } = {}
 ): RawRow[] {
   const byNumber = new Map(derivations.map((d) => [d.number, d]));
   const rows: RawRow[] = [];
@@ -636,7 +636,11 @@ export function buildRecords(
       optionD: opt("D"),
       answer: d.answer.toUpperCase(),
       difficulty: q.difficulty,
-      solution: `${d.reasoning.trim()} ${provenance(d.confidence.toUpperCase(), agreed)}`.trim(),
+      // On a keyed paper UPSC's key supplied the letter, so the "no official key"
+      // bracket would be false (1,789 CSE rows shipped with it; fixed 2026-11-19).
+      solution: opts.keyed
+        ? d.reasoning.trim()
+        : `${d.reasoning.trim()} ${provenance(d.confidence.toUpperCase(), agreed)}`.trim(),
     });
   }
   return rows;

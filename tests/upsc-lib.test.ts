@@ -264,6 +264,12 @@ describe("buildRecords", () => {
     expect(row.solution).toMatch(/reconciled by hand/);
   });
 
+  it("on a KEYED paper the solution is the working alone (the key supplied the letter)", () => {
+    const [row] = buildRecords([q()], [d()], { keyed: true });
+    expect(row.solution).toBe("Article 124 vests the appointment in the President.");
+    expect(row.solution).not.toMatch(/no official key/);
+  });
+
   it("DROPS a question nobody derived rather than inventing an answer", () => {
     expect(buildRecords([q(), q({ number: 2 })], [d()])).toHaveLength(1);
   });

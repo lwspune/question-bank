@@ -52,7 +52,8 @@ async function main() {
   // from the rows on purpose and must not read as a coverage failure.
   const dropped: number[] = answersRaw.dropped ?? [];
 
-  const built = buildRecords(questions, answers, { reconciled });
+  const keyed = existsSync(dataPath(paper.id, "key"));
+  const built = buildRecords(questions, answers, { reconciled, keyed });
   // Normalise long-form text at the write boundary, mirroring the upload parser.
   // `commitStaged` REJECTS a literal "\n" rather than repairing it, because
   // content_hash is computed by the caller from the pre-normalisation text.
