@@ -3314,6 +3314,33 @@ export type Database = {
           },
         ]
       }
+      partner_course_clicks: {
+        Row: {
+          course_id: string
+          created_at: string
+          exam_slug: string | null
+          id: string
+          user_id: string | null
+          visitor_id: string
+        }
+        Insert: {
+          course_id: string
+          created_at?: string
+          exam_slug?: string | null
+          id?: string
+          user_id?: string | null
+          visitor_id: string
+        }
+        Update: {
+          course_id?: string
+          created_at?: string
+          exam_slug?: string | null
+          id?: string
+          user_id?: string | null
+          visitor_id?: string
+        }
+        Relationships: []
+      }
       paywall_settings: {
         Row: {
           brand_name_line: boolean
@@ -3329,6 +3356,7 @@ export type Database = {
           free_save_limit: number | null
           id: boolean
           mock_papers_per_day: number | null
+          practice_trial_after_days: number | null
           projection_trial_days: number | null
           updated_at: string
         }
@@ -3346,6 +3374,7 @@ export type Database = {
           free_save_limit?: number | null
           id?: boolean
           mock_papers_per_day?: number | null
+          practice_trial_after_days?: number | null
           projection_trial_days?: number | null
           updated_at?: string
         }
@@ -3363,6 +3392,7 @@ export type Database = {
           free_save_limit?: number | null
           id?: boolean
           mock_papers_per_day?: number | null
+          practice_trial_after_days?: number | null
           projection_trial_days?: number | null
           updated_at?: string
         }
@@ -3442,6 +3472,24 @@ export type Database = {
         }
         Update: {
           created_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      practice_trial_offers: {
+        Row: {
+          created_at: string
+          ist_day: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          ist_day: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          ist_day?: string
           user_id?: string
         }
         Relationships: []
@@ -4477,6 +4525,24 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      reveal_limit_days: {
+        Row: {
+          created_at: string
+          ist_day: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          ist_day: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          ist_day?: string
+          user_id?: string
+        }
+        Relationships: []
       }
       score_alerts: {
         Row: {
@@ -5777,6 +5843,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      activate_practice_trial: { Args: never; Returns: Json }
       answer_grade_commit: {
         Args: {
           p_grades: Json
