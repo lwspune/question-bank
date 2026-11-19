@@ -186,7 +186,7 @@ export function fromWorkedExample(e: WorkedExample): PresentableQuestion {
     // A worked example carries no format column: options mean an MCQ.
     format: e.options.length > 0 ? "mcq" : "subjective",
     cancelled: false,
-    solutionVisual: null,
+    solutionVisual: e.solutionVisual ?? null,
   };
 }
 

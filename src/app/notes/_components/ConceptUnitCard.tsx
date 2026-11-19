@@ -1070,7 +1070,7 @@ export default function ConceptUnitCard({
           <p className="mb-2 text-sm text-muted-foreground">
             {featuredLeadIn(pyqExample.source.kind)}
           </p>
-          <WorkedExampleCard rank={index} example={pyqExample} />
+          <WorkedExampleCard rank={index} example={pyqExample} visualSurface="notes" />
         </div>
       )}
 

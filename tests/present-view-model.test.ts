@@ -65,6 +65,7 @@ function makeWorkedExample(partial: Partial<WorkedExample> = {}): WorkedExample 
     examName: "NDA",
     imageUrl: null,
     solutionImageUrl: null,
+    solutionVisual: null,
     options: [
       { label: "A", text: "5", isCorrect: false, imageUrl: null },
       { label: "B", text: "5.5", isCorrect: true, imageUrl: null },
@@ -221,6 +222,12 @@ describe("fromQuestionRow (/browse + /questions)", () => {
 });
 
 describe("fromWorkedExample (/notes checkpoints + /guide)", () => {
+  it("carries the animated solution into Present mode", () => {
+    const visual = { scene: "functionGraph", params: {}, answer: { value: 1 }, steps: [] };
+    expect(fromWorkedExample(makeWorkedExample({ solutionVisual: visual })).solutionVisual).toBe(visual);
+    expect(fromWorkedExample(makeWorkedExample()).solutionVisual).toBeNull();
+  });
+
   it("builds the breadcrumb from chapter, subtopic and provenance", () => {
     const p = fromWorkedExample(makeWorkedExample());
     expect(p.breadcrumb).toBe("Statistics → Central Tendency · Q110 · Sep · 2023");
