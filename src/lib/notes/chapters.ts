@@ -3061,6 +3061,21 @@ import {
   HB9_SOUND_NOTES,
   HB9_SOUND_SLUGS,
 } from "@/app/notes/homi-bhabha-9-physics/sound/_data";
+import {
+  HB9_HUMAN_BODY_CHAPTER,
+  HB9_HUMAN_BODY_NOTES,
+  HB9_HUMAN_BODY_SLUGS,
+} from "@/app/notes/homi-bhabha-9-biology/human-body-health/_data";
+import {
+  HB9_ECOSYSTEM_CHAPTER,
+  HB9_ECOSYSTEM_NOTES,
+  HB9_ECOSYSTEM_SLUGS,
+} from "@/app/notes/homi-bhabha-9-biology/ecosystem-environment/_data";
+import {
+  HB9_LIFE_PROCESSES_CHAPTER,
+  HB9_LIFE_PROCESSES_NOTES,
+  HB9_LIFE_PROCESSES_SLUGS,
+} from "@/app/notes/homi-bhabha-9-biology/life-processes/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -9841,6 +9856,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HB9_SOUND_CHAPTER,
     notes: HB9_SOUND_NOTES,
     slugs: HB9_SOUND_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Biology",
+    subjectRoute: "homi-bhabha-9-biology",
+    subjectDisplay: "Homi Bhabha Biology",
+    chapterSlug: "human-body-health",
+    chipLabel: "Human Body and Health notes",
+    chapter: HB9_HUMAN_BODY_CHAPTER,
+    notes: HB9_HUMAN_BODY_NOTES,
+    slugs: HB9_HUMAN_BODY_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Biology",
+    subjectRoute: "homi-bhabha-9-biology",
+    subjectDisplay: "Homi Bhabha Biology",
+    chapterSlug: "ecosystem-environment",
+    chipLabel: "Ecosystem and Environment notes",
+    chapter: HB9_ECOSYSTEM_CHAPTER,
+    notes: HB9_ECOSYSTEM_NOTES,
+    slugs: HB9_ECOSYSTEM_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Biology",
+    subjectRoute: "homi-bhabha-9-biology",
+    subjectDisplay: "Homi Bhabha Biology",
+    chapterSlug: "life-processes",
+    chipLabel: "Life Processes notes",
+    chapter: HB9_LIFE_PROCESSES_CHAPTER,
+    notes: HB9_LIFE_PROCESSES_NOTES,
+    slugs: HB9_LIFE_PROCESSES_SLUGS,
   },
 ];
 
