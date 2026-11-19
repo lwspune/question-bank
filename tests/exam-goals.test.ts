@@ -51,6 +51,7 @@ describe("every exam declares a goal", () => {
     ["mpsc-group-b-c", "government"],
     ["ugc-net", "government"],
     ["rrb-ntpc", "government"],
+    ["rrb-ntpc-undergraduate", "government"],
     ["capf-ac", "defence"],
     ["rpsc-ras", "government"],
     ["ipmat-indore", "management"],

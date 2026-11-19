@@ -40,6 +40,7 @@
  *   npx tsx scripts/mocks/build.ts --paper=iat             # IISER IAT, one per committed year (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=ugc-net         # UGC NET Paper 1, one per committed shift (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=rrb-ntpc        # RRB NTPC Graduate CBT 1, one per shift (opt-in)
+ *   npx tsx scripts/mocks/build.ts --paper=rrb-ntpc-undergraduate   # RRB NTPC Undergraduate CBT 1, one per shift (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=capf            # UPSC CAPF (AC) Paper I, one per year (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=ras             # RPSC RAS Prelims, one per year (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=enem            # ENEM Day 2, one per committed year (opt-in)
@@ -91,6 +92,7 @@ import {
   iatPaper,
   UGC_NET_PAPER_1,
   RRB_NTPC_CBT_1,
+  RRB_NTPC_UG_CBT_1,
   CAPF_PAPER_1,
   RAS_PRELIMS,
   ENEM_DAY_2,
@@ -132,7 +134,7 @@ import { imatSittings } from "./imatSittings";
 import { uceedSittings } from "./uceedSittings";
 import { iatSittings } from "./iatSittings";
 import { ugcNetSittings } from "./ugcNetSittings";
-import { rrbNtpcSittings } from "./rrbNtpcSittings";
+import { rrbNtpcSittings, rrbNtpcUgSittings } from "./rrbNtpcSittings";
 import { capfSittings } from "./capfSittings";
 import { rasSittings } from "./rasSittings";
 import { enemSittings } from "./enemSittings";
@@ -853,6 +855,11 @@ async function buildRrbNtpc(db: SupabaseClient, run: RunState) {
   await buildFromSourceFiles(db, RRB_NTPC_CBT_1, rrbNtpcSittings(), run, "rrbNtpcSittings.ts");
 }
 
+/** RRB NTPC Undergraduate CBT 1, one mock per committed shift (rrbNtpcSittings.ts); flawed questions ride as grace. */
+async function buildRrbNtpcUg(db: SupabaseClient, run: RunState) {
+  await buildFromSourceFiles(db, RRB_NTPC_UG_CBT_1, rrbNtpcUgSittings(), run, "rrbNtpcSittings.ts");
+}
+
 /** UPSC CAPF (AC) Paper I, one mock per committed year (capfSittings.ts); dropped and defective questions ride as grace. */
 async function buildCapf(db: SupabaseClient, run: RunState) {
   await buildFromSourceFiles(db, CAPF_PAPER_1, capfSittings(), run, "capfSittings.ts");
@@ -1029,6 +1036,7 @@ async function main() {
   const runClat = paperFilter === "clat";
   // Opt-in: RRB NTPC (scripts/rrb-ntpc/README.md).
   const runRrbNtpc = paperFilter === "rrb-ntpc";
+  const runRrbNtpcUg = paperFilter === "rrb-ntpc-undergraduate";
   // Opt-in: SSC CPO rows are PRIVATE until the owner OKs them (scripts/ssc-cgl/README.md).
   const runCpo = paperFilter === "ssc-cpo";
   // Opt-in: UPSC CAPF (AC) (scripts/capf/README.md).
@@ -1039,9 +1047,9 @@ async function main() {
   const runEnem = paperFilter === "enem";
   // Opt-in: AISSEE + RMS CET rows are PRIVATE until the go-public step (scripts/milschool/README.md).
   const runMilschool = paperFilter === "milschool";
-  if (paperFilter && !runRas && !runEnem && !runMilschool && !runUceed && !runIat && !runUgcNet && !runClat && !runRrbNtpc && !runCpo && !runCapf && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runChsl && !runSpi && !runImat && !runMpscMains) {
+  if (paperFilter && !runRas && !runEnem && !runMilschool && !runUceed && !runIat && !runUgcNet && !runClat && !runRrbNtpc && !runRrbNtpcUg && !runCpo && !runCapf && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runChsl && !runSpi && !runImat && !runMpscMains) {
     throw new Error(
-      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, ssc-chsl, ssc-cpo, spi, imat, mpsc-mains, uceed, iat, ugc-net, clat, rrb-ntpc, capf, ras, enem, milschool)`
+      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, ssc-chsl, ssc-cpo, spi, imat, mpsc-mains, uceed, iat, ugc-net, clat, rrb-ntpc, rrb-ntpc-undergraduate, capf, ras, enem, milschool)`
     );
   }
 
@@ -1120,6 +1128,7 @@ async function main() {
   if (runUgcNet) await buildUgcNet(db, run);
   if (runClat) await buildClat(db, run);
   if (runRrbNtpc) await buildRrbNtpc(db, run);
+  if (runRrbNtpcUg) await buildRrbNtpcUg(db, run);
   if (runCapf) await buildCapf(db, run);
   if (runRas) await buildRas(db, run);
   if (runEnem) await buildEnem(db, run);

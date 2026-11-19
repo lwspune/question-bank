@@ -46,6 +46,8 @@ function shift(
   time: string,
   keyOf: (n: number) => number,
   sections: [string, number][] = SECTIONS.map((n) => [n, 25]),
+  /** Number the labels straight through the sections (RRB NTPC Undergraduate), not from Q.1 in each. */
+  numberedThrough = false,
 ): TcsGeometry {
   const spans: TcsSpan[] = [...header(firstPage, time)];
   const images: TcsImage[] = [];
@@ -55,7 +57,7 @@ function shift(
     spans.push(section(page, 30, name));
     for (let n = 1; n <= count; n++) {
       const top = n % 2 === 1 ? 60 : 400;
-      const q = question(page, top, n, keyOf(before + n));
+      const q = question(page, top, numberedThrough ? before + n : n, keyOf(before + n));
       spans.push(...q.spans);
       images.push(...q.images);
       if (n % 2 === 0) page++;
@@ -502,6 +504,34 @@ describe("groupTcsShifts", () => {
 
   it("refuses a sheet that prints no Exam Date", () => {
     expect(() => groupTcsShifts(1, [{ dir: "a", questions: sheet(0, null as unknown as string, 1) }])).toThrow(/no Exam Date/);
+  });
+});
+
+describe("assembleTcs, a paper numbered straight through its sections (RRB NTPC Undergraduate)", () => {
+  const UG: [string, number][] = [["Mathematics", 30], ["General Awareness", 40], ["General Intelligence and Reasoning", 30]];
+  const layout = [
+    { part: "A" as const, match: /^Mathematics$/, count: 30, subjects: ["Mathematics"] },
+    { part: "B" as const, match: /^General Awareness$/, count: 40, subjects: ["History"] },
+    { part: "C" as const, match: /^General Intelligence and Reasoning$/, count: 30, subjects: ["Reasoning"] },
+  ];
+
+  it("keeps the printed numbers 1-100 when told the paper is numbered through", () => {
+    const qs = assembleTcs(shift(2, "9:00 AM - 10:30 AM", () => 2, UG, true), { layout, numberedThrough: true });
+    expect(qs.map((q) => q.number)).toEqual(Array.from({ length: 100 }, (_, i) => i + 1));
+    expect(qs.map((q) => q.part).join("")).toBe("A".repeat(30) + "B".repeat(40) + "C".repeat(30));
+    expect(qs[30]).toMatchObject({ part: "B", number: 31, key: "C" });
+  });
+
+  it("without the option, reads Q.41 under General Awareness as past its 40 questions (per-section numbering)", () => {
+    expect(() => assembleTcs(shift(2, "9:00 AM - 10:30 AM", () => 2, UG, true), { layout })).toThrow(/Q41 is past the 40 questions of PART-B/);
+  });
+
+  it("refuses a printed number outside its section's range", () => {
+    const g = shift(2, "9:00 AM - 10:30 AM", () => 2, UG, true);
+    // Q.31 printed as Q.5: it falls under General Awareness, whose questions are 31-70.
+    const label = g.spans.find((s) => s.text === "Q.31")!;
+    label.text = "Q.5";
+    expect(() => assembleTcs(g, { layout, numberedThrough: true })).toThrow(/Q5 is outside PART-B's questions 31-70/);
   });
 });
 

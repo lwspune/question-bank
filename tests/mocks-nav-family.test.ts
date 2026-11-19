@@ -16,8 +16,19 @@ import type { MockListItem } from "@/lib/mocks/query";
  * exams (Prelims + five Mains); listing them flat buried the rest of the rail.
  */
 describe("mock families", () => {
-  it("collapses MPSC, IPMAT, SSC and the military schools — each has 2+ mock exams — and nothing else", () => {
-    expect(getMockFamilies().map((f) => f.slug)).toEqual(["ipmat", "mpsc", "ssc", "sainik-military-schools"]);
+  it("collapses MPSC, IPMAT, SSC, RRB NTPC and the military schools — each has 2+ mock exams — and nothing else", () => {
+    expect(getMockFamilies().map((f) => f.slug)).toEqual(["ipmat", "rrb-ntpc-levels", "mpsc", "ssc", "sainik-military-schools"]);
+  });
+
+  it("RRB NTPC groups its two levels, Graduate then Undergraduate, under a page that is not Graduate's own", () => {
+    // "rrb-ntpc" is the Graduate exam's slug (and its mock page), so the family takes the axis.
+    const ntpc = getMockFamily("rrb-ntpc-levels")!;
+    expect(ntpc.name).toBe("RRB NTPC");
+    expect(ntpc.stages.flatMap((s) => s.members.map((m) => [m.slug, m.displayName]))).toEqual([
+      ["rrb-ntpc", "RRB NTPC"],
+      ["rrb-ntpc-undergraduate", "RRB NTPC Undergraduate"],
+    ]);
+    expect(mockFamilyOf("rrb-ntpc-undergraduate")?.slug).toBe("rrb-ntpc-levels");
   });
 
   it("the military schools group by entrance, AISSEE before RMS CET, and RMS CET Class 6 is absent (no mocks)", () => {

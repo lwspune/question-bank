@@ -100,3 +100,25 @@ describe.skipIf(!existsSync(GEOMETRY))("assembleNtpc on 16 Mar 2026 Shift 1", ()
     expect(qs()[0].key).toBe("B");
   });
 });
+
+const UG_GEOMETRY = join(__dirname, "..", "scripts", "rrb-ntpc", "out", "u1-2026-05-07-s1", "geometry.json");
+describe.skipIf(!existsSync(UG_GEOMETRY))("assembleNtpc on Undergraduate 7 May 2026 Shift 1", () => {
+  const qs = () => assembleNtpc(JSON.parse(readFileSync(UG_GEOMETRY, "utf8")) as TcsGeometry, "undergraduate");
+
+  it("reads 100 questions numbered 1-100 through its three printed sections", () => {
+    const all = qs();
+    expect(all.map((q) => q.number)).toEqual(Array.from({ length: 100 }, (_, i) => i + 1));
+    expect(all.map((q) => q.part).join("")).toBe("A".repeat(30) + "B".repeat(40) + "C".repeat(30));
+    expect(new Set(all.map((q) => `${q.date} s${q.shift}`))).toEqual(new Set(["2026-05-07 s1"]));
+  });
+
+  it("keeps each stem's first line and lets no host text into a question", () => {
+    const all = qs();
+    expect(all[0].stem.startsWith("A dealer sells a product at 15% profit.")).toBe(true);
+    expect(all.filter((q) => /prepp/i.test(q.stem + q.options.join(" ")))).toEqual([]);
+  });
+
+  it("refuses to read it as the Graduate paper", () => {
+    expect(() => assembleNtpc(JSON.parse(readFileSync(UG_GEOMETRY, "utf8")) as TcsGeometry, "graduate")).toThrow(/unknown section/);
+  });
+});

@@ -1013,6 +1013,32 @@ export const RRB_NTPC_CBT_1: MockPaperBlueprint = {
 };
 
 /**
+ * RRB NTPC Undergraduate CBT 1 (Class 12 level, its own exam since 2026-11-19): the same scheme
+ * as Graduate (100 MCQs, 90 minutes, +1 / -1/3), but its sheet prints THREE sections numbered
+ * straight through (Mathematics Q1-30, General Awareness Q31-70, General Intelligence and Reasoning
+ * Q71-100), so the mock keeps them as sections, in RRB's order. General Awareness carries the same
+ * ten subjects as Graduate's (scripts/rrb-ntpc/config.ts GA).
+ */
+export const RRB_NTPC_UG_CBT_1: MockPaperBlueprint = {
+  code: "cbt-1",
+  examName: "RRB NTPC Undergraduate",
+  examSlug: "rrb-ntpc-undergraduate",
+  paperLabel: "Undergraduate CBT 1",
+  durationSecs: 90 * 60,
+  marking: { correct: 1, wrong: -0.3333 },
+  sections: [
+    { key: "mathematics", label: "Mathematics", subjects: ["Mathematics"], count: 30 },
+    {
+      key: "general-awareness",
+      label: "General Awareness",
+      subjects: ["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Current Affairs", "Static GK", "Computer Knowledge"],
+      count: 40,
+    },
+    { key: "reasoning", label: "General Intelligence and Reasoning", subjects: ["Reasoning"], count: 30 },
+  ],
+};
+
+/**
  * RPSC RAS/RTS Prelims, "General Knowledge and General Science", as RPSC sets
  * it: 150 MCQs in 3 hours for 200 marks, so +4/3 a right answer and one third
  * of that (-4/9) off a wrong one. The booklet prints no subject headings
@@ -1463,6 +1489,7 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   IAT_PAPER,
   UGC_NET_PAPER_1,
   RRB_NTPC_CBT_1,
+  RRB_NTPC_UG_CBT_1,
   CAPF_PAPER_1,
   RAS_PRELIMS,
   CLAT_PAPER,

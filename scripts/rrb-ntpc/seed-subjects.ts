@@ -1,20 +1,22 @@
 /**
- * Seed the ten subjects under RRB NTPC (SUBJECTS in config.ts).
+ * Seed the subjects (SUBJECTS in config.ts, the same for both levels) under a level's exam.
  *
- *   npx tsx scripts/rrb-ntpc/seed-subjects.ts          # dry-run: report only
- *   npx tsx scripts/rrb-ntpc/seed-subjects.ts --apply  # create the missing ones
+ *   npx tsx scripts/rrb-ntpc/seed-subjects.ts [--level=undergraduate]          # dry-run: report only
+ *   npx tsx scripts/rrb-ntpc/seed-subjects.ts [--level=undergraduate] --apply  # create the missing ones
  *
  * commitStaged creates chapters and subtopics but refuses an unknown SUBJECT, so these must exist
  * before the first commit. Idempotent.
  */
 import { createClient } from "@supabase/supabase-js";
 import { join } from "node:path";
-import { EXAM_NAME, SUBJECTS, requireExamId } from "./config";
+import { LEVELS, SUBJECTS, levelArg, requireExamId } from "./config";
 
 async function main() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
   const apply = process.argv.includes("--apply");
-  const examId = requireExamId();
+  const level = levelArg(process.argv);
+  const examId = requireExamId(level);
+  const EXAM_NAME = LEVELS[level].examName;
   const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
 
   const { data: existing, error } = await client.from("subjects").select("id, name").eq("exam_id", examId);
