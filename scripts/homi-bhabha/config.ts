@@ -94,9 +94,12 @@ export type Paper = {
   /** Never set here (every paper is MCQ); kept for the copied scripts' type. */
   format?: "written";
   /**
-   * Set when MSTA's own print is not available and the text comes from someone
-   * else's re-typing (owner exception, 2026-11-19: only for a paper whose
-   * OFFICIAL key we hold). Named on every row's solution (rows.ts).
+   * Set when MSTA's own print could not be found and the text comes from
+   * someone else's re-typing (owner exception, 2026-11-19: only for a paper
+   * whose OFFICIAL key we hold). INTERNAL provenance only: students never see
+   * it (owner: "keep the provenance internal"; who typed the text adds nothing
+   * for a student). A retype wording that looks wrong gets a normal per-question
+   * notice instead.
    */
   retyped?: string;
 };
