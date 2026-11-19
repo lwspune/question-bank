@@ -549,6 +549,14 @@ const LIMIT_ROWS: LimitRowSpec[] = [
     checkbox: "Limit answers a signed-in free account can open each day (bank, board, guides)",
   },
   {
+    which: "intlReveals",
+    label: "Answers a day (intl)",
+    unit: "answers a day",
+    field: "freeIntlRevealsPerDay",
+    suggested: 10,
+    checkbox: "Limit answers a signed-in free account can open each day on an intl exam (IMAT; ENEM stays free). Counts the same day's answers as the limit above",
+  },
+  {
     which: "saves",
     label: "Saved questions",
     unit: "saved questions",

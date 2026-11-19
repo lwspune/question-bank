@@ -15,6 +15,7 @@ const REST = {
   chapterTestsCountsFrom: null,
   freeDrillPerDay: null,
   freeRevealsPerDay: null,
+  freeIntlRevealsPerDay: null,
   freeSaveLimit: null,
   projectionTrialDays: null,
   practiceTrialAfterDays: null,
@@ -78,6 +79,7 @@ describe("nextPaywallSettings: the premium limits", () => {
     chapterTestsCountsFrom: null,
     freeDrillPerDay: null,
     freeRevealsPerDay: null,
+    freeIntlRevealsPerDay: null,
     freeSaveLimit: null,
     projectionTrialDays: null,
     practiceTrialAfterDays: null,
@@ -116,6 +118,7 @@ describe("nextPaywallSettings: the premium limits", () => {
   it.each([
     ["drill", "freeDrillPerDay", 15],
     ["reveals", "freeRevealsPerDay", 50],
+    ["intlReveals", "freeIntlRevealsPerDay", 10],
     ["saves", "freeSaveLimit", 100],
     ["projection", "projectionTrialDays", 7],
     ["practiceTrial", "practiceTrialAfterDays", 3],

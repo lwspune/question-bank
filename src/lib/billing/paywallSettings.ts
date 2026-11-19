@@ -22,6 +22,8 @@ export type PaywallSettings = {
   freeDrillPerDay: number | null;
   /** Answer reveals per IST day, signed in. */
   freeRevealsPerDay: number | null;
+  /** The intl exams' own answer reveals per IST day (IMAT, MCAT; 0274). */
+  freeIntlRevealsPerDay: number | null;
   freeSaveLimit: number | null;
   /** Days the projected score stays free after the student reveals it. */
   projectionTrialDays: number | null;
@@ -42,6 +44,7 @@ export const PAYWALL_LIMITS = [
   "chapterTests",
   "drill",
   "reveals",
+  "intlReveals",
   "saves",
   "projection",
   "practiceTrial",
@@ -65,6 +68,7 @@ export const EMPTY_PAYWALL_SETTINGS: PaywallSettings = {
   chapterTestsCountsFrom: null,
   freeDrillPerDay: null,
   freeRevealsPerDay: null,
+  freeIntlRevealsPerDay: null,
   freeSaveLimit: null,
   projectionTrialDays: null,
   practiceTrialAfterDays: null,
@@ -81,6 +85,7 @@ const FIELDS: Record<PaywallLimit, { value: keyof PaywallSettings; since?: keyof
   chapterTests: { value: "freeChapterTestLimit", since: "chapterTestsCountsFrom" },
   drill: { value: "freeDrillPerDay" },
   reveals: { value: "freeRevealsPerDay" },
+  intlReveals: { value: "freeIntlRevealsPerDay" },
   saves: { value: "freeSaveLimit" },
   projection: { value: "projectionTrialDays" },
   practiceTrial: { value: "practiceTrialAfterDays" },

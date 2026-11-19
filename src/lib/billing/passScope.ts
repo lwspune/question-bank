@@ -10,7 +10,7 @@
  * A check with no exam in hand (the reveal meter on a cached page that did not
  * say its exam) asks for any pass its SITE sells: `sitePassScopes`.
  */
-import { SCOPE_DOWNLOADS, SCOPE_FREE, SCOPE_MOCKS, scopeCovers } from "@/lib/entitlements/access";
+import { INTL_PASS_SCOPES, SCOPE_DOWNLOADS, SCOPE_FREE, SCOPE_MOCKS, scopeCovers } from "@/lib/entitlements/access";
 import { EXAM_REGISTRY, getExamByName, getExamBySlug } from "@/lib/exam/examContext";
 import type { PlanSite } from "./plans";
 
@@ -69,6 +69,22 @@ export function holdsPassFor(summary: PassSummary, scopes: string | readonly str
  */
 export function downloadScopesFor(site: PlanSite): string[] {
   return sitePassScopes(site).map((s) => (s === SCOPE_MOCKS ? SCOPE_DOWNLOADS : s));
+}
+
+/**
+ * The daily answer limit a page with these passes' questions shows (null = no
+ * limit), the same rule claim_reveal enforces (migration 0274): an intl
+ * exam's pass takes the intl limit, every other the www one. A database
+ * before 0274 sends no intl field and enforced the www number, so that is
+ * what this shows then.
+ */
+export function revealLimitFor(
+  limits: { revealsPerDay: number | null; intlRevealsPerDay?: number | null },
+  scopes: readonly string[]
+): number | null {
+  const intl = scopes.length > 0 && scopes.every((s) => INTL_PASS_SCOPES.includes(s));
+  if (intl && limits.intlRevealsPerDay !== undefined) return limits.intlRevealsPerDay;
+  return limits.revealsPerDay;
 }
 
 /**

@@ -12,6 +12,8 @@
 
 export const PERK_PLACEHOLDERS = [
   "reveals",
+  // The intl exams' own answer limit (0274): the intl passes quote this one.
+  "intlReveals",
   "drill",
   "saves",
   "mocks",
