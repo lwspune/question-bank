@@ -106,7 +106,11 @@ solution:
 - **Series counting** ("how many letters are immediately preceded by a symbol ..."): check every
   item, the FIRST and LAST included. 22 Mar S2 Q33 missed the letter after an opening "=".
 - **Flawed:** if no option is right or two are, still give the best answer and add
-  `flawed: yes` and `note: <why>` after `answer:`.
+  `flawed: yes` and `note: <why>` after `answer:`. If the printed data is impossible or
+  inconsistent but one answer is still clearly intended, give it, add only `note: <why>`, and end
+  the solution with one line telling the student what is off.
+- **Chemical formulas** with digits are maths: `\(\text{CO}_2\)`, `\(\text{H}_2\text{SO}_4\)`, never
+  a bare "CO2".
 - **Figures:** if a question needs a picture (figure, diagram, map, chart) to be answered, add
   `figure: stem`, `figure: options` or `figure: stem+options` after `answer:` and name it in your
   report. Do not draw anything. When the OPTIONS are pictures, write each option as `[figure]`.
