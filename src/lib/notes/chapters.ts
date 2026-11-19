@@ -3056,6 +3056,11 @@ import {
   SSC_SCIENCE_SPACE_ENVIRONMENT_NOTES,
   SSC_SCIENCE_SPACE_ENVIRONMENT_SLUGS,
 } from "@/app/notes/ssc-cgl-static-gk/science-space-environment/_data";
+import {
+  HB9_SOUND_CHAPTER,
+  HB9_SOUND_NOTES,
+  HB9_SOUND_SLUGS,
+} from "@/app/notes/homi-bhabha-9-physics/sound/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -9825,6 +9830,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_SCIENCE_SPACE_ENVIRONMENT_CHAPTER,
     notes: SSC_SCIENCE_SPACE_ENVIRONMENT_NOTES,
     slugs: SSC_SCIENCE_SPACE_ENVIRONMENT_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Physics",
+    subjectRoute: "homi-bhabha-9-physics",
+    subjectDisplay: "Homi Bhabha Physics",
+    chapterSlug: "sound",
+    chipLabel: "Sound notes",
+    chapter: HB9_SOUND_CHAPTER,
+    notes: HB9_SOUND_NOTES,
+    slugs: HB9_SOUND_SLUGS,
   },
 ];
 

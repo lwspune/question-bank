@@ -1442,6 +1442,29 @@ export const RMS_CET_9_PAPER = rmsPaper(9, [
   ["Science", 50],
 ]);
 
+/**
+ * Homi Bhabha Balvaidnyanik Competition (MSTA), Phase I written test, Std IX,
+ * as every booklet prints it: 100 one-mark MCQs in 90 minutes, no negative
+ * marking. The booklet has no sections (physics, chemistry, biology and science
+ * GK run in one numbering), so the mock is one section over the four subjects.
+ */
+export const HOMI_BHABHA_9_PAPER: MockPaperBlueprint = {
+  code: "paper",
+  examName: "Homi Bhabha Class 9",
+  examSlug: "homi-bhabha-9",
+  paperLabel: "Phase I written test",
+  durationSecs: 90 * 60,
+  marking: { correct: 1, wrong: 0 },
+  sections: [
+    {
+      key: "science",
+      label: "Science",
+      subjects: ["Physics", "Chemistry", "Biology", "General Science"],
+      count: 100,
+    },
+  ],
+};
+
 /** The NDA blueprints the build script's year+month discovery loop iterates. */
 export const MOCK_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   NDA_MATHS_PAPER,
@@ -1509,6 +1532,7 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   aisseePaper(9, ["Mathematics", "Intelligence", "English", "General Science", "Social Science"]),
   RMS_CET_6_PAPER,
   RMS_CET_9_PAPER,
+  HOMI_BHABHA_9_PAPER,
 ];
 
 /** Sum of the DECLARED section counts (0 when a blueprint declares none). */
