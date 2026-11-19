@@ -56,6 +56,7 @@ export type ExamSlug =
   | "uceed"
   | "ugc-net"
   | "rrb-ntpc"
+  | "rrb-ntpc-undergraduate"
   | "capf-ac"
   | "rpsc-ras"
   | "clat"
