@@ -45,9 +45,9 @@ describe("RRB NTPC paper and catalog", () => {
     expect(LAYOUT[0].subjects).toEqual(SUBJECTS);
   });
 
-  it("has Mathematics, Reasoning, the eight General Awareness subjects and Computer Knowledge, each with chapters", () => {
+  it("has Mathematics, Reasoning, the eight General Awareness subjects, Static GK and Computer Knowledge, each with chapters", () => {
     // NTPC's General Awareness asks basic computer questions (1-3 a paper), which SSC CGL Tier I does not.
-    expect(SUBJECTS).toEqual(["Mathematics", "Reasoning", "History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Current Affairs", "Computer Knowledge"]);
+    expect(SUBJECTS).toEqual(["Mathematics", "Reasoning", "History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Current Affairs", "Static GK", "Computer Knowledge"]);
     for (const s of SUBJECTS) expect(CATALOG[s]?.length ?? 0).toBeGreaterThan(0);
     expect(CATALOG["English"]).toBeUndefined();
   });

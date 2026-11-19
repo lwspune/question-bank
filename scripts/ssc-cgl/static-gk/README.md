@@ -48,4 +48,22 @@ stay in Current Affairs even when the scheme is old: they change, and SSC asks t
 - Static GK notes for SSC CGL (they do not go stale, unlike Current Affairs).
 - A Static GK daily homework plan, and its chapters in the SSC General Awareness ebook
   (`src/lib/ebooks/paperBooks.ts` builds from homework plans).
-- NDA, CDS and RRB NTPC file static GK under Current Affairs the same way (about 1,100 Current Affairs rows in all).
+## NDA, CDS and RRB NTPC (2026-11-19, the same day)
+
+The same rule carried to the three other exams that file GK the CDS way: all 1,117 of their
+Current Affairs rows read by hand, **157 moved** (NDA 46, CDS 85, RRB NTPC 26), 960 stayed. Their
+Current Affairs is far more news than SSC's (14% static against SSC's 54%). Decisions:
+`decisions-gk-exams.json`; mover: `move-gk-exams.ts`, which moves the bank in one transaction and
+each pipeline's source with it (RRB transcripts, CDS `questions.json`, NDA practice-paper records;
+27 NDA rows came from Excel uploads and live only in the bank). Two additions for the defence
+exams:
+
+- a topic **Armed Forces: Organisation, Ranks and Institutions** (code FI-D) under Firsts, Symbols
+  and Institutions: Army commands, rank order, mottos, where the training schools are. Defence
+  operations, deals, exercises and weapons stay in Current Affairs.
+- four settled facts stay in Current Affairs on purpose (`keep`): they belong to the authored
+  Current Affairs pool for a sitting (`Current Affairs_Sep26.docx`), whose audit counts its
+  evergreen share.
+
+Not done there: V's practice tests for NDA and CDS (`src/lib/practiceTests/config.ts` `GK`) leave
+Static GK out for now, since NDA has only about 23 past-paper Static GK questions.

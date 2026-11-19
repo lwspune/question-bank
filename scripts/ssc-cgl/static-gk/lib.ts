@@ -95,3 +95,31 @@ export function addStaticGkToCatalog<C extends Record<string, Chapter[]>, A exte
   auth.subjects[STATIC_GK_SUBJECT] = structuredClone(list);
   return { catalog: next as C, authored: auth, added: true };
 }
+
+type Filed = { subject?: string; chapter?: string; subtopic?: string };
+
+/**
+ * The record-file twin of retagBlocks, for pipelines whose source of record is a JSON list of
+ * questions keyed by printed number (CDS `questions.json` uses `number`, a practice paper's
+ * records use `n`). A record with no subject of its own takes the paper's `defaultSubject`.
+ * Same contract: only Current Affairs records move, a record already on its target is no change,
+ * any problem refuses the whole file. Returns new records; the input is not changed.
+ */
+export function retagRecords<R extends Filed>(records: R[], key: "n" | "number", targets: Map<number, Target>, defaultSubject?: string): { records: R[]; changes: number; problems: string[] } {
+  const problems: string[] = [];
+  const out = records.map((r) => ({ ...r }));
+  const byNumber = new Map(out.map((r, i) => [Number((r as Record<string, unknown>)[key]), i] as const));
+  const edits: [number, Target][] = [];
+  for (const [n, t] of [...targets].sort((a, b) => a[0] - b[0])) {
+    const i = byNumber.get(n);
+    if (i === undefined) { problems.push(`Q${n}: no such record`); continue; }
+    const r = out[i];
+    const subject = r.subject ?? defaultSubject;
+    if (subject === STATIC_GK_SUBJECT && r.chapter === t.chapter && r.subtopic === t.subtopic) continue;
+    if (subject !== "Current Affairs") { problems.push(`Q${n}: subject is "${subject}", not Current Affairs`); continue; }
+    edits.push([i, t]);
+  }
+  if (problems.length) return { records, changes: 0, problems };
+  for (const [i, t] of edits) Object.assign(out[i], { subject: STATIC_GK_SUBJECT, chapter: t.chapter, subtopic: t.subtopic });
+  return { records: out, changes: edits.length, problems };
+}

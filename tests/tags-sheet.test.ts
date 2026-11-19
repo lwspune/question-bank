@@ -170,6 +170,10 @@ describe("mapSubjectToTracker", () => {
     expect(mapSubjectToTracker("Current Affairs")).toBe("Others");
   });
 
+  it("maps Static GK → Others, where those questions went as Current Affairs before 2026-11-19", () => {
+    expect(mapSubjectToTracker("Static GK")).toBe("Others");
+  });
+
   it("passes the other GAT subjects through unchanged", () => {
     for (const s of [
       "English",
