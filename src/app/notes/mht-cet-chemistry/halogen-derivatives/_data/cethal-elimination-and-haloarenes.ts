@@ -18,7 +18,7 @@ export const ELIMINATION_AND_HALOARENES_NOTE: SubtopicNote = {
       definition:
         "- Ease: \\(3^\\circ > 2^\\circ > 1^\\circ\\). tert-Butyl bromide + alc. NH₃ (or alc. KOH) → isobutylene (2-methylpropene).\n" +
         "- **Saytzeff**: the alkene with more alkyl groups on C=C forms most easily — \\(\\text{R}_2\\text{C=CR}_2 > \\text{R}_2\\text{C=CHR} > \\text{RCH=CHR} > \\text{RCH=CH}_2\\). 2-Bromobutane → but-2-ene (major), but-1-ene (minor).\n" +
-        "- Bulky base (sodium ethoxide) on a secondary halide: elimination wins — isopropyl chloride + \\(\\text{C}_2\\text{H}_5\\text{ONa}\\) → propene + ethanol + NaCl.\n" +
+        "- Strong base (sodium ethoxide) on a secondary halide: elimination wins — isopropyl chloride + \\(\\text{C}_2\\text{H}_5\\text{ONa}\\) → propene + ethanol + NaCl.\n" +
         "- Aqueous KOH → alcohol (substitution); alcoholic KOH → alkene (elimination). The solvent is the whole question.",
       formula: {
         label: "β-Elimination",

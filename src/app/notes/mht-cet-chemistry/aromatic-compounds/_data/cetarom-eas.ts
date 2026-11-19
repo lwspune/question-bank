@@ -16,7 +16,7 @@ export const EAS_NOTE: SubtopicNote = {
       slug: "cetarom-eas-reactions",
       name: "The Substitution Reactions and Their Reagents",
       intuition:
-        "Every reaction here is the same three steps: make an electrophile with a Lewis acid, let it attack the ring to form a σ-complex, lose H⁺ to get the ring back. So the thing to learn for each is the reagent pair that makes the electrophile.",
+        "Every reaction here is the same three steps: make an electrophile with an acid catalyst (a Lewis acid such as AlCl₃ or FeBr₃, or concentrated H₂SO₄ for nitration and sulphonation), let it attack the ring to form a σ-complex, lose H⁺ to get the ring back. So the thing to learn for each is the reagent pair that makes the electrophile.",
       definition:
         "- **Halogenation**: X₂ / FeX₃ or anhydrous AlCl₃. Excess Cl₂ gives **hexachlorobenzene, C₆Cl₆**.\n" +
         "- **Iodination is reversible** — the HI formed reduces iodobenzene back — so it is not done directly.\n" +

@@ -20,7 +20,7 @@ export const POLYMERISATION_METHODS_NOTE: SubtopicNote = {
         "- **Condensation (step-growth)**: two functional groups per monomer, small molecule eliminated. **Nylon 6,6** (hexamethylenediamine + adipic acid, −H₂O), **dacron/terylene** (ethylene glycol + terephthalic acid — a dihydric alcohol + an aromatic dicarboxylic acid), glyptal, bakelite, urea- and melamine-formaldehyde, PHBV, polycarbonate.\n" +
         "- **Ring-opening**: **nylon 6** from caprolactam (a cyclic amide); no by-product. Asked as 'ring-opening' and keyed 'NOT addition'.\n" +
         "- Polyamide test for a monomer pair: an acid + an amine (or an amino acid) gives –CO–NH–; two hydroxy acids (3-hydroxybutanoic + 3-hydroxypentanoic) give a polyESTER, not a polyamide.\n" +
-        "- Perylene/glyptal, nylons and bakelite need no initiator; a peroxide is the mark of an addition polymer.",
+        "- Terylene, glyptal, nylons and bakelite need no initiator; a peroxide is the mark of an addition polymer.",
       formula: {
         label: "Addition versus condensation",
         latex:
@@ -34,7 +34,7 @@ export const POLYMERISATION_METHODS_NOTE: SubtopicNote = {
         answer: "Addition; condensation; ring-opening",
       },
       selfCheckExample: {
-        prompt: "Which polymer needs a peroxide initiator: nylon 6,6, polyacrylonitrile, perylene (glyptal), bakelite?",
+        prompt: "Which polymer needs a peroxide initiator: nylon 6,6, polyacrylonitrile, terylene, bakelite?",
         steps: [
           "Only the C=C monomer polymerises by free radicals.",
         ],
