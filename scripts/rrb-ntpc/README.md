@@ -131,7 +131,7 @@ options or none is `flawed: yes` with a student `notice:` (it rides as grace in 
 
 **Status (2026-11-19): all 32 shifts, 3,200 rows, PRIVATE** (publish with the owner's OK:
 `publish.ts --level=undergraduate --apply`, then the 32 mocks with the push). Blind agreement with
-RRB's tentative key **3,181/3,200 (99.4%)**; 20 rows flawed with a student notice (grace in mocks),
+RRB's tentative key **3,181/3,200 (99.4%)**; 21 rows flawed with a student notice (grace in mocks),
 5 with RRB's figures. No question repeats across the 32 shifts, nor with Graduate (same content hash). Mathematics 960, Reasoning 960, General Awareness 1,280. Three answers are not independent (a search surfaced the question): 13 Jun S2 Q70, 14 Jun S3 Q36, 8 May S3 Q40.
 
 **Source.** The same Prepp-hosted TCS response sheets, English copies, one PDF per shift in
