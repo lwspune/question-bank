@@ -173,6 +173,7 @@ export const NEET_ZO_BM_POLYMERS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nzobm-protein-structure",
       name: "The four levels of protein structure",
+      visualizationSlug: "biochem-protein-structure-levels",
       intuition:
         "Think of a long wool thread. First, the order of colours along the thread (primary). Then parts of it twist into springs (secondary). Then the whole thread is wound into a ball (tertiary). Finally, a few separate balls are packed together into one unit (quaternary), the way haemoglobin is built from four chains.",
       definition:

@@ -160,6 +160,7 @@ export const NEET_ZO_NC_BRAIN_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nzonc-eye",
       name: "Parts of the human eye",
+      visualizationSlug: "hp-eye-cross-section",
       intuition:
         "The eye is built like a camera inside a ball with three walls. The tough white outer wall protects it, the middle wall carries blood and makes the coloured iris that sets the size of the opening, and the inner wall, the retina, is the film that senses light. This topic was cut from the rationalised NCERT book, so these facts come from the earlier edition of the same chapter.",
       definition:

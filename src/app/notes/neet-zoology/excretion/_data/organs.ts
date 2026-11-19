@@ -174,6 +174,7 @@ export const NEET_ZO_EX_ORGANS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nzoex-nephron",
       name: "Parts of a nephron and its two kinds",
+      visualizationSlug: "hp-nephron-schematic",
       intuition:
         "A nephron is a long, folded tube with a filter at its start. Blood is pressed through a knot of capillaries into a cup, and the fluid then travels a coiled tube, a hairpin loop and another coiled tube before it drains into a collecting duct. Most nephrons dip their loop only a little into the medulla; a few plunge deep.",
       definition:

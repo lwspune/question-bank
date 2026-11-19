@@ -12,6 +12,7 @@ export const NEET_ZO_BF_HEART_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nzobf-heart-structure",
       name: "Circulatory pathways and the human heart",
+      visualizationSlug: "imat-double-circulation",
       intuition:
         "Some animals let blood flow out of vessels into open spaces; others keep it inside a closed set of tubes. In vertebrates the heart gains chambers as we go from fish to mammals, until the oxygen-rich and oxygen-poor blood are kept fully apart. The human heart is two pumps side by side, each with an atrium above a ventricle, and valves that let blood go one way only.",
       definition:

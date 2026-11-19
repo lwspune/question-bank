@@ -81,6 +81,7 @@ export const NEET_BO_MB_GENOME_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nbomb-fingerprinting",
       name: "DNA fingerprinting",
+      visualizationSlug: "imat-gel-electrophoresis",
       intuition:
         "People share 99.9 per cent of their DNA, so comparing whole genomes tells us little. Fingerprinting looks instead at short stretches repeated many times, because the number of repeats differs from person to person. The pattern of repeat lengths is the same in every tissue of one person and is inherited from the parents, which makes it useful in crime cases and paternity tests.",
       definition:

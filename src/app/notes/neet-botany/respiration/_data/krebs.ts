@@ -76,6 +76,7 @@ export const NEET_BO_RS_KREBS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nbors-ets",
       name: "The electron transport system and ATP synthase",
+      visualizationSlug: "imat-chemiosmosis",
       intuition:
         "NADH and FADH₂ carry hydrogen from the earlier stages. On the inner mitochondrial membrane a chain of carriers passes their electrons down, step by step, to oxygen. The energy given out pumps protons into the space between the membranes. The protons flow back through ATP synthase, and that flow makes ATP. Oxygen takes the electrons and hydrogen at the very end and becomes water.",
       definition:

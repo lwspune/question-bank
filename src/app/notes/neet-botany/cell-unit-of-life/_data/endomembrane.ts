@@ -12,6 +12,7 @@ export const NEET_BO_CE_ENDOMEMBRANE_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nboce-membranes",
       name: "The plasma membrane, the cell wall and the endomembrane system",
+      visualizationSlug: "cell-fluid-mosaic-membrane",
       intuition:
         "Every cell is wrapped in a thin membrane made mostly of a double layer of lipids, with proteins floating in it. A plant cell adds a stiff, non-living wall outside the membrane. Inside a eukaryotic cell, four membrane organelles work together as one team, the endomembrane system. Mitochondria, chloroplasts and peroxisomes have membranes too, but they are not on that team.",
       definition:
