@@ -650,7 +650,14 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "neet-chemistry/redox-reactions",
   "neet-chemistry/haloalkanes-and-haloarenes",
   "neet-chemistry/alcohols-phenols-and-ethers",
-  "neet-chemistry/biomolecules"
+  "neet-chemistry/biomolecules",
+  "ssc-cgl-static-gk/art-and-culture",
+  "ssc-cgl-static-gk/awards-and-honours",
+  "ssc-cgl-static-gk/sports-and-games",
+  "ssc-cgl-static-gk/firsts-symbols-institutions",
+  "ssc-cgl-static-gk/festivals-and-days",
+  "ssc-cgl-static-gk/books-and-authors",
+  "ssc-cgl-static-gk/science-space-environment"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1301,4 +1308,11 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "neet-chemistry/haloalkanes-and-haloarenes": () => import("@/app/notes/neet-chemistry/haloalkanes-and-haloarenes/_data").then((m) => m.NEET_CH_HA_NOTES),
   "neet-chemistry/alcohols-phenols-and-ethers": () => import("@/app/notes/neet-chemistry/alcohols-phenols-and-ethers/_data").then((m) => m.NEET_CH_AL_NOTES),
   "neet-chemistry/biomolecules": () => import("@/app/notes/neet-chemistry/biomolecules/_data").then((m) => m.NEET_CH_BM_NOTES),
+  "ssc-cgl-static-gk/art-and-culture": () => import("@/app/notes/ssc-cgl-static-gk/art-and-culture/_data").then((m) => m.SSC_ART_AND_CULTURE_NOTES),
+  "ssc-cgl-static-gk/awards-and-honours": () => import("@/app/notes/ssc-cgl-static-gk/awards-and-honours/_data").then((m) => m.SSC_AWARDS_AND_HONOURS_NOTES),
+  "ssc-cgl-static-gk/sports-and-games": () => import("@/app/notes/ssc-cgl-static-gk/sports-and-games/_data").then((m) => m.SSC_SPORTS_AND_GAMES_NOTES),
+  "ssc-cgl-static-gk/firsts-symbols-institutions": () => import("@/app/notes/ssc-cgl-static-gk/firsts-symbols-institutions/_data").then((m) => m.SSC_FIRSTS_SYMBOLS_INSTITUTIONS_NOTES),
+  "ssc-cgl-static-gk/festivals-and-days": () => import("@/app/notes/ssc-cgl-static-gk/festivals-and-days/_data").then((m) => m.SSC_FESTIVALS_AND_DAYS_NOTES),
+  "ssc-cgl-static-gk/books-and-authors": () => import("@/app/notes/ssc-cgl-static-gk/books-and-authors/_data").then((m) => m.SSC_BOOKS_AND_AUTHORS_NOTES),
+  "ssc-cgl-static-gk/science-space-environment": () => import("@/app/notes/ssc-cgl-static-gk/science-space-environment/_data").then((m) => m.SSC_SCIENCE_SPACE_ENVIRONMENT_NOTES),
 };
