@@ -4532,5 +4532,54 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "NEET Chemistry",
     "chapterSlug": "biomolecules",
     "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "art-and-culture",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "awards-and-honours",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "sports-and-games",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "firsts-symbols-institutions",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "festivals-and-days",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "books-and-authors",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "science-space-environment",
+    "subtopicCount": 2
   }
 ];

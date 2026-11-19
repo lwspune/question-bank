@@ -3021,6 +3021,41 @@ import {
   NEET_CH_BM_NOTES,
   NEET_CH_BM_SLUGS,
 } from "@/app/notes/neet-chemistry/biomolecules/_data";
+import {
+  SSC_ART_AND_CULTURE_CHAPTER,
+  SSC_ART_AND_CULTURE_NOTES,
+  SSC_ART_AND_CULTURE_SLUGS,
+} from "@/app/notes/ssc-cgl-static-gk/art-and-culture/_data";
+import {
+  SSC_AWARDS_AND_HONOURS_CHAPTER,
+  SSC_AWARDS_AND_HONOURS_NOTES,
+  SSC_AWARDS_AND_HONOURS_SLUGS,
+} from "@/app/notes/ssc-cgl-static-gk/awards-and-honours/_data";
+import {
+  SSC_SPORTS_AND_GAMES_CHAPTER,
+  SSC_SPORTS_AND_GAMES_NOTES,
+  SSC_SPORTS_AND_GAMES_SLUGS,
+} from "@/app/notes/ssc-cgl-static-gk/sports-and-games/_data";
+import {
+  SSC_FIRSTS_SYMBOLS_INSTITUTIONS_CHAPTER,
+  SSC_FIRSTS_SYMBOLS_INSTITUTIONS_NOTES,
+  SSC_FIRSTS_SYMBOLS_INSTITUTIONS_SLUGS,
+} from "@/app/notes/ssc-cgl-static-gk/firsts-symbols-institutions/_data";
+import {
+  SSC_FESTIVALS_AND_DAYS_CHAPTER,
+  SSC_FESTIVALS_AND_DAYS_NOTES,
+  SSC_FESTIVALS_AND_DAYS_SLUGS,
+} from "@/app/notes/ssc-cgl-static-gk/festivals-and-days/_data";
+import {
+  SSC_BOOKS_AND_AUTHORS_CHAPTER,
+  SSC_BOOKS_AND_AUTHORS_NOTES,
+  SSC_BOOKS_AND_AUTHORS_SLUGS,
+} from "@/app/notes/ssc-cgl-static-gk/books-and-authors/_data";
+import {
+  SSC_SCIENCE_SPACE_ENVIRONMENT_CHAPTER,
+  SSC_SCIENCE_SPACE_ENVIRONMENT_NOTES,
+  SSC_SCIENCE_SPACE_ENVIRONMENT_SLUGS,
+} from "@/app/notes/ssc-cgl-static-gk/science-space-environment/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -9713,6 +9748,83 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: NEET_CH_BM_CHAPTER,
     notes: NEET_CH_BM_NOTES,
     slugs: NEET_CH_BM_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Static GK",
+    subjectRoute: "ssc-cgl-static-gk",
+    subjectDisplay: "SSC CGL Static GK",
+    chapterSlug: "art-and-culture",
+    chipLabel: "Art and Culture notes",
+    chapter: SSC_ART_AND_CULTURE_CHAPTER,
+    notes: SSC_ART_AND_CULTURE_NOTES,
+    slugs: SSC_ART_AND_CULTURE_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Static GK",
+    subjectRoute: "ssc-cgl-static-gk",
+    subjectDisplay: "SSC CGL Static GK",
+    chapterSlug: "awards-and-honours",
+    chipLabel: "Awards and Honours notes",
+    chapter: SSC_AWARDS_AND_HONOURS_CHAPTER,
+    notes: SSC_AWARDS_AND_HONOURS_NOTES,
+    slugs: SSC_AWARDS_AND_HONOURS_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Static GK",
+    subjectRoute: "ssc-cgl-static-gk",
+    subjectDisplay: "SSC CGL Static GK",
+    chapterSlug: "sports-and-games",
+    chipLabel: "Sports and Games notes",
+    chapter: SSC_SPORTS_AND_GAMES_CHAPTER,
+    notes: SSC_SPORTS_AND_GAMES_NOTES,
+    slugs: SSC_SPORTS_AND_GAMES_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Static GK",
+    subjectRoute: "ssc-cgl-static-gk",
+    subjectDisplay: "SSC CGL Static GK",
+    chapterSlug: "firsts-symbols-institutions",
+    chipLabel: "Firsts, Symbols and Institutions notes",
+    chapter: SSC_FIRSTS_SYMBOLS_INSTITUTIONS_CHAPTER,
+    notes: SSC_FIRSTS_SYMBOLS_INSTITUTIONS_NOTES,
+    slugs: SSC_FIRSTS_SYMBOLS_INSTITUTIONS_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Static GK",
+    subjectRoute: "ssc-cgl-static-gk",
+    subjectDisplay: "SSC CGL Static GK",
+    chapterSlug: "festivals-and-days",
+    chipLabel: "Festivals, Fairs and Important Days notes",
+    chapter: SSC_FESTIVALS_AND_DAYS_CHAPTER,
+    notes: SSC_FESTIVALS_AND_DAYS_NOTES,
+    slugs: SSC_FESTIVALS_AND_DAYS_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Static GK",
+    subjectRoute: "ssc-cgl-static-gk",
+    subjectDisplay: "SSC CGL Static GK",
+    chapterSlug: "books-and-authors",
+    chipLabel: "Books and Authors notes",
+    chapter: SSC_BOOKS_AND_AUTHORS_CHAPTER,
+    notes: SSC_BOOKS_AND_AUTHORS_NOTES,
+    slugs: SSC_BOOKS_AND_AUTHORS_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Static GK",
+    subjectRoute: "ssc-cgl-static-gk",
+    subjectDisplay: "SSC CGL Static GK",
+    chapterSlug: "science-space-environment",
+    chipLabel: "Science, Space and Environment Facts notes",
+    chapter: SSC_SCIENCE_SPACE_ENVIRONMENT_CHAPTER,
+    notes: SSC_SCIENCE_SPACE_ENVIRONMENT_NOTES,
+    slugs: SSC_SCIENCE_SPACE_ENVIRONMENT_SLUGS,
   },
 ];
 

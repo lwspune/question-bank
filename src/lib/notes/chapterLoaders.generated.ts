@@ -13041,6 +13041,147 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 7,
       "traps": 22
     }
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectName": "Static GK",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "art-and-culture",
+    "chipLabel": "Art and Culture notes",
+    "slugs": [
+      "ssc-sac-classical",
+      "ssc-sac-dancers",
+      "ssc-sac-folk-nws",
+      "ssc-sac-folk-ce",
+      "ssc-sac-music",
+      "ssc-sac-instruments",
+      "ssc-sac-heritage"
+    ],
+    "chapterName": "Art and Culture",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 24,
+      "traps": 51
+    }
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectName": "Static GK",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "awards-and-honours",
+    "chipLabel": "Awards and Honours notes",
+    "slugs": [
+      "ssc-saw-national",
+      "ssc-saw-state",
+      "ssc-saw-global"
+    ],
+    "chapterName": "Awards and Honours",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 8,
+      "traps": 15
+    }
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectName": "Static GK",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "sports-and-games",
+    "chipLabel": "Sports and Games notes",
+    "slugs": [
+      "ssc-ssp-olympics",
+      "ssc-ssp-india",
+      "ssc-ssp-bodies",
+      "ssc-ssp-cricket",
+      "ssc-ssp-teamgames",
+      "ssc-ssp-racket",
+      "ssc-ssp-athletics"
+    ],
+    "chapterName": "Sports and Games",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 25,
+      "traps": 48
+    }
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectName": "Static GK",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "firsts-symbols-institutions",
+    "chipLabel": "Firsts, Symbols and Institutions notes",
+    "slugs": [
+      "ssc-sfi-people",
+      "ssc-sfi-institutions"
+    ],
+    "chapterName": "Firsts, Symbols and Institutions",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 5,
+      "traps": 8
+    }
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectName": "Static GK",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "festivals-and-days",
+    "chipLabel": "Festivals, Fairs and Important Days notes",
+    "slugs": [
+      "ssc-sfd-faith",
+      "ssc-sfd-north",
+      "ssc-sfd-southwest",
+      "ssc-sfd-eastcentral",
+      "ssc-sfd-northeast",
+      "ssc-sfd-cultural"
+    ],
+    "chapterName": "Festivals, Fairs and Important Days",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 19,
+      "traps": 40
+    }
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectName": "Static GK",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "books-and-authors",
+    "chipLabel": "Books and Authors notes",
+    "slugs": [
+      "ssc-sba-nonfiction",
+      "ssc-sba-fiction"
+    ],
+    "chapterName": "Books and Authors",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 6,
+      "traps": 15
+    }
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectName": "Static GK",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "science-space-environment",
+    "chipLabel": "Science, Space and Environment Facts notes",
+    "slugs": [
+      "ssc-sse-parks",
+      "ssc-sse-space"
+    ],
+    "chapterName": "Science, Space and Environment Facts",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 5,
+      "traps": 14
+    }
   }
 ];
 
@@ -13692,4 +13833,11 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "neet-chemistry/haloalkanes-and-haloarenes": () => import("@/app/notes/neet-chemistry/haloalkanes-and-haloarenes/_data").then((m) => ({ chapter: m.NEET_CH_HA_CHAPTER, notes: m.NEET_CH_HA_NOTES })),
   "neet-chemistry/alcohols-phenols-and-ethers": () => import("@/app/notes/neet-chemistry/alcohols-phenols-and-ethers/_data").then((m) => ({ chapter: m.NEET_CH_AL_CHAPTER, notes: m.NEET_CH_AL_NOTES })),
   "neet-chemistry/biomolecules": () => import("@/app/notes/neet-chemistry/biomolecules/_data").then((m) => ({ chapter: m.NEET_CH_BM_CHAPTER, notes: m.NEET_CH_BM_NOTES })),
+  "ssc-cgl-static-gk/art-and-culture": () => import("@/app/notes/ssc-cgl-static-gk/art-and-culture/_data").then((m) => ({ chapter: m.SSC_ART_AND_CULTURE_CHAPTER, notes: m.SSC_ART_AND_CULTURE_NOTES })),
+  "ssc-cgl-static-gk/awards-and-honours": () => import("@/app/notes/ssc-cgl-static-gk/awards-and-honours/_data").then((m) => ({ chapter: m.SSC_AWARDS_AND_HONOURS_CHAPTER, notes: m.SSC_AWARDS_AND_HONOURS_NOTES })),
+  "ssc-cgl-static-gk/sports-and-games": () => import("@/app/notes/ssc-cgl-static-gk/sports-and-games/_data").then((m) => ({ chapter: m.SSC_SPORTS_AND_GAMES_CHAPTER, notes: m.SSC_SPORTS_AND_GAMES_NOTES })),
+  "ssc-cgl-static-gk/firsts-symbols-institutions": () => import("@/app/notes/ssc-cgl-static-gk/firsts-symbols-institutions/_data").then((m) => ({ chapter: m.SSC_FIRSTS_SYMBOLS_INSTITUTIONS_CHAPTER, notes: m.SSC_FIRSTS_SYMBOLS_INSTITUTIONS_NOTES })),
+  "ssc-cgl-static-gk/festivals-and-days": () => import("@/app/notes/ssc-cgl-static-gk/festivals-and-days/_data").then((m) => ({ chapter: m.SSC_FESTIVALS_AND_DAYS_CHAPTER, notes: m.SSC_FESTIVALS_AND_DAYS_NOTES })),
+  "ssc-cgl-static-gk/books-and-authors": () => import("@/app/notes/ssc-cgl-static-gk/books-and-authors/_data").then((m) => ({ chapter: m.SSC_BOOKS_AND_AUTHORS_CHAPTER, notes: m.SSC_BOOKS_AND_AUTHORS_NOTES })),
+  "ssc-cgl-static-gk/science-space-environment": () => import("@/app/notes/ssc-cgl-static-gk/science-space-environment/_data").then((m) => ({ chapter: m.SSC_SCIENCE_SPACE_ENVIRONMENT_CHAPTER, notes: m.SSC_SCIENCE_SPACE_ENVIRONMENT_NOTES })),
 };

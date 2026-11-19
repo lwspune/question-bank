@@ -1,7 +1,7 @@
 # SSC CGL Tier I /notes: the draft agent's brief
 
 One agent drafts the notes for one SSC CGL Tier I chapter (or a few small ones), in any subject but
-Current Affairs. **It reads and drafts; the
+Current Affairs (Static GK, the settled facts, is in: see "By subject"). **It reads and drafts; the
 main session decides and writes.** The method is NOTES_WORKFLOW.md (sections 0, 1, 1b) and the eight
 defect classes of NOTES_ARC_LEDGER.md. This file is the contract.
 
@@ -163,3 +163,27 @@ rows' solutions, and when they disagree, say so in the report rather than choose
 holder, record or ranking "current"**: write it with its year ("in 2024 ..."). The keys are SSC's own
 (2025 provisional), and our blind derivation was compared with them at ingest; still solve every row
 and report any you dispute.
+
+**Static GK** (route `ssc-cgl-static-gk`, since 2026-11-19). The settled facts SSC's General Awareness asks
+(dances, music and instruments, architecture and heritage, festivals and days, books and authors, settled
+awards, sports rules, trophies and players, firsts, symbols, institutions, national parks, older space
+missions), moved out of Current Affairs by hand; the rule for what counts as static is in
+`scripts/ssc-cgl/static-gk/README.md`. **No twin:** no other exam has these notes, so build the topic list
+from the rows. This is the purest recall subject in the bank:
+- Nearly every concept is a **reference concept** whose `table` lists the facts SSC actually asked (counted
+  from the dump) plus the close neighbours a student confuses with them (all eight classical dances with
+  their states, not only the three that were asked). Pairings are the unit: dance to state, instrument to
+  maestro, gharana to founder, festival to state or community, day to date and person, trophy or term to
+  sport, book to author, award to field, institution to city. At most 5 columns a table.
+- A **formula concept** only for a real method: a sorting rule that settles many questions (classical vs folk
+  dance; which awards are national vs state; a region-first elimination: "a Garo festival is in Meghalaya").
+  `formula.latex` stays empty.
+- **Re-cut by what a student learns together**, not by the move's codes: e.g. Art and Culture into classical
+  dances, folk dances by region, Hindustani and Carnatic music, instruments and maestros, architecture and
+  heritage. Each page still needs about 8 rows.
+- **Every fact must be certain** (NCERT, the Ministry of Culture, Sangeet Natak Akademi, the official sports
+  body). Check each against the rows' solutions; when they disagree, or a key looks wrong, say so in the report
+  rather than choose. Never write a person "is" a holder of a post or record: give the year.
+- **Speed move:** name the elimination a strong student uses (rule out options from the wrong region or the
+  wrong art form first; a tribe's name usually gives the state).
+- Practice reps and self-checks ask ONE pairing each and never test a fact the page's tables do not teach.

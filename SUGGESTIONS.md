@@ -145,7 +145,17 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 **Status: open.** The move (932 SSC questions out of Current Affairs into a new Static GK subject, `scripts/ssc-cgl/static-gk/README.md`) made them findable in the bank and in mocks. Three follow-ups make it pay off:
 
-- **Static GK notes for SSC CGL.** The SSC notes skip Current Affairs because it goes stale; Static GK does not. Art and Culture (about 330 CGL-family rows) and Sports (about 250) are big enough for a chapter each.
+- **Static GK notes for SSC CGL**: DONE 2026-11-19, `/notes/ssc-cgl-static-gk`, 7 chapters, 29 pages, all 582 CGL rows tagged.
+
+**Rows the notes drafters doubted (tagged, never featured; decide a notice or a fix).** Reports: `generated-papers/_prep-ssc-s*.md` in the notes worktree, gone after cleanup, so the list is here:
+- `003836b3` "first petrochemical company": key IPCL (1969); NOCIL (1961, private) is the more common answer and is printed as option D.
+- `a27bec8c` calls Bhimsen Joshi the "first vocalist" to get the Bharat Ratna: false (M. S. Subbulakshmi 1998, Lata Mangeshkar 2001). Key still the only fitting option.
+- `7fcceda2` calls Tamladu a Buddhist festival: it is a Digaru Mishmi festival. Key stands.
+- `3f93e3a5` calls Bastar Dussehra "ten-day": it runs about 75 days. Key stands.
+- `130c8c20` (Being Indian): the key rests on a Crossword Book Award the drafter could not confirm; if false, the answer is D.
+- `76719238` (Vishu): option C (Kerala and Karnataka) also has a case.
+- `828f9860`, `7cf8099c`, `3d8e351b`, `bac4866d`, `77702cd1`: two printed options defensible or a false premise (sports; details in the commit's long form).
+- Solution errors, key unaffected: `a0d6682c` (LAM is the Liquid Apogee Motor, the photometer is LAP), `6b39b0e0` (Discovery of India written 1944, published 1946), `ee105447` (Calcutta also hosted the World Table Tennis Championships, 1975), `fbb71b56` (Bonalu plague year 1813 in many sources).
 - **A Static GK daily homework plan**: BUILT 2026-11-19, UNPUBLISHED until the owner looks (`ssc-cgl-static-gk` 548 items, `ssc-chsl-static-gk` 141, `ssc-cpo-static-gk` 191; data in `scripts/homework/data/`). Publish: `npx tsx scripts/homework/build-plan.ts scripts/homework/data/<slug>.json --apply --publish`.
 - **Static GK in the SSC General Awareness ebook**: WIRED 2026-11-19 (`planSubjects` + chapter order in `src/lib/ebooks/paperBooks.ts`). The build reads PUBLISHED plans only, so rebuild after `ssc-cgl-static-gk` is published: `npm run ebooks:build -- --book=ssc-cgl-general-awareness-repeated-pyqs --apply` (the book is inactive, no buyers).
 
