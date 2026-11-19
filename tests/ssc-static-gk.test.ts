@@ -129,3 +129,12 @@ describe("the committed decisions file", () => {
     expect(Object.keys(d.moves).length).toBeGreaterThan(900);
   });
 });
+
+describe("the SSC CGL General Awareness ebook", () => {
+  it("reads the Static GK plan, with every Static GK chapter pinned in taxonomy order", async () => {
+    const { REPEATS_EBOOKS } = await import("../src/lib/ebooks/paperBooks");
+    const ga = REPEATS_EBOOKS.find((b) => b.slug === "ssc-cgl-general-awareness-repeated-pyqs")!;
+    expect(ga.planSubjects).toContain(STATIC_GK_SUBJECT);
+    expect(ga.chapterOrder?.[STATIC_GK_SUBJECT]).toEqual(STATIC_GK.map((c) => c.chapter));
+  });
+});
