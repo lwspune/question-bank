@@ -5,7 +5,7 @@
  * notes subtopic page, the chapter is unknown, or the item is not on it.
  */
 import { NOTES_DATA_LOADERS } from "./notesData.generated";
-import { notesItemBrief, notesItemCard, notesPageOf, type NotesItemRef } from "./notesItem";
+import { notesItemBrief, notesItemCard, notesPageOf, notesPasteBrief, type NotesItemRef } from "./notesItem";
 import type { CardQuestion } from "./questionCard";
 
 export async function loadNotesItemBrief(pagePath: string | null, ref: NotesItemRef): Promise<string | null> {
@@ -15,6 +15,20 @@ export async function loadNotesItemBrief(pagePath: string | null, ref: NotesItem
   try {
     const note = (await load())[page.subtopic];
     return note ? notesItemBrief(note, ref) : null;
+  } catch (err) {
+    console.error("V: notes chapter unavailable", page.key, err);
+    return null;
+  }
+}
+
+/** A question pasted on a notes page, if it is one of that page's own questions (2026-11-19). */
+export async function loadNotesPasteBrief(pagePath: string | null, text: string): Promise<string | null> {
+  const page = notesPageOf(pagePath);
+  const load = page ? NOTES_DATA_LOADERS[page.key] : undefined;
+  if (!page || !load) return null;
+  try {
+    const note = (await load())[page.subtopic];
+    return note ? notesPasteBrief(note, text) : null;
   } catch (err) {
     console.error("V: notes chapter unavailable", page.key, err);
     return null;

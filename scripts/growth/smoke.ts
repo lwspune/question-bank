@@ -269,6 +269,10 @@ async function main() {
         // Read by hand: leavers who paid on a later day, and paywall_event gate return (shown, checkout_opened, dismissed).
         line = "by hand: leavers paying on a later day (baseline 12 of 83), and the gate=return chain shown > checkout > paid";
         break;
+      case "checkout-followup":
+        // Read by hand: listed leavers with a mobile (messaged) vs without (bar only), paid within 7 days.
+        line = "by hand: scripts/billing/checkout-followup-readout.sql (baselines 2 of 26, 3 of 39)";
+        break;
       case "welcome-exam-confirm":
         // Read by hand: student_profiles of new sign-ups, target_exams set and onboarded_at null, split by examFromPath(acq_landing).
         line = "by hand: new sign-ups with an exam (baseline 47%) and first screen left unanswered (baseline 35%), split by a guessable landing";
@@ -340,6 +344,10 @@ async function main() {
       case "blog-posts":
         // Read by hand: signups by the kind of article they landed on (migration 0263), and Search Console clicks.
         line = "by hand: scripts/blog/readout.sql + Search Console clicks on /blog and /exams/*/syllabus";
+        break;
+      case "v-intl":
+        // Read by hand: international students' typed questions to V and second days (V on intl, 2026-11-19).
+        line = "by hand: scripts/chat/v-intl-readout.sql";
         break;
       case "enem-interest":
         // Read by hand: target_exams containing 'enem', and their ENEM mock attempts / answers.

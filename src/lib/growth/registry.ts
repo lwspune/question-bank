@@ -332,6 +332,14 @@ export const CHECKOUT_NO_CONTACT_PAID_BASELINE_PCT = 25;
  */
 export const CHECKOUT_RETURN_LATER_PAID_BASELINE_PCT = 14;
 /**
+ * "checkout-followup": of students who left a checkout unpaid (20 Oct to 12
+ * Nov, the follow-up's own rule), the share who paid within 7 days: 2 of 26
+ * with a mobile, 3 of 39 without. 8% both.
+ */
+export const CHECKOUT_FOLLOWUP_BASELINE_PCT = 8;
+/** Points the messageable group must beat the bar-only group by. */
+export const CHECKOUT_FOLLOWUP_KEEP_POINTS = 10;
+/**
  * "welcome-exam-confirm": of the 2,021 students who signed up in the 30 days
  * to 2026-11-12 (staff left out), the share who left /welcome with an exam
  * (955), and the share who never answered its first screen at all (712).
@@ -399,6 +407,12 @@ export const ENEM_ACTIVE_KEEP = 5;
  * to 18 Nov 2026 with no trial, 4 of 67 (6%) bought a pass after their 3rd day.
  */
 export const PRACTICE_TRIAL_BASELINE_PCT = 6;
+/**
+ * "v-intl": international students (an intl exam in target_exams) who ask V a
+ * question in 3 weeks, and of them who come back to V on a second day.
+ */
+export const V_INTL_ASKERS_KEEP = 10;
+export const V_INTL_RETURNERS_KEEP = 3;
 /** "practice-trial": keep at this share of offered students buying, or more. */
 export const PRACTICE_TRIAL_KEEP_PCT = 10;
 /** "practice-trial": switch off at this share or less. */
@@ -549,6 +563,7 @@ export type Readout =
   | "answer-limit-copy"
   | "checkout-contact"
   | "checkout-return"
+  | "checkout-followup"
   | "welcome-exam-confirm"
   | "exam-guess-card"
   | "install-app"
@@ -560,7 +575,8 @@ export type Readout =
   | "enem-interest"
   | "offline-classes"
   | "play-games"
-  | "practice-trial";
+  | "practice-trial"
+  | "v-intl";
 
 export type Experiment = {
   id: string;
@@ -1526,11 +1542,25 @@ export const EXPERIMENTS: readonly Experiment[] = [
       "A student who opened a pass checkout and did not pay sees a bar under the header on the first page they open on a later day: \"Your checkout didn't complete. The Practice Pass gives you unlimited practice for 6 months, and the more questions you practise, the more marks you get.\" with Complete payment (Razorpay in place, their own price), Ask a parent to pay and Not now. Up to 2 days within 7 days of the checkout; Not now or a payment stops it.",
     why: "45 days to 2026-11-12: 110 students opened checkout, 71 never paid, and 43 of those 71 came back on their own (27 the next day). Nothing reminded them. Owner's wording: practice is what improves the score.",
     metric:
-      "Students who left a checkout unpaid, and the share who paid on a later day; the bar's chain from paywall_event gate return: shown, then checkout_opened, then paid",
+      "Students who left a checkout unpaid, and the share who paid on a later day; the bar's chain from paywall_event gate return: shown, then checkout_opened, then paid. From 2026-11-19 the owner also WhatsApps students with a mobile (checkout-followup, owner's choice to start before this readout), so read the bar on students WITHOUT a mobile too: only the bar reaches them",
     rule: `Keep it if more than ${CHECKOUT_RETURN_LATER_PAID_BASELINE_PCT}% of students who leave a checkout pay on a later day (12 of 83 before, with no reminder).`,
     liveSince: "2026-11-13",
     windowDays: 28,
     readout: "checkout-return",
+    status: "running",
+  },
+  {
+    id: "checkout-followup",
+    title: "The owner WhatsApps students who left a checkout unpaid",
+    change:
+      "At 18:00 IST the owner gets one email listing every student who opened a pass checkout in the last 24 hours and did not pay (once per student per 14 days, staff and intl passes left out), with where they met the offer, the reason they tapped, and a WhatsApp link that opens with a message typed: who they are, the pass and price, an offer to help, and the student's parent pay link. Students with no mobile are listed by email. The owner sends each by hand.",
+    why: "20 Oct to 12 Nov, 65 students left a checkout unpaid (26 with a mobile) and only 5 paid within 7 days. The bar (checkout-return) is the automatic reminder; a personal message from the founder answers the question or the parent problem the bar cannot.",
+    metric:
+      "Of students listed, the share who pay a pass within 7 days of leaving, those WITH a mobile (messageable) against those WITHOUT (bar only, same period), so the bar's effect cancels out. Before: 2 of 26 with a mobile, 3 of 39 without (8% each). scripts/billing/checkout-followup-readout.sql",
+    rule: `Read at 4 weeks. It worked if students with a mobile pay at ${CHECKOUT_FOLLOWUP_KEEP_POINTS}+ points above students without one (both were ${CHECKOUT_FOLLOWUP_BASELINE_PCT}% before). Small numbers (about 1 messageable student a day), so a rough read.`,
+    liveSince: "2026-11-19",
+    windowDays: 28,
+    readout: "checkout-followup",
     status: "running",
   },
   {
@@ -1658,6 +1688,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-19",
     windowDays: 42,
     readout: "practice-trial",
+    status: "running",
+  },
+  {
+    id: "v-intl",
+    title: "V on the international site",
+    change:
+      "V shows on intl.pyqvault.com, told only what is true there: IMAT and ENEM, the IMAT pass paid by card through Paddle (rupees for a buyer in India), intl's own pages, and replies in the student's language. Build a practice test stays www-only.",
+    why: "From 30 Oct V was hidden on intl while its Ask V buttons still sent: 3 IMAT students tapped, V answered, and they saw nothing (one tapped five times and hit the hourly limit). They were asking for it.",
+    metric:
+      "International students (an intl exam in student_profiles.target_exams) who sent V a typed question since it went live, how many came back to V on a second day, and their hourly-limit hits. scripts/chat/v-intl-readout.sql",
+    rule: `Read at 3 weeks. Keep V on intl and give it more intl work (an IMAT practice-test builder) if ${V_INTL_ASKERS_KEEP}+ international students ask it something and ${V_INTL_RETURNERS_KEEP}+ come back on a second day. Fewer: leave V on (it costs little) and add nothing more for intl.`,
+    liveSince: "2026-11-19",
+    windowDays: 21,
+    readout: "v-intl",
     status: "running",
   },
 ];

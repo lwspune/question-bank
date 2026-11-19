@@ -9,7 +9,8 @@ import { describe, it, expect } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 import type { SubtopicNote } from "@/app/notes/_types";
-import { notesItemBrief, notesPageOf, notesRefKey, parseNotesItemRef, parseNotesRefKey } from "@/lib/chat/notesItem";
+import { notesItemBrief, notesPageOf, notesPasteBrief, notesRefKey, parseNotesItemRef, parseNotesRefKey } from "@/lib/chat/notesItem";
+import { CDSEN_SYN_METHOD_NOTE } from "@/app/notes/cds-english/vocabulary/_data/syn-method";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { NOTES_DATA_KEYS } from "@/lib/chat/notesData.generated";
 import { notesDataKeys } from "@/lib/chat/notesItem";
@@ -134,6 +135,45 @@ describe("notesItemBrief", () => {
   it("is null when the item is not there", () => {
     expect(notesItemBrief(note, { concept: "nope", item: "self" })).toBeNull();
     expect(notesItemBrief(note, { concept: "benzylic", item: "practice", index: 5 })).toBeNull();
+  });
+});
+
+// 2026-11-19: a student copied the worked example from /notes/cds-english/vocabulary/cdsen-syn-method into
+// the chat. V searched only the bank, found nothing and said "I couldn't find this question in our bank".
+// A question pasted on a notes page is now looked for among that page's own questions first.
+describe("notesPasteBrief: a question pasted from the notes page the student is on", () => {
+  const SCREENSHOT =
+    "Choose the word nearest in meaning to the underlined word: The judge promised both sides a fair hearing. (a) pale (b) just (c) average (d) beautiful";
+
+  it("finds the worked example the student pasted, with its answer and steps", () => {
+    const b = notesPasteBrief(CDSEN_SYN_METHOD_NOTE, SCREENSHOT)!;
+    expect(b).not.toBeNull();
+    // The stored text, markup and all, as every brief carries it.
+    expect(b).toContain("The judge promised both sides a \\(\\underline{\\text{fair}}\\) hearing");
+    expect(b).toContain("ANSWER: (b) just");
+    expect(b).toMatch(/sense here is justice/);
+    expect(b).toMatch(/pasted a question from the notes page/i);
+    expect(b).toMatch(/never work out your own answer/i);
+  });
+
+  it("finds a practice question, with words of the student's own around it", () => {
+    const b = notesPasteBrief(
+      CDSEN_SYN_METHOD_NOTE,
+      "explain this: Drivers must observe the speed limit. (a) watch (b) notice (c) obey (d) study"
+    )!;
+    expect(b).toContain("ANSWER: (c) obey");
+    expect(b).toContain("METHOD: To observe a rule is to keep it");
+  });
+
+  it("finds the self-check, whose answer the page hides", () => {
+    const b = notesPasteBrief(CDSEN_SYN_METHOD_NOTE, "The new manager is still quite green. (a) envious (b) inexperienced (c) healthy (d) eco-friendly")!;
+    expect(b).toContain("ANSWER: (b) inexperienced");
+  });
+
+  it("finds nothing for a message that is not one of the page's questions", () => {
+    expect(notesPasteBrief(CDSEN_SYN_METHOD_NOTE, "This question explanation")).toBeNull();
+    expect(notesPasteBrief(CDSEN_SYN_METHOD_NOTE, "Choose the word nearest in meaning to the underlined word")).toBeNull();
+    expect(notesPasteBrief(CDSEN_SYN_METHOD_NOTE, "The cat sat quietly on the warm mat all afternoon long")).toBeNull();
   });
 });
 

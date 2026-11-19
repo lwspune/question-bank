@@ -79,6 +79,8 @@ import {
   CHECKOUT_CONTACT_PAID_BASELINE_PCT,
   CHECKOUT_NO_CONTACT_PAID_BASELINE_PCT,
   CHECKOUT_RETURN_LATER_PAID_BASELINE_PCT,
+  CHECKOUT_FOLLOWUP_BASELINE_PCT,
+  CHECKOUT_FOLLOWUP_KEEP_POINTS,
   EXAM_GUESS_CARD_TAP_KEEP_PCT,
   INSTALL_APP_RETURN_BASELINE_PCT,
   INSTALL_APP_STUDENTS_KEEP,
@@ -93,6 +95,8 @@ import {
   PRACTICE_TRIAL_KEEP_PCT,
   PRACTICE_TRIAL_STOP_PCT,
   ENEM_ACTIVE_KEEP,
+  V_INTL_ASKERS_KEEP,
+  V_INTL_RETURNERS_KEEP,
   ANSWER_LIMIT_COPY_CHECKOUT_BASELINE_PCT,
   ANSWER_LIMIT_COPY_BUY_BASELINE_PCT,
   V_REVEAL_FOLLOWUP_MAX_DROP,
@@ -994,6 +998,14 @@ export default async function GrowthPage() {
             {PRACTICE_TRIAL_STOP_PCT}% or less.
           </p>
         );
+      case "v-intl":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with scripts/chat/v-intl-readout.sql: keep
+            V on intl and build more for it if {V_INTL_ASKERS_KEEP}+ international students ask it something and{" "}
+            {V_INTL_RETURNERS_KEEP}+ come back on a second day; otherwise leave it on and add nothing more.
+          </p>
+        );
       case "enem-interest":
         return (
           <p className="text-sm text-muted-foreground">
@@ -1016,6 +1028,14 @@ export default async function GrowthPage() {
             Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if more than{" "}
             {CHECKOUT_RETURN_LATER_PAID_BASELINE_PCT}% of students who leave a checkout pay on a later day (12 of 83
             before, with no reminder).
+          </p>
+        );
+      case "checkout-followup":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with scripts/billing/checkout-followup-readout.sql:
+            it worked if students with a mobile (messaged) pay within 7 days at {CHECKOUT_FOLLOWUP_KEEP_POINTS}+ points above
+            students without one (bar only); both were {CHECKOUT_FOLLOWUP_BASELINE_PCT}% before.
           </p>
         );
       case "answer-limit-copy":

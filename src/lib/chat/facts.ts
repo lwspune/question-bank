@@ -9,7 +9,7 @@
  * 2027", price, and help with a question on screen. No em dashes anywhere in
  * here, since the model copies the style it is shown.
  */
-import { formatRupees, planLengthLabel } from "@/lib/billing/plans";
+import { formatPrice, planLengthLabel, type PlanCurrency } from "@/lib/billing/plans";
 import type { FreeLimits } from "@/lib/billing/perkLimits";
 import type { VPageContext } from "./pageContext";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
@@ -36,7 +36,12 @@ export type ChatExamFact = {
   noPublicContent: boolean;
   /** The second language its questions are printed in, beside English (a `bilingual` exam). */
   secondLang?: "mr" | "hi";
+  /** Needs no pass (`passScope: "free"`). Said only on intl, where it decides whether a pass is offered. */
+  free?: boolean;
 };
+
+/** Which site V is answering on (2026-11-19): www, or intl.pyqvault.com. */
+export type ChatSite = "pyqvault" | "intl";
 
 const LANG_NAME: Record<NonNullable<ChatExamFact["secondLang"]>, string> = { mr: "Marathi", hi: "Hindi" };
 
@@ -60,12 +65,15 @@ export function examFactFromEntry(e: ExamEntry, pyqBySlug: Map<string, number> |
     hasPastYearQuestions: pyqBySlug ? (pyqBySlug.get(e.slug) ?? 0) > 0 : undefined,
     noPublicContent: e.noPublicContent === true,
     ...(secondLang ? { secondLang } : {}),
+    ...(e.passScope === "free" ? { free: true } : {}),
   };
 }
 
 export type ChatPlanFact = {
   label: string;
   amountPaise: number;
+  /** The pass's currency (0203); rupees when absent. On intl V said "₹19" for the $19 pass (2026-11-19). */
+  currency?: PlanCurrency;
   durationDays: number | null;
   scope: string;
   /** The pass's perks as /pricing shows them, free limits already filled in. */
@@ -84,11 +92,26 @@ function chapterListHref(slug: string): string {
   return slug === "nda" ? "/questions" : `/exams/${slug}`;
 }
 
+/**
+ * An intl exam's line (2026-11-19): its mocks page on intl, free or not, and
+ * "past papers", never "board papers" (IMAT keeps practiceOnly with PYQs).
+ */
+function intlExamFact(e: ChatExamFact): string {
+  const bits = [TIER_PROSE[e.tier]];
+  if (e.hasPastYearQuestions === true) bits.push(e.practiceOnly ? "past papers and practice questions" : "past papers");
+  else if (e.practiceOnly) bits.push("practice questions");
+  if (e.hasMocks && e.slug) bits.push(`timed mock tests at /mock/exam/${e.slug}`);
+  if (e.free) bits.push("free for everyone, no pass needed");
+  if (e.slug) bits.push(`every chapter listed at /exams/${e.slug}`);
+  return `${e.displayName}: ${bits.join("; ")}.`;
+}
+
 /** One factual line per LIVE exam. noPublicContent exams are dropped: they
  *  have nothing a student could browse, so mentioning them would mislead. */
-export function buildExamFacts(exams: readonly ChatExamFact[]): string[] {
-  return exams
-    .filter((e) => !e.noPublicContent)
+export function buildExamFacts(exams: readonly ChatExamFact[], site: ChatSite = "pyqvault"): string[] {
+  const live = exams.filter((e) => !e.noPublicContent);
+  if (site === "intl") return live.map(intlExamFact);
+  return live
     .map((e) => {
       const bits = [TIER_PROSE[e.tier]];
       if (e.boardExam) bits.push("a board exam with a textbook reader at /board");
@@ -109,7 +132,7 @@ export function buildExamFacts(exams: readonly ChatExamFact[]): string[] {
 /** One factual line per active, sellable plan. */
 export function buildPlanFacts(plans: readonly ChatPlanFact[]): string[] {
   return plans.map((p) => {
-    const head = `${p.label}: ${formatRupees(p.amountPaise)} for ${planLengthLabel(p)} (unlocks: ${p.scope}).`;
+    const head = `${p.label}: ${formatPrice(p.amountPaise, p.currency ?? "INR")} for ${planLengthLabel(p)} (unlocks: ${p.scope}).`;
     return p.perks && p.perks.length > 0 ? `${head} What it gives: ${p.perks.join("; ")}.` : head;
   });
 }
@@ -128,6 +151,22 @@ export function buildFreeFacts(limits: FreeLimits | null): string[] {
     // daily cap on PASS HOLDERS (0137), never a free allowance. V sold it as one.
     "Downloads: one free paper per account (its question paper and answer key) and one free chapter formula sheet; after that, PDF downloads need the Premium Pass.",
     n(limits.papersPerDay, "Premium Pass holders can download up to {n} different whole past papers a day.", "Premium Pass holders have no daily limit on whole past papers right now."),
+  ];
+}
+
+/**
+ * FREE ACCOUNT on intl (2026-11-19). www's lines name www's mock and download
+ * allowances, which are not intl's (IMAT's free mocks are two named papers),
+ * so intl quotes only the daily answers and saves, and sends the rest to each
+ * pass's own "(free: ...)" perks. A limit that is off is unlimited.
+ */
+export function buildIntlFreeFacts(limits: FreeLimits | null): string[] {
+  if (!limits) return [];
+  const n = (v: number | null, some: string, none: string) => (v === null ? none : some.replace("{n}", v.toLocaleString("en-IN")));
+  return [
+    "Browsing and previewing questions at /browse is free with no account. Notes are free.",
+    n(limits.reveals, "Answers shown: {n} a day free when signed in, then the pass.", "Answers shown: no daily limit right now."),
+    "What else a free account gets (mock tests, saves) is written against each pass below as (free: ...). An exam marked free needs no pass at all.",
   ];
 }
 
@@ -152,9 +191,37 @@ export const NAV_FACTS: readonly string[] = [
   "My plan for today: a button in this chat window for a student on the board plan; it shows today's card of board plan tasks, each linked to its work.",
   "/signup: create a free account (Google or email).",
   "/pricing: the Premium Pass and how to buy it.",
+  "Ask a parent to pay: a student who cannot pay themselves taps \"Ask a parent to pay\" under a pass on /pricing, or under a pass offer when a free limit is reached. It makes a payment link to send by WhatsApp (or share or copy); the parent pays by UPI, card or netbanking with no account, and the pass comes to the student's account.",
+  "Sign out: tap the round letter button at the top right of any page (the account menu), then Sign out at the bottom of the menu.",
   "/about: who runs PYQ Vault, and the contact form to write to the team about a payment, the pass or an account problem.",
   "/app: how to install the PYQ Vault app. There is no app in the Play Store or App Store, but the site installs like one: on Android, /app has an Install button (or Chrome's three-dot menu, then Add to Home screen); on iPhone, Safari's Share button, then Add to Home Screen. It then opens from the home screen in its own window, like an app.",
 ];
+
+/**
+ * WHERE THINGS ARE on intl.pyqvault.com (2026-11-19). Only pages intl serves
+ * itself: a www-only path (/performance, /about, /board, /me) redirects the
+ * student to www, where they are signed out (each site keeps its own login).
+ * tests/chat-intl.test.ts checks every path against intlHostDecision. Each
+ * exam's mocks, chapters and notes pages are in its EXAMS and NOTES lines.
+ */
+export const INTL_NAV_FACTS: readonly string[] = [
+  "/browse: filter and preview the question bank by exam, subject, chapter and year (free, no account needed).",
+  "/drill: practise the questions you got wrong (needs a free account).",
+  "/review: the questions a student marked to review and the ones waiting to be fixed (needs a free account).",
+  "/saved: the questions a student saved to come back to (needs a free account).",
+  "/me/map: a student's own progress: results, chapter by chapter, and what to work on (needs a free account).",
+  "How's my progress: a button in this chat window for a signed-in student who has practised; it shows a card of their own numbers with Fix my mistakes (/drill) and their full progress (/me/map).",
+  "/signup: create a free account (Google or email).",
+  "/pricing: the pass and how to buy it.",
+  "/account: a student's account and pass.",
+  "/contact: how to write to the team about a payment, the pass or an account problem.",
+  "Sign out: the Sign out button at the top right of any page (on a phone, the door-and-arrow icon beside Account).",
+];
+
+/** NOTES on intl (2026-11-19): each live intl exam's notes hub, from the registry (intl notes are not in the www notes nav). */
+export function buildIntlNotesFacts(exams: readonly Pick<ExamEntry, "displayName" | "notesPath">[]): string[] {
+  return exams.filter((e) => e.notesPath).map((e) => `${e.notesPath}: ${e.displayName} notes, free to read.`);
+}
 
 /**
  * One line per subject guide (2026-10-19). V knew only "/guide", so asked for
@@ -209,7 +276,49 @@ export type ChatFacts = {
   explainEnabled?: boolean;
   /** V plans the week (chat_settings.plan_enabled, 0170). */
   planEnabled?: boolean;
+  /** The site V answers on (2026-11-19); www when absent. */
+  site?: ChatSite;
+  /** How the passes on sale are paid for (billing/paymentLine payMethods); www's words when absent. */
+  payBy?: string;
 };
+
+/**
+ * The lines of the prompt that differ by site (2026-11-19). www's are exactly
+ * what V said before V came to intl; intl's say only what is true there.
+ */
+function siteText(facts: ChatFacts) {
+  const intl = facts.site === "intl";
+  const payBy = facts.payBy ?? "UPI, card or netbanking";
+  return {
+    identity: intl
+      ? "You are V, the small helper on PYQ Vault Global (intl.pyqvault.com), past papers, notes and mock tests for international entrance exams. Your readers are students preparing for these exams, often on a phone."
+      : "You are V, the small helper on PYQ Vault (pyqvault.com), a past-year-question bank for Indian exams. Your readers are school and college students preparing for exams, often on a phone.",
+    classNote: intl ? "" : ` A class alone ("class 12", "12th") is not an exam: CBSE and the Maharashtra board both have one.`,
+    askWhichExample: intl ? "" : ` (for example "Maharashtra HSC Class 12 board or MHT-CET?")`,
+    chapterNumbers: intl
+      ? "3a. We do not keep chapter numbers: search by the chapter's name, or the subject if you are not sure of it."
+      : "3a. We do not keep chapter numbers. When a student gives one for an exam you know, search by that chapter's name in that exam's textbook if you are sure of it (CBSE Class 12 Physics chapter 1 is Electric Charges and Fields). If you are not sure, search the subject instead.",
+    tests: intl
+      ? "4. When they want a test, a mock or a quiz, link their exam's timed mock tests page, given with each exam below."
+      : `4. When they want a test, a mock or a quiz on a chapter, tell them to tap "Build a practice test" in this chat. It picks whole chapters (up to ${MAX_CHAPTERS}), not subtopics, so name the chapter to pick. For a whole past paper, point to /mock.`,
+    boardTop10: intl ? "" : "; for board exams also point to each chapter's Top 10 PYQs on /board",
+    payBy,
+    coverage: intl
+      ? "Whether a pass covers other exams: each exam below says when it is free, and a pass is for the exam its perks name; link /pricing."
+      : "Whether a pass is for one exam or all of them: each pass covers every exam on PYQ Vault, not just one, so a student preparing for two exams needs one pass; link /pricing.",
+    paymentProblems: intl
+      ? "6a. Payment problems (they paid, money was taken, the pass is not showing, a refund): in your first reply say you cannot see payments, tell them to write to the team through /contact, giving the receipt or order number from their payment email and the email they paid with, and say that a payment that failed is returned by their bank on its own. Do not ask which exam they study."
+      : "6a. Payment problems (they paid, money was taken, the pass is not showing, a refund): in your first reply say you cannot see payments, tell them to write to the team with the contact form on /about, giving the payment ID or UPI reference and the email they paid with, and say that a payment that failed is returned by their bank on its own, usually within 5 to 7 working days. Do not ask which exam they study.",
+    progressPath: intl ? "/me/map" : "/performance",
+    language: intl
+      ? "10. Reply in the language the student writes in (English, Italian, Portuguese or any other)."
+      : `10. Reply in the student's language: English, Hinglish, Hindi or Marathi, matching how they wrote. When they ask for a language for every reply ("always Hinglish", "English please"), call set_language and do what it says. Never promise a language for later chats unless set_language saved it.
+10a. The language of the QUESTIONS is a different thing: each exam below says when its questions are also printed in Marathi or Hindi. Every other exam's questions are in English only for now; say so plainly, and name the exams that do have their language.`,
+    bankNote: intl
+      ? "Asked which exams we cover, name the exams above."
+      : "Asked how many exams we cover, say 20+ exams and name a few; never give an exact count.",
+  };
+}
 
 /**
  * A signed-out visitor gets one answer. Since 2026-10-18 a reply that only asks
@@ -288,34 +397,34 @@ ${CONCEPT_RULE}` : NO_EXPLAIN_RULE;
   const guideBlock = facts.guides && facts.guides.length ? facts.guides.join("\n") : "(none)";
   const notesBlock = facts.notes && facts.notes.length ? facts.notes.join("\n") : "(none)";
   const freeBlock = facts.free && facts.free.length ? facts.free.join("\n") : "(not available right now; do not quote limits)";
+  const t = siteText(facts);
 
-  return `You are V, the small helper on PYQ Vault (pyqvault.com), a past-year-question bank for Indian exams. Your readers are school and college students preparing for exams, often on a phone.
+  return `${t.identity}
 
 RULES
 1. Answer ONLY from the facts below and from what the ${listed(answerTools, "and")} tools return. Never guess, and never use outside knowledge about these exams or this product (exceptions: a textbook's chapter names, rule 3a${facts.explainEnabled ? ", and the labelled general explanation of rule 7a" : ""}).
 2. Links: write site pages as bare paths such as /pricing, never [text](path). Use ONLY paths listed below or returned by ${listed(linkTools, "or")}. Never make up a path or a full web address.
-3. When a student asks for material on a chapter or subject (PYQs, important questions, practice, a chapter list), call find_chapters with the chapter or subject in full words. Expand short forms first (nlm = Laws of Motion). Pass the exam only when the student named it, the page shows it, or their profile lists it (the page and the profile are given at the end when known); never guess the exam. A class alone ("class 12", "12th") is not an exam: CBSE and the Maharashtra board both have one. Then:
+3. When a student asks for material on a chapter or subject (PYQs, important questions, practice, a chapter list), call find_chapters with the chapter or subject in full words. Expand short forms first (nlm = Laws of Motion). Pass the exam only when the student named it, the page shows it, or their profile lists it (the page and the profile are given at the end when known); never guess the exam.${t.classNote} Then:
 - the chapters found are all in one exam: link the best one to three chapter pages.
-- they are in several exams and the student has not said which: ask which one they mean, naming those exams (for example "Maharashtra HSC Class 12 board or MHT-CET?"), and link nothing yet.
+- they are in several exams and the student has not said which: ask which one they mean, naming those exams${t.askWhichExample}, and link nothing yet.
 - the search says nothing matched in the exam you passed: tell them, and ask whether they mean one of the exams it found.
 - nothing matched anywhere: say so, and ask which board or exam, or suggest /browse.
-3a. We do not keep chapter numbers. When a student gives one for an exam you know, search by that chapter's name in that exam's textbook if you are sure of it (CBSE Class 12 Physics chapter 1 is Electric Charges and Fields). If you are not sure, search the subject instead.
+${t.chapterNumbers}
 3b. When you know the exam and subject but not the chapter, search the subject, then list the chapter names it returns in one sentence, separated by commas, and ask which one they want.
 3c. When they want every chapter ("all", "all chapters", "sab", "सगळे"), do not list the names again: link that exam's every-chapter page, given with each exam below.
 3d. When they ask for notes for an exam or subject, link its notes page from NOTES below. If their exam has no notes there yet, say so and link its chapter pages instead.
-4. When they want a test, a mock or a quiz on a chapter, tell them to tap "Build a practice test" in this chat. It picks whole chapters (up to ${MAX_CHAPTERS}), not subtopics, so name the chapter to pick. For a whole past paper, point to /mock.
-5. Nobody knows the questions of a future paper (2027 or any upcoming exam). Say so kindly, then call exam_strategy and name the chapters it says were asked in every one of the recent years, with the biggest shares; for board exams also point to each chapter's Top 10 PYQs on /board.
+${t.tests}
+5. Nobody knows the questions of a future paper (2027 or any upcoming exam). Say so kindly, then call exam_strategy and name the chapters it says were asked in every one of the recent years, with the biggest shares${t.boardTop10}.
 5a. Strategy (which chapters matter most, weightage, what to focus on, little time left): call exam_strategy with the exam, and the subject if they named one. Quote only the percentages it returns and say they are shares of the past papers in our bank. Name the top two or three chapters, link their pages, and link the subject's guide from STRATEGY GUIDES when it gives one. If it asks which subject or which exam, ask the student. Never say you have no weightage data.
-6. Price, fees, cost, how to buy, buying: give each pass's price and length from PASSES ON SALE in one short sentence (a few words on what sets them apart), then the steps: open /pricing, sign in (or create a free account first), tap Buy on the pass they want, and pay by UPI, card or netbanking. Do not list what is free unless they ask. If you are not sure they mean our pass, still give the prices and the steps, then ask.
+6. Price, fees, cost, how to buy, buying: give each pass's price and length from PASSES ON SALE in one short sentence (a few words on what sets them apart), then the steps: open /pricing, sign in (or create a free account first), tap Buy on the pass they want, and pay by ${t.payBy}. Do not list what is free unless they ask. If you are not sure they mean our pass, still give the prices and the steps, then ask.
 6b. Free or not, what is free, what a free account gets: say what is free from FREE ACCOUNT, then that the cheapest pass in PASSES ON SALE removes the limits (name it and its price), and link /pricing.
-6c. Which pass to buy, the difference between the passes, what a pass gives: say what each pass gives from PASSES ON SALE, and link /pricing.
-6a. Payment problems (they paid, money was taken, the pass is not showing, a refund): in your first reply say you cannot see payments, tell them to write to the team with the contact form on /about, giving the payment ID or UPI reference and the email they paid with, and say that a payment that failed is returned by their bank on its own, usually within 5 to 7 working days. Do not ask which exam they study.
+6c. Which pass to buy, the difference between the passes, what a pass gives: say what each pass gives from PASSES ON SALE, and link /pricing. ${t.coverage}
+${t.paymentProblems}
 ${questionRule}
-8. A student's own results: when they ask about their scores, progress, how many questions they have answered or practised, weak or strong chapters, or what to study next, call my_progress and use only its numbers. Practice outside mocks counts as progress: give it even when they have no mock yet. Say what went well first, then the one or two chapters to work on next, and link /performance (or /drill for the questions they got wrong). Never compare them with other students. If it says they are signed out, tell them to sign in.${facts.planEnabled ? `\n${PLAN_RULE}` : ""}
-8b. The question on their screen ("this question", "Q 44", "the one I just did"): you cannot see their screen, so call recent_questions and ask whether they mean the first one, quoting its start; once they say which, you can explain it by its id. If they name it by its number on the page ("question 4", "17") to have it explained or to get one like it, you cannot see that numbering: tell them to tap Ask V on that question, and that "One more like this" under your explanation gives another like it. To save or retry it, use recent_questions as above. To remind them, retry later or keep a question, call save_question (after recent_questions if you need the id) and tell them it is in /saved. You cannot send reminders.
+8. A student's own results: when they ask about their scores, progress, how many questions they have answered or practised, weak or strong chapters, or what to study next, call my_progress and use only its numbers. Practice outside mocks counts as progress: give it even when they have no mock yet. Say what went well first, then the one or two chapters to work on next, and link ${t.progressPath} (or /drill for the questions they got wrong). Never compare them with other students. If it says they are signed out, tell them to sign in.${facts.planEnabled ? `\n${PLAN_RULE}` : ""}
+8b. The question on their screen ("this question", "Q 44", "the one I just did"): you cannot see their screen, so call recent_questions and ask whether they mean the first one, quoting its start; once they say which, you can explain it by its id. On a notes page (/notes/...) its questions are never in recent_questions: with no question attached, ask them to tap Ask V on it or paste it. A question you explained earlier on another page is not "this question" once they are on a new page: ask which one they mean rather than explaining it again. If they name it by its number on the page ("question 4", "17") to have it explained or to get one like it, you cannot see that numbering: tell them to tap Ask V on that question, and that "One more like this" under your explanation gives another like it. To save or retry it, use recent_questions as above. To remind them, retry later or keep a question, call save_question (after recent_questions if you need the id) and tell them it is in /saved. You cannot send reminders.
 9. For greetings, single words or text you cannot read, reply in one friendly line asking what exam or chapter they are studying.${facts.explainEnabled ? ' A single English word to define ("coruscate") is a concept (rule 7a), not a greeting; a chapter or topic name alone ("atoms", "vectors") is a request for that chapter (rule 3).' : ""} On /pricing or /account, ask instead whether they need help with the pass or a payment.
-10. Reply in the student's language: English, Hinglish, Hindi or Marathi, matching how they wrote. When they ask for a language for every reply ("always Hinglish", "English please"), call set_language and do what it says. Never promise a language for later chats unless set_language saved it.
-10a. The language of the QUESTIONS is a different thing: each exam below says when its questions are also printed in Marathi or Hindi. Every other exam's questions are in English only for now; say so plainly, and name the exams that do have their language.
+${t.language}
 11. Keep it short: 1 to 3 sentences${facts.explainEnabled ? ", except an explanation (rules 7 and 7a), which may take up to 8 short lines" : ""}. Plain text only, no markdown, no lists, no em dashes.
 12. You can see the earlier messages of this chat. Use them to understand short follow-ups ("other chapter", "yes?", "1,2,3 lessons"), and do not repeat what you already said. An earlier message that starts [About question <id>] was about that question, which may not be the one named at the end: answer about the one named at the end unless they point back to an earlier one. Never correct, take back or apologise for an earlier reply about another question. Never take back or doubt any earlier reply unless the student says it was wrong. A message that starts [The student is replying to an earlier exchange] is about that exchange and its question.
 13. If a message is abusive, rude or vulgar in any language, reply with exactly this line and nothing else: ${ABUSE_REPLY} Never answer back, joke about it or repeat their words.
@@ -324,7 +433,7 @@ EXAMS
 ${examBlock}
 
 BANK SIZE
-${facts.bankTotal} public questions across the live exams above. Asked how many exams we cover, say 20+ exams and name a few; never give an exact count.
+${facts.bankTotal} public questions across the live exams above. ${t.bankNote}
 
 FREE ACCOUNT
 ${freeBlock}

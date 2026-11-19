@@ -56,6 +56,7 @@ export type ExamSlug =
   | "uceed"
   | "ugc-net"
   | "rrb-ntpc"
+  | "rrb-ntpc-undergraduate"
   | "capf-ac"
   | "rpsc-ras"
   | "clat"
@@ -922,7 +923,33 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     goal: "government",
     displayName: "RRB NTPC",
     examName: "RRB NTPC", // must match the `exams` DB row exactly
+    // One picker family with the Undergraduate level (owner, 2026-11-19). The name
+    // stays "RRB NTPC": its pages and mocks were live under it, and students search
+    // the Graduate papers by it.
+    family: "RRB NTPC",
+    familyLabel: "Graduate",
+    familyAxis: "Level",
     hasMocks: true, // one mock per shift (rrb-ntpc-graduate-cbt-1-*)
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "rrb-ntpc-undergraduate",
+    // RRB NTPC Undergraduate (Class 12 level; RRB writes "Under Graduate"), CEN
+    // 07/2025, CBT 1 sat 7 May to 20 June 2026: 32 shifts, read from RRB's own
+    // response sheets, every answer derived blind against RRB's tentative key
+    // (scripts/rrb-ntpc/). Its own exam row (owner, 2026-11-19): a separate notice,
+    // eligibility, posts and sitting. Class 12 eligibility but graduate tier, as
+    // SSC CHSL: sat mostly by graduates and those preparing for the Graduate level.
+    tier: "graduate",
+    goal: "government",
+    displayName: "RRB NTPC Undergraduate",
+    examName: "RRB NTPC Undergraduate", // must match the `exams` DB row exactly
+    family: "RRB NTPC",
+    familyLabel: "Undergraduate",
+    familyAxis: "Level",
+    hasMocks: true, // one mock per shift (rrb-ntpc-undergraduate-cbt-1-*)
     pastPaperSolutions: true,
     guidesPath: null,
     notesPath: null,

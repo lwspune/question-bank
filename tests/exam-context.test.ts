@@ -522,6 +522,7 @@ describe("exam tiers", () => {
       "ssc-cpo",
       "ugc-net",
       "rrb-ntpc",
+      "rrb-ntpc-undergraduate",
       "capf-ac",
       "rpsc-ras",
     ],

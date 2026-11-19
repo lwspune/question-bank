@@ -6,12 +6,18 @@ import { flawedBlocks, graceReason } from "../scripts/rrb-ntpc/grace";
  * mock. grace.ts reads them from the committed transcripts, the source of record.
  */
 describe("RRB NTPC flawed questions", () => {
-  it("finds the 18 flawed questions across the 24 transcripts, each with a student notice", () => {
-    const all = flawedBlocks();
+  it("finds the 18 flawed questions across the 24 Graduate transcripts, each with a student notice", () => {
+    const all = flawedBlocks().filter((f) => f.shiftId.startsWith("g1-"));
     expect(all).toHaveLength(18);
     for (const f of all) expect(f.notice.length).toBeGreaterThan(20);
     expect(all).toContainEqual(expect.objectContaining({ shiftId: "g1-2026-03-16-s1", number: 32 }));
     expect(all).toContainEqual(expect.objectContaining({ shiftId: "g1-2026-03-27-s3", number: 57 }));
+  });
+
+  it("names an Undergraduate question by its level", () => {
+    expect(graceReason({ shiftId: "u1-2026-05-07-s2", number: 42, notice: "Gopurams are Dravidian." })).toBe(
+      "RRB NTPC Undergraduate CBT 1, 7 May 2026, Shift 2 Q42: Gopurams are Dravidian. (scripts/rrb-ntpc)"
+    );
   });
 
   it("writes a reason naming the paper, the question and the lane", () => {

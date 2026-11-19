@@ -8,6 +8,16 @@ import type { Plan } from "./plans";
 
 const CURRENCY_NAME = { INR: "Indian rupees", USD: "US dollars" } as const;
 
+/**
+ * How V tells a buyer to pay (2026-11-19, V on intl): the same gateway rule as
+ * paymentLine, in words for a sentence. With nothing on sale, www's words.
+ */
+export function payMethods(plans: readonly Plan[]): string {
+  if (plans.some((p) => p.paymentProvider === "paddle")) return "card or another method shown at checkout";
+  if (plans.length > 0 && !plans.every((p) => p.currency === "INR")) return "an international debit or credit card";
+  return "UPI, card or netbanking";
+}
+
 export function paymentLine(plans: readonly Plan[]): string | null {
   if (plans.length === 0) return null;
   const paddle = plans.find((p) => p.paymentProvider === "paddle");

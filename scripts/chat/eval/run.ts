@@ -42,6 +42,10 @@ import { isPathExam } from "../../../src/lib/path/model";
 import { readChatSettings } from "../../../src/lib/chat/settingsAdmin";
 import { readExamStrategyUncached } from "../../../src/lib/chat/examStrategyServer";
 import { loadExamCatalogPayload, shapeExamCatalog } from "../../../src/lib/exam/allExamStats";
+import { isIntlPagePath, LIVE_INTL_EXAMS } from "../../../src/lib/sites/intl";
+
+/** The site a case was asked on. Rows keep the page, not the host: an intl exam's page is intl (V on intl, 2026-11-19). */
+const siteOf = (c: { page_path: string | null }) => (c.page_path && isIntlPagePath(c.page_path.split(/[?#]/)[0]) ? "intl" : "pyqvault");
 import { readChapterLandingsUncached } from "../../../src/lib/questions/landing";
 import { readSubtopicIndexUncached, withSubtopics } from "../../../src/lib/chat/subtopicIndex";
 import { loadSimilarId, loadVQuestion, searchVQuestions } from "../../../src/lib/chat/questionToolsServer";
@@ -49,8 +53,8 @@ import { loadPaperRepeats } from "../../../src/lib/chat/paperRepeatsServer";
 import { notesTappedFrom, tappedFrom } from "../../../src/lib/chat/questionToolSet";
 import { answerIn } from "../../../src/lib/chat/askVEvent";
 import { conceptSources } from "../../../src/lib/chat/conceptSearchServer";
-import { parseNotesRefKey } from "../../../src/lib/chat/notesItem";
-import { loadNotesItemBrief } from "../../../src/lib/chat/notesItemServer";
+import { notesPageOf, parseNotesRefKey } from "../../../src/lib/chat/notesItem";
+import { loadNotesItemBrief, loadNotesPasteBrief } from "../../../src/lib/chat/notesItemServer";
 import { aiAnswerCostUsd } from "../../../src/lib/chat/interactions";
 import type { ModelTurn } from "../../../src/lib/chat/conversation";
 import type { SavedPlan } from "../../../src/lib/chat/weekPlan";
@@ -149,6 +153,8 @@ async function main() {
     undefined,
     catalogPayload.allPublicTotal
   );
+  // V on intl (2026-11-19): an intl case reads intl's own exams, as the route does on that host.
+  const intlCatalog = shapeExamCatalog(new Map(catalogPayload.counts), new Map(catalogPayload.ids), LIVE_INTL_EXAMS, catalogPayload.allPublicTotal);
 
   function contextFor(c: Case, notesBrief: string | null): VContextOptions {
     let plan: SavedPlan | null = null;
@@ -156,7 +162,8 @@ async function main() {
     return {
       loadChapters: async () => chapters,
       loadStrategy: readExamStrategyUncached,
-      loadExamCatalog: async () => catalog,
+      loadExamCatalog: async () => (siteOf(c) === "intl" ? intlCatalog : catalog),
+      site: siteOf(c),
       page: c.page_path,
       signedIn: c.signed_in,
       profileExamSlugs: c.profile_exams,
@@ -175,6 +182,8 @@ async function main() {
             spendReveal: c.signed_in ? async () => ({ kind: "ok" as const, counts: false }) : null,
             loadSimilar: (vq) => loadSimilarId(anon, vq, []),
             searchQuestions: (text, chapterId) => searchVQuestions(anon, text, chapterId),
+            // As live: a paste on a notes page is looked for on that page first (2026-11-19).
+            ...(notesPageOf(c.page_path) ? { findNotesPaste: (text: string) => loadNotesPasteBrief(c.page_path, text) } : {}),
             onSimilar: () => {},
             onMatch: () => {},
             onExplained: () => {},

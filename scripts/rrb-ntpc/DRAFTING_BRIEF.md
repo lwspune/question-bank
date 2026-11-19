@@ -1,10 +1,11 @@
 # RRB NTPC drafting brief (for agents)
 
-You draft one slice of one shift of the RRB NTPC Graduate CBT 1 paper (16-27 March 2026): the exact
-English question text, the four options, the classification, difficulty, YOUR OWN derived answer
+You draft one slice of one shift of an RRB NTPC CBT 1 paper: **Graduate** (16-27 March 2026, shift
+ids `g1-...`) or **Undergraduate** (the Class 12 level, 7 May to 20 June 2026, shift ids `u1-...`).
+Your prompt names the shift. You give the exact English question text, the four options, the classification, difficulty, YOUR OWN derived answer
 and a short solution. The main session reviews every block and compares your answers with RRB's
-key afterwards. Your answers must be derived blind. Repo (git worktree):
-`C:\Users\vilas\Downloads\qb-ntpc`.
+key afterwards. Your answers must be derived blind. Repo (git worktree): the path
+your prompt gives (Undergraduate: `C:\Users\vilas\Downloads\qb-ntpc-ug`).
 
 ## Source: the only thing you may read for the questions
 
@@ -17,8 +18,10 @@ key afterwards. Your answers must be derived blind. Repo (git worktree):
   pictures (a "use \(\pi = \frac{22}{7}\)" can print as "(use )"), misplaces superscripts
   ("cm2" is \(\text{cm}^2\)) and drops symbols. Check every line against the sheet.
 
-The sheet is RRB's response-sheet print. The paper is ONE section of 100 questions, numbered 1-100
-as printed, with Mathematics, Reasoning and General Awareness mixed in any order. Options print
+The sheet is RRB's response-sheet print, 100 questions numbered 1-100 as printed. **Graduate** is ONE
+section with Mathematics, Reasoning and General Awareness mixed in any order. **Undergraduate**
+prints three sections in a fixed order: Q1-30 Mathematics, Q31-70 General Awareness, Q71-100
+General Intelligence and Reasoning (subject `Reasoning`). Options print
 "A." to "D.": write them as A to D. The faint blue "prepp" logo across the page is the host's:
 ignore it. Stems print in bold, so do not bold a whole stem; bold only what the question singles
 out. Under a picture the sheet may add "stem picture, as stored in the file" or "option N picture":
@@ -48,7 +51,7 @@ blocks carry `subject:` only in General Awareness; in NTPC EVERY block carries i
 
 ```
 === <n>
-subject: Mathematics | Reasoning | History | Geography | Polity | Economics | Physics | Chemistry | Biology | Current Affairs | Computer Knowledge
+subject: Mathematics | Reasoning | History | Geography | Polity | Economics | Physics | Chemistry | Biology | Static GK | Current Affairs | Computer Knowledge
 chapter: <exact chapter name from scripts/rrb-ntpc/catalog.json>
 subtopic: <exact subtopic name from scripts/rrb-ntpc/catalog.json>
 difficulty: EASY | MODERATE | HARD
@@ -65,11 +68,16 @@ solution:
 
 - **Subject:** every block. Arithmetic, algebra, geometry, mensuration, trigonometry, statistics:
   Mathematics. Series, coding, analogies, seating, blood relations, syllogisms, directions,
-  mirror images: Reasoning. General Awareness goes to the eight subjects (general science to
-  Physics, Chemistry or Biology; art, culture and heritage to History (music, dance, folk songs
-  and festivals to History > Indian Art and Culture); static GK, sports, awards,
-  books, schemes, summits and recent events to Current Affairs), and basic computer questions to
-  Computer Knowledge.
+  mirror images: Reasoning. (Undergraduate: its section decides, Q1-30 Mathematics, Q71-100
+  Reasoning.) General Awareness goes to the eight subjects (general science to Physics, Chemistry
+  or Biology; history, freedom struggle and ancient monuments to History), to **Static GK** or
+  **Current Affairs**, and basic computer questions to Computer Knowledge. **Static GK** takes the
+  settled facts: dances, music, art and monuments, festivals and days, books and authors, settled
+  awards, sports rules, trophies and players, firsts, symbols, institutions and headquarters,
+  older space missions, national parks. **Current Affairs** keeps only what depends on news:
+  schemes, appointments, events, recent awards, recent books, recent missions, rankings. The rule
+  with examples: `scripts/ssc-cgl/static-gk/README.md` (the test: would a student who learnt it
+  from a book five years ago still get it right? Then it is Static GK).
 - **Catalog:** chapter and subtopic must be exact names under your subject in
   `scripts/rrb-ntpc/catalog.json` (several contain em dashes; copy them). If nothing fits, use the
   closest and list the name you wish existed in your report.
@@ -84,7 +92,8 @@ solution:
   The rupee sign ₹ is fine (keep it OUTSIDE maths). Write every dollar sign escaped, `\$`.
   Reasoning symbol series (© @ £ € # &) are fine as printed, except `$`, which is `\$`, a
   backslash, which is `\(\backslash\)`, and Ω, which is `\(\Omega\)`.
-- **Difficulty** on the NTPC scale (a graduate-level screening test, a step easier than SSC CGL):
+- **Difficulty** on the NTPC scale (a screening test, a step easier than SSC CGL; Undergraduate,
+  the Class 12 level, is judged on the same scale, so it may run a little easier):
   one-step or common-knowledge items EASY, two or three steps or a specific fact MODERATE, heavy
   working or an obscure fact HARD.
 - **Solutions:** plain English, short, no em dashes. Mathematics shows the working (blank line
@@ -97,7 +106,13 @@ solution:
 - **Series counting** ("how many letters are immediately preceded by a symbol ..."): check every
   item, the FIRST and LAST included. 22 Mar S2 Q33 missed the letter after an opening "=".
 - **Flawed:** if no option is right or two are, still give the best answer and add
-  `flawed: yes` and `note: <why>` after `answer:`.
+  `flawed: yes` and `note: <why>` after `answer:`. If the printed data is impossible or
+  inconsistent but one answer is still clearly intended, give it, add only `note: <why>`, and end
+  the solution with one line telling the student what is off.
+- **Arrangement puzzles** (boxes, floors, seating, order): check whether more than one arrangement
+  fits every clue. If two fit and give different options, it is `flawed: yes` (15 Jun S3 Q79).
+- **Chemical formulas** with digits are maths: `\(\text{CO}_2\)`, `\(\text{H}_2\text{SO}_4\)`, never
+  a bare "CO2".
 - **Figures:** if a question needs a picture (figure, diagram, map, chart) to be answered, add
   `figure: stem`, `figure: options` or `figure: stem+options` after `answer:` and name it in your
   report. Do not draw anything. When the OPTIONS are pictures, write each option as `[figure]`.

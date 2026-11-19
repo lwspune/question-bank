@@ -7,6 +7,7 @@
 import { describe, it, expect } from "vitest";
 import {
   formatPrice,
+  offersParentLink,
   passCta,
   passForScope,
   planForPaidOrder,
@@ -97,6 +98,13 @@ describe("passCta prices in the plan's currency", () => {
     expect(passCta(plan({}))?.parentLink).toBe(true);
     expect(passCta(plan({ site: "intl", currency: "USD", amountPaise: 1900 }))?.parentLink).toBe(false);
     expect(passCta(plan({ site: "intl", currency: "INR", amountPaise: 99900 }))?.parentLink).toBe(false);
+  });
+
+  // 2026-11-19: /pricing shows "Ask a parent to pay" too, by the same rule as every pass offer.
+  it("offersParentLink is that one rule", () => {
+    expect(offersParentLink(plan({}))).toBe(true);
+    expect(offersParentLink(plan({ site: "intl", currency: "USD", amountPaise: 1900 }))).toBe(false);
+    expect(offersParentLink(plan({ site: "intl", currency: "INR", amountPaise: 99900 }))).toBe(false);
   });
 });
 

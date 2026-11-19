@@ -23,7 +23,7 @@ function main() {
   const shift = requireShift(process.argv[2]);
   const dir = join(OUT, shift.id);
   const g: TcsGeometry = JSON.parse(readFileSync(join(dir, "geometry.json"), "utf8"));
-  const questions = assembleNtpc(g);
+  const questions = assembleNtpc(g, shift.level);
 
   const printed = [...new Set(questions.map((q) => `${q.date} s${q.shift}`))];
   const want = `${shift.date} s${shift.shift}`;

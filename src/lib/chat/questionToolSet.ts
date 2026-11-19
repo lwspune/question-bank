@@ -28,6 +28,11 @@ export type QuestionToolDeps = {
   loadSimilar: (q: VQuestion) => Promise<string | null>;
   /** Matched within the page's chapter when there is one (a paste usually comes from the page it is on). */
   searchQuestions: (text: string, chapterId: string | null) => Promise<QuestionMatch[]>;
+  /**
+   * On a notes page (2026-11-19): the brief of the page's own question the pasted text is, or null. Asked
+   * before the bank, since a paste there usually comes from the page; absent off a notes page.
+   */
+  findNotesPaste?: (text: string) => Promise<string | null>;
   /** The chapter of the page the student asked from, set by loadVContext. */
   pageChapterId?: string | null;
   /**
@@ -178,7 +183,7 @@ export function questionTools(d: QuestionToolDeps): VTool[] {
       name: "find_question",
       logResult: true,
       description:
-        "Find a question in the bank from text the student pasted or typed out. The best match is shown to the student as a card to confirm.",
+        "Find a question in the bank, or on the notes page the student is on, from text the student pasted or typed out. A bank match is shown to the student as a card to confirm.",
       input_schema: {
         type: "object",
         properties: { text: { type: "string", description: "The question text as the student wrote it." } },
@@ -186,6 +191,8 @@ export function questionTools(d: QuestionToolDeps): VTool[] {
       },
       run: async (input) => {
         const text = (input as { text?: unknown } | null)?.text;
+        const fromNotes = typeof text === "string" && text.trim() && d.findNotesPaste ? await d.findNotesPaste(text) : null;
+        if (fromNotes) return `${fromNotes}\nExplain it now from this; there is no card to confirm.`;
         const matches = typeof text === "string" && text.trim() ? await d.searchQuestions(text, d.pageChapterId ?? null) : [];
         if (matches.length === 0) {
           // 2026-11-08: "open the question on the site" sent away a student who had typed their own question.

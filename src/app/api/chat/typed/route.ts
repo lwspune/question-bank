@@ -76,7 +76,7 @@ import { parseFollowsUp } from "@/lib/chat/followUp";
 import { notesPageOf, notesRefKey, parseNotesItemRef } from "@/lib/chat/notesItem";
 import { isExplanation } from "@/lib/chat/understood";
 import { fileVSolutionReport } from "@/lib/reports/fileVReport";
-import { loadNotesItemBrief } from "@/lib/chat/notesItemServer";
+import { loadNotesItemBrief, loadNotesPasteBrief } from "@/lib/chat/notesItemServer";
 import { buildMyQuestionDeps } from "@/lib/chat/myQuestionsServer";
 import { notesTappedFrom, tappedFrom, type QuestionToolDeps } from "@/lib/chat/questionToolSet";
 import { parseVLanguage, type VLanguage } from "@/lib/chat/language";
@@ -92,9 +92,9 @@ import { getPathForV } from "@/lib/path/service";
 import { getOwnProfile, updateOwnProfile } from "@/lib/profile/service";
 import { getOwnLadder } from "@/lib/drill/service";
 import { passOnSale } from "@/lib/billing/passOnSale";
-import { hourlyLimitLine, hourlyOutcome, vPassTier } from "@/lib/chat/hourlyLimit";
+import { hourlyLimitLine, hourlyOutcome, vOfferScope, vPassTier } from "@/lib/chat/hourlyLimit";
+import { planSiteForHost } from "@/lib/sites/intl";
 import { loadEntitlements } from "@/lib/entitlements/query";
-import { SCOPE_DOWNLOADS } from "@/lib/entitlements/access";
 import { readCountry } from "@/lib/acquisition/country";
 import type { Performance } from "@/lib/performance/compute";
 
@@ -136,6 +136,8 @@ function buildQuestionToolDeps(
     loadSimilar: async (q) =>
       loadSimilarId(anon, q, userId ? await revealedToday(createSupabaseServerClient(), userId, new Date()) : []),
     searchQuestions: (text, chapterId) => searchVQuestions(anon, text, chapterId),
+    // A question pasted on a notes page is looked for on that page first (2026-11-19).
+    ...(notesPageOf(pagePath) ? { findNotesPaste: (text: string) => loadNotesPasteBrief(pagePath, text) } : {}),
     onSimilar: out.onSimilar,
     onMatch: out.onMatch,
     onExplained: () => {},
@@ -213,6 +215,8 @@ export async function POST(request: NextRequest) {
     const settings = await readChatSettings(admin);
     // Every price V shows is the buyer's country price (2026-11-15).
     const country = readCountry(request.headers);
+    // V on intl.pyqvault.com (2026-11-19): its own exams, passes and pages there.
+    const site = planSiteForHost(request.headers.get("host"));
 
     // Outside a request scope (route tests) the session read throws: treat as signed out.
     let userId: string | null = null;
@@ -256,7 +260,8 @@ export async function POST(request: NextRequest) {
           });
         }
         const line = hourlyLimitLine(outcome.limit, rl.retryAfter);
-        const pass = outcome.offerPremium ? await passOnSale("pyqvault", { scope: SCOPE_DOWNLOADS, country }) : null;
+        const offerScope = vOfferScope(site, cleanPagePath(raw.pagePath));
+        const pass = outcome.offerPremium && offerScope ? await passOnSale(site, { scope: offerScope, country }) : null;
         return NextResponse.json(
           {
             error: line,
@@ -334,6 +339,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // The tapped notes question, read from the page it is asked on. Null when it is not on that page (tapped on
+    // one notes page, typed on another, 2026-11-19): V is then told of no tapped question, and none is stored.
+    const notesBrief = askedNotes ? await loadNotesItemBrief(pagePath, askedNotes) : null;
+
     let reply = TYPED_QUESTION_REPLY;
     let links: string[] = [];
     // Set by V's question tools during the answer, for the chat window: a question to try, a pasted one to confirm.
@@ -364,10 +373,10 @@ export async function POST(request: NextRequest) {
         try {
           const history = modelHistory(session);
           const ownId = userId;
-          const notesBrief = askedNotes ? await loadNotesItemBrief(pagePath, askedNotes) : null;
           const profile = ownId ? await readProfileForV(ownId) : null;
           const context: VContextOptions = {
             page: pagePath,
+            site,
             country,
             signedIn: ownId !== null,
             profileExamSlugs: profile?.examSlugs ?? [],
@@ -446,7 +455,7 @@ export async function POST(request: NextRequest) {
     }
 
     // A notes question has no id: its key on its own page (0181), so V's memory can label the tap.
-    const askedNotesItem = !asked && askedNotes && notesPageOf(pagePath) ? notesRefKey(askedNotes) : null;
+    const askedNotesItem = !asked && askedNotes && notesBrief !== null ? notesRefKey(askedNotes) : null;
     const id = await recordChatInteraction(admin, {
       eventType: "typed_question",
       message,
@@ -476,7 +485,12 @@ export async function POST(request: NextRequest) {
         ? stepQuestionIdOf({ reply, toolCalls: recorded.toolCalls, message, askedQuestionId: asked?.id ?? null })
         : null;
     // Read only when the limit was met, so an ordinary reply reads no plans.
-    const passOffer = recorded.source === "ai" && limitHit !== null ? { limit: limitHit, pass: await passOnSale("pyqvault", { country }) } : null;
+    // On intl the pass for the exam on the page (2026-11-19); www's offer is unchanged.
+    const limitScope = site === "intl" ? vOfferScope(site, pagePath) : undefined;
+    const passOffer =
+      recorded.source === "ai" && limitHit !== null && limitScope !== null
+        ? { limit: limitHit, pass: await passOnSale(site, { scope: limitScope, country }) }
+        : null;
 
     // Only on an AI answer: a fallback reply never ran the tools.
     const questionFields =

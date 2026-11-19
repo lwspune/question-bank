@@ -85,6 +85,7 @@ import {
   ASK_V_TEXT_EVENT,
   isAskVTextDetail,
   askedCardOf,
+  askedOnPage,
   explainedTap,
   askVMessage,
   isAskVDetail,
@@ -164,6 +165,9 @@ const GREETING: ChatTurn = {
   avatar: "laugh",
   text: "Hi, I'm V. Ask me about any chapter or exam, or tap a button below.",
 };
+
+/** intl has no Build a practice test button (2026-11-19), so its greeting points at none. */
+const INTL_GREETING: ChatTurn = { ...GREETING, text: "Hi, I'm V. Ask me about any chapter, question or exam." };
 
 /**
  * Floating FAQ-chatbot launcher, visible to anon + authed visitors alike
@@ -380,7 +384,9 @@ export default function ChatWidget() {
   const openRecordedRef = useRef(false);
   const accountCheckedRef = useRef(false);
   const pathname = usePublicPathname();
-  // V speaks to PYQ Vault's Indian students; intl.pyqvault.com has no V (2026-10-30).
+  // V is on intl.pyqvault.com too since 2026-11-19 (it was hidden there from 2026-10-30, while its Ask V
+  // buttons still sent: students tapped and saw nothing). The server answers per site; here intl only
+  // drops the practice-test builder, whose exams and pass checks are www's.
   const intl = useIntlSite();
   const cart = useCart();
   const placement = vPlacement(pathname, cart);
@@ -785,7 +791,8 @@ export default function ChatWidget() {
     openChat();
     // Already explained in this session: reopen that explanation, no new answer (2026-11-07).
     const earlier = explainedTap(turnsRef.current, askedCardOf(d, pathname), message);
-    setAsked(d);
+    // A notes question belongs to its page: a message typed on another page is not about it (askedOnPage).
+    setAsked(d.notes ? { ...d, page: pathname ?? undefined } : d);
     setReplyingTo(null);
     if (earlier >= 0) {
       focusTurnRef.current = earlier;
@@ -822,7 +829,7 @@ export default function ChatWidget() {
     const { id: sessionId, fresh } = currentSessionId();
     // A new session drops the old tapped question and reply; a button send never carries a reply.
     // `about` null = explicitly no question (a concept request); undefined = the tapped one, if any.
-    const question = about === null ? null : (about ?? (fresh ? null : asked));
+    const question = about === null ? null : (about ?? (fresh ? null : askedOnPage(asked, pathname)));
     // Explain on a step replies to its explanation (opts.replyTo); a new session drops it, as the server would.
     const replyTo = fresh ? null : (opts.replyTo ?? (override === undefined ? replyingTo : null));
     // An Ask V tap shows its question above the message (owner, 2026-10-23).
@@ -943,7 +950,7 @@ export default function ChatWidget() {
     }
   }
 
-  if (placement.hidden || intl) return null;
+  if (placement.hidden) return null;
 
   // Vertical position lives in globals.css (.chat-launcher-offset): clear of
   // MobileTabBar below sm, and raised by --v-lift over /browse's cart pill.
@@ -1008,7 +1015,7 @@ export default function ChatWidget() {
           ) : (
           <>
           <div ref={listRef} className="flex-1 space-y-4 overflow-y-auto px-4 py-4">
-            {[day ? { ...GREETING, text: day.greeting } : dayLoading ? { ...GREETING, text: "Welcome back." } : GREETING, ...turns].map((t, n) => {
+            {[day ? { ...GREETING, text: day.greeting } : dayLoading ? { ...GREETING, text: "Welcome back." } : intl ? INTL_GREETING : GREETING, ...turns].map((t, n) => {
               // n - 1 indexes `turns`; the greeting is never stored.
               const i = n - 1;
               if (t.role === "user") {
@@ -1249,15 +1256,17 @@ export default function ChatWidget() {
           <div className="shrink-0 border-t border-border/70 bg-card shadow-[0_-12px_28px_-20px_rgb(15_29_74/0.35)]">
           <div className="relative">
             <div className="flex flex-wrap gap-2 px-3 pb-1 pt-3">
-              <button
-                type="button"
-                onClick={openBuilder}
-                disabled={sending}
-                className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-brand px-3.5 py-1.5 text-xs font-semibold text-brand-foreground shadow-sm transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
-              >
-                <ListChecks className="h-3.5 w-3.5" aria-hidden />
-                Build a practice test
-              </button>
+              {!intl && (
+                <button
+                  type="button"
+                  onClick={openBuilder}
+                  disabled={sending}
+                  className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-brand px-3.5 py-1.5 text-xs font-semibold text-brand-foreground shadow-sm transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                >
+                  <ListChecks className="h-3.5 w-3.5" aria-hidden />
+                  Build a practice test
+                </button>
+              )}
               {showPath && (
                 <button
                   type="button"
