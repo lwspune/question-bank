@@ -122,7 +122,7 @@ Q26-50, PART-C Q51-75, PART-D Q76-100). Each block:
 
 ```
 === <n>
-subject: <PART-B only: History | Geography | Polity | Economics | Physics | Chemistry | Biology | Current Affairs>
+subject: <PART-B only: History | Geography | Polity | Economics | Physics | Chemistry | Biology | Static GK | Current Affairs>
 chapter: <exact chapter name from catalog.json>
 subtopic: <exact subtopic name from catalog.json>
 difficulty: EASY | MODERATE | HARD
@@ -140,7 +140,11 @@ solution:
 - **Catalog:** chapter and subtopic must be exact names under your subject in
   `scripts/ssc-cgl/catalog.json` (several contain em dashes; copy them). PART-A is "Reasoning",
   PART-C "Quantitative Aptitude", PART-D "English". In PART-B every block needs `subject:`
-  (static culture, sports, awards, books, schemes and events go under Current Affairs). If nothing
+  (settled facts go under **Static GK**: dances, music, art and monuments, festivals and days, books
+  and authors, settled awards, sports rules, trophies and players, firsts, symbols, institutions and
+  headquarters, older space missions, national parks. **Current Affairs** keeps only what depends on
+  news: schemes, appointments, events, recent awards, recent books, recent missions, rankings. The
+  rule with examples: `scripts/ssc-cgl/static-gk/README.md`). If nothing
   fits, use the closest and list the name you wish existed in your report.
 - **Transcription:** faithful, word for word, including the paper's own wording, punctuation and
   typos. `**bold**` and `*italic*` as printed. Tables as GitHub pipe tables (header row, then a

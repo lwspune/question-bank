@@ -42,8 +42,8 @@ export function requireExamId(tier: Tier = 1): string {
   return id;
 }
 
-/** General Awareness, split into the eight subjects CDS General Knowledge uses (owner, 2026-10-16). */
-const GA = ["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Current Affairs"];
+/** General Awareness: the eight subjects CDS General Knowledge uses (owner, 2026-10-16), plus Static GK (owner, 2026-11-19). */
+const GA = ["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Current Affairs", "Static GK"];
 
 /**
  * A tier's paper, section by section in NUMBER order: `match` names the printed section

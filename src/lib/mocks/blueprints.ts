@@ -736,8 +736,8 @@ export const UPSC_GS1_PAPER: MockPaperBlueprint = {
   ],
 };
 
-/** SSC CGL General Awareness: the eight bank subjects it is filed under (the CDS GK split). */
-const SSC_GA = ["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Current Affairs"];
+/** SSC General Awareness: the eight bank subjects it is filed under (the CDS GK split) plus Static GK (2026-11-19). */
+const SSC_GA = ["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Current Affairs", "Static GK"];
 
 /**
  * SSC CGL Tier I. 100 questions, 200 marks, 60 minutes, +2 / -0.5, in the four
