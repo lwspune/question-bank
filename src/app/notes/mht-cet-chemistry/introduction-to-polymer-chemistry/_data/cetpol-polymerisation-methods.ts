@@ -13,6 +13,7 @@ export const POLYMERISATION_METHODS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetpol-addition-condensation-ring-opening",
       name: "Which Method Makes Which Polymer",
+      visualizationSlug: "cet-chain-growth",
       intuition:
         "Look at the monomer. A C=C monomer polymerises by ADDITION: a peroxide initiator makes a radical that opens double bond after double bond, nothing is lost, and the repeat unit has the monomer's formula (ethene → polythene, CF₂=CF₂ → Teflon, CH₂=CHCN → PAN, CH₂=CHCl → PVC, styrene → polystyrene). Two bifunctional monomers polymerise by CONDENSATION, losing water (or HCl) at every link: a diacid and a diamine give the polyamide nylon 6,6, a diacid and a diol the polyester dacron, phenol or urea with formaldehyde the resins. A cyclic amide simply opens: caprolactam → nylon 6 by RING-OPENING, no small molecule lost, though the paper's key files it under condensation.",
       definition:

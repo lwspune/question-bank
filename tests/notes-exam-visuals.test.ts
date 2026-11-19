@@ -1,19 +1,23 @@
 /**
- * MHT-CET notes figures (2026-11-19). The CET notes had 108 figures across
- * 1,173 concepts, all but 2 in Maths and none animated. This run borrows
- * figures already drawn for other exams' notes and draws new ones for CET
- * (slugs starting `cet-`), some animated through the shared stepper.
+ * Notes figures for MHT-CET, JEE Mains, NEET and SSC CGL (2026-11-19). On that
+ * day CET had 108 figures across 1,173 concepts (all but 2 in Maths, none
+ * animated) and the other three had none at all. This run borrows figures
+ * drawn for other exams' notes (scripts/notes/BORROW_BRIEF.md) and draws new
+ * ones (scripts/notes/CET_VISUALS_BRIEF.md) whose slugs start with the exam:
+ * `cet-`, `jee-`, `neet-`, `ssc-`. Some are animated through the shared stepper.
  *
  * What is pinned, and why (the IMAT gate's rules, tests/imat-notes-visuals):
- * - Every figure a CET concept uses draws, outside a browser, to an SVG. The
+ * - Every figure these notes use draws, outside a browser, to an SVG. The
  *   print view draws the same component, so one that throws or draws nothing
  *   would leave a hole with no error.
  * - Its visible words keep the notes rules (src/lib/notes/visualText.ts): no
- *   exam's name, no "the bank", no rupees, and, for a figure drawn for CET, no
- *   em dashes. A borrowed figure keeps the dashes it has on its own page.
+ *   exam's name, no "the bank", no rupees, and, for a figure drawn in this
+ *   run, no em dashes and no raw underscore. A borrowed figure keeps the
+ *   dashes it has on its own page.
  * - An animated figure's server markup lists every step, so print tells the
  *   whole process, not just its last frame.
- * - No figure appears twice on one page, and no `cet-` figure is left unused.
+ * - No figure appears twice on one page, and no figure drawn in this run is
+ *   left unused.
  * - The counts only go up.
  */
 import { describe, expect, it } from "vitest";
@@ -24,8 +28,18 @@ import { renderDiagramMarkup } from "@/lib/ebooks/diagrams";
 import { visibleText, visualTextProblems } from "@/lib/notes/visualText";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
+/** The notes these rules cover, by subject-route prefix. */
+const EXAM_ROUTES = ["mht-cet-", "jee-mains-", "neet-", "ssc-cgl-"];
+
+/** Slug prefixes of figures drawn in this run (the stricter word rules apply). */
+const NEW_FIGURE = /^(cet|jee|neet|ssc)-/;
+
 /** Concepts carrying a figure, per subject. Raise these as figures land; never lower them. */
-const MIN_FIGURES = { "mht-cet-maths": 114, "mht-cet-physics": 40, "mht-cet-chemistry": 15 } as const;
+const MIN_FIGURES: Record<string, number> = {
+  "mht-cet-maths": 114,
+  "mht-cet-physics": 40,
+  "mht-cet-chemistry": 33,
+};
 
 /** Figures placed on CET before this run, whose words were never checked against these rules. */
 const SHIPPED_BEFORE = new Set<string>();
@@ -69,7 +83,7 @@ const SHIPPED_MATHS_HEADERS = new Set([
   "magnetic-force-triad",
 ]);
 
-const placements = NOTES_CHAPTERS.filter((c) => c.subjectRoute.startsWith("mht-cet-")).flatMap((c) =>
+const placements = NOTES_CHAPTERS.filter((c) => EXAM_ROUTES.some((r) => c.subjectRoute.startsWith(r))).flatMap((c) =>
   Object.entries(c.notes).flatMap(([s, note]) =>
     note.concepts.flatMap((k) =>
       k.visualizationSlug
@@ -80,7 +94,7 @@ const placements = NOTES_CHAPTERS.filter((c) => c.subjectRoute.startsWith("mht-c
 );
 const figures = [...new Set(placements.map((p) => p.viz))];
 
-describe("MHT-CET notes figures", () => {
+describe("MHT-CET, JEE Mains, NEET and SSC CGL notes figures", () => {
   it.each(Object.entries(MIN_FIGURES))("%s carries at least %i figures", (subject, min) => {
     expect(placements.filter((p) => p.subject === subject).length).toBeGreaterThanOrEqual(min);
   });
@@ -88,9 +102,9 @@ describe("MHT-CET notes figures", () => {
   it.each(figures.filter((f) => !SHIPPED_BEFORE.has(f)).map((f) => [f]))("%s draws an SVG and keeps the word rules", (viz) => {
     const markup = renderDiagramMarkup(viz as VisualizationSlug);
     expect(markup).toContain("<svg");
-    expect(visualTextProblems(markup, { noDashes: viz.startsWith("cet-") })).toEqual([]);
+    expect(visualTextProblems(markup, { noDashes: NEW_FIGURE.test(viz) })).toEqual([]);
     // A raw "V_R" or "X_C" reads as code; write a subscript (₁, ₘₐₓ) or a word.
-    if (viz.startsWith("cet-")) expect(visibleText(markup).match(/\S*_\S*/g) ?? []).toEqual([]);
+    if (NEW_FIGURE.test(viz)) expect(visibleText(markup).match(/\S*_\S*/g) ?? []).toEqual([]);
   });
 
   it("a header carries no maths: it is shown in capitals, which turns ν into N and λ into Λ", () => {
@@ -119,10 +133,10 @@ describe("MHT-CET notes figures", () => {
     expect(repeats).toEqual(KNOWN_REPEATS);
   });
 
-  it("every figure drawn for CET is used by a CET concept", () => {
+  it("every figure drawn in this run is used by one of these notes", () => {
     const card = readFileSync(join(process.cwd(), "src/app/notes/_components/ConceptUnitCard.tsx"), "utf8");
-    const cetCases = [...card.matchAll(/case "(cet-[^"]+)":/g)].map((m) => m[1]);
+    const drawn = [...card.matchAll(/case "((?:cet|jee|neet|ssc)-[^"]+)":/g)].map((m) => m[1]);
     const used = new Set<string>(figures);
-    expect(cetCases.filter((s) => !used.has(s))).toEqual([]);
+    expect(drawn.filter((s) => !used.has(s))).toEqual([]);
   });
 });

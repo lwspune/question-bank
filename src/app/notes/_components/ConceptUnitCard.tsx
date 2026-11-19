@@ -76,6 +76,24 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import CetSn1VsSn2 from "./visualizations/CetSn1VsSn2";
+import CetEasMechanism from "./visualizations/CetEasMechanism";
+import CetDirectingEffects from "./visualizations/CetDirectingEffects";
+import CetCarbonylAddition from "./visualizations/CetCarbonylAddition";
+import CetSaytzeffElimination from "./visualizations/CetSaytzeffElimination";
+import CetChainGrowth from "./visualizations/CetChainGrowth";
+import CetUnitCellCounting from "./visualizations/CetUnitCellCounting";
+import CetTetraOctaVoids from "./visualizations/CetTetraOctaVoids";
+import CetEdgeLengthRadius from "./visualizations/CetEdgeLengthRadius";
+import CetDElectronPairing from "./visualizations/CetDElectronPairing";
+import CetGlucoseRingClosure from "./visualizations/CetGlucoseRingClosure";
+import CetDnaBasePairing from "./visualizations/CetDnaBasePairing";
+import CetHessCycle from "./visualizations/CetHessCycle";
+import CetGibbsSign from "./visualizations/CetGibbsSign";
+import CetRaoultTwoLiquids from "./visualizations/CetRaoultTwoLiquids";
+import CetMolarConductivityDilution from "./visualizations/CetMolarConductivityDilution";
+import CetFirstOrderPlot from "./visualizations/CetFirstOrderPlot";
+import CetBoilingPointElevation from "./visualizations/CetBoilingPointElevation";
 import CetPnDepletion from "./visualizations/CetPnDepletion";
 import CetDiodeBias from "./visualizations/CetDiodeBias";
 import CetRectifierWaves from "./visualizations/CetRectifierWaves";
@@ -788,6 +806,42 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "cet-sn1-vs-sn2":
+      return <CetSn1VsSn2 />;
+    case "cet-eas-mechanism":
+      return <CetEasMechanism />;
+    case "cet-directing-effects":
+      return <CetDirectingEffects />;
+    case "cet-carbonyl-addition":
+      return <CetCarbonylAddition />;
+    case "cet-saytzeff-elimination":
+      return <CetSaytzeffElimination />;
+    case "cet-chain-growth":
+      return <CetChainGrowth />;
+    case "cet-unit-cell-counting":
+      return <CetUnitCellCounting />;
+    case "cet-tetra-octa-voids":
+      return <CetTetraOctaVoids />;
+    case "cet-edge-length-radius":
+      return <CetEdgeLengthRadius />;
+    case "cet-d-electron-pairing":
+      return <CetDElectronPairing />;
+    case "cet-glucose-ring-closure":
+      return <CetGlucoseRingClosure />;
+    case "cet-dna-base-pairing":
+      return <CetDnaBasePairing />;
+    case "cet-hess-cycle":
+      return <CetHessCycle />;
+    case "cet-gibbs-sign":
+      return <CetGibbsSign />;
+    case "cet-raoult-two-liquids":
+      return <CetRaoultTwoLiquids />;
+    case "cet-molar-conductivity-dilution":
+      return <CetMolarConductivityDilution />;
+    case "cet-first-order-plot":
+      return <CetFirstOrderPlot />;
+    case "cet-boiling-point-elevation":
+      return <CetBoilingPointElevation />;
     case "cet-pn-depletion":
       return <CetPnDepletion />;
     case "cet-diode-bias":

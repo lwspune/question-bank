@@ -14,6 +14,7 @@ export const CARBOHYDRATES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetbio-classification-and-glucose-structure",
       name: "Classification, and the Structures of Glucose and Fructose",
+      visualizationSlug: "cet-glucose-ring-closure",
       intuition:
         "Classify by units first: one sugar unit is a monosaccharide, two a disaccharide, three or four an oligosaccharide, many a polysaccharide. Then by the carbonyl: an aldose has –CHO, a ketose has C=O, and the carbon count gives triose, tetrose, pentose, hexose. Glucose is the aldohexose; fructose (laevulose, laevorotatory) is the ketohexose with the same formula. In water the open chain closes: the C-5 OH of glucose adds across the C-1 aldehyde to give a HEMIACETAL, a six-membered pyranose ring, and C-1 becomes a new stereocentre — the anomeric carbon — so there are two forms, alpha and beta. Fructose closes C-5 OH onto its C-2 ketone: a HEMIKETAL, a five-membered furanose ring.",
       definition:

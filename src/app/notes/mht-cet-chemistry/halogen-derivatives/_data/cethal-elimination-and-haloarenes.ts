@@ -13,6 +13,7 @@ export const ELIMINATION_AND_HALOARENES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cethal-dehydrohalogenation",
       name: "Dehydrohalogenation and the Saytzeff Rule",
+      visualizationSlug: "cet-saytzeff-elimination",
       intuition:
         "A base takes a β-hydrogen while the halide leaves, making a C=C. The more substituted the halide, the easier (3° > 2° > 1°) and the more substituted the alkene, the more stable — so the major product carries the most alkyl groups on the double bond (Saytzeff). Alcoholic KOH, alcoholic NH₃ and sodium ethoxide are the eliminating bases; aqueous OH⁻ substitutes instead.",
       definition:
