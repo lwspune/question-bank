@@ -3161,6 +3161,41 @@ import {
   HB9_HEAT_NOTES,
   HB9_HEAT_SLUGS,
 } from "@/app/notes/homi-bhabha-9-physics/heat/_data";
+import {
+  HB9_AGRICULTURE_CHAPTER,
+  HB9_AGRICULTURE_NOTES,
+  HB9_AGRICULTURE_SLUGS,
+} from "@/app/notes/homi-bhabha-9-biology/agriculture-animal-husbandry/_data";
+import {
+  HB9_PLANTCLASS_CHAPTER,
+  HB9_PLANTCLASS_NOTES,
+  HB9_PLANTCLASS_SLUGS,
+} from "@/app/notes/homi-bhabha-9-biology/classification-of-plants/_data";
+import {
+  HB9_PLANTFN_CHAPTER,
+  HB9_PLANTFN_NOTES,
+  HB9_PLANTFN_SLUGS,
+} from "@/app/notes/homi-bhabha-9-biology/plants-functions/_data";
+import {
+  HB9_SCIENTISTS_CHAPTER,
+  HB9_SCIENTISTS_NOTES,
+  HB9_SCIENTISTS_SLUGS,
+} from "@/app/notes/homi-bhabha-9-general-science/scientists-discoveries/_data";
+import {
+  HB9_MOLE_CHAPTER,
+  HB9_MOLE_NOTES,
+  HB9_MOLE_SLUGS,
+} from "@/app/notes/homi-bhabha-9-chemistry/measurement-of-matter/_data";
+import {
+  HB9_PERIODIC_CHAPTER,
+  HB9_PERIODIC_NOTES,
+  HB9_PERIODIC_SLUGS,
+} from "@/app/notes/homi-bhabha-9-chemistry/periodic-classification/_data";
+import {
+  HB9_AIR_CHAPTER,
+  HB9_AIR_NOTES,
+  HB9_AIR_SLUGS,
+} from "@/app/notes/homi-bhabha-9-chemistry/air-water-gases/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -10087,6 +10122,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
   },
   {
     examName: "Homi Bhabha Class 9",
+    subjectName: "Biology",
+    subjectRoute: "homi-bhabha-9-biology",
+    subjectDisplay: "Homi Bhabha Biology",
+    chapterSlug: "agriculture-animal-husbandry",
+    chipLabel: "Agriculture and Animal Husbandry notes",
+    chapter: HB9_AGRICULTURE_CHAPTER,
+    notes: HB9_AGRICULTURE_NOTES,
+    slugs: HB9_AGRICULTURE_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Biology",
+    subjectRoute: "homi-bhabha-9-biology",
+    subjectDisplay: "Homi Bhabha Biology",
+    chapterSlug: "classification-of-plants",
+    chipLabel: "Classification of Plants notes",
+    chapter: HB9_PLANTCLASS_CHAPTER,
+    notes: HB9_PLANTCLASS_NOTES,
+    slugs: HB9_PLANTCLASS_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Biology",
+    subjectRoute: "homi-bhabha-9-biology",
+    subjectDisplay: "Homi Bhabha Biology",
+    chapterSlug: "plants-functions",
+    chipLabel: "Plants and Their Functions notes",
+    chapter: HB9_PLANTFN_CHAPTER,
+    notes: HB9_PLANTFN_NOTES,
+    slugs: HB9_PLANTFN_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
     subjectName: "Chemistry",
     subjectRoute: "homi-bhabha-9-chemistry",
     subjectDisplay: "Homi Bhabha Chemistry",
@@ -10161,6 +10229,50 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HB9_METALS_CHAPTER,
     notes: HB9_METALS_NOTES,
     slugs: HB9_METALS_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Chemistry",
+    subjectRoute: "homi-bhabha-9-chemistry",
+    subjectDisplay: "Homi Bhabha Chemistry",
+    chapterSlug: "measurement-of-matter",
+    chipLabel: "Measurement of Matter notes",
+    chapter: HB9_MOLE_CHAPTER,
+    notes: HB9_MOLE_NOTES,
+    slugs: HB9_MOLE_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Chemistry",
+    subjectRoute: "homi-bhabha-9-chemistry",
+    subjectDisplay: "Homi Bhabha Chemistry",
+    chapterSlug: "periodic-classification",
+    chipLabel: "Elements and Periodic Classification notes",
+    chapter: HB9_PERIODIC_CHAPTER,
+    notes: HB9_PERIODIC_NOTES,
+    slugs: HB9_PERIODIC_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Chemistry",
+    subjectRoute: "homi-bhabha-9-chemistry",
+    subjectDisplay: "Homi Bhabha Chemistry",
+    chapterSlug: "air-water-gases",
+    chipLabel: "Air, Water and Gases notes",
+    chapter: HB9_AIR_CHAPTER,
+    notes: HB9_AIR_NOTES,
+    slugs: HB9_AIR_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "General Science",
+    subjectRoute: "homi-bhabha-9-general-science",
+    subjectDisplay: "Homi Bhabha General Science",
+    chapterSlug: "scientists-discoveries",
+    chipLabel: "Scientists and Discoveries notes",
+    chapter: HB9_SCIENTISTS_CHAPTER,
+    notes: HB9_SCIENTISTS_NOTES,
+    slugs: HB9_SCIENTISTS_SLUGS,
   },
 ];
 
