@@ -210,7 +210,8 @@ async function main() {
     let synced = 0;
     for (const r of parsed) {
       const row = (existing ?? []).find((e) => e.question_number === r.questionNumber);
-      if (!row || row.solution === r.solution) continue;
+      // A withdrawn row builds with no solution (undefined) and stores null: the same.
+      if (!row || (row.solution ?? null) === (r.solution ?? null)) continue;
       const { error: uErr2 } = await client.from("questions").update({ solution: r.solution }).eq("id", row.id);
       if (uErr2) throw new Error(`Q${r.questionNumber}: solution sync failed: ${uErr2.message}`);
       synced++;
