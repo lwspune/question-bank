@@ -216,7 +216,7 @@ describe("d electron pairing and magnetism (cetcc-unpaired-electrons-and-magneti
     expect(hybridName(LIGAND_BOXES.weak)).toBe("sp³d²");
     expect(hybridName(LIGAND_BOXES.strong)).toBe("d²sp³");
     expect(LIGAND_BOXES.weak.some((b) => ORBITALS[b] === "4d")).toBe(true);
-    expect(LIGAND_BOXES.strong.some((b) => ORBITALS[b] === "4d")).toBe(false);
+    expect(LIGAND_BOXES.strong.some((b) => (ORBITALS[b] as string) === "4d")).toBe(false);
     for (const boxes of [LIGAND_BOXES.weak, LIGAND_BOXES.strong]) expect(boxes).toHaveLength(6);
   });
 

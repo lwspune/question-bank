@@ -220,7 +220,7 @@ describe("angle between a pair of lines (cetpsl-angle-formula-perpendicular-and-
           expect(a * c * c + 2 * h * s * c + b * s * s).toBeCloseTo(0, 9);
         }
         expect(angleBetween(dirs![0], dirs![1])).toBeCloseTo(formula!, 6);
-        if (b !== 0 && dirs!.every((p) => Math.abs(Math.cos(p)) > 1e-6) && pairKind(a, h, b) !== "coincident") {
+        if ((b as number) !== 0 && dirs!.every((p) => Math.abs(Math.cos(p)) > 1e-6) && pairKind(a, h, b) !== "coincident") {
           const [m1, m2] = dirs!.map(slope);
           expect(m1 + m2).toBeCloseTo((-2 * h) / b, 6);
           expect(m1 * m2).toBeCloseTo(a / b, 6);
