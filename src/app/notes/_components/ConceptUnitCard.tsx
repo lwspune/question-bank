@@ -76,6 +76,15 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import JeePointImageLine from "./visualizations/JeePointImageLine";
+import JeeChordLength from "./visualizations/JeeChordLength";
+import JeeTwoCircles from "./visualizations/JeeTwoCircles";
+import JeeHyperbolaFocal from "./visualizations/JeeHyperbolaFocal";
+import JeeEllipseFocal from "./visualizations/JeeEllipseFocal";
+import JeeSkewLinesDistance from "./visualizations/JeeSkewLinesDistance";
+import JeeComplexRotation from "./visualizations/JeeComplexRotation";
+import JeeMeanValueTheorem from "./visualizations/JeeMeanValueTheorem";
+import JeeRiemannSum from "./visualizations/JeeRiemannSum";
 import JeeCrystalFieldSplitting from "./visualizations/JeeCrystalFieldSplitting";
 import JeeMoDiagram from "./visualizations/JeeMoDiagram";
 import JeeRaoultDeviations from "./visualizations/JeeRaoultDeviations";
@@ -839,6 +848,24 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "jee-point-image-line":
+      return <JeePointImageLine />;
+    case "jee-chord-length":
+      return <JeeChordLength />;
+    case "jee-two-circles":
+      return <JeeTwoCircles />;
+    case "jee-hyperbola-focal":
+      return <JeeHyperbolaFocal />;
+    case "jee-ellipse-focal":
+      return <JeeEllipseFocal />;
+    case "jee-skew-lines-distance":
+      return <JeeSkewLinesDistance />;
+    case "jee-complex-rotation":
+      return <JeeComplexRotation />;
+    case "jee-mean-value-theorem":
+      return <JeeMeanValueTheorem />;
+    case "jee-riemann-sum":
+      return <JeeRiemannSum />;
     case "jee-crystal-field-splitting":
       return <JeeCrystalFieldSplitting />;
     case "jee-mo-diagram":

@@ -111,6 +111,7 @@ export const HYPERBOLA_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcon-hyperbola-focal",
       name: "Focal distances: the constant difference, and foci anywhere",
+      visualizationSlug: "jee-hyperbola-focal",
       intuition:
         "On a hyperbola the DIFFERENCE of the focal distances is constant: \\(|SP-S'P|=2a\\). As with the ellipse, each is \\(e\\) times the distance to its directrix, giving \\(SP=ex-a\\) and \\(S'P=ex+a\\) on the right branch. When the foci are given as two points off the axes, the centre is their midpoint and \\(c\\) is half the distance between them; the eccentricity then gives the transverse semi-axis.",
       definition:

@@ -13,6 +13,7 @@ export const ROLLE_AOD_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jaod-rolle",
       name: "Rolle's theorem and the mean value theorem",
+      visualizationSlug: "jee-mean-value-theorem",
       intuition:
         "If \\(f\\) is continuous on \\([a,b]\\), differentiable on \\((a,b)\\), and \\(f(a)=f(b)\\), the graph must turn somewhere between: \\(f'(c)=0\\) for some \\(c\\) in \\((a,b)\\). Tilt the picture and you get the mean value theorem: some tangent is parallel to the chord, \\(f'(c)=\\frac{f(b)-f(a)}{b-a}\\).",
       definition:

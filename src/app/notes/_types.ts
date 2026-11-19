@@ -485,6 +485,15 @@ export type VisualizationSlug =
   | "jee-radial-probability"
   | "jee-born-haber"
   | "jee-complex-isomers"
+  | "jee-point-image-line"
+  | "jee-chord-length"
+  | "jee-two-circles"
+  | "jee-hyperbola-focal"
+  | "jee-ellipse-focal"
+  | "jee-skew-lines-distance"
+  | "jee-complex-rotation"
+  | "jee-mean-value-theorem"
+  | "jee-riemann-sum"
   | "imat-chart-types";
 
 export type TrapCallout = {

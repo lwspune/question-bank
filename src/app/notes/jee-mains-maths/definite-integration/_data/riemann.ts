@@ -12,6 +12,7 @@ export const RIEMANN_DI_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jdi-riemann",
       name: "Sums as integrals",
+      visualizationSlug: "jee-riemann-sum",
       intuition:
         "\\(\\lim_{n\\to\\infty}\\frac1n\\sum_{k=1}^nf\\left(\\frac kn\\right)=\\int_0^1f(x)\\,dx\\): the sum adds strips of width \\(\\frac1n\\) and height \\(f\\left(\\frac kn\\right)\\). Divide the numerator and denominator of each term by the power of \\(n\\) that leaves a factor \\(\\frac1n\\) times a function of \\(\\frac kn\\). If \\(k\\) runs to \\(2n\\) the upper limit is 2; constants outside the sum stay outside.",
       definition:

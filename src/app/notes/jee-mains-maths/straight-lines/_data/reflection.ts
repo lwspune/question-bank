@@ -13,6 +13,7 @@ export const REFLECTION_SL_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jsl-image",
       name: "Image of a point in a line",
+      visualizationSlug: "jee-point-image-line",
       intuition:
         "The image of \\(P\\) in a line is as far behind the line as \\(P\\) is in front of it, along the normal. So move \\(P\\) along \\((a,b)\\) by twice the step that reaches the foot of the perpendicular. The line is then the perpendicular bisector of \\(P\\) and its image. Reflection keeps lengths and angles, so the image of a triangle's centroid is the centroid of its image, and a circle's image has the reflected centre and the same radius.",
       definition:
