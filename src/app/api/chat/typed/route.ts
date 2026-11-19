@@ -76,7 +76,7 @@ import { parseFollowsUp } from "@/lib/chat/followUp";
 import { notesPageOf, notesRefKey, parseNotesItemRef } from "@/lib/chat/notesItem";
 import { isExplanation } from "@/lib/chat/understood";
 import { fileVSolutionReport } from "@/lib/reports/fileVReport";
-import { loadNotesItemBrief } from "@/lib/chat/notesItemServer";
+import { loadNotesItemBrief, loadNotesPasteBrief } from "@/lib/chat/notesItemServer";
 import { buildMyQuestionDeps } from "@/lib/chat/myQuestionsServer";
 import { notesTappedFrom, tappedFrom, type QuestionToolDeps } from "@/lib/chat/questionToolSet";
 import { parseVLanguage, type VLanguage } from "@/lib/chat/language";
@@ -136,6 +136,8 @@ function buildQuestionToolDeps(
     loadSimilar: async (q) =>
       loadSimilarId(anon, q, userId ? await revealedToday(createSupabaseServerClient(), userId, new Date()) : []),
     searchQuestions: (text, chapterId) => searchVQuestions(anon, text, chapterId),
+    // A question pasted on a notes page is looked for on that page first (2026-11-19).
+    ...(notesPageOf(pagePath) ? { findNotesPaste: (text: string) => loadNotesPasteBrief(pagePath, text) } : {}),
     onSimilar: out.onSimilar,
     onMatch: out.onMatch,
     onExplained: () => {},
@@ -334,6 +336,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // The tapped notes question, read from the page it is asked on. Null when it is not on that page (tapped on
+    // one notes page, typed on another, 2026-11-19): V is then told of no tapped question, and none is stored.
+    const notesBrief = askedNotes ? await loadNotesItemBrief(pagePath, askedNotes) : null;
+
     let reply = TYPED_QUESTION_REPLY;
     let links: string[] = [];
     // Set by V's question tools during the answer, for the chat window: a question to try, a pasted one to confirm.
@@ -364,7 +370,6 @@ export async function POST(request: NextRequest) {
         try {
           const history = modelHistory(session);
           const ownId = userId;
-          const notesBrief = askedNotes ? await loadNotesItemBrief(pagePath, askedNotes) : null;
           const profile = ownId ? await readProfileForV(ownId) : null;
           const context: VContextOptions = {
             page: pagePath,
@@ -446,7 +451,7 @@ export async function POST(request: NextRequest) {
     }
 
     // A notes question has no id: its key on its own page (0181), so V's memory can label the tap.
-    const askedNotesItem = !asked && askedNotes && notesPageOf(pagePath) ? notesRefKey(askedNotes) : null;
+    const askedNotesItem = !asked && askedNotes && notesBrief !== null ? notesRefKey(askedNotes) : null;
     const id = await recordChatInteraction(admin, {
       eventType: "typed_question",
       message,

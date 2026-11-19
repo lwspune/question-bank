@@ -7,6 +7,7 @@ import { describe, it, expect } from "vitest";
 import {
   answerIn,
   askedFromReview,
+  askedOnPage,
   askVMessage,
   chosenIn,
   explainedTap,
@@ -50,6 +51,41 @@ describe("questionForRequest", () => {
   it("sends a notes item as itself, with no id", () => {
     const notes = { concept: "benzylic", item: "practice" as const, index: 1 };
     expect(questionForRequest({ notes, chose: null })).toEqual({ notes });
+  });
+
+  it("never sends the page a notes item was tapped on: the server reads the page it is asked from", () => {
+    const notes = { concept: "benzylic", item: "self" as const };
+    expect(questionForRequest({ notes, chose: null, page: "/notes/a/b/c" })).toEqual({ notes });
+  });
+});
+
+// 2026-11-19: a student tapped Ask V on a grammar notes question, opened the vocabulary page and typed
+// "This question explanation". The window still sent the grammar question; the server looked for it on
+// the vocabulary page, did not find it, and V said "I couldn't pull up the solution from the notes link".
+describe("askedOnPage: the tapped question a typed message is about", () => {
+  const grammar = "/notes/cds-english/grammar/cdsen-pos-nouns-pronouns";
+  const vocab = "/notes/cds-english/vocabulary/cdsen-syn-method";
+  const notes = { notes: { concept: "cdsenpos-job-decides", item: "practice" as const, index: 3 }, chose: null, page: grammar };
+
+  it("keeps a notes question on the page it was tapped on", () => {
+    expect(askedOnPage(notes, grammar)).toBe(notes);
+    expect(askedOnPage(notes, `${grammar}?x=1#top`)).toBe(notes);
+  });
+
+  it("drops a notes question on any other page", () => {
+    expect(askedOnPage(notes, vocab)).toBeNull();
+    expect(askedOnPage(notes, null)).toBeNull();
+    expect(askedOnPage({ ...notes, page: undefined }, grammar)).toBeNull();
+  });
+
+  it("keeps a bank question everywhere: its id works on any page", () => {
+    const bank = { questionId: ID, chose: "B" };
+    expect(askedOnPage(bank, vocab)).toBe(bank);
+    expect(askedOnPage(bank, null)).toBe(bank);
+  });
+
+  it("is null when nothing was tapped", () => {
+    expect(askedOnPage(null, grammar)).toBeNull();
   });
 });
 

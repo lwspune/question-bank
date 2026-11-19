@@ -25,7 +25,27 @@ export type AskVDetail =
       after?: string;
       notes?: undefined;
     }
-  | { notes: NotesItemRef; chose: null; questionId?: undefined };
+  | {
+      notes: NotesItemRef;
+      chose: null;
+      questionId?: undefined;
+      /** The notes page it was tapped on, set by V's window (askedOnPage). */
+      page?: string;
+    };
+
+const pathOnly = (p: string) => p.split(/[?#]/)[0];
+
+/**
+ * The tapped question a typed message is about (2026-11-19). A bank question's id
+ * works on any page. A notes question exists only on the page it was tapped on (the
+ * server reads it from the page it is asked from), so on any other page it is
+ * dropped: a student tapped one on a grammar page, typed "This question explanation"
+ * on a vocabulary page, and V answered "I couldn't pull up the solution".
+ */
+export function askedOnPage(d: AskVDetail | null, page: string | null): AskVDetail | null {
+  if (!d || !d.notes) return d;
+  return d.page && page && pathOnly(d.page) === pathOnly(page) ? d : null;
+}
 
 export function isAskVDetail(d: unknown): d is AskVDetail {
   if (!d || typeof d !== "object") return false;

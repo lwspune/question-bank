@@ -85,6 +85,7 @@ import {
   ASK_V_TEXT_EVENT,
   isAskVTextDetail,
   askedCardOf,
+  askedOnPage,
   explainedTap,
   askVMessage,
   isAskVDetail,
@@ -785,7 +786,8 @@ export default function ChatWidget() {
     openChat();
     // Already explained in this session: reopen that explanation, no new answer (2026-11-07).
     const earlier = explainedTap(turnsRef.current, askedCardOf(d, pathname), message);
-    setAsked(d);
+    // A notes question belongs to its page: a message typed on another page is not about it (askedOnPage).
+    setAsked(d.notes ? { ...d, page: pathname ?? undefined } : d);
     setReplyingTo(null);
     if (earlier >= 0) {
       focusTurnRef.current = earlier;
@@ -822,7 +824,7 @@ export default function ChatWidget() {
     const { id: sessionId, fresh } = currentSessionId();
     // A new session drops the old tapped question and reply; a button send never carries a reply.
     // `about` null = explicitly no question (a concept request); undefined = the tapped one, if any.
-    const question = about === null ? null : (about ?? (fresh ? null : asked));
+    const question = about === null ? null : (about ?? (fresh ? null : askedOnPage(asked, pathname)));
     // Explain on a step replies to its explanation (opts.replyTo); a new session drops it, as the server would.
     const replyTo = fresh ? null : (opts.replyTo ?? (override === undefined ? replyingTo : null));
     // An Ask V tap shows its question above the message (owner, 2026-10-23).
