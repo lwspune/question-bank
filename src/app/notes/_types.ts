@@ -506,6 +506,12 @@ export type VisualizationSlug =
   | "neet-ethane-conformations"
   | "neet-carbocation-stability"
   | "neet-chem-pv-work"
+  | "neet-countercurrent"
+  | "neet-cardiac-conduction"
+  | "neet-menstrual-cycle"
+  | "neet-neuron-structure"
+  | "neet-meiosis-prophase"
+  | "neet-thylakoid-chemiosmosis"
   | "imat-chart-types";
 
 export type TrapCallout = {

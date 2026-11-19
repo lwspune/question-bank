@@ -76,6 +76,12 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import NeetCountercurrent from "./visualizations/NeetCountercurrent";
+import NeetCardiacConduction from "./visualizations/NeetCardiacConduction";
+import NeetMenstrualCycle from "./visualizations/NeetMenstrualCycle";
+import NeetNeuronStructure from "./visualizations/NeetNeuronStructure";
+import NeetMeiosisProphase from "./visualizations/NeetMeiosisProphase";
+import NeetThylakoidChemiosmosis from "./visualizations/NeetThylakoidChemiosmosis";
 import NeetPrismDeviation from "./visualizations/NeetPrismDeviation";
 import NeetEquipotentials from "./visualizations/NeetEquipotentials";
 import NeetCapacitorDielectric from "./visualizations/NeetCapacitorDielectric";
@@ -860,6 +866,18 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "neet-countercurrent":
+      return <NeetCountercurrent />;
+    case "neet-cardiac-conduction":
+      return <NeetCardiacConduction />;
+    case "neet-menstrual-cycle":
+      return <NeetMenstrualCycle />;
+    case "neet-neuron-structure":
+      return <NeetNeuronStructure />;
+    case "neet-meiosis-prophase":
+      return <NeetMeiosisProphase />;
+    case "neet-thylakoid-chemiosmosis":
+      return <NeetThylakoidChemiosmosis />;
     case "neet-prism-deviation":
       return <NeetPrismDeviation />;
     case "neet-equipotentials":

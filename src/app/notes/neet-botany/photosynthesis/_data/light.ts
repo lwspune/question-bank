@@ -188,6 +188,7 @@ export const NEET_BO_PS_LIGHT_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nbops-chemiosmosis",
       name: "Chemiosmosis and ATP synthase",
+      visualizationSlug: "neet-thylakoid-chemiosmosis",
       intuition:
         "The light reaction piles up protons (H⁺) inside the thylakoid, in the lumen. Like water behind a dam, they push to get out. Their only way back to the stroma is a channel in ATP synthase, and the flow through it makes ATP. This is the chemiosmotic way of making ATP.",
       definition:

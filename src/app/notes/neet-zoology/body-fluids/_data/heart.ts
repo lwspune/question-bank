@@ -83,6 +83,7 @@ export const NEET_ZO_BF_HEART_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nzobf-nodal-tissue",
       name: "Nodal tissue and the control of the heartbeat",
+      visualizationSlug: "neet-cardiac-conduction",
       intuition:
         "The heart starts its own beat. A patch of special muscle in the right atrium fires an electrical signal about 72 times a minute, and a chain of special fibres carries it down to the ventricles. That is why the heart is called myogenic. The brain and some hormones can only speed it up or slow it down.",
       definition:

@@ -12,6 +12,7 @@ export const NEET_ZO_NC_NEURON_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nzonc-neuron",
       name: "The neural system and the neuron",
+      visualizationSlug: "neet-neuron-structure",
       intuition:
         "Think of the neural system as a telephone network. The brain and spinal cord are the exchange where messages are handled; the nerves are the wires running out to every organ. Each wire is made of neurons, long thin cells that pass a message in one direction: in through the short dendrites, through the cell body, and out along the long axon.",
       definition:
