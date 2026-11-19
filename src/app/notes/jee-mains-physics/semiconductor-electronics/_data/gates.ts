@@ -143,7 +143,7 @@ export const GATES_SEMI_NOTE: SubtopicNote = {
         "- **Transistor NOT:** a high input at the base turns the transistor on, and the collector output falls to about 0 V.\n" +
         "- A diode AND or OR followed by a transistor NOT gives NAND or NOR.\n" +
         "- **Switches:** in series with a lamp they make AND; in parallel they make OR. Switches that short the lamp when closed invert the result.\n" +
-        "- None of the six bank questions on this concept is newer than 2023.",
+        "- None of the six past-paper questions on this concept is newer than 2023.",
       table: {
         columns: ["Circuit", "Output is high when", "Gate"],
         rows: [
