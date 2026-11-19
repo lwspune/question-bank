@@ -28,39 +28,34 @@ import { parentFirstName, parentPayUrl } from "./parentLink";
 import { studentExamName } from "./parentPayService";
 import { formatPrice } from "./plans";
 import { listActivePlans } from "./plansQuery";
+import { readAllPages } from "@/lib/supabase/readAllPages";
+import { readInChunks } from "@/lib/supabase/readInChunks";
 
-const PAGE = 1000;
-/** `.in()` puts the ids in the URL; a few hundred uuids overflow it. */
-const IN_CHUNK = 200;
+type EventRow = { user_id: string; created_at: string; metadata: Record<string, unknown> | null; ref_id: string | null };
 
 async function loadEvents(admin: SupabaseClient, since: Date): Promise<FollowupEvent[]> {
-  const out: FollowupEvent[] = [];
-  for (let from = 0; ; from += PAGE) {
-    const { data, error } = await admin
+  const rows = await readAllPages<EventRow>((from, to) =>
+    admin
       .from("user_activity")
       .select("user_id, created_at, metadata, ref_id")
       .eq("kind", "paywall_event")
       .in("metadata->>step", ["checkout_opened", "declined"])
       .gte("created_at", since.toISOString())
-      .order("created_at", { ascending: true })
-      .range(from, from + PAGE - 1);
-    if (error) throw new Error(`checkout follow-up events: ${error.message}`);
-    const rows = (data ?? []) as { user_id: string; created_at: string; metadata: Record<string, unknown> | null; ref_id: string | null }[];
-    for (const r of rows) {
-      const m = r.metadata ?? {};
-      out.push({
-        userId: r.user_id,
-        at: new Date(r.created_at),
-        step: typeof m.step === "string" ? m.step : "",
-        gate: typeof m.gate === "string" ? m.gate : "",
-        planId: typeof r.ref_id === "string" ? r.ref_id : null,
-        country: typeof m.country === "string" ? m.country : null,
-        reason: typeof m.reason === "string" ? m.reason : null,
-      });
-    }
-    if (rows.length < PAGE) break;
-  }
-  return out;
+      .order("id")
+      .range(from, to)
+  );
+  return rows.map((r) => {
+    const m = r.metadata ?? {};
+    return {
+      userId: r.user_id,
+      at: new Date(r.created_at),
+      step: typeof m.step === "string" ? m.step : "",
+      gate: typeof m.gate === "string" ? m.gate : "",
+      planId: typeof r.ref_id === "string" ? r.ref_id : null,
+      country: typeof m.country === "string" ? m.country : null,
+      reason: typeof m.reason === "string" ? m.reason : null,
+    };
+  });
 }
 
 async function loadStaff(admin: SupabaseClient): Promise<Set<string>> {
@@ -73,40 +68,53 @@ async function loadStaff(admin: SupabaseClient): Promise<Set<string>> {
   return new Set([...(members.data ?? []), ...(admins.data ?? [])].map((r) => r.user_id as string));
 }
 
+type GrantRow = {
+  id: string;
+  user_id: string;
+  scope: string;
+  source: string;
+  status: string;
+  granted_at: string;
+  expires_at: string | null;
+  provider_ref: string | null;
+  note: string | null;
+  granted_by: string | null;
+};
+
 async function loadGrants(admin: SupabaseClient, userIds: readonly string[]): Promise<Map<string, Entitlement[]>> {
-  const out = new Map<string, Entitlement[]>();
-  for (let i = 0; i < userIds.length; i += IN_CHUNK) {
-    const { data, error } = await admin
+  const rows = await readInChunks<GrantRow>(userIds, (ids, from, to) =>
+    admin
       .from("entitlements")
       .select("id, user_id, scope, source, status, granted_at, expires_at, provider_ref, note, granted_by")
-      .in("user_id", userIds.slice(i, i + IN_CHUNK));
-    if (error) throw new Error(`checkout follow-up entitlements: ${error.message}`);
-    for (const r of data ?? []) {
-      const g: Entitlement = {
-        id: r.id as string,
-        userId: r.user_id as string,
-        scope: r.scope as string,
-        source: r.source as EntitlementSource,
-        status: r.status as EntitlementStatus,
-        grantedAt: r.granted_at as string,
-        expiresAt: (r.expires_at as string | null) ?? null,
-        providerRef: (r.provider_ref as string | null) ?? null,
-        note: (r.note as string | null) ?? null,
-        grantedBy: (r.granted_by as string | null) ?? null,
-      };
-      out.set(g.userId, [...(out.get(g.userId) ?? []), g]);
-    }
+      .in("user_id", ids)
+      .order("id")
+      .range(from, to)
+  );
+  const out = new Map<string, Entitlement[]>();
+  for (const r of rows) {
+    const g: Entitlement = {
+      id: r.id,
+      userId: r.user_id,
+      scope: r.scope,
+      source: r.source as EntitlementSource,
+      status: r.status as EntitlementStatus,
+      grantedAt: r.granted_at,
+      expiresAt: r.expires_at ?? null,
+      providerRef: r.provider_ref ?? null,
+      note: r.note ?? null,
+      grantedBy: r.granted_by ?? null,
+    };
+    out.set(g.userId, [...(out.get(g.userId) ?? []), g]);
   }
   return out;
 }
 
 async function loadMobiles(admin: SupabaseClient, userIds: readonly string[]): Promise<Map<string, string>> {
+  const rows = await readInChunks<{ user_id: string; mobile: string | null }>(userIds, (ids, from, to) =>
+    admin.from("student_profiles").select("user_id, mobile").in("user_id", ids).order("user_id").range(from, to)
+  );
   const out = new Map<string, string>();
-  for (let i = 0; i < userIds.length; i += IN_CHUNK) {
-    const { data, error } = await admin.from("student_profiles").select("user_id, mobile").in("user_id", userIds.slice(i, i + IN_CHUNK));
-    if (error) throw new Error(`checkout follow-up student_profiles: ${error.message}`);
-    for (const r of data ?? []) if (typeof r.mobile === "string" && r.mobile) out.set(r.user_id as string, r.mobile);
-  }
+  for (const r of rows) if (typeof r.mobile === "string" && r.mobile) out.set(r.user_id, r.mobile);
   return out;
 }
 

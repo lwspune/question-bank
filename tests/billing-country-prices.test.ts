@@ -96,6 +96,8 @@ const COUNTRY_AWARE = [
   "src/app/browse/renderBrowse.tsx",
   "src/app/mock/[slug]/page.tsx",
   "src/app/pricing/page.tsx",
+  // The owner's follow-up message quotes the price the student saw: their country's.
+  "src/lib/billing/checkoutFollowupService.ts",
   "src/lib/billing/leftCheckoutService.ts",
   "src/lib/billing/premiumLimits.ts",
   "src/lib/chat/context.ts",
