@@ -109,6 +109,8 @@ solution:
   `flawed: yes` and `note: <why>` after `answer:`. If the printed data is impossible or
   inconsistent but one answer is still clearly intended, give it, add only `note: <why>`, and end
   the solution with one line telling the student what is off.
+- **Arrangement puzzles** (boxes, floors, seating, order): check whether more than one arrangement
+  fits every clue. If two fit and give different options, it is `flawed: yes` (15 Jun S3 Q79).
 - **Chemical formulas** with digits are maths: `\(\text{CO}_2\)`, `\(\text{H}_2\text{SO}_4\)`, never
   a bare "CO2".
 - **Figures:** if a question needs a picture (figure, diagram, map, chart) to be answered, add
