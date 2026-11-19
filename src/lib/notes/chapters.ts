@@ -3076,6 +3076,21 @@ import {
   HB9_LIFE_PROCESSES_NOTES,
   HB9_LIFE_PROCESSES_SLUGS,
 } from "@/app/notes/homi-bhabha-9-biology/life-processes/_data";
+import {
+  HB9_ACIDS_CHAPTER,
+  HB9_ACIDS_NOTES,
+  HB9_ACIDS_SLUGS,
+} from "@/app/notes/homi-bhabha-9-chemistry/acids-bases-salts/_data";
+import {
+  HB9_SUBSTANCES_CHAPTER,
+  HB9_SUBSTANCES_NOTES,
+  HB9_SUBSTANCES_SLUGS,
+} from "@/app/notes/homi-bhabha-9-chemistry/substances-common-use/_data";
+import {
+  HB9_ATOMIC_CHAPTER,
+  HB9_ATOMIC_NOTES,
+  HB9_ATOMIC_SLUGS,
+} from "@/app/notes/homi-bhabha-9-chemistry/atomic-structure/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -9889,6 +9904,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HB9_LIFE_PROCESSES_CHAPTER,
     notes: HB9_LIFE_PROCESSES_NOTES,
     slugs: HB9_LIFE_PROCESSES_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Chemistry",
+    subjectRoute: "homi-bhabha-9-chemistry",
+    subjectDisplay: "Homi Bhabha Chemistry",
+    chapterSlug: "acids-bases-salts",
+    chipLabel: "Acids, Bases and Salts notes",
+    chapter: HB9_ACIDS_CHAPTER,
+    notes: HB9_ACIDS_NOTES,
+    slugs: HB9_ACIDS_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Chemistry",
+    subjectRoute: "homi-bhabha-9-chemistry",
+    subjectDisplay: "Homi Bhabha Chemistry",
+    chapterSlug: "substances-common-use",
+    chipLabel: "Substances in Common Use notes",
+    chapter: HB9_SUBSTANCES_CHAPTER,
+    notes: HB9_SUBSTANCES_NOTES,
+    slugs: HB9_SUBSTANCES_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Chemistry",
+    subjectRoute: "homi-bhabha-9-chemistry",
+    subjectDisplay: "Homi Bhabha Chemistry",
+    chapterSlug: "atomic-structure",
+    chipLabel: "Atomic Structure notes",
+    chapter: HB9_ATOMIC_CHAPTER,
+    notes: HB9_ATOMIC_NOTES,
+    slugs: HB9_ATOMIC_SLUGS,
   },
 ];
 
