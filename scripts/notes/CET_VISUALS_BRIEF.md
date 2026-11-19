@@ -136,6 +136,9 @@ Copy the patterns of the finished examples:
 3. Do NOT run vitest or `tsc` on the whole project (other sessions hold the
    test lock, and the main session runs both). Write the test carefully instead:
    import paths, exported names, and expected values worked out by hand.
+   The project typecheck covers tests: do not compare a value TypeScript has
+   narrowed to a literal (an `as const` entry, a loop over constants) with one
+   it cannot equal ("TS2367: no overlap"); widen it (`x as number`) first.
 
 ## Report (short)
 
