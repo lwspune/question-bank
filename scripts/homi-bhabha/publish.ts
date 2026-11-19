@@ -38,13 +38,14 @@ async function main() {
     const expected = p.format === "written" ? buildPaperRows(p).parsed.length : expectedCount(p);
     const { data: rows, error } = await client
       .from("questions")
-      .select("id, question_number, solution, visibility")
+      .select("id, question_number, solution, cancelled_note, visibility")
       .eq("exam_id", examIdOf(p))
       .eq("source_file", p.sourceFile);
     if (error) throw new Error(`${p.id}: ${error.message}`);
     const n = rows?.length ?? 0;
     const priv = (rows ?? []).filter((r) => r.visibility !== "PUBLIC").length;
-    const noSol = (rows ?? []).filter((r) => !r.solution?.trim()).map((r) => r.question_number);
+    // A withdrawn row (MSTA dropped it) has no solution: its cancelled_note is what a student reads.
+    const noSol = (rows ?? []).filter((r) => !r.solution?.trim() && !r.cancelled_note?.trim()).map((r) => r.question_number);
     total += n;
     notPublic += priv;
     console.log(`${p.id.padEnd(26)} ${EXAMS[p.exam].name.padEnd(16)} ${String(n).padStart(4)} rows (expected ${expected}), ${priv} not PUBLIC`);

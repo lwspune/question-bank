@@ -67,7 +67,7 @@ describe("which pass covers an exam", () => {
     }
   });
 
-  it("the seven Class 9-10 exams, ENEM and the military-school entrances are free, and no other (owner, 2026-11-02, 2026-11-15 and 2026-11-17; mirrors migrations 0210 and 0270)", () => {
+  it("the seven Class 9-10 exams, ENEM, the military-school entrances and Homi Bhabha are free, and no other (owner, 2026-11-02, 2026-11-15, 2026-11-17 and 2026-11-19; mirrors migrations 0210 and 0270 and the Homi Bhabha exam rows)", () => {
     const free = EXAM_REGISTRY.filter((e) => passScopeForExam(e.slug) === SCOPE_FREE).map((e) => e.examName);
     expect(free.sort()).toEqual(
       [
@@ -84,6 +84,8 @@ describe("which pass covers an exam", () => {
         "RMS CET Class 6",
         "RMS CET Class 9",
         "RIMC",
+        "Homi Bhabha Class 6",
+        "Homi Bhabha Class 9",
       ].sort()
     );
   });
