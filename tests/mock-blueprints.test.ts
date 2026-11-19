@@ -285,11 +285,11 @@ describe("SSC CGL Tier I", () => {
     ]);
   });
 
-  it("files every SSC CGL bank subject in exactly one section, General Awareness taking the eight", () => {
+  it("files every SSC CGL bank subject in exactly one section, General Awareness taking the eight plus Static GK", () => {
     const subjects = SSC_CGL_T1_PAPER.sections.flatMap((s) => s.subjects);
     expect(new Set(subjects).size).toBe(subjects.length);
     expect(SSC_CGL_T1_PAPER.sections[1].subjects).toEqual([
-      "History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Current Affairs",
+      "History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Current Affairs", "Static GK",
     ]);
   });
 
