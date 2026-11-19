@@ -11,6 +11,7 @@ import {
   assignSetLabels,
   findLatexImbalance,
   englishPagesFor,
+  stripRunnerUp,
   type Band,
   type TQ,
   type Derivation,
@@ -291,6 +292,19 @@ describe("validateRows", () => {
     expect(validateRows(rows([q()], [d()]), 1, 3).join(" ")).toMatch(/missing Q2.*missing Q3/);
   });
 
+  it("refuses a solution that still carries a runner-up aside (solver voice)", () => {
+    const voiced = rows([q()], [d({ reasoning: "Article 124 decides it. Runner-up: B, if read loosely." })]);
+    expect(validateRows(voiced, 1, 1).join(" ")).toMatch(/Q1 solution: runner-up aside/);
+  });
+
+  it("allows the aside where UPSC's key overruled the derivation (it argues for the key)", () => {
+    const corrected = rows(
+      [q()],
+      [d({ reasoning: "D fits. Runner-up: A, the keyed answer. [Answer corrected to A from the official UPSC answer key.]" })]
+    );
+    expect(validateRows(corrected, 1, 1)).toEqual([]);
+  });
+
   it("reports duplicate option text", () => {
     const dup = q({
       options: [
@@ -449,5 +463,69 @@ describe("buildWithdrawnRecords", () => {
 
   it("refuses a withdrawn number the transcription does not hold", () => {
     expect(() => buildWithdrawnRecords([q(1)], [9], "x")).toThrow(/9/);
+  });
+});
+
+describe("stripRunnerUp", () => {
+  it("drops a 'Runner-up:' sentence and keeps the bracket after it", () => {
+    const t = "Statement 2 is not correct. Runner-up: C, if the 2005 figure is judged inaccurate. [Answer worked out by PYQ Vault. Checked by hand.]";
+    expect(stripRunnerUp(t).text).toBe("Statement 2 is not correct. [Answer worked out by PYQ Vault. Checked by hand.]");
+  });
+
+  it("drops the aside to the end of its paragraph (the sentences after it argue for the runner-up)", () => {
+    const t = "So A. RUNNER-UP: D. The Commission did also recommend gold; D would win if read so.";
+    expect(stripRunnerUp(t).text).toBe("So A.");
+  });
+
+  it("keeps the next paragraph after an aside", () => {
+    const t = "So A. The runner-up is C. It would win if read loosely.\n\nFinal: A.";
+    expect(stripRunnerUp(t).text).toBe("So A.\n\nFinal: A.");
+  });
+
+  it("does not split at spaced initials", () => {
+    const t = "So B. Runner-up is A (K. P. Krishnan), who headed other committees. [Checked.]";
+    expect(stripRunnerUp(t).text).toBe("So B. [Checked.]");
+  });
+
+  it("REPORTS a mention woven into working instead of removing it", () => {
+    const t = "A is right. Option C is the runner-up and is defensible, but it misses half the passage.";
+    const r = stripRunnerUp(t);
+    expect(r.text).toBe(t);
+    expect(r.removed).toEqual([]);
+    expect(r.inline).toEqual(["Option C is the runner-up and is defensible, but it misses half the passage."]);
+  });
+
+  it("stops a 'Runner-up' aside at the first sentence that is not about the runner-up", () => {
+    const t = "So A. Runner-up: B. It would win if the setter read it loosely. Statement 3 is fine. [x]";
+    expect(stripRunnerUp(t).text).toBe("So A. Statement 3 is fine. [x]");
+  });
+
+  it("never splits inside a math zone", () => {
+    const t = String.raw`Here \(x = 2.5. y\) holds. The runner-up is D, \(3.5. z\). [Done.]`;
+    expect(stripRunnerUp(t).text).toBe(String.raw`Here \(x = 2.5. y\) holds. [Done.]`);
+  });
+
+  it("drops a whole runner-up paragraph without leaving a doubled break", () => {
+    const t = "Para one.\n\nThe runner-up is B. B would win if read so.\n\nPara three.";
+    expect(stripRunnerUp(t).text).toBe("Para one.\n\nPara three.");
+  });
+
+  it("drops a final runner-up paragraph and its leading break", () => {
+    expect(stripRunnerUp("Para one.\n\nRunner-up: B.").text).toBe("Para one.");
+  });
+
+  it("does not split inside a run of initials", () => {
+    const t = "Chatterjee was elected. Runner-up is P.A. Sangma, elected in 1996. [Checked by hand.]";
+    expect(stripRunnerUp(t).text).toBe("Chatterjee was elected. [Checked by hand.]");
+  });
+
+  it("does not split at an abbreviation", () => {
+    const t = "So A. The runner-up is B, e.g. if read loosely. [Done.]";
+    expect(stripRunnerUp(t).text).toBe("So A. [Done.]");
+  });
+
+  it("leaves text without a runner-up untouched", () => {
+    const t = "Nothing to see. Really.";
+    expect(stripRunnerUp(t)).toEqual({ text: t, removed: [], inline: [] });
   });
 });
