@@ -102,8 +102,12 @@ kept OUTSIDE the repo until both blind passes are written; `lib.ts`
   A is right (carrier x normal gives 50% carriers, 50% normal), so the key
   is A.
 - `hb-9-2021-nov`, `hb-9-2021-dec`: key read from the English and Marathi
-  copies' blue "Correct Option(s)" lines (Dec English is a grey scan, so its
-  OCR letters were the cross-check: 85 of 85 in order).
+  copies' blue "Correct Option(s)" lines. **A strip count can lie:** on Dec
+  the Marathi strips held one spurious line and missed Q100's, so the total
+  looked right and Q91-100 were shifted one place (both blind passes missed
+  the same 7 at HIGH confidence, which is what exposed it). Q91-100 were then
+  read from the English pages directly. Rule: when both passes miss a RUN of
+  consecutive items, suspect the key read before the questions.
 
 ## Status
 
