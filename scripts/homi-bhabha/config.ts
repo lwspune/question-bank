@@ -93,6 +93,12 @@ export type Paper = {
   held?: { numbers: number[]; why: string };
   /** Never set here (every paper is MCQ); kept for the copied scripts' type. */
   format?: "written";
+  /**
+   * Set when MSTA's own print is not available and the text comes from someone
+   * else's re-typing (owner exception, 2026-11-19: only for a paper whose
+   * OFFICIAL key we hold). Named on every row's solution (rows.ts).
+   */
+  retyped?: string;
 };
 
 const range = (from: number, to: number): number[] => {
@@ -113,6 +119,7 @@ type Def = {
   date: string;
   key?: Paper["key"];
   held?: Paper["held"];
+  retyped?: string;
 };
 
 // Page ranges from each booklet's contact sheet (cover = page 1). The 2017-18
@@ -145,6 +152,16 @@ const DEFS: Def[] = [
   {
     id: "hb-9-2021-dec", exam: "homi-bhabha-9", pdf: "ix-2021-dec-en.pdf", pages: range(1, 25), marathi: { pdf: "ix-2021-dec-mr.pdf", pages: [] },
     year: 2021, date: "19 December 2021, online", key: { marked: true, label: "MSTA's revised answer key (printed in the paper)", final: true },
+  },
+  {
+    // 2023-24: MSTA's booklet is not online anywhere. The only copy is Neev
+    // IIT-Medical's re-typing (neevexaminfo.com, Nov 2024; their branding on
+    // every page, two columns). Ingested by owner exception with MSTA's FINAL
+    // key (7 Nov 2023): both blind passes are scored against it, so a mis-typed
+    // option surfaces as a disagreement. No Marathi copy.
+    id: "hb-9-2023", exam: "homi-bhabha-9", pdf: "ix-2023-en-retype-neev.pdf", pages: range(1, 10),
+    year: 2023, date: "2023-24 competition", key: { file: "keys/ix-2023-key.pdf", label: "MSTA's final answer key (7 November 2023)", final: true },
+    retyped: "a coaching institute's re-typed copy of the 2023 paper",
   },
   {
     id: "hb-9-2024", exam: "homi-bhabha-9", pdf: "ix-2024-en.pdf", pages: range(2, 15), marathi: { pdf: "ix-2024-mr.pdf", pages: [] },
@@ -188,6 +205,7 @@ export const PAPERS: Record<string, Paper> = Object.fromEntries(
       pattern: HB,
       key: d.key,
       held: d.held,
+      retyped: d.retyped,
     },
   ]),
 );

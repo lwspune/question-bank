@@ -53,6 +53,14 @@ export function buildPaperRows(paper: Paper): PaperRows {
   if (keyed) {
     // The key supplied the letter, so the shared "no official key" bracket is false.
     for (const r of built) r.solution = working.get(Number(r.questionNumber)) ?? r.solution;
+    // A paper whose only surviving copy is someone else's re-typing (owner
+    // exception, 2026-11-19) says so on every row: the wording may differ from
+    // MSTA's print, while the answer is MSTA's own key.
+    if (paper.retyped) {
+      for (const r of built) {
+        r.solution = `${r.solution} [Question text from ${paper.retyped}, as MSTA's own booklet is not available; the answer is MSTA's official key.]`;
+      }
+    }
   } else {
     // No key: say so plainly, and say which rows a person checked.
     const checked = new Set<number>(answersRaw.checked ?? []);
