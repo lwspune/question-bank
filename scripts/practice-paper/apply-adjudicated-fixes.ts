@@ -51,7 +51,12 @@ type Edit = { find: string; replace: string };
 
 type Fix = {
   questionId: string;
-  recordsFile: string;
+  /**
+   * The records JSON to mirror into, or null for a row with no source of record
+   * in this repo (a past-paper row ingested from an untracked .xlsx: the bank is
+   * the only copy, so there is nothing a re-commit could revert).
+   */
+  recordsFile: string | null;
   /** `n` in the records file — used only to locate the record, never to write. */
   n: number;
   label: string;
@@ -272,6 +277,73 @@ const FIXES: Fix[] = [
       "correct answer - and then writes 'The answer key indicates PRSQ' and keys B, which is the " +
       "clearest statement of this defect class anywhere in the chapter.",
   },
+  // The rest of that block (2026-11-19, SUGGESTIONS.md ledger row "KEYED 'A' NINE TIMES").
+  // Each was read off the printed booklet (NDA 2022 (I) GAT, SDFR-F-TAG/44A) on
+  // 2026-09-07: parts and options are faithful, the paper prints no key, and the
+  // stored A came from the prep-house .xlsx Answer column. No note is added to the
+  // solution (owner, 2026-11-19: provenance stays internal); the evidence is
+  // recorded in question_reviews by scripts/reviews/record-key-fixes-nda-2022-i-gat.ts.
+  {
+    questionId: "56ee0236-206c-4aae-b991-a95392fd8a98",
+    recordsFile: "lws-pqrs-test-1.records.json",
+    n: 30,
+    label: "NDA 2022 (I) GAT Q23 - 'the greatest moment in Indian Olympic history'",
+    answer: { from: "A", to: "C" },
+    solution: [{ find: " Standard key is SPQR. Matches option A: SPQR.", replace: " Matches option C: QSPR." }],
+    why: "SPQR opens 'the greatest moment ... was the victory' and strands 'in the arena of sport, perhaps' after 'against Australia'; QSPR is the only grammatical order.",
+  },
+  {
+    questionId: "2100ffe1-ab0d-49d0-9ec2-db916c6f6152",
+    recordsFile: null,
+    n: 0,
+    label: "NDA 2022 (I) GAT Q24 - 'economic progress is determined'",
+    answer: { from: "A", to: "C" },
+    solution: [{ find: " Standard key is SQRP. Matches option A: SQRP.", replace: " Matches option C: SPRQ." }],
+    why: "SQRP puts 'for gauging the success of a nation' before what it gauges and leaves 'in terms of GDP and GNP' at the end with nothing to qualify; SPRQ reads as one sentence.",
+  },
+  {
+    questionId: "97602b27-cade-4b92-804f-72f669f7f7d5",
+    recordsFile: null,
+    n: 0,
+    label: "NDA 2022 (I) GAT Q25 - 'they can twist and shake their wobbly heads'",
+    answer: { from: "A", to: "B" },
+    solution: [
+      {
+        find:
+          "The logical sentence: 'With the aplomb of a stage artist (P) they can twist and shake their wobbly heads (R) mesmerizing the gullible into believing (S) that they are not men of straw (Q)' gives PRSQ. Standard key is PRQS. Matches option A: PRQS.",
+        replace:
+          "R carries the main clause, 'they can twist and shake their wobbly heads', and P says how: 'with the aplomb of a stage artist'. S, 'mesmerizing the gullible into believing', needs a clause to complete it, and Q supplies it: 'that they are not men of straw'. Reading R-P-S-Q gives 'They can twist and shake their wobbly heads with the aplomb of a stage artist, mesmerizing the gullible into believing that they are not men of straw.' Matches option B: RPSQ.",
+      },
+    ],
+    why: "PRQS puts 'that they are not men of straw' before 'believing', leaving 'mesmerizing the gullible into believing' with no object; RPSQ is the order the booklet's options allow.",
+  },
+  {
+    questionId: "6c8d9296-efbb-438b-b2e9-662043f32e36",
+    recordsFile: null,
+    n: 0,
+    label: "NDA 2022 (I) GAT Q26 - 'on the one hand there is the immense beauty'",
+    answer: { from: "A", to: "D" },
+    solution: [{ find: " Standard key is PRQS. Matches option A: PRQS.", replace: " Matches option D: RPQS." }],
+    why: "PRQS opens on 'of its rain-soaked verdure', a phrase with nothing to attach to; RPQS pairs 'on the one hand' with 'and on the other'.",
+  },
+  {
+    questionId: "91d742bb-5b32-49ad-99dc-71c150bf34d8",
+    recordsFile: null,
+    n: 0,
+    label: "NDA 2022 (I) GAT Q29 - 'whenever in doubt'",
+    answer: { from: "A", to: "C" },
+    solution: [{ find: " Standard key is RQPS. Matches option A: RQPS.", replace: " Matches option C: RSQP." }],
+    why: "RQPS puts 'that causes the least discomfort' before 'the option' it describes; RSQP reads 'Whenever in doubt always opt for the option that causes the least discomfort to the greatest number of people'.",
+  },
+  {
+    questionId: "f6a63ef9-f2e7-4768-8a3a-5a3736cc8133",
+    recordsFile: null,
+    n: 0,
+    label: "NDA 2022 (I) GAT Q30 - 'faith and belief are'",
+    answer: { from: "A", to: "B" },
+    solution: [{ find: " Standard key is RQPS. Matches option A: RQPS.", replace: " Matches option B: SRQP." }],
+    why: "RQPS strands 'faith and belief are' at the end of the sentence; SRQP reads 'Faith and belief are our greatest defence against the despondency brought by bad times'.",
+  },
 ];
 
 /**
@@ -440,6 +512,69 @@ async function main() {
     }
 
     // ---- records mirror, computed independently of whether the DB changed ----
+    const mirror = fix.recordsFile ? planMirror(fix as Fix & { recordsFile: string }, newText, newSoln, newAnswer) : null;
+    if (!mirror) console.log("  file: none (no source of record in the repo; the bank is the only copy)");
+
+    if (!apply) continue;
+
+    if (textChanged || solnChanged || answerChanged) {
+      const { error: ue } = await db
+        .from("questions")
+        .update({ text: newText, solution: newSoln, content_hash: newHash })
+        .eq("id", fix.questionId);
+      if (ue) throw new Error(`${fix.questionId}: ${ue.message}`);
+    }
+    if (answerChanged) {
+      // Clear the old key BEFORE setting the new one, so the row is never
+      // momentarily left with two correct options (the shape verify-commit and
+      // audit:keys both treat as a defect).
+      const { error: c1 } = await db
+        .from("options")
+        .update({ is_correct: false })
+        .eq("question_id", fix.questionId)
+        .eq("label", answer);
+      if (c1) throw new Error(`${fix.questionId}: ${c1.message}`);
+      const { error: c2 } = await db
+        .from("options")
+        .update({ is_correct: true })
+        .eq("question_id", fix.questionId)
+        .eq("label", newAnswer);
+      if (c2) throw new Error(`${fix.questionId}: ${c2.message}`);
+    }
+    if (mirror && mirror.patched !== mirror.raw) writeFileSync(mirror.path, mirror.patched, "utf8");
+
+    // Verify from the database, and confirm paper membership survived.
+    const { data: after, error: ae } = await db
+      .from("questions")
+      .select("text, solution, content_hash, options(label, is_correct)")
+      .eq("id", fix.questionId)
+      .single();
+    if (ae) throw new Error(ae.message);
+    const liveOpts = after.options as { label: string; is_correct: boolean }[];
+    const liveKeys = liveOpts.filter((o) => o.is_correct).map((o) => o.label);
+    const keyOk = liveKeys.length === 1 && liveKeys[0] === newAnswer;
+    const ok =
+      after.text === newText && after.solution === newSoln && after.content_hash === newHash && keyOk;
+    if (!keyOk) console.error(`  KEY MISMATCH: live key is [${liveKeys.join(",")}], expected ${newAnswer}`);
+    const { count } = await db
+      .from("paper_questions")
+      .select("*", { count: "exact", head: true })
+      .eq("question_id", fix.questionId);
+    const fileOk = mirror
+      ? String((JSON.parse(readFileSync(mirror.path, "utf8")) as Record<string, unknown>[]).find((r) => r.n === fix.n)!.stem) === newText
+      : true;
+    console.log(
+      `  verified: db matches target = ${ok}; key = ${liveKeys.join(",")}; file matches target = ${fileOk}; ` +
+        `still in ${count ?? 0} paper(s)`,
+    );
+    if (!ok || !fileOk) process.exit(1);
+  }
+
+  if (!apply) console.log(`\n[dry run] pass --apply to write.`);
+}
+
+/** Patch the records file in memory and prove it holds exactly the DB target. */
+function planMirror(fix: Fix & { recordsFile: string }, newText: string, newSoln: string, newAnswer: string) {
     const path = join(process.cwd(), "scripts", "practice-paper", "data", fix.recordsFile);
     const raw = readFileSync(path, "utf8");
     const parsed = JSON.parse(raw) as Record<string, unknown>[];
@@ -476,60 +611,7 @@ async function main() {
         `${changedLines} line(s) differ, stem+solution match the DB target`,
     );
 
-    if (!apply) continue;
-
-    if (textChanged || solnChanged || answerChanged) {
-      const { error: ue } = await db
-        .from("questions")
-        .update({ text: newText, solution: newSoln, content_hash: newHash })
-        .eq("id", fix.questionId);
-      if (ue) throw new Error(`${fix.questionId}: ${ue.message}`);
-    }
-    if (answerChanged) {
-      // Clear the old key BEFORE setting the new one, so the row is never
-      // momentarily left with two correct options (the shape verify-commit and
-      // audit:keys both treat as a defect).
-      const { error: c1 } = await db
-        .from("options")
-        .update({ is_correct: false })
-        .eq("question_id", fix.questionId)
-        .eq("label", answer);
-      if (c1) throw new Error(`${fix.questionId}: ${c1.message}`);
-      const { error: c2 } = await db
-        .from("options")
-        .update({ is_correct: true })
-        .eq("question_id", fix.questionId)
-        .eq("label", newAnswer);
-      if (c2) throw new Error(`${fix.questionId}: ${c2.message}`);
-    }
-    if (patched !== raw) writeFileSync(path, patched, "utf8");
-
-    // Verify from the database, and confirm paper membership survived.
-    const { data: after, error: ae } = await db
-      .from("questions")
-      .select("text, solution, content_hash, options(label, is_correct)")
-      .eq("id", fix.questionId)
-      .single();
-    if (ae) throw new Error(ae.message);
-    const liveOpts = after.options as { label: string; is_correct: boolean }[];
-    const liveKeys = liveOpts.filter((o) => o.is_correct).map((o) => o.label);
-    const keyOk = liveKeys.length === 1 && liveKeys[0] === newAnswer;
-    const ok =
-      after.text === newText && after.solution === newSoln && after.content_hash === newHash && keyOk;
-    if (!keyOk) console.error(`  KEY MISMATCH: live key is [${liveKeys.join(",")}], expected ${newAnswer}`);
-    const { count } = await db
-      .from("paper_questions")
-      .select("*", { count: "exact", head: true })
-      .eq("question_id", fix.questionId);
-    const fileOk = String((JSON.parse(readFileSync(path, "utf8")) as Record<string, unknown>[]).find((r) => r.n === fix.n)!.stem) === newText;
-    console.log(
-      `  verified: db matches target = ${ok}; key = ${liveKeys.join(",")}; file matches target = ${fileOk}; ` +
-        `still in ${count ?? 0} paper(s)`,
-    );
-    if (!ok || !fileOk) process.exit(1);
-  }
-
-  if (!apply) console.log(`\n[dry run] pass --apply to write.`);
+    return { path, raw, patched };
 }
 
 main().catch((e) => {

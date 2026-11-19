@@ -136,6 +136,14 @@ function buildRows(paper: Paper): ParsedRowPayload[] {
         text: o.text,
         isCorrect: o.isCorrect,
       })),
+      // The notice a cancelled question carries (migration 0119); without it the
+      // row is keyless with no word to the student why (IPMAT Indore 2024 Q7
+      // shipped that way and was given its notice on 2026-11-19).
+      ...(r.dropped
+        ? {
+            cancelledNote: `Dropped from ${IPMAT_EXAMS.find((e) => e.slug === r.exam)?.examName ?? r.exam} ${r.year} scoring: no option is correct. In PYQ Vault mocks it is awarded to every candidate.`,
+          }
+        : {}),
     };
   });
 }

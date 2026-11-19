@@ -593,6 +593,100 @@ export function assignSetLabels(questions: TQ[]): TQ[] {
   });
 }
 
+const MATH_ZONE = /\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]|\$\$[\s\S]*?\$\$/g;
+// A period that does not end a sentence: common abbreviations, and the second of
+// two or more initials ("P.A. Sangma", "K. P. Krishnan").
+const ABBREV = /(?:\be\.g|\bi\.e|\betc|\bvs|\bArt|\bNo|\bDr|\bMr|\bMrs|\bSt|\bcf|\bviz|\b[A-Z]\.\s?[A-Z])\.$/;
+
+// A sentence that keeps arguing for the runner-up just named.
+const CONTINUATION =
+  /would win|wins if|would be (?:the )?(?:answer|right|correct|chosen)|to win\b|would pick|on that reading|if the (?:setter|examiner|marker|reviewer)|^note that/i;
+
+/**
+ * Drop the solver's "runner-up" asides from a stored solution (2026-11-19). The
+ * derivation brief asked solvers to name the runner-up inside `reasoning`, which
+ * is shown to students as the solution, so CAPF and CSE shipped lines like
+ * "Runner-up: C, if the setter read it loosely." The aside runs from the
+ * sentence naming a runner-up to the end of its paragraph (what follows argues
+ * for the runner-up), stopping before a closing "[...]" bracket. Math zones are
+ * never split, other paragraphs are kept, and the rest is verbatim.
+ */
+export function stripRunnerUp(text: string): { text: string; removed: string[]; inline: string[] } {
+  if (!/runner-up/i.test(text)) return { text, removed: [], inline: [] };
+  const masked = text.replace(MATH_ZONE, (m) => "x".repeat(m.length));
+
+  // Sentence spans [start, end) over the masked text.
+  const spans: [number, number][] = [];
+  let start = masked.search(/\S/);
+  const boundary = /[.!?]['")\]]?(?=\s)/g;
+  let m: RegExpExecArray | null;
+  while ((m = boundary.exec(masked))) {
+    const end = m.index + m[0].length;
+    if (ABBREV.test(masked.slice(start, m.index + 1))) continue;
+    // A first initial ("K." before "P. Krishnan").
+    if (/\b[A-Z]\.$/.test(masked.slice(start, end)) && /^\s[A-Z]\.\s/.test(masked.slice(end))) continue;
+    spans.push([start, end]);
+    const next = masked.slice(end).search(/\S/);
+    if (next < 0) { start = -1; break; }
+    start = end + next;
+    boundary.lastIndex = start;
+  }
+  if (start >= 0 && start < masked.length) spans.push([start, masked.trimEnd().length]);
+
+  // Blocks [first span, last span]. An upper-case "RUNNER-UP" label is a closing
+  // aside: it runs to the end of its paragraph. A sentence that opens with
+  // "Runner-up" / "The runner-up" takes the sentences after it that argue for the
+  // runner-up. Any other mention is woven into working: reported, never removed.
+  // A block never swallows a following paragraph or a "[...]" bracket.
+  const sameParaNext = (j: number) =>
+    j + 1 < spans.length &&
+    !masked.slice(spans[j][1], spans[j + 1][0]).includes("\n") &&
+    !masked.slice(spans[j + 1][0]).startsWith("[");
+  const blocks: [number, number][] = [];
+  const inline: string[] = [];
+  for (let i = 0; i < spans.length; i++) {
+    const sentence = masked.slice(spans[i][0], spans[i][1]);
+    if (!/runner-up/i.test(sentence)) continue;
+    let j = i;
+    if (/^RUNNER-UP\b/.test(sentence)) {
+      while (sameParaNext(j)) j++;
+    } else if (/^(?:the\s+|a\s+narrower\s+)?runner-up\b/i.test(sentence)) {
+      while (sameParaNext(j) && CONTINUATION.test(masked.slice(spans[j + 1][0], spans[j + 1][1]))) j++;
+    } else {
+      inline.push(text.slice(spans[i][0], spans[i][1]));
+      continue;
+    }
+    blocks.push([i, j]);
+    i = j;
+  }
+
+  const removed: string[] = [];
+  let out = "";
+  let cursor = 0;
+  blocks.forEach(([i, j]) => {
+    const s = spans[i][0];
+    const e = spans[j][1];
+    removed.push(text.slice(s, e));
+    const after = text.slice(e).match(/^\s*/)![0];
+    const lead = text.slice(cursor, s).match(/\s*$/)![0];
+    const startsPara = s === 0 || lead.includes("\n");
+    const endsText = e + after.length >= text.length;
+    if (endsText || (!startsPara && after.includes("\n"))) {
+      // Last thing in the text, or the tail of a paragraph: take the whitespace
+      // before it and keep what follows.
+      out += text.slice(cursor, s - lead.length);
+      cursor = e;
+    } else {
+      // A whole paragraph, or mid-paragraph before a "[...]" bracket: take the
+      // whitespace after it.
+      out += text.slice(cursor, s);
+      cursor = e + after.length;
+    }
+  });
+  out += text.slice(cursor);
+  return { text: out, removed, inline };
+}
+
 /**
  * The provenance bracket every derived answer carries. This corpus has no printed
  * key and no external anchor, and the answer-key export prints `solution`
@@ -611,7 +705,7 @@ const provenance = (confidence: string, agreed: boolean) =>
 export function buildRecords(
   questions: TQ[],
   derivations: Derivation[],
-  opts: { reconciled?: Set<number> } = {}
+  opts: { reconciled?: Set<number>; keyed?: boolean } = {}
 ): RawRow[] {
   const byNumber = new Map(derivations.map((d) => [d.number, d]));
   const rows: RawRow[] = [];
@@ -636,7 +730,11 @@ export function buildRecords(
       optionD: opt("D"),
       answer: d.answer.toUpperCase(),
       difficulty: q.difficulty,
-      solution: `${d.reasoning.trim()} ${provenance(d.confidence.toUpperCase(), agreed)}`.trim(),
+      // On a keyed paper UPSC's key supplied the letter, so the "no official key"
+      // bracket would be false (1,789 CSE rows shipped with it; fixed 2026-11-19).
+      solution: opts.keyed
+        ? d.reasoning.trim()
+        : `${d.reasoning.trim()} ${provenance(d.confidence.toUpperCase(), agreed)}`.trim(),
     });
   }
   return rows;
@@ -780,6 +878,12 @@ export function validateRows(
       if (!val) continue;
       const bad = findLatexImbalance(val);
       if (bad) errs.push(`Q${r.questionNumber} ${name}: ${bad}`);
+      // The solver's "runner-up" aside is a note to the reviewer, not working
+      // (2026-11-19: 336 CSE/CAPF rows shipped with it). Where UPSC's key
+      // overruled the derivation the aside is the argument FOR the key, so it stays.
+      if (name === "solution" && !/corrected to \(?[A-D]/.test(val) && stripRunnerUp(val).removed.length) {
+        errs.push(`Q${r.questionNumber} solution: runner-up aside (solver voice); keep it out of reasoning`);
+      }
       const table = findTableWithoutSeparator(val);
       if (table) errs.push(`Q${r.questionNumber} ${name}: ${table}`);
     }
