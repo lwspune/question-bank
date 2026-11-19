@@ -129,6 +129,18 @@ describe("EXAM_REGISTRY", () => {
     expect(chsl?.practiceOnly).not.toBe(true);
   });
 
+  it("groups Homi Bhabha Class 6 and 9 as one family split by class: school-tier science exams, bilingual (Marathi), hidden until published", () => {
+    for (const [slug, label] of [["homi-bhabha-6", "Class 6"], ["homi-bhabha-9", "Class 9"]] as const) {
+      const e = getExamBySlug(slug);
+      expect(e?.examName).toBe(`Homi Bhabha ${label}`);
+      expect([e?.family, e?.familyStage, e?.familyLabel, e?.familyAxis]).toEqual(["Homi Bhabha", "Homi Bhabha", label, "Class"]);
+      expect(e?.tier).toBe("school");
+      expect(e?.goal).toBe("science");
+      expect(e?.bilingual).toBe(true);
+      expect(e?.noPublicContent).toBe(true);
+    }
+  });
+
   it("groups AISSEE, RMS CET and RIMC as one family, split by class, all free school-tier defence exams (owner, 2026-11-17)", () => {
     const rows: [string, string, string, string][] = [
       ["aissee-6", "AISSEE Class 6", "AISSEE", "Class 6"],
@@ -468,7 +480,7 @@ import { EXAM_TIERS, TIER_LABELS, type ExamTier } from "@/lib/exam/examContext";
 
 describe("exam tiers", () => {
   const EXPECTED: Record<ExamTier, string[]> = {
-    school: ["foundation-course", "mh-sb-9", "mh-ssc-10", "cbse-10", "icse-10", "up-board-10", "spi", "aissee-6", "aissee-9", "rms-cet-6", "rms-cet-9", "rimc"],
+    school: ["foundation-course", "mh-sb-9", "mh-ssc-10", "cbse-10", "icse-10", "up-board-10", "spi", "aissee-6", "aissee-9", "rms-cet-6", "rms-cet-9", "rimc", "homi-bhabha-6", "homi-bhabha-9"],
     senior: [
       "nda",
       "mht-cet",

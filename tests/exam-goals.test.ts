@@ -39,6 +39,8 @@ describe("every exam declares a goal", () => {
     ["rms-cet-6", "defence"],
     ["rms-cet-9", "defence"],
     ["rimc", "defence"],
+    ["homi-bhabha-6", "science"],
+    ["homi-bhabha-9", "science"],
     ["foundation-course", "defence"],
     ["worksheets-11-12", "defence"],
     ["jee-mains", "science"],

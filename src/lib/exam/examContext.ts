@@ -63,7 +63,9 @@ export type ExamSlug =
   | "aissee-9"
   | "rms-cet-6"
   | "rms-cet-9"
-  | "rimc";
+  | "rimc"
+  | "homi-bhabha-6"
+  | "homi-bhabha-9";
 
 /**
  * School boards the bank carries content for. NOT every exam has one — a
@@ -1387,6 +1389,45 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     familyAxis: "Class",
     hasMocks: false,
     pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "homi-bhabha-6",
+    // Dr. Homi Bhabha Balvaidnyanik Competition (MSTA, Mumbai), Phase I written
+    // test for Std VI: 100 one-mark science MCQs, 90 min, English or Marathi
+    // medium. MSTA's own booklets 2010-2024 (scripts/homi-bhabha/README.md);
+    // the Marathi booklet is stored as a translation of the English row.
+    tier: "school",
+    goal: "science",
+    displayName: "Homi Bhabha Class 6",
+    examName: "Homi Bhabha Class 6", // must match the `exams` DB row exactly
+    family: "Homi Bhabha",
+    familyStage: "Homi Bhabha",
+    familyLabel: "Class 6",
+    familyAxis: "Class",
+    bilingual: true,
+    noPublicContent: true, // ingested PRIVATE; flip when published
+    hasMocks: false,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "homi-bhabha-9",
+    // The same competition for Std IX: Physics, Chemistry, Biology, then
+    // science GK (100 q, 90 min). Keys: MSTA's own for 2021 and 2024; 2010,
+    // 2017 and 2018 are solved twice blind and checked by hand.
+    tier: "school",
+    goal: "science",
+    displayName: "Homi Bhabha Class 9",
+    examName: "Homi Bhabha Class 9", // must match the `exams` DB row exactly
+    family: "Homi Bhabha",
+    familyStage: "Homi Bhabha",
+    familyLabel: "Class 9",
+    familyAxis: "Class",
+    bilingual: true,
+    noPublicContent: true, // ingested PRIVATE; flip when published
+    hasMocks: false,
     guidesPath: null,
     notesPath: null,
   },
