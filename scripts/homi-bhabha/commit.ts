@@ -4,6 +4,7 @@
  *
  *   npx tsx scripts/homi-bhabha/commit.ts hb-9-2024          # dry-run: validate, write nothing
  *   npx tsx scripts/homi-bhabha/commit.ts hb-9-2024 --apply
+ *   npx tsx scripts/homi-bhabha/commit.ts hb-9-2024 --resync   # a PUBLISHED paper: sync solutions + grace only
  *
  * Reads  data/<id>.merged.json    the transcription
  *        data/<id>.answers.json   keycheck.ts (keyed) or crosstab.ts (keyless)
@@ -107,6 +108,12 @@ async function main() {
     { auth: { persistSession: false } }
   );
 
+  // --resync: the paper is committed (and may be PUBLIC). Insert nothing, touch no visibility
+  // and no upload job: only sync each row's solution and the grace list, after a ruling changed.
+  const resync = args.includes("--resync");
+  let jobId: string | undefined;
+  let result: Awaited<ReturnType<typeof commitStaged>> | undefined;
+  if (!resync) {
   const { data: existingJob } = await client
     .from("upload_jobs")
     .select("id")
@@ -114,7 +121,7 @@ async function main() {
     .eq("filename", paper.sourceFile)
     .limit(1)
     .maybeSingle();
-  let jobId = existingJob?.id as string | undefined;
+  jobId = existingJob?.id as string | undefined;
   if (!jobId) {
     const { data: job, error: jErr } = await client
       .from("upload_jobs")
@@ -153,7 +160,7 @@ async function main() {
     );
   }
 
-  const result = await commitStaged(client, {
+  result = await commitStaged(client, {
     orgId: ORG_ID,
     examId: EXAM_ID,
     filename: paper.sourceFile,
@@ -187,6 +194,7 @@ async function main() {
     .eq("source_file", paper.sourceFile);
   if (uErr) throw new Error(`visibility update failed: ${uErr.message}`);
   console.log(`set ${count} rows to PRIVATE.`);
+  }
 
   // Sync each row's solution. commitStaged skips a row whose content_hash
   // already exists, so a re-run after a ruling changed (a fixed solution, a new
@@ -262,6 +270,10 @@ async function main() {
     console.log(`grace: ${added} question(s) added to src/lib/mocks/flawed.json`);
   }
 
+  if (resync || !result) {
+    console.log("resync: done (no insert, visibility untouched).");
+    return;
+  }
   const { count: linked } = await client
     .from("questions")
     .select("id", { count: "exact", head: true })
