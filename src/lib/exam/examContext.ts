@@ -1434,8 +1434,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     familyStage: "Homi Bhabha",
     familyLabel: "Class 6",
     familyAxis: "Class",
-    bilingual: true,
-    noPublicContent: true, // ingested PRIVATE; flip when published
+    noPublicContent: true, // not ingested yet (Std IX came first, owner 2026-11-19)
     hasMocks: false,
     guidesPath: null,
     notesPath: null,
@@ -1444,8 +1443,11 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "homi-bhabha-9",
     passScope: "free", // owner 2026-11-19: free, like the other school entrances
     // The same competition for Std IX: Physics, Chemistry, Biology, then
-    // science GK (100 q, 90 min). Keys: MSTA's own for 2021 and 2024; 2010,
-    // 2017 and 2018 are solved twice blind and checked by hand.
+    // science GK (100 q, 90 min). Keys: MSTA's own for 2021, 2023 and 2024;
+    // 2010, 2017 and 2018 are solved twice blind and checked by hand.
+    // PUBLIC since 2026-11-19 (eight papers, 797 q), with /notes for every
+    // chapter of 10+ questions. English only until the Marathi translations
+    // land: `bilingual` comes on with them.
     tier: "school",
     goal: "science",
     displayName: "Homi Bhabha Class 9",
@@ -1454,11 +1456,12 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     familyStage: "Homi Bhabha",
     familyLabel: "Class 9",
     familyAxis: "Class",
-    bilingual: true,
-    noPublicContent: true, // ingested PRIVATE; flip when published
-    hasMocks: false,
+    // Five whole-paper mocks (scripts/mocks/build.ts --paper=homi-bhabha);
+    // 2018, January 2021 and 2023 are held, each missing one question.
+    hasMocks: true,
+    pastPaperSolutions: true,
     guidesPath: null,
-    notesPath: null,
+    notesPath: "/notes/homi-bhabha-9",
   },
 ] as const;
 

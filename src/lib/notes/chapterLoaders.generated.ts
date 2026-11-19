@@ -13182,6 +13182,624 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 5,
       "traps": 14
     }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "sound",
+    "chipLabel": "Sound notes",
+    "slugs": [
+      "hb9-so-nature",
+      "hb9-so-waves",
+      "hb9-so-speed",
+      "hb9-so-echo"
+    ],
+    "chapterName": "Sound",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 5,
+      "traps": 25
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "current-electricity",
+    "chipLabel": "Current Electricity notes",
+    "slugs": [
+      "hb9-ce-static",
+      "hb9-ce-current",
+      "hb9-ce-resistance",
+      "hb9-ce-combinations",
+      "hb9-ce-power"
+    ],
+    "chapterName": "Current Electricity",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 7,
+      "traps": 33
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "light",
+    "chipLabel": "Light notes",
+    "slugs": [
+      "hb9-li-plane",
+      "hb9-li-spherical",
+      "hb9-li-concave",
+      "hb9-li-refraction"
+    ],
+    "chapterName": "Light",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 4,
+      "traps": 21
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "force-laws-of-motion",
+    "chipLabel": "Force and Laws of Motion notes",
+    "slugs": [
+      "hb9-fl-forces",
+      "hb9-fl-laws",
+      "hb9-fl-momentum"
+    ],
+    "chapterName": "Force and Laws of Motion",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 4,
+      "traps": 19
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "work-energy-power",
+    "chipLabel": "Work, Energy and Power notes",
+    "slugs": [
+      "hb9-we-work",
+      "hb9-we-kinetic",
+      "hb9-we-conservation",
+      "hb9-we-power"
+    ],
+    "chapterName": "Work, Energy and Power",
+    "formulaCounts": {
+      "formulas": 7,
+      "tables": 1,
+      "traps": 24
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "space-astronomy",
+    "chipLabel": "Space and Astronomy notes",
+    "slugs": [
+      "hb9-sa-stars",
+      "hb9-sa-telescopes",
+      "hb9-sa-satellites"
+    ],
+    "chapterName": "Space and Astronomy",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 7,
+      "traps": 21
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "motion",
+    "chipLabel": "Motion notes",
+    "slugs": [
+      "hb9-mo-speed",
+      "hb9-mo-graphs"
+    ],
+    "chapterName": "Motion",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 3,
+      "traps": 19
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "heat",
+    "chipLabel": "Heat notes",
+    "slugs": [
+      "hb9-he-temperature",
+      "hb9-he-transfer",
+      "hb9-he-expansion"
+    ],
+    "chapterName": "Heat",
+    "formulaCounts": {
+      "formulas": 2,
+      "tables": 4,
+      "traps": 18
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "pressure-buoyancy",
+    "chipLabel": "Pressure and Buoyancy notes",
+    "slugs": [
+      "hb9-pb-pressure",
+      "hb9-pb-buoyancy"
+    ],
+    "chapterName": "Pressure and Buoyancy",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 2,
+      "traps": 15
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "measurement-units",
+    "chipLabel": "Measurement and Units notes",
+    "slugs": [
+      "hb9-mu-quantities",
+      "hb9-mu-derived"
+    ],
+    "chapterName": "Measurement and Units",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 4,
+      "traps": 15
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "ict",
+    "chipLabel": "Information and Communication Technology notes",
+    "titleName": "Information and Communication Technology",
+    "slugs": [
+      "hb9-ic-hardware",
+      "hb9-ic-networks"
+    ],
+    "chapterName": "Information and Communication Technology",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 5,
+      "traps": 13
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "gravitation",
+    "chipLabel": "Gravitation notes",
+    "slugs": [
+      "hb9-gr-law",
+      "hb9-gr-freefall"
+    ],
+    "chapterName": "Gravitation",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 1,
+      "traps": 15
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Biology",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "human-body-health",
+    "chipLabel": "Human Body and Health notes",
+    "slugs": [
+      "hb9-hb-nutrition",
+      "hb9-hb-blood",
+      "hb9-hb-nerves",
+      "hb9-hb-diseases"
+    ],
+    "chapterName": "Human Body and Health",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 10,
+      "traps": 31
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Biology",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "ecosystem-environment",
+    "chipLabel": "Ecosystem and Environment notes",
+    "slugs": [
+      "hb9-ee-chains",
+      "hb9-ee-energy",
+      "hb9-ee-cycles",
+      "hb9-ee-environment"
+    ],
+    "chapterName": "Ecosystem and Environment",
+    "formulaCounts": {
+      "formulas": 2,
+      "tables": 7,
+      "traps": 27
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Biology",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "life-processes",
+    "chipLabel": "Life Processes notes",
+    "slugs": [
+      "hb9-lp-digestion",
+      "hb9-lp-respiration",
+      "hb9-lp-transport",
+      "hb9-lp-control"
+    ],
+    "chapterName": "Life Processes",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 8,
+      "traps": 26
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Biology",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "cell-tissues",
+    "chipLabel": "Cell and Tissues notes",
+    "slugs": [
+      "hb9-ct-organelles",
+      "hb9-ct-osmosis",
+      "hb9-ct-plant",
+      "hb9-ct-animal"
+    ],
+    "chapterName": "Cell and Tissues",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 9,
+      "traps": 25
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Biology",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "heredity-evolution",
+    "chipLabel": "Heredity and Evolution notes",
+    "slugs": [
+      "hb9-hv-dna",
+      "hb9-hv-inheritance",
+      "hb9-hv-disorders"
+    ],
+    "chapterName": "Heredity and Evolution",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 6,
+      "traps": 17
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Biology",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "microbes",
+    "chipLabel": "Microbes notes",
+    "slugs": [
+      "hb9-mc-kinds",
+      "hb9-mc-useful",
+      "hb9-mc-nitrogen",
+      "hb9-mc-harmful"
+    ],
+    "chapterName": "Microbes",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 8,
+      "traps": 18
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Biology",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "agriculture-animal-husbandry",
+    "chipLabel": "Agriculture and Animal Husbandry notes",
+    "slugs": [
+      "hb9-ag-crops",
+      "hb9-ag-protect",
+      "hb9-ag-breeds",
+      "hb9-ag-fish"
+    ],
+    "chapterName": "Agriculture and Animal Husbandry",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 9,
+      "traps": 21
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Biology",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "classification-of-plants",
+    "chipLabel": "Classification of Plants notes",
+    "slugs": [
+      "hb9-cp-basis",
+      "hb9-cp-spores",
+      "hb9-cp-seeds"
+    ],
+    "chapterName": "Classification of Plants",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 6,
+      "traps": 16
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Biology",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "plants-functions",
+    "chipLabel": "Plants and Their Functions notes",
+    "slugs": [
+      "hb9-pf-roots",
+      "hb9-pf-leaves",
+      "hb9-pf-pigments"
+    ],
+    "chapterName": "Plants and Their Functions",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 6,
+      "traps": 16
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Chemistry",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "acids-bases-salts",
+    "chipLabel": "Acids, Bases and Salts notes",
+    "slugs": [
+      "hb9-ab-around",
+      "hb9-ab-strength",
+      "hb9-ab-ph",
+      "hb9-ab-reactions",
+      "hb9-ab-salts"
+    ],
+    "chapterName": "Acids, Bases and Salts",
+    "formulaCounts": {
+      "formulas": 2,
+      "tables": 10,
+      "traps": 34
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Chemistry",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "substances-common-use",
+    "chipLabel": "Substances in Common Use notes",
+    "slugs": [
+      "hb9-su-chemicals",
+      "hb9-su-cosmetics",
+      "hb9-su-materials",
+      "hb9-su-radio"
+    ],
+    "chapterName": "Substances in Common Use",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 10,
+      "traps": 27
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Chemistry",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "atomic-structure",
+    "chipLabel": "Atomic Structure notes",
+    "slugs": [
+      "hb9-at-models",
+      "hb9-at-numbers",
+      "hb9-at-shells",
+      "hb9-at-valency",
+      "hb9-at-bonds"
+    ],
+    "chapterName": "Atomic Structure",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 5,
+      "traps": 26
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Chemistry",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "carbon-compounds",
+    "chipLabel": "Carbon and Its Compounds notes",
+    "slugs": [
+      "hb9-cc-bonds",
+      "hb9-cc-allotropes",
+      "hb9-cc-fuels"
+    ],
+    "chapterName": "Carbon and Its Compounds",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 8,
+      "traps": 23
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Chemistry",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "chemical-reactions",
+    "chipLabel": "Chemical Reactions notes",
+    "slugs": [
+      "hb9-cr-types",
+      "hb9-cr-equations",
+      "hb9-cr-redox"
+    ],
+    "chapterName": "Chemical Reactions",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 5,
+      "traps": 18
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Chemistry",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "matter",
+    "chipLabel": "Matter and Its Nature notes",
+    "slugs": [
+      "hb9-mn-states",
+      "hb9-mn-composition",
+      "hb9-mn-separation"
+    ],
+    "chapterName": "Matter and Its Nature",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 6,
+      "traps": 15
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Chemistry",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "metals",
+    "chipLabel": "Metals and Their Compounds notes",
+    "slugs": [
+      "hb9-mt-properties",
+      "hb9-mt-reactivity",
+      "hb9-mt-corrosion"
+    ],
+    "chapterName": "Metals and Their Compounds",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 5,
+      "traps": 16
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Chemistry",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "measurement-of-matter",
+    "chipLabel": "Measurement of Matter notes",
+    "slugs": [
+      "hb9-mm-mass",
+      "hb9-mm-laws",
+      "hb9-mm-mole"
+    ],
+    "chapterName": "Measurement of Matter",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 2,
+      "traps": 18
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Chemistry",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "periodic-classification",
+    "chipLabel": "Elements and Periodic Classification notes",
+    "slugs": [
+      "hb9-ep-symbols",
+      "hb9-ep-periodic"
+    ],
+    "chapterName": "Elements and Periodic Classification",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 4,
+      "traps": 16
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Chemistry",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "air-water-gases",
+    "chipLabel": "Air, Water and Gases notes",
+    "slugs": [
+      "hb9-aw-air",
+      "hb9-aw-gases"
+    ],
+    "chapterName": "Air, Water and Gases",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 5,
+      "traps": 12
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "General Science",
+    "subjectRoute": "homi-bhabha-9-general-science",
+    "subjectDisplay": "Homi Bhabha General Science",
+    "chapterSlug": "scientists-discoveries",
+    "chipLabel": "Scientists and Discoveries notes",
+    "slugs": [
+      "hb9-sd-scientists",
+      "hb9-sd-awards",
+      "hb9-sd-institutes"
+    ],
+    "chapterName": "Scientists and Discoveries",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 6,
+      "traps": 14
+    }
   }
 ];
 
@@ -13840,4 +14458,36 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "ssc-cgl-static-gk/festivals-and-days": () => import("@/app/notes/ssc-cgl-static-gk/festivals-and-days/_data").then((m) => ({ chapter: m.SSC_FESTIVALS_AND_DAYS_CHAPTER, notes: m.SSC_FESTIVALS_AND_DAYS_NOTES })),
   "ssc-cgl-static-gk/books-and-authors": () => import("@/app/notes/ssc-cgl-static-gk/books-and-authors/_data").then((m) => ({ chapter: m.SSC_BOOKS_AND_AUTHORS_CHAPTER, notes: m.SSC_BOOKS_AND_AUTHORS_NOTES })),
   "ssc-cgl-static-gk/science-space-environment": () => import("@/app/notes/ssc-cgl-static-gk/science-space-environment/_data").then((m) => ({ chapter: m.SSC_SCIENCE_SPACE_ENVIRONMENT_CHAPTER, notes: m.SSC_SCIENCE_SPACE_ENVIRONMENT_NOTES })),
+  "homi-bhabha-9-physics/sound": () => import("@/app/notes/homi-bhabha-9-physics/sound/_data").then((m) => ({ chapter: m.HB9_SOUND_CHAPTER, notes: m.HB9_SOUND_NOTES })),
+  "homi-bhabha-9-physics/current-electricity": () => import("@/app/notes/homi-bhabha-9-physics/current-electricity/_data").then((m) => ({ chapter: m.HB9_ELECTRICITY_CHAPTER, notes: m.HB9_ELECTRICITY_NOTES })),
+  "homi-bhabha-9-physics/light": () => import("@/app/notes/homi-bhabha-9-physics/light/_data").then((m) => ({ chapter: m.HB9_LIGHT_CHAPTER, notes: m.HB9_LIGHT_NOTES })),
+  "homi-bhabha-9-physics/force-laws-of-motion": () => import("@/app/notes/homi-bhabha-9-physics/force-laws-of-motion/_data").then((m) => ({ chapter: m.HB9_FORCE_CHAPTER, notes: m.HB9_FORCE_NOTES })),
+  "homi-bhabha-9-physics/work-energy-power": () => import("@/app/notes/homi-bhabha-9-physics/work-energy-power/_data").then((m) => ({ chapter: m.HB9_WORK_CHAPTER, notes: m.HB9_WORK_NOTES })),
+  "homi-bhabha-9-physics/space-astronomy": () => import("@/app/notes/homi-bhabha-9-physics/space-astronomy/_data").then((m) => ({ chapter: m.HB9_SPACE_CHAPTER, notes: m.HB9_SPACE_NOTES })),
+  "homi-bhabha-9-physics/motion": () => import("@/app/notes/homi-bhabha-9-physics/motion/_data").then((m) => ({ chapter: m.HB9_MOTION_CHAPTER, notes: m.HB9_MOTION_NOTES })),
+  "homi-bhabha-9-physics/heat": () => import("@/app/notes/homi-bhabha-9-physics/heat/_data").then((m) => ({ chapter: m.HB9_HEAT_CHAPTER, notes: m.HB9_HEAT_NOTES })),
+  "homi-bhabha-9-physics/pressure-buoyancy": () => import("@/app/notes/homi-bhabha-9-physics/pressure-buoyancy/_data").then((m) => ({ chapter: m.HB9_PRESSURE_CHAPTER, notes: m.HB9_PRESSURE_NOTES })),
+  "homi-bhabha-9-physics/measurement-units": () => import("@/app/notes/homi-bhabha-9-physics/measurement-units/_data").then((m) => ({ chapter: m.HB9_MEASUREMENT_CHAPTER, notes: m.HB9_MEASUREMENT_NOTES })),
+  "homi-bhabha-9-physics/ict": () => import("@/app/notes/homi-bhabha-9-physics/ict/_data").then((m) => ({ chapter: m.HB9_ICT_CHAPTER, notes: m.HB9_ICT_NOTES })),
+  "homi-bhabha-9-physics/gravitation": () => import("@/app/notes/homi-bhabha-9-physics/gravitation/_data").then((m) => ({ chapter: m.HB9_GRAVITATION_CHAPTER, notes: m.HB9_GRAVITATION_NOTES })),
+  "homi-bhabha-9-biology/human-body-health": () => import("@/app/notes/homi-bhabha-9-biology/human-body-health/_data").then((m) => ({ chapter: m.HB9_HUMAN_BODY_CHAPTER, notes: m.HB9_HUMAN_BODY_NOTES })),
+  "homi-bhabha-9-biology/ecosystem-environment": () => import("@/app/notes/homi-bhabha-9-biology/ecosystem-environment/_data").then((m) => ({ chapter: m.HB9_ECOSYSTEM_CHAPTER, notes: m.HB9_ECOSYSTEM_NOTES })),
+  "homi-bhabha-9-biology/life-processes": () => import("@/app/notes/homi-bhabha-9-biology/life-processes/_data").then((m) => ({ chapter: m.HB9_LIFE_PROCESSES_CHAPTER, notes: m.HB9_LIFE_PROCESSES_NOTES })),
+  "homi-bhabha-9-biology/cell-tissues": () => import("@/app/notes/homi-bhabha-9-biology/cell-tissues/_data").then((m) => ({ chapter: m.HB9_CELL_CHAPTER, notes: m.HB9_CELL_NOTES })),
+  "homi-bhabha-9-biology/heredity-evolution": () => import("@/app/notes/homi-bhabha-9-biology/heredity-evolution/_data").then((m) => ({ chapter: m.HB9_HEREDITY_CHAPTER, notes: m.HB9_HEREDITY_NOTES })),
+  "homi-bhabha-9-biology/microbes": () => import("@/app/notes/homi-bhabha-9-biology/microbes/_data").then((m) => ({ chapter: m.HB9_MICROBES_CHAPTER, notes: m.HB9_MICROBES_NOTES })),
+  "homi-bhabha-9-biology/agriculture-animal-husbandry": () => import("@/app/notes/homi-bhabha-9-biology/agriculture-animal-husbandry/_data").then((m) => ({ chapter: m.HB9_AGRICULTURE_CHAPTER, notes: m.HB9_AGRICULTURE_NOTES })),
+  "homi-bhabha-9-biology/classification-of-plants": () => import("@/app/notes/homi-bhabha-9-biology/classification-of-plants/_data").then((m) => ({ chapter: m.HB9_PLANTCLASS_CHAPTER, notes: m.HB9_PLANTCLASS_NOTES })),
+  "homi-bhabha-9-biology/plants-functions": () => import("@/app/notes/homi-bhabha-9-biology/plants-functions/_data").then((m) => ({ chapter: m.HB9_PLANTFN_CHAPTER, notes: m.HB9_PLANTFN_NOTES })),
+  "homi-bhabha-9-chemistry/acids-bases-salts": () => import("@/app/notes/homi-bhabha-9-chemistry/acids-bases-salts/_data").then((m) => ({ chapter: m.HB9_ACIDS_CHAPTER, notes: m.HB9_ACIDS_NOTES })),
+  "homi-bhabha-9-chemistry/substances-common-use": () => import("@/app/notes/homi-bhabha-9-chemistry/substances-common-use/_data").then((m) => ({ chapter: m.HB9_SUBSTANCES_CHAPTER, notes: m.HB9_SUBSTANCES_NOTES })),
+  "homi-bhabha-9-chemistry/atomic-structure": () => import("@/app/notes/homi-bhabha-9-chemistry/atomic-structure/_data").then((m) => ({ chapter: m.HB9_ATOMIC_CHAPTER, notes: m.HB9_ATOMIC_NOTES })),
+  "homi-bhabha-9-chemistry/carbon-compounds": () => import("@/app/notes/homi-bhabha-9-chemistry/carbon-compounds/_data").then((m) => ({ chapter: m.HB9_CARBON_CHAPTER, notes: m.HB9_CARBON_NOTES })),
+  "homi-bhabha-9-chemistry/chemical-reactions": () => import("@/app/notes/homi-bhabha-9-chemistry/chemical-reactions/_data").then((m) => ({ chapter: m.HB9_REACTIONS_CHAPTER, notes: m.HB9_REACTIONS_NOTES })),
+  "homi-bhabha-9-chemistry/matter": () => import("@/app/notes/homi-bhabha-9-chemistry/matter/_data").then((m) => ({ chapter: m.HB9_MATTER_CHAPTER, notes: m.HB9_MATTER_NOTES })),
+  "homi-bhabha-9-chemistry/metals": () => import("@/app/notes/homi-bhabha-9-chemistry/metals/_data").then((m) => ({ chapter: m.HB9_METALS_CHAPTER, notes: m.HB9_METALS_NOTES })),
+  "homi-bhabha-9-chemistry/measurement-of-matter": () => import("@/app/notes/homi-bhabha-9-chemistry/measurement-of-matter/_data").then((m) => ({ chapter: m.HB9_MOLE_CHAPTER, notes: m.HB9_MOLE_NOTES })),
+  "homi-bhabha-9-chemistry/periodic-classification": () => import("@/app/notes/homi-bhabha-9-chemistry/periodic-classification/_data").then((m) => ({ chapter: m.HB9_PERIODIC_CHAPTER, notes: m.HB9_PERIODIC_NOTES })),
+  "homi-bhabha-9-chemistry/air-water-gases": () => import("@/app/notes/homi-bhabha-9-chemistry/air-water-gases/_data").then((m) => ({ chapter: m.HB9_AIR_CHAPTER, notes: m.HB9_AIR_NOTES })),
+  "homi-bhabha-9-general-science/scientists-discoveries": () => import("@/app/notes/homi-bhabha-9-general-science/scientists-discoveries/_data").then((m) => ({ chapter: m.HB9_SCIENTISTS_CHAPTER, notes: m.HB9_SCIENTISTS_NOTES })),
 };

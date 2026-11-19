@@ -9,7 +9,6 @@ import {
   type MarathiQuestion,
 } from "../scripts/homi-bhabha/marathi";
 import type { EnglishQuestion as PaperQuestion } from "../scripts/homi-bhabha/marathi";
-import { getExamBySlug } from "@/lib/exam/examContext";
 
 const en = (over: Partial<PaperQuestion> = {}): PaperQuestion => ({
   ref: "Q1(A)(i)",
@@ -41,13 +40,6 @@ const mr = (over: Partial<MarathiQuestion> = {}): MarathiQuestion => ({
 
 const errors = (f: ReturnType<typeof checkMarathiPaper>) => f.filter((x) => x.level === "error");
 const warns = (f: ReturnType<typeof checkMarathiPaper>) => f.filter((x) => x.level === "warn");
-
-describe("registry", () => {
-  it("marks both Homi Bhabha exams bilingual, so their mocks and downloads offer the language choice", () => {
-    expect(getExamBySlug("homi-bhabha-6")?.bilingual).toBe(true);
-    expect(getExamBySlug("homi-bhabha-9")?.bilingual).toBe(true);
-  });
-});
 
 describe("marathiLabel", () => {
   it("maps the printed Marathi option letters onto the bank's A-D", () => {

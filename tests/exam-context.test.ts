@@ -129,17 +129,26 @@ describe("EXAM_REGISTRY", () => {
     expect(chsl?.practiceOnly).not.toBe(true);
   });
 
-  it("groups Homi Bhabha Class 6 and 9 as one family split by class: free school-tier science exams, bilingual (Marathi), hidden until published (owner, 2026-11-19)", () => {
+  it("groups Homi Bhabha Class 6 and 9 as one family split by class: free school-tier science exams, English only until the Marathi translations land (owner, 2026-11-19)", () => {
     for (const [slug, label] of [["homi-bhabha-6", "Class 6"], ["homi-bhabha-9", "Class 9"]] as const) {
       const e = getExamBySlug(slug);
       expect(e?.examName).toBe(`Homi Bhabha ${label}`);
       expect([e?.family, e?.familyStage, e?.familyLabel, e?.familyAxis]).toEqual(["Homi Bhabha", "Homi Bhabha", label, "Class"]);
       expect(e?.tier).toBe("school");
       expect(e?.goal).toBe("science");
-      expect(e?.bilingual).toBe(true);
-      expect(e?.noPublicContent).toBe(true);
+      // A language switch with nothing behind it is noise: bilingual comes on with the Marathi rows.
+      expect(e?.bilingual).toBeFalsy();
       expect(e?.passScope).toBe("free");
     }
+  });
+
+  it("Homi Bhabha Class 9 is public with notes and past-paper solutions; Class 6 is still hidden (owner, 2026-11-19)", () => {
+    const nine = getExamBySlug("homi-bhabha-9");
+    expect(nine?.noPublicContent).toBeFalsy();
+    expect(nine?.notesPath).toBe("/notes/homi-bhabha-9");
+    expect(nine?.pastPaperSolutions).toBe(true);
+    expect(nine?.hasMocks).toBe(true);
+    expect(getExamBySlug("homi-bhabha-6")?.noPublicContent).toBe(true);
   });
 
   it("groups AISSEE, RMS CET and RIMC as one family, split by class, all free school-tier defence exams (owner, 2026-11-17)", () => {
