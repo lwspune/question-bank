@@ -50,7 +50,8 @@ export type LevelConfig = {
 export const LEVELS: Record<Level, LevelConfig> = {
   /** Created by seed-exam.ts on 2026-11-13. */
   graduate: { examName: "RRB NTPC", examId: "6a5566ad-8bc9-4e6e-a679-5ceb2a369627", label: "Graduate", layout: LAYOUT, numberedThrough: false },
-  undergraduate: { examName: "RRB NTPC Undergraduate", examId: "", label: "Undergraduate", layout: UG_LAYOUT, numberedThrough: true },
+  /** Created by seed-exam.ts --level=undergraduate on 2026-11-19. */
+  undergraduate: { examName: "RRB NTPC Undergraduate", examId: "0f3a30ea-cb82-4ba0-a233-7a2015cfdd45", label: "Undergraduate", layout: UG_LAYOUT, numberedThrough: true },
 };
 
 /** Graduate's, kept under the names the lane shipped with. */
