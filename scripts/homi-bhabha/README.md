@@ -143,5 +143,7 @@ re-uploads a committed row's figure. Show the owner a before/after sheet first.
 
 ## Status
 
-2026-11-19: sources saved, lane scaffolded on `feat/homi-bhabha`. Nothing
-transcribed, no exam rows, no registry entry. Pilot: `hb-9-2024`.
+2026-11-19: all eight Std IX English papers committed PRIVATE (2010, 2017,
+2018, 2021 Jan/Nov/Dec, 2023, 2024: 797 rows). Std VI and every Marathi
+translation are for a later session (owner). No mocks yet; publishing is the
+owner's call.
