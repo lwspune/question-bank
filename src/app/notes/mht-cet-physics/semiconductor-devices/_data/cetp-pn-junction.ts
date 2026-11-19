@@ -13,6 +13,7 @@ export const PN_JUNCTION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-depletion-layer",
       name: "The Depletion Layer and Its Field",
+      visualizationSlug: "cet-pn-depletion",
       intuition:
         "Electrons diffuse from the n-side into the p-side and holes the other way; they recombine and leave behind uncovered ions — positive on the n-side, negative on the p-side. Those fixed charges make a field pointing from n to p, which stops further diffusion. The n-side ends up at the higher potential.",
       definition:
@@ -51,6 +52,7 @@ export const PN_JUNCTION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-biasing",
       name: "Forward and Reverse Bias",
+      visualizationSlug: "cet-diode-bias",
       intuition:
         "Push the p-side positive and the applied field opposes the junction's own: the barrier drops, the layer thins, and current flows. Push it negative and the two fields add: the barrier rises, the layer widens, and only a tiny minority-carrier current trickles through.",
       definition:

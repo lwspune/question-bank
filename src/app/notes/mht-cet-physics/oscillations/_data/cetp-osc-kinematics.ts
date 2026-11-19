@@ -15,6 +15,7 @@ export const KINEMATICS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-osc-velocity-displacement",
       name: "Velocity, Acceleration and Displacement",
+      visualizationSlug: "cet-shm-reference-circle",
       intuition:
         "Everything follows from v² = ω²(A² − x²) and a = −ω²x. At the mean position the speed is largest, ωA, and the acceleration zero; at the extremes the speed is zero and the acceleration ω²A. Two positions with known speeds give two equations: subtract them and A drops out, leaving ω; divide and ω drops out, leaving A. Given accelerations instead, use a = ω²x to turn them into positions. Maximum velocity and maximum acceleration together give both A = v²/a and ω = a/v.",
       definition:

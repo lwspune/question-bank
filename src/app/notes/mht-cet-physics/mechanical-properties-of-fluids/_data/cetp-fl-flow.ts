@@ -15,6 +15,7 @@ export const FLOW_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-fl-continuity",
       name: "Continuity: Narrow Pipe, Faster Flow",
+      visualizationSlug: "cet-continuity-pipe",
       intuition:
         "Water cannot pile up in a pipe, so the volume flow rate Q = Av is the same everywhere along it. A pipe of a third the radius has a ninth the area, so the water moves nine times faster. The same rule links a pipe to a nozzle (d√(V/V₁)), a hose to a sprinkler with n holes (v' = R²v/(nr²)), and a tap to the falling water level in a tank (dh/dt = a v/A). Streamline flow means the velocity at any fixed point does not change with time and the layers stay parallel.",
       definition:

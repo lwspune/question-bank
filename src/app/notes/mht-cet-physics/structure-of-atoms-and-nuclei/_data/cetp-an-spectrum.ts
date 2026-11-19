@@ -16,6 +16,7 @@ export const SPECTRUM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-an-series-limits",
       name: "The Series, Their First Lines and Their Limits",
+      visualizationSlug: "cet-hydrogen-series",
       intuition:
         "Fix the lower level n_f and let the upper level run: n_f = 1 gives the Lyman series (ultraviolet), 2 the Balmer (visible), 3 the Paschen, 4 the Brackett and 5 the Pfund (all infrared). The first line comes from the nearest level, n_f + 1, and has the smallest energy, so the LONGEST wavelength. The series limit comes from n = ∞, 1/λ = R/n_f², and has the SHORTEST wavelength. Frequency is c/λ and wave number is 1/λ, so the Balmer limit has wave number R/4 and frequency Rc/4. Because limits and first lines are differences of the same terms, they combine: the Lyman limit minus the first Lyman line is the Balmer limit. A source moving away stretches every line by Δλ/λ = v/c.",
       definition:

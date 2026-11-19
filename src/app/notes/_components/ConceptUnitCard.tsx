@@ -76,6 +76,24 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import CetPnDepletion from "./visualizations/CetPnDepletion";
+import CetDiodeBias from "./visualizations/CetDiodeBias";
+import CetRectifierWaves from "./visualizations/CetRectifierWaves";
+import CetPhotoelectricThreshold from "./visualizations/CetPhotoelectricThreshold";
+import CetPhotoelectricGraphs from "./visualizations/CetPhotoelectricGraphs";
+import CetHydrogenSeries from "./visualizations/CetHydrogenSeries";
+import CetStandingWaveModes from "./visualizations/CetStandingWaveModes";
+import CetPipeModes from "./visualizations/CetPipeModes";
+import CetBeatsEnvelope from "./visualizations/CetBeatsEnvelope";
+import CetShmReferenceCircle from "./visualizations/CetShmReferenceCircle";
+import CetYdseFringeWidth from "./visualizations/CetYdseFringeWidth";
+import CetDopplerWavefronts from "./visualizations/CetDopplerWavefronts";
+import CetLcrPhasors from "./visualizations/CetLcrPhasors";
+import CetResonanceCurve from "./visualizations/CetResonanceCurve";
+import CetLenzMagnetCoil from "./visualizations/CetLenzMagnetCoil";
+import CetContinuityPipe from "./visualizations/CetContinuityPipe";
+import CetDipoleTorque from "./visualizations/CetDipoleTorque";
+import CetRollingEnergySplit from "./visualizations/CetRollingEnergySplit";
 import ImatSupplyDemand from "./visualizations/ImatSupplyDemand";
 import ImatEuTimeline from "./visualizations/ImatEuTimeline";
 import ImatItalianInstitutions from "./visualizations/ImatItalianInstitutions";
@@ -770,6 +788,42 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "cet-pn-depletion":
+      return <CetPnDepletion />;
+    case "cet-diode-bias":
+      return <CetDiodeBias />;
+    case "cet-rectifier-waves":
+      return <CetRectifierWaves />;
+    case "cet-photoelectric-threshold":
+      return <CetPhotoelectricThreshold />;
+    case "cet-photoelectric-graphs":
+      return <CetPhotoelectricGraphs />;
+    case "cet-hydrogen-series":
+      return <CetHydrogenSeries />;
+    case "cet-standing-wave-modes":
+      return <CetStandingWaveModes />;
+    case "cet-pipe-modes":
+      return <CetPipeModes />;
+    case "cet-beats-envelope":
+      return <CetBeatsEnvelope />;
+    case "cet-shm-reference-circle":
+      return <CetShmReferenceCircle />;
+    case "cet-ydse-fringe-width":
+      return <CetYdseFringeWidth />;
+    case "cet-doppler-wavefronts":
+      return <CetDopplerWavefronts />;
+    case "cet-lcr-phasors":
+      return <CetLcrPhasors />;
+    case "cet-resonance-curve":
+      return <CetResonanceCurve />;
+    case "cet-lenz-magnet-coil":
+      return <CetLenzMagnetCoil />;
+    case "cet-continuity-pipe":
+      return <CetContinuityPipe />;
+    case "cet-dipole-torque":
+      return <CetDipoleTorque />;
+    case "cet-rolling-energy-split":
+      return <CetRollingEnergySplit />;
     case "imat-supply-demand":
       return <ImatSupplyDemand />;
     case "imat-eu-timeline":

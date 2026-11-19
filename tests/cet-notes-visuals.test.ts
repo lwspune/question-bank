@@ -21,11 +21,11 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { renderDiagramMarkup } from "@/lib/ebooks/diagrams";
-import { visualTextProblems } from "@/lib/notes/visualText";
+import { visibleText, visualTextProblems } from "@/lib/notes/visualText";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 /** Concepts carrying a figure, per subject. Raise these as figures land; never lower them. */
-const MIN_FIGURES = { "mht-cet-maths": 114, "mht-cet-physics": 22, "mht-cet-chemistry": 15 } as const;
+const MIN_FIGURES = { "mht-cet-maths": 114, "mht-cet-physics": 40, "mht-cet-chemistry": 15 } as const;
 
 /** Figures placed on CET before this run, whose words were never checked against these rules. */
 const SHIPPED_BEFORE = new Set<string>();
@@ -50,6 +50,25 @@ const KNOWN_REPEATS: Record<string, number> = {
   "mht-cet-maths/probability-distribution/conditional-independence-bayes probability-tree": 3,
 };
 
+/**
+ * Figures already shipped with maths in their header (shown in capitals, so
+ * "work = F · d" reads "WORK = F · D"). They are on other exams' pages too;
+ * rewording them is a backfill decision (SUGGESTIONS.md ledger, 2026-11-19).
+ */
+const SHIPPED_MATHS_HEADERS = new Set([
+  "magnitude-right-triangle",
+  "section-formula",
+  "parallelogram-diagonals",
+  "dot-product-work",
+  "unit-normal-vector",
+  "triple-product-box",
+  "sample-space-event",
+  "coin-toss-tree",
+  "mean-balance-point",
+  "mean-deviation-spread",
+  "magnetic-force-triad",
+]);
+
 const placements = NOTES_CHAPTERS.filter((c) => c.subjectRoute.startsWith("mht-cet-")).flatMap((c) =>
   Object.entries(c.notes).flatMap(([s, note]) =>
     note.concepts.flatMap((k) =>
@@ -70,6 +89,17 @@ describe("MHT-CET notes figures", () => {
     const markup = renderDiagramMarkup(viz as VisualizationSlug);
     expect(markup).toContain("<svg");
     expect(visualTextProblems(markup, { noDashes: viz.startsWith("cet-") })).toEqual([]);
+    // A raw "V_R" or "X_C" reads as code; write a subscript (₁, ₘₐₓ) or a word.
+    if (viz.startsWith("cet-")) expect(visibleText(markup).match(/\S*_\S*/g) ?? []).toEqual([]);
+  });
+
+  it("a header carries no maths: it is shown in capitals, which turns ν into N and λ into Λ", () => {
+    const bad: string[] = [];
+    for (const viz of figures.filter((f) => !SHIPPED_MATHS_HEADERS.has(f))) {
+      const header = renderDiagramMarkup(viz as VisualizationSlug).match(/(?:Diagram|Visualization|Animation) · ([^<]*)/)?.[1] ?? "";
+      if (/[α-ωΑ-Ω₀-₉⁰-⁹ₐ-ₜ=]/.test(header)) bad.push(`${viz}: ${header}`);
+    }
+    expect(bad).toEqual([]);
   });
 
   it("an animated figure's markup lists every step (at least three), each with words", () => {

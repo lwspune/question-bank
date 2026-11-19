@@ -13,6 +13,7 @@ export const YDSE_FRINGES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-fringe-width",
       name: "Fringe Width",
+      visualizationSlug: "cet-ydse-fringe-width",
       intuition:
         "Fringes are spaced by the distance over which the path difference grows by one wavelength. A longer wavelength or a farther screen spreads them out; wider-set slits crowd them in. In water the wavelength shrinks by μ, and so does the fringe width.",
       definition:

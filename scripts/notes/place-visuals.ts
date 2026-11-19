@@ -1,25 +1,45 @@
 /**
- * Place figures that are ALREADY wired (in the VisualizationSlug union and in
- * ConceptUnitCard) on notes concepts: adds `visualizationSlug` to each target
- * concept under src/app/notes/. For a NEW figure, wire it first
- * (scripts/imat/wire-visuals.ts does both steps for IMAT).
+ * Place figures on notes concepts under src/app/notes/: adds
+ * `visualizationSlug` to each target concept. A row naming a `component` is a
+ * NEW figure: it is first wired into the VisualizationSlug union
+ * (src/app/notes/_types.ts) and renderVisualization (ConceptUnitCard.tsx).
+ * A row without one must name a figure that is already wired (a borrow).
+ * (IMAT's concepts live elsewhere: scripts/imat/wire-visuals.ts.)
  *
  *   npx tsx scripts/notes/place-visuals.ts <manifest.json> [--dry]
  *
- * Manifest: [{ "slug": "field-lines-charge", "concept": "cetp-field-superposition" }]
+ * Manifest: [{ "slug": "field-lines-charge", "concept": "cetp-field-superposition" },
+ *            { "slug": "cet-pn-junction", "component": "CetPnJunction", "concept": "cetp-depletion-layer" }]
  *
- * Refuses, and writes nothing, when a slug is not in the union, a concept
- * matches no file or several, a concept already has a figure, a concept appears
- * twice, or a page would show the same figure twice. Keeps each file's own line
- * endings. Written 2026-11-19 for the MHT-CET notes figures.
+ * Refuses, and writes nothing, when a borrowed slug is not wired, a new slug is
+ * already wired or its component file is missing, a concept matches no file or
+ * several, a concept already has a figure, a concept appears twice, or a page
+ * would show the same figure twice. Keeps each file's own line endings.
+ * Written 2026-11-19 for the MHT-CET notes figures.
  */
-import { readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
-type Row = { slug: string; concept: string };
+type Row = { slug: string; concept: string; component?: string };
 
 const TYPES = "src/app/notes/_types.ts";
+const CARD = "src/app/notes/_components/ConceptUnitCard.tsx";
+const VIZ = "src/app/notes/_components/visualizations";
 const NOTES = "src/app/notes";
+// The same anchors as scripts/imat/wire-visuals.ts: new entries go just above
+// (union) or below (import, case) the last IMAT one, so the anchors survive.
+const LAST_UNION = '  | "imat-chart-types";';
+const LAST_IMPORT = 'import ImatChartTypes from "./visualizations/ImatChartTypes";';
+const LAST_CASE = '    case "imat-chart-types":\n      return <ImatChartTypes />;';
+
+const toLf = (s: string) => s.replace(/\r\n/g, "\n");
+
+/** Edit with LF, give back the text with the file's own line ending. */
+function editFile(file: string, fn: (lf: string) => string): string {
+  const raw = readFileSync(file, "utf8");
+  const next = fn(toLf(raw));
+  return raw.includes("\r\n") ? next.replace(/\n/g, "\r\n") : next;
+}
 
 function walk(d: string, out: string[] = []): string[] {
   for (const f of readdirSync(d)) {
@@ -50,14 +70,18 @@ function main() {
   const pageFigures = new Map<string, Set<string>>();
 
   for (const r of rows) {
-    if (!types.includes(`"${r.slug}"`)) problems.push(`${r.slug}: not in the VisualizationSlug union`);
-    const hits = files.filter((x) => x.raw.replace(/\r\n/g, "\n").includes(`\n      slug: "${r.concept}",\n`));
+    if (r.component) {
+      if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(r.slug)) problems.push(`${r.slug}: slug must be kebab-case`);
+      if (types.includes(`"${r.slug}"`)) problems.push(`${r.slug}: already wired`);
+      if (!existsSync(path.join(VIZ, `${r.component}.tsx`))) problems.push(`${r.slug}: no ${r.component}.tsx`);
+    } else if (!types.includes(`"${r.slug}"`)) problems.push(`${r.slug}: not in the VisualizationSlug union`);
+    const hits = files.filter((x) => toLf(x.raw).includes(`\n      slug: "${r.concept}",\n`));
     if (hits.length !== 1) {
       problems.push(`${r.concept}: matched ${hits.length} files`);
       continue;
     }
     const file = hits[0].f;
-    const t = (edits.get(file) ?? hits[0].raw).replace(/\r\n/g, "\n");
+    const t = toLf(edits.get(file) ?? hits[0].raw);
     const span = conceptSpan(t, r.concept)!;
     const body = t.slice(span.start, span.end);
     if (body.includes("visualizationSlug")) {
@@ -84,11 +108,31 @@ function main() {
     console.log("nothing written");
     process.exit(1);
   }
+
+  const fresh = rows.filter((r) => r.component);
+  if (fresh.length) {
+    edits.set(
+      TYPES,
+      editFile(TYPES, (t) => {
+        if (!t.includes(LAST_UNION)) throw new Error("union anchor not found");
+        return t.replace(LAST_UNION, `${fresh.map((r) => `  | "${r.slug}"`).join("\n")}\n${LAST_UNION}`);
+      }),
+    );
+    edits.set(
+      CARD,
+      editFile(CARD, (t) => {
+        if (!t.includes(LAST_IMPORT) || !t.includes(LAST_CASE)) throw new Error("card anchors not found");
+        const imports = fresh.map((r) => `import ${r.component} from "./visualizations/${r.component}";`).join("\n");
+        const cases = fresh.map((r) => `    case "${r.slug}":\n      return <${r.component} />;`).join("\n");
+        return t.replace(LAST_IMPORT, `${LAST_IMPORT}\n${imports}`).replace(LAST_CASE, `${LAST_CASE}\n${cases}`);
+      }),
+    );
+  }
   for (const [file, text] of edits) {
     if (!dry) writeFileSync(file, text);
     console.log(`${dry ? "would write" : "wrote"} ${path.relative(process.cwd(), file)}`);
   }
-  console.log(`${rows.length} figures placed${dry ? " (dry run)" : ""}`);
+  console.log(`${rows.length} figures placed, ${fresh.length} of them newly wired${dry ? " (dry run)" : ""}`);
 }
 
 main();
