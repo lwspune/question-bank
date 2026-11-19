@@ -71,6 +71,7 @@ export const PROCESSES_TD_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpthermo-work-area",
       name: "Work as the area under a P–V path",
+      visualizationSlug: "jee-pv-work-area",
       intuition:
         "W = ∫P dV, so on a P–V diagram the work done by the gas is the area between the path and the volume axis. Moving to the right (expansion) the area counts positive; moving to the left (compression) it counts negative. Break a path into straight pieces and add their signed areas. An isotherm is a curve, so there you use its formula instead.",
       definition:

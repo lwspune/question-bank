@@ -76,6 +76,14 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import JeePvWorkArea from "./visualizations/JeePvWorkArea";
+import JeeForceDisplacementArea from "./visualizations/JeeForceDisplacementArea";
+import JeeStressStrain from "./visualizations/JeeStressStrain";
+import JeeParallelAxis from "./visualizations/JeeParallelAxis";
+import JeeShmEnergyGraphs from "./visualizations/JeeShmEnergyGraphs";
+import JeePrismMinDeviation from "./visualizations/JeePrismMinDeviation";
+import JeeBindingEnergyCurve from "./visualizations/JeeBindingEnergyCurve";
+import JeeMaxwellSpeeds from "./visualizations/JeeMaxwellSpeeds";
 import CetLppCornerPoints from "./visualizations/CetLppCornerPoints";
 import CetLppHalfPlane from "./visualizations/CetLppHalfPlane";
 import CetPairOfLinesAngle from "./visualizations/CetPairOfLinesAngle";
@@ -814,6 +822,22 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "jee-pv-work-area":
+      return <JeePvWorkArea />;
+    case "jee-force-displacement-area":
+      return <JeeForceDisplacementArea />;
+    case "jee-stress-strain":
+      return <JeeStressStrain />;
+    case "jee-parallel-axis":
+      return <JeeParallelAxis />;
+    case "jee-shm-energy-graphs":
+      return <JeeShmEnergyGraphs />;
+    case "jee-prism-min-deviation":
+      return <JeePrismMinDeviation />;
+    case "jee-binding-energy-curve":
+      return <JeeBindingEnergyCurve />;
+    case "jee-maxwell-speeds":
+      return <JeeMaxwellSpeeds />;
     case "cet-lpp-corner-points":
       return <CetLppCornerPoints />;
     case "cet-lpp-half-plane":

@@ -460,6 +460,14 @@ export type VisualizationSlug =
   | "cet-modulus-circle"
   | "cet-de-solution-family"
   | "cet-cooling-curve"
+  | "jee-pv-work-area"
+  | "jee-force-displacement-area"
+  | "jee-stress-strain"
+  | "jee-parallel-axis"
+  | "jee-shm-energy-graphs"
+  | "jee-prism-min-deviation"
+  | "jee-binding-energy-curve"
+  | "jee-maxwell-speeds"
   | "imat-chart-types";
 
 export type TrapCallout = {

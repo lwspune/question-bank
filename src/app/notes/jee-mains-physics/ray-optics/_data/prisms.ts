@@ -13,6 +13,7 @@ export const PRISMS_RAY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpray-min-deviation",
       name: "Prism and minimum deviation",
+      visualizationSlug: "jee-prism-min-deviation",
       intuition:
         "A ray through a prism bends at both faces. The two refraction angles inside always add up to the prism angle A, and the total deviation is i + e − A. As i grows, the deviation first falls and then rises. At the bottom of that curve the ray passes symmetrically: i = e, and inside an isosceles prism it runs parallel to the base. That symmetric ray gives the formula that measures μ.",
       definition:

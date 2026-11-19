@@ -127,6 +127,7 @@ export const YOUNG_SOLID_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jpsolid-material-graphs",
       name: "What Young's modulus depends on, and reading it off a graph",
+      visualizationSlug: "jee-stress-strain",
       intuition:
         "Young's modulus belongs to the material, not to the wire. A longer or thinner wire stretches more under a load, but its Y is the same. To read Y off a graph, first write the slope from ΔL = FL/(AY), then decide whether Y sits on top of that slope or below it.",
       definition:

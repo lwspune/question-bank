@@ -70,6 +70,7 @@ export const WORK_WEP_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpwep-force-integral",
       name: "Work done by a force that varies with position",
+      visualizationSlug: "jee-force-displacement-area",
       intuition:
         "When the force changes as the body moves, cut the path into small steps. Each step does F dx of work, and adding the steps is an integral. On an F–x graph the same sum is the area under the curve. In a plane, the x-part of the force works only through dx and the y-part only through dy.",
       definition:

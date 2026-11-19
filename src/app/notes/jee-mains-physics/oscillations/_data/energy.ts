@@ -74,6 +74,7 @@ export const ENERGY_OSC_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jposc-energy-graphs",
       name: "Graphs and averages of energy in SHM",
+      visualizationSlug: "jee-shm-energy-graphs",
       intuition:
         "Kinetic and potential energy go as \\(\\cos^{2}\\) and \\(\\sin^{2}\\) of the phase, so each repeats twice per oscillation and is never negative. Against displacement they are two parabolas that add to a flat line. Most graph questions are answered by the shape and by where each curve is zero.",
       definition:

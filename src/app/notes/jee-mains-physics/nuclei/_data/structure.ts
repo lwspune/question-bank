@@ -140,6 +140,7 @@ export const STRUCTURE_NUC_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jpnuc-be-curve",
       name: "The binding-energy curve and the nuclear force",
+      visualizationSlug: "jee-binding-energy-curve",
       intuition:
         "Plot BE per nucleon against A. It climbs fast for light nuclei, peaks near iron at A ≈ 56, and then falls slowly. In the long middle it is almost flat, because the nuclear force reaches only the nearest neighbours: adding nucleons adds the same bond energy each time. Any change that moves nuclei toward the peak releases energy.",
       definition:

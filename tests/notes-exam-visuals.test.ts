@@ -39,7 +39,7 @@ const MIN_FIGURES: Record<string, number> = {
   "mht-cet-maths": 122,
   "mht-cet-physics": 40,
   "mht-cet-chemistry": 33,
-  "jee-mains-physics": 63,
+  "jee-mains-physics": 71,
   "jee-mains-chemistry": 29,
   "jee-mains-maths": 62,
 };
