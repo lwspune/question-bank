@@ -14,6 +14,7 @@ export const TRIG_EQUATIONS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cettf-general-solutions",
       name: "General and Principal Solutions of sin θ = k, cos θ = k, tan θ = k",
+      visualizationSlug: "cet-unit-circle-solutions",
       intuition:
         "A trigonometric ratio repeats, so an equation like \\(\\sin\\theta = \\frac12\\) has infinitely many solutions. Find ONE angle that works (the principal value \\(\\alpha\\)), then add the repeat: tangent repeats every \\(\\pi\\), cosine is symmetric about 0, and sine is symmetric about \\(\\frac{\\pi}{2}\\), which is where the \\((-1)^n\\) comes from.",
       definition:

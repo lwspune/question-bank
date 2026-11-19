@@ -452,6 +452,14 @@ export type VisualizationSlug =
   | "cet-carbonyl-addition"
   | "cet-saytzeff-elimination"
   | "cet-chain-growth"
+  | "cet-lpp-corner-points"
+  | "cet-lpp-half-plane"
+  | "cet-pair-of-lines-angle"
+  | "cet-unit-circle-solutions"
+  | "cet-argand-rotation"
+  | "cet-modulus-circle"
+  | "cet-de-solution-family"
+  | "cet-cooling-curve"
   | "imat-chart-types";
 
 export type TrapCallout = {

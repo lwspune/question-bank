@@ -14,6 +14,7 @@ export const ANGLE_BETWEEN_THE_PAIR_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetpsl-angle-formula-perpendicular-and-parallel",
       name: "tan θ = 2√(h² − ab)/|a + b|: Perpendicular When a + b = 0, Coincident When h² = ab",
+      visualizationSlug: "cet-pair-of-lines-angle",
       intuition:
         "Feed \\(m_1 + m_2\\) and \\(m_1 m_2\\) into \\(\\tan\\theta = \\left|\\dfrac{m_1 - m_2}{1 + m_1 m_2}\\right|\\): the numerator becomes \\(\\dfrac{2\\sqrt{h^2 - ab}}{|b|}\\) and the denominator \\(\\dfrac{a + b}{b}\\). The angle is \\(90^\\circ\\) exactly when \\(a + b = 0\\), and \\(0\\) when \\(h^2 = ab\\).",
       definition:

@@ -15,6 +15,7 @@ export const LOCUS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetcn-circle-from-modulus-condition",
       name: "|z − a| = r Is a Circle: Centre a, Radius r",
+      visualizationSlug: "cet-modulus-circle",
       intuition:
         "\\(|z - a|\\) measures how far \\(z\\) is from the point \\(a\\). Keeping that distance fixed at \\(r\\) traces a circle. \\(|z + 1| = 1\\) is \\(|z - (-1)| = 1\\): centre \\((-1, 0)\\), radius \\(1\\).",
       definition:

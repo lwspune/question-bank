@@ -76,6 +76,14 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import CetLppCornerPoints from "./visualizations/CetLppCornerPoints";
+import CetLppHalfPlane from "./visualizations/CetLppHalfPlane";
+import CetPairOfLinesAngle from "./visualizations/CetPairOfLinesAngle";
+import CetUnitCircleSolutions from "./visualizations/CetUnitCircleSolutions";
+import CetArgandRotation from "./visualizations/CetArgandRotation";
+import CetModulusCircle from "./visualizations/CetModulusCircle";
+import CetDeSolutionFamily from "./visualizations/CetDeSolutionFamily";
+import CetCoolingCurve from "./visualizations/CetCoolingCurve";
 import CetSn1VsSn2 from "./visualizations/CetSn1VsSn2";
 import CetEasMechanism from "./visualizations/CetEasMechanism";
 import CetDirectingEffects from "./visualizations/CetDirectingEffects";
@@ -806,6 +814,22 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "cet-lpp-corner-points":
+      return <CetLppCornerPoints />;
+    case "cet-lpp-half-plane":
+      return <CetLppHalfPlane />;
+    case "cet-pair-of-lines-angle":
+      return <CetPairOfLinesAngle />;
+    case "cet-unit-circle-solutions":
+      return <CetUnitCircleSolutions />;
+    case "cet-argand-rotation":
+      return <CetArgandRotation />;
+    case "cet-modulus-circle":
+      return <CetModulusCircle />;
+    case "cet-de-solution-family":
+      return <CetDeSolutionFamily />;
+    case "cet-cooling-curve":
+      return <CetCoolingCurve />;
     case "cet-sn1-vs-sn2":
       return <CetSn1VsSn2 />;
     case "cet-eas-mechanism":

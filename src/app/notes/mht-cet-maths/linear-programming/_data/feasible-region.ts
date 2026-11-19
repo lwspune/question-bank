@@ -14,6 +14,7 @@ export const FEASIBLE_REGION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetlpp-half-plane-test",
       name: "The Half-Plane Test: Draw the Line, Test a Point, Keep One Side",
+      visualizationSlug: "cet-lpp-half-plane",
       intuition:
         "\\(ax + by \\le c\\) is everything on one side of the line \\(ax + by = c\\). Substitute a point NOT on the line — the origin whenever the line misses it — and if the inequality holds, keep the origin's side; otherwise keep the other side.",
       definition:

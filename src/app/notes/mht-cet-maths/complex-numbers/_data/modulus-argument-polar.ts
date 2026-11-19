@@ -140,6 +140,7 @@ export const MODULUS_ARGUMENT_POLAR_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetcn-polar-form-and-de-moivre",
       name: "Polar Form and De Moivre: Powers, Rotations and sin θ + i cos θ",
+      visualizationSlug: "cet-argand-rotation",
       intuition:
         "Write \\(z = r(\\cos\\theta + i\\sin\\theta)\\). Then \\(z^n = r^n(\\cos n\\theta + i\\sin n\\theta)\\): multiply the angle, raise the modulus. Multiplying by \\(i\\) is a rotation by \\(\\dfrac{\\pi}{2}\\), which is how a 'particle moves through an angle' stem is answered.",
       definition:
