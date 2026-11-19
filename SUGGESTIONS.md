@@ -146,8 +146,8 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 **Status: open.** The move (932 SSC questions out of Current Affairs into a new Static GK subject, `scripts/ssc-cgl/static-gk/README.md`) made them findable in the bank and in mocks. Three follow-ups make it pay off:
 
 - **Static GK notes for SSC CGL.** The SSC notes skip Current Affairs because it goes stale; Static GK does not. Art and Culture (about 330 CGL-family rows) and Sports (about 250) are big enough for a chapter each.
-- **A Static GK daily homework plan** for SSC CGL, CHSL and CPO (`homework_plans`, one per subject today, none for Current Affairs).
-- **Static GK in the SSC General Awareness ebook** (`src/lib/ebooks/paperBooks.ts:259` `planSubjects`), once the homework plan exists; the ebook is built from homework plans.
+- **A Static GK daily homework plan**: BUILT 2026-11-19, UNPUBLISHED until the owner looks (`ssc-cgl-static-gk` 548 items, `ssc-chsl-static-gk` 141, `ssc-cpo-static-gk` 191; data in `scripts/homework/data/`). Publish: `npx tsx scripts/homework/build-plan.ts scripts/homework/data/<slug>.json --apply --publish`.
+- **Static GK in the SSC General Awareness ebook**: WIRED 2026-11-19 (`planSubjects` + chapter order in `src/lib/ebooks/paperBooks.ts`). The build reads PUBLISHED plans only, so rebuild after `ssc-cgl-static-gk` is published: `npm run ebooks:build -- --book=ssc-cgl-general-awareness-repeated-pyqs --apply` (the book is inactive, no buyers).
 
 ## 2026-11-17
 

@@ -228,6 +228,11 @@ const SSC_ORDER: Record<string, readonly string[]> = {
     "Cell Biology", "Biochemistry", "Biodiversity and Classification", "Plant Biology", "Human Physiology",
     "Reproduction", "Genetics and Evolution", "Microbiology and Disease", "Ecology and Environment",
   ],
+  // The settled facts moved out of Current Affairs on 2026-11-19 (scripts/ssc-cgl/static-gk), in taxonomy order.
+  "Static GK": [
+    "Art and Culture", "Festivals, Fairs and Important Days", "Books and Authors", "Awards and Honours",
+    "Sports and Games", "Firsts, Symbols and Institutions", "Science, Space and Environment Facts",
+  ],
 };
 
 /**
@@ -256,7 +261,7 @@ const EXAM_REPEATS: RepeatsEbook[] = [
     board: "SSC CGL",
     subject: "General Awareness",
     subjectTitle: "General Awareness",
-    planSubjects: ["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology"],
+    planSubjects: ["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Static GK"],
     chapterOrder: SSC_ORDER,
   },
 ].map((b) => ({

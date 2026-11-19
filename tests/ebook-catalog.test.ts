@@ -126,10 +126,10 @@ describe("ebook catalog", () => {
     }
   });
 
-  it("reads the SSC general subjects' seven plans into one book", () => {
+  it("reads the SSC general subjects' eight plans (Static GK last) into one book", () => {
     const ga = getEbook("ssc-cgl-general-awareness-repeated-pyqs");
     if (ga?.kind !== "repeats") throw new Error("the SSC General Awareness book is missing");
-    expect(ga.planSubjects).toEqual(["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology"]);
+    expect(ga.planSubjects).toEqual(["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Static GK"]);
     expect(ga.title).toBe("SSC CGL General Awareness");
   });
 
