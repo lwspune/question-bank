@@ -245,7 +245,10 @@ async function main() {
       .eq("source_file", paper.sourceFile)
       .in("question_number", graceNumbers.map(qnOf));
     if (gErr) throw new Error(`grace row lookup failed: ${gErr.message}`);
-    const file = join(process.cwd(), "src", "lib", "mocks", "flawed.json");
+    // Beside THIS script's checkout, never process.cwd(): commits run from the
+    // main checkout (it holds .env.local; a worktree must not), and a cwd path
+    // wrote these entries into the shared main checkout (2026-11-19).
+    const file = join(__dirname, "..", "..", "src", "lib", "mocks", "flawed.json");
     const list: { id: string; reason: string }[] = JSON.parse(readFileSync(file, "utf8"));
     const known = new Set(list.map((f) => f.id));
     let added = 0;

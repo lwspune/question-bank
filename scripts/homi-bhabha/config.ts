@@ -55,9 +55,10 @@ export type ExamDef = {
   catalogFile: string;
 };
 
+// examIds created by seed-exams.ts --apply on 2026-11-19, both pass_scope 'free'.
 export const EXAMS: Record<ExamKey, ExamDef> = {
-  "homi-bhabha-6": { name: "Homi Bhabha Class 6", examId: "", catalogFile: "catalog-homi-bhabha-6.json" },
-  "homi-bhabha-9": { name: "Homi Bhabha Class 9", examId: "", catalogFile: "catalog-homi-bhabha-9.json" },
+  "homi-bhabha-6": { name: "Homi Bhabha Class 6", examId: "f1545dd6-814f-48e6-8ef1-49d9ff714d27", catalogFile: "catalog-homi-bhabha-6.json" },
+  "homi-bhabha-9": { name: "Homi Bhabha Class 9", examId: "74d9854a-a4ca-4d1b-a127-1f7d0fc61403", catalogFile: "catalog-homi-bhabha-9.json" },
 };
 
 /** The shared core is typed on a paper number; every paper here is one sitting. */
