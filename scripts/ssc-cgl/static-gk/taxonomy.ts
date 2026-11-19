@@ -54,6 +54,8 @@ export const STATIC_GK: StaticChapter[] = [
       { code: "FI-S", name: "National Symbols" },
       { code: "FI-I", name: "Institutions, Organisations and Headquarters" },
       { code: "FI-P", name: "Famous Personalities and Titles" },
+      // NDA and CDS ask settled facts about the armed forces (2026-11-19): commands, ranks, mottos, schools.
+      { code: "FI-D", name: "Armed Forces: Organisation, Ranks and Institutions" },
     ],
   },
   {

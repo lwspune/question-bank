@@ -17,7 +17,7 @@ export function requireExamId(): string {
  * General Awareness, split into the eight subjects CDS and SSC CGL use, plus Computer Knowledge:
  * NTPC's syllabus names "basics of computers", and each paper asks one to three such questions.
  */
-const GA = ["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Current Affairs", "Computer Knowledge"];
+const GA = ["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Current Affairs", "Static GK", "Computer Knowledge"];
 export const SUBJECTS = ["Mathematics", "Reasoning", ...GA];
 
 /**
