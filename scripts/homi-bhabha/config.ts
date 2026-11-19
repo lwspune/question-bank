@@ -123,7 +123,12 @@ const DEFS: Def[] = [
   // ---- Std IX
   { id: "hb-9-2010", exam: "homi-bhabha-9", pdf: "ix-2010-en.pdf", pages: range(2, 11), marathi: { pdf: "ix-2010-mr.pdf", pages: [] }, year: 2010, date: "4 September 2010" },
   { id: "hb-9-2017", exam: "homi-bhabha-9", pdf: "ix-2017-2018-en.pdf", pages: range(2, 15), marathi: { pdf: "ix-2017-2018-mr.pdf", pages: [] }, year: 2017, date: "16 September 2017" },
-  { id: "hb-9-2018", exam: "homi-bhabha-9", pdf: "ix-2017-2018-en.pdf", pages: range(17, 30), marathi: { pdf: "ix-2017-2018-mr.pdf", pages: [] }, year: 2018, date: "6 October 2018" },
+  {
+    id: "hb-9-2018", exam: "homi-bhabha-9", pdf: "ix-2017-2018-en.pdf", pages: range(17, 30), marathi: { pdf: "ix-2017-2018-mr.pdf", pages: [] }, year: 2018, date: "6 October 2018",
+    // Q36 prints options (A) and (D) identically ("(i) and (iii)") and the
+    // paper has no key to say which was meant.
+    held: { numbers: [36], why: "options (A) and (D) are printed identically" },
+  },
   {
     id: "hb-9-2021-jan", exam: "homi-bhabha-9", pdf: "ix-2021-jan-en.pdf", pages: range(1, 26), marathi: { pdf: "ix-2021-jan-mr.pdf", pages: [] },
     year: 2021, date: "24 January 2021, online", key: { marked: true, label: "MSTA's updated answer key (ticked in the paper)", final: true },
