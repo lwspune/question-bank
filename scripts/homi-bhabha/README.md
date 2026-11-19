@@ -91,6 +91,28 @@ A key's letters (A-D, "B or C", "DROP") are read twice by eye and diffed, and
 kept OUTSIDE the repo until both blind passes are written; `lib.ts`
 `normaliseKey` refuses an unreadable cell or a short key.
 
+## Notes and mocks (Std IX, 2026-11-19)
+
+**Notes** (`/notes/homi-bhabha-9`, English only, owner): every Std IX chapter with 10+ questions
+except "Science and Technology in the News" (current affairs goes stale), 32 chapters, listed in
+`notes/manifest.json`. Contract for drafting agents: `notes/NOTES_BRIEF.md`; model chapter Sound
+(`src/app/notes/homi-bhabha-9-physics/sound/`, plan `notes/plans/sound.ts`, tags `notes/tags/so.json`).
+Per chapter, from the worktree (the DB steps get only the two Supabase settings from the main
+checkout; no .env.local is ever copied here):
+
+```sh
+python scripts/homi-bhabha/notes/ship.py dump <abbr>   # generated-papers/_cdsk_hb9<abbr>.{md,json}
+python scripts/homi-bhabha/notes/ship.py plan <abbr>   # the re-cut's dry run
+python scripts/homi-bhabha/notes/ship.py ship <abbr>   # re-cut (bank + band + merged files), register, tag
+```
+
+`reshape.ts` moves the bank and the lane's band and merged files together, so a re-merge or
+re-commit cannot undo a re-cut. After a batch: `notes:order` (writes the bank: run with production
+settings), `notes:nav-index`, `notes:chapter-loaders`, `chat:notes-data`, `seo:dates`.
+
+**Mocks**: one per whole paper, `scripts/mocks/homiBhabhaSittings.ts` (MOCKS.md). 2018, January
+2021 and 2023 are held, each missing one question.
+
 ## Figures that read badly as scanned
 
 A band file's `figure` may name a lane PNG that crop.py uses instead of the
