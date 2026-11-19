@@ -469,6 +469,11 @@ export type PassCta = {
   parentLink?: boolean;
 };
 
+/** "Ask a parent to pay" (2026-11-09, migration 0244): www passes in rupees only. Every pass offer and /pricing ask this. */
+export function offersParentLink(plan: Pick<Plan, "site" | "currency">): boolean {
+  return plan.site === "pyqvault" && plan.currency === "INR";
+}
+
 export function passCta(plan: Plan | null): PassCta | null {
   if (!plan) return null;
   return {
@@ -479,6 +484,6 @@ export function passCta(plan: Plan | null): PassCta | null {
     urlKey: plan.urlKey,
     perks: [...plan.perks],
     downloads: plan.scope !== SCOPE_PRACTICE,
-    parentLink: plan.site === "pyqvault" && plan.currency === "INR",
+    parentLink: offersParentLink(plan),
   };
 }
