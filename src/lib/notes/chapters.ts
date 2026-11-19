@@ -3106,6 +3106,21 @@ import {
   HB9_FORCE_NOTES,
   HB9_FORCE_SLUGS,
 } from "@/app/notes/homi-bhabha-9-physics/force-laws-of-motion/_data";
+import {
+  HB9_CELL_CHAPTER,
+  HB9_CELL_NOTES,
+  HB9_CELL_SLUGS,
+} from "@/app/notes/homi-bhabha-9-biology/cell-tissues/_data";
+import {
+  HB9_HEREDITY_CHAPTER,
+  HB9_HEREDITY_NOTES,
+  HB9_HEREDITY_SLUGS,
+} from "@/app/notes/homi-bhabha-9-biology/heredity-evolution/_data";
+import {
+  HB9_MICROBES_CHAPTER,
+  HB9_MICROBES_NOTES,
+  HB9_MICROBES_SLUGS,
+} from "@/app/notes/homi-bhabha-9-biology/microbes/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -9952,6 +9967,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HB9_LIFE_PROCESSES_CHAPTER,
     notes: HB9_LIFE_PROCESSES_NOTES,
     slugs: HB9_LIFE_PROCESSES_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Biology",
+    subjectRoute: "homi-bhabha-9-biology",
+    subjectDisplay: "Homi Bhabha Biology",
+    chapterSlug: "cell-tissues",
+    chipLabel: "Cell and Tissues notes",
+    chapter: HB9_CELL_CHAPTER,
+    notes: HB9_CELL_NOTES,
+    slugs: HB9_CELL_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Biology",
+    subjectRoute: "homi-bhabha-9-biology",
+    subjectDisplay: "Homi Bhabha Biology",
+    chapterSlug: "heredity-evolution",
+    chipLabel: "Heredity and Evolution notes",
+    chapter: HB9_HEREDITY_CHAPTER,
+    notes: HB9_HEREDITY_NOTES,
+    slugs: HB9_HEREDITY_SLUGS,
+  },
+  {
+    examName: "Homi Bhabha Class 9",
+    subjectName: "Biology",
+    subjectRoute: "homi-bhabha-9-biology",
+    subjectDisplay: "Homi Bhabha Biology",
+    chapterSlug: "microbes",
+    chipLabel: "Microbes notes",
+    chapter: HB9_MICROBES_CHAPTER,
+    notes: HB9_MICROBES_NOTES,
+    slugs: HB9_MICROBES_SLUGS,
   },
   {
     examName: "Homi Bhabha Class 9",
