@@ -12,6 +12,7 @@ export const SSC_BEE_ECOSYSTEMS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscbeeec-ecosystems",
       name: "Ecosystems and their terms",
+      visualizationSlug: "eco-food-chain-pyramid",
       intuition:
         "An ecosystem is living things together with their surroundings. SSC asks its kinds, and the words for how much is there and how energy passes along.",
       definition:

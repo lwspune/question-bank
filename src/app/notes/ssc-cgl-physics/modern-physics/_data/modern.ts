@@ -54,6 +54,7 @@ export const SSC_FMP_MODERN_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscfmpmo-quantum",
       name: "Quantum ideas and the physicists",
+      visualizationSlug: "mp-photoelectric-setup",
       intuition:
         "Light comes in packets, and an atom's energy comes in steps. The rest of this concept pairs physicists with what they found.",
       definition:

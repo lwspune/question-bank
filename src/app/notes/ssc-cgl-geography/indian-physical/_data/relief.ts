@@ -57,6 +57,7 @@ export const SSC_GIP_RELIEF_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscgipmo-plateau",
       name: "The peninsular plateau, the Ghats and the plains",
+      visualizationSlug: "igp-physiographic-cross-section",
       intuition:
         "South of the plains lies an old, worn plateau edged by two ranges of hills, the Western and Eastern Ghats. North of it lie the flat, fertile plains built by three Himalayan rivers. SSC asks which hills belong to which Ghats.",
       definition:

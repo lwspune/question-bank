@@ -51,6 +51,7 @@ export const SSC_FLO_LIGHT_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscfloli-refraction",
       name: "Refraction, the eye and light's behaviour",
+      visualizationSlug: "hp-eye-cross-section",
       intuition:
         "Light slows when it enters glass or water, but its frequency is set by the source and does not change. Its wavelength shortens instead.",
       definition:
