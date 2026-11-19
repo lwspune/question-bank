@@ -12,6 +12,7 @@ export const SSC_TD_BOATS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssctdbt-speeds",
       name: "Downstream and upstream speeds",
+      visualizationSlug: "ssc-boats-streams",
       intuition:
         "In still water a boat moves at its own speed. Downstream the river carries it along, so the two speeds add; upstream the river pushes back, so the stream's speed is taken away. Know any two of the four speeds and you know the other two.",
       definition:

@@ -163,6 +163,7 @@ export const SSC_M3_RECASTING_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscm3rc-water",
       name: "Water displaced and the rise in level",
+      visualizationSlug: "ssc-sphere-in-cylinder",
       intuition:
         "A stone sunk in a tank pushes aside exactly its own volume of water. That water has nowhere to go but up, so it spreads over the tank's base as a thin slab.",
       definition:

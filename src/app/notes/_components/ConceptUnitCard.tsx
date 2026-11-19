@@ -76,6 +76,14 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import SscMirrorWaterImage from "./visualizations/SscMirrorWaterImage";
+import SscFamilyTree from "./visualizations/SscFamilyTree";
+import SscMediansCentroid from "./visualizations/SscMediansCentroid";
+import SscTowerTwoObservers from "./visualizations/SscTowerTwoObservers";
+import SscCylinderNet from "./visualizations/SscCylinderNet";
+import SscSphereInCylinder from "./visualizations/SscSphereInCylinder";
+import SscAlligationCross from "./visualizations/SscAlligationCross";
+import SscBoatsStreams from "./visualizations/SscBoatsStreams";
 import NeetCountercurrent from "./visualizations/NeetCountercurrent";
 import NeetCardiacConduction from "./visualizations/NeetCardiacConduction";
 import NeetMenstrualCycle from "./visualizations/NeetMenstrualCycle";
@@ -866,6 +874,22 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "ssc-mirror-water-image":
+      return <SscMirrorWaterImage />;
+    case "ssc-family-tree":
+      return <SscFamilyTree />;
+    case "ssc-medians-centroid":
+      return <SscMediansCentroid />;
+    case "ssc-tower-two-observers":
+      return <SscTowerTwoObservers />;
+    case "ssc-cylinder-net":
+      return <SscCylinderNet />;
+    case "ssc-sphere-in-cylinder":
+      return <SscSphereInCylinder />;
+    case "ssc-alligation-cross":
+      return <SscAlligationCross />;
+    case "ssc-boats-streams":
+      return <SscBoatsStreams />;
     case "neet-countercurrent":
       return <NeetCountercurrent />;
     case "neet-cardiac-conduction":

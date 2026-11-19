@@ -12,6 +12,7 @@ export const SSC_M3_CYLINDERS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscm3cy-formulas",
       name: "Volume and surface area of a cylinder",
+      visualizationSlug: "ssc-cylinder-net",
       intuition:
         "A cylinder is a prism whose base is a circle, so its volume is the circle's area times the height. Cut the curved side down a straight line and unroll it: you get a rectangle whose sides are the circumference and the height.",
       definition:

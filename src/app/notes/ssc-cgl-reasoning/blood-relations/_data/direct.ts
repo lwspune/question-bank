@@ -12,6 +12,7 @@ export const SSC_RBR_DIRECT_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrbrdr-generations",
       name: "Counting generations up and down a family tree",
+      visualizationSlug: "ssc-family-tree",
       intuition:
         "Every relation sits on a level. Your parents are one level above you, their parents two above, your children one below. A married couple stands on one level and shares the children below it. Once each person has a level, the relation word is just the number of levels plus a gender.",
       definition:

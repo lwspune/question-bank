@@ -512,6 +512,14 @@ export type VisualizationSlug =
   | "neet-neuron-structure"
   | "neet-meiosis-prophase"
   | "neet-thylakoid-chemiosmosis"
+  | "ssc-mirror-water-image"
+  | "ssc-family-tree"
+  | "ssc-medians-centroid"
+  | "ssc-tower-two-observers"
+  | "ssc-cylinder-net"
+  | "ssc-sphere-in-cylinder"
+  | "ssc-alligation-cross"
+  | "ssc-boats-streams"
   | "imat-chart-types";
 
 export type TrapCallout = {
