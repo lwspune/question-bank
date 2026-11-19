@@ -42,7 +42,7 @@ export const HB9_IC_HARDWARE_NOTE: SubtopicNote = {
         { prompt: "Why did first-generation computers need large, cooled rooms?", answer: "Their many valves were large, used a lot of electricity and gave out much heat" },
         { prompt: "What is an integrated circuit?", answer: "Many transistors and other parts made together on one small chip of silicon" },
       ],
-      pyqExampleId: "c9bdf118-3348-43f3-92fa-26fc42dac9f9",
+      pyqExampleId: "c9bdf118-8798-410f-a9c3-f7ab21213eec",
       traps: [
         {
           title: "Giving the third generation microprocessors",
