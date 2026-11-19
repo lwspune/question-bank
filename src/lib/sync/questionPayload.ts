@@ -51,6 +51,8 @@ export type QuestionPayload = {
 const SUBJECT_MAP: Record<string, string> = {
   Mathematics: "Maths",
   "Current Affairs": "Others",
+  // Settled facts moved out of Current Affairs (2026-11-19) keep the tracker key they had.
+  "Static GK": "Others",
 };
 
 export function mapSubjectToTracker(subjectName: string): string {
