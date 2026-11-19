@@ -76,6 +76,12 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import NeetPrismDeviation from "./visualizations/NeetPrismDeviation";
+import NeetEquipotentials from "./visualizations/NeetEquipotentials";
+import NeetCapacitorDielectric from "./visualizations/NeetCapacitorDielectric";
+import NeetEthaneConformations from "./visualizations/NeetEthaneConformations";
+import NeetCarbocationStability from "./visualizations/NeetCarbocationStability";
+import NeetChemPvWork from "./visualizations/NeetChemPvWork";
 import NeetZScheme from "./visualizations/NeetZScheme";
 import NeetCalvinCycle from "./visualizations/NeetCalvinCycle";
 import NeetKranzAnatomy from "./visualizations/NeetKranzAnatomy";
@@ -854,6 +860,18 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "neet-prism-deviation":
+      return <NeetPrismDeviation />;
+    case "neet-equipotentials":
+      return <NeetEquipotentials />;
+    case "neet-capacitor-dielectric":
+      return <NeetCapacitorDielectric />;
+    case "neet-ethane-conformations":
+      return <NeetEthaneConformations />;
+    case "neet-carbocation-stability":
+      return <NeetCarbocationStability />;
+    case "neet-chem-pv-work":
+      return <NeetChemPvWork />;
     case "neet-z-scheme":
       return <NeetZScheme />;
     case "neet-calvin-cycle":

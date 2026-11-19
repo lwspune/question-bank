@@ -500,6 +500,12 @@ export type VisualizationSlug =
   | "neet-respiration-pathway"
   | "neet-lac-operon"
   | "neet-embryo-sac"
+  | "neet-prism-deviation"
+  | "neet-equipotentials"
+  | "neet-capacitor-dielectric"
+  | "neet-ethane-conformations"
+  | "neet-carbocation-stability"
+  | "neet-chem-pv-work"
   | "imat-chart-types";
 
 export type TrapCallout = {
