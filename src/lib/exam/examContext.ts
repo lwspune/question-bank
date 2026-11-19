@@ -1394,6 +1394,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "homi-bhabha-6",
+    passScope: "free", // owner 2026-11-19: free, like the other school entrances
     // Dr. Homi Bhabha Balvaidnyanik Competition (MSTA, Mumbai), Phase I written
     // test for Std VI: 100 one-mark science MCQs, 90 min, English or Marathi
     // medium. MSTA's own booklets 2010-2024 (scripts/homi-bhabha/README.md);
@@ -1414,6 +1415,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "homi-bhabha-9",
+    passScope: "free", // owner 2026-11-19: free, like the other school entrances
     // The same competition for Std IX: Physics, Chemistry, Biology, then
     // science GK (100 q, 90 min). Keys: MSTA's own for 2021 and 2024; 2010,
     // 2017 and 2018 are solved twice blind and checked by hand.

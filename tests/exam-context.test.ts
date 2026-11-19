@@ -129,7 +129,7 @@ describe("EXAM_REGISTRY", () => {
     expect(chsl?.practiceOnly).not.toBe(true);
   });
 
-  it("groups Homi Bhabha Class 6 and 9 as one family split by class: school-tier science exams, bilingual (Marathi), hidden until published", () => {
+  it("groups Homi Bhabha Class 6 and 9 as one family split by class: free school-tier science exams, bilingual (Marathi), hidden until published (owner, 2026-11-19)", () => {
     for (const [slug, label] of [["homi-bhabha-6", "Class 6"], ["homi-bhabha-9", "Class 9"]] as const) {
       const e = getExamBySlug(slug);
       expect(e?.examName).toBe(`Homi Bhabha ${label}`);
@@ -138,6 +138,7 @@ describe("EXAM_REGISTRY", () => {
       expect(e?.goal).toBe("science");
       expect(e?.bilingual).toBe(true);
       expect(e?.noPublicContent).toBe(true);
+      expect(e?.passScope).toBe("free");
     }
   });
 

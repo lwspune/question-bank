@@ -5,9 +5,9 @@
  *   npx tsx scripts/homi-bhabha/seed-exams.ts --apply  # create the missing ones
  *
  * Idempotent: an existing row is reported, never duplicated. Paste the printed
- * ids into config.ts EXAMS. pass_scope is left at the column default (the
- * normal pass rules): whether these papers are free is the owner's call, and
- * a later decision is one UPDATE plus the registry's passScope.
+ * ids into config.ts EXAMS. Both rows are FREE (owner, 2026-11-19: "Free",
+ * like AISSEE / RMS / RIMC): pass_scope 'free' (migration 0210) is what every
+ * server-side limit reads, so it must agree with the registry's passScope.
  *
  * Side effect worth knowing: `listExams` selects every exams row, so the /browse
  * exam dropdown gains these names at once. Rows commit PRIVATE, so anonymous
@@ -37,6 +37,11 @@ async function main() {
     const row = have.get(def.name);
     if (row) {
       console.log(`${key.padEnd(10)} exists   ${row.id}  pass_scope=${row.pass_scope}`);
+      if (row.pass_scope !== "free" && apply) {
+        const { error: uErr } = await client.from("exams").update({ pass_scope: "free" }).eq("id", row.id);
+        if (uErr) throw new Error(`${def.name}: pass_scope update failed: ${uErr.message}`);
+        console.log(`           pass_scope -> free`);
+      }
       continue;
     }
     if (!apply) {
@@ -45,7 +50,7 @@ async function main() {
     }
     const { data: created, error: iErr } = await client
       .from("exams")
-      .insert({ name: def.name })
+      .insert({ name: def.name, pass_scope: "free" })
       .select("id, name, pass_scope")
       .single();
     if (iErr) throw new Error(`${def.name}: insert failed: ${iErr.message}`);
@@ -61,7 +66,7 @@ async function main() {
   console.log("\nPaste into config.ts EXAMS:");
   for (const [key, def] of Object.entries(EXAMS)) {
     const r = (after ?? []).find((e) => e.name === def.name);
-    if (!r) throw new Error(`${def.name}: read-back failed`);
+    if (!r || r.pass_scope !== "free") throw new Error(`${def.name}: read-back failed or not free`);
     console.log(`  "${key}": examId "${r.id}"`);
   }
 }
