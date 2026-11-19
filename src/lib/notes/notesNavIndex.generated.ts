@@ -4581,5 +4581,229 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL Static GK",
     "chapterSlug": "science-space-environment",
     "subtopicCount": 2
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "sound",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "current-electricity",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "light",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "force-laws-of-motion",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "work-energy-power",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "space-astronomy",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "motion",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "heat",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "pressure-buoyancy",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "measurement-units",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "ict",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "gravitation",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "human-body-health",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "ecosystem-environment",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "life-processes",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "cell-tissues",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "heredity-evolution",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "microbes",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "agriculture-animal-husbandry",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "classification-of-plants",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "plants-functions",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "acids-bases-salts",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "substances-common-use",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "atomic-structure",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "carbon-compounds",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "chemical-reactions",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "matter",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "metals",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "measurement-of-matter",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "periodic-classification",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "air-water-gases",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-general-science",
+    "subjectDisplay": "Homi Bhabha General Science",
+    "chapterSlug": "scientists-discoveries",
+    "subtopicCount": 3
   }
 ];
