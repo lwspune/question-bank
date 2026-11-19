@@ -165,6 +165,7 @@ const DEFS: Def[] = [
     id: "hb-9-2023", exam: "homi-bhabha-9", pdf: "ix-2023-en-retype-neev.pdf", pages: range(1, 10),
     year: 2023, date: "2023-24 competition", key: { file: "keys/ix-2023-key.pdf", label: "MSTA's final answer key (7 November 2023)", final: true },
     retyped: "a coaching institute's re-typed copy of the 2023 paper",
+    held: { numbers: [25], why: "the retype prints the options table but not the ray diagram the question is about" },
   },
   {
     id: "hb-9-2024", exam: "homi-bhabha-9", pdf: "ix-2024-en.pdf", pages: range(2, 15), marathi: { pdf: "ix-2024-mr.pdf", pages: [] },

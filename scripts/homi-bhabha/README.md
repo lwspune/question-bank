@@ -109,6 +109,22 @@ re-uploads a committed row's figure. Show the owner a before/after sheet first.
 
 ## Key notes per paper
 
+- `hb-9-2023`: **the only copy is Neev IIT-Medical's re-typing** (owner
+  exception, 2026-11-19; provenance stays here and in config, never on a
+  student's screen). Two columns, their branding on every page, and two traps:
+  **the retype leaks answers** (Q3's last statement ended "... T. 1, 4", which
+  is option A, MSTA's answer: transcribers drop and list any such fragment)
+  and **page 10's right column is MSTA's key pasted in** (blanked from
+  out/hb-9-2023/p10*.png before the blind passes; the PDF itself is never
+  shown to a solver). The retyper's own slips were corrected in the band files
+  (40 fixes: spellings, "AI"/"NaCI", plain-digit formulas, Q47's W/M mix-up,
+  Q81's option "2, 3, 5" for "2, 3, 4", Q88's cut-off stem finished from its
+  options). **Q25 held**: the ray diagram is not in the retype. Blind passes
+  against MSTA's final key: 90/99 and 93/99, HIGH 158/159, so the text is the
+  real paper. Shared misses Q34, Q84, Q94 follow the key by hand; Q13, Q24,
+  Q31, Q44, Q60, Q80 carry a notice and grace. Figures: Q3, Q55, Q88 redrawn,
+  the rest cleaned from the embedded images (option tables left out).
+
 - `hb-9-2021-jan`: MSTA's print-out cuts off the right edge of some pasted
   stems. Kept where the meaning survives (shown as "…", with a notice: Q8,
   Q17, Q19, Q20, Q30, Q36, Q60); **Q18 held** (half of both statements lost).
