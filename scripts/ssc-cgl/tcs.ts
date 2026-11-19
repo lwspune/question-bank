@@ -191,6 +191,10 @@ export type TcsOptions = {
   /** The sheet prints no heading over its first section (CHSL 1 Jul 2024): a question before
    * any heading belongs to the layout's first section. */
   untitledFirstSection?: boolean;
+  /** The sheet numbers its questions straight through the sections (RRB NTPC Undergraduate:
+   * Q.1-30, Q.31-70, Q.71-100), not from Q.1 in each: a label keeps its printed number, which
+   * must fall inside its section's range. */
+  numberedThrough?: boolean;
 };
 
 /** "10/09/2024" (day first, as the sheets print it) -> "2024-09-10". */
@@ -379,8 +383,11 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
       if (!shift) throw new Error(`Q${q[1]} on page ${s.page} comes before any Exam Time header`);
       if (!part && opts.untitledFirstSection) part = layout[0].part;
       if (!part) throw new Error(`shift ${shift} Q${q[1]} comes before any Section heading`);
-      const local = Number(q[1]);
+      const printed = Number(q[1]);
       const count = layout.find((x) => x.part === part)!.count;
+      const local = opts.numberedThrough ? printed - offset.get(part)! : printed;
+      if (opts.numberedThrough && (local < 1 || local > count))
+        throw new Error(`shift ${shift} Q${printed} is outside PART-${part}'s questions ${offset.get(part)! + 1}-${offset.get(part)! + count} (page ${s.page})`);
       if (local > count) throw new Error(`shift ${shift} Q${local} is past the ${count} questions of PART-${part} (page ${s.page})`);
       cur = {
         sheet,
