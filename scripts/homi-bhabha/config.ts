@@ -112,6 +112,7 @@ type Def = {
   year: number;
   date: string;
   key?: Paper["key"];
+  held?: Paper["held"];
 };
 
 // Page ranges from each booklet's contact sheet (cover = page 1). The 2017-18
@@ -126,6 +127,11 @@ const DEFS: Def[] = [
   {
     id: "hb-9-2021-jan", exam: "homi-bhabha-9", pdf: "ix-2021-jan-en.pdf", pages: range(1, 26), marathi: { pdf: "ix-2021-jan-mr.pdf", pages: [] },
     year: 2021, date: "24 January 2021, online", key: { marked: true, label: "MSTA's updated answer key (ticked in the paper)", final: true },
+    // MSTA's print-out pastes some stems as images wider than the page, so long
+    // lines lose their right edge. Kept where the meaning survives (marked
+    // "…", with a notice); Q18 loses half of both statements and cannot be
+    // answered as printed.
+    held: { numbers: [18], why: "MSTA's print cuts off half of both statements" },
   },
   {
     id: "hb-9-2021-nov", exam: "homi-bhabha-9", pdf: "ix-2021-nov-en.pdf", pages: range(1, 26), marathi: { pdf: "ix-2021-nov-mr.pdf", pages: [] },
@@ -176,6 +182,7 @@ export const PAPERS: Record<string, Paper> = Object.fromEntries(
       pyqNote: `Homi Bhabha ${STD[d.exam]} (${d.date})`,
       pattern: HB,
       key: d.key,
+      held: d.held,
     },
   ]),
 );

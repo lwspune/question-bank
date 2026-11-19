@@ -91,6 +91,20 @@ A key's letters (A-D, "B or C", "DROP") are read twice by eye and diffed, and
 kept OUTSIDE the repo until both blind passes are written; `lib.ts`
 `normaliseKey` refuses an unreadable cell or a short key.
 
+## Key notes per paper
+
+- `hb-9-2021-jan`: MSTA's print-out cuts off the right edge of some pasted
+  stems. Kept where the meaning survives (shown as "…", with a notice: Q8,
+  Q17, Q19, Q20, Q30, Q36, Q60); **Q18 held** (half of both statements lost).
+  **Q82 carries no tick in either copy** (MSTA: "Give full credit"; no option
+  is the expected bird-flu strain), so it is DROP in the key: a withdrawn row
+  awarded to everyone. **Q84**: the English copy ticks A, the Marathi copy D;
+  A is right (carrier x normal gives 50% carriers, 50% normal), so the key
+  is A.
+- `hb-9-2021-nov`, `hb-9-2021-dec`: key read from the English and Marathi
+  copies' blue "Correct Option(s)" lines (Dec English is a grey scan, so its
+  OCR letters were the cross-check: 85 of 85 in order).
+
 ## Status
 
 2026-11-19: sources saved, lane scaffolded on `feat/homi-bhabha`. Nothing
