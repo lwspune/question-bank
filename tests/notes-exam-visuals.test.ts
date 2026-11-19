@@ -44,7 +44,7 @@ const MIN_FIGURES: Record<string, number> = {
   "jee-mains-maths": 71,
   "neet-physics": 51,
   "neet-chemistry": 24,
-  "neet-botany": 12,
+  "neet-botany": 18,
   "neet-zoology": 9,
   "ssc-cgl-maths": 23,
   "ssc-cgl-tier-2-maths": 16,

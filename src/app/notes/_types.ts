@@ -494,6 +494,12 @@ export type VisualizationSlug =
   | "jee-complex-rotation"
   | "jee-mean-value-theorem"
   | "jee-riemann-sum"
+  | "neet-z-scheme"
+  | "neet-calvin-cycle"
+  | "neet-kranz-anatomy"
+  | "neet-respiration-pathway"
+  | "neet-lac-operon"
+  | "neet-embryo-sac"
   | "imat-chart-types";
 
 export type TrapCallout = {

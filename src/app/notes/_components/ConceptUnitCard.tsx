@@ -76,6 +76,12 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import NeetZScheme from "./visualizations/NeetZScheme";
+import NeetCalvinCycle from "./visualizations/NeetCalvinCycle";
+import NeetKranzAnatomy from "./visualizations/NeetKranzAnatomy";
+import NeetRespirationPathway from "./visualizations/NeetRespirationPathway";
+import NeetLacOperon from "./visualizations/NeetLacOperon";
+import NeetEmbryoSac from "./visualizations/NeetEmbryoSac";
 import JeePointImageLine from "./visualizations/JeePointImageLine";
 import JeeChordLength from "./visualizations/JeeChordLength";
 import JeeTwoCircles from "./visualizations/JeeTwoCircles";
@@ -848,6 +854,18 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "neet-z-scheme":
+      return <NeetZScheme />;
+    case "neet-calvin-cycle":
+      return <NeetCalvinCycle />;
+    case "neet-kranz-anatomy":
+      return <NeetKranzAnatomy />;
+    case "neet-respiration-pathway":
+      return <NeetRespirationPathway />;
+    case "neet-lac-operon":
+      return <NeetLacOperon />;
+    case "neet-embryo-sac":
+      return <NeetEmbryoSac />;
     case "jee-point-image-line":
       return <JeePointImageLine />;
     case "jee-chord-length":

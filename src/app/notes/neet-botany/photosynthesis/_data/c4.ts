@@ -12,6 +12,7 @@ export const NEET_BO_PS_C4_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nbops-c4",
       name: "The C₄ pathway and Kranz anatomy",
+      visualizationSlug: "neet-kranz-anatomy",
       intuition:
         "C₄ plants, adapted to dry tropical places, add one step before the Calvin cycle. Their mesophyll cells catch CO₂ quickly as a 4-carbon acid and pass it to the large bundle sheath cells round the veins. There the acid gives up its CO₂, so CO₂ stays high around RuBisCO, and the Calvin cycle runs well even in heat and bright light.",
       definition:
