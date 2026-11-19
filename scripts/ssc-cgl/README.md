@@ -1,9 +1,11 @@
 # SSC CGL ingestion
 
-SSC CGL past papers into the bank under the **SSC CGL** exam (`question_kind='pyq'`), 11
+SSC CGL past papers into the bank under the **SSC CGL** exam (`question_kind='pyq'`), 12
 subjects: Reasoning, Quantitative Aptitude, English, and General Awareness split into the eight
 subjects CDS General Knowledge uses (History, Geography, Polity, Economics, Physics, Chemistry,
-Biology, Current Affairs; owner, 2026-10-16).
+Biology, Current Affairs; owner, 2026-10-16), plus **Static GK** since 2026-11-19: the settled
+facts (culture, festivals, books, sports, firsts) that had been filed under Current Affairs. Which
+is which, and the move: [static-gk/README.md](static-gk/README.md).
 
 **Status (2026-10-17): Tier I 2023, 2024 and 2025, every readable shift: 113 shifts, 11,234 rows,
 PUBLIC since 2026-10-17 (`publish.ts`), with 111 mocks (one per shift; 16 Sep 2025 S3 and 21 Sep
