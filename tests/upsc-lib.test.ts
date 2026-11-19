@@ -297,6 +297,14 @@ describe("validateRows", () => {
     expect(validateRows(voiced, 1, 1).join(" ")).toMatch(/Q1 solution: runner-up aside/);
   });
 
+  it("refuses the overruled-derivation marker: a solution must argue for the official answer", () => {
+    const marked = rows(
+      [q()],
+      [d({ reasoning: "D fits. [Answer corrected to A from the official UPSC answer key; an independent blind derivation had reached D. The reasoning above argues for D and is retained so the disagreement is visible rather than hidden.]" })]
+    );
+    expect(validateRows(marked, 1, 1).join(" ")).toMatch(/Q1 solution: argues for a letter the key overruled/);
+  });
+
   it("allows the aside where UPSC's key overruled the derivation (it argues for the key)", () => {
     const corrected = rows(
       [q()],

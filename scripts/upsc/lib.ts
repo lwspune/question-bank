@@ -514,7 +514,9 @@ export function compareToKey(key: OfficialKey, derivations: Derivation[]): KeyCo
  *
  * A row where the two disagreed gets that stated in its reasoning. Without it the
  * stored solution would argue at length for a letter the row no longer carries,
- * which is worse than either half alone.
+ * which is worse than either half alone. The statement is a MARKER, not a solution:
+ * validateRows refuses it, so the working must be rewritten to argue for the
+ * official answer before commit (scripts/reviews/apply-cse-key-corrected-solutions.ts).
  *
  * DROPPED questions and questions nobody derived are EXCLUDED rather than
  * defaulted: the first has no correct answer, and the second would ship a bare
@@ -881,6 +883,12 @@ export function validateRows(
       // The solver's "runner-up" aside is a note to the reviewer, not working
       // (2026-11-19: 336 CSE/CAPF rows shipped with it). Where UPSC's key
       // overruled the derivation the aside is the argument FOR the key, so it stays.
+      // applyOfficialKey marks an answer whose letter the key overruled; its working
+      // still argues for the derived letter, so it must be rewritten for the key
+      // before commit (83 CSE solutions shipped this way; rewritten 2026-11-20).
+      if (name === "solution" && /retained so the disagreement is visible/.test(val)) {
+        errs.push(`Q${r.questionNumber} solution: argues for a letter the key overruled; rewrite it for the official answer`);
+      }
       if (name === "solution" && !/corrected to \(?[A-D]/.test(val) && stripRunnerUp(val).removed.length) {
         errs.push(`Q${r.questionNumber} solution: runner-up aside (solver voice); keep it out of reasoning`);
       }
