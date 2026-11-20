@@ -53,6 +53,7 @@ export const SSC_FUN_UNITS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscfunun-dimensions",
       name: "Dimensions and the vernier calliper",
+      visualizationSlug: "ssc-vernier-parts",
       intuition:
         "Two quantities share dimensions when they are built the same way from mass, length and time. Work and torque are both force times a distance.",
       definition:

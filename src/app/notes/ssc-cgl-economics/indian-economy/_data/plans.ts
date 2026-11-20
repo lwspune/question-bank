@@ -55,6 +55,7 @@ export const SSC_XIE_PLANS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscxiepl-later",
       name: "The Third Plan to the Eighth, and the breaks",
+      visualizationSlug: "ssc-plan-timeline",
       intuition:
         "After the Second Plan, SSC asks each plan by its slogan or by a scheme launched in it. Learn the slogan, then place each scheme by its launch year.",
       definition:

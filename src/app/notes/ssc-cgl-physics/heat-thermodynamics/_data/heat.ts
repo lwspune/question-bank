@@ -12,6 +12,7 @@ export const SSC_FHT_HEAT_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscfhthe-heat",
       name: "Heat in daily life",
+      visualizationSlug: "ssc-matka-cooling",
       intuition:
         "Changing state takes or gives a lot of heat without changing temperature. That hidden heat explains both the steam burn and the cool matka.",
       definition:

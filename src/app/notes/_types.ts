@@ -620,6 +620,20 @@ export type VisualizationSlug =
   | "neet-limiting-reagent"
   | "neet-redox-balance"
   | "neet-phenol-acidity"
+  | "ssc-income-aggregates"
+  | "ssc-plan-timeline"
+  | "ssc-budget-deficits"
+  | "ssc-elasticity-scale"
+  | "ssc-periodic-groups"
+  | "ssc-hydrocarbon-families"
+  | "ssc-redox-numbers"
+  | "ssc-milk-ph"
+  | "ssc-mass-percent"
+  | "ssc-valency-cross"
+  | "ssc-satellite-orbits"
+  | "ssc-vernier-parts"
+  | "ssc-matka-cooling"
+  | "ssc-rigid-rotation"
   | "imat-chart-types";
 
 export type TrapCallout = {

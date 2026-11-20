@@ -12,6 +12,7 @@ export const SSC_CCB_BONDING_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssccbbo-valency",
       name: "Valency and oxidation numbers",
+      visualizationSlug: "ssc-valency-cross",
       intuition:
         "A neutral compound's charges cancel. So the oxidation numbers of all its atoms add to zero, which lets you solve for the one you do not know.",
       definition:

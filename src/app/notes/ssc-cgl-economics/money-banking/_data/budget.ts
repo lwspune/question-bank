@@ -55,6 +55,7 @@ export const SSC_XMB_BUDGET_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscxmbbu-deficits",
       name: "Deficits and fiscal policy",
+      visualizationSlug: "ssc-budget-deficits",
       intuition:
         "Each deficit compares a different pair of totals. The fiscal deficit is the one that matters most: it is the amount the government must borrow in the year.",
       definition:

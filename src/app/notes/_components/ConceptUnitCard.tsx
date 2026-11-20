@@ -76,6 +76,20 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import SscIncomeAggregates from "./visualizations/SscIncomeAggregates";
+import SscPlanTimeline from "./visualizations/SscPlanTimeline";
+import SscBudgetDeficits from "./visualizations/SscBudgetDeficits";
+import SscElasticityScale from "./visualizations/SscElasticityScale";
+import SscPeriodicGroups from "./visualizations/SscPeriodicGroups";
+import SscHydrocarbonFamilies from "./visualizations/SscHydrocarbonFamilies";
+import SscRedoxNumbers from "./visualizations/SscRedoxNumbers";
+import SscMilkPh from "./visualizations/SscMilkPh";
+import SscMassPercent from "./visualizations/SscMassPercent";
+import SscValencyCross from "./visualizations/SscValencyCross";
+import SscSatelliteOrbits from "./visualizations/SscSatelliteOrbits";
+import SscVernierParts from "./visualizations/SscVernierParts";
+import SscMatkaCooling from "./visualizations/SscMatkaCooling";
+import SscRigidRotation from "./visualizations/SscRigidRotation";
 import JeeCarbocationShift from "./visualizations/JeeCarbocationShift";
 import JeeDiboraneBorazine from "./visualizations/JeeDiboraneBorazine";
 import JeeSpinOnlyMoment from "./visualizations/JeeSpinOnlyMoment";
@@ -974,6 +988,34 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "ssc-income-aggregates":
+      return <SscIncomeAggregates />;
+    case "ssc-plan-timeline":
+      return <SscPlanTimeline />;
+    case "ssc-budget-deficits":
+      return <SscBudgetDeficits />;
+    case "ssc-elasticity-scale":
+      return <SscElasticityScale />;
+    case "ssc-periodic-groups":
+      return <SscPeriodicGroups />;
+    case "ssc-hydrocarbon-families":
+      return <SscHydrocarbonFamilies />;
+    case "ssc-redox-numbers":
+      return <SscRedoxNumbers />;
+    case "ssc-milk-ph":
+      return <SscMilkPh />;
+    case "ssc-mass-percent":
+      return <SscMassPercent />;
+    case "ssc-valency-cross":
+      return <SscValencyCross />;
+    case "ssc-satellite-orbits":
+      return <SscSatelliteOrbits />;
+    case "ssc-vernier-parts":
+      return <SscVernierParts />;
+    case "ssc-matka-cooling":
+      return <SscMatkaCooling />;
+    case "ssc-rigid-rotation":
+      return <SscRigidRotation />;
     case "jee-carbocation-shift":
       return <JeeCarbocationShift />;
     case "jee-diborane-borazine":

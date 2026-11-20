@@ -12,6 +12,7 @@ export const SSC_CAB_ACIDS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "ssccabac-daily",
       name: "Acids and bases at home",
+      visualizationSlug: "ssc-milk-ph",
       intuition:
         "Two kitchen chemicals carry most of these questions: vinegar, an acid, and baking soda, a mild base.",
       definition:
