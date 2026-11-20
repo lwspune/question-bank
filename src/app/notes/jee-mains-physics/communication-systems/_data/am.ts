@@ -72,6 +72,7 @@ export const AM_COMM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpcomm-envelope",
       name: "Maximum and minimum amplitude of an AM wave",
+      visualizationSlug: "jee-am-envelope",
       intuition:
         "The amplitude of an AM wave swings between the carrier plus the message and the carrier minus the message. So the largest and smallest amplitudes hold both pieces of information: their average is the carrier, and half their difference is the message. Divide one by the other and you have the modulation index.",
       definition:

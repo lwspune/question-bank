@@ -37,12 +37,12 @@ const NEW_FIGURE = /^(cet|jee|neet|ssc)-/;
 /** Concepts carrying a figure, per subject. Raise these as figures land; never lower them. */
 const MIN_FIGURES: Record<string, number> = {
   "mht-cet-maths": 122,
-  "mht-cet-physics": 40,
+  "mht-cet-physics": 46,
   "mht-cet-chemistry": 33,
-  "jee-mains-physics": 80,
+  "jee-mains-physics": 82,
   "jee-mains-chemistry": 37,
   "jee-mains-maths": 71,
-  "neet-physics": 53,
+  "neet-physics": 54,
   "neet-chemistry": 27,
   "neet-botany": 27,
   "neet-zoology": 13,

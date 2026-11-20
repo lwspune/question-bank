@@ -98,6 +98,7 @@ export const RADIATION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-th-wien-law",
       name: "Wien's Law: the Peak Moves With Temperature",
+      visualizationSlug: "cet-wien-peak",
       intuition:
         "A hotter body's spectrum peaks at a shorter wavelength: λ_mT = b, about 2.9 × 10⁻³ m K. So the frequency at the peak is proportional to T — a straight line through the origin on a ν_m–T graph. Many questions pair it with Stefan's law: if the peak wavelength falls to λ/3, the temperature has tripled and the emissive power has risen 81 times. For bodies of different sizes, combine the two as P ∝ R²/λ_m⁴.",
       definition:

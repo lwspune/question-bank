@@ -76,6 +76,14 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import CetWienPeak from "./visualizations/CetWienPeak";
+import CetGHeightDepth from "./visualizations/CetGHeightDepth";
+import CetHysteresisLoop from "./visualizations/CetHysteresisLoop";
+import CetErrorsAdd from "./visualizations/CetErrorsAdd";
+import CetCutSpring from "./visualizations/CetCutSpring";
+import JeeHeatingCurve from "./visualizations/JeeHeatingCurve";
+import JeeAmEnvelope from "./visualizations/JeeAmEnvelope";
+import NeetEmWaveFields from "./visualizations/NeetEmWaveFields";
 import SscT2SeriesBlock from "./visualizations/SscT2SeriesBlock";
 import SscT2SignRewrite from "./visualizations/SscT2SignRewrite";
 import SscT2DsRow from "./visualizations/SscT2DsRow";
@@ -925,6 +933,22 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "cet-wien-peak":
+      return <CetWienPeak />;
+    case "cet-g-height-depth":
+      return <CetGHeightDepth />;
+    case "cet-hysteresis-loop":
+      return <CetHysteresisLoop />;
+    case "cet-errors-add":
+      return <CetErrorsAdd />;
+    case "cet-cut-spring":
+      return <CetCutSpring />;
+    case "jee-heating-curve":
+      return <JeeHeatingCurve />;
+    case "jee-am-envelope":
+      return <JeeAmEnvelope />;
+    case "neet-em-wave-fields":
+      return <NeetEmWaveFields />;
     case "ssc-t2-series-block":
       return <SscT2SeriesBlock />;
     case "ssc-t2-sign-rewrite":

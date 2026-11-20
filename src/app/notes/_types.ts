@@ -571,6 +571,14 @@ export type VisualizationSlug =
   | "ssc-t2-software-layers"
   | "ssc-t2-security-tools"
   | "ssc-t2-hub-switch"
+  | "cet-wien-peak"
+  | "cet-g-height-depth"
+  | "cet-hysteresis-loop"
+  | "cet-errors-add"
+  | "cet-cut-spring"
+  | "jee-heating-curve"
+  | "jee-am-envelope"
+  | "neet-em-wave-fields"
   | "imat-chart-types";
 
 export type TrapCallout = {

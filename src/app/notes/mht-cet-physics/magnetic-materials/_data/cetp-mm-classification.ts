@@ -55,6 +55,7 @@ export const CLASSIFICATION_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "cetp-mm-hysteresis-shielding",
       name: "Hysteresis, Electromagnets and Shielding",
+      visualizationSlug: "cet-hysteresis-loop",
       intuition:
         "Only ferromagnets show hysteresis: their B lags behind H round a loop. When H falls to zero, the B that remains is the retentivity; the reverse H needed to bring B to zero is the coercivity. Soft iron has a high retentivity but a low coercivity, so it is easy to magnetise and demagnetise — right for electromagnets. A permanent magnet needs both high. A soft ferromagnet around an instrument draws the field lines into itself and shields the inside.",
       definition:
