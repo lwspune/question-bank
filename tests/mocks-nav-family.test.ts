@@ -16,8 +16,8 @@ import type { MockListItem } from "@/lib/mocks/query";
  * exams (Prelims + five Mains); listing them flat buried the rest of the rail.
  */
 describe("mock families", () => {
-  it("collapses MPSC, IPMAT, SSC, RRB NTPC and the military schools — each has 2+ mock exams — and nothing else", () => {
-    expect(getMockFamilies().map((f) => f.slug)).toEqual(["ipmat", "rrb-ntpc-levels", "mpsc", "ssc", "sainik-military-schools"]);
+  it("collapses MPSC, IPMAT, SSC, RRB NTPC, the military schools and the MH Scholarship — each has 2+ mock exams — and nothing else", () => {
+    expect(getMockFamilies().map((f) => f.slug)).toEqual(["ipmat", "rrb-ntpc-levels", "mpsc", "ssc", "sainik-military-schools", "mh-scholarship"]);
   });
 
   it("RRB NTPC groups its two levels, Graduate then Undergraduate, under a page that is not Graduate's own", () => {

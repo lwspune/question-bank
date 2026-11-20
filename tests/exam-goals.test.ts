@@ -10,7 +10,7 @@ import { EXAM_GOALS, GOAL_LABEL, groupByGoal, goalGroupSummary } from "@/lib/exa
  * it sits under Defence, not with the school boards.
  */
 describe("every exam declares a goal", () => {
-  it("is one of the six goals, for every registry entry", () => {
+  it("is one of the seven goals, for every registry entry", () => {
     for (const e of EXAM_REGISTRY) expect(EXAM_GOALS, e.slug).toContain(e.goal);
   });
 
@@ -60,6 +60,11 @@ describe("every exam declares a goal", () => {
     ["jipmat", "management"],
     ["cbse-12", "boards"],
     ["clat", "law"],
+    // Owner 2026-11-20: a scholarship exam is none of the others.
+    ["mh-scholarship-4", "scholarship"],
+    ["mh-scholarship-5", "scholarship"],
+    ["mh-scholarship-7", "scholarship"],
+    ["mh-scholarship-8", "scholarship"],
   ])("%s is under %s", (slug, goal) => {
     expect(getExamBySlug(slug)?.goal).toBe(goal);
   });
@@ -72,6 +77,7 @@ describe("every exam declares a goal", () => {
       defence: "Defence",
       management: "Management",
       law: "Law",
+      scholarship: "Scholarships",
     });
   });
 });

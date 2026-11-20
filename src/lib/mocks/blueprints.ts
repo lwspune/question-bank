@@ -1465,6 +1465,35 @@ export const HOMI_BHABHA_9_PAPER: MockPaperBlueprint = {
   ],
 };
 
+/**
+ * Maharashtra Scholarship (MSCE Pune), Class 4 and Class 7 (April 2026 on): two
+ * papers per class, each 75 MCQs x 2 marks, 90 minutes, no penalty. Paper I is
+ * the first language (English, for the English medium) Q1-25 then Mathematics
+ * Q26-75; Paper II the third language (Marathi) then the Intelligence Test.
+ * Sections declare no count (soft): a printed defect held out of the bank
+ * (Class 7 Paper II Q42) ships the paper one short, owner 2026-11-20; the
+ * sitting's expected 75 still warns on every build.
+ */
+function mhScholarshipPaper(cls: 4 | 7, paper: 1 | 2): MockPaperBlueprint {
+  const [first, second] = paper === 1 ? ["English", "Mathematics"] : ["Marathi", "Intelligence Test"];
+  return {
+    code: `paper-${paper}`,
+    examName: `MH Scholarship Class ${cls}`,
+    examSlug: `mh-scholarship-${cls}`,
+    paperLabel: paper === 1 ? "Paper I: First Language and Mathematics" : "Paper II: Third Language and Intelligence Test",
+    durationSecs: 90 * 60,
+    marking: { correct: 2, wrong: 0 },
+    sections: [
+      { key: "section-1", label: first, subjects: [first] },
+      { key: "section-2", label: second, subjects: [second] },
+    ],
+  };
+}
+export const MH_SCHOLARSHIP_4_PAPER_1 = mhScholarshipPaper(4, 1);
+export const MH_SCHOLARSHIP_4_PAPER_2 = mhScholarshipPaper(4, 2);
+export const MH_SCHOLARSHIP_7_PAPER_1 = mhScholarshipPaper(7, 1);
+export const MH_SCHOLARSHIP_7_PAPER_2 = mhScholarshipPaper(7, 2);
+
 /** The NDA blueprints the build script's year+month discovery loop iterates. */
 export const MOCK_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   NDA_MATHS_PAPER,
@@ -1533,6 +1562,10 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   RMS_CET_6_PAPER,
   RMS_CET_9_PAPER,
   HOMI_BHABHA_9_PAPER,
+  MH_SCHOLARSHIP_4_PAPER_1,
+  MH_SCHOLARSHIP_4_PAPER_2,
+  MH_SCHOLARSHIP_7_PAPER_1,
+  MH_SCHOLARSHIP_7_PAPER_2,
 ];
 
 /** Sum of the DECLARED section counts (0 when a blueprint declares none). */
