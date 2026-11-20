@@ -96,7 +96,7 @@ export const EXAM_TIERS: readonly ExamTier[] = ["school", "senior", "graduate"];
  * SPI is a Class 10 exam (tier "school") whose students are aiming for NDA, so
  * its goal is "defence". Labels and grouping: lib/exam/examGoals.ts.
  */
-export type ExamGoal = "boards" | "science" | "government" | "defence" | "management" | "law";
+export type ExamGoal = "boards" | "science" | "government" | "defence" | "management" | "law" | "scholarship";
 
 export const TIER_LABELS: Record<ExamTier, string> = {
   school: "Class 9–10",
@@ -1475,13 +1475,13 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   // and FINAL keys (scripts/mh-scholarship/README.md). Up to 20% of questions
   // have TWO correct options; those are held back until a "select two" format
   // exists (owner, 2026-11-20), so there are no whole-paper mocks yet. FREE
-  // (owner, 2026-11-20). `goal` is provisional: no goal fits a scholarship
-  // exam; settle it before publishing.
+  // (owner, 2026-11-20). Its own goal, "scholarship" (owner, 2026-11-20): it is
+  // none of the other six.
   {
     slug: "mh-scholarship-4",
     passScope: "free",
     tier: "school",
-    goal: "boards",
+    goal: "scholarship",
     displayName: "MH Scholarship Class 4",
     examName: "MH Scholarship Class 4", // must match the `exams` DB row exactly
     family: "MH Scholarship",
@@ -1497,7 +1497,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "mh-scholarship-5",
     passScope: "free",
     tier: "school",
-    goal: "boards",
+    goal: "scholarship",
     displayName: "MH Scholarship Class 5",
     examName: "MH Scholarship Class 5",
     family: "MH Scholarship",
@@ -1513,7 +1513,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "mh-scholarship-7",
     passScope: "free",
     tier: "school",
-    goal: "boards",
+    goal: "scholarship",
     displayName: "MH Scholarship Class 7",
     examName: "MH Scholarship Class 7",
     family: "MH Scholarship",
@@ -1529,7 +1529,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "mh-scholarship-8",
     passScope: "free",
     tier: "school",
-    goal: "boards",
+    goal: "scholarship",
     displayName: "MH Scholarship Class 8",
     examName: "MH Scholarship Class 8",
     family: "MH Scholarship",
