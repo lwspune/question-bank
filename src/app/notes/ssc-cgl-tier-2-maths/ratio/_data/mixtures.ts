@@ -92,6 +92,7 @@ export const SSC2_RA_MIXTURES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2ramx-replace",
       name: "Adding, removing and replacing",
+      visualizationSlug: "ssc-t2-milk-replacement",
       intuition:
         "Add one ingredient and the other stays exactly as it was. Take out some mixture and refill with water, again and again, and the milk left shrinks by the same fraction every time.",
       definition:

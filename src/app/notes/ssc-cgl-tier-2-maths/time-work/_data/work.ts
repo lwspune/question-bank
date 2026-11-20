@@ -12,6 +12,7 @@ export const SSC2_TW_WORK_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2twwr-units",
       name: "Total work as units",
+      visualizationSlug: "ssc-t2-work-units",
       intuition:
         "Give the whole job a number of units that every worker's time divides, usually the LCM of the times. Each worker then does a whole number of units a day, and the rest is plain arithmetic.",
       definition:

@@ -538,6 +538,15 @@ export type VisualizationSlug =
   | "ssc-grid-squares"
   | "ssc-inequality-chain"
   | "ssc-symmetry-quarters"
+  | "ssc-t2-milk-replacement"
+  | "ssc-t2-angle-bisector"
+  | "ssc-t2-square-of-sum"
+  | "ssc-t2-ci-minus-si"
+  | "ssc-t2-work-units"
+  | "ssc-t2-combined-average"
+  | "ssc-t2-pair-of-lines"
+  | "ssc-t2-chord-distance"
+  | "ssc-t2-trapezium"
   | "imat-chart-types";
 
 export type TrapCallout = {

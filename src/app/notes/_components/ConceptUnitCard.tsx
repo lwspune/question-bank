@@ -76,6 +76,15 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import SscT2MilkReplacement from "./visualizations/SscT2MilkReplacement";
+import SscT2AngleBisector from "./visualizations/SscT2AngleBisector";
+import SscT2SquareOfSum from "./visualizations/SscT2SquareOfSum";
+import SscT2CiMinusSi from "./visualizations/SscT2CiMinusSi";
+import SscT2WorkUnits from "./visualizations/SscT2WorkUnits";
+import SscT2CombinedAverage from "./visualizations/SscT2CombinedAverage";
+import SscT2PairOfLines from "./visualizations/SscT2PairOfLines";
+import SscT2ChordDistance from "./visualizations/SscT2ChordDistance";
+import SscT2Trapezium from "./visualizations/SscT2Trapezium";
 import SscRowRuleGrid from "./visualizations/SscRowRuleGrid";
 import SscWeekWheel from "./visualizations/SscWeekWheel";
 import SscBodmasRow from "./visualizations/SscBodmasRow";
@@ -892,6 +901,24 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "ssc-t2-milk-replacement":
+      return <SscT2MilkReplacement />;
+    case "ssc-t2-angle-bisector":
+      return <SscT2AngleBisector />;
+    case "ssc-t2-square-of-sum":
+      return <SscT2SquareOfSum />;
+    case "ssc-t2-ci-minus-si":
+      return <SscT2CiMinusSi />;
+    case "ssc-t2-work-units":
+      return <SscT2WorkUnits />;
+    case "ssc-t2-combined-average":
+      return <SscT2CombinedAverage />;
+    case "ssc-t2-pair-of-lines":
+      return <SscT2PairOfLines />;
+    case "ssc-t2-chord-distance":
+      return <SscT2ChordDistance />;
+    case "ssc-t2-trapezium":
+      return <SscT2Trapezium />;
     case "ssc-row-rule-grid":
       return <SscRowRuleGrid />;
     case "ssc-week-wheel":
