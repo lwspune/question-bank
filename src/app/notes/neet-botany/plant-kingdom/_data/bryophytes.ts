@@ -12,6 +12,7 @@ export const NEET_BO_PK_BRYOPHYTES_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nbopk-bryo-features",
       name: "Bryophytes and their life cycle",
+      visualizationSlug: "neet-bryophyte-cycle",
       intuition:
         "Bryophytes live on land but need water to reproduce, so NCERT calls them the amphibians of the plant kingdom. The green plant you see is the gametophyte: it is haploid and makes the gametes. After fertilisation a small sporophyte grows out of it and stays attached, feeding on it. The sporophyte makes spores by meiosis, and each spore grows into a new gametophyte.",
       definition:

@@ -677,6 +677,14 @@ export type VisualizationSlug =
   | "cet-parallel-pair-distance"
   | "cet-conditional-relatives"
   | "cet-common-ion-solubility"
+  | "neet-gametogenesis"
+  | "neet-pcr-steps"
+  | "neet-forelimb-homology"
+  | "neet-enzyme-cycle"
+  | "neet-centromere-types"
+  | "neet-gene-map"
+  | "neet-spin-only-moment"
+  | "neet-bryophyte-cycle"
   | "imat-chart-types";
 
 export type TrapCallout = {

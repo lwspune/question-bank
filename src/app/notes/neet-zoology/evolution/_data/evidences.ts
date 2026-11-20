@@ -70,6 +70,7 @@ export const NEET_ZO_EV_EVIDENCES_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nzoev-homology",
       name: "Homology and divergent evolution",
+      visualizationSlug: "neet-forelimb-homology",
       intuition:
         "Look inside the flipper of a whale, the wing of a bat and the arm of a human. The same bones sit in the same order, even though one swims, one flies and one holds a pen. The plan was inherited from a common ancestor and then bent to different jobs. That is homology, and it is the mark of divergent evolution.",
       definition:

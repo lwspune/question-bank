@@ -76,6 +76,14 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import NeetGametogenesis from "./visualizations/NeetGametogenesis";
+import NeetPcrSteps from "./visualizations/NeetPcrSteps";
+import NeetForelimbHomology from "./visualizations/NeetForelimbHomology";
+import NeetEnzymeCycle from "./visualizations/NeetEnzymeCycle";
+import NeetCentromereTypes from "./visualizations/NeetCentromereTypes";
+import NeetGeneMap from "./visualizations/NeetGeneMap";
+import NeetSpinOnlyMoment from "./visualizations/NeetSpinOnlyMoment";
+import NeetBryophyteCycle from "./visualizations/NeetBryophyteCycle";
 import CetConditionalRelatives from "./visualizations/CetConditionalRelatives";
 import CetCommonIonSolubility from "./visualizations/CetCommonIonSolubility";
 import CetCompleteSquare from "./visualizations/CetCompleteSquare";
@@ -1031,6 +1039,22 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "neet-gametogenesis":
+      return <NeetGametogenesis />;
+    case "neet-pcr-steps":
+      return <NeetPcrSteps />;
+    case "neet-forelimb-homology":
+      return <NeetForelimbHomology />;
+    case "neet-enzyme-cycle":
+      return <NeetEnzymeCycle />;
+    case "neet-centromere-types":
+      return <NeetCentromereTypes />;
+    case "neet-gene-map":
+      return <NeetGeneMap />;
+    case "neet-spin-only-moment":
+      return <NeetSpinOnlyMoment />;
+    case "neet-bryophyte-cycle":
+      return <NeetBryophyteCycle />;
     case "cet-conditional-relatives":
       return <CetConditionalRelatives />;
     case "cet-common-ion-solubility":
