@@ -1473,8 +1473,8 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   // language (Marathi) + Intelligence Test. Class 5/8 sat Feb 2017-Feb 2026;
   // the GR of 17 Oct 2025 moved it to Class 4/7 from Apr 2026. MSCE's own papers
   // and FINAL keys (scripts/mh-scholarship/README.md). Up to 20% of questions
-  // have TWO correct options; those are held back until a "select two" format
-  // exists (owner, 2026-11-20), so there are no whole-paper mocks yet. FREE
+  // have TWO correct options on the old Class 5/8 papers; those are held back
+  // (owner, 2026-11-20). The Class 4/7 papers (Apr 2026 on) have none. FREE
   // (owner, 2026-11-20). Its own goal, "scholarship" (owner, 2026-11-20): it is
   // none of the other six.
   {
@@ -1488,8 +1488,8 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     familyStage: "MH Scholarship",
     familyLabel: "Class 4",
     familyAxis: "Class",
-    noPublicContent: true, // being ingested (owner, 2026-11-20); rows commit PRIVATE
-    hasMocks: false,
+    // PUBLIC since 2026-11-20: the April 2026 papers (150 q) and two whole-paper mocks.
+    hasMocks: true,
     guidesPath: null,
     notesPath: null,
   },
@@ -1520,8 +1520,8 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     familyStage: "MH Scholarship",
     familyLabel: "Class 7",
     familyAxis: "Class",
-    noPublicContent: true,
-    hasMocks: false,
+    // PUBLIC since 2026-11-20: the April 2026 papers (149 q; P2 Q42 held) and two mocks.
+    hasMocks: true,
     guidesPath: null,
     notesPath: null,
   },
