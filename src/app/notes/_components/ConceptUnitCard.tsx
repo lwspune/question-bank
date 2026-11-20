@@ -76,6 +76,13 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import NeetTaxonHierarchy from "./visualizations/NeetTaxonHierarchy";
+import NeetLifeCyclePatterns from "./visualizations/NeetLifeCyclePatterns";
+import NeetCambiumRing from "./visualizations/NeetCambiumRing";
+import NeetGrowthCurves from "./visualizations/NeetGrowthCurves";
+import NeetDihybridCross from "./visualizations/NeetDihybridCross";
+import NeetBrewedDrinks from "./visualizations/NeetBrewedDrinks";
+import NeetSpeciesArea from "./visualizations/NeetSpeciesArea";
 import SscT2MilkReplacement from "./visualizations/SscT2MilkReplacement";
 import SscT2AngleBisector from "./visualizations/SscT2AngleBisector";
 import SscT2SquareOfSum from "./visualizations/SscT2SquareOfSum";
@@ -901,6 +908,20 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "neet-taxon-hierarchy":
+      return <NeetTaxonHierarchy />;
+    case "neet-life-cycle-patterns":
+      return <NeetLifeCyclePatterns />;
+    case "neet-cambium-ring":
+      return <NeetCambiumRing />;
+    case "neet-growth-curves":
+      return <NeetGrowthCurves />;
+    case "neet-dihybrid-cross":
+      return <NeetDihybridCross />;
+    case "neet-brewed-drinks":
+      return <NeetBrewedDrinks />;
+    case "neet-species-area":
+      return <NeetSpeciesArea />;
     case "ssc-t2-milk-replacement":
       return <SscT2MilkReplacement />;
     case "ssc-t2-angle-bisector":

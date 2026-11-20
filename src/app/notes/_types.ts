@@ -547,6 +547,13 @@ export type VisualizationSlug =
   | "ssc-t2-pair-of-lines"
   | "ssc-t2-chord-distance"
   | "ssc-t2-trapezium"
+  | "neet-taxon-hierarchy"
+  | "neet-life-cycle-patterns"
+  | "neet-cambium-ring"
+  | "neet-growth-curves"
+  | "neet-dihybrid-cross"
+  | "neet-brewed-drinks"
+  | "neet-species-area"
   | "imat-chart-types";
 
 export type TrapCallout = {

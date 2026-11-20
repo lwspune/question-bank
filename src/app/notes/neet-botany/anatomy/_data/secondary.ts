@@ -12,6 +12,7 @@ export const NEET_BO_AN_SECONDARY_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nboan-cambium",
       name: "The vascular cambium and its ring",
+      visualizationSlug: "neet-cambium-ring",
       intuition:
         "A young dicot stem has a thin strip of cambium inside each bundle. To thicken the whole stem, these strips must join into one ring, so the cells between the bundles wake up and divide too. The ring then adds wood on its inner side and new phloem on its outer side, much more wood than phloem.",
       definition:
