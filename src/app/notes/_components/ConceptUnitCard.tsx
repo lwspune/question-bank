@@ -76,6 +76,10 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import CetCombiningVolumes from "./visualizations/CetCombiningVolumes";
+import CetAllylicBenzylicVinylic from "./visualizations/CetAllylicBenzylicVinylic";
+import CetSquarePlanarIsomers from "./visualizations/CetSquarePlanarIsomers";
+import CetAcetophenoneReductions from "./visualizations/CetAcetophenoneReductions";
 import JeeOsmosisDirection from "./visualizations/JeeOsmosisDirection";
 import JeeTlcRf from "./visualizations/JeeTlcRf";
 import JeeBrineElectrolysis from "./visualizations/JeeBrineElectrolysis";
@@ -997,6 +1001,14 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "cet-combining-volumes":
+      return <CetCombiningVolumes />;
+    case "cet-allylic-benzylic-vinylic":
+      return <CetAllylicBenzylicVinylic />;
+    case "cet-square-planar-isomers":
+      return <CetSquarePlanarIsomers />;
+    case "cet-acetophenone-reductions":
+      return <CetAcetophenoneReductions />;
     case "jee-osmosis-direction":
       return <JeeOsmosisDirection />;
     case "jee-tlc-rf":

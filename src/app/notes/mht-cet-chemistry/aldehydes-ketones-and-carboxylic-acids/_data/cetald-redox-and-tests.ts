@@ -14,6 +14,7 @@ export const REDOX_AND_TESTS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetald-clemmensen-wolff-kishner-and-hydride",
       name: "Clemmensen, Wolff–Kishner and Hydride Reductions",
+      visualizationSlug: "cet-acetophenone-reductions",
       intuition:
         "Two reactions take C=O all the way to CH₂: Clemmensen in ACID (zinc amalgam, concentrated HCl) and Wolff–Kishner in BASE (hydrazine first, then KOH in hot ethylene glycol). Choose by what else the molecule tolerates. Hydride reagents stop at the alcohol: LiAlH₄ and NaBH₄ reduce C=O but leave an isolated C=C untouched.",
       definition:

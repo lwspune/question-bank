@@ -59,6 +59,7 @@ export const ISOMERISM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetcc-geometric-isomerism",
       name: "Geometric (cis–trans) Isomerism and the MA₂BC Type",
+      visualizationSlug: "cet-square-planar-isomers",
       intuition:
         "Write the complex as M with letters for its kinds of ligand. In a square planar complex, MA₂B₂ has two forms — the two A's side by side (cis) or opposite (trans) — and MA₂BC does too: the two identical A's are either adjacent or across. MA₄ or MA₃B cannot be arranged in two ways. A tetrahedral complex never shows cis–trans because every position is adjacent to every other. In octahedral MA₄B₂ the two B's are cis or trans, and MA₃B₃ gives fac and mer. Optical isomers need a complex with no mirror plane — [Co(en)₃]³⁺ and cis-[Co(en)₂Cl₂]⁺ are chiral; the trans form is not.",
       definition:

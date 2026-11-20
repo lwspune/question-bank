@@ -643,6 +643,10 @@ export type VisualizationSlug =
   | "jee-brine-electrolysis"
   | "jee-nh3-nf3-dipoles"
   | "jee-gibbs-graphs"
+  | "cet-combining-volumes"
+  | "cet-allylic-benzylic-vinylic"
+  | "cet-square-planar-isomers"
+  | "cet-acetophenone-reductions"
   | "imat-chart-types";
 
 export type TrapCallout = {
