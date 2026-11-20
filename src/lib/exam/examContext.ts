@@ -66,7 +66,11 @@ export type ExamSlug =
   | "rms-cet-9"
   | "rimc"
   | "homi-bhabha-6"
-  | "homi-bhabha-9";
+  | "homi-bhabha-9"
+  | "mh-scholarship-4"
+  | "mh-scholarship-5"
+  | "mh-scholarship-7"
+  | "mh-scholarship-8";
 
 /**
  * School boards the bank carries content for. NOT every exam has one — a
@@ -1462,6 +1466,80 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     pastPaperSolutions: true,
     guidesPath: null,
     notesPath: "/notes/homi-bhabha-9",
+  },
+  // ---- Maharashtra Scholarship (MSCE Pune), one family split by class -------
+  // Two papers per class, 75 MCQs x 2 marks each, 90 min: Paper I = first
+  // language (English, for the English medium) + Mathematics, Paper II = third
+  // language (Marathi) + Intelligence Test. Class 5/8 sat Feb 2017-Feb 2026;
+  // the GR of 17 Oct 2025 moved it to Class 4/7 from Apr 2026. MSCE's own papers
+  // and FINAL keys (scripts/mh-scholarship/README.md). Up to 20% of questions
+  // have TWO correct options; those are held back until a "select two" format
+  // exists (owner, 2026-11-20), so there are no whole-paper mocks yet. FREE
+  // (owner, 2026-11-20). `goal` is provisional: no goal fits a scholarship
+  // exam; settle it before publishing.
+  {
+    slug: "mh-scholarship-4",
+    passScope: "free",
+    tier: "school",
+    goal: "boards",
+    displayName: "MH Scholarship Class 4",
+    examName: "MH Scholarship Class 4", // must match the `exams` DB row exactly
+    family: "MH Scholarship",
+    familyStage: "MH Scholarship",
+    familyLabel: "Class 4",
+    familyAxis: "Class",
+    noPublicContent: true, // being ingested (owner, 2026-11-20); rows commit PRIVATE
+    hasMocks: false,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "mh-scholarship-5",
+    passScope: "free",
+    tier: "school",
+    goal: "boards",
+    displayName: "MH Scholarship Class 5",
+    examName: "MH Scholarship Class 5",
+    family: "MH Scholarship",
+    familyStage: "MH Scholarship",
+    familyLabel: "Class 5",
+    familyAxis: "Class",
+    noPublicContent: true,
+    hasMocks: false,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "mh-scholarship-7",
+    passScope: "free",
+    tier: "school",
+    goal: "boards",
+    displayName: "MH Scholarship Class 7",
+    examName: "MH Scholarship Class 7",
+    family: "MH Scholarship",
+    familyStage: "MH Scholarship",
+    familyLabel: "Class 7",
+    familyAxis: "Class",
+    noPublicContent: true,
+    hasMocks: false,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "mh-scholarship-8",
+    passScope: "free",
+    tier: "school",
+    goal: "boards",
+    displayName: "MH Scholarship Class 8",
+    examName: "MH Scholarship Class 8",
+    family: "MH Scholarship",
+    familyStage: "MH Scholarship",
+    familyLabel: "Class 8",
+    familyAxis: "Class",
+    noPublicContent: true,
+    hasMocks: false,
+    guidesPath: null,
+    notesPath: null,
   },
 ] as const;
 
