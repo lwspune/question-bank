@@ -17,6 +17,7 @@ import { DIFFICULTY_LABEL, DIFFICULTY_PILL } from "@/lib/questions/difficultyPil
 import AskVButton from "@/components/chat/AskVButton";
 import ZoomableImage from "@/components/question/ZoomableImage";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
+import SolutionViews from "@/components/visuals/SolutionViews";
 import type { WorkedExample } from "@/lib/guide/loadWorkedExamples";
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
@@ -24,6 +25,11 @@ const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
 type Props = {
   rank: number;
   example: WorkedExample;
+  /**
+   * Where an animated solution's use is recorded (lib/visuals/usage). Only the
+   * visual's events: answers and the daily limit still count as "guide".
+   */
+  visualSurface?: "guide" | "notes";
 };
 
 /**
@@ -41,8 +47,11 @@ type Props = {
  * notes pages would be a product change nobody asked for. The one gate here is
  * the signed-in DAILY limit (migration 0134, owner 2026-10-05: guides count
  * toward the 50 free answers a day), via useDailyRevealGate.
+ *
+ * The solution opens Animated where the question has a checked animated
+ * solution, with the same Still switch as the bank card (2026-11-19).
  */
-export default function WorkedExampleCard({ rank, example }: Props) {
+export default function WorkedExampleCard({ rank, example, visualSurface = "guide" }: Props) {
   const [picked, setPicked] = useState<string | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
@@ -206,22 +215,33 @@ export default function WorkedExampleCard({ rank, example }: Props) {
 
         {showSolution && example.solution && (
           <div className="rounded-xl border border-brand-accent/20 bg-brand-accent/5 p-3 text-sm motion-safe:animate-fade-in-up sm:p-4">
-            <p className="flex items-center gap-1.5 font-sans text-xs font-bold uppercase tracking-wide text-brand-accent">
-              <Lightbulb className="h-3.5 w-3.5" aria-hidden />
-              Solution
-            </p>
-            <div className="mt-1.5 font-serif leading-relaxed">
-              <BlockText text={example.solution} solution />
-            </div>
-            {example.solutionImageUrl && (
-              <div className="pt-3">
-                <ZoomableImage
-                  src={publicImageUrl(SUPABASE_URL, example.solutionImageUrl)}
-                  alt="Solution diagram"
-                  className="max-h-64 w-auto max-w-full rounded border"
-                />
-              </div>
-            )}
+            <SolutionViews
+              visual={example.solutionVisual}
+              solution={example.solution}
+              track={{ questionId: example.id, surface: visualSurface }}
+              header={
+                <p className="flex items-center gap-1.5 font-sans text-xs font-bold uppercase tracking-wide text-brand-accent">
+                  <Lightbulb className="h-3.5 w-3.5" aria-hidden />
+                  Solution
+                </p>
+              }
+              still={
+                <>
+                  <div className="mt-1.5 font-serif leading-relaxed">
+                    <BlockText text={example.solution} solution />
+                  </div>
+                  {example.solutionImageUrl && (
+                    <div className="pt-3">
+                      <ZoomableImage
+                        src={publicImageUrl(SUPABASE_URL, example.solutionImageUrl)}
+                        alt="Solution diagram"
+                        className="max-h-64 w-auto max-w-full rounded border"
+                      />
+                    </div>
+                  )}
+                </>
+              }
+            />
           </div>
         )}
 

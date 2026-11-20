@@ -29,7 +29,7 @@ describe("parseVisualEvent", () => {
     for (const action of ["shown", "finished", "replayed", "opened_still", "chose_still", "chose_animated"]) {
       expect(parseVisualEvent({ questionId: Q, surface: "mock", action, scene: "space3d" }, "u1", NOW).ok).toBe(true);
     }
-    for (const surface of ["bank", "guide", "daily", "board", "drill", "mock", "v", "flashcards"]) {
+    for (const surface of ["bank", "guide", "notes", "daily", "board", "drill", "mock", "v", "flashcards"]) {
       expect(parseVisualEvent({ questionId: Q, surface, action: "shown", scene: "space3d" }, "u1", NOW).ok).toBe(true);
     }
   });
@@ -37,7 +37,7 @@ describe("parseVisualEvent", () => {
   it("refuses an unknown action or surface, a bad question id or scene, and junk", () => {
     const ok = { questionId: Q, surface: "bank", action: "shown", scene: "space3d" };
     expect(parseVisualEvent({ ...ok, action: "liked" }, "u1", NOW).ok).toBe(false);
-    expect(parseVisualEvent({ ...ok, surface: "notes" }, "u1", NOW).ok).toBe(false);
+    expect(parseVisualEvent({ ...ok, surface: "nowhere" }, "u1", NOW).ok).toBe(false);
     expect(parseVisualEvent({ ...ok, questionId: "not-a-uuid" }, "u1", NOW).ok).toBe(false);
     expect(parseVisualEvent({ ...ok, scene: "" }, "u1", NOW).ok).toBe(false);
     expect(parseVisualEvent({ ...ok, scene: "a b" }, "u1", NOW).ok).toBe(false);

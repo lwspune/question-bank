@@ -61,7 +61,7 @@ export default function SubtopicMasteryCheckpoint({
       <PresentRegistry>
         <div className="space-y-4">
           {questions.map((q, i) => (
-            <WorkedExampleCard key={q.id} rank={i + 1} example={q} />
+            <WorkedExampleCard key={q.id} rank={i + 1} example={q} visualSurface="notes" />
           ))}
         </div>
       </PresentRegistry>
