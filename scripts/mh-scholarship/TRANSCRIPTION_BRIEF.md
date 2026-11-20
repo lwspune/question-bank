@@ -38,6 +38,17 @@ border down the left edge, the footer (`0511-English Set-A`, `8 of 16`, `Contd..
 If one of these hides a word you cannot read, say so in `notes` with the item
 number. Never guess the word.
 
+**The alphabet strip is the exception.** Paper II pages print a strip at the top,
+`A B C D E | F G H I J | K L M N O | P Q R S T | U V W X Y` (no Z). An item that
+says "the given alphabet(ical) series" means THAT strip, so end its stem with
+`[Series: the alphabet strip printed at the top of the page: A B C D E | F G H I J | K L M N O | P Q R S T | U V W X Y]`,
+copied exactly from the page you see (check whether it has a Z).
+
+**Shared instructions.** If a run of items shares an instruction ("Observe the
+given series ...") and one item in the middle of the run is only a figure, it still
+gets the same `context`; its stem is then just the bracketed figure note (section 5).
+Never put the shared instruction in one item's stem and in its neighbours' context.
+
 ---
 
 ## 2. Your output

@@ -82,4 +82,29 @@ Crop the column with the scratch `keycols.py` method (Set A columns at x 0.09-0.
   (Q4, 13, 17, 26, 27, 30, 49, 58, 64). Blind 72/75. Q63 hand-solved (the pass
   miscounted a tick). Q68: MSCE counts (4.5, 6, 7.5) as a Pythagorean triplet
   (answer 4); key kept, notice + grace.
-- `ms8-2026-p2`: Q12 cancelled; 9 held; 5 either-answer items (Q53, 54, 55, 60, 69).
+- `ms8-2026-p2`: 64 committed (Q12 cancelled, saved without a correct option); 9 two-answer
+  held; Q30 and Q60 held as disputes with MSCE's key (`notices.json` `hold`, listed in
+  `answers.json` `heldDisputed`); 5 either-answer items graced. Blind 69/74.
+
+**April 2026, Class 4 and 7 (the exam as it now runs).** The two-answer rule is GONE:
+rule 7 reads "If more than one circles are darkened ... the answer will not be accepted",
+so every item is single-answer and the papers are whole (mocks possible).
+
+- `ms7-2026-p1`: 75 committed (Q42 cancelled). Blind 74/74.
+- `ms7-2026-p2`: 74 committed. **Q42 held** (options (1) and (4) printed identically; its
+  transcription is in `data/ms7-2026-p2.held-items.json`; config `HELD`). Blind 73/74: Q34
+  (Shirshasana) key kept, notice + grace. 5 either-answer items graced.
+- `ms4-2026-p1`: 75 committed (Q15 cancelled: the stem asks to fill a blank the passage
+  does not have). Blind 74/74. Q22, Q31 either-answer, graced.
+- `ms4-2026-p2`: 75 committed. Blind 73/75: Q11 (शीरखुर्मा) and Q12 (Baban Shinde's poem)
+  hand-solved to MSCE's key. Q70 either-answer, graced.
+
+**The alphabet strip.** Every Paper II page prints `A B C D E | F G H I J | ... | U V W X Y`
+(no Z) at the top. Items that say "the given alphabet series" mean THAT strip (Class 4
+Q42 only works with it), so it goes into the stem as `[Series: the alphabet strip printed
+at the top of the page: ...]` (TRANSCRIPTION_BRIEF.md section 1).
+
+**Shared instructions and the sets gate.** If an item in the middle of a run carries the
+run's instruction in its stem (because its own stem would otherwise be only a figure), merge
+fails gate 3b. Give it the same `context` and leave the bracketed figure note as its stem
+(also in TRANSCRIPTION_BRIEF.md section 1).

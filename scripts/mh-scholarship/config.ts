@@ -122,6 +122,18 @@ const SITTINGS: Sitting[] = [
 const PAGES: Record<string, number[]> = {
   "ms8-2026-p1": range(2, 15), // p16 is rough work
   "ms8-2026-p2": range(2, 15),
+  "ms4-2026-p1": range(2, 15),
+  "ms4-2026-p2": range(2, 15),
+  "ms7-2026-p1": range(2, 15),
+  "ms7-2026-p2": range(2, 15),
+};
+
+/**
+ * Items deliberately NOT transcribed into the bands (kept in
+ * data/<id>.held-items.json for the record); coverage expects them absent.
+ */
+const HELD: Record<string, Paper["held"]> = {
+  "ms7-2026-p2": { numbers: [42], why: "options (1) and (4) are printed identically" },
 };
 
 const PAPER_NAME: Record<PaperNumber, string> = { 1: "Paper I", 2: "Paper II" };
@@ -145,6 +157,7 @@ export const PAPERS: Record<string, Paper> = Object.fromEntries(
             pyqNote: `MH Scholarship Class ${cls} ${PAPER_NAME[p]} (${s.date})`,
             pattern: MSCE,
             key: { file: join(KEY_ROOT, `${id}.key.pdf`), label: "MSCE's final answer key", final: true },
+            held: HELD[id],
           },
         ];
       }),
