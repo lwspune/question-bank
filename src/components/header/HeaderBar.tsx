@@ -22,6 +22,7 @@ import { useViewerSession } from "@/lib/viewer/useViewerSession";
 import { usePulse } from "@/lib/viewer/usePulse";
 import { fifthTabFor } from "@/lib/nav/fifthTab";
 import ReadingBeacon from "./ReadingBeacon";
+import StudyClock from "./StudyClock";
 import IntlHeaderBar from "./IntlHeaderBar";
 import CheckoutReturnBar from "@/components/billing/CheckoutReturnBar";
 import { useIntlSite } from "@/lib/sites/useIntlSite";
@@ -91,6 +92,7 @@ export default function HeaderBar({
     return (
       <>
         <ReadingBeacon signedIn={!!session} />
+        <StudyClock signedIn={!!session} />
         <IntlHeaderBar email={session?.email ?? null} sessionLoading={sessionLoading} />
       </>
     );
@@ -99,6 +101,7 @@ export default function HeaderBar({
   return (
     <>
       <ReadingBeacon signedIn={!!session} />
+      <StudyClock signedIn={!!session} />
       <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="mx-auto flex h-14 max-w-7xl items-center gap-2 px-3 sm:gap-3 sm:px-6">
           <Link

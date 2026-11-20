@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { toast } from "sonner";
 import { ArrowRight, Check, Clock, Loader2, RotateCcw, X } from "lucide-react";
@@ -16,6 +16,7 @@ import { drillHref } from "@/lib/drill/from";
 import PushOptIn from "@/components/push/PushOptIn";
 import RepeatLineView from "@/components/question/RepeatLineView";
 import { VaultPointsStatus } from "@/components/billing/useFixPoints";
+import { noteStudyQuestion } from "@/lib/studyTime/clientStore";
 
 // The scope's shape and every line about it live in lib/drill/scope (2026-11-06).
 export type DrillScope = Scope | null;
@@ -69,6 +70,12 @@ export default function DrillRunner({
 
   const question = questions[index];
   const answered = question ? verdicts[question.id] : undefined;
+  // One question at a time, so the study clock can put the time on its chapter
+  // from the moment it is shown.
+  const questionId = question?.id;
+  useEffect(() => {
+    if (questionId) noteStudyQuestion(questionId);
+  }, [questionId]);
   const isLast = index === questions.length - 1;
   const correctCount = Object.values(verdicts).filter((v) => v.correct).length;
   const vSays = answered ? drillVSays(answered) : null;

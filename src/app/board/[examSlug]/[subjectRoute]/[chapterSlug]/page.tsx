@@ -1,3 +1,4 @@
+import StudyContext from "@/components/StudyContext";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import AppHeader from "@/components/AppHeader";
@@ -225,6 +226,7 @@ export default async function BoardChapterPage(props: { params: Promise<Params> 
 
         <ExamTwinsProvider twins={twins} supabaseUrl={supabaseUrl}>
           <ExamTwinChapterLine questionIds={questionIds} />
+          <StudyContext chapterId={data.chapterId} />
 
           {/* Signed in with mistakes waiting from this chapter (2026-11-07). Browser-only. */}
           <ChapterFixLine chapterId={data.chapterId} from={CHAPTER_FIX_FROM.board} className="mb-4" />
