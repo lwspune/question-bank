@@ -145,6 +145,34 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 | **The MH State Board Class-10 textbook layer was ingested by 30 parallel agents on 2026-08-28, and four inconsistencies survive that are cheap to fix but touch SHIPPED rows.** (a) **Ref style is split six-and-six across the twelve Mathematics chapters** - `AGENT_BRIEF.md` said `Ex 1.1 Q3` where the older `MATHS_TRANSCRIPTION_BRIEF.md` and the shipped `pythagoras-10` say `Ex 1.1 Q.3`, and both documents were in play at once. (b) **`config.ts` carries near-duplicate subtopics** the ingest deliberately reused rather than renamed - Geometry has both `Property of an Angle Bisector of a Triangle` and `Property of Angle Bisector of a Triangle` (1 PYQ row each), and `Construction of an Angle Bisector` beside `Construction of Angle Bisector`; Mensuration has `Area of Combined Figures` beside `Areas of Combined Figures`; Heat has `Humidity` beside `Humidity and Relative Humidity` and `Anomalous Behaviour of Water` beside `Anomalous Expansion of Water`; Refraction has `Refractive Index` beside `Absolute Refractive Index`. (c) **Several configured subtopics receive ZERO textbook rows because the chapter no longer teaches them** - Financial Planning's `Income Tax - Assessment Year` and `Income, Expenditure and Savings` (this edition is GST + shares), Life Processes Part 1's seven osmosis/transpiration/transport/excretion/glands names (the chapter covers three topics, not ten), Co-ordinate Geometry's `Equation of a Line`, Mensuration's `Euler's Formula`, Trigonometry's `Angle in Standard Position`, Carbon Compounds' `Rancidity`, Environmental Management's `Control of Noise Pollution` and `Blue Revolution`, Heredity's `Mendel's Laws of Inheritance`. All are PYQ-era names from an older syllabus. (d) **Two questions have no good subtopic home at all** - Lenses `Ex Q5` (astronomical telescope, filed under `Simple Microscope`) and Mensuration `PS7 Q12` (a chord-property question filed under `Circumference of a Circle`). | **(a) is measured and mechanical**: 383 rows across 41 files, `normalise-maths-refs.ts` is written, dry-run and self-tested, and `question_number` sits outside `content_hash` while sections routing keys on the block prefix - so the rename moves nothing and `backfill-sections.ts` re-proves every ref still routes. It waits only so it cannot race an in-flight agent. **(b) and (c) are a RENAME/RE-FILE pass and are the expensive half**: every one of those names carries live board-PYQ rows, so a merge or rename re-files SHIPPED PYQ content, which is exactly what the ingest policy refused to do unilaterally. Note the asymmetry recorded on the CDS GK run - an ADDITION is cheaper the earlier it lands, but a RENAME costs the same whenever it is paid, so waiting for a settled corpus is correct rather than merely convenient. **(d) needs a taxonomy decision, not a fix**: a `Telescopes and Optical Instruments` subtopic under Lenses would be a genuine addition; `PS7 Q12`'s real home is a chord property that Mensuration has no slot for. | **Identified 2026-08-28 during the ingest; (a) READY and pending only the last agents, (b)(c)(d) NOT done.** Each was reported by the agent that hit it rather than acted on, because `config.ts` was off-limits to them by design. (b)-(d) need a 360 + permission: they touch shipped PYQ rows and a subtopic rename is visible on `/browse` filters and every notes/guide cross-reference that names one. |
 
+## 2026-11-20
+
+### Step-through figures in notes, like the geography-terms reel (owner asked to size it; not started)
+
+**Status: open, sized only.** Prompted by a PSC Pathshala reel (19 Nov, ~20.5K likes in 14 h): a 3D landscape that changes shape to show bay, gulf, cape, peninsula, strait, isthmus and island, with a one-line memory tip ("a strait joins water, an isthmus joins land"). The idea is to put that kind of teaching in `/notes`, as **step-through SVG figures (the existing `StepFigure`, `src/lib/notes/stepFigure.ts`), never video files**: a figure weighs KB not MB on a phone, its labels can be read by Google and ChatGPT, it prints every step in PDFs and ebooks, follows dark mode, and a typo is a one-line edit.
+
+**Size on 2026-11-20 (counted from `kind:` and `visualizationSlug:` in `src/app/notes/*/_data`, IMAT excluded):**
+
+| Group | Concepts | With a figure | Without |
+|---|---|---|---|
+| Science and Geography | 3,522 | 521 | 3,001 |
+| Maths and Reasoning | 3,324 | 464 | 2,860 |
+| Recall (History, Polity, English, Static GK, Economics, Computer) | 998 | 10 | 988 |
+| Total | 7,844 | 995 | 6,849 |
+
+- 577 figure components exist; only 76 step through, the rest are still pictures.
+- Science and Geography without a figure, by exam: JEE 635/775, NEET 580/725, MHT-CET 492/592, NDA 485/591, **CDS 348/348**, **Homi Bhabha 238/238**, **SPI 154/154**, SSC 69/99.
+- Not every gap needs one. Of 60 CDS Geography concept names, about a third are shapes or processes (glacial landforms, kinds of volcano, local time and longitude, lapse rate, layers of the atmosphere); the rest are "where things are" lists that read fine as tables. Maths: roughly 15% (geometry, graphs, vectors).
+- **Estimate: ~1,400 concepts worth a figure (~1,000 Science and Geography, ~400 Maths), of which ~350 should step through.** About five waves the size of the last one (277 new + 348 borrowed). Recall subjects: maps and timelines only, about one in ten.
+- No figure covers the landforms terms yet: "isthmus" appears only in the NDA canals map (`WhgCanalsMap.tsx`).
+
+**Before wave 1:**
+1. **Measure page weight.** `src/app/notes/_components/ConceptUnitCard.tsx` statically imports all 576 figure components. How much JS a notes page ships because of that is unmeasured; ~1,000 more could make it worse. If heavy, load each figure only where its concept renders.
+2. **Every figure is checked against its concept text.** The IMAT round refused borrowed figures that contradicted it ("auricles"); checking, not drawing, is the main cost.
+3. **Copy the reel's two cheap parts, not its 3D:** the one-line memory tip, and the past question at the end ("asked in CDS 2019").
+
+**Suggested order (graduate exams first):** CDS Geography (121 concepts, none with a figure; start with landforms, borrow from NDA's 106 Science and Geography figures where the topic matches) → SSC Geography and Static GK (maps, landforms) → CDS Physics, Biology, Chemistry → JEE, NEET, CET, which already have the most.
+
 ## 2026-11-19
 
 ### SSC Static GK: what the move left for later
