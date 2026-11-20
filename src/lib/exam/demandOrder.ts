@@ -46,6 +46,7 @@ export const EXAM_DEMAND_ORDER: readonly string[] = [
   "UP Board", // added 2026-11-17 with no demand data yet; move once students choose it
   "Sainik & Military Schools", // added 2026-11-17 (AISSEE, RMS CET, RIMC), no demand data yet
   "Homi Bhabha", // added 2026-11-19 (Std VI and IX), no demand data yet
+  "MH Scholarship", // added 2026-11-20 (Class 4 and 7 public), no demand data yet
 ];
 
 function keyOf<T>(node: ExamFamilyNode<T>): string | undefined {
