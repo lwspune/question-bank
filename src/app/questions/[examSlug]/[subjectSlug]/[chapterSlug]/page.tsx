@@ -9,6 +9,7 @@
  * Read-only by design: no filters, no download dialog, PUBLIC questions only.
  * Anything beyond that is one click away in the tool itself.
  */
+import StudyContext from "@/components/StudyContext";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -310,6 +311,7 @@ export default async function ChapterQuestionsPage(props: Params) {
             waiting from this chapter sees the Fix line IN ITS PLACE (2026-11-07):
             the sentence asks them to sign in, which they have. Swapped in the
             browser, so the cached copy is the sentence for everyone. */}
+        <StudyContext chapterId={landing.chapterId} />
         {questions.rows.length > 0 && (
           <ChapterFixLine chapterId={landing.chapterId} from={CHAPTER_FIX_FROM.questions} className="mt-6">
             <p className="mt-6 flex items-start gap-2 text-sm text-muted-foreground">

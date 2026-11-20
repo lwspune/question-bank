@@ -12,6 +12,7 @@ import { followUpCardCopy } from "@/lib/chat/followUp";
 import { parseVPassOffer, type VPassOffer as Offer } from "@/lib/chat/passOffer";
 import { liftDailyLimit } from "@/components/reveal/useRevealMeter";
 import VPassOffer from "./VPassOffer";
+import { noteStudyQuestion } from "@/lib/studyTime/clientStore";
 
 type Result = { correct: boolean; answer: string } | { offer: Offer } | null;
 
@@ -74,6 +75,9 @@ export default function VQuestionCard({
   }
 
   async function check(label: string) {
+    // The study clock puts the time around this answer on its chapter. At the
+    // answer, not on mount: reopening V re-mounts old cards.
+    noteStudyQuestion(id);
     try {
       const res = await fetch("/api/chat/question", {
         method: "POST",
