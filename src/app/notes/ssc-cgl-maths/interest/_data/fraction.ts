@@ -68,6 +68,7 @@ export const SSC_IN_FRACTION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscinfr-multiples",
       name: "A sum that becomes n times itself at simple interest",
+      visualizationSlug: "ssc-si-multiples",
       intuition:
         "To become n times itself the sum must earn n minus 1 copies of itself. Under simple interest every copy takes the same number of years, so the time grows with n minus 1, not with n.",
       definition:

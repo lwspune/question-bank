@@ -653,6 +653,14 @@ export type VisualizationSlug =
   | "ssc-centre-angle"
   | "ssc-coord-centroid"
   | "ssc-chords-crossing"
+  | "ssc-more-than-base"
+  | "ssc-cluster-columns"
+  | "ssc-repeat-replacement"
+  | "ssc-above-average"
+  | "ssc-si-multiples"
+  | "ssc-work-together-units"
+  | "ssc-surd-square"
+  | "ssc-letter-gaps"
   | "imat-chart-types";
 
 export type TrapCallout = {

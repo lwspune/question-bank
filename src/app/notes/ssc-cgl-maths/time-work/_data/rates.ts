@@ -12,6 +12,7 @@ export const SSC_TW_RATES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssctwwr-together",
       name: "Workers together: add the one-day rates",
+      visualizationSlug: "ssc-work-together-units",
       intuition:
         "If Ravi paints a wall in 6 days, he paints a sixth of it each day. Two painters on the same wall each add their own share every day, so you add what each one does in a day. You never add the days.",
       definition:

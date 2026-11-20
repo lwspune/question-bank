@@ -76,6 +76,14 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import SscMoreThanBase from "./visualizations/SscMoreThanBase";
+import SscClusterColumns from "./visualizations/SscClusterColumns";
+import SscRepeatReplacement from "./visualizations/SscRepeatReplacement";
+import SscAboveAverage from "./visualizations/SscAboveAverage";
+import SscSiMultiples from "./visualizations/SscSiMultiples";
+import SscWorkTogetherUnits from "./visualizations/SscWorkTogetherUnits";
+import SscSurdSquare from "./visualizations/SscSurdSquare";
+import SscLetterGaps from "./visualizations/SscLetterGaps";
 import SscParallelCut from "./visualizations/SscParallelCut";
 import SscTangentPair from "./visualizations/SscTangentPair";
 import SscTriangleCount from "./visualizations/SscTriangleCount";
@@ -1007,6 +1015,22 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "ssc-more-than-base":
+      return <SscMoreThanBase />;
+    case "ssc-cluster-columns":
+      return <SscClusterColumns />;
+    case "ssc-repeat-replacement":
+      return <SscRepeatReplacement />;
+    case "ssc-above-average":
+      return <SscAboveAverage />;
+    case "ssc-si-multiples":
+      return <SscSiMultiples />;
+    case "ssc-work-together-units":
+      return <SscWorkTogetherUnits />;
+    case "ssc-surd-square":
+      return <SscSurdSquare />;
+    case "ssc-letter-gaps":
+      return <SscLetterGaps />;
     case "ssc-parallel-cut":
       return <SscParallelCut />;
     case "ssc-tangent-pair":

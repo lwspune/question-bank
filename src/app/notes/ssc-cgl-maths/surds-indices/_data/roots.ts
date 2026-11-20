@@ -12,6 +12,7 @@ export const SSC_SI_ROOTS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscsirt-sqrt",
       name: "The square root of a + 2√b",
+      visualizationSlug: "ssc-surd-square",
       intuition:
         "Squaring \\(\\sqrt{m} + \\sqrt{n}\\) gives \\(m + n + 2\\sqrt{mn}\\): a whole number plus twice a root. So to undo it, look for two numbers that add up to the whole number and multiply to the number under the root.",
       definition:
