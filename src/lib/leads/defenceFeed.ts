@@ -16,7 +16,11 @@
  */
 import { createHash, timingSafeEqual } from "node:crypto";
 
-export const FEED_SOURCES = ["account", "quiz"] as const;
+/**
+ * account + quiz: NDA, CDS and AFCAT students. board (owner, 2026-11-20): Maharashtra SSC (Class 10) students,
+ * prospects for LWS's NDA Foundation course after 10th; same mobile + consent rule (migration 0275).
+ */
+export const FEED_SOURCES = ["account", "quiz", "board"] as const;
 export type FeedSource = (typeof FEED_SOURCES)[number];
 
 export const DEFAULT_LIMIT = 100;
@@ -46,7 +50,7 @@ function parseCursor(raw: string): FeedCursor | null {
 export function parseFeedRequest(params: URLSearchParams): FeedRequest {
   const source = params.get("source");
   if (!FEED_SOURCES.includes(source as FeedSource)) {
-    return { ok: false, error: "`source` must be account or quiz" };
+    return { ok: false, error: "`source` must be account, quiz or board" };
   }
 
   const rawAfter = params.get("after");

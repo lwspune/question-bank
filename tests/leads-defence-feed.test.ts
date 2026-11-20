@@ -29,6 +29,10 @@ describe("parseFeedRequest", () => {
     expect(parseFeedRequest(params("source=quiz"))).toEqual({ ok: true, source: "quiz", after: null, limit: DEFAULT_LIMIT });
   });
 
+  it("accepts the board source: consented Maharashtra SSC (Class 10) students (owner, 2026-11-20)", () => {
+    expect(parseFeedRequest(params("source=board"))).toEqual({ ok: true, source: "board", after: null, limit: DEFAULT_LIMIT });
+  });
+
   it("refuses an unknown or missing source", () => {
     expect(parseFeedRequest(params("source=email")).ok).toBe(false);
     expect(parseFeedRequest(params("")).ok).toBe(false);

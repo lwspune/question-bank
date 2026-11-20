@@ -35,6 +35,10 @@ const PEOPLE: Person[] = [
   { key: "no-consent", exams: ["nda"], mobile: mob(4), consent: false, updated: at(2) },
   { key: "no-mobile", exams: ["nda"], mobile: null, consent: false, updated: at(3) },
   { key: "not-defence", exams: ["mht-cet"], mobile: mob(5), consent: true, updated: at(4) },
+  // The board source (owner, 2026-11-20): Maharashtra SSC (Class 10) students, same mobile + consent rule.
+  { key: "ssc", exams: ["mh-ssc-10", "jee-mains"], mobile: mob(8), consent: true, updated: at(7), name: "SSC Student" },
+  { key: "ssc-no-consent", exams: ["mh-ssc-10"], mobile: mob(9), consent: false, updated: at(8) },
+  { key: "ssc-no-mobile", exams: ["mh-ssc-10"], mobile: null, consent: false, updated: at(9) },
 ];
 
 function req(qs: string, secret: string | null) {
@@ -130,6 +134,17 @@ describe.skipIf(!HAS_ENV)("/api/leads/defence", () => {
     expect(mine.find((l: { mobile: string }) => l.mobile === mob(3))).toMatchObject({ name: null, exams: ["afcat"] });
     expect(JSON.stringify(body)).not.toContain("jee-mains");
     expect(JSON.stringify(body)).not.toContain("@test.local");
+  });
+
+  it("board: returns only consented MH SSC students with a mobile, only that exam, and never in the account source", async () => {
+    const { status, body } = await call(`source=board&after=${encodeURIComponent(START)}&limit=50`);
+    expect(status).toBe(200);
+    const mine = body.leads.filter((l: { mobile: string }) => PEOPLE.some((p) => p.mobile === l.mobile));
+    expect(mine).toHaveLength(1);
+    expect(mine[0]).toMatchObject({ mobile: mob(8), name: "SSC Student", exams: ["mh-ssc-10"] });
+    expect(JSON.stringify(body)).not.toContain("jee-mains");
+    const account = await call(`source=account&after=${encodeURIComponent(START)}&limit=50`);
+    expect(account.body.leads.some((l: { mobile: string }) => l.mobile === mob(8))).toBe(false);
   });
 
   it("pages through a timestamp tie one row at a time without skipping or repeating", async () => {
