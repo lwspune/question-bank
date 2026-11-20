@@ -71,6 +71,7 @@ export const CHROMATOGRAPHY_GOC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcgoc-rf",
       name: "Retardation factor and order of elution",
+      visualizationSlug: "jee-tlc-rf",
       intuition:
         "Rf compares how far a spot travelled with how far the solvent travelled. Both distances are measured from the base line, where the spot started, so Rf is a fraction between 0 and 1 with no unit. A compound held tightly by the stationary phase lags behind the solvent and has a small Rf.",
       definition:

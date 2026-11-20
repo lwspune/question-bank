@@ -128,6 +128,7 @@ export const NEET_BO_BD_PATTERNS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nbobd-species-area",
       name: "Species-area relationship and stable communities",
+      visualizationSlug: "neet-species-area",
       intuition:
         "Search a bigger area and you find more species, but each new patch adds fewer new ones than the last. On log scales this slowing curve becomes a straight line whose slope tells us how fast richness climbs with area.",
       definition:

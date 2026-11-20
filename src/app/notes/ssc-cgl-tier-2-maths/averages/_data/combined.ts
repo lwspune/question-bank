@@ -12,6 +12,7 @@ export const SSC2_AV_COMBINED_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2avcc-combined",
       name: "Combined averages of two groups",
+      visualizationSlug: "ssc-t2-combined-average",
       intuition:
         "When two groups are put together, their totals add and their counts add. The combined average is the combined total over the combined count, and it sits nearer the average of the bigger group.",
       definition:

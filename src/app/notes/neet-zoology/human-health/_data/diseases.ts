@@ -91,6 +91,7 @@ export const NEET_ZO_HH_DISEASES_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nzohh-malaria",
       name: "The life cycle of Plasmodium",
+      visualizationSlug: "neet-plasmodium-cycle",
       intuition:
         "Plasmodium needs two hosts, a human and a mosquito. In the human it only multiplies by splitting, first in the liver and then in the red blood cells. The sexual part, the joining of gametes, can only happen once a mosquito sucks up the parasite with blood. Keep the two halves apart: asexual in the human, fertilisation in the mosquito.",
       definition:

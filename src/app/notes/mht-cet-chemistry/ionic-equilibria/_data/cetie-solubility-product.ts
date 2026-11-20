@@ -356,6 +356,7 @@ export const KSP_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetie-ksp-common-ion-effect",
       name: "Common ion effect on solubility",
+      visualizationSlug: "cet-common-ion-solubility",
       intuition:
         "Adding an ion that is already part of a sparingly soluble salt pushes its dissolution equilibrium backward (Le Chatelier), so the salt becomes LESS soluble. The same suppression of ionization by a common ion is what makes a buffer work. Quantitatively, the common ion fixes one ion's concentration, so the solubility drops to Ksp divided by that concentration.",
       definition:

@@ -12,6 +12,7 @@ export const SSC_CI_POWER_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscipw-inside",
       name: "Two chords crossing inside a circle",
+      visualizationSlug: "ssc-chords-crossing",
       intuition:
         "When chords AB and CD cross at P, triangles PAC and PDB have equal angles (vertically opposite angles at P, and angles in the same segment), so their sides are in proportion. That proportion says the two products of pieces are equal.",
       definition:

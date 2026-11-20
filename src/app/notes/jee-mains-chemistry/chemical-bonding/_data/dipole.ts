@@ -13,6 +13,7 @@ export const DIPOLE_BOND_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcbond-dipole-direction",
       name: "Dipole moment: size and direction",
+      visualizationSlug: "jee-nh3-nf3-dipoles",
       intuition:
         "When two bonded atoms differ in electronegativity, the shared electrons shift towards one of them, leaving a small positive and a small negative end. The dipole moment is that charge times the distance between the ends. In a molecule, the bond moments and any lone-pair moment add as vectors.",
       definition:

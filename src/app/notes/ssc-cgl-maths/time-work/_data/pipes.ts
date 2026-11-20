@@ -12,6 +12,7 @@ export const SSC_TW_PIPES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssctwpc-net",
       name: "Inlets and outlets open together",
+      visualizationSlug: "ssc-pipes-net-fill",
       intuition:
         "Each filling pipe adds its share of the tank every hour, and each emptying pipe takes its share away. What counts is how much is left in the tank at the end of each hour: the net rate.",
       definition:

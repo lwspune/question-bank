@@ -12,6 +12,7 @@ export const SSC2_CI_CHORDS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2cich-chords",
       name: "Chords and the perpendicular from the centre",
+      visualizationSlug: "ssc-t2-chord-distance",
       intuition:
         "The line from the centre at right angles to a chord cuts the chord in half. That gives a right triangle: the radius as the long side, half the chord and the distance from the centre as the other two.",
       definition:

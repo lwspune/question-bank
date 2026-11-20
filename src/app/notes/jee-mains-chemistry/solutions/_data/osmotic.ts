@@ -129,6 +129,7 @@ export const OSMOTIC_SOL_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jcsol-osmosis-direction",
       name: "Direction of osmosis and reverse osmosis",
+      visualizationSlug: "jee-osmosis-direction",
       intuition:
         "A semipermeable membrane lets solvent through and holds solute back. The solvent moves to dilute the side with more particles. Push on that concentrated side with more than its osmotic pressure and the flow reverses.",
       definition:

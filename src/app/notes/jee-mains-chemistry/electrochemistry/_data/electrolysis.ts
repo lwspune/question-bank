@@ -83,6 +83,7 @@ export const ELECTROLYSIS_ELEC_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jcelec-products",
       name: "Products of electrolysis",
+      visualizationSlug: "jee-brine-electrolysis",
       intuition:
         "In water, every ion must compete with water itself. At the cathode the species with the higher reduction potential is reduced. At the anode the easiest oxidation wins, and an active metal anode can dissolve before anything else.",
       definition:

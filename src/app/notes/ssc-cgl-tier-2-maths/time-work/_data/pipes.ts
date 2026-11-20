@@ -12,6 +12,7 @@ export const SSC2_TW_PIPES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2twpc-net",
       name: "Inlets and outlets together",
+      visualizationSlug: "ssc-t2-pipes-tank",
       intuition:
         "A pipe that fills is a worker; a pipe or leak that empties is a worker doing negative work. Add the filling rates, take away the emptying ones, and the net rate gives the time.",
       definition:

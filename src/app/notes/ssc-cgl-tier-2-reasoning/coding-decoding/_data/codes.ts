@@ -82,6 +82,7 @@ export const SSC2_RCD_CODES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2rcdco-common",
       name: "Codes found from what two words share",
+      visualizationSlug: "ssc-t2-shared-code",
       intuition:
         "When two coded sentences or words share exactly one word or letter, the code they share belongs to it. No arithmetic is needed: just match what is common.",
       definition:

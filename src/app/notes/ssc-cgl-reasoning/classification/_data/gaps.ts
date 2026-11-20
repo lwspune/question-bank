@@ -12,6 +12,7 @@ export const SSC_RCL_GAPS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrclga-growing",
       name: "Gaps that grow or shrink by a rule",
+      visualizationSlug: "ssc-letter-gaps",
       intuition:
         "Here the steps inside a cluster are not equal. Three clusters share the same list of steps, such as +1, +3, +5, and the odd one changes one number in that list. Once each cluster is a list of gaps, the odd one is easy to see.",
       definition:

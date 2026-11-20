@@ -60,6 +60,7 @@ export const SSC_RSE_CLUSTERS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrsecl-own",
       name: "Each column has its own step",
+      visualizationSlug: "ssc-cluster-columns",
       intuition:
         "Most SSC clusters are built so that the columns move differently: one forward by 3, one back by 2, one standing still. Nothing about one column tells you about the next, so each needs its own look.",
       definition:

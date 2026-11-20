@@ -74,6 +74,7 @@ export const EQUILIBRIUM_CHTHERMO_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcthermo-g-graphs",
       name: "Graphs of log K against 1/T and of G against extent",
+      visualizationSlug: "jee-gibbs-graphs",
       intuition:
         "Put ΔG° = ΔH° − TΔS° into ΔG° = −2.303RT log K, and log K becomes a straight line in 1/T. Its slope carries ΔH° and its intercept carries ΔS°. On a curve of G against how far the reaction has gone, the lowest point is equilibrium.",
       definition:

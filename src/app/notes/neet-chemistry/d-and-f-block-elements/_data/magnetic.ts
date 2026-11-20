@@ -69,6 +69,7 @@ export const NEET_CH_DF_MAGNETIC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nchdf-spin-only",
       name: "The spin-only magnetic moment",
+      visualizationSlug: "neet-spin-only-moment",
       intuition:
         "Each unpaired electron adds to the ion's magnetic moment. Once you know the number of unpaired electrons n, one formula gives the moment in Bohr magnetons. It is the same formula used for complexes in Coordination Compounds.",
       definition:

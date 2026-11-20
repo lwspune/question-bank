@@ -57,6 +57,7 @@ export const SSC_XMI_BASICS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscxmimi-demand",
       name: "Indifference curves and price elasticity",
+      visualizationSlug: "ssc-elasticity-scale",
       intuition:
         "Elasticity asks how strongly buyers react to a price change. Compare the two percentage changes: if quantity moves by more than price, demand is elastic.",
       definition:

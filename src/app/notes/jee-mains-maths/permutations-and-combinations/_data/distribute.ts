@@ -13,6 +13,7 @@ export const DISTRIBUTE_PNC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpnc-identical",
       name: "Identical objects: stars and bars",
+      visualizationSlug: "jee-stars-and-bars",
       intuition:
         "Sharing \\(n\\) identical objects among \\(k\\) people is the number of solutions of \\(x_1+\\dots+x_k=n\\) in non-negative integers: \\(\\binom{n+k-1}{k-1}\\). A lower bound is removed by substitution; an upper bound is handled by subtracting the cases that break it. When the boxes are identical too, only the partition of \\(n\\) matters, so list the partitions.",
       definition:

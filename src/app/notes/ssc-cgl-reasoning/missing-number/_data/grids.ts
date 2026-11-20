@@ -12,6 +12,7 @@ export const SSC_RMN_GRIDS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrmngr-add",
       name: "Rules that add, subtract or halve",
+      visualizationSlug: "ssc-row-rule-grid",
       intuition:
         "Before trying any rule, compare the size of the third number with the first two. If it is close to their sum or a little below the first, the rule uses only adding and subtracting, perhaps with a half or a double.",
       definition:

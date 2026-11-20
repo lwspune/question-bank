@@ -57,6 +57,7 @@ export const SSC2_CMS_OFFICE_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "ssc2cmsof-excel",
       name: "MS Excel",
+      visualizationSlug: "ssc-t2-excel-range",
       intuition:
         "A cell is where a column and a row meet, named by column letter then row number (B7). Functions take a range and return one answer: SUM adds, COUNT counts numbers, COUNTIF counts the cells that meet a condition.",
       definition:

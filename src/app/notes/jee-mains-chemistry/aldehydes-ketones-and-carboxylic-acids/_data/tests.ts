@@ -67,6 +67,7 @@ export const TESTS_ALD_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcald-haloform",
       name: "The iodoform test and the haloform reaction",
+      visualizationSlug: "jee-haloform",
       intuition:
         "Hypoiodite in base replaces all three hydrogens of a methyl group next to a C=O by iodine. The \\(\\mathrm{CI_3}\\) group then leaves as iodoform, \\(\\mathrm{CHI_3}\\), a yellow solid, and the rest becomes a carboxylate with one carbon fewer. Hypoiodite is also an oxidant, so an alcohol that it can oxidise to such a methyl ketone passes too.",
       definition:

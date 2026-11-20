@@ -69,6 +69,7 @@ export const NEET_CH_RR_REACTIONS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nchrr-balancing",
       name: "Balancing redox equations",
+      visualizationSlug: "neet-redox-balance",
       intuition:
         "In a balanced redox equation the electrons given up by the reducing agent are exactly the electrons taken by the oxidising agent. Both balancing methods rest on this. The half-reaction method writes the oxidation and the reduction separately, balances each, then multiplies them so their electrons match. The oxidation number method counts the rise and the fall in oxidation number and makes them equal.",
       definition:

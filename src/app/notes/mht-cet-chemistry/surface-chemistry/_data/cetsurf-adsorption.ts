@@ -93,6 +93,7 @@ export const ADSORPTION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetsurf-freundlich",
       name: "The Freundlich Adsorption Isotherm",
+      visualizationSlug: "cet-freundlich-plots",
       intuition:
         "At a fixed temperature, the amount adsorbed per gram of adsorbent rises with pressure — but less than proportionally, as a fractional power 1/n with n > 1. Taking logs turns it into a straight line whose slope is 1/n and intercept log k.",
       definition:

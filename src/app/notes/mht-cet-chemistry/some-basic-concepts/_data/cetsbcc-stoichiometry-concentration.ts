@@ -91,6 +91,7 @@ export const STOICHIOMETRY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetsbcc-stoich-combining-volumes",
       name: "Combining gaseous volumes and the limiting reagent",
+      visualizationSlug: "cet-combining-volumes",
       intuition:
         "For gases measured at the same temperature and pressure, volumes behave exactly like moles — so you can skip the mole conversion and work directly in the coefficient ratio (Gay-Lussac's law of combining volumes, which follows from Avogadro's law). " +
         "The one extra check is which reactant runs out first: the limiting reagent decides how much product forms.",

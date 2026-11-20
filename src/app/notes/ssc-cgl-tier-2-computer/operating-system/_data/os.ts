@@ -96,6 +96,7 @@ export const SSC2_COS_OS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "ssc2cosos-software",
       name: "Kinds of software",
+      visualizationSlug: "ssc-t2-software-layers",
       intuition:
         "System software runs the computer (the operating system, utilities); application software does a user's task (a word processor, a browser). Applications depend on the system software underneath them.",
       definition:

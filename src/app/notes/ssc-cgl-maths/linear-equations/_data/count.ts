@@ -12,6 +12,7 @@ export const SSC_LE_COUNT_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssclens-ratios",
       name: "One, none or infinitely many solutions from the coefficient ratios",
+      visualizationSlug: "ssc-lines-solution-count",
       intuition:
         "Each linear equation in x and y is a straight line. Two lines either cross at one point, run parallel and never meet, or lie on top of each other and share every point. The ratios of the coefficients tell you which, with no drawing and no solving.",
       definition:

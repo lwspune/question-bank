@@ -93,6 +93,7 @@ export const MOTIONAL_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-emi-rotating-rod-disc",
       name: "Rotating Rods, Discs, Wheels and Coils",
+      visualizationSlug: "cet-rotating-rod-emf",
       intuition:
         "A rod spinning about one end moves faster further out; its average speed is ωl/2, so e = B·l·(ωl/2) = ½Bωl². A disc is a crowd of such radii in parallel — rim to axle it is ½BωR² too; so is a bicycle wheel, however many spokes it has, since they are in parallel. A whole coil turning in a field is different: its flux varies as cos ωt, so its e.m.f. peaks at NBAω and the average power into a resistor is (NBAω)²/(2R).",
       definition:

@@ -67,6 +67,7 @@ export const HYDROLYSIS_EQ_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jceq-indicators",
       name: "Acid-base indicators and titrations",
+      visualizationSlug: "jee-indicator-choice",
       intuition:
         "An indicator is itself a weak acid or base whose two forms have different colours. It changes colour over about two pH units around its own pK. It works only if that range falls on the steep jump of the titration curve, which is why the right indicator depends on which partners are strong.",
       definition:

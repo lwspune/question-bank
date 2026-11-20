@@ -12,6 +12,7 @@ export const SSC2_RMO_OPS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2rmoop-symbol",
       name: "Signs with new meanings",
+      visualizationSlug: "ssc-t2-sign-rewrite",
       intuition:
         "The question gives a table of what each sign or letter now means. Rewrite the whole expression with the real signs on paper before touching a number.",
       definition:

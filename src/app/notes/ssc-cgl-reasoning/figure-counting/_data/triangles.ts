@@ -12,6 +12,7 @@ export const SSC_RFC_TRIANGLES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrfctr-label",
       name: "Labelling points and listing triangles",
+      visualizationSlug: "ssc-triangle-count",
       intuition:
         "Counting by eye misses the large triangles made of several small ones. Give every corner and crossing point a letter, then list triangles as sets of three letters joined by drawn lines. A list cannot skip a triangle or count one twice.",
       definition:

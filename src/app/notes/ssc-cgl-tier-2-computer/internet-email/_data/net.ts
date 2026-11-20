@@ -99,6 +99,7 @@ export const SSC2_CIE_NET_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "ssc2ciene-protocol",
       name: "Protocols, uploading and downloading",
+      visualizationSlug: "ssc-t2-upload-download",
       intuition:
         "Protocols are the rules for moving data. TCP breaks data into packets and checks they arrive; uploading sends files from your machine to a server, downloading brings them back.",
       definition:

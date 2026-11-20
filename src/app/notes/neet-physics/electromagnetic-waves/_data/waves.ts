@@ -75,6 +75,7 @@ export const NEET_PH_EM_WAVES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphem-fields",
       name: "Electric and magnetic fields of a plane wave",
+      visualizationSlug: "neet-em-wave-fields",
       intuition:
         "In an electromagnetic wave an oscillating electric field and an oscillating magnetic field keep each other going. Both stand at right angles to each other and to the direction the wave moves, so the wave is transverse. They rise and fall together, and the electric field is always c times the magnetic field.",
       definition:

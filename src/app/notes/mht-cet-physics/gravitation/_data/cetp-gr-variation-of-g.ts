@@ -15,6 +15,7 @@ export const VARIATION_OF_G_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-gr-altitude-depth",
       name: "Height and Depth",
+      visualizationSlug: "cet-g-height-depth",
       intuition:
         "At height h, g_h = g R²/(R + h)²: at h = R it is g/4, at 2R it is g/9. The small-height form g(1 − 2h/R) is for h much smaller than R. At depth d, only the sphere of radius R − d below still pulls, so g_d = g(1 − d/R), halved at R/2 and zero at the centre. A pendulum's period goes as 1/√g, so it slows at a height and at a depth; its frequency goes as √g. A capillary rise goes as 1/g, so it grows in a mine. 'Reduced BY 64%' means g becomes 36% of its value.",
       definition:

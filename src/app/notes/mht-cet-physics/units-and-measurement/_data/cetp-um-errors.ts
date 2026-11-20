@@ -13,6 +13,7 @@ export const ERRORS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-um-absolute-errors",
       name: "Means, Absolute Errors and Kinds of Error",
+      visualizationSlug: "cet-errors-add",
       intuition:
         "Several readings are reported as their mean, with the mean of their absolute deviations as the error: 30, 32, 35, 35 s give 33 ± 2 s. In a sum or a difference the absolute errors ADD, never subtract: (82.3 ± 0.3) − (38.6 ± 0.2) = 43.7 ± 0.5. Systematic errors push every reading the same way (a badly calibrated thermometer, a zero error); random errors scatter them (a fluctuating supply). Units follow from formulas: L/R is the time constant of an LR circuit, measured in seconds.",
       definition:

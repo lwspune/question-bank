@@ -12,6 +12,7 @@ export const SSC_GCL_ATMOSPHERE_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscgclat-layers",
       name: "Layers and composition of the atmosphere",
+      visualizationSlug: "ssc-atmosphere-layers",
       intuition:
         "The air is mostly nitrogen and oxygen, and it is stacked in layers. Each layer is known for one thing: weather, ozone, burning meteors, or orbiting satellites. Learn the layers bottom to top with that one thing.",
       definition:

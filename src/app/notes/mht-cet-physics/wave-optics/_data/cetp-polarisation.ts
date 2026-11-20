@@ -13,6 +13,7 @@ export const POLARISATION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-malus",
       name: "Malus' Law and Chains of Polaroids",
+      visualizationSlug: "jee-malus-polaroids",
       intuition:
         "The first polaroid throws away half of unpolarised light whatever its angle. After that the light is polarised, and each polaroid passes the fraction cos²θ, θ being the angle between its axis and the previous one's. Crossed polaroids pass nothing, but slip a third one between them and light gets through.",
       definition:

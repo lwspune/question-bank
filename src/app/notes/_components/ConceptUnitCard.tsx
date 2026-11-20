@@ -76,6 +76,177 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import NeetOrderPlots from "./visualizations/NeetOrderPlots";
+import CetRotatingRodEmf from "./visualizations/CetRotatingRodEmf";
+import CetMetreBridge from "./visualizations/CetMetreBridge";
+import CetCarnotEngine from "./visualizations/CetCarnotEngine";
+import NeetBrewsterAngle from "./visualizations/NeetBrewsterAngle";
+import NeetDecompositionSteps from "./visualizations/NeetDecompositionSteps";
+import JeeLimitingReagent from "./visualizations/JeeLimitingReagent";
+import JeePhosphorusOxoacids from "./visualizations/JeePhosphorusOxoacids";
+import JeeOxidationStates3d from "./visualizations/JeeOxidationStates3d";
+import JeeHinsbergTest from "./visualizations/JeeHinsbergTest";
+import JeeErrorPowers from "./visualizations/JeeErrorPowers";
+import JeeHaloform from "./visualizations/JeeHaloform";
+import JeeIndicatorChoice from "./visualizations/JeeIndicatorChoice";
+import JeeGravityInsideOutside from "./visualizations/JeeGravityInsideOutside";
+import NeetGametogenesis from "./visualizations/NeetGametogenesis";
+import NeetPcrSteps from "./visualizations/NeetPcrSteps";
+import NeetForelimbHomology from "./visualizations/NeetForelimbHomology";
+import NeetEnzymeCycle from "./visualizations/NeetEnzymeCycle";
+import NeetCentromereTypes from "./visualizations/NeetCentromereTypes";
+import NeetGeneMap from "./visualizations/NeetGeneMap";
+import NeetSpinOnlyMoment from "./visualizations/NeetSpinOnlyMoment";
+import NeetBryophyteCycle from "./visualizations/NeetBryophyteCycle";
+import CetConditionalRelatives from "./visualizations/CetConditionalRelatives";
+import CetCommonIonSolubility from "./visualizations/CetCommonIonSolubility";
+import CetCompleteSquare from "./visualizations/CetCompleteSquare";
+import JeeInfiniteGpSum from "./visualizations/JeeInfiniteGpSum";
+import JeeStarsAndBars from "./visualizations/JeeStarsAndBars";
+import CetRoundTableGaps from "./visualizations/CetRoundTableGaps";
+import JeeHockeyStick from "./visualizations/JeeHockeyStick";
+import JeeInverseTrigTriangles from "./visualizations/JeeInverseTrigTriangles";
+import CetParallelPairDistance from "./visualizations/CetParallelPairDistance";
+import SscDecagonAngles from "./visualizations/SscDecagonAngles";
+import SscRankRow from "./visualizations/SscRankRow";
+import SscT2HcfLcmVenn from "./visualizations/SscT2HcfLcmVenn";
+import SscAtmosphereLayers from "./visualizations/SscAtmosphereLayers";
+import SscT2ReciprocalLadder from "./visualizations/SscT2ReciprocalLadder";
+import SscT2PipesTank from "./visualizations/SscT2PipesTank";
+import SscCornerDotSeries from "./visualizations/SscCornerDotSeries";
+import SscMoreThanBase from "./visualizations/SscMoreThanBase";
+import SscClusterColumns from "./visualizations/SscClusterColumns";
+import SscRepeatReplacement from "./visualizations/SscRepeatReplacement";
+import SscAboveAverage from "./visualizations/SscAboveAverage";
+import SscSiMultiples from "./visualizations/SscSiMultiples";
+import SscWorkTogetherUnits from "./visualizations/SscWorkTogetherUnits";
+import SscSurdSquare from "./visualizations/SscSurdSquare";
+import SscLetterGaps from "./visualizations/SscLetterGaps";
+import SscParallelCut from "./visualizations/SscParallelCut";
+import SscTangentPair from "./visualizations/SscTangentPair";
+import SscTriangleCount from "./visualizations/SscTriangleCount";
+import SscCentreAngle from "./visualizations/SscCentreAngle";
+import SscCoordCentroid from "./visualizations/SscCoordCentroid";
+import SscChordsCrossing from "./visualizations/SscChordsCrossing";
+import CetCombiningVolumes from "./visualizations/CetCombiningVolumes";
+import CetAllylicBenzylicVinylic from "./visualizations/CetAllylicBenzylicVinylic";
+import CetSquarePlanarIsomers from "./visualizations/CetSquarePlanarIsomers";
+import CetAcetophenoneReductions from "./visualizations/CetAcetophenoneReductions";
+import JeeOsmosisDirection from "./visualizations/JeeOsmosisDirection";
+import JeeTlcRf from "./visualizations/JeeTlcRf";
+import JeeBrineElectrolysis from "./visualizations/JeeBrineElectrolysis";
+import JeeNh3Nf3Dipoles from "./visualizations/JeeNh3Nf3Dipoles";
+import JeeGibbsGraphs from "./visualizations/JeeGibbsGraphs";
+import JeeThreePlanes from "./visualizations/JeeThreePlanes";
+import JeeFlagpoleSubtended from "./visualizations/JeeFlagpoleSubtended";
+import JeeOrthogonalRotation from "./visualizations/JeeOrthogonalRotation";
+import JeeTwoAntennas from "./visualizations/JeeTwoAntennas";
+import SscIncomeAggregates from "./visualizations/SscIncomeAggregates";
+import SscPlanTimeline from "./visualizations/SscPlanTimeline";
+import SscBudgetDeficits from "./visualizations/SscBudgetDeficits";
+import SscElasticityScale from "./visualizations/SscElasticityScale";
+import SscPeriodicGroups from "./visualizations/SscPeriodicGroups";
+import SscHydrocarbonFamilies from "./visualizations/SscHydrocarbonFamilies";
+import SscRedoxNumbers from "./visualizations/SscRedoxNumbers";
+import SscMilkPh from "./visualizations/SscMilkPh";
+import SscMassPercent from "./visualizations/SscMassPercent";
+import SscValencyCross from "./visualizations/SscValencyCross";
+import SscSatelliteOrbits from "./visualizations/SscSatelliteOrbits";
+import SscVernierParts from "./visualizations/SscVernierParts";
+import SscMatkaCooling from "./visualizations/SscMatkaCooling";
+import SscRigidRotation from "./visualizations/SscRigidRotation";
+import JeeCarbocationShift from "./visualizations/JeeCarbocationShift";
+import JeeDiboraneBorazine from "./visualizations/JeeDiboraneBorazine";
+import JeeSpinOnlyMoment from "./visualizations/JeeSpinOnlyMoment";
+import JeePhenoxideResonance from "./visualizations/JeePhenoxideResonance";
+import JeeAmineBasicity from "./visualizations/JeeAmineBasicity";
+import NeetXenonShapes from "./visualizations/NeetXenonShapes";
+import NeetLanthanoidContraction from "./visualizations/NeetLanthanoidContraction";
+import NeetAmineBasicity from "./visualizations/NeetAmineBasicity";
+import NeetLimitingReagent from "./visualizations/NeetLimitingReagent";
+import NeetRedoxBalance from "./visualizations/NeetRedoxBalance";
+import NeetPhenolAcidity from "./visualizations/NeetPhenolAcidity";
+import SscPlantGroups from "./visualizations/SscPlantGroups";
+import SscBloodFlow from "./visualizations/SscBloodFlow";
+import SscBacterialShapes from "./visualizations/SscBacterialShapes";
+import NeetCoelomTypes from "./visualizations/NeetCoelomTypes";
+import NeetSimpleEpithelium from "./visualizations/NeetSimpleEpithelium";
+import NeetHormoneAction from "./visualizations/NeetHormoneAction";
+import NeetPlasmodiumCycle from "./visualizations/NeetPlasmodiumCycle";
+import NeetArtTransfers from "./visualizations/NeetArtTransfers";
+import NeetBtToxin from "./visualizations/NeetBtToxin";
+import CetMoleChain from "./visualizations/CetMoleChain";
+import CetNitrophenolHBonds from "./visualizations/CetNitrophenolHBonds";
+import CetAmineNHTests from "./visualizations/CetAmineNHTests";
+import CetSpinOnlyMoment from "./visualizations/CetSpinOnlyMoment";
+import CetXenonShapes from "./visualizations/CetXenonShapes";
+import CetOxidationLadder from "./visualizations/CetOxidationLadder";
+import CetFreundlichPlots from "./visualizations/CetFreundlichPlots";
+import CetSolvayLoop from "./visualizations/CetSolvayLoop";
+import CetPentaneCarbonTypes from "./visualizations/CetPentaneCarbonTypes";
+import CetNanoDimensions from "./visualizations/CetNanoDimensions";
+import CetAlkyneReduction from "./visualizations/CetAlkyneReduction";
+import JeeMatrixRowColumn from "./visualizations/JeeMatrixRowColumn";
+import JeeTwoLinesParameter from "./visualizations/JeeTwoLinesParameter";
+import JeeImplicationFalseRows from "./visualizations/JeeImplicationFalseRows";
+import JeeRepeatedParts from "./visualizations/JeeRepeatedParts";
+import SscPipesNetFill from "./visualizations/SscPipesNetFill";
+import SscSquareOfSum from "./visualizations/SscSquareOfSum";
+import SscNestedBrackets from "./visualizations/SscNestedBrackets";
+import SscCiVsSi from "./visualizations/SscCiVsSi";
+import SscLinesSolutionCount from "./visualizations/SscLinesSolutionCount";
+import SscTrapeziumDiagonals from "./visualizations/SscTrapeziumDiagonals";
+import CetWienPeak from "./visualizations/CetWienPeak";
+import CetGHeightDepth from "./visualizations/CetGHeightDepth";
+import CetHysteresisLoop from "./visualizations/CetHysteresisLoop";
+import CetErrorsAdd from "./visualizations/CetErrorsAdd";
+import CetCutSpring from "./visualizations/CetCutSpring";
+import JeeHeatingCurve from "./visualizations/JeeHeatingCurve";
+import JeeAmEnvelope from "./visualizations/JeeAmEnvelope";
+import NeetEmWaveFields from "./visualizations/NeetEmWaveFields";
+import SscT2SeriesBlock from "./visualizations/SscT2SeriesBlock";
+import SscT2SignRewrite from "./visualizations/SscT2SignRewrite";
+import SscT2DsRow from "./visualizations/SscT2DsRow";
+import SscT2CodedRelations from "./visualizations/SscT2CodedRelations";
+import SscT2SharedCode from "./visualizations/SscT2SharedCode";
+import SscT2LetterSteps from "./visualizations/SscT2LetterSteps";
+import SscT2OddPair from "./visualizations/SscT2OddPair";
+import SscT2DigitsInPlace from "./visualizations/SscT2DigitsInPlace";
+import SscT2CauseLinks from "./visualizations/SscT2CauseLinks";
+import SscT2FigureSeries from "./visualizations/SscT2FigureSeries";
+import SscT2SegmentDigits from "./visualizations/SscT2SegmentDigits";
+import SscT2MemoryLadder from "./visualizations/SscT2MemoryLadder";
+import SscT2ExcelRange from "./visualizations/SscT2ExcelRange";
+import SscT2UploadDownload from "./visualizations/SscT2UploadDownload";
+import SscT2SoftwareLayers from "./visualizations/SscT2SoftwareLayers";
+import SscT2SecurityTools from "./visualizations/SscT2SecurityTools";
+import SscT2HubSwitch from "./visualizations/SscT2HubSwitch";
+import NeetTaxonHierarchy from "./visualizations/NeetTaxonHierarchy";
+import NeetLifeCyclePatterns from "./visualizations/NeetLifeCyclePatterns";
+import NeetCambiumRing from "./visualizations/NeetCambiumRing";
+import NeetGrowthCurves from "./visualizations/NeetGrowthCurves";
+import NeetDihybridCross from "./visualizations/NeetDihybridCross";
+import NeetBrewedDrinks from "./visualizations/NeetBrewedDrinks";
+import NeetSpeciesArea from "./visualizations/NeetSpeciesArea";
+import SscT2MilkReplacement from "./visualizations/SscT2MilkReplacement";
+import SscT2AngleBisector from "./visualizations/SscT2AngleBisector";
+import SscT2SquareOfSum from "./visualizations/SscT2SquareOfSum";
+import SscT2CiMinusSi from "./visualizations/SscT2CiMinusSi";
+import SscT2WorkUnits from "./visualizations/SscT2WorkUnits";
+import SscT2CombinedAverage from "./visualizations/SscT2CombinedAverage";
+import SscT2PairOfLines from "./visualizations/SscT2PairOfLines";
+import SscT2ChordDistance from "./visualizations/SscT2ChordDistance";
+import SscT2Trapezium from "./visualizations/SscT2Trapezium";
+import SscRowRuleGrid from "./visualizations/SscRowRuleGrid";
+import SscWeekWheel from "./visualizations/SscWeekWheel";
+import SscBodmasRow from "./visualizations/SscBodmasRow";
+import SscOppositeLetters from "./visualizations/SscOppositeLetters";
+import SscAlphabetPositions from "./visualizations/SscAlphabetPositions";
+import SscDifferenceLadder from "./visualizations/SscDifferenceLadder";
+import SscTurningArrow from "./visualizations/SscTurningArrow";
+import SscGridSquares from "./visualizations/SscGridSquares";
+import SscInequalityChain from "./visualizations/SscInequalityChain";
+import SscSymmetryQuarters from "./visualizations/SscSymmetryQuarters";
 import SscSoundMedia from "./visualizations/SscSoundMedia";
 import SscRespirationStages from "./visualizations/SscRespirationStages";
 import SscDecayModes from "./visualizations/SscDecayModes";
@@ -882,6 +1053,348 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "neet-order-plots":
+      return <NeetOrderPlots />;
+    case "cet-rotating-rod-emf":
+      return <CetRotatingRodEmf />;
+    case "cet-metre-bridge":
+      return <CetMetreBridge />;
+    case "cet-carnot-engine":
+      return <CetCarnotEngine />;
+    case "neet-brewster-angle":
+      return <NeetBrewsterAngle />;
+    case "neet-decomposition-steps":
+      return <NeetDecompositionSteps />;
+    case "jee-limiting-reagent":
+      return <JeeLimitingReagent />;
+    case "jee-p-oxoacid-basicity":
+      return <JeePhosphorusOxoacids />;
+    case "jee-3d-oxidation-states":
+      return <JeeOxidationStates3d />;
+    case "jee-hinsberg-test":
+      return <JeeHinsbergTest />;
+    case "jee-error-powers":
+      return <JeeErrorPowers />;
+    case "jee-haloform":
+      return <JeeHaloform />;
+    case "jee-indicator-choice":
+      return <JeeIndicatorChoice />;
+    case "jee-g-inside-outside":
+      return <JeeGravityInsideOutside />;
+    case "neet-gametogenesis":
+      return <NeetGametogenesis />;
+    case "neet-pcr-steps":
+      return <NeetPcrSteps />;
+    case "neet-forelimb-homology":
+      return <NeetForelimbHomology />;
+    case "neet-enzyme-cycle":
+      return <NeetEnzymeCycle />;
+    case "neet-centromere-types":
+      return <NeetCentromereTypes />;
+    case "neet-gene-map":
+      return <NeetGeneMap />;
+    case "neet-spin-only-moment":
+      return <NeetSpinOnlyMoment />;
+    case "neet-bryophyte-cycle":
+      return <NeetBryophyteCycle />;
+    case "cet-conditional-relatives":
+      return <CetConditionalRelatives />;
+    case "cet-common-ion-solubility":
+      return <CetCommonIonSolubility />;
+    case "cet-complete-square":
+      return <CetCompleteSquare />;
+    case "jee-infinite-gp-sum":
+      return <JeeInfiniteGpSum />;
+    case "jee-stars-and-bars":
+      return <JeeStarsAndBars />;
+    case "cet-round-table-gaps":
+      return <CetRoundTableGaps />;
+    case "jee-hockey-stick":
+      return <JeeHockeyStick />;
+    case "jee-inverse-trig-triangles":
+      return <JeeInverseTrigTriangles />;
+    case "cet-parallel-pair-distance":
+      return <CetParallelPairDistance />;
+    case "ssc-decagon-angles":
+      return <SscDecagonAngles />;
+    case "ssc-rank-row":
+      return <SscRankRow />;
+    case "ssc-t2-hcf-lcm-venn":
+      return <SscT2HcfLcmVenn />;
+    case "ssc-atmosphere-layers":
+      return <SscAtmosphereLayers />;
+    case "ssc-t2-reciprocal-ladder":
+      return <SscT2ReciprocalLadder />;
+    case "ssc-t2-pipes-tank":
+      return <SscT2PipesTank />;
+    case "ssc-corner-dot-series":
+      return <SscCornerDotSeries />;
+    case "ssc-more-than-base":
+      return <SscMoreThanBase />;
+    case "ssc-cluster-columns":
+      return <SscClusterColumns />;
+    case "ssc-repeat-replacement":
+      return <SscRepeatReplacement />;
+    case "ssc-above-average":
+      return <SscAboveAverage />;
+    case "ssc-si-multiples":
+      return <SscSiMultiples />;
+    case "ssc-work-together-units":
+      return <SscWorkTogetherUnits />;
+    case "ssc-surd-square":
+      return <SscSurdSquare />;
+    case "ssc-letter-gaps":
+      return <SscLetterGaps />;
+    case "ssc-parallel-cut":
+      return <SscParallelCut />;
+    case "ssc-tangent-pair":
+      return <SscTangentPair />;
+    case "ssc-triangle-count":
+      return <SscTriangleCount />;
+    case "ssc-centre-angle":
+      return <SscCentreAngle />;
+    case "ssc-coord-centroid":
+      return <SscCoordCentroid />;
+    case "ssc-chords-crossing":
+      return <SscChordsCrossing />;
+    case "cet-combining-volumes":
+      return <CetCombiningVolumes />;
+    case "cet-allylic-benzylic-vinylic":
+      return <CetAllylicBenzylicVinylic />;
+    case "cet-square-planar-isomers":
+      return <CetSquarePlanarIsomers />;
+    case "cet-acetophenone-reductions":
+      return <CetAcetophenoneReductions />;
+    case "jee-osmosis-direction":
+      return <JeeOsmosisDirection />;
+    case "jee-tlc-rf":
+      return <JeeTlcRf />;
+    case "jee-brine-electrolysis":
+      return <JeeBrineElectrolysis />;
+    case "jee-nh3-nf3-dipoles":
+      return <JeeNh3Nf3Dipoles />;
+    case "jee-gibbs-graphs":
+      return <JeeGibbsGraphs />;
+    case "jee-three-planes":
+      return <JeeThreePlanes />;
+    case "jee-flagpole-subtended":
+      return <JeeFlagpoleSubtended />;
+    case "jee-orthogonal-rotation":
+      return <JeeOrthogonalRotation />;
+    case "jee-two-antennas":
+      return <JeeTwoAntennas />;
+    case "ssc-income-aggregates":
+      return <SscIncomeAggregates />;
+    case "ssc-plan-timeline":
+      return <SscPlanTimeline />;
+    case "ssc-budget-deficits":
+      return <SscBudgetDeficits />;
+    case "ssc-elasticity-scale":
+      return <SscElasticityScale />;
+    case "ssc-periodic-groups":
+      return <SscPeriodicGroups />;
+    case "ssc-hydrocarbon-families":
+      return <SscHydrocarbonFamilies />;
+    case "ssc-redox-numbers":
+      return <SscRedoxNumbers />;
+    case "ssc-milk-ph":
+      return <SscMilkPh />;
+    case "ssc-mass-percent":
+      return <SscMassPercent />;
+    case "ssc-valency-cross":
+      return <SscValencyCross />;
+    case "ssc-satellite-orbits":
+      return <SscSatelliteOrbits />;
+    case "ssc-vernier-parts":
+      return <SscVernierParts />;
+    case "ssc-matka-cooling":
+      return <SscMatkaCooling />;
+    case "ssc-rigid-rotation":
+      return <SscRigidRotation />;
+    case "jee-carbocation-shift":
+      return <JeeCarbocationShift />;
+    case "jee-diborane-borazine":
+      return <JeeDiboraneBorazine />;
+    case "jee-spin-only-moment":
+      return <JeeSpinOnlyMoment />;
+    case "jee-phenoxide-resonance":
+      return <JeePhenoxideResonance />;
+    case "jee-amine-basicity":
+      return <JeeAmineBasicity />;
+    case "neet-xenon-shapes":
+      return <NeetXenonShapes />;
+    case "neet-lanthanoid-contraction":
+      return <NeetLanthanoidContraction />;
+    case "neet-amine-basicity":
+      return <NeetAmineBasicity />;
+    case "neet-limiting-reagent":
+      return <NeetLimitingReagent />;
+    case "neet-redox-balance":
+      return <NeetRedoxBalance />;
+    case "neet-phenol-acidity":
+      return <NeetPhenolAcidity />;
+    case "ssc-plant-groups":
+      return <SscPlantGroups />;
+    case "ssc-blood-flow":
+      return <SscBloodFlow />;
+    case "ssc-bacterial-shapes":
+      return <SscBacterialShapes />;
+    case "neet-coelom-types":
+      return <NeetCoelomTypes />;
+    case "neet-simple-epithelium":
+      return <NeetSimpleEpithelium />;
+    case "neet-hormone-action":
+      return <NeetHormoneAction />;
+    case "neet-plasmodium-cycle":
+      return <NeetPlasmodiumCycle />;
+    case "neet-art-transfers":
+      return <NeetArtTransfers />;
+    case "neet-bt-toxin":
+      return <NeetBtToxin />;
+    case "cet-mole-chain":
+      return <CetMoleChain />;
+    case "cet-nitrophenol-h-bonds":
+      return <CetNitrophenolHBonds />;
+    case "cet-amine-nh-tests":
+      return <CetAmineNHTests />;
+    case "cet-spin-only-moment":
+      return <CetSpinOnlyMoment />;
+    case "cet-xenon-shapes":
+      return <CetXenonShapes />;
+    case "cet-oxidation-ladder":
+      return <CetOxidationLadder />;
+    case "cet-freundlich-plots":
+      return <CetFreundlichPlots />;
+    case "cet-solvay-loop":
+      return <CetSolvayLoop />;
+    case "cet-pentane-carbon-types":
+      return <CetPentaneCarbonTypes />;
+    case "cet-nano-dimensions":
+      return <CetNanoDimensions />;
+    case "cet-alkyne-reduction":
+      return <CetAlkyneReduction />;
+    case "jee-matrix-row-column":
+      return <JeeMatrixRowColumn />;
+    case "jee-two-lines-parameter":
+      return <JeeTwoLinesParameter />;
+    case "jee-implication-false-rows":
+      return <JeeImplicationFalseRows />;
+    case "jee-repeated-parts":
+      return <JeeRepeatedParts />;
+    case "ssc-pipes-net-fill":
+      return <SscPipesNetFill />;
+    case "ssc-square-of-sum":
+      return <SscSquareOfSum />;
+    case "ssc-nested-brackets":
+      return <SscNestedBrackets />;
+    case "ssc-ci-vs-si":
+      return <SscCiVsSi />;
+    case "ssc-lines-solution-count":
+      return <SscLinesSolutionCount />;
+    case "ssc-trapezium-diagonals":
+      return <SscTrapeziumDiagonals />;
+    case "cet-wien-peak":
+      return <CetWienPeak />;
+    case "cet-g-height-depth":
+      return <CetGHeightDepth />;
+    case "cet-hysteresis-loop":
+      return <CetHysteresisLoop />;
+    case "cet-errors-add":
+      return <CetErrorsAdd />;
+    case "cet-cut-spring":
+      return <CetCutSpring />;
+    case "jee-heating-curve":
+      return <JeeHeatingCurve />;
+    case "jee-am-envelope":
+      return <JeeAmEnvelope />;
+    case "neet-em-wave-fields":
+      return <NeetEmWaveFields />;
+    case "ssc-t2-series-block":
+      return <SscT2SeriesBlock />;
+    case "ssc-t2-sign-rewrite":
+      return <SscT2SignRewrite />;
+    case "ssc-t2-ds-row":
+      return <SscT2DsRow />;
+    case "ssc-t2-coded-relations":
+      return <SscT2CodedRelations />;
+    case "ssc-t2-shared-code":
+      return <SscT2SharedCode />;
+    case "ssc-t2-letter-steps":
+      return <SscT2LetterSteps />;
+    case "ssc-t2-odd-pair":
+      return <SscT2OddPair />;
+    case "ssc-t2-digits-in-place":
+      return <SscT2DigitsInPlace />;
+    case "ssc-t2-cause-links":
+      return <SscT2CauseLinks />;
+    case "ssc-t2-figure-series":
+      return <SscT2FigureSeries />;
+    case "ssc-t2-segment-digits":
+      return <SscT2SegmentDigits />;
+    case "ssc-t2-memory-ladder":
+      return <SscT2MemoryLadder />;
+    case "ssc-t2-excel-range":
+      return <SscT2ExcelRange />;
+    case "ssc-t2-upload-download":
+      return <SscT2UploadDownload />;
+    case "ssc-t2-software-layers":
+      return <SscT2SoftwareLayers />;
+    case "ssc-t2-security-tools":
+      return <SscT2SecurityTools />;
+    case "ssc-t2-hub-switch":
+      return <SscT2HubSwitch />;
+    case "neet-taxon-hierarchy":
+      return <NeetTaxonHierarchy />;
+    case "neet-life-cycle-patterns":
+      return <NeetLifeCyclePatterns />;
+    case "neet-cambium-ring":
+      return <NeetCambiumRing />;
+    case "neet-growth-curves":
+      return <NeetGrowthCurves />;
+    case "neet-dihybrid-cross":
+      return <NeetDihybridCross />;
+    case "neet-brewed-drinks":
+      return <NeetBrewedDrinks />;
+    case "neet-species-area":
+      return <NeetSpeciesArea />;
+    case "ssc-t2-milk-replacement":
+      return <SscT2MilkReplacement />;
+    case "ssc-t2-angle-bisector":
+      return <SscT2AngleBisector />;
+    case "ssc-t2-square-of-sum":
+      return <SscT2SquareOfSum />;
+    case "ssc-t2-ci-minus-si":
+      return <SscT2CiMinusSi />;
+    case "ssc-t2-work-units":
+      return <SscT2WorkUnits />;
+    case "ssc-t2-combined-average":
+      return <SscT2CombinedAverage />;
+    case "ssc-t2-pair-of-lines":
+      return <SscT2PairOfLines />;
+    case "ssc-t2-chord-distance":
+      return <SscT2ChordDistance />;
+    case "ssc-t2-trapezium":
+      return <SscT2Trapezium />;
+    case "ssc-row-rule-grid":
+      return <SscRowRuleGrid />;
+    case "ssc-week-wheel":
+      return <SscWeekWheel />;
+    case "ssc-bodmas-row":
+      return <SscBodmasRow />;
+    case "ssc-opposite-letters":
+      return <SscOppositeLetters />;
+    case "ssc-alphabet-positions":
+      return <SscAlphabetPositions />;
+    case "ssc-difference-ladder":
+      return <SscDifferenceLadder />;
+    case "ssc-turning-arrow":
+      return <SscTurningArrow />;
+    case "ssc-grid-squares":
+      return <SscGridSquares />;
+    case "ssc-inequality-chain":
+      return <SscInequalityChain />;
+    case "ssc-symmetry-quarters":
+      return <SscSymmetryQuarters />;
     case "ssc-sound-media":
       return <SscSoundMedia />;
     case "ssc-respiration-stages":

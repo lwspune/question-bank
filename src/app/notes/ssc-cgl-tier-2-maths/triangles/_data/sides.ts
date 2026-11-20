@@ -50,6 +50,7 @@ export const SSC2_TR_SIDES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2trsi-bisector",
       name: "The angle-bisector theorem",
+      visualizationSlug: "ssc-t2-angle-bisector",
       intuition:
         "The bisector of an angle cuts the opposite side in the ratio of the two sides that make the angle. The longer neighbouring side gets the longer piece.",
       definition:

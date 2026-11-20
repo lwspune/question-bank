@@ -70,6 +70,7 @@ export const BORON_PB_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jcpb-diborane-borazine",
       name: "Structure and preparation of diborane and borazine",
+      visualizationSlug: "jee-diborane-borazine",
       intuition:
         "Diborane, \\(\\mathrm{B_2H_6}\\), has only twelve valence electrons, too few for eight ordinary bonds. It makes do with four normal B–H bonds at the ends and two hydrogens that each bridge both borons, holding them with one pair of electrons spread over three atoms. These three-centre two-electron bonds are the 'banana bonds'. Borazine, \\(\\mathrm{B_3N_3H_6}\\), made by heating diborane with ammonia, has no such bonds: it is a flat ring of alternating B and N with delocalised electrons, called inorganic benzene.",
       definition:

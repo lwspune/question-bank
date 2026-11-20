@@ -14,6 +14,7 @@ export const CLASSIFICATION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetalc-allylic-benzylic-vinylic",
       name: "Allylic, Benzylic and Vinylic Alcohols, and 1°/2°/3°",
+      visualizationSlug: "cet-allylic-benzylic-vinylic",
       intuition:
         "Two labels stack on the OH carbon. First, how many carbons it carries: one — primary, two — secondary, three — tertiary. Second, what sits next to it: a C=C one bond away — allylic; a benzene ring directly attached — benzylic; OH on the double-bond carbon itself — vinylic (an enol). So but-3-en-2-ol is a SECONDARY ALLYLIC alcohol and 2-methylbut-3-en-2-ol a tertiary allylic one.",
       definition:

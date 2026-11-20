@@ -136,6 +136,7 @@ export const NEET_BO_PK_GYMNOSPERMS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nbopk-life-cycles",
       name: "Three patterns of life cycle",
+      visualizationSlug: "neet-life-cycle-patterns",
       intuition:
         "Every plant alternates between a haploid gametophyte and a diploid sporophyte. What changes from group to group is which phase is big and free-living. If only the gametophyte is a real plant and the sporophyte is just the zygote, the cycle is haplontic. If only the sporophyte is a real plant, it is diplontic. If both are multicellular, it is haplo-diplontic.",
       definition:

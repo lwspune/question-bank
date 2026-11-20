@@ -122,6 +122,7 @@ export const NEET_ZO_CC_ACTION_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nzocc-mechanism",
       name: "How hormones act, and their chemical groups",
+      visualizationSlug: "neet-hormone-action",
       intuition:
         "A hormone travels everywhere in the blood, yet only its target cells respond. The reason is the receptor: a protein that fits one hormone only, found only in the target tissue. A water-loving peptide hormone stays outside and sends a second messenger in. A fat-soluble steroid slips inside and works on the genes directly.",
       definition:

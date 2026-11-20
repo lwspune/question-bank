@@ -68,6 +68,7 @@ export const NEET_BO_PG_GROWTH_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nbopg-growth-rate",
       name: "Arithmetic and geometric growth",
+      visualizationSlug: "neet-growth-curves",
       intuition:
         "Growth rate is how much growth happens in a unit of time. If only one of the two daughter cells keeps dividing, the plant adds the same amount every day, and a graph of length against time is a straight line. If both daughter cells keep dividing, growth is slow at first, then shoots up, then slows down when food runs short: an S shaped curve.",
       definition:

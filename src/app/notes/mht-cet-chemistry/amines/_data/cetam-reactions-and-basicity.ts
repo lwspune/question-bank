@@ -62,6 +62,7 @@ export const REACTIONS_AND_BASICITY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetam-acylation-carbylamine-and-hinsberg",
       name: "Acylation, the Carbylamine Test and Hinsberg's Reagent",
+      visualizationSlug: "cet-amine-nh-tests",
       intuition:
         "Each reaction needs a particular hydrogen on nitrogen. Acylation (acetyl chloride, acetic anhydride) replaces an N–H, so primary and secondary amines react and tertiary ones do not. The carbylamine reaction needs BOTH hydrogens: only a primary amine with chloroform and alcoholic KOH gives the foul-smelling isocyanide. Hinsberg's reagent, benzenesulphonyl chloride, gives a KOH-soluble sulphonamide with a primary amine, an insoluble one with a secondary amine, and nothing with a tertiary amine.",
       definition:

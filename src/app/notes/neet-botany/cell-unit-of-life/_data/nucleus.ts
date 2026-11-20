@@ -141,6 +141,7 @@ export const NEET_BO_CE_NUCLEUS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nboce-chromosomes",
       name: "Chromosome types by the position of the centromere",
+      visualizationSlug: "neet-centromere-types",
       intuition:
         "Every chromosome has a pinched point, the centromere, that holds its two chromatids together. Where that point sits decides the chromosome's name: in the middle, a little off the middle, near one end, or right at the end. Learn the four in order from the middle to the tip.",
       definition:

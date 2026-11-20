@@ -12,6 +12,7 @@ export const SSC_RFC_SQUARES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrfcsq-grid",
       name: "Squares in grids and overlapping squares",
+      visualizationSlug: "ssc-grid-squares",
       intuition:
         "A grid holds squares of every size: single cells, 2 by 2 blocks, 3 by 3 blocks, up to the whole grid. Count each size separately and add. Overlapping squares add one more square wherever two of them cross in a square shape.",
       definition:

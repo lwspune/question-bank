@@ -14,6 +14,7 @@ export const TWO_CIRCLES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetcir-relative-position-and-common-tangents",
       name: "Relative Position From d, r₁ + r₂ and |r₁ − r₂|: How Many Common Tangents",
+      visualizationSlug: "jee-two-circles",
       intuition:
         "Compute the two centres and radii, the distance \\(d\\) between the centres, and place \\(d\\) against \\(r_1 + r_2\\) and \\(|r_1 - r_2|\\). Each of the five positions has its own number of common tangents: \\(4, 3, 2, 1, 0\\) as the circles move from apart to nested.",
       definition:

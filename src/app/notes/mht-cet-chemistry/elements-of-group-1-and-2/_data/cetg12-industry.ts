@@ -46,6 +46,7 @@ export const INDUSTRY_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "cetg12-solvay-and-lime",
       name: "The Solvay Process and Slaked Lime",
+      visualizationSlug: "cet-solvay-loop",
       intuition:
         "Solvay makes sodium carbonate from brine, ammonia and CO₂. The expensive ammonia ends up as NH₄Cl, so slaked lime is added to get it back — which is why calcium chloride is the process's waste product.",
       definition:

@@ -12,6 +12,7 @@ export const NEET_BO_LW_CATEGORIES_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nbolw-hierarchy",
       name: "The taxonomic hierarchy",
+      visualizationSlug: "neet-taxon-hierarchy",
       intuition:
         "Classification sorts organisms into groups inside bigger groups, like a ladder. Each step on the ladder is a category, also called a rank, and a group at that rank is a taxon. There are seven main steps. The lowest is species and the highest is kingdom. Going up, each group holds more kinds of organisms, and they share fewer features.",
       definition:

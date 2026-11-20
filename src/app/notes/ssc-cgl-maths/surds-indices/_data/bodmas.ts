@@ -65,6 +65,7 @@ export const SSC_SI_BODMAS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscsibo-brackets",
       name: "Removing nested brackets from the inside out",
+      visualizationSlug: "ssc-nested-brackets",
       intuition:
         "A bracket says: do this part first. When brackets sit inside brackets, the innermost one needs nothing else, so it is always the place to start. Each bracket you finish turns into a single number for the bracket around it.",
       definition:

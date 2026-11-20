@@ -52,6 +52,7 @@ export const SSC_FKM_MOTION_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscfkmmo-rotation",
       name: "Circular motion and rotation",
+      visualizationSlug: "ssc-rigid-rotation",
       intuition:
         "In a spinning rigid body every point turns through the same angle in the same time. Points farther out move faster along their circles.",
       definition:

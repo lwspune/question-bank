@@ -12,6 +12,7 @@ export const SSC2_RNV_FIGURES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2rnvfg-series",
       name: "Figure series",
+      visualizationSlug: "ssc-t2-figure-series",
       intuition:
         "From one figure to the next, each part follows its own simple rule: it turns by a fixed angle, moves one step, or a line is added. Track one part at a time across the figures.",
       definition:

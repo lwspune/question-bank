@@ -69,6 +69,7 @@ export const NEET_BO_PI_LINKAGE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nbopi-gene-mapping",
       name: "Recombination frequency and gene mapping",
+      visualizationSlug: "neet-gene-map",
       intuition:
         "Crossing over is more likely to split two genes the farther apart they lie. So the percentage of recombinant offspring works as a ruler: the bigger the percentage, the longer the distance. Distances along a line add up, so the order of the genes can be read from which distances add.",
       definition:

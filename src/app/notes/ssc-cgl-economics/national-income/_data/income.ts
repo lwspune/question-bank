@@ -12,6 +12,7 @@ export const SSC_XNI_INCOME_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscxnina-aggregates",
       name: "From GDP to national income",
+      visualizationSlug: "ssc-income-aggregates",
       intuition:
         "Four aggregates differ by two corrections. Add the income Indians earn abroad (net of what foreigners earn here) to go from domestic to national. Take away depreciation to go from gross to net. National income is the net, national figure at factor cost.",
       definition:

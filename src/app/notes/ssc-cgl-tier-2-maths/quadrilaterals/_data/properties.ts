@@ -87,6 +87,7 @@ export const SSC2_QU_PROPERTIES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2qupr-trapezium",
       name: "Trapeziums",
+      visualizationSlug: "ssc-t2-trapezium",
       intuition:
         "A trapezium has one pair of parallel sides. Dropping perpendiculars from the shorter side to the longer one leaves a rectangle in the middle and two right triangles at the ends.",
       definition:

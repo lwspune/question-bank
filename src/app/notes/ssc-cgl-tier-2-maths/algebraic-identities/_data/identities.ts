@@ -12,6 +12,7 @@ export const SSC2_AI_IDENTITIES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2aiid-squares",
       name: "Squares of a sum and a difference",
+      visualizationSlug: "ssc-t2-square-of-sum",
       intuition:
         "The square of a sum and the square of a difference differ only in the sign of the middle term 2ab. Know any two of a + b, a − b, ab and the sum of squares, and the other two follow.",
       definition:

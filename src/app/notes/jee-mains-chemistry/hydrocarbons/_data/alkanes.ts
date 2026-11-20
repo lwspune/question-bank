@@ -73,6 +73,7 @@ export const ALKANES_HC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jchc-alkane-structure",
       name: "Alkane formula, carbon classes and conformations",
+      visualizationSlug: "neet-ethane-conformations",
       intuition:
         "An open-chain alkane is CₙH₂ₙ₊₂, so its molar mass is 14n + 2. That one fact turns a molar mass or an oxygen demand into the number of carbons. Then draw the isomers and class each carbon by how many carbons it is bonded to: one (primary), two (secondary), three (tertiary) or four (quaternary). The hydrogens take the class of the carbon they sit on. Rotation about a C–C single bond is free, but not equally easy: eclipsed forms put bonds (or groups) face to face and cost energy.",
       definition:

@@ -53,6 +53,7 @@ export const SSC2_LE_SYSTEMS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2lesy-number",
       name: "How many solutions a pair has",
+      visualizationSlug: "ssc-t2-pair-of-lines",
       intuition:
         "Two straight lines either cross once, run side by side and never meet, or lie on top of each other. Setting the coefficients of one line against the other's, as ratios, settles which case it is with no drawing at all.",
       definition:

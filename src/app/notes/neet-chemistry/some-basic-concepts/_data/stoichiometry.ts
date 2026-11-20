@@ -118,6 +118,7 @@ export const NEET_CH_SB_STOICHIOMETRY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nchsb-limiting",
       name: "Limiting reagent",
+      visualizationSlug: "neet-limiting-reagent",
       intuition:
         "When reactants are not mixed in the exact ratio of the equation, one runs out first and the reaction stops. That reactant, the limiting reagent, decides how much product forms. Whatever is left of the other reactant is the excess.",
       definition:

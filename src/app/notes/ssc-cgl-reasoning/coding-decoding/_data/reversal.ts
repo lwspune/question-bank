@@ -115,6 +115,7 @@ export const SSC_RCD_REVERSAL_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscrcdre-opposite",
       name: "Opposite letters: pairs that add to 27",
+      visualizationSlug: "ssc-opposite-letters",
       intuition:
         "Every letter has an opposite: the letter in the same place counted from the other end. A is first from the front and Z is first from the back, so A and Z are opposites. Their positions always add to 27.",
       definition:

@@ -12,6 +12,7 @@ export const SSC_CMO_MOLE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssccmomo-mole",
       name: "Percentage composition and balancing",
+      visualizationSlug: "ssc-mass-percent",
       intuition:
         "Add up the masses of all the atoms to get the molar mass. An element's share is its own mass over that total.",
       definition:

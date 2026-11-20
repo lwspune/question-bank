@@ -13,6 +13,7 @@ export const INFINITE_GP_SEQ_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jseq-igp-sum",
       name: "Sum to infinity, and the series of squares",
+      visualizationSlug: "jee-infinite-gp-sum",
       intuition:
         "When \\(|r|<1\\), the terms shrink to zero and \\(S_\\infty=\\frac{a}{1-r}\\). The squares of the terms form another infinite GP, \\(a^2,a^2r^2,\\dots\\), with sum \\(\\frac{a^2}{1-r^2}\\). Dividing that by \\(S_\\infty\\) cancels one \\(a\\) and leaves \\(\\frac{a}{1+r}\\). Alternate terms form a GP with ratio \\(r^2\\).",
       definition:

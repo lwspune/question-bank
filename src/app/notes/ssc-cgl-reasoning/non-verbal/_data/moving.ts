@@ -12,6 +12,7 @@ export const SSC_RNV_MOVING_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrnvmo-corners",
       name: "One part stepping round the corners or the border",
+      visualizationSlug: "ssc-corner-dot-series",
       intuition:
         "Follow a single part, such as a dot, a star or a black square, from figure to figure and name its place each time. The places form a path round the box, and the next figure puts the part one step further along it.",
       definition:

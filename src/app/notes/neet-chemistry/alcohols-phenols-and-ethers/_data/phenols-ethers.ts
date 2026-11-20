@@ -12,6 +12,7 @@ export const NEET_CH_AL_PHENOLS_ETHERS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nchal-acidity",
       name: "Acidity of alcohols and phenols",
+      visualizationSlug: "neet-phenol-acidity",
       intuition:
         "An acid is strong when the ion left behind after losing H⁺ is stable. In an alkoxide ion the negative charge stays on the oxygen. In the phenoxide ion the charge spreads into the benzene ring by resonance, so phenol gives up its proton far more readily. A group that pulls electrons from the ring spreads the charge further and makes the phenol stronger; a group that pushes electrons in makes it weaker.",
       definition:

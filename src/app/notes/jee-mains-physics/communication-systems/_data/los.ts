@@ -72,6 +72,7 @@ export const LOS_COMM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpcomm-two-towers",
       name: "Range between a transmitting and a receiving antenna",
+      visualizationSlug: "jee-two-antennas",
       intuition:
         "Each antenna sees to its own horizon. The signal can get through as long as the two horizons meet, so the largest distance between the antennas is the sum of their two ranges. Add the ranges, never the heights.",
       definition:

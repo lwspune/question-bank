@@ -55,6 +55,7 @@ export const SSC2_CHW_HW_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "ssc2chwhw-memory",
       name: "Memory and storage",
+      visualizationSlug: "ssc-t2-memory-ladder",
       intuition:
         "Memory is a ladder: registers and cache are fastest and smallest, then main memory (RAM), then storage (disks, drives). RAM forgets when power goes off; ROM and storage keep their data.",
       definition:

@@ -12,6 +12,7 @@ export const SSC_RIN_CHAINS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrinch-read",
       name: "Reading the signs between two letters",
+      visualizationSlug: "ssc-inequality-chain",
       intuition:
         "Walk from one letter to the other along the chain and read every sign on the way. If all of them point the same way, the two letters are definitely related. If the signs turn round even once, nothing definite can be said.",
       definition:
