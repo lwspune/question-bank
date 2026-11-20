@@ -76,6 +76,14 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import SscSoundMedia from "./visualizations/SscSoundMedia";
+import SscRespirationStages from "./visualizations/SscRespirationStages";
+import SscDecayModes from "./visualizations/SscDecayModes";
+import SscLeafVenation from "./visualizations/SscLeafVenation";
+import SscRainfallTypes from "./visualizations/SscRainfallTypes";
+import SscStomataTranspiration from "./visualizations/SscStomataTranspiration";
+import SscDemographicTransition from "./visualizations/SscDemographicTransition";
+import SscGlacialKarstLandforms from "./visualizations/SscGlacialKarstLandforms";
 import SscMirrorWaterImage from "./visualizations/SscMirrorWaterImage";
 import SscFamilyTree from "./visualizations/SscFamilyTree";
 import SscMediansCentroid from "./visualizations/SscMediansCentroid";
@@ -874,6 +882,22 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "ssc-sound-media":
+      return <SscSoundMedia />;
+    case "ssc-respiration-stages":
+      return <SscRespirationStages />;
+    case "ssc-decay-modes":
+      return <SscDecayModes />;
+    case "ssc-leaf-venation":
+      return <SscLeafVenation />;
+    case "ssc-rainfall-types":
+      return <SscRainfallTypes />;
+    case "ssc-stomata-transpiration":
+      return <SscStomataTranspiration />;
+    case "ssc-demographic-transition":
+      return <SscDemographicTransition />;
+    case "ssc-glacial-karst-landforms":
+      return <SscGlacialKarstLandforms />;
     case "ssc-mirror-water-image":
       return <SscMirrorWaterImage />;
     case "ssc-family-tree":

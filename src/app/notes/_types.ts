@@ -520,6 +520,14 @@ export type VisualizationSlug =
   | "ssc-sphere-in-cylinder"
   | "ssc-alligation-cross"
   | "ssc-boats-streams"
+  | "ssc-sound-media"
+  | "ssc-respiration-stages"
+  | "ssc-decay-modes"
+  | "ssc-leaf-venation"
+  | "ssc-rainfall-types"
+  | "ssc-stomata-transpiration"
+  | "ssc-demographic-transition"
+  | "ssc-glacial-karst-landforms"
   | "imat-chart-types";
 
 export type TrapCallout = {

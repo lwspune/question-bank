@@ -53,6 +53,7 @@ export const SSC_GES_LANDFORMS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscgeslf-landforms",
       name: "Landforms by agent",
+      visualizationSlug: "ssc-glacial-karst-landforms",
       intuition:
         "Ice, rivers, wind and dripping water each carve and build their own shapes. Sort every landform by its agent and the questions become simple.",
       definition:

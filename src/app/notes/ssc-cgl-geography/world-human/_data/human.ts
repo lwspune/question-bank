@@ -55,6 +55,7 @@ export const SSC_GWH_HUMAN_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscgwhhu-transition",
       name: "The demographic transition",
+      visualizationSlug: "ssc-demographic-transition",
       intuition:
         "As a country develops, death rates fall first and birth rates fall later. The gap between the two falls is the population explosion. Learn the stages by what birth and death rates do in each.",
       definition:

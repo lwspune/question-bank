@@ -12,6 +12,7 @@ export const SSC_FMP_MODERN_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscfmpmo-decay",
       name: "Radioactive decay",
+      visualizationSlug: "ssc-decay-modes",
       intuition:
         "Each decay changes the atomic number Z and the mass number A in a fixed way. Learn the change for each, and you can answer any 'which decay' question.",
       definition:

@@ -12,6 +12,7 @@ export const SSC_FSO_SOUND_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscfsoso-waves",
       name: "The wave equation",
+      visualizationSlug: "ssc-sound-media",
       intuition:
         "Speed equals frequency times wavelength. The source fixes the frequency; the medium fixes the speed; so the wavelength adjusts.",
       definition:

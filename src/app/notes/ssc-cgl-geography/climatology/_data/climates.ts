@@ -55,6 +55,7 @@ export const SSC_GCL_CLIMATES_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscgclcl-rain",
       name: "Humidity and rainfall",
+      visualizationSlug: "ssc-rainfall-types",
       intuition:
         "Rain needs moist air that rises and cools. It can rise because the ground heated it, because a mountain pushed it up, or because a colder air mass lifted it. Each way gives one kind of rainfall.",
       definition:

@@ -50,9 +50,9 @@ const MIN_FIGURES: Record<string, number> = {
   "ssc-cgl-tier-2-maths": 16,
   "ssc-cgl-reasoning": 9,
   "ssc-cgl-tier-2-reasoning": 1,
-  "ssc-cgl-physics": 3,
-  "ssc-cgl-biology": 1,
-  "ssc-cgl-geography": 4,
+  "ssc-cgl-physics": 5,
+  "ssc-cgl-biology": 4,
+  "ssc-cgl-geography": 7,
 };
 
 /** Figures placed on CET before this run, whose words were never checked against these rules. */
