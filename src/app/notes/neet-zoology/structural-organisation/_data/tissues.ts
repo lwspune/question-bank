@@ -12,6 +12,7 @@ export const NEET_ZO_SO_TISSUES_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nzoso-epithelium",
       name: "Epithelial tissue and glands",
+      visualizationSlug: "neet-simple-epithelium",
       intuition:
         "Epithelium is the body's covering and lining. Its cells sit packed close together with very little material between them, and one face is always free, facing a body fluid or the outside. One layer of cells makes a simple epithelium, good for lining tubes and letting things pass. Many layers make a compound epithelium, good for protection. Some epithelial cells turn into glands.",
       definition:

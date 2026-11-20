@@ -600,6 +600,15 @@ export type VisualizationSlug =
   | "cet-pentane-carbon-types"
   | "cet-nano-dimensions"
   | "cet-alkyne-reduction"
+  | "ssc-plant-groups"
+  | "ssc-blood-flow"
+  | "ssc-bacterial-shapes"
+  | "neet-coelom-types"
+  | "neet-simple-epithelium"
+  | "neet-hormone-action"
+  | "neet-plasmodium-cycle"
+  | "neet-art-transfers"
+  | "neet-bt-toxin"
   | "imat-chart-types";
 
 export type TrapCallout = {

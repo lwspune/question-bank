@@ -12,6 +12,7 @@ export const SSC_BMD_DISEASES_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscbmdmi-pathogens",
       name: "What causes each disease",
+      visualizationSlug: "ssc-bacterial-shapes",
       intuition:
         "Diseases split by the kind of organism behind them. Learn the bacterial set and the viral set, and malaria as the protozoan one.",
       definition:

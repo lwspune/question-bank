@@ -67,6 +67,7 @@ export const NEET_ZO_BA_AGRICULTURE_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nzoba-bt-action",
       name: "How the Bt toxin kills an insect",
+      visualizationSlug: "neet-bt-toxin",
       intuition:
         "The soil bacterium *Bacillus thuringiensis* makes a poison that kills certain insects, yet the poison does not harm the bacterium itself. The trick is that the bacterium keeps it in an inactive form. Only inside the insect gut, which is alkaline, does the crystal dissolve and the toxin switch on. The active toxin then punches holes in the gut lining. Learn the steps in order, because NEET asks them as a sequence.",
       definition:

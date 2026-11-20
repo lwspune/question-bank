@@ -12,6 +12,7 @@ export const SSC_BBC_PLANTS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscbbcpl-groups",
       name: "The four plant groups",
+      visualizationSlug: "ssc-plant-groups",
       intuition:
         "Plants climbed a ladder: first no vessels, then vessels without seeds, then naked seeds, then seeds inside fruits. Place any plant on that ladder and you have its group.",
       definition:

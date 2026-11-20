@@ -76,6 +76,15 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import SscPlantGroups from "./visualizations/SscPlantGroups";
+import SscBloodFlow from "./visualizations/SscBloodFlow";
+import SscBacterialShapes from "./visualizations/SscBacterialShapes";
+import NeetCoelomTypes from "./visualizations/NeetCoelomTypes";
+import NeetSimpleEpithelium from "./visualizations/NeetSimpleEpithelium";
+import NeetHormoneAction from "./visualizations/NeetHormoneAction";
+import NeetPlasmodiumCycle from "./visualizations/NeetPlasmodiumCycle";
+import NeetArtTransfers from "./visualizations/NeetArtTransfers";
+import NeetBtToxin from "./visualizations/NeetBtToxin";
 import CetMoleChain from "./visualizations/CetMoleChain";
 import CetNitrophenolHBonds from "./visualizations/CetNitrophenolHBonds";
 import CetAmineNHTests from "./visualizations/CetAmineNHTests";
@@ -954,6 +963,24 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "ssc-plant-groups":
+      return <SscPlantGroups />;
+    case "ssc-blood-flow":
+      return <SscBloodFlow />;
+    case "ssc-bacterial-shapes":
+      return <SscBacterialShapes />;
+    case "neet-coelom-types":
+      return <NeetCoelomTypes />;
+    case "neet-simple-epithelium":
+      return <NeetSimpleEpithelium />;
+    case "neet-hormone-action":
+      return <NeetHormoneAction />;
+    case "neet-plasmodium-cycle":
+      return <NeetPlasmodiumCycle />;
+    case "neet-art-transfers":
+      return <NeetArtTransfers />;
+    case "neet-bt-toxin":
+      return <NeetBtToxin />;
     case "cet-mole-chain":
       return <CetMoleChain />;
     case "cet-nitrophenol-h-bonds":
