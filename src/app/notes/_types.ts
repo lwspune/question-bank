@@ -668,6 +668,13 @@ export type VisualizationSlug =
   | "ssc-t2-reciprocal-ladder"
   | "ssc-t2-pipes-tank"
   | "ssc-corner-dot-series"
+  | "cet-complete-square"
+  | "jee-infinite-gp-sum"
+  | "jee-stars-and-bars"
+  | "cet-round-table-gaps"
+  | "jee-hockey-stick"
+  | "jee-inverse-trig-triangles"
+  | "cet-parallel-pair-distance"
   | "imat-chart-types";
 
 export type TrapCallout = {

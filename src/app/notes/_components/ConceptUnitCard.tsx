@@ -76,6 +76,13 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import CetCompleteSquare from "./visualizations/CetCompleteSquare";
+import JeeInfiniteGpSum from "./visualizations/JeeInfiniteGpSum";
+import JeeStarsAndBars from "./visualizations/JeeStarsAndBars";
+import CetRoundTableGaps from "./visualizations/CetRoundTableGaps";
+import JeeHockeyStick from "./visualizations/JeeHockeyStick";
+import JeeInverseTrigTriangles from "./visualizations/JeeInverseTrigTriangles";
+import CetParallelPairDistance from "./visualizations/CetParallelPairDistance";
 import SscDecagonAngles from "./visualizations/SscDecagonAngles";
 import SscRankRow from "./visualizations/SscRankRow";
 import SscT2HcfLcmVenn from "./visualizations/SscT2HcfLcmVenn";
@@ -1022,6 +1029,20 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "cet-complete-square":
+      return <CetCompleteSquare />;
+    case "jee-infinite-gp-sum":
+      return <JeeInfiniteGpSum />;
+    case "jee-stars-and-bars":
+      return <JeeStarsAndBars />;
+    case "cet-round-table-gaps":
+      return <CetRoundTableGaps />;
+    case "jee-hockey-stick":
+      return <JeeHockeyStick />;
+    case "jee-inverse-trig-triangles":
+      return <JeeInverseTrigTriangles />;
+    case "cet-parallel-pair-distance":
+      return <CetParallelPairDistance />;
     case "ssc-decagon-angles":
       return <SscDecagonAngles />;
     case "ssc-rank-row":

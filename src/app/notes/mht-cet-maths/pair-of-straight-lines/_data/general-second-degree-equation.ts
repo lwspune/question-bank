@@ -75,6 +75,7 @@ export const GENERAL_SECOND_DEGREE_EQUATION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetpsl-parallel-lines-and-their-distance",
       name: "Parallel Pair (h² = ab): Factor as a Perfect Square, or Use 2√((g² − ac)/(a(a + b)))",
+      visualizationSlug: "cet-parallel-pair-distance",
       intuition:
         "When \\(h^2 = ab\\) the quadratic part is a perfect square \\((\\sqrt a x + \\sqrt b y)^2\\), and the whole equation is \\((\\sqrt a x + \\sqrt b y + \\alpha)(\\sqrt a x + \\sqrt b y + \\beta)\\): two parallel lines whose gap is the parallel-lines distance.",
       definition:
