@@ -190,13 +190,13 @@ describe("which exams a pass covers", () => {
 
 describe("buildFreeFacts", () => {
   it("states each free limit that is on", () => {
-    const facts = buildFreeFacts({ reveals: 30, drill: 15, saves: 100, mocks: 3, chapterTests: 5, projectionDays: 7, papersPerDay: 1 });
+    const facts = buildFreeFacts({ reveals: 30, intlReveals: 10, drill: 15, saves: 100, mocks: 3, chapterTests: 5, projectionDays: 7, papersPerDay: 1 });
     expect(facts.some((f) => f.includes("30") && /answer/i.test(f))).toBe(true);
     expect(facts.some((f) => f.includes("3") && /mock/i.test(f))).toBe(true);
   });
 
   it("calls a limit that is off unlimited, never a number", () => {
-    const facts = buildFreeFacts({ reveals: null, drill: null, saves: null, mocks: null, chapterTests: null, projectionDays: null, papersPerDay: null });
+    const facts = buildFreeFacts({ reveals: null, intlReveals: null, drill: null, saves: null, mocks: null, chapterTests: null, projectionDays: null, papersPerDay: null });
     expect(facts.join(" ")).not.toMatch(/\bnull\b/);
     expect(facts.some((f) => /mock/i.test(f) && /unlimited|no limit/i.test(f))).toBe(true);
   });
@@ -209,7 +209,7 @@ describe("buildFreeFacts", () => {
   // is the daily cap on PASS HOLDERS (0137); a free account gets one free paper
   // (question paper + answer key, 0139) and one free formula sheet.
   it("never sells the pass holders' daily paper cap as a free allowance", () => {
-    const facts = buildFreeFacts({ reveals: 15, drill: 10, saves: 20, mocks: 3, chapterTests: 5, projectionDays: null, papersPerDay: 5 });
+    const facts = buildFreeFacts({ reveals: 15, intlReveals: 10, drill: 10, saves: 20, mocks: 3, chapterTests: 5, projectionDays: null, papersPerDay: 5 });
     const text = facts.join("\n");
     expect(text).not.toMatch(/downloads?: 5 a day free/i);
     const capLine = facts.find((f) => f.includes("5") && /past paper/i.test(f));

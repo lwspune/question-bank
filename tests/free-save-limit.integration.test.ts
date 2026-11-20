@@ -36,7 +36,7 @@ const RUN_ID = testRunId();
 // "reveal": the daily answer limit's own student (claim_reveal, migration 0228).
 // The 7-day Practice Pass trial (0273): "trial" earns and takes it, "vtrial" meets the limit
 // on V, "offered" has used all 3 offer days, "lapsed" once held a pass.
-const ROLES = ["student", "pass", "practice", "off", "freeexam", "reveal", "trial", "vtrial", "offered", "lapsed"] as const;
+const ROLES = ["student", "pass", "practice", "off", "freeexam", "reveal", "trial", "vtrial", "offered", "lapsed", "intl"] as const;
 type Role = (typeof ROLES)[number];
 
 describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)", () => {
@@ -47,6 +47,9 @@ describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)"
   // A free exam (0210) and two questions in it, copied from a paid one.
   let freeExamId = "";
   const freeQuestionIds: string[] = [];
+  // An intl exam (pass scope 'imat') and four questions in it (0274).
+  let intlExamId = "";
+  const intlQuestionIds: string[] = [];
   let saved: Record<string, unknown> | null = null;
 
   const save = (role: Role, idx: number) =>
@@ -116,6 +119,29 @@ describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)"
       freeQuestionIds.push(data!.id);
     }
 
+    const { data: intlExam, error: intlErr } = await admin
+      .from("exams")
+      .insert({ name: `zz test intl reveal exam ${RUN_ID}`, pass_scope: "imat" })
+      .select("id")
+      .single();
+    expect(intlErr).toBeNull();
+    intlExamId = intlExam!.id;
+    for (let i = 0; i < 4; i++) {
+      const { data, error } = await admin
+        .from("questions")
+        .insert({
+          ...base,
+          exam_id: intlExamId,
+          text: `Intl reveal question ${i} ${RUN_ID}`,
+          content_hash: `intl-reveal-${i}-${RUN_ID}`,
+          visibility: "PRIVATE",
+        })
+        .select("id")
+        .single();
+      expect(error).toBeNull();
+      intlQuestionIds.push(data!.id);
+    }
+
     await admin.from("entitlements").insert({
       user_id: ids.pass,
       scope: "mocks",
@@ -146,7 +172,7 @@ describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)"
 
     const { data: prev, error: readErr } = await admin
       .from("paywall_settings")
-      .select("free_save_limit, free_drill_per_day, free_reveals_per_day, projection_trial_days, practice_trial_after_days")
+      .select("free_save_limit, free_drill_per_day, free_reveals_per_day, intl_free_reveals_per_day, projection_trial_days, practice_trial_after_days")
       .single();
     expect(readErr).toBeNull();
     saved = prev;
@@ -156,6 +182,7 @@ describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)"
         free_save_limit: 2,
         free_drill_per_day: 15,
         free_reveals_per_day: 50,
+        intl_free_reveals_per_day: 3,
         projection_trial_days: 7,
         practice_trial_after_days: 3,
       })
@@ -169,6 +196,8 @@ describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)"
     for (const role of ROLES) if (ids[role]) await admin.auth.admin.deleteUser(ids[role]);
     if (freeQuestionIds.length) await admin.from("questions").delete().in("id", freeQuestionIds);
     if (freeExamId) await admin.from("exams").delete().eq("id", freeExamId);
+    if (intlQuestionIds.length) await admin.from("questions").delete().in("id", intlQuestionIds);
+    if (intlExamId) await admin.from("exams").delete().eq("id", intlExamId);
   });
 
   it("lets a free student save two questions, then refuses the third with PT402", async () => {
@@ -222,6 +251,7 @@ describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)"
       passScopes: [],
       drillPerDay: 15,
       revealsPerDay: 50,
+      intlRevealsPerDay: 3,
       saveLimit: 2,
       saves: 2,
       projectionTrialDays: 7,
@@ -383,6 +413,35 @@ describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)"
       });
       const { error } = await anonClient.rpc("claim_reveal", { p_question_id: questionIds[0], p_surface: "bank" });
       expect(error).not.toBeNull();
+    });
+
+    // 0274: an intl exam's answers stop at the intl limit (3 for this run), the
+    // www exams' at the www one (50). The day's count is shared.
+    it("stops an intl exam's answers at the intl limit", async () => {
+      for (let i = 0; i < 3; i++) {
+        expect(await claim("intl", intlQuestionIds[i])).toMatchObject({ allowed: true, reason: "counted", used: i + 1, limit: 3 });
+      }
+      expect(await claim("intl", intlQuestionIds[3])).toMatchObject({ allowed: false, reason: "limit", used: 3, limit: 3 });
+      expect(await claim("intl", intlQuestionIds[0])).toMatchObject({ allowed: true, reason: "repeat" });
+    });
+
+    it("keeps the www limit for a www exam, on the same day's count", async () => {
+      expect(await claim("intl", questionIds[0])).toMatchObject({ allowed: true, reason: "counted", used: 4, limit: 50 });
+    });
+
+    it("leaves intl answers unlimited while the intl limit is off", async () => {
+      await admin.from("paywall_settings").update({ intl_free_reveals_per_day: null }).eq("id", true);
+      try {
+        expect(await claim("intl", intlQuestionIds[3])).toMatchObject({ allowed: true, reason: "off" });
+      } finally {
+        await admin.from("paywall_settings").update({ intl_free_reveals_per_day: 3 }).eq("id", true);
+      }
+    });
+
+    it("quotes the intl limit to perks (free_limits)", async () => {
+      const { data, error } = await clients.student.rpc("free_limits");
+      expect(error).toBeNull();
+      expect(data).toMatchObject({ reveals: 50, intlReveals: 3 });
     });
   });
 

@@ -146,6 +146,7 @@ export function buildFreeFacts(limits: FreeLimits | null): string[] {
     n(limits.mocks, "Timed mock tests: {n} free per account, then the pass.", "Timed mock tests: no limit right now, free."),
     n(limits.chapterTests, "Chapter tests: {n} free per account, then the pass.", "Chapter tests: no limit right now, free."),
     n(limits.reveals, "Answers shown: {n} a day free when signed in, then the pass.", "Answers shown: no daily limit right now."),
+    n(limits.intlReveals, "On intl.pyqvault.com, IMAT answers shown: {n} a day free when signed in, then the IMAT pass.", "On intl.pyqvault.com, IMAT answers: no daily limit right now."),
     n(limits.drill, "Drill questions: {n} a day free.", "Drill questions: no daily limit right now."),
     // Free downloads are once per account (0131/0139, 0150); papersPerDay is the
     // daily cap on PASS HOLDERS (0137), never a free allowance. V sold it as one.

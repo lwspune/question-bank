@@ -13,6 +13,7 @@ import { SCOPE_MOCKS } from "@/lib/entitlements/access";
 
 const limits = (over: Partial<FreeLimits> = {}): FreeLimits => ({
   reveals: 30,
+  intlReveals: 10,
   drill: 15,
   saves: 100,
   mocks: 3,

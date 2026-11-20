@@ -22,6 +22,7 @@ const SETTINGS_COLUMNS = {
   chapter_tests_counts_from: "chapterTestsCountsFrom",
   free_drill_per_day: "freeDrillPerDay",
   free_reveals_per_day: "freeRevealsPerDay",
+  intl_free_reveals_per_day: "freeIntlRevealsPerDay",
   free_save_limit: "freeSaveLimit",
   projection_trial_days: "projectionTrialDays",
   practice_trial_after_days: "practiceTrialAfterDays",

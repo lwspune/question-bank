@@ -48,6 +48,14 @@ export const SCOPE_IMAT = "imat";
 export const SCOPE_MCAT = "mcat";
 
 /**
+ * The intl passes: their exams take the intl site's own daily answer limit
+ * (paywall_settings.intl_free_reveals_per_day, migration 0274). Mirrored by
+ * private.intl_pass_scopes() in SQL; tests/intl-reveal-limit.test.ts keeps
+ * the two equal.
+ */
+export const INTL_PASS_SCOPES: readonly string[] = [SCOPE_IMAT, SCOPE_MCAT];
+
+/**
  * Not a pass: the pass name of an exam that needs none (2026-11-02, migration
  * 0210, the Class 9-10 exams). Every user holds it, nothing sells it, and an
  * entitlement may not carry it (a DB CHECK).
