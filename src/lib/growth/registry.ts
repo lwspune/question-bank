@@ -1197,13 +1197,13 @@ export const EXPERIMENTS: readonly Experiment[] = [
     id: "v-day-card",
     title: "V's \"Your day\" card, the first time a student opens V each day",
     change:
-      "The first time a signed-in student opens V on a new India day, a card stands in for V's greeting: their last day (answers, mistakes fixed, chapters that moved up; \"Since your last visit\" with the date after a gap, never the days missed), then one thing for today (the board plan's task, else Fix, starting with 5). A dot on V's button says it is waiting. No AI call. The mistakes notification now opens with \"Yesterday you fixed N.\" when there were fixes.",
+      "The first time a signed-in student opens V on a new India day, a card stands in for V's greeting: their last day (answers, mistakes fixed, chapters that moved up; \"Since your last visit\" with the date after a gap, never the days missed), then one thing for today (the board plan's task, else Fix, starting with 5). A dot on V's button says it is waiting (a red \"1\" badge from 2026-11-20, owner: the 12 px blue dot read as decoration). No AI call. The mistakes notification now opens with \"Yesterday you fixed N.\" when there were fixes.",
     why: "\"How's my progress\" works once (55% of openers took a next step) but not as a habit: 7 of 31 opened it on a second day. Of 1,509 students active in the 28 days to 2026-11-15, 63% came on one day only and 34% of active days were followed by a visit the next day. A card waiting when they open V tests whether seeing their own day brings them back.",
     metric:
-      "surface_viewed 'v_day' (one a day per student, metadata.card yesterday | since | fresh): students shown it and the share shown it on 2+ days; Vercel v_day_tap by action; drill_started from v_day the same day; next-day return of students shown it against the 34% of all active days. Read with scripts/chat/day-card-readout.sql",
+      "surface_viewed 'v_day' (one a day per student, metadata.card yesterday | since | fresh): students shown it and the share shown it on 2+ days; Vercel v_day_tap by action; drill_started from v_day the same day; next-day return of students shown it against the 34% of all active days. From 2026-11-20 the badge seen is recorded (surface_viewed 'v_day_badge', one a day): read badge days followed by a card that day, and read the card numbers before and after 2026-11-20 apart. Read with scripts/chat/day-card-readout.sql",
     rule: `Keep it if ${V_DAY_REPEAT_KEEP_PCT}%+ of the students shown it see it on 2+ days and ${V_DAY_NEXT_STEP_KEEP_PCT}%+ of showings lead to a tap that day. Students who open V are keener than most, so next-day return is reported beside, not judged on.`,
     liveSince: "2026-11-15",
-    windowDays: 14,
+    windowDays: 28,
     readout: "v-day-card",
     status: "running",
   },

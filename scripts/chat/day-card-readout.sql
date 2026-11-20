@@ -1,5 +1,5 @@
 -- Growth experiment "v-day-card" (2026-11-15): V's "Your day" card.
--- Run read-only against production on the check date (14 days after the deploy).
+-- Run read-only against production on the check date (28 days after the deploy; window lengthened 2026-11-20 when the badge went in).
 -- Set the deploy date below. Staff are left out. No names or emails are read.
 --
 -- Keep rule (lib/growth/registry.ts): 35%+ of the students shown it see it on
@@ -10,7 +10,7 @@
 
 with params as (
   select timestamptz '2026-11-16 00:00+05:30' as live_from,   -- set to the deploy day (India midnight)
-         timestamptz '2026-11-30 00:00+05:30' as live_to
+         timestamptz '2026-12-13 00:00+05:30' as live_to
 ),
 staff as (select user_id from public.org_members),
 shown as (
@@ -33,6 +33,16 @@ drilled as (
     and a.metadata->>'from' = 'v_day'
     and a.created_at >= p.live_from and a.created_at < p.live_to
 ),
+-- The red badge on V's button seen (from 2026-11-20, one row a day): the step
+-- before the card. A badge day with no card that day = saw it, did not open V.
+badge as (
+  select distinct a.user_id, (a.created_at at time zone 'Asia/Kolkata')::date as day
+  from public.user_activity a, params p
+  where a.kind = 'surface_viewed'
+    and a.metadata->>'surface' = 'v_day_badge'
+    and a.created_at >= p.live_from and a.created_at < p.live_to
+    and a.user_id not in (select user_id from staff)
+),
 active_days as (
   select distinct a.user_id, (a.created_at at time zone 'Asia/Kolkata')::date as day
   from public.user_activity a, params p
@@ -49,4 +59,7 @@ select
   round(100.0 * (select count(*) from shown s where exists (
     select 1 from active_days x where x.user_id = s.user_id and x.day = s.day + 1
   )) / nullif((select count(*) from shown), 0), 1) as next_day_return_pct,
-  (select jsonb_object_agg(card, n) from (select card, count(*) as n from shown group by card) k) as by_card;
+  (select jsonb_object_agg(card, n) from (select card, count(*) as n from shown group by card) k) as by_card,
+  (select count(distinct user_id) from badge) as badge_students,
+  (select count(*) from badge) as badge_days,
+  (select count(*) from badge b where exists (select 1 from shown s where s.user_id = b.user_id and s.day = b.day)) as badge_then_card;

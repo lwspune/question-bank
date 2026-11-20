@@ -79,6 +79,7 @@ import VProgressCard from "./VProgressCard";
 import VDayCard from "./VDayCard";
 import type { DayCard } from "@/lib/chat/dayCard";
 import { dayCardDue, readSeenDay, writeSeenDay } from "@/lib/chat/daySeen";
+import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import VPathCard from "./VPathCard";
 import {
   ASK_V_EVENT,
@@ -245,6 +246,12 @@ export default function ChatWidget() {
       dayCardDue({ signedIn, enabled: features.progress, hasSomething: showProgress, unread, seenDay: readSeenDay(), now: new Date() })
     );
   }, [signedIn, features.progress, showProgress, unread]);
+  // The badge seen (2026-11-20): one row a day, so the readout can tell
+  // "never saw the badge" from "saw it and did not open V".
+  const dayBadge = !open && unread === 0 && dayDot;
+  useEffect(() => {
+    if (dayBadge) sendActivityOnce("v_day_badge", { kind: "surface_viewed", surface: "v_day_badge" });
+  }, [dayBadge]);
   // "My plan for today" (Phase 2): only for a student on the board path, from the same shared read.
   const showPath = pulse?.path?.state === "on";
   // "Ask V about this question" (2026-10-19): the question this conversation is about, sent with each message.
@@ -1391,8 +1398,15 @@ export default function ChatWidget() {
         ) : (
           <VFace avatar="idle" className="h-9 w-9 object-contain sm:h-12 sm:w-12" />
         )}
-        {!open && unread === 0 && dayDot && (
-          <span aria-hidden className="absolute right-0 top-0 h-3 w-3 rounded-full bg-brand ring-2 ring-background sm:right-0.5 sm:top-0.5" />
+        {/* "Your day" waiting (2026-11-20): a red 1, the way a phone marks something new.
+            It was a 12 px blue dot that read as decoration. red-600 under white text is 4.8:1. */}
+        {dayBadge && (
+          <span
+            aria-hidden
+            className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-red-600 px-1 text-[11px] font-semibold leading-none text-white ring-2 ring-background"
+          >
+            1
+          </span>
         )}
         {!open && unread > 0 && (
           <span

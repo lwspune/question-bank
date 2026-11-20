@@ -620,4 +620,13 @@ describe("parseClientEvent - a teaching moment", () => {
     expect(parseClientEvent({ ...ok, action: "bought" }, "u1", NOW).ok).toBe(false);
     expect(parseClientEvent({ ...ok, questionId: "x" }, "u1", NOW).ok).toBe(false);
   });
+
+  it("accepts V's day badge seen, once a day, with nothing else on it", () => {
+    const r = parseClientEvent({ kind: "surface_viewed", surface: "v_day_badge" }, "u1", NOW);
+    expect(r).toEqual({
+      ok: true,
+      value: { kind: "surface_viewed", metadata: { surface: "v_day_badge" }, dedupeKey: "view:v_day_badge:u1:2026-09-27" },
+    });
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "v_day_badge", path: "/me" }, "u1", NOW).ok).toBe(false);
+  });
 });
