@@ -579,6 +579,16 @@ export type VisualizationSlug =
   | "jee-heating-curve"
   | "jee-am-envelope"
   | "neet-em-wave-fields"
+  | "jee-matrix-row-column"
+  | "jee-two-lines-parameter"
+  | "jee-implication-false-rows"
+  | "jee-repeated-parts"
+  | "ssc-pipes-net-fill"
+  | "ssc-square-of-sum"
+  | "ssc-nested-brackets"
+  | "ssc-ci-vs-si"
+  | "ssc-lines-solution-count"
+  | "ssc-trapezium-diagonals"
   | "imat-chart-types";
 
 export type TrapCallout = {

@@ -13,6 +13,7 @@ export const PARTS_II_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jii-by-parts",
       name: "Integration by parts",
+      visualizationSlug: "jee-repeated-parts",
       intuition:
         "Parts trades one integral for another: differentiate one factor and integrate the other. Choose to differentiate the factor that gets simpler, such as a power of \\(x\\) or a log. For a polynomial times \\(\\sin x\\) or \\(e^x\\), repeat until the polynomial is gone. For high powers of \\(\\sec x\\) or \\(\\csc x\\), the original integral comes back, and you solve for it.",
       definition:

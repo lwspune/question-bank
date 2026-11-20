@@ -78,6 +78,7 @@ export const SSC_QU_PROPERTIES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscqupr-trapezium",
       name: "Trapezium: area and the triangles made by its diagonals",
+      visualizationSlug: "ssc-trapezium-diagonals",
       intuition:
         "A trapezium has one pair of parallel sides. Its area is the average of the two parallel sides times the gap between them. Its diagonals cut out two triangles, one on each parallel side, and because the sides are parallel those two triangles have the same angles: one is a scaled copy of the other.",
       definition:

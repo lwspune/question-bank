@@ -66,6 +66,7 @@ export const SSC_AI_SQUARES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscaisq-expand",
       name: "Square of a sum, square of a difference, difference of squares",
+      visualizationSlug: "ssc-square-of-sum",
       intuition:
         "\\((a + b)^2\\) is the area of a square of side \\(a + b\\): a square of side a, a square of side b, and two rectangles a by b. Those two rectangles are the \\(2ab\\), and leaving them out is the most common slip.",
       definition:

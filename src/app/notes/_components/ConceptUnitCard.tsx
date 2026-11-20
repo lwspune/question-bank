@@ -76,6 +76,16 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import JeeMatrixRowColumn from "./visualizations/JeeMatrixRowColumn";
+import JeeTwoLinesParameter from "./visualizations/JeeTwoLinesParameter";
+import JeeImplicationFalseRows from "./visualizations/JeeImplicationFalseRows";
+import JeeRepeatedParts from "./visualizations/JeeRepeatedParts";
+import SscPipesNetFill from "./visualizations/SscPipesNetFill";
+import SscSquareOfSum from "./visualizations/SscSquareOfSum";
+import SscNestedBrackets from "./visualizations/SscNestedBrackets";
+import SscCiVsSi from "./visualizations/SscCiVsSi";
+import SscLinesSolutionCount from "./visualizations/SscLinesSolutionCount";
+import SscTrapeziumDiagonals from "./visualizations/SscTrapeziumDiagonals";
 import CetWienPeak from "./visualizations/CetWienPeak";
 import CetGHeightDepth from "./visualizations/CetGHeightDepth";
 import CetHysteresisLoop from "./visualizations/CetHysteresisLoop";
@@ -933,6 +943,26 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "jee-matrix-row-column":
+      return <JeeMatrixRowColumn />;
+    case "jee-two-lines-parameter":
+      return <JeeTwoLinesParameter />;
+    case "jee-implication-false-rows":
+      return <JeeImplicationFalseRows />;
+    case "jee-repeated-parts":
+      return <JeeRepeatedParts />;
+    case "ssc-pipes-net-fill":
+      return <SscPipesNetFill />;
+    case "ssc-square-of-sum":
+      return <SscSquareOfSum />;
+    case "ssc-nested-brackets":
+      return <SscNestedBrackets />;
+    case "ssc-ci-vs-si":
+      return <SscCiVsSi />;
+    case "ssc-lines-solution-count":
+      return <SscLinesSolutionCount />;
+    case "ssc-trapezium-diagonals":
+      return <SscTrapeziumDiagonals />;
     case "cet-wien-peak":
       return <CetWienPeak />;
     case "cet-g-height-depth":

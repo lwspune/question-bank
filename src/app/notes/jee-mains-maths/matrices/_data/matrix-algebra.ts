@@ -66,6 +66,7 @@ export const MATRIX_ALGEBRA_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jmat-matrix-multiplication",
       name: "Matrix multiplication: conformability and the row-by-column rule",
+      visualizationSlug: "jee-matrix-row-column",
       intuition:
         "To form \\(AB\\), the **inner dimensions must match**: an \\(m\\times n\\) times an \\(n\\times p\\) gives an \\(m\\times p\\). Each entry of the product is a **row of \\(A\\) dotted with a column of \\(B\\)**. Two hitting tricks fall straight out of this rule: multiplying a matrix by a standard basis column \\(e_j\\) picks out its \\(j\\)-th column, and \\([1\\ 1\\ \\cdots]\\,M\\,[1\\ 1\\ \\cdots]^{T}\\) adds up **all** the entries of \\(M\\).",
       definition:
