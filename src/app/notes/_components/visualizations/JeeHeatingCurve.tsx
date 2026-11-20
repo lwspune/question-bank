@@ -35,7 +35,7 @@ export const STAGES: readonly Stage[] = [
 
 /** Corner points of the curve: cumulative heat (J) and temperature (°C). */
 export function curveCorners(): { q: number; t: number }[] {
-  const out = [{ q: 0, t: HEAT.startC }];
+  const out: { q: number; t: number }[] = [{ q: 0, t: HEAT.startC }];
   let q = 0;
   for (const s of STAGES) {
     q += s.q;

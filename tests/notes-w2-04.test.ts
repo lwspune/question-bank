@@ -101,7 +101,7 @@ describe("JeeTwoLinesParameter (jdet-nosol-find)", () => {
   });
 
   it("every other slider value gives one crossing at x = y = 1/(k + 1)", () => {
-    for (let k = K_RANGE.min; k <= K_RANGE.max; k += K_RANGE.step) {
+    for (let k: number = K_RANGE.min; k <= K_RANGE.max; k += K_RANGE.step) {
       if (k === 1 || k === -1) continue;
       expect(verdictAt(k)).toBe("unique");
       const p = crossing(k)!;
