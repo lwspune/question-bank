@@ -38,7 +38,7 @@ const NEW_FIGURE = /^(cet|jee|neet|ssc)-/;
 const MIN_FIGURES: Record<string, number> = {
   "mht-cet-maths": 122,
   "mht-cet-physics": 46,
-  "mht-cet-chemistry": 33,
+  "mht-cet-chemistry": 44,
   "jee-mains-physics": 82,
   "jee-mains-chemistry": 37,
   "jee-mains-maths": 75,

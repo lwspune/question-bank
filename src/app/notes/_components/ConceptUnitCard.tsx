@@ -76,6 +76,17 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import CetMoleChain from "./visualizations/CetMoleChain";
+import CetNitrophenolHBonds from "./visualizations/CetNitrophenolHBonds";
+import CetAmineNHTests from "./visualizations/CetAmineNHTests";
+import CetSpinOnlyMoment from "./visualizations/CetSpinOnlyMoment";
+import CetXenonShapes from "./visualizations/CetXenonShapes";
+import CetOxidationLadder from "./visualizations/CetOxidationLadder";
+import CetFreundlichPlots from "./visualizations/CetFreundlichPlots";
+import CetSolvayLoop from "./visualizations/CetSolvayLoop";
+import CetPentaneCarbonTypes from "./visualizations/CetPentaneCarbonTypes";
+import CetNanoDimensions from "./visualizations/CetNanoDimensions";
+import CetAlkyneReduction from "./visualizations/CetAlkyneReduction";
 import JeeMatrixRowColumn from "./visualizations/JeeMatrixRowColumn";
 import JeeTwoLinesParameter from "./visualizations/JeeTwoLinesParameter";
 import JeeImplicationFalseRows from "./visualizations/JeeImplicationFalseRows";
@@ -943,6 +954,28 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "cet-mole-chain":
+      return <CetMoleChain />;
+    case "cet-nitrophenol-h-bonds":
+      return <CetNitrophenolHBonds />;
+    case "cet-amine-nh-tests":
+      return <CetAmineNHTests />;
+    case "cet-spin-only-moment":
+      return <CetSpinOnlyMoment />;
+    case "cet-xenon-shapes":
+      return <CetXenonShapes />;
+    case "cet-oxidation-ladder":
+      return <CetOxidationLadder />;
+    case "cet-freundlich-plots":
+      return <CetFreundlichPlots />;
+    case "cet-solvay-loop":
+      return <CetSolvayLoop />;
+    case "cet-pentane-carbon-types":
+      return <CetPentaneCarbonTypes />;
+    case "cet-nano-dimensions":
+      return <CetNanoDimensions />;
+    case "cet-alkyne-reduction":
+      return <CetAlkyneReduction />;
     case "jee-matrix-row-column":
       return <JeeMatrixRowColumn />;
     case "jee-two-lines-parameter":

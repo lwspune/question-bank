@@ -589,6 +589,17 @@ export type VisualizationSlug =
   | "ssc-ci-vs-si"
   | "ssc-lines-solution-count"
   | "ssc-trapezium-diagonals"
+  | "cet-mole-chain"
+  | "cet-nitrophenol-h-bonds"
+  | "cet-amine-nh-tests"
+  | "cet-spin-only-moment"
+  | "cet-xenon-shapes"
+  | "cet-oxidation-ladder"
+  | "cet-freundlich-plots"
+  | "cet-solvay-loop"
+  | "cet-pentane-carbon-types"
+  | "cet-nano-dimensions"
+  | "cet-alkyne-reduction"
   | "imat-chart-types";
 
 export type TrapCallout = {

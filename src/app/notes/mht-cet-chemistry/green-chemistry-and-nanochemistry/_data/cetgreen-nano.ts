@@ -15,6 +15,7 @@ export const NANO_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "cetgreen-nano-dimensions",
       name: "Classifying Nanostructures by Dimension",
+      visualizationSlug: "cet-nano-dimensions",
       intuition:
         "Count the dimensions that are NOT nanoscale. A quantum dot is small every way, so it is zero-dimensional. A wire is long in one direction — one-dimensional. A film is wide in two — two-dimensional.",
       definition:

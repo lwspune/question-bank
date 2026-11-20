@@ -46,6 +46,7 @@ export const REACTIONS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "cetalkyne-lindlar",
       name: "Partial Hydrogenation to a cis-Alkene",
+      visualizationSlug: "cet-alkyne-reduction",
       intuition:
         "An ordinary catalyst would hydrogenate all the way to the alkane. Lindlar's catalyst is poisoned so it stops at the alkene, and both H atoms are delivered from the metal surface on the same side — cis.",
       definition:

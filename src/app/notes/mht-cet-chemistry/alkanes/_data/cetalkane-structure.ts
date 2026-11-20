@@ -51,6 +51,7 @@ export const STRUCTURE_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "cetalkane-isomers-and-carbon-types",
       name: "Structural Isomers and Primary, Secondary, Tertiary Carbons",
+      visualizationSlug: "cet-pentane-carbon-types",
       intuition:
         "Branching the chain gives structural isomers: two for butane, three for pentane, five for hexane. Questions run the table backwards — 'an alkane with five isomers' means six carbons, so n moles of it hold 6n moles of carbon. A carbon's type is simply how many other carbons it is bonded to.",
       definition:

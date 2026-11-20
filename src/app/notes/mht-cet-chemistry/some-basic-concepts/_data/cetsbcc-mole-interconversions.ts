@@ -209,6 +209,7 @@ export const MOLE_INTERCONVERSIONS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetsbcc-particles-from-moles",
       name: "Counting molecules and atoms from moles",
+      visualizationSlug: "cet-mole-chain",
       intuition:
         "Once you know the moles, the number of actual molecules is just moles times Avogadro's number. " +
         "If a question asks for atoms, multiply once more by the number of atoms per molecule — so the whole path from a mass or volume to a raw atom-count is one chain.",
