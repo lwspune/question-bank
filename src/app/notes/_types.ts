@@ -638,6 +638,11 @@ export type VisualizationSlug =
   | "jee-flagpole-subtended"
   | "jee-orthogonal-rotation"
   | "jee-two-antennas"
+  | "jee-osmosis-direction"
+  | "jee-tlc-rf"
+  | "jee-brine-electrolysis"
+  | "jee-nh3-nf3-dipoles"
+  | "jee-gibbs-graphs"
   | "imat-chart-types";
 
 export type TrapCallout = {

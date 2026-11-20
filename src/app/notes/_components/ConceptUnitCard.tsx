@@ -76,6 +76,11 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import JeeOsmosisDirection from "./visualizations/JeeOsmosisDirection";
+import JeeTlcRf from "./visualizations/JeeTlcRf";
+import JeeBrineElectrolysis from "./visualizations/JeeBrineElectrolysis";
+import JeeNh3Nf3Dipoles from "./visualizations/JeeNh3Nf3Dipoles";
+import JeeGibbsGraphs from "./visualizations/JeeGibbsGraphs";
 import JeeThreePlanes from "./visualizations/JeeThreePlanes";
 import JeeFlagpoleSubtended from "./visualizations/JeeFlagpoleSubtended";
 import JeeOrthogonalRotation from "./visualizations/JeeOrthogonalRotation";
@@ -992,6 +997,16 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "jee-osmosis-direction":
+      return <JeeOsmosisDirection />;
+    case "jee-tlc-rf":
+      return <JeeTlcRf />;
+    case "jee-brine-electrolysis":
+      return <JeeBrineElectrolysis />;
+    case "jee-nh3-nf3-dipoles":
+      return <JeeNh3Nf3Dipoles />;
+    case "jee-gibbs-graphs":
+      return <JeeGibbsGraphs />;
     case "jee-three-planes":
       return <JeeThreePlanes />;
     case "jee-flagpole-subtended":
