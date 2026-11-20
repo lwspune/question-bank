@@ -253,6 +253,7 @@ export const SYMMETRIC_ORTHOGONAL_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jmat-orthogonal-matrices",
       name: "Orthogonal, rotation, and Cayley-transform matrices",
+      visualizationSlug: "jee-orthogonal-rotation",
       intuition:
         "An **orthogonal** matrix has orthonormal rows/columns, packaged as \\(AA^T=I\\). Two huge payoffs: " +
         "the inverse is just the transpose (no adjoint needed), and the determinant is \\(\\pm1\\). Rotation " +

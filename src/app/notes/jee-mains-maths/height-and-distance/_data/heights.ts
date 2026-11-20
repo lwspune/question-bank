@@ -59,6 +59,7 @@ export const HEIGHTS_HD_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jhd-subtended",
       name: "The angle subtended by part of a tower",
+      visualizationSlug: "jee-flagpole-subtended",
       intuition:
         "When part of a pole subtends an angle at a point, the angle is a difference of two elevations: the elevation of the top minus the elevation of the mark. Take the tangent of that difference with the subtraction formula, or add the known angles, as in \\(60^\\circ+15^\\circ=75^\\circ\\).",
       definition:

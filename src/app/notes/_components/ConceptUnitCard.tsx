@@ -76,6 +76,10 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import JeeThreePlanes from "./visualizations/JeeThreePlanes";
+import JeeFlagpoleSubtended from "./visualizations/JeeFlagpoleSubtended";
+import JeeOrthogonalRotation from "./visualizations/JeeOrthogonalRotation";
+import JeeTwoAntennas from "./visualizations/JeeTwoAntennas";
 import SscIncomeAggregates from "./visualizations/SscIncomeAggregates";
 import SscPlanTimeline from "./visualizations/SscPlanTimeline";
 import SscBudgetDeficits from "./visualizations/SscBudgetDeficits";
@@ -988,6 +992,14 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "jee-three-planes":
+      return <JeeThreePlanes />;
+    case "jee-flagpole-subtended":
+      return <JeeFlagpoleSubtended />;
+    case "jee-orthogonal-rotation":
+      return <JeeOrthogonalRotation />;
+    case "jee-two-antennas":
+      return <JeeTwoAntennas />;
     case "ssc-income-aggregates":
       return <SscIncomeAggregates />;
     case "ssc-plan-timeline":

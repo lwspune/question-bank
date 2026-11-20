@@ -634,6 +634,10 @@ export type VisualizationSlug =
   | "ssc-vernier-parts"
   | "ssc-matka-cooling"
   | "ssc-rigid-rotation"
+  | "jee-three-planes"
+  | "jee-flagpole-subtended"
+  | "jee-orthogonal-rotation"
+  | "jee-two-antennas"
   | "imat-chart-types";
 
 export type TrapCallout = {
