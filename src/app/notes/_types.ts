@@ -661,6 +661,13 @@ export type VisualizationSlug =
   | "ssc-work-together-units"
   | "ssc-surd-square"
   | "ssc-letter-gaps"
+  | "ssc-decagon-angles"
+  | "ssc-rank-row"
+  | "ssc-t2-hcf-lcm-venn"
+  | "ssc-atmosphere-layers"
+  | "ssc-t2-reciprocal-ladder"
+  | "ssc-t2-pipes-tank"
+  | "ssc-corner-dot-series"
   | "imat-chart-types";
 
 export type TrapCallout = {

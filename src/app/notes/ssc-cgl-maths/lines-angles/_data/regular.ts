@@ -12,6 +12,7 @@ export const SSC_LA_REGULAR_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssclarg-angle",
       name: "Each interior and exterior angle of a regular polygon",
+      visualizationSlug: "ssc-decagon-angles",
       intuition:
         "The exterior angles of any polygon add to 360°. In a regular polygon all n of them are equal, so each one is 360° shared n ways. The interior angle at the same corner makes a straight line with it, so it is what is left of 180°.",
       definition:

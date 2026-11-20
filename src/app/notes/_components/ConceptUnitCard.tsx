@@ -76,6 +76,13 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import SscDecagonAngles from "./visualizations/SscDecagonAngles";
+import SscRankRow from "./visualizations/SscRankRow";
+import SscT2HcfLcmVenn from "./visualizations/SscT2HcfLcmVenn";
+import SscAtmosphereLayers from "./visualizations/SscAtmosphereLayers";
+import SscT2ReciprocalLadder from "./visualizations/SscT2ReciprocalLadder";
+import SscT2PipesTank from "./visualizations/SscT2PipesTank";
+import SscCornerDotSeries from "./visualizations/SscCornerDotSeries";
 import SscMoreThanBase from "./visualizations/SscMoreThanBase";
 import SscClusterColumns from "./visualizations/SscClusterColumns";
 import SscRepeatReplacement from "./visualizations/SscRepeatReplacement";
@@ -1015,6 +1022,20 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "ssc-decagon-angles":
+      return <SscDecagonAngles />;
+    case "ssc-rank-row":
+      return <SscRankRow />;
+    case "ssc-t2-hcf-lcm-venn":
+      return <SscT2HcfLcmVenn />;
+    case "ssc-atmosphere-layers":
+      return <SscAtmosphereLayers />;
+    case "ssc-t2-reciprocal-ladder":
+      return <SscT2ReciprocalLadder />;
+    case "ssc-t2-pipes-tank":
+      return <SscT2PipesTank />;
+    case "ssc-corner-dot-series":
+      return <SscCornerDotSeries />;
     case "ssc-more-than-base":
       return <SscMoreThanBase />;
     case "ssc-cluster-columns":
