@@ -3355,6 +3355,7 @@ export type Database = {
           free_reveals_per_day: number | null
           free_save_limit: number | null
           id: boolean
+          intl_free_reveals_per_day: number | null
           mock_papers_per_day: number | null
           practice_trial_after_days: number | null
           projection_trial_days: number | null
@@ -3373,6 +3374,7 @@ export type Database = {
           free_reveals_per_day?: number | null
           free_save_limit?: number | null
           id?: boolean
+          intl_free_reveals_per_day?: number | null
           mock_papers_per_day?: number | null
           practice_trial_after_days?: number | null
           projection_trial_days?: number | null
@@ -3391,6 +3393,7 @@ export type Database = {
           free_reveals_per_day?: number | null
           free_save_limit?: number | null
           id?: boolean
+          intl_free_reveals_per_day?: number | null
           mock_papers_per_day?: number | null
           practice_trial_after_days?: number | null
           projection_trial_days?: number | null
@@ -5942,6 +5945,7 @@ export type Database = {
           q_count: number
         }[]
       }
+      get_chapter_landing_stats: { Args: never; Returns: Json }
       get_chapter_last_added: {
         Args: {
           p_kind: Database["public"]["Enums"]["question_kind"]
