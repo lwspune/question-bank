@@ -15,6 +15,7 @@ export const OXSTATES_DFB_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jcdfb-ox-states",
       name: "Oxidation states of the 3d metals",
+      visualizationSlug: "jee-3d-oxidation-states",
       intuition:
         "A transition metal can lose its ns electrons and then some or all of its d electrons, one at a time, so its oxidation states differ in steps of one. The number of states is largest in the middle of the series, where there are the most electrons to lose and the most orbitals to hold them. Manganese reaches +7 by using all seven 3d and 4s electrons.",
       definition:

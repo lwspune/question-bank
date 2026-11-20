@@ -685,6 +685,14 @@ export type VisualizationSlug =
   | "neet-gene-map"
   | "neet-spin-only-moment"
   | "neet-bryophyte-cycle"
+  | "jee-limiting-reagent"
+  | "jee-p-oxoacid-basicity"
+  | "jee-3d-oxidation-states"
+  | "jee-hinsberg-test"
+  | "jee-error-powers"
+  | "jee-haloform"
+  | "jee-indicator-choice"
+  | "jee-g-inside-outside"
   | "imat-chart-types";
 
 export type TrapCallout = {

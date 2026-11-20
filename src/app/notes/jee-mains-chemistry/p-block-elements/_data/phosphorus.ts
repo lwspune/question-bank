@@ -124,6 +124,7 @@ export const PHOSPHORUS_PB_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcpb-p-oxoacid-basicity",
       name: "Basicity and reducing power of phosphorus oxoacids",
+      visualizationSlug: "jee-p-oxoacid-basicity",
       intuition:
         "Only a hydrogen on oxygen can leave as H⁺, because the O–H bond is polar. A hydrogen bonded straight to phosphorus stays put. So count P–OH groups for the basicity and ignore P–H. The P–H hydrogens do something else: they make the acid a reducing agent. An acid with a P–H bond reduces silver nitrate to a silver mirror, and on heating it disproportionates.",
       definition:

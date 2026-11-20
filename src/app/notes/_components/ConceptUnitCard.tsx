@@ -76,6 +76,14 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import JeeLimitingReagent from "./visualizations/JeeLimitingReagent";
+import JeePhosphorusOxoacids from "./visualizations/JeePhosphorusOxoacids";
+import JeeOxidationStates3d from "./visualizations/JeeOxidationStates3d";
+import JeeHinsbergTest from "./visualizations/JeeHinsbergTest";
+import JeeErrorPowers from "./visualizations/JeeErrorPowers";
+import JeeHaloform from "./visualizations/JeeHaloform";
+import JeeIndicatorChoice from "./visualizations/JeeIndicatorChoice";
+import JeeGravityInsideOutside from "./visualizations/JeeGravityInsideOutside";
 import NeetGametogenesis from "./visualizations/NeetGametogenesis";
 import NeetPcrSteps from "./visualizations/NeetPcrSteps";
 import NeetForelimbHomology from "./visualizations/NeetForelimbHomology";
@@ -1039,6 +1047,22 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "jee-limiting-reagent":
+      return <JeeLimitingReagent />;
+    case "jee-p-oxoacid-basicity":
+      return <JeePhosphorusOxoacids />;
+    case "jee-3d-oxidation-states":
+      return <JeeOxidationStates3d />;
+    case "jee-hinsberg-test":
+      return <JeeHinsbergTest />;
+    case "jee-error-powers":
+      return <JeeErrorPowers />;
+    case "jee-haloform":
+      return <JeeHaloform />;
+    case "jee-indicator-choice":
+      return <JeeIndicatorChoice />;
+    case "jee-g-inside-outside":
+      return <JeeGravityInsideOutside />;
     case "neet-gametogenesis":
       return <NeetGametogenesis />;
     case "neet-pcr-steps":
