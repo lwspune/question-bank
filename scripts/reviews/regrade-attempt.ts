@@ -73,7 +73,9 @@ async function main() {
   // OMITS a question whose key it could not read, so the thing to refuse on is
   // ABSENCE. Regrading against a paper with a missing key would score that
   // question as skipped for everyone and quietly move real students' marks.
-  const missingKey = ids.filter((id) => !key[id]);
+  // A GRACE question (e.g. one the exam body cancelled, 0119, which carries no key
+  // by trigger) scores full marks without reading the key, so its absence is fine.
+  const missingKey = snapshot.filter((q) => !q.grace && !key[q.questionId]).map((q) => q.questionId);
   if (missingKey.length) {
     console.error(
       `REFUSE: ${missingKey.length} question(s) in the snapshot have no readable ` +
