@@ -693,6 +693,12 @@ export type VisualizationSlug =
   | "jee-haloform"
   | "jee-indicator-choice"
   | "jee-g-inside-outside"
+  | "neet-order-plots"
+  | "cet-rotating-rod-emf"
+  | "cet-metre-bridge"
+  | "cet-carnot-engine"
+  | "neet-brewster-angle"
+  | "neet-decomposition-steps"
   | "imat-chart-types";
 
 export type TrapCallout = {

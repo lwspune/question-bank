@@ -13,6 +13,7 @@ export const FIELDS_EMW_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpemw-b-from-e",
       name: "Writing the magnetic field of a wave from its electric field",
+      visualizationSlug: "neet-em-wave-fields",
       intuition:
         "E and B rise and fall together, at right angles to each other and to the direction of travel. So once one field is known, the other has the same phase, an amplitude divided (or multiplied) by c, and a direction fixed by a cross product. Only the direction needs thought.",
       definition:

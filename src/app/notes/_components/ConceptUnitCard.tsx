@@ -76,6 +76,12 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import NeetOrderPlots from "./visualizations/NeetOrderPlots";
+import CetRotatingRodEmf from "./visualizations/CetRotatingRodEmf";
+import CetMetreBridge from "./visualizations/CetMetreBridge";
+import CetCarnotEngine from "./visualizations/CetCarnotEngine";
+import NeetBrewsterAngle from "./visualizations/NeetBrewsterAngle";
+import NeetDecompositionSteps from "./visualizations/NeetDecompositionSteps";
 import JeeLimitingReagent from "./visualizations/JeeLimitingReagent";
 import JeePhosphorusOxoacids from "./visualizations/JeePhosphorusOxoacids";
 import JeeOxidationStates3d from "./visualizations/JeeOxidationStates3d";
@@ -1047,6 +1053,18 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "neet-order-plots":
+      return <NeetOrderPlots />;
+    case "cet-rotating-rod-emf":
+      return <CetRotatingRodEmf />;
+    case "cet-metre-bridge":
+      return <CetMetreBridge />;
+    case "cet-carnot-engine":
+      return <CetCarnotEngine />;
+    case "neet-brewster-angle":
+      return <NeetBrewsterAngle />;
+    case "neet-decomposition-steps":
+      return <NeetDecompositionSteps />;
     case "jee-limiting-reagent":
       return <JeeLimitingReagent />;
     case "jee-p-oxoacid-basicity":

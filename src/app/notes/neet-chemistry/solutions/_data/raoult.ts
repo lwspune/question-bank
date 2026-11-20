@@ -73,6 +73,7 @@ export const NEET_CH_SO_RAOULT_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nchso-deviations",
       name: "Ideal and non-ideal solutions",
+      visualizationSlug: "jee-raoult-deviations",
       intuition:
         "Raoult's law holds exactly only when a molecule of A is held by B just as strongly as by another A. If mixing makes the attractions weaker, molecules escape more easily and the vapour pressure comes out higher than Raoult's law predicts. If mixing makes them stronger, often through a new hydrogen bond, the vapour pressure comes out lower. To decide, work out the Raoult's law value and compare it with the measured one.",
       definition:
