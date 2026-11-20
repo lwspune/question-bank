@@ -123,6 +123,7 @@ export const NEET_ZO_EX_URINE_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nzoex-countercurrent",
       name: "The counter current mechanism",
+      visualizationSlug: "neet-countercurrent",
       intuition:
         "Two tubes lie side by side with fluid running in opposite directions, like two lanes of a road. Salt handed from one lane to the other keeps building up at the far end. In the kidney this makes the deep medulla very salty, and that salt pulls water out of the collecting duct.",
       definition:

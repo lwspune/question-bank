@@ -12,6 +12,7 @@ export const NEET_PH_RM_TORQUE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphrm-torque",
       name: "Torque and the moment of a force",
+      visualizationSlug: "torque-moment",
       intuition:
         "A door opens easily when you push far from the hinges and at right angles to the door. Push near the hinges, or along the door towards them, and nothing turns. Torque measures this turning effect: the force times how far its line of action passes from the turning point.",
       definition:
@@ -75,6 +76,7 @@ export const NEET_PH_RM_TORQUE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphrm-equilibrium",
       name: "Equilibrium of a rigid body",
+      visualizationSlug: "imat-moments-seesaw",
       intuition:
         "A body stays at rest only if nothing pushes it along and nothing turns it. So the forces must add to zero and the torques must add to zero. Since the torques add to zero about every point, you are free to take moments about the point where an unknown force acts, and that force drops out.",
       definition:

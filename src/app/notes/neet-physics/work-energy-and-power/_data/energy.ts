@@ -74,6 +74,7 @@ export const NEET_PH_WE_ENERGY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphwe-conservation",
       name: "Conservation of mechanical energy and the vertical circle",
+      visualizationSlug: "wep-energy-conservation-track",
       intuition:
         "Gravity and springs are conservative forces: the work they do depends only on where a body starts and ends, not on the path. Energy they take as potential energy they give back. So when only they do work, kinetic plus potential energy stays the same. A string pulling a bob round a circle is always at right angles to its motion, so it does no work either, and energy conservation alone gives the bob's speed at any height. The string's tension then tells you whether the bob stays on the circle: when the tension falls to zero, the string goes slack.",
       definition:

@@ -13,6 +13,7 @@ export const BEATS_DOPPLER_WAVE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpwave-beats",
       name: "Beat frequency of two close frequencies",
+      visualizationSlug: "cet-beats-envelope",
       intuition:
         "Two notes of nearly equal frequency drift in and out of step. Each time they come back into step the sound swells, so loudness rises and falls at the difference of the two frequencies. The beat count tells you how far apart they are, but not which is higher; a small change to one fork settles that.",
       definition:
@@ -73,6 +74,7 @@ export const BEATS_DOPPLER_WAVE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpwave-doppler",
       name: "Doppler effect for a moving source and observer",
+      visualizationSlug: "cet-doppler-wavefronts",
       intuition:
         "A source moving towards you squeezes the waves together, and you moving towards the source meet the waves more often. Either way the pitch rises; moving apart, it falls. Only motion along the line joining them counts, and if both move together with no relative motion, nothing changes.",
       definition:

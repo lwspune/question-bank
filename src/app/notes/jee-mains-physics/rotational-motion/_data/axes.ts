@@ -13,6 +13,7 @@ export const AXES_ROT_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jprot-parallel-axis",
       name: "Parallel-axis and perpendicular-axis theorems",
+      visualizationSlug: "jee-parallel-axis",
       intuition:
         "The standard table gives I about axes through the centre of mass. To use any other axis parallel to one of those, add Md²: the whole mass, moved a distance d, adds its own point-mass term. For a flat body, the moment of inertia about the axis normal to it equals the sum about two perpendicular axes lying in its plane.",
       definition:

@@ -13,6 +13,7 @@ export const PIPES_WAVE_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jpwave-pipe-harmonics",
       name: "Harmonics and overtones of open and closed pipes",
+      visualizationSlug: "cet-pipe-modes",
       intuition:
         "An open end lets the air move freely, so it is an antinode; a closed end stops the air, so it is a node. A pipe open at both ends behaves like a string fixed at both ends: all harmonics. A pipe closed at one end fits only odd quarter-wavelengths, so its even harmonics are missing and its overtones skip numbers.",
       definition:

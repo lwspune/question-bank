@@ -13,6 +13,7 @@ export const TIR_RAY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpray-critical-angle",
       name: "Critical angle",
+      visualizationSlug: "opt-refraction-tir",
       intuition:
         "Going from a denser to a rarer medium, a ray bends away from the normal. As the angle of incidence grows, the refracted ray swings towards the surface. At the critical angle it grazes along the surface; beyond it no light gets out and all of it is reflected. Light going from rarer to denser always gets through, so total internal reflection never happens that way.",
       definition:

@@ -135,6 +135,7 @@ export const GATES_SEMI_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jpsemi-switch-gates",
       name: "Logic gates built from diodes, transistors and switches",
+      visualizationSlug: "jee-logic-gate-switches",
       intuition:
         "A gate can be built from parts you already know. A high voltage is logic 1 and 0 V is logic 0. Diodes decide whether any one input, or every input, can set the output. A transistor in common emitter turns a high input into a low output, so it is a NOT gate. Switches and a lamp work the same way, with a closed switch as 1 and a lit lamp as 1.",
       definition:
@@ -143,7 +144,7 @@ export const GATES_SEMI_NOTE: SubtopicNote = {
         "- **Transistor NOT:** a high input at the base turns the transistor on, and the collector output falls to about 0 V.\n" +
         "- A diode AND or OR followed by a transistor NOT gives NAND or NOR.\n" +
         "- **Switches:** in series with a lamp they make AND; in parallel they make OR. Switches that short the lamp when closed invert the result.\n" +
-        "- None of the six bank questions on this concept is newer than 2023.",
+        "- None of the six past-paper questions on this concept is newer than 2023.",
       table: {
         columns: ["Circuit", "Output is high when", "Gate"],
         rows: [

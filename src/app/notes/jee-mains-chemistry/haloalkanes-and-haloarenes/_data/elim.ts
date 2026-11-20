@@ -70,6 +70,7 @@ export const ELIM_HALO_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jchalo-saytzeff",
       name: "Zaitsev rule and counting the alkenes from dehydrohalogenation",
+      visualizationSlug: "cet-saytzeff-elimination",
       intuition:
         "When hydrogens can be removed from more than one β-carbon, several alkenes can form. The major one is the most stable, which is usually the one with more alkyl groups on the double-bond carbons. A C=C that can conjugate with a benzene ring or another C=C is more stable still, and wins even with fewer alkyl groups.",
       definition:

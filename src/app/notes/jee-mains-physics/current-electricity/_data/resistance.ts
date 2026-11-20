@@ -75,6 +75,7 @@ export const RESISTANCE_CE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpce-stretching",
       name: "Stretching, melting and redrawing a wire",
+      visualizationSlug: "resistance-wire-geometry",
       intuition:
         "When a wire is stretched, its volume stays the same: it gets longer and thinner at once. Both changes raise R, so R grows as the square of the length. A thinner radius hurts twice over in the same way: R goes as one over the fourth power of the radius.",
       definition:

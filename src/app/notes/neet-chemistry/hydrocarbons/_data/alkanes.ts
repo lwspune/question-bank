@@ -177,6 +177,7 @@ export const NEET_CH_HC_ALKANES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nchhc-conformations",
       name: "Conformations of ethane",
+      visualizationSlug: "neet-ethane-conformations",
       intuition:
         "The two carbons of ethane can turn about their single bond. Look straight down that bond. If the hydrogens of the back carbon sit exactly behind those of the front one, their bond pairs crowd each other: the eclipsed form. If they sit in the gaps, they are as far apart as they can be: the staggered form. The crowding is called torsional strain, so staggered is the most stable form and eclipsed the least.",
       definition:

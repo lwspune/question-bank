@@ -13,6 +13,7 @@ export const POLYMERISATION_METHODS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetpol-addition-condensation-ring-opening",
       name: "Which Method Makes Which Polymer",
+      visualizationSlug: "cet-chain-growth",
       intuition:
         "Look at the monomer. A C=C monomer polymerises by ADDITION: a peroxide initiator makes a radical that opens double bond after double bond, nothing is lost, and the repeat unit has the monomer's formula (ethene → polythene, CF₂=CF₂ → Teflon, CH₂=CHCN → PAN, CH₂=CHCl → PVC, styrene → polystyrene). Two bifunctional monomers polymerise by CONDENSATION, losing water (or HCl) at every link: a diacid and a diamine give the polyamide nylon 6,6, a diacid and a diol the polyester dacron, phenol or urea with formaldehyde the resins. A cyclic amide simply opens: caprolactam → nylon 6 by RING-OPENING, no small molecule lost, though the paper's key files it under condensation.",
       definition:
@@ -20,7 +21,7 @@ export const POLYMERISATION_METHODS_NOTE: SubtopicNote = {
         "- **Condensation (step-growth)**: two functional groups per monomer, small molecule eliminated. **Nylon 6,6** (hexamethylenediamine + adipic acid, −H₂O), **dacron/terylene** (ethylene glycol + terephthalic acid — a dihydric alcohol + an aromatic dicarboxylic acid), glyptal, bakelite, urea- and melamine-formaldehyde, PHBV, polycarbonate.\n" +
         "- **Ring-opening**: **nylon 6** from caprolactam (a cyclic amide); no by-product. Asked as 'ring-opening' and keyed 'NOT addition'.\n" +
         "- Polyamide test for a monomer pair: an acid + an amine (or an amino acid) gives –CO–NH–; two hydroxy acids (3-hydroxybutanoic + 3-hydroxypentanoic) give a polyESTER, not a polyamide.\n" +
-        "- Perylene/glyptal, nylons and bakelite need no initiator; a peroxide is the mark of an addition polymer.",
+        "- Terylene, glyptal, nylons and bakelite need no initiator; a peroxide is the mark of an addition polymer.",
       formula: {
         label: "Addition versus condensation",
         latex:
@@ -34,7 +35,7 @@ export const POLYMERISATION_METHODS_NOTE: SubtopicNote = {
         answer: "Addition; condensation; ring-opening",
       },
       selfCheckExample: {
-        prompt: "Which polymer needs a peroxide initiator: nylon 6,6, polyacrylonitrile, perylene (glyptal), bakelite?",
+        prompt: "Which polymer needs a peroxide initiator: nylon 6,6, polyacrylonitrile, terylene, bakelite?",
         steps: [
           "Only the C=C monomer polymerises by free radicals.",
         ],

@@ -79,6 +79,7 @@ export const NEET_BO_MB_OPERON_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nbomb-lac-switch",
       name: "Switching the lac operon on and off",
+      visualizationSlug: "neet-lac-operon",
       intuition:
         "The repressor sits on the operator and blocks RNA polymerase, so the operon is off. When lactose comes in, it grips the repressor and pulls it off the operator. Now RNA polymerase can pass, and the three enzymes are made. Because the switch works by removing a block, NCERT calls it negative regulation.",
       definition:

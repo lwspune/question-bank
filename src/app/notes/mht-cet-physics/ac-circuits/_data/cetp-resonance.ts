@@ -53,6 +53,7 @@ export const RESONANCE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-resonance-behaviour",
       name: "What Happens at Resonance",
+      visualizationSlug: "cet-resonance-curve",
       intuition:
         "At resonance the two reactances cancel, so the circuit looks like its resistor alone. Sweep the frequency upward and the impedance falls to R and rises again — so the current, and a series bulb's brightness, rise to a peak and fall.",
       definition:

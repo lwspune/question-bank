@@ -211,6 +211,7 @@ export const EM_RADIATION_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "cetsoa-em-spectrum-order",
       name: "The electromagnetic spectrum — order by frequency and energy",
+      visualizationSlug: "imat-em-spectrum",
       intuition:
         "The electromagnetic spectrum lays out every kind of radiation in one line. Radio waves sit at the low-energy end (longest wavelength, lowest frequency) and gamma rays at the high-energy end (shortest wavelength, highest frequency), with visible light a thin band in the middle. " +
         "The bank rarely asks for numbers — it asks 'which has the highest/lowest energy', which is a pure recall of this order.",

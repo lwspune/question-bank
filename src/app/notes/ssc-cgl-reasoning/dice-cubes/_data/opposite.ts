@@ -64,6 +64,7 @@ export const SSC_RDC_OPPOSITE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrdcop-nets",
       name: "Opposite faces in a net",
+      visualizationSlug: "imat-cube-net-fold",
       intuition:
         "A net is the cube unfolded flat. Squares that share an edge in the net become neighbours on the cube. In a straight row, the squares two apart fold to opposite faces.",
       definition:

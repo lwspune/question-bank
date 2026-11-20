@@ -74,6 +74,7 @@ export const NEET_PH_EI_FARADAY_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nphei-lenz",
       name: "Lenz's law and eddy currents",
+      visualizationSlug: "cet-lenz-magnet-coil",
       intuition:
         "The induced current always makes a field that fights the change in flux. Push a magnet towards a coil and the coil pushes back; pull it away and the coil pulls it back. This is energy conservation at work: you must do work against that opposing force, and the work turns into electrical energy. The same opposition acts inside a solid piece of metal, where the induced currents swirl round in loops called eddy currents.",
       definition:

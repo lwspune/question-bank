@@ -61,6 +61,7 @@ export const MOLAR_CONDUCTIVITY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetec-kohlrausch-law",
       name: "Kohlrausch's Law: Λ₀ From the Ions",
+      visualizationSlug: "cet-molar-conductivity-dilution",
       intuition:
         "At infinite dilution every ion moves independently, so Λ₀ of an electrolyte is the sum of its ions' limiting conductivities, each weighted by how many of that ion the formula releases. It also lets you build Λ₀ of a weak acid from three strong electrolytes: add the ones that carry the ions you want, subtract the one that carries the ions you don't.",
       definition:

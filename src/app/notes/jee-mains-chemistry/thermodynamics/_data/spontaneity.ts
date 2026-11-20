@@ -133,6 +133,7 @@ export const SPONTANEITY_CHTHERMO_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcthermo-crossover-temperature",
       name: "Temperature at which ΔG changes sign",
+      visualizationSlug: "cet-gibbs-sign",
       intuition:
         "When ΔH and ΔS have the same sign, the two terms of ΔG pull against each other, and at one temperature they balance. There ΔG = 0. That temperature is a boiling point, a melting point, a transition point, or the lowest temperature at which a reduction starts to work.",
       definition:

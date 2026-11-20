@@ -12,6 +12,7 @@ export const NEET_PH_MC_AMPERE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphmc-ampere",
       name: "Ampere's circuital law and the field of a straight wire",
+      visualizationSlug: "magnetic-field-around-wire",
       intuition:
         "Walk round any closed path and add up the field along your steps. Ampere's law says the total depends only on the current passing through the path, not on the shape of the path. Round a long straight wire the field is the same at every point of a circle, so the law gives the field in one line.",
       definition:
@@ -68,6 +69,7 @@ export const NEET_PH_MC_AMPERE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphmc-solenoid",
       name: "Field inside a long solenoid",
+      visualizationSlug: "solenoid-field-lines",
       intuition:
         "A solenoid is a long coil of many closely wound turns. Inside, the fields of all the turns point the same way along the axis and add up to a strong, uniform field. Outside, they nearly cancel. Only how tightly the turns are packed and the current matter, not how wide the coil is.",
       definition:

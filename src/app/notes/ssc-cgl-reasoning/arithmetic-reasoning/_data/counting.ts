@@ -62,6 +62,7 @@ export const SSC_RAR_COUNTING_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrarco-chance",
       name: "Probability as a fraction",
+      visualizationSlug: "sample-space-event",
       intuition:
         "When every outcome is equally likely, a probability is just a count: the outcomes you want over all the outcomes there are.",
       definition:

@@ -120,6 +120,7 @@ export const NEET_CH_TH_FIRST_LAW_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ncht-work",
       name: "Work of expansion",
+      visualizationSlug: "neet-chem-pv-work",
       intuition:
         "A gas that expands pushes back whatever holds it in, the piston and the air beyond it, and so does work. The work depends on the pressure it pushes against and on how far the volume changes. If the gas expands slowly, with the outside pressure kept only a little below its own at every stage, it pushes against the largest pressure it can and does the most work.",
       definition:

@@ -12,6 +12,7 @@ export const SSC2_M3_CONES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2m3co-slant",
       name: "The cone's right triangle",
+      visualizationSlug: "cds-cone-anatomy",
       intuition:
         "Cut a cone from its tip to the centre of its base and the cut face shows a right triangle: the radius along the floor, the height standing up, the slant height as the long side. Most cone stems give two of these, or their ratio, and Pythagoras gives the third.",
       definition:

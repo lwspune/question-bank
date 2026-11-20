@@ -13,6 +13,7 @@ export const GEOMETRY_VEC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jvec-section",
       name: "Section points, centroid and collinearity",
+      visualizationSlug: "section-formula",
       intuition:
         "The point dividing \\(AB\\) internally in the ratio \\(m:n\\) is \\(\\frac{n\\vec a+m\\vec b}{m+n}\\): the weight on each end is the other part of the ratio. The centroid averages the three vertices. Three points are collinear when \\(\\overrightarrow{AB}\\) and \\(\\overrightarrow{AC}\\) are parallel, that is, their components are proportional.",
       definition:

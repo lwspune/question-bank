@@ -14,6 +14,7 @@ export const CORNER_POINT_METHOD_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetlpp-corner-point-theorem",
       name: "The Corner-Point Theorem: Evaluate Z at Every Vertex",
+      visualizationSlug: "cet-lpp-corner-points",
       intuition:
         "\\(Z = ax + by\\) is constant along parallel lines; sliding that line across a polygon, the last point it touches is a corner. So the optimum is at a vertex, and a bounded region needs only its vertices checked.",
       definition:

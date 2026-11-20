@@ -12,6 +12,7 @@ export const NEET_CH_HA_ELIMINATION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nchha-saytzeff",
       name: "Dehydrohalogenation and the Saytzeff rule",
+      visualizationSlug: "cet-saytzeff-elimination",
       intuition:
         "The carbon that holds the halogen is the α-carbon; the carbons next to it are β-carbons. Alcoholic KOH pulls off a hydrogen from a β-carbon while the halogen leaves from the α-carbon, and a double bond forms between them. When there is more than one kind of β-hydrogen, more than one alkene can form, and the one with more alkyl groups on its double bond wins.",
       definition:

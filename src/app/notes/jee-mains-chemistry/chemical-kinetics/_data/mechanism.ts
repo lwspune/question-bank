@@ -69,6 +69,7 @@ export const JEE_CH_KIN_MECHANISM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jckin-energy-profiles",
       name: "Reading energy profiles and the effect of a catalyst",
+      visualizationSlug: "imat-catalyst-profile",
       intuition:
         "An energy profile follows the energy along the reaction path. Each hump is an activated complex; each valley between humps is an intermediate. The climb from a step's start to its hump is that step's barrier. The start and the end fix \\(\\Delta H\\), so a catalyst — which only offers a lower path — cannot change it.",
       definition:

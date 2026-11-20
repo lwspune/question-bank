@@ -12,6 +12,7 @@ export const NEET_PH_RO_LENSES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphro-lens-formula",
       name: "Thin lens formula and ray rules",
+      visualizationSlug: "opt-convex-lens-rays",
       intuition:
         "A lens is two curved refracting surfaces close together. A convex lens is thicker in the middle and brings parallel rays together at its focus. A concave lens is thinner in the middle and spreads them out, as if they came from a focus on the near side. The thin lens formula links where the object is, where the image is and the focal length, with the same sign rule as mirrors.",
       definition:

@@ -13,6 +13,7 @@ export const IONIC_BOND_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcbond-born-haber",
       name: "The Born-Haber cycle and lattice enthalpy",
+      visualizationSlug: "jee-born-haber",
       intuition:
         "You cannot measure a lattice enthalpy directly, but Hess's law lets you walk round it. Take the metal and non-metal from their standard states to gaseous ions step by step, then let the ions fall together into the solid. The total must equal the enthalpy of formation.",
       definition:

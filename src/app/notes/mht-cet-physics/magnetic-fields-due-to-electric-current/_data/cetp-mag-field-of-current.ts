@@ -15,6 +15,7 @@ export const FIELD_OF_CURRENT_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-mag-straight-wire-field",
       name: "Field of Straight Wires",
+      visualizationSlug: "magnetic-field-around-wire",
       intuition:
         "A long straight wire's field circles it with B = μ₀I/(2πd), falling as 1/d. With two wires, find each field's direction by the right-hand rule and add as vectors. Midway between them, like currents give OPPOSITE fields (they subtract, zero if equal) and opposite currents give fields in the SAME direction (they add). At a point where the lines to the two wires are perpendicular, the fields are perpendicular too, so add them by Pythagoras. Inside a thick wire the field rises linearly from zero, μ₀Ir/(2πR²); outside it falls as 1/r.",
       definition:

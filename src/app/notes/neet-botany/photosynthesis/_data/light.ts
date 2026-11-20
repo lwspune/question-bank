@@ -126,6 +126,7 @@ export const NEET_BO_PS_LIGHT_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nbops-light-reaction",
       name: "Electron flow and photophosphorylation",
+      visualizationSlug: "neet-z-scheme",
       intuition:
         "Light knocks electrons out of the reaction centres. In the usual route the electrons go from water to PS II, down a chain of carriers to PS I, and on to NADP⁺. On the way ATP is made. This straight route is non-cyclic. When only PS I works, its electrons come back to it in a loop, and only ATP is made. That loop is cyclic.",
       definition:
@@ -187,6 +188,7 @@ export const NEET_BO_PS_LIGHT_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nbops-chemiosmosis",
       name: "Chemiosmosis and ATP synthase",
+      visualizationSlug: "neet-thylakoid-chemiosmosis",
       intuition:
         "The light reaction piles up protons (H⁺) inside the thylakoid, in the lumen. Like water behind a dam, they push to get out. Their only way back to the stroma is a channel in ATP synthase, and the flow through it makes ATP. This is the chemiosmotic way of making ATP.",
       definition:

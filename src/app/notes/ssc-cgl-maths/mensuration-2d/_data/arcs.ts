@@ -12,6 +12,7 @@ export const SSC_M2_ARCS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscm2ar-arc",
       name: "Arc length as a fraction of the circumference",
+      visualizationSlug: "imat-sector-arc",
       intuition:
         "Cut a round cake into pieces at the centre. A piece with a 90° corner carries a quarter of the cake's rim, because 90° is a quarter of the full 360°. Every arc works the same way: its share of the rim equals its angle's share of 360°.",
       definition:
@@ -117,6 +118,7 @@ export const SSC_M2_ARCS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscm2ar-radian",
       name: "Radians: arc length equals radius times angle",
+      visualizationSlug: "imat-radian-arc",
       intuition:
         "Lay the radius along the rim of the circle. The angle at the centre it covers is one radian. An arc twice as long as the radius covers two radians, so in radians an arc is simply radius times angle.",
       definition:

@@ -13,6 +13,7 @@ export const RADII_PER_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jcper-atomic-radius",
       name: "Atomic radius across a period and down a group",
+      visualizationSlug: "atom-periodic-trends",
       intuition:
         "Across a period each step adds one proton and one electron to the same shell. The extra pull wins, so the atom gets smaller. Down a group each step adds a whole shell, and the atom gets bigger even though the nuclear charge rises.",
       definition:

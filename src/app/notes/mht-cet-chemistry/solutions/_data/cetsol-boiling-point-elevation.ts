@@ -14,6 +14,7 @@ export const BOILING_POINT_ELEVATION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetsol-delta-tb-equals-kb-m",
       name: "ΔTb = Kb · m: Solve for Any One of Molality, Kb, Moles or Solvent Mass",
+      visualizationSlug: "cet-boiling-point-elevation",
       intuition:
         "The elevation is proportional to how many solute particles there are per kilogram of solvent. Kb is the solvent's constant (the elevation a \\(1\\) molal solution would show); everything else in the stem is either given or asked.",
       definition:

@@ -12,6 +12,7 @@ export const NEET_BO_PS_CALVIN_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nbops-calvin-stages",
       name: "The three stages and RuBisCO",
+      visualizationSlug: "neet-calvin-cycle",
       intuition:
         "The light reaction makes ATP and NADPH; the Calvin cycle spends them to turn CO₂ into sugar. A 5-carbon sugar, RuBP, picks up CO₂, the product is reduced to sugar, and RuBP is made again so the cycle can turn once more. It does not need light directly, but it stops without the ATP and NADPH that light makes.",
       definition:

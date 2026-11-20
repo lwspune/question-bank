@@ -69,6 +69,7 @@ export const NEET_PH_CE_DRIFT_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphce-resistivity",
       name: "Resistance, resistivity and conductivity",
+      visualizationSlug: "resistance-wire-geometry",
       intuition:
         "Resistance depends on the shape of a wire: longer means more resistance, thicker means less. Resistivity is the part that belongs to the material alone. A metal has a low resistivity because it has many free electrons and they travel a fair time between collisions. Conductivity is just the reverse of resistivity.",
       definition:

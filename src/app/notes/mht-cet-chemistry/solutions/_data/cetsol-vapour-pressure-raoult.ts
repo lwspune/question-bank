@@ -14,6 +14,7 @@ export const VAPOUR_PRESSURE_RAOULT_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetsol-raoults-law-two-volatile-liquids",
       name: "Raoult's Law for Two Volatile Liquids: P = x_A P_A° + x_B P_B°",
+      visualizationSlug: "cet-raoult-two-liquids",
       intuition:
         "Each liquid evaporates as if it alone were present, scaled down by its mole fraction. The total vapour pressure is the sum, and the same equation solved backwards gives an unknown mole fraction or an unknown pure-component pressure.",
       definition:

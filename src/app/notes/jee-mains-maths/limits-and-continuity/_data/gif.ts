@@ -13,6 +13,7 @@ export const GIF_LIM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jlim-gif",
       name: "The greatest integer function",
+      visualizationSlug: "greatest-integer-staircase",
       intuition:
         "\\([x]\\) is constant between integers and jumps at each integer. Near an integer \\(n\\), take the two sides: \\([x]=n-1\\) just to the left and \\(n\\) just to the right. For expressions like \\(x\\left[\\frac1x\\right]\\), squeeze with \\(t-1<[t]\\le t\\).",
       definition:
@@ -57,6 +58,7 @@ export const GIF_LIM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jlim-one-sided",
       name: "Left and right limits",
+      visualizationSlug: "lim-one-sided-approach",
       intuition:
         "A limit exists only if the left and right limits agree. Moduli, \\(e^{1/x}\\) and \\(\\tan^{-1}\\frac1x\\) all behave differently on the two sides of 0, so compute each side separately: for \\(x<0\\), \\(|x|=-x\\) and \\(e^{1/x}\\to0\\); for \\(x>0\\), \\(e^{1/x}\\to\\infty\\).",
       definition:

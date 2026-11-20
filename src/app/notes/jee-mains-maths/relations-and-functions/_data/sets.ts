@@ -13,6 +13,7 @@ export const SETS_FN_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jfn-set-intervals",
       name: "Sets given by conditions, then combined",
+      visualizationSlug: "sets-venn-two",
       intuition:
         "Solve each condition first, so that every set becomes an interval, a union of intervals, or a list. Then combine them on a number line: the union keeps anything in either, the intersection keeps only the overlap, and \\(A-B\\) keeps the part of \\(A\\) outside \\(B\\). For sets of points in the plane, sketch the regions and list the points that qualify.",
       definition:
@@ -59,6 +60,7 @@ export const SETS_FN_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jfn-inclusion-exclusion",
       name: "Counting overlapping groups by inclusion–exclusion",
+      visualizationSlug: "sets-venn-three",
       intuition:
         "Adding the sizes of groups counts everyone in two groups twice, so subtract each pairwise overlap; then everyone in all three has been added three times and subtracted three times, so add the triple overlap back. When the triple overlap is unknown, the rule that no region of the Venn diagram can be negative bounds it. People in exactly one, two or three groups can be counted from the total number of memberships.",
       definition:

@@ -14,6 +14,7 @@ export const GALVANIC_CELLS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetec-cell-notation-and-electrodes",
       name: "Reading a Cell: Anode Left, Cathode Right",
+      visualizationSlug: "imat-galvanic-cell",
       intuition:
         "In cell notation the anode (oxidation) is written on the left and the cathode (reduction) on the right, the double bar being the salt bridge. In a GALVANIC cell the anode is the negative electrode and the cathode the positive one; electrons flow through the wire from anode to cathode. The electrode with the higher reduction potential is the cathode.",
       definition:

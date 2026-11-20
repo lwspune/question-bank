@@ -69,6 +69,7 @@ export const NEET_BO_MB_DNA_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nbomb-double-helix",
       name: "The double helix, Chargaff's rule and DNA length",
+      visualizationSlug: "cet-dna-base-pairing",
       intuition:
         "In the double helix, A on one strand always faces T on the other, and G always faces C. So in any double-stranded DNA there is exactly as much A as T, and as much G as C. Every base pair also adds the same small step of 0.34 nm to the length. These two facts turn into the two calculations NEET sets: percentages of bases, and base pairs from length.",
       definition:

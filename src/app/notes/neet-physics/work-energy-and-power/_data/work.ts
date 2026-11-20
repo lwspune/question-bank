@@ -12,6 +12,7 @@ export const NEET_PH_WE_WORK_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphwe-work",
       name: "Work done by a constant and a variable force",
+      visualizationSlug: "wep-work-at-angle",
       intuition:
         "A force does work when the body it acts on moves. Only the part of the force along the motion counts: a force at right angles to the motion does no work at all, however large it is. A force that helps the motion does positive work, one that opposes it, like friction, does negative work. When the force changes as the body moves, cut the path into tiny steps, find the work on each, and add them up. That sum is the area under the force-position graph.",
       definition:

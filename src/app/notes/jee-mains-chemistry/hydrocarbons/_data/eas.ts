@@ -15,6 +15,7 @@ export const EAS_HC_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jchc-eas-electrophile",
       name: "Making the electrophile, and when Friedel–Crafts fails",
+      visualizationSlug: "cet-eas-mechanism",
       intuition:
         "Benzene's π cloud is only weakly nucleophilic, so every aromatic substitution first builds a strong, positive electrophile. A proton acid or a Lewis acid does this. The electrophile then adds to the ring to give a carbocation (the arenium ion or σ-complex), and loss of H⁺ restores the aromatic ring. A Friedel–Crafts reaction fails when the ring is too electron-poor, or when a basic nitrogen on the ring grabs the Lewis acid.",
       definition:
@@ -66,6 +67,7 @@ export const EAS_HC_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jchc-directing-groups",
       name: "Activating, deactivating, ortho-para and meta directors",
+      visualizationSlug: "cet-directing-effects",
       intuition:
         "A group that pushes electrons into the ring (by a lone pair, +R, or by alkyl groups, +I and hyperconjugation) makes the ring richer and the reaction faster, and the extra density sits at the ortho and para positions. A group that pulls electrons out (–R, –I) slows the reaction and leaves the meta position the least starved. Halogens are the one mixed case: they pull by –I, so they deactivate, but their lone pairs still send the electrophile ortho and para.",
       definition:

@@ -134,6 +134,7 @@ export const VARIABLE_SEPARABLE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetde-particular-ic",
       name: "Applying an Initial Condition (Particular Solutions)",
+      visualizationSlug: "cet-de-solution-family",
       intuition:
         "The general solution carries one arbitrary constant. An initial condition — a single point \\((x_0, y_0)\\) the curve passes through — pins that constant down, giving the particular solution. Golden rule: integrate FIRST (keep the constant), then substitute the condition.",
       definition:

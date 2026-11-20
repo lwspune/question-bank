@@ -12,6 +12,7 @@ export const SSC_RSY_TWO_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrsytw-rules",
       name: "Turning a statement round and joining two",
+      visualizationSlug: "imat-syllogism-venn",
       intuition:
         "Draw each group as a circle. \"All A are B\" puts circle A inside circle B; \"Some A are B\" makes them overlap. A conclusion follows only if every drawing that fits the statements also fits the conclusion. A few rules save drawing every time.",
       definition:

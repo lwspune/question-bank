@@ -12,6 +12,7 @@ export const SSC2_HD_ONE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2hdon-ground",
       name: "From the ground",
+      visualizationSlug: "hd-elevation-triangle",
       intuition:
         "Looking up at the top of a tower from the ground makes a right triangle: the tower is the upright side, the ground distance the flat side, and the angle of elevation is at the observer. So the height is the distance times tan of that angle.",
       definition:
@@ -50,6 +51,7 @@ export const SSC2_HD_ONE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2hdon-above",
       name: "From a height",
+      visualizationSlug: "af-angle-of-depression",
       intuition:
         "When the observer stands on a pole or a building, the right triangle starts at the observer's height, not at the ground. Take that height off the tower (or add it on) before using the angle.",
       definition:

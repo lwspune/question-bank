@@ -62,6 +62,7 @@ export const ISOMERISM_COORD_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jccoord-geometrical",
       name: "Geometrical isomers of square planar and octahedral complexes",
+      visualizationSlug: "jee-complex-isomers",
       intuition:
         "Geometrical isomers differ in which ligands are next to each other (cis, 90° apart) and which are opposite (trans, 180°). A tetrahedron has every corner next to every other, so it never has cis–trans isomers. In an octahedron, three identical ligands can sit on one face (fac) or along a meridian through the metal (mer).",
       definition:

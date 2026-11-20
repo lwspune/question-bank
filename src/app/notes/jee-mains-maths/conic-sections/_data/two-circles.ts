@@ -13,6 +13,7 @@ export const TWO_CIRCLES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcon-two-circle-position",
       name: "Relative position and the number of common tangents",
+      visualizationSlug: "jee-two-circles",
       intuition:
         "Everything depends on \\(d\\), the distance between the centres, set against \\(r_1+r_2\\) and \\(|r_1-r_2|\\). Far apart, the circles have four common tangents. As they come closer, they touch from outside (three), cross (two), touch from inside (one), and finally one sits inside the other (none). When two circles touch, the point of contact lies on the line of centres and splits it in the ratio of the radii.",
       definition:

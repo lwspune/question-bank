@@ -69,6 +69,7 @@ export const TORQUE_ROT_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jprot-torque-vector",
       name: "Torque as the cross product of position and force",
+      visualizationSlug: "torque-moment",
       intuition:
         "A force turns a body more when it is applied further from the axis and more nearly at right angles to the line from the axis. The cross product r × F captures both. A force whose line passes through the point gives no torque about it.",
       definition:
@@ -130,6 +131,7 @@ export const TORQUE_ROT_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jprot-equilibrium",
       name: "Equilibrium of a rigid body",
+      visualizationSlug: "imat-moments-seesaw",
       intuition:
         "A body stays at rest only if the forces balance AND the turning effects balance. Torques can be taken about any point, so pick the point where an unknown force acts: that force then drops out. A uniform rod's own weight acts at its middle and must be counted.",
       definition:

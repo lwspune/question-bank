@@ -62,6 +62,7 @@ export const BONDING_AND_STABILITY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetcc-unpaired-electrons-and-magnetism",
       name: "Unpaired Electrons and the Spin-Only Magnetic Moment",
+      visualizationSlug: "cet-d-electron-pairing",
       intuition:
         "The same Co³⁺ ion (3d⁶, four unpaired as a free ion) is diamagnetic in [Co(NH₃)₆]³⁺ and strongly paramagnetic in [CoF₆]³⁻. NH₃ pairs all six electrons into t₂g — zero unpaired, low spin, diamagnetic. F⁻ is weak, so the electrons spread over all five d orbitals as in the free ion — four unpaired, high spin. Once n is known, the spin-only moment is √(n(n+2)) Bohr magnetons: one unpaired electron gives √3 = 1.73 BM.",
       definition:

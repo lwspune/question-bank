@@ -12,6 +12,7 @@ export const NEET_PH_WE_COLLISIONS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphwe-inelastic",
       name: "Momentum, kinetic energy and sticking collisions",
+      visualizationSlug: "imat-collision-momentum",
       intuition:
         "When two bodies collide, the large forces between them are internal to the pair, equal and opposite. So the total momentum just before and just after the collision is the same, in every kind of collision. Kinetic energy is a different story: some of it usually turns into heat, sound and the bending of the bodies. When the bodies stick together, they move off with one common velocity and the most kinetic energy is lost.",
       definition:

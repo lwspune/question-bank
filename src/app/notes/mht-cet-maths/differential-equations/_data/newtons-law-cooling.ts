@@ -14,6 +14,7 @@ export const NEWTONS_COOLING_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetde-cooling-model",
       name: "The Cooling Model — Rate Proportional to Temperature Excess",
+      visualizationSlug: "cet-cooling-curve",
       intuition:
         "A cup of coffee cools fast when it is much hotter than the room and slowly once it is nearly room temperature. Newton's law captures exactly that: the cooling rate is proportional to the gap between the body and its surroundings. Once the gap is zero, cooling stops. The key move is to always work with the DIFFERENCE from the surrounding temperature, never the raw temperature.",
       definition:

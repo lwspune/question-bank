@@ -103,6 +103,7 @@ export const POLAR_CX_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcx-rotation",
       name: "Rotation and triangles",
+      visualizationSlug: "jee-complex-rotation",
       intuition:
         "Multiplying by \\(e^{i\\alpha}\\) turns the plane about the origin through \\(\\alpha\\): \\(i\\) is a quarter turn anticlockwise, \\(-i\\) a quarter turn clockwise. To turn about a point \\(a\\), shift first: \\(w-a=(z-a)e^{i\\alpha}\\). In a triangle, \\(\\frac{z_3-z_1}{z_2-z_1}\\) has modulus equal to the ratio of the two sides at \\(z_1\\) and argument equal to the angle between them.",
       definition:

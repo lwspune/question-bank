@@ -175,6 +175,7 @@ export const SSC_TG_VALUES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssctgva-radian",
       name: "Converting degrees and radians",
+      visualizationSlug: "imat-radian-arc",
       intuition:
         "A half turn is 180° and also π radians, so the two units differ by one fixed factor. Multiply by \\(\\frac{180}{\\pi}\\) to reach degrees and by \\(\\frac{\\pi}{180}\\) to reach radians.",
       definition:

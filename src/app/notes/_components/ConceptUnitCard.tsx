@@ -76,6 +76,118 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import SscSoundMedia from "./visualizations/SscSoundMedia";
+import SscRespirationStages from "./visualizations/SscRespirationStages";
+import SscDecayModes from "./visualizations/SscDecayModes";
+import SscLeafVenation from "./visualizations/SscLeafVenation";
+import SscRainfallTypes from "./visualizations/SscRainfallTypes";
+import SscStomataTranspiration from "./visualizations/SscStomataTranspiration";
+import SscDemographicTransition from "./visualizations/SscDemographicTransition";
+import SscGlacialKarstLandforms from "./visualizations/SscGlacialKarstLandforms";
+import SscMirrorWaterImage from "./visualizations/SscMirrorWaterImage";
+import SscFamilyTree from "./visualizations/SscFamilyTree";
+import SscMediansCentroid from "./visualizations/SscMediansCentroid";
+import SscTowerTwoObservers from "./visualizations/SscTowerTwoObservers";
+import SscCylinderNet from "./visualizations/SscCylinderNet";
+import SscSphereInCylinder from "./visualizations/SscSphereInCylinder";
+import SscAlligationCross from "./visualizations/SscAlligationCross";
+import SscBoatsStreams from "./visualizations/SscBoatsStreams";
+import NeetCountercurrent from "./visualizations/NeetCountercurrent";
+import NeetCardiacConduction from "./visualizations/NeetCardiacConduction";
+import NeetMenstrualCycle from "./visualizations/NeetMenstrualCycle";
+import NeetNeuronStructure from "./visualizations/NeetNeuronStructure";
+import NeetMeiosisProphase from "./visualizations/NeetMeiosisProphase";
+import NeetThylakoidChemiosmosis from "./visualizations/NeetThylakoidChemiosmosis";
+import NeetPrismDeviation from "./visualizations/NeetPrismDeviation";
+import NeetEquipotentials from "./visualizations/NeetEquipotentials";
+import NeetCapacitorDielectric from "./visualizations/NeetCapacitorDielectric";
+import NeetEthaneConformations from "./visualizations/NeetEthaneConformations";
+import NeetCarbocationStability from "./visualizations/NeetCarbocationStability";
+import NeetChemPvWork from "./visualizations/NeetChemPvWork";
+import NeetZScheme from "./visualizations/NeetZScheme";
+import NeetCalvinCycle from "./visualizations/NeetCalvinCycle";
+import NeetKranzAnatomy from "./visualizations/NeetKranzAnatomy";
+import NeetRespirationPathway from "./visualizations/NeetRespirationPathway";
+import NeetLacOperon from "./visualizations/NeetLacOperon";
+import NeetEmbryoSac from "./visualizations/NeetEmbryoSac";
+import JeePointImageLine from "./visualizations/JeePointImageLine";
+import JeeChordLength from "./visualizations/JeeChordLength";
+import JeeTwoCircles from "./visualizations/JeeTwoCircles";
+import JeeHyperbolaFocal from "./visualizations/JeeHyperbolaFocal";
+import JeeEllipseFocal from "./visualizations/JeeEllipseFocal";
+import JeeSkewLinesDistance from "./visualizations/JeeSkewLinesDistance";
+import JeeComplexRotation from "./visualizations/JeeComplexRotation";
+import JeeMeanValueTheorem from "./visualizations/JeeMeanValueTheorem";
+import JeeRiemannSum from "./visualizations/JeeRiemannSum";
+import JeeCrystalFieldSplitting from "./visualizations/JeeCrystalFieldSplitting";
+import JeeMoDiagram from "./visualizations/JeeMoDiagram";
+import JeeRaoultDeviations from "./visualizations/JeeRaoultDeviations";
+import JeeReactionOrderPlots from "./visualizations/JeeReactionOrderPlots";
+import JeeArrheniusPlot from "./visualizations/JeeArrheniusPlot";
+import JeeRadialProbability from "./visualizations/JeeRadialProbability";
+import JeeBornHaber from "./visualizations/JeeBornHaber";
+import JeeComplexIsomers from "./visualizations/JeeComplexIsomers";
+import JeeMovingRodEmf from "./visualizations/JeeMovingRodEmf";
+import JeeMalusPolaroids from "./visualizations/JeeMalusPolaroids";
+import JeeGaussFieldGraphs from "./visualizations/JeeGaussFieldGraphs";
+import JeeTerminalVelocity from "./visualizations/JeeTerminalVelocity";
+import JeeWheatstoneBridge from "./visualizations/JeeWheatstoneBridge";
+import JeeVernierScale from "./visualizations/JeeVernierScale";
+import JeeLogicGateSwitches from "./visualizations/JeeLogicGateSwitches";
+import JeeMagneticDipoleTorque from "./visualizations/JeeMagneticDipoleTorque";
+import JeeApparentDepth from "./visualizations/JeeApparentDepth";
+import JeePvWorkArea from "./visualizations/JeePvWorkArea";
+import JeeForceDisplacementArea from "./visualizations/JeeForceDisplacementArea";
+import JeeStressStrain from "./visualizations/JeeStressStrain";
+import JeeParallelAxis from "./visualizations/JeeParallelAxis";
+import JeeShmEnergyGraphs from "./visualizations/JeeShmEnergyGraphs";
+import JeePrismMinDeviation from "./visualizations/JeePrismMinDeviation";
+import JeeBindingEnergyCurve from "./visualizations/JeeBindingEnergyCurve";
+import JeeMaxwellSpeeds from "./visualizations/JeeMaxwellSpeeds";
+import CetLppCornerPoints from "./visualizations/CetLppCornerPoints";
+import CetLppHalfPlane from "./visualizations/CetLppHalfPlane";
+import CetPairOfLinesAngle from "./visualizations/CetPairOfLinesAngle";
+import CetUnitCircleSolutions from "./visualizations/CetUnitCircleSolutions";
+import CetArgandRotation from "./visualizations/CetArgandRotation";
+import CetModulusCircle from "./visualizations/CetModulusCircle";
+import CetDeSolutionFamily from "./visualizations/CetDeSolutionFamily";
+import CetCoolingCurve from "./visualizations/CetCoolingCurve";
+import CetSn1VsSn2 from "./visualizations/CetSn1VsSn2";
+import CetEasMechanism from "./visualizations/CetEasMechanism";
+import CetDirectingEffects from "./visualizations/CetDirectingEffects";
+import CetCarbonylAddition from "./visualizations/CetCarbonylAddition";
+import CetSaytzeffElimination from "./visualizations/CetSaytzeffElimination";
+import CetChainGrowth from "./visualizations/CetChainGrowth";
+import CetUnitCellCounting from "./visualizations/CetUnitCellCounting";
+import CetTetraOctaVoids from "./visualizations/CetTetraOctaVoids";
+import CetEdgeLengthRadius from "./visualizations/CetEdgeLengthRadius";
+import CetDElectronPairing from "./visualizations/CetDElectronPairing";
+import CetGlucoseRingClosure from "./visualizations/CetGlucoseRingClosure";
+import CetDnaBasePairing from "./visualizations/CetDnaBasePairing";
+import CetHessCycle from "./visualizations/CetHessCycle";
+import CetGibbsSign from "./visualizations/CetGibbsSign";
+import CetRaoultTwoLiquids from "./visualizations/CetRaoultTwoLiquids";
+import CetMolarConductivityDilution from "./visualizations/CetMolarConductivityDilution";
+import CetFirstOrderPlot from "./visualizations/CetFirstOrderPlot";
+import CetBoilingPointElevation from "./visualizations/CetBoilingPointElevation";
+import CetPnDepletion from "./visualizations/CetPnDepletion";
+import CetDiodeBias from "./visualizations/CetDiodeBias";
+import CetRectifierWaves from "./visualizations/CetRectifierWaves";
+import CetPhotoelectricThreshold from "./visualizations/CetPhotoelectricThreshold";
+import CetPhotoelectricGraphs from "./visualizations/CetPhotoelectricGraphs";
+import CetHydrogenSeries from "./visualizations/CetHydrogenSeries";
+import CetStandingWaveModes from "./visualizations/CetStandingWaveModes";
+import CetPipeModes from "./visualizations/CetPipeModes";
+import CetBeatsEnvelope from "./visualizations/CetBeatsEnvelope";
+import CetShmReferenceCircle from "./visualizations/CetShmReferenceCircle";
+import CetYdseFringeWidth from "./visualizations/CetYdseFringeWidth";
+import CetDopplerWavefronts from "./visualizations/CetDopplerWavefronts";
+import CetLcrPhasors from "./visualizations/CetLcrPhasors";
+import CetResonanceCurve from "./visualizations/CetResonanceCurve";
+import CetLenzMagnetCoil from "./visualizations/CetLenzMagnetCoil";
+import CetContinuityPipe from "./visualizations/CetContinuityPipe";
+import CetDipoleTorque from "./visualizations/CetDipoleTorque";
+import CetRollingEnergySplit from "./visualizations/CetRollingEnergySplit";
 import ImatSupplyDemand from "./visualizations/ImatSupplyDemand";
 import ImatEuTimeline from "./visualizations/ImatEuTimeline";
 import ImatItalianInstitutions from "./visualizations/ImatItalianInstitutions";
@@ -770,6 +882,230 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "ssc-sound-media":
+      return <SscSoundMedia />;
+    case "ssc-respiration-stages":
+      return <SscRespirationStages />;
+    case "ssc-decay-modes":
+      return <SscDecayModes />;
+    case "ssc-leaf-venation":
+      return <SscLeafVenation />;
+    case "ssc-rainfall-types":
+      return <SscRainfallTypes />;
+    case "ssc-stomata-transpiration":
+      return <SscStomataTranspiration />;
+    case "ssc-demographic-transition":
+      return <SscDemographicTransition />;
+    case "ssc-glacial-karst-landforms":
+      return <SscGlacialKarstLandforms />;
+    case "ssc-mirror-water-image":
+      return <SscMirrorWaterImage />;
+    case "ssc-family-tree":
+      return <SscFamilyTree />;
+    case "ssc-medians-centroid":
+      return <SscMediansCentroid />;
+    case "ssc-tower-two-observers":
+      return <SscTowerTwoObservers />;
+    case "ssc-cylinder-net":
+      return <SscCylinderNet />;
+    case "ssc-sphere-in-cylinder":
+      return <SscSphereInCylinder />;
+    case "ssc-alligation-cross":
+      return <SscAlligationCross />;
+    case "ssc-boats-streams":
+      return <SscBoatsStreams />;
+    case "neet-countercurrent":
+      return <NeetCountercurrent />;
+    case "neet-cardiac-conduction":
+      return <NeetCardiacConduction />;
+    case "neet-menstrual-cycle":
+      return <NeetMenstrualCycle />;
+    case "neet-neuron-structure":
+      return <NeetNeuronStructure />;
+    case "neet-meiosis-prophase":
+      return <NeetMeiosisProphase />;
+    case "neet-thylakoid-chemiosmosis":
+      return <NeetThylakoidChemiosmosis />;
+    case "neet-prism-deviation":
+      return <NeetPrismDeviation />;
+    case "neet-equipotentials":
+      return <NeetEquipotentials />;
+    case "neet-capacitor-dielectric":
+      return <NeetCapacitorDielectric />;
+    case "neet-ethane-conformations":
+      return <NeetEthaneConformations />;
+    case "neet-carbocation-stability":
+      return <NeetCarbocationStability />;
+    case "neet-chem-pv-work":
+      return <NeetChemPvWork />;
+    case "neet-z-scheme":
+      return <NeetZScheme />;
+    case "neet-calvin-cycle":
+      return <NeetCalvinCycle />;
+    case "neet-kranz-anatomy":
+      return <NeetKranzAnatomy />;
+    case "neet-respiration-pathway":
+      return <NeetRespirationPathway />;
+    case "neet-lac-operon":
+      return <NeetLacOperon />;
+    case "neet-embryo-sac":
+      return <NeetEmbryoSac />;
+    case "jee-point-image-line":
+      return <JeePointImageLine />;
+    case "jee-chord-length":
+      return <JeeChordLength />;
+    case "jee-two-circles":
+      return <JeeTwoCircles />;
+    case "jee-hyperbola-focal":
+      return <JeeHyperbolaFocal />;
+    case "jee-ellipse-focal":
+      return <JeeEllipseFocal />;
+    case "jee-skew-lines-distance":
+      return <JeeSkewLinesDistance />;
+    case "jee-complex-rotation":
+      return <JeeComplexRotation />;
+    case "jee-mean-value-theorem":
+      return <JeeMeanValueTheorem />;
+    case "jee-riemann-sum":
+      return <JeeRiemannSum />;
+    case "jee-crystal-field-splitting":
+      return <JeeCrystalFieldSplitting />;
+    case "jee-mo-diagram":
+      return <JeeMoDiagram />;
+    case "jee-raoult-deviations":
+      return <JeeRaoultDeviations />;
+    case "jee-reaction-order-plots":
+      return <JeeReactionOrderPlots />;
+    case "jee-arrhenius-plot":
+      return <JeeArrheniusPlot />;
+    case "jee-radial-probability":
+      return <JeeRadialProbability />;
+    case "jee-born-haber":
+      return <JeeBornHaber />;
+    case "jee-complex-isomers":
+      return <JeeComplexIsomers />;
+    case "jee-moving-rod-emf":
+      return <JeeMovingRodEmf />;
+    case "jee-malus-polaroids":
+      return <JeeMalusPolaroids />;
+    case "jee-gauss-field-graphs":
+      return <JeeGaussFieldGraphs />;
+    case "jee-terminal-velocity":
+      return <JeeTerminalVelocity />;
+    case "jee-wheatstone-bridge":
+      return <JeeWheatstoneBridge />;
+    case "jee-vernier-scale":
+      return <JeeVernierScale />;
+    case "jee-logic-gate-switches":
+      return <JeeLogicGateSwitches />;
+    case "jee-magnetic-dipole-torque":
+      return <JeeMagneticDipoleTorque />;
+    case "jee-apparent-depth":
+      return <JeeApparentDepth />;
+    case "jee-pv-work-area":
+      return <JeePvWorkArea />;
+    case "jee-force-displacement-area":
+      return <JeeForceDisplacementArea />;
+    case "jee-stress-strain":
+      return <JeeStressStrain />;
+    case "jee-parallel-axis":
+      return <JeeParallelAxis />;
+    case "jee-shm-energy-graphs":
+      return <JeeShmEnergyGraphs />;
+    case "jee-prism-min-deviation":
+      return <JeePrismMinDeviation />;
+    case "jee-binding-energy-curve":
+      return <JeeBindingEnergyCurve />;
+    case "jee-maxwell-speeds":
+      return <JeeMaxwellSpeeds />;
+    case "cet-lpp-corner-points":
+      return <CetLppCornerPoints />;
+    case "cet-lpp-half-plane":
+      return <CetLppHalfPlane />;
+    case "cet-pair-of-lines-angle":
+      return <CetPairOfLinesAngle />;
+    case "cet-unit-circle-solutions":
+      return <CetUnitCircleSolutions />;
+    case "cet-argand-rotation":
+      return <CetArgandRotation />;
+    case "cet-modulus-circle":
+      return <CetModulusCircle />;
+    case "cet-de-solution-family":
+      return <CetDeSolutionFamily />;
+    case "cet-cooling-curve":
+      return <CetCoolingCurve />;
+    case "cet-sn1-vs-sn2":
+      return <CetSn1VsSn2 />;
+    case "cet-eas-mechanism":
+      return <CetEasMechanism />;
+    case "cet-directing-effects":
+      return <CetDirectingEffects />;
+    case "cet-carbonyl-addition":
+      return <CetCarbonylAddition />;
+    case "cet-saytzeff-elimination":
+      return <CetSaytzeffElimination />;
+    case "cet-chain-growth":
+      return <CetChainGrowth />;
+    case "cet-unit-cell-counting":
+      return <CetUnitCellCounting />;
+    case "cet-tetra-octa-voids":
+      return <CetTetraOctaVoids />;
+    case "cet-edge-length-radius":
+      return <CetEdgeLengthRadius />;
+    case "cet-d-electron-pairing":
+      return <CetDElectronPairing />;
+    case "cet-glucose-ring-closure":
+      return <CetGlucoseRingClosure />;
+    case "cet-dna-base-pairing":
+      return <CetDnaBasePairing />;
+    case "cet-hess-cycle":
+      return <CetHessCycle />;
+    case "cet-gibbs-sign":
+      return <CetGibbsSign />;
+    case "cet-raoult-two-liquids":
+      return <CetRaoultTwoLiquids />;
+    case "cet-molar-conductivity-dilution":
+      return <CetMolarConductivityDilution />;
+    case "cet-first-order-plot":
+      return <CetFirstOrderPlot />;
+    case "cet-boiling-point-elevation":
+      return <CetBoilingPointElevation />;
+    case "cet-pn-depletion":
+      return <CetPnDepletion />;
+    case "cet-diode-bias":
+      return <CetDiodeBias />;
+    case "cet-rectifier-waves":
+      return <CetRectifierWaves />;
+    case "cet-photoelectric-threshold":
+      return <CetPhotoelectricThreshold />;
+    case "cet-photoelectric-graphs":
+      return <CetPhotoelectricGraphs />;
+    case "cet-hydrogen-series":
+      return <CetHydrogenSeries />;
+    case "cet-standing-wave-modes":
+      return <CetStandingWaveModes />;
+    case "cet-pipe-modes":
+      return <CetPipeModes />;
+    case "cet-beats-envelope":
+      return <CetBeatsEnvelope />;
+    case "cet-shm-reference-circle":
+      return <CetShmReferenceCircle />;
+    case "cet-ydse-fringe-width":
+      return <CetYdseFringeWidth />;
+    case "cet-doppler-wavefronts":
+      return <CetDopplerWavefronts />;
+    case "cet-lcr-phasors":
+      return <CetLcrPhasors />;
+    case "cet-resonance-curve":
+      return <CetResonanceCurve />;
+    case "cet-lenz-magnet-coil":
+      return <CetLenzMagnetCoil />;
+    case "cet-continuity-pipe":
+      return <CetContinuityPipe />;
+    case "cet-dipole-torque":
+      return <CetDipoleTorque />;
+    case "cet-rolling-energy-split":
+      return <CetRollingEnergySplit />;
     case "imat-supply-demand":
       return <ImatSupplyDemand />;
     case "imat-eu-timeline":

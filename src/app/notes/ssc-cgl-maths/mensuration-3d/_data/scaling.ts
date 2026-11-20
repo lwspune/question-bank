@@ -12,6 +12,7 @@ export const SSC_M3_SCALING_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscm3sc-factors",
       name: "How a change in length changes area and volume",
+      visualizationSlug: "imat-similar-scaling",
       intuition:
         "Double every length of a solid and each face becomes 2 × 2 = 4 times as big, while the solid holds 2 × 2 × 2 = 8 times as much. Areas follow the square of the scale and volumes follow the cube.",
       definition:

@@ -62,6 +62,7 @@ export const PLANE_3D_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "j3d-plane-normal-cross",
       name: "The normal as a cross product: planes containing lines or perpendicular to planes",
+      visualizationSlug: "unit-normal-vector",
       intuition:
         "Whenever two directions lie IN the plane, their cross product is its normal. A plane containing a line and a point uses the line's direction and the vector from a point of the line to the given point. A plane containing two lines uses both directions. A plane perpendicular to two other planes contains both of their normals, so its normal is their cross product.",
       definition:

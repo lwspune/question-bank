@@ -15,8 +15,9 @@ export const EAS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "cetarom-eas-reactions",
       name: "The Substitution Reactions and Their Reagents",
+      visualizationSlug: "cet-eas-mechanism",
       intuition:
-        "Every reaction here is the same three steps: make an electrophile with a Lewis acid, let it attack the ring to form a σ-complex, lose H⁺ to get the ring back. So the thing to learn for each is the reagent pair that makes the electrophile.",
+        "Every reaction here is the same three steps: make an electrophile with an acid catalyst (a Lewis acid such as AlCl₃ or FeBr₃, or concentrated H₂SO₄ for nitration and sulphonation), let it attack the ring to form a σ-complex, lose H⁺ to get the ring back. So the thing to learn for each is the reagent pair that makes the electrophile.",
       definition:
         "- **Halogenation**: X₂ / FeX₃ or anhydrous AlCl₃. Excess Cl₂ gives **hexachlorobenzene, C₆Cl₆**.\n" +
         "- **Iodination is reversible** — the HI formed reduces iodobenzene back — so it is not done directly.\n" +
@@ -54,6 +55,7 @@ export const EAS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "cetarom-directing-effects",
       name: "Directing Effects: Ortho/Para or Meta",
+      visualizationSlug: "cet-directing-effects",
       intuition:
         "A group that pushes electrons into the ring (–OH, –OCH₃, –NH₂, –CH₃, and the halogens through their lone pairs) makes the ortho and para positions richest, so the new group goes there — with para usually the major product because it is less crowded. A group that pulls electrons out (–NO₂, –CHO, –COOH, –CN) leaves meta the least deactivated.",
       definition:

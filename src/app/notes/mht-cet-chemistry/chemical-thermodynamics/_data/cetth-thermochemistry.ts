@@ -61,6 +61,7 @@ export const THERMOCHEMISTRY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetth-hess-law-and-enthalpy-of-solution",
       name: "Hess's Law and the Enthalpy of Solution",
+      visualizationSlug: "cet-hess-cycle",
       intuition:
         "Enthalpy is a state function, so the heat of a reaction does not depend on the number of steps — add the equations and add their ΔH values. Dissolving an ionic solid is two steps: pull the lattice apart (lattice enthalpy, endothermic) and hydrate the ions (exothermic); the sum is the enthalpy of solution.",
       definition:

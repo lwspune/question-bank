@@ -13,6 +13,7 @@ export const EXTREMA_AOD_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jaod-signchange",
       name: "Sign changes of the derivative",
+      visualizationSlug: "aod-extrema-curve",
       intuition:
         "A local maximum is where \\(f'\\) changes from \\(+\\) to \\(-\\), a local minimum where it changes from \\(-\\) to \\(+\\). A factor \\((x-a)^n\\) of \\(f'\\) changes sign at \\(a\\) only when \\(n\\) is odd. When \\(f(x)=\\int_0^{g(x)}h(t)\\,dt\\), the derivative is \\(h(g(x))\\,g'(x)\\), so the extrema come from the zeros of \\(h\\) at \\(g(x)\\) and of \\(g'\\).",
       definition:
@@ -58,6 +59,7 @@ export const EXTREMA_AOD_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jaod-corners",
       name: "Corners, cusps and piecewise functions",
+      visualizationSlug: "diff-modulus-corner",
       intuition:
         "A critical point is also a point where \\(f\\) is defined but \\(f'\\) is not: the corner of \\(|x|\\), the cusp of \\(x^{2/3}\\), the join of a piecewise rule. Decide such a point by the sign of \\(f'\\) on either side, or by comparing values. For \\(|g|\\), each zero of \\(g\\) (where \\(g\\) changes sign) is a minimum with value 0.",
       definition:

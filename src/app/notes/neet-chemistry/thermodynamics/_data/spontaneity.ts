@@ -73,6 +73,7 @@ export const NEET_CH_TH_SPONTANEITY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ncht-gibbs",
       name: "Gibbs energy and spontaneity",
+      visualizationSlug: "cet-gibbs-sign",
       intuition:
         "Working out the entropy of the surroundings every time is awkward. Gibbs energy rolls both tests into one quantity about the system alone. At constant temperature and pressure, a change is spontaneous when it lowers the Gibbs energy. A negative ΔH helps, a positive ΔS helps, and the temperature decides how much weight the entropy term gets.",
       definition:

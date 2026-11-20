@@ -245,6 +245,7 @@ export const DETERMINANTS_AND_ADJOINT_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetdm-determinant-equations-and-singularity",
       name: "Determinant Equations: When Does |A| Vanish?",
+      visualizationSlug: "determinant-as-area",
       intuition:
         "A determinant set to zero is a condition on its entries. Expand, simplify with identities, and read the condition — a trigonometric determinant collapses to \\(1 + \\cos 2B = 0\\), and a matrix over cube roots of unity is singular exactly when one factor \\((1 - a\\omega)\\) vanishes.",
       definition:

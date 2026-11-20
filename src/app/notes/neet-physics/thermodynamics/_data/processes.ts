@@ -12,6 +12,7 @@ export const NEET_PH_TD_PROCESSES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphtd-processes",
       name: "Isothermal, adiabatic, isochoric and isobaric processes",
+      visualizationSlug: "ht-pv-process-diagram",
       intuition:
         "Most questions fix one thing and let the rest change. Keep the temperature fixed and the process is isothermal; let no heat in or out and it is adiabatic; fix the volume and it is isochoric; fix the pressure and it is isobaric. Apply the first law to each, and each gets its own rule for work and heat.",
       definition:

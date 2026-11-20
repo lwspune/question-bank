@@ -12,6 +12,7 @@ export const NEET_ZO_EV_HARDY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nzoev-hw-equation",
       name: "The Hardy-Weinberg equation",
+      visualizationSlug: "imat-hardy-weinberg",
       intuition:
         "Think of every copy of a gene in a population as a bead in a jar: some beads are A, the rest are a. If p is the share of A beads and q the share of a beads, then p plus q fills the whole jar. Draw two beads at random to make a diploid individual and the chance of each pair follows from squaring p plus q.",
       definition:

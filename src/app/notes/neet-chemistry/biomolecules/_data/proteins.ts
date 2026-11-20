@@ -12,6 +12,7 @@ export const NEET_CH_BM_PROTEINS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nchbm-protein-structure",
       name: "Amino acids, peptides and protein structure",
+      visualizationSlug: "biochem-protein-structure-levels",
       intuition:
         "A protein is a long chain of α-amino acids joined by peptide bonds. The order of amino acids in the chain is its primary structure. The chain then coils or folds, held mainly by hydrogen bonds, and some proteins pack several chains together. Heat or a change in pH breaks those weak bonds but not the peptide bonds, so the shape is lost and the sequence stays.",
       definition:

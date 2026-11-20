@@ -13,6 +13,7 @@ export const DIPOLES_MM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpmm-dipole-field",
       name: "Magnetic dipole moment and the field of a bar magnet",
+      visualizationSlug: "bar-magnet-field-lines",
       intuition:
         "A bar magnet behaves like two poles of strength m a distance 2l apart, so its moment is m × 2l, pointing from S to N. A coil of current is the same kind of object with moment NIA. Far away, the field on the axis is twice the field on the equator at the same distance, and both fall as 1/r³. There are no single magnetic poles, so every field line closes on itself.",
       definition:
@@ -80,6 +81,7 @@ export const DIPOLES_MM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpmm-torque-energy",
       name: "Torque and potential energy of a dipole in a uniform field",
+      visualizationSlug: "jee-magnetic-dipole-torque",
       intuition:
         "A uniform field pulls the two poles of a magnet equally and oppositely, so there is no net force, only a torque that turns M towards B. The energy is lowest when M lies along B and highest when it points against B. The work needed to turn the dipole is the rise in this energy, so every work question is two values of −MB cos θ subtracted.",
       definition:

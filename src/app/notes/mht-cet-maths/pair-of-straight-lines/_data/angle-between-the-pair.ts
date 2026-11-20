@@ -4,7 +4,7 @@ export const ANGLE_BETWEEN_THE_PAIR_NOTE: SubtopicNote = {
   subtopicName: "Angle Between the Pair — Perpendicular Pairs, Lines at a Given Angle and the Bisectors",
   title: "Angle Between the Pair — Perpendicular Pairs, Lines at a Given Angle and the Bisectors",
   oneLineDefinition:
-    "tan θ = 2√(h² − ab)/|a + b| is the angle between the two lines of ax² + 2hxy + by² = 0; a + b = 0 means perpendicular, h² = ab parallel, and the bisectors are (x² − y²)/(a − b) = xy/h.",
+    "tan θ = 2√(h² − ab)/|a + b| is the angle between the two lines of ax² + 2hxy + by² = 0; a + b = 0 means perpendicular, h² = ab one repeated line, and the bisectors are (x² − y²)/(a − b) = xy/h.",
   whyItMatters:
     "21 PYQs at 48% HARD — the page with the most HARD questions in the chapter. The stems are lines through a point at 45° or 60° to a given line written as a joint equation (four sittings), the perpendicular condition a + b = 0 in a trigonometric disguise, the pair perpendicular to a given pair through a point, the angle equal to 2θ with a parameter, a right isosceles triangle's two legs (twice), and the bisector pair (twice). " +
     "The pair through a point at a given angle is the Straight Line chapter's two-root problem multiplied out — that is where the marks are.",
@@ -13,18 +13,19 @@ export const ANGLE_BETWEEN_THE_PAIR_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "cetpsl-angle-formula-perpendicular-and-parallel",
-      name: "tan θ = 2√(h² − ab)/|a + b|: Perpendicular When a + b = 0, Parallel When h² = ab",
+      name: "tan θ = 2√(h² − ab)/|a + b|: Perpendicular When a + b = 0, Coincident When h² = ab",
+      visualizationSlug: "cet-pair-of-lines-angle",
       intuition:
         "Feed \\(m_1 + m_2\\) and \\(m_1 m_2\\) into \\(\\tan\\theta = \\left|\\dfrac{m_1 - m_2}{1 + m_1 m_2}\\right|\\): the numerator becomes \\(\\dfrac{2\\sqrt{h^2 - ab}}{|b|}\\) and the denominator \\(\\dfrac{a + b}{b}\\). The angle is \\(90^\\circ\\) exactly when \\(a + b = 0\\), and \\(0\\) when \\(h^2 = ab\\).",
       definition:
-        "- \\((x\\cos\\alpha + y\\sin\\alpha)^2 = (x^2 + y^2)\\sin^2\\alpha\\): expand and collect, \\(x^2(\\cos^2\\alpha - \\sin^2\\alpha) + xy\\sin 2\\alpha = 0\\), i.e. \\(x^2\\cos 2\\alpha + xy\\sin 2\\alpha = 0\\); \\(a = \\cos 2\\alpha\\), \\(b = 0\\); perpendicular iff \\(a + b = 0\\), so \\(\\cos 2\\alpha = 0\\), \\(\\alpha = \\dfrac{\\pi}{4}\\) — set in two 2024 shifts.\\n" +
+        "- \\((x\\cos\\alpha + y\\sin\\alpha)^2 = (x^2 + y^2)\\sin^2\\alpha\\): expand and collect, \\(x^2(\\cos^2\\alpha - \\sin^2\\alpha) + xy\\sin 2\\alpha = 0\\), i.e. \\(x^2\\cos 2\\alpha + xy\\sin 2\\alpha = 0\\); \\(a = \\cos 2\\alpha\\), \\(b = 0\\); perpendicular iff \\(a + b = 0\\), so \\(\\cos 2\\alpha = 0\\), \\(\\alpha = \\dfrac{\\pi}{4}\\) — set in two 2024 shifts.\n" +
         "- \\(x^2 + \\lambda xy - y^2\\tan^2\\theta = 0\\) with angle \\(2\\theta\\): \\(\\tan 2\\theta = \\dfrac{2\\sqrt{\\lambda^2/4 + \\tan^2\\theta}}{1 - \\tan^2\\theta}\\) and \\(\\tan 2\\theta = \\dfrac{2\\tan\\theta}{1 - \\tan^2\\theta}\\) force \\(\\lambda = 0\\).\n" +
         "- Diagonals along \\(x + 3y = 4\\) and \\(6x - 2y = 7\\) have slopes \\(-\\tfrac13\\) and \\(3\\): perpendicular, so the parallelogram is a rhombus.\n" +
         "- The formula returns the acute angle; \\(h^2 - ab < 0\\) means no real lines at all.",
       formula: {
         label: "Angle between the pair",
         latex:
-          "\\tan\\theta = \\frac{2\\sqrt{h^2 - ab}}{|a + b|} \\qquad a + b = 0 \\iff \\perp \\qquad h^2 = ab \\iff \\parallel",
+          "\\tan\\theta = \\frac{2\\sqrt{h^2 - ab}}{|a + b|} \\qquad a + b = 0 \\iff \\perp \\qquad h^2 = ab \\iff \\text{coincident}",
       },
       authoredExample: {
         prompt: "Find the acute angle between the lines \\(x^2 + 4xy + y^2 = 0\\).",

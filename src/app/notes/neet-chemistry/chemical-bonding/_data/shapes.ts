@@ -12,6 +12,7 @@ export const NEET_CH_CB_SHAPES_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nchcb-vsepr",
       name: "VSEPR theory and the shapes of molecules",
+      visualizationSlug: "imat-vsepr-shapes",
       intuition:
         "Electron pairs around a central atom repel each other, so they spread out as far apart as they can. Count the pairs, bond pairs and lone pairs together, and that number fixes how they are arranged. The shape you name is then where the ATOMS are, so lone pairs count for the arrangement but are invisible in the shape's name. Lone pairs also repel more strongly than bond pairs, which squeezes the bond angles.",
       definition:

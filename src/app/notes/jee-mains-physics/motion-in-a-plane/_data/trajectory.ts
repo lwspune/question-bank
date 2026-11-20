@@ -13,6 +13,7 @@ export const TRAJECTORY_PLANE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpplane-velocity-energy",
       name: "Velocity and kinetic energy during the flight",
+      visualizationSlug: "kin-projectile-parabola",
       intuition:
         "The horizontal velocity u cos θ is the same at launch, at the top and at landing. Only the vertical velocity changes: it falls by g every second, is zero at the top, and comes back to −u sin θ on landing. So at the top the speed is u cos θ, not zero, and the kinetic energy there is the launch value times cos²θ. A projectile passes each height twice, at two times placed symmetrically about the top.",
       definition:

@@ -12,6 +12,7 @@ export const SSC_HD_TWO_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sschdtw-opposite",
       name: "Two observers on opposite sides of a tower",
+      visualizationSlug: "ssc-tower-two-observers",
       intuition:
         "When the two observers stand on opposite sides of the tower, the tower's foot lies between them. So the gap between them is the sum of their two distances from the foot, and the tower's height is shared by both triangles.",
       definition:

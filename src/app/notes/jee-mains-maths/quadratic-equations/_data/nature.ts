@@ -13,6 +13,7 @@ export const NATURE_QE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jqe-discriminant",
       name: "The sign of the discriminant",
+      visualizationSlug: "qe-discriminant-parabola",
       intuition:
         "\\(D=b^2-4ac\\) decides the roots: two real roots when \\(D>0\\), one repeated root when \\(D=0\\), none when \\(D<0\\). The same number controls the sign of the quadratic: with \\(a>0\\) and \\(D<0\\) the graph never reaches the axis, so the quadratic is positive for every \\(x\\). When \\(x\\) and \\(y\\) are tied by one equation, read it as a quadratic in one of them; for that one to be real, its discriminant must be \\(\\ge0\\).",
       definition:
@@ -106,6 +107,7 @@ export const NATURE_QE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jqe-location",
       name: "Placing the roots on the number line",
+      visualizationSlug: "qe-roots-in-interval",
       intuition:
         "For \\(f(x)=ax^2+bx+c\\) with \\(a>0\\), the graph is a U. A number \\(k\\) lies between the roots exactly when \\(f(k)<0\\) — no discriminant check is needed. For both roots beyond \\(k\\) on the same side, three conditions are needed: real roots, the vertex on that side, and \\(f(k)>0\\). For both roots positive, the sum and product do the same job. For one root in each of two intervals, check the sign of \\(f\\) at the end points.",
       definition:

@@ -121,6 +121,7 @@ export const FRAMES_LOM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jplom-circular",
       name: "Forces in circular motion",
+      visualizationSlug: "imat-circular-motion",
       intuition:
         "Moving in a circle needs a net force toward the centre, mv²/r. It is not a new force: friction, the normal reaction or a tension supplies it. On a flat road friction does all of it; on a banked road the tilted normal reaction does part of it. In the rotating frame the same balance appears as a centrifugal force, mω²r outward.",
       definition:

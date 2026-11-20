@@ -73,6 +73,7 @@ export const KIRCHHOFF_CE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpce-wheatstone",
       name: "The balanced Wheatstone bridge",
+      visualizationSlug: "jee-wheatstone-bridge",
       intuition:
         "A Wheatstone bridge is two dividers side by side with a resistor or galvanometer joining their middles. When both dividers split the voltage in the same ratio, their middles are at the same potential and nothing flows across. That middle arm can then be removed or replaced by a wire, and the network becomes two simple branches in parallel.",
       definition:

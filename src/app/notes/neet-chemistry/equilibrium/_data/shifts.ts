@@ -64,6 +64,7 @@ export const NEET_CH_EQ_SHIFTS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "ncheq-le-chatelier",
       name: "Le Chatelier's principle: concentration and pressure",
+      visualizationSlug: "imat-le-chatelier",
       intuition:
         "Le Chatelier's principle says that when an equilibrium is disturbed, it shifts in the direction that undoes the disturbance. Add a reactant, and the reaction uses some of it up by going forward. Squeeze a gas mixture, and the reaction moves to the side with fewer gas molecules, which lowers the pressure.",
       definition:

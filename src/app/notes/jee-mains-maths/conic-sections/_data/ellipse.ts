@@ -111,6 +111,7 @@ export const ELLIPSE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcon-ellipse-focal",
       name: "Focal distances: the constant sum",
+      visualizationSlug: "jee-ellipse-focal",
       intuition:
         "For any point \\(P\\) on the ellipse, \\(SP+S'P=2a\\). That is the ellipse's defining property, and it works backwards too: points whose distances from two fixed points add to a constant form an ellipse. Each focal distance is also \\(e\\) times the distance to the matching directrix, which gives \\(SP=a-ex\\) and \\(S'P=a+ex\\) without square roots.",
       definition:

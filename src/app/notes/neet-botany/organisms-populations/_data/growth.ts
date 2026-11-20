@@ -188,6 +188,7 @@ export const NEET_BO_OP_GROWTH_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nboop-logistic",
       name: "Logistic growth and carrying capacity",
+      visualizationSlug: "imat-population-growth",
       intuition:
         "Real habitats run short of food and space. A population starts slowly, speeds up, then slows down as it gets crowded, and finally levels off at the largest number the habitat can support. That ceiling is the carrying capacity, K, and the curve looks like a stretched letter S.",
       definition:

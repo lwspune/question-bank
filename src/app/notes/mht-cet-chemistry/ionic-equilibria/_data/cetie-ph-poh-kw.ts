@@ -78,6 +78,7 @@ export const PH_POH_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetie-ph-poh-relation",
       name: "pH, pOH and the relation pH + pOH = 14",
+      visualizationSlug: "acid-ph-scale-strip",
       intuition:
         "Ion concentrations are awkward tiny numbers like 10 to the minus 4, so we take the negative base-10 log to get a friendly 0-to-14 scale. pH measures the H+ side, pOH measures the OH- side, and because their product Kw is fixed, the two scales are locked together: pH + pOH = 14 at 25 degrees C. You can also go backwards — raise 10 to the minus pH to recover the concentration.",
       definition:

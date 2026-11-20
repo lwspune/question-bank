@@ -13,6 +13,7 @@ export const LENS_FORMULA_RAY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpray-thin-lens",
       name: "Thin lens formula and magnification",
+      visualizationSlug: "opt-convex-lens-rays",
       intuition:
         "The lens formula has a minus sign, 1/v − 1/u = 1/f, and the magnification has none, m = v/u. A convex lens has f > 0. With a real object it gives a real, inverted image when the object is beyond F, and a virtual, erect, magnified image when the object is inside F. A concave lens (f < 0) always gives a virtual, erect, diminished image.",
       definition:

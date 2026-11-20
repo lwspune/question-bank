@@ -191,6 +191,7 @@ export const NEET_BO_SR_GAMETOPHYTES_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nbosr-embryo-sac",
       name: "The embryo sac",
+      visualizationSlug: "neet-embryo-sac",
       intuition:
         "The embryo sac is the female gametophyte. After its eight nuclei form, walls go up around six of them, and the last two share one big cell in the middle. So it has 8 nuclei but only 7 cells, and NEET asks this count again and again.",
       definition:

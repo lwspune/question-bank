@@ -15,6 +15,7 @@ export const VECTORS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-mp-vector-addition",
       name: "Adding Vectors",
+      visualizationSlug: "vector-addition",
       intuition:
         "Add component by component; the unit vector along the result is the result divided by its magnitude. Geometrically, R² = A² + B² + 2AB cos θ. Three vectors form a triangle only if they close — one equals the sum of the other two — which also means they lie in a plane. If the sum of two vectors is perpendicular to their difference, (A + B)·(A − B) = A² − B² = 0, so they have equal magnitudes. A condition such as 'A + 2B is perpendicular to A' gives A + 2B cos θ = 0, which substituted into R² simplifies directly.",
       definition:

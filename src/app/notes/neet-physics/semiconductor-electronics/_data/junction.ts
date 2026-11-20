@@ -76,6 +76,7 @@ export const NEET_PH_SE_JUNCTION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphse-junction",
       name: "The p-n junction and its bias",
+      visualizationSlug: "cet-diode-bias",
       intuition:
         "When p-type meets n-type, electrons diffuse into the p-side and holes into the n-side, and they cancel near the joint. That leaves a thin depletion layer of fixed ions with a field across it, the barrier, which stops further diffusion. A battery that lowers the barrier (forward bias) lets a large current flow; one that raises it (reverse bias) lets only a tiny current through.",
       definition:

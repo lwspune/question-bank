@@ -13,6 +13,7 @@ export const DISCONTINUITY_LIM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jlim-gif-jumps",
       name: "Jumps and corners",
+      visualizationSlug: "diff-modulus-corner",
       intuition:
         "\\([g(x)]\\) jumps wherever \\(g(x)\\) crosses an integer, so list those crossings in the interval — unless a factor multiplying it is zero there, which can cancel the jump. A modulus \\(|g(x)|\\) has a corner where \\(g\\) changes sign with non-zero slope; a function is not differentiable at a jump or a corner.",
       definition:

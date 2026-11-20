@@ -13,6 +13,7 @@ export const PRESSURE_FLUID_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpfluid-pressure-depth",
       name: "Pressure at a depth, absolute and gauge",
+      visualizationSlug: "fluid-pressure-depth",
       intuition:
         "The liquid above a point presses down on it with its weight: a column of height h and density ρ adds \\(\\rho g h\\). The air above the surface adds \\(P_0\\) on top of that. A gauge reads only the part due to the liquid. Pressure acts in every direction at every point inside the liquid, not only on the walls, and at one level in one connected still liquid it is the same everywhere.",
       definition:
@@ -76,6 +77,7 @@ export const PRESSURE_FLUID_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpfluid-pascal",
       name: "Pascal's law and the hydraulic lift",
+      visualizationSlug: "pascal-hydraulic-press",
       intuition:
         "A push on an enclosed liquid raises the pressure everywhere in it by the same amount. A small force on a small piston therefore makes the same pressure under a large piston, and there it gives a large force. Energy is not created: the small piston has to move farther, by the ratio of the areas.",
       definition:
@@ -131,6 +133,7 @@ export const PRESSURE_FLUID_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpfluid-floating",
       name: "Floating bodies and Archimedes' principle",
+      visualizationSlug: "archimedes-floating-block",
       intuition:
         "A floating body sinks until the liquid it pushes aside weighs as much as it does. So the fraction under the surface is its density divided by the liquid's. Put a load on it and it sinks further, by just enough extra liquid to carry the load.",
       definition:

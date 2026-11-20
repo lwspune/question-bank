@@ -13,6 +13,7 @@ export const TIMING_OSC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jposc-timing",
       name: "Time taken to move between two positions in SHM",
+      visualizationSlug: "cet-shm-reference-circle",
       intuition:
         "The phase grows at a steady rate ω, but the particle does not move at a steady speed. So time is found from the phase, never from the distance. Write the motion with a sine if it starts at the mean position and with a cosine if it starts at an extreme; then read the phase at each position.",
       definition:

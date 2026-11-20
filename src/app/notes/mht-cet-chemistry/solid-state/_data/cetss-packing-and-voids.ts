@@ -110,6 +110,7 @@ export const PACKING_AND_VOIDS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetss-counting-voids",
       name: "Tetrahedral and Octahedral Voids: 2N and N",
+      visualizationSlug: "cet-tetra-octa-voids",
       intuition:
         "Close packing (ccp or hcp) of N spheres leaves N octahedral holes (each ringed by 6 spheres) and 2N tetrahedral holes (each capped by 4 spheres). For a mole count, N is moles × Avogadro's number.",
       definition:

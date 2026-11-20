@@ -13,6 +13,7 @@ export const FRICTION_LOM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jplom-level-friction",
       name: "Friction on a level surface",
+      visualizationSlug: "lmf-free-body-diagram",
       intuition:
         "Friction depends on how hard the surfaces are pressed together, the normal reaction N, and on the materials, through μ. It does not depend on the area of contact. Before a body slides, static friction is only as large as it needs to be. A force at an angle changes N, and so changes the friction: pulling slightly upward makes a heavy box easier to start.",
       definition:
@@ -135,6 +136,7 @@ export const FRICTION_LOM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jplom-incline-slide",
       name: "Sliding down a rough incline",
+      visualizationSlug: "lmf-friction-incline",
       intuition:
         "A block sliding down feels the weight's pull along the slope, mg sin θ, minus kinetic friction, μmg cos θ. From rest, the time to cover a length goes as one over the square root of the acceleration. So a block that takes twice as long on a rough slope has a quarter of the acceleration it would have on a smooth one.",
       definition:

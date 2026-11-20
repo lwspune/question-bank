@@ -60,6 +60,7 @@ export const PHOTOELECTRIC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-dn-einstein-equation",
       name: "Einstein's Equation in One Situation",
+      visualizationSlug: "cet-photoelectric-threshold",
       intuition:
         "Einstein's equation balances the photon's energy against the work function and the electron's kinetic energy: hν = φ + ½mv²ₘₐₓ, and the stopping potential is that kinetic energy in electron-volts, eV₀ = ½mv²ₘₐₓ. When the photon energy is given as a multiple of φ, the kinetic energy is that multiple minus one, and speeds go as the square root: photons of 2φ and 3φ give speeds in the ratio 1 : √2. With hc = 1240 eV nm, a wavelength in nanometres converts to photon energy in eV at once.",
       definition:
@@ -149,6 +150,7 @@ export const PHOTOELECTRIC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-dn-photoelectric-graphs",
       name: "Reading the Photoelectric Graphs",
+      visualizationSlug: "cet-photoelectric-graphs",
       intuition:
         "Photocurrent against anode potential: the current is zero at the stopping potential (on the negative side) and levels off at the saturation current (on the positive side). Where a curve meets the axis tells you the FREQUENCY — a more negative cut-off means a higher frequency — and how high it levels off tells you the INTENSITY. Stopping potential against frequency is a straight line of slope h/e for every metal; it cuts the axis at the threshold frequency, so the line further right belongs to the metal with the larger work function. Kinetic energy against frequency is the same line scaled by e, starting from the threshold.",
       definition:

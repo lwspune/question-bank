@@ -14,6 +14,7 @@ export const GAS_LAWS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetsom-gas-boyle",
       name: "Boyle's law — pressure and volume",
+      visualizationSlug: "imat-boyle-curve",
       intuition:
         "Squeeze a gas into half the space and it pushes back with twice the pressure. At constant temperature, pressure and volume trade off inversely — one goes up exactly as much as the other goes down. " +
         "Their product P times V stays constant, so a P-versus-V graph is a hyperbola.",

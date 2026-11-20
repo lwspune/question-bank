@@ -15,6 +15,7 @@ export const ELECTRONIC_CONFIG_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "cetsoa-ec-filling-rules",
       name: "The three orbital-filling rules",
+      visualizationSlug: "imat-aufbau-filling",
       intuition:
         "Filling an atom's orbitals is like seating people in a theatre: you take the cheapest seats first (Aufbau), no seat holds more than two people and they must face opposite ways (Pauli), and you spread out across empty seats in a row before doubling up (Hund). " +
         "The bank tests these mostly as name-the-rule recall, so learn each rule's exact statement.",

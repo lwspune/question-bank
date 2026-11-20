@@ -12,6 +12,7 @@ export const SSC_CI_CHORDS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscich-facts",
       name: "Parts of a circle and the equal-chord facts",
+      visualizationSlug: "circ-circle-anatomy",
       intuition:
         "A circle is every point at one fixed distance, the radius, from the centre. Straight lines meet it in a small number of ways, and each way has a name SSC expects you to know. Equal chords behave the same in every respect, because a chord's position is fixed by its length.",
       definition:

@@ -112,6 +112,7 @@ export const COULOMB_FIELD_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-field-superposition",
       name: "Superposition: Symmetric Arrangements and Field Lines",
+      visualizationSlug: "field-lines-charge",
       intuition:
         "At the centre of a regular shape, equal charges on opposite vertices cancel each other's fields. Strip out every cancelling pair and only one or two charges are left to compute. Potential does not cancel this way — it is a plain sum — so a point can have zero field and non-zero potential, or the reverse.",
       definition:

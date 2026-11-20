@@ -12,6 +12,7 @@ export const NEET_PH_FL_PRESSURE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphfl-pressure",
       name: "Pressure at a depth and Pascal's law",
+      visualizationSlug: "fluid-pressure-depth",
       intuition:
         "A liquid at rest presses on everything it touches. The deeper you go, the more liquid sits above you, so the pressure grows with depth. On top of that, the air above the liquid presses down too. Pascal noticed something useful: a pressure added at one place in an enclosed liquid reaches every other place equally. That is how a small push on a narrow piston lifts a car on a wide one.",
       definition:
@@ -70,6 +71,7 @@ export const NEET_PH_FL_PRESSURE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphfl-continuity",
       name: "Streamline flow and the equation of continuity",
+      visualizationSlug: "cet-continuity-pipe",
       intuition:
         "In smooth, steady flow every bit of liquid that passes a point follows the same path, called a streamline. A liquid like water hardly squeezes, so whatever volume enters a pipe each second must leave it each second. Where the pipe is narrow, the same volume has to get through a smaller opening, so the water moves faster.",
       definition:

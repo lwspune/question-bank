@@ -55,6 +55,7 @@ export const SSC2_TG_TRIANGLE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2tgtr-triangle",
       name: "Ratios in a named triangle",
+      visualizationSlug: "cds-trig-right-triangle",
       intuition:
         "When the stem names a triangle, label each side as opposite, adjacent or hypotenuse from the angle in question. The same side is opposite one acute angle and adjacent to the other.",
       definition:

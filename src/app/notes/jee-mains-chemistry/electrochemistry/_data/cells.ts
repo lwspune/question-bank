@@ -83,6 +83,7 @@ export const CELLS_ELEC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcelec-cell-setup",
       name: "Setting up a galvanic cell",
+      visualizationSlug: "imat-galvanic-cell",
       intuition:
         "Put two couples together and the one with the higher \\(E^\\circ\\) wins the electrons. It is reduced at the cathode; the other couple runs backwards and is oxidised at the anode. The cell voltage is the gap between the two potentials, never their sum.",
       definition:

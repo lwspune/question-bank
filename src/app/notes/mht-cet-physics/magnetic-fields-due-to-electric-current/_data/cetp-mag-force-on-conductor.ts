@@ -15,6 +15,7 @@ export const FORCE_ON_CONDUCTOR_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-mag-force-on-wire",
       name: "Force on a Straight Conductor",
+      visualizationSlug: "flemings-left-hand-rule",
       intuition:
         "F = I(L × B), of size ILB sin θ where θ is the angle between the wire and the field. For a field given as a vector, work the cross product; only the parts of B across the wire count. A closed loop in a UNIFORM field feels no net force, but near a long straight wire the field is not uniform: the side nearer the wire feels a stronger push than the far side, and the sides perpendicular to the wire cancel.",
       definition:

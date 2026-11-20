@@ -12,6 +12,7 @@ export const SSC_GIE_AGRICULTURE_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscgieag-crops",
       name: "Seasons, crops and leading States",
+      visualizationSlug: "ige-cropping-calendar",
       intuition:
         "Indian farming follows the monsoon. Crops sown with the rains are kharif, crops sown for the winter are rabi, and a short summer season in between grows fruit and vegetables. Place a crop in its season and most questions answer themselves.",
       definition:

@@ -15,6 +15,7 @@ export const CELLS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-ce-emf-internal-resistance",
       name: "Terminal Voltage and Cells in Series or Parallel",
+      visualizationSlug: "emf-internal-resistance",
       intuition:
         "A real cell is an ideal e.m.f. E with a small resistance r inside it. With current I flowing, the terminals show V = E − Ir, less than E by the drop inside. A voltmeter of resistance R_V across a cell reads E·R_V/(R_V + r), which is how r is found from a reading. Two cells in series driving R carry I = (E₁ + E₂)/(R + r₁ + r₂); one of them shows zero terminal voltage when its own drop Ir equals its E. Two unequal cells in parallel settle at a common voltage that is the resistance-weighted mean of their e.m.f.s. In the steady state a capacitor carries no current, so its branch drops out of the current calculation but it still charges to the voltage across it.",
       definition:

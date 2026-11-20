@@ -51,6 +51,7 @@ export const DIODE_CIRCUITS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-rectifiers",
       name: "Half-Wave and Full-Wave Rectifiers",
+      visualizationSlug: "cet-rectifier-waves",
       intuition:
         "A single diode passes only one half of each cycle: half-wave output, pulsing at the supply frequency. Two diodes with a centre-tapped transformer (or a bridge) pass both halves the same way round, so the pulses come twice as often and the efficiency doubles.",
       definition:

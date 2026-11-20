@@ -125,6 +125,7 @@ export const SSC_M2_QUADS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscm2qu-tiles",
       name: "Tiles, paths, cut-outs and the cost of covering",
+      visualizationSlug: "af-path-around-lawn",
       intuition:
         "These are word problems wrapped round one area. Find the area that is actually covered (a wall minus its window, a lawn plus its path), then divide by one tile's area or multiply by the rate.",
       definition:

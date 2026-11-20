@@ -12,6 +12,7 @@ export const NEET_BO_CC_MEIOSIS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nbocc-prophase",
       name: "Prophase I: five substages in order",
+      visualizationSlug: "neet-meiosis-prophase",
       intuition:
         "Prophase I is long because the two chromosomes of each homologous pair must find each other, zip together, swap pieces and then start to come apart. Each substage is named after what the chromosomes look like. Leptotene: thin threads. Zygotene: paired. Pachytene: thick, with four chromatids clearly seen. Diplotene: double, the pair pulling apart. Diakinesis: moving apart, ready for metaphase. Learn the order, then the one event that marks each.",
       definition:

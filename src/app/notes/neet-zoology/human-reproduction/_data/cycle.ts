@@ -12,6 +12,7 @@ export const NEET_ZO_HR_CYCLE_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nzohr-cycle-phases",
       name: "Phases of the menstrual cycle",
+      visualizationSlug: "neet-menstrual-cycle",
       intuition:
         "Each month the body gets ready for a baby. The ovary ripens one follicle while the uterus rebuilds its lining. In the middle of the month a burst of LH bursts the follicle and the egg is released. What is left of the follicle becomes the corpus luteum and keeps the lining ready with progesterone. If no baby comes, the corpus luteum dies, the lining breaks down, and that bleeding starts the next cycle.",
       definition:

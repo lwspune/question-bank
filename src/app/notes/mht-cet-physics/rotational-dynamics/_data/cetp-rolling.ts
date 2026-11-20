@@ -51,6 +51,7 @@ export const ROLLING_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-rolling-energy",
       name: "How a Rolling Body's Energy Splits",
+      visualizationSlug: "cet-rolling-energy-split",
       intuition:
         "A body rolling without slipping moves and spins at once, with v = Rω. Its total energy is ½mv²(1 + k²/R²). A ring puts as much into spinning as into moving; a solid sphere puts only 2 parts in 7 into spinning.",
       definition:

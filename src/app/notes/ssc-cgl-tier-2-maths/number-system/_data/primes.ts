@@ -51,6 +51,7 @@ export const SSC2_NS_PRIMES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2nspr-remainders",
       name: "Remainders and unit digits",
+      visualizationSlug: "cds-unit-digit-cycle-wheel",
       intuition:
         "Remainders follow the arithmetic: add, subtract and multiply the remainders instead of the numbers. Unit digits of powers repeat in short cycles, at most four long.",
       definition:

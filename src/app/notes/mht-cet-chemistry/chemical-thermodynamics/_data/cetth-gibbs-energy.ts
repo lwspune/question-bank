@@ -13,6 +13,7 @@ export const GIBBS_ENERGY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetth-gibbs-energy-and-spontaneity",
       name: "ΔG = ΔH − TΔS and the Sign Table",
+      visualizationSlug: "cet-gibbs-sign",
       intuition:
         "Two things drive a process: releasing heat (ΔH < 0) and increasing disorder (ΔS > 0). ΔG weighs them at the given temperature. When both favour, it is spontaneous at every T; when both oppose, at none; when they disagree, temperature decides — entropy wins when T is high.",
       definition:

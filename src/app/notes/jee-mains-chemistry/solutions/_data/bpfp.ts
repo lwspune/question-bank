@@ -136,6 +136,7 @@ export const BPFP_SOL_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jcsol-phase-curves",
       name: "Vapour pressure diagrams and what freezes out",
+      visualizationSlug: "cet-boiling-point-elevation",
       intuition:
         "Draw vapour pressure against temperature. The solution's curve sits below the solvent's at every temperature, so it reaches 1 atm at a higher temperature (it boils later) and meets the solid solvent's curve at a lower one (it freezes later on cooling).",
       definition:

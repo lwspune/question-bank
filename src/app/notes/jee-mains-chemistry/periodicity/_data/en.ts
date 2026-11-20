@@ -13,6 +13,7 @@ export const EN_PER_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jcper-electronegativity",
       name: "Electronegativity on the Pauling scale",
+      visualizationSlug: "atom-periodic-trends",
       intuition:
         "Electronegativity tracks the same pull as ionization enthalpy: a small atom with a large nuclear charge holds shared electrons hardest. So it rises across a period, falls down a group, and fluorine tops the scale. It is not a fixed property of an isolated atom; it depends on what the atom is bonded to.",
       definition:

@@ -126,6 +126,7 @@ export const NEET_CH_OC_EFFECTS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nchoc-carbocation",
       name: "What makes a carbocation stable",
+      visualizationSlug: "neet-carbocation-stability",
       intuition:
         "The positive carbon has an empty p orbital. Anything that can feed electrons into that orbital spreads the positive charge and steadies the ion. A C-H bond on the next carbon can lean its σ electrons into it: that is hyperconjugation, and more such hydrogens means more help. A double bond or a benzene ring next to the positive carbon can feed in its π electrons: that is resonance. Either way the electrons must come from a filled orbital, because an empty orbital has nothing to give.",
       definition:

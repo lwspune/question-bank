@@ -56,6 +56,7 @@ export const SSC_RMI_LETTERS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrmile-mirror",
       name: "A mirror beside the string",
+      visualizationSlug: "ssc-mirror-water-image",
       intuition:
         "A mirror on the right (or the left) of a string does two things at once. The character nearest the mirror comes first, so the order reverses. And every character is seen from behind, so each one flips left to right.",
       definition:

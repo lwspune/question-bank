@@ -12,6 +12,7 @@ export const NEET_CH_HA_SUBSTITUTION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nchha-sn2",
       name: "SN2 reactions and the products of substitution",
+      visualizationSlug: "cet-sn1-vs-sn2",
       intuition:
         "The carbon that holds the halogen is slightly positive, so an electron-rich nucleophile attacks it. In an SN2 reaction this happens in one step: the nucleophile comes in from the side opposite the halogen, and the new bond forms as the old one breaks. Bulky groups around that carbon get in the way, so the least crowded halides react fastest.",
       definition:
@@ -128,6 +129,7 @@ export const NEET_CH_HA_SUBSTITUTION_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nchha-stereo",
       name: "Optical activity, chirality and the stereochemistry of substitution",
+      visualizationSlug: "imat-chirality-mirror",
       intuition:
         "Your two hands are mirror images, but you cannot lay one exactly on top of the other. A carbon joined to four different groups is the same: its molecule and its mirror image are two different compounds. They behave alike in almost every way, except that they turn plane polarised light in opposite directions. Which one an SN1 or SN2 reaction gives depends on the side the nucleophile comes from.",
       definition:

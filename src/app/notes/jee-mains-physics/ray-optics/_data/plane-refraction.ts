@@ -13,6 +13,7 @@ export const PLANE_REFRACTION_RAY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpray-snell-slab",
       name: "Snell's law and the parallel slab",
+      visualizationSlug: "imat-snell-refraction",
       intuition:
         "Light slows down in an optically denser medium, n = c/v, and bends towards the normal. Snell's law links the angles measured from the normal on the two sides. A parallel-sided slab bends the ray in and bends it back out by the same amount, so the ray leaves parallel to its original direction, shifted sideways.",
       definition:
@@ -74,6 +75,7 @@ export const PLANE_REFRACTION_RAY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpray-apparent-depth",
       name: "Apparent depth and the normal shift",
+      visualizationSlug: "jee-apparent-depth",
       intuition:
         "Seen from straight above, an object under a liquid looks raised. Rays leaving the surface bend away from the normal, and the eye traces them back to a point higher up. For near-normal viewing the depth shrinks by the factor μ. Each layer of a stack shrinks by its own μ, and the apparent depths add.",
       definition:

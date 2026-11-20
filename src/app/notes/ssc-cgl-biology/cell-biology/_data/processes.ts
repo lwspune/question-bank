@@ -54,6 +54,7 @@ export const SSC_BCB_PROCESSES_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscbcbpr-respiration",
       name: "Respiration and ATP",
+      visualizationSlug: "ssc-respiration-stages",
       intuition:
         "Glucose is broken down in three steps, each in its own place. The last step, using oxygen, makes far more ATP than the first two together.",
       definition:

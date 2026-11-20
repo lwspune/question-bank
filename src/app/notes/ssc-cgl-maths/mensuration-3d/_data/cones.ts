@@ -12,6 +12,7 @@ export const SSC_M3_CONES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscm3co-triangle",
       name: "Radius, height and slant height of a cone",
+      visualizationSlug: "cds-cone-anatomy",
       intuition:
         "Slice a cone straight down through its tip and you see a right triangle. The height stands up the middle, the radius runs along the base, and the slant height is the sloping side, the longest of the three.",
       definition:

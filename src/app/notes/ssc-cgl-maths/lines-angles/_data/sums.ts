@@ -12,6 +12,7 @@ export const SSC_LA_SUMS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssclasu-lines",
       name: "Angles at crossing lines and at parallel lines",
+      visualizationSlug: "imat-parallel-angles",
       intuition:
         "A straight line is half a turn, so the angles along it share 180°. A full turn round a point is 360°. When a third line crosses two parallel lines, it meets both at the same slant, so the angles it makes at one line repeat at the other.",
       definition:

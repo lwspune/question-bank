@@ -70,6 +70,7 @@ export const SPECTRUM_ATOM_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jcatom-series-lines",
       name: "Spectral series, line counts and other spectra",
+      visualizationSlug: "cet-hydrogen-series",
       intuition:
         "Lines that land on the same lower orbit form one series. Lyman lands on \\(n=1\\) and is ultraviolet; Balmer lands on \\(n=2\\) and is the only visible series; the rest are infrared. Many atoms together can show every possible drop, but a single electron takes one path down.",
       definition:

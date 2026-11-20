@@ -74,6 +74,7 @@ export const NUCLEIC_ACIDS_BIO_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcbio-base-pairing",
       name: "Base pairing and counting hydrogen bonds in DNA",
+      visualizationSlug: "cet-dna-base-pairing",
       intuition:
         "The two strands of DNA are held by hydrogen bonds between bases, and only two pairings fit: A with T, and G with C. So one strand fixes the other. The A–T pair has two hydrogen bonds and the G–C pair three, so from one strand you can count every hydrogen bond in the helix.",
       definition:

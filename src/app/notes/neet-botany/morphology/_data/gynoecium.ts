@@ -73,6 +73,7 @@ export const NEET_BO_MO_GYNOECIUM_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nbomo-fruit-seed",
       name: "Fruit and seed",
+      visualizationSlug: "plant-seed-parts",
       intuition:
         "After fertilisation the ovary ripens into a fruit and each ovule becomes a seed. The fruit wall has three layers, and in a drupe such as mango you can see all three. Inside the seed is the embryo, a tiny plant with a root end and a shoot end, wrapped in a seed coat and fed by cotyledons or endosperm.",
       definition:

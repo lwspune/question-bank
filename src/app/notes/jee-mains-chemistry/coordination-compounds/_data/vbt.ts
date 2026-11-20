@@ -13,6 +13,7 @@ export const VBT_COORD_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jccoord-inner-outer",
       name: "Inner-orbital and outer-orbital octahedral complexes",
+      visualizationSlug: "cet-d-electron-pairing",
       intuition:
         "Six ligands need six empty orbitals on the metal. If two of the 3d orbitals can be emptied, the metal uses them: 3d + 4s + 4p gives d²sp³, an inner-orbital, low-spin complex. A strong-field ligand such as \\(\\mathrm{CN^-}\\), NH₃ with Co³⁺, en or oxalate with Co³⁺ forces the d electrons to pair and so empties them. A weak-field ligand such as F⁻ or Cl⁻ leaves the electrons spread out, and the metal must use the outer 4d orbitals: sp³d², outer-orbital, high spin.",
       definition:

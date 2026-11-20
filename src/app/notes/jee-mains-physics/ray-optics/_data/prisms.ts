@@ -13,6 +13,7 @@ export const PRISMS_RAY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpray-min-deviation",
       name: "Prism and minimum deviation",
+      visualizationSlug: "jee-prism-min-deviation",
       intuition:
         "A ray through a prism bends at both faces. The two refraction angles inside always add up to the prism angle A, and the total deviation is i + e − A. As i grows, the deviation first falls and then rises. At the bottom of that curve the ray passes symmetrically: i = e, and inside an isosceles prism it runs parallel to the base. That symmetric ray gives the formula that measures μ.",
       definition:
@@ -130,6 +131,7 @@ export const PRISMS_RAY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpray-thin-prism-dispersion",
       name: "Thin prisms and dispersion",
+      visualizationSlug: "opt-prism-dispersion",
       intuition:
         "For a prism of small angle the deviation hardly depends on the angle of incidence: δ = (μ − 1)A. Because μ depends on colour, so does δ: violet is bent most, red least. Two thin prisms placed opposite ways can cancel the mean deviation and keep the colours spread, or cancel the spread and keep a deviation.",
       definition:

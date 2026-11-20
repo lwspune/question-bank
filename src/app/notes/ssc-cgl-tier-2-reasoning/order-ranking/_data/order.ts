@@ -47,6 +47,7 @@ export const SSC2_ROR_ORDER_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2rorod-seat",
       name: "Seating in a row or a circle",
+      visualizationSlug: "imat-seating-circle",
       intuition:
         "Draw the seats first. In a row facing north, left and right are your own. Around a table facing the centre, a person's right is the next seat anticlockwise when you look down from above.",
       definition:

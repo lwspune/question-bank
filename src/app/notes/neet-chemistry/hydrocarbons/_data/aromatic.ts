@@ -119,6 +119,7 @@ export const NEET_CH_HC_AROMATIC_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nchhc-eas",
       name: "Reactions of benzene and directing groups",
+      visualizationSlug: "cet-directing-effects",
       intuition:
         "Benzene's ring of π electrons attracts electrophiles, but adding to the ring would destroy the special stability. So benzene prefers to swap a hydrogen for the electrophile and keep its ring of six π electrons: electrophilic substitution. Only under harsh conditions (UV light, or hydrogen with nickel at high temperature and pressure) does it add. When the ring already carries a group, that group decides where the next one goes.",
       definition:

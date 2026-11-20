@@ -83,6 +83,7 @@ export const NEET_ZO_LM_MUSCLE_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nzolm-sliding",
       name: "Actin, myosin and the sliding filament theory",
+      visualizationSlug: "imat-sarcomere",
       intuition:
         "Two kinds of filament lie side by side. The thin one, actin, carries a lock: troponin covers the spots where myosin would grab it. The thick one, myosin, sticks out little heads that can grab actin and pull. When they pull, the thin filaments slide inwards over the thick ones. Nothing gets shorter by itself; the overlap grows, so the sarcomere shortens.",
       definition:

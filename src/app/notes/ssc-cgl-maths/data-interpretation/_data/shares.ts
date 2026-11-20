@@ -77,6 +77,7 @@ export const SSC_DI_SHARES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscdish-degrees",
       name: "Degrees and central angles in a pie chart",
+      visualizationSlug: "pie-chart-sectors",
       intuition:
         "The whole circle is 360° and stands for 100% of the total, so every 1% is 3.6°. Some charts print degrees instead of percentages; a sector's share is then its angle over 360.",
       definition:

@@ -13,6 +13,7 @@ export const STATIONARY_WAVES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-standing-wave-basics",
       name: "Nodes, Antinodes and the Standing-Wave Equation",
+      visualizationSlug: "cet-standing-wave-modes",
       intuition:
         "In a stationary wave nothing travels: some points (nodes) never move and those halfway between (antinodes) swing hardest. Neighbouring nodes are half a wavelength apart, which is also the length of one loop.",
       definition:

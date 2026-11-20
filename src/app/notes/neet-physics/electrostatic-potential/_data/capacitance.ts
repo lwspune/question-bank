@@ -74,6 +74,7 @@ export const NEET_PH_EP_CAPACITANCE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphep-dielectric",
       name: "Dielectrics and dielectric constant",
+      visualizationSlug: "neet-capacitor-dielectric",
       intuition:
         "A dielectric is an insulator. Put it in a field and its molecules line up a little as dipoles, leaving a thin layer of charge on each face that opposes the field. The field inside drops to E₀/K. Less field means less voltage for the same charge, so the capacitor holds more charge per volt: its capacitance rises.",
       definition:

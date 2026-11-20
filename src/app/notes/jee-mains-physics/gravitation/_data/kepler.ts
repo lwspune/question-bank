@@ -13,6 +13,7 @@ export const KEPLER_GRAV_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpgrav-third-law",
       name: "Third law: period and orbit radius",
+      visualizationSlug: "grav-kepler-orbit",
       intuition:
         "From \\(GMm/r^{2} = m(2\\pi/T)^{2}r\\), the square of the period is proportional to the cube of the radius, divided by the mass of the body being orbited. The orbiting body's own mass drops out. Almost every question compares two orbits, so write the ratio and let the constants cancel.",
       definition:

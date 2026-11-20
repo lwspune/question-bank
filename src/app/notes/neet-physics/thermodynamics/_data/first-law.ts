@@ -122,6 +122,7 @@ export const NEET_PH_TD_FIRST_LAW_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphtd-pv-work",
       name: "Work as the area under a P-V graph",
+      visualizationSlug: "jee-pv-work-area",
       intuition:
         "When a gas pushes a piston out a little, the work it does is its pressure times the small change in volume. Add up all these small pieces as the gas expands and you get the area under its curve on a P-V graph. So a P-V graph turns work into geometry: a rectangle, a triangle or a trapezium.",
       definition:

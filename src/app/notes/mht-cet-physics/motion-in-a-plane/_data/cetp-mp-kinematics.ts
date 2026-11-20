@@ -59,6 +59,7 @@ export const KINEMATICS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-mp-graphs-calculus",
       name: "Motion Graphs and Calculus",
+      visualizationSlug: "kin-velocity-time-graph",
       intuition:
         "Velocity is dx/dt and acceleration dv/dt; going the other way, integrate. On an x–t graph a flat line means rest and a straight sloping line uniform velocity; on a v–t graph the slope is acceleration and the area is displacement. Distance counts every area as positive, displacement subtracts the parts below the axis. On an a–t graph the area is the change in velocity. In two dimensions, find vₓ and v_y separately and combine: x = at², y = bt² gives speed 2t√(a² + b²).",
       definition:
