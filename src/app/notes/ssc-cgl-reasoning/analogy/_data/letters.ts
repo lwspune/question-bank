@@ -12,6 +12,7 @@ export const SSC_RAN_LETTERS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscranlt-positions",
       name: "Letter positions, forward and backward",
+      visualizationSlug: "ssc-alphabet-positions",
       intuition:
         "Every letter has a number: A is 1 and Z is 26. Counting from the other end, Z is 1 and A is 26. Once you know these numbers without counting on your fingers, a letter rule becomes simple arithmetic.",
       definition:

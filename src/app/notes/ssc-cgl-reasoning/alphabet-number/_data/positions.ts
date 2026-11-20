@@ -12,6 +12,7 @@ export const SSC_RAL_POSITIONS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscralpo-positions",
       name: "Letter positions, reverse positions and opposite letters",
+      visualizationSlug: "ssc-alphabet-positions",
       intuition:
         "Every letter has a number: A is 1 and Z is 26. Once you know the numbers by heart, questions about gaps, middles and reverse codes turn into small sums you can do in your head.",
       definition:

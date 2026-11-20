@@ -76,6 +76,16 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import SscRowRuleGrid from "./visualizations/SscRowRuleGrid";
+import SscWeekWheel from "./visualizations/SscWeekWheel";
+import SscBodmasRow from "./visualizations/SscBodmasRow";
+import SscOppositeLetters from "./visualizations/SscOppositeLetters";
+import SscAlphabetPositions from "./visualizations/SscAlphabetPositions";
+import SscDifferenceLadder from "./visualizations/SscDifferenceLadder";
+import SscTurningArrow from "./visualizations/SscTurningArrow";
+import SscGridSquares from "./visualizations/SscGridSquares";
+import SscInequalityChain from "./visualizations/SscInequalityChain";
+import SscSymmetryQuarters from "./visualizations/SscSymmetryQuarters";
 import SscSoundMedia from "./visualizations/SscSoundMedia";
 import SscRespirationStages from "./visualizations/SscRespirationStages";
 import SscDecayModes from "./visualizations/SscDecayModes";
@@ -882,6 +892,26 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "ssc-row-rule-grid":
+      return <SscRowRuleGrid />;
+    case "ssc-week-wheel":
+      return <SscWeekWheel />;
+    case "ssc-bodmas-row":
+      return <SscBodmasRow />;
+    case "ssc-opposite-letters":
+      return <SscOppositeLetters />;
+    case "ssc-alphabet-positions":
+      return <SscAlphabetPositions />;
+    case "ssc-difference-ladder":
+      return <SscDifferenceLadder />;
+    case "ssc-turning-arrow":
+      return <SscTurningArrow />;
+    case "ssc-grid-squares":
+      return <SscGridSquares />;
+    case "ssc-inequality-chain":
+      return <SscInequalityChain />;
+    case "ssc-symmetry-quarters":
+      return <SscSymmetryQuarters />;
     case "ssc-sound-media":
       return <SscSoundMedia />;
     case "ssc-respiration-stages":

@@ -64,6 +64,7 @@ export const SSC_RCL_LETTERS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrclle-opposite",
       name: "Opposite letters, whose positions add to 27",
+      visualizationSlug: "ssc-opposite-letters",
       intuition:
         "Fold the alphabet in half and A lands on Z, B on Y, M on N. Each pair is called opposite letters, and SSC builds whole questions on them.",
       definition:

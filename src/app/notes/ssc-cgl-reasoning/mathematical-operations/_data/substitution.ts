@@ -12,6 +12,7 @@ export const SSC_RMO_SUBSTITUTION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrmosu-bodmas",
       name: "Work the row in BODMAS order",
+      visualizationSlug: "ssc-bodmas-row",
       intuition:
         "SSC prints the expression in one line, but you cannot work it from left to right. Brackets go first, then division and multiplication, then addition and subtraction.",
       definition:

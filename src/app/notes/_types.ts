@@ -528,6 +528,16 @@ export type VisualizationSlug =
   | "ssc-stomata-transpiration"
   | "ssc-demographic-transition"
   | "ssc-glacial-karst-landforms"
+  | "ssc-row-rule-grid"
+  | "ssc-week-wheel"
+  | "ssc-bodmas-row"
+  | "ssc-opposite-letters"
+  | "ssc-alphabet-positions"
+  | "ssc-difference-ladder"
+  | "ssc-turning-arrow"
+  | "ssc-grid-squares"
+  | "ssc-inequality-chain"
+  | "ssc-symmetry-quarters"
   | "imat-chart-types";
 
 export type TrapCallout = {

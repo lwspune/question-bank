@@ -63,6 +63,7 @@ export const SSC_RCC_CALENDAR_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrccca-odd-days",
       name: "The weekday after a number of days",
+      visualizationSlug: "ssc-week-wheel",
       intuition:
         "Every 7 days the week comes back to the same day, so whole weeks can be thrown away. Only the days left over, the odd days, move you along the week.",
       definition:

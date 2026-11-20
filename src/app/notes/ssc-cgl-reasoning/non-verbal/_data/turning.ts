@@ -12,6 +12,7 @@ export const SSC_RNV_TURNING_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrnvtu-rotate",
       name: "Turning by a fixed angle",
+      visualizationSlug: "ssc-turning-arrow",
       intuition:
         "Pick one feature that points somewhere, such as an arrow, a corner or a dot, and watch where it points in each figure. The change from one figure to the next is the angle of the turn, and it stays the same through the series.",
       definition:

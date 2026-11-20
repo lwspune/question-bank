@@ -48,7 +48,7 @@ const MIN_FIGURES: Record<string, number> = {
   "neet-zoology": 13,
   "ssc-cgl-maths": 29,
   "ssc-cgl-tier-2-maths": 16,
-  "ssc-cgl-reasoning": 9,
+  "ssc-cgl-reasoning": 21,
   "ssc-cgl-tier-2-reasoning": 1,
   "ssc-cgl-physics": 5,
   "ssc-cgl-biology": 4,
