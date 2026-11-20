@@ -18,7 +18,7 @@ import { createHash, timingSafeEqual } from "node:crypto";
 
 /**
  * account + quiz: NDA, CDS and AFCAT students. board (owner, 2026-11-20): Maharashtra SSC (Class 10) students,
- * prospects for LWS's NDA Foundation course after 10th; same mobile + consent rule (migration 0275).
+ * prospects for LWS's NDA Foundation course after 10th; same mobile + consent rule (migration 0276).
  */
 export const FEED_SOURCES = ["account", "quiz", "board"] as const;
 export type FeedSource = (typeof FEED_SOURCES)[number];

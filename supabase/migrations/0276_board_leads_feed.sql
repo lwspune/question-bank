@@ -1,4 +1,4 @@
--- 0275_board_leads_feed.sql
+-- 0276_board_leads_feed.sql
 --
 -- A third source for GoPost's leads feed (GET /api/leads/defence): 'board' =
 -- Maharashtra SSC (Class 10) students (target exam `mh-ssc-10`) who gave a
