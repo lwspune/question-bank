@@ -62,6 +62,7 @@ export const SSC_CG_POINTS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssccgpt-midpoint",
       name: "Midpoint, section formula and centroid",
+      visualizationSlug: "ssc-coord-centroid",
       intuition:
         "The midpoint is the average of the two ends, coordinate by coordinate. The centroid of a triangle is the average of its three corners. Both are averages, so a missing point comes back by multiplying out and subtracting.",
       definition:

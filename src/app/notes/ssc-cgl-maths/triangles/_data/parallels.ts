@@ -12,6 +12,7 @@ export const SSC_TR_PARALLELS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssctrpl-bpt",
       name: "Basic proportionality theorem: a line parallel to one side",
+      visualizationSlug: "ssc-parallel-cut",
       intuition:
         "A line drawn across a triangle parallel to its base cuts off a smaller similar triangle on top. Because the top triangle is a scaled copy, the two sides are cut in the same proportion.",
       definition:

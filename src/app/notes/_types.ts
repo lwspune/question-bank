@@ -647,6 +647,12 @@ export type VisualizationSlug =
   | "cet-allylic-benzylic-vinylic"
   | "cet-square-planar-isomers"
   | "cet-acetophenone-reductions"
+  | "ssc-parallel-cut"
+  | "ssc-tangent-pair"
+  | "ssc-triangle-count"
+  | "ssc-centre-angle"
+  | "ssc-coord-centroid"
+  | "ssc-chords-crossing"
   | "imat-chart-types";
 
 export type TrapCallout = {

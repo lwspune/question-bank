@@ -69,6 +69,7 @@ export const SSC_CI_TANGENTS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscitg-pair",
       name: "Two tangents from one outside point",
+      visualizationSlug: "ssc-tangent-pair",
       intuition:
         "The two tangents from P make two right triangles, OAP and OBP, that share the side OP and have equal radii. The triangles are congruent, so everything about one tangent is true of the other.",
       definition:

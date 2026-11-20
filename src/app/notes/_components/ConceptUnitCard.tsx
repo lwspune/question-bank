@@ -76,6 +76,12 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import SscParallelCut from "./visualizations/SscParallelCut";
+import SscTangentPair from "./visualizations/SscTangentPair";
+import SscTriangleCount from "./visualizations/SscTriangleCount";
+import SscCentreAngle from "./visualizations/SscCentreAngle";
+import SscCoordCentroid from "./visualizations/SscCoordCentroid";
+import SscChordsCrossing from "./visualizations/SscChordsCrossing";
 import CetCombiningVolumes from "./visualizations/CetCombiningVolumes";
 import CetAllylicBenzylicVinylic from "./visualizations/CetAllylicBenzylicVinylic";
 import CetSquarePlanarIsomers from "./visualizations/CetSquarePlanarIsomers";
@@ -1001,6 +1007,18 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "ssc-parallel-cut":
+      return <SscParallelCut />;
+    case "ssc-tangent-pair":
+      return <SscTangentPair />;
+    case "ssc-triangle-count":
+      return <SscTriangleCount />;
+    case "ssc-centre-angle":
+      return <SscCentreAngle />;
+    case "ssc-coord-centroid":
+      return <SscCoordCentroid />;
+    case "ssc-chords-crossing":
+      return <SscChordsCrossing />;
     case "cet-combining-volumes":
       return <CetCombiningVolumes />;
     case "cet-allylic-benzylic-vinylic":

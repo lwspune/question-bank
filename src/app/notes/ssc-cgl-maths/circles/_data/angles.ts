@@ -12,6 +12,7 @@ export const SSC_CI_ANGLES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscian-centre",
       name: "Angle at the centre is twice the angle at the circumference",
+      visualizationSlug: "ssc-centre-angle",
       intuition:
         "Look at an arc AB from the centre O and from a point C on the rest of the circle. From the centre the arc looks twice as wide. Every point C on the same remaining arc sees it at the same angle, because the centre angle does not change.",
       definition:
