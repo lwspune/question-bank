@@ -675,6 +675,8 @@ export type VisualizationSlug =
   | "jee-hockey-stick"
   | "jee-inverse-trig-triangles"
   | "cet-parallel-pair-distance"
+  | "cet-conditional-relatives"
+  | "cet-common-ion-solubility"
   | "imat-chart-types";
 
 export type TrapCallout = {

@@ -76,6 +76,8 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import CetConditionalRelatives from "./visualizations/CetConditionalRelatives";
+import CetCommonIonSolubility from "./visualizations/CetCommonIonSolubility";
 import CetCompleteSquare from "./visualizations/CetCompleteSquare";
 import JeeInfiniteGpSum from "./visualizations/JeeInfiniteGpSum";
 import JeeStarsAndBars from "./visualizations/JeeStarsAndBars";
@@ -1029,6 +1031,10 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "cet-conditional-relatives":
+      return <CetConditionalRelatives />;
+    case "cet-common-ion-solubility":
+      return <CetCommonIonSolubility />;
     case "cet-complete-square":
       return <CetCompleteSquare />;
     case "jee-infinite-gp-sum":

@@ -15,6 +15,7 @@ export const CONVERSE_INVERSE_CONTRAPOSITIVE_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "mlog-the-three-relatives",
       name: "The Three Relatives of a Conditional",
+      visualizationSlug: "cet-conditional-relatives",
       intuition:
         "Start from 'if p then q'. Swapping the two halves gives the converse; negating both halves gives the inverse; doing both gives the contrapositive. " +
         "Two operations, applied separately or together, generate all three.",
