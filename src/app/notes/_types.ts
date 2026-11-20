@@ -609,6 +609,17 @@ export type VisualizationSlug =
   | "neet-plasmodium-cycle"
   | "neet-art-transfers"
   | "neet-bt-toxin"
+  | "jee-carbocation-shift"
+  | "jee-diborane-borazine"
+  | "jee-spin-only-moment"
+  | "jee-phenoxide-resonance"
+  | "jee-amine-basicity"
+  | "neet-xenon-shapes"
+  | "neet-lanthanoid-contraction"
+  | "neet-amine-basicity"
+  | "neet-limiting-reagent"
+  | "neet-redox-balance"
+  | "neet-phenol-acidity"
   | "imat-chart-types";
 
 export type TrapCallout = {

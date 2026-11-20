@@ -164,6 +164,7 @@ export const NEET_CH_PB_HALOGENS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nchpb-xenon",
       name: "Xenon compounds: preparation, hybridisation and shape",
+      visualizationSlug: "neet-xenon-shapes",
       intuition:
         "Xenon has eight outer electrons. In a xenon compound some pair up with fluorine or oxygen, and the rest stay as lone pairs. Count the σ bond pairs and the lone pairs on xenon; their total gives the hybridisation (5 pairs sp³d, 6 pairs sp³d², 7 pairs sp³d³), and the bond pairs alone give the shape, exactly as in VSEPR.",
       definition:

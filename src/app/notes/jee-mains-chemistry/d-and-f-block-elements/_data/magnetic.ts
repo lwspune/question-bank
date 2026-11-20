@@ -15,6 +15,7 @@ export const MAGNETIC_DFB_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcdfb-spin-only",
       name: "The spin-only magnetic moment",
+      visualizationSlug: "jee-spin-only-moment",
       intuition:
         "Each unpaired electron is a tiny magnet; paired electrons cancel. So the moment depends only on n, the number of unpaired electrons. For a free 3d ion, the first five d electrons go in singly and the next five pair them up, so n rises to 5 at d⁵ and falls back to 0 at d¹⁰.",
       definition:

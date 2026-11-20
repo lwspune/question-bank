@@ -13,6 +13,7 @@ export const ADDITIONS_ORM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcorm-carbocation-shifts",
       name: "Carbocation stability and 1,2-shifts",
+      visualizationSlug: "jee-carbocation-shift",
       intuition:
         "A carbocation is a carbon with only six electrons around it. Alkyl groups next to it push electron density towards it, by the inductive effect and by hyperconjugation, so the more alkyl groups it carries, the more stable it is. A cation next to a benzene ring or a C=C spreads its charge by resonance. If a hydrogen or a methyl group on the NEXT carbon can move over, with its bond pair, and leave behind a more stable cation, it does. The product then comes from the new cation, not the first one.",
       definition:

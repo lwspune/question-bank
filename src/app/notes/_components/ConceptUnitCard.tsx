@@ -76,6 +76,17 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import JeeCarbocationShift from "./visualizations/JeeCarbocationShift";
+import JeeDiboraneBorazine from "./visualizations/JeeDiboraneBorazine";
+import JeeSpinOnlyMoment from "./visualizations/JeeSpinOnlyMoment";
+import JeePhenoxideResonance from "./visualizations/JeePhenoxideResonance";
+import JeeAmineBasicity from "./visualizations/JeeAmineBasicity";
+import NeetXenonShapes from "./visualizations/NeetXenonShapes";
+import NeetLanthanoidContraction from "./visualizations/NeetLanthanoidContraction";
+import NeetAmineBasicity from "./visualizations/NeetAmineBasicity";
+import NeetLimitingReagent from "./visualizations/NeetLimitingReagent";
+import NeetRedoxBalance from "./visualizations/NeetRedoxBalance";
+import NeetPhenolAcidity from "./visualizations/NeetPhenolAcidity";
 import SscPlantGroups from "./visualizations/SscPlantGroups";
 import SscBloodFlow from "./visualizations/SscBloodFlow";
 import SscBacterialShapes from "./visualizations/SscBacterialShapes";
@@ -963,6 +974,28 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "jee-carbocation-shift":
+      return <JeeCarbocationShift />;
+    case "jee-diborane-borazine":
+      return <JeeDiboraneBorazine />;
+    case "jee-spin-only-moment":
+      return <JeeSpinOnlyMoment />;
+    case "jee-phenoxide-resonance":
+      return <JeePhenoxideResonance />;
+    case "jee-amine-basicity":
+      return <JeeAmineBasicity />;
+    case "neet-xenon-shapes":
+      return <NeetXenonShapes />;
+    case "neet-lanthanoid-contraction":
+      return <NeetLanthanoidContraction />;
+    case "neet-amine-basicity":
+      return <NeetAmineBasicity />;
+    case "neet-limiting-reagent":
+      return <NeetLimitingReagent />;
+    case "neet-redox-balance":
+      return <NeetRedoxBalance />;
+    case "neet-phenol-acidity":
+      return <NeetPhenolAcidity />;
     case "ssc-plant-groups":
       return <SscPlantGroups />;
     case "ssc-blood-flow":

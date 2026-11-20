@@ -63,6 +63,7 @@ export const NEET_CH_DF_LANTHANOIDS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nchdf-contraction",
       name: "Lanthanoid contraction",
+      visualizationSlug: "neet-lanthanoid-contraction",
       intuition:
         "Going from lanthanum to lutetium, each step adds one proton to the nucleus and one electron to the 4f subshell. A 4f electron is poor at shielding another 4f electron from the nucleus, so the outer electrons feel a slightly stronger pull each time and the atom shrinks a little. Fourteen small shrinkages add up to a large one, big enough to cancel the usual growth in size on going down a group.",
       definition:
