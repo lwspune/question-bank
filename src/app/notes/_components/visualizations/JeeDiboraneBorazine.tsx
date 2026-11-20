@@ -220,8 +220,11 @@ export default function JeeDiboraneBorazine() {
         {RING.map((a, i) => (
           <Atom key={`a${i}`} p={a} label={a.el} cls={a.el === "B" ? "fill-rose-700 dark:fill-rose-300" : "fill-sky-700 dark:fill-sky-300"} />
         ))}
-        <text x={200} y={256} className="fill-foreground text-[10px]">
-          flat ring, B and N alternate
+        <text x={200} y={246} className="fill-foreground text-[10px]">
+          flat ring,
+        </text>
+        <text x={200} y={258} className="fill-foreground text-[10px]">
+          B and N alternate
         </text>
         <text x={200} y={270} className="fill-foreground text-[10px]">
           B sp²

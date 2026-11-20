@@ -118,7 +118,7 @@ function Mini({ plot, rowIndex }: { plot: MiniPlot; rowIndex: number }) {
       <text x={col.x0 - 3} y={top + 8} textAnchor="end" className="fill-muted-foreground text-[10px]">
         {row.yLabel}
       </text>
-      <text x={col.x1 + 2} y={bottom + 3.5} className="fill-muted-foreground text-[10px]">
+      <text x={col.x1} y={bottom - 3} textAnchor="end" className="fill-muted-foreground text-[10px]">
         {row.xLabel}
       </text>
       <polyline

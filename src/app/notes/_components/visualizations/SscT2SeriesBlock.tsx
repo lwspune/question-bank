@@ -70,7 +70,7 @@ export default function SscT2SeriesBlock() {
         })}
         {/* the gap from one a to the next */}
         <path d={`M ${TOP_X} 46 v 6 h ${4 * TOP_STEP} v -6`} fill="none" strokeWidth={1.2} className="stroke-sky-600 dark:stroke-sky-400" />
-        <text x={TOP_X + 2 * TOP_STEP} y={65} textAnchor="middle" className="fill-sky-700 text-[10px] font-semibold dark:fill-sky-300">
+        <text x={160} y={65} textAnchor="middle" className="fill-sky-700 text-[10px] font-semibold dark:fill-sky-300">
           a comes back after 4 letters: block of 4
         </text>
 
