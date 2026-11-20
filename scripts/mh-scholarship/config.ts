@@ -226,7 +226,7 @@ export function withdrawnFor(id: string): number[] {
   if (!existsSync(dataPath(id, "key"))) return [];
   const key = JSON.parse(readFileSync(dataPath(id, "key"), "utf8")) as Record<string, string>;
   return Object.entries(key)
-    .filter(([n, v]) => /^\d+$/.test(n) && /^(x|drop|cancel(led)?|रद्द)$/i.test(String(v).trim()))
+    .filter(([n, v]) => /^\d+$/.test(n) && /^(x|\*|drop|cancel(led)?|रद्द)$/i.test(String(v).trim()))
     .map(([n]) => Number(n))
     .sort((a, b) => a - b);
 }

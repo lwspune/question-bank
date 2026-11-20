@@ -46,6 +46,7 @@
  *   npx tsx scripts/mocks/build.ts --paper=enem            # ENEM Day 2, one per committed year (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=milschool       # AISSEE + RMS CET, one per whole paper (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=homi-bhabha     # Homi Bhabha Std IX, one per whole paper (opt-in)
+ *   npx tsx scripts/mocks/build.ts --paper=mh-scholarship  # MH Scholarship Class 4 + 7, one per published paper (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=clat            # CLAT UG, one per committed year (opt-in)
  *   npx tsx scripts/mocks/build.ts --only=2026-jan-21-s1    # one JEE shift
  *   npx tsx scripts/mocks/build.ts --only=2024-Sep --apply --publish
@@ -141,6 +142,7 @@ import { rasSittings } from "./rasSittings";
 import { enemSittings } from "./enemSittings";
 import { milschoolSittings } from "./milschoolSittings";
 import { homiBhabhaSittings } from "./homiBhabhaSittings";
+import { mhScholarshipSittings } from "./mhScholarshipSittings";
 import { CLAT_MOCK_YEARS, clatSittings } from "./clatSittings";
 import { mockTestRow } from "../../src/lib/mocks/row";
 
@@ -892,6 +894,14 @@ async function buildHomiBhabha(db: SupabaseClient, run: RunState) {
   }
 }
 
+/** MH Scholarship, one mock per published Class 4 / Class 7 paper (mhScholarshipSittings.ts). */
+async function buildMhScholarship(db: SupabaseClient, run: RunState) {
+  for (const s of mhScholarshipSittings()) {
+    if (run.only && s.key !== run.only && s.slug !== run.only) continue;
+    await buildFromSourceFiles(db, s.blueprint, [s], run, "mhScholarshipSittings.ts");
+  }
+}
+
 /** ENEM Day 2, one mock per committed year (enemSittings.ts); cancelled and defective questions ride as grace. */
 async function buildEnem(db: SupabaseClient, run: RunState) {
   await buildFromSourceFiles(db, ENEM_DAY_2, enemSittings(), run, "enemSittings.ts");
@@ -1059,9 +1069,11 @@ async function main() {
   const runMilschool = paperFilter === "milschool";
   // Opt-in: Homi Bhabha (scripts/homi-bhabha/README.md).
   const runHomiBhabha = paperFilter === "homi-bhabha";
-  if (paperFilter && !runRas && !runEnem && !runMilschool && !runHomiBhabha && !runUceed && !runIat && !runUgcNet && !runClat && !runRrbNtpc && !runRrbNtpcUg && !runCpo && !runCapf && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runChsl && !runSpi && !runImat && !runMpscMains) {
+  // Opt-in: MH Scholarship (scripts/mh-scholarship/README.md).
+  const runMhScholarship = paperFilter === "mh-scholarship";
+  if (paperFilter && !runRas && !runEnem && !runMilschool && !runHomiBhabha && !runMhScholarship && !runUceed && !runIat && !runUgcNet && !runClat && !runRrbNtpc && !runRrbNtpcUg && !runCpo && !runCapf && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runChsl && !runSpi && !runImat && !runMpscMains) {
     throw new Error(
-      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, ssc-chsl, ssc-cpo, spi, imat, mpsc-mains, uceed, iat, ugc-net, clat, rrb-ntpc, rrb-ntpc-undergraduate, capf, ras, enem, milschool, homi-bhabha)`
+      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, ssc-chsl, ssc-cpo, spi, imat, mpsc-mains, uceed, iat, ugc-net, clat, rrb-ntpc, rrb-ntpc-undergraduate, capf, ras, enem, milschool, homi-bhabha, mh-scholarship)`
     );
   }
 
@@ -1146,6 +1158,7 @@ async function main() {
   if (runEnem) await buildEnem(db, run);
   if (runMilschool) await buildMilschool(db, run);
   if (runHomiBhabha) await buildHomiBhabha(db, run);
+  if (runMhScholarship) await buildMhScholarship(db, run);
 
   console.log(`\n${apply ? "Upserted" : "Would build"} ${run.built.n} mock(s)${publish ? " (published)" : apply ? " (draft)" : ""}.`);
   if (run.held.n) console.log(`${run.held.n} paper(s) held — cannot reconstruct whole (see ⊘ lines above).`);
