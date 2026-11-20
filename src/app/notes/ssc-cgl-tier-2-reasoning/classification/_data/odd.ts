@@ -45,6 +45,7 @@ export const SSC2_RCL_ODD_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2rclod-number",
       name: "Odd number pair or triad",
+      visualizationSlug: "ssc-t2-odd-pair",
       intuition:
         "Every pair turns its left number into its right number the same way, except one. Work that way out from two pairs, try it on the remaining two, and whichever pair breaks it is your answer.",
       definition:

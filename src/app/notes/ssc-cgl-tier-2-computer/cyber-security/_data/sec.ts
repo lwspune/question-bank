@@ -55,6 +55,7 @@ export const SSC2_CCS_SEC_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "ssc2ccssc-protect",
       name: "Protection tools",
+      visualizationSlug: "ssc-t2-security-tools",
       intuition:
         "Each tool guards one thing: a firewall guards the network door, encryption keeps data unreadable on its way, hashing proves data has not changed, and updates close known holes.",
       definition:

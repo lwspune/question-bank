@@ -48,6 +48,7 @@ export const SSC2_RSE_SERIES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2rsese-blanks",
       name: "Letter series with blanks: the repeating block",
+      visualizationSlug: "ssc-t2-series-block",
       intuition:
         "A long letter string with gaps is almost always one short block written again and again. Find the block's length from the letters you can see, and the blanks fill themselves.",
       definition:

@@ -554,6 +554,23 @@ export type VisualizationSlug =
   | "neet-dihybrid-cross"
   | "neet-brewed-drinks"
   | "neet-species-area"
+  | "ssc-t2-series-block"
+  | "ssc-t2-sign-rewrite"
+  | "ssc-t2-ds-row"
+  | "ssc-t2-coded-relations"
+  | "ssc-t2-shared-code"
+  | "ssc-t2-letter-steps"
+  | "ssc-t2-odd-pair"
+  | "ssc-t2-digits-in-place"
+  | "ssc-t2-cause-links"
+  | "ssc-t2-figure-series"
+  | "ssc-t2-segment-digits"
+  | "ssc-t2-memory-ladder"
+  | "ssc-t2-excel-range"
+  | "ssc-t2-upload-download"
+  | "ssc-t2-software-layers"
+  | "ssc-t2-security-tools"
+  | "ssc-t2-hub-switch"
   | "imat-chart-types";
 
 export type TrapCallout = {

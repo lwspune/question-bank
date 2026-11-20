@@ -76,6 +76,23 @@ import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import ImatChartTypes from "./visualizations/ImatChartTypes";
+import SscT2SeriesBlock from "./visualizations/SscT2SeriesBlock";
+import SscT2SignRewrite from "./visualizations/SscT2SignRewrite";
+import SscT2DsRow from "./visualizations/SscT2DsRow";
+import SscT2CodedRelations from "./visualizations/SscT2CodedRelations";
+import SscT2SharedCode from "./visualizations/SscT2SharedCode";
+import SscT2LetterSteps from "./visualizations/SscT2LetterSteps";
+import SscT2OddPair from "./visualizations/SscT2OddPair";
+import SscT2DigitsInPlace from "./visualizations/SscT2DigitsInPlace";
+import SscT2CauseLinks from "./visualizations/SscT2CauseLinks";
+import SscT2FigureSeries from "./visualizations/SscT2FigureSeries";
+import SscT2SegmentDigits from "./visualizations/SscT2SegmentDigits";
+import SscT2MemoryLadder from "./visualizations/SscT2MemoryLadder";
+import SscT2ExcelRange from "./visualizations/SscT2ExcelRange";
+import SscT2UploadDownload from "./visualizations/SscT2UploadDownload";
+import SscT2SoftwareLayers from "./visualizations/SscT2SoftwareLayers";
+import SscT2SecurityTools from "./visualizations/SscT2SecurityTools";
+import SscT2HubSwitch from "./visualizations/SscT2HubSwitch";
 import NeetTaxonHierarchy from "./visualizations/NeetTaxonHierarchy";
 import NeetLifeCyclePatterns from "./visualizations/NeetLifeCyclePatterns";
 import NeetCambiumRing from "./visualizations/NeetCambiumRing";
@@ -908,6 +925,40 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicCircuitSimplification />;
     case "imat-chart-types":
       return <ImatChartTypes />;
+    case "ssc-t2-series-block":
+      return <SscT2SeriesBlock />;
+    case "ssc-t2-sign-rewrite":
+      return <SscT2SignRewrite />;
+    case "ssc-t2-ds-row":
+      return <SscT2DsRow />;
+    case "ssc-t2-coded-relations":
+      return <SscT2CodedRelations />;
+    case "ssc-t2-shared-code":
+      return <SscT2SharedCode />;
+    case "ssc-t2-letter-steps":
+      return <SscT2LetterSteps />;
+    case "ssc-t2-odd-pair":
+      return <SscT2OddPair />;
+    case "ssc-t2-digits-in-place":
+      return <SscT2DigitsInPlace />;
+    case "ssc-t2-cause-links":
+      return <SscT2CauseLinks />;
+    case "ssc-t2-figure-series":
+      return <SscT2FigureSeries />;
+    case "ssc-t2-segment-digits":
+      return <SscT2SegmentDigits />;
+    case "ssc-t2-memory-ladder":
+      return <SscT2MemoryLadder />;
+    case "ssc-t2-excel-range":
+      return <SscT2ExcelRange />;
+    case "ssc-t2-upload-download":
+      return <SscT2UploadDownload />;
+    case "ssc-t2-software-layers":
+      return <SscT2SoftwareLayers />;
+    case "ssc-t2-security-tools":
+      return <SscT2SecurityTools />;
+    case "ssc-t2-hub-switch":
+      return <SscT2HubSwitch />;
     case "neet-taxon-hierarchy":
       return <NeetTaxonHierarchy />;
     case "neet-life-cycle-patterns":

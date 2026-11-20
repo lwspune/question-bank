@@ -12,6 +12,7 @@ export const SSC2_CNW_NW_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "ssc2cnwnw-device",
       name: "Network devices",
+      visualizationSlug: "ssc-t2-hub-switch",
       intuition:
         "A switch connects computers within one network and sends each piece of data only to the computer it is meant for. A gateway connects two different networks that may use different rules, translating between them.",
       definition:
