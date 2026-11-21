@@ -328,8 +328,8 @@ export function chapterOverviewTool(d: ChapterOverviewDeps): VTool {
     description:
       "Teach a whole chapter: use when the student asks to be taught a chapter, says they are weak at one, or wants an overview " +
       "of its topics ('teach me vectors', 'I am bad at thermodynamics', 'explain solid state from basics'). Give the chapter in full " +
-      "words (chapter) and the exam if known (exam). When they ask for one part of it by number ('Teach me part 3 of Probability " +
-      "for NDA: ...'), give that number (part). Returns the chapter's parts in teaching order from our notes, and how to teach. " +
+      "words (chapter) and the exam if known (exam). When they ask for one part of it by number ('Teach me part 3 of <chapter> " +
+      "for <exam>: ...'), give that number (part). Returns the chapter's parts in teaching order from our notes, and how to teach. " +
       "For one concept inside a chapter use explain_concept.",
     input_schema: {
       type: "object",
