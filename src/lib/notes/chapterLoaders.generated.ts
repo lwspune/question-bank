@@ -13800,6 +13800,206 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 6,
       "traps": 14
     }
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectName": "Intelligence Test",
+    "subjectRoute": "mh-scholarship-4-intelligence",
+    "subjectDisplay": "MH Scholarship Class 4 Intelligence Test",
+    "chapterSlug": "classification-odd-one-out",
+    "chipLabel": "Odd One Out notes",
+    "titleName": "Class 4 Odd One Out",
+    "slugs": [
+      "ms4-cl-words",
+      "ms4-cl-letters"
+    ],
+    "chapterName": "Classification (Odd One Out)",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 1,
+      "traps": 8
+    }
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectName": "Intelligence Test",
+    "subjectRoute": "mh-scholarship-4-intelligence",
+    "subjectDisplay": "MH Scholarship Class 4 Intelligence Test",
+    "chapterSlug": "analogy",
+    "chipLabel": "Analogy notes",
+    "slugs": [
+      "ms4-an-pairs",
+      "ms4-an-figures"
+    ],
+    "chapterName": "Analogy",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 6
+    }
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectName": "Intelligence Test",
+    "subjectRoute": "mh-scholarship-4-intelligence",
+    "subjectDisplay": "MH Scholarship Class 4 Intelligence Test",
+    "chapterSlug": "coding-decoding",
+    "chipLabel": "Coding and Decoding notes",
+    "slugs": [
+      "ms4-cd-tables",
+      "ms4-cd-numbers"
+    ],
+    "chapterName": "Coding and Decoding",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 7
+    }
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-scholarship-4-maths",
+    "subjectDisplay": "MH Scholarship Class 4 Maths",
+    "chapterSlug": "fractions-decimals",
+    "chipLabel": "Fractions and Decimals notes",
+    "slugs": [
+      "ms4-fr-reading",
+      "ms4-fr-problems"
+    ],
+    "chapterName": "Fractions and Decimals",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 0,
+      "traps": 8
+    }
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-scholarship-4-maths",
+    "subjectDisplay": "MH Scholarship Class 4 Maths",
+    "chapterSlug": "multiplication-division",
+    "chipLabel": "Multiplication and Division notes",
+    "slugs": [
+      "ms4-md-division",
+      "ms4-md-problems"
+    ],
+    "chapterName": "Multiplication and Division",
+    "formulaCounts": {
+      "formulas": 2,
+      "tables": 0,
+      "traps": 5
+    }
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-scholarship-4-maths",
+    "subjectDisplay": "MH Scholarship Class 4 Maths",
+    "chapterSlug": "units-of-measurement",
+    "chipLabel": "Units of Measurement notes",
+    "slugs": [
+      "ms4-un-time",
+      "ms4-un-money"
+    ],
+    "chapterName": "Units of Measurement",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 1,
+      "traps": 6
+    }
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-scholarship-4-maths",
+    "subjectDisplay": "MH Scholarship Class 4 Maths",
+    "chapterSlug": "numbers-number-system",
+    "chipLabel": "Numbers and Number System notes",
+    "slugs": [
+      "ms4-nu-place",
+      "ms4-nu-patterns"
+    ],
+    "chapterName": "Numbers and Number System",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 7
+    }
+  },
+  {
+    "examName": "MH Scholarship Class 7",
+    "subjectName": "Intelligence Test",
+    "subjectRoute": "mh-scholarship-7-intelligence",
+    "subjectDisplay": "MH Scholarship Class 7 Intelligence Test",
+    "chapterSlug": "classification-odd-one-out",
+    "chipLabel": "Odd One Out notes",
+    "titleName": "Class 7 Odd One Out",
+    "slugs": [
+      "ms7-cl-words",
+      "ms7-cl-letters"
+    ],
+    "chapterName": "Classification (Odd One Out)",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 8
+    }
+  },
+  {
+    "examName": "MH Scholarship Class 7",
+    "subjectName": "Intelligence Test",
+    "subjectRoute": "mh-scholarship-7-intelligence",
+    "subjectDisplay": "MH Scholarship Class 7 Intelligence Test",
+    "chapterSlug": "analogy",
+    "chipLabel": "Analogy notes",
+    "slugs": [
+      "ms7-an-pairs",
+      "ms7-an-figures"
+    ],
+    "chapterName": "Analogy",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 8
+    }
+  },
+  {
+    "examName": "MH Scholarship Class 7",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-scholarship-7-maths",
+    "subjectDisplay": "MH Scholarship Class 7 Maths",
+    "chapterSlug": "algebraic-expressions",
+    "chipLabel": "Algebraic Expressions and Identities notes",
+    "slugs": [
+      "ms7-al-identities",
+      "ms7-al-factors"
+    ],
+    "chapterName": "Algebraic Expressions and Identities",
+    "formulaCounts": {
+      "formulas": 2,
+      "tables": 0,
+      "traps": 6
+    }
+  },
+  {
+    "examName": "MH Scholarship Class 7",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-scholarship-7-maths",
+    "subjectDisplay": "MH Scholarship Class 7 Maths",
+    "chapterSlug": "perimeter-area",
+    "chipLabel": "Perimeter and Area notes",
+    "slugs": [
+      "ms7-pa-squares",
+      "ms7-pa-paths"
+    ],
+    "chapterName": "Perimeter and Area",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 0,
+      "traps": 7
+    }
   }
 ];
 
@@ -14490,4 +14690,15 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "homi-bhabha-9-chemistry/periodic-classification": () => import("@/app/notes/homi-bhabha-9-chemistry/periodic-classification/_data").then((m) => ({ chapter: m.HB9_PERIODIC_CHAPTER, notes: m.HB9_PERIODIC_NOTES })),
   "homi-bhabha-9-chemistry/air-water-gases": () => import("@/app/notes/homi-bhabha-9-chemistry/air-water-gases/_data").then((m) => ({ chapter: m.HB9_AIR_CHAPTER, notes: m.HB9_AIR_NOTES })),
   "homi-bhabha-9-general-science/scientists-discoveries": () => import("@/app/notes/homi-bhabha-9-general-science/scientists-discoveries/_data").then((m) => ({ chapter: m.HB9_SCIENTISTS_CHAPTER, notes: m.HB9_SCIENTISTS_NOTES })),
+  "mh-scholarship-4-intelligence/classification-odd-one-out": () => import("@/app/notes/mh-scholarship-4-intelligence/classification-odd-one-out/_data").then((m) => ({ chapter: m.MS4_ODD_CHAPTER, notes: m.MS4_ODD_NOTES })),
+  "mh-scholarship-4-intelligence/analogy": () => import("@/app/notes/mh-scholarship-4-intelligence/analogy/_data").then((m) => ({ chapter: m.MS4_ANALOGY_CHAPTER, notes: m.MS4_ANALOGY_NOTES })),
+  "mh-scholarship-4-intelligence/coding-decoding": () => import("@/app/notes/mh-scholarship-4-intelligence/coding-decoding/_data").then((m) => ({ chapter: m.MS4_CODING_CHAPTER, notes: m.MS4_CODING_NOTES })),
+  "mh-scholarship-4-maths/fractions-decimals": () => import("@/app/notes/mh-scholarship-4-maths/fractions-decimals/_data").then((m) => ({ chapter: m.MS4_FRACTIONS_CHAPTER, notes: m.MS4_FRACTIONS_NOTES })),
+  "mh-scholarship-4-maths/multiplication-division": () => import("@/app/notes/mh-scholarship-4-maths/multiplication-division/_data").then((m) => ({ chapter: m.MS4_MULDIV_CHAPTER, notes: m.MS4_MULDIV_NOTES })),
+  "mh-scholarship-4-maths/units-of-measurement": () => import("@/app/notes/mh-scholarship-4-maths/units-of-measurement/_data").then((m) => ({ chapter: m.MS4_UNITS_CHAPTER, notes: m.MS4_UNITS_NOTES })),
+  "mh-scholarship-4-maths/numbers-number-system": () => import("@/app/notes/mh-scholarship-4-maths/numbers-number-system/_data").then((m) => ({ chapter: m.MS4_NUMBERS_CHAPTER, notes: m.MS4_NUMBERS_NOTES })),
+  "mh-scholarship-7-intelligence/classification-odd-one-out": () => import("@/app/notes/mh-scholarship-7-intelligence/classification-odd-one-out/_data").then((m) => ({ chapter: m.MS7_ODD_CHAPTER, notes: m.MS7_ODD_NOTES })),
+  "mh-scholarship-7-intelligence/analogy": () => import("@/app/notes/mh-scholarship-7-intelligence/analogy/_data").then((m) => ({ chapter: m.MS7_ANALOGY_CHAPTER, notes: m.MS7_ANALOGY_NOTES })),
+  "mh-scholarship-7-maths/algebraic-expressions": () => import("@/app/notes/mh-scholarship-7-maths/algebraic-expressions/_data").then((m) => ({ chapter: m.MS7_ALGEBRA_CHAPTER, notes: m.MS7_ALGEBRA_NOTES })),
+  "mh-scholarship-7-maths/perimeter-area": () => import("@/app/notes/mh-scholarship-7-maths/perimeter-area/_data").then((m) => ({ chapter: m.MS7_AREA_CHAPTER, notes: m.MS7_AREA_NOTES })),
 };
