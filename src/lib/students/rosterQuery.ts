@@ -14,6 +14,7 @@ import { displayName, providerLabel } from "./derive";
 import type { StudentRosterRow } from "./roster";
 import { checkInExamSlug, countMockExams } from "./checkIn";
 import { getExamByName } from "@/lib/exam/examContext";
+import { rosterExamGuess, type StoredExamGuess } from "./rosterExamGuess";
 
 /** One row as the RPC returns it (snake_case, straight from Postgres). */
 export type RosterRpcRow = {
@@ -84,6 +85,54 @@ async function fetchFinishedMockExams(db: SupabaseClient): Promise<{ userId: str
   return out;
 }
 
+/** Pages a two-column read past the 1000-row cap. */
+async function pageAll<T>(
+  build: (from: number, to: number) => PromiseLike<{ data: unknown[] | null; error: { message: string } | null }>,
+  label: string
+): Promise<T[]> {
+  const out: T[] = [];
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await build(from, from + PAGE - 1);
+    if (error) throw new Error(`${label}: ${error.message}`);
+    const batch = (data ?? []) as T[];
+    out.push(...batch);
+    if (batch.length < PAGE) return out;
+  }
+}
+
+/**
+ * What the exam guess needs (rosterExamGuess.ts): every stored guess (migration
+ * 0254) and the landing page of every student with no target exam. Two narrow
+ * reads, whole tables, so no per-student query and no `.in()` list in the URL.
+ */
+async function fetchExamGuessInputs(db: SupabaseClient): Promise<{
+  stored: Map<string, StoredExamGuess>;
+  landing: Map<string, string>;
+}> {
+  const [guesses, landings] = await Promise.all([
+    pageAll<{ user_id: string; exam: string; source: StoredExamGuess["source"]; card_answer: string | null }>(
+      (a, b) =>
+        db.from("student_exam_guesses").select("user_id, exam, source, card_answer").order("user_id").range(a, b),
+      "fetchExamGuesses"
+    ),
+    pageAll<{ user_id: string; acq_landing: string | null }>(
+      (a, b) =>
+        db
+          .from("student_profiles")
+          .select("user_id, acq_landing")
+          .filter("target_exams", "eq", "{}")
+          .not("acq_landing", "is", null)
+          .order("user_id")
+          .range(a, b),
+      "fetchLandings"
+    ),
+  ]);
+  return {
+    stored: new Map(guesses.map((g) => [g.user_id, { exam: g.exam, source: g.source, answer: g.card_answer }])),
+    landing: new Map(landings.flatMap((l) => (l.acq_landing ? [[l.user_id, l.acq_landing] as const] : []))),
+  };
+}
+
 export async function fetchStudentRoster(db: SupabaseClient): Promise<StudentRosterRow[]> {
   // Paged in 1000-row windows: a set-returning RPC is subject to the same PostgREST
   // row cap as a table select, so reading it in one shot would start silently
@@ -100,7 +149,8 @@ export async function fetchStudentRoster(db: SupabaseClient): Promise<StudentRos
     if (batch.length < PAGE) break;
   }
 
-  const mockExams = countMockExams(await fetchFinishedMockExams(db));
+  const [finishedMocks, guessInputs] = await Promise.all([fetchFinishedMockExams(db), fetchExamGuessInputs(db)]);
+  const mockExams = countMockExams(finishedMocks);
 
   return raw
     .map((r) => ({
@@ -115,6 +165,11 @@ export async function fetchStudentRoster(db: SupabaseClient): Promise<StudentRos
       stage: r.stage,
       targetExams: r.target_exams ?? [],
       checkInExam: checkInExamSlug(mockExams.get(r.user_id), r.target_exams ?? []),
+      guessedExam: rosterExamGuess({
+        targetExams: r.target_exams ?? [],
+        stored: guessInputs.stored.get(r.user_id) ?? null,
+        landing: guessInputs.landing.get(r.user_id) ?? null,
+      }),
       whatsappOptIn: r.whatsapp_opt_in,
       mocksSubmitted: r.mocks_submitted,
       mocksStarted: r.mocks_started,

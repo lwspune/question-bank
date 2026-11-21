@@ -8,6 +8,8 @@
  * and "studied at the epoch".
  */
 
+import type { InferredExam } from "@/lib/profile/suggestExam";
+
 /** Sentinel for the exam filter's "no target exam recorded" bucket. Not an exam slug. */
 export const EXAM_UNSPECIFIED = "__none__";
 
@@ -24,6 +26,12 @@ export type StudentRosterRow = {
   city: string | null;
   stage: string | null;
   targetExams: string[];
+  /**
+   * Our guess at the exam of a student with no target exam (rosterExamGuess.ts):
+   * the stored practice/landing guess, else the page they landed on. Always null
+   * when targetExams is non-empty. Shown muted, never as a chosen exam.
+   */
+  guessedExam: InferredExam | null;
   /** The exam the WhatsApp check-in names (lib/students/checkIn.ts): most mocks, else first chosen. */
   checkInExam: string | null;
   whatsappOptIn: boolean;
@@ -58,7 +66,11 @@ export type TimeWindow =
 export type DateField = "lastActive" | "signedUp";
 
 export type RosterFilters = {
-  /** Exam slugs, optionally including EXAM_UNSPECIFIED. Empty = no exam filter. */
+  /**
+   * Exam slugs, optionally including EXAM_UNSPECIFIED. Empty = no exam filter.
+   * A slug matches a chosen exam or, for a student who chose none, the guess;
+   * EXAM_UNSPECIFIED means never chose one, guessed or not.
+   */
   exams: readonly string[];
   window: TimeWindow;
   dateField: DateField;
@@ -83,7 +95,7 @@ export function filterRoster(
 
   return rows.filter((r) => {
     if (f.exams.length > 0) {
-      const byExam = wantExams.some((e) => r.targetExams.includes(e));
+      const byExam = wantExams.some((e) => r.targetExams.includes(e) || r.guessedExam?.slug === e);
       const byNone = wantUnspecified && r.targetExams.length === 0;
       if (!byExam && !byNone) return false;
     }
@@ -229,6 +241,7 @@ const CSV_HEADER = [
   "notes_subtopics", "notes_subjects", "notes_mastered", "notes_checkpoints",
   "bookmarks", "last_active", "signed_up", "last_sign_in",
   "city", "target_exams", "stage", "whatsapp_opt_in", "sign_in_method",
+  "guessed_exam", "guess_source",
 ] as const;
 
 /**
@@ -259,6 +272,8 @@ export function toRosterCsv(rows: readonly StudentRosterRow[]): string {
       r.stage ?? "",
       r.whatsappOptIn ? "yes" : "no",
       r.provider,
+      r.guessedExam?.slug ?? "",
+      r.guessedExam?.source ?? "",
     ]
       .map(csvCell)
       .join(",")

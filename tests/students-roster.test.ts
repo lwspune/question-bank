@@ -25,6 +25,7 @@ function row(over: Partial<StudentRosterRow> = {}): StudentRosterRow {
     stage: null,
     targetExams: [],
     checkInExam: null,
+    guessedExam: null,
     whatsappOptIn: false,
     mocksSubmitted: 0,
     mocksStarted: 0,
@@ -78,6 +79,24 @@ describe("filterRoster — exams", () => {
     ];
     const got = filterRoster(rows, { ...ALL, exams: ["nda", EXAM_UNSPECIFIED] }, NOW);
     expect(got.map((r) => r.id)).toEqual(["a", "b"]);
+  });
+
+  it("an exam chip also matches a student with no chosen exam whose GUESS is that exam", () => {
+    const rows = [
+      row({ id: "a", targetExams: ["nda"] }),
+      row({ id: "b", targetExams: [], guessedExam: { slug: "nda", source: "landing" } }),
+      row({ id: "c", targetExams: [], guessedExam: { slug: "neet", source: "practice" } }),
+    ];
+    expect(filterRoster(rows, { ...ALL, exams: ["nda"] }, NOW).map((r) => r.id)).toEqual(["a", "b"]);
+  });
+
+  it("'No exam' still means never CHOSE one, guessed or not", () => {
+    const rows = [
+      row({ id: "a", targetExams: ["nda"] }),
+      row({ id: "b", targetExams: [], guessedExam: { slug: "nda", source: "landing" } }),
+      row({ id: "c", targetExams: [] }),
+    ];
+    expect(filterRoster(rows, { ...ALL, exams: [EXAM_UNSPECIFIED] }, NOW).map((r) => r.id)).toEqual(["b", "c"]);
   });
 
   it("an empty exam selection means no exam filter at all", () => {
@@ -307,5 +326,14 @@ describe("toRosterCsv", () => {
   it("joins target exams on a separator that survives the CSV cell", () => {
     const csv = toRosterCsv([row({ targetExams: ["nda", "jee-mains"] })]);
     expect(csv).toContain('"nda|jee-mains"');
+  });
+
+  it("writes the guessed exam and where it came from in their own columns", () => {
+    const csv = toRosterCsv([row({ guessedExam: { slug: "mh-hsc-12", source: "landing" } })]);
+    const [head, line] = csv.split("\n");
+    const cols = head.split(",");
+    const cells = line.split(",");
+    expect(cells[cols.indexOf("guessed_exam")]).toBe('"mh-hsc-12"');
+    expect(cells[cols.indexOf("guess_source")]).toBe('"landing"');
   });
 });
