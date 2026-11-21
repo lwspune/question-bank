@@ -23,10 +23,11 @@
 -- (3,797 s, while the longest in a submitted attempt was 1,248 s), so ONE
 -- QUESTION COUNTS AT MOST 600 s (10 minutes).
 --
--- Replaces get_own_study_time (0277), which nothing called: one read for every
--- surface keeps them from drifting apart.
-
-drop function if exists public.get_own_study_time(date, date);
+-- Supersedes get_own_study_time (0277), which nothing calls: one read for every
+-- surface keeps them from drifting apart. The old function is NOT dropped
+-- here: on production the drop was refused at its confirmation step
+-- (2026-11-21), so this file matches what production ran. Drop it in a later
+-- migration once the owner confirms the drop.
 
 create or replace function public.get_study_time(p_user_id uuid, p_from date, p_to date)
 returns table (
