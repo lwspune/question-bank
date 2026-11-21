@@ -321,6 +321,10 @@ async function main() {
         // Read by hand: surface_viewed v_gift steps (badge, shown, open, activate, pricing) by gift.
         line = "by hand: scripts/chat/gift-readout.sql (share of students shown the box who open it)";
         break;
+      case "study-time-card":
+        // Read by hand: surface_viewed study_time steps, and study_time on each suggested chapter in the 7 days after.
+        line = "by hand: scripts/study-time/readout.sql (suggestion taps, and suggested chapters given 10+ min in 7 days)";
+        break;
       case "v-step-chips":
         // Read by hand: step_by_step rows coded tap/explain/reply against stepped explanations, and Yes on Explain replies.
         line = "by hand: chat_interactions step_by_step (tap, explain, reply) and understood on Explain replies";

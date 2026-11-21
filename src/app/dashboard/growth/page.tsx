@@ -71,6 +71,8 @@ import {
   V_DAY_REPEAT_KEEP_PCT,
   V_DAY_NEXT_STEP_KEEP_PCT,
   V_GIFT_OPEN_KEEP_PCT,
+  STUDY_NEXT_TAP_KEEP_PCT,
+  STUDY_NEXT_TIME_KEEP_PCT,
   V_EXAM_COUNTDOWN_KEEP_PCT,
   V_STEP_CHIPS_YES_KEEP_PCT,
   V_STEPS_FINISH_KEEP_PCT,
@@ -1083,6 +1085,14 @@ export default async function GrowthPage() {
             Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with scripts/chat/gift-readout.sql: keep it if{" "}
             {V_GIFT_OPEN_KEEP_PCT}%+ of the students shown the gift box open it. Trials activated and passes bought with points
             are reported beside it.
+          </p>
+        );
+      case "study-time-card":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with scripts/study-time/readout.sql: keep the
+            suggestion if {STUDY_NEXT_TAP_KEEP_PCT}%+ of the students shown one tap it and {STUDY_NEXT_TIME_KEEP_PCT}%+ of shown
+            suggestions get 10+ minutes on that chapter within 7 days.
           </p>
         );
       case "v-step-chips":

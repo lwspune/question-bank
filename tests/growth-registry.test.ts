@@ -122,6 +122,7 @@ describe("EXPERIMENTS", () => {
       "specific-offer",
       "stuck-offer",
       "study-circle",
+      "study-time-card",
       "teacher-or-student",
       "tutor-interest",
       "tutor-price",

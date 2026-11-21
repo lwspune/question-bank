@@ -318,6 +318,33 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
         },
       };
     }
+    // Home's Study time card (2026-11-21): seen and This week opened once a
+    // day; the suggestion shown and tapped once per chapter per day.
+    if (raw.surface === "study_time") {
+      const action = typeof raw.action === "string" ? raw.action : "";
+      const withChapter = action === "next_shown" || action === "next_tap";
+      if (!withChapter && action !== "seen" && action !== "week") return { ok: false, error: "Unknown step." };
+      if (!withChapter) {
+        if (raw.chapterId !== undefined) return { ok: false, error: "No chapter id on this step." };
+        return {
+          ok: true,
+          value: {
+            kind: "surface_viewed",
+            metadata: { surface: "study_time", action },
+            dedupeKey: `view:study_time:${action}:${userId}:${istDayKey(now)}`,
+          },
+        };
+      }
+      if (typeof raw.chapterId !== "string" || !UUID_RE.test(raw.chapterId)) return { ok: false, error: "Invalid chapter id." };
+      return {
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "study_time", action, chapterId: raw.chapterId },
+          dedupeKey: `view:study_time:${action}:${raw.chapterId}:${userId}:${istDayKey(now)}`,
+        },
+      };
+    }
     // V's gift (2026-11-21): each step, per gift and day.
     if (raw.surface === "v_gift") {
       if (typeof raw.gift !== "string" || !V_GIFT_KINDS.has(raw.gift)) return { ok: false, error: "Unknown gift." };

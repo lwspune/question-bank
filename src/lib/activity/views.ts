@@ -97,6 +97,11 @@ export const SURFACES = [
   // records no source, so without these nothing says whether the card is used.
   "start_next",
   "start_next_tap",
+  // Home's Study time card (2026-11-21, experiment study-time-card):
+  // metadata.action — "seen" the card, "week" This week opened, "next_shown"
+  // and "next_tap" the suggestion (with metadata.chapterId). Whether the
+  // suggested chapter then gets time is read from study_time.
+  "study_time",
   // The stuck offer under a bank answer (2026-11-10, lib/questions/stuckOffer):
   // metadata.action (shown, teach, easier, keep; returned and try_after since
   // 2026-11-11, after Teach me the idea) and metadata.questionId.

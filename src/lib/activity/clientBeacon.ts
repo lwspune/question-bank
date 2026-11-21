@@ -42,6 +42,19 @@ export type ClientEvent =
       from: StartNextFrom;
     }
   | {
+      /** Home's Study time card seen, or This week opened (lib/studyTime/report). */
+      kind: "surface_viewed";
+      surface: "study_time";
+      action: "seen" | "week";
+    }
+  | {
+      /** The Study time card's suggestion shown or tapped, with its chapter. */
+      kind: "surface_viewed";
+      surface: "study_time";
+      action: "next_shown" | "next_tap";
+      chapterId: string;
+    }
+  | {
       /** The stuck offer seen, or one of its buttons tapped (lib/questions/stuckOffer). */
       kind: "surface_viewed";
       surface: "stuck_offer";
