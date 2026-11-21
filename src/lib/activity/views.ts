@@ -62,6 +62,9 @@ export const SURFACES = [
   // metadata.action badge | shown | open | activate | pricing: growth experiment
   // "v-gift" reads how far students get from the badge to the gift's button.
   "v_gift",
+  // V's check-in (2026-11-21, lib/chat/checkIn), with metadata.action shown |
+  // well | stuck | short | chapter | other | go: growth experiment "v-checkin".
+  "v_checkin",
   // The Learn tab (2026-10-28): "learn" is a reading surface (every Learn page, by address);
   // "learn_start" is the student's first move through a lesson's slides, with the lesson's
   // address. Until then nothing told "nobody came" from "came and left before a question".

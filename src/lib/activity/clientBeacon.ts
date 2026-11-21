@@ -57,6 +57,12 @@ export type ClientEvent =
       subtopic: string;
     }
   | {
+      /** V's check-in (lib/chat/checkIn): asked, each tap, a chapter picked, Another chapter, a button followed. */
+      kind: "surface_viewed";
+      surface: "v_checkin";
+      action: "shown" | "well" | "stuck" | "short" | "chapter" | "other" | "go";
+    }
+  | {
       /** V's gift (lib/chat/gift): its badge seen, the box shown and opened, the gift's button tapped. */
       kind: "surface_viewed";
       surface: "v_gift";

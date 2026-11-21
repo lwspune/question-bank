@@ -312,6 +312,17 @@ export const V_GIFT_OPEN_KEEP_PCT = 50;
 export const V_EXAM_COUNTDOWN_KEEP_PCT = 10;
 
 /**
+ * "v-checkin": keep V's check-in if at least V_CHECKIN_ANSWER_KEEP_PCT of the
+ * students it asks tap an answer, and at least V_CHECKIN_PRACTISE_KEEP_PCT of
+ * its showings are followed by practice later that day: no worse than the
+ * card it replaces (7 of 10 "Since your last visit" cards after 4+ days away,
+ * 16-21 Nov, measured 2026-11-21). Students who open V are keen, so the bar
+ * is "no worse", not a lift.
+ */
+export const V_CHECKIN_ANSWER_KEEP_PCT = 40;
+export const V_CHECKIN_PRACTISE_KEEP_PCT = 70;
+
+/**
  * "score-plan": keep "How to raise your score" if at least this share of the
  * fair full-paper attempts it shows on start the Fix list within a day (%).
  * Baseline with "What to fix next", 36 fair attempts (60 to 14 days before
@@ -574,6 +585,7 @@ export type Readout =
   | "v-day-card"
   | "v-gift"
   | "v-exam-countdown"
+  | "v-checkin"
   | "score-plan"
   | "stuck-offer"
   | "same-mistake"
@@ -1217,7 +1229,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     id: "v-day-card",
     title: "V's \"Your day\" card, the first time a student opens V each day",
     change:
-      "The first time a signed-in student opens V on a new India day, a card stands in for V's greeting: their last day (answers, mistakes fixed, chapters that moved up; \"Since your last visit\" with the date after a gap, never the days missed), then one thing for today (the board plan's task, else Fix, starting with 5). A dot on V's button says it is waiting (a red \"1\" badge from 2026-11-20, owner: the 12 px blue dot read as decoration). No AI call. The mistakes notification now opens with \"Yesterday you fixed N.\" when there were fixes. From 2026-11-21 the card carries the exam countdown in the last 60 days before the exam (experiment v-exam-countdown), so read its numbers before and after that date apart.",
+      "The first time a signed-in student opens V on a new India day, a card stands in for V's greeting: their last day (answers, mistakes fixed, chapters that moved up; \"Since your last visit\" with the date after a gap, never the days missed), then one thing for today (the board plan's task, else Fix, starting with 5). A dot on V's button says it is waiting (a red \"1\" badge from 2026-11-20, owner: the 12 px blue dot read as decoration). No AI call. The mistakes notification now opens with \"Yesterday you fixed N.\" when there were fixes. From 2026-11-21 the card carries the exam countdown in the last 60 days before the exam (experiment v-exam-countdown), and after 4+ days away V asks \"How's your study going?\" in its place, the card behind Going well (experiment v-checkin, v_day rows with metadata.checkin), so read its numbers before and after that date apart.",
     why: "\"How's my progress\" works once (55% of openers took a next step) but not as a habit: 7 of 31 opened it on a second day. Of 1,509 students active in the 28 days to 2026-11-15, 63% came on one day only and 34% of active days were followed by a visit the next day. A card waiting when they open V tests whether seeing their own day brings them back.",
     metric:
       "surface_viewed 'v_day' (one a day per student, metadata.card yesterday | since | fresh): students shown it and the share shown it on 2+ days; Vercel v_day_tap by action; drill_started from v_day the same day; next-day return of students shown it against the 34% of all active days. From 2026-11-20 the badge seen is recorded (surface_viewed 'v_day_badge', one a day): read badge days followed by a card that day, and read the card numbers before and after 2026-11-20 apart. Read with scripts/chat/day-card-readout.sql",
@@ -1253,6 +1265,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-21",
     windowDays: 28,
     readout: "v-exam-countdown",
+    status: "running",
+  },
+  {
+    id: "v-checkin",
+    title: "V asks \"How's your study going?\" after 4+ days away",
+    change:
+      "The first time a student opens V after 4 or more days without answering anything, V asks \"Good to see you. How's your study going?\" with three taps, in place of the \"Your day\" card that day. Going well shows the card. Stuck on a chapter names the two chapters with the most mistakes waiting (or lets them type one to V), then that chapter's notes and its Fix. Short on time offers Fix 5 mistakes (else the chapter that carries the most marks). It never counts the days away. No AI call.",
+    why: "The owner (2026-11-21) wanted V to ask how a student's study is going. A return after a gap is when a student most needs a small first step, and the answers say how returning students feel, which nothing measured before. 786 returns after 4+ days in the 28 days to 2026-11-21.",
+    metric:
+      "surface_viewed 'v_checkin' (once a day each: shown, well, stuck, short, chapter, other, go): the share of students asked who tap an answer, the split of answers, and practice later that day (question_practiced, drill_started or mock_started after the question) against the card it replaces on the same kind of day (v_day card 'since' after 4+ days away, before 2026-11-21: 7 of 10). scripts/chat/checkin-readout.sql",
+    rule: `Keep it if ${V_CHECKIN_ANSWER_KEEP_PCT}%+ of the students asked tap an answer and ${V_CHECKIN_PRACTISE_KEEP_PCT}%+ of showings are followed by practice that day (the card it replaces: 7 of 10). Under either, return to the card. Small numbers (about 10 a week open V on such a day), so a rough read.`,
+    liveSince: "2026-11-21",
+    windowDays: 28,
+    readout: "v-checkin",
     status: "running",
   },
   {

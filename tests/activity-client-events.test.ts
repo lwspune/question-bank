@@ -646,6 +646,23 @@ describe("parseClientEvent - a teaching moment", () => {
     }
   });
 
+  it("accepts V's check-in steps (2026-11-21), each once a day", () => {
+    for (const action of ["shown", "well", "stuck", "short", "chapter", "other", "go"]) {
+      const r = parseClientEvent({ kind: "surface_viewed", surface: "v_checkin", action }, "u1", NOW);
+      expect(r).toEqual({
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "v_checkin", action },
+          dedupeKey: `view:v_checkin:${action}:u1:2026-09-27`,
+        },
+      });
+    }
+    for (const bad of [{}, { action: "skip" }, { action: "well", path: "/me" }]) {
+      expect(parseClientEvent({ kind: "surface_viewed", surface: "v_checkin", ...bad }, "u1", NOW).ok, JSON.stringify(bad)).toBe(false);
+    }
+  });
+
   it("refuses a V gift step without a known gift or step", () => {
     const bad = [
       { kind: "surface_viewed", surface: "v_gift", action: "open" },

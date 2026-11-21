@@ -49,6 +49,8 @@ export const REVIEW_TRAPS_ACTIONS: ReadonlySet<string> = new Set(["shown", "expa
 /** V's gift (2026-11-21, lib/chat/gift): which gift, and the step from the badge to the gift's button. */
 export const V_GIFT_KINDS: ReadonlySet<string> = new Set(["trial", "points"]);
 export const V_GIFT_ACTIONS: ReadonlySet<string> = new Set(["badge", "shown", "open", "activate", "pricing"]);
+/** V's check-in (2026-11-21, lib/chat/checkIn): asked, each tap, a chapter picked, Another chapter, a button followed. */
+export const V_CHECKIN_ACTIONS: ReadonlySet<string> = new Set(["shown", "well", "stuck", "short", "chapter", "other", "go"]);
 /** The stuck offer's steps. teach_close and full_notes (2026-11-15): Teach opens a panel on the page,
  *  closed (back on the question) or left for the full notes page. */
 export const STUCK_OFFER_ACTIONS: ReadonlySet<string> = new Set([
@@ -315,6 +317,18 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
           kind: "surface_viewed",
           metadata: { surface: "start_next_tap", chapterId: raw.chapterId, from: raw.from },
           dedupeKey: `view:start_next_tap:${raw.chapterId}:${userId}:${istDayKey(now)}`,
+        },
+      };
+    }
+    // V's check-in (2026-11-21): each step, once a day.
+    if (raw.surface === "v_checkin") {
+      if (typeof raw.action !== "string" || !V_CHECKIN_ACTIONS.has(raw.action)) return { ok: false, error: "Unknown step." };
+      return {
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "v_checkin", action: raw.action },
+          dedupeKey: `view:v_checkin:${raw.action}:${userId}:${istDayKey(now)}`,
         },
       };
     }
