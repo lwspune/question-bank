@@ -18,13 +18,15 @@ import {
   chapterClassLabel,
   isBoardEbook,
 } from "@/lib/ebooks/catalog";
+import { HOMI_BHABHA_9_ORDER } from "@/lib/ebooks/paperBooks";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { getBookBySlug } from "@/lib/books/registry";
 import { getNotesChaptersForSubject } from "@/lib/notes/chapters";
 
 describe("ebook catalog", () => {
-  it("sells seven CET books: formulas and notes for three subjects, and the Maths PYQ book", () => {
+  it("sells seven CET books (formulas and notes for three subjects, the Maths PYQ book) and the Homi Bhabha Notes Book", () => {
     expect(EBOOKS.filter((e) => !isBoardEbook(e)).map((e) => e.slug).sort()).toEqual([
+      "homi-bhabha-9-notes",
       "mht-cet-chemistry-formulas",
       "mht-cet-chemistry-notes",
       "mht-cet-maths-formulas",
@@ -45,7 +47,7 @@ describe("ebook catalog", () => {
     }
   );
 
-  it.each(EBOOKS.flatMap((e) => (e.kind === "notes" ? [[e.slug, e] as const] : [])))(
+  it.each(EBOOKS.flatMap((e) => (e.kind === "notes" && e.notesRoute ? [[e.slug, e] as const] : [])))(
     "%s carries every notes chapter of its subject, in book order",
     (_slug, ebook) => {
       const expected = getNotesChaptersForSubject(ebook.notesRoute!).map((c) => c.chapterSlug);
@@ -53,7 +55,7 @@ describe("ebook catalog", () => {
     }
   );
 
-  it.each(EBOOKS.flatMap((e) => (e.kind === "formula" ? [[e.slug, e] as const] : [])))(
+  it.each(EBOOKS.flatMap((e) => (e.kind === "formula" && e.notesRoute ? [[e.slug, e] as const] : [])))(
     "%s carries every notes chapter that has a formula, table or trap, in book order",
     (_slug, ebook) => {
       const chapters = ebookChapters(ebook);
@@ -166,15 +168,18 @@ describe("ebook catalog", () => {
 
   // Chapter-wise PYQs (2026-10-27): CBSE from its one-paper-a-year selection, Maharashtra from its homework plans.
   it("has a Chapter-wise PYQs book for 18 board subjects: CBSE from papers, Maharashtra from plans", () => {
-    expect(CHAPTERWISE_EBOOKS).toHaveLength(18);
-    for (const b of CHAPTERWISE_EBOOKS) expect(b.source, b.slug).toBe(b.examSlug.startsWith("cbse") ? "papers" : "plan");
+    const board = CHAPTERWISE_EBOOKS.filter((b) => b.source !== "bank");
+    expect(board).toHaveLength(18);
+    for (const b of board) expect(b.source, b.slug).toBe(b.examSlug.startsWith("cbse") ? "papers" : "plan");
     expect(CHAPTERWISE_EBOOKS.map((b) => b.slug)).toContain("cbse-12-biology-chapterwise-pyqs");
     expect(CHAPTERWISE_EBOOKS.map((b) => b.slug)).toContain("mh-ssc-10-political-science-chapterwise-pyqs");
   });
 
   it("seeds a store row (0188) for exactly the Chapter-wise PYQs books in the catalog", async () => {
     const { readFileSync } = await import("node:fs");
-    const sql = readFileSync("supabase/migrations/0188_ebook_chapterwise_pyqs.sql", "utf8");
+    const sql = ["0188_ebook_chapterwise_pyqs.sql", "0279_ebook_homi_bhabha.sql"]
+      .map((f) => readFileSync(`supabase/migrations/${f}`, "utf8"))
+      .join("\n");
     const seeded = Array.from(sql.matchAll(/\('([a-z0-9-]+-chapterwise-pyqs)'/g)).map((m) => m[1]);
     expect(seeded.sort()).toEqual(CHAPTERWISE_EBOOKS.map((b) => b.slug).sort());
   });
@@ -196,6 +201,57 @@ describe("ebook catalog", () => {
     const sql = readFileSync("supabase/migrations/0189_ebook_textbook_solutions.sql", "utf8");
     const seeded = Array.from(sql.matchAll(/\('([a-z0-9-]+-textbook-solutions)'/g)).map((m) => m[1]);
     expect(seeded.sort()).toEqual(TEXTBOOK_EBOOKS.map((b) => b.slug).sort());
+  });
+
+  // Homi Bhabha Class 9 (2026-11-21): no homework plan and no stored papers, so
+  // its Chapter-wise PYQs book reads the bank, and its four notes subjects make
+  // one Notes Book. Both follow one pinned order, the subjects in turn.
+  it("has a Homi Bhabha Class 9 Chapter-wise PYQs book read from the bank, subject by subject", () => {
+    const hb = getEbook("homi-bhabha-9-chapterwise-pyqs");
+    if (hb?.kind !== "chapterwise") throw new Error("the Homi Bhabha book is missing");
+    expect(hb.source).toBe("bank");
+    expect(hb.examiner).toBe("exam");
+    expect(hb.bankSubjects).toEqual(["Physics", "Chemistry", "Biology", "General Science"]);
+    expect(hb.title).toBe("Homi Bhabha Class 9 Science");
+    expect(`${hb.title} ${hb.subtitle}`).not.toMatch(/board/i);
+    for (const subject of hb.bankSubjects!) {
+      const order = HOMI_BHABHA_9_ORDER[subject];
+      expect(order?.length, subject).toBeGreaterThan(0);
+      expect(new Set(order).size, subject).toBe(order.length);
+    }
+  });
+
+  it("the Homi Bhabha Notes Book carries every notes chapter of its four subjects once, in the pinned order", () => {
+    const notes = getEbook("homi-bhabha-9-notes");
+    if (notes?.kind !== "notes" || !notes.parts) throw new Error("the Homi Bhabha Notes Book is missing");
+    const routes = notes.parts.map((p) => p.route);
+    expect(routes).toEqual([
+      "homi-bhabha-9-physics",
+      "homi-bhabha-9-chemistry",
+      "homi-bhabha-9-biology",
+      "homi-bhabha-9-general-science",
+    ]);
+    const chapters = ebookChapters(notes);
+    const expected = routes.flatMap((r) => getNotesChaptersForSubject(r).map((c) => `${r}/${c.chapterSlug}`));
+    expect(chapters.map((c) => `${c.notes!.subjectRoute}/${c.slug}`).sort()).toEqual(expected.sort());
+    expect(chapters.map((c) => c.number)).toEqual(chapters.map((_, i) => i + 1));
+    // Physics first, General Science last; each chapter labelled with its subject.
+    expect(chapters[0]).toMatchObject({ name: "Measurement and Units", classLabel: "Physics" });
+    expect(chapters[chapters.length - 1]).toMatchObject({ name: "Scientists and Discoveries", classLabel: "General Science" });
+    for (const p of notes.parts) {
+      const names = chapters.filter((c) => c.classLabel === p.label).map((c) => c.name);
+      const order = names.map((n) => HOMI_BHABHA_9_ORDER[p.label].indexOf(n));
+      expect(order, p.label).toEqual([...order].sort((a, b) => a - b));
+    }
+    expect(notes.cover).toEqual({ over: "Homi Bhabha Class 9", main: "Science" });
+  });
+
+  it("seeds store rows (0279) for exactly the two Homi Bhabha books, both off sale", async () => {
+    const { readFileSync } = await import("node:fs");
+    const sql = readFileSync("supabase/migrations/0279_ebook_homi_bhabha.sql", "utf8");
+    const seeded = Array.from(sql.matchAll(/\('(homi-bhabha-[a-z0-9-]+)'/g)).map((m) => m[1]);
+    expect(seeded.sort()).toEqual(["homi-bhabha-9-chapterwise-pyqs", "homi-bhabha-9-notes"]);
+    expect(sql).not.toMatch(/active/i);
   });
 
   it("names the SSC History book for both parts of its paper", () => {

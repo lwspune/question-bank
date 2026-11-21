@@ -299,6 +299,17 @@ describe("buildEbookFrontHtml", () => {
     expect(front).toMatch(/Trigonometry - II[\s\S]*>3</);
     expect(front).toMatch(/Vectors[\s\S]*>21</);
   });
+
+  // An exam's Chapter-wise PYQs book (Homi Bhabha, 2026-11-21) has no marks and no board.
+  it("words an exam's Chapter-wise PYQs book without the board or marks", () => {
+    const base = { title: "T", subtitle: "S", stats: [], preview: "", chapters: [], head: "", cover: { over: "O", main: "M", edition: "E" } };
+    const how = (html: string) => html.match(/<p class="how">([\s\S]*?)<\/p>/)![1];
+    const exam = buildEbookFrontHtml({ ...base, kind: "chapterwise", examiner: "exam" });
+    expect(how(exam)).not.toMatch(/\bboard\b|\bmarks?\b/i);
+    expect(how(exam)).toMatch(/newest paper first/);
+    expect(exam).not.toContain("By marks");
+    expect(how(buildEbookFrontHtml({ ...base, kind: "chapterwise" }))).toMatch(/board questions by marks/);
+  });
 });
 
 describe("THEME_CSS", () => {

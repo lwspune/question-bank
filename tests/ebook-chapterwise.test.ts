@@ -69,4 +69,15 @@ describe("chapterwiseChapters", () => {
   it("returns nothing for nothing", () => {
     expect(chapterwiseChapters([])).toEqual([]);
   });
+
+  // An exam whose questions carry no marks (Homi Bhabha, 2026-11-21): one
+  // unheaded list per chapter in the slots' own order, a passage kept in place.
+  it("prints an unmarked exam's chapter as one list with no heading", () => {
+    const unmarked = [slot(1, null), slot(2, null, ["Optics", 2], ["p1", "p2"]), slot(3, null)];
+    const [optics] = chapterwiseChapters(unmarked, { unmarked: "plain" });
+    expect(optics.groups).toHaveLength(1);
+    expect(optics.groups[0].kind).toBe("plain");
+    expect(groupLabel(optics.groups[0])).toBe("");
+    expect(optics.groups[0].slots.flatMap((s) => s.parts.map((p) => p.label))).toEqual(["1", "2 (a)", "2 (b)", "3"]);
+  });
 });

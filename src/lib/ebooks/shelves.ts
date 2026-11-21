@@ -21,6 +21,7 @@ export const SHELVES = [
   { key: "cbse-12", label: "CBSE Class 12", short: "CBSE 12" },
   { key: "cbse-11", label: "CBSE Class 11", short: "CBSE 11" },
   { key: "cbse-10", label: "CBSE Class 10", short: "CBSE 10" },
+  { key: "homi-bhabha-9", label: "Homi Bhabha Class 9", short: "Homi Bhabha" },
   { key: "more", label: "More books", short: "More" },
 ] as const;
 
@@ -44,6 +45,8 @@ export function shelfExamSlugs(key: ShelfKey): ExamSlug[] {
 export function shelfOf(book: { slug: string; title: string }): { shelf: ShelfKey; subject: string } {
   const board = BOARD_BOOK.get(book.slug);
   if (board) return { shelf: board.examSlug as ShelfKey, subject: board.subjectTitle };
+  // The Homi Bhabha Notes Book (its Chapter-wise PYQs book is a board-style book above).
+  if (book.slug === "homi-bhabha-9-notes") return { shelf: "homi-bhabha-9", subject: "Science" };
   if (book.slug.startsWith("mht-cet-")) {
     return { shelf: "mht-cet", subject: book.title.replace(/^MHT-CET\s+/, "").replace(/\s+(Formula|Notes|PYQ) Book$/i, "") };
   }
