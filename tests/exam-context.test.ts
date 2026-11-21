@@ -175,6 +175,13 @@ describe("EXAM_REGISTRY", () => {
     }
   });
 
+  it("MH Scholarship Class 4 and 7 have notes, one set per class (owner, 2026-11-21: separate notes per class, Intelligence Test + Maths)", () => {
+    expect(getExamBySlug("mh-scholarship-4")?.notesPath).toBe("/notes/mh-scholarship-4");
+    expect(getExamBySlug("mh-scholarship-7")?.notesPath).toBe("/notes/mh-scholarship-7");
+    expect(getExamBySlug("mh-scholarship-5")?.notesPath).toBeNull();
+    expect(getExamBySlug("mh-scholarship-8")?.notesPath).toBeNull();
+  });
+
   it("groups AISSEE, RMS CET and RIMC as one family, split by class, all free school-tier defence exams (owner, 2026-11-17)", () => {
     const rows: [string, string, string, string][] = [
       ["aissee-6", "AISSEE Class 6", "AISSEE", "Class 6"],

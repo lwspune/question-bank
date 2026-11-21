@@ -159,7 +159,8 @@ describe("buildDayCard", () => {
     const card = buildDayCard(
       input({
         exam: { slug: "mht-cet", displayName: "MHT-CET" },
-        days: [span("2026-11-11", 12, 8, { name: "Probability", answered: 12 })],
+        // 3 days away: from 4, V asks its check-in first (tests/chat-check-in.test.ts).
+        days: [span("2026-11-12", 12, 8, { name: "Probability", answered: 12 })],
         fixedOnDay: 0,
         fixedTotal: 41,
         dueChapters: ["Probability", "Probability", "Probability", "Probability", "Vectors", "Vectors", "Matrices", "Matrices", "Limits"],
@@ -168,7 +169,7 @@ describe("buildDayCard", () => {
     expect(card?.kind).toBe("since");
     expect(card?.greeting).toBe("Good to see you again. Here's where you left off.");
     expect(card?.title).toBe("Since your last visit");
-    expect(card?.subtitle).toBe("Wed 11 Nov · MHT-CET");
+    expect(card?.subtitle).toBe("Thu 12 Nov · MHT-CET");
     expect(card?.rows).toEqual([
       { label: "Last time", value: "12 questions, 8 right (67%)", detail: "Mostly Probability" },
       { label: "So far", value: "41 mistakes fixed in total", tone: "good" },

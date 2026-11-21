@@ -55,7 +55,13 @@ export async function GET(request: NextRequest) {
         // `exam` (2026-11-21): which exam countdown showed, for growth "v-exam-countdown".
         await logActivityOnce(db, userId, {
           ...seen,
-          metadata: { ...seen.metadata, card: day.kind, ...(day.countdown ? { exam: day.countdown } : {}) },
+          // `checkin` (2026-11-21): V asked "How's your study going?" in place of the card.
+          metadata: {
+            ...seen.metadata,
+            card: day.kind,
+            ...(day.countdown ? { exam: day.countdown } : {}),
+            ...(day.checkIn ? { checkin: true } : {}),
+          },
         });
       }
       return NextResponse.json({ day }, { headers: NO_STORE });

@@ -74,6 +74,8 @@ import {
   STUDY_NEXT_TAP_KEEP_PCT,
   STUDY_NEXT_TIME_KEEP_PCT,
   V_EXAM_COUNTDOWN_KEEP_PCT,
+  V_CHECKIN_ANSWER_KEEP_PCT,
+  V_CHECKIN_PRACTISE_KEEP_PCT,
   V_STEP_CHIPS_YES_KEEP_PCT,
   V_STEPS_FINISH_KEEP_PCT,
   SCORE_PLAN_DRILL_KEEP_PCT,
@@ -1070,6 +1072,14 @@ export default async function GrowthPage() {
             Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with scripts/chat/day-card-readout.sql: keep it if{" "}
             {V_DAY_REPEAT_KEEP_PCT}%+ of the students shown it see it on 2+ days (before: 7 of 31 for How&apos;s my progress) and{" "}
             {V_DAY_NEXT_STEP_KEEP_PCT}%+ of showings lead to a tap that day.
+          </p>
+        );
+      case "v-checkin":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with scripts/chat/checkin-readout.sql: keep it if{" "}
+            {V_CHECKIN_ANSWER_KEEP_PCT}%+ of the students asked tap an answer and {V_CHECKIN_PRACTISE_KEEP_PCT}%+ of showings are
+            followed by practice that day (the card it replaces: 7 of 10).
           </p>
         );
       case "v-exam-countdown":

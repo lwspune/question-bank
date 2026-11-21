@@ -689,7 +689,18 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "homi-bhabha-9-chemistry/measurement-of-matter",
   "homi-bhabha-9-chemistry/periodic-classification",
   "homi-bhabha-9-chemistry/air-water-gases",
-  "homi-bhabha-9-general-science/scientists-discoveries"
+  "homi-bhabha-9-general-science/scientists-discoveries",
+  "mh-scholarship-4-intelligence/classification-odd-one-out",
+  "mh-scholarship-4-intelligence/analogy",
+  "mh-scholarship-4-intelligence/coding-decoding",
+  "mh-scholarship-4-maths/fractions-decimals",
+  "mh-scholarship-4-maths/multiplication-division",
+  "mh-scholarship-4-maths/units-of-measurement",
+  "mh-scholarship-4-maths/numbers-number-system",
+  "mh-scholarship-7-intelligence/classification-odd-one-out",
+  "mh-scholarship-7-intelligence/analogy",
+  "mh-scholarship-7-maths/algebraic-expressions",
+  "mh-scholarship-7-maths/perimeter-area"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1379,4 +1390,15 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "homi-bhabha-9-chemistry/periodic-classification": () => import("@/app/notes/homi-bhabha-9-chemistry/periodic-classification/_data").then((m) => m.HB9_PERIODIC_NOTES),
   "homi-bhabha-9-chemistry/air-water-gases": () => import("@/app/notes/homi-bhabha-9-chemistry/air-water-gases/_data").then((m) => m.HB9_AIR_NOTES),
   "homi-bhabha-9-general-science/scientists-discoveries": () => import("@/app/notes/homi-bhabha-9-general-science/scientists-discoveries/_data").then((m) => m.HB9_SCIENTISTS_NOTES),
+  "mh-scholarship-4-intelligence/classification-odd-one-out": () => import("@/app/notes/mh-scholarship-4-intelligence/classification-odd-one-out/_data").then((m) => m.MS4_ODD_NOTES),
+  "mh-scholarship-4-intelligence/analogy": () => import("@/app/notes/mh-scholarship-4-intelligence/analogy/_data").then((m) => m.MS4_ANALOGY_NOTES),
+  "mh-scholarship-4-intelligence/coding-decoding": () => import("@/app/notes/mh-scholarship-4-intelligence/coding-decoding/_data").then((m) => m.MS4_CODING_NOTES),
+  "mh-scholarship-4-maths/fractions-decimals": () => import("@/app/notes/mh-scholarship-4-maths/fractions-decimals/_data").then((m) => m.MS4_FRACTIONS_NOTES),
+  "mh-scholarship-4-maths/multiplication-division": () => import("@/app/notes/mh-scholarship-4-maths/multiplication-division/_data").then((m) => m.MS4_MULDIV_NOTES),
+  "mh-scholarship-4-maths/units-of-measurement": () => import("@/app/notes/mh-scholarship-4-maths/units-of-measurement/_data").then((m) => m.MS4_UNITS_NOTES),
+  "mh-scholarship-4-maths/numbers-number-system": () => import("@/app/notes/mh-scholarship-4-maths/numbers-number-system/_data").then((m) => m.MS4_NUMBERS_NOTES),
+  "mh-scholarship-7-intelligence/classification-odd-one-out": () => import("@/app/notes/mh-scholarship-7-intelligence/classification-odd-one-out/_data").then((m) => m.MS7_ODD_NOTES),
+  "mh-scholarship-7-intelligence/analogy": () => import("@/app/notes/mh-scholarship-7-intelligence/analogy/_data").then((m) => m.MS7_ANALOGY_NOTES),
+  "mh-scholarship-7-maths/algebraic-expressions": () => import("@/app/notes/mh-scholarship-7-maths/algebraic-expressions/_data").then((m) => m.MS7_ALGEBRA_NOTES),
+  "mh-scholarship-7-maths/perimeter-area": () => import("@/app/notes/mh-scholarship-7-maths/perimeter-area/_data").then((m) => m.MS7_AREA_NOTES),
 };

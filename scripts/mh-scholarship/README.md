@@ -108,3 +108,28 @@ at the top of the page: ...]` (TRANSCRIPTION_BRIEF.md section 1).
 run's instruction in its stem (because its own stem would otherwise be only a figure), merge
 fails gate 3b. Give it the same `context` and leave the bracketed figure note as its stem
 (also in TRANSCRIPTION_BRIEF.md section 1).
+
+## Notes (/notes/mh-scholarship-4, /notes/mh-scholarship-7), 2026-11-21
+
+One set per class (owner: the two papers differ in difficulty), Intelligence Test and Maths only, chapters
+with 5+ questions in the April 2026 paper: Class 4 Odd One Out, Analogy, Coding and Decoding, Fractions and
+Decimals, Multiplication and Division, Units of Measurement, Numbers; Class 7 Odd One Out, Analogy,
+Algebraic Expressions and Identities, Perimeter and Area. 11 chapters, 22 pages, all 75 rows tagged.
+English and Marathi have no notes (mostly comprehension and one-question chapters).
+
+The pipeline is Homi Bhabha's (`scripts/homi-bhabha/notes/NOTES_BRIEF.md` is the content contract):
+
+- `notes/manifest.json` names each chapter by an id: class digit + abbreviation (`4cl`, `7pa`). Subtopic
+  slugs are `ms<class>-<abbr>-<word>`, concept slugs `ms<class><abbr><2 letters of the page>-<word>`.
+- `python scripts/mh-scholarship/notes/ship.py dump|plan|ship <id> [--dry]`: dump the chapter, dry-run the
+  re-cut, or re-cut + register + tag. DB steps get only the two Supabase settings from the main checkout's
+  `.env.local` in their environment (a worktree never holds one).
+- `reshape.ts` (copied from Homi Bhabha's) moves the bank rows AND the band + merged files together; the
+  plan's `exam` is required. New page names are in the catalogs, so a re-merge does not warn.
+- After a batch: `npm run notes:nav-index`, `notes:chapter-loaders`, `chat:notes-data`, `seo:dates`.
+
+A row whose key MSCE accepts two answers for (a notice in its solution) is never featured; Class 7's two
+number analogies are both of that kind, so that concept has no featured question.
+
+When the next sitting lands, re-dump each chapter, extend its plan and tag map, and update the intro counts
+(`tests/notes-intro-counts.test.ts`, prod-contract, checks them against the live bank).

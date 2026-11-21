@@ -4805,5 +4805,82 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "Homi Bhabha General Science",
     "chapterSlug": "scientists-discoveries",
     "subtopicCount": 3
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectRoute": "mh-scholarship-4-intelligence",
+    "subjectDisplay": "MH Scholarship Class 4 Intelligence Test",
+    "chapterSlug": "classification-odd-one-out",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectRoute": "mh-scholarship-4-intelligence",
+    "subjectDisplay": "MH Scholarship Class 4 Intelligence Test",
+    "chapterSlug": "analogy",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectRoute": "mh-scholarship-4-intelligence",
+    "subjectDisplay": "MH Scholarship Class 4 Intelligence Test",
+    "chapterSlug": "coding-decoding",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectRoute": "mh-scholarship-4-maths",
+    "subjectDisplay": "MH Scholarship Class 4 Maths",
+    "chapterSlug": "fractions-decimals",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectRoute": "mh-scholarship-4-maths",
+    "subjectDisplay": "MH Scholarship Class 4 Maths",
+    "chapterSlug": "multiplication-division",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectRoute": "mh-scholarship-4-maths",
+    "subjectDisplay": "MH Scholarship Class 4 Maths",
+    "chapterSlug": "units-of-measurement",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectRoute": "mh-scholarship-4-maths",
+    "subjectDisplay": "MH Scholarship Class 4 Maths",
+    "chapterSlug": "numbers-number-system",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "MH Scholarship Class 7",
+    "subjectRoute": "mh-scholarship-7-intelligence",
+    "subjectDisplay": "MH Scholarship Class 7 Intelligence Test",
+    "chapterSlug": "classification-odd-one-out",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "MH Scholarship Class 7",
+    "subjectRoute": "mh-scholarship-7-intelligence",
+    "subjectDisplay": "MH Scholarship Class 7 Intelligence Test",
+    "chapterSlug": "analogy",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "MH Scholarship Class 7",
+    "subjectRoute": "mh-scholarship-7-maths",
+    "subjectDisplay": "MH Scholarship Class 7 Maths",
+    "chapterSlug": "algebraic-expressions",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "MH Scholarship Class 7",
+    "subjectRoute": "mh-scholarship-7-maths",
+    "subjectDisplay": "MH Scholarship Class 7 Maths",
+    "chapterSlug": "perimeter-area",
+    "subtopicCount": 2
   }
 ];

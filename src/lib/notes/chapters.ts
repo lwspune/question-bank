@@ -3216,6 +3216,61 @@ import {
   HB9_GRAVITATION_NOTES,
   HB9_GRAVITATION_SLUGS,
 } from "@/app/notes/homi-bhabha-9-physics/gravitation/_data";
+import {
+  MS4_ODD_CHAPTER,
+  MS4_ODD_NOTES,
+  MS4_ODD_SLUGS,
+} from "@/app/notes/mh-scholarship-4-intelligence/classification-odd-one-out/_data";
+import {
+  MS4_ANALOGY_CHAPTER,
+  MS4_ANALOGY_NOTES,
+  MS4_ANALOGY_SLUGS,
+} from "@/app/notes/mh-scholarship-4-intelligence/analogy/_data";
+import {
+  MS4_CODING_CHAPTER,
+  MS4_CODING_NOTES,
+  MS4_CODING_SLUGS,
+} from "@/app/notes/mh-scholarship-4-intelligence/coding-decoding/_data";
+import {
+  MS4_FRACTIONS_CHAPTER,
+  MS4_FRACTIONS_NOTES,
+  MS4_FRACTIONS_SLUGS,
+} from "@/app/notes/mh-scholarship-4-maths/fractions-decimals/_data";
+import {
+  MS4_MULDIV_CHAPTER,
+  MS4_MULDIV_NOTES,
+  MS4_MULDIV_SLUGS,
+} from "@/app/notes/mh-scholarship-4-maths/multiplication-division/_data";
+import {
+  MS4_UNITS_CHAPTER,
+  MS4_UNITS_NOTES,
+  MS4_UNITS_SLUGS,
+} from "@/app/notes/mh-scholarship-4-maths/units-of-measurement/_data";
+import {
+  MS4_NUMBERS_CHAPTER,
+  MS4_NUMBERS_NOTES,
+  MS4_NUMBERS_SLUGS,
+} from "@/app/notes/mh-scholarship-4-maths/numbers-number-system/_data";
+import {
+  MS7_ODD_CHAPTER,
+  MS7_ODD_NOTES,
+  MS7_ODD_SLUGS,
+} from "@/app/notes/mh-scholarship-7-intelligence/classification-odd-one-out/_data";
+import {
+  MS7_ANALOGY_CHAPTER,
+  MS7_ANALOGY_NOTES,
+  MS7_ANALOGY_SLUGS,
+} from "@/app/notes/mh-scholarship-7-intelligence/analogy/_data";
+import {
+  MS7_ALGEBRA_CHAPTER,
+  MS7_ALGEBRA_NOTES,
+  MS7_ALGEBRA_SLUGS,
+} from "@/app/notes/mh-scholarship-7-maths/algebraic-expressions/_data";
+import {
+  MS7_AREA_CHAPTER,
+  MS7_AREA_NOTES,
+  MS7_AREA_SLUGS,
+} from "@/app/notes/mh-scholarship-7-maths/perimeter-area/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -10338,6 +10393,129 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HB9_SCIENTISTS_CHAPTER,
     notes: HB9_SCIENTISTS_NOTES,
     slugs: HB9_SCIENTISTS_SLUGS,
+  },
+  {
+    examName: "MH Scholarship Class 4",
+    subjectName: "Intelligence Test",
+    subjectRoute: "mh-scholarship-4-intelligence",
+    subjectDisplay: "MH Scholarship Class 4 Intelligence Test",
+    chapterSlug: "classification-odd-one-out",
+    chipLabel: "Odd One Out notes",
+    titleName: "Class 4 Odd One Out",
+    chapter: MS4_ODD_CHAPTER,
+    notes: MS4_ODD_NOTES,
+    slugs: MS4_ODD_SLUGS,
+  },
+  {
+    examName: "MH Scholarship Class 4",
+    subjectName: "Intelligence Test",
+    subjectRoute: "mh-scholarship-4-intelligence",
+    subjectDisplay: "MH Scholarship Class 4 Intelligence Test",
+    chapterSlug: "analogy",
+    chipLabel: "Analogy notes",
+    chapter: MS4_ANALOGY_CHAPTER,
+    notes: MS4_ANALOGY_NOTES,
+    slugs: MS4_ANALOGY_SLUGS,
+  },
+  {
+    examName: "MH Scholarship Class 4",
+    subjectName: "Intelligence Test",
+    subjectRoute: "mh-scholarship-4-intelligence",
+    subjectDisplay: "MH Scholarship Class 4 Intelligence Test",
+    chapterSlug: "coding-decoding",
+    chipLabel: "Coding and Decoding notes",
+    chapter: MS4_CODING_CHAPTER,
+    notes: MS4_CODING_NOTES,
+    slugs: MS4_CODING_SLUGS,
+  },
+  {
+    examName: "MH Scholarship Class 4",
+    subjectName: "Mathematics",
+    subjectRoute: "mh-scholarship-4-maths",
+    subjectDisplay: "MH Scholarship Class 4 Maths",
+    chapterSlug: "fractions-decimals",
+    chipLabel: "Fractions and Decimals notes",
+    chapter: MS4_FRACTIONS_CHAPTER,
+    notes: MS4_FRACTIONS_NOTES,
+    slugs: MS4_FRACTIONS_SLUGS,
+  },
+  {
+    examName: "MH Scholarship Class 4",
+    subjectName: "Mathematics",
+    subjectRoute: "mh-scholarship-4-maths",
+    subjectDisplay: "MH Scholarship Class 4 Maths",
+    chapterSlug: "multiplication-division",
+    chipLabel: "Multiplication and Division notes",
+    chapter: MS4_MULDIV_CHAPTER,
+    notes: MS4_MULDIV_NOTES,
+    slugs: MS4_MULDIV_SLUGS,
+  },
+  {
+    examName: "MH Scholarship Class 4",
+    subjectName: "Mathematics",
+    subjectRoute: "mh-scholarship-4-maths",
+    subjectDisplay: "MH Scholarship Class 4 Maths",
+    chapterSlug: "units-of-measurement",
+    chipLabel: "Units of Measurement notes",
+    chapter: MS4_UNITS_CHAPTER,
+    notes: MS4_UNITS_NOTES,
+    slugs: MS4_UNITS_SLUGS,
+  },
+  {
+    examName: "MH Scholarship Class 4",
+    subjectName: "Mathematics",
+    subjectRoute: "mh-scholarship-4-maths",
+    subjectDisplay: "MH Scholarship Class 4 Maths",
+    chapterSlug: "numbers-number-system",
+    chipLabel: "Numbers and Number System notes",
+    chapter: MS4_NUMBERS_CHAPTER,
+    notes: MS4_NUMBERS_NOTES,
+    slugs: MS4_NUMBERS_SLUGS,
+  },
+  {
+    examName: "MH Scholarship Class 7",
+    subjectName: "Intelligence Test",
+    subjectRoute: "mh-scholarship-7-intelligence",
+    subjectDisplay: "MH Scholarship Class 7 Intelligence Test",
+    chapterSlug: "classification-odd-one-out",
+    chipLabel: "Odd One Out notes",
+    titleName: "Class 7 Odd One Out",
+    chapter: MS7_ODD_CHAPTER,
+    notes: MS7_ODD_NOTES,
+    slugs: MS7_ODD_SLUGS,
+  },
+  {
+    examName: "MH Scholarship Class 7",
+    subjectName: "Intelligence Test",
+    subjectRoute: "mh-scholarship-7-intelligence",
+    subjectDisplay: "MH Scholarship Class 7 Intelligence Test",
+    chapterSlug: "analogy",
+    chipLabel: "Analogy notes",
+    chapter: MS7_ANALOGY_CHAPTER,
+    notes: MS7_ANALOGY_NOTES,
+    slugs: MS7_ANALOGY_SLUGS,
+  },
+  {
+    examName: "MH Scholarship Class 7",
+    subjectName: "Mathematics",
+    subjectRoute: "mh-scholarship-7-maths",
+    subjectDisplay: "MH Scholarship Class 7 Maths",
+    chapterSlug: "algebraic-expressions",
+    chipLabel: "Algebraic Expressions and Identities notes",
+    chapter: MS7_ALGEBRA_CHAPTER,
+    notes: MS7_ALGEBRA_NOTES,
+    slugs: MS7_ALGEBRA_SLUGS,
+  },
+  {
+    examName: "MH Scholarship Class 7",
+    subjectName: "Mathematics",
+    subjectRoute: "mh-scholarship-7-maths",
+    subjectDisplay: "MH Scholarship Class 7 Maths",
+    chapterSlug: "perimeter-area",
+    chipLabel: "Perimeter and Area notes",
+    chapter: MS7_AREA_CHAPTER,
+    notes: MS7_AREA_NOTES,
+    slugs: MS7_AREA_SLUGS,
   },
 ];
 
