@@ -9,9 +9,11 @@
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { expandNotesConcepts, type BankAnswer, type ConceptToolDeps, type NotesConceptEntry } from "./conceptSearch";
+import type { NotesChapterParts, NotesChapterRef } from "./chapterOverview";
+import { NOTES_CHAPTER_INDEX } from "./notesChapters.generated";
 import { NOTES_DATA_LOADERS } from "./notesData.generated";
 
-type Row = { exam_name: string; chapter_id: string | null; chapter_name: string; question_format: string; text: string; solution: string };
+type Row = { exam_name: string; chapter_id: string | null; chapter_name: string; question_format: string; text: string; solution: string; rank: number | null };
 
 export async function searchBankAnswers(
   anon: SupabaseClient,
@@ -33,6 +35,7 @@ export async function searchBankAnswers(
     format: r.question_format,
     text: r.text,
     solution: r.solution,
+    rank: r.rank ?? undefined,
   }));
 }
 
@@ -49,13 +52,30 @@ export function loadNotesConceptIndex(): Promise<NotesConceptEntry[]> {
   return notesIndex;
 }
 
-/** The data sources of V's explain_concept tool, for the route and the test runner alike. */
-export function conceptSources(anon: SupabaseClient): Pick<ConceptToolDeps, "searchBank" | "loadNotesIndex" | "loadNotesConcept"> {
+/** The data sources of V's explain_concept and chapter_overview tools, for the route and the test runner alike. */
+export type ConceptSources = Pick<ConceptToolDeps, "searchBank" | "loadNotesIndex" | "loadNotesConcept"> & {
+  notesChapters: readonly NotesChapterRef[];
+  loadNotesChapter: (key: string) => Promise<NotesChapterParts | null>;
+};
+
+export function conceptSources(anon: SupabaseClient): ConceptSources {
   return {
     searchBank: (query, examNames, subjectName) => searchBankAnswers(anon, query, examNames, subjectName),
     loadNotesIndex: loadNotesConceptIndex,
     loadNotesConcept: loadNotesConceptText,
+    notesChapters: NOTES_CHAPTER_INDEX,
+    loadNotesChapter: loadNotesChapterParts,
   };
+}
+
+/** One notes chapter's parts (title + one-line definition), read from that chapter alone. Null if it has no loader. */
+export async function loadNotesChapterParts(key: string): Promise<NotesChapterParts | null> {
+  const load = NOTES_DATA_LOADERS[key];
+  if (!load) return null;
+  const notes = await load();
+  const out: NotesChapterParts = {};
+  for (const [slug, n] of Object.entries(notes)) out[slug] = { title: n.title, oneLineDefinition: n.oneLineDefinition };
+  return out;
 }
 
 const plain = (s: string) => s.replace(/\*\*/g, "").replace(/\s+/g, " ").trim();

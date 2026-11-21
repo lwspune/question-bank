@@ -443,6 +443,8 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
         "paper_repeats",
         // V_SPEC.md step 2 (2026-10-22): concepts, under the same switch.
         "explain_concept",
+        // 2026-11-21: "teach me vectors" maps a whole chapter from its notes, same switch.
+        "chapter_overview",
       ]);
       expect(call.systemTail).toContain(`The student tapped Ask V on question ${askedId}. They picked (B).`);
       expect(call.system).toContain("explain_question");

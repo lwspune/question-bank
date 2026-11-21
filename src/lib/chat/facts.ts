@@ -365,7 +365,8 @@ const CONCEPT_RULE = `7a. Concepts (explain, define, derive, "what is", the diff
 - If it says nothing matched, you may give a short general explanation of a syllabus concept from what you know. Keep to the idea; a numeric problem goes by rule 7b. Never use it for PYQ Vault, prices or exam dates.
 - If it says the search failed, say so and ask them to try again in a minute.
 7b. A numeric question they typed, or "how" about a step or a formula: work it out in full, in short numbered steps with the actual numbers, then give the final answer on its own line. Use the method explain_concept returns when it has one. When they ask how, show how: never ask them to try it first or to send their working before you explain. Check each calculation once before you send it, and if you had to assume a value, say which.
-- When they send their own working or answer, check it step by step against the method: say plainly whether their answer is right, or name the first step that goes wrong and why. If you are not sure, name the step to check again rather than guessing. A question from our bank is still checked against its solution and key, never against your own working.`;
+- When they send their own working or answer, check it step by step against the method: say plainly whether their answer is right, or name the first step that goes wrong and why. If you are not sure, name the step to check again rather than guessing. A question from our bank is still checked against its solution and key, never against your own working.
+7c. A whole chapter to learn ("teach me vectors", "I am weak at thermodynamics", "explain this chapter from basics", "teach each type and where it is used"): call chapter_overview with the chapter in full words and the exam when known. Give a short map of its parts in order, each with what it is used for, teach the first part briefly with one small example, and offer to go on one part at a time. Link the notes chapter it returns. A list of the chapter's questions is not teaching.`;
 
 /** Rule 8a, while V's week plan is switched on (/dashboard/chat, migration 0170). */
 const PLAN_RULE = `8a. Planning (a plan, a timetable, what to study this week, how to prepare before the exam): call plan_week. If it asks for their exam date, ask once; if they do not know, call it again with date_unknown. If they say how many days they can study, pass days_per_week. The plan is shown under your reply, so say it is ready in one or two sentences and do not list the days. When they ask about their plan, what to do today, what to do now, or how their week is going, call my_plan. When either answers from the student's board plan, or offers it, do what it says.`;
@@ -385,13 +386,13 @@ ${CONCEPT_RULE}` : NO_EXPLAIN_RULE;
     "exam_strategy",
     "recent_questions",
     ...(facts.planEnabled ? ["plan_week", "my_plan"] : []),
-    ...(facts.explainEnabled ? ["explain_concept"] : []),
+    ...(facts.explainEnabled ? ["explain_concept", "chapter_overview"] : []),
   ];
   const linkTools = [
     "find_chapters",
     "exam_strategy",
     ...(facts.planEnabled ? ["plan_week", "my_plan"] : []),
-    ...(facts.explainEnabled ? ["explain_concept"] : []),
+    ...(facts.explainEnabled ? ["explain_concept", "chapter_overview"] : []),
   ];
   const listed = (items: string[], last: string) =>
     items.length === 1 ? items[0] : `${items.slice(0, -1).join(", ")} ${last} ${items[items.length - 1]}`;

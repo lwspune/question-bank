@@ -47,7 +47,9 @@ import { planTools, type PlanDeps } from "./weekPlan";
 import { myQuestionTools, type MyQuestionDeps } from "./myQuestions";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import type { ExamSlug } from "@/lib/exam/examContext";
-import { conceptTool, type ConceptToolDeps } from "./conceptSearch";
+import { conceptTool } from "./conceptSearch";
+import type { ConceptSources } from "./conceptSearchServer";
+import { chapterOverviewTool } from "./chapterOverview";
 import { notesPageOf } from "./notesItem";
 import { languageTool, type VLanguage } from "./language";
 
@@ -119,7 +121,7 @@ export async function loadVContext(
     /** "Show me where I went wrong" on a follow-up card: the question V explained before (V_LEARNING_LOOP.md step 2). */
     followsUp?: { stem: string | null } | null;
     /** explain_concept's data sources (lib/chat/conceptSearchServer.ts conceptSources); offered with the question tools. */
-    concepts?: Pick<ConceptToolDeps, "searchBank" | "loadNotesIndex" | "loadNotesConcept"> | null;
+    concepts?: ConceptSources | null;
     /** The signed-in student's recent questions and saves (lib/chat/myQuestions.ts); absent when signed out. */
     myQuestions?: Omit<MyQuestionDeps, "signedIn"> | null;
     /** The language the student saved for every reply (student_profiles.v_language, 0232). */
@@ -240,13 +242,25 @@ export async function loadVContext(
   if (opts.questionTools) tools.push(...questionTools({ ...opts.questionTools, pageChapterId: pageInfo?.chapterId ?? null }));
   // V_SPEC.md step 2: concepts, with the question tools (the same switch), so the cached tool list depends on it alone.
   if (opts.questionTools && opts.concepts) {
+    const conceptPage = pageInfo ? { examName: pageInfo.examName, subjectName: pageInfo.subjectName } : null;
+    const addPaths = (paths: string[]) => paths.forEach((p) => allowedPaths.add(p));
     tools.push(
       conceptTool({
-        ...opts.concepts,
+        searchBank: opts.concepts.searchBank,
+        loadNotesIndex: opts.concepts.loadNotesIndex,
+        loadNotesConcept: opts.concepts.loadNotesConcept,
         loadChapters,
-        page: pageInfo ? { examName: pageInfo.examName, subjectName: pageInfo.subjectName } : null,
+        page: conceptPage,
         pageNotesKey: notesPageOf(opts.page ?? null)?.key ?? null,
-        onPaths: (paths) => paths.forEach((p) => allowedPaths.add(p)),
+        onPaths: addPaths,
+      }),
+      // 2026-11-21: "teach me vectors" maps a whole chapter from its notes, under the same switch.
+      chapterOverviewTool({
+        loadChapters,
+        notesIndex: opts.concepts.notesChapters,
+        loadNotesChapter: opts.concepts.loadNotesChapter,
+        page: conceptPage,
+        onPaths: addPaths,
       })
     );
   }

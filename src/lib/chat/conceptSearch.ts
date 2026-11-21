@@ -38,9 +38,15 @@ const FILLER = new Set(
     "the and for with from into this that these those what which who why how does did can could would should " +
     "you your please pls plz tell give explain explanation define definition derive derivation expression formula " +
     "imp important points question questions answer answers notes short long mark marks about its are was were due " +
-    "also any all some write state meaning mean means"
+    "also any all some write state meaning mean means " +
+    // 2026-11-21: "vectors types and their applications" kept "their", so an all-words search could not match.
+    "their them they each like bro teach basics"
   ).split(" ")
 );
+
+// The close-match retry (2026-11-21): with 3+ words, leave each out once. Only answers from the student's own exam count.
+const CLOSE_MIN_WORDS = 3;
+const MAX_CLOSE = 2;
 
 /** The topic's search words: lowercase, 3+ characters, no bare numbers, no filler, no repeats, at most 6. */
 export function conceptWords(topic: string): string[] {
@@ -170,7 +176,21 @@ export type BankAnswer = {
   format: string;
   text: string;
   solution: string;
+  /** v_search_answers' rank, used to order close matches. */
+  rank?: number;
 };
+
+/**
+ * The searches to try when every word together found nothing: each word left out once.
+ * Measured 2026-11-21 on the month's misses: this found the right model answer for solid state,
+ * odd/even integrals, lattice enthalpy and protists, and junk for "vectors types applications"
+ * (a satellite question) and "radian full circle" (a UCEED puzzle). Both junk hits came from
+ * another exam, so a close match must come from the student's exam (see conceptTool).
+ */
+export function leaveOneOutQueries(words: readonly string[]): string[] {
+  if (words.length < CLOSE_MIN_WORDS) return [];
+  return words.map((_, i) => allWordsQuery(words.filter((__, j) => j !== i)));
+}
 
 function trimTo(s: string, n: number): string {
   const one = s.replace(/\s+/g, " ").trim();
@@ -180,6 +200,8 @@ function trimTo(s: string, n: number): string {
 export const NOTHING_FOUND =
   `Nothing in our question bank or notes matches this. If it is a concept, definition or derivation from the syllabus, ` +
   `give a short general explanation from what you know. ` +
+  // 2026-11-21: V told a student "Our notes did not match this exact request" with the chapter's notes live.
+  `Do not tell the student that nothing was found or that our notes do not have it: just explain. ` +
   `A numeric problem the student typed: work it out in full, with the final answer (rule 7b). ` +
   `Never give an answer to a question from a paper this way, and never use it for PYQ Vault, prices or exam dates. ` +
   `If the student sent their own working or answer, you may still check it step by step and say whether it is right (rule 7b).`;
@@ -190,8 +212,24 @@ const SEARCH_FAILED =
 export function formatConceptResult(found: {
   bank: (BankAnswer & { path: string | null })[];
   notes: { name: string; path: string; text: string }[];
+  /** Answers that matched all but one word, from the student's exam. */
+  close?: (BankAnswer & { path: string | null })[];
 }): string {
-  if (found.bank.length === 0 && found.notes.length === 0) return NOTHING_FOUND;
+  const close = found.close ?? [];
+  if (found.bank.length === 0 && found.notes.length === 0) {
+    if (close.length === 0) return NOTHING_FOUND;
+    const lines = [
+      "Close matches from our question bank (not every word matched). Use them only if they answer what the student asked: " +
+        "then explain from them in your own short words and link the chapter page. If they do not, give a short general explanation " +
+        "of the syllabus concept from what you know, without saying that nothing was found.",
+    ];
+    close.forEach((a, i) => {
+      lines.push(`${i + 1}. ${a.examName}, ${a.chapterName}${a.path ? ` (${a.path})` : ""}`);
+      lines.push(`Question: ${trimTo(a.text, QUESTION_CHARS)}`);
+      lines.push(`Model answer: ${trimTo(a.solution, ANSWER_CHARS)}`);
+    });
+    return lines.join("\n");
+  }
   const lines: string[] = [];
   if (found.bank.length > 0) {
     lines.push(
@@ -272,8 +310,35 @@ export function conceptTool(d: ConceptToolDeps): VTool {
           if (text) notes.push({ name: e.name, path: `/notes/${e.key}/${e.subtopic}`, text });
         }
       }
-      d.onPaths([...withPaths.flatMap((a) => (a.path ? [a.path] : [])), ...notes.map((n) => n.path)]);
-      return formatConceptResult({ bank: withPaths, notes });
+
+      // Last before "nothing": all but one word, from the student's own exam only (leaveOneOutQueries says why).
+      let close: (BankAnswer & { path: string | null })[] = [];
+      if (withPaths.length === 0 && notes.length === 0 && examNames.length > 0) {
+        const retries = await Promise.all(
+          leaveOneOutQueries(words).map((q) =>
+            d.searchBank(q, examNames, subjectName).catch((err) => {
+              // The full search already answered; a failed retry only means no close match.
+              console.error("V: explain_concept close-match search failed", err);
+              return [] as BankAnswer[];
+            })
+          )
+        );
+        const seen = new Set<string>();
+        close = retries
+          .flat()
+          .filter((a) => examNames.includes(a.examName))
+          .sort((a, b) => (b.rank ?? 0) - (a.rank ?? 0))
+          .filter((a) => (seen.has(a.text) ? false : (seen.add(a.text), true)))
+          .slice(0, MAX_CLOSE)
+          .map((a) => ({ ...a, path: a.chapterId ? (pathOf.get(a.chapterId) ?? null) : null }));
+      }
+
+      d.onPaths([
+        ...withPaths.flatMap((a) => (a.path ? [a.path] : [])),
+        ...notes.map((n) => n.path),
+        ...close.flatMap((a) => (a.path ? [a.path] : [])),
+      ]);
+      return formatConceptResult({ bank: withPaths, notes, close });
     },
   };
 }
