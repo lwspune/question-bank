@@ -628,6 +628,8 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/call chapter_overview/);
     expect(p).toMatch(/weak at/i);
     expect(p).toMatch(/one part at a time/i);
+    // 2026-11-21: it may name the student's waiting mistakes and a part to start at; the rule must not say "first part" over it.
+    expect(p).toMatch(/the part it says to start at/i);
     // Its answers and pages are usable like the other tools'.
     expect(p).toMatch(/returned by [^.]*chapter_overview/);
     expect(p).toMatch(/what the [^.]*chapter_overview[^.]*tools return/);

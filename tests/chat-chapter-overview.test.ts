@@ -10,13 +10,19 @@
  */
 import { describe, it, expect } from "vitest";
 import {
+  chapterMissesOf,
   chapterOverviewTool,
   formatChapterOverview,
   notesChapterIndex,
+  type ChapterMiss,
+  type MissExample,
   type NotesChapterRef,
   type NotesChapterParts,
+  toMissExample,
 } from "@/lib/chat/chapterOverview";
+import type { VQuestion } from "@/lib/chat/questionTools";
 import type { ChapterSearchRow } from "@/lib/chat/chapterSearch";
+import type { DueQuestion } from "@/lib/drill/select";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { NOTES_CHAPTER_INDEX } from "@/lib/chat/notesChapters.generated";
 
@@ -153,6 +159,249 @@ describe("chapterOverviewTool", () => {
   it("no chapter words: asks V to ask which chapter", async () => {
     const { tool } = setup();
     expect(await tool.run({ chapter: "  " })).toMatch(/which chapter/i);
+  });
+});
+
+/**
+ * Starting from the student's own mistakes (2026-11-21, owner-approved mockup B):
+ * "You missed 2 dot-product questions, so we start there" rather than part 1. The
+ * mistakes are the Fix list's waiting ones (lib/drill), so V and /me's "Your weak
+ * spots" count the same thing. A notes part is matched to a mistake by the part's
+ * bank subtopic name (SubtopicNote.subtopicName).
+ */
+describe("chapter_overview from the student's mistakes", () => {
+  const PARTS: NotesChapterParts = {
+    "magnitude-unit-vectors": { ...VECTORS_PARTS["magnitude-unit-vectors"], subtopicName: "Magnitude and Unit Vectors" },
+    "dot-product": { ...VECTORS_PARTS["dot-product"], subtopicName: "Dot Product, Angle, and Perpendicularity" },
+  };
+  const miss = (subtopic: string, id: string, at: string): ChapterMiss => ({ subtopic, questionId: id, lastWrongAt: at });
+
+  function withMisses(opts: {
+    misses?: readonly ChapterMiss[] | Error | null;
+    example?: MissExample | null;
+    parts?: NotesChapterParts | null;
+  }) {
+    const asked: { hits: ChapterSearchRow[]; examples: string[] } = { hits: [], examples: [] };
+    const tool = chapterOverviewTool({
+      loadChapters: async () => ROWS,
+      notesIndex: [VECTORS_REF],
+      loadNotesChapter: async () => (opts.parts === undefined ? PARTS : opts.parts),
+      page: null,
+      onPaths: () => {},
+      loadMisses:
+        opts.misses === null
+          ? null
+          : async (hit) => {
+              asked.hits.push(hit);
+              if (opts.misses instanceof Error) throw opts.misses;
+              return opts.misses ?? [];
+            },
+      loadMissExample: async (id) => {
+        asked.examples.push(id);
+        return opts.example ?? null;
+      },
+    });
+    return { tool, asked };
+  }
+
+  it("counts the waiting mistakes by part and starts at the part holding most, not part 1", async () => {
+    const { tool, asked } = withMisses({
+      misses: [
+        miss("Dot Product, Angle, and Perpendicularity", "q1", "2026-11-20T10:00:00Z"),
+        miss("Dot Product, Angle, and Perpendicularity", "q2", "2026-11-21T09:00:00Z"),
+        miss("Magnitude and Unit Vectors", "q3", "2026-11-19T09:00:00Z"),
+      ],
+    });
+    const out = await tool.run({ chapter: "vectors", exam: "MHT-CET" });
+    expect(asked.hits.map((h) => h.examName)).toEqual(["MHT-CET"]);
+    expect(out).toMatch(/3 mistakes waiting/i);
+    expect(out).toContain("Dot Product, Angle, and Perpendicularity: 2");
+    expect(out).toContain("Magnitude, Components, and Unit Vectors: 1");
+    expect(out).toMatch(/start at part 2, Dot Product, Angle, and Perpendicularity/i);
+    expect(out).toMatch(/not part 1/i);
+  });
+
+  it("a tie goes to the earlier part in teaching order", async () => {
+    const { tool } = withMisses({
+      misses: [
+        miss("Dot Product, Angle, and Perpendicularity", "q1", "2026-11-21T10:00:00Z"),
+        miss("Magnitude and Unit Vectors", "q2", "2026-11-20T10:00:00Z"),
+      ],
+    });
+    expect(await tool.run({ chapter: "vectors", exam: "MHT-CET" })).toMatch(/start at part 1, Magnitude, Components, and Unit Vectors/i);
+  });
+
+  it("matches a mistake to its part whatever the case or spacing of the subtopic name", async () => {
+    const { tool } = withMisses({ misses: [miss("  dot product, angle, and perpendicularity ", "q1", "2026-11-21T10:00:00Z")] });
+    const out = await tool.run({ chapter: "vectors", exam: "MHT-CET" });
+    expect(out).toContain("Dot Product, Angle, and Perpendicularity: 1");
+    // One mistake reads as one (the live smoke printed "1 mistakes").
+    expect(out).toMatch(/has 1 mistake waiting/);
+  });
+
+  it("a mistake in a topic no part covers is counted, but never decides the start", async () => {
+    const { tool } = withMisses({
+      misses: [
+        miss("Some Retired Subtopic", "q1", "2026-11-21T10:00:00Z"),
+        miss("Some Retired Subtopic", "q2", "2026-11-21T11:00:00Z"),
+        miss("Dot Product, Angle, and Perpendicularity", "q3", "2026-11-20T10:00:00Z"),
+      ],
+    });
+    const out = await tool.run({ chapter: "vectors", exam: "MHT-CET" });
+    expect(out).toMatch(/3 mistakes waiting/i);
+    expect(out).toMatch(/2 in other topics/i);
+    expect(out).toMatch(/start at part 2, Dot Product/i);
+  });
+
+  it("no waiting mistakes in this chapter: says so, and starts at part 1", async () => {
+    const { tool, asked } = withMisses({ misses: [] });
+    const out = await tool.run({ chapter: "vectors", exam: "MHT-CET" });
+    expect(out).toMatch(/no mistakes waiting in this chapter/i);
+    expect(out).toMatch(/first part/i);
+    expect(asked.examples).toEqual([]);
+  });
+
+  it("signed out (no reader): says nothing about mistakes", async () => {
+    const { tool } = withMisses({ misses: null });
+    const out = await tool.run({ chapter: "vectors", exam: "MHT-CET" });
+    expect(out).not.toMatch(/mistake/i);
+  });
+
+  it("a failed read claims nothing either way: never 'no mistakes'", async () => {
+    const { tool } = withMisses({ misses: new Error("timeout") });
+    const out = await tool.run({ chapter: "vectors", exam: "MHT-CET" });
+    expect(out).not.toMatch(/mistake/i);
+    expect(out).toContain("Dot Product, Angle, and Perpendicularity");
+  });
+
+  it("the latest mistake is the worked example: its question, their pick and the answer, and V names the slip", async () => {
+    const { tool, asked } = withMisses({
+      misses: [
+        miss("Dot Product, Angle, and Perpendicularity", "older", "2026-11-20T10:00:00Z"),
+        miss("Dot Product, Angle, and Perpendicularity", "latest", "2026-11-21T10:00:00Z"),
+      ],
+      example: {
+        text: "If a = 2i - j + k and b = i + 3j - 2k, then a · b is",
+        options: [
+          { label: "A", text: "-3" },
+          { label: "B", text: "3" },
+          { label: "C", text: "1" },
+          { label: "D", text: "-1" },
+        ],
+        chose: "C",
+        answer: "A",
+      },
+    });
+    const out = await tool.run({ chapter: "vectors", exam: "MHT-CET" });
+    expect(asked.examples).toEqual(["latest"]);
+    expect(out).toContain("If a = 2i - j + k and b = i + 3j - 2k, then a · b is");
+    expect(out).toContain("(C) 1");
+    expect(out).toMatch(/they picked \(C\)/i);
+    expect(out).toMatch(/the answer is \(A\)/i);
+    expect(out).toMatch(/slip/i);
+  });
+
+  it("a mock mistake records no pick: the example says so and V shows the right working instead", async () => {
+    const { tool } = withMisses({
+      misses: [miss("Dot Product, Angle, and Perpendicularity", "q1", "2026-11-21T10:00:00Z")],
+      example: { text: "Find a · b.", options: [{ label: "A", text: "0" }, { label: "B", text: "1" }], chose: null, answer: "A" },
+    });
+    const out = await tool.run({ chapter: "vectors", exam: "MHT-CET" });
+    expect(out).toMatch(/pick was not recorded/i);
+    expect(out).not.toMatch(/they picked/i);
+  });
+
+  it("no usable example (a figure, a written question, a failed read): teaches without one", async () => {
+    const { tool } = withMisses({ misses: [miss("Dot Product, Angle, and Perpendicularity", "q1", "2026-11-21T10:00:00Z")], example: null });
+    const out = await tool.run({ chapter: "vectors", exam: "MHT-CET" });
+    expect(out).toMatch(/start at part 2/i);
+    expect(out).not.toMatch(/they picked/i);
+  });
+
+  it("a chapter with no notes starts at the topic holding most mistakes", async () => {
+    const { tool } = withMisses({
+      misses: [miss("Packing Efficiency", "q1", "2026-11-21T10:00:00Z"), miss("Packing Efficiency", "q2", "2026-11-21T11:00:00Z"), miss("Defects", "q3", "2026-11-20T10:00:00Z")],
+    });
+    const out = await tool.run({ chapter: "solid state", exam: "MH HSC 12" });
+    expect(out).toMatch(/no notes/i);
+    expect(out).toContain("Packing Efficiency: 2");
+    expect(out).toMatch(/start with Packing Efficiency/i);
+  });
+});
+
+describe("chapterMissesOf", () => {
+  const due = (over: Partial<DueQuestion>): DueQuestion => ({
+    questionId: "q",
+    chapter: "Vectors",
+    chapterId: "c1",
+    place: "Mathematics · MHT-CET",
+    exam: "MHT-CET",
+    subtopic: "Dot Product, Angle, and Perpendicularity",
+    lastWrongAt: "2026-11-21T10:00:00Z",
+    ...over,
+  });
+
+  it("keeps the waiting mistakes of THIS exam's chapter only: NDA's Vectors is another chapter", () => {
+    const out = chapterMissesOf(
+      [due({ questionId: "a" }), due({ questionId: "b", exam: "NDA" }), due({ questionId: "c", chapter: "Matrices" })],
+      ROWS[0]
+    );
+    expect(out).toEqual([{ questionId: "a", subtopic: "Dot Product, Angle, and Perpendicularity", lastWrongAt: "2026-11-21T10:00:00Z" }]);
+  });
+
+  it("prefers the chapter id when the row carries one", () => {
+    const out = chapterMissesOf([due({ questionId: "a", chapterId: "c1" }), due({ questionId: "b", chapterId: "c2" })], { ...ROWS[0], chapterId: "c2" });
+    expect(out.map((m) => m.questionId)).toEqual(["b"]);
+  });
+});
+
+describe("toMissExample", () => {
+  const q = (over: Partial<VQuestion>): VQuestion => ({
+    id: "q1",
+    text: "Find a · b.",
+    context: null,
+    hasFigure: false,
+    solution: null,
+    format: "mcq",
+    numericAnswer: null,
+    options: [
+      { label: "A", text: "0", isCorrect: true },
+      { label: "B", text: "1", isCorrect: false },
+    ],
+    exam: "MHT-CET",
+    subject: "Mathematics",
+    chapter: "Vectors",
+    subtopic: null,
+    subtopicId: null,
+    origin: null,
+    ...over,
+  });
+
+  it("an MCQ: its stem, options, their pick and the key", () => {
+    expect(toMissExample(q({}), "B")).toEqual({
+      text: "Find a · b.",
+      options: [
+        { label: "A", text: "0" },
+        { label: "B", text: "1" },
+      ],
+      chose: "B",
+      answer: "A",
+    });
+  });
+
+  it("keeps the shared passage with the stem", () => {
+    expect(toMissExample(q({ context: "a = i + j, b = i - j." }), null)?.text).toBe("a = i + j, b = i - j.\nFind a · b.");
+  });
+
+  it("a pick that is not an option letter is no pick", () => {
+    expect(toMissExample(q({}), "Z")?.chose).toBeNull();
+  });
+
+  it("no example from a figure V cannot see, a written or numeric question, or no question", () => {
+    expect(toMissExample(q({ hasFigure: true }), "B")).toBeNull();
+    expect(toMissExample(q({ format: "subjective" }), null)).toBeNull();
+    expect(toMissExample(q({ format: "numeric" }), null)).toBeNull();
+    expect(toMissExample(null, "B")).toBeNull();
   });
 });
 
