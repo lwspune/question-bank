@@ -43,7 +43,7 @@ import { spawn, type ChildProcess } from "node:child_process";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
-import { clickScript, scrollXScript, NO_FULLSCREEN_SCRIPT, parseShotArgs, planCaptures, sheetHtml, storageScript, stubHeaderSession, VIEWPORTS, type Capture } from "./lib";
+import { BEFORE_YOU_SEND, clickScript, scrollXScript, NO_FULLSCREEN_SCRIPT, parseShotArgs, planCaptures, sheetHtml, storageScript, stubHeaderSession, VIEWPORTS, type Capture } from "./lib";
 
 const EDGE = process.env.EDGE ?? "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
 const PHONE_UA =
@@ -199,6 +199,7 @@ async function main() {
     if (missing.length) {
       console.log(`
 ${missing.length} capture(s) still to take (${missing[0].file} ...): run --phase=after with --out=${dir}`);
+      console.log(`\n${BEFORE_YOU_SEND.join("\n")}`);
       return;
     }
     // The sheet: rendered by the same browser, photographed whole.
@@ -215,6 +216,7 @@ ${missing.length} capture(s) still to take (${missing[0].file} ...): run --phase
     })) as { result?: { data?: string } };
     writeFileSync(join(dir, "sheet.png"), Buffer.from(shot.result!.data!, "base64"));
     console.log(`\nsheet: ${join(dir, "sheet.png")}`);
+    console.log(`\n${BEFORE_YOU_SEND.join("\n")}`);
   } finally {
     cdp.close();
     proc.kill();
