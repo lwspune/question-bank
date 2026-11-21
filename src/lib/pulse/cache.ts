@@ -167,6 +167,17 @@ export function parsePulseEntry(raw: string | null): PulseEntry | null {
   };
 }
 
+/**
+ * The pulse a cached entry holds: every field but the timestamp. Until
+ * 2026-11-21 the cached read listed six fields by hand and missed the three
+ * added after it (path, replies, leftCheckout), so those vanished on any page
+ * that read the cache; taking everything means a new field cannot be missed.
+ */
+export function pulseFromEntry(entry: PulseEntry): Pulse {
+  const { at: _at, ...pulse } = entry;
+  return pulse;
+}
+
 /** A pass offer exactly as passCta builds it, or null. */
 function parsePassCta(v: unknown): PassCta | null {
   if (typeof v !== "object" || v === null) return null;

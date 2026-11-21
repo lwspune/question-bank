@@ -4,7 +4,7 @@
  * shape guard, so a stale or malformed cache entry can never render a number.
  */
 import { describe, it, expect } from "vitest";
-import { isPulseFresh, parsePulseEntry, PULSE_TTL_MS, totalsLine } from "@/lib/pulse/cache";
+import { isPulseFresh, parsePulseEntry, pulseFromEntry, PULSE_TTL_MS, totalsLine } from "@/lib/pulse/cache";
 
 const NOW = Date.parse("2026-09-24T10:00:00Z");
 const entry = (ageMs: number) => ({ at: NOW - ageMs, due: 4, week: { done: 1, goal: 3 } });
@@ -168,6 +168,29 @@ describe("parsePulseEntry: a checkout left unpaid (2026-11-12)", () => {
     for (const bad of ["x", { ...pass, planId: 5 }, { ...pass, perks: "a" }, { ...pass, downloads: "no" }, { ...pass, price: undefined }]) {
       expect(parsePulseEntry(JSON.stringify({ ...entry(0), leftCheckout: bad })), JSON.stringify(bad)).toBeNull();
     }
+  });
+});
+
+describe("pulseFromEntry: a cached read keeps every field", () => {
+  it("returns the whole pulse without the timestamp", () => {
+    // Until 2026-11-21 the cached read kept only six fields, so V's plan line,
+    // the feedback-reply line and the unpaid-checkout bar vanished for up to
+    // ten minutes after any page that had fetched the pulse.
+    const full = {
+      ...entry(0),
+      exam: null,
+      totals: null,
+      weak: [],
+      chapterDue: {},
+      path: { state: "on", exam: "cbse-12" },
+      replies: 2,
+      leftCheckout: null,
+    };
+    const parsed = parsePulseEntry(JSON.stringify(full));
+    expect(parsed).not.toBeNull();
+    const { at: _at, ...rest } = parsed!;
+    expect(pulseFromEntry(parsed!)).toEqual(rest);
+    expect(pulseFromEntry(parsed!)).not.toHaveProperty("at");
   });
 });
 

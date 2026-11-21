@@ -4,6 +4,7 @@ import { useEffect, useLayoutEffect, useState } from "react";
 import {
   isPulseFresh,
   parsePulseEntry,
+  pulseFromEntry,
   PULSE_STORAGE_KEY,
   type Pulse,
   type PulseEntry,
@@ -37,18 +38,10 @@ const listeners = new Set<(p: Pulse | null) => void>();
 function readCache(nowMs: number): Pulse | null {
   try {
     const entry = parsePulseEntry(sessionStorage.getItem(PULSE_STORAGE_KEY));
-    // Every field the entry carries. This returned only due + week until
-    // 2026-10-04, so the exam countdown vanished on every cached read.
-    if (entry && isPulseFresh(entry, nowMs)) {
-      return {
-        due: entry.due,
-        week: entry.week,
-        exam: entry.exam,
-        totals: entry.totals,
-        weak: entry.weak,
-        chapterDue: entry.chapterDue,
-      };
-    }
+    // Every field the entry carries (pulseFromEntry). Fields listed by hand
+    // went missing twice: the exam countdown until 2026-10-04, and path,
+    // replies and leftCheckout until 2026-11-21.
+    if (entry && isPulseFresh(entry, nowMs)) return pulseFromEntry(entry);
   } catch {
     /* private mode / blocked storage — fall through to a fetch */
   }
