@@ -4876,6 +4876,21 @@ export type Database = {
         }
         Relationships: []
       }
+      study_clock: {
+        Row: {
+          last_at: string
+          user_id: string
+        }
+        Insert: {
+          last_at: string
+          user_id: string
+        }
+        Update: {
+          last_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       study_path_covered: {
         Row: {
           chapter_id: string
@@ -5087,6 +5102,36 @@ export type Database = {
           items?: Json
           starts_on?: string
           subject?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      study_time: {
+        Row: {
+          chapter_id: string | null
+          day: string
+          id: number
+          kind: string
+          secs: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          chapter_id?: string | null
+          day: string
+          id?: never
+          kind: string
+          secs?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          chapter_id?: string | null
+          day?: string
+          id?: never
+          kind?: string
+          secs?: number
+          updated_at?: string
           user_id?: string
         }
         Relationships: []
@@ -5847,6 +5892,7 @@ export type Database = {
     }
     Functions: {
       activate_practice_trial: { Args: never; Returns: Json }
+      add_study_time: { Args: { p_items: Json }; Returns: number }
       answer_grade_commit: {
         Args: {
           p_grades: Json
@@ -6028,6 +6074,18 @@ export type Database = {
       }
       get_own_practice_evidence: { Args: never; Returns: Json }
       get_own_progress_card: { Args: { p_exam_id: string }; Returns: Json }
+      get_own_study_time: {
+        Args: { p_from: string; p_to: string }
+        Returns: {
+          chapter: string
+          chapter_id: string
+          day: string
+          exam_id: string
+          kind: string
+          secs: number
+          subject: string
+        }[]
+      }
       get_own_week_study_days: {
         Args: {
           p_min_answers: number
