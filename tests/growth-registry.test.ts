@@ -128,6 +128,7 @@ describe("EXPERIMENTS", () => {
       "ugc-net",
       "v-better-retry",
       "v-day-card",
+      "v-exam-countdown",
       "v-explain",
       "v-finder",
       "v-fix-line",

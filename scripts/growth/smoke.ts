@@ -313,6 +313,10 @@ async function main() {
         // Read by hand: surface_viewed v_day by student and day, taps, drill starts from v_day.
         line = "by hand: scripts/chat/day-card-readout.sql (v_day showings on 2+ days, drill starts from v_day)";
         break;
+      case "v-exam-countdown":
+        // Read by hand: v_day rows with metadata.exam, and starts from the card the same day.
+        line = "by hand: scripts/chat/exam-countdown-readout.sql (starts from the card on countdown days)";
+        break;
       case "v-gift":
         // Read by hand: surface_viewed v_gift steps (badge, shown, open, activate, pricing) by gift.
         line = "by hand: scripts/chat/gift-readout.sql (share of students shown the box who open it)";
