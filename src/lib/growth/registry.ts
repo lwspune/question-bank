@@ -294,6 +294,15 @@ export const V_DAY_REPEAT_KEEP_PCT = 35;
 export const V_DAY_NEXT_STEP_KEEP_PCT = 25;
 
 /**
+ * "v-gift": keep V's gift if at least this share of the students shown the
+ * closed box open it (%). There is no before: the box is new. What students do
+ * with an opened gift (Activate, See your price, a pass bought with points) is
+ * reported beside it, not judged on: the trial and the points are each judged
+ * by their own experiment.
+ */
+export const V_GIFT_OPEN_KEEP_PCT = 50;
+
+/**
  * "score-plan": keep "How to raise your score" if at least this share of the
  * fair full-paper attempts it shows on start the Fix list within a day (%).
  * Baseline with "What to fix next", 36 fair attempts (60 to 14 days before
@@ -554,6 +563,7 @@ export type Readout =
   | "v-step-by-step"
   | "v-step-chips"
   | "v-day-card"
+  | "v-gift"
   | "score-plan"
   | "stuck-offer"
   | "same-mistake"
@@ -1208,6 +1218,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     status: "running",
   },
   {
+    id: "v-gift",
+    title: "V tells a student about what they have earned, as a gift",
+    change:
+      "When a student has earned the 7-day pass (the answer limit's offer, on its day) or reaches 10, 20, 30 or 40 Vault Points, V's button shows a red badge and V opens with \"I have a gift for you.\" and a closed box. Open your gift shows what it is and why: the 7-day pass with the same Activate as the limit card, or the points' discount with See your price. Nothing new is given away. Each gift shows once (an unopened one waits 3 days); a points milestone may come back once the points have run out and been earned again. www only, never with an active pass.",
+    why: "The owner (2026-11-21): make V feel more human and the conversation more interesting. Both rewards already exist but are met on a card or a menu line; told by V as a gift, with the reason, they may feel earned rather than sold.",
+    metric:
+      "surface_viewed 'v_gift' (one a day per student, gift and step): students who saw the badge, were shown the box, opened it, and tapped its button (activate | pricing); trials activated from V; passes bought with points within 7 days of opening a points gift. scripts/chat/gift-readout.sql",
+    rule: `Keep it if ${V_GIFT_OPEN_KEEP_PCT}%+ of the students shown the box open it. Activations and purchases are reported beside, not judged on: the practice-trial and fix-points experiments judge those.`,
+    liveSince: "2026-11-21",
+    windowDays: 28,
+    readout: "v-gift",
+    status: "running",
+  },
+  {
     id: "v-step-chips",
     title: "Tap a step of V's explanation for Explain or Reply",
     change:
@@ -1353,7 +1377,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     id: "fix-points",
     title: "Vault Points: fix a mistake, take 1% off the pass",
     change:
-      "Each question a student gets right after missing it on an earlier day earns a Vault Point (called a fix point until 9 Nov), worth 1% off a rupee pass, up to 40%. Points last 30 days and a purchase starts them again. Every offer card and /pricing show the lower price; the drill, Review, /me and the avatar menu show the points with their value (/me and the avatar from 9 Nov, to pass holders too).",
+      "Each question a student gets right after missing it on an earlier day earns a Vault Point (called a fix point until 9 Nov), worth 1% off a rupee pass, up to 40%. Points last 30 days and a purchase starts them again. Every offer card and /pricing show the lower price; the drill, Review, /me and the avatar menu show the points with their value (/me and the avatar from 9 Nov, to pass holders too). From 2026-11-21 V tells a student without a pass who reaches 10, 20, 30 or 40 points about them as a gift inside V (experiment v-gift).",
     why: "The owner's call (9 Nov), against the data: of 33 buyers, none had fixed 10+ mistakes before paying, and 18 paid on their first day. The bet is that a reward makes students fix more mistakes and turns some of the learners who never pay into buyers.",
     metric:
       "Graded fixes per active student (fix_points_readout, the award's own rule) in the 30 days after against the 30 days before (baseline 9 Nov: 792 fixes by 138 of 1,312 active students, 0.60 each), and passes sold with points (entitlement note fix_points:<n>)",
@@ -1680,7 +1704,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     id: "practice-trial",
     title: "A 7-day Practice Pass on the 3rd day at the limit",
     change:
-      "On a student's 3rd day at the daily answer limit, the wall offers a free 7-day Practice Pass instead of the Rs 199 offer (\"You are doing well. Here is your 7-day practice pass.\"). Nothing is granted until they tap Activate; the offer shows on 3 days at the limit at most, once per account, never to anyone who has held a pass. After it ends, the wall adds how many questions they answered in it (migration 0273).",
+      "On a student's 3rd day at the daily answer limit, the wall offers a free 7-day Practice Pass instead of the Rs 199 offer (\"You are doing well. Here is your 7-day practice pass.\"). Nothing is granted until they tap Activate; the offer shows on 3 days at the limit at most, once per account, never to anyone who has held a pass. After it ends, the wall adds how many questions they answered in it (migration 0273). From 2026-11-21 V also tells an offered student about it as a gift inside V (experiment v-gift), with the same Activate: read the trial numbers before and after that date apart; a trial activated from V is recorded as surface_viewed 'v_gift' action activate.",
     why: "12 of 20 pass sales from 3 to 18 Nov came within a day of a student's first day at the limit, so a trial earlier would give that moment away. Past the 3rd day only 4 of 46 buyers in six weeks had paid, while 63 students had met the limit on 3+ days and never bought. The owner asked for a trial (2026-11-18); a reverse trial lets them feel what the pass removes.",
     metric:
       "Of students offered (practice_trial_offers), the share who tap Activate (entitlements source 'trial') and the share who buy a pass (source 'razorpay') within 14 days of their trial ending, against 4 of 67 (6%) before; plus all pass sales against the weeks before, in case earlier buyers start waiting. scripts/billing/practice-trial-readout.sql",

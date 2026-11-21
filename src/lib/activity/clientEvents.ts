@@ -46,6 +46,9 @@ const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
  *  me the idea (2026-11-11): back on the question (returned), then Try one tapped (try_after). */
 /** The Review traps panel's steps (src/app/review/ChapterTraps). */
 export const REVIEW_TRAPS_ACTIONS: ReadonlySet<string> = new Set(["shown", "expand", "playbook"]);
+/** V's gift (2026-11-21, lib/chat/gift): which gift, and the step from the badge to the gift's button. */
+export const V_GIFT_KINDS: ReadonlySet<string> = new Set(["trial", "points"]);
+export const V_GIFT_ACTIONS: ReadonlySet<string> = new Set(["badge", "shown", "open", "activate", "pricing"]);
 /** The stuck offer's steps. teach_close and full_notes (2026-11-15): Teach opens a panel on the page,
  *  closed (back on the question) or left for the full notes page. */
 export const STUCK_OFFER_ACTIONS: ReadonlySet<string> = new Set([
@@ -312,6 +315,19 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
           kind: "surface_viewed",
           metadata: { surface: "start_next_tap", chapterId: raw.chapterId, from: raw.from },
           dedupeKey: `view:start_next_tap:${raw.chapterId}:${userId}:${istDayKey(now)}`,
+        },
+      };
+    }
+    // V's gift (2026-11-21): each step, per gift and day.
+    if (raw.surface === "v_gift") {
+      if (typeof raw.gift !== "string" || !V_GIFT_KINDS.has(raw.gift)) return { ok: false, error: "Unknown gift." };
+      if (typeof raw.action !== "string" || !V_GIFT_ACTIONS.has(raw.action)) return { ok: false, error: "Unknown step." };
+      return {
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "v_gift", gift: raw.gift, action: raw.action },
+          dedupeKey: `view:v_gift:${raw.action}:${raw.gift}:${userId}:${istDayKey(now)}`,
         },
       };
     }

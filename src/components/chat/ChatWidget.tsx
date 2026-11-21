@@ -77,6 +77,10 @@ import { parseHourlyLimit, type HourlyLimitReply } from "@/lib/chat/hourlyLimit"
 import { liftDailyLimit } from "@/components/reveal/useRevealMeter";
 import VProgressCard from "./VProgressCard";
 import VDayCard from "./VDayCard";
+import VGiftCard from "./VGiftCard";
+import { giftKey, type VGift } from "@/lib/chat/gift";
+import { giftDue, markGiftOpened, markGiftShown, readGiftMarks, writeGiftMarks } from "@/lib/chat/giftSeen";
+import { vLauncherBadge, vLauncherLabel } from "@/lib/chat/launcher";
 import type { DayCard } from "@/lib/chat/dayCard";
 import { dayCardDue, readSeenDay, writeSeenDay } from "@/lib/chat/daySeen";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
@@ -252,6 +256,66 @@ export default function ChatWidget() {
   useEffect(() => {
     if (dayBadge) sendActivityOnce("v_day_badge", { kind: "surface_viewed", surface: "v_day_badge" });
   }, [dayBadge]);
+  // V's gift (owner, 2026-11-21, lib/chat/gift): something the student has
+  // already earned (the 7-day pass, or a Vault Points milestone), told as a
+  // gift inside V. The pulse says what is earned; this device says whether it
+  // still waits (lib/chat/giftSeen). The shared pulse read, so no extra request.
+  const giftPulse = usePulse(signedIn);
+  const earnedGiftNow = giftPulse?.gift ?? null;
+  const earnedKey = earnedGiftNow ? giftKey(earnedGiftNow) : null;
+  const [giftWaiting, setGiftWaiting] = useState(false);
+  useEffect(() => {
+    setGiftWaiting(giftDue(earnedGiftNow, readGiftMarks(), Date.now()));
+    // earnedKey stands for the gift; `open` re-reads after V was opened or closed.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [earnedKey, open]);
+  // The gift shown in the open window, and whether its box was opened there.
+  const [panelGift, setPanelGift] = useState<VGift | null>(null);
+  const [giftOpened, setGiftOpened] = useState(false);
+  const giftBadge = !open && unread === 0 && giftWaiting && !!earnedGiftNow;
+  const launcherBadge = vLauncherBadge({ open, unread, dayDue: dayDot, giftDue: giftBadge });
+  useEffect(() => {
+    if (giftBadge && earnedGiftNow) {
+      sendActivityOnce(`v_gift:badge:${earnedGiftNow.kind}`, {
+        kind: "surface_viewed",
+        surface: "v_gift",
+        gift: earnedGiftNow.kind,
+        action: "badge",
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [giftBadge, earnedKey]);
+  /** On opening V: show the gift's closed box if one is waiting. */
+  function showWaitingGift() {
+    const now = Date.now();
+    const marks = readGiftMarks();
+    if (!earnedGiftNow || !giftDue(earnedGiftNow, marks, now) || !marks) {
+      setPanelGift(null);
+      return;
+    }
+    writeGiftMarks(markGiftShown(marks, earnedGiftNow, now));
+    setPanelGift(earnedGiftNow);
+    setGiftOpened(false);
+    sendActivityOnce(`v_gift:shown:${earnedGiftNow.kind}`, {
+      kind: "surface_viewed",
+      surface: "v_gift",
+      gift: earnedGiftNow.kind,
+      action: "shown",
+    });
+  }
+  function openGift() {
+    if (!panelGift) return;
+    const marks = readGiftMarks();
+    if (marks) writeGiftMarks(markGiftOpened(marks, panelGift, Date.now()));
+    setGiftOpened(true);
+    setGiftWaiting(false);
+    sendActivityOnce(`v_gift:open:${panelGift.kind}`, {
+      kind: "surface_viewed",
+      surface: "v_gift",
+      gift: panelGift.kind,
+      action: "open",
+    });
+  }
   // "My plan for today" (Phase 2): only for a student on the board path, from the same shared read.
   const showPath = pulse?.path?.state === "on";
   // "Ask V about this question" (2026-10-19): the question this conversation is about, sent with each message.
@@ -515,6 +579,8 @@ export default function ChatWidget() {
     }
     void loadAccountConversation();
     if (mode === "chat" && dayDue()) void loadDay();
+    if (mode === "chat") showWaitingGift();
+    else setPanelGift(null);
     setOpen(true);
   }
 
@@ -1239,6 +1305,9 @@ export default function ChatWidget() {
                   )}
                   {t.plan && !t.reveal && <VPlanCard onNavigate={close} />}
                   {t.progress && <VProgressCard onNavigate={close} />}
+                  {n === 0 && panelGift && (
+                    <VGiftCard gift={panelGift} opened={giftOpened} onOpen={openGift} onNavigate={close} />
+                  )}
                   {n === 0 && day && <VDayCard card={day} onNavigate={close} />}
                   {n === 0 && !day && dayLoading && (
                     <div className="ml-9 mt-2 h-44 animate-pulse rounded-xl border bg-muted/40" aria-hidden />
@@ -1377,15 +1446,7 @@ export default function ChatWidget() {
         ref={launcherRef}
         type="button"
         onClick={() => (open ? close() : openChat())}
-        aria-label={
-          open
-            ? "Close chat with V"
-            : unread > 0
-              ? `Chat with V, ${unread} new ${unread === 1 ? "reply" : "replies"}`
-              : dayDot
-                ? "Chat with V, your day is ready"
-                : "Chat with V"
-        }
+        aria-label={vLauncherLabel({ open, unread, dayDue: dayDot, giftDue: giftBadge })}
         aria-expanded={open}
         title="Chat with V"
         tabIndex={tucked ? -1 : undefined}
@@ -1398,22 +1459,19 @@ export default function ChatWidget() {
         ) : (
           <VFace avatar="idle" className="h-9 w-9 object-contain sm:h-12 sm:w-12" />
         )}
-        {/* "Your day" waiting (2026-11-20): a red 1, the way a phone marks something new.
-            It was a 12 px blue dot that read as decoration. red-600 under white text is 4.8:1. */}
-        {dayBadge && (
+        {/* What waits inside V (lib/chat/launcher): unread replies in the brand
+            colour, as before; otherwise a red count of the "Your day" card
+            (2026-11-20, was a 12 px blue dot that read as decoration) and a
+            gift (2026-11-21), the way a phone marks something new. red-600
+            under white text is 4.8:1. */}
+        {launcherBadge && (
           <span
             aria-hidden
-            className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-red-600 px-1 text-[11px] font-semibold leading-none text-white ring-2 ring-background"
+            className={`absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full px-1 text-[11px] font-semibold leading-none ring-2 ring-background ${
+              launcherBadge.tone === "reply" ? "bg-brand text-brand-foreground" : "bg-red-600 text-white"
+            }`}
           >
-            1
-          </span>
-        )}
-        {!open && unread > 0 && (
-          <span
-            aria-hidden
-            className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-brand px-1 text-[11px] font-semibold leading-none text-brand-foreground ring-2 ring-background"
-          >
-            {unread > 9 ? "9+" : unread}
+            {launcherBadge.count > 9 ? "9+" : launcherBadge.count}
           </span>
         )}
       </button>
