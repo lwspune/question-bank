@@ -7,6 +7,7 @@ import { drillChapterHref } from "@/lib/drill/from";
 import type { Pulse } from "@/lib/pulse/cache";
 import { barWidth } from "@/lib/me/charts";
 import SegmentBar from "@/components/me/SegmentBar";
+import TeachChapterButton from "@/components/chat/TeachChapterButton";
 
 /**
  * /me "Weak spots" (2026-11-06): the chapters where most of the student's
@@ -59,6 +60,17 @@ export default function WeakSpots({
                 {w.place && <> {" · "} {w.place}</>}
               </p>
             </div>
+            {/* V teaches the chapter from these mistakes (2026-11-21). Not on the staff
+                view: it would open the STAFF member's V, not the student's. */}
+            {!given && (
+              <TeachChapterButton
+                chapter={w.name}
+                place={w.place}
+                chapterId={w.chapterId}
+                from="me_weak"
+                className="inline-flex h-9 shrink-0 items-center justify-center rounded-md border border-brand-accent/30 bg-brand-accent/[0.06] px-3 text-sm font-medium text-brand-accent transition-colors hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              />
+            )}
             <Link
               href={drillChapterHref("me_weak", w.chapterId)}
               prefetch={false}

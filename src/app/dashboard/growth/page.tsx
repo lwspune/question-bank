@@ -76,6 +76,8 @@ import {
   V_EXAM_COUNTDOWN_KEEP_PCT,
   V_CHECKIN_ANSWER_KEEP_PCT,
   V_CHECKIN_PRACTISE_KEEP_PCT,
+  V_TEACH_CHAPTER_ON_KEEP_PCT,
+  V_TEACH_CHAPTER_TAP_KEEP_PCT,
   V_STEP_CHIPS_YES_KEEP_PCT,
   V_STEPS_FINISH_KEEP_PCT,
   SCORE_PLAN_DRILL_KEEP_PCT,
@@ -1080,6 +1082,14 @@ export default async function GrowthPage() {
             Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with scripts/chat/checkin-readout.sql: keep it if{" "}
             {V_CHECKIN_ANSWER_KEEP_PCT}%+ of the students asked tap an answer and {V_CHECKIN_PRACTISE_KEEP_PCT}%+ of showings are
             followed by practice that day (the card it replaces: 7 of 10).
+          </p>
+        );
+      case "v-teach-chapter":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with scripts/chat/teach-chapter-readout.sql: keep a
+            place if {V_TEACH_CHAPTER_TAP_KEEP_PCT}%+ of the students shown its button tap it, and the idea if{" "}
+            {V_TEACH_CHAPTER_ON_KEEP_PCT}%+ of the chapters taught from a tap get a second message from the student.
           </p>
         );
       case "v-exam-countdown":

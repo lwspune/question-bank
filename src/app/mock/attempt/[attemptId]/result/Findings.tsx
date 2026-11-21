@@ -3,6 +3,7 @@ import { ArrowRight, Clock, Target, XCircle } from "lucide-react";
 import { formatDwell } from "@/lib/email/templates";
 import { formatMarks, formatWhere, type MockReport } from "@/lib/email/mockReport";
 import { goPracticeHref } from "@/lib/performance/links";
+import TeachChapterButton from "@/components/chat/TeachChapterButton";
 
 /**
  * "What to fix next" — the diagnosis, at the moment the student is looking at
@@ -131,6 +132,15 @@ export default function Findings({
                 >
                   Practise this
                 </Link>
+                {/* V teaches the chapter, starting with this topic (2026-11-21). */}
+                <TeachChapterButton
+                  chapter={s.chapter}
+                  exam={report.examName}
+                  startWith={s.subtopic}
+                  from="mock_result"
+                  label="Teach me this"
+                  className="rounded-sm text-brand-accent underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                />
               </li>
             ))}
           </ul>

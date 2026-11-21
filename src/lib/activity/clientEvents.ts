@@ -12,6 +12,7 @@ import { istDayKey } from "@/lib/email/dueNudge";
 import { AFTER_CHECKOUT_ONLY, isDeclineReason, type DeclineReason } from "@/lib/billing/declineReasons";
 import { CHAPTER_FIX_FROM } from "@/lib/drill/from";
 import { START_NEXT_FROM } from "@/lib/me/startNext";
+import { TEACH_CHAPTER_FROM } from "@/lib/chat/teachChapter";
 import { levelById } from "@/lib/play/levels";
 import { PUZZLES } from "@/lib/play/data/wordGroups";
 import { LAUNCH_LEVELS, SHOTS } from "@/lib/play/launch";
@@ -46,6 +47,9 @@ const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
  *  me the idea (2026-11-11): back on the question (returned), then Try one tapped (try_after). */
 /** The Review traps panel's steps (src/app/review/ChapterTraps). */
 export const REVIEW_TRAPS_ACTIONS: ReadonlySet<string> = new Set(["shown", "expand", "playbook"]);
+/** The "Teach me" buttons' steps and places (lib/chat/teachChapter). */
+const TEACH_CHAPTER_ACTIONS: ReadonlySet<string> = new Set(["shown", "tap"]);
+const TEACH_CHAPTER_FROM_SET: ReadonlySet<string> = new Set<string>(TEACH_CHAPTER_FROM);
 /** V's gift (2026-11-21, lib/chat/gift): which gift, and the step from the badge to the gift's button. */
 export const V_GIFT_KINDS: ReadonlySet<string> = new Set(["trial", "points"]);
 export const V_GIFT_ACTIONS: ReadonlySet<string> = new Set(["badge", "shown", "open", "activate", "pricing"]);
@@ -369,6 +373,23 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
           kind: "surface_viewed",
           metadata: { surface: "v_gift", gift: raw.gift, action: raw.action },
           dedupeKey: `view:v_gift:${raw.action}:${raw.gift}:${userId}:${istDayKey(now)}`,
+        },
+      };
+    }
+    // The "Teach me" buttons (2026-11-21): seen and tapped, per place (and chapter, where it has one) and day.
+    if (raw.surface === "teach_chapter") {
+      if (typeof raw.action !== "string" || !TEACH_CHAPTER_ACTIONS.has(raw.action)) return { ok: false, error: "Unknown step." };
+      if (typeof raw.from !== "string" || !TEACH_CHAPTER_FROM_SET.has(raw.from)) return { ok: false, error: "Unknown page." };
+      if (raw.chapterId !== undefined && (typeof raw.chapterId !== "string" || !UUID_RE.test(raw.chapterId))) {
+        return { ok: false, error: "Invalid chapter id." };
+      }
+      const chapterId = typeof raw.chapterId === "string" ? raw.chapterId : null;
+      return {
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "teach_chapter", action: raw.action, from: raw.from, ...(chapterId ? { chapterId } : {}) },
+          dedupeKey: `view:teach_chapter:${raw.action}:${raw.from}:${chapterId ?? "-"}:${userId}:${istDayKey(now)}`,
         },
       };
     }

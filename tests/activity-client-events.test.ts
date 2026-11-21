@@ -719,3 +719,42 @@ describe("parseClientEvent - a teaching moment", () => {
     for (const raw of bad) expect(parseClientEvent(raw, "u1", NOW).ok, JSON.stringify(raw)).toBe(false);
   });
 });
+
+// "Teach me" buttons (2026-11-21, experiment v-teach-chapter): each place's line
+// seen and tapped, so the readout can say which place students actually use.
+describe("parseClientEvent - teach a chapter", () => {
+  const TC = "0b5e55ed-1b2c-4d3e-9f00-112233445566";
+
+  it("records seen and tapped per place, once a day, with the chapter when the place has one", () => {
+    for (const action of ["shown", "tap"]) {
+      for (const from of ["me_weak", "mock_result", "v_button", "v_pick"]) {
+        expect(parseClientEvent({ kind: "surface_viewed", surface: "teach_chapter", action, from }, "u1", NOW)).toEqual({
+          ok: true,
+          value: {
+            kind: "surface_viewed",
+            metadata: { surface: "teach_chapter", action, from },
+            dedupeKey: `view:teach_chapter:${action}:${from}:-:u1:2026-09-27`,
+          },
+        });
+      }
+    }
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "me_weak", chapterId: TC }, "u1", NOW)).toEqual({
+      ok: true,
+      value: {
+        kind: "surface_viewed",
+        metadata: { surface: "teach_chapter", action: "tap", from: "me_weak", chapterId: TC },
+        dedupeKey: `view:teach_chapter:tap:me_weak:${TC}:u1:2026-09-27`,
+      },
+    });
+  });
+
+  it("refuses an unknown step, an unknown place or a bad chapter id", () => {
+    const bad = [
+      { kind: "surface_viewed", surface: "teach_chapter", action: "open", from: "me_weak" },
+      { kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "homepage" },
+      { kind: "surface_viewed", surface: "teach_chapter", action: "tap" },
+      { kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "me_weak", chapterId: "x" },
+    ];
+    for (const raw of bad) expect(parseClientEvent(raw, "u1", NOW).ok, JSON.stringify(raw)).toBe(false);
+  });
+});

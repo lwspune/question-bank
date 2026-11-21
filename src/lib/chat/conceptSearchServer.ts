@@ -74,7 +74,7 @@ export async function loadNotesChapterParts(key: string): Promise<NotesChapterPa
   if (!load) return null;
   const notes = await load();
   const out: NotesChapterParts = {};
-  for (const [slug, n] of Object.entries(notes)) out[slug] = { title: n.title, oneLineDefinition: n.oneLineDefinition };
+  for (const [slug, n] of Object.entries(notes)) out[slug] = { title: n.title, oneLineDefinition: n.oneLineDefinition, subtopicName: n.subtopicName };
   return out;
 }
 

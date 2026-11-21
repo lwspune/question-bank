@@ -127,6 +127,10 @@ export const SURFACES = [
   // lib/notes/drillPanel): metadata.action (open, more, close, full_page), metadata.link
   // (concept, topic) and metadata.subtopic (the notes topic slug).
   "notes_drill",
+  // The "Teach me" buttons that open V on a chapter (2026-11-21, lib/chat/teachChapter,
+  // experiment v-teach-chapter): metadata.action (shown, tap), metadata.from (me_weak,
+  // mock_result, v_button, v_pick) and metadata.chapterId where the place has one.
+  "teach_chapter",
 ] as const;
 
 export type Surface = (typeof SURFACES)[number];

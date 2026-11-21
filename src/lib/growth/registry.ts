@@ -333,6 +333,18 @@ export const V_CHECKIN_ANSWER_KEEP_PCT = 40;
 export const V_CHECKIN_PRACTISE_KEEP_PCT = 70;
 
 /**
+ * "v-teach-chapter": keep the "Teach me" buttons if at least
+ * V_TEACH_CHAPTER_TAP_KEEP_PCT of the students shown one tap one, and at least
+ * V_TEACH_CHAPTER_ON_KEEP_PCT of the chapters V teaches from a tap get a second
+ * message from the student in that chat (they went on, asked, or tried). The
+ * nearest baseline: the stuck offer's Teach me the idea, tapped on 32 of 174
+ * offers (18%) in the 28 days to 2026-11-21. A button is a lighter ask than an
+ * offer at a stuck moment, so the bar is half of it.
+ */
+export const V_TEACH_CHAPTER_TAP_KEEP_PCT = 10;
+export const V_TEACH_CHAPTER_ON_KEEP_PCT = 30;
+
+/**
  * "score-plan": keep "How to raise your score" if at least this share of the
  * fair full-paper attempts it shows on start the Fix list within a day (%).
  * Baseline with "What to fix next", 36 fair attempts (60 to 14 days before
@@ -597,6 +609,7 @@ export type Readout =
   | "v-gift"
   | "v-exam-countdown"
   | "v-checkin"
+  | "v-teach-chapter"
   | "score-plan"
   | "stuck-offer"
   | "same-mistake"
@@ -1290,6 +1303,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-21",
     windowDays: 28,
     readout: "v-exam-countdown",
+    status: "running",
+  },
+  {
+    id: "v-teach-chapter",
+    title: "\"Teach me\" a chapter with V, starting from the student's mistakes",
+    change:
+      "Three buttons open V with \"Teach me <chapter> for <exam>. Start from what I got wrong.\": Teach me beside Fix in /me's \"Your weak spots\", Teach me this beside Practise this on the mock result (both cards), and Teach me a chapter among V's own buttons, which offers the chapters with most mistakes waiting. V's chapter_overview now reads the student's waiting mistakes (the Fix list's), counts them by notes part, starts at the part holding most, and uses the latest one as its worked example. Shown only while V can explain (the explain switch).",
+    why: "674 students had a day with 3+ wrong answers in one chapter in the 28 days to 2026-11-21, and only 4 asked V to teach a chapter: nobody knew it could. Ask V under a question card, which says exactly what V will do, sends about half of all V messages. The owner approved the places in a mockup (2026-11-21). The card's own spot waits for the stuck-offer readout (one line per answer).",
+    metric:
+      "surface_viewed 'teach_chapter' (action shown / tap, metadata.from me_weak, mock_result, v_button, v_pick; once a day each): taps over students shown, per place; then the chats a tap opened (chat_interactions message starting \"Teach me \") and whether the student sent a second message there. scripts/chat/teach-chapter-readout.sql",
+    rule: `Keep a place if ${V_TEACH_CHAPTER_TAP_KEEP_PCT}%+ of the students shown its button tap it, and keep the whole idea if ${V_TEACH_CHAPTER_ON_KEEP_PCT}%+ of the chapters taught from a tap get a second message from the student. A place under the tap bar goes; under the second bar, read the replies before changing anything.`,
+    liveSince: "2026-11-21",
+    windowDays: 28,
+    readout: "v-teach-chapter",
     status: "running",
   },
   {

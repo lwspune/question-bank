@@ -313,6 +313,10 @@ async function main() {
         // Read by hand: surface_viewed v_day by student and day, taps, drill starts from v_day.
         line = "by hand: scripts/chat/day-card-readout.sql (v_day showings on 2+ days, drill starts from v_day)";
         break;
+      case "v-teach-chapter":
+        // Read by hand: teach_chapter shown/tap per place, and second messages in the chats a tap opened.
+        line = "by hand: scripts/chat/teach-chapter-readout.sql (tap rate per place, second message after a tap)";
+        break;
       case "v-checkin":
         // Read by hand: v_checkin steps, and practice the same day after the question.
         line = "by hand: scripts/chat/checkin-readout.sql (answer rate, practice that day)";

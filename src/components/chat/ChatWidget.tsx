@@ -5,7 +5,8 @@ import { useIntlSite } from "@/lib/sites/useIntlSite";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { usePublicPathname } from "@/lib/nav/usePublicPathname";
-import { CalendarCheck, Check, ListChecks, Plus, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, TrendingUp, X } from "lucide-react";
+import { CalendarCheck, Check, GraduationCap, ListChecks, Plus, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, TrendingUp, X } from "lucide-react";
+import { TEACH_ANY_CHAPTER, teachChapterMessage } from "@/lib/chat/teachChapter";
 import { toast } from "sonner";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { useVFeatures } from "@/lib/chat/useVExplain";
@@ -85,7 +86,7 @@ import { giftDue, markGiftOpened, markGiftShown, readGiftMarks, writeGiftMarks }
 import { vLauncherBadge, vLauncherLabel } from "@/lib/chat/launcher";
 import type { DayCard } from "@/lib/chat/dayCard";
 import { dayCardDue, readSeenDay, writeSeenDay } from "@/lib/chat/daySeen";
-import { sendActivityOnce } from "@/lib/activity/clientBeacon";
+import { sendActivity, sendActivityOnce } from "@/lib/activity/clientBeacon";
 import VPathCard from "./VPathCard";
 import {
   ASK_V_EVENT,
@@ -125,6 +126,8 @@ type ChatTurn = HistoryTurn & {
   plan?: boolean;
   /** The "How's my progress" card (2026-10-27): the student's own numbers, read when shown. */
   progress?: boolean;
+  /** "Teach me a chapter" (2026-11-21): the chapters with most mistakes waiting, each a button. */
+  teachPick?: { chapterId: string; name: string; place: string }[];
   /** Today's board-path card (2026-11-08, MENTOR_SPEC.md Phase 2): the button, or V's plan tools answered from the path. */
   path?: boolean;
   /** A fresh reply, shown a line at a time (2026-10-23). Never kept: a reply from history shows whole. */
@@ -241,6 +244,12 @@ export default function ChatWidget() {
   // The header's shared read (no extra request): the button shows once there is something to show.
   const pulse = usePulse(signedIn && features.progress);
   const showProgress = !!pulse && ((pulse.totals?.answered ?? 0) > 0 || pulse.due > 0);
+  // "Teach me a chapter" seen (experiment v-teach-chapter): once a page load, the day dedupe is the server's.
+  useEffect(() => {
+    if (open && mode === "chat" && features.explain) {
+      sendActivityOnce("teach_chapter:shown:v_button", { kind: "surface_viewed", surface: "teach_chapter", action: "shown", from: "v_button" });
+    }
+  }, [open, mode, features.explain]);
   // "Your day" (2026-11-15, lib/chat/dayCard): the first open of an India day
   // shows the student's day in place of the greeting; a dot on the button says
   // it is waiting. Never over an unread reply.
@@ -725,6 +734,36 @@ export default function ChatWidget() {
    * "How's my progress" (2026-10-27): the card of the student's own numbers.
    * No AI call and nothing stored, so it costs no message and stays on this screen only.
    */
+  /**
+   * "Teach me a chapter" (2026-11-21, owner-approved mockup E): V offers the
+   * chapters with most mistakes waiting (the pulse's, the same list as /me's
+   * "Your weak spots"), so nobody has to type a chapter name. With none to offer
+   * it simply asks V, which asks which chapter.
+   */
+  function startTeachChapter() {
+    if (sending) return;
+    sendActivity({ kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "v_button" });
+    const weak = pulse?.weak ?? [];
+    if (weak.length === 0) {
+      void askTyped(TEACH_ANY_CHAPTER, null);
+      return;
+    }
+    addTurn({ role: "user", text: "Teach me a chapter", transient: true });
+    addTurn({
+      role: "assistant",
+      avatar: "idle",
+      text: "Sure. Which one? These have the most mistakes waiting for you:",
+      teachPick: weak.map((w) => ({ chapterId: w.chapterId, name: w.name, place: w.place })),
+      transient: true,
+    });
+  }
+
+  function teachPicked(p: { chapterId: string; name: string; place: string } | null) {
+    if (sending) return;
+    if (p) sendActivity({ kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "v_pick", chapterId: p.chapterId });
+    void askTyped(p ? teachChapterMessage({ chapter: p.name, place: p.place }) : TEACH_ANY_CHAPTER, null);
+  }
+
   function showProgressCard() {
     if (sending) return;
     trackFunnel("v_progress_tap", { action: "open" });
@@ -1307,6 +1346,30 @@ export default function ChatWidget() {
                   )}
                   {t.plan && !t.reveal && <VPlanCard onNavigate={close} />}
                   {t.progress && <VProgressCard onNavigate={close} />}
+                  {t.teachPick && (
+                    <div className="flex flex-wrap gap-2 pl-9">
+                      {t.teachPick.map((p) => (
+                        <button
+                          key={p.chapterId}
+                          type="button"
+                          onClick={() => teachPicked(p)}
+                          disabled={sending}
+                          aria-label={`Teach me ${p.name}${p.place ? `, ${p.place}` : ""}`}
+                          className="inline-flex min-h-9 items-center rounded-full bg-brand px-3.5 py-1.5 text-xs font-semibold text-brand-foreground shadow-sm transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                        >
+                          {p.name}
+                        </button>
+                      ))}
+                      <button
+                        type="button"
+                        onClick={() => teachPicked(null)}
+                        disabled={sending}
+                        className="inline-flex min-h-9 items-center rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3.5 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                      >
+                        Another chapter
+                      </button>
+                    </div>
+                  )}
                   {n === 0 && panelGift && (
                     <VGiftCard gift={panelGift} opened={giftOpened} onOpen={openGift} onNavigate={close} />
                   )}
@@ -1366,6 +1429,17 @@ export default function ChatWidget() {
                 >
                   <CalendarCheck className="h-3.5 w-3.5" aria-hidden />
                   My plan for today
+                </button>
+              )}
+              {features.explain && (
+                <button
+                  type="button"
+                  onClick={startTeachChapter}
+                  disabled={sending}
+                  className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3.5 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                >
+                  <GraduationCap className="h-3.5 w-3.5" aria-hidden />
+                  Teach me a chapter
                 </button>
               )}
               {showProgress && (

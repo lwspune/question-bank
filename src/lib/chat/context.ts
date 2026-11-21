@@ -49,7 +49,7 @@ import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import type { ExamSlug } from "@/lib/exam/examContext";
 import { conceptTool } from "./conceptSearch";
 import type { ConceptSources } from "./conceptSearchServer";
-import { chapterOverviewTool } from "./chapterOverview";
+import { chapterOverviewTool, type ChapterOverviewDeps } from "./chapterOverview";
 import { notesPageOf } from "./notesItem";
 import { languageTool, type VLanguage } from "./language";
 
@@ -122,6 +122,8 @@ export async function loadVContext(
     followsUp?: { stem: string | null } | null;
     /** explain_concept's data sources (lib/chat/conceptSearchServer.ts conceptSources); offered with the question tools. */
     concepts?: ConceptSources | null;
+    /** chapter_overview's "start from your mistakes" reads (lib/chat/chapterMissesServer.ts); absent when signed out. */
+    chapterMisses?: Pick<ChapterOverviewDeps, "loadMisses" | "loadMissExample"> | null;
     /** The signed-in student's recent questions and saves (lib/chat/myQuestions.ts); absent when signed out. */
     myQuestions?: Omit<MyQuestionDeps, "signedIn"> | null;
     /** The language the student saved for every reply (student_profiles.v_language, 0232). */
@@ -261,6 +263,9 @@ export async function loadVContext(
         loadNotesChapter: opts.concepts.loadNotesChapter,
         page: conceptPage,
         onPaths: addPaths,
+        // Signed in: start from the student's waiting mistakes (the Fix list's), 2026-11-21.
+        loadMisses: opts.chapterMisses?.loadMisses ?? null,
+        loadMissExample: opts.chapterMisses?.loadMissExample ?? null,
       })
     );
   }

@@ -14,6 +14,7 @@ import type { DownloadBox, NotesDrillLink, PaywallGate, RepeatLineFrom, VIEW_BRO
 import type { DeclineReason } from "@/lib/billing/declineReasons";
 import type { ChapterFixFrom } from "@/lib/drill/from";
 import type { StartNextFrom } from "@/lib/me/startNext";
+import type { TeachChapterFrom } from "@/lib/chat/teachChapter";
 
 const ENDPOINT = "/api/activity/event";
 const sent = new Set<string>();
@@ -53,6 +54,14 @@ export type ClientEvent =
       surface: "study_time";
       action: "next_shown" | "next_tap";
       chapterId: string;
+    }
+  | {
+      /** A "Teach me" button seen or tapped (lib/chat/teachChapter, 2026-11-21). */
+      kind: "surface_viewed";
+      surface: "teach_chapter";
+      action: "shown" | "tap";
+      from: TeachChapterFrom;
+      chapterId?: string;
     }
   | {
       /** The stuck offer seen, or one of its buttons tapped (lib/questions/stuckOffer). */
