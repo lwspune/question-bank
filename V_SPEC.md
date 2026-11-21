@@ -117,6 +117,13 @@ live, and 25 of 97 concept searches that month found nothing.
   `npm run chat:notes-data`), so V maps the chapter, teaches the first part and
   offers the rest one at a time. A chapter with no notes gives its subtopics.
 - With nothing found, V does not tell the student so; it just explains.
+- Signed in, `chapter_overview` starts from the student's own waiting mistakes
+  (the Fix list's, so V's count is /me's): it counts them by notes part, starts
+  at the part holding most, and gives the latest as the worked example with the
+  student's pick, so V can name the slip. Three "Teach me" buttons ask for it
+  (/me "Your weak spots", the mock result, V's own button); experiment
+  `v-teach-chapter`. Nobody had used the chapter teaching unprompted: 674
+  students had a day of 3+ misses in one chapter in 28 days, 4 asked V.
 
 ## 3. Standing decisions
 
