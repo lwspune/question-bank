@@ -630,6 +630,10 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/one part at a time/i);
     // 2026-11-21: it may name the student's waiting mistakes and a part to start at; the rule must not say "first part" over it.
     expect(p).toMatch(/the part it says to start at/i);
+    // 2026-11-21 (owner's phone): the Go on button asks for a part by number; a card and buttons
+    // carry the map, the notes and "go on", so V never writes them as text.
+    expect(p).toMatch(/with part N/i);
+    expect(p).toMatch(/never list the parts/i);
     // Its answers and pages are usable like the other tools'.
     expect(p).toMatch(/returned by [^.]*chapter_overview/);
     expect(p).toMatch(/what the [^.]*chapter_overview[^.]*tools return/);

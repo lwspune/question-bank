@@ -9,19 +9,25 @@
  *
  * Read with the student's own login (user_activity is own-row under RLS); the
  * example question with the anon client, so V only ever sees a PUBLIC one.
+ *
+ * THE QUESTION TO TRY (2026-11-21, mockup "Teach, then one question"): one like
+ * the worked mistake, else one from the part's topic; never a question the
+ * student already opened today, and never one of their waiting mistakes (Fix
+ * serves those).
  */
 import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { loadOwnPool } from "@/lib/drill/compose";
 import { chapterMissesOf, toMissExample, type ChapterOverviewDeps } from "./chapterOverview";
-import { loadVQuestion } from "./questionToolsServer";
+import { loadSimilarId, loadSubtopicQuestionId, loadVQuestion } from "./questionToolsServer";
+import { revealedToday } from "./questionReveal";
 
 export function buildChapterMissDeps(
   db: SupabaseClient,
   anon: SupabaseClient,
   userId: string,
   intl: boolean
-): Pick<ChapterOverviewDeps, "loadMisses" | "loadMissExample"> {
+): Pick<ChapterOverviewDeps, "loadMisses" | "loadMissExample" | "loadTryId"> {
   return {
     loadMisses: async (hit) => {
       const { drillable } = await loadOwnPool(db, userId, new Date(), intl);
@@ -30,6 +36,12 @@ export function buildChapterMissDeps(
     loadMissExample: async (questionId) => {
       const [q, pick] = await Promise.all([loadVQuestion(anon, questionId), latestPick(db, userId, questionId)]);
       return toMissExample(q, pick);
+    },
+    loadTryId: async ({ chapterId, subtopic, near, exclude }) => {
+      const skip = [...exclude, ...(await revealedToday(db, userId, new Date()))];
+      const q = near ? await loadVQuestion(anon, near) : null;
+      if (q?.subtopicId) return loadSimilarId(anon, q, skip);
+      return chapterId && subtopic ? loadSubtopicQuestionId(anon, chapterId, subtopic, skip) : null;
     },
   };
 }

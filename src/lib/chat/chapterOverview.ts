@@ -9,8 +9,9 @@
  *
  * This tool finds the chapter (find_chapters' own search), then its notes
  * chapter by exam and chapter name (notesChapters.generated.ts), and returns the
- * parts in teaching order with each part's one-line definition and page. V maps
- * the chapter, teaches the first part, and offers the rest one part at a time.
+ * parts in teaching order with each part's one-line definition and page. V
+ * teaches one part; the window draws the map, a question to try and the
+ * lesson's buttons from the lesson the tool hands it (lib/chat/lesson.ts).
  * A chapter with no notes (board chapters have none by design) returns its
  * subtopic names and its questions page.
  *
@@ -21,6 +22,7 @@ import type { VTool } from "./anthropic";
 import { chapterPath, findChapters, type ChapterHit, type ChapterSearchRow } from "./chapterSearch";
 import type { DueQuestion } from "@/lib/drill/select";
 import type { VQuestion } from "./questionTools";
+import { lessonOrder, nextPart, type LessonPart, type VLesson } from "./lesson";
 
 /** A notes chapter, keyed the way the bank names it (written by `npm run chat:notes-data`). */
 export type NotesChapterRef = {
@@ -79,56 +81,77 @@ export function toMissExample(q: VQuestion | null, chose: string | null): MissEx
 
 const norm = (s: string) => s.replace(/\s+/g, " ").trim().toLowerCase();
 
-/** The student's mistakes, grouped for V: by notes part (teaching order) or, with no notes, by topic. */
-type Mine = {
-  total: number;
-  /** Labelled groups with their count, in the order V should read them. */
-  groups: { label: string; count: number }[];
-  /** Mistakes in a topic no notes part covers. */
-  other: number;
-  /** Where to start: "part 2, Dot Product" or a topic name; null = the first part. */
-  start: string | null;
-  example: MissExample | null;
-};
+/**
+ * One unit the lesson teaches: a notes part, or, for a chapter with no notes
+ * (board chapters have none by design), a bank topic.
+ */
+type Unit = { n: number; title: string; subtopicName: string | null; href: string | null; definition: string | null };
 
-function mineByParts(
-  misses: readonly ChapterMiss[],
-  ordered: readonly { n: number; title: string; subtopicName?: string }[],
-  example: MissExample | null
-): Mine {
-  const counts = new Map<number, number>();
-  let other = 0;
-  for (const m of misses) {
-    const part = ordered.find((p) => p.subtopicName && norm(p.subtopicName) === norm(m.subtopic));
-    if (part) counts.set(part.n, (counts.get(part.n) ?? 0) + 1);
-    else other += 1;
-  }
-  const groups = ordered.filter((p) => counts.has(p.n)).map((p) => ({ label: p.title, count: counts.get(p.n)! }));
-  // Most mistakes first; a tie goes to the earlier part, since `ordered` is teaching order.
-  let best: { n: number; title: string } | null = null;
-  let bestCount = 0;
-  for (const p of ordered) {
-    const c = counts.get(p.n) ?? 0;
-    if (c > bestCount) {
-      best = p;
-      bestCount = c;
+function unitsOf(hit: ChapterSearchRow, notes: { ref: NotesChapterRef; parts: NotesChapterParts } | null): Unit[] {
+  if (notes) {
+    const out: Unit[] = [];
+    for (const slug of notes.ref.slugs) {
+      const part = notes.parts[slug];
+      if (!part) continue;
+      out.push({
+        n: out.length + 1,
+        title: part.title,
+        subtopicName: part.subtopicName ?? null,
+        href: `/notes/${notes.ref.key}/${slug}`,
+        definition: part.oneLineDefinition,
+      });
     }
+    return out;
   }
-  return { total: misses.length, groups, other, start: best ? `part ${best.n}, ${best.title}` : null, example };
+  return (hit.subtopicNames ?? []).map((t, i) => ({ n: i + 1, title: t, subtopicName: t, href: null, definition: null }));
 }
 
-function mineByTopic(misses: readonly ChapterMiss[], example: MissExample | null): Mine {
-  const by = new Map<string, { label: string; count: number; last: string }>();
-  for (const m of misses) {
-    const key = norm(m.subtopic);
-    const g = by.get(key);
-    if (g) {
-      g.count += 1;
-      if (m.lastWrongAt > g.last) g.last = m.lastWrongAt;
-    } else by.set(key, { label: m.subtopic.trim(), count: 1, last: m.lastWrongAt });
+/**
+ * Where the lesson stands: each unit with the student's waiting mistakes in it,
+ * the unit this reply teaches, and the mistake to work as its example.
+ */
+type LessonPlan = {
+  units: Unit[];
+  parts: LessonPart[];
+  current: number;
+  /** The student asked for this unit by number (the Go on button). */
+  asked: boolean;
+  /** The waiting mistakes; null = not known (signed out, a failed read): claim nothing. */
+  misses: readonly ChapterMiss[] | null;
+  /** Mistakes in a topic no unit covers. */
+  other: number;
+  /** The mistake to work as the example: the latest in the current unit. */
+  exampleMiss: ChapterMiss | null;
+  /** The example sits in the current unit (so a question like it is a question on this part). */
+  exampleInUnit: boolean;
+};
+
+const latest = (ms: readonly ChapterMiss[]) => (ms.length ? ms.reduce((a, b) => (b.lastWrongAt > a.lastWrongAt ? b : a)) : null);
+
+export function planLesson(
+  hit: ChapterSearchRow,
+  notes: { ref: NotesChapterRef; parts: NotesChapterParts } | null,
+  misses: readonly ChapterMiss[] | null,
+  askedPart: number | null
+): LessonPlan {
+  const units = unitsOf(hit, notes);
+  const unitOf = (m: ChapterMiss) => units.find((u) => u.subtopicName && norm(u.subtopicName) === norm(m.subtopic)) ?? null;
+  const counts = new Map<number, number>();
+  let other = 0;
+  for (const m of misses ?? []) {
+    const u = unitOf(m);
+    if (u) counts.set(u.n, (counts.get(u.n) ?? 0) + 1);
+    else other += 1;
   }
-  const groups = [...by.values()].sort((a, b) => b.count - a.count || (a.last < b.last ? 1 : -1));
-  return { total: misses.length, groups: groups.map(({ label, count }) => ({ label, count })), other: 0, start: groups[0]?.label ?? null, example };
+  const parts: LessonPart[] = units.map((u) => ({ n: u.n, title: u.title, href: u.href, missed: counts.get(u.n) ?? 0 }));
+  const asked = askedPart !== null && units.some((u) => u.n === askedPart);
+  const current = asked ? askedPart! : (lessonOrder(parts)[0] ?? 1);
+  const inUnit = (misses ?? []).filter((m) => unitOf(m)?.n === current);
+  const inUnitLatest = latest(inUnit);
+  // Asked for a part with no mistakes in it: no example. Otherwise, with every mistake in a topic no
+  // unit covers, the latest anywhere still beats teaching with none.
+  const exampleMiss = inUnitLatest ?? (asked ? null : latest(misses ?? []));
+  return { units, parts, current, asked, misses, other, exampleMiss, exampleInUnit: inUnitLatest !== null };
 }
 
 const STEM_MAX = 500;
@@ -140,32 +163,62 @@ function exampleLines(e: MissExample): string[] {
   const lines = [`Their latest mistake here, to use as the worked example: ${cut(e.text, STEM_MAX)}`, `Options: ${opts}`];
   if (e.chose) {
     lines.push(
-      `They picked (${e.chose}); the answer is (${e.answer ?? "?"}). Work it, and name in one line the slip that leads to their pick. ` +
-        "If you cannot see what led to it, just show the right working."
+      `They picked (${e.chose}); the answer is (${e.answer ?? "?"}). Show its working in one or two lines, then name in one line the slip that leads to their pick. ` +
+        "If you cannot see the slip, leave it out and do not mention it."
     );
   } else {
-    lines.push(`It was in a mock, where the pick was not recorded; the answer is (${e.answer ?? "?"}). Work it and show the right working.`);
+    lines.push(`It was in a mock, where the pick was not recorded; the answer is (${e.answer ?? "?"}). Show the right working in one or two lines.`);
   }
   return lines;
 }
 
-/** The lines that tell V about the student's mistakes; [] when there is nothing to tell (signed out, or a failed read). */
-function mineLines(mine: Mine | null, unit: "part" | "topic"): string[] {
-  if (!mine) return [];
-  if (mine.total === 0) return [`The student has no mistakes waiting in this chapter: start at the first ${unit}.`];
-  const list = mine.groups.map((g) => `${g.label}: ${g.count}`);
-  if (mine.other > 0) list.push(`${mine.other} in other topics`);
-  const lines = [`The student has ${mine.total} ${mine.total === 1 ? "mistake" : "mistakes"} waiting in this chapter (their Fix list): ${list.join("; ")}.`];
-  if (mine.start && unit === "part") {
-    lines.push(
-      `START at ${mine.start}${mine.start.startsWith("part 1,") ? "" : ", not part 1"}: say in one line that this is where most of their mistakes are, give the short map, then teach that part.`
-    );
-  } else if (mine.start) {
-    lines.push(`Start with ${mine.start}: say in one line that this is where most of their mistakes are, then teach it.`);
-  } else {
-    lines.push(`None of them sits in one ${unit}: start at the first ${unit}.`);
+/** The lines on the student's mistakes and where this reply starts. */
+function mineLines(plan: LessonPlan, unit: "part" | "topic"): string[] {
+  const cur = plan.units.find((u) => u.n === plan.current);
+  const name = (u: Unit | undefined) => (u ? (unit === "part" ? `part ${u.n}, ${u.title}` : u.title) : `the first ${unit}`);
+  const lines: string[] = [];
+  const known = plan.misses !== null;
+  const total = plan.misses?.length ?? 0;
+  if (known && total === 0) lines.push("The student has no mistakes waiting in this chapter.");
+  if (known && total > 0) {
+    const list = plan.parts.filter((p) => p.missed > 0).map((p) => `${p.title}: ${p.missed}`);
+    if (plan.other > 0) list.push(`${plan.other} in other topics`);
+    lines.push(`The student has ${total} ${total === 1 ? "mistake" : "mistakes"} waiting in this chapter (their Fix list): ${list.join("; ")}.`);
   }
-  if (mine.example) lines.push(...exampleLines(mine.example));
+  if (plan.asked) {
+    lines.push(`They asked for ${name(cur)}: teach that ${unit} now.`);
+  } else if (cur && plan.parts.find((p) => p.n === plan.current)!.missed > 0) {
+    lines.push(
+      unit === "part"
+        ? `START at ${name(cur)}${plan.current === 1 ? "" : ", not part 1"}: this is where most of their mistakes are.`
+        : `Start with ${cur.title}: this is where most of their mistakes are.`
+    );
+  } else {
+    const none = known && total > 0 ? `None of them sits in one ${unit}: ` : "";
+    lines.push(`${none}Start at the first ${unit}${cur ? `, ${name(cur)}` : ""}.`);
+  }
+  return lines;
+}
+
+/** How V writes the reply, around the card and buttons the window draws. */
+function teachLines(plan: LessonPlan, opts: { hasExample: boolean; tryShown: boolean; fromNotes: boolean }): string[] {
+  const unit = opts.fromNotes ? "part" : "topic";
+  const hasMistakes = (plan.misses?.length ?? 0) > 0;
+  const buttons = "buttons to go on to the next part, to explain more simply and to open the notes";
+  const lines = [
+    plan.asked
+      ? `Buttons under your reply ${buttons.replace("buttons to ", "")}.`
+      : `A card under your reply shows the map of the chapter's ${unit}s${hasMistakes ? ", with the student's mistakes in each," : ""} and ${buttons}.`,
+    "So do not list the parts, do not write a notes or questions path, and do not ask whether to go on.",
+    "Write: " +
+      (hasMistakes && !plan.asked ? `one line saying which ${unit}s their mistakes are in and that you start here; then ` : "") +
+      `teach the ${unit} in two or three short lines` +
+      (opts.fromNotes ? "" : " as a general explanation from what you know (rule 7a)") +
+      (opts.hasExample ? ", then work their mistake above" : " with one small example") +
+      ". Write maths inside \\( \\).",
+  ];
+  if (opts.tryShown) lines.push(`A question on this ${unit} is shown under your reply: end with one short line asking them to try it.`);
+  lines.push("Do not list the chapter's questions instead of teaching, and do not call my_progress.");
   return lines;
 }
 
@@ -193,59 +246,48 @@ export function notesChapterIndex(
 // Topics listed for a chapter with no notes: enough to map it, not the whole taxonomy.
 const MAX_TOPICS = 12;
 
-const TEACH =
-  "Teach from this: give the student a short map of the parts in order, each with what it is used for, " +
-  "then teach the first part briefly with one small example, and offer to go on one part at a time. " +
-  "Link the notes chapter. Do not list the chapter's questions instead of teaching.";
-
-/** The same, when the student's mistakes say where to start. */
-const TEACH_FROM_MISTAKES =
-  "Teach from this: give the student a short map of the parts in order, each with what it is used for, " +
-  "then teach the starting part above briefly with one small example (their mistake, if given), and offer to go on one part at a time. " +
-  "Link the notes chapter. Do not list the chapter's questions instead of teaching.";
-
 function header(hit: ChapterSearchRow): string {
   return `${hit.examName} | ${hit.subjectName} | ${hit.chapterName} (${hit.questionCount} q)`;
 }
-
-/** The student's waiting mistakes in the chapter, and the latest as an example; null = nothing known (signed out, a failed read). */
-export type ChapterMistakes = { list: readonly ChapterMiss[]; example: MissExample | null } | null;
 
 export function formatChapterOverview(
   hit: ChapterSearchRow,
   notes: { ref: NotesChapterRef; parts: NotesChapterParts } | null,
   /** A notes chapter that exists but could not be read just now: still linked, never called missing. */
   unreadNotesKey: string | null = null,
-  mistakes: ChapterMistakes = null
+  plan: LessonPlan = planLesson(hit, notes, null, null),
+  example: MissExample | null = null,
+  tryShown = false
 ): string {
   const questions = chapterPath(hit);
+  const extra = example ? exampleLines(example) : [];
   if (notes) {
     const lines = [header(hit), `Notes chapter: /notes/${notes.ref.key}`, `Questions: ${questions}`, "Its parts, in teaching order:"];
-    const ordered: { n: number; title: string; subtopicName?: string }[] = [];
-    for (const slug of notes.ref.slugs) {
-      const part = notes.parts[slug];
-      if (!part) continue;
-      ordered.push({ n: ordered.length + 1, title: part.title, subtopicName: part.subtopicName });
-      lines.push(`${ordered.length}. ${part.title}: ${part.oneLineDefinition} (/notes/${notes.ref.key}/${slug})`);
-    }
-    const mine = mistakes ? mineByParts(mistakes.list, ordered, mistakes.example) : null;
-    lines.push(...mineLines(mine, "part"));
-    lines.push(mine && mine.total > 0 ? TEACH_FROM_MISTAKES : TEACH);
-    return lines.join("\n");
+    for (const u of plan.units) lines.push(`${u.n}. ${u.title}: ${u.definition ?? ""} (${u.href})`);
+    return [...lines, ...mineLines(plan, "part"), ...extra, ...teachLines(plan, { hasExample: !!example, tryShown, fromNotes: true })].join("\n");
   }
   const topics = (hit.subtopicNames ?? []).slice(0, MAX_TOPICS);
   const topicLine = topics.length ? ` Its topics: ${topics.join("; ")}.` : "";
-  const mine = mistakes ? mineByTopic(mistakes.list, mistakes.example) : null;
-  const first = mine?.start ? "teach that topic first" : "teach the first one briefly";
   return [
     header(hit),
     `Questions: ${questions}`,
     unreadNotesKey ? `Notes chapter: /notes/${unreadNotesKey}.${topicLine}` : `No notes for this chapter on PYQ Vault.${topicLine}`,
-    ...mineLines(mine, "topic"),
-    "Give a short general map of these topics from what you know (rule 7a), each with what it is used for, " +
-      `${first}, offer to go on one at a time, and link the ${unreadNotesKey ? "notes chapter" : "questions page"}.`,
+    ...mineLines(plan, "topic"),
+    ...extra,
+    ...teachLines(plan, { hasExample: !!example, tryShown, fromNotes: false }),
   ].join("\n");
 }
+
+/** What the "question to try" reader is given: a question like `near`, or else one from the part's topic. */
+export type TryArgs = {
+  chapterId: string | null;
+  /** The bank subtopic of the part being taught; null when the part names none. */
+  subtopic: string | null;
+  /** The mistake worked as the example, when it sits in this part: the question to try is one like it. */
+  near: string | null;
+  /** The student's waiting mistakes in the chapter: Fix serves those, so the question to try is another. */
+  exclude: string[];
+};
 
 export type ChapterOverviewDeps = {
   loadChapters: () => Promise<readonly ChapterSearchRow[]>;
@@ -259,24 +301,20 @@ export type ChapterOverviewDeps = {
   loadMisses?: ((hit: ChapterSearchRow) => Promise<readonly ChapterMiss[]>) | null;
   /** One mistake as a worked example; null when it cannot be one (a figure, not an MCQ, a failed read). */
   loadMissExample?: ((questionId: string) => Promise<MissExample | null>) | null;
+  /** A question to try under the reply (signed in); null when there is none. */
+  loadTryId?: ((args: TryArgs) => Promise<string | null>) | null;
+  /** The lesson the window draws under the reply: map card, question to try, buttons (lib/chat/lesson). */
+  onLesson?: ((lesson: VLesson) => void) | null;
 };
 
-async function readMistakes(d: ChapterOverviewDeps, hit: ChapterSearchRow): Promise<ChapterMistakes> {
+async function readMisses(d: ChapterOverviewDeps, hit: ChapterSearchRow): Promise<readonly ChapterMiss[] | null> {
   if (!d.loadMisses) return null;
-  let list: readonly ChapterMiss[];
   try {
-    list = await d.loadMisses(hit);
+    return await d.loadMisses(hit);
   } catch (err) {
     console.error("V: chapter_overview mistakes unavailable", hit.examName, hit.chapterName, err);
     return null;
   }
-  if (list.length === 0 || !d.loadMissExample) return { list, example: null };
-  const latest = list.reduce((a, b) => (b.lastWrongAt > a.lastWrongAt ? b : a));
-  const example = await d.loadMissExample(latest.questionId).catch((err) => {
-    console.error("V: chapter_overview example unavailable", latest.questionId, err);
-    return null;
-  });
-  return { list, example };
 }
 
 function distinctExams(hits: readonly ChapterHit[]): string[] {
@@ -290,22 +328,25 @@ export function chapterOverviewTool(d: ChapterOverviewDeps): VTool {
     description:
       "Teach a whole chapter: use when the student asks to be taught a chapter, says they are weak at one, or wants an overview " +
       "of its topics ('teach me vectors', 'I am bad at thermodynamics', 'explain solid state from basics'). Give the chapter in full " +
-      "words (chapter) and the exam if known (exam). Returns the chapter's parts in teaching order from our notes, with pages to link. " +
+      "words (chapter) and the exam if known (exam). When they ask for one part of it by number ('Teach me part 3 of Probability " +
+      "for NDA: ...'), give that number (part). Returns the chapter's parts in teaching order from our notes, and how to teach. " +
       "For one concept inside a chapter use explain_concept.",
     input_schema: {
       type: "object",
       properties: {
         chapter: { type: "string", description: "The chapter name in full words, e.g. 'vectors' or 'solid state'." },
         exam: { type: "string", description: "The student's exam if known, e.g. 'MHT-CET', 'MH HSC 12', 'NEET'." },
+        part: { type: "integer", description: "The part's number, only when the student asked for one part by number." },
       },
       required: ["chapter"],
     },
     run: async (input) => {
-      const i = (input ?? {}) as { chapter?: unknown; exam?: unknown };
+      const i = (input ?? {}) as { chapter?: unknown; exam?: unknown; part?: unknown };
       const chapter = typeof i.chapter === "string" ? i.chapter.trim() : "";
       if (!chapter) return "No chapter given. Ask the student which chapter they want to learn.";
       const named = typeof i.exam === "string" && i.exam.trim() ? i.exam.trim() : undefined;
       const exam = named ?? d.page?.examName;
+      const askedPart = typeof i.part === "number" && Number.isInteger(i.part) ? i.part : null;
 
       const rows = await d.loadChapters();
       const { hits, missedExam } = findChapters(rows, { query: chapter, exam });
@@ -319,22 +360,61 @@ export function chapterOverviewTool(d: ChapterOverviewDeps): VTool {
 
       const hit = hits[0];
       const ref = d.notesIndex.find((r) => r.examName === hit.examName && r.chapterName === hit.chapterName) ?? null;
-      const [parts, mistakes] = await Promise.all([
+      const [parts, misses] = await Promise.all([
         ref
           ? d.loadNotesChapter(ref.key).catch((err) => {
               console.error("V: chapter_overview notes unavailable", ref.key, err);
               return null;
             })
           : Promise.resolve(null),
-        readMistakes(d, hit),
+        readMisses(d, hit),
       ]);
       const notes = ref && parts ? { ref, parts } : null;
+      const plan = planLesson(hit, notes, misses, askedPart);
+      const cur = plan.units.find((u) => u.n === plan.current) ?? null;
+
+      const [example, tryId] = await Promise.all([
+        plan.exampleMiss && d.loadMissExample
+          ? d.loadMissExample(plan.exampleMiss.questionId).catch((err) => {
+              console.error("V: chapter_overview example unavailable", plan.exampleMiss?.questionId, err);
+              return null;
+            })
+          : Promise.resolve(null),
+        cur && d.loadTryId
+          ? d
+              .loadTryId({
+                chapterId: hit.chapterId ?? null,
+                subtopic: cur.subtopicName,
+                near: plan.exampleInUnit && plan.exampleMiss ? plan.exampleMiss.questionId : null,
+                exclude: (misses ?? []).map((m) => m.questionId),
+              })
+              .catch((err) => {
+                console.error("V: chapter_overview question to try unavailable", hit.chapterName, err);
+                return null;
+              })
+          : Promise.resolve(null),
+      ]);
 
       const paths = [chapterPath(hit)];
       if (ref) paths.push(`/notes/${ref.key}`);
-      if (notes) for (const slug of notes.ref.slugs) if (notes.parts[slug]) paths.push(`/notes/${notes.ref.key}/${slug}`);
+      for (const u of plan.units) if (u.href) paths.push(u.href);
       d.onPaths(paths);
-      return formatChapterOverview(hit, notes, ref && !notes ? ref.key : null, mistakes);
+
+      if (plan.parts.length > 0) {
+        d.onLesson?.({
+          exam: hit.examName,
+          chapter: hit.chapterName,
+          notesHref: ref ? `/notes/${ref.key}` : null,
+          questionsHref: chapterPath(hit),
+          parts: plan.parts,
+          current: plan.current,
+          next: nextPart(plan.parts, plan.current),
+          showMap: !plan.asked,
+          missed: misses?.length ?? 0,
+          tryQuestionId: tryId,
+        });
+      }
+      return formatChapterOverview(hit, notes, ref && !notes ? ref.key : null, plan, example, tryId !== null);
     },
   };
 }

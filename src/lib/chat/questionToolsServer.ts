@@ -118,6 +118,44 @@ export async function loadSimilarId(anon: SupabaseClient, q: VQuestion, exclude:
   return pickSimilar(((data ?? []) as { id: string }[]).map((r) => r.id), new Set(exclude));
 }
 
+/**
+ * A question from one topic of a chapter, by the topic's name (V's chapter
+ * lesson, 2026-11-21: the question to try on a part with no mistake to be
+ * "like"). Same pool rules as loadSimilarId: PUBLIC, an MCQ, not part of a set.
+ */
+export async function loadSubtopicQuestionId(
+  anon: SupabaseClient,
+  chapterId: string,
+  subtopic: string,
+  exclude: readonly string[]
+): Promise<string | null> {
+  const { data: sub, error: subError } = await anon
+    .from("subtopics")
+    .select("id")
+    .eq("chapter_id", chapterId)
+    .eq("name", subtopic)
+    .limit(1)
+    .maybeSingle();
+  if (subError) {
+    console.error("V: lesson topic read failed", subError.message);
+    return null;
+  }
+  if (!sub) return null;
+  const { data, error } = await anon
+    .from("questions")
+    .select("id")
+    .eq("subtopic_id", (sub as { id: string }).id)
+    .eq("visibility", "PUBLIC")
+    .eq("question_format", "mcq")
+    .is("set_id", null)
+    .limit(SIMILAR_POOL);
+  if (error) {
+    console.error("V: lesson question read failed", error.message);
+    return null;
+  }
+  return pickSimilar(((data ?? []) as { id: string }[]).map((r) => r.id), new Set(exclude));
+}
+
 /** The search words of pasted text: its longest distinct real words, longest first. */
 export function searchWordsOf(text: string, n: number): string[] {
   const words = [...new Set((text.toLowerCase().match(/[a-z]{5,}/g) ?? []))];
