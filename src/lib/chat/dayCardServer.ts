@@ -6,6 +6,9 @@
  * board plan's own read for a student on it, so V and Home show one task.
  * The exam countdown (2026-11-21) adds the exam's chapter weights, the same
  * cached read as Home's "Start next" (loadChapterWeights, a day's cache).
+ * V's check-in (2026-11-21) adds the exam's chapters with mistakes waiting,
+ * from the same ladder, each with its /notes page from the notes index (the
+ * index only, never the notes themselves).
  */
 import type { createSupabaseServerClient } from "@/lib/supabase/server";
 import { resolveExamDate } from "@/lib/exam/calendar";
@@ -17,6 +20,9 @@ import { getActivePath, getPathToday } from "@/lib/path/service";
 import { isPathExam } from "@/lib/path/model";
 import { dueByChapter } from "@/lib/drill/select";
 import { loadChapterWeights } from "@/lib/me/startNextServer";
+import { NOTES_CHAPTER_INDEX } from "@/lib/notes/chapterIndex";
+import { goPracticeHref } from "@/lib/performance/links";
+import { CHECKIN_AWAY_DAYS, type CheckInChapter } from "./checkIn";
 import { mockDays, movedUpSince, pickProgressExams } from "./progressCard";
 import { examByName, examBySlug, examIdOf } from "./progressCardServer";
 import { loadStudyRows } from "@/lib/studyTime/reportServer";
@@ -24,6 +30,7 @@ import { dayStudyLine, type StudyRow } from "@/lib/studyTime/report";
 import {
   buildDayCard,
   DAY_LOOKBACK_DAYS,
+  istDay,
   COUNTDOWN_DAYS,
   COUNTDOWN_MOCK_DAYS,
   fixedBetween,
@@ -109,13 +116,13 @@ export async function loadDayCard(
     { targetExams: [exam.slug], examDate: profile.targetExams[0] === exam.slug ? profile.examDate : null },
     now
   );
-  // The chapter weights only matter inside the countdown's window; a failed
-  // read is [] (loadChapterWeights), which shows no countdown row.
+  // The chapter weights matter inside the countdown's window, and for the
+  // check-in's Short on time; a failed read is [] (loadChapterWeights), which
+  // shows no countdown row.
   const examId = pickedId ?? payload.exam_id;
-  const weights =
-    countdown && countdown.daysLeft > COUNTDOWN_MOCK_DAYS && countdown.daysLeft <= COUNTDOWN_DAYS && examId
-      ? await loadChapterWeights(examId)
-      : [];
+  const away = last ? Math.round((Date.parse(`${istDay(now)}T00:00:00Z`) - Date.parse(`${last.day}T00:00:00Z`)) / 86_400_000) : 0;
+  const inCountdown = !!countdown && countdown.daysLeft > COUNTDOWN_MOCK_DAYS && countdown.daysLeft <= COUNTDOWN_DAYS;
+  const weights = (inCountdown || away >= CHECKIN_AWAY_DAYS) && examId ? await loadChapterWeights(examId) : [];
 
   return buildDayCard({
     exam: { slug: exam.slug, displayName: exam.displayName },
@@ -133,6 +140,7 @@ export async function loadDayCard(
       marksPerPaper: w.marksPerPaper,
     })),
     dueByChapter: dueByChapter(ladder.due),
+    stuckChapters: away >= CHECKIN_AWAY_DAYS ? stuckChapters(ladder.due, exam.examName) : [],
     days,
     fixedOnDay: last ? fixedBetween(ladder.events, last.day) : 0,
     fixedTotal: ladder.fixed,
@@ -140,5 +148,28 @@ export async function loadDayCard(
     movedUp: perf && lastStart ? movedUpSince(perf, exam.examName, now, lastStart) : [],
     plan,
     studyOnDay: last ? dayStudyLine(studyRows, last.day, pickedId ?? payload.exam_id) : null,
+  });
+}
+
+/** The exam's chapters with mistakes waiting, each with its notes page (when it has one) and practice link. */
+function stuckChapters(due: Awaited<ReturnType<typeof getOwnLadder>>["due"], examName: string): CheckInChapter[] {
+  const by = new Map<string, { chapter: string; subject: string; due: number }>();
+  for (const q of due) {
+    if (!q.chapterId || q.exam !== examName || !q.subject) continue;
+    const had = by.get(q.chapterId);
+    if (had) had.due += 1;
+    else by.set(q.chapterId, { chapter: q.chapter, subject: q.subject, due: 1 });
+  }
+  return [...by.entries()].map(([chapterId, c]) => {
+    const notes = NOTES_CHAPTER_INDEX.find(
+      (n) => n.examName === examName && n.subjectName === c.subject && n.chapterName === c.chapter
+    );
+    return {
+      chapterId,
+      chapter: c.chapter,
+      due: c.due,
+      notesHref: notes ? `/notes/${notes.subjectRoute}/${notes.chapterSlug}` : null,
+      practiceHref: goPracticeHref(examName, c.subject, c.chapter),
+    };
   });
 }

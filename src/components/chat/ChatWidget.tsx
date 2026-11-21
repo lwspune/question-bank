@@ -77,6 +77,8 @@ import { parseHourlyLimit, type HourlyLimitReply } from "@/lib/chat/hourlyLimit"
 import { liftDailyLimit } from "@/components/reveal/useRevealMeter";
 import VProgressCard from "./VProgressCard";
 import VDayCard from "./VDayCard";
+import VCheckIn from "./VCheckIn";
+import { CHECKIN_OTHER_DRAFT } from "@/lib/chat/checkIn";
 import VGiftCard from "./VGiftCard";
 import { giftKey, type VGift } from "@/lib/chat/gift";
 import { giftDue, markGiftOpened, markGiftShown, readGiftMarks, writeGiftMarks } from "@/lib/chat/giftSeen";
@@ -1308,7 +1310,19 @@ export default function ChatWidget() {
                   {n === 0 && panelGift && (
                     <VGiftCard gift={panelGift} opened={giftOpened} onOpen={openGift} onNavigate={close} />
                   )}
-                  {n === 0 && day && <VDayCard card={day} onNavigate={close} />}
+                  {/* V's check-in after 4+ days away (2026-11-21) stands in for the card; "Going well" shows it. */}
+                  {n === 0 && day && day.checkIn && (
+                    <VCheckIn
+                      day={day}
+                      checkIn={day.checkIn}
+                      onNavigate={close}
+                      onOther={() => {
+                        setDraft(CHECKIN_OTHER_DRAFT);
+                        inputRef.current?.focus();
+                      }}
+                    />
+                  )}
+                  {n === 0 && day && !day.checkIn && <VDayCard card={day} onNavigate={close} />}
                   {n === 0 && !day && dayLoading && (
                     <div className="ml-9 mt-2 h-44 animate-pulse rounded-xl border bg-muted/40" aria-hidden />
                   )}

@@ -41,6 +41,7 @@ export const DRILL_FROM = [
   "v_chapter", // the chapter line under V's explanation (2026-11-10 to 11-11, removed; kept so its rows still read)
   "score_plan", // "How to raise your score" on a full paper's result (2026-11-10, lib/mocks/scorePlan)
   "v_day", // V's "Your day" card, the first open of the day (2026-11-15, lib/chat/dayCard)
+  "v_checkin", // V's "How's your study going?" after 4+ days away (2026-11-21, lib/chat/checkIn)
 ] as const;
 
 /** The chapter line's tag on each page it sits on. */

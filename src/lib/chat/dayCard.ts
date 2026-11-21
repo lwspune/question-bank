@@ -30,6 +30,7 @@
 import { DRILL_SIZE, questionState, type DrillEvent } from "@/lib/drill/select";
 import { drillChapterHref, drillHref } from "@/lib/drill/from";
 import { goPracticeHref } from "@/lib/performance/links";
+import { buildCheckIn, CHECKIN_QUESTION, type CheckIn, type CheckInChapter } from "./checkIn";
 import { drillTimeLine } from "@/lib/push/core";
 import type { Band } from "@/lib/performance/masteryMap";
 import { formatDuration } from "@/lib/studyTime/report";
@@ -108,6 +109,8 @@ export type DayCardInput = {
   bigChapters?: BigChapter[];
   /** Mistakes waiting in Fix per chapter id (lib/drill/select dueByChapter). */
   dueByChapter?: Record<string, number>;
+  /** The card exam's chapters with mistakes waiting, with their links, for V's check-in (2026-11-21). */
+  stuckChapters?: CheckInChapter[];
 };
 
 export type DayRowItem = { name: string; note: string };
@@ -126,6 +129,11 @@ export type DayCard = {
   secondary: DayAction | null;
   /** Which countdown showed, for the card's view row; null = none. */
   countdown: "fix" | "top" | "mock" | null;
+  /**
+   * V's check-in (lib/chat/checkIn), asked in place of the card after 4+ days
+   * away; the card stays behind "Going well". Null = show the card.
+   */
+  checkIn: CheckIn | null;
 };
 
 /** YYYY-MM-DD in India time. */
@@ -136,6 +144,11 @@ export function istDay(d: Date | string): string {
 
 function addDays(day: string, n: number): string {
   return new Date(Date.parse(`${day}T00:00:00Z`) + n * DAY_MS).toISOString().slice(0, 10);
+}
+
+/** Whole days from India day `a` to India day `b`. */
+function daysBetween(a: string, b: string): number {
+  return Math.round((Date.parse(`${b}T00:00:00Z`) - Date.parse(`${a}T00:00:00Z`)) / DAY_MS);
 }
 
 /** "Wed 11 Nov". */
@@ -412,14 +425,27 @@ export function buildDayCard(input: DayCardInput): DayCard | null {
 
   const left =
     input.daysLeft === null ? "" : input.daysLeft === 0 ? " · exam today" : ` · ${plural(input.daysLeft, "day")} to go`;
+  // V's check-in (2026-11-21): after 4+ days away, a question first.
+  const biggest = bigChapters(input.bigChapters ?? [])[0];
+  const checkIn = buildCheckIn({
+    daysAway: last ? daysBetween(last.day, istDay(input.now)) : null,
+    due,
+    stuck: input.stuckChapters ?? [],
+    top: biggest ? { chapter: biggest.chapter, practiceHref: goPracticeHref(biggest.examName, biggest.subject, biggest.chapter) } : null,
+  });
   return {
     kind,
-    greeting: kind === "since" ? "Good to see you again. Here's where you left off." : "Welcome back. Here's your day.",
+    greeting: checkIn
+      ? CHECKIN_QUESTION
+      : kind === "since"
+        ? "Good to see you again. Here's where you left off."
+        : "Welcome back. Here's your day.",
     title: kind === "yesterday" ? "Since yesterday" : kind === "since" ? "Since your last visit" : "Your day",
     subtitle: kind === "since" && last ? `${dateLabel(last.day)} · ${input.exam.displayName}` : `${input.exam.displayName}${left}`,
     rows,
     primary,
     secondary,
     countdown: countdown?.kind ?? null,
+    checkIn,
   };
 }
