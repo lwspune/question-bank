@@ -620,6 +620,25 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/a chapter or topic name alone \("atoms", "vectors"\) is a request for that chapter \(rule 3\)/);
   });
 
+  // 2026-11-21: "bro can you teach a certain chapter i am really bad at vectors" got a link to 334
+  // questions, then "our notes did not match" with the MHT-CET Vectors notes live.
+  it("with explanations on, sends a request to be taught a whole chapter to chapter_overview, and teaches from it", () => {
+    const p = buildSystemPrompt({ ...base, explainEnabled: true });
+    expect(p).toMatch(/7c\. /);
+    expect(p).toMatch(/call chapter_overview/);
+    expect(p).toMatch(/weak at/i);
+    expect(p).toMatch(/one part at a time/i);
+    // Its answers and pages are usable like the other tools'.
+    expect(p).toMatch(/returned by [^.]*chapter_overview/);
+    expect(p).toMatch(/what the [^.]*chapter_overview[^.]*tools return/);
+    // A chapter name alone is still a request for the chapter page (rule 3).
+    expect(p).toMatch(/a chapter or topic name alone \("atoms", "vectors"\) is a request for that chapter \(rule 3\)/);
+  });
+
+  it("with explanations off, never names chapter_overview", () => {
+    expect(buildSystemPrompt({ ...base, explainEnabled: false })).not.toMatch(/chapter_overview/);
+  });
+
   // Owner, 2026-11-08: a student sent "2 x 1 + 1 x 2 + 3 x 1 = 7%" and V would not say it was right
   // ("final sum khud check kar lijiye"). V may confirm a student's own working, and a bank question is
   // still checked against its solution and key.
