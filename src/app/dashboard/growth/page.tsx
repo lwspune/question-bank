@@ -71,6 +71,7 @@ import {
   V_DAY_REPEAT_KEEP_PCT,
   V_DAY_NEXT_STEP_KEEP_PCT,
   V_GIFT_OPEN_KEEP_PCT,
+  V_EXAM_COUNTDOWN_KEEP_PCT,
   V_STEP_CHIPS_YES_KEEP_PCT,
   V_STEPS_FINISH_KEEP_PCT,
   SCORE_PLAN_DRILL_KEEP_PCT,
@@ -1067,6 +1068,13 @@ export default async function GrowthPage() {
             Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with scripts/chat/day-card-readout.sql: keep it if{" "}
             {V_DAY_REPEAT_KEEP_PCT}%+ of the students shown it see it on 2+ days (before: 7 of 31 for How&apos;s my progress) and{" "}
             {V_DAY_NEXT_STEP_KEEP_PCT}%+ of showings lead to a tap that day.
+          </p>
+        );
+      case "v-exam-countdown":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with scripts/chat/exam-countdown-readout.sql: keep
+            it if {V_EXAM_COUNTDOWN_KEEP_PCT}%+ of the days it shows lead to a start from the card that day (before: 3 of 86 showings, 3.5%).
           </p>
         );
       case "v-gift":

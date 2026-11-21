@@ -4,6 +4,8 @@
  * get_own_day_card (0262) for practice per day, get_own_performance for mocks
  * and chapter bands, the drill's own ladder for fixed and waiting, and the
  * board plan's own read for a student on it, so V and Home show one task.
+ * The exam countdown (2026-11-21) adds the exam's chapter weights, the same
+ * cached read as Home's "Start next" (loadChapterWeights, a day's cache).
  */
 import type { createSupabaseServerClient } from "@/lib/supabase/server";
 import { resolveExamDate } from "@/lib/exam/calendar";
@@ -13,10 +15,14 @@ import { getOwnPerformance } from "@/lib/performance/service";
 import { selectAttempts } from "@/lib/performance/compute";
 import { getActivePath, getPathToday } from "@/lib/path/service";
 import { isPathExam } from "@/lib/path/model";
+import { dueByChapter } from "@/lib/drill/select";
+import { loadChapterWeights } from "@/lib/me/startNextServer";
 import { mockDays, movedUpSince, pickProgressExams } from "./progressCard";
 import { examByName, examBySlug, examIdOf } from "./progressCardServer";
 import {
   buildDayCard,
+  COUNTDOWN_DAYS,
+  COUNTDOWN_MOCK_DAYS,
   fixedBetween,
   lastVisit,
   mergeDays,
@@ -57,7 +63,8 @@ export async function loadDayCard(
   });
   let exam = picked.exam ? examBySlug(picked.exam) : null;
 
-  const { data, error } = await db.rpc("get_own_day_card", { p_exam_id: exam ? await examIdOf(db, exam.examName) : null });
+  const pickedId = exam ? await examIdOf(db, exam.examName) : null;
+  const { data, error } = await db.rpc("get_own_day_card", { p_exam_id: pickedId });
   if (error) throw new Error(`get_own_day_card: ${error.message}`);
   const payload = (data ?? { days: [] }) as DayPayload;
   exam ??= examByName(payload.exam_name);
@@ -90,14 +97,34 @@ export async function loadDayCard(
     }
   }
 
+  const countdown = resolveExamDate(
+    { targetExams: [exam.slug], examDate: profile.targetExams[0] === exam.slug ? profile.examDate : null },
+    now
+  );
+  // The chapter weights only matter inside the countdown's window; a failed
+  // read is [] (loadChapterWeights), which shows no countdown row.
+  const examId = pickedId ?? payload.exam_id;
+  const weights =
+    countdown && countdown.daysLeft > COUNTDOWN_MOCK_DAYS && countdown.daysLeft <= COUNTDOWN_DAYS && examId
+      ? await loadChapterWeights(examId)
+      : [];
+
   return buildDayCard({
     exam: { slug: exam.slug, displayName: exam.displayName },
     now,
-    daysLeft:
-      resolveExamDate(
-        { targetExams: [exam.slug], examDate: profile.targetExams[0] === exam.slug ? profile.examDate : null },
-        now
-      )?.daysLeft ?? null,
+    daysLeft: countdown?.daysLeft ?? null,
+    countdown: countdown
+      ? { label: countdown.label, date: countdown.date, official: countdown.official, daysLeft: countdown.daysLeft }
+      : null,
+    bigChapters: weights.map((w) => ({
+      chapterId: w.chapterId,
+      chapter: w.chapter,
+      subject: w.subject,
+      examName: w.exam,
+      qPerPaper: w.qPerPaper,
+      marksPerPaper: w.marksPerPaper,
+    })),
+    dueByChapter: dueByChapter(ladder.due),
     days,
     fixedOnDay: last ? fixedBetween(ladder.events, last.day) : 0,
     fixedTotal: ladder.fixed,
