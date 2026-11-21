@@ -54,11 +54,16 @@ describe.skipIf(!HAS_ENV)("study time", () => {
     if (error) throw new Error(`rest: ${error.message}`);
   }
 
-  async function own(client: SupabaseClient): Promise<Row[]> {
+  /** get_study_time (0278) for `userId`, today only, with `client`'s login. */
+  async function read(client: SupabaseClient, userId: string): Promise<Row[]> {
     const today = indiaDay();
-    const { data, error } = await client.rpc("get_own_study_time", { p_from: today, p_to: today });
+    const { data, error } = await client.rpc("get_study_time", { p_user_id: userId, p_from: today, p_to: today });
     if (error) throw new Error(`read: ${error.message}`);
     return (data ?? []) as Row[];
+  }
+
+  async function own(client: SupabaseClient): Promise<Row[]> {
+    return read(client, client === student ? users[0] : users[1]);
   }
 
   beforeAll(async () => {
@@ -169,8 +174,37 @@ describe.skipIf(!HAS_ENV)("study time", () => {
     }
   });
 
+  it("adds mock time per chapter from the mock's own answers, at most 10 minutes a question", async () => {
+    const { data: mock, error: mErr } = await admin.from("mock_tests").select("id").limit(1).single();
+    if (mErr || !mock) throw new Error(`need a mock in the test db: ${mErr?.message}`);
+    const now = new Date();
+    const { data: attempt, error: aErr } = await admin
+      .from("mock_attempts")
+      .insert({
+        user_id: users[0],
+        mock_id: mock.id,
+        started_at: new Date(now.getTime() - 3_600_000).toISOString(),
+        expires_at: now.toISOString(),
+        submitted_at: now.toISOString(),
+        status: "submitted",
+      })
+      .select("id")
+      .single();
+    if (aErr || !attempt) throw new Error(`attempt: ${aErr?.message}`);
+    const { error: ansErr } = await admin.from("attempt_answers").insert([
+      { attempt_id: attempt.id, question_id: questionId, time_spent_secs: 3_000 },
+    ]);
+    if (ansErr) throw new Error(`answers: ${ansErr.message}`);
+
+    const mocks = (await own(student)).filter((r) => r.kind === "mock");
+    expect(mocks).toEqual([
+      expect.objectContaining({ day: indiaDay(now), chapter_id: questionChapterId, secs: 600 }),
+    ]);
+  });
+
   it("shows a student only their own time and lets them write none directly", async () => {
     expect(await own(other)).toEqual([]);
+    expect(await read(other, users[0])).toEqual([]);
     const { data } = await other.from("study_time").select("secs");
     expect(data ?? []).toEqual([]);
 

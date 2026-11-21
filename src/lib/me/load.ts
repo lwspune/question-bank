@@ -34,6 +34,8 @@ import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { firstMockHref, firstNotesHref } from "@/lib/exam/examLinks";
 import { loadPathCard, type PathCard } from "@/lib/path/service";
+import { loadStudyCard, studyExamOf, type StudyExam } from "@/lib/studyTime/reportServer";
+import type { StudyCard } from "@/lib/studyTime/report";
 
 /** The header fields (greeting, exams, focus) plus the Home tab's own cards. */
 export type MeData = MeHeaderData & {
@@ -57,6 +59,10 @@ export type MeData = MeHeaderData & {
   /** "Start next" (2026-11-09, migration 0242): the highest-value chapters of
    *  their exam not started yet. Optional so older fixtures stay small. */
   startNext?: ChapterWeight[];
+  /** Study time (2026-11-21, migration 0278): today and the last 7 days in
+   *  the exam Start next ranks by, or null under 15 minutes. Optional so older
+   *  fixtures stay small. */
+  study?: { card: StudyCard; exam: StudyExam | null } | null;
 };
 
 export async function loadMe(
@@ -110,7 +116,8 @@ export async function loadMe(
 
   // ROUND 2: the reads that need round 1 (the focus, the exams), at once.
   // Each is best effort: a failed read costs its card, never the page.
-  const [continueItems, resultChecked, pathCard, startNext] = await Promise.all([
+  const studySlug = startNextExam({ focusSlug, targets });
+  const [continueItems, resultChecked, pathCard, startNext, studyCard] = await Promise.all([
     // Where they were last working, across the bank, /board, notes and
     // homework (2026-11-06).
     loadContinue(
@@ -145,6 +152,12 @@ export async function loadMe(
       console.error("start next read failed", e instanceof Error ? e.message : e);
       return [] as ChapterWeight[];
     }),
+    // Study time (2026-11-21): the same exam as Start next, so the two cards
+    // speak about one exam.
+    loadStudyCard(db, user.id, studySlug, examIds, now).catch((e) => {
+      console.error("study time read failed", e instanceof Error ? e.message : e);
+      return null;
+    }),
   ]);
   const cont = continueItems[0];
   const resultCheck = resultChecked.check;
@@ -176,5 +189,6 @@ export async function loadMe(
     showNps,
     pathCard,
     startNext,
+    study: studyCard ? { card: studyCard, exam: studyExamOf(studySlug) } : null,
   };
 }

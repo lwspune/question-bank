@@ -9,6 +9,7 @@ import ContinueCard from "./ContinueCard";
 import HomeReminder from "./HomeReminder";
 import StageNudge from "./StageNudge";
 import ResultCheckCard from "./ResultCheckCard";
+import StudyTimeCard from "./StudyTimeCard";
 import type { MeData } from "@/lib/me/load";
 import type { Pulse } from "@/lib/pulse/cache";
 import type { StudentAssignmentView } from "@/lib/assignments/core";
@@ -117,6 +118,10 @@ export default function MeView({
           />
         </>
       )}
+
+      {/* Study time (2026-11-21): today and the last 7 days, by chapter, and
+          beside the paper. Null under 15 minutes in the week. */}
+      {data.study && <StudyTimeCard card={data.study.card} exam={data.study.exam} readOnly={staff} />}
 
       {/* The reminder ask, one row, only while mistakes are waiting and
           only until it is answered on any screen (2026-10-05). */}

@@ -24,6 +24,7 @@ import { DRILL_SIZE, questionState, type DrillEvent } from "@/lib/drill/select";
 import { drillHref } from "@/lib/drill/from";
 import { drillTimeLine } from "@/lib/push/core";
 import type { Band } from "@/lib/performance/masteryMap";
+import { formatDuration } from "@/lib/studyTime/report";
 
 /** A last visit older than this is not "your day" any more. */
 export const DAY_LOOKBACK_DAYS = 30;
@@ -67,6 +68,9 @@ export type DayCardInput = {
   /** Chapters whose band went up since the start of the last visit's day. */
   movedUp: { chapter: string; band: Band }[];
   plan: DayPlan | null;
+  /** Study time on the last visit's day in this exam (lib/studyTime/report
+   *  dayStudyLine): null under 5 minutes. Optional so older fixtures stay small. */
+  studyOnDay?: { secs: number; top: { chapter: string; secs: number } | null } | null;
 };
 
 export type DayRow = { label: string; value: string; detail?: string; tone?: "good" | "today" };
@@ -207,6 +211,16 @@ export function buildDayCard(input: DayCardInput): DayCard | null {
     const planWork = input.plan?.doneOnDay ?? [];
     if (planWork.length > 0) rows.push({ label, value: planWork.join(" · "), detail: answersText(last), tone: "good" });
     else rows.push({ label, value: answersText(last), ...(main ? { detail: `Mostly ${main}` } : {}) });
+  }
+
+  // 1b. Study time that day (2026-11-21), from the study clock and mocks.
+  if (last && input.studyOnDay) {
+    const st = input.studyOnDay;
+    rows.push({
+      label: "Studied",
+      value: formatDuration(st.secs),
+      ...(st.top ? { detail: `Most on ${st.top.chapter} (${formatDuration(st.top.secs)})` } : {}),
+    });
   }
 
   // 2. Fixes: that day's, else the running total.

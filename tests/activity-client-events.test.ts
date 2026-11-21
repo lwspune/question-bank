@@ -488,6 +488,51 @@ describe("parseClientEvent - Start next seen and tapped (2026-11-09)", () => {
   });
 });
 
+// Home's Study time card (2026-11-21, experiment study-time-card): the card
+// seen, "This week" opened, the suggestion shown and tapped, once a day each.
+describe("parseClientEvent - the study time card", () => {
+  const CH = "c0ffee00-1b2c-4d3e-9f00-112233445566";
+
+  it("records the card seen and This week opened, once a day", () => {
+    for (const action of ["seen", "week"]) {
+      expect(parseClientEvent({ kind: "surface_viewed", surface: "study_time", action }, "u1", NOW)).toEqual({
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "study_time", action },
+          dedupeKey: `view:study_time:${action}:u1:2026-09-27`,
+        },
+      });
+    }
+  });
+
+  it("records the suggestion shown and tapped with its chapter, once per chapter per day", () => {
+    for (const action of ["next_shown", "next_tap"]) {
+      expect(parseClientEvent({ kind: "surface_viewed", surface: "study_time", action, chapterId: CH }, "u1", NOW)).toEqual({
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "study_time", action, chapterId: CH },
+          dedupeKey: `view:study_time:${action}:${CH}:u1:2026-09-27`,
+        },
+      });
+    }
+  });
+
+  it("refuses an unknown step, a chapter where none belongs, or a suggestion without one", () => {
+    for (const bad of [
+      { surface: "study_time" },
+      { surface: "study_time", action: "zero" },
+      { surface: "study_time", action: "seen", chapterId: CH },
+      { surface: "study_time", action: "next_tap" },
+      { surface: "study_time", action: "next_tap", chapterId: "nope" },
+      { surface: "study_time", action: "seen", path: "/me" },
+    ]) {
+      expect(parseClientEvent({ kind: "surface_viewed", ...bad }, "u1", NOW).ok, JSON.stringify(bad)).toBe(false);
+    }
+  });
+});
+
 // The stuck offer (2026-11-10, lib/questions/stuckOffer): seen and each button, per question and day.
 describe("parseClientEvent - the stuck offer", () => {
   const Q = "c0ffee00-1b2c-4d3e-9f00-112233445566";

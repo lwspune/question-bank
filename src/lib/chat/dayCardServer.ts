@@ -15,8 +15,11 @@ import { getActivePath, getPathToday } from "@/lib/path/service";
 import { isPathExam } from "@/lib/path/model";
 import { mockDays, movedUpSince, pickProgressExams } from "./progressCard";
 import { examByName, examBySlug, examIdOf } from "./progressCardServer";
+import { loadStudyRows } from "@/lib/studyTime/reportServer";
+import { dayStudyLine, type StudyRow } from "@/lib/studyTime/report";
 import {
   buildDayCard,
+  DAY_LOOKBACK_DAYS,
   fixedBetween,
   lastVisit,
   mergeDays,
@@ -40,11 +43,16 @@ export async function loadDayCard(
   userId: string,
   now: Date = new Date()
 ): Promise<DayCard | null> {
-  const [profile, perf, ladder, active] = await Promise.all([
+  const [profile, perf, ladder, active, studyRows] = await Promise.all([
     getOwnProfile(db, userId),
     getOwnPerformance(),
     getOwnLadder(db, userId, now),
     getActivePath(db, userId).catch(() => null),
+    // Study time (2026-11-21): only adds a line, so a failed read costs that line.
+    loadStudyRows(db, userId, now, DAY_LOOKBACK_DAYS + 1).catch((e: unknown) => {
+      console.error("day card: study time read failed", e instanceof Error ? e.message : e);
+      return [] as StudyRow[];
+    }),
   ]);
 
   const latest = perf ? selectAttempts(perf.attempts, perf.facts).kept.sort((a, b) => b.startedAt.localeCompare(a.startedAt))[0] : undefined;
@@ -57,7 +65,8 @@ export async function loadDayCard(
   });
   let exam = picked.exam ? examBySlug(picked.exam) : null;
 
-  const { data, error } = await db.rpc("get_own_day_card", { p_exam_id: exam ? await examIdOf(db, exam.examName) : null });
+  const askedExamId = exam ? await examIdOf(db, exam.examName) : null;
+  const { data, error } = await db.rpc("get_own_day_card", { p_exam_id: askedExamId });
   if (error) throw new Error(`get_own_day_card: ${error.message}`);
   const payload = (data ?? { days: [] }) as DayPayload;
   exam ??= examByName(payload.exam_name);
@@ -104,5 +113,6 @@ export async function loadDayCard(
     dueChapters: ladder.due.map((d) => d.chapter),
     movedUp: perf && lastStart ? movedUpSince(perf, exam.examName, now, lastStart) : [],
     plan,
+    studyOnDay: last ? dayStudyLine(studyRows, last.day, askedExamId ?? payload.exam_id) : null,
   });
 }

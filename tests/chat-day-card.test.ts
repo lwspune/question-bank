@@ -288,3 +288,21 @@ describe("buildDayCard", () => {
     expect(card?.rows[1]).toEqual({ label: "Moved up", value: "Matrices: now getting there · Vectors: now strong", tone: "good" });
   });
 });
+
+// Study time (2026-11-21, lib/studyTime/report dayStudyLine): one line after
+// the last day's answers, left out when the loader found under 5 minutes.
+describe("buildDayCard - study time", () => {
+  const study = { secs: 42 * 60, top: { chapter: "Definite Integration", secs: 24 * 60 } };
+
+  it("adds the last day's study time after its answers, with its top chapter", () => {
+    const card = buildDayCard(input({ days: [span("2026-11-14", 10, 7)], studyOnDay: study }))!;
+    expect(card.rows[1]).toEqual({ label: "Studied", value: "42 min", detail: "Most on Definite Integration (24 min)" });
+  });
+
+  it("has no line without a last day, or without the time", () => {
+    const none = buildDayCard(input({ dueChapters: ["Vectors"], studyOnDay: study }))!;
+    expect(none.rows.some((r) => r.label === "Studied")).toBe(false);
+    const quiet = buildDayCard(input({ days: [span("2026-11-14", 10, 7)], studyOnDay: null }))!;
+    expect(quiet.rows.some((r) => r.label === "Studied")).toBe(false);
+  });
+});

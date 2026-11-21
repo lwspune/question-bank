@@ -303,6 +303,16 @@ export const V_DAY_NEXT_STEP_KEEP_PCT = 25;
 export const V_GIFT_OPEN_KEEP_PCT = 50;
 
 /**
+ * "study-time-card": keep the Study time card's suggestion if at least
+ * STUDY_NEXT_TAP_KEEP_PCT of the students shown one tap it, and at least
+ * STUDY_NEXT_TIME_KEEP_PCT of shown suggestions get 10+ minutes on that chapter
+ * within 7 days. There is no before: the card is new, so how often a chapter
+ * gets time without the card is read beside it from students never shown one.
+ */
+export const STUDY_NEXT_TAP_KEEP_PCT = 15;
+export const STUDY_NEXT_TIME_KEEP_PCT = 30;
+
+/**
  * "score-plan": keep "How to raise your score" if at least this share of the
  * fair full-paper attempts it shows on start the Fix list within a day (%).
  * Baseline with "What to fix next", 36 fair attempts (60 to 14 days before
@@ -555,6 +565,7 @@ export type Readout =
   | "chapter-fix"
   | "board-path"
   | "study-circle"
+  | "study-time-card"
   | "ugc-net"
   | "clat"
   | "v-follow-up-loop"
@@ -1229,6 +1240,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-21",
     windowDays: 28,
     readout: "v-gift",
+    status: "running",
+  },
+  {
+    id: "study-time-card",
+    title: "Study time on Home, and in V",
+    change:
+      "Home gets a Study time card under the Today card: today (or the last day studied) and the last 7 days, split into practice, mocks and reading, by subject and by chapter, a \"More than your usual day\" line only when today is above it, and the subject with the most time set beside its share of the marks in the past papers. This week ends with one suggestion: the chapter worth the most marks that got no time this week and is not strong yet. Hidden under 15 minutes in the week. V's \"Your day\" card gains \"Studied 42 min, most on X\" and \"How's my progress\" two rows (the week's time, and the chapter the paper wants). Time comes from the study clock (migration 0277) and the mock's own time per question (0278).",
+    why: "The owner (2026-11-21): show students how long they study, by exam, subject and chapter, daily and weekly. Nothing measured practice and reading time before the clock. Seeing their own time, and where it sits against the paper, may move time to the chapters the paper rewards.",
+    metric:
+      "surface_viewed 'study_time' (metadata.action seen | week | next_shown | next_tap, next_* with metadata.chapterId, once a day each): students shown the card, This week opened, suggestions shown and tapped; for each shown suggestion, study_time on that chapter in the 7 days after (10+ minutes), against chapters of the same weight never suggested. scripts/study-time/readout.sql",
+    rule: `Keep the suggestion if ${STUDY_NEXT_TAP_KEEP_PCT}%+ of the students shown one tap it and ${STUDY_NEXT_TIME_KEEP_PCT}%+ of shown suggestions get 10+ minutes on that chapter within 7 days. The card's numbers stay either way: they are the student's own record.`,
+    liveSince: "2026-11-21",
+    windowDays: 28,
+    readout: "study-time-card",
     status: "running",
   },
   {
