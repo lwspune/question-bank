@@ -9,6 +9,7 @@
 import { describe, it, expect } from "vitest";
 import {
   carriedLesson,
+  goOnLabel,
   goOnMessage,
   lessonLinkLabels,
   lessonOrder,
@@ -82,6 +83,12 @@ describe("nextPart", () => {
 describe("button messages", () => {
   it("Go on asks for the next part by number, chapter and exam, so V calls chapter_overview with it", () => {
     expect(goOnMessage(lesson())).toBe("Teach me part 1 of Probability for NDA: Classical Probability & Counting.");
+  });
+
+  // 2026-11-21 (owner's review of the sheet): Go on jumped from part 1 to part 3 with no warning.
+  it("the Go on button names the part it goes to, and says the whole of it to a screen reader", () => {
+    expect(goOnLabel(lesson())).toEqual({ text: "Go on: part 1", aria: "Go on to part 1, Classical Probability & Counting" });
+    expect(goOnLabel(lesson({ current: 5, next: null }))).toBeNull();
   });
 
   it("no next part: no Go on", () => {

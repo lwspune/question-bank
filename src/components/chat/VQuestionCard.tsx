@@ -108,7 +108,14 @@ export default function VQuestionCard({
 
   return (
     <div className="ml-9 mt-2 space-y-2 rounded-xl border bg-card p-3 text-sm shadow-sm" aria-label={kind === "try" ? "A question to try" : "Is this your question?"}>
-      <p className="text-xs font-medium text-muted-foreground">{kind === "try" ? `${heading ?? "Try this one"} · ${q.where}` : `Is this your question? · ${q.where}`}</p>
+      {kind === "try" && heading ? (
+        // A lesson's check question reads as a turn, not a suggestion (mockup's "YOUR TURN", owner 2026-11-21).
+        <p className="text-xs text-muted-foreground">
+          <span className="font-bold uppercase tracking-wide text-brand-accent">{heading}</span> · {q.where}
+        </p>
+      ) : (
+        <p className="text-xs font-medium text-muted-foreground">{kind === "try" ? `Try this one · ${q.where}` : `Is this your question? · ${q.where}`}</p>
+      )}
       {q.context && (
         <div className="whitespace-pre-wrap font-serif text-muted-foreground">
           <MathBlockText text={q.context} />

@@ -63,6 +63,16 @@ export function goOnMessage(l: VLesson): string | null {
   return p ? `Teach me part ${p.n} of ${l.chapter} for ${l.exam}: ${p.title}.` : null;
 }
 
+/**
+ * The Go on button's label: it names the part, because the order can skip one
+ * (part 1, then part 3 where the next mistakes are) and "Go on" alone reads as
+ * "part 2" (owner, reviewing the sheet, 2026-11-21).
+ */
+export function goOnLabel(l: VLesson): { text: string; aria: string } | null {
+  const p = partOf(l, l.next);
+  return p ? { text: `Go on: part ${p.n}`, aria: `Go on to part ${p.n}, ${p.title}` } : null;
+}
+
 export function simplerMessage(l: VLesson): string {
   const p = partOf(l, l.current);
   return p ? `Explain part ${p.n} of ${l.chapter}, ${p.title}, more simply.` : `Explain ${l.chapter} more simply.`;

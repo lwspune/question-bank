@@ -9,6 +9,7 @@ import { ArrowRight, BookOpen, CalendarCheck, Check, GraduationCap, Lightbulb, L
 import { TEACH_ANY_CHAPTER, teachChapterMessage } from "@/lib/chat/teachChapter";
 import {
   carriedLesson,
+  goOnLabel,
   goOnMessage,
   lessonLinkLabels,
   lessonNotesHref,
@@ -1214,6 +1215,8 @@ export default function ChatWidget() {
               const lessonHere = t.lesson && !t.reveal && i === lastReplyAt ? t.lesson : null;
               return (
                 <div key={n} className={`max-w-[90%] ${MESSAGE_IN}`}>
+                  {/* The lesson's map comes first, as in mockup B: V's text then runs straight into the question to try. */}
+                  {t.lesson && t.lesson.showMap && <VChapterMapCard lesson={t.lesson} onNavigate={close} placement="above" />}
                   {parts ? (
                     <VStepReply
                       parts={parts}
@@ -1394,7 +1397,6 @@ export default function ChatWidget() {
                       />
                     </div>
                   )}
-                  {t.lesson && t.lesson.showMap && !t.reveal && <VChapterMapCard lesson={t.lesson} onNavigate={close} />}
                   {t.card && !t.reveal && (
                     <VQuestionCard
                       id={t.card.id}
@@ -1407,22 +1409,23 @@ export default function ChatWidget() {
                   )}
                   {lessonHere && (
                     <div className="ml-9 mt-2 flex flex-wrap gap-1.5" role="group" aria-label={`${lessonHere.chapter} lesson`}>
-                      {lessonHere.next !== null && (
+                      {goOnLabel(lessonHere) && (
                         <button
                           type="button"
                           disabled={sending}
                           onClick={() => lessonGoOn(lessonHere)}
-                          className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-brand px-3.5 py-1.5 text-xs font-semibold text-brand-foreground shadow-sm transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                          aria-label={goOnLabel(lessonHere)!.aria}
+                          className="inline-flex min-h-9 items-center gap-1 rounded-full bg-brand px-3 py-1.5 text-xs font-semibold text-brand-foreground shadow-sm transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
                         >
                           <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-                          Go on
+                          {goOnLabel(lessonHere)!.text}
                         </button>
                       )}
                       <button
                         type="button"
                         disabled={sending}
                         onClick={() => lessonSimpler(lessonHere)}
-                        className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3.5 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                        className="inline-flex min-h-9 items-center gap-1 rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
                       >
                         <Lightbulb className="h-3.5 w-3.5" aria-hidden />
                         Explain more simply
@@ -1434,7 +1437,7 @@ export default function ChatWidget() {
                             sendActivity({ kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "lesson_notes" });
                             close();
                           }}
-                          className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3.5 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                          className="inline-flex min-h-9 items-center gap-1 rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                         >
                           <BookOpen className="h-3.5 w-3.5" aria-hidden />
                           Open the notes
