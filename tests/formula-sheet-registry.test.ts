@@ -17,6 +17,11 @@ import { buildFormulaSheetHtml, formulaSheetStats, hasFormulaSheet } from "@/lib
 const NO_SHEET = [
   "imat-logic/critical-thinking",
   "imat-reading/reading-comprehension",
+  "mh-scholarship-4-intelligence/analogy",
+  "mh-scholarship-4-intelligence/coding-decoding",
+  "mh-scholarship-4-maths/numbers-number-system",
+  "mh-scholarship-7-intelligence/analogy",
+  "mh-scholarship-7-intelligence/classification-odd-one-out",
   "spi-english/reading-comprehension",
   "spi-english/sentence-rearrangement",
   "ssc-cgl-english/fill-in-the-blanks",

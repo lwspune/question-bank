@@ -1491,7 +1491,9 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // PUBLIC since 2026-11-20: the April 2026 papers (150 q) and two whole-paper mocks.
     hasMocks: true,
     guidesPath: null,
-    notesPath: null,
+    // Notes for Intelligence Test and Maths chapters of 5+ questions, one set
+    // per class because the two papers differ in difficulty (owner, 2026-11-21).
+    notesPath: "/notes/mh-scholarship-4",
   },
   {
     slug: "mh-scholarship-5",
@@ -1523,7 +1525,9 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // PUBLIC since 2026-11-20: the April 2026 papers (149 q; P2 Q42 held) and two mocks.
     hasMocks: true,
     guidesPath: null,
-    notesPath: null,
+    // Notes for Intelligence Test and Maths chapters of 5+ questions, one set
+    // per class because the two papers differ in difficulty (owner, 2026-11-21).
+    notesPath: "/notes/mh-scholarship-7",
   },
   {
     slug: "mh-scholarship-8",
