@@ -145,6 +145,7 @@ describe("EXPERIMENTS", () => {
       "v-step-by-step",
       "v-step-chips",
       "v-strategy",
+      "v-teach-chapter",
       "visual-solutions",
       "welcome-exam-confirm",
       "why-not-buy",
