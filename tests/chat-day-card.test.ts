@@ -11,6 +11,7 @@ import {
   mergeDays,
   planDoneOn,
   DAY_LOOKBACK_DAYS,
+  type BigChapter,
   type DayCardInput,
   type DaySpan,
 } from "@/lib/chat/dayCard";
@@ -304,5 +305,184 @@ describe("buildDayCard - study time", () => {
     expect(none.rows.some((r) => r.label === "Studied")).toBe(false);
     const quiet = buildDayCard(input({ days: [span("2026-11-14", 10, 7)], studyOnDay: null }))!;
     expect(quiet.rows.some((r) => r.label === "Studied")).toBe(false);
+  });
+});
+
+/*
+ * The exam countdown (owner, 2026-11-21, version "1c"): in the last 60 days
+ * before the exam, the card names the BIG chapters (most marks a paper) where
+ * the student still has mistakes waiting, and the day's step is to fix the
+ * first. With none waiting there, the big chapters themselves; in the last
+ * week, a full paper under exam time.
+ */
+describe("buildDayCard: the exam countdown", () => {
+  const big = (id: string, chapter: string, marksPerPaper: number, qPerPaper = marksPerPaper / 2.5): BigChapter => ({
+    chapterId: id,
+    chapter,
+    subject: "Mathematics",
+    examName: "NDA",
+    qPerPaper,
+    marksPerPaper,
+  });
+  const BIG = [
+    big("c-trig", "Trigonometry", 22.5, 9),
+    big("c-mat", "Matrices and Determinants", 17.5, 7),
+    big("c-prob", "Probability", 15, 6),
+    big("c-vec", "Vectors", 12.5, 5),
+    big("c-lim", "Limits", 10, 4),
+    big("c-set", "Sets", 5, 2),
+  ];
+  const official = (daysLeft: number) => ({ label: "NDA 2027 (I)", date: "2027-04-11", official: true, daysLeft });
+
+  it("shows nothing more than 60 days out, on the exam day, or with no date", () => {
+    for (const c of [official(61), official(0), null]) {
+      const card = buildDayCard(input({ days: [span("2026-11-14", 5, 3)], countdown: c, bigChapters: BIG, dueByChapter: { "c-trig": 8 } }));
+      expect(card?.countdown ?? null, JSON.stringify(c)).toBeNull();
+      expect(card?.rows.some((r) => r.tone === "exam")).toBe(false);
+    }
+  });
+
+  it("names the big chapters with mistakes waiting, biggest first, and fixes the first", () => {
+    const card = buildDayCard(
+      input({
+        days: [span("2026-11-14", 5, 3)],
+        dueChapters: ["Trigonometry", "Trigonometry", "Probability", "Sets"],
+        countdown: official(14),
+        bigChapters: BIG,
+        dueByChapter: { "c-prob": 5, "c-trig": 8, "c-set": 4 },
+      })
+    );
+    expect(card?.countdown).toBe("fix");
+    expect(card?.rows).toContainEqual({
+      label: "NDA 2027 (I) is 14 days away",
+      value: "Big chapters where you still lose marks:",
+      items: [
+        { name: "Trigonometry", note: "8 mistakes to fix" },
+        { name: "Probability", note: "5 to fix" },
+      ],
+      tone: "exam",
+    });
+    // Sets is not one of the 5 big chapters, so it is not named.
+    expect(card?.rows).toContainEqual({ label: "Today", value: "Fix Trigonometry (8)", tone: "today" });
+    expect(card?.rows.some((r) => r.value.endsWith("waiting"))).toBe(false);
+    expect(card?.primary).toEqual({ label: "Fix Trigonometry", href: "/drill?chapter=c-trig&from=v_day", action: "exam" });
+    expect(card?.secondary).toEqual({ label: "My full progress", href: "/performance", action: "performance" });
+  });
+
+  it("names at most three", () => {
+    const card = buildDayCard(
+      input({
+        countdown: official(30),
+        bigChapters: BIG,
+        dueByChapter: { "c-trig": 1, "c-mat": 1, "c-prob": 1, "c-vec": 1 },
+      })
+    );
+    const row = card?.rows.find((r) => r.tone === "exam");
+    expect(row?.items?.map((i) => i.name)).toEqual(["Trigonometry", "Matrices and Determinants", "Probability"]);
+    expect(row?.items?.[0].note).toBe("1 mistake to fix");
+  });
+
+  it("falls back to the chapters that carry the most marks when none of them has a mistake waiting", () => {
+    const card = buildDayCard(
+      input({
+        days: [span("2026-11-14", 5, 3)],
+        dueChapters: ["Sets"],
+        countdown: official(30),
+        bigChapters: BIG,
+        dueByChapter: { "c-set": 1 },
+      })
+    );
+    expect(card?.countdown).toBe("top");
+    expect(card?.rows).toContainEqual({
+      label: "NDA 2027 (I) is 30 days away",
+      value: "The chapters that carry the most marks:",
+      items: [
+        { name: "Trigonometry", note: "about 9 questions a paper" },
+        { name: "Matrices and Determinants", note: "about 7 a paper" },
+        { name: "Probability", note: "about 6 a paper" },
+      ],
+      tone: "exam",
+    });
+    expect(card?.rows).toContainEqual({ label: "Today", value: "Start with Trigonometry", tone: "today" });
+    expect(card?.primary).toEqual({
+      label: "Practise Trigonometry",
+      href: "/go/practice?exam=NDA&subject=Mathematics&chapter=Trigonometry",
+      action: "exam",
+    });
+    expect(card?.secondary).toEqual({ label: "Fix 1 mistake", href: "/drill?from=v_day", action: "drill" });
+  });
+
+  it("says a date not yet announced is expected, with the days in words", () => {
+    const card = buildDayCard(
+      input({
+        countdown: { label: "MHT-CET 2027", date: "2027-01-14", official: false, daysLeft: 60 },
+        bigChapters: BIG,
+        dueByChapter: {},
+      })
+    );
+    const row = card?.rows.find((r) => r.tone === "exam");
+    expect(row?.label).toBe("MHT-CET 2027 is expected around 14 Jan");
+    expect(row?.value).toBe("About 60 days. The chapters that carry the most marks:");
+  });
+
+  it("asks for a full paper in the last week", () => {
+    const card = buildDayCard(
+      input({
+        exam: { slug: "nda", displayName: "NDA" },
+        dueChapters: ["Trigonometry", "Trigonometry"],
+        countdown: official(7),
+        bigChapters: BIG,
+        dueByChapter: { "c-trig": 2 },
+      })
+    );
+    expect(card?.countdown).toBe("mock");
+    expect(card?.rows).toContainEqual({
+      label: "NDA 2027 (I) is 7 days away",
+      value: "One full paper under exam time this week is worth more than new chapters now.",
+      tone: "exam",
+    });
+    expect(card?.rows).toContainEqual({ label: "Today", value: "A full paper, under exam time", tone: "today" });
+    expect(card?.primary).toEqual({ label: "Start a full mock", href: "/mock/exam/nda", action: "exam" });
+    expect(card?.secondary).toEqual({ label: "Fix 2 mistakes", href: "/drill?from=v_day", action: "drill" });
+    expect(buildDayCard(input({ countdown: official(1), bigChapters: BIG }))?.rows.find((r) => r.tone === "exam")?.label).toBe(
+      "NDA 2027 (I) is tomorrow"
+    );
+  });
+
+  it("keeps the board plan's task first, with the countdown's step second", () => {
+    const card = buildDayCard(
+      input({
+        exam: { slug: "cbse-12", displayName: "CBSE Class 12" },
+        countdown: official(20),
+        bigChapters: BIG,
+        dueByChapter: { "c-trig": 3 },
+        plan: {
+          doneOnDay: [],
+          chaptersDone: 0,
+          chaptersOf: 37,
+          tasks: [{ title: "Solutions", detail: "Chapter sheet", href: "/homework/x", minutes: 10, done: false }],
+        },
+      })
+    );
+    expect(card?.primary).toEqual({ label: "Start today's plan", href: "/homework/x", action: "plan" });
+    expect(card?.secondary).toEqual({ label: "Fix Trigonometry", href: "/drill?chapter=c-trig&from=v_day", action: "exam" });
+    expect(card?.rows.filter((r) => r.label === "Today")).toEqual([]);
+  });
+
+  it("shows nothing for an exam with no measured big chapters (no published full paper)", () => {
+    const card = buildDayCard(input({ days: [span("2026-11-14", 5, 3)], countdown: official(20), bigChapters: [], dueByChapter: {} }));
+    expect(card?.countdown).toBeNull();
+  });
+
+  it("counts a chapter once when two papers both weigh it, at its larger weight", () => {
+    const card = buildDayCard(
+      input({
+        countdown: official(30),
+        bigChapters: [...BIG, { ...big("c-sets2", "Sets", 40, 16), chapterId: "c-set" }],
+        dueByChapter: {},
+      })
+    );
+    const names = card?.rows.find((r) => r.tone === "exam")?.items?.map((i) => i.name);
+    expect(names).toEqual(["Sets", "Trigonometry", "Matrices and Determinants"]);
   });
 });

@@ -17,17 +17,34 @@
  *   the days missed and keeps no streak: this cohort studies in bursts.
  * - On the board plan, today's task is the plan's own (lib/path), so V and
  *   Home cannot disagree.
+ * - The exam countdown (owner, 2026-11-21): in the last COUNTDOWN_DAYS days
+ *   before the exam, one row names the big chapters (most marks a paper,
+ *   lib/me/startNext's measure) where the student still has mistakes
+ *   waiting, and the day's step is to fix the first; with none waiting there,
+ *   the big chapters themselves; in the last week, a full paper under exam
+ *   time. Every first visit of those days, not only on milestone days: 63% of
+ *   students come on one day only, so a milestone day would mostly be missed.
  *
  * Pure. Spec: tests/chat-day-card.test.ts.
  */
 import { DRILL_SIZE, questionState, type DrillEvent } from "@/lib/drill/select";
-import { drillHref } from "@/lib/drill/from";
+import { drillChapterHref, drillHref } from "@/lib/drill/from";
+import { goPracticeHref } from "@/lib/performance/links";
 import { drillTimeLine } from "@/lib/push/core";
 import type { Band } from "@/lib/performance/masteryMap";
 import { formatDuration } from "@/lib/studyTime/report";
 
 /** A last visit older than this is not "your day" any more. */
 export const DAY_LOOKBACK_DAYS = 30;
+
+/** The countdown row shows in the last this-many days before the exam. */
+export const COUNTDOWN_DAYS = 60;
+/** In the last this-many days the step is a full paper, not new chapters. */
+export const COUNTDOWN_MOCK_DAYS = 7;
+/** The chapters counted as "big": the most marks a paper, this many. */
+export const BIG_CHAPTERS = 5;
+/** Chapters named in the row, at most. */
+export const COUNTDOWN_NAMED = 3;
 
 const DAY_MS = 86_400_000;
 const IST_OFFSET_MS = 5.5 * 3_600_000;
@@ -53,6 +70,20 @@ export type DayPlan = {
   tasks: DayPlanTask[];
 };
 
+/** One chapter's weight in the exam's published papers (lib/me/startNext ChapterWeight, cut down). */
+export type BigChapter = {
+  chapterId: string;
+  chapter: string;
+  subject: string;
+  /** The exam by name, as the practice link takes it. */
+  examName: string;
+  qPerPaper: number;
+  marksPerPaper: number;
+};
+
+/** The exam date as lib/exam/calendar resolveExamDate gives it. */
+export type DayCountdown = { label: string; date: string; official: boolean; daysLeft: number };
+
 export type DayCardInput = {
   exam: { slug: string; displayName: string };
   now: Date;
@@ -71,11 +102,19 @@ export type DayCardInput = {
   /** Study time on the last visit's day in this exam (lib/studyTime/report
    *  dayStudyLine): null under 5 minutes. Optional so older fixtures stay small. */
   studyOnDay?: { secs: number; top: { chapter: string; secs: number } | null } | null;
+  /** The exam countdown (2026-11-21). Absent or null = no countdown row. */
+  countdown?: DayCountdown | null;
+  /** Chapter weights of the card's exam, any order; one chapter may appear once per paper. */
+  bigChapters?: BigChapter[];
+  /** Mistakes waiting in Fix per chapter id (lib/drill/select dueByChapter). */
+  dueByChapter?: Record<string, number>;
 };
 
-export type DayRow = { label: string; value: string; detail?: string; tone?: "good" | "today" };
+export type DayRowItem = { name: string; note: string };
 
-export type DayAction = { label: string; href: string; action: "drill" | "performance" | "plan" };
+export type DayRow = { label: string; value: string; detail?: string; items?: DayRowItem[]; tone?: "good" | "today" | "exam" };
+
+export type DayAction = { label: string; href: string; action: "drill" | "performance" | "plan" | "exam" };
 
 export type DayCard = {
   kind: "yesterday" | "since" | "fresh";
@@ -85,6 +124,8 @@ export type DayCard = {
   rows: DayRow[];
   primary: DayAction;
   secondary: DayAction | null;
+  /** Which countdown showed, for the card's view row; null = none. */
+  countdown: "fix" | "top" | "mock" | null;
 };
 
 /** YYYY-MM-DD in India time. */
@@ -196,6 +237,90 @@ function fixAction(due: number): DayAction {
   return { label: `Fix ${plural(Math.min(due, DRILL_SIZE), "mistake")}`, href: drillHref("v_day"), action: "drill" };
 }
 
+/** "14 Jan". */
+function dayMonth(date: string): string {
+  const d = new Date(`${date}T00:00:00Z`);
+  return `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]}`;
+}
+
+/** The big chapters, biggest first, each once (a chapter two papers weigh keeps its larger weight). */
+function bigChapters(all: readonly BigChapter[]): BigChapter[] {
+  const best = new Map<string, BigChapter>();
+  for (const c of all) {
+    if (!(c.marksPerPaper > 0)) continue;
+    const had = best.get(c.chapterId);
+    if (!had || c.marksPerPaper > had.marksPerPaper) best.set(c.chapterId, c);
+  }
+  return [...best.values()]
+    .sort((a, b) => b.marksPerPaper - a.marksPerPaper || a.chapter.localeCompare(b.chapter))
+    .slice(0, BIG_CHAPTERS);
+}
+
+type Countdown = { kind: "fix" | "top" | "mock"; row: DayRow; today: string; action: DayAction };
+
+/** The countdown row, today's step and its button; null outside the window or with nothing to name. */
+function countdownOf(input: DayCardInput): Countdown | null {
+  const c = input.countdown;
+  if (!c || c.daysLeft < 1 || c.daysLeft > COUNTDOWN_DAYS) return null;
+  const label = !c.official
+    ? `${c.label} is expected around ${dayMonth(c.date)}`
+    : c.daysLeft === 1
+      ? `${c.label} is tomorrow`
+      : `${c.label} is ${plural(c.daysLeft, "day")} away`;
+  const about = c.official ? "" : `About ${plural(c.daysLeft, "day")}. `;
+
+  if (c.daysLeft <= COUNTDOWN_MOCK_DAYS) {
+    return {
+      kind: "mock",
+      row: { label, value: `${about}One full paper under exam time this week is worth more than new chapters now.`, tone: "exam" },
+      today: "A full paper, under exam time",
+      action: { label: "Start a full mock", href: `/mock/exam/${input.exam.slug}`, action: "exam" },
+    };
+  }
+
+  const big = bigChapters(input.bigChapters ?? []);
+  if (big.length === 0) return null;
+  const due = input.dueByChapter ?? {};
+  const weak = big.filter((b) => (due[b.chapterId] ?? 0) > 0).slice(0, COUNTDOWN_NAMED);
+  if (weak.length > 0) {
+    const first = weak[0];
+    return {
+      kind: "fix",
+      row: {
+        label,
+        value: `${about}Big chapters where you still lose marks:`,
+        items: weak.map((b, i) => ({
+          name: b.chapter,
+          note: i === 0 ? `${plural(due[b.chapterId], "mistake")} to fix` : `${due[b.chapterId]} to fix`,
+        })),
+        tone: "exam",
+      },
+      today: `Fix ${first.chapter} (${due[first.chapterId]})`,
+      action: { label: `Fix ${first.chapter}`, href: drillChapterHref("v_day", first.chapterId), action: "exam" },
+    };
+  }
+  const top = big.slice(0, COUNTDOWN_NAMED);
+  const q = (b: BigChapter) => Math.max(1, Math.round(b.qPerPaper));
+  return {
+    kind: "top",
+    row: {
+      label,
+      value: `${about}The chapters that carry the most marks:`,
+      items: top.map((b, i) => ({
+        name: b.chapter,
+        note: i === 0 ? `about ${plural(q(b), "question")} a paper` : `about ${q(b)} a paper`,
+      })),
+      tone: "exam",
+    },
+    today: `Start with ${top[0].chapter}`,
+    action: {
+      label: `Practise ${top[0].chapter}`,
+      href: goPracticeHref(top[0].examName, top[0].subject, top[0].chapter),
+      action: "exam",
+    },
+  };
+}
+
 /** The card, or null when there is nothing to say (V keeps its greeting). */
 export function buildDayCard(input: DayCardInput): DayCard | null {
   const last = lastVisit(input.days, input.now);
@@ -249,7 +374,12 @@ export function buildDayCard(input: DayCardInput): DayCard | null {
         : { label: "Today on your plan", value: "Today's plan is done", tone: "good" }
     );
   }
-  if (due > 0 && !next) {
+  // 5. The exam countdown (2026-11-21): its row, and with no plan task, the day's step.
+  const countdown = countdownOf(input);
+  if (countdown) rows.push(countdown.row);
+  if (countdown && !next) {
+    rows.push({ label: "Today", value: countdown.today, tone: "today" });
+  } else if (due > 0 && !next) {
     // A backlog bigger than one drill starts with one drill (real data: up to 472 waiting).
     const sameChapter = main ? input.dueChapters.filter((c) => c === main).length : 0;
     const detail =
@@ -267,7 +397,11 @@ export function buildDayCard(input: DayCardInput): DayCard | null {
   let secondary: DayAction | null;
   if (next) {
     primary = { label: "Start today's plan", href: next.href, action: "plan" };
-    secondary = due > 0 ? fixAction(due) : PERFORMANCE;
+    secondary = countdown ? countdown.action : due > 0 ? fixAction(due) : PERFORMANCE;
+  } else if (countdown) {
+    primary = countdown.action;
+    // A chapter's Fix already is a Fix; otherwise all mistakes stay one tap away.
+    secondary = countdown.kind !== "fix" && due > 0 ? fixAction(due) : countdown.kind === "mock" ? null : PERFORMANCE;
   } else if (due > 0) {
     primary = fixAction(due);
     secondary = PERFORMANCE;
@@ -286,5 +420,6 @@ export function buildDayCard(input: DayCardInput): DayCard | null {
     rows,
     primary,
     secondary,
+    countdown: countdown?.kind ?? null,
   };
 }

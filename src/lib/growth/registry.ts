@@ -313,6 +313,15 @@ export const STUDY_NEXT_TAP_KEEP_PCT = 15;
 export const STUDY_NEXT_TIME_KEEP_PCT = 30;
 
 /**
+ * "v-exam-countdown": keep the exam countdown in V's "Your day" card if at
+ * least this share of the days it shows lead to a drill or practice start from
+ * the card that day (%). Before (v-day-card, 16-21 Nov, measured 2026-11-21):
+ * a drill start from the card on 3 of 86 showings (3.5%), so the bar asks for a
+ * clear lift.
+ */
+export const V_EXAM_COUNTDOWN_KEEP_PCT = 10;
+
+/**
  * "score-plan": keep "How to raise your score" if at least this share of the
  * fair full-paper attempts it shows on start the Fix list within a day (%).
  * Baseline with "What to fix next", 36 fair attempts (60 to 14 days before
@@ -575,6 +584,7 @@ export type Readout =
   | "v-step-chips"
   | "v-day-card"
   | "v-gift"
+  | "v-exam-countdown"
   | "score-plan"
   | "stuck-offer"
   | "same-mistake"
@@ -1218,7 +1228,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     id: "v-day-card",
     title: "V's \"Your day\" card, the first time a student opens V each day",
     change:
-      "The first time a signed-in student opens V on a new India day, a card stands in for V's greeting: their last day (answers, mistakes fixed, chapters that moved up; \"Since your last visit\" with the date after a gap, never the days missed), then one thing for today (the board plan's task, else Fix, starting with 5). A dot on V's button says it is waiting (a red \"1\" badge from 2026-11-20, owner: the 12 px blue dot read as decoration). No AI call. The mistakes notification now opens with \"Yesterday you fixed N.\" when there were fixes.",
+      "The first time a signed-in student opens V on a new India day, a card stands in for V's greeting: their last day (answers, mistakes fixed, chapters that moved up; \"Since your last visit\" with the date after a gap, never the days missed), then one thing for today (the board plan's task, else Fix, starting with 5). A dot on V's button says it is waiting (a red \"1\" badge from 2026-11-20, owner: the 12 px blue dot read as decoration). No AI call. The mistakes notification now opens with \"Yesterday you fixed N.\" when there were fixes. From 2026-11-21 the card carries the exam countdown in the last 60 days before the exam (experiment v-exam-countdown), so read its numbers before and after that date apart.",
     why: "\"How's my progress\" works once (55% of openers took a next step) but not as a habit: 7 of 31 opened it on a second day. Of 1,509 students active in the 28 days to 2026-11-15, 63% came on one day only and 34% of active days were followed by a visit the next day. A card waiting when they open V tests whether seeing their own day brings them back.",
     metric:
       "surface_viewed 'v_day' (one a day per student, metadata.card yesterday | since | fresh): students shown it and the share shown it on 2+ days; Vercel v_day_tap by action; drill_started from v_day the same day; next-day return of students shown it against the 34% of all active days. From 2026-11-20 the badge seen is recorded (surface_viewed 'v_day_badge', one a day): read badge days followed by a card that day, and read the card numbers before and after 2026-11-20 apart. Read with scripts/chat/day-card-readout.sql",
@@ -1254,6 +1264,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-21",
     windowDays: 28,
     readout: "study-time-card",
+    status: "running",
+  },
+  {
+    id: "v-exam-countdown",
+    title: "The exam countdown in V's \"Your day\" card",
+    change:
+      "In the last 60 days before a student's exam, V's \"Your day\" card adds an amber row: \"NDA 2027 (I) is 30 days away. Big chapters where you still lose marks:\" with up to 3 of the exam's 5 biggest chapters (most marks a paper in the published papers) that still have mistakes waiting, and the day's step is Fix that chapter. With none waiting there, the 3 biggest chapters and Practise the first; in the last 7 days, one full paper under exam time. A date not yet announced says \"is expected around\". The board plan's task keeps the main button. Every first visit of those days, not only on milestone days.",
+    why: "The owner (2026-11-21) wanted V to say the exam is getting close, personalised (version 1c). The engagement rules prefer a deadline to a daily streak, and the card was already where a student starts the day: 63% of students come on one day only, so a milestone-day message would mostly be missed.",
+    metric:
+      "surface_viewed 'v_day' with metadata.exam fix | top | mock: showings of each, and the share followed the same day by a drill start from v_day, or on mock days a mock started; a top day's Practise goes to the bank, so read it as Vercel v_day_tap action exam. scripts/chat/exam-countdown-readout.sql",
+    rule: `Keep it if ${V_EXAM_COUNTDOWN_KEEP_PCT}%+ of the days it shows lead to a start from the card that day (before: 3 of 86 card showings, 3.5%, led to a drill start, 16-21 Nov). Under that, drop the row and keep the card as it was.`,
+    liveSince: "2026-11-21",
+    windowDays: 28,
+    readout: "v-exam-countdown",
     status: "running",
   },
   {

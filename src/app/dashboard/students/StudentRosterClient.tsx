@@ -150,7 +150,7 @@ export default function StudentRosterClient({ rows }: { rows: StudentRosterRow[]
           </button>
         </div>
 
-        <div className="flex flex-wrap items-center gap-1" role="group" aria-label="Filter by target exam">
+        <div className="flex flex-wrap items-center gap-1" role="group" aria-label="Filter by chosen or guessed exam">
           {EXAM_REGISTRY.map((e) => (
             <ExamChip key={e.slug} label={e.displayName} on={exams.includes(e.slug)} onClick={() => toggleExam(e.slug)} />
           ))}
@@ -255,7 +255,22 @@ export default function StudentRosterClient({ rows }: { rows: StudentRosterRow[]
                   <td className="px-3 py-2 tabular-nums text-muted-foreground">{fmtDate(s.signedUp)}</td>
                   <td className="px-3 py-2">
                     {s.targetExams.length === 0 ? (
-                      <span className="text-xs text-muted-foreground">—</span>
+                      s.guessedExam ? (
+                        // Dashed + "guess": the student never chose this; it is
+                        // our guess (lib/students/rosterExamGuess.ts).
+                        <span
+                          className="rounded border border-dashed px-1.5 py-0.5 text-[11px] italic text-muted-foreground"
+                          title={
+                            s.guessedExam.source === "practice"
+                              ? "Our guess, from the questions they practised"
+                              : "Our guess, from the page they landed on"
+                          }
+                        >
+                          {s.guessedExam.slug} · guess
+                        </span>
+                      ) : (
+                        <span className="text-xs text-muted-foreground">—</span>
+                      )
                     ) : (
                       <span className="flex flex-wrap gap-1">
                         {s.targetExams.map((x) => (
