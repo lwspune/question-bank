@@ -6153,6 +6153,18 @@ export type Database = {
         }
         Returns: number
       }
+      get_study_time: {
+        Args: { p_from: string; p_to: string; p_user_id: string }
+        Returns: {
+          chapter: string
+          chapter_id: string
+          day: string
+          exam_id: string
+          kind: string
+          secs: number
+          subject: string
+        }[]
+      }
       get_subtopic_facets: {
         Args: {
           p_chapter_ids: string[]
