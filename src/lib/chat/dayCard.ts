@@ -31,7 +31,7 @@ import { DRILL_SIZE, questionState, type DrillEvent } from "@/lib/drill/select";
 import { drillChapterHref, drillHref } from "@/lib/drill/from";
 import { goPracticeHref } from "@/lib/performance/links";
 import { buildCheckIn, CHECKIN_QUESTION, type CheckIn, type CheckInChapter } from "./checkIn";
-import { drillTimeLine } from "@/lib/push/core";
+import { drillTimeLine } from "@/lib/drill/timeLine";
 import type { Band } from "@/lib/performance/masteryMap";
 import { formatDuration } from "@/lib/studyTime/report";
 
