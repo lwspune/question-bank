@@ -377,6 +377,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-21 (third) — Study time on Home and in V: today, the last 7 days, time beside the paper (migration 0278).**
+  - **Shipped before the clock had data** (owner: "why wait?"): thresholds are constants and the card hides under 15 min a week.
+  - **One read, `get_study_time(p_user_id)`:** clock rows plus mock time (10 min a question at most: a timed-out attempt held 3,797 s on one), for Home, V and the staff view.
+  - **Time vs the paper is within one subject's marks;** the one suggestion skips "strong" chapters, so it loads on This week (`/api/me/study-next`, needs the full mock record).
+  - Experiment `study-time-card`. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-21 (second) — V's gift: V tells a student what they have already earned, as a gift inside V (no migration).**
   - **Why:** owner, to make V feel human. Nothing new is given: the 7-day pass is the answer-limit trial (0273, same Activate), the discount is Vault Points (0245) at 10, 20, 30 or 40. Random discounts were dropped: a variable reward.
   - **Red badge on V's button, then "I have a gift for you." and a closed box inside V** (no speech bubble, owner); opening shows what and why.
