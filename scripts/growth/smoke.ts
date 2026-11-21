@@ -313,6 +313,10 @@ async function main() {
         // Read by hand: surface_viewed v_day by student and day, taps, drill starts from v_day.
         line = "by hand: scripts/chat/day-card-readout.sql (v_day showings on 2+ days, drill starts from v_day)";
         break;
+      case "v-gift":
+        // Read by hand: surface_viewed v_gift steps (badge, shown, open, activate, pricing) by gift.
+        line = "by hand: scripts/chat/gift-readout.sql (share of students shown the box who open it)";
+        break;
       case "v-step-chips":
         // Read by hand: step_by_step rows coded tap/explain/reply against stepped explanations, and Yes on Explain replies.
         line = "by hand: chat_interactions step_by_step (tap, explain, reply) and understood on Explain replies";

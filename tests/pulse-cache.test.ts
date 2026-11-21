@@ -29,7 +29,7 @@ describe("parsePulseEntry", () => {
     const e = parsePulseEntry(JSON.stringify(entry(0)));
     // `exam` is always present on the parsed shape (null when absent) so a
     // consumer never has to distinguish undefined from null.
-    expect(e).toEqual({ ...entry(0), exam: null, totals: null, weak: [], chapterDue: {}, path: null, replies: 0, leftCheckout: null });
+    expect(e).toEqual({ ...entry(0), exam: null, totals: null, weak: [], chapterDue: {}, path: null, replies: 0, leftCheckout: null, gift: null });
   });
 
   it("rejects junk, partial shapes and negative counts", () => {
@@ -171,6 +171,24 @@ describe("parsePulseEntry: a checkout left unpaid (2026-11-12)", () => {
   });
 });
 
+describe("parsePulseEntry: V's gift (2026-11-21)", () => {
+  it("is null when absent (an entry cached before it existed)", () => {
+    expect(parsePulseEntry(JSON.stringify(entry(0)))?.gift).toBeNull();
+  });
+  it("carries the gift through", () => {
+    expect(parsePulseEntry(JSON.stringify({ ...entry(0), gift: { kind: "trial" } }))?.gift).toEqual({ kind: "trial" });
+    expect(parsePulseEntry(JSON.stringify({ ...entry(0), gift: { kind: "points", milestone: 20 } }))?.gift).toEqual({
+      kind: "points",
+      milestone: 20,
+    });
+  });
+  it("refuses the whole entry when the gift is malformed", () => {
+    for (const bad of ["trial", { kind: "points", milestone: 7 }, { kind: "cash" }]) {
+      expect(parsePulseEntry(JSON.stringify({ ...entry(0), gift: bad })), JSON.stringify(bad)).toBeNull();
+    }
+  });
+});
+
 describe("pulseFromEntry: a cached read keeps every field", () => {
   it("returns the whole pulse without the timestamp", () => {
     // Until 2026-11-21 the cached read kept only six fields, so V's plan line,
@@ -185,6 +203,7 @@ describe("pulseFromEntry: a cached read keeps every field", () => {
       path: { state: "on", exam: "cbse-12" },
       replies: 2,
       leftCheckout: null,
+      gift: { kind: "trial" },
     };
     const parsed = parsePulseEntry(JSON.stringify(full));
     expect(parsed).not.toBeNull();

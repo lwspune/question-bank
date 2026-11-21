@@ -629,4 +629,31 @@ describe("parseClientEvent - a teaching moment", () => {
     });
     expect(parseClientEvent({ kind: "surface_viewed", surface: "v_day_badge", path: "/me" }, "u1", NOW).ok).toBe(false);
   });
+
+  it("accepts V's gift steps (2026-11-21), each once per gift, step and day", () => {
+    for (const action of ["badge", "shown", "open", "activate", "pricing"]) {
+      for (const gift of ["trial", "points"]) {
+        const r = parseClientEvent({ kind: "surface_viewed", surface: "v_gift", gift, action }, "u1", NOW);
+        expect(r).toEqual({
+          ok: true,
+          value: {
+            kind: "surface_viewed",
+            metadata: { surface: "v_gift", gift, action },
+            dedupeKey: `view:v_gift:${action}:${gift}:u1:2026-09-27`,
+          },
+        });
+      }
+    }
+  });
+
+  it("refuses a V gift step without a known gift or step", () => {
+    const bad = [
+      { kind: "surface_viewed", surface: "v_gift", action: "open" },
+      { kind: "surface_viewed", surface: "v_gift", gift: "cash", action: "open" },
+      { kind: "surface_viewed", surface: "v_gift", gift: "trial" },
+      { kind: "surface_viewed", surface: "v_gift", gift: "trial", action: "buy" },
+      { kind: "surface_viewed", surface: "v_gift", gift: "trial", action: "open", path: "/me" },
+    ];
+    for (const raw of bad) expect(parseClientEvent(raw, "u1", NOW).ok, JSON.stringify(raw)).toBe(false);
+  });
 });

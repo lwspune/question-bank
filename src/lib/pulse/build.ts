@@ -25,6 +25,7 @@ import type { Pulse } from "./cache";
 import { isPathExam, pathPulseState, type PathExam } from "@/lib/path/model";
 import { countUnreadReplies } from "@/lib/feedback/replyService";
 import { readLeftCheckout } from "@/lib/billing/leftCheckoutService";
+import { readEarnedGift } from "@/lib/chat/giftServer";
 
 export async function buildPulse(
   db: SupabaseClient,
@@ -35,9 +36,15 @@ export async function buildPulse(
     answers: Promise<AnswerTotals | null>;
     /** The viewer's country (readCountry), so the checkout bar shows their country price; absent = sold-everywhere price. */
     country?: string | null;
+    /**
+     * Read V's gift (2026-11-21, lib/chat/gift): only for the student's own
+     * pulse on www. Absent = no gift, which keeps the staff view of a
+     * student's /me from showing that student's gift in the staff member's V.
+     */
+    gift?: boolean;
   }
 ): Promise<Required<Pulse>> {
-  const [ladder, week, profile, answers, focusExam, replies, leftCheckout] = await Promise.all([
+  const [ladder, week, profile, answers, focusExam, replies, leftCheckout, gift] = await Promise.all([
     getOwnLadder(db, userId, now),
     counts.week,
     getOwnProfile(db, userId),
@@ -62,6 +69,13 @@ export async function buildPulse(
       console.error("pulse left checkout read failed", e instanceof Error ? e.message : e);
       return null;
     }),
+    // V's gift (2026-11-21). A failed read is no gift, never a wrong one.
+    counts.gift
+      ? readEarnedGift(db, userId, now).catch((e: unknown) => {
+          console.error("pulse gift read failed", e instanceof Error ? e.message : e);
+          return null;
+        })
+      : null,
   ]);
   const countdown = resolveExamDate(profile, now);
   const exam = countdown
@@ -81,7 +95,7 @@ export async function buildPulse(
   // Class 12 board among their exams. A failed read shows no path line.
   const active = profile.targetExams.some(isPathExam) ? await activePathExam(db, userId) : undefined;
   const path = active === undefined ? null : pathPulseState(profile.targetExams, active);
-  return { due: focused.length, week, exam, totals, weak, chapterDue, path, replies, leftCheckout };
+  return { due: focused.length, week, exam, totals, weak, chapterDue, path, replies, leftCheckout, gift };
 }
 
 /** The active path's board, null with none, undefined when the read failed. */

@@ -25,6 +25,7 @@
 import { NextResponse } from "next/server";
 import { headers } from "next/headers";
 import { readCountry } from "@/lib/acquisition/country";
+import { isIntlHost } from "@/lib/sites/intl";
 import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { logActivityOnce } from "@/lib/activity/service";
@@ -55,10 +56,13 @@ export async function GET() {
     await logActivityOnce(db, user.id, surfaceViewedEvent(user.id, "site", now));
     // The pulse itself is built in lib/pulse/build.ts, shared with the staff
     // view of a student's /me; here the two "caller" counts are the student's own.
+    const h = await headers();
     const pulse = await buildPulse(db, user.id, now, {
       week: getOwnWeekly(db, user.id, now),
       answers: getOwnAnswerTotals(db),
-      country: readCountry(await headers()),
+      country: readCountry(h),
+      // V's gift: the 7-day pass and Vault Points are www's alone.
+      gift: !isIntlHost(h.get("host")),
     });
     return NextResponse.json(pulse, { headers: NO_STORE });
   } catch (e) {

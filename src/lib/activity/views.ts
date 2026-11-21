@@ -58,6 +58,10 @@ export const SURFACES = [
   // The red "1" on V's button saying that card is waiting (2026-11-20), sent by
   // the browser once a day when it shows: the step before "opened V".
   "v_day_badge",
+  // V's gift (2026-11-21, lib/chat/gift), with metadata.gift trial | points and
+  // metadata.action badge | shown | open | activate | pricing: growth experiment
+  // "v-gift" reads how far students get from the badge to the gift's button.
+  "v_gift",
   // The Learn tab (2026-10-28): "learn" is a reading surface (every Learn page, by address);
   // "learn_start" is the student's first move through a lesson's slides, with the lesson's
   // address. Until then nothing told "nobody came" from "came and left before a question".

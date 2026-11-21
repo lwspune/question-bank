@@ -132,6 +132,7 @@ describe("EXPERIMENTS", () => {
       "v-finder",
       "v-fix-line",
       "v-follow-up-loop",
+      "v-gift",
       "v-intl",
       "v-pay-offer",
       "v-plan",

@@ -12,6 +12,7 @@
 
 import { isPathExam, type PathPulse } from "@/lib/path/model";
 import type { PassCta } from "@/lib/billing/plans";
+import { parseGift, type VGift } from "@/lib/chat/gift";
 
 export type PulseExam = {
   label: string;
@@ -48,6 +49,10 @@ export type Pulse = {
    *  "Your checkout didn't complete" bar (2026-11-12, lib/billing/leftCheckout).
    *  Optional for the same reason as `exam`. */
   leftCheckout?: PassCta | null;
+  /** A gift V may tell the student about (2026-11-21, lib/chat/gift): the
+   *  7-day pass or a Vault Points milestone they have earned. Optional for the
+   *  same reason as `exam`. */
+  gift?: VGift | null;
 };
 
 export type PulseWeak = { chapterId: string; name: string; place: string; due: number };
@@ -153,6 +158,11 @@ export function parsePulseEntry(raw: string | null): PulseEntry | null {
     leftCheckout = parsePassCta(o.leftCheckout);
     if (!leftCheckout) return null;
   }
+  let gift: VGift | null = null;
+  if (o.gift !== undefined && o.gift !== null) {
+    gift = parseGift(o.gift);
+    if (!gift) return null;
+  }
   return {
     at: o.at,
     due: o.due,
@@ -164,6 +174,7 @@ export function parsePulseEntry(raw: string | null): PulseEntry | null {
     path,
     replies,
     leftCheckout,
+    gift,
   };
 }
 

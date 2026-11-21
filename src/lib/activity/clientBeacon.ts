@@ -57,6 +57,13 @@ export type ClientEvent =
       subtopic: string;
     }
   | {
+      /** V's gift (lib/chat/gift): its badge seen, the box shown and opened, the gift's button tapped. */
+      kind: "surface_viewed";
+      surface: "v_gift";
+      gift: "trial" | "points";
+      action: "badge" | "shown" | "open" | "activate" | "pricing";
+    }
+  | {
       /** A teaching moment under a bank answer seen (lib/questions/teachingMoment). */
       kind: "surface_viewed";
       surface: "teaching_moment";
