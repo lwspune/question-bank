@@ -218,6 +218,8 @@ function teachLines(plan: LessonPlan, opts: { hasExample: boolean; tryShown: boo
       ". Write maths inside \\( \\).",
   ];
   if (opts.tryShown) lines.push(`A question on this ${unit} is shown under your reply: end with one short line asking them to try it.`);
+  // 2026-11-21 (real capture): V wrote "Try this one: a single fair die..." above the card's own question.
+  lines.push("Do not write a question of your own for them to try: you cannot check their answer, and the shown one is their turn.");
   lines.push("Do not list the chapter's questions instead of teaching, and do not call my_progress.");
   return lines;
 }

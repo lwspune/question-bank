@@ -634,6 +634,7 @@ describe("buildSystemPrompt", () => {
     // carry the map, the notes and "go on", so V never writes them as text.
     expect(p).toMatch(/with part N/i);
     expect(p).toMatch(/never list the parts/i);
+    expect(p).toMatch(/never write a question of your own/i);
     // Its answers and pages are usable like the other tools'.
     expect(p).toMatch(/returned by [^.]*chapter_overview/);
     expect(p).toMatch(/what the [^.]*chapter_overview[^.]*tools return/);

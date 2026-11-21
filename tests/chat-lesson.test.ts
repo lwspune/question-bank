@@ -15,6 +15,7 @@ import {
   lessonOrder,
   nextPart,
   parseLesson,
+  pickLessonTry,
   simplerMessage,
   type LessonPart,
   type VLesson,
@@ -146,5 +147,31 @@ describe("parseLesson", () => {
     const p = parseLesson({ ...lesson({ current: 1, next: null }), notesHref: "https://evil.example", parts: [{ ...PARTS[0], href: "javascript:alert(1)" }] });
     expect(p?.notesHref).toBeNull();
     expect(p?.parts[0].href).toBeNull();
+  });
+});
+
+// 2026-11-21 (real capture): a random pick gave a hard coin-toss sequence question as the check
+// straight after a basic dice lesson. A check after teaching starts easy.
+describe("pickLessonTry", () => {
+  const c = (id: string, difficulty: string | null) => ({ id, difficulty });
+
+  it("prefers an easy question, then a moderate one, then a hard one", () => {
+    expect(pickLessonTry([c("h", "HARD"), c("m", "MODERATE"), c("e", "EASY")], new Set(), () => 0)).toBe("e");
+    expect(pickLessonTry([c("h", "HARD"), c("m", "MODERATE")], new Set(), () => 0)).toBe("m");
+    expect(pickLessonTry([c("h", "HARD")], new Set(), () => 0)).toBe("h");
+  });
+
+  it("never picks an excluded question (their waiting mistakes, or one opened today)", () => {
+    expect(pickLessonTry([c("e", "EASY"), c("m", "MODERATE")], new Set(["e"]), () => 0)).toBe("m");
+    expect(pickLessonTry([c("e", "EASY")], new Set(["e"]), () => 0)).toBeNull();
+  });
+
+  it("a question with no difficulty label comes after the labelled easy and moderate ones", () => {
+    expect(pickLessonTry([c("x", null), c("m", "MODERATE")], new Set(), () => 0)).toBe("m");
+    expect(pickLessonTry([c("x", null), c("h", "HARD")], new Set(), () => 0)).toBe("x");
+  });
+
+  it("picks at random within the easiest group", () => {
+    expect(pickLessonTry([c("e1", "EASY"), c("e2", "EASY"), c("m", "MODERATE")], new Set(), () => 0.99)).toBe("e2");
   });
 });

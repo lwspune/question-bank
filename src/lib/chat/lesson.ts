@@ -92,6 +92,27 @@ export function lessonLinkLabels(l: VLesson): Record<string, string> {
   return out;
 }
 
+const DIFFICULTY_RANK: Record<string, number> = { EASY: 0, MODERATE: 1 };
+/** Unlabelled after easy and moderate, before hard: a check after teaching starts easy. */
+const rankOf = (d: string | null) => (d === null ? 2 : (DIFFICULTY_RANK[d] ?? (d === "HARD" ? 3 : 2)));
+
+/**
+ * The lesson's question to try: one of the part's questions, the easiest
+ * first, at random within that group (2026-11-21: a random pick gave a hard
+ * coin-toss sequence question straight after a basic dice lesson).
+ */
+export function pickLessonTry(
+  candidates: readonly { id: string; difficulty: string | null }[],
+  exclude: ReadonlySet<string>,
+  random: () => number = Math.random
+): string | null {
+  const left = candidates.filter((c) => !exclude.has(c.id));
+  if (left.length === 0) return null;
+  const best = Math.min(...left.map((c) => rankOf(c.difficulty)));
+  const group = left.filter((c) => rankOf(c.difficulty) === best);
+  return group[Math.min(group.length - 1, Math.floor(random() * group.length))].id;
+}
+
 /** The lesson under a follow-up reply (Explain more simply, or a Go on V answered without the tool). */
 export function carriedLesson(l: VLesson, current: number = l.current): VLesson {
   return { ...l, current, next: nextPart(l.parts, current), showMap: false, tryQuestionId: null };

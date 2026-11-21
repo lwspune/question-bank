@@ -10,6 +10,7 @@ import { loadRepeatGroups } from "@/lib/questions/repeatQuery";
 import { marksLine, repeatsLine, type PaperMark } from "./questionExtras";
 import { matchPasted, pickSimilar, toVQuestion, type VQuestion } from "./questionTools";
 import type { QuestionMatch } from "./questionToolSet";
+import { pickLessonTry } from "./lesson";
 
 const SIMILAR_POOL = 40;
 const SNIPPET_CHARS = 140;
@@ -118,42 +119,44 @@ export async function loadSimilarId(anon: SupabaseClient, q: VQuestion, exclude:
   return pickSimilar(((data ?? []) as { id: string }[]).map((r) => r.id), new Set(exclude));
 }
 
-/**
- * A question from one topic of a chapter, by the topic's name (V's chapter
- * lesson, 2026-11-21: the question to try on a part with no mistake to be
- * "like"). Same pool rules as loadSimilarId: PUBLIC, an MCQ, not part of a set.
- */
-export async function loadSubtopicQuestionId(
-  anon: SupabaseClient,
-  chapterId: string,
-  subtopic: string,
-  exclude: readonly string[]
-): Promise<string | null> {
-  const { data: sub, error: subError } = await anon
+/** A chapter's topic id by the topic's name; null when the chapter has none so named. */
+export async function loadSubtopicId(anon: SupabaseClient, chapterId: string, subtopic: string): Promise<string | null> {
+  const { data, error } = await anon
     .from("subtopics")
     .select("id")
     .eq("chapter_id", chapterId)
     .eq("name", subtopic)
     .limit(1)
     .maybeSingle();
-  if (subError) {
-    console.error("V: lesson topic read failed", subError.message);
+  if (error) {
+    console.error("V: lesson topic read failed", error.message);
     return null;
   }
-  if (!sub) return null;
+  return (data as { id: string } | null)?.id ?? null;
+}
+
+// A topic's whole MCQ pool for the lesson's pick (Probability via Counting: 176), well under a page.
+const LESSON_POOL = 400;
+
+/**
+ * V's chapter lesson's question to try (2026-11-21): one of the topic's
+ * questions, easiest first (lib/chat/lesson pickLessonTry). Same pool rules as
+ * loadSimilarId: PUBLIC, an MCQ, not part of a set.
+ */
+export async function loadLessonTryId(anon: SupabaseClient, subtopicId: string, exclude: readonly string[]): Promise<string | null> {
   const { data, error } = await anon
     .from("questions")
-    .select("id")
-    .eq("subtopic_id", (sub as { id: string }).id)
+    .select("id, difficulty")
+    .eq("subtopic_id", subtopicId)
     .eq("visibility", "PUBLIC")
     .eq("question_format", "mcq")
     .is("set_id", null)
-    .limit(SIMILAR_POOL);
+    .limit(LESSON_POOL);
   if (error) {
     console.error("V: lesson question read failed", error.message);
     return null;
   }
-  return pickSimilar(((data ?? []) as { id: string }[]).map((r) => r.id), new Set(exclude));
+  return pickLessonTry((data ?? []) as { id: string; difficulty: string | null }[], new Set(exclude));
 }
 
 /** The search words of pasted text: its longest distinct real words, longest first. */

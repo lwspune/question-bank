@@ -403,6 +403,9 @@ describe("chapter_overview from the student's mistakes", () => {
     ]);
     expect(lessons[0].tryQuestionId).toBe("t1");
     expect(out).toMatch(/question on this part is shown under your reply/i);
+    // 2026-11-21 (real capture): V wrote "Try this one: a single fair die..." above the card's own
+    // question, so the student had two questions to try, one made up.
+    expect(out).toMatch(/do not write a question of your own/i);
   });
 
   it("no question to try: V does not promise one", async () => {
@@ -410,6 +413,7 @@ describe("chapter_overview from the student's mistakes", () => {
     const out = await tool.run({ chapter: "vectors", exam: "MHT-CET" });
     expect(lessons[0].tryQuestionId).toBeNull();
     expect(out).not.toMatch(/question on this part is shown/i);
+    expect(out).toMatch(/do not write a question of your own/i);
   });
 
   it("a part asked for by number (the Go on button): teaches that part, no second map, its own example", async () => {
