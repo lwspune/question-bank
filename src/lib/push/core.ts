@@ -19,6 +19,7 @@
 import { clickUrl } from "@/lib/email/click";
 import type { DueSummary } from "@/lib/email/dueNudge";
 import { drillHref } from "@/lib/drill/from";
+import { drillTimeLine } from "@/lib/drill/timeLine";
 
 export const PUSH_KIND = "due_nudge" as const;
 /** A phone that was off past this gets nothing, rather than a stale nudge at midnight. */
@@ -30,8 +31,6 @@ export const PUSH_BADGE = "/icons/push-badge-96.png";
 
 /** Chapters named in the body before "+K more". */
 const MAX_CHAPTERS = 3;
-/** A drill serves at most this many questions, at about a minute each. */
-const DRILL_SIZE = 5;
 /** The push services cap a payload at 4 KB; leave headroom for encryption overhead. */
 const MAX_PAYLOAD_BYTES = 3500;
 const MAX_ENDPOINT = 2048;
@@ -86,10 +85,8 @@ export function pushTitle(total: number): string {
   return total === 1 ? "1 mistake is waiting in Fix" : `${total} mistakes are waiting in Fix`;
 }
 
-export function drillTimeLine(total: number): string {
-  const minutes = Math.min(total, DRILL_SIZE);
-  return minutes <= 1 ? "About a minute." : `About ${minutes} minutes.`;
-}
+// Moved to lib/drill/timeLine (browser-safe: this module imports node:crypto via lib/email/click).
+export { drillTimeLine };
 
 export function buildDuePushPayload(input: { summary: DueSummary; clickToken: string; fixedYesterday?: number }): PushPayload {
   const { summary, clickToken } = input;

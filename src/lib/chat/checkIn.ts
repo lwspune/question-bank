@@ -17,7 +17,7 @@
  */
 import { DRILL_SIZE } from "@/lib/drill/select";
 import { drillChapterHref, drillHref } from "@/lib/drill/from";
-import { drillTimeLine } from "@/lib/push/core";
+import { drillTimeLine } from "@/lib/drill/timeLine";
 
 export const CHECKIN_AWAY_DAYS = 4;
 export const CHECKIN_STUCK_NAMED = 2;

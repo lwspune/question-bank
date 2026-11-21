@@ -225,6 +225,9 @@ const INTL_GREETING: ChatTurn = { ...GREETING, text: "Hi, I'm V. Ask me about an
  * SIZE (2026-10-16, owner): chat and builder share one window, full screen on
  * a phone and a larger panel from `sm` up. Until then only the builder grew;
  * the chat was a 22rem panel that already covered most of a phone screen.
+ * Since 2026-11-21 (owner) the panel runs the full screen height from `sm` up
+ * (it was capped at 40rem, which cut off the "Your day" card's buttons on a
+ * laptop), and the launcher hides while V is open: the header's X closes it.
  */
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
@@ -516,8 +519,13 @@ export default function ChatWidget() {
     setOpen(false);
     setMode("chat");
     setResume(undefined);
-    launcherRef.current?.focus();
   }
+  // The launcher is hidden while V is open, so it takes focus back once it shows again.
+  const wasOpen = useRef(false);
+  useEffect(() => {
+    if (!open && wasOpen.current) launcherRef.current?.focus();
+    wasOpen.current = open;
+  }, [open]);
 
   function openBuilder() {
     logBuilderStep("open");
@@ -1079,7 +1087,7 @@ export default function ChatWidget() {
           aria-modal="true"
           aria-label={building ? "Build a practice test with V" : "Chat with V"}
           style={box ?? undefined}
-          className="fixed inset-0 flex h-[100dvh] w-full flex-col overflow-hidden bg-background sm:static sm:mb-3 sm:h-[40rem] sm:max-h-[calc(100dvh-7rem)] sm:w-[30rem] sm:max-w-[calc(100vw-2rem)] sm:rounded-2xl sm:border sm:border-border sm:shadow-[0_28px_64px_-24px_rgb(15_29_74/0.55)] motion-safe:sm:animate-in motion-safe:sm:fade-in motion-safe:sm:slide-in-from-bottom-4 motion-safe:sm:duration-200"
+          className="fixed inset-0 flex h-[100dvh] w-full flex-col overflow-hidden bg-background sm:fixed sm:inset-auto sm:bottom-[max(1rem,env(safe-area-inset-bottom))] sm:right-4 sm:top-4 sm:h-auto sm:w-[30rem] sm:max-w-[calc(100vw-2rem)] sm:rounded-2xl sm:border sm:border-border sm:shadow-[0_28px_64px_-24px_rgb(15_29_74/0.55)] motion-safe:sm:animate-in motion-safe:sm:fade-in motion-safe:sm:slide-in-from-bottom-4 motion-safe:sm:duration-200"
           onKeyDown={(e) => {
             // The download box is a portal: its keys bubble here through React,
             // and its own Escape must not close V too.
@@ -1538,7 +1546,7 @@ export default function ChatWidget() {
         aria-expanded={open}
         title="Chat with V"
         tabIndex={tucked ? -1 : undefined}
-        className={`relative ml-auto ${open ? "hidden sm:flex" : "flex"} h-11 w-11 items-center justify-center rounded-full bg-background shadow-lg transition-[transform,opacity] duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none sm:h-14 sm:w-14 ${
+        className={`relative ml-auto ${open ? "hidden" : "flex"} h-11 w-11 items-center justify-center rounded-full bg-background shadow-lg transition-[transform,opacity] duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none sm:h-14 sm:w-14 ${
           tucked ? "pointer-events-none translate-y-[160%] opacity-0" : ""
         }`}
       >
