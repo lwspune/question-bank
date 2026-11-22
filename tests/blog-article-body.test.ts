@@ -26,6 +26,8 @@ describe("checkHref", () => {
     // The Indian Air Force's AFCAT site, run for it by EdCIL: only that host, not all of EdCIL.
     expect(checkHref("https://afcat.edcil.co.in/assets/images/news/x.pdf")).toMatchObject({ official: true });
     expect(checkHref("https://other.edcil.co.in/")).toMatchObject({ official: false });
+    // The IISERs' joint admissions portal, where the IAT brochure lives.
+    expect(checkHref("https://www.iiseradmission.in/assets/pdfs/IB_IAT_2026_ENG.pdf")).toMatchObject({ official: true });
     expect(checkHref("https://indianexpress.com/x")).toEqual({ ok: true, external: true, official: false });
   });
 
