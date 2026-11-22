@@ -2445,7 +2445,7 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectRoute": "spi-maths",
     "subjectDisplay": "SPI Mathematics",
     "chapterSlug": "quadratic-equations",
-    "subtopicCount": 4
+    "subtopicCount": 5
   },
   {
     "examName": "SPI",
@@ -2460,6 +2460,13 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SPI Mathematics",
     "chapterSlug": "algebraic-identities",
     "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "time-speed-distance",
+    "subtopicCount": 1
   },
   {
     "examName": "SPI",
@@ -2529,6 +2536,13 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectRoute": "spi-reasoning",
     "subjectDisplay": "SPI Reasoning",
     "chapterSlug": "order-ranking",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-reasoning",
+    "subjectDisplay": "SPI Reasoning",
+    "chapterSlug": "analogy",
     "subtopicCount": 1
   },
   {

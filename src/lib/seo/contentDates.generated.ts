@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 657
+ * Entries: 668
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -241,6 +241,17 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/jee-mains-physics/wave-optics": "2026-11-20T01:33:03+05:30",
   "/notes/jee-mains-physics/waves": "2026-11-20T01:05:34+05:30",
   "/notes/jee-mains-physics/work-energy-and-power": "2026-11-20T01:25:25+05:30",
+  "/notes/mh-scholarship-4-intelligence/analogy": "2026-11-21T12:25:22+05:30",
+  "/notes/mh-scholarship-4-intelligence/classification-odd-one-out": "2026-11-21T12:25:22+05:30",
+  "/notes/mh-scholarship-4-intelligence/coding-decoding": "2026-11-21T12:25:22+05:30",
+  "/notes/mh-scholarship-4-maths/fractions-decimals": "2026-11-21T12:25:22+05:30",
+  "/notes/mh-scholarship-4-maths/multiplication-division": "2026-11-21T12:25:22+05:30",
+  "/notes/mh-scholarship-4-maths/numbers-number-system": "2026-11-21T12:25:22+05:30",
+  "/notes/mh-scholarship-4-maths/units-of-measurement": "2026-11-21T12:25:22+05:30",
+  "/notes/mh-scholarship-7-intelligence/analogy": "2026-11-21T12:25:22+05:30",
+  "/notes/mh-scholarship-7-intelligence/classification-odd-one-out": "2026-11-21T12:25:22+05:30",
+  "/notes/mh-scholarship-7-maths/algebraic-expressions": "2026-11-21T12:25:22+05:30",
+  "/notes/mh-scholarship-7-maths/perimeter-area": "2026-11-21T12:25:22+05:30",
   "/notes/mht-cet-chemistry/alcohols-phenols-and-ethers": "2026-11-20T09:27:35+05:30",
   "/notes/mht-cet-chemistry/aldehydes-ketones-and-carboxylic-acids": "2026-11-20T09:27:35+05:30",
   "/notes/mht-cet-chemistry/alkanes": "2026-11-20T09:17:16+05:30",
