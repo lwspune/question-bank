@@ -240,10 +240,24 @@ FIGURES = {
 }
 
 
+# The 2026-11-22 review redrew every hand-drawn or blurred schematic of the
+# MSTA papers; those live one module per paper beside this file.
+sys.path.insert(0, LANE)
+for _mod in ("redraw_2010", "redraw_2017", "redraw_2018", "redraw_2021_jan", "redraw_2021_nov", "redraw_2021_dec"):
+    if os.path.exists(os.path.join(LANE, f"{_mod}.py")):
+        FIGURES.update(__import__(_mod).FIGURES)
+
+
 def main() -> None:
-    only = sys.argv[1] if len(sys.argv) > 1 else None
+    """redraw.py [paper] [--q=N,...]"""
+    args = sys.argv[1:]
+    only = next((a for a in args if not a.startswith("--")), None)
+    q_arg = next((a for a in args if a.startswith("--q=")), None)
+    nums = {int(x) for x in q_arg[4:].split(",")} if q_arg else None
     for (paper, n), fn in FIGURES.items():
         if only and paper != only:
+            continue
+        if nums and n not in nums:
             continue
         save(fn(), paper, n)
 
