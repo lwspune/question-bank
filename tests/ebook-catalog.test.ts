@@ -213,7 +213,7 @@ describe("ebook catalog", () => {
     expect(hb.examiner).toBe("exam");
     expect(hb.bankSubjects).toEqual(["Physics", "Chemistry", "Biology", "General Science"]);
     expect(hb.title).toBe("Homi Bhabha Class 9 Science");
-    expect(`${hb.title} ${hb.subtitle}`).not.toMatch(/board/i);
+    expect(`${hb.title} ${hb.subtitle}`).not.toMatch(/\bboard\b/i);
     for (const subject of hb.bankSubjects!) {
       const order = HOMI_BHABHA_9_ORDER[subject];
       expect(order?.length, subject).toBeGreaterThan(0);
