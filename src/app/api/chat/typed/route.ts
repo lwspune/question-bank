@@ -73,6 +73,7 @@ import {
 import type { ToolCallLog } from "@/lib/chat/anthropic";
 import { parseAskedQuestion } from "@/lib/chat/questionTools";
 import { parseFollowsUp } from "@/lib/chat/followUp";
+import type { VLesson } from "@/lib/chat/lesson";
 import { notesPageOf, notesRefKey, parseNotesItemRef } from "@/lib/chat/notesItem";
 import { isExplanation } from "@/lib/chat/understood";
 import { fileVSolutionReport } from "@/lib/reports/fileVReport";
@@ -355,6 +356,8 @@ export async function POST(request: NextRequest) {
     let planShown = false;
     // Set when the plan tools answered from the board path: the chat window shows the path card.
     let pathShown = false;
+    // Set when chapter_overview ran: the window draws the lesson's map card, question to try and buttons.
+    let lesson: VLesson | null = null;
     let recorded: {
       text: string;
       source: "ai" | "ai_failed" | "fallback";
@@ -402,6 +405,7 @@ export async function POST(request: NextRequest) {
               ownId && settings.explainEnabled
                 ? buildChapterMissDeps(createSupabaseServerClient(), createSupabaseAnonClient(), ownId, site === "intl")
                 : null,
+            onLesson: settings.explainEnabled ? (l) => (lesson = l) : null,
             // The student's own login does the reading (get_own_performance): no id is passed to the database.
             loadOwnProgress: ownId ? () => ownProgress(ownId) : undefined,
             planEnabled: settings.planEnabled,
@@ -506,6 +510,7 @@ export async function POST(request: NextRequest) {
             ...(matchQuestionId ? { matchQuestionId } : {}),
             ...(planShown ? { planShown: true } : {}),
             ...(pathShown ? { pathShown: true } : {}),
+            ...(lesson ? { lesson } : {}),
             // An explanation asks "Did you understand?" under it (0182).
             explained: isExplanation(recorded.toolCalls, message, askedNotesItem),
             ...(solutionFigure ? { solutionFigure } : {}),

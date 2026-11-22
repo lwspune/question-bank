@@ -4,7 +4,7 @@
  * made-up address is never a link.
  */
 import { describe, it, expect } from "vitest";
-import { pathsInReply, allowedReplyLinks, splitReplyLinks, plainLinks, plainQuotes } from "@/lib/chat/replyLinks";
+import { pathsInReply, allowedReplyLinks, splitReplyLinks, plainLinks, plainQuotes, linkLabel } from "@/lib/chat/replyLinks";
 
 describe("pathsInReply", () => {
   it("finds site paths written in the reply", () => {
@@ -83,5 +83,27 @@ describe("plainLinks", () => {
 
   it("leaves brackets that are not a link, and outside addresses, alone", () => {
     expect(plainLinks("Option [A] (x) and [site](https://example.com)")).toBe("Option [A] (x) and [site](https://example.com)");
+  });
+});
+
+// 2026-11-21 (owner's phone): "Your notes are at /notes/nda-maths/probability/classical-probability-counting"
+// ran over three lines. A link shows a name; the path stays the target.
+describe("linkLabel", () => {
+  it("a name the tool gave wins", () => {
+    expect(linkLabel("/notes/nda-maths/probability/classical-probability-counting", { "/notes/nda-maths/probability/classical-probability-counting": "Classical Probability & Counting" })).toBe(
+      "Classical Probability & Counting"
+    );
+  });
+
+  it("a notes part, a notes chapter, a questions page and a board chapter read as words", () => {
+    expect(linkLabel("/notes/nda-maths/probability/classical-probability-counting")).toBe("Classical probability counting");
+    expect(linkLabel("/notes/nda-maths/probability")).toBe("Probability notes");
+    expect(linkLabel("/questions/nda/mathematics/probability")).toBe("Probability questions");
+    expect(linkLabel("/board/cbse-12/physics/ray-optics")).toBe("Ray optics");
+  });
+
+  it("any other page keeps its short path", () => {
+    expect(linkLabel("/pricing")).toBe("/pricing");
+    expect(linkLabel("/notes")).toBe("/notes");
   });
 });

@@ -14,12 +14,14 @@ import VReplyText from "./VReplyText";
 export default function VRevealReply({
   text,
   links,
+  labels,
   onNavigate,
   onGrow,
   onDone,
 }: {
   text: string;
   links?: string[];
+  labels?: Readonly<Record<string, string>>;
   onNavigate?: () => void;
   /** The bubble grew: keep the list scrolled to the bottom. */
   onGrow?: () => void;
@@ -55,7 +57,7 @@ export default function VRevealReply({
       aria-busy={shown < steps.length}
       className={shown < steps.length ? "cursor-pointer" : undefined}
     >
-      <VReplyText text={steps.slice(0, shown).join("").replace(/\n+$/, "")} links={links} onNavigate={onNavigate} />
+      <VReplyText text={steps.slice(0, shown).join("").replace(/\n+$/, "")} links={links} labels={labels} onNavigate={onNavigate} />
     </span>
   );
 }

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { clickScript, scrollXScript, NO_FULLSCREEN_SCRIPT, pageSlug, planCaptures, parseShotArgs, sheetHtml, storageScript, stubHeaderSession, VIEWPORTS } from "../scripts/ui/lib";
+import { BEFORE_YOU_SEND, clickScript, scrollXScript, NO_FULLSCREEN_SCRIPT, pageSlug, planCaptures, parseShotArgs, sheetHtml, storageScript, stubHeaderSession, VIEWPORTS } from "../scripts/ui/lib";
 
 /**
  * `npm run ui:shots` (2026-10-04): the before/after screenshot sheet every
@@ -303,5 +303,17 @@ describe("--bottom", () => {
 
   it("cannot be combined with --full, which already starts at the top", () => {
     expect(() => parseShotArgs(["--pages=/notes", "--bottom", "--full"])).toThrow(/--bottom/);
+  });
+});
+
+// 2026-11-21 (owner: "why dont you check first"): a V lesson sheet was sent after a glance, and a
+// real look found six faults in it. Every run now ends with the check to do before sending.
+describe("BEFORE_YOU_SEND", () => {
+  it("asks for the four checks: the mockup, a student's read, every capture loaded, what is not shown", () => {
+    const text = BEFORE_YOU_SEND.join(" ");
+    expect(text).toMatch(/mockup/i);
+    expect(text).toMatch(/student/i);
+    expect(text).toMatch(/loaded/i);
+    expect(text).toMatch(/not show/i);
   });
 });

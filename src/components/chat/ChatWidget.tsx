@@ -5,8 +5,18 @@ import { useIntlSite } from "@/lib/sites/useIntlSite";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { usePublicPathname } from "@/lib/nav/usePublicPathname";
-import { CalendarCheck, Check, GraduationCap, ListChecks, Plus, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, TrendingUp, X } from "lucide-react";
+import { ArrowRight, BookOpen, CalendarCheck, Check, GraduationCap, Lightbulb, ListChecks, Plus, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, TrendingUp, X } from "lucide-react";
 import { TEACH_ANY_CHAPTER, teachChapterMessage } from "@/lib/chat/teachChapter";
+import {
+  carriedLesson,
+  goOnLabel,
+  goOnMessage,
+  lessonLinkLabels,
+  lessonNotesHref,
+  parseLesson,
+  simplerMessage,
+  type VLesson,
+} from "@/lib/chat/lesson";
 import { toast } from "sonner";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { useVFeatures } from "@/lib/chat/useVExplain";
@@ -71,6 +81,7 @@ import ReplyText from "./VReplyText";
 import VRevealReply from "./VRevealReply";
 import VStepReply from "./VStepReply";
 import VPlanCard from "./VPlanCard";
+import VChapterMapCard from "./VChapterMapCard";
 import VPassOffer from "./VPassOffer";
 import VHourlyOffer from "./VHourlyOffer";
 import { parseVPassOffer, type VPassOffer as PassOffer } from "@/lib/chat/passOffer";
@@ -121,7 +132,12 @@ type ChatTurn = HistoryTurn & {
   avatar?: VAvatar;
   transient?: boolean;
   /** A question card under V's reply (2026-10-19): a similar one to try, or a pasted one to confirm. */
-  card?: { id: string; kind: "try" | "confirm"; after?: string };
+  card?: { id: string; kind: "try" | "confirm"; after?: string; /** A chapter lesson's question: headed "Your turn". */ turn?: boolean };
+  /**
+   * A chapter lesson (2026-11-21, mockup B): the map card on its first reply, and its buttons
+   * (Go on, Explain more simply, Open the notes) under the latest reply, in place of V's own.
+   */
+  lesson?: VLesson;
   /** The week plan under V's reply (2026-10-19): it made or read the student's plan. */
   plan?: boolean;
   /** The "How's my progress" card (2026-10-27): the student's own numbers, read when shown. */
@@ -772,6 +788,20 @@ export default function ChatWidget() {
     void askTyped(p ? teachChapterMessage({ chapter: p.name, place: p.place }) : TEACH_ANY_CHAPTER, null);
   }
 
+  /** Go on (2026-11-21): the lesson's next part. Carried client-side too, in case V answers without the tool. */
+  function lessonGoOn(l: VLesson) {
+    const message = goOnMessage(l);
+    if (sending || !message || l.next === null) return;
+    sendActivity({ kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "lesson_go_on" });
+    void askTyped(message, null, { carryLesson: carriedLesson(l, l.next) });
+  }
+
+  function lessonSimpler(l: VLesson) {
+    if (sending) return;
+    sendActivity({ kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "lesson_simpler" });
+    void askTyped(simplerMessage(l), null, { carryLesson: carriedLesson(l) });
+  }
+
   function showProgressCard() {
     if (sending) return;
     trackFunnel("v_progress_tap", { action: "open" });
@@ -943,7 +973,12 @@ export default function ChatWidget() {
   async function askTyped(
     override?: string,
     about?: AskVDetail | null,
-    opts: { replyTo?: { id: string; text: string; step?: number }; hideAsked?: boolean } = {}
+    opts: {
+      replyTo?: { id: string; text: string; step?: number };
+      hideAsked?: boolean;
+      /** A lesson button's send: the reply keeps the lesson's buttons when V's answer brings none. */
+      carryLesson?: VLesson;
+    } = {}
   ) {
     const text = (override ?? draft).trim();
     if (sending || !text) return;
@@ -1003,6 +1038,8 @@ export default function ChatWidget() {
         stepQuestionId?: string;
         /** The day's free answers stopped an explanation: the pass offer goes under the reply (2026-10-28). */
         passOffer?: unknown;
+        /** chapter_overview ran: the lesson's map card, question to try and buttons (2026-11-21). */
+        lesson?: unknown;
         /** Abuse after the calm line (lib/chat/abuse.ts): V says nothing. */
         silent?: boolean;
         /** V's hourly limit (2026-11-07, 0226): the wait line, and Premium for a free student. */
@@ -1030,11 +1067,14 @@ export default function ChatWidget() {
         return;
       }
       const links = Array.isArray(data.links) ? data.links.filter((l): l is string => typeof l === "string") : [];
+      const lesson = parseLesson(data.lesson) ?? opts.carryLesson;
       const card: ChatTurn["card"] = data.similarQuestionId
         ? { id: data.similarQuestionId, kind: "try", ...(data.explainedQuestionId ? { after: data.explainedQuestionId } : {}) }
         : data.matchQuestionId
           ? { id: data.matchQuestionId, kind: "confirm" }
-          : undefined;
+          : lesson?.tryQuestionId
+            ? { id: lesson.tryQuestionId, kind: "try", turn: true }
+            : undefined;
       const plan = data.planShown === true ? true : undefined;
       const path = data.pathShown === true ? true : undefined;
       const offer = parseVPassOffer(data.passOffer) ?? undefined;
@@ -1052,6 +1092,7 @@ export default function ChatWidget() {
               plan,
               path,
               offer,
+              ...(lesson ? { lesson } : {}),
               reveal: true,
               explained: data.explained === true,
               understood: null,
@@ -1061,7 +1102,7 @@ export default function ChatWidget() {
               ...(typeof data.explainedQuestionId === "string" ? { explainedQuestionId: data.explainedQuestionId } : {}),
               ...(typeof data.stepQuestionId === "string" ? { stepQuestionId: data.stepQuestionId } : {}),
             }
-          : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan, path, reveal: true }
+          : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan, path, ...(lesson ? { lesson } : {}), reveal: true }
       );
     } catch {
       const errorText = "V is unavailable right now. Please try again.";
@@ -1073,6 +1114,11 @@ export default function ChatWidget() {
   }
 
   if (placement.hidden) return null;
+
+  // V's latest reply (index into `turns`): a chapter lesson there puts its buttons under it and hides V's own.
+  let lastReplyAt = turns.length - 1;
+  while (lastReplyAt >= 0 && turns[lastReplyAt].role !== "assistant") lastReplyAt -= 1;
+  const lessonOpen = lastReplyAt >= 0 && !!turns[lastReplyAt].lesson;
 
   // Vertical position lives in globals.css (.chat-launcher-offset): clear of
   // MobileTabBar below sm, and raised by --v-lift over /browse's cart pill.
@@ -1163,12 +1209,19 @@ export default function ChatWidget() {
               const parts = t.stepQuestionId && t.id && !signInNeeded ? replyParts(t.text) : null;
               // The solution's figure, when the question V explained has one. A saved turn is checked first.
               const figure = t.reveal ? null : figureSrc(t.figure, SUPABASE_URL);
+              // A lesson's pages show their names, never their paths (2026-11-21).
+              const labels = t.lesson ? lessonLinkLabels(t.lesson) : undefined;
+              // The lesson's buttons go under the latest reply only, once its last line is out.
+              const lessonHere = t.lesson && !t.reveal && i === lastReplyAt ? t.lesson : null;
               return (
                 <div key={n} className={`max-w-[90%] ${MESSAGE_IN}`}>
+                  {/* The lesson's map comes first, as in mockup B: V's text then runs straight into the question to try. */}
+                  {t.lesson && t.lesson.showMap && <VChapterMapCard lesson={t.lesson} onNavigate={close} placement="above" />}
                   {parts ? (
                     <VStepReply
                       parts={parts}
                       links={t.links}
+                      labels={labels}
                       avatar={t.reveal ? "talk" : (t.avatar ?? "idle")}
                       reveal={t.reveal}
                       tapped={t.tappedStep ?? null}
@@ -1188,12 +1241,13 @@ export default function ChatWidget() {
                           <VRevealReply
                             text={t.text}
                             links={t.links}
+                            labels={labels}
                             onNavigate={close}
                             onGrow={() => listRef.current?.scrollTo({ top: listRef.current.scrollHeight })}
                             onDone={() => endReveal(i)}
                           />
                         ) : (
-                          <ReplyText text={t.text} links={t.links} onNavigate={close} />
+                          <ReplyText text={t.text} links={t.links} labels={labels} onNavigate={close} />
                         )}
                       </div>
                     </div>
@@ -1348,9 +1402,48 @@ export default function ChatWidget() {
                       id={t.card.id}
                       kind={t.card.kind}
                       after={t.card.after}
+                      heading={t.card.turn ? "Your turn" : undefined}
                       onMore={t.card.kind === "try" ? () => void moreLike(t.card!.id) : undefined}
                       onNavigate={close}
                     />
+                  )}
+                  {lessonHere && (
+                    <div className="ml-9 mt-2 flex flex-wrap gap-1.5" role="group" aria-label={`${lessonHere.chapter} lesson`}>
+                      {goOnLabel(lessonHere) && (
+                        <button
+                          type="button"
+                          disabled={sending}
+                          onClick={() => lessonGoOn(lessonHere)}
+                          aria-label={goOnLabel(lessonHere)!.aria}
+                          className="inline-flex min-h-9 items-center gap-1 rounded-full bg-brand px-3 py-1.5 text-xs font-semibold text-brand-foreground shadow-sm transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                        >
+                          <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+                          {goOnLabel(lessonHere)!.text}
+                        </button>
+                      )}
+                      <button
+                        type="button"
+                        disabled={sending}
+                        onClick={() => lessonSimpler(lessonHere)}
+                        className="inline-flex min-h-9 items-center gap-1 rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                      >
+                        <Lightbulb className="h-3.5 w-3.5" aria-hidden />
+                        Explain more simply
+                      </button>
+                      {lessonNotesHref(lessonHere) && (
+                        <Link
+                          href={lessonNotesHref(lessonHere)!}
+                          onClick={() => {
+                            sendActivity({ kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "lesson_notes" });
+                            close();
+                          }}
+                          className="inline-flex min-h-9 items-center gap-1 rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                        >
+                          <BookOpen className="h-3.5 w-3.5" aria-hidden />
+                          Open the notes
+                        </Link>
+                      )}
+                    </div>
                   )}
                   {t.plan && !t.reveal && <VPlanCard onNavigate={close} />}
                   {t.progress && <VProgressCard onNavigate={close} />}
@@ -1416,6 +1509,8 @@ export default function ChatWidget() {
 
           <div className="shrink-0 border-t border-border/70 bg-card shadow-[0_-12px_28px_-20px_rgb(15_29_74/0.35)]">
           <div className="relative">
+            {/* A chapter lesson's own buttons stand in for these while it is the latest reply (2026-11-21). */}
+            {!lessonOpen && (
             <div className="flex flex-wrap gap-2 px-3 pb-1 pt-3">
               {!intl && (
                 <button
@@ -1462,6 +1557,7 @@ export default function ChatWidget() {
                 </button>
               )}
             </div>
+            )}
           </div>
 
           {signInNeeded ? (

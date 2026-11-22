@@ -217,6 +217,19 @@ function clickArg(raw: string | undefined): string[] | null {
 
 /** The script that seeds localStorage (`--storage`); objects are stored as JSON. Never throws. */
 /** Run before each load under `--no-fullscreen`: `document.fullscreenEnabled` reads false. */
+/**
+ * Printed at the end of every run (owner, 2026-11-21: "why dont you check
+ * first"): a V lesson sheet went out after a glance and a real look then found
+ * six faults in it. Do these before sending any sheet.
+ */
+export const BEFORE_YOU_SEND = [
+  "BEFORE YOU SEND THIS SHEET:",
+  "1. Open the approved mockup, if there is one, and compare element by element, order included.",
+  "2. Read every capture as the student would, top to bottom: what would confuse them?",
+  "3. Check every capture loaded: an empty card was taken too early; a stray launcher or overlay is page chrome.",
+  "4. Name what the captures do not show (a row the real screen has, a screen behind a tap) when you send it.",
+];
+
 export const NO_FULLSCREEN_SCRIPT = `Object.defineProperty(Document.prototype, "fullscreenEnabled", { configurable: true, get: () => false });`;
 
 export function storageScript(entries: Record<string, unknown>): string {
