@@ -346,11 +346,12 @@ export const V_TEACH_CHAPTER_ON_KEEP_PCT = 30;
 
 /**
  * "v-learn-first": keep Learn first in V's chapter lessons if at least this share
- * of the Learn lessons V shows get their Your turn question answered (%). The past-
- * paper Your turn has no baseline yet (shipped the same day), so the bar is set
- * where a check question earns its place: one lesson in three.
+ * of the Learn maps V shows lead the student to open a lesson from the map (%).
+ * Until the same day's second change (2026-11-22) it was Your turn answered; the
+ * map is now the whole reply, so opening a lesson is the step it asks for. No
+ * baseline (Learn's tab had 3 learners ever), so the bar is one map in three.
  */
-export const V_LEARN_FIRST_ANSWER_KEEP_PCT = 30;
+export const V_LEARN_FIRST_OPEN_KEEP_PCT = 30;
 
 /**
  * "score-plan": keep "How to raise your score" if at least this share of the
@@ -1183,7 +1184,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     id: "stuck-offer",
     title: "Help after 3 of 4 wrong on a subtopic",
     change:
-      "On a bank question card, the answer that makes 3 of the student's last 4 on its subtopic wrong (3 of 3 counts) gets an offer: \"3 of your last 4 on Coulomb's Law were wrong. Want help with the idea behind it?\" with Teach me the idea (our notes for the subtopic, else V explains the concept), Try an easier one (an easy unanswered question from the subtopic) and Keep going. Once per streak, never in a mock. Since 2026-11-11 (no student had tapped Teach yet) the notes show \"Back to your question\", and the card comes back answered with \"Now try one\" (steps returned, try_after). From 2026-11-15 Teach me the idea opens the notes in a panel on the same page (owner), then offers Now try one like it; teach_close and full_notes recorded. Read offers before and after that date apart.",
+      "On a bank question card, the answer that makes 3 of the student's last 4 on its subtopic wrong (3 of 3 counts) gets an offer: \"3 of your last 4 on Coulomb's Law were wrong. Want help with the idea behind it?\" with Teach me the idea (our notes for the subtopic, else V explains the concept), Try an easier one (an easy unanswered question from the subtopic) and Keep going. Once per streak, never in a mock. Since 2026-11-11 (no student had tapped Teach yet) the notes show \"Back to your question\", and the card comes back answered with \"Now try one\" (steps returned, try_after). From 2026-11-15 Teach me the idea opens the notes in a panel on the same page (owner), then offers Now try one like it; teach_close and full_notes recorded. Read offers before and after that date apart. From 2026-11-22 (owner), where Learn teaches the topic, Teach me the idea opens Learn's lesson for it full screen instead (steps learn_open, learn_close), even where Learn would lock it; an MHT-CET or JEE topic no lesson is filed under opens V's Learn map for the chapter. Read Class 12 Maths offers before and after 2026-11-22 apart.",
     why: "30 days to 2026-11-10: 629 such moments by 267 students on bank and board practice, and 14% left right after (12% after a right answer). Every bank answer shows its solution, so these students had read three and still missed: the gap is the idea. Owner's idea.",
     metric:
       "Offers shown and each button (surface_viewed stuck_offer, metadata.action); whether the student answers again within 20 minutes; their next answers on that subtopic, right or wrong. Replaying the rule on 30 days of answers: about 540 offers to 215 students a month",
@@ -1339,11 +1340,11 @@ export const EXPERIMENTS: readonly Experiment[] = [
     id: "v-learn-first",
     title: "V teaches a chapter from Learn's lessons wherever Learn teaches it",
     change:
-      "Where Learn teaches the chapter (CBSE and HSC Class 12 Maths, and the Class 12 chapters of MHT-CET and JEE Mains Maths: 57 chapter links), V's Teach me lesson uses Learn's lessons as the map, each with the student's Learn progress (Done, n of 3, New) and opening that lesson; it starts at the first lesson not yet done in the topic holding most mistakes (hand-checked lesson-to-topic links, 254 board lessons); Your turn is a Learn check question (free of the daily limit, checked signed out, counting towards the lesson's mastery); Open the lesson leads, Open the notes follows where the exam has notes; after explaining a missed question V points to the Learn lesson behind it. Every other chapter keeps the notes lesson.",
-    why: "The owner (2026-11-22): \"Learn was designed for this only\" and \"give Learn priority wherever it's available\". Learn's 254 lessons had 3 learners ever (last on 2026-11-04): nothing led students there. About 220 students answered a Maths question in these four exams in the 30 days to 2026-11-22.",
+      "Where Learn teaches the chapter (CBSE and HSC Class 12 Maths, and the Class 12 chapters of MHT-CET and JEE Mains Maths: 57 chapter links), V's Teach me lesson shows Learn's lessons as the map, each with the student's Learn progress (Done, n of 3, New) and their mistakes on the lesson to start with. SECOND CHANGE THE SAME DAY (owner, 2026-11-22, third iteration): the map is the whole reply. Tapping a lesson plays Learn's own lesson full screen over V (slides, questions, progress saved), even where Learn would lock it; V writes one line and teaches nothing; the Your turn card and the lesson's Go on / Explain more simply / Open buttons are gone on Learn chapters. Every other chapter keeps the notes lesson.",
+    why: "The owner (2026-11-22): \"Learn was designed for this only\", \"give Learn priority wherever it's available\", then \"let Learn concepts run as it is, full screen, in V\": the lesson itself, not V's retelling of it. Learn's 254 lessons had 3 learners ever (last on 2026-11-04): nothing led students there. About 220 students answered a Maths question in these four exams in the 30 days to 2026-11-22.",
     metric:
-      "surface_viewed 'teach_chapter' with metadata.from lesson_learn (action shown: a Learn lesson's map; tap: Open the lesson), learn_try_answer (a Your turn answer), learn_try_skip, against lesson_notes taps on notes lessons. scripts/chat/learn-first-readout.sql",
-    rule: `Keep Learn first if ${V_LEARN_FIRST_ANSWER_KEEP_PCT}%+ of the Learn lessons V shows get their Your turn answered. Under it, read the lessons' replies and skips before changing anything; compare Open the lesson taps with Open the notes taps on notes lessons by hand.`,
+      "surface_viewed 'teach_chapter' with metadata.from lesson_learn (action shown: a Learn map in V; tap: a lesson opened from it), then surface_viewed 'learn_start' (the lesson begun: its first move) the same day, and Learn answers (learn_attempts). scripts/chat/learn-first-readout.sql",
+    rule: `Keep Learn first if ${V_LEARN_FIRST_OPEN_KEEP_PCT}%+ of the Learn maps V shows lead to a lesson opened from the map. Under it, read how far opened lessons got (begun, a question answered) before changing anything.`,
     liveSince: "2026-11-22",
     windowDays: 28,
     readout: "v-learn-first",
