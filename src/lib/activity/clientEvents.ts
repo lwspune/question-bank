@@ -56,7 +56,8 @@ export const V_GIFT_ACTIONS: ReadonlySet<string> = new Set(["badge", "shown", "o
 /** V's check-in (2026-11-21, lib/chat/checkIn): asked, each tap, a chapter picked, Another chapter, a button followed. */
 export const V_CHECKIN_ACTIONS: ReadonlySet<string> = new Set(["shown", "well", "stuck", "short", "chapter", "other", "go"]);
 /** The stuck offer's steps. teach_close and full_notes (2026-11-15): Teach opens a panel on the page,
- *  closed (back on the question) or left for the full notes page. */
+ *  closed (back on the question) or left for the full notes page. learn_open and learn_close
+ *  (2026-11-22): Teach opens a Learn lesson full screen instead, where Learn teaches the topic. */
 export const STUCK_OFFER_ACTIONS: ReadonlySet<string> = new Set([
   "shown",
   "teach",
@@ -66,6 +67,8 @@ export const STUCK_OFFER_ACTIONS: ReadonlySet<string> = new Set([
   "try_after",
   "teach_close",
   "full_notes",
+  "learn_open",
+  "learn_close",
 ]);
 /** The one line under a bank answer (2026-11-14, lib/questions/teachingMoment): moments with their own
  *  event here, and their steps. The stuck offer keeps its own surface (its experiment predates this). */

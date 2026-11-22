@@ -119,6 +119,7 @@ import PracticeBuilder, { PENDING_BUILD_KEY, logBuilderStep } from "./PracticeBu
 import type { BuilderAnswers } from "@/lib/practiceTests/builder";
 import { sceneOf } from "@/lib/visuals/usage";
 import { reportVisual } from "@/lib/visuals/usageBeacon";
+import type { LessonTarget } from "@/lib/learn/links";
 
 // The animated-solution player loads only when a reply carries a visual.
 const VAnimatedSolution = dynamic(() => import("@/components/visuals/AnimatedSolution"));
@@ -126,6 +127,8 @@ const VAnimatedSolution = dynamic(() => import("@/components/visuals/AnimatedSol
 const VLearnQuestionCard = dynamic(() => import("./VLearnQuestionCard"), {
   loading: () => <div className="ml-9 mt-2 h-24 animate-pulse rounded-xl border bg-muted/40" aria-hidden />,
 });
+// A Learn lesson played full screen (2026-11-22): loaded on the first lesson tapped on V's map.
+const LearnLessonOverlay = dynamic(() => import("@/components/learn/LearnLessonOverlay"), { ssr: false });
 // "Teach me step by step" loads only when tapped.
 
 /**
@@ -253,6 +256,8 @@ const INTL_GREETING: ChatTurn = { ...GREETING, text: "Hi, I'm V. Ask me about an
  */
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
+  // The Learn lesson playing full screen over V, tapped on a chapter map (2026-11-22).
+  const [playing, setPlaying] = useState<LessonTarget | null>(null);
   const [mode, setMode] = useState<"chat" | "builder">("chat");
   const [resume, setResume] = useState<BuilderAnswers | undefined>(undefined);
   // The greeting is drawn before these and never stored.
@@ -1162,7 +1167,8 @@ export default function ChatWidget() {
   // V's latest reply (index into `turns`): a chapter lesson there puts its buttons under it and hides V's own.
   let lastReplyAt = turns.length - 1;
   while (lastReplyAt >= 0 && turns[lastReplyAt].role !== "assistant") lastReplyAt -= 1;
-  const lessonOpen = lastReplyAt >= 0 && !!turns[lastReplyAt].lesson;
+  // A Learn lesson's map has no buttons of its own (the student taps a lesson), so V's stay.
+  const lessonOpen = lastReplyAt >= 0 && !!turns[lastReplyAt].lesson && turns[lastReplyAt].lesson!.kind !== "learn";
 
   // Vertical position lives in globals.css (.chat-launcher-offset): clear of
   // MobileTabBar below sm, and raised by --v-lift over /browse's cart pill.
@@ -1170,6 +1176,7 @@ export default function ChatWidget() {
 
   return (
     <div className="chat-launcher-offset fixed right-4 z-50 print:hidden" style={lift}>
+      {playing && <LearnLessonOverlay key={`${playing.chapter}/${playing.concept}`} target={playing} onClose={() => setPlaying(null)} />}
       {open && (
         <div
           ref={panelRef}
@@ -1260,11 +1267,21 @@ export default function ChatWidget() {
               // A lesson's pages show their names, never their paths (2026-11-21).
               const labels = t.lesson ? lessonLinkLabels(t.lesson) : undefined;
               // The lesson's buttons go under the latest reply only, once its last line is out.
-              const lessonHere = t.lesson && !t.reveal && i === lastReplyAt ? t.lesson : null;
+              const lessonHere = t.lesson && t.lesson.kind !== "learn" && !t.reveal && i === lastReplyAt ? t.lesson : null;
               return (
                 <div key={n} className={`max-w-[90%] ${MESSAGE_IN}`}>
                   {/* The lesson's map comes first, as in mockup B: V's text then runs straight into the question to try. */}
-                  {t.lesson && t.lesson.showMap && <VChapterMapCard lesson={t.lesson} onNavigate={close} placement="above" />}
+                  {t.lesson && t.lesson.showMap && (
+                    <VChapterMapCard
+                      lesson={t.lesson}
+                      onNavigate={close}
+                      placement="above"
+                      onOpenLesson={(target) => {
+                        sendActivity({ kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "lesson_learn" });
+                        setPlaying(target);
+                      }}
+                    />
+                  )}
                   {parts ? (
                     <VStepReply
                       parts={parts}

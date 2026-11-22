@@ -68,7 +68,7 @@ export type ClientEvent =
       kind: "surface_viewed";
       surface: "stuck_offer";
       questionId: string;
-      action: "shown" | "teach" | "easier" | "keep" | "returned" | "try_after" | "teach_close" | "full_notes";
+      action: "shown" | "teach" | "easier" | "keep" | "returned" | "try_after" | "teach_close" | "full_notes" | "learn_open" | "learn_close";
     }
   | {
       /** A notes drill link's panel opened, paged, closed or left for /browse (lib/notes/drillPanel). */
