@@ -33,7 +33,6 @@ import { isStage, needsStageNudge, sanitizeTargetExams, type Stage } from "@/lib
 import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { firstMockHref, firstNotesHref } from "@/lib/exam/examLinks";
-import { loadPathCard, type PathCard } from "@/lib/path/service";
 import { loadStudyCard, studyExamOf, type StudyExam } from "@/lib/studyTime/reportServer";
 import type { StudyCard } from "@/lib/studyTime/report";
 
@@ -54,8 +53,6 @@ export type MeData = MeHeaderData & {
   mocks: ReturnType<typeof summarizeUserMocks>;
   continueItems: ContinueItem[];
   showNps: boolean;
-  /** The board path (MENTOR_SPEC.md, migration 0225): today on it, or the start offer. */
-  pathCard: PathCard;
   /** "Start next" (2026-11-09, migration 0242): the highest-value chapters of
    *  their exam not started yet. Optional so older fixtures stay small. */
   startNext?: ChapterWeight[];
@@ -117,7 +114,7 @@ export async function loadMe(
   // ROUND 2: the reads that need round 1 (the focus, the exams), at once.
   // Each is best effort: a failed read costs its card, never the page.
   const studySlug = startNextExam({ focusSlug, targets });
-  const [continueItems, resultChecked, pathCard, startNext, studyCard] = await Promise.all([
+  const [continueItems, resultChecked, startNext, studyCard] = await Promise.all([
     // Where they were last working, across the bank, /board, notes and
     // homework (2026-11-06).
     loadContinue(
@@ -141,12 +138,6 @@ export async function loadMe(
         check,
         suggestedName: check ? await loadSuggestedName(user.id).catch(() => "") : "",
       })),
-    // The board path (2026-11-07), for students with a Class 12 board among
-    // their exams.
-    loadPathCard(db, user.id, targets, { write: !opts.staffView, now }).catch((e) => {
-      console.error("path read failed", e instanceof Error ? e.message : e);
-      return { path: null, offer: null } as PathCard;
-    }),
     // "Start next" (2026-11-09): the exam in focus, else their first exam.
     loadStartNext(db, user.id, startNextExam({ focusSlug, targets }), examIds).catch((e) => {
       console.error("start next read failed", e instanceof Error ? e.message : e);
@@ -187,7 +178,6 @@ export async function loadMe(
     mocks,
     continueItems,
     showNps,
-    pathCard,
     startNext,
     study: studyCard ? { card: studyCard, exam: studyExamOf(studySlug) } : null,
   };

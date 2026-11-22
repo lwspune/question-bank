@@ -83,14 +83,11 @@ export type FixChapter = {
   wrong: number;
   reviewLater: number;
   vUnclear: number;
-  /** How many of them are in today's board-plan Fix task. */
-  inPlan: number;
 };
 
 export type FixList = {
   /** The whole pool, chapter or not: the badge's number. */
   total: number;
-  inPlan: number;
   /** Most to fix first, then the newest miss (as /me's Weak spots). */
   chapters: FixChapter[];
 };
@@ -105,41 +102,35 @@ function bucketOf(m: MissRow | undefined): "wrong" | "reviewLater" | "vUnclear" 
 export function buildFixList(
   all: readonly DueQuestion[],
   misses: ReadonlyMap<string, MissRow>,
-  planIds: ReadonlySet<string>,
-  /** A subject chip (2026-11-09): narrows the list, its total and plan count. */
+  /** A subject chip (2026-11-09): narrows the list and its total. */
   subject: string | null = null
 ): FixList {
   const due = subject ? all.filter((q) => q.subject === subject) : all;
   const groups = new Map<string, FixChapter & { last: string }>();
-  let inPlan = 0;
   for (const q of due) {
-    const planned = planIds.has(q.questionId);
-    if (planned) inPlan += 1;
     if (!q.chapterId) continue;
     let g = groups.get(q.chapterId);
     if (!g) {
-      g = { chapterId: q.chapterId, name: q.chapter, place: q.place ?? "", count: 0, wrong: 0, reviewLater: 0, vUnclear: 0, inPlan: 0, last: q.lastWrongAt };
+      g = { chapterId: q.chapterId, name: q.chapter, place: q.place ?? "", count: 0, wrong: 0, reviewLater: 0, vUnclear: 0, last: q.lastWrongAt };
       groups.set(q.chapterId, g);
     }
     g.count += 1;
     g[bucketOf(misses.get(q.questionId))] += 1;
-    if (planned) g.inPlan += 1;
     if (q.lastWrongAt > g.last) g.last = q.lastWrongAt;
   }
   const chapters = [...groups.values()]
     .sort((a, b) => b.count - a.count || (a.last < b.last ? 1 : a.last > b.last ? -1 : 0))
     .map(({ last: _last, ...c }) => c);
-  return { total: due.length, inPlan, chapters };
+  return { total: due.length, chapters };
 }
 
-export type FixQuestion = { questionId: string; reason: Reason; mockId: string | null; at: string; inPlan: boolean };
+export type FixQuestion = { questionId: string; reason: Reason; mockId: string | null; at: string };
 
 /** One chapter's questions, newest miss first. */
 export function chapterQuestions(
   due: readonly DueQuestion[],
   chapterId: string,
-  misses: ReadonlyMap<string, MissRow>,
-  planIds: ReadonlySet<string>
+  misses: ReadonlyMap<string, MissRow>
 ): FixQuestion[] {
   return due
     .filter((q) => q.chapterId === chapterId)
@@ -150,7 +141,6 @@ export function chapterQuestions(
         reason: m ? reasonOf(m) : "practice",
         mockId: m?.mockId ?? null,
         at: q.lastWrongAt,
-        inPlan: planIds.has(q.questionId),
       };
     })
     .sort((a, b) => (a.at < b.at ? 1 : a.at > b.at ? -1 : a.questionId < b.questionId ? -1 : 1));

@@ -2,8 +2,10 @@
  * GET /api/path/chapter?chapterId=<uuid> (MENTOR_SPEC.md Phase 2, D8): the
  * board path's line on a /board chapter page, for a student on the path.
  *
- * Asked by the browser (components/path/BoardPathLine) only when the shared
- * pulse says the student is on a path for this page's board, so the page stays
+ * No caller since 2026-11-22: the /board line was retired when the plan moved
+ * into V alone (tests/plan-in-v.test.ts); the route stays with the plan's code.
+ * It was asked by the browser only when the shared
+ * pulse said the student was on a path for this page's board, so the page stays
  * one cached copy for everyone. Answers this chapter's parts and today's part
  * of it, and any chapter newly done (said once, the milestone pattern), and
  * picks today if it was not picked yet, so the page's free answers work.

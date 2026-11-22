@@ -4,16 +4,16 @@
  * event names keep "path"; only words a student reads change.
  *
  * Renders each board-plan screen (server-rendered, no jsdom here) and fails if
- * "path" survives in its visible text or in a screen-reader label.
+ * "path" survives in its visible text or in a screen-reader label. Since
+ * 2026-11-22 the plan's screens are V's alone: the pinned row, its card and
+ * Stop my plan, plus /drill's header for the Fix task.
  */
 import { describe, expect, it } from "vitest";
 import { createElement, type ReactElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import PathCard from "@/app/me/PathCard";
-import PathSettingsCard from "@/app/account/PathSettingsCard";
 import { VPathCardBody } from "@/components/chat/VPathCard";
-import { BoardPathLineView, BoardPathOffer } from "@/components/path/BoardPathLine";
-import { buildPathView, chapterLine } from "@/lib/path/view";
+import { VPlanPinView } from "@/components/chat/VPlanPin";
+import { buildPathView } from "@/lib/path/view";
 import type { ChapterState, PathChapter } from "@/lib/path/model";
 import type { PathTask } from "@/lib/path/today";
 import { scopeCopy } from "@/lib/drill/scope";
@@ -67,87 +67,24 @@ const noPath = (h: string) => {
 };
 
 describe("the board plan says plan, never path", () => {
-  it("/me Today card", () => {
-    const h = html(createElement(PathCard, { initial: { path: view(), offer: null } }));
-    noPath(h);
-    expect(visibleText(h)).toContain("Today's plan");
-    expect(visibleText(h)).toContain("Biology is not in the plan yet.");
-    expect(visibleText(h)).toContain("From chapters in your plan, 1 of 3 done");
-  });
-
-  it("/me class checklist, today's chapter strip and Switch chapter (§18)", () => {
-    const base = view();
-    const ask = buildPathView({
-      exam: "cbse-12",
-      subjects: ["physics"],
-      stream: "pcm",
-      dailyMinutes: 45,
-      chapters: [CE],
-      states: new Map([["ce", { sheet: true, topWorked: 4, test: false, recordedDone: false }]]),
-      tasks: [{ kind: "top", chapterId: "ce", minutes: 15, upTo: 9 }],
-      fixAnswered: new Set(),
-      today: "2026-11-25",
-      examDate: "2027-02-15",
-      examOfficial: false,
-      cover: { asked: false, ticked: new Set(), practised: new Set(["ce"]) },
-    });
-    const checklist = html(createElement(PathCard, { initial: { path: ask, offer: null } }));
-    noPath(checklist);
-    expect(visibleText(checklist)).toContain("What has your class covered?");
-    const card = html(createElement(PathCard, { initial: { path: { ...ask, cover: { ...ask.cover!, asked: true } }, offer: null } }));
-    noPath(card);
-    expect(visibleText(card)).toContain("Update what your class has covered");
-    expect(visibleText(card)).toContain("Top 10: 5 more questions");
-    // Switch chapter shows with somewhere to switch to (the default card has a second chapter).
-    const two = html(createElement(PathCard, { initial: { path: { ...base, switchOptions: [{ id: "x", name: "Solutions", subjectLabel: "Chemistry", stepsDone: 0, stepsOf: 3, taught: false }] }, offer: null } }));
-    noPath(two);
-    expect(visibleText(two)).toContain("Switch chapter");
-  });
-
-  it("/me Today card with every chapter done", () => {
-    const h = html(createElement(PathCard, { initial: { path: allDone(), offer: null } }));
-    noPath(h);
-    expect(visibleText(h)).toContain("Every chapter in your plan is done.");
-  });
-
-  it("/me start card, stream known and not known", () => {
-    for (const stream of ["pcb", null] as const) {
-      const h = html(createElement(PathCard, { initial: { path: null, offer: { exam: "cbse-12", minutes: 50, stream } } }));
+  it("V's pinned row, closed and open", () => {
+    for (const open of [false, true]) {
+      const h = html(createElement(VPlanPinView, { view: view(), open, onToggle: () => {}, onStop: async () => {} }));
       noPath(h);
+      expect(visibleText(h)).toContain("Today's plan");
     }
-    expect(visibleText(html(createElement(PathCard, { initial: { path: null, offer: { exam: "cbse-12", minutes: 50, stream: "pcb" } } })))).toContain(
-      "Biology is not in the plan yet."
-    );
+    const h = html(createElement(VPlanPinView, { view: view(), open: true, onToggle: () => {}, onStop: async () => {} }));
+    expect(visibleText(h)).toContain("Biology is not in the plan yet.");
+    expect(visibleText(h)).toContain("Stop my plan");
   });
 
   it("V's card, and when everything is done", () => {
     const h = html(createElement(VPathCardBody, { view: view() }));
     noPath(h);
     expect(visibleText(h)).toContain("Today's plan");
-    expect(visibleText(h)).toContain("See your full plan");
     const done = html(createElement(VPathCardBody, { view: allDone() }));
     noPath(done);
     expect(visibleText(done)).toContain("Every chapter in your plan is done.");
-  });
-
-  it("/board line and offer", () => {
-    const line = chapterLine(CE, { sheet: true, topWorked: 4, test: false, recordedDone: false }, [{ kind: "top", chapterId: "ce", minutes: 18 }]);
-    const h = html(createElement(BoardPathLineView, { line }));
-    noPath(h);
-    expect(visibleText(h)).toContain("In your plan");
-    const offer = html(createElement(BoardPathOffer, {}));
-    noPath(offer);
-    expect(visibleText(offer)).toContain("See the plan");
-  });
-
-  it("/account, active and stopped", () => {
-    const active = html(createElement(PathSettingsCard, { active: { exam: "cbse-12", subjects: ["physics", "chemistry"], dailyMinutes: 45 }, stopped: false }));
-    noPath(active);
-    expect(visibleText(active)).toContain("Your board plan");
-    expect(visibleText(active)).toContain("Stop the plan");
-    const stopped = html(createElement(PathSettingsCard, { active: null, stopped: true }));
-    noPath(stopped);
-    expect(visibleText(stopped)).toContain("Your plan is stopped.");
   });
 
   it("/drill header for today's Fix task", () => {

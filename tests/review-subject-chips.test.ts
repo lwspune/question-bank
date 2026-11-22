@@ -12,10 +12,9 @@ import type { FixList } from "@/lib/review/fixList";
 
 const list: FixList = {
   total: 9,
-  inPlan: 0,
   chapters: [
-    { chapterId: "c1", name: "Probability", place: "Mathematics · NDA", count: 6, wrong: 6, reviewLater: 0, vUnclear: 0, inPlan: 0 },
-    { chapterId: "c2", name: "Vectors", place: "Mathematics · NDA", count: 3, wrong: 3, reviewLater: 0, vUnclear: 0, inPlan: 0 },
+    { chapterId: "c1", name: "Probability", place: "Mathematics · NDA", count: 6, wrong: 6, reviewLater: 0, vUnclear: 0 },
+    { chapterId: "c2", name: "Vectors", place: "Mathematics · NDA", count: 3, wrong: 3, reviewLater: 0, vUnclear: 0 },
   ],
 };
 const subjects = [

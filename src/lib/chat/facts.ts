@@ -186,10 +186,10 @@ export const NAV_FACTS: readonly string[] = [
   "/saved: the questions a student saved to come back to (needs a free account).",
   "/performance: a student's own results after their mocks: scores, trend, and what to work on (needs a free account).",
   "/me/map: a student's mastery map, chapter by chapter (needs a free account).",
-  "/me: a student's own home page: what to do next, and for a Class 12 board student the board plan (start it there, then a card of tasks each day) (needs a free account).",
+  "/me: a student's own home page: what to do next (needs a free account).",
   "Build a practice test: a button in this chat window; V builds a test from the chapters, length and difficulty the student picks.",
   "How's my progress: a button beside it in this chat window for a signed-in student who has practised; it shows a card of their own numbers (this week's answers, mistakes fixed, exam covered, mocks, chapters, notes read) with Fix my mistakes (/drill) and View full performance (/performance).",
-  "My plan for today: a button in this chat window for a student on the board plan; it shows today's card of board plan tasks, each linked to its work.",
+  "My plan for today: a button in this chat window for a student already on the board plan; it pins today's card of board plan tasks at the top of this chat for the day, each task linked to its work. The board plan is only in this chat and takes no new starters.",
   "/signup: create a free account (Google or email).",
   "/pricing: the Premium Pass and how to buy it.",
   "Ask a parent to pay: a student who cannot pay themselves taps \"Ask a parent to pay\" under a pass on /pricing, or under a pass offer when a free limit is reached. It makes a payment link to send by WhatsApp (or share or copy); the parent pays by UPI, card or netbanking with no account, and the pass comes to the student's account.",
@@ -369,7 +369,7 @@ const CONCEPT_RULE = `7a. Concepts (explain, define, derive, "what is", the diff
 7c. A whole chapter to learn ("teach me vectors", "I am weak at thermodynamics", "explain this chapter from basics", "teach each type and where it is used"): call chapter_overview with the chapter in full words and the exam when known. When they ask for one part or lesson of a chapter by number ("Teach me part 3 of <chapter> for <exam>: ..." or "Teach me lesson 3 of ..."), call it with part N. Teach one part at a time: the first part, or the part it says to start at, where the student's mistakes are, briefly, with their mistake as the example; write maths inside \\( \\). Where our Learn lessons teach the chapter, the parts are those lessons. A card and buttons under your reply show the map, open the notes or the lesson and go on, so never list the parts or lessons, write a path or ask whether to go on. The lesson brings its own question to try when there is one: never write a question of your own. A list of the chapter's questions is not teaching.`;
 
 /** Rule 8a, while V's week plan is switched on (/dashboard/chat, migration 0170). */
-const PLAN_RULE = `8a. Planning (a plan, a timetable, what to study this week, how to prepare before the exam): call plan_week. If it asks for their exam date, ask once; if they do not know, call it again with date_unknown. If they say how many days they can study, pass days_per_week. The plan is shown under your reply, so say it is ready in one or two sentences and do not list the days. When they ask about their plan, what to do today, what to do now, or how their week is going, call my_plan. When either answers from the student's board plan, or offers it, do what it says.`;
+const PLAN_RULE = `8a. Planning (a plan, a timetable, what to study this week, how to prepare before the exam): call plan_week. If it asks for their exam date, ask once; if they do not know, call it again with date_unknown. If they say how many days they can study, pass days_per_week. The plan is shown under your reply, so say it is ready in one or two sentences and do not list the days. When they ask about their plan, what to do today, what to do now, or how their week is going, call my_plan. When either answers from the student's board plan, do what it says.`;
 
 /** V's fixed instructions, the same for every question (cached; the per-question
  *  part is buildSystemTail). Answer-only-from-facts and the no-solving rule

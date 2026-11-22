@@ -37,13 +37,11 @@ const fixChapter = (name: string, place: string, wrong: number, reviewLater: num
   wrong,
   reviewLater,
   vUnclear,
-  inPlan: 0,
 });
 
 /** Review's To fix list: 23 waiting, most first. */
 export const FIX_SAMPLE: FixList = {
   total: 23,
-  inPlan: 0,
   chapters: [
     fixChapter("Trigonometry", "Mathematics · NDA", 4, 2, 0),
     fixChapter("Probability", "Mathematics · NDA", 3, 0, 2),

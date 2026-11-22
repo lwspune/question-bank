@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 import { useIntlSite } from "@/lib/sites/useIntlSite";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -99,7 +99,8 @@ import { vLauncherBadge, vLauncherLabel } from "@/lib/chat/launcher";
 import type { DayCard } from "@/lib/chat/dayCard";
 import { dayCardDue, readSeenDay, writeSeenDay } from "@/lib/chat/daySeen";
 import { sendActivity, sendActivityOnce } from "@/lib/activity/clientBeacon";
-import VPathCard from "./VPathCard";
+import VPlanPin from "./VPlanPin";
+import { PLAN_PIN_KEY, isPinnedToday, pinFor } from "@/lib/chat/planPin";
 import {
   ASK_V_EVENT,
   ASK_V_TEXT_EVENT,
@@ -151,8 +152,6 @@ type ChatTurn = HistoryTurn & {
   progress?: boolean;
   /** "Teach me a chapter" (2026-11-21): the chapters with most mistakes waiting, each a button. */
   teachPick?: { chapterId: string; name: string; place: string }[];
-  /** Today's board-path card (2026-11-08, MENTOR_SPEC.md Phase 2): the button, or V's plan tools answered from the path. */
-  path?: boolean;
   /** A fresh reply, shown a line at a time (2026-10-23). Never kept: a reply from history shows whole. */
   reveal?: boolean;
   /**
@@ -355,6 +354,36 @@ export default function ChatWidget() {
   }
   // "My plan for today" (Phase 2): only for a student on the board path, from the same shared read.
   const showPath = pulse?.path?.state === "on";
+  // The plan lives in V alone since 2026-11-22: once asked for, its row stays
+  // pinned at the top of the chat until midnight IST (lib/chat/planPin), per device.
+  const [planPinned, setPlanPinned] = useState(false);
+  const [planOpen, setPlanOpen] = useState(false);
+  useEffect(() => {
+    try {
+      setPlanPinned(isPinnedToday(localStorage.getItem(PLAN_PIN_KEY), new Date()));
+    } catch {
+      // Storage blocked (private window): the pin lasts this page only.
+    }
+  }, [open]);
+  function pinPlan() {
+    try {
+      localStorage.setItem(PLAN_PIN_KEY, pinFor(new Date()));
+    } catch {
+      // Storage blocked: pinned for this page only.
+    }
+    setPlanPinned(true);
+    setPlanOpen(true);
+  }
+  const unpinPlan = useCallback(() => {
+    try {
+      localStorage.removeItem(PLAN_PIN_KEY);
+    } catch {
+      // Nothing stored to clear.
+    }
+    setPlanPinned(false);
+    setPlanOpen(false);
+    invalidatePulse();
+  }, []);
   // "Ask V about this question" (2026-10-19): the question this conversation is about, sent with each message.
   const [asked, setAsked] = useState<AskVDetail | null>(null);
   // "Reply" on one of V's replies (0174): the message the next typed message answers.
@@ -817,14 +846,15 @@ export default function ChatWidget() {
   }
 
   /**
-   * "My plan for today" (2026-11-08, owner's name for it): today's board-path
-   * card, built from numbers like the progress card, so it costs no message.
+   * "My plan for today" (2026-11-08, owner's name for it): pins today's plan
+   * at the top of the chat for the rest of the day and opens it (2026-11-22).
+   * Built from numbers, so it costs no message.
    */
   function showPathCard() {
     if (sending) return;
     trackFunnel("v_path_tap", { action: "open" });
-    addTurn({ role: "user", text: "My plan for today", transient: true });
-    addTurn({ role: "assistant", avatar: "idle", text: "Here's today's plan.", path: true, transient: true });
+    pinPlan();
+    listRef.current?.scrollTo({ top: 0 });
   }
 
   /**
@@ -1089,7 +1119,8 @@ export default function ChatWidget() {
       // A Learn lesson's own check question, when no other card took the slot (2026-11-22).
       const learnTry = !card && lesson?.tryLearn ? { ...lesson.tryLearn, n: lesson.current } : undefined;
       const plan = data.planShown === true ? true : undefined;
-      const path = data.pathShown === true ? true : undefined;
+      // V's plan tools answered from the board plan: its card is the pinned row.
+      if (data.pathShown === true) pinPlan();
       const offer = parseVPassOffer(data.passOffer) ?? undefined;
       addTurn(
         data.source === "ai" && data.id
@@ -1103,7 +1134,6 @@ export default function ChatWidget() {
               feedback: null,
               card,
               plan,
-              path,
               offer,
               ...(lesson ? { lesson } : {}),
               ...(learnTry ? { learnTry } : {}),
@@ -1116,7 +1146,7 @@ export default function ChatWidget() {
               ...(typeof data.explainedQuestionId === "string" ? { explainedQuestionId: data.explainedQuestionId } : {}),
               ...(typeof data.stepQuestionId === "string" ? { stepQuestionId: data.stepQuestionId } : {}),
             }
-          : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan, path, ...(lesson ? { lesson } : {}), ...(learnTry ? { learnTry } : {}), reveal: true }
+          : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan, ...(lesson ? { lesson } : {}), ...(learnTry ? { learnTry } : {}), reveal: true }
       );
     } catch {
       const errorText = "V is unavailable right now. Please try again.";
@@ -1196,6 +1226,10 @@ export default function ChatWidget() {
             <PracticeBuilder initial={resume} onExit={() => setMode("chat")} onClose={close} />
           ) : (
           <>
+          {/* Today's board plan, pinned above the chat for the day once asked for (2026-11-22). */}
+          {showPath && planPinned && (
+            <VPlanPin open={planOpen} onToggle={() => setPlanOpen((o) => !o)} onNavigate={close} onGone={unpinPlan} />
+          )}
           <div ref={listRef} className="flex-1 space-y-4 overflow-y-auto px-4 py-4">
             {[day ? { ...GREETING, text: day.greeting } : dayLoading ? { ...GREETING, text: "Welcome back." } : intl ? INTL_GREETING : GREETING, ...turns].map((t, n) => {
               // n - 1 indexes `turns`; the greeting is never stored.
@@ -1513,7 +1547,6 @@ export default function ChatWidget() {
                   {n === 0 && !day && dayLoading && (
                     <div className="ml-9 mt-2 h-44 animate-pulse rounded-xl border bg-muted/40" aria-hidden />
                   )}
-                  {t.path && !t.reveal && <VPathCard onNavigate={close} />}
                 </div>
               );
             })}

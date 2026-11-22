@@ -1,61 +1,49 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { CalendarCheck, CheckCircle2, ChevronRight, Circle } from "lucide-react";
 import type { PathView } from "@/lib/path/view";
-import { sendActivityOnce } from "@/lib/activity/clientBeacon";
-
-/**
- * "My plan for today" inside V (MENTOR_SPEC.md Phase 2): today's board-path
- * card under V's reply, built from numbers like "How's my progress", so it
- * costs no message. Shown when the student taps the button or when V's plan
- * tools answered from the path. The same view as /me (GET /api/path), so the
- * two cannot disagree; the full card, with "Not taught yet", stays on /me.
- */
-export default function VPathCard({ onNavigate }: { onNavigate?: () => void }) {
-  const [view, setView] = useState<PathView | null>(null);
-  const [failed, setFailed] = useState(false);
-
-  useEffect(() => {
-    let live = true;
-    fetch("/api/path", { cache: "no-store" })
-      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
-      .then((j: { today: PathView | null }) => {
-        if (!live) return;
-        if (j.today) {
-          setView(j.today);
-          // The readout's funnel (Phase 4): V's path card opened, and the review seen in it.
-          sendActivityOnce("v_path", { kind: "surface_viewed", surface: "v_path" });
-          if (j.today.review) sendActivityOnce("path_review", { kind: "surface_viewed", surface: "path_review" });
-        } else setFailed(true);
-      })
-      .catch(() => live && setFailed(true));
-    return () => {
-      live = false;
-    };
-  }, []);
-
-  if (failed) return null;
-  if (!view) return <div className="ml-9 mt-2 h-40 animate-pulse rounded-xl border bg-muted/40" aria-hidden />;
-  return <VPathCardBody view={view} onNavigate={onNavigate} />;
-}
 
 const linkCls = "rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
 
-export function VPathCardBody({ view, onNavigate }: { view: PathView; onNavigate?: () => void }) {
+/**
+ * Today's board-plan card inside V (MENTOR_SPEC.md Phase 2). Since 2026-11-22
+ * V is the plan's only home, so the card opens from the pinned "Today's plan"
+ * row at the top of V's chat (VPlanPin), links nowhere else for the plan, and
+ * carries the one control that left /account with it: Stop my plan.
+ *
+ * `inPin` drops the card's own title and frame: the row above already names it.
+ */
+export function VPathCardBody({
+  view,
+  onNavigate,
+  onStop,
+  inPin = false,
+}: {
+  view: PathView;
+  onNavigate?: () => void;
+  /** Ends the plan (POST /api/path stop); absent = no Stop control. */
+  onStop?: () => Promise<void>;
+  inPin?: boolean;
+}) {
   return (
-    <section className="ml-9 mt-2 rounded-xl border bg-card p-3 text-sm shadow-sm" aria-label="Today's plan">
+    <section
+      className={inPin ? "text-sm" : "ml-9 mt-2 rounded-xl border bg-card p-3 text-sm shadow-sm"}
+      aria-label={inPin ? undefined : "Today's plan"}
+    >
       <div className="mb-2 flex items-start gap-2">
-        <CalendarCheck className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
+        {!inPin && <CalendarCheck className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden />}
         <div className="min-w-0">
-          <p className="font-semibold">Today&apos;s plan</p>
+          {!inPin && <p className="font-semibold">Today&apos;s plan</p>}
           <p className="text-xs text-muted-foreground">{view.statusLine}</p>
         </div>
         {view.tasks.length > 0 && (
           <p className="ml-auto shrink-0 text-xs tabular-nums text-muted-foreground">about {view.todayMinutes} min</p>
         )}
       </div>
+
+      {view.biologyNote && <p className="mb-2 text-xs text-muted-foreground">Biology is not in the plan yet.</p>}
 
       {view.pickUp && (
         <p className="mb-2 text-sm">
@@ -101,9 +89,48 @@ export function VPathCardBody({ view, onNavigate }: { view: PathView; onNavigate
         </div>
       )}
 
-      <Link href="/me" prefetch={false} onClick={onNavigate} className={`mt-2 inline-block text-xs font-medium text-brand-accent underline-offset-4 hover:underline ${linkCls}`}>
-        See your full plan
-      </Link>
+      {onStop && <StopPlan onStop={onStop} />}
     </section>
+  );
+}
+
+/** Two taps, never a browser dialog: "Stop my plan", then "Yes, stop it". */
+function StopPlan({ onStop }: { onStop: () => Promise<void> }) {
+  const [asking, setAsking] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const btn =
+    "rounded-md text-xs font-medium underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50";
+  if (!asking) {
+    return (
+      <div className="mt-2 border-t pt-2">
+        <button type="button" onClick={() => setAsking(true)} className={`${btn} text-muted-foreground`}>
+          Stop my plan
+        </button>
+      </div>
+    );
+  }
+  return (
+    <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 border-t pt-2 text-xs">
+      <span>Stop your plan? It can&apos;t be started again.</span>
+      <button
+        type="button"
+        disabled={busy}
+        onClick={async () => {
+          setBusy(true);
+          try {
+            await onStop();
+          } finally {
+            setBusy(false);
+            setAsking(false);
+          }
+        }}
+        className={`${btn} text-destructive`}
+      >
+        Yes, stop it
+      </button>
+      <button type="button" disabled={busy} onClick={() => setAsking(false)} className={`${btn} text-muted-foreground`}>
+        Keep it
+      </button>
+    </div>
   );
 }

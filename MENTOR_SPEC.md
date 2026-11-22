@@ -648,3 +648,32 @@ change, the 7 days before the first student save against the 7 days after
 **Not built:** option B; a periodic re-ask; following work done on another
 exam's copy of a chapter (an MHT-CET chapter test on Definite Integration does
 not count for the HSC chapter, since chapter ids differ by exam).
+
+## 19. The plan moves into V alone (2026-11-22)
+
+**Why (owner: "its crowding the screen"):** the day-14 readout. 254 students
+saw the offer and 144 started, but 80 of 1,459 tasks shown were done by the end
+of their day (5%), no chapter was ever finished, and 3 of 134 unlocked chapter
+tests were started. Following the class (§18) made it worse: the same 88
+starters went from 7% to 2% of tasks done. V's plan card had been opened by 7.
+
+**What changed:**
+- /me shows the plan nowhere: no start card, no Today card. Every student gets
+  the week ring and Start next again.
+- /board's "In your plan" line and offer, /account's "Your board plan" card and
+  /review's "in today's plan" counts are gone.
+- No new starters: nothing on screen starts a plan, and V's plan tools no
+  longer offer it (a Class 12 student asking for a plan gets the one-week plan).
+- "My plan for today" in V stays, for students already on a plan. Tapping it
+  pins a one-line "Today's plan" row at the top of V's chat for the rest of
+  that India day, remembered on the device (`lib/chat/planPin`,
+  `components/chat/VPlanPin`). Tapping the row opens today's card in place.
+  V's plan tools pin it too when they answer from the plan.
+- The card links nowhere for the plan and carries "Stop my plan" (two taps).
+  Switch chapter, Lighter / More and the class checklist left with /me's card.
+
+**Kept as it was:** every table, today's pick (now written when V's card reads
+`GET /api/path`), the free Top 10 answers and Fix questions, the chapter-test
+grants, `/api/path` (incl. the now-unused `/api/path/chapter`), `lib/path`, the
+day card's plan step, the mock result page's chapter-done celebration and
+`npm run path:readout`. Guard: `tests/plan-in-v.test.ts`.

@@ -3,8 +3,11 @@
  * - a student ON the path asking for a plan, a timetable or what to do now is
  *   answered from the path (today's card + the coming days), not a separate
  *   week plan, and the path card is shown under the reply;
- * - a Class 12 board student WITHOUT one who asks for a plan is offered the
- *   path (owner, 2026-11-08), with a way out for a one-week plan;
+ * - a Class 12 board student WITHOUT one gets the ordinary one-week plan: the
+ *   board plan takes no new starters since it moved into V alone (owner,
+ *   2026-11-22), so V no longer offers it or sends anyone to /me for it;
+ * - the plan's card is pinned at the top of V's chat, so V says so and never
+ *   points to /me, which no longer shows it;
  * - everything else is as before.
  */
 import { describe, it, expect, vi } from "vitest";
@@ -87,7 +90,10 @@ describe("plan_week for a student on the path", () => {
     expect(text).toContain(ON.status);
     expect(text).toContain(ON.today[0]);
     expect(text).toContain(ON.week[0]);
-    expect(text).toContain("/me");
+    // /me no longer shows the plan (2026-11-22): the card is at the top of V.
+    expect(text).not.toContain("/me");
+    expect(text).not.toMatch(/Switch chapter|Update what your class/);
+    expect(text).toContain("top of this chat");
     expect(d.onPath).toHaveBeenCalled();
     expect(d.savePlan).not.toHaveBeenCalled();
     expect(d.onPlan).not.toHaveBeenCalled();
@@ -113,25 +119,21 @@ describe("plan_week for a student on the path", () => {
 });
 
 describe("plan_week for a Class 12 student without a path", () => {
-  it("offers the path, linking /me, and saves nothing", async () => {
-    const { plan, d } = deps({ loadPath: vi.fn(async () => OFFER) });
-    const text = await plan.run({});
-    expect(text).toMatch(/board plan/);
-    expect(text).not.toMatch(/\bpath\b/);
-    expect(text).toContain("about 50 minutes a day");
-    expect(text).toContain("/me");
-    expect(text).toContain("week_only");
-    // The 2026-11-08 replay: V called an offer "your plan is ready", and paced
-    // the path to a student's preboards. The offer says neither is so.
-    expect(text).toContain("nothing was planned or saved");
-    expect(text).toMatch(/never say the board plan is ready or has started/);
-    expect(text).toContain(OFFER.examLine);
-    expect(text).toMatch(/6 days a week/);
-    expect(text).toMatch(/preboard/);
-    expect(d.savePlan).not.toHaveBeenCalled();
+  it("makes the ordinary one-week plan, never offering the board plan or linking /me", async () => {
+    const hsc: StrategyData = {
+      examName: "Maharashtra HSC Class 12",
+      board: true,
+      chapters: [{ id: "rd", name: "Rotational Dynamics", subject: "Physics", byYear: { 2025: 6, 2026: 6 } }],
+    };
+    const { plan, d } = deps({ loadPath: vi.fn(async () => OFFER), loadStrategy: async () => hsc });
+    const text = await plan.run({ exam_date: "2027-02-11" });
+    expect(text).not.toMatch(/board plan/);
+    expect(text).not.toContain("/me");
+    expect(text).not.toContain("nothing was planned or saved");
+    expect(d.savePlan).toHaveBeenCalled();
     expect(d.onPath).not.toHaveBeenCalled();
   });
-  it("does not offer it for another exam they name", async () => {
+  it("plans another exam they name as before", async () => {
     const { plan, d } = deps({ loadPath: vi.fn(async () => OFFER) });
     const text = await plan.run({ exam: "NDA", exam_date: "2027-04-12" });
     expect(text).not.toMatch(/board plan/);
@@ -155,6 +157,7 @@ describe("my_plan for a student on the path", () => {
     const text = await mine.run({});
     expect(text).toContain(ON.today[0]);
     expect(text).toContain(ON.status);
+    expect(text).not.toContain("/me");
     expect(d.onPath).toHaveBeenCalled();
   });
   it("reads the week plan as before without a path", async () => {
