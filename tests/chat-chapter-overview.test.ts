@@ -675,7 +675,9 @@ describe("chapter_overview from Learn (2026-11-22: Learn first wherever it teach
     const out = await tool.run({ chapter: "matrices", exam: "CBSE Class 12" });
     expect(out).toMatch(/one short line/i);
     expect(out).toMatch(/lesson 2, matrix multiplication/);
-    expect(out).toMatch(/tap a lesson/i);
+    expect(out).toMatch(/tapping a lesson on the card opens it/i);
+    // The map is drawn above V's text (mockup B); V once wrote "the card below" (2026-11-22 capture).
+    expect(out).toMatch(/card ABOVE your reply/);
     expect(out).toMatch(/do not teach/i);
     expect(out).toMatch(/do not list the lessons/i);
     expect(out).toMatch(/do not write a path/i);

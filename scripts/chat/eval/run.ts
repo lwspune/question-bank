@@ -54,6 +54,7 @@ import { loadPaperRepeats } from "../../../src/lib/chat/paperRepeatsServer";
 import { notesTappedFrom, tappedFrom } from "../../../src/lib/chat/questionToolSet";
 import { answerIn } from "../../../src/lib/chat/askVEvent";
 import { conceptSources } from "../../../src/lib/chat/conceptSearchServer";
+import { learnLoader } from "../../../src/lib/chat/learnServer";
 import { notesPageOf, parseNotesRefKey } from "../../../src/lib/chat/notesItem";
 import { loadNotesItemBrief, loadNotesPasteBrief } from "../../../src/lib/chat/notesItemServer";
 import { aiAnswerCostUsd } from "../../../src/lib/chat/interactions";
@@ -196,6 +197,10 @@ async function main() {
         : null,
       // A signed-in student with no mock results yet, as getOwnPerformance returns one (null means signed out).
       concepts: settings.explainEnabled ? conceptSources(anon) : null,
+      // As live: Learn's lessons first wherever Learn teaches the chapter (2026-11-22). The stand-in
+      // student has no Learn progress, so it reads as signed out; the lesson is kept in memory.
+      loadLearn: settings.explainEnabled ? learnLoader(null) : null,
+      onLesson: () => {},
       // Writes nothing: the tool is offered as live, so a case can see V save a language.
       saveLanguage: c.signed_in ? async () => true : null,
       loadOwnProgress: c.signed_in

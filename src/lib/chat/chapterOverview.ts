@@ -313,11 +313,11 @@ export function formatLearnOverview(hit: ChapterSearchRow, lc: LearnChapter, pla
     ? `${name} is the one they asked for`
     : startMissed > 0
       ? `${name} is where their mistakes are`
-      : `${name} is the place to start${lc.signedIn && finished > 0 ? " (the first they have not finished)" : ""}`;
+      : `${name} is the one to begin with${lc.signedIn && finished > 0 ? " (the first they have not finished)" : ""}`;
   lines.push(
-    "A card under your reply shows these lessons with the student's progress and mistakes; tapping a lesson plays it full screen, with its own slides and questions.",
-    `Write one short line only: ${where}, so tap a lesson on the card to start.`,
-    "Do not teach the lesson or work an example: the lesson does that. Do not list the lessons, do not write a path, and do not write a question.",
+    "A card ABOVE your reply shows these lessons with the student's progress and mistakes; tapping a lesson plays it full screen, with its own slides and questions. Never call it the card below.",
+    `Write one short line only: say that ${where}, and that tapping a lesson on the card opens it.`,
+    "Do not teach the lesson or work an example: the lesson does that. Do not list the lessons, do not write a path, and do not write a question. Say nothing about what a lesson covers or what happens after it beyond its title.",
     "Do not call my_progress."
   );
   return lines.join("\n");
