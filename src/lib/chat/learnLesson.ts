@@ -78,6 +78,17 @@ export function learnRows(
   );
 }
 
+/**
+ * The lesson for a question's topic (the stuck offer's "Teach me the idea", 2026-11-22): of the
+ * lessons filed under the topic, the first the student has not mastered; all mastered, the first.
+ * Null when no lesson is filed under it (MHT-CET and JEE topics are not mapped to lessons).
+ */
+export function pickTopicLesson(rows: readonly LearnLessonRow[], subtopic: string): LearnLessonRow | null {
+  const key = topicKey(subtopic);
+  const filed = rows.filter((r) => r.topics.some((t) => topicKey(t) === key));
+  return filed.find((r) => r.state !== "mastered") ?? filed[0] ?? null;
+}
+
 export type LearnPlan = {
   parts: LessonPart[];
   /** The lesson this reply teaches (1-based). */

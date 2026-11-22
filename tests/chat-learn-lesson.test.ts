@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { learnRows, planLearn, type LearnChapter, type LearnLessonRow } from "@/lib/chat/learnLesson";
+import { learnRows, pickTopicLesson, planLearn, type LearnChapter, type LearnLessonRow } from "@/lib/chat/learnLesson";
 import type { Outline } from "@/lib/learn/lessonState";
 import type { ChapterMiss } from "@/lib/chat/chapterOverview";
 
@@ -162,5 +162,24 @@ describe("learnRows: a Learn chapter's lessons for V", () => {
 
   it("an unknown chapter gives no rows", () => {
     expect(learnRows(outline, { course: "cbse-12-maths", chapter: "nope" }, new Map())).toEqual([]);
+  });
+});
+
+// The stuck offer's "Teach me the idea" opens ONE Learn lesson (2026-11-22, owner): the lesson
+// filed under the question's topic, the first the student has not mastered.
+describe("pickTopicLesson", () => {
+  it("the topic's only lesson", () => {
+    expect(pickTopicLesson(matrices().lessons, "Transpose of a Matrix")?.slug).toBe("transpose");
+  });
+
+  it("of a topic's several lessons, the first not mastered; all mastered, the first", () => {
+    expect(pickTopicLesson(matrices().lessons, "Multiplication of Matrices")?.slug).toBe("multiplying");
+    expect(pickTopicLesson(matrices({ multiplying: ["mastered", 3] }).lessons, "Multiplication of Matrices")?.slug).toBe("properties");
+    expect(pickTopicLesson(matrices({ multiplying: ["mastered", 3], properties: ["mastered", 3] }).lessons, "Multiplication of Matrices")?.slug).toBe("multiplying");
+  });
+
+  it("matches the topic by letters and digits, and is null when no lesson is filed under it", () => {
+    expect(pickTopicLesson(matrices().lessons, "transpose of a matrix ")?.slug).toBe("transpose");
+    expect(pickTopicLesson(matrices().lessons, "Determinants")).toBeNull();
   });
 });

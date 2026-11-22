@@ -97,4 +97,19 @@ describe("parseStuckOffer: the reply the page reads", () => {
     expect(parseStuckOffer({ ...ok, history: [R, R] })).toBeNull();
     expect(parseStuckOffer({ ...ok, subtopic: "" })).toBeNull();
   });
+
+  // Where Learn teaches the question (2026-11-22): its lesson, or for a topic no lesson is
+  // filed under (MHT-CET, JEE), the Learn chapter in V.
+  it("carries a Learn lesson or a Learn chapter, and drops a malformed one", () => {
+    const lesson = { kind: "lesson", chapter: "matrices", concept: "transpose", course: "cbse-12-maths" };
+    expect(parseStuckOffer({ ...ok, learn: lesson })?.learn).toEqual(lesson);
+    expect(parseStuckOffer({ ...ok, learn: { ...lesson, course: null } })?.learn).toEqual({ ...lesson, course: null });
+    const chapter = { kind: "chapter", exam: "MHT-CET", chapter: "Vectors" };
+    expect(parseStuckOffer({ ...ok, learn: chapter })?.learn).toEqual(chapter);
+    for (const bad of [{ kind: "lesson", chapter: "Bad Slug", concept: "x", course: null }, { kind: "chapter", exam: "", chapter: "Vectors" }, { kind: "x" }, "x"]) {
+      const out = parseStuckOffer({ ...ok, learn: bad });
+      expect(out).not.toBeNull();
+      expect(out).not.toHaveProperty("learn");
+    }
+  });
 });
