@@ -1,8 +1,8 @@
-"""Wire one agent-built /notes diagram: VisualizationSlug union, ConceptUnitCard import + case,
+"""Wire one agent-built /notes diagram: VisualizationSlug union, diagramRegistry.tsx import + case,
 and visualizationSlug on the concept. Idempotent; refuses if an anchor is missing.
 usage (repo root): python scripts/notes-pipeline/afcat/wire-diagram.py <slug> <Component> <chapter-folder> <concept-slug>
 e.g. python scripts/notes-pipeline/afcat/wire-diagram.py af-clock-angle AfClockAngle clock afcl-angle-formula"""
-import glob, io, os, sys
+import glob, io, os, subprocess, sys
 
 slug, comp, folder, concept = sys.argv[1:5]
 root = os.getcwd()
@@ -46,9 +46,10 @@ def concept_file(s, nl):
 
 assert os.path.exists(os.path.join(root, "src/app/notes/_components/visualizations", comp + ".tsx")), comp
 rw(os.path.join(root, "src/app/notes/_types.ts"), union)
-rw(os.path.join(root, "src/app/notes/_components/ConceptUnitCard.tsx"), card)
+rw(os.path.join(root, "src/app/notes/_components/diagramRegistry.tsx"), card)
 hits = [f for f in glob.glob(os.path.join(root, "src/app/notes/afcat-maths", folder, "_data", "*.ts"))
         if f'slug: "{concept}",' in io.open(f, encoding="utf-8").read()]
 assert len(hits) == 1, f"concept {concept}: {len(hits)} files"
 rw(hits[0], concept_file)
+subprocess.run("npx tsx scripts/notes/gen-diagrams.ts", shell=True, cwd=root, check=True)  # the page files
 print(f"wired {slug} -> {comp} on {concept}")

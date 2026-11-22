@@ -2,7 +2,7 @@
  * Place figures on notes concepts under src/app/notes/: adds
  * `visualizationSlug` to each target concept. A row naming a `component` is a
  * NEW figure: it is first wired into the VisualizationSlug union
- * (src/app/notes/_types.ts) and renderVisualization (ConceptUnitCard.tsx).
+ * (src/app/notes/_types.ts) and diagramRegistry.tsx, then the page files are regenerated.
  * A row without one must name a figure that is already wired (a borrow).
  * (IMAT's concepts live elsewhere: scripts/imat/wire-visuals.ts.)
  *
@@ -17,13 +17,14 @@
  * would show the same figure twice. Keeps each file's own line endings.
  * Written 2026-11-19 for the MHT-CET notes figures.
  */
+import { execSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 type Row = { slug: string; concept: string; component?: string };
 
 const TYPES = "src/app/notes/_types.ts";
-const CARD = "src/app/notes/_components/ConceptUnitCard.tsx";
+const CARD = "src/app/notes/_components/diagramRegistry.tsx";
 const VIZ = "src/app/notes/_components/visualizations";
 const NOTES = "src/app/notes";
 // The same anchors as scripts/imat/wire-visuals.ts: new entries go just above
@@ -132,6 +133,7 @@ function main() {
     if (!dry) writeFileSync(file, text);
     console.log(`${dry ? "would write" : "wrote"} ${path.relative(process.cwd(), file)}`);
   }
+  if (fresh.length && !dry) execSync("npx tsx scripts/notes/gen-diagrams.ts", { stdio: "inherit" });
   console.log(`${rows.length} figures placed, ${fresh.length} of them newly wired${dry ? " (dry run)" : ""}`);
 }
 

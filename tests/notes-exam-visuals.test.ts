@@ -155,7 +155,7 @@ describe("MHT-CET, JEE Mains, NEET and SSC CGL notes figures", () => {
   });
 
   it("every figure drawn in this run is used by one of these notes", () => {
-    const card = readFileSync(join(process.cwd(), "src/app/notes/_components/ConceptUnitCard.tsx"), "utf8");
+    const card = readFileSync(join(process.cwd(), "src/app/notes/_components/diagramRegistry.tsx"), "utf8");
     const drawn = [...card.matchAll(/case "((?:cet|jee|neet|ssc)-[^"]+)":/g)].map((m) => m[1]);
     const used = new Set<string>(figures);
     expect(drawn.filter((s) => !used.has(s))).toEqual([]);

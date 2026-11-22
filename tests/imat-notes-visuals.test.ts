@@ -65,7 +65,7 @@ describe("IMAT notes figures", () => {
   });
 
   it("every figure drawn for IMAT is used by an IMAT concept", () => {
-    const card = readFileSync(join(process.cwd(), "src/app/notes/_components/ConceptUnitCard.tsx"), "utf8");
+    const card = readFileSync(join(process.cwd(), "src/app/notes/_components/diagramRegistry.tsx"), "utf8");
     const imatCases = [...card.matchAll(/case "(imat-[^"]+)":/g)].map((m) => m[1]);
     const used = new Set(figures);
     expect(imatCases.filter((s) => !used.has(s as VisualizationSlug))).toEqual([]);
