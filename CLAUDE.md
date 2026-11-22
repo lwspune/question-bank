@@ -377,6 +377,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-22 (second) — The board plan moves into V alone: "Today's plan" pinned at the top of V's chat for the day (no migration).**
+  - **Why:** owner, "crowding the screen". Day-14 readout: 144 started, 5% of tasks done, 0 chapters ever, 2% after Follow the class; V's card opened by 7.
+  - **Kept in V (owner):** "My plan for today" pins a one-line row until midnight IST (`lib/chat/planPin`), opening the card in place; the day card stays below it.
+  - **No new starters:** every start lived on /me; V's plan ask now gets the one-week plan. Stop moved into V's card; Switch chapter, Lighter / More and the checklist went.
+  - **Infra unchanged** (tables, pick, free answers, grants, /api/path, lib/path). Guard `tests/plan-in-v.test.ts`. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-22 — V teaches from Learn wherever Learn teaches the chapter (no migration).**
   - **Why:** owner, "Learn was designed for this": 254 lessons, 3 learners ever; board chapters have no notes, so V's map had no links there.
   - **Links are hand-checked data** (`lib/learn/vLinks.ts`): 57 chapter links (boards; CET via the HSC course, JEE via CBSE, with parts) and 254 lesson-to-topic rows. Our topics are broader than lessons, so "N missed" sits on the start lesson only. Prod contract `learn-v-links-live`.

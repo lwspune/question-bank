@@ -75,7 +75,6 @@ const data: MeData = {
   mocks: summarizeUserMocks([attempt]),
   continueItems: [],
   showNps: true,
-  pathCard: { path: null, offer: null },
 };
 
 /** Numbers no viewer's own pulse would carry by accident. */

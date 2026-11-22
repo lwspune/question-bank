@@ -1,6 +1,6 @@
 /**
  * Drive the Review tab's OWN read chain against live data: the drill's pool
- * (loadOwnPool), the exam focus, today's plan row, the miss rows and the
+ * (loadOwnPool), the exam focus, the miss rows and the
  * grouping core, exactly as src/app/review/page.tsx runs them.
  *
  *   npm run review:smoke            # the 10 heaviest students + every recent Review later
@@ -24,7 +24,6 @@ import { loadOwnPool } from "@/lib/drill/compose";
 import { scopeToExam } from "@/lib/drill/select";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { loadFocus } from "@/lib/me/focusServer";
-import { readTodayRow } from "@/lib/path/exemptions";
 import { buildFixList, chapterQuestions, latestMisses, reasonOf, type Reason } from "@/lib/review/fixList";
 import { loadMissRows } from "@/lib/review/query";
 import { readAllPages } from "@/lib/supabase/readAllPages";
@@ -71,20 +70,13 @@ async function main() {
   const broken: string[] = [];
   const reasons: Record<Reason | "none", number> = { mock: 0, practice: 0, drill: 0, daily: 0, v_question: 0, review_later: 0, v_unclear: 0, none: 0 };
   let totalDue = 0;
-  let withPlan = 0;
 
   for (const userId of users) {
-    const [pool, focus, plan] = await Promise.all([
-      loadOwnPool(db, userId, now),
-      loadFocus(db, userId, examIds),
-      readTodayRow(db, userId, now).catch(() => null),
-    ]);
+    const [pool, focus] = await Promise.all([loadOwnPool(db, userId, now), loadFocus(db, userId, examIds)]);
     const due = scopeToExam(pool.drillable, focus.filterExamName);
     const misses = latestMisses(await loadMissRows(db, userId, due.map((q) => q.questionId)));
-    const planIds = new Set(plan?.drillIds ?? []);
-    const list = buildFixList(due, misses, planIds);
+    const list = buildFixList(due, misses);
     totalDue += list.total;
-    if (list.inPlan > 0) withPlan += 1;
 
     for (const q of due) {
       const m = misses.get(q.questionId);
@@ -99,20 +91,19 @@ async function main() {
     if (new Set(list.chapters.map((c) => c.chapterId)).size !== list.chapters.length) broken.push(`${userId}: a chapter listed twice`);
     for (const c of list.chapters) {
       if (c.wrong + c.reviewLater + c.vUnclear !== c.count) broken.push(`${userId}: ${c.name} reasons add to ${c.wrong + c.reviewLater + c.vUnclear}, count ${c.count}`);
-      const page = chapterQuestions(due, c.chapterId, misses, planIds);
+      const page = chapterQuestions(due, c.chapterId, misses);
       if (page.length !== c.count) broken.push(`${userId}: ${c.name} row says ${c.count}, its page lists ${page.length}`);
     }
-    if (planIds.size > 0 && list.inPlan > planIds.size) broken.push(`${userId}: ${list.inPlan} in plan, plan holds ${planIds.size}`);
 
     const top = list.chapters[0];
     console.log(
       `  ${userId.slice(0, 8)}  ${String(list.total).padStart(4)} to fix in ${String(list.chapters.length).padStart(3)} chapters` +
-        `${focus.filterExamName ? ` (${focus.filterExamName} only)` : ""}${list.inPlan ? `, ${list.inPlan} in today's plan` : ""}` +
+        `${focus.filterExamName ? ` (${focus.filterExamName} only)` : ""}` +
         `${top ? `  top: ${top.name} ${top.count}` : ""}`
     );
   }
 
-  console.log(`\n${totalDue} waiting questions; ${withPlan} students with plan questions today`);
+  console.log(`\n${totalDue} waiting questions`);
   console.log(`reasons: ${Object.entries(reasons).map(([k, v]) => `${k} ${v}`).join(" · ")}`);
   if (broken.length > 0) {
     console.log(`\nBROKEN (${broken.length}):`);

@@ -2,7 +2,6 @@ import Link from "next/link";
 import { CalendarClock, Check, EyeOff } from "lucide-react";
 import FeedbackCards from "./FeedbackCards";
 import TodayCard from "./TodayCard";
-import PathCard from "./PathCard";
 import WeakSpots from "./WeakSpots";
 import StartNext from "./StartNext";
 import ContinueCard from "./ContinueCard";
@@ -92,32 +91,14 @@ export default function MeView({
       {/* ONE brand card with ONE lead action (2026-10-05). It replaced the
           continue card, the welcome card and the week strip, which put three
           full-width blue buttons on a phone before any progress. */}
-      {/* The board path (MENTOR_SPEC.md, 2026-11-07): for a path student its
-          Today card takes the week ring's place (D4: one pace on the page);
-          a Class 12 student without one sees the start card above it. */}
-      {data.pathCard.path ? (
-        <PathCard initial={data.pathCard} readOnly={staff} />
-      ) : (
-        <>
-          {data.pathCard.offer &&
-            (staff ? (
-              <HiddenNote>
-                Here they see the board plan offer: about {data.pathCard.offer.minutes} minutes a day, with a button to
-                start it.
-              </HiddenNote>
-            ) : (
-              <PathCard initial={data.pathCard} />
-            ))}
-          <TodayCard
-            resume={data.resume}
-            cont={data.cont}
-            mockHref={data.mockHref}
-            pulse={viewAs?.pulse}
-            initialPulse={initialPulse}
-            readOnly={staff}
-          />
-        </>
-      )}
+      <TodayCard
+        resume={data.resume}
+        cont={data.cont}
+        mockHref={data.mockHref}
+        pulse={viewAs?.pulse}
+        initialPulse={initialPulse}
+        readOnly={staff}
+      />
 
       {/* Study time (2026-11-21): today and the last 7 days, by chapter, and
           beside the paper. Null under 15 minutes in the week. */}
@@ -151,9 +132,8 @@ export default function MeView({
           it has earned. Read for the signed-in viewer, so not in the staff view. */}
       {staff ? <HiddenNote>Here they get their invite link and see the friends it brought.</HiddenNote> : <InviteFriendCard />}
 
-      {/* The highest-value chapters not started (2026-11-09). A board-plan
-          student's plan already orders their chapters, so not for them. */}
-      {!data.pathCard.path && <StartNext chapters={data.startNext ?? []} from={staff ? undefined : "home"} />}
+      {/* The highest-value chapters not started (2026-11-09). */}
+      <StartNext chapters={data.startNext ?? []} from={staff ? undefined : "home"} />
 
       {/* Home keeps things to DO (2026-11-08): the number tiles and Recent
           mocks moved to the Progress tab (OutcomeTiles, Papers you sat). */}

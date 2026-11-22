@@ -112,11 +112,12 @@ describe("buildFixList: the chapters, most to fix first", () => {
     miss({ questionId: "d" }),
     miss({ questionId: "e", surface: "drill" }),
   ]);
-  const list = buildFixList(pool, misses, new Set(["a", "d"]));
+  const list = buildFixList(pool, misses);
 
   it("totals the whole pool, so it is the badge's number", () => {
     expect(list.total).toBe(5);
-    expect(list.inPlan).toBe(2);
+    // The board plan left /review (2026-11-22): nothing on the list counts it.
+    expect(list).not.toHaveProperty("inPlan");
   });
 
   it("orders chapters by how many wait, then by the newest miss", () => {
@@ -124,18 +125,19 @@ describe("buildFixList: the chapters, most to fix first", () => {
   });
 
   it("breaks each chapter down by reason: wrong, Review later, didn't understand V", () => {
-    expect(list.chapters[0]).toMatchObject({ chapterId: "c1", count: 3, wrong: 1, reviewLater: 1, vUnclear: 1, inPlan: 1 });
-    expect(list.chapters[2]).toMatchObject({ chapterId: "c3", count: 1, wrong: 1, reviewLater: 0, vUnclear: 0, inPlan: 0 });
+    expect(list.chapters[0]).toMatchObject({ chapterId: "c1", count: 3, wrong: 1, reviewLater: 1, vUnclear: 1 });
+    expect(list.chapters[0]).not.toHaveProperty("inPlan");
+    expect(list.chapters[2]).toMatchObject({ chapterId: "c3", count: 1, wrong: 1, reviewLater: 0, vUnclear: 0 });
   });
 
   it("counts a question with no recorded reason as wrong rather than losing it", () => {
-    const l = buildFixList([due("z", "c9", "Limits", "2026-11-01T00:00:00Z")], new Map(), new Set());
+    const l = buildFixList([due("z", "c9", "Limits", "2026-11-01T00:00:00Z")], new Map());
     expect(l.chapters[0]).toMatchObject({ count: 1, wrong: 1 });
   });
 
   it("keeps a question with no chapter in the total, under no chapter row", () => {
     const noChapter: DueQuestion = { ...due("y", "", "", "2026-11-01T00:00:00Z"), chapterId: null };
-    const l = buildFixList([...pool, noChapter], misses, new Set());
+    const l = buildFixList([...pool, noChapter], misses);
     expect(l.total).toBe(6);
     expect(l.chapters.reduce((n, c) => n + c.count, 0)).toBe(5);
   });
@@ -149,10 +151,10 @@ describe("chapterQuestions: one chapter's questions, newest miss first", () => {
   ];
   const misses = latestMisses([miss({ questionId: "a", surface: null, mockId: "m1" }), miss({ questionId: "b", selfMark: "review" })]);
 
-  it("lists only that chapter, newest first, with each question's reason and plan mark", () => {
-    expect(chapterQuestions(pool, "c1", misses, new Set(["a"]))).toEqual([
-      { questionId: "b", reason: "review_later", mockId: null, at: "2026-11-05T00:00:00Z", inPlan: false },
-      { questionId: "a", reason: "mock", mockId: "m1", at: "2026-11-01T00:00:00Z", inPlan: true },
+  it("lists only that chapter, newest first, with each question's reason", () => {
+    expect(chapterQuestions(pool, "c1", misses)).toEqual([
+      { questionId: "b", reason: "review_later", mockId: null, at: "2026-11-05T00:00:00Z" },
+      { questionId: "a", reason: "mock", mockId: "m1", at: "2026-11-01T00:00:00Z" },
     ]);
   });
 });
@@ -199,7 +201,7 @@ describe("subject chips", () => {
   });
 
   it("narrows the list to one subject", () => {
-    const l = buildFixList(pool, new Map(), new Set(), "Physics");
+    const l = buildFixList(pool, new Map(), "Physics");
     expect(l.total).toBe(1);
     expect(l.chapters.map((c) => c.name)).toEqual(["Motion"]);
   });
