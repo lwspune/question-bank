@@ -38,7 +38,7 @@ describe("offersFor", () => {
   });
 
   it("names only real exams, and each offer is a real /classes course", () => {
-    const slugs = new Set(EXAM_REGISTRY.map((e) => e.slug));
+    const slugs = new Set<string>(EXAM_REGISTRY.map((e) => e.slug));
     for (const s of CLASS_10_EXAMS) expect(slugs.has(s)).toBe(true);
     const courses = new Set<string>(CLASS_COURSES.map((c) => c.slug));
     for (const o of CLASS_OFFERS) {

@@ -93,6 +93,7 @@ describe("EXPERIMENTS", () => {
       "indexing",
       "install-app",
       "learn",
+      "me-class-offer",
       "mock-before-start",
       "mock-together",
       "notes-drill-panel",
