@@ -9,6 +9,8 @@ import { createHmac } from "node:crypto";
 import { NextRequest } from "next/server";
 
 // Referral rewards and refunds (0249): no referral in these orders; kept off the database.
+// Webhook deliveries are recorded (0283); kept off the database here.
+vi.mock("@/lib/billing/webhookReceipts", () => ({ recordWebhookReceipt: vi.fn(async () => undefined) }));
 vi.mock("@/lib/referrals/service", () => ({
   completeReferral: vi.fn(async () => "none"),
   revokeReferralReward: vi.fn(async () => 0),

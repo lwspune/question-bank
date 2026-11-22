@@ -2,6 +2,8 @@ import { NextResponse, type NextRequest } from "next/server";
 import { decidePaddleEvent, verifyPaddleSignature, type PaddleEvent } from "@/lib/billing/paddle";
 import { applyPaidOrder } from "@/lib/billing/applyPaidOrder";
 import { revokeRazorpayEntitlement } from "@/lib/billing/grant";
+import { paddleReceipt } from "@/lib/billing/webhookAlarm";
+import { recordWebhookReceipt } from "@/lib/billing/webhookReceipts";
 
 export const maxDuration = 30;
 
@@ -35,6 +37,10 @@ export async function POST(request: NextRequest) {
   } catch {
     return NextResponse.json({ error: "bad json" }, { status: 400 });
   }
+
+  // Every signed delivery is recorded first (0283), so the payment check can notice the webhook going quiet.
+  const receipt = paddleReceipt(body);
+  if (receipt) await recordWebhookReceipt(receipt);
 
   const decision = decidePaddleEvent(body);
   if (decision.action === "ignore") return NextResponse.json({ received: true, ignored: decision.event });
