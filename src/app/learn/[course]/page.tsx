@@ -6,6 +6,7 @@ import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import { CourseOverview } from "@/components/learn/CourseOverview";
 import { type ExamSlug, isExamSlug } from "@/lib/exam/examContext";
 import { nextSitting } from "@/lib/exam/calendar";
+import { loadExamCalendar } from "@/lib/exam/calendarQuery";
 import { courseName } from "@/lib/learn/courseName";
 import { LEARN_HUB } from "@/lib/learn/links";
 import { getOutline } from "@/lib/learn/query";
@@ -37,7 +38,7 @@ export default async function LearnCourse(props: { params: Promise<Params> }) {
   if (!outline) notFound();
   const name = courseName(outline);
   // The board's next sitting; the countdown itself is worked out in the browser (the page is cached).
-  const sitting = isExamSlug(outline.exam) ? nextSitting(outline.exam as ExamSlug, new Date()) : null;
+  const sitting = isExamSlug(outline.exam) ? nextSitting(outline.exam as ExamSlug, new Date(), await loadExamCalendar()) : null;
 
   return (
     <>

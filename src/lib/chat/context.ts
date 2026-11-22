@@ -66,6 +66,7 @@ export function profileExamNames(slugs: readonly string[]): string[] {
 const SIGNED_OUT_PLAN: Omit<PlanDeps, "signedIn" | "loadChapters" | "loadStrategy"> = {
   now: () => new Date(),
   loadProfile: async () => ({ targetExams: [], examDate: null, weeklyGoal: null }),
+  loadCalendar: async () => [],
   saveExamDate: async () => {},
   loadWeak: async () => [],
   loadDue: async () => 0,

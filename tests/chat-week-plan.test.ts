@@ -4,6 +4,7 @@
  * biggest chapters and a timed mock, saved, and ticked from what they did.
  */
 import { describe, it, expect, vi } from "vitest";
+import { TEST_CALENDAR } from "./fixtures/examCalendar";
 import {
   buildWeekPlan,
   spreadDays,
@@ -208,6 +209,7 @@ function deps(over: Partial<PlanDeps> = {}) {
     now: () => new Date("2026-10-20T04:00:00Z"),
     loadChapters: async () => ROWS,
     loadProfile: async () => ({ targetExams: ["nda"], examDate: "2027-04-12", weeklyGoal: 3 }),
+    loadCalendar: async () => TEST_CALENDAR,
     saveExamDate: vi.fn(async () => {}),
     loadStrategy: async () => STRATEGY,
     loadWeak: async () => [{ subject: "Mathematics", chapter: "Probability" }],

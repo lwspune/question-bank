@@ -2,24 +2,24 @@
  * The exam calendar and the days-to-exam resolution — ENGAGEMENT_SPEC.md C3.
  *
  * DERIVE-WITH-OVERRIDE (the user's decision, 2026-09-24). A student's
- * countdown comes from this committed calendar via their primary target exam,
- * so 280 of 342 profiles get one on day one; a nullable `exam_date` on the
- * profile (migration 0116) wins when set and in the future. The alternative
- * — a student-entered date only — was rejected on the evidence of the optional
- * `goal` field, filled by 1%.
+ * countdown comes from the calendar via their primary target exam; a nullable
+ * `exam_date` on the profile (migration 0116) wins when set and in the future.
+ * The alternative, a student-entered date only, was rejected on the evidence
+ * of the optional `goal` field, filled by 1%.
  *
- * `official` WAS FALSE ON EVERY ENTRY AS FIRST WRITTEN (NDA 2027-I flipped
- * the same day: 11 April 2027, UPSC). On 2026-09-24 no other upcoming
- * sitting had an announced date (UPSC publishes its calendar around November,
- * NTA and the boards later still), so each row is the usual pattern — NDA-I on
- * the third Sunday of April, boards from mid-February — and the UI says
- * "expected" until the flag is flipped by hand with the notice in `source`.
- * A guess labelled as one is honest; a guess stored as a fact is not.
+ * THE CALENDAR IS A TABLE since 2026-11-22: public.exam_sittings (migration
+ * 0281), so the /blog skill records a sitting's date the day its notice comes
+ * out, without a push. Servers read it with lib/exam/calendarQuery
+ * loadExamCalendar (cached a day) and pass it in; this file stays pure, so a
+ * client component can import the sentence helpers without a database read.
+ * `official` is true only once the conducting body has announced the date
+ * (the table then requires the notice's link); otherwise the UI says
+ * "expected". A guess labelled as one is honest; a guess stored as a fact is
+ * not.
  *
- * THE ROT PROBE is tests/exam-calendar.test.ts: a sitting more than
- * CALENDAR_GRACE_DAYS in the past fails the gate. That is the roadmap's
- * stated preference over a DB table nothing checks — an empty or stale
- * calendar must not look like a working one.
+ * THE ROT PROBE is tests/exam-calendar-live.test.ts (prod-contract, daily),
+ * applying staleExams below: an exam whose latest sitting passed more than
+ * CALENDAR_GRACE_DAYS ago fails it.
  *
  * No I/O. Spec: tests/exam-calendar.test.ts.
  */
@@ -37,30 +37,12 @@ export type SittingEntry = {
   official: boolean;
   /** Where the date came from — the announcement, or the pattern it follows. */
   source: string;
+  /** The notice's https link; required when `official`. */
+  sourceUrl: string | null;
 };
 
-/** Days a passed sitting may linger before the rot probe fails the gate. */
+/** Days an exam's latest sitting may lie in the past before the rot probe fails. */
 export const CALENDAR_GRACE_DAYS = 14;
-
-const PATTERN = "expected from the usual pattern; not yet announced";
-
-export const EXAM_CALENDAR: readonly SittingEntry[] = [
-  { exam: "jee-mains", sitting: "2027-Jan", label: "JEE Main 2027 (January)", date: "2027-01-20", official: true, source: "NTA, JEE (Main) 2027 Information Bulletin (24 Oct 2026); NTA calls the dates tentative: 20-24 and 28 Jan 2027" },
-  { exam: "mh-hsc-12", sitting: "2027", label: "HSC boards 2027", date: "2027-02-11", official: false, source: PATTERN },
-  { exam: "cbse-10", sitting: "2027", label: "CBSE Class 10 boards 2027", date: "2027-02-15", official: false, source: PATTERN },
-  { exam: "cbse-12", sitting: "2027", label: "CBSE Class 12 boards 2027", date: "2027-02-15", official: false, source: PATTERN },
-  { exam: "mh-ssc-10", sitting: "2027", label: "SSC boards 2027", date: "2027-03-01", official: false, source: PATTERN },
-  { exam: "jee-mains", sitting: "2027-Apr", label: "JEE Main 2027 (April)", date: "2027-04-02", official: true, source: "NTA, JEE (Main) 2027 Information Bulletin (24 Oct 2026); NTA calls the dates tentative: 2-7 Apr 2027" },
-  { exam: "nda", sitting: "2027-I", label: "NDA 2027 (I)", date: "2027-04-11", official: true, source: "UPSC Calendar of examinations 2027 (uploaded 20 May 2026); first confirmed by the user 2026-09-24" },
-  { exam: "cds", sitting: "2027-I", label: "CDS 2027 (I)", date: "2027-04-11", official: true, source: "UPSC Calendar of examinations 2027 (uploaded 20 May 2026): listed with NDA (I), 2027 on the same dates" },
-  { exam: "mht-cet", sitting: "2027", label: "MHT-CET 2027", date: "2027-04-16", official: true, source: "State CET Cell press note, 16 Nov 2026: PCM 16-26 Apr 2027 (PCB 8-13 Apr); the note calls the dates probable" },
-  { exam: "neet", sitting: "2027", label: "NEET 2027", date: "2027-05-02", official: false, source: PATTERN },
-  { exam: "ipmat-indore", sitting: "2027", label: "IPMAT Indore 2027", date: "2027-05-09", official: false, source: PATTERN },
-  { exam: "ipmat-rohtak", sitting: "2027", label: "IPMAT Rohtak 2027", date: "2027-05-09", official: false, source: PATTERN },
-  { exam: "jipmat", sitting: "2027", label: "JIPMAT 2027", date: "2027-05-09", official: false, source: PATTERN },
-  { exam: "nda", sitting: "2027-II", label: "NDA 2027 (II)", date: "2027-09-19", official: true, source: "UPSC Calendar of examinations 2027 (uploaded 20 May 2026)" },
-  { exam: "cds", sitting: "2027-II", label: "CDS 2027 (II)", date: "2027-09-19", official: true, source: "UPSC Calendar of examinations 2027 (uploaded 20 May 2026): listed with NDA (II), 2027 on the same dates" },
-];
 
 const DAY_MS = 86_400_000;
 const IST_OFFSET_MS = 5.5 * 3_600_000;
@@ -87,8 +69,8 @@ export function daysUntilIst(dateIso: string, now: Date): number {
 }
 
 /** The first sitting of the exam on or after today (IST), or null. */
-export function nextSitting(exam: ExamSlug, now: Date): SittingEntry | null {
-  const upcoming = EXAM_CALENDAR.filter((e) => e.exam === exam && daysUntilIst(e.date, now) >= 0).sort(
+export function nextSitting(exam: ExamSlug, now: Date, calendar: readonly SittingEntry[]): SittingEntry | null {
+  const upcoming = calendar.filter((e) => e.exam === exam && daysUntilIst(e.date, now) >= 0).sort(
     (a, b) => a.date.localeCompare(b.date)
   );
   return upcoming[0] ?? null;
@@ -106,11 +88,13 @@ export type ExamCountdown = {
 /**
  * The one countdown a student sees. A future override wins and is `official`
  * by definition (it is their own date); otherwise the first target exam with
- * a calendar entry supplies it. Null when neither applies.
+ * a calendar entry supplies it. Null when neither applies (an empty
+ * calendar, as a failed read gives, still honours the override).
  */
 export function resolveExamDate(
   profile: { targetExams: readonly string[]; examDate: string | null },
-  now: Date
+  now: Date,
+  calendar: readonly SittingEntry[]
 ): ExamCountdown | null {
   const targets = profile.targetExams.filter((s): s is ExamSlug =>
     EXAM_REGISTRY.some((e) => e.slug === s)
@@ -126,7 +110,7 @@ export function resolveExamDate(
   }
 
   for (const slug of targets) {
-    const s = nextSitting(slug, now);
+    const s = nextSitting(slug, now, calendar);
     if (s) {
       return { source: "calendar", exam: slug, label: s.label, date: s.date, official: s.official, daysLeft: daysUntilIst(s.date, now) };
     }
@@ -145,4 +129,21 @@ export function sanitizeExamDate(raw: unknown): string | null {
   if (typeof raw !== "string") return null;
   const v = raw.trim();
   return dayIndexOf(v) === null ? null : v;
+}
+
+/**
+ * Exams whose LATEST sitting is more than CALENDAR_GRACE_DAYS in the past:
+ * their countdown has vanished and nobody added the next sitting. A passed
+ * sitting with a later one on the calendar is history, not rot.
+ */
+export function staleExams(calendar: readonly SittingEntry[], now: Date): { exam: ExamSlug; latest: SittingEntry }[] {
+  const latest = new Map<ExamSlug, SittingEntry>();
+  for (const e of calendar) {
+    const cur = latest.get(e.exam);
+    if (!cur || e.date > cur.date) latest.set(e.exam, e);
+  }
+  return [...latest.entries()]
+    .filter(([, e]) => daysUntilIst(e.date, now) < -CALENDAR_GRACE_DAYS)
+    .map(([exam, e]) => ({ exam, latest: e }))
+    .sort((a, b) => a.exam.localeCompare(b.exam));
 }

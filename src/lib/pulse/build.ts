@@ -21,6 +21,7 @@ import type { AnswerTotals } from "@/lib/celebrate/service";
 import type { OwnWeekly } from "@/lib/goals/service";
 import { getOwnProfile } from "@/lib/profile/service";
 import { resolveExamDate } from "@/lib/exam/calendar";
+import { loadExamCalendar } from "@/lib/exam/calendarQuery";
 import type { Pulse } from "./cache";
 import { isPathExam, pathPulseState, type PathExam } from "@/lib/path/model";
 import { countUnreadReplies } from "@/lib/feedback/replyService";
@@ -44,6 +45,8 @@ export async function buildPulse(
     gift?: boolean;
   }
 ): Promise<Required<Pulse>> {
+  // Started first so it runs beside the reads below; never throws (an empty calendar on failure).
+  const calendarRead = loadExamCalendar();
   const [ladder, week, profile, answers, focusExam, replies, leftCheckout, gift] = await Promise.all([
     getOwnLadder(db, userId, now),
     counts.week,
@@ -77,7 +80,7 @@ export async function buildPulse(
         })
       : null,
   ]);
-  const countdown = resolveExamDate(profile, now);
+  const countdown = resolveExamDate(profile, now, await calendarRead);
   const exam = countdown
     ? { label: countdown.label, daysLeft: countdown.daysLeft, official: countdown.official }
     : null;
