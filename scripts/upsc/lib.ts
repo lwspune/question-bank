@@ -689,15 +689,6 @@ export function stripRunnerUp(text: string): { text: string; removed: string[]; 
   return { text: out, removed, inline };
 }
 
-/**
- * The provenance bracket every derived answer carries. This corpus has no printed
- * key and no external anchor, and the answer-key export prints `solution`
- * verbatim — so a reader of a downloaded paper sees this too, which is the intent.
- */
-const provenance = (confidence: string, agreed: boolean) =>
-  `[Derived answer — this booklet carries no official key. ` +
-  `Two independent blind derivations ${agreed ? "agreed" : "were reconciled by hand"}; ` +
-  `confidence: ${confidence}. Verify before relying on it.]`;
 
 /**
  * Assemble bank rows. A question with no derivation is DROPPED, not defaulted —
@@ -716,7 +707,6 @@ export function buildRecords(
     const d = byNumber.get(q.number);
     if (!d) continue;
     const opt = (l: string) => q.options.find((o) => o.label === l)?.text ?? "";
-    const agreed = !opts.reconciled?.has(q.number);
     rows.push({
       sourceRow: q.number,
       questionNumber: String(q.number),
@@ -732,11 +722,9 @@ export function buildRecords(
       optionD: opt("D"),
       answer: d.answer.toUpperCase(),
       difficulty: q.difficulty,
-      // On a keyed paper UPSC's key supplied the letter, so the "no official key"
-      // bracket would be false (1,789 CSE rows shipped with it; fixed 2026-11-19).
-      solution: opts.keyed
-        ? d.reasoning.trim()
-        : `${d.reasoning.trim()} ${provenance(d.confidence.toUpperCase(), agreed)}`.trim(),
+      // The working alone, keyed paper or not: no method note on a solution
+      // (owner, 2026-11-22; lib/questions/methodNotes).
+      solution: d.reasoning.trim(),
     });
   }
   return rows;

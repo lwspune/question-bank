@@ -127,10 +127,10 @@ npx tsx scripts/cds-gs/score.ts <paperId>                 # report + adjudicatio
 npx tsx scripts/cds-gs/score.ts <paperId> --inject 7=A    # canary: prove it detects a miss
 #    write data/<id>.adjudicated.json - answer, value, basis AND rewritten reasoning
 npx tsx scripts/cds-gs/score.ts <paperId> --apply         # write data/<id>.answers.json
-#    commit.ts picks the solution's closing bracket per paper (provenance.ts
-#    solutionTail): a keyed paper's says "official key", never "no official key".
-#    Until 2026-10-01 it was hardcoded, and 2026-2 shipped 120 rows that said both;
-#    restamp-solutions.ts repaired them (dry run by default, --apply writes).
+#    The solution is the reasoning alone. Until 2026-11-22 it ended with a
+#    "[Derived answer ...]" / "[Answer from the official ...]" bracket; that is a
+#    method note, which no student surface may show (src/lib/questions/methodNotes.ts),
+#    and scripts/reviews/move-method-notes.ts moved it into question_reviews.
 python  scripts/cds-gs/audit_fidelity.py            # 2018-1 only — see below
 npm run audit:text -- "<sourceFile substring>"
 npm run audit:omml -- "<sourceFile substring>"

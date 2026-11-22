@@ -45,8 +45,6 @@ function buildWrittenRows(paper: Paper, questions: TQ[], raw: WrittenAnswers): P
   const errs = validateWritten(items);
   const byN = new Map(raw.answers.map((a) => [a.number, a]));
   const reconciled = new Set(raw.reconciled ?? []);
-  const checked = new Set(raw.checked ?? []);
-  const open = new Set(raw.open ?? []);
   const notices = new Map<number, string>();
   const parsed: ParsedRowPayload[] = [];
   // Numbering is validated over the whole transcription (a held item keeps
@@ -57,15 +55,9 @@ function buildWrittenRows(paper: Paper, questions: TQ[], raw: WrittenAnswers): P
       errs.push(`Q${q.number} (${q.label}): no model answer`);
       return;
     }
-    const how = reconciled.has(q.number)
-      ? "Two independent solutions disagreed; the answer was settled by hand."
-      : checked.has(q.number)
-        ? "Two independent solutions agreed, and the answer was checked by hand."
-        : "Two independent solutions agreed.";
-    const bracket = open.has(q.number)
-      ? "[One sample answer written by PYQ Vault: this writing task has no single right answer.]"
-      : `[Answer worked out by PYQ Vault: RIMC has not published a key for this paper. ${how}]`;
-    let solution = `${a.solution.trim()}\n\n${bracket}`;
+    // No method note on the solution (owner rule, lib/questions/methodNotes): how
+    // the answer was got stays in data/<paper>.answers.json and git, never in front of a student.
+    let solution = a.solution.trim();
     if (a.notice) {
       notices.set(q.number, a.notice);
       solution = `**Note:** ${a.notice}\n\n${solution}`;
@@ -124,44 +116,13 @@ export function buildPaperRows(paper: Paper): PaperRows {
   // from the rows on purpose and must not read as a coverage failure.
   const dropped: number[] = answersRaw.dropped ?? [];
 
-  const issuer = paper.exam.startsWith("aissee") ? "NTA" : paper.exam === "rimc" ? "RIMC" : "the Rashtriya Military Schools";
   const keyed = !!answersRaw.source; // keycheck.ts writes `source`; crosstab.ts does not
-
   const built = buildRecords(questions, answers, { reconciled });
+  // The solution is the working alone, keyed paper or not: how the answer was
+  // got (two blind passes, a hand check) stays in data/ and git, never in front
+  // of a student (owner rule, lib/questions/methodNotes).
   const working = new Map(answers.map((a) => [a.number, a.reasoning.trim()]));
-  if (keyed) {
-    // The key supplied the letter, so the shared "no official key" bracket is false.
-    for (const r of built) r.solution = working.get(Number(r.questionNumber)) ?? r.solution;
-  } else {
-    // No key: say so plainly, and say which rows a person checked.
-    const checked = new Set<number>(answersRaw.checked ?? []);
-    const overruled = new Set<number>(answersRaw.overruled ?? []);
-    const byNumber = new Map(questions.map((q) => [q.number, q]));
-    for (const r of built) {
-      const n = Number(r.questionNumber);
-      // A question printed only in Hindi (RMS Class 9's Hindi section) gets the
-      // note in Hindi, as MPSC Mains writes its note in the question's language.
-      if (byNumber.get(n)?.subject === "Hindi") {
-        const hiHow = overruled.has(n)
-          ? "दो स्वतंत्र हलों का उत्तर एक था; उसे जाँचकर बदला गया।"
-          : reconciled.has(n)
-            ? "दो स्वतंत्र हलों के उत्तर अलग थे; उत्तर जाँचकर तय किया गया।"
-            : checked.has(n)
-              ? "दो स्वतंत्र हलों का उत्तर एक आया, और उसे जाँचा भी गया।"
-              : "दो स्वतंत्र हलों का उत्तर एक आया।";
-        r.solution = `${working.get(n) ?? ""} [उत्तर PYQ Vault ने निकाला है: इस प्रश्नपत्र की उत्तर-कुंजी प्रकाशित नहीं हुई है। ${hiHow}]`.trim();
-        continue;
-      }
-      const how = overruled.has(n)
-        ? "Two independent solutions agreed on another answer; it was corrected by hand."
-        : reconciled.has(n)
-          ? "Two independent solutions disagreed; the answer was settled by hand."
-          : checked.has(n)
-            ? "Two independent solutions agreed, and the answer was checked by hand."
-            : "Two independent solutions agreed.";
-      r.solution = `${working.get(n) ?? ""} [Answer worked out by PYQ Vault: ${issuer} has not published a key for this paper. ${how}]`.trim();
-    }
-  }
+  for (const r of built) r.solution = working.get(Number(r.questionNumber)) ?? r.solution;
   // A notice (a defective or ambiguous item) goes above the solution, the same
   // "**Note:**" form the other lanes use; `grace` items go to flawed.json.
   const notices = new Map<number, string>(

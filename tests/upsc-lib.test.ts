@@ -1,3 +1,4 @@
+import { hasMethodNote } from "@/lib/questions/methodNotes";
 import { describe, it, expect } from "vitest";
 import {
   normalizeQuestions,
@@ -252,17 +253,17 @@ describe("crosstab", () => {
 });
 
 describe("buildRecords", () => {
-  it("stamps the derived answer and its provenance into solution", () => {
+  // No method note on a solution (owner, 2026-11-22): the working alone.
+  it("writes the derived answer and the working alone, with no method note", () => {
     const [row] = buildRecords([q()], [d()]);
     expect(row.answer).toBe("A");
-    expect(row.solution).toMatch(/Derived answer/);
-    expect(row.solution).toMatch(/no official key/);
-    expect(row.solution).toMatch(/confidence: HIGH/);
+    expect(row.solution).toBe(d().reasoning.trim());
+    expect(hasMethodNote(row.solution)).toBe(false);
   });
 
-  it("says so when an answer was reconciled by hand rather than agreed", () => {
+  it("writes no method note when an answer was reconciled by hand either", () => {
     const [row] = buildRecords([q()], [d()], { reconciled: new Set([1]) });
-    expect(row.solution).toMatch(/reconciled by hand/);
+    expect(hasMethodNote(row.solution)).toBe(false);
   });
 
   it("on a KEYED paper the solution is the working alone (the key supplied the letter)", () => {

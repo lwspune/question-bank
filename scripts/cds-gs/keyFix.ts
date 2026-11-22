@@ -10,7 +10,6 @@
  * content is refused: re-hashing it would hide whatever made it stale.
  */
 import { contentHash } from "../../src/lib/upload/hash";
-import { solutionTail } from "./provenance";
 
 export type LiveRow = {
   text: string;
@@ -39,11 +38,10 @@ export function planKeyFix(live: LiveRow, fix: KeyFix, hasAnswerKey: boolean): K
   if (contentHash(live.text, texts, from) !== live.content_hash) {
     throw new Error("stale hash: the stored content_hash does not match the row's own stem, options and key");
   }
-  const tail = solutionTail({ hasAnswerKey: false, confidence: "", agreed: true, corrected: true });
   return {
     from,
     newHash: contentHash(live.text, texts, to),
-    solution: `${fix.reasoning.trim()} ${tail}`,
+    solution: fix.reasoning.trim(),
     flips: [
       { label: from, is_correct: false },
       { label: to, is_correct: true },

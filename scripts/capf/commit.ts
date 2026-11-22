@@ -66,30 +66,14 @@ async function main() {
   const dropped: number[] = answersRaw.dropped ?? [];
 
   if (!EXAM_ID) throw new Error("EXAM_ID is empty in config.ts: run seed-exam.ts --apply first");
-  const keyed = !!answersRaw.source; // keycheck.ts writes `source`; crosstab.ts does not
 
+  const keyed = !!answersRaw.source; // keycheck.ts writes `source`; crosstab.ts does not
   const built = buildRecords(questions, answers, { reconciled });
   const working = new Map(answers.map((a) => [a.number, a.reasoning.trim()]));
-  if (keyed) {
-    // The key supplied the letter, so the shared "no official key" bracket is false.
-    for (const r of built) r.solution = working.get(Number(r.questionNumber)) ?? r.solution;
-  } else {
-    // No key: say so, plainly and without the shared bracket's em dash, and say
-    // which rows a person checked.
-    const checked = new Set<number>(answersRaw.checked ?? []);
-    const overruled = new Set<number>(answersRaw.overruled ?? []);
-    for (const r of built) {
-      const n = Number(r.questionNumber);
-      const how = overruled.has(n)
-        ? "Two independent solutions agreed on another answer; it was corrected by hand."
-        : reconciled.has(n)
-          ? "Two independent solutions disagreed; the answer was settled by hand."
-          : checked.has(n)
-            ? "Two independent solutions agreed, and the answer was checked by hand."
-            : "Two independent solutions agreed.";
-      r.solution = `${working.get(n) ?? ""} [Answer worked out by PYQ Vault: UPSC has not published a key for this paper. ${how}]`.trim();
-    }
-  }
+  // The solution is the working alone, keyed paper or not: how the answer was
+  // got (two blind passes, a hand check) stays in data/ and git, never in front
+  // of a student (owner rule, lib/questions/methodNotes).
+  for (const r of built) r.solution = working.get(Number(r.questionNumber)) ?? r.solution;
   // A notice (a defective or ambiguous item) goes above the solution, the same
   // "**Note:**" form the other lanes use; `grace` items go to flawed.json below.
   const notices = new Map<number, string>(
