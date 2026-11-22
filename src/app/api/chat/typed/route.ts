@@ -100,6 +100,7 @@ import { planSiteForHost } from "@/lib/sites/intl";
 import { loadEntitlements } from "@/lib/entitlements/query";
 import { readCountry } from "@/lib/acquisition/country";
 import type { Performance } from "@/lib/performance/compute";
+import { loadExamCalendar } from "@/lib/exam/calendarQuery";
 
 // One AI answer can take two model calls (a chapter search, then the reply).
 export const maxDuration = 30;
@@ -173,6 +174,7 @@ function buildPlanDeps(
       const p = await getOwnProfile(db, userId);
       return { targetExams: p.targetExams, examDate: p.examDate, weeklyGoal: p.weeklyGoal };
     },
+    loadCalendar: loadExamCalendar,
     saveExamDate: (date) => updateOwnProfile(db, userId, { examDate: date }),
     loadWeak: async (examName) => {
       const perf = await loadProgress();

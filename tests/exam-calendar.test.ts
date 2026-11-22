@@ -1,61 +1,29 @@
 /**
  * The exam calendar and the days-to-exam resolution — ENGAGEMENT_SPEC.md C3.
  *
- * Derive-with-override, the user's decision (2026-09-24): a committed calendar
- * of next sittings beside the exam registry gives every student with a target
- * exam a countdown on day one; a nullable `exam_date` on the profile wins when
- * set. The calendar carries an `official` flag because, on the day this was
- * written, NO upcoming sitting had an announced date — every entry is the
- * usual pattern, and the UI says "expected" until the flag flips.
- *
- * THE ROT PROBE IS HERE, in the gate: a sitting more than CALENDAR_GRACE_DAYS
- * in the past fails the suite, so a stale calendar cannot ship silently — the
- * roadmap's stated preference over a DB table nothing checks.
+ * Derive-with-override, the user's decision (2026-09-24): a calendar of next
+ * sittings gives every student with a target exam a countdown on day one; a
+ * nullable `exam_date` on the profile wins when set. Since 2026-11-22 the
+ * calendar is the exam_sittings table (migration 0281), read by
+ * lib/exam/calendarQuery and passed in, so these tests use a fixed fixture.
+ * The rot probe over the LIVE table is tests/exam-calendar-live.test.ts
+ * (prod-contract, daily); its rule, staleExams, is specified here.
  */
 import { describe, it, expect } from "vitest";
 import {
-  EXAM_CALENDAR,
   CALENDAR_GRACE_DAYS,
   nextSitting,
   daysUntilIst,
   resolveExamDate,
   examCountdownSentence,
   sanitizeExamDate,
+  staleExams,
+  type SittingEntry,
 } from "@/lib/exam/calendar";
-import { EXAM_REGISTRY, isExamSlug } from "@/lib/exam/examContext";
+import { TEST_CALENDAR as CAL } from "./fixtures/examCalendar";
 
 // Thursday 2026-09-24 10:00 IST.
 const NOW = new Date("2026-09-24T04:30:00Z");
-
-describe("EXAM_CALENDAR — shape", () => {
-  it("names only registry exams, with valid ISO dates and unique (exam, sitting)", () => {
-    const seen = new Set<string>();
-    for (const e of EXAM_CALENDAR) {
-      expect(isExamSlug(e.exam)).toBe(true);
-      expect(e.date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
-      expect(Number.isFinite(Date.parse(e.date))).toBe(true);
-      const key = `${e.exam}:${e.sitting}`;
-      expect(seen.has(key)).toBe(false);
-      seen.add(key);
-      expect(e.label.length).toBeGreaterThan(0);
-    }
-  });
-
-  it("has no entry for a COURSE — practice-only and not a board — there is no sitting to count down to", () => {
-    // CBSE Class 10 is practice-only (no PYQs in the bank yet) AND a board
-    // year with a real sitting, so the flag alone does not mean "no exam".
-    const courses = new Set(EXAM_REGISTRY.filter((e) => e.practiceOnly && !e.boardExam).map((e) => e.slug));
-    expect(courses.size).toBeGreaterThan(0);
-    for (const e of EXAM_CALENDAR) expect(courses.has(e.exam)).toBe(false);
-  });
-
-  it("ROT PROBE: no sitting is more than the grace period in the past (update the calendar)", () => {
-    const today = new Date();
-    for (const e of EXAM_CALENDAR) {
-      expect(daysUntilIst(e.date, today)).toBeGreaterThanOrEqual(-CALENDAR_GRACE_DAYS);
-    }
-  });
-});
 
 describe("daysUntilIst", () => {
   it("counts IST calendar days, so a date is 'today' until IST midnight", () => {
@@ -69,31 +37,33 @@ describe("daysUntilIst", () => {
 
 describe("nextSitting", () => {
   it("returns the first sitting on or after today for the exam, or null", () => {
-    const n = nextSitting("nda", NOW);
-    expect(n).not.toBeNull();
-    expect(daysUntilIst(n!.date, NOW)).toBeGreaterThanOrEqual(0);
-    expect(nextSitting("foundation-course", NOW)).toBeNull();
+    const n = nextSitting("nda", NOW, CAL);
+    expect(n?.sitting).toBe("2027-I");
+    expect(nextSitting("foundation-course", NOW, CAL)).toBeNull();
   });
 
   it("skips a sitting that has passed", () => {
-    const late = new Date("2099-01-01T00:00:00Z");
-    expect(nextSitting("nda", late)).toBeNull();
+    expect(nextSitting("nda", new Date("2027-05-01T00:00:00Z"), CAL)?.sitting).toBe("2027-II");
+    expect(nextSitting("nda", new Date("2099-01-01T00:00:00Z"), CAL)).toBeNull();
+  });
+
+  it("is null for every exam when the calendar is empty (a failed read)", () => {
+    expect(nextSitting("nda", NOW, [])).toBeNull();
   });
 });
 
 describe("resolveExamDate — override wins, calendar fills", () => {
   it("uses the calendar for the primary target exam when no override is set", () => {
-    const r = resolveExamDate({ targetExams: ["nda", "cds"], examDate: null }, NOW);
+    const r = resolveExamDate({ targetExams: ["nda", "cds"], examDate: null }, NOW, CAL);
     expect(r?.source).toBe("calendar");
     expect(r?.exam).toBe("nda");
-    // NDA 2027 (I) is the one announced date (11 April 2027, UPSC).
     expect(r?.official).toBe(true);
     expect(r?.date).toBe("2027-04-11");
     expect(r!.daysLeft).toBeGreaterThan(0);
   });
 
   it("prefers a future override, labelled with the primary exam", () => {
-    const r = resolveExamDate({ targetExams: ["neet"], examDate: "2026-12-01" }, NOW);
+    const r = resolveExamDate({ targetExams: ["neet"], examDate: "2026-12-01" }, NOW, CAL);
     expect(r?.source).toBe("override");
     expect(r?.official).toBe(true);
     expect(r?.daysLeft).toBe(68);
@@ -101,33 +71,38 @@ describe("resolveExamDate — override wins, calendar fills", () => {
   });
 
   it("ignores an override that has passed and falls back to the calendar", () => {
-    const r = resolveExamDate({ targetExams: ["nda"], examDate: "2026-01-01" }, NOW);
+    const r = resolveExamDate({ targetExams: ["nda"], examDate: "2026-01-01" }, NOW, CAL);
     expect(r?.source).toBe("calendar");
   });
 
   it("is null with no target exam and no override", () => {
-    expect(resolveExamDate({ targetExams: [], examDate: null }, NOW)).toBeNull();
+    expect(resolveExamDate({ targetExams: [], examDate: null }, NOW, CAL)).toBeNull();
   });
 
   it("falls through to the next target exam when the first has no calendar entry", () => {
-    const r = resolveExamDate({ targetExams: ["foundation-course", "cds"], examDate: null }, NOW);
+    const r = resolveExamDate({ targetExams: ["foundation-course", "cds"], examDate: null }, NOW, CAL);
     expect(r?.exam).toBe("cds");
+  });
+
+  it("still honours an override when the calendar is empty", () => {
+    const r = resolveExamDate({ targetExams: ["nda"], examDate: "2027-03-01" }, NOW, []);
+    expect(r?.source).toBe("override");
+    expect(resolveExamDate({ targetExams: ["nda"], examDate: null }, NOW, [])).toBeNull();
   });
 });
 
 describe("examCountdownSentence", () => {
   it("says expected when the date is not official, and nothing extra when it is", () => {
-    // NEET 2027 is still the pattern, not an announcement.
-    const cal = resolveExamDate({ targetExams: ["neet"], examDate: null }, NOW)!;
+    const cal = resolveExamDate({ targetExams: ["neet"], examDate: null }, NOW, CAL)!;
     expect(cal.official).toBe(false);
     expect(examCountdownSentence(cal)).toMatch(/expected/i);
-    const own = resolveExamDate({ targetExams: ["nda"], examDate: "2027-03-01" }, NOW)!;
+    const own = resolveExamDate({ targetExams: ["nda"], examDate: "2027-03-01" }, NOW, CAL)!;
     expect(examCountdownSentence(own)).not.toMatch(/expected/i);
     expect(examCountdownSentence(own)).toMatch(/\d+ days/);
   });
 
   it("handles today and tomorrow in words", () => {
-    expect(examCountdownSentence({ ...resolveExamDate({ targetExams: ["nda"], examDate: "2026-09-24" }, NOW)!, daysLeft: 0 })).toMatch(/today/i);
+    expect(examCountdownSentence({ ...resolveExamDate({ targetExams: ["nda"], examDate: "2026-09-24" }, NOW, CAL)!, daysLeft: 0 })).toMatch(/today/i);
   });
 });
 
@@ -138,5 +113,33 @@ describe("sanitizeExamDate", () => {
     expect(sanitizeExamDate("2027-13-40")).toBeNull();
     expect(sanitizeExamDate("")).toBeNull();
     expect(sanitizeExamDate(null)).toBeNull();
+  });
+});
+
+describe("staleExams — the rot rule the daily live probe applies", () => {
+  const row = (exam: SittingEntry["exam"], sitting: string, date: string): SittingEntry => ({
+    exam, sitting, label: `${exam} ${sitting}`, date, official: false, source: "pattern", sourceUrl: null,
+  });
+
+  it("names an exam whose LATEST sitting passed more than the grace period ago", () => {
+    const now = new Date("2027-05-01T04:30:00Z");
+    const stale = staleExams([row("nda", "2027-I", "2027-04-11"), row("neet", "2027", "2027-04-20")], now);
+    // NDA's 11 April is 20 days back; NEET's 20 April only 11.
+    expect(stale.map((s) => s.exam)).toEqual(["nda"]);
+    expect(stale[0].latest.sitting).toBe("2027-I");
+  });
+
+  it("keeps a passed sitting as history when a later one is on the calendar", () => {
+    const now = new Date("2027-06-01T04:30:00Z");
+    expect(staleExams([row("nda", "2027-I", "2027-04-11"), row("nda", "2027-II", "2027-09-19")], now)).toEqual([]);
+  });
+
+  it("allows exactly the grace period", () => {
+    const now = new Date(Date.parse("2027-04-11T04:30:00Z") + CALENDAR_GRACE_DAYS * 86_400_000);
+    expect(staleExams([row("nda", "2027-I", "2027-04-11")], now)).toEqual([]);
+  });
+
+  it("finds nothing stale in the fixture on the day it was written", () => {
+    expect(staleExams(CAL, new Date("2026-11-22T04:30:00Z"))).toEqual([]);
   });
 });

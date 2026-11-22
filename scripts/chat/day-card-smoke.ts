@@ -32,6 +32,7 @@ import { getOwnProfile } from "@/lib/profile/service";
 import { getActivePath } from "@/lib/path/service";
 import { isPathExam } from "@/lib/path/model";
 import { resolveExamDate } from "@/lib/exam/calendar";
+import { readExamCalendar } from "@/lib/exam/calendarRead";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { mockDays, movedUpSince, pickProgressExams } from "@/lib/chat/progressCard";
 import { buildDayCard, fixedBetween, istDay, lastVisit, mergeDays, type DayCard, type DayPlan, type DaySpan } from "@/lib/chat/dayCard";
@@ -94,6 +95,7 @@ async function practiceDays(
 async function main() {
   const db = createSupabaseAdminClient();
   const now = new Date();
+  const calendar = await readExamCalendar(db);
   const istNow = now.getTime() + IST;
   const todayStart = new Date(istNow - (istNow % DAY) - IST);
   const since = new Date(todayStart.getTime() - 30 * DAY).toISOString();
@@ -183,7 +185,7 @@ async function main() {
       exam: { slug: exam.slug, displayName: exam.displayName },
       now,
       daysLeft:
-        resolveExamDate({ targetExams: [exam.slug], examDate: profile.targetExams[0] === exam.slug ? profile.examDate : null }, now)
+        resolveExamDate({ targetExams: [exam.slug], examDate: profile.targetExams[0] === exam.slug ? profile.examDate : null }, now, calendar)
           ?.daysLeft ?? null,
       days,
       fixedOnDay,

@@ -19,6 +19,7 @@ import PushCard from "./PushCard";
 import MeHeader from "@/components/me/MeHeader";
 import { loadMeHeader } from "@/lib/me/header";
 import { getExamIdMap } from "@/lib/exam/examIdMap";
+import { loadExamCalendar } from "@/lib/exam/calendarQuery";
 
 export const dynamic = "force-dynamic";
 
@@ -57,7 +58,7 @@ export default async function AccountPage() {
 
   const db = createSupabaseServerClient();
   // One batch of reads (2026-11-08: the free-mock limit used to be read first, on its own).
-  const [freeMocks, rows, profile, invites, myBatches, { data: books }, header] = await Promise.all([
+  const [freeMocks, rows, profile, invites, myBatches, { data: books }, header, calendar] = await Promise.all([
     readFreeMockLimit(db),
     loadEntitlements(db, user.id),
     getOwnProfile(db, user.id),
@@ -69,6 +70,8 @@ export default async function AccountPage() {
     db.from("ebook_purchases").select("ebook_slug, created_at, ebook:ebooks(title)").eq("user_id", user.id).eq("status", "active").order("created_at"),
     // The header above Home · Performance · Account (2026-11-08).
     getExamIdMap().then((ids) => loadMeHeader(db, user, ids)),
+    // The profile form's "leave blank to use the expected date" hint (0281). Never throws.
+    loadExamCalendar(),
   ]);
   const now = Date.now();
   // One line per pass held — a teacher who also bought the Mock Pass sees both.
@@ -86,7 +89,7 @@ export default async function AccountPage() {
           <p className="mb-6 mt-6 text-sm text-muted-foreground">Signed in as {user.email}</p>
 
           <div className="mb-6">
-            <ProfileForm profile={profile} />
+            <ProfileForm profile={profile} calendar={calendar} />
           </div>
 
           {/* The public key only: nothing on Vercel sends, so the private key never lives there. */}

@@ -11,6 +11,7 @@
  * - everything else is as before.
  */
 import { describe, it, expect, vi } from "vitest";
+import { TEST_CALENDAR } from "./fixtures/examCalendar";
 import { planTools, type PathForV, type PlanDeps, type SavedPlan } from "@/lib/chat/weekPlan";
 import type { ChapterSearchRow } from "@/lib/chat/chapterSearch";
 import type { StrategyData } from "@/lib/chat/examStrategy";
@@ -63,6 +64,7 @@ function deps(over: Partial<PlanDeps> = {}) {
     now: () => new Date("2026-11-09T04:00:00Z"),
     loadChapters: async () => ROWS,
     loadProfile: async () => ({ targetExams: ["mh-hsc-12", "nda"], examDate: null, weeklyGoal: 3 }),
+    loadCalendar: async () => TEST_CALENDAR,
     saveExamDate: vi.fn(async () => {}),
     loadStrategy: async () => STRATEGY,
     loadWeak: async () => [],

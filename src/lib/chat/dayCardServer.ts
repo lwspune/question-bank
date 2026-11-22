@@ -12,6 +12,7 @@
  */
 import type { createSupabaseServerClient } from "@/lib/supabase/server";
 import { resolveExamDate } from "@/lib/exam/calendar";
+import { loadExamCalendar } from "@/lib/exam/calendarQuery";
 import { getOwnProfile } from "@/lib/profile/service";
 import { getOwnLadder } from "@/lib/drill/service";
 import { getOwnPerformance } from "@/lib/performance/service";
@@ -114,7 +115,8 @@ export async function loadDayCard(
 
   const countdown = resolveExamDate(
     { targetExams: [exam.slug], examDate: profile.targetExams[0] === exam.slug ? profile.examDate : null },
-    now
+    now,
+    await loadExamCalendar()
   );
   // The chapter weights matter inside the countdown's window, and for the
   // check-in's Short on time; a failed read is [] (loadChapterWeights), which
