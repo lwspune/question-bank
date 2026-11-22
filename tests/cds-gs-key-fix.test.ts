@@ -40,10 +40,10 @@ describe("planKeyFix", () => {
     ]);
   });
 
-  it("writes the reasoning with the corrected-on-review tail", () => {
+  // No method note on a solution (owner, 2026-11-22): the reasoning alone.
+  it("writes the reasoning alone, with no method note", () => {
     const plan = planKeyFix(live(), fix, false);
-    expect(plan.solution.startsWith("Because of the reasons given. [Derived answer")).toBe(true);
-    expect(plan.solution).toMatch(/corrected on review/i);
+    expect(plan.solution).toBe("Because of the reasons given.");
   });
 
   it("refuses a 'change' to the key the row already has", () => {
