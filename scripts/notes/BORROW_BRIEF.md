@@ -18,7 +18,7 @@ on the wrong concept is worse than none, so when in doubt, leave it out.
   `src/app/notes/<subjectRoute>/` and read the whole concept object.
 - The figure's code when the catalog line is cut short:
   `src/app/notes/_components/visualizations/<Component>.tsx` (the slug's
-  component is named in `src/app/notes/_components/ConceptUnitCard.tsx`).
+  component is named in `src/app/notes/_components/diagramRegistry.tsx`).
 
 ## A match is right only when ALL of these hold
 

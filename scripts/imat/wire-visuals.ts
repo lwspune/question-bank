@@ -1,7 +1,7 @@
 /**
  * Wire drafted IMAT notes figures into the notes: for each manifest row, add
  * the slug to the VisualizationSlug union (src/app/notes/_types.ts), the
- * import and the `case` in renderVisualization (ConceptUnitCard.tsx), and
+ * import and the `case` in diagramRegistry.tsx (then regenerates the page files), and
  * `visualizationSlug` on the target concept in src/lib/sites/imat/notes/.
  *
  *   npx tsx scripts/imat/wire-visuals.ts <manifest.json> [--dry]
@@ -13,13 +13,14 @@
  * already has a figure. Keeps each file's own line endings. Idempotent only in
  * the sense that a second run refuses: run it once per manifest.
  */
+import { execSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 type Row = { slug: string; component: string; concept: string };
 
 const TYPES = "src/app/notes/_types.ts";
-const CARD = "src/app/notes/_components/ConceptUnitCard.tsx";
+const CARD = "src/app/notes/_components/diagramRegistry.tsx";
 const NOTES = "src/lib/sites/imat/notes";
 const VIZ = "src/app/notes/_components/visualizations";
 const LAST_UNION = '  | "imat-chart-types";';
@@ -108,6 +109,7 @@ function main() {
     return;
   }
   for (const [f, t] of writes) writeFileSync(f, t);
+  execSync("npx tsx scripts/notes/gen-diagrams.ts", { stdio: "inherit" });
   console.log(`wired ${rows.length} figures (${byFile.size} notes files)`);
 }
 

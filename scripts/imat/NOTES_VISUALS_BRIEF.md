@@ -107,7 +107,7 @@ Copy the patterns of the finished examples:
 ## Limits
 
 - Write ONLY your component files and your one test file. Do not edit
-  `_types.ts`, `ConceptUnitCard.tsx`, `StepFigure.tsx`, any notes file, or any
+  `_types.ts`, `ConceptUnitCard.tsx`, `diagramRegistry.tsx`, the `*.generated.tsx` diagram files, `StepFigure.tsx`, any notes file, or any
   other file. The main session wires figures in.
 - No git commands. No new packages. No `console.log`. No network.
 - Keep tool output small: read files in ~150-line chunks, pipe long output
