@@ -22,6 +22,7 @@ import {
   type TryArgs,
 } from "@/lib/chat/chapterOverview";
 import type { VLesson } from "@/lib/chat/lesson";
+import type { LearnChapter } from "@/lib/chat/learnLesson";
 import type { VQuestion } from "@/lib/chat/questionTools";
 import type { ChapterSearchRow } from "@/lib/chat/chapterSearch";
 import type { DueQuestion } from "@/lib/drill/select";
@@ -371,6 +372,7 @@ describe("chapter_overview from the student's mistakes", () => {
     await tool.run({ chapter: "vectors", exam: "MHT-CET" });
     expect(lessons).toHaveLength(1);
     expect(lessons[0]).toEqual({
+      kind: "notes",
       exam: "MHT-CET",
       chapter: "Vectors",
       notesHref: "/notes/mht-cet-maths/vectors",
@@ -380,10 +382,12 @@ describe("chapter_overview from the student's mistakes", () => {
         { n: 2, title: "Dot Product, Angle, and Perpendicularity", href: "/notes/mht-cet-maths/vectors/dot-product", missed: 2 },
       ],
       current: 2,
+      order: [2, 1],
       next: 1,
       showMap: true,
       missed: 4,
       tryQuestionId: null,
+      tryLearn: null,
     });
   });
 
@@ -403,6 +407,9 @@ describe("chapter_overview from the student's mistakes", () => {
     ]);
     expect(lessons[0].tryQuestionId).toBe("t1");
     expect(out).toMatch(/question on this part is shown under your reply/i);
+    // The card carries its own "Your turn" (2026-11-22): a line pointing at it dangles when it fails to load.
+    expect(out).toMatch(/headed Your turn: do not mention it/i);
+    expect(out).not.toMatch(/asking them to try it/i);
     // 2026-11-21 (real capture): V wrote "Try this one: a single fair die..." above the card's own
     // question, so the student had two questions to try, one made up.
     expect(out).toMatch(/do not write a question of your own/i);
@@ -573,5 +580,155 @@ describe("notes chapter index", () => {
     expect(ref?.examName).toBe("MHT-CET");
     expect(ref?.chapterName).toBe("Vectors");
     expect(ref?.slugs.length).toBe(6);
+  });
+});
+
+describe("chapter_overview from Learn (2026-11-22: Learn first wherever it teaches the chapter)", () => {
+  const CBSE_MATRICES = row({
+    examSlug: "cbse-12",
+    examName: "CBSE Class 12",
+    subjectSlug: "mathematics",
+    subjectName: "Mathematics",
+    chapterSlug: "matrices",
+    chapterName: "Matrices",
+    questionCount: 232,
+    subtopicNames: ["Order and Types of Matrices", "Multiplication of Matrices", "Transpose of a Matrix"],
+  });
+  const lessonRow = (slug: string, topic: string, state: "learning" | "mastered" | null = null, right = 0) => ({
+    chapter: "matrices",
+    slug,
+    title: slug.replace(/-/g, " "),
+    oneLiner: `${slug}: the idea in one line`,
+    topics: [topic],
+    state,
+    right,
+  });
+  const MATRICES: LearnChapter = {
+    course: "cbse-12-maths",
+    courseChapter: "matrices",
+    title: "Matrices",
+    signedIn: true,
+    needed: 3,
+    lessons: [
+      lessonRow("types-of-matrices", "Order and Types of Matrices", "mastered", 3),
+      lessonRow("matrix-multiplication", "Multiplication of Matrices", "learning", 1),
+      lessonRow("transpose", "Transpose of a Matrix"),
+    ],
+  };
+  const miss = (subtopic: string, id: string, at: string): ChapterMiss => ({ subtopic, questionId: id, lastWrongAt: at });
+
+  function learnTool(opts: { learn?: LearnChapter | null | Error; misses?: ChapterMiss[]; rows?: ChapterSearchRow[] } = {}) {
+    const lessons: VLesson[] = [];
+    const paths: string[] = [];
+    const notesLoaded: string[] = [];
+    const tool = chapterOverviewTool({
+      loadChapters: async () => opts.rows ?? [CBSE_MATRICES, ...ROWS],
+      notesIndex: [VECTORS_REF],
+      loadNotesChapter: async (key) => {
+        notesLoaded.push(key);
+        return VECTORS_PARTS;
+      },
+      page: null,
+      onPaths: (p) => paths.push(...p),
+      loadMisses: async () => opts.misses ?? [],
+      loadMissExample: async () => null,
+      loadTryId: async () => "11111111-1111-4111-8111-111111111111",
+      loadLearn: async () => {
+        if (opts.learn instanceof Error) throw opts.learn;
+        return opts.learn === undefined ? MATRICES : opts.learn;
+      },
+      onLesson: (l) => lessons.push(l),
+    });
+    return { tool, lessons, paths, notesLoaded };
+  }
+
+  it("hands the window Learn's lessons with progress, starting where the mistakes are, and a Learn question to try", async () => {
+    const { tool, lessons, paths } = learnTool({
+      misses: [miss("Multiplication of Matrices", "q1", "2026-11-20T10:00:00Z"), miss("Multiplication of Matrices", "q2", "2026-11-21T10:00:00Z")],
+    });
+    await tool.run({ chapter: "matrices", exam: "CBSE Class 12" });
+    expect(lessons[0]).toMatchObject({
+      kind: "learn",
+      exam: "CBSE Class 12",
+      chapter: "Matrices",
+      notesHref: null,
+      current: 2,
+      order: [2, 3],
+      next: 3,
+      showMap: true,
+      missed: 2,
+      tryQuestionId: null,
+      tryLearn: { chapter: "matrices", concept: "matrix-multiplication" },
+    });
+    expect(lessons[0].parts.map((p) => [p.n, p.progress, p.missed])).toEqual([
+      [1, "done", 0],
+      [2, { right: 1, of: 3 }, 2],
+      [3, "new", 0],
+    ]);
+    expect(paths).toContain("/learn/lesson/matrices/matrix-multiplication?course=cbse-12-maths");
+  });
+
+  it("tells V to teach the lesson from Learn's one-line summary, with no paths, no list and no question of its own", async () => {
+    const { tool } = learnTool({ misses: [miss("Multiplication of Matrices", "q1", "2026-11-20T10:00:00Z")] });
+    const out = await tool.run({ chapter: "matrices", exam: "CBSE Class 12" });
+    expect(out).toContain("2. matrix multiplication: matrix-multiplication: the idea in one line");
+    expect(out).toMatch(/START at lesson 2, matrix multiplication/);
+    expect(out).toMatch(/do not list the lessons/i);
+    expect(out).toMatch(/do not write a path/i);
+    expect(out).toMatch(/headed Your turn: do not mention it/i);
+    expect(out).toMatch(/do not write a question of your own/i);
+    expect(out).not.toMatch(/\/learn\//);
+  });
+
+  it("where the exam has notes too, Learn comes first and the notes are the second link, never read", async () => {
+    const VECTORS_LEARN: LearnChapter = { ...MATRICES, courseChapter: "vectors", title: "Vectors", lessons: [lessonRow("dot-product", "x")] };
+    const { tool, lessons, notesLoaded } = learnTool({ learn: VECTORS_LEARN });
+    await tool.run({ chapter: "vectors", exam: "MHT-CET" });
+    expect(lessons[0].kind).toBe("learn");
+    expect(lessons[0].notesHref).toBe("/notes/mht-cet-maths/vectors");
+    expect(notesLoaded).toEqual([]);
+  });
+
+  it("no Learn for the chapter, or a failed Learn read: the notes lesson as before", async () => {
+    for (const learn of [null, new Error("outline down")]) {
+      const { tool, lessons, notesLoaded } = learnTool({ learn });
+      await tool.run({ chapter: "vectors", exam: "MHT-CET" });
+      expect(lessons[0].kind).toBe("notes");
+      expect(notesLoaded).toEqual(["mht-cet-maths/vectors"]);
+    }
+  });
+
+  it("a lesson asked for by number: that lesson, no second map", async () => {
+    const { tool, lessons } = learnTool({ misses: [miss("Multiplication of Matrices", "q1", "2026-11-20T10:00:00Z")] });
+    const out = await tool.run({ chapter: "matrices", exam: "CBSE Class 12", part: 3 });
+    expect(lessons[0]).toMatchObject({ current: 3, showMap: false, tryLearn: { chapter: "matrices", concept: "transpose" } });
+    expect(out).toMatch(/They asked for lesson 3, transpose/);
+  });
+});
+
+describe("chapter_overview from Learn, signed out (2026-11-22 capture: V wrote 'Sign in at /performance')", () => {
+  it("tells V the mistakes are unknown, to say signing in lets it start from them, and to write no path", async () => {
+    const tool = chapterOverviewTool({
+      loadChapters: async () => [
+        row({ examSlug: "cbse-12", examName: "CBSE Class 12", subjectSlug: "mathematics", subjectName: "Mathematics", chapterSlug: "matrices", chapterName: "Matrices" }),
+      ],
+      notesIndex: [],
+      loadNotesChapter: async () => null,
+      page: null,
+      onPaths: () => {},
+      loadMisses: null,
+      loadLearn: async () => ({
+        course: "cbse-12-maths",
+        courseChapter: "matrices",
+        title: "Matrices",
+        signedIn: false,
+        needed: 3,
+        lessons: [{ chapter: "determinants-and-matrices", slug: "types-of-matrices", title: "Types of matrices", oneLiner: "x", topics: [], state: null, right: 0 }],
+      }),
+    });
+    const out = await tool.run({ chapter: "matrices", exam: "CBSE Class 12" });
+    expect(out).toMatch(/signed out/i);
+    expect(out).toMatch(/signing in lets you start from their mistakes/i);
+    expect(out).toMatch(/no link or path/i);
   });
 });

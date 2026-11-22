@@ -78,6 +78,7 @@ import {
   V_CHECKIN_PRACTISE_KEEP_PCT,
   V_TEACH_CHAPTER_ON_KEEP_PCT,
   V_TEACH_CHAPTER_TAP_KEEP_PCT,
+  V_LEARN_FIRST_ANSWER_KEEP_PCT,
   V_STEP_CHIPS_YES_KEEP_PCT,
   V_STEPS_FINISH_KEEP_PCT,
   SCORE_PLAN_DRILL_KEEP_PCT,
@@ -1090,6 +1091,13 @@ export default async function GrowthPage() {
             Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with scripts/chat/teach-chapter-readout.sql: keep a
             place if {V_TEACH_CHAPTER_TAP_KEEP_PCT}%+ of the students shown its button tap it, and the idea if{" "}
             {V_TEACH_CHAPTER_ON_KEEP_PCT}%+ of the chapters taught from a tap get a second message from the student.
+          </p>
+        );
+      case "v-learn-first":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with scripts/chat/learn-first-readout.sql: keep Learn
+            first if {V_LEARN_FIRST_ANSWER_KEEP_PCT}%+ of the Learn lessons V shows get their Your turn answered.
           </p>
         );
       case "v-exam-countdown":

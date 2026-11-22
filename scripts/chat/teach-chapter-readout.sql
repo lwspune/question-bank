@@ -39,6 +39,8 @@ taught as (
   where c.message like 'Teach me %'
     -- The lesson's Go on button sends "Teach me part N of ..." (2026-11-21): a step, not a new chat.
     and c.message not like 'Teach me part %'
+    -- A Learn lesson's Go on says "lesson" (2026-11-22).
+    and c.message not like 'Teach me lesson %'
     and c.created_at >= p.live_from and c.created_at < p.live_to
     and c.user_id not in (select user_id from staff)
 ),
@@ -60,6 +62,8 @@ went_on as (
              and n.message is not null
              and n.message not like 'Teach me part %'
              and n.message not like 'Explain part % more simply.'
+             and n.message not like 'Teach me lesson %'
+             and n.message not like 'Explain lesson % more simply.'
          ) as second_typed
   from taught t
 )

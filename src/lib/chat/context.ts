@@ -127,6 +127,8 @@ export async function loadVContext(
     chapterMisses?: Pick<ChapterOverviewDeps, "loadMisses" | "loadMissExample" | "loadTryId"> | null;
     /** chapter_overview's lesson, for the window's map card, question to try and buttons (lib/chat/lesson.ts). */
     onLesson?: ((lesson: VLesson) => void) | null;
+    /** chapter_overview's Learn lessons where Learn teaches the chapter (lib/chat/learnServer.ts), 2026-11-22. */
+    loadLearn?: ChapterOverviewDeps["loadLearn"];
     /** The signed-in student's recent questions and saves (lib/chat/myQuestions.ts); absent when signed out. */
     myQuestions?: Omit<MyQuestionDeps, "signedIn"> | null;
     /** The language the student saved for every reply (student_profiles.v_language, 0232). */
@@ -244,7 +246,16 @@ export async function loadVContext(
   // Always offered (the tool list is cached); signed out it saves nothing and says so.
   const language = languageTool({ signedIn: Boolean(opts.saveLanguage), save: opts.saveLanguage ?? (async () => false) });
   const tools = [findChaptersTool, progressTool(opts.loadOwnProgress, opts.loadOwnPractice), strategyTool, ...mine, ...plan, language];
-  if (opts.questionTools) tools.push(...questionTools({ ...opts.questionTools, pageChapterId: pageInfo?.chapterId ?? null }));
+  if (opts.questionTools) {
+    tools.push(
+      ...questionTools({
+        ...opts.questionTools,
+        pageChapterId: pageInfo?.chapterId ?? null,
+        // A Learn lesson named after an explanation (2026-11-22) may be linked in the reply.
+        onLearnLink: (l) => allowedPaths.add(l.href),
+      })
+    );
+  }
   // V_SPEC.md step 2: concepts, with the question tools (the same switch), so the cached tool list depends on it alone.
   if (opts.questionTools && opts.concepts) {
     const conceptPage = pageInfo ? { examName: pageInfo.examName, subjectName: pageInfo.subjectName } : null;
@@ -271,6 +282,8 @@ export async function loadVContext(
         loadMissExample: opts.chapterMisses?.loadMissExample ?? null,
         loadTryId: opts.chapterMisses?.loadTryId ?? null,
         onLesson: opts.onLesson ?? null,
+        // Learn first wherever it teaches the chapter (owner, 2026-11-22).
+        loadLearn: opts.loadLearn ?? null,
       })
     );
   }

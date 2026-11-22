@@ -12,6 +12,8 @@ import {
   goOnLabel,
   goOnMessage,
   lessonLinkLabels,
+  lessonNotesLink,
+  lessonOpenLink,
   lessonOrder,
   nextPart,
   parseLesson,
@@ -37,6 +39,9 @@ const PARTS: LessonPart[] = [
 ];
 
 const lesson = (over: Partial<VLesson> = {}): VLesson => ({
+  kind: "notes",
+  order: [3, 1, 4, 2, 5],
+  tryLearn: null,
   exam: "NDA",
   chapter: "Probability",
   notesHref: "/notes/nda-maths/probability",
@@ -173,5 +178,73 @@ describe("pickLessonTry", () => {
 
   it("picks at random within the easiest group", () => {
     expect(pickLessonTry([c("e1", "EASY"), c("e2", "EASY"), c("m", "MODERATE")], new Set(), () => 0.99)).toBe("e2");
+  });
+});
+
+describe("a Learn lesson (2026-11-22: Learn first wherever it teaches the chapter)", () => {
+  const LEARN_PARTS: LessonPart[] = [
+    { n: 1, title: "Types of matrices", href: "/learn/lesson/matrices/types-of-matrices?course=cbse-12-maths", missed: 0, progress: "done" },
+    { n: 2, title: "Adding matrices and scalar multiples", href: "/learn/lesson/matrices/matrix-addition-scalar?course=cbse-12-maths", missed: 0, progress: "done" },
+    { n: 3, title: "Multiplying matrices", href: "/learn/lesson/matrices/matrix-multiplication?course=cbse-12-maths", missed: 2, progress: { right: 1, of: 3 } },
+    { n: 4, title: "Properties of matrix multiplication", href: "/learn/lesson/matrices/multiplication-properties?course=cbse-12-maths", missed: 0, progress: "new" },
+  ];
+  const learn = (over: Partial<VLesson> = {}): VLesson =>
+    lesson({
+      kind: "learn",
+      exam: "CBSE Class 12",
+      chapter: "Matrices",
+      notesHref: null,
+      questionsHref: "/questions/cbse-12/mathematics/matrices",
+      parts: LEARN_PARTS,
+      current: 3,
+      order: [3, 4],
+      next: 4,
+      missed: 3,
+      tryQuestionId: null,
+      tryLearn: { chapter: "matrices", concept: "matrix-multiplication" },
+      ...over,
+    });
+
+  it("the buttons say lesson, and Go on asks for the lesson by number", () => {
+    expect(goOnLabel(learn())).toEqual({ text: "Go on: lesson 4", aria: "Go on to lesson 4, Properties of matrix multiplication" });
+    expect(goOnMessage(learn())).toBe("Teach me lesson 4 of Matrices for CBSE Class 12: Properties of matrix multiplication.");
+    expect(simplerMessage(learn())).toBe("Explain lesson 3 of Matrices, Multiplying matrices, more simply.");
+  });
+
+  it("the lesson's own order decides Go on, not the mistakes", () => {
+    expect(carriedLesson(learn(), 4).next).toBeNull();
+    expect(carriedLesson(learn({ order: [3, 4, 1] }), 4).next).toBe(1);
+  });
+
+  it("the main link opens the lesson; the notes, where there are some, come second", () => {
+    expect(lessonOpenLink(learn())).toEqual({ href: LEARN_PARTS[2].href, label: "Open the lesson" });
+    expect(lessonNotesLink(learn())).toBeNull();
+    expect(lessonNotesLink(learn({ notesHref: "/notes/mht-cet-maths/vectors" }))).toEqual({ href: "/notes/mht-cet-maths/vectors", label: "Open the notes" });
+    // A notes lesson keeps one link, to the notes.
+    expect(lessonOpenLink(lesson())).toEqual({ href: PARTS[2].href, label: "Open the notes" });
+    expect(lessonNotesLink(lesson())).toBeNull();
+  });
+
+  it("a follow-up drops the question to try", () => {
+    expect(carriedLesson(learn()).tryLearn).toBeNull();
+  });
+
+  it("parses back with its progress, order and Learn question", () => {
+    expect(parseLesson(JSON.parse(JSON.stringify(learn())))).toEqual(learn());
+  });
+
+  it("refuses a Learn question or progress that is not well formed", () => {
+    expect(parseLesson({ ...learn(), tryLearn: { chapter: "../x", concept: "y" } })!.tryLearn).toBeNull();
+    expect(parseLesson({ ...learn(), parts: [{ ...LEARN_PARTS[0], progress: { right: 9, of: -1 } }], current: 1, next: null, order: [1] })!.parts[0].progress).toBeNull();
+    expect(parseLesson({ ...learn(), order: [3, 99] })!.order).toEqual([3]);
+  });
+
+  it("a lesson saved before this change still reads, as a notes lesson in mistake order", () => {
+    const old = JSON.parse(JSON.stringify(lesson()));
+    delete old.kind;
+    delete old.order;
+    const back = parseLesson(old)!;
+    expect(back.kind).toBe("notes");
+    expect(back.order).toEqual([3, 1, 4, 2, 5]);
   });
 });

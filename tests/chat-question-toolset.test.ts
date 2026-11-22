@@ -319,3 +319,33 @@ describe("paper_repeats (a whole paper's repeats)", () => {
     expect(deps().tools.paper_repeats).toBeUndefined();
   });
 });
+
+describe("explain_question points to the Learn lesson (2026-11-22: Learn first wherever it teaches the idea)", () => {
+  const LESSON = { href: "/learn/lesson/matrices/matrix-multiplication", title: "Multiplying matrices" };
+
+  it("adds the lesson to V's text and hands its link to the window", async () => {
+    const links: { href: string; title: string }[] = [];
+    const out = await deps({ learnFor: async () => LESSON, onLearnLink: (l) => links.push(l) }).tools.explain_question.run({ question_id: ID, chose: "A" });
+    expect(out).toContain("Learn lesson for this idea: /learn/lesson/matrices/matrix-multiplication (Multiplying matrices)");
+    expect(out).toMatch(/one short line/i);
+    expect(links).toEqual([LESSON]);
+  });
+
+  it("no Learn lesson, or a failed read: the explanation as before", async () => {
+    for (const learnFor of [async () => null, async () => { throw new Error("down"); }]) {
+      const out = await deps({ learnFor }).tools.explain_question.run({ question_id: ID });
+      expect(out).not.toMatch(/Learn lesson/);
+    }
+  });
+
+  it("never when the explanation was refused (signed out, or today's answers used)", async () => {
+    let asked = 0;
+    const learnFor = async () => {
+      asked++;
+      return LESSON;
+    };
+    await deps({ learnFor, spendReveal: null }).tools.explain_question.run({ question_id: ID });
+    await deps({ learnFor, spendReveal: async () => ({ kind: "limit", limit: 10 }) }).tools.explain_question.run({ question_id: ID });
+    expect(asked).toBe(0);
+  });
+});

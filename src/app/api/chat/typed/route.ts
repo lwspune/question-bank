@@ -87,6 +87,7 @@ import { explainedQuestionId } from "@/lib/chat/solutionFigure";
 import { loadSolutionFigures, loadSolutionVisuals } from "@/lib/chat/solutionFigureServer";
 import { conceptSources } from "@/lib/chat/conceptSearchServer";
 import { buildChapterMissDeps } from "@/lib/chat/chapterMissesServer";
+import { learnLinkForQuestion, learnLoader } from "@/lib/chat/learnServer";
 import { revealedToday, spendVReveal } from "@/lib/chat/questionReveal";
 import { weakFromPerformance, type PlanDeps } from "@/lib/chat/weekPlan";
 import { loadCurrentPlan, loadPlanActivity, saveStudyPlan } from "@/lib/chat/weekPlanServer";
@@ -148,6 +149,8 @@ function buildQuestionToolDeps(
     reportSolution: (id, issue) => fileVSolutionReport(createSupabaseAdminClient(), id, issue),
     // "How many of this paper were repeated?" reads the paper on the student's page (2026-11-16).
     loadPaperRepeats: () => loadPaperRepeats(anon, pagePath),
+    // After an explanation, the Learn lesson behind it where Learn teaches it (2026-11-22).
+    learnFor: (q) => learnLinkForQuestion(q),
   };
 }
 
@@ -406,6 +409,8 @@ export async function POST(request: NextRequest) {
                 ? buildChapterMissDeps(createSupabaseServerClient(), createSupabaseAnonClient(), ownId, site === "intl")
                 : null,
             onLesson: settings.explainEnabled ? (l) => (lesson = l) : null,
+            // Learn's lessons first wherever Learn teaches the chapter; progress through the student's own login (2026-11-22).
+            loadLearn: settings.explainEnabled ? learnLoader(ownId ? createSupabaseServerClient() : null) : null,
             // The student's own login does the reading (get_own_performance): no id is passed to the database.
             loadOwnProgress: ownId ? () => ownProgress(ownId) : undefined,
             planEnabled: settings.planEnabled,

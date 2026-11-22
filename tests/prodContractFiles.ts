@@ -36,4 +36,5 @@ export const PROD_CONTRACT_FILES: string[] = [
   "tests/mh-hsc-12-paper-catalog-prod.test.ts", // board-paper lane's generated catalog vs live HSC Maths taxonomy
   "tests/visuals-ingestion-gate.test.ts", // new PUBLIC questions of a launched exam carry an animated-solution verdict
   "tests/reveal-limit-holds.test.ts", // no student without a pass went past yesterday's daily answer limit (0228/0229)
+  "tests/learn-v-links-live.test.ts", // V's Learn links (lib/learn/vLinks.ts) vs live Learn outlines and board topics
 ];

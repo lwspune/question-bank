@@ -22,7 +22,8 @@ import type { VTool } from "./anthropic";
 import { chapterPath, findChapters, type ChapterHit, type ChapterSearchRow } from "./chapterSearch";
 import type { DueQuestion } from "@/lib/drill/select";
 import type { VQuestion } from "./questionTools";
-import { lessonOrder, nextPart, type LessonPart, type VLesson } from "./lesson";
+import { lessonOrder, nextInOrder, nextPart, type LessonPart, type VLesson } from "./lesson";
+import { planLearn, type LearnChapter, type LearnPlan } from "./learnLesson";
 
 /** A notes chapter, keyed the way the bank names it (written by `npm run chat:notes-data`). */
 export type NotesChapterRef = {
@@ -217,7 +218,8 @@ function teachLines(plan: LessonPlan, opts: { hasExample: boolean; tryShown: boo
       (opts.hasExample ? ", then work their mistake above" : " with one small example") +
       ". Write maths inside \\( \\).",
   ];
-  if (opts.tryShown) lines.push(`A question on this ${unit} is shown under your reply: end with one short line asking them to try it.`);
+  // The card carries its own "Your turn" (2026-11-22): a line pointing at it dangled when the card failed to load.
+  if (opts.tryShown) lines.push(`A question on this ${unit} is shown under your reply, headed Your turn: do not mention it.`);
   // 2026-11-21 (real capture): V wrote "Try this one: a single fair die..." above the card's own question.
   lines.push("Do not write a question of your own for them to try: you cannot check their answer, and the shown one is their turn.");
   lines.push("Do not list the chapter's questions instead of teaching, and do not call my_progress.");
@@ -280,6 +282,49 @@ export function formatChapterOverview(
   ].join("\n");
 }
 
+/** chapter_overview's text for a chapter Learn teaches: its lessons, where to start, and how to teach around the card. */
+export function formatLearnOverview(hit: ChapterSearchRow, lc: LearnChapter, plan: LearnPlan, misses: readonly ChapterMiss[] | null, example: MissExample | null): string {
+  const lines = [header(hit), "PYQ Vault's step-by-step Learn lessons for this chapter, in teaching order (maths in $...$):"];
+  lc.lessons.forEach((l, i) => lines.push(`${i + 1}. ${l.title}: ${l.oneLiner}`));
+  const cur = lc.lessons[plan.current - 1];
+  const name = `lesson ${plan.current}, ${cur.title}`;
+  const total = misses?.length ?? 0;
+  const startMissed = plan.parts[plan.current - 1].missed;
+  // Signed out (2026-11-22 capture): with nothing said, V wrote "Sign in at /performance and I can start from your weak spots".
+  if (!lc.signedIn) {
+    lines.push(
+      "The student is signed out, so their mistakes are not known. If they asked to start from their mistakes, say in one short line that signing in lets you start from their mistakes next time; give no link or path."
+    );
+  }
+  if (misses !== null && total === 0) lines.push("The student has no mistakes waiting in this chapter.");
+  if (total > 0) {
+    lines.push(
+      `The student has ${total} ${total === 1 ? "mistake" : "mistakes"} waiting in this chapter (their Fix list)` +
+        (startMissed > 0 ? `, ${startMissed} of them on what ${name} teaches.` : ".")
+    );
+  }
+  const finished = lc.lessons.filter((l) => l.state === "mastered").length;
+  if (lc.signedIn && finished > 0) lines.push(`They have finished ${finished} of ${lc.lessons.length} lessons in Learn.`);
+  if (plan.asked) lines.push(`They asked for ${name}: teach that lesson now.`);
+  else if (startMissed > 0) lines.push(`START at ${name}${plan.current === 1 ? "" : ", not lesson 1"}: this is where their mistakes are.`);
+  else lines.push(`Start at ${name}${lc.signedIn && finished > 0 ? ": the first lesson they have not finished" : ""}.`);
+  if (example) lines.push(...exampleLines(example));
+  lines.push(
+    plan.asked
+      ? "Buttons under your reply go on to the next lesson, explain more simply and open the lesson."
+      : "A card under your reply shows the chapter's lessons with the student's progress, and buttons to go on to the next lesson, to explain more simply and to open the lesson.",
+    "So do not list the lessons, do not write a path, and do not ask whether to go on.",
+    "Write: " +
+      (startMissed > 0 && !plan.asked ? "one line saying their mistakes are here and you start here; then " : "") +
+      "teach the lesson in two or three short lines from its one-line summary above" +
+      (example ? ", then work their mistake above" : " with one small example") +
+      ". Write maths inside \\( \\).",
+    "A check question from this lesson is shown under your reply, headed Your turn: do not mention it, and do not write a question of your own.",
+    "Do not list the chapter's questions instead of teaching, and do not call my_progress."
+  );
+  return lines.join("\n");
+}
+
 /** What the "question to try" reader is given: a question like `near`, or else one from the part's topic. */
 export type TryArgs = {
   chapterId: string | null;
@@ -307,6 +352,8 @@ export type ChapterOverviewDeps = {
   loadTryId?: ((args: TryArgs) => Promise<string | null>) | null;
   /** The lesson the window draws under the reply: map card, question to try, buttons (lib/chat/lesson). */
   onLesson?: ((lesson: VLesson) => void) | null;
+  /** Learn's lessons for the chapter, with the student's progress (lib/chat/learnServer.ts); null where Learn does not teach it. */
+  loadLearn?: ((hit: ChapterSearchRow) => Promise<LearnChapter | null>) | null;
 };
 
 async function readMisses(d: ChapterOverviewDeps, hit: ChapterSearchRow): Promise<readonly ChapterMiss[] | null> {
@@ -330,8 +377,9 @@ export function chapterOverviewTool(d: ChapterOverviewDeps): VTool {
     description:
       "Teach a whole chapter: use when the student asks to be taught a chapter, says they are weak at one, or wants an overview " +
       "of its topics ('teach me vectors', 'I am bad at thermodynamics', 'explain solid state from basics'). Give the chapter in full " +
-      "words (chapter) and the exam if known (exam). When they ask for one part of it by number ('Teach me part 3 of <chapter> " +
-      "for <exam>: ...'), give that number (part). Returns the chapter's parts in teaching order from our notes, and how to teach. " +
+      "words (chapter) and the exam if known (exam). When they ask for one part or lesson of it by number ('Teach me part 3 of <chapter> " +
+      "for <exam>: ...' or 'Teach me lesson 3 of ...'), give that number (part). Returns the chapter's parts in teaching order, from " +
+      "our Learn lessons where they teach it, else our notes, and how to teach. " +
       "For one concept inside a chapter use explain_concept.",
     input_schema: {
       type: "object",
@@ -362,6 +410,48 @@ export function chapterOverviewTool(d: ChapterOverviewDeps): VTool {
 
       const hit = hits[0];
       const ref = d.notesIndex.find((r) => r.examName === hit.examName && r.chapterName === hit.chapterName) ?? null;
+
+      // Learn first wherever it teaches the chapter (owner, 2026-11-22); a failed read falls back to the notes.
+      const [learn, learnMisses] = await Promise.all([
+        d.loadLearn
+          ? d.loadLearn(hit).catch((err) => {
+              console.error("V: chapter_overview Learn unavailable", hit.examName, hit.chapterName, err);
+              return null;
+            })
+          : Promise.resolve(null),
+        readMisses(d, hit),
+      ]);
+      if (learn && learn.lessons.length > 0) {
+        const plan = planLearn(learn, learnMisses, askedPart);
+        const cur = learn.lessons[plan.current - 1];
+        const example =
+          plan.exampleMiss && d.loadMissExample
+            ? await d.loadMissExample(plan.exampleMiss.questionId).catch((err) => {
+                console.error("V: chapter_overview example unavailable", plan.exampleMiss?.questionId, err);
+                return null;
+              })
+            : null;
+        const paths = [chapterPath(hit), ...plan.parts.flatMap((p) => (p.href ? [p.href] : []))];
+        if (ref) paths.push(`/notes/${ref.key}`);
+        d.onPaths(paths);
+        d.onLesson?.({
+          kind: "learn",
+          exam: hit.examName,
+          chapter: hit.chapterName,
+          notesHref: ref ? `/notes/${ref.key}` : null,
+          questionsHref: chapterPath(hit),
+          parts: plan.parts,
+          current: plan.current,
+          order: plan.order,
+          next: nextInOrder(plan.order, plan.current),
+          showMap: !plan.asked,
+          missed: learnMisses?.length ?? 0,
+          tryQuestionId: null,
+          tryLearn: { chapter: cur.chapter, concept: cur.slug },
+        });
+        return formatLearnOverview(hit, learn, plan, learnMisses, example);
+      }
+
       const [parts, misses] = await Promise.all([
         ref
           ? d.loadNotesChapter(ref.key).catch((err) => {
@@ -369,7 +459,7 @@ export function chapterOverviewTool(d: ChapterOverviewDeps): VTool {
               return null;
             })
           : Promise.resolve(null),
-        readMisses(d, hit),
+        Promise.resolve(learnMisses),
       ]);
       const notes = ref && parts ? { ref, parts } : null;
       const plan = planLesson(hit, notes, misses, askedPart);
@@ -404,16 +494,19 @@ export function chapterOverviewTool(d: ChapterOverviewDeps): VTool {
 
       if (plan.parts.length > 0) {
         d.onLesson?.({
+          kind: "notes",
           exam: hit.examName,
           chapter: hit.chapterName,
           notesHref: ref ? `/notes/${ref.key}` : null,
           questionsHref: chapterPath(hit),
           parts: plan.parts,
           current: plan.current,
+          order: lessonOrder(plan.parts),
           next: nextPart(plan.parts, plan.current),
           showMap: !plan.asked,
           missed: misses?.length ?? 0,
           tryQuestionId: tryId,
+          tryLearn: null,
         });
       }
       return formatChapterOverview(hit, notes, ref && !notes ? ref.key : null, plan, example, tryId !== null);

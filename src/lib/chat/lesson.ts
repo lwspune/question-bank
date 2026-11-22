@@ -7,40 +7,62 @@
  * part with the student's mistakes in it), a question to try and the lesson's
  * buttons: Go on, Explain more simply, Open the notes.
  *
- * ORDER: parts holding mistakes first, most first (a tie to the earlier part),
- * then the rest in book order. The start is the first of that order and Go on
- * walks it, so it never loops back to a part already taught and needs no
+ * Two kinds (2026-11-22, owner: "give Learn priority wherever it's available"):
+ *  - "notes": the parts are the notes chapter's parts (or, with no notes, the
+ *    chapter's topics); the question to try is a past-paper question.
+ *  - "learn": the parts are Learn's lessons with the student's Learn progress,
+ *    each opening its lesson; the question to try is a Learn check question
+ *    (lib/chat/learnLesson.ts). The buttons say "lesson".
+ *
+ * ORDER: Go on walks `order`, which starts at the part taught. For notes it is
+ * the parts holding mistakes first, most first (a tie to the earlier part),
+ * then the rest in book order; for Learn, on from the start, skipping lessons
+ * done. Either way it never loops back to a part already taught and needs no
  * memory of which parts were.
  *
  * Pure and client-safe. Spec: tests/chat-lesson.test.ts.
  */
 
+/** A Learn lesson's state for this student: done, right answers so far, or not started. */
+export type LessonProgress = "done" | "new" | { right: number; of: number };
+
 export type LessonPart = {
-  /** 1-based, in the notes' teaching order (or the chapter's topic order with no notes). */
+  /** 1-based, in teaching order. */
   n: number;
   title: string;
-  /** The part's notes page; null with no notes. */
+  /** The part's page (notes part or Learn lesson); null with neither. */
   href: string | null;
   /** The student's waiting mistakes in this part (the Fix list's). */
   missed: number;
+  /** A Learn lesson's progress; null or absent off Learn, or signed out. */
+  progress?: LessonProgress | null;
 };
 
+/** A Learn lesson's check question, picked when the card loads (/api/learn/item). */
+export type LearnTry = { chapter: string; concept: string };
+
 export type VLesson = {
+  kind: "notes" | "learn";
   exam: string;
   chapter: string;
+  /** The chapter's notes; for a Learn lesson, the exam's notes beside it (CET, JEE), or null. */
   notesHref: string | null;
   questionsHref: string;
   parts: LessonPart[];
   /** The part this reply teaches. */
   current: number;
+  /** Go on's order (see ORDER above). */
+  order: number[];
   /** Go on's part; null when the lesson has gone through every part. */
   next: number | null;
   /** The map card shows on a chapter's first reply, not on each part after it. */
   showMap: boolean;
   /** All waiting mistakes in the chapter, including any in a topic no part covers. */
   missed: number;
-  /** A question to try under the reply; null when there is none (or signed out). */
+  /** A past-paper question to try under the reply; null when there is none (or signed out). */
   tryQuestionId: string | null;
+  /** A Learn lesson's check question to try instead; null off Learn. */
+  tryLearn: LearnTry | null;
 };
 
 export function lessonOrder(parts: readonly LessonPart[]): number[] {
@@ -49,18 +71,23 @@ export function lessonOrder(parts: readonly LessonPart[]): number[] {
   return [...withMisses, ...rest].map((p) => p.n);
 }
 
-export function nextPart(parts: readonly LessonPart[], current: number): number | null {
-  const order = lessonOrder(parts);
+/** The part after `current` in an order; null at its end or when it is not in it. */
+export function nextInOrder(order: readonly number[], current: number): number | null {
   const at = order.indexOf(current);
   return at < 0 ? null : (order[at + 1] ?? null);
 }
 
+export function nextPart(parts: readonly LessonPart[], current: number): number | null {
+  return nextInOrder(lessonOrder(parts), current);
+}
+
 const partOf = (l: VLesson, n: number | null) => (n === null ? undefined : l.parts.find((p) => p.n === n));
+const word = (l: VLesson) => (l.kind === "learn" ? "lesson" : "part");
 
 /** The Go on button's message: a part by number, so V calls chapter_overview with it. */
 export function goOnMessage(l: VLesson): string | null {
   const p = partOf(l, l.next);
-  return p ? `Teach me part ${p.n} of ${l.chapter} for ${l.exam}: ${p.title}.` : null;
+  return p ? `Teach me ${word(l)} ${p.n} of ${l.chapter} for ${l.exam}: ${p.title}.` : null;
 }
 
 /**
@@ -70,17 +97,27 @@ export function goOnMessage(l: VLesson): string | null {
  */
 export function goOnLabel(l: VLesson): { text: string; aria: string } | null {
   const p = partOf(l, l.next);
-  return p ? { text: `Go on: part ${p.n}`, aria: `Go on to part ${p.n}, ${p.title}` } : null;
+  return p ? { text: `Go on: ${word(l)} ${p.n}`, aria: `Go on to ${word(l)} ${p.n}, ${p.title}` } : null;
 }
 
 export function simplerMessage(l: VLesson): string {
   const p = partOf(l, l.current);
-  return p ? `Explain part ${p.n} of ${l.chapter}, ${p.title}, more simply.` : `Explain ${l.chapter} more simply.`;
+  return p ? `Explain ${word(l)} ${p.n} of ${l.chapter}, ${p.title}, more simply.` : `Explain ${l.chapter} more simply.`;
 }
 
-/** The current part's notes page, else the chapter's; null with no notes. */
-export function lessonNotesHref(l: VLesson): string | null {
-  return partOf(l, l.current)?.href ?? l.notesHref;
+/** The lesson's main link: the Learn lesson being taught, or the current notes part (else the chapter's notes). */
+export function lessonOpenLink(l: VLesson): { href: string; label: string } | null {
+  if (l.kind === "learn") {
+    const href = partOf(l, l.current)?.href ?? null;
+    return href ? { href, label: "Open the lesson" } : null;
+  }
+  const href = partOf(l, l.current)?.href ?? l.notesHref;
+  return href ? { href, label: "Open the notes" } : null;
+}
+
+/** A Learn lesson's second link: the exam's own notes, where there are some. */
+export function lessonNotesLink(l: VLesson): { href: string; label: string } | null {
+  return l.kind === "learn" && l.notesHref ? { href: l.notesHref, label: "Open the notes" } : null;
 }
 
 /** Names for the lesson's pages, so a link in V's reply shows a name, never its path. */
@@ -115,17 +152,37 @@ export function pickLessonTry(
 
 /** The lesson under a follow-up reply (Explain more simply, or a Go on V answered without the tool). */
 export function carriedLesson(l: VLesson, current: number = l.current): VLesson {
-  return { ...l, current, next: nextPart(l.parts, current), showMap: false, tryQuestionId: null };
+  return { ...l, current, next: nextInOrder(l.order, current), showMap: false, tryQuestionId: null, tryLearn: null };
 }
 
-const SITE_PATH = /^\/[a-z0-9][a-z0-9\-/]*$/i;
+/** A site path, or a Learn lesson's with its `?course=`. */
+const SITE_PATH = /^\/[a-z0-9][a-z0-9\-/]*(\?course=[a-z0-9-]+)?$/i;
+const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const MAX_PARTS = 60;
 const MAX_TEXT = 200;
+const MAX_NEEDED = 10;
 
 const sitePath = (v: unknown): string | null => (typeof v === "string" && SITE_PATH.test(v) ? v : null);
 const text = (v: unknown): string | null => (typeof v === "string" && v.trim() && v.length <= MAX_TEXT ? v : null);
 const count = (v: unknown): number | null => (typeof v === "number" && Number.isInteger(v) && v >= 0 ? v : null);
+
+function parseProgress(v: unknown): LessonProgress | null {
+  if (v === "done" || v === "new") return v;
+  const o = (v ?? null) as { right?: unknown; of?: unknown } | null;
+  if (!o || typeof o !== "object") return null;
+  const right = count(o.right);
+  const of = count(o.of);
+  return right !== null && of !== null && of >= 1 && of <= MAX_NEEDED && right <= of ? { right, of } : null;
+}
+
+function parseTryLearn(v: unknown): LearnTry | null {
+  const o = (v ?? null) as { chapter?: unknown; concept?: unknown } | null;
+  if (!o || typeof o !== "object") return null;
+  return typeof o.chapter === "string" && SLUG.test(o.chapter) && typeof o.concept === "string" && SLUG.test(o.concept)
+    ? { chapter: o.chapter, concept: o.concept }
+    : null;
+}
 
 /** A lesson from the route's response or the device's copy; null when it is not one. */
 export function parseLesson(raw: unknown): VLesson | null {
@@ -145,11 +202,29 @@ export function parseLesson(raw: unknown): VLesson | null {
     const title = text(p.title);
     const partMissed = count(p.missed);
     if (n === null || !title || partMissed === null) return null;
-    parts.push({ n, title, href: sitePath(p.href), missed: partMissed });
+    parts.push({ n, title, href: sitePath(p.href), missed: partMissed, ...(p.progress !== undefined ? { progress: parseProgress(p.progress) } : {}) });
   }
   if (!parts.some((p) => p.n === current)) return null;
   const next = o.next === null ? null : count(o.next);
   if (next !== null && !parts.some((p) => p.n === next)) return null;
   const tryQuestionId = typeof o.tryQuestionId === "string" && UUID_RE.test(o.tryQuestionId) ? o.tryQuestionId : null;
-  return { exam, chapter, notesHref: sitePath(o.notesHref), questionsHref, parts, current, next, showMap: o.showMap, missed, tryQuestionId };
+  const kind = o.kind === "learn" ? "learn" : "notes";
+  // An order of the lesson's own parts; a lesson saved before orders existed walks its mistakes.
+  const own = Array.isArray(o.order) ? [...new Set((o.order as unknown[]).map(count).filter((n): n is number => n !== null && parts.some((p) => p.n === n)))] : [];
+  const order = own.length > 0 ? own : lessonOrder(parts);
+  return {
+    kind,
+    exam,
+    chapter,
+    notesHref: sitePath(o.notesHref),
+    questionsHref,
+    parts,
+    current,
+    order,
+    next,
+    showMap: o.showMap,
+    missed,
+    tryQuestionId,
+    tryLearn: kind === "learn" ? parseTryLearn(o.tryLearn) : null,
+  };
 }
