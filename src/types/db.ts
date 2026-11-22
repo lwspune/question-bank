@@ -986,6 +986,33 @@ export type Database = {
         }
         Relationships: []
       }
+      class_offer_answers: {
+        Row: {
+          answer: string | null
+          answered_at: string | null
+          more_at: string | null
+          offer: string
+          shown_at: string
+          user_id: string
+        }
+        Insert: {
+          answer?: string | null
+          answered_at?: string | null
+          more_at?: string | null
+          offer: string
+          shown_at?: string
+          user_id: string
+        }
+        Update: {
+          answer?: string | null
+          answered_at?: string | null
+          more_at?: string | null
+          offer?: string
+          shown_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       concept_reports: {
         Row: {
           category: Database["public"]["Enums"]["concept_report_category"]
@@ -1497,6 +1524,39 @@ export type Database = {
           source?: string
           status?: string
           user_id?: string
+        }
+        Relationships: []
+      }
+      exam_sittings: {
+        Row: {
+          date: string
+          exam: string
+          label: string
+          official: boolean
+          sitting: string
+          source: string
+          source_url: string | null
+          updated_at: string
+        }
+        Insert: {
+          date: string
+          exam: string
+          label: string
+          official?: boolean
+          sitting: string
+          source: string
+          source_url?: string | null
+          updated_at?: string
+        }
+        Update: {
+          date?: string
+          exam?: string
+          label?: string
+          official?: boolean
+          sitting?: string
+          source?: string
+          source_url?: string | null
+          updated_at?: string
         }
         Relationships: []
       }
@@ -6305,6 +6365,18 @@ export type Database = {
       rate_limit_increment: {
         Args: { p_bucket: string; p_window_start: string }
         Returns: number
+      }
+      record_class_offer_yes: {
+        Args: {
+          p_city: string
+          p_exam_slug: string
+          p_is_pune: boolean
+          p_mobile: string
+          p_name: string
+          p_offer: string
+          p_user_id: string
+        }
+        Returns: undefined
       }
       record_quiz_lead: {
         Args: {
