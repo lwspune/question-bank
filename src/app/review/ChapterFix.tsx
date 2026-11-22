@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, CalendarCheck, CircleX, Clock, MessageCircleQuestion } from "lucide-react";
+import { ArrowLeft, ArrowRight, CircleX, Clock, MessageCircleQuestion } from "lucide-react";
 import QuestionCard from "../browse/QuestionCard";
 import type { QuestionRow } from "@/lib/questions/query";
 import { reasonLabel, type FixQuestion, type Reason } from "@/lib/review/fixList";
@@ -126,7 +126,7 @@ const ICON: Record<Reason, typeof CircleX> = {
   v_unclear: MessageCircleQuestion,
 };
 
-/** Why this question is here, and whether it is in today's plan. */
+/** Why this question is here. */
 function Why({ item, mockTitle }: { item: FixQuestion; mockTitle: string | null }) {
   const Icon = ICON[item.reason];
   return (
@@ -135,12 +135,6 @@ function Why({ item, mockTitle }: { item: FixQuestion; mockTitle: string | null 
         <Icon className="h-3.5 w-3.5 text-brand-accent" aria-hidden />
         {reasonLabel(item.reason, mockTitle)}
       </span>
-      {item.inPlan && (
-        <span className="inline-flex items-center gap-1 font-medium text-emerald-700 dark:text-emerald-400">
-          <CalendarCheck className="h-3.5 w-3.5" aria-hidden />
-          In today&apos;s plan
-        </span>
-      )}
     </p>
   );
 }

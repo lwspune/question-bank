@@ -13,7 +13,6 @@ import { listBookmarkIds } from "@/lib/bookmarks/service";
 import { queryQuestionsByIds, type QuestionRow } from "@/lib/questions/query";
 import { loadOwnPool } from "@/lib/drill/compose";
 import { scopeToExam } from "@/lib/drill/select";
-import { readTodayRow } from "@/lib/path/exemptions";
 import { isIntlHost } from "@/lib/sites/intl";
 import { buildFixList, chapterQuestions, fixSubjects, latestMisses, parseReviewParams } from "@/lib/review/fixList";
 import { loadMissRows, loadMockTitles } from "@/lib/review/query";
@@ -58,21 +57,13 @@ export default async function ReviewPage(props: { searchParams: Promise<Search> 
   const intl = isIntlHost((await headers()).get("host"));
 
   // ROUND 1: everything that needs nothing else, at once.
-  const [header, , savedIds, member, superadmin, pool, planRow] = await Promise.all([
+  const [header, , savedIds, member, superadmin, pool] = await Promise.all([
     getExamIdMap().then((ids) => loadMeHeader(db, user, ids, { now })),
     logActivityOnce(db, user.id, surfaceViewedEvent(user.id, saved ? "review_saved" : "review", now)),
     listBookmarkIds(db, user.id),
     getSessionMember(),
     getSessionSuperadmin(),
     saved ? Promise.resolve(null) : loadOwnPool(db, user.id, now, intl),
-    // Today's board-plan Fix questions, when the plan picked today already.
-    // A failed read labels nothing: the list is right without it.
-    saved
-      ? Promise.resolve(null)
-      : readTodayRow(db, user.id, now).catch((e: unknown) => {
-          console.error("review plan read failed", e instanceof Error ? e.message : e);
-          return null;
-        }),
   ]);
   const canEdit = Boolean(member);
   const includeRawProvenance = Boolean(superadmin);
@@ -81,7 +72,6 @@ export default async function ReviewPage(props: { searchParams: Promise<Search> 
   // To fix, focused on the header's exam exactly as the badge is (lib/pulse/build).
   const focusExam = header.focus.filterExamName;
   const due = pool ? scopeToExam(pool.drillable, focusExam) : [];
-  const planIds = new Set(planRow?.drillIds ?? []);
 
   let body: React.ReactNode;
   if (saved) {
@@ -90,7 +80,7 @@ export default async function ReviewPage(props: { searchParams: Promise<Search> 
     // ROUND 2: why each question is here.
     const misses = latestMisses(await loadMissRows(db, user.id, due.map((q) => q.questionId)));
     if (params.chapterId) {
-      const all = chapterQuestions(due, params.chapterId, misses, planIds);
+      const all = chapterQuestions(due, params.chapterId, misses);
       const shown = all.slice(0, CHAPTER_CAP);
       const [cards, titles] = await Promise.all([
         cardsInOrder(db, shown.map((q) => q.questionId), includeRawProvenance),
@@ -119,7 +109,7 @@ export default async function ReviewPage(props: { searchParams: Promise<Search> 
     } else {
       body = (
         <FixOverview
-          list={buildFixList(due, misses, planIds, params.subject)}
+          list={buildFixList(due, misses, params.subject)}
           focusExam={focusExam}
           savedCount={savedIds.length}
           subjects={fixSubjects(due)}

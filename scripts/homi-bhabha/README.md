@@ -126,8 +126,33 @@ re-uploads a committed row's figure. Show the owner a before/after sheet first.
   figure of 2010, 2017 and 2018 except the three below.
 - `redrawn`: `redrawn/<id>/qNNN.png` from `redraw.py`, only where the print
   settles every value: 2018 Q10 (velocity-time graph), Q21 and Q72 (Venns).
-  2017 Q11 reads fine cleaned; 2017 Q75's stigma branches are too small to
-  count for certain, so it is not redrawn.
+  2017 Q75's stigma branches are too small to count for certain, so it is not
+  redrawn.
+
+**Review of all 96 figures, 2026-11-22** (owner: "redraw wherever not clear
+or hand drawn"). 33 more redrawn, one per function in
+`redraw_<paper>.py` (shared helpers `redraw_lib.py`; `redraw.py [paper]
+[--q=N,..]` draws them all): 2010 Q3 Q7 Q9 Q16 Q25 Q29 Q34 Q36 Q81; 2017 Q11
+Q43; 2018 Q9 Q12 Q15 Q19 Q23 Q49; 2021-jan Q8 Q9 Q13 Q22 Q23 Q25 Q30 Q36 Q66
+Q72; 2021-nov Q11 Q19 Q23; 2021-dec Q7 Q19 Q23. 2021-jan Q89 (a pistil
+drawing) was only darkened, by `clean.py` (the tone curve above, now in the
+repo). Rulings:
+- **Read the 300 dpi render of the PDF, never the stored crop**, and copy only
+  what it shows; each function's docstring names what it copies.
+- **Kept as scanned:** drawings of organisms, organs, cells and apparatus
+  (redrawing them invents detail), figures already typeset (2023 cleaned or
+  redrawn, 2024 MSTA's own artwork), and two where the print cannot be
+  settled: 2017 Q3 (which way each hand-lettered INFRASTRUCTURE glyph is
+  flipped IS the question) and 2017 Q7 (non-standard circuit symbols).
+- **English labels only** (owner): the 2021-jan figures print Marathi beside
+  the English; a Marathi edition needs its own figures.
+- **Option pictures numbered (1)-(4) are lettered (A)-(D)** where the options
+  read "Figure (A)" (owner): 2010 Q3, Q29. 2010 Q29's figure also repeated the
+  stem's sentence; left out. 2010 Q34's "Nonmentals" misprint is spelled
+  "Nonmetals".
+- **Where a hand drawing contradicts its own labels, the labels win:**
+  2021-jan Q23 marks Y's period as T/2 of X's, so Y is drawn at exactly that.
+- Meters whose naming is the question (2018 Q19) stay unlettered dials.
 
 ## Key notes per paper
 
