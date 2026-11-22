@@ -51,6 +51,8 @@ export function LessonClient({
   items,
   pool,
   homes,
+  course: courseProp,
+  fill = false,
 }: {
   chapter: string;
   code: string;
@@ -60,6 +62,14 @@ export function LessonClient({
   items: LessonItem[];
   pool: Pool;
   homes: HomeWithScope[];
+  /** The course the student came from, where the page address does not say (the lesson in V). */
+  course?: string | null;
+  /**
+   * Played full screen in V (2026-11-22): the stage fills the frame (LessonStage `fill`), and the
+   * lesson opens even where Learn would lock it (owner: a student sent here at the moment they
+   * are stuck gets the lesson, told what it builds on, never "Not unlocked yet").
+   */
+  fill?: boolean;
 }) {
   // Read after mount, not with useSearchParams: that would leave the lesson out of the cached HTML
   // (the slides are what search engines index). The query only picks links and the refresher.
@@ -69,7 +79,7 @@ export function LessonClient({
     setQuery({ course: q.get("course"), from: q.get("from") });
   }, []);
   const from = query.from;
-  const home = homes.find((h) => h.course === query.course) ?? homes[0] ?? null;
+  const home = homes.find((h) => h.course === (courseProp ?? query.course)) ?? homes[0] ?? null;
   const course = home?.course ?? null;
   const [viewer, setViewer] = useState<Viewer>({ kind: "loading" });
 
@@ -119,7 +129,7 @@ export function LessonClient({
   const own = student?.progress.find((r) => r.chapter === chapter && r.code === code);
   const mapHref = home ? chapterHref(home.course, home.chapter) : null;
 
-  if (student && view.locked) {
+  if (student && view.locked && !fill) {
     return (
       <div className="mx-auto mt-6 max-w-lg rounded-2xl border bg-card p-8 text-center">
         <span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-muted text-muted-foreground">
@@ -157,18 +167,18 @@ export function LessonClient({
 
   const place = home?.place ?? null;
 
-  return (
+  const content = (
     <>
       {place && home && (
-        <p className="mb-3 text-sm text-muted-foreground">
+        <p className={`text-sm text-muted-foreground ${fill ? "border-b px-5 py-2" : "mb-3"}`}>
           Concept {place.index} of {place.total} in{" "}
           <Link href={chapterHref(home.course, home.chapter)} className="font-medium text-brand-accent underline-offset-2 hover:underline">
             {home.chapterTitle}
           </Link>
         </p>
       )}
-      {viewer.kind === "guest" && view.buildsOn.length > 0 && (
-        <p className="mb-3 rounded-xl border bg-card px-4 py-3 text-sm">
+      {(viewer.kind === "guest" || (fill && view.locked)) && view.buildsOn.length > 0 && (
+        <p className={`rounded-xl border bg-card px-4 py-3 text-sm ${fill ? "mx-5 my-2" : "mb-3"}`}>
           <span className="font-medium">Builds on: </span>
           {view.buildsOn.map((b, i) => (
             <span key={b.slug}>
@@ -178,12 +188,14 @@ export function LessonClient({
               </Link>
             </span>
           ))}
-          . <span className="text-muted-foreground">Sign up to save progress and unlock concepts in order.</span>
+          .{" "}
+          {viewer.kind === "guest" && <span className="text-muted-foreground">Sign up to save progress and unlock concepts in order.</span>}
         </p>
       )}
       <LessonStage
         slides={slides}
         label={`${title} lesson`}
+        fill={fill}
         onBegin={() => setBegun(true)}
         // A refresher always starts at the beginning: rereading is the point.
         startIndex={answeredBefore && !view.refresher ? questionsIndex : 0}
@@ -229,7 +241,7 @@ export function LessonClient({
         )}
       />
       {place && (place.prev || place.next) && (
-        <nav aria-label="Concepts in this chapter" className="mt-4 flex flex-wrap justify-between gap-3 text-sm">
+        <nav aria-label="Concepts in this chapter" className={`flex flex-wrap justify-between gap-3 text-sm ${fill ? "border-t px-3 py-2" : "mt-4"}`}>
           {place.prev ? (
             <Link
               href={lessonHref(place.prev.chapter, place.prev.slug, { course })}
@@ -254,4 +266,6 @@ export function LessonClient({
       )}
     </>
   );
+  // Played in V the lesson fills its frame; on its page it sits in the page's flow.
+  return fill ? <div className="flex min-h-0 flex-1 flex-col">{content}</div> : content;
 }

@@ -27,6 +27,8 @@ const subscribeFullscreen = (cb: () => void) => {
  * - `questions`: rendered under the slide and kept mounted; given whether the questions slide is
  *   showing, and a way back to the first slide.
  * - `onBegin`: called once, on the learner's first move (Start, Next, a swipe, an arrow key).
+ * - `fill`: the stage already fills a full-screen frame (the lesson played in V, 2026-11-22): it
+ *   takes its frame's height, has no Start and no full-screen button.
  */
 export function LessonStage({
   slides,
@@ -35,6 +37,7 @@ export function LessonStage({
   banner,
   questions,
   onBegin,
+  fill = false,
 }: {
   slides: RenderedSlide[];
   label: string;
@@ -42,6 +45,7 @@ export function LessonStage({
   banner?: ReactNode;
   questions?: (api: { active: boolean; reread: () => void }) => ReactNode;
   onBegin?: () => void;
+  fill?: boolean;
 }) {
   const [pos, setPos] = useState<Position>(() => startAt(slides, startIndex));
   // Set on the first move or full screen, so Start never comes back (even after leaving full screen).
@@ -66,7 +70,7 @@ export function LessonStage({
   const prev = backward(slides, pos);
   const canGoOn = next.index !== pos.index || next.shown !== pos.shown;
   const canGoBack = prev.index !== pos.index || prev.shown !== pos.shown;
-  const isFilled = isFullscreen || covering;
+  const isFilled = fill || isFullscreen || covering;
   const showStart = offersStart(pos, { isFilled, begun });
 
   function go(to: (p: Position) => Position) {
@@ -163,7 +167,9 @@ export function LessonStage({
       aria-roledescription="carousel"
       aria-label={label}
       className={
-        covering
+        fill
+          ? "flex min-h-0 flex-1 flex-col overflow-hidden bg-card"
+          : covering
           ? "fixed inset-0 z-[60] flex h-[100dvh] w-full flex-col overflow-hidden bg-card"
           : "flex h-[calc(100dvh-13rem)] min-h-[26rem] flex-col overflow-hidden rounded-2xl border bg-card md:h-[min(calc(100dvh-14rem),48rem)]"
       }
@@ -193,6 +199,7 @@ export function LessonStage({
             />
           ))}
         </div>
+        {!fill && (
         <button
           type="button"
           onClick={toggleFill}
@@ -202,6 +209,7 @@ export function LessonStage({
           {isFilled ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
           <span className="hidden sm:inline">{isFilled ? "Exit full screen" : "Full screen"}</span>
         </button>
+        )}
       </header>
 
       <div ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto px-5 py-7 md:px-14 md:py-12">
