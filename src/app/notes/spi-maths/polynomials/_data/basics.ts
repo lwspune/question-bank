@@ -133,7 +133,7 @@ export const SPI_PO_BASICS_NOTE: SubtopicNote = {
         { prompt: "Does the parabola \\(y = -x^2 + 4\\) open upwards or downwards?", answer: "Downwards: the coefficient of \\(x^2\\) is negative" },
         { prompt: "At which x-values does the graph of \\(y = (x - 1)(x + 3)\\) meet the x-axis?", answer: "\\(x = 1\\) and \\(x = -3\\)" },
       ],
-      pyqExampleId: "efdeba83-2cb4-4526-b4f4-9317bf6fa412",
+      pyqExampleId: "3149b4b3-0613-4e45-9a0c-8d85ae20a6a8",
       traps: [
         {
           title: "Counting where the graph meets the y-axis",

@@ -65,7 +65,7 @@ export const SPI_ID_MEANINGS_NOTE: SubtopicNote = {
         },
         { prompt: "What does 'hit the sack' mean?", answer: "go to bed" },
       ],
-      pyqExampleId: "8484eedf-48cc-40e9-8e24-8915bd89c020",
+      pyqExampleId: "1742853c-8fc0-4cb0-9aac-b4a6e8a22f8a",
       traps: [
         {
           title: "The literal option is there on purpose",
@@ -107,9 +107,11 @@ export const SPI_ID_MEANINGS_NOTE: SubtopicNote = {
           { cells: ["a wet blanket", "a person who spoils other people's fun"] },
           { cells: ["the black sheep", "a member who brings shame on a family or group"] },
           { cells: ["a fair-weather friend", "a friend only in good times"] },
+          { cells: ["all at sea", "completely confused, not knowing what to do"] },
+          { cells: ["above board", "honest and open, with nothing hidden"] },
         ],
       },
-      pyqExampleId: "70b93eca-b201-4d8e-8e7f-5c7167e24feb",
+      pyqExampleId: "7eeb159e-f606-49fa-857e-3cccb3586df3",
       selfCheckExample: {
         prompt:
           "Choose the meaning: Everyone else wanted to dance, but Kiran was a \\(\\underline{\\text{wet blanket}}\\). (a) a person who spoils the fun (b) someone who has caught a cold (c) a shy dancer (d) a good singer",

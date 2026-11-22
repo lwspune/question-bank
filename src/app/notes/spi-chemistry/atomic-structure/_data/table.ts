@@ -100,7 +100,7 @@ export const SPI_AT_TABLE_NOTE: SubtopicNote = {
         { prompt: "An element of atomic number 12 is in which period?", answer: "Period 3 (it is 2, 8, 2)" },
         { prompt: "Sodium forms \\(\\mathrm{NaCl}\\). What is the formula of the chloride of potassium, which is in the same group?", answer: "\\(\\mathrm{KCl}\\)" },
       ],
-      pyqExampleId: "b02d4059-b276-42f7-a97e-578efd2878e0",
+      pyqExampleId: "c856e8d5-3c6f-4879-94bd-a19d06c90a07",
       traps: [
         {
           title: "Swapping periods and groups",

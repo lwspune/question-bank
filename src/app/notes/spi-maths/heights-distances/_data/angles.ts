@@ -101,7 +101,7 @@ export const SPI_HD_ANGLES_NOTE: SubtopicNote = {
         },
         { prompt: "A building 40 m high is seen from a point 40 m from its foot. What is the angle of elevation of its top?", answer: "\\(45^\\circ\\)" },
       ],
-      pyqExampleId: "64cb58e5-1ded-4e5a-8a46-4efea4a28376",
+      pyqExampleId: "cfd180c8-f121-46c5-b95e-94e48f801560",
       traps: [
         {
           title: "Turning tan upside down",

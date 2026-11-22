@@ -46,7 +46,7 @@ export const SPI_TG_IDENTITIES_NOTE: SubtopicNote = {
         { prompt: "If \\(\\sin\\theta = 0.6\\) for an acute angle \\(\\theta\\), what is \\(\\cos\\theta\\)?", answer: "\\(\\sqrt{1 - 0.36} = 0.8\\)" },
         { prompt: "Simplify \\((1 - \\sin\\theta)(1 + \\sin\\theta)\\).", answer: "\\(\\cos^2\\theta\\)" },
       ],
-      pyqExampleId: "1181a202-beab-4da8-98a1-add5d21a778b",
+      pyqExampleId: "8385c773-ea14-466d-9bb3-367f2c73f263",
       traps: [
         {
           title: "The identity needs the same angle",
@@ -201,7 +201,7 @@ export const SPI_TG_IDENTITIES_NOTE: SubtopicNote = {
         { prompt: "If \\(x = 4\\cos\\theta\\) and \\(y = 4\\sin\\theta\\), what is \\(x^2 + y^2\\)?", answer: "\\(16\\)" },
         { prompt: "If \\(x = 2\\operatorname{cosec}\\theta\\) and \\(y = 2\\cot\\theta\\), what is \\(x^2 - y^2\\)?", answer: "\\(4\\)" },
       ],
-      pyqExampleId: "08820e5c-79f9-4f20-8f0e-2e333455b40c",
+      pyqExampleId: "7fab988d-8dd9-4fd1-b134-445742197129",
       traps: [
         {
           title: "Trying to find the angle first",

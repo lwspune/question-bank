@@ -128,6 +128,7 @@ export const SPI_GR_PREPOSITIONS_NOTE: SubtopicNote = {
           { cells: ["decide", "on (choose)", "We decided on the blue car."] },
           { cells: ["interested", "in", "Are you interested in chess?"] },
           { cells: ["jealous", "of", "He is jealous of his cousin."] },
+          { cells: ["count", "on (rely on)", "We can count on Asha to help."] },
           { cells: ["afraid", "of", "The child is afraid of the dark."] },
           { cells: ["laugh", "at", "Do not laugh at others' mistakes."] },
           { cells: ["good", "at", "Meera is good at maths."] },
@@ -152,8 +153,12 @@ export const SPI_GR_PREPOSITIONS_NOTE: SubtopicNote = {
         { prompt: "Fill in: She was angry ____ her friend.", answer: "with" },
         { prompt: "Fill in: After much thought they decided ____ the red bicycle.", answer: "on" },
       ],
-      pyqExampleId: "2b2ae471-8a07-41d1-9cd6-e7597a2444ae",
+      pyqExampleId: "e1f7d09d-187c-492b-9e51-e807bc35dd45",
       traps: [
+        {
+          title: "Writing 'despite of'",
+          body: "Despite takes no of: 'despite the rain'. In spite of keeps its of: 'in spite of the rain'. Both mean the same.",
+        },
         {
           title: "Writing 'jealous on' or 'jealous about'",
           body: "The fixed pair is jealous of: 'jealous of her success'. The same goes for afraid of and proud of.",

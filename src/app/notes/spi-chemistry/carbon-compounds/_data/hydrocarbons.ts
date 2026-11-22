@@ -46,7 +46,7 @@ export const SPI_CC_HYDROCARBONS_NOTE: SubtopicNote = {
         { prompt: "What is the name for carbon's power to form long chains of carbon atoms?", answer: "Catenation" },
         { prompt: "How many pairs of electrons are shared in a triple bond?", answer: "3 pairs (6 electrons)" },
       ],
-      pyqExampleId: "214d3fee-1416-4f38-9b94-1e3a9af2c134",
+      pyqExampleId: "7ee4cda7-af4b-4c2e-9395-e30f35660409",
       traps: [
         {
           title: "Counting only the carbon-hydrogen bonds",

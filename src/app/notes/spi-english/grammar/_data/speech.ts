@@ -152,7 +152,7 @@ export const SPI_GR_SPEECH_NOTE: SubtopicNote = {
         { prompt: "Change to direct speech: They said that they could not come then.", answer: "They said, \"We cannot come now.\"" },
         { prompt: "Change to direct speech: He said that he used to play hockey.", answer: "He said, \"I used to play hockey.\"" },
       ],
-      pyqExampleId: "10e7918e-1e21-4808-9132-570c0e5f0d0b",
+      pyqExampleId: "c208dbd9-df88-4f2b-8411-adab67ebb460",
       traps: [
         {
           title: "Leaving a past tense inside the quotation",

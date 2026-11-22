@@ -102,7 +102,7 @@ export const SPI_TG_VALUES_NOTE: SubtopicNote = {
         { prompt: "If \\(\\tan 2A = 1\\), what is A?", answer: "\\(22.5^\\circ\\)" },
         { prompt: "If \\(\\cos(A - B) = 1\\) and \\(A = 35^\\circ\\), what is B?", answer: "\\(35^\\circ\\) (since \\(A - B = 0^\\circ\\))" },
       ],
-      pyqExampleId: "18ea9b6a-db42-46f4-8401-5f739847b8c4",
+      pyqExampleId: "895755ab-60d3-43c6-bfc1-d8300f056185",
       traps: [
         {
           title: "Stopping at the angle in the bracket",
