@@ -4,12 +4,13 @@ import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 
 describe("learnComingSoonFor", () => {
   it("names an exam that has no Learn course yet", () => {
-    expect(learnComingSoonFor("nda")).toBe(EXAM_REGISTRY.find((e) => e.slug === "nda")!.displayName);
+    expect(learnComingSoonFor("cds")).toBe(EXAM_REGISTRY.find((e) => e.slug === "cds")!.displayName);
   });
 
   it("is silent for an exam whose course is ready", () => {
     expect(learnComingSoonFor("mh-hsc-12")).toBeNull();
     expect(learnComingSoonFor("cbse-12")).toBeNull();
+    expect(learnComingSoonFor("nda")).toBeNull();
   });
 
   it("is silent when no exam was chosen, or the cookie holds a retired slug", () => {

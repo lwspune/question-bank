@@ -23,6 +23,21 @@ const LEARN: Record<string, [string, string][]> = {
     ["differential-equations", "Differential Equations"], ["vector-algebra", "Vector Algebra"], ["three-dimensional-geometry", "Three Dimensional Geometry"],
     ["linear-programming", "Linear Programming"], ["probability-12", "Probability"],
   ],
+  // NDA (2026-11-22 import): Concept Ladder titled every chapter with the bank's own name.
+  "nda-maths": [
+    ["angle-measurement", "Trigonometric Identities"], ["heights-and-distances", "Height & Distance"], ["straight-line", "Lines"],
+    ["circle", "Circles"], ["conic-sections", "Conics"], ["statistics", "Statistics"], ["probability", "Probability"],
+    ["quadratic-equations", "Quadratic Equations"], ["complex-numbers", "Complex Numbers"], ["sequences-and-series", "Sequence & Series"],
+    ["permutations-and-combinations", "Permutation & Combination"], ["binomial-theorem", "Binomial Theorem"], ["sets-and-relations", "Sets & Relations"],
+    ["binary-numbers", "Binary Numbers"], ["logarithms", "Logarithms"], ["functions", "Functions"], ["limits", "Limits & Continuity"],
+    ["linear-inequalities", "Linear Inequalities"], ["determinants-and-matrices", "Matrices & Determinants"],
+    ["trigonometric-equations", "Trigonometric Equations"], ["properties-of-triangle", "Properties of Triangle"],
+    ["inverse-trigonometry", "Inverse Trigonometry"], ["vectors", "Vectors"], ["line-and-plane", "3D Geometry"],
+    ["differentiation", "Differentiation"], ["application-of-derivatives", "Application of Derivatives"],
+    ["indefinite-integration", "Indefinite Integration"], ["definite-integration", "Definite Integration"],
+    ["application-of-definite-integration", "Applications of Integration"], ["differential-equations", "Differential Equations"],
+    ["binomial-distribution", "Binomial Distribution"],
+  ],
 };
 
 const BANK: Record<string, string[]> = {
@@ -35,10 +50,23 @@ const BANK: Record<string, string[]> = {
     "Application of Derivatives", "Application of Integrals", "Continuity and Differentiability", "Determinants", "Differential Equations", "Integrals",
     "Inverse Trigonometric Functions", "Linear Programming", "Matrices", "Probability", "Relations and Functions", "Three Dimensional Geometry", "Vector Algebra",
   ],
+  // NDA Mathematics, production 2026-11-22: all 31 chapters.
+  "nda-maths": [
+    "Matrices & Determinants", "Probability", "Statistics", "Trigonometric Identities", "Functions", "Lines", "Vectors", "3D Geometry",
+    "Sequence & Series", "Differentiation", "Limits & Continuity", "Permutation & Combination", "Application of Derivatives", "Complex Numbers",
+    "Sets & Relations", "Definite Integration", "Quadratic Equations", "Differential Equations", "Binomial Theorem", "Properties of Triangle",
+    "Indefinite Integration", "Conics", "Inverse Trigonometry", "Trigonometric Equations", "Binomial Distribution", "Circles", "Logarithms",
+    "Applications of Integration", "Height & Distance", "Binary Numbers", "Linear Inequalities",
+  ],
 };
 
 describe("bankChapterName", () => {
-  it("maps every Learn chapter of both courses to a bank chapter of its exam, one to one", () => {
+  it("NDA's course covers every NDA Maths chapter in the bank", () => {
+    const names = LEARN["nda-maths"].map(([slug, title]) => bankChapterName("nda-maths", { slug, title }));
+    expect(new Set(names)).toEqual(new Set(BANK["nda-maths"]));
+  });
+
+  it("maps every Learn chapter of every course to a bank chapter of its exam, one to one", () => {
     for (const [course, chapters] of Object.entries(LEARN)) {
       const names = chapters.map(([slug, title]) => bankChapterName(course, { slug, title }));
       for (const n of names) expect(BANK[course], `${course}: ${n}`).toContain(n);
@@ -84,8 +112,16 @@ describe("bankChapterLinks", () => {
     });
   });
 
-  it("gives every chapter of both courses a board and a questions link", () => {
+  it("gives an exam with no board reader (NDA) no textbook link, only its past questions", () => {
+    expect(bankChapterLinks("nda", "nda-maths", { slug: "determinants-and-matrices", title: "Matrices & Determinants" })).toEqual({
+      board: null,
+      questions: "/questions/nda/mathematics/matrices-determinants",
+    });
+  });
+
+  it("gives every chapter of both board courses a board and a questions link", () => {
     for (const [course, chapters] of Object.entries(LEARN)) {
+      if (course === "nda-maths") continue;
       const exam = course.replace(/-maths$/, "");
       for (const [slug, title] of chapters) {
         const l = bankChapterLinks(exam, course, { slug, title });
