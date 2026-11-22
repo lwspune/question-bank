@@ -92,7 +92,7 @@ export const SPI_ST_RELATION_NOTE: SubtopicNote = {
         { prompt: "Which average cannot be found from a graph?", answer: "The mean" },
         { prompt: "In a pie chart, one part is a quarter of the whole. What is the angle of its sector?", answer: "\\(\\frac{1}{4} \\times 360^\\circ = 90^\\circ\\)" },
       ],
-      pyqExampleId: "c9ae0da4-f45c-4a0f-aa57-b46197968722",
+      pyqExampleId: "37b84e93-2b81-408d-9636-b4aa35c43e1e",
       traps: [
         {
           title: "Putting the classes on the y-axis",

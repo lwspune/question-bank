@@ -78,6 +78,8 @@ const OFFICIAL_HOSTS = [
   "aamc.org",
   "universitaly.it",
   "mur.gov.it",
+  "afcat.edcil.co.in",
+  "iiseradmission.in",
   // The Services Preparatory Institute (Government of Maharashtra), boys' and girls' sites.
   "spicsn.com",
 ];

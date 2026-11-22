@@ -24,6 +24,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { readAllPages } from "@/lib/supabase/readAllPages";
 import { istDayKey } from "@/lib/email/dueNudge";
 import { nextSitting } from "@/lib/exam/calendar";
+import { readExamCalendar } from "@/lib/exam/calendarRead";
 import type { ProgressEvent } from "@/lib/homework/progress";
 import { chapterParts, isFinishedTest, topWorked, type TopSlot } from "@/lib/path/done";
 import { isPathExam, type ChapterState, type PathChapter } from "@/lib/path/model";
@@ -99,6 +100,7 @@ export async function reportStarters(
     attempts: readonly StarterAttempt[];
   }
 ): Promise<void> {
+  const calendar = await readExamCalendar(db);
   const { data: rows, error } = await db
     .from("study_paths")
     .select("id, user_id, exam_slug, subjects, daily_minutes, started_at, ended_at")
@@ -167,7 +169,7 @@ export async function reportStarters(
     }
     doneCounts.push(done);
 
-    const sitting = isPathExam(p.exam_slug) ? nextSitting(p.exam_slug, ctx.now) : null;
+    const sitting = isPathExam(p.exam_slug) ? nextSitting(p.exam_slug, ctx.now, calendar) : null;
     if (sitting) {
       // Only what pathRemainingMinutes reads: the parts and their minutes.
       const asPath: PathChapter[] = mine.map((c) => ({

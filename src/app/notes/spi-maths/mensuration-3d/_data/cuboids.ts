@@ -117,7 +117,7 @@ export const SPI_M3_CUBOIDS_NOTE: SubtopicNote = {
           answer: "10 cubic m, that is 10 000 litres",
         },
       ],
-      pyqExampleId: "23005267-9d3a-4de8-b62a-53bed449dd06",
+      pyqExampleId: "6f2c73b4-1286-4987-89c4-1a135a9f8151",
       traps: [
         {
           title: "Mixing units inside one product",
@@ -174,7 +174,7 @@ export const SPI_M3_CUBOIDS_NOTE: SubtopicNote = {
         { prompt: "A room is 12 m by 9 m by 8 m. How long is the longest rod it can hold?", answer: "\\(\\sqrt{144 + 81 + 64} = \\sqrt{289} = 17\\) m" },
         { prompt: "The diagonal of a cube is \\(6\\sqrt{3}\\) cm. What is its edge?", answer: "6 cm" },
       ],
-      pyqExampleId: "5ce3ff9e-5e5a-4104-8de8-ffe3eb781394",
+      pyqExampleId: "e4b76a2a-4afe-448b-b150-45483e8f7d8d",
       traps: [
         {
           title: "Stopping at the floor diagonal",

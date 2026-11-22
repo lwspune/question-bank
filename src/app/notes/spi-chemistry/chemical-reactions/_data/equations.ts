@@ -18,6 +18,7 @@ export const SPI_CR_EQUATIONS_NOTE: SubtopicNote = {
         "- **Reactants** are the substances that react, written on the left. **Products** are the new substances, on the right.\n" +
         "- **State symbols**: (s) solid, (l) liquid, (g) gas, (aq) dissolved in water. They give the state at the temperature of the reaction.\n" +
         "- A **balanced** equation obeys the law of conservation of mass: each element has the same number of atoms on both sides.\n" +
+        "- **Fast and slow:** ions in solution react at once, so an acid and a base give salt and water almost instantly. Hydrogen and oxygen need a spark before they react, and rusting, or the breakdown of sugar or an ester in water, is slow.\n" +
         "- For a reaction to happen, reactant particles must **collide** with enough energy and with the **right orientation**.",
       formula: {
         label: "Balancing rule",
@@ -147,7 +148,7 @@ export const SPI_CR_EQUATIONS_NOTE: SubtopicNote = {
         { prompt: "Lead nitrate and potassium iodide solutions are mixed. What colour is the precipitate?", answer: "Yellow (lead iodide)" },
         { prompt: "What colour is the coating that forms on an iron nail in copper sulphate solution?", answer: "Brown (copper)" },
       ],
-      pyqExampleId: "ce2469c5-8a3d-4052-a50b-0aa23b7175eb",
+      pyqExampleId: "93a6e033-c24d-45fb-bd22-fb877d2596c1",
       traps: [
         {
           title: "Expecting any metal to displace any other",

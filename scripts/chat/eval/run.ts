@@ -40,6 +40,7 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { answerWithV, type VContextOptions } from "../../../src/lib/chat/answer";
 import { isPathExam } from "../../../src/lib/path/model";
 import { readChatSettings } from "../../../src/lib/chat/settingsAdmin";
+import { readExamCalendar } from "../../../src/lib/exam/calendarRead";
 import { readExamStrategyUncached } from "../../../src/lib/chat/examStrategyServer";
 import { loadExamCatalogPayload, shapeExamCatalog } from "../../../src/lib/exam/allExamStats";
 import { isIntlPagePath, LIVE_INTL_EXAMS } from "../../../src/lib/sites/intl";
@@ -206,6 +207,8 @@ async function main() {
           ? {
               now: () => new Date(),
               loadProfile: async () => ({ targetExams: c.profile_exams, examDate: null, weeklyGoal: null }),
+              // The live calendar, as the route reads it (uncached here: unstable_cache needs Next).
+              loadCalendar: () => readExamCalendar(anon),
               saveExamDate: async () => {},
               loadWeak: async () => [],
               loadDue: async () => 0,

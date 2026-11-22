@@ -46,8 +46,8 @@ export const SPI_CI_EXTERNAL_NOTE: SubtopicNote = {
       },
       practiceSet: [
         {
-          prompt: "PA and PB are tangents from P to a circle with centre O and radius 5 cm. If OP = 13 cm, find PA + PB.",
-          answer: "Each is \\(\\sqrt{169 - 25} = 12\\) cm, so the sum is 24 cm",
+          prompt: "PA and PB are tangents from P to a circle with centre O and radius 8 cm. If OP = 17 cm, find PA + PB.",
+          answer: "Each is \\(\\sqrt{289 - 64} = 15\\) cm, so the sum is 30 cm",
         },
         {
           prompt: "CP and CQ are tangents from C to a circle. A third tangent touches the circle at R and meets CQ at B. If CP = 15 cm and CB = 9 cm, find BR.",
@@ -56,7 +56,7 @@ export const SPI_CI_EXTERNAL_NOTE: SubtopicNote = {
         { prompt: "A circle touches all four sides of a quadrilateral ABCD. If AB = 6 cm, BC = 7 cm and CD = 8 cm, find AD.", answer: "\\(6 + 8 = 7 + AD\\), so AD = 7 cm" },
         { prompt: "PA and PB are tangents from P to a circle with centre O. If \\(\\angle APO = 35^\\circ\\), find \\(\\angle APB\\).", answer: "\\(70^\\circ\\)" },
       ],
-      pyqExampleId: "192d54bd-900c-47d8-893b-ef9544e4b5f4",
+      pyqExampleId: "b614993e-6709-4176-b87b-7800f917189b",
       traps: [
         {
           title: "Matching the wrong pair of pieces",

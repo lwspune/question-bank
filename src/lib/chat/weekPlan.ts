@@ -36,7 +36,7 @@ import type { VTool } from "./anthropic";
 import { chapterPath, examsNamed, type ChapterSearchRow } from "./chapterSearch";
 import { rankChapters, subjectNamed, subjectsOf, type StrategyData } from "./examStrategy";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
-import { daysUntilIst, resolveExamDate, sanitizeExamDate } from "@/lib/exam/calendar";
+import { daysUntilIst, resolveExamDate, sanitizeExamDate, type SittingEntry } from "@/lib/exam/calendar";
 import { bandOf } from "@/lib/performance/masteryMap";
 
 export type PlanItem =
@@ -205,6 +205,8 @@ export type PlanDeps = {
   now: () => Date;
   loadChapters: () => Promise<readonly ChapterSearchRow[]>;
   loadProfile: () => Promise<{ targetExams: string[]; examDate: string | null; weeklyGoal: number | null }>;
+  /** The exam calendar (lib/exam/calendarQuery loadExamCalendar); [] = no calendar date. */
+  loadCalendar: () => Promise<readonly SittingEntry[]>;
   /** Saves the student's exam date to their profile (student_profiles.exam_date). */
   saveExamDate: (date: string) => Promise<void>;
   loadStrategy: (examSlug: string) => Promise<StrategyData | null>;
@@ -331,7 +333,7 @@ export function planTools(deps: PlanDeps): [VTool, VTool] {
         await deps.saveExamDate(d);
         examDate = d;
       }
-      const countdown = resolveExamDate({ targetExams: [slug], examDate }, now);
+      const countdown = resolveExamDate({ targetExams: [slug], examDate }, now, await softly("calendar", () => deps.loadCalendar(), []));
       if (!countdown && i.date_unknown !== true) {
         return "Ask the student when their exam is (a date, or the month) so the plan can count down to it, then call again with exam_date. If they do not know, call again with date_unknown true.";
       }

@@ -176,7 +176,7 @@ export const SPI_SQ_NTH_TERM_NOTE: SubtopicNote = {
           answer: "\\(3d = 15\\) gives \\(d = 5\\), so the first term is 3",
         },
       ],
-      pyqExampleId: "80fefdc0-d7fd-4ec3-8a7c-abb8f4cb7729",
+      pyqExampleId: "3646b1da-6474-4fe5-bfd1-2d905bc74b9a",
       traps: [
         {
           title: "Counting the terms instead of the steps",

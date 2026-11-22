@@ -7323,14 +7323,15 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
     "slugs": [
       "spi-qe-recognise",
       "spi-qe-solving",
+      "spi-qe-word",
       "spi-qe-nature",
       "spi-qe-sum-product"
     ],
     "chapterName": "Quadratic Equations",
     "formulaCounts": {
-      "formulas": 11,
+      "formulas": 13,
       "tables": 0,
-      "traps": 24
+      "traps": 30
     }
   },
   {
@@ -7369,6 +7370,23 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "formulas": 7,
       "tables": 0,
       "traps": 12
+    }
+  },
+  {
+    "examName": "SPI",
+    "subjectName": "Mathematics",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "time-speed-distance",
+    "chipLabel": "Time, Speed and Distance notes",
+    "slugs": [
+      "spi-ts-speed"
+    ],
+    "chapterName": "Time, Speed and Distance",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 0,
+      "traps": 6
     }
   },
   {
@@ -7429,7 +7447,7 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
     "formulaCounts": {
       "formulas": 0,
       "tables": 21,
-      "traps": 54
+      "traps": 57
     }
   },
   {
@@ -7450,7 +7468,7 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
     "formulaCounts": {
       "formulas": 0,
       "tables": 10,
-      "traps": 25
+      "traps": 29
     }
   },
   {
@@ -7558,6 +7576,23 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "formulas": 1,
       "tables": 0,
       "traps": 5
+    }
+  },
+  {
+    "examName": "SPI",
+    "subjectName": "Reasoning",
+    "subjectRoute": "spi-reasoning",
+    "subjectDisplay": "SPI Reasoning",
+    "chapterSlug": "analogy",
+    "chipLabel": "Analogy notes",
+    "slugs": [
+      "spi-an-analogies"
+    ],
+    "chapterName": "Analogy",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 1,
+      "traps": 3
     }
   },
   {
@@ -14355,6 +14390,7 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "spi-maths/quadratic-equations": () => import("@/app/notes/spi-maths/quadratic-equations/_data").then((m) => ({ chapter: m.SPI_QUADRATIC_EQUATIONS_CHAPTER, notes: m.SPI_QUADRATIC_EQUATIONS_NOTES })),
   "spi-maths/polynomials": () => import("@/app/notes/spi-maths/polynomials/_data").then((m) => ({ chapter: m.SPI_POLYNOMIALS_CHAPTER, notes: m.SPI_POLYNOMIALS_NOTES })),
   "spi-maths/algebraic-identities": () => import("@/app/notes/spi-maths/algebraic-identities/_data").then((m) => ({ chapter: m.SPI_ALGEBRAIC_IDENTITIES_CHAPTER, notes: m.SPI_ALGEBRAIC_IDENTITIES_NOTES })),
+  "spi-maths/time-speed-distance": () => import("@/app/notes/spi-maths/time-speed-distance/_data").then((m) => ({ chapter: m.SPI_TIME_SPEED_DISTANCE_CHAPTER, notes: m.SPI_TIME_SPEED_DISTANCE_NOTES })),
   "spi-english/vocabulary": () => import("@/app/notes/spi-english/vocabulary/_data").then((m) => ({ chapter: m.SPI_VOCABULARY_CHAPTER, notes: m.SPI_VOCABULARY_NOTES })),
   "spi-english/idioms-phrases": () => import("@/app/notes/spi-english/idioms-phrases/_data").then((m) => ({ chapter: m.SPI_IDIOMS_PHRASES_CHAPTER, notes: m.SPI_IDIOMS_PHRASES_NOTES })),
   "spi-english/grammar": () => import("@/app/notes/spi-english/grammar/_data").then((m) => ({ chapter: m.SPI_GRAMMAR_CHAPTER, notes: m.SPI_GRAMMAR_NOTES })),
@@ -14365,6 +14401,7 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "spi-reasoning/classification": () => import("@/app/notes/spi-reasoning/classification/_data").then((m) => ({ chapter: m.SPI_CLASSIFICATION_CHAPTER, notes: m.SPI_CLASSIFICATION_NOTES })),
   "spi-reasoning/series": () => import("@/app/notes/spi-reasoning/series/_data").then((m) => ({ chapter: m.SPI_SERIES_CHAPTER, notes: m.SPI_SERIES_NOTES })),
   "spi-reasoning/order-ranking": () => import("@/app/notes/spi-reasoning/order-ranking/_data").then((m) => ({ chapter: m.SPI_ORDER_RANKING_CHAPTER, notes: m.SPI_ORDER_RANKING_NOTES })),
+  "spi-reasoning/analogy": () => import("@/app/notes/spi-reasoning/analogy/_data").then((m) => ({ chapter: m.SPI_ANALOGY_CHAPTER, notes: m.SPI_ANALOGY_NOTES })),
   "spi-physics/electricity-magnetism": () => import("@/app/notes/spi-physics/electricity-magnetism/_data").then((m) => ({ chapter: m.SPI_ELECTRICITY_MAGNETISM_CHAPTER, notes: m.SPI_ELECTRICITY_MAGNETISM_NOTES })),
   "spi-physics/light-optics": () => import("@/app/notes/spi-physics/light-optics/_data").then((m) => ({ chapter: m.SPI_LIGHT_OPTICS_CHAPTER, notes: m.SPI_LIGHT_OPTICS_NOTES })),
   "spi-physics/sound": () => import("@/app/notes/spi-physics/sound/_data").then((m) => ({ chapter: m.SPI_SOUND_CHAPTER, notes: m.SPI_SOUND_NOTES })),

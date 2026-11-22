@@ -46,7 +46,7 @@ export const SPI_GR_PASSIVE_SPECIAL_NOTE: SubtopicNote = {
         { prompt: "Change to the passive: Who helps the poor children?", answer: "By whom are the poor children helped?" },
         { prompt: "Change to the active: By whom was the song composed?", answer: "Who composed the song?" },
       ],
-      pyqExampleId: "fbd4a488-aaf2-4b51-a537-f5bd31e1802e",
+      pyqExampleId: "fbe8b1c2-c11c-45b4-836b-0aed9bd101d5",
       traps: [
         {
           title: "Writing a passive question in statement order",

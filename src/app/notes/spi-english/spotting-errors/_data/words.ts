@@ -12,7 +12,7 @@ export const SPI_SE_WORDS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "After the verb and the preposition, check the smaller words: the pronoun's form, the comparing word, the pairs of joining words, and whether each word makes sense.",
   whyItMatters:
-    "Seven questions in the bank test these words, one from the 2022 paper and one from the 2026 paper. Two are EASY and five MODERATE. Each rule is short, so these are quick marks once the rule is known.",
+    "Eight questions in the bank test these words, one from the 2022 paper and two from the 2026 paper. Three are EASY and five MODERATE. Each rule is short, so these are quick marks once the rule is known.",
   concepts: [
     {
       kind: "reference" as const,
@@ -110,7 +110,7 @@ export const SPI_SE_WORDS_NOTE: SubtopicNote = {
         ],
         caption: "No sooner goes with than; hardly and scarcely go with when. Swapping them is the usual error.",
       },
-      pyqExampleId: "eed9ca9f-0a3b-4a89-9b4b-fe942544c85f",
+      pyqExampleId: "e178315d-7918-4cab-9bc7-51b2d21a9968",
       selfCheckExample: {
         prompt: item("Hardly had the guests arrived", "than it", "started to rain."),
         steps: [
@@ -187,6 +187,10 @@ export const SPI_SE_WORDS_NOTE: SubtopicNote = {
           title: "Read for meaning, not only for grammar",
           body:
             "A part can be grammatical and still be the error because it says something impossible, such as 'a herd of parrots'. Ask whether each part can be true.",
+        },
+        {
+          title: "A for any one, the for the one we mean",
+          body: "'A' is for any one of many; 'the' is for one both speakers know. A family's own room or the only one in a house takes 'the': 'Grandfather is resting in **the** garden', not 'in a garden'.",
         },
         {
           title: "To and too",

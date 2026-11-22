@@ -1,6 +1,7 @@
 import type { SubtopicNote } from "@/app/notes/_types";
 import { SPI_QE_RECOGNISE_NOTE } from "./recognise";
 import { SPI_QE_SOLVING_NOTE } from "./solving";
+import { SPI_QE_WORD_NOTE } from "./word";
 import { SPI_QE_NATURE_NOTE } from "./nature";
 import { SPI_QE_SUM_PRODUCT_NOTE } from "./sum-product";
 
@@ -17,6 +18,7 @@ export { SPI_QUADRATIC_EQUATIONS_CHAPTER } from "./chapter";
 export const SPI_QUADRATIC_EQUATIONS_NOTES: Record<string, SubtopicNote> = {
   "spi-qe-recognise": SPI_QE_RECOGNISE_NOTE,
   "spi-qe-solving": SPI_QE_SOLVING_NOTE,
+  "spi-qe-word": SPI_QE_WORD_NOTE,
   "spi-qe-nature": SPI_QE_NATURE_NOTE,
   "spi-qe-sum-product": SPI_QE_SUM_PRODUCT_NOTE,
 };

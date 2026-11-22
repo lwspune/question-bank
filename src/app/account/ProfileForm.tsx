@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import ProfileChips from "@/components/ProfileChips";
-import { resolveExamDate } from "@/lib/exam/calendar";
+import { resolveExamDate, type SittingEntry } from "@/lib/exam/calendar";
 import { isExamSlug, type ExamSlug } from "@/lib/exam/examContext";
 import TierExamChips from "@/components/TierExamChips";
 import { setExamCookie } from "@/lib/exam/examCookie";
@@ -35,15 +35,22 @@ const STREAM_OPTIONS = STREAMS.map((s) => ({ value: s, label: STREAM_LABELS[s] }
  * set/changed (DPDP) — its checkbox appears only then.
  */
 /** "Leave blank to use the expected date: NDA 2027 (I), 18 Apr 2027." */
-function expectedHint(exams: ExamSlug[]): string {
-  const c = resolveExamDate({ targetExams: exams, examDate: null }, new Date());
+function expectedHint(exams: ExamSlug[], calendar: readonly SittingEntry[]): string {
+  const c = resolveExamDate({ targetExams: exams, examDate: null }, new Date(), calendar);
   if (!c) return "Leave blank if you are not sure yet.";
   const d = new Date(`${c.date}T00:00:00Z`);
   const pretty = `${d.getUTCDate()} ${["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getUTCMonth()]} ${d.getUTCFullYear()}`;
   return `Leave blank to use the ${c.official ? "" : "expected "}date: ${c.label}, ${pretty}.`;
 }
 
-export default function ProfileForm({ profile }: { profile: ProfileRow }) {
+export default function ProfileForm({
+  profile,
+  calendar,
+}: {
+  profile: ProfileRow;
+  /** The exam calendar, read by the page (lib/exam/calendarQuery). */
+  calendar: readonly SittingEntry[];
+}) {
   const router = useRouter();
   const initialMobile = profile.mobile ?? "";
 
@@ -197,7 +204,7 @@ export default function ProfileForm({ profile }: { profile: ProfileRow }) {
               disabled={saving}
             />
             <p className="text-xs text-muted-foreground">
-              {expectedHint(exams)}
+              {expectedHint(exams, calendar)}
             </p>
           </div>
           <div className="space-y-2">

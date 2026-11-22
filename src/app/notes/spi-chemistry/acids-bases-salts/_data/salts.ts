@@ -46,7 +46,7 @@ export const SPI_AB_SALTS_NOTE: SubtopicNote = {
           answer: "Yes: strong acid with weak base gives an acidic solution",
         },
       ],
-      pyqExampleId: "9495e56a-bdf2-40af-a5cc-33d70952d191",
+      pyqExampleId: "87ec567e-cae9-4843-a90a-a77b63e6b292",
       traps: [
         {
           title: "Expecting an acid salt to give an acidic solution",

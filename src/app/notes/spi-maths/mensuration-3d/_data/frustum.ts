@@ -53,7 +53,7 @@ export const SPI_M3_FRUSTUM_NOTE: SubtopicNote = {
         },
         { prompt: "A cone has a vertical angle of 90° and a base radius of 5 cm. What is its height?", answer: "5 cm" },
       ],
-      pyqExampleId: "497ab924-d37c-4743-94f6-1cdf829186ff",
+      pyqExampleId: "8e747678-fed0-43bf-b9cb-0aaa152dbe8a",
       traps: [
         {
           title: "Counting the glued faces",

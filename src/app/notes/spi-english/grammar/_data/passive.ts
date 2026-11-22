@@ -103,7 +103,7 @@ export const SPI_GR_PASSIVE_NOTE: SubtopicNote = {
         { prompt: "Change to the passive: Asha had cooked the meal.", answer: "The meal had been cooked by Asha." },
         { prompt: "Which word does the passive of a continuous tense add: been or being?", answer: "being" },
       ],
-      pyqExampleId: "5c21b663-463e-4cc9-a86b-0e43917449f3",
+      pyqExampleId: "ff1585a2-1e10-4566-8a5a-b10cba62db08",
       traps: [
         {
           title: "Leaving out 'being' in a continuous tense",

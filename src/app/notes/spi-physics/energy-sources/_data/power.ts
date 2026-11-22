@@ -99,7 +99,7 @@ export const SPI_ES_POWER_NOTE: SubtopicNote = {
         { prompt: "Which gas can a geothermal plant release from the ground?", answer: "Hydrogen sulphide" },
         { prompt: "Does a hydroelectric plant burn any fuel?", answer: "No" },
       ],
-      pyqExampleId: "d7cbc1fa-91a0-4947-9add-0330dc7ef07d",
+      pyqExampleId: "93f39b4f-b53a-4268-8649-3d4a2f3d0611",
       traps: [
         {
           title: "Calling nuclear energy clean because it gives no smoke",

@@ -54,7 +54,7 @@ export const SPI_SQ_SUM_NOTE: SubtopicNote = {
         },
         { prompt: "Find the sum of the first \\(n\\) terms of \\(2b, 4b, 6b, \\ldots\\)", answer: "\\(n(n + 1)b\\)" },
       ],
-      pyqExampleId: "95ef92ec-887d-4564-a7bc-5ec3f082d622",
+      pyqExampleId: "7c32f655-2f24-4060-96b0-e278b4bd3a5e",
       traps: [
         {
           title: "Giving the last term when the sum is asked",

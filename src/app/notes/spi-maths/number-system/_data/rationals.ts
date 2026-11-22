@@ -97,7 +97,7 @@ export const SPI_NS_RATIONALS_NOTE: SubtopicNote = {
         { prompt: "Find \\(\\frac{3}{5}\\) of 85.", answer: "51" },
         { prompt: "By how much is \\(\\frac{1}{2}\\) of 90 more than \\(\\frac{2}{5}\\) of 80?", answer: "\\(45 - 32 = 13\\)" },
       ],
-      pyqExampleId: "f65a1bc0-cbb6-4cc8-afb4-449f3e14d5d5",
+      pyqExampleId: "a602947a-fdd0-4471-b6b7-acdec9f39f39",
       traps: [
         {
           title: "Taking a fraction of the whole instead of the rest",

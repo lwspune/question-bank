@@ -18,6 +18,7 @@ export const SPI_EM_MAGNETIC_NOTE: SubtopicNote = {
         "- **Right hand thumb rule:** hold the wire with the thumb along the current; the curled fingers show the direction of the field.\n" +
         "- **Clock rule:** look at one face of a loop. If the current flows **clockwise**, that face is a **south** pole; if **anticlockwise**, a **north** pole.\n" +
         "- Field lines leave the N pole and enter the S pole outside a magnet, and **never cross**.\n" +
+        "- A piece of iron, such as a nail, touching or near a magnet becomes a **temporary magnet** with its own N and S poles. This is magnetic **induction**, and it is why the nail can then pick up pins.\n" +
         "- A solenoid's field gets stronger with more turns, more current, or a **soft iron core** (which makes it an electromagnet).",
       table: {
         columns: ["Source", "Shape of the field lines"],
@@ -44,7 +45,7 @@ export const SPI_EM_MAGNETIC_NOTE: SubtopicNote = {
         { prompt: "What is put inside a solenoid to make an electromagnet?", answer: "A soft iron core" },
         { prompt: "Can two magnetic field lines cross each other?", answer: "No" },
       ],
-      pyqExampleId: "8f583588-0ada-442a-8396-01e6a7298c6e",
+      pyqExampleId: "665a071f-e6dc-4a7c-9f3e-cc92ef043b52",
       traps: [
         {
           title: "Calling the field inside a solenoid circular",
@@ -147,7 +148,7 @@ export const SPI_EM_MAGNETIC_NOTE: SubtopicNote = {
         { prompt: "Which rings does an AC generator use?", answer: "Slip rings" },
         { prompt: "Who discovered electromagnetic induction?", answer: "Michael Faraday" },
       ],
-      pyqExampleId: "47870cce-5a7d-45f4-8a7b-314ead63494c",
+      pyqExampleId: "67a984da-3763-43e8-9d15-2af21e6a1a92",
       traps: [
         {
           title: "One reversal per turn",

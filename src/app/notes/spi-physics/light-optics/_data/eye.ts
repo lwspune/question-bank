@@ -43,7 +43,7 @@ export const SPI_LO_EYE_NOTE: SubtopicNote = {
         { prompt: "Which lens corrects presbyopia?", answer: "A bifocal lens" },
         { prompt: "Which part of the eye changes the focal length of the eye lens?", answer: "The ciliary muscles" },
       ],
-      pyqExampleId: "61fbd440-a240-4dff-a415-d9c686b3e10c",
+      pyqExampleId: "f42b173f-47c9-442e-9034-28ef326e3c29",
       traps: [
         {
           title: "Concave lens for long sight",
@@ -91,7 +91,7 @@ export const SPI_LO_EYE_NOTE: SubtopicNote = {
         { prompt: "Why is the clear sky blue?", answer: "The air scatters blue light the most" },
         { prompt: "Why are danger signals red?", answer: "Red light is scattered least, so it travels farthest through air" },
       ],
-      pyqExampleId: "be62ba91-d7b9-4223-b123-3426f0167da5",
+      pyqExampleId: "ba111b3e-1b8d-4d28-89e0-ea1de107125e",
       traps: [
         {
           title: "Calling the splitting 'refraction'",

@@ -84,7 +84,7 @@ export const SPI_EM_POWER_NOTE: SubtopicNote = {
         { prompt: "Four 25 W bulbs glow for 10 hours. How many units do they use?", answer: "1 unit (100 W for 10 h)" },
         { prompt: "Electricity costs Rs 6 a unit. What does it cost to run a 2 kW geyser for 3 hours?", answer: "6 units, Rs 36" },
       ],
-      pyqExampleId: "e8461560-7706-4ed3-a07d-5a23220cce28",
+      pyqExampleId: "fbe77cda-128c-4288-94cc-179151200ecf",
       traps: [
         {
           title: "Leaving time in minutes",

@@ -151,7 +151,7 @@ export const SPI_LE_CONSISTENCY_NOTE: SubtopicNote = {
           answer: "\\(m = 4\\) (\\(m = -4\\) makes the lines parallel)",
         },
       ],
-      pyqExampleId: "c75fb9bd-b1d7-4c01-a3da-564240401054",
+      pyqExampleId: "594bacce-e11c-4a11-b8c0-540753357a04",
       traps: [
         {
           title: "Keeping both roots of a square",

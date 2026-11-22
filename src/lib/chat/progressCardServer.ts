@@ -9,6 +9,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import type { createSupabaseServerClient } from "@/lib/supabase/server";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { resolveExamDate } from "@/lib/exam/calendar";
+import { loadExamCalendar } from "@/lib/exam/calendarQuery";
 import { getOwnProfile } from "@/lib/profile/service";
 import { getOwnLadder } from "@/lib/drill/service";
 import { getOwnPerformance } from "@/lib/performance/service";
@@ -124,13 +125,15 @@ export async function loadProgressCard(
   ]);
   const studyNext = study && perf ? pickStudyNext(study, strongChapters(perf, exam.examName, now)) : null;
 
+  const calendar = await loadExamCalendar();
   const card = buildProgressCard({
     exam,
     now,
     daysLeft:
       resolveExamDate(
         { targetExams: [exam.slug], examDate: profile.targetExams[0] === exam.slug ? profile.examDate : null },
-        now
+        now,
+        calendar
       )?.daysLeft ?? null,
     practice: { week: payload.week, prev: payload.prev },
     perf,

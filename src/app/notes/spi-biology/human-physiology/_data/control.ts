@@ -154,7 +154,7 @@ export const SPI_HP_CONTROL_NOTE: SubtopicNote = {
         { prompt: "Which gland makes growth hormone?", answer: "The pituitary" },
         { prompt: "Which glands sit on top of the kidneys?", answer: "The adrenal glands" },
       ],
-      pyqExampleId: "548dc027-d43c-44c3-aac1-78d3f79f448c",
+      pyqExampleId: "9f3c2677-4bd0-4e47-9c0d-156dafa9f7b8",
       traps: [
         {
           title: "Parathyroid next to pituitary",
