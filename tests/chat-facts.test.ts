@@ -635,6 +635,9 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/with part N/i);
     expect(p).toMatch(/never list the parts/i);
     expect(p).toMatch(/never write a question of your own/i);
+    // 2026-11-22: Learn first wherever it teaches the chapter; its Go on asks for a lesson by number.
+    expect(p).toMatch(/Teach me lesson 3 of/);
+    expect(p).toMatch(/Learn lessons teach the chapter, the parts are those lessons/);
     // Its answers and pages are usable like the other tools'.
     expect(p).toMatch(/returned by [^.]*chapter_overview/);
     expect(p).toMatch(/what the [^.]*chapter_overview[^.]*tools return/);

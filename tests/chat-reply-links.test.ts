@@ -100,6 +100,9 @@ describe("linkLabel", () => {
     expect(linkLabel("/notes/nda-maths/probability")).toBe("Probability notes");
     expect(linkLabel("/questions/nda/mathematics/probability")).toBe("Probability questions");
     expect(linkLabel("/board/cbse-12/physics/ray-optics")).toBe("Ray optics");
+    // A Learn lesson and a Learn chapter (2026-11-22): what each page is, never its path.
+    expect(linkLabel("/learn/lesson/matrices/matrix-multiplication")).toBe("Matrix multiplication lesson");
+    expect(linkLabel("/learn/cbse-12-maths/integrals")).toBe("Integrals lessons");
   });
 
   it("any other page keeps its short path", () => {

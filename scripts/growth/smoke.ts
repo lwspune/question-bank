@@ -317,6 +317,10 @@ async function main() {
         // Read by hand: teach_chapter shown/tap per place, and second messages in the chats a tap opened.
         line = "by hand: scripts/chat/teach-chapter-readout.sql (tap rate per place, second message after a tap)";
         break;
+      case "v-learn-first":
+        // Read by hand: Learn lessons shown in V, and how many got their Your turn answered (2026-11-22).
+        line = "by hand: scripts/chat/learn-first-readout.sql (Your turn answered per Learn lesson shown)";
+        break;
       case "v-checkin":
         // Read by hand: v_checkin steps, and practice the same day after the question.
         line = "by hand: scripts/chat/checkin-readout.sql (answer rate, practice that day)";

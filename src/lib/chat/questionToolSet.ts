@@ -47,6 +47,13 @@ export type QuestionToolDeps = {
    * trigonometry question from its memory on a tap on a definite-integral notes question.
    */
   notesTapped?: boolean;
+  /**
+   * The Learn lesson behind a question (lib/chat/learnServer.ts learnLinkForQuestion), or null where Learn
+   * does not teach it (2026-11-22, owner: Learn first wherever it is available).
+   */
+  learnFor?: (q: VQuestion) => Promise<{ href: string; title: string } | null>;
+  /** A Learn link V was given, so its reply may show it (set by loadVContext). */
+  onLearnLink?: (lesson: { href: string; title: string }) => void;
   /** The route collects these for the chat window. */
   onSimilar: (id: string) => void;
   /** A pasted question's best match, offered as a card to confirm. */
@@ -108,6 +115,19 @@ const TAP_NOTE =
   "This is the question the student just tapped. Your earlier replies were about other questions and were right for them: do not mention, correct or take them back.";
 
 export function questionTools(d: QuestionToolDeps): VTool[] {
+  /** The Learn lesson behind an explained question, as a line for V (2026-11-22); "" without one. */
+  const learnLine = async (q: VQuestion): Promise<string> => {
+    if (!d.learnFor) return "";
+    const lesson = await d.learnFor(q).catch((err) => {
+      console.error("V: Learn lesson for a question unavailable", q.id, err);
+      return null;
+    });
+    if (!lesson) return "";
+    d.onLearnLink?.(lesson);
+    return `
+Learn lesson for this idea: ${lesson.href} (${lesson.title}). If they got it wrong or asked how it works, end with one short line pointing them to it.`;
+  };
+
   const tapped = d.tapped ?? null;
   async function load(input: unknown): Promise<VQuestion | null> {
     const id = tapped ? tapped.id : idOf(input);
@@ -156,12 +176,13 @@ export function questionTools(d: QuestionToolDeps): VTool[] {
           return `The student has used today's ${check.limit} free answers. Tell them kindly, give no answer or hint, and say the Premium Pass at /pricing gives unlimited answers.`;
         }
         d.onExplained(q.id);
-        if (tapped) return onTap(explainView(q, tapped.chose, tapped.entered));
+        const learn = await learnLine(q);
+        if (tapped) return onTap(explainView(q, tapped.chose, tapped.entered)) + learn;
         const raw = (input as { chose?: unknown }).chose;
         const chose = typeof raw === "string" && LETTERS.has(raw.toUpperCase()) ? raw.toUpperCase() : null;
         const typed = (input as { entered?: unknown }).entered;
         const entered = typeof typed === "number" && Number.isFinite(typed) ? typed : null;
-        return explainView(q, chose, entered);
+        return explainView(q, chose, entered) + learn;
       },
     },
     {

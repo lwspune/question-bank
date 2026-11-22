@@ -12,7 +12,8 @@ import {
   goOnLabel,
   goOnMessage,
   lessonLinkLabels,
-  lessonNotesHref,
+  lessonNotesLink,
+  lessonOpenLink,
   parseLesson,
   simplerMessage,
   type VLesson,
@@ -120,6 +121,10 @@ import { reportVisual } from "@/lib/visuals/usageBeacon";
 
 // The animated-solution player loads only when a reply carries a visual.
 const VAnimatedSolution = dynamic(() => import("@/components/visuals/AnimatedSolution"));
+// A Learn lesson's "Your turn" (2026-11-22): loaded only when one shows, since it brings KaTeX's styles to every page V is on.
+const VLearnQuestionCard = dynamic(() => import("./VLearnQuestionCard"), {
+  loading: () => <div className="ml-9 mt-2 h-24 animate-pulse rounded-xl border bg-muted/40" aria-hidden />,
+});
 // "Teach me step by step" loads only when tapped.
 
 /**
@@ -138,6 +143,8 @@ type ChatTurn = HistoryTurn & {
    * (Go on, Explain more simply, Open the notes) under the latest reply, in place of V's own.
    */
   lesson?: VLesson;
+  /** A Learn lesson's check question to try (2026-11-22): its lesson and the lesson's number. */
+  learnTry?: { chapter: string; concept: string; n: number };
   /** The week plan under V's reply (2026-10-19): it made or read the student's plan. */
   plan?: boolean;
   /** The "How's my progress" card (2026-10-27): the student's own numbers, read when shown. */
@@ -1075,6 +1082,12 @@ export default function ChatWidget() {
           : lesson?.tryQuestionId
             ? { id: lesson.tryQuestionId, kind: "try", turn: true }
             : undefined;
+      // A Learn lesson's map counts as shown (experiment v-learn-first, 2026-11-22); the server keeps one a day per student.
+      if (lesson?.kind === "learn" && lesson.showMap) {
+        sendActivityOnce(`teach_chapter:learn_shown:${lesson.exam}:${lesson.chapter}`, { kind: "surface_viewed", surface: "teach_chapter", action: "shown", from: "lesson_learn" });
+      }
+      // A Learn lesson's own check question, when no other card took the slot (2026-11-22).
+      const learnTry = !card && lesson?.tryLearn ? { ...lesson.tryLearn, n: lesson.current } : undefined;
       const plan = data.planShown === true ? true : undefined;
       const path = data.pathShown === true ? true : undefined;
       const offer = parseVPassOffer(data.passOffer) ?? undefined;
@@ -1093,6 +1106,7 @@ export default function ChatWidget() {
               path,
               offer,
               ...(lesson ? { lesson } : {}),
+              ...(learnTry ? { learnTry } : {}),
               reveal: true,
               explained: data.explained === true,
               understood: null,
@@ -1102,7 +1116,7 @@ export default function ChatWidget() {
               ...(typeof data.explainedQuestionId === "string" ? { explainedQuestionId: data.explainedQuestionId } : {}),
               ...(typeof data.stepQuestionId === "string" ? { stepQuestionId: data.stepQuestionId } : {}),
             }
-          : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan, path, ...(lesson ? { lesson } : {}), reveal: true }
+          : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan, path, ...(lesson ? { lesson } : {}), ...(learnTry ? { learnTry } : {}), reveal: true }
       );
     } catch {
       const errorText = "V is unavailable right now. Please try again.";
@@ -1407,8 +1421,11 @@ export default function ChatWidget() {
                       onNavigate={close}
                     />
                   )}
+                  {t.learnTry && !t.reveal && <VLearnQuestionCard chapter={t.learnTry.chapter} concept={t.learnTry.concept} lessonN={t.learnTry.n} />}
                   {lessonHere && (
-                    <div className="ml-9 mt-2 flex flex-wrap gap-1.5" role="group" aria-label={`${lessonHere.chapter} lesson`}>
+                    // The full chat width, past the turn's 90% bubble cap (2026-11-22): "Go on: lesson 4" and
+                    // "Explain more simply" missed sharing a row on a 390 px phone by about 12 px.
+                    <div className="ml-9 mt-2 flex w-[calc(100%/0.9_-_2.25rem)] flex-wrap gap-1.5" role="group" aria-label={`${lessonHere.chapter} lesson`}>
                       {goOnLabel(lessonHere) && (
                         <button
                           type="button"
@@ -1430,18 +1447,24 @@ export default function ChatWidget() {
                         <Lightbulb className="h-3.5 w-3.5" aria-hidden />
                         Explain more simply
                       </button>
-                      {lessonNotesHref(lessonHere) && (
-                        <Link
-                          href={lessonNotesHref(lessonHere)!}
-                          onClick={() => {
-                            sendActivity({ kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "lesson_notes" });
-                            close();
-                          }}
-                          className="inline-flex min-h-9 items-center gap-1 rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                        >
-                          <BookOpen className="h-3.5 w-3.5" aria-hidden />
-                          Open the notes
-                        </Link>
+                      {[lessonOpenLink(lessonHere), lessonNotesLink(lessonHere)].map(
+                        (link) =>
+                          link && (
+                            <Link
+                              key={link.href}
+                              href={link.href}
+                              onClick={() => {
+                                // Learn's lesson and the notes are counted apart (experiment v-learn-first).
+                                const from = lessonHere.kind === "learn" && link.label === "Open the lesson" ? "lesson_learn" : "lesson_notes";
+                                sendActivity({ kind: "surface_viewed", surface: "teach_chapter", action: "tap", from });
+                                close();
+                              }}
+                              className="inline-flex min-h-9 items-center gap-1 rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                            >
+                              <BookOpen className="h-3.5 w-3.5" aria-hidden />
+                              {link.label}
+                            </Link>
+                          )
                       )}
                     </div>
                   )}

@@ -727,7 +727,7 @@ describe("parseClientEvent - teach a chapter", () => {
 
   it("records seen and tapped per place, once a day, with the chapter when the place has one", () => {
     for (const action of ["shown", "tap"]) {
-      for (const from of ["me_weak", "mock_result", "v_button", "v_pick", "lesson_go_on", "lesson_simpler", "lesson_notes"]) {
+      for (const from of ["me_weak", "mock_result", "v_button", "v_pick", "lesson_go_on", "lesson_simpler", "lesson_notes", "lesson_learn", "learn_try_answer", "learn_try_skip"]) {
         expect(parseClientEvent({ kind: "surface_viewed", surface: "teach_chapter", action, from }, "u1", NOW)).toEqual({
           ok: true,
           value: {

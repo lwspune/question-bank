@@ -345,6 +345,14 @@ export const V_TEACH_CHAPTER_TAP_KEEP_PCT = 10;
 export const V_TEACH_CHAPTER_ON_KEEP_PCT = 30;
 
 /**
+ * "v-learn-first": keep Learn first in V's chapter lessons if at least this share
+ * of the Learn lessons V shows get their Your turn question answered (%). The past-
+ * paper Your turn has no baseline yet (shipped the same day), so the bar is set
+ * where a check question earns its place: one lesson in three.
+ */
+export const V_LEARN_FIRST_ANSWER_KEEP_PCT = 30;
+
+/**
  * "score-plan": keep "How to raise your score" if at least this share of the
  * fair full-paper attempts it shows on start the Fix list within a day (%).
  * Baseline with "What to fix next", 36 fair attempts (60 to 14 days before
@@ -610,6 +618,7 @@ export type Readout =
   | "v-exam-countdown"
   | "v-checkin"
   | "v-teach-chapter"
+  | "v-learn-first"
   | "score-plan"
   | "stuck-offer"
   | "same-mistake"
@@ -1317,6 +1326,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-21",
     windowDays: 28,
     readout: "v-teach-chapter",
+    status: "running",
+  },
+  {
+    id: "v-learn-first",
+    title: "V teaches a chapter from Learn's lessons wherever Learn teaches it",
+    change:
+      "Where Learn teaches the chapter (CBSE and HSC Class 12 Maths, and the Class 12 chapters of MHT-CET and JEE Mains Maths: 57 chapter links), V's Teach me lesson uses Learn's lessons as the map, each with the student's Learn progress (Done, n of 3, New) and opening that lesson; it starts at the first lesson not yet done in the topic holding most mistakes (hand-checked lesson-to-topic links, 254 board lessons); Your turn is a Learn check question (free of the daily limit, checked signed out, counting towards the lesson's mastery); Open the lesson leads, Open the notes follows where the exam has notes; after explaining a missed question V points to the Learn lesson behind it. Every other chapter keeps the notes lesson.",
+    why: "The owner (2026-11-22): \"Learn was designed for this only\" and \"give Learn priority wherever it's available\". Learn's 254 lessons had 3 learners ever (last on 2026-11-04): nothing led students there. About 220 students answered a Maths question in these four exams in the 30 days to 2026-11-22.",
+    metric:
+      "surface_viewed 'teach_chapter' with metadata.from lesson_learn (action shown: a Learn lesson's map; tap: Open the lesson), learn_try_answer (a Your turn answer), learn_try_skip, against lesson_notes taps on notes lessons. scripts/chat/learn-first-readout.sql",
+    rule: `Keep Learn first if ${V_LEARN_FIRST_ANSWER_KEEP_PCT}%+ of the Learn lessons V shows get their Your turn answered. Under it, read the lessons' replies and skips before changing anything; compare Open the lesson taps with Open the notes taps on notes lessons by hand.`,
+    liveSince: "2026-11-22",
+    windowDays: 28,
+    readout: "v-learn-first",
     status: "running",
   },
   {

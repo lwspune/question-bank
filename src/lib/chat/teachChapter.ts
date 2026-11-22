@@ -13,7 +13,7 @@
 
 /** Where a "Teach me" button sits, for its seen/tapped events (surface teach_chapter). */
 /** lesson_* (2026-11-21): the lesson's own buttons under V's reply (Go on, Explain more simply, Open the notes). */
-export const TEACH_CHAPTER_FROM = ["me_weak", "mock_result", "v_button", "v_pick", "lesson_go_on", "lesson_simpler", "lesson_notes"] as const;
+export const TEACH_CHAPTER_FROM = ["me_weak", "mock_result", "v_button", "v_pick", "lesson_go_on", "lesson_simpler", "lesson_notes", "lesson_learn", "learn_try_answer", "learn_try_skip"] as const;
 export type TeachChapterFrom = (typeof TEACH_CHAPTER_FROM)[number];
 
 /** V's own button with no chapter to offer (signed out, or nothing waiting): V asks which. */
