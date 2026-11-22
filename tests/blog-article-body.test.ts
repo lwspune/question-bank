@@ -23,6 +23,11 @@ describe("checkHref", () => {
     // UGC's own NET site, where NTA's bulletin sends candidates for the syllabus.
     expect(checkHref("https://www.ugcnetonline.in/syllabus-new.php")).toMatchObject({ official: true });
     expect(checkHref("https://www.cisce.org/")).toMatchObject({ official: true });
+    // The Services Preparatory Institute's own site (Government of Maharashtra),
+    // which its notification names as the only place for instructions and results.
+    expect(checkHref("https://spicsn.com/wp-content/uploads/2026/10/Advt-2027-SPI.pdf")).toMatchObject({ official: true });
+    expect(checkHref("https://girlspinashik.spicsn.com/")).toMatchObject({ official: true });
+    expect(checkHref("https://notspicsn.com/")).toMatchObject({ official: false });
     expect(checkHref("https://indianexpress.com/x")).toEqual({ ok: true, external: true, official: false });
   });
 

@@ -70,7 +70,17 @@ export type ArticleInput = {
 
 const OFFICIAL_SUFFIXES = [".gov.in", ".nic.in", ".ac.in", ".edu.in", ".res.in", ".gov", ".gov.it"];
 /** Official bodies whose sites sit outside those suffixes. A host or any sub-host of it. */
-const OFFICIAL_HOSTS = ["mahacet.org", "cisce.org", "mahahsscboard.in", "ugcnetonline.in", "aamc.org", "universitaly.it", "mur.gov.it"];
+const OFFICIAL_HOSTS = [
+  "mahacet.org",
+  "cisce.org",
+  "mahahsscboard.in",
+  "ugcnetonline.in",
+  "aamc.org",
+  "universitaly.it",
+  "mur.gov.it",
+  // The Services Preparatory Institute (Government of Maharashtra), boys' and girls' sites.
+  "spicsn.com",
+];
 
 const INTERNAL_RE = /^\/(?!\/)[A-Za-z0-9\-._~/?#&=%+:,]*$/;
 
