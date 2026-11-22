@@ -20,7 +20,7 @@ def q8():
                                              ("C", 0.85, 0.6, 0.0))):
         x0 = k * 4.9
         line(ax, [(x0 - 0.12, H + 0.15), (x0, H), (x0, 0), (x0 + W, 0), (x0 + W, H), (x0 + W + 0.12, H + 0.15)], lw=1.6)
-        ax.add_patch(Rectangle((x0, 0), W, lvl, facecolor="#dceaf6", edgecolor="none", zorder=0))
+        ax.add_patch(Rectangle((x0, 0), W, lvl, facecolor="#e8e8e8", edgecolor="none", zorder=0))
         line(ax, [(x0, lvl), (x0 + W, lvl)], lw=1.2)
         bx = x0 + (W - bw) / 2
         ax.add_patch(Rectangle((bx, by), bw, bh, facecolor="#8a8a8a", edgecolor="black", lw=1.4, zorder=3))
