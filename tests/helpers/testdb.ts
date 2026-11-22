@@ -83,7 +83,7 @@ export function extractDbUrlRef(dbUrl: string | undefined | null): string | null
  *  org's real seed rows from a killed run's leftovers. */
 export const SEED_CONTENT_HASH_PREFIX = "testdb-seed-";
 
-export const RESET_KEEPS = new Set(["testdb_migrations", "paywall_settings", "plans", "chat_settings", "ebooks"]);
+export const RESET_KEEPS = new Set(["testdb_migrations", "paywall_settings", "plans", "chat_settings", "ebooks", "exam_sittings"]);
 
 /** The public tables testdb:reset empties, in the order given. */
 export function tablesToTruncate(tables: string[]): string[] {
