@@ -642,7 +642,7 @@ describe("chapter_overview from Learn (2026-11-22: Learn first wherever it teach
     return { tool, lessons, paths, notesLoaded };
   }
 
-  it("hands the window Learn's lessons with progress, starting where the mistakes are, and a Learn question to try", async () => {
+  it("hands the window Learn's lessons with progress, starting where the mistakes are, and no question to try (the student picks a lesson)", async () => {
     const { tool, lessons, paths } = learnTool({
       misses: [miss("Multiplication of Matrices", "q1", "2026-11-20T10:00:00Z"), miss("Multiplication of Matrices", "q2", "2026-11-21T10:00:00Z")],
     });
@@ -658,7 +658,7 @@ describe("chapter_overview from Learn (2026-11-22: Learn first wherever it teach
       showMap: true,
       missed: 2,
       tryQuestionId: null,
-      tryLearn: { chapter: "matrices", concept: "matrix-multiplication" },
+      tryLearn: null,
     });
     expect(lessons[0].parts.map((p) => [p.n, p.progress, p.missed])).toEqual([
       [1, "done", 0],
@@ -668,16 +668,40 @@ describe("chapter_overview from Learn (2026-11-22: Learn first wherever it teach
     expect(paths).toContain("/learn/lesson/matrices/matrix-multiplication?course=cbse-12-maths");
   });
 
-  it("tells V to teach the lesson from Learn's one-line summary, with no paths, no list and no question of its own", async () => {
+  // 2026-11-22 (owner, third iteration): the map IS the reply. The student taps a lesson and Learn's
+  // own lesson plays full screen in V; V writes one line and teaches nothing itself.
+  it("tells V to write one line pointing at the card, and to teach nothing, list nothing, write no path or question", async () => {
     const { tool } = learnTool({ misses: [miss("Multiplication of Matrices", "q1", "2026-11-20T10:00:00Z")] });
     const out = await tool.run({ chapter: "matrices", exam: "CBSE Class 12" });
-    expect(out).toContain("2. matrix multiplication: matrix-multiplication: the idea in one line");
-    expect(out).toMatch(/START at lesson 2, matrix multiplication/);
+    expect(out).toMatch(/one short line/i);
+    expect(out).toMatch(/lesson 2, matrix multiplication/);
+    expect(out).toMatch(/tap a lesson/i);
+    expect(out).toMatch(/do not teach/i);
     expect(out).toMatch(/do not list the lessons/i);
     expect(out).toMatch(/do not write a path/i);
-    expect(out).toMatch(/headed Your turn: do not mention it/i);
-    expect(out).toMatch(/do not write a question of your own/i);
+    expect(out).toMatch(/do not write a question/i);
+    expect(out).not.toMatch(/Your turn/);
     expect(out).not.toMatch(/\/learn\//);
+  });
+
+  it("reads no worked example for a Learn chapter: V teaches nothing, so it would go unused", async () => {
+    const examples: string[] = [];
+    const tool = chapterOverviewTool({
+      loadChapters: async () => [CBSE_MATRICES],
+      notesIndex: [],
+      loadNotesChapter: async () => null,
+      page: null,
+      onPaths: () => {},
+      loadMisses: async () => [miss("Multiplication of Matrices", "q1", "2026-11-20T10:00:00Z")],
+      loadMissExample: async (id) => {
+        examples.push(id);
+        return null;
+      },
+      loadLearn: async () => MATRICES,
+    });
+    const out = await tool.run({ chapter: "matrices", exam: "CBSE Class 12" });
+    expect(examples).toEqual([]);
+    expect(out).not.toMatch(/work their mistake/i);
   });
 
   it("where the exam has notes too, Learn comes first and the notes are the second link, never read", async () => {
@@ -698,11 +722,11 @@ describe("chapter_overview from Learn (2026-11-22: Learn first wherever it teach
     }
   });
 
-  it("a lesson asked for by number: that lesson, no second map", async () => {
+  it("a lesson asked for by number: that lesson marked on the map, which shows again (it is how the student opens it)", async () => {
     const { tool, lessons } = learnTool({ misses: [miss("Multiplication of Matrices", "q1", "2026-11-20T10:00:00Z")] });
     const out = await tool.run({ chapter: "matrices", exam: "CBSE Class 12", part: 3 });
-    expect(lessons[0]).toMatchObject({ current: 3, showMap: false, tryLearn: { chapter: "matrices", concept: "transpose" } });
-    expect(out).toMatch(/They asked for lesson 3, transpose/);
+    expect(lessons[0]).toMatchObject({ current: 3, showMap: true, tryLearn: null });
+    expect(out).toMatch(/lesson 3, transpose is the one they asked for/);
   });
 });
 

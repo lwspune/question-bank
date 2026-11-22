@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { BookOpen, ChevronRight } from "lucide-react";
 import type { LessonProgress, VLesson } from "@/lib/chat/lesson";
+import { parseLessonHref, type LessonTarget } from "@/lib/learn/links";
 
 /** A Learn lesson's progress chip (2026-11-22): Done, right answers so far, or New. */
 function ProgressChip({ progress }: { progress: LessonProgress }) {
@@ -26,14 +27,18 @@ function ProgressChip({ progress }: { progress: LessonProgress }) {
  * window, never from V's text, so V writes one line about it instead of a list.
  * A Learn lesson (2026-11-22) lists Learn's lessons with the student's progress on
  * each; its mistakes sit on the starting lesson alone (lib/chat/learnLesson.ts).
+ * With `onOpenLesson` (2026-11-22, owner: the student picks the lesson) a Learn row
+ * plays its lesson full screen in V instead of leaving for its page.
  */
 export default function VChapterMapCard({
   lesson,
   onNavigate,
   placement = "below",
+  onOpenLesson,
 }: {
   lesson: VLesson;
   onNavigate?: () => void;
+  onOpenLesson?: (target: LessonTarget) => void;
   /** Above V's reply (the lesson's first reply, mockup B order) or under it. */
   placement?: "above" | "below";
 }) {
@@ -73,9 +78,19 @@ export default function VChapterMapCard({
               {p.href && <ChevronRight className="mt-px h-3.5 w-3.5 shrink-0 text-muted-foreground" aria-hidden />}
             </>
           );
+          const inV = lesson.kind === "learn" && onOpenLesson && p.href ? parseLessonHref(p.href) : null;
           return (
             <li key={p.n} aria-current={current ? "step" : undefined}>
-              {p.href ? (
+              {inV ? (
+                <button
+                  type="button"
+                  onClick={() => onOpenLesson!(inV)}
+                  aria-label={`Open lesson ${p.n}, ${p.title}`}
+                  className={`${row} w-full text-left transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
+                >
+                  {body}
+                </button>
+              ) : p.href ? (
                 <Link
                   href={p.href}
                   onClick={onNavigate}

@@ -282,10 +282,14 @@ export function formatChapterOverview(
   ].join("\n");
 }
 
-/** chapter_overview's text for a chapter Learn teaches: its lessons, where to start, and how to teach around the card. */
-export function formatLearnOverview(hit: ChapterSearchRow, lc: LearnChapter, plan: LearnPlan, misses: readonly ChapterMiss[] | null, example: MissExample | null): string {
-  const lines = [header(hit), "PYQ Vault's step-by-step Learn lessons for this chapter, in teaching order (maths in $...$):"];
-  lc.lessons.forEach((l, i) => lines.push(`${i + 1}. ${l.title}: ${l.oneLiner}`));
+/**
+ * chapter_overview's text for a chapter Learn teaches (2026-11-22, owner, third iteration): the
+ * map card IS the reply. The student taps a lesson and Learn's own lesson plays full screen in V,
+ * so V writes one line and teaches nothing itself.
+ */
+export function formatLearnOverview(hit: ChapterSearchRow, lc: LearnChapter, plan: LearnPlan, misses: readonly ChapterMiss[] | null): string {
+  const lines = [header(hit), "PYQ Vault's step-by-step Learn lessons for this chapter, in teaching order:"];
+  lc.lessons.forEach((l, i) => lines.push(`${i + 1}. ${l.title}`));
   const cur = lc.lessons[plan.current - 1];
   const name = `lesson ${plan.current}, ${cur.title}`;
   const total = misses?.length ?? 0;
@@ -293,7 +297,7 @@ export function formatLearnOverview(hit: ChapterSearchRow, lc: LearnChapter, pla
   // Signed out (2026-11-22 capture): with nothing said, V wrote "Sign in at /performance and I can start from your weak spots".
   if (!lc.signedIn) {
     lines.push(
-      "The student is signed out, so their mistakes are not known. If they asked to start from their mistakes, say in one short line that signing in lets you start from their mistakes next time; give no link or path."
+      "The student is signed out, so their mistakes are not known. If they asked to start from their mistakes, add that signing in lets you start from their mistakes next time; give no link or path."
     );
   }
   if (misses !== null && total === 0) lines.push("The student has no mistakes waiting in this chapter.");
@@ -305,22 +309,16 @@ export function formatLearnOverview(hit: ChapterSearchRow, lc: LearnChapter, pla
   }
   const finished = lc.lessons.filter((l) => l.state === "mastered").length;
   if (lc.signedIn && finished > 0) lines.push(`They have finished ${finished} of ${lc.lessons.length} lessons in Learn.`);
-  if (plan.asked) lines.push(`They asked for ${name}: teach that lesson now.`);
-  else if (startMissed > 0) lines.push(`START at ${name}${plan.current === 1 ? "" : ", not lesson 1"}: this is where their mistakes are.`);
-  else lines.push(`Start at ${name}${lc.signedIn && finished > 0 ? ": the first lesson they have not finished" : ""}.`);
-  if (example) lines.push(...exampleLines(example));
+  const where = plan.asked
+    ? `${name} is the one they asked for`
+    : startMissed > 0
+      ? `${name} is where their mistakes are`
+      : `${name} is the place to start${lc.signedIn && finished > 0 ? " (the first they have not finished)" : ""}`;
   lines.push(
-    plan.asked
-      ? "Buttons under your reply go on to the next lesson, explain more simply and open the lesson."
-      : "A card under your reply shows the chapter's lessons with the student's progress, and buttons to go on to the next lesson, to explain more simply and to open the lesson.",
-    "So do not list the lessons, do not write a path, and do not ask whether to go on.",
-    "Write: " +
-      (startMissed > 0 && !plan.asked ? "one line saying their mistakes are here and you start here; then " : "") +
-      "teach the lesson in two or three short lines from its one-line summary above" +
-      (example ? ", then work their mistake above" : " with one small example") +
-      ". Write maths inside \\( \\).",
-    "A check question from this lesson is shown under your reply, headed Your turn: do not mention it, and do not write a question of your own.",
-    "Do not list the chapter's questions instead of teaching, and do not call my_progress."
+    "A card under your reply shows these lessons with the student's progress and mistakes; tapping a lesson plays it full screen, with its own slides and questions.",
+    `Write one short line only: ${where}, so tap a lesson on the card to start.`,
+    "Do not teach the lesson or work an example: the lesson does that. Do not list the lessons, do not write a path, and do not write a question.",
+    "Do not call my_progress."
   );
   return lines.join("\n");
 }
@@ -423,17 +421,10 @@ export function chapterOverviewTool(d: ChapterOverviewDeps): VTool {
       ]);
       if (learn && learn.lessons.length > 0) {
         const plan = planLearn(learn, learnMisses, askedPart);
-        const cur = learn.lessons[plan.current - 1];
-        const example =
-          plan.exampleMiss && d.loadMissExample
-            ? await d.loadMissExample(plan.exampleMiss.questionId).catch((err) => {
-                console.error("V: chapter_overview example unavailable", plan.exampleMiss?.questionId, err);
-                return null;
-              })
-            : null;
         const paths = [chapterPath(hit), ...plan.parts.flatMap((p) => (p.href ? [p.href] : []))];
         if (ref) paths.push(`/notes/${ref.key}`);
         d.onPaths(paths);
+        // The map shows on every reply: tapping a lesson on it is how the student opens one.
         d.onLesson?.({
           kind: "learn",
           exam: hit.examName,
@@ -444,12 +435,12 @@ export function chapterOverviewTool(d: ChapterOverviewDeps): VTool {
           current: plan.current,
           order: plan.order,
           next: nextInOrder(plan.order, plan.current),
-          showMap: !plan.asked,
+          showMap: true,
           missed: learnMisses?.length ?? 0,
           tryQuestionId: null,
-          tryLearn: { chapter: cur.chapter, concept: cur.slug },
+          tryLearn: null,
         });
-        return formatLearnOverview(hit, learn, plan, learnMisses, example);
+        return formatLearnOverview(hit, learn, plan, learnMisses);
       }
 
       const [parts, misses] = await Promise.all([
