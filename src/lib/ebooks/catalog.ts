@@ -21,6 +21,7 @@ import { BOOK_POSITION } from "@/lib/notes/bookOrder";
 import { formulaPageCounts } from "@/lib/formula/chapterPages";
 import {
   CHAPTERWISE_EBOOKS,
+  HOMI_BHABHA_9_ORDER,
   PAPERS_EBOOKS,
   REPEATS_EBOOKS,
   TEXTBOOK_EBOOKS,
@@ -53,7 +54,17 @@ type Common = {
   sampleChapter: string;
 };
 
-export type NotesEbook = Common & { kind: "formula" | "notes"; notesRoute: string };
+/** One notes subject of a book that reads several (Homi Bhabha): its route, the label its chapters carry, and their order by name. */
+export type NotesPart = { route: string; label: string; order: readonly string[] };
+export type NotesEbook = Common & {
+  kind: "formula" | "notes";
+  /** The cover's two lines; the CET books' default is "MHT-CET" over the title's subject. */
+  cover?: { over: string; main: string };
+} & (
+    | { notesRoute: string; parts?: undefined }
+    /** Several notes subjects in turn (Homi Bhabha Class 9, 2026-11-21), each chapter labelled with its subject. */
+    | { notesRoute?: undefined; parts: readonly NotesPart[] }
+  );
 export type PyqEbook = Common & {
   kind: "pyq";
   bookSlug: string;
@@ -98,6 +109,19 @@ export const EBOOKS: readonly EbookDefinition[] = [
       sampleChapter: s.sample,
     },
   ]),
+  {
+    kind: "notes",
+    slug: "homi-bhabha-9-notes",
+    title: "Homi Bhabha Class 9 Science",
+    subtitle: "Every chapter taught from the start, Physics to General Science: the idea, the definition, a worked example and the traps.",
+    sampleChapter: "current-electricity",
+    cover: { over: "Homi Bhabha Class 9", main: "Science" },
+    parts: (["Physics", "Chemistry", "Biology", "General Science"] as const).map((label) => ({
+      route: `homi-bhabha-9-${label.toLowerCase().replace(/\s+/g, "-")}`,
+      label,
+      order: HOMI_BHABHA_9_ORDER[label],
+    })),
+  },
   {
     kind: "pyq",
     slug: "mht-cet-maths-pyq",
@@ -196,13 +220,37 @@ export function ebookChapters(ebook: Exclude<EbookDefinition, BoardEbook>): Eboo
       };
     });
   }
-  const chapters = getNotesChaptersForSubject(ebook.notesRoute).filter((c) => ebook.kind === "notes" || hasFormulaContent(c));
-  return chapters.map((c, i) => ({
-    number: i + 1,
-    slug: c.chapterSlug,
-    name: c.chapter.chapterName,
-    classLabel: chapterClassLabel(ebook.notesRoute, c.chapterSlug),
-    notes: c,
-    bookChapter: null,
-  }));
+  const keep = (c: NotesChapterRegistration) => ebook.kind === "notes" || hasFormulaContent(c);
+  if (ebook.parts) {
+    // Each subject in turn, its chapters in the pinned order; a chapter the order does not name stops the build.
+    const chapters = ebook.parts.flatMap((p) =>
+      getNotesChaptersForSubject(p.route)
+        .filter(keep)
+        .map((c) => {
+          const at = p.order.indexOf(c.chapter.chapterName);
+          if (at < 0) throw new Error(`ebook ${ebook.slug}: notes chapter "${c.chapter.chapterName}" is missing from the ${p.label} order`);
+          return { c, at, label: p.label };
+        })
+        .sort((a, b) => a.at - b.at)
+    );
+    return chapters.map(({ c, label }, i) => ({
+      number: i + 1,
+      slug: c.chapterSlug,
+      name: c.chapter.chapterName,
+      classLabel: label,
+      notes: c,
+      bookChapter: null,
+    }));
+  }
+  const route = ebook.notesRoute;
+  return getNotesChaptersForSubject(route)
+    .filter(keep)
+    .map((c, i) => ({
+      number: i + 1,
+      slug: c.chapterSlug,
+      name: c.chapter.chapterName,
+      classLabel: chapterClassLabel(route, c.chapterSlug),
+      notes: c,
+      bookChapter: null,
+    }));
 }

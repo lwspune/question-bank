@@ -59,6 +59,19 @@ describe("shelfOf", () => {
     expect(keys).toEqual(["mht-cet", "jee-mains", "ssc-cgl", "cbse-12"]);
   });
 
+  // Homi Bhabha Class 9 (2026-11-21): both its books on a shelf of their own, under Science.
+  it("puts both Homi Bhabha books on the Homi Bhabha shelf, before More books", () => {
+    expect(shelfOf(book("homi-bhabha-9-chapterwise-pyqs"))).toEqual({ shelf: "homi-bhabha-9", subject: "Science" });
+    expect(shelfOf(book("homi-bhabha-9-notes", "Homi Bhabha Class 9 Science Notes Book"))).toEqual({
+      shelf: "homi-bhabha-9",
+      subject: "Science",
+    });
+    const keys = storeShelves([book("mystery", "Mystery"), book("homi-bhabha-9-notes"), book("cbse-10-science-solved-papers")]).map(
+      (s) => s.key
+    );
+    expect(keys).toEqual(["cbse-10", "homi-bhabha-9", "more"]);
+  });
+
   it("sends a book the catalog does not know to More books, titled as stored", () => {
     expect(shelfOf(book("nda-maths-pyq", "NDA Mathematics PYQ Book"))).toEqual({ shelf: "more", subject: "NDA Mathematics PYQ Book" });
   });
