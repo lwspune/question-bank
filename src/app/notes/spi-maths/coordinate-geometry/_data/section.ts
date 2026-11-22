@@ -101,7 +101,7 @@ export const SPI_CG_SECTION_NOTE: SubtopicNote = {
           answer: "(4, 3), the midpoint of the hypotenuse AB",
         },
       ],
-      pyqExampleId: "cfe76afd-1fbd-4484-9c26-98357374a5b0",
+      pyqExampleId: "97dd96b5-7e8b-466e-957f-33085c96f220",
       traps: [
         {
           title: "Adding the wrong pair of corners",

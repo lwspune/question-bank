@@ -65,7 +65,7 @@ export const SPI_RC_FACTS_NOTE: SubtopicNote = {
           answer: "They lose their crops.",
         },
       ],
-      pyqExampleId: "afa6bb45-2457-4ced-9b21-8f7572bfb599",
+      pyqExampleId: "e6d4d2c7-43b2-4d17-9e38-8f5564af0661",
       traps: [
         {
           title: "Half of the line",

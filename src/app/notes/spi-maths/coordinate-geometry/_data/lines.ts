@@ -168,7 +168,7 @@ export const SPI_CG_LINES_NOTE: SubtopicNote = {
         { prompt: "What are the slope and the y-intercept of \\(y = 3x - 7\\)?", answer: "Slope 3, y-intercept \\(-7\\)" },
         { prompt: "Find the equation of the line through (2, 3) with slope \\(\\frac{1}{2}\\).", answer: "\\(x - 2y + 4 = 0\\)" },
       ],
-      pyqExampleId: "f8075066-b09d-4385-8009-1e4926b1e20d",
+      pyqExampleId: "d0f3d01f-7a55-490c-88fb-0ab83c947489",
       traps: [
         {
           title: "Sign slips with a negative point",

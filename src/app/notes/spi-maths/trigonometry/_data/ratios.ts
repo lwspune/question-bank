@@ -112,7 +112,7 @@ export const SPI_TG_RATIOS_NOTE: SubtopicNote = {
         { prompt: "If \\(\\cos A = \\frac{8}{17}\\) for an acute angle A, what is \\(\\sin A\\)?", answer: "\\(\\frac{15}{17}\\)" },
         { prompt: "If \\(\\sin A = 0.6\\) and \\(\\cos A = 0.8\\), what is \\(\\cot A\\)?", answer: "\\(\\frac{0.8}{0.6} = \\frac{4}{3}\\)" },
       ],
-      pyqExampleId: "fcc09b1a-276a-4e99-a29d-9ecbc283abaa",
+      pyqExampleId: "5c54099d-d7dc-41e6-8eab-eefc806ed7d6",
       traps: [
         {
           title: "Pairing sec with sin",

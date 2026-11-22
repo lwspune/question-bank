@@ -145,7 +145,7 @@ export const SPI_QE_SUM_PRODUCT_NOTE: SubtopicNote = {
         { prompt: "A student copies the constant term of \\(x^2 + bx + c = 0\\) wrongly and gets the roots 4 and 5. What is the correct value of b?", answer: "The sum 9 is right, so \\(b = -9\\)" },
         { prompt: "A student copies the coefficient of x in \\(x^2 + bx + c = 0\\) wrongly and gets the roots 2 and \\(-7\\). What is the correct value of c?", answer: "The product is right, so \\(c = -14\\)" },
       ],
-      pyqExampleId: "de951b7f-f259-46d3-9845-fd811ac877f0",
+      pyqExampleId: "fc454bb6-4782-49dc-837a-cc635e46a472",
       traps: [
         {
           title: "Trusting the wrong student's sum",

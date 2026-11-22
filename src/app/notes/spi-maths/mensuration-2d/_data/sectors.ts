@@ -48,7 +48,7 @@ export const SPI_M2_SECTORS_NOTE: SubtopicNote = {
           answer: "\\(154 - 98 = 56\\) square cm",
         },
       ],
-      pyqExampleId: "535869b8-28b7-44e4-9d47-fd6e0e01e196",
+      pyqExampleId: "e21a21b7-4d46-4f3f-a141-215fcef443b1",
       traps: [
         {
           title: "Minute hand or hour hand",

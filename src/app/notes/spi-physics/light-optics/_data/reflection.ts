@@ -123,6 +123,9 @@ export const SPI_LO_REFLECTION_NOTE: SubtopicNote = {
             cells: ["Concave, object far away", "Real and inverted", "Torch and headlight reflectors, solar cookers"],
           },
           {
+            cells: ["Concave, object at the focus", "At infinity: the reflected rays go out parallel", "Searchlights send out a parallel beam this way"],
+          },
+          {
             cells: ["Concave, object very close", "Virtual, erect, enlarged", "Shaving and make-up mirrors, a dentist's mirror"],
           },
           {
@@ -143,7 +146,7 @@ export const SPI_LO_REFLECTION_NOTE: SubtopicNote = {
         { prompt: "A spherical mirror has a radius of curvature of 30 cm. What is its focal length?", answer: "15 cm" },
         { prompt: "Which mirror is used as a shaving mirror?", answer: "Concave mirror" },
       ],
-      pyqExampleId: "9ab36a8a-82a9-4d87-9284-c952144c247c",
+      pyqExampleId: "76d8fe87-aa67-406c-b169-a4b5840d2a88",
       traps: [
         {
           title: "Choosing a plane mirror for the rear view",

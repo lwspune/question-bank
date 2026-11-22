@@ -45,7 +45,7 @@ export const SPI_TR_SIMILAR_NOTE: SubtopicNote = {
         { prompt: "Are any two equilateral triangles similar?", answer: "Yes, all their angles are \\(60^\\circ\\)." },
         { prompt: "Name the three similarity criteria for triangles.", answer: "AA (AAA), SSS and SAS" },
       ],
-      pyqExampleId: "e72f5381-aaec-44af-8fa0-4639b1e95f30",
+      pyqExampleId: "46766a87-ddaf-49c7-be12-a596a065b307",
       traps: [
         {
           title: "Finding the angle at the wrong corner",

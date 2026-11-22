@@ -18,6 +18,7 @@ export const SPI_CC_REACTIONS_NOTE: SubtopicNote = {
         "- **Combustion**: burning in oxygen gives carbon dioxide, water, heat and light. Saturated compounds burn with a clean blue flame, unsaturated ones with a sooty yellow flame.\n" +
         "- **Oxidation**: alkaline potassium permanganate or acidified potassium dichromate turns an **alcohol** into a **carboxylic acid** (by way of an aldehyde). Ethanol becomes ethanoic acid.\n" +
         "- **Addition**: an **unsaturated** compound (double or triple bond) adds hydrogen with a **nickel** catalyst. This hydrogenation turns vegetable oils into vanaspati ghee.\n" +
+        "- **Polymerisation**: many small molecules (monomers) join into one very large molecule (a polymer), as ethene does to make polythene.\n" +
         "- **Substitution**: in sunlight, chlorine replaces the hydrogen atoms of a **saturated** hydrocarbon one by one.",
       table: {
         columns: ["Reaction", "Which compounds", "Example"],

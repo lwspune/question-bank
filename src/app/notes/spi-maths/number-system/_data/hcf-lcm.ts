@@ -51,7 +51,7 @@ export const SPI_NS_HCF_LCM_NOTE: SubtopicNote = {
           answer: "\\(m = 4\\)",
         },
       ],
-      pyqExampleId: "517fb9f6-ed1b-4f05-85c8-47ddf4c21fa0",
+      pyqExampleId: "72f1b916-8082-4ef7-b72c-ce8bdbd9e4ae",
       traps: [
         {
           title: "Putting a prime in the HCF that one number lacks",
@@ -146,7 +146,7 @@ export const SPI_NS_HCF_LCM_NOTE: SubtopicNote = {
         { prompt: "The HCF of two numbers is 4 and their LCM is 48. One number is 16. Find the other.", answer: "12" },
         { prompt: "Can two numbers have HCF 6 and LCM 50?", answer: "No: the HCF must divide the LCM, and 6 does not divide 50." },
       ],
-      pyqExampleId: "9c5b46e2-55c1-44af-87f4-5cd5e26170e8",
+      pyqExampleId: "4f794b71-48e2-4bb6-9891-b901139a552e",
       traps: [
         {
           title: "Using the product rule for three numbers",

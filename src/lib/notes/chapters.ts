@@ -3271,6 +3271,16 @@ import {
   MS7_AREA_NOTES,
   MS7_AREA_SLUGS,
 } from "@/app/notes/mh-scholarship-7-maths/perimeter-area/_data";
+import {
+  SPI_TIME_SPEED_DISTANCE_CHAPTER,
+  SPI_TIME_SPEED_DISTANCE_NOTES,
+  SPI_TIME_SPEED_DISTANCE_SLUGS,
+} from "@/app/notes/spi-maths/time-speed-distance/_data";
+import {
+  SPI_ANALOGY_CHAPTER,
+  SPI_ANALOGY_NOTES,
+  SPI_ANALOGY_SLUGS,
+} from "@/app/notes/spi-reasoning/analogy/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6674,6 +6684,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
   },
   {
     examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "time-speed-distance",
+    chipLabel: "Time, Speed and Distance notes",
+    chapter: SPI_TIME_SPEED_DISTANCE_CHAPTER,
+    notes: SPI_TIME_SPEED_DISTANCE_NOTES,
+    slugs: SPI_TIME_SPEED_DISTANCE_SLUGS,
+  },
+  {
+    examName: "SPI",
     subjectName: "English",
     subjectRoute: "spi-english",
     subjectDisplay: "SPI English",
@@ -6781,6 +6802,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SPI_ORDER_RANKING_CHAPTER,
     notes: SPI_ORDER_RANKING_NOTES,
     slugs: SPI_ORDER_RANKING_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Reasoning",
+    subjectRoute: "spi-reasoning",
+    subjectDisplay: "SPI Reasoning",
+    chapterSlug: "analogy",
+    chipLabel: "Analogy notes",
+    chapter: SPI_ANALOGY_CHAPTER,
+    notes: SPI_ANALOGY_NOTES,
+    slugs: SPI_ANALOGY_SLUGS,
   },
   {
     examName: "SPI",

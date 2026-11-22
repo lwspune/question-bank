@@ -42,7 +42,7 @@ export const SPI_SE_VERBS_NOTE: SubtopicNote = {
         ],
         caption: "Find the true subject first. The noun just before the verb is often a trap.",
       },
-      pyqExampleId: "f27bc586-1ff8-442e-8621-797beb0a08bb",
+      pyqExampleId: "af94af26-a478-4e74-a924-16c40861b5be",
       selfCheckExample: {
         prompt: item("The price of these shoes", "are too high", "for me."),
         steps: [
@@ -67,6 +67,14 @@ export const SPI_SE_VERBS_NOTE: SubtopicNote = {
           title: "The nearest noun is not always the subject",
           body:
             "In 'The box of pencils is on the table', the noun next to the verb is 'pencils', but the box is on the table. Ask who or what does the verb before you decide singular or plural.",
+        },
+        {
+          title: "As if takes were",
+          body: "'As if' and 'as though' bring in something that is not true, so they take 'were' for every subject: 'He acts as if he **were** the boss', not 'as if he is'.",
+        },
+        {
+          title: "One of the takes a plural noun",
+          body: "'One of the best player' is wrong: you pick one from many, so the noun is plural, 'one of the best players'. The verb after 'one of' stays singular: 'One of the players is late.'",
         },
         {
           title: "An activity is one thing",
@@ -182,6 +190,10 @@ export const SPI_SE_VERBS_NOTE: SubtopicNote = {
           title: "Not every 'to' is followed by a plain verb",
           body:
             "In 'look forward to', 'be used to' and 'object to', the 'to' is a preposition. A preposition takes the -ing form: 'I object to waiting', not 'I object to wait'.",
+        },
+        {
+          title: "Hanged for a person, hung for a thing",
+          body: "A person put to death by a rope was **hanged**. A picture or a coat is **hung**. Using 'hung' for a person is the error.",
         },
         {
           title: "Something done to a noun takes the third form",

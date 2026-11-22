@@ -45,7 +45,7 @@ export const SPI_ST_GROUPED_MEDIAN_NOTE: SubtopicNote = {
         { prompt: "Which average needs a cumulative frequency table to find?", answer: "The median" },
         { prompt: "A table has total frequency 50. The median class is the first class whose cumulative frequency reaches what number?", answer: "25" },
       ],
-      pyqExampleId: "b67991f1-598d-4ebb-b86f-053af3be7b03",
+      pyqExampleId: "41717eaf-acd4-4cca-b299-a0b46cf40ecb",
       traps: [
         {
           title: "Picking the tallest class as the median class",
@@ -100,7 +100,7 @@ export const SPI_ST_GROUPED_MEDIAN_NOTE: SubtopicNote = {
         { prompt: "In the median formula, what does cf stand for?", answer: "The cumulative frequency of the class before the median class" },
         { prompt: "A table gives mid-values 25, 35, 45, 55. What are its classes?", answer: "20-30, 30-40, 40-50, 50-60" },
       ],
-      pyqExampleId: "5cf03c9e-6c47-4630-8c70-1ff569788a0d",
+      pyqExampleId: "9e038746-4ced-49c8-925d-4330ceb06a13",
       traps: [
         {
           title: "Using the median class's own cumulative frequency",

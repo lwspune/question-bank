@@ -18,6 +18,7 @@ export const SPI_ST_GROUPED_MEAN_NOTE: SubtopicNote = {
         "- **Class mark** \\(= \\dfrac{\\text{lower limit} + \\text{upper limit}}{2}\\), the mid-point of the class.\n" +
         "- **Class size** (width) \\(=\\) upper limit \\(-\\) lower limit. It is not the class mark.\n" +
         "- Mean \\(= \\dfrac{\\sum f_i x_i}{\\sum f_i}\\), with \\(x_i\\) the class marks.\n" +
+        "- Using class marks means we take every frequency to be **centred at the class mark** of its class. The direct, assumed mean and step deviation methods all give the **same** mean; the last two only make the arithmetic shorter.\n" +
         "- Divide by the total frequency \\(\\sum f_i\\), never by the number of classes.\n" +
         "- Two missing frequencies need two equations: one from the total frequency, one from \\(\\sum f_i x_i = \\bar{x} \\times \\sum f_i\\).",
       formula: {
@@ -55,7 +56,7 @@ export const SPI_ST_GROUPED_MEAN_NOTE: SubtopicNote = {
         },
         { prompt: "A class has class mark 18 and class size 6. What are its limits?", answer: "15 and 21" },
       ],
-      pyqExampleId: "a5a3b066-ef9e-47f7-8652-08636d2b473a",
+      pyqExampleId: "58f1d111-4724-41f3-ad43-a915d8925737",
       traps: [
         {
           title: "Multiplying by a class limit",

@@ -48,7 +48,7 @@ export const SPI_OR_RANKS_NOTE: SubtopicNote = {
         { prompt: "In a queue of 30 people, how many stand behind the 12th person from the front?", answer: "18", method: "\\(30 - 12 = 18\\)." },
         { prompt: "In a class, Rani is 10th and Gita is 15th from the top. How many students are between them?", answer: "4", method: "\\(15 - 10 - 1 = 4\\)." },
       ],
-      pyqExampleId: "fed3152e-79c7-4951-ace1-b10447543746",
+      pyqExampleId: "07f13fad-5dca-453a-b60d-8e2b214f8a5b",
       traps: [
         {
           title: "Adding the ranks without taking one away",

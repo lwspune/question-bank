@@ -48,7 +48,7 @@ export const SPI_VO_ANTONYMS_NOTE: SubtopicNote = {
         { prompt: "Give the opposite of 'victory'.", answer: "defeat" },
         { prompt: "Give the opposite of 'temporary'.", answer: "permanent" },
       ],
-      pyqExampleId: "ae9a56aa-73a6-4960-8e95-62f9f9b36b10",
+      pyqExampleId: "6bd76dba-3907-402c-bdbb-19438d9bcf99",
       traps: [
         {
           title: "Choosing the synonym by mistake",
@@ -90,6 +90,8 @@ export const SPI_VO_ANTONYMS_NOTE: SubtopicNote = {
           { cells: ["honest", "telling the truth", "dishonest"] },
           { cells: ["visible", "able to be seen", "invisible"] },
           { cells: ["permanent", "lasting for ever", "temporary"] },
+          { cells: ["rudely", "with bad manners", "politely"] },
+          { cells: ["hazardous", "dangerous", "safe"], noteAmber: "Risky is a synonym, not the opposite." },
         ],
         caption: "An opposite is the same kind of word: a noun for a noun, a describing word for a describing word.",
       },
@@ -151,10 +153,12 @@ export const SPI_VO_ANTONYMS_NOTE: SubtopicNote = {
           { cells: ["ratify", "to approve a treaty or law formally", "annul, cancel"] },
           { cells: ["frugal", "careful not to waste money", "extravagant"] },
           { cells: ["transparent", "clear enough to see through", "opaque"] },
+          { cells: ["extravagant", "spending far too much, wasteful", "economical, thrifty"] },
+          { cells: ["barbarian", "an uncivilized, wild person", "civilized"], noteAmber: "Uncivilized means the same as barbarian, so it is never the opposite." },
         ],
         caption: "Synonym families to strike: frail, erring and mortal (like fallible); derisive, insolent and supercilious (like disdainful).",
       },
-      pyqExampleId: "19d1b893-c11b-416d-94ea-0098dd2c038f",
+      pyqExampleId: "5e413edf-aac6-4f1d-be54-f5c69d6ad6d9",
       selfCheckExample: {
         prompt:
           "Choose the word opposite in meaning: My grandfather lives a \\(\\underline{\\text{frugal}}\\) life. (a) thrifty (b) simple (c) extravagant (d) careful",

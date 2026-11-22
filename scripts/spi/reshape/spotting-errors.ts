@@ -9,6 +9,8 @@
  * preposition in (c)), 77f9030a (the option letters are printed confusingly, see its note),
  * b4b86128 (the missing "been" could be added to part (b) or (c)), 7a8aa74b ("it's well to" is an
  * old, formal idiom; some keys call it an error) and f448db93 (the printed part is garbled).
+ * 2026-11-22: the 2026 paper's six rows added; e2175bd2 (in a kitchen) joins Pronouns, Comparisons
+ * and Connectors from a one-off Articles subtopic.
  */
 import type { ReshapePlan } from "../reshape";
 
@@ -24,7 +26,7 @@ const plan: ReshapePlan = {
   chapter: "Spotting Errors",
   order: [T.verbs, T.tenses, T.prepositions, T.words, T.noError],
   byPrefix: {
-    [T.verbs]: [
+    [T.verbs]: ["99506b42", "af94af26", "eab256c1", "eebda4d6", 
       "f27bc586", "5112f456", "5da3b80a", "2579465e", "cab10308", "b4b86128", "815a9c1b", "3871f385",
       "97eee46e",
     ],
@@ -32,17 +34,17 @@ const plan: ReshapePlan = {
     [T.prepositions]: [
       "e3bb3e74", "cb7cac7d", "f1ec607d", "af256b5f", "693828f2", "318f93f5", "9211f5e1", "ba261893",
     ],
-    [T.words]: ["c53b912b", "73b0be5a", "eed9ca9f", "77f9030a", "afd5239b", "f448db93"],
+    [T.words]: ["e178315d", "e2175bd2", "c53b912b", "73b0be5a", "eed9ca9f", "77f9030a", "afd5239b", "f448db93"],
     [T.noError]: ["49b64d32", "9db1c7cb", "16af4417", "80a55723", "7a8aa74b"],
   },
   expected: {
-    [T.verbs]: 9,
+    [T.verbs]: 13,
     [T.tenses]: 5,
     [T.prepositions]: 8,
-    [T.words]: 6,
+    [T.words]: 8,
     [T.noError]: 5,
   },
-  total: 33,
+  total: 39,
 };
 
 export default plan;

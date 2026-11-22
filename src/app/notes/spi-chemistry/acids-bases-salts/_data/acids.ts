@@ -155,7 +155,7 @@ export const SPI_AB_ACIDS_NOTE: SubtopicNote = {
         { prompt: "From what is litmus obtained?", answer: "Lichens" },
         { prompt: "Name one indicator that works by smell.", answer: "Onion, vanilla or clove" },
       ],
-      pyqExampleId: "11559c0a-6f9f-4f5b-836d-2c3fcd85769f",
+      pyqExampleId: "8e2b9ed4-a2e0-4d8c-9c1e-a9f39223866e",
       traps: [
         {
           title: "Testing an acid with red litmus",

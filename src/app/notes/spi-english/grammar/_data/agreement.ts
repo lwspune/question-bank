@@ -6,7 +6,7 @@ export const SPI_GR_AGREEMENT_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A verb must match its real subject in number, and a conjunction is the joining word whose meaning decides how two ideas fit together.",
   whyItMatters:
-    "Eight questions in the bank: 6 EASY and 2 MODERATE, and one is from the 2022 paper. Three ask which verb agrees with a tricky subject; five ask you to spot, count or choose a joining word.",
+    "Nine questions in the bank: 7 EASY and 2 MODERATE, one from the 2022 paper and one from the 2026 paper. Three ask which verb agrees with a tricky subject, five ask you to spot, count or choose a joining word, and one asks what type of sentence you are reading.",
   concepts: [
     {
       kind: "reference" as const,
@@ -123,6 +123,7 @@ export const SPI_GR_AGREEMENT_NOTE: SubtopicNote = {
       definition:
         "- Decide the link: **addition** (and), **contrast** (but), **result** (so), **reason** (because, as), **choice** (or).\n" +
         "- Keep both verbs in the **same tense** unless the meaning changes.\n" +
+        "- **Types of sentence:** a **simple** sentence has one clause; a **compound** sentence joins two clauses that could each stand alone, with and, but, or or so; a **complex** sentence has one main clause and a clause that depends on it, opened by when, because, if, although, who or that.\n" +
         "- Do not change the facts: a conjunction such as neither ... nor or as can add a meaning the two sentences never had.",
       authoredExample: {
         prompt: "Join with a conjunction: The road was wet. We drove slowly.",
@@ -148,6 +149,10 @@ export const SPI_GR_AGREEMENT_NOTE: SubtopicNote = {
       ],
       pyqExampleId: "a932a710-a69b-4dce-825f-a16583a6e3ff",
       traps: [
+        {
+          title: "Calling a 'when' sentence compound",
+          body: "'When the bell rang, we ran out' has a clause that cannot stand alone (when the bell rang), so it is complex. A compound sentence needs two clauses that could each stand alone.",
+        },
         {
           title: "Joining a contrast with 'and'",
           body: "'And' only adds. When the second fact goes against the first, the joining word is 'but'.",

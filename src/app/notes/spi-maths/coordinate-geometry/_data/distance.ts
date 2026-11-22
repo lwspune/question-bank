@@ -95,7 +95,7 @@ export const SPI_CG_DISTANCE_NOTE: SubtopicNote = {
         { prompt: "Find the distance of the point (−5, 12) from the origin.", answer: "13 units" },
         { prompt: "Find the distance between (−3, 7) and (5, 7).", answer: "8 units" },
       ],
-      pyqExampleId: "5dad8b80-b271-49c5-9960-fac553789508",
+      pyqExampleId: "5df322d9-a33c-4289-acc6-9c6a7a26a043",
       traps: [
         {
           title: "Losing a minus sign",

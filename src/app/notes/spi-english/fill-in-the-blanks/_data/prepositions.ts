@@ -140,10 +140,11 @@ export const SPI_FB_PREPOSITIONS_NOTE: SubtopicNote = {
           { cells: ["congratulate", "on", "We congratulated her on her win."] },
           { cells: ["good", "at", "He is good at chess."] },
           { cells: ["interested", "in", "She is interested in music."] },
+          { cells: ["depend, rely", "on", "Our picnic depends on the weather."] },
         ],
         caption: "If two prepositions look possible, the meaning in the sentence picks between them, as with anxious for and anxious about.",
       },
-      pyqExampleId: "d477ec3f-1575-4367-8c7b-a194704487b5",
+      pyqExampleId: "96ed3b7a-d909-443d-8727-022bb936fc5c",
       selfCheckExample: {
         prompt: "Fill in the blank: The coach congratulated the team ____ their victory. (a) for (b) at (c) on (d) about",
         steps: ["'Congratulate' takes 'on' before the success.", "The team was congratulated on their victory."],

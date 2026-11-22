@@ -47,7 +47,7 @@ export const SPI_FB_WORDS_NOTE: SubtopicNote = {
         { prompt: "Choose: 'Her (winsome / gruesome) smile won everyone over.'", answer: "winsome" },
         { prompt: "Choose: 'The teacher (told / said) the class to be quiet.'", answer: "told", method: "'Tell' takes a person after it; 'say' does not." },
       ],
-      pyqExampleId: "13d75aec-3898-4ed4-98a8-c598c39b33bc",
+      pyqExampleId: "7cccb4ca-a59b-4b6e-914e-e9c7a76a88b2",
       traps: [
         {
           title: "Look-alike words can have opposite feelings",
@@ -84,10 +84,13 @@ export const SPI_FB_WORDS_NOTE: SubtopicNote = {
           { cells: ["pay attention", "listen or look carefully", "Pay attention to the teacher."] },
           { cells: ["keep a promise", "do what you said you would", "He always keeps his promises."] },
           { cells: ["take part in", "join in an activity", "She took part in the race."] },
+          { cells: ["a herd of", "a group of cows, cattle or elephants", "A herd of elephants crossed the road."], noteAmber: "A flock is for sheep or birds." },
+          { cells: ["ripe", "ready to be picked and eaten (fruit)", "The mangoes on the tree are ripe."] },
+          { cells: ["confiscate", "to take goods away officially", "The police confiscated the stolen phones."] },
         ],
         caption: "Near-synonyms are the usual wrong options: retain, keep and hoard sound close to commit but do not fit 'to memory'.",
       },
-      pyqExampleId: "4c67c2c1-38ae-42a4-8bac-a1f50474b694",
+      pyqExampleId: "7f1839ec-eeed-4402-a1b7-b75cc20c768b",
       selfCheckExample: {
         prompt:
           "Fill in the blank: You must ____ attention in class if you want to understand the lesson. (a) give (b) pay (c) put (d) keep",

@@ -48,7 +48,7 @@ export const SPI_PR_TWO_DICE_NOTE: SubtopicNote = {
         { prompt: "Two dice are thrown. What is the probability of a doublet of an even number?", answer: "\\(\\frac{3}{36} = \\frac{1}{12}\\)" },
         { prompt: "Two dice are thrown. What is the probability that the product is 6?", answer: "\\(\\frac{4}{36} = \\frac{1}{9}\\)" },
       ],
-      pyqExampleId: "76fa210f-c365-4669-9a1b-8978c270a51d",
+      pyqExampleId: "e975e701-bdac-42ba-bf0d-014d0b757b5c",
       traps: [
         {
           title: "Counting (2, 5) and (5, 2) once",
