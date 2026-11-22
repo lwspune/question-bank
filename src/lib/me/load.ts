@@ -35,6 +35,7 @@ import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { firstMockHref, firstNotesHref } from "@/lib/exam/examLinks";
 import { loadStudyCard, studyExamOf, type StudyExam } from "@/lib/studyTime/reportServer";
 import type { StudyCard } from "@/lib/studyTime/report";
+import { loadClassOffer, type ClassOfferCardData } from "@/lib/classes/meOfferServer";
 
 /** The header fields (greeting, exams, focus) plus the Home tab's own cards. */
 export type MeData = MeHeaderData & {
@@ -60,6 +61,10 @@ export type MeData = MeHeaderData & {
    *  the exam Start next ranks by, or null under 15 minutes. Optional so older
    *  fixtures stay small. */
   study?: { card: StudyCard; exam: StudyExam | null } | null;
+  /** The class offer (2026-11-22, migration 0282): SPI crash course for a
+   *  Class 10 student, offline NDA classes for an NDA student, or null.
+   *  Optional so older fixtures stay small. */
+  classOffer?: ClassOfferCardData | null;
 };
 
 export async function loadMe(
@@ -114,7 +119,7 @@ export async function loadMe(
   // ROUND 2: the reads that need round 1 (the focus, the exams), at once.
   // Each is best effort: a failed read costs its card, never the page.
   const studySlug = startNextExam({ focusSlug, targets });
-  const [continueItems, resultChecked, startNext, studyCard] = await Promise.all([
+  const [continueItems, resultChecked, startNext, studyCard, classOffer] = await Promise.all([
     // Where they were last working, across the bank, /board, notes and
     // homework (2026-11-06).
     loadContinue(
@@ -149,6 +154,12 @@ export async function loadMe(
       console.error("study time read failed", e instanceof Error ? e.message : e);
       return null;
     }),
+    // The class offer: their exams, every one, not the focus, so a Class 10
+    // student focused on NDA is still asked about SPI.
+    loadClassOffer(user.id, targets).catch((e) => {
+      console.error("class offer read failed", e instanceof Error ? e.message : e);
+      return null;
+    }),
   ]);
   const cont = continueItems[0];
   const resultCheck = resultChecked.check;
@@ -180,5 +191,6 @@ export async function loadMe(
     showNps,
     startNext,
     study: studyCard ? { card: studyCard, exam: studyExamOf(studySlug) } : null,
+    classOffer,
   };
 }
