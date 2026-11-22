@@ -61,3 +61,13 @@ describe("the files are well formed", () => {
     }
   });
 });
+
+describe("topicKey: a topic named in the file matches the bank's whatever its punctuation", () => {
+  it("dash, colon, case and spacing do not matter; letters and digits do", async () => {
+    const { topicKey } = await import("@/lib/learn/vLinks");
+    const bank = "Solution of Triangle " + String.fromCodePoint(0x2014) + " Sine, Cosine and Projection Rules";
+    expect(topicKey(bank)).toBe(topicKey("Solution of Triangle: Sine, Cosine and Projection Rules"));
+    expect(topicKey("Integrals of the Type (px+q) over a Quadratic")).toBe(topicKey("integrals of the type  px q over a quadratic"));
+    expect(topicKey("Rolle's Theorem")).not.toBe(topicKey("Lagrange's Mean Value Theorem"));
+  });
+});

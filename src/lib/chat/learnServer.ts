@@ -3,7 +3,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { getOutline } from "@/lib/learn/query";
 import { chapterHref, MASTERY_NEEDED, lessonHref } from "@/lib/learn/links";
 import type { Outline } from "@/lib/learn/lessonState";
-import { learnChapterFor } from "@/lib/learn/vLinks";
+import { learnChapterFor, topicKey } from "@/lib/learn/vLinks";
 import type { ChapterSearchRow } from "./chapterSearch";
 import { learnRows, type LearnChapter } from "./learnLesson";
 
@@ -68,8 +68,7 @@ export async function learnLinkForQuestion(q: { exam: string; chapter: string; s
   if (!outline) return null;
   const rows = learnRows(outline, link, new Map());
   if (rows.length === 0) return null;
-  const norm = (s: string) => s.replace(/\s+/g, " ").trim().toLowerCase();
-  const lesson = q.subtopic ? rows.find((r) => r.topics.some((t) => norm(t) === norm(q.subtopic!))) : undefined;
+  const lesson = q.subtopic ? rows.find((r) => r.topics.some((t) => topicKey(t) === topicKey(q.subtopic!))) : undefined;
   // No ?course= here: V's reply links stop at "?" (lib/chat/replyLinks PATH_RE); the page works without it.
   if (lesson) return { href: lessonHref(lesson.chapter, lesson.slug), title: lesson.title };
   const ch = outline.chapters.find((c) => c.slug === link.chapter);

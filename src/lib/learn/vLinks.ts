@@ -95,6 +95,12 @@ export function learnChapterFor(examName: string, chapterName: string): LearnCha
   return LEARN_CHAPTER_LINKS[`${examName}|${chapterName}`] ?? null;
 }
 
+/**
+ * The bank names this HSC topic with a dash between its halves; the file writes a colon
+ * (no dash in source: tests/voice-ratchet) and topicKey matches the two.
+ */
+const TRIANGLE_RULES = "Solution of Triangle: Sine, Cosine and Projection Rules";
+
 type Topics = Readonly<Record<string, string | readonly string[]>>;
 
 /** `${course}/${course chapter slug}` → lesson slug → the BOARD topic(s) its mistakes are filed under. */
@@ -260,9 +266,9 @@ export const LEARN_LESSON_TOPICS: Readonly<Record<string, Topics>> = {
     "squared-equations": "Trigonometric Equations and General Solutions",
     "reducible-equations": "Trigonometric Equations and General Solutions",
     "polar-coordinates": "Polar Coordinates",
-    "sine-rule": "Solution of Triangle — Sine, Cosine and Projection Rules",
-    "cosine-rule": "Solution of Triangle — Sine, Cosine and Projection Rules",
-    "projection-rule": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "sine-rule": TRIANGLE_RULES,
+    "cosine-rule": TRIANGLE_RULES,
+    "projection-rule": TRIANGLE_RULES,
     "half-angles-and-area": "Applications of Sine, Cosine and Projection Rules",
     "triangle-identities": "Applications of Sine, Cosine and Projection Rules",
     "principal-values": "Inverse Trigonometric Functions and Principal Values",
@@ -410,4 +416,13 @@ export const LEARN_LESSON_TOPICS: Readonly<Record<string, Topics>> = {
 export function lessonTopics(course: string, chapter: string, lesson: string): string[] {
   const t = LEARN_LESSON_TOPICS[`${course}/${chapter}`]?.[lesson];
   return t === undefined ? [] : typeof t === "string" ? [t] : [...t];
+}
+
+/**
+ * How a topic in this file is matched to the bank's: letters and digits only, lower case.
+ * Punctuation never decides a match (the bank's "Solution of Triangle" topic carries a dash
+ * this file writes as a colon), and no two topics of one chapter differ by punctuation alone.
+ */
+export function topicKey(name: string): string {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
 }

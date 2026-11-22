@@ -21,7 +21,7 @@ import type { ChapterMiss } from "./chapterOverview";
 import type { LessonPart, LessonProgress } from "./lesson";
 import type { Outline } from "@/lib/learn/lessonState";
 import { lessonHref } from "@/lib/learn/links";
-import { lessonTopics, type LearnChapterLink } from "@/lib/learn/vLinks";
+import { lessonTopics, topicKey, type LearnChapterLink } from "@/lib/learn/vLinks";
 
 export type LearnLessonRow = {
   /** Learn's own chapter slug (the lesson page's), which can differ from the course chapter's. */
@@ -91,7 +91,6 @@ export type LearnPlan = {
   exampleInLesson: boolean;
 };
 
-const norm = (s: string) => s.replace(/\s+/g, " ").trim().toLowerCase();
 const latest = (ms: readonly ChapterMiss[]) => (ms.length ? ms.reduce((a, b) => (b.lastWrongAt > a.lastWrongAt ? b : a)) : null);
 
 function progressOf(r: LearnLessonRow, lc: LearnChapter): LessonProgress | null {
@@ -104,7 +103,7 @@ function progressOf(r: LearnLessonRow, lc: LearnChapter): LessonProgress | null 
 export function planLearn(lc: LearnChapter, misses: readonly ChapterMiss[] | null, askedPart: number | null): LearnPlan {
   const rows = lc.lessons;
   const done = (i: number) => rows[i].state === "mastered";
-  const inLesson = (i: number) => (misses ?? []).filter((m) => rows[i].topics.some((t) => norm(t) === norm(m.subtopic)));
+  const inLesson = (i: number) => (misses ?? []).filter((m) => rows[i].topics.some((t) => topicKey(t) === topicKey(m.subtopic)));
   const counts = rows.map((_, i) => inLesson(i).length);
 
   const asked = askedPart !== null && askedPart >= 1 && askedPart <= rows.length;

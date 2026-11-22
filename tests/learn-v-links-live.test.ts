@@ -15,7 +15,7 @@
  */
 import { beforeAll, describe, expect, it } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { LEARN_CHAPTER_LINKS, LEARN_LESSON_TOPICS, lessonTopics } from "@/lib/learn/vLinks";
+import { LEARN_CHAPTER_LINKS, LEARN_LESSON_TOPICS, lessonTopics, topicKey } from "@/lib/learn/vLinks";
 import type { Outline } from "@/lib/learn/lessonState";
 
 const HAS_ENV = !!process.env.NEXT_PUBLIC_SUPABASE_URL && !!process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -47,7 +47,7 @@ describe.skipIf(!HAS_ENV)("Learn links for V vs the live outlines and taxonomy",
     for (const r of (data ?? []) as unknown as { name: string; chapter: { name: string; subject: { exam: { name: string } } } }[]) {
       const key = `${r.chapter.subject.exam.name}|${r.chapter.name}`;
       if (!bank.has(key)) bank.set(key, new Set());
-      bank.get(key)!.add(r.name);
+      bank.get(key)!.add(topicKey(r.name));
     }
   });
 
@@ -71,7 +71,7 @@ describe.skipIf(!HAS_ENV)("Learn links for V vs the live outlines and taxonomy",
         const listed = Object.keys(LEARN_LESSON_TOPICS[`${course}/${ch.slug}`] ?? {});
         expect(listed.sort(), `${course}/${ch.slug}: lessons differ from the outline`).toEqual([...live].sort());
         for (const slug of live) {
-          for (const t of lessonTopics(course, ch.slug, slug)) expect(topics.has(t), `${course}/${ch.slug}/${slug}: no topic "${t}" in ${link![0]}`).toBe(true);
+          for (const t of lessonTopics(course, ch.slug, slug)) expect(topics.has(topicKey(t)), `${course}/${ch.slug}/${slug}: no topic "${t}" in ${link![0]}`).toBe(true);
         }
       }
     }
