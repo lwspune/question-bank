@@ -548,6 +548,12 @@ export const TUTOR_PRICE_MIN_ANSWERS = 15;
  * Before it, 1 of 88 tutoring Yes answers was someone in Pune open to offline.
  */
 export const CLASS_LEADS_PUNE_KEEP = 10;
+/**
+ * "me-class-offer": the share of students who saw a /me class card and said
+ * Yes with their number, for the card to stay. The /classes button brought 9
+ * leads in its first 6 days (0 SPI, 2 NDA).
+ */
+export const ME_CLASS_OFFER_YES_KEEP_PCT = 5;
 /** "play-games": signed-in students who finish a /play round in 4 weeks, the floor for reading the rule at all. */
 export const PLAY_PLAYERS_MIN = 50;
 
@@ -639,6 +645,7 @@ export type Readout =
   | "gulf-price"
   | "enem-interest"
   | "offline-classes"
+  | "me-class-offer"
   | "play-games"
   | "practice-trial"
   | "v-intl";
@@ -1611,6 +1618,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-16",
     windowDays: 28,
     readout: "offline-classes",
+    status: "running",
+  },
+  {
+    id: "me-class-offer",
+    title: "Ask on Home: SPI crash course and offline NDA classes",
+    change:
+      "Home (/me) shows one card below Today: Class 10 students (SPI or a Class 10 board in their exams; stage Class 9-10 alone does not count) are asked \"Are you looking for an SPI crash course? We run one offline in Pune.\", and NDA students \"Are you looking for offline NDA classes? We run them in Pune.\" Yes asks for the mobile (filled in from the account), Pune or another city and consent, and the lead joins /dashboard/classes (courses added to any earlier lead on that number); No hides it for good; Know more opens the exam's pattern-and-syllabus page (/exams/<exam>/syllabus, only once one is published) and the card stays. A Class 10 student who also targets NDA is asked about SPI first, then NDA.",
+    why: "The owner wants to fill an SPI crash course and offline NDA classes in Pune. The header Classes form waits to be found (9 leads in 6 days, 0 for SPI); asking the students who fit, where they already are, may find the ones who would come. About 123 Class 10 students and 405 NDA students had signed in by 2026-11-22.",
+    metric:
+      "Per card: students who saw it (class_offer_answers.shown_at, migration 0282), Know more taps (more_at), Yes and No; Yes leads by Pune vs other (class_interest, from_section 'me'). scripts/classes/me-offer-readout.sql. Read with the team: of the Pune leads called, how many came for a demo or joined",
+    rule: `Per card, keep it if ${ME_CLASS_OFFER_YES_KEEP_PCT}%+ of the students who saw it say Yes with a number, or it brings 3+ Pune leads in 4 weeks; otherwise take the card off and keep /classes alone.`,
+    liveSince: "2026-11-22",
+    windowDays: 28,
+    readout: "me-class-offer",
     status: "running",
   },
   {

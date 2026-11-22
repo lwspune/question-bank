@@ -121,6 +121,7 @@ import {
   TUTOR_STUDENT_YES_KEEP,
   TUTOR_PRICE_MIN_ANSWERS,
   CLASS_LEADS_PUNE_KEEP,
+  ME_CLASS_OFFER_YES_KEEP_PCT,
   PLAY_PLAYERS_MIN,
   WHY_NOT_BUY_LEAD_PCT,
   WHY_NOT_BUY_MIN_ANSWERS,
@@ -985,6 +986,14 @@ export default async function GrowthPage() {
             </Link>
             : keep the header Classes button if {CLASS_LEADS_PUNE_KEEP}+ Pune leads come in; otherwise link the form
             only from Pune-facing pages.
+          </p>
+        );
+      case "me-class-offer":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with{" "}
+            <code>scripts/classes/me-offer-readout.sql</code>: per card, keep it if {ME_CLASS_OFFER_YES_KEEP_PCT}%+ of
+            the students who saw it say Yes with a number, or it brings 3+ Pune leads.
           </p>
         );
       case "play-games":
