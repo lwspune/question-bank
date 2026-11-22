@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { loadRazorpay } from "@/components/billing/useCheckout";
+import { claimOrder, useReturnCheck } from "@/components/billing/useReturnCheck";
 import { trackFunnel } from "@/lib/analytics/trackFunnel";
+import { browserStorage, forgetPendingOrder, parentPendingKey, rememberPendingOrder } from "@/lib/billing/pendingOrder";
 
 /**
  * The parent's Pay button (2026-11-09). Same Razorpay checkout as a student's,
@@ -33,6 +35,24 @@ export default function ParentPayButton({
   useEffect(() => {
     loadRazorpay().catch(() => undefined);
   }, []);
+
+  // Back on the page after paying in a UPI app, with Razorpay's success
+  // callback never run (22 Nov: the parent saw no thanks and tried again).
+  // The server grants the paid order; the page thanks them (2026-11-22).
+  const rzpRef = useRef<{ close?: () => void } | null>(null);
+  const pendingKey = parentPendingKey(code);
+  const extraBody = useMemo(() => ({ code }), [code]);
+  useReturnCheck({
+    endpoint: "/api/billing/parent-check",
+    storageKey: pendingKey,
+    extraBody,
+    onPaid: () => {
+      rzpRef.current?.close?.();
+      trackFunnel("checkout_paid", { surface: "parent_link", via: "return_check" });
+      setBusy(false);
+      setDone("paid");
+    },
+  });
 
   async function pay() {
     setBusy(true);
@@ -78,6 +98,9 @@ export default function ParentPayButton({
         description: order.planLabel,
         theme: { color: "#1d4ed8" },
         handler: async (resp) => {
+          // A return check may have finished this order already.
+          if (!claimOrder(resp.razorpay_order_id)) return;
+          forgetPendingOrder(browserStorage(), pendingKey);
           try {
             const v = await fetch("/api/billing/parent-verify", {
               method: "POST",
@@ -101,6 +124,8 @@ export default function ParentPayButton({
         },
       });
       trackFunnel("checkout_opened", props);
+      rzpRef.current = rzp;
+      rememberPendingOrder(browserStorage(), pendingKey, order.orderId, Date.now());
       rzp.open();
     } catch (err) {
       fail(err instanceof Error ? err.message : "The payment failed to start.");
