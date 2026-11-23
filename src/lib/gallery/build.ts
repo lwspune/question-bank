@@ -30,16 +30,13 @@ export function badgeOf(slug: string, opts: Pick<GalleryBuildOptions, "clientSlu
   return opts.clientSlugs.has(slug) ? "try" : "picture";
 }
 
-type ConceptLike = { slug: string; name: string; intuition?: string; pyqExampleId?: string; visualizationSlug?: string };
-type TopicLike = { title: string; concepts: ConceptLike[] };
-
 export function buildGalleryIndex(chapters: readonly GalleryChapterInput[], opts: GalleryBuildOptions): GalleryVisual[] {
   const out: GalleryVisual[] = [];
   const seen = new Set<string>();
   for (const c of chapters) {
     const examSlug = opts.examSlugOf(c.examName);
     if (!examSlug) continue;
-    const notes = c.notes as unknown as Record<string, TopicLike>;
+    const notes = c.notes;
     const order = c.chapter.subtopicOrder?.length ? c.chapter.subtopicOrder : Object.keys(notes);
     for (const subtopicSlug of order) {
       const topic = notes[subtopicSlug];
