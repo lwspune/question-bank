@@ -141,7 +141,15 @@ type ChatTurn = HistoryTurn & {
   avatar?: VAvatar;
   transient?: boolean;
   /** A question card under V's reply (2026-10-19): a similar one to try, or a pasted one to confirm. */
-  card?: { id: string; kind: "try" | "confirm"; after?: string; /** A chapter lesson's question: headed "Your turn". */ turn?: boolean };
+  card?: {
+    id: string;
+    kind: "try" | "confirm";
+    after?: string;
+    /** A chapter lesson's question: headed "Your turn". */
+    turn?: boolean;
+    /** That question is the student's own mistake, asked again (2026-11-23). */
+    again?: boolean;
+  };
   /**
    * A chapter lesson (2026-11-21, mockup B): the map card on its first reply, and its buttons
    * (Go on, Explain more simply, Open the notes) under the latest reply, in place of V's own.
@@ -1115,7 +1123,7 @@ export default function ChatWidget() {
         : data.matchQuestionId
           ? { id: data.matchQuestionId, kind: "confirm" }
           : lesson?.tryQuestionId
-            ? { id: lesson.tryQuestionId, kind: "try", turn: true }
+            ? { id: lesson.tryQuestionId, kind: "try", turn: true, ...(lesson.tryOwn ? { again: true } : {}) }
             : undefined;
       // A Learn lesson's map counts as shown (experiment v-learn-first, 2026-11-22); the server keeps one a day per student.
       if (lesson?.kind === "learn" && lesson.showMap) {
@@ -1468,6 +1476,7 @@ export default function ChatWidget() {
                       kind={t.card.kind}
                       after={t.card.after}
                       heading={t.card.turn ? "Your turn" : undefined}
+                      again={t.card.again === true}
                       onMore={t.card.kind === "try" ? () => void moreLike(t.card!.id) : undefined}
                       onNavigate={close}
                     />

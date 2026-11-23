@@ -126,7 +126,7 @@ export async function loadVContext(
     /** explain_concept's data sources (lib/chat/conceptSearchServer.ts conceptSources); offered with the question tools. */
     concepts?: ConceptSources | null;
     /** chapter_overview's "start from your mistakes" reads (lib/chat/chapterMissesServer.ts); absent when signed out. */
-    chapterMisses?: Pick<ChapterOverviewDeps, "loadMisses" | "loadMissExample" | "loadTryId"> | null;
+    chapterMisses?: Pick<ChapterOverviewDeps, "loadMisses" | "loadOwnTry" | "loadTryId"> | null;
     /** chapter_overview's lesson, for the window's map card, question to try and buttons (lib/chat/lesson.ts). */
     onLesson?: ((lesson: VLesson) => void) | null;
     /** chapter_overview's Learn lessons where Learn teaches the chapter (lib/chat/learnServer.ts), 2026-11-22. */
@@ -284,7 +284,7 @@ export async function loadVContext(
         onPaths: addPaths,
         // Signed in: start from the student's waiting mistakes (the Fix list's), 2026-11-21.
         loadMisses: opts.chapterMisses?.loadMisses ?? null,
-        loadMissExample: opts.chapterMisses?.loadMissExample ?? null,
+        loadOwnTry: opts.chapterMisses?.loadOwnTry ?? null,
         loadTryId: opts.chapterMisses?.loadTryId ?? null,
         onLesson: opts.onLesson ?? null,
         // Learn first wherever it teaches the chapter (owner, 2026-11-22).

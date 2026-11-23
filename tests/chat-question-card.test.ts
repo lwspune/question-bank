@@ -5,7 +5,7 @@
  * the server, which is also where it counts as one of the day's free answers.
  */
 import { describe, it, expect } from "vitest";
-import { cardView, gradeCard } from "@/lib/chat/questionCard";
+import { canTryOnCard, cardView, gradeCard, vCardAnswerKind } from "@/lib/chat/questionCard";
 import type { VQuestion } from "@/lib/chat/questionTools";
 
 const Q: VQuestion = {
@@ -59,5 +59,32 @@ describe("gradeCard", () => {
 
   it("refuses to grade a question with no marked answer", () => {
     expect(gradeCard({ ...Q, options: Q.options.map((o) => ({ ...o, isCorrect: false })) }, "A")).toBeNull();
+  });
+});
+
+// 2026-11-23 (owner): a lesson's "Your turn" is the student's own mistake, so it must be one the card can grade.
+describe("canTryOnCard", () => {
+  it("a multiple-choice question with a marked answer, figure or not (the card shows the figure)", () => {
+    expect(canTryOnCard(Q)).toBe(true);
+    expect(canTryOnCard({ ...Q, hasFigure: true })).toBe(true);
+  });
+
+  it("not a written, numeric or multi-answer question, one with no marked answer, or none at all", () => {
+    expect(canTryOnCard({ ...Q, format: "subjective" })).toBe(false);
+    expect(canTryOnCard({ ...Q, format: "numeric" })).toBe(false);
+    expect(canTryOnCard({ ...Q, format: "msq" })).toBe(false);
+    expect(canTryOnCard({ ...Q, options: Q.options.map((o) => ({ ...o, isCorrect: false })) })).toBe(false);
+    expect(canTryOnCard(null)).toBe(false);
+  });
+});
+
+// 2026-11-23: a right answer in V wrote only question_practiced, which the Fix list ignores, so a mistake
+// answered right again in V stayed waiting. Same rule as the drill (lib/drill/service recordDrillAnswer).
+describe("vCardAnswerKind", () => {
+  it("wrong is a miss; right after a miss is a recovery; right first time is practice", () => {
+    expect(vCardAnswerKind(false, true)).toBe("answer_wrong");
+    expect(vCardAnswerKind(false, false)).toBe("answer_wrong");
+    expect(vCardAnswerKind(true, true)).toBe("answer_correct");
+    expect(vCardAnswerKind(true, false)).toBeNull();
   });
 });

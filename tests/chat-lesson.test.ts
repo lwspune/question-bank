@@ -52,6 +52,7 @@ const lesson = (over: Partial<VLesson> = {}): VLesson => ({
   showMap: true,
   missed: 4,
   tryQuestionId: "11111111-1111-4111-8111-111111111111",
+  tryOwn: false,
   ...over,
 });
 
@@ -148,6 +149,14 @@ describe("parseLesson", () => {
     expect(parseLesson({ ...lesson(), chapter: 3 })).toBeNull();
   });
 
+  it("keeps whether the question to try is the student's own mistake; anything but true is not", () => {
+    expect(parseLesson(JSON.parse(JSON.stringify(lesson({ tryOwn: true }))))!.tryOwn).toBe(true);
+    expect(parseLesson({ ...lesson(), tryOwn: "yes" })!.tryOwn).toBe(false);
+    const old = JSON.parse(JSON.stringify(lesson()));
+    delete old.tryOwn;
+    expect(parseLesson(old)!.tryOwn).toBe(false);
+  });
+
   it("a link that is not a site path is dropped, never followed", () => {
     const p = parseLesson({ ...lesson({ current: 1, next: null }), notesHref: "https://evil.example", parts: [{ ...PARTS[0], href: "javascript:alert(1)" }] });
     expect(p?.notesHref).toBeNull();
@@ -201,6 +210,7 @@ describe("a Learn lesson (2026-11-22: Learn first wherever it teaches the chapte
       next: 4,
       missed: 3,
       tryQuestionId: null,
+      tryOwn: false,
       tryLearn: { chapter: "matrices", concept: "matrix-multiplication" },
       ...over,
     });
