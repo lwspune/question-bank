@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight, CalendarClock, Check, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { daysUntilIst, examCountdownSentence, type SittingEntry } from "@/lib/exam/calendar";
+import { courseLevel } from "@/lib/learn/courseName";
 import { courseSummary, type Outline } from "@/lib/learn/lessonState";
 import { chapterHref, lessonHref } from "@/lib/learn/links";
 import { MistakesCard } from "./MistakesCard";
@@ -20,6 +21,7 @@ export function CourseOverview({ outline, name, sitting }: { outline: Outline; n
   const student = progress.kind === "student";
   const summary = courseSummary(outline, student ? progress.learner : new Map(), student, Date.now());
   const next = summary.upNext;
+  const level = courseLevel(outline.chapters.map((c) => c.standard));
   // Worked out here, not on the server: the page is cached for a day.
   const daysLeft = sitting ? daysUntilIst(sitting.date, new Date()) : Number.NaN;
   const countdown =
@@ -36,7 +38,7 @@ export function CourseOverview({ outline, name, sitting }: { outline: Outline; n
             <span className="text-base">{summary.total === 0 ? 0 : Math.round((100 * summary.mastered) / summary.total)}%</span>
           </ProgressRing>
           <div className="min-w-0">
-            <p className="text-xs font-semibold uppercase tracking-wider text-brand-accent">Learn · Class {outline.standard}</p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-brand-accent">{level ? `Learn · ${level}` : "Learn"}</p>
             <h1 className="mt-1 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">{name}</h1>
             <p className="mt-1 text-sm text-muted-foreground">
               {student

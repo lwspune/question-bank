@@ -17,8 +17,19 @@ describe("learnChapterFor: which Learn chapter teaches a bank chapter", () => {
     expect(learnChapterFor("JEE Mains", "Indefinite Integration")).toEqual({ course: "cbse-12-maths", chapter: "integrals", parts: [1] });
   });
 
+  it("NDA maps every Maths chapter to its own course, by the bank's name", () => {
+    expect(learnChapterFor("NDA", "Matrices & Determinants")).toEqual({ course: "nda-maths", chapter: "determinants-and-matrices" });
+    expect(learnChapterFor("NDA", "3D Geometry")).toEqual({ course: "nda-maths", chapter: "line-and-plane" });
+    expect(learnChapterFor("NDA", "Applications of Integration")).toEqual({ course: "nda-maths", chapter: "application-of-definite-integration" });
+    const nda = Object.entries(LEARN_CHAPTER_LINKS).filter(([k]) => k.startsWith("NDA|"));
+    expect(nda).toHaveLength(31);
+    expect(new Set(nda.map(([, l]) => l.chapter)).size).toBe(31);
+    for (const [, l] of nda) expect(l.course).toBe("nda-maths");
+  });
+
   it("a chapter Learn does not teach, or another subject or exam, has none", () => {
     expect(learnChapterFor("JEE Mains", "Conic Sections")).toBeNull();
+    expect(learnChapterFor("CDS", "Matrices & Determinants")).toBeNull();
     expect(learnChapterFor("NDA", "Matrices")).toBeNull();
     expect(learnChapterFor("CBSE Class 12", "Electrostatics")).toBeNull();
   });

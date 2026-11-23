@@ -359,6 +359,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     notesPath: "/notes/nda", // exam hub: lists Maths + Physics + Biology notes
     hasMocks: true, // 18 NDA Maths Paper I mocks published at /mock
     pastPaperSolutions: true,
+    learnPath: "/learn/nda-maths", // Concept Ladder's NDA Maths course, Class 11 and 12 (2026-11-22)
   },
   {
     slug: "mht-cet",

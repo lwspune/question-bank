@@ -9,7 +9,7 @@ import { MistakesCard } from "@/components/learn/MistakesCard";
 import { FileText, Library } from "lucide-react";
 import { bankChapterLinks } from "@/lib/learn/bankChapters";
 import { getChapterLanding } from "@/lib/questions/landing";
-import { courseName } from "@/lib/learn/courseName";
+import { courseName, pastQuestionsLabel } from "@/lib/learn/courseName";
 import { courseHref, LEARN_HUB } from "@/lib/learn/links";
 import { getOutline } from "@/lib/learn/query";
 import { renderInlineText } from "@/lib/learn/richText";
@@ -75,18 +75,20 @@ export default async function LearnChapter(props: { params: Promise<Params> }) {
           <h2 className="font-semibold text-foreground">Practise {ch.title}</h2>
           <p className="mt-1 text-sm text-muted-foreground">Once the concepts click, try the questions your exam asks.</p>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
-            <Link
-              href={practice.board}
-              className="flex items-center gap-3 rounded-xl border p-3 hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              <span className="icon-tile grid h-9 w-9 shrink-0 place-items-center rounded-lg">
-                <Library className="h-4 w-4 text-brand-accent" aria-hidden="true" />
-              </span>
-              <span>
-                <span className="block font-medium text-foreground">Textbook exercises</span>
-                <span className="block text-xs text-muted-foreground">Every exercise, with model answers</span>
-              </span>
-            </Link>
+            {practice.board && (
+              <Link
+                href={practice.board}
+                className="flex items-center gap-3 rounded-xl border p-3 hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <span className="icon-tile grid h-9 w-9 shrink-0 place-items-center rounded-lg">
+                  <Library className="h-4 w-4 text-brand-accent" aria-hidden="true" />
+                </span>
+                <span>
+                  <span className="block font-medium text-foreground">Textbook exercises</span>
+                  <span className="block text-xs text-muted-foreground">Every exercise, with model answers</span>
+                </span>
+              </Link>
+            )}
             {landing && (
               <Link
                 href={practice.questions}
@@ -96,7 +98,7 @@ export default async function LearnChapter(props: { params: Promise<Params> }) {
                   <FileText className="h-4 w-4 text-brand-accent" aria-hidden="true" />
                 </span>
                 <span>
-                  <span className="block font-medium text-foreground">Past board questions</span>
+                  <span className="block font-medium text-foreground">{pastQuestionsLabel(outline.exam)}</span>
                   <span className="block text-xs text-muted-foreground">Asked from this chapter, with solutions</span>
                 </span>
               </Link>

@@ -20,8 +20,8 @@ import type { Outline } from "@/lib/learn/lessonState";
 
 const HAS_ENV = !!process.env.NEXT_PUBLIC_SUPABASE_URL && !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-/** The board exam a course belongs to, as the database names it. */
-const BOARD_EXAM: Record<string, string> = { "cbse-12-maths": "CBSE Class 12", "mh-hsc-12-maths": "Maharashtra HSC Class 12" };
+/** The exam whose topics a course's lessons are filed under, as the database names it (NDA since 2026-11-22). */
+const BOARD_EXAM: Record<string, string> = { "cbse-12-maths": "CBSE Class 12", "mh-hsc-12-maths": "Maharashtra HSC Class 12", "nda-maths": "NDA" };
 
 describe.skipIf(!HAS_ENV)("Learn links for V vs the live outlines and taxonomy", () => {
   let client: SupabaseClient;
@@ -69,7 +69,8 @@ describe.skipIf(!HAS_ENV)("Learn links for V vs the live outlines and taxonomy",
         const topics = bank.get(link![0]) ?? new Set<string>();
         const live = ch.parts.flatMap((p) => p.concepts.map((code) => outline.pools[p.chapter].concepts.find((c) => c.code === code)!).filter((c) => c.published).map((c) => c.slug));
         const listed = Object.keys(LEARN_LESSON_TOPICS[`${course}/${ch.slug}`] ?? {});
-        expect(listed.sort(), `${course}/${ch.slug}: lessons differ from the outline`).toEqual([...live].sort());
+        // A slug taken from two books (NDA's minors-and-cofactors) has one entry for both.
+        expect(listed.sort(), `${course}/${ch.slug}: lessons differ from the outline`).toEqual([...new Set(live)].sort());
         for (const slug of live) {
           for (const t of lessonTopics(course, ch.slug, slug)) expect(topics.has(topicKey(t)), `${course}/${ch.slug}/${slug}: no topic "${t}" in ${link![0]}`).toBe(true);
         }
