@@ -47,6 +47,9 @@ const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
  *  me the idea (2026-11-11): back on the question (returned), then Try one tapped (try_after). */
 /** The Review traps panel's steps (src/app/review/ChapterTraps). */
 export const REVIEW_TRAPS_ACTIONS: ReadonlySet<string> = new Set(["shown", "expand", "playbook"]);
+/** The Visuals gallery's steps (src/app/visuals), and the shape of a subject route or visual slug. */
+export const GALLERY_ACTIONS: ReadonlySet<string> = new Set(["page", "open", "practise", "notes"]);
+const GALLERY_SLUG_RE = /^[a-z0-9-]{1,80}$/;
 /** The "Teach me" buttons' steps and places (lib/chat/teachChapter). */
 const TEACH_CHAPTER_ACTIONS: ReadonlySet<string> = new Set(["shown", "tap"]);
 const TEACH_CHAPTER_FROM_SET: ReadonlySet<string> = new Set<string>(TEACH_CHAPTER_FROM);
@@ -393,6 +396,22 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
           kind: "surface_viewed",
           metadata: { surface: "teach_chapter", action: raw.action, from: raw.from, ...(chapterId ? { chapterId } : {}) },
           dedupeKey: `view:teach_chapter:${raw.action}:${raw.from}:${chapterId ?? "-"}:${userId}:${istDayKey(now)}`,
+        },
+      };
+    }
+    // The Visuals gallery (2026-11-23): the page per subject; open, practise and notes per visual; per day.
+    if (raw.surface === "visuals") {
+      if (typeof raw.action !== "string" || !GALLERY_ACTIONS.has(raw.action)) return { ok: false, error: "Unknown step." };
+      if (typeof raw.subject !== "string" || !GALLERY_SLUG_RE.test(raw.subject)) return { ok: false, error: "Invalid subject." };
+      const page = raw.action === "page";
+      if (!page && (typeof raw.slug !== "string" || !GALLERY_SLUG_RE.test(raw.slug))) return { ok: false, error: "Invalid visual." };
+      const slug = page ? null : (raw.slug as string);
+      return {
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "visuals", action: raw.action, subject: raw.subject, ...(slug ? { slug } : {}) },
+          dedupeKey: `view:visuals:${raw.action}:${raw.subject}:${slug ?? "-"}:${userId}:${istDayKey(now)}`,
         },
       };
     }

@@ -131,6 +131,9 @@ export const SURFACES = [
   // experiment v-teach-chapter): metadata.action (shown, tap), metadata.from (me_weak,
   // mock_result, v_button, v_pick) and metadata.chapterId where the place has one.
   "teach_chapter",
+  // The Visuals gallery (2026-11-23, experiment notes-visuals): metadata.action (page, open,
+  // practise, notes), metadata.subject (the notes subject route) and metadata.slug (the visual).
+  "visuals",
 ] as const;
 
 export type Surface = (typeof SURFACES)[number];

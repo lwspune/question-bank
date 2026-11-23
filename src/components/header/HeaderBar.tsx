@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePublicPathname } from "@/lib/nav/usePublicPathname";
-import { Gamepad2, Gem, ShoppingBag } from "lucide-react";
+import { Gamepad2, Gem, Images, ShoppingBag } from "lucide-react";
 import { trackFunnel } from "@/lib/analytics/trackFunnel";
 import SignInLink from "@/components/reveal/SignInLink";
 import { Button } from "@/components/ui/button";
@@ -26,6 +26,8 @@ import StudyClock from "./StudyClock";
 import IntlHeaderBar from "./IntlHeaderBar";
 import CheckoutReturnBar from "@/components/billing/CheckoutReturnBar";
 import { useIntlSite } from "@/lib/sites/useIntlSite";
+import { galleryHrefFor } from "@/lib/gallery/gallery";
+import { GALLERY_NAV } from "@/lib/gallery/galleryNav.generated";
 
 /**
  * The whole per-visitor half of the site header, resolved in the BROWSER.
@@ -148,6 +150,8 @@ export default function HeaderBar({
             {/* The ebook store (2026-10-20): its own button, apart from the study
                 tabs, at every width (owner: "a separate buy section on top"). */}
             <StoreLink />
+            {/* The Visuals gallery (2026-11-23), in the slot Classes left: the notes' visuals by subject and chapter. */}
+            <VisualsLink examSlug={examSlug} />
             {/* The /play games (2026-11-16; a hub since 2026-11-17), open to everyone, signed in or not. */}
             <PlayLink />
             {/* Theme toggle is visible to everyone, anon included. */}
@@ -231,6 +235,30 @@ function StoreLink() {
           at 360 px. From lg up since 2026-11-18, for the same reason at
           tablet widths, where the study tabs share the row. */}
       <span>Ebooks</span>
+    </Link>
+  );
+}
+
+/**
+ * The Visuals gallery (owner, 2026-11-23): every notes visual by exam, subject
+ * and chapter, in the slot the Classes button left (Classes went to the avatar
+ * menu). Opens the chosen exam's first subject with visuals, else the list of
+ * all. Reads only the small exam -> subject map (galleryNav.generated.ts),
+ * never a subject's visuals. "Visuals" is the width "Classes" was, so the
+ * 360 px phone row still fits. Experiment notes-visuals.
+ */
+function VisualsLink({ examSlug }: { examSlug: string | null }) {
+  const pathname = usePublicPathname();
+  const active = pathname.startsWith("/visuals");
+  return (
+    <Link
+      href={galleryHrefFor(examSlug, GALLERY_NAV)}
+      onClick={() => trackFunnel("visuals_link_click", { from: pathname.split("/")[1] || "home" })}
+      aria-current={active ? "page" : undefined}
+      className={headerButtonClass(active)}
+    >
+      <Images className="hidden h-4 w-4 shrink-0 lg:block" aria-hidden />
+      <span>Visuals</span>
     </Link>
   );
 }
