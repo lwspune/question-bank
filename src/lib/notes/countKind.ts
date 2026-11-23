@@ -9,13 +9,20 @@
  * all read this one rule.
  */
 import type { SourceKind } from "@/lib/questions/sourceTag";
+import { getExamByName } from "@/lib/exam/examContext";
 
 export type NotesCountKind = "pyq" | "all";
 
 const ALL_KINDS: ReadonlySet<string> = new Set(["SPI", "AFCAT"]);
 
+/**
+ * Textbook boards (registry `boardExam`, 2026-11-23) count both kinds too: the book's
+ * exercises ARE what a board student practises, and Class 9 and 11 have no past papers at all.
+ * A board with past papers only (UP Board) has no textbook rows, so it stays past-year.
+ */
 export function notesCountKind(examName: string): NotesCountKind {
-  return ALL_KINDS.has(examName) ? "all" : "pyq";
+  if (ALL_KINDS.has(examName)) return "all";
+  return getExamByName(examName)?.boardExam === true ? "all" : "pyq";
 }
 
 export function notesCountNoun(kind: NotesCountKind): "PYQs" | "questions" {

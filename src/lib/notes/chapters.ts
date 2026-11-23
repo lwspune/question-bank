@@ -3281,6 +3281,86 @@ import {
   SPI_ANALOGY_NOTES,
   SPI_ANALOGY_SLUGS,
 } from "@/app/notes/spi-reasoning/analogy/_data";
+import {
+  HSC_PH_CE_CHAPTER,
+  HSC_PH_CE_NOTES,
+  HSC_PH_CE_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/current-electricity/_data";
+import {
+  HSC_PH_RD_CHAPTER,
+  HSC_PH_RD_NOTES,
+  HSC_PH_RD_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/rotational-dynamics/_data";
+import {
+  HSC_PH_MF_CHAPTER,
+  HSC_PH_MF_NOTES,
+  HSC_PH_MF_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/mechanical-properties-of-fluids/_data";
+import {
+  HSC_PH_KT_CHAPTER,
+  HSC_PH_KT_NOTES,
+  HSC_PH_KT_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/kinetic-theory-of-gases/_data";
+import {
+  HSC_PH_TD_CHAPTER,
+  HSC_PH_TD_NOTES,
+  HSC_PH_TD_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/thermodynamics/_data";
+import {
+  HSC_PH_SW_CHAPTER,
+  HSC_PH_SW_NOTES,
+  HSC_PH_SW_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/superposition-of-waves/_data";
+import {
+  HSC_PH_OS_CHAPTER,
+  HSC_PH_OS_NOTES,
+  HSC_PH_OS_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/oscillations/_data";
+import {
+  HSC_PH_WO_CHAPTER,
+  HSC_PH_WO_NOTES,
+  HSC_PH_WO_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/wave-optics/_data";
+import {
+  HSC_PH_ES_CHAPTER,
+  HSC_PH_ES_NOTES,
+  HSC_PH_ES_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/electrostatics/_data";
+import {
+  HSC_PH_MG_CHAPTER,
+  HSC_PH_MG_NOTES,
+  HSC_PH_MG_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/magnetic-fields-due-to-electric-current/_data";
+import {
+  HSC_PH_MM_CHAPTER,
+  HSC_PH_MM_NOTES,
+  HSC_PH_MM_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/magnetic-materials/_data";
+import {
+  HSC_PH_AC_CHAPTER,
+  HSC_PH_AC_NOTES,
+  HSC_PH_AC_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/ac-circuits/_data";
+import {
+  HSC_PH_EM_CHAPTER,
+  HSC_PH_EM_NOTES,
+  HSC_PH_EM_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/electromagnetic-induction/_data";
+import {
+  HSC_PH_DN_CHAPTER,
+  HSC_PH_DN_NOTES,
+  HSC_PH_DN_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/dual-nature-of-radiation-and-matter/_data";
+import {
+  HSC_PH_SD_CHAPTER,
+  HSC_PH_SD_NOTES,
+  HSC_PH_SD_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/semiconductor-devices/_data";
+import {
+  HSC_PH_AN_CHAPTER,
+  HSC_PH_AN_NOTES,
+  HSC_PH_AN_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/structure-of-atoms-and-nuclei/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -10548,6 +10628,182 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MS7_AREA_CHAPTER,
     notes: MS7_AREA_NOTES,
     slugs: MS7_AREA_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "current-electricity",
+    chipLabel: "Current Electricity notes",
+    chapter: HSC_PH_CE_CHAPTER,
+    notes: HSC_PH_CE_NOTES,
+    slugs: HSC_PH_CE_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "rotational-dynamics",
+    chipLabel: "Rotational Dynamics notes",
+    chapter: HSC_PH_RD_CHAPTER,
+    notes: HSC_PH_RD_NOTES,
+    slugs: HSC_PH_RD_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "mechanical-properties-of-fluids",
+    chipLabel: "Mechanical Properties of Fluids notes",
+    chapter: HSC_PH_MF_CHAPTER,
+    notes: HSC_PH_MF_NOTES,
+    slugs: HSC_PH_MF_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "kinetic-theory-of-gases",
+    chipLabel: "Kinetic Theory of Gases and Radiation notes",
+    chapter: HSC_PH_KT_CHAPTER,
+    notes: HSC_PH_KT_NOTES,
+    slugs: HSC_PH_KT_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "thermodynamics",
+    chipLabel: "Thermodynamics notes",
+    chapter: HSC_PH_TD_CHAPTER,
+    notes: HSC_PH_TD_NOTES,
+    slugs: HSC_PH_TD_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "superposition-of-waves",
+    chipLabel: "Superposition of Waves notes",
+    chapter: HSC_PH_SW_CHAPTER,
+    notes: HSC_PH_SW_NOTES,
+    slugs: HSC_PH_SW_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "oscillations",
+    chipLabel: "Oscillations notes",
+    chapter: HSC_PH_OS_CHAPTER,
+    notes: HSC_PH_OS_NOTES,
+    slugs: HSC_PH_OS_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "wave-optics",
+    chipLabel: "Wave Optics notes",
+    chapter: HSC_PH_WO_CHAPTER,
+    notes: HSC_PH_WO_NOTES,
+    slugs: HSC_PH_WO_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "electrostatics",
+    chipLabel: "Electrostatics notes",
+    chapter: HSC_PH_ES_CHAPTER,
+    notes: HSC_PH_ES_NOTES,
+    slugs: HSC_PH_ES_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "magnetic-fields-due-to-electric-current",
+    chipLabel: "Magnetic Fields due to Electric Current notes",
+    chapter: HSC_PH_MG_CHAPTER,
+    notes: HSC_PH_MG_NOTES,
+    slugs: HSC_PH_MG_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "magnetic-materials",
+    chipLabel: "Magnetic Materials notes",
+    chapter: HSC_PH_MM_CHAPTER,
+    notes: HSC_PH_MM_NOTES,
+    slugs: HSC_PH_MM_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "ac-circuits",
+    chipLabel: "AC Circuits notes",
+    chapter: HSC_PH_AC_CHAPTER,
+    notes: HSC_PH_AC_NOTES,
+    slugs: HSC_PH_AC_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "electromagnetic-induction",
+    chipLabel: "Electromagnetic Induction notes",
+    chapter: HSC_PH_EM_CHAPTER,
+    notes: HSC_PH_EM_NOTES,
+    slugs: HSC_PH_EM_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "dual-nature-of-radiation-and-matter",
+    chipLabel: "Dual Nature of Radiation and Matter notes",
+    chapter: HSC_PH_DN_CHAPTER,
+    notes: HSC_PH_DN_NOTES,
+    slugs: HSC_PH_DN_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "semiconductor-devices",
+    chipLabel: "Semiconductor Devices notes",
+    chapter: HSC_PH_SD_CHAPTER,
+    notes: HSC_PH_SD_NOTES,
+    slugs: HSC_PH_SD_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "structure-of-atoms-and-nuclei",
+    chipLabel: "Structure of Atoms and Nuclei notes",
+    chapter: HSC_PH_AN_CHAPTER,
+    notes: HSC_PH_AN_NOTES,
+    slugs: HSC_PH_AN_SLUGS,
   },
 ];
 

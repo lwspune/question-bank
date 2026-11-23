@@ -176,15 +176,15 @@ export function fromWorkedExample(e: WorkedExample): PresentableQuestion {
     })),
     answer: answerOrNull({
       correctLabel: soleCorrectLabel(e.options),
-      numericAnswer: null,
+      numericAnswer: e.numericAnswer,
+      numericAnswerMax: e.numericAnswerMax,
       solution: e.solution,
       solutionImageUrl: e.solutionImageUrl,
     }),
     questionId: e.id,
     examName: e.examName,
     topic: e.chapter,
-    // A worked example carries no format column: options mean an MCQ.
-    format: e.options.length > 0 ? "mcq" : "subjective",
+    format: e.format,
     cancelled: false,
     solutionVisual: e.solutionVisual ?? null,
   };

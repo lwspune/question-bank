@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 670
+ * Entries: 686
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -241,6 +241,22 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/jee-mains-physics/wave-optics": "2026-11-20T01:33:03+05:30",
   "/notes/jee-mains-physics/waves": "2026-11-20T01:05:34+05:30",
   "/notes/jee-mains-physics/work-energy-and-power": "2026-11-20T01:25:25+05:30",
+  "/notes/mh-hsc-12-physics/ac-circuits": "2026-11-23T13:40:35+05:30",
+  "/notes/mh-hsc-12-physics/current-electricity": "2026-11-23T12:24:21+05:30",
+  "/notes/mh-hsc-12-physics/dual-nature-of-radiation-and-matter": "2026-11-23T13:56:12+05:30",
+  "/notes/mh-hsc-12-physics/electromagnetic-induction": "2026-11-23T13:40:35+05:30",
+  "/notes/mh-hsc-12-physics/electrostatics": "2026-11-23T13:27:26+05:30",
+  "/notes/mh-hsc-12-physics/kinetic-theory-of-gases": "2026-11-23T13:14:58+05:30",
+  "/notes/mh-hsc-12-physics/magnetic-fields-due-to-electric-current": "2026-11-23T13:27:26+05:30",
+  "/notes/mh-hsc-12-physics/magnetic-materials": "2026-11-23T13:40:35+05:30",
+  "/notes/mh-hsc-12-physics/mechanical-properties-of-fluids": "2026-11-23T13:14:58+05:30",
+  "/notes/mh-hsc-12-physics/oscillations": "2026-11-23T13:14:58+05:30",
+  "/notes/mh-hsc-12-physics/rotational-dynamics": "2026-11-23T13:14:58+05:30",
+  "/notes/mh-hsc-12-physics/semiconductor-devices": "2026-11-23T13:56:12+05:30",
+  "/notes/mh-hsc-12-physics/structure-of-atoms-and-nuclei": "2026-11-23T13:56:12+05:30",
+  "/notes/mh-hsc-12-physics/superposition-of-waves": "2026-11-23T13:14:58+05:30",
+  "/notes/mh-hsc-12-physics/thermodynamics": "2026-11-23T13:14:58+05:30",
+  "/notes/mh-hsc-12-physics/wave-optics": "2026-11-23T13:27:26+05:30",
   "/notes/mh-scholarship-4-intelligence/analogy": "2026-11-21T12:25:22+05:30",
   "/notes/mh-scholarship-4-intelligence/classification-odd-one-out": "2026-11-21T12:25:22+05:30",
   "/notes/mh-scholarship-4-intelligence/coding-decoding": "2026-11-21T12:25:22+05:30",
