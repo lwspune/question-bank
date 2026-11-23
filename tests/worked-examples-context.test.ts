@@ -32,6 +32,8 @@ describe.skipIf(!HAS_ENV)("loadWorkedExamples — context round-trip", () => {
   let examName: string | null;
   let withContextId: string;
   let withoutContextId: string;
+  let subjectiveId: string;
+  let numericId: string;
 
   const QNUM = "42";
   const PYEAR = 2024;
@@ -110,11 +112,54 @@ describe.skipIf(!HAS_ENV)("loadWorkedExamples — context round-trip", () => {
       .single();
     if (qNoErr || !qNo) throw new Error(`without-context insert: ${qNoErr?.message ?? "no data"}`);
     withoutContextId = qNo.id;
+
+    const { data: qSub, error: qSubErr } = await admin
+      .from("questions")
+      .insert({
+        org_id: orgId,
+        exam_id: ex!.id,
+        subject_id: sb!.id,
+        chapter_id: ch!.id,
+        text: `worked-ctx-subjective ${RUN_ID}`,
+        difficulty: "EASY",
+        content_hash: `worked-ctx-subjective-${RUN_ID}`,
+        visibility: "PUBLIC",
+        created_by: userId,
+        question_format: "subjective",
+        solution: "Model answer.",
+      })
+      .select("id")
+      .single();
+    if (qSubErr || !qSub) throw new Error(`subjective insert: ${qSubErr?.message ?? "no data"}`);
+    subjectiveId = qSub.id;
+
+    const { data: qNum, error: qNumErr } = await admin
+      .from("questions")
+      .insert({
+        org_id: orgId,
+        exam_id: ex!.id,
+        subject_id: sb!.id,
+        chapter_id: ch!.id,
+        text: `worked-ctx-numeric ${RUN_ID}`,
+        difficulty: "EASY",
+        content_hash: `worked-ctx-numeric-${RUN_ID}`,
+        visibility: "PUBLIC",
+        created_by: userId,
+        question_format: "numeric",
+        numeric_answer: 132.8,
+        numeric_answer_max: 133.1,
+      })
+      .select("id")
+      .single();
+    if (qNumErr || !qNum) throw new Error(`numeric insert: ${qNumErr?.message ?? "no data"}`);
+    numericId = qNum.id;
   });
 
   afterAll(async () => {
     if (withContextId) await admin.from("questions").delete().eq("id", withContextId);
     if (withoutContextId) await admin.from("questions").delete().eq("id", withoutContextId);
+    if (subjectiveId) await admin.from("questions").delete().eq("id", subjectiveId);
+    if (numericId) await admin.from("questions").delete().eq("id", numericId);
     if (orgId) await admin.from("organizations").delete().eq("id", orgId);
     if (userId) await admin.auth.admin.deleteUser(userId);
   });
@@ -175,6 +220,15 @@ describe.skipIf(!HAS_ENV)("loadWorkedExamples — context round-trip", () => {
     const [row] = await loadWorkedExamples(admin, [withoutContextId]);
     expect(row.imageUrl).toBeNull();
     expect(row.solutionImageUrl).toBeNull();
+  });
+
+  it("carries the format and numeric answer, so a written or numeric row is not shown as an MCQ (board notes, 2026-11-23)", async () => {
+    const rows = await loadWorkedExamples(admin, [withContextId, subjectiveId, numericId]);
+    expect(rows.map((r) => r.format)).toEqual(["mcq", "subjective", "numeric"]);
+    expect(rows[1].options).toEqual([]);
+    expect(rows[2].numericAnswer).toBe(132.8);
+    expect(rows[2].numericAnswerMax).toBe(133.1);
+    expect(rows[0].numericAnswer).toBeNull();
   });
 
   it("returns null `provenance` when the question has no PYQ metadata", async () => {

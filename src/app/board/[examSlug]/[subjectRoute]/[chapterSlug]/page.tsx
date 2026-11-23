@@ -1,4 +1,7 @@
 import StudyContext from "@/components/StudyContext";
+import Link from "next/link";
+import { BookOpen } from "lucide-react";
+import { notesChapterHrefFor } from "@/lib/notes/chapterIndex";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import AppHeader from "@/components/AppHeader";
@@ -183,6 +186,7 @@ export default async function BoardChapterPage(props: { params: Promise<Params> 
   if (!data) notFound();
   const { chapter } = data;
   const pyqCount = data.pyqSittings.reduce((n, s) => n + s.questions.length, 0);
+  const notesHref = notesChapterHrefFor(data.examName, chapter.subjectName, chapter.chapterName);
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
   // Every question on the page: the book's, then the board papers'. The Top 10
   // tab shows a subset of the board papers' questions.
@@ -220,6 +224,15 @@ export default async function BoardChapterPage(props: { params: Promise<Params> 
               : "Every textbook question, in the order the book teaches them."}
             <span className="text-muted-foreground/70"> · {chapter.total} questions</span>
           </p>
+          {notesHref && (
+            <Link
+              href={notesHref}
+              className="mt-3 inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium text-brand-accent transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <BookOpen className="h-4 w-4" aria-hidden />
+              Read the notes for this chapter
+            </Link>
+          )}
         </header>
 
         <ExamTwinsProvider twins={twins} supabaseUrl={supabaseUrl}>
