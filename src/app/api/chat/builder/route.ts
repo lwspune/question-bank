@@ -10,6 +10,8 @@ import { checkAndIncrement } from "@/lib/rate-limit";
 import { getClientIp } from "@/lib/http";
 import { getSessionUser } from "@/lib/auth";
 import { recordChatInteraction } from "@/lib/chat/interactionsAdmin";
+import { planSiteForHost } from "@/lib/sites/intl";
+import { readCountry } from "@/lib/acquisition/country";
 import { isBuilderStep } from "@/lib/chat/builderSteps";
 import { isConversationId } from "@/lib/chat/conversation";
 
@@ -50,6 +52,7 @@ export async function POST(request: NextRequest) {
       step,
       userId,
       conversationId: isConversationId(body?.conversationId) ? body.conversationId : null,
+      site: planSiteForHost(request.headers.get("host")), country: readCountry(request.headers),
     });
     return NextResponse.json({ ok: true });
   } catch (err) {

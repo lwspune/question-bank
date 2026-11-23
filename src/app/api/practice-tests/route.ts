@@ -20,6 +20,8 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { checkAndIncrement } from "@/lib/rate-limit";
 import { recordChatInteraction } from "@/lib/chat/interactionsAdmin";
+import { planSiteForHost } from "@/lib/sites/intl";
+import { readCountry } from "@/lib/acquisition/country";
 import { getMockQuota } from "@/lib/mocks/service";
 import { mockStartState } from "@/lib/mocks/quota";
 import { parseBuildRequest, practiceTestRow, practiceTitle } from "@/lib/practiceTests/build";
@@ -102,7 +104,7 @@ export async function POST(request: NextRequest) {
       console.error("practice-tests: insert failed", error.message);
       return refuse(500, "V couldn't save your test. Please try again.");
     }
-    await recordChatInteraction(admin, { eventType: "builder_step", step: "built", userId: user.id });
+    await recordChatInteraction(admin, { eventType: "builder_step", step: "built", userId: user.id, site: planSiteForHost(request.headers.get("host")), country: readCountry(request.headers) });
 
     const start = mockStartState(await getMockQuota(db), false, "custom");
     return NextResponse.json({

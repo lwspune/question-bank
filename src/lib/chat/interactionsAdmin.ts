@@ -8,9 +8,15 @@ import type { AiUsageDay, ChatInteractionRow } from "./interactions";
 import type { BuilderStepId } from "./builderSteps";
 import { toolCallsForStorage, type ConversationRow } from "./conversation";
 import type { ToolCallLog } from "./anthropic";
+import type { PlanSite } from "@/lib/billing/plans";
 
-/** Migration 0159: the conversation a row belongs to and the page it came from. */
-type InConversation = { conversationId?: string | null; pagePath?: string | null };
+/**
+ * Migration 0159: the conversation a row belongs to and the page it came from.
+ * Migration 0284: the site it came from (planSiteForHost on the request's Host)
+ * and the visitor's country (readCountry; null off Vercel). Required so no
+ * writer can leave them out: many paths exist on both sites.
+ */
+type InConversation = { conversationId?: string | null; pagePath?: string | null; site: PlanSite; country: string | null };
 
 export type RecordChatInteraction = InConversation &
   (
@@ -101,6 +107,8 @@ export async function recordChatInteraction(
         user_id: input.userId,
         conversation_id: input.conversationId ?? null,
         page_path: input.pagePath ?? null,
+        site: input.site,
+        country: input.country,
       })
       .select("id")
       .single();

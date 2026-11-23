@@ -264,6 +264,8 @@ export async function POST(request: NextRequest) {
             userId,
             conversationId: isConversationId(raw.conversationId) ? raw.conversationId : null,
             pagePath: cleanPagePath(raw.pagePath),
+            site,
+            country,
           });
         }
         const line = hourlyLimitLine(outcome.limit, rl.retryAfter);
@@ -320,6 +322,8 @@ export async function POST(request: NextRequest) {
         ...(calm ? { reply: { text: calm, source: "fallback" as const } } : {}),
         conversationId,
         pagePath,
+        site,
+        country,
       });
       return NextResponse.json(
         calm
@@ -339,6 +343,8 @@ export async function POST(request: NextRequest) {
         reply: { text: SIGN_IN_TO_ASK_REPLY, source: "fallback" },
         conversationId,
         pagePath,
+        site,
+        country,
       });
       return NextResponse.json(
         { ok: true, reply: SIGN_IN_TO_ASK_REPLY, links: [], id, source: "fallback", signInRequired: true },
@@ -480,6 +486,8 @@ export async function POST(request: NextRequest) {
       reply: recorded,
       conversationId,
       pagePath,
+      site,
+      country,
       askedQuestionId: asked?.id ?? null,
       askedNotesItem,
       replyToId: replyTarget?.id ?? null,
