@@ -10,6 +10,11 @@ import {
   maxHeight,
   simulateShot,
   starsFor,
+  aimFromPull,
+  aimHelpPath,
+  addGhost,
+  AIM_HELP_UP_TO,
+  GHOSTS,
   parseLaunchProgress,
   serializeLaunchProgress,
   recordLaunch,
@@ -98,8 +103,8 @@ describe("every level", () => {
 });
 
 describe("stars and progress", () => {
-  it("first shot 3 stars, second 2, third 1", () => {
-    expect([1, 2, 3].map(starsFor)).toEqual([3, 2, 1]);
+  it("first shot 3 stars, second 2, any later shot 1 (shots never run out)", () => {
+    expect([1, 2, 3, 4, 9, 40].map(starsFor)).toEqual([3, 2, 1, 1, 1, 1]);
   });
 
   it("winning a level opens the next and keeps the best stars", () => {
@@ -112,5 +117,51 @@ describe("stars and progress", () => {
     expect(p.stars[1]).toBe(2);
     expect(parseLaunchProgress(serializeLaunchProgress(p))).toEqual(p);
     expect(parseLaunchProgress('{"v":1,"stars":{"1":9}}')).toEqual(parseLaunchProgress(null));
+  });
+});
+
+describe("pull back to aim (2026-11-23)", () => {
+  it("pulling down and back at 45° aims at 45°, and a full pull is full speed", () => {
+    expect(aimFromPull(100, 100, 141.5)).toEqual({ angle: 45, speed: SPEED_MAX });
+  });
+
+  it("half a pull is half way between the slowest and the fastest", () => {
+    expect(aimFromPull(50, 0.0001, 100)?.speed).toBe((SPEED_MIN + SPEED_MAX) / 2);
+  });
+
+  it("a steep pull aims steep, a flat pull aims low, within the launcher's range", () => {
+    expect(aimFromPull(10, 100, 100)?.angle).toBe(84);
+    expect(aimFromPull(100, 1, 100)?.angle).toBe(ANGLE_MIN);
+    expect(aimFromPull(-20, 60, 100)?.angle).toBe(ANGLE_MAX);
+    expect(aimFromPull(60, -20, 100)?.angle).toBe(ANGLE_MIN);
+  });
+
+  it("a touch that barely moves is not a shot", () => {
+    expect(aimFromPull(3, 4, 100)).toBeNull();
+  });
+});
+
+describe("aim help on the first levels", () => {
+  it("shows how the shot starts on levels 1 to 5, a prefix of the real path", () => {
+    expect(AIM_HELP_UP_TO).toBe(5);
+    const L = LAUNCH_LEVELS[0];
+    const full = simulateShot(L, 40, 22).path;
+    const help = aimHelpPath(L, 40, 22);
+    expect(help.length).toBeGreaterThan(2);
+    expect(help.length).toBeLessThan(full.length / 2);
+    help.forEach((p, i) => expect(p).toEqual(full[i]));
+  });
+
+  it("is gone from level 6", () => {
+    expect(aimHelpPath(LAUNCH_LEVELS[5], 40, 22)).toEqual([]);
+  });
+});
+
+describe("earlier shots stay on screen", () => {
+  it("keeps the last few shots, newest last", () => {
+    let g: number[] = [];
+    for (let i = 1; i <= GHOSTS + 2; i++) g = addGhost(g, i);
+    expect(GHOSTS).toBe(3);
+    expect(g).toEqual([3, 4, 5]);
   });
 });

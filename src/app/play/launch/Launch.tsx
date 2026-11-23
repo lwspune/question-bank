@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import { Lock, Star } from "lucide-react";
 import { useLocalStore, readLocal, writeLocal } from "@/components/play/useLocalStore";
 import { confetti, prefersReducedMotion, replay, sfx, vibrate } from "@/components/play/sfx";
@@ -13,9 +13,12 @@ import {
   G,
   LAUNCH_KEY,
   LAUNCH_LEVELS,
-  SHOTS,
+  MAX_REPORTED_SHOTS,
   SPEED_MAX,
   SPEED_MIN,
+  addGhost,
+  aimFromPull,
+  aimHelpPath,
   isLaunchOpen,
   maxHeight,
   parseLaunchProgress,
@@ -30,11 +33,27 @@ import {
 
 /**
  * Launch (2026-11-18), the Physics game: set the angle and the speed, fire,
- * hit the target in 3 shots. The physics is lib/play/launch (g = 10); this
- * draws the field on a canvas and animates the shot's path.
+ * hit the target. The physics is lib/play/launch (g = 10); this draws the
+ * field on a canvas and animates the shot's path.
+ *
+ * 2026-11-23 (5 of 7 players stopped in levels 1 to 5): earlier shots stay on
+ * screen with where they landed, pull back on the field to aim (the sliders
+ * stay), a dotted start of the arc on levels 1 to 5, shots never run out
+ * (stars still reward fewer), and a cannon, smoke and a target that bursts.
+ * A round is one go at a level: reported on the hit, or as a miss when the
+ * player leaves the level without one.
  */
 
 const C = { sky1: "#1f1850", sky2: "#3b1f55", ground: "#2b2266", grass: "#3ee6b0", wall: "#6b5bd6", cliff: "#4a3ca0", target: "#ff6b80", ink: "#f3f0ff", dim: "#b9b2e0", mango: "#ffb238", sky: "#5cc8ff" };
+
+/** Left edge of the field (the cannon's spot), in pixels. */
+const X0 = 30;
+
+type Ghost = { path: Shot["path"]; landX: number; landY: number; outcome: Shot["outcome"] };
+type Part = { x: number; y: number; vx: number; vy: number; g: number; life: number; fade: number; c: string; r?: number; grow?: number; drag?: number };
+type Pull = { sx: number; sy: number; cx: number; cy: number };
+
+const START_MSG = "Pull back on the field to aim, or use the sliders. g = 10 m/s².";
 
 function feedback(L: LaunchLevel, shot: Shot, angle: number, speed: number, shotNo: number): string {
   const mid = L.target.x + L.target.w / 2;
@@ -60,6 +79,16 @@ function feedback(L: LaunchLevel, shot: Shot, angle: number, speed: number, shot
   }
 }
 
+function dots(ctx: CanvasRenderingContext2D, pts: { x: number; y: number }[], every: number, color: string, px: (x: number) => number, py: (y: number) => number) {
+  ctx.fillStyle = color;
+  pts.forEach((p, i) => {
+    if (i % every) return;
+    ctx.beginPath();
+    ctx.arc(px(p.x), py(p.y), 2.2, 0, Math.PI * 2);
+    ctx.fill();
+  });
+}
+
 export default function Launch() {
   const raw = useLocalStore(LAUNCH_KEY);
   const progress = useMemo(() => parseLaunchProgress(raw ?? null), [raw]);
@@ -70,13 +99,41 @@ export default function Launch() {
   const [shotNo, setShotNo] = useState(0);
   const [flying, setFlying] = useState(false);
   const [won, setWon] = useState(false);
-  const [msg, setMsg] = useState("Set the angle and the speed, then fire. g = 10 m/s².");
+  const [msg, setMsg] = useState(START_MSG);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const trail = useRef<{ x: number; y: number }[]>([]);
   const ball = useRef<{ x: number; y: number } | null>(null);
-  const parts = useRef<{ x: number; y: number; vx: number; vy: number; life: number; c: string }[]>([]);
+  const parts = useRef<Part[]>([]);
+  const ghosts = useRef<Ghost[]>([]);
+  const lastShot = useRef<Ghost | null>(null);
+  const pull = useRef<Pull | null>(null);
+  /** True while a frame loop is drawing the shot, smoke or sparks. */
+  const looping = useRef(false);
+  /** A go at a level with misses and no hit yet: reported as a miss if the player leaves it. */
+  const pending = useRef<{ level: number; shots: number } | null>(null);
+  const signedIn = useRef(false);
+  useEffect(() => {
+    signedIn.current = !!session;
+  }, [session]);
+
+  const flushMiss = useCallback(() => {
+    const p = pending.current;
+    pending.current = null;
+    if (!p) return;
+    const shots = Math.min(p.shots, MAX_REPORTED_SHOTS);
+    reportRound(signedIn.current, { kind: "play_round", game: "launch", level: p.level, hit: false, shots }, { level: p.level, hit: false });
+  }, []);
+
+  // Leaving the page with misses on a level still counts as a round.
+  useEffect(() => {
+    window.addEventListener("pagehide", flushMiss);
+    return () => {
+      window.removeEventListener("pagehide", flushMiss);
+      flushMiss();
+    };
+  }, [flushMiss]);
 
   const draw = useCallback(() => {
     const cv = canvasRef.current;
@@ -92,10 +149,9 @@ export default function Launch() {
     const ctx = cv.getContext("2d");
     if (!ctx) return;
     ctx.setTransform(d, 0, 0, d, 0, 0);
-    const x0 = 22;
-    const sc = (W - x0 - 10) / FIELD;
+    const sc = (W - X0 - 10) / FIELD;
     const gy = H - 24;
-    const px = (x: number) => x0 + x * sc;
+    const px = (x: number) => X0 + x * sc;
     const py = (y: number) => gy - y * sc;
     const g = ctx.createLinearGradient(0, 0, 0, H);
     g.addColorStop(0, C.sky1);
@@ -121,7 +177,9 @@ export default function Launch() {
     ctx.fillRect(0, gy, W, 2);
     if (level.launchHeight > 0) {
       ctx.fillStyle = C.cliff;
-      ctx.fillRect(px(0) - 10, py(level.launchHeight), 20, level.launchHeight * sc);
+      ctx.fillRect(px(0) - 12, py(level.launchHeight), 24, level.launchHeight * sc);
+      ctx.fillStyle = C.grass;
+      ctx.fillRect(px(0) - 12, py(level.launchHeight), 24, 2);
     }
     for (const w of level.walls) {
       ctx.fillStyle = C.wall;
@@ -141,44 +199,87 @@ export default function Launch() {
       ctx.stroke();
       ctx.lineWidth = 1;
     }
+
+    // The target: a pad, and a bullseye on a post until it is hit.
     const t = level.target;
     const tx = px(t.x);
     const tw = t.w * sc;
     const ty = py(t.y);
-    ctx.fillStyle = C.target;
-    ctx.fillRect(tx, ty - 6, tw, 6);
-    ctx.fillStyle = C.ink;
-    ctx.fillRect(tx + tw * 0.3, ty - 6, tw * 0.4, 6);
-    ctx.fillStyle = C.target;
-    ctx.fillRect(tx + tw / 2 - 1, ty - 30, 2, 24);
-    ctx.beginPath();
-    ctx.moveTo(tx + tw / 2 + 1, ty - 30);
-    ctx.lineTo(tx + tw / 2 + 14, ty - 25);
-    ctx.lineTo(tx + tw / 2 + 1, ty - 20);
-    ctx.fill();
+    const tmid = tx + tw / 2;
+    ctx.fillStyle = "#ff6b8066";
+    ctx.fillRect(tx, ty - 4, tw, 4);
+    if (!won) {
+      const r = Math.max(9, tw / 2);
+      ctx.fillStyle = "#8a7bd8";
+      ctx.fillRect(tmid - 1.5, ty - 26, 3, 26);
+      for (const [rr, c] of [[r, C.target], [r * 0.66, C.ink], [r * 0.33, C.target]] as const) {
+        ctx.fillStyle = c;
+        ctx.beginPath();
+        ctx.arc(tmid, ty - 26 - r * 0.2, rr, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    // Earlier shots, faint, each with where it landed.
+    ghosts.current.forEach((gh, i) => {
+      const k = 0.18 + 0.14 * i;
+      dots(ctx, gh.path, 3, `rgba(185,178,224,${k})`, px, py);
+      const lx = px(gh.landX);
+      const ly = py(gh.landY);
+      ctx.strokeStyle = `rgba(255,178,56,${0.5 + 0.2 * i})`;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(lx - 4, ly - 4);
+      ctx.lineTo(lx + 4, ly + 4);
+      ctx.moveTo(lx + 4, ly - 4);
+      ctx.lineTo(lx - 4, ly + 4);
+      ctx.stroke();
+      ctx.lineWidth = 1;
+      ctx.fillStyle = `rgba(255,178,56,${0.6 + 0.2 * i})`;
+      ctx.font = "700 10px Inter, system-ui, sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(gh.outcome === "wall" || gh.outcome === "cliff" ? gh.outcome : `${gh.landX.toFixed(0)} m`, lx, ly - 9);
+    });
+
+    // Where the shot will start: the arc's first part on levels 1 to 5, a dashed line after.
     const a = (angle * Math.PI) / 180;
     const ox = px(0);
     const oy = py(level.launchHeight) - 4;
-    const len = 18 + speed * 1.4;
-    ctx.setLineDash([3, 5]);
-    ctx.strokeStyle = "#ffb23899";
+    const help = !flying && !won ? aimHelpPath(level, angle, speed) : [];
+    if (help.length) dots(ctx, help, 6, "#ffb238cc", px, py);
+    else if (!flying && !won) {
+      const len = (18 + speed * 1.4) * 1.8;
+      ctx.setLineDash([3, 5]);
+      ctx.strokeStyle = "#ffb23866";
+      ctx.beginPath();
+      ctx.moveTo(ox, oy);
+      ctx.lineTo(ox + Math.cos(a) * len, oy - Math.sin(a) * len);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    // The cannon.
+    ctx.save();
+    ctx.translate(ox, oy);
+    ctx.rotate(-a);
+    ctx.fillStyle = "#3a3160";
+    ctx.fillRect(-6, -7, 34, 14);
+    ctx.fillStyle = "#5a4fa0";
+    ctx.fillRect(-6, -7, 34, 4);
+    ctx.fillStyle = "#2a2348";
+    ctx.fillRect(24, -8.5, 6, 17);
+    ctx.restore();
+    ctx.fillStyle = "#6b4a2a";
     ctx.beginPath();
-    ctx.moveTo(ox, oy);
-    ctx.lineTo(ox + Math.cos(a) * len * 1.8, oy - Math.sin(a) * len * 1.8);
-    ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.strokeStyle = C.mango;
-    ctx.lineWidth = 7;
-    ctx.lineCap = "round";
+    ctx.arc(ox - 2, oy + 2, 9, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = "#b9875a";
+    ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.moveTo(ox, oy);
-    ctx.lineTo(ox + Math.cos(a) * 22, oy - Math.sin(a) * 22);
+    ctx.arc(ox - 2, oy + 2, 6, 0, Math.PI * 2);
     ctx.stroke();
     ctx.lineWidth = 1;
-    ctx.fillStyle = C.ink;
-    ctx.beginPath();
-    ctx.arc(ox, oy, 9, 0, Math.PI * 2);
-    ctx.fill();
+
     trail.current.forEach((p, i) => {
       ctx.fillStyle = `rgba(92,200,255,${0.25 + (0.6 * i) / Math.max(1, trail.current.length)})`;
       ctx.beginPath();
@@ -186,115 +287,221 @@ export default function Launch() {
       ctx.fill();
     });
     if (ball.current) {
-      ctx.fillStyle = C.mango;
+      const bx = px(ball.current.x);
+      const by = py(ball.current.y);
+      ctx.fillStyle = "#1a1530";
       ctx.beginPath();
-      ctx.arc(px(ball.current.x), py(ball.current.y), 6, 0, Math.PI * 2);
+      ctx.arc(bx, by, 6.5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = C.mango;
+      ctx.stroke();
+      ctx.fillStyle = "#ffffff55";
+      ctx.beginPath();
+      ctx.arc(bx - 2, by - 2, 2, 0, Math.PI * 2);
       ctx.fill();
     }
     for (const p of parts.current) {
       ctx.globalAlpha = Math.max(0, p.life);
       ctx.fillStyle = p.c;
-      ctx.fillRect(p.x, p.y, 4, 4);
+      if (p.r) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      } else ctx.fillRect(p.x, p.y, 4, 4);
     }
     ctx.globalAlpha = 1;
-    // Where the launcher points, as the exam would say it.
+
+    // The pull: from where the finger went down to where it is now.
+    const pl = pull.current;
+    if (pl) {
+      ctx.strokeStyle = "#f3f0ff88";
+      ctx.lineWidth = 3;
+      ctx.setLineDash([6, 5]);
+      ctx.beginPath();
+      ctx.moveTo(pl.sx, pl.sy);
+      ctx.lineTo(pl.cx, pl.cy);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.lineWidth = 1;
+      ctx.fillStyle = C.ink;
+      ctx.beginPath();
+      ctx.arc(pl.cx, pl.cy, 8, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
     ctx.textAlign = "left";
     ctx.fillStyle = C.dim;
     ctx.font = "600 11px Inter, system-ui, sans-serif";
     ctx.fillText(`θ = ${angle}°   u = ${speed} m/s`, 8, 16);
-  }, [level, angle, speed]);
+    if (shotNo === 0 && !flying && !pl) {
+      ctx.textAlign = "right";
+      ctx.fillStyle = "#f3f0ffaa";
+      ctx.fillText("Touch, pull back, let go", W - 8, 16);
+    }
+  }, [level, angle, speed, flying, won, shotNo]);
 
+  // The frame loop draws through this, so it always draws the latest angle and speed.
+  const drawRef = useRef(draw);
   useEffect(() => {
+    drawRef.current = draw;
     draw();
     const onResize = () => draw();
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, [draw]);
 
-  const choose = (L: LaunchLevel) => {
+  const choose = (L: LaunchLevel | null) => {
+    flushMiss();
     setLevel(L);
     setShotNo(0);
     setWon(false);
     trail.current = [];
     ball.current = null;
-    setMsg("Set the angle and the speed, then fire. g = 10 m/s².");
+    parts.current = [];
+    ghosts.current = [];
+    lastShot.current = null;
+    setMsg(START_MSG);
   };
 
-  const fire = () => {
+  const fire = (a: number = angle, u: number = speed) => {
     if (!level || flying || won) return;
-    if (shotNo >= SHOTS) {
-      setShotNo(0);
-      trail.current = [];
-      ball.current = null;
-      setMsg("Three more shots.");
-      draw();
-      return;
-    }
-    const shot = simulateShot(level, angle, speed);
+    if (lastShot.current) ghosts.current = addGhost(ghosts.current, lastShot.current);
+    const shot = simulateShot(level, a, u);
     const n = shotNo + 1;
     setShotNo(n);
     setFlying(true);
     sfx.launch();
     trail.current = [];
-    const path = shot.path;
     const reduced = prefersReducedMotion();
+    const cv = canvasRef.current;
+    if (cv && !reduced) {
+      // A puff of smoke at the cannon's mouth.
+      const sc = (cv.clientWidth - X0 - 10) / FIELD;
+      const r = (a * Math.PI) / 180;
+      const mx = X0 + Math.cos(r) * 30;
+      const my = cv.clientHeight - 24 - level.launchHeight * sc - 4 - Math.sin(r) * 30;
+      for (let i = 0; i < 12; i++) {
+        parts.current.push({
+          x: mx,
+          y: my,
+          vx: Math.cos(r) * (0.5 + Math.random() * 1.5) + (Math.random() - 0.5),
+          vy: -Math.sin(r) * (0.5 + Math.random()) + (Math.random() - 0.5),
+          g: -0.01,
+          drag: 0.96,
+          life: 0.8,
+          fade: 0.018,
+          r: 3 + Math.random() * 3,
+          grow: 0.15,
+          c: "#d8d2f0",
+        });
+      }
+    }
+    const path = shot.path;
     const t0 = performance.now();
     const totalMs = Math.max(400, shot.time * 1000 * 0.75);
     const step = (now: number) => {
       const k = reduced ? 1 : Math.min(1, (now - t0) / totalMs);
       const idx = Math.min(path.length - 1, Math.floor(k * (path.length - 1)));
-      ball.current = path[idx];
+      ball.current = k < 1 || shot.outcome !== "hit" ? path[idx] : null;
       trail.current = path.slice(0, idx + 1).filter((_, i) => i % 3 === 0);
       for (const p of parts.current) {
         p.x += p.vx;
         p.y += p.vy;
-        p.vy += 0.15;
-        p.life -= 0.025;
+        p.vy += p.g;
+        if (p.drag) p.vx *= p.drag;
+        if (p.grow && p.r) p.r += p.grow;
+        p.life -= p.fade;
       }
       parts.current = parts.current.filter((p) => p.life > 0);
-      draw();
-      // Keep going while the ball flies or the burst of sparks fades.
+      drawRef.current();
+      // Keep going while the ball flies or the smoke and sparks fade.
       if (k < 1 || parts.current.length) requestAnimationFrame(step);
+      else looping.current = false;
     };
+    looping.current = true;
     requestAnimationFrame(step);
     setTimeout(
       () => {
         setFlying(false);
-        setMsg(feedback(level, shot, angle, speed, n));
+        lastShot.current = { path: shot.path, landX: shot.landX, landY: shot.landY, outcome: shot.outcome };
+        setMsg(feedback(level, shot, a, u, n));
         if (shot.outcome === "hit") {
+          pending.current = null;
           const stars = starsFor(n);
           writeLocal(LAUNCH_KEY, serializeLaunchProgress(recordLaunch(parseLaunchProgress(readLocal(LAUNCH_KEY)), level.id, stars)));
           setWon(true);
           sfx.win();
           vibrate(40);
-          const cv = canvasRef.current;
           if (cv && !reduced) {
-            const W = cv.clientWidth;
-            const sc = (W - 32) / FIELD;
-            const bx = 22 + shot.landX * sc;
-            const by = cv.clientHeight - 24 - shot.landY * sc;
-            const cols = ["#ffb238", "#3ee6b0", "#5cc8ff", "#ff6b80"];
-            for (let i = 0; i < 40; i++) {
-              const a = Math.random() * Math.PI * 2;
-              const v = 1 + Math.random() * 4;
-              parts.current.push({ x: bx, y: by, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 2, life: 1, c: cols[i % 4] });
+            // The target bursts.
+            const sc = (cv.clientWidth - X0 - 10) / FIELD;
+            const bx = X0 + (level.target.x + level.target.w / 2) * sc;
+            const by = cv.clientHeight - 24 - level.target.y * sc - 30;
+            const cols = ["#ff6b80", "#f3f0ff", "#ff6b80", "#ffb238"];
+            for (let i = 0; i < 60; i++) {
+              const ang = Math.random() * Math.PI * 2;
+              const v = 1 + Math.random() * 5;
+              parts.current.push({ x: bx, y: by, vx: Math.cos(ang) * v, vy: Math.sin(ang) * v - 2, g: 0.15, life: 1, fade: 0.022, c: cols[i % 4] });
             }
-            requestAnimationFrame(step);
+            if (!looping.current) {
+              looping.current = true;
+              requestAnimationFrame(step);
+            }
           }
           if (level.id === LAUNCH_LEVELS.length) confetti(stageRef.current, 70);
-          reportRound(!!session, { kind: "play_round", game: "launch", level: level.id, hit: true, shots: n }, { level: level.id, hit: true });
+          reportRound(!!session, { kind: "play_round", game: "launch", level: level.id, hit: true, shots: Math.min(n, MAX_REPORTED_SHOTS) }, { level: level.id, hit: true });
         } else {
+          pending.current = { level: level.id, shots: n };
           sfx.miss();
           vibrate([50, 30, 50]);
           replay(stageRef.current, "pa-shake");
-          if (n >= SHOTS) {
-            setMsg((m) => `${m} Out of shots.`);
-            reportRound(!!session, { kind: "play_round", game: "launch", level: level.id, hit: false, shots: n }, { level: level.id, hit: false });
-          }
         }
       },
-      reduced ? 50 : Math.max(400, shot.time * 1000 * 0.75) + 30
+      reduced ? 50 : totalMs + 30
     );
+  };
+
+  // Pull back to aim: touch anywhere on the field, pull back, let go.
+  const pointAt = (e: ReactPointerEvent<HTMLCanvasElement>) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    return { x: e.clientX - r.left, y: e.clientY - r.top };
+  };
+  const pullMax = () => {
+    const w = wrapRef.current;
+    return w ? Math.min(w.clientWidth, w.clientHeight) * 0.6 : 180;
+  };
+  const aimOf = (p: Pull) => aimFromPull(p.sx - p.cx, p.cy - p.sy, pullMax());
+  const onPointerDown = (e: ReactPointerEvent<HTMLCanvasElement>) => {
+    if (!level || flying || won) return;
+    e.currentTarget.setPointerCapture(e.pointerId);
+    const p = pointAt(e);
+    pull.current = { sx: p.x, sy: p.y, cx: p.x, cy: p.y };
+    draw();
+  };
+  const onPointerMove = (e: ReactPointerEvent<HTMLCanvasElement>) => {
+    const pl = pull.current;
+    if (!pl) return;
+    const p = pointAt(e);
+    pl.cx = p.x;
+    pl.cy = p.y;
+    const aim = aimOf(pl);
+    if (aim) {
+      setAngle(aim.angle);
+      setSpeed(aim.speed);
+    }
+    draw();
+  };
+  const onPointerUp = () => {
+    const pl = pull.current;
+    pull.current = null;
+    if (!pl) return;
+    const aim = aimOf(pl);
+    if (aim) fire(aim.angle, aim.speed);
+    else draw();
+  };
+  const onPointerCancel = () => {
+    pull.current = null;
+    draw();
   };
 
   if (!level) {
@@ -302,7 +509,7 @@ export default function Launch() {
     return (
       <div className="pa-stage p-4">
         <p className="text-sm pa-dim">
-          Set the angle and the speed, fire, hit the target. g = {G} m/s², as in the exam. {totalStars > 0 && `${totalStars} of ${LAUNCH_LEVELS.length * 3} stars.`}
+          Aim the cannon, fire, hit the target. g = {G} m/s², as in the exam. {totalStars > 0 && `${totalStars} of ${LAUNCH_LEVELS.length * 3} stars.`}
         </p>
         <ul className="mt-3 grid grid-cols-5 gap-2" aria-label="Levels">
           {LAUNCH_LEVELS.map((L) => {
@@ -333,24 +540,41 @@ export default function Launch() {
   }
 
   const next = LAUNCH_LEVELS.find((l) => l.id === level.id + 1);
+  const shown = won ? starsFor(shotNo) : starsFor(shotNo + 1);
 
   return (
     <div ref={stageRef} className="pa-stage flex flex-col">
       <div className="flex items-center justify-between px-4 pb-2 pt-3">
-        <button type="button" className="text-sm font-semibold text-[var(--pa-sky)]" onClick={() => setLevel(null)}>
+        <button type="button" className="text-sm font-semibold text-[var(--pa-sky)]" onClick={() => choose(null)}>
           Levels
         </button>
         <span className="pa-display truncate px-2 text-lg font-extrabold">
           {level.id}. {level.name}
         </span>
-        <span className="flex gap-1" role="img" aria-label={`${SHOTS - shotNo} shots left`}>
-          {Array.from({ length: SHOTS }, (_, i) => (
-            <span key={i} className={`h-3 w-3 rounded-full ${i < SHOTS - shotNo ? "bg-[var(--pa-mango)]" : "bg-[var(--pa-night-3)]"}`} />
-          ))}
+        <span
+          className="flex shrink-0 items-center gap-1 text-xs font-semibold pa-dim"
+          role="img"
+          aria-label={won ? `${shown} stars` : `Shot ${shotNo + 1}: a hit now earns ${shown} ${shown === 1 ? "star" : "stars"}`}
+        >
+          {!won && <span aria-hidden>Shot {shotNo + 1}</span>}
+          <span className="flex" aria-hidden>
+            {[1, 2, 3].map((s) => (
+              <Star key={s} className={`h-3.5 w-3.5 ${s <= shown ? "fill-[var(--pa-mango)] text-[var(--pa-mango)]" : "text-[var(--pa-night-3)]"}`} />
+            ))}
+          </span>
         </span>
       </div>
       <div ref={wrapRef} className="relative h-[19rem] sm:h-[21rem]">
-        <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" aria-label={`Launch field for level ${level.id}`} role="img" />
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 h-full w-full cursor-grab touch-none"
+          aria-label={`Launch field for level ${level.id}. Pull back on it to aim, or use the sliders below.`}
+          role="img"
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={onPointerUp}
+          onPointerCancel={onPointerCancel}
+        />
       </div>
       <div className="space-y-2 bg-black/10 px-4 pb-4 pt-3">
         <div className="flex items-center gap-3">
@@ -370,18 +594,23 @@ export default function Launch() {
         </p>
         <div className="flex justify-center gap-2">
           {won ? (
-            next ? (
-              <button type="button" className="pa-btn" onClick={() => choose(next)} autoFocus>
-                Next level
+            <>
+              <button type="button" className="pa-btn-ghost" onClick={() => choose(level)}>
+                Play again
               </button>
-            ) : (
-              <button type="button" className="pa-btn" onClick={() => setLevel(null)}>
-                All levels won
-              </button>
-            )
+              {next ? (
+                <button type="button" className="pa-btn" onClick={() => choose(next)} autoFocus>
+                  Next level
+                </button>
+              ) : (
+                <button type="button" className="pa-btn" onClick={() => choose(null)}>
+                  All levels won
+                </button>
+              )}
+            </>
           ) : (
-            <button type="button" className="pa-btn !px-10" onClick={fire} disabled={flying}>
-              {shotNo >= SHOTS ? "Try again" : "Fire"}
+            <button type="button" className="pa-btn !px-10" onClick={() => fire()} disabled={flying}>
+              Fire
             </button>
           )}
         </div>

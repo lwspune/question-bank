@@ -6,7 +6,8 @@ import Launch from "./Launch";
 
 /**
  * /play/launch (2026-11-18): the Physics game. Projectile motion with g = 10,
- * 30 levels (towers, walls, cliffs, hoops), 3 shots each. Static and cached;
+ * 30 levels (towers, walls, cliffs, hoops); shots never run out, fewer earn
+ * more stars (2026-11-23). Static and cached;
  * stars live in the browser (lib/play/launch).
  */
 export const metadata: Metadata = {

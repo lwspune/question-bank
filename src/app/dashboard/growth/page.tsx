@@ -125,6 +125,7 @@ import {
   PLAY_PLAYERS_MIN,
   NOTES_VISUALS_OPENERS_KEEP,
   NOTES_VISUALS_PRACTISE_PCT,
+  PARTNER_COURSE_TAPPERS_KEEP,
   WHY_NOT_BUY_LEAD_PCT,
   WHY_NOT_BUY_MIN_ANSWERS,
   PARENT_PAY_KEEP,
@@ -1015,6 +1016,14 @@ export default async function GrowthPage() {
             Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with <code>scripts/gallery/readout.sql</code>:
             keep the header Visuals button if {NOTES_VISUALS_OPENERS_KEEP}+ signed-in students open a visual and{" "}
             {NOTES_VISUALS_PRACTISE_PCT}%+ of them tap Practise 3 questions.
+          </p>
+        );
+      case "partner-courses":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with{" "}
+            <code>scripts/partner-courses/readout.sql</code>: take the courses to Defence Mania as a deal if{" "}
+            {PARTNER_COURSE_TAPPERS_KEEP}+ different students tap one; otherwise take the course shelves down.
           </p>
         );
       case "practice-trial":

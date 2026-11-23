@@ -561,6 +561,12 @@ export const ME_CLASS_OFFER_YES_KEEP_PCT = 5;
  */
 export const NOTES_VISUALS_OPENERS_KEEP = 100;
 export const NOTES_VISUALS_PRACTISE_PCT = 20;
+/**
+ * "partner-courses": different students (accounts, else browsers; staff left
+ * out) who tap a partner course on /store in 6 weeks, for the trial to be taken
+ * to Defence Mania as a commission or coupon deal (owner, 2026-11-17).
+ */
+export const PARTNER_COURSE_TAPPERS_KEEP = 30;
 /** "play-games": signed-in students who finish a /play round in 4 weeks, the floor for reading the rule at all. */
 export const PLAY_PLAYERS_MIN = 50;
 
@@ -656,7 +662,8 @@ export type Readout =
   | "play-games"
   | "practice-trial"
   | "v-intl"
-  | "notes-visuals";
+  | "notes-visuals"
+  | "partner-courses";
 
 export type Experiment = {
   id: string;
@@ -1649,11 +1656,25 @@ export const EXPERIMENTS: readonly Experiment[] = [
       "A Play button in the header (after Ebooks and Classes) opens /play: 60-second rounds of whole-number sums in 8 levels (add and subtract to 20, tables, division, two-digit sums, tables to 20, bigger times and divide, order of operations, two-digit times two-digit). A level is cleared by enough right answers at 80%+ and opens the next. Fun without rankings: a combo, a personal best and a race against your own best round. Anyone can play; progress is kept in the browser. To fit Play on a 360 px phone the words \"PYQ Vault\" now hide below 640 px (logo stays) and the header pills are 4 px narrower.",
     why: "The owner sees students slip on everyday calculation in class, and studying is a chore, so a game may bring them back. The real question is whether it brings them back to STUDY, not just to the game.",
     metric:
-      "Signed-in students with a play_round (migration 0267), rounds each, levels cleared; for players, study days (mocks, drill, bank answers) in the 7 days after their first round vs the 7 days before (scripts/play/readout.sql). Header Play taps (play_link_click) and every round signed in or out (play_round_end) in Vercel by hand. Classes and Ebooks are header buttons too: read their taps across 2026-11-16 with care. From 2026-11-17 /play is a hub (a ring of subjects) and the maths game moved to /play/maths, one tap further from the header; two English word games joined it (play_round with metadata.game word_builder or daily_word). Every game counts as playing; the readout also splits players by game. Read across 2026-11-17 with care. From 2026-11-18 /play is seven arcade games (Number Rain replaces the speed game at /play/maths; Word Builder is gone; play_round metadata.game number_rain, word_groups, daily_word, launch, element_hunt, timeline, pin_it), so read across 2026-11-18 with care too",
+      "Signed-in students with a play_round (migration 0267), rounds each, levels cleared; for players, study days (mocks, drill, bank answers) in the 7 days after their first round vs the 7 days before (scripts/play/readout.sql). Header Play taps (play_link_click) and every round signed in or out (play_round_end) in Vercel by hand. Classes and Ebooks are header buttons too: read their taps across 2026-11-16 with care. From 2026-11-17 /play is a hub (a ring of subjects) and the maths game moved to /play/maths, one tap further from the header; two English word games joined it (play_round with metadata.game word_builder or daily_word). Every game counts as playing; the readout also splits players by game. Read across 2026-11-17 with care. From 2026-11-18 /play is seven arcade games (Number Rain replaces the speed game at /play/maths; Word Builder is gone; play_round metadata.game number_rain, word_groups, daily_word, launch, element_hunt, timeline, pin_it), so read across 2026-11-18 with care too. From the deploy after 2026-11-23 Number Rain and Launch changed after the first rounds showed early drop-off: Number Rain got a gentle start, slower two-digit worlds (15 s+, at most 4 sums on screen for the first 10) and 3 stars a world; Launch keeps earlier shots on screen, aims by pulling back, shows aim help on levels 1-5, and shots never run out, so a Launch play_round is now one go at a level (reported on the hit, or as a miss when the player leaves the level) where it was 3 shots: read Launch rounds and clear rates across that deploy with care",
     rule: `Read once ${PLAY_PLAYERS_MIN}+ signed-in students have played. Keep Play in the header if players' study days after their first round are at least the days before (median) and a quarter or more play on 2+ days; if study days fall, the game is replacing study: move it off the header. Below ${PLAY_PLAYERS_MIN} players at the check, take the button out and link /play from mock results only.`,
     liveSince: "2026-11-16",
     windowDays: 28,
     readout: "play-games",
+    status: "running",
+  },
+  {
+    id: "partner-courses",
+    title: "Partner courses on the store: do students want online courses?",
+    change:
+      "The header's Ebooks button became Store, and /store got a shelf per exam for online courses of our offline partner Defence Mania: CDS 1 2027 Sikandar 3.0 (starts 5 Dec) and the AFCAT 1 2027 Crash Course (starts 20 Dec), ₹1,999 each. A card says it is the partner's course and opens their site in a new tab, through our own tap link (/api/partner-course/[id]) with UTM tags. A CDS or AFCAT student sees their course shelf first; others find it under their other exams.",
+    why: "Students buy online courses (Testbook earns this way), and 75 of 88 tutoring Yes answers wanted ONLINE teaching. Linking a partner's courses tests that demand without recording any video. Nothing is agreed with the partner yet; taps decide whether to ask for a commission or coupon deal.",
+    metric:
+      "Taps per course from partner_course_clicks (migration 0269): different students (account when signed in, else the browser's qb_vid), signed in vs out, per exam, staff left out (scripts/partner-courses/readout.sql). For scale, store visits and ebook buy taps over the same weeks (ebook-store). The rename from Ebooks to Store went out the same day, so read header store taps (ebook_store_link_click) across that deploy with care",
+    rule: `Take it to Defence Mania as a commission or coupon deal if ${PARTNER_COURSE_TAPPERS_KEEP}+ different students tap a course in 6 weeks; below that, take the course shelves down and keep the Store name.`,
+    liveSince: "2026-11-23",
+    windowDays: 42,
+    readout: "partner-courses",
     status: "running",
   },
   {

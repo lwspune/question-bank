@@ -12,7 +12,18 @@ export const ANGLE_MIN = 5;
 export const ANGLE_MAX = 85;
 export const SPEED_MIN = 10;
 export const SPEED_MAX = 40;
-export const SHOTS = 3;
+/**
+ * Shots never run out (2026-11-23: one player missed level 1 six times in a
+ * row, 18 shots, then left; a 3-shot limit only added a restart screen). A
+ * round report carries at most this many.
+ */
+export const MAX_REPORTED_SHOTS = 99;
+/** Levels up to this one show the first part of the arc while aiming. */
+export const AIM_HELP_UP_TO = 5;
+/** Earlier shots kept on screen, so a student sees what to adjust. */
+export const GHOSTS = 3;
+/** A pull shorter than this, in pixels, is a touch, not a shot. */
+const PULL_DEAD_PX = 10;
 /** The field drawn on screen, in metres. */
 export const FIELD = 120;
 
@@ -106,8 +117,37 @@ export function simulateShot(L: LaunchLevel, angleDeg: number, u: number): Shot 
   return done("off", px, py, 0);
 }
 
+/** First shot 3 stars, second 2, any later shot 1. */
 export function starsFor(shotNumber: number): number {
   return Math.max(1, 4 - shotNumber);
+}
+
+/**
+ * Pull back to aim (2026-11-23), like a slingshot: `back` is how far the
+ * finger moved back (left) from where it touched, `down` how far it moved
+ * down, in pixels. The shot flies the opposite way: its angle is the pull's,
+ * and a pull of `full` pixels or more is full speed. Null for a touch that
+ * barely moved.
+ */
+export function aimFromPull(back: number, down: number, full: number): { angle: number; speed: number } | null {
+  const len = Math.hypot(back, down);
+  if (len < PULL_DEAD_PX) return null;
+  const raw = back <= 0 ? (down > 0 ? ANGLE_MAX : ANGLE_MIN) : (Math.atan2(down, back) * 180) / Math.PI;
+  const angle = Math.round(Math.min(ANGLE_MAX, Math.max(ANGLE_MIN, raw)));
+  const speed = Math.round(SPEED_MIN + Math.min(1, len / full) * (SPEED_MAX - SPEED_MIN));
+  return { angle, speed };
+}
+
+/** The first part of the shot's path, shown while aiming on the first levels; empty after them. */
+export function aimHelpPath(L: LaunchLevel, angleDeg: number, u: number): Shot["path"] {
+  if (L.id > AIM_HELP_UP_TO) return [];
+  const path = simulateShot(L, angleDeg, u).path;
+  return path.slice(0, Math.max(3, Math.floor(path.length * 0.3)));
+}
+
+/** The earlier shots to keep on screen: the newest GHOSTS, newest last. */
+export function addGhost<T>(ghosts: T[], shot: T): T[] {
+  return [...ghosts, shot].slice(-GHOSTS);
 }
 
 // --- levels ------------------------------------------------------------------

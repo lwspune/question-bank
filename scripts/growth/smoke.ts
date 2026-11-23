@@ -397,6 +397,10 @@ async function main() {
         // Read by hand: surface_viewed rows with surface visuals (page, open, practise, notes).
         line = "by hand: scripts/gallery/readout.sql + Vercel visuals_link_click";
         break;
+      case "partner-courses":
+        // Read by hand: partner_course_clicks (migration 0269), different students per course, staff left out.
+        line = "by hand: scripts/partner-courses/readout.sql";
+        break;
       case "practice-trial":
         // Read by hand: offers, activations and purchases after the 7-day trial (migration 0273).
         line = "by hand: scripts/billing/practice-trial-readout.sql";

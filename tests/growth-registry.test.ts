@@ -103,6 +103,7 @@ describe("EXPERIMENTS", () => {
       "onboarding-arms",
       "paper-pages",
       "parent-pay",
+      "partner-courses",
       "pass-price",
       "pass-tiers",
       "performance-starter",
