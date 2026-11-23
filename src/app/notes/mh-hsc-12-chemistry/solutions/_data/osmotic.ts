@@ -6,7 +6,7 @@ export const HSC_CH_SO_OSMOTIC_NOTE: SubtopicNote = {
   oneLineDefinition:
     "How solvent flows through a semipermeable membrane, the osmotic pressure that stops it, the equation π = MRT, isotonic solutions, reverse osmosis and the molar mass of a solute from osmotic pressure.",
   whyItMatters:
-    "23 questions, the most of any page in this chapter. Twelve were set in board papers: define osmosis (2023), osmotic pressure (2020, 2024 and 2025) and isotonic solutions (2022 and 2026); the concentration unit used for osmotic pressure (2022); the condition for reverse osmosis (2024); derive or explain the molar mass expression (2022 and 2024); find a molar mass from an osmotic pressure (2017); the osmotic pressure of a sucrose solution (2026); and derive van't Hoff's general solution equation (2019). The textbook adds glucose isotonic with blood, hypertonic solutions, and a molar mass found from both osmotic pressure and freezing point.",
+    "24 questions, the most of any page in this chapter. Twelve were set in board papers: define osmosis (2023), osmotic pressure (2020, 2024 and 2025) and isotonic solutions (2022 and 2026); the concentration unit used for osmotic pressure (2022); the condition for reverse osmosis (2024); derive or explain the molar mass expression (2022 and 2024); find a molar mass from an osmotic pressure (2017); the osmotic pressure of a sucrose solution (2026); and derive van't Hoff's general solution equation (2019). The textbook adds glucose isotonic with blood, hypertonic solutions, which colligative property is best for finding molar mass, and a molar mass found from both osmotic pressure and freezing point.",
   concepts: [
     {
       kind: "reference" as const,

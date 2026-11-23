@@ -6,7 +6,7 @@ export const HSC_CH_AP_ETHERS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "How ethers are made from alcohols and by Williamson synthesis, why they boil like alkanes yet dissolve like alcohols, how their C-O bond is broken, and how anisole reacts on its ring.",
   whyItMatters:
-    "20 questions. Fourteen were set in board papers from 2014 to 2026. The board asked for Williamson synthesis from ethyl bromide (2022, 2024), methoxyethane from methyl iodide and from diazomethane (2014), the continuous etherification process (2017, 2020) and what ethers are and how they are classified (2019). It asked the action of hot HI, PCl₅ and dilute H₂SO₄ on methoxyethane (2022), diethyl ether into ethyl chloride (2023), anisole into phenol (2024, 2026), PCl₅ on ethyl methyl ether (2025), its hydrolysis (2026) and bromine in acetic acid on anisole (2025). The textbook adds Williamson synthesis with a secondary halide, the storage of ethers and a structure puzzle with excess HI.",
+    "19 questions. Thirteen were set in board papers from 2014 to 2026. The board asked for Williamson synthesis from ethyl bromide (2022, 2024), methoxyethane from methyl iodide and from diazomethane (2014), the continuous etherification process (2017, 2020) and what ethers are and how they are classified (2019). It asked the action of hot HI, PCl₅ and dilute H₂SO₄ on methoxyethane (2022), diethyl ether into ethyl chloride (2023), anisole into phenol (2024, 2026), PCl₅ on ethyl methyl ether (2025), its hydrolysis (2026) and bromine in acetic acid on anisole (2025). The textbook adds Williamson synthesis with a secondary halide, the storage of ethers and a structure puzzle with excess HI.",
   concepts: [
     {
       kind: "formula" as const,

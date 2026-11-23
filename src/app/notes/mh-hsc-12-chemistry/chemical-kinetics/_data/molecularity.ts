@@ -6,7 +6,7 @@ export const HSC_CH_CK_MOLECULARITY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Elementary and complex reactions, the molecularity of an elementary step, how order differs from molecularity, and how the slowest step of a mechanism fixes the rate law and reveals the reaction intermediate.",
   whyItMatters:
-    "9 questions. Three were set in board papers: explain elementary and complex reactions (2017), distinguish between order and molecularity (2025) and define molecularity (2026). The textbook adds two-step mechanisms in which you write the overall reaction, the rate law from the slow step, the intermediate and the molecularity of each step.",
+    "10 questions. Four were set in board papers: explain elementary and complex reactions (2017), distinguish between order and molecularity (2025), define molecularity (2026), and write the rate law and the intermediate of a two-step reaction (2026). The textbook adds two-step mechanisms in which you write the overall reaction, the rate law from the slow step, the intermediate and the molecularity of each step.",
   concepts: [
     {
       kind: "reference" as const,

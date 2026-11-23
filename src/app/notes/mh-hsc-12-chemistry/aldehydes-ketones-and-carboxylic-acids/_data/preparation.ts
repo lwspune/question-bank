@@ -6,7 +6,7 @@ export const HSC_CH_AK_PREPARATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Aldehydes and ketones from alcohols, alkenes and alkynes, from acyl chlorides (Rosenmund reduction, dialkyl cadmium, Friedel-Crafts acylation), from nitriles and esters (Stephen reaction, DIBAl-H, Grignard reagents) and from aromatic hydrocarbons (Etard reaction, Gatterman-Koch formylation).",
   whyItMatters:
-    "18 questions, fifteen of them from board papers from 2019 to 2026, seven in 2024 alone. Rosenmund reduction and Gatterman-Koch formylation were each asked four times (2019, 2024, 2025 and 2026). The board also asked the Etard reaction, the Stephen reaction, Friedel-Crafts acylation, ozonolysis, the hydration of an alkyne, the best reagent to stop a primary alcohol at the aldehyde, and the Cannizzaro reaction of methanal.",
+    "17 questions, fourteen of them from board papers from 2019 to 2026, six in 2024 alone. Rosenmund reduction and Gatterman-Koch formylation were each asked four times (2019, 2024, 2025 and 2026). The board also asked the Etard reaction, the Stephen reaction, Friedel-Crafts acylation, ozonolysis, the hydration of an alkyne and the best reagent to stop a primary alcohol at the aldehyde.",
   concepts: [
     {
       kind: "formula" as const,

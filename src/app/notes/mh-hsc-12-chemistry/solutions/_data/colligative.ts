@@ -6,7 +6,7 @@ export const HSC_CH_SO_COLLIGATIVE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The four properties of a dilute solution that depend only on the number of solute particles, and the concentration units, molality and molarity, they are written in.",
   whyItMatters:
-    "8 questions. Four were set in board papers: pick the property that is not colligative (2014), say what a colligative property depends on (2015), find the moles and the molality of a urea solution (2018), and define colligative properties along with isotonic solutions (2025). The textbook adds which colligative property is best for finding molar mass, and why molality, not molarity, is used for boiling and freezing points.",
+    "7 questions. Four were set in board papers: pick the property that is not colligative (2014), say what a colligative property depends on (2015), find the moles and the molality of a urea solution (2018), and define colligative properties along with isotonic solutions (2025). The textbook adds why molality, not molarity, is used for boiling and freezing points.",
   concepts: [
     {
       kind: "reference" as const,

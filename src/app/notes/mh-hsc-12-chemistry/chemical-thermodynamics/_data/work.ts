@@ -6,7 +6,7 @@ export const HSC_CH_TH_WORK_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Work done when a gas expands or is compressed against an external pressure, W = −Pext ΔV, its sign convention, free expansion, and the maximum work of an isothermal reversible expansion.",
   whyItMatters:
-    "24 questions. Twelve were set in board papers: work against a constant pressure in L atm, joules and calories (2014), in a compression (2025) and as an MCQ in dm³ bar (2025); the sign convention for work in an expansion (2024); expansion into vacuum (2023); derive the expression for maximum work (2017 and 2024) and state the conditions for it (2019); maximum work numericals (2022, 2023 and 2025); and the work done when sulphur dioxide is oxidised (2026). The textbook adds the derivation of PV work, finding a final pressure or volume, and one gas expanded in three different ways.",
+    "23 questions. Eleven were set in board papers: work against a constant pressure in L atm, joules and calories (2014), in a compression (2025) and as an MCQ in dm³ bar (2025); the sign convention for work in an expansion (2024); expansion into vacuum (2023); derive the expression for maximum work (2017 and 2024) and state the conditions for it (2019); and maximum work numericals (2022, 2023 and 2025). The textbook adds the derivation of PV work, finding a final pressure or volume, and one gas expanded in three different ways.",
   concepts: [
     {
       kind: "formula" as const,

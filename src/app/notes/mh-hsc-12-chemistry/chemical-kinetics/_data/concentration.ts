@@ -6,7 +6,7 @@ export const HSC_CH_CK_CONCENTRATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The rate law rate = k[A]ˣ[B]ʸ, what the exponents tell you about the effect of concentration, the order of a reaction found from experimental data, and the rate constant with its units.",
   whyItMatters:
-    "15 questions. Six were set in board papers: the order when a fourfold rise in concentration only doubles the rate (2017), the rate constant of a first order reaction from its rate (2019), a rate law from two doubling experiments (2024), the effect of concentration when the order is negative (2025), and in 2026 a rate constant for a reaction third order overall and the rate law of a two-step reaction. The textbook adds rate laws from tables of initial rates, the rate constant of NOBr decomposition and how the rate changes when concentrations are doubled or cut.",
+    "14 questions. Five were set in board papers: the order when a fourfold rise in concentration only doubles the rate (2017), the rate constant of a first order reaction from its rate (2019), a rate law from two doubling experiments (2024), the effect of concentration when the order is negative (2025), and a rate constant for a reaction third order overall (2026). The textbook adds rate laws from tables of initial rates, the rate constant of NOBr decomposition and how the rate changes when concentrations are doubled or cut.",
   concepts: [
     {
       kind: "formula" as const,

@@ -6,7 +6,7 @@ export const HSC_CH_HD_SUBSTITUTION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "What a nucleophile does to an alkyl halide, the SN2 and SN1 mechanisms and what decides between them, dehydrohalogenation with alcoholic KOH, and why haloarenes resist substitution but take electrophiles at the ortho and para positions.",
   whyItMatters:
-    "42 questions, the biggest page of the chapter. Seventeen were set in board papers from 2014 to 2026: distinguish SN1 and SN2 (2014), write the salient features of SN1 (2024) and SN2 (2025), explain the mechanism of alkaline hydrolysis of bromomethane (2026), write the action of reagents on ethyl bromide (2019, 2023, 2024, 2026), the reagent for a nitroalkane (2025), conversions (2022, 2026), dehydrohalogenation of 2-chlorobutane (2023) and the sulphonation of chlorobenzene (2023). The textbook adds conversions, reasons and reactivity orders.",
+    "43 questions, the biggest page of the chapter. Eighteen were set in board papers from 2014 to 2026: distinguish SN1 and SN2 (2014), write the salient features of SN1 (2024) and SN2 (2025), explain the mechanism of alkaline hydrolysis of bromomethane (2026), write the action of reagents on ethyl bromide (2019, 2023, 2024, 2026), the reagent for a nitroalkane (2025), conversions (2022, 2026), dehydrohalogenation of 2-chlorobutane (2023), the sulphonation of chlorobenzene (2023) and its nitration and sulphonation (2026). The textbook adds conversions, reasons and reactivity orders.",
   concepts: [
     {
       kind: "reference" as const,

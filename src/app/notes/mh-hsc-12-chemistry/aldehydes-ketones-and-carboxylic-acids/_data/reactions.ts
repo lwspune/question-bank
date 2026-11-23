@@ -6,7 +6,7 @@ export const HSC_CH_AK_REACTIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The tests that tell aldehydes from ketones, nucleophilic addition of HCN, sodium bisulfite, alcohols and ammonia derivatives, aldol condensation and the Cannizzaro reaction, and Clemmensen, Wolf-Kishner and hydride reductions.",
   whyItMatters:
-    "28 questions. Twenty were set in board papers from 2014 to 2026, six of them in 2026. The board asked aldol condensation five times (2014, 2020, 2023, 2025, 2026), the Cannizzaro reaction four times including the cross Cannizzaro (2014, 2024, 2025, 2026) and Clemmensen reduction four times (2024, 2025 twice, 2026), with Wolf-Kishner reduction, the Tollens' and Fehling tests, the haloform reaction, a cyclic ketal and a 2,4-dinitrophenylhydrazone.",
+    "29 questions. Twenty-one were set in board papers from 2014 to 2026, six of them in 2026. The board asked aldol condensation five times (2014, 2020, 2023, 2025, 2026), the Cannizzaro reaction five times including the cross Cannizzaro and methanal (2014, 2024 twice, 2025, 2026) and Clemmensen reduction four times (2024, 2025 twice, 2026), with Wolf-Kishner reduction, the Tollens' and Fehling tests, the haloform reaction, a cyclic ketal and a 2,4-dinitrophenylhydrazone.",
   concepts: [
     {
       kind: "reference" as const,

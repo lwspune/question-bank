@@ -6,7 +6,7 @@ export const HSC_CH_TH_FIRSTLAW_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Internal energy, the first law ΔU = Q + W with its sign convention, what the law becomes for isothermal, adiabatic, isochoric and isobaric processes, and heat at constant volume and constant pressure.",
   whyItMatters:
-    "15 questions. Twelve were set in board papers: state the first law with its equation (2015); find ΔU from the heat and work exchanged (2014, 2019 and 2026); say what happens to internal energy when the system does work (2017); name the process in which ΔU = 0 (2018); write the first law for isothermal, adiabatic and isochoric processes (2016, 2022, 2024 and 2026); and derive the relation between ΔH and ΔU (2025 and 2026). The textbook adds an expansion in an insulated container and finding ΔH and ΔU together.",
+    "14 questions. Eleven were set in board papers: state the first law with its equation (2015); find ΔU from the heat and work exchanged (2014, 2019 and 2026); say what happens to internal energy when the system does work (2017); name the process in which ΔU = 0 (2018); write the first law for isothermal, adiabatic and isochoric processes (2016, 2022, 2024 and 2026); and derive the relation between ΔH and ΔU (2026). The textbook adds an expansion in an insulated container and finding ΔH and ΔU together.",
   concepts: [
     {
       kind: "formula" as const,

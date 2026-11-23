@@ -6,7 +6,7 @@ export const HSC_CH_SS_CUBIC_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Counting the particles in simple, body-centred and face-centred cubic cells, relating the atomic radius to the edge length, deriving and using the density formula, and counting atoms and unit cells in a given mass.",
   whyItMatters:
-    "27 questions, fifteen of them from board papers, the most of any page in this chapter. The board asked you to count the particles in a cell (2020, 2024) and write a formula from where the ions sit (2017), to give the radius and edge length relation (2023, 2024, 2026) and find a radius (2026), to derive the density formula (2024, 2026), to calculate a density (2023, 2024, 2025) and to identify the type of cell from its density (2024, 2025).",
+    "26 questions, fourteen of them from board papers, the most of any page in this chapter. The board asked you to count the particles in a cell (2020, 2024) and write a formula from where the ions sit (2017), to give the radius and edge length relation (2023, 2024, 2026) and find a radius (2026), to derive the density formula (2024, 2026), to calculate a density (2023, 2024, 2025) and to identify the type of cell from its density (2024, 2025).",
   concepts: [
     {
       kind: "formula" as const,

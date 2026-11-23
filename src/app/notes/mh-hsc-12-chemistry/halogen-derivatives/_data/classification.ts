@@ -6,7 +6,7 @@ export const HSC_CH_HD_CLASSIFICATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "How halogen derivatives are sorted by the kind of carbon the halogen is joined to: alkyl, allylic, benzylic, vinylic, haloalkyne and aryl, and why a halogen on an sp² carbon holds on more tightly.",
   whyItMatters:
-    "7 questions. Four were set in board papers: pick out the allylic halide (2023), the vinylic halide (2024) and the benzylic halide (2024) from four structures, and write the action of concentrated nitric acid and fuming sulphuric acid on chlorobenzene (2026). The textbook adds a match-the-pairs and two questions on the resonance of a vinyl halide.",
+    "6 questions. Three were set in board papers: pick out the allylic halide (2023), the vinylic halide (2024) and the benzylic halide (2024) from four structures. The textbook adds a match-the-pairs and two questions on the resonance of a vinyl halide.",
   concepts: [
     {
       kind: "reference" as const,

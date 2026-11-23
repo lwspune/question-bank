@@ -6,7 +6,7 @@ export const HSC_CH_TR_TRENDS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "How atomic and ionic radii and ionisation enthalpies change across the first transition series, the spin-only magnetic moment of an ion, and why most transition metal ions are coloured.",
   whyItMatters:
-    "16 questions. Eight were set in board papers: the factors that decide the colour of an ion (2017), the spin-only magnetic moment of the divalent ion of the element with atomic number 24 (2019), 25 (2022) and 26 (2025), the moments of Mn²⁺ (2023) and Cr³⁺ (2024) as multiple-choice questions, why compounds of Ti⁴⁺ are colourless (2022 and 2024), and which 3d element has the highest first ionisation enthalpy (2026). The textbook adds the trends in radii and ionisation enthalpy, shielding, and examples of diamagnetic and paramagnetic metals.",
+    "18 questions. Ten were set in board papers: the factors that decide the colour of an ion (2017), the spin-only magnetic moment of the divalent ion of the element with atomic number 24 (2019), 25 (2022) and 26 (2025), the moments of Mn²⁺ (2023), Cr³⁺ (2024) and Fe²⁺ (2024) as short objective questions, why compounds of Ti⁴⁺ are colourless (2022 and 2024), why Sc³⁺ salts are colourless while Mn³⁺ salts are coloured (2026), and which 3d element has the highest first ionisation enthalpy (2026). The textbook adds the trends in radii and ionisation enthalpy, shielding, and examples of diamagnetic and paramagnetic metals.",
   concepts: [
     {
       kind: "reference" as const,

@@ -6,7 +6,7 @@ export const HSC_CH_TR_PROPERTIES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The physical and chemical properties all d-block elements share, how the 3d series differs from the 4d and 5d series, transition metals as catalysts, interstitial compounds, and the alloys the textbook names with their uses.",
   whyItMatters:
-    "11 questions. Eight were set in board papers: the properties of interstitial compounds (2023, 2025 and 2026), the classification of alloys (2023), the uses of bronze (2024) and the metals in brass (2025), the alloy used in the Fischer Tropsch process with the conditions for colour (2024), the spin-only moment of Fe²⁺ (2024), and why Sc³⁺ salts are colourless while Mn³⁺ salts are coloured (2026). The textbook adds nichrome, the stable state of ruthenium, and the 3d, 4d and 5d series compared.",
+    "9 questions. Six were set in board papers: the properties of interstitial compounds (2023, 2025 and 2026), the classification of alloys (2023), the uses of bronze (2024) and the metals in brass (2025), and the alloy used in the Fischer Tropsch process with the conditions for colour (2024). The textbook adds nichrome, the stable state of ruthenium, and the 3d, 4d and 5d series compared.",
   concepts: [
     {
       kind: "reference" as const,

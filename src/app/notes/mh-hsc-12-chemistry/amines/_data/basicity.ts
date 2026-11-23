@@ -6,7 +6,7 @@ export const HSC_CH_AM_BASICITY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Why amines are bases, how pKb measures their strength, why secondary amines are the strongest aliphatic bases in water, and why aniline and other arylamines are much weaker.",
   whyItMatters:
-    "9 questions. Four were set in board papers: the weakest base among four substituted anilines (2014), why amines are basic and which of dimethylamine and diethylamine is stronger (2024), the zwitter ion of sulfanilic acid (2024), and the order of basic strength of amines and ammonia (2026). The textbook adds pKb orders, why primary amines beat ammonia, and the order expected from the +I effect alone.",
+    "8 questions. Three were set in board papers: the weakest base among four substituted anilines (2014), why amines are basic and which of dimethylamine and diethylamine is stronger (2024), and the order of basic strength of amines and ammonia (2026). The textbook adds pKb orders, why primary amines beat ammonia, and the order expected from the +I effect alone.",
   concepts: [
     {
       kind: "formula" as const,

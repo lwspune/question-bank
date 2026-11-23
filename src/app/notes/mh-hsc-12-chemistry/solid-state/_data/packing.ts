@@ -6,7 +6,7 @@ export const HSC_CH_SS_PACKING_NOTE: SubtopicNote = {
   oneLineDefinition:
     "How spheres pack in one, two and three dimensions to give simple cubic, hcp and ccp structures, the coordination number of each lattice, the tetrahedral and octahedral voids, and the formula of a compound from the voids its atoms fill.",
   whyItMatters:
-    "13 questions, two of them from board papers: the coordination number of atoms in a bcc lattice (2022) and the coordination number of an ionic crystal from its radius ratio (2018). The textbook asks how hcp and ccp are built, how voids form, how many voids a given amount gives and the formula of a compound from void filling.",
+    "14 questions, three of them from board papers: the coordination number of atoms in a bcc lattice (2022 and 2025) and the coordination number of an ionic crystal from its radius ratio (2018). The textbook asks how hcp and ccp are built, how voids form, how many voids a given amount gives and the formula of a compound from void filling.",
   concepts: [
     {
       kind: "reference" as const,

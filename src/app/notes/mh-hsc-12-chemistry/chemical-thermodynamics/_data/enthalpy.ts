@@ -6,7 +6,7 @@ export const HSC_CH_TH_ENTHALPY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Enthalpy H = U + PV, the relation ΔH = ΔU + Δn(g)RT, the work done in a chemical reaction W = −Δn(g)RT, and the enthalpies of fusion, vaporization, sublimation, atomization, ionization and solution.",
   whyItMatters:
-    "25 questions. Twelve were set in board papers: derive the relation between ΔH and ΔU (2014 and 2023); define enthalpy (2017); find ΔU from ΔH (2018 and 2025) and Δn(g) for a reaction (2025); find the work done in a reaction (2019 and 2020); define or describe the enthalpies of atomization, vaporization, sublimation and combustion (2015, 2016 and 2024); and name the enthalpy change when liquid water turns to vapour (2022). The textbook adds the work done when ammonium nitrate decomposes, ΔU and work from gas volumes, and the total heat to melt ice, warm the water and boil it.",
+    "27 questions. Fourteen were set in board papers: derive the relation between ΔH and ΔU (2014, 2023 and 2025); define enthalpy (2017); find ΔU from ΔH (2018 and 2025) and Δn(g) for a reaction (2025); find the work done in a reaction (2019 and 2020) and in oxidising sulphur dioxide (2026); define or describe the enthalpies of atomization, vaporization, sublimation and combustion (2015, 2016 and 2024); and name the enthalpy change when liquid water turns to vapour (2022). The textbook adds the work done when ammonium nitrate decomposes, ΔU and work from gas volumes, and the total heat to melt ice, warm the water and boil it.",
   concepts: [
     {
       kind: "formula" as const,

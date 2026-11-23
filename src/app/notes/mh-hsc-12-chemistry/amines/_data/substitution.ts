@@ -6,7 +6,7 @@ export const HSC_CH_AM_SUBSTITUTION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Why the amino group makes aniline so reactive towards bromination, nitration and sulfonation, and how protecting it as acetanilide gives a single para product.",
   whyItMatters:
-    "2 questions, both from the textbook: the scheme for preparing p-bromoaniline from aniline (a solved problem), and converting aniline into p-nitroaniline and into sulphanilic acid. No board paper in this bank asked this page on its own, but the board's 2024 and 2026 questions on the zwitter ion of sulfanilic acid come from its sulfonation.",
+    "3 questions. One was set in a board paper: draw the zwitter ion of sulfanilic acid (2024). The textbook adds the scheme for preparing p-bromoaniline from aniline (a solved problem), and converting aniline into p-nitroaniline and into sulphanilic acid.",
   concepts: [
     {
       kind: "formula" as const,
