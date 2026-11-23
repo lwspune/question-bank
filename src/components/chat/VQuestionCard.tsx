@@ -43,6 +43,7 @@ export default function VQuestionCard({
   onMore,
   onNavigate,
   heading,
+  again = false,
 }: {
   id: string;
   kind: "try" | "confirm";
@@ -51,6 +52,8 @@ export default function VQuestionCard({
   onNavigate?: () => void;
   /** In place of "Try this one": a chapter lesson's question is "Your turn" (2026-11-21). */
   heading?: string;
+  /** The student's own mistake, asked again (2026-11-23): one line says so under the heading. */
+  again?: boolean;
 }) {
   const [q, setQ] = useState<CardQuestion | null>(null);
   const [failed, setFailed] = useState(false);
@@ -116,6 +119,7 @@ export default function VQuestionCard({
       ) : (
         <p className="text-xs font-medium text-muted-foreground">{kind === "try" ? `Try this one · ${q.where}` : `Is this your question? · ${q.where}`}</p>
       )}
+      {kind === "try" && again && <p className="text-xs text-muted-foreground">You got this one wrong before. Try it again.</p>}
       {q.context && (
         <div className="whitespace-pre-wrap font-serif text-muted-foreground">
           <MathBlockText text={q.context} />

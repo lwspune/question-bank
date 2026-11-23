@@ -8,8 +8,9 @@ import { sendActivity, sendActivityOnce } from "@/lib/activity/clientBeacon";
 
 /**
  * "Teach me" beside a weak chapter (2026-11-21, owner-approved mockup): opens V
- * with "Teach me Vectors for MHT-CET. Start from what I got wrong.", which V
- * answers with chapter_overview from the student's waiting mistakes. Shown only
+ * with "Teach me Vectors for MHT-CET.", which V answers with chapter_overview
+ * from the student's waiting mistakes (the message said "Start from what I got
+ * wrong." until 2026-11-23, when the owner found it confusing). Shown only
  * while V can teach (the explain switch, /dashboard/chat): a button that opens
  * V to say it cannot help is worse than none. Seen and tapped are recorded for
  * the v-teach-chapter experiment.

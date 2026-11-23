@@ -29,6 +29,15 @@ export function cardView(q: VQuestion, imageUrl: string | null): CardQuestion {
   };
 }
 
+/**
+ * Can the card show and grade it: a multiple-choice question with a marked answer (2026-11-23).
+ * A figure is fine, the card shows it. A lesson's "Your turn" is the student's own mistake only
+ * when this holds; otherwise it is a fresh question like it.
+ */
+export function canTryOnCard(q: VQuestion | null): boolean {
+  return !!q && q.format === "mcq" && q.options.some((o) => o.isCorrect);
+}
+
 /** Right or wrong, and the key's letter. null: not a pick on this question, or no key to grade against. */
 export function gradeCard(q: VQuestion, chose: string): { correct: boolean; answer: string } | null {
   const pick = chose.toUpperCase();
