@@ -12,6 +12,7 @@ export const SSC_REF_PATTERN_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrefpc-symmetry",
       name: "Completing a symmetric pattern",
+      visualizationSlug: "ssc-symmetry-quarters",
       intuition:
         "Most of these figures are symmetric about one or both centre lines. The missing piece is not a copy of its neighbour but its reflection: what is near the edge stays near the edge, and what slants one way slants the other way.",
       definition:

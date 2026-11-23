@@ -13,6 +13,7 @@ export const NOSOLUTION_DET_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jdet-nosol-find",
       name: "The value that gives no solution",
+      visualizationSlug: "jee-two-lines-parameter",
       intuition:
         "No solution needs \\(\\Delta=0\\), so find the parameter values that make it zero. Then check each: if some Cramer determinant is non-zero, or elimination ends in \\(0=c\\) with \\(c\\neq0\\), the system has no solution. A value where everything vanishes gives infinitely many instead.",
       definition:

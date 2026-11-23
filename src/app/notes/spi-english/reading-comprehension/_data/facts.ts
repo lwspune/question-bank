@@ -6,7 +6,7 @@ export const SPI_RC_FACTS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Most passage questions are answered by one line of the passage. Find that line first, then pick the option that says what it says, no more and no less.",
   whyItMatters:
-    "Ten questions in the bank on two short passages, one about frogs and one about a CBSE ruling: six EASY and four MODERATE. Each answer sits in one line, so the marks go to the student who finds that line and cuts the options that only nearly match it.",
+    "Eleven questions in the bank on three short passages, about frogs, a CBSE ruling and (in the 2026 paper) a man named Mohan: seven EASY and four MODERATE. Each answer sits in one line, so the marks go to the student who finds that line and cuts the options that only nearly match it.",
   concepts: [
     {
       kind: "formula" as const,
@@ -65,7 +65,7 @@ export const SPI_RC_FACTS_NOTE: SubtopicNote = {
           answer: "They lose their crops.",
         },
       ],
-      pyqExampleId: "afa6bb45-2457-4ced-9b21-8f7572bfb599",
+      pyqExampleId: "e6d4d2c7-43b2-4d17-9e38-8f5564af0661",
       traps: [
         {
           title: "Half of the line",

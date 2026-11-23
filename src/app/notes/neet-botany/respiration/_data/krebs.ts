@@ -12,6 +12,7 @@ export const NEET_BO_RS_KREBS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nbors-krebs-cycle",
       name: "From pyruvic acid to the Krebs cycle",
+      visualizationSlug: "neet-respiration-pathway",
       intuition:
         "With oxygen present, pyruvic acid moves into the mitochondrion to be burnt completely. First it loses one carbon as CO₂ and becomes acetyl CoA. Then acetyl CoA joins a four-carbon acid to make citric acid, and a cycle of steps strips off two more CO₂ and many hydrogens. The hydrogens are not wasted: they are loaded onto NAD⁺ and FAD to be cashed in later.",
       definition:
@@ -76,6 +77,7 @@ export const NEET_BO_RS_KREBS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nbors-ets",
       name: "The electron transport system and ATP synthase",
+      visualizationSlug: "imat-chemiosmosis",
       intuition:
         "NADH and FADH₂ carry hydrogen from the earlier stages. On the inner mitochondrial membrane a chain of carriers passes their electrons down, step by step, to oxygen. The energy given out pumps protons into the space between the membranes. The protons flow back through ATP synthase, and that flow makes ATP. Oxygen takes the electrons and hydrogen at the very end and becomes water.",
       definition:

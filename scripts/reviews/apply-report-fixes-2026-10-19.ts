@@ -40,8 +40,9 @@ const APPLY = process.argv.includes("--apply");
 const KEEP_SOURCE_HASH = new Set(["MHT-CET"]);
 const CTRL = /[\u0000-\u0008\u000b\u000c\u000e-\u001f]/;
 
-const DERIVED =
-  "\n\n[Answer derived from the printed UPSC paper, which carries no answer key; the answer stored here before was wrong.]";
+// Once a method note on HOW the answer was got; no such note reaches a student
+// (owner, 2026-11-22; lib/questions/methodNotes), so it adds nothing now.
+const DERIVED = "";
 
 type Fix = {
   id: string;

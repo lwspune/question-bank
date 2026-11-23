@@ -6,7 +6,7 @@ export const SPI_HD_ANGLES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An angle of elevation is how far you look up from the horizontal to see an object, an angle of depression is how far you look down, and tan links the height to the distance along the ground.",
   whyItMatters:
-    "Eleven questions in the bank, all EASY. Ten are one right triangle with an upright height and flat ground, solved with tan: find a height, a distance or the angle. Five of those are a pole and its shadow under the sun, and the eleventh asks for the instrument that measures these angles.",
+    "Thirteen questions in the bank, all EASY, two from the 2026 paper. Twelve are one right triangle with an upright height and flat ground, solved with tan: find a height, a distance or the angle. Five of those are a pole and its shadow under the sun, and the last asks for the instrument that measures these angles.",
   concepts: [
     {
       kind: "formula" as const,
@@ -101,7 +101,7 @@ export const SPI_HD_ANGLES_NOTE: SubtopicNote = {
         },
         { prompt: "A building 40 m high is seen from a point 40 m from its foot. What is the angle of elevation of its top?", answer: "\\(45^\\circ\\)" },
       ],
-      pyqExampleId: "64cb58e5-1ded-4e5a-8a46-4efea4a28376",
+      pyqExampleId: "cfd180c8-f121-46c5-b95e-94e48f801560",
       traps: [
         {
           title: "Turning tan upside down",

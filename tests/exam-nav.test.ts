@@ -90,7 +90,8 @@ describe("resolveExamNav", () => {
     // lands on /learn, which says they are coming and lists what is ready.
     expect(resolveExamNav("mh-hsc-12", IDS).learnHref).toBe("/learn/mh-hsc-12-maths");
     expect(resolveExamNav("cbse-12", IDS).learnHref).toBe("/learn/cbse-12-maths");
-    expect(resolveExamNav("nda", IDS).learnHref).toBe("/learn");
+    expect(resolveExamNav("nda", IDS).learnHref).toBe("/learn/nda-maths");
+    expect(resolveExamNav("cds", IDS).learnHref).toBe("/learn");
     expect(resolveExamNav(null, IDS).learnHref).toBe("/learn");
   });
 

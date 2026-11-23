@@ -58,6 +58,7 @@ export const DOT_VEC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jvec-projection",
       name: "Projections and components along and across a vector",
+      visualizationSlug: "vector-projection",
       intuition:
         "The scalar projection of \\(\\vec a\\) on \\(\\vec b\\) is \\(\\frac{\\vec a\\cdot\\vec b}{|\\vec b|}\\), the length of \\(\\vec a\\)'s shadow along \\(\\vec b\\), with a sign. The projection vector is that length times the unit vector along \\(\\vec b\\), that is \\(\\frac{\\vec a\\cdot\\vec b}{|\\vec b|^2}\\vec b\\). What is left over, \\(\\vec a\\) minus the projection vector, is the component perpendicular to \\(\\vec b\\). In a triangle, the projection of \\(\\overrightarrow{AB}\\) on \\(\\overrightarrow{AC}\\) is \\(|AB|\\cos A\\), with \\(\\cos A\\) from the cosine rule.",
       definition:

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CalendarCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { FixList, FixChapter } from "@/lib/review/fixList";
 import { drillChapterHref, drillHref } from "@/lib/drill/from";
 import { cn } from "@/lib/utils";
@@ -50,13 +50,8 @@ export default function FixOverview({
   // One subject chosen: the drill narrows to a chapter, not a subject, so the
   // lead button starts with that subject's biggest chapter.
   const first = subject ? list.chapters[0] : null;
-  const planFirst = !first && list.inPlan > 0;
-  const fixHref = first
-    ? drillChapterHref("review_tab", first.chapterId)
-    : planFirst
-      ? "/drill?from=review_tab&scope=path"
-      : drillHref("review_tab");
-  const fixLabel = first ? `Start with ${first.name}` : planFirst ? `Fix today's ${list.inPlan} first` : "Start fixing";
+  const fixHref = first ? drillChapterHref("review_tab", first.chapterId) : drillHref("review_tab");
+  const fixLabel = first ? `Start with ${first.name}` : "Start fixing";
 
   return (
     <div className="space-y-6">
@@ -71,14 +66,6 @@ export default function FixOverview({
             <FixedSoFar value={fixed} />
           </div>
           <p className="mt-1 text-sm text-muted-foreground">
-            {planFirst ? (
-              <>
-                <CalendarCheck className="mr-1 inline h-3.5 w-3.5 align-[-2px] text-emerald-600 dark:text-emerald-400" aria-hidden />
-                <span className="font-medium text-foreground">
-                  {list.inPlan} {list.inPlan === 1 ? "is" : "are"} in today&apos;s plan.
-                </span>{" "}
-              </>
-            ) : null}
             Get one right and it leaves the list.
             {focusExam && <> Showing {focusExam} only.</>}
           </p>
@@ -143,7 +130,7 @@ function ChapterRow({ chapter: c, max }: { chapter: FixChapter; max: number }) {
   );
 }
 
-/** "4 wrong · 1 Review later · 1 V didn't help · 2 in today's plan". */
+/** "4 wrong · 1 Review later · 1 V didn't help". */
 /** Why a question waits, as colour (2026-11-10). V keeps its indigo. */
 type ReasonKey = "wrong" | "reviewLater" | "vUnclear";
 const REASON_COLOR: Record<ReasonKey, string> = {
@@ -191,12 +178,11 @@ function ReasonBar({ chapters }: { chapters: readonly FixChapter[] }) {
   );
 }
 
-export function breakdown(c: Pick<FixChapter, "wrong" | "reviewLater" | "vUnclear" | "inPlan">): string {
+export function breakdown(c: Pick<FixChapter, "wrong" | "reviewLater" | "vUnclear">): string {
   const parts: string[] = [];
   if (c.wrong) parts.push(`${c.wrong} wrong`);
   if (c.reviewLater) parts.push(`${c.reviewLater} Review later`);
   if (c.vUnclear) parts.push(`${c.vUnclear} not clear after V`);
-  if (c.inPlan) parts.push(`${c.inPlan} in today's plan`);
   return parts.join(" · ");
 }
 

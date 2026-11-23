@@ -14,11 +14,12 @@ import type { DownloadBox, NotesDrillLink, PaywallGate, RepeatLineFrom, VIEW_BRO
 import type { DeclineReason } from "@/lib/billing/declineReasons";
 import type { ChapterFixFrom } from "@/lib/drill/from";
 import type { StartNextFrom } from "@/lib/me/startNext";
+import type { TeachChapterFrom } from "@/lib/chat/teachChapter";
 
 const ENDPOINT = "/api/activity/event";
 const sent = new Set<string>();
 
-type ClientEvent =
+export type ClientEvent =
   | {
       kind: "surface_viewed";
       surface: Surface;
@@ -42,11 +43,32 @@ type ClientEvent =
       from: StartNextFrom;
     }
   | {
+      /** Home's Study time card seen, or This week opened (lib/studyTime/report). */
+      kind: "surface_viewed";
+      surface: "study_time";
+      action: "seen" | "week";
+    }
+  | {
+      /** The Study time card's suggestion shown or tapped, with its chapter. */
+      kind: "surface_viewed";
+      surface: "study_time";
+      action: "next_shown" | "next_tap";
+      chapterId: string;
+    }
+  | {
+      /** A "Teach me" button seen or tapped (lib/chat/teachChapter, 2026-11-21). */
+      kind: "surface_viewed";
+      surface: "teach_chapter";
+      action: "shown" | "tap";
+      from: TeachChapterFrom;
+      chapterId?: string;
+    }
+  | {
       /** The stuck offer seen, or one of its buttons tapped (lib/questions/stuckOffer). */
       kind: "surface_viewed";
       surface: "stuck_offer";
       questionId: string;
-      action: "shown" | "teach" | "easier" | "keep" | "returned" | "try_after" | "teach_close" | "full_notes";
+      action: "shown" | "teach" | "easier" | "keep" | "returned" | "try_after" | "teach_close" | "full_notes" | "learn_open" | "learn_close";
     }
   | {
       /** A notes drill link's panel opened, paged, closed or left for /browse (lib/notes/drillPanel). */
@@ -55,6 +77,19 @@ type ClientEvent =
       action: "open" | "more" | "close" | "full_page";
       link: NotesDrillLink;
       subtopic: string;
+    }
+  | {
+      /** V's check-in (lib/chat/checkIn): asked, each tap, a chapter picked, Another chapter, a button followed. */
+      kind: "surface_viewed";
+      surface: "v_checkin";
+      action: "shown" | "well" | "stuck" | "short" | "chapter" | "other" | "go";
+    }
+  | {
+      /** V's gift (lib/chat/gift): its badge seen, the box shown and opened, the gift's button tapped. */
+      kind: "surface_viewed";
+      surface: "v_gift";
+      gift: "trial" | "points";
+      action: "badge" | "shown" | "open" | "activate" | "pricing";
     }
   | {
       /** A teaching moment under a bank answer seen (lib/questions/teachingMoment). */
@@ -112,6 +147,19 @@ type ClientEvent =
       wrong: number;
       points: number;
       cleared: boolean;
+    }
+  | { kind: "play_round"; game: "number_rain"; world: number; score: number; blasts: number; missed: number }
+  | { kind: "play_round"; game: "word_groups"; puzzle: number; won: boolean; mistakes: number }
+  | { kind: "play_round"; game: "launch"; level: number; hit: boolean; shots: number }
+  | { kind: "play_round"; game: "element_hunt"; world: number; score: number; right: number; wrong: number }
+  | { kind: "play_round"; game: "timeline"; pack: string; placed: number; won: boolean }
+  | { kind: "play_round"; game: "pin_it"; pack: string; score: number }
+  | {
+      /** A finished Daily Word (lib/play/words/daily). */
+      kind: "play_round";
+      game: "daily_word";
+      solved: boolean;
+      guesses: number;
     };
 
 export function sendActivity(event: ClientEvent): void {

@@ -6,7 +6,7 @@ export const SPI_M2_CIRCLES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The distance round a circle is 2πr and the space inside it is πr²; with π as 22/7, radii that are multiples of 7 give whole answers.",
   whyItMatters:
-    "Ten questions in the bank, five EASY and five MODERATE: wheels turning over a road, a wire bent from a circle into a square, a semicircular table top and a circle inside a square. Each is one of two formulas; the marks go on radius against diameter and on kilometres against centimetres.",
+    "Thirteen questions in the bank, seven EASY and six MODERATE, three from the 2026 paper: wheels turning over a road, a wire bent from a circle into a square, a semicircular table top or protractor, and a circle inside a square. Each is one of two formulas; the marks go on radius against diameter and on kilometres against centimetres.",
   concepts: [
     {
       kind: "formula" as const,
@@ -44,7 +44,7 @@ export const SPI_M2_CIRCLES_NOTE: SubtopicNote = {
         },
         { prompt: "What is the perimeter of a semicircle of radius 7 cm, including its diameter?", answer: "\\(22 + 14 = 36\\) cm" },
       ],
-      pyqExampleId: "dd926141-e443-4d4a-b38c-c969e783e507",
+      pyqExampleId: "8de7ded6-b57f-492b-911c-8eecb0cddc14",
       traps: [
         {
           title: "The perimeter of a semicircle",
@@ -95,7 +95,7 @@ export const SPI_M2_CIRCLES_NOTE: SubtopicNote = {
         { prompt: "A wheel has a circumference of 2 m. How many revolutions does it make in 5 km?", answer: "2500" },
         { prompt: "How many centimetres are there in 3 km?", answer: "300 000 cm" },
       ],
-      pyqExampleId: "384ac064-f190-44e1-92df-5e5418997f11",
+      pyqExampleId: "3059936e-fa02-462b-98ef-b37b5d947437",
       traps: [
         {
           title: "Kilometres against centimetres",
@@ -183,7 +183,7 @@ export const SPI_M2_CIRCLES_NOTE: SubtopicNote = {
         { prompt: "A wire bent into an equilateral triangle of side 22 cm is reshaped into a circle. What is the radius?", answer: "\\(66 = 2 \\times \\frac{22}{7} \\times r\\), so 10.5 cm" },
         { prompt: "A wire circle of radius 7 cm is bent into a rectangle of length 14 cm. What is the breadth?", answer: "\\(l + b = 22\\), so 8 cm" },
       ],
-      pyqExampleId: "33084f26-a22e-413e-a432-13fd84de967d",
+      pyqExampleId: "399472a3-3904-46f9-94ce-d5930223e6fa",
       traps: [
         {
           title: "Keeping the area instead of the length",

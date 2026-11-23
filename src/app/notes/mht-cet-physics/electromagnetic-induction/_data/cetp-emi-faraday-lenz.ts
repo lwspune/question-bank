@@ -63,6 +63,7 @@ export const FARADAY_LENZ_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "cetp-emi-lenz",
       name: "Lenz's Law: the Induced Current Opposes the Change",
+      visualizationSlug: "cet-lenz-magnet-coil",
       intuition:
         "The induced current always pushes back against whatever changes the flux. A magnet falling through a closed ring is braked, so it falls with less than g; a hollow metal pipe does the same through eddy currents. A ring with a CUT carries no current, so the magnet falls freely at g. A ring falling towards a wire whose field points out of the page above it sees that outward flux grow, so its current makes an inward field — clockwise. And if the coil and magnet move together, nothing changes and nothing is induced. This opposition is why Lenz's law is the law of conservation of energy in disguise: you must do work to push against it.",
       definition:

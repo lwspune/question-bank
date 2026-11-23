@@ -110,6 +110,7 @@ export const PHYSICAL_PROPERTIES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetalc-nitrophenol-melting-points",
       name: "p-Nitrophenol Melts Highest: Inter- Versus Intramolecular H-Bonds",
+      visualizationSlug: "cet-nitrophenol-h-bonds",
       intuition:
         "In o-nitrophenol the OH hydrogen-bonds to its own nitro group, so molecules hold each other weakly — low melting point, volatile in steam. In p-nitrophenol the groups are too far apart, so the OH bonds to NEIGHBOURING molecules — high melting point, non-volatile. Phenol and p-cresol sit in between and below.",
       definition:

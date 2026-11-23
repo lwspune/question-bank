@@ -132,6 +132,7 @@ export const NEET_ZO_AK_BASIS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nzoak-coelom",
       name: "The coelom",
+      visualizationSlug: "neet-coelom-types",
       intuition:
         "Between the body wall and the gut there may be a space, the body cavity. What matters is what lines it. If the middle germ layer, the mesoderm, lines it all round, it is a true coelom. If the mesoderm lies only in scattered pouches, the space is a false coelom, a pseudocoelom. If there is no space at all, the animal is an acoelomate.",
       definition:

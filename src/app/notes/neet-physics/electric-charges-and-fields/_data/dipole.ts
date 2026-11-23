@@ -73,6 +73,7 @@ export const NEET_PH_EF_DIPOLE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphef-torque",
       name: "Dipole in a uniform field: torque and energy",
+      visualizationSlug: "cet-dipole-torque",
       intuition:
         "In a uniform field the push on +q and the pull on −q are equal and opposite, so the dipole as a whole does not move. But the two forces act at different points, so they twist it, turning p to line up with E. Lined up with the field is the dipole's lowest energy; turned against the field is its highest, and turning it there takes work.",
       definition:

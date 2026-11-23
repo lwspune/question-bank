@@ -414,8 +414,16 @@ const KEY_LETTERS = new Set(["A", "B", "C", "D"]);
  * run of questions falling back to whatever we derived while the run reported
  * "verified against the official key". A partial key must never be mistaken for
  * a full one.
+ *
+ * `opts.skip`: numbers a paper deliberately holds out (scripts/milschool config
+ * `held`). Only those may be absent, and they are not recorded as dropped.
  */
-export function parseOfficialKey(raw: Record<string, string>, total: number): OfficialKey {
+export function parseOfficialKey(
+  raw: Record<string, string>,
+  total: number,
+  opts: { skip?: number[] } = {}
+): OfficialKey {
+  const skip = new Set(opts.skip ?? []);
   const answers = new Map<number, string>();
   const dropped: number[] = [];
 
@@ -437,7 +445,7 @@ export function parseOfficialKey(raw: Record<string, string>, total: number): Of
 
   const missing: number[] = [];
   for (let n = 1; n <= total; n++) {
-    if (!answers.has(n) && !dropped.includes(n)) missing.push(n);
+    if (!answers.has(n) && !dropped.includes(n) && !skip.has(n)) missing.push(n);
   }
   if (missing.length) {
     throw new Error(
@@ -506,7 +514,9 @@ export function compareToKey(key: OfficialKey, derivations: Derivation[]): KeyCo
  *
  * A row where the two disagreed gets that stated in its reasoning. Without it the
  * stored solution would argue at length for a letter the row no longer carries,
- * which is worse than either half alone.
+ * which is worse than either half alone. The statement is a MARKER, not a solution:
+ * validateRows refuses it, so the working must be rewritten to argue for the
+ * official answer before commit (scripts/reviews/apply-cse-key-corrected-solutions.ts).
  *
  * DROPPED questions and questions nobody derived are EXCLUDED rather than
  * defaulted: the first has no correct answer, and the second would ship a bare
@@ -585,15 +595,100 @@ export function assignSetLabels(questions: TQ[]): TQ[] {
   });
 }
 
+const MATH_ZONE = /\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]|\$\$[\s\S]*?\$\$/g;
+// A period that does not end a sentence: common abbreviations, and the second of
+// two or more initials ("P.A. Sangma", "K. P. Krishnan").
+const ABBREV = /(?:\be\.g|\bi\.e|\betc|\bvs|\bArt|\bNo|\bDr|\bMr|\bMrs|\bSt|\bcf|\bviz|\b[A-Z]\.\s?[A-Z])\.$/;
+
+// A sentence that keeps arguing for the runner-up just named.
+const CONTINUATION =
+  /would win|wins if|would be (?:the )?(?:answer|right|correct|chosen)|to win\b|would pick|on that reading|if the (?:setter|examiner|marker|reviewer)|^note that/i;
+
 /**
- * The provenance bracket every derived answer carries. This corpus has no printed
- * key and no external anchor, and the answer-key export prints `solution`
- * verbatim — so a reader of a downloaded paper sees this too, which is the intent.
+ * Drop the solver's "runner-up" asides from a stored solution (2026-11-19). The
+ * derivation brief asked solvers to name the runner-up inside `reasoning`, which
+ * is shown to students as the solution, so CAPF and CSE shipped lines like
+ * "Runner-up: C, if the setter read it loosely." The aside runs from the
+ * sentence naming a runner-up to the end of its paragraph (what follows argues
+ * for the runner-up), stopping before a closing "[...]" bracket. Math zones are
+ * never split, other paragraphs are kept, and the rest is verbatim.
  */
-const provenance = (confidence: string, agreed: boolean) =>
-  `[Derived answer — this booklet carries no official key. ` +
-  `Two independent blind derivations ${agreed ? "agreed" : "were reconciled by hand"}; ` +
-  `confidence: ${confidence}. Verify before relying on it.]`;
+export function stripRunnerUp(text: string): { text: string; removed: string[]; inline: string[] } {
+  if (!/runner-up/i.test(text)) return { text, removed: [], inline: [] };
+  const masked = text.replace(MATH_ZONE, (m) => "x".repeat(m.length));
+
+  // Sentence spans [start, end) over the masked text.
+  const spans: [number, number][] = [];
+  let start = masked.search(/\S/);
+  const boundary = /[.!?]['")\]]?(?=\s)/g;
+  let m: RegExpExecArray | null;
+  while ((m = boundary.exec(masked))) {
+    const end = m.index + m[0].length;
+    if (ABBREV.test(masked.slice(start, m.index + 1))) continue;
+    // A first initial ("K." before "P. Krishnan").
+    if (/\b[A-Z]\.$/.test(masked.slice(start, end)) && /^\s[A-Z]\.\s/.test(masked.slice(end))) continue;
+    spans.push([start, end]);
+    const next = masked.slice(end).search(/\S/);
+    if (next < 0) { start = -1; break; }
+    start = end + next;
+    boundary.lastIndex = start;
+  }
+  if (start >= 0 && start < masked.length) spans.push([start, masked.trimEnd().length]);
+
+  // Blocks [first span, last span]. An upper-case "RUNNER-UP" label is a closing
+  // aside: it runs to the end of its paragraph. A sentence that opens with
+  // "Runner-up" / "The runner-up" takes the sentences after it that argue for the
+  // runner-up. Any other mention is woven into working: reported, never removed.
+  // A block never swallows a following paragraph or a "[...]" bracket.
+  const sameParaNext = (j: number) =>
+    j + 1 < spans.length &&
+    !masked.slice(spans[j][1], spans[j + 1][0]).includes("\n") &&
+    !masked.slice(spans[j + 1][0]).startsWith("[");
+  const blocks: [number, number][] = [];
+  const inline: string[] = [];
+  for (let i = 0; i < spans.length; i++) {
+    const sentence = masked.slice(spans[i][0], spans[i][1]);
+    if (!/runner-up/i.test(sentence)) continue;
+    let j = i;
+    if (/^RUNNER-UP\b/.test(sentence)) {
+      while (sameParaNext(j)) j++;
+    } else if (/^(?:the\s+|a\s+narrower\s+)?runner-up\b/i.test(sentence)) {
+      while (sameParaNext(j) && CONTINUATION.test(masked.slice(spans[j + 1][0], spans[j + 1][1]))) j++;
+    } else {
+      inline.push(text.slice(spans[i][0], spans[i][1]));
+      continue;
+    }
+    blocks.push([i, j]);
+    i = j;
+  }
+
+  const removed: string[] = [];
+  let out = "";
+  let cursor = 0;
+  blocks.forEach(([i, j]) => {
+    const s = spans[i][0];
+    const e = spans[j][1];
+    removed.push(text.slice(s, e));
+    const after = text.slice(e).match(/^\s*/)![0];
+    const lead = text.slice(cursor, s).match(/\s*$/)![0];
+    const startsPara = s === 0 || lead.includes("\n");
+    const endsText = e + after.length >= text.length;
+    if (endsText || (!startsPara && after.includes("\n"))) {
+      // Last thing in the text, or the tail of a paragraph: take the whitespace
+      // before it and keep what follows.
+      out += text.slice(cursor, s - lead.length);
+      cursor = e;
+    } else {
+      // A whole paragraph, or mid-paragraph before a "[...]" bracket: take the
+      // whitespace after it.
+      out += text.slice(cursor, s);
+      cursor = e + after.length;
+    }
+  });
+  out += text.slice(cursor);
+  return { text: out, removed, inline };
+}
+
 
 /**
  * Assemble bank rows. A question with no derivation is DROPPED, not defaulted —
@@ -603,7 +698,7 @@ const provenance = (confidence: string, agreed: boolean) =>
 export function buildRecords(
   questions: TQ[],
   derivations: Derivation[],
-  opts: { reconciled?: Set<number> } = {}
+  opts: { reconciled?: Set<number>; keyed?: boolean } = {}
 ): RawRow[] {
   const byNumber = new Map(derivations.map((d) => [d.number, d]));
   const rows: RawRow[] = [];
@@ -612,7 +707,6 @@ export function buildRecords(
     const d = byNumber.get(q.number);
     if (!d) continue;
     const opt = (l: string) => q.options.find((o) => o.label === l)?.text ?? "";
-    const agreed = !opts.reconciled?.has(q.number);
     rows.push({
       sourceRow: q.number,
       questionNumber: String(q.number),
@@ -628,7 +722,9 @@ export function buildRecords(
       optionD: opt("D"),
       answer: d.answer.toUpperCase(),
       difficulty: q.difficulty,
-      solution: `${d.reasoning.trim()} ${provenance(d.confidence.toUpperCase(), agreed)}`.trim(),
+      // The working alone, keyed paper or not: no method note on a solution
+      // (owner, 2026-11-22; lib/questions/methodNotes).
+      solution: d.reasoning.trim(),
     });
   }
   return rows;
@@ -772,6 +868,18 @@ export function validateRows(
       if (!val) continue;
       const bad = findLatexImbalance(val);
       if (bad) errs.push(`Q${r.questionNumber} ${name}: ${bad}`);
+      // The solver's "runner-up" aside is a note to the reviewer, not working
+      // (2026-11-19: 336 CSE/CAPF rows shipped with it). Where UPSC's key
+      // overruled the derivation the aside is the argument FOR the key, so it stays.
+      // applyOfficialKey marks an answer whose letter the key overruled; its working
+      // still argues for the derived letter, so it must be rewritten for the key
+      // before commit (83 CSE solutions shipped this way; rewritten 2026-11-20).
+      if (name === "solution" && /retained so the disagreement is visible/.test(val)) {
+        errs.push(`Q${r.questionNumber} solution: argues for a letter the key overruled; rewrite it for the official answer`);
+      }
+      if (name === "solution" && !/corrected to \(?[A-D]/.test(val) && stripRunnerUp(val).removed.length) {
+        errs.push(`Q${r.questionNumber} solution: runner-up aside (solver voice); keep it out of reasoning`);
+      }
       const table = findTableWithoutSeparator(val);
       if (table) errs.push(`Q${r.questionNumber} ${name}: ${table}`);
     }

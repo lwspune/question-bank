@@ -12,6 +12,7 @@ export const SSC2_RBR_RELATIONS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2rbrre-coded",
       name: "Coded relations",
+      visualizationSlug: "ssc-t2-coded-relations",
       intuition:
         "Each symbol stands for one relation. Decode the chain one link at a time, drawing each person as you go, and the chain becomes an ordinary family tree.",
       definition:

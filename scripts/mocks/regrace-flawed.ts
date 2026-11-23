@@ -4,6 +4,7 @@
  *
  *   npx tsx scripts/mocks/regrace-flawed.ts            # dry run: what would change
  *   npx tsx scripts/mocks/regrace-flawed.ts --apply
+ *   npx tsx scripts/mocks/regrace-flawed.ts --only=<slug,slug> --apply   (named mocks only)
  *
  * Changes ONLY the `grace` flag of listed questions inside `mock_tests.questions`
  * (the same `withFlawedGrace` every builder now applies), so a mock comes back
@@ -28,6 +29,9 @@ async function main() {
   console.log(`${ids.size} flawed questions on the list`);
   if (ids.size === 0) return;
 
+  // --only=<slug,slug>: limit the run to named mocks (another session may own the rest).
+  const onlyArg = process.argv.find((a) => a.startsWith("--only="))?.slice(7);
+  const only = onlyArg ? new Set(onlyArg.split(",").map((s) => s.trim()).filter(Boolean)) : null;
   let changed = 0;
   const PAGE = 200;
   for (let from = 0; ; from += PAGE) {
@@ -40,6 +44,7 @@ async function main() {
       .range(from, from + PAGE - 1);
     if (error) throw new Error(error.message);
     for (const m of data ?? []) {
+      if (only && !only.has(m.slug)) continue;
       const before = m.questions as MockQuestionSnapshot[];
       const after = withFlawedGrace(before);
       const added = after.filter((q, i) => q.grace && !before[i].grace).map((q) => q.position);

@@ -1,0 +1,28 @@
+{
+ "58": {
+  "why": "Blind answer 3 (low) counted the doubling after round 3; IIT Guwahati's final key gives 4, the round sent at the threshold. Solution rewritten to that count.",
+  "solution": "Slow start begins with cwnd = 1 MSS = 2 KB and doubles every round, while cwnd is below ssthresh = 16 KB. The receiver window (48 KB) never limits these windows.\n\nRound 1: cwnd = 2 KB. Round 2: cwnd = 4 KB. Round 3: cwnd = 8 KB. Round 4: cwnd = 16 KB.\n\nIn round 4 the window has reached ssthresh, and TCP uses congestion avoidance once cwnd is at least ssthresh. So the connection is in congestion avoidance from the 4th round of transmission: the answer is 4."
+ },
+ "51": {
+  "why": "Options and solution print output patterns of *, $ and #, which the page reads as bold and maths; written as monospace LaTeX.",
+  "options": [
+   {
+    "label": "A",
+    "text": "\\(\\texttt{**\\$*\\#\\#\\#}\\)"
+   },
+   {
+    "label": "B",
+    "text": "\\(\\texttt{**\\$\\#*\\#\\#}\\)"
+   },
+   {
+    "label": "C",
+    "text": "\\(\\texttt{**\\$\\#\\#*\\#}\\)"
+   },
+   {
+    "label": "D",
+    "text": "\\(\\texttt{***\\$\\#\\#\\#}\\)"
+   }
+  ],
+  "solution": "The part from Wait(A) to Signal(A) is a critical section, so the three \\(\\texttt{*}\\) are printed one process at a time. The process that makes X = 2 prints \\(\\texttt{\\$}\\) inside that same critical section, right after its \\(\\texttt{*}\\). So every outcome starts \\(\\texttt{**\\$}\\) and has exactly one \\(\\texttt{*}\\) after the \\(\\texttt{\\$}\\).\n\nNo \\(\\texttt{\\#}\\) can appear before \\(\\texttt{\\$}\\), because B starts at 0 and only the \\(\\texttt{\\$}\\) process signals it. After that, each process passing Wait(B) prints \\(\\texttt{\\#}\\) and signals B again, so all three \\(\\texttt{\\#}\\) are eventually printed.\n\nA (\\(\\texttt{**\\$*\\#\\#\\#}\\)): the third process enters its critical section before anyone prints \\(\\texttt{\\#}\\). Possible.\n\nB (\\(\\texttt{**\\$\\#*\\#\\#}\\)): one of the first two processes passes Wait(B) and prints \\(\\texttt{\\#}\\) before the third process prints \\(\\texttt{*}\\). Possible.\n\nC (\\(\\texttt{**\\$\\#\\#*\\#}\\)): both of the first two processes print \\(\\texttt{\\#}\\) before the third process enters. Possible.\n\nD (\\(\\texttt{***\\$\\#\\#\\#}\\)): \\(\\texttt{\\$}\\) is printed by the second process to enter, before the third \\(\\texttt{*}\\). Impossible."
+ }
+}

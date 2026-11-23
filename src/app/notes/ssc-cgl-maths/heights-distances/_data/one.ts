@@ -13,6 +13,7 @@ export const SSC_HD_ONE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sschdon-tan",
       name: "Height and ground distance from one angle",
+      visualizationSlug: "hd-elevation-triangle",
       intuition:
         "A tower, its shadow or the ground up to an observer, and the line of sight make a right triangle. The height is the side opposite the angle and the ground distance the side next to it, so tan links them and nothing else is needed.",
       definition:

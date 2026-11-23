@@ -182,6 +182,7 @@ export const SSC_IN_COMPOUND_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscinco-vs-si",
       name: "Compound and simple interest on the same sum",
+      visualizationSlug: "ssc-ci-vs-si",
       intuition:
         "For one year the two are equal. After that compound interest pulls ahead, by exactly the interest earned on earlier interest.",
       definition:

@@ -13,6 +13,7 @@ export const HEIGHTS_HD_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jhd-two-sightings",
       name: "Two angles of elevation",
+      visualizationSlug: "hd-elevation-triangle",
       intuition:
         "Every sighting is a right triangle: height over horizontal distance is the tangent of the angle. With two sightings of the same height, write one equation for each and eliminate the unknown distance. For a moving object, the distance covered divided by the time gives its speed.",
       definition:
@@ -58,6 +59,7 @@ export const HEIGHTS_HD_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jhd-subtended",
       name: "The angle subtended by part of a tower",
+      visualizationSlug: "jee-flagpole-subtended",
       intuition:
         "When part of a pole subtends an angle at a point, the angle is a difference of two elevations: the elevation of the top minus the elevation of the mark. Take the tangent of that difference with the subtraction formula, or add the known angles, as in \\(60^\\circ+15^\\circ=75^\\circ\\).",
       definition:

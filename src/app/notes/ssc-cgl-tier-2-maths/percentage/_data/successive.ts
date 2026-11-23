@@ -12,6 +12,7 @@ export const SSC2_PP_SUCCESSIVE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2ppsu-chain",
       name: "Successive changes multiply",
+      visualizationSlug: "af-area-change",
       intuition:
         "A 10% rise turns 100 into 110. A second rise of 20% acts on 110, not on the old 100. So changes in a row multiply as factors; adding the percentages is always a little wrong.",
       definition:

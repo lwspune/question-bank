@@ -60,6 +60,7 @@ export const DIPOLE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-dipole-torque-energy",
       name: "Torque, Energy and Work for a Dipole in a Uniform Field",
+      visualizationSlug: "cet-dipole-torque",
       intuition:
         "In a uniform field the forces on +q and −q are equal and opposite, so the dipole does not move off but it turns, trying to line up with the field. Lined up, its energy is lowest (−pE); turned right round it is highest (+pE). The work to turn it is the rise in that energy.",
       definition:

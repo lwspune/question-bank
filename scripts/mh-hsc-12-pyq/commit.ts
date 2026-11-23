@@ -121,6 +121,7 @@ async function main() {
       orgId: ORG_ID, examId: EXAM_ID, filename: ch.sourceFile, createdBy: CREATED_BY,
       rows: g.rows, uploadJobId: jobId,
       pyqYear: g.year, pyqMonth: g.month, pyqNote: ch.note,
+      visibility: "PRIVATE", // at insert, so an interrupted run never leaves rows public (2026-11-18)
     });
     inserted += r.inserted; skipped += r.skipped; failed += r.failed;
     console.log(`  ${String(g.month ?? "(no month)").padStart(10)} ${g.year}: inserted=${r.inserted} skipped=${r.skipped} failed=${r.failed}`);

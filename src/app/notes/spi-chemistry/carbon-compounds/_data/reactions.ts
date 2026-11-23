@@ -6,7 +6,7 @@ export const SPI_CC_REACTIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Carbon compounds burn, are oxidised, add hydrogen or swap atoms, and two of them, ethanol and ethanoic acid, have reactions you must know by name.",
   whyItMatters:
-    "Five questions in the bank, three EASY and two MODERATE, one of them from the 2022 paper (the boiling point of ethanol). The rest ask which hydrocarbons add, what an aldehyde becomes when oxidised, what you see when sodium bicarbonate meets ethanoic acid, and which equation is saponification.",
+    "Six questions in the bank, four EASY and two MODERATE: one from the 2022 paper (the boiling point of ethanol) and one from the 2026 paper (the name for polymerisation). The rest ask which hydrocarbons add, what an aldehyde becomes when oxidised, what you see when sodium bicarbonate meets ethanoic acid, and which equation is saponification.",
   concepts: [
     {
       kind: "reference" as const,
@@ -18,6 +18,7 @@ export const SPI_CC_REACTIONS_NOTE: SubtopicNote = {
         "- **Combustion**: burning in oxygen gives carbon dioxide, water, heat and light. Saturated compounds burn with a clean blue flame, unsaturated ones with a sooty yellow flame.\n" +
         "- **Oxidation**: alkaline potassium permanganate or acidified potassium dichromate turns an **alcohol** into a **carboxylic acid** (by way of an aldehyde). Ethanol becomes ethanoic acid.\n" +
         "- **Addition**: an **unsaturated** compound (double or triple bond) adds hydrogen with a **nickel** catalyst. This hydrogenation turns vegetable oils into vanaspati ghee.\n" +
+        "- **Polymerisation**: many small molecules (monomers) join into one very large molecule (a polymer), as ethene does to make polythene.\n" +
         "- **Substitution**: in sunlight, chlorine replaces the hydrogen atoms of a **saturated** hydrocarbon one by one.",
       table: {
         columns: ["Reaction", "Which compounds", "Example"],

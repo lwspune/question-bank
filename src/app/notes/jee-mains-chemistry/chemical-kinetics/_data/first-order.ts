@@ -126,6 +126,7 @@ export const JEE_CH_KIN_FIRST_ORDER_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jckin-first-order-forms",
       name: "Exponential form, straight-line plots and rate ratios",
+      visualizationSlug: "cet-first-order-plot",
       intuition:
         "The same law can be written as an exponential, as a straight line, or through the rate. \\([A] = [A]_0e^{-kt}\\) gives the fraction decomposed. \\(\\ln[A]\\) against \\(t\\) is a straight line of slope \\(-k\\). And because \\(r = k[A]\\), a ratio of two rates is a ratio of two concentrations.",
       definition:

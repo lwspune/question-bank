@@ -136,6 +136,7 @@ export const DIODES_SEMI_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpsemi-rectifiers",
       name: "Rectifiers, filters and clipping",
+      visualizationSlug: "cet-rectifier-waves",
       intuition:
         "A rectifier uses a diode's one-way action on alternating voltage. One diode passes only one half of each cycle (half-wave); two or four diodes arranged right pass both halves the same way round (full-wave). The output is still bumpy, so a filter smooths it. A diode in series with a cell lets through only the part of the wave that rises above the cell's voltage.",
       definition:

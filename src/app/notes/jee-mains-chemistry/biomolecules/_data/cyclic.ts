@@ -77,6 +77,7 @@ export const CYCLIC_BIO_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jcbio-anomers-haworth",
       name: "Cyclic structures, anomers and epimers of glucose and fructose",
+      visualizationSlug: "cet-glucose-ring-closure",
       intuition:
         "The OH on C-5 of glucose adds to its own CHO group and closes a six-membered ring, a cyclic hemiacetal. That makes C-1 a new stereocentre, so there are two rings, α and β, called anomers. Fructose closes the same way, C-5 OH onto the C-2 ketone, but its ring has five members. The open-chain aldehyde is only a small share of glucose at equilibrium, which is why some aldehyde tests fail.",
       definition:

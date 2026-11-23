@@ -129,6 +129,7 @@ export const SSC_DI_AVERAGES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscdiav-above",
       name: "Values above, below or closest to the average",
+      visualizationSlug: "ssc-above-average",
       intuition:
         "Once the average is known, each entry is either above it, below it or on it. Questions ask you to count one side, or to find the entry with the smallest gap from it.",
       definition:

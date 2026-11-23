@@ -60,6 +60,7 @@ export const DIELECTRICS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-dielectric-slab",
       name: "A Slab Filling Part of the Gap",
+      visualizationSlug: "neet-capacitor-dielectric",
       intuition:
         "A slab of thickness t and constant K acts like a thinner layer of air, t/K thick. So the capacitor behaves as if its gap had shrunk by t(1 − 1/K). A metal sheet is the limit K → ∞: it simply removes its own thickness from the gap.",
       definition:

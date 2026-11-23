@@ -1,12 +1,13 @@
 /**
- * The Progress tab (2026-11-08, step 3 of the Home · Review · Progress
- * redesign): Performance (Papers) and the map (Chapters) under one tab.
+ * The Progress and Map tabs. From 2026-11-08 the map sat under Progress as
+ * "Chapters" (a Papers · Chapters switch); since 2026-11-23 (owner) it is the
+ * fourth tab, Map, and Progress is Papers (/performance) alone.
  *
- *  - /progress opens Papers for a student with a marked paper (the projected
- *    score is the first thing they see), else Chapters, which counts practice
- *    too: 2 in 3 students have no marked paper.
- *  - Chapters follows the exam focus, as Papers already does.
- *  - Two outcome tiles on both views: mistakes fixed, subtopics mastered.
+ *  - /progress (the avatar menu's "Your progress", old links) always opens
+ *    Papers: sending a student with no paper to the map would light up the
+ *    Map tab instead of the one they tapped.
+ *  - The map follows the exam focus, as Papers already does.
+ *  - Two outcome tiles on both pages: mistakes fixed, subtopics mastered.
  */
 import { describe, it, expect, vi } from "vitest";
 import { readFileSync } from "node:fs";
@@ -21,17 +22,25 @@ vi.mock("next/navigation", () => ({
 
 import { ME_TABS } from "@/components/me/MeHeader";
 import OutcomeTiles from "@/components/me/OutcomeTiles";
-import ProgressSwitch from "@/components/me/ProgressSwitch";
-import { mapExamFor, progressDestination } from "@/lib/me/progress";
+import { mapExamFor } from "@/lib/me/progress";
 import { masteredCount } from "@/lib/performance/masteryMap";
 import { buildPerformance, type PerfInput } from "@/lib/performance/compute";
 import type { PerfAttempt, PerfFact } from "@/lib/performance/types";
 import type { Pulse } from "@/lib/pulse/cache";
 
 describe("the tabs", () => {
-  it("are Home · Review · Progress, with Account in the avatar menu", () => {
-    expect(ME_TABS.map((t) => t.label)).toEqual(["Home", "Review", "Progress"]);
+  it("are Home · Review · Progress · Map, with Account in the avatar menu", () => {
+    expect(ME_TABS.map((t) => t.label)).toEqual(["Home", "Review", "Progress", "Map"]);
     expect(ME_TABS.find((t) => t.key === "progress")?.href).toBe("/progress");
+    expect(ME_TABS.find((t) => t.key === "map")?.href).toBe("/me/map");
+  });
+
+  it("each page lights up its own tab, with no Papers · Chapters switch left", () => {
+    const perf = readFileSync(join(process.cwd(), "src/app/performance/page.tsx"), "utf8");
+    const map = readFileSync(join(process.cwd(), "src/app/me/map/page.tsx"), "utf8");
+    expect(perf).toContain('active="progress"');
+    expect(map).toContain('active="map"');
+    for (const page of [perf, map]) expect(page).not.toContain("ProgressSwitch");
   });
 
   it("the avatar menu links Your progress", () => {
@@ -42,16 +51,15 @@ describe("the tabs", () => {
   });
 });
 
-describe("progressDestination: which view the tab opens", () => {
-  it("Papers when the student has a marked paper", () => {
-    expect(progressDestination(true)).toBe("/performance");
-  });
-  it("Chapters when they have none", () => {
-    expect(progressDestination(false)).toBe("/me/map");
+describe("/progress: where the old Progress address opens", () => {
+  it("always Papers, never the map (the map has its own tab)", () => {
+    const page = readFileSync(join(process.cwd(), "src/app/progress/page.tsx"), "utf8");
+    expect(page).toMatch(/redirect\("\/performance"\)/);
+    expect(page).not.toContain("/me/map");
   });
 });
 
-describe("mapExamFor: Chapters follows the exam focus", () => {
+describe("mapExamFor: the map follows the exam focus", () => {
   it("a link that names an exam wins, with the exam row", () => {
     expect(mapExamFor({ laneExams: ["NDA", "CDS"], focusExamName: "CDS", urlExam: "NDA" })).toEqual({ exam: "NDA", showExamRow: true });
   });
@@ -116,14 +124,6 @@ describe("OutcomeTiles", () => {
     );
     expect(html).toContain("fixed · 7 to go");
     expect(html).not.toContain("subtopics mastered");
-  });
-});
-
-describe("ProgressSwitch", () => {
-  it("links Papers and Chapters, marking the open one", () => {
-    const html = renderToStaticMarkup(createElement(ProgressSwitch, { active: "chapters" }));
-    expect(html).toContain('href="/performance"');
-    expect(html).toMatch(/aria-current="page"[^>]*href="\/me\/map"|href="\/me\/map"[^>]*aria-current="page"/);
   });
 });
 

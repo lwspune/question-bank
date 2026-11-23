@@ -1,0 +1,759 @@
+{
+  "paper": "346-DT",
+  "year": 2026,
+  "subject": "physics12",
+  "pages": "12-page layout, Sections A-D each printed in Hindi then English, Section E each question Hindi then English. 1 cover and Hindi instructions; 2 English instructions, Section A Hindi Q1(a)-(b); 3 Hindi Q1(c)-(f), English Q1(a)-(c); 4 English Q1(d)-(f), Section B Hindi Q2(a)-(c) with the Q2(a) circuit; 5 Hindi Q2(d)-(f), English Q2(a)-(f) with the circuit, Section C Hindi Q3(a)-(b); 6 Hindi Q3(c)-(d), English Q3(a)-(d), Section D Hindi Q4(a)-(d); 7 Hindi Q4(e), English Q4(a)-(e), Hindi Q5(a)-(c); 8 Hindi Q5(d) with its OR and Q5(e), English Q5(a)-(e) with the Q5(d) OR; 9 Section E Q6 with its OR (Hindi, English), Hindi Q7 with its OR; 10 English Q7 with its OR, Q8 with its OR (Hindi, English); 11 Q9 with its OR (Hindi, English), Hindi list of physical constants; 12 English list of physical constants",
+  "questions": [
+    {
+      "ref": "Q1a",
+      "questionNumber": "1 (a)",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Coulomb's Law and Forces Between Multiple Charges",
+      "difficulty": "EASY",
+      "stem": "Force of 80 newton works between two point charges placed in air at a fixed distance between them. When these charges are placed at the same distance in a dielectric medium, the value becomes 8 newton. The dielectric constant of the medium will be",
+      "options": [
+        {
+          "label": "A",
+          "text": "10"
+        },
+        {
+          "label": "B",
+          "text": "zero"
+        },
+        {
+          "label": "C",
+          "text": "0.1"
+        },
+        {
+          "label": "D",
+          "text": "8"
+        }
+      ],
+      "hi": {
+        "stem": "दो बिन्दु आवेशों को वायु में एक निश्चित दूरी पर रखने पर उनके बीच 80 न्यूटन का बल कार्य करता है। जब इन्हीं आवेशों को एक परावैद्युत माध्यम में इतनी ही दूरी पर रखा जाता है तो इसका मान 8 न्यूटन हो जाता है। माध्यम का परावैद्युतांक होगा",
+        "options": [
+          "10",
+          "शून्य",
+          "0.1",
+          "8"
+        ],
+        "solution": "किसी माध्यम में कूलॉम बल, वायु में बल का परावैद्युतांक से भाग होता है: \\(F_m = \\frac{F_{air}}{K}\\)। अतः \\(K = \\frac{F_{air}}{F_m} = \\frac{80}{8} = 10\\), जो विकल्प 10 है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A stamp crosses the Hindi 'निश्चित'; completed from the sentence and the English.",
+      "answer": "A",
+      "solution": "The Coulomb force in a medium is the force in air divided by the dielectric constant: \\(F_m = \\frac{F_{air}}{K}\\). So \\(K = \\frac{F_{air}}{F_m} = \\frac{80}{8} = 10\\), which is the choice 10.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q1b",
+      "questionNumber": "1 (b)",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alternating Current",
+      "subtopic": "Series LCR Circuit and Resonance",
+      "difficulty": "EASY",
+      "stem": "In the resonance condition, the current flowing in parallel resonant (\\(L\\)-\\(C\\)) circuit is",
+      "options": [
+        {
+          "label": "A",
+          "text": "infinite"
+        },
+        {
+          "label": "B",
+          "text": "zero"
+        },
+        {
+          "label": "C",
+          "text": "fixed"
+        },
+        {
+          "label": "D",
+          "text": "none of these"
+        }
+      ],
+      "hi": {
+        "stem": "किसी समान्तर अनुनादी (\\(L\\)-\\(C\\)) परिपथ में अनुनाद की स्थिति में धारा प्रवाहित होती है",
+        "options": [
+          "अनन्त",
+          "शून्य",
+          "निश्चित",
+          "इनमें से कोई नहीं"
+        ],
+        "solution": "समान्तर अनुनाद NCERT पुस्तक में नहीं दिया गया है; यह दोनों शाखाओं की धाराओं से सीधे निकलता है। अनुनाद पर \\(\\omega = \\frac{1}{\\sqrt{LC}}\\), अतः \\(X_L = X_C\\)। तब प्रेरकत्व वाली शाखा की धारा \\(\\left(\\frac{V}{\\omega L}\\right)\\) तथा संधारित्र वाली शाखा की धारा \\((V\\omega C)\\) परिमाण में बराबर और कला में \\(180^\\circ\\) के अन्तर पर होती हैं, अतः एक-दूसरे को निरस्त कर देती हैं। (आदर्श) परिपथ की प्रतिबाधा अनन्त हो जाती है और स्रोत से ली गयी धारा शून्य होती है, जो विकल्प शून्य है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A stamp crosses the Hindi 'परिपथ में'; completed from the sentence and the English. The catalog has no parallel-resonance subtopic; series resonance is the closest.",
+      "answer": "B",
+      "solution": "Parallel resonance is not treated in the NCERT book; it follows directly from the two branch currents. At resonance \\(\\omega = \\frac{1}{\\sqrt{LC}}\\), so \\(X_L = X_C\\). The current in the inductor branch \\(\\left(\\frac{V}{\\omega L}\\right)\\) and in the capacitor branch \\((V\\omega C)\\) are then equal in size and \\(180^\\circ\\) apart in phase, so they cancel. The impedance of the (ideal) circuit becomes infinite and the current drawn from the source is zero, which is the choice zero.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q1c",
+      "questionNumber": "1 (c)",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Atoms",
+      "subtopic": "Line Spectra of the Hydrogen Atom",
+      "difficulty": "EASY",
+      "stem": "In which region of electromagnetic spectrum is the Lyman series of hydrogen found ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Infrared"
+        },
+        {
+          "label": "B",
+          "text": "Visible"
+        },
+        {
+          "label": "C",
+          "text": "\\(X\\)-rays"
+        },
+        {
+          "label": "D",
+          "text": "Ultraviolet"
+        }
+      ],
+      "hi": {
+        "stem": "विद्युत-चुम्बकीय स्पेक्ट्रम के किस भाग में हाइड्रोजन की लाइमन श्रेणी पायी जाती है ?",
+        "options": [
+          "अवरक्त",
+          "दृश्य",
+          "\\(X\\)-किरण",
+          "पराबैंगनी"
+        ],
+        "solution": "लाइमन श्रेणी \\(n_2 = 2, 3, 4, \\ldots\\) से मूल अवस्था \\(n_1 = 1\\) में संक्रमण से बनती है। इसकी तरंगदैर्ध्य लगभग 912 Å से 1216 Å के बीच होती हैं, जो पराबैंगनी भाग में हैं। अतः उत्तर विकल्प पराबैंगनी है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A punched hole covers the end of the English option 'Visible' and a stamp crosses 'electromagnetic'; completed from the Hindi दृश्य and the sentence. A stamp crosses the Hindi 'में'.",
+      "answer": "D",
+      "solution": "The Lyman series arises from transitions to the ground state \\(n_1 = 1\\) from \\(n_2 = 2, 3, 4, \\ldots\\). Its wavelengths lie between about 912 Å and 1216 Å, which is in the ultraviolet region. So the answer is the choice ultraviolet.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q1d",
+      "questionNumber": "1 (d)",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "difficulty": "EASY",
+      "stem": "On dipping a convex lens in water its focal length and nature will be",
+      "options": [
+        {
+          "label": "A",
+          "text": "increased, convex lens"
+        },
+        {
+          "label": "B",
+          "text": "decreased, convex lens"
+        },
+        {
+          "label": "C",
+          "text": "increased, concave lens"
+        },
+        {
+          "label": "D",
+          "text": "decreased, concave lens"
+        }
+      ],
+      "hi": {
+        "stem": "उत्तल लेंस को जल में डुबाने पर फोकस दूरी तथा प्रकृति होगी",
+        "options": [
+          "बढ़ जायेगी, उत्तल लेंस",
+          "घट जायेगी, उत्तल लेंस",
+          "बढ़ जायेगी, अवतल लेंस",
+          "घट जायेगी, अवतल लेंस"
+        ],
+        "solution": "लेंस निर्माता सूत्र \\(\\frac{1}{f} = \\left(\\frac{n_g}{n_m} - 1\\right)\\left(\\frac{1}{R_1} - \\frac{1}{R_2}\\right)\\) से, जल में \\(\\frac{n_g}{n_w} = \\frac{1.5}{1.33} \\approx 1.13\\), अतः \\(\\left(\\frac{n_g}{n_w} - 1\\right)\\) वायु के मान (0.5) से कम परन्तु धनात्मक रहता है। अतः फोकस दूरी बढ़ जाती है (लगभग चार गुनी) और लेंस उत्तल ही रहता है, जो विकल्प 'बढ़ जायेगी, उत्तल लेंस' है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "answer": "A",
+      "solution": "By the lens maker's formula \\(\\frac{1}{f} = \\left(\\frac{n_g}{n_m} - 1\\right)\\left(\\frac{1}{R_1} - \\frac{1}{R_2}\\right)\\). In water \\(\\frac{n_g}{n_w} = \\frac{1.5}{1.33} \\approx 1.13\\), so \\(\\left(\\frac{n_g}{n_w} - 1\\right)\\) is smaller than in air (0.5) but still positive. Hence the focal length increases (about four times) and the lens remains convex, which is the choice increased, convex lens.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q1e",
+      "questionNumber": "1 (e)",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Classification of Metals, Conductors and Semiconductors",
+      "difficulty": "EASY",
+      "stem": "In a semi-conductor, the energy gap between valence band and conduction band is nearly",
+      "options": [
+        {
+          "label": "A",
+          "text": "5 eV"
+        },
+        {
+          "label": "B",
+          "text": "1 eV"
+        },
+        {
+          "label": "C",
+          "text": "15 eV"
+        },
+        {
+          "label": "D",
+          "text": "zero"
+        }
+      ],
+      "hi": {
+        "stem": "अर्द्धचालक में संयोजकता बैण्ड एवं चालन बैण्ड के बीच ऊर्जा अन्तराल लगभग होता है",
+        "options": [
+          "5 eV",
+          "1 eV",
+          "15 eV",
+          "शून्य"
+        ],
+        "solution": "अर्द्धचालक में संयोजकता बैण्ड और चालन बैण्ड के बीच वर्जित ऊर्जा अन्तराल कम, 3 eV से कम होता है (सिलिकॉन के लिए 1.1 eV, जर्मेनियम के लिए 0.7 eV)। अतः यह लगभग 1 eV होता है, जो विकल्प 1 eV है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A stamp crosses the Hindi 'चालन'; completed from the sentence and the English.",
+      "answer": "B",
+      "solution": "In a semiconductor the forbidden energy gap between the valence band and the conduction band is small, less than 3 eV (for silicon 1.1 eV, for germanium 0.7 eV). So it is nearly 1 eV, which is the choice 1 eV.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q1f",
+      "questionNumber": "1 (f)",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Atoms",
+      "subtopic": "Bohr Model of the Hydrogen Atom",
+      "difficulty": "EASY",
+      "stem": "The difference in angular momenta of electrons between two successive orbits of hydrogen atom is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{h}{\\pi}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{h}{2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{h}{2\\pi}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(2h\\)"
+        }
+      ],
+      "hi": {
+        "stem": "हाइड्रोजन परमाणु की दो उत्तरोत्तर कक्षाओं में इलेक्ट्रॉनों के कोणीय संवेग में अन्तर होता है",
+        "options": [
+          "\\(\\frac{h}{\\pi}\\)",
+          "\\(\\frac{h}{2}\\)",
+          "\\(\\frac{h}{2\\pi}\\)",
+          "\\(2h\\)"
+        ],
+        "solution": "बोर की क्वांटम प्रतिबन्ध शर्त से \\(n\\)वीं कक्षा में कोणीय संवेग \\(L_n = \\frac{nh}{2\\pi}\\) होता है। दो उत्तरोत्तर कक्षाओं के लिए \\(L_{n+1} - L_n = \\frac{(n+1)h}{2\\pi} - \\frac{nh}{2\\pi} = \\frac{h}{2\\pi}\\), जो विकल्प \\(\\frac{h}{2\\pi}\\) है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "answer": "C",
+      "solution": "By Bohr's quantisation condition the angular momentum in the \\(n\\)th orbit is \\(L_n = \\frac{nh}{2\\pi}\\). For two successive orbits \\(L_{n+1} - L_n = \\frac{(n+1)h}{2\\pi} - \\frac{nh}{2\\pi} = \\frac{h}{2\\pi}\\), which is the choice \\(\\frac{h}{2\\pi}\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q2a",
+      "questionNumber": "2 (a)",
+      "section": "B",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Alternating Current",
+      "subtopic": "Series LCR Circuit and Resonance",
+      "difficulty": "EASY",
+      "stem": "An alternative current source is connected in the following figure. Determine the value of current flowing in resistance \\(R\\) in the condition of resonance.",
+      "hi": {
+        "stem": "निम्न चित्र में एक प्रत्यावर्ती धारा स्रोत लगाया गया है। अनुनाद की स्थिति में प्रतिरोध \\(R\\) में बहने वाली धारा का मान ज्ञात कीजिये।",
+        "solution": "यह श्रेणी \\(LCR\\) परिपथ है। इसकी प्रतिबाधा \\(Z = \\sqrt{R^2 + (X_L - X_C)^2}\\) है। अनुनाद की स्थिति में \\(X_L = X_C\\), अर्थात \\(\\omega L = \\frac{1}{\\omega C}\\), अतः \\(Z = R\\) (न्यूनतम)। तब प्रतिरोध \\(R\\) में धारा अधिकतम होती है:\n\\(I = \\frac{V}{R}\\)\n(\\(V\\) वर्ग माध्य मूल वोल्टता हो तो यह वर्ग माध्य मूल धारा है; शिखर वोल्टता \\(V_0\\) के लिए शिखर धारा \\(I_0 = \\frac{V_0}{R}\\))। यह धारा स्रोत की वोल्टता के साथ समान कला में होती है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "figure": {
+        "page": 4,
+        "region": [
+          0.36,
+          0.718,
+          0.63,
+          0.82
+        ],
+        "note": "Series circuit: an AC source V on top, with an inductor L, a capacitor C and a resistor R in series along the bottom. No numerical values are printed. Taken from the Hindi copy (page 4): the English copy (page 5) has a stamp across the source symbol; here a stamp crosses only the wire between C and R, and every label is readable."
+      },
+      "_flag": "Neither language prints a value for V, L, C or R; kept as printed. A stamp crosses the English 'resistance' and the Hindi 'गया'; completed from the sentence.",
+      "solution": "The circuit is a series \\(LCR\\) circuit. Its impedance is \\(Z = \\sqrt{R^2 + (X_L - X_C)^2}\\). At resonance \\(X_L = X_C\\), that is \\(\\omega L = \\frac{1}{\\omega C}\\), so \\(Z = R\\) (minimum). The current in the resistance \\(R\\) is then maximum:\n\\(I = \\frac{V}{R}\\)\n(with \\(V\\) the rms voltage this is the rms current; with the peak voltage \\(V_0\\) the peak current is \\(I_0 = \\frac{V_0}{R}\\)). The current is in phase with the source voltage.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q2b",
+      "questionNumber": "2 (b)",
+      "section": "B",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Wave Nature of Matter",
+      "difficulty": "MODERATE",
+      "stem": "Calculate the de Broglie wavelength of neutron of energy 12.8 MeV.",
+      "hi": {
+        "stem": "12.8 MeV ऊर्जा के न्यूट्रॉन की डी ब्रॉग्ली तरंगदैर्ध्य ज्ञात कीजिये।",
+        "solution": "न्यूट्रॉन की गतिज ऊर्जा: \\(K = 12.8\\ \\text{MeV} = 12.8 \\times 10^{6} \\times 1.6 \\times 10^{-19}\\ \\text{J} = 2.048 \\times 10^{-12}\\ \\text{J}\\)।\nडी ब्रॉग्ली तरंगदैर्ध्य: \\(\\lambda = \\frac{h}{p} = \\frac{h}{\\sqrt{2mK}}\\)।\n\\(\\sqrt{2mK} = \\sqrt{2 \\times 1.67 \\times 10^{-27} \\times 2.048 \\times 10^{-12}} = \\sqrt{6.84 \\times 10^{-39}} \\approx 8.27 \\times 10^{-20}\\ \\text{kg m s}^{-1}\\)\n\\(\\lambda = \\frac{6.6 \\times 10^{-34}}{8.27 \\times 10^{-20}} \\approx 7.98 \\times 10^{-15}\\ \\text{m} \\approx 8 \\times 10^{-15}\\ \\text{m}\\) (लगभग 8 फर्मी)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Kinetic energy of the neutron: \\(K = 12.8\\ \\text{MeV} = 12.8 \\times 10^{6} \\times 1.6 \\times 10^{-19}\\ \\text{J} = 2.048 \\times 10^{-12}\\ \\text{J}\\).\nDe Broglie wavelength: \\(\\lambda = \\frac{h}{p} = \\frac{h}{\\sqrt{2mK}}\\).\n\\(\\sqrt{2mK} = \\sqrt{2 \\times 1.67 \\times 10^{-27} \\times 2.048 \\times 10^{-12}} = \\sqrt{6.84 \\times 10^{-39}} \\approx 8.27 \\times 10^{-20}\\ \\text{kg m s}^{-1}\\)\n\\(\\lambda = \\frac{6.6 \\times 10^{-34}}{8.27 \\times 10^{-20}} \\approx 7.98 \\times 10^{-15}\\ \\text{m} \\approx 8 \\times 10^{-15}\\ \\text{m}\\) (about 8 fermi).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q2c",
+      "questionNumber": "2 (c)",
+      "section": "B",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "difficulty": "EASY",
+      "stem": "Write the definition of specific conductivity and its unit.",
+      "hi": {
+        "stem": "विशिष्ट चालकता की परिभाषा तथा मात्रक लिखिये।",
+        "solution": "किसी पदार्थ की **विशिष्ट चालकता** (चालकता) \\(\\sigma\\) उसकी विशिष्ट प्रतिरोध (प्रतिरोधकता) का व्युत्क्रम होती है: \\(\\sigma = \\frac{1}{\\rho}\\)। यह उस पदार्थ के एकांक लम्बाई तथा एकांक अनुप्रस्थ काट क्षेत्रफल वाले चालक की चालकता के बराबर होती है।\n\n**मात्रक:** \\(\\Omega^{-1}\\ \\text{m}^{-1}\\), अर्थात म्हो प्रति मीटर या सीमेन्स प्रति मीटर (\\(\\text{S m}^{-1}\\))।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A punched hole covers part of the Hindi 'लिखिये' and a stamp crosses the English 'conductivity'; each completed from the sentence and the other language.",
+      "solution": "**Specific conductivity** (conductivity) \\(\\sigma\\) of a material is the reciprocal of its resistivity: \\(\\sigma = \\frac{1}{\\rho}\\). It equals the conductance of a conductor of that material of unit length and unit area of cross-section.\n\n**Unit:** \\(\\Omega^{-1}\\ \\text{m}^{-1}\\), that is mho per metre or siemens per metre (\\(\\text{S m}^{-1}\\)).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q2d",
+      "questionNumber": "2 (d)",
+      "section": "B",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Magnetism and Matter",
+      "subtopic": "Magnetic Properties of Materials",
+      "difficulty": "EASY",
+      "stem": "What is the difference between paramagnetic and diamagnetic materials ?",
+      "hi": {
+        "stem": "अनुचुम्बकीय एवं प्रतिचुम्बकीय पदार्थों में क्या अन्तर होता है ?",
+        "solution": "| अनुचुम्बकीय पदार्थ | प्रतिचुम्बकीय पदार्थ |\n|---|---|\n| चुम्बक द्वारा दुर्बल रूप से आकर्षित होते हैं; दुर्बल क्षेत्र से प्रबल क्षेत्र की ओर जाते हैं। | चुम्बक द्वारा दुर्बल रूप से प्रतिकर्षित होते हैं; प्रबल क्षेत्र से दुर्बल क्षेत्र की ओर जाते हैं। |\n| चुम्बकीय प्रवृत्ति \\(\\chi\\) अल्प और धनात्मक; \\(\\mu_r\\) 1 से कुछ अधिक। | चुम्बकीय प्रवृत्ति \\(\\chi\\) अल्प और ऋणात्मक; \\(\\mu_r\\) 1 से कुछ कम। |\n| परमाणुओं का स्थायी चुम्बकीय आघूर्ण होता है। | परमाणुओं का नेट चुम्बकीय आघूर्ण शून्य होता है। |\n| उदाहरण: ऐलुमिनियम, सोडियम, ऑक्सीजन। | उदाहरण: बिस्मथ, ताँबा, जल। |\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A stamp crosses the first letter of the English 'paramagnetic'; completed from the Hindi अनुचुम्बकीय.",
+      "solution": "| Paramagnetic materials | Diamagnetic materials |\n|---|---|\n| Weakly attracted by a magnet; move from a weaker to a stronger field. | Weakly repelled by a magnet; move from a stronger to a weaker field. |\n| Susceptibility \\(\\chi\\) is small and positive; \\(\\mu_r\\) slightly greater than 1. | Susceptibility \\(\\chi\\) is small and negative; \\(\\mu_r\\) slightly less than 1. |\n| Atoms have a permanent magnetic moment. | Atoms have no net magnetic moment. |\n| Examples: aluminium, sodium, oxygen. | Examples: bismuth, copper, water. |\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q2e",
+      "questionNumber": "2 (e)",
+      "section": "B",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Radioactivity",
+      "difficulty": "EASY",
+      "stem": "What is the phenomena of radioactivity ?",
+      "hi": {
+        "stem": "रेडियोसक्रियता की घटना क्या है ?",
+        "solution": "रेडियोसक्रियता वह घटना है जिसमें कुछ भारी, अस्थायी तत्वों के नाभिक स्वतः विघटित होकर \\(\\alpha\\)-कण, \\(\\beta\\)-कण या \\(\\gamma\\)-किरणें उत्सर्जित करते हैं और दूसरे तत्वों के नाभिकों में बदल जाते हैं। इसकी खोज 1896 में बैकेरल ने (यूरेनियम में) की थी। यह एक नाभिकीय घटना है और ताप, दाब या रासायनिक संयोग जैसी बाह्य परिस्थितियों पर निर्भर नहीं करती।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "Radioactivity is the phenomenon in which the nuclei of certain heavy, unstable elements disintegrate spontaneously, emitting \\(\\alpha\\)-particles, \\(\\beta\\)-particles or \\(\\gamma\\)-rays, and change into nuclei of other elements. It was discovered by Becquerel in 1896 (in uranium). It is a nuclear phenomenon and does not depend on external conditions such as temperature, pressure or chemical combination.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q2f",
+      "questionNumber": "2 (f)",
+      "section": "B",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "difficulty": "EASY",
+      "stem": "What will be the focal length of combination of convex and concave lenses of same focal length ?",
+      "hi": {
+        "stem": "समान फोकस दूरी के उत्तल एवं अवतल लेंसों को मिलाने पर संयोजन की फोकस दूरी कितनी होगी ?",
+        "solution": "सम्पर्क में रखे लेंसों के लिए \\(\\frac{1}{F} = \\frac{1}{f_1} + \\frac{1}{f_2}\\)। \\(f_1 = +f\\) (उत्तल) तथा \\(f_2 = -f\\) (अवतल) रखने पर: \\(\\frac{1}{F} = \\frac{1}{f} - \\frac{1}{f} = 0\\), अतः \\(F = \\infty\\)। संयोजन की फोकस दूरी अनन्त होगी (क्षमता शून्य); यह समतल काँच की पट्टिका की भाँति कार्य करता है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A stamp crosses the Hindi 'लेंसों'; completed from the sentence and the English.",
+      "solution": "For lenses in contact \\(\\frac{1}{F} = \\frac{1}{f_1} + \\frac{1}{f_2}\\). With \\(f_1 = +f\\) (convex) and \\(f_2 = -f\\) (concave): \\(\\frac{1}{F} = \\frac{1}{f} - \\frac{1}{f} = 0\\), so \\(F = \\infty\\). The focal length of the combination is infinite (power zero); it behaves like a plane glass plate.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q3a",
+      "questionNumber": "3 (a)",
+      "section": "C",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Alternating Current",
+      "subtopic": "Power in AC Circuits and the Power Factor",
+      "difficulty": "EASY",
+      "stem": "Explain the meaning of power factor and wattless current in alternative circuits.",
+      "hi": {
+        "stem": "प्रत्यावर्ती परिपथों में शक्ति गुणांक एवं वाटहीन धारा के अर्थ समझाइये।",
+        "solution": "**शक्ति गुणांक:** प्रत्यावर्ती परिपथ में औसत शक्ति \\(P = V_{rms} I_{rms} \\cos\\phi\\) होती है, जहाँ \\(\\phi\\) वोल्टता और धारा के बीच कलान्तर है। गुणक \\(\\cos\\phi\\) को शक्ति गुणांक कहते हैं। यह वास्तविक शक्ति और आभासी शक्ति का अनुपात है:\n\\(\\cos\\phi = \\frac{P}{V_{rms} I_{rms}} = \\frac{R}{Z}\\)\nशुद्ध प्रतिरोध के लिए \\(\\cos\\phi = 1\\) (अधिकतम शक्ति); शुद्ध प्रेरकत्व या संधारित्र के लिए \\(\\cos\\phi = 0\\) (शक्ति शून्य)।\n\n**वाटहीन धारा:** धारा \\(I_{rms}\\) को दो घटकों में वियोजित किया जा सकता है: वोल्टता की कला में \\(I_{rms}\\cos\\phi\\), तथा वोल्टता से \\(90^\\circ\\) कलान्तर पर \\(I_{rms}\\sin\\phi\\)। दूसरे घटक के कारण शक्ति \\(V_{rms} (I_{rms}\\sin\\phi) \\cos 90^\\circ = 0\\) है। अतः घटक \\(I_{rms}\\sin\\phi\\) परिपथ में बहता तो है परन्तु कोई शक्ति व्यय नहीं करता; इसे वाटहीन धारा कहते हैं। शुद्ध प्रेरकत्व या शुद्ध संधारित्र (\\(\\phi = 90^\\circ\\)) में सम्पूर्ण धारा वाटहीन होती है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A stamp crosses the Hindi 'वाटहीन'; completed from the sentence and the English 'wattless'.",
+      "solution": "**Power factor:** In an AC circuit the average power is \\(P = V_{rms} I_{rms} \\cos\\phi\\), where \\(\\phi\\) is the phase difference between the voltage and the current. The factor \\(\\cos\\phi\\) is called the power factor. It is the ratio of the true power to the apparent power:\n\\(\\cos\\phi = \\frac{P}{V_{rms} I_{rms}} = \\frac{R}{Z}\\)\nFor a pure resistor \\(\\cos\\phi = 1\\) (maximum power); for a pure inductor or capacitor \\(\\cos\\phi = 0\\) (no power).\n\n**Wattless current:** The current \\(I_{rms}\\) can be resolved into two components: \\(I_{rms}\\cos\\phi\\) in phase with the voltage, and \\(I_{rms}\\sin\\phi\\) at \\(90^\\circ\\) to the voltage. The power due to the second component is \\(V_{rms} (I_{rms}\\sin\\phi) \\cos 90^\\circ = 0\\). So the component \\(I_{rms}\\sin\\phi\\) flows in the circuit but consumes no power; it is called the wattless current. In a pure inductor or a pure capacitor (\\(\\phi = 90^\\circ\\)) the whole current is wattless.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q3b",
+      "questionNumber": "3 (b)",
+      "section": "C",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Capacitors, Capacitance and their Combinations",
+      "difficulty": "MODERATE",
+      "stem": "The area of each plate of parallel plate condenser is 100 \\(\\text{cm}^2\\) and intensity of electric field between the two plates is 100 newton/coulomb. How much charges are there on each plate ?",
+      "hi": {
+        "stem": "एक समान्तर प्लेट संधारित्र की प्रत्येक प्लेट का क्षेत्रफल 100 सेमी\\(^2\\) तथा दोनों प्लेटों के बीच विद्युत क्षेत्र की तीव्रता 100 न्यूटन/कुलॉम है। प्रत्येक प्लेट पर कितना आवेश है ?",
+        "solution": "समान्तर प्लेट संधारित्र की प्लेटों के बीच विद्युत क्षेत्र \\(E = \\frac{\\sigma}{\\varepsilon_0} = \\frac{q}{\\varepsilon_0 A}\\) होता है, अतः \\(q = \\varepsilon_0 E A\\)।\nयहाँ \\(A = 100\\ \\text{cm}^2 = 100 \\times 10^{-4}\\ \\text{m}^2 = 10^{-2}\\ \\text{m}^2\\), \\(E = 100\\ \\text{N C}^{-1}\\) तथा \\(\\varepsilon_0 = \\frac{1}{4\\pi \\times 9 \\times 10^{9}} = 8.85 \\times 10^{-12}\\ \\text{C}^2\\ \\text{N}^{-1}\\ \\text{m}^{-2}\\)।\n\\(q = 8.85 \\times 10^{-12} \\times 100 \\times 10^{-2} = 8.85 \\times 10^{-12}\\ \\text{C}\\)\nअतः प्रत्येक प्लेट पर \\(8.85 \\times 10^{-12}\\) कूलॉम आवेश है: एक प्लेट पर \\(+8.85 \\times 10^{-12}\\ \\text{C}\\) तथा दूसरी पर \\(-8.85 \\times 10^{-12}\\ \\text{C}\\)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A stamp crosses the English 'parallel' and the Hindi 'प्लेट'; each completed from the sentence and the other language.",
+      "solution": "The field between the plates of a parallel plate capacitor is \\(E = \\frac{\\sigma}{\\varepsilon_0} = \\frac{q}{\\varepsilon_0 A}\\), so \\(q = \\varepsilon_0 E A\\).\nHere \\(A = 100\\ \\text{cm}^2 = 100 \\times 10^{-4}\\ \\text{m}^2 = 10^{-2}\\ \\text{m}^2\\), \\(E = 100\\ \\text{N C}^{-1}\\), and \\(\\varepsilon_0 = \\frac{1}{4\\pi \\times 9 \\times 10^{9}} = 8.85 \\times 10^{-12}\\ \\text{C}^2\\ \\text{N}^{-1}\\ \\text{m}^{-2}\\).\n\\(q = 8.85 \\times 10^{-12} \\times 100 \\times 10^{-2} = 8.85 \\times 10^{-12}\\ \\text{C}\\)\nSo each plate carries a charge of \\(8.85 \\times 10^{-12}\\ \\text{C}\\): \\(+8.85 \\times 10^{-12}\\ \\text{C}\\) on one plate and \\(-8.85 \\times 10^{-12}\\ \\text{C}\\) on the other.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q3c",
+      "questionNumber": "3 (c)",
+      "section": "C",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Atomic Masses and Composition of the Nucleus",
+      "difficulty": "EASY",
+      "stem": "Write the difference between isotopic, isobaric and isotonic nuclei. Give the examples of each.",
+      "hi": {
+        "stem": "समस्थानिक, समभारिक तथा समन्यूट्रॉनिक नाभिकों में अन्तर लिखिए। प्रत्येक का एक-एक उदाहरण दीजिये।",
+        "solution": "नाभिक \\(^{A}_{Z}\\mathrm{X}\\) में \\(Z\\) प्रोटॉन तथा \\(N = A - Z\\) न्यूट्रॉन होते हैं।\n\n| प्रकार | समान | भिन्न | उदाहरण |\n|---|---|---|---|\n| समस्थानिक | परमाणु क्रमांक \\(Z\\) | द्रव्यमान संख्या \\(A\\) (न्यूट्रॉनों की संख्या) | \\(^{1}_{1}\\mathrm{H}\\), \\(^{2}_{1}\\mathrm{H}\\), \\(^{3}_{1}\\mathrm{H}\\) |\n| समभारिक | द्रव्यमान संख्या \\(A\\) | परमाणु क्रमांक \\(Z\\) | \\(^{3}_{1}\\mathrm{H}\\) तथा \\(^{3}_{2}\\mathrm{He}\\) |\n| समन्यूट्रॉनिक | न्यूट्रॉन संख्या \\(N\\) | परमाणु क्रमांक \\(Z\\) तथा द्रव्यमान संख्या \\(A\\) | \\(^{198}_{80}\\mathrm{Hg}\\) तथा \\(^{197}_{79}\\mathrm{Au}\\) (\\(N = 118\\)) |\n\nसमस्थानिक एक ही तत्व के होते हैं और उनके रासायनिक गुण समान होते हैं; समभारिक और समन्यूट्रॉनिक भिन्न-भिन्न तत्व होते हैं।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "A nucleus \\(^{A}_{Z}\\mathrm{X}\\) has \\(Z\\) protons and \\(N = A - Z\\) neutrons.\n\n| Kind | Same | Different | Example |\n|---|---|---|---|\n| Isotopes | atomic number \\(Z\\) | mass number \\(A\\) (number of neutrons) | \\(^{1}_{1}\\mathrm{H}\\), \\(^{2}_{1}\\mathrm{H}\\), \\(^{3}_{1}\\mathrm{H}\\) |\n| Isobars | mass number \\(A\\) | atomic number \\(Z\\) | \\(^{3}_{1}\\mathrm{H}\\) and \\(^{3}_{2}\\mathrm{He}\\) |\n| Isotones | neutron number \\(N\\) | atomic number \\(Z\\) and mass number \\(A\\) | \\(^{198}_{80}\\mathrm{Hg}\\) and \\(^{197}_{79}\\mathrm{Au}\\) (\\(N = 118\\)) |\n\nIsotopes are the same element and have identical chemical properties; isobars and isotones are different elements.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q3d",
+      "questionNumber": "3 (d)",
+      "section": "C",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Classification of Metals, Conductors and Semiconductors",
+      "difficulty": "EASY",
+      "stem": "Explain the energy band in solids.",
+      "hi": {
+        "stem": "ठोसों में ऊर्जा बैण्ड की व्याख्या कीजिये।",
+        "solution": "एक पृथक परमाणु में इलेक्ट्रॉन निश्चित, विविक्त ऊर्जा स्तरों में रहते हैं। ठोस में परमाणु बहुत पास-पास (लगभग 2 से 3 Å) होते हैं, अतः पड़ोसी परमाणुओं के बाह्य इलेक्ट्रॉन परस्पर क्रिया करते हैं। इस अन्योन्य क्रिया के कारण प्रत्येक ऊर्जा स्तर बहुत अधिक संख्या में पास-पास के स्तरों में विभक्त हो जाता है (\\(N\\) परमाणुओं के लिए \\(N\\) स्तर)। ये स्तर इतने पास होते हैं कि लगभग सतत ऊर्जा परास बना लेते हैं, जिसे **ऊर्जा बैण्ड** कहते हैं।\n\n- **संयोजकता बैण्ड:** संयोजी इलेक्ट्रॉनों द्वारा भरा बैण्ड; 0 K पर पूर्णतः भरा उच्चतम बैण्ड।\n- **चालन बैण्ड:** इसके ऊपर का बैण्ड; यह रिक्त या आंशिक रूप से भरा होता है। इसके इलेक्ट्रॉन गति के लिए स्वतंत्र होते हैं और विद्युत चालन करते हैं।\n- **वर्जित ऊर्जा अन्तराल \\(E_g\\):** संयोजकता बैण्ड के शीर्ष तथा चालन बैण्ड के तल के बीच का ऊर्जा अन्तराल, जिसमें कोई इलेक्ट्रॉन नहीं रह सकता।\n\nइसी आधार पर ठोसों का वर्गीकरण होता है: **चालकों** में बैण्ड अतिव्यापित होते हैं (\\(E_g = 0\\)); **कुचालकों** में \\(E_g\\) अधिक होता है (3 eV से अधिक, हीरे के लिए लगभग 6 eV); **अर्द्धचालकों** में \\(E_g\\) कम होता है (3 eV से कम, जैसे सिलिकॉन के लिए 1.1 eV)।\n\nचित्र: ऊर्जा को ऊपर की ओर लेकर तीन ऊर्जा बैण्ड आरेख साथ-साथ, प्रत्येक में नीचे संयोजकता बैण्ड, ऊपर चालन बैण्ड तथा अन्तराल \\(E_g\\) अंकित: अतिव्यापित बैण्ड (धातु), बड़ा अन्तराल (कुचालक) तथा छोटा अन्तराल (अर्द्धचालक)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "In an isolated atom the electrons occupy sharp, discrete energy levels. In a solid the atoms are very close together (about 2 to 3 Å), so the outer electrons of neighbouring atoms interact. Because of this interaction each energy level splits into a very large number of closely spaced levels (for \\(N\\) atoms, \\(N\\) levels). These levels are so close that they form a nearly continuous range of energy called an **energy band**.\n\n- **Valence band:** the band occupied by the valence electrons; it is the highest band that is completely filled at 0 K.\n- **Conduction band:** the next higher band; it is empty or partly filled. Electrons in it are free to move and conduct electricity.\n- **Forbidden energy gap \\(E_g\\):** the energy gap between the top of the valence band and the bottom of the conduction band, in which no electron can exist.\n\nOn this basis solids are classified: in **conductors** the bands overlap (\\(E_g = 0\\)); in **insulators** \\(E_g\\) is large (more than 3 eV, about 6 eV for diamond); in **semiconductors** \\(E_g\\) is small (less than 3 eV, for example 1.1 eV for silicon).\n\nDiagram: three energy-band diagrams side by side with energy upward, each showing the valence band below and the conduction band above, with the gap \\(E_g\\) labelled: overlapping bands (metal), a large gap (insulator) and a small gap (semiconductor).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q4a",
+      "questionNumber": "4 (a)",
+      "section": "D",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Waves and their Properties",
+      "difficulty": "EASY",
+      "stem": "What are electromagnetic waves ? Explain two characteristics of these waves.",
+      "hi": {
+        "stem": "वैद्युत-चुम्बकीय तरंगें क्या हैं ? इन तरंगों के दो अभिलक्षणों की व्याख्या कीजिये।",
+        "solution": "**वैद्युत-चुम्बकीय तरंगें** वे तरंगें हैं जिनमें दोलित विद्युत क्षेत्र \\(\\vec{E}\\) तथा दोलित चुम्बकीय क्षेत्र \\(\\vec{B}\\) साथ-साथ परिवर्तित होते हैं, जो परस्पर लम्बवत् तथा संचरण की दिशा के भी लम्बवत् होते हैं। ये त्वरित (दोलित) आवेशों से उत्पन्न होती हैं और इनके संचरण के लिए किसी माध्यम की आवश्यकता नहीं होती। उदाहरण: रेडियो तरंगें, सूक्ष्म तरंगें, अवरक्त, दृश्य प्रकाश, पराबैंगनी, \\(X\\)-किरणें तथा \\(\\gamma\\)-किरणें।\n\n**दो अभिलक्षण:**\n1. **ये अनुप्रस्थ तरंगें हैं।** \\(z\\)-अक्ष के अनुदिश चलने वाली तरंग में \\(\\vec{E}\\) \\(x\\)-अक्ष के अनुदिश तथा \\(\\vec{B}\\) \\(y\\)-अक्ष के अनुदिश होता है; दोनों संचरण की दिशा के लम्बवत् हैं, जो \\(\\vec{E} \\times \\vec{B}\\) की दिशा है।\n2. **निर्वात में ये प्रकाश की चाल से चलती हैं** \\(c = \\frac{1}{\\sqrt{\\mu_0 \\varepsilon_0}} = 3 \\times 10^{8}\\ \\text{m s}^{-1}\\), तथा आयामों में सम्बन्ध \\(\\frac{E_0}{B_0} = c\\) होता है। किसी माध्यम में चाल \\(v = \\frac{1}{\\sqrt{\\mu \\varepsilon}}\\) होती है।\n\n(अन्य गुण: ये ऊर्जा तथा संवेग ले जाती हैं और विकिरण दाब डालती हैं; आवेशरहित होने के कारण विद्युत या चुम्बकीय क्षेत्र द्वारा विक्षेपित नहीं होतीं।)\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "**Electromagnetic waves** are waves in which an oscillating electric field \\(\\vec{E}\\) and an oscillating magnetic field \\(\\vec{B}\\) vary together, perpendicular to each other and perpendicular to the direction of propagation. They are produced by accelerated (oscillating) charges and need no material medium. Examples: radio waves, microwaves, infrared, visible light, ultraviolet, X-rays and \\(\\gamma\\)-rays.\n\n**Two characteristics:**\n1. **They are transverse waves.** For a wave moving along the \\(z\\)-axis, \\(\\vec{E}\\) is along \\(x\\) and \\(\\vec{B}\\) along \\(y\\); both are perpendicular to the direction of travel, which is along \\(\\vec{E} \\times \\vec{B}\\).\n2. **They travel in vacuum with the speed of light** \\(c = \\frac{1}{\\sqrt{\\mu_0 \\varepsilon_0}} = 3 \\times 10^{8}\\ \\text{m s}^{-1}\\), and the amplitudes are related by \\(\\frac{E_0}{B_0} = c\\). In a medium the speed is \\(v = \\frac{1}{\\sqrt{\\mu \\varepsilon}}\\).\n\n(Other properties: they carry energy and momentum and exert radiation pressure; being uncharged, they are not deflected by electric or magnetic fields.)\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q4b",
+      "questionNumber": "4 (b)",
+      "section": "D",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "difficulty": "MODERATE",
+      "stem": "The convex lens of glass of focal length 15 cm is immersed in carbon disulphide. In this situation what will be the focal length and the nature of lens ? The refractive indices of glass relative to air and carbon disulphide are \\(\\frac{3}{2}\\) and \\(\\frac{5}{3}\\) respectively.",
+      "hi": {
+        "stem": "15 सेमी फोकस दूरी वाला कांच का उत्तल लेंस कार्बन डाईसल्फाइड में डुबो दिया जाता है। इस दशा में लेंस की फोकस दूरी एवं प्रकृति क्या होगी ? वायु के सापेक्ष काँच एवं कार्बन डाईसल्फाइड के अपवर्तनांक क्रमशः \\(\\frac{3}{2}\\) एवं \\(\\frac{5}{3}\\) हैं।",
+        "solution": "लेंस निर्माता सूत्र से, वायु में:\n\\(\\frac{1}{f_a} = (n_g - 1)\\left(\\frac{1}{R_1} - \\frac{1}{R_2}\\right)\\), अतः \\(\\frac{1}{15} = \\left(\\frac{3}{2} - 1\\right)\\left(\\frac{1}{R_1} - \\frac{1}{R_2}\\right)\\), जिससे \\(\\left(\\frac{1}{R_1} - \\frac{1}{R_2}\\right) = \\frac{2}{15}\\ \\text{cm}^{-1}\\)।\n\nकार्बन डाईसल्फाइड में द्रव के सापेक्ष काँच का अपवर्तनांक \\(n = \\frac{n_g}{n_l} = \\frac{3/2}{5/3} = \\frac{9}{10}\\) है। अतः\n\\(\\frac{1}{f_l} = \\left(\\frac{9}{10} - 1\\right) \\times \\frac{2}{15} = -\\frac{1}{10} \\times \\frac{2}{15} = -\\frac{1}{75}\\)\n\\(f_l = -75\\ \\text{cm}\\)\n\nफोकस दूरी 75 सेमी तथा ऋणात्मक हो जाती है: द्रव काँच से अधिक प्रकाशतः सघन है, अतः उत्तल लेंस अपसारी (अवतल) लेंस की भाँति व्यवहार करेगा।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A stamp crosses the Hindi 'लेंस' and 'होगी' and the English 'focal' and 'what'; each completed from the sentence and the other language.",
+      "solution": "By the lens maker's formula, in air:\n\\(\\frac{1}{f_a} = (n_g - 1)\\left(\\frac{1}{R_1} - \\frac{1}{R_2}\\right)\\), so \\(\\frac{1}{15} = \\left(\\frac{3}{2} - 1\\right)\\left(\\frac{1}{R_1} - \\frac{1}{R_2}\\right)\\), giving \\(\\left(\\frac{1}{R_1} - \\frac{1}{R_2}\\right) = \\frac{2}{15}\\ \\text{cm}^{-1}\\).\n\nIn carbon disulphide the refractive index of glass relative to the liquid is \\(n = \\frac{n_g}{n_l} = \\frac{3/2}{5/3} = \\frac{9}{10}\\). So\n\\(\\frac{1}{f_l} = \\left(\\frac{9}{10} - 1\\right) \\times \\frac{2}{15} = -\\frac{1}{10} \\times \\frac{2}{15} = -\\frac{1}{75}\\)\n\\(f_l = -75\\ \\text{cm}\\)\n\nThe focal length becomes 75 cm and is negative: since the liquid is optically denser than the glass, the convex lens behaves as a diverging (concave) lens.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q4c",
+      "questionNumber": "4 (c)",
+      "section": "D",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Atomic Masses and Composition of the Nucleus",
+      "difficulty": "EASY",
+      "stem": "Explain the proton-neutron hypothesis in the structure of nucleus.",
+      "hi": {
+        "stem": "नाभिक की संरचना में प्रोटॉन-न्यूट्रॉन परिकल्पना को समझाइये।",
+        "solution": "चैडविक द्वारा न्यूट्रॉन की खोज (1932) के बाद हाइजेनबर्ग ने **प्रोटॉन-न्यूट्रॉन परिकल्पना** दी: परमाणु का नाभिक केवल प्रोटॉनों तथा न्यूट्रॉनों (जिन्हें मिलाकर न्यूक्लियॉन कहते हैं) से बना होता है, और नाभिक में कोई इलेक्ट्रॉन नहीं होता।\n\n1. नाभिक \\(^{A}_{Z}\\mathrm{X}\\) में \\(Z\\) प्रोटॉन तथा \\(N = A - Z\\) न्यूट्रॉन होते हैं। उदाहरणार्थ \\(^{16}_{8}\\mathrm{O}\\) में 8 प्रोटॉन तथा 8 न्यूट्रॉन हैं।\n2. **आवेश:** केवल प्रोटॉन आवेशित हैं, अतः नाभिक का आवेश \\(+Ze\\) है, जो बाहर के \\(Z\\) इलेक्ट्रॉनों के आवेश के बराबर है और परमाणु उदासीन रहता है।\n3. **द्रव्यमान:** प्रोटॉन तथा न्यूट्रॉन प्रत्येक का द्रव्यमान लगभग 1 u है, अतः नाभिक का द्रव्यमान लगभग \\(A\\) u होता है; इससे स्पष्ट होता है कि परमाणु द्रव्यमान लगभग पूर्ण संख्याएँ क्यों होते हैं।\n4. **समस्थानिकों** की व्याख्या होती है: इनमें प्रोटॉनों की संख्या समान परन्तु न्यूट्रॉनों की संख्या भिन्न होती है।\n5. न्यूक्लियॉन प्रबल, लघु परास वाले तथा आवेश पर निर्भर न करने वाले **नाभिकीय बल** द्वारा बँधे रहते हैं, जो प्रोटॉनों के बीच स्थिरवैद्युत प्रतिकर्षण पर विजय पाता है।\n\nपूर्ववर्ती प्रोटॉन-इलेक्ट्रॉन परिकल्पना असफल रही: अनिश्चितता सिद्धान्त के अनुसार नाभिक (आकार लगभग \\(10^{-14}\\) m) में सीमित इलेक्ट्रॉन की ऊर्जा वास्तव में उत्सर्जित \\(\\beta\\)-कणों की ऊर्जा से बहुत अधिक होनी चाहिए, तथा इससे नाभिकों के चक्रण और चुम्बकीय आघूर्ण गलत प्राप्त होते थे। प्रोटॉन-न्यूट्रॉन परिकल्पना इन कठिनाइयों को दूर करती है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A stamp crosses the Hindi 'परिकल्पना को'; completed from the sentence and the English 'hypothesis'.",
+      "solution": "After Chadwick discovered the neutron (1932), Heisenberg proposed the **proton-neutron hypothesis**: the nucleus of an atom is made up of protons and neutrons only (together called nucleons), and no electrons are present in the nucleus.\n\n1. A nucleus \\(^{A}_{Z}\\mathrm{X}\\) contains \\(Z\\) protons and \\(N = A - Z\\) neutrons. For example \\(^{16}_{8}\\mathrm{O}\\) has 8 protons and 8 neutrons.\n2. **Charge:** only the protons are charged, so the charge of the nucleus is \\(+Ze\\), equal to the charge of the \\(Z\\) electrons outside, making the atom neutral.\n3. **Mass:** proton and neutron each have mass of about 1 u, so the mass of the nucleus is nearly \\(A\\) u; this explains why atomic masses are nearly whole numbers.\n4. **Isotopes** are explained: they have the same number of protons but different numbers of neutrons.\n5. The nucleons are held together by the strong, short-range, charge-independent **nuclear force**, which overcomes the electrostatic repulsion between protons.\n\nThe earlier proton-electron hypothesis failed: by the uncertainty principle an electron confined to a nucleus (size about \\(10^{-14}\\) m) would need an energy far greater than that of \\(\\beta\\)-particles actually emitted, and it gave wrong spins and magnetic moments of nuclei. The proton-neutron hypothesis removes these difficulties.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q4d",
+      "questionNumber": "4 (d)",
+      "section": "D",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+      "difficulty": "MODERATE",
+      "stem": "Explain the motion of charged particle in uniform magnetic field. Prove that the radius of path of charged particle moving perpendicular to uniform magnetic field is proportional to the momentum of particle.",
+      "hi": {
+        "stem": "एकसमान चुम्बकीय क्षेत्र में आवेशित कण की गति की व्याख्या कीजिये। सिद्ध कीजिए कि एकसमान चुम्बकीय क्षेत्र के लम्बवत् गति करते आवेशित कण के पथ की त्रिज्या कण के संवेग के अनुक्रमानुपाती होती है।",
+        "solution": "एकसमान चुम्बकीय क्षेत्र \\(\\vec{B}\\) में वेग \\(\\vec{v}\\) से गतिमान आवेश \\(q\\) पर बल \\(\\vec{F} = q(\\vec{v} \\times \\vec{B})\\) लगता है, जिसका परिमाण \\(F = qvB\\sin\\theta\\) है। यह बल सदैव वेग के लम्बवत् होता है, अतः कोई कार्य नहीं करता: कण की चाल तथा गतिज ऊर्जा नियत रहती हैं, केवल गति की दिशा बदलती है।\n\n- **\\(\\vec{v}\\), \\(\\vec{B}\\) के समान्तर (\\(\\theta = 0^\\circ\\)):** \\(F = 0\\); कण बिना विचलित हुए सरल रेखा में चलता है।\n- **\\(\\vec{v}\\), \\(\\vec{B}\\) के लम्बवत् (\\(\\theta = 90^\\circ\\)):** \\(F = qvB\\) अभिकेन्द्र बल का कार्य करता है, अतः कण वृत्तीय पथ पर चलता है।\n- **\\(\\vec{v}\\) कोण \\(\\theta\\) पर:** \\(\\vec{B}\\) के अनुदिश घटक \\(v\\cos\\theta\\) अपरिवर्तित रहता है तथा \\(v\\sin\\theta\\) वृत्तीय गति देता है, अतः पथ सर्पिलाकार (हेलिक्स) होता है जिसकी त्रिज्या \\(\\frac{mv\\sin\\theta}{qB}\\) तथा चूड़ी अन्तराल \\(v\\cos\\theta \\times \\frac{2\\pi m}{qB}\\) है।\n\n**\\(r \\propto p\\) की उपपत्ति:** क्षेत्र के लम्बवत् गति में चुम्बकीय बल अभिकेन्द्र बल प्रदान करता है:\n\\(qvB = \\frac{mv^2}{r}\\)\n\\(r = \\frac{mv}{qB} = \\frac{p}{qB}\\)\nजहाँ \\(p = mv\\) संवेग है। दिए गए आवेश \\(q\\) तथा क्षेत्र \\(B\\) के लिए \\(\\frac{1}{qB}\\) नियत है, अतः \\(r \\propto p\\)। अतः वृत्तीय पथ की त्रिज्या कण के संवेग के अनुक्रमानुपाती होती है।\n\n(आवर्तकाल \\(T = \\frac{2\\pi r}{v} = \\frac{2\\pi m}{qB}\\) चाल पर निर्भर नहीं करता।)\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A stamp crosses the Hindi 'की' after कण and the English 'particle' (twice); completed from the sentence.",
+      "solution": "A charge \\(q\\) moving with velocity \\(\\vec{v}\\) in a uniform magnetic field \\(\\vec{B}\\) experiences the force \\(\\vec{F} = q(\\vec{v} \\times \\vec{B})\\), of magnitude \\(F = qvB\\sin\\theta\\). This force is always perpendicular to the velocity, so it does no work: the speed and kinetic energy stay constant and only the direction of motion changes.\n\n- **\\(\\vec{v}\\) parallel to \\(\\vec{B}\\) (\\(\\theta = 0^\\circ\\)):** \\(F = 0\\); the particle moves in a straight line undeflected.\n- **\\(\\vec{v}\\) perpendicular to \\(\\vec{B}\\) (\\(\\theta = 90^\\circ\\)):** \\(F = qvB\\) acts as a centripetal force, so the particle moves in a circle.\n- **\\(\\vec{v}\\) at an angle \\(\\theta\\):** the component \\(v\\cos\\theta\\) along \\(\\vec{B}\\) is unchanged while \\(v\\sin\\theta\\) gives circular motion, so the path is a helix of radius \\(\\frac{mv\\sin\\theta}{qB}\\) and pitch \\(v\\cos\\theta \\times \\frac{2\\pi m}{qB}\\).\n\n**Proof that \\(r \\propto p\\):** For motion perpendicular to the field, the magnetic force provides the centripetal force:\n\\(qvB = \\frac{mv^2}{r}\\)\n\\(r = \\frac{mv}{qB} = \\frac{p}{qB}\\)\nwhere \\(p = mv\\) is the momentum. For a given charge \\(q\\) and field \\(B\\), \\(\\frac{1}{qB}\\) is constant, so \\(r \\propto p\\). Hence the radius of the circular path is proportional to the momentum of the particle.\n\n(The time period \\(T = \\frac{2\\pi r}{v} = \\frac{2\\pi m}{qB}\\) does not depend on the speed.)\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q4e",
+      "questionNumber": "4 (e)",
+      "section": "D",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "difficulty": "MODERATE",
+      "stem": "Resistance of a wire is 16 ohm. By melting it, its length is stretched to half of its original length. What will be the resistance of the new wire ?",
+      "hi": {
+        "stem": "एक तार का प्रतिरोध 16 ओम है। इसे पिघलाकर पहले से आधी लम्बाई का तार खींचा जाता है। नये तार का प्रतिरोध क्या होगा ?",
+        "solution": "पिघलाकर पुनः खींचने पर तार का आयतन नियत रहता है: \\(A_1 l_1 = A_2 l_2\\)।\nनयी लम्बाई \\(l_2 = \\frac{l_1}{2}\\) है, अतः नया अनुप्रस्थ क्षेत्रफल \\(A_2 = \\frac{A_1 l_1}{l_2} = 2A_1\\)।\nप्रतिरोध \\(R = \\frac{\\rho l}{A}\\), अतः\n\\(\\frac{R_2}{R_1} = \\frac{l_2}{l_1} \\times \\frac{A_1}{A_2} = \\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\)\n\\(R_2 = \\frac{16}{4} = 4\\ \\Omega\\)\nनये तार का प्रतिरोध 4 ओम होगा।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A stamp crosses the Hindi 'पिघलाकर' and the English 'be the'; completed from the sentence and the other language.",
+      "solution": "On melting and redrawing, the volume of the wire stays the same: \\(A_1 l_1 = A_2 l_2\\).\nThe new length is \\(l_2 = \\frac{l_1}{2}\\), so the new area is \\(A_2 = \\frac{A_1 l_1}{l_2} = 2A_1\\).\nResistance \\(R = \\frac{\\rho l}{A}\\), so\n\\(\\frac{R_2}{R_1} = \\frac{l_2}{l_1} \\times \\frac{A_1}{A_2} = \\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\)\n\\(R_2 = \\frac{16}{4} = 4\\ \\Omega\\)\nThe resistance of the new wire is 4 ohm.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q5a",
+      "questionNumber": "5 (a)",
+      "section": "D",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "difficulty": "MODERATE",
+      "stem": "Write Ohm's law. Deduce Ohm's law on the basis of drift velocity of electron.",
+      "hi": {
+        "stem": "ओम का नियम लिखिये। इलेक्ट्रॉन के अपवाह वेग के आधार पर ओम का नियम निगमित कीजिये।",
+        "solution": "**ओम का नियम:** यदि किसी चालक का ताप तथा अन्य भौतिक अवस्थाएँ अपरिवर्तित रहें, तो उसमें प्रवाहित धारा \\(I\\) उसके सिरों के बीच विभवान्तर \\(V\\) के अनुक्रमानुपाती होती है: \\(V \\propto I\\), अथवा \\(V = IR\\), जहाँ \\(R\\) चालक का प्रतिरोध है।\n\n**अपवाह वेग के आधार पर निगमन:** माना \\(l\\) लम्बाई तथा \\(A\\) अनुप्रस्थ क्षेत्रफल के चालक में प्रति एकांक आयतन \\(n\\) मुक्त इलेक्ट्रॉन हैं तथा इसके सिरों पर विभवान्तर \\(V\\) है।\n1. चालक में विद्युत क्षेत्र \\(E = \\frac{V}{l}\\) है, तथा प्रत्येक इलेक्ट्रॉन का त्वरण (परिमाण में) \\(a = \\frac{eE}{m}\\) है (\\(\\vec{E}\\) के विपरीत)।\n2. यदि टक्करों के बीच औसत विश्रांति काल \\(\\tau\\) हो, तो अपवाह वेग\n\\(v_d = a\\tau = \\frac{eE\\tau}{m} = \\frac{eV\\tau}{ml}\\)\n3. चालक में धारा \\(I = neAv_d\\) है। मान रखने पर,\n\\(I = neA \\times \\frac{eV\\tau}{ml} = \\frac{ne^2 A\\tau}{ml} V\\)\n4. अतः \\(\\frac{V}{I} = \\frac{ml}{ne^2 \\tau A}\\)।\nदिए गए चालक के लिए दिए गए ताप पर \\(m\\), \\(l\\), \\(n\\), \\(e\\), \\(\\tau\\) तथा \\(A\\) नियत हैं, अतः \\(\\frac{V}{I}\\) एक नियतांक \\(R\\) है:\n\\(V = IR\\), जहाँ \\(R = \\frac{ml}{ne^2 \\tau A} = \\rho \\frac{l}{A}\\) तथा \\(\\rho = \\frac{m}{ne^2 \\tau}\\) विशिष्ट प्रतिरोध है।\nयही ओम का नियम है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A stamp crosses the Hindi 'अपवाह वेग'; completed from the sentence and the English 'drift velocity'.",
+      "solution": "**Ohm's law:** If the temperature and other physical conditions of a conductor remain unchanged, the current \\(I\\) flowing through it is directly proportional to the potential difference \\(V\\) across its ends: \\(V \\propto I\\), or \\(V = IR\\), where \\(R\\) is the resistance of the conductor.\n\n**Deduction from drift velocity:** Consider a conductor of length \\(l\\) and area of cross-section \\(A\\), with \\(n\\) free electrons per unit volume, and a potential difference \\(V\\) across it.\n1. The electric field in it is \\(E = \\frac{V}{l}\\), and each electron has an acceleration of magnitude \\(a = \\frac{eE}{m}\\) (opposite to \\(\\vec{E}\\)).\n2. If \\(\\tau\\) is the average relaxation time between collisions, the drift velocity is\n\\(v_d = a\\tau = \\frac{eE\\tau}{m} = \\frac{eV\\tau}{ml}\\)\n3. The current through the conductor is \\(I = neAv_d\\). Substituting,\n\\(I = neA \\times \\frac{eV\\tau}{ml} = \\frac{ne^2 A\\tau}{ml} V\\)\n4. So \\(\\frac{V}{I} = \\frac{ml}{ne^2 \\tau A}\\).\nFor a given conductor at a given temperature, \\(m\\), \\(l\\), \\(n\\), \\(e\\), \\(\\tau\\) and \\(A\\) are constant, so \\(\\frac{V}{I}\\) is a constant \\(R\\):\n\\(V = IR\\), with \\(R = \\frac{ml}{ne^2 \\tau A} = \\rho \\frac{l}{A}\\), where \\(\\rho = \\frac{m}{ne^2 \\tau}\\) is the resistivity.\nThis is Ohm's law.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q5b",
+      "questionNumber": "5 (b)",
+      "section": "D",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "difficulty": "MODERATE",
+      "stem": "Equiconcave lens of crown glass has to be formed. How much the radii of surfaces of lens be kept so that the power of lens be \\(-2.5\\) D. The refractive index of crown glass is 1.65.",
+      "hi": {
+        "stem": "क्राउन कांच के समावतल लेंस बनाना है। लेन्स की पृष्ठों की त्रिज्यायें कितनी रखी जायें कि लेन्स की क्षमता \\(-2.5\\) D हो ? क्राउन कांच का अपवर्तनांक 1.65 है।",
+        "solution": "समावतल लेंस के दोनों पृष्ठों की वक्रता त्रिज्याएँ परिमाण में बराबर होती हैं: चिह्न परिपाटी से \\(R_1 = -R\\) तथा \\(R_2 = +R\\)।\nलेंस निर्माता सूत्र से, क्षमता \\(P = \\frac{1}{f} = (n - 1)\\left(\\frac{1}{R_1} - \\frac{1}{R_2}\\right) = (n - 1)\\left(-\\frac{1}{R} - \\frac{1}{R}\\right) = -\\frac{2(n - 1)}{R}\\) (\\(R\\) मीटर में)।\n\\(P = -2.5\\ \\text{D}\\) तथा \\(n = 1.65\\) रखने पर:\n\\(-2.5 = -\\frac{2 \\times 0.65}{R}\\)\n\\(R = \\frac{1.3}{2.5} = 0.52\\ \\text{m} = 52\\ \\text{cm}\\)\nलेंस के प्रत्येक पृष्ठ की वक्रता त्रिज्या 52 सेमी रखनी चाहिए।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A stamp crosses the English 'that' and the Hindi 'अपवर्तनांक'; each completed from the sentence and the other language.",
+      "solution": "For an equiconcave lens the two radii are equal in size: by the sign convention \\(R_1 = -R\\) and \\(R_2 = +R\\).\nBy the lens maker's formula, power \\(P = \\frac{1}{f} = (n - 1)\\left(\\frac{1}{R_1} - \\frac{1}{R_2}\\right) = (n - 1)\\left(-\\frac{1}{R} - \\frac{1}{R}\\right) = -\\frac{2(n - 1)}{R}\\) (\\(R\\) in metres).\nWith \\(P = -2.5\\ \\text{D}\\) and \\(n = 1.65\\):\n\\(-2.5 = -\\frac{2 \\times 0.65}{R}\\)\n\\(R = \\frac{1.3}{2.5} = 0.52\\ \\text{m} = 52\\ \\text{cm}\\)\nEach surface of the lens should have a radius of curvature of 52 cm.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q5c",
+      "questionNumber": "5 (c)",
+      "section": "D",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Lenz's Law and Conservation of Energy",
+      "difficulty": "MODERATE",
+      "stem": "What do you mean by eddy current ? How does it affect the energy losses ? Write the uses of eddy current.",
+      "hi": {
+        "stem": "भंवर धारा से आपका क्या अभिप्राय है ? इससे ऊर्जा का क्षय कैसे प्रभावित होता है ? भंवर धाराओं के उपयोग लिखिये।",
+        "solution": "**भंवर धाराएँ:** जब धातु के किसी ठोस टुकड़े (प्लेट या क्रोड) को परिवर्ती चुम्बकीय फ्लक्स में रखा जाता है, या वह चुम्बकीय क्षेत्र में गति करता है, तो धातु के सम्पूर्ण आयतन में बन्द पथों में प्रेरित धाराएँ उत्पन्न हो जाती हैं। ये जल में भँवर की भाँति चक्कर लगाती हैं, अतः इन्हें भंवर धाराएँ (फूको धाराएँ) कहते हैं। लेंज के नियम के अनुसार इनकी दिशा ऐसी होती है कि ये अपने कारण, फ्लक्स परिवर्तन, का विरोध करती हैं।\n\n**ऊर्जा क्षय पर प्रभाव:** भंवर धाराएँ धातु के प्रतिरोध में बहकर ऊष्मा (\\(I^2R\\)) उत्पन्न करती हैं, अतः ट्रांसफॉर्मर, मोटर तथा जनित्र की लोहे की क्रोड में विद्युत ऊर्जा का क्षय होता है, तथा ये गति का विरोध भी करती हैं (अवमंदन)। इस क्षय को कम करने के लिए क्रोड को एक-दूसरे से विद्युतरोधित पतली पटलित पट्टियों से बनाया जाता है (या धातु की प्लेट में खाँचे काटे जाते हैं)। इससे भंवर धाराओं के पथ का प्रतिरोध बढ़ जाता है और भंवर धाराएँ तथा ऊर्जा क्षय कम हो जाते हैं।\n\n**भंवर धाराओं के उपयोग:**\n1. विद्युत रेलगाड़ियों में **चुम्बकीय ब्रेक**: पटरियों के पास प्रबल विद्युत चुम्बक भंवर धाराएँ प्रेरित करते हैं जो गति का विरोध करती हैं।\n2. धारामापी में **विद्युत चुम्बकीय अवमंदन**: धात्विक क्रोड में भंवर धाराएँ कुण्डली को शीघ्र विराम में ले आती हैं (रुद्धदोल धारामापी)।\n3. **प्रेरण भट्टी**: उच्च आवृत्ति की प्रत्यावर्ती धारा से प्रेरित प्रबल भंवर धाराएँ धातुओं को पिघला देती हैं।\n4. **विद्युत शक्ति मीटर**: मीटर की चमकीली धात्विक चकती भंवर धाराओं के कारण घूमती है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "The catalog has no eddy-current subtopic; Lenz's Law is the closest in Electromagnetic Induction. A stamp crosses the Hindi 'इससे', completed from the sentence and the English.",
+      "solution": "**Eddy currents:** When a bulk piece of metal (a plate or a core) is placed in a changing magnetic flux, or moves in a magnetic field, induced currents are set up in closed loops throughout the body of the metal. They circulate like whirlpools in water, so they are called eddy currents (Foucault currents). By Lenz's law their direction is such that they oppose the change of flux that produces them.\n\n**Effect on energy losses:** Eddy currents flow through the resistance of the metal and produce heat (\\(I^2R\\)), so electrical energy is wasted in the iron cores of transformers, motors and generators, and they also oppose motion (damping). To reduce this loss, the core is made of thin laminated sheets insulated from one another (or slots are cut in a metal plate). This increases the resistance of the eddy-current paths, so the eddy currents and the energy loss become small.\n\n**Uses of eddy currents:**\n1. **Magnetic braking** in electric trains: strong electromagnets near the rails induce eddy currents that oppose the motion.\n2. **Electromagnetic damping** in galvanometers: eddy currents in the metallic core bring the coil quickly to rest (dead-beat galvanometer).\n3. **Induction furnace:** a high-frequency alternating current induces large eddy currents that melt metals.\n4. **Electric power meters:** the shiny metal disc of the meter rotates because of eddy currents.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q5d",
+      "questionNumber": "5 (d)",
+      "section": "D",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Line Spectra of the Hydrogen Atom",
+      "difficulty": "MODERATE",
+      "stem": "The wavelength of first line of Balmer series of hydrogen atom is 6563 Å. Determine the wavelength of second line.",
+      "hi": {
+        "stem": "हाइड्रोजन परमाणु को बामर श्रेणी की प्रथम रेखा की तरंगदैर्ध्य 6563 Å है। द्वितीय रेखा की तरंगदैर्ध्य ज्ञात कीजिये।",
+        "solution": "बामर श्रेणी के लिए \\(\\frac{1}{\\lambda} = R\\left(\\frac{1}{2^2} - \\frac{1}{n^2}\\right)\\), \\(n = 3, 4, 5, \\ldots\\)\nप्रथम रेखा (\\(n = 3\\)): \\(\\frac{1}{\\lambda_1} = R\\left(\\frac{1}{4} - \\frac{1}{9}\\right) = \\frac{5R}{36}\\)\nद्वितीय रेखा (\\(n = 4\\)): \\(\\frac{1}{\\lambda_2} = R\\left(\\frac{1}{4} - \\frac{1}{16}\\right) = \\frac{3R}{16}\\)\nभाग देने पर, \\(\\frac{\\lambda_2}{\\lambda_1} = \\frac{5R/36}{3R/16} = \\frac{5 \\times 16}{36 \\times 3} = \\frac{20}{27}\\)\n\\(\\lambda_2 = 6563 \\times \\frac{20}{27} \\approx 4861\\ \\text{Å}\\)\nबामर श्रेणी की द्वितीय रेखा की तरंगदैर्ध्य लगभग 4861 Å है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "The Hindi prints 'परमाणु को' where 'की' is meant; kept as printed. A stamp crosses the English 'of' and 'second'; completed from the sentence and the Hindi द्वितीय.",
+      "solution": "For the Balmer series \\(\\frac{1}{\\lambda} = R\\left(\\frac{1}{2^2} - \\frac{1}{n^2}\\right)\\), \\(n = 3, 4, 5, \\ldots\\)\nFirst line (\\(n = 3\\)): \\(\\frac{1}{\\lambda_1} = R\\left(\\frac{1}{4} - \\frac{1}{9}\\right) = \\frac{5R}{36}\\)\nSecond line (\\(n = 4\\)): \\(\\frac{1}{\\lambda_2} = R\\left(\\frac{1}{4} - \\frac{1}{16}\\right) = \\frac{3R}{16}\\)\nDividing, \\(\\frac{\\lambda_2}{\\lambda_1} = \\frac{5R/36}{3R/16} = \\frac{5 \\times 16}{36 \\times 3} = \\frac{20}{27}\\)\n\\(\\lambda_2 = 6563 \\times \\frac{20}{27} \\approx 4861\\ \\text{Å}\\)\nThe wavelength of the second line of the Balmer series is about 4861 Å.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q5dOR",
+      "questionNumber": "5 (d) (OR)",
+      "section": "D",
+      "marks": 3,
+      "format": "subjective",
+      "alternativeTo": "Q5d",
+      "chapter": "Wave Optics",
+      "subtopic": "Polarisation",
+      "difficulty": "MODERATE",
+      "stem": "What do you mean by polarization of light ? How are unpolarized and plane polarized lights represented ? Which nature of light waves is proved by polarization ?",
+      "hi": {
+        "stem": "प्रकाश के ध्रुवण से क्या तात्पर्य है ? अध्रुवित और समतल ध्रुवित प्रकाश को कैसे प्रदर्शित करते हैं ? ध्रुवण प्रकाश तरंगों की किस प्रकृति की पुष्टि करता है ?",
+        "solution": "**प्रकाश का ध्रुवण:** साधारण (अध्रुवित) प्रकाश में विद्युत सदिश संचरण की दिशा के लम्बवत् तल में सभी दिशाओं में कम्पन करता है। जब ये कम्पन केवल एक दिशा (एक तल) में सीमित हो जाते हैं, तो प्रकाश को समतल ध्रुवित कहते हैं, तथा इस घटना को प्रकाश का ध्रुवण कहते हैं। इसे उदाहरणार्थ प्रकाश को पोलेरॉइड से गुजारकर प्राप्त किया जा सकता है।\n\n**प्रदर्शन:**\n- **अध्रुवित प्रकाश:** किरण की दिशा में सामने से देखने पर, एक बिन्दु के चारों ओर सभी दिशाओं में द्विशीर्षी तीरों (तारे के आकार) द्वारा। किरण के अनुदिश बनाने पर, बारी-बारी से रखे बिन्दुओं तथा द्विशीर्षी तीरों द्वारा, जो कागज के तल के लम्बवत् तथा कागज के तल में दोनों कम्पन दर्शाते हैं।\n- **समतल ध्रुवित प्रकाश:** किरण के अनुदिश केवल द्विशीर्षी तीरों द्वारा (कागज के तल में कम्पन) या केवल बिन्दुओं द्वारा (कागज के तल के लम्बवत् कम्पन); सामने से देखने पर एक ही द्विशीर्षी तीर द्वारा।\n\n**प्रकृति की पुष्टि:** केवल अनुप्रस्थ तरंगें ही ध्रुवित हो सकती हैं, क्योंकि अनुदैर्ध्य तरंगों में कम्पन संचरण की दिशा में ही होते हैं। अतः ध्रुवण यह सिद्ध करता है कि प्रकाश तरंगें **अनुप्रस्थ** होती हैं।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A stamp crosses the '?' after the English 'represented'; read from the Hindi.",
+      "solution": "**Polarisation of light:** In ordinary (unpolarised) light the electric vector vibrates in all directions in the plane perpendicular to the direction of propagation. When the vibrations are restricted to a single direction (one plane), the light is said to be plane polarised, and the phenomenon is called polarisation of light. It can be produced, for example, by passing light through a polaroid.\n\n**Representation:**\n- **Unpolarised light:** viewed along the ray (head-on), by double-headed arrows in all directions about a point (a star shape). Drawn along the ray, by dots and double-headed arrows placed alternately, showing vibrations both perpendicular to and in the plane of the paper.\n- **Plane polarised light:** drawn along the ray, by double-headed arrows only (vibrations in the plane of the paper) or by dots only (vibrations perpendicular to the plane of the paper); viewed head-on, by a single double-headed arrow.\n\n**Nature proved:** Only transverse waves can be polarised, since longitudinal waves vibrate along the direction of travel. So polarisation proves that light waves are **transverse**.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q5e",
+      "questionNumber": "5 (e)",
+      "section": "D",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Capacitors, Capacitance and their Combinations",
+      "difficulty": "EASY",
+      "stem": "Deduce the formula of equivalent capacity of three condensers connected in parallel.",
+      "hi": {
+        "stem": "समान्तर क्रम में सम्बद्ध तीन संधारित्रों की तुल्य धारिता का सूत्र निगमित कीजिये।",
+        "solution": "माना \\(C_1\\), \\(C_2\\) तथा \\(C_3\\) धारिता के तीन संधारित्र विभवान्तर \\(V\\) के स्रोत से समान्तर क्रम में जुड़े हैं। समान्तर क्रम में प्रत्येक संधारित्र की एक प्लेट एक सिरे से तथा दूसरी प्लेट दूसरे सिरे से जुड़ी होती है, अतः प्रत्येक संधारित्र पर विभवान्तर समान, \\(V\\), होता है।\n\nउन पर आवेश हैं\n\\(q_1 = C_1 V\\), \\(q_2 = C_2 V\\), \\(q_3 = C_3 V\\)\nस्रोत द्वारा दिया गया कुल आवेश\n\\(q = q_1 + q_2 + q_3 = (C_1 + C_2 + C_3)V\\)\nयदि तुल्य धारिता \\(C_p\\) हो, तो \\(q = C_p V\\)। तुलना करने पर,\n\\(C_p V = (C_1 + C_2 + C_3)V\\)\n\\(C_p = C_1 + C_2 + C_3\\)\nअतः समान्तर क्रम में जुड़े संधारित्रों की तुल्य धारिता उनकी अलग-अलग धारिताओं के योग के बराबर होती है।\n\nचित्र: तीन संधारित्र \\(C_1\\), \\(C_2\\), \\(C_3\\) एक के नीचे एक, दो उभयनिष्ठ तारों के बीच, जो विभवान्तर \\(V\\) की बैटरी से जुड़े हैं; अंकन \\(C_1\\), \\(C_2\\), \\(C_3\\), \\(+q_1\\), \\(-q_1\\) (इसी प्रकार अन्य), \\(V\\)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A stamp crosses the Hindi 'की तुल्य'; completed from the sentence and the English.",
+      "solution": "Let three capacitors of capacitances \\(C_1\\), \\(C_2\\) and \\(C_3\\) be connected in parallel across a source of potential difference \\(V\\). In parallel, one plate of each capacitor is joined to one terminal and the other plate to the other terminal, so the potential difference across each capacitor is the same, \\(V\\).\n\nThe charges on them are\n\\(q_1 = C_1 V\\), \\(q_2 = C_2 V\\), \\(q_3 = C_3 V\\)\nThe total charge supplied by the source is\n\\(q = q_1 + q_2 + q_3 = (C_1 + C_2 + C_3)V\\)\nIf \\(C_p\\) is the equivalent capacitance, then \\(q = C_p V\\). Comparing,\n\\(C_p V = (C_1 + C_2 + C_3)V\\)\n\\(C_p = C_1 + C_2 + C_3\\)\nSo the equivalent capacitance of capacitors in parallel is the sum of their individual capacitances.\n\nDiagram: three capacitors \\(C_1\\), \\(C_2\\), \\(C_3\\) drawn one above the other between two common wires joined to the battery of potential difference \\(V\\); labels \\(C_1\\), \\(C_2\\), \\(C_3\\), \\(+q_1\\), \\(-q_1\\) (and so on), \\(V\\).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q6",
+      "questionNumber": "6",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Ampere's Circuital Law and the Solenoid",
+      "difficulty": "MODERATE",
+      "stem": "Obtain the formula for the magnetic field inside a current carrying solenoid with the help of Ampere's circuital law.",
+      "hi": {
+        "stem": "एम्पीयर के परिपथ नियम की सहायता से धारावाही परिनालिका के भीतर चुम्बकीय क्षेत्र का सूत्र प्राप्त कीजिये।",
+        "solution": "**एम्पीयर का परिपथीय नियम:** किसी बन्द पथ के परितः चुम्बकीय क्षेत्र \\(\\vec{B}\\) का रेखीय समाकलन, उस पथ द्वारा परिबद्ध कुल धारा का \\(\\mu_0\\) गुना होता है: \\(\\oint \\vec{B} \\cdot d\\vec{l} = \\mu_0 I_{enc}\\)।\n\n**परिनालिका:** माना एक लम्बी परिनालिका में प्रति एकांक लम्बाई \\(n\\) फेरे हैं तथा उसमें धारा \\(I\\) प्रवाहित है। लम्बी परिनालिका के भीतर क्षेत्र एकसमान तथा अक्ष के समान्तर होता है, और बाहर क्षेत्र व्यावहारिक रूप से शून्य होता है।\n\nचित्र: परिनालिका का अनुदैर्ध्य काट, जिसमें फेरे (एक ओर बाहर आती धारा के लिए बिन्दु, दूसरी ओर भीतर जाती धारा के लिए क्रॉस), भीतर अक्ष के समान्तर क्षेत्र रेखाएँ, तथा एक आयताकार एम्पीरियन पाश \\(abcd\\): भुजा \\(ab\\) (लम्बाई \\(h\\)) परिनालिका के भीतर अक्ष के समान्तर, भुजाएँ \\(bc\\) तथा \\(da\\) अक्ष के लम्बवत्, तथा भुजा \\(cd\\) बाहर। अंकन: \\(a\\), \\(b\\), \\(c\\), \\(d\\), \\(h\\), \\(\\vec{B}\\), \\(I\\)।\n\n**पाश के परितः रेखीय समाकलन:**\n\\(\\oint \\vec{B} \\cdot d\\vec{l} = \\int_a^b \\vec{B} \\cdot d\\vec{l} + \\int_b^c \\vec{B} \\cdot d\\vec{l} + \\int_c^d \\vec{B} \\cdot d\\vec{l} + \\int_d^a \\vec{B} \\cdot d\\vec{l}\\)\n- \\(ab\\) के अनुदिश: \\(\\vec{B}\\), \\(d\\vec{l}\\) के समान्तर है, अतः \\(\\int_a^b B\\,dl = Bh\\)।\n- \\(bc\\) तथा \\(da\\) के अनुदिश: भीतर \\(\\vec{B}\\), \\(d\\vec{l}\\) के लम्बवत् है तथा बाहर \\(B = 0\\), अतः ये समाकलन शून्य हैं।\n- \\(cd\\) के अनुदिश: परिनालिका के बाहर \\(B = 0\\), अतः यह समाकलन शून्य है।\nअतः \\(\\oint \\vec{B} \\cdot d\\vec{l} = Bh\\)।\n\n**परिबद्ध धारा:** लम्बाई \\(h\\) में फेरों की संख्या \\(nh\\) है, प्रत्येक में धारा \\(I\\), अतः \\(I_{enc} = nhI\\)।\n\n**एम्पीयर का नियम लगाने पर:**\n\\(Bh = \\mu_0 (nhI)\\)\n\\(B = \\mu_0 n I\\)\n\nयह लम्बी धारावाही परिनालिका के भीतर चुम्बकीय क्षेत्र है, जिसकी दिशा अक्ष के अनुदिश है (दक्षिण-हस्त नियम से)। यह एकसमान है तथा भीतर स्थिति और परिनालिका के व्यास पर निर्भर नहीं करता। (परिनालिका के किसी सिरे पर क्षेत्र इसका लगभग आधा, \\(\\frac{\\mu_0 n I}{2}\\), होता है।)\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "**Ampere's circuital law:** The line integral of the magnetic field \\(\\vec{B}\\) around any closed path equals \\(\\mu_0\\) times the total current enclosed by the path: \\(\\oint \\vec{B} \\cdot d\\vec{l} = \\mu_0 I_{enc}\\).\n\n**Solenoid:** Consider a long solenoid with \\(n\\) turns per unit length carrying a current \\(I\\). For a long solenoid the field inside is uniform and parallel to its axis, and the field outside is practically zero.\n\nDiagram: a longitudinal section of the solenoid showing the turns (dots for current coming out on one side, crosses for current going in on the other), field lines parallel to the axis inside, and a rectangular Amperian loop \\(abcd\\): side \\(ab\\) of length \\(h\\) inside the solenoid parallel to the axis, sides \\(bc\\) and \\(da\\) perpendicular to the axis, and side \\(cd\\) outside. Labels: \\(a\\), \\(b\\), \\(c\\), \\(d\\), \\(h\\), \\(\\vec{B}\\), \\(I\\).\n\n**Line integral round the loop:**\n\\(\\oint \\vec{B} \\cdot d\\vec{l} = \\int_a^b \\vec{B} \\cdot d\\vec{l} + \\int_b^c \\vec{B} \\cdot d\\vec{l} + \\int_c^d \\vec{B} \\cdot d\\vec{l} + \\int_d^a \\vec{B} \\cdot d\\vec{l}\\)\n- Along \\(ab\\): \\(\\vec{B}\\) is parallel to \\(d\\vec{l}\\), so \\(\\int_a^b B\\,dl = Bh\\).\n- Along \\(bc\\) and \\(da\\): inside, \\(\\vec{B}\\) is perpendicular to \\(d\\vec{l}\\) and outside \\(B = 0\\), so these integrals are zero.\n- Along \\(cd\\): outside the solenoid \\(B = 0\\), so this integral is zero.\nHence \\(\\oint \\vec{B} \\cdot d\\vec{l} = Bh\\).\n\n**Current enclosed:** the number of turns in length \\(h\\) is \\(nh\\), each carrying current \\(I\\), so \\(I_{enc} = nhI\\).\n\n**Applying Ampere's law:**\n\\(Bh = \\mu_0 (nhI)\\)\n\\(B = \\mu_0 n I\\)\n\nThis is the magnetic field inside a long current-carrying solenoid, directed along the axis (given by the right-hand rule). It is uniform, independent of the position inside and of the diameter of the solenoid. (At either end of the solenoid the field is about half of this, \\(\\frac{\\mu_0 n I}{2}\\).)\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q6OR",
+      "questionNumber": "6 (OR)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "alternativeTo": "Q6",
+      "chapter": "Magnetism and Matter",
+      "subtopic": "The Bar Magnet",
+      "difficulty": "MODERATE",
+      "stem": "Obtain the formula for moment of couple acting on magnetic dipole in magnetic field. Define magnetic dipole moment with the help of this.",
+      "hi": {
+        "stem": "चुम्बकीय क्षेत्र में स्थित चुम्बकीय द्विध्रुव पर लगने वाले बल युग्म के आघूर्ण के लिये सूत्र प्राप्त कीजिये। इसकी सहायता से चुम्बकीय द्विध्रुव आघूर्ण की परिभाषा दीजिये।",
+        "solution": "माना ध्रुव प्रबलता \\(m\\) तथा चुम्बकीय लम्बाई \\(2l\\) का एक छड़ चुम्बक (चुम्बकीय द्विध्रुव) \\(NS\\) एकसमान चुम्बकीय क्षेत्र \\(\\vec{B}\\) में इस प्रकार रखा है कि उसका अक्ष क्षेत्र से कोण \\(\\theta\\) बनाता है।\n\nचित्र: समान्तर क्षेत्र रेखाओं \\(\\vec{B}\\) से कोण \\(\\theta\\) पर झुका चुम्बक \\(NS\\); उत्तरी ध्रुव पर \\(\\vec{B}\\) की दिशा में बल \\(mB\\), दक्षिणी ध्रुव पर \\(\\vec{B}\\) के विपरीत बल \\(mB\\); उत्तरी ध्रुव से दक्षिणी ध्रुव पर लगे बल की क्रिया रेखा पर लम्ब \\(NP\\)। अंकन: \\(N\\), \\(S\\), \\(\\theta\\), \\(\\vec{B}\\), \\(mB\\), \\(2l\\)।\n\n**बल:** उत्तरी ध्रुव पर \\(\\vec{B}\\) की दिशा में बल \\(mB\\) तथा दक्षिणी ध्रुव पर \\(\\vec{B}\\) के विपरीत बल \\(mB\\) लगता है। दोनों बल बराबर, विपरीत तथा भिन्न क्रिया रेखाओं पर हैं, अतः परिणामी बल शून्य है और ये एक बल युग्म बनाते हैं, जो चुम्बक को क्षेत्र की दिशा में लाने का प्रयास करता है।\n\n**बल युग्म का आघूर्ण:**\nआघूर्ण = एक बल \\(\\times\\) क्रिया रेखाओं के बीच लम्बवत् दूरी।\nलम्बवत् दूरी \\(NP = 2l\\sin\\theta\\) है। अतः\n\\(\\tau = mB \\times 2l\\sin\\theta = (m \\times 2l)B\\sin\\theta\\)\n\\(M = m \\times 2l\\) (चुम्बकीय द्विध्रुव आघूर्ण) लिखने पर:\n\\(\\tau = MB\\sin\\theta\\), तथा सदिश रूप में \\(\\vec{\\tau} = \\vec{M} \\times \\vec{B}\\)।\n(\\(N\\) फेरों तथा क्षेत्रफल \\(A\\) वाले धारा पाश के लिए यही परिणाम \\(M = NIA\\) के साथ मिलता है।)\n\\(\\theta = 90^\\circ\\) पर आघूर्ण अधिकतम, \\(\\tau = MB\\), तथा \\(\\theta = 0^\\circ\\) या \\(180^\\circ\\) पर शून्य होता है।\n\n**चुम्बकीय द्विध्रुव आघूर्ण की परिभाषा:** यदि \\(B = 1\\) तथा \\(\\theta = 90^\\circ\\) हो, तो \\(\\tau = M\\)। अतः किसी चुम्बक का चुम्बकीय द्विध्रुव आघूर्ण संख्यात्मक रूप से उस बल युग्म के आघूर्ण के बराबर है जो उस पर तब लगता है जब उसे एकांक प्रबलता के एकसमान चुम्बकीय क्षेत्र के लम्बवत् रखा जाता है। यह एक सदिश राशि है जिसकी दिशा चुम्बक के दक्षिणी ध्रुव से उत्तरी ध्रुव की ओर होती है। इसका SI मात्रक \\(\\text{A m}^2\\) (या \\(\\text{J T}^{-1}\\)) है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A stamp crosses the Hindi 'वाले'; completed from the sentence and the English.",
+      "solution": "Consider a bar magnet (magnetic dipole) \\(NS\\) of pole strength \\(m\\) and magnetic length \\(2l\\), placed in a uniform magnetic field \\(\\vec{B}\\) with its axis at an angle \\(\\theta\\) to the field.\n\nDiagram: the magnet \\(NS\\) inclined at angle \\(\\theta\\) to parallel field lines \\(\\vec{B}\\); force \\(mB\\) on the north pole along \\(\\vec{B}\\), force \\(mB\\) on the south pole opposite to \\(\\vec{B}\\); the perpendicular \\(NP\\) from the north pole to the line of action of the force on the south pole. Labels: \\(N\\), \\(S\\), \\(\\theta\\), \\(\\vec{B}\\), \\(mB\\), \\(2l\\).\n\n**Forces:** the north pole experiences a force \\(mB\\) along \\(\\vec{B}\\) and the south pole a force \\(mB\\) opposite to \\(\\vec{B}\\). The two forces are equal, opposite and act along different lines, so the net force is zero and they form a couple, which tends to align the magnet along the field.\n\n**Moment of the couple:**\nTorque = one force \\(\\times\\) perpendicular distance between the lines of action.\nThe perpendicular distance is \\(NP = 2l\\sin\\theta\\). So\n\\(\\tau = mB \\times 2l\\sin\\theta = (m \\times 2l)B\\sin\\theta\\)\nWriting \\(M = m \\times 2l\\) (the magnetic dipole moment):\n\\(\\tau = MB\\sin\\theta\\), and in vector form \\(\\vec{\\tau} = \\vec{M} \\times \\vec{B}\\).\n(For a current loop of \\(N\\) turns and area \\(A\\) the same result holds with \\(M = NIA\\).)\nThe torque is maximum, \\(\\tau = MB\\), when \\(\\theta = 90^\\circ\\), and zero when \\(\\theta = 0^\\circ\\) or \\(180^\\circ\\).\n\n**Definition of magnetic dipole moment:** If \\(B = 1\\) and \\(\\theta = 90^\\circ\\), then \\(\\tau = M\\). So the magnetic dipole moment of a magnet is numerically equal to the torque acting on it when it is placed perpendicular to a uniform magnetic field of unit strength. It is a vector directed from the south pole to the north pole of the magnet. Its SI unit is \\(\\text{A m}^2\\) (or \\(\\text{J T}^{-1}\\)).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q7",
+      "questionNumber": "7",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Application of Junction Diode as a Rectifier",
+      "difficulty": "MODERATE",
+      "stem": "How does the \\(p\\)-\\(n\\) junction diode is used as full wave rectifier. Explain its working process by making its simple circuit.",
+      "hi": {
+        "stem": "\\(p\\)-\\(n\\) सन्धि डायोड पूर्ण तरंग दिष्टकारी के रूप में कैसे प्रयुक्त किया जाता है ? सरल परिपथ बनाकर इसकी कार्यविधि समझाइये।",
+        "solution": "दिष्टकारी प्रत्यावर्ती धारा को दिष्ट धारा में बदलता है। \\(p\\)-\\(n\\) सन्धि डायोड केवल अग्र अभिनति में ही चालन करता है, अतः दो डायोडों को इस प्रकार लगाया जाता है कि प्रत्यावर्ती चक्र के दोनों अर्धचक्र उपयोग में आ जाएँ; यह पूर्ण तरंग दिष्टकारी है।\n\n**परिपथ (चित्र):** प्रत्यावर्ती निवेशी वोल्टता मध्य-निष्कासित (सेन्टर-टैप) ट्रांसफॉर्मर की प्राथमिक कुण्डली पर लगाई जाती है। द्वितीयक कुण्डली के दोनों सिरे \\(P\\) तथा \\(Q\\) दो डायोडों \\(D_1\\) तथा \\(D_2\\) के \\(p\\)-सिरों से जुड़े होते हैं। दोनों डायोडों के \\(n\\)-सिरे बिन्दु \\(X\\) पर जुड़े होते हैं। लोड प्रतिरोध \\(R_L\\), \\(X\\) तथा द्वितीयक के मध्य बिन्दु \\(T\\) के बीच जुड़ा होता है; निर्गत \\(R_L\\) के सिरों पर लिया जाता है। अंकन: प्रत्यावर्ती निवेश, प्राथमिक, द्वितीयक, मध्य बिन्दु \\(T\\), \\(P\\), \\(Q\\), \\(D_1\\), \\(D_2\\), \\(R_L\\), निर्गत।\n\n**कार्यविधि:**\n1. **प्रथम अर्धचक्र:** माना मध्य बिन्दु के सापेक्ष सिरा \\(P\\) धनात्मक तथा सिरा \\(Q\\) ऋणात्मक है। डायोड \\(D_1\\) अग्र अभिनत होकर चालन करता है; \\(D_2\\) पश्च अभिनत होने के कारण चालन नहीं करता। धारा \\(D_1\\) से होकर \\(R_L\\) में \\(X\\) से \\(T\\) की ओर बहती है।\n2. **द्वितीय अर्धचक्र:** अब \\(P\\) ऋणात्मक तथा \\(Q\\) धनात्मक है। डायोड \\(D_2\\) अग्र अभिनत होकर चालन करता है जबकि \\(D_1\\) पश्च अभिनत है। धारा \\(D_2\\) से होकर पुनः \\(R_L\\) में \\(X\\) से \\(T\\) की ओर बहती है।\n\nअतः दोनों अर्धचक्रों में लोड में धारा एक ही दिशा में बहती है और पूरे चक्र में निर्गत वोल्टता प्राप्त होती है। निर्गत एकदिशीय परन्तु स्पंदमान (परिवर्ती) दिष्ट वोल्टता होती है; इसकी आवृत्ति निवेशी आवृत्ति की दुगुनी होती है। फिल्टर (\\(R_L\\) के समान्तर संधारित्र) द्वारा इसे सपाट करके स्थिर दिष्ट धारा प्राप्त की जाती है।\n\n**तरंग रूप (चित्र):** समय के साथ निवेशी प्रत्यावर्ती वोल्टता की ज्या तरंग; उसके नीचे \\(R_L\\) पर निर्गत, प्रत्येक अर्धचक्र में धनात्मक अर्ध तरंगों की श्रृंखला के रूप में (पहली \\(D_1\\) से, अगली \\(D_2\\) से)।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "The English question ends with '.' instead of '?'; kept as printed. A stamp crosses the English 'used' and the Hindi 'कैसे'; each completed from the sentence and the other language.",
+      "solution": "A rectifier converts alternating current into direct current. A \\(p\\)-\\(n\\) junction diode conducts only when forward biased, so two diodes can be arranged to use both halves of the AC cycle; this is a full-wave rectifier.\n\n**Circuit (diagram):** The AC input is applied to the primary of a centre-tap transformer. The two ends \\(P\\) and \\(Q\\) of the secondary are connected to the \\(p\\)-sides of two diodes \\(D_1\\) and \\(D_2\\). The \\(n\\)-sides of both diodes are joined at a point \\(X\\). The load resistance \\(R_L\\) is connected between \\(X\\) and the centre tap \\(T\\) of the secondary; the output is taken across \\(R_L\\). Labels: AC input, primary, secondary, centre tap \\(T\\), \\(P\\), \\(Q\\), \\(D_1\\), \\(D_2\\), \\(R_L\\), output.\n\n**Working:**\n1. **First half cycle:** suppose end \\(P\\) is positive and end \\(Q\\) negative with respect to the centre tap. Diode \\(D_1\\) is forward biased and conducts; \\(D_2\\) is reverse biased and does not conduct. Current flows through \\(D_1\\) and through \\(R_L\\) from \\(X\\) to \\(T\\).\n2. **Second half cycle:** now \\(P\\) is negative and \\(Q\\) positive. Diode \\(D_2\\) is forward biased and conducts while \\(D_1\\) is reverse biased. Current flows through \\(D_2\\) and again through \\(R_L\\) from \\(X\\) to \\(T\\).\n\nSo in both half cycles the current through the load flows in the same direction, and an output voltage is obtained during the whole cycle. The output is a unidirectional but pulsating (varying) direct voltage; its frequency is twice the input frequency. It is smoothed by a filter (a capacitor across \\(R_L\\)) to get a steady DC.\n\n**Waveforms (diagram):** the input AC voltage as a sine wave against time; below it the output across \\(R_L\\) as a series of positive half waves in every half cycle (the first from \\(D_1\\), the next from \\(D_2\\)).\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q7OR",
+      "questionNumber": "7 (OR)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "alternativeTo": "Q7",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "difficulty": "MODERATE",
+      "stem": "What are de Broglie's matter-waves ? The work function of potassium is 2.0 eV. When ultraviolet light of wavelength 3500 Å falls on the surface of potassium, calculate the maximum kinetic energy of emitted photoelectrons in electron-volt.",
+      "hi": {
+        "stem": "डी ब्रॉग्ली द्रव्य-तरंगें क्या हैं ? पोटेशियम का कार्यफलन 2.0 eV है। जब 3500 Å तरंगदैर्ध्य की पराबैंगनी प्रकाश पोटेशियम के पृष्ठ पर पड़ता है तो उत्सर्जित फोटो इलेक्ट्रॉन की अधिकतम गतिज ऊर्जा इलेक्ट्रॉन-वोल्ट में ज्ञात कीजिये।",
+        "solution": "**डी ब्रॉग्ली द्रव्य-तरंगें:** डी ब्रॉग्ली ने सुझाव दिया कि विकिरण की भाँति गतिमान द्रव्य कणों की भी द्वैत प्रकृति होती है: प्रत्येक गतिमान कण के साथ एक तरंग सम्बद्ध होती है, जिसे द्रव्य तरंग (डी ब्रॉग्ली तरंग) कहते हैं। चाल \\(v\\) से गतिमान \\(m\\) द्रव्यमान के कण से सम्बद्ध तरंग की तरंगदैर्ध्य\n\\(\\lambda = \\frac{h}{p} = \\frac{h}{mv}\\)\nहोती है, जहाँ \\(h\\) प्लांक नियतांक है। गतिज ऊर्जा \\(K\\) वाले कण के लिए \\(\\lambda = \\frac{h}{\\sqrt{2mK}}\\)। ये तरंगें केवल इलेक्ट्रॉन जैसे अति हल्के कणों के लिए ही प्रेक्षणीय होती हैं (डेविसन-जर्मर प्रयोग द्वारा पुष्टि); बड़े पिण्डों के लिए \\(\\lambda\\) इतनी छोटी होती है कि ज्ञात नहीं हो पाती।\n\n**आंकिक प्रश्न:** आपतित फोटॉन की ऊर्जा\n\\(E = \\frac{hc}{\\lambda} = \\frac{6.6 \\times 10^{-34} \\times 3 \\times 10^{8}}{3500 \\times 10^{-10}} = \\frac{1.98 \\times 10^{-25}}{3.5 \\times 10^{-7}} = 5.66 \\times 10^{-19}\\ \\text{J}\\)\nइलेक्ट्रॉन-वोल्ट में: \\(E = \\frac{5.66 \\times 10^{-19}}{1.6 \\times 10^{-19}} \\approx 3.54\\ \\text{eV}\\)\nआइन्सटाइन के प्रकाश-विद्युत समीकरण से, \\(K_{max} = E - \\phi_0 = 3.54 - 2.0 = 1.54\\ \\text{eV}\\)।\nउत्सर्जित फोटो इलेक्ट्रॉनों की अधिकतम गतिज ऊर्जा लगभग 1.54 eV है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A stamp crosses the English 'wavelength' and 'energy' and the Hindi 'कार्यफलन' and 'फोटो'; each completed from the sentence and the other language.",
+      "solution": "**De Broglie matter waves:** De Broglie suggested that, like radiation, moving material particles also have a dual nature: every moving particle is associated with a wave, called a matter wave (de Broglie wave). The wavelength of the wave associated with a particle of mass \\(m\\) moving with speed \\(v\\) is\n\\(\\lambda = \\frac{h}{p} = \\frac{h}{mv}\\)\nwhere \\(h\\) is Planck's constant. For a particle of kinetic energy \\(K\\), \\(\\lambda = \\frac{h}{\\sqrt{2mK}}\\). These waves are noticeable only for very light particles such as electrons (confirmed by the Davisson-Germer experiment); for large bodies \\(\\lambda\\) is too small to detect.\n\n**Numerical:** Energy of the incident photon\n\\(E = \\frac{hc}{\\lambda} = \\frac{6.6 \\times 10^{-34} \\times 3 \\times 10^{8}}{3500 \\times 10^{-10}} = \\frac{1.98 \\times 10^{-25}}{3.5 \\times 10^{-7}} = 5.66 \\times 10^{-19}\\ \\text{J}\\)\nIn electron-volt: \\(E = \\frac{5.66 \\times 10^{-19}}{1.6 \\times 10^{-19}} \\approx 3.54\\ \\text{eV}\\)\nBy Einstein's photoelectric equation, \\(K_{max} = E - \\phi_0 = 3.54 - 2.0 = 1.54\\ \\text{eV}\\).\nThe maximum kinetic energy of the emitted photoelectrons is about 1.54 eV.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q8",
+      "questionNumber": "8",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Optical Instruments",
+      "difficulty": "MODERATE",
+      "stem": "By drawing ray-diagram, explain the formation of image by a compound microscope. Establish the formula for its magnifying power.",
+      "hi": {
+        "stem": "यौगिक सूक्ष्मदर्शी में प्रतिबिम्ब का बनना किरण आरेख बनाकर समझाइये। इसके लिये आवर्धन क्षमता के सूत्र की स्थापना कीजिये।",
+        "solution": "यौगिक सूक्ष्मदर्शी में एक ही अक्ष पर दो उत्तल लेंस होते हैं: वस्तु की ओर बहुत कम फोकस दूरी \\(f_o\\) तथा छोटे द्वारक का **अभिदृश्यक**, और आँख के पास अधिक फोकस दूरी \\(f_e\\) की **नेत्रिका**।\n\n**किरण आरेख (वर्णन):** छोटी वस्तु \\(AB\\) अभिदृश्यक के प्रथम फोकस \\(F_o\\) से थोड़ा बाहर रखी जाती है। शीर्ष \\(B\\) से चली दो किरणें (एक अक्ष के समान्तर, जो अपवर्तन के बाद अभिदृश्यक के द्वितीय फोकस से गुजरती है; दूसरी अभिदृश्यक के प्रकाशिक केन्द्र से बिना विचलन के) दूसरी ओर मिलकर वास्तविक, उल्टा तथा आवर्धित प्रतिबिम्ब \\(A'B'\\) बनाती हैं। यह प्रतिबिम्ब नेत्रिका तथा उसके फोकस \\(F_e\\) के बीच बनता है। यह नेत्रिका के लिए वस्तु का कार्य करता है, जो सरल सूक्ष्मदर्शी की भाँति कार्य करती है: \\(B'\\) से चली किरणें नेत्रिका से अपवर्तन के बाद अपसरित होती हैं और पीछे बढ़ाने पर \\(B''\\) पर मिलती हैं। अन्तिम प्रतिबिम्ब \\(A''B''\\) आभासी, अत्यधिक आवर्धित तथा वस्तु के सापेक्ष उल्टा होता है, जो आँख से स्पष्ट दृष्टि की न्यूनतम दूरी \\(D\\) पर बनता है। अंकन: \\(AB\\), \\(F_o\\), अभिदृश्यक, \\(A'B'\\), \\(F_e\\), नेत्रिका, \\(A''B''\\), \\(u_o\\), \\(v_o\\), \\(u_e\\), \\(D\\), आँख।\n\n**आवर्धन क्षमता:** अन्तिम प्रतिबिम्ब द्वारा आँख पर बनाए गए कोण \\(\\beta\\) तथा वस्तु को दूरी \\(D\\) पर रखने पर उसके द्वारा बनाए गए कोण \\(\\alpha\\) का अनुपात:\n\\(m = \\frac{\\beta}{\\alpha}\\)\nचूँकि अन्तिम प्रतिबिम्ब दूरी \\(D\\) पर है, \\(m = \\frac{A''B''}{AB} = \\frac{A''B''}{A'B'} \\times \\frac{A'B'}{AB} = m_e \\times m_o\\)।\n\n1. **अभिदृश्यक:** \\(m_o = \\frac{A'B'}{AB} = \\frac{v_o}{u_o}\\) (परिमाण में \\(\\frac{v_o}{|u_o|}\\))।\n2. **नेत्रिका:** अन्तिम प्रतिबिम्ब \\(v_e = -D\\) पर होने से लेंस सूत्र \\(\\frac{1}{v_e} - \\frac{1}{u_e} = \\frac{1}{f_e}\\) से \\(\\frac{1}{u_e} = -\\frac{1}{D} - \\frac{1}{f_e}\\), अतः\n\\(m_e = \\frac{v_e}{u_e} = (-D)\\left(-\\frac{1}{D} - \\frac{1}{f_e}\\right) = 1 + \\frac{D}{f_e}\\)\n\nअतः आवर्धन क्षमता\n\\(m = \\frac{v_o}{|u_o|}\\left(1 + \\frac{D}{f_e}\\right)\\)\n\nयदि अन्तिम प्रतिबिम्ब अनन्त पर बने (सामान्य समायोजन), तो \\(m_e = \\frac{D}{f_e}\\) तथा \\(m = \\frac{v_o}{|u_o|} \\times \\frac{D}{f_e}\\)। वस्तु \\(F_o\\) के बहुत पास होने तथा \\(v_o \\approx L\\) (नली की लम्बाई) होने से लगभग \\(m \\approx \\frac{L}{f_o} \\times \\frac{D}{f_e}\\)। अतः \\(f_o\\) तथा \\(f_e\\) दोनों कम होने पर आवर्धन क्षमता अधिक होती है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A stamp crosses the English 'the' after 'explain'; completed from the sentence.",
+      "solution": "A compound microscope has two convex lenses on a common axis: an **objective** of very small focal length \\(f_o\\) and small aperture facing the object, and an **eyepiece** of larger focal length \\(f_e\\) near the eye.\n\n**Ray diagram (described):** A small object \\(AB\\) is placed just beyond the first focus \\(F_o\\) of the objective. Two rays from the top \\(B\\) (one parallel to the axis, refracted through the second focus of the objective; one through the optical centre of the objective, undeviated) meet to form a real, inverted, magnified image \\(A'B'\\) on the other side. This image lies between the eyepiece and its focus \\(F_e\\). It acts as the object for the eyepiece, which works as a simple microscope: rays from \\(B'\\) after refraction through the eyepiece diverge, and when produced backwards meet at \\(B''\\). The final image \\(A''B''\\) is virtual, highly magnified and inverted with respect to the object, formed at the least distance of distinct vision \\(D\\) from the eye. Labels: \\(AB\\), \\(F_o\\), objective, \\(A'B'\\), \\(F_e\\), eyepiece, \\(A''B''\\), \\(u_o\\), \\(v_o\\), \\(u_e\\), \\(D\\), eye.\n\n**Magnifying power:** It is the ratio of the angle \\(\\beta\\) subtended at the eye by the final image to the angle \\(\\alpha\\) subtended by the object when placed at distance \\(D\\):\n\\(m = \\frac{\\beta}{\\alpha}\\)\nSince the final image is at distance \\(D\\), \\(m = \\frac{A''B''}{AB} = \\frac{A''B''}{A'B'} \\times \\frac{A'B'}{AB} = m_e \\times m_o\\).\n\n1. **Objective:** \\(m_o = \\frac{A'B'}{AB} = \\frac{v_o}{u_o}\\) (in magnitude \\(\\frac{v_o}{|u_o|}\\)).\n2. **Eyepiece:** with the final image at \\(v_e = -D\\), the lens formula \\(\\frac{1}{v_e} - \\frac{1}{u_e} = \\frac{1}{f_e}\\) gives \\(\\frac{1}{u_e} = -\\frac{1}{D} - \\frac{1}{f_e}\\), so\n\\(m_e = \\frac{v_e}{u_e} = (-D)\\left(-\\frac{1}{D} - \\frac{1}{f_e}\\right) = 1 + \\frac{D}{f_e}\\)\n\nHence the magnifying power is\n\\(m = \\frac{v_o}{|u_o|}\\left(1 + \\frac{D}{f_e}\\right)\\)\n\nIf the final image is at infinity (normal adjustment), \\(m_e = \\frac{D}{f_e}\\) and \\(m = \\frac{v_o}{|u_o|} \\times \\frac{D}{f_e}\\). Since the object is very near \\(F_o\\) and \\(v_o \\approx L\\) (tube length), approximately \\(m \\approx \\frac{L}{f_o} \\times \\frac{D}{f_e}\\). So the magnifying power is large when \\(f_o\\) and \\(f_e\\) are both small.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q8OR",
+      "questionNumber": "8 (OR)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "alternativeTo": "Q8",
+      "chapter": "Nuclei",
+      "subtopic": "Mass-Energy and Nuclear Binding Energy",
+      "difficulty": "MODERATE",
+      "stem": "What is meant by binding energy of nucleus ? Draw the graph of binding energy per nucleon with respect to the mass number. Discuss fission and fusion reactions with the help of this curve.",
+      "hi": {
+        "stem": "नाभिक की बन्धन ऊर्जा से क्या अभिप्राय है ? बन्धन ऊर्जा प्रति न्यूक्लियान की द्रव्यमान संख्या के संगत ग्राफ खींचिये। विखण्डन एवं संलयन अभिक्रियाओं की इस वक्र की सहायता से विवेचना कीजिये।",
+        "solution": "**बन्धन ऊर्जा:** किसी नाभिक का द्रव्यमान सदैव उसके स्वतंत्र न्यूक्लियॉनों के द्रव्यमानों के योग से कम होता है। यह अन्तर द्रव्यमान क्षति है:\n\\(\\Delta M = [Z m_p + (A - Z) m_n] - M\\)\nद्रव्यमान क्षति के तुल्य ऊर्जा \\(E_b = \\Delta M c^2\\) नाभिक की बन्धन ऊर्जा है। यह वह ऊर्जा है जो न्यूक्लियॉनों के मिलकर नाभिक बनाने पर मुक्त होती है, अथवा नाभिक को उसके अलग-अलग प्रोटॉनों तथा न्यूट्रॉनों में तोड़ने के लिए आवश्यक ऊर्जा। प्रति न्यूक्लियॉन बन्धन ऊर्जा \\(\\frac{E_b}{A}\\) नाभिक के स्थायित्व की माप है।\n\n**ग्राफ (वर्णन):** ऊर्ध्वाधर अक्ष पर प्रति न्यूक्लियॉन बन्धन ऊर्जा (MeV) तथा क्षैतिज अक्ष पर द्रव्यमान संख्या \\(A\\)। विशेषताएँ:\n1. हल्के नाभिकों के लिए यह तेजी से बढ़ती है, \\(^{4}\\mathrm{He}\\), \\(^{12}\\mathrm{C}\\) तथा \\(^{16}\\mathrm{O}\\) पर शिखर।\n2. \\(A = 56\\) (लोहा) के निकट लगभग 8.75 MeV का चौड़ा अधिकतम मान; ये सबसे स्थायी नाभिक हैं।\n3. \\(30 < A < 170\\) के लिए लगभग नियत, लगभग 8 MeV।\n4. भारी नाभिकों के लिए धीरे-धीरे घटकर यूरेनियम (\\(A = 238\\)) के लिए लगभग 7.6 MeV।\nअंकन: अक्ष, \\(^{2}\\mathrm{H}\\), \\(^{4}\\mathrm{He}\\), \\(^{56}\\mathrm{Fe}\\), \\(^{238}\\mathrm{U}\\), विखण्डन क्षेत्र (भारी सिरा) तथा संलयन क्षेत्र (हल्का सिरा)।\n\n**वक्र से विखण्डन:** एक भारी नाभिक (\\(A \\approx 240\\), \\(\\frac{E_b}{A} \\approx 7.6\\) MeV) दो मध्यम भार के नाभिकों (\\(A \\approx 120\\), \\(\\frac{E_b}{A} \\approx 8.5\\) MeV) में टूटता है। उत्पाद अधिक दृढ़ता से बँधे होते हैं, अतः ऊर्जा मुक्त होती है, प्रति विखण्डन लगभग \\(0.9\\ \\text{MeV} \\times 240 \\approx 200\\ \\text{MeV}\\)। उदाहरण: \\(^{235}_{92}\\mathrm{U} + ^{1}_{0}\\mathrm{n} \\rightarrow ^{144}_{56}\\mathrm{Ba} + ^{89}_{36}\\mathrm{Kr} + 3\\,^{1}_{0}\\mathrm{n} + \\text{energy}\\)।\n\n**वक्र से संलयन:** दो अति हल्के नाभिक (कम \\(\\frac{E_b}{A}\\)) मिलकर एक भारी नाभिक बनाते हैं जिसकी प्रति न्यूक्लियॉन बन्धन ऊर्जा कहीं अधिक होती है, अतः ऊर्जा मुक्त होती है। उदाहरण: \\(^{2}_{1}\\mathrm{H} + ^{2}_{1}\\mathrm{H} \\rightarrow ^{3}_{2}\\mathrm{He} + ^{1}_{0}\\mathrm{n} + 3.27\\ \\text{MeV}\\)। संलयन ही सूर्य तथा तारों की ऊर्जा का स्रोत है।\n\nइस प्रकार जब भी नाभिक वक्र के शिखर (\\(A \\approx 56\\)) की ओर जाते हैं, ऊर्जा मुक्त होती है: भारी नाभिक विखण्डन द्वारा तथा हल्के नाभिक संलयन द्वारा।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A stamp crosses the English 'nucleus' and 'number'; completed from the sentence and the Hindi.",
+      "solution": "**Binding energy:** The mass of a nucleus is always less than the sum of the masses of its free nucleons. This difference is the mass defect:\n\\(\\Delta M = [Z m_p + (A - Z) m_n] - M\\)\nThe energy equivalent of the mass defect, \\(E_b = \\Delta M c^2\\), is the binding energy of the nucleus. It is the energy released when the nucleons combine to form the nucleus, or equally the energy needed to break the nucleus into its separate protons and neutrons. The binding energy per nucleon \\(\\frac{E_b}{A}\\) is a measure of the stability of the nucleus.\n\n**Graph (described):** binding energy per nucleon (MeV) on the vertical axis against mass number \\(A\\) on the horizontal axis. Features:\n1. For light nuclei it rises steeply, with peaks at \\(^{4}\\mathrm{He}\\), \\(^{12}\\mathrm{C}\\) and \\(^{16}\\mathrm{O}\\).\n2. It reaches a broad maximum of about 8.75 MeV near \\(A = 56\\) (iron), the most stable nuclei.\n3. It is nearly constant, about 8 MeV, for \\(30 < A < 170\\).\n4. For heavy nuclei it falls slowly, to about 7.6 MeV for uranium (\\(A = 238\\)).\nLabels: axes, \\(^{2}\\mathrm{H}\\), \\(^{4}\\mathrm{He}\\), \\(^{56}\\mathrm{Fe}\\), \\(^{238}\\mathrm{U}\\), the fission region (heavy end) and the fusion region (light end).\n\n**Fission from the curve:** A heavy nucleus (\\(A \\approx 240\\), \\(\\frac{E_b}{A} \\approx 7.6\\) MeV) splits into two middle-weight nuclei (\\(A \\approx 120\\), \\(\\frac{E_b}{A} \\approx 8.5\\) MeV). The products are more tightly bound, so energy is released, about \\(0.9\\ \\text{MeV} \\times 240 \\approx 200\\ \\text{MeV}\\) per fission. Example: \\(^{235}_{92}\\mathrm{U} + ^{1}_{0}\\mathrm{n} \\rightarrow ^{144}_{56}\\mathrm{Ba} + ^{89}_{36}\\mathrm{Kr} + 3\\,^{1}_{0}\\mathrm{n} + \\text{energy}\\).\n\n**Fusion from the curve:** Two very light nuclei (low \\(\\frac{E_b}{A}\\)) combine to form a heavier nucleus with a much higher binding energy per nucleon, so energy is released. Example: \\(^{2}_{1}\\mathrm{H} + ^{2}_{1}\\mathrm{H} \\rightarrow ^{3}_{2}\\mathrm{He} + ^{1}_{0}\\mathrm{n} + 3.27\\ \\text{MeV}\\). Fusion is the source of the energy of the sun and stars.\n\nThus energy is released whenever nuclei move towards the peak of the curve (\\(A \\approx 56\\)): heavy nuclei by fission and light nuclei by fusion.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q9",
+      "questionNumber": "9",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+      "difficulty": "MODERATE",
+      "stem": "Explain Biot-Savart law. Deduce the formula for magnetic field produced due to a straight current carrying conductor.",
+      "hi": {
+        "stem": "बायो-सेवर्ट का नियम समझाइये। सीधे धारावाही चालक के कारण उत्पन्न चुम्बकीय क्षेत्र के लिये सूत्र निगमित कीजिये।",
+        "solution": "**बायो-सेवर्ट का नियम:** धारा \\(I\\) वाले चालक के किसी छोटे अवयव \\(dl\\) के कारण बिन्दु \\(P\\) पर चुम्बकीय क्षेत्र \\(dB\\)\n1. धारा \\(I\\) के अनुक्रमानुपाती होता है,\n2. अवयव की लम्बाई \\(dl\\) के अनुक्रमानुपाती होता है,\n3. \\(\\sin\\theta\\) के अनुक्रमानुपाती होता है, जहाँ \\(\\theta\\) अवयव तथा उसे \\(P\\) से मिलाने वाली रेखा के बीच का कोण है,\n4. अवयव से \\(P\\) की दूरी \\(r\\) के वर्ग के व्युत्क्रमानुपाती होता है।\nअतः \\(dB = \\frac{\\mu_0}{4\\pi}\\frac{I\\,dl\\sin\\theta}{r^2}\\), तथा सदिश रूप में \\(d\\vec{B} = \\frac{\\mu_0}{4\\pi}\\frac{I\\,(d\\vec{l} \\times \\vec{r})}{r^3}\\), जहाँ \\(\\mu_0 = 4\\pi \\times 10^{-7}\\ \\text{T m A}^{-1}\\)। \\(d\\vec{B}\\) की दिशा \\(d\\vec{l}\\) तथा \\(\\vec{r}\\) वाले तल के लम्बवत् होती है (दक्षिणावर्ती पेंच नियम)।\n\n**सीधे धारावाही चालक के कारण क्षेत्र:** माना सीधे तार \\(XY\\) में धारा \\(I\\) बह रही है, तथा \\(P\\) उससे लम्बवत् दूरी \\(a\\) पर एक बिन्दु है, लम्ब का पाद \\(O\\) है।\n\nचित्र: ऊर्ध्वाधर तार \\(XY\\) जिसमें धारा \\(I\\); एक ओर बिन्दु \\(P\\); लम्ब \\(PO = a\\); \\(O\\) से दूरी \\(l\\) पर अवयव \\(dl\\), जिसकी \\(P\\) से दूरी \\(r\\); \\(PO\\) तथा \\(P\\) से अवयव तक की रेखा के बीच कोण \\(\\phi\\); तार के सिरे \\(P\\) पर \\(PO\\) के दोनों ओर कोण \\(\\phi_1\\) तथा \\(\\phi_2\\) बनाते हैं।\n\n1. बायो-सेवर्ट नियम से \\(dB = \\frac{\\mu_0}{4\\pi}\\frac{I\\,dl\\sin\\theta}{r^2}\\)। प्रत्येक अवयव के कारण \\(P\\) पर क्षेत्र एक ही दिशा में (कागज के तल के लम्बवत्) है, अतः क्षेत्र सीधे जुड़ जाते हैं।\n2. समकोण त्रिभुज से: \\(\\theta = 90^\\circ - \\phi\\), अतः \\(\\sin\\theta = \\cos\\phi\\); \\(l = a\\tan\\phi\\), अतः \\(dl = a\\sec^2\\phi\\,d\\phi\\); तथा \\(r = a\\sec\\phi\\)।\n3. मान रखने पर,\n\\(dB = \\frac{\\mu_0 I}{4\\pi}\\frac{a\\sec^2\\phi\\,d\\phi \\cos\\phi}{a^2\\sec^2\\phi} = \\frac{\\mu_0 I}{4\\pi a}\\cos\\phi\\,d\\phi\\)\n4. \\(-\\phi_2\\) से \\(\\phi_1\\) तक समाकलन करने पर:\n\\(B = \\frac{\\mu_0 I}{4\\pi a}\\int_{-\\phi_2}^{\\phi_1}\\cos\\phi\\,d\\phi = \\frac{\\mu_0 I}{4\\pi a}(\\sin\\phi_1 + \\sin\\phi_2)\\)\n\n**अनन्त लम्बाई का चालक:** \\(\\phi_1 = \\phi_2 = 90^\\circ\\), अतः\n\\(B = \\frac{\\mu_0 I}{4\\pi a}(1 + 1) = \\frac{\\mu_0 I}{2\\pi a}\\)\n\nक्षेत्र रेखाएँ तार के चारों ओर संकेन्द्री वृत्त होती हैं, जिनकी दिशा दक्षिण-हस्त अंगुष्ठ नियम से ज्ञात होती है। क्षेत्र तार से दूरी के व्युत्क्रमानुपाती होता है।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "solution": "**Biot-Savart law:** The magnetic field \\(dB\\) at a point \\(P\\) due to a small element \\(dl\\) of a conductor carrying current \\(I\\) is\n1. directly proportional to the current \\(I\\),\n2. directly proportional to the length \\(dl\\) of the element,\n3. directly proportional to \\(\\sin\\theta\\), where \\(\\theta\\) is the angle between the element and the line joining it to \\(P\\),\n4. inversely proportional to the square of the distance \\(r\\) of \\(P\\) from the element.\nSo \\(dB = \\frac{\\mu_0}{4\\pi}\\frac{I\\,dl\\sin\\theta}{r^2}\\), and in vector form \\(d\\vec{B} = \\frac{\\mu_0}{4\\pi}\\frac{I\\,(d\\vec{l} \\times \\vec{r})}{r^3}\\), where \\(\\mu_0 = 4\\pi \\times 10^{-7}\\ \\text{T m A}^{-1}\\). The direction of \\(d\\vec{B}\\) is perpendicular to the plane containing \\(d\\vec{l}\\) and \\(\\vec{r}\\) (right-hand screw rule).\n\n**Field due to a straight current-carrying conductor:** Let a straight wire \\(XY\\) carry current \\(I\\), and let \\(P\\) be a point at perpendicular distance \\(a\\) from it, the foot of the perpendicular being \\(O\\).\n\nDiagram: wire \\(XY\\) vertical with current \\(I\\); point \\(P\\) to one side; perpendicular \\(PO = a\\); an element \\(dl\\) at distance \\(l\\) from \\(O\\), at distance \\(r\\) from \\(P\\); angle \\(\\phi\\) between \\(PO\\) and the line from \\(P\\) to the element; the ends of the wire subtend angles \\(\\phi_1\\) and \\(\\phi_2\\) at \\(P\\) on either side of \\(PO\\).\n\n1. By Biot-Savart law, \\(dB = \\frac{\\mu_0}{4\\pi}\\frac{I\\,dl\\sin\\theta}{r^2}\\). For every element the field at \\(P\\) is in the same direction (perpendicular to the plane of the paper), so the fields simply add.\n2. From the right triangle: \\(\\theta = 90^\\circ - \\phi\\), so \\(\\sin\\theta = \\cos\\phi\\); \\(l = a\\tan\\phi\\), so \\(dl = a\\sec^2\\phi\\,d\\phi\\); and \\(r = a\\sec\\phi\\).\n3. Substituting,\n\\(dB = \\frac{\\mu_0 I}{4\\pi}\\frac{a\\sec^2\\phi\\,d\\phi \\cos\\phi}{a^2\\sec^2\\phi} = \\frac{\\mu_0 I}{4\\pi a}\\cos\\phi\\,d\\phi\\)\n4. Integrating from \\(-\\phi_2\\) to \\(\\phi_1\\):\n\\(B = \\frac{\\mu_0 I}{4\\pi a}\\int_{-\\phi_2}^{\\phi_1}\\cos\\phi\\,d\\phi = \\frac{\\mu_0 I}{4\\pi a}(\\sin\\phi_1 + \\sin\\phi_2)\\)\n\n**Infinitely long conductor:** \\(\\phi_1 = \\phi_2 = 90^\\circ\\), so\n\\(B = \\frac{\\mu_0 I}{4\\pi a}(1 + 1) = \\frac{\\mu_0 I}{2\\pi a}\\)\n\nThe field lines are concentric circles around the wire, and their direction is given by the right-hand thumb rule. The field is inversely proportional to the distance from the wire.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    },
+    {
+      "ref": "Q9OR",
+      "questionNumber": "9 (OR)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "alternativeTo": "Q9",
+      "chapter": "Atoms",
+      "subtopic": "Alpha-Particle Scattering and Rutherford's Model",
+      "difficulty": "MODERATE",
+      "stem": "An \\(\\alpha\\)-particle, accelerated with the potential difference of \\(V\\) volt strikes with a nucleus (atomic number = \\(Z\\)). If \\(r\\) be the nearest distance of closest approach to the nucleus then prove that \\(r = 14.4\\frac{Z}{V}\\) Å.",
+      "hi": {
+        "stem": "एक \\(\\alpha\\)-कण \\(V\\) वोल्ट के विभवान्तर से त्वरित होकर एक नाभिक (परमाणु अंक = \\(Z\\)) से टकराता है। यदि कण की नाभिक के निकटतम पहुँचने की दूरी \\(r\\) हो तो सिद्ध कीजिए कि \\(r = 14.4\\frac{Z}{V}\\) Å.",
+        "solution": "\\(\\alpha\\)-कण का आवेश \\(q = 2e\\) है। विभवान्तर \\(V\\) से त्वरित होने पर इसकी गतिज ऊर्जा\n\\(K = qV = 2eV\\)\nनाभिक (आवेश \\(Ze\\), स्थिर माना) की ओर बढ़ने पर यह प्रतिकर्षित होकर धीमा होता जाता है। निकटतम पहुँच की दूरी \\(r\\) पर यह क्षण भर के लिए रुक जाता है, अतः इसकी सम्पूर्ण गतिज ऊर्जा स्थिरवैद्युत स्थितिज ऊर्जा में बदल जाती है:\n\\(2eV = \\frac{1}{4\\pi\\varepsilon_0}\\frac{(Ze)(2e)}{r}\\)\n\\(r = \\frac{1}{4\\pi\\varepsilon_0}\\frac{Ze}{V}\\)\n\\(\\frac{1}{4\\pi\\varepsilon_0} = 9 \\times 10^{9}\\ \\text{N m}^2\\ \\text{C}^{-2}\\) तथा \\(e = 1.6 \\times 10^{-19}\\ \\text{C}\\) रखने पर:\n\\(r = \\frac{9 \\times 10^{9} \\times 1.6 \\times 10^{-19} Z}{V} = 14.4 \\times 10^{-10}\\frac{Z}{V}\\ \\text{m}\\)\nचूँकि \\(1\\ \\text{Å} = 10^{-10}\\ \\text{m}\\),\n\\(r = 14.4\\frac{Z}{V}\\ \\text{Å}\\)\nइति सिद्धम्।\n\n*हल PYQ Vault द्वारा: यूपी बोर्ड उत्तर कुंजी प्रकाशित नहीं करता।*"
+      },
+      "_flag": "A stamp crosses the second 4 of 14.4 and the fraction Z/V in the English; read from the Hindi, which prints them clearly.",
+      "solution": "The \\(\\alpha\\)-particle has charge \\(q = 2e\\). On being accelerated through a potential difference \\(V\\), its kinetic energy is\n\\(K = qV = 2eV\\)\nAs it approaches the nucleus (charge \\(Ze\\), taken as fixed), it is repelled and slows down. At the distance of closest approach \\(r\\) it momentarily stops, so all its kinetic energy has become electrostatic potential energy:\n\\(2eV = \\frac{1}{4\\pi\\varepsilon_0}\\frac{(Ze)(2e)}{r}\\)\n\\(r = \\frac{1}{4\\pi\\varepsilon_0}\\frac{Ze}{V}\\)\nSubstituting \\(\\frac{1}{4\\pi\\varepsilon_0} = 9 \\times 10^{9}\\ \\text{N m}^2\\ \\text{C}^{-2}\\) and \\(e = 1.6 \\times 10^{-19}\\ \\text{C}\\):\n\\(r = \\frac{9 \\times 10^{9} \\times 1.6 \\times 10^{-19} Z}{V} = 14.4 \\times 10^{-10}\\frac{Z}{V}\\ \\text{m}\\)\nSince \\(1\\ \\text{Å} = 10^{-10}\\ \\text{m}\\),\n\\(r = 14.4\\frac{Z}{V}\\ \\text{Å}\\)\nHence proved.\n\n*Solution by PYQ Vault: UP Board does not publish an answer key.*"
+    }
+  ]
+}

@@ -140,6 +140,7 @@ export const HESS_CHTHERMO_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcthermo-combining-equations",
       name: "Hess's law: adding, reversing and scaling equations",
+      visualizationSlug: "cet-hess-cycle",
       intuition:
         "Treat the given equations like algebra. Reverse one and its ΔH changes sign; multiply it and ΔH is multiplied; add equations and their ΔH values add. Arrange them so that everything except the target cancels.",
       definition:

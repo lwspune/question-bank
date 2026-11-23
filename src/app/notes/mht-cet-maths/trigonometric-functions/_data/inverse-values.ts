@@ -14,6 +14,7 @@ export const INVERSE_VALUES_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "cettf-principal-values",
       name: "Principal Ranges, Negative Arguments and f⁻¹(f(x))",
+      visualizationSlug: "it-principal-ranges",
       intuition:
         "An inverse function must give ONE answer, so each is restricted to a range: sine and tangent to angles around 0, cosine and cotangent to \\([0, \\pi]\\). Every principal-value question is a test of these ranges — which is why \\(\\sin^{-1}(\\sin\\theta) = \\theta\\) only when \\(\\theta\\) is already inside \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\).",
       definition:
@@ -64,6 +65,7 @@ export const INVERSE_VALUES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cettf-ratio-of-inverse",
       name: "A Trigonometric Ratio of an Inverse Value — the Right-Triangle Conversion",
+      visualizationSlug: "cds-trig-right-triangle",
       intuition:
         "\\(\\sin^{-1}\\frac35\\) is just an angle whose sine is \\(\\frac35\\). Draw the right triangle with opposite 3, hypotenuse 5 and adjacent 4, and every other ratio of that angle is read off. Sums of two inverse values then fall to the compound-angle formula.",
       definition:

@@ -12,6 +12,7 @@ export const NEET_PH_EP_ENERGY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphep-equipotential",
       name: "Equipotential surfaces and the field",
+      visualizationSlug: "neet-equipotentials",
       intuition:
         "Join all the points that have the same potential and you get an equipotential surface. Moving a charge along it takes no work, so the field can have no part along the surface: it must cross it at right angles. The field always points downhill, from higher potential to lower, and it is strongest where the surfaces crowd together.",
       definition:

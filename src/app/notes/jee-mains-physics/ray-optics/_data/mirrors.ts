@@ -76,6 +76,7 @@ export const MIRRORS_RAY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpray-mirror-formula",
       name: "The mirror formula and magnification",
+      visualizationSlug: "opt-concave-mirror-rays",
       intuition:
         "Every spherical-mirror question uses one equation, 1/v + 1/u = 1/f, and one sign convention. Measure every distance from the pole, positive in the direction the incident light travels and negative against it. A real object in front of the mirror then has u < 0; a concave mirror has f < 0 and a convex mirror f > 0. A real image forms in front (v < 0) and is inverted; a virtual image forms behind (v > 0) and is erect.",
       definition:

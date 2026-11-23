@@ -32,6 +32,14 @@
 /** The shared endpoint; participating engines forward between themselves. */
 export const INDEXNOW_ENDPOINT = "https://api.indexnow.org/indexnow";
 
+/**
+ * The site's IndexNow key. Public by design: IndexNow proves ownership by
+ * fetching it from /<key>.txt (public/574f...txt). A constant so the server
+ * can submit on publish (lib/blog/indexnow.ts) without reading public/ at run
+ * time; tests/blog-indexnow.test.ts fails if it drifts from that file.
+ */
+export const INDEXNOW_KEY = "574f11f31843592221f6ddcdd2aa16ea";
+
 /** The sites we submit for, each its own run: IndexNow voids a batch with an off-host URL. */
 export const INDEXNOW_HOSTS = ["www.pyqvault.com", "intl.pyqvault.com"] as const;
 

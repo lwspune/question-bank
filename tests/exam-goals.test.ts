@@ -10,7 +10,7 @@ import { EXAM_GOALS, GOAL_LABEL, groupByGoal, goalGroupSummary } from "@/lib/exa
  * it sits under Defence, not with the school boards.
  */
 describe("every exam declares a goal", () => {
-  it("is one of the six goals, for every registry entry", () => {
+  it("is one of the seven goals, for every registry entry", () => {
     for (const e of EXAM_REGISTRY) expect(EXAM_GOALS, e.slug).toContain(e.goal);
   });
 
@@ -34,6 +34,13 @@ describe("every exam declares a goal", () => {
     ["cds", "defence"],
     ["afcat", "defence"],
     ["spi", "defence"],
+    ["aissee-6", "defence"],
+    ["aissee-9", "defence"],
+    ["rms-cet-6", "defence"],
+    ["rms-cet-9", "defence"],
+    ["rimc", "defence"],
+    ["homi-bhabha-6", "science"],
+    ["homi-bhabha-9", "science"],
     ["foundation-course", "defence"],
     ["worksheets-11-12", "defence"],
     ["jee-mains", "science"],
@@ -46,12 +53,20 @@ describe("every exam declares a goal", () => {
     ["mpsc-group-b-c", "government"],
     ["ugc-net", "government"],
     ["rrb-ntpc", "government"],
+    ["rrb-ntpc-undergraduate", "government"],
     ["capf-ac", "defence"],
     ["rpsc-ras", "government"],
     ["ipmat-indore", "management"],
     ["jipmat", "management"],
     ["cbse-12", "boards"],
     ["clat", "law"],
+    // Owner 2026-11-23: GATE is for engineering graduates (M.Tech, PSU jobs), its own goal.
+    ["gate-cs", "engineering"],
+    // Owner 2026-11-20: a scholarship exam is none of the others.
+    ["mh-scholarship-4", "scholarship"],
+    ["mh-scholarship-5", "scholarship"],
+    ["mh-scholarship-7", "scholarship"],
+    ["mh-scholarship-8", "scholarship"],
   ])("%s is under %s", (slug, goal) => {
     expect(getExamBySlug(slug)?.goal).toBe(goal);
   });
@@ -64,6 +79,8 @@ describe("every exam declares a goal", () => {
       defence: "Defence",
       management: "Management",
       law: "Law",
+      scholarship: "Scholarships",
+      engineering: "Engineering graduates",
     });
   });
 });

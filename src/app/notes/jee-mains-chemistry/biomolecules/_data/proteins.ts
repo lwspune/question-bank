@@ -129,6 +129,7 @@ export const PROTEINS_BIO_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jcbio-protein-structure",
       name: "Levels of protein structure and denaturation",
+      visualizationSlug: "biochem-protein-structure-levels",
       intuition:
         "The primary structure is the sequence, held by covalent peptide bonds. Everything above it, the helix or sheet, the overall fold and the packing of several chains, is held by weaker forces, mainly hydrogen bonds. Heat or a change in pH breaks those weak forces but not the peptide bonds. So the protein unfolds and loses its biological activity, while its sequence survives.",
       definition:

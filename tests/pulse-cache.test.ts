@@ -4,7 +4,7 @@
  * shape guard, so a stale or malformed cache entry can never render a number.
  */
 import { describe, it, expect } from "vitest";
-import { isPulseFresh, parsePulseEntry, PULSE_TTL_MS, totalsLine } from "@/lib/pulse/cache";
+import { isPulseFresh, parsePulseEntry, pulseFromEntry, PULSE_TTL_MS, totalsLine } from "@/lib/pulse/cache";
 
 const NOW = Date.parse("2026-09-24T10:00:00Z");
 const entry = (ageMs: number) => ({ at: NOW - ageMs, due: 4, week: { done: 1, goal: 3 } });
@@ -29,7 +29,7 @@ describe("parsePulseEntry", () => {
     const e = parsePulseEntry(JSON.stringify(entry(0)));
     // `exam` is always present on the parsed shape (null when absent) so a
     // consumer never has to distinguish undefined from null.
-    expect(e).toEqual({ ...entry(0), exam: null, totals: null, weak: [], chapterDue: {}, path: null, replies: 0, leftCheckout: null });
+    expect(e).toEqual({ ...entry(0), exam: null, totals: null, weak: [], chapterDue: {}, path: null, replies: 0, leftCheckout: null, gift: null });
   });
 
   it("rejects junk, partial shapes and negative counts", () => {
@@ -168,6 +168,48 @@ describe("parsePulseEntry: a checkout left unpaid (2026-11-12)", () => {
     for (const bad of ["x", { ...pass, planId: 5 }, { ...pass, perks: "a" }, { ...pass, downloads: "no" }, { ...pass, price: undefined }]) {
       expect(parsePulseEntry(JSON.stringify({ ...entry(0), leftCheckout: bad })), JSON.stringify(bad)).toBeNull();
     }
+  });
+});
+
+describe("parsePulseEntry: V's gift (2026-11-21)", () => {
+  it("is null when absent (an entry cached before it existed)", () => {
+    expect(parsePulseEntry(JSON.stringify(entry(0)))?.gift).toBeNull();
+  });
+  it("carries the gift through", () => {
+    expect(parsePulseEntry(JSON.stringify({ ...entry(0), gift: { kind: "trial" } }))?.gift).toEqual({ kind: "trial" });
+    expect(parsePulseEntry(JSON.stringify({ ...entry(0), gift: { kind: "points", milestone: 20 } }))?.gift).toEqual({
+      kind: "points",
+      milestone: 20,
+    });
+  });
+  it("refuses the whole entry when the gift is malformed", () => {
+    for (const bad of ["trial", { kind: "points", milestone: 7 }, { kind: "cash" }]) {
+      expect(parsePulseEntry(JSON.stringify({ ...entry(0), gift: bad })), JSON.stringify(bad)).toBeNull();
+    }
+  });
+});
+
+describe("pulseFromEntry: a cached read keeps every field", () => {
+  it("returns the whole pulse without the timestamp", () => {
+    // Until 2026-11-21 the cached read kept only six fields, so V's plan line,
+    // the feedback-reply line and the unpaid-checkout bar vanished for up to
+    // ten minutes after any page that had fetched the pulse.
+    const full = {
+      ...entry(0),
+      exam: null,
+      totals: null,
+      weak: [],
+      chapterDue: {},
+      path: { state: "on", exam: "cbse-12" },
+      replies: 2,
+      leftCheckout: null,
+      gift: { kind: "trial" },
+    };
+    const parsed = parsePulseEntry(JSON.stringify(full));
+    expect(parsed).not.toBeNull();
+    const { at: _at, ...rest } = parsed!;
+    expect(pulseFromEntry(parsed!)).toEqual(rest);
+    expect(pulseFromEntry(parsed!)).not.toHaveProperty("at");
   });
 });
 

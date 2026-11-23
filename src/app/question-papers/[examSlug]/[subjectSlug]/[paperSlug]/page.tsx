@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
-import { getExamBySlug } from "@/lib/exam/examContext";
+import { getExamBySlug, hasQuestionPapers } from "@/lib/exam/examContext";
 import { slugify } from "@/lib/board/query";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getPaperGroup, getPublishedPapersFor, type PaperListingWithExam } from "@/lib/questionPapers/query";
@@ -26,7 +26,7 @@ export function generateStaticParams(): Params[] {
 
 async function load(params: Params) {
   const exam = getExamBySlug(params.examSlug);
-  if (!exam?.boardExam) return null;
+  if (!exam || !hasQuestionPapers(exam)) return null;
   // The exam id comes from the published list itself, not the shared exam-id
   // map, whose failed read is cached as a blank (SUGGESTIONS.md backfill ledger).
   const isThisPaper = (p: PaperListingWithExam) =>

@@ -73,6 +73,7 @@ export const AMPERE_MAG_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpmag-solenoid",
       name: "Field inside a solenoid and a toroid",
+      visualizationSlug: "solenoid-field-lines",
       intuition:
         "A long, tightly wound solenoid has a strong, uniform field inside along its axis and almost none outside. Ampère's law round a rectangle that runs inside and comes back outside gives B times the length equal to μ₀ times the current through all the turns in that length. So the field depends only on turns per metre and the current, not on the radius.",
       definition:

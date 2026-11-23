@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { featuredLeadIn, notesBrowseKind, notesCountKind, notesCountNoun, notesHubCountLabel } from "../src/lib/notes/countKind";
 import { buildBrowseUrl } from "../src/lib/guide/buildBrowseUrl";
+import { BOARD_EXAMS } from "../src/lib/exam/examContext";
 
 describe("notesCountKind", () => {
   it("keeps every exam's notes past-year-only by default (migration 0036)", () => {
@@ -13,6 +14,15 @@ describe("notesCountKind", () => {
 
   it("counts both kinds for AFCAT, whose Numerical Ability bank is 97% practice", () => {
     expect(notesCountKind("AFCAT")).toBe("all");
+  });
+
+  it("counts both kinds for every textbook board (2026-11-23): the book's exercises are what a board student practises", () => {
+    for (const exam of BOARD_EXAMS) expect(notesCountKind(exam.examName), exam.examName).toBe("all");
+    expect(notesCountKind("Maharashtra HSC Class 12")).toBe("all");
+  });
+
+  it("keeps a board with past papers only (no textbook rows) on past-year counting", () => {
+    expect(notesCountKind("UP Board Class 12")).toBe("pyq");
   });
 
   it("names what it counts, so a card never calls a practice question a PYQ", () => {

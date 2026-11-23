@@ -12,6 +12,7 @@ export const NEET_ZO_BM_ENZYMES_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nzobm-enzyme-action",
       name: "What enzymes are and how they act",
+      visualizationSlug: "neet-enzyme-cycle",
       intuition:
         "An enzyme is a protein with a pocket, the active site, that fits its substrate. The substrate settles in, the enzyme closes around it, breaks its bonds and lets the products go. Then the enzyme is free to do it all again. Because it lowers the energy hill a reaction must climb, a reaction that would take hours happens in a blink.",
       definition:

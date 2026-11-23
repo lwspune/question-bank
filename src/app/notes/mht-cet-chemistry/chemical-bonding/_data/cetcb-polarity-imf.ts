@@ -224,6 +224,7 @@ export const POLARITY_IMF_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetcb-pol-hydrogen-bonding",
       name: "Hydrogen bonding and boiling point",
+      visualizationSlug: "hyd-water-hydrogen-bonding",
       intuition:
         "Hydrogen bonding is an unusually strong attraction that forms when a hydrogen atom is tied to a small, very electronegative atom — nitrogen, oxygen or fluorine. " +
         "It behaves like a weak extra bond between molecules, so substances that can hydrogen-bond have abnormally high boiling points; those that can't boil lower.",

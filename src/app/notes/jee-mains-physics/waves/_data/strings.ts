@@ -69,6 +69,7 @@ export const STRINGS_WAVE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpwave-string-harmonics",
       name: "Standing waves and harmonics of a string fixed at both ends",
+      visualizationSlug: "cet-standing-wave-modes",
       intuition:
         "A wave and its reflection on a string fixed at both ends make a standing wave, with a node at each end. The string can only hold a whole number of half-wavelengths, so only some frequencies fit: the fundamental v/2L and every whole-number multiple of it. Two neighbouring resonances therefore differ by exactly the fundamental.",
       definition:

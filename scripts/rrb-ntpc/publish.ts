@@ -1,8 +1,10 @@
 /**
  * Publish the committed NTPC shifts: set their rows PUBLIC.
  *
- *   npx tsx scripts/rrb-ntpc/publish.ts           # dry run: per shift, rows and how many are PRIVATE
- *   npx tsx scripts/rrb-ntpc/publish.ts --apply
+ *   npx tsx scripts/rrb-ntpc/publish.ts [--level=undergraduate]           # dry run: per shift, rows and how many are PRIVATE
+ *   npx tsx scripts/rrb-ntpc/publish.ts [--level=undergraduate] --apply
+ *
+ * One level per run (graduate when absent), so publishing one exam never touches the other.
  *
  * Owner's OK 2026-11-13. A flawed row is published too: its solution opens with the student notice
  * (studentSolution), and it rides as grace in its mock (grace.ts). Refuses a shift that is not
@@ -12,19 +14,22 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { SHIFTS, requireExamId } from "./config";
+import { LEVELS, SHIFTS, levelArg, requireExamId } from "./config";
 
 async function main() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
   const apply = process.argv.includes("--apply");
   const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
-  const examId = requireExamId();
+  const level = levelArg(process.argv);
+  const examId = requireExamId(level);
+  console.log(`${LEVELS[level].examName}
+`);
   const repeatsFile = join(__dirname, "repeats.json");
   const repeats: Record<string, unknown[]> = existsSync(repeatsFile) ? JSON.parse(readFileSync(repeatsFile, "utf8")) : {};
 
   let toPublish = 0;
   const ready: string[] = [];
-  for (const [id, s] of Object.entries(SHIFTS)) {
+  for (const [id, s] of Object.entries(SHIFTS).filter(([, x]) => x.level === level)) {
     const count = async (privateOnly: boolean) => {
       let q = db.from("questions").select("id", { count: "exact", head: true }).eq("exam_id", examId).eq("source_file", s.sourceFile);
       if (privateOnly) q = q.eq("visibility", "PRIVATE");

@@ -27,6 +27,8 @@ const FROM_SSC: Record<string, string> = {
   Chemistry: "Chemistry",
   Biology: "Biology",
   "Current Affairs": "Current Affairs",
+  // The settled facts moved out of Current Affairs on 2026-11-19 (scripts/ssc-cgl/static-gk).
+  "Static GK": "Static GK",
   // SSC CGL Tier II's subject; NTPC's General Awareness asks basic computer questions too.
   "Computer Knowledge": "Computer Knowledge",
 };

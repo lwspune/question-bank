@@ -13,6 +13,7 @@ export const GRAPHS_SL_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpsl-vt-area",
       name: "Areas under velocity–time and acceleration–time graphs",
+      visualizationSlug: "kin-velocity-time-graph",
       intuition:
         "Area under a velocity–time graph is velocity × time, which is a displacement. Area below the time axis is negative: the body is moving backwards. So the displacement is the signed sum of the areas, while the distance adds them all as positive. Split the graph wherever the line crosses the axis, find each piece, and decide which total the question wants.",
       definition:
@@ -70,6 +71,7 @@ export const GRAPHS_SL_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jpsl-graph-shapes",
       name: "Matching graph shapes to the motion",
+      visualizationSlug: "kin-position-time-graph",
       intuition:
         "Each graph is the slope of the one before it: v–t is the slope of x–t, and a–t is the slope of v–t. So a straight x–t line means constant velocity, a curving one means acceleration, and its steepness at any instant is the velocity then. Read the shapes in the table across a row, and use the list to rule out graphs that no real motion can produce.",
       definition:

@@ -48,6 +48,7 @@ export const SSC2_RST_LOGIC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2rstlg-cause",
       name: "Cause and effect",
+      visualizationSlug: "ssc-t2-cause-links",
       intuition:
         "Two events can be linked in three ways: one causes the other, both come from one common cause, or they are unrelated (independent causes). Ask what would naturally lead to each event.",
       definition:

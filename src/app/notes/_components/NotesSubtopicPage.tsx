@@ -1,3 +1,4 @@
+import StudyContext from "@/components/StudyContext";
 import type { Metadata } from "next";
 import RememberVisit from "@/components/visits/RememberVisit";
 import Link from "next/link";
@@ -254,6 +255,7 @@ export default async function NotesSubtopicPage({
         <NotesOnThisPage items={note.concepts.map((c) => ({ id: c.slug, label: c.name }))} />
       }
     >
+      <StudyContext chapterId={chapterTax?.id} />
       <NotesReadingProgress />
       <RememberVisit href={`${base}/${subtopicSlug}`} title={note.title} kind="notes" />
       <GuideJsonLd

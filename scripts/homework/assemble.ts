@@ -139,6 +139,9 @@ function main() {
       ? `JEE Mains ${subjectName} past questions, ${/\d{4}/.exec(sittings[0])![0]} to ${/\d{4}/.exec(sittings[sittings.length - 1])![0]}, five a day. Questions NTA asked again and the question types it keeps asking come first, ranked together by how often they were asked, then every other question.`
       : examName === "NEET"
       ? `NEET ${subjectName} past questions from ${sittings.length} papers, ${/\d{4}/.exec(sittings[0])![0]} to ${/\d{4}/.exec(sittings[sittings.length - 1])![0]}, five a day. The Re-NEET retests of 2024 and 2026 count as papers. Questions NTA asked again and the question types it keeps asking come first, ranked together by how often they were asked, then every other question.`
+      : examName === "IMAT"
+      // One paper a year, set by Italy's university ministry (2026-11-17).
+      ? `IMAT ${subjectName} past questions, ${sittings[0]} to ${sittings[sittings.length - 1]}, five a day. Questions the ministry asked again and the question types it keeps asking come first, ranked together by how often they were asked, then every other question.${slots.some((s) => s.rows.length > 1) ? " A passage and its questions count as one question." : ""}`
       : examName === "MHT-CET"
       ? `MHT-CET ${subjectName} past questions from ${sittings.length} shifts, ${sittings[0].slice(-7, -3)} to ${sittings[sittings.length - 1].slice(-7, -3)}, five a day. Questions asked again in another shift and the question types that keep coming back come first, ranked together by how often they were asked, then every other question.`
       : isPapers

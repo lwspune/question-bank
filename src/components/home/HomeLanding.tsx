@@ -7,6 +7,7 @@ import {
   BookOpen,
   CalendarDays,
   Compass,
+  Cpu,
   FileText,
   FlaskConical,
   GraduationCap,
@@ -137,6 +138,10 @@ const EXAM_META: Record<
   uceed: {
     Icon: Compass,
     blurb: "UCEED, IIT Bombay's design entrance: every Part A paper from 2015 to 2026, each one also a timed mock.",
+  },
+  "gate-cs": {
+    Icon: Cpu,
+    blurb: "GATE Computer Science: both sets of 2024, 2025 and 2026, on each year's final answer key.",
   },
 };
 

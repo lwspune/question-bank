@@ -13,6 +13,7 @@ export const RANGE_FN_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jfn-range",
       name: "Finding the range",
+      visualizationSlug: "function-domain-range-graph",
       intuition:
         "Three tools cover almost everything. If the formula is built from a bounded piece such as \\(\\sin x\\), \\(|x|\\) or \\((x-a)^2\\), shift and scale that piece's range. For \\(y=\\frac{p(x)}{q(x)}\\) with quadratics, rearrange into a quadratic in \\(x\\) and require its discriminant to be \\(\\ge0\\). If the function is monotonic on an interval, its range runs between the values at the ends.",
       definition:
@@ -57,6 +58,7 @@ export const RANGE_FN_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jfn-one-one-onto",
       name: "Deciding one-one and onto",
+      visualizationSlug: "function-mapping-diagram",
       intuition:
         "A function is one-one if different inputs give different outputs. It is enough that the function is strictly increasing or strictly decreasing, for instance with a derivative of one sign. To show it is not one-one, find two inputs with the same output: an even function, or a rational function that tends to the same value at both ends and turns in between. A function is onto if its range equals the stated codomain, so find the range and compare.",
       definition:

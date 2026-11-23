@@ -12,7 +12,13 @@ import { istDayKey } from "@/lib/email/dueNudge";
 import { AFTER_CHECKOUT_ONLY, isDeclineReason, type DeclineReason } from "@/lib/billing/declineReasons";
 import { CHAPTER_FIX_FROM } from "@/lib/drill/from";
 import { START_NEXT_FROM } from "@/lib/me/startNext";
+import { TEACH_CHAPTER_FROM } from "@/lib/chat/teachChapter";
 import { levelById } from "@/lib/play/levels";
+import { PUZZLES } from "@/lib/play/data/wordGroups";
+import { LAUNCH_LEVELS, MAX_REPORTED_SHOTS } from "@/lib/play/launch";
+import { TIMELINE_PACKS } from "@/lib/play/data/timeline";
+import { PLACE_PACKS } from "@/lib/play/data/places";
+import { PLACES_PER_ROUND } from "@/lib/play/pin";
 import type { ActivityEvent } from "./events";
 import { boardChapterPath, isReadingSurface, isSurface, learnLessonPath, readingViewFor, viewDedupeKey } from "./views";
 
@@ -41,8 +47,17 @@ const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
  *  me the idea (2026-11-11): back on the question (returned), then Try one tapped (try_after). */
 /** The Review traps panel's steps (src/app/review/ChapterTraps). */
 export const REVIEW_TRAPS_ACTIONS: ReadonlySet<string> = new Set(["shown", "expand", "playbook"]);
+/** The "Teach me" buttons' steps and places (lib/chat/teachChapter). */
+const TEACH_CHAPTER_ACTIONS: ReadonlySet<string> = new Set(["shown", "tap"]);
+const TEACH_CHAPTER_FROM_SET: ReadonlySet<string> = new Set<string>(TEACH_CHAPTER_FROM);
+/** V's gift (2026-11-21, lib/chat/gift): which gift, and the step from the badge to the gift's button. */
+export const V_GIFT_KINDS: ReadonlySet<string> = new Set(["trial", "points"]);
+export const V_GIFT_ACTIONS: ReadonlySet<string> = new Set(["badge", "shown", "open", "activate", "pricing"]);
+/** V's check-in (2026-11-21, lib/chat/checkIn): asked, each tap, a chapter picked, Another chapter, a button followed. */
+export const V_CHECKIN_ACTIONS: ReadonlySet<string> = new Set(["shown", "well", "stuck", "short", "chapter", "other", "go"]);
 /** The stuck offer's steps. teach_close and full_notes (2026-11-15): Teach opens a panel on the page,
- *  closed (back on the question) or left for the full notes page. */
+ *  closed (back on the question) or left for the full notes page. learn_open and learn_close
+ *  (2026-11-22): Teach opens a Learn lesson full screen instead, where Learn teaches the topic. */
 export const STUCK_OFFER_ACTIONS: ReadonlySet<string> = new Set([
   "shown",
   "teach",
@@ -52,6 +67,8 @@ export const STUCK_OFFER_ACTIONS: ReadonlySet<string> = new Set([
   "try_after",
   "teach_close",
   "full_notes",
+  "learn_open",
+  "learn_close",
 ]);
 /** The one line under a bank answer (2026-11-14, lib/questions/teachingMoment): moments with their own
  *  event here, and their steps. The stuck offer keeps its own surface (its experiment predates this). */
@@ -310,6 +327,75 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
         },
       };
     }
+    // Home's Study time card (2026-11-21): seen and This week opened once a
+    // day; the suggestion shown and tapped once per chapter per day.
+    if (raw.surface === "study_time") {
+      const action = typeof raw.action === "string" ? raw.action : "";
+      const withChapter = action === "next_shown" || action === "next_tap";
+      if (!withChapter && action !== "seen" && action !== "week") return { ok: false, error: "Unknown step." };
+      if (!withChapter) {
+        if (raw.chapterId !== undefined) return { ok: false, error: "No chapter id on this step." };
+        return {
+          ok: true,
+          value: {
+            kind: "surface_viewed",
+            metadata: { surface: "study_time", action },
+            dedupeKey: `view:study_time:${action}:${userId}:${istDayKey(now)}`,
+          },
+        };
+      }
+      if (typeof raw.chapterId !== "string" || !UUID_RE.test(raw.chapterId)) return { ok: false, error: "Invalid chapter id." };
+      return {
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "study_time", action, chapterId: raw.chapterId },
+          dedupeKey: `view:study_time:${action}:${raw.chapterId}:${userId}:${istDayKey(now)}`,
+        },
+      };
+    }
+    // V's check-in (2026-11-21): each step, once a day.
+    if (raw.surface === "v_checkin") {
+      if (typeof raw.action !== "string" || !V_CHECKIN_ACTIONS.has(raw.action)) return { ok: false, error: "Unknown step." };
+      return {
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "v_checkin", action: raw.action },
+          dedupeKey: `view:v_checkin:${raw.action}:${userId}:${istDayKey(now)}`,
+        },
+      };
+    }
+    // V's gift (2026-11-21): each step, per gift and day.
+    if (raw.surface === "v_gift") {
+      if (typeof raw.gift !== "string" || !V_GIFT_KINDS.has(raw.gift)) return { ok: false, error: "Unknown gift." };
+      if (typeof raw.action !== "string" || !V_GIFT_ACTIONS.has(raw.action)) return { ok: false, error: "Unknown step." };
+      return {
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "v_gift", gift: raw.gift, action: raw.action },
+          dedupeKey: `view:v_gift:${raw.action}:${raw.gift}:${userId}:${istDayKey(now)}`,
+        },
+      };
+    }
+    // The "Teach me" buttons (2026-11-21): seen and tapped, per place (and chapter, where it has one) and day.
+    if (raw.surface === "teach_chapter") {
+      if (typeof raw.action !== "string" || !TEACH_CHAPTER_ACTIONS.has(raw.action)) return { ok: false, error: "Unknown step." };
+      if (typeof raw.from !== "string" || !TEACH_CHAPTER_FROM_SET.has(raw.from)) return { ok: false, error: "Unknown page." };
+      if (raw.chapterId !== undefined && (typeof raw.chapterId !== "string" || !UUID_RE.test(raw.chapterId))) {
+        return { ok: false, error: "Invalid chapter id." };
+      }
+      const chapterId = typeof raw.chapterId === "string" ? raw.chapterId : null;
+      return {
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "teach_chapter", action: raw.action, from: raw.from, ...(chapterId ? { chapterId } : {}) },
+          dedupeKey: `view:teach_chapter:${raw.action}:${raw.from}:${chapterId ?? "-"}:${userId}:${istDayKey(now)}`,
+        },
+      };
+    }
     // The Review traps panel (2026-11-11): seen, Show more and the playbook link, per chapter and day.
     if (raw.surface === "review_traps") {
       if (typeof raw.chapterId !== "string" || !UUID_RE.test(raw.chapterId)) return { ok: false, error: "Invalid chapter id." };
@@ -456,7 +542,91 @@ const PLAY_MAX_ANSWERS = 200;
 const PLAY_MAX_POINTS = 20_000;
 const PLAY_KEYS = new Set(["kind", "level", "correct", "wrong", "points", "cleared"]);
 
+/** A Word Builder round asks 10 words; first-try right + wrong cannot pass that. */
+const WORD_ROUND_MAX = 10;
+const WORD_KEYS = new Set(["kind", "game", "correct", "wrong", "mastered"]);
+const DAILY_KEYS = new Set(["kind", "game", "solved", "guesses"]);
+
+/**
+ * The English games (2026-11-17) carry a `game` field; a maths round never
+ * does, so rows from before and after the /play hub read the same.
+ */
+function parseWordGame(raw: Record<string, unknown>): ParseClientEventResult {
+  const count = (v: unknown, max: number): v is number =>
+    typeof v === "number" && Number.isInteger(v) && v >= 0 && v <= max;
+  if (raw.game === "word_builder") {
+    if (Object.keys(raw).some((k) => !WORD_KEYS.has(k))) return { ok: false, error: "Unknown field on a play round." };
+    const { correct, wrong, mastered } = raw;
+    if (!count(correct, WORD_ROUND_MAX) || !count(wrong, WORD_ROUND_MAX) || correct + wrong > WORD_ROUND_MAX) {
+      return { ok: false, error: "Invalid counts." };
+    }
+    if (!count(mastered, WORD_ROUND_MAX)) return { ok: false, error: "Invalid mastered." };
+    return { ok: true, value: { kind: "play_round", metadata: { game: "word_builder", correct, wrong, mastered } } };
+  }
+  if (raw.game === "daily_word") {
+    if (Object.keys(raw).some((k) => !DAILY_KEYS.has(k))) return { ok: false, error: "Unknown field on a play round." };
+    const { solved, guesses } = raw;
+    if (typeof solved !== "boolean") return { ok: false, error: "Invalid solved." };
+    if (typeof guesses !== "number" || !Number.isInteger(guesses) || guesses < 1 || guesses > 6) {
+      return { ok: false, error: "Invalid guesses." };
+    }
+    // An unsolved word only ends when the sixth guess is used.
+    if (!solved && guesses !== 6) return { ok: false, error: "Invalid guesses." };
+    return { ok: true, value: { kind: "play_round", metadata: { game: "daily_word", solved, guesses } } };
+  }
+  return parseArcadeGame(raw);
+}
+
+const isCount = (v: unknown, max: number): v is number => typeof v === "number" && Number.isInteger(v) && v >= 0 && v <= max;
+const TIMELINE_PACK_IDS = new Set(TIMELINE_PACKS.map((p) => p.id));
+const PLACE_PACK_IDS = new Set(PLACE_PACKS.map((p) => p.id));
+
+/**
+ * The arcade games (2026-11-18). Each field is checked against what a real
+ * game can produce; anything else, or an extra field, is refused. Ceilings
+ * are generous (a game has no clock limit) but finite.
+ */
+const ARCADE: Record<string, { keys: string[]; check: (r: Record<string, unknown>) => boolean }> = {
+  number_rain: {
+    keys: ["world", "score", "blasts", "missed"],
+    check: (r) => levelById(r.world) !== undefined && isCount(r.score, 100_000) && isCount(r.blasts, 5000) && isCount(r.missed, 3),
+  },
+  word_groups: {
+    keys: ["puzzle", "won", "mistakes"],
+    check: (r) => isCount(r.puzzle, PUZZLES.length) && (r.puzzle as number) >= 1 && typeof r.won === "boolean" && isCount(r.mistakes, 4),
+  },
+  launch: {
+    keys: ["level", "hit", "shots"],
+    check: (r) =>
+      isCount(r.level, LAUNCH_LEVELS.length) && (r.level as number) >= 1 && typeof r.hit === "boolean" && isCount(r.shots, MAX_REPORTED_SHOTS) && (r.shots as number) >= 1,
+  },
+  element_hunt: {
+    keys: ["world", "score", "right", "wrong"],
+    check: (r) => [1, 2, 3].includes(r.world as number) && isCount(r.score, 20_000) && isCount(r.right, 500) && isCount(r.wrong, 200),
+  },
+  timeline: {
+    keys: ["pack", "placed", "won"],
+    check: (r) => typeof r.pack === "string" && TIMELINE_PACK_IDS.has(r.pack) && isCount(r.placed, 100) && typeof r.won === "boolean",
+  },
+  pin_it: {
+    keys: ["pack", "score"],
+    check: (r) => typeof r.pack === "string" && PLACE_PACK_IDS.has(r.pack) && isCount(r.score, PLACES_PER_ROUND * 1000),
+  },
+};
+
+function parseArcadeGame(raw: Record<string, unknown>): ParseClientEventResult {
+  const spec = typeof raw.game === "string" ? ARCADE[raw.game] : undefined;
+  if (!spec) return { ok: false, error: "Unknown game." };
+  const allowed = new Set(["kind", "game", ...spec.keys]);
+  if (Object.keys(raw).some((k) => !allowed.has(k))) return { ok: false, error: "Unknown field on a play round." };
+  if (!spec.check(raw)) return { ok: false, error: "Invalid play round." };
+  const metadata: Record<string, unknown> = { game: raw.game };
+  for (const k of spec.keys) metadata[k] = raw[k];
+  return { ok: true, value: { kind: "play_round", metadata } };
+}
+
 function parsePlayRound(raw: Record<string, unknown>): ParseClientEventResult {
+  if ("game" in raw) return parseWordGame(raw);
   if (Object.keys(raw).some((k) => !PLAY_KEYS.has(k))) return { ok: false, error: "Unknown field on a play round." };
   const level = levelById(raw.level);
   if (!level) return { ok: false, error: "Unknown level." };

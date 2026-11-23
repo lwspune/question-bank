@@ -23,6 +23,16 @@ describe("checkHref", () => {
     // UGC's own NET site, where NTA's bulletin sends candidates for the syllabus.
     expect(checkHref("https://www.ugcnetonline.in/syllabus-new.php")).toMatchObject({ official: true });
     expect(checkHref("https://www.cisce.org/")).toMatchObject({ official: true });
+    // The Indian Air Force's AFCAT site, run for it by EdCIL: only that host, not all of EdCIL.
+    expect(checkHref("https://afcat.edcil.co.in/assets/images/news/x.pdf")).toMatchObject({ official: true });
+    expect(checkHref("https://other.edcil.co.in/")).toMatchObject({ official: false });
+    // The IISERs' joint admissions portal, where the IAT brochure lives.
+    expect(checkHref("https://www.iiseradmission.in/assets/pdfs/IB_IAT_2026_ENG.pdf")).toMatchObject({ official: true });
+    // The Services Preparatory Institute's own site (Government of Maharashtra),
+    // which its notification names as the only place for instructions and results.
+    expect(checkHref("https://spicsn.com/wp-content/uploads/2026/10/Advt-2027-SPI.pdf")).toMatchObject({ official: true });
+    expect(checkHref("https://girlspinashik.spicsn.com/")).toMatchObject({ official: true });
+    expect(checkHref("https://notspicsn.com/")).toMatchObject({ official: false });
     expect(checkHref("https://indianexpress.com/x")).toEqual({ ok: true, external: true, official: false });
   });
 

@@ -1,53 +1,18 @@
 name: Grant missed payments
 
-# Grant captured Razorpay payments that nothing granted (2026-11-15).
+# The payment check (2026-11-15): grant captured Razorpay payments and paid
+# Paddle transactions that nothing granted, and (2026-11-22, migration 0283)
+# email the owner when a paid order had no webhook delivery.
 #
-# WHY A SCHEDULE. A pass is granted by the buyer's browser after checkout or
-# by Razorpay's order.paid webhook. On 2026-11-15 a ₹197 UPI payment got
-# neither, and a ₹499 one on 2026-11-01 waited three days for a hand grant.
-# Only something that goes looking finds those.
-#
-# Every 30 minutes, so a stranded buyer waits half an hour, not days. The job
-# looks back 3 days and leaves anything under 15 minutes old to the webhook.
-# It grants by the webhook's own rule and is safe to repeat (one row per
-# payment, enforced by the database). It emails the owner only when it
-# granted something or could not.
+# THE MAIN RUN IS ON VERCEL since 2026-11-22: /api/cron/payment-check every 30
+# minutes (vercel.json crons). This job's "every 30 minutes" schedule ran
+# every 6 to 8 hours (19-22 Nov), so a stranded buyer waited most of a day.
+# It stays as a DAILY BACKUP (in case Vercel's scheduler or CRON_SECRET
+# breaks) and for runs by hand. The two may overlap safely: a grant is one
+# row per payment and the alarm one email per day, both enforced by the database.
 #
 # Needs two secrets beyond the usual ones: RAZORPAY_KEY_ID and
 # RAZORPAY_KEY_SECRET (the same pair as Vercel's). Without them the run fails,
 # which is deliberate: a check that silently does nothing is the problem this fixes.
 
-on:
-  schedule:
-    - cron: "*/30 * * * *"
-  workflow_dispatch: # run on demand from the Actions tab
 
-concurrency:
-  group: billing-reconcile
-  cancel-in-progress: false
-
-jobs:
-  reconcile:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          # MUST match ci.yml and package.json engines (">=22"); see db-health.yml.
-          node-version: 22
-          cache: npm
-
-      - run: npm ci
-
-      - name: Grant missed payments
-        env:
-          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-          RAZORPAY_KEY_ID: ${{ secrets.RAZORPAY_KEY_ID }}
-          RAZORPAY_KEY_SECRET: ${{ secrets.RAZORPAY_KEY_SECRET }}
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
-        # --apply lives here and nowhere else: running it by hand stays a dry run.
-        run: npm run billing:reconcile -- --apply

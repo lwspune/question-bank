@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import * as Popover from "@radix-ui/react-popover";
-import { BookMarked, BookOpen, Bookmark, GraduationCap, Building2, CreditCard, FileCheck2, FileText, LayoutDashboard, Lightbulb, LogOut, MessageSquarePlus, PenLine, ShieldCheck, TrendingUp, User, Target } from "lucide-react";
+import { BookMarked, BookOpen, Bookmark, GraduationCap, Building2, CreditCard, FileCheck2, FileText, LayoutDashboard, Lightbulb, LogOut, MessageSquarePlus, PenLine, School, ShieldCheck, TrendingUp, User, Target } from "lucide-react";
 import { toast } from "sonner";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { totalsLine, type Pulse } from "@/lib/pulse/cache";
@@ -14,6 +14,7 @@ import { drillHref } from "@/lib/drill/from";
 import { VaultPointsMenuLine } from "@/components/billing/useFixPoints";
 import { InviteFriendMenuLink } from "@/components/referrals/InviteFriendCard";
 import GetAppMenuLink from "@/components/install/GetAppMenuLink";
+import { trackFunnel } from "@/lib/analytics/trackFunnel";
 
 export default function UserMenu({
   email,
@@ -34,7 +35,7 @@ export default function UserMenu({
    *  and then the badge and the two lines below render; nothing is shown for
    *  a zero due count, because an empty badge is noise. */
   pulse?: Pulse | null;
-  /** The active exam's Guides link (lib/exam/examNav), for the phone-only Guides entry. */
+  /** The active exam's Guides link (lib/exam/examNav), for the Guides entry (every width since 2026-11-18). */
   guidesHref?: string;
   /** The active exam's Learn course, or the Learn hub (lib/exam/examNav). */
   learnHref?: string;
@@ -137,9 +138,11 @@ export default function UserMenu({
             </Link>
           )}
           {/*
-            Guides, Papers and Books are PHONE-ONLY entries (`sm:hidden`): from sm
+            Papers and Books are PHONE-ONLY entries (`sm:hidden`): from sm
             up they are tabs in PrimaryNav, and duplicating them here would give
-            two answers to "where do I go?". Below sm they are deliberately not
+            two answers to "where do I go?". Guides is here at EVERY width since
+            2026-11-18 (owner): its tab left PrimaryNav so the tabs fit beside
+            Ebooks, Classes and Play. Below sm they are deliberately not
             in the tab bar — that bar is a fixed five for every visitor, and
             Papers/Books are desktop work for ten staff against three hundred
             students. See lib/nav/mobileTabs.ts.
@@ -156,7 +159,7 @@ export default function UserMenu({
           */}
           <Link
             href={guidesHref}
-            className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none sm:hidden"
+            className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"
           >
             <BookOpen className="h-4 w-4" aria-hidden />
             Guides
@@ -232,9 +235,9 @@ export default function UserMenu({
             )}
           </Link>
           <Link
-            // prefetch off: /progress opens /performance or /me/map, per-user
-            // server renders (one behind a ~500 ms RPC), and a prefetch would
-            // run them for anyone who merely opened this menu.
+            // prefetch off: /progress opens /performance, a per-user server
+            // render behind a ~500 ms RPC, and a prefetch would run it for
+            // anyone who merely opened this menu.
             prefetch={false}
             href="/progress"
             className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"
@@ -265,6 +268,20 @@ export default function UserMenu({
             <CreditCard className="h-4 w-4" aria-hidden />
             Account &amp; access
           </Link>
+          {/* Offline classes in Pune (owner, 2026-11-23): moved here from the
+              header, so only signed-in visitors reach the lead form, and only
+              students (teachers and staff never get the /me class card
+              either). The tap still counts as classes_link_click. */}
+          {role === null && !isStaff && (
+            <Link
+              href="/classes?from=menu"
+              onClick={() => trackFunnel("classes_link_click", { from: "menu" })}
+              className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"
+            >
+              <School className="h-4 w-4" aria-hidden />
+              Offline classes
+            </Link>
+          )}
           {/* Referrals (0249), students only: staff do not buy a pass. */}
           {role === null && !isStaff && (
             <InviteFriendMenuLink className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none" />

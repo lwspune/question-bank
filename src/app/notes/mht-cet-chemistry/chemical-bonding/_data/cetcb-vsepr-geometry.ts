@@ -134,6 +134,7 @@ export const VSEPR_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "cetcb-vsepr-shape-table",
       name: "The master shape table (AXnEm to geometry)",
+      visualizationSlug: "imat-vsepr-shapes",
       intuition:
         "Once you have the bond-pair and lone-pair counts, the shape is a straight table lookup. Write the molecule as \\(\\text{AX}_n\\text{E}_m\\) — A central atom, X bonded atoms, E lone pairs — and read off the name and ideal bond angle. This one table answers every 'what is the shape?' PYQ.",
       definition:

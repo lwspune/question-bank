@@ -13,6 +13,7 @@ export const VALUES_ITF_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jitf-triangle",
       name: "Reading ratios off a right triangle",
+      visualizationSlug: "jee-inverse-trig-triangles",
       intuition:
         "Each inverse function names an angle. For \\(A=\\tan^{-1}\\frac{8}{15}\\), draw a right triangle with opposite side 8 and adjacent side 15; the hypotenuse is 17, so \\(\\sin A=\\frac8{17}\\) and \\(\\cos A=\\frac{15}{17}\\). With every angle's sine and cosine known, the formulas for \\(\\sin(A\\pm B)\\) and \\(\\cos(A\\pm B)\\) finish the job.",
       definition:

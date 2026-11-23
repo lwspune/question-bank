@@ -6,7 +6,7 @@ export const SPI_LO_REFLECTION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Light is a transverse electromagnetic wave that travels in straight lines, and when it bounces off a mirror the angle of reflection always equals the angle of incidence.",
   whyItMatters:
-    "Six questions in the bank, all EASY: what kind of wave light is, what a bundle of rays is called, whether the angle of reflection always equals the angle of incidence, and twice which mirror gives the widest view. Each is one fact, so a short table and the two laws of reflection cover the page.",
+    "Eight questions in the bank, seven EASY and one MODERATE, two from the 2026 paper: what kind of wave light is, what a bundle of rays is called, whether the angle of reflection always equals the angle of incidence, which mirror gives the widest view (twice) or a full image of a tall building, and where a concave mirror puts the image of an object at its focus. Each is one fact, so a short table and the two laws of reflection cover the page.",
   concepts: [
     {
       kind: "reference" as const,
@@ -123,6 +123,9 @@ export const SPI_LO_REFLECTION_NOTE: SubtopicNote = {
             cells: ["Concave, object far away", "Real and inverted", "Torch and headlight reflectors, solar cookers"],
           },
           {
+            cells: ["Concave, object at the focus", "At infinity: the reflected rays go out parallel", "Searchlights send out a parallel beam this way"],
+          },
+          {
             cells: ["Concave, object very close", "Virtual, erect, enlarged", "Shaving and make-up mirrors, a dentist's mirror"],
           },
           {
@@ -143,7 +146,7 @@ export const SPI_LO_REFLECTION_NOTE: SubtopicNote = {
         { prompt: "A spherical mirror has a radius of curvature of 30 cm. What is its focal length?", answer: "15 cm" },
         { prompt: "Which mirror is used as a shaving mirror?", answer: "Concave mirror" },
       ],
-      pyqExampleId: "9ab36a8a-82a9-4d87-9284-c952144c247c",
+      pyqExampleId: "76d8fe87-aa67-406c-b169-a4b5840d2a88",
       traps: [
         {
           title: "Choosing a plane mirror for the rear view",

@@ -12,6 +12,7 @@ export const NEET_PH_OS_EQUATION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphos-equation",
       name: "Displacement, amplitude, period and phase",
+      visualizationSlug: "osc-shm-displacement-time",
       intuition:
         "A motion that repeats itself after a fixed time is periodic. If it also goes to and fro about a mean position, it is an oscillation. Simple harmonic motion (SHM) is the simplest oscillation: the displacement is a sine (or cosine) of time. Picture a point going round a circle at a steady speed and look at its shadow on a diameter. The shadow moves to and fro in SHM, with the radius as its amplitude and the point's angular speed as its ω.",
       definition:
@@ -75,6 +76,7 @@ export const NEET_PH_OS_EQUATION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphos-motion",
       name: "Velocity, acceleration and the test for SHM",
+      visualizationSlug: "cet-shm-reference-circle",
       intuition:
         "Differentiate the displacement and the velocity comes out as a cosine, a quarter cycle ahead. Differentiate again and the acceleration is minus ω² times the displacement: it always points back towards the mean position and grows with the distance from it. That is the test for SHM. If a body's acceleration is proportional to its displacement and opposite to it, the body does SHM.",
       definition:

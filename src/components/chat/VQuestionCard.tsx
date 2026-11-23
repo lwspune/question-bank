@@ -12,6 +12,7 @@ import { followUpCardCopy } from "@/lib/chat/followUp";
 import { parseVPassOffer, type VPassOffer as Offer } from "@/lib/chat/passOffer";
 import { liftDailyLimit } from "@/components/reveal/useRevealMeter";
 import VPassOffer from "./VPassOffer";
+import { noteStudyQuestion } from "@/lib/studyTime/clientStore";
 
 type Result = { correct: boolean; answer: string } | { offer: Offer } | null;
 
@@ -41,12 +42,15 @@ export default function VQuestionCard({
   after,
   onMore,
   onNavigate,
+  heading,
 }: {
   id: string;
   kind: "try" | "confirm";
   after?: string;
   onMore?: () => void;
   onNavigate?: () => void;
+  /** In place of "Try this one": a chapter lesson's question is "Your turn" (2026-11-21). */
+  heading?: string;
 }) {
   const [q, setQ] = useState<CardQuestion | null>(null);
   const [failed, setFailed] = useState(false);
@@ -74,6 +78,9 @@ export default function VQuestionCard({
   }
 
   async function check(label: string) {
+    // The study clock puts the time around this answer on its chapter. At the
+    // answer, not on mount: reopening V re-mounts old cards.
+    noteStudyQuestion(id);
     try {
       const res = await fetch("/api/chat/question", {
         method: "POST",
@@ -101,7 +108,14 @@ export default function VQuestionCard({
 
   return (
     <div className="ml-9 mt-2 space-y-2 rounded-xl border bg-card p-3 text-sm shadow-sm" aria-label={kind === "try" ? "A question to try" : "Is this your question?"}>
-      <p className="text-xs font-medium text-muted-foreground">{kind === "try" ? `Try this one · ${q.where}` : `Is this your question? · ${q.where}`}</p>
+      {kind === "try" && heading ? (
+        // A lesson's check question reads as a turn, not a suggestion (mockup's "YOUR TURN", owner 2026-11-21).
+        <p className="text-xs text-muted-foreground">
+          <span className="font-bold uppercase tracking-wide text-brand-accent">{heading}</span> · {q.where}
+        </p>
+      ) : (
+        <p className="text-xs font-medium text-muted-foreground">{kind === "try" ? `Try this one · ${q.where}` : `Is this your question? · ${q.where}`}</p>
+      )}
       {q.context && (
         <div className="whitespace-pre-wrap font-serif text-muted-foreground">
           <MathBlockText text={q.context} />

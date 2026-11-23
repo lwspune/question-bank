@@ -36,7 +36,7 @@ import type { VTool } from "./anthropic";
 import { chapterPath, examsNamed, type ChapterSearchRow } from "./chapterSearch";
 import { rankChapters, subjectNamed, subjectsOf, type StrategyData } from "./examStrategy";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
-import { daysUntilIst, resolveExamDate, sanitizeExamDate } from "@/lib/exam/calendar";
+import { daysUntilIst, resolveExamDate, sanitizeExamDate, type SittingEntry } from "@/lib/exam/calendar";
 import { bandOf } from "@/lib/performance/masteryMap";
 
 export type PlanItem =
@@ -205,6 +205,8 @@ export type PlanDeps = {
   now: () => Date;
   loadChapters: () => Promise<readonly ChapterSearchRow[]>;
   loadProfile: () => Promise<{ targetExams: string[]; examDate: string | null; weeklyGoal: number | null }>;
+  /** The exam calendar (lib/exam/calendarQuery loadExamCalendar); [] = no calendar date. */
+  loadCalendar: () => Promise<readonly SittingEntry[]>;
   /** Saves the student's exam date to their profile (student_profiles.exam_date). */
   saveExamDate: (date: string) => Promise<void>;
   loadStrategy: (examSlug: string) => Promise<StrategyData | null>;
@@ -219,11 +221,12 @@ export type PlanDeps = {
   onPlan: () => void;
   /**
    * The student's board path (MENTOR_SPEC.md Phase 2), when the route can
-   * read it: a student on it is answered from it, a Class 12 board student
-   * without one is offered it. Absent = plans as before.
+   * read it: a student on it is answered from it. Since 2026-11-22 the plan
+   * takes no new starters, so an "offer" is planned as a one-week plan like any
+   * other student. Absent = plans as before.
    */
   loadPath?: () => Promise<PathForV>;
-  /** The path card is shown in the chat under this reply. */
+  /** The plan's card is pinned at the top of the chat (VPlanPin). */
   onPath?: () => void;
 };
 
@@ -253,16 +256,9 @@ function pathReply(p: Extract<PathForV, { kind: "on" }>, ask: "week" | "today"):
     ...p.today,
     ...(ask === "week" && p.week.length > 0 ? ["The coming days, if they do each day's card:", ...p.week] : []),
     ask === "week"
-      ? "Today's card is shown below this reply and every day's card is on /me. In two or three sentences say what today holds and which chapters the coming days cover; do not make a different plan."
-      : "Today's card is shown below this reply and on /me. Say what is done first, then the next task.",
-    "If they say their class is on a different chapter, tell them to tap Switch chapter on the card on /me, or Update what your class has covered there; do not change the plan yourself.",
-  ].join("\n");
-}
-
-function offerReply(p: Extract<PathForV, { kind: "offer" }>): string {
-  return [
-    `The student has a Class 12 board among their exams, no board plan yet, and nothing was planned or saved by this call. The board plan paces to the board exam (${p.examLine}): a few tasks a day, about ${p.minutes} minutes a day, 6 days a week, to finish every ${p.subjects} chapter (its revision sheet, Top 10 board questions and chapter test) before revision starts, starting with the chapters their class has covered. A new card each day is on /me, where it starts with one tap.`,
-    "Offer it in one or two sentences and link /me; never say the board plan is ready or has started, and quote none of these lines. It is set to the board exam, not to a school test, a preboard or a coaching test: if they named an earlier test, say so and offer a one-week plan for that test instead, made by calling plan_week again with week_only true.",
+      ? "Today's card is pinned at the top of this chat, open. In two or three sentences say what today holds and which chapters the coming days cover; do not make a different plan."
+      : "Today's card is pinned at the top of this chat, open. Say what is done first, then the next task.",
+    "The plan is only here in this chat; never send them to another page for it. If they say their class is on a different chapter, say they can practise that chapter today as well, and offer a one-week plan in their own order, made by calling plan_week again with week_only true; do not change the board plan yourself.",
   ].join("\n");
 }
 
@@ -328,7 +324,6 @@ export function planTools(deps: PlanDeps): [VTool, VTool] {
         deps.onPath?.();
         return pathReply(path, "week");
       }
-      if (path.kind === "offer" && slug === path.exam) return offerReply(path);
       const entry = EXAM_REGISTRY.find((e) => e.slug === slug)!;
 
       let examDate = profile.examDate;
@@ -338,7 +333,7 @@ export function planTools(deps: PlanDeps): [VTool, VTool] {
         await deps.saveExamDate(d);
         examDate = d;
       }
-      const countdown = resolveExamDate({ targetExams: [slug], examDate }, now);
+      const countdown = resolveExamDate({ targetExams: [slug], examDate }, now, await softly("calendar", () => deps.loadCalendar(), []));
       if (!countdown && i.date_unknown !== true) {
         return "Ask the student when their exam is (a date, or the month) so the plan can count down to it, then call again with exam_date. If they do not know, call again with date_unknown true.";
       }

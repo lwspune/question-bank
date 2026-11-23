@@ -41,6 +41,7 @@ export async function applyPaidOrder(decision: GrantDecision): Promise<ApplyPaid
     amountPaise: decision.grant.amountPaise,
     currency: decision.grant.currency,
     note: decision.note,
+    ...(decision.provider ? { provider: decision.provider } : {}),
   });
   if (result.kind === "error") return { kind: "error", stage: "grant", message: result.message };
 

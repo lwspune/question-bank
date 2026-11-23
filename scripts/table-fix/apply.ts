@@ -111,7 +111,9 @@ function render(s: string): string {
       b.kind === "table"
         ? "<table><thead><tr>" + b.headers.map((c) => `<th>${inline(c)}</th>`).join("") + "</tr></thead><tbody>" +
           b.rows.map((r) => "<tr>" + r.map((c) => `<td>${inline(c)}</td>`).join("") + "</tr>").join("") + "</tbody></table>"
-        : `<div>${inline(b.text)}</div>`
+        : b.kind === "code"
+          ? `<pre>${b.code.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</pre>`
+          : `<div>${inline(b.text)}</div>`
     )
     .join("");
 }

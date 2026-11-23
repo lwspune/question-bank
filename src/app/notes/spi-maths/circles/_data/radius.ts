@@ -6,7 +6,7 @@ export const SPI_CI_RADIUS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A tangent touches a circle at one point, and the radius drawn to that point meets the tangent at a right angle.",
   whyItMatters:
-    "Fourteen questions in the bank, thirteen of them EASY: what a tangent is, the gap between parallel tangents, and the length of a tangent from a right triangle. Almost every one is a single use of Pythagoras, so the mark is lost only by putting the right angle at the wrong corner.",
+    "Sixteen questions in the bank, fifteen of them EASY and two from the 2026 paper: what a tangent is, how many common tangents two circles can have, the gap between parallel tangents, and the length of a tangent or a radius from a right triangle. Almost every one is a single use of Pythagoras, so the mark is lost only by putting the right angle at the wrong corner.",
   concepts: [
     {
       kind: "reference" as const,
@@ -27,6 +27,9 @@ export const SPI_CI_RADIUS_NOTE: SubtopicNote = {
           { cells: ["Tangents from a point inside the circle", "None"] },
           { cells: ["Tangents from a point on the circle", "Exactly one"] },
           { cells: ["Tangents from a point outside the circle", "Exactly two"] },
+          { cells: ["Common tangents of two circles far apart", "Four"] },
+          { cells: ["Common tangents of two circles touching from outside", "Three"] },
+          { cells: ["Common tangents of two circles cutting at two points", "Two"] },
           { cells: ["Tangents at the two ends of a diameter", "Parallel to each other"] },
           {
             cells: ["Distance between two parallel tangents", "The diameter, 2r"],
@@ -46,7 +49,7 @@ export const SPI_CI_RADIUS_NOTE: SubtopicNote = {
         { prompt: "A circle has radius 5.5 cm. How far apart are two of its parallel tangents?", answer: "11 cm" },
         { prompt: "How many tangents can be drawn to a circle from a point outside it?", answer: "Two" },
       ],
-      pyqExampleId: "cb6f62b0-9e9d-4b2b-bf98-c068e1c7871c",
+      pyqExampleId: "faa8ed35-867d-4c74-b54f-c7e06b523405",
       traps: [
         {
           title: "Giving the radius as the gap between parallel tangents",
@@ -101,7 +104,7 @@ export const SPI_CI_RADIUS_NOTE: SubtopicNote = {
           answer: "\\(OP = 13\\) cm, so the perimeter is \\(5 + 12 + 13 = 30\\) cm",
         },
       ],
-      pyqExampleId: "da30de94-a297-4e36-bfbd-ae1ad9885d01",
+      pyqExampleId: "d81ff10b-46e7-413f-a8cb-3bf40fb945c0",
       traps: [
         {
           title: "Adding the squares when one is the hypotenuse",

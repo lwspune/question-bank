@@ -12,6 +12,7 @@ export const SSC_PP_SUCCESSIVE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscppsc-factor",
       name: "Successive changes as a product of factors",
+      visualizationSlug: "af-area-change",
       intuition:
         "A rise of 20% turns 100 into 120, so it multiplies by 1.2. A fall of 15% multiplies by 0.85. The second change acts on the new value, not on the first one, so the factors multiply and the percentages never simply add.",
       definition:

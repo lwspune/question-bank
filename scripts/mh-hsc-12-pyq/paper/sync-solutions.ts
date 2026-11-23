@@ -22,8 +22,14 @@
  * It matches on (source_file, question_number), the pair that identifies a row
  * within one sitting, and reports any ref it cannot find rather than silently
  * updating nothing.
+ *
+ * `--pull` runs the other way: it copies each LIVE solution that differs into the
+ * transcription, and writes nothing to the database. Added 2026-11-23 after
+ * phy-jun-2025 Q.27: a later edit had gone to the live row only, so a plain
+ * sync would have reverted it. When the live text is the newer one, `--pull`
+ * makes the source agree first; only then is a push safe.
  */
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { PAPERS, requirePaper, questionsJsonPath } from "./config";
@@ -35,6 +41,7 @@ if (existsSync(envLocal)) require("dotenv").config({ path: envLocal, override: t
 async function main() {
   const id = process.argv[2];
   const apply = process.argv.includes("--apply");
+  const pull = process.argv.includes("--pull");
   if (!id) {
     console.error(`usage: tsx scripts/mh-hsc-12-pyq/paper/sync-solutions.ts <paperId> [--apply]`);
     console.error(`known: ${Object.keys(PAPERS).join(", ")}`);
@@ -57,7 +64,7 @@ async function main() {
   if (!rows?.length) throw new Error(`${id}: no committed rows for source_file ${paper.sourceFile}`);
 
   const byRef = new Map(rows.map((r) => [String(r.question_number), r]));
-  const changed: { ref: string; id: string; solution: string; wasLen: number }[] = [];
+  const changed: { ref: string; id: string; solution: string; wasLen: number; live: string }[] = [];
   const missing: string[] = [];
   let identical = 0;
 
@@ -71,7 +78,7 @@ async function main() {
       continue;
     }
     if ((row.solution ?? "") === q.solution) identical++;
-    else changed.push({ ref: q.ref, id: row.id, solution: q.solution, wasLen: (row.solution ?? "").length });
+    else changed.push({ ref: q.ref, id: row.id, solution: q.solution, wasLen: (row.solution ?? "").length, live: row.solution ?? "" });
   }
 
   console.log(`${paper.id}  source_file ${paper.sourceFile}`);
@@ -81,6 +88,22 @@ async function main() {
   for (const c of changed) console.log(`    ${c.ref}: ${c.wasLen} chars -> ${c.solution.length} chars`);
   if (missing.length) console.log(`  no committed row  : ${missing.length}  (${missing.slice(0, 8).join(", ")}${missing.length > 8 ? ", ..." : ""})`);
 
+  if (pull) {
+    if (!apply) {
+      console.log(`\n[dry-run --pull] would copy ${changed.length} live solution(s) into the transcription; pass --apply to write.`);
+      return;
+    }
+    const raw = readFileSync(questionsJsonPath(id), "utf8");
+    const byRefQ = new Map(qs.map((q) => [q.ref, q]));
+    for (const c of changed) {
+      if (!c.live.trim()) throw new Error(`${c.ref}: live solution is empty; refusing to blank the source`);
+      byRefQ.get(c.ref)!.solution = c.live;
+    }
+    const indent = /^\[\r?\n( +)/.exec(raw)?.[1].length ?? 2;
+    writeFileSync(questionsJsonPath(id), JSON.stringify(qs, null, indent) + (raw.endsWith("\n") ? "\n" : ""));
+    console.log(`\npulled ${changed.length} live solution(s) into the transcription. The database is untouched.`);
+    return;
+  }
   if (!apply) {
     console.log(`\n[dry-run] pass --apply to write.`);
     return;

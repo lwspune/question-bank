@@ -108,6 +108,7 @@ export const OXIDATION_NUMBER_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetrdx-on-change",
       name: "The Change in Oxidation Number Across a Reaction",
+      visualizationSlug: "cet-oxidation-ladder",
       intuition:
         "Find the atom's number on the left and on the right; the difference is the change, and its direction tells you oxidation (up) or reduction (down). If the number is the same on both sides, that atom is neither oxidised nor reduced — even when its formula changes.",
       definition:

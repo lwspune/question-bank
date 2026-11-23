@@ -1,6 +1,7 @@
 import { parseRichSegments, parseRichText, type RichInline } from "./parseLatex";
 import { matchUnderlineBypass } from "./underlineBypass";
 import { parseTableBlocks } from "./parseTableBlocks";
+import { glueRuns } from "./mathGlue";
 
 /**
  * The markup KatexRenderer, RichText and BlockText draw, with the equation
@@ -27,45 +28,68 @@ export function KatexTree({ text, className, math }: { text: string; className?:
   // bold is resolved before the math split, and each run carries the flag.
   const segments = parseRichSegments(text);
 
-  return (
-    <span className={className}>
-      {segments.map((seg, i) => {
-        if (seg.type === "block") return <Block key={i} tex={seg.content} />;
-        let node: JSX.Element;
-        if (seg.type === "inline") {
-          // Underlined English/Biology words are stored as a math zone
-          // (\underline{\text{word}}); render them in the body font instead of
-          // KaTeX so the typeface matches and line-clamp isn't broken. See
-          // underlineBypass.ts (mirrors the docx UNDERLINE_BYPASS_RE).
-          const u = matchUnderlineBypass(seg.content);
-          node = u ? (
-            <span>
-              <span
-                style={{
-                  textDecoration: "underline",
-                  fontStyle: u.italic ? "italic" : undefined,
-                }}
-              >
-                {u.word}
-              </span>
-              {u.trailing}
-            </span>
+  return <span className={className}>{drawGlued(segments, (seg, key) => drawSegment(seg, key, math))}</span>;
+}
+
+/**
+ * A formula and the punctuation touching it in one no-wrap span (mathGlue.ts).
+ * The span holds the seams between them; a long formula (`whole: false`) gets
+ * wrapping back inside itself, so it can still break across lines.
+ */
+function drawGlued<T extends RichInline>(runs: T[], draw: (run: T, key: number) => JSX.Element) {
+  return glueRuns(runs).map((g, i) =>
+    g.kind === "one" ? (
+      draw(g.run, i)
+    ) : (
+      <span key={i} style={{ whiteSpace: "nowrap" }}>
+        {g.parts.map((p, j) =>
+          g.whole || p.type !== "inline" ? (
+            draw(p, j)
           ) : (
-            <Inline tex={seg.content} />
-          );
-        } else {
-          node = <span style={{ whiteSpace: "pre-wrap" }}>{seg.content}</span>;
-        }
-        // *italic* wraps prose and inline math (block math returned above).
-        if (seg.italic) node = <em>{node}</em>;
-        return seg.bold ? <strong key={i}>{node}</strong> : <span key={i}>{node}</span>;
-      })}
-    </span>
+            <span key={j} style={{ whiteSpace: "normal" }}>
+              {draw(p, j)}
+            </span>
+          )
+        )}
+      </span>
+    )
   );
 }
 
+function drawSegment(seg: RichInline, key: number, { Inline, Block }: MathSet): JSX.Element {
+  if (seg.type === "block") return <Block key={key} tex={seg.content} />;
+  let node: JSX.Element;
+  if (seg.type === "inline") {
+    // Underlined English/Biology words are stored as a math zone
+    // (\underline{\text{word}}); render them in the body font instead of
+    // KaTeX so the typeface matches and line-clamp isn't broken. See
+    // underlineBypass.ts (mirrors the docx UNDERLINE_BYPASS_RE).
+    const u = matchUnderlineBypass(seg.content);
+    node = u ? (
+      <span>
+        <span
+          style={{
+            textDecoration: "underline",
+            fontStyle: u.italic ? "italic" : undefined,
+          }}
+        >
+          {u.word}
+        </span>
+        {u.trailing}
+      </span>
+    ) : (
+      <Inline tex={seg.content} />
+    );
+  } else {
+    node = <span style={{ whiteSpace: "pre-wrap" }}>{seg.content}</span>;
+  }
+  // *italic* wraps prose and inline math (block math returned above).
+  if (seg.italic) node = <em>{node}</em>;
+  return seg.bold ? <strong key={key}>{node}</strong> : <span key={key}>{node}</span>;
+}
+
 function renderRuns(runs: RichInline[], { Inline, Block }: MathSet) {
-  return runs.map((r, i) => {
+  return drawGlued(runs, (r, i) => {
     // Block math is never wrapped in <strong>: it renders a block element
     // (invalid inside inline markup) and KaTeX sets its own font anyway, so
     // the bold flag would be visually inert.
@@ -134,6 +158,17 @@ export function BlockTree({
       {blocks.map((b, i) =>
         b.kind === "text" ? (
           <Katex key={i} text={b.text} />
+        ) : b.kind === "code" ? (
+          // Code keeps its own lines and spacing; a long line scrolls rather than wraps,
+          // since a wrapped line of code reads as two statements. No tabIndex: on /browse
+          // the stem sits inside the expand button, and a focus stop inside a button is
+          // invalid; browsers already let the keyboard scroll an overflowing region.
+          <pre
+            key={i}
+            className="my-2 overflow-x-auto rounded-lg border bg-muted/40 p-3 font-mono text-[13px] leading-relaxed"
+          >
+            <code>{b.code}</code>
+          </pre>
         ) : (
           <div key={i} className="my-2 overflow-x-auto rounded-lg border bg-card">
             <table className="w-full border-collapse text-sm">

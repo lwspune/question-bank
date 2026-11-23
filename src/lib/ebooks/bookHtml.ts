@@ -457,6 +457,8 @@ export type ChapterwiseChapterInput = {
   printedOf: ReadonlyMap<string, PrintedLabel>;
   images?: Map<string, string>;
   head: string;
+  /** A book of several subjects (Homi Bhabha): the chapter's subject, on its eyebrow. */
+  classLabel?: string | null;
 };
 
 export function buildChapterwiseChapterHtml(input: ChapterwiseChapterInput): string {
@@ -466,12 +468,13 @@ export function buildChapterwiseChapterHtml(input: ChapterwiseChapterInput): str
   const count = new Set(all.map((q) => q.setId ?? q.id)).size;
   const header =
     `<header class="chead"><div class="cn">${String(input.number).padStart(2, "0")}</div><div>` +
-    `<div class="eyebrow">Chapter ${input.number} · ${esc(input.bookTitle)}</div><h1>${esc(input.name)}</h1>` +
+    `<div class="eyebrow">${eyebrow(input.number, input.classLabel ?? null)} · ${esc(input.bookTitle)}</div><h1>${esc(input.name)}</h1>` +
     `<div class="pmeta">${plural(count, "question", "questions")}</div></div></header>`;
   const body = input.groups
     .map(
       (g) =>
-        `<h3 class="mgroup">${esc(g.label)}</h3>` +
+        // An unmarked exam's chapter is one list with no heading (lib/ebooks/chapterwise "plain").
+        (g.label ? `<h3 class="mgroup">${esc(g.label)}</h3>` : "") +
         paperBodyHtml({ ...common, questions: g.questions, sectionOf: input.noteOf, headingEveryQuestion: true })
     )
     .join("");
@@ -569,6 +572,10 @@ const HOW: Record<EbookKind, string> = {
 };
 
 /** A competitive exam's Repeated PYQs book (2026-11-16): no board set these papers. */
+/** An exam's Chapter-wise PYQs book (Homi Bhabha): no board, no marks. */
+const HOW_EXAM_CHAPTERWISE =
+  "Each chapter gathers every past question on it, newest paper first. A line over each says when it was asked. The solutions close the chapter under the same numbers, so you can try them all before you check.";
+
 const HOW_EXAM_REPEATS =
   "Each chapter gathers the questions the exam has asked more than once, most-asked first, then the types of question it keeps coming back to. A line over each says when it was asked. The solutions close the chapter under the same numbers, so you can try them all before you check.";
 
@@ -582,6 +589,7 @@ const SEAL: Record<EbookKind, [string, string, string]> = {
   chapterwise: ["Every", "Chapter", "By marks"],
   textbook: ["Every", "Exercise", "Solved"],
 };
+const SEAL_EXAM_CHAPTERWISE: [string, string, string] = ["Every", "Chapter", "Solved"];
 
 /** The cover's closing line, beside the address. */
 const FOOT: Record<EbookKind, string> = {
@@ -610,9 +618,16 @@ export type EbookFrontInput = {
    * line for the buyer's name, which the download writes in (lib/ebooks/stamp).
    */
   cover: { over: string; main: string; edition: string; namePlate?: boolean };
-  /** Who set the papers (lib/ebooks/paperBooks RepeatsEbook): "exam" words a Repeated PYQs book without "the board". */
+  /** Who set the papers (lib/ebooks/paperBooks): "exam" words a Repeated or Chapter-wise PYQs book without "the board". */
   examiner?: "board" | "exam";
 };
+
+/** The front page's line on how the book works; an exam's books never say "the board". */
+function howOf(input: Pick<EbookFrontInput, "kind" | "examiner">): string {
+  if (input.examiner === "exam" && input.kind === "repeats") return HOW_EXAM_REPEATS;
+  if (input.examiner === "exam" && input.kind === "chapterwise") return HOW_EXAM_CHAPTERWISE;
+  return HOW[input.kind];
+}
 
 /** Navy and gold, full bleed. Shadows are safe here: the cover is one page and never breaks. */
 const PREMIUM_CSS = `
@@ -673,7 +688,7 @@ const PREMIUM_CSS = `
 
 function premiumCoverHtml(input: EbookFrontInput): string {
   const { cover } = input;
-  const seal = SEAL[input.kind];
+  const seal = input.kind === "chapterwise" && input.examiner === "exam" ? SEAL_EXAM_CHAPTERWISE : SEAL[input.kind];
   const stats = input.stats.map((s) => `<div class="pc-stat"><b>${esc(s.value)}</b><span>${esc(s.label)}</span></div>`).join("");
   return (
     `<section class="pcover${cover.namePlate ? " named" : ""}"><div class="pc-top"><span class="pc-brand"><i></i>PYQ VAULT</span><span class="pc-ed">${esc(cover.edition)}</span></div>` +
@@ -700,7 +715,7 @@ export function buildEbookFrontHtml(input: EbookFrontInput): string {
     `<style>${PAPER_CSS}${THEME_CSS}${FRONT_CSS}${PREMIUM_CSS}</style></head><body style="--acc:${ACCENT[input.kind]}">` +
     premiumCoverHtml(input) +
     `<section class="toc"><div class="eyebrow">${KIND_LABEL[input.kind]} · ${esc(input.title)}</div><h2>Contents</h2>` +
-    `<p class="how">${input.kind === "repeats" && input.examiner === "exam" ? HOW_EXAM_REPEATS : HOW[input.kind]}</p><table><tbody>${rows}</tbody></table></section>` +
+    `<p class="how">${howOf(input)}</p><table><tbody>${rows}</tbody></table></section>` +
     `</body></html>`
   );
 }

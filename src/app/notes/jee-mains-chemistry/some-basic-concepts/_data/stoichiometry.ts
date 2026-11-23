@@ -68,6 +68,7 @@ export const STOICHIOMETRY_SBC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcsbc-limiting",
       name: "Limiting reagent and the excess left",
+      visualizationSlug: "jee-limiting-reagent",
       intuition:
         "Divide each reactant's moles by its coefficient. The smallest result runs out first and fixes how much product forms. The other reactant is left over by whatever it did not need.",
       definition:

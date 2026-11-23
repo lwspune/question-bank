@@ -13,6 +13,7 @@ export const BINOMIAL_PROB_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jprob-binomial",
       name: "Binomial probabilities",
+      visualizationSlug: "binomial-tail-shading",
       intuition:
         "For \\(n\\) independent trials with success probability \\(p\\), exactly \\(r\\) successes happen with probability \\(\\binom nrp^rq^{n-r}\\). 'At least \\(r\\)' adds the top terms or subtracts the bottom ones, whichever is shorter. A ratio of two terms cancels the binomial coefficients when they are symmetric, leaving a power of \\(\\frac qp\\); an equation like \\(P(X=3)=5P(X=4)\\) gives \\(\\frac qp\\) directly.",
       definition:
@@ -58,6 +59,7 @@ export const BINOMIAL_PROB_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jprob-binomial-moments",
       name: "Recovering n and p from the mean and variance",
+      visualizationSlug: "binomial-mean-spread",
       intuition:
         "Mean \\(np\\) and variance \\(npq\\) give \\(q\\) as their ratio: \\(q=\\frac{\\text{variance}}{\\text{mean}}\\). If their sum and product are given instead, they are the roots of a quadratic; the larger root is the mean, since \\(q<1\\). Then \\(p=1-q\\) and \\(n=\\frac{\\text{mean}}p\\).",
       definition:

@@ -207,6 +207,7 @@ export const SSC_M3_CUBOIDS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscm3cu-diagonal",
       name: "The longest diagonal of a cuboid and a cube",
+      visualizationSlug: "af-cuboid-diagonal",
       intuition:
         "The longest straight rod that fits in a box runs from one bottom corner to the opposite top corner. Use Pythagoras twice: across the floor, then up.",
       definition:

@@ -75,6 +75,7 @@ export const NEET_PH_EF_FIELD_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphef-field",
       name: "Electric field, field lines and charge density",
+      visualizationSlug: "field-lines-charge",
       intuition:
         "A charge changes the space around it, so that any other charge placed there feels a force. The electric field at a point is that force on each coulomb of a small positive test charge. Field lines draw the field: they leave positive charges, end on negative ones, and crowd together where the field is strong. When charge is spread over a wire or a surface, we describe it by how much charge sits on each metre or each square metre.",
       definition:

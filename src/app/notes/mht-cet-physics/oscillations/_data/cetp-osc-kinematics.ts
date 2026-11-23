@@ -15,6 +15,7 @@ export const KINEMATICS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-osc-velocity-displacement",
       name: "Velocity, Acceleration and Displacement",
+      visualizationSlug: "cet-shm-reference-circle",
       intuition:
         "Everything follows from v² = ω²(A² − x²) and a = −ω²x. At the mean position the speed is largest, ωA, and the acceleration zero; at the extremes the speed is zero and the acceleration ω²A. Two positions with known speeds give two equations: subtract them and A drops out, leaving ω; divide and ω drops out, leaving A. Given accelerations instead, use a = ω²x to turn them into positions. Maximum velocity and maximum acceleration together give both A = v²/a and ω = a/v.",
       definition:
@@ -58,6 +59,7 @@ export const KINEMATICS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-osc-phase-and-time",
       name: "Phase, and Time to Reach a Point",
+      visualizationSlug: "osc-shm-displacement-time",
       intuition:
         "Write x = A sin ωt if the particle starts at the mean position, x = A cos ωt if it starts at an extreme. The phase ωt then tells you where it is: from the mean position it reaches A/2 at ωt = π/6 (T/12), A/√2 at π/4 (T/8), and the extreme at π/2 (T/4). Each full oscillation adds 2π of phase. Velocity leads displacement by π/2 and acceleration is opposite to displacement, π out of phase — so force against time is the displacement graph turned upside down.",
       definition:

@@ -12,6 +12,7 @@ export const SSC_M2_SECTORS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscm2se-fraction",
       name: "Sector area as a fraction of the circle's area",
+      visualizationSlug: "imat-sector-arc",
       intuition:
         "A sector takes the same share of the circle's area as its angle takes of 360°, exactly as the arc took that share of the circumference. A 90° sector is a quarter of the disc.",
       definition:

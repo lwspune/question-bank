@@ -1,0 +1,57 @@
+name: Database alive
+
+# Every 5 minutes: does the database answer? Emails ALERT_EMAIL once when it
+# stops (3 failed tries over about a minute), every 2 hours while it stays down,
+# and once when it is back. Added 2026-11-22 after the host froze at 00:47 IST
+# and nobody knew until 06:00. scripts/monitor/db-alive.mjs.
+#
+# No npm install and no setup-node: the check is plain Node with no imports, so
+# it still runs when a dependency or the registry is broken. Up/down is kept in
+# GitHub's cache (the database is what is down when it matters).
+#
+# GitHub may start a 5-minute schedule late when its runners are busy; an alert
+# can be 5-15 minutes behind the outage. --apply lives HERE only.
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: db-alive
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: scripts/monitor
+
+      - name: Last known state
+        uses: actions/cache/restore@v4
+        with:
+          path: .db-alive
+          key: db-alive-${{ github.run_id }}
+          restore-keys: db-alive-
+
+      - name: Check the database
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          ALERT_EMAIL: ${{ secrets.ALERT_EMAIL }}
+        run: node scripts/monitor/db-alive.mjs --apply
+
+      - name: Save state
+        if: always() && hashFiles('.db-alive/state.json') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: .db-alive
+          key: db-alive-${{ github.run_id }}-${{ github.run_attempt }}

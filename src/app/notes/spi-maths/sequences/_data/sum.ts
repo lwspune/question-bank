@@ -6,7 +6,7 @@ export const SPI_SQ_SUM_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The sum of n terms of an AP is n/2 times the first term plus the last term, or n/2 times (2a + (n − 1)d) when the last term is not known.",
   whyItMatters:
-    "Fourteen questions in the bank, 8 EASY, 4 MODERATE and 2 HARD, and one is from the 2022 paper. Two formulas do all the work, plus three habits: knowing the standard sums, solving for n when the sum is given, and reading terms off a sum written in n. The two HARD ones are the same formulas with letters in place of numbers.",
+    "Seventeen questions in the bank, 9 EASY, 6 MODERATE and 2 HARD: one from the 2022 paper and three from the 2026 paper. Two formulas do all the work, plus three habits: knowing the standard sums, solving for n when the sum is given, and reading terms off a sum written in n. The two HARD ones are the same formulas with letters in place of numbers.",
   concepts: [
     {
       kind: "formula" as const,
@@ -54,7 +54,7 @@ export const SPI_SQ_SUM_NOTE: SubtopicNote = {
         },
         { prompt: "Find the sum of the first \\(n\\) terms of \\(2b, 4b, 6b, \\ldots\\)", answer: "\\(n(n + 1)b\\)" },
       ],
-      pyqExampleId: "95ef92ec-887d-4564-a7bc-5ec3f082d622",
+      pyqExampleId: "7c32f655-2f24-4060-96b0-e278b4bd3a5e",
       traps: [
         {
           title: "Giving the last term when the sum is asked",

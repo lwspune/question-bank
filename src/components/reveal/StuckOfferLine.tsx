@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { Lightbulb } from "lucide-react";
 import { stuckOfferLine, type StuckOffer } from "@/lib/questions/stuckOffer";
 import { askVText } from "@/lib/chat/askVEvent";
+import { teachChapterMessage } from "@/lib/chat/teachChapter";
 import { sendActivity, sendActivityOnce } from "@/lib/activity/clientBeacon";
 import VQuestionCard from "@/components/chat/VQuestionCard";
 import { dismissMoment } from "./momentStore";
@@ -12,12 +13,17 @@ import { dismissMoment } from "./momentStore";
 // Loaded on the first Teach tap only (2026-11-15): most offers are never
 // opened, and the notes blocks are not light.
 const TeachPanel = dynamic(() => import("./TeachPanel"), { ssr: false });
+// Where Learn teaches the topic (2026-11-22): its lesson, full screen, loaded on the tap.
+const LearnLessonOverlay = dynamic(() => import("@/components/learn/LearnLessonOverlay"), { ssr: false });
 
 /**
  * "3 of your last 4 on <subtopic> were wrong. Want help with the idea behind
  * it?" under a bank answer (owner, 2026-11-10). The rule is
  * lib/questions/stuckOffer; it is one of the moments MomentLine draws (the one line under an answer).
- * Teach me the idea opens our notes for the subtopic in a panel on the same
+ * Teach me the idea opens Learn's lesson for the topic full screen where Learn
+ * teaches it (2026-11-22, owner: "open the relevant concept"; for an MHT-CET or
+ * JEE topic no lesson is filed under, the Learn chapter in V, where the student
+ * picks one); elsewhere our notes for the subtopic in a panel on the same
  * page (TeachPanel, 2026-11-15; until then it left for the notes page), then
  * offers "Now try one like it"; with no notes it asks V for the idea; Try an easier one shows an
  * easier question from the subtopic here, as V's try card; Keep going folds it
@@ -26,7 +32,7 @@ const TeachPanel = dynamic(() => import("./TeachPanel"), { ssr: false });
 const BUTTON =
   "inline-flex min-h-9 items-center justify-center rounded-lg border bg-card px-3 py-1.5 text-sm font-semibold text-brand-accent transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
 
-type Action = "teach" | "easier" | "keep" | "teach_close" | "full_notes" | "try_after";
+type Action = "teach" | "easier" | "keep" | "teach_close" | "full_notes" | "try_after" | "learn_open" | "learn_close";
 
 export default function StuckOfferLine({
   offer,
@@ -44,6 +50,8 @@ export default function StuckOfferLine({
   const [teachOpen, setTeachOpen] = useState(false);
   const [teachMounted, setTeachMounted] = useState(false);
   const [taught, setTaught] = useState(false);
+  const [learning, setLearning] = useState(false);
+  const learn = offer.learn ?? null;
 
   useEffect(() => {
     sendActivityOnce(`stuck_offer:shown:${questionId}`, { kind: "surface_viewed", surface: "stuck_offer", questionId, action: "shown" });
@@ -72,6 +80,25 @@ export default function StuckOfferLine({
               }}
             >
               Now try one like it
+            </button>
+          ) : learn ? (
+            <button
+              type="button"
+              aria-haspopup={learn.kind === "lesson" ? "dialog" : undefined}
+              className={BUTTON}
+              onClick={() => {
+                track("teach");
+                if (learn.kind === "lesson") {
+                  track("learn_open");
+                  setLearning(true);
+                } else {
+                  // No lesson filed under the topic: V's Learn map for the chapter, where the student picks one.
+                  askVText(teachChapterMessage({ chapter: learn.chapter, exam: learn.exam }));
+                  setTaught(true);
+                }
+              }}
+            >
+              Teach me the idea
             </button>
           ) : notesHref ? (
             <button
@@ -136,6 +163,16 @@ export default function StuckOfferLine({
           onFullNotes={() => {
             track("full_notes");
             onTeach?.({ subtopic: offer.subtopic, easierId: offer.easierId ?? null });
+          }}
+        />
+      )}
+      {learning && learn?.kind === "lesson" && (
+        <LearnLessonOverlay
+          target={{ chapter: learn.chapter, concept: learn.concept, course: learn.course }}
+          onClose={() => {
+            track("learn_close");
+            setLearning(false);
+            setTaught(true);
           }}
         />
       )}

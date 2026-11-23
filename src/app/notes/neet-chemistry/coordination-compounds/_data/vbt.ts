@@ -12,6 +12,7 @@ export const NEET_CH_CC_VBT_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nchcc-vbt",
       name: "Hybridisation and shape by valence bond theory",
+      visualizationSlug: "cet-d-electron-pairing",
       intuition:
         "In valence bond theory the metal ion mixes some of its empty s, p and d orbitals into a set of equal hybrid orbitals, one for each ligand. Each ligand puts a lone pair into one of them. The kind of hybrid sets the shape. A strong-field ligand can push the metal's d electrons to pair up, which empties inner d orbitals for the hybrid set and leaves fewer unpaired electrons.",
       definition:

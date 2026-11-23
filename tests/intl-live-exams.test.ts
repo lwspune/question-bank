@@ -10,7 +10,16 @@
 import { describe, it, expect } from "vitest";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { INTL_EXAMS, LIVE_INTL_EXAMS, intlHostDecision, intlNavFor, intlWelcomeTargets } from "@/lib/sites/intl";
+import * as intl from "@/lib/sites/intl";
+import {
+  INTL_EXAMS,
+  LIVE_INTL_EXAMS,
+  intlExamPickerPath,
+  intlHostDecision,
+  intlNavFor,
+  intlPickedExam,
+  intlWelcomeExam,
+} from "@/lib/sites/intl";
 
 describe("live intl exams", () => {
   it("are the intl exams with public content", () => {
@@ -54,30 +63,93 @@ describe("live intl exams", () => {
 });
 
 /**
- * The intl welcome step records a new student's intl exams. With two live
- * exams it must record the one they signed up from, else an IMAT student is
- * counted as an ENEM student (and mailed as one), and the other way round.
+ * The intl welcome step records a new student's ONE intl exam (owner,
+ * 2026-11-18). Recording every live exam when the page named none counted an
+ * IMAT student as an ENEM student too (one did, 18 Nov: signed in from a page
+ * that named no exam, though they had landed on /notes/imat-chemistry). So:
+ * the page they are headed to, else the page they first landed on, else no
+ * guess, and the student picks on /welcome/exam.
  */
-describe("intl welcome targets", () => {
+describe("intl welcome exam", () => {
   it.each([
-    ["/notes/imat/biology/cell-biology", ["imat"]],
-    ["/mock/exam/imat", ["imat"]],
-    ["/mock/exam/enem", ["enem"]],
-    ["/questions/enem/matematica/estatistica", ["enem"]],
-  ])("records only the exam %s belongs to", (next, want) => {
-    expect(intlWelcomeTargets(next)).toEqual(want);
+    ["/notes/imat/biology/cell-biology", "imat"],
+    ["/notes/imat-chemistry", "imat"],
+    ["/mock/exam/imat", "imat"],
+    ["/mock/exam/enem", "enem"],
+    ["/questions/enem/matematica/estatistica", "enem"],
+  ])("takes the exam the destination %s names", (next, want) => {
+    expect(intlWelcomeExam({ next, landing: null })).toBe(want);
   });
 
-  it.each(["/", "/browse", "/me", "/mock/exam/nda", "not-a-path"])(
-    "records every live intl exam when %s names none of them",
-    (next) => {
-      expect(intlWelcomeTargets(next)).toEqual(LIVE_INTL_EXAMS.map((e) => e.slug));
+  it.each([
+    ["/", "/notes/imat-chemistry", "imat"],
+    ["/browse", "/mock/exam/enem", "enem"],
+    ["/me", "/questions/imat/chemistry/atomic-structure", "imat"],
+  ])("falls back to the landing page when %s names no exam", (next, landing, want) => {
+    expect(intlWelcomeExam({ next, landing })).toBe(want);
+  });
+
+  it("prefers the destination over the landing page", () => {
+    expect(intlWelcomeExam({ next: "/mock/exam/enem", landing: "/notes/imat-chemistry" })).toBe("enem");
+  });
+
+  // With one live intl exam there is nothing to ask; with more, no guess.
+  const noGuess = LIVE_INTL_EXAMS.length === 1 ? LIVE_INTL_EXAMS[0].slug : null;
+
+  it.each([
+    ["/", null],
+    ["/browse", undefined],
+    ["/me", "/"],
+    ["/mock/exam/nda", "/notes/nda-maths"],
+    ["not-a-path", "not-a-path"],
+  ])("makes no guess when neither %s nor the landing names a live intl exam", (next, landing) => {
+    expect(intlWelcomeExam({ next, landing })).toBe(noGuess);
+  });
+
+  it("never returns more than one exam", () => {
+    const out = intlWelcomeExam({ next: "/", landing: "/" });
+    expect(out === null || typeof out === "string").toBe(true);
+  });
+});
+
+describe("intl picked exam", () => {
+  it.each(LIVE_INTL_EXAMS.map((e) => e.slug))("accepts the live intl exam %s", (slug) => {
+    expect(intlPickedExam(slug)).toBe(slug);
+  });
+
+  it.each([["nda"], [""], [undefined], [null], [["imat"]], ["IMAT "], ["imat,enem"]])(
+    "refuses %j",
+    (raw) => {
+      expect(intlPickedExam(raw)).toBeNull();
     }
   );
 
-  it("is what the welcome route saves", () => {
-    const src = readFileSync(join(process.cwd(), "src/app/intl/welcome/route.ts"), "utf8");
-    expect(src).toMatch(/intlWelcomeTargets\(destination\)/);
-    expect(src).not.toMatch(/\bINTL_EXAMS\b(?!\w)/);
+  it("refuses an intl exam with no public content yet", () => {
+    for (const e of INTL_EXAMS.filter((x) => x.noPublicContent)) expect(intlPickedExam(e.slug)).toBeNull();
+  });
+});
+
+describe("intl welcome wiring", () => {
+  const route = readFileSync(join(process.cwd(), "src/app/intl/welcome/route.ts"), "utf8");
+  const picker = readFileSync(join(process.cwd(), "src/app/intl/welcome/exam/page.tsx"), "utf8");
+
+  it("the route saves one guessed exam and sends a no-guess student to the picker", () => {
+    expect(route).toMatch(/intlWelcomeExam\(/);
+    expect(route).toMatch(/saveIntlTargets\(.*, \[exam\]\)/);
+    expect(route).toMatch(/intlExamPickerPath\(/);
+    expect(route).not.toMatch(/\bLIVE_INTL_EXAMS\b|\bINTL_EXAMS\b/);
+  });
+
+  it("the picker saves exactly the one exam the student tapped", () => {
+    expect(picker).toMatch(/intlPickedExam\(/);
+    expect(picker).toMatch(/saveIntlTargets\(.*, \[exam\]\)/);
+  });
+
+  it("the old save-every-live-exam helper is gone", () => {
+    expect(intl).not.toHaveProperty("intlWelcomeTargets");
+  });
+
+  it("the picker URL carries the destination", () => {
+    expect(intlExamPickerPath("/browse?x=1")).toBe("/welcome/exam?next=%2Fbrowse%3Fx%3D1");
   });
 });

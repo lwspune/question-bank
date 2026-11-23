@@ -12,6 +12,7 @@ export const SSC_TR_MEDIANS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssctrmd-centroid",
       name: "The centroid divides each median in the ratio 2 : 1",
+      visualizationSlug: "ssc-medians-centroid",
       intuition:
         "The centroid is the balance point of a triangle cut from card. It sits on every median, twice as far from the corner as from the midpoint of the opposite side.",
       definition:

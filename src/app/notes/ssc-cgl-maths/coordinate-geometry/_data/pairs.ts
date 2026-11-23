@@ -117,6 +117,7 @@ export const SSC_CG_PAIRS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssccgpp-distance",
       name: "Shortest distance from a point to a line",
+      visualizationSlug: "lines-distance-point-line",
       intuition:
         "The shortest path from a point to a line meets the line at a right angle. The formula measures that perpendicular directly, so you never need to find where it lands.",
       definition:

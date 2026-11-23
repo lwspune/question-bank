@@ -12,6 +12,7 @@ export const NEET_CH_AM_REACTIONS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ncham-basicity",
       name: "Basic strength of amines",
+      visualizationSlug: "neet-amine-basicity",
       intuition:
         "An amine is a base because the lone pair on its nitrogen can take a proton. Anything that makes that lone pair more available makes a stronger base. Alkyl groups push electrons onto nitrogen, so aliphatic amines are stronger bases than ammonia. In aniline the lone pair is spread into the benzene ring, so it is far less available, and aniline is a weaker base than ammonia.",
       definition:

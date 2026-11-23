@@ -13,6 +13,7 @@ export const RAOULT_SOL_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcsol-total-pressure",
       name: "Total vapour pressure of an ideal mixture",
+      visualizationSlug: "cet-raoult-two-liquids",
       intuition:
         "Each liquid escapes in proportion to its share of the surface, so liquid A contributes \\(x_A p^\\circ_A\\) and liquid B contributes \\(x_B p^\\circ_B\\). The total is a straight line from \\(p^\\circ_B\\) (pure B) to \\(p^\\circ_A\\) (pure A). Two measured totals at two compositions give two linear equations for the two unknown pure vapour pressures.",
       definition:
@@ -125,6 +126,7 @@ export const RAOULT_SOL_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jcsol-deviations",
       name: "Positive and negative deviations from Raoult's law",
+      visualizationSlug: "jee-raoult-deviations",
       intuition:
         "An ideal mixture has A–B attractions equal to the average of A–A and B–B. If the new A–B attractions are weaker, molecules escape more easily: the vapour pressure rises above the Raoult line (positive deviation). If they are stronger, often a new hydrogen bond, the vapour pressure falls below it (negative deviation).",
       definition:

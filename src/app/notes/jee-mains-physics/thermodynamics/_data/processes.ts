@@ -13,6 +13,7 @@ export const PROCESSES_TD_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jpthermo-process-id",
       name: "The standard processes and their W, Q and ΔU",
+      visualizationSlug: "ht-pv-process-diagram",
       intuition:
         "Each standard process holds one thing fixed, and that one fact zeroes one term of the first law. Fix T and ΔU = 0. Fix V and W = 0. Allow no heat and Q = 0. Fix P and nothing vanishes, but the three terms keep a fixed ratio. Learn one row per process and most match-list questions answer themselves. W below is the work done BY the gas.",
       definition:
@@ -70,6 +71,7 @@ export const PROCESSES_TD_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpthermo-work-area",
       name: "Work as the area under a P–V path",
+      visualizationSlug: "jee-pv-work-area",
       intuition:
         "W = ∫P dV, so on a P–V diagram the work done by the gas is the area between the path and the volume axis. Moving to the right (expansion) the area counts positive; moving to the left (compression) it counts negative. Break a path into straight pieces and add their signed areas. An isotherm is a curve, so there you use its formula instead.",
       definition:

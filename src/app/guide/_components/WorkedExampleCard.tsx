@@ -17,13 +17,20 @@ import { DIFFICULTY_LABEL, DIFFICULTY_PILL } from "@/lib/questions/difficultyPil
 import AskVButton from "@/components/chat/AskVButton";
 import ZoomableImage from "@/components/question/ZoomableImage";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
+import SolutionViews from "@/components/visuals/SolutionViews";
 import type { WorkedExample } from "@/lib/guide/loadWorkedExamples";
+import { workedAnswerMode } from "@/lib/guide/workedAnswer";
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
 
 type Props = {
   rank: number;
   example: WorkedExample;
+  /**
+   * Where an animated solution's use is recorded (lib/visuals/usage). Only the
+   * visual's events: answers and the daily limit still count as "guide".
+   */
+  visualSurface?: "guide" | "notes";
 };
 
 /**
@@ -41,8 +48,15 @@ type Props = {
  * notes pages would be a product change nobody asked for. The one gate here is
  * the signed-in DAILY limit (migration 0134, owner 2026-10-05: guides count
  * toward the 50 free answers a day), via useDailyRevealGate.
+ *
+ * The solution opens Animated where the question has a checked animated
+ * solution, with the same Still switch as the bank card (2026-11-19).
+ *
+ * A written or numeric question (board notes, 2026-11-23) has no options: its one
+ * button opens the model answer, or the keyed value, straight away, as the bank
+ * card does (workedAnswerMode).
  */
-export default function WorkedExampleCard({ rank, example }: Props) {
+export default function WorkedExampleCard({ rank, example, visualSurface = "guide" }: Props) {
   const [picked, setPicked] = useState<string | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
@@ -51,8 +65,15 @@ export default function WorkedExampleCard({ rank, example }: Props) {
   const dailyGate = useDailyRevealGate(signedIn, loading, "guide");
   // The server decides a new answer (claim_reveal, 0228); a tap meanwhile does nothing.
   const pendingRef = useRef(false);
+  // The tap the limit refused, re-run once the 7-day pass is activated (0273).
+  const lastLabelRef = useRef<string | null>(null);
+
+  const mode = workedAnswerMode(example);
+  const hasPanel = mode.kind === "numeric" || !!example.solution;
+  const panelTitle = mode.kind === "model" ? "Model answer" : mode.kind === "numeric" ? "Answer" : "Solution";
 
   const reveal = async (label: string | null) => {
+    lastLabelRef.current = label;
     if (!revealed) {
       if (pendingRef.current) return;
       pendingRef.current = true;
@@ -68,6 +89,7 @@ export default function WorkedExampleCard({ rank, example }: Props) {
       }
       setRevealed(true);
       recordPractice(example.id, signedIn, "guide");
+      if (mode.kind !== "options") setShowSolution(true);
     }
     if (label) setPicked(label);
   };
@@ -197,30 +219,56 @@ export default function WorkedExampleCard({ rank, example }: Props) {
         )}
 
         {/* Today's free answers are used (signed in, migration 0134). */}
-        {blockedTaps > 0 && !revealed && <RevealDailyPrompt key={blockedTaps} surface="guide" />}
+        {blockedTaps > 0 && !revealed && (
+          <RevealDailyPrompt key={blockedTaps} surface="guide" onUnlocked={() => void reveal(lastLabelRef.current)} />
+        )}
 
-        {showSolution && example.solution && (
+        {showSolution && hasPanel && (
           <div className="rounded-xl border border-brand-accent/20 bg-brand-accent/5 p-3 text-sm motion-safe:animate-fade-in-up sm:p-4">
-            <p className="flex items-center gap-1.5 font-sans text-xs font-bold uppercase tracking-wide text-brand-accent">
-              <Lightbulb className="h-3.5 w-3.5" aria-hidden />
-              Solution
-            </p>
-            <div className="mt-1.5 font-serif leading-relaxed">
-              <BlockText text={example.solution} solution />
-            </div>
-            {example.solutionImageUrl && (
-              <div className="pt-3">
-                <ZoomableImage
-                  src={publicImageUrl(SUPABASE_URL, example.solutionImageUrl)}
-                  alt="Solution diagram"
-                  className="max-h-64 w-auto max-w-full rounded border"
-                />
-              </div>
-            )}
+            <SolutionViews
+              visual={example.solutionVisual}
+              solution={example.solution}
+              track={{ questionId: example.id, surface: visualSurface }}
+              header={
+                <p className="flex items-center gap-1.5 font-sans text-xs font-bold uppercase tracking-wide text-brand-accent">
+                  <Lightbulb className="h-3.5 w-3.5" aria-hidden />
+                  {panelTitle}
+                </p>
+              }
+              lead={
+                mode.kind === "numeric" && (
+                  <p className="mt-1.5 font-sans text-lg font-semibold tabular-nums">
+                    {mode.answer ?? "Not keyed"}
+                  </p>
+                )
+              }
+              still={
+                <>
+                  {example.solution && (
+                    <div className="mt-1.5 font-serif leading-relaxed">
+                      <BlockText text={example.solution} solution />
+                    </div>
+                  )}
+                  {example.solutionImageUrl && (
+                    <div className="pt-3">
+                      <ZoomableImage
+                        src={publicImageUrl(SUPABASE_URL, example.solutionImageUrl)}
+                        alt="Solution diagram"
+                        className="max-h-64 w-auto max-w-full rounded border"
+                      />
+                    </div>
+                  )}
+                </>
+              }
+            />
           </div>
         )}
 
-        {revealed && !example.solution && correct && (
+        {revealed && mode.kind === "model" && !example.solution && (
+          <p className="text-xs italic text-muted-foreground">Model answer coming soon.</p>
+        )}
+
+        {revealed && mode.kind === "options" && !example.solution && correct && (
           <p className="text-xs italic text-muted-foreground">
             No worked solution recorded for this question. The correct answer is {correct.label}.
           </p>
@@ -234,10 +282,10 @@ export default function WorkedExampleCard({ rank, example }: Props) {
               className="inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <Eye className="h-4 w-4" aria-hidden />
-              Show answer
+              {mode.kind === "model" ? "Show model answer" : "Show answer"}
             </button>
           ) : (
-            example.solution && (
+            hasPanel && (
               <button
                 type="button"
                 onClick={() => setShowSolution((v) => !v)}
@@ -248,7 +296,7 @@ export default function WorkedExampleCard({ rank, example }: Props) {
                   className={cn("h-4 w-4 transition-transform", showSolution && "rotate-180")}
                   aria-hidden
                 />
-                {showSolution ? "Hide solution" : "Show solution"}
+                {showSolution ? `Hide ${panelTitle.toLowerCase()}` : `Show ${panelTitle.toLowerCase()}`}
               </button>
             )
           )}

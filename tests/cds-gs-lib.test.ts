@@ -1,3 +1,4 @@
+import { hasMethodNote } from "@/lib/questions/methodNotes";
 import { describe, it, expect } from "vitest";
 import {
   normalizeQuestions,
@@ -214,26 +215,24 @@ describe("crosstab — two blind derivations, compared by VALUE not just by lett
 });
 
 describe("buildRecords", () => {
-  it("assembles a bank row carrying the derived answer and its provenance", () => {
+  it("assembles a bank row carrying the derived answer and the reasoning alone", () => {
     const [row] = buildRecords([q()], [der()]);
     expect(row.questionNumber).toBe("1");
     expect(row.subject).toBe("Chemistry");
     expect(row.chapter).toBe("Atomic Structure and Periodic Classification");
     expect(row.answer).toBe("B");
     expect(row.optionB).toBe("Caesium");
-    expect(row.solution).toMatch(/no official key/);
+    expect(row.solution).toBe(der().reasoning.trim());
   });
 
-  it("stamps the official-key tail when the paper has a key", () => {
-    const [row] = buildRecords([q()], [der()], { answerKey: true });
-    expect(row.solution).toMatch(/official UPSC provisional/);
-    expect(row.solution).not.toMatch(/no official key/);
-  });
-
-  it("stamps the corrected-on-review tail when the derivation records a key change", () => {
-    const [row] = buildRecords([q()], [der({ corrected: { from: "A", why: "w", on: "2026-10-22" } })]);
-    expect(row.solution).toMatch(/corrected on review/i);
-    expect(row.solution).not.toMatch(/agreed/);
+  // No method note on a solution (owner, 2026-11-22): keyed, derived or corrected alike.
+  it.each([
+    ["a derived paper", der(), {}],
+    ["a keyed paper", der(), { answerKey: true }],
+    ["a key corrected on review", der({ corrected: { from: "A", why: "w", on: "2026-10-22" } }), {}],
+  ] as const)("writes no method note on %s", (_label, d, opts) => {
+    const [row] = buildRecords([q()], [d], opts);
+    expect(hasMethodNote(row.solution)).toBe(false);
   });
 
   it("carries NO context — a GK paper has no shared directions or passage", () => {

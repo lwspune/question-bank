@@ -57,6 +57,7 @@ export const SSC_CCR_REACTIONS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "ssccrre-redox",
       name: "Oxidation and reduction",
+      visualizationSlug: "ssc-redox-numbers",
       intuition:
         "In a redox reaction electrons pass from one reactant to another. Track the oxidation numbers: the one that rises was oxidised, the one that falls was reduced.",
       definition:

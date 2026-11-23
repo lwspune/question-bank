@@ -6,7 +6,7 @@ export const SPI_HD_TWO_ANGLES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "When a height is seen at two angles, from two points or as two heights stacked on each other, write one tan equation for each triangle and solve the two together.",
   whyItMatters:
-    "Fifteen questions in the bank and the hardest page in the chapter: ten MODERATE and five HARD, and the 2022 paper's question is here. Seven use complementary angles from two points, six have an observer who walks or a shadow that changes, and two stack one height on another.",
+    "Sixteen questions in the bank and the hardest page in the chapter: eleven MODERATE and five HARD, with the 2022 paper's question and one from the 2026 paper. Seven use complementary angles from two points, six have an observer who walks or a shadow that changes, two stack one height on another, and one compares two towers seen from the point midway between them.",
   concepts: [
     {
       kind: "formula" as const,

@@ -165,6 +165,7 @@ export const SSC_PP_BASICS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscppba-base",
       name: "More than, less than and the changing base",
+      visualizationSlug: "ssc-more-than-base",
       intuition:
         "Every percentage is measured against a base: the number after 'than' or 'of'. If Rahul earns 25% more than Sumit, the base is Sumit's pay. Turn the sentence around and the base becomes Rahul's pay, which is bigger, so the percentage gets smaller.",
       definition:

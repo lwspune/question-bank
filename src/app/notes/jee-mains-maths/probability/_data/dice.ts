@@ -13,6 +13,7 @@ export const DICE_PROB_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jprob-dice",
       name: "Dice and weighted outcomes",
+      visualizationSlug: "dice-sum-grid",
       intuition:
         "List the pairs (or triples) of faces that give the required result and add their probabilities. For fair dice each pair is \\(\\frac1{36}\\); for dice with repeated or weighted faces, multiply the individual face probabilities. Opposite faces of a standard die add to 7, so 'sum 7 with two throws' pairs each face with its opposite.",
       definition:

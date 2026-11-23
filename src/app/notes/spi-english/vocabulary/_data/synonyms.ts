@@ -6,7 +6,7 @@ export const SPI_VO_SYNONYMS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A synonym question asks for the option nearest in meaning to a word, and the sentence around the word decides which of its meanings counts.",
   whyItMatters:
-    "Nineteen questions in the bank ask for the nearest meaning, one of them from the 2022 paper, and six are MODERATE. Most of the lost marks come from a word with two meanings, where the option you know best is the wrong sense.",
+    "Twenty-three questions in the bank ask for the nearest meaning, one from the 2022 paper and four from the 2026 paper, and seven are MODERATE. Most of the lost marks come from a word with two meanings, where the option you know best is the wrong sense.",
   concepts: [
     {
       kind: "formula" as const,
@@ -61,7 +61,7 @@ export const SPI_VO_SYNONYMS_NOTE: SubtopicNote = {
           answer: "(c) tolerate",
         },
       ],
-      pyqExampleId: "0e9821e9-c632-4600-9b13-a4a2fe9ec413",
+      pyqExampleId: "4493dffa-d6e9-4550-80fe-e054b56da48c",
       traps: [
         {
           title: "The meaning you know best can be the wrong one",
@@ -100,6 +100,8 @@ export const SPI_VO_SYNONYMS_NOTE: SubtopicNote = {
           { cells: ["candid", "saying openly what one thinks", "frank"] },
           { cells: ["timid", "shy and easily frightened", "shy"] },
           { cells: ["generous", "happy to give to others", "giving, kind"] },
+          { cells: ["vindictive", "wanting to take revenge", "revengeful"] },
+          { cells: ["meticulous", "taking great care over every detail", "very careful, painstaking"] },
         ],
         caption: "Praising words: polite, amiable, industrious, humble, candid, generous. Blaming words: atrocity, tarnish.",
       },
@@ -161,10 +163,12 @@ export const SPI_VO_SYNONYMS_NOTE: SubtopicNote = {
           { cells: ["vivid", "bright and clear", "bright"] },
           { cells: ["discern", "to make out something hard to see", "detect"] },
           { cells: ["elusive", "hard to catch, hold or understand", "baffling"] },
+          { cells: ["subsequent", "coming after something", "later, following"], noteAmber: "Not earlier, which is its opposite." },
+          { cells: ["authentic", "true, and really from where it claims", "genuine"] },
         ],
         caption: "Most of these words come with a near opposite among the options: huge against small, dull against lively.",
       },
-      pyqExampleId: "fb39136b-f8c7-49aa-9154-5bec7cbdcf9e",
+      pyqExampleId: "3fe3256b-1d01-4a78-8b12-4bb730e45a6e",
       selfCheckExample: {
         prompt:
           "Choose the word nearest in meaning: The prize money for the race was \\(\\underline{\\text{meagre}}\\). (a) plentiful (b) scanty (c) secret (d) fair",

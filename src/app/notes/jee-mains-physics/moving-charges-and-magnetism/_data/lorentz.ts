@@ -13,6 +13,7 @@ export const LORENTZ_MAG_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpmag-force-vector",
       name: "Magnetic force on a moving charge, F = q v × B",
+      visualizationSlug: "magnetic-force-triad",
       intuition:
         "A magnetic field pushes only on a moving charge, and it pushes sideways: at right angles both to the velocity and to the field. Because the push is always across the motion, it can turn the charge but never speed it up or slow it down. A charge moving along the field lines feels nothing at all.",
       definition:

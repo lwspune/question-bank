@@ -16,11 +16,10 @@ import { getOwnProfile } from "@/lib/profile/service";
 import { readFreeMockLimit } from "@/lib/billing/plansQuery";
 import ProfileForm from "./ProfileForm";
 import PushCard from "./PushCard";
-import PathSettingsCard from "./PathSettingsCard";
-import { getPathSettings } from "@/lib/path/service";
 import MeHeader from "@/components/me/MeHeader";
 import { loadMeHeader } from "@/lib/me/header";
 import { getExamIdMap } from "@/lib/exam/examIdMap";
+import { loadExamCalendar } from "@/lib/exam/calendarQuery";
 
 export const dynamic = "force-dynamic";
 
@@ -59,7 +58,7 @@ export default async function AccountPage() {
 
   const db = createSupabaseServerClient();
   // One batch of reads (2026-11-08: the free-mock limit used to be read first, on its own).
-  const [freeMocks, rows, profile, invites, myBatches, { data: books }, pathSettings, header] = await Promise.all([
+  const [freeMocks, rows, profile, invites, myBatches, { data: books }, header, calendar] = await Promise.all([
     readFreeMockLimit(db),
     loadEntitlements(db, user.id),
     getOwnProfile(db, user.id),
@@ -69,13 +68,10 @@ export default async function AccountPage() {
     listMyBatches(user.id),
     // Bought ebooks (migration 0172): own rows only, by RLS.
     db.from("ebook_purchases").select("ebook_slug, created_at, ebook:ebooks(title)").eq("user_id", user.id).eq("status", "active").order("created_at"),
-    // The board path (migration 0225). Best effort: a failed read hides the card.
-    getPathSettings(db, user.id).catch((e) => {
-      console.error("path settings read failed", e instanceof Error ? e.message : e);
-      return { active: null, stopped: false };
-    }),
     // The header above Home · Performance · Account (2026-11-08).
     getExamIdMap().then((ids) => loadMeHeader(db, user, ids)),
+    // The profile form's "leave blank to use the expected date" hint (0281). Never throws.
+    loadExamCalendar(),
   ]);
   const now = Date.now();
   // One line per pass held — a teacher who also bought the Mock Pass sees both.
@@ -93,17 +89,8 @@ export default async function AccountPage() {
           <p className="mb-6 mt-6 text-sm text-muted-foreground">Signed in as {user.email}</p>
 
           <div className="mb-6">
-            <ProfileForm profile={profile} />
+            <ProfileForm profile={profile} calendar={calendar} />
           </div>
-
-          <PathSettingsCard
-            active={
-              pathSettings.active
-                ? { exam: pathSettings.active.exam, subjects: pathSettings.active.subjects, dailyMinutes: pathSettings.active.dailyMinutes }
-                : null
-            }
-            stopped={pathSettings.stopped}
-          />
 
           {/* The public key only: nothing on Vercel sends, so the private key never lives there. */}
           <PushCard vapidKey={process.env.VAPID_PUBLIC_KEY ?? ""} />
@@ -156,6 +143,7 @@ export default async function AccountPage() {
                               : "Lifetime access"}
                             {pass.source === "comp" && " · complimentary"}
                             {pass.source === "referral" && " · includes free days from your invites"}
+                            {pass.source === "trial" && " · 7-day pass"}
                           </p>
                           <Link
                             href={view.href}

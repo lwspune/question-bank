@@ -69,6 +69,7 @@ export const SSC_TG_EQUATIONS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssctgeq-bounds",
       name: "Greatest and least values of a sin θ + b cos θ and of powers",
+      visualizationSlug: "trig-amplitude-phase",
       intuition:
         "sin θ and cos θ cannot both be large at once, so \\(a\\sin\\theta + b\\cos\\theta\\) tops out below a + b, at \\(\\sqrt{a^2 + b^2}\\). It reaches that top when sin θ and cos θ are in the same ratio as a and b.",
       definition:

@@ -52,7 +52,17 @@ export async function GET(request: NextRequest) {
       if (day) {
         // One row a day: who saw it and which kind, for growth "v-day-card".
         const seen = surfaceViewedEvent(userId, "v_day", now);
-        await logActivityOnce(db, userId, { ...seen, metadata: { ...seen.metadata, card: day.kind } });
+        // `exam` (2026-11-21): which exam countdown showed, for growth "v-exam-countdown".
+        await logActivityOnce(db, userId, {
+          ...seen,
+          // `checkin` (2026-11-21): V asked "How's your study going?" in place of the card.
+          metadata: {
+            ...seen.metadata,
+            card: day.kind,
+            ...(day.countdown ? { exam: day.countdown } : {}),
+            ...(day.checkIn ? { checkin: true } : {}),
+          },
+        });
       }
       return NextResponse.json({ day }, { headers: NO_STORE });
     }

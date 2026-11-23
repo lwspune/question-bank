@@ -1,0 +1,167 @@
+{
+  "paper": "rimc-2023-jun-maths",
+  "written": true,
+  "answers": [
+    {
+      "number": 1,
+      "solution": "Check the three possible results for North: win, draw, lose.\n\nIf North wins: then (a) no draw, (b) North scored, (c) North won and (d) North did not lose are all true. That is already 4 true predictions, more than 3. So North did not win.\n\nIf it is a draw: (a) and (c) are false, (d) is true. For exactly 3 true we need (b), (d) and (e) all true, so the total must be 3 goals. But a draw has equal goals on both sides, so the total is even and cannot be 3. So it was not a draw.\n\nSo North lost. Then (a) is true, (c) and (d) are false. For exactly 3 true predictions, (b) and (e) must both be true: North scored at least one goal and the total was 3 goals.\n\nNorth lost with a total of 3 goals and at least 1 goal for North, so North scored 1 and South scored 2.\n\nSo, the final score was North 1, South 2.",
+      "finalAnswer": "North 1, South 2"
+    },
+    {
+      "number": 2,
+      "solution": "\\(x^2 - y^2 = (x - y)(x + y) = 11\\)\n\n11 is a prime number, and \\(x + y > x - y\\), so the only way to write it as a product of natural numbers is \\(x - y = 1\\) and \\(x + y = 11\\).\n\nAdding: \\(2x = 12\\), so \\(x = 6\\). Then \\(y = 11 - 6 = 5\\).\n\nCheck: \\(6^2 - 5^2 = 36 - 25 = 11\\).\n\nSo, the answer is \\(x = 6,\\ y = 5\\).",
+      "finalAnswer": "x = 6; y = 5"
+    },
+    {
+      "number": 3,
+      "solution": "\\(N = 13^2 \\times 29\\), where 13 and 29 are primes.\n\nEvery divisor has the form \\(13^a \\times 29^b\\) with \\(a = 0, 1, 2\\) and \\(b = 0, 1\\), so there are \\(3 \\times 2 = 6\\) divisors.\n\n\\(b = 0\\): \\(1,\\ 13,\\ 13^2 = 169\\)\n\n\\(b = 1\\): \\(29,\\ 13 \\times 29 = 377,\\ 169 \\times 29 = 4901\\)\n\nSo, the divisors of \\(N = 4901\\) are 1, 13, 29, 169, 377 and 4901.",
+      "finalAnswer": "1, 13, 29, 169, 377, 4901"
+    },
+    {
+      "number": 4,
+      "solution": "HE is added 8 times, so the sum is \\(I + 8 \\times HE = US\\).\n\nUS is a two-digit number, so \\(8 \\times HE \\le 99\\), which means \\(HE \\le 12\\). HE is a two-digit number with different digits, so HE is 10 or 12 (11 has two equal digits).\n\nIf \\(HE = 10\\): \\(8 \\times 10 = 80\\), and \\(I + 80\\) gives US \\(= 8I\\), so S would equal I. Not allowed.\n\nIf \\(HE = 12\\): \\(8 \\times 12 = 96\\), so \\(US = 96 + I\\). This stays two-digit only for \\(I \\le 3\\). I must differ from H = 1 and E = 2, so I = 0 or 3. I = 3 gives 99 (U = S, not allowed). I = 0 gives 96.\n\nSo I = 0, H = 1, E = 2, U = 9, S = 6, five different digits.\n\nCheck: \\(0 + 12 + 12 + 12 + 12 + 12 + 12 + 12 + 12 = 96\\).\n\nSo, a solution is I = 0, H = 1, E = 2, U = 9, S = 6.",
+      "finalAnswer": "I = 0, H = 1, E = 2, U = 9, S = 6 (0 + 8 x 12 = 96)"
+    },
+    {
+      "number": 5,
+      "solution": "Try powers of 2: let \\(x = 2^a\\) and \\(y = 2^b\\). Then \\(2x^3 = 2^{3a + 1}\\) and \\(y^4 = 2^{4b}\\), so we need \\(3a + 1 = 4b\\).\n\n\\(a = 1\\): \\(3 + 1 = 4\\), so \\(b = 1\\). This gives \\(x = 2,\\ y = 2\\).\nCheck: \\(2 \\times 2^3 = 16 = 2^4\\).\n\n\\(a = 5\\): \\(15 + 1 = 16\\), so \\(b = 4\\). This gives \\(x = 32,\\ y = 16\\).\nCheck: \\(2 \\times 32^3 = 2 \\times 32768 = 65536 = 16^4\\).\n\n(In general \\(x = 2n^4,\\ y = 2n^3\\) works for every natural number n, since \\(2 \\times 8n^{12} = 16n^{12} = (2n^3)^4\\).)\n\nSo, two pairs are \\((x, y) = (2, 2)\\) and \\((32, 16)\\).",
+      "finalAnswer": "(x, y) = (2, 2); (32, 16)"
+    },
+    {
+      "number": 6,
+      "solution": "A year has the property exactly when it is already the smallest arrangement of its digits: its first digit is the smallest non-zero digit, and the remaining digits are in increasing order.\n\nYears 2010 to 2021 all contain the digit 1. Putting the 1 first gives a smaller number (for example 2010 becomes 1002, 2021 becomes 1022). So none of them works.\n\n2022: digits 2, 0, 2, 2. The first digit cannot be 0, the smallest possible first digit is 2, and then the smallest arrangement of 0, 2, 2 is 022. So the smallest number is 2022 itself.\n\nSo, the next year with this property is 2022.",
+      "finalAnswer": "2022"
+    },
+    {
+      "number": 7,
+      "solution": "Find the rule. Each day's word is the previous word followed by the previous word with every A changed to Y and every Y changed to A:\n\nMonday: A\nTuesday: A + Y = AY\nWednesday: AY + YA = AYYA\nThursday: AYYA + YAAY = AYYAYAAY\n\nThe rule fits every day given.\n\nFriday: AYYAYAAY + YAAYAYYA = AYYAYAAYYAAYAYYA\n\nSaturday: AYYAYAAYYAAYAYYA + YAAYAYYAAYYAYAAY = AYYAYAAYYAAYAYYAYAAYAYYAAYYAYAAY (32 letters)\n\nSo, on Saturday he will say \"AYYAYAAYYAAYAYYAYAAYAYYAAYYAYAAY!\"",
+      "finalAnswer": "AYYAYAAYYAAYAYYAYAAYAYYAAYYAYAAY!"
+    },
+    {
+      "number": 8,
+      "solution": "Let k be the number of people who are both mathematicians and philosophers.\n\nEvery seventh mathematician is a philosopher, so these k people are \\(\\frac{1}{7}\\) of the mathematicians: number of mathematicians \\(= 7k\\).\n\nEvery ninth philosopher is a mathematician, so these k people are \\(\\frac{1}{9}\\) of the philosophers: number of philosophers \\(= 9k\\).\n\n\\(9k > 7k\\).\n\nSo, there are more philosophers than mathematicians.",
+      "finalAnswer": "More philosophers"
+    },
+    {
+      "number": 9,
+      "solution": "3 diggers dig 3 pits in 3 hours, so 1 digger digs 1 pit in 3 hours.\n\nIn 5 hours one digger digs \\(\\frac{5}{3}\\) pits.\n\nSix diggers in 5 hours dig \\(6 \\times \\frac{5}{3} = 10\\) pits.\n\nSo, six diggers can dig 10 pits in five hours.",
+      "finalAnswer": "10 pits"
+    },
+    {
+      "number": 10,
+      "solution": "\\(\\frac{1}{x} = \\frac{2}{73} - \\frac{1}{60} - \\frac{1}{219} - \\frac{1}{292}\\)\n\nNote \\(219 = 3 \\times 73\\) and \\(292 = 4 \\times 73\\), so with denominator \\(876 = 12 \\times 73\\):\n\\(\\frac{2}{73} - \\frac{1}{219} - \\frac{1}{292} = \\frac{24}{876} - \\frac{4}{876} - \\frac{3}{876} = \\frac{17}{876}\\)\n\nNow subtract \\(\\frac{1}{60}\\). The LCM of 876 and 60 is 4380:\n\\(\\frac{17}{876} - \\frac{1}{60} = \\frac{85}{4380} - \\frac{73}{4380} = \\frac{12}{4380} = \\frac{1}{365}\\)\n\nSo \\(\\frac{1}{x} = \\frac{1}{365}\\).\n\nSo, the answer is \\(x = 365\\).",
+      "finalAnswer": "x = 365"
+    },
+    {
+      "number": 11,
+      "solution": "After Goofy moves, Minnie is leftmost and Goofy sits between Mickey and Minnie, so the new order (left to right) is: Minnie, Goofy, Mickey, Pluto.\n\nWhen Goofy got up, the other three did not move, so their order was Minnie, Mickey, Pluto, with Mickey and Minnie next to each other (Goofy squeezed in between them).\n\nBefore that, Goofy was in the rightmost spot.\n\nSo, they are sitting (left to right): Minnie Mouse, Mickey Mouse, Pluto, Goofy.",
+      "finalAnswer": "Minnie Mouse, Mickey Mouse, Pluto, Goofy (left to right)"
+    },
+    {
+      "number": 12,
+      "solution": "Convert step by step.\n\n5 krona = 2 thalers, so 13 krona \\(= 13 \\times \\frac{2}{5} = \\frac{26}{5}\\) thalers.\n\n3 thalers = 10 rupees, so \\(\\frac{26}{5}\\) thalers \\(= \\frac{26}{5} \\times \\frac{10}{3} = \\frac{52}{3}\\) rupees.\n\n22 rupees = 21 dinars, so \\(\\frac{52}{3}\\) rupees \\(= \\frac{52}{3} \\times \\frac{21}{22} = \\frac{182}{11}\\) dinars.\n\n14 dinars = 11 tugriks, so \\(\\frac{182}{11}\\) dinars \\(= \\frac{182}{11} \\times \\frac{11}{14} = 13\\) tugriks.\n\nSo, you get 13 tugriks for 13 krona.",
+      "finalAnswer": "13 tugriks"
+    },
+    {
+      "number": 13,
+      "solution": "Valentine's \"metre\" is really 60 cm and his \"minute\" is really 100 seconds.\n\nSo \"50 metres per minute\" really means \\(50 \\times 60 = 3000\\) cm in 100 seconds, that is 30 m in 100 seconds.\n\nSpeed \\(= \\frac{30}{100} = 0.3\\) m per second.\n\nIn one real minute (60 seconds): \\(0.3 \\times 60 = 18\\) m.\n\nSo, Valentine's real speed is 18 metres per minute.",
+      "finalAnswer": "18 m/min"
+    },
+    {
+      "number": 14,
+      "solution": "Start: all three cost $1 per kg.\n\nScrews: up 50% gives \\(1 \\times 1.5 = 1.50\\), then down 50% gives \\(1.50 \\times 0.5 = 0.75\\) dollars per kg.\n\nBolts: down 50% gives \\(1 \\times 0.5 = 0.50\\), then up 50% gives \\(0.50 \\times 1.5 = 0.75\\) dollars per kg.\n\nNuts: unchanged at 1 dollar per kg.\n\nSo, in March screws and bolts are the cheapest (equal, $0.75 per kg) and nuts are the most expensive ($1 per kg).",
+      "finalAnswer": "Least: screws and bolts (equal, $0.75 per kg); most: nuts ($1 per kg)"
+    },
+    {
+      "number": 15,
+      "solution": "Look at each term as a product of two consecutive numbers:\n\\(2 = 1 \\times 2,\\ 6 = 2 \\times 3,\\ 12 = 3 \\times 4,\\ 20 = 4 \\times 5,\\ 30 = 5 \\times 6\\)\n\nSo the number in place n is \\(n \\times (n + 1)\\). (Equivalently, the differences 4, 6, 8, 10 go up by 2, so the next difference is 12.)\n\n6th place: \\(6 \\times 7 = 42\\) (also \\(30 + 12 = 42\\)).\n\nSo, the number in the 6th place is 42.",
+      "finalAnswer": "42"
+    },
+    {
+      "number": 16,
+      "solution": "A full battery lasts 6 hours of talking, so talking uses \\(\\frac{1}{6}\\) of the battery per hour.\n\nIt lasts 210 hours on standby, so standby uses \\(\\frac{1}{210}\\) of the battery per hour.\n\nLet the journey take T hours. She talked for \\(\\frac{T}{2}\\) hours and the phone was on standby for \\(\\frac{T}{2}\\) hours, and the whole battery was used:\n\\(\\frac{T}{2} \\times \\frac{1}{6} + \\frac{T}{2} \\times \\frac{1}{210} = 1\\)\n\n\\(\\frac{1}{6} + \\frac{1}{210} = \\frac{35}{210} + \\frac{1}{210} = \\frac{36}{210} = \\frac{6}{35}\\)\n\n\\(\\frac{T}{2} \\times \\frac{6}{35} = 1\\), so \\(\\frac{T}{2} = \\frac{35}{6}\\) and \\(T = \\frac{35}{3} = 11\\frac{2}{3}\\) hours.\n\nSo, Alisha travelled for 11 hours 40 minutes.",
+      "finalAnswer": "11 hours 40 minutes"
+    },
+    {
+      "number": 17,
+      "solution": "The diagonals of a parallelogram bisect each other. Here they are also perpendicular, so the parallelogram is a rhombus (all sides equal).\n\nHalf-diagonals: \\(\\frac{24}{2} = 12\\) and \\(\\frac{10}{2} = 5\\). They meet at a right angle, so each side is the hypotenuse of a right triangle with legs 12 and 5:\n\\(\\text{side} = \\sqrt{12^2 + 5^2} = \\sqrt{144 + 25} = \\sqrt{169} = 13\\)\n\nArea of a rhombus \\(= \\frac{1}{2} \\times d_1 \\times d_2 = \\frac{1}{2} \\times 24 \\times 10 = 120\\)\n\nSo, all four sides are 13 units and the area is 120 square units.",
+      "finalAnswer": "Each side 13; area 120 square units"
+    },
+    {
+      "number": 18,
+      "solution": "From the figure: \\(\\angle BAC = 25^\\circ\\), \\(\\angle ABM = 45^\\circ\\), M lies on AC, and \\(x = \\angle BCA\\).\n\nIn triangle ABM, \\(\\angle BMC\\) is an exterior angle, so it equals the sum of the two opposite interior angles:\n\\(\\angle BMC = \\angle BAM + \\angle ABM = 25^\\circ + 45^\\circ = 70^\\circ\\)\n\nBC = BM, so triangle BCM is isosceles and the angles opposite the equal sides are equal:\n\\(\\angle BCM = \\angle BMC = 70^\\circ\\)\n\n(Check: \\(\\angle CBM = 180^\\circ - 70^\\circ - 70^\\circ = 40^\\circ\\), so \\(\\angle ABC = 85^\\circ\\) and \\(25^\\circ + 85^\\circ + 70^\\circ = 180^\\circ\\).)\n\nSo, \\(x = 70^\\circ\\).",
+      "finalAnswer": "x = 70 degrees"
+    },
+    {
+      "number": 19,
+      "solution": "Triangle ABC is right-angled at B with AB = 6 and BC = 8.\n\nBy Pythagoras: \\(AC = \\sqrt{6^2 + 8^2} = \\sqrt{36 + 64} = \\sqrt{100} = 10\\)\n\nThe midpoint of the hypotenuse of a right triangle is the same distance from all three vertices (it is the centre of the circle through A, B and C, with AC as diameter). So\n\\(BM = AM = MC = \\frac{AC}{2} = \\frac{10}{2} = 5\\)\n\nSo, \\(x = BM = 5\\).",
+      "finalAnswer": "x = 5"
+    },
+    {
+      "number": 20,
+      "solution": "Join D to B (the dotted line). \n\nAn inscribed angle is half its arc:\n\\(\\angle ADB = \\frac{1}{2} \\times \\text{arc } AB = \\frac{1}{2} \\times 120^\\circ = 60^\\circ\\)\n\\(\\angle DBC = \\frac{1}{2} \\times \\text{arc } CD = \\frac{1}{2} \\times 30^\\circ = 15^\\circ\\)\n\n\\(\\angle ADB\\) is an exterior angle of triangle EDB, so\n\\(\\angle ADB = \\angle E + \\angle DBE\\)\n\\(60^\\circ = x + 15^\\circ\\)\n\\(x = 45^\\circ\\)\n\n(This is the rule: angle between two secants \\(= \\frac{1}{2}(120^\\circ - 30^\\circ) = 45^\\circ\\).)\n\nSo, \\(x = \\angle E = 45^\\circ\\).",
+      "finalAnswer": "x = 45 degrees"
+    },
+    {
+      "number": 21,
+      "solution": "GLOBALHELLFRY has 13 letters: G, L, O, B, A, L, H, E, L, L, F, R, Y.\n\nThe distinct letters are G, L, O, B, A, H, E, F, R, Y: exactly 10 of them. Each gets a different digit, so all ten digits 0, 1, 2, ..., 9 are used exactly once among them.\n\nThe letter L appears 4 times; every other letter appears once.\n\nSum of the digits of the 13-digit number:\n\\((0 + 1 + 2 + \\dots + 9) + 3L = 45 + 3L = 3(15 + L)\\)\n\nThis sum is divisible by 3, so the number itself is divisible by 3.\n\nThe number has many digits, so it is much bigger than 3. A number bigger than 3 that is divisible by 3 is not prime.\n\nSo the replacement can never give a prime number, and the heat wave can never occur.",
+      "finalAnswer": "The number is always divisible by 3 (digit sum 45 + 3L), so it is never prime"
+    },
+    {
+      "number": 22,
+      "solution": "Truth-tellers have an even number of legs; liars have an odd number, and everything a liar says is false.\n\nPurple says \"I have nine legs\". If purple told the truth, it would have 9 legs, an odd number, so it would be a liar. Contradiction. So purple is a liar.\n\nThen purple's other claim, \"The blue Octopus really has eight legs\", is false: blue does not have 8 legs.\n\nSo blue's statement \"I have eight legs\" is false: blue is a liar (odd number of legs).\n\nGreen says blue has \"only six\" legs. Blue has an odd number, so this is false: green is a liar (odd number of legs).\n\nSo green, blue and purple all have an odd number of legs, and none of them has 8. The striped octopus's statement \"None of you have eight legs\" is then true, so the striped octopus tells the truth, and its claim \"I am the only one who does\" is true.\n\nCheck: every liar's statements are false and the striped octopus's statement is true.\n\nSo, only the striped octopus has eight legs.",
+      "finalAnswer": "The striped octopus"
+    },
+    {
+      "number": 23,
+      "solution": "Call them First, Second and Third.\n\nSuppose First is a knight. Then \"None\" is true, so Second and Third are both liars. But then Second's answer \"One\" (of First and Third, one is a knight) would be true, since First is a knight and Third is not. A liar cannot say something true. So First is a liar.\n\nFirst lies, so at least one of Second and Third is a knight.\n\nSuppose Second is a liar. Then Third must be a knight. Of First and Third, exactly one (Third) is a knight, so Second's \"One\" is true. A liar cannot say this. So Second is a knight.\n\nSecond is a knight, so exactly one of First and Third is a knight. First is a liar, so Third is a knight.\n\nThird is a knight. Of the other two, First is a liar and Second is a knight, so Third truthfully answers \"One\".\n\nSo, the third islander said \"One\".",
+      "finalAnswer": "One"
+    },
+    {
+      "number": 24,
+      "solution": "Let each box contain n tea bags. Each bag makes 2 or 3 cups, so from one box one can make between \\(2n\\) and \\(3n\\) cups.\n\nNatasha: \\(2n \\le 41 \\le 3n\\). From \\(2n \\le 41\\): \\(n \\le 20\\).\n\nInna: \\(2n \\le 58 \\le 3n\\). From \\(3n \\ge 58\\): \\(n \\ge 19\\frac{1}{3}\\), so \\(n \\ge 20\\).\n\nSo \\(n = 20\\).\n\nCheck: Natasha: \\(19 \\times 2 + 1 \\times 3 = 41\\). Inna: \\(2 \\times 2 + 18 \\times 3 = 58\\). Both possible with 20 bags.\n\nSo, there were 20 tea bags in the box.",
+      "finalAnswer": "20 tea bags"
+    },
+    {
+      "number": 25,
+      "solution": "Number the rows 1 to 4 from the top and the columns 1 to 4 from the left, so R2C3 means row 2, column 3. The shaded squares are R2C2, R2C3, R3C3 and R4C3.\n\nThe grid has 16 squares, so each of the 4 pieces has 4 squares. Cut it into four L-shapes turning round the centre like a pinwheel:\n\nPiece 1: R1C1, R1C2, R1C3, R2C3 (top row, first three squares, plus the square below the third). Shaded square: R2C3.\n\nPiece 2: R1C4, R2C4, R3C4, R3C3 (right column, top three squares, plus the square left of the third). Shaded square: R3C3.\n\nPiece 3: R4C4, R4C3, R4C2, R3C2 (bottom row, last three squares, plus the square above R4C2). Shaded square: R4C3.\n\nPiece 4: R4C1, R3C1, R2C1, R2C2 (left column, bottom three squares, plus the square right of R2C1). Shaded square: R2C2.\n\nCheck: the four pieces use all 16 squares with no overlap. Each piece is the same L-shape: turning Piece 1 through a quarter turn about the centre of the grid gives Piece 2, another quarter turn gives Piece 3, and another gives Piece 4, so all four are congruent. Each contains exactly one shaded square.\n\nSo, the cuts give four congruent L-shaped pieces as listed above.",
+      "finalAnswer": "Four L-shapes (pinwheel): {R1C1,R1C2,R1C3,R2C3}; {R1C4,R2C4,R3C4,R3C3}; {R4C4,R4C3,R4C2,R3C2}; {R4C1,R3C1,R2C1,R2C2}"
+    },
+    {
+      "number": 26,
+      "solution": "Let the school be d km from A on the line AB, where \\(0 \\le d \\le 3\\). It is then \\(3 - d\\) km from B.\n\nTotal distance walked:\n\\(D = 100 \\times d + 50 \\times (3 - d) = 100d + 150 - 50d = 150 + 50d\\)\n\nD increases as d increases, so it is smallest when \\(d = 0\\): \\(D = 150\\) km.\n\n(Reason: every step the school moves towards B makes 100 students walk further and only 50 walk less.)\n\nSo, the school should be built at village A.",
+      "finalAnswer": "At village A"
+    },
+    {
+      "number": 27,
+      "solution": "The shop has \\(5 + 4 + 3 = 12\\) different items in all. Buying two items means choosing 2 different items out of 12, where order does not matter:\n\\(\\binom{12}{2} = \\frac{12 \\times 11}{2} = 66\\)\n\nBreak-up: two of the same kind: cups \\(\\binom{5}{2} = 10\\), saucers \\(\\binom{4}{2} = 6\\), spoons \\(\\binom{3}{2} = 3\\), total 19. Two of different kinds: cup and saucer \\(5 \\times 4 = 20\\), cup and spoon \\(5 \\times 3 = 15\\), saucer and spoon \\(4 \\times 3 = 12\\), total 47. Together \\(19 + 47 = 66\\).\n\nSo, there are 66 ways to buy two items. (If the two items must be of different kinds, the answer is 47.)",
+      "finalAnswer": "66",
+      "notice": "As printed, the question allows any two of the 12 items, which gives 66 ways. If the two items must be of different kinds (a cup and a saucer, a cup and a spoon, or a saucer and a spoon), the answer is 5 x 4 + 5 x 3 + 4 x 3 = 47. The solution below shows both."
+    },
+    {
+      "number": 28,
+      "solution": "ABCA has 4 letters with A repeated twice.\n\nNumber of arrangements \\(= \\frac{4!}{2!} = \\frac{24}{2} = 12\\)\n\nList them by first letter:\nStarting with A: AABC, AACB, ABAC, ABCA, ACAB, ACBA (6)\nStarting with B: BAAC, BACA, BCAA (3)\nStarting with C: CAAB, CABA, CBAA (3)\n\nTotal \\(6 + 3 + 3 = 12\\).\n\nSo, 12 different arrangements are possible (including ABCA itself).",
+      "finalAnswer": "12"
+    },
+    {
+      "number": 29,
+      "solution": "\\(2^8 + 1 = 256 + 1 = 257\\) and \\(2^{18} + 1 = 262144 + 1 = 262145\\).\n\nLower end: \\(6^3 = 216 < 257\\) and \\(7^3 = 343 > 257\\), so the smallest cube in the range is \\(7^3\\).\n\nUpper end: \\(2^{18} = (2^6)^3 = 64^3 = 262144\\), which is less than 262145, while \\(65^3\\) is larger. So the largest cube in the range is \\(64^3\\).\n\nThe cubes are \\(7^3, 8^3, \\dots, 64^3\\): that is \\(64 - 7 + 1 = 58\\) cubes.\n\nSo, 58 perfect cubes lie between \\(2^8 + 1\\) and \\(2^{18} + 1\\).",
+      "finalAnswer": "58"
+    },
+    {
+      "number": 30,
+      "solution": "From the picture: a large square at top left, a square at top right, the small square (side 1) below the top-right square and against the large square, two equal squares along the bottom left, and a square at bottom right.\n\nLet the two bottom-left squares have side a (they are equal, since both fill the bottom strip).\n\nBottom-right square: its side runs down the small square and then the bottom strip, so its side \\(= a + 1\\).\n\nTop-right square: its width is the small square plus the bottom-right square, so its side \\(= (a + 1) + 1 = a + 2\\).\n\nLarge square: its height is the top-right square plus the small square, so its side \\(= (a + 2) + 1 = a + 3\\).\n\nThe two bottom-left squares lie under the large square and the small square, so\n\\(2a = (a + 3) + 1\\), giving \\(a = 4\\).\n\nSides: bottom-left 4 and 4, bottom-right 5, top-right 6, large 7, small 1.\nCheck: width \\(7 + 6 = 4 + 4 + 5 = 13\\); height \\(7 + 4 = 6 + 5 = 11\\).\n\nSo, the largest square has side length 7.",
+      "finalAnswer": "7"
+    }
+  ],
+  "reconciled": [
+    21,
+    25,
+    28
+  ],
+  "checked": [
+    22,
+    27
+  ],
+  "open": []
+}

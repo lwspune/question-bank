@@ -12,6 +12,7 @@ export const NEET_PH_LM_NEWTON_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphlm-newton-laws",
       name: "Newton's three laws of motion",
+      visualizationSlug: "lmf-action-reaction-pair",
       intuition:
         "A body left alone keeps doing what it was doing: resting, or moving straight at a steady speed. To change its velocity you need a net force, and the force points the way the velocity changes, not the way the body is moving. Forces always come in pairs: when you push a wall, the wall pushes you back just as hard.",
       definition:

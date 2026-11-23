@@ -13,6 +13,7 @@ export const CLASSIFY_DET_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jdet-statements",
       name: "The full classification",
+      visualizationSlug: "jee-three-planes",
       intuition:
         "Build the whole table once. Find the parameter values with \\(\\Delta=0\\); everywhere else the solution is unique. At those values, test consistency: infinitely many if the right-hand sides fit, none if they do not. Then check each statement against the table, remembering that a statement about 'all' values fails if one value breaks it.",
       definition:

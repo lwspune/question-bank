@@ -42,8 +42,8 @@ export function requireExamId(tier: Tier = 1): string {
   return id;
 }
 
-/** General Awareness, split into the eight subjects CDS General Knowledge uses (owner, 2026-10-16). */
-const GA = ["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Current Affairs"];
+/** General Awareness: the eight subjects CDS General Knowledge uses (owner, 2026-10-16), plus Static GK (owner, 2026-11-19). */
+const GA = ["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Current Affairs", "Static GK"];
 
 /**
  * A tier's paper, section by section in NUMBER order: `match` names the printed section
@@ -667,6 +667,8 @@ export const HELD: Record<string, number[]> = {
   "chsl-t1-2024-07-10-s1": [72, 75],
 };
 
-export const OUT = join(__dirname, "out"); // gitignored: page images, geometry, reading sheets
+// gitignored: page images, geometry, reading sheets. SSC_CGL_OUT moves it (a
+// session's scratchpad), so a re-extraction never fills the repo's disk.
+export const OUT = process.env.SSC_CGL_OUT || join(__dirname, "out");
 export const TRANSCRIPTS = join(__dirname, "transcripts"); // committed: the source of record
 export const FIGURES = join(__dirname, "figures"); // committed: SSC's own figure images, per shift

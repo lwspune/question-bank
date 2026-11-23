@@ -188,6 +188,7 @@ export const SSC_RA_MIXTURES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrami-repeat",
       name: "Repeated replacement",
+      visualizationSlug: "ssc-repeat-replacement",
       intuition:
         "Each round of draw-and-refill keeps the same fraction of the original liquid, because each draw takes the same share of whatever is there. So the liquid left shrinks by the same factor every round, like a percentage applied again and again.",
       definition:

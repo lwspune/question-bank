@@ -13,6 +13,7 @@ export const DEPTH_GRAV_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpgrav-g-depth",
       name: "g at a depth below the surface",
+      visualizationSlug: "jee-g-inside-outside",
       intuition:
         "Below the surface, the shell of earth above you pulls equally in all directions and cancels. Only the sphere beneath you, of radius \\(R - d\\), still pulls. For a uniform earth its mass shrinks as the cube of its radius, so g falls in direct proportion to the distance from the centre.",
       definition:

@@ -13,6 +13,7 @@ export const IMPEDANCE_AC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpac-impedance",
       name: "Impedance and the voltage triangle",
+      visualizationSlug: "cet-lcr-phasors",
       intuition:
         "The voltage across R is in step with the current, the voltage across L is 90° ahead, and the voltage across C is 90° behind. So \\(V_L\\) and \\(V_C\\) pull in opposite directions and cancel in part, and what is left sits at right angles to \\(V_R\\). Add them like the sides of a right triangle, never as plain numbers. Divide every side by the current and you get the impedance triangle.",
       definition:

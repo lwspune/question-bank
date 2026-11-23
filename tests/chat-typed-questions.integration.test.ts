@@ -32,12 +32,37 @@ describe.skipIf(!HAS_ENV)("chat_interactions: typed questions", () => {
   });
 
   it("stores a typed question with its text", async () => {
-    await recordChatInteraction(admin, { eventType: "typed_question", message: `${tag} when is the result`, userId: null });
+    await recordChatInteraction(admin, { eventType: "typed_question", message: `${tag} when is the result`, userId: null, site: "pyqvault", country: null });
     const { data } = await admin
       .from("chat_interactions")
       .select("event_type, question_id, message")
       .like("message", `${tag}%`);
     expect(data).toEqual([{ event_type: "typed_question", question_id: null, message: `${tag} when is the result` }]);
+  });
+
+  it("stores the site and the visitor's country a message came from, through the writer (0284)", async () => {
+    await recordChatInteraction(admin, { eventType: "typed_question", message: `${tag} site-intl`, userId: null, site: "intl", country: "TR" });
+    await recordChatInteraction(admin, { eventType: "typed_question", message: `${tag} site-www`, userId: null, site: "pyqvault", country: null });
+    const { data } = await admin
+      .from("chat_interactions")
+      .select("message, site, country")
+      .like("message", `${tag} site-%`)
+      .order("message");
+    expect(data).toEqual([
+      { message: `${tag} site-intl`, site: "intl", country: "TR" },
+      { message: `${tag} site-www`, site: "pyqvault", country: null },
+    ]);
+  });
+
+  it("refuses a site that is not one of ours, and a country that is not two capital letters (0284)", async () => {
+    const site = await admin
+      .from("chat_interactions")
+      .insert({ event_type: "typed_question", message: `${tag} site-bad`, site: "elsewhere" });
+    const country = await admin
+      .from("chat_interactions")
+      .insert({ event_type: "typed_question", message: `${tag} site-badc`, site: "pyqvault", country: "india" });
+    expect(site.error).not.toBeNull();
+    expect(country.error).not.toBeNull();
   });
 
   it("refuses a typed question with no text", async () => {
@@ -284,6 +309,8 @@ describe.skipIf(!HAS_ENV)("chat_interactions: typed questions", () => {
     const asked = randomUUID();
     const first = await recordChatInteraction(admin, {
       eventType: "typed_question",
+      site: "pyqvault",
+      country: null,
       message: `${tag} r-first`,
       userId: null,
       conversationId,
@@ -292,6 +319,8 @@ describe.skipIf(!HAS_ENV)("chat_interactions: typed questions", () => {
     });
     const second = await recordChatInteraction(admin, {
       eventType: "typed_question",
+      site: "pyqvault",
+      country: null,
       message: `${tag} r-second`,
       userId: null,
       conversationId,

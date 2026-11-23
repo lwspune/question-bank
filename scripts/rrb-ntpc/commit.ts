@@ -31,7 +31,7 @@ async function main() {
   const args = process.argv.slice(2);
   const shift = requireShift(args.find((a) => !a.startsWith("--")));
   const apply = args.includes("--apply");
-  const examId = requireExamId();
+  const examId = requireExamId(shift.level);
 
   const file = join(OUT, shift.id, "rows.json");
   if (!existsSync(file)) throw new Error(`${file} not found: run build.ts ${shift.id} first`);
@@ -74,6 +74,7 @@ async function main() {
     pyqYear: shift.pyqYear,
     pyqMonth: shift.pyqMonth,
     pyqNote: shift.pyqNote,
+    visibility: "PRIVATE", // at insert, so an interrupted run never leaves rows public (2026-11-18)
   });
   console.log(`\ncommit: inserted=${result.inserted} skipped=${result.skipped} failed=${result.failed}`);
   for (const e of result.errors) console.log(`  err row ${e.sourceRow}: ${e.message}`);

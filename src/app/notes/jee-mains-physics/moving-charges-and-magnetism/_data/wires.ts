@@ -13,6 +13,7 @@ export const WIRES_MAG_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpmag-parallel-wires",
       name: "Field of a long straight wire and of two parallel wires",
+      visualizationSlug: "magnetic-field-around-wire",
       intuition:
         "The field lines of a long straight current are circles round the wire. Grip the wire with the right hand, thumb along the current, and the fingers curl the way the field points. The field falls off as one over the distance. With two wires, work out each field and its direction at the point, then add them as vectors.",
       definition:

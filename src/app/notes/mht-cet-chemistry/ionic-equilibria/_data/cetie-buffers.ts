@@ -193,6 +193,7 @@ export const BUFFERS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetie-buf-equal-ratio",
       name: "Equal salt and acid — pH equals pKa",
+      visualizationSlug: "imat-titration-curve",
       intuition:
         "When a buffer holds the salt and the weak acid at the SAME concentration, the ratio is 1, and log 1 = 0. The whole log term disappears and the pH is exactly the pKa of the weak acid. This is the maximum-buffering point, and it turns a calculation into a one-liner: just convert Ka to pKa.",
       definition:

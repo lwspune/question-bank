@@ -15,6 +15,7 @@ export const REFRACTION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-ro-snell",
       name: "Snell's Law and the Refractive Index",
+      visualizationSlug: "imat-snell-refraction",
       intuition:
         "The refractive index μ = c/v says how much light slows; a 20% slower speed means μ = 1/0.8 = 1.25. Snell's law, sin i = μ sin r, bends the ray toward the normal; for small angles i ≈ μr, so the deviation i − r is i(1 − 1/μ). Between two media the relative index is the ratio of speeds. The optical path μd is the distance light would cover in vacuum in the same time, so equal times through two materials mean equal μd. When i = 2r, μ = sin 2r / sin r = 2 cos r.",
       definition:
@@ -90,6 +91,7 @@ export const REFRACTION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-ro-total-internal-reflection",
       name: "Total Internal Reflection",
+      visualizationSlug: "opt-refraction-tir",
       intuition:
         "Going from denser to rarer, the ray bends away from the normal, and at the critical angle sin C = 1/μ (or μ₂/μ₁ between two media) it grazes the surface; beyond that, all the light reflects. Two conditions, then: denser to rarer, and i > C. Blue light has a higher index than red, so a smaller critical angle: when green is just totally reflected, violet, indigo and blue are too. Glass to air has the smallest critical angle among common pairs. A source at depth h is hidden by a floating disc of radius h tan C = h/√(μ² − 1). Mirages, a diamond's sparkle and optical fibres rely on it; the apparent depth of a pond does not.",
       definition:

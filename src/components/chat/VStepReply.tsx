@@ -36,6 +36,7 @@ type Unit = { kind: "intro" | "outro"; text: string } | { kind: "step"; text: st
 export default function VStepReply({
   parts,
   links,
+  labels,
   avatar,
   reveal = false,
   tapped = null,
@@ -49,6 +50,7 @@ export default function VStepReply({
 }: {
   parts: ReplyParts;
   links?: string[];
+  labels?: Readonly<Record<string, string>>;
   avatar: VAvatar;
   /** A fresh reply: grow a bubble at a time. */
   reveal?: boolean;
@@ -118,7 +120,7 @@ export default function VStepReply({
             <div key={i} className="flex items-end gap-2">
               {face}
               <div className={V_BUBBLE}>
-                <VReplyText text={u.text} links={links} onNavigate={onNavigate} />
+                <VReplyText text={u.text} links={links} labels={labels} onNavigate={onNavigate} />
               </div>
             </div>
           );

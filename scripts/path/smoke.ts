@@ -33,6 +33,7 @@ import { readChapterTestEntries } from "@/lib/mocks/chapterTestsQuery";
 import { loadOwnPool } from "@/lib/drill/compose";
 import { istDayKey, istDayStartIso } from "@/lib/email/dueNudge";
 import { nextSitting } from "@/lib/exam/calendar";
+import { readExamCalendar } from "@/lib/exam/calendarRead";
 import { readPathContent, readPathPapers } from "@/lib/path/contentRead";
 import { reviewPending } from "@/lib/path/revision";
 import { readChapterStates } from "@/lib/path/stateRead";
@@ -57,6 +58,7 @@ const check = (ok: boolean, what: string) => {
 async function main() {
   const db = createSupabaseAdminClient();
   const now = new Date();
+  const calendar = await readExamCalendar(db);
   const today = istDayKey(now);
   const tests = new Map(await readChapterTestEntries(db));
 
@@ -68,7 +70,7 @@ async function main() {
 
   for (const exam of PATH_EXAMS as readonly PathExam[]) {
     const chapters = await readPathContent(db, exam, tests);
-    const sitting = nextSitting(exam, now);
+    const sitting = nextSitting(exam, now, calendar);
     check(!!sitting, `${exam}: no board date in the calendar`);
     if (!sitting) continue;
     const buffer = bufferStart(sitting.date);

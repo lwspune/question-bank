@@ -15,6 +15,7 @@ export const GAS_LAWS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-kt-gas-laws",
       name: "One Law at a Time",
+      visualizationSlug: "imat-boyle-curve",
       intuition:
         "Hold one quantity fixed and the other two are tied. At constant temperature PV is constant, so a 5% smaller volume needs pressure multiplied by 20/19 — 5.26% more, not 5%. At constant volume P ∝ T in kelvin, so a 2.5% rise in pressure for a 4 K rise means the gas started at 160 K. Combining them, P₁V₁/T₁ = P₂V₂/T₂. A real gas behaves most like an ideal one at low pressure and high temperature, where the molecules are far apart and fast. The force a gas exerts on a closed container's wall is its pressure times the area, so it goes as T to the first power.",
       definition:

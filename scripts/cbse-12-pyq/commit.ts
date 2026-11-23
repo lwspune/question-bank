@@ -106,6 +106,12 @@ function buildRows(paper: Paper, SUBJECT: SubjectSpec): ParsedRowPayload[] {
       // re-hash if a key were ever added (which then needs delete-and-recommit).
       // Same handling as scripts/mh-hsc-12-pyq/lib.ts.
       contentHash: contentHash(q.stem, opts.map((o) => o.text), q.answer ?? ""),
+      // The notice a voided question carries (migration 0119). The hash keeps its
+      // "" answer, so adding the notice never re-hashes a committed row (the 23
+      // shipped voids were given it in place on 2026-11-19).
+      ...(q._noCorrectOption
+        ? { cancelledNote: "Voided by CBSE: the marking scheme gives the mark to every student who attempted it." }
+        : {}),
     });
   }
   return rows;
@@ -245,6 +251,7 @@ async function main() {
     // month is not printed on the paper, so it is left NULL rather than guessed.
     pyqMonth: null,
     pyqNote: pyqNote(SUBJECT, paper.year, paper.paper),
+    visibility: "PRIVATE", // at insert, so an interrupted run never leaves rows public (2026-11-18)
   });
   console.log(`\ninserted ${res.inserted} | skipped ${res.skipped} | failed ${res.failed}`);
   for (const e of res.errors) console.log(`  row ${e.sourceRow}: ${e.message}`);

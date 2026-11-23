@@ -12,6 +12,7 @@ export const NEET_CH_CK_TEMPERATURE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nchck-energy-profile",
       name: "Activation energy, energy profiles and catalysts",
+      visualizationSlug: "imat-catalyst-profile",
       intuition:
         "Reactant molecules cannot turn straight into products. They must first climb an energy hill to an unstable arrangement called the activated complex, and only then roll down to products. The height of the hill above the reactants is the activation energy. A catalyst does not move the reactants or the products; it opens a lower path over the hill.",
       definition:

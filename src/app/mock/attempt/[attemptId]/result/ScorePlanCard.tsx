@@ -4,6 +4,11 @@ import { formatMarks } from "@/lib/email/mockReport";
 import { goPracticeHref } from "@/lib/performance/links";
 import { drillHref } from "@/lib/drill/from";
 import type { ScorePlan } from "@/lib/mocks/scorePlan";
+import TeachChapterButton from "@/components/chat/TeachChapterButton";
+
+/** "Teach me this" reads as the link beside it, "Practise this". */
+const TEACH_LINK =
+  "rounded-sm text-brand-accent underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
 
 /**
  * "How to raise your score" (owner, 2026-11-10): the result card for a fair,
@@ -105,6 +110,14 @@ export default function ScorePlanCard({
               >
                 Practise this
               </Link>
+              {/* V teaches the chapter from the student's mistakes (2026-11-21). */}
+              <TeachChapterButton
+                chapter={t.chapter}
+                exam={plan.examName}
+                from="mock_result"
+                label="Teach me this"
+                className={TEACH_LINK}
+              />
             </li>
           ))}
         </ul>

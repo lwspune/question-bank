@@ -6,7 +6,7 @@ export const SPI_NS_TYPES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Every number belongs to a family (natural, whole, integer, even, odd), and every digit in it is worth the digit times the value of its place.",
   whyItMatters:
-    "Eight questions in the bank, four of them from the 2022 paper: four EASY and four MODERATE. They ask which family a number belongs to, what a digit is worth in its place, and how many digits or numbers a list holds. Each is quick once you count carefully.",
+    "Nine questions in the bank, four from the 2022 paper and one from the 2026 paper: five EASY and four MODERATE. They ask which family a number belongs to, what a digit is worth in its place, how many digits or numbers a list holds, and the last digit of a sum of powers. Each is quick once you count carefully.",
   concepts: [
     {
       kind: "reference" as const,
@@ -71,6 +71,7 @@ export const SPI_NS_TYPES_NOTE: SubtopicNote = {
         "- **Face value** of a digit is the digit itself.\n" +
         "- **Place value** is the digit times the value of its place: units 1, tens 10, hundreds 100, thousands 1000, and so on.\n" +
         "- Name the places from the right: units, tens, hundreds, thousands, ten thousands, hundred thousands (lakhs), millions (ten lakhs).\n" +
+        "- **Last digit of a power:** every power of 1, 5 or 6 ends in that same digit again (\\(6^2 = 36\\), \\(6^3 = 216\\)), so \\(6^n + 1\\) always ends in 7, whatever n is.\n" +
         "- The smallest number of \\(n\\) digits is 1 followed by \\(n - 1\\) zeros; the largest is \\(n\\) nines.",
       formula: {
         label: "Place value",

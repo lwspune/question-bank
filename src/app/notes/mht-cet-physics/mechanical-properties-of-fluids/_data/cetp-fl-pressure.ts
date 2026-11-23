@@ -15,6 +15,7 @@ export const PRESSURE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-fl-pressure-depth-bubble",
       name: "Pressure with Depth, and the Rising Bubble",
+      visualizationSlug: "fluid-pressure-depth",
       intuition:
         "Every metre of water adds ρg of pressure. A bubble at the bottom of a lake carries the atmosphere plus the water above it; at the surface, only the atmosphere. At constant temperature PV stays fixed, so if the volume grows eight times (radius or diameter doubles) the pressure at the bottom was eight times the surface pressure — the water supplied seven of those eight parts. Write the atmosphere as a column of water H (or of mercury h, relative density ρ, which is hρ of water), and the depth is 7H.",
       definition:
@@ -56,6 +57,7 @@ export const PRESSURE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-fl-buoyancy-sinking",
       name: "Upthrust, and How Deep a Light Body Sinks",
+      visualizationSlug: "archimedes-floating-block",
       intuition:
         "A body dropped from height h enters the liquid at √(2gh). Inside, the upthrust σVg beats its weight ρVg, so the net upward force (σ − ρ)Vg decelerates it at (σ − ρ)g/ρ. It sinks until that deceleration has used up its speed: depth = v²/2a = hρ/(σ − ρ). Then it rises and floats. The body only goes deep when its density is close to the liquid's.",
       definition:

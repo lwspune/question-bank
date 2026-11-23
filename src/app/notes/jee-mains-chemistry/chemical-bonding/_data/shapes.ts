@@ -13,6 +13,7 @@ export const SHAPES_BOND_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jcbond-shape-match",
       name: "Shapes from the AXE formula",
+      visualizationSlug: "imat-vsepr-shapes",
       intuition:
         "Write the central atom as A, its bonded atoms as X and its lone pairs as E. The total X + E fixes how the pairs are arranged in space. The shape you name is what the atoms alone trace out, so the same arrangement gives different shapes as lone pairs replace atoms.",
       definition:

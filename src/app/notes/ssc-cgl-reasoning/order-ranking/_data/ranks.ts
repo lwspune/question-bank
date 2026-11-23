@@ -12,6 +12,7 @@ export const SSC_ROR_RANKS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrorrk-rank",
       name: "Rank from the left and from the right",
+      visualizationSlug: "ssc-rank-row",
       intuition:
         "A person 9th from the left has 8 people on that side; 14th from the right, 13 on the other side. Add both sides and the person, and you have the whole row. Every rank question is that one picture.",
       definition:
@@ -144,6 +145,7 @@ export const SSC_ROR_RANKS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrorrk-seating",
       name: "Left and right in a row and around a circle",
+      visualizationSlug: "imat-seating-circle",
       intuition:
         "Left and right belong to the seated person, not to you. Turn yourself to face the way they face, and their right is your right. For a circle, picture yourself in a seat looking at the centre.",
       definition:

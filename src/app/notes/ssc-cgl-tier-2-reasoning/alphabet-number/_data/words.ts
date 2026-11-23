@@ -45,6 +45,7 @@ export const SSC2_RAL_WORDS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2ralwd-digit",
       name: "Digits that stay in place",
+      visualizationSlug: "ssc-t2-digits-in-place",
       intuition:
         "Write the number and, under it, its digits sorted (ascending or descending, as asked). Count the places where the digit above equals the digit below.",
       definition:

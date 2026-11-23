@@ -12,6 +12,7 @@ export const SSC2_RAN_ANALOGY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2ranan-letter",
       name: "Letter clusters and words",
+      visualizationSlug: "ssc-t2-letter-steps",
       intuition:
         "For letter clusters, turn letters into positions and compare place by place: often every letter moves the same number of steps. For words, name the relation in a sentence (a crowd is dense, a slope is steep) and test it on the second pair.",
       definition:

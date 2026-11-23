@@ -6,7 +6,7 @@ export const SPI_QE_SOLVING_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A root is a value of x that makes the equation true; you find the roots by splitting the middle term or by the quadratic formula.",
   whyItMatters:
-    "Four questions in the bank, three EASY and one MODERATE: check which equation has a given root, factorise, or use the formula. Every option is a pair of numbers, so a sign slip in one factor lands you on a printed wrong pair.",
+    "Five questions in the bank, four EASY and one MODERATE, one from the 2026 paper: check which equation has a given root or find a coefficient from one, factorise, or use the formula. Every option is a pair of numbers, so a sign slip in one factor lands you on a printed wrong pair.",
   concepts: [
     {
       kind: "formula" as const,
@@ -42,7 +42,7 @@ export const SPI_QE_SOLVING_NOTE: SubtopicNote = {
         { prompt: "If \\(x = 2\\) is a root of \\(x^2 + kx - 10 = 0\\), find k.", answer: "\\(4 + 2k - 10 = 0\\), so \\(k = 3\\)" },
         { prompt: "If \\(x = -1\\) is a root of \\(2x^2 + px + 5 = 0\\), find p.", answer: "\\(2 - p + 5 = 0\\), so \\(p = 7\\)" },
       ],
-      pyqExampleId: "5ed61c26-f407-4a26-9d8a-f22e09e5d213",
+      pyqExampleId: "a452ecc8-12bb-485b-8bd4-efddeb9a283d",
       traps: [
         {
           title: "Squaring a negative number wrongly",

@@ -12,6 +12,7 @@ export const SSC_TG_TRIANGLE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssctgrt-sides",
       name: "Ratios from the sides of a right triangle",
+      visualizationSlug: "cds-trig-right-triangle",
       intuition:
         "Before any ratio, decide which side is which. The hypotenuse never changes, but the opposite and adjacent sides swap when you move from one acute angle to the other.",
       definition:

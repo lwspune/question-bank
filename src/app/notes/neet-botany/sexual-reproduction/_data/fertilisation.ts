@@ -78,6 +78,7 @@ export const NEET_BO_SR_FERTILISATION_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nbosr-seed",
       name: "Embryo and seed",
+      visualizationSlug: "plant-seed-parts",
       intuition:
         "The seed is the fertilised ovule: a baby plant (the embryo), its food (cotyledons or endosperm) and a tough coat. NEET asks the names of the embryo parts, especially in grasses, and which seeds use up their endosperm and which keep it.",
       definition:

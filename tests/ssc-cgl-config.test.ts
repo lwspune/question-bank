@@ -2,12 +2,12 @@ import { describe, expect, it } from "vitest";
 import { CATALOG, DAYS, EXAMS, LAYOUTS, SECTION_SUBJECTS, SHIFTS, SUBJECTS, layoutOf, sectionSubjects, shiftSections, subjectFor, tcsFiles, tierOf } from "../scripts/ssc-cgl/config";
 
 describe("SSC CGL sections and subjects", () => {
-  it("maps each Tier I part to its subjects, General Awareness split CDS-style", () => {
+  it("maps each Tier I part to its subjects, General Awareness split CDS-style plus Static GK", () => {
     expect(SECTION_SUBJECTS.A).toEqual(["Reasoning"]);
     expect(SECTION_SUBJECTS.C).toEqual(["Quantitative Aptitude"]);
     expect(SECTION_SUBJECTS.D).toEqual(["English"]);
     expect([...SECTION_SUBJECTS.B].sort()).toEqual(
-      ["Biology", "Chemistry", "Current Affairs", "Economics", "Geography", "History", "Physics", "Polity"]
+      ["Biology", "Chemistry", "Current Affairs", "Economics", "Geography", "History", "Physics", "Polity", "Static GK"]
     );
   });
 

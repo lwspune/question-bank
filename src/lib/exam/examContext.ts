@@ -10,7 +10,7 @@
  * notes subject for that exam (or an honest "coming soon" when none have
  * shipped) — derived from NOTES_CHAPTERS, so a new exam needs no new page.
  */
-import type { AltLang } from "@/lib/i18n/bilingual";
+import type { AltLang, QuestionLang } from "@/lib/i18n/bilingual";
 
 export type ExamSlug =
   | "nda"
@@ -26,6 +26,8 @@ export type ExamSlug =
   | "isc-12"
   | "iiser-iat"
   | "icse-10"
+  | "up-board-10"
+  | "up-board-12"
   | "mh-sb-9"
   | "mh-sb-11"
   | "mh-ssc-10"
@@ -54,15 +56,28 @@ export type ExamSlug =
   | "uceed"
   | "ugc-net"
   | "rrb-ntpc"
+  | "rrb-ntpc-undergraduate"
   | "capf-ac"
   | "rpsc-ras"
-  | "clat";
+  | "gate-cs"
+  | "clat"
+  | "aissee-6"
+  | "aissee-9"
+  | "rms-cet-6"
+  | "rms-cet-9"
+  | "rimc"
+  | "homi-bhabha-6"
+  | "homi-bhabha-9"
+  | "mh-scholarship-4"
+  | "mh-scholarship-5"
+  | "mh-scholarship-7"
+  | "mh-scholarship-8";
 
 /**
  * School boards the bank carries content for. NOT every exam has one — a
  * coaching/entrance exam (NDA, NEET, the Foundation Course) has no board.
  */
-export type Board = "Maharashtra State Board" | "CBSE" | "CISCE";
+export type Board = "Maharashtra State Board" | "CBSE" | "CISCE" | "UP Board";
 
 /** School class. */
 export type Std = 9 | 10 | 11 | 12;
@@ -82,7 +97,7 @@ export const EXAM_TIERS: readonly ExamTier[] = ["school", "senior", "graduate"];
  * SPI is a Class 10 exam (tier "school") whose students are aiming for NDA, so
  * its goal is "defence". Labels and grouping: lib/exam/examGoals.ts.
  */
-export type ExamGoal = "boards" | "science" | "government" | "defence" | "management" | "law";
+export type ExamGoal = "boards" | "science" | "government" | "defence" | "management" | "law" | "scholarship" | "engineering";
 
 export const TIER_LABELS: Record<ExamTier, string> = {
   school: "Class 9–10",
@@ -136,6 +151,13 @@ export type ExamEntry = {
    */
   boardExam?: boolean;
   /**
+   * Whole board papers on /question-papers WITHOUT a textbook corpus, so no
+   * /board reader and no Board tab (`boardExam` gives both). UP Board
+   * (2026-11-17) is the first: its papers are in, its textbook is NCERT's and
+   * not ingested under it. Read through `hasQuestionPapers`.
+   */
+  pastPaperPages?: boolean;
+  /**
    * Exam has published mock tests (real PYQ papers served as timed, auto-graded
    * online tests at `/mock`). Drives the gated "Mocks" primary-nav tab — shown
    * only when the active exam actually has mocks, like Papers is member-gated.
@@ -175,6 +197,15 @@ export type ExamEntry = {
    * MH SSC), Hindi for SSC (2026-10-20). Read through `examAltLang`.
    */
   secondLang?: AltLang;
+  /**
+   * The language a `bilingual` exam's questions open in before the reader has
+   * chosen one. Absent = the language rule (`defaultLangFor`: a Hindi exam opens
+   * in English, a Marathi one in both). UP Board declares "hi": its readers are
+   * Hindi-medium (owner, 2026-11-17). Read through `examDefaultLang`; a page
+   * passes it to its questions with QuestionLangDefaultProvider.
+   * tests/exam-default-lang.test.ts holds it to one of the exam's own languages.
+   */
+  defaultLang?: QuestionLang;
   /**
    * The exam's PAST PAPERS (published `pyq` + `full` mocks) carry worked
    * solutions, not just answers: nine in ten questions or more. Decides whether
@@ -234,6 +265,14 @@ export type ExamEntry = {
    * every LIST shown on www reads `PYQVAULT_EXAMS`, which leaves it out.
    */
   site?: "intl";
+  /**
+   * An intl exam with published daily homework plans (2026-11-17, IMAT first):
+   * the intl header shows a Homework tab and /homework on intl goes to this
+   * exam's homework page. Read by intl only, because its header renders from
+   * the path and cannot read the database; www lists its plans from the DB.
+   * Set it in the same change that publishes the exam's first plan.
+   */
+  homework?: boolean;
   /**
    * The pass that covers this exam (2026-10-30, migration 0204, mirrored by
    * `exams.pass_scope`). Absent = the www Premium Pass (`mocks`). Every intl
@@ -321,6 +360,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     notesPath: "/notes/nda", // exam hub: lists Maths + Physics + Biology notes
     hasMocks: true, // 18 NDA Maths Paper I mocks published at /mock
     pastPaperSolutions: true,
+    learnPath: "/learn/nda-maths", // Concept Ladder's NDA Maths course, Class 11 and 12 (2026-11-22)
   },
   {
     slug: "mht-cet",
@@ -363,7 +403,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     goal: "defence",
     displayName: "Foundation",
     examName: "Foundation Course", // must match the `exams` DB row exactly
-    solutionCoverage: "some", // 87% solved (2026-10-26)
+    // solutionCoverage absent = "all": 2644/2852 = 92.7% solved (measured 2026-11-17)
     guidesPath: null, // no /guide subtree — falls back to the index
     notesPath: "/notes/foundation-course", // exam hub: "coming soon" until notes ship
     practiceOnly: true, // worksheet-only corpus → /browse defaults to the Practice view
@@ -407,6 +447,8 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // On intl.pyqvault.com, not www, since 2026-10-30 (owner): international
     // students should see no Indian exam, and www's lists leave it out.
     site: "intl",
+    // Daily homework from the 2023-2026 papers, on screen only (2026-11-17).
+    homework: true,
     // Its own pass (2026-10-30): $19, or Rs 999 for buyers in India.
     passScope: "imat",
   },
@@ -630,6 +672,57 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     std: 10,
   },
   {
+    slug: "up-board-10",
+    passScope: "free", // Class 9-10: no pass needed (migration 0210)
+    tier: "school",
+    goal: "boards",
+    displayName: "UP Board Class 10",
+    examName: "UP Board Class 10", // must match the `exams` DB row exactly
+    guidesPath: null,
+    notesPath: null, // boards get no notes (owner)
+    // UPMSP's Class 10 board papers 2025 + 2026, Mathematics (822) + Science
+    // (824), from upboardonline.com scans of the board's own print
+    // (scripts/up-board/). PYQ-only, so NOT practiceOnly; NOT boardExam, for the
+    // isc-12 reason: no textbook-structured corpus. UPMSP publishes no key: every
+    // answer is derived twice blind and says so.
+    mixedFormats: true,
+    // Printed in Hindi and English; English is the canonical row, Hindi a
+    // translation (0118). Opens in Hindi: UP's readers are Hindi-medium.
+    bilingual: true,
+    secondLang: "hi",
+    defaultLang: "hi",
+    pastPaperSolutions: true, // PUBLIC since 2026-11-17, every row solved in both languages
+    // Chapter tests (scripts/mocks/build-sectional.ts --exam=up-board-1x): built
+    // as drafts 2026-11-17, published with the push that ships this entry.
+    hasMocks: true,
+    pastPaperPages: true, // /question-papers, but no /board reader (isc-12's reason)
+    board: "UP Board",
+    std: 10,
+  },
+  {
+    slug: "up-board-12",
+    tier: "senior",
+    goal: "boards",
+    displayName: "UP Board Class 12",
+    examName: "UP Board Class 12", // must match the `exams` DB row exactly
+    guidesPath: null,
+    notesPath: null, // boards get no notes (owner)
+    // UPMSP's Class 12 board papers 2025 + 2026, Mathematics (324), Physics
+    // (346), Chemistry (347); Biology skipped (owner, 2026-11-17). Same source,
+    // method and language set-up as up-board-10.
+    mixedFormats: true,
+    bilingual: true,
+    secondLang: "hi",
+    defaultLang: "hi",
+    pastPaperSolutions: true, // PUBLIC since 2026-11-17, every row solved in both languages
+    // Chapter tests (scripts/mocks/build-sectional.ts --exam=up-board-1x): built
+    // as drafts 2026-11-17, published with the push that ships this entry.
+    hasMocks: true,
+    pastPaperPages: true, // /question-papers, but no /board reader (isc-12's reason)
+    board: "UP Board",
+    std: 12,
+  },
+  {
     slug: "mh-sb-9",
     passScope: "free", // Class 9-10: no pass needed (migration 0210)
     tier: "school",
@@ -723,7 +816,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     goal: "management",
     displayName: "IPMAT Indore",
     examName: "IPMAT Indore", // must match the `exams` DB row exactly
-    solutionCoverage: "some", // 89% solved (2026-10-26)
+    // solutionCoverage absent = "all": 630/670 = 94.0% solved (measured 2026-11-17)
     pastPaperSolutions: true, // 407/450 past-paper questions solved (2026-10-26)
     family: "IPMAT",
     familyLabel: "Indore",
@@ -762,7 +855,8 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // has its own name, and the `exams` row uses it. Only its label INSIDE the
     // family is "Jammu", so the picker reads Indore / Rohtak / Jammu.
     examName: "JIPMAT", // must match the `exams` DB row exactly
-    solutionCoverage: "some", // 89% solved (2026-10-26)
+    // solutionCoverage absent = "all": 541/581 = 93.1% solved (measured 2026-11-17)
+    pastPaperSolutions: true, // 371/400 past-paper questions solved (measured 2026-11-17)
     family: "IPMAT",
     familyLabel: "Jammu",
     familyAxis: "Institute", // the picker chooses between IIMs, not classes
@@ -835,7 +929,33 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     goal: "government",
     displayName: "RRB NTPC",
     examName: "RRB NTPC", // must match the `exams` DB row exactly
+    // One picker family with the Undergraduate level (owner, 2026-11-19). The name
+    // stays "RRB NTPC": its pages and mocks were live under it, and students search
+    // the Graduate papers by it.
+    family: "RRB NTPC",
+    familyLabel: "Graduate",
+    familyAxis: "Level",
     hasMocks: true, // one mock per shift (rrb-ntpc-graduate-cbt-1-*)
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "rrb-ntpc-undergraduate",
+    // RRB NTPC Undergraduate (Class 12 level; RRB writes "Under Graduate"), CEN
+    // 07/2025, CBT 1 sat 7 May to 20 June 2026: 32 shifts, read from RRB's own
+    // response sheets, every answer derived blind against RRB's tentative key
+    // (scripts/rrb-ntpc/). Its own exam row (owner, 2026-11-19): a separate notice,
+    // eligibility, posts and sitting. Class 12 eligibility but graduate tier, as
+    // SSC CHSL: sat mostly by graduates and those preparing for the Graduate level.
+    tier: "graduate",
+    goal: "government",
+    displayName: "RRB NTPC Undergraduate",
+    examName: "RRB NTPC Undergraduate", // must match the `exams` DB row exactly
+    family: "RRB NTPC",
+    familyLabel: "Undergraduate",
+    familyAxis: "Level",
+    hasMocks: true, // one mock per shift (rrb-ntpc-undergraduate-cbt-1-*)
     pastPaperSolutions: true,
     guidesPath: null,
     notesPath: null,
@@ -854,6 +974,30 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     examName: "UPSC CAPF (AC)", // must match the `exams` DB row exactly
     // PUBLIC since 2026-11-14: nine years, 1,125 q, every one with a worked
     // solution. One timed mock per year (capf-ac-paper-1-*), MOCKS.md.
+    hasMocks: true,
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "gate-cs",
+    // GATE Computer Science and Information Technology (CS), the IITs' and IISc's
+    // entrance to M.Tech and the screen for PSU jobs. Wave 1 (owner, 2026-11-23):
+    // both CS sets of 2024, 2025 and 2026, 390 q, each on its organising institute's
+    // FINAL key (scripts/gate/). 65 questions a paper: General Aptitude Q1-10, then CS.
+    tier: "graduate",
+    goal: "engineering",
+    displayName: "GATE CS",
+    examName: "GATE CS", // must match the `exams` DB row exactly
+    // A GATE family (owner, 2026-11-23): Computer Science is its first branch. One
+    // member is not a family (examFamily rule 2), so it shows flat as "GATE CS"
+    // until a second branch joins.
+    family: "GATE",
+    familyLabel: "Computer Science",
+    familyAxis: "Branch",
+    mixedFormats: true, // MCQ, MSQ and NAT in every paper since 2021
+    // PUBLIC since 2026-11-23 (owner OK): 390 q, every one with a worked solution.
+    // One timed mock per paper (gate-cs-<year>-cs<set>), MOCKS.md.
     hasMocks: true,
     pastPaperSolutions: true,
     guidesPath: null,
@@ -1199,6 +1343,234 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     guidesPath: null,
     notesPath: "/notes/spi", // exam hub: live since 2026-10-21 (Mathematics, Probability)
   },
+  // ── Sainik & Military Schools (owner, 2026-11-17: "aissee rms rimc and
+  // bifurcation in those"). Three entrances read as ONE family, the SSC
+  // pattern: stage = the exam (AISSEE / RMS CET / RIMC), label = the class it
+  // admits to. Each class is its own exam row, because a Class 5 child and a
+  // Class 8 child should never share a feed. All FREE ("those papers are free
+  // for our users"): passScope "free" here, exams.pass_scope = 'free' in the DB
+  // (scripts/milschool/seed-exams.ts). Sources are re-hosted scans of the
+  // original printed booklets (scripts/milschool/, README). Rows commit PRIVATE
+  // and go PUBLIC by scripts/milschool/publish.ts. Mocks: one per whole AISSEE
+  // and RMS CET paper (scripts/mocks/milschoolSittings.ts); RMS CET Class 6 has
+  // none yet (every paper misses a question) and RIMC none (written papers).
+  {
+    slug: "aissee-6",
+    passScope: "free",
+    // All India Sainik Schools Entrance Examination, Class 6 admission (NTA).
+    // OMR multiple choice, 300 marks, 150 min, no negative marking; NTA's final
+    // key for 2022-2026.
+    tier: "school",
+    goal: "defence",
+    displayName: "AISSEE Class 6",
+    examName: "AISSEE Class 6", // must match the `exams` DB row exactly
+    family: "Sainik & Military Schools",
+    familyStage: "AISSEE",
+    familyLabel: "Class 6",
+    familyAxis: "Class",
+    hasMocks: true,
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "aissee-9",
+    passScope: "free",
+    // AISSEE, Class 9 admission (NTA): Maths 50 x 4 + Intelligence, English,
+    // General Science, Social Science 25 x 2 = 150 q / 400 marks / 180 min, no
+    // negative marking, English only. NTA's final key for 2022-2026.
+    tier: "school",
+    goal: "defence",
+    displayName: "AISSEE Class 9",
+    examName: "AISSEE Class 9", // must match the `exams` DB row exactly
+    family: "Sainik & Military Schools",
+    familyStage: "AISSEE",
+    familyLabel: "Class 9",
+    familyAxis: "Class",
+    hasMocks: true,
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "rms-cet-6",
+    passScope: "free",
+    // Rashtriya Military Schools Common Entrance Test, Class 6 admission:
+    // English, Intelligence, Maths, GK. No key is published: answers derived
+    // twice, blind, and hand-checked.
+    tier: "school",
+    goal: "defence",
+    displayName: "RMS CET Class 6",
+    examName: "RMS CET Class 6", // must match the `exams` DB row exactly
+    family: "Sainik & Military Schools",
+    familyStage: "RMS CET",
+    familyLabel: "Class 6",
+    familyAxis: "Class",
+    hasMocks: false,
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "rms-cet-9",
+    passScope: "free",
+    // RMS CET, Class 9 admission: English, Hindi, Maths, Science, Social
+    // Science. No key is published.
+    tier: "school",
+    goal: "defence",
+    displayName: "RMS CET Class 9",
+    examName: "RMS CET Class 9", // must match the `exams` DB row exactly
+    family: "Sainik & Military Schools",
+    familyStage: "RMS CET",
+    familyLabel: "Class 9",
+    familyAxis: "Class",
+    hasMocks: true,
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "rimc",
+    passScope: "free",
+    // Rashtriya Indian Military College, Dehradun: Class 8 admission, held in
+    // June and December. WRITTEN papers (Mathematics 200, English 125, General
+    // Knowledge 75), so its rows are written-answer questions with model
+    // answers; RIMC publishes no key.
+    tier: "school",
+    goal: "defence",
+    displayName: "RIMC",
+    examName: "RIMC", // must match the `exams` DB row exactly
+    family: "Sainik & Military Schools",
+    familyStage: "RIMC",
+    familyLabel: "Class 8",
+    familyAxis: "Class",
+    hasMocks: false,
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "homi-bhabha-6",
+    passScope: "free", // owner 2026-11-19: free, like the other school entrances
+    // Dr. Homi Bhabha Balvaidnyanik Competition (MSTA, Mumbai), Phase I written
+    // test for Std VI: 100 one-mark science MCQs, 90 min, English or Marathi
+    // medium. MSTA's own booklets 2010-2024 (scripts/homi-bhabha/README.md);
+    // the Marathi booklet is stored as a translation of the English row.
+    tier: "school",
+    goal: "science",
+    displayName: "Homi Bhabha Class 6",
+    examName: "Homi Bhabha Class 6", // must match the `exams` DB row exactly
+    family: "Homi Bhabha",
+    familyStage: "Homi Bhabha",
+    familyLabel: "Class 6",
+    familyAxis: "Class",
+    noPublicContent: true, // not ingested yet (Std IX came first, owner 2026-11-19)
+    hasMocks: false,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "homi-bhabha-9",
+    passScope: "free", // owner 2026-11-19: free, like the other school entrances
+    // The same competition for Std IX: Physics, Chemistry, Biology, then
+    // science GK (100 q, 90 min). Keys: MSTA's own for 2021, 2023 and 2024;
+    // 2010, 2017 and 2018 are solved twice blind and checked by hand.
+    // PUBLIC since 2026-11-19 (eight papers, 797 q), with /notes for every
+    // chapter of 10+ questions. English only until the Marathi translations
+    // land: `bilingual` comes on with them.
+    tier: "school",
+    goal: "science",
+    displayName: "Homi Bhabha Class 9",
+    examName: "Homi Bhabha Class 9", // must match the `exams` DB row exactly
+    family: "Homi Bhabha",
+    familyStage: "Homi Bhabha",
+    familyLabel: "Class 9",
+    familyAxis: "Class",
+    // Five whole-paper mocks (scripts/mocks/build.ts --paper=homi-bhabha);
+    // 2018, January 2021 and 2023 are held, each missing one question.
+    hasMocks: true,
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: "/notes/homi-bhabha-9",
+  },
+  // ---- Maharashtra Scholarship (MSCE Pune), one family split by class -------
+  // Two papers per class, 75 MCQs x 2 marks each, 90 min: Paper I = first
+  // language (English, for the English medium) + Mathematics, Paper II = third
+  // language (Marathi) + Intelligence Test. Class 5/8 sat Feb 2017-Feb 2026;
+  // the GR of 17 Oct 2025 moved it to Class 4/7 from Apr 2026. MSCE's own papers
+  // and FINAL keys (scripts/mh-scholarship/README.md). Up to 20% of questions
+  // have TWO correct options on the old Class 5/8 papers; those are held back
+  // (owner, 2026-11-20). The Class 4/7 papers (Apr 2026 on) have none. FREE
+  // (owner, 2026-11-20). Its own goal, "scholarship" (owner, 2026-11-20): it is
+  // none of the other six.
+  {
+    slug: "mh-scholarship-4",
+    passScope: "free",
+    tier: "school",
+    goal: "scholarship",
+    displayName: "MH Scholarship Class 4",
+    examName: "MH Scholarship Class 4", // must match the `exams` DB row exactly
+    family: "MH Scholarship",
+    familyStage: "MH Scholarship",
+    familyLabel: "Class 4",
+    familyAxis: "Class",
+    // PUBLIC since 2026-11-20: the April 2026 papers (150 q) and two whole-paper mocks.
+    hasMocks: true,
+    guidesPath: null,
+    // Notes for Intelligence Test and Maths chapters of 5+ questions, one set
+    // per class because the two papers differ in difficulty (owner, 2026-11-21).
+    notesPath: "/notes/mh-scholarship-4",
+  },
+  {
+    slug: "mh-scholarship-5",
+    passScope: "free",
+    tier: "school",
+    goal: "scholarship",
+    displayName: "MH Scholarship Class 5",
+    examName: "MH Scholarship Class 5",
+    family: "MH Scholarship",
+    familyStage: "MH Scholarship",
+    familyLabel: "Class 5",
+    familyAxis: "Class",
+    noPublicContent: true,
+    hasMocks: false,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "mh-scholarship-7",
+    passScope: "free",
+    tier: "school",
+    goal: "scholarship",
+    displayName: "MH Scholarship Class 7",
+    examName: "MH Scholarship Class 7",
+    family: "MH Scholarship",
+    familyStage: "MH Scholarship",
+    familyLabel: "Class 7",
+    familyAxis: "Class",
+    // PUBLIC since 2026-11-20: the April 2026 papers (149 q; P2 Q42 held) and two mocks.
+    hasMocks: true,
+    guidesPath: null,
+    // Notes for Intelligence Test and Maths chapters of 5+ questions, one set
+    // per class because the two papers differ in difficulty (owner, 2026-11-21).
+    notesPath: "/notes/mh-scholarship-7",
+  },
+  {
+    slug: "mh-scholarship-8",
+    passScope: "free",
+    tier: "school",
+    goal: "scholarship",
+    displayName: "MH Scholarship Class 8",
+    examName: "MH Scholarship Class 8",
+    family: "MH Scholarship",
+    familyStage: "MH Scholarship",
+    familyLabel: "Class 8",
+    familyAxis: "Class",
+    noPublicContent: true,
+    hasMocks: false,
+    guidesPath: null,
+    notesPath: null,
+  },
 ] as const;
 
 /**
@@ -1229,6 +1601,11 @@ export function getExamBySlug(slug: string | null | undefined): ExamEntry | null
  * Null for a DB exam with no registry entry, which callers must treat as
  * "ungrouped", never as "drop it" — see groupExamFamilies.
  */
+/** The language an exam's questions open in before the reader chooses, or null for the language rule. */
+export function examDefaultLang(entry: ExamEntry | null | undefined): QuestionLang | null {
+  return entry?.defaultLang ?? null;
+}
+
 /** The second language a bilingual exam prints, or null when it prints English only. */
 export function examAltLang(entry: ExamEntry | null | undefined): AltLang | null {
   return entry?.bilingual ? (entry.secondLang ?? "mr") : null;
@@ -1283,6 +1660,13 @@ export function examHasMocks(slug: string | null | undefined): boolean {
 export const BOARD_EXAMS: readonly ExamEntry[] = EXAM_REGISTRY.filter(
   (e) => e.boardExam === true
 );
+
+/** The exam has /question-papers pages: a textbook board, or a board with papers only. */
+export function hasQuestionPapers(entry: ExamEntry | null | undefined): boolean {
+  return entry?.boardExam === true || entry?.pastPaperPages === true;
+}
+
+export const QUESTION_PAPER_EXAMS: readonly ExamEntry[] = EXAM_REGISTRY.filter(hasQuestionPapers);
 
 /**
  * Distinct boards, in registry order — the written-paper builder's first

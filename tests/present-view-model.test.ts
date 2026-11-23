@@ -65,6 +65,10 @@ function makeWorkedExample(partial: Partial<WorkedExample> = {}): WorkedExample 
     examName: "NDA",
     imageUrl: null,
     solutionImageUrl: null,
+    solutionVisual: null,
+    format: "mcq",
+    numericAnswer: null,
+    numericAnswerMax: null,
     options: [
       { label: "A", text: "5", isCorrect: false, imageUrl: null },
       { label: "B", text: "5.5", isCorrect: true, imageUrl: null },
@@ -221,10 +225,27 @@ describe("fromQuestionRow (/browse + /questions)", () => {
 });
 
 describe("fromWorkedExample (/notes checkpoints + /guide)", () => {
+  it("carries the animated solution into Present mode", () => {
+    const visual = { scene: "functionGraph", params: {}, answer: { value: 1 }, steps: [] };
+    expect(fromWorkedExample(makeWorkedExample({ solutionVisual: visual })).solutionVisual).toBe(visual);
+    expect(fromWorkedExample(makeWorkedExample()).solutionVisual).toBeNull();
+  });
+
   it("builds the breadcrumb from chapter, subtopic and provenance", () => {
     const p = fromWorkedExample(makeWorkedExample());
     expect(p.breadcrumb).toBe("Statistics → Central Tendency · Q110 · Sep · 2023");
     expect(p.answer?.correctLabel).toBe("B");
+  });
+
+  it("presents a numeric row as numeric, with its keyed answer (board notes, 2026-11-23)", () => {
+    const p = fromWorkedExample(makeWorkedExample({ format: "numeric", options: [], numericAnswer: 4.5, numericAnswerMax: 4.6 }));
+    expect(p.format).toBe("numeric");
+    expect(p.answer?.numericAnswer).toBe(4.5);
+    expect(p.answer?.numericAnswerMax).toBe(4.6);
+  });
+
+  it("presents a written row as subjective", () => {
+    expect(fromWorkedExample(makeWorkedExample({ format: "subjective", options: [] })).format).toBe("subjective");
   });
 
   it("drops the missing segments rather than emitting empty separators", () => {
@@ -378,7 +399,7 @@ describe("flashcard fields", () => {
     expect(fromQuestionRow(makeQuestionRow({ questionFormat: "msq" })).format).toBe("msq");
   });
 
-  it("fromWorkedExample: an example with options is an MCQ, one without is written", () => {
+  it("fromWorkedExample: carries the row's own format (was guessed from options before 2026-11-23)", () => {
     const mcq = fromWorkedExample(makeWorkedExample());
     expect(mcq.questionId).toBe("we-1");
     expect(mcq.examName).toBe("NDA");
@@ -386,7 +407,7 @@ describe("flashcard fields", () => {
     expect(mcq.format).toBe("mcq");
     expect(mcq.cancelled).toBe(false);
     expect(mcq.solutionVisual).toBeNull();
-    expect(fromWorkedExample(makeWorkedExample({ options: [] })).format).toBe("subjective");
+    expect(fromWorkedExample(makeWorkedExample({ format: "subjective", options: [] })).format).toBe("subjective");
   });
 
   it("fromBoardQuestion takes the exam from the reader and the chapter as the topic", () => {

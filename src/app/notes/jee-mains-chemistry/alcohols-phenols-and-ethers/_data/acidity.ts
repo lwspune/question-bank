@@ -13,6 +13,7 @@ export const ACIDITY_ALC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcalc-phenol-vs-alcohol",
       name: "Why phenol is a stronger acid than an alcohol",
+      visualizationSlug: "jee-phenoxide-resonance",
       intuition:
         "An acid is strong when the ion it leaves behind is stable. The phenoxide ion spreads its negative charge from oxygen onto the ortho and para carbons of the ring. The alkoxide ion keeps the charge on oxygen, and its alkyl group pushes more electron density there. So phenol gives up its proton far more easily.",
       definition:

@@ -41,6 +41,7 @@ describe("parseAnswer", () => {
   it("returns empty string for unparseable input", () => {
     expect(parseAnswer("")).toBe("");
     expect(parseAnswer("both 1 and 2")).toBe("");
+    expect(parseAnswer("CANCELLED")).toBe("CANCELLED");
     expect(parseAnswer("5")).toBe("");
   });
 });
@@ -123,6 +124,19 @@ describe("buildRecords", () => {
     expect(r.solution).toContain("0.75");
   });
 
+  it("carries an NTA-dropped question as CANCELLED with its notice (migration 0119)", () => {
+    const { rows } = buildRecords(
+      normalizeQuestions([baseQ({ answer: "CANCELLED", cancelledNote: "Dropped by NTA: no option is correct." })])
+    );
+    expect(rows[0].answer).toBe("CANCELLED");
+    expect(rows[0].cancelledNote).toBe("Dropped by NTA: no option is correct.");
+  });
+
+  it("emits no cancelledNote on an ordinary keyed question", () => {
+    const { rows } = buildRecords(normalizeQuestions([baseQ()]));
+    expect(rows[0].cancelledNote).toBeUndefined();
+  });
+
   it("flags a question whose chapter is not in the subject's catalog", () => {
     const { flags } = buildRecords(normalizeQuestions([baseQ({ chapter: "Astrology" })]));
     expect(flags.some((f) => /not in the Physics catalog/i.test(f.reason))).toBe(true);
@@ -164,6 +178,13 @@ describe("validateRows", () => {
 
   it("passes a clean single-question set (range 1..1)", () => {
     expect(validateRows(rowsFor([baseQ()]), 1, 1)).toEqual([]);
+  });
+
+  it("accepts a CANCELLED row only when it carries its notice", () => {
+    const ok = rowsFor([baseQ({ answer: "CANCELLED", cancelledNote: "Dropped by NTA." })]);
+    expect(validateRows(ok, 1, 1)).toEqual([]);
+    const bare = rowsFor([baseQ({ answer: "CANCELLED" })]);
+    expect(validateRows(bare, 1, 1).join(" ")).toMatch(/CANCELLED without a cancelledNote/);
   });
 
   it("reports a missing question number", () => {

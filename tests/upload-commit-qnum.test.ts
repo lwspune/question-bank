@@ -74,6 +74,7 @@ describe.skipIf(!HAS_ENV)("commitStaged + question_number", () => {
       filename: `qnum-${RUN_ID}.xlsx`,
       createdBy: adminUserId,
       rows: valid,
+      visibility: "PUBLIC",
     });
     expect(result.inserted).toBe(5);
 
@@ -117,6 +118,7 @@ describe.skipIf(!HAS_ENV)("commitStaged + question_number", () => {
         filename: `qnum-null-${RUN_ID}.xlsx`,
         createdBy: adminUserId,
         rows: valid,
+        visibility: "PUBLIC",
       });
 
       const { data: questions } = await admin

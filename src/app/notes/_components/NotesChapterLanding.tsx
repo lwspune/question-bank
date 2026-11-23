@@ -1,3 +1,4 @@
+import StudyContext from "@/components/StudyContext";
 import type { Metadata } from "next";
 import { notesChapterDescription, notesChapterTitle } from "@/lib/notes/titles";
 import { chapterStart, mockCta } from "@/lib/notes/keepGoing";
@@ -240,6 +241,7 @@ export default async function NotesChapterLanding({ chapter }: Props) {
       sideNav={sideNav}
       breadcrumbs={notesBreadcrumbs(chapter)}
     >
+      <StudyContext chapterId={chapterTax?.id} />
       <GuideJsonLd
         type="CollectionPage"
         path={base}

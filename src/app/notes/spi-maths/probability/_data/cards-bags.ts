@@ -6,7 +6,7 @@ export const SPI_PR_CARDS_BAGS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Count the cards, balls or letters that fit and divide by how many there are; for a 52-card deck, know its make-up by heart.",
   whyItMatters:
-    "Eighteen questions in the bank, the largest page, including the 2022 paper's question on drawing two queens. Half are a single card from a deck, the rest are bags of coloured balls, numbered cards and letters of a word, plus one on odds.",
+    "Twenty-one questions in the bank, the largest page, including the 2022 paper's question on drawing two queens and three from the 2026 paper. Nearly half are a single card from a deck, the rest are bags of coloured balls, numbered cards and letters of a word, plus one on odds.",
   concepts: [
     {
       kind: "reference" as const,
@@ -45,7 +45,7 @@ export const SPI_PR_CARDS_BAGS_NOTE: SubtopicNote = {
         { prompt: "A card is drawn from a deck of 52. What is the probability of a black card that is not a face card?", answer: "\\(\\frac{20}{52} = \\frac{5}{13}\\)" },
         { prompt: "A card is drawn from a deck of 52. What is the probability of the king of hearts?", answer: "\\(\\frac{1}{52}\\)" },
       ],
-      pyqExampleId: "4aaab76f-fd72-428e-90c4-d366b73953e7",
+      pyqExampleId: "6ef5bf73-2f2e-4f0a-9bc4-9852d726dc29",
       traps: [
         {
           title: "All the kings, or only the black ones",
@@ -96,7 +96,7 @@ export const SPI_PR_CARDS_BAGS_NOTE: SubtopicNote = {
         { prompt: "A box of 30 bulbs has 6 defective ones. One is picked. What is the probability that it is good?", answer: "\\(\\frac{24}{30} = \\frac{4}{5}\\)" },
         { prompt: "Cards numbered 11 to 30 are in a box. One is drawn. What is the probability of a prime number?", answer: "\\(\\frac{6}{20} = \\frac{3}{10}\\) (11, 13, 17, 19, 23, 29)" },
       ],
-      pyqExampleId: "acef9f20-7118-41c8-9519-48531ef6071f",
+      pyqExampleId: "8660a18f-9810-4e65-a462-a07972fdafb4",
       traps: [
         {
           title: "Cards from a to b are b minus a plus 1",

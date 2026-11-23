@@ -13,6 +13,7 @@ export const UNITY_CX_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcx-omega",
       name: "Cube roots of unity",
+      visualizationSlug: "cn-cube-roots-circle",
       intuition:
         "The roots of \\(x^3=1\\) are \\(1\\), \\(\\omega\\) and \\(\\omega^2\\), with \\(\\omega=\\frac{-1+i\\sqrt3}2=e^{2\\pi i/3}\\). Two facts do almost all the work: \\(\\omega^3=1\\), so a power of \\(\\omega\\) depends only on the exponent mod 3; and \\(1+\\omega+\\omega^2=0\\), so \\(1+\\omega=-\\omega^2\\) and \\(1+\\omega^2=-\\omega\\). The non-real roots are exactly the roots of \\(x^2+x+1=0\\).",
       definition:

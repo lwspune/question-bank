@@ -190,6 +190,7 @@ export const NEET_BO_PI_MENDEL_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nbopi-dihybrid",
       name: "The dihybrid cross and the law of independent assortment",
+      visualizationSlug: "neet-dihybrid-cross",
       intuition:
         "With two genes on different chromosomes, each pair of alleles separates on its own. So an RrYy plant makes four kinds of gamete in equal numbers. The F2 is then two 3 : 1 ratios multiplied together, which gives 9 : 3 : 3 : 1. Any one character, counted alone, is still 3 : 1.",
       definition:

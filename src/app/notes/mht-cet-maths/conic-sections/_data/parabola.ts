@@ -13,6 +13,7 @@ export const PARABOLA_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetcon-parabola-forms",
       name: "Standard Forms, Focus, Directrix and Latus Rectum",
+      visualizationSlug: "conics-parabola-diagram",
       intuition:
         "A parabola is the set of points as far from a fixed point (the focus) as from a fixed line (the directrix). In y² = 4ax the focus is a to the right of the vertex and the directrix a to the left. The latus rectum is the chord through the focus perpendicular to the axis; its length is 4a. A parabola whose vertex is not at the origin is brought to a standard form by completing the square.",
       definition:

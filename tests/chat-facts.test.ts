@@ -167,17 +167,36 @@ describe("buildPlanFacts", () => {
     expect(facts[0]).toContain("Unlimited mocks");
     expect(facts[0]).toContain("PDF downloads");
   });
+
+});
+
+// 2026-11-19: "Does a practice pass available for all exam practice or just one" got "My information doesn't
+// say whether it covers every exam or only one". A pass is never tied to an exam (userHasAccess checks only the
+// scope), and V speaks only on www. It is rule 6c's, not a line among the passes: as a line there, V added it to
+// "is this a free website" and dropped /pricing (2 of 6 runs passed, main 3 of 4).
+describe("which exams a pass covers", () => {
+  const p = buildSystemPrompt({ exams: [], plans: [], bankTotal: 1, nav: NAV_FACTS });
+
+  it("rule 6c says one pass covers every exam, not one exam, and links /pricing", () => {
+    const rule = p.split("\n").find((l) => l.startsWith("6c."))!;
+    expect(rule).toMatch(/every exam on PYQ Vault, not just one/);
+    expect(rule).toMatch(/one exam or all of them[^.]*\/pricing/);
+  });
+
+  it("adds no line to the passes on sale", () => {
+    expect(buildPlanFacts([{ label: "Practice Pass", amountPaise: 19900, durationDays: 182, scope: "practice" }])).toHaveLength(1);
+  });
 });
 
 describe("buildFreeFacts", () => {
   it("states each free limit that is on", () => {
-    const facts = buildFreeFacts({ reveals: 30, drill: 15, saves: 100, mocks: 3, chapterTests: 5, projectionDays: 7, papersPerDay: 1 });
+    const facts = buildFreeFacts({ reveals: 30, intlReveals: 10, drill: 15, saves: 100, mocks: 3, chapterTests: 5, projectionDays: 7, papersPerDay: 1 });
     expect(facts.some((f) => f.includes("30") && /answer/i.test(f))).toBe(true);
     expect(facts.some((f) => f.includes("3") && /mock/i.test(f))).toBe(true);
   });
 
   it("calls a limit that is off unlimited, never a number", () => {
-    const facts = buildFreeFacts({ reveals: null, drill: null, saves: null, mocks: null, chapterTests: null, projectionDays: null, papersPerDay: null });
+    const facts = buildFreeFacts({ reveals: null, intlReveals: null, drill: null, saves: null, mocks: null, chapterTests: null, projectionDays: null, papersPerDay: null });
     expect(facts.join(" ")).not.toMatch(/\bnull\b/);
     expect(facts.some((f) => /mock/i.test(f) && /unlimited|no limit/i.test(f))).toBe(true);
   });
@@ -190,7 +209,7 @@ describe("buildFreeFacts", () => {
   // is the daily cap on PASS HOLDERS (0137); a free account gets one free paper
   // (question paper + answer key, 0139) and one free formula sheet.
   it("never sells the pass holders' daily paper cap as a free allowance", () => {
-    const facts = buildFreeFacts({ reveals: 15, drill: 10, saves: 20, mocks: 3, chapterTests: 5, projectionDays: null, papersPerDay: 5 });
+    const facts = buildFreeFacts({ reveals: 15, intlReveals: 10, drill: 10, saves: 20, mocks: 3, chapterTests: 5, projectionDays: null, papersPerDay: 5 });
     const text = facts.join("\n");
     expect(text).not.toMatch(/downloads?: 5 a day free/i);
     const capLine = facts.find((f) => f.includes("5") && /past paper/i.test(f));
@@ -236,6 +255,22 @@ describe("NAV_FACTS", () => {
     expect(line).toBeDefined();
     expect(line).toMatch(/contact/i);
     expect(line).toMatch(/payment/i);
+  });
+
+  // 2026-11-19: "sign out button" got "I don't have details on where the sign-out button is".
+  it("says where Sign out is", () => {
+    const line = NAV_FACTS.find((f) => /sign out/i.test(f));
+    expect(line).toBeDefined();
+    expect(line).toMatch(/top right/i);
+  });
+
+  // 2026-11-19: "Ask parent to pay option" got "I don't have any information about a way to ask a parent to pay".
+  it("says where Ask a parent to pay is and that the parent needs no account", () => {
+    const line = NAV_FACTS.find((f) => /ask a parent to pay/i.test(f));
+    expect(line).toBeDefined();
+    expect(line).toMatch(/\/pricing/);
+    expect(line).toMatch(/WhatsApp/);
+    expect(line).toMatch(/no account/i);
   });
 
   it("names the student's own progress pages, so V can link them (2026-10-16)", () => {
@@ -585,6 +620,37 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/a chapter or topic name alone \("atoms", "vectors"\) is a request for that chapter \(rule 3\)/);
   });
 
+  // 2026-11-21: "bro can you teach a certain chapter i am really bad at vectors" got a link to 334
+  // questions, then "our notes did not match" with the MHT-CET Vectors notes live.
+  it("with explanations on, sends a request to be taught a whole chapter to chapter_overview, and teaches from it", () => {
+    const p = buildSystemPrompt({ ...base, explainEnabled: true });
+    expect(p).toMatch(/7c\. /);
+    expect(p).toMatch(/call chapter_overview/);
+    expect(p).toMatch(/weak at/i);
+    expect(p).toMatch(/one part at a time/i);
+    // 2026-11-21: it may name the student's waiting mistakes and a part to start at; the rule must not say "first part" over it.
+    expect(p).toMatch(/the part it says to start at/i);
+    // 2026-11-21 (owner's phone): the Go on button asks for a part by number; a card and buttons
+    // carry the map, the notes and "go on", so V never writes them as text.
+    expect(p).toMatch(/with part N/i);
+    expect(p).toMatch(/never list the parts/i);
+    expect(p).toMatch(/never write a question of your own/i);
+    // 2026-11-22: Learn first wherever it teaches the chapter; its Go on asks for a lesson by number.
+    expect(p).toMatch(/Teach me lesson 3 of/);
+    // Second change the same day (owner): on a Learn chapter the map is the reply and a tap plays the lesson.
+    expect(p).toMatch(/Learn lessons teach the chapter, the card above your reply is the lesson map and a tap plays the lesson/);
+    expect(p).toMatch(/teach nothing yourself/);
+    // Its answers and pages are usable like the other tools'.
+    expect(p).toMatch(/returned by [^.]*chapter_overview/);
+    expect(p).toMatch(/what the [^.]*chapter_overview[^.]*tools return/);
+    // A chapter name alone is still a request for the chapter page (rule 3).
+    expect(p).toMatch(/a chapter or topic name alone \("atoms", "vectors"\) is a request for that chapter \(rule 3\)/);
+  });
+
+  it("with explanations off, never names chapter_overview", () => {
+    expect(buildSystemPrompt({ ...base, explainEnabled: false })).not.toMatch(/chapter_overview/);
+  });
+
   // Owner, 2026-11-08: a student sent "2 x 1 + 1 x 2 + 3 x 1 = 7%" and V would not say it was right
   // ("final sum khud check kar lijiye"). V may confirm a student's own working, and a bank question is
   // still checked against its solution and key.
@@ -630,6 +696,14 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/One more like this/);
     // The full eval run: "REMIND OF DOING Q 44 RETRY" stopped saving the question. A save still uses recent_questions.
     expect(p).toMatch(/To save or retry it, use recent_questions as above/);
+  });
+
+  // 2026-11-19 (case 62295886): on a new notes page, "This question explanation" with nothing attached got
+  // the noun question from the previous page explained again. Notes questions are never in recent_questions.
+  it("on a notes page asks which question, and never re-explains one from another page as 'this question'", () => {
+    const p = buildSystemPrompt({ ...base, explainEnabled: true });
+    expect(p).toMatch(/On a notes page .*tap Ask V on it or paste it/);
+    expect(p).toMatch(/explained earlier on another page is not "this question"/);
   });
 
   it("tells V it cannot write new questions", () => {

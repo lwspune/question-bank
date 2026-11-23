@@ -45,6 +45,31 @@ export function plainQuotes(reply: string): string {
   return reply.replace(/\\"/g, '"');
 }
 
+const words = (slug: string) => {
+  const t = slug.replace(/-+/g, " ").trim();
+  return t ? t.charAt(0).toUpperCase() + t.slice(1).toLowerCase() : slug;
+};
+
+/**
+ * What a link in V's reply shows (2026-11-21, owner's phone): a name, never a
+ * long path ("/notes/nda-maths/probability/classical-probability-counting" ran
+ * over three lines). A name the tool gave wins; a notes, questions or board
+ * page reads its last part as words; any other page keeps its short path.
+ */
+export function linkLabel(href: string, labels?: Readonly<Record<string, string>>): string {
+  const given = labels?.[href];
+  if (given) return given;
+  const seg = href.split("/").filter(Boolean);
+  if (seg[0] === "notes" && seg.length === 3) return `${words(seg[2])} notes`;
+  if (seg[0] === "notes" && seg.length >= 4) return words(seg[seg.length - 1]);
+  if (seg[0] === "questions" && seg.length === 4) return `${words(seg[3])} questions`;
+  if (seg[0] === "board" && seg.length >= 4) return words(seg[seg.length - 1]);
+  // Learn (2026-11-22): a lesson is /learn/lesson/<chapter>/<lesson>, a chapter /learn/<course>/<chapter>.
+  if (seg[0] === "learn" && seg[1] === "lesson" && seg.length === 4) return `${words(seg[3])} lesson`;
+  if (seg[0] === "learn" && seg.length === 3) return `${words(seg[2])} lessons`;
+  return href;
+}
+
 export type ReplySegment ={ kind: "text"; text: string } | { kind: "link"; href: string };
 
 /** Split a reply for display; only paths in `links` become links. */

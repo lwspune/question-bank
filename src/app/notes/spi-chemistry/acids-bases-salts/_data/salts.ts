@@ -6,7 +6,7 @@ export const SPI_AB_SALTS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A salt is what is left when an acid's hydrogen is replaced by a metal or ammonium ion; its parent acid and base decide whether its solution is acidic, neutral or basic.",
   whyItMatters:
-    "Five questions in the bank, two EASY and three MODERATE: picking the acid salt, the salt whose solution turns blue litmus red, the formula of baking soda, what common salt is used to make, and the ion the brown ring test finds. Most are a name or formula to recall, and one needs the strong-or-weak rule.",
+    "Six questions in the bank, three EASY and three MODERATE, one from the 2026 paper: picking the acid salt, the salt whose solution turns blue litmus red, the formula of baking soda, what common salt is used to make, the ion the brown ring test finds, and why sodium carbonate is a basic salt. Most are a name or formula to recall, and one needs the strong-or-weak rule.",
   concepts: [
     {
       kind: "reference" as const,
@@ -46,7 +46,7 @@ export const SPI_AB_SALTS_NOTE: SubtopicNote = {
           answer: "Yes: strong acid with weak base gives an acidic solution",
         },
       ],
-      pyqExampleId: "9495e56a-bdf2-40af-a5cc-33d70952d191",
+      pyqExampleId: "87ec567e-cae9-4843-a90a-a77b63e6b292",
       traps: [
         {
           title: "Expecting an acid salt to give an acidic solution",

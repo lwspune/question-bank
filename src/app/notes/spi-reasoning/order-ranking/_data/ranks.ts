@@ -6,7 +6,7 @@ export const SPI_OR_RANKS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A rank counts a person's place from one end of a line; an order puzzle builds the whole line from comparisons, then matches each person to a job by cutting what the clues forbid.",
   whyItMatters:
-    "Five questions in the bank: one EASY rank question from the Sample Paper, and a set of four from the 2022 paper on one puzzle about the incomes and jobs in a family (three MODERATE, one HARD). The puzzle set is won by writing the income line once and answering all four questions from it.",
+    "Six questions in the bank: two EASY rank questions, from the Sample Paper and the 2026 paper, and a set of four from the 2022 paper on one puzzle about the incomes and jobs in a family (three MODERATE, one HARD). The puzzle set is won by writing the income line once and answering all four questions from it.",
   concepts: [
     {
       kind: "formula" as const,
@@ -48,7 +48,7 @@ export const SPI_OR_RANKS_NOTE: SubtopicNote = {
         { prompt: "In a queue of 30 people, how many stand behind the 12th person from the front?", answer: "18", method: "\\(30 - 12 = 18\\)." },
         { prompt: "In a class, Rani is 10th and Gita is 15th from the top. How many students are between them?", answer: "4", method: "\\(15 - 10 - 1 = 4\\)." },
       ],
-      pyqExampleId: "fed3152e-79c7-4951-ace1-b10447543746",
+      pyqExampleId: "07f13fad-5dca-453a-b60d-8e2b214f8a5b",
       traps: [
         {
           title: "Adding the ranks without taking one away",

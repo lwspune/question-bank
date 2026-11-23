@@ -55,6 +55,7 @@ export const SSC_CAT_PERIODIC_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "ssccatpe-groups",
       name: "Groups, periods, blocks and trends",
+      visualizationSlug: "ssc-periodic-groups",
       intuition:
         "Each column is a family with a name; each row ends with a noble gas. A group number gives the valence electrons and a period number gives the shells, so the atomic number follows.",
       definition:

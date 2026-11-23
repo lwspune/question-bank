@@ -104,6 +104,27 @@ in `facts.ts`), on the same switch as Ask V's explanations. A concept answer
 does not use a free answer (owner, 2026-10-22): it answers a topic, not the
 question on the student's screen.
 
+**Two additions (2026-11-21).** A student asked "teach me vectors"; V linked
+334 questions, then said our notes did not match with the MHT-CET Vectors notes
+live, and 25 of 97 concept searches that month found nothing.
+- Between rungs 2 and 3: when 3+ words found nothing, the bank is searched again
+  with each word left out once, and only answers from the student's OWN exam
+  count (measured on the month's misses: the other exams' hits were junk). They
+  reach V as "close matches", to use only if they answer the question.
+- A whole chapter ("teach me X", "I am weak at X") is the `chapter_overview`
+  tool (`lib/chat/chapterOverview.ts`, rule 7c, same switch): the chapter's
+  notes parts in teaching order (`notesChapters.generated.ts`, written by
+  `npm run chat:notes-data`), so V maps the chapter, teaches the first part and
+  offers the rest one at a time. A chapter with no notes gives its subtopics.
+- With nothing found, V does not tell the student so; it just explains.
+- Signed in, `chapter_overview` starts from the student's own waiting mistakes
+  (the Fix list's, so V's count is /me's): it counts them by notes part, starts
+  at the part holding most, and gives the latest as the worked example with the
+  student's pick, so V can name the slip. Three "Teach me" buttons ask for it
+  (/me "Your weak spots", the mock result, V's own button); experiment
+  `v-teach-chapter`. Nobody had used the chapter teaching unprompted: 674
+  students had a day of 3+ misses in one chapter in 28 days, 4 asked V.
+
 ## 3. Standing decisions
 
 The owner's rulings, collected so a change does not quietly reverse one. Each

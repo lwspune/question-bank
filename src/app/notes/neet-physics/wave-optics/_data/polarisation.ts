@@ -134,6 +134,7 @@ export const NEET_PH_WO_POLARISATION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphwo-brewster",
       name: "Polarisation by reflection: Brewster's law",
+      visualizationSlug: "neet-brewster-angle",
       intuition:
         "Light reflected from glass or water is partly polarised. At one special angle of incidence it is completely polarised, and at that angle the reflected and refracted rays are exactly at right angles. The light that goes into the glass is only partly polarised.",
       definition:

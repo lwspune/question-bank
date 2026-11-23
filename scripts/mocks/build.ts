@@ -37,12 +37,17 @@
  *   npx tsx scripts/mocks/build.ts --paper=ipmat-indore    # IPMAT Indore 2022-2026
  *   npx tsx scripts/mocks/build.ts --paper=imat            # IMAT ministry papers 2023+
  *   npx tsx scripts/mocks/build.ts --paper=uceed           # UCEED Part A 2019-2026 (opt-in)
+ *   npx tsx scripts/mocks/build.ts --paper=gate            # GATE CS, both sets of 2024-2026 (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=iat             # IISER IAT, one per committed year (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=ugc-net         # UGC NET Paper 1, one per committed shift (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=rrb-ntpc        # RRB NTPC Graduate CBT 1, one per shift (opt-in)
+ *   npx tsx scripts/mocks/build.ts --paper=rrb-ntpc-undergraduate   # RRB NTPC Undergraduate CBT 1, one per shift (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=capf            # UPSC CAPF (AC) Paper I, one per year (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=ras             # RPSC RAS Prelims, one per year (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=enem            # ENEM Day 2, one per committed year (opt-in)
+ *   npx tsx scripts/mocks/build.ts --paper=milschool       # AISSEE + RMS CET, one per whole paper (opt-in)
+ *   npx tsx scripts/mocks/build.ts --paper=homi-bhabha     # Homi Bhabha Std IX, one per whole paper (opt-in)
+ *   npx tsx scripts/mocks/build.ts --paper=mh-scholarship  # MH Scholarship Class 4 + 7, one per published paper (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=clat            # CLAT UG, one per committed year (opt-in)
  *   npx tsx scripts/mocks/build.ts --only=2026-jan-21-s1    # one JEE shift
  *   npx tsx scripts/mocks/build.ts --only=2024-Sep --apply --publish
@@ -84,12 +89,14 @@ import {
   SSC_CGL_T2_PAPER,
   SSC_CGL_T2_COMPUTER_PAPER,
   SSC_CGL_T2_QUANT_PAPER,
-  SPI_PAPER,
+  spiPaperFor,
   IMAT_PAPER,
   uceedPaper,
+  gatePaper,
   iatPaper,
   UGC_NET_PAPER_1,
   RRB_NTPC_CBT_1,
+  RRB_NTPC_UG_CBT_1,
   CAPF_PAPER_1,
   RAS_PRELIMS,
   ENEM_DAY_2,
@@ -129,12 +136,16 @@ import { chslSittings, cpoSittings, sscSittings, sscT2Sittings, t2Rows, withHeld
 import { spiSittings } from "./spiSittings";
 import { imatSittings } from "./imatSittings";
 import { uceedSittings } from "./uceedSittings";
+import { gateNoPenalty, gateSittings } from "./gateSittings";
 import { iatSittings } from "./iatSittings";
 import { ugcNetSittings } from "./ugcNetSittings";
-import { rrbNtpcSittings } from "./rrbNtpcSittings";
+import { rrbNtpcSittings, rrbNtpcUgSittings } from "./rrbNtpcSittings";
 import { capfSittings } from "./capfSittings";
 import { rasSittings } from "./rasSittings";
 import { enemSittings } from "./enemSittings";
+import { milschoolSittings } from "./milschoolSittings";
+import { homiBhabhaSittings } from "./homiBhabhaSittings";
+import { mhScholarshipSittings } from "./mhScholarshipSittings";
 import { CLAT_MOCK_YEARS, clatSittings } from "./clatSittings";
 import { mockTestRow } from "../../src/lib/mocks/row";
 
@@ -763,21 +774,35 @@ function sscCglSittings(): SourceFileSitting[] {
 }
 
 /**
- * SPI entrance examination: one mock per past paper (spiSittings.ts). Every flawed question
+ * SPI entrance examination: one mock per past paper (spiSittings.ts), each at the scheme its
+ * own booklet prints (spiPaperFor: +1/-0.5 in 2022, +4/-1 from 2026). Every flawed question
  * rides as grace, since SPI publishes no key and each answer is our own derivation.
  */
-function spiMockSittings(): SourceFileSitting[] {
-  return spiSittings().map((s) => ({
-    key: s.key,
-    sourceFile: s.sourceFile,
-    year: s.year,
-    slug: s.slug,
-    title: s.title,
-    prepare: (rows) => {
-      const grace = new Set(s.graceNumbers);
-      return rows.map((r) => (grace.has(Number(r.questionNumber)) ? { ...r, grace: true } : r));
-    },
-  }));
+async function buildSpi(db: SupabaseClient, run: RunState) {
+  for (const s of spiSittings()) {
+    const grace = new Set(s.graceNumbers);
+    await buildFromSourceFiles(
+      db,
+      spiPaperFor(s.year),
+      [{
+        key: s.key,
+        sourceFile: s.sourceFile,
+        year: s.year,
+        slug: s.slug,
+        title: s.title,
+        prepare: (rows) => {
+          // A question re-asked from an earlier SPI paper has no row here; serve that row at its own slot.
+          const out: PaperQuestionRow[] = [...rows];
+          for (const ov of s.overrides) {
+            out.push({ id: ov.questionId, sourceRow: ov.questionNumber, questionNumber: String(ov.questionNumber), subjectName: ov.subjectName, answer: { kind: "mcq", label: ov.answer } });
+          }
+          return out.map((r) => (grace.has(Number(r.questionNumber)) ? { ...r, grace: true } : r));
+        },
+      }],
+      run,
+      "spiSittings.ts"
+    );
+  }
 }
 
 /**
@@ -785,6 +810,20 @@ function spiMockSittings(): SourceFileSitting[] {
  * in 2020, 2022 and 2024). IIT Bombay's cancelled questions ride as grace; the flawed list
  * adds the rest (mockTestRow).
  */
+/**
+ * GATE CS, one mock per paper (both sets of 2024-2026), all on gatePaper. Each row of an MSQ
+ * or NAT carries noPenalty (GATE marks down only a wrong MCQ); grace comes from flawed.json.
+ */
+async function buildGate(db: SupabaseClient, run: RunState) {
+  await buildFromSourceFiles(
+    db,
+    gatePaper(),
+    gateSittings().map((s) => ({ ...s, prepare: gateNoPenalty })),
+    run,
+    "gateSittings.ts"
+  );
+}
+
 async function buildUceed(db: SupabaseClient, run: RunState) {
   for (const s of uceedSittings()) {
     const grace = new Set(s.graceNumbers);
@@ -837,6 +876,11 @@ async function buildRrbNtpc(db: SupabaseClient, run: RunState) {
   await buildFromSourceFiles(db, RRB_NTPC_CBT_1, rrbNtpcSittings(), run, "rrbNtpcSittings.ts");
 }
 
+/** RRB NTPC Undergraduate CBT 1, one mock per committed shift (rrbNtpcSittings.ts); flawed questions ride as grace. */
+async function buildRrbNtpcUg(db: SupabaseClient, run: RunState) {
+  await buildFromSourceFiles(db, RRB_NTPC_UG_CBT_1, rrbNtpcUgSittings(), run, "rrbNtpcSittings.ts");
+}
+
 /** UPSC CAPF (AC) Paper I, one mock per committed year (capfSittings.ts); dropped and defective questions ride as grace. */
 async function buildCapf(db: SupabaseClient, run: RunState) {
   await buildFromSourceFiles(db, CAPF_PAPER_1, capfSittings(), run, "capfSittings.ts");
@@ -845,6 +889,34 @@ async function buildCapf(db: SupabaseClient, run: RunState) {
 /** RPSC RAS Prelims, one mock per committed year (rasSittings.ts); RPSC-deleted questions ride as grace. */
 async function buildRas(db: SupabaseClient, run: RunState) {
   await buildFromSourceFiles(db, RAS_PRELIMS, rasSittings(), run, "rasSittings.ts");
+}
+
+/**
+ * AISSEE and RMS CET, one mock per whole paper (milschoolSittings.ts). Each
+ * paper has its own blueprint (AISSEE moved its sections between years), so the
+ * shared loop runs once per sitting; a paper missing questions is held.
+ */
+async function buildMilschool(db: SupabaseClient, run: RunState) {
+  for (const s of milschoolSittings()) {
+    if (run.only && s.key !== run.only && s.slug !== run.only) continue;
+    await buildFromSourceFiles(db, s.blueprint, [s], run, "milschoolSittings.ts");
+  }
+}
+
+/** Homi Bhabha, one mock per whole published paper (homiBhabhaSittings.ts); a paper missing a question is held. */
+async function buildHomiBhabha(db: SupabaseClient, run: RunState) {
+  for (const s of homiBhabhaSittings()) {
+    if (run.only && s.key !== run.only && s.slug !== run.only) continue;
+    await buildFromSourceFiles(db, s.blueprint, [s], run, "homiBhabhaSittings.ts");
+  }
+}
+
+/** MH Scholarship, one mock per published Class 4 / Class 7 paper (mhScholarshipSittings.ts). */
+async function buildMhScholarship(db: SupabaseClient, run: RunState) {
+  for (const s of mhScholarshipSittings()) {
+    if (run.only && s.key !== run.only && s.slug !== run.only) continue;
+    await buildFromSourceFiles(db, s.blueprint, [s], run, "mhScholarshipSittings.ts");
+  }
 }
 
 /** ENEM Day 2, one mock per committed year (enemSittings.ts); cancelled and defective questions ride as grace. */
@@ -993,6 +1065,7 @@ async function main() {
   const runMpscMains = paperFilter === "mpsc-mains";
   // Opt-in too until UCEED's multiple-select and range rows are PUBLIC (migration 0214).
   const runUceed = paperFilter === "uceed";
+  const runGate = paperFilter === "gate";
   // Opt-in too: IAT rows are PRIVATE until the owner OKs them (scripts/iat/README.md).
   const runIat = paperFilter === "iat";
   // Opt-in: UGC NET rows are PRIVATE until the owner OKs them (scripts/ugc-net/README.md).
@@ -1001,6 +1074,7 @@ async function main() {
   const runClat = paperFilter === "clat";
   // Opt-in: RRB NTPC (scripts/rrb-ntpc/README.md).
   const runRrbNtpc = paperFilter === "rrb-ntpc";
+  const runRrbNtpcUg = paperFilter === "rrb-ntpc-undergraduate";
   // Opt-in: SSC CPO rows are PRIVATE until the owner OKs them (scripts/ssc-cgl/README.md).
   const runCpo = paperFilter === "ssc-cpo";
   // Opt-in: UPSC CAPF (AC) (scripts/capf/README.md).
@@ -1009,9 +1083,15 @@ async function main() {
   const runRas = paperFilter === "ras";
   // Opt-in: ENEM rows are PRIVATE until the go-public step (scripts/enem/commit.ts).
   const runEnem = paperFilter === "enem";
-  if (paperFilter && !runRas && !runEnem && !runUceed && !runIat && !runUgcNet && !runClat && !runRrbNtpc && !runCpo && !runCapf && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runChsl && !runSpi && !runImat && !runMpscMains) {
+  // Opt-in: AISSEE + RMS CET rows are PRIVATE until the go-public step (scripts/milschool/README.md).
+  const runMilschool = paperFilter === "milschool";
+  // Opt-in: Homi Bhabha (scripts/homi-bhabha/README.md).
+  const runHomiBhabha = paperFilter === "homi-bhabha";
+  // Opt-in: MH Scholarship (scripts/mh-scholarship/README.md).
+  const runMhScholarship = paperFilter === "mh-scholarship";
+  if (paperFilter && !runRas && !runEnem && !runMilschool && !runHomiBhabha && !runMhScholarship && !runUceed && !runGate && !runIat && !runUgcNet && !runClat && !runRrbNtpc && !runRrbNtpcUg && !runCpo && !runCapf && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runChsl && !runSpi && !runImat && !runMpscMains) {
     throw new Error(
-      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, ssc-chsl, ssc-cpo, spi, imat, mpsc-mains, uceed, iat, ugc-net, clat, rrb-ntpc, capf, ras, enem)`
+      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, ssc-chsl, ssc-cpo, spi, imat, mpsc-mains, uceed, gate, iat, ugc-net, clat, rrb-ntpc, rrb-ntpc-undergraduate, capf, ras, enem, milschool, homi-bhabha, mh-scholarship)`
     );
   }
 
@@ -1082,17 +1162,22 @@ async function main() {
   if (runSscT2) await buildSscT2(db, run);
   if (runChsl) await buildChsl(db, run);
   if (runCpo) await buildCpo(db, run);
-  if (runSpi) await buildFromSourceFiles(db, SPI_PAPER, spiMockSittings(), run, "spiSittings.ts");
+  if (runSpi) await buildSpi(db, run);
   if (runImat) await buildFromSourceFiles(db, IMAT_PAPER, imatMockSittings(), run, "imatSittings.ts");
   if (runMpscMains) await buildMpscMains(db, run);
   if (runUceed) await buildUceed(db, run);
+  if (runGate) await buildGate(db, run);
   if (runIat) await buildIat(db, run);
   if (runUgcNet) await buildUgcNet(db, run);
   if (runClat) await buildClat(db, run);
   if (runRrbNtpc) await buildRrbNtpc(db, run);
+  if (runRrbNtpcUg) await buildRrbNtpcUg(db, run);
   if (runCapf) await buildCapf(db, run);
   if (runRas) await buildRas(db, run);
   if (runEnem) await buildEnem(db, run);
+  if (runMilschool) await buildMilschool(db, run);
+  if (runHomiBhabha) await buildHomiBhabha(db, run);
+  if (runMhScholarship) await buildMhScholarship(db, run);
 
   console.log(`\n${apply ? "Upserted" : "Would build"} ${run.built.n} mock(s)${publish ? " (published)" : apply ? " (draft)" : ""}.`);
   if (run.held.n) console.log(`${run.held.n} paper(s) held — cannot reconstruct whole (see ⊘ lines above).`);

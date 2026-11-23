@@ -6,11 +6,14 @@ import AppHeader from "@/components/AppHeader";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
 import { loadEntitlements } from "@/lib/entitlements/query";
-import { formatPrice, ownsPlan, planLengthLabel, plansForBuyer, type Plan } from "@/lib/billing/plans";
+import { formatPrice, offersParentLink, ownsPlan, planLengthLabel, plansForBuyer, type Plan } from "@/lib/billing/plans";
 import { readCountry } from "@/lib/acquisition/country";
 import { planSiteForHost } from "@/lib/sites/intl";
 import { listActivePlans } from "@/lib/billing/plansQuery";
 import PricingClient from "./PricingClient";
+import AskParent from "@/components/billing/AskParent";
+import PaddleLinkResume from "./PaddleLinkResume";
+import { paymentLine } from "@/lib/billing/paymentLine";
 import { afterPurchasePath, pricingHref } from "@/lib/billing/checkoutReturn";
 import { logActivityOnce } from "@/lib/activity/service";
 import { surfaceViewedEvent } from "@/lib/activity/views";
@@ -93,6 +96,9 @@ export default async function PricingPage(
   // ownsPlan, not "covers": a Practice holder covers the online checks but does
   // not own the Premium Pass, which adds downloads.
   const owns = (plan: Plan) => !!member || ownsPlan(rows, plan, now);
+  // The gateway of the passes shown (0271): Paddle for the intl dollar pass, Razorpay for rupees.
+  const payLine = paymentLine(plans);
+  const paddleToken = plans.some((p) => p.paymentProvider === "paddle") ? process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN : undefined;
   const highlighted = searchParams.plan;
   // Where the buyer was blocked (a mock's Start button, the download gate); they
   // land back there after paying, and the sign-in round-trip keeps it.
@@ -102,6 +108,8 @@ export default async function PricingPage(
     <>
       <AppHeader />
       <main className="mx-auto max-w-4xl px-4 py-6 sm:px-6 sm:py-12">
+        {/* Paddle's default payment link lands here with ?_ptxn= (0271). */}
+        {paddleToken && <PaddleLinkResume token={paddleToken} />}
         {/* The offer leads (owner, 2026-11-02): on a phone the price used to
             sit on the third screen, under the note and the results strip. */}
         <header className="hero-soft rounded-2xl px-5 py-6 text-center sm:py-8">
@@ -194,11 +202,18 @@ export default async function PricingPage(
                         </Link>
                       </div>
                     ) : user ? (
-                      <PricingClient
-                        planId={plan.id}
-                        returnTo={returnTo}
-                        buttonLabel={`${fixView?.credits[plan.id] ? "Upgrade to" : "Buy"} ${plan.label}: ${fixView?.prices[plan.id] ?? formatPrice(plan.amountPaise, plan.currency)}`}
-                      />
+                      <>
+                        <PricingClient
+                          planId={plan.id}
+                          returnTo={returnTo}
+                          buttonLabel={`${fixView?.credits[plan.id] ? "Upgrade to" : "Buy"} ${plan.label}: ${fixView?.prices[plan.id] ?? formatPrice(plan.amountPaise, plan.currency)}`}
+                        />
+                        {/* As under every pass offer (2026-11-19: a student asked V for it here). Not beside a
+                            points, referral or upgrade price, which the parent's link does not carry. */}
+                        {offersParentLink(plan) && !fixView?.prices[plan.id] && (
+                          <AskParent planId={plan.id} gate="pricing" className="mt-3" />
+                        )}
+                      </>
                     ) : (
                       <div className="space-y-2 text-center">
                         <Button href={`/login?next=${encodeURIComponent(next)}`}>Sign in to buy</Button>
@@ -231,11 +246,7 @@ export default async function PricingPage(
         {site === "pyqvault" && <ResultsStrip className="mt-6" />}
 
         <div className="mt-8 space-y-2 text-center text-xs text-muted-foreground">
-          <p>
-            {site === "intl"
-              ? "Secure payment via Razorpay · international debit and credit cards, in US dollars"
-              : "Secure payment via Razorpay · UPI, cards, netbanking"}
-          </p>
+          {payLine && <p>{payLine}</p>}
           <p>
             One-time payment, no auto-renewal. By paying you agree to the{" "}
             <Link href="/terms" className="underline hover:text-foreground">

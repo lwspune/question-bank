@@ -23,7 +23,15 @@ import {
   GUIDE_FACTS,
   examFactFromEntry,
   buildNotesFacts,
+  buildIntlFreeFacts,
+  buildIntlNotesFacts,
+  INTL_NAV_FACTS,
+  buildAbroadFacts,
+  type ChatSite,
 } from "./facts";
+import { LIVE_INTL_EXAMS } from "@/lib/sites/intl";
+import { forSite } from "@/lib/sites/siteScope";
+import { payMethods } from "@/lib/billing/paymentLine";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { chapterPath, findChapters, formatChapterHits, type ChapterSearchRow } from "./chapterSearch";
 import { pathsInReply } from "./replyLinks";
@@ -40,7 +48,10 @@ import { planTools, type PlanDeps } from "./weekPlan";
 import { myQuestionTools, type MyQuestionDeps } from "./myQuestions";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import type { ExamSlug } from "@/lib/exam/examContext";
-import { conceptTool, type ConceptToolDeps } from "./conceptSearch";
+import { conceptTool } from "./conceptSearch";
+import type { ConceptSources } from "./conceptSearchServer";
+import { chapterOverviewTool, type ChapterOverviewDeps } from "./chapterOverview";
+import type { VLesson } from "./lesson";
 import { notesPageOf } from "./notesItem";
 import { languageTool, type VLanguage } from "./language";
 
@@ -56,6 +67,7 @@ export function profileExamNames(slugs: readonly string[]): string[] {
 const SIGNED_OUT_PLAN: Omit<PlanDeps, "signedIn" | "loadChapters" | "loadStrategy"> = {
   now: () => new Date(),
   loadProfile: async () => ({ targetExams: [], examDate: null, weeklyGoal: null }),
+  loadCalendar: async () => [],
   saveExamDate: async () => {},
   loadWeak: async () => [],
   loadDue: async () => 0,
@@ -112,43 +124,67 @@ export async function loadVContext(
     /** "Show me where I went wrong" on a follow-up card: the question V explained before (V_LEARNING_LOOP.md step 2). */
     followsUp?: { stem: string | null } | null;
     /** explain_concept's data sources (lib/chat/conceptSearchServer.ts conceptSources); offered with the question tools. */
-    concepts?: Pick<ConceptToolDeps, "searchBank" | "loadNotesIndex" | "loadNotesConcept"> | null;
+    concepts?: ConceptSources | null;
+    /** chapter_overview's "start from your mistakes" reads (lib/chat/chapterMissesServer.ts); absent when signed out. */
+    chapterMisses?: Pick<ChapterOverviewDeps, "loadMisses" | "loadMissExample" | "loadTryId"> | null;
+    /** chapter_overview's lesson, for the window's map card, question to try and buttons (lib/chat/lesson.ts). */
+    onLesson?: ((lesson: VLesson) => void) | null;
+    /** chapter_overview's Learn lessons where Learn teaches the chapter (lib/chat/learnServer.ts), 2026-11-22. */
+    loadLearn?: ChapterOverviewDeps["loadLearn"];
     /** The signed-in student's recent questions and saves (lib/chat/myQuestions.ts); absent when signed out. */
     myQuestions?: Omit<MyQuestionDeps, "signedIn"> | null;
     /** The language the student saved for every reply (student_profiles.v_language, 0232). */
     language?: VLanguage | null;
     /** Saves a language asked for every reply (set_language); absent when signed out. */
     saveLanguage?: ((lang: VLanguage) => Promise<boolean>) | null;
+    /** The site V answers on (2026-11-19): www (the default) or intl.pyqvault.com. */
+    site?: ChatSite;
   } = {}
 ): Promise<VContext> {
-  const loadChapters = opts.loadChapters ?? listChapterSearchRows;
+  const site: ChatSite = opts.site ?? "pyqvault";
+  const intl = site === "intl";
+  // Each site's own exams only (2026-11-19): a chapter of the other site's exam redirects the student
+  // there, signed out (each site keeps its own login).
+  const allChapters = opts.loadChapters ?? listChapterSearchRows;
+  const loadChapters = async () => forSite(await allChapters(), (r) => r.examName, intl);
+  const registry = intl ? LIVE_INTL_EXAMS : PYQVAULT_EXAMS;
   // The bank total comes from the cached catalogue too (2026-11-08): it was its
   // own uncached count of every PUBLIC question on every message.
   const [plans, limits, catalog] = await Promise.all([
     listActivePlans(anon),
     readFreeLimits(anon),
-    (opts.loadExamCatalog ?? getCachedExamCatalog)().catch((err) => {
+    (opts.loadExamCatalog ?? (() => getCachedExamCatalog(registry)))().catch((err) => {
       console.error("V: exam catalogue unavailable", err);
       return null;
     }),
   ]);
   const pyqBySlug = catalog ? new Map(catalog.exams.map((e) => [e.slug, e.counts.pyq] as const)) : null;
 
-  const exams = buildExamFacts(PYQVAULT_EXAMS.map((e) => examFactFromEntry(e, pyqBySlug)));
+  const exams = buildExamFacts(registry.map((e) => examFactFromEntry(e, pyqBySlug)), site);
   // Never an exam with nothing public: its notes would point a student at an exam we do not show.
-  const notes = buildNotesFacts(
-    getNotesExamGroups().filter((g) => EXAM_REGISTRY.find((e) => e.slug === g.slug)?.noPublicContent !== true)
-  );
+  const notes = intl
+    ? buildIntlNotesFacts(LIVE_INTL_EXAMS)
+    : buildNotesFacts(
+        getNotesExamGroups().filter((g) => EXAM_REGISTRY.find((e) => e.slug === g.slug)?.noPublicContent !== true)
+      );
+  // Each site's passes (0203), and a country price (the Gulf's, IMAT's in rupees) only to a buyer there.
+  const onSale = plansForBuyer(plans, site, opts.country ?? null);
+  const nav = intl ? INTL_NAV_FACTS : NAV_FACTS;
+  const guides = intl ? [] : GUIDE_FACTS;
+  // www only (2026-11-23): where a visitor asking about an exam abroad can go.
+  const abroad = intl ? [] : buildAbroadFacts(LIVE_INTL_EXAMS);
   const system = buildSystemPrompt({
+    site,
     exams,
-    // V speaks to www's students: the intl site's USD pass is not theirs to buy
-    // (0203), and a country price (the Gulf's) only to a buyer in that country.
-    plans: buildPlanFacts(plansForBuyer(plans, "pyqvault", opts.country ?? null)),
-    free: buildFreeFacts(limits),
-    bankTotal: catalog?.allPublicQuestions ?? 0,
-    nav: NAV_FACTS,
-    guides: GUIDE_FACTS,
+    plans: buildPlanFacts(onSale),
+    payBy: payMethods(onSale),
+    free: intl ? buildIntlFreeFacts(limits) : buildFreeFacts(limits),
+    // On intl, its own exams' total (the catalogue of LIVE_INTL_EXAMS); on www, every PUBLIC question.
+    bankTotal: (intl ? catalog?.totalPublicQuestions : catalog?.allPublicQuestions) ?? 0,
+    nav,
+    guides,
     notes,
+    abroad,
     explainEnabled: Boolean(opts.questionTools),
     planEnabled: opts.planEnabled === true,
   });
@@ -173,7 +209,7 @@ export async function loadVContext(
     language: opts.language ?? null,
   });
 
-  const allowedPaths = new Set(pathsInReply([...NAV_FACTS, ...GUIDE_FACTS, ...exams, ...notes].join("\n")));
+  const allowedPaths = new Set(pathsInReply([...nav, ...guides, ...exams, ...notes, ...abroad].join("\n")));
   if (opts.page) allowedPaths.add(opts.page);
 
   const findChaptersTool: VTool = {
@@ -215,16 +251,44 @@ export async function loadVContext(
   // Always offered (the tool list is cached); signed out it saves nothing and says so.
   const language = languageTool({ signedIn: Boolean(opts.saveLanguage), save: opts.saveLanguage ?? (async () => false) });
   const tools = [findChaptersTool, progressTool(opts.loadOwnProgress, opts.loadOwnPractice), strategyTool, ...mine, ...plan, language];
-  if (opts.questionTools) tools.push(...questionTools({ ...opts.questionTools, pageChapterId: pageInfo?.chapterId ?? null }));
+  if (opts.questionTools) {
+    tools.push(
+      ...questionTools({
+        ...opts.questionTools,
+        pageChapterId: pageInfo?.chapterId ?? null,
+        // A Learn lesson named after an explanation (2026-11-22) may be linked in the reply.
+        onLearnLink: (l) => allowedPaths.add(l.href),
+      })
+    );
+  }
   // V_SPEC.md step 2: concepts, with the question tools (the same switch), so the cached tool list depends on it alone.
   if (opts.questionTools && opts.concepts) {
+    const conceptPage = pageInfo ? { examName: pageInfo.examName, subjectName: pageInfo.subjectName } : null;
+    const addPaths = (paths: string[]) => paths.forEach((p) => allowedPaths.add(p));
     tools.push(
       conceptTool({
-        ...opts.concepts,
+        searchBank: opts.concepts.searchBank,
+        loadNotesIndex: opts.concepts.loadNotesIndex,
+        loadNotesConcept: opts.concepts.loadNotesConcept,
         loadChapters,
-        page: pageInfo ? { examName: pageInfo.examName, subjectName: pageInfo.subjectName } : null,
+        page: conceptPage,
         pageNotesKey: notesPageOf(opts.page ?? null)?.key ?? null,
-        onPaths: (paths) => paths.forEach((p) => allowedPaths.add(p)),
+        onPaths: addPaths,
+      }),
+      // 2026-11-21: "teach me vectors" maps a whole chapter from its notes, under the same switch.
+      chapterOverviewTool({
+        loadChapters,
+        notesIndex: opts.concepts.notesChapters,
+        loadNotesChapter: opts.concepts.loadNotesChapter,
+        page: conceptPage,
+        onPaths: addPaths,
+        // Signed in: start from the student's waiting mistakes (the Fix list's), 2026-11-21.
+        loadMisses: opts.chapterMisses?.loadMisses ?? null,
+        loadMissExample: opts.chapterMisses?.loadMissExample ?? null,
+        loadTryId: opts.chapterMisses?.loadTryId ?? null,
+        onLesson: opts.onLesson ?? null,
+        // Learn first wherever it teaches the chapter (owner, 2026-11-22).
+        loadLearn: opts.loadLearn ?? null,
       })
     );
   }

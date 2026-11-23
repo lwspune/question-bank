@@ -54,6 +54,7 @@ export const SSC_GES_INTERIOR_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscgesin-rocks",
       name: "Rocks and earthquake records",
+      visualizationSlug: "esl-rock-cycle",
       intuition:
         "Every rock forms in one of three ways: from cooled melt, from laid-down sediment, or from older rock changed by heat and pressure. Earthquake words differ by one syllable, so learn which is the machine and which is the record.",
       definition:

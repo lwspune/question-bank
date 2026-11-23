@@ -22,8 +22,12 @@ export function normalizeNewlines(text: string): string {
   };
 
   // Mask in delimiter-precedence order so block forms win over inline forms
-  // when starts coincide ($$…$$ before $…$, \[…\] before \(…\)).
+  // when starts coincide ($$…$$ before $…$, \[…\] before \(…\)). A whole-line
+  // code fence goes first: in C, `printf("%d\n")` and `'\n'` ARE the code, and
+  // a `$` inside code must not open a maths zone (GATE CS, 2026-11-23;
+  // parseTableBlocks reads the same fences as code).
   let masked = text
+    .replace(/^[ \t]*```[A-Za-z0-9_+#.-]*[ \t]*\n[\s\S]*?\n[ \t]*```[ \t]*$/gm, stash)
     .replace(/\\\[[\s\S]+?\\\]/g, stash)
     .replace(/\$\$[\s\S]+?\$\$/g, stash)
     .replace(/\\\([\s\S]+?\\\)/g, stash)

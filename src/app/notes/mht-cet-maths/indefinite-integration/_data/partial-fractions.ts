@@ -70,6 +70,7 @@ export const PARTIAL_FRACTIONS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "completing-the-square",
       name: "Completing the Square",
+      visualizationSlug: "cet-complete-square",
       intuition:
         "A general quadratic under a root or in a denominator is turned into 'constant ± (linear)²' by completing the square. That matches it to an arcsin, arctan, or log standard form.",
       definition:

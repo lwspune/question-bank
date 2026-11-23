@@ -7,6 +7,8 @@ import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/
 import { Button } from "@/components/ui/button";
 import QuestionListView from "@/app/browse/QuestionListView";
 import { useSignedIn } from "@/components/auth/useSignedIn";
+import { usePublicPathname } from "@/lib/nav/usePublicPathname";
+import { parseNotesHref } from "@/lib/notes/teachPanel";
 import type { QuestionRow } from "@/lib/questions/query";
 import { DRILL_PAGE_SIZE, drillHasMore, drillRequestQuery, type DrillSource } from "@/lib/notes/drillPanel";
 
@@ -61,6 +63,10 @@ export default function NotesDrillPanel({
   onFullPage: () => void;
   onMore: () => void;
 }) {
+  // Teach me the idea under a wrong answer opens this page's own notes (2026-11-19): the cards here carry
+  // no notes link, so it messaged V about the notes the student was already reading.
+  const pagePath = usePublicPathname();
+  const teachNotesHref = parseNotesHref(pagePath) ? pagePath : null;
   const key = sourceKey(source);
   const [data, setData] = useState<Loaded | null>(() => loaded.get(key) ?? null);
   const [failed, setFailed] = useState(false);
@@ -165,6 +171,7 @@ export default function NotesDrillPanel({
                 includeExam={false}
                 breadcrumbFixed={{ subject: true, chapter: true }}
                 hideCart
+                teachNotesHref={teachNotesHref}
               />
               {data.more && (
                 <Button

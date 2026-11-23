@@ -5,7 +5,7 @@ import { parseFeedRequest, secretMatches, toFeedLead, type FeedRow } from "@/lib
 export const dynamic = "force-dynamic";
 
 /**
- * GET /api/leads/defence?source=account|quiz&after=<cursor>&limit=<1..500>
+ * GET /api/leads/defence?source=account|quiz|board&after=<cursor>&limit=<1..500>
  * Authorization: Bearer <GOPOST_LEADS_SECRET>
  *
  * → 200 { leads: FeedLead[], next: string | null }

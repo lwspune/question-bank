@@ -1,0 +1,37 @@
+{
+ "48": {
+  "why": "The text layer dropped the superscripts: the options compare with 2^20 and 2^10, not 220 and 210. Options and solution corrected; the key's B, D stands.",
+  "options": [
+   {
+    "label": "A",
+    "text": "If the inputs are x=20, y=10, then the return value is greater than \\(2^{20}\\)"
+   },
+   {
+    "label": "B",
+    "text": "If the inputs are x=20, y=20, then the return value is greater than \\(2^{20}\\)"
+   },
+   {
+    "label": "C",
+    "text": "If the inputs are x=20, y=10, then the return value is less than \\(2^{10}\\)"
+   },
+   {
+    "label": "D",
+    "text": "If the inputs are x=10, y=20, then the return value is greater than \\(2^{20}\\)"
+   }
+  ],
+  "solution": "Each pass of the loop does \\(x \\leftarrow 2x + y\\), and it runs \\(y\\) times. Adding \\(y\\) to both sides, \\(x + y\\) doubles on every pass, so the function returns \\(f(x, y) = (x + y)\\cdot 2^{y} - y\\).\n\n(A) False: \\(f(20, 10) = 30 \\times 2^{10} - 10 = 30710\\), which is less than \\(2^{20} = 1048576\\).\n\n(B) True: \\(f(20, 20) = 40 \\times 2^{20} - 20 = 41943020 > 2^{20}\\). It still fits in a 32-bit int.\n\n(C) False: \\(f(20, 10) = 30710\\) is not less than \\(2^{10} = 1024\\).\n\n(D) True: \\(f(10, 20) = 30 \\times 2^{20} - 20 = 31457260 > 2^{20}\\).\n\nSo B and D."
+ },
+ "10": {
+  "why": "Two independent counts of the printed figure give 5 (C); IISc's final key marks 6 (A). Key kept, notice + grace (owner policy 2026-10-29).",
+  "defect": "IISc's final key marks 6 (option A), but the figure as printed needs 5 squares (option C), counted below.",
+  "solution": "Mirror every square in the line AB and count the squares that are missing.\n\nLeft shape: one square above AB in its right column; below AB, two squares side by side and one more under the right one. Its mirror image needs, above AB, a second square beside the one already there and a square above that one. That is 2 squares.\n\nRight shape: below AB, two squares side by side and one more under the right one; nothing above. Its mirror image needs two squares side by side above AB and one more above the right one. That is 3 squares.\n\nIn all, 2 + 3 = 5 squares."
+ },
+ "8": {
+  "why": "Watermark gate flagged the pie chart's light-blue Trans fat slice; looked at it, no watermark.",
+  "watermark": "none"
+ },
+ "19": {
+  "why": "Solution prose held '\n' (the newline character), which the newline normaliser would turn into a line break; named in words instead.",
+  "solution": "Each call reads one character into its own local a. The calls read '1', '2', '3', '4', then the fifth call reads the newline character and does not recurse; it also prints nothing. Returning, each earlier call prints its own character after the deeper call has finished: '4', then '3', '2', '1'. Output: 4321, and the program terminates."
+ }
+}

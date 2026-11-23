@@ -13,6 +13,7 @@ export const DEVIATION_STAT_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jstat-md-mean",
       name: "Mean deviation about the mean",
+      visualizationSlug: "mean-deviation-spread",
       intuition:
         "The mean deviation averages the distances \\(|x_i-\\bar x|\\). Unlike the variance, it has no shortcut through \\(\\sum x\\) and \\(\\sum x^2\\): you need the actual values. So when values are unknown, find them first from the mean and variance, then list the distances. For consecutive integers the distances are the same wherever the run starts.",
       definition:
@@ -61,6 +62,7 @@ export const DEVIATION_STAT_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jstat-md-median",
       name: "Mean deviation about the median or the mode",
+      visualizationSlug: "median-middle-value",
       intuition:
         "Sort the data first. The median is the middle value, or the average of the two middle values when \\(n\\) is even. Then add the distances from it. The total distance \\(\\sum|x_i-A|\\) is smallest when \\(A\\) is the median, so the MD about the median is never more than the MD about the mean. The mode, the most frequent value, is used the same way.",
       definition:

@@ -269,6 +269,10 @@ async function main() {
         // Read by hand: leavers who paid on a later day, and paywall_event gate return (shown, checkout_opened, dismissed).
         line = "by hand: leavers paying on a later day (baseline 12 of 83), and the gate=return chain shown > checkout > paid";
         break;
+      case "checkout-followup":
+        // Read by hand: listed leavers with a mobile (messaged) vs without (bar only), paid within 7 days.
+        line = "by hand: scripts/billing/checkout-followup-readout.sql (baselines 2 of 26, 3 of 39)";
+        break;
       case "welcome-exam-confirm":
         // Read by hand: student_profiles of new sign-ups, target_exams set and onboarded_at null, split by examFromPath(acq_landing).
         line = "by hand: new sign-ups with an exam (baseline 47%) and first screen left unanswered (baseline 35%), split by a guessable landing";
@@ -309,6 +313,30 @@ async function main() {
         // Read by hand: surface_viewed v_day by student and day, taps, drill starts from v_day.
         line = "by hand: scripts/chat/day-card-readout.sql (v_day showings on 2+ days, drill starts from v_day)";
         break;
+      case "v-teach-chapter":
+        // Read by hand: teach_chapter shown/tap per place, and second messages in the chats a tap opened.
+        line = "by hand: scripts/chat/teach-chapter-readout.sql (tap rate per place, second message after a tap)";
+        break;
+      case "v-learn-first":
+        // Read by hand: Learn maps shown in V, and how many led to a lesson opened (2026-11-22).
+        line = "by hand: scripts/chat/learn-first-readout.sql (lessons opened per Learn map shown)";
+        break;
+      case "v-checkin":
+        // Read by hand: v_checkin steps, and practice the same day after the question.
+        line = "by hand: scripts/chat/checkin-readout.sql (answer rate, practice that day)";
+        break;
+      case "v-exam-countdown":
+        // Read by hand: v_day rows with metadata.exam, and starts from the card the same day.
+        line = "by hand: scripts/chat/exam-countdown-readout.sql (starts from the card on countdown days)";
+        break;
+      case "v-gift":
+        // Read by hand: surface_viewed v_gift steps (badge, shown, open, activate, pricing) by gift.
+        line = "by hand: scripts/chat/gift-readout.sql (share of students shown the box who open it)";
+        break;
+      case "study-time-card":
+        // Read by hand: surface_viewed study_time steps, and study_time on each suggested chapter in the 7 days after.
+        line = "by hand: scripts/study-time/readout.sql (suggestion taps, and suggested chapters given 10+ min in 7 days)";
+        break;
       case "v-step-chips":
         // Read by hand: step_by_step rows coded tap/explain/reply against stepped explanations, and Yes on Explain replies.
         line = "by hand: chat_interactions step_by_step (tap, explain, reply) and understood on Explain replies";
@@ -341,6 +369,10 @@ async function main() {
         // Read by hand: signups by the kind of article they landed on (migration 0263), and Search Console clicks.
         line = "by hand: scripts/blog/readout.sql + Search Console clicks on /blog and /exams/*/syllabus";
         break;
+      case "v-intl":
+        // Read by hand: international students' typed questions to V and second days (V on intl, 2026-11-19).
+        line = "by hand: scripts/chat/v-intl-readout.sql";
+        break;
       case "enem-interest":
         // Read by hand: target_exams containing 'enem', and their ENEM mock attempts / answers.
         line = "by hand: students with enem in target_exams, and their ENEM mocks and answers";
@@ -353,9 +385,17 @@ async function main() {
         // Read by hand: class_interest leads (migration 0265), Pune vs other, on /dashboard/classes.
         line = "by hand: /dashboard/classes (class_interest, Pune leads in 4 weeks)";
         break;
+      case "me-class-offer":
+        // Read by hand: class_offer_answers (migration 0281) seen / Know more / Yes / No per card.
+        line = "by hand: scripts/classes/me-offer-readout.sql";
+        break;
       case "play-games":
         // Read by hand: play_round rows (migration 0267), players' study days before vs after the first round.
         line = "by hand: scripts/play/readout.sql + Vercel play_link_click / play_round_end";
+        break;
+      case "practice-trial":
+        // Read by hand: offers, activations and purchases after the 7-day trial (migration 0273).
+        line = "by hand: scripts/billing/practice-trial-readout.sql";
         break;
       case "v-follow-up-loop":
         // Read by hand: v_followups against Ask V explanations (migration 0250, V_LEARNING_LOOP.md step 2).

@@ -13,6 +13,7 @@ export const GASES_SBC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcsbc-gas-equation",
       name: "The ideal gas equation and its special cases",
+      visualizationSlug: "imat-boyle-curve",
       intuition:
         "\\(PV=nRT\\) contains every gas law. Hold two of \\(P\\), \\(V\\), \\(T\\) and \\(n\\) fixed and the other two are in direct or inverse proportion. Put \\(n=\\frac{m}{M}\\) and it gives the molar mass from a mass or a density.",
       definition:

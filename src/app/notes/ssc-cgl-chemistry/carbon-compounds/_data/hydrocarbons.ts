@@ -12,6 +12,7 @@ export const SSC_CCC_HYDROCARBONS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscccchy-formulas",
       name: "Alkanes, alkenes, alkynes and their names",
+      visualizationSlug: "ssc-hydrocarbon-families",
       intuition:
         "A hydrocarbon's family sets how many hydrogens go with n carbons. Single bonds only: 2n + 2. One double bond: 2n. One triple bond: 2n minus 2.",
       definition:

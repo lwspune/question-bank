@@ -13,6 +13,7 @@ export const SPLITTING_COORD_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jccoord-splitting",
       name: "Octahedral and tetrahedral splitting of the d orbitals",
+      visualizationSlug: "jee-crystal-field-splitting",
       intuition:
         "In a free ion the five d orbitals have the same energy. Bring six ligands in along the x, y and z axes and the two orbitals that point at them, \\(d_{x^2-y^2}\\) and \\(d_{z^2}\\) (the eg set), are pushed up; the three that point between the axes, \\(d_{xy}\\), \\(d_{xz}\\), \\(d_{yz}\\) (the t₂g set), drop. In a tetrahedron the ligands come in between the axes, so the pattern turns upside down and the gap is smaller.",
       definition:

@@ -7323,14 +7323,15 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
     "slugs": [
       "spi-qe-recognise",
       "spi-qe-solving",
+      "spi-qe-word",
       "spi-qe-nature",
       "spi-qe-sum-product"
     ],
     "chapterName": "Quadratic Equations",
     "formulaCounts": {
-      "formulas": 11,
+      "formulas": 13,
       "tables": 0,
-      "traps": 24
+      "traps": 30
     }
   },
   {
@@ -7369,6 +7370,23 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "formulas": 7,
       "tables": 0,
       "traps": 12
+    }
+  },
+  {
+    "examName": "SPI",
+    "subjectName": "Mathematics",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "time-speed-distance",
+    "chipLabel": "Time, Speed and Distance notes",
+    "slugs": [
+      "spi-ts-speed"
+    ],
+    "chapterName": "Time, Speed and Distance",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 0,
+      "traps": 6
     }
   },
   {
@@ -7429,7 +7447,7 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
     "formulaCounts": {
       "formulas": 0,
       "tables": 21,
-      "traps": 54
+      "traps": 57
     }
   },
   {
@@ -7450,7 +7468,7 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
     "formulaCounts": {
       "formulas": 0,
       "tables": 10,
-      "traps": 25
+      "traps": 29
     }
   },
   {
@@ -7558,6 +7576,23 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "formulas": 1,
       "tables": 0,
       "traps": 5
+    }
+  },
+  {
+    "examName": "SPI",
+    "subjectName": "Reasoning",
+    "subjectRoute": "spi-reasoning",
+    "subjectDisplay": "SPI Reasoning",
+    "chapterSlug": "analogy",
+    "chipLabel": "Analogy notes",
+    "slugs": [
+      "spi-an-analogies"
+    ],
+    "chapterName": "Analogy",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 1,
+      "traps": 3
     }
   },
   {
@@ -13041,6 +13076,1335 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 7,
       "traps": 22
     }
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectName": "Static GK",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "art-and-culture",
+    "chipLabel": "Art and Culture notes",
+    "slugs": [
+      "ssc-sac-classical",
+      "ssc-sac-dancers",
+      "ssc-sac-folk-nws",
+      "ssc-sac-folk-ce",
+      "ssc-sac-music",
+      "ssc-sac-instruments",
+      "ssc-sac-heritage"
+    ],
+    "chapterName": "Art and Culture",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 24,
+      "traps": 51
+    }
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectName": "Static GK",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "awards-and-honours",
+    "chipLabel": "Awards and Honours notes",
+    "slugs": [
+      "ssc-saw-national",
+      "ssc-saw-state",
+      "ssc-saw-global"
+    ],
+    "chapterName": "Awards and Honours",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 8,
+      "traps": 15
+    }
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectName": "Static GK",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "sports-and-games",
+    "chipLabel": "Sports and Games notes",
+    "slugs": [
+      "ssc-ssp-olympics",
+      "ssc-ssp-india",
+      "ssc-ssp-bodies",
+      "ssc-ssp-cricket",
+      "ssc-ssp-teamgames",
+      "ssc-ssp-racket",
+      "ssc-ssp-athletics"
+    ],
+    "chapterName": "Sports and Games",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 25,
+      "traps": 48
+    }
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectName": "Static GK",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "firsts-symbols-institutions",
+    "chipLabel": "Firsts, Symbols and Institutions notes",
+    "slugs": [
+      "ssc-sfi-people",
+      "ssc-sfi-institutions"
+    ],
+    "chapterName": "Firsts, Symbols and Institutions",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 5,
+      "traps": 8
+    }
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectName": "Static GK",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "festivals-and-days",
+    "chipLabel": "Festivals, Fairs and Important Days notes",
+    "slugs": [
+      "ssc-sfd-faith",
+      "ssc-sfd-north",
+      "ssc-sfd-southwest",
+      "ssc-sfd-eastcentral",
+      "ssc-sfd-northeast",
+      "ssc-sfd-cultural"
+    ],
+    "chapterName": "Festivals, Fairs and Important Days",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 19,
+      "traps": 40
+    }
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectName": "Static GK",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "books-and-authors",
+    "chipLabel": "Books and Authors notes",
+    "slugs": [
+      "ssc-sba-nonfiction",
+      "ssc-sba-fiction"
+    ],
+    "chapterName": "Books and Authors",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 6,
+      "traps": 15
+    }
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectName": "Static GK",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "science-space-environment",
+    "chipLabel": "Science, Space and Environment Facts notes",
+    "slugs": [
+      "ssc-sse-parks",
+      "ssc-sse-space"
+    ],
+    "chapterName": "Science, Space and Environment Facts",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 5,
+      "traps": 14
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "sound",
+    "chipLabel": "Sound notes",
+    "slugs": [
+      "hb9-so-nature",
+      "hb9-so-waves",
+      "hb9-so-speed",
+      "hb9-so-echo"
+    ],
+    "chapterName": "Sound",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 5,
+      "traps": 25
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "current-electricity",
+    "chipLabel": "Current Electricity notes",
+    "slugs": [
+      "hb9-ce-static",
+      "hb9-ce-current",
+      "hb9-ce-resistance",
+      "hb9-ce-combinations",
+      "hb9-ce-power"
+    ],
+    "chapterName": "Current Electricity",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 7,
+      "traps": 33
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "light",
+    "chipLabel": "Light notes",
+    "slugs": [
+      "hb9-li-plane",
+      "hb9-li-spherical",
+      "hb9-li-concave",
+      "hb9-li-refraction"
+    ],
+    "chapterName": "Light",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 4,
+      "traps": 21
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "force-laws-of-motion",
+    "chipLabel": "Force and Laws of Motion notes",
+    "slugs": [
+      "hb9-fl-forces",
+      "hb9-fl-laws",
+      "hb9-fl-momentum"
+    ],
+    "chapterName": "Force and Laws of Motion",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 4,
+      "traps": 19
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "work-energy-power",
+    "chipLabel": "Work, Energy and Power notes",
+    "slugs": [
+      "hb9-we-work",
+      "hb9-we-kinetic",
+      "hb9-we-conservation",
+      "hb9-we-power"
+    ],
+    "chapterName": "Work, Energy and Power",
+    "formulaCounts": {
+      "formulas": 7,
+      "tables": 1,
+      "traps": 24
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "space-astronomy",
+    "chipLabel": "Space and Astronomy notes",
+    "slugs": [
+      "hb9-sa-stars",
+      "hb9-sa-telescopes",
+      "hb9-sa-satellites"
+    ],
+    "chapterName": "Space and Astronomy",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 7,
+      "traps": 21
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "motion",
+    "chipLabel": "Motion notes",
+    "slugs": [
+      "hb9-mo-speed",
+      "hb9-mo-graphs"
+    ],
+    "chapterName": "Motion",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 3,
+      "traps": 19
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "heat",
+    "chipLabel": "Heat notes",
+    "slugs": [
+      "hb9-he-temperature",
+      "hb9-he-transfer",
+      "hb9-he-expansion"
+    ],
+    "chapterName": "Heat",
+    "formulaCounts": {
+      "formulas": 2,
+      "tables": 4,
+      "traps": 18
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "pressure-buoyancy",
+    "chipLabel": "Pressure and Buoyancy notes",
+    "slugs": [
+      "hb9-pb-pressure",
+      "hb9-pb-buoyancy"
+    ],
+    "chapterName": "Pressure and Buoyancy",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 2,
+      "traps": 15
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "measurement-units",
+    "chipLabel": "Measurement and Units notes",
+    "slugs": [
+      "hb9-mu-quantities",
+      "hb9-mu-derived"
+    ],
+    "chapterName": "Measurement and Units",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 4,
+      "traps": 15
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "ict",
+    "chipLabel": "Information and Communication Technology notes",
+    "titleName": "Information and Communication Technology",
+    "slugs": [
+      "hb9-ic-hardware",
+      "hb9-ic-networks"
+    ],
+    "chapterName": "Information and Communication Technology",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 5,
+      "traps": 13
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Physics",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "gravitation",
+    "chipLabel": "Gravitation notes",
+    "slugs": [
+      "hb9-gr-law",
+      "hb9-gr-freefall"
+    ],
+    "chapterName": "Gravitation",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 1,
+      "traps": 15
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Biology",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "human-body-health",
+    "chipLabel": "Human Body and Health notes",
+    "slugs": [
+      "hb9-hb-nutrition",
+      "hb9-hb-blood",
+      "hb9-hb-nerves",
+      "hb9-hb-diseases"
+    ],
+    "chapterName": "Human Body and Health",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 10,
+      "traps": 31
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Biology",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "ecosystem-environment",
+    "chipLabel": "Ecosystem and Environment notes",
+    "slugs": [
+      "hb9-ee-chains",
+      "hb9-ee-energy",
+      "hb9-ee-cycles",
+      "hb9-ee-environment"
+    ],
+    "chapterName": "Ecosystem and Environment",
+    "formulaCounts": {
+      "formulas": 2,
+      "tables": 7,
+      "traps": 27
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Biology",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "life-processes",
+    "chipLabel": "Life Processes notes",
+    "slugs": [
+      "hb9-lp-digestion",
+      "hb9-lp-respiration",
+      "hb9-lp-transport",
+      "hb9-lp-control"
+    ],
+    "chapterName": "Life Processes",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 8,
+      "traps": 26
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Biology",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "cell-tissues",
+    "chipLabel": "Cell and Tissues notes",
+    "slugs": [
+      "hb9-ct-organelles",
+      "hb9-ct-osmosis",
+      "hb9-ct-plant",
+      "hb9-ct-animal"
+    ],
+    "chapterName": "Cell and Tissues",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 9,
+      "traps": 25
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Biology",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "heredity-evolution",
+    "chipLabel": "Heredity and Evolution notes",
+    "slugs": [
+      "hb9-hv-dna",
+      "hb9-hv-inheritance",
+      "hb9-hv-disorders"
+    ],
+    "chapterName": "Heredity and Evolution",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 6,
+      "traps": 17
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Biology",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "microbes",
+    "chipLabel": "Microbes notes",
+    "slugs": [
+      "hb9-mc-kinds",
+      "hb9-mc-useful",
+      "hb9-mc-nitrogen",
+      "hb9-mc-harmful"
+    ],
+    "chapterName": "Microbes",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 8,
+      "traps": 18
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Biology",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "agriculture-animal-husbandry",
+    "chipLabel": "Agriculture and Animal Husbandry notes",
+    "slugs": [
+      "hb9-ag-crops",
+      "hb9-ag-protect",
+      "hb9-ag-breeds",
+      "hb9-ag-fish"
+    ],
+    "chapterName": "Agriculture and Animal Husbandry",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 9,
+      "traps": 21
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Biology",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "classification-of-plants",
+    "chipLabel": "Classification of Plants notes",
+    "slugs": [
+      "hb9-cp-basis",
+      "hb9-cp-spores",
+      "hb9-cp-seeds"
+    ],
+    "chapterName": "Classification of Plants",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 6,
+      "traps": 16
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Biology",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "plants-functions",
+    "chipLabel": "Plants and Their Functions notes",
+    "slugs": [
+      "hb9-pf-roots",
+      "hb9-pf-leaves",
+      "hb9-pf-pigments"
+    ],
+    "chapterName": "Plants and Their Functions",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 6,
+      "traps": 16
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Chemistry",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "acids-bases-salts",
+    "chipLabel": "Acids, Bases and Salts notes",
+    "slugs": [
+      "hb9-ab-around",
+      "hb9-ab-strength",
+      "hb9-ab-ph",
+      "hb9-ab-reactions",
+      "hb9-ab-salts"
+    ],
+    "chapterName": "Acids, Bases and Salts",
+    "formulaCounts": {
+      "formulas": 2,
+      "tables": 10,
+      "traps": 34
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Chemistry",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "substances-common-use",
+    "chipLabel": "Substances in Common Use notes",
+    "slugs": [
+      "hb9-su-chemicals",
+      "hb9-su-cosmetics",
+      "hb9-su-materials",
+      "hb9-su-radio"
+    ],
+    "chapterName": "Substances in Common Use",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 10,
+      "traps": 27
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Chemistry",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "atomic-structure",
+    "chipLabel": "Atomic Structure notes",
+    "slugs": [
+      "hb9-at-models",
+      "hb9-at-numbers",
+      "hb9-at-shells",
+      "hb9-at-valency",
+      "hb9-at-bonds"
+    ],
+    "chapterName": "Atomic Structure",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 5,
+      "traps": 26
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Chemistry",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "carbon-compounds",
+    "chipLabel": "Carbon and Its Compounds notes",
+    "slugs": [
+      "hb9-cc-bonds",
+      "hb9-cc-allotropes",
+      "hb9-cc-fuels"
+    ],
+    "chapterName": "Carbon and Its Compounds",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 8,
+      "traps": 23
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Chemistry",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "chemical-reactions",
+    "chipLabel": "Chemical Reactions notes",
+    "slugs": [
+      "hb9-cr-types",
+      "hb9-cr-equations",
+      "hb9-cr-redox"
+    ],
+    "chapterName": "Chemical Reactions",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 5,
+      "traps": 18
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Chemistry",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "matter",
+    "chipLabel": "Matter and Its Nature notes",
+    "slugs": [
+      "hb9-mn-states",
+      "hb9-mn-composition",
+      "hb9-mn-separation"
+    ],
+    "chapterName": "Matter and Its Nature",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 6,
+      "traps": 15
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Chemistry",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "metals",
+    "chipLabel": "Metals and Their Compounds notes",
+    "slugs": [
+      "hb9-mt-properties",
+      "hb9-mt-reactivity",
+      "hb9-mt-corrosion"
+    ],
+    "chapterName": "Metals and Their Compounds",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 5,
+      "traps": 16
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Chemistry",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "measurement-of-matter",
+    "chipLabel": "Measurement of Matter notes",
+    "slugs": [
+      "hb9-mm-mass",
+      "hb9-mm-laws",
+      "hb9-mm-mole"
+    ],
+    "chapterName": "Measurement of Matter",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 2,
+      "traps": 18
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Chemistry",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "periodic-classification",
+    "chipLabel": "Elements and Periodic Classification notes",
+    "slugs": [
+      "hb9-ep-symbols",
+      "hb9-ep-periodic"
+    ],
+    "chapterName": "Elements and Periodic Classification",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 4,
+      "traps": 16
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "Chemistry",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "air-water-gases",
+    "chipLabel": "Air, Water and Gases notes",
+    "slugs": [
+      "hb9-aw-air",
+      "hb9-aw-gases"
+    ],
+    "chapterName": "Air, Water and Gases",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 5,
+      "traps": 12
+    }
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectName": "General Science",
+    "subjectRoute": "homi-bhabha-9-general-science",
+    "subjectDisplay": "Homi Bhabha General Science",
+    "chapterSlug": "scientists-discoveries",
+    "chipLabel": "Scientists and Discoveries notes",
+    "slugs": [
+      "hb9-sd-scientists",
+      "hb9-sd-awards",
+      "hb9-sd-institutes"
+    ],
+    "chapterName": "Scientists and Discoveries",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 6,
+      "traps": 14
+    }
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectName": "Intelligence Test",
+    "subjectRoute": "mh-scholarship-4-intelligence",
+    "subjectDisplay": "MH Scholarship Class 4 Intelligence Test",
+    "chapterSlug": "classification-odd-one-out",
+    "chipLabel": "Odd One Out notes",
+    "titleName": "Class 4 Odd One Out",
+    "slugs": [
+      "ms4-cl-words",
+      "ms4-cl-letters"
+    ],
+    "chapterName": "Classification (Odd One Out)",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 1,
+      "traps": 8
+    }
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectName": "Intelligence Test",
+    "subjectRoute": "mh-scholarship-4-intelligence",
+    "subjectDisplay": "MH Scholarship Class 4 Intelligence Test",
+    "chapterSlug": "analogy",
+    "chipLabel": "Analogy notes",
+    "slugs": [
+      "ms4-an-pairs",
+      "ms4-an-figures"
+    ],
+    "chapterName": "Analogy",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 6
+    }
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectName": "Intelligence Test",
+    "subjectRoute": "mh-scholarship-4-intelligence",
+    "subjectDisplay": "MH Scholarship Class 4 Intelligence Test",
+    "chapterSlug": "coding-decoding",
+    "chipLabel": "Coding and Decoding notes",
+    "slugs": [
+      "ms4-cd-tables",
+      "ms4-cd-numbers"
+    ],
+    "chapterName": "Coding and Decoding",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 7
+    }
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-scholarship-4-maths",
+    "subjectDisplay": "MH Scholarship Class 4 Maths",
+    "chapterSlug": "fractions-decimals",
+    "chipLabel": "Fractions and Decimals notes",
+    "slugs": [
+      "ms4-fr-reading",
+      "ms4-fr-problems"
+    ],
+    "chapterName": "Fractions and Decimals",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 0,
+      "traps": 8
+    }
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-scholarship-4-maths",
+    "subjectDisplay": "MH Scholarship Class 4 Maths",
+    "chapterSlug": "multiplication-division",
+    "chipLabel": "Multiplication and Division notes",
+    "slugs": [
+      "ms4-md-division",
+      "ms4-md-problems"
+    ],
+    "chapterName": "Multiplication and Division",
+    "formulaCounts": {
+      "formulas": 2,
+      "tables": 0,
+      "traps": 5
+    }
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-scholarship-4-maths",
+    "subjectDisplay": "MH Scholarship Class 4 Maths",
+    "chapterSlug": "units-of-measurement",
+    "chipLabel": "Units of Measurement notes",
+    "slugs": [
+      "ms4-un-time",
+      "ms4-un-money"
+    ],
+    "chapterName": "Units of Measurement",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 1,
+      "traps": 6
+    }
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-scholarship-4-maths",
+    "subjectDisplay": "MH Scholarship Class 4 Maths",
+    "chapterSlug": "numbers-number-system",
+    "chipLabel": "Numbers and Number System notes",
+    "slugs": [
+      "ms4-nu-place",
+      "ms4-nu-patterns"
+    ],
+    "chapterName": "Numbers and Number System",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 7
+    }
+  },
+  {
+    "examName": "MH Scholarship Class 7",
+    "subjectName": "Intelligence Test",
+    "subjectRoute": "mh-scholarship-7-intelligence",
+    "subjectDisplay": "MH Scholarship Class 7 Intelligence Test",
+    "chapterSlug": "classification-odd-one-out",
+    "chipLabel": "Odd One Out notes",
+    "titleName": "Class 7 Odd One Out",
+    "slugs": [
+      "ms7-cl-words",
+      "ms7-cl-letters"
+    ],
+    "chapterName": "Classification (Odd One Out)",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 8
+    }
+  },
+  {
+    "examName": "MH Scholarship Class 7",
+    "subjectName": "Intelligence Test",
+    "subjectRoute": "mh-scholarship-7-intelligence",
+    "subjectDisplay": "MH Scholarship Class 7 Intelligence Test",
+    "chapterSlug": "analogy",
+    "chipLabel": "Analogy notes",
+    "slugs": [
+      "ms7-an-pairs",
+      "ms7-an-figures"
+    ],
+    "chapterName": "Analogy",
+    "formulaCounts": {
+      "formulas": 0,
+      "tables": 0,
+      "traps": 8
+    }
+  },
+  {
+    "examName": "MH Scholarship Class 7",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-scholarship-7-maths",
+    "subjectDisplay": "MH Scholarship Class 7 Maths",
+    "chapterSlug": "algebraic-expressions",
+    "chipLabel": "Algebraic Expressions and Identities notes",
+    "slugs": [
+      "ms7-al-identities",
+      "ms7-al-factors"
+    ],
+    "chapterName": "Algebraic Expressions and Identities",
+    "formulaCounts": {
+      "formulas": 2,
+      "tables": 0,
+      "traps": 6
+    }
+  },
+  {
+    "examName": "MH Scholarship Class 7",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-scholarship-7-maths",
+    "subjectDisplay": "MH Scholarship Class 7 Maths",
+    "chapterSlug": "perimeter-area",
+    "chipLabel": "Perimeter and Area notes",
+    "slugs": [
+      "ms7-pa-squares",
+      "ms7-pa-paths"
+    ],
+    "chapterName": "Perimeter and Area",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 0,
+      "traps": 7
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "current-electricity",
+    "chipLabel": "Current Electricity notes",
+    "slugs": [
+      "hscp-ce-kirchhoff",
+      "hscp-ce-bridges",
+      "hscp-ce-potentiometer",
+      "hscp-ce-meters"
+    ],
+    "chapterName": "Current Electricity",
+    "formulaCounts": {
+      "formulas": 11,
+      "tables": 3,
+      "traps": 25
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "rotational-dynamics",
+    "chipLabel": "Rotational Dynamics notes",
+    "slugs": [
+      "hscp-rd-kinematics",
+      "hscp-rd-applications",
+      "hscp-rd-vertical",
+      "hscp-rd-moi",
+      "hscp-rd-axes",
+      "hscp-rd-torque",
+      "hscp-rd-conservation",
+      "hscp-rd-rolling"
+    ],
+    "chapterName": "Rotational Dynamics",
+    "formulaCounts": {
+      "formulas": 23,
+      "tables": 2,
+      "traps": 53
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "mechanical-properties-of-fluids",
+    "chipLabel": "Mechanical Properties of Fluids notes",
+    "slugs": [
+      "hscp-mf-pressure",
+      "hscp-mf-tension",
+      "hscp-mf-bubbles",
+      "hscp-mf-capillarity",
+      "hscp-mf-viscosity",
+      "hscp-mf-stokes",
+      "hscp-mf-bernoulli"
+    ],
+    "chapterName": "Mechanical Properties of Fluids",
+    "formulaCounts": {
+      "formulas": 16,
+      "tables": 2,
+      "traps": 49
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "kinetic-theory-of-gases",
+    "chipLabel": "Kinetic Theory of Gases and Radiation notes",
+    "slugs": [
+      "hscp-kt-gas",
+      "hscp-kt-pressure",
+      "hscp-kt-rms",
+      "hscp-kt-equipartition",
+      "hscp-kt-mayer",
+      "hscp-kt-absorption",
+      "hscp-kt-blackbody",
+      "hscp-kt-kirchhoff",
+      "hscp-kt-wien"
+    ],
+    "chapterName": "Kinetic Theory of Gases and Radiation",
+    "formulaCounts": {
+      "formulas": 17,
+      "tables": 7,
+      "traps": 44
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "thermodynamics",
+    "chipLabel": "Thermodynamics notes",
+    "slugs": [
+      "hscp-td-energy",
+      "hscp-td-firstlaw",
+      "hscp-td-states",
+      "hscp-td-processes",
+      "hscp-td-engines",
+      "hscp-td-refrigerators",
+      "hscp-td-secondlaw",
+      "hscp-td-carnot"
+    ],
+    "chapterName": "Thermodynamics",
+    "formulaCounts": {
+      "formulas": 13,
+      "tables": 6,
+      "traps": 41
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "superposition-of-waves",
+    "chipLabel": "Superposition of Waves notes",
+    "slugs": [
+      "hscp-sw-progressive",
+      "hscp-sw-superposition",
+      "hscp-sw-stationary",
+      "hscp-sw-harmonics",
+      "hscp-sw-pipes",
+      "hscp-sw-strings",
+      "hscp-sw-beats"
+    ],
+    "chapterName": "Superposition of Waves",
+    "formulaCounts": {
+      "formulas": 16,
+      "tables": 4,
+      "traps": 43
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "oscillations",
+    "chipLabel": "Oscillations notes",
+    "slugs": [
+      "hscp-os-linear",
+      "hscp-os-kinematics",
+      "hscp-os-period",
+      "hscp-os-phase",
+      "hscp-os-composition",
+      "hscp-os-energy",
+      "hscp-os-pendulum",
+      "hscp-os-angular",
+      "hscp-os-vibrations"
+    ],
+    "chapterName": "Oscillations",
+    "formulaCounts": {
+      "formulas": 20,
+      "tables": 2,
+      "traps": 46
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "wave-optics",
+    "chipLabel": "Wave Optics notes",
+    "slugs": [
+      "hscp-wo-huygens",
+      "hscp-wo-reflection",
+      "hscp-wo-polarization",
+      "hscp-wo-interference",
+      "hscp-wo-diffraction",
+      "hscp-wo-resolving"
+    ],
+    "chapterName": "Wave Optics",
+    "formulaCounts": {
+      "formulas": 12,
+      "tables": 5,
+      "traps": 39
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "electrostatics",
+    "chipLabel": "Electrostatics notes",
+    "slugs": [
+      "hscp-es-gauss",
+      "hscp-es-potential",
+      "hscp-es-equipotential",
+      "hscp-es-dipoles",
+      "hscp-es-conductors",
+      "hscp-es-capacitors",
+      "hscp-es-dielectric",
+      "hscp-es-energy"
+    ],
+    "chapterName": "Electrostatics",
+    "formulaCounts": {
+      "formulas": 19,
+      "tables": 4,
+      "traps": 48
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "magnetic-fields-due-to-electric-current",
+    "chipLabel": "Magnetic Fields due to Electric Current notes",
+    "slugs": [
+      "hscp-mg-charge",
+      "hscp-mg-cyclotron",
+      "hscp-mg-wire",
+      "hscp-mg-torque",
+      "hscp-mg-dipole",
+      "hscp-mg-field",
+      "hscp-mg-parallel",
+      "hscp-mg-ampere"
+    ],
+    "chapterName": "Magnetic Fields due to Electric Current",
+    "formulaCounts": {
+      "formulas": 18,
+      "tables": 4,
+      "traps": 44
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "magnetic-materials",
+    "chipLabel": "Magnetic Materials notes",
+    "slugs": [
+      "hscp-mm-torque",
+      "hscp-mm-origin",
+      "hscp-mm-magnetization",
+      "hscp-mm-classes",
+      "hscp-mm-hysteresis",
+      "hscp-mm-applications"
+    ],
+    "chapterName": "Magnetic Materials",
+    "formulaCounts": {
+      "formulas": 11,
+      "tables": 5,
+      "traps": 36
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "ac-circuits",
+    "chipLabel": "AC Circuits notes",
+    "slugs": [
+      "hscp-ac-rms",
+      "hscp-ac-phasors",
+      "hscp-ac-power",
+      "hscp-ac-lc",
+      "hscp-ac-resonance"
+    ],
+    "chapterName": "AC Circuits",
+    "formulaCounts": {
+      "formulas": 12,
+      "tables": 2,
+      "traps": 27
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "electromagnetic-induction",
+    "chipLabel": "Electromagnetic Induction notes",
+    "slugs": [
+      "hscp-em-faraday",
+      "hscp-em-lenz",
+      "hscp-em-motional",
+      "hscp-em-stationary",
+      "hscp-em-generators",
+      "hscp-em-eddy",
+      "hscp-em-self",
+      "hscp-em-mutual"
+    ],
+    "chapterName": "Electromagnetic Induction",
+    "formulaCounts": {
+      "formulas": 17,
+      "tables": 5,
+      "traps": 44
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "dual-nature-of-radiation-and-matter",
+    "chipLabel": "Dual Nature of Radiation and Matter notes",
+    "slugs": [
+      "hscp-dn-photoelectric",
+      "hscp-dn-einstein",
+      "hscp-dn-radiation",
+      "hscp-dn-photocell",
+      "hscp-dn-debroglie",
+      "hscp-dn-davisson"
+    ],
+    "chapterName": "Dual Nature of Radiation and Matter",
+    "formulaCounts": {
+      "formulas": 12,
+      "tables": 5,
+      "traps": 39
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "semiconductor-devices",
+    "chipLabel": "Semiconductor Devices notes",
+    "slugs": [
+      "hscp-sd-rectifier",
+      "hscp-sd-ripple",
+      "hscp-sd-zener",
+      "hscp-sd-optodiodes",
+      "hscp-sd-transistor",
+      "hscp-sd-amplifier",
+      "hscp-sd-gates"
+    ],
+    "chapterName": "Semiconductor Devices",
+    "formulaCounts": {
+      "formulas": 13,
+      "tables": 6,
+      "traps": 37
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "structure-of-atoms-and-nuclei",
+    "chipLabel": "Structure of Atoms and Nuclei notes",
+    "slugs": [
+      "hscp-an-rutherford",
+      "hscp-an-bohr",
+      "hscp-an-spectra",
+      "hscp-an-nucleus",
+      "hscp-an-binding",
+      "hscp-an-decays",
+      "hscp-an-halflife",
+      "hscp-an-fission"
+    ],
+    "chapterName": "Structure of Atoms and Nuclei",
+    "formulaCounts": {
+      "formulas": 16,
+      "tables": 4,
+      "traps": 45
+    }
   }
 ];
 
@@ -13396,6 +14760,7 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "spi-maths/quadratic-equations": () => import("@/app/notes/spi-maths/quadratic-equations/_data").then((m) => ({ chapter: m.SPI_QUADRATIC_EQUATIONS_CHAPTER, notes: m.SPI_QUADRATIC_EQUATIONS_NOTES })),
   "spi-maths/polynomials": () => import("@/app/notes/spi-maths/polynomials/_data").then((m) => ({ chapter: m.SPI_POLYNOMIALS_CHAPTER, notes: m.SPI_POLYNOMIALS_NOTES })),
   "spi-maths/algebraic-identities": () => import("@/app/notes/spi-maths/algebraic-identities/_data").then((m) => ({ chapter: m.SPI_ALGEBRAIC_IDENTITIES_CHAPTER, notes: m.SPI_ALGEBRAIC_IDENTITIES_NOTES })),
+  "spi-maths/time-speed-distance": () => import("@/app/notes/spi-maths/time-speed-distance/_data").then((m) => ({ chapter: m.SPI_TIME_SPEED_DISTANCE_CHAPTER, notes: m.SPI_TIME_SPEED_DISTANCE_NOTES })),
   "spi-english/vocabulary": () => import("@/app/notes/spi-english/vocabulary/_data").then((m) => ({ chapter: m.SPI_VOCABULARY_CHAPTER, notes: m.SPI_VOCABULARY_NOTES })),
   "spi-english/idioms-phrases": () => import("@/app/notes/spi-english/idioms-phrases/_data").then((m) => ({ chapter: m.SPI_IDIOMS_PHRASES_CHAPTER, notes: m.SPI_IDIOMS_PHRASES_NOTES })),
   "spi-english/grammar": () => import("@/app/notes/spi-english/grammar/_data").then((m) => ({ chapter: m.SPI_GRAMMAR_CHAPTER, notes: m.SPI_GRAMMAR_NOTES })),
@@ -13406,6 +14771,7 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "spi-reasoning/classification": () => import("@/app/notes/spi-reasoning/classification/_data").then((m) => ({ chapter: m.SPI_CLASSIFICATION_CHAPTER, notes: m.SPI_CLASSIFICATION_NOTES })),
   "spi-reasoning/series": () => import("@/app/notes/spi-reasoning/series/_data").then((m) => ({ chapter: m.SPI_SERIES_CHAPTER, notes: m.SPI_SERIES_NOTES })),
   "spi-reasoning/order-ranking": () => import("@/app/notes/spi-reasoning/order-ranking/_data").then((m) => ({ chapter: m.SPI_ORDER_RANKING_CHAPTER, notes: m.SPI_ORDER_RANKING_NOTES })),
+  "spi-reasoning/analogy": () => import("@/app/notes/spi-reasoning/analogy/_data").then((m) => ({ chapter: m.SPI_ANALOGY_CHAPTER, notes: m.SPI_ANALOGY_NOTES })),
   "spi-physics/electricity-magnetism": () => import("@/app/notes/spi-physics/electricity-magnetism/_data").then((m) => ({ chapter: m.SPI_ELECTRICITY_MAGNETISM_CHAPTER, notes: m.SPI_ELECTRICITY_MAGNETISM_NOTES })),
   "spi-physics/light-optics": () => import("@/app/notes/spi-physics/light-optics/_data").then((m) => ({ chapter: m.SPI_LIGHT_OPTICS_CHAPTER, notes: m.SPI_LIGHT_OPTICS_NOTES })),
   "spi-physics/sound": () => import("@/app/notes/spi-physics/sound/_data").then((m) => ({ chapter: m.SPI_SOUND_CHAPTER, notes: m.SPI_SOUND_NOTES })),
@@ -13692,4 +15058,70 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "neet-chemistry/haloalkanes-and-haloarenes": () => import("@/app/notes/neet-chemistry/haloalkanes-and-haloarenes/_data").then((m) => ({ chapter: m.NEET_CH_HA_CHAPTER, notes: m.NEET_CH_HA_NOTES })),
   "neet-chemistry/alcohols-phenols-and-ethers": () => import("@/app/notes/neet-chemistry/alcohols-phenols-and-ethers/_data").then((m) => ({ chapter: m.NEET_CH_AL_CHAPTER, notes: m.NEET_CH_AL_NOTES })),
   "neet-chemistry/biomolecules": () => import("@/app/notes/neet-chemistry/biomolecules/_data").then((m) => ({ chapter: m.NEET_CH_BM_CHAPTER, notes: m.NEET_CH_BM_NOTES })),
+  "ssc-cgl-static-gk/art-and-culture": () => import("@/app/notes/ssc-cgl-static-gk/art-and-culture/_data").then((m) => ({ chapter: m.SSC_ART_AND_CULTURE_CHAPTER, notes: m.SSC_ART_AND_CULTURE_NOTES })),
+  "ssc-cgl-static-gk/awards-and-honours": () => import("@/app/notes/ssc-cgl-static-gk/awards-and-honours/_data").then((m) => ({ chapter: m.SSC_AWARDS_AND_HONOURS_CHAPTER, notes: m.SSC_AWARDS_AND_HONOURS_NOTES })),
+  "ssc-cgl-static-gk/sports-and-games": () => import("@/app/notes/ssc-cgl-static-gk/sports-and-games/_data").then((m) => ({ chapter: m.SSC_SPORTS_AND_GAMES_CHAPTER, notes: m.SSC_SPORTS_AND_GAMES_NOTES })),
+  "ssc-cgl-static-gk/firsts-symbols-institutions": () => import("@/app/notes/ssc-cgl-static-gk/firsts-symbols-institutions/_data").then((m) => ({ chapter: m.SSC_FIRSTS_SYMBOLS_INSTITUTIONS_CHAPTER, notes: m.SSC_FIRSTS_SYMBOLS_INSTITUTIONS_NOTES })),
+  "ssc-cgl-static-gk/festivals-and-days": () => import("@/app/notes/ssc-cgl-static-gk/festivals-and-days/_data").then((m) => ({ chapter: m.SSC_FESTIVALS_AND_DAYS_CHAPTER, notes: m.SSC_FESTIVALS_AND_DAYS_NOTES })),
+  "ssc-cgl-static-gk/books-and-authors": () => import("@/app/notes/ssc-cgl-static-gk/books-and-authors/_data").then((m) => ({ chapter: m.SSC_BOOKS_AND_AUTHORS_CHAPTER, notes: m.SSC_BOOKS_AND_AUTHORS_NOTES })),
+  "ssc-cgl-static-gk/science-space-environment": () => import("@/app/notes/ssc-cgl-static-gk/science-space-environment/_data").then((m) => ({ chapter: m.SSC_SCIENCE_SPACE_ENVIRONMENT_CHAPTER, notes: m.SSC_SCIENCE_SPACE_ENVIRONMENT_NOTES })),
+  "homi-bhabha-9-physics/sound": () => import("@/app/notes/homi-bhabha-9-physics/sound/_data").then((m) => ({ chapter: m.HB9_SOUND_CHAPTER, notes: m.HB9_SOUND_NOTES })),
+  "homi-bhabha-9-physics/current-electricity": () => import("@/app/notes/homi-bhabha-9-physics/current-electricity/_data").then((m) => ({ chapter: m.HB9_ELECTRICITY_CHAPTER, notes: m.HB9_ELECTRICITY_NOTES })),
+  "homi-bhabha-9-physics/light": () => import("@/app/notes/homi-bhabha-9-physics/light/_data").then((m) => ({ chapter: m.HB9_LIGHT_CHAPTER, notes: m.HB9_LIGHT_NOTES })),
+  "homi-bhabha-9-physics/force-laws-of-motion": () => import("@/app/notes/homi-bhabha-9-physics/force-laws-of-motion/_data").then((m) => ({ chapter: m.HB9_FORCE_CHAPTER, notes: m.HB9_FORCE_NOTES })),
+  "homi-bhabha-9-physics/work-energy-power": () => import("@/app/notes/homi-bhabha-9-physics/work-energy-power/_data").then((m) => ({ chapter: m.HB9_WORK_CHAPTER, notes: m.HB9_WORK_NOTES })),
+  "homi-bhabha-9-physics/space-astronomy": () => import("@/app/notes/homi-bhabha-9-physics/space-astronomy/_data").then((m) => ({ chapter: m.HB9_SPACE_CHAPTER, notes: m.HB9_SPACE_NOTES })),
+  "homi-bhabha-9-physics/motion": () => import("@/app/notes/homi-bhabha-9-physics/motion/_data").then((m) => ({ chapter: m.HB9_MOTION_CHAPTER, notes: m.HB9_MOTION_NOTES })),
+  "homi-bhabha-9-physics/heat": () => import("@/app/notes/homi-bhabha-9-physics/heat/_data").then((m) => ({ chapter: m.HB9_HEAT_CHAPTER, notes: m.HB9_HEAT_NOTES })),
+  "homi-bhabha-9-physics/pressure-buoyancy": () => import("@/app/notes/homi-bhabha-9-physics/pressure-buoyancy/_data").then((m) => ({ chapter: m.HB9_PRESSURE_CHAPTER, notes: m.HB9_PRESSURE_NOTES })),
+  "homi-bhabha-9-physics/measurement-units": () => import("@/app/notes/homi-bhabha-9-physics/measurement-units/_data").then((m) => ({ chapter: m.HB9_MEASUREMENT_CHAPTER, notes: m.HB9_MEASUREMENT_NOTES })),
+  "homi-bhabha-9-physics/ict": () => import("@/app/notes/homi-bhabha-9-physics/ict/_data").then((m) => ({ chapter: m.HB9_ICT_CHAPTER, notes: m.HB9_ICT_NOTES })),
+  "homi-bhabha-9-physics/gravitation": () => import("@/app/notes/homi-bhabha-9-physics/gravitation/_data").then((m) => ({ chapter: m.HB9_GRAVITATION_CHAPTER, notes: m.HB9_GRAVITATION_NOTES })),
+  "homi-bhabha-9-biology/human-body-health": () => import("@/app/notes/homi-bhabha-9-biology/human-body-health/_data").then((m) => ({ chapter: m.HB9_HUMAN_BODY_CHAPTER, notes: m.HB9_HUMAN_BODY_NOTES })),
+  "homi-bhabha-9-biology/ecosystem-environment": () => import("@/app/notes/homi-bhabha-9-biology/ecosystem-environment/_data").then((m) => ({ chapter: m.HB9_ECOSYSTEM_CHAPTER, notes: m.HB9_ECOSYSTEM_NOTES })),
+  "homi-bhabha-9-biology/life-processes": () => import("@/app/notes/homi-bhabha-9-biology/life-processes/_data").then((m) => ({ chapter: m.HB9_LIFE_PROCESSES_CHAPTER, notes: m.HB9_LIFE_PROCESSES_NOTES })),
+  "homi-bhabha-9-biology/cell-tissues": () => import("@/app/notes/homi-bhabha-9-biology/cell-tissues/_data").then((m) => ({ chapter: m.HB9_CELL_CHAPTER, notes: m.HB9_CELL_NOTES })),
+  "homi-bhabha-9-biology/heredity-evolution": () => import("@/app/notes/homi-bhabha-9-biology/heredity-evolution/_data").then((m) => ({ chapter: m.HB9_HEREDITY_CHAPTER, notes: m.HB9_HEREDITY_NOTES })),
+  "homi-bhabha-9-biology/microbes": () => import("@/app/notes/homi-bhabha-9-biology/microbes/_data").then((m) => ({ chapter: m.HB9_MICROBES_CHAPTER, notes: m.HB9_MICROBES_NOTES })),
+  "homi-bhabha-9-biology/agriculture-animal-husbandry": () => import("@/app/notes/homi-bhabha-9-biology/agriculture-animal-husbandry/_data").then((m) => ({ chapter: m.HB9_AGRICULTURE_CHAPTER, notes: m.HB9_AGRICULTURE_NOTES })),
+  "homi-bhabha-9-biology/classification-of-plants": () => import("@/app/notes/homi-bhabha-9-biology/classification-of-plants/_data").then((m) => ({ chapter: m.HB9_PLANTCLASS_CHAPTER, notes: m.HB9_PLANTCLASS_NOTES })),
+  "homi-bhabha-9-biology/plants-functions": () => import("@/app/notes/homi-bhabha-9-biology/plants-functions/_data").then((m) => ({ chapter: m.HB9_PLANTFN_CHAPTER, notes: m.HB9_PLANTFN_NOTES })),
+  "homi-bhabha-9-chemistry/acids-bases-salts": () => import("@/app/notes/homi-bhabha-9-chemistry/acids-bases-salts/_data").then((m) => ({ chapter: m.HB9_ACIDS_CHAPTER, notes: m.HB9_ACIDS_NOTES })),
+  "homi-bhabha-9-chemistry/substances-common-use": () => import("@/app/notes/homi-bhabha-9-chemistry/substances-common-use/_data").then((m) => ({ chapter: m.HB9_SUBSTANCES_CHAPTER, notes: m.HB9_SUBSTANCES_NOTES })),
+  "homi-bhabha-9-chemistry/atomic-structure": () => import("@/app/notes/homi-bhabha-9-chemistry/atomic-structure/_data").then((m) => ({ chapter: m.HB9_ATOMIC_CHAPTER, notes: m.HB9_ATOMIC_NOTES })),
+  "homi-bhabha-9-chemistry/carbon-compounds": () => import("@/app/notes/homi-bhabha-9-chemistry/carbon-compounds/_data").then((m) => ({ chapter: m.HB9_CARBON_CHAPTER, notes: m.HB9_CARBON_NOTES })),
+  "homi-bhabha-9-chemistry/chemical-reactions": () => import("@/app/notes/homi-bhabha-9-chemistry/chemical-reactions/_data").then((m) => ({ chapter: m.HB9_REACTIONS_CHAPTER, notes: m.HB9_REACTIONS_NOTES })),
+  "homi-bhabha-9-chemistry/matter": () => import("@/app/notes/homi-bhabha-9-chemistry/matter/_data").then((m) => ({ chapter: m.HB9_MATTER_CHAPTER, notes: m.HB9_MATTER_NOTES })),
+  "homi-bhabha-9-chemistry/metals": () => import("@/app/notes/homi-bhabha-9-chemistry/metals/_data").then((m) => ({ chapter: m.HB9_METALS_CHAPTER, notes: m.HB9_METALS_NOTES })),
+  "homi-bhabha-9-chemistry/measurement-of-matter": () => import("@/app/notes/homi-bhabha-9-chemistry/measurement-of-matter/_data").then((m) => ({ chapter: m.HB9_MOLE_CHAPTER, notes: m.HB9_MOLE_NOTES })),
+  "homi-bhabha-9-chemistry/periodic-classification": () => import("@/app/notes/homi-bhabha-9-chemistry/periodic-classification/_data").then((m) => ({ chapter: m.HB9_PERIODIC_CHAPTER, notes: m.HB9_PERIODIC_NOTES })),
+  "homi-bhabha-9-chemistry/air-water-gases": () => import("@/app/notes/homi-bhabha-9-chemistry/air-water-gases/_data").then((m) => ({ chapter: m.HB9_AIR_CHAPTER, notes: m.HB9_AIR_NOTES })),
+  "homi-bhabha-9-general-science/scientists-discoveries": () => import("@/app/notes/homi-bhabha-9-general-science/scientists-discoveries/_data").then((m) => ({ chapter: m.HB9_SCIENTISTS_CHAPTER, notes: m.HB9_SCIENTISTS_NOTES })),
+  "mh-scholarship-4-intelligence/classification-odd-one-out": () => import("@/app/notes/mh-scholarship-4-intelligence/classification-odd-one-out/_data").then((m) => ({ chapter: m.MS4_ODD_CHAPTER, notes: m.MS4_ODD_NOTES })),
+  "mh-scholarship-4-intelligence/analogy": () => import("@/app/notes/mh-scholarship-4-intelligence/analogy/_data").then((m) => ({ chapter: m.MS4_ANALOGY_CHAPTER, notes: m.MS4_ANALOGY_NOTES })),
+  "mh-scholarship-4-intelligence/coding-decoding": () => import("@/app/notes/mh-scholarship-4-intelligence/coding-decoding/_data").then((m) => ({ chapter: m.MS4_CODING_CHAPTER, notes: m.MS4_CODING_NOTES })),
+  "mh-scholarship-4-maths/fractions-decimals": () => import("@/app/notes/mh-scholarship-4-maths/fractions-decimals/_data").then((m) => ({ chapter: m.MS4_FRACTIONS_CHAPTER, notes: m.MS4_FRACTIONS_NOTES })),
+  "mh-scholarship-4-maths/multiplication-division": () => import("@/app/notes/mh-scholarship-4-maths/multiplication-division/_data").then((m) => ({ chapter: m.MS4_MULDIV_CHAPTER, notes: m.MS4_MULDIV_NOTES })),
+  "mh-scholarship-4-maths/units-of-measurement": () => import("@/app/notes/mh-scholarship-4-maths/units-of-measurement/_data").then((m) => ({ chapter: m.MS4_UNITS_CHAPTER, notes: m.MS4_UNITS_NOTES })),
+  "mh-scholarship-4-maths/numbers-number-system": () => import("@/app/notes/mh-scholarship-4-maths/numbers-number-system/_data").then((m) => ({ chapter: m.MS4_NUMBERS_CHAPTER, notes: m.MS4_NUMBERS_NOTES })),
+  "mh-scholarship-7-intelligence/classification-odd-one-out": () => import("@/app/notes/mh-scholarship-7-intelligence/classification-odd-one-out/_data").then((m) => ({ chapter: m.MS7_ODD_CHAPTER, notes: m.MS7_ODD_NOTES })),
+  "mh-scholarship-7-intelligence/analogy": () => import("@/app/notes/mh-scholarship-7-intelligence/analogy/_data").then((m) => ({ chapter: m.MS7_ANALOGY_CHAPTER, notes: m.MS7_ANALOGY_NOTES })),
+  "mh-scholarship-7-maths/algebraic-expressions": () => import("@/app/notes/mh-scholarship-7-maths/algebraic-expressions/_data").then((m) => ({ chapter: m.MS7_ALGEBRA_CHAPTER, notes: m.MS7_ALGEBRA_NOTES })),
+  "mh-scholarship-7-maths/perimeter-area": () => import("@/app/notes/mh-scholarship-7-maths/perimeter-area/_data").then((m) => ({ chapter: m.MS7_AREA_CHAPTER, notes: m.MS7_AREA_NOTES })),
+  "mh-hsc-12-physics/current-electricity": () => import("@/app/notes/mh-hsc-12-physics/current-electricity/_data").then((m) => ({ chapter: m.HSC_PH_CE_CHAPTER, notes: m.HSC_PH_CE_NOTES })),
+  "mh-hsc-12-physics/rotational-dynamics": () => import("@/app/notes/mh-hsc-12-physics/rotational-dynamics/_data").then((m) => ({ chapter: m.HSC_PH_RD_CHAPTER, notes: m.HSC_PH_RD_NOTES })),
+  "mh-hsc-12-physics/mechanical-properties-of-fluids": () => import("@/app/notes/mh-hsc-12-physics/mechanical-properties-of-fluids/_data").then((m) => ({ chapter: m.HSC_PH_MF_CHAPTER, notes: m.HSC_PH_MF_NOTES })),
+  "mh-hsc-12-physics/kinetic-theory-of-gases": () => import("@/app/notes/mh-hsc-12-physics/kinetic-theory-of-gases/_data").then((m) => ({ chapter: m.HSC_PH_KT_CHAPTER, notes: m.HSC_PH_KT_NOTES })),
+  "mh-hsc-12-physics/thermodynamics": () => import("@/app/notes/mh-hsc-12-physics/thermodynamics/_data").then((m) => ({ chapter: m.HSC_PH_TD_CHAPTER, notes: m.HSC_PH_TD_NOTES })),
+  "mh-hsc-12-physics/superposition-of-waves": () => import("@/app/notes/mh-hsc-12-physics/superposition-of-waves/_data").then((m) => ({ chapter: m.HSC_PH_SW_CHAPTER, notes: m.HSC_PH_SW_NOTES })),
+  "mh-hsc-12-physics/oscillations": () => import("@/app/notes/mh-hsc-12-physics/oscillations/_data").then((m) => ({ chapter: m.HSC_PH_OS_CHAPTER, notes: m.HSC_PH_OS_NOTES })),
+  "mh-hsc-12-physics/wave-optics": () => import("@/app/notes/mh-hsc-12-physics/wave-optics/_data").then((m) => ({ chapter: m.HSC_PH_WO_CHAPTER, notes: m.HSC_PH_WO_NOTES })),
+  "mh-hsc-12-physics/electrostatics": () => import("@/app/notes/mh-hsc-12-physics/electrostatics/_data").then((m) => ({ chapter: m.HSC_PH_ES_CHAPTER, notes: m.HSC_PH_ES_NOTES })),
+  "mh-hsc-12-physics/magnetic-fields-due-to-electric-current": () => import("@/app/notes/mh-hsc-12-physics/magnetic-fields-due-to-electric-current/_data").then((m) => ({ chapter: m.HSC_PH_MG_CHAPTER, notes: m.HSC_PH_MG_NOTES })),
+  "mh-hsc-12-physics/magnetic-materials": () => import("@/app/notes/mh-hsc-12-physics/magnetic-materials/_data").then((m) => ({ chapter: m.HSC_PH_MM_CHAPTER, notes: m.HSC_PH_MM_NOTES })),
+  "mh-hsc-12-physics/ac-circuits": () => import("@/app/notes/mh-hsc-12-physics/ac-circuits/_data").then((m) => ({ chapter: m.HSC_PH_AC_CHAPTER, notes: m.HSC_PH_AC_NOTES })),
+  "mh-hsc-12-physics/electromagnetic-induction": () => import("@/app/notes/mh-hsc-12-physics/electromagnetic-induction/_data").then((m) => ({ chapter: m.HSC_PH_EM_CHAPTER, notes: m.HSC_PH_EM_NOTES })),
+  "mh-hsc-12-physics/dual-nature-of-radiation-and-matter": () => import("@/app/notes/mh-hsc-12-physics/dual-nature-of-radiation-and-matter/_data").then((m) => ({ chapter: m.HSC_PH_DN_CHAPTER, notes: m.HSC_PH_DN_NOTES })),
+  "mh-hsc-12-physics/semiconductor-devices": () => import("@/app/notes/mh-hsc-12-physics/semiconductor-devices/_data").then((m) => ({ chapter: m.HSC_PH_SD_CHAPTER, notes: m.HSC_PH_SD_NOTES })),
+  "mh-hsc-12-physics/structure-of-atoms-and-nuclei": () => import("@/app/notes/mh-hsc-12-physics/structure-of-atoms-and-nuclei/_data").then((m) => ({ chapter: m.HSC_PH_AN_CHAPTER, notes: m.HSC_PH_AN_NOTES })),
 };

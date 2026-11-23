@@ -4,7 +4,7 @@
  * Spec: tests/ui-shots-lib.test.ts.
  */
 
-export type Viewport = "narrow" | "phone" | "desktop";
+export type Viewport = "narrow" | "phone" | "tablet" | "laptop" | "desktop";
 export type Theme = "light" | "dark";
 export type Target = "before" | "after";
 
@@ -12,10 +12,16 @@ export type Target = "before" | "after";
  * Phone = a 390 px Android-class screen at 2x; desktop = a 1440 px laptop.
  * Narrow (`--narrow`) = a 360 px budget Android, the width the header must
  * still fit (2026-11-16: Play joined Ebooks and Classes with ~5 px to spare).
+ * Tablet (`--tablet`, 820 px, iPad portrait) and laptop (`--laptop`, 1024 px,
+ * iPad landscape or a smart board at high scaling) are the widths in between,
+ * where the top nav shows beside the header buttons (2026-11-18: the tabs ran
+ * under them there while every 390/1440 sheet looked fine).
  */
 export const VIEWPORTS: Record<Viewport, { width: number; height: number; scale: number; mobile: boolean }> = {
   narrow: { width: 360, height: 780, scale: 2, mobile: true },
   phone: { width: 390, height: 844, scale: 2, mobile: true },
+  tablet: { width: 820, height: 1180, scale: 1, mobile: false },
+  laptop: { width: 1024, height: 768, scale: 1, mobile: false },
   desktop: { width: 1440, height: 900, scale: 1, mobile: false },
 };
 
@@ -142,7 +148,13 @@ export function parseShotArgs(argv: string[]): ShotArgs {
   if (flag("with-pass") && !asStudent) throw new Error("--with-pass needs --as-student=<exam,...>: there is no signed-in student to hold the pass");
   if (flag("bottom") && flag("full")) throw new Error("--bottom and --full cannot be combined: --full captures from the top");
   const base: Viewport[] = flag("phone") && !flag("desktop") ? ["phone"] : flag("desktop") && !flag("phone") ? ["desktop"] : ["phone", "desktop"];
-  const viewports: Viewport[] = flag("narrow") ? ["narrow", ...base] : base;
+  const extra = new Set<Viewport>([
+    ...(flag("narrow") ? (["narrow"] as const) : []),
+    ...(flag("tablet") ? (["tablet"] as const) : []),
+    ...(flag("laptop") ? (["laptop"] as const) : []),
+  ]);
+  const order = Object.keys(VIEWPORTS) as Viewport[];
+  const viewports = order.filter((v) => base.includes(v) || extra.has(v));
   return {
     pages,
     targets: {
@@ -205,6 +217,19 @@ function clickArg(raw: string | undefined): string[] | null {
 
 /** The script that seeds localStorage (`--storage`); objects are stored as JSON. Never throws. */
 /** Run before each load under `--no-fullscreen`: `document.fullscreenEnabled` reads false. */
+/**
+ * Printed at the end of every run (owner, 2026-11-21: "why dont you check
+ * first"): a V lesson sheet went out after a glance and a real look then found
+ * six faults in it. Do these before sending any sheet.
+ */
+export const BEFORE_YOU_SEND = [
+  "BEFORE YOU SEND THIS SHEET:",
+  "1. Open the approved mockup, if there is one, and compare element by element, order included.",
+  "2. Read every capture as the student would, top to bottom: what would confuse them?",
+  "3. Check every capture loaded: an empty card was taken too early; a stray launcher or overlay is page chrome.",
+  "4. Name what the captures do not show (a row the real screen has, a screen behind a tap) when you send it.",
+];
+
 export const NO_FULLSCREEN_SCRIPT = `Object.defineProperty(Document.prototype, "fullscreenEnabled", { configurable: true, get: () => false });`;
 
 export function storageScript(entries: Record<string, unknown>): string {

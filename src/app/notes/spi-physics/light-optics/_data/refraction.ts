@@ -6,7 +6,7 @@ export const SPI_LO_REFRACTION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Light bends when it passes from one medium into another because its speed changes; the refractive index n = c/v measures how much it slows, and a lens uses this bending to form images.",
   whyItMatters:
-    "Four questions in the bank, all MODERATE: which pair of media changes light the most, how the pins are lined up in the glass slab experiment, what water does to a lens's power, and the point where a convex lens gives u = v. Each needs a reason, not a recalled word, so learn why light bends as well as which way.",
+    "Six questions in the bank, four MODERATE and two EASY from the 2026 paper: which pair of media changes light the most, how the pins are lined up in the glass slab experiment, what water does to a lens's power, the point where a convex lens gives u = v, which way a ray bends leaving a denser medium, and how lenses form images. Most need a reason, not a recalled word, so learn why light bends as well as which way.",
   concepts: [
     {
       kind: "formula" as const,
@@ -46,7 +46,7 @@ export const SPI_LO_REFRACTION_NOTE: SubtopicNote = {
         { prompt: "How does the ray coming out of a glass slab compare with the ray that went in?", answer: "It is parallel to it, shifted sideways" },
         { prompt: "Diamond has n = 2.42 and glass n = 1.5. In which is light slower?", answer: "Diamond" },
       ],
-      pyqExampleId: "b04ac38a-d897-4fb8-a022-78098285f212",
+      pyqExampleId: "7859059e-1200-4fe4-a737-dfdd0ff053ba",
       traps: [
         {
           title: "Higher refractive index means faster light",
@@ -99,7 +99,7 @@ export const SPI_LO_REFRACTION_NOTE: SubtopicNote = {
         { prompt: "A convex lens has focal length 12 cm. Where must an object be placed to get a real image of the same size?", answer: "24 cm from the lens (at 2F)" },
         { prompt: "Which lens is a converging lens?", answer: "Convex" },
       ],
-      pyqExampleId: "4f7fa999-238e-46bc-97db-30ba1f59dba1",
+      pyqExampleId: "6d4cc40d-87ae-464b-adab-cf38bb4c9244",
       traps: [
         {
           title: "Using centimetres in the power formula",

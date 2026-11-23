@@ -12,6 +12,7 @@ export const SSC_BPB_PLANTS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscbpbpl-form",
       name: "Leaves, tissues and plant form",
+      visualizationSlug: "ssc-leaf-venation",
       intuition:
         "A leaf's veins and its place on the stem follow a few patterns, and SSC asks which plant shows which. Monocots and dicots split cleanly on venation.",
       definition:
@@ -55,6 +56,7 @@ export const SSC_BPB_PLANTS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscbpbpl-processes",
       name: "Stomata, transpiration, nutrients and hormones",
+      visualizationSlug: "ssc-stomata-transpiration",
       intuition:
         "A plant loses water through its stomata, and that loss pulls water up the stem. SSC also asks which nutrients are needed in bulk and what each hormone does.",
       definition:

@@ -14,6 +14,7 @@ export const TRIANGLE_RULES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cettf-sine-rule",
       name: "The Sine Rule and the Circumradius",
+      visualizationSlug: "pt-circumcircle-incircle",
       intuition:
         "Every triangle sits in a circle, and each side is a chord of it seen from the opposite vertex. A chord's length is \\(2R\\sin(\\text{angle it subtends})\\), so every side over the sine of its opposite angle is the same number, \\(2R\\). Angles in a ratio therefore give sides in the ratio of their SINES, not of the angles.",
       definition:

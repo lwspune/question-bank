@@ -13,6 +13,7 @@ export const CROSS_VEC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jvec-area",
       name: "Areas of triangles, parallelograms and quadrilaterals",
+      visualizationSlug: "cross-product-area",
       intuition:
         "\\(|\\vec a\\times\\vec b|\\) is the area of the parallelogram with sides \\(\\vec a\\) and \\(\\vec b\\), so a triangle with those sides has half of it. When a parallelogram is given by its diagonals \\(\\vec d_1,\\vec d_2\\), its area is \\(\\frac12|\\vec d_1\\times\\vec d_2|\\), and the same formula gives any quadrilateral from its two diagonals. Scaling passes straight through: \\((2\\vec a)\\times(3\\vec b)=6(\\vec a\\times\\vec b)\\).",
       definition:
@@ -57,6 +58,7 @@ export const CROSS_VEC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jvec-perpendicular",
       name: "A vector perpendicular to two others",
+      visualizationSlug: "right-hand-rule-cross",
       intuition:
         "\\(\\vec a\\times\\vec b\\) is perpendicular to both \\(\\vec a\\) and \\(\\vec b\\), so any vector perpendicular to both is \\(\\lambda(\\vec a\\times\\vec b)\\), and one more condition fixes \\(\\lambda\\). A line lying in two planes is perpendicular to both normals, so its direction is \\(\\vec n_1\\times\\vec n_2\\).",
       definition:

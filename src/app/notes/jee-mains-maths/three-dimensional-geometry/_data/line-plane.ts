@@ -13,6 +13,7 @@ export const LINE_PLANE_3D_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "j3d-line-plane-meet",
       name: "Where a line meets a plane, and the ratio a plane cuts",
+      visualizationSlug: "line-plane-intersection",
       intuition:
         "Put the line's general point \\(A+t\\vec d\\) into the plane's equation. It becomes one linear equation in \\(t\\), and its root gives the meeting point. The same idea tells how a plane cuts a segment \\(AB\\): the plane's values at \\(A\\) and \\(B\\) are in the ratio of the pieces, and opposite signs mean the cut is between them.",
       definition:

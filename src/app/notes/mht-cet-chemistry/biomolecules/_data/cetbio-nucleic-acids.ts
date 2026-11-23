@@ -64,6 +64,7 @@ export const NUCLEIC_ACIDS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetbio-dna-double-helix-and-backbone",
       name: "The Phosphodiester Backbone and the Watson–Crick Double Helix",
+      visualizationSlug: "cet-dna-base-pairing",
       intuition:
         "Nucleotides join when the phosphate on C-5 prime of one esterifies the OH on C-3 prime of the next: a 3 prime to 5 prime phosphodiester link, so every strand has a free phosphate at its 5 prime end and a free OH at its 3 prime end, and the backbone is sugar–phosphate–sugar (C–O–P–O–C), not C–O–C. Two such strands wind into a right-handed double helix with the backbone OUTSIDE and the bases INSIDE, held by hydrogen bonds between complementary pairs: A with T by two bonds, G with C by three. RNA is one strand with U in place of T.",
       definition:

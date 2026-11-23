@@ -12,6 +12,7 @@ export const SSC_RSE_DIFFERENCES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscrsedi-steady",
       name: "Steady and evenly growing differences",
+      visualizationSlug: "ssc-difference-ladder",
       intuition:
         "Most number series in SSC are built by adding. Write the differences, and you usually see the same number every time, or a row like 4, 7, 10, 13 that grows by the same amount.",
       definition:

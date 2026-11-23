@@ -6,7 +6,7 @@ export const SPI_CC_HYDROCARBONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Carbon shares its four valence electrons to make covalent bonds, links to itself in chains and rings, and so forms whole families of hydrocarbons.",
   whyItMatters:
-    "Seven questions in the bank, two EASY and five MODERATE, and two of them are from the 2022 paper (naming a ring of six carbons drawn in a figure). The others count the covalent bonds in an alkane, pick out graphite, find a compound with one single and one triple bond, and test the homologous series and isomers.",
+    "Eight questions in the bank, two EASY and six MODERATE: two from the 2022 paper (naming a ring of six carbons drawn in a figure) and one from the 2026 paper (the bonds in pentane). The others count the covalent bonds in an alkane, pick out graphite, find a compound with one single and one triple bond, and test the homologous series and isomers.",
   concepts: [
     {
       kind: "formula" as const,
@@ -46,7 +46,7 @@ export const SPI_CC_HYDROCARBONS_NOTE: SubtopicNote = {
         { prompt: "What is the name for carbon's power to form long chains of carbon atoms?", answer: "Catenation" },
         { prompt: "How many pairs of electrons are shared in a triple bond?", answer: "3 pairs (6 electrons)" },
       ],
-      pyqExampleId: "214d3fee-1416-4f38-9b94-1e3a9af2c134",
+      pyqExampleId: "7ee4cda7-af4b-4c2e-9395-e30f35660409",
       traps: [
         {
           title: "Counting only the carbon-hydrogen bonds",

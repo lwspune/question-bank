@@ -40,8 +40,13 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { answerWithV, type VContextOptions } from "../../../src/lib/chat/answer";
 import { isPathExam } from "../../../src/lib/path/model";
 import { readChatSettings } from "../../../src/lib/chat/settingsAdmin";
+import { readExamCalendar } from "../../../src/lib/exam/calendarRead";
 import { readExamStrategyUncached } from "../../../src/lib/chat/examStrategyServer";
 import { loadExamCatalogPayload, shapeExamCatalog } from "../../../src/lib/exam/allExamStats";
+import { isIntlPagePath, LIVE_INTL_EXAMS } from "../../../src/lib/sites/intl";
+
+/** The site a case was asked on. Rows keep the page, not the host: an intl exam's page is intl (V on intl, 2026-11-19). */
+const siteOf = (c: { page_path: string | null }) => (c.page_path && isIntlPagePath(c.page_path.split(/[?#]/)[0]) ? "intl" : "pyqvault");
 import { readChapterLandingsUncached } from "../../../src/lib/questions/landing";
 import { readSubtopicIndexUncached, withSubtopics } from "../../../src/lib/chat/subtopicIndex";
 import { loadSimilarId, loadVQuestion, searchVQuestions } from "../../../src/lib/chat/questionToolsServer";
@@ -49,8 +54,9 @@ import { loadPaperRepeats } from "../../../src/lib/chat/paperRepeatsServer";
 import { notesTappedFrom, tappedFrom } from "../../../src/lib/chat/questionToolSet";
 import { answerIn } from "../../../src/lib/chat/askVEvent";
 import { conceptSources } from "../../../src/lib/chat/conceptSearchServer";
-import { parseNotesRefKey } from "../../../src/lib/chat/notesItem";
-import { loadNotesItemBrief } from "../../../src/lib/chat/notesItemServer";
+import { learnLoader } from "../../../src/lib/chat/learnServer";
+import { notesPageOf, parseNotesRefKey } from "../../../src/lib/chat/notesItem";
+import { loadNotesItemBrief, loadNotesPasteBrief } from "../../../src/lib/chat/notesItemServer";
 import { aiAnswerCostUsd } from "../../../src/lib/chat/interactions";
 import type { ModelTurn } from "../../../src/lib/chat/conversation";
 import type { SavedPlan } from "../../../src/lib/chat/weekPlan";
@@ -149,6 +155,8 @@ async function main() {
     undefined,
     catalogPayload.allPublicTotal
   );
+  // V on intl (2026-11-19): an intl case reads intl's own exams, as the route does on that host.
+  const intlCatalog = shapeExamCatalog(new Map(catalogPayload.counts), new Map(catalogPayload.ids), LIVE_INTL_EXAMS, catalogPayload.allPublicTotal);
 
   function contextFor(c: Case, notesBrief: string | null): VContextOptions {
     let plan: SavedPlan | null = null;
@@ -156,7 +164,8 @@ async function main() {
     return {
       loadChapters: async () => chapters,
       loadStrategy: readExamStrategyUncached,
-      loadExamCatalog: async () => catalog,
+      loadExamCatalog: async () => (siteOf(c) === "intl" ? intlCatalog : catalog),
+      site: siteOf(c),
       page: c.page_path,
       signedIn: c.signed_in,
       profileExamSlugs: c.profile_exams,
@@ -175,6 +184,8 @@ async function main() {
             spendReveal: c.signed_in ? async () => ({ kind: "ok" as const, counts: false }) : null,
             loadSimilar: (vq) => loadSimilarId(anon, vq, []),
             searchQuestions: (text, chapterId) => searchVQuestions(anon, text, chapterId),
+            // As live: a paste on a notes page is looked for on that page first (2026-11-19).
+            ...(notesPageOf(c.page_path) ? { findNotesPaste: (text: string) => loadNotesPasteBrief(c.page_path, text) } : {}),
             onSimilar: () => {},
             onMatch: () => {},
             onExplained: () => {},
@@ -186,6 +197,10 @@ async function main() {
         : null,
       // A signed-in student with no mock results yet, as getOwnPerformance returns one (null means signed out).
       concepts: settings.explainEnabled ? conceptSources(anon) : null,
+      // As live: Learn's lessons first wherever Learn teaches the chapter (2026-11-22). The stand-in
+      // student has no Learn progress, so it reads as signed out; the lesson is kept in memory.
+      loadLearn: settings.explainEnabled ? learnLoader(null) : null,
+      onLesson: () => {},
       // Writes nothing: the tool is offered as live, so a case can see V save a language.
       saveLanguage: c.signed_in ? async () => true : null,
       loadOwnProgress: c.signed_in
@@ -197,6 +212,8 @@ async function main() {
           ? {
               now: () => new Date(),
               loadProfile: async () => ({ targetExams: c.profile_exams, examDate: null, weeklyGoal: null }),
+              // The live calendar, as the route reads it (uncached here: unstable_cache needs Next).
+              loadCalendar: () => readExamCalendar(anon),
               saveExamDate: async () => {},
               loadWeak: async () => [],
               loadDue: async () => 0,
@@ -264,28 +281,32 @@ async function main() {
   }
 
   const results: Result[] = [];
-  let next = 0;
-  async function worker() {
-    while (next < cases.length) {
-      const c = cases[next++];
-      const res = await runOne(c).catch(
-        (err): Result => ({
-          c,
-          reply: "",
-          links: [],
-          tools: [],
-          toolCalls: null,
-          failures: [`error: ${err instanceof Error ? err.message : String(err)}`],
-          autoPass: false,
-          judge: false,
-          cost: 0,
-        })
-      );
-      results.push(res);
-      console.log(`${results.length}/${cases.length} ${res.autoPass ? "ok  " : "FAIL"} ${c.job.padEnd(16)} ${short(c.message, 60)}`);
-    }
+  async function runAndLog(c: Case) {
+    const res = await runOne(c).catch(
+      (err): Result => ({
+        c,
+        reply: "",
+        links: [],
+        tools: [],
+        toolCalls: null,
+        failures: [`error: ${err instanceof Error ? err.message : String(err)}`],
+        autoPass: false,
+        judge: false,
+        cost: 0,
+      })
+    );
+    results.push(res);
+    console.log(`${results.length}/${cases.length} ${res.autoPass ? "ok  " : "FAIL"} ${c.job.padEnd(16)} ${short(c.message, 60)}`);
   }
-  await Promise.all(Array.from({ length: Math.min(CONCURRENCY, cases.length) }, worker));
+  // The first case runs ALONE (2026-11-23): after a prompt edit, cases started together each
+  // write V's instructions to the prompt cache, since none can read what another has not
+  // finished writing. Four at once cost $0.013 for a 5-case re-test against $0.002 cached.
+  let next = cases.length > 0 ? 1 : 0;
+  if (cases.length > 0) await runAndLog(cases[0]);
+  async function worker() {
+    while (next < cases.length) await runAndLog(cases[next++]);
+  }
+  await Promise.all(Array.from({ length: Math.min(CONCURRENCY, cases.length - next) }, worker));
   results.sort((a, b) => cases.indexOf(a.c) - cases.indexOf(b.c));
 
   // Cases from a file are not in v_eval_cases, so nothing is stored: the replies are printed to read.

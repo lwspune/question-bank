@@ -85,6 +85,24 @@ describe("EXAM_REGISTRY", () => {
     expect(uceed?.noImageIndex).toBe(true);
   });
 
+  it("registers GATE CS as a graduate exam in the GATE family, with mocks and worked solutions", () => {
+    const gate = getExamBySlug("gate-cs");
+    expect(gate?.examName).toBe("GATE CS");
+    expect(gate?.tier).toBe("graduate");
+    expect(gate?.goal).toBe("engineering");
+    // MCQ, MSQ and NAT in every paper since 2021, so /browse shows the format filter.
+    expect(gate?.mixedFormats).toBe(true);
+    // Owner 2026-11-23: a GATE family, Computer Science its first branch.
+    expect(gate?.family).toBe("GATE");
+    expect(gate?.familyLabel).toBe("Computer Science");
+    expect(gate?.familyAxis).toBe("Branch");
+    expect(gate?.practiceOnly).not.toBe(true);
+    // PUBLIC since 2026-11-23: on the pickers, six mocks, every question solved.
+    expect(gate?.noPublicContent).not.toBe(true);
+    expect(gate?.hasMocks).toBe(true);
+    expect(gate?.pastPaperSolutions).toBe(true);
+  });
+
   it("registers SSC CGL as a graduate exam with mocks and worked solutions", () => {
     const ssc = getExamBySlug("ssc-cgl");
     expect(ssc?.examName).toBe("SSC CGL");
@@ -127,6 +145,83 @@ describe("EXAM_REGISTRY", () => {
     expect(chsl?.hasMocks).toBe(true);
     expect(chsl?.pastPaperSolutions).toBe(true);
     expect(chsl?.practiceOnly).not.toBe(true);
+  });
+
+  it("groups Homi Bhabha Class 6 and 9 as one family split by class: free school-tier science exams, English only until the Marathi translations land (owner, 2026-11-19)", () => {
+    for (const [slug, label] of [["homi-bhabha-6", "Class 6"], ["homi-bhabha-9", "Class 9"]] as const) {
+      const e = getExamBySlug(slug);
+      expect(e?.examName).toBe(`Homi Bhabha ${label}`);
+      expect([e?.family, e?.familyStage, e?.familyLabel, e?.familyAxis]).toEqual(["Homi Bhabha", "Homi Bhabha", label, "Class"]);
+      expect(e?.tier).toBe("school");
+      expect(e?.goal).toBe("science");
+      // A language switch with nothing behind it is noise: bilingual comes on with the Marathi rows.
+      expect(e?.bilingual).toBeFalsy();
+      expect(e?.passScope).toBe("free");
+    }
+  });
+
+  it("Homi Bhabha Class 9 is public with notes and past-paper solutions; Class 6 is still hidden (owner, 2026-11-19)", () => {
+    const nine = getExamBySlug("homi-bhabha-9");
+    expect(nine?.noPublicContent).toBeFalsy();
+    expect(nine?.notesPath).toBe("/notes/homi-bhabha-9");
+    expect(nine?.pastPaperSolutions).toBe(true);
+    expect(nine?.hasMocks).toBe(true);
+    expect(getExamBySlug("homi-bhabha-6")?.noPublicContent).toBe(true);
+  });
+
+  it("groups the MH Scholarship's four classes as one family split by class: free school-tier exams (owner, 2026-11-20)", () => {
+    for (const cls of [4, 5, 7, 8]) {
+      const e = EXAM_REGISTRY.find((x) => x.slug === `mh-scholarship-${cls}`);
+      expect(e?.examName).toBe(`MH Scholarship Class ${cls}`);
+      expect([e?.family, e?.familyStage, e?.familyLabel, e?.familyAxis]).toEqual(["MH Scholarship", "MH Scholarship", `Class ${cls}`, "Class"]);
+      expect(e?.tier).toBe("school");
+      expect(e?.passScope).toBe("free");
+      expect(e?.bilingual).toBeFalsy();
+    }
+  });
+
+  it("MH Scholarship Class 4 and 7 (April 2026) are public with mocks; Class 5 and 8 stay hidden (owner, 2026-11-20: no Class 8 public)", () => {
+    for (const cls of [4, 7]) {
+      const e = EXAM_REGISTRY.find((x) => x.slug === `mh-scholarship-${cls}`);
+      expect(e?.noPublicContent).toBeFalsy();
+      expect(e?.hasMocks).toBe(true);
+    }
+    for (const cls of [5, 8]) {
+      const e = EXAM_REGISTRY.find((x) => x.slug === `mh-scholarship-${cls}`);
+      expect(e?.noPublicContent).toBe(true);
+      expect(e?.hasMocks).toBe(false);
+    }
+  });
+
+  it("MH Scholarship Class 4 and 7 have notes, one set per class (owner, 2026-11-21: separate notes per class, Intelligence Test + Maths)", () => {
+    expect(getExamBySlug("mh-scholarship-4")?.notesPath).toBe("/notes/mh-scholarship-4");
+    expect(getExamBySlug("mh-scholarship-7")?.notesPath).toBe("/notes/mh-scholarship-7");
+    expect(getExamBySlug("mh-scholarship-5")?.notesPath).toBeNull();
+    expect(getExamBySlug("mh-scholarship-8")?.notesPath).toBeNull();
+  });
+
+  it("groups AISSEE, RMS CET and RIMC as one family, split by class, all free school-tier defence exams (owner, 2026-11-17)", () => {
+    const rows: [string, string, string, string][] = [
+      ["aissee-6", "AISSEE Class 6", "AISSEE", "Class 6"],
+      ["aissee-9", "AISSEE Class 9", "AISSEE", "Class 9"],
+      ["rms-cet-6", "RMS CET Class 6", "RMS CET", "Class 6"],
+      ["rms-cet-9", "RMS CET Class 9", "RMS CET", "Class 9"],
+      ["rimc", "RIMC", "RIMC", "Class 8"],
+    ];
+    for (const [slug, examName, stage, label] of rows) {
+      const e = getExamBySlug(slug);
+      expect(e?.examName).toBe(examName);
+      expect([e?.family, e?.familyStage, e?.familyLabel, e?.familyAxis]).toEqual([
+        "Sainik & Military Schools",
+        stage,
+        label,
+        "Class",
+      ]);
+      expect(e?.tier).toBe("school");
+      expect(e?.goal).toBe("defence");
+      expect(e?.passScope).toBe("free");
+      expect(e?.practiceOnly).not.toBe(true);
+    }
   });
 
   it("default exam slug is one of the registered slugs", () => {
@@ -444,7 +539,7 @@ import { EXAM_TIERS, TIER_LABELS, type ExamTier } from "@/lib/exam/examContext";
 
 describe("exam tiers", () => {
   const EXPECTED: Record<ExamTier, string[]> = {
-    school: ["foundation-course", "mh-sb-9", "mh-ssc-10", "cbse-10", "icse-10", "spi"],
+    school: ["foundation-course", "mh-sb-9", "mh-ssc-10", "cbse-10", "icse-10", "up-board-10", "spi", "aissee-6", "aissee-9", "rms-cet-6", "rms-cet-9", "rimc", "homi-bhabha-6", "homi-bhabha-9", "mh-scholarship-4", "mh-scholarship-5", "mh-scholarship-7", "mh-scholarship-8"],
     senior: [
       "nda",
       "mht-cet",
@@ -454,6 +549,7 @@ describe("exam tiers", () => {
       "cbse-11",
       "cbse-12",
       "isc-12",
+      "up-board-12",
       "mh-sb-11",
       "mh-hsc-12",
       "ipmat-indore",
@@ -484,8 +580,10 @@ describe("exam tiers", () => {
       "ssc-cpo",
       "ugc-net",
       "rrb-ntpc",
+      "rrb-ntpc-undergraduate",
       "capf-ac",
       "rpsc-ras",
+      "gate-cs",
     ],
   };
 

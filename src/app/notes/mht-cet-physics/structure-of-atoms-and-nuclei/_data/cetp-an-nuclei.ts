@@ -16,6 +16,7 @@ export const NUCLEI_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-an-decay-law",
       name: "The Decay Law and Half-Life",
+      visualizationSlug: "imat-half-life-decay",
       intuition:
         "Each nucleus has the same chance λ per second of decaying, so the number left falls exponentially: N = N₀e^(−λt). After one half-life T½ = ln 2/λ half remain, after n half-lives (1/2)ⁿ. Activity, the decays per second, is A = λN and falls the same way, so two activities give λ directly: A/A₀ = e^(−λt). Two samples with decay constants λ₁ and λ₂ starting equal have N₁/N₂ = e^(−(λ₁ − λ₂)t). Read the question for 'decayed' or 'left': after 3 half-lives, 12.5% is left and 87.5% has decayed.",
       definition:

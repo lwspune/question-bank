@@ -14,6 +14,7 @@ export const TRIG_EQUATIONS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cettf-general-solutions",
       name: "General and Principal Solutions of sin θ = k, cos θ = k, tan θ = k",
+      visualizationSlug: "cet-unit-circle-solutions",
       intuition:
         "A trigonometric ratio repeats, so an equation like \\(\\sin\\theta = \\frac12\\) has infinitely many solutions. Find ONE angle that works (the principal value \\(\\alpha\\)), then add the repeat: tangent repeats every \\(\\pi\\), cosine is symmetric about 0, and sine is symmetric about \\(\\frac{\\pi}{2}\\), which is where the \\((-1)^n\\) comes from.",
       definition:
@@ -115,6 +116,7 @@ export const TRIG_EQUATIONS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cettf-a-cos-plus-b-sin",
       name: "a cos x + b sin x = c — the R Form, When a Solution Exists, and Roots as a Pair",
+      visualizationSlug: "trig-amplitude-phase",
       intuition:
         "\\(a\\cos x + b\\sin x\\) is a single wave in disguise: it equals \\(R\\cos(x - \\phi)\\) with \\(R = \\sqrt{a^2 + b^2}\\). So it can never exceed \\(R\\) in size, which answers every 'for which k does a solution exist' question, and once written as one cosine it solves by the ordinary pattern.",
       definition:

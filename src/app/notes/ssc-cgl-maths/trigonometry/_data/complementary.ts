@@ -12,6 +12,7 @@ export const SSC_TG_COMPLEMENTARY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssctgco-cofunction",
       name: "The co-function rule for complementary angles",
+      visualizationSlug: "cds-trig-right-triangle",
       intuition:
         "The two acute angles of a right triangle add to 90°, and the side opposite one of them is adjacent to the other. So the sine of one angle is the cosine of the other, and the same swap links tan with cot and sec with cosec.",
       definition:

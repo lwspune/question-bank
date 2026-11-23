@@ -1,12 +1,15 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { sendActivity } from "@/lib/activity/clientBeacon";
 import type { DownloadBox } from "@/lib/activity/clientEvents";
 import { trackFunnel } from "@/lib/analytics/trackFunnel";
 import { checkoutContactOptions } from "@/lib/billing/checkoutOptions";
 import { invalidatePulse } from "@/lib/viewer/usePulse";
+import { closePaddleCheckout, openPaddleCheckout, verifyPaddleTransaction } from "./paddleCheckout";
+import { claimOrder, useReturnCheck } from "./useReturnCheck";
+import { STUDENT_PENDING_KEY, browserStorage, forgetPendingOrder, rememberPendingOrder } from "@/lib/billing/pendingOrder";
 
 /** Minimal shape of the Razorpay Checkout global we use. */
 type RazorpayOptions = {
@@ -27,7 +30,7 @@ type RazorpaySuccess = {
   razorpay_order_id: string;
   razorpay_signature: string;
 };
-type RazorpayInstance = { open: () => void };
+type RazorpayInstance = { open: () => void; close?: () => void };
 declare global {
   interface Window {
     Razorpay?: new (opts: RazorpayOptions) => RazorpayInstance;
@@ -97,9 +100,10 @@ export function loadRazorpay(): Promise<void> {
 export type CheckoutOutcome = "paid" | "pending";
 
 /**
- * Razorpay checkout, shared by /pricing and the download box. Creates the
- * order (the ORDER is the contract: the server stamps price, scope and length
- * into it), opens Razorpay, verifies, and reports each step as a funnel event
+ * Checkout, shared by /pricing and the download box. Creates the order (the
+ * ORDER is the contract: the server stamps price, scope and length into it),
+ * opens the gateway the server chose (Razorpay, or Paddle for a Paddle plan
+ * since 0271), verifies, and reports each step as a funnel event
  * so a lost sale can be placed. `onDone` runs once money has been taken:
  * "paid" when access is granted now, "pending" when the webhook will grant it
  * (including a verify that refused or broke after payment).
@@ -130,6 +134,27 @@ export function useCheckout({
     loadRazorpay().catch(() => undefined);
   }, []);
 
+  // Back on the page after paying (a UPI app, a reload) with the success
+  // callback never run: the server grants the paid order and we finish here
+  // (2026-11-22, lib/billing/confirmOrder.ts).
+  const rzpRef = useRef<RazorpayInstance | null>(null);
+  const onDoneRef = useRef(onDone);
+  useEffect(() => {
+    onDoneRef.current = onDone;
+  }, [onDone]);
+  useReturnCheck({
+    endpoint: "/api/billing/check-order",
+    storageKey: STUDENT_PENDING_KEY,
+    onPaid: () => {
+      rzpRef.current?.close?.();
+      trackFunnel("checkout_paid", { surface, via: "return_check" });
+      toast.success(ebookSlug ? "Payment received. Your book is ready to download." : "Payment received. Access unlocked!");
+      setBusy(false);
+      invalidatePulse();
+      onDoneRef.current("paid");
+    },
+  });
+
   const start = useCallback(async () => {
     setBusy(true);
     // An ebook's checkout events name the book (2026-10-20), so a drop-off can be placed per book.
@@ -154,16 +179,17 @@ export function useCheckout({
       finish("pending");
     };
     try {
-      await loadRazorpay();
-      const Razorpay = window.Razorpay;
-      if (!Razorpay) return fail("Payment page didn't load. Try again in a moment.");
-
       const orderRes = await fetch("/api/billing/order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(ebookSlug ? { ebookSlug } : { planId, gate: GATE[surface], box }),
       });
       const order = (await orderRes.json()) as {
+        /** Which gateway the server chose for this plan and buyer (0271). */
+        provider?: "razorpay" | "paddle";
+        /** Paddle: the transaction our server created, and the browser token to open it. */
+        transactionId?: string;
+        clientToken?: string;
         orderId?: string;
         amount?: number;
         currency?: string;
@@ -174,9 +200,55 @@ export function useCheckout({
         contact?: string;
         error?: string;
       };
-      if (!orderRes.ok || !order.orderId || !order.keyId) {
-        return fail(order.error || "Could not start checkout");
+      if (!orderRes.ok) return fail(order.error || "Could not start checkout");
+
+      if (order.provider === "paddle") {
+        if (!order.transactionId || !order.clientToken) return fail("Could not start checkout");
+        const transactionId = order.transactionId;
+        // Paddle shows its own success screen; our verify runs behind it, then closes it.
+        let completed = false;
+        const dismiss = () => {
+          setBusy(false);
+          setDismissed(true);
+          trackFunnel("checkout_dismissed", funnelProps);
+          if (planId) sendActivity({ kind: "paywall_event", step: "checkout_dismissed", gate: GATE[surface], planId, box });
+        };
+        await openPaddleCheckout({
+          token: order.clientToken,
+          transactionId,
+          email: order.email,
+          onEvent: (e) => {
+            if (e.name === "checkout.completed" && !completed) {
+              completed = true;
+              void verifyPaddleTransaction(transactionId).then(({ result, error }) => {
+                closePaddleCheckout();
+                if (result === "paid") {
+                  trackFunnel("checkout_paid", funnelProps);
+                  toast.success("Payment successful. Access unlocked!");
+                  setBusy(false);
+                  finish("paid");
+                } else if (result === "pending") {
+                  trackFunnel("checkout_paid", funnelProps);
+                  toast.info(error || "Payment received. Access will activate shortly.");
+                  setBusy(false);
+                  finish("pending");
+                } else {
+                  paidButUnverified(error);
+                }
+              });
+            } else if (e.name === "checkout.closed" && !completed) {
+              dismiss();
+            }
+          },
+        });
+        trackFunnel("checkout_opened", funnelProps);
+        return;
       }
+
+      await loadRazorpay();
+      const Razorpay = window.Razorpay;
+      if (!Razorpay) return fail("Payment page didn't load. Try again in a moment.");
+      if (!order.orderId || !order.keyId) return fail(order.error || "Could not start checkout");
 
       const rzp = new Razorpay({
         key: order.keyId,
@@ -188,6 +260,9 @@ export function useCheckout({
         ...checkoutContactOptions({ email: order.email, contact: order.contact }),
         theme: { color: "#1d4ed8" },
         handler: async (resp) => {
+          // A return check may have finished this order already.
+          if (!claimOrder(resp.razorpay_order_id)) return;
+          forgetPendingOrder(browserStorage(), STUDENT_PENDING_KEY);
           try {
             const verifyRes = await fetch("/api/billing/verify", {
               method: "POST",
@@ -224,6 +299,8 @@ export function useCheckout({
         },
       });
       trackFunnel("checkout_opened", funnelProps);
+      rzpRef.current = rzp;
+      rememberPendingOrder(browserStorage(), STUDENT_PENDING_KEY, order.orderId, Date.now());
       rzp.open();
     } catch (err) {
       fail(err instanceof Error ? err.message : "Checkout failed");

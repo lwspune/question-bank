@@ -294,6 +294,66 @@ export const V_DAY_REPEAT_KEEP_PCT = 35;
 export const V_DAY_NEXT_STEP_KEEP_PCT = 25;
 
 /**
+ * "v-gift": keep V's gift if at least this share of the students shown the
+ * closed box open it (%). There is no before: the box is new. What students do
+ * with an opened gift (Activate, See your price, a pass bought with points) is
+ * reported beside it, not judged on: the trial and the points are each judged
+ * by their own experiment.
+ */
+export const V_GIFT_OPEN_KEEP_PCT = 50;
+
+/**
+ * "study-time-card": keep the Study time card's suggestion if at least
+ * STUDY_NEXT_TAP_KEEP_PCT of the students shown one tap it, and at least
+ * STUDY_NEXT_TIME_KEEP_PCT of shown suggestions get 10+ minutes on that chapter
+ * within 7 days. There is no before: the card is new, so how often a chapter
+ * gets time without the card is read beside it from students never shown one.
+ */
+export const STUDY_NEXT_TAP_KEEP_PCT = 15;
+export const STUDY_NEXT_TIME_KEEP_PCT = 30;
+
+/**
+ * "v-exam-countdown": keep the exam countdown in V's "Your day" card if at
+ * least this share of the days it shows lead to a drill or practice start from
+ * the card that day (%). Before (v-day-card, 16-21 Nov, measured 2026-11-21):
+ * a drill start from the card on 3 of 86 showings (3.5%), so the bar asks for a
+ * clear lift.
+ */
+export const V_EXAM_COUNTDOWN_KEEP_PCT = 10;
+
+/**
+ * "v-checkin": keep V's check-in if at least V_CHECKIN_ANSWER_KEEP_PCT of the
+ * students it asks tap an answer, and at least V_CHECKIN_PRACTISE_KEEP_PCT of
+ * its showings are followed by practice later that day: no worse than the
+ * card it replaces (7 of 10 "Since your last visit" cards after 4+ days away,
+ * 16-21 Nov, measured 2026-11-21). Students who open V are keen, so the bar
+ * is "no worse", not a lift.
+ */
+export const V_CHECKIN_ANSWER_KEEP_PCT = 40;
+export const V_CHECKIN_PRACTISE_KEEP_PCT = 70;
+
+/**
+ * "v-teach-chapter": keep the "Teach me" buttons if at least
+ * V_TEACH_CHAPTER_TAP_KEEP_PCT of the students shown one tap one, and at least
+ * V_TEACH_CHAPTER_ON_KEEP_PCT of the chapters V teaches from a tap get a second
+ * message from the student in that chat (they went on, asked, or tried). The
+ * nearest baseline: the stuck offer's Teach me the idea, tapped on 32 of 174
+ * offers (18%) in the 28 days to 2026-11-21. A button is a lighter ask than an
+ * offer at a stuck moment, so the bar is half of it.
+ */
+export const V_TEACH_CHAPTER_TAP_KEEP_PCT = 10;
+export const V_TEACH_CHAPTER_ON_KEEP_PCT = 30;
+
+/**
+ * "v-learn-first": keep Learn first in V's chapter lessons if at least this share
+ * of the Learn maps V shows lead the student to open a lesson from the map (%).
+ * Until the same day's second change (2026-11-22) it was Your turn answered; the
+ * map is now the whole reply, so opening a lesson is the step it asks for. No
+ * baseline (Learn's tab had 3 learners ever), so the bar is one map in three.
+ */
+export const V_LEARN_FIRST_OPEN_KEEP_PCT = 30;
+
+/**
  * "score-plan": keep "How to raise your score" if at least this share of the
  * fair full-paper attempts it shows on start the Fix list within a day (%).
  * Baseline with "What to fix next", 36 fair attempts (60 to 14 days before
@@ -331,6 +391,14 @@ export const CHECKOUT_NO_CONTACT_PAID_BASELINE_PCT = 25;
  * nudge (12 of 83).
  */
 export const CHECKOUT_RETURN_LATER_PAID_BASELINE_PCT = 14;
+/**
+ * "checkout-followup": of students who left a checkout unpaid (20 Oct to 12
+ * Nov, the follow-up's own rule), the share who paid within 7 days: 2 of 26
+ * with a mobile, 3 of 39 without. 8% both.
+ */
+export const CHECKOUT_FOLLOWUP_BASELINE_PCT = 8;
+/** Points the messageable group must beat the bar-only group by. */
+export const CHECKOUT_FOLLOWUP_KEEP_POINTS = 10;
 /**
  * "welcome-exam-confirm": of the 2,021 students who signed up in the 30 days
  * to 2026-11-12 (staff left out), the share who left /welcome with an exam
@@ -394,6 +462,21 @@ export const GULF_PRICE_MIN_SALES = 2;
 export const ENEM_STUDENTS_KEEP = 20;
 /** "enem-interest": ...of whom this many started a mock or answered 20+ questions. */
 export const ENEM_ACTIVE_KEEP = 5;
+/**
+ * "practice-trial": of students who met the answer limit on 3+ days from 13 Oct
+ * to 18 Nov 2026 with no trial, 4 of 67 (6%) bought a pass after their 3rd day.
+ */
+export const PRACTICE_TRIAL_BASELINE_PCT = 6;
+/**
+ * "v-intl": international students (an intl exam in target_exams) who ask V a
+ * question in 3 weeks, and of them who come back to V on a second day.
+ */
+export const V_INTL_ASKERS_KEEP = 10;
+export const V_INTL_RETURNERS_KEEP = 3;
+/** "practice-trial": keep at this share of offered students buying, or more. */
+export const PRACTICE_TRIAL_KEEP_PCT = 10;
+/** "practice-trial": switch off at this share or less. */
+export const PRACTICE_TRIAL_STOP_PCT = 3;
 /**
  * "answer-limit-copy": of students who met the answer limit in the 30 days to
  * 2026-11-11, the share who opened checkout from it (35 of 360) and who bought
@@ -467,6 +550,12 @@ export const TUTOR_PRICE_MIN_ANSWERS = 15;
  */
 export const CLASS_LEADS_PUNE_KEEP = 10;
 /**
+ * "me-class-offer": the share of students who saw a /me class card and said
+ * Yes with their number, for the card to stay. The /classes button brought 9
+ * leads in its first 6 days (0 SPI, 2 NDA).
+ */
+export const ME_CLASS_OFFER_YES_KEEP_PCT = 5;
+/**
  * "partner-courses": different students (accounts, else browsers; staff left
  * out) who tap a partner course on /store in 6 weeks, for the trial to be taken
  * to Defence Mania as a commission or coupon deal (owner, 2026-11-17).
@@ -529,6 +618,7 @@ export type Readout =
   | "chapter-fix"
   | "board-path"
   | "study-circle"
+  | "study-time-card"
   | "ugc-net"
   | "clat"
   | "v-follow-up-loop"
@@ -537,6 +627,11 @@ export type Readout =
   | "v-step-by-step"
   | "v-step-chips"
   | "v-day-card"
+  | "v-gift"
+  | "v-exam-countdown"
+  | "v-checkin"
+  | "v-teach-chapter"
+  | "v-learn-first"
   | "score-plan"
   | "stuck-offer"
   | "same-mistake"
@@ -546,6 +641,7 @@ export type Readout =
   | "answer-limit-copy"
   | "checkout-contact"
   | "checkout-return"
+  | "checkout-followup"
   | "welcome-exam-confirm"
   | "exam-guess-card"
   | "install-app"
@@ -556,7 +652,10 @@ export type Readout =
   | "gulf-price"
   | "enem-interest"
   | "offline-classes"
+  | "me-class-offer"
   | "play-games"
+  | "practice-trial"
+  | "v-intl"
   | "partner-courses";
 
 export type Experiment = {
@@ -1092,7 +1191,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     id: "stuck-offer",
     title: "Help after 3 of 4 wrong on a subtopic",
     change:
-      "On a bank question card, the answer that makes 3 of the student's last 4 on its subtopic wrong (3 of 3 counts) gets an offer: \"3 of your last 4 on Coulomb's Law were wrong. Want help with the idea behind it?\" with Teach me the idea (our notes for the subtopic, else V explains the concept), Try an easier one (an easy unanswered question from the subtopic) and Keep going. Once per streak, never in a mock. Since 2026-11-11 (no student had tapped Teach yet) the notes show \"Back to your question\", and the card comes back answered with \"Now try one\" (steps returned, try_after). From 2026-11-15 Teach me the idea opens the notes in a panel on the same page (owner), then offers Now try one like it; teach_close and full_notes recorded. Read offers before and after that date apart.",
+      "On a bank question card, the answer that makes 3 of the student's last 4 on its subtopic wrong (3 of 3 counts) gets an offer: \"3 of your last 4 on Coulomb's Law were wrong. Want help with the idea behind it?\" with Teach me the idea (our notes for the subtopic, else V explains the concept), Try an easier one (an easy unanswered question from the subtopic) and Keep going. Once per streak, never in a mock. Since 2026-11-11 (no student had tapped Teach yet) the notes show \"Back to your question\", and the card comes back answered with \"Now try one\" (steps returned, try_after). From 2026-11-15 Teach me the idea opens the notes in a panel on the same page (owner), then offers Now try one like it; teach_close and full_notes recorded. Read offers before and after that date apart. From 2026-11-22 (owner), where Learn teaches the topic, Teach me the idea opens Learn's lesson for it full screen instead (steps learn_open, learn_close), even where Learn would lock it; an MHT-CET or JEE topic no lesson is filed under opens V's Learn map for the chapter. Read Class 12 Maths offers before and after 2026-11-22 apart.",
     why: "30 days to 2026-11-10: 629 such moments by 267 students on bank and board practice, and 14% left right after (12% after a right answer). Every bank answer shows its solution, so these students had read three and still missed: the gap is the idea. Owner's idea.",
     metric:
       "Offers shown and each button (surface_viewed stuck_offer, metadata.action); whether the student answers again within 20 minutes; their next answers on that subtopic, right or wrong. Replaying the rule on 30 days of answers: about 540 offers to 215 students a month",
@@ -1178,14 +1277,98 @@ export const EXPERIMENTS: readonly Experiment[] = [
     id: "v-day-card",
     title: "V's \"Your day\" card, the first time a student opens V each day",
     change:
-      "The first time a signed-in student opens V on a new India day, a card stands in for V's greeting: their last day (answers, mistakes fixed, chapters that moved up; \"Since your last visit\" with the date after a gap, never the days missed), then one thing for today (the board plan's task, else Fix, starting with 5). A dot on V's button says it is waiting. No AI call. The mistakes notification now opens with \"Yesterday you fixed N.\" when there were fixes.",
+      "The first time a signed-in student opens V on a new India day, a card stands in for V's greeting: their last day (answers, mistakes fixed, chapters that moved up; \"Since your last visit\" with the date after a gap, never the days missed), then one thing for today (the board plan's task, else Fix, starting with 5). A dot on V's button says it is waiting (a red \"1\" badge from 2026-11-20, owner: the 12 px blue dot read as decoration). No AI call. The mistakes notification now opens with \"Yesterday you fixed N.\" when there were fixes. From 2026-11-21 the card carries the exam countdown in the last 60 days before the exam (experiment v-exam-countdown), and after 4+ days away V asks \"How's your study going?\" in its place, the card behind Going well (experiment v-checkin, v_day rows with metadata.checkin), so read its numbers before and after that date apart.",
     why: "\"How's my progress\" works once (55% of openers took a next step) but not as a habit: 7 of 31 opened it on a second day. Of 1,509 students active in the 28 days to 2026-11-15, 63% came on one day only and 34% of active days were followed by a visit the next day. A card waiting when they open V tests whether seeing their own day brings them back.",
     metric:
-      "surface_viewed 'v_day' (one a day per student, metadata.card yesterday | since | fresh): students shown it and the share shown it on 2+ days; Vercel v_day_tap by action; drill_started from v_day the same day; next-day return of students shown it against the 34% of all active days. Read with scripts/chat/day-card-readout.sql",
+      "surface_viewed 'v_day' (one a day per student, metadata.card yesterday | since | fresh): students shown it and the share shown it on 2+ days; Vercel v_day_tap by action; drill_started from v_day the same day; next-day return of students shown it against the 34% of all active days. From 2026-11-20 the badge seen is recorded (surface_viewed 'v_day_badge', one a day): read badge days followed by a card that day, and read the card numbers before and after 2026-11-20 apart. Read with scripts/chat/day-card-readout.sql",
     rule: `Keep it if ${V_DAY_REPEAT_KEEP_PCT}%+ of the students shown it see it on 2+ days and ${V_DAY_NEXT_STEP_KEEP_PCT}%+ of showings lead to a tap that day. Students who open V are keener than most, so next-day return is reported beside, not judged on.`,
     liveSince: "2026-11-15",
-    windowDays: 14,
+    windowDays: 28,
     readout: "v-day-card",
+    status: "running",
+  },
+  {
+    id: "v-gift",
+    title: "V tells a student about what they have earned, as a gift",
+    change:
+      "When a student has earned the 7-day pass (the answer limit's offer, on its day) or reaches 10, 20, 30 or 40 Vault Points, V's button shows a red badge and V opens with \"I have a gift for you.\" and a closed box. Open your gift shows what it is and why: the 7-day pass with the same Activate as the limit card, or the points' discount with See your price. Nothing new is given away. Each gift shows once (an unopened one waits 3 days); a points milestone may come back once the points have run out and been earned again. www only, never with an active pass.",
+    why: "The owner (2026-11-21): make V feel more human and the conversation more interesting. Both rewards already exist but are met on a card or a menu line; told by V as a gift, with the reason, they may feel earned rather than sold.",
+    metric:
+      "surface_viewed 'v_gift' (one a day per student, gift and step): students who saw the badge, were shown the box, opened it, and tapped its button (activate | pricing); trials activated from V; passes bought with points within 7 days of opening a points gift. scripts/chat/gift-readout.sql",
+    rule: `Keep it if ${V_GIFT_OPEN_KEEP_PCT}%+ of the students shown the box open it. Activations and purchases are reported beside, not judged on: the practice-trial and fix-points experiments judge those.`,
+    liveSince: "2026-11-21",
+    windowDays: 28,
+    readout: "v-gift",
+    status: "running",
+  },
+  {
+    id: "study-time-card",
+    title: "Study time on Home, and in V",
+    change:
+      "Home gets a Study time card under the Today card: today (or the last day studied) and the last 7 days, split into practice, mocks and reading, by subject and by chapter, a \"More than your usual day\" line only when today is above it, and the subject with the most time set beside its share of the marks in the past papers. This week ends with one suggestion: the chapter worth the most marks that got no time this week and is not strong yet. Hidden under 15 minutes in the week. V's \"Your day\" card gains \"Studied 42 min, most on X\" and \"How's my progress\" two rows (the week's time, and the chapter the paper wants). Time comes from the study clock (migration 0277) and the mock's own time per question (0278).",
+    why: "The owner (2026-11-21): show students how long they study, by exam, subject and chapter, daily and weekly. Nothing measured practice and reading time before the clock. Seeing their own time, and where it sits against the paper, may move time to the chapters the paper rewards.",
+    metric:
+      "surface_viewed 'study_time' (metadata.action seen | week | next_shown | next_tap, next_* with metadata.chapterId, once a day each): students shown the card, This week opened, suggestions shown and tapped; for each shown suggestion, study_time on that chapter in the 7 days after (10+ minutes), against chapters of the same weight never suggested. scripts/study-time/readout.sql",
+    rule: `Keep the suggestion if ${STUDY_NEXT_TAP_KEEP_PCT}%+ of the students shown one tap it and ${STUDY_NEXT_TIME_KEEP_PCT}%+ of shown suggestions get 10+ minutes on that chapter within 7 days. The card's numbers stay either way: they are the student's own record.`,
+    liveSince: "2026-11-21",
+    windowDays: 28,
+    readout: "study-time-card",
+    status: "running",
+  },
+  {
+    id: "v-exam-countdown",
+    title: "The exam countdown in V's \"Your day\" card",
+    change:
+      "In the last 60 days before a student's exam, V's \"Your day\" card adds an amber row: \"NDA 2027 (I) is 30 days away. Big chapters where you still lose marks:\" with up to 3 of the exam's 5 biggest chapters (most marks a paper in the published papers) that still have mistakes waiting, and the day's step is Fix that chapter. With none waiting there, the 3 biggest chapters and Practise the first; in the last 7 days, one full paper under exam time. A date not yet announced says \"is expected around\". The board plan's task keeps the main button. Every first visit of those days, not only on milestone days.",
+    why: "The owner (2026-11-21) wanted V to say the exam is getting close, personalised (version 1c). The engagement rules prefer a deadline to a daily streak, and the card was already where a student starts the day: 63% of students come on one day only, so a milestone-day message would mostly be missed.",
+    metric:
+      "surface_viewed 'v_day' with metadata.exam fix | top | mock: showings of each, and the share followed the same day by a drill start from v_day, or on mock days a mock started; a top day's Practise goes to the bank, so read it as Vercel v_day_tap action exam. scripts/chat/exam-countdown-readout.sql",
+    rule: `Keep it if ${V_EXAM_COUNTDOWN_KEEP_PCT}%+ of the days it shows lead to a start from the card that day (before: 3 of 86 card showings, 3.5%, led to a drill start, 16-21 Nov). Under that, drop the row and keep the card as it was.`,
+    liveSince: "2026-11-21",
+    windowDays: 28,
+    readout: "v-exam-countdown",
+    status: "running",
+  },
+  {
+    id: "v-teach-chapter",
+    title: "\"Teach me\" a chapter with V, starting from the student's mistakes",
+    change:
+      "Three buttons open V with \"Teach me <chapter> for <exam>. Start from what I got wrong.\": Teach me beside Fix in /me's \"Your weak spots\", Teach me this beside Practise this on the mock result (both cards), and Teach me a chapter among V's own buttons, which offers the chapters with most mistakes waiting. V's chapter_overview now reads the student's waiting mistakes (the Fix list's), counts them by notes part, starts at the part holding most, and uses the latest one as its worked example. Shown only while V can explain (the explain switch). Lesson update (2026-11-21, owner, to match the mockup): the map is a card with the mistakes in each part, a question to try (\"Your turn\") sits under the reply, and three buttons (Go on, Explain more simply, Open the notes) stand in for V's own while a lesson is the latest reply; Go on asks chapter_overview for the next part by number.",
+    why: "674 students had a day with 3+ wrong answers in one chapter in the 28 days to 2026-11-21, and only 4 asked V to teach a chapter: nobody knew it could. Ask V under a question card, which says exactly what V will do, sends about half of all V messages. The owner approved the places in a mockup (2026-11-21). The card's own spot waits for the stuck-offer readout (one line per answer).",
+    metric:
+      "surface_viewed 'teach_chapter' (action shown / tap, metadata.from me_weak, mock_result, v_button, v_pick; once a day each): taps over students shown, per place; then the chats a tap opened (chat_interactions message starting \"Teach me \") and whether the student sent a second message there. scripts/chat/teach-chapter-readout.sql. The lesson buttons log as from lesson_go_on, lesson_simpler and lesson_notes: a second message sent by a button is counted apart from a typed one, so the buttons cannot pass the second-message bar on their own.",
+    rule: `Keep a place if ${V_TEACH_CHAPTER_TAP_KEEP_PCT}%+ of the students shown its button tap it, and keep the whole idea if ${V_TEACH_CHAPTER_ON_KEEP_PCT}%+ of the chapters taught from a tap get a second message from the student. A place under the tap bar goes; under the second bar, read the replies before changing anything.`,
+    liveSince: "2026-11-21",
+    windowDays: 28,
+    readout: "v-teach-chapter",
+    status: "running",
+  },
+  {
+    id: "v-learn-first",
+    title: "V teaches a chapter from Learn's lessons wherever Learn teaches it",
+    change:
+      "Where Learn teaches the chapter (CBSE and HSC Class 12 Maths, and the Class 12 chapters of MHT-CET and JEE Mains Maths: 57 chapter links), V's Teach me lesson shows Learn's lessons as the map, each with the student's Learn progress (Done, n of 3, New) and their mistakes on the lesson to start with. SECOND CHANGE THE SAME DAY (owner, 2026-11-22, third iteration): the map is the whole reply. Tapping a lesson plays Learn's own lesson full screen over V (slides, questions, progress saved), even where Learn would lock it; V writes one line and teaches nothing; the Your turn card and the lesson's Go on / Explain more simply / Open buttons are gone on Learn chapters. Every other chapter keeps the notes lesson. BEFORE IT WENT LIVE (owner, 2026-11-23): NDA Maths joined, all 31 chapters (Concept Ladder's NDA course, 368 lessons, Class 11 and 12), so NDA's Teach me moved from the notes lesson to the Learn map; read NDA apart from the Class 12 courses.",
+    why: "The owner (2026-11-22): \"Learn was designed for this only\", \"give Learn priority wherever it's available\", then \"let Learn concepts run as it is, full screen, in V\": the lesson itself, not V's retelling of it. Learn's 254 lessons had 3 learners ever (last on 2026-11-04): nothing led students there. About 220 students answered a Maths question in these four exams in the 30 days to 2026-11-22.",
+    metric:
+      "surface_viewed 'teach_chapter' with metadata.from lesson_learn (action shown: a Learn map in V; tap: a lesson opened from it), then surface_viewed 'learn_start' (the lesson begun: its first move) the same day, and Learn answers (learn_attempts). scripts/chat/learn-first-readout.sql",
+    rule: `Keep Learn first if ${V_LEARN_FIRST_OPEN_KEEP_PCT}%+ of the Learn maps V shows lead to a lesson opened from the map. Under it, read how far opened lessons got (begun, a question answered) before changing anything.`,
+    liveSince: "2026-11-22",
+    windowDays: 28,
+    readout: "v-learn-first",
+    status: "running",
+  },
+  {
+    id: "v-checkin",
+    title: "V asks \"How's your study going?\" after 4+ days away",
+    change:
+      "The first time a student opens V after 4 or more days without answering anything, V asks \"Good to see you. How's your study going?\" with three taps, in place of the \"Your day\" card that day. Going well shows the card. Stuck on a chapter names the two chapters with the most mistakes waiting (or lets them type one to V), then that chapter's notes and its Fix. Short on time offers Fix 5 mistakes (else the chapter that carries the most marks). It never counts the days away. No AI call.",
+    why: "The owner (2026-11-21) wanted V to ask how a student's study is going. A return after a gap is when a student most needs a small first step, and the answers say how returning students feel, which nothing measured before. 786 returns after 4+ days in the 28 days to 2026-11-21.",
+    metric:
+      "surface_viewed 'v_checkin' (once a day each: shown, well, stuck, short, chapter, other, go): the share of students asked who tap an answer, the split of answers, and practice later that day (question_practiced, drill_started or mock_started after the question) against the card it replaces on the same kind of day (v_day card 'since' after 4+ days away, before 2026-11-21: 7 of 10). scripts/chat/checkin-readout.sql",
+    rule: `Keep it if ${V_CHECKIN_ANSWER_KEEP_PCT}%+ of the students asked tap an answer and ${V_CHECKIN_PRACTISE_KEEP_PCT}%+ of showings are followed by practice that day (the card it replaces: 7 of 10). Under either, return to the card. Small numbers (about 10 a week open V on such a day), so a rough read.`,
+    liveSince: "2026-11-21",
+    windowDays: 28,
+    readout: "v-checkin",
     status: "running",
   },
   {
@@ -1334,7 +1517,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     id: "fix-points",
     title: "Vault Points: fix a mistake, take 1% off the pass",
     change:
-      "Each question a student gets right after missing it on an earlier day earns a Vault Point (called a fix point until 9 Nov), worth 1% off a rupee pass, up to 40%. Points last 30 days and a purchase starts them again. Every offer card and /pricing show the lower price; the drill, Review, /me and the avatar menu show the points with their value (/me and the avatar from 9 Nov, to pass holders too).",
+      "Each question a student gets right after missing it on an earlier day earns a Vault Point (called a fix point until 9 Nov), worth 1% off a rupee pass, up to 40%. Points last 30 days and a purchase starts them again. Every offer card and /pricing show the lower price; the drill, Review, /me and the avatar menu show the points with their value (/me and the avatar from 9 Nov, to pass holders too). From 2026-11-21 V tells a student without a pass who reaches 10, 20, 30 or 40 points about them as a gift inside V (experiment v-gift).",
     why: "The owner's call (9 Nov), against the data: of 33 buyers, none had fixed 10+ mistakes before paying, and 18 paid on their first day. The bet is that a reward makes students fix more mistakes and turns some of the learners who never pay into buyers.",
     metric:
       "Graded fixes per active student (fix_points_readout, the award's own rule) in the 30 days after against the 30 days before (baseline 9 Nov: 792 fixes by 138 of 1,312 active students, 0.60 each), and passes sold with points (entitlement note fix_points:<n>)",
@@ -1435,7 +1618,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     id: "offline-classes",
     title: "Offline classes in Pune: who asks for a call?",
     change:
-      "The header's Tutor button became Classes. /classes asks which course (NDA, CDS, AFCAT, MHT-CET, JEE, 10th Board, 12th Board, SSC CGL; one or more), Pune or another city (Pune first), an optional name and a mobile with consent, and promises a call within 2 days. Anyone can send it, signed in or not; one lead per mobile. Leads are listed Pune first on /dashboard/classes with WhatsApp, a Called tick and a CSV.",
+      "The header's Tutor button became Classes. /classes asks which course (NDA, CDS, AFCAT, MHT-CET, JEE, 10th Board, 12th Board, SSC CGL; one or more), Pune or another city (Pune first), an optional name and a mobile with consent, and promises a call within 2 days. Anyone can send it, signed in or not; one lead per mobile. Leads are listed Pune first on /dashboard/classes with WhatsApp, a Called tick and a CSV. 2026-11-23 (owner): the button left the header for the avatar menu (\"Offline classes\", students only, taps still classes_link_click with from=menu) and a lead now needs an account (the form shows a sign-in step; the route refuses signed-out posts). In its first 7 days the header brought ~11 leads (3 Pune), 5 of them signed out. Read leads before and after 2026-11-23 apart.",
     why: "The owner runs offline classes in Pune and wants to fill them. The 1:1 tutoring check showed demand, but mostly for online tutoring and from outside Pune (15 of about 3,050 student profiles name Pune), so this asks for something the team can act on: a number to call about a named course.",
     metric:
       "Leads per week from class_interest (migration 0265), Pune vs other, by course; header Classes taps (classes_link_click) in Vercel by hand. Read with the team: of the Pune leads called, how many came for a demo or joined. A Play button went up beside Classes on its first day (play-games, 2026-11-16) and \"PYQ Vault\" hides on phones from then, so the whole window shares the header with it",
@@ -1446,13 +1629,27 @@ export const EXPERIMENTS: readonly Experiment[] = [
     status: "running",
   },
   {
+    id: "me-class-offer",
+    title: "Ask on Home: offline classes for the student's exam",
+    change:
+      "Home (/me) shows one card below Today: Class 10 students (SPI or a Class 10 board in their exams; stage Class 9-10 alone does not count) are asked \"Are you looking for an SPI crash course? We run one offline in Pune.\", and NDA students \"Are you looking for offline NDA classes? We run them in Pune.\" Yes asks for the mobile (filled in from the account), Pune or another city and consent, and the lead joins /dashboard/classes (courses added to any earlier lead on that number); No hides it for good; Know more opens the exam's pattern-and-syllabus page (/exams/<exam>/syllabus, only once one is published) and the card stays. A Class 10 student who also targets NDA is asked about SPI first, then NDA. 2026-11-23 (owner, migration 0285): widened to MHT-CET, JEE, CDS, AFCAT, 12th Board and SSC CGL, and ONE card per student ever: the course for the exam in focus (else their first exam, else the first other exam with a course); any Yes or No, or a /classes lead, ends it. On the same day the header Classes button moved to the avatar menu, so this card is now the main way students meet the classes. The readout before 2026-11-23 covers SPI and NDA only (7 shown, 1 Yes).",
+    why: "The owner wants to fill an SPI crash course and offline NDA classes in Pune. The header Classes form waits to be found (9 leads in 6 days, 0 for SPI); asking the students who fit, where they already are, may find the ones who would come. About 123 Class 10 students and 405 NDA students had signed in by 2026-11-22.",
+    metric:
+      "Per card: students who saw it (class_offer_answers.shown_at, migration 0282), Know more taps (more_at), Yes and No; Yes leads by Pune vs other (class_interest, from_section 'me'). scripts/classes/me-offer-readout.sql. Read with the team: of the Pune leads called, how many came for a demo or joined",
+    rule: `Per card, keep it if ${ME_CLASS_OFFER_YES_KEEP_PCT}%+ of the students who saw it say Yes with a number, or it brings 3+ Pune leads in 4 weeks; otherwise take the card off and keep /classes alone.`,
+    liveSince: "2026-11-22",
+    windowDays: 28,
+    readout: "me-class-offer",
+    status: "running",
+  },
+  {
     id: "play-games",
     title: "Play: a calculation game in the header",
     change:
       "A Play button in the header (after Ebooks and Classes) opens /play: 60-second rounds of whole-number sums in 8 levels (add and subtract to 20, tables, division, two-digit sums, tables to 20, bigger times and divide, order of operations, two-digit times two-digit). A level is cleared by enough right answers at 80%+ and opens the next. Fun without rankings: a combo, a personal best and a race against your own best round. Anyone can play; progress is kept in the browser. To fit Play on a 360 px phone the words \"PYQ Vault\" now hide below 640 px (logo stays) and the header pills are 4 px narrower.",
     why: "The owner sees students slip on everyday calculation in class, and studying is a chore, so a game may bring them back. The real question is whether it brings them back to STUDY, not just to the game.",
     metric:
-      "Signed-in students with a play_round (migration 0267), rounds each, levels cleared; for players, study days (mocks, drill, bank answers) in the 7 days after their first round vs the 7 days before (scripts/play/readout.sql). Header Play taps (play_link_click) and every round signed in or out (play_round_end) in Vercel by hand. Classes and Ebooks are header buttons too: read their taps across 2026-11-16 with care",
+      "Signed-in students with a play_round (migration 0267), rounds each, levels cleared; for players, study days (mocks, drill, bank answers) in the 7 days after their first round vs the 7 days before (scripts/play/readout.sql). Header Play taps (play_link_click) and every round signed in or out (play_round_end) in Vercel by hand. Classes and Ebooks are header buttons too: read their taps across 2026-11-16 with care. From 2026-11-17 /play is a hub (a ring of subjects) and the maths game moved to /play/maths, one tap further from the header; two English word games joined it (play_round with metadata.game word_builder or daily_word). Every game counts as playing; the readout also splits players by game. Read across 2026-11-17 with care. From 2026-11-18 /play is seven arcade games (Number Rain replaces the speed game at /play/maths; Word Builder is gone; play_round metadata.game number_rain, word_groups, daily_word, launch, element_hunt, timeline, pin_it), so read across 2026-11-18 with care too. From the deploy after 2026-11-23 Number Rain and Launch changed after the first rounds showed early drop-off: Number Rain got a gentle start, slower two-digit worlds (15 s+, at most 4 sums on screen for the first 10) and 3 stars a world; Launch keeps earlier shots on screen, aims by pulling back, shows aim help on levels 1-5, and shots never run out, so a Launch play_round is now one go at a level (reported on the hit, or as a miss when the player leaves the level) where it was 3 shots: read Launch rounds and clear rates across that deploy with care",
     rule: `Read once ${PLAY_PLAYERS_MIN}+ signed-in students have played. Keep Play in the header if players' study days after their first round are at least the days before (median) and a quarter or more play on 2+ days; if study days fall, the game is replacing study: move it off the header. Below ${PLAY_PLAYERS_MIN} players at the check, take the button out and link /play from mock results only.`,
     liveSince: "2026-11-16",
     windowDays: 28,
@@ -1466,9 +1663,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
       "The header's Ebooks button became Store, and /store got a shelf per exam for online courses of our offline partner Defence Mania: CDS 1 2027 Sikandar 3.0 (starts 5 Dec) and the AFCAT 1 2027 Crash Course (starts 20 Dec), ₹1,999 each. A card says it is the partner's course and opens their site in a new tab, through our own tap link (/api/partner-course/[id]) with UTM tags. A CDS or AFCAT student sees their course shelf first; others find it under their other exams.",
     why: "Students buy online courses (Testbook earns this way), and 75 of 88 tutoring Yes answers wanted ONLINE teaching. Linking a partner's courses tests that demand without recording any video. Nothing is agreed with the partner yet; taps decide whether to ask for a commission or coupon deal.",
     metric:
-      "Taps per course from partner_course_clicks (migration 0269): different students (account when signed in, else the browser's qb_vid), signed in vs out, per exam, staff left out (scripts/partner-courses/readout.sql). For scale, store visits and ebook buy taps over the same weeks (ebook-store). The rename from Ebooks to Store went out the same day, so read header store taps (ebook_store_link_click) across 2026-11-17 with care",
+      "Taps per course from partner_course_clicks (migration 0269): different students (account when signed in, else the browser's qb_vid), signed in vs out, per exam, staff left out (scripts/partner-courses/readout.sql). For scale, store visits and ebook buy taps over the same weeks (ebook-store). The rename from Ebooks to Store went out the same day, so read header store taps (ebook_store_link_click) across that deploy with care",
     rule: `Take it to Defence Mania as a commission or coupon deal if ${PARTNER_COURSE_TAPPERS_KEEP}+ different students tap a course in 6 weeks; below that, take the course shelves down and keep the Store name.`,
-    liveSince: "2026-11-17",
+    liveSince: "2026-11-23",
     windowDays: 42,
     readout: "partner-courses",
     status: "running",
@@ -1537,11 +1734,25 @@ export const EXPERIMENTS: readonly Experiment[] = [
       "A student who opened a pass checkout and did not pay sees a bar under the header on the first page they open on a later day: \"Your checkout didn't complete. The Practice Pass gives you unlimited practice for 6 months, and the more questions you practise, the more marks you get.\" with Complete payment (Razorpay in place, their own price), Ask a parent to pay and Not now. Up to 2 days within 7 days of the checkout; Not now or a payment stops it.",
     why: "45 days to 2026-11-12: 110 students opened checkout, 71 never paid, and 43 of those 71 came back on their own (27 the next day). Nothing reminded them. Owner's wording: practice is what improves the score.",
     metric:
-      "Students who left a checkout unpaid, and the share who paid on a later day; the bar's chain from paywall_event gate return: shown, then checkout_opened, then paid",
+      "Students who left a checkout unpaid, and the share who paid on a later day; the bar's chain from paywall_event gate return: shown, then checkout_opened, then paid. From 2026-11-19 the owner also WhatsApps students with a mobile (checkout-followup, owner's choice to start before this readout), so read the bar on students WITHOUT a mobile too: only the bar reaches them",
     rule: `Keep it if more than ${CHECKOUT_RETURN_LATER_PAID_BASELINE_PCT}% of students who leave a checkout pay on a later day (12 of 83 before, with no reminder).`,
     liveSince: "2026-11-13",
     windowDays: 28,
     readout: "checkout-return",
+    status: "running",
+  },
+  {
+    id: "checkout-followup",
+    title: "The owner WhatsApps students who left a checkout unpaid",
+    change:
+      "At 18:00 IST the owner gets one email listing every student who opened a pass checkout in the last 24 hours and did not pay (once per student per 14 days, staff and intl passes left out), with where they met the offer, the reason they tapped, and a WhatsApp link that opens with a message typed: who they are, the pass and price, an offer to help, and the student's parent pay link. Students with no mobile are listed by email. The owner sends each by hand.",
+    why: "20 Oct to 12 Nov, 65 students left a checkout unpaid (26 with a mobile) and only 5 paid within 7 days. The bar (checkout-return) is the automatic reminder; a personal message from the founder answers the question or the parent problem the bar cannot.",
+    metric:
+      "Of students listed, the share who pay a pass within 7 days of leaving, those WITH a mobile (messageable) against those WITHOUT (bar only, same period), so the bar's effect cancels out. Before: 2 of 26 with a mobile, 3 of 39 without (8% each). scripts/billing/checkout-followup-readout.sql",
+    rule: `Read at 4 weeks. It worked if students with a mobile pay at ${CHECKOUT_FOLLOWUP_KEEP_POINTS}+ points above students without one (both were ${CHECKOUT_FOLLOWUP_BASELINE_PCT}% before). Small numbers (about 1 messageable student a day), so a rough read.`,
+    liveSince: "2026-11-19",
+    windowDays: 28,
+    readout: "checkout-followup",
     status: "running",
   },
   {
@@ -1657,7 +1868,34 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "enem-interest",
     status: "running",
   },
-
+  {
+    id: "practice-trial",
+    title: "A 7-day Practice Pass on the 3rd day at the limit",
+    change:
+      "On a student's 3rd day at the daily answer limit, the wall offers a free 7-day Practice Pass instead of the Rs 199 offer (\"You are doing well. Here is your 7-day practice pass.\"). Nothing is granted until they tap Activate; the offer shows on 3 days at the limit at most, once per account, never to anyone who has held a pass. After it ends, the wall adds how many questions they answered in it (migration 0273). From 2026-11-21 V also tells an offered student about it as a gift inside V (experiment v-gift), with the same Activate: read the trial numbers before and after that date apart; a trial activated from V is recorded as surface_viewed 'v_gift' action activate.",
+    why: "12 of 20 pass sales from 3 to 18 Nov came within a day of a student's first day at the limit, so a trial earlier would give that moment away. Past the 3rd day only 4 of 46 buyers in six weeks had paid, while 63 students had met the limit on 3+ days and never bought. The owner asked for a trial (2026-11-18); a reverse trial lets them feel what the pass removes.",
+    metric:
+      "Of students offered (practice_trial_offers), the share who tap Activate (entitlements source 'trial') and the share who buy a pass (source 'razorpay') within 14 days of their trial ending, against 4 of 67 (6%) before; plus all pass sales against the weeks before, in case earlier buyers start waiting. scripts/billing/practice-trial-readout.sql. The free limits were cut at 19:32 IST on 2026-11-21 (answers 15 to 10 a day, drill 10 to 5, mocks 3 to 1, chapter tests 5 to 3; owner): students reach their 3rd limit day sooner and more of them qualify, and the 6% baseline was measured at 15, so read students offered before and after that time apart (before it: 15 offered, 8 activated)",
+    rule: `Read at 6 weeks. Keep if ${PRACTICE_TRIAL_KEEP_PCT}%+ of offered students buy, switch it off at ${PRACTICE_TRIAL_STOP_PCT}% or less (at /dashboard/pricing), in between run 4 more weeks. Small numbers (about 13 students a week), so a rough read.`,
+    liveSince: "2026-11-19",
+    windowDays: 42,
+    readout: "practice-trial",
+    status: "running",
+  },
+  {
+    id: "v-intl",
+    title: "V on the international site",
+    change:
+      "V shows on intl.pyqvault.com, told only what is true there: IMAT and ENEM, the IMAT pass paid by card through Paddle (rupees for a buyer in India), intl's own pages, and replies in the student's language. Build a practice test stays www-only.",
+    why: "From 30 Oct V was hidden on intl while its Ask V buttons still sent: 3 IMAT students tapped, V answered, and they saw nothing (one tapped five times and hit the hourly limit). They were asking for it.",
+    metric:
+      "International students (an intl exam in student_profiles.target_exams) who sent V a typed question since it went live, how many came back to V on a second day, and their hourly-limit hits. scripts/chat/v-intl-readout.sql",
+    rule: `Read at 3 weeks. Keep V on intl and give it more intl work (an IMAT practice-test builder) if ${V_INTL_ASKERS_KEEP}+ international students ask it something and ${V_INTL_RETURNERS_KEEP}+ come back on a second day. Fewer: leave V on (it costs little) and add nothing more for intl.`,
+    liveSince: "2026-11-19",
+    windowDays: 21,
+    readout: "v-intl",
+    status: "running",
+  },
 ];
 
 export type DecidedAgainst = { title: string; decision: string; on: string; why: string };

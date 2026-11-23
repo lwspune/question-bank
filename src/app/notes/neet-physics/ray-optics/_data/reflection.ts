@@ -12,6 +12,7 @@ export const NEET_PH_RO_REFLECTION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphro-mirrors",
       name: "Reflection and spherical mirrors",
+      visualizationSlug: "opt-concave-mirror-rays",
       intuition:
         "Light bounces off a smooth surface at the same angle at which it arrives. A smooth surface keeps the rays in order, so they can meet again and form an image. A rough wall also reflects light, but scatters it in all directions, so it shows no image. A curved mirror is a small piece of a sphere: a concave mirror brings parallel rays together at its focus, a convex mirror spreads them out as if they came from a focus behind it.",
       definition:
@@ -130,6 +131,7 @@ export const NEET_PH_RO_REFLECTION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphro-tir",
       name: "Critical angle and total internal reflection",
+      visualizationSlug: "opt-refraction-tir",
       intuition:
         "Going from glass into air, light bends away from the normal. Tilt the ray more and more, and the refracted ray bends until it skims along the surface. That angle of incidence is the critical angle. Tilt any further and no light gets out at all: all of it is reflected back into the glass. This is total internal reflection.",
       definition:

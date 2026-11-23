@@ -71,6 +71,7 @@ export const NEET_ZO_RH_INFERTILITY_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nzorh-transfers",
       name: "ZIFT, IUT, GIFT, ICSI and artificial insemination",
+      visualizationSlug: "neet-art-transfers",
       intuition:
         "Each method has a short name that tells you what is moved and where it goes. Z means a zygote, G means a gamete, IU means into the uterus, and IF means into the fallopian tube. Count the cells too: an embryo of up to 8 cells goes to the tube, and a bigger one goes to the uterus. Match the name to the thing moved and the place, and the question is done.",
       definition:

@@ -6,6 +6,7 @@
  * bank chapter.
  */
 import { slugify } from "@/lib/board/query";
+import { isBoardExam } from "@/lib/exam/examContext";
 import { slugifyName } from "@/lib/questions/slugs";
 
 /** `<course>/<course chapter slug>` → the bank chapter's name, where it differs from the Learn title. */
@@ -38,11 +39,12 @@ const BANK_SUBJECT = "Mathematics";
 /**
  * Where a Learn chapter's practice lives in PYQ Vault: its textbook chapter in the board reader and
  * its past-questions page, both addressed by the bank chapter's name (each route's own slug rule).
+ * An exam with no board reader (NDA) has no textbook link.
  */
-export function bankChapterLinks(exam: string, course: string, chapter: { slug: string; title: string }): { board: string; questions: string } {
+export function bankChapterLinks(exam: string, course: string, chapter: { slug: string; title: string }): { board: string | null; questions: string } {
   const name = bankChapterName(course, chapter);
   return {
-    board: `/board/${exam}/${slugify(BANK_SUBJECT)}/${slugify(name)}`,
+    board: isBoardExam(exam) ? `/board/${exam}/${slugify(BANK_SUBJECT)}/${slugify(name)}` : null,
     questions: `/questions/${exam}/${slugifyName(BANK_SUBJECT)}/${slugifyName(name)}`,
   };
 }

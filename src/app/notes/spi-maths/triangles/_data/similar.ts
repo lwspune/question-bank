@@ -6,7 +6,7 @@ export const SPI_TR_SIMILAR_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Similar triangles have the same shape: equal angles and every side multiplied by the same number, and a line parallel to one side, or a line bisecting an angle, cuts the other sides in a fixed ratio.",
   whyItMatters:
-    "Eleven questions in the bank: seven EASY, two MODERATE and the chapter's two HARD ones. Nearly all come down to one proportion. The marks go when the wrong sides are paired, so the order of letters from the congruence page matters even more here.",
+    "Twelve questions in the bank, one from the 2026 paper: eight EASY, two MODERATE and the chapter's two HARD ones. Nearly all come down to one proportion. The marks go when the wrong sides are paired, so the order of letters from the congruence page matters even more here.",
   concepts: [
     {
       kind: "reference" as const,
@@ -45,7 +45,7 @@ export const SPI_TR_SIMILAR_NOTE: SubtopicNote = {
         { prompt: "Are any two equilateral triangles similar?", answer: "Yes, all their angles are \\(60^\\circ\\)." },
         { prompt: "Name the three similarity criteria for triangles.", answer: "AA (AAA), SSS and SAS" },
       ],
-      pyqExampleId: "e72f5381-aaec-44af-8fa0-4639b1e95f30",
+      pyqExampleId: "46766a87-ddaf-49c7-be12-a596a065b307",
       traps: [
         {
           title: "Finding the angle at the wrong corner",

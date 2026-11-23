@@ -80,6 +80,7 @@ describe.skipIf(!HAS_ENV)("upload flow — parse, validate, commit, idempotent",
       filename: "good.xlsx",
       createdBy: adminUserId,
       rows: valid.map((v) => v.parsed!),
+      visibility: "PUBLIC",
     });
     expect(first.inserted).toBe(GOOD_ROWS.length);
     expect(first.skipped).toBe(0);
@@ -107,6 +108,7 @@ describe.skipIf(!HAS_ENV)("upload flow — parse, validate, commit, idempotent",
       filename: "good.xlsx",
       createdBy: adminUserId,
       rows: valid.map((v) => v.parsed!),
+      visibility: "PUBLIC",
     });
     expect(second.inserted).toBe(0);
     expect(second.skipped).toBe(GOOD_ROWS.length);

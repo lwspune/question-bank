@@ -19,6 +19,8 @@ export type PremiumLimits = {
   passScopes?: string[];
   drillPerDay: number | null;
   revealsPerDay: number | null;
+  /** The intl exams' own answer limit (migration 0274; absent on an older database). Read through revealLimitFor. */
+  intlRevealsPerDay?: number | null;
   saveLimit: number | null;
   saves: number;
   projectionTrialDays: number | null;

@@ -549,6 +549,14 @@ const LIMIT_ROWS: LimitRowSpec[] = [
     checkbox: "Limit answers a signed-in free account can open each day (bank, board, guides)",
   },
   {
+    which: "intlReveals",
+    label: "Answers a day (intl)",
+    unit: "answers a day",
+    field: "freeIntlRevealsPerDay",
+    suggested: 10,
+    checkbox: "Limit answers a signed-in free account can open each day on an intl exam (IMAT; ENEM stays free). Counts the same day's answers as the limit above",
+  },
+  {
     which: "saves",
     label: "Saved questions",
     unit: "saved questions",
@@ -563,6 +571,15 @@ const LIMIT_ROWS: LimitRowSpec[] = [
     field: "projectionTrialDays",
     suggested: 7,
     checkbox: "Free for a number of days after the student reveals it, then Premium Pass only",
+  },
+  {
+    which: "practiceTrial",
+    label: "7-day Practice Pass trial",
+    unit: "days at the answer limit",
+    field: "practiceTrialAfterDays",
+    suggested: 3,
+    checkbox:
+      "Offer a free 7-day Practice Pass on a student's Nth day at the answer limit (on 3 such days at most, once per account; nothing is granted until they tap Activate)",
   },
   {
     which: "practiceTests",

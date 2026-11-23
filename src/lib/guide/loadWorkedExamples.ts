@@ -2,6 +2,8 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Difficulty } from "@/lib/questions/filters";
 import { formatProvenance } from "@/lib/questions/formatProvenance";
 import { sourceTag, type SourceTag } from "@/lib/questions/sourceTag";
+import { usableVisual } from "@/lib/visuals/visual";
+import type { WorkedFormat } from "@/lib/guide/workedAnswer";
 import {
   publicPyqNote,
   type PublicQuestionKind,
@@ -26,6 +28,13 @@ export type WorkedExample = {
   imageUrl: string | null;
   /** The solution's figure, shown in the solution panel. */
   solutionImageUrl: string | null;
+  /** The animated solution, kept only when its own check passes (usableVisual); null otherwise. */
+  solutionVisual: unknown | null;
+  /** mcq (options) · subjective (model answer in `solution`) · numeric (`numericAnswer`). See workedAnswerMode. */
+  format: WorkedFormat;
+  /** A numeric question's key; null otherwise. `numericAnswerMax` is the top of a keyed range (0214). */
+  numericAnswer: number | null;
+  numericAnswerMax: number | null;
   options: {
     label: "A" | "B" | "C" | "D";
     text: string;
@@ -52,8 +61,9 @@ export async function loadWorkedExamples(
     .from("questions")
     .select(
       `
-      id, text, context, difficulty, solution, image_url, solution_image_url,
+      id, text, context, difficulty, solution, image_url, solution_image_url, solution_visual,
       question_number, pyq_year, pyq_month, pyq_note, question_kind,
+      question_format, numeric_answer, numeric_answer_max,
       exam:exams!exam_id(name),
       chapter:chapters!chapter_id(name),
       subtopic:subtopics!subtopic_id(name),
@@ -79,8 +89,12 @@ export async function loadWorkedExamples(
     solution: string | null;
     image_url: string | null;
     solution_image_url: string | null;
+    solution_visual: unknown;
     question_number: string | null;
     question_kind: PublicQuestionKind | null;
+    question_format: WorkedFormat | null;
+    numeric_answer: number | string | null;
+    numeric_answer_max: number | string | null;
     pyq_year: number | null;
     pyq_month: string | null;
     pyq_note: string | null;
@@ -125,6 +139,10 @@ export async function loadWorkedExamples(
       examName: flat(r.exam)?.name ?? null,
       imageUrl: r.image_url ?? null,
       solutionImageUrl: r.solution_image_url ?? null,
+      solutionVisual: usableVisual(r.solution_visual),
+      format: r.question_format ?? "mcq",
+      numericAnswer: r.numeric_answer === null ? null : Number(r.numeric_answer),
+      numericAnswerMax: r.numeric_answer_max === null ? null : Number(r.numeric_answer_max),
       options: (r.options ?? [])
         .map((o) => ({
           label: o.label,

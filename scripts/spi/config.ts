@@ -214,6 +214,20 @@ export const PAPERS: Paper[] = [
     pages: [2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16],
     parts: TWO_PARTS,
   },
+  // SPI's own upload (spicsn.com, May 2026) of the EX-50/2026 booklet as four CamScanner
+  // scans, Sets A-D: the same 150 questions with the blocks rotated (Set B Q1-15 = Set A
+  // Q21-35). Set A is the transcribed set. Marked +4/-1 out of 600 (2022 was +1/-0.5).
+  {
+    id: "2026",
+    pdf: "10. QP_10\\QP-A.pdf",
+    sourceFile: "SPI Entrance Examination 2026",
+    kind: "pyq",
+    pyqYear: 2026,
+    pyqNote: "SPI Entrance Examination 2026",
+    answerSource: "derived",
+    pages: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    parts: TWO_PARTS,
+  },
   // Practice papers (owner, 2026-10-21): only the 2022 paper is a real sitting. A paper printed
   // as two files (Maths, GAT) is two papers of 75, each its own source_file.
   ...practicePair("sample", "SPI Sample Paper", "02. QP_2\\Sample-Paper-Maths_watermark.pdf", "02. QP_2\\Sample-Paper-GAT_watermark.pdf", 7, 7),

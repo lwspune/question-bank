@@ -12,6 +12,9 @@
  * hard shell" is also correct), 346eafe8 (blank printed before "laughing"), aa43bcd4 (keyed option
  * prints a full stop for a comma), 08e85b88 ("the the" in the stem), 6276b26d and c0ca767b (a second
  * option is also a fair passive), 28e0d9a5 (the "we" is a guess from the reported "they").
+ * 2026-11-22: the 2026 paper's eleven rows added. c1d44d83 (feel proud) joins Tenses and fb2ca59c
+ * (a complex sentence) joins Agreement and Conjunctions; the ingest had filed them under one-off
+ * subtopics. 4b21f0f4 is flawed as printed (two options correct): never featured.
  */
 import type { ReshapePlan } from "../reshape";
 
@@ -39,30 +42,30 @@ const plan: ReshapePlan = {
     T.speechQuestions,
   ],
   byPrefix: {
-    [T.tenses]: [
+    [T.tenses]: ["4aca9cb1", "7a71eecc", "b339727d", "c1d44d83", 
       "8ec875d0", "f3cbc4a0", "19076fdf", "d870fa23", "a952bc2d", "1d0b8e39", "ed1777b5", "08003dcf",
       "e9096c36", "a3b75d9a", "b11db206", "08e85b88", "fd8b2098", "549a3faf", "b3629489",
     ],
-    [T.agreement]: [
+    [T.agreement]: ["fb2ca59c", 
       "5f9935b5", "b82e1f7e", "10af653f", "a932a710", "304a381f", "0a40cf35", "61f10676", "cc9b13d3",
     ],
     [T.articles]: [
       "04295919", "0bfc9fb0", "df1eda8b", "2bf0206c", "81f0fbb9", "85ae2401", "eb17a5a1", "2c2c5403",
       "561e77c6", "42f808fd", "4cfb5677", "a41f620a", "ad8fb3a7", "8d514c1a", "de05c228",
     ],
-    [T.prepositions]: [
+    [T.prepositions]: ["e1f7d09d", "ee5e0c49", 
       "afc4b7f0", "c3a0c5bc", "70bfb9e4", "01372d6d", "53083954", "71feb40f", "7b1ccfb0", "346eafe8",
       "972e5aee", "2b2ae471", "966497ab",
     ],
-    [T.passive]: [
+    [T.passive]: ["ff1585a2", 
       "17b8295d", "b1005899", "7a0d1263", "90a76532", "5c21b663", "5cedc5a7", "eb37b7ec", "70e7087d",
       "51d198dc", "045822a8", "92b26236", "21381f3e", "56ce6e29", "71ae8c0c",
     ],
-    [T.passiveSpecial]: [
+    [T.passiveSpecial]: ["fbe8b1c2", 
       "75feb02b", "2aa1d6e1", "fbd4a488", "f6d9bca7", "bbf802cc", "0dd54080", "a72acef1", "6353860e",
       "6276b26d", "c0ca767b",
     ],
-    [T.speech]: [
+    [T.speech]: ["4b21f0f4", "c208dbd9", 
       "aa43bcd4", "dd824cad", "6d4fdc3a", "4aaac815", "87287719", "83b914d5", "b38f94fb", "43c45dd1",
       "10e7918e", "d6e709f8", "28e0d9a5",
     ],
@@ -72,16 +75,16 @@ const plan: ReshapePlan = {
     ],
   },
   expected: {
-    [T.tenses]: 15,
-    [T.agreement]: 8,
+    [T.tenses]: 19,
+    [T.agreement]: 9,
     [T.articles]: 15,
-    [T.prepositions]: 11,
-    [T.passive]: 14,
-    [T.passiveSpecial]: 10,
-    [T.speech]: 11,
+    [T.prepositions]: 13,
+    [T.passive]: 15,
+    [T.passiveSpecial]: 11,
+    [T.speech]: 13,
     [T.speechQuestions]: 13,
   },
-  total: 97,
+  total: 108,
 };
 
 export default plan;

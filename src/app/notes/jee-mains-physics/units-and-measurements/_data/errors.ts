@@ -13,6 +13,7 @@ export const ERRORS_UNIT_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpunit-power-rule",
       name: "Relative error of a product of powers",
+      visualizationSlug: "jee-error-powers",
       intuition:
         "If a quantity is a product of powers, a small relative error in one factor is multiplied by its power. The question asks for the MAXIMUM error, the worst case, so every contribution is added with a plus sign, even for a quantity in the denominator and even if one error is stated as negative.",
       definition:

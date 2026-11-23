@@ -1,21 +1,18 @@
 /**
- * The board path's Phase 2 screens (MENTOR_SPEC.md §4 "V's part"):
- * - /me's card opens on "Pick up here" after a gap and shows the weekly
- *   review the first days of a new week;
- * - V's "My plan for today" card: today's tasks linked, the status line, the
- *   review, and the way to /me;
- * - the /board chapter line: this chapter's parts for a path student, the
- *   offer for a Class 12 student without a path.
+ * The board path's Phase 2 screens (MENTOR_SPEC.md §4 "V's part"), on the
+ * one screen left since 2026-11-22, V's "My plan for today" card (the /me
+ * card and the /board line were retired; tests/plan-in-v.test.ts):
+ * - it opens on "Pick up here" after a gap and shows the weekly review the
+ *   first days of a new week;
+ * - today's tasks linked, the status line and the review; no way to /me.
  *
  * Server-rendered (no jsdom in this repo): this pins the markup before effects.
  */
 import { describe, expect, it } from "vitest";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import PathCard from "@/app/me/PathCard";
 import { VPathCardBody } from "@/components/chat/VPathCard";
-import { BoardPathLineView, BoardPathOffer } from "@/components/path/BoardPathLine";
-import { buildPathView, chapterLine } from "@/lib/path/view";
+import { buildPathView } from "@/lib/path/view";
 import type { PathChapter } from "@/lib/path/model";
 
 const slots = (p: string) => Array.from({ length: 10 }, (_, i) => [{ id: `${p}${i}`, format: "mcq" as const }]);
@@ -52,9 +49,9 @@ function view(over: { review?: string[] | null; lastWorkDay?: string | null } = 
   });
 }
 
-const meCard = (v: ReturnType<typeof view>) => renderToStaticMarkup(createElement(PathCard, { initial: { path: v, offer: null } }));
+const meCard = (v: ReturnType<typeof view>) => renderToStaticMarkup(createElement(VPathCardBody, { view: v }));
 
-describe("/me: pick up here and the weekly review", () => {
+describe("V's card: pick up here and the weekly review", () => {
   it("opens on 'Pick up here' after a gap, naming the chapter and its part, never what was missed", () => {
     const html = meCard(view({ lastWorkDay: "2026-11-20" }));
     expect(html).toContain("Welcome back.");
@@ -87,30 +84,7 @@ describe("V: My plan for today", () => {
     expect(html).toContain("Pick up here: Current Electricity, Top 10");
     expect(html).toContain("Next: Nuclei.");
   });
-  it("leads to the full card on /me", () => {
-    expect(html).toContain('href="/me"');
-  });
-});
-
-describe("/board: the path line on a chapter page", () => {
-  it("shows this chapter's parts, the Top 10's count and today's part", () => {
-    const line = chapterLine(CE, { sheet: true, topWorked: 4, test: false, recordedDone: false }, [{ kind: "top", chapterId: "ce", minutes: 18 }]);
-    const html = renderToStaticMarkup(createElement(BoardPathLineView, { line }));
-    expect(html).toContain("In your plan");
-    expect(html).toContain("Revision sheet");
-    expect(html).toContain("4 of 10");
-    expect(html).toContain("Today: work the Top 10 PYQs");
-    // Done parts say so to a screen reader, not by colour alone.
-    expect(html).toContain("Revision sheet: done");
-    expect(html).toContain("Chapter test: not done yet");
-  });
-  it("says the chapter is done once it is", () => {
-    const line = chapterLine(CE, { sheet: true, topWorked: 10, test: true, recordedDone: true }, []);
-    expect(renderToStaticMarkup(createElement(BoardPathLineView, { line }))).toContain("Chapter done");
-  });
-  it("offers the path to a Class 12 student without one, leading to /me", () => {
-    const html = renderToStaticMarkup(createElement(BoardPathOffer));
-    expect(html).toContain("Finish every chapter before your boards");
-    expect(html).toContain('href="/me"');
+  it("never leads to /me, which no longer shows the plan", () => {
+    expect(html).not.toContain('href="/me"');
   });
 });

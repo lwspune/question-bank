@@ -2445,7 +2445,7 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectRoute": "spi-maths",
     "subjectDisplay": "SPI Mathematics",
     "chapterSlug": "quadratic-equations",
-    "subtopicCount": 4
+    "subtopicCount": 5
   },
   {
     "examName": "SPI",
@@ -2460,6 +2460,13 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SPI Mathematics",
     "chapterSlug": "algebraic-identities",
     "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "time-speed-distance",
+    "subtopicCount": 1
   },
   {
     "examName": "SPI",
@@ -2529,6 +2536,13 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectRoute": "spi-reasoning",
     "subjectDisplay": "SPI Reasoning",
     "chapterSlug": "order-ranking",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-reasoning",
+    "subjectDisplay": "SPI Reasoning",
+    "chapterSlug": "analogy",
     "subtopicCount": 1
   },
   {
@@ -4532,5 +4546,467 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "NEET Chemistry",
     "chapterSlug": "biomolecules",
     "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "art-and-culture",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "awards-and-honours",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "sports-and-games",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "firsts-symbols-institutions",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "festivals-and-days",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "books-and-authors",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-static-gk",
+    "subjectDisplay": "SSC CGL Static GK",
+    "chapterSlug": "science-space-environment",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "sound",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "current-electricity",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "light",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "force-laws-of-motion",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "work-energy-power",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "space-astronomy",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "motion",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "heat",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "pressure-buoyancy",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "measurement-units",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "ict",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-physics",
+    "subjectDisplay": "Homi Bhabha Physics",
+    "chapterSlug": "gravitation",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "human-body-health",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "ecosystem-environment",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "life-processes",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "cell-tissues",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "heredity-evolution",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "microbes",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "agriculture-animal-husbandry",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "classification-of-plants",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-biology",
+    "subjectDisplay": "Homi Bhabha Biology",
+    "chapterSlug": "plants-functions",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "acids-bases-salts",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "substances-common-use",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "atomic-structure",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "carbon-compounds",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "chemical-reactions",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "matter",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "metals",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "measurement-of-matter",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "periodic-classification",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-chemistry",
+    "subjectDisplay": "Homi Bhabha Chemistry",
+    "chapterSlug": "air-water-gases",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "Homi Bhabha Class 9",
+    "subjectRoute": "homi-bhabha-9-general-science",
+    "subjectDisplay": "Homi Bhabha General Science",
+    "chapterSlug": "scientists-discoveries",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectRoute": "mh-scholarship-4-intelligence",
+    "subjectDisplay": "MH Scholarship Class 4 Intelligence Test",
+    "chapterSlug": "classification-odd-one-out",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectRoute": "mh-scholarship-4-intelligence",
+    "subjectDisplay": "MH Scholarship Class 4 Intelligence Test",
+    "chapterSlug": "analogy",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectRoute": "mh-scholarship-4-intelligence",
+    "subjectDisplay": "MH Scholarship Class 4 Intelligence Test",
+    "chapterSlug": "coding-decoding",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectRoute": "mh-scholarship-4-maths",
+    "subjectDisplay": "MH Scholarship Class 4 Maths",
+    "chapterSlug": "fractions-decimals",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectRoute": "mh-scholarship-4-maths",
+    "subjectDisplay": "MH Scholarship Class 4 Maths",
+    "chapterSlug": "multiplication-division",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectRoute": "mh-scholarship-4-maths",
+    "subjectDisplay": "MH Scholarship Class 4 Maths",
+    "chapterSlug": "units-of-measurement",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "MH Scholarship Class 4",
+    "subjectRoute": "mh-scholarship-4-maths",
+    "subjectDisplay": "MH Scholarship Class 4 Maths",
+    "chapterSlug": "numbers-number-system",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "MH Scholarship Class 7",
+    "subjectRoute": "mh-scholarship-7-intelligence",
+    "subjectDisplay": "MH Scholarship Class 7 Intelligence Test",
+    "chapterSlug": "classification-odd-one-out",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "MH Scholarship Class 7",
+    "subjectRoute": "mh-scholarship-7-intelligence",
+    "subjectDisplay": "MH Scholarship Class 7 Intelligence Test",
+    "chapterSlug": "analogy",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "MH Scholarship Class 7",
+    "subjectRoute": "mh-scholarship-7-maths",
+    "subjectDisplay": "MH Scholarship Class 7 Maths",
+    "chapterSlug": "algebraic-expressions",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "MH Scholarship Class 7",
+    "subjectRoute": "mh-scholarship-7-maths",
+    "subjectDisplay": "MH Scholarship Class 7 Maths",
+    "chapterSlug": "perimeter-area",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "current-electricity",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "rotational-dynamics",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "mechanical-properties-of-fluids",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "kinetic-theory-of-gases",
+    "subtopicCount": 9
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "thermodynamics",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "superposition-of-waves",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "oscillations",
+    "subtopicCount": 9
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "wave-optics",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "electrostatics",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "magnetic-fields-due-to-electric-current",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "magnetic-materials",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "ac-circuits",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "electromagnetic-induction",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "dual-nature-of-radiation-and-matter",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "semiconductor-devices",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "structure-of-atoms-and-nuclei",
+    "subtopicCount": 8
   }
 ];

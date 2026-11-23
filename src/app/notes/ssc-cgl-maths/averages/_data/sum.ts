@@ -69,6 +69,7 @@ export const SSC_AV_SUM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscavsm-deviation",
       name: "Average from an assumed value",
+      visualizationSlug: "mean-balance-point",
       intuition:
         "Adding five three-digit numbers is slow. Pick a round number near the middle, note how far each value is above or below it, and average those small gaps instead. The true average is your round number plus that small correction.",
       definition:

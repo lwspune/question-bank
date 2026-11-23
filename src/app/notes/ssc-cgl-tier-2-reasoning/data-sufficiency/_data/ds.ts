@@ -12,6 +12,7 @@ export const SSC2_RDS_DS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2rdsds-seating",
       name: "Seating and line-up questions",
+      visualizationSlug: "ssc-t2-ds-row",
       intuition:
         "A statement is sufficient only if it leaves exactly one arrangement for the person asked about. Draw every arrangement the statement allows; if two of them give different answers, it is not enough.",
       definition:

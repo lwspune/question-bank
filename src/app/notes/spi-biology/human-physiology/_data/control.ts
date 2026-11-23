@@ -6,7 +6,7 @@ export const SPI_HP_CONTROL_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The brain and nerves send fast electrical messages, and the endocrine glands send slower chemical messages called hormones.",
   whyItMatters:
-    "Five questions in the bank, four of them EASY: the largest part of the brain, an involuntary action, the nerve from the ear, the direction an impulse travels through two neurons, and the endocrine glands that sit in the brain. Learn which part of the brain does what and where each gland is.",
+    "Six questions in the bank, five of them EASY and one from the 2026 paper: the largest part of the brain, an involuntary action, the nerve from the ear, the direction an impulse travels through two neurons, the endocrine glands that sit in the brain, and the name for the body's chemical messengers. Learn which part of the brain does what and where each gland is.",
   concepts: [
     {
       kind: "reference" as const,
@@ -154,7 +154,7 @@ export const SPI_HP_CONTROL_NOTE: SubtopicNote = {
         { prompt: "Which gland makes growth hormone?", answer: "The pituitary" },
         { prompt: "Which glands sit on top of the kidneys?", answer: "The adrenal glands" },
       ],
-      pyqExampleId: "548dc027-d43c-44c3-aac1-78d3f79f448c",
+      pyqExampleId: "9f3c2677-4bd0-4e47-9c0d-156dafa9f7b8",
       traps: [
         {
           title: "Parathyroid next to pituitary",

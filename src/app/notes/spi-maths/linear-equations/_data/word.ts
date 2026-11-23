@@ -6,7 +6,7 @@ export const SPI_LE_WORD_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A word problem is solved by naming the unknown, writing each sentence as an equation, and answering the quantity the question actually asks for.",
   whyItMatters:
-    "Seven questions in the bank, 4 EASY and 3 MODERATE, and four of them are from the 2022 paper, more than any other part of this chapter. The algebra is short. The work is choosing the unknown and writing each sentence as an equation.",
+    "Nine questions in the bank, 5 EASY and 4 MODERATE: four from the 2022 paper, more than any other part of this chapter, and two from the 2026 paper. The algebra is short. The work is choosing the unknown and writing each sentence as an equation.",
   concepts: [
     {
       kind: "formula" as const,

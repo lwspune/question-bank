@@ -13,6 +13,7 @@ export const ELLIPSE_HYPERBOLA_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetcon-eccentricity",
       name: "Eccentricity and Foci of the Ellipse and Hyperbola",
+      visualizationSlug: "conics-ellipse-diagram",
       intuition:
         "Eccentricity measures how stretched a conic is. For an ellipse the foci are inside, at distance ae from the centre, and e < 1; b² = a²(1 − e²). For a hyperbola they are outside and e > 1; b² = a²(e² − 1). In both, a belongs to the axis that carries the foci. When the larger denominator sits under y², the ellipse's major axis is vertical, and the formula uses that larger number as a².",
       definition:

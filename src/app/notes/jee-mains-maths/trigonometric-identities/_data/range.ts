@@ -13,6 +13,7 @@ export const RANGE_TI_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jti-auxiliary",
       name: "The bound on a sin θ + b cos θ",
+      visualizationSlug: "trig-amplitude-phase",
       intuition:
         "\\(a\\sin\\theta+b\\cos\\theta\\) is one sine wave in disguise: it equals \\(R\\sin(\\theta+\\varphi)\\) with \\(R=\\sqrt{a^2+b^2}\\), so it swings between \\(-R\\) and \\(R\\). Most questions first need a rewrite into this shape: expand a compound angle, or turn \\(\\sin^2\\theta\\), \\(\\cos^2\\theta\\) and \\(\\sin\\theta\\cos\\theta\\) into ratios of \\(2\\theta\\).",
       definition:

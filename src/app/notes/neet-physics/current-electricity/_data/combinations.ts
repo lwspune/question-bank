@@ -12,6 +12,7 @@ export const NEET_PH_CE_COMBINATIONS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphce-series-parallel",
       name: "Series and parallel combinations",
+      visualizationSlug: "resistors-series-parallel",
       intuition:
         "In series the same current must push through every resistor one after another, so the resistances add. In parallel each resistor offers a separate path for the same voltage, so adding a path always lowers the total. A useful check: a parallel total is smaller than the smallest resistor in it.",
       definition:

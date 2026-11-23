@@ -15,7 +15,7 @@ import Link from "next/link";
 import { Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { dayHref } from "@/lib/homework/links";
-import { planWording } from "@/lib/homework/display";
+import { homeworkDownloads, planWording } from "@/lib/homework/display";
 import { planIntro } from "@/lib/homework/intro";
 
 // Plans change only when the plan builder runs; a day is plenty.
@@ -40,7 +40,7 @@ export async function generateMetadata(props: { params: Promise<Params> }): Prom
   if (!plan) return {};
   return {
     title: `${plan.title} Daily Homework from ${planWording(plan.examName).papers} Papers`,
-    description: `${plan.examName} ${plan.subjectName} ${planWording(plan.examName).questions}, ${plan.perDay} a day, as a file to hand out. The questions ${planWording(plan.examName).asker} asked again come first.`,
+    description: `${plan.examName} ${plan.subjectName} ${planWording(plan.examName).questions}, ${plan.perDay} a day, ${homeworkDownloads(plan.examName) ? "as a file to hand out" : "to do on screen"}. The questions ${planWording(plan.examName).asker} asked again come first.`,
     alternates: { canonical: `/homework/${plan.slug}` },
   };
 }
@@ -71,6 +71,8 @@ export default async function HomeworkPlanPage(props: { params: Promise<Params> 
   if (!plan) notFound();
   const sections = sectionsOf(plan.dayList);
   const offer = homeworkOfferLead(homeworkOfferFacts(plan, plans));
+  // An intl exam's homework is on screen only (owner, 2026-11-17).
+  const downloads = homeworkDownloads(plan.examName);
 
   return (
     <GuideShell
@@ -125,7 +127,7 @@ export default async function HomeworkPlanPage(props: { params: Promise<Params> 
                           Open
                         </Link>
                       </Button>
-                      <HomeworkDownload planSlug={plan.slug} day={d.day} planTitle={plan.title} offer={offer} />
+                      {downloads && <HomeworkDownload planSlug={plan.slug} day={d.day} planTitle={plan.title} offer={offer} />}
                     </div>
                   </div>
                   <ol className="mt-3 space-y-1.5 text-sm">

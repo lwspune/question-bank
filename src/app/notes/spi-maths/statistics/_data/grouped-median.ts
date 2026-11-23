@@ -6,7 +6,7 @@ export const SPI_ST_GROUPED_MEDIAN_NOTE: SubtopicNote = {
   oneLineDefinition:
     "For a frequency table, the median is found inside the class where the cumulative frequency first reaches half the total, and the mode inside the class with the highest frequency.",
   whyItMatters:
-    "Ten questions in the bank, six of them EASY. Four only ask you to recognise the median or mode formula or one of its letters, three work out a median from a table, and the rest find the median class or the mode. The one HARD question has classes with gaps between them.",
+    "Twelve questions in the bank, six of them EASY and two from the 2026 paper. Four only ask you to recognise the median or mode formula or one of its letters, three work out a median from a table, and the rest find the median class or the mode. Of the two HARD ones, one has classes with gaps between them and one finds two missing frequencies from the median.",
   concepts: [
     {
       kind: "formula" as const,
@@ -45,7 +45,7 @@ export const SPI_ST_GROUPED_MEDIAN_NOTE: SubtopicNote = {
         { prompt: "Which average needs a cumulative frequency table to find?", answer: "The median" },
         { prompt: "A table has total frequency 50. The median class is the first class whose cumulative frequency reaches what number?", answer: "25" },
       ],
-      pyqExampleId: "b67991f1-598d-4ebb-b86f-053af3be7b03",
+      pyqExampleId: "41717eaf-acd4-4cca-b299-a0b46cf40ecb",
       traps: [
         {
           title: "Picking the tallest class as the median class",
@@ -100,7 +100,7 @@ export const SPI_ST_GROUPED_MEDIAN_NOTE: SubtopicNote = {
         { prompt: "In the median formula, what does cf stand for?", answer: "The cumulative frequency of the class before the median class" },
         { prompt: "A table gives mid-values 25, 35, 45, 55. What are its classes?", answer: "20-30, 30-40, 40-50, 50-60" },
       ],
-      pyqExampleId: "5cf03c9e-6c47-4630-8c70-1ff569788a0d",
+      pyqExampleId: "9e038746-4ced-49c8-925d-4330ceb06a13",
       traps: [
         {
           title: "Using the median class's own cumulative frequency",

@@ -6,7 +6,7 @@ export const SPI_FB_PREPOSITIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A preposition gap is decided by what the small word must show (place, movement, tool, doer or purpose) or by the word before it, which takes a fixed partner.",
   whyItMatters:
-    "Ten questions in the bank, the largest group in this chapter: five EASY and five MODERATE. Half of them come from the sample paper's preposition set, and most hang on one fixed pair such as 'jump to' or 'success in'.",
+    "Eleven questions in the bank, the largest group in this chapter: six EASY and five MODERATE, one from the 2026 paper. Five come from the sample paper's preposition set, and most hang on one fixed pair such as 'jump to' or 'success in'.",
   concepts: [
     {
       kind: "reference" as const,
@@ -140,10 +140,11 @@ export const SPI_FB_PREPOSITIONS_NOTE: SubtopicNote = {
           { cells: ["congratulate", "on", "We congratulated her on her win."] },
           { cells: ["good", "at", "He is good at chess."] },
           { cells: ["interested", "in", "She is interested in music."] },
+          { cells: ["depend, rely", "on", "Our picnic depends on the weather."] },
         ],
         caption: "If two prepositions look possible, the meaning in the sentence picks between them, as with anxious for and anxious about.",
       },
-      pyqExampleId: "d477ec3f-1575-4367-8c7b-a194704487b5",
+      pyqExampleId: "96ed3b7a-d909-443d-8727-022bb936fc5c",
       selfCheckExample: {
         prompt: "Fill in the blank: The coach congratulated the team ____ their victory. (a) for (b) at (c) on (d) about",
         steps: ["'Congratulate' takes 'on' before the success.", "The team was congratulated on their victory."],

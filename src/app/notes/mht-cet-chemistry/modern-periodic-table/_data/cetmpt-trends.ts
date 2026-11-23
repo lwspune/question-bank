@@ -15,6 +15,7 @@ export const TRENDS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "cetmpt-size-trends",
       name: "Atomic and Ionic Radius, and the Diagonal Relationship",
+      visualizationSlug: "atom-periodic-trends",
       intuition:
         "Size grows down a group because each period adds a shell, and falls across a period because more protons pull the same shell in. An element and the one diagonally below-right of it end up with similar size and charge density, so they behave alike.",
       definition:

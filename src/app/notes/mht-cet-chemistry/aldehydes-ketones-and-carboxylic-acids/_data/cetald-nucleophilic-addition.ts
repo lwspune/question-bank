@@ -14,6 +14,7 @@ export const NUCLEOPHILIC_ADDITION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetald-addition-derivatives",
       name: "Cyanohydrins, Hemiacetals and the Ammonia Derivatives",
+      visualizationSlug: "cet-carbonyl-addition",
       intuition:
         "The nucleophile's atom ends up on the carbonyl carbon. HCN puts CN there next to a new OH (cyanohydrin). One alcohol molecule gives a carbon carrying both OH and OR (hemiacetal); a second alcohol makes the acetal. Ammonia derivatives NH₂–Z add then lose water to give C=N–Z: Z = OH → oxime, Z = NH₂ → hydrazone, Z = NHC₆H₅ → phenylhydrazone, Z = NHCONH₂ → semicarbazone.",
       definition:

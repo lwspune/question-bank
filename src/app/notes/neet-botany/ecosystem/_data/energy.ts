@@ -77,6 +77,7 @@ export const NEET_BO_EC_ENERGY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nboec-ten-percent",
       name: "The 10 per cent law",
+      visualizationSlug: "eco-food-chain-pyramid",
       intuition:
         "Each step up a food chain keeps only about one tenth of the energy of the step below; the rest is lost, mostly as heat. Ten thousand joules in grass become about a thousand in the animals that eat it and a hundred in the animals that eat those. That is why food chains are short.",
       definition:

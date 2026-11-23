@@ -13,6 +13,7 @@ export const RELATION_TYPES_FN_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jfn-rst-test",
       name: "Testing reflexive, symmetric and transitive",
+      visualizationSlug: "sets-relation-digraph",
       intuition:
         "Reflexive: every element relates to itself. Symmetric: whenever \\(aRb\\), also \\(bRa\\). Transitive: whenever \\(aRb\\) and \\(bRc\\), also \\(aRc\\). To show a property holds, argue for all elements; to show it fails, one counterexample is enough. Good counterexamples use 0, a repeated element, or a short chain of three numbers that crosses a boundary.",
       definition:

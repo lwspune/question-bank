@@ -13,6 +13,7 @@ export const QUADRATIC_TEQ_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jteq-quad-count",
       name: "Solve for the ratio, then count per period",
+      visualizationSlug: "te-solution-counting",
       intuition:
         "Replace \\(\\cos2\\theta\\), \\(\\sin^2\\theta\\) or \\(\\tan^2\\theta\\) so that only one ratio is left. The equation becomes a quadratic in that ratio. A root outside \\([-1,1]\\) for \\(\\sin\\) or \\(\\cos\\), or inside \\((-1,1)\\) for \\(\\sec\\) or \\(\\csc\\), gives no angle. Each value that survives is taken twice in every period of \\(2\\pi\\), so count by periods and test the endpoints separately.",
       definition:

@@ -6,7 +6,7 @@ export const SPI_VO_FORMS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "These questions test the form of a word: how it is spelt, which single word replaces a phrase, and which pairs of words English always uses together.",
   whyItMatters:
-    "Ten questions in the bank: five ask you to spot the misspelt word, four ask for one word that replaces a phrase, and one asks which pair of words does not belong together. Nine are EASY, so these are marks to collect quickly once the patterns are learnt.",
+    "Thirteen questions in the bank, three of them from the 2026 paper: seven are about spelling, five ask for one word that replaces a phrase, and one asks which pair of words does not belong together. Eleven are EASY, so these are marks to collect quickly once the patterns are learnt.",
   concepts: [
     {
       kind: "reference" as const,
@@ -29,10 +29,12 @@ export const SPI_VO_FORMS_NOTE: SubtopicNote = {
           { cells: ["Keep the base word", "avoidable, enjoyable", "aviodable, enjoiable"] },
           { cells: ["Learn the ending", "tendency, dependency", "tendancy, dependancy"] },
           { cells: ["Double c, single s", "occasion", "occassion, ocasion"] },
+          { cells: ["Double c and double m", "accommodation", "accomodation, acommodation"] },
+          { cells: ["One r, then double l, then one l", "parallel", "paralel, parrallel"] },
         ],
         caption: "Say the word in syllables and check each one: oc-ca-sion.",
       },
-      pyqExampleId: "487812e4-c598-4a68-801f-14aae1527530",
+      pyqExampleId: "af326779-72ec-4f78-aa01-0ee153dc882a",
       selfCheckExample: {
         prompt: "Choose the wrongly spelt word: (a) believe (b) recieve (c) ceiling (d) field",
         steps: [
@@ -85,10 +87,11 @@ export const SPI_VO_FORMS_NOTE: SubtopicNote = {
           { cells: ["not qualified for something", "ineligible"] },
           { cells: ["to say beforehand what will happen", "predict"] },
           { cells: ["to bring into being, to produce", "generate"] },
+          { cells: ["government by one person with total power", "autocracy"], noteAmber: "Monarchy is rule by a king or queen; anarchy is no government at all." },
         ],
         caption: "Match the root to the sense: hearing is aud, seeing is vis, reading is leg.",
       },
-      pyqExampleId: "3369f9f2-ff1c-423a-9fb7-66f457198180",
+      pyqExampleId: "67ccee20-89bd-48b2-b460-69eb0b9e5db3",
       selfCheckExample: {
         prompt: "One word for 'handwriting that cannot be read': (a) illegible (b) ineligible (c) invisible (d) incurable",
         steps: [

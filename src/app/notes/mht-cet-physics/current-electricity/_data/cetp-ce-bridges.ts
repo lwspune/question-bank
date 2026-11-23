@@ -60,6 +60,7 @@ export const BRIDGES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-ce-meter-bridge",
       name: "The Metre Bridge and its Null Point",
+      visualizationSlug: "cet-metre-bridge",
       intuition:
         "The metre bridge replaces two arms with a 100 cm uniform wire. Resistance of the wire is proportional to length, so at the null point l cm from the left end the unknown in the left gap satisfies X/R = l/(100 − l). Everything follows from that one line: swapping the resistances moves the null point from l to 100 − l; doubling both changes nothing, so doubling and swapping gives 100 − l; a thicker or longer wire of the same material also changes nothing because only the ratio of lengths enters. Shunting one gap lowers its resistance, and the null point moves away from it.",
       definition:

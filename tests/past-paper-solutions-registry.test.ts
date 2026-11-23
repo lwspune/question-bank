@@ -24,6 +24,8 @@ const HAS_ENV = !!process.env.NEXT_PUBLIC_SUPABASE_URL && !!process.env.SUPABASE
 
 /** `.in()` puts the list in the URL: ~200 uuids is the safe chunk (CLAUDE.md pitfalls). */
 const CHUNK = 200;
+/** Chunks read at once: enough to finish well inside the hook limit, few enough to stay polite to prod. */
+const PARALLEL = 4;
 
 describe.skipIf(!HAS_ENV)("EXAM_REGISTRY.pastPaperSolutions vs the live past papers", () => {
   let client: SupabaseClient;
@@ -56,15 +58,23 @@ describe.skipIf(!HAS_ENV)("EXAM_REGISTRY.pastPaperSolutions vs the live past pap
 
     const ids = [...examOf.keys()];
     const solved = new Set<string>();
-    for (let i = 0; i < ids.length; i += CHUNK) {
-      const { data, error: qErr } = await client
-        .from("questions")
-        .select("id")
-        .in("id", ids.slice(i, i + CHUNK))
-        .not("solution", "is", null)
-        .neq("solution", "");
-      if (qErr) throw new Error(`questions: ${qErr.message}`);
-      for (const r of data ?? []) solved.add(r.id as string);
+    const chunks: string[][] = [];
+    for (let i = 0; i < ids.length; i += CHUNK) chunks.push(ids.slice(i, i + CHUNK));
+    // A few chunks in flight at once: one at a time ran past the 120 s hook
+    // limit on CI on 2026-11-17 once the UP Board and SPI papers landed.
+    for (let i = 0; i < chunks.length; i += PARALLEL) {
+      await Promise.all(
+        chunks.slice(i, i + PARALLEL).map(async (chunk) => {
+          const { data, error: qErr } = await client
+            .from("questions")
+            .select("id")
+            .in("id", chunk)
+            .not("solution", "is", null)
+            .neq("solution", "");
+          if (qErr) throw new Error(`questions: ${qErr.message}`);
+          for (const r of data ?? []) solved.add(r.id as string);
+        })
+      );
     }
 
     for (const [id, exam] of examOf) {

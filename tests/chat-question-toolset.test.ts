@@ -230,6 +230,30 @@ describe("find_question (pasted text)", () => {
     expect(out).toMatch(/explain_concept/);
     expect(out).not.toMatch(/open the question on the site/i);
   });
+
+  // 2026-11-19: a question pasted from the notes page the student was on was looked for in the bank only.
+  it("on a notes page, explains a question pasted from that page from the notes, with no bank search or card", async () => {
+    let searched = false;
+    const { tools, seen } = deps({
+      findNotesPaste: async (text) => (text.includes("fair hearing") ? "QUESTION\nThe judge...\nANSWER: (b) just" : null),
+      searchQuestions: async () => {
+        searched = true;
+        return [];
+      },
+    });
+    const out = await tools.find_question.run({ text: "The judge promised both sides a fair hearing." });
+    expect(out).toContain("ANSWER: (b) just");
+    expect(out).toMatch(/explain it now/i);
+    expect(searched).toBe(false);
+    expect(seen.matched).toEqual([]);
+  });
+
+  it("on a notes page, still searches the bank when the paste is not one of the page's questions", async () => {
+    const { tools, seen } = deps({ findNotesPaste: async () => null });
+    const out = await tools.find_question.run({ text: "what is 2+2" });
+    expect(seen.matched).toEqual([ID]);
+    expect(out).toMatch(/shown to the student as a card/i);
+  });
 });
 
 // 2026-10-23 (owner): V spotted "-1 listed twice" in a JEE solution and told only that student. A slip in
@@ -293,5 +317,35 @@ describe("paper_repeats (a whole paper's repeats)", () => {
 
   it("is not offered where it cannot read a paper (V's test runner without it)", () => {
     expect(deps().tools.paper_repeats).toBeUndefined();
+  });
+});
+
+describe("explain_question points to the Learn lesson (2026-11-22: Learn first wherever it teaches the idea)", () => {
+  const LESSON = { href: "/learn/lesson/matrices/matrix-multiplication", title: "Multiplying matrices" };
+
+  it("adds the lesson to V's text and hands its link to the window", async () => {
+    const links: { href: string; title: string }[] = [];
+    const out = await deps({ learnFor: async () => LESSON, onLearnLink: (l) => links.push(l) }).tools.explain_question.run({ question_id: ID, chose: "A" });
+    expect(out).toContain("Learn lesson for this idea: /learn/lesson/matrices/matrix-multiplication (Multiplying matrices)");
+    expect(out).toMatch(/one short line/i);
+    expect(links).toEqual([LESSON]);
+  });
+
+  it("no Learn lesson, or a failed read: the explanation as before", async () => {
+    for (const learnFor of [async () => null, async () => { throw new Error("down"); }]) {
+      const out = await deps({ learnFor }).tools.explain_question.run({ question_id: ID });
+      expect(out).not.toMatch(/Learn lesson/);
+    }
+  });
+
+  it("never when the explanation was refused (signed out, or today's answers used)", async () => {
+    let asked = 0;
+    const learnFor = async () => {
+      asked++;
+      return LESSON;
+    };
+    await deps({ learnFor, spendReveal: null }).tools.explain_question.run({ question_id: ID });
+    await deps({ learnFor, spendReveal: async () => ({ kind: "limit", limit: 10 }) }).tools.explain_question.run({ question_id: ID });
+    expect(asked).toBe(0);
   });
 });

@@ -12,6 +12,7 @@ export const SSC_GOC_OCEANS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscgococ-water",
       name: "Tides and salinity",
+      visualizationSlug: "ocn-spring-neap-tides",
       intuition:
         "The moon and the sun pull the sea, so it rises and falls on a schedule. Salt makes water heavier, so salty water sinks under fresh. Both facts explain the questions on this page.",
       definition:

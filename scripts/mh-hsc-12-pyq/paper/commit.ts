@@ -197,6 +197,7 @@ async function main() {
     pyqYear: paper.year,
     pyqMonth: paper.month,
     pyqNote: paper.note,
+    visibility: "PRIVATE", // at insert, so an interrupted run never leaves rows public (2026-11-18)
   });
   console.log(`\ncommit: inserted=${r.inserted} skipped=${r.skipped} failed=${r.failed}`);
   for (const e of r.errors) console.log(`  err row ${e.sourceRow}: ${e.message}`);

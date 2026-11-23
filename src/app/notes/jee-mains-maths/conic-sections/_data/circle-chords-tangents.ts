@@ -13,6 +13,7 @@ export const CIRCLE_CHORDS_TANGENTS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcon-chord-length",
       name: "Chord length from the distance to the centre",
+      visualizationSlug: "jee-chord-length",
       intuition:
         "Drop a perpendicular from the centre to the chord. It bisects the chord, so half the chord, the perpendicular \\(d\\) and the radius make a right triangle. That gives the chord length at once, without finding the two ends. The same picture answers 'which chord through a point is longest or shortest': the longest is the diameter, the shortest is perpendicular to the line joining the point to the centre.",
       definition:

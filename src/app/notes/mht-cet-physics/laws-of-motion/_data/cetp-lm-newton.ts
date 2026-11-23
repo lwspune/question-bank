@@ -15,6 +15,7 @@ export const NEWTON_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-lm-newton-applications",
       name: "Lifts, Blocks in Contact and Pulleys",
+      visualizationSlug: "lmf-free-body-diagram",
       intuition:
         "Draw each body and add the forces along its motion. A person in a lift feels the floor's push N = m(g + a) going up with acceleration a, m(g − a) going down; a spring balance reads the same way. Blocks pushed together share one acceleration F/(total mass), and the push on the far block is its own mass times that acceleration. In an Atwood machine, the net pull is the difference of the weights and the mass to accelerate is the total. Only frames moving at constant velocity are inertial: an accelerating train, a merry-go-round and a plane taking off are not. Gravity acts without contact; friction, normal reaction and viscosity need it.",
       definition:

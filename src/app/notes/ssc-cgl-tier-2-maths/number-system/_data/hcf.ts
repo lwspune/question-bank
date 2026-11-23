@@ -12,6 +12,7 @@ export const SSC2_NS_HCF_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2nshl-laws",
       name: "HCF and LCM",
+      visualizationSlug: "ssc-t2-hcf-lcm-venn",
       intuition:
         "The HCF keeps only what the numbers share: the lowest power of each common prime. The LCM keeps everything: the highest power of every prime that appears. For two numbers, the HCF times the LCM is their product.",
       definition:

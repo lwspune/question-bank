@@ -12,7 +12,10 @@
  *
  * Pure. Spec: tests/chat-hourly-limit.test.ts. Used by /api/chat/typed.
  */
-import { hasActiveScope, SCOPE_DOWNLOADS, SCOPE_PRACTICE, type Entitlement } from "@/lib/entitlements/access";
+import { hasActiveScope, SCOPE_DOWNLOADS, SCOPE_FREE, SCOPE_PRACTICE, type Entitlement } from "@/lib/entitlements/access";
+import { passScopeForExam, sitePassScopes } from "@/lib/billing/passScope";
+import { intlExamOfPath, LIVE_INTL_EXAMS } from "@/lib/sites/intl";
+import type { PlanSite } from "@/lib/billing/plans";
 import type { PassCta } from "@/lib/billing/plans";
 import { parseVPassOffer } from "./passOffer";
 
@@ -21,8 +24,26 @@ export type VPassTier = "premium" | "pass" | "none";
 export function vPassTier(rows: readonly Entitlement[], nowMs: number): VPassTier {
   const list = [...rows];
   if (hasActiveScope(list, SCOPE_DOWNLOADS, nowMs)) return "premium";
+  // An international exam's pass gives what www's Premium does, downloads included (2026-11-19).
+  if (sitePassScopes("intl").some((s) => hasActiveScope(list, s, nowMs))) return "premium";
   if (hasActiveScope(list, SCOPE_PRACTICE, nowMs)) return "pass";
   return "none";
+}
+
+/**
+ * The pass V offers at the hourly limit (2026-11-19): www's Premium on www; on
+ * intl the pass of the exam on the page, else intl's one pass while it sells
+ * one. Null when there is nothing to sell (a free exam such as ENEM).
+ */
+export function vOfferScope(site: PlanSite, pagePath: string | null): string | null {
+  if (site === "pyqvault") return SCOPE_DOWNLOADS;
+  const exam = pagePath ? intlExamOfPath(pagePath.split(/[?#]/)[0]) : null;
+  if (exam) {
+    const scope = passScopeForExam(exam);
+    return scope === SCOPE_FREE ? null : scope;
+  }
+  const sold = [...new Set(LIVE_INTL_EXAMS.map((e) => passScopeForExam(e.slug)).filter((s) => s !== SCOPE_FREE))];
+  return sold.length === 1 ? sold[0] : null;
 }
 
 export type HourlyOutcome = { allowed: true } | { allowed: false; limit: number; offerPremium: boolean };

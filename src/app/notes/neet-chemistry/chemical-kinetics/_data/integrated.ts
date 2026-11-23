@@ -177,6 +177,7 @@ export const NEET_CH_CK_INTEGRATED_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nchck-plots",
       name: "Plots that show the order",
+      visualizationSlug: "neet-order-plots",
       intuition:
         "Each integrated rate law turns into a straight line when you choose the right axes. So a graph tells you the order: find which pair of quantities gives a straight line, or which one stays flat. Always read the axes before the shape.",
       definition:

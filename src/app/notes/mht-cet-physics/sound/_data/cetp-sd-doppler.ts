@@ -15,6 +15,7 @@ export const DOPPLER_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-sd-doppler-formula",
       name: "The Doppler Formula",
+      visualizationSlug: "cet-doppler-wavefronts",
       intuition:
         "Write f′ = f(v + v_o)/(v − v_s) with both speeds positive when they bring source and observer closer; flip a sign for each one moving apart. An observer approaching at v/5 hears 6/5 of the pitch, 20% more. A source approaching at v/10 gives 10/9. The same speed does more when the source moves, because it squeezes the waves: at 50 m/s with v = 330, a moving source gives 330/280 = 1.18f, a moving observer 380/330 = 1.15f. A source receding at v halves the pitch; an observer must approach at 2v to triple it. Frequency rises, so the wavelength the observer measures falls.",
       definition:

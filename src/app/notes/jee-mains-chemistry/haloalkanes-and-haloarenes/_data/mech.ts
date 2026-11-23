@@ -13,6 +13,7 @@ export const MECH_HALO_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jchalo-sn-mechanism",
       name: "SN1 and SN2 compared: steps, rate law and conditions",
+      visualizationSlug: "cet-sn1-vs-sn2",
       intuition:
         "In SN2 the nucleophile attacks the carbon from the side opposite the halogen while the halogen leaves, all in one step, so the rate depends on both. In SN1 the halogen leaves first, slowly, to give a carbocation; the nucleophile then adds fast, so the rate depends on the halide alone. Which path runs is set by the substrate, the nucleophile and the solvent together.",
       definition:

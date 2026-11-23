@@ -11,6 +11,7 @@ import { getOwnAnswerTotals } from "@/lib/celebrate/service";
 import { buildPulse } from "@/lib/pulse/build";
 import { headers } from "next/headers";
 import { readCountry } from "@/lib/acquisition/country";
+import { isIntlHost } from "@/lib/sites/intl";
 import MeView from "./MeView";
 
 export const dynamic = "force-dynamic";
@@ -47,6 +48,8 @@ export default async function MePage() {
       week: weekly,
       answers: getOwnAnswerTotals(db),
       country: readCountry(await headers()),
+      // V's gift, as /api/me/pulse reads it: www only.
+      gift: !isIntlHost((await headers()).get("host")),
     }).catch((e: unknown) => {
       console.error("me pulse failed", e instanceof Error ? e.message : e);
       return null;

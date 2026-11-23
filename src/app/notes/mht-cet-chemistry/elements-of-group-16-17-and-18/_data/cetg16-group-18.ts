@@ -15,6 +15,7 @@ export const GROUP_18_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetg16-noble-gases-and-xenon",
       name: "Noble Gas Uses and Xenon Compound Shapes",
+      visualizationSlug: "cet-xenon-shapes",
       intuition:
         "Xenon has eight valence electrons. Each Xe–F bond uses one of them, each Xe=O uses two, and what is left sits as lone pairs. XeF₂: 2 used, 6 left — three lone pairs, linear. XeF₄: 4 used — two lone pairs, square planar. XeF₆: 6 used — one lone pair, distorted octahedral. XeOF₄: 2 + 4 = 6 used — one lone pair, square pyramidal, the same shape as ClF₅ and BrF₅. XeO₃: 6 used — one lone pair, pyramidal. For uses, match the gas: liquid helium cools the superconducting magnets of MRI scanners.",
       definition:

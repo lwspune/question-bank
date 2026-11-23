@@ -12,6 +12,7 @@ export const SSC2_M3_PRISMS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2m3pp-cuboid",
       name: "Cuboids: volume, faces and diagonals",
+      visualizationSlug: "af-cuboid-diagonal",
       intuition:
         "A cuboid is a box with length, breadth and height. Its volume multiplies the three edges, its six faces come in three equal pairs, and its long diagonal runs from one corner through the inside to the opposite corner.",
       definition:

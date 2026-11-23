@@ -484,6 +484,48 @@ export type Database = {
           },
         ]
       }
+      billing_alarm_sends: {
+        Row: {
+          alarm: string
+          ist_day: string
+          sent_at: string
+        }
+        Insert: {
+          alarm: string
+          ist_day: string
+          sent_at?: string
+        }
+        Update: {
+          alarm?: string
+          ist_day?: string
+          sent_at?: string
+        }
+        Relationships: []
+      }
+      billing_webhook_receipts: {
+        Row: {
+          event: string
+          id: number
+          provider: string
+          received_at: string
+          ref: string | null
+        }
+        Insert: {
+          event: string
+          id?: never
+          provider: string
+          received_at?: string
+          ref?: string | null
+        }
+        Update: {
+          event?: string
+          id?: never
+          provider?: string
+          received_at?: string
+          ref?: string | null
+        }
+        Relationships: []
+      }
       board_paper_downloads: {
         Row: {
           board_paper_id: string
@@ -812,6 +854,7 @@ export type Database = {
           cache_write_1h_tokens: number | null
           cache_write_tokens: number | null
           conversation_id: string | null
+          country: string | null
           created_at: string
           event_type: string
           feedback: number | null
@@ -826,6 +869,7 @@ export type Database = {
           reply_to_id: string | null
           reply_to_step: number | null
           seen_at: string | null
+          site: string | null
           tokens_in: number | null
           tokens_out: number | null
           tool_calls: Json | null
@@ -840,6 +884,7 @@ export type Database = {
           cache_write_1h_tokens?: number | null
           cache_write_tokens?: number | null
           conversation_id?: string | null
+          country?: string | null
           created_at?: string
           event_type: string
           feedback?: number | null
@@ -854,6 +899,7 @@ export type Database = {
           reply_to_id?: string | null
           reply_to_step?: number | null
           seen_at?: string | null
+          site?: string | null
           tokens_in?: number | null
           tokens_out?: number | null
           tool_calls?: Json | null
@@ -868,6 +914,7 @@ export type Database = {
           cache_write_1h_tokens?: number | null
           cache_write_tokens?: number | null
           conversation_id?: string | null
+          country?: string | null
           created_at?: string
           event_type?: string
           feedback?: number | null
@@ -882,6 +929,7 @@ export type Database = {
           reply_to_id?: string | null
           reply_to_step?: number | null
           seen_at?: string | null
+          site?: string | null
           tokens_in?: number | null
           tokens_out?: number | null
           tool_calls?: Json | null
@@ -983,6 +1031,33 @@ export type Database = {
           name?: string | null
           updated_at?: string
           user_id?: string | null
+        }
+        Relationships: []
+      }
+      class_offer_answers: {
+        Row: {
+          answer: string | null
+          answered_at: string | null
+          more_at: string | null
+          offer: string
+          shown_at: string
+          user_id: string
+        }
+        Insert: {
+          answer?: string | null
+          answered_at?: string | null
+          more_at?: string | null
+          offer: string
+          shown_at?: string
+          user_id: string
+        }
+        Update: {
+          answer?: string | null
+          answered_at?: string | null
+          more_at?: string | null
+          offer?: string
+          shown_at?: string
+          user_id?: string
         }
         Relationships: []
       }
@@ -1459,6 +1534,7 @@ export type Database = {
           granted_by: string | null
           id: string
           note: string | null
+          payment_provider: string
           provider_ref: string | null
           scope: string
           source: string
@@ -1474,6 +1550,7 @@ export type Database = {
           granted_by?: string | null
           id?: string
           note?: string | null
+          payment_provider?: string
           provider_ref?: string | null
           scope?: string
           source: string
@@ -1489,11 +1566,45 @@ export type Database = {
           granted_by?: string | null
           id?: string
           note?: string | null
+          payment_provider?: string
           provider_ref?: string | null
           scope?: string
           source?: string
           status?: string
           user_id?: string
+        }
+        Relationships: []
+      }
+      exam_sittings: {
+        Row: {
+          date: string
+          exam: string
+          label: string
+          official: boolean
+          sitting: string
+          source: string
+          source_url: string | null
+          updated_at: string
+        }
+        Insert: {
+          date: string
+          exam: string
+          label: string
+          official?: boolean
+          sitting: string
+          source: string
+          source_url?: string | null
+          updated_at?: string
+        }
+        Update: {
+          date?: string
+          exam?: string
+          label?: string
+          official?: boolean
+          sitting?: string
+          source?: string
+          source_url?: string | null
+          updated_at?: string
         }
         Relationships: []
       }
@@ -3352,7 +3463,9 @@ export type Database = {
           free_reveals_per_day: number | null
           free_save_limit: number | null
           id: boolean
+          intl_free_reveals_per_day: number | null
           mock_papers_per_day: number | null
+          practice_trial_after_days: number | null
           projection_trial_days: number | null
           updated_at: string
         }
@@ -3369,7 +3482,9 @@ export type Database = {
           free_reveals_per_day?: number | null
           free_save_limit?: number | null
           id?: boolean
+          intl_free_reveals_per_day?: number | null
           mock_papers_per_day?: number | null
+          practice_trial_after_days?: number | null
           projection_trial_days?: number | null
           updated_at?: string
         }
@@ -3386,7 +3501,9 @@ export type Database = {
           free_reveals_per_day?: number | null
           free_save_limit?: number | null
           id?: boolean
+          intl_free_reveals_per_day?: number | null
           mock_papers_per_day?: number | null
+          practice_trial_after_days?: number | null
           projection_trial_days?: number | null
           updated_at?: string
         }
@@ -3404,6 +3521,8 @@ export type Database = {
           ends_on: string | null
           id: string
           label: string
+          paddle_product_id: string | null
+          payment_provider: string
           perks: string[]
           scope: string
           site: string
@@ -3422,6 +3541,8 @@ export type Database = {
           ends_on?: string | null
           id: string
           label: string
+          paddle_product_id?: string | null
+          payment_provider?: string
           perks?: string[]
           scope: string
           site?: string
@@ -3440,6 +3561,8 @@ export type Database = {
           ends_on?: string | null
           id?: string
           label?: string
+          paddle_product_id?: string | null
+          payment_provider?: string
           perks?: string[]
           scope?: string
           site?: string
@@ -3460,6 +3583,24 @@ export type Database = {
         }
         Update: {
           created_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      practice_trial_offers: {
+        Row: {
+          created_at: string
+          ist_day: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          ist_day: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          ist_day?: string
           user_id?: string
         }
         Relationships: []
@@ -4496,6 +4637,24 @@ export type Database = {
           },
         ]
       }
+      reveal_limit_days: {
+        Row: {
+          created_at: string
+          ist_day: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          ist_day: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          ist_day?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       score_alerts: {
         Row: {
           calculator: string
@@ -4825,6 +4984,21 @@ export type Database = {
         }
         Relationships: []
       }
+      study_clock: {
+        Row: {
+          last_at: string
+          user_id: string
+        }
+        Insert: {
+          last_at: string
+          user_id: string
+        }
+        Update: {
+          last_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       study_path_covered: {
         Row: {
           chapter_id: string
@@ -5036,6 +5210,36 @@ export type Database = {
           items?: Json
           starts_on?: string
           subject?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      study_time: {
+        Row: {
+          chapter_id: string | null
+          day: string
+          id: number
+          kind: string
+          secs: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          chapter_id?: string | null
+          day: string
+          id?: never
+          kind: string
+          secs?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          chapter_id?: string | null
+          day?: string
+          id?: never
+          kind?: string
+          secs?: number
+          updated_at?: string
           user_id?: string
         }
         Relationships: []
@@ -5795,6 +5999,8 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      activate_practice_trial: { Args: never; Returns: Json }
+      add_study_time: { Args: { p_items: Json }; Returns: number }
       answer_grade_commit: {
         Args: {
           p_grades: Json
@@ -5893,6 +6099,7 @@ export type Database = {
           q_count: number
         }[]
       }
+      get_chapter_landing_stats: { Args: never; Returns: Json }
       get_chapter_last_added: {
         Args: {
           p_kind: Database["public"]["Enums"]["question_kind"]
@@ -5975,6 +6182,18 @@ export type Database = {
       }
       get_own_practice_evidence: { Args: never; Returns: Json }
       get_own_progress_card: { Args: { p_exam_id: string }; Returns: Json }
+      get_own_study_time: {
+        Args: { p_from: string; p_to: string }
+        Returns: {
+          chapter: string
+          chapter_id: string
+          day: string
+          exam_id: string
+          kind: string
+          secs: number
+          subject: string
+        }[]
+      }
       get_own_week_study_days: {
         Args: {
           p_min_answers: number
@@ -6041,6 +6260,18 @@ export type Database = {
           p_user_id: string
         }
         Returns: number
+      }
+      get_study_time: {
+        Args: { p_from: string; p_to: string; p_user_id: string }
+        Returns: {
+          chapter: string
+          chapter_id: string
+          day: string
+          exam_id: string
+          kind: string
+          secs: number
+          subject: string
+        }[]
       }
       get_subtopic_facets: {
         Args: {
@@ -6182,6 +6413,18 @@ export type Database = {
       rate_limit_increment: {
         Args: { p_bucket: string; p_window_start: string }
         Returns: number
+      }
+      record_class_offer_yes: {
+        Args: {
+          p_city: string
+          p_exam_slug: string
+          p_is_pune: boolean
+          p_mobile: string
+          p_name: string
+          p_offer: string
+          p_user_id: string
+        }
+        Returns: undefined
       }
       record_quiz_lead: {
         Args: {

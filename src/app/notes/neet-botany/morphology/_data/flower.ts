@@ -12,6 +12,7 @@ export const NEET_BO_MO_FLOWER_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nbomo-symmetry",
       name: "The flower and its symmetry",
+      visualizationSlug: "repro-flower-structure",
       intuition:
         "A flower is a shoot that has been changed for reproduction. Its axis stays short, and instead of leaves it carries four whorls of floral parts. NEET most often asks one thing about the whole flower: can it be cut into two equal halves along many planes, along only one, or along none? Learn the NCERT plants for each answer.",
       definition:

@@ -136,6 +136,7 @@ export const FARADAY_EMI_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jpemi-lenz",
       name: "Lenz's law and the direction of the induced current",
+      visualizationSlug: "cet-lenz-magnet-coil",
       intuition:
         "The induced current makes a field of its own, and that field always fights the CHANGE in flux, not the flux itself. If the flux through a loop is growing, the loop's own field points against it; if it is shrinking, the loop's field points with it, trying to keep it up. The same opposition shows up as a force: a magnet pushed at a loop is repelled, a magnet falling through a metal tube is slowed.",
       definition:

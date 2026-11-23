@@ -228,6 +228,11 @@ const SSC_ORDER: Record<string, readonly string[]> = {
     "Cell Biology", "Biochemistry", "Biodiversity and Classification", "Plant Biology", "Human Physiology",
     "Reproduction", "Genetics and Evolution", "Microbiology and Disease", "Ecology and Environment",
   ],
+  // The settled facts moved out of Current Affairs on 2026-11-19 (scripts/ssc-cgl/static-gk), in taxonomy order.
+  "Static GK": [
+    "Art and Culture", "Festivals, Fairs and Important Days", "Books and Authors", "Awards and Honours",
+    "Sports and Games", "Firsts, Symbols and Institutions", "Science, Space and Environment Facts",
+  ],
 };
 
 /**
@@ -256,7 +261,7 @@ const EXAM_REPEATS: RepeatsEbook[] = [
     board: "SSC CGL",
     subject: "General Awareness",
     subjectTitle: "General Awareness",
-    planSubjects: ["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology"],
+    planSubjects: ["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Static GK"],
     chapterOrder: SSC_ORDER,
   },
 ].map((b) => ({
@@ -276,9 +281,60 @@ export const REPEATS_EBOOKS: readonly RepeatsEbook[] = [...BOARD_REPEATS, ...EXA
  * paper a year as its Solved Papers book (owner); Maharashtra reads every PYQ
  * from its homework plan, repeats printed once with their "Asked N times" line.
  */
-export type ChapterwiseEbook = Omit<PapersEbook, "kind" | "rule"> & { kind: "chapterwise"; source: "papers" | "plan" };
+export type ChapterwiseEbook = Omit<PapersEbook, "kind" | "rule"> & {
+  kind: "chapterwise";
+  /** Where its questions come from: stored papers (CBSE), a homework plan (Maharashtra), or the bank itself (Homi Bhabha). */
+  source: "papers" | "plan" | "bank";
+  /** "exam" words the book without "the board" or marks (Homi Bhabha); board books leave it unset. */
+  examiner?: "board" | "exam";
+  /** A bank book: the subjects (subjects.name) it reads, in print order. */
+  bankSubjects?: readonly string[];
+  /** A bank book: each subject's chapters (chapters.name) in print order; an unnamed chapter stops the build. */
+  chapterOrder?: Readonly<Record<string, readonly string[]>>;
+};
 
-export const CHAPTERWISE_EBOOKS: readonly ChapterwiseEbook[] = [
+/**
+ * Homi Bhabha Class 9 (2026-11-21): chapters.order_index ties across most of
+ * its chapters, so the books pin a teaching order by name, simplest topics of
+ * each subject first. Shared by the Chapter-wise PYQs book and the Notes Book
+ * (lib/ebooks/catalog), so the two read alike. Pinned by tests/ebook-catalog.test.ts.
+ */
+export const HOMI_BHABHA_9_ORDER: Readonly<Record<string, readonly string[]>> = {
+  Physics: [
+    "Measurement and Units", "Motion", "Force and Laws of Motion", "Gravitation", "Work, Energy and Power",
+    "Pressure and Buoyancy", "Heat", "Oscillations and Waves", "Sound", "Light", "Current Electricity",
+    "Magnetism and Electromagnetism", "Information and Communication Technology", "Space and Astronomy",
+  ],
+  Chemistry: [
+    "Matter and Its Nature", "Measurement of Matter", "Atomic Structure", "Elements and Periodic Classification",
+    "Chemical Reactions", "Acids, Bases and Salts", "Metals and Their Compounds", "Carbon and Its Compounds",
+    "Air, Water and Gases", "Substances in Common Use",
+  ],
+  Biology: [
+    "Cell and Tissues", "Classification of Plants", "Classification of Animals", "Plants and Their Functions",
+    "Life Processes", "Human Body and Health", "Reproduction", "Heredity and Evolution", "Microbes", "Biotechnology",
+    "Agriculture and Animal Husbandry", "Ecosystem and Environment",
+  ],
+  "General Science": ["Scientists and Discoveries", "Disaster Management and First Aid", "Science and Technology in the News"],
+};
+
+/** Homi Bhabha Class 9's one paper covers all four subjects, so its past questions are one book. */
+const HOMI_BHABHA_9_CHAPTERWISE: ChapterwiseEbook = {
+  kind: "chapterwise",
+  slug: "homi-bhabha-9-chapterwise-pyqs",
+  examSlug: "homi-bhabha-9",
+  subject: "Science",
+  source: "bank",
+  examiner: "exam",
+  bankSubjects: ["Physics", "Chemistry", "Biology", "General Science"],
+  chapterOrder: HOMI_BHABHA_9_ORDER,
+  board: "Homi Bhabha Class 9",
+  subjectTitle: "Science",
+  title: "Homi Bhabha Class 9 Science",
+  subtitle: "Every past question, chapter by chapter from Physics to General Science, with a worked solution to each.",
+};
+
+const BOARD_CHAPTERWISE: ChapterwiseEbook[] = [
   ...PLAN_SUBJECTS.filter((b) => !b.examSlug.startsWith("cbse")).flatMap((b) =>
     b.subjects.map((subject) => ({ examSlug: b.examSlug, board: b.board, subject, source: "plan" as const }))
   ),
@@ -303,6 +359,8 @@ export const CHAPTERWISE_EBOOKS: readonly ChapterwiseEbook[] = [
       ? "Every board question, chapter by chapter, grouped by marks, with a worked solution to each."
       : "One board paper from each year, regrouped chapter by chapter and by marks, with a worked solution to each.",
 }));
+
+export const CHAPTERWISE_EBOOKS: readonly ChapterwiseEbook[] = [...BOARD_CHAPTERWISE, HOMI_BHABHA_9_CHAPTERWISE];
 
 /**
  * A Textbook Solutions book (2026-10-27): one textbook's exercises in the

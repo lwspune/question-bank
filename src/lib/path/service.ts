@@ -34,7 +34,8 @@ import { logActivity } from "@/lib/activity/service";
 import { pacedEvent } from "./funnel";
 import { loadOwnPool } from "@/lib/drill/compose";
 import { istDayKey, istDayStartIso } from "@/lib/email/dueNudge";
-import { resolveExamDate } from "@/lib/exam/calendar";
+import { resolveExamDate, type SittingEntry } from "@/lib/exam/calendar";
+import { loadExamCalendar } from "@/lib/exam/calendarQuery";
 import { getOwnProfile } from "@/lib/profile/service";
 import { getPathContent, getPathPapers } from "./content";
 import { readChapterStates } from "./stateRead";
@@ -102,10 +103,11 @@ export async function getActivePath(db: SupabaseClient, userId: string): Promise
 export function boardDateFor(
   exam: PathExam,
   profile: { targetExams: readonly string[]; examDate: string | null },
-  now: Date
+  now: Date,
+  calendar: readonly SittingEntry[]
 ): { date: string; official: boolean } | null {
   const own = profile.targetExams[0] === exam ? profile.examDate : null;
-  const c = resolveExamDate({ targetExams: [exam], examDate: own }, now);
+  const c = resolveExamDate({ targetExams: [exam], examDate: own }, now, calendar);
   return c ? { date: c.date, official: c.official } : null;
 }
 
@@ -472,7 +474,7 @@ export async function getPathToday(
   const now = opts.now ?? new Date();
   const path = await getActivePath(db, userId);
   if (!path) return null;
-  const board = boardDateFor(path.exam, opts.profile, now);
+  const board = boardDateFor(path.exam, opts.profile, now, await loadExamCalendar());
   if (!board) return null;
 
   const inp = await loadDayInputs(db, userId, path, board, now);
@@ -578,7 +580,7 @@ export async function getPathOffer(
 ): Promise<PathOffer | null> {
   const exam = profile.targetExams.find(isPathExam);
   if (!exam) return null;
-  const board = boardDateFor(exam, profile, now);
+  const board = boardDateFor(exam, profile, now, await loadExamCalendar());
   if (!board) return null;
   const stream = (STREAMS as readonly string[]).includes(profile.stream ?? "") ? (profile.stream as Stream) : null;
   const chapters = await getPathContent(exam, subjectsForStream(stream ?? "pcm"));
@@ -612,7 +614,7 @@ export async function startPath(
     if (existing.exam === input.exam) return existing;
     throw new PathError("You already have a plan. Stop it on your account page first.", 409);
   }
-  const board = boardDateFor(input.exam, profile, now);
+  const board = boardDateFor(input.exam, profile, now, await loadExamCalendar());
   if (!board) throw new PathError("No board date to plan to.", 409);
 
   const subjects = subjectsForStream(input.stream);
@@ -666,7 +668,7 @@ async function replanToday(
   focus?: string
 ): Promise<void> {
   const profile = await getOwnProfile(db, userId);
-  const board = boardDateFor(path.exam, profile, now);
+  const board = boardDateFor(path.exam, profile, now, await loadExamCalendar());
   if (!board) return;
   const inp = await loadDayInputs(db, userId, path, board, now);
   if (!inp.stored) return;
@@ -892,7 +894,7 @@ export async function getPathForV(db: SupabaseClient, userId: string, now: Date 
     };
   }
   const offer = await getPathOffer(profile, now);
-  const board = offer ? boardDateFor(offer.exam, profile, now) : null;
+  const board = offer ? boardDateFor(offer.exam, profile, now, await loadExamCalendar()) : null;
   if (!offer || !board) return { kind: "none" };
   return {
     kind: "offer",

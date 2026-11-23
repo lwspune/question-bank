@@ -6,7 +6,7 @@ export const SPI_HP_LIFE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The body digests food, breathes to release energy from it, carries everything around in the blood and throws out waste as urine.",
   whyItMatters:
-    "Eight questions in the bank, seven of them EASY: the acid of the stomach, the enzyme found in both saliva and pancreatic juice, where gases are exchanged, lime water and exhaled air, cramps after hard exercise, the element used in clotting, the four chambers of the heart and the path of urine. Each one is a single named fact.",
+    "Ten questions in the bank, nine of them EASY and two from the 2026 paper: the acid of the stomach, the enzyme found in both saliva and pancreatic juice, where gases are exchanged, lime water and exhaled air, cramps after hard exercise, the element used in clotting, the four chambers of the heart, the path of urine, the kidney's filtering units, and what protects the stomach lining from its own acid. Each one is a single named fact.",
   concepts: [
     {
       kind: "reference" as const,
@@ -56,7 +56,7 @@ export const SPI_HP_LIFE_NOTE: SubtopicNote = {
         { prompt: "In which part of the gut is most digested food absorbed into the blood?", answer: "The small intestine (through its villi)" },
         { prompt: "Which acid do the gastric glands of the stomach make?", answer: "Hydrochloric acid" },
       ],
-      pyqExampleId: "8667a19b-eecd-4204-b139-8e26dc6ef639",
+      pyqExampleId: "72fb4d79-b02d-4665-925c-9c387169e29e",
       traps: [
         {
           title: "Calling bile an enzyme",
@@ -222,7 +222,7 @@ export const SPI_HP_LIFE_NOTE: SubtopicNote = {
         { prompt: "Which organ stores urine?", answer: "The urinary bladder" },
         { prompt: "How many ureters does the human body have?", answer: "Two, one from each kidney" },
       ],
-      pyqExampleId: "2f24b796-4463-40dd-8d83-275a0a6e6de2",
+      pyqExampleId: "b26cbe3a-6392-48d5-88b0-997b821fb4fb",
       traps: [
         {
           title: "Swapping ureter and urethra",

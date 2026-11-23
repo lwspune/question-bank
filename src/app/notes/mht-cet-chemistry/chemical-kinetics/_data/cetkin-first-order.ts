@@ -62,6 +62,7 @@ export const FIRST_ORDER_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetkin-first-order-integrated-law",
       name: "k = (2.303/t) log([A]₀/[A]ₜ): Percent Decomposed, and the Time to 90%, 99%, 99.9%",
+      visualizationSlug: "cet-first-order-plot",
       intuition:
         "Integrating \\(r = k[A]\\) gives \\(\\ln\\dfrac{[A]_0}{[A]_t} = kt\\), written with base-10 logs as \\(k = \\dfrac{2.303}{t}\\log\\dfrac{[A]_0}{[A]_t}\\). Put \\([A]_0 = 100\\) and \\([A]_t = \\) percent REMAINING; a stem that says 60% decomposed means \\([A]_t = 40\\).",
       definition:

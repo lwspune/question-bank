@@ -12,6 +12,7 @@ export const NEET_CH_CB_MOT_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nchcb-mo-order",
       name: "Molecular orbitals and their energy order",
+      visualizationSlug: "jee-mo-diagram",
       intuition:
         "When two atoms come together, their atomic orbitals combine into molecular orbitals that belong to the whole molecule. Each pair of atomic orbitals gives two: a bonding orbital lower in energy, which holds the atoms together, and an antibonding orbital (marked with a star) higher in energy, which pushes them apart. Electrons fill these from the lowest energy up, like electrons in an atom.",
       definition:

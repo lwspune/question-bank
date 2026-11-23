@@ -12,6 +12,7 @@ export const NEET_BO_MB_TRANSCRIPTION_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nbomb-transcription-unit",
       name: "The transcription unit: template and coding strands, promoter and terminator",
+      visualizationSlug: "imat-transcription",
       intuition:
         "Only one strand of a gene is read. RNA is built 5' to 3', so the strand that is read runs 3' to 5'; that is the template strand. The other strand is never read, but its sequence is the same as the RNA except that it has T where RNA has U, so it is called the coding strand. The promoter at the start and the terminator at the end mark where reading begins and stops.",
       definition:

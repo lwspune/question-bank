@@ -59,6 +59,7 @@ export const COLOUR_AND_MAGNETISM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cettr-spin-only-moment",
       name: "Unpaired Electrons and the Spin-Only Magnetic Moment",
+      visualizationSlug: "cet-spin-only-moment",
       intuition:
         "Each unpaired electron adds to the magnetic moment; paired electrons cancel. Count the unpaired electrons n from the ion's d configuration (n for d¹–d⁵, 10 − n for d⁶–d¹⁰), then μ = √(n(n+2)) BM. The largest moment among 3d ions belongs to d⁵ (Mn²⁺, Fe³⁺: five unpaired, 5.92 BM); d⁰ and d¹⁰ ions (Sc³⁺, Zn²⁺) have none. Ions with the same d count have the same moment, whatever the element. Iron, cobalt and nickel go further — ferromagnetic, keeping their magnetism without a field; chromium does not.",
       definition:

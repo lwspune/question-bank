@@ -18,6 +18,28 @@ export function lessonHref(chapter: string, concept: string, opts: { course?: st
   return `${LEARN_HUB}/lesson/${chapter}/${concept}${query ? `?${query}` : ""}`;
 }
 
+/** A lesson to open: its chapter and concept, and the course the student came from. */
+export type LessonTarget = { chapter: string; concept: string; course: string | null };
+
+const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+
+/**
+ * A lesson's address read back (2026-11-22): V's map rows and the lesson's own links open the
+ * lesson inside V rather than leaving for its page. Null for anything that is not a lesson.
+ */
+export function parseLessonHref(href: string): LessonTarget | null {
+  let url: URL;
+  try {
+    url = new URL(href, "https://x.invalid");
+  } catch {
+    return null;
+  }
+  const m = /^\/learn\/lesson\/([^/]+)\/([^/]+)$/.exec(url.pathname);
+  if (!m || !SLUG.test(m[1]) || !SLUG.test(m[2])) return null;
+  const course = url.searchParams.get("course");
+  return { chapter: m[1], concept: m[2], course: course && SLUG.test(course) ? course : null };
+}
+
 /** The database's mastery and review rules (learn_mastery_needed / learn_review_needed, migration 0192), for a guest's page-only progress. */
 export const MASTERY_NEEDED = 3;
 export const REVIEW_NEEDED = 2;

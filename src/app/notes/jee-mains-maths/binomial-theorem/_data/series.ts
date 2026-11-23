@@ -13,6 +13,7 @@ export const SERIES_BIN_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jbin-hockey",
       name: "The hockey-stick identity",
+      visualizationSlug: "jee-hockey-stick",
       intuition:
         "Adding one column of Pascal's triangle gives the entry one row down and one place right: \\(\\binom rr+\\binom{r+1}r+\\dots+\\binom nr=\\binom{n+1}{r+1}\\). So the coefficient of \\(x^r\\) in \\((1+x)^r+(1+x)^{r+1}+\\dots+(1+x)^n\\) is \\(\\binom{n+1}{r+1}\\). A sum that starts later is a difference of two such totals.",
       definition:

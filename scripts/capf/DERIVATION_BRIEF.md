@@ -77,8 +77,10 @@ aside. It goes BOTH ways: on one paper the key took the strict reading the
 deriver listed as runner-up, and on another it took the generous one. So the
 lesson is not "prefer strict" or "prefer generous" — it is that when you can feel
 an item pivoting on one word, the alternative you rejected is where a reviewer
-should look first. Write it down and say what would have to be true for it to
-win.
+should look first. Write it down in a separate `runnerUp` field, NEVER in
+`reasoning` (a student reads `reasoning` as the solution, and `validateRows`
+refuses a runner-up aside there), and say what would have to be true for it
+to win.
 
 ### `reasoning` is the evidence, not a restatement
 
@@ -102,7 +104,7 @@ statement.
 **Current-affairs items** ask about the year or two before the exam (the paper
 year is in your packet's `paper` field). Answer from what you know of that
 period. Where your knowledge is thin or the event may postdate it, say so, set
-`confidence` to `LOW`, and name the runner-up: an honest LOW here is exactly
+`confidence` to `LOW`, and name the runner-up in `runnerUp`: an honest LOW here is exactly
 what this pilot is measuring.
 
 **Reasoning and figure items**: work them out step by step; for a figure, say in

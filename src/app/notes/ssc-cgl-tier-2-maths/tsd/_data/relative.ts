@@ -12,6 +12,7 @@ export const SSC2_TD_RELATIVE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2tdrs-meeting",
       name: "Meeting and chasing",
+      visualizationSlug: "af-circular-track",
       intuition:
         "Two people walking towards each other close the gap by both their speeds together; a chaser closes it only by the difference. Treat one of them as standing still and give the other the relative speed.",
       definition:
@@ -50,6 +51,7 @@ export const SSC2_TD_RELATIVE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2tdrs-trains",
       name: "Trains crossing",
+      visualizationSlug: "af-train-platform",
       intuition:
         "A train has passed something only when its tail has gone by, so it has to travel its own length and then the length of whatever it passes. Two trains crossing cover both their lengths at their relative speed.",
       definition:

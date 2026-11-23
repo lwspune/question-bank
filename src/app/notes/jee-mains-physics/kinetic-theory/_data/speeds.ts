@@ -68,6 +68,7 @@ export const SPEEDS_KTG_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpktg-speed-types",
       name: "The rms, average and most probable speeds",
+      visualizationSlug: "jee-maxwell-speeds",
       intuition:
         "Molecular speeds are spread out (the Maxwell distribution), so there are three useful averages. The most probable speed sits at the peak of the curve, the average speed is a little higher, and the rms speed, which weights fast molecules more because it squares the speeds, is higher still. All three are fixed multiples of √(RT/M), so their ratios are the same for every gas at every temperature.",
       definition:

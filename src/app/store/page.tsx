@@ -14,13 +14,13 @@ import CourseCard from "./_components/CourseCard";
 import ShelfChips, { type ShelfChip } from "./ShelfChips";
 
 /**
- * The store (2026-10-20; called Ebooks until 2026-11-17): books sold one at a
+ * The store (2026-10-20; called Ebooks until 2026-11-23): books sold one at a
  * time as PDFs, apart from the Premium Pass. One shelf per exam (2026-10-26,
  * lib/ebooks/shelves), with jump chips to each, every book shown by its cover
  * under its subject. The catalogue is the `ebooks` table (active rows only);
  * an hour's cache.
  *
- * Since 2026-11-17 it also carries a TRIAL of partner courses: online courses
+ * Since 2026-11-23 it also carries a TRIAL of partner courses: online courses
  * of our offline partner Defence Mania, one shelf per exam (CDS, AFCAT), each
  * card a counted tap link to the partner's page (lib/partnerCourses, migration
  * 0269, experiment partner-courses). They sit after the book shelves and

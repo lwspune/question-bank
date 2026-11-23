@@ -70,8 +70,10 @@ aside. It goes BOTH ways: on one paper the key took the strict reading the
 deriver listed as runner-up, and on another it took the generous one. So the
 lesson is not "prefer strict" or "prefer generous" — it is that when you can feel
 an item pivoting on one word, the alternative you rejected is where a reviewer
-should look first. Write it down and say what would have to be true for it to
-win.
+should look first. Write it down in a separate `runnerUp` field, NEVER in
+`reasoning` (a student reads `reasoning` as the solution, and `validateRows`
+refuses a runner-up aside there), and say what would have to be true for it
+to win.
 
 ### `reasoning` is the evidence, not a restatement
 

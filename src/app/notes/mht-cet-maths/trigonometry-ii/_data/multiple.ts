@@ -13,6 +13,7 @@ export const MULTIPLE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cett2-double-half",
       name: "Double and Half Angles, and the Sign of a Half Angle",
+      visualizationSlug: "trig-astc-quadrants",
       intuition:
         "Put B = A in the compound formulas and you get the double angles. cos 2A has three forms; pick the one that cancels what the question already has. Read backwards, the same forms give the half angle: cos²(x/2) = (1 + cos x)/2. The square root leaves a sign to choose, and it comes from where x/2 lies, not where x lies.",
       definition:

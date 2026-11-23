@@ -13,7 +13,6 @@
 // A GK paper is 120 standalone MCQs. See config.ts's header.
 import type { RawRow } from "../../src/lib/upload/validate";
 import type { Catalog } from "./config";
-import { solutionTail } from "./provenance";
 
 export type Option = { label: string; text: string };
 
@@ -288,7 +287,6 @@ export function buildRecords(
     const d = byNumber.get(q.number);
     if (!d) continue;
     const opt = (l: string) => q.options.find((o) => o.label === l)?.text ?? "";
-    const agreed = !opts.reconciled?.has(q.number);
     rows.push({
       sourceRow: q.number,
       questionNumber: String(q.number),
@@ -302,12 +300,7 @@ export function buildRecords(
       optionD: opt("D"),
       answer: d.answer.toUpperCase(),
       difficulty: q.difficulty,
-      solution: `${d.reasoning.trim()} ${solutionTail({
-        hasAnswerKey: !!opts.answerKey,
-        confidence: d.confidence.toUpperCase(),
-        agreed,
-        corrected: !!d.corrected,
-      })}`.trim(),
+      solution: d.reasoning.trim(),
     });
   }
   return rows;

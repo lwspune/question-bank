@@ -6,7 +6,7 @@ export const SPI_PO_BASICS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The degree of a polynomial is its highest power of x, its value at a number comes from putting that number in for x, and a zero is a value of x that makes it 0.",
   whyItMatters:
-    "Eight questions in the bank, seven of them EASY: name the degree, pick the linear polynomial, find a value, or count the zeroes on a graph. These are the quickest marks in the chapter, and they are lost to a squared negative number or to counting where a graph meets the wrong axis.",
+    "Nine questions in the bank, seven of them EASY and one from the 2026 paper: name the degree, pick the linear polynomial, find a value, or count the zeroes on a graph. These are the quickest marks in the chapter, and they are lost to a squared negative number or to counting where a graph meets the wrong axis.",
   concepts: [
     {
       kind: "reference" as const,
@@ -133,7 +133,7 @@ export const SPI_PO_BASICS_NOTE: SubtopicNote = {
         { prompt: "Does the parabola \\(y = -x^2 + 4\\) open upwards or downwards?", answer: "Downwards: the coefficient of \\(x^2\\) is negative" },
         { prompt: "At which x-values does the graph of \\(y = (x - 1)(x + 3)\\) meet the x-axis?", answer: "\\(x = 1\\) and \\(x = -3\\)" },
       ],
-      pyqExampleId: "efdeba83-2cb4-4526-b4f4-9317bf6fa412",
+      pyqExampleId: "3149b4b3-0613-4e45-9a0c-8d85ae20a6a8",
       traps: [
         {
           title: "Counting where the graph meets the y-axis",

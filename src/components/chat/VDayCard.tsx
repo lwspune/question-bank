@@ -1,22 +1,40 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Play, Target, TrendingUp } from "lucide-react";
+import { ArrowRight, Play, Target, Timer, TrendingUp } from "lucide-react";
 import { trackFunnel } from "@/lib/analytics/trackFunnel";
 import type { DayAction, DayCard } from "@/lib/chat/dayCard";
+import { useIntlSite } from "@/lib/sites/useIntlSite";
+import { progressPathFor } from "@/lib/sites/intl";
 
 /**
  * V's "Your day" card (2026-11-15, lib/chat/dayCard.ts), under V's greeting
  * the first time a student opens V on a new day. The window reads it (GET
  * /api/chat/progress?view=day) and passes it in; this only draws it. One main
- * button: today's plan task, else Fix, else full progress.
+ * button: today's plan task, else the exam countdown's step (2026-11-21), else
+ * Fix, else full progress. The countdown row is amber, the colour of a
+ * deadline, and lists its chapters with a note each.
  */
 export default function VDayCard({ card, onNavigate }: { card: DayCard; onNavigate?: () => void }) {
+  // Full progress is /me/map on intl, which serves no /performance (2026-11-19).
+  const progressPath = progressPathFor(useIntlSite() ? "intl" : "pyqvault");
+  const hrefOf = (a: DayAction) => (a.action === "performance" ? progressPath : a.href);
   function go(a: DayAction) {
     trackFunnel("v_day_tap", { action: a.action });
     onNavigate?.();
   }
-  const Icon = card.primary.action === "plan" ? Play : card.primary.action === "drill" ? Target : ArrowRight;
+  const Icon =
+    card.primary.action === "plan"
+      ? Play
+      : card.primary.action === "drill"
+        ? Target
+        : card.primary.action === "exam"
+          ? card.countdown === "mock"
+            ? Timer
+            : card.countdown === "fix"
+              ? Target
+              : Play
+          : ArrowRight;
 
   return (
     <section className="ml-9 mt-2 rounded-xl border bg-card p-3 text-sm shadow-sm" aria-label={card.title}>
@@ -32,10 +50,38 @@ export default function VDayCard({ card, onNavigate }: { card: DayCard; onNaviga
         {card.rows.map((r) => (
           <div
             key={r.label}
-            className={`rounded-lg px-2.5 py-1.5 ${r.tone === "today" ? "border border-brand-accent/25 bg-brand-accent/[0.08]" : "bg-muted/40"}`}
+            className={`rounded-lg px-2.5 py-1.5 ${
+              r.tone === "today"
+                ? "border border-brand-accent/25 bg-brand-accent/[0.08]"
+                : r.tone === "exam"
+                  ? "border border-amber-500/40 bg-amber-50 dark:bg-amber-950/20"
+                  : "bg-muted/40"
+            }`}
           >
-            <dt className={`text-xs font-semibold ${r.tone === "today" ? "text-brand-accent" : "text-muted-foreground"}`}>{r.label}</dt>
+            <dt
+              className={`text-xs font-semibold ${
+                r.tone === "today"
+                  ? "text-brand-accent"
+                  : r.tone === "exam"
+                    ? "text-amber-800 dark:text-amber-300"
+                    : "text-muted-foreground"
+              }`}
+            >
+              {r.label}
+            </dt>
             <dd className={`font-medium ${r.tone === "good" ? "text-emerald-700 dark:text-emerald-400" : ""}`}>{r.value}</dd>
+            {r.items && r.items.length > 0 && (
+              <dd>
+                <ul className="mt-1 space-y-0.5">
+                  {r.items.map((it) => (
+                    <li key={it.name} className="flex items-baseline justify-between gap-3 text-[13px]">
+                      <span className="min-w-0">{it.name}</span>
+                      <span className="shrink-0 text-xs text-muted-foreground">{it.note}</span>
+                    </li>
+                  ))}
+                </ul>
+              </dd>
+            )}
             {r.detail && <dd className="mt-0.5 text-xs text-muted-foreground">{r.detail}</dd>}
           </div>
         ))}
@@ -43,7 +89,7 @@ export default function VDayCard({ card, onNavigate }: { card: DayCard; onNaviga
 
       <div className="mt-3 flex flex-wrap gap-2">
         <Link
-          href={card.primary.href}
+          href={hrefOf(card.primary)}
           onClick={() => go(card.primary)}
           className="inline-flex items-center gap-1 rounded-full bg-brand px-3.5 py-1.5 text-xs font-semibold text-brand-foreground shadow-sm transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
@@ -52,7 +98,7 @@ export default function VDayCard({ card, onNavigate }: { card: DayCard; onNaviga
         </Link>
         {card.secondary && (
           <Link
-            href={card.secondary.href}
+            href={hrefOf(card.secondary)}
             onClick={() => go(card.secondary!)}
             className="inline-flex items-center gap-1 rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3.5 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >

@@ -13,6 +13,7 @@ export const PIPES_DOPPLER_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-organ-pipes",
       name: "Open and Closed Pipes",
+      visualizationSlug: "cet-pipe-modes",
       intuition:
         "An open end is free, so it is an antinode; a closed end is blocked, so it is a node. An open pipe fits half a wavelength and all its multiples; a closed pipe fits only a quarter-wavelength and its odd multiples — so it is an octave lower and missing every even harmonic.",
       definition:

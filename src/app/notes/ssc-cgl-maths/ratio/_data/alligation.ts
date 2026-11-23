@@ -69,6 +69,7 @@ export const SSC_RA_ALLIGATION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscraal-cross",
       name: "The alligation cross for a mixing ratio",
+      visualizationSlug: "ssc-alligation-cross",
       intuition:
         "The mean price is a balance point between the two prices. The kind whose price is closer to the mean must be present in a larger amount to hold the balance there, so each kind's share is the OTHER kind's distance from the mean.",
       definition:

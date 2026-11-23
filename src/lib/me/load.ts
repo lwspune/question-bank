@@ -33,7 +33,9 @@ import { isStage, needsStageNudge, sanitizeTargetExams, type Stage } from "@/lib
 import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { firstMockHref, firstNotesHref } from "@/lib/exam/examLinks";
-import { loadPathCard, type PathCard } from "@/lib/path/service";
+import { loadStudyCard, studyExamOf, type StudyExam } from "@/lib/studyTime/reportServer";
+import type { StudyCard } from "@/lib/studyTime/report";
+import { loadClassOffer, type ClassOfferCardData } from "@/lib/classes/meOfferServer";
 
 /** The header fields (greeting, exams, focus) plus the Home tab's own cards. */
 export type MeData = MeHeaderData & {
@@ -52,11 +54,17 @@ export type MeData = MeHeaderData & {
   mocks: ReturnType<typeof summarizeUserMocks>;
   continueItems: ContinueItem[];
   showNps: boolean;
-  /** The board path (MENTOR_SPEC.md, migration 0225): today on it, or the start offer. */
-  pathCard: PathCard;
   /** "Start next" (2026-11-09, migration 0242): the highest-value chapters of
    *  their exam not started yet. Optional so older fixtures stay small. */
   startNext?: ChapterWeight[];
+  /** Study time (2026-11-21, migration 0278): today and the last 7 days in
+   *  the exam Start next ranks by, or null under 15 minutes. Optional so older
+   *  fixtures stay small. */
+  study?: { card: StudyCard; exam: StudyExam | null } | null;
+  /** The class offer (2026-11-22, migration 0282): SPI crash course for a
+   *  Class 10 student, offline NDA classes for an NDA student, or null.
+   *  Optional so older fixtures stay small. */
+  classOffer?: ClassOfferCardData | null;
 };
 
 export async function loadMe(
@@ -110,7 +118,8 @@ export async function loadMe(
 
   // ROUND 2: the reads that need round 1 (the focus, the exams), at once.
   // Each is best effort: a failed read costs its card, never the page.
-  const [continueItems, resultChecked, pathCard, startNext] = await Promise.all([
+  const studySlug = startNextExam({ focusSlug, targets });
+  const [continueItems, resultChecked, startNext, studyCard, classOffer] = await Promise.all([
     // Where they were last working, across the bank, /board, notes and
     // homework (2026-11-06).
     loadContinue(
@@ -134,16 +143,22 @@ export async function loadMe(
         check,
         suggestedName: check ? await loadSuggestedName(user.id).catch(() => "") : "",
       })),
-    // The board path (2026-11-07), for students with a Class 12 board among
-    // their exams.
-    loadPathCard(db, user.id, targets, { write: !opts.staffView, now }).catch((e) => {
-      console.error("path read failed", e instanceof Error ? e.message : e);
-      return { path: null, offer: null } as PathCard;
-    }),
     // "Start next" (2026-11-09): the exam in focus, else their first exam.
     loadStartNext(db, user.id, startNextExam({ focusSlug, targets }), examIds).catch((e) => {
       console.error("start next read failed", e instanceof Error ? e.message : e);
       return [] as ChapterWeight[];
+    }),
+    // Study time (2026-11-21): the same exam as Start next, so the two cards
+    // speak about one exam.
+    loadStudyCard(db, user.id, studySlug, examIds, now).catch((e) => {
+      console.error("study time read failed", e instanceof Error ? e.message : e);
+      return null;
+    }),
+    // The class offer (one per student, ever): the course for the exam in
+    // focus, else their first exam, else the first other exam that has one.
+    loadClassOffer(user.id, targets, studySlug).catch((e) => {
+      console.error("class offer read failed", e instanceof Error ? e.message : e);
+      return null;
     }),
   ]);
   const cont = continueItems[0];
@@ -174,7 +189,8 @@ export async function loadMe(
     mocks,
     continueItems,
     showNps,
-    pathCard,
     startNext,
+    study: studyCard ? { card: studyCard, exam: studyExamOf(studySlug) } : null,
+    classOffer,
   };
 }

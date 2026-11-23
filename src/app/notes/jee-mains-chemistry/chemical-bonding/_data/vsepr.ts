@@ -68,6 +68,7 @@ export const VSEPR_BOND_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jcbond-lp-position",
       name: "Where lone pairs sit: equatorial and trans",
+      visualizationSlug: "imat-vsepr-shapes",
       intuition:
         "In a trigonal bipyramid an axial position has three neighbours at 90°, but an equatorial one has only two. A lone pair repels more than a bond pair, so it takes the roomier equatorial site. In an octahedron all sites are alike, and two lone pairs keep as far apart as they can, opposite each other.",
       definition:

@@ -13,6 +13,7 @@ export const PIECEWISE_DI_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jdi-gif",
       name: "Greatest integer: split where the value jumps",
+      visualizationSlug: "greatest-integer-staircase",
       intuition:
         "\\([g(x)]\\) stays constant until \\(g(x)\\) crosses an integer. List the points in the interval where \\(g\\) takes integer values, split there, and add (integer value) × (length of the piece). For \\([x]\\) the pieces are unit intervals; for \\([x^2]\\) the breaks are at \\(1,\\sqrt2,\\sqrt3,2,\\dots\\). An integer can be taken out: \\([n+t]=n+[t]\\).",
       definition:

@@ -12,6 +12,7 @@ export const SSC2_REF_FIGURES_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2reffg-embedded",
       name: "Figure hidden in an option",
+      visualizationSlug: "ssc-t2-segment-digits",
       intuition:
         "Every line of the given figure must be somewhere in the right option, pointing the same way and in the same proportions; extra lines around it are allowed. Look for the given figure's oddest part first.",
       definition:

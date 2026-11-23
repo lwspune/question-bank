@@ -29,7 +29,7 @@ import { getPremiumLimits } from "@/lib/billing/premiumLimits";
 import { passOnSale } from "@/lib/billing/passOnSale";
 import { loadCountedRevealsToday } from "@/lib/questions/revealQuota";
 import { istDayKey } from "@/lib/email/dueNudge";
-import { holdsPassFor, passScopesFor } from "@/lib/billing/passScope";
+import { holdsPassFor, passScopesFor, revealLimitFor } from "@/lib/billing/passScope";
 import { readCountry } from "@/lib/acquisition/country";
 import { revealCountWithout } from "@/lib/path/exemptions";
 import { ensureTodayExemptions } from "@/lib/path/service";
@@ -57,7 +57,9 @@ export async function GET(request: NextRequest) {
   // says it (?exam=), else any pass this site sells.
   const site = planSiteForHost(request.headers.get("host"));
   const scopes = passScopesFor(site, request.nextUrl.searchParams.get("exam"));
-  if (holdsPassFor(limits, scopes) || limits.revealsPerDay === null) {
+  // The intl exams' own limit (0274), as claim_reveal enforces it.
+  const limit = revealLimitFor(limits, scopes);
+  if (holdsPassFor(limits, scopes) || limit === null) {
     return NextResponse.json({ limit: null, todayIds: [] }, { headers: NO_STORE });
   }
   try {
@@ -71,7 +73,7 @@ export async function GET(request: NextRequest) {
     ]);
     const todayIds = revealCountWithout(counted, exempt.revealIds);
     return NextResponse.json(
-      { limit: limits.revealsPerDay, todayIds, exemptIds: exempt.revealIds, pass },
+      { limit, todayIds, exemptIds: exempt.revealIds, pass },
       { headers: NO_STORE }
     );
   } catch (e) {

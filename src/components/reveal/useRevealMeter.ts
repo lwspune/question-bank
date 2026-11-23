@@ -15,6 +15,7 @@ import { isFreeExamName } from "@/lib/billing/passScope";
 import { fetchDailyQuota } from "@/lib/questions/dailyQuotaFetch";
 import { applyClaim, claimReveal, needsClaim } from "@/lib/questions/claimReveal";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import { parseActivate, type ActivateResult, type TrialEnded, type TrialOffer } from "@/lib/billing/practiceTrial";
 
 /**
  * A reveal that came from tapping an option. `correct` is the page's own
@@ -123,6 +124,13 @@ let dailyFetch: Promise<void> | null = null;
 let dailyUnlimited = false;
 /** One claim per question at a time: a double tap asks once. */
 const claims = new Map<string, Promise<boolean>>();
+/**
+ * What the last refusal at the limit carried (migration 0273): the 7-day
+ * Practice Pass offer, or the line after a trial ended. The wall reads them;
+ * the server decides both on every refusal, so they are never cached past one.
+ */
+let trialOffer: TrialOffer | null = null;
+let trialEnded: TrialEnded | null = null;
 
 /** Today's quota, or null when unlimited / not loaded. Rolls over at midnight
  *  IST by starting an empty list, so a tab left open overnight is not walled. */
@@ -156,6 +164,10 @@ function claimForPage(questionId: string, surface: PracticeSurface): Promise<boo
     const result = await claimReveal((fn, args) => createSupabaseBrowserClient().rpc(fn, args), questionId, surface);
     // The server could not be asked: this one answer goes ahead.
     if (!result) return true;
+    if (result.reason === "limit") {
+      trialOffer = result.trialOffer;
+      trialEnded = result.trialEnded;
+    }
     const before = currentDaily();
     const next = applyClaim(before, questionId, result);
     if (next && next !== before) {
@@ -194,15 +206,43 @@ export function dailyRevealPass(): PassCta | null {
   return dailyQuota?.pass ?? null;
 }
 
+/** The 7-day Practice Pass offer the last refusal carried (0273); null = none. */
+export function dailyTrialOffer(): TrialOffer | null {
+  return trialOffer;
+}
+
+/** The trial that ended, for one line on the wall (0273); null = none. */
+export function dailyTrialEnded(): TrialEnded | null {
+  return trialEnded;
+}
+
 /**
  * A pass bought without a reload (V's offer, 2026-10-28): every card on the
  * page opens again. The quota is not asked for again on this page load.
  */
 export function liftDailyLimit(): void {
   dailyUnlimited = true;
+  trialOffer = null;
   if (!dailyQuota) return;
   dailyQuota = null;
   notify();
+}
+
+/**
+ * The student tapped Activate on the 7-day Practice Pass offer (0273). The
+ * server grants it only on a day the offer showed; on success every card on
+ * the page opens, as after a purchase.
+ */
+export async function activatePracticeTrial(): Promise<ActivateResult> {
+  try {
+    const { data, error } = await createSupabaseBrowserClient().rpc("activate_practice_trial");
+    if (error) return { ok: false };
+    const result = parseActivate(data);
+    if (result.ok) liftDailyLimit();
+    return result;
+  } catch {
+    return { ok: false };
+  }
 }
 
 function ensureDailyQuota(): void {
@@ -259,8 +299,14 @@ function useDailyQuota(signedIn: boolean, loading: boolean): void {
   }, [signedIn, loading]);
 }
 
-/** The daily wall was met: one impression per page session. */
+/**
+ * The daily wall was met: one impression per page session. Not when the wall
+ * is the free 7-day pass (0273): that is no pass offer, and counting it would
+ * swell the "met an offer" numbers the sales funnel and experiments read. The
+ * day at the limit itself is recorded by the server (reveal_limit_days).
+ */
 function reportDailyWall(surface: PracticeSurface): void {
+  if (trialOffer) return;
   sendActivityOnce("reveals", { kind: "paywall_event", step: "shown", gate: "reveals" });
   trackFunnelOnce("reveal_daily_limit_hit", surface, { surface });
 }

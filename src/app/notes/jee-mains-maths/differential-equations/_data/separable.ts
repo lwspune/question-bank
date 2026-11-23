@@ -59,6 +59,7 @@ export const SEPARABLE_DE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jde-direct",
       name: "When the slope depends on x alone",
+      visualizationSlug: "antiderivative-family",
       intuition:
         "If \\(\\frac{dy}{dx}\\) is a function of \\(x\\) only, the equation is just an integral: \\(y=\\int f(x)\\,dx+C\\). The work is the integration — often by parts, by \\(t=e^x\\), or by recognising a derivative. A second-order equation with no \\(y\\) in it integrates twice.",
       definition:

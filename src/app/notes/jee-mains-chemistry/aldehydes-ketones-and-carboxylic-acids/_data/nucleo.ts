@@ -69,6 +69,7 @@ export const NUCLEO_ALD_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcald-cyanohydrin",
       name: "Cyanohydrins and what they turn into",
+      visualizationSlug: "cet-carbonyl-addition",
       intuition:
         "Cyanide adds to the carbonyl carbon and the oxygen picks up a proton. The CN group is then a handle: hydrolysis turns it into COOH, and reduction turns it into \\(\\mathrm{CH_2NH_2}\\).",
       definition:

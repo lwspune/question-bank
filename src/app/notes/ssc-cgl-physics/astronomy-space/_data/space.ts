@@ -51,6 +51,7 @@ export const SSC_FAS_SPACE_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscfassp-satellites",
       name: "Satellites and space weather",
+      visualizationSlug: "ssc-satellite-orbits",
       intuition:
         "A satellite stays up because it moves sideways fast enough that it keeps falling round the Earth. Different orbits suit different jobs.",
       definition:

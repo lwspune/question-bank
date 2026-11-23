@@ -12,6 +12,7 @@ export const SSC2_IN_COMPOUND_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2inci-annual",
       name: "Compound interest year by year",
+      visualizationSlug: "ssc-t2-ci-minus-si",
       intuition:
         "Compound interest adds each year's interest to the sum before the next year's is worked out. The amount grows by one fixed factor a year, just like a chain of equal percentage rises.",
       definition:

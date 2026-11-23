@@ -77,6 +77,7 @@ export const ORBITS_ATOM_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpatom-energy-levels",
       name: "Energy levels and the kinetic–potential split",
+      visualizationSlug: "mp-bohr-energy-levels",
       intuition:
         "The electron is bound, so its total energy is negative. Its kinetic energy is positive, its potential energy negative and twice as large, so the total equals minus the kinetic energy. Moving to a higher level, the electron slows down (kinetic energy falls) while its potential and total energy rise towards zero. Two levels in different ions sit at the same energy when Z/n is the same.",
       definition:

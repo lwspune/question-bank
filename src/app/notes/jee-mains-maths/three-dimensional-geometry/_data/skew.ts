@@ -13,6 +13,7 @@ export const SKEW_3D_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "j3d-shortest-distance",
       name: "Shortest distance between skew lines",
+      visualizationSlug: "jee-skew-lines-distance",
       intuition:
         "Two skew lines neither meet nor run parallel. Their common perpendicular has direction \\(\\vec d_1\\times\\vec d_2\\), and the shortest distance is the length of the projection of any joining vector \\(\\vec a_2-\\vec a_1\\) onto that direction. It is zero exactly when the lines meet.",
       definition:

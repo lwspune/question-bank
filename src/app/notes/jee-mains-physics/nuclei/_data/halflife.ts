@@ -78,6 +78,7 @@ export const HALFLIFE_NUC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpnuc-half-lives",
       name: "Counting half-lives",
+      visualizationSlug: "imat-half-life-decay",
       intuition:
         "In each half-life, half of the nuclei still present decay. So the amount left halves again and again: 1, 1/2, 1/4, 1/8, … Find n, the number of half-lives that pass, and the fraction left is (1/2)ⁿ. Mass, number of nuclei and activity all follow this same law.",
       definition:

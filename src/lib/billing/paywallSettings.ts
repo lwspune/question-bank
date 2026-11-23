@@ -22,9 +22,13 @@ export type PaywallSettings = {
   freeDrillPerDay: number | null;
   /** Answer reveals per IST day, signed in. */
   freeRevealsPerDay: number | null;
+  /** The intl exams' own answer reveals per IST day (IMAT, MCAT; 0274). */
+  freeIntlRevealsPerDay: number | null;
   freeSaveLimit: number | null;
   /** Days the projected score stays free after the student reveals it. */
   projectionTrialDays: number | null;
+  /** Offer the 7-day Practice Pass on a student's Nth day at the answer limit (0273). */
+  practiceTrialAfterDays: number | null;
   /** Different whole past papers ANY account may download per IST day (0137). */
   mockPapersPerDay: number | null;
   /** Practice tests V builds that a free account may START per IST day (0156). */
@@ -40,8 +44,10 @@ export const PAYWALL_LIMITS = [
   "chapterTests",
   "drill",
   "reveals",
+  "intlReveals",
   "saves",
   "projection",
+  "practiceTrial",
   "paperDownloads",
   "practiceTests",
 ] as const;
@@ -62,8 +68,10 @@ export const EMPTY_PAYWALL_SETTINGS: PaywallSettings = {
   chapterTestsCountsFrom: null,
   freeDrillPerDay: null,
   freeRevealsPerDay: null,
+  freeIntlRevealsPerDay: null,
   freeSaveLimit: null,
   projectionTrialDays: null,
+  practiceTrialAfterDays: null,
   mockPapersPerDay: null,
   freePracticeTestsPerDay: null,
   brandWatermark: true,
@@ -77,8 +85,10 @@ const FIELDS: Record<PaywallLimit, { value: keyof PaywallSettings; since?: keyof
   chapterTests: { value: "freeChapterTestLimit", since: "chapterTestsCountsFrom" },
   drill: { value: "freeDrillPerDay" },
   reveals: { value: "freeRevealsPerDay" },
+  intlReveals: { value: "freeIntlRevealsPerDay" },
   saves: { value: "freeSaveLimit" },
   projection: { value: "projectionTrialDays" },
+  practiceTrial: { value: "practiceTrialAfterDays" },
   paperDownloads: { value: "mockPapersPerDay" },
   practiceTests: { value: "freePracticeTestsPerDay" },
 };

@@ -12,6 +12,7 @@ export const NEET_PH_OS_ENERGY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphos-energy",
       name: "Kinetic, potential and total energy",
+      visualizationSlug: "jee-shm-energy-graphs",
       intuition:
         "A stretched spring stores potential energy, and the moving mass has kinetic energy. As the particle swings, energy passes from one form to the other, but with no friction the total stays the same. At the mean position it is all kinetic; at the extremes, where the particle stops for an instant, it is all potential.",
       definition:

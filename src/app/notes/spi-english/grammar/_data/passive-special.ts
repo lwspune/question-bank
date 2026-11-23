@@ -6,7 +6,7 @@ export const SPI_GR_PASSIVE_SPECIAL_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Questions, modal verbs and verbs such as make, believe and know follow the same passive steps, with one extra rule each.",
   whyItMatters:
-    "Ten questions in the bank, 7 of them MODERATE and 3 EASY: the hardest share of any Grammar page. Each one adds a twist to the plain passive (who becomes by whom, a modal keeps its place, make takes to), and the wrong options are built on missing that twist.",
+    "Eleven questions in the bank, 7 of them MODERATE and 4 EASY (one from the 2026 paper): the hardest share of any Grammar page. Each one adds a twist to the plain passive (who becomes by whom, a modal keeps its place, make takes to), and the wrong options are built on missing that twist.",
   concepts: [
     {
       kind: "reference" as const,
@@ -46,7 +46,7 @@ export const SPI_GR_PASSIVE_SPECIAL_NOTE: SubtopicNote = {
         { prompt: "Change to the passive: Who helps the poor children?", answer: "By whom are the poor children helped?" },
         { prompt: "Change to the active: By whom was the song composed?", answer: "Who composed the song?" },
       ],
-      pyqExampleId: "fbd4a488-aaf2-4b51-a537-f5bd31e1802e",
+      pyqExampleId: "fbe8b1c2-c11c-45b4-836b-0aed9bd101d5",
       traps: [
         {
           title: "Writing a passive question in statement order",

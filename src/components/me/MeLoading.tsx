@@ -15,13 +15,14 @@ import { ME_TABS, type MeTab } from "./MeHeader";
  */
 /** The page being loaded: each tab's page, plus /account, which has no tab
  *  since 2026-11-08 (it lives in the avatar menu). */
-type LoadingPage = "home" | "review" | "performance" | "account";
+type LoadingPage = "home" | "review" | "performance" | "map" | "account";
 
 /** The tab each page sits under; /account sits under none, so no strip. */
 const TAB_OF: Record<LoadingPage, MeTab | null> = {
   home: "home",
   review: "review",
   performance: "progress",
+  map: "map",
   account: null,
 };
 
@@ -29,6 +30,7 @@ const MAIN: Record<LoadingPage, string> = {
   home: "mx-auto max-w-4xl space-y-6 px-4 py-6 sm:space-y-8 sm:px-6 sm:py-8",
   review: "mx-auto max-w-4xl space-y-6 px-4 py-6 sm:px-6 sm:py-8",
   performance: "mx-auto max-w-5xl space-y-8 px-4 py-6 sm:px-6 sm:py-8",
+  map: "mx-auto max-w-3xl space-y-6 px-4 py-6 sm:px-6 sm:py-8",
   account: "mx-auto max-w-4xl space-y-6 px-4 py-6 sm:px-6 sm:py-8",
 };
 
@@ -83,6 +85,23 @@ export default function MeLoading({ active }: { active: LoadingPage }) {
           <Skeleton className="h-5 w-56" />
           <Skeleton className="h-64 w-full rounded-3xl" />
           <Skeleton className="h-48 w-full rounded-xl" />
+        </>
+      )}
+
+      {active === "map" && (
+        <>
+          <div className="grid grid-cols-2 gap-2 sm:gap-3">
+            <Skeleton className="h-[76px] rounded-xl sm:h-[92px]" />
+            <Skeleton className="h-[76px] rounded-xl sm:h-[92px]" />
+          </div>
+          <Skeleton className="h-4 w-full max-w-md" />
+          <Skeleton className="h-4 w-full rounded-full" />
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+            <Skeleton className="h-28 rounded-xl" />
+            <Skeleton className="h-28 rounded-xl" />
+            <Skeleton className="h-28 rounded-xl" />
+            <Skeleton className="h-28 rounded-xl" />
+          </div>
         </>
       )}
 

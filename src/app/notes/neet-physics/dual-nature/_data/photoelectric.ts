@@ -12,6 +12,7 @@ export const NEET_PH_DN_PHOTOELECTRIC_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nphdn-photo-laws",
       name: "What intensity and frequency change",
+      visualizationSlug: "cet-photoelectric-graphs",
       intuition:
         "Shine light on a clean metal plate inside an evacuated tube and electrons fly out to a collector plate, making a photocurrent. Make the collector more positive and the current rises to a steady saturation value. Make it negative and fewer electrons reach it, until at the stopping potential even the fastest ones are turned back. Two things can be changed about the light, and they do different jobs: intensity sets how many electrons come out, frequency sets how fast the fastest ones are.",
       definition:

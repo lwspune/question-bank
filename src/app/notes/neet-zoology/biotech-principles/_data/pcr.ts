@@ -12,6 +12,7 @@ export const NEET_ZO_BP_PCR_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nzobp-pcr-steps",
       name: "The steps of PCR and Taq polymerase",
+      visualizationSlug: "neet-pcr-steps",
       intuition:
         "PCR is DNA copying done in a tube, over and over. Heat the DNA so its two strands come apart. Cool it so two short primers can stick to the ends of the region you want. Let the polymerase build the new strands from the primers. Repeat the cycle many times. The trick is an enzyme from a hot-spring bacterium that does not die each time the tube is heated.",
       definition:

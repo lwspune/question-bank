@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import KatexRenderer from "@/components/math/KatexRenderer";
+import { stripCodeFences } from "@/components/math/parseTableBlocks";
 import BlockText from "@/components/math/BlockText";
 import { cn } from "@/lib/utils";
 import { optionMark } from "@/lib/questions/optionMark";
@@ -78,6 +79,7 @@ export default function QuestionCard({
   breadcrumbFixed,
   hideCart = false,
   resources,
+  teachNotesHref = null,
   itemStats,
   surface = "bank",
   defaultExpanded = false,
@@ -104,6 +106,11 @@ export default function QuestionCard({
   hideCart?: boolean;
   /** Optional links to strategy guide + concept notes that explain this question's lever. */
   resources?: QuestionResources;
+  /**
+   * The notes page the card sits on (the notes drill panel, 2026-11-19): Teach me the idea opens it when the
+   * card has no notes link of its own. Without it the button messaged V on the very notes page it explains.
+   */
+  teachNotesHref?: string | null;
   /**
    * Pooled student performance. STAFF ONLY — the page does not fetch it for
    * anyone else, and the RLS policy on `question_item_stats` refuses it
@@ -159,6 +166,8 @@ export default function QuestionCard({
   // migration 0228); a second tap meanwhile does nothing.
   const [revealPending, setRevealPending] = useState(false);
   const pendingRef = useRef(false);
+  // The tap the limit refused, re-run once the 7-day pass is activated (0273).
+  const retryRef = useRef<(() => void) | null>(null);
   async function tryReveal(chose?: OptionLabel): Promise<boolean> {
     if (pendingRef.current) return false;
     // The page reads the key by the SAME rule the server grades by, for the
@@ -189,6 +198,7 @@ export default function QuestionCard({
     // Not for a cancelled question: no option is right, so there is no verdict
     // to record (the server refuses it too; this keeps the request honest).
     const first = picked === null;
+    retryRef.current = () => void pickOption(label);
     if (!(await tryReveal(cancelled ? undefined : label))) return;
     setPicked(label);
     // A wrong FIRST pick opens the solution at once (lib/questions/autoOpen).
@@ -211,7 +221,9 @@ export default function QuestionCard({
     setTicks((t) => (t.includes(label) ? t.filter((l) => l !== label) : [...t, label].sort()));
   }
   async function checkMsq() {
-    if (ticks.length === 0 || !(await tryReveal())) return;
+    if (ticks.length === 0) return;
+    retryRef.current = () => void checkMsq();
+    if (!(await tryReveal())) return;
     setMsqChecked(true);
     const right = msqVerdict(ticks, correctLabels).kind === "all";
     if (!right && !showSolution && question.solution && !cancelled) openSolution();
@@ -265,6 +277,7 @@ export default function QuestionCard({
       setShowSolution(false);
       return;
     }
+    retryRef.current = () => void toggleSolution();
     if (await tryReveal()) openSolution();
   }
   function openSolution() {
@@ -476,7 +489,8 @@ export default function QuestionCard({
               </div>
             ) : (
               <span lang={stems[0].lang}>
-                <KatexRenderer text={stems[0].text} />
+                {/* The two-line preview drops a code fence's ``` lines and keeps the code. */}
+                <KatexRenderer text={stripCodeFences(stems[0].text)} />
               </span>
             )}
           </div>
@@ -657,7 +671,7 @@ export default function QuestionCard({
             {revealBlocked &&
               !revealed &&
               (meter.signedIn ? (
-                <RevealDailyPrompt key={blockedTaps} surface={surface} />
+                <RevealDailyPrompt key={blockedTaps} surface={surface} onUnlocked={() => retryRef.current?.()} />
               ) : (
                 <RevealSignInPrompt key={blockedTaps} surface={surface} />
               ))}
@@ -680,7 +694,7 @@ export default function QuestionCard({
               <MomentLine
                 questionId={question.id}
                 hasSolution={Boolean(question.solution)}
-                notesHref={resources?.notes?.href ?? null}
+                notesHref={resources?.notes?.href ?? teachNotesHref ?? null}
                 onTeach={(offer) => resources?.notes && leaveForNotes(resources.notes.href, "offer", offer)}
               />
             )}

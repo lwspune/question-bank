@@ -13,7 +13,7 @@ import { dayHref, parseDayParam, planHref } from "@/lib/homework/links";
 import { loadBoardQuestions } from "@/lib/questionPapers/query";
 import HomeworkDownload from "../../../_components/HomeworkDownload";
 import HomeworkDayReader from "../../../_components/HomeworkDayReader";
-import { planWording } from "@/lib/homework/display";
+import { homeworkDownloads, planWording } from "@/lib/homework/display";
 import { getTwinsForQuestions } from "@/lib/crossExam/query";
 import { ExamTwinsProvider } from "@/components/crossExam/ExamTwins";
 
@@ -103,7 +103,10 @@ export default async function HomeworkDayPage(props: { params: Promise<Params> }
               open its answer.
             </p>
           </div>
-          <HomeworkDownload planSlug={plan.slug} day={day} planTitle={plan.title} offer={offer} />
+          {/* An intl exam's homework is on screen only (owner, 2026-11-17). */}
+          {homeworkDownloads(plan.examName) && (
+            <HomeworkDownload planSlug={plan.slug} day={day} planTitle={plan.title} offer={offer} />
+          )}
         </header>
 
         <ExamTwinsProvider twins={twins} supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}>

@@ -172,6 +172,7 @@ export const NEET_ZO_HR_GAMETOGENESIS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nzohr-oogenesis",
       name: "Oogenesis and how it differs from spermatogenesis",
+      visualizationSlug: "neet-gametogenesis",
       intuition:
         "A girl's egg mother cells are all made before she is born, and their first meiosis starts then and stops halfway. Years later, one at a time, a cell finishes that first division just before it is released, and it finishes the second division only if a sperm enters. Each division is unequal: one big cell keeps the food, and a tiny polar body is thrown away.",
       definition:

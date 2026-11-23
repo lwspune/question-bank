@@ -13,6 +13,7 @@ export const JEE_CH_KIN_ARRHENIUS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jckin-arrhenius-read",
       name: "Reading Ea and A from the Arrhenius equation or its plot",
+      visualizationSlug: "jee-arrhenius-plot",
       intuition:
         "Only molecules that collide with at least the activation energy \\(E_a\\) react, and the share of such molecules is \\(e^{-E_a/RT}\\). Taking logs turns the equation into a straight line in \\(1/T\\): the slope carries \\(E_a\\), the intercept carries \\(A\\). Most slips come from mixing the natural-log form with the base-10 form.",
       definition:

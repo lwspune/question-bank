@@ -70,6 +70,7 @@ export const JUNCTION_SEMI_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpsemi-junction",
       name: "The p-n junction: barrier, bias and dynamic resistance",
+      visualizationSlug: "cet-diode-bias",
       intuition:
         "When p-type meets n-type, electrons and holes diffuse across and cancel near the joint. That leaves a thin depletion layer of fixed ions and a barrier potential across it, which stops further flow. With no battery the diffusion and drift currents balance and no net current flows. Forward bias lowers the barrier and current rises steeply; reverse bias raises it, and only a tiny minority-carrier current flows.",
       definition:

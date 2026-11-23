@@ -5,9 +5,8 @@ import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import { LessonClient } from "@/components/learn/LessonClient";
 import { courseName } from "@/lib/learn/courseName";
-import { homesOf, neighbours, scopeUpTo } from "@/lib/learn/lessonState";
 import { chapterHref, courseHref, LEARN_HUB, lessonHref } from "@/lib/learn/links";
-import { getAllOutlines, getLesson } from "@/lib/learn/query";
+import { loadLessonProps } from "@/lib/learn/lessonProps";
 
 type Params = { chapter: string; concept: string };
 
@@ -23,18 +22,7 @@ export function generateStaticParams(): Params[] {
   return [];
 }
 
-async function load(params: Params) {
-  const [lesson, outlines] = await Promise.all([getLesson(params.chapter, params.concept), getAllOutlines()]);
-  const pool = outlines.find((o) => o.pools[params.chapter])?.pools[params.chapter];
-  if (!lesson || !pool) return null;
-  const homes = homesOf(outlines, params.chapter, lesson.concept.code).map((h) => ({
-    ...h,
-    place: neighbours(outlines.find((o) => o.slug === h.course)!, h.chapter, params.chapter, lesson.concept.code),
-    // Gated only on what the course teaches in this chapter or before it.
-    scope: [...scopeUpTo(outlines.find((o) => o.slug === h.course)!, h.chapter, params.chapter)],
-  }));
-  return { lesson, pool, homes, outlines };
-}
+const load = (params: Params) => loadLessonProps(params.chapter, params.concept);
 
 export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
   const params = await props.params;

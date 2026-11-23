@@ -543,6 +543,8 @@ export type RunnerState = {
   mock: {
     slug: string;
     title: string;
+    /** The exam's DB name: the page reads its question-language default from it. */
+    examName: string;
     durationSecs: number;
     sections: { key: string; label: string; count: number }[];
     marking: { correct: number; wrong: number };
@@ -600,6 +602,8 @@ export type AttemptReview = {
   mock: {
     slug: string;
     title: string;
+    /** The exam's DB name: the page reads its question-language default from it. */
+    examName: string;
     sections: { key: string; label: string; count: number }[];
     /** 'custom' = a student's own practice test: no public page to link to. */
     scope: MockScope;
@@ -698,6 +702,7 @@ export async function getAttemptReview(
       mock: {
         slug: mock.slug,
         title: mock.title,
+        examName: mock.examName,
         sections: mock.sections,
         scope: mock.scope,
         totalQuestions: mock.totalQuestions,
@@ -750,6 +755,7 @@ export async function getRunnerState(
     mock: {
       slug: mock.slug,
       title: mock.title,
+      examName: mock.examName,
       durationSecs: mock.durationSecs,
       sections: mock.sections,
       marking: mock.marking,

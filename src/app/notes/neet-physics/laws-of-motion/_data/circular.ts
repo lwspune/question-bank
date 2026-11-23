@@ -12,6 +12,7 @@ export const NEET_PH_LM_CIRCULAR_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphlm-centripetal",
       name: "Centripetal force",
+      visualizationSlug: "imat-circular-motion",
       intuition:
         "Even at a steady speed, a body going round a circle keeps changing direction, so it is accelerating toward the centre. Some real force must pull it inward: the string for a whirled stone, friction for a car on a level turn. Centripetal force is not a new kind of force, it is the job one of these forces does.",
       definition:

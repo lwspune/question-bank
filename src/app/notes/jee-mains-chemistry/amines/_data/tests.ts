@@ -69,6 +69,7 @@ export const TESTS_AMINE_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jcamine-hinsberg",
       name: "Hinsberg test: benzenesulphonyl chloride with primary, secondary and tertiary amines",
+      visualizationSlug: "jee-hinsberg-test",
       intuition:
         "Benzenesulphonyl chloride reacts with any amine that still has an N–H, giving a sulphonamide. What happens next depends on whether an N–H is left. The sulphonyl group makes a remaining N–H acidic, so a primary amine's sulphonamide dissolves in alkali. A secondary amine's sulphonamide has no N–H and stays as a solid. A tertiary amine does not react at all.",
       definition:

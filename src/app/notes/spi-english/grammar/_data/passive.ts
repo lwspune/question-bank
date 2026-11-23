@@ -6,7 +6,7 @@ export const SPI_GR_PASSIVE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "In the passive voice the thing that receives the action becomes the subject, and the verb becomes a form of be plus the past participle in the same tense as before.",
   whyItMatters:
-    "Fourteen questions in the bank, 12 EASY and 2 MODERATE, and every mock paper has some. The wrong options almost always keep the meaning but change the tense, so the whole skill is matching the form of be to the tense of the active verb.",
+    "Fifteen questions in the bank, 13 EASY and 2 MODERATE, one from the 2026 paper, and every mock paper has some. The wrong options almost always keep the meaning but change the tense, so the whole skill is matching the form of be to the tense of the active verb.",
   concepts: [
     {
       kind: "formula" as const,
@@ -103,7 +103,7 @@ export const SPI_GR_PASSIVE_NOTE: SubtopicNote = {
         { prompt: "Change to the passive: Asha had cooked the meal.", answer: "The meal had been cooked by Asha." },
         { prompt: "Which word does the passive of a continuous tense add: been or being?", answer: "being" },
       ],
-      pyqExampleId: "5c21b663-463e-4cc9-a86b-0e43917449f3",
+      pyqExampleId: "ff1585a2-1e10-4566-8a5a-b10cba62db08",
       traps: [
         {
           title: "Leaving out 'being' in a continuous tense",

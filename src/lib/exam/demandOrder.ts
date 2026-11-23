@@ -40,9 +40,14 @@ export const EXAM_DEMAND_ORDER: readonly string[] = [
   "iiser-iat",
   "ugc-net",
   "clat",
-  "rrb-ntpc",
+  "RRB NTPC", // the "rrb-ntpc" exam until Undergraduate joined (2026-11-19); its demand is Graduate's
   "capf-ac",
   "rpsc-ras", // added 2026-11-16 with no demand data yet; move once students choose it
+  "UP Board", // added 2026-11-17 with no demand data yet; move once students choose it
+  "Sainik & Military Schools", // added 2026-11-17 (AISSEE, RMS CET, RIMC), no demand data yet
+  "Homi Bhabha", // added 2026-11-19 (Std VI and IX), no demand data yet
+  "MH Scholarship", // added 2026-11-20 (Class 4 and 7 public), no demand data yet
+  "gate-cs", // added 2026-11-23 (GATE CS Wave 1), no demand data yet; the "GATE" family key once a second branch joins
 ];
 
 function keyOf<T>(node: ExamFamilyNode<T>): string | undefined {

@@ -13,6 +13,7 @@ export const TRUTH_TABLES_MR_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jmr-false-case",
       name: "The one row where an implication is false",
+      visualizationSlug: "jee-implication-false-rows",
       intuition:
         "An implication \\(A\\rightarrow B\\) is false in exactly one case: \\(A\\) true and \\(B\\) false. So to find where a long implication fails, set the consequent false first; that usually fixes some letters at once. Then make the antecedent true with what is left. To count the true rows, count the false ones and subtract from \\(2^n\\).",
       definition:

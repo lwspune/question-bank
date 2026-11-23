@@ -77,6 +77,7 @@ export const NEET_ZO_BR_BREATHING_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nzobr-human-system",
       name: "The human respiratory system and how we breathe",
+      visualizationSlug: "hp-alveolus-gas-exchange",
       intuition:
         "Think of the airway as a long, cleaning corridor that ends in millions of tiny balloons. The corridor only carries the air and gets it ready: it cleans it, wets it and warms it. The real swap of oxygen and carbon dioxide happens only in the tiny balloons, the alveoli.",
       definition:
@@ -163,6 +164,7 @@ export const NEET_ZO_BR_BREATHING_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nzobr-volumes",
       name: "Respiratory volumes",
+      visualizationSlug: "hp-lung-volumes",
       intuition:
         "A normal breath uses only a small part of the lungs. You can force in a lot more air, and force out some more. Even after the hardest breath out, some air always stays behind. These four amounts are the respiratory volumes.",
       definition:

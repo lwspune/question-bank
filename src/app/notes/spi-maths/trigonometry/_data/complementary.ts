@@ -6,7 +6,7 @@ export const SPI_TG_COMPLEMENTARY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Two angles are complementary when they add to 90°, and a ratio of one equals the partner ratio of the other: sin of one is cos of the other.",
   whyItMatters:
-    "Six questions in the bank, four EASY and two MODERATE. Five switch a ratio to its partner using 90° minus the angle, and one is a long sum of squares that collapses when the terms are paired from the two ends.",
+    "Seven questions in the bank, four EASY and three MODERATE, one from the 2026 paper. Six switch a ratio to its partner using 90° minus the angle, and one is a long sum of squares that collapses when the terms are paired from the two ends.",
   concepts: [
     {
       kind: "formula" as const,
@@ -48,7 +48,7 @@ export const SPI_TG_COMPLEMENTARY_NOTE: SubtopicNote = {
         { prompt: "Write \\(\\sec 70^\\circ\\) as a ratio of an angle between \\(0^\\circ\\) and \\(45^\\circ\\).", answer: "\\(\\operatorname{cosec} 20^\\circ\\)" },
         { prompt: "If \\(\\tan 2A = \\cot(A + 30^\\circ)\\), where \\(2A\\) is acute, what is A?", answer: "\\(20^\\circ\\) (from \\(3A + 30^\\circ = 90^\\circ\\))" },
       ],
-      pyqExampleId: "e6a5e9bf-e441-4237-9ba9-1e53a465ba3a",
+      pyqExampleId: "e8242268-dcfb-41bc-9f3f-3a8795367250",
       traps: [
         {
           title: "Keeping the same ratio",

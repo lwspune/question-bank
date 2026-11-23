@@ -61,7 +61,7 @@ export default function SubtopicMasteryCheckpoint({
       <PresentRegistry>
         <div className="space-y-4">
           {questions.map((q, i) => (
-            <WorkedExampleCard key={q.id} rank={i + 1} example={q} />
+            <WorkedExampleCard key={q.id} rank={i + 1} example={q} visualSurface="notes" />
           ))}
         </div>
       </PresentRegistry>
@@ -99,6 +99,7 @@ export function CheckpointPreview({ question, total }: { question: WorkedExample
           className="max-h-64 w-auto max-w-full rounded border"
         />
       )}
+      {question.options.length > 0 && (
       <ol className="space-y-2">
         {question.options.map((o) => (
           <li key={o.label} className="flex items-center gap-3 rounded-xl border-[1.5px] px-3 py-2.5 font-serif text-[15px]">
@@ -117,6 +118,7 @@ export function CheckpointPreview({ question, total }: { question: WorkedExample
           </li>
         ))}
       </ol>
+      )}
     </div>
   );
 }

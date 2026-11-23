@@ -26,6 +26,8 @@ import { useBoardReveal } from "@/app/board/useBoardReveal";
 import PaperDownload from "@/app/mock/_components/PaperDownload";
 import type { PassOfferLead } from "@/lib/billing/passOfferLead";
 import AnswerSheetUpload from "./AnswerSheetUpload";
+import { QuestionLangDefaultProvider } from "@/lib/i18n/QuestionLangDefault";
+import { examDefaultLang, getExamByName } from "@/lib/exam/examContext";
 
 export type PaperSet = {
   slug: string;
@@ -66,6 +68,7 @@ export default function PaperReader({
   );
 
   return (
+    <QuestionLangDefaultProvider value={examDefaultLang(getExamByName(examName))}>
     <div className="space-y-6">
       <BoardLangSwitch questions={byId.values()} />
       {sets.length > 1 && (
@@ -129,6 +132,7 @@ export default function PaperReader({
         </div>
       ))}
     </div>
+    </QuestionLangDefaultProvider>
   );
 }
 
@@ -181,7 +185,7 @@ function PaperSections({
                 const q = it.question;
                 return (
                   <li key={it.position}>
-                    {it.isAlternative && (
+                    {it.orBefore && (
                       <p className="my-2 text-center text-xs font-bold uppercase tracking-widest text-muted-foreground">
                         OR
                       </p>

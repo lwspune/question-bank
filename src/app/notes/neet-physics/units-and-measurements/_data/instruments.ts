@@ -12,6 +12,7 @@ export const NEET_PH_UM_INSTRUMENTS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphum-vernier",
       name: "Vernier calliper: least count and reading",
+      visualizationSlug: "jee-vernier-scale",
       intuition:
         "A vernier scale slides along the main scale. Its divisions are made a little shorter than the main scale divisions, so only one vernier line lines up exactly with a main scale line. How far along that line is tells you the fraction of a main scale division that the main scale alone cannot show.",
       definition:

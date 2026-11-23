@@ -9,15 +9,20 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import type { createSupabaseServerClient } from "@/lib/supabase/server";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { resolveExamDate } from "@/lib/exam/calendar";
+import { loadExamCalendar } from "@/lib/exam/calendarQuery";
 import { getOwnProfile } from "@/lib/profile/service";
 import { getOwnLadder } from "@/lib/drill/service";
 import { getOwnPerformance } from "@/lib/performance/service";
 import { selectAttempts } from "@/lib/performance/compute";
 import { NOTES_NAV_INDEX } from "@/lib/notes/notesNavIndex.generated";
 import { loadExamStrategy } from "./examStrategyServer";
+import { getExamIdMap } from "@/lib/exam/examIdMap";
+import { loadStudyCard } from "@/lib/studyTime/reportServer";
+import { pickStudyNext, studyProgressRows } from "@/lib/studyTime/report";
 import {
   buildProgressCard,
   notesChaptersOf,
+  strongChapters,
   pickProgressExams,
   progressRows,
   type ProgressChapter,
@@ -104,19 +109,31 @@ export async function loadProgressCard(
   exam ??= examByName(payload.exam_name);
   if (!exam) return null;
 
-  const strategy = await loadExamStrategy(exam.slug).catch((e: unknown) => {
-    // The weights only refine one line; the card falls back to chapters started.
-    console.error("progress card: exam strategy read failed", e);
-    return null;
-  });
+  const [strategy, study] = await Promise.all([
+    loadExamStrategy(exam.slug).catch((e: unknown) => {
+      // The weights only refine one line; the card falls back to chapters started.
+      console.error("progress card: exam strategy read failed", e);
+      return null;
+    }),
+    // Study time (2026-11-21): two rows, the same numbers as Home's card.
+    getExamIdMap()
+      .then((ids) => loadStudyCard(db, userId, exam.slug, ids, now))
+      .catch((e: unknown) => {
+        console.error("progress card: study time read failed", e instanceof Error ? e.message : e);
+        return null;
+      }),
+  ]);
+  const studyNext = study && perf ? pickStudyNext(study, strongChapters(perf, exam.examName, now)) : null;
 
+  const calendar = await loadExamCalendar();
   const card = buildProgressCard({
     exam,
     now,
     daysLeft:
       resolveExamDate(
         { targetExams: [exam.slug], examDate: profile.targetExams[0] === exam.slug ? profile.examDate : null },
-        now
+        now,
+        calendar
       )?.daysLeft ?? null,
     practice: { week: payload.week, prev: payload.prev },
     perf,
@@ -135,6 +152,13 @@ export async function loadProgressCard(
     }),
     daysLeft: card.daysLeft,
     due: card.due,
-    rows: progressRows(card),
+    rows: withStudyRows(progressRows(card), studyProgressRows(study, studyNext)),
   };
+}
+
+/** The study rows right after "This week", else first. */
+function withStudyRows(rows: ProgressRow[], study: ProgressRow[]): ProgressRow[] {
+  if (study.length === 0) return rows;
+  const at = rows.findIndex((r) => r.label === "This week") + 1;
+  return [...rows.slice(0, at), ...study, ...rows.slice(at)];
 }

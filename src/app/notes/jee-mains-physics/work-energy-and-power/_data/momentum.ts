@@ -74,6 +74,7 @@ export const MOMENTUM_WEP_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpwep-momentum-conservation",
       name: "Conservation of momentum in explosions, recoil and sticking collisions",
+      visualizationSlug: "imat-collision-momentum",
       intuition:
         "With no outside force in a direction, the total momentum in that direction cannot change. A body at rest that explodes has pieces whose momenta add to zero as vectors. Two bodies that stick move off together with the total momentum, and some kinetic energy is lost as heat and sound.",
       definition:

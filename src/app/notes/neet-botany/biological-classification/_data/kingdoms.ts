@@ -12,6 +12,7 @@ export const NEET_BO_BC_KINGDOMS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nbobc-kingdoms",
       name: "Whittaker's five kingdoms",
+      visualizationSlug: "biodiv-five-kingdoms",
       intuition:
         "People have sorted living things for a long time. Aristotle sorted plants into trees, shrubs and herbs, and animals into those with red blood and those without. Linnaeus used just two kingdoms, Plantae and Animalia. Two boxes were too few: they mixed up prokaryotes and eukaryotes, single cells and many cells, and green plants with fungi. So in 1969 R.H. Whittaker proposed five kingdoms, using several features at once.",
       definition:

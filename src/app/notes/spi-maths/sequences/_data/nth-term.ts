@@ -6,7 +6,7 @@ export const SPI_SQ_NTH_TERM_NOTE: SubtopicNote = {
   oneLineDefinition:
     "In an arithmetic progression each term is the one before it plus a fixed common difference d, so the nth term is a + (n − 1)d.",
   whyItMatters:
-    "Seventeen questions in the bank, 13 EASY and 4 MODERATE, and one is from the 2022 paper. Almost every one is a single use of a + (n − 1)d: find a term, find which term a number is, find d from two terms, or count back from the last term.",
+    "Twenty-two questions in the bank, 16 EASY and 6 MODERATE: one from the 2022 paper and five from the 2026 paper. Almost every one is a single use of a + (n − 1)d: find a term, find which term a number is, find d from two terms, or count back from the last term.",
   concepts: [
     {
       kind: "formula" as const,
@@ -176,7 +176,7 @@ export const SPI_SQ_NTH_TERM_NOTE: SubtopicNote = {
           answer: "\\(3d = 15\\) gives \\(d = 5\\), so the first term is 3",
         },
       ],
-      pyqExampleId: "80fefdc0-d7fd-4ec3-8a7c-abb8f4cb7729",
+      pyqExampleId: "3646b1da-6474-4fe5-bfd1-2d905bc74b9a",
       traps: [
         {
           title: "Counting the terms instead of the steps",

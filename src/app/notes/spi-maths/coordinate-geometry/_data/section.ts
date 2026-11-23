@@ -6,7 +6,7 @@ export const SPI_CG_SECTION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The point that divides a join in the ratio m : n is a weighted average of the two ends; the midpoint is the 1 : 1 case and the centroid is the average of a triangle's three corners.",
   whyItMatters:
-    "Twelve questions in the bank, eight EASY and four MODERATE, including the chapter's one question from the 2022 paper, a centroid. The MODERATE ones run the formulas backwards: find an end from the dividing point, find the ratio an axis makes, or find a parallelogram's fourth corner.",
+    "Fourteen questions in the bank, nine EASY and five MODERATE, including the chapter's one question from the 2022 paper, a centroid, and two from the 2026 paper. The MODERATE ones run the formulas backwards: find an end from the dividing point, find the ratio an axis makes, or find a parallelogram's fourth corner.",
   concepts: [
     {
       kind: "formula" as const,
@@ -101,7 +101,7 @@ export const SPI_CG_SECTION_NOTE: SubtopicNote = {
           answer: "(4, 3), the midpoint of the hypotenuse AB",
         },
       ],
-      pyqExampleId: "cfe76afd-1fbd-4484-9c26-98357374a5b0",
+      pyqExampleId: "97dd96b5-7e8b-466e-957f-33085c96f220",
       traps: [
         {
           title: "Adding the wrong pair of corners",

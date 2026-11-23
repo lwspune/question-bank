@@ -14,6 +14,7 @@ export const MIRRORS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-ro-mirrors",
       name: "The Mirror Formula and Plane Mirrors",
+      visualizationSlug: "opt-concave-mirror-rays",
       intuition:
         "With the Cartesian sign convention the mirror formula is 1/v + 1/u = 1/f and the magnification is −v/u. A real image n times the size of the object means v = nu (both in front), so u = (n + 1)f/n. For a convex mirror, the formula turns an image position into an object position, so a moving image gives the object's speed. A plane mirror has magnification +1. Two plane mirrors at θ form 360°/θ − 1 images: three images at 90°. Covering half a mirror leaves every point of the image formed by the rest of the mirror, so the image is complete but dimmer.",
       definition:

@@ -13,6 +13,7 @@ export const SUMS_STAT_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jstat-sums",
       name: "Mean and variance from sums",
+      visualizationSlug: "variance-squared-deviations",
       intuition:
         "Everything here comes from three numbers: \\(n\\), \\(\\sum x_i\\) and \\(\\sum x_i^2\\). Any given sum, such as \\(\\sum(x_i-a)\\) or \\(\\sum(x_i-a)^2\\), expands into those two sums. A shift by \\(a\\) does not change the variance, so you can also work with \\(d_i=x_i-a\\) directly. Pairwise products come in through the square of the total.",
       definition:

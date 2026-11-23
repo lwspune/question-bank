@@ -27,6 +27,8 @@ export type NQ = {
   hasFigure?: boolean; // stem needs a diagram (figure-attach pass)
   reasoning?: string;
   ref?: string; // printed ref ("29.2 Q8") when the source restarts numbering per section → question_number
+  // NTA dropped it (or gave a bonus): answer "CANCELLED" plus the notice students see (migration 0119).
+  cancelledNote?: string;
 };
 
 export type Flag = { number: number; reason: string };
@@ -47,6 +49,7 @@ export function parseAnswer(raw: string | number): string {
   if (!s) return "";
   const up = s.toUpperCase();
   if (["A", "B", "C", "D"].includes(up)) return up; // already a letter
+  if (up === "CANCELLED") return "CANCELLED"; // NTA dropped it; the row carries cancelledNote
   // "Answer (2)", "Ans. (2)", "(2)", "2" → the single 1..4 digit
   const digits = s.match(/\d/g);
   if (digits && digits.length === 1) {
@@ -122,6 +125,7 @@ export function buildRecords(questions: NQ[], questionCount = 180): BuildResult 
       answer: String(q.answer ?? ""),
       difficulty: q.difficulty,
       solution: (q.solution ?? "").trim() || undefined,
+      ...(q.cancelledNote ? { cancelledNote: q.cancelledNote } : {}),
     });
   }
   return { rows, flags };
@@ -140,7 +144,10 @@ export function validateRows(rows: RawRow[], qFrom: number, qTo: number): string
     const filled = opts.filter((o) => o && o.trim());
     if (filled.length !== 4) errs.push(`Q${r.questionNumber}: needs exactly 4 options (got ${filled.length} non-blank)`);
     if (opts.some((o) => !o || !o.trim())) errs.push(`Q${r.questionNumber}: blank option`);
-    if (!["A", "B", "C", "D"].includes((r.answer || "").toUpperCase())) errs.push(`Q${r.questionNumber}: bad answer "${r.answer}"`);
+    const ans = (r.answer || "").toUpperCase();
+    if (ans === "CANCELLED") {
+      if (!r.cancelledNote?.trim()) errs.push(`Q${r.questionNumber}: CANCELLED without a cancelledNote`);
+    } else if (!["A", "B", "C", "D"].includes(ans)) errs.push(`Q${r.questionNumber}: bad answer "${r.answer}"`);
 
     for (const [name, val] of [
       ["stem", r.question],

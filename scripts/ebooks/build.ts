@@ -58,6 +58,7 @@ import { EBOOKS, ebookChapters, getEbook, isBoardEbook, type EbookChapter, type 
 import { pickBookPapers } from "../../src/lib/ebooks/boardPapers";
 import { pinChapterOrder, repeatChaptersOfSubjects, type RepeatPlanRow } from "../../src/lib/ebooks/repeats";
 import { chapterwiseChapters, groupLabel, type ChapterwiseSlot } from "../../src/lib/ebooks/chapterwise";
+import { bankSlots, type BankRow } from "../../src/lib/ebooks/bankSlots";
 import { bookContext } from "../../src/lib/ebooks/contexts";
 import { getBoardChapter, groupHasSubHeaders, listBoardChapters } from "../../src/lib/board/query";
 import { cleanRef } from "../../src/lib/board/cleanRef";
@@ -475,8 +476,85 @@ function standAlone(questions: QuestionRow[]): QuestionRow[] {
   return questions.map((q) => ({ ...q, context: bookContext(q.context) }));
 }
 
-/** A Chapter-wise PYQs book's slots: from the homework plan (Maharashtra) or the one-paper-a-year selection (CBSE). */
-async function chapterwiseSlots(anon: SupabaseClient, ebook: ChapterwiseEbook): Promise<ChapterwiseSlot[]> {
+type BankQuestionRow = {
+  id: string;
+  set_id: string | null;
+  pyq_year: number | null;
+  pyq_note: string | null;
+  question_number: string | null;
+  subject: { name: string } | null;
+  chapter: { id: string; name: string } | null;
+};
+
+/**
+ * A bank book's questions (Homi Bhabha, 2026-11-21): every PUBLIC past question
+ * of its subjects, through the ANON client like every other book, so nothing
+ * private can print. Paged: a book runs past 1,000 questions.
+ */
+async function loadBankRows(anon: SupabaseClient, ebook: ChapterwiseEbook): Promise<BankRow[]> {
+  const exam = getExamBySlug(ebook.examSlug);
+  if (!exam) throw new Error(`ebook ${ebook.slug}: no exam "${ebook.examSlug}"`);
+  const { data: ex, error: exErr } = await anon.from("exams").select("id").eq("name", exam.examName).single();
+  if (exErr || !ex) throw new Error(`${ebook.slug}: exam ${exam.examName}: ${exErr?.message}`);
+  const subjects = ebook.bankSubjects ?? [ebook.subject];
+  const { data: subs, error: subErr } = await anon.from("subjects").select("id, name").eq("exam_id", ex.id).in("name", [...subjects]);
+  if (subErr) throw new Error(`${ebook.slug}: subjects: ${subErr.message}`);
+  const missing = subjects.filter((n) => !(subs ?? []).some((s) => s.name === n));
+  if (missing.length) throw new Error(`${ebook.slug}: no subject ${missing.join(", ")} in ${exam.examName}`);
+  const rows: BankRow[] = [];
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await anon
+      .from("questions")
+      .select("id, set_id, pyq_year, pyq_note, question_number, subject:subjects(name), chapter:chapters(id, name)")
+      .eq("exam_id", ex.id)
+      .in("subject_id", (subs ?? []).map((s) => s.id as string))
+      .eq("question_kind", "pyq")
+      .eq("visibility", "PUBLIC")
+      .is("publish_blocked", null)
+      .order("id")
+      .range(from, from + 999);
+    if (error) throw new Error(`${ebook.slug}: questions: ${error.message}`);
+    for (const r of (data ?? []) as unknown as BankQuestionRow[]) {
+      if (!r.subject || !r.chapter) throw new Error(`${ebook.slug}: question ${r.id} has no subject or chapter`);
+      rows.push({
+        id: r.id,
+        setId: r.set_id,
+        subject: r.subject.name,
+        chapterId: r.chapter.id,
+        chapterName: r.chapter.name,
+        year: r.pyq_year,
+        note: r.pyq_note,
+        questionNumber: r.question_number,
+      });
+    }
+    if (!data || data.length < 1000) return rows;
+  }
+}
+
+/**
+ * A Chapter-wise PYQs book's slots: from the homework plan (Maharashtra), the
+ * one-paper-a-year selection (CBSE) or the bank itself (Homi Bhabha). A bank
+ * book also says each chapter's subject, for its eyebrow.
+ */
+async function chapterwiseSlots(
+  anon: SupabaseClient,
+  ebook: ChapterwiseEbook
+): Promise<{ slots: ChapterwiseSlot[]; subjectOf?: Map<string, string> }> {
+  if (ebook.source === "bank") {
+    if (!ebook.bankSubjects || !ebook.chapterOrder) throw new Error(`ebook ${ebook.slug}: a bank book needs bankSubjects and chapterOrder`);
+    const rows = await loadBankRows(anon, ebook);
+    try {
+      const slots = bankSlots(rows, { subjects: ebook.bankSubjects, chapterOrder: ebook.chapterOrder });
+      return { slots, subjectOf: new Map(rows.map((r) => [r.chapterId, r.subject])) };
+    } catch (err) {
+      throw new Error(`ebook ${ebook.slug}: ${err instanceof Error ? err.message : err}`);
+    }
+  }
+  return { slots: await boardChapterwiseSlots(anon, ebook) };
+}
+
+/** A board Chapter-wise PYQs book's slots: from the homework plan (Maharashtra) or the one-paper-a-year selection (CBSE). */
+async function boardChapterwiseSlots(anon: SupabaseClient, ebook: ChapterwiseEbook): Promise<ChapterwiseSlot[]> {
   if (ebook.source === "plan") {
     const { rows } = await loadPlanRows(anon, ebook);
     const bySlot = new Map<string, RepeatPlanRow[]>();
@@ -543,7 +621,9 @@ async function buildChapterwiseChapters(
   totals: Totals,
   head: string
 ): Promise<{ built: Built[]; preview: string }> {
-  const all = chapterwiseChapters(await chapterwiseSlots(anon, ebook));
+  const { slots: allSlots, subjectOf } = await chapterwiseSlots(anon, ebook);
+  // An exam with no marks (a bank book) prints each chapter as one list.
+  const all = chapterwiseChapters(allSlots, { unmarked: ebook.source === "bank" ? "plain" : "earlier" });
   if (all.length === 0) throw new Error(`ebook ${ebook.slug}: no questions`);
   const chapters = all.filter((c) => !only || only.includes(chapterSlug(c.chapterName)));
   if (chapters.length === 0) throw new Error(`--only matched none of: ${all.map((c) => chapterSlug(c.chapterName)).join(", ")}`);
@@ -589,13 +669,14 @@ async function buildChapterwiseChapters(
         printedOf,
         images: await asJpegs(new Map([...paperImages, ...keyImages])),
         head,
+        classLabel: subjectOf?.get(c.chapterId) ?? null,
       }),
       { timeoutMs: PRINT_TIMEOUT_MS }
     );
     totals.questions += slots.length;
     for (const s of slots) for (const y of s.note.match(/\b20\d\d\b/g) ?? []) totals.years.push(Number(y));
     if (!preview) {
-      const s = slots.find((x) => x.group.kind === "marks" && x.parts.length === 1);
+      const s = slots.find((x) => (x.group.kind === "marks" || x.group.kind === "plain") && x.parts.length === 1);
       const q = s ? rows.get(s.parts[0].questionId) : undefined;
       if (s && q && !q.imageUrl && !q.context && (q.text ?? "").length < 220) {
         preview = papersPreview(q, { label: c.chapterName, meta: groupLabel(s.group), section: s.note, number: s.parts[0].label });
@@ -863,7 +944,7 @@ async function buildBook(
   // The MHT-CET books' covers carry a line for the buyer's name (2026-10-28),
   // and so do the competitive-exam Repeated PYQs books, new in 2026-11-16; the
   // board books gain one when their covers are next printed.
-  const examiner = ebook.kind === "repeats" ? ebook.examiner : undefined;
+  const examiner = ebook.kind === "repeats" || ebook.kind === "chapterwise" ? ebook.examiner : undefined;
   const namePlate = !isBoardEbook(ebook) || examiner === "exam";
 
   // Front matter last: its contents page needs every chapter's first page.
@@ -892,8 +973,12 @@ async function buildBook(
             edition: `${totals.years.length ? Math.max(...totals.years) : new Date().getFullYear()} Edition`,
           }
         : {
-            over: "MHT-CET",
-            main: ebook.title.replace(/^MHT-CET\s+/, ""),
+            // The Homi Bhabha Notes Book names its own lines; the CET books' come from the title.
+            over: (ebook.kind === "formula" || ebook.kind === "notes") && ebook.cover ? ebook.cover.over : "MHT-CET",
+            main:
+              (ebook.kind === "formula" || ebook.kind === "notes") && ebook.cover
+                ? ebook.cover.main
+                : ebook.title.replace(/^MHT-CET\s+/, ""),
             // A PYQ book's newest sitting; a Formula or Notes book's, the year it was built.
             edition: `${ebook.kind === "pyq" ? ebook.years.slice(-4) : new Date().getFullYear()} Edition`,
             namePlate,

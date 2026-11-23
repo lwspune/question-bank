@@ -1,0 +1,24 @@
+{
+  "9": { "pick": "b", "why": "Same answer in both (Rs 2 per apple; 66 2/3%)." },
+  "19": { "pick": "a", "why": "Same answer in both (quotient -4x - 11, remainder -27)." },
+  "29": { "pick": "a", "why": "Same six angles in both." },
+  "4": {
+    "why": "Checked: 6 / 3 x 2 = 4, 4 - 1 + 3 = 6, 7 of 2 = 14, 14 - 6 = 8, 5 - 2 + 8 = 11, 16 - 11 = 5.",
+    "notice": "A stray question mark is printed inside the curly bracket. Ignoring it, the expression simplifies to 5."
+  },
+  "12": {
+    "why": "Checked: with the comma read as a product, (5/3)^-5 x (5/3)^-11 = (5/3)^-16, so 8x = -16 and x = -2.",
+    "notice": "The sign between the two powers is printed as a comma. The solution reads it as multiplication, which gives x = -2; read as division, x would be 3/4."
+  },
+  "14": {
+    "finalAnswer": "about 10.1 m",
+    "solution": "Take his starting point as the origin, with east and north as the two directions.\n\nNorth-west is exactly between north and west, so walking 13 m north-west moves him \\(\\frac{13}{\\sqrt{2}} \\approx 9.19\\) m west and \\(9.19\\) m north.\n\nWalking 5 m south then brings him back to \\(9.19 - 5 = 4.19\\) m north of the start, still \\(9.19\\) m west.\n\nBy Pythagoras, his distance from the start is \\(\\sqrt{9.19^2 + 4.19^2} = \\sqrt{84.5 + 17.6} = \\sqrt{102.1} \\approx 10.1\\) m.\n\nSo he is about 10.1 m from his initial position.",
+    "why": "Both passes gave 12 m from the 5-12-13 triple, which does not follow from the printed directions; as printed (13 m NW, then 5 m S) he ends about 10.1 m away. Solution rewritten for the printed version (2021 Jun Q27 precedent).",
+    "notice": "The answer usually given is 12 m, from the 5, 12, 13 right triangle, but that does not follow from the directions as printed. Walking 13 m north-west and then 5 m south leaves him about 10.1 m from where he started, which is the answer worked out here."
+  },
+  "17": { "why": "Checked: the shaded piece is a 5 cm square less a quarter circle of radius 5 cm: 25 - (1/4)(22/7)(25) = 75/14 cm^2." },
+  "24": {
+    "why": "Checked: (a) numerator 5^n(25 - 30) = -5 x 5^n; denominator read as 13 x 5^n - 2 x 5^(n+1) = 3 x 5^n, giving -5/3. (b) 1309 - 1071 = 238, 1071 = 4 x 238 + 119, 238 = 2 x 119: HCF 119, LCM 1071 x 1309 / 119 = 11781.",
+    "notice": "In part (a) the sign between the two terms of the denominator is not printed. The solution reads it as a minus, the usual form of this question, which gives -5/3; with a plus sign the value would be -5/23."
+  }
+}

@@ -68,6 +68,7 @@ export const BASIC_AMINE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jcamine-basicity-aliphatic",
       name: "Basic strength of aliphatic amines and amides",
+      visualizationSlug: "jee-amine-basicity",
       intuition:
         "An amine is a base because its lone pair takes a proton. Alkyl groups push electrons onto nitrogen, so in the gas phase every extra alkyl group makes the amine more basic. In water two more effects join in: the protonated ion is stabilised by hydrogen bonds to water, which needs N–H bonds, and bulky groups crowd the nitrogen. The order in water is a compromise.",
       definition:

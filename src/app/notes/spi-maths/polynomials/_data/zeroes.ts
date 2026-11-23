@@ -6,7 +6,7 @@ export const SPI_PO_ZEROES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The sum and the product of a polynomial's zeroes can be read straight from its coefficients, so you can build a polynomial from its zeroes or find a missing zero without solving.",
   whyItMatters:
-    "Nine questions in the bank: five EASY, two MODERATE and two HARD. They form a quadratic or cubic from its zeroes, find a third zero, or reason about the signs of zeroes. Each needs the sum and product rules, and a lost minus sign in −b/a is the commonest wrong option.",
+    "Fifteen questions in the bank, six of them from the 2026 paper: six EASY, seven MODERATE and two HARD. They form a quadratic or cubic from its zeroes, find a third zero, or reason about the signs of zeroes. Each needs the sum and product rules, and a lost minus sign in −b/a is the commonest wrong option.",
   concepts: [
     {
       kind: "formula" as const,
@@ -17,6 +17,7 @@ export const SPI_PO_ZEROES_NOTE: SubtopicNote = {
       definition:
         "- \\(\\alpha + \\beta = -\\frac{b}{a}\\) and \\(\\alpha\\beta = \\frac{c}{a}\\).\n" +
         "- \\(\\frac{1}{\\alpha} + \\frac{1}{\\beta} = \\frac{\\alpha + \\beta}{\\alpha\\beta}\\) and \\(\\alpha^2 + \\beta^2 = (\\alpha + \\beta)^2 - 2\\alpha\\beta\\).\n" +
+        "- **Reciprocal zeroes:** if one zero is the reciprocal of the other, their product is \\(\\alpha \\times \\frac{1}{\\alpha} = 1\\), so \\(\\frac{c}{a} = 1\\) and \\(c = a\\).\n" +
         "- **Signs:** a positive product means both zeroes have the same sign; then a positive sum means both positive, a negative sum both negative. A negative product means one positive and one negative.",
       formula: {
         label: "Zeroes of a quadratic polynomial",
@@ -42,7 +43,7 @@ export const SPI_PO_ZEROES_NOTE: SubtopicNote = {
         { prompt: "Both zeroes of a quadratic polynomial are negative. What are the signs of their sum and their product?", answer: "The sum is negative and the product is positive" },
         { prompt: "α and β are the zeroes of \\(x^2 + 3x - 5\\). Find \\(\\frac{1}{\\alpha} + \\frac{1}{\\beta}\\).", answer: "\\(\\frac{-3}{-5} = \\frac{3}{5}\\)" },
       ],
-      pyqExampleId: "dcf64123-95d6-454e-9c2e-4d332aa06718",
+      pyqExampleId: "0679595f-aa30-47f3-baca-aa978726e94e",
       traps: [
         {
           title: "Dropping the minus in the sum",
@@ -88,7 +89,7 @@ export const SPI_PO_ZEROES_NOTE: SubtopicNote = {
         { prompt: "How many quadratic polynomials have the zeroes 1 and 4?", answer: "Infinitely many: \\(k(x^2 - 5x + 4)\\) for any non-zero k" },
         { prompt: "One zero of a quadratic polynomial is \\(1 + \\sqrt{3}\\) and the sum of its zeroes is 2. Find the polynomial.", answer: "The other zero is \\(1 - \\sqrt{3}\\), product \\(-2\\): \\(x^2 - 2x - 2\\)" },
       ],
-      pyqExampleId: "7f01a0ac-5200-4395-81a3-a4d2efa3f72c",
+      pyqExampleId: "e91e5e64-fd28-4f77-bf16-b5cc6abcd799",
       traps: [
         {
           title: "Thinking only one polynomial fits",

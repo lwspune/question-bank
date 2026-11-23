@@ -6,7 +6,7 @@ export const SPI_M3_FRUSTUM_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A joined solid's volume is the sum of its parts and its surface is only what shows outside; a frustum is the piece of a cone left when its top is cut off parallel to the base.",
   whyItMatters:
-    "Eleven questions in the bank, the hardest page of the chapter: nine MODERATE, one HARD and one EASY. Ice-cream cones, toys, buildings with a conical roof, buckets and glasses: each needs the formulas of the last two pages put together, plus the frustum's own three.",
+    "Thirteen questions in the bank, the hardest page of the chapter: ten MODERATE, one HARD and two EASY, two of them from the 2026 paper. Ice-cream cones, toys, buildings with a conical roof, buckets and glasses: each needs the formulas of the last two pages put together, plus the frustum's own three.",
   concepts: [
     {
       kind: "formula" as const,
@@ -53,7 +53,7 @@ export const SPI_M3_FRUSTUM_NOTE: SubtopicNote = {
         },
         { prompt: "A cone has a vertical angle of 90° and a base radius of 5 cm. What is its height?", answer: "5 cm" },
       ],
-      pyqExampleId: "497ab924-d37c-4743-94f6-1cdf829186ff",
+      pyqExampleId: "8e747678-fed0-43bf-b9cb-0aaa152dbe8a",
       traps: [
         {
           title: "Counting the glued faces",

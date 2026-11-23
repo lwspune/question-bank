@@ -92,6 +92,7 @@ export const LCR_IMPEDANCE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-phasor-voltages",
       name: "Voltages Add as Phasors",
+      visualizationSlug: "cet-lcr-phasors",
       intuition:
         "V_L and V_C point in opposite directions and both stand at right angles to V_R, so the supply voltage is the hypotenuse of V_R and the difference V_L − V_C. The same geometry makes the currents in a parallel L and C subtract.",
       definition:

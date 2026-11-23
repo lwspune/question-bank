@@ -58,6 +58,7 @@ export const TANGENTS_AOD_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jaod-tangent",
       name: "Tangents and normals",
+      visualizationSlug: "diff-tangent-slope",
       intuition:
         "The slope of the tangent at \\(x_0\\) is \\(f'(x_0)\\), and the normal is at right angles to it, with slope \\(-\\frac1{f'(x_0)}\\). For a curve given by a parameter, \\(\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}\\); for an implicit curve, differentiate both sides. A tangent 'through an outside point' is found by writing the tangent at a general point and making it pass through that point.",
       definition:

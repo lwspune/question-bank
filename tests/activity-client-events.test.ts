@@ -488,12 +488,57 @@ describe("parseClientEvent - Start next seen and tapped (2026-11-09)", () => {
   });
 });
 
+// Home's Study time card (2026-11-21, experiment study-time-card): the card
+// seen, "This week" opened, the suggestion shown and tapped, once a day each.
+describe("parseClientEvent - the study time card", () => {
+  const CH = "c0ffee00-1b2c-4d3e-9f00-112233445566";
+
+  it("records the card seen and This week opened, once a day", () => {
+    for (const action of ["seen", "week"]) {
+      expect(parseClientEvent({ kind: "surface_viewed", surface: "study_time", action }, "u1", NOW)).toEqual({
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "study_time", action },
+          dedupeKey: `view:study_time:${action}:u1:2026-09-27`,
+        },
+      });
+    }
+  });
+
+  it("records the suggestion shown and tapped with its chapter, once per chapter per day", () => {
+    for (const action of ["next_shown", "next_tap"]) {
+      expect(parseClientEvent({ kind: "surface_viewed", surface: "study_time", action, chapterId: CH }, "u1", NOW)).toEqual({
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "study_time", action, chapterId: CH },
+          dedupeKey: `view:study_time:${action}:${CH}:u1:2026-09-27`,
+        },
+      });
+    }
+  });
+
+  it("refuses an unknown step, a chapter where none belongs, or a suggestion without one", () => {
+    for (const bad of [
+      { surface: "study_time" },
+      { surface: "study_time", action: "zero" },
+      { surface: "study_time", action: "seen", chapterId: CH },
+      { surface: "study_time", action: "next_tap" },
+      { surface: "study_time", action: "next_tap", chapterId: "nope" },
+      { surface: "study_time", action: "seen", path: "/me" },
+    ]) {
+      expect(parseClientEvent({ kind: "surface_viewed", ...bad }, "u1", NOW).ok, JSON.stringify(bad)).toBe(false);
+    }
+  });
+});
+
 // The stuck offer (2026-11-10, lib/questions/stuckOffer): seen and each button, per question and day.
 describe("parseClientEvent - the stuck offer", () => {
   const Q = "c0ffee00-1b2c-4d3e-9f00-112233445566";
 
   it("records each step with its question, once per question per day", () => {
-    for (const action of ["shown", "teach", "easier", "keep", "returned", "try_after", "teach_close", "full_notes"]) {
+    for (const action of ["shown", "teach", "easier", "keep", "returned", "try_after", "teach_close", "full_notes", "learn_open", "learn_close"]) {
       expect(parseClientEvent({ kind: "surface_viewed", surface: "stuck_offer", questionId: Q, action }, "u1", NOW)).toEqual({
         ok: true,
         value: {
@@ -619,5 +664,97 @@ describe("parseClientEvent - a teaching moment", () => {
     expect(parseClientEvent({ ...ok, moment: "fix_nudge" }, "u1", NOW).ok).toBe(false);
     expect(parseClientEvent({ ...ok, action: "bought" }, "u1", NOW).ok).toBe(false);
     expect(parseClientEvent({ ...ok, questionId: "x" }, "u1", NOW).ok).toBe(false);
+  });
+
+  it("accepts V's day badge seen, once a day, with nothing else on it", () => {
+    const r = parseClientEvent({ kind: "surface_viewed", surface: "v_day_badge" }, "u1", NOW);
+    expect(r).toEqual({
+      ok: true,
+      value: { kind: "surface_viewed", metadata: { surface: "v_day_badge" }, dedupeKey: "view:v_day_badge:u1:2026-09-27" },
+    });
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "v_day_badge", path: "/me" }, "u1", NOW).ok).toBe(false);
+  });
+
+  it("accepts V's gift steps (2026-11-21), each once per gift, step and day", () => {
+    for (const action of ["badge", "shown", "open", "activate", "pricing"]) {
+      for (const gift of ["trial", "points"]) {
+        const r = parseClientEvent({ kind: "surface_viewed", surface: "v_gift", gift, action }, "u1", NOW);
+        expect(r).toEqual({
+          ok: true,
+          value: {
+            kind: "surface_viewed",
+            metadata: { surface: "v_gift", gift, action },
+            dedupeKey: `view:v_gift:${action}:${gift}:u1:2026-09-27`,
+          },
+        });
+      }
+    }
+  });
+
+  it("accepts V's check-in steps (2026-11-21), each once a day", () => {
+    for (const action of ["shown", "well", "stuck", "short", "chapter", "other", "go"]) {
+      const r = parseClientEvent({ kind: "surface_viewed", surface: "v_checkin", action }, "u1", NOW);
+      expect(r).toEqual({
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "v_checkin", action },
+          dedupeKey: `view:v_checkin:${action}:u1:2026-09-27`,
+        },
+      });
+    }
+    for (const bad of [{}, { action: "skip" }, { action: "well", path: "/me" }]) {
+      expect(parseClientEvent({ kind: "surface_viewed", surface: "v_checkin", ...bad }, "u1", NOW).ok, JSON.stringify(bad)).toBe(false);
+    }
+  });
+
+  it("refuses a V gift step without a known gift or step", () => {
+    const bad = [
+      { kind: "surface_viewed", surface: "v_gift", action: "open" },
+      { kind: "surface_viewed", surface: "v_gift", gift: "cash", action: "open" },
+      { kind: "surface_viewed", surface: "v_gift", gift: "trial" },
+      { kind: "surface_viewed", surface: "v_gift", gift: "trial", action: "buy" },
+      { kind: "surface_viewed", surface: "v_gift", gift: "trial", action: "open", path: "/me" },
+    ];
+    for (const raw of bad) expect(parseClientEvent(raw, "u1", NOW).ok, JSON.stringify(raw)).toBe(false);
+  });
+});
+
+// "Teach me" buttons (2026-11-21, experiment v-teach-chapter): each place's line
+// seen and tapped, so the readout can say which place students actually use.
+describe("parseClientEvent - teach a chapter", () => {
+  const TC = "0b5e55ed-1b2c-4d3e-9f00-112233445566";
+
+  it("records seen and tapped per place, once a day, with the chapter when the place has one", () => {
+    for (const action of ["shown", "tap"]) {
+      for (const from of ["me_weak", "mock_result", "v_button", "v_pick", "lesson_go_on", "lesson_simpler", "lesson_notes", "lesson_learn", "learn_try_answer", "learn_try_skip"]) {
+        expect(parseClientEvent({ kind: "surface_viewed", surface: "teach_chapter", action, from }, "u1", NOW)).toEqual({
+          ok: true,
+          value: {
+            kind: "surface_viewed",
+            metadata: { surface: "teach_chapter", action, from },
+            dedupeKey: `view:teach_chapter:${action}:${from}:-:u1:2026-09-27`,
+          },
+        });
+      }
+    }
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "me_weak", chapterId: TC }, "u1", NOW)).toEqual({
+      ok: true,
+      value: {
+        kind: "surface_viewed",
+        metadata: { surface: "teach_chapter", action: "tap", from: "me_weak", chapterId: TC },
+        dedupeKey: `view:teach_chapter:tap:me_weak:${TC}:u1:2026-09-27`,
+      },
+    });
+  });
+
+  it("refuses an unknown step, an unknown place or a bad chapter id", () => {
+    const bad = [
+      { kind: "surface_viewed", surface: "teach_chapter", action: "open", from: "me_weak" },
+      { kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "homepage" },
+      { kind: "surface_viewed", surface: "teach_chapter", action: "tap" },
+      { kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "me_weak", chapterId: "x" },
+    ];
+    for (const raw of bad) expect(parseClientEvent(raw, "u1", NOW).ok, JSON.stringify(raw)).toBe(false);
   });
 });

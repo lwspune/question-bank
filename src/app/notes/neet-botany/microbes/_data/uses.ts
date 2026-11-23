@@ -84,6 +84,7 @@ export const NEET_BO_MI_USES_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nbomi-beverages",
       name: "Fermented drinks and antibiotics",
+      visualizationSlug: "neet-brewed-drinks",
       intuition:
         "Yeast ferments sugary raw material into alcohol. Whether the fermented liquid is then distilled decides which drink you get. Antibiotics are a second gift from microbes: chemicals one microbe makes that kill or stop the growth of disease-causing microbes.",
       definition:

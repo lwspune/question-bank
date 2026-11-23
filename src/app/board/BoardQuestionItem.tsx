@@ -208,7 +208,8 @@ export default function BoardQuestionItem({
             !revealed &&
             // A daily quota is loaded only for a signed-in free student.
             (dailyRevealLimit() !== null ? (
-              <RevealDailyPrompt surface="board" />
+              // Activating the 7-day pass (0273) opens this answer at once.
+              <RevealDailyPrompt surface="board" onUnlocked={onToggleReveal} />
             ) : (
               <RevealSignInPrompt surface="board" />
             ))}

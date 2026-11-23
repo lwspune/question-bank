@@ -153,6 +153,7 @@ export const NEET_ZO_BP_RESTRICTION_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nzobp-gel",
       name: "Gel electrophoresis, staining and elution",
+      visualizationSlug: "imat-gel-electrophoresis",
       intuition:
         "Cut DNA is a mixture of pieces of many lengths. DNA carries a negative charge, so in an electric field all the pieces move towards the positive end. The agarose gel is like a crowded forest: small pieces slip through quickly and go far, big pieces get held back near the wells. You cannot see DNA, so you stain it and shine UV light on it.",
       definition:

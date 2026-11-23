@@ -132,6 +132,7 @@ export const NEET_BO_EC_PRODUCTIVITY_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nboec-decomposition",
       name: "Steps of decomposition",
+      visualizationSlug: "neet-decomposition-steps",
       intuition:
         "An earthworm in a garden chops dead leaves into bits, rain washes the soluble parts down into the soil, and bacteria and fungi digest the rest. What is left becomes dark humus, which slowly releases nutrients back to the plants. That whole chain is decomposition.",
       definition:

@@ -87,6 +87,22 @@ const BOARD_EXAMS = "mh-hsc-12, cbse-12, mh-ssc-10, cbse-10, cbse-11, mh-sb-11, 
 
 export const INSIGHTS: readonly Insight[] = [
   {
+    id: "board-plan-not-followed",
+    title: "Class 12 students start a day-by-day board plan but do not follow it",
+    finding:
+      "Day 14 of the board plan (live 8 Nov): 254 saw the offer, 144 started, none stopped, but 80 of 1,459 tasks shown were done by the end of their day (5%) and no chapter was ever finished. Only 3 of 134 unlocked chapter tests were started. Following the class (15 Nov) did not help: the same 88 starters went from 7% of tasks done the week before to 2% the week after. Their practice went to chapters they chose themselves.",
+    source: "npm run path:readout, 2026-11-22 (staff excluded); study_path_days for days the card was shown",
+    confidence: "high",
+    firstSeen: "2026-11-22",
+    recheckDays: 28,
+    howToCheck:
+      "npm run path:readout: STARTERS (today's tasks done by the end of their day, chapters done) and FUNNEL (V's path card seen). Since 22 Nov only the 144 existing starters can see the plan, in V, so read it as: of those still active, how many open \"My plan for today\" and how many tasks they finish.",
+    checks: [{ on: "2026-11-22", verdict: "holds", numbers: "5% of tasks done (80 of 1,459), 0 chapters done, 2% after Follow the class; V's plan card seen by 7 students." }],
+    status: "confirmed",
+    actedOn:
+      "2026-11-22 (owner): the plan left /me, /board, /account and /review and takes no new starters; it lives in V alone, as a \"Today's plan\" row pinned at the top of the chat for the day once asked for.",
+  },
+  {
     id: "chatgpt-vs-google",
     title: "ChatGPT brings one-question visitors, and the ones who sign up are our most engaged",
     finding:

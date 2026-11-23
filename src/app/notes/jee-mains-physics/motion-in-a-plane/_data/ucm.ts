@@ -68,6 +68,7 @@ export const UCM_PLANE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpplane-centripetal",
       name: "Centripetal and tangential acceleration",
+      visualizationSlug: "imat-circular-motion",
       intuition:
         "At constant speed the velocity still changes direction all the time, and that change needs an acceleration pointing at the centre: v²/r, or ω²r. Because it is always at right angles to the velocity, it turns the motion without speeding it up, and the force behind it does no work. If the speed is also changing, a second acceleration dv/dt acts along the velocity; the two are at right angles, so they add by Pythagoras.",
       definition:

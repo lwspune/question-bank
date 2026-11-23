@@ -18,6 +18,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { answerFromActivity } from "@/lib/chat/verifiedLearning";
 import { readPeerAccuracy } from "@/lib/email/mockReportService";
 import { readInChunks } from "@/lib/supabase/readInChunks";
+import { learnTargetForQuestion } from "@/lib/chat/learnServer";
 import { newlyStuck, pickEasier, STUCK_WINDOW, type StuckOffer } from "./stuckOffer";
 
 const RECENT_ROWS = 300;
@@ -26,9 +27,15 @@ const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
 
 /** The offer for the answer to `questionId`, or null (not newly stuck, or a failed read). */
 export async function readStuckOffer(db: SupabaseClient, admin: SupabaseClient, userId: string, questionId: string): Promise<StuckOffer | null> {
-  const { data: q, error: qErr } = await db.from("questions").select("subtopic_id").eq("id", questionId).maybeSingle();
+  const { data: q, error: qErr } = await db
+    .from("questions")
+    .select("subtopic_id, exam:exams(name), chapter:chapters(name)")
+    .eq("id", questionId)
+    .maybeSingle();
   if (qErr || !q?.subtopic_id) return null;
   const subtopicId = q.subtopic_id as string;
+  const examName = (q.exam as { name?: string } | null)?.name ?? null;
+  const chapterName = (q.chapter as { name?: string } | null)?.name ?? null;
 
   const { data: rows, error } = await db
     .from("user_activity")
@@ -67,5 +74,20 @@ export async function readStuckOffer(db: SupabaseClient, admin: SupabaseClient, 
   const answered = new Set(graded.map((r) => r.id));
   answered.add(questionId);
 
-  return { questionId, subtopic: name.name as string, history: history.slice(-STUCK_WINDOW), easierId: pickEasier(candidates, answered) };
+  // Learn first where it teaches the question (2026-11-22); a failed read keeps the notes panel.
+  const learn =
+    examName && chapterName
+      ? await learnTargetForQuestion(db, { exam: examName, chapter: chapterName, subtopic: name.name as string }).catch((e) => {
+          console.error("stuck offer: Learn unavailable", questionId, e);
+          return null;
+        })
+      : null;
+
+  return {
+    questionId,
+    subtopic: name.name as string,
+    history: history.slice(-STUCK_WINDOW),
+    easierId: pickEasier(candidates, answered),
+    ...(learn ? { learn } : {}),
+  };
 }

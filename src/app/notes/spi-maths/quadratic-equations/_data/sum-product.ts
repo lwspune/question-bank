@@ -6,7 +6,7 @@ export const SPI_QE_SUM_PRODUCT_NOTE: SubtopicNote = {
   oneLineDefinition:
     "For ax² + bx + c = 0 the roots add up to −b/a and multiply to c/a, so an equation can be built from its roots and its roots tested without solving.",
   whyItMatters:
-    "Seven questions in the bank: three EASY, three MODERATE and one HARD. They form an equation from its roots, find a coefficient from roots in a ratio or reciprocal roots, or rebuild an equation two students copied wrongly. All of them need only the sum and the product, never the formula.",
+    "Eight questions in the bank, one from the 2026 paper: three EASY, four MODERATE and one HARD. They form an equation from its roots, find a coefficient from roots in a ratio or reciprocal roots, or rebuild an equation two students copied wrongly. All of them need only the sum and the product, never the formula.",
   concepts: [
     {
       kind: "formula" as const,
@@ -145,7 +145,7 @@ export const SPI_QE_SUM_PRODUCT_NOTE: SubtopicNote = {
         { prompt: "A student copies the constant term of \\(x^2 + bx + c = 0\\) wrongly and gets the roots 4 and 5. What is the correct value of b?", answer: "The sum 9 is right, so \\(b = -9\\)" },
         { prompt: "A student copies the coefficient of x in \\(x^2 + bx + c = 0\\) wrongly and gets the roots 2 and \\(-7\\). What is the correct value of c?", answer: "The product is right, so \\(c = -14\\)" },
       ],
-      pyqExampleId: "de951b7f-f259-46d3-9845-fd811ac877f0",
+      pyqExampleId: "fc454bb6-4782-49dc-837a-cc635e46a472",
       traps: [
         {
           title: "Trusting the wrong student's sum",

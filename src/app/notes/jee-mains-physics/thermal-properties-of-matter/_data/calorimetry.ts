@@ -73,6 +73,7 @@ export const CALORIMETRY_TH_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpthermal-phase-change",
       name: "Latent heat and the heating curve",
+      visualizationSlug: "jee-heating-curve",
       intuition:
         "While ice melts or water boils, the heat goes into breaking the bonds between molecules, not into raising the temperature. So a graph of temperature against heat supplied rises, goes flat at 0°C while the ice melts, rises again, and goes flat at 100°C while the water boils. The flat for boiling is much longer than the flat for melting, because water's latent heat of vaporisation is nearly seven times its latent heat of fusion.",
       definition:

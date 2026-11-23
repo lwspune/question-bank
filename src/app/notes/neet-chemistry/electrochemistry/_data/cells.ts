@@ -75,6 +75,7 @@ export const NEET_CH_EC_CELLS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nchec-ecell",
       name: "Galvanic cells and E°cell",
+      visualizationSlug: "imat-galvanic-cell",
       intuition:
         "A galvanic cell keeps the two halves of a redox reaction apart, so the electrons must travel through a wire to get from one to the other, and that flow is a current. In the Daniell cell zinc is oxidised and Cu²⁺ is reduced. The couple with the higher E° wins the electrons and is reduced at the cathode; the other couple runs backwards and is oxidised at the anode. The cell voltage is the gap between the two potentials.",
       definition:

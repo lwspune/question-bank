@@ -6,7 +6,7 @@ export const SPI_EM_OHM_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The current through a metal wire is proportional to the voltage across it, so V = IR, and the wire's resistance R depends on its length, its thickness and what it is made of.",
   whyItMatters:
-    "Five questions in the bank, three EASY and two MODERATE. Three are one line of V = IR, one reads a V against I graph, and one asks which metal resists current the most. The marks go on dividing the wrong way round and on forgetting that Ohm's law needs a steady temperature.",
+    "Six questions in the bank, three EASY and three MODERATE, one from the 2026 paper. Three are one line of V = IR, one reads a V against I graph, one asks which metal resists current the most, and one how a semiconductor's resistance changes when it is heated. The marks go on dividing the wrong way round and on forgetting that Ohm's law needs a steady temperature.",
   concepts: [
     {
       kind: "formula" as const,
@@ -109,6 +109,7 @@ export const SPI_EM_OHM_NOTE: SubtopicNote = {
         "- \\(R = \\rho \\dfrac{L}{A}\\): resistance is **proportional to length** and **inversely proportional to cross-section area**.\n" +
         "- \\(\\rho\\) (rho) is the **resistivity**. It depends only on the material and the temperature, not on the wire's size. Unit: ohm metre (\\(\\Omega\\,\\text{m}\\)).\n" +
         "- Best conductors (lowest resistivity): silver, then copper, then aluminium. Copper and aluminium carry current in house wiring.\n" +
+        "- **Heat changes resistance:** a metal's resistance rises as it gets hotter, but a **semiconductor** such as silicon or germanium has **less** resistance when hot, because heat frees more charges to carry current.\n" +
         "- **Tungsten** has a much higher resistivity and melts at about \\(3400^\\circ\\text{C}\\), so it makes bulb filaments.\n" +
         "- **Nichrome** (an alloy) has a high resistivity and does not burn easily when red hot, so it makes heater elements.",
       formula: {
@@ -141,7 +142,7 @@ export const SPI_EM_OHM_NOTE: SubtopicNote = {
         { prompt: "Which is the best conductor: silver, copper or aluminium?", answer: "Silver" },
         { prompt: "What is the SI unit of resistivity?", answer: "Ohm metre" },
       ],
-      pyqExampleId: "0121cf5a-3576-407e-b3a5-9fa33bb29143",
+      pyqExampleId: "aaa922c8-dd3e-4c1a-9103-21c680c80abb",
       traps: [
         {
           title: "Mixing resistance with resistivity",

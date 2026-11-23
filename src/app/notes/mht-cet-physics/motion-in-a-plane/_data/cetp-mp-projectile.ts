@@ -14,6 +14,7 @@ export const PROJECTILE_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-mp-projectile",
       name: "Time of Flight, Height and Range",
+      visualizationSlug: "kin-projectile-parabola",
       intuition:
         "Split the motion: horizontally nothing acts, so uₓ = u cos θ stays; vertically it is free fall from u sin θ. At the top only the horizontal velocity remains, so the kinetic energy there is E cos²θ, and gravity acts as the centripetal force on a path of radius u²cos²θ/g. Setting H = R gives tan θ = 4. A ball thrown upward that passes height h at t₁ on the way up and lands t₂ later has h = ½gt₁t₂. From a tower, solve the vertical equation for the time first, taking care whether the throw is above or below the horizontal, then multiply by the horizontal speed.",
       definition:

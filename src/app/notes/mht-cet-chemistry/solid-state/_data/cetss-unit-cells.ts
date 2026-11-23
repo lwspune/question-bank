@@ -14,6 +14,7 @@ export const UNIT_CELLS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetss-particles-per-cell-and-coordination",
       name: "Particles Per Unit Cell and Coordination Number",
+      visualizationSlug: "cet-unit-cell-counting",
       intuition:
         "A corner particle is shared by 8 cells, a face particle by 2, an edge particle by 4, a body-centre particle by none. Add the fractions and the three cubic cells hold 1, 2 and 4 particles. Coordination number is how many nearest neighbours one particle touches: 6 in simple cubic, 8 in bcc, 12 in fcc and hcp.",
       definition:
@@ -63,6 +64,7 @@ export const UNIT_CELLS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetss-edge-length-and-radius",
       name: "Edge Length From Radius: Where the Atoms Touch",
+      visualizationSlug: "cet-edge-length-radius",
       intuition:
         "In each cell the atoms are in contact along exactly one line. Simple cubic: along the edge, so \\(a = 2r\\). bcc: along the body diagonal of length \\(\\sqrt{3}a\\), which holds four radii. fcc: along the face diagonal of length \\(\\sqrt{2}a\\), which also holds four radii.",
       definition:

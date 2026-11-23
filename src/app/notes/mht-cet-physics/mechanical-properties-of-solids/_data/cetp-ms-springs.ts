@@ -13,6 +13,7 @@ export const SPRINGS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-ms-springs",
       name: "Spring Constant, Series Springs and Elastic Energy",
+      visualizationSlug: "cet-cut-spring",
       intuition:
         "A spring obeys F = kx and stores U = ½kx², so three times the stretch stores nine times the energy. A spring's constant is inversely proportional to its length: cut a spring of constant K into pieces L₁ = NL₂, and the longer piece has constant K(N + 1)/N. Two springs hung in a chain carry the same force and add their extensions, f/k₁ + f/k₂. A ball of mass m dropped from height s onto a spring platform that sinks h loses mg(s + h) of potential energy into ½kh².",
       definition:

@@ -6,7 +6,7 @@ export const SPI_GR_TENSES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A tense is the form of the verb that shows when an action happens and whether it is finished or still going on.",
   whyItMatters:
-    "Fifteen questions in the bank: 11 EASY, 3 MODERATE and 1 HARD, and four of the five Grammar questions from the 2022 paper sit here. Most are settled by one time word in the sentence (ago, since, yet, by tomorrow), so find that word before you read the options.",
+    "Nineteen questions in the bank: 14 EASY, 4 MODERATE and 1 HARD. Four of the five Grammar questions from the 2022 paper sit here, and four from the 2026 paper. Most are settled by one time word in the sentence (ago, since, yet, by tomorrow), so find that word before you read the options.",
   concepts: [
     {
       kind: "reference" as const,
@@ -53,7 +53,7 @@ export const SPI_GR_TENSES_NOTE: SubtopicNote = {
         { prompt: "Name the tense: The bus had gone.", answer: "Past Perfect" },
         { prompt: "What is another name for the Simple Past tense?", answer: "Past Indefinite" },
       ],
-      pyqExampleId: "8ec875d0-6ceb-4c31-8b3d-30799fc1f80b",
+      pyqExampleId: "4aca9cb1-6fe1-4473-b3f0-aa795693f572",
       traps: [
         {
           title: "Calling every '-ing' form perfect continuous",
@@ -163,6 +163,11 @@ export const SPI_GR_TENSES_NOTE: SubtopicNote = {
       pyqExampleId: "a3b75d9a-4cc6-456c-9aac-dfd915aeb2b2",
       traps: [
         {
+          title: "Putting an adverb after feel, look or seem",
+          body:
+            "Feel, look, seem and become join the subject to a describing word, so they take an adjective: 'She felt **happy**', not 'she felt happily'. The noun is wrong too: 'felt very happiness' does not fit.",
+        },
+        {
           title: "Mixing a present verb into a past sentence",
           body:
             "'I did not come because I am sick' mixes two times. If the main verb is past, the reason is past too: 'because I was sick'.",
@@ -183,6 +188,7 @@ export const SPI_GR_TENSES_NOTE: SubtopicNote = {
       definition:
         "- After a **modal** (can, could, may, might, must, should, will, would, shall), use the **base form**: 'can go', never 'can goes', 'can going' or 'can to go'.\n" +
         "- After **going to**, also the base form: 'It is going to snow.'\n" +
+        "- After **do, does or did** (in a question or with not), the base form again: 'Did she **write** the letter?', never 'did she wrote'.\n" +
         "- **Must** shows duty or need; **can** shows ability; **may** and **might** show possibility or permission; **should** shows advice.\n" +
         "- The pattern 'it takes (someone) time **to** do something' needs 'to' + the base form.",
       table: {

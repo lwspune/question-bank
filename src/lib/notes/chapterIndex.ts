@@ -27,6 +27,17 @@ export function notesChapterMeta(subjectRoute: string, chapterSlug: string): Not
   return NOTES_CHAPTER_INDEX.find((c) => c.subjectRoute === subjectRoute && c.chapterSlug === chapterSlug) ?? null;
 }
 
+/**
+ * The notes page for a chapter named by its DB exam, subject and chapter, or null. All three:
+ * one chapter name repeats across exams and subjects. Used by the /board chapter page (2026-11-23).
+ */
+export function notesChapterHrefFor(examName: string, subjectName: string, chapterName: string): string | null {
+  const c = NOTES_CHAPTER_INDEX.find(
+    (m) => m.examName === examName && m.subjectName === subjectName && m.chapterName === chapterName
+  );
+  return c ? `/notes/${c.subjectRoute}/${c.chapterSlug}` : null;
+}
+
 /** A subject's chapters in reading order, as getNotesChaptersForSubject orders them. */
 export function notesChapterMetasForSubject(subjectRoute: string): NotesChapterMeta[] {
   return inBookOrder(NOTES_CHAPTER_INDEX.filter((c) => c.subjectRoute === subjectRoute));

@@ -2,5 +2,8 @@
   "regions": ["bom1"],
   "git": {
     "deploymentEnabled": false
-  }
+  },
+  "crons": [
+    { "path": "/api/cron/payment-check", "schedule": "*/30 * * * *" }
+  ]
 }

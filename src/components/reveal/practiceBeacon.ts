@@ -13,6 +13,7 @@ import { celebrateInTurn, type VMessage } from "@/components/celebrate/celebrate
 import { invalidatePulse } from "@/lib/viewer/usePulse";
 import { showMoment } from "./momentStore";
 import { parseMoment } from "@/lib/questions/teachingMoment";
+import { noteStudyQuestion } from "@/lib/studyTime/clientStore";
 
 /**
  * Client-side queue for the answer-reveal practice signal.
@@ -173,6 +174,8 @@ export function recordPractice(
   chose?: PickLabel
 ): void {
   if (!signedIn || !questionId) return;
+  // The study clock puts the time around this answer on its chapter.
+  noteStudyQuestion(questionId);
   const key = `${surface}:${questionId}`;
   if (sent.has(key)) return;
   sent.add(key);

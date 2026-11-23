@@ -100,6 +100,7 @@ export const SSC_BHP_SYSTEMS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "sscbhpsy-circulation",
       name: "Heart, kidney, tissues and antibodies",
+      visualizationSlug: "ssc-blood-flow",
       intuition:
         "This last group is a set of single facts: how blood moves through the heart, what filters it in the kidney, what joins bones and muscles, and which antibody does what.",
       definition:

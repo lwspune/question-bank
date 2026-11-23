@@ -12,6 +12,7 @@ export const SSC2_ST_UNGROUPED_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2stun-mode",
       name: "Mode",
+      visualizationSlug: "mode-bar-plot",
       intuition:
         "The mode is simply the value that turns up most often. A list can have one mode, two (or more) when there is a tie, or none if every value appears once.",
       definition:
@@ -50,6 +51,7 @@ export const SSC2_ST_UNGROUPED_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2stun-median",
       name: "Median",
+      visualizationSlug: "median-middle-value",
       intuition:
         "The median is the value in the middle once the list is sorted. With an odd count there is one middle value; with an even count it is the average of the two in the middle.",
       definition:
@@ -88,6 +90,7 @@ export const SSC2_ST_UNGROUPED_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2stun-spread",
       name: "Standard deviation",
+      visualizationSlug: "variance-squared-deviations",
       intuition:
         "The standard deviation measures how far the values sit from their mean on average. Shifting every value by the same amount moves the mean too, so the spread, and the standard deviation, do not change.",
       definition:

@@ -126,6 +126,7 @@ export const ADIABATIC_TD_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jpthermo-adiabatic-ideas",
       name: "True and false statements about adiabatic processes",
+      visualizationSlug: "ht-pv-process-diagram",
       intuition:
         "Assertion and statement questions on adiabatic processes test a handful of ideas. Q = 0 is the definition; the internal energy does change; the curve is steeper than an isotherm; and the molar heat capacity is zero, because the temperature changes with no heat at all.",
       definition:

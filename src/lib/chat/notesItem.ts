@@ -90,28 +90,82 @@ export function notesItemCard(note: SubtopicNote, ref: NotesItemRef, page: strin
   return rep ? { id, text: rep.prompt, context: null, imageUrl: null, where, options: [] } : null;
 }
 
+type Concept = SubtopicNote["concepts"][number];
+/** A question written into the notes: a worked example, a self-check or a practice question. */
+type NotesQuestion = { prompt: string; options?: string[]; answer: string; steps?: string[]; method?: string };
+
+const NOT_IN_BANK = "It is not in the question bank: do not call get_question, explain_question, similar_question or find_question for it.";
+
+/** The brief for one notes question: the question, its answer, its working, and what the notes teach for its concept. */
+function briefOf(intro: string, concept: Concept, q: NotesQuestion): string {
+  const lines: string[] = [intro, "QUESTION", plain(q.prompt)];
+  if (q.options && q.options.length > 0) lines.push(q.options.map((o, i) => `(${letter(i)}) ${plain(o)}`).join("\n"));
+  // The answer before the steps, so a cut for length (BRIEF_MAX) never loses it.
+  lines.push(`ANSWER: ${plain(q.answer)}`);
+  if (q.steps && q.steps.length > 0) lines.push("SOLUTION", q.steps.map((s, i) => `${i + 1}. ${plain(s)}`).join("\n"));
+  if (q.method) lines.push(`METHOD: ${plain(q.method)}`);
+  lines.push("WHAT THE NOTES TEACH FOR THIS CONCEPT", plain(concept.intuition), plain(concept.definition));
+  const body = lines.join("\n");
+  return `${body.length > BRIEF_MAX ? `${body.slice(0, BRIEF_MAX)}...` : body}\n${RULES}`;
+}
+
 /** What V is told about the tapped notes item, or null when it is not on that page. */
 export function notesItemBrief(note: SubtopicNote, ref: NotesItemRef): string | null {
   const concept = note.concepts.find((c) => c.slug === ref.concept);
   if (!concept) return null;
-  const lines: string[] = [
-    `The student tapped Ask V on a practice question in the notes ("${note.title}", concept: ${concept.name}). It is not in the question bank: do not call get_question, explain_question, similar_question or find_question for it.`,
-  ];
-  if (ref.item === "self") {
-    const ex = concept.selfCheckExample;
-    if (!ex) return null;
-    lines.push("QUESTION", plain(ex.prompt));
-    if (ex.options && ex.options.length > 0) lines.push(ex.options.map((o, i) => `(${letter(i)}) ${plain(o)}`).join("\n"));
-    // The answer before the steps, so a cut for length (BRIEF_MAX) never loses it.
-    lines.push(`ANSWER: ${plain(ex.answer)}`);
-    lines.push("SOLUTION", ex.steps.map((s, i) => `${i + 1}. ${plain(s)}`).join("\n"));
-  } else {
-    const rep = concept.practiceSet?.[ref.index];
-    if (!rep) return null;
-    lines.push("QUESTION", plain(rep.prompt), `ANSWER: ${plain(rep.answer)}`);
-    if (rep.method) lines.push(`METHOD: ${plain(rep.method)}`);
+  const q = ref.item === "self" ? concept.selfCheckExample : concept.practiceSet?.[ref.index];
+  if (!q) return null;
+  return briefOf(
+    `The student tapped Ask V on a practice question in the notes ("${note.title}", concept: ${concept.name}). ${NOT_IN_BANK}`,
+    concept,
+    q
+  );
+}
+
+/** A text's words, with maths markup dropped: "a \(\underline{\text{fair}}\) hearing" reads "a fair hearing". */
+function wordsOf(s: string): Set<string> {
+  const words = s
+    .replace(/\\[()[\]]/g, " ")
+    .replace(/\\[a-zA-Z]+/g, " ")
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter((w) => w.length >= 2);
+  return new Set(words);
+}
+
+const MIN_WORDS = 5;
+
+/**
+ * A question pasted from the notes page the student is on (2026-11-19): V searched
+ * only the bank, so a worked example copied from /notes/cds-english/vocabulary got
+ * "I couldn't find this question in our bank". Every question on the page is
+ * compared word for word. A match needs most of the question's words in the paste
+ * and little else, or nearly all of them amid a few of the student's own ("explain
+ * this:"), so a shared instruction line ("Choose the word nearest in meaning")
+ * never matches on its own. Null when no question on the page matches.
+ */
+export function notesPasteBrief(note: SubtopicNote, text: string): string | null {
+  const pasted = wordsOf(text);
+  if (pasted.size < MIN_WORDS) return null;
+  let best: { score: number; concept: Concept; q: NotesQuestion } | null = null;
+  for (const concept of note.concepts) {
+    const worked = "authoredExample" in concept ? concept.authoredExample : undefined;
+    const questions = [worked, concept.selfCheckExample, ...(concept.practiceSet ?? [])].filter((q): q is NotesQuestion => !!q);
+    for (const q of questions) {
+      const own = wordsOf([q.prompt, ...(q.options ?? [])].join(" "));
+      if (own.size < MIN_WORDS) continue;
+      let shared = 0;
+      for (const w of own) if (pasted.has(w)) shared++;
+      const coverage = shared / own.size;
+      const precision = shared / pasted.size;
+      const matches = (coverage >= 0.8 && precision >= 0.5) || (coverage >= 0.6 && precision >= 0.8);
+      if (matches && (!best || coverage + precision > best.score)) best = { score: coverage + precision, concept, q };
+    }
   }
-  lines.push("WHAT THE NOTES TEACH FOR THIS CONCEPT", plain(concept.intuition), plain(concept.definition));
-  const body = lines.join("\n");
-  return `${body.length > BRIEF_MAX ? `${body.slice(0, BRIEF_MAX)}...` : body}\n${RULES}`;
+  if (!best) return null;
+  return briefOf(
+    `The student pasted a question from the notes page they are on ("${note.title}", concept: ${best.concept.name}). ${NOT_IN_BANK} Explain this one.`,
+    best.concept,
+    best.q
+  );
 }

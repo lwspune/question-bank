@@ -59,6 +59,12 @@ export type MockSectionBlueprint = {
    * only if its format is listed. Omitted everywhere else.
    */
   formats?: PaperFormat[];
+  /**
+   * The printed question numbers this section covers, when a subject appears in more
+   * than one section (SPI 2026: Reasoning in Part 1 and Part 2). A row joins only if
+   * its question_number is in range. Omitted everywhere else.
+   */
+  questionNumbers?: { from: number; to: number };
   /** How this section's multiple-select questions are marked (see MsqScheme). */
   msqScheme?: MsqScheme;
 };
@@ -149,6 +155,7 @@ export const NDA_GAT_PAPER: MockPaperBlueprint = {
         "Polity",
         "Economics",
         "Current Affairs",
+        "Static GK",
       ],
       count: 100,
     },
@@ -375,6 +382,7 @@ export const CDS_GK_PAPER: MockPaperBlueprint = {
         "Polity",
         "Economics",
         "Current Affairs",
+        "Static GK",
       ],
       count: 120,
     },
@@ -730,8 +738,8 @@ export const UPSC_GS1_PAPER: MockPaperBlueprint = {
   ],
 };
 
-/** SSC CGL General Awareness: the eight bank subjects it is filed under (the CDS GK split). */
-const SSC_GA = ["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Current Affairs"];
+/** SSC General Awareness: the eight bank subjects it is filed under (the CDS GK split) plus Static GK (2026-11-19). */
+const SSC_GA = ["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Current Affairs", "Static GK"];
 
 /**
  * SSC CGL Tier I. 100 questions, 200 marks, 60 minutes, +2 / -0.5, in the four
@@ -891,6 +899,43 @@ export const SPI_PAPER: MockPaperBlueprint = {
   ],
 };
 
+/**
+ * SPI as printed in 2026 (EX-50/2026): the same two parts of 75 and 3 hours, but +4 a right
+ * answer and 1 off a wrong one, out of 600. Its own code, the MPSC_SSP_CSAT_2021_PAPER way, so
+ * getBlueprint resolves each scheme. It prints Reasoning in both parts (Q64, Q144-150), so each
+ * part is its printed numbers, not its subjects alone.
+ */
+export const SPI_2026_PAPER: MockPaperBlueprint = {
+  ...SPI_PAPER,
+  code: "paper-2026",
+  marking: { correct: 4, wrong: -1 },
+  sections: [
+    { ...SPI_PAPER.sections[0], questionNumbers: { from: 1, to: 75 } },
+    {
+      ...SPI_PAPER.sections[1],
+      subjects: [...SPI_PAPER.sections[1].subjects, "Reasoning"],
+      questionNumbers: { from: 76, to: 150 },
+    },
+  ],
+};
+
+/**
+ * SPI practice mocks (the sample paper, Practice Paper 1, the LWS mocks): the 2026 pattern
+ * students will sit (owner, 2026-11-17), with each part's size taken from the paper's rows,
+ * because Practice Paper 1 prints one Maths question twice and so has 149 distinct questions.
+ * Every question is still a listed ref the builder must resolve, so nothing goes missing silently.
+ */
+export const SPI_PRACTICE_PAPER: MockPaperBlueprint = {
+  ...SPI_2026_PAPER,
+  code: "practice",
+  sections: SPI_2026_PAPER.sections.map(({ count: _count, ...s }) => s),
+};
+
+/** The SPI scheme printed on that year's booklet: +1 / -0.5 up to 2022, +4 / -1 from 2026. */
+export function spiPaperFor(year: number): MockPaperBlueprint {
+  return year >= 2026 ? SPI_2026_PAPER : SPI_PAPER;
+}
+
 const IAT_SUBJECTS = ["Biology", "Chemistry", "Mathematics", "Physics"] as const;
 
 /**
@@ -959,10 +1004,37 @@ export const RRB_NTPC_CBT_1: MockPaperBlueprint = {
         "Chemistry",
         "Biology",
         "Current Affairs",
+        "Static GK",
         "Computer Knowledge",
       ],
       count: 100,
     },
+  ],
+};
+
+/**
+ * RRB NTPC Undergraduate CBT 1 (Class 12 level, its own exam since 2026-11-19): the same scheme
+ * as Graduate (100 MCQs, 90 minutes, +1 / -1/3), but its sheet prints THREE sections numbered
+ * straight through (Mathematics Q1-30, General Awareness Q31-70, General Intelligence and Reasoning
+ * Q71-100), so the mock keeps them as sections, in RRB's order. General Awareness carries the same
+ * ten subjects as Graduate's (scripts/rrb-ntpc/config.ts GA).
+ */
+export const RRB_NTPC_UG_CBT_1: MockPaperBlueprint = {
+  code: "cbt-1",
+  examName: "RRB NTPC Undergraduate",
+  examSlug: "rrb-ntpc-undergraduate",
+  paperLabel: "Undergraduate CBT 1",
+  durationSecs: 90 * 60,
+  marking: { correct: 1, wrong: -0.3333 },
+  sections: [
+    { key: "mathematics", label: "Mathematics", subjects: ["Mathematics"], count: 30 },
+    {
+      key: "general-awareness",
+      label: "General Awareness",
+      subjects: ["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Current Affairs", "Static GK", "Computer Knowledge"],
+      count: 40,
+    },
+    { key: "reasoning", label: "General Intelligence and Reasoning", subjects: ["Reasoning"], count: 30 },
   ],
 };
 
@@ -1197,6 +1269,18 @@ export const MH_SSC_10_CHAPTER_MCQ_PAPER = boardPaper(
   ]
 );
 
+// UP Board (2026-11-17): the board's own MCQs from the 2025 + 2026 papers, by
+// chapter. Biology skipped (owner). Hindi and English, as printed.
+export const UP_10_CHAPTER_MCQ_PAPER = boardPaper(
+  "UP Board Class 10", "up-board-10", "chapter-mcq", "Chapter MCQs", STEM_SECS,
+  [["mathematics", "Mathematics"], ["science", "Science"]]
+);
+
+export const UP_12_CHAPTER_MCQ_PAPER = boardPaper(
+  "UP Board Class 12", "up-board-12", "chapter-mcq", "Chapter MCQs", STEM_SECS,
+  [["physics", "Physics"], ["chemistry", "Chemistry"], ["mathematics", "Mathematics"]]
+);
+
 export const MH_SSC_10_HUMANITIES_MCQ_PAPER = boardPaper(
   "Maharashtra State Board Class 10", "mh-ssc-10", "chapter-mcq-humanities", "Chapter MCQs: Social Science", HUMANITIES_SECS,
   [["history", "History"], ["political-science", "Political Science"], ["geography", "Geography"]]
@@ -1266,6 +1350,206 @@ export function uceedPaper(year: number): MockPaperBlueprint {
   };
 }
 
+/**
+ * GATE Computer Science (CS): the General Aptitude paper every GATE candidate sits, then the
+ * ten sections of the official CS syllabus (GATE 2026, IIT Guwahati), in its order.
+ */
+export const GATE_CS_SUBJECTS = [
+  "General Aptitude",
+  "Engineering Mathematics",
+  "Digital Logic",
+  "Computer Organization and Architecture",
+  "Programming and Data Structures",
+  "Algorithms",
+  "Theory of Computation",
+  "Compiler Design",
+  "Operating System",
+  "Databases",
+  "Computer Networks",
+] as const;
+
+/**
+ * The marks a GATE question carries, from its printed number. Every GATE paper since 2010
+ * has 65 questions in the same layout: General Aptitude Q1-5 one mark and Q6-10 two marks,
+ * then the subject's Q11-35 one mark and Q36-65 two marks.
+ */
+export function gateQuestionMarks(n: number): 1 | 2 {
+  if (!Number.isInteger(n) || n < 1 || n > 65) throw new Error(`GATE has no Q${n}`);
+  return n <= 5 || (n >= 11 && n <= 35) ? 1 : 2;
+}
+
+/**
+ * GATE CS (2024 onwards), as the paper's instructions print it: 65 questions, 100 marks,
+ * 3 hours. A wrong MCQ costs a third of its marks; a multiple-select question scores only
+ * on the exact set and, like a numerical answer, costs nothing when wrong. The marks follow
+ * the printed number (gateQuestionMarks), so the sections are the four number ranges; the
+ * no-penalty rows are marked per question by the sitting builder (scripts/mocks/gateSittings).
+ */
+export function gatePaper(): MockPaperBlueprint {
+  const ga = ["General Aptitude"];
+  const cs = GATE_CS_SUBJECTS.filter((s) => s !== "General Aptitude");
+  const one = { correct: 1, wrong: -1 / 3 };
+  const two = { correct: 2, wrong: -2 / 3 };
+  return {
+    code: "cs",
+    examName: "GATE CS",
+    examSlug: "gate-cs",
+    paperLabel: "Computer Science",
+    durationSecs: 180 * 60,
+    marking: one,
+    sections: [
+      { key: "ga-1", label: "General Aptitude, 1 mark", subjects: ga, count: 5, questionNumbers: { from: 1, to: 5 }, marking: one, msqScheme: "exact" },
+      { key: "ga-2", label: "General Aptitude, 2 marks", subjects: ga, count: 5, questionNumbers: { from: 6, to: 10 }, marking: two, msqScheme: "exact" },
+      { key: "cs-1", label: "Computer Science, 1 mark", subjects: cs, count: 25, questionNumbers: { from: 11, to: 35 }, marking: one, msqScheme: "exact" },
+      { key: "cs-2", label: "Computer Science, 2 marks", subjects: cs, count: 30, questionNumbers: { from: 36, to: 65 }, marking: two, msqScheme: "exact" },
+    ],
+  };
+}
+
+/**
+ * AISSEE (Sainik Schools, NTA), as printed on the booklet covers: no negative
+ * marking, and Mathematics worth more than every other section.
+ *   Class 6: Language 25 x 2, Mathematics 50 x 3, Intelligence 25 x 2,
+ *            General Knowledge 25 x 2 = 125 questions, 300 marks, 150 min.
+ *   Class 9: Mathematics 50 x 4, Intelligence, English, General Science,
+ *            Social Science 25 x 2 = 150 questions, 400 marks, 180 min.
+ * NTA moved the sections around between years (Class 6 2020 opens with
+ * Mathematics, 2022 on with the Language), so a mock takes its own paper's
+ * order (scripts/mocks/milschoolSittings.ts SECTION_ORDER) and the code stays
+ * one per class, the uceedPaper way. The Language section is the candidate's
+ * chosen language; ours is English.
+ */
+const AISSEE_SECTIONS: Record<6 | 9, Record<string, { label: string; count: number; correct: number }>> = {
+  6: {
+    English: { label: "Language (English)", count: 25, correct: 2 },
+    Mathematics: { label: "Mathematics", count: 50, correct: 3 },
+    Intelligence: { label: "Intelligence", count: 25, correct: 2 },
+    "General Knowledge": { label: "General Knowledge", count: 25, correct: 2 },
+  },
+  9: {
+    Mathematics: { label: "Mathematics", count: 50, correct: 4 },
+    Intelligence: { label: "Intelligence", count: 25, correct: 2 },
+    English: { label: "English", count: 25, correct: 2 },
+    "General Science": { label: "General Science", count: 25, correct: 2 },
+    "Social Science": { label: "Social Science", count: 25, correct: 2 },
+  },
+};
+
+export function aisseePaper(cls: 6 | 9, order: readonly string[]): MockPaperBlueprint {
+  const table = AISSEE_SECTIONS[cls];
+  const wanted = Object.keys(table).sort().join("|");
+  if ([...order].sort().join("|") !== wanted) {
+    throw new Error(`AISSEE Class ${cls} order must name each of ${wanted} once, got ${order.join(", ")}`);
+  }
+  return {
+    code: "paper",
+    examName: `AISSEE Class ${cls}`,
+    examSlug: `aissee-${cls}`,
+    paperLabel: `Class ${cls} entrance paper`,
+    durationSecs: (cls === 6 ? 150 : 180) * 60,
+    marking: { correct: 2, wrong: 0 },
+    sections: order.map((subject) => {
+      const s = table[subject];
+      return {
+        key: subject.toLowerCase().replace(/\s+/g, "-"),
+        label: s.label,
+        subjects: [subject],
+        count: s.count,
+        ...(s.correct !== 2 ? { marking: { correct: s.correct, wrong: 0 } } : {}),
+      };
+    }),
+  };
+}
+
+/**
+ * RMS CET (Rashtriya Military Schools, AE-2), as the 2023 cover prints it: 200
+ * one-mark questions in 2 h 30 min, "There is no negative marking". Class 6 is
+ * English, General Knowledge, Intelligence, Mathematics, 50 each; Class 9 is
+ * Part I English 50, Hindi 20 (a Hindi language test, its rows in Hindi),
+ * Social Science 30, and Part II Mathematics 50, Science 50.
+ */
+const rmsPaper = (cls: 6 | 9, sections: [string, number][]): MockPaperBlueprint => ({
+  code: "paper",
+  examName: `RMS CET Class ${cls}`,
+  examSlug: `rms-cet-${cls}`,
+  paperLabel: `Class ${cls} entrance paper`,
+  durationSecs: 150 * 60,
+  marking: { correct: 1, wrong: 0 },
+  sections: sections.map(([subject, count], i) => ({
+    key: subject.toLowerCase().replace(/\s+/g, "-"),
+    label: cls === 9 ? `Section ${["I", "II", "III", "IV", "V"][i]}: ${subject}` : subject,
+    subjects: [subject],
+    count,
+  })),
+});
+
+export const RMS_CET_6_PAPER = rmsPaper(6, [
+  ["English", 50],
+  ["General Knowledge", 50],
+  ["Intelligence", 50],
+  ["Mathematics", 50],
+]);
+
+export const RMS_CET_9_PAPER = rmsPaper(9, [
+  ["English", 50],
+  ["Hindi", 20],
+  ["Social Science", 30],
+  ["Mathematics", 50],
+  ["Science", 50],
+]);
+
+/**
+ * Homi Bhabha Balvaidnyanik Competition (MSTA), Phase I written test, Std IX,
+ * as every booklet prints it: 100 one-mark MCQs in 90 minutes, no negative
+ * marking. The booklet has no sections (physics, chemistry, biology and science
+ * GK run in one numbering), so the mock is one section over the four subjects.
+ */
+export const HOMI_BHABHA_9_PAPER: MockPaperBlueprint = {
+  code: "paper",
+  examName: "Homi Bhabha Class 9",
+  examSlug: "homi-bhabha-9",
+  paperLabel: "Phase I written test",
+  durationSecs: 90 * 60,
+  marking: { correct: 1, wrong: 0 },
+  sections: [
+    {
+      key: "science",
+      label: "Science",
+      subjects: ["Physics", "Chemistry", "Biology", "General Science"],
+      count: 100,
+    },
+  ],
+};
+
+/**
+ * Maharashtra Scholarship (MSCE Pune), Class 4 and Class 7 (April 2026 on): two
+ * papers per class, each 75 MCQs x 2 marks, 90 minutes, no penalty. Paper I is
+ * the first language (English, for the English medium) Q1-25 then Mathematics
+ * Q26-75; Paper II the third language (Marathi) then the Intelligence Test.
+ * Sections declare no count (soft): a printed defect held out of the bank
+ * (Class 7 Paper II Q42) ships the paper one short, owner 2026-11-20; the
+ * sitting's expected 75 still warns on every build.
+ */
+function mhScholarshipPaper(cls: 4 | 7, paper: 1 | 2): MockPaperBlueprint {
+  const [first, second] = paper === 1 ? ["English", "Mathematics"] : ["Marathi", "Intelligence Test"];
+  return {
+    code: `paper-${paper}`,
+    examName: `MH Scholarship Class ${cls}`,
+    examSlug: `mh-scholarship-${cls}`,
+    paperLabel: paper === 1 ? "Paper I: First Language and Mathematics" : "Paper II: Third Language and Intelligence Test",
+    durationSecs: 90 * 60,
+    marking: { correct: 2, wrong: 0 },
+    sections: [
+      { key: "section-1", label: first, subjects: [first] },
+      { key: "section-2", label: second, subjects: [second] },
+    ],
+  };
+}
+export const MH_SCHOLARSHIP_4_PAPER_1 = mhScholarshipPaper(4, 1);
+export const MH_SCHOLARSHIP_4_PAPER_2 = mhScholarshipPaper(4, 2);
+export const MH_SCHOLARSHIP_7_PAPER_1 = mhScholarshipPaper(7, 1);
+export const MH_SCHOLARSHIP_7_PAPER_2 = mhScholarshipPaper(7, 2);
+
 /** The NDA blueprints the build script's year+month discovery loop iterates. */
 export const MOCK_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   NDA_MATHS_PAPER,
@@ -1308,21 +1592,37 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   SSC_CGL_T2_COMPUTER_PAPER,
   SSC_CGL_T2_QUANT_PAPER,
   SPI_PAPER,
+  SPI_2026_PAPER,
+  SPI_PRACTICE_PAPER,
   IAT_PAPER,
   UGC_NET_PAPER_1,
   RRB_NTPC_CBT_1,
+  RRB_NTPC_UG_CBT_1,
   CAPF_PAPER_1,
   RAS_PRELIMS,
   CLAT_PAPER,
   IMAT_PAPER,
   ENEM_DAY_2,
+  gatePaper(), // one shape for every GATE CS paper (gateSittings.ts)
   CBSE_10_CHAPTER_MCQ_PAPER,
   CBSE_12_CHAPTER_MCQ_PAPER,
   MH_HSC_12_CHAPTER_MCQ_PAPER,
   MH_SSC_10_CHAPTER_MCQ_PAPER,
   MH_SSC_10_HUMANITIES_MCQ_PAPER,
+  UP_10_CHAPTER_MCQ_PAPER,
+  UP_12_CHAPTER_MCQ_PAPER,
   // One code for every year; the label is the same, the build picks the year's blueprint.
   uceedPaper(2026),
+  // The same per class: the build gives each paper its printed section order.
+  aisseePaper(6, ["English", "Mathematics", "Intelligence", "General Knowledge"]),
+  aisseePaper(9, ["Mathematics", "Intelligence", "English", "General Science", "Social Science"]),
+  RMS_CET_6_PAPER,
+  RMS_CET_9_PAPER,
+  HOMI_BHABHA_9_PAPER,
+  MH_SCHOLARSHIP_4_PAPER_1,
+  MH_SCHOLARSHIP_4_PAPER_2,
+  MH_SCHOLARSHIP_7_PAPER_1,
+  MH_SCHOLARSHIP_7_PAPER_2,
 ];
 
 /** Sum of the DECLARED section counts (0 when a blueprint declares none). */

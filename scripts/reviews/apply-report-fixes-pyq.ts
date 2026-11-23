@@ -63,10 +63,9 @@ type KeyFix = {
   solution: string;
 };
 
-const DERIVED_NOTE =
-  "\n\n[Answer derived from the printed question paper. The UPSC test booklet carries no answer key, " +
-  "and the answer previously stored here came from a prep-house spreadsheet whose own working " +
-  "contradicted it.]";
+// Once a method note on HOW the answer was got; no such note reaches a student
+// (owner, 2026-11-22; lib/questions/methodNotes), so it adds nothing now.
+const DERIVED_NOTE = "";
 
 const FIXES: KeyFix[] = [
   {

@@ -1,0 +1,36 @@
+{
+ "27": {
+  "why": "Blind C (medium) left out Consistency; the key's B, C stands: money was created, so the balance invariant broke.",
+  "solution": "Both transfers read the balance Rs. 11000 before either wrote it, and each wrote Rs. 1000 back, so one debit was lost.\n\nIsolation is violated: run one after the other, the second transfer would have read Rs. 1000, so this result can only come from the two interleaving.\n\nConsistency is violated: B received Rs. 20000 while A lost only Rs. 10000, so the total money in the bank went up by Rs. 10000. A correct transfer never changes that total.\n\nAtomicity is not shown to be violated: each transfer ran all of its steps. Durability is not either: no committed change was lost to a failure.\n\nSo B and C."
+ },
+ "47": {
+  "why": "Blind C, D (medium) counted MFU frequencies only since a page was loaded; with counts over all references, as LFU and MFU are defined, MFU fails at the reference to 3. Key D stands.",
+  "solution": "Read the victims off the table: on 4 page 2 goes, on 5 page 3, on 6 page 1, on the second 1 page 4, on 3 page 5, and on 2 page 6.\n\n(A) LRU: on 4 the frames hold 1, 2, 3 and page 1 is the least recently used, but 2 was replaced. Not LRU.\n\n(B) LFU, counting every reference so far: on 6 the frames hold 1 (2 references), 4 (2) and 5 (1), so LFU evicts 5, but 1 was replaced. Not LFU.\n\n(C) MFU, counting every reference so far: on 3 the frames hold 6 (1 reference), 1 (3 references: the 1st, 7th and 11th) and 5 (2), so MFU evicts 1, but 5 was replaced. Not MFU.\n\n(D) Optimal evicts the page used furthest in the future. On 4: next uses are 1 at reference 7, 3 at 12, 2 at 13, so evict 2. On 5: 4 at 6, 1 at 7, 3 at 12, so evict 3. On 6: 4 at 9, 5 at 10, 1 at 11, so evict 1. From the second 1 on, none of the pages in memory is used again before the string ends, so any victim is optimal, including those in the table.\n\nSo only D."
+ },
+ "51": {
+  "why": "Blind C (medium) judged G2 unambiguous; it is not (two parse trees shown), so the key's C, D stands. Also: a stray literal backslash-n before 'where' in the stem.",
+  "solution": "G1 is the dangling-else grammar. Its first two S-productions both start with \\(\\textit{if}\\), so it is not LL(1), and it is ambiguous: \\(\\textit{if } b \\textit{ then if } b \\textit{ then } a \\textit{ else } a\\) has two parse trees.\n\nG2 is not LL(1) either: \\(\\text{FIRST}(\\textit{if } E \\textit{ then } S) = \\{\\textit{if}\\}\\) and \\(\\text{FIRST}(M) = \\{\\textit{if}, c\\}\\) overlap, so on \\(\\textit{if}\\) the parser cannot choose an S-production.\n\nG2 is also ambiguous. The S after an else can be an unmatched if, so an M can end in one. Take \\(\\textit{if } b \\textit{ then if } b \\textit{ then } c \\textit{ else if } b \\textit{ then } c \\textit{ else } c\\).\n\nTree 1: \\(S \\Rightarrow M \\Rightarrow \\textit{if } E \\textit{ then } M_1 \\textit{ else } c\\), with \\(M_1 = \\textit{if } b \\textit{ then } c \\textit{ else } S\\) and that \\(S = \\textit{if } b \\textit{ then } c\\).\n\nTree 2: \\(S \\Rightarrow \\textit{if } E \\textit{ then } S_1\\), with \\(S_1 \\Rightarrow M = \\textit{if } b \\textit{ then } c \\textit{ else } S_2\\) and \\(S_2 \\Rightarrow M = \\textit{if } b \\textit{ then } c \\textit{ else } c\\).\n\nSo neither grammar is LL(1) and both are ambiguous: C and D.",
+  "text": "Consider two grammars \\(G_1\\) and \\(G_2\\) with the production rules given below:\n\n\\(G_1\\): \\(S \\rightarrow \\textit{if } E \\textit{ then } S \\mid \\textit{if } E \\textit{ then } S \\textit{ else } S \\mid a\\)\n\\(\\quad E \\rightarrow b\\)\n\n\\(G_2\\): \\(S \\rightarrow \\textit{if } E \\textit{ then } S \\mid M\\)\n\\(\\quad M \\rightarrow \\textit{if } E \\textit{ then } M \\textit{ else } S \\mid c\\)\n\\(\\quad E \\rightarrow b\\)\n\nwhere \\(\\textit{if}, \\textit{then}, \\textit{else}, a, b, c\\) are the terminals.\n\nWhich of the following option(s) is/are CORRECT?"
+ },
+ "54": {
+  "why": "SQL options were in code fences, which options cannot render; the same lines as plain text.",
+  "options": [
+   {
+    "label": "A",
+    "text": "SELECT S.name\nFROM Students S\nWHERE EXISTS (SELECT * FROM Enrolled E\n              WHERE E.courseno = 1470\n                      AND E.rollno = S.rollno);"
+   },
+   {
+    "label": "B",
+    "text": "SELECT S.name\nFROM Students S\nWHERE SIZEOF (SELECT * FROM Enrolled E\n              WHERE E.courseno = 1470\n                      AND E.rollno = S.rollno) > 0;"
+   },
+   {
+    "label": "C",
+    "text": "SELECT S.name\nFROM Students S\nWHERE  0 < (SELECT COUNT(*)\n            FROM Enrolled E\n            WHERE E.courseno = 1470\n                      AND E.rollno = S.rollno);"
+   },
+   {
+    "label": "D",
+    "text": "SELECT S.name\nFROM Students S NATURAL JOIN Enrolled E\nWHERE E.courseno = 1470;"
+   }
+  ]
+ }
+}

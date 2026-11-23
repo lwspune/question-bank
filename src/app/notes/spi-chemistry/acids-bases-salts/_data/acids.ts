@@ -6,7 +6,7 @@ export const SPI_AB_ACIDS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An acid gives hydrogen ions in water and a base gives hydroxide ions; how fully they split decides their strength, and an indicator shows which one you have.",
   whyItMatters:
-    "Three questions in the bank, all EASY: what an acid contains that a base does not, the name for an acid that splits completely in water, and the indicator used most in the laboratory. Each is one definition, so the only risk is mixing up two similar words.",
+    "Four questions in the bank, all EASY, one from the 2026 paper: what an acid contains that a base does not, the name for an acid that splits completely in water, the indicator used most in the laboratory, and what a common salt solution does to litmus. Each is one definition, so the only risk is mixing up two similar words.",
   concepts: [
     {
       kind: "formula" as const,
@@ -155,7 +155,7 @@ export const SPI_AB_ACIDS_NOTE: SubtopicNote = {
         { prompt: "From what is litmus obtained?", answer: "Lichens" },
         { prompt: "Name one indicator that works by smell.", answer: "Onion, vanilla or clove" },
       ],
-      pyqExampleId: "11559c0a-6f9f-4f5b-836d-2c3fcd85769f",
+      pyqExampleId: "8e2b9ed4-a2e0-4d8c-9c1e-a9f39223866e",
       traps: [
         {
           title: "Testing an acid with red litmus",

@@ -13,6 +13,7 @@ export const INCLINE_ROT_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jprot-incline-energy",
       name: "Speed and height of a body rolling on a slope",
+      visualizationSlug: "cet-rolling-energy-split",
       intuition:
         "Rolling without slipping wastes no energy: the contact point does not slide, so friction does no work. The height lost becomes ½mv²(1 + k²/R²). A shape with more of its mass far out (larger k²/R²) puts more energy into spin, so it is slower at the bottom. The mass and the radius cancel.",
       definition:

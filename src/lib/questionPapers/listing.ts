@@ -82,8 +82,14 @@ export type PaperViewItem = {
   marks: number | null;
   /** A part of the question above (0147). */
   isPart: boolean;
-  /** An "OR" alternative: the page prints "OR" before it. */
+  /** An "OR" alternative: it replaces an earlier question, so it adds no marks. */
   isAlternative: boolean;
+  /**
+   * The page prints "OR" before it: the first row of an alternative. A UP
+   * Board alternative can run over several rows (6 (a) OR (i)-(v)), each
+   * replacing the same question, and the paper prints OR once above them.
+   */
+  orBefore: boolean;
   caseKey: string | null;
   /** Its bank question, numbered as printed ("Q.18 (b)"). */
   question: BoardQuestion;
@@ -99,7 +105,7 @@ export function assemblePaper(items: PaperItemRow[], questions: BoardQuestion[])
   const byId = new Map(questions.map((q) => [q.id, q]));
   const ordered = [...items].sort((a, b) => a.position - b.position);
   const out: PaperViewItem[] = [];
-  for (const it of ordered) {
+  for (const [i, it] of ordered.entries()) {
     const q = byId.get(it.questionId);
     if (!q) return null;
     out.push({
@@ -108,6 +114,7 @@ export function assemblePaper(items: PaperItemRow[], questions: BoardQuestion[])
       marks: it.marks,
       isPart: (it.partOf ?? null) !== null,
       isAlternative: it.alternativeTo !== null,
+      orBefore: it.alternativeTo !== null && ordered[i - 1]?.alternativeTo !== it.alternativeTo,
       caseKey: it.caseKey,
       question: { ...q, questionNumber: `Q.${it.printedNumber}` },
     });

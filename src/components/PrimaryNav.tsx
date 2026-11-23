@@ -8,7 +8,6 @@ import { FIX_TAB_HREF, type FifthTab } from "@/lib/nav/fifthTab";
 
 type Props = {
   bankHref: string;
-  guidesHref: string;
   notesHref: string;
   mockHref: string;
   boardHref: string;
@@ -37,7 +36,6 @@ type Tab = {
 
 export default function PrimaryNav({
   bankHref,
-  guidesHref,
   notesHref,
   mockHref,
   boardHref,
@@ -51,7 +49,9 @@ export default function PrimaryNav({
 
   const tabs: Tab[] = [
     { id: "bank", label: "PYQs", href: bankHref, Icon: Compass },
-    { id: "guides", label: "Guides", href: guidesHref, Icon: BookOpen },
+    // Guides left this nav for the avatar menu at every width (owner,
+    // 2026-11-18): the tabs ran under Ebooks, Classes and Play on a ~1000 px
+    // smart board. Signed-out readers reach it from the Footer, as on a phone.
     { id: "notes", label: "Notes", href: notesHref, Icon: NotebookPen },
     // Homework took Learn's place at every width (owner, 2026-11-04); Learn is
     // in the account menu. See lib/nav/mobileTabs.
@@ -97,9 +97,13 @@ export default function PrimaryNav({
     // Tablet and desktop only. Below sm the phone bar (MobileTabBar) takes
     // over, so exactly one nav is ever displayed — which is also why both can
     // carry the "Primary" label without ambiguity.
+    // overflow-x-auto (2026-11-18): when the tabs still do not fit, they
+    // scroll inside this strip instead of painting under the buttons beside
+    // it. The scrollbar is hidden; py-1/px-1 leave room for the focus ring,
+    // which an overflow box would otherwise clip.
     <nav
       aria-label="Primary"
-      className="hidden min-w-0 shrink items-center gap-1 sm:flex"
+      className="hidden min-w-0 shrink items-center gap-1 overflow-x-auto px-1 py-1 [scrollbar-width:none] sm:flex [&::-webkit-scrollbar]:hidden"
     >
       {tabs.map(({ id, label, href, Icon, prefetch }) => {
         const isActive = active === id;
@@ -116,7 +120,7 @@ export default function PrimaryNav({
               // icon-only below sm, which left every mobile visitor decoding
               // glyphs — Bank as a compass, and three book-ish icons in a row.
               // That is what MobileTabBar exists to fix.
-              "group inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 " +
+              "group inline-flex shrink-0 items-center gap-1.5 rounded-md px-2 py-1.5 text-sm xl:px-3 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 " +
               (isActive
                 ? // A solid fill, not the old 10% tint: students could not
                   // tell which tab they were on (owner, 2026-10-15).
@@ -124,7 +128,9 @@ export default function PrimaryNav({
                 : "text-muted-foreground hover:bg-accent hover:text-foreground")
             }
           >
-            <Icon className="h-3.5 w-3.5 shrink-0" aria-hidden />
+            {/* Words carry the meaning; the icon shows only from 2xl, where
+                there is room (2026-11-18). */}
+            <Icon className="hidden h-3.5 w-3.5 shrink-0 2xl:block" aria-hidden />
             <span>{label}</span>
           </Link>
         );

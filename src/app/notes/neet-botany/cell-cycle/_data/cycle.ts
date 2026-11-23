@@ -147,6 +147,7 @@ export const NEET_BO_CC_CYCLE_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nbocc-mitosis",
       name: "Mitosis: the four stages, cytokinesis and why it matters",
+      visualizationSlug: "imat-mitosis-steps",
       intuition:
         "Mitosis shares out the copied chromosomes so that each daughter cell gets one full, identical set. First the chromosomes thicken so they can be moved (prophase). Then they line up in the middle on spindle fibres (metaphase). The centromeres split and the spindle pulls the two chromatids of each chromosome to opposite ends (anaphase). Finally a nucleus forms at each end (telophase) and the cytoplasm divides (cytokinesis). Because the chromosome number stays the same, mitosis is called equational division.",
       definition:

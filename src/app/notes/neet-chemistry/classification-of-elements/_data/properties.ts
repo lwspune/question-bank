@@ -64,6 +64,7 @@ export const NEET_CH_CP_PROPERTIES_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "nchcp-electronegativity",
       name: "Electronegativity and metallic character",
+      visualizationSlug: "atom-periodic-trends",
       intuition:
         "Electronegativity is how strongly an atom in a molecule pulls a shared electron pair towards itself. Small atoms with a high effective nuclear charge pull hardest, so it rises across a period and falls down a group, with fluorine at the top. A metal is the opposite kind of atom: it loses electrons easily. So metallic character runs the other way, rising down a group and falling across a period.",
       definition:

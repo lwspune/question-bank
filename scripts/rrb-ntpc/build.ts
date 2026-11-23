@@ -8,7 +8,7 @@
  *       and writes nothing, so a draft stays a blind derivation.
  *
  * The transcript format, its parser and the checks are the SSC CGL lane's (scripts/ssc-cgl/lib.ts):
- * every question 1..100 transcribed, filed under one of the ten subjects and inside catalog.json,
+ * every question 1..100 transcribed, filed under one of its section's subjects and inside catalog.json,
  * any answer differing from RRB's key carrying a note, KaTeX rendering every maths zone, no raw
  * unicode maths, every declared figure on disk.
  */
@@ -19,11 +19,10 @@ import { parseLatex } from "../../src/components/math/parseLatex";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import { renderCorruption } from "../lib/render-lint";
 import { checkShift, literalDollar, parseTranscript, studentSolution, type Label, type Part, type TranscriptQuestion } from "../ssc-cgl/lib";
-import { CATALOG, FIGURES, LAYOUT, OUT, TRANSCRIPTS, requireShift } from "./config";
+import { CATALOG, FIGURES, OUT, TRANSCRIPTS, levelOf, requireShift } from "./config";
 
 const LABELS: Label[] = ["A", "B", "C", "D"];
 const RAW_UNICODE = /[−×÷→←⇌≥≤≠≈∞√∑∏∫°±·²³¹⁰⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉αβγδεζηθλμνξπρστφχψωΩΔΣΠΘΦ½⅓¼¾∂∇∈∉⊆∪∩]/;
-const SECTIONS = Object.fromEntries(LAYOUT.map((s) => [s.part, s.subjects])) as Partial<Record<Part, string[]>>;
 
 type SheetQ = { number: number; part: Part; key: Label };
 
@@ -68,6 +67,8 @@ function main() {
   const sheet: SheetQ[] = JSON.parse(readFileSync(join(OUT, shift.id, "questions.json"), "utf8")).questions.map((q: SheetQ) =>
     blind ? { number: q.number, part: q.part, key: "A" } : q
   );
+  // The level's printed sections: a single-subject section files its questions without a subject: line.
+  const SECTIONS = Object.fromEntries(levelOf(shift).layout.map((s) => [s.part, s.subjects])) as Partial<Record<Part, string[]>>;
   const transcript = parseTranscript(readFileSync(fileArg ?? join(TRANSCRIPTS, `${shift.id}.txt`), "utf8"));
 
   const check = checkShift(transcript, sheet, CATALOG, SECTIONS, { compareKey: !blind });

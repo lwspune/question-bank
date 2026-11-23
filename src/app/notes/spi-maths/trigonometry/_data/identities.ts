@@ -6,7 +6,7 @@ export const SPI_TG_IDENTITIES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An identity is an equation that holds for every angle. Three of them, all from Pythagoras, turn long expressions into a single number or a single ratio.",
   whyItMatters:
-    "Fourteen questions in the bank, nine EASY and five MODERATE. Four rest on sin²θ + cos²θ = 1, five on its sec and tan or cosec and cot forms, two simplify a square root, and three use an identity as a second equation or to remove the angle. Five of the chapter's nine MODERATE questions are on this page.",
+    "Seventeen questions in the bank, ten EASY and seven MODERATE, three from the 2026 paper. Five rest on sin²θ + cos²θ = 1, six on its sec and tan or cosec and cot forms, two simplify a square root, and four use an identity as a second equation or to remove the angle. Seven of the chapter's twelve MODERATE questions are on this page.",
   concepts: [
     {
       kind: "formula" as const,
@@ -46,7 +46,7 @@ export const SPI_TG_IDENTITIES_NOTE: SubtopicNote = {
         { prompt: "If \\(\\sin\\theta = 0.6\\) for an acute angle \\(\\theta\\), what is \\(\\cos\\theta\\)?", answer: "\\(\\sqrt{1 - 0.36} = 0.8\\)" },
         { prompt: "Simplify \\((1 - \\sin\\theta)(1 + \\sin\\theta)\\).", answer: "\\(\\cos^2\\theta\\)" },
       ],
-      pyqExampleId: "1181a202-beab-4da8-98a1-add5d21a778b",
+      pyqExampleId: "8385c773-ea14-466d-9bb3-367f2c73f263",
       traps: [
         {
           title: "The identity needs the same angle",
@@ -201,7 +201,7 @@ export const SPI_TG_IDENTITIES_NOTE: SubtopicNote = {
         { prompt: "If \\(x = 4\\cos\\theta\\) and \\(y = 4\\sin\\theta\\), what is \\(x^2 + y^2\\)?", answer: "\\(16\\)" },
         { prompt: "If \\(x = 2\\operatorname{cosec}\\theta\\) and \\(y = 2\\cot\\theta\\), what is \\(x^2 - y^2\\)?", answer: "\\(4\\)" },
       ],
-      pyqExampleId: "08820e5c-79f9-4f20-8f0e-2e333455b40c",
+      pyqExampleId: "7fab988d-8dd9-4fd1-b134-445742197129",
       traps: [
         {
           title: "Trying to find the angle first",

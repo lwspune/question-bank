@@ -70,6 +70,7 @@ export const JEE_CH_KIN_GAS_DECAY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jckin-decay-growth",
       name: "Radioactive decay, carbon dating and bacterial growth",
+      visualizationSlug: "imat-half-life-decay",
       intuition:
         "Each nucleus has the same chance of decaying in the next second, whatever the others do. So the number decaying per second is proportional to the number present: first order. Bacterial growth is the same law with the sign flipped — each cell divides, so the growth rate is proportional to the number of cells.",
       definition:

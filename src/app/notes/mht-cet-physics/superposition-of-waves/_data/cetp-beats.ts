@@ -13,6 +13,7 @@ export const BEATS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-beat-frequency",
       name: "Beat Frequency, Timing and Loudness",
+      visualizationSlug: "cet-beats-envelope",
       intuition:
         "Two tones a few hertz apart come back into step that many times each second. Loud moments (waxing) are 1/Δf apart, and the quiet moment falls halfway between. The loudest sound has amplitude a₁ + a₂, the quietest a₁ − a₂.",
       definition:

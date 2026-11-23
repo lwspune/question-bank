@@ -70,6 +70,7 @@ export const ROLLING_ROT_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "jprot-roll-ke",
       name: "Kinetic energy of rolling bodies",
+      visualizationSlug: "cet-rolling-energy-split",
       intuition:
         "A rolling body has two kinetic energies: ½mv² for moving and ½Iω² for spinning. With v = ωR the total is ½mv²(1 + k²/R²). The number k²/R² depends only on the shape, so each shape splits its energy in a fixed ratio, whatever its mass, radius or speed.",
       definition:

@@ -13,6 +13,7 @@ export const FRINGES_WO_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpwo-fringe-width",
       name: "Fringe width and what it depends on",
+      visualizationSlug: "cet-ydse-fringe-width",
       intuition:
         "Moving one fringe along the screen changes the path difference by one wavelength. The path difference grows as yd/D, so the step from one bright fringe to the next is λD/d. Longer waves, a farther screen or closer slits all spread the fringes out. The angle between fringes, λ/d, does not depend on the screen at all.",
       definition:

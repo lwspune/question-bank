@@ -28,13 +28,15 @@ export type ChapterwiseSlot = {
   parts: string[];
 };
 
-export type ChapterwiseGroup = ({ kind: "marks"; marks: number } | { kind: "parts" } | { kind: "earlier" }) & {
+export type ChapterwiseGroup = ({ kind: "marks"; marks: number } | { kind: "parts" } | { kind: "earlier" } | { kind: "plain" }) & {
   slots: { note: string; marks: number | null; parts: { questionId: string; label: string }[] }[];
 };
 
 export type ChapterwiseChapter = { chapterId: string; chapterName: string; groups: ChapterwiseGroup[] };
 
+/** A plain group (an exam with no marks) prints with no heading. */
 export function groupLabel(g: Pick<ChapterwiseGroup, "kind"> & { marks?: number }): string {
+  if (g.kind === "plain") return "";
   if (g.kind === "parts") return "Case studies and passages";
   if (g.kind === "earlier") return "Earlier years";
   return `${g.marks} ${g.marks === 1 ? "mark" : "marks"}`;
@@ -42,20 +44,31 @@ export function groupLabel(g: Pick<ChapterwiseGroup, "kind"> & { marks?: number 
 
 const LETTERS = "abcdefghijklmnopqrstuvwxyz";
 
-/** A slot's group: a question in parts, else its marks, else the earlier years. */
-function groupKey(s: ChapterwiseSlot): string {
+/** A slot's group: a question in parts, else its marks, else the earlier years; an unmarked exam's, one list. */
+function groupKey(s: ChapterwiseSlot, plain: boolean): string {
+  if (plain) return "plain";
   if (s.parts.length > 1) return "parts";
   return s.marks === null ? "earlier" : `marks:${s.marks}`;
 }
 
 /** Marks groups by their marks, then case studies and passages, then the earlier years. */
 function groupRank(key: string): number {
+  if (key === "plain") return 0;
   if (key === "parts") return 1_000_000;
   if (key === "earlier") return 2_000_000;
   return Number(key.slice("marks:".length));
 }
 
-export function chapterwiseChapters(slots: readonly ChapterwiseSlot[]): ChapterwiseChapter[] {
+/**
+ * `unmarked: "plain"` (Homi Bhabha, 2026-11-21): an exam whose questions carry
+ * no marks prints each chapter as one unheaded list in the slots' own order,
+ * not under "Earlier years".
+ */
+export function chapterwiseChapters(
+  slots: readonly ChapterwiseSlot[],
+  opts: { unmarked?: "earlier" | "plain" } = {}
+): ChapterwiseChapter[] {
+  const plain = opts.unmarked === "plain";
   const chapters = new Map<string, { name: string; order: number; slots: ChapterwiseSlot[] }>();
   for (const s of [...slots].sort((a, b) => a.order - b.order)) {
     const ch = chapters.get(s.chapterId) ?? { name: s.chapterName, order: s.chapterOrder, slots: [] };
@@ -66,7 +79,7 @@ export function chapterwiseChapters(slots: readonly ChapterwiseSlot[]): Chapterw
     .sort(([, a], [, b]) => a.order - b.order || a.name.localeCompare(b.name))
     .map(([chapterId, ch]) => {
       const byGroup = new Map<string, ChapterwiseSlot[]>();
-      for (const s of ch.slots) byGroup.set(groupKey(s), [...(byGroup.get(groupKey(s)) ?? []), s]);
+      for (const s of ch.slots) byGroup.set(groupKey(s, plain), [...(byGroup.get(groupKey(s, plain)) ?? []), s]);
       let n = 0;
       const groups = [...byGroup.entries()]
         .sort(([a], [b]) => groupRank(a) - groupRank(b))
@@ -82,6 +95,7 @@ export function chapterwiseChapters(slots: readonly ChapterwiseSlot[]): Chapterw
               })),
             };
           });
+          if (key === "plain") return { kind: "plain", slots: printed };
           if (key === "parts") return { kind: "parts", slots: printed };
           if (key === "earlier") return { kind: "earlier", slots: printed };
           return { kind: "marks", marks: groupRank(key), slots: printed };

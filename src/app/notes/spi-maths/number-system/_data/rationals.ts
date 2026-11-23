@@ -6,7 +6,7 @@ export const SPI_NS_RATIONALS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A rational number is one integer divided by another non-zero integer; you compare, add and take fractions of them with a common denominator.",
   whyItMatters:
-    "Ten questions in the bank, six EASY and four MODERATE. Three test what a rational number is and which one lies between two others, four are fraction sums and word problems, and three turn a recurring decimal into a fraction.",
+    "Eleven questions in the bank, seven EASY and four MODERATE, one from the 2026 paper. Three test what a rational number is and which one lies between two others, five are fraction sums and word problems, and three turn a recurring decimal into a fraction.",
   concepts: [
     {
       kind: "formula" as const,
@@ -97,7 +97,7 @@ export const SPI_NS_RATIONALS_NOTE: SubtopicNote = {
         { prompt: "Find \\(\\frac{3}{5}\\) of 85.", answer: "51" },
         { prompt: "By how much is \\(\\frac{1}{2}\\) of 90 more than \\(\\frac{2}{5}\\) of 80?", answer: "\\(45 - 32 = 13\\)" },
       ],
-      pyqExampleId: "f65a1bc0-cbb6-4cc8-afb4-449f3e14d5d5",
+      pyqExampleId: "a602947a-fdd0-4471-b6b7-acdec9f39f39",
       traps: [
         {
           title: "Taking a fraction of the whole instead of the rest",

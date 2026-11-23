@@ -13,6 +13,7 @@ export const KINEMATICS_OSC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jposc-phase",
       name: "Phase, velocity and acceleration from the SHM equation",
+      visualizationSlug: "osc-shm-displacement-time",
       intuition:
         "Everything about the particle sits in one angle, the phase \\(\\omega t + \\phi\\). Displacement is its sine, velocity its cosine, and acceleration is always \\(-\\omega^{2}\\) times the displacement. So the particle stops where the sine is \\(\\pm 1\\) (the extremes), and its acceleration is zero where the sine is 0 (the mean position).",
       definition:
@@ -75,6 +76,7 @@ export const KINEMATICS_OSC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jposc-v-x",
       name: "Speed at a displacement and amplitude from one snapshot",
+      visualizationSlug: "cet-shm-reference-circle",
       intuition:
         "Squaring and adding the sine and the cosine removes time: \\(v^{2} = \\omega^{2}(A^{2} - x^{2})\\). So the speed is largest at the mean and zero at the extremes, while the acceleration does the opposite. One snapshot of x, v and a is enough to find ω and A.",
       definition:

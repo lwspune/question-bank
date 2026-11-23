@@ -12,6 +12,7 @@ export const SSC2_AI_RECIPROCAL_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "ssc2aire-ladder",
       name: "Climbing from x + 1/x",
+      visualizationSlug: "ssc-t2-reciprocal-ladder",
       intuition:
         "Knowing \\(x + \\frac{1}{x}\\) fixes \\(x^2 + \\frac{1}{x^2}\\), \\(x^3 + \\frac{1}{x^3}\\) and every higher power. Square to go up two, cube to go up three, and multiply two rungs together to reach any other.",
       definition:

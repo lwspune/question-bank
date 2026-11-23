@@ -12,6 +12,7 @@ export const SSC_FEM_ELECTRICITY_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscfemel-circuits",
       name: "Ohm's law and resistance",
+      visualizationSlug: "resistors-series-parallel",
       intuition:
         "Current is pushed by voltage and held back by resistance. In parallel, each resistor gets the full voltage, so the currents simply add.",
       definition:

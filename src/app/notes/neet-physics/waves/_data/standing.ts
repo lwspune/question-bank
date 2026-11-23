@@ -73,6 +73,7 @@ export const NEET_PH_WV_STANDING_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "nphwv-nodes",
       name: "Counting nodes and antinodes",
+      visualizationSlug: "cet-standing-wave-modes",
       intuition:
         "Draw the standing wave and count. Each harmonic of a string or an open pipe adds one more half wavelength to the length, so one more loop. A closed pipe is built from quarter wavelengths, and only an odd number of them fits, so its harmonics go 1, 3, 5, ... and each step adds one node and one antinode. Counting is easy once you know what sits at each end.",
       definition:

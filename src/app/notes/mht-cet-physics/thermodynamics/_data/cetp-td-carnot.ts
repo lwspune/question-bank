@@ -15,6 +15,7 @@ export const CARNOT_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetp-td-carnot-efficiency",
       name: "Efficiency and Coefficient of Performance",
+      visualizationSlug: "cet-carnot-engine",
       intuition:
         "The cycle is isothermal expansion at T₁, adiabatic expansion, isothermal compression at T₂, adiabatic compression. Its efficiency η = W/Q₁ = 1 − T₂/T₁, temperatures in kelvin. Lowering the sink by a known amount changes η, and the two equations fix both temperatures. For a fixed sink, a higher efficiency needs a hotter source: T₁ = T₂/(1 − η). A refrigerator moves heat from the cold side; its coefficient of performance β = T₂/(T₁ − T₂) = (1 − η)/η, so η = 1/(β + 1). With a diatomic working gas, the adiabatic volume ratio fixes T₂/T₁ = (V₁/V₂)^0.4.",
       definition:

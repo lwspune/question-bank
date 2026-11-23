@@ -13,6 +13,7 @@ export const VERTICAL_AOI_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jaoi-parabola-line",
       name: "Top minus bottom between the meeting points",
+      visualizationSlug: "aoi-area-between-curves-region",
       intuition:
         "Equate the two curves to find where they meet; those x-values are the limits. Between them one curve stays on top, so the area is the integral of top minus bottom. For a parabola and a line, or two parabolas, top minus bottom is a quadratic that vanishes at both limits, and its integral has a closed form.",
       definition:

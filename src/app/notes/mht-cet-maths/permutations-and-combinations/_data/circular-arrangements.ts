@@ -15,6 +15,7 @@ export const CIRCULAR_ARRANGEMENTS_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cetpc-round-table-and-gaps",
       name: "(n − 1)! Around a Table, and Girls Apart via the Gaps Between Boys",
+      visualizationSlug: "cet-round-table-gaps",
       intuition:
         "Fix one person to kill the rotations; the other \\(n - 1\\) arrange in \\((n-1)!\\) ways. To keep girls apart, seat the boys first — \\(n\\) boys around a table make \\(n\\) gaps (not \\(n + 1\\)) — and drop the girls into different gaps.",
       definition:

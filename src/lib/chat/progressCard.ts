@@ -148,6 +148,15 @@ function bands(perf: Performance, examName: string): Map<string, { chapter: stri
   return out;
 }
 
+/** The chapters of this exam already strong ("subject|chapter"), by the same
+ *  band as the card's Chapters line: the study-time suggestion skips them
+ *  (lib/studyTime/report pickStudyNext), so V and Home agree on "strong". */
+export function strongChapters(payload: StudentPerformancePayload, examName: string, now: Date): Set<string> {
+  const out = new Set<string>();
+  for (const [key, { band }] of bands(buildPerformance(payload, now), examName)) if (band === "mastered") out.add(key);
+  return out;
+}
+
 /**
  * Chapters of this exam whose band is higher now than it was at `since`, with
  * the band they reached, biggest jump first. The same rule as the card's

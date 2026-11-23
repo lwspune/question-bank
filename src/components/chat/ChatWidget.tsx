@@ -1,11 +1,23 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 import { useIntlSite } from "@/lib/sites/useIntlSite";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { usePublicPathname } from "@/lib/nav/usePublicPathname";
-import { CalendarCheck, Check, ListChecks, Plus, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, TrendingUp, X } from "lucide-react";
+import { ArrowRight, BookOpen, CalendarCheck, Check, GraduationCap, Lightbulb, ListChecks, Plus, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, TrendingUp, X } from "lucide-react";
+import { TEACH_ANY_CHAPTER, teachChapterMessage } from "@/lib/chat/teachChapter";
+import {
+  carriedLesson,
+  goOnLabel,
+  goOnMessage,
+  lessonLinkLabels,
+  lessonNotesLink,
+  lessonOpenLink,
+  parseLesson,
+  simplerMessage,
+  type VLesson,
+} from "@/lib/chat/lesson";
 import { toast } from "sonner";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { useVFeatures } from "@/lib/chat/useVExplain";
@@ -70,6 +82,7 @@ import ReplyText from "./VReplyText";
 import VRevealReply from "./VRevealReply";
 import VStepReply from "./VStepReply";
 import VPlanCard from "./VPlanCard";
+import VChapterMapCard from "./VChapterMapCard";
 import VPassOffer from "./VPassOffer";
 import VHourlyOffer from "./VHourlyOffer";
 import { parseVPassOffer, type VPassOffer as PassOffer } from "@/lib/chat/passOffer";
@@ -77,14 +90,23 @@ import { parseHourlyLimit, type HourlyLimitReply } from "@/lib/chat/hourlyLimit"
 import { liftDailyLimit } from "@/components/reveal/useRevealMeter";
 import VProgressCard from "./VProgressCard";
 import VDayCard from "./VDayCard";
+import VCheckIn from "./VCheckIn";
+import { CHECKIN_OTHER_DRAFT } from "@/lib/chat/checkIn";
+import VGiftCard from "./VGiftCard";
+import { giftKey, type VGift } from "@/lib/chat/gift";
+import { giftDue, markGiftOpened, markGiftShown, readGiftMarks, writeGiftMarks } from "@/lib/chat/giftSeen";
+import { vLauncherBadge, vLauncherLabel } from "@/lib/chat/launcher";
 import type { DayCard } from "@/lib/chat/dayCard";
 import { dayCardDue, readSeenDay, writeSeenDay } from "@/lib/chat/daySeen";
-import VPathCard from "./VPathCard";
+import { sendActivity, sendActivityOnce } from "@/lib/activity/clientBeacon";
+import VPlanPin from "./VPlanPin";
+import { PLAN_PIN_KEY, isPinnedToday, pinFor } from "@/lib/chat/planPin";
 import {
   ASK_V_EVENT,
   ASK_V_TEXT_EVENT,
   isAskVTextDetail,
   askedCardOf,
+  askedOnPage,
   explainedTap,
   askVMessage,
   isAskVDetail,
@@ -97,9 +119,16 @@ import PracticeBuilder, { PENDING_BUILD_KEY, logBuilderStep } from "./PracticeBu
 import type { BuilderAnswers } from "@/lib/practiceTests/builder";
 import { sceneOf } from "@/lib/visuals/usage";
 import { reportVisual } from "@/lib/visuals/usageBeacon";
+import type { LessonTarget } from "@/lib/learn/links";
 
 // The animated-solution player loads only when a reply carries a visual.
 const VAnimatedSolution = dynamic(() => import("@/components/visuals/AnimatedSolution"));
+// A Learn lesson's "Your turn" (2026-11-22): loaded only when one shows, since it brings KaTeX's styles to every page V is on.
+const VLearnQuestionCard = dynamic(() => import("./VLearnQuestionCard"), {
+  loading: () => <div className="ml-9 mt-2 h-24 animate-pulse rounded-xl border bg-muted/40" aria-hidden />,
+});
+// A Learn lesson played full screen (2026-11-22): loaded on the first lesson tapped on V's map.
+const LearnLessonOverlay = dynamic(() => import("@/components/learn/LearnLessonOverlay"), { ssr: false });
 // "Teach me step by step" loads only when tapped.
 
 /**
@@ -112,13 +141,20 @@ type ChatTurn = HistoryTurn & {
   avatar?: VAvatar;
   transient?: boolean;
   /** A question card under V's reply (2026-10-19): a similar one to try, or a pasted one to confirm. */
-  card?: { id: string; kind: "try" | "confirm"; after?: string };
+  card?: { id: string; kind: "try" | "confirm"; after?: string; /** A chapter lesson's question: headed "Your turn". */ turn?: boolean };
+  /**
+   * A chapter lesson (2026-11-21, mockup B): the map card on its first reply, and its buttons
+   * (Go on, Explain more simply, Open the notes) under the latest reply, in place of V's own.
+   */
+  lesson?: VLesson;
+  /** A Learn lesson's check question to try (2026-11-22): its lesson and the lesson's number. */
+  learnTry?: { chapter: string; concept: string; n: number };
   /** The week plan under V's reply (2026-10-19): it made or read the student's plan. */
   plan?: boolean;
   /** The "How's my progress" card (2026-10-27): the student's own numbers, read when shown. */
   progress?: boolean;
-  /** Today's board-path card (2026-11-08, MENTOR_SPEC.md Phase 2): the button, or V's plan tools answered from the path. */
-  path?: boolean;
+  /** "Teach me a chapter" (2026-11-21): the chapters with most mistakes waiting, each a button. */
+  teachPick?: { chapterId: string; name: string; place: string }[];
   /** A fresh reply, shown a line at a time (2026-10-23). Never kept: a reply from history shows whole. */
   reveal?: boolean;
   /**
@@ -164,6 +200,9 @@ const GREETING: ChatTurn = {
   avatar: "laugh",
   text: "Hi, I'm V. Ask me about any chapter or exam, or tap a button below.",
 };
+
+/** intl has no Build a practice test button (2026-11-19), so its greeting points at none. */
+const INTL_GREETING: ChatTurn = { ...GREETING, text: "Hi, I'm V. Ask me about any chapter, question or exam." };
 
 /**
  * Floating FAQ-chatbot launcher, visible to anon + authed visitors alike
@@ -211,9 +250,14 @@ const GREETING: ChatTurn = {
  * SIZE (2026-10-16, owner): chat and builder share one window, full screen on
  * a phone and a larger panel from `sm` up. Until then only the builder grew;
  * the chat was a 22rem panel that already covered most of a phone screen.
+ * Since 2026-11-21 (owner) the panel runs the full screen height from `sm` up
+ * (it was capped at 40rem, which cut off the "Your day" card's buttons on a
+ * laptop), and the launcher hides while V is open: the header's X closes it.
  */
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
+  // The Learn lesson playing full screen over V, tapped on a chapter map (2026-11-22).
+  const [playing, setPlaying] = useState<LessonTarget | null>(null);
   const [mode, setMode] = useState<"chat" | "builder">("chat");
   const [resume, setResume] = useState<BuilderAnswers | undefined>(undefined);
   // The greeting is drawn before these and never stored.
@@ -230,6 +274,12 @@ export default function ChatWidget() {
   // The header's shared read (no extra request): the button shows once there is something to show.
   const pulse = usePulse(signedIn && features.progress);
   const showProgress = !!pulse && ((pulse.totals?.answered ?? 0) > 0 || pulse.due > 0);
+  // "Teach me a chapter" seen (experiment v-teach-chapter): once a page load, the day dedupe is the server's.
+  useEffect(() => {
+    if (open && mode === "chat" && features.explain) {
+      sendActivityOnce("teach_chapter:shown:v_button", { kind: "surface_viewed", surface: "teach_chapter", action: "shown", from: "v_button" });
+    }
+  }, [open, mode, features.explain]);
   // "Your day" (2026-11-15, lib/chat/dayCard): the first open of an India day
   // shows the student's day in place of the greeting; a dot on the button says
   // it is waiting. Never over an unread reply.
@@ -241,8 +291,104 @@ export default function ChatWidget() {
       dayCardDue({ signedIn, enabled: features.progress, hasSomething: showProgress, unread, seenDay: readSeenDay(), now: new Date() })
     );
   }, [signedIn, features.progress, showProgress, unread]);
+  // The badge seen (2026-11-20): one row a day, so the readout can tell
+  // "never saw the badge" from "saw it and did not open V".
+  const dayBadge = !open && unread === 0 && dayDot;
+  useEffect(() => {
+    if (dayBadge) sendActivityOnce("v_day_badge", { kind: "surface_viewed", surface: "v_day_badge" });
+  }, [dayBadge]);
+  // V's gift (owner, 2026-11-21, lib/chat/gift): something the student has
+  // already earned (the 7-day pass, or a Vault Points milestone), told as a
+  // gift inside V. The pulse says what is earned; this device says whether it
+  // still waits (lib/chat/giftSeen). The shared pulse read, so no extra request.
+  const giftPulse = usePulse(signedIn);
+  const earnedGiftNow = giftPulse?.gift ?? null;
+  const earnedKey = earnedGiftNow ? giftKey(earnedGiftNow) : null;
+  const [giftWaiting, setGiftWaiting] = useState(false);
+  useEffect(() => {
+    setGiftWaiting(giftDue(earnedGiftNow, readGiftMarks(), Date.now()));
+    // earnedKey stands for the gift; `open` re-reads after V was opened or closed.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [earnedKey, open]);
+  // The gift shown in the open window, and whether its box was opened there.
+  const [panelGift, setPanelGift] = useState<VGift | null>(null);
+  const [giftOpened, setGiftOpened] = useState(false);
+  const giftBadge = !open && unread === 0 && giftWaiting && !!earnedGiftNow;
+  const launcherBadge = vLauncherBadge({ open, unread, dayDue: dayDot, giftDue: giftBadge });
+  useEffect(() => {
+    if (giftBadge && earnedGiftNow) {
+      sendActivityOnce(`v_gift:badge:${earnedGiftNow.kind}`, {
+        kind: "surface_viewed",
+        surface: "v_gift",
+        gift: earnedGiftNow.kind,
+        action: "badge",
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [giftBadge, earnedKey]);
+  /** On opening V: show the gift's closed box if one is waiting. */
+  function showWaitingGift() {
+    const now = Date.now();
+    const marks = readGiftMarks();
+    if (!earnedGiftNow || !giftDue(earnedGiftNow, marks, now) || !marks) {
+      setPanelGift(null);
+      return;
+    }
+    writeGiftMarks(markGiftShown(marks, earnedGiftNow, now));
+    setPanelGift(earnedGiftNow);
+    setGiftOpened(false);
+    sendActivityOnce(`v_gift:shown:${earnedGiftNow.kind}`, {
+      kind: "surface_viewed",
+      surface: "v_gift",
+      gift: earnedGiftNow.kind,
+      action: "shown",
+    });
+  }
+  function openGift() {
+    if (!panelGift) return;
+    const marks = readGiftMarks();
+    if (marks) writeGiftMarks(markGiftOpened(marks, panelGift, Date.now()));
+    setGiftOpened(true);
+    setGiftWaiting(false);
+    sendActivityOnce(`v_gift:open:${panelGift.kind}`, {
+      kind: "surface_viewed",
+      surface: "v_gift",
+      gift: panelGift.kind,
+      action: "open",
+    });
+  }
   // "My plan for today" (Phase 2): only for a student on the board path, from the same shared read.
   const showPath = pulse?.path?.state === "on";
+  // The plan lives in V alone since 2026-11-22: once asked for, its row stays
+  // pinned at the top of the chat until midnight IST (lib/chat/planPin), per device.
+  const [planPinned, setPlanPinned] = useState(false);
+  const [planOpen, setPlanOpen] = useState(false);
+  useEffect(() => {
+    try {
+      setPlanPinned(isPinnedToday(localStorage.getItem(PLAN_PIN_KEY), new Date()));
+    } catch {
+      // Storage blocked (private window): the pin lasts this page only.
+    }
+  }, [open]);
+  function pinPlan() {
+    try {
+      localStorage.setItem(PLAN_PIN_KEY, pinFor(new Date()));
+    } catch {
+      // Storage blocked: pinned for this page only.
+    }
+    setPlanPinned(true);
+    setPlanOpen(true);
+  }
+  const unpinPlan = useCallback(() => {
+    try {
+      localStorage.removeItem(PLAN_PIN_KEY);
+    } catch {
+      // Nothing stored to clear.
+    }
+    setPlanPinned(false);
+    setPlanOpen(false);
+    invalidatePulse();
+  }, []);
   // "Ask V about this question" (2026-10-19): the question this conversation is about, sent with each message.
   const [asked, setAsked] = useState<AskVDetail | null>(null);
   // "Reply" on one of V's replies (0174): the message the next typed message answers.
@@ -380,7 +526,9 @@ export default function ChatWidget() {
   const openRecordedRef = useRef(false);
   const accountCheckedRef = useRef(false);
   const pathname = usePublicPathname();
-  // V speaks to PYQ Vault's Indian students; intl.pyqvault.com has no V (2026-10-30).
+  // V is on intl.pyqvault.com too since 2026-11-19 (it was hidden there from 2026-10-30, while its Ask V
+  // buttons still sent: students tapped and saw nothing). The server answers per site; here intl only
+  // drops the practice-test builder, whose exams and pass checks are www's.
   const intl = useIntlSite();
   const cart = useCart();
   const placement = vPlacement(pathname, cart);
@@ -428,8 +576,13 @@ export default function ChatWidget() {
     setOpen(false);
     setMode("chat");
     setResume(undefined);
-    launcherRef.current?.focus();
   }
+  // The launcher is hidden while V is open, so it takes focus back once it shows again.
+  const wasOpen = useRef(false);
+  useEffect(() => {
+    if (!open && wasOpen.current) launcherRef.current?.focus();
+    wasOpen.current = open;
+  }, [open]);
 
   function openBuilder() {
     logBuilderStep("open");
@@ -502,6 +655,8 @@ export default function ChatWidget() {
     }
     void loadAccountConversation();
     if (mode === "chat" && dayDue()) void loadDay();
+    if (mode === "chat") showWaitingGift();
+    else setPanelGift(null);
     setOpen(true);
   }
 
@@ -644,6 +799,50 @@ export default function ChatWidget() {
    * "How's my progress" (2026-10-27): the card of the student's own numbers.
    * No AI call and nothing stored, so it costs no message and stays on this screen only.
    */
+  /**
+   * "Teach me a chapter" (2026-11-21, owner-approved mockup E): V offers the
+   * chapters with most mistakes waiting (the pulse's, the same list as /me's
+   * "Your weak spots"), so nobody has to type a chapter name. With none to offer
+   * it simply asks V, which asks which chapter.
+   */
+  function startTeachChapter() {
+    if (sending) return;
+    sendActivity({ kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "v_button" });
+    const weak = pulse?.weak ?? [];
+    if (weak.length === 0) {
+      void askTyped(TEACH_ANY_CHAPTER, null);
+      return;
+    }
+    addTurn({ role: "user", text: "Teach me a chapter", transient: true });
+    addTurn({
+      role: "assistant",
+      avatar: "idle",
+      text: "Sure. Which one? These have the most mistakes waiting for you:",
+      teachPick: weak.map((w) => ({ chapterId: w.chapterId, name: w.name, place: w.place })),
+      transient: true,
+    });
+  }
+
+  function teachPicked(p: { chapterId: string; name: string; place: string } | null) {
+    if (sending) return;
+    if (p) sendActivity({ kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "v_pick", chapterId: p.chapterId });
+    void askTyped(p ? teachChapterMessage({ chapter: p.name, place: p.place }) : TEACH_ANY_CHAPTER, null);
+  }
+
+  /** Go on (2026-11-21): the lesson's next part. Carried client-side too, in case V answers without the tool. */
+  function lessonGoOn(l: VLesson) {
+    const message = goOnMessage(l);
+    if (sending || !message || l.next === null) return;
+    sendActivity({ kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "lesson_go_on" });
+    void askTyped(message, null, { carryLesson: carriedLesson(l, l.next) });
+  }
+
+  function lessonSimpler(l: VLesson) {
+    if (sending) return;
+    sendActivity({ kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "lesson_simpler" });
+    void askTyped(simplerMessage(l), null, { carryLesson: carriedLesson(l) });
+  }
+
   function showProgressCard() {
     if (sending) return;
     trackFunnel("v_progress_tap", { action: "open" });
@@ -652,14 +851,15 @@ export default function ChatWidget() {
   }
 
   /**
-   * "My plan for today" (2026-11-08, owner's name for it): today's board-path
-   * card, built from numbers like the progress card, so it costs no message.
+   * "My plan for today" (2026-11-08, owner's name for it): pins today's plan
+   * at the top of the chat for the rest of the day and opens it (2026-11-22).
+   * Built from numbers, so it costs no message.
    */
   function showPathCard() {
     if (sending) return;
     trackFunnel("v_path_tap", { action: "open" });
-    addTurn({ role: "user", text: "My plan for today", transient: true });
-    addTurn({ role: "assistant", avatar: "idle", text: "Here's today's plan.", path: true, transient: true });
+    pinPlan();
+    listRef.current?.scrollTo({ top: 0 });
   }
 
   /**
@@ -785,7 +985,8 @@ export default function ChatWidget() {
     openChat();
     // Already explained in this session: reopen that explanation, no new answer (2026-11-07).
     const earlier = explainedTap(turnsRef.current, askedCardOf(d, pathname), message);
-    setAsked(d);
+    // A notes question belongs to its page: a message typed on another page is not about it (askedOnPage).
+    setAsked(d.notes ? { ...d, page: pathname ?? undefined } : d);
     setReplyingTo(null);
     if (earlier >= 0) {
       focusTurnRef.current = earlier;
@@ -814,7 +1015,12 @@ export default function ChatWidget() {
   async function askTyped(
     override?: string,
     about?: AskVDetail | null,
-    opts: { replyTo?: { id: string; text: string; step?: number }; hideAsked?: boolean } = {}
+    opts: {
+      replyTo?: { id: string; text: string; step?: number };
+      hideAsked?: boolean;
+      /** A lesson button's send: the reply keeps the lesson's buttons when V's answer brings none. */
+      carryLesson?: VLesson;
+    } = {}
   ) {
     const text = (override ?? draft).trim();
     if (sending || !text) return;
@@ -822,7 +1028,7 @@ export default function ChatWidget() {
     const { id: sessionId, fresh } = currentSessionId();
     // A new session drops the old tapped question and reply; a button send never carries a reply.
     // `about` null = explicitly no question (a concept request); undefined = the tapped one, if any.
-    const question = about === null ? null : (about ?? (fresh ? null : asked));
+    const question = about === null ? null : (about ?? (fresh ? null : askedOnPage(asked, pathname)));
     // Explain on a step replies to its explanation (opts.replyTo); a new session drops it, as the server would.
     const replyTo = fresh ? null : (opts.replyTo ?? (override === undefined ? replyingTo : null));
     // An Ask V tap shows its question above the message (owner, 2026-10-23).
@@ -874,6 +1080,8 @@ export default function ChatWidget() {
         stepQuestionId?: string;
         /** The day's free answers stopped an explanation: the pass offer goes under the reply (2026-10-28). */
         passOffer?: unknown;
+        /** chapter_overview ran: the lesson's map card, question to try and buttons (2026-11-21). */
+        lesson?: unknown;
         /** Abuse after the calm line (lib/chat/abuse.ts): V says nothing. */
         silent?: boolean;
         /** V's hourly limit (2026-11-07, 0226): the wait line, and Premium for a free student. */
@@ -901,13 +1109,23 @@ export default function ChatWidget() {
         return;
       }
       const links = Array.isArray(data.links) ? data.links.filter((l): l is string => typeof l === "string") : [];
+      const lesson = parseLesson(data.lesson) ?? opts.carryLesson;
       const card: ChatTurn["card"] = data.similarQuestionId
         ? { id: data.similarQuestionId, kind: "try", ...(data.explainedQuestionId ? { after: data.explainedQuestionId } : {}) }
         : data.matchQuestionId
           ? { id: data.matchQuestionId, kind: "confirm" }
-          : undefined;
+          : lesson?.tryQuestionId
+            ? { id: lesson.tryQuestionId, kind: "try", turn: true }
+            : undefined;
+      // A Learn lesson's map counts as shown (experiment v-learn-first, 2026-11-22); the server keeps one a day per student.
+      if (lesson?.kind === "learn" && lesson.showMap) {
+        sendActivityOnce(`teach_chapter:learn_shown:${lesson.exam}:${lesson.chapter}`, { kind: "surface_viewed", surface: "teach_chapter", action: "shown", from: "lesson_learn" });
+      }
+      // A Learn lesson's own check question, when no other card took the slot (2026-11-22).
+      const learnTry = !card && lesson?.tryLearn ? { ...lesson.tryLearn, n: lesson.current } : undefined;
       const plan = data.planShown === true ? true : undefined;
-      const path = data.pathShown === true ? true : undefined;
+      // V's plan tools answered from the board plan: its card is the pinned row.
+      if (data.pathShown === true) pinPlan();
       const offer = parseVPassOffer(data.passOffer) ?? undefined;
       addTurn(
         data.source === "ai" && data.id
@@ -921,8 +1139,9 @@ export default function ChatWidget() {
               feedback: null,
               card,
               plan,
-              path,
               offer,
+              ...(lesson ? { lesson } : {}),
+              ...(learnTry ? { learnTry } : {}),
               reveal: true,
               explained: data.explained === true,
               understood: null,
@@ -932,7 +1151,7 @@ export default function ChatWidget() {
               ...(typeof data.explainedQuestionId === "string" ? { explainedQuestionId: data.explainedQuestionId } : {}),
               ...(typeof data.stepQuestionId === "string" ? { stepQuestionId: data.stepQuestionId } : {}),
             }
-          : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan, path, reveal: true }
+          : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan, ...(lesson ? { lesson } : {}), ...(learnTry ? { learnTry } : {}), reveal: true }
       );
     } catch {
       const errorText = "V is unavailable right now. Please try again.";
@@ -943,7 +1162,13 @@ export default function ChatWidget() {
     }
   }
 
-  if (placement.hidden || intl) return null;
+  if (placement.hidden) return null;
+
+  // V's latest reply (index into `turns`): a chapter lesson there puts its buttons under it and hides V's own.
+  let lastReplyAt = turns.length - 1;
+  while (lastReplyAt >= 0 && turns[lastReplyAt].role !== "assistant") lastReplyAt -= 1;
+  // A Learn lesson's map has no buttons of its own (the student taps a lesson), so V's stay.
+  const lessonOpen = lastReplyAt >= 0 && !!turns[lastReplyAt].lesson && turns[lastReplyAt].lesson!.kind !== "learn";
 
   // Vertical position lives in globals.css (.chat-launcher-offset): clear of
   // MobileTabBar below sm, and raised by --v-lift over /browse's cart pill.
@@ -951,6 +1176,7 @@ export default function ChatWidget() {
 
   return (
     <div className="chat-launcher-offset fixed right-4 z-50 print:hidden" style={lift}>
+      {playing && <LearnLessonOverlay key={`${playing.chapter}/${playing.concept}`} target={playing} onClose={() => setPlaying(null)} />}
       {open && (
         <div
           ref={panelRef}
@@ -958,7 +1184,7 @@ export default function ChatWidget() {
           aria-modal="true"
           aria-label={building ? "Build a practice test with V" : "Chat with V"}
           style={box ?? undefined}
-          className="fixed inset-0 flex h-[100dvh] w-full flex-col overflow-hidden bg-background sm:static sm:mb-3 sm:h-[40rem] sm:max-h-[calc(100dvh-7rem)] sm:w-[30rem] sm:max-w-[calc(100vw-2rem)] sm:rounded-2xl sm:border sm:border-border sm:shadow-[0_28px_64px_-24px_rgb(15_29_74/0.55)] motion-safe:sm:animate-in motion-safe:sm:fade-in motion-safe:sm:slide-in-from-bottom-4 motion-safe:sm:duration-200"
+          className="fixed inset-0 flex h-[100dvh] w-full flex-col overflow-hidden bg-background sm:fixed sm:inset-auto sm:bottom-[max(1rem,env(safe-area-inset-bottom))] sm:right-4 sm:top-4 sm:h-auto sm:w-[30rem] sm:max-w-[calc(100vw-2rem)] sm:rounded-2xl sm:border sm:border-border sm:shadow-[0_28px_64px_-24px_rgb(15_29_74/0.55)] motion-safe:sm:animate-in motion-safe:sm:fade-in motion-safe:sm:slide-in-from-bottom-4 motion-safe:sm:duration-200"
           onKeyDown={(e) => {
             // The download box is a portal: its keys bubble here through React,
             // and its own Escape must not close V too.
@@ -1007,8 +1233,12 @@ export default function ChatWidget() {
             <PracticeBuilder initial={resume} onExit={() => setMode("chat")} onClose={close} />
           ) : (
           <>
+          {/* Today's board plan, pinned above the chat for the day once asked for (2026-11-22). */}
+          {showPath && planPinned && (
+            <VPlanPin open={planOpen} onToggle={() => setPlanOpen((o) => !o)} onNavigate={close} onGone={unpinPlan} />
+          )}
           <div ref={listRef} className="flex-1 space-y-4 overflow-y-auto px-4 py-4">
-            {[day ? { ...GREETING, text: day.greeting } : dayLoading ? { ...GREETING, text: "Welcome back." } : GREETING, ...turns].map((t, n) => {
+            {[day ? { ...GREETING, text: day.greeting } : dayLoading ? { ...GREETING, text: "Welcome back." } : intl ? INTL_GREETING : GREETING, ...turns].map((t, n) => {
               // n - 1 indexes `turns`; the greeting is never stored.
               const i = n - 1;
               if (t.role === "user") {
@@ -1034,12 +1264,29 @@ export default function ChatWidget() {
               const parts = t.stepQuestionId && t.id && !signInNeeded ? replyParts(t.text) : null;
               // The solution's figure, when the question V explained has one. A saved turn is checked first.
               const figure = t.reveal ? null : figureSrc(t.figure, SUPABASE_URL);
+              // A lesson's pages show their names, never their paths (2026-11-21).
+              const labels = t.lesson ? lessonLinkLabels(t.lesson) : undefined;
+              // The lesson's buttons go under the latest reply only, once its last line is out.
+              const lessonHere = t.lesson && t.lesson.kind !== "learn" && !t.reveal && i === lastReplyAt ? t.lesson : null;
               return (
                 <div key={n} className={`max-w-[90%] ${MESSAGE_IN}`}>
+                  {/* The lesson's map comes first, as in mockup B: V's text then runs straight into the question to try. */}
+                  {t.lesson && t.lesson.showMap && (
+                    <VChapterMapCard
+                      lesson={t.lesson}
+                      onNavigate={close}
+                      placement="above"
+                      onOpenLesson={(target) => {
+                        sendActivity({ kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "lesson_learn" });
+                        setPlaying(target);
+                      }}
+                    />
+                  )}
                   {parts ? (
                     <VStepReply
                       parts={parts}
                       links={t.links}
+                      labels={labels}
                       avatar={t.reveal ? "talk" : (t.avatar ?? "idle")}
                       reveal={t.reveal}
                       tapped={t.tappedStep ?? null}
@@ -1059,12 +1306,13 @@ export default function ChatWidget() {
                           <VRevealReply
                             text={t.text}
                             links={t.links}
+                            labels={labels}
                             onNavigate={close}
                             onGrow={() => listRef.current?.scrollTo({ top: listRef.current.scrollHeight })}
                             onDone={() => endReveal(i)}
                           />
                         ) : (
-                          <ReplyText text={t.text} links={t.links} onNavigate={close} />
+                          <ReplyText text={t.text} links={t.links} labels={labels} onNavigate={close} />
                         )}
                       </div>
                     </div>
@@ -1219,17 +1467,103 @@ export default function ChatWidget() {
                       id={t.card.id}
                       kind={t.card.kind}
                       after={t.card.after}
+                      heading={t.card.turn ? "Your turn" : undefined}
                       onMore={t.card.kind === "try" ? () => void moreLike(t.card!.id) : undefined}
                       onNavigate={close}
                     />
                   )}
+                  {t.learnTry && !t.reveal && <VLearnQuestionCard chapter={t.learnTry.chapter} concept={t.learnTry.concept} lessonN={t.learnTry.n} />}
+                  {lessonHere && (
+                    // The full chat width, past the turn's 90% bubble cap (2026-11-22): "Go on: lesson 4" and
+                    // "Explain more simply" missed sharing a row on a 390 px phone by about 12 px.
+                    <div className="ml-9 mt-2 flex w-[calc(100%/0.9_-_2.25rem)] flex-wrap gap-1.5" role="group" aria-label={`${lessonHere.chapter} lesson`}>
+                      {goOnLabel(lessonHere) && (
+                        <button
+                          type="button"
+                          disabled={sending}
+                          onClick={() => lessonGoOn(lessonHere)}
+                          aria-label={goOnLabel(lessonHere)!.aria}
+                          className="inline-flex min-h-9 items-center gap-1 rounded-full bg-brand px-3 py-1.5 text-xs font-semibold text-brand-foreground shadow-sm transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                        >
+                          <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+                          {goOnLabel(lessonHere)!.text}
+                        </button>
+                      )}
+                      <button
+                        type="button"
+                        disabled={sending}
+                        onClick={() => lessonSimpler(lessonHere)}
+                        className="inline-flex min-h-9 items-center gap-1 rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                      >
+                        <Lightbulb className="h-3.5 w-3.5" aria-hidden />
+                        Explain more simply
+                      </button>
+                      {[lessonOpenLink(lessonHere), lessonNotesLink(lessonHere)].map(
+                        (link) =>
+                          link && (
+                            <Link
+                              key={link.href}
+                              href={link.href}
+                              onClick={() => {
+                                // Learn's lesson and the notes are counted apart (experiment v-learn-first).
+                                const from = lessonHere.kind === "learn" && link.label === "Open the lesson" ? "lesson_learn" : "lesson_notes";
+                                sendActivity({ kind: "surface_viewed", surface: "teach_chapter", action: "tap", from });
+                                close();
+                              }}
+                              className="inline-flex min-h-9 items-center gap-1 rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                            >
+                              <BookOpen className="h-3.5 w-3.5" aria-hidden />
+                              {link.label}
+                            </Link>
+                          )
+                      )}
+                    </div>
+                  )}
                   {t.plan && !t.reveal && <VPlanCard onNavigate={close} />}
                   {t.progress && <VProgressCard onNavigate={close} />}
-                  {n === 0 && day && <VDayCard card={day} onNavigate={close} />}
+                  {t.teachPick && (
+                    <div className="flex flex-wrap gap-2 pl-9">
+                      {t.teachPick.map((p) => (
+                        <button
+                          key={p.chapterId}
+                          type="button"
+                          onClick={() => teachPicked(p)}
+                          disabled={sending}
+                          aria-label={`Teach me ${p.name}${p.place ? `, ${p.place}` : ""}`}
+                          className="inline-flex min-h-9 items-center rounded-full bg-brand px-3.5 py-1.5 text-xs font-semibold text-brand-foreground shadow-sm transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                        >
+                          {p.name}
+                        </button>
+                      ))}
+                      <button
+                        type="button"
+                        onClick={() => teachPicked(null)}
+                        disabled={sending}
+                        className="inline-flex min-h-9 items-center rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3.5 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                      >
+                        Another chapter
+                      </button>
+                    </div>
+                  )}
+                  {n === 0 && panelGift && (
+                    <VGiftCard gift={panelGift} opened={giftOpened} onOpen={openGift} onNavigate={close} />
+                  )}
+                  {/* V's check-in after 4+ days away (2026-11-21) stands in for the card; "Going well" shows it. */}
+                  {n === 0 && day && day.checkIn && (
+                    <VCheckIn
+                      day={day}
+                      checkIn={day.checkIn}
+                      onNavigate={close}
+                      onOther={() => {
+                        setDraft(CHECKIN_OTHER_DRAFT);
+                        inputRef.current?.focus();
+                      }}
+                    />
+                  )}
+                  {n === 0 && day && !day.checkIn && <VDayCard card={day} onNavigate={close} />}
                   {n === 0 && !day && dayLoading && (
                     <div className="ml-9 mt-2 h-44 animate-pulse rounded-xl border bg-muted/40" aria-hidden />
                   )}
-                  {t.path && !t.reveal && <VPathCard onNavigate={close} />}
                 </div>
               );
             })}
@@ -1248,16 +1582,20 @@ export default function ChatWidget() {
 
           <div className="shrink-0 border-t border-border/70 bg-card shadow-[0_-12px_28px_-20px_rgb(15_29_74/0.35)]">
           <div className="relative">
+            {/* A chapter lesson's own buttons stand in for these while it is the latest reply (2026-11-21). */}
+            {!lessonOpen && (
             <div className="flex flex-wrap gap-2 px-3 pb-1 pt-3">
-              <button
-                type="button"
-                onClick={openBuilder}
-                disabled={sending}
-                className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-brand px-3.5 py-1.5 text-xs font-semibold text-brand-foreground shadow-sm transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
-              >
-                <ListChecks className="h-3.5 w-3.5" aria-hidden />
-                Build a practice test
-              </button>
+              {!intl && (
+                <button
+                  type="button"
+                  onClick={openBuilder}
+                  disabled={sending}
+                  className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-brand px-3.5 py-1.5 text-xs font-semibold text-brand-foreground shadow-sm transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                >
+                  <ListChecks className="h-3.5 w-3.5" aria-hidden />
+                  Build a practice test
+                </button>
+              )}
               {showPath && (
                 <button
                   type="button"
@@ -1267,6 +1605,17 @@ export default function ChatWidget() {
                 >
                   <CalendarCheck className="h-3.5 w-3.5" aria-hidden />
                   My plan for today
+                </button>
+              )}
+              {features.explain && (
+                <button
+                  type="button"
+                  onClick={startTeachChapter}
+                  disabled={sending}
+                  className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3.5 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                >
+                  <GraduationCap className="h-3.5 w-3.5" aria-hidden />
+                  Teach me a chapter
                 </button>
               )}
               {showProgress && (
@@ -1281,6 +1630,7 @@ export default function ChatWidget() {
                 </button>
               )}
             </div>
+            )}
           </div>
 
           {signInNeeded ? (
@@ -1361,19 +1711,11 @@ export default function ChatWidget() {
         ref={launcherRef}
         type="button"
         onClick={() => (open ? close() : openChat())}
-        aria-label={
-          open
-            ? "Close chat with V"
-            : unread > 0
-              ? `Chat with V, ${unread} new ${unread === 1 ? "reply" : "replies"}`
-              : dayDot
-                ? "Chat with V, your day is ready"
-                : "Chat with V"
-        }
+        aria-label={vLauncherLabel({ open, unread, dayDue: dayDot, giftDue: giftBadge })}
         aria-expanded={open}
         title="Chat with V"
         tabIndex={tucked ? -1 : undefined}
-        className={`relative ml-auto ${open ? "hidden sm:flex" : "flex"} h-11 w-11 items-center justify-center rounded-full bg-background shadow-lg transition-[transform,opacity] duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none sm:h-14 sm:w-14 ${
+        className={`relative ml-auto ${open ? "hidden" : "flex"} h-11 w-11 items-center justify-center rounded-full bg-background shadow-lg transition-[transform,opacity] duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none sm:h-14 sm:w-14 ${
           tucked ? "pointer-events-none translate-y-[160%] opacity-0" : ""
         }`}
       >
@@ -1382,15 +1724,19 @@ export default function ChatWidget() {
         ) : (
           <VFace avatar="idle" className="h-9 w-9 object-contain sm:h-12 sm:w-12" />
         )}
-        {!open && unread === 0 && dayDot && (
-          <span aria-hidden className="absolute right-0 top-0 h-3 w-3 rounded-full bg-brand ring-2 ring-background sm:right-0.5 sm:top-0.5" />
-        )}
-        {!open && unread > 0 && (
+        {/* What waits inside V (lib/chat/launcher): unread replies in the brand
+            colour, as before; otherwise a red count of the "Your day" card
+            (2026-11-20, was a 12 px blue dot that read as decoration) and a
+            gift (2026-11-21), the way a phone marks something new. red-600
+            under white text is 4.8:1. */}
+        {launcherBadge && (
           <span
             aria-hidden
-            className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-brand px-1 text-[11px] font-semibold leading-none text-brand-foreground ring-2 ring-background"
+            className={`absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full px-1 text-[11px] font-semibold leading-none ring-2 ring-background ${
+              launcherBadge.tone === "reply" ? "bg-brand text-brand-foreground" : "bg-red-600 text-white"
+            }`}
           >
-            {unread > 9 ? "9+" : unread}
+            {launcherBadge.count > 9 ? "9+" : launcherBadge.count}
           </span>
         )}
       </button>

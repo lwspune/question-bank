@@ -55,6 +55,16 @@ export const SURFACES = [
   // (2026-11-15, migration 0262), with metadata.card yesterday | since | fresh:
   // growth experiment "v-day-card" reads whether students come back to it.
   "v_day",
+  // The red "1" on V's button saying that card is waiting (2026-11-20), sent by
+  // the browser once a day when it shows: the step before "opened V".
+  "v_day_badge",
+  // V's gift (2026-11-21, lib/chat/gift), with metadata.gift trial | points and
+  // metadata.action badge | shown | open | activate | pricing: growth experiment
+  // "v-gift" reads how far students get from the badge to the gift's button.
+  "v_gift",
+  // V's check-in (2026-11-21, lib/chat/checkIn), with metadata.action shown |
+  // well | stuck | short | chapter | other | go: growth experiment "v-checkin".
+  "v_checkin",
   // The Learn tab (2026-10-28): "learn" is a reading surface (every Learn page, by address);
   // "learn_start" is the student's first move through a lesson's slides, with the lesson's
   // address. Until then nothing told "nobody came" from "came and left before a question".
@@ -90,6 +100,11 @@ export const SURFACES = [
   // records no source, so without these nothing says whether the card is used.
   "start_next",
   "start_next_tap",
+  // Home's Study time card (2026-11-21, experiment study-time-card):
+  // metadata.action — "seen" the card, "week" This week opened, "next_shown"
+  // and "next_tap" the suggestion (with metadata.chapterId). Whether the
+  // suggested chapter then gets time is read from study_time.
+  "study_time",
   // The stuck offer under a bank answer (2026-11-10, lib/questions/stuckOffer):
   // metadata.action (shown, teach, easier, keep; returned and try_after since
   // 2026-11-11, after Teach me the idea) and metadata.questionId.
@@ -112,6 +127,10 @@ export const SURFACES = [
   // lib/notes/drillPanel): metadata.action (open, more, close, full_page), metadata.link
   // (concept, topic) and metadata.subtopic (the notes topic slug).
   "notes_drill",
+  // The "Teach me" buttons that open V on a chapter (2026-11-21, lib/chat/teachChapter,
+  // experiment v-teach-chapter): metadata.action (shown, tap), metadata.from (me_weak,
+  // mock_result, v_button, v_pick) and metadata.chapterId where the place has one.
+  "teach_chapter",
 ] as const;
 
 export type Surface = (typeof SURFACES)[number];

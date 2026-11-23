@@ -8,7 +8,7 @@
  */
 
 /** `referral`: an inviter's free Premium days, earned when a friend paid (0249). */
-export type EntitlementSource = "razorpay" | "comp" | "manual" | "referral";
+export type EntitlementSource = "razorpay" | "comp" | "manual" | "referral" | "trial";
 export type EntitlementStatus = "active" | "expired" | "revoked" | "cancelled";
 
 /** The full-premium scope. A grant with this scope unlocks everything. */
@@ -46,6 +46,14 @@ export const SCOPE_TEACHER = "teacher";
  */
 export const SCOPE_IMAT = "imat";
 export const SCOPE_MCAT = "mcat";
+
+/**
+ * The intl passes: their exams take the intl site's own daily answer limit
+ * (paywall_settings.intl_free_reveals_per_day, migration 0274). Mirrored by
+ * private.intl_pass_scopes() in SQL; tests/intl-reveal-limit.test.ts keeps
+ * the two equal.
+ */
+export const INTL_PASS_SCOPES: readonly string[] = [SCOPE_IMAT, SCOPE_MCAT];
 
 /**
  * Not a pass: the pass name of an exam that needs none (2026-11-02, migration

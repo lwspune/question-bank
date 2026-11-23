@@ -74,6 +74,7 @@ export const CAPILLARITY_FLUID_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jpfluid-capillary-rise",
       name: "Capillary rise",
+      visualizationSlug: "surface-tension-meniscus",
       intuition:
         "In a narrow glass tube water clings to the glass and its surface curves up. Just under a curved surface the pressure is lower, so the liquid climbs until the weight of the column makes up the difference. A narrower tube curves the surface more and lifts the liquid higher.",
       definition:

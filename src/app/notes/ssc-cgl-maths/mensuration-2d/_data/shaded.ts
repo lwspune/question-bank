@@ -67,6 +67,7 @@ export const SSC_M2_SHADED_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscm2sh-pieces",
       name: "Shaded areas: the whole minus the holes, or the sum of the pieces",
+      visualizationSlug: "cds-touching-circles",
       intuition:
         "Most shaded figures are a simple outline with simple shapes cut out of it, or a few simple shapes placed side by side. Name each piece, find its area with a rule you already know, then subtract or add.",
       definition:
@@ -119,6 +120,7 @@ export const SSC_M2_SHADED_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "sscm2sh-inscribed",
       name: "Inscribed figures: a circle in a square or triangle, a square or hexagon in a circle",
+      visualizationSlug: "af-square-in-circle",
       intuition:
         "When one figure fits exactly inside another, they touch at a few points, and those points fix one size from the other. Find the one length they share (a diameter, a diagonal, a radius) and every area follows.",
       definition:

@@ -14,6 +14,7 @@ export const NUCLEOPHILIC_SUBSTITUTION_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "cethal-sn1-vs-sn2",
       name: "SN1 Against SN2: Mechanism, Rate Order and Stereochemistry",
+      visualizationSlug: "cet-sn1-vs-sn2",
       intuition:
         "SN1: the C–X bond breaks first, a planar carbocation forms, the nucleophile attacks either face — so the rate depends only on the halide (tertiary fastest, stabilised cation) and a chiral centre is racemised. SN2: the nucleophile pushes in from the back while X leaves in ONE step — no intermediate, the rate depends on both reactants, crowding slows it (methyl fastest), and the configuration inverts.",
       definition:

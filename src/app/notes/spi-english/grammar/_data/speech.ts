@@ -6,7 +6,7 @@ export const SPI_GR_SPEECH_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Reported (indirect) speech gives what someone said in your own words: after a past reporting verb the tense moves one step back, and the pronouns and time words change to fit the new speaker.",
   whyItMatters:
-    "Eleven questions in the bank, 6 MODERATE and 5 EASY, and five of them run the other way, from reported speech back to the speaker's own words. Three changes decide every one: the tense, the pronouns and the words for time and place.",
+    "Thirteen questions in the bank, 6 MODERATE and 7 EASY, two from the 2026 paper, and six of them run the other way, from reported speech back to the speaker's own words. Three changes decide every one: the tense, the pronouns and the words for time and place.",
   concepts: [
     {
       kind: "reference" as const,
@@ -152,7 +152,7 @@ export const SPI_GR_SPEECH_NOTE: SubtopicNote = {
         { prompt: "Change to direct speech: They said that they could not come then.", answer: "They said, \"We cannot come now.\"" },
         { prompt: "Change to direct speech: He said that he used to play hockey.", answer: "He said, \"I used to play hockey.\"" },
       ],
-      pyqExampleId: "10e7918e-1e21-4808-9132-570c0e5f0d0b",
+      pyqExampleId: "c208dbd9-df88-4f2b-8411-adab67ebb460",
       traps: [
         {
           title: "Leaving a past tense inside the quotation",

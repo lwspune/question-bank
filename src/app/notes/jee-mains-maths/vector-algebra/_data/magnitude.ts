@@ -13,6 +13,7 @@ export const MAGNITUDE_VEC_NOTE: SubtopicNote = {
       kind: "formula" as const,
       slug: "jvec-expand",
       name: "Expanding the square of a sum",
+      visualizationSlug: "parallelogram-diagonals",
       intuition:
         "A length is found through its square: \\(|\\vec a+\\vec b|^2=(\\vec a+\\vec b)\\cdot(\\vec a+\\vec b)=|\\vec a|^2+2\\vec a\\cdot\\vec b+|\\vec b|^2\\). Any condition on lengths of combinations becomes, after squaring, an equation in \\(|\\vec a|\\), \\(|\\vec b|\\) and \\(\\vec a\\cdot\\vec b\\). For a sum of three vectors, the cross terms are the three pairwise dot products. For a maximum of \\(p|\\vec u|+q|\\vec v|\\) when \\(|\\vec u|^2+|\\vec v|^2\\) is fixed, Cauchy–Schwarz gives \\(\\sqrt{p^2+q^2}\\sqrt{|\\vec u|^2+|\\vec v|^2}\\).",
       definition:

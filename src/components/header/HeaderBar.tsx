@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePublicPathname } from "@/lib/nav/usePublicPathname";
-import { Gamepad2, Gem, GraduationCap, ShoppingBag } from "lucide-react";
+import { Gamepad2, Gem, ShoppingBag } from "lucide-react";
 import { trackFunnel } from "@/lib/analytics/trackFunnel";
 import SignInLink from "@/components/reveal/SignInLink";
 import { Button } from "@/components/ui/button";
@@ -22,6 +22,7 @@ import { useViewerSession } from "@/lib/viewer/useViewerSession";
 import { usePulse } from "@/lib/viewer/usePulse";
 import { fifthTabFor } from "@/lib/nav/fifthTab";
 import ReadingBeacon from "./ReadingBeacon";
+import StudyClock from "./StudyClock";
 import IntlHeaderBar from "./IntlHeaderBar";
 import CheckoutReturnBar from "@/components/billing/CheckoutReturnBar";
 import { useIntlSite } from "@/lib/sites/useIntlSite";
@@ -91,6 +92,7 @@ export default function HeaderBar({
     return (
       <>
         <ReadingBeacon signedIn={!!session} />
+        <StudyClock signedIn={!!session} />
         <IntlHeaderBar email={session?.email ?? null} sessionLoading={sessionLoading} />
       </>
     );
@@ -99,6 +101,7 @@ export default function HeaderBar({
   return (
     <>
       <ReadingBeacon signedIn={!!session} />
+      <StudyClock signedIn={!!session} />
       <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="mx-auto flex h-14 max-w-7xl items-center gap-2 px-3 sm:gap-3 sm:px-6">
           <Link
@@ -116,8 +119,9 @@ export default function HeaderBar({
             {/* On a phone (below 640 px) the words give way so Store, Classes and
                 Play fit beside the theme toggle and Sign in, down to 360 px
                 (owner, 2026-11-16; was below 360 px only). The logo stays and the
-                link keeps its name for screen readers. */}
-            <span className="max-sm:sr-only">PYQ Vault</span>
+                link keeps its name for screen readers. Below lg since 2026-11-18:
+                at 820 px the study tabs and the avatar did not fit beside them. */}
+            <span className="max-lg:sr-only">PYQ Vault</span>
             {/* The Premium Pass mark (2026-10-21). Drawn only once the session
                 lands, so the cached HTML stays the same for everyone. Part of
                 the brand link, not a link of its own; /account shows the pass. */}
@@ -131,7 +135,6 @@ export default function HeaderBar({
 
           <PrimaryNav
             bankHref={nav.bankHref}
-            guidesHref={nav.guidesHref}
             notesHref={nav.notesHref}
             mockHref={nav.mockHref}
             boardHref={nav.boardHref}
@@ -144,11 +147,9 @@ export default function HeaderBar({
           <div className="ml-auto flex min-w-0 items-center gap-1 sm:gap-2">
             {/* The store (2026-10-20): its own button, apart from the study tabs,
                 at every width (owner: "a separate buy section on top"). Called
-                Ebooks until 2026-11-17, when partner courses joined the books. */}
+                Ebooks until 2026-11-23, when partner courses joined the books. */}
             <StoreLink />
-            {/* Offline classes in Pune (2026-11-16; was the 1:1 tutoring check), beside the store. */}
-            <ClassesLink />
-            {/* The calculation game (2026-11-16), open to everyone, signed in or not. */}
+            {/* The /play games (2026-11-16; a hub since 2026-11-17), open to everyone, signed in or not. */}
             <PlayLink />
             {/* Theme toggle is visible to everyone, anon included. */}
             <ThemeToggle />
@@ -224,40 +225,20 @@ function StoreLink() {
       aria-current={active ? "page" : undefined}
       className={headerButtonClass(active)}
     >
-      <ShoppingBag className="hidden h-4 w-4 shrink-0 sm:block" aria-hidden />
+      <ShoppingBag className="hidden h-4 w-4 shrink-0 lg:block" aria-hidden />
       {/* Words, not icons, on a phone: students did not know what the icons
           meant (owner, 2026-11-02). Icon AND word overflowed a 390 px screen
           and cut "Sign in" off, so the icon shows from sm up; measured to fit
-          at 360 px. */}
+          at 360 px. From lg up since 2026-11-18, for the same reason at
+          tablet widths, where the study tabs share the row. */}
       <span>Store</span>
     </Link>
   );
 }
 
 /**
- * Offline classes in Pune (2026-11-16, migration 0265; the Tutor button from
- * 2026-10-27 until then); `from` rides to the stored lead.
- */
-function ClassesLink() {
-  const pathname = usePublicPathname();
-  const active = pathname.startsWith("/classes");
-  const from = pathname.split("/")[1] || "home";
-  return (
-    <Link
-      href={active ? "/classes" : `/classes?from=${encodeURIComponent(from)}`}
-      onClick={() => trackFunnel("classes_link_click", { from })}
-      aria-current={active ? "page" : undefined}
-      className={headerButtonClass(active)}
-    >
-      <GraduationCap className="hidden h-4 w-4 shrink-0 sm:block" aria-hidden />
-      <span>Classes</span>
-    </Link>
-  );
-}
-
-/**
- * The calculation game (2026-11-16): /play, timed rounds of basic sums in
- * levels. "Play", not "Games": the owner picked the word that fits a 360 px
+ * The calculation game (2026-11-16), and from 2026-11-17 the /play hub of
+ * games (maths and English). "Play", not "Games": the owner picked the word that fits a 360 px
  * phone (measured: header ~355 px with it). Experiment play-games.
  */
 function PlayLink() {
@@ -268,10 +249,10 @@ function PlayLink() {
       href="/play"
       onClick={() => trackFunnel("play_link_click", { from: pathname.split("/")[1] || "home" })}
       aria-current={active ? "page" : undefined}
-      aria-label="Play: calculation game"
+      aria-label="Play: learning games"
       className={headerButtonClass(active)}
     >
-      <Gamepad2 className="hidden h-4 w-4 shrink-0 sm:block" aria-hidden />
+      <Gamepad2 className="hidden h-4 w-4 shrink-0 lg:block" aria-hidden />
       <span>Play</span>
     </Link>
   );

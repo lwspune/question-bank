@@ -6,7 +6,7 @@ export const SPI_TG_VALUES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The ratios of 0°, 30°, 45°, 60° and 90° are known exact values, so an expression in them is plain arithmetic and an equation like sin 2θ = 1/2 gives the angle at once.",
   whyItMatters:
-    "Thirteen questions in the bank, the largest page in the chapter, and twelve are EASY. Six are arithmetic with these values, five give a value and ask for the angle, and two find the sides of a right triangle or a rectangle. All of them need the table on this page by heart.",
+    "Fourteen questions in the bank, thirteen of them EASY and one from the 2026 paper. Six are arithmetic with these values, six give a value and ask for the angle, and two find the sides of a right triangle or a rectangle. All of them need the table on this page by heart.",
   concepts: [
     {
       kind: "reference" as const,
@@ -102,7 +102,7 @@ export const SPI_TG_VALUES_NOTE: SubtopicNote = {
         { prompt: "If \\(\\tan 2A = 1\\), what is A?", answer: "\\(22.5^\\circ\\)" },
         { prompt: "If \\(\\cos(A - B) = 1\\) and \\(A = 35^\\circ\\), what is B?", answer: "\\(35^\\circ\\) (since \\(A - B = 0^\\circ\\))" },
       ],
-      pyqExampleId: "18ea9b6a-db42-46f4-8401-5f739847b8c4",
+      pyqExampleId: "895755ab-60d3-43c6-bfc1-d8300f056185",
       traps: [
         {
           title: "Stopping at the angle in the bracket",

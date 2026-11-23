@@ -1,0 +1,173 @@
+{
+  "paper": "rimc-2021-dec-maths",
+  "written": true,
+  "answers": [
+    {
+      "number": 1,
+      "solution": "Co-prime numbers are two numbers whose only common factor is 1, that is, their HCF is 1. The numbers themselves need not be prime.\n\nPair 1: 4 and 9. Factors of 4 are 1, 2, 4; factors of 9 are 1, 3, 9. The only common factor is 1, so HCF \\((4, 9) = 1\\).\n\nPair 2: 8 and 15. Factors of 8 are 1, 2, 4, 8; factors of 15 are 1, 3, 5, 15. The only common factor is 1, so HCF \\((8, 15) = 1\\).\n\nSo, co-prime numbers are numbers with HCF 1, for example (4, 9) and (8, 15).",
+      "finalAnswer": "Two numbers whose HCF is 1; e.g. (4, 9) and (8, 15)"
+    },
+    {
+      "number": 2,
+      "solution": "Use \\(\\left(\\frac{a}{b}\\right)^{-1} = \\frac{b}{a}\\).\n\n\\(\\left(\\frac{1}{3}\\right)^{-1} = 3\\) and \\(\\left(\\frac{1}{4}\\right)^{-1} = 4\\)\n\nSo the bracket is \\(\\{3 - 4\\}^{-1} = (-1)^{-1}\\)\n\n\\((-1)^{-1} = \\frac{1}{-1} = -1\\)\n\nSo, the answer is \\(-1\\).",
+      "finalAnswer": "-1"
+    },
+    {
+      "number": 3,
+      "solution": "LCM of the denominators 8, 6 and 7 is 168.\n\n\\(\\frac{7}{8} = \\frac{7 \\times 21}{168} = \\frac{147}{168}\\)\n\n\\(\\frac{5}{6} = \\frac{5 \\times 28}{168} = \\frac{140}{168}\\)\n\n\\(\\frac{6}{7} = \\frac{6 \\times 24}{168} = \\frac{144}{168}\\)\n\nComparing numerators: \\(147 > 144 > 140\\).\n\nSo, in descending order: \\(\\frac{7}{8}, \\frac{6}{7}, \\frac{5}{6}\\).",
+      "finalAnswer": "7/8, 6/7, 5/6"
+    },
+    {
+      "number": 4,
+      "solution": "\\(\\left(x - \\frac{1}{x}\\right)^2 = x^2 + \\frac{1}{x^2} - 2 = 51 - 2 = 49\\)\n\nSo \\(x - \\frac{1}{x} = 7\\) (taking the positive root; the negative root gives \\(-7\\)).\n\nUse \\(a^3 - b^3 = (a - b)^3 + 3ab(a - b)\\) with \\(a = x\\), \\(b = \\frac{1}{x}\\), \\(ab = 1\\):\n\n\\(x^3 - \\frac{1}{x^3} = \\left(x - \\frac{1}{x}\\right)^3 + 3\\left(x - \\frac{1}{x}\\right)\\)\n\n\\(= 7^3 + 3 \\times 7 = 343 + 21 = 364\\)\n\n(If \\(x - \\frac{1}{x} = -7\\), the value is \\(-364\\).)\n\nSo, the answer is 364.",
+      "finalAnswer": "364 (taking x - 1/x = 7; -364 if x - 1/x = -7)",
+      "notice": "Since x - 1/x can be 7 or -7, the value can be 364 or -364. The solution takes x - 1/x = 7."
+    },
+    {
+      "number": 5,
+      "solution": "Cross-multiply: \\((2 + x)(7 - x) = (5 - x)(4 + x)\\)\n\nLeft side: \\(14 - 2x + 7x - x^2 = 14 + 5x - x^2\\)\n\nRight side: \\(20 + 5x - 4x - x^2 = 20 + x - x^2\\)\n\nSo \\(14 + 5x - x^2 = 20 + x - x^2\\)\n\nThe \\(x^2\\) terms cancel: \\(5x - x = 20 - 14\\), so \\(4x = 6\\)\n\n\\(x = \\frac{6}{4} = \\frac{3}{2}\\)\n\nCheck: the denominator \\((5 - \\frac{3}{2})(4 + \\frac{3}{2})\\) is not zero.\n\nSo, \\(x = \\frac{3}{2}\\).",
+      "finalAnswer": "x = 3/2"
+    },
+    {
+      "number": 6,
+      "solution": "Time taken from 9 am to 1 pm = 4 hours.\n\nDistance to school = speed \\(\\times\\) time = \\(30 \\times 4 = 120\\) km.\n\nTo reach by 12 noon, the time allowed is 9 am to 12 noon = 3 hours.\n\nRequired speed = \\(\\frac{120}{3} = 40\\) km/hr.\n\nIncrease in speed = \\(40 - 30 = 10\\) km/hr.\n\nSo, he should increase the speed by 10 km/hr.",
+      "finalAnswer": "10 km/hr"
+    },
+    {
+      "number": 7,
+      "solution": "Let the numbers of notes be \\(2k\\), \\(3k\\) and \\(5k\\).\n\nValue of Rs 100 notes = \\(100 \\times 2k = 200k\\)\n\nValue of Rs 50 notes = \\(50 \\times 3k = 150k\\)\n\nValue of Rs 10 notes = \\(10 \\times 5k = 50k\\)\n\nTotal: \\(200k + 150k + 50k = 400k = 4,00,000\\)\n\nSo \\(k = 1000\\).\n\nRs 100 notes = \\(2 \\times 1000 = 2000\\); Rs 50 notes = \\(3 \\times 1000 = 3000\\); Rs 10 notes = \\(5 \\times 1000 = 5000\\).\n\nSo, she has 2000 notes of Rs 100, 3000 notes of Rs 50 and 5000 notes of Rs 10.",
+      "finalAnswer": "Rs 100: 2000 notes; Rs 50: 3000 notes; Rs 10: 5000 notes"
+    },
+    {
+      "number": 8,
+      "solution": "They meet again at the starting point after the LCM of 42, 56 and 63 seconds.\n\n\\(42 = 2 \\times 3 \\times 7\\)\n\n\\(56 = 2^3 \\times 7\\)\n\n\\(63 = 3^2 \\times 7\\)\n\nLCM = \\(2^3 \\times 3^2 \\times 7 = 8 \\times 9 \\times 7 = 504\\)\n\nSo, they will be together at the starting point after 504 seconds (8 minutes 24 seconds).",
+      "finalAnswer": "504 seconds"
+    },
+    {
+      "number": 9,
+      "solution": "Let the upstream speed be \\(u\\) km/hr and the downstream speed be \\(d\\) km/hr.\n\n\\(\\frac{30}{u} + \\frac{44}{d} = 10\\) ... (1)\n\n\\(\\frac{40}{u} + \\frac{55}{d} = 13\\) ... (2)\n\nPut \\(p = \\frac{1}{u}\\), \\(q = \\frac{1}{d}\\): \\(30p + 44q = 10\\) and \\(40p + 55q = 13\\).\n\nMultiply (1) by 4: \\(120p + 176q = 40\\)\n\nMultiply (2) by 3: \\(120p + 165q = 39\\)\n\nSubtract: \\(11q = 1\\), so \\(q = \\frac{1}{11}\\) and \\(d = 11\\) km/hr.\n\nThen \\(30p = 10 - 44 \\times \\frac{1}{11} = 10 - 4 = 6\\), so \\(p = \\frac{1}{5}\\) and \\(u = 5\\) km/hr.\n\nBoat speed \\(b\\), stream speed \\(s\\): \\(b + s = 11\\) and \\(b - s = 5\\).\n\nAdding: \\(2b = 16\\), \\(b = 8\\); so \\(s = 3\\).\n\nSo, the speed of the stream is 3 km/hr and the speed of the boat in still water is 8 km/hr.",
+      "finalAnswer": "Stream 3 km/hr; boat in still water 8 km/hr"
+    },
+    {
+      "number": 10,
+      "solution": "Rule: (first number \\(\\times\\) second number) \\(-\\) second number = third number.\n\nRow 1: \\(8 \\times 3 - 3 = 24 - 3 = 21\\)\n\nRow 2: \\(6 \\times 5 - 5 = 30 - 5 = 25\\)\n\nRow 3: \\(12 \\times 2 - 2 = 24 - 2 = 22\\)\n\nSo, the missing number is 22.",
+      "finalAnswer": "22"
+    },
+    {
+      "number": 11,
+      "solution": "The grid gives only one complete pair: 6 above 126. Reading each column as a rule from the top number to the bottom number:\n\n\\(126 = 125 + 1 = 5^3 + 1 = (6 - 1)^3 + 1\\)\n\nSo the rule is: bottom number = \\((\\text{top} - 1)^3 + 1\\).\n\nFor the second column: \\((5 - 1)^3 + 1 = 4^3 + 1 = 64 + 1 = 65\\).\n\nNote: with only one example printed, the puzzle has more than one possible rule (for example, reading 126 as \\(5^3 + 1\\) from the 5 across the diagonal would give \\(6^3 + 1 = 217\\)). The column rule is the most natural reading.\n\nSo, the number in place of the question mark is 65.",
+      "finalAnswer": "65",
+      "notice": "Only one complete pair is printed, so more than one rule fits: 126 = 5 cubed + 1 can lead to 4 cubed + 1 = 65 (each top number less one, cubed, plus one) or to 6 cubed + 1 = 217 (the other top number cubed, plus one). The solution uses the first rule."
+    },
+    {
+      "number": 12,
+      "solution": "\\(\\frac{50}{100}(x - y) = \\frac{40}{100}(x + y)\\)\n\nMultiply by 10: \\(5(x - y) = 4(x + y)\\)\n\n\\(5x - 5y = 4x + 4y\\)\n\n\\(x = 9y\\), so \\(y = \\frac{x}{9}\\)\n\nPercentage of x that y is: \\(\\frac{y}{x} \\times 100 = \\frac{1}{9} \\times 100 = 11\\frac{1}{9}\\%\\)\n\nSo, y is \\(11\\frac{1}{9}\\%\\) of x.",
+      "finalAnswer": "11 1/9 %"
+    },
+    {
+      "number": 13,
+      "solution": "Let the number of hits be \\(h\\). Then misses = \\(60 - h\\).\n\nMoney received = \\(5h\\); money paid = \\(2(60 - h)\\).\n\nNet amount: \\(5h - 2(60 - h) = 13\\)\n\n\\(5h - 120 + 2h = 13\\)\n\n\\(7h = 133\\), so \\(h = 19\\)\n\nCheck: \\(5 \\times 19 - 2 \\times 41 = 95 - 82 = 13\\).\n\nSo, he hit the mark 19 times.",
+      "finalAnswer": "19"
+    },
+    {
+      "number": 14,
+      "solution": "Area of ring = \\(\\pi R^2 - \\pi r^2 = \\pi (R^2 - r^2)\\)\n\n\\(= \\frac{22}{7} \\times (20^2 - 15^2)\\)\n\n\\(= \\frac{22}{7} \\times (400 - 225) = \\frac{22}{7} \\times 175\\)\n\n\\(= 22 \\times 25 = 550\\)\n\nSo, the area of the ring is \\(550\\ \\text{cm}^2\\).",
+      "finalAnswer": "550 cm²"
+    },
+    {
+      "number": 15,
+      "solution": "Volume of a cylinder = \\(\\pi r^2 h\\).\n\nLet the radii be \\(2a, 3a\\) and the heights \\(5b, 3b\\).\n\n\\(\\frac{V_1}{V_2} = \\frac{\\pi (2a)^2 (5b)}{\\pi (3a)^2 (3b)} = \\frac{4 \\times 5}{9 \\times 3} = \\frac{20}{27}\\)\n\nSo, the ratio of their volumes is 20 : 27.",
+      "finalAnswer": "20:27"
+    },
+    {
+      "number": 16,
+      "solution": "Cost price of all books = Rs 600.\n\nCost of \\(\\frac{1}{4}\\) of the books = \\(\\frac{1}{4} \\times 600 = \\) Rs 150.\n\nThese are sold at 5% loss: SP = \\(150 \\times \\frac{95}{100} = \\) Rs 142.50.\n\nFor a 10% gain on the whole, total SP = \\(600 \\times \\frac{110}{100} = \\) Rs 660.\n\nSP of the remaining books = \\(660 - 142.50 = \\) Rs 517.50.\n\nSo, he should sell the remaining books for Rs 517.50.",
+      "finalAnswer": "Rs 517.50"
+    },
+    {
+      "number": 17,
+      "solution": "LCM of 3, 5, 6, 8, 10, 12:\n\n\\(8 = 2^3\\), \\(12 = 2^2 \\times 3\\), \\(10 = 2 \\times 5\\), so LCM = \\(2^3 \\times 3 \\times 5 = 120\\).\n\nA number leaving remainder 2 with each is of the form \\(120k + 2\\).\n\nIt must be divisible by 13. Since \\(120 = 13 \\times 9 + 3\\), \\(120k + 2\\) leaves remainder \\(3k + 2\\) on division by 13 (reduced mod 13).\n\nTry \\(k = 1, 2, 3, \\ldots\\): \\(3k + 2 = 5, 8, 11, 14, 17, 20, 23, 26\\). The first multiple of 13 is 26, at \\(k = 8\\).\n\nNumber = \\(120 \\times 8 + 2 = 962\\).\n\nCheck: \\(962 = 13 \\times 74\\), and \\(962 - 2 = 960 = 120 \\times 8\\).\n\nSo, the least such number is 962.",
+      "finalAnswer": "962"
+    },
+    {
+      "number": 18,
+      "solution": "Value after \\(n\\) years = \\(P\\left(1 - \\frac{R}{100}\\right)^n\\)\n\n\\(= 50000 \\times \\left(1 - \\frac{10}{100}\\right)^2 = 50000 \\times \\frac{9}{10} \\times \\frac{9}{10}\\)\n\n\\(= 50000 \\times \\frac{81}{100} = 40500\\)\n\nSo, the value after 2 years will be Rs 40,500.",
+      "finalAnswer": "Rs 40,500"
+    },
+    {
+      "number": 19,
+      "solution": "Area of the square park = \\(50 \\times 50 = 2500\\ \\text{m}^2\\).\n\nEach flower bed is a quadrant (one quarter of a circle) of radius 7 m. Four quadrants together make one full circle.\n\nArea of 4 flower beds = \\(\\pi r^2 = \\frac{22}{7} \\times 7 \\times 7 = 154\\ \\text{m}^2\\).\n\nArea of remaining part = \\(2500 - 154 = 2346\\ \\text{m}^2\\).\n\nSo, the area of the remaining part of the park is \\(2346\\ \\text{m}^2\\).",
+      "finalAnswer": "2346 m²"
+    },
+    {
+      "number": 20,
+      "solution": "In each cross: (top + bottom) + (left \\(-\\) right) = centre.\n\nFigure 1: \\((18 + 17) + (9 - 6) = 35 + 3 = 38\\)\n\nFigure 2: \\((12 + 12) + (8 - 3) = 24 + 5 = 29\\)\n\nFigure 3: \\((13 + 8) + (11 - 7) = 21 + 4 = 25\\)\n\nSo, the missing number is 25.",
+      "finalAnswer": "25"
+    },
+    {
+      "number": 21,
+      "solution": "Reading \"two & ninth\" as two-ninths (\\(\\frac{2}{9}\\)).\n\nPhysics teachers = 17% of 1800 = \\(\\frac{17}{100} \\times 1800 = 306\\).\n\nFemale Physics teachers = \\(\\frac{2}{9} \\times 306 = 68\\).\n\nMale Physics teachers = \\(306 - 68 = 238\\).\n\nChemistry teachers = 23% of 1800 = \\(\\frac{23}{100} \\times 1800 = 414\\).\n\nRequired percentage = \\(\\frac{238}{414} \\times 100 \\approx 57.49\\%\\)\n\nSo, the number of male Physics teachers is approximately 57.5% (about 57%) of the Chemistry teachers.",
+      "finalAnswer": "about 57.5% (238 of 414)"
+    },
+    {
+      "number": 22,
+      "solution": "Each instalment is the amount of its own present value. Present value of an amount A paid after n years at 5% = \\(\\frac{A}{(1.05)^n}\\).\n\nFirst instalment (after 1 year): \\(\\frac{3000}{\\frac{21}{20}} = 3000 \\times \\frac{20}{21} = \\frac{20000}{7}\\)\n\nSecond instalment (after 2 years): \\(\\frac{2362.5}{\\left(\\frac{21}{20}\\right)^2} = 2362.5 \\times \\frac{400}{441} = \\frac{945000}{441} = \\frac{15000}{7}\\)\n\nSum borrowed = \\(\\frac{20000}{7} + \\frac{15000}{7} = \\frac{35000}{7} = 5000\\)\n\nCheck: after 1 year, \\(5000 \\times 1.05 = 5250\\); after paying 3000, 2250 is left. After the second year, \\(2250 \\times 1.05 = 2362.50\\), which is the second instalment.\n\nSo, he borrowed Rs 5000.",
+      "finalAnswer": "Rs 5000"
+    },
+    {
+      "number": 23,
+      "solution": "Reading \"one & third\" as one-third (it cannot be \\(1\\frac{1}{3}\\), since the curved surface is only part of the total surface).\n\nCSA = \\(\\frac{1}{3} \\times 462 = 154\\ \\text{m}^2\\).\n\nArea of the two circular ends = \\(462 - 154 = 308\\ \\text{m}^2\\), so \\(2\\pi r^2 = 308\\) and \\(\\pi r^2 = 154\\).\n\n\\(\\frac{22}{7} r^2 = 154\\), so \\(r^2 = 49\\) and \\(r = 7\\) m.\n\nCSA: \\(2\\pi r h = 154\\), so \\(2 \\times \\frac{22}{7} \\times 7 \\times h = 154\\), \\(44h = 154\\), \\(h = 3.5\\) m.\n\nVolume = \\(\\pi r^2 h = 154 \\times 3.5 = 539\\ \\text{m}^3\\).\n\nSo, the volume of the cylinder is \\(539\\ \\text{m}^3\\).",
+      "finalAnswer": "539 m³"
+    },
+    {
+      "number": 24,
+      "solution": "Water filled in the first 5 minutes = \\(5 \\times 1 = 5\\) litres.\n\nLeak rate = 10 ml per second = \\(10 \\times 60 = 600\\) ml per minute = 0.6 litre per minute.\n\nAfter the crack, net filling rate = \\(1 - 0.6 = 0.4\\) litre per minute.\n\nWater still needed = \\(15 - 5 = 10\\) litres.\n\nTime for this = \\(\\frac{10}{0.4} = 25\\) minutes.\n\nTotal time = \\(5 + 25 = 30\\) minutes.\n\nSo, the bucket is filled in 30 minutes (25 minutes after the crack appears).",
+      "finalAnswer": "30 minutes"
+    },
+    {
+      "number": 25,
+      "solution": "Let Ajay's money be Rs \\(x\\).\n\nDonated to school = \\(\\frac{x}{10}\\); remaining = \\(\\frac{9x}{10}\\).\n\nGiven to church = \\(\\frac{1}{6} \\times \\frac{9x}{10} = \\frac{3x}{20}\\); remaining = \\(\\frac{9x}{10} - \\frac{3x}{20} = \\frac{15x}{20} = \\frac{3x}{4}\\).\n\nEach child gets half of this: \\(\\frac{3x}{8}\\).\n\n\\(\\frac{3x}{8} = 75000\\), so \\(x = \\frac{75000 \\times 8}{3} = 200000\\).\n\nCheck: school 20,000; church \\(\\frac{1}{6} \\times 1,80,000 = 30,000\\); left 1,50,000, so each child gets 75,000.\n\nSo, Ajay originally had Rs 2,00,000.",
+      "finalAnswer": "Rs 2,00,000"
+    },
+    {
+      "number": 26,
+      "solution": "Capital after year 1 = \\(250000 \\times \\frac{105}{100} = 262500\\)\n\nCapital after year 2 = \\(262500 \\times \\frac{110}{100} = 288750\\)\n\nCapital after year 3 = \\(288750 \\times \\frac{112}{100} = 323400\\)\n\nTotal profit = \\(323400 - 250000 = 73400\\)\n\nSo, his total profit after 3 years is Rs 73,400.",
+      "finalAnswer": "Rs 73,400"
+    },
+    {
+      "number": 27,
+      "solution": "Total work in man-hours = \\(7 \\times 6 \\times 12 = 504\\) man-hours.\n\n3 men working 8 hours a day do \\(3 \\times 8 = 24\\) man-hours per day.\n\nDays needed = \\(\\frac{504}{24} = 21\\).\n\n(Using \\(M_1 H_1 D_1 = M_2 H_2 D_2\\): \\(7 \\times 6 \\times 12 = 3 \\times 8 \\times D_2\\), \\(D_2 = 21\\).)\n\nSo, 3 men will take 21 days.",
+      "finalAnswer": "21 days"
+    },
+    {
+      "number": 28,
+      "solution": "Total time = \\(8 + 6 + 4 + 4 + 2 = 24\\) hours. Central angle of each sector = \\(\\frac{\\text{hours}}{24} \\times 360^\\circ\\).\n\nSleep: \\(\\frac{8}{24} \\times 360^\\circ = 120^\\circ\\)\n\nSchool: \\(\\frac{6}{24} \\times 360^\\circ = 90^\\circ\\)\n\nHome work: \\(\\frac{4}{24} \\times 360^\\circ = 60^\\circ\\)\n\nPlay: \\(\\frac{4}{24} \\times 360^\\circ = 60^\\circ\\)\n\nOthers: \\(\\frac{2}{24} \\times 360^\\circ = 30^\\circ\\)\n\nCheck: \\(120 + 90 + 60 + 60 + 30 = 360^\\circ\\).\n\nSteps to draw: draw a circle of any convenient radius and one radius OA. With a protractor at O, mark \\(120^\\circ\\) from OA for Sleep, then \\(90^\\circ\\) from the new radius for School, then \\(60^\\circ\\) for Home work, \\(60^\\circ\\) for Play; the last sector left is \\(30^\\circ\\) for Others. Label each sector with its activity and give the chart a title.\n\nSo, the pie chart has sectors of 120°, 90°, 60°, 60° and 30°.",
+      "finalAnswer": "Pie chart with Sleep 120°, School 90°, Home work 60°, Play 60°, Others 30°"
+    },
+    {
+      "number": 29,
+      "solution": "As printed, the question cannot be done: even with both pipes open the whole time, in 9 minutes they fill only \\(9\\left(\\frac{1}{24} + \\frac{1}{32}\\right) = 9 \\times \\frac{7}{96} = \\frac{21}{32}\\) of the tank. Both pipes together need \\(\\frac{96}{7} \\approx 13.7\\) minutes, so the tank can never be full in 9 minutes. The time is most likely meant to be 18 minutes; that version is solved below.\n\nPipe A fills \\(\\frac{1}{24}\\) of the tank per minute; pipe B fills \\(\\frac{1}{32}\\).\n\nA runs for all 18 minutes: it fills \\(\\frac{18}{24} = \\frac{3}{4}\\) of the tank.\n\nB must fill the rest: \\(1 - \\frac{3}{4} = \\frac{1}{4}\\).\n\nLet B run for \\(t\\) minutes: \\(\\frac{t}{32} = \\frac{1}{4}\\), so \\(t = 8\\).\n\n(With 9 minutes as printed, the same method gives \\(t = 32 \\times \\frac{5}{8} = 20\\) minutes, which is more than 9, confirming the misprint.)\n\nSo, pipe B should be closed after 8 minutes.",
+      "finalAnswer": "8 minutes (reading the full time as 18 min; as printed, 9 min is impossible)",
+      "notice": "As printed the question cannot be done: even with both pipes open all the time, the tank takes 13 5/7 minutes to fill, so it cannot be full in 9 minutes. The solution takes the usual version of this question, where the tank is full in 18 minutes, which gives 8 minutes."
+    },
+    {
+      "number": 30,
+      "solution": "The third denominator is printed as \\(x^{c}\\, x^{-a} + 1\\) with a plus sign missing; following the pattern of the first two terms it is \\(x^{c} + x^{-a} + 1\\).\n\nGiven \\(a + b + c = 0\\), so \\(a + b = -c\\) and \\(-a - c = b\\).\n\nFirst term: multiply top and bottom by \\(x^{b}\\):\n\n\\(\\frac{1}{x^{a} + x^{-b} + 1} = \\frac{x^{b}}{x^{a+b} + 1 + x^{b}} = \\frac{x^{b}}{x^{-c} + 1 + x^{b}}\\)\n\nSecond term is already \\(\\frac{1}{x^{b} + x^{-c} + 1}\\).\n\nThird term: multiply top and bottom by \\(x^{-c}\\):\n\n\\(\\frac{1}{x^{c} + x^{-a} + 1} = \\frac{x^{-c}}{1 + x^{-a-c} + x^{-c}} = \\frac{x^{-c}}{1 + x^{b} + x^{-c}}\\)\n\nNow all three have the same denominator \\(x^{b} + x^{-c} + 1\\):\n\nSum = \\(\\frac{x^{b} + 1 + x^{-c}}{x^{b} + x^{-c} + 1} = 1\\)\n\nSo, the value is 1.",
+      "finalAnswer": "1",
+      "notice": "The third fraction is misprinted: its denominator should read x^c + x^-a + 1, following the pattern of the first two. With that, the value is 1."
+    }
+  ],
+  "reconciled": [
+    1,
+    9,
+    11,
+    21,
+    29
+  ],
+  "checked": [
+    4,
+    23,
+    30
+  ],
+  "open": []
+}
