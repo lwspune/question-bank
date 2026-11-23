@@ -126,9 +126,10 @@ describe("MHT-CET notes follow the Balbharati book order (Class XI, then XII)", 
     ]);
   });
 
-  it("places every MHT-CET and NEET chapter — a new one cannot ship unplaced", () => {
+  it("places every MHT-CET, NEET and MH HSC chapter — a new one cannot ship unplaced", () => {
+    const booked = ["mht-cet-", "neet-", "mh-hsc-12-"];
     const unplaced = NOTES_CHAPTERS.filter(
-      (c) => (c.subjectRoute.startsWith("mht-cet-") || c.subjectRoute.startsWith("neet-")) && !BOOK_POSITION[c.subjectRoute]?.[c.chapterSlug]
+      (c) => booked.some((p) => c.subjectRoute.startsWith(p)) && !BOOK_POSITION[c.subjectRoute]?.[c.chapterSlug]
     ).map((c) => `${c.subjectRoute}/${c.chapterSlug}`);
     expect(unplaced).toEqual([]);
   });

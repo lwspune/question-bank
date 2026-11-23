@@ -14035,6 +14035,376 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 0,
       "traps": 7
     }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "current-electricity",
+    "chipLabel": "Current Electricity notes",
+    "slugs": [
+      "hscp-ce-kirchhoff",
+      "hscp-ce-bridges",
+      "hscp-ce-potentiometer",
+      "hscp-ce-meters"
+    ],
+    "chapterName": "Current Electricity",
+    "formulaCounts": {
+      "formulas": 11,
+      "tables": 3,
+      "traps": 25
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "rotational-dynamics",
+    "chipLabel": "Rotational Dynamics notes",
+    "slugs": [
+      "hscp-rd-kinematics",
+      "hscp-rd-applications",
+      "hscp-rd-vertical",
+      "hscp-rd-moi",
+      "hscp-rd-axes",
+      "hscp-rd-torque",
+      "hscp-rd-conservation",
+      "hscp-rd-rolling"
+    ],
+    "chapterName": "Rotational Dynamics",
+    "formulaCounts": {
+      "formulas": 23,
+      "tables": 2,
+      "traps": 53
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "mechanical-properties-of-fluids",
+    "chipLabel": "Mechanical Properties of Fluids notes",
+    "slugs": [
+      "hscp-mf-pressure",
+      "hscp-mf-tension",
+      "hscp-mf-bubbles",
+      "hscp-mf-capillarity",
+      "hscp-mf-viscosity",
+      "hscp-mf-stokes",
+      "hscp-mf-bernoulli"
+    ],
+    "chapterName": "Mechanical Properties of Fluids",
+    "formulaCounts": {
+      "formulas": 16,
+      "tables": 2,
+      "traps": 49
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "kinetic-theory-of-gases",
+    "chipLabel": "Kinetic Theory of Gases and Radiation notes",
+    "slugs": [
+      "hscp-kt-gas",
+      "hscp-kt-pressure",
+      "hscp-kt-rms",
+      "hscp-kt-equipartition",
+      "hscp-kt-mayer",
+      "hscp-kt-absorption",
+      "hscp-kt-blackbody",
+      "hscp-kt-kirchhoff",
+      "hscp-kt-wien"
+    ],
+    "chapterName": "Kinetic Theory of Gases and Radiation",
+    "formulaCounts": {
+      "formulas": 17,
+      "tables": 7,
+      "traps": 44
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "thermodynamics",
+    "chipLabel": "Thermodynamics notes",
+    "slugs": [
+      "hscp-td-energy",
+      "hscp-td-firstlaw",
+      "hscp-td-states",
+      "hscp-td-processes",
+      "hscp-td-engines",
+      "hscp-td-refrigerators",
+      "hscp-td-secondlaw",
+      "hscp-td-carnot"
+    ],
+    "chapterName": "Thermodynamics",
+    "formulaCounts": {
+      "formulas": 13,
+      "tables": 6,
+      "traps": 41
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "superposition-of-waves",
+    "chipLabel": "Superposition of Waves notes",
+    "slugs": [
+      "hscp-sw-progressive",
+      "hscp-sw-superposition",
+      "hscp-sw-stationary",
+      "hscp-sw-harmonics",
+      "hscp-sw-pipes",
+      "hscp-sw-strings",
+      "hscp-sw-beats"
+    ],
+    "chapterName": "Superposition of Waves",
+    "formulaCounts": {
+      "formulas": 16,
+      "tables": 4,
+      "traps": 43
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "oscillations",
+    "chipLabel": "Oscillations notes",
+    "slugs": [
+      "hscp-os-linear",
+      "hscp-os-kinematics",
+      "hscp-os-period",
+      "hscp-os-phase",
+      "hscp-os-composition",
+      "hscp-os-energy",
+      "hscp-os-pendulum",
+      "hscp-os-angular",
+      "hscp-os-vibrations"
+    ],
+    "chapterName": "Oscillations",
+    "formulaCounts": {
+      "formulas": 20,
+      "tables": 2,
+      "traps": 46
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "wave-optics",
+    "chipLabel": "Wave Optics notes",
+    "slugs": [
+      "hscp-wo-huygens",
+      "hscp-wo-reflection",
+      "hscp-wo-polarization",
+      "hscp-wo-interference",
+      "hscp-wo-diffraction",
+      "hscp-wo-resolving"
+    ],
+    "chapterName": "Wave Optics",
+    "formulaCounts": {
+      "formulas": 12,
+      "tables": 5,
+      "traps": 39
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "electrostatics",
+    "chipLabel": "Electrostatics notes",
+    "slugs": [
+      "hscp-es-gauss",
+      "hscp-es-potential",
+      "hscp-es-equipotential",
+      "hscp-es-dipoles",
+      "hscp-es-conductors",
+      "hscp-es-capacitors",
+      "hscp-es-dielectric",
+      "hscp-es-energy"
+    ],
+    "chapterName": "Electrostatics",
+    "formulaCounts": {
+      "formulas": 19,
+      "tables": 4,
+      "traps": 48
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "magnetic-fields-due-to-electric-current",
+    "chipLabel": "Magnetic Fields due to Electric Current notes",
+    "slugs": [
+      "hscp-mg-charge",
+      "hscp-mg-cyclotron",
+      "hscp-mg-wire",
+      "hscp-mg-torque",
+      "hscp-mg-dipole",
+      "hscp-mg-field",
+      "hscp-mg-parallel",
+      "hscp-mg-ampere"
+    ],
+    "chapterName": "Magnetic Fields due to Electric Current",
+    "formulaCounts": {
+      "formulas": 18,
+      "tables": 4,
+      "traps": 44
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "magnetic-materials",
+    "chipLabel": "Magnetic Materials notes",
+    "slugs": [
+      "hscp-mm-torque",
+      "hscp-mm-origin",
+      "hscp-mm-magnetization",
+      "hscp-mm-classes",
+      "hscp-mm-hysteresis",
+      "hscp-mm-applications"
+    ],
+    "chapterName": "Magnetic Materials",
+    "formulaCounts": {
+      "formulas": 11,
+      "tables": 5,
+      "traps": 36
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "ac-circuits",
+    "chipLabel": "AC Circuits notes",
+    "slugs": [
+      "hscp-ac-rms",
+      "hscp-ac-phasors",
+      "hscp-ac-power",
+      "hscp-ac-lc",
+      "hscp-ac-resonance"
+    ],
+    "chapterName": "AC Circuits",
+    "formulaCounts": {
+      "formulas": 12,
+      "tables": 2,
+      "traps": 27
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "electromagnetic-induction",
+    "chipLabel": "Electromagnetic Induction notes",
+    "slugs": [
+      "hscp-em-faraday",
+      "hscp-em-lenz",
+      "hscp-em-motional",
+      "hscp-em-stationary",
+      "hscp-em-generators",
+      "hscp-em-eddy",
+      "hscp-em-self",
+      "hscp-em-mutual"
+    ],
+    "chapterName": "Electromagnetic Induction",
+    "formulaCounts": {
+      "formulas": 17,
+      "tables": 5,
+      "traps": 44
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "dual-nature-of-radiation-and-matter",
+    "chipLabel": "Dual Nature of Radiation and Matter notes",
+    "slugs": [
+      "hscp-dn-photoelectric",
+      "hscp-dn-einstein",
+      "hscp-dn-radiation",
+      "hscp-dn-photocell",
+      "hscp-dn-debroglie",
+      "hscp-dn-davisson"
+    ],
+    "chapterName": "Dual Nature of Radiation and Matter",
+    "formulaCounts": {
+      "formulas": 12,
+      "tables": 5,
+      "traps": 39
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "semiconductor-devices",
+    "chipLabel": "Semiconductor Devices notes",
+    "slugs": [
+      "hscp-sd-rectifier",
+      "hscp-sd-ripple",
+      "hscp-sd-zener",
+      "hscp-sd-optodiodes",
+      "hscp-sd-transistor",
+      "hscp-sd-amplifier",
+      "hscp-sd-gates"
+    ],
+    "chapterName": "Semiconductor Devices",
+    "formulaCounts": {
+      "formulas": 13,
+      "tables": 6,
+      "traps": 37
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "structure-of-atoms-and-nuclei",
+    "chipLabel": "Structure of Atoms and Nuclei notes",
+    "slugs": [
+      "hscp-an-rutherford",
+      "hscp-an-bohr",
+      "hscp-an-spectra",
+      "hscp-an-nucleus",
+      "hscp-an-binding",
+      "hscp-an-decays",
+      "hscp-an-halflife",
+      "hscp-an-fission"
+    ],
+    "chapterName": "Structure of Atoms and Nuclei",
+    "formulaCounts": {
+      "formulas": 16,
+      "tables": 4,
+      "traps": 45
+    }
   }
 ];
 
@@ -14738,4 +15108,20 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "mh-scholarship-7-intelligence/analogy": () => import("@/app/notes/mh-scholarship-7-intelligence/analogy/_data").then((m) => ({ chapter: m.MS7_ANALOGY_CHAPTER, notes: m.MS7_ANALOGY_NOTES })),
   "mh-scholarship-7-maths/algebraic-expressions": () => import("@/app/notes/mh-scholarship-7-maths/algebraic-expressions/_data").then((m) => ({ chapter: m.MS7_ALGEBRA_CHAPTER, notes: m.MS7_ALGEBRA_NOTES })),
   "mh-scholarship-7-maths/perimeter-area": () => import("@/app/notes/mh-scholarship-7-maths/perimeter-area/_data").then((m) => ({ chapter: m.MS7_AREA_CHAPTER, notes: m.MS7_AREA_NOTES })),
+  "mh-hsc-12-physics/current-electricity": () => import("@/app/notes/mh-hsc-12-physics/current-electricity/_data").then((m) => ({ chapter: m.HSC_PH_CE_CHAPTER, notes: m.HSC_PH_CE_NOTES })),
+  "mh-hsc-12-physics/rotational-dynamics": () => import("@/app/notes/mh-hsc-12-physics/rotational-dynamics/_data").then((m) => ({ chapter: m.HSC_PH_RD_CHAPTER, notes: m.HSC_PH_RD_NOTES })),
+  "mh-hsc-12-physics/mechanical-properties-of-fluids": () => import("@/app/notes/mh-hsc-12-physics/mechanical-properties-of-fluids/_data").then((m) => ({ chapter: m.HSC_PH_MF_CHAPTER, notes: m.HSC_PH_MF_NOTES })),
+  "mh-hsc-12-physics/kinetic-theory-of-gases": () => import("@/app/notes/mh-hsc-12-physics/kinetic-theory-of-gases/_data").then((m) => ({ chapter: m.HSC_PH_KT_CHAPTER, notes: m.HSC_PH_KT_NOTES })),
+  "mh-hsc-12-physics/thermodynamics": () => import("@/app/notes/mh-hsc-12-physics/thermodynamics/_data").then((m) => ({ chapter: m.HSC_PH_TD_CHAPTER, notes: m.HSC_PH_TD_NOTES })),
+  "mh-hsc-12-physics/superposition-of-waves": () => import("@/app/notes/mh-hsc-12-physics/superposition-of-waves/_data").then((m) => ({ chapter: m.HSC_PH_SW_CHAPTER, notes: m.HSC_PH_SW_NOTES })),
+  "mh-hsc-12-physics/oscillations": () => import("@/app/notes/mh-hsc-12-physics/oscillations/_data").then((m) => ({ chapter: m.HSC_PH_OS_CHAPTER, notes: m.HSC_PH_OS_NOTES })),
+  "mh-hsc-12-physics/wave-optics": () => import("@/app/notes/mh-hsc-12-physics/wave-optics/_data").then((m) => ({ chapter: m.HSC_PH_WO_CHAPTER, notes: m.HSC_PH_WO_NOTES })),
+  "mh-hsc-12-physics/electrostatics": () => import("@/app/notes/mh-hsc-12-physics/electrostatics/_data").then((m) => ({ chapter: m.HSC_PH_ES_CHAPTER, notes: m.HSC_PH_ES_NOTES })),
+  "mh-hsc-12-physics/magnetic-fields-due-to-electric-current": () => import("@/app/notes/mh-hsc-12-physics/magnetic-fields-due-to-electric-current/_data").then((m) => ({ chapter: m.HSC_PH_MG_CHAPTER, notes: m.HSC_PH_MG_NOTES })),
+  "mh-hsc-12-physics/magnetic-materials": () => import("@/app/notes/mh-hsc-12-physics/magnetic-materials/_data").then((m) => ({ chapter: m.HSC_PH_MM_CHAPTER, notes: m.HSC_PH_MM_NOTES })),
+  "mh-hsc-12-physics/ac-circuits": () => import("@/app/notes/mh-hsc-12-physics/ac-circuits/_data").then((m) => ({ chapter: m.HSC_PH_AC_CHAPTER, notes: m.HSC_PH_AC_NOTES })),
+  "mh-hsc-12-physics/electromagnetic-induction": () => import("@/app/notes/mh-hsc-12-physics/electromagnetic-induction/_data").then((m) => ({ chapter: m.HSC_PH_EM_CHAPTER, notes: m.HSC_PH_EM_NOTES })),
+  "mh-hsc-12-physics/dual-nature-of-radiation-and-matter": () => import("@/app/notes/mh-hsc-12-physics/dual-nature-of-radiation-and-matter/_data").then((m) => ({ chapter: m.HSC_PH_DN_CHAPTER, notes: m.HSC_PH_DN_NOTES })),
+  "mh-hsc-12-physics/semiconductor-devices": () => import("@/app/notes/mh-hsc-12-physics/semiconductor-devices/_data").then((m) => ({ chapter: m.HSC_PH_SD_CHAPTER, notes: m.HSC_PH_SD_NOTES })),
+  "mh-hsc-12-physics/structure-of-atoms-and-nuclei": () => import("@/app/notes/mh-hsc-12-physics/structure-of-atoms-and-nuclei/_data").then((m) => ({ chapter: m.HSC_PH_AN_CHAPTER, notes: m.HSC_PH_AN_NOTES })),
 };

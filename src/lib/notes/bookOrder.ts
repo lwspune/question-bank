@@ -203,6 +203,26 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "structure-of-atoms-and-nuclei": { cls: 12, chapterNo: 15, book: "XII 15 Structure of Atoms and Nuclei" },
     "semiconductor-devices": { cls: 12, chapterNo: 16, book: "XII 16 Semiconductor Devices" },
   },
+  // Maharashtra HSC Class 12 Physics (board notes, 2026-11-23): the Balbharati Std XII book,
+  // the same chapter numbers as the XII half of mht-cet-physics above. Add each chapter as it ships.
+  "mh-hsc-12-physics": {
+    "rotational-dynamics": { cls: 12, chapterNo: 1, book: "XII 1 Rotational Dynamics" },
+    "mechanical-properties-of-fluids": { cls: 12, chapterNo: 2, book: "XII 2 Mechanical Properties of Fluids" },
+    "kinetic-theory-of-gases": { cls: 12, chapterNo: 3, book: "XII 3 Kinetic Theory of Gases and Radiation" },
+    thermodynamics: { cls: 12, chapterNo: 4, book: "XII 4 Thermodynamics" },
+    oscillations: { cls: 12, chapterNo: 5, book: "XII 5 Oscillations" },
+    "superposition-of-waves": { cls: 12, chapterNo: 6, book: "XII 6 Superposition of Waves" },
+    "wave-optics": { cls: 12, chapterNo: 7, book: "XII 7 Wave Optics" },
+    electrostatics: { cls: 12, chapterNo: 8, book: "XII 8 Electrostatics" },
+    "current-electricity": { cls: 12, chapterNo: 9, book: "XII 9 Current Electricity" },
+    "magnetic-fields-due-to-electric-current": { cls: 12, chapterNo: 10, book: "XII 10 Magnetic Fields due to Electric Current" },
+    "magnetic-materials": { cls: 12, chapterNo: 11, book: "XII 11 Magnetic Materials" },
+    "electromagnetic-induction": { cls: 12, chapterNo: 12, book: "XII 12 Electromagnetic Induction" },
+    "ac-circuits": { cls: 12, chapterNo: 13, book: "XII 13 AC Circuits" },
+    "dual-nature-of-radiation-and-matter": { cls: 12, chapterNo: 14, book: "XII 14 Dual Nature of Radiation and Matter" },
+    "structure-of-atoms-and-nuclei": { cls: 12, chapterNo: 15, book: "XII 15 Structure of Atoms and Nuclei" },
+    "semiconductor-devices": { cls: 12, chapterNo: 16, book: "XII 16 Semiconductor Devices" },
+  },
   // JEE Mains Chemistry follows the rationalised NCERT books (the "NCERT" spine in
   // syllabus_concepts). Judgment calls: The p-Block Elements is no longer in either
   // rationalised book but stays on the JEE syllabus, so it sits before The d- and f-Block

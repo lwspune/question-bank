@@ -40,6 +40,8 @@ describe("notes routes stay lean", () => {
     "src/app/notes/_components/notesRoutes.tsx",
     "src/app/notes/_components/NotesChapterLanding.tsx",
     "src/app/notes/_components/NotesSubtopicPage.tsx",
+    // The /board chapter page links to its notes (2026-11-23) through the index, never the corpus.
+    "src/app/board/[examSlug]/[subjectRoute]/[chapterSlug]/page.tsx",
   ]) {
     it(`${path.basename(entry)}'s value imports never reach the notes registry or a chapter's content`, () => {
       const reached = [...collectImports(entry, read, { valueOnly: true })];
