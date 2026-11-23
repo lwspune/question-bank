@@ -255,6 +255,7 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "elements-of-group-16-17-and-18": { cls: 12, chapterNo: 7, book: "XII 7 Elements of Groups 16, 17 and 18" },
     "transition-and-inner-transition-elements": { cls: 12, chapterNo: 8, book: "XII 8 Transition and Inner Transition Elements" },
     "coordination-compounds": { cls: 12, chapterNo: 9, book: "XII 9 Coordination Compounds" },
+    "alcohols-phenols-and-ethers": { cls: 12, chapterNo: 11, book: "XII 11 Alcohols, Phenols and Ethers" },
   },
   // JEE Mains Chemistry follows the rationalised NCERT books (the "NCERT" spine in
   // syllabus_concepts). Judgment calls: The p-Block Elements is no longer in either
