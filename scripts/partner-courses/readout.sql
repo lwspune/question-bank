@@ -7,8 +7,11 @@
 -- over-count, said here rather than hidden. Staff (org members, platform
 -- admins) are left out. Bots never reach the table (the route skips them).
 --
--- Rule: 30+ different students tapping a course in 6 weeks -> take it to
--- Defence Mania as a commission or coupon deal.
+-- Rule: 30+ different students tapping a Defence Mania course in 6 weeks ->
+-- take it to Defence Mania as a commission or coupon deal. LWS Pune's own SPI
+-- course (spi-exam-lws) is read on its own row, never in that total. The
+-- Defence Mania ids are the `provider: "Defence Mania"` rows of
+-- src/lib/partnerCourses/courses.ts: add any new one to the list below.
 
 with staff as (
   select user_id from public.org_members
@@ -36,8 +39,9 @@ select course_id,
 from taps
 group by course_id, exam_slug
 union all
--- 2. All courses together: the number the rule reads.
-select 'ALL', null, count(*), count(distinct student), count(distinct user_id),
+-- 2. Defence Mania's courses together: the number the rule reads.
+select 'ALL DEFENCE MANIA', null, count(*), count(distinct student), count(distinct user_id),
        count(distinct student) - count(distinct user_id), min(created_at), max(created_at)
 from taps
+where course_id in ('cds-sikandar-3', 'afcat-1-2027-crash')
 order by 1;

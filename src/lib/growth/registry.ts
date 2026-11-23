@@ -1660,11 +1660,11 @@ export const EXPERIMENTS: readonly Experiment[] = [
     id: "partner-courses",
     title: "Partner courses on the store: do students want online courses?",
     change:
-      "The header's Ebooks button became Store, and /store got a shelf per exam for online courses of our offline partner Defence Mania: CDS 1 2027 Sikandar 3.0 (starts 5 Dec) and the AFCAT 1 2027 Crash Course (starts 20 Dec), ₹1,999 each. A card says it is the partner's course and opens their site in a new tab, through our own tap link (/api/partner-course/[id]) with UTM tags. A CDS or AFCAT student sees their course shelf first; others find it under their other exams.",
+      "The header's Ebooks button became Store, and /store got a shelf per exam for online courses of our offline partner Defence Mania: CDS 1 2027 Sikandar 3.0 (starts 5 Dec) and the AFCAT 1 2027 Crash Course (starts 20 Dec), ₹1,999 each. Also LWS Pune's own SPI course (₹99, no start date on its page), on an SPI shelf shown first to SPI, Maharashtra SSC Class 10 and CBSE Class 10 students. A card says who runs the course and that it opens their site in a new tab, through our own tap link (/api/partner-course/[id]) with UTM tags. A CDS or AFCAT student sees their course shelf first; others find it under their other exams.",
     why: "Students buy online courses (Testbook earns this way), and 75 of 88 tutoring Yes answers wanted ONLINE teaching. Linking a partner's courses tests that demand without recording any video. Nothing is agreed with the partner yet; taps decide whether to ask for a commission or coupon deal.",
     metric:
       "Taps per course from partner_course_clicks (migration 0269): different students (account when signed in, else the browser's qb_vid), signed in vs out, per exam, staff left out (scripts/partner-courses/readout.sql). For scale, store visits and ebook buy taps over the same weeks (ebook-store). The rename from Ebooks to Store went out the same day, so read header store taps (ebook_store_link_click) across that deploy with care",
-    rule: `Take it to Defence Mania as a commission or coupon deal if ${PARTNER_COURSE_TAPPERS_KEEP}+ different students tap a course in 6 weeks; below that, take the course shelves down and keep the Store name.`,
+    rule: `Take it to Defence Mania as a commission or coupon deal if ${PARTNER_COURSE_TAPPERS_KEEP}+ different students tap one of its courses in 6 weeks; below that, take its shelves down and keep the Store name. The SPI course is LWS Pune's own, so it is read on its own taps (and LWS's sales), not this rule.`,
     liveSince: "2026-11-23",
     windowDays: 42,
     readout: "partner-courses",
