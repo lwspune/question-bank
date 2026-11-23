@@ -23,7 +23,7 @@
  */
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join } from "node:path";
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 const envLocal = join(process.cwd(), ".env.local");
 if (existsSync(envLocal)) require("dotenv").config({ path: envLocal, override: true });
@@ -71,7 +71,7 @@ function locate(text: string): { file: string; enc: number; hits: number }[] {
   return out;
 }
 
-async function scan(db: ReturnType<typeof createClient>, exam: string, subject: string) {
+async function scan(db: SupabaseClient, exam: string, subject: string) {
   const { data: ex } = await db.from("exams").select("id").eq("name", exam).single();
   const { data: sb } = await db.from("subjects").select("id").eq("exam_id", ex!.id).eq("name", subject).single();
   const rows: { id: string; question_number: string; solution: string | null }[] = [];
