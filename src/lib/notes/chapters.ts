@@ -3456,6 +3456,11 @@ import {
   HSC_CH_TH_NOTES,
   HSC_CH_TH_SLUGS,
 } from "@/app/notes/mh-hsc-12-chemistry/chemical-thermodynamics/_data";
+import {
+  HSC_CH_CK_CHAPTER,
+  HSC_CH_CK_NOTES,
+  HSC_CH_CK_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/chemical-kinetics/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -11108,6 +11113,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HSC_CH_TH_CHAPTER,
     notes: HSC_CH_TH_NOTES,
     slugs: HSC_CH_TH_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "chemical-kinetics",
+    chipLabel: "Chemical Kinetics notes",
+    chapter: HSC_CH_CK_CHAPTER,
+    notes: HSC_CH_CK_NOTES,
+    slugs: HSC_CH_CK_SLUGS,
   },
 ];
 
