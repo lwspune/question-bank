@@ -14055,6 +14055,150 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 3,
       "traps": 25
     }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "rotational-dynamics",
+    "chipLabel": "Rotational Dynamics notes",
+    "slugs": [
+      "hscp-rd-kinematics",
+      "hscp-rd-applications",
+      "hscp-rd-vertical",
+      "hscp-rd-moi",
+      "hscp-rd-axes",
+      "hscp-rd-torque",
+      "hscp-rd-conservation",
+      "hscp-rd-rolling"
+    ],
+    "chapterName": "Rotational Dynamics",
+    "formulaCounts": {
+      "formulas": 23,
+      "tables": 2,
+      "traps": 53
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "mechanical-properties-of-fluids",
+    "chipLabel": "Mechanical Properties of Fluids notes",
+    "slugs": [
+      "hscp-mf-pressure",
+      "hscp-mf-tension",
+      "hscp-mf-bubbles",
+      "hscp-mf-capillarity",
+      "hscp-mf-viscosity",
+      "hscp-mf-stokes",
+      "hscp-mf-bernoulli"
+    ],
+    "chapterName": "Mechanical Properties of Fluids",
+    "formulaCounts": {
+      "formulas": 16,
+      "tables": 2,
+      "traps": 49
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "kinetic-theory-of-gases",
+    "chipLabel": "Kinetic Theory of Gases and Radiation notes",
+    "slugs": [
+      "hscp-kt-gas",
+      "hscp-kt-pressure",
+      "hscp-kt-rms",
+      "hscp-kt-equipartition",
+      "hscp-kt-mayer",
+      "hscp-kt-absorption",
+      "hscp-kt-blackbody",
+      "hscp-kt-kirchhoff",
+      "hscp-kt-wien"
+    ],
+    "chapterName": "Kinetic Theory of Gases and Radiation",
+    "formulaCounts": {
+      "formulas": 17,
+      "tables": 7,
+      "traps": 44
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "thermodynamics",
+    "chipLabel": "Thermodynamics notes",
+    "slugs": [
+      "hscp-td-energy",
+      "hscp-td-firstlaw",
+      "hscp-td-states",
+      "hscp-td-processes",
+      "hscp-td-engines",
+      "hscp-td-refrigerators",
+      "hscp-td-secondlaw",
+      "hscp-td-carnot"
+    ],
+    "chapterName": "Thermodynamics",
+    "formulaCounts": {
+      "formulas": 13,
+      "tables": 6,
+      "traps": 41
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "superposition-of-waves",
+    "chipLabel": "Superposition of Waves notes",
+    "slugs": [
+      "hscp-sw-progressive",
+      "hscp-sw-superposition",
+      "hscp-sw-stationary",
+      "hscp-sw-harmonics",
+      "hscp-sw-pipes",
+      "hscp-sw-strings",
+      "hscp-sw-beats"
+    ],
+    "chapterName": "Superposition of Waves",
+    "formulaCounts": {
+      "formulas": 16,
+      "tables": 4,
+      "traps": 43
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "oscillations",
+    "chipLabel": "Oscillations notes",
+    "slugs": [
+      "hscp-os-linear",
+      "hscp-os-kinematics",
+      "hscp-os-period",
+      "hscp-os-phase",
+      "hscp-os-composition",
+      "hscp-os-energy",
+      "hscp-os-pendulum",
+      "hscp-os-angular",
+      "hscp-os-vibrations"
+    ],
+    "chapterName": "Oscillations",
+    "formulaCounts": {
+      "formulas": 20,
+      "tables": 2,
+      "traps": 46
+    }
   }
 ];
 
@@ -14759,4 +14903,10 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "mh-scholarship-7-maths/algebraic-expressions": () => import("@/app/notes/mh-scholarship-7-maths/algebraic-expressions/_data").then((m) => ({ chapter: m.MS7_ALGEBRA_CHAPTER, notes: m.MS7_ALGEBRA_NOTES })),
   "mh-scholarship-7-maths/perimeter-area": () => import("@/app/notes/mh-scholarship-7-maths/perimeter-area/_data").then((m) => ({ chapter: m.MS7_AREA_CHAPTER, notes: m.MS7_AREA_NOTES })),
   "mh-hsc-12-physics/current-electricity": () => import("@/app/notes/mh-hsc-12-physics/current-electricity/_data").then((m) => ({ chapter: m.HSC_PH_CE_CHAPTER, notes: m.HSC_PH_CE_NOTES })),
+  "mh-hsc-12-physics/rotational-dynamics": () => import("@/app/notes/mh-hsc-12-physics/rotational-dynamics/_data").then((m) => ({ chapter: m.HSC_PH_RD_CHAPTER, notes: m.HSC_PH_RD_NOTES })),
+  "mh-hsc-12-physics/mechanical-properties-of-fluids": () => import("@/app/notes/mh-hsc-12-physics/mechanical-properties-of-fluids/_data").then((m) => ({ chapter: m.HSC_PH_MF_CHAPTER, notes: m.HSC_PH_MF_NOTES })),
+  "mh-hsc-12-physics/kinetic-theory-of-gases": () => import("@/app/notes/mh-hsc-12-physics/kinetic-theory-of-gases/_data").then((m) => ({ chapter: m.HSC_PH_KT_CHAPTER, notes: m.HSC_PH_KT_NOTES })),
+  "mh-hsc-12-physics/thermodynamics": () => import("@/app/notes/mh-hsc-12-physics/thermodynamics/_data").then((m) => ({ chapter: m.HSC_PH_TD_CHAPTER, notes: m.HSC_PH_TD_NOTES })),
+  "mh-hsc-12-physics/superposition-of-waves": () => import("@/app/notes/mh-hsc-12-physics/superposition-of-waves/_data").then((m) => ({ chapter: m.HSC_PH_SW_CHAPTER, notes: m.HSC_PH_SW_NOTES })),
+  "mh-hsc-12-physics/oscillations": () => import("@/app/notes/mh-hsc-12-physics/oscillations/_data").then((m) => ({ chapter: m.HSC_PH_OS_CHAPTER, notes: m.HSC_PH_OS_NOTES })),
 };

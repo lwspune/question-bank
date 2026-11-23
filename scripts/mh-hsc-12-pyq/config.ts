@@ -259,15 +259,18 @@ const PHYSICS: Record<string, Chapter> = {
     docx: PHY("5. Oscillations.docx"),
     note: phyNote("Oscillations"),
     // The compilation carries a "Free, Forced, and Damped Vibrations" section
-    // and a "Systems of Springs" section; neither has a DB subtopic, because the
-    // textbook lane found §5.14/§5.15 taught and examined ZERO times in the
-    // Balbharati exercises. Those questions go to the nearest fit here.
+    // and a "Systems of Springs" section. Springs has no DB subtopic; its
+    // questions go to the nearest fit here. Vibrations got one from the paper
+    // pipeline (2023 and 2026 papers), so the compilation's two vibrations rows
+    // (#24 damped amplitude 2017, #25 free vs forced 2023) moved there on
+    // 2026-11-23 for the board notes, which teach it as its own page.
     subtopics: [
       "Acceleration, Velocity and Displacement in S.H.M.",
       "Amplitude, Period and Frequency of S.H.M.",
       "Angular S.H.M. and Magnet Vibrating in a Magnetic Field",
       "Composition of Two S.H.M.s",
       "Energy of a Particle Performing S.H.M.",
+      "Free, Forced and Damped Vibrations",
       "Periodic Motion and Linear S.H.M.",
       "Reference Circle, Phase and Graphical Representation",
       "Simple Pendulum",

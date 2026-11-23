@@ -703,7 +703,13 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "mh-scholarship-7-intelligence/analogy",
   "mh-scholarship-7-maths/algebraic-expressions",
   "mh-scholarship-7-maths/perimeter-area",
-  "mh-hsc-12-physics/current-electricity"
+  "mh-hsc-12-physics/current-electricity",
+  "mh-hsc-12-physics/rotational-dynamics",
+  "mh-hsc-12-physics/mechanical-properties-of-fluids",
+  "mh-hsc-12-physics/kinetic-theory-of-gases",
+  "mh-hsc-12-physics/thermodynamics",
+  "mh-hsc-12-physics/superposition-of-waves",
+  "mh-hsc-12-physics/oscillations"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1407,4 +1413,10 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "mh-scholarship-7-maths/algebraic-expressions": () => import("@/app/notes/mh-scholarship-7-maths/algebraic-expressions/_data").then((m) => m.MS7_ALGEBRA_NOTES),
   "mh-scholarship-7-maths/perimeter-area": () => import("@/app/notes/mh-scholarship-7-maths/perimeter-area/_data").then((m) => m.MS7_AREA_NOTES),
   "mh-hsc-12-physics/current-electricity": () => import("@/app/notes/mh-hsc-12-physics/current-electricity/_data").then((m) => m.HSC_PH_CE_NOTES),
+  "mh-hsc-12-physics/rotational-dynamics": () => import("@/app/notes/mh-hsc-12-physics/rotational-dynamics/_data").then((m) => m.HSC_PH_RD_NOTES),
+  "mh-hsc-12-physics/mechanical-properties-of-fluids": () => import("@/app/notes/mh-hsc-12-physics/mechanical-properties-of-fluids/_data").then((m) => m.HSC_PH_MF_NOTES),
+  "mh-hsc-12-physics/kinetic-theory-of-gases": () => import("@/app/notes/mh-hsc-12-physics/kinetic-theory-of-gases/_data").then((m) => m.HSC_PH_KT_NOTES),
+  "mh-hsc-12-physics/thermodynamics": () => import("@/app/notes/mh-hsc-12-physics/thermodynamics/_data").then((m) => m.HSC_PH_TD_NOTES),
+  "mh-hsc-12-physics/superposition-of-waves": () => import("@/app/notes/mh-hsc-12-physics/superposition-of-waves/_data").then((m) => m.HSC_PH_SW_NOTES),
+  "mh-hsc-12-physics/oscillations": () => import("@/app/notes/mh-hsc-12-physics/oscillations/_data").then((m) => m.HSC_PH_OS_NOTES),
 };

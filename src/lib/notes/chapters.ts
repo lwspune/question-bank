@@ -3286,6 +3286,36 @@ import {
   HSC_PH_CE_NOTES,
   HSC_PH_CE_SLUGS,
 } from "@/app/notes/mh-hsc-12-physics/current-electricity/_data";
+import {
+  HSC_PH_RD_CHAPTER,
+  HSC_PH_RD_NOTES,
+  HSC_PH_RD_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/rotational-dynamics/_data";
+import {
+  HSC_PH_MF_CHAPTER,
+  HSC_PH_MF_NOTES,
+  HSC_PH_MF_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/mechanical-properties-of-fluids/_data";
+import {
+  HSC_PH_KT_CHAPTER,
+  HSC_PH_KT_NOTES,
+  HSC_PH_KT_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/kinetic-theory-of-gases/_data";
+import {
+  HSC_PH_TD_CHAPTER,
+  HSC_PH_TD_NOTES,
+  HSC_PH_TD_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/thermodynamics/_data";
+import {
+  HSC_PH_SW_CHAPTER,
+  HSC_PH_SW_NOTES,
+  HSC_PH_SW_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/superposition-of-waves/_data";
+import {
+  HSC_PH_OS_CHAPTER,
+  HSC_PH_OS_NOTES,
+  HSC_PH_OS_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/oscillations/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -10564,6 +10594,72 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HSC_PH_CE_CHAPTER,
     notes: HSC_PH_CE_NOTES,
     slugs: HSC_PH_CE_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "rotational-dynamics",
+    chipLabel: "Rotational Dynamics notes",
+    chapter: HSC_PH_RD_CHAPTER,
+    notes: HSC_PH_RD_NOTES,
+    slugs: HSC_PH_RD_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "mechanical-properties-of-fluids",
+    chipLabel: "Mechanical Properties of Fluids notes",
+    chapter: HSC_PH_MF_CHAPTER,
+    notes: HSC_PH_MF_NOTES,
+    slugs: HSC_PH_MF_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "kinetic-theory-of-gases",
+    chipLabel: "Kinetic Theory of Gases and Radiation notes",
+    chapter: HSC_PH_KT_CHAPTER,
+    notes: HSC_PH_KT_NOTES,
+    slugs: HSC_PH_KT_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "thermodynamics",
+    chipLabel: "Thermodynamics notes",
+    chapter: HSC_PH_TD_CHAPTER,
+    notes: HSC_PH_TD_NOTES,
+    slugs: HSC_PH_TD_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "superposition-of-waves",
+    chipLabel: "Superposition of Waves notes",
+    chapter: HSC_PH_SW_CHAPTER,
+    notes: HSC_PH_SW_NOTES,
+    slugs: HSC_PH_SW_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "oscillations",
+    chipLabel: "Oscillations notes",
+    chapter: HSC_PH_OS_CHAPTER,
+    notes: HSC_PH_OS_NOTES,
+    slugs: HSC_PH_OS_SLUGS,
   },
 ];
 

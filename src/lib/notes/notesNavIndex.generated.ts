@@ -4903,5 +4903,47 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "HSC Physics",
     "chapterSlug": "current-electricity",
     "subtopicCount": 4
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "rotational-dynamics",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "mechanical-properties-of-fluids",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "kinetic-theory-of-gases",
+    "subtopicCount": 9
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "thermodynamics",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "superposition-of-waves",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "oscillations",
+    "subtopicCount": 9
   }
 ];

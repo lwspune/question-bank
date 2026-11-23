@@ -206,6 +206,12 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
   // Maharashtra HSC Class 12 Physics (board notes, 2026-11-23): the Balbharati Std XII book,
   // the same chapter numbers as the XII half of mht-cet-physics above. Add each chapter as it ships.
   "mh-hsc-12-physics": {
+    "rotational-dynamics": { cls: 12, chapterNo: 1, book: "XII 1 Rotational Dynamics" },
+    "mechanical-properties-of-fluids": { cls: 12, chapterNo: 2, book: "XII 2 Mechanical Properties of Fluids" },
+    "kinetic-theory-of-gases": { cls: 12, chapterNo: 3, book: "XII 3 Kinetic Theory of Gases and Radiation" },
+    thermodynamics: { cls: 12, chapterNo: 4, book: "XII 4 Thermodynamics" },
+    oscillations: { cls: 12, chapterNo: 5, book: "XII 5 Oscillations" },
+    "superposition-of-waves": { cls: 12, chapterNo: 6, book: "XII 6 Superposition of Waves" },
     "current-electricity": { cls: 12, chapterNo: 9, book: "XII 9 Current Electricity" },
   },
   // JEE Mains Chemistry follows the rationalised NCERT books (the "NCERT" spine in
