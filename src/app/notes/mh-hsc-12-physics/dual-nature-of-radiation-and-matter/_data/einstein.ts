@@ -6,7 +6,7 @@ export const HSC_PH_DN_EINSTEIN_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Light as photons of energy hν, Einstein's photoelectric equation KEmax = hν − φ₀, the test for whether a metal will emit, and the stopping potential with its straight-line graph against frequency.",
   whyItMatters:
-    "19 questions, nine of them from board papers from 2016 to 2025. The board asks the energy of a photon (2016), whether a metal will emit for given light by finding the threshold and incident frequencies (2016, 2017, 2018, 2020), the stopping potential and maximum kinetic energy (2023, 2024), what doubling the frequency does (2024), and to state Einstein's equation with the meaning of each term (2025). The textbook adds finding Planck's constant from a graph or two readings, a work function from a stopping potential, and photoelectrons in a magnetic field.",
+    "19 questions, ten of them from board papers from 2016 to 2026. The board asks the energy of a photon (2016), the ratio of the wavelengths of photons of 5 eV and 2.5 eV (2026), whether a metal will emit for given light by finding the threshold and incident frequencies (2016, 2017, 2018, 2020), the stopping potential and maximum kinetic energy (2023, 2024), what doubling the frequency does (2024), and to state Einstein's equation with the meaning of each term (2025). The textbook adds finding Planck's constant from a graph or two readings, a work function from a stopping potential, and photoelectrons in a magnetic field.",
   concepts: [
     {
       kind: "formula" as const,

@@ -6,7 +6,7 @@ export const HSC_PH_MG_CHARGE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The force F = q(v × B) that a magnetic field exerts on a moving charge, its direction, the Lorentz force, the tesla, and why a magnetic field never does work.",
   whyItMatters:
-    "7 questions. Two were set in board papers, both one-mark answers: the work done by a magnetic field perpendicular to the velocity of a charge (2025) and the force on a stationary charge (2026). The textbook adds the direction of the force on a negative charge, the sign of a charge from its path, the path of a proton in a field, and distinguishing the electric and magnetic forces.",
+    "8 questions. Three were set in board papers, all one-mark answers: the unit Wb m⁻², which is the tesla (2022), the work done by a magnetic field perpendicular to the velocity of a charge (2025) and the force on a stationary charge (2026). The textbook adds the direction of the force on a negative charge, the sign of a charge from its path, the path of a proton in a field, and distinguishing the electric and magnetic forces.",
   concepts: [
     {
       kind: "formula" as const,

@@ -6,7 +6,7 @@ export const HSC_PH_AC_RESONANCE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The frequency at which the inductive and capacitive reactances cancel, what a series (acceptor) and a parallel (rejector) circuit do at that frequency, and the Q factor that measures how sharp the resonance is.",
   whyItMatters:
-    "4 questions. Three came from board papers: derive the resonant frequency of a series resonant circuit (2026), calculate it for 0.1 H and 25 μF in series (2022), and state the conditions for parallel resonance and derive its resonant frequency (2019). The textbook adds the impedance and current of a series circuit at resonance. The Q factor was asked once, in 2024, as half of a question filed on the power page.",
+    "5 questions. Four came from board papers: derive the resonant frequency of a series resonant circuit (2026), calculate it for 0.1 H and 25 μF in series (2022), state the conditions for parallel resonance and derive its resonant frequency (2019), and find the resonant frequency of a parallel LC circuit of 5 H and 5 μF (2020). The textbook adds the impedance and current of a series circuit at resonance. The Q factor was asked once, in 2024, as half of a question filed on the power page.",
   concepts: [
     {
       kind: "formula" as const,

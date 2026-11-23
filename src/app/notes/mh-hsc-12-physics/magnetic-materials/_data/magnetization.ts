@@ -6,7 +6,7 @@ export const HSC_PH_MM_MAGNETIZATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The quantities that describe a material in a magnetic field: magnetization M, magnetic intensity H, susceptibility χ and permeability μ, and the relations B = μ0(H + M) and μr = 1 + χ.",
   whyItMatters:
-    "13 questions. Nine were set in board papers, and six of those ask you to define magnetization, most with its unit and dimensions and some with H and χ as well (2018, 2022, 2023, 2024, 2025, 2026). The others ask for the relation between permeability and susceptibility (2026), the rise in field when lithium fills a toroid (2024), a magnet's length from its magnetization (2026) and a Curie's law sum (2026). The textbook adds sums on B, μr, χ and M for a rod and a plate.",
+    "12 questions. Eight were set in board papers, and six of those ask you to define magnetization, most with its unit and dimensions and some with H and χ as well (2018, 2022, 2023, 2024, 2025, 2026). The others ask for the relation between permeability and susceptibility (2026), the rise in field when lithium fills a toroid (2024) and a magnet's length from its magnetization (2026). The textbook adds sums on B, μr, χ and M for a rod and a plate.",
   concepts: [
     {
       kind: "formula" as const,

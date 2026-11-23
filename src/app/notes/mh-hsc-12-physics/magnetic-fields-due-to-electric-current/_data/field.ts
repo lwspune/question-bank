@@ -6,7 +6,7 @@ export const HSC_PH_MG_FIELD_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The Biot-Savart law for the field of a current element, and the fields it gives for a long straight wire, a circular arc, the centre of a coil and a point on the axis of a loop.",
   whyItMatters:
-    "19 questions, the largest page of the chapter. Eight were set in board papers: explain the Biot-Savart law (twice in 2024, once with a diagram), derive the field at the centre of a circular arc (2025, 2026) or state it and find the field at the centre of a loop (2025), and three short items: the unit Wb m⁻² (2022), the field 3 cm from a long wire (2022) and the field at the centre of a 200-turn coil (2024). The textbook adds the law applied to a long wire and to the axis of a loop, wires with arcs, two parallel wires and the field on the axis of a loop.",
+    "18 questions, the largest page of the chapter. Seven were set in board papers: explain the Biot-Savart law (twice in 2024, once with a diagram), derive the field at the centre of a circular arc (2025, 2026) or state it and find the field at the centre of a loop (2025), and two short items: the field 3 cm from a long wire (2022) and the field at the centre of a 200-turn coil (2024). The textbook adds the law applied to a long wire and to the axis of a loop, wires with arcs, two parallel wires and the field on the axis of a loop.",
   concepts: [
     {
       kind: "formula" as const,

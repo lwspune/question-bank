@@ -6,7 +6,7 @@ export const HSC_PH_MM_CLASSES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The three kinds of magnetic material, how to tell them apart, Curie's law for paramagnetic materials, domain theory of ferromagnetism and the Curie temperature.",
   whyItMatters:
-    "15 questions. Nine were set in board papers: distinguish paramagnetic from ferromagnetic substances (2016) and diamagnetic from paramagnetic (2024 and 2025), explain ferromagnetism by domain theory (2025), define the Curie temperature (2024) and say what happens above it (2019 and 2025), two Curie's law sums (2016 and 2019), and an MCQ on water placed between two magnet poles (2017). The textbook adds Curie's law, a paramagnetic gas that cannot reach saturation, and the atoms and moment of one iron domain.",
+    "16 questions. Ten were set in board papers: distinguish paramagnetic from ferromagnetic substances (2016) and diamagnetic from paramagnetic (2024 and 2025), explain ferromagnetism by domain theory (2025), define the Curie temperature (2024) and say what happens above it (2019 and 2025), three Curie's law sums (2016, 2019 and 2026), and an MCQ on water placed between two magnet poles (2017). The textbook adds Curie's law, a paramagnetic gas that cannot reach saturation, and the atoms and moment of one iron domain.",
   concepts: [
     {
       kind: "reference" as const,

@@ -6,7 +6,7 @@ export const HSC_PH_AC_LC_NOTE: SubtopicNote = {
   oneLineDefinition:
     "How a charged capacitor and an inductor pass energy back and forth, setting up electrical oscillations at the natural frequency 1/(2π√LC).",
   whyItMatters:
-    "5 questions. One came from a board paper: the resonant frequency of a parallel LC circuit of 5 H and 5 μF (2020). The textbook adds the energy sums (the largest current when a charged capacitor discharges through a coil, and the inductance that gives a set current), the capacitance needed for a set frequency, and the reactance of an LC circuit at its natural frequency.",
+    "4 questions, all from the textbook (the board's parallel LC frequency question of 2020 is on the Resonance page): the energy sums (the largest current when a charged capacitor discharges through a coil, and the inductance that gives a set current), the capacitance needed for a set frequency, and the reactance of an LC circuit at its natural frequency.",
   concepts: [
     {
       kind: "formula" as const,
@@ -90,10 +90,10 @@ export const HSC_PH_AC_LC_NOTE: SubtopicNote = {
       },
       practiceSet: [
         { prompt: "The inductance of an LC circuit is made 9 times as large. What happens to its natural frequency?", answer: "It becomes one third" },
-        { prompt: "At the natural frequency of a series LC circuit, what is its net reactance?", answer: "Zero, since \\(X_L = X_C\\)" },
+        { prompt: "An LC circuit has L = 1 H and C = 1 μF. Find its natural angular frequency.", answer: "\\(\\omega = 1/\\sqrt{LC} = 1000\\) rad/s" },
         { prompt: "Write the condition that fixes the natural frequency of an LC circuit.", answer: "\\(X_L = X_C\\), that is \\(\\omega L = 1/(\\omega C)\\)" },
       ],
-      pyqExampleId: "7bab6c50-2ce2-48b0-8a44-a88f606cb7cb",
+      pyqExampleId: "846a5484-b0af-4bbc-ad30-549c7a667db4",
       traps: [
         {
           title: "Forgetting the square root",

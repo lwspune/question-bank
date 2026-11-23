@@ -6,7 +6,7 @@ export const HSC_PH_DN_RADIATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Why radiation needs both a wave picture and a particle picture, the momentum of a photon (p = E/c = h/λ), the properties of photons, and how many photons a source sends out each second.",
   whyItMatters:
-    "5 questions. Two were set in board papers: the momentum of a photon (2018) and the number of photons from a 0.1 W source of 4000 Å light (2025), both as multiple choice. The textbook adds where E = pc is valid, red against blue photons from sources of equal power, and what wave-particle duality means and where it applies.",
+    "6 questions. Two were set in board papers: the momentum of a photon (2018) and the number of photons from a 0.1 W source of 4000 Å light (2025), both as multiple choice. The textbook adds the same photon count worked in full (Solved Ex. 14.3), where E = pc is valid, red against blue photons from sources of equal power, and what wave-particle duality means and where it applies.",
   concepts: [
     {
       kind: "formula" as const,

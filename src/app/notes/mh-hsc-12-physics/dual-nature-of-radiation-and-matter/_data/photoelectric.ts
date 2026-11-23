@@ -6,7 +6,7 @@ export const HSC_PH_DN_PHOTOELECTRIC_NOTE: SubtopicNote = {
   oneLineDefinition:
     "What the photoelectric effect is, the terms the board asks you to define (threshold frequency, work function, stopping potential), the experimental set-up, and why the wave theory failed to explain what was seen.",
   whyItMatters:
-    "16 questions, ten of them from board papers from 2019 to 2026, three in 2026 alone. The board asks you to define the effect, the stopping potential, the threshold frequency and the work function (2019, 2020, 2026), to describe the experimental set-up with a neat labelled diagram (2023, and twice in 2024), whether red light is needed (2022), which metal works with visible light (2025), and what happens to the photocurrent when the frequency is raised (2026). The textbook adds microwaves, red light, the metal of Table 14.1 that needs the highest frequency, where extra intensity goes, and the wave theory's estimate of the delay.",
+    "15 questions, nine of them from board papers from 2019 to 2026, two in 2026 alone. The board asks you to define the effect, the stopping potential, the threshold frequency and the work function (2019, 2020, 2026), to describe the experimental set-up with a neat labelled diagram (2023, and twice in 2024), whether red light is needed (2022), which metal works with visible light (2025), and what happens to the photocurrent when the frequency is raised (2026). The textbook adds microwaves, red light, the metal of Table 14.1 that needs the highest frequency, where extra intensity goes, and the wave theory's estimate of the delay.",
   concepts: [
     {
       kind: "formula" as const,
