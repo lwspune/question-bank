@@ -25,7 +25,7 @@ import {
 } from "docx";
 import JSZip from "jszip";
 import type { QuestionRow } from "@/lib/questions/query";
-import { parseTableBlocks, type TableBlock } from "@/components/math/parseTableBlocks";
+import { parseTableBlocks, type CodeBlock, type TableBlock } from "@/components/math/parseTableBlocks";
 import { textWithMathToOmmlSegments } from "./ommlBuilder";
 import { readImageDimensions, fitWithinBox } from "./imageDimensions";
 import { groupBySet, type Group } from "./groupBySet";
@@ -561,7 +561,7 @@ function questionParagraphs(
         out.push(new Paragraph({ ...lead.props, children: [...lead.runs] }));
         numbered = true;
       }
-      out.push(docxTable(b, builder));
+      out.push(...blockOut(b, builder));
     }
   }
   if (!numbered) {
@@ -661,7 +661,7 @@ function solutionBlocks(
         out.push(new Paragraph({ ...numbering, ...paraProps(), children: [...leadRuns, labelRun()] }));
         labelled = true;
       }
-      out.push(docxTable(b, builder));
+      out.push(...blockOut(b, builder));
     }
   }
   if (!labelled) {
@@ -676,6 +676,28 @@ function solutionBlocks(
     );
   }
   return out;
+}
+
+/**
+ * A non-prose block: a pipe-table as a native Word table, fenced code as monospace lines
+ * (one paragraph per line, its spaces kept). Every block path in this file goes through
+ * here, so a new block kind cannot reach one path and miss another (tests/code-blocks).
+ */
+function blockOut(block: TableBlock | CodeBlock, builder: Builder, indent?: number): (Paragraph | Table)[] {
+  return block.kind === "table" ? [docxTable(block, builder)] : codeParagraphs(block, indent);
+}
+
+/** Code exactly as written: no maths, no bold, no table reading. Consolas at 9.5 pt. */
+function codeParagraphs(block: CodeBlock, indent = 0): Paragraph[] {
+  return block.code.split("\n").map(
+    (line) =>
+      new Paragraph({
+        indent: { left: indent + 284 },
+        spacing: { before: 0, after: 0 },
+        keepLines: true,
+        children: line ? [new TextRun({ text: line, font: "Consolas", size: 19 })] : [],
+      })
+  );
 }
 
 function docxTable(block: TableBlock, builder: Builder): Table {
@@ -832,7 +854,7 @@ function passageBanner(passage: string, labelText: string, builder: Builder): (P
   // context and the stem already had; the contract is pinned by
   // tests/docx-solution-table.test.ts.
   const blocks = parseTableBlocks(text);
-  if (!blocks.some((b) => b.kind === "table")) {
+  if (!blocks.some((b) => b.kind !== "text")) {
     return [new Paragraph({ indent: { left: 0 }, children: [label, ...mathRuns(text, builder)] })];
   }
 
@@ -854,7 +876,7 @@ function passageBanner(passage: string, labelText: string, builder: Builder): (P
         out.push(new Paragraph({ indent: { left: 0 }, children: [label] }));
         labelPlaced = true;
       }
-      out.push(docxTable(b, builder));
+      out.push(...blockOut(b, builder));
     }
   }
   return out;
@@ -1061,7 +1083,7 @@ function richBlocks(
         out.push(new Paragraph({ ...props, children: [lead] }));
         ledIn = true;
       }
-      out.push(docxTable(b, builder));
+      out.push(...blockOut(b, builder));
     }
   }
   if (!out.length && lead) out.push(new Paragraph({ children: [lead] }));

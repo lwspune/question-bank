@@ -158,6 +158,17 @@ export function BlockTree({
       {blocks.map((b, i) =>
         b.kind === "text" ? (
           <Katex key={i} text={b.text} />
+        ) : b.kind === "code" ? (
+          // Code keeps its own lines and spacing; a long line scrolls rather than wraps,
+          // since a wrapped line of code reads as two statements. No tabIndex: on /browse
+          // the stem sits inside the expand button, and a focus stop inside a button is
+          // invalid; browsers already let the keyboard scroll an overflowing region.
+          <pre
+            key={i}
+            className="my-2 overflow-x-auto rounded-lg border bg-muted/40 p-3 font-mono text-[13px] leading-relaxed"
+          >
+            <code>{b.code}</code>
+          </pre>
         ) : (
           <div key={i} className="my-2 overflow-x-auto rounded-lg border bg-card">
             <table className="w-full border-collapse text-sm">

@@ -12,3 +12,14 @@ const TABLE_RE = /^[ \t]*\|.*\|[ \t]*\r?\n[ \t]*\|?[ \t]*:?-{3,}:?[ \t]*(\|[ \t]
 export function hasPipeTable(text: string): boolean {
   return TABLE_RE.test(text);
 }
+
+/** A whole-line code fence (```), the block kind parseTableBlocks reads as code (2026-11-23). */
+const FENCE_RE = /^[ \t]*```[A-Za-z0-9_+#.-]*[ \t]*\r?\n[\s\S]*?\n[ \t]*```[ \t]*$/m;
+
+/**
+ * Does this text need BlockText (a table, or fenced code)? V loads that renderer only then;
+ * a false alarm only loads it, and it draws plain text as before.
+ */
+export function hasBlockContent(text: string): boolean {
+  return TABLE_RE.test(text) || FENCE_RE.test(text);
+}
