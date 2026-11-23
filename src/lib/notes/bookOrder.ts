@@ -258,6 +258,7 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "halogen-derivatives": { cls: 12, chapterNo: 10, book: "XII 10 Halogen Derivatives" },
     "alcohols-phenols-and-ethers": { cls: 12, chapterNo: 11, book: "XII 11 Alcohols, Phenols and Ethers" },
     "aldehydes-ketones-and-carboxylic-acids": { cls: 12, chapterNo: 12, book: "XII 12 Aldehydes, Ketones and Carboxylic Acids" },
+    amines: { cls: 12, chapterNo: 13, book: "XII 13 Amines" },
     biomolecules: { cls: 12, chapterNo: 14, book: "XII 14 Biomolecules" },
   },
   // JEE Mains Chemistry follows the rationalised NCERT books (the "NCERT" spine in
