@@ -85,7 +85,7 @@ describe("EXAM_REGISTRY", () => {
     expect(uceed?.noImageIndex).toBe(true);
   });
 
-  it("registers GATE CS as a graduate exam in the GATE family, held until its rows are public", () => {
+  it("registers GATE CS as a graduate exam in the GATE family, with mocks and worked solutions", () => {
     const gate = getExamBySlug("gate-cs");
     expect(gate?.examName).toBe("GATE CS");
     expect(gate?.tier).toBe("graduate");
@@ -97,8 +97,10 @@ describe("EXAM_REGISTRY", () => {
     expect(gate?.familyLabel).toBe("Computer Science");
     expect(gate?.familyAxis).toBe("Branch");
     expect(gate?.practiceOnly).not.toBe(true);
-    // Off every picker until the Wave 1 rows go PUBLIC (tests/exam-registry-content).
-    expect(gate?.noPublicContent).toBe(true);
+    // PUBLIC since 2026-11-23: on the pickers, six mocks, every question solved.
+    expect(gate?.noPublicContent).not.toBe(true);
+    expect(gate?.hasMocks).toBe(true);
+    expect(gate?.pastPaperSolutions).toBe(true);
   });
 
   it("registers SSC CGL as a graduate exam with mocks and worked solutions", () => {

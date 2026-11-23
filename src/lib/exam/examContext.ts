@@ -996,7 +996,10 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     familyLabel: "Computer Science",
     familyAxis: "Branch",
     mixedFormats: true, // MCQ, MSQ and NAT in every paper since 2021
-    noPublicContent: true, // Wave 1 is PRIVATE until the owner's OK; remove with the flip
+    // PUBLIC since 2026-11-23 (owner OK): 390 q, every one with a worked solution.
+    // One timed mock per paper (gate-cs-<year>-cs<set>), MOCKS.md.
+    hasMocks: true,
+    pastPaperSolutions: true,
     guidesPath: null,
     notesPath: null,
   },
