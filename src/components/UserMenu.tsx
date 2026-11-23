@@ -234,9 +234,9 @@ export default function UserMenu({
             )}
           </Link>
           <Link
-            // prefetch off: /progress opens /performance or /me/map, per-user
-            // server renders (one behind a ~500 ms RPC), and a prefetch would
-            // run them for anyone who merely opened this menu.
+            // prefetch off: /progress opens /performance, a per-user server
+            // render behind a ~500 ms RPC, and a prefetch would run it for
+            // anyone who merely opened this menu.
             prefetch={false}
             href="/progress"
             className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"

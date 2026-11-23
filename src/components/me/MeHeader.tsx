@@ -8,16 +8,19 @@ import FocusChips from "./FocusChips";
 import type { MeHeaderData } from "@/lib/me/header";
 import type { ExamLink } from "@/lib/exam/examLinks";
 
-export type MeTab = "home" | "review" | "progress";
+export type MeTab = "home" | "review" | "progress" | "map";
 
-/** The student's three pages, shared with their loading screens (MeLoading). */
+/** The student's four pages, shared with their loading screens (MeLoading). */
 export const ME_TABS: readonly Tab<MeTab>[] = [
   { key: "home", label: "Home", href: "/me" },
   // Everything to come back to: the drill's mistakes and the saved list (2026-11-08).
   { key: "review", label: "Review", href: "/review" },
-  // Papers (/performance) and Chapters (/me/map) under one tab; /progress opens
-  // the right one (2026-11-08). Account lives in the avatar menu.
+  // Papers (/performance). /progress opens it (old links, the avatar menu).
+  // Account lives in the avatar menu.
   { key: "progress", label: "Progress", href: "/progress" },
+  // The mastery map, its own tab since 2026-11-23 (owner); from 2026-11-08 it
+  // was "Chapters" under Progress.
+  { key: "map", label: "Map", href: "/me/map" },
 ];
 
 /**

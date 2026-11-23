@@ -1,7 +1,7 @@
 /**
  * Each of the student's pages shows a loading screen the moment its tab is
- * tapped (2026-11-08); since step 3 the tabs are Home · Review · Progress, and
- * /performance (Papers) loads under Progress. Account has no tab now: its
+ * tapped (2026-11-08); the tabs are Home · Review · Progress · Map (Map since
+ * 2026-11-23), /performance loads under Progress. Account has no tab now: its
  * loading screen shows no strip. Before this none of the three had a loading.tsx, so a
  * tap left the old page on screen until the new one was fully built: 0.4-0.8 s
  * warm in production, 3.3 s on a cold start.
@@ -20,6 +20,7 @@ const ROUTES = [
   { dir: "me", tab: "home", href: "/me" },
   { dir: "review", tab: "review", href: "/review" },
   { dir: "performance", tab: "performance", href: "/progress" },
+  { dir: "me/map", tab: "map", href: "/me/map" },
 ] as const;
 
 describe("MeLoading", () => {
