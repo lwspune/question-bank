@@ -3491,6 +3491,11 @@ import {
   HSC_CH_HD_NOTES,
   HSC_CH_HD_SLUGS,
 } from "@/app/notes/mh-hsc-12-chemistry/halogen-derivatives/_data";
+import {
+  HSC_CH_AK_CHAPTER,
+  HSC_CH_AK_NOTES,
+  HSC_CH_AK_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/aldehydes-ketones-and-carboxylic-acids/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -11220,6 +11225,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HSC_CH_HD_CHAPTER,
     notes: HSC_CH_HD_NOTES,
     slugs: HSC_CH_HD_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "aldehydes-ketones-and-carboxylic-acids",
+    chipLabel: "Aldehydes, Ketones and Carboxylic Acids notes",
+    chapter: HSC_CH_AK_CHAPTER,
+    notes: HSC_CH_AK_NOTES,
+    slugs: HSC_CH_AK_SLUGS,
   },
 ];
 
