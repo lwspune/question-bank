@@ -64,10 +64,10 @@ export const PAID_EVENTS: Record<WebhookProvider, readonly string[]> = {
 export const WEBHOOK_ALARM_MIN_AGE_SECONDS = 30 * 60;
 
 /**
- * Receipts start with the deploy that records them. A payment before this has
- * no receipt by construction, so it is never evidence. Set to the push of
- * the branch that added recording (2026-11-23, 00:00 IST); the alarm is quiet
- * for anything paid earlier.
+ * A floor only. Receipts start with the deploy that records them, whenever it
+ * is pushed, so the payment check counts from each provider's FIRST recorded
+ * delivery (firstReceiptSec) and never from before this date. A payment before
+ * recording began has no receipt by construction and is never evidence.
  */
 export const WEBHOOK_RECEIPTS_SINCE_SEC = Date.parse("2026-11-23T00:00:00+05:30") / 1000;
 

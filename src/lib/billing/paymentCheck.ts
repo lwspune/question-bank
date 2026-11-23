@@ -25,8 +25,15 @@ import {
   strandedPaddleTransactions,
   type PaddleTransaction,
 } from "./paddle";
-import { PAID_EVENTS, buildWebhookSilentEmail, silentRefs, type SilentItem } from "./webhookAlarm";
-import { claimDailyAlarm, readReceivedRefs, releaseDailyAlarm, trimReceipts } from "./webhookReceipts";
+import {
+  PAID_EVENTS,
+  WEBHOOK_RECEIPTS_SINCE_SEC,
+  buildWebhookSilentEmail,
+  silentRefs,
+  type SilentItem,
+  type WebhookProvider,
+} from "./webhookAlarm";
+import { claimDailyAlarm, firstReceiptSec, readReceivedRefs, releaseDailyAlarm, trimReceipts } from "./webhookReceipts";
 import { formatPrice, type PlanCurrency } from "./plans";
 import { readGraderEmails } from "@/lib/answerSheets/grader";
 import { sendEmail } from "@/lib/email/resend";
@@ -146,9 +153,21 @@ export async function runPaymentCheck(opts: PaymentCheckOptions): Promise<Paymen
     createdAtSec: paddleSec(t),
     label: money(paddleAmount(t), t.currency_code),
   }));
+  // Count only orders paid after the provider's first recorded delivery:
+  // recording began with the deploy that added it, so anything earlier has no
+  // receipt by construction. Before any delivery is recorded, stay quiet.
+  const silentFor = async (provider: WebhookProvider, items: SilentItem[]): Promise<SilentItem[]> => {
+    const first = await firstReceiptSec(admin, provider);
+    if (first === null) {
+      if (items.length > 0) log(`${provider}: no webhook delivery recorded yet; the alarm starts with the first one.`);
+      return [];
+    }
+    const received = await readReceivedRefs(admin, provider, items.map((i) => i.ref), PAID_EVENTS[provider]);
+    return silentRefs(items, received, nowSec, Math.max(WEBHOOK_RECEIPTS_SINCE_SEC, first));
+  };
   const silent = {
-    razorpay: silentRefs(razorpayItems, await readReceivedRefs(admin, "razorpay", razorpayItems.map((i) => i.ref), PAID_EVENTS.razorpay), nowSec),
-    paddle: silentRefs(paddleItems, await readReceivedRefs(admin, "paddle", paddleItems.map((i) => i.ref), PAID_EVENTS.paddle), nowSec),
+    razorpay: await silentFor("razorpay", razorpayItems),
+    paddle: await silentFor("paddle", paddleItems),
   };
   log(`Webhook deliveries: ${silent.razorpay.length} Razorpay and ${silent.paddle.length} Paddle paid order(s) with none.`);
 
