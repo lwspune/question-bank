@@ -3496,6 +3496,11 @@ import {
   HSC_CH_AK_NOTES,
   HSC_CH_AK_SLUGS,
 } from "@/app/notes/mh-hsc-12-chemistry/aldehydes-ketones-and-carboxylic-acids/_data";
+import {
+  HSC_CH_BM_CHAPTER,
+  HSC_CH_BM_NOTES,
+  HSC_CH_BM_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/biomolecules/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -11236,6 +11241,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HSC_CH_AK_CHAPTER,
     notes: HSC_CH_AK_NOTES,
     slugs: HSC_CH_AK_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "biomolecules",
+    chipLabel: "Biomolecules notes",
+    chapter: HSC_CH_BM_CHAPTER,
+    notes: HSC_CH_BM_NOTES,
+    slugs: HSC_CH_BM_SLUGS,
   },
 ];
 
