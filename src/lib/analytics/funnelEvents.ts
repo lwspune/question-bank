@@ -245,6 +245,12 @@ export const FUNNEL_EVENTS = [
    */
   "play_link_click",
   /**
+   * The header's Visuals button (2026-11-23, experiment notes-visuals); prop:
+   * from (the page's first path segment). Signed out included, so the
+   * gallery's reach is read here, its use in user_activity.
+   */
+  "visuals_link_click",
+  /**
    * A /play game finished, signed in or not (components/play/report); props:
    * game (number_rain | word_groups | daily_word | launch | element_hunt |
    * timeline | pin_it since 2026-11-18), signedIn, and a score or result.

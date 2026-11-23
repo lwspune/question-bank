@@ -4,6 +4,10 @@
  * are" and V's own "Teach me a chapter". Each opens V with this message, which V
  * answers with chapter_overview, starting from the student's waiting mistakes.
  *
+ * No "Start from what I got wrong." (owner, 2026-11-23): it sat in the student's
+ * own bubble, a sentence they never typed, and read as confusing. chapter_overview
+ * starts from their mistakes whatever the message says, so it asks for the chapter.
+ *
  * WHY A TYPED MESSAGE, not a card of its own: the student sees what was asked
  * for in their own words, can follow it up, and V's answer is the one a typed
  * "teach me vectors" gets, so there is one path to keep right, not two.
@@ -51,6 +55,6 @@ export function teachChapterMessage(opts: {
   const head = `Teach me ${chapter}${exam ? ` for ${clip(exam, MAX_NAME)}` : ""}`;
   const msg = opts.startWith?.trim()
     ? `${head}, starting with ${clip(opts.startWith, MAX_NAME)}, where I lost marks.`
-    : `${head}. Start from what I got wrong.`;
+    : `${head}.`;
   return msg.length > MAX ? `${msg.slice(0, MAX - 1)}…` : msg;
 }

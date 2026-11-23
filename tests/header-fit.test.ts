@@ -43,7 +43,7 @@ describe("header fits beside Ebooks and Play (Classes moved to the avatar menu, 
     // avatar: the row needed ~110 px more. The logo and the words stay.
     const headerBar = src("src/components/header/HeaderBar.tsx");
     expect(headerBar).toMatch(/<span className="max-lg:sr-only">PYQ Vault<\/span>/);
-    for (const icon of ["ShoppingBag", "Gamepad2"]) {
+    for (const icon of ["ShoppingBag", "Images", "Gamepad2"]) {
       expect(headerBar).toMatch(new RegExp(`<${icon} className="hidden h-4 w-4 shrink-0 lg:block"`));
     }
   });

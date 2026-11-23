@@ -15,15 +15,12 @@ import {
   formatChapterOverview,
   notesChapterIndex,
   type ChapterMiss,
-  type MissExample,
   type NotesChapterRef,
   type NotesChapterParts,
-  toMissExample,
   type TryArgs,
 } from "@/lib/chat/chapterOverview";
 import type { VLesson } from "@/lib/chat/lesson";
 import type { LearnChapter } from "@/lib/chat/learnLesson";
-import type { VQuestion } from "@/lib/chat/questionTools";
 import type { ChapterSearchRow } from "@/lib/chat/chapterSearch";
 import type { DueQuestion } from "@/lib/drill/select";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
@@ -188,12 +185,13 @@ describe("chapter_overview from the student's mistakes", () => {
 
   function withMisses(opts: {
     misses?: readonly ChapterMiss[] | Error | null;
-    example?: MissExample | null;
+    /** What the own-mistake reader returns: the first of the ids the card can grade; null = none can. */
+    own?: string | null;
     parts?: NotesChapterParts | null;
     /** undefined = no try reader (signed out); null = the reader finds none. */
     tryId?: string | null;
   }) {
-    const asked: { hits: ChapterSearchRow[]; examples: string[]; tries: TryArgs[] } = { hits: [], examples: [], tries: [] };
+    const asked: { hits: ChapterSearchRow[]; own: string[][]; tries: TryArgs[] } = { hits: [], own: [], tries: [] };
     const lessons: VLesson[] = [];
     const tool = chapterOverviewTool({
       loadChapters: async () => ROWS,
@@ -209,9 +207,9 @@ describe("chapter_overview from the student's mistakes", () => {
               if (opts.misses instanceof Error) throw opts.misses;
               return opts.misses ?? [];
             },
-      loadMissExample: async (id) => {
-        asked.examples.push(id);
-        return opts.example ?? null;
+      loadOwnTry: async (ids) => {
+        asked.own.push([...ids]);
+        return opts.own ?? null;
       },
       loadTryId:
         opts.tryId === undefined
@@ -279,7 +277,7 @@ describe("chapter_overview from the student's mistakes", () => {
     const out = await tool.run({ chapter: "vectors", exam: "MHT-CET" });
     expect(out).toMatch(/no mistakes waiting in this chapter/i);
     expect(out).toMatch(/first part/i);
-    expect(asked.examples).toEqual([]);
+    expect(asked.own).toEqual([]);
   });
 
   it("signed out (no reader): says nothing about mistakes", async () => {
@@ -295,69 +293,73 @@ describe("chapter_overview from the student's mistakes", () => {
     expect(out).toContain("Dot Product, Angle, and Perpendicularity");
   });
 
-  it("the latest mistake is the worked example: its question, their pick and the answer, and V names the slip", async () => {
-    const { tool, asked } = withMisses({
+  // 2026-11-23 (owner, from Vedu's and Abha's chats): V worked the student's mistake in text while the question and
+  // its options were nowhere on screen ("the answer is (A)" of options never shown). Abha's good run was V teaching
+  // the idea, then the question shown as a card she answered, then "Explain this question" with her pick in view.
+  // So the mistake is never V's worked example: it is the Your turn card, and V never sees its text.
+  it("their latest mistake in the starting part is the Your turn question, shown as a card, not worked by V", async () => {
+    const { tool, asked, lessons } = withMisses({
       misses: [
         miss("Dot Product, Angle, and Perpendicularity", "older", "2026-11-20T10:00:00Z"),
+        miss("Magnitude and Unit Vectors", "mag", "2026-11-22T10:00:00Z"),
         miss("Dot Product, Angle, and Perpendicularity", "latest", "2026-11-21T10:00:00Z"),
       ],
-      example: {
-        text: "If a = 2i - j + k and b = i + 3j - 2k, then a · b is",
-        options: [
-          { label: "A", text: "-3" },
-          { label: "B", text: "3" },
-          { label: "C", text: "1" },
-          { label: "D", text: "-1" },
-        ],
-        chose: "C",
-        answer: "A",
-      },
+      own: "latest",
+      tryId: "fresh",
     });
     const out = await tool.run({ chapter: "vectors", exam: "MHT-CET" });
-    expect(asked.examples).toEqual(["latest"]);
-    expect(out).toContain("If a = 2i - j + k and b = i + 3j - 2k, then a · b is");
-    expect(out).toContain("(C) 1");
-    expect(out).toMatch(/they picked \(C\)/i);
-    expect(out).toMatch(/the answer is \(A\)/i);
-    expect(out).toMatch(/slip/i);
+    // This part's mistakes only, newest first: the reader returns the first the card can grade.
+    expect(asked.own).toEqual([["latest", "older"]]);
+    expect(lessons[0].tryQuestionId).toBe("latest");
+    expect(lessons[0].tryOwn).toBe(true);
+    // No fresh question is fetched when their own mistake is the turn.
+    expect(asked.tries).toEqual([]);
+    expect(out).toMatch(/one of their own mistakes in this part is shown under your reply, headed Your turn/i);
+    expect(out).toMatch(/do not mention it, solve it or give its answer/i);
+    expect(out).toMatch(/one small example of your own/i);
+    expect(out).not.toMatch(/worked example|work their mistake|they picked|pick was not recorded/i);
   });
 
-  it("a mock mistake records no pick: the example says so and V shows the right working instead", async () => {
-    const { tool } = withMisses({
-      misses: [miss("Dot Product, Angle, and Perpendicularity", "q1", "2026-11-21T10:00:00Z")],
-      example: { text: "Find a · b.", options: [{ label: "A", text: "0" }, { label: "B", text: "1" }], chose: null, answer: "A" },
-    });
-    const out = await tool.run({ chapter: "vectors", exam: "MHT-CET" });
-    expect(out).toMatch(/pick was not recorded/i);
-    expect(out).not.toMatch(/they picked/i);
-  });
-
-  it("no usable example (a figure, a written question, a failed read): teaches without one", async () => {
-    const { tool } = withMisses({ misses: [miss("Dot Product, Angle, and Perpendicularity", "q1", "2026-11-21T10:00:00Z")], example: null });
-    const out = await tool.run({ chapter: "vectors", exam: "MHT-CET" });
-    expect(out).toMatch(/start at part 2/i);
-    expect(out).not.toMatch(/they picked/i);
-  });
-
-  it("the worked example is the latest mistake IN the starting part, not the latest anywhere", async () => {
-    const { asked, tool } = withMisses({
+  it("none of their mistakes in the part fits the card (written, numeric): a fresh question like them, theirs excluded", async () => {
+    const { tool, asked, lessons } = withMisses({
       misses: [
-        miss("Dot Product, Angle, and Perpendicularity", "dot-old", "2026-11-19T10:00:00Z"),
-        miss("Dot Product, Angle, and Perpendicularity", "dot-new", "2026-11-20T10:00:00Z"),
-        miss("Magnitude and Unit Vectors", "mag-latest", "2026-11-21T10:00:00Z"),
+        miss("Dot Product, Angle, and Perpendicularity", "q1", "2026-11-20T10:00:00Z"),
+        miss("Magnitude and Unit Vectors", "q3", "2026-11-19T09:00:00Z"),
+        miss("Dot Product, Angle, and Perpendicularity", "q2", "2026-11-21T09:00:00Z"),
+      ],
+      own: null,
+      tryId: "t1",
+    });
+    const out = await tool.run({ chapter: "vectors", exam: "MHT-CET" });
+    expect(asked.own).toEqual([["q2", "q1"]]);
+    expect(asked.tries).toEqual([
+      { chapterId: null, subtopic: "Dot Product, Angle, and Perpendicularity", near: "q2", exclude: ["q1", "q3", "q2"] },
+    ]);
+    expect(lessons[0].tryQuestionId).toBe("t1");
+    expect(lessons[0].tryOwn).toBe(false);
+    expect(out).toMatch(/a question on this part is shown under your reply, headed Your turn/i);
+    expect(out).not.toMatch(/their own mistakes in this part is shown/i);
+  });
+
+  it("V's opening line does not list the parts their mistakes are in: the map card shows them", async () => {
+    const { tool } = withMisses({
+      misses: [
+        miss("Dot Product, Angle, and Perpendicularity", "q1", "2026-11-20T10:00:00Z"),
+        miss("Dot Product, Angle, and Perpendicularity", "q2", "2026-11-20T11:00:00Z"),
+        miss("Magnitude and Unit Vectors", "q3", "2026-11-19T09:00:00Z"),
       ],
     });
-    await tool.run({ chapter: "vectors", exam: "MHT-CET" });
-    expect(asked.examples).toEqual(["dot-new"]);
+    const out = await tool.run({ chapter: "vectors", exam: "MHT-CET" });
+    expect(out).not.toMatch(/saying which parts their mistakes are in/i);
+    // Named, not "this part": V copied the words and wrote "You start with this part because..." (2026-11-23 capture).
+    expect(out).toMatch(/one short line saying you start with part 2, Dot Product, Angle, and Perpendicularity, because their mistakes are here/i);
   });
 
-  it("if you cannot see the slip, V leaves it out rather than saying so", async () => {
-    const { tool } = withMisses({
-      misses: [miss("Dot Product, Angle, and Perpendicularity", "q1", "2026-11-21T10:00:00Z")],
-      example: { text: "Find a · b.", options: [{ label: "A", text: "0" }, { label: "B", text: "1" }], chose: "B", answer: "A" },
-    });
-    const out = await tool.run({ chapter: "vectors", exam: "MHT-CET" });
-    expect(out).toMatch(/if you cannot see the slip, leave it out and do not mention it/i);
+  it("mistakes only in topics no part covers: none is the turn of this part", async () => {
+    const { tool, asked } = withMisses({ misses: [miss("Some Retired Subtopic", "q1", "2026-11-21T10:00:00Z")], tryId: "t1" });
+    await tool.run({ chapter: "vectors", exam: "MHT-CET" });
+    expect(asked.own).toEqual([]);
+    expect(asked.tries[0].near).toBeNull();
   });
 
   it("hands the window the lesson: each part with its mistakes and page, where it starts, what comes next, the map", async () => {
@@ -387,6 +389,7 @@ describe("chapter_overview from the student's mistakes", () => {
       showMap: true,
       missed: 4,
       tryQuestionId: null,
+      tryOwn: false,
       tryLearn: null,
     });
   });
@@ -398,7 +401,6 @@ describe("chapter_overview from the student's mistakes", () => {
         miss("Magnitude and Unit Vectors", "q3", "2026-11-19T09:00:00Z"),
         miss("Dot Product, Angle, and Perpendicularity", "q2", "2026-11-21T09:00:00Z"),
       ],
-      example: { text: "Find a · b.", options: [{ label: "A", text: "0" }, { label: "B", text: "1" }], chose: "B", answer: "A" },
       tryId: "t1",
     });
     const out = await tool.run({ chapter: "vectors", exam: "MHT-CET" });
@@ -434,16 +436,18 @@ describe("chapter_overview from the student's mistakes", () => {
     const out = await tool.run({ chapter: "vectors", exam: "MHT-CET", part: 1 });
     expect(out).toMatch(/they asked for part 1, Magnitude, Components, and Unit Vectors/i);
     expect(out).not.toMatch(/card under your reply shows/i);
-    expect(asked.examples).toEqual(["q3"]);
+    expect(asked.own).toEqual([["q3"]]);
     expect(lessons[0].current).toBe(1);
     expect(lessons[0].next).toBeNull();
     expect(lessons[0].showMap).toBe(false);
   });
 
-  it("a part asked for with no mistakes in it has no example", async () => {
-    const { tool, asked } = withMisses({ misses: [miss("Dot Product, Angle, and Perpendicularity", "q1", "2026-11-20T10:00:00Z")] });
+  it("a part asked for with no mistakes in it: a fresh question, none of theirs", async () => {
+    const { tool, asked, lessons } = withMisses({ misses: [miss("Dot Product, Angle, and Perpendicularity", "q1", "2026-11-20T10:00:00Z")], tryId: "t1" });
     await tool.run({ chapter: "vectors", exam: "MHT-CET", part: 1 });
-    expect(asked.examples).toEqual([]);
+    expect(asked.own).toEqual([]);
+    expect(lessons[0].tryQuestionId).toBe("t1");
+    expect(lessons[0].tryOwn).toBe(false);
   });
 
   it("a part number the chapter does not have is ignored: it starts where the mistakes are", async () => {
@@ -509,56 +513,6 @@ describe("chapterMissesOf", () => {
   it("prefers the chapter id when the row carries one", () => {
     const out = chapterMissesOf([due({ questionId: "a", chapterId: "c1" }), due({ questionId: "b", chapterId: "c2" })], { ...ROWS[0], chapterId: "c2" });
     expect(out.map((m) => m.questionId)).toEqual(["b"]);
-  });
-});
-
-describe("toMissExample", () => {
-  const q = (over: Partial<VQuestion>): VQuestion => ({
-    id: "q1",
-    text: "Find a · b.",
-    context: null,
-    hasFigure: false,
-    solution: null,
-    format: "mcq",
-    numericAnswer: null,
-    options: [
-      { label: "A", text: "0", isCorrect: true },
-      { label: "B", text: "1", isCorrect: false },
-    ],
-    exam: "MHT-CET",
-    subject: "Mathematics",
-    chapter: "Vectors",
-    subtopic: null,
-    subtopicId: null,
-    origin: null,
-    ...over,
-  });
-
-  it("an MCQ: its stem, options, their pick and the key", () => {
-    expect(toMissExample(q({}), "B")).toEqual({
-      text: "Find a · b.",
-      options: [
-        { label: "A", text: "0" },
-        { label: "B", text: "1" },
-      ],
-      chose: "B",
-      answer: "A",
-    });
-  });
-
-  it("keeps the shared passage with the stem", () => {
-    expect(toMissExample(q({ context: "a = i + j, b = i - j." }), null)?.text).toBe("a = i + j, b = i - j.\nFind a · b.");
-  });
-
-  it("a pick that is not an option letter is no pick", () => {
-    expect(toMissExample(q({}), "Z")?.chose).toBeNull();
-  });
-
-  it("no example from a figure V cannot see, a written or numeric question, or no question", () => {
-    expect(toMissExample(q({ hasFigure: true }), "B")).toBeNull();
-    expect(toMissExample(q({ format: "subjective" }), null)).toBeNull();
-    expect(toMissExample(q({ format: "numeric" }), null)).toBeNull();
-    expect(toMissExample(null, "B")).toBeNull();
   });
 });
 
@@ -631,7 +585,7 @@ describe("chapter_overview from Learn (2026-11-22: Learn first wherever it teach
       page: null,
       onPaths: (p) => paths.push(...p),
       loadMisses: async () => opts.misses ?? [],
-      loadMissExample: async () => null,
+      loadOwnTry: async () => null,
       loadTryId: async () => "11111111-1111-4111-8111-111111111111",
       loadLearn: async () => {
         if (opts.learn instanceof Error) throw opts.learn;
@@ -658,6 +612,7 @@ describe("chapter_overview from Learn (2026-11-22: Learn first wherever it teach
       showMap: true,
       missed: 2,
       tryQuestionId: null,
+      tryOwn: false,
       tryLearn: null,
     });
     expect(lessons[0].parts.map((p) => [p.n, p.progress, p.missed])).toEqual([
@@ -686,8 +641,8 @@ describe("chapter_overview from Learn (2026-11-22: Learn first wherever it teach
     expect(out).not.toMatch(/\/learn\//);
   });
 
-  it("reads no worked example for a Learn chapter: V teaches nothing, so it would go unused", async () => {
-    const examples: string[] = [];
+  it("reads none of their mistakes for a Learn chapter: the student picks a lesson, so a turn would go unused", async () => {
+    const examples: string[][] = [];
     const tool = chapterOverviewTool({
       loadChapters: async () => [CBSE_MATRICES],
       notesIndex: [],
@@ -695,8 +650,8 @@ describe("chapter_overview from Learn (2026-11-22: Learn first wherever it teach
       page: null,
       onPaths: () => {},
       loadMisses: async () => [miss("Multiplication of Matrices", "q1", "2026-11-20T10:00:00Z")],
-      loadMissExample: async (id) => {
-        examples.push(id);
+      loadOwnTry: async (ids) => {
+        examples.push([...ids]);
         return null;
       },
       loadLearn: async () => MATRICES,

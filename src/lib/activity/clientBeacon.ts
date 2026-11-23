@@ -56,6 +56,14 @@ export type ClientEvent =
       chapterId: string;
     }
   | {
+      /** The Visuals gallery (2026-11-23): a subject's page, or a visual opened, practised or read in notes. */
+      kind: "surface_viewed";
+      surface: "visuals";
+      action: "page" | "open" | "practise" | "notes";
+      subject: string;
+      slug?: string;
+    }
+  | {
       /** A "Teach me" button seen or tapped (lib/chat/teachChapter, 2026-11-21). */
       kind: "surface_viewed";
       surface: "teach_chapter";

@@ -61,6 +61,8 @@ export type VLesson = {
   missed: number;
   /** A past-paper question to try under the reply; null when there is none (or signed out). */
   tryQuestionId: string | null;
+  /** The question to try is the student's own waiting mistake (2026-11-23): the card says so. */
+  tryOwn: boolean;
   /** A Learn lesson's check question to try instead; null off Learn. */
   tryLearn: LearnTry | null;
 };
@@ -152,7 +154,7 @@ export function pickLessonTry(
 
 /** The lesson under a follow-up reply (Explain more simply, or a Go on V answered without the tool). */
 export function carriedLesson(l: VLesson, current: number = l.current): VLesson {
-  return { ...l, current, next: nextInOrder(l.order, current), showMap: false, tryQuestionId: null, tryLearn: null };
+  return { ...l, current, next: nextInOrder(l.order, current), showMap: false, tryQuestionId: null, tryOwn: false, tryLearn: null };
 }
 
 /** A site path, or a Learn lesson's with its `?course=`. */
@@ -225,6 +227,7 @@ export function parseLesson(raw: unknown): VLesson | null {
     showMap: o.showMap,
     missed,
     tryQuestionId,
+    tryOwn: tryQuestionId !== null && o.tryOwn === true,
     tryLearn: kind === "learn" ? parseTryLearn(o.tryLearn) : null,
   };
 }

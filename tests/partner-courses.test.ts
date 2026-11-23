@@ -8,13 +8,15 @@
 import { describe, it, expect } from "vitest";
 import {
   PARTNER_COURSES,
-  PARTNER_NAME,
+  PROVIDERS,
   coursesOnSale,
   courseById,
   courseStatusLine,
   outboundUrl,
   COURSE_EXAMS,
   courseShelves,
+  providerLine,
+  joinNames,
 } from "@/lib/partnerCourses/courses";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 
@@ -27,19 +29,28 @@ describe("the course list", () => {
     for (const id of ids) expect(id).toMatch(/^[a-z0-9-]{1,60}$/);
   });
 
-  it("names a live exam for every course, and only the exams it shelves", () => {
+  it("names a live exam for every course and every shelf, and only the exams it shelves", () => {
     const slugs = new Set(EXAM_REGISTRY.map((e) => e.slug));
     for (const c of PARTNER_COURSES) {
       expect(slugs.has(c.examSlug)).toBe(true);
       expect(COURSE_EXAMS.map((e) => e.slug)).toContain(c.examSlug);
     }
+    for (const e of COURSE_EXAMS) for (const s of e.alsoFor) expect(slugs.has(s)).toBe(true);
   });
 
-  it("links only to the partner's own https site", () => {
+  it("never shelves a course on an exam students cannot choose (it would reach nobody first)", () => {
+    const hidden = new Set(EXAM_REGISTRY.filter((e) => e.noPublicContent).map((e) => e.slug));
+    for (const e of COURSE_EXAMS) {
+      expect(hidden.has(e.slug)).toBe(false);
+      for (const s of e.alsoFor) expect(hidden.has(s)).toBe(false);
+    }
+  });
+
+  it("links only to its provider's own https site", () => {
     for (const c of PARTNER_COURSES) {
       const u = new URL(c.url);
       expect(u.protocol).toBe("https:");
-      expect(u.hostname).toBe("defencemania.classx.co.in");
+      expect(u.hostname).toBe(PROVIDERS[c.provider].host);
     }
   });
 
@@ -47,16 +58,45 @@ describe("the course list", () => {
     for (const c of PARTNER_COURSES) {
       expect(Number.isInteger(c.pricePaise)).toBe(true);
       expect(c.pricePaise).toBeGreaterThan(0);
-      expect(c.startsOn).toMatch(/^\d{4}-\d{2}-\d{2}$/);
-      if (c.endsOn) expect(c.endsOn > c.startsOn).toBe(true);
+      if (c.startsOn) expect(c.startsOn).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      if (c.endsOn && c.startsOn) expect(c.endsOn > c.startsOn).toBe(true);
     }
   });
 
-  it("names the partner and carries no em dash in what students read", () => {
-    expect(PARTNER_NAME).toBe("Defence Mania");
+  it("carries no em dash in what students read", () => {
     for (const c of PARTNER_COURSES) {
-      for (const text of [c.title, c.blurb]) expect(text).not.toMatch(/—| – | -- /);
+      for (const text of [c.title, c.blurb, providerLine(c.provider)]) expect(text).not.toMatch(/—| – | -- /);
     }
+  });
+});
+
+describe("providerLine", () => {
+  it("says plainly who runs the course and that it opens their site", () => {
+    expect(providerLine("Defence Mania")).toBe("From our partner Defence Mania. Opens their site.");
+    expect(providerLine("LWS Pune")).toBe("From LWS Pune. Opens their site.");
+  });
+});
+
+describe("the SPI course", () => {
+  it("is LWS Pune's, with no start date the page does not give", () => {
+    const spi = PARTNER_COURSES.find((c) => c.examSlug === "spi");
+    expect(spi?.provider).toBe("LWS Pune");
+    expect(spi?.startsOn).toBeNull();
+    expect(courseStatusLine(spi!, day("2026-11-23"))).toBeNull();
+  });
+
+  it("sits first for SPI, Maharashtra SSC Class 10 and CBSE Class 10 students", () => {
+    const shelf = courseShelves(PARTNER_COURSES, day("2026-11-23")).find((s) => s.slug === "spi");
+    expect(shelf?.feedSlugs).toEqual(["spi", "mh-ssc-10", "cbse-10"]);
+  });
+});
+
+describe("joinNames", () => {
+  it("lists names the way a sentence does", () => {
+    expect(joinNames(["CDS"])).toBe("CDS");
+    expect(joinNames(["CDS", "AFCAT"])).toBe("CDS and AFCAT");
+    expect(joinNames(["CDS", "AFCAT", "SPI"])).toBe("CDS, AFCAT and SPI");
+    expect(joinNames([])).toBe("");
   });
 });
 
@@ -92,6 +132,10 @@ describe("courseStatusLine", () => {
     expect(courseStatusLine(c, day("2026-12-05"))).toBe("Batch running, classes recorded");
     expect(courseStatusLine(c, day("2027-01-10"))).toBe("Batch running, classes recorded");
   });
+
+  it("says nothing when the course gives no start date", () => {
+    expect(courseStatusLine({ startsOn: null }, day("2026-11-23"))).toBeNull();
+  });
 });
 
 describe("outboundUrl", () => {
@@ -113,17 +157,18 @@ describe("outboundUrl", () => {
 
 describe("courseShelves", () => {
   it("makes one shelf per exam with a course on sale, in shelf order", () => {
-    const shelves = courseShelves(PARTNER_COURSES, day("2026-11-17"));
-    expect(shelves.map((s) => s.slug)).toEqual(["cds", "afcat"]);
+    const shelves = courseShelves(PARTNER_COURSES, day("2026-11-23"));
+    expect(shelves.map((s) => s.slug)).toEqual(["cds", "afcat", "spi"]);
     for (const s of shelves) {
       expect(s.key).toBe(`courses-${s.slug}`);
       expect(s.courses.every((c) => c.examSlug === s.slug)).toBe(true);
+      expect(s.feedSlugs[0]).toBe(s.slug);
     }
   });
 
   it("drops a shelf whose courses have all ended", () => {
     const shelves = courseShelves(PARTNER_COURSES, day("2027-04-12"));
-    expect(shelves.map((s) => s.slug)).toEqual(["afcat"]);
+    expect(shelves.map((s) => s.slug)).toEqual(["afcat", "spi"]);
   });
 });
 

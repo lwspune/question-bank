@@ -49,6 +49,7 @@ export default function NotesDrillPanel({
   fullHref,
   onFullPage,
   onMore,
+  closeHint = "Close to go back to your notes",
   returnFocusTo,
 }: {
   /** The button that opened the panel: focus goes back to it on close (no Radix Trigger here). */
@@ -62,6 +63,8 @@ export default function NotesDrillPanel({
   fullHref: string;
   onFullPage: () => void;
   onMore: () => void;
+  /** The footer line: where closing takes the student (the Visuals viewer passes its own). */
+  closeHint?: string;
 }) {
   // Teach me the idea under a wrong answer opens this page's own notes (2026-11-19): the cards here carry
   // no notes link, so it messaged V about the notes the student was already reading.
@@ -201,7 +204,7 @@ export default function NotesDrillPanel({
         </div>
 
         <div className="flex items-center justify-between gap-3 border-t px-4 py-1 font-sans">
-          <span className="text-xs text-muted-foreground">Close to go back to your notes</span>
+          <span className="text-xs text-muted-foreground">{closeHint}</span>
           <Link
             href={fullHref}
             prefetch={false}

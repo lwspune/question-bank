@@ -9,10 +9,10 @@ import { examOfPlace, teachChapterMessage } from "@/lib/chat/teachChapter";
 import { isAskVTextDetail } from "@/lib/chat/askVEvent";
 
 describe("teachChapterMessage", () => {
-  it("names the chapter and the exam, and asks V to start from the student's mistakes", () => {
-    expect(teachChapterMessage({ chapter: "Vectors", place: "Mathematics · MHT-CET" })).toBe(
-      "Teach me Vectors for MHT-CET. Start from what I got wrong."
-    );
+  // 2026-11-23 (owner): "Start from what I got wrong" read as confusing in the student's own bubble.
+  // V starts from their mistakes anyway (chapter_overview), so the message just asks for the chapter.
+  it("names the chapter and the exam, and nothing else", () => {
+    expect(teachChapterMessage({ chapter: "Vectors", place: "Mathematics · MHT-CET" })).toBe("Teach me Vectors for MHT-CET.");
   });
 
   it("from a mock result topic: starts with that topic", () => {
@@ -23,12 +23,12 @@ describe("teachChapterMessage", () => {
 
   it("an exam given outright wins over the place", () => {
     expect(teachChapterMessage({ chapter: "Probability", exam: "NDA", place: "Mathematics · MHT-CET" })).toBe(
-      "Teach me Probability for NDA. Start from what I got wrong."
+      "Teach me Probability for NDA."
     );
   });
 
   it("no exam known: the chapter alone", () => {
-    expect(teachChapterMessage({ chapter: "Vectors", place: "Mathematics" })).toBe("Teach me Vectors. Start from what I got wrong.");
+    expect(teachChapterMessage({ chapter: "Vectors", place: "Mathematics" })).toBe("Teach me Vectors.");
   });
 
   it("is always a message V's window accepts, however long the names", () => {

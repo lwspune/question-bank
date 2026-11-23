@@ -556,6 +556,12 @@ export const CLASS_LEADS_PUNE_KEEP = 10;
  */
 export const ME_CLASS_OFFER_YES_KEEP_PCT = 5;
 /**
+ * "notes-visuals": the Visuals gallery is kept if this many signed-in students
+ * open a visual in 4 weeks AND this share of them tap "Practise 3 questions".
+ */
+export const NOTES_VISUALS_OPENERS_KEEP = 100;
+export const NOTES_VISUALS_PRACTISE_PCT = 20;
+/**
  * "partner-courses": different students (accounts, else browsers; staff left
  * out) who tap a partner course on /store in 6 weeks, for the trial to be taken
  * to Defence Mania as a commission or coupon deal (owner, 2026-11-17).
@@ -656,6 +662,7 @@ export type Readout =
   | "play-games"
   | "practice-trial"
   | "v-intl"
+  | "notes-visuals"
   | "partner-courses";
 
 export type Experiment = {
@@ -1333,7 +1340,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     id: "v-teach-chapter",
     title: "\"Teach me\" a chapter with V, starting from the student's mistakes",
     change:
-      "Three buttons open V with \"Teach me <chapter> for <exam>. Start from what I got wrong.\": Teach me beside Fix in /me's \"Your weak spots\", Teach me this beside Practise this on the mock result (both cards), and Teach me a chapter among V's own buttons, which offers the chapters with most mistakes waiting. V's chapter_overview now reads the student's waiting mistakes (the Fix list's), counts them by notes part, starts at the part holding most, and uses the latest one as its worked example. Shown only while V can explain (the explain switch). Lesson update (2026-11-21, owner, to match the mockup): the map is a card with the mistakes in each part, a question to try (\"Your turn\") sits under the reply, and three buttons (Go on, Explain more simply, Open the notes) stand in for V's own while a lesson is the latest reply; Go on asks chapter_overview for the next part by number.",
+      "Three buttons open V with \"Teach me <chapter> for <exam>. Start from what I got wrong.\": Teach me beside Fix in /me's \"Your weak spots\", Teach me this beside Practise this on the mock result (both cards), and Teach me a chapter among V's own buttons, which offers the chapters with most mistakes waiting. V's chapter_overview now reads the student's waiting mistakes (the Fix list's), counts them by notes part, starts at the part holding most, and uses the latest one as its worked example. Shown only while V can explain (the explain switch). Lesson update (2026-11-21, owner, to match the mockup): the map is a card with the mistakes in each part, a question to try (\"Your turn\") sits under the reply, and three buttons (Go on, Explain more simply, Open the notes) stand in for V's own while a lesson is the latest reply; Go on asks chapter_overview for the next part by number. CHANGE (owner, 2026-11-23, from Vedu's and Abha's chats): the message is now \"Teach me <chapter> for <exam>.\" (no \"Start from what I got wrong.\"); V no longer works the latest mistake in its reply (it wrote the working and \"the answer is (A)\" with the question nowhere on screen); that mistake is the Your turn card instead, marked \"You got this one wrong before\", with a fresh question only when none of theirs fits the card; and a right answer there writes answer_correct, so it leaves the Fix list. Read replies from 2026-11-23 apart.",
     why: "674 students had a day with 3+ wrong answers in one chapter in the 28 days to 2026-11-21, and only 4 asked V to teach a chapter: nobody knew it could. Ask V under a question card, which says exactly what V will do, sends about half of all V messages. The owner approved the places in a mockup (2026-11-21). The card's own spot waits for the stuck-offer readout (one line per answer).",
     metric:
       "surface_viewed 'teach_chapter' (action shown / tap, metadata.from me_weak, mock_result, v_button, v_pick; once a day each): taps over students shown, per place; then the chats a tap opened (chat_interactions message starting \"Teach me \") and whether the student sent a second message there. scripts/chat/teach-chapter-readout.sql. The lesson buttons log as from lesson_go_on, lesson_simpler and lesson_notes: a second message sent by a button is counted apart from a typed one, so the buttons cannot pass the second-message bar on their own.",
@@ -1660,11 +1667,11 @@ export const EXPERIMENTS: readonly Experiment[] = [
     id: "partner-courses",
     title: "Partner courses on the store: do students want online courses?",
     change:
-      "The header's Ebooks button became Store, and /store got a shelf per exam for online courses of our offline partner Defence Mania: CDS 1 2027 Sikandar 3.0 (starts 5 Dec) and the AFCAT 1 2027 Crash Course (starts 20 Dec), ₹1,999 each. A card says it is the partner's course and opens their site in a new tab, through our own tap link (/api/partner-course/[id]) with UTM tags. A CDS or AFCAT student sees their course shelf first; others find it under their other exams.",
+      "The header's Ebooks button became Store, and /store got a shelf per exam for online courses of our offline partner Defence Mania: CDS 1 2027 Sikandar 3.0 (starts 5 Dec) and the AFCAT 1 2027 Crash Course (starts 20 Dec), ₹1,999 each. Also LWS Pune's own SPI course (₹99, no start date on its page), on an SPI shelf shown first to SPI, Maharashtra SSC Class 10 and CBSE Class 10 students. A card says who runs the course and that it opens their site in a new tab, through our own tap link (/api/partner-course/[id]) with UTM tags. A CDS or AFCAT student sees their course shelf first; others find it under their other exams.",
     why: "Students buy online courses (Testbook earns this way), and 75 of 88 tutoring Yes answers wanted ONLINE teaching. Linking a partner's courses tests that demand without recording any video. Nothing is agreed with the partner yet; taps decide whether to ask for a commission or coupon deal.",
     metric:
       "Taps per course from partner_course_clicks (migration 0269): different students (account when signed in, else the browser's qb_vid), signed in vs out, per exam, staff left out (scripts/partner-courses/readout.sql). For scale, store visits and ebook buy taps over the same weeks (ebook-store). The rename from Ebooks to Store went out the same day, so read header store taps (ebook_store_link_click) across that deploy with care",
-    rule: `Take it to Defence Mania as a commission or coupon deal if ${PARTNER_COURSE_TAPPERS_KEEP}+ different students tap a course in 6 weeks; below that, take the course shelves down and keep the Store name.`,
+    rule: `Take it to Defence Mania as a commission or coupon deal if ${PARTNER_COURSE_TAPPERS_KEEP}+ different students tap one of its courses in 6 weeks; below that, take its shelves down and keep the Store name. The SPI course is LWS Pune's own, so it is read on its own taps (and LWS's sales), not this rule.`,
     liveSince: "2026-11-23",
     windowDays: 42,
     readout: "partner-courses",
@@ -1894,6 +1901,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-19",
     windowDays: 21,
     readout: "v-intl",
+    status: "running",
+  },
+  {
+    id: "notes-visuals",
+    title: "Visuals: the notes' pictures and diagrams in one place",
+    change:
+      "The header's Visuals button (in the slot Classes left, 2026-11-23) opens /visuals/<subject> for the student's exam: every notes visual of that subject as a grid of squares, with Exam and Subject dropdowns, chapter chips with counts and All · Try it · 3D · Pictures. A tile opens it full screen (swipe up for the next) with the concept's name and intuition, Read in notes, Practise 3 questions (that concept's own questions in the notes drill panel; answers count toward the free limit) and Share. Signed-in students see the chapters with mistakes waiting first. Notes visuals only (912 across 27 subjects on www), not animated solutions.",
+    why: "Animated solutions are measured popular (499 students, 82-86% of plays finished, 7% switched to Still), and the owner asked for every visual in one place. The notes' 542 diagrams sit one per concept deep inside notes pages, and nothing recorded whether anyone used them.",
+    metric:
+      "Signed-in students who open a visual, and of them who tap Practise 3 questions and Read in notes (user_activity surface_viewed, surface visuals: page, open, practise, notes; staff left out; scripts/gallery/readout.sql). Header taps signed in or out (visuals_link_click) in Vercel by hand",
+    rule: `Keep the header button if ${NOTES_VISUALS_OPENERS_KEEP}+ signed-in students open a visual in 4 weeks and ${NOTES_VISUALS_PRACTISE_PCT}%+ of them tap Practise 3 questions; below either, bring the numbers to the owner with a choice (move it under Notes, or keep it).`,
+    liveSince: "2026-11-23",
+    windowDays: 28,
+    readout: "notes-visuals",
     status: "running",
   },
 ];
