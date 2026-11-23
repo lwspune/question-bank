@@ -29,6 +29,8 @@ describe.skipIf(!HAS_ENV)("V's hourly limit (0226)", () => {
   it("keeps a stopped message with its page, and no reply", async () => {
     const id = await recordChatInteraction(admin, {
       eventType: "hourly_limit",
+      site: "pyqvault",
+      country: null,
       message: `${tag} explain this question`,
       userId: null,
       conversationId: randomUUID(),

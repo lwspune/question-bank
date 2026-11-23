@@ -26,6 +26,7 @@ import {
   buildIntlFreeFacts,
   buildIntlNotesFacts,
   INTL_NAV_FACTS,
+  buildAbroadFacts,
   type ChatSite,
 } from "./facts";
 import { LIVE_INTL_EXAMS } from "@/lib/sites/intl";
@@ -170,6 +171,8 @@ export async function loadVContext(
   const onSale = plansForBuyer(plans, site, opts.country ?? null);
   const nav = intl ? INTL_NAV_FACTS : NAV_FACTS;
   const guides = intl ? [] : GUIDE_FACTS;
+  // www only (2026-11-23): where a visitor asking about an exam abroad can go.
+  const abroad = intl ? [] : buildAbroadFacts(LIVE_INTL_EXAMS);
   const system = buildSystemPrompt({
     site,
     exams,
@@ -181,6 +184,7 @@ export async function loadVContext(
     nav,
     guides,
     notes,
+    abroad,
     explainEnabled: Boolean(opts.questionTools),
     planEnabled: opts.planEnabled === true,
   });
@@ -205,7 +209,7 @@ export async function loadVContext(
     language: opts.language ?? null,
   });
 
-  const allowedPaths = new Set(pathsInReply([...nav, ...guides, ...exams, ...notes].join("\n")));
+  const allowedPaths = new Set(pathsInReply([...nav, ...guides, ...exams, ...notes, ...abroad].join("\n")));
   if (opts.page) allowedPaths.add(opts.page);
 
   const findChaptersTool: VTool = {

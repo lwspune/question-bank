@@ -9,6 +9,8 @@ import { checkAndIncrement } from "@/lib/rate-limit";
 import { getClientIp } from "@/lib/http";
 import { getSessionUser } from "@/lib/auth";
 import { recordChatInteraction } from "@/lib/chat/interactionsAdmin";
+import { planSiteForHost } from "@/lib/sites/intl";
+import { readCountry } from "@/lib/acquisition/country";
 import { cleanPagePath, isConversationId } from "@/lib/chat/conversation";
 
 export const maxDuration = 10;
@@ -39,6 +41,7 @@ export async function POST(request: NextRequest) {
       userId: user?.id ?? null,
       conversationId: isConversationId(body?.conversationId) ? body.conversationId : null,
       pagePath: cleanPagePath(body?.pagePath),
+      site: planSiteForHost(request.headers.get("host")), country: readCountry(request.headers),
     });
 
     return NextResponse.json({ ok: true }, { status: 200 });

@@ -19,6 +19,8 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { checkAndIncrement } from "@/lib/rate-limit";
 import { getSessionUser } from "@/lib/auth";
 import { recordChatInteraction } from "@/lib/chat/interactionsAdmin";
+import { planSiteForHost } from "@/lib/sites/intl";
+import { readCountry } from "@/lib/acquisition/country";
 import { explainedToday } from "@/lib/chat/followUpServer";
 import { parseStepTap, stepTapCode } from "@/lib/chat/stepChips";
 import { logActivityOnce } from "@/lib/activity/service";
@@ -60,7 +62,7 @@ export async function POST(request: NextRequest) {
     const now = new Date();
     if (!(await explainedToday(admin, userId, questionId, now))) return fail("Ask V to explain this question first.", 403);
 
-    await recordChatInteraction(admin, { eventType: "step_by_step", code: stepTapCode(event), questionId, userId });
+    await recordChatInteraction(admin, { eventType: "step_by_step", code: stepTapCode(event), questionId, userId, site: planSiteForHost(request.headers.get("host")), country: readCountry(request.headers) });
     if (event.action === "explain") {
       await logActivityOnce(admin, userId, {
         kind: "v_not_understood",

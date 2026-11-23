@@ -281,28 +281,32 @@ async function main() {
   }
 
   const results: Result[] = [];
-  let next = 0;
-  async function worker() {
-    while (next < cases.length) {
-      const c = cases[next++];
-      const res = await runOne(c).catch(
-        (err): Result => ({
-          c,
-          reply: "",
-          links: [],
-          tools: [],
-          toolCalls: null,
-          failures: [`error: ${err instanceof Error ? err.message : String(err)}`],
-          autoPass: false,
-          judge: false,
-          cost: 0,
-        })
-      );
-      results.push(res);
-      console.log(`${results.length}/${cases.length} ${res.autoPass ? "ok  " : "FAIL"} ${c.job.padEnd(16)} ${short(c.message, 60)}`);
-    }
+  async function runAndLog(c: Case) {
+    const res = await runOne(c).catch(
+      (err): Result => ({
+        c,
+        reply: "",
+        links: [],
+        tools: [],
+        toolCalls: null,
+        failures: [`error: ${err instanceof Error ? err.message : String(err)}`],
+        autoPass: false,
+        judge: false,
+        cost: 0,
+      })
+    );
+    results.push(res);
+    console.log(`${results.length}/${cases.length} ${res.autoPass ? "ok  " : "FAIL"} ${c.job.padEnd(16)} ${short(c.message, 60)}`);
   }
-  await Promise.all(Array.from({ length: Math.min(CONCURRENCY, cases.length) }, worker));
+  // The first case runs ALONE (2026-11-23): after a prompt edit, cases started together each
+  // write V's instructions to the prompt cache, since none can read what another has not
+  // finished writing. Four at once cost $0.013 for a 5-case re-test against $0.002 cached.
+  let next = cases.length > 0 ? 1 : 0;
+  if (cases.length > 0) await runAndLog(cases[0]);
+  async function worker() {
+    while (next < cases.length) await runAndLog(cases[next++]);
+  }
+  await Promise.all(Array.from({ length: Math.min(CONCURRENCY, cases.length - next) }, worker));
   results.sort((a, b) => cases.indexOf(a.c) - cases.indexOf(b.c));
 
   // Cases from a file are not in v_eval_cases, so nothing is stored: the replies are printed to read.

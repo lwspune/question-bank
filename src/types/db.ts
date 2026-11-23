@@ -854,6 +854,7 @@ export type Database = {
           cache_write_1h_tokens: number | null
           cache_write_tokens: number | null
           conversation_id: string | null
+          country: string | null
           created_at: string
           event_type: string
           feedback: number | null
@@ -868,6 +869,7 @@ export type Database = {
           reply_to_id: string | null
           reply_to_step: number | null
           seen_at: string | null
+          site: string | null
           tokens_in: number | null
           tokens_out: number | null
           tool_calls: Json | null
@@ -882,6 +884,7 @@ export type Database = {
           cache_write_1h_tokens?: number | null
           cache_write_tokens?: number | null
           conversation_id?: string | null
+          country?: string | null
           created_at?: string
           event_type: string
           feedback?: number | null
@@ -896,6 +899,7 @@ export type Database = {
           reply_to_id?: string | null
           reply_to_step?: number | null
           seen_at?: string | null
+          site?: string | null
           tokens_in?: number | null
           tokens_out?: number | null
           tool_calls?: Json | null
@@ -910,6 +914,7 @@ export type Database = {
           cache_write_1h_tokens?: number | null
           cache_write_tokens?: number | null
           conversation_id?: string | null
+          country?: string | null
           created_at?: string
           event_type?: string
           feedback?: number | null
@@ -924,6 +929,7 @@ export type Database = {
           reply_to_id?: string | null
           reply_to_step?: number | null
           seen_at?: string | null
+          site?: string | null
           tokens_in?: number | null
           tokens_out?: number | null
           tool_calls?: Json | null
