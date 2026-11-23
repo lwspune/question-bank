@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 701
+ * Entries: 717
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -241,7 +241,23 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/jee-mains-physics/wave-optics": "2026-11-20T01:33:03+05:30",
   "/notes/jee-mains-physics/waves": "2026-11-20T01:05:34+05:30",
   "/notes/jee-mains-physics/work-energy-and-power": "2026-11-20T01:25:25+05:30",
-  "/notes/mh-hsc-12-maths/application-of-definite-integration": "2026-11-23T17:30:59+05:30",
+  "/notes/mh-hsc-12-chemistry/alcohols-phenols-and-ethers": "2026-11-23T20:12:34+05:30",
+  "/notes/mh-hsc-12-chemistry/aldehydes-ketones-and-carboxylic-acids": "2026-11-23T20:12:34+05:30",
+  "/notes/mh-hsc-12-chemistry/amines": "2026-11-23T20:12:34+05:30",
+  "/notes/mh-hsc-12-chemistry/biomolecules": "2026-11-23T19:33:16+05:30",
+  "/notes/mh-hsc-12-chemistry/chemical-kinetics": "2026-11-23T20:12:34+05:30",
+  "/notes/mh-hsc-12-chemistry/chemical-thermodynamics": "2026-11-23T20:12:34+05:30",
+  "/notes/mh-hsc-12-chemistry/coordination-compounds": "2026-11-23T19:07:47+05:30",
+  "/notes/mh-hsc-12-chemistry/electrochemistry": "2026-11-23T18:52:13+05:30",
+  "/notes/mh-hsc-12-chemistry/elements-of-group-16-17-and-18": "2026-11-23T19:08:41+05:30",
+  "/notes/mh-hsc-12-chemistry/green-chemistry-and-nanochemistry": "2026-11-23T19:43:26+05:30",
+  "/notes/mh-hsc-12-chemistry/halogen-derivatives": "2026-11-23T20:12:34+05:30",
+  "/notes/mh-hsc-12-chemistry/introduction-to-polymer-chemistry": "2026-11-23T19:39:32+05:30",
+  "/notes/mh-hsc-12-chemistry/ionic-equilibria": "2026-11-23T18:35:03+05:30",
+  "/notes/mh-hsc-12-chemistry/solid-state": "2026-11-23T20:12:34+05:30",
+  "/notes/mh-hsc-12-chemistry/solutions": "2026-11-23T20:12:34+05:30",
+  "/notes/mh-hsc-12-chemistry/transition-and-inner-transition-elements": "2026-11-23T20:12:34+05:30",
+  "/notes/mh-hsc-12-maths/application-of-definite-integration": "2026-11-23T18:00:58+05:30",
   "/notes/mh-hsc-12-maths/application-of-derivatives": "2026-11-23T16:58:51+05:30",
   "/notes/mh-hsc-12-maths/binomial-distribution": "2026-11-23T16:58:51+05:30",
   "/notes/mh-hsc-12-maths/definite-integration": "2026-11-23T16:58:51+05:30",
