@@ -480,7 +480,6 @@ The load-bearing choices made during the initial scaffold. Every later phase res
   - **Hindi default per exam** (`defaultLang` via QuestionLangDefaultProvider): server-rendered, no cookie; a stored choice wins.
   - **`pastPaperPages`** gives /question-papers without /board; "attempt any N" in `data/attempt-rules.json`. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 
-
 ### 2026-10
 
 Archived to DECISIONS_HISTORY.md on 2026-11-05 (all ten had their long form there).
