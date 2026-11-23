@@ -6,7 +6,7 @@ export const HSC_MA_TF_TRIANGLE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Three rules link the sides and angles of any triangle: a/sin A = b/sin B = c/sin C = 2R, a² = b² + c² − 2bc cos A, and a = b cos C + c cos B.",
   whyItMatters:
-    "29 questions. Ten were set in board papers: find angle B when a = 2, b = 3 and sin A = 2/3 (2020, 2025), find B when c² + a² − b² = ac (2022, 2023), prove the cosine rule (2025), show that the triangle with sides 2, 3, 4 is obtuse (2025), show that a cos A = b cos B makes a triangle right angled or isosceles (2024), prove a(b cos C − c cos B) = b² − c² (2026), simplify (a + b) cos C + (b + c) cos A + (c + a) cos B (2025), and two half-angle values (2026). The textbook adds ratios of sides and longer proofs.",
+    "27 questions. Nine were set in board papers: find angle B when a = 2, b = 3 and sin A = 2/3 (2020, 2025), find B when c² + a² − b² = ac (2022, 2023), prove the cosine rule (2025), show that the triangle with sides 2, 3, 4 is obtuse (2025), show that a cos A = b cos B makes a triangle right angled or isosceles (2024), prove a(b cos C − c cos B) = b² − c² (2026), and simplify (a + b) cos C + (b + c) cos A + (c + a) cos B (2025). The textbook adds ratios of sides and longer proofs.",
   concepts: [
     {
       kind: "formula" as const,

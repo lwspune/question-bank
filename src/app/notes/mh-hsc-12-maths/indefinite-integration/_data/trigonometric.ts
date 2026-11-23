@@ -6,7 +6,7 @@ export const HSC_MA_II_TRIGONOMETRIC_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Powers of sin, cos and tan, ratios with shifted angles, and denominators in sin x, cos x or their squares, each with its own rewriting or substitution that turns it into a standard integral.",
   whyItMatters:
-    "56 questions, five of them from board papers: sin(x + a) over cos(x − b) (2024 and 2025), and in 2026 √(1 + sin 2x), sin x over sin 3x, and 2 over 3 + 2 sin²x + 5 cos²x. The textbook rows are Exercise 3.2(A) Part II, the trigonometric items of Exercise 3.2(B) and many Miscellaneous items.",
+    "55 questions, five of them from board papers: sin(x + a) over cos(x − b) (2024 and 2025), and in 2026 √(1 + sin 2x), sin x over sin 3x, and 2 over 3 + 2 sin²x + 5 cos²x. The textbook rows are Exercise 3.2(A) Part II, the trigonometric items of Exercise 3.2(B) and many Miscellaneous items.",
   concepts: [
     {
       kind: "formula" as const,

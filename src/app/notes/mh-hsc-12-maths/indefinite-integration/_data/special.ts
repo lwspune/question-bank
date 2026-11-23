@@ -6,7 +6,7 @@ export const HSC_MA_II_SPECIAL_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Six standard results for 1 over x² ± a², a² − x² and their square roots, with completing the square to bring any quadratic to one of these forms.",
   whyItMatters:
-    "39 questions, five of them from board papers: proofs of the integrals of 1/(a² − x²) (2018), 1/√(x² + a²) (2019) and √(a² − x²) (2025), an MCQ on 1/(9x² + 1) (2019), and 1/(25 − 9x²) to evaluate (2025). The textbook rows are Exercise 3.2(B) Part I, its solved examples and one Miscellaneous item.",
+    "38 questions, four of them from board papers: proofs of the integrals of 1/(a² − x²) (2018) and 1/√(x² + a²) (2019), an MCQ on 1/(9x² + 1) (2019), and 1/(25 − 9x²) to evaluate (2025). The textbook rows are Exercise 3.2(B) Part I, its solved examples and one Miscellaneous item.",
   concepts: [
     {
       kind: "formula" as const,

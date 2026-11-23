@@ -6,7 +6,7 @@ export const HSC_MA_II_FRACTIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A proper rational function is split into simpler fractions, one for each factor of the denominator, and each piece integrates to a log or an inverse tangent.",
   whyItMatters:
-    "35 questions, two of them from board papers: 5eˣ over (eˣ + 1)(e²ˣ + 9) (2024), and (3x² + 4x − 5) over (x² − 1)(x + 2) (2026), the same as a solved example of the textbook. The textbook rows are Exercise 3.4, its solved examples and Miscellaneous items.",
+    "36 questions, two of them from board papers: 5eˣ over (eˣ + 1)(e²ˣ + 9) (2024), and (3x² + 4x − 5) over (x² − 1)(x + 2) (2026), the same as a solved example of the textbook. The textbook rows are Exercise 3.4, its solved examples and Miscellaneous items.",
   concepts: [
     {
       kind: "formula" as const,

@@ -6,7 +6,7 @@ export const HSC_MA_ML_NEGATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The quantifiers 'for all' and 'there exists', the dual of a statement pattern, and the rules for negating compound and quantified statements.",
   whyItMatters:
-    "86 questions. Eight were set in board papers: the negation of 'p and (if q then r)' as an MCQ (2016 and 2022), the dual of a pattern (2024, and twice in 2026), the negation of a 'there exists' statement (2025), and which quantified statement about a set is not true (2025 and 2026). The textbook adds dozens of negations with the rule named, duals with t and c, and six conditionals whose converse, inverse and contrapositive are taught on the next page.",
+    "80 questions. Eight were set in board papers: the negation of 'p and (if q then r)' as an MCQ (2016 and 2022), the dual of a pattern (2024, and twice in 2026), the negation of a 'there exists' statement (2025), and which quantified statement about a set is not true (2025 and 2026). The textbook adds dozens of negations with the rule named, and duals with t and c.",
   concepts: [
     {
       kind: "formula" as const,

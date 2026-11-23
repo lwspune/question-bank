@@ -6,7 +6,7 @@ export const HSC_MA_PS_COMBINED_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The product of two line equations is their combined equation. For lines through the origin it is ax² + 2hxy + by² = 0, a pair of lines when h² − ab ≥ 0, with slopes whose sum is −2h/b and product a/b.",
   whyItMatters:
-    "110 questions, the largest page of the chapter. Nineteen came from board papers: the proof that ax² + 2hxy + by² = 0 is a pair of lines through the origin when h² − ab ≥ 0 (2016, 2018, 2020, 2025 and twice in 2026), k when the sum of the slopes is twice their product (2015, 2024, 2026) or when 2x + y = 0 is one of the lines (2022, 2026), the pair through the origin perpendicular to a given pair (2017, 2018), the ratio of the slopes when h² = ab (2023), the difference of the slopes (2024), and short questions on writing a combined equation or the separate equations (2022 to 2025). The textbook rows are Exercise 4.1, its solved examples and most of the Miscellaneous Exercise.",
+    "109 questions, the largest page of the chapter. Nineteen came from board papers: the proof that ax² + 2hxy + by² = 0 is a pair of lines through the origin when h² − ab ≥ 0 (2016, 2018, 2020, 2025 and twice in 2026), k when the sum of the slopes is twice their product (2015, 2024, 2026) or when 2x + y = 0 is one of the lines (2022, 2026), the pair through the origin perpendicular to a given pair (2017, 2018), the ratio of the slopes when h² = ab (2023), the difference of the slopes (2024), and short questions on writing a combined equation or the separate equations (2022 to 2025). The textbook rows are Exercise 4.1, its solved examples and most of the Miscellaneous Exercise.",
   concepts: [
     {
       kind: "formula" as const,

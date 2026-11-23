@@ -6,7 +6,7 @@ export const HSC_MA_PS_ANGLE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The acute angle θ between the lines ax² + 2hxy + by² = 0 is given by tan θ = |2√(h² − ab)/(a + b)|. The lines are perpendicular when a + b = 0 and coincident when h² = ab.",
   whyItMatters:
-    "34 questions, eight of them from board papers. Five ask for the proof of tan θ = |2√(h² − ab)/(a + b)| (2015, 2017, 2023, 2024, 2025), and in 2017 and 2024 the proof goes on to the condition for coincident lines. The others ask for the angle between the lines 3x² + 4xy − 3y² = 0 (2020) and xy + y² = 0 (2024), and to show that 100(h² − ab) = (a + b)² when two pairs make the same angle (2022). The textbook rows are Exercise 4.2, its solved examples and the Miscellaneous questions on lines at a given angle and equilateral triangles.",
+    "35 questions, eight of them from board papers. Five ask for the proof of tan θ = |2√(h² − ab)/(a + b)| (2015, 2017, 2023, 2024, 2025), and in 2017 and 2024 the proof goes on to the condition for coincident lines. The others ask for the angle between the lines 3x² + 4xy − 3y² = 0 (2020) and xy + y² = 0 (2024), and to show that 100(h² − ab) = (a + b)² when two pairs make the same angle (2022). The textbook rows are Exercise 4.2, its solved examples and the Miscellaneous questions on lines at a given angle and equilateral triangles.",
   concepts: [
     {
       kind: "formula" as const,

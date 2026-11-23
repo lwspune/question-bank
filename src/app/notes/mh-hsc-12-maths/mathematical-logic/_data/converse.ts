@@ -6,7 +6,7 @@ export const HSC_MA_ML_CONVERSE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The three statements made from a conditional by swapping and negating its parts, which of them mean the same thing, and how to write a conditional without 'if ... then'.",
   whyItMatters:
-    "13 questions. Six were set in board papers: the converse, inverse or contrapositive of a sentence in words (2015, 2018, 2020 and 2023), the inverse of a statement pattern (2025, an MCQ) and the converse of a contrapositive (2026, an MCQ). The textbook adds rewriting a conditional in words without 'if ... then'.",
+    "19 questions. Six were set in board papers: the converse, inverse or contrapositive of a sentence in words (2015, 2018, 2020 and 2023), the inverse of a statement pattern (2025, an MCQ) and the converse of a contrapositive (2026, an MCQ). The textbook adds six conditionals in words to turn into their converse, inverse and contrapositive, and rewriting a conditional without 'if ... then'.",
   concepts: [
     {
       kind: "formula" as const,

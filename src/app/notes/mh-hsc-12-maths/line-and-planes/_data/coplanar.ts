@@ -6,7 +6,7 @@ export const HSC_MA_LP_COPLANAR_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Two lines lie in one plane when they are parallel or when they meet. The test is a scalar triple product equal to zero, and the plane through both lines has normal b₁ × b₂.",
   whyItMatters:
-    "6 questions, one of them from a board paper: show that two given lines intersect (2026), the same pair of lines the textbook proves coplanar in Solved Example 14. The textbook rows are Solved Example 14, Exercise 6.4 Question 3, and two written questions and one MCQ of Miscellaneous Exercise 6 B.",
+    "7 questions, one of them from a board paper: show that two given lines intersect (2026), the same pair of lines the textbook proves coplanar in Solved Example 14. The textbook rows are Solved Example 14, Exercise 6.4 Question 3, and three written questions and one MCQ of Miscellaneous Exercise 6 B.",
   concepts: [
     {
       kind: "formula" as const,

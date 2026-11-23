@@ -6,7 +6,7 @@ export const HSC_MA_LR_FORMULATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Turning a word problem into an L.P.P.: name the decision variables, write the objective function to be maximized or minimized, and write every condition as a linear inequation, with x ≥ 0 and y ≥ 0.",
   whyItMatters:
-    "22 questions, one of them from a board paper: in 2015 the board set a diet problem (two foods, two vitamins) to be formulated and then solved for the minimum cost. A 2024 board problem on two machines, formulated and solved for the maximum profit, sits on the next page. The textbook rows are Exercise 7.3 and its solved examples, which ask for the formulation only, and the word problems of Part II of the Miscellaneous Exercise, which ask for the formulation and then the graphical solution.",
+    "23 questions, two of them from board papers: a diet problem (two foods, two vitamins) to be formulated and then solved for the minimum cost (2015), and a problem on two machines to be formulated and then solved for the maximum profit (2024). The textbook rows are Exercise 7.3 and its solved examples, which ask for the formulation only, and the word problems of Part II of the Miscellaneous Exercise, which ask for the formulation and then the graphical solution.",
   concepts: [
     {
       kind: "reference" as const,

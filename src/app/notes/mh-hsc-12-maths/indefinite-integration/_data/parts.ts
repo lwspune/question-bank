@@ -6,7 +6,7 @@ export const HSC_MA_II_PARTS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The integral of a product of two functions is found by integrating one and differentiating the other, choosing the first function by the LIATE order; it also gives the integrals that come back to themselves, the root integrals and the eˣ[f(x) + f′(x)] rule.",
   whyItMatters:
-    "79 questions, the largest page of the chapter. Thirteen were set in board papers, more than on any other page: the proof of the rule (2017, 2022), log x (2022, 2024), x log x (2026), x tan⁻¹x (2023), x² sin 3x (2024), sec³x (2015), the proofs of the integrals of √(x² − a²) (2015) and √(a² − x²) (2016), and eˣ[f(x) + f′(x)] forms (2015, 2018, 2025, and an MCQ in 2026). The textbook rows are Exercise 3.3, its solved examples and Miscellaneous items.",
+    "80 questions, the largest page of the chapter. Fourteen were set in board papers, more than on any other page: the proof of the rule (2017, 2022), log x (2022, 2024), x log x (2026), x tan⁻¹x (2023), x² sin 3x (2024), sec³x (2015), the proofs of the integrals of √(x² − a²) (2015) and √(a² − x²) (2016, 2025), and eˣ[f(x) + f′(x)] forms (2015, 2018, 2025, and an MCQ in 2026). The textbook rows are Exercise 3.3, its solved examples and Miscellaneous items.",
   concepts: [
     {
       kind: "formula" as const,

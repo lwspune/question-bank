@@ -6,7 +6,7 @@ export const HSC_MA_ML_TABLES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Finding the truth value of a statement pattern from given values, working back to the values of p and q, and building the full truth table.",
   whyItMatters:
-    "35 questions. Three were set in board papers, all in 2024 and 2025: the truth value of a pattern when p, q are true and r, s are false (2024), the full truth table of a two-letter pattern (2024), and an equivalence proved with a truth table (2025). The textbook adds tables with two and three letters, and finding the truth values of p and q from given compound values.",
+    "34 questions. Two were set in board papers, both in 2024: the truth value of a pattern when p, q are true and r, s are false, and the full truth table of a two-letter pattern. The textbook adds tables with two and three letters, and finding the truth values of p and q from given compound values.",
   concepts: [
     {
       kind: "formula" as const,

@@ -6,7 +6,7 @@ export const HSC_MA_LP_LINE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A line in space is fixed by one point on it and its direction. That gives its vector equation r = a + λb and its Cartesian equations (x − x₁)/a = (y − y₁)/b = (z − z₁)/c.",
   whyItMatters:
-    "63 questions, the largest page of the chapter, seventeen of them from board papers: the vector equation of a line through a point parallel to a vector (2018, 2024, 2025) or through two points (2026), the Cartesian equations through two points (MCQs in 2020, 2022, 2026), changing Cartesian equations to vector form (2015), direction ratios and direction cosines (2025), a line perpendicular to two given lines or vectors (2015, 2019, 2020, 2024), and the angle between two lines (2018, 2025, 2026). The textbook rows are Exercise 6.1, Solved Examples 1 to 11, most of Miscellaneous Exercise 6 A and six MCQs of Miscellaneous Exercise 6 B.",
+    "65 questions, the largest page of the chapter, eighteen of them from board papers: the vector equation of a line through a point parallel to a vector (2018, 2024, 2025) or through two points (2026), the Cartesian equations through two points (MCQs in 2020, 2022, 2026), changing Cartesian equations to vector form (2015), direction ratios and direction cosines (2025), a line perpendicular to two given lines or vectors (2015, 2019, 2020, 2024), and the angle between two lines (2018, an MCQ in 2024, 2025, 2026). The textbook rows are Exercise 6.1, Solved Examples 1 to 11, most of Miscellaneous Exercise 6 A and six MCQs of Miscellaneous Exercise 6 B.",
   concepts: [
     {
       kind: "formula" as const,

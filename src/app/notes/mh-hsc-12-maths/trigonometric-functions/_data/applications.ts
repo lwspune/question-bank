@@ -6,7 +6,7 @@ export const HSC_MA_TF_APPLICATIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The sine, cosine and projection rules give the half-angle formulae in terms of the semi-perimeter s, Heron's formula for the area, Napier's analogy, and the proofs of identities in a triangle.",
   whyItMatters:
-    "37 questions. Nine were set in board papers: half-angle values in the triangles with sides 13, 14, 15 (2017, 2025) and 18, 24, 30 (2024), prove the formula for sin(A/2) (2020), prove sin((B − C)/2) = ((b − c)/a) cos(A/2) (2019), prove (a − b)² cos²(C/2) + (a + b)² sin²(C/2) = c² (2016, 2019), prove cos A/a + cos B/b + cos C/c = (a² + b² + c²)/2abc (2024), and the ratio of the sides when A = 45° and B = 60° (2026). The textbook adds Heron's formula, Napier's analogy and longer proofs.",
+    "39 questions. Ten were set in board papers: half-angle values in the triangles with sides 13, 14, 15 (2017, 2025), 18, 24, 30 (2024) and 10, 8, 6 (2026), prove the formula for sin(A/2) (2020), prove sin((B − C)/2) = ((b − c)/a) cos(A/2) (2019), prove (a − b)² cos²(C/2) + (a + b)² sin²(C/2) = c² (2016, 2019), prove cos A/a + cos B/b + cos C/c = (a² + b² + c²)/2abc (2024), and the ratio of the sides when A = 45° and B = 60° (2026). The textbook adds Heron's formula, Napier's analogy and longer proofs.",
   concepts: [
     {
       kind: "formula" as const,

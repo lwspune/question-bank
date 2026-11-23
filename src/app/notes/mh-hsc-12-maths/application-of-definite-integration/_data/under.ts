@@ -6,7 +6,7 @@ export const HSC_MA_AI_UNDER_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The area bounded by a curve, an axis and two lines is a definite integral: the integral of y dx between x = a and x = b, or of x dy between y = c and y = d, always taken as a positive number.",
   whyItMatters:
-    "49 questions, the larger page of the chapter, ten of them from board papers: the area under a parabola between two lines (2016, 2023, 2024), the area between y = x² and the line y = 4 (2023), the area of an ellipse, derived in general in 2024 and for a given ellipse in 2018, a parabola and its latus rectum (2025), and a line or curve that lies below or crosses the X-axis (MCQs in 2025 and 2026, a written question in 2026). The textbook rows are most of the solved examples, Exercise 5.1 Q.1 and Q.2 and most of the Miscellaneous Exercise.",
+    "50 questions, the larger page of the chapter, ten of them from board papers: the area under a parabola between two lines (2016, 2023, 2024), the area between y = x² and the line y = 4 (2023), the area of an ellipse, derived in general in 2024 and for a given ellipse in 2018, a parabola and its latus rectum (2025), and a line or curve that lies below or crosses the X-axis (MCQs in 2025 and 2026, a written question in 2026). The textbook rows are most of the solved examples, Exercise 5.1 Q.1 and Q.2 and most of the Miscellaneous Exercise.",
   concepts: [
     {
       kind: "formula" as const,

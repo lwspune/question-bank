@@ -6,7 +6,7 @@ export const HSC_MA_LR_GRAPHICAL_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Finding the maximum or minimum of the objective function by drawing the feasible region, listing its corner points and comparing the value of z at each corner: the corner-point method.",
   whyItMatters:
-    "44 questions, thirteen of them from board papers, the most of any page: the board set one in every year from 2016 to 2026 except 2021, and two in each of 2024, 2025 and 2026. Seven ask for a maximum (2017, 2019, 2020, 2024 twice, 2025 twice) and five for a minimum (2016, 2018, 2022, 2026 twice); the 2023 question is an MCQ that gives the corner points, and one of the 2024 maximums is a word problem on two machines. The textbook rows are Exercise 7.4, its four solved examples and Parts I and II of the Miscellaneous Exercise.",
+    "43 questions, twelve of them from board papers, the most of any page: the board set one in every year from 2016 to 2026 except 2021, and two in each of 2025 and 2026. Six ask for a maximum (2017, 2019, 2020, 2024, 2025 twice) and five for a minimum (2016, 2018, 2022, 2026 twice); the 2023 question is an MCQ that gives the corner points. The textbook rows are Exercise 7.4, its four solved examples and Parts I and II of the Miscellaneous Exercise.",
   concepts: [
     {
       kind: "reference" as const,

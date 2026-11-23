@@ -6,7 +6,7 @@ export const HSC_MA_LP_POINTLINE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The perpendicular distance from a point to a line in space, found by a formula built from a projection, or by first finding the foot of the perpendicular.",
   whyItMatters:
-    "10 questions, one of them from a board paper: the length of the perpendicular from the point (3, 2, 1) to a line, set in 2023, which is the textbook's own Solved Example 12 word for word. The textbook rows are Exercise 6.2 Questions 1, 2, 5 and 6, Solved Examples 12 and 13, two questions of Miscellaneous Exercise 6 A and one MCQ of Miscellaneous Exercise 6 B.",
+    "9 questions, one of them from a board paper: the length of the perpendicular from the point (3, 2, 1) to a line, set in 2023, which is the textbook's own Solved Example 12 word for word. The textbook rows are Exercise 6.2 Questions 1, 2, 5 and 6, Solved Examples 12 and 13, one question of Miscellaneous Exercise 6 A and one MCQ of Miscellaneous Exercise 6 B.",
   concepts: [
     {
       kind: "formula" as const,

@@ -6,7 +6,7 @@ export const HSC_MA_LP_ANGLE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The angle between two planes is the acute angle between their normals. The angle between a line and a plane is the complement of the acute angle between the line and the normal to the plane.",
   whyItMatters:
-    "14 questions, five of them from board papers: the acute angle between two planes (an MCQ in 2019), the value of m that makes a line parallel to a plane (an MCQ in 2020), the angle between a line and a plane (2024, and an MCQ in 2026), and an MCQ in 2024 on the angle between two lines. The textbook rows are Solved Examples 12 and 13, Exercise 6.4 Questions 1 and 2, and two written questions and three MCQs of Miscellaneous Exercise 6 B.",
+    "13 questions, four of them from board papers: the acute angle between two planes (an MCQ in 2019), the value of m that makes a line parallel to a plane (an MCQ in 2020), and the angle between a line and a plane (2024, and an MCQ in 2026). The textbook rows are Solved Examples 12 and 13, Exercise 6.4 Questions 1 and 2, and two written questions and three MCQs of Miscellaneous Exercise 6 B.",
   concepts: [
     {
       kind: "formula" as const,

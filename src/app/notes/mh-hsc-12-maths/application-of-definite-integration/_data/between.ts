@@ -6,7 +6,7 @@ export const HSC_MA_AI_BETWEEN_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The area enclosed by two curves is the integral of (upper curve minus lower curve) between the x co-ordinates of their points of intersection, or of (right curve minus left curve) along y.",
   whyItMatters:
-    "25 questions, three of them from board papers: the area between the parabolas y² = 4ax and x² = 4ay (2022) and between y² = 4x and x² = 4y (2025), and the area between the circle x² + y² = 1 and the line x + y = 1 in the first quadrant (2026). All three are long written answers. The textbook rows are solved examples, Exercise 5.1 Q.3 and the Miscellaneous Exercise: a parabola and a line, two parabolas, strips along the Y-axis, and a circle or ellipse cut by a chord.",
+    "24 questions, three of them from board papers: the area between the parabolas y² = 4ax and x² = 4ay (2022) and between y² = 4x and x² = 4y (2025), and the area between the circle x² + y² = 1 and the line x + y = 1 in the first quadrant (2026). All three are long written answers. The textbook rows are solved examples, Exercise 5.1 Q.3 and the Miscellaneous Exercise: a parabola and a line, two parabolas, strips along the Y-axis, and a circle or ellipse cut by a chord.",
   concepts: [
     {
       kind: "formula" as const,

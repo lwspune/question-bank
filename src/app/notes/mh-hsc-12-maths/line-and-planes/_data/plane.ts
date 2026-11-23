@@ -6,7 +6,7 @@ export const HSC_MA_LP_PLANE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A plane is fixed by a point and a normal, by a point and two directions in it, or by three points. It is written in vector, Cartesian, normal or parametric form.",
   whyItMatters:
-    "55 questions, thirteen of them from board papers: a plane through a point perpendicular to a vector (2016, 2025) or with given direction ratios of its normal (2022, 2025), the vector form of a Cartesian plane (2019), a plane parallel to two vectors (2022, 2025) or given in parametric form (2026), a plane through three points (2017, 2025, 2026), a plane through the line of intersection of two planes and the origin (2024), and the planes parallel to a given plane at unit distance from a point (2015). The textbook rows are Exercise 6.3, Solved Examples 1 to 11, and fourteen written questions and six MCQs of Miscellaneous Exercise 6 B.",
+    "54 questions, thirteen of them from board papers: a plane through a point perpendicular to a vector (2016, 2025) or with given direction ratios of its normal (2022, 2025), the vector form of a Cartesian plane (2019), a plane parallel to two vectors (2022, 2025) or given in parametric form (2026), a plane through three points (2017, 2025, 2026), a plane through the line of intersection of two planes and the origin (2024), and the planes parallel to a given plane at unit distance from a point (2015). The textbook rows are Exercise 6.3, Solved Examples 1 to 11, and thirteen written questions and six MCQs of Miscellaneous Exercise 6 B.",
   concepts: [
     {
       kind: "formula" as const,

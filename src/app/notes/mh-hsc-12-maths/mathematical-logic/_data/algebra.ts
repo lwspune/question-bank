@@ -6,7 +6,7 @@ export const HSC_MA_ML_ALGEBRA_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Proving that two statement patterns are equivalent, first with a truth table and then without one, using the named laws of the algebra of statements.",
   whyItMatters:
-    "28 questions. Five were set in board papers: four ask you to prove or verify an equivalence with a truth table (2018, 2020, 2022 and 2025; the 2018 and 2025 papers set the same biconditional equivalence), and one asks for a proof without a truth table (2022). The textbook adds proofs of both kinds and one MCQ on an equivalent pattern.",
+    "29 questions. Six were set in board papers: five ask you to prove or verify an equivalence with a truth table (2018, 2020, 2022 and twice in 2025; the 2018 paper and one 2025 paper set the same biconditional equivalence), and one asks for a proof without a truth table (2022). The textbook adds proofs of both kinds and one MCQ on an equivalent pattern.",
   concepts: [
     {
       kind: "formula" as const,
