@@ -26,7 +26,7 @@ vi.mock("@/lib/billing/webhookReceipts", () => ({
   trimReceipts: vi.fn(async () => undefined),
 }));
 vi.mock("@/lib/answerSheets/grader", () => ({ readGraderEmails: vi.fn(async () => ["owner@example.test"]) }));
-vi.mock("@/lib/email/resend", () => ({ sendEmail: vi.fn(async () => ({ ok: true, id: "e1" })) }));
+vi.mock("@/lib/email/resend", () => ({ sendEmail: vi.fn(async () => ({ ok: true, providerId: "e1" })) }));
 
 import { listPayments } from "@/lib/billing/razorpay";
 import { claimDailyAlarm, readReceivedRefs, releaseDailyAlarm } from "@/lib/billing/webhookReceipts";
@@ -58,7 +58,7 @@ const run = (apply = true) =>
   runPaymentCheck({ admin: fakeAdmin(), apply, days: 3, runUrl: "run", nowMs: NOW_MS });
 
 beforeEach(() => {
-  vi.mocked(sendEmail).mockClear().mockResolvedValue({ ok: true, id: "e1" });
+  vi.mocked(sendEmail).mockClear().mockResolvedValue({ ok: true, providerId: "e1" });
   vi.mocked(claimDailyAlarm).mockClear().mockResolvedValue(true);
   vi.mocked(releaseDailyAlarm).mockClear();
   vi.mocked(readReceivedRefs).mockReset().mockResolvedValue(new Set());
