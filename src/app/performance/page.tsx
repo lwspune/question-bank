@@ -30,7 +30,6 @@ import { loadMeHeader } from "@/lib/me/header";
 import { performanceFocus } from "@/lib/me/focus";
 import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { mockCatalogueHref } from "@/lib/exam/examLinks";
-import ProgressSwitch from "@/components/me/ProgressSwitch";
 import OutcomeTiles from "@/components/me/OutcomeTiles";
 import RecentPapers from "@/components/me/RecentPapers";
 import AttemptsTrend from "@/app/mock/attempts/AttemptsTrend";
@@ -160,7 +159,6 @@ export default async function OwnPerformancePage(props: { searchParams: Promise<
       <AppHeader />
       <main className="mx-auto max-w-5xl space-y-8 px-4 py-6 sm:px-6 sm:py-8">
         <MeHeader data={header} active="progress" readOnly={false} />
-        <ProgressSwitch active="papers" />
         <OutcomeTiles mastery={mastery} />
 
         {pf.noPaperFor && focusExam ? (

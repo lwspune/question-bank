@@ -19,7 +19,6 @@ import { drillHref } from "@/lib/drill/from";
 import { isIntlHost } from "@/lib/sites/intl";
 import { forSite } from "@/lib/sites/siteScope";
 import MeHeader from "@/components/me/MeHeader";
-import ProgressSwitch from "@/components/me/ProgressSwitch";
 import OutcomeTiles from "@/components/me/OutcomeTiles";
 import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { loadMeHeader } from "@/lib/me/header";
@@ -66,8 +65,8 @@ export default async function MasteryMapPage(props: { searchParams: Promise<Sear
   const db = createSupabaseServerClient();
   // intl.pyqvault.com holds the international exams alone, www every other
   // exam (lib/sites/siteScope): each site's map is that site's lanes. On www
-  // the map is the Progress tab's Chapters view (2026-11-08) under the
-  // student's header; intl has no Home or Papers, so it keeps its own header.
+  // the map is the student's Map tab (2026-11-23; before, Chapters under
+  // Progress); intl has no Home or Papers, so it keeps its own header.
   const intl = isIntlHost((await headers()).get("host"));
   const [payload, practice, header] = await Promise.all([
     getOwnPerformance(),
@@ -79,7 +78,7 @@ export default async function MasteryMapPage(props: { searchParams: Promise<Sear
 
   const perf = withPractice(payload, buildPerformance(payload, now), practice, now);
   const lanes = forSite(perf.lanes, (l) => l.exam, intl);
-  // Chapters follows the exam focus, as Papers does (lib/me/progress mapExamFor).
+  // The map follows the exam focus, as Papers does (lib/me/progress mapExamFor).
   const mf = mapExamFor({
     laneExams: [...new Set(lanes.map((l) => l.exam))],
     focusExamName: header?.focus.filterExamName ?? null,
@@ -106,8 +105,7 @@ export default async function MasteryMapPage(props: { searchParams: Promise<Sear
       <main className="mx-auto max-w-3xl space-y-6 px-4 py-6 sm:px-6 sm:py-8">
         {header ? (
           <>
-            <MeHeader data={header} active="progress" readOnly={false} />
-            <ProgressSwitch active="chapters" />
+            <MeHeader data={header} active="map" readOnly={false} />
             <OutcomeTiles mastery={masteryTile(lanes)} />
             <p className="text-sm text-muted-foreground">
               Every subtopic you have answered questions on, in papers or in practice. Fixing mistakes moves the dots.
