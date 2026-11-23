@@ -6,6 +6,12 @@ import {
   FREEZE_MS,
   SPEED_UP_EVERY,
   WORLD_TARGET,
+  GENTLE_BLASTS,
+  GENTLE_SPEED,
+  RAIN_STARS,
+  EASY_FIRST_SUMS,
+  rainStars,
+  nextStarAt,
   fallSecondsFor,
   rainMultiplier,
   startRain,
@@ -19,6 +25,16 @@ import {
 } from "@/lib/play/rain";
 
 const rng = () => seededRng(7);
+
+/** "43 + 25" or "78 − 35" with two-digit numbers and no carry or borrow in any column. */
+function isNoCarry(prompt: string): boolean {
+  const m = /^(\d+) ([+−]) (\d+)$/.exec(prompt);
+  if (!m) return false;
+  const a = Number(m[1]), b = Number(m[3]);
+  if (a < 10 || a > 99 || b < 10 || b > 99) return false;
+  const [at, au, bt, bu] = [Math.floor(a / 10), a % 10, Math.floor(b / 10), b % 10];
+  return m[2] === "+" ? au + bu <= 9 && at + bt <= 9 : au >= bu && at > bt;
+}
 
 /** A state with the given drops on screen and no spawn due. */
 function withDrops(s: RainState, drops: { prompt: string; answer: number; y: number; gold?: boolean }[]): RainState {
@@ -58,7 +74,7 @@ describe("Number Rain: a fresh game", () => {
 
 describe("falling", () => {
   it("a drop falls by its speed times the time passed", () => {
-    const s = withDrops(startRain(1), [{ prompt: "2 + 3", answer: 5, y: 0 }]);
+    const s = { ...withDrops(startRain(1), [{ prompt: "2 + 3", answer: 5, y: 0 }]), blasts: GENTLE_BLASTS };
     const { state } = tick(s, 1000, rng());
     expect(state.drops[0].y).toBeCloseTo(1 / fallSecondsFor(1), 5);
   });
@@ -91,6 +107,77 @@ describe("falling", () => {
       const answers = s.drops.map((d) => d.answer);
       expect(new Set(answers).size).toBe(answers.length);
     }
+  });
+});
+
+describe("a gentle start (2026-11-23: 4 of 11 players scored under 150 and left)", () => {
+  it("until the first few blasts, sums fall slower", () => {
+    const s = withDrops(startRain(1), [{ prompt: "2 + 3", answer: 5, y: 0 }]);
+    const { state } = tick(s, 1000, rng());
+    expect(GENTLE_SPEED).toBeLessThan(1);
+    expect(state.drops[0].y).toBeCloseTo(GENTLE_SPEED / fallSecondsFor(1), 5);
+  });
+
+  it("until then, one sum at a time: no new sum while one is falling", () => {
+    const s = { ...withDrops(startRain(1), [{ prompt: "2 + 3", answer: 5, y: 0.1 }]), sinceSpawn: 99_999 };
+    expect(tick(s, 16, rng()).state.drops).toHaveLength(1);
+    const after = { ...s, blasts: GENTLE_BLASTS };
+    expect(tick(after, 16, rng()).state.drops.length).toBeGreaterThan(1);
+  });
+
+  it("the blast that ends the gentle start says the rain is coming", () => {
+    const s = { ...withDrops(startRain(1), [{ prompt: "7 + 5", answer: 12, y: 0.2 }]), blasts: GENTLE_BLASTS - 1 };
+    const { events } = typeAnswer(s, "12", rng());
+    expect(events.some((e) => e.type === "ramp")).toBe(true);
+    const later = { ...s, blasts: GENTLE_BLASTS };
+    expect(typeAnswer(later, "12", rng()).events.some((e) => e.type === "ramp")).toBe(false);
+  });
+});
+
+describe("the two-digit worlds (2026-11-23: two strong players scored 0 to 80 in world 4)", () => {
+  it("from world 4 a sum takes at least 15 s to fall", () => {
+    for (const l of LEVELS) if (l.id >= 4) expect(fallSecondsFor(l.id)).toBeGreaterThanOrEqual(15);
+  });
+
+  it("from world 4 at most 4 sums are on screen until 10 blasts, then up to 6", () => {
+    const four = [1, 2, 3, 4].map((i) => ({ prompt: `${10 + i} + 10`, answer: 20 + i, y: 0.1 }));
+    const crowded = (blasts: number): RainState => ({ ...withDrops(startRain(4), four), blasts, sinceSpawn: 99_999 });
+    expect(tick(crowded(GENTLE_BLASTS), 16, rng()).state.drops).toHaveLength(4);
+    expect(tick(crowded(9), 16, rng()).state.drops).toHaveLength(4);
+    expect(tick(crowded(10), 16, rng()).state.drops).toHaveLength(5);
+    const world1 = { ...withDrops(startRain(1), four), blasts: GENTLE_BLASTS, sinceSpawn: 99_999 };
+    expect(tick(world1, 16, rng()).state.drops).toHaveLength(5);
+  });
+
+  it("world 4's first sums need no carrying or borrowing", () => {
+    for (let seed = 1; seed < 30; seed++) {
+      let s: RainState = { ...startRain(4), blasts: 10 };
+      const r = seededRng(seed);
+      let checked = 0;
+      for (let i = 0; i < 400 && checked < 12; i++) {
+        const t = tick(s, 300, r);
+        for (const e of t.events) {
+          if (e.type !== "spawn") continue;
+          checked++;
+          if (e.drop.id <= EASY_FIRST_SUMS) expect(isNoCarry(e.drop.prompt), e.drop.prompt).toBe(true);
+        }
+        s = t.state.over ? { ...t.state, over: false, lives: 3 } : t.state;
+      }
+      expect(checked).toBeGreaterThan(EASY_FIRST_SUMS);
+    }
+  });
+});
+
+describe("stars per world", () => {
+  it("1 star at the score that opens the next world, then 2 and 3", () => {
+    expect(RAIN_STARS[0]).toBe(WORLD_TARGET);
+    expect([0, 299, 300, 999, 1000, 1999, 2000, 9000].map(rainStars)).toEqual([0, 0, 1, 1, 2, 2, 3, 3]);
+  });
+
+  it("names the score for the next star, and none after the third", () => {
+    expect(nextStarAt(0)).toBe(300);
+    expect(nextStarAt(1500)).toBe(2000);
+    expect(nextStarAt(2000)).toBeNull();
   });
 });
 
