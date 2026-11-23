@@ -14723,6 +14723,371 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 1,
       "traps": 21
     }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "solid-state",
+    "chipLabel": "Solid State notes",
+    "slugs": [
+      "hscc-ss-classes",
+      "hscc-ss-lattice",
+      "hscc-ss-cubic",
+      "hscc-ss-packing",
+      "hscc-ss-efficiency",
+      "hscc-ss-defects",
+      "hscc-ss-conduction",
+      "hscc-ss-magnetism"
+    ],
+    "chapterName": "Solid State",
+    "formulaCounts": {
+      "formulas": 9,
+      "tables": 12,
+      "traps": 42
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "solutions",
+    "chipLabel": "Solutions notes",
+    "slugs": [
+      "hscc-so-solubility",
+      "hscc-so-liquids",
+      "hscc-so-colligative",
+      "hscc-so-lowering",
+      "hscc-so-boiling",
+      "hscc-so-freezing",
+      "hscc-so-osmotic",
+      "hscc-so-electrolytes"
+    ],
+    "chapterName": "Solutions",
+    "formulaCounts": {
+      "formulas": 14,
+      "tables": 6,
+      "traps": 51
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "ionic-equilibria",
+    "chipLabel": "Ionic Equilibria notes",
+    "slugs": [
+      "hscc-ie-acids",
+      "hscc-ie-ionisation",
+      "hscc-ie-ph",
+      "hscc-ie-hydrolysis",
+      "hscc-ie-buffers",
+      "hscc-ie-solubility",
+      "hscc-ie-common"
+    ],
+    "chapterName": "Ionic Equilibria",
+    "formulaCounts": {
+      "formulas": 13,
+      "tables": 3,
+      "traps": 43
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "chemical-thermodynamics",
+    "chipLabel": "Chemical Thermodynamics notes",
+    "slugs": [
+      "hscc-th-terms",
+      "hscc-th-work",
+      "hscc-th-firstlaw",
+      "hscc-th-enthalpy",
+      "hscc-th-thermochemistry",
+      "hscc-th-spontaneity"
+    ],
+    "chapterName": "Chemical Thermodynamics",
+    "formulaCounts": {
+      "formulas": 16,
+      "tables": 5,
+      "traps": 47
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "chemical-kinetics",
+    "chipLabel": "Chemical Kinetics notes",
+    "slugs": [
+      "hscc-ck-rate",
+      "hscc-ck-concentration",
+      "hscc-ck-molecularity",
+      "hscc-ck-integrated",
+      "hscc-ck-collision",
+      "hscc-ck-temperature",
+      "hscc-ck-catalyst"
+    ],
+    "chapterName": "Chemical Kinetics",
+    "formulaCounts": {
+      "formulas": 13,
+      "tables": 6,
+      "traps": 41
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "electrochemistry",
+    "chipLabel": "Electrochemistry notes",
+    "slugs": [
+      "hscc-ec-conductance",
+      "hscc-ec-electrolysis",
+      "hscc-ec-galvanic",
+      "hscc-ec-potential",
+      "hscc-ec-thermodynamics",
+      "hscc-ec-reference",
+      "hscc-ec-cells",
+      "hscc-ec-series"
+    ],
+    "chapterName": "Electrochemistry",
+    "formulaCounts": {
+      "formulas": 16,
+      "tables": 6,
+      "traps": 44
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "coordination-compounds",
+    "chipLabel": "Coordination Compounds notes",
+    "slugs": [
+      "hscc-cc-ligands",
+      "hscc-cc-terms",
+      "hscc-cc-classification",
+      "hscc-cc-nomenclature",
+      "hscc-cc-isomerism",
+      "hscc-cc-stability",
+      "hscc-cc-bonding",
+      "hscc-cc-applications"
+    ],
+    "chapterName": "Coordination Compounds",
+    "formulaCounts": {
+      "formulas": 9,
+      "tables": 13,
+      "traps": 41
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "transition-and-inner-transition-elements",
+    "chipLabel": "Transition Elements notes",
+    "slugs": [
+      "hscc-tr-configuration",
+      "hscc-tr-oxidation",
+      "hscc-tr-trends",
+      "hscc-tr-compounds",
+      "hscc-tr-properties",
+      "hscc-tr-extraction",
+      "hscc-tr-lanthanoids",
+      "hscc-tr-actinoids"
+    ],
+    "chapterName": "Transition and Inner Transition Elements",
+    "formulaCounts": {
+      "formulas": 11,
+      "tables": 11,
+      "traps": 46
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "elements-of-group-16-17-and-18",
+    "chipLabel": "Groups 16, 17 and 18 notes",
+    "slugs": [
+      "hscc-gp-occurrence",
+      "hscc-gp-properties",
+      "hscc-gp-anomalous",
+      "hscc-gp-chemical",
+      "hscc-gp-allotropy",
+      "hscc-gp-oxoacids",
+      "hscc-gp-oxygen",
+      "hscc-gp-sulfur",
+      "hscc-gp-chlorine",
+      "hscc-gp-interhalogen",
+      "hscc-gp-xenon"
+    ],
+    "chapterName": "Elements of Groups 16, 17 and 18",
+    "formulaCounts": {
+      "formulas": 16,
+      "tables": 14,
+      "traps": 71
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "alcohols-phenols-and-ethers",
+    "chipLabel": "Alcohols, Phenols and Ethers notes",
+    "slugs": [
+      "hscc-ap-nomenclature",
+      "hscc-ap-alcohols",
+      "hscc-ap-ethers"
+    ],
+    "chapterName": "Alcohols, Phenols and Ethers",
+    "formulaCounts": {
+      "formulas": 3,
+      "tables": 6,
+      "traps": 28
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "halogen-derivatives",
+    "chipLabel": "Halogen Derivatives notes",
+    "slugs": [
+      "hscc-hd-classification",
+      "hscc-hd-nomenclature",
+      "hscc-hd-preparation",
+      "hscc-hd-physical",
+      "hscc-hd-optical",
+      "hscc-hd-substitution",
+      "hscc-hd-metals",
+      "hscc-hd-polyhalogen"
+    ],
+    "chapterName": "Halogen Derivatives",
+    "formulaCounts": {
+      "formulas": 8,
+      "tables": 9,
+      "traps": 44
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "aldehydes-ketones-and-carboxylic-acids",
+    "chipLabel": "Aldehydes, Ketones and Carboxylic Acids notes",
+    "slugs": [
+      "hscc-ak-classification",
+      "hscc-ak-nomenclature",
+      "hscc-ak-preparation",
+      "hscc-ak-acids",
+      "hscc-ak-physical",
+      "hscc-ak-polarity",
+      "hscc-ak-reactions",
+      "hscc-ak-carboxyl"
+    ],
+    "chapterName": "Aldehydes, Ketones and Carboxylic Acids",
+    "formulaCounts": {
+      "formulas": 16,
+      "tables": 6,
+      "traps": 44
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "biomolecules",
+    "chipLabel": "Biomolecules notes",
+    "slugs": [
+      "hscc-bm-carbohydrates",
+      "hscc-bm-proteins",
+      "hscc-bm-nucleic"
+    ],
+    "chapterName": "Biomolecules",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 5,
+      "traps": 37
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "amines",
+    "chipLabel": "Amines notes",
+    "slugs": [
+      "hscc-am-nomenclature",
+      "hscc-am-preparation",
+      "hscc-am-physical",
+      "hscc-am-basicity",
+      "hscc-am-reactions",
+      "hscc-am-diazonium",
+      "hscc-am-substitution"
+    ],
+    "chapterName": "Amines",
+    "formulaCounts": {
+      "formulas": 15,
+      "tables": 4,
+      "traps": 40
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "introduction-to-polymer-chemistry",
+    "chipLabel": "Polymer Chemistry notes",
+    "slugs": [
+      "hscc-po-classification",
+      "hscc-po-polymers",
+      "hscc-po-mass"
+    ],
+    "chapterName": "Introduction to Polymer Chemistry",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 6,
+      "traps": 27
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "green-chemistry-and-nanochemistry",
+    "chipLabel": "Green Chemistry and Nanochemistry notes",
+    "slugs": [
+      "hscc-gn-sustainable",
+      "hscc-gn-principles",
+      "hscc-gn-role",
+      "hscc-gn-nanoscale",
+      "hscc-gn-synthesis",
+      "hscc-gn-applications"
+    ],
+    "chapterName": "Green Chemistry and Nanochemistry",
+    "formulaCounts": {
+      "formulas": 4,
+      "tables": 8,
+      "traps": 34
+    }
   }
 ];
 
@@ -15457,4 +15822,20 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "mh-hsc-12-maths/differential-equations": () => import("@/app/notes/mh-hsc-12-maths/differential-equations/_data").then((m) => ({ chapter: m.HSC_MA_DE_CHAPTER, notes: m.HSC_MA_DE_NOTES })),
   "mh-hsc-12-maths/probability-distributions": () => import("@/app/notes/mh-hsc-12-maths/probability-distributions/_data").then((m) => ({ chapter: m.HSC_MA_PD_CHAPTER, notes: m.HSC_MA_PD_NOTES })),
   "mh-hsc-12-maths/binomial-distribution": () => import("@/app/notes/mh-hsc-12-maths/binomial-distribution/_data").then((m) => ({ chapter: m.HSC_MA_BD_CHAPTER, notes: m.HSC_MA_BD_NOTES })),
+  "mh-hsc-12-chemistry/solid-state": () => import("@/app/notes/mh-hsc-12-chemistry/solid-state/_data").then((m) => ({ chapter: m.HSC_CH_SS_CHAPTER, notes: m.HSC_CH_SS_NOTES })),
+  "mh-hsc-12-chemistry/solutions": () => import("@/app/notes/mh-hsc-12-chemistry/solutions/_data").then((m) => ({ chapter: m.HSC_CH_SO_CHAPTER, notes: m.HSC_CH_SO_NOTES })),
+  "mh-hsc-12-chemistry/ionic-equilibria": () => import("@/app/notes/mh-hsc-12-chemistry/ionic-equilibria/_data").then((m) => ({ chapter: m.HSC_CH_IE_CHAPTER, notes: m.HSC_CH_IE_NOTES })),
+  "mh-hsc-12-chemistry/chemical-thermodynamics": () => import("@/app/notes/mh-hsc-12-chemistry/chemical-thermodynamics/_data").then((m) => ({ chapter: m.HSC_CH_TH_CHAPTER, notes: m.HSC_CH_TH_NOTES })),
+  "mh-hsc-12-chemistry/chemical-kinetics": () => import("@/app/notes/mh-hsc-12-chemistry/chemical-kinetics/_data").then((m) => ({ chapter: m.HSC_CH_CK_CHAPTER, notes: m.HSC_CH_CK_NOTES })),
+  "mh-hsc-12-chemistry/electrochemistry": () => import("@/app/notes/mh-hsc-12-chemistry/electrochemistry/_data").then((m) => ({ chapter: m.HSC_CH_EC_CHAPTER, notes: m.HSC_CH_EC_NOTES })),
+  "mh-hsc-12-chemistry/coordination-compounds": () => import("@/app/notes/mh-hsc-12-chemistry/coordination-compounds/_data").then((m) => ({ chapter: m.HSC_CH_CC_CHAPTER, notes: m.HSC_CH_CC_NOTES })),
+  "mh-hsc-12-chemistry/transition-and-inner-transition-elements": () => import("@/app/notes/mh-hsc-12-chemistry/transition-and-inner-transition-elements/_data").then((m) => ({ chapter: m.HSC_CH_TR_CHAPTER, notes: m.HSC_CH_TR_NOTES })),
+  "mh-hsc-12-chemistry/elements-of-group-16-17-and-18": () => import("@/app/notes/mh-hsc-12-chemistry/elements-of-group-16-17-and-18/_data").then((m) => ({ chapter: m.HSC_CH_GP_CHAPTER, notes: m.HSC_CH_GP_NOTES })),
+  "mh-hsc-12-chemistry/alcohols-phenols-and-ethers": () => import("@/app/notes/mh-hsc-12-chemistry/alcohols-phenols-and-ethers/_data").then((m) => ({ chapter: m.HSC_CH_AP_CHAPTER, notes: m.HSC_CH_AP_NOTES })),
+  "mh-hsc-12-chemistry/halogen-derivatives": () => import("@/app/notes/mh-hsc-12-chemistry/halogen-derivatives/_data").then((m) => ({ chapter: m.HSC_CH_HD_CHAPTER, notes: m.HSC_CH_HD_NOTES })),
+  "mh-hsc-12-chemistry/aldehydes-ketones-and-carboxylic-acids": () => import("@/app/notes/mh-hsc-12-chemistry/aldehydes-ketones-and-carboxylic-acids/_data").then((m) => ({ chapter: m.HSC_CH_AK_CHAPTER, notes: m.HSC_CH_AK_NOTES })),
+  "mh-hsc-12-chemistry/biomolecules": () => import("@/app/notes/mh-hsc-12-chemistry/biomolecules/_data").then((m) => ({ chapter: m.HSC_CH_BM_CHAPTER, notes: m.HSC_CH_BM_NOTES })),
+  "mh-hsc-12-chemistry/amines": () => import("@/app/notes/mh-hsc-12-chemistry/amines/_data").then((m) => ({ chapter: m.HSC_CH_AM_CHAPTER, notes: m.HSC_CH_AM_NOTES })),
+  "mh-hsc-12-chemistry/introduction-to-polymer-chemistry": () => import("@/app/notes/mh-hsc-12-chemistry/introduction-to-polymer-chemistry/_data").then((m) => ({ chapter: m.HSC_CH_PO_CHAPTER, notes: m.HSC_CH_PO_NOTES })),
+  "mh-hsc-12-chemistry/green-chemistry-and-nanochemistry": () => import("@/app/notes/mh-hsc-12-chemistry/green-chemistry-and-nanochemistry/_data").then((m) => ({ chapter: m.HSC_CH_GN_CHAPTER, notes: m.HSC_CH_GN_NOTES })),
 };
