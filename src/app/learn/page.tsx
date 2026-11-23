@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { ArrowRight, GraduationCap } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
-import { courseName } from "@/lib/learn/courseName";
+import { courseLevel, courseName } from "@/lib/learn/courseName";
 import { courseHref } from "@/lib/learn/links";
-import { listCourses } from "@/lib/learn/query";
+import { getAllOutlines } from "@/lib/learn/query";
 import LearnComingSoon from "./LearnComingSoon";
 
 /**
@@ -16,12 +16,13 @@ export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "Learn: step-by-step Maths lessons",
-  description: "Learn Class 12 Maths one concept at a time: a short lesson, then questions until you have it, with the mistake behind every wrong answer explained.",
+  description: "Learn Maths one concept at a time: a short lesson, then questions until you have it, with the mistake behind every wrong answer explained.",
   alternates: { canonical: "/learn" },
 };
 
 export default async function LearnHub() {
-  const courses = await listCourses();
+  // Outlines, not the course list: a course's years come from its chapters (NDA's span Class 11 and 12).
+  const courses = await getAllOutlines();
   return (
     <>
       <AppHeader />
@@ -46,7 +47,7 @@ export default async function LearnHub() {
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block font-semibold text-foreground">{courseName(c)}</span>
-                  <span className="mt-1 block text-sm text-muted-foreground">{c.title}, Class {c.standard}</span>
+                  <span className="mt-1 block text-sm text-muted-foreground">{[c.title, courseLevel(c.chapters.map((ch) => ch.standard))].filter(Boolean).join(", ")}</span>
                 </span>
                 <ArrowRight className="mt-1 h-4 w-4 text-muted-foreground group-hover:text-foreground" aria-hidden="true" />
               </Link>
