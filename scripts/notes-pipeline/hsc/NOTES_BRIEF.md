@@ -119,6 +119,37 @@ candidate, with one line of why.
    correction), refile candidates, the page list with board/textbook counts, the featured row per
    concept, anything you are unsure of.
 
+## Typecheck and the textbook PDF (learned on Physics, 2026-11-23)
+
+- Do NOT run the full `npx tsc --noEmit -p .`: several agents at once run out of memory. Typecheck only
+  your files with a scratch tsconfig `generated-papers/_scratch-<prefix>-tsconfig.json` that extends
+  `../tsconfig.json` and lists only your `_data` files in `"include"`; delete it after.
+- Your task message names the chapter's textbook PDF. Read it (`pdftotext "<pdf>" - | grep -i ...`,
+  small outputs) to confirm facts, wording and the section order BEFORE you write them; drop what the
+  book does not support. A board question on something the present book does not teach (older papers):
+  teach it from the book's own ideas, and say in that concept which years asked it and that the
+  present book does not cover it, so the student gives it less time.
+
+## Mathematics (added 2026-11-23, HSC Maths)
+
+- **Checking scope.** Board rows (`kind: "pyq"`): solve every one before reading its answer. Textbook
+  rows passed the earlier book-answer-key cross-check, so: solve every textbook MCQ, every row you
+  feature, and at least one in five of the rest (spread across pages); report any wrong answer.
+- **Big chapters** (300 to 400 rows): place rows on concepts with a small script keyed on each row's
+  subtopic (its page) and words in the stem; glance at the stems a rule does not place cleanly. Every
+  row is still tagged exactly once, on its own subtopic's page.
+- **A page with one or two rows** gets one or two concepts; every concept must feature one of its own
+  rows. A teaching-only concept with no row of its own is allowed ONLY as `kind: "formula"` with no
+  `pyqExampleId` (a foundation), never as a reference table.
+- **Notation.** Maths always in `\\(...\\)` with LaTeX commands, never Unicode maths symbols inside it
+  (write `\\land`, `\\lor`, `\\sim`, `\\to`, `\\leftrightarrow`, `\\int`, `\\sqrt{}`, `\\theta`).
+  Plain-text fields take words ("p and q", "integral of x squared").
+- **Worked examples as board solutions:** the steps a full-marks answer shows (formula or rule used,
+  substitution, simplification, the final answer boxed in words), not a shortcut. For "show that" and
+  proofs, every step on its own line.
+- **Content source** is the MHT-CET Maths notes chapter named in your task message (MHT-CET is an MCQ
+  exam; the board wants written working, so keep the ideas, rewrite the worked examples board-style).
+
 ## Text rules (gates fail on these)
 
 - Plain-text fields take NO LaTeX and no `**`: `title`, `oneLineDefinition`, `whyItMatters`,

@@ -24,7 +24,7 @@
     "id": "6ea3da9c-da87-4b90-ae92-e392beec53ff",
     "ref": "Misc 4 I (4)",
     "derived_answer": "C",
-    "solution": "Use the reduction (Wallis) formula \\(\\int_{0}^{\\pi/2} \\sin^{m} x \\cos^{n} x\\,dx = \\dfrac{(m - 1)(m - 3)\\cdots \\times (n - 1)(n - 3)\\cdots}{(m + n)(m + n - 2)\\cdots} \\times \\dfrac{\\pi}{2}\\) when \\(m\\) and \\(n\\) are both even, with \\(m = 6,\\ n = 2\\).\nThis gives \\(I = \\dfrac{5 \\cdot 3 \\cdot 1 \\times 1}{8 \\cdot 6 \\cdot 4 \\cdot 2} \\times \\dfrac{\\pi}{2} = \\dfrac{15}{384} \\times \\dfrac{\\pi}{2}\\).\n\\(\\therefore I = \\dfrac{15\\pi}{768} = \\dfrac{5\\pi}{256} \\approx 0.06136\\).",
+    "solution": "Write \\(\\cos^{2} x = 1 - \\sin^{2} x\\):\n\\(I = \\int_{0}^{\\pi/2} \\sin^{6} x\\,dx - \\int_{0}^{\\pi/2} \\sin^{8} x\\,dx\\).\nFor even \\(n\\), \\(\\int_{0}^{\\pi/2} \\sin^{n} x\\,dx = \\dfrac{n - 1}{n} \\cdot \\dfrac{n - 3}{n - 2} \\cdots \\dfrac{1}{2} \\cdot \\dfrac{\\pi}{2}\\), so\n\\(\\int_{0}^{\\pi/2} \\sin^{6} x\\,dx = \\dfrac{5}{6} \\cdot \\dfrac{3}{4} \\cdot \\dfrac{1}{2} \\cdot \\dfrac{\\pi}{2} = \\dfrac{5\\pi}{32}\\) and \\(\\int_{0}^{\\pi/2} \\sin^{8} x\\,dx = \\dfrac{7}{8} \\cdot \\dfrac{5}{6} \\cdot \\dfrac{3}{4} \\cdot \\dfrac{1}{2} \\cdot \\dfrac{\\pi}{2} = \\dfrac{35\\pi}{256}\\).\n\\(\\therefore I = \\dfrac{5\\pi}{32} - \\dfrac{35\\pi}{256} = \\dfrac{40\\pi - 35\\pi}{256} = \\dfrac{5\\pi}{256}\\).",
     "matches_current": true
   },
   {

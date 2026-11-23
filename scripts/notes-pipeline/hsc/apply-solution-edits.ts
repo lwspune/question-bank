@@ -20,10 +20,21 @@
  *
  * The DB write is conditional on the solution still being the text that was read, so a concurrent
  * edit fails loudly. `solution` is outside content_hash, so row ids never move.
+ *
+ * ANIMATED SOLUTIONS (2026-11-23). A row's `solution_visual` ties its steps to sentences of the
+ * solution and carries the text's fingerprint, so editing the text cuts the step text off. The
+ * Physics + Maths clean-up did that to 425 animations, re-tied afterwards from a backup. Now the
+ * visual is re-tied in the SAME write (lib/visuals/retie). A visual that cannot be re-tied is
+ * refused unless named in --allow-stale-visual=<id8,...>; a heavy rewrite (under 75% of the old
+ * sentences kept) is listed, because a re-tie moves the TEXT only and the picture may still show
+ * the old working (it showed a dropped second answer on 307f1662): look at those.
  */
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { retieVisual } from "../../../src/lib/visuals/retie";
+import { solutionFingerprint } from "../../../src/lib/visuals/visual";
+import type { SolutionVisual } from "../../../src/lib/visuals/types";
 
 const envLocal = join(process.cwd(), ".env.local");
 if (existsSync(envLocal)) require("dotenv").config({ path: envLocal, override: true });
@@ -98,6 +109,7 @@ async function main() {
   // Rows whose live answer was written to the bank directly and has NO source copy (e.g. MCQ
   // answers from a solutions backfill). Named one by one, so nothing else slips past the check.
   const noSource = new Set((args.find((a) => a.startsWith("--allow-no-source="))?.split("=")[1] ?? "").split(",").filter(Boolean));
+  const staleOk = new Set((args.find((a) => a.startsWith("--allow-stale-visual="))?.split("=")[1] ?? "").split(",").filter(Boolean));
   const specPath = args.find((a) => !a.startsWith("--"));
   if (!specPath) throw new Error("usage: apply-solution-edits.ts <edits.json> [--apply] | --scan <Exam> <Subject>");
   const edits: Edit[] = JSON.parse(readFileSync(specPath, "utf8"));
@@ -105,14 +117,16 @@ async function main() {
   // Several edits may target one row: apply them in order to a working copy.
   const live = new Map<string, string>();
   const original = new Map<string, string>();
+  const visuals = new Map<string, SolutionVisual>();
   const problems: string[] = [];
   for (const e of edits) {
     if (!e.why?.trim()) problems.push(`${e.id}: every edit needs a "why"`);
     if (e.find === e.replace) problems.push(`${e.id}: find === replace`);
     if (!live.has(e.id)) {
-      const { data, error } = await db.from("questions").select("solution").eq("id", e.id).single();
+      const { data, error } = await db.from("questions").select("solution, solution_visual").eq("id", e.id).single();
       if (error || !data?.solution) { problems.push(`${e.id}: no live solution`); continue; }
       live.set(e.id, data.solution); original.set(e.id, data.solution);
+      if (data.solution_visual) visuals.set(e.id, data.solution_visual as SolutionVisual);
     }
     const cur = live.get(e.id)!;
     const n = count(cur, e.find);
@@ -125,14 +139,32 @@ async function main() {
   // the full live text exists in no single file. Then each EDIT is located instead: its `find`
   // passage must appear exactly once in each file that holds it, in at most 3 files.
   type Where = { file: string; enc: number; hits: number };
-  const plan: { id: string; before: string; after: string; where: Where[]; pieces: { find: string; replace: string; where: Where[] }[] }[] = [];
+  const plan: { id: string; before: string; after: string; where: Where[]; pieces: { find: string; replace: string; where: Where[] }[]; visual?: SolutionVisual }[] = [];
+  const lookAt: string[] = [];
+  // Re-tie an animated solution to the edited text, or say why it cannot be.
+  const retie = (id: string, before: string, after: string): SolutionVisual | undefined => {
+    const v = visuals.get(id);
+    if (!v) return undefined;
+    if (v.fingerprint !== solutionFingerprint(before)) {
+      console.log(`${id.slice(0, 8)}  note: its animation was already out of step with this text; left as it is`);
+      return undefined;
+    }
+    const r = retieVisual(v, before, after);
+    if (!r.ok) {
+      if (!staleOk.has(id.slice(0, 8))) problems.push(`${id}: its animation cannot be re-tied (${r.reason}); fix the edit or pass --allow-stale-visual=${id.slice(0, 8)}`);
+      return undefined;
+    }
+    if (r.kept < 0.75 || r.folded) lookAt.push(`${id.slice(0, 8)}: ${Math.round(r.kept * 100)}% of the old sentences kept, ${r.folded} step(s) folded`);
+    return r.visual;
+  };
   for (const [id, after] of live) {
     const before = original.get(id)!;
     if (before === after) continue;
     const where = locate(before);
     const pieces: { find: string; replace: string; where: Where[] }[] = [];
+    const visual = retie(id, before, after);
     if (!where.length && noSource.has(id.slice(0, 8))) {
-      plan.push({ id, before, after, where, pieces });
+      plan.push({ id, before, after, where, pieces, visual });
       continue;
     }
     if (!where.length) {
@@ -143,13 +175,17 @@ async function main() {
         else pieces.push({ find: e.find, replace: e.replace, where: w });
       }
     }
-    plan.push({ id, before, after, where, pieces });
+    plan.push({ id, before, after, where, pieces, visual });
   }
 
   const short = (f: string) => f.replace(/\\/g, "/").split("/").slice(-1)[0];
   for (const p of plan) {
     const src = p.where.length ? p.where.map((w) => `${short(w.file)}×${w.hits}`).join(", ") : `by passage: ${[...new Set(p.pieces.flatMap((x) => x.where.map((w) => short(w.file))))].join(", ") || "NONE"}`;
     console.log(`${p.id.slice(0, 8)}  ${p.before.length} -> ${p.after.length} chars  sources: ${src}`);
+  }
+  if (lookAt.length) {
+    console.log(`\nANIMATIONS RE-TIED BY A HEAVY REWRITE (check the picture still matches the text):`);
+    for (const l of lookAt) console.log(`  ${l}`);
   }
   if (problems.length) {
     console.log(`\nREFUSING (${problems.length}):`);
@@ -162,7 +198,7 @@ async function main() {
   }
   for (const p of plan) {
     // Live row first, conditional on the text read: a concurrent edit stops here, before any file changes.
-    const { data, error } = await db.from("questions").update({ solution: p.after })
+    const { data, error } = await db.from("questions").update(p.visual ? { solution: p.after, solution_visual: p.visual } : { solution: p.after })
       .eq("id", p.id).eq("solution", p.before).select("id");
     if (error) throw new Error(`${p.id}: ${error.message}`);
     if (!data?.length) throw new Error(`${p.id}: live solution changed under us; nothing written for this row`);
@@ -181,7 +217,8 @@ async function main() {
       }
     }
   }
-  console.log(`\napplied ${plan.length} row(s): live rows and every source copy.`);
+  const retied = plan.filter((p) => p.visual).length;
+  console.log(`\napplied ${plan.length} row(s): live rows and every source copy; ${retied} animation(s) re-tied.`);
 }
 
 main().catch((e) => {

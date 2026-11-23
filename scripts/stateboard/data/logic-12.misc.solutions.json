@@ -122,7 +122,7 @@
  {
   "id": "0aa9a3c9-f8eb-4f14-8920-ed13d9196b29",
   "ref": "Misc Q.7 (i)",
-  "solution": "Truth table for \\([(p \\to q) \\wedge \\sim q] \\to \\sim p\\):\n\n| \\(p\\) | \\(q\\) | \\(p \\to q\\) | \\(\\sim q\\) | \\((p\\to q)\\wedge \\sim q\\) | \\(\\sim p\\) | Result |\n|---|---|---|---|---|---|---|\n| T | T | T | F | F | F | T |\n| T | F | F | T | F | F | T |\n| F | T | T | F | F | T | T |\n| F | F | T | T | T | T | T |\n\nThe last column is T in every row, so the pattern is a **tautology** (this is the valid form modus tollens)."
+  "solution": "[Textbook misprint: the book prints this statement with a stray bracket, as \\([(p \\to q) \\wedge \\sim q)] \\to \\sim p\\); it is read as \\([(p \\to q) \\wedge \\sim q] \\to \\sim p\\).]\n\nTruth table for \\([(p \\to q) \\wedge \\sim q] \\to \\sim p\\):\n\n| \\(p\\) | \\(q\\) | \\(p \\to q\\) | \\(\\sim q\\) | \\((p\\to q)\\wedge \\sim q\\) | \\(\\sim p\\) | Result |\n|---|---|---|---|---|---|---|\n| T | T | T | F | F | F | T |\n| T | F | F | T | F | F | T |\n| F | T | T | F | F | T | T |\n| F | F | T | T | T | T | T |\n\nThe last column is T in every row, so the pattern is a **tautology** (this is the valid form modus tollens)."
  },
  {
   "id": "ad8e7b8a-d76f-4496-80e4-49efae6f278c",
@@ -212,7 +212,7 @@
  {
   "id": "58a116bb-91d0-4a1c-83da-eb7566d16fe9",
   "ref": "Misc Q.11 (iii)",
-  "solution": "[Textbook answer-key error: the printed answer key gives \\((p \\wedge \\sim q) \\vee r\\); the correct negation is \\((p \\wedge \\sim q) \\vee \\sim r\\) (our answer).]\n\nNegate \\((p \\to q) \\wedge r\\).\n\nUsing De Morgan's law \\(\\sim(A \\wedge B) \\equiv \\sim A \\vee \\sim B\\):\n\n\\(\\sim[(p \\to q) \\wedge r] \\equiv \\sim(p \\to q) \\vee \\sim r\\).\n\nUsing the negation-of-implication rule \\(\\sim(p \\to q) \\equiv p \\wedge \\sim q\\):\n\n\\(\\equiv (p \\wedge \\sim q) \\vee \\sim r\\).\n\n**Negation: \\((p \\wedge \\sim q) \\vee \\sim r\\).**"
+  "solution": "[Textbook answer-key error: the printed answer key gives \\((p \\wedge \\sim q) \\vee r\\); the correct negation is \\((p \\wedge \\sim q) \\vee \\sim r\\).]\n\nNegate \\((p \\to q) \\wedge r\\).\n\nUsing De Morgan's law \\(\\sim(A \\wedge B) \\equiv \\sim A \\vee \\sim B\\):\n\n\\(\\sim[(p \\to q) \\wedge r] \\equiv \\sim(p \\to q) \\vee \\sim r\\).\n\nUsing the negation-of-implication rule \\(\\sim(p \\to q) \\equiv p \\wedge \\sim q\\):\n\n\\(\\equiv (p \\wedge \\sim q) \\vee \\sim r\\).\n\n**Negation: \\((p \\wedge \\sim q) \\vee \\sim r\\).**"
  },
  {
   "id": "0a7d2051-dd65-4f2a-bf7a-1997b99fd619",
