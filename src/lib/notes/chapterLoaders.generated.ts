@@ -14035,6 +14035,26 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 0,
       "traps": 7
     }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "current-electricity",
+    "chipLabel": "Current Electricity notes",
+    "slugs": [
+      "hscp-ce-kirchhoff",
+      "hscp-ce-bridges",
+      "hscp-ce-potentiometer",
+      "hscp-ce-meters"
+    ],
+    "chapterName": "Current Electricity",
+    "formulaCounts": {
+      "formulas": 11,
+      "tables": 3,
+      "traps": 25
+    }
   }
 ];
 
@@ -14738,4 +14758,5 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "mh-scholarship-7-intelligence/analogy": () => import("@/app/notes/mh-scholarship-7-intelligence/analogy/_data").then((m) => ({ chapter: m.MS7_ANALOGY_CHAPTER, notes: m.MS7_ANALOGY_NOTES })),
   "mh-scholarship-7-maths/algebraic-expressions": () => import("@/app/notes/mh-scholarship-7-maths/algebraic-expressions/_data").then((m) => ({ chapter: m.MS7_ALGEBRA_CHAPTER, notes: m.MS7_ALGEBRA_NOTES })),
   "mh-scholarship-7-maths/perimeter-area": () => import("@/app/notes/mh-scholarship-7-maths/perimeter-area/_data").then((m) => ({ chapter: m.MS7_AREA_CHAPTER, notes: m.MS7_AREA_NOTES })),
+  "mh-hsc-12-physics/current-electricity": () => import("@/app/notes/mh-hsc-12-physics/current-electricity/_data").then((m) => ({ chapter: m.HSC_PH_CE_CHAPTER, notes: m.HSC_PH_CE_NOTES })),
 };

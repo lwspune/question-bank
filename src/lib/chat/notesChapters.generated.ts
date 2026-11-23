@@ -703,4 +703,5 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterRef[] = [
   {"key":"mh-scholarship-7-intelligence/analogy","examName":"MH Scholarship Class 7","chapterName":"Analogy","slugs":["ms7-an-pairs","ms7-an-figures"]},
   {"key":"mh-scholarship-7-maths/algebraic-expressions","examName":"MH Scholarship Class 7","chapterName":"Algebraic Expressions and Identities","slugs":["ms7-al-identities","ms7-al-factors"]},
   {"key":"mh-scholarship-7-maths/perimeter-area","examName":"MH Scholarship Class 7","chapterName":"Perimeter and Area","slugs":["ms7-pa-squares","ms7-pa-paths"]},
+  {"key":"mh-hsc-12-physics/current-electricity","examName":"Maharashtra HSC Class 12","chapterName":"Current Electricity","slugs":["hscp-ce-kirchhoff","hscp-ce-bridges","hscp-ce-potentiometer","hscp-ce-meters"]},
 ];

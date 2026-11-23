@@ -203,6 +203,11 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "structure-of-atoms-and-nuclei": { cls: 12, chapterNo: 15, book: "XII 15 Structure of Atoms and Nuclei" },
     "semiconductor-devices": { cls: 12, chapterNo: 16, book: "XII 16 Semiconductor Devices" },
   },
+  // Maharashtra HSC Class 12 Physics (board notes, 2026-11-23): the Balbharati Std XII book,
+  // the same chapter numbers as the XII half of mht-cet-physics above. Add each chapter as it ships.
+  "mh-hsc-12-physics": {
+    "current-electricity": { cls: 12, chapterNo: 9, book: "XII 9 Current Electricity" },
+  },
   // JEE Mains Chemistry follows the rationalised NCERT books (the "NCERT" spine in
   // syllabus_concepts). Judgment calls: The p-Block Elements is no longer in either
   // rationalised book but stays on the JEE syllabus, so it sits before The d- and f-Block

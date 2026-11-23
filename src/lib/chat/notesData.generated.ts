@@ -702,7 +702,8 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "mh-scholarship-7-intelligence/classification-odd-one-out",
   "mh-scholarship-7-intelligence/analogy",
   "mh-scholarship-7-maths/algebraic-expressions",
-  "mh-scholarship-7-maths/perimeter-area"
+  "mh-scholarship-7-maths/perimeter-area",
+  "mh-hsc-12-physics/current-electricity"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1405,4 +1406,5 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "mh-scholarship-7-intelligence/analogy": () => import("@/app/notes/mh-scholarship-7-intelligence/analogy/_data").then((m) => m.MS7_ANALOGY_NOTES),
   "mh-scholarship-7-maths/algebraic-expressions": () => import("@/app/notes/mh-scholarship-7-maths/algebraic-expressions/_data").then((m) => m.MS7_ALGEBRA_NOTES),
   "mh-scholarship-7-maths/perimeter-area": () => import("@/app/notes/mh-scholarship-7-maths/perimeter-area/_data").then((m) => m.MS7_AREA_NOTES),
+  "mh-hsc-12-physics/current-electricity": () => import("@/app/notes/mh-hsc-12-physics/current-electricity/_data").then((m) => m.HSC_PH_CE_NOTES),
 };

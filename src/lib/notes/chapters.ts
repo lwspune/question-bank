@@ -3281,6 +3281,11 @@ import {
   SPI_ANALOGY_NOTES,
   SPI_ANALOGY_SLUGS,
 } from "@/app/notes/spi-reasoning/analogy/_data";
+import {
+  HSC_PH_CE_CHAPTER,
+  HSC_PH_CE_NOTES,
+  HSC_PH_CE_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/current-electricity/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -10548,6 +10553,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MS7_AREA_CHAPTER,
     notes: MS7_AREA_NOTES,
     slugs: MS7_AREA_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "current-electricity",
+    chipLabel: "Current Electricity notes",
+    chapter: HSC_PH_CE_CHAPTER,
+    notes: HSC_PH_CE_NOTES,
+    slugs: HSC_PH_CE_SLUGS,
   },
 ];
 

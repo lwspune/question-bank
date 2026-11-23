@@ -4896,5 +4896,12 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "MH Scholarship Class 7 Maths",
     "chapterSlug": "perimeter-area",
     "subtopicCount": 2
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "current-electricity",
+    "subtopicCount": 4
   }
 ];
