@@ -1,0 +1,10 @@
+{
+ "44": {
+  "why": "Blind answer A was wrong (the draft assumed every string of L1 starts and ends with the same letter); the key's C stands. Solution rewritten.",
+  "solution": "\\(L_2\\) is regular. A string \\(\\alpha\\beta\\alpha\\) with \\(\\alpha = a^k\\) starts and ends with \\(a\\) and has length at least 3. Conversely every such string \\(a w a\\) with \\(w\\) non-empty is in \\(L_2\\) with \\(\\alpha = a\\), \\(\\beta = w\\). So \\(L_2 = a(a+b)^+a\\), a regular language.\n\n\\(L_1\\) is not regular. Here \\(\\alpha\\) may be any non-empty string, so a word of \\(L_1\\) need not start and end with the same letter: \\(\\alpha = ab\\), \\(\\beta = a\\) gives \\(abaab\\). Intersect \\(L_1\\) with the regular language \\(ab^+aab^+\\). A word \\(ab^n aab^m\\) is in \\(L_1\\) exactly when some prefix also ends the word, with something in between. The only prefixes that can end in \\(b^m\\) are \\(ab^j\\), and \\(ab^j\\) is also a suffix only for \\(j = m\\), which needs \\(m \\leq n\\). So the intersection is \\(\\{ab^n aab^m \\mid 1 \\leq m \\leq n\\}\\), which is not regular (pumping the \\(b^n\\) block down breaks \\(m \\leq n\\)). Regular languages are closed under intersection, so \\(L_1\\) cannot be regular.\n\nSo \\(L_1\\) is not regular and \\(L_2\\) is regular: option C."
+ },
+ "64": {
+  "why": "Watermark gate flagged anti-aliased label pixels; looked at it, no watermark.",
+  "watermark": "none"
+ }
+}
