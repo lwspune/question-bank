@@ -88,6 +88,10 @@ export type Paper = {
    *  section once held for a decision). Coverage expects them absent and
    *  fails if one turns up, so a hold is always written down, never silent. */
   held?: { numbers: number[]; why: string };
+  /** Question numbers transcribed and committed, but stored ONCE under another
+   *  paper because the same question was printed there too (content_hash
+   *  dedup is per exam). The bank holds this paper's rows minus these. */
+  storedElsewhere?: { numbers: number[]; why: string };
   /** "written": no options, a model answer per item (RIMC Maths and English).
    *  Coverage is the transcription's own 1..N numbering plus a marks total that
    *  must equal the paper's printed maximum. Absent = an MCQ paper. */
@@ -165,6 +169,12 @@ const RIMC_GK_MISSING: Record<string, { numbers: number[]; why: string }> = {
   "2020_dec": { numbers: [75], why: "the paper prints Q1-74 only (its instructions say 75; page 13 ends at Q74)" },
 };
 
+/** GK items RIMC printed again in a later session: the bank keeps one row per
+ *  exam (content_hash), so the earlier paper's copy was skipped at commit. */
+const RIMC_GK_REPEATED: Record<string, { numbers: number[]; why: string }> = {
+  "2019_dec": { numbers: [39], why: "Q39 ('Howdy Modi') is printed again as Dec 2020 GK Q38, whose row holds it" },
+};
+
 /** Written items that cannot be answered as printed: transcribed (their marks
  *  count toward the printed total) but held from derivation and from the bank. */
 const RIMC_WRITTEN_HELD: Record<string, { numbers: number[]; why: string }> = {
@@ -209,6 +219,7 @@ const RIMC_PAPERS: Record<string, Paper> = Object.fromEntries(
               }
             : {}),
           ...(RIMC_WRITTEN_HELD[`${s}:${sub.key}`] ? { held: RIMC_WRITTEN_HELD[`${s}:${sub.key}`] } : {}),
+          ...(sub.key === "gk" && RIMC_GK_REPEATED[s] ? { storedElsewhere: RIMC_GK_REPEATED[s] } : {}),
           id,
           exam: "rimc",
           paper: 1,
@@ -647,6 +658,15 @@ export const subjectsOf = (exam: ExamKey): string[] => Object.keys(catalogFor(ex
 export const expectedCount = (paper: Paper): number => paper.pattern.questions - (paper.held?.numbers.length ?? 0);
 
 export const dataPath = (id: string, kind: string) => join(DATA, `${id}.${kind}.json`);
+
+/** Question numbers the paper's key DROPPED (its answers file's `dropped`):
+ *  stored keyless with a cancelled_note, so a mock must grace them. */
+export function droppedFor(id: string): number[] {
+  const f = dataPath(id, "answers");
+  if (!existsSync(f)) return [];
+  const raw = JSON.parse(readFileSync(f, "utf8")) as { dropped?: number[] };
+  return [...(raw.dropped ?? [])].sort((a, b) => a - b);
+}
 
 export const pagePath = (p: Paper, n: number) => join(SOURCE_ROOT, p.pagesDir, `${String(n).padStart(2, "0")}.jpg`);
 

@@ -7,7 +7,8 @@
  *
  * Refuses the whole run unless every paper's rows in the bank number exactly
  * what commit.ts writes (the pattern minus any `held` numbers; a written RIMC
- * paper, its transcription's items) and every row carries a solution. Run it
+ * paper, its transcription's items), less any `storedElsewhere` repeat, and
+ * every row carries a solution or, if NTA dropped it, its cancelled_note. Run it
  * from a checkout with the production .env.local (never a worktree). Undo: the
  * same UPDATE back to PRIVATE, by exam_id + source_file.
  *
@@ -35,16 +36,21 @@ async function main() {
   let total = 0;
   let notPublic = 0;
   for (const p of papers) {
-    const expected = p.format === "written" ? buildPaperRows(p).parsed.length : expectedCount(p);
+    const expected =
+      (p.format === "written" ? buildPaperRows(p).parsed.length : expectedCount(p)) -
+      (p.storedElsewhere?.numbers.length ?? 0);
     const { data: rows, error } = await client
       .from("questions")
-      .select("id, question_number, solution, visibility")
+      .select("id, question_number, solution, cancelled_note, visibility")
       .eq("exam_id", examIdOf(p))
       .eq("source_file", p.sourceFile);
     if (error) throw new Error(`${p.id}: ${error.message}`);
     const n = rows?.length ?? 0;
     const priv = (rows ?? []).filter((r) => r.visibility !== "PUBLIC").length;
-    const noSol = (rows ?? []).filter((r) => !r.solution?.trim()).map((r) => r.question_number);
+    // A row NTA dropped has no solution: its cancelled_note is what a student reads.
+    const noSol = (rows ?? [])
+      .filter((r) => !r.solution?.trim() && !r.cancelled_note?.trim())
+      .map((r) => r.question_number);
     total += n;
     notPublic += priv;
     console.log(`${p.id.padEnd(26)} ${EXAMS[p.exam].name.padEnd(16)} ${String(n).padStart(4)} rows (expected ${expected}), ${priv} not PUBLIC`);

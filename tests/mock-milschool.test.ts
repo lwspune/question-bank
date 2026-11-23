@@ -7,7 +7,8 @@ import {
   totalMarks,
   totalQuestions,
 } from "../src/lib/mocks/blueprints";
-import { PAPERS } from "../scripts/milschool/config";
+import { droppedFor, PAPERS } from "../scripts/milschool/config";
+import type { PaperQuestionRow } from "../src/lib/mocks/reconstruct";
 import { deriveMilschoolSittings, SECTION_ORDER } from "../scripts/mocks/milschoolSittings";
 
 describe("military-school blueprints", () => {
@@ -108,5 +109,24 @@ describe("military-school sittings", () => {
     }
     expect(sittings.find((s) => s.key === "aissee-9-2026")!.title).toBe("AISSEE 2026 Class 9");
     expect(sittings.find((s) => s.key === "rms-cet-9-2023")!.title).toBe("RMS CET 2023 Class 9");
+  });
+
+  // A question NTA's key dropped is stored keyless (cancelled_note), so the
+  // build's "has a correct answer" check refuses it unless `prepare` graces it
+  // first; flawed.json is applied too late (missed until 2026-11-23).
+  it("graces exactly the questions the key dropped, and only on that paper", () => {
+    const row = (n: number) => ({ questionNumber: String(n) }) as unknown as PaperQuestionRow;
+    const [s] = deriveMilschoolSittings([PAPERS["aissee-9-2025"]], SECTION_ORDER, () => [10, 68]);
+    const out = s.prepare!([row(10), row(11), row(68)]);
+    expect(out.map((r) => !!r.grace)).toEqual([true, false, true]);
+
+    const [none] = deriveMilschoolSittings([PAPERS["aissee-9-2024"]], SECTION_ORDER, () => []);
+    expect(none.prepare).toBeUndefined();
+  });
+
+  it("reads the dropped numbers from the paper's own answers file by default", () => {
+    expect(droppedFor("aissee-9-2025")).toEqual([10, 68]);
+    expect(droppedFor("aissee-6-2023")).toEqual([35, 44, 94]);
+    expect(sittings.find((s) => s.key === "aissee-9-2025")!.prepare).toBeDefined();
   });
 });

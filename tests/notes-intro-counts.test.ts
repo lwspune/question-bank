@@ -91,6 +91,7 @@ const RANGE = /(\d{4})\s*[–—-]\s*(\d{4})/g;
  * on any content claim not listed here.
  */
 const CHECKED_CONTENT_CLAIMS = new Set([
+  "ssc-cgl-static-gk/sports-and-games 16", // HARD by year, PUBLIC pyq, Tier I: 2023 none, 2025 16 (2026-11-23)
   "jee-mains-maths/differential-equations 71", // linear: Integrating Factor 27 + Using a Linear Solution 22 + Integrating Factors in Disguise 22
   "jee-mains-maths/complex-numbers 59", // sets of points: Regions 26 + Lines and Circles 17 + Arcs and Conic Loci 16
   "jee-mains-maths/application-of-derivatives 63", // max/min: Greatest and Least 26 + Local Maxima 19 + Optimisation 18
