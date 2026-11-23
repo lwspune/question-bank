@@ -1,12 +1,14 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Delete, Heart, Lock, Zap } from "lucide-react";
+import { Delete, Heart, Lock, Star, Zap } from "lucide-react";
 import { LEVELS, type LevelId } from "@/lib/play/levels";
 import {
   RAIN_KEY,
   WORLD_TARGET,
   isWorldOpen,
+  nextStarAt,
+  rainStars,
   parseRainProgress,
   rainMultiplier,
   recordRainScore,
@@ -25,16 +27,33 @@ import { useViewerSession } from "@/lib/viewer/useViewerSession";
 /**
  * Number Rain (2026-11-18): sums fall, type the answer to blast them, 3 lives.
  * The rules are lib/play/rain; this draws them and owns the clock.
+ * 2026-11-23: sums fall as meteors over a city of three buildings, one per
+ * life; a tip on the first world 1 game; stars per world.
  */
 
 const MAX_TYPED = 4;
+/** Height of the city at the bottom of the arena, in pixels. */
+const CITY = 52;
+/** Remembers that this browser has seen the "how to answer" tip. */
+const TIP_KEY = "pyqv-rain-tip-v1";
 
 /** Where a drop is drawn, in pixels, for an arena of w x h. */
-const place = (x: number, y: number, w: number, h: number) => ({ left: x * w, top: y * (h - 46) });
+const place = (x: number, y: number, w: number, h: number) => ({ left: x * w, top: y * (h - 46 - CITY) });
 /** For effects fired from events: measures the arena now. */
 const posIn = (a: HTMLElement | null, x: number, y: number) => place(x, y, a?.clientWidth ?? 320, a?.clientHeight ?? 400);
 
 type End = { score: number; world: LevelId; newBest: boolean; best: number; opened: LevelId | null; missed: RainState["missed"]; bestCombo: number };
+
+/** Three stars, the first `n` filled. */
+function Stars({ n, className }: { n: number; className: string }) {
+  return (
+    <span className="flex" role="img" aria-label={`${n} of 3 stars`}>
+      {[1, 2, 3].map((i) => (
+        <Star key={i} className={`${className} ${i <= n ? "fill-[var(--pa-mango)] text-[var(--pa-mango)]" : "text-[var(--pa-edge)]"}`} aria-hidden />
+      ))}
+    </span>
+  );
+}
 
 export default function NumberRain() {
   const raw = useLocalStore(RAIN_KEY);
@@ -45,6 +64,7 @@ export default function NumberRain() {
   const [typed, setTyped] = useState("");
   const [bad, setBad] = useState(false);
   const [end, setEnd] = useState<End | null>(null);
+  const [tip, setTip] = useState(false);
   const stateRef = useRef<RainState | null>(null);
   const arenaRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
@@ -57,6 +77,7 @@ export default function NumberRain() {
     setState(s);
     setT("");
     setEnd(null);
+    setTip(world === 1 && readLocal(TIP_KEY) === null);
     setView("playing");
     sfx.tick();
   };
@@ -95,17 +116,25 @@ export default function NumberRain() {
         vibrate([60, 40, 60]);
         replay(arenaRef.current, "pa-flash");
         replay(stageRef.current, "pa-shake");
+        const a = arenaRef.current;
+        if (a) sparks(a, e.drop.x * a.clientWidth + 40, a.clientHeight - CITY / 2, "#ff9a3c");
       } else if (e.type === "blast") {
         const p = posIn(arenaRef.current, e.drop.x, e.drop.y);
         sparks(arenaRef.current, p.left + 40, p.top + 18, e.drop.gold ? "#ffb238" : "#5cc8ff");
         floatText(arenaRef.current, `+${e.points}`, "pa-float", p.left + 24, p.top);
         sfx.hit(e.multiplier);
         vibrate(15);
+        setTip((t) => {
+          if (t) writeLocal(TIP_KEY, "1");
+          return false;
+        });
       } else if (e.type === "power") {
         sfx.power();
         floatText(arenaRef.current, e.power === "freeze" ? "Freeze!" : "Blast!", "pa-banner", undefined, undefined, e.power === "freeze" ? "#5cc8ff" : "#ffb238");
       } else if (e.type === "faster") {
         floatText(arenaRef.current, "Faster!", "pa-banner");
+      } else if (e.type === "ramp") {
+        floatText(arenaRef.current, "Here it comes!", "pa-banner", undefined, undefined, "var(--pa-mango)");
       }
     }
   }, []);
@@ -207,7 +236,7 @@ export default function NumberRain() {
           <div className="mt-3 flex flex-wrap justify-center gap-1.5">
             <span className="pa-pill">Combos up to x5</span>
             <span className="pa-pill">Gold drops freeze or blast</span>
-            <span className="pa-pill">It speeds up</span>
+            <span className="pa-pill">3 stars a world</span>
           </div>
         </div>
         <ol className="space-y-2.5" aria-label="Worlds">
@@ -220,9 +249,12 @@ export default function NumberRain() {
                 <span className="min-w-0 flex-1">
                   <span className="block font-semibold leading-tight">{l.name}</span>
                   <span className="block text-sm pa-dim">{l.blurb}</span>
-                  <span className="block text-xs font-semibold text-[var(--pa-mango)]">
-                    {best ? `Best ${best}` : open ? `${WORLD_TARGET} points opens the next world` : ""}
-                  </span>
+                  {open && (
+                    <span className="flex items-center gap-1.5 text-xs font-semibold text-[var(--pa-mango)]">
+                      <Stars n={rainStars(best ?? 0)} className="h-3.5 w-3.5" />
+                      {best ? `Best ${best}` : `${WORLD_TARGET} for the first star`}
+                    </span>
+                  )}
                 </span>
                 {open ? (
                   <button type="button" className="pa-btn shrink-0 !px-4 !py-1.5 !text-base" onClick={() => begin(l.id)}>
@@ -230,7 +262,7 @@ export default function NumberRain() {
                   </button>
                 ) : (
                   <span className="flex shrink-0 items-center gap-1 text-xs pa-dim">
-                    <Lock className="h-3.5 w-3.5" aria-hidden /> {WORLD_TARGET} in world {l.id - 1}
+                    <Lock className="h-3.5 w-3.5" aria-hidden /> 1 star in world {l.id - 1}
                   </span>
                 )}
               </li>
@@ -268,7 +300,8 @@ export default function NumberRain() {
       <div
         ref={arenaRef}
         className="relative flex-1 overflow-hidden"
-        style={{ background: state.frozenMs > 0 ? "linear-gradient(#18306a,#1e4a7a)" : "linear-gradient(#1f1850,#2a1d5e 70%,#3b1f55)" }}
+        style={{ background: state.frozenMs > 0 ? "linear-gradient(#18306a,#1e4a7a)" : undefined }}
+        data-sky
         aria-hidden
       >
         {state.drops.map((d) => {
@@ -277,29 +310,28 @@ export default function NumberRain() {
           return (
             <div
               key={d.id}
-              className="pa-display absolute left-0 top-0 whitespace-nowrap rounded-full px-3.5 py-1.5 text-[1.35rem] font-bold will-change-transform"
-              style={{
-                transform: `translate(${p.left}px, ${p.top}px)`,
-                background: d.gold ? "var(--pa-mango)" : "var(--pa-night-3)",
-                color: d.gold ? "var(--pa-mango-ink)" : "var(--pa-ink)",
-                border: `2px solid ${near ? "var(--pa-coral)" : d.gold ? "#fff4" : "var(--pa-edge)"}`,
-                boxShadow: d.gold ? "0 0 18px var(--pa-mango)" : undefined,
-              }}
+              className={`pa-meteor pa-display absolute left-0 top-0 whitespace-nowrap rounded-full px-3.5 py-1.5 text-[1.35rem] font-bold will-change-transform ${d.gold ? "pa-meteor-gold" : ""} ${near ? "pa-meteor-near" : ""}`}
+              style={{ transform: `translate(${p.left}px, ${p.top}px)` }}
             >
               {d.gold ? "★ " : ""}
               {d.prompt}
             </div>
           );
         })}
-        <div className="absolute inset-x-0 bottom-0 h-1.5 bg-[var(--pa-coral)] shadow-[0_0_18px_var(--pa-coral)]" />
+        <div className="pa-city" style={{ height: CITY }}>
+          {[40, 50, 34].map((h, i) => (
+            <div key={i} className={`pa-bld ${i >= state.lives ? "pa-bld-down" : ""}`} style={{ height: h }} />
+          ))}
+        </div>
       </div>
 
       <div
         ref={typedRef}
-        className={`pa-display flex h-14 items-center justify-center bg-black/20 text-[2rem] font-extrabold tracking-wider ${bad ? "text-[var(--pa-coral)]" : "text-[var(--pa-sky)]"}`}
+        className={`pa-display relative flex h-14 items-center justify-center bg-black/20 text-[2rem] font-extrabold tracking-wider ${bad ? "text-[var(--pa-coral)]" : "text-[var(--pa-sky)]"}`}
         aria-live="polite"
         aria-label={typed ? `Typed ${typed}` : "Type an answer"}
       >
+        {tip && <span className="pa-tip">Type the answer. No Enter needed.</span>}
         {typed || " "}
       </div>
       <div className="grid grid-cols-3 gap-1.5 bg-black/10 px-2.5 pb-3 pt-2" role="group" aria-label="Number pad">
@@ -329,6 +361,10 @@ export default function NumberRain() {
         <div className="pa-overlay" role="dialog" aria-label="Game over">
           <p className="pa-display text-4xl font-extrabold text-[var(--pa-mango)]">Game over</p>
           <p className="pa-display text-6xl font-extrabold tabular-nums">{end.score}</p>
+          <Stars n={rainStars(end.score)} className="h-9 w-9" />
+          <p className="text-sm pa-dim">
+            {nextStarAt(end.score) === null ? `All 3 stars in world ${end.world}` : `${(nextStarAt(end.score) ?? 0) - end.score} more for the next star`}
+          </p>
           <p className="text-sm">
             {end.newBest && end.score > 0 ? <b className="text-[var(--pa-mango)]">New best!</b> : `Your best in world ${end.world}: ${end.best}`}
             {end.bestCombo >= 4 && ` · Longest combo ${end.bestCombo}`}
