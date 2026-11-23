@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePublicPathname } from "@/lib/nav/usePublicPathname";
-import { Gamepad2, Gem, GraduationCap, ShoppingBag } from "lucide-react";
+import { Gamepad2, Gem, ShoppingBag } from "lucide-react";
 import { trackFunnel } from "@/lib/analytics/trackFunnel";
 import SignInLink from "@/components/reveal/SignInLink";
 import { Button } from "@/components/ui/button";
@@ -116,7 +116,7 @@ export default function HeaderBar({
             <img src="/icons/mark-96.png" alt="" aria-hidden width={24} height={24} className="h-6 w-6 shrink-0" />
             {/* The wordmark used to hide below sm so the icon row could fit; the nav
                 has moved to MobileTabBar, so there is room for it again. */}
-            {/* On a phone (below 640 px) the words give way so Ebooks, Classes and
+            {/* On a phone (below 640 px) the words give way so Store, Classes and
                 Play fit beside the theme toggle and Sign in, down to 360 px
                 (owner, 2026-11-16; was below 360 px only). The logo stays and the
                 link keeps its name for screen readers. Below lg since 2026-11-18:
@@ -145,11 +145,10 @@ export default function HeaderBar({
           />
 
           <div className="ml-auto flex min-w-0 items-center gap-1 sm:gap-2">
-            {/* The ebook store (2026-10-20): its own button, apart from the study
-                tabs, at every width (owner: "a separate buy section on top"). */}
+            {/* The store (2026-10-20): its own button, apart from the study tabs,
+                at every width (owner: "a separate buy section on top"). Called
+                Ebooks until 2026-11-23, when partner courses joined the books. */}
             <StoreLink />
-            {/* Offline classes in Pune (2026-11-16; was the 1:1 tutoring check), beside the store. */}
-            <ClassesLink />
             {/* The /play games (2026-11-16; a hub since 2026-11-17), open to everyone, signed in or not. */}
             <PlayLink />
             {/* Theme toggle is visible to everyone, anon included. */}
@@ -203,7 +202,7 @@ export default function HeaderBar({
 }
 
 /**
- * The header's Ebooks and Tutor buttons: soft tinted pills, filled when you are
+ * The header's Store and Classes buttons: soft tinted pills, filled when you are
  * on their page. Outlined boxes until 2026-11-10, when four outlined boxes in a
  * row (these two, the theme toggle and Sign in) made the header busy and none
  * stood out; Sign in is now the one solid button. Both stay visible: each is
@@ -232,28 +231,7 @@ function StoreLink() {
           and cut "Sign in" off, so the icon shows from sm up; measured to fit
           at 360 px. From lg up since 2026-11-18, for the same reason at
           tablet widths, where the study tabs share the row. */}
-      <span>Ebooks</span>
-    </Link>
-  );
-}
-
-/**
- * Offline classes in Pune (2026-11-16, migration 0265; the Tutor button from
- * 2026-10-27 until then); `from` rides to the stored lead.
- */
-function ClassesLink() {
-  const pathname = usePublicPathname();
-  const active = pathname.startsWith("/classes");
-  const from = pathname.split("/")[1] || "home";
-  return (
-    <Link
-      href={active ? "/classes" : `/classes?from=${encodeURIComponent(from)}`}
-      onClick={() => trackFunnel("classes_link_click", { from })}
-      aria-current={active ? "page" : undefined}
-      className={headerButtonClass(active)}
-    >
-      <GraduationCap className="hidden h-4 w-4 shrink-0 lg:block" aria-hidden />
-      <span>Classes</span>
+      <span>Store</span>
     </Link>
   );
 }

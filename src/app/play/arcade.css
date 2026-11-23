@@ -152,3 +152,17 @@
 @media (prefers-reduced-motion: reduce) {
   .arcade *, .arcade *::before, .arcade *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition: none !important; }
 }
+
+/* Number Rain (2026-11-23): sums fall as meteors over a city, one building per life */
+[data-sky] { background: radial-gradient(1px 1px at 20% 15%, #fff8 50%, transparent 51%), radial-gradient(1px 1px at 70% 30%, #fff6 50%, transparent 51%), radial-gradient(1.5px 1.5px at 45% 8%, #fff9 50%, transparent 51%), radial-gradient(1px 1px at 85% 12%, #fff7 50%, transparent 51%), radial-gradient(1px 1px at 10% 45%, #fff5 50%, transparent 51%), linear-gradient(#120c38, #2a1d5e 65%, #5a2a5e); }
+.pa-meteor { color: var(--pa-ink); background: radial-gradient(circle at 35% 30%, #6e4a8e, #3a2560 70%); border: 2px solid #ff9a3c; box-shadow: 0 0 16px #ff7a1a88; }
+.pa-meteor::before { content: ""; position: absolute; left: 15%; right: 15%; bottom: 100%; height: 56px; background: linear-gradient(to top, #ff9a3c99, #ff9a3c00); border-radius: 50% 50% 0 0; filter: blur(4px); pointer-events: none; }
+.pa-meteor-near { border-color: var(--pa-coral); box-shadow: 0 0 20px var(--pa-coral); }
+.pa-meteor-gold { color: var(--pa-mango-ink); background: var(--pa-mango); border-color: #fff4; box-shadow: 0 0 18px var(--pa-mango); }
+.pa-meteor-gold::before { background: linear-gradient(to top, #ffb238aa, #ffb23800); }
+.pa-city { position: absolute; inset-inline: 0; bottom: 0; display: flex; align-items: flex-end; gap: 10px; padding: 0 12px; }
+.pa-bld { flex: 1; border-radius: 6px 6px 0 0; background-color: #2f2582; background-image: radial-gradient(circle, #ffd27a 1.6px, transparent 2px); background-size: 12px 12px; background-position: 4px 6px; border-top: 3px solid var(--pa-sky); transition: height 0.35s, filter 0.35s; }
+.pa-bld-down { height: 10px !important; filter: grayscale(1) brightness(0.55); border-top-color: var(--pa-coral); background-image: none; }
+.pa-tip { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); margin-bottom: 10px; z-index: 5; white-space: nowrap; background: var(--pa-ink); color: var(--pa-night); font-family: system-ui, sans-serif; font-size: 0.875rem; font-weight: 700; letter-spacing: 0; border-radius: 0.6rem; padding: 0.35rem 0.75rem; }
+.pa-tip::after { content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 7px solid transparent; border-top-color: var(--pa-ink); }
+@media (prefers-reduced-motion: reduce) { .pa-bld { transition: none; } }

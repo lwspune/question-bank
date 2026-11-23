@@ -555,6 +555,12 @@ export const CLASS_LEADS_PUNE_KEEP = 10;
  * leads in its first 6 days (0 SPI, 2 NDA).
  */
 export const ME_CLASS_OFFER_YES_KEEP_PCT = 5;
+/**
+ * "partner-courses": different students (accounts, else browsers; staff left
+ * out) who tap a partner course on /store in 6 weeks, for the trial to be taken
+ * to Defence Mania as a commission or coupon deal (owner, 2026-11-17).
+ */
+export const PARTNER_COURSE_TAPPERS_KEEP = 30;
 /** "play-games": signed-in students who finish a /play round in 4 weeks, the floor for reading the rule at all. */
 export const PLAY_PLAYERS_MIN = 50;
 
@@ -649,7 +655,8 @@ export type Readout =
   | "me-class-offer"
   | "play-games"
   | "practice-trial"
-  | "v-intl";
+  | "v-intl"
+  | "partner-courses";
 
 export type Experiment = {
   id: string;
@@ -1611,7 +1618,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     id: "offline-classes",
     title: "Offline classes in Pune: who asks for a call?",
     change:
-      "The header's Tutor button became Classes. /classes asks which course (NDA, CDS, AFCAT, MHT-CET, JEE, 10th Board, 12th Board, SSC CGL; one or more), Pune or another city (Pune first), an optional name and a mobile with consent, and promises a call within 2 days. Anyone can send it, signed in or not; one lead per mobile. Leads are listed Pune first on /dashboard/classes with WhatsApp, a Called tick and a CSV.",
+      "The header's Tutor button became Classes. /classes asks which course (NDA, CDS, AFCAT, MHT-CET, JEE, 10th Board, 12th Board, SSC CGL; one or more), Pune or another city (Pune first), an optional name and a mobile with consent, and promises a call within 2 days. Anyone can send it, signed in or not; one lead per mobile. Leads are listed Pune first on /dashboard/classes with WhatsApp, a Called tick and a CSV. 2026-11-23 (owner): the button left the header for the avatar menu (\"Offline classes\", students only, taps still classes_link_click with from=menu) and a lead now needs an account (the form shows a sign-in step; the route refuses signed-out posts). In its first 7 days the header brought ~11 leads (3 Pune), 5 of them signed out. Read leads before and after 2026-11-23 apart.",
     why: "The owner runs offline classes in Pune and wants to fill them. The 1:1 tutoring check showed demand, but mostly for online tutoring and from outside Pune (15 of about 3,050 student profiles name Pune), so this asks for something the team can act on: a number to call about a named course.",
     metric:
       "Leads per week from class_interest (migration 0265), Pune vs other, by course; header Classes taps (classes_link_click) in Vercel by hand. Read with the team: of the Pune leads called, how many came for a demo or joined. A Play button went up beside Classes on its first day (play-games, 2026-11-16) and \"PYQ Vault\" hides on phones from then, so the whole window shares the header with it",
@@ -1623,9 +1630,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
   },
   {
     id: "me-class-offer",
-    title: "Ask on Home: SPI crash course and offline NDA classes",
+    title: "Ask on Home: offline classes for the student's exam",
     change:
-      "Home (/me) shows one card below Today: Class 10 students (SPI or a Class 10 board in their exams; stage Class 9-10 alone does not count) are asked \"Are you looking for an SPI crash course? We run one offline in Pune.\", and NDA students \"Are you looking for offline NDA classes? We run them in Pune.\" Yes asks for the mobile (filled in from the account), Pune or another city and consent, and the lead joins /dashboard/classes (courses added to any earlier lead on that number); No hides it for good; Know more opens the exam's pattern-and-syllabus page (/exams/<exam>/syllabus, only once one is published) and the card stays. A Class 10 student who also targets NDA is asked about SPI first, then NDA.",
+      "Home (/me) shows one card below Today: Class 10 students (SPI or a Class 10 board in their exams; stage Class 9-10 alone does not count) are asked \"Are you looking for an SPI crash course? We run one offline in Pune.\", and NDA students \"Are you looking for offline NDA classes? We run them in Pune.\" Yes asks for the mobile (filled in from the account), Pune or another city and consent, and the lead joins /dashboard/classes (courses added to any earlier lead on that number); No hides it for good; Know more opens the exam's pattern-and-syllabus page (/exams/<exam>/syllabus, only once one is published) and the card stays. A Class 10 student who also targets NDA is asked about SPI first, then NDA. 2026-11-23 (owner, migration 0285): widened to MHT-CET, JEE, CDS, AFCAT, 12th Board and SSC CGL, and ONE card per student ever: the course for the exam in focus (else their first exam, else the first other exam with a course); any Yes or No, or a /classes lead, ends it. On the same day the header Classes button moved to the avatar menu, so this card is now the main way students meet the classes. The readout before 2026-11-23 covers SPI and NDA only (7 shown, 1 Yes).",
     why: "The owner wants to fill an SPI crash course and offline NDA classes in Pune. The header Classes form waits to be found (9 leads in 6 days, 0 for SPI); asking the students who fit, where they already are, may find the ones who would come. About 123 Class 10 students and 405 NDA students had signed in by 2026-11-22.",
     metric:
       "Per card: students who saw it (class_offer_answers.shown_at, migration 0282), Know more taps (more_at), Yes and No; Yes leads by Pune vs other (class_interest, from_section 'me'). scripts/classes/me-offer-readout.sql. Read with the team: of the Pune leads called, how many came for a demo or joined",
@@ -1642,11 +1649,25 @@ export const EXPERIMENTS: readonly Experiment[] = [
       "A Play button in the header (after Ebooks and Classes) opens /play: 60-second rounds of whole-number sums in 8 levels (add and subtract to 20, tables, division, two-digit sums, tables to 20, bigger times and divide, order of operations, two-digit times two-digit). A level is cleared by enough right answers at 80%+ and opens the next. Fun without rankings: a combo, a personal best and a race against your own best round. Anyone can play; progress is kept in the browser. To fit Play on a 360 px phone the words \"PYQ Vault\" now hide below 640 px (logo stays) and the header pills are 4 px narrower.",
     why: "The owner sees students slip on everyday calculation in class, and studying is a chore, so a game may bring them back. The real question is whether it brings them back to STUDY, not just to the game.",
     metric:
-      "Signed-in students with a play_round (migration 0267), rounds each, levels cleared; for players, study days (mocks, drill, bank answers) in the 7 days after their first round vs the 7 days before (scripts/play/readout.sql). Header Play taps (play_link_click) and every round signed in or out (play_round_end) in Vercel by hand. Classes and Ebooks are header buttons too: read their taps across 2026-11-16 with care. From 2026-11-17 /play is a hub (a ring of subjects) and the maths game moved to /play/maths, one tap further from the header; two English word games joined it (play_round with metadata.game word_builder or daily_word). Every game counts as playing; the readout also splits players by game. Read across 2026-11-17 with care. From 2026-11-18 /play is seven arcade games (Number Rain replaces the speed game at /play/maths; Word Builder is gone; play_round metadata.game number_rain, word_groups, daily_word, launch, element_hunt, timeline, pin_it), so read across 2026-11-18 with care too",
+      "Signed-in students with a play_round (migration 0267), rounds each, levels cleared; for players, study days (mocks, drill, bank answers) in the 7 days after their first round vs the 7 days before (scripts/play/readout.sql). Header Play taps (play_link_click) and every round signed in or out (play_round_end) in Vercel by hand. Classes and Ebooks are header buttons too: read their taps across 2026-11-16 with care. From 2026-11-17 /play is a hub (a ring of subjects) and the maths game moved to /play/maths, one tap further from the header; two English word games joined it (play_round with metadata.game word_builder or daily_word). Every game counts as playing; the readout also splits players by game. Read across 2026-11-17 with care. From 2026-11-18 /play is seven arcade games (Number Rain replaces the speed game at /play/maths; Word Builder is gone; play_round metadata.game number_rain, word_groups, daily_word, launch, element_hunt, timeline, pin_it), so read across 2026-11-18 with care too. From the deploy after 2026-11-23 Number Rain and Launch changed after the first rounds showed early drop-off: Number Rain got a gentle start, slower two-digit worlds (15 s+, at most 4 sums on screen for the first 10) and 3 stars a world; Launch keeps earlier shots on screen, aims by pulling back, shows aim help on levels 1-5, and shots never run out, so a Launch play_round is now one go at a level (reported on the hit, or as a miss when the player leaves the level) where it was 3 shots: read Launch rounds and clear rates across that deploy with care",
     rule: `Read once ${PLAY_PLAYERS_MIN}+ signed-in students have played. Keep Play in the header if players' study days after their first round are at least the days before (median) and a quarter or more play on 2+ days; if study days fall, the game is replacing study: move it off the header. Below ${PLAY_PLAYERS_MIN} players at the check, take the button out and link /play from mock results only.`,
     liveSince: "2026-11-16",
     windowDays: 28,
     readout: "play-games",
+    status: "running",
+  },
+  {
+    id: "partner-courses",
+    title: "Partner courses on the store: do students want online courses?",
+    change:
+      "The header's Ebooks button became Store, and /store got a shelf per exam for online courses of our offline partner Defence Mania: CDS 1 2027 Sikandar 3.0 (starts 5 Dec) and the AFCAT 1 2027 Crash Course (starts 20 Dec), ₹1,999 each. A card says it is the partner's course and opens their site in a new tab, through our own tap link (/api/partner-course/[id]) with UTM tags. A CDS or AFCAT student sees their course shelf first; others find it under their other exams.",
+    why: "Students buy online courses (Testbook earns this way), and 75 of 88 tutoring Yes answers wanted ONLINE teaching. Linking a partner's courses tests that demand without recording any video. Nothing is agreed with the partner yet; taps decide whether to ask for a commission or coupon deal.",
+    metric:
+      "Taps per course from partner_course_clicks (migration 0269): different students (account when signed in, else the browser's qb_vid), signed in vs out, per exam, staff left out (scripts/partner-courses/readout.sql). For scale, store visits and ebook buy taps over the same weeks (ebook-store). The rename from Ebooks to Store went out the same day, so read header store taps (ebook_store_link_click) across that deploy with care",
+    rule: `Take it to Defence Mania as a commission or coupon deal if ${PARTNER_COURSE_TAPPERS_KEEP}+ different students tap a course in 6 weeks; below that, take the course shelves down and keep the Store name.`,
+    liveSince: "2026-11-23",
+    windowDays: 42,
+    readout: "partner-courses",
     status: "running",
   },
   {

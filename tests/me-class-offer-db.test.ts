@@ -3,7 +3,8 @@
  *
  * class_offer_answers: RLS on with NO policies, so only the service role reads
  * or writes it. One row per account per offer; an answer exactly when it has a
- * time; only the two offers the card asks about.
+ * time; only the courses the card asks about (SPI and NDA in 0282, widened to
+ * MHT-CET, JEE, CDS, AFCAT, 12th Board and SSC CGL in 0285).
  *
  * record_class_offer_yes: the lead and the answer in ONE transaction. A Yes on
  * a mobile that already has a lead ADDS the course (the /classes route replaces
@@ -71,8 +72,16 @@ describe.skipIf(!HAS_ENV)("class offer on /me", () => {
     expect(more.data?.answer).toBeNull();
   });
 
+  it("takes the widened courses (0285)", async () => {
+    for (const offer of ["mht-cet", "jee", "cds", "afcat", "board-12", "ssc-cgl"]) {
+      const ok = await admin.from("class_offer_answers").insert({ user_id: userId, offer });
+      expect(ok.error, offer).toBeNull();
+    }
+    await admin.from("class_offer_answers").delete().eq("user_id", userId).in("offer", ["mht-cet", "jee", "cds", "afcat", "board-12", "ssc-cgl"]);
+  });
+
   it("refuses an unknown offer, or an answer without its time", async () => {
-    const bad = await admin.from("class_offer_answers").insert({ user_id: userId, offer: "jee" });
+    const bad = await admin.from("class_offer_answers").insert({ user_id: userId, offer: "board-10" });
     expect(bad.error?.code).toBe("23514");
     const noTime = await admin
       .from("class_offer_answers")

@@ -1,5 +1,5 @@
 import { LEVELS, levelById, type LevelId } from "./levels";
-import { makeProblem, type Rng } from "./generate";
+import { makeNoCarryTwoDigit, makeProblem, type Rng } from "./generate";
 
 /**
  * Number Rain (2026-11-18), the /play/maths arcade game that replaced the
@@ -18,9 +18,22 @@ export const START_LIVES = 3;
 export const FREEZE_MS = 3000;
 /** Every this many blasts the rain falls faster. */
 export const SPEED_UP_EVERY = 8;
-/** A world's best score at or above this opens the next world. A first guess: tune from play_round rows. */
-export const WORLD_TARGET = 300;
+/** Scores for 1, 2 and 3 stars in a world (2026-11-23: good players reached 2,000+, far past the old single goal). */
+export const RAIN_STARS = [300, 1000, 2000] as const;
+/** A world's best score at or above this (its first star) opens the next world. */
+export const WORLD_TARGET = RAIN_STARS[0];
 const MAX_ON_SCREEN = 6;
+/**
+ * The gentle start (2026-11-23: 4 of the first 11 players scored under 150 and
+ * left): until this many blasts, one sum at a time, falling at GENTLE_SPEED.
+ */
+export const GENTLE_BLASTS = 5;
+export const GENTLE_SPEED = 0.6;
+/** From world 4 (two-digit sums) at most CROWD_CAP sums on screen until CROWD_BLASTS blasts. */
+const CROWD_CAP = 4;
+const CROWD_BLASTS = 10;
+/** World 4's first this-many sums need no carrying or borrowing. */
+export const EASY_FIRST_SUMS = 8;
 const GOLD_CHANCE = 0.08;
 const POINTS = 10;
 
@@ -51,16 +64,30 @@ export type RainEvent =
   | { type: "blast"; drop: Drop; points: number; multiplier: number }
   | { type: "power"; power: "freeze" | "bomb" }
   | { type: "faster" }
+  /** The gentle start is over: the rain comes properly now. */
+  | { type: "ramp" }
   | { type: "over" };
 
-/** Seconds a sum takes to fall from the top to the ground at the start of a world. */
+/**
+ * Seconds a sum takes to fall from the top to the ground at the start of a
+ * world. 2026-11-23: two-digit worlds got at least 15 s, after two players who
+ * scored 2,000+ in world 3 scored under 100 in world 4 (it was 11 s).
+ */
 export function fallSecondsFor(world: LevelId): number {
-  return [9, 9, 10, 11, 12, 14, 14, 16][world - 1];
+  return [9, 9, 10, 15, 15, 16, 16, 18][world - 1];
 }
+
+const gentle = (s: RainState) => s.blasts < GENTLE_BLASTS;
 
 /** Fraction of the height fallen per second now. */
 function speedOf(s: RainState): number {
-  return (1 / fallSecondsFor(s.world)) * Math.min(2.2, 1 + 0.12 * s.speedLevel);
+  return (1 / fallSecondsFor(s.world)) * Math.min(2.2, 1 + 0.12 * s.speedLevel) * (gentle(s) ? GENTLE_SPEED : 1);
+}
+
+function maxOnScreen(s: RainState): number {
+  if (gentle(s)) return 1;
+  if (s.world >= 4 && s.blasts < CROWD_BLASTS) return CROWD_CAP;
+  return MAX_ON_SCREEN;
 }
 
 function spawnEveryMs(s: RainState): number {
@@ -91,11 +118,12 @@ export function startRain(world: LevelId): RainState {
 }
 
 function spawn(s: RainState, rng: Rng): { state: RainState; drop: Drop } | null {
-  if (s.drops.length >= MAX_ON_SCREEN) return null;
+  if (s.drops.length >= maxOnScreen(s)) return null;
   const onScreen = new Set(s.drops.map((d) => d.answer));
   const prompts = new Set(s.drops.map((d) => d.prompt));
-  let p = makeProblem(s.world, rng);
-  for (let i = 0; i < 30 && (onScreen.has(p.answer) || prompts.has(p.prompt)); i++) p = makeProblem(s.world, rng);
+  const make = () => (s.world === 4 && s.nextId <= EASY_FIRST_SUMS ? makeNoCarryTwoDigit(rng) : makeProblem(s.world, rng));
+  let p = make();
+  for (let i = 0; i < 30 && (onScreen.has(p.answer) || prompts.has(p.prompt)); i++) p = make();
   if (onScreen.has(p.answer)) return null;
   // Keep a new sum clear of one still near the top.
   let x = 0.06 + rng() * 0.62;
@@ -132,7 +160,7 @@ export function tick(s: RainState, dtMs: number, rng: Rng): { state: RainState; 
     events.push({ type: "over" });
     return { state: { ...state, lives: 0, over: true }, events };
   }
-  if (state.drops.length === 0 || state.sinceSpawn >= spawnEveryMs(state)) {
+  if (state.drops.length === 0 || (state.sinceSpawn >= spawnEveryMs(state) && state.drops.length < maxOnScreen(state))) {
     const r = spawn(state, rng);
     if (r) {
       state = r.state;
@@ -153,6 +181,7 @@ function blastOne(s: RainState, d: Drop, events: RainEvent[]): RainState {
     speedLevel += 1;
     events.push({ type: "faster" });
   }
+  if (blasts === GENTLE_BLASTS) events.push({ type: "ramp" });
   return {
     ...s,
     drops: s.drops.filter((x) => x.id !== d.id),
@@ -229,6 +258,16 @@ export function parseRainProgress(raw: string | null): RainProgress {
 
 export function serializeRainProgress(p: RainProgress): string {
   return JSON.stringify(p);
+}
+
+/** Stars a score earns in a world, 0 to 3. */
+export function rainStars(score: number): number {
+  return RAIN_STARS.filter((t) => score >= t).length;
+}
+
+/** The score for the next star, or null once all 3 are earned. */
+export function nextStarAt(score: number): number | null {
+  return RAIN_STARS.find((t) => score < t) ?? null;
 }
 
 export function isWorldOpen(p: RainProgress, world: LevelId): boolean {

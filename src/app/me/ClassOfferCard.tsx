@@ -14,9 +14,10 @@ import { classOfferInfo } from "@/lib/classes/meOffer";
 import type { ClassOfferCardData } from "@/lib/classes/meOfferServer";
 
 /**
- * The class offer on /me (migration 0282): "Are you looking for an SPI crash
- * course?" for a Class 10 student, "...offline NDA classes?" for an NDA
- * student, both in Pune. The server decides WHICH card (pickClassOffer); this
+ * The class offer on /me (migrations 0282, 0285): "Are you looking for an SPI
+ * crash course?" for a Class 10 student, "...offline NDA classes?" for an NDA
+ * student, and the same for MHT-CET, JEE, CDS, AFCAT, 12th Board and SSC CGL,
+ * all in Pune. One card per student, ever. The server decides WHICH card (pickClassOffer); this
  * card asks and saves through POST /api/me/class-offer.
  *
  *   Yes        the mobile (filled in from the account) and city, with consent,
@@ -172,7 +173,7 @@ export default function ClassOfferCard({ data }: { data: ClassOfferCardData }) {
                 prefetch={false}
                 onClick={() => void send({ offer: data.offer, action: "more" }, true).catch(() => {})}
               >
-                Know more about {info.examLabel}
+                Know more about {data.knowMoreLabel}
                 <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
             </Button>

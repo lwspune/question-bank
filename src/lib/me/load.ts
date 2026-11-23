@@ -154,9 +154,9 @@ export async function loadMe(
       console.error("study time read failed", e instanceof Error ? e.message : e);
       return null;
     }),
-    // The class offer: their exams, every one, not the focus, so a Class 10
-    // student focused on NDA is still asked about SPI.
-    loadClassOffer(user.id, targets).catch((e) => {
+    // The class offer (one per student, ever): the course for the exam in
+    // focus, else their first exam, else the first other exam that has one.
+    loadClassOffer(user.id, targets, studySlug).catch((e) => {
       console.error("class offer read failed", e instanceof Error ? e.message : e);
       return null;
     }),

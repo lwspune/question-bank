@@ -66,6 +66,30 @@ function orderOfOperations(rng: Rng): Problem {
   }
 }
 
+/**
+ * A two-digit add or subtract with no carrying or borrowing, like 43 + 25 or
+ * 78 − 35: Number Rain's world 4 opens with these (2026-11-23), so the first
+ * sums of a new skill are the easy kind before carries come.
+ */
+export function makeNoCarryTwoDigit(rng: Rng): Problem {
+  if (rng() < 0.5) {
+    const t1 = int(rng, 1, 8);
+    const t2 = int(rng, 1, 9 - t1);
+    const u1 = int(rng, 0, 9);
+    const u2 = int(rng, 0, 9 - u1);
+    const a = t1 * 10 + u1;
+    const b = t2 * 10 + u2;
+    return { prompt: `${a} + ${b}`, answer: a + b };
+  }
+  const t1 = int(rng, 2, 9);
+  const t2 = int(rng, 1, t1 - 1);
+  const u1 = int(rng, 0, 9);
+  const u2 = int(rng, 0, u1);
+  const a = t1 * 10 + u1;
+  const b = t2 * 10 + u2;
+  return { prompt: `${a} ${MINUS} ${b}`, answer: a - b };
+}
+
 export function makeProblem(level: LevelId, rng: Rng): Problem {
   switch (level) {
     case 1:

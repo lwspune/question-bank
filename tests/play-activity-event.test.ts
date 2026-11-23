@@ -100,6 +100,7 @@ describe("play_round for the arcade games (2026-11-18)", () => {
     const good = [
       { game: "word_groups", puzzle: 7, won: true, mistakes: 2 },
       { game: "launch", level: 12, hit: true, shots: 2 },
+      { game: "launch", level: 3, hit: false, shots: 14 },
       { game: "element_hunt", world: 2, score: 380, right: 30, wrong: 4 },
       { game: "timeline", pack: "modern-india", placed: 17, won: false },
       { game: "pin_it", pack: "parks", score: 3120 },
@@ -113,7 +114,8 @@ describe("play_round for the arcade games (2026-11-18)", () => {
       { game: "word_groups", puzzle: 0, won: true, mistakes: 0 },
       { game: "word_groups", puzzle: 3, won: true, mistakes: 5 },
       { game: "launch", level: 31, hit: true, shots: 1 },
-      { game: "launch", level: 3, hit: true, shots: 4 },
+      { game: "launch", level: 3, hit: true, shots: 0 },
+      { game: "launch", level: 3, hit: true, shots: 1000 },
       { game: "element_hunt", world: 4, score: 10, right: 1, wrong: 0 },
       { game: "timeline", pack: "mars", placed: 3, won: false },
       { game: "pin_it", pack: "parks", score: 5001 },
