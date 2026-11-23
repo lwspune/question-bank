@@ -15,7 +15,7 @@ import { START_NEXT_FROM } from "@/lib/me/startNext";
 import { TEACH_CHAPTER_FROM } from "@/lib/chat/teachChapter";
 import { levelById } from "@/lib/play/levels";
 import { PUZZLES } from "@/lib/play/data/wordGroups";
-import { LAUNCH_LEVELS, SHOTS } from "@/lib/play/launch";
+import { LAUNCH_LEVELS, MAX_REPORTED_SHOTS } from "@/lib/play/launch";
 import { TIMELINE_PACKS } from "@/lib/play/data/timeline";
 import { PLACE_PACKS } from "@/lib/play/data/places";
 import { PLACES_PER_ROUND } from "@/lib/play/pin";
@@ -598,7 +598,7 @@ const ARCADE: Record<string, { keys: string[]; check: (r: Record<string, unknown
   launch: {
     keys: ["level", "hit", "shots"],
     check: (r) =>
-      isCount(r.level, LAUNCH_LEVELS.length) && (r.level as number) >= 1 && typeof r.hit === "boolean" && isCount(r.shots, SHOTS) && (r.shots as number) >= 1,
+      isCount(r.level, LAUNCH_LEVELS.length) && (r.level as number) >= 1 && typeof r.hit === "boolean" && isCount(r.shots, MAX_REPORTED_SHOTS) && (r.shots as number) >= 1,
   },
   element_hunt: {
     keys: ["world", "score", "right", "wrong"],
