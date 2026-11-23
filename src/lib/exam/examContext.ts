@@ -691,7 +691,8 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     bilingual: true,
     secondLang: "hi",
     defaultLang: "hi",
-    pastPaperSolutions: true, // PUBLIC since 2026-11-17, every row solved in both languages
+    // No pastPaperSolutions: it titles the /mock past-papers list, and UP has
+    // only chapter tests there; its whole papers live on /question-papers.
     // Chapter tests (scripts/mocks/build-sectional.ts --exam=up-board-1x): built
     // as drafts 2026-11-17, published with the push that ships this entry.
     hasMocks: true,
@@ -714,7 +715,8 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     bilingual: true,
     secondLang: "hi",
     defaultLang: "hi",
-    pastPaperSolutions: true, // PUBLIC since 2026-11-17, every row solved in both languages
+    // No pastPaperSolutions: it titles the /mock past-papers list, and UP has
+    // only chapter tests there; its whole papers live on /question-papers.
     // Chapter tests (scripts/mocks/build-sectional.ts --exam=up-board-1x): built
     // as drafts 2026-11-17, published with the push that ships this entry.
     hasMocks: true,
@@ -1406,8 +1408,9 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     familyStage: "RMS CET",
     familyLabel: "Class 6",
     familyAxis: "Class",
+    // Every paper holds a question (milschool config `held`), so no mocks and
+    // no past-paper list for pastPaperSolutions to title.
     hasMocks: false,
-    pastPaperSolutions: true,
     guidesPath: null,
     notesPath: null,
   },
@@ -1444,8 +1447,8 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     familyStage: "RIMC",
     familyLabel: "Class 8",
     familyAxis: "Class",
-    hasMocks: false,
-    pastPaperSolutions: true,
+    hasMocks: false, // no mocks, so no past-paper list for pastPaperSolutions to title
+    mixedFormats: true, // written Maths + English, MCQ General Knowledge
     guidesPath: null,
     notesPath: null,
   },
@@ -1516,6 +1519,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     familyAxis: "Class",
     // PUBLIC since 2026-11-20: the April 2026 papers (150 q) and two whole-paper mocks.
     hasMocks: true,
+    pastPaperSolutions: true, // 149/150 solved; the one left is cancelled (cancelled_note)
     guidesPath: null,
     // Notes for Intelligence Test and Maths chapters of 5+ questions, one set
     // per class because the two papers differ in difficulty (owner, 2026-11-21).
@@ -1550,6 +1554,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     familyAxis: "Class",
     // PUBLIC since 2026-11-20: the April 2026 papers (149 q; P2 Q42 held) and two mocks.
     hasMocks: true,
+    pastPaperSolutions: true, // 148/149 solved; the one left is cancelled (cancelled_note)
     guidesPath: null,
     // Notes for Intelligence Test and Maths chapters of 5+ questions, one set
     // per class because the two papers differ in difficulty (owner, 2026-11-21).
