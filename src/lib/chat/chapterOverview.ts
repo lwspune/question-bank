@@ -168,7 +168,10 @@ function mineLines(plan: LessonPlan, unit: "part" | "topic"): string[] {
 function teachLines(plan: LessonPlan, opts: { tryShown: boolean; tryOwn: boolean; fromNotes: boolean }): string[] {
   const unit = opts.fromNotes ? "part" : "topic";
   const hasMistakes = (plan.misses?.length ?? 0) > 0;
-  const startHasMistakes = (plan.parts.find((p) => p.n === plan.current)?.missed ?? 0) > 0;
+  const start = plan.parts.find((p) => p.n === plan.current);
+  const startHasMistakes = (start?.missed ?? 0) > 0;
+  // Named: told "this part", V wrote "You start with this part because..." (2026-11-23 capture).
+  const startName = start ? (opts.fromNotes ? `part ${start.n}, ${start.title},` : `${start.title},`) : `this ${unit}`;
   const buttons = "buttons to go on to the next part, to explain more simply and to open the notes";
   const lines = [
     plan.asked
@@ -178,7 +181,7 @@ function teachLines(plan: LessonPlan, opts: { tryShown: boolean; tryOwn: boolean
     // 2026-11-23 (Vedu's capture): "one line saying which topics their mistakes are in" became a
     // five-topic sentence the map card already shows.
     "Write: " +
-      (startHasMistakes && !plan.asked ? `one short line saying you start with this ${unit} because their mistakes are here; then ` : "") +
+      (startHasMistakes && !plan.asked ? `one short line saying you start with ${startName} because their mistakes are here; then ` : "") +
       `teach the ${unit} in two or three short lines` +
       (opts.fromNotes ? "" : " as a general explanation from what you know (rule 7a)") +
       ", with one small example of your own. Write maths inside \\( \\).",

@@ -343,11 +343,16 @@ describe("chapter_overview from the student's mistakes", () => {
 
   it("V's opening line does not list the parts their mistakes are in: the map card shows them", async () => {
     const { tool } = withMisses({
-      misses: [miss("Dot Product, Angle, and Perpendicularity", "q1", "2026-11-20T10:00:00Z"), miss("Magnitude and Unit Vectors", "q3", "2026-11-19T09:00:00Z")],
+      misses: [
+        miss("Dot Product, Angle, and Perpendicularity", "q1", "2026-11-20T10:00:00Z"),
+        miss("Dot Product, Angle, and Perpendicularity", "q2", "2026-11-20T11:00:00Z"),
+        miss("Magnitude and Unit Vectors", "q3", "2026-11-19T09:00:00Z"),
+      ],
     });
     const out = await tool.run({ chapter: "vectors", exam: "MHT-CET" });
     expect(out).not.toMatch(/saying which parts their mistakes are in/i);
-    expect(out).toMatch(/one short line saying you start with this part because their mistakes are here/i);
+    // Named, not "this part": V copied the words and wrote "You start with this part because..." (2026-11-23 capture).
+    expect(out).toMatch(/one short line saying you start with part 2, Dot Product, Angle, and Perpendicularity, because their mistakes are here/i);
   });
 
   it("mistakes only in topics no part covers: none is the turn of this part", async () => {
