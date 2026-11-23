@@ -79,7 +79,8 @@ ${thumbLines}};
     .filter((f) => f.endsWith(".generated.ts") && !keep.has(f));
 
   if (check) {
-    const drift = [...files].filter(([f, body]) => !existsSync(f) || readFileSync(f, "utf8") !== body).map(([f]) => f);
+    // Line endings ignored: a Windows checkout turns them into CRLF.
+    const drift = [...files].filter(([f, body]) => !existsSync(f) || readFileSync(f, "utf8").replace(/\r\n/g, "\n") !== body).map(([f]) => f);
     if (drift.length || stale.length) {
       console.error(`gallery files are stale: ${[...drift, ...stale].map((f) => path.relative(process.cwd(), f)).join(", ")}. Run npm run gallery:index`);
       process.exit(1);
