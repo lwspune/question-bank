@@ -223,6 +223,26 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "structure-of-atoms-and-nuclei": { cls: 12, chapterNo: 15, book: "XII 15 Structure of Atoms and Nuclei" },
     "semiconductor-devices": { cls: 12, chapterNo: 16, book: "XII 16 Semiconductor Devices" },
   },
+  // Maharashtra HSC Class 12 Mathematics (board notes, 2026-11-23): the Balbharati Std XII book in
+  // two parts, numbered as one sequence (Part I chapters 1-7, Part II chapters 1-8 as 8-15).
+  // Add each chapter as it ships.
+  "mh-hsc-12-maths": {
+    "mathematical-logic": { cls: 12, chapterNo: 1, book: "XII Part I 1 Mathematical Logic" },
+    matrices: { cls: 12, chapterNo: 2, book: "XII Part I 2 Matrices" },
+    "trigonometric-functions": { cls: 12, chapterNo: 3, book: "XII Part I 3 Trigonometric Functions" },
+    "pair-of-straight-lines": { cls: 12, chapterNo: 4, book: "XII Part I 4 Pair of Straight Lines" },
+    vectors: { cls: 12, chapterNo: 5, book: "XII Part I 5 Vectors" },
+    "line-and-planes": { cls: 12, chapterNo: 6, book: "XII Part I 6 Line and Plane" },
+    "linear-programming": { cls: 12, chapterNo: 7, book: "XII Part I 7 Linear Programming" },
+    differentiation: { cls: 12, chapterNo: 8, book: "XII Part II 1 Differentiation" },
+    "application-of-derivatives": { cls: 12, chapterNo: 9, book: "XII Part II 2 Applications of Derivatives" },
+    "indefinite-integration": { cls: 12, chapterNo: 10, book: "XII Part II 3 Indefinite Integration" },
+    "definite-integration": { cls: 12, chapterNo: 11, book: "XII Part II 4 Definite Integration" },
+    "application-of-definite-integration": { cls: 12, chapterNo: 12, book: "XII Part II 5 Application of Definite Integration" },
+    "differential-equations": { cls: 12, chapterNo: 13, book: "XII Part II 6 Differential Equations" },
+    "probability-distributions": { cls: 12, chapterNo: 14, book: "XII Part II 7 Probability Distributions" },
+    "binomial-distribution": { cls: 12, chapterNo: 15, book: "XII Part II 8 Binomial Distribution" },
+  },
   // JEE Mains Chemistry follows the rationalised NCERT books (the "NCERT" spine in
   // syllabus_concepts). Judgment calls: The p-Block Elements is no longer in either
   // rationalised book but stays on the JEE syllabus, so it sits before The d- and f-Block

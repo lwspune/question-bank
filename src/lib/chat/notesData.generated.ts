@@ -718,7 +718,22 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "mh-hsc-12-physics/electromagnetic-induction",
   "mh-hsc-12-physics/dual-nature-of-radiation-and-matter",
   "mh-hsc-12-physics/semiconductor-devices",
-  "mh-hsc-12-physics/structure-of-atoms-and-nuclei"
+  "mh-hsc-12-physics/structure-of-atoms-and-nuclei",
+  "mh-hsc-12-maths/matrices",
+  "mh-hsc-12-maths/mathematical-logic",
+  "mh-hsc-12-maths/trigonometric-functions",
+  "mh-hsc-12-maths/pair-of-straight-lines",
+  "mh-hsc-12-maths/vectors",
+  "mh-hsc-12-maths/linear-programming",
+  "mh-hsc-12-maths/line-and-planes",
+  "mh-hsc-12-maths/differentiation",
+  "mh-hsc-12-maths/application-of-derivatives",
+  "mh-hsc-12-maths/indefinite-integration",
+  "mh-hsc-12-maths/application-of-definite-integration",
+  "mh-hsc-12-maths/definite-integration",
+  "mh-hsc-12-maths/differential-equations",
+  "mh-hsc-12-maths/probability-distributions",
+  "mh-hsc-12-maths/binomial-distribution"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1437,4 +1452,19 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "mh-hsc-12-physics/dual-nature-of-radiation-and-matter": () => import("@/app/notes/mh-hsc-12-physics/dual-nature-of-radiation-and-matter/_data").then((m) => m.HSC_PH_DN_NOTES),
   "mh-hsc-12-physics/semiconductor-devices": () => import("@/app/notes/mh-hsc-12-physics/semiconductor-devices/_data").then((m) => m.HSC_PH_SD_NOTES),
   "mh-hsc-12-physics/structure-of-atoms-and-nuclei": () => import("@/app/notes/mh-hsc-12-physics/structure-of-atoms-and-nuclei/_data").then((m) => m.HSC_PH_AN_NOTES),
+  "mh-hsc-12-maths/matrices": () => import("@/app/notes/mh-hsc-12-maths/matrices/_data").then((m) => m.HSC_MA_MX_NOTES),
+  "mh-hsc-12-maths/mathematical-logic": () => import("@/app/notes/mh-hsc-12-maths/mathematical-logic/_data").then((m) => m.HSC_MA_ML_NOTES),
+  "mh-hsc-12-maths/trigonometric-functions": () => import("@/app/notes/mh-hsc-12-maths/trigonometric-functions/_data").then((m) => m.HSC_MA_TF_NOTES),
+  "mh-hsc-12-maths/pair-of-straight-lines": () => import("@/app/notes/mh-hsc-12-maths/pair-of-straight-lines/_data").then((m) => m.HSC_MA_PS_NOTES),
+  "mh-hsc-12-maths/vectors": () => import("@/app/notes/mh-hsc-12-maths/vectors/_data").then((m) => m.HSC_MA_VE_NOTES),
+  "mh-hsc-12-maths/linear-programming": () => import("@/app/notes/mh-hsc-12-maths/linear-programming/_data").then((m) => m.HSC_MA_LR_NOTES),
+  "mh-hsc-12-maths/line-and-planes": () => import("@/app/notes/mh-hsc-12-maths/line-and-planes/_data").then((m) => m.HSC_MA_LP_NOTES),
+  "mh-hsc-12-maths/differentiation": () => import("@/app/notes/mh-hsc-12-maths/differentiation/_data").then((m) => m.HSC_MA_DF_NOTES),
+  "mh-hsc-12-maths/application-of-derivatives": () => import("@/app/notes/mh-hsc-12-maths/application-of-derivatives/_data").then((m) => m.HSC_MA_AD_NOTES),
+  "mh-hsc-12-maths/indefinite-integration": () => import("@/app/notes/mh-hsc-12-maths/indefinite-integration/_data").then((m) => m.HSC_MA_II_NOTES),
+  "mh-hsc-12-maths/application-of-definite-integration": () => import("@/app/notes/mh-hsc-12-maths/application-of-definite-integration/_data").then((m) => m.HSC_MA_AI_NOTES),
+  "mh-hsc-12-maths/definite-integration": () => import("@/app/notes/mh-hsc-12-maths/definite-integration/_data").then((m) => m.HSC_MA_DI_NOTES),
+  "mh-hsc-12-maths/differential-equations": () => import("@/app/notes/mh-hsc-12-maths/differential-equations/_data").then((m) => m.HSC_MA_DE_NOTES),
+  "mh-hsc-12-maths/probability-distributions": () => import("@/app/notes/mh-hsc-12-maths/probability-distributions/_data").then((m) => m.HSC_MA_PD_NOTES),
+  "mh-hsc-12-maths/binomial-distribution": () => import("@/app/notes/mh-hsc-12-maths/binomial-distribution/_data").then((m) => m.HSC_MA_BD_NOTES),
 };

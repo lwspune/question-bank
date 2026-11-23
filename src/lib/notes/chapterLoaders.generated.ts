@@ -14405,6 +14405,324 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 4,
       "traps": 45
     }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "matrices",
+    "chipLabel": "Matrices notes",
+    "slugs": [
+      "hscm-mx-transformations",
+      "hscm-mx-elementary",
+      "hscm-mx-cofactors",
+      "hscm-mx-adjoint",
+      "hscm-mx-equations"
+    ],
+    "chapterName": "Matrices",
+    "formulaCounts": {
+      "formulas": 16,
+      "tables": 0,
+      "traps": 34
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "mathematical-logic",
+    "chipLabel": "Mathematical Logic notes",
+    "slugs": [
+      "hscm-ml-connectives",
+      "hscm-ml-tables",
+      "hscm-ml-tautology",
+      "hscm-ml-negation",
+      "hscm-ml-converse",
+      "hscm-ml-algebra",
+      "hscm-ml-switching"
+    ],
+    "chapterName": "Mathematical Logic",
+    "formulaCounts": {
+      "formulas": 7,
+      "tables": 2,
+      "traps": 41
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "trigonometric-functions",
+    "chipLabel": "Trigonometric Functions notes",
+    "slugs": [
+      "hscm-tf-equations",
+      "hscm-tf-polar",
+      "hscm-tf-triangle",
+      "hscm-tf-applications",
+      "hscm-tf-inverse",
+      "hscm-tf-properties"
+    ],
+    "chapterName": "Trigonometric Functions",
+    "formulaCounts": {
+      "formulas": 18,
+      "tables": 1,
+      "traps": 51
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "pair-of-straight-lines",
+    "chipLabel": "Pair of Straight Lines notes",
+    "slugs": [
+      "hscm-ps-combined",
+      "hscm-ps-angle",
+      "hscm-ps-general",
+      "hscm-ps-bisectors"
+    ],
+    "chapterName": "Pair of Straight Lines",
+    "formulaCounts": {
+      "formulas": 12,
+      "tables": 0,
+      "traps": 28
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "vectors",
+    "chipLabel": "Vectors notes",
+    "slugs": [
+      "hscm-ve-types",
+      "hscm-ve-section",
+      "hscm-ve-dot",
+      "hscm-ve-cross",
+      "hscm-ve-triple"
+    ],
+    "chapterName": "Vectors",
+    "formulaCounts": {
+      "formulas": 19,
+      "tables": 0,
+      "traps": 45
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "linear-programming",
+    "chipLabel": "Linear Programming notes",
+    "slugs": [
+      "hscm-lr-inequations",
+      "hscm-lr-formulation",
+      "hscm-lr-graphical"
+    ],
+    "chapterName": "Linear Programming",
+    "formulaCounts": {
+      "formulas": 10,
+      "tables": 2,
+      "traps": 25
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "line-and-planes",
+    "chipLabel": "Line and Planes notes",
+    "slugs": [
+      "hscm-lp-line",
+      "hscm-lp-pointline",
+      "hscm-lp-skew",
+      "hscm-lp-plane",
+      "hscm-lp-angle",
+      "hscm-lp-coplanar",
+      "hscm-lp-pointplane"
+    ],
+    "chapterName": "Line and Planes",
+    "formulaCounts": {
+      "formulas": 19,
+      "tables": 0,
+      "traps": 43
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "differentiation",
+    "chipLabel": "Differentiation notes",
+    "slugs": [
+      "hscm-df-composite",
+      "hscm-df-inverse",
+      "hscm-df-invtrig",
+      "hscm-df-logarithmic",
+      "hscm-df-implicit",
+      "hscm-df-parametric",
+      "hscm-df-wrt",
+      "hscm-df-higher"
+    ],
+    "chapterName": "Differentiation",
+    "formulaCounts": {
+      "formulas": 26,
+      "tables": 0,
+      "traps": 52
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "application-of-derivatives",
+    "chipLabel": "Application of Derivatives notes",
+    "slugs": [
+      "hscm-ad-tangents",
+      "hscm-ad-rate",
+      "hscm-ad-motion",
+      "hscm-ad-approximations",
+      "hscm-ad-rolle",
+      "hscm-ad-lagrange",
+      "hscm-ad-monotonic",
+      "hscm-ad-extrema"
+    ],
+    "chapterName": "Application of Derivatives",
+    "formulaCounts": {
+      "formulas": 21,
+      "tables": 1,
+      "traps": 45
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "indefinite-integration",
+    "chipLabel": "Indefinite Integration notes",
+    "slugs": [
+      "hscm-ii-elementary",
+      "hscm-ii-substitution",
+      "hscm-ii-trigonometric",
+      "hscm-ii-special",
+      "hscm-ii-numerator",
+      "hscm-ii-parts",
+      "hscm-ii-fractions"
+    ],
+    "chapterName": "Indefinite Integration",
+    "formulaCounts": {
+      "formulas": 22,
+      "tables": 0,
+      "traps": 47
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "application-of-definite-integration",
+    "chipLabel": "Application of Definite Integration notes",
+    "slugs": [
+      "hscm-ai-under",
+      "hscm-ai-between"
+    ],
+    "chapterName": "Application of Definite Integration",
+    "formulaCounts": {
+      "formulas": 8,
+      "tables": 0,
+      "traps": 20
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "definite-integration",
+    "chipLabel": "Definite Integration notes",
+    "slugs": [
+      "hscm-di-limit",
+      "hscm-di-fundamental",
+      "hscm-di-methods",
+      "hscm-di-properties"
+    ],
+    "chapterName": "Definite Integration",
+    "formulaCounts": {
+      "formulas": 12,
+      "tables": 0,
+      "traps": 26
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "differential-equations",
+    "chipLabel": "Differential Equations notes",
+    "slugs": [
+      "hscm-de-order",
+      "hscm-de-formation",
+      "hscm-de-solution",
+      "hscm-de-applications"
+    ],
+    "chapterName": "Differential Equations",
+    "formulaCounts": {
+      "formulas": 14,
+      "tables": 0,
+      "traps": 30
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "probability-distributions",
+    "chipLabel": "Probability Distributions notes",
+    "slugs": [
+      "hscm-pd-random",
+      "hscm-pd-pmf",
+      "hscm-pd-expectation",
+      "hscm-pd-pdf",
+      "hscm-pd-cdf"
+    ],
+    "chapterName": "Probability Distributions",
+    "formulaCounts": {
+      "formulas": 13,
+      "tables": 1,
+      "traps": 32
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "binomial-distribution",
+    "chipLabel": "Binomial Distribution notes",
+    "slugs": [
+      "hscm-bd-bernoulli",
+      "hscm-bd-distribution",
+      "hscm-bd-mean"
+    ],
+    "chapterName": "Binomial Distribution",
+    "formulaCounts": {
+      "formulas": 8,
+      "tables": 1,
+      "traps": 21
+    }
   }
 ];
 
@@ -15124,4 +15442,19 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "mh-hsc-12-physics/dual-nature-of-radiation-and-matter": () => import("@/app/notes/mh-hsc-12-physics/dual-nature-of-radiation-and-matter/_data").then((m) => ({ chapter: m.HSC_PH_DN_CHAPTER, notes: m.HSC_PH_DN_NOTES })),
   "mh-hsc-12-physics/semiconductor-devices": () => import("@/app/notes/mh-hsc-12-physics/semiconductor-devices/_data").then((m) => ({ chapter: m.HSC_PH_SD_CHAPTER, notes: m.HSC_PH_SD_NOTES })),
   "mh-hsc-12-physics/structure-of-atoms-and-nuclei": () => import("@/app/notes/mh-hsc-12-physics/structure-of-atoms-and-nuclei/_data").then((m) => ({ chapter: m.HSC_PH_AN_CHAPTER, notes: m.HSC_PH_AN_NOTES })),
+  "mh-hsc-12-maths/matrices": () => import("@/app/notes/mh-hsc-12-maths/matrices/_data").then((m) => ({ chapter: m.HSC_MA_MX_CHAPTER, notes: m.HSC_MA_MX_NOTES })),
+  "mh-hsc-12-maths/mathematical-logic": () => import("@/app/notes/mh-hsc-12-maths/mathematical-logic/_data").then((m) => ({ chapter: m.HSC_MA_ML_CHAPTER, notes: m.HSC_MA_ML_NOTES })),
+  "mh-hsc-12-maths/trigonometric-functions": () => import("@/app/notes/mh-hsc-12-maths/trigonometric-functions/_data").then((m) => ({ chapter: m.HSC_MA_TF_CHAPTER, notes: m.HSC_MA_TF_NOTES })),
+  "mh-hsc-12-maths/pair-of-straight-lines": () => import("@/app/notes/mh-hsc-12-maths/pair-of-straight-lines/_data").then((m) => ({ chapter: m.HSC_MA_PS_CHAPTER, notes: m.HSC_MA_PS_NOTES })),
+  "mh-hsc-12-maths/vectors": () => import("@/app/notes/mh-hsc-12-maths/vectors/_data").then((m) => ({ chapter: m.HSC_MA_VE_CHAPTER, notes: m.HSC_MA_VE_NOTES })),
+  "mh-hsc-12-maths/linear-programming": () => import("@/app/notes/mh-hsc-12-maths/linear-programming/_data").then((m) => ({ chapter: m.HSC_MA_LR_CHAPTER, notes: m.HSC_MA_LR_NOTES })),
+  "mh-hsc-12-maths/line-and-planes": () => import("@/app/notes/mh-hsc-12-maths/line-and-planes/_data").then((m) => ({ chapter: m.HSC_MA_LP_CHAPTER, notes: m.HSC_MA_LP_NOTES })),
+  "mh-hsc-12-maths/differentiation": () => import("@/app/notes/mh-hsc-12-maths/differentiation/_data").then((m) => ({ chapter: m.HSC_MA_DF_CHAPTER, notes: m.HSC_MA_DF_NOTES })),
+  "mh-hsc-12-maths/application-of-derivatives": () => import("@/app/notes/mh-hsc-12-maths/application-of-derivatives/_data").then((m) => ({ chapter: m.HSC_MA_AD_CHAPTER, notes: m.HSC_MA_AD_NOTES })),
+  "mh-hsc-12-maths/indefinite-integration": () => import("@/app/notes/mh-hsc-12-maths/indefinite-integration/_data").then((m) => ({ chapter: m.HSC_MA_II_CHAPTER, notes: m.HSC_MA_II_NOTES })),
+  "mh-hsc-12-maths/application-of-definite-integration": () => import("@/app/notes/mh-hsc-12-maths/application-of-definite-integration/_data").then((m) => ({ chapter: m.HSC_MA_AI_CHAPTER, notes: m.HSC_MA_AI_NOTES })),
+  "mh-hsc-12-maths/definite-integration": () => import("@/app/notes/mh-hsc-12-maths/definite-integration/_data").then((m) => ({ chapter: m.HSC_MA_DI_CHAPTER, notes: m.HSC_MA_DI_NOTES })),
+  "mh-hsc-12-maths/differential-equations": () => import("@/app/notes/mh-hsc-12-maths/differential-equations/_data").then((m) => ({ chapter: m.HSC_MA_DE_CHAPTER, notes: m.HSC_MA_DE_NOTES })),
+  "mh-hsc-12-maths/probability-distributions": () => import("@/app/notes/mh-hsc-12-maths/probability-distributions/_data").then((m) => ({ chapter: m.HSC_MA_PD_CHAPTER, notes: m.HSC_MA_PD_NOTES })),
+  "mh-hsc-12-maths/binomial-distribution": () => import("@/app/notes/mh-hsc-12-maths/binomial-distribution/_data").then((m) => ({ chapter: m.HSC_MA_BD_CHAPTER, notes: m.HSC_MA_BD_NOTES })),
 };
