@@ -7,7 +7,7 @@
   {
     "id": "b05a7068-771d-4066-94ea-5c12f34c0260",
     "ref": "3.2 Q11",
-    "solution": "Let \\(r\\) be the inradius and \\(s=\\dfrac{a+b+c}{2}\\) the semi-perimeter. Using the standard result \\(\\tan\\dfrac{A}{2}=\\dfrac{r}{s-a}\\), and noting \\(b+c-a=(a+b+c)-2a=2(s-a)\\), we get\n\\((b+c-a)\\tan\\dfrac{A}{2}=2(s-a)\\cdot\\dfrac{r}{s-a}=2r\\).\nSimilarly, \\(c+a-b=2(s-b)\\) gives \\((c+a-b)\\tan\\dfrac{B}{2}=2(s-b)\\cdot\\dfrac{r}{s-b}=2r\\), and \\(a+b-c=2(s-c)\\) gives \\((a+b-c)\\tan\\dfrac{C}{2}=2(s-c)\\cdot\\dfrac{r}{s-c}=2r\\).\n\\(\\therefore (b+c-a)\\tan\\dfrac{A}{2}=(c+a-b)\\tan\\dfrac{B}{2}=(a+b-c)\\tan\\dfrac{C}{2}=2r\\). Hence proved."
+    "solution": "Let \\(a + b + c = 2s\\). By the half angle formula,\n\\(\\tan\\dfrac{A}{2}=\\sqrt{\\dfrac{(s-b)(s-c)}{s(s-a)}}\\).\nAlso \\(b+c-a=(a+b+c)-2a=2s-2a=2(s-a)\\).\n\\(\\therefore (b+c-a)\\tan\\dfrac{A}{2}=2(s-a)\\sqrt{\\dfrac{(s-b)(s-c)}{s(s-a)}}=2\\sqrt{\\dfrac{(s-a)^{2}(s-b)(s-c)}{s(s-a)}}=2\\sqrt{\\dfrac{(s-a)(s-b)(s-c)}{s}}\\) (as \\(s-a>0\\)).\nSimilarly, \\(c+a-b=2(s-b)\\) and \\(\\tan\\dfrac{B}{2}=\\sqrt{\\dfrac{(s-c)(s-a)}{s(s-b)}}\\) give \\((c+a-b)\\tan\\dfrac{B}{2}=2\\sqrt{\\dfrac{(s-a)(s-b)(s-c)}{s}}\\), and \\(a+b-c=2(s-c)\\) and \\(\\tan\\dfrac{C}{2}=\\sqrt{\\dfrac{(s-a)(s-b)}{s(s-c)}}\\) give \\((a+b-c)\\tan\\dfrac{C}{2}=2\\sqrt{\\dfrac{(s-a)(s-b)(s-c)}{s}}\\).\n\\(\\therefore (b+c-a)\\tan\\dfrac{A}{2}=(c+a-b)\\tan\\dfrac{B}{2}=(a+b-c)\\tan\\dfrac{C}{2}\\). Hence proved."
   },
   {
     "id": "c98dfab6-b25d-4e61-9f41-b272e49398f2",

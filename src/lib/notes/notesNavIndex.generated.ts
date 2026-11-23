@@ -5008,5 +5008,110 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "HSC Physics",
     "chapterSlug": "structure-of-atoms-and-nuclei",
     "subtopicCount": 8
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "matrices",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "mathematical-logic",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "trigonometric-functions",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "pair-of-straight-lines",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "vectors",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "linear-programming",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "line-and-planes",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "differentiation",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "application-of-derivatives",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "indefinite-integration",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "application-of-definite-integration",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "definite-integration",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "differential-equations",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "probability-distributions",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-maths",
+    "subjectDisplay": "HSC Maths",
+    "chapterSlug": "binomial-distribution",
+    "subtopicCount": 3
   }
 ];

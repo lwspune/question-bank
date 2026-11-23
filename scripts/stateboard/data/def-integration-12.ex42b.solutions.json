@@ -27,7 +27,7 @@
   {
     "id": "125c97f3-401c-45a9-a8dc-1c2aef29b4c7",
     "ref": "Ex 4.2 III (6)",
-    "solution": "[Textbook answer-key error: the key gives 8/21, which is the value belonging to Ex 4.2 II (4) — the two keys are swapped. This integral is singular at both limits and converges only as a Cauchy principal value, which is 0 by odd symmetry.]\n\nLet \\(f(x) = \\dfrac{x^{3}}{9 - x^{2}}\\). Then \\(f(-x) = \\dfrac{(-x)^{3}}{9 - (-x)^{2}} = \\dfrac{-x^{3}}{9 - x^{2}} = -f(x)\\), so \\(f\\) is an odd function on the symmetric interval \\([-3, 3]\\), and the property \\(\\int_{-a}^{a} f(x) \\, dx = 0\\) for odd \\(f\\) gives the book's answer \\(I = 0\\). An honest warning must accompany this: the integrand is not defined at the endpoints \\(x = \\pm 3\\), where \\(9 - x^{2} = 0\\), and the singularity is not integrable, because near \\(x = 3\\) we have \\(\\dfrac{x^{3}}{(3 - x)(3 + x)} \\approx \\dfrac{9}{2(3 - x)}\\) and \\(\\int \\dfrac{dx}{3 - x}\\) diverges. Consequently \\(\\int_{0}^{3} f\\) is \\(+\\infty\\) and \\(\\int_{-3}^{0} f\\) is \\(-\\infty\\), and the integral does not converge in the ordinary sense. What is genuinely zero is the Cauchy principal value \\(\\lim_{\\varepsilon \\to 0^{+}} \\int_{-3+\\varepsilon}^{3-\\varepsilon} f(x) \\, dx\\), which is \\(0\\) for every \\(\\varepsilon\\) by the odd symmetry. \\(\\therefore I = 0\\), understood as a principal value."
+    "solution": "[Textbook answer-key error: the key gives 8/21, which is the value belonging to Ex 4.2 II (4); the two keys are swapped. The integrand is not defined at \\(x = \\pm 3\\); the book sets this as an exercise on the odd-function property, which gives 0.]\n\nLet \\(f(x) = \\dfrac{x^{3}}{9 - x^{2}}\\). Then \\(f(-x) = \\dfrac{(-x)^{3}}{9 - (-x)^{2}} = \\dfrac{-x^{3}}{9 - x^{2}} = -f(x)\\), so \\(f\\) is an odd function on the symmetric interval \\([-3, 3]\\), and the property \\(\\int_{-a}^{a} f(x) \\, dx = 0\\) for odd \\(f\\) gives \\(I = 0\\)."
   },
   {
     "id": "b0dcd8fb-0446-4104-91f4-54556d7299ae",
@@ -57,7 +57,7 @@
   {
     "id": "a1253176-106d-4c8c-b6cf-2bcf319af5df",
     "ref": "Ex 4.2 III (12)",
-    "solution": "Let \\(f(x) = \\dfrac{x + x^{3}}{16 - x^{2}}\\). The numerator \\(x + x^{3}\\) is odd and the denominator \\(16 - x^{2}\\) is even, so \\(f(-x) = \\dfrac{-x - x^{3}}{16 - x^{2}} = -f(x)\\): \\(f\\) is odd on the symmetric interval \\([-a, a]\\), and the property \\(\\int_{-a}^{a} f(x) \\, dx = 0\\) for odd \\(f\\) gives \\(I = 0\\). This is valid only when \\(\\left|a\\right| < 4\\); the book states no restriction on \\(a\\), but \\(16 - x^{2}\\) vanishes at \\(x = \\pm 4\\), and near those points \\(f(x)\\) behaves like a multiple of \\(\\dfrac{1}{4 - x}\\), which is not integrable, so for \\(\\left|a\\right| \\geq 4\\) the integral does not converge in the ordinary sense and is zero only as a Cauchy principal value (again by the odd symmetry). \\(\\therefore I = 0\\), for \\(\\left|a\\right| < 4\\)."
+    "solution": "Let \\(f(x) = \\dfrac{x + x^{3}}{16 - x^{2}}\\). The numerator \\(x + x^{3}\\) is odd and the denominator \\(16 - x^{2}\\) is even, so \\(f(-x) = \\dfrac{-x - x^{3}}{16 - x^{2}} = -f(x)\\): \\(f\\) is odd on the symmetric interval \\([-a, a]\\), and the property \\(\\int_{-a}^{a} f(x) \\, dx = 0\\) for odd \\(f\\) gives \\(I = 0\\). This holds for \\(\\left|a\\right| < 4\\), since \\(16 - x^{2}\\) vanishes at \\(x = \\pm 4\\), where the integrand is not defined. \\(\\therefore I = 0\\), for \\(\\left|a\\right| < 4\\)."
   },
   {
     "id": "c5483c14-fc9a-4639-883b-23563538f926",

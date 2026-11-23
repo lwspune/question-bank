@@ -454,6 +454,13 @@ picture shows the right shape.
   sentences (`sentenceStarts`), take the new `solutionFingerprint`, and run the
   re-tied batch with `--replace` (2026-11-09: 13 HSC 12 visuals re-tied this
   way, batch al-hsc-retie-1). Fix the solution BEFORE animating where you can.
+  **`retieVisual` (src/lib/visuals/retie.ts) does the shifting** (in-order sentence
+  alignment, a fully deleted step folds into the one before), and
+  `scripts/notes-pipeline/hsc/apply-solution-edits.ts` calls it in the SAME write
+  as the text edit. Before it did, the 2026-11-23 HSC answer clean-up cut off the
+  step text of 425 animations (re-tied from the morning backup, batch
+  al-hsc-retie-2). A re-tie moves the text only: after a heavy rewrite, check the
+  picture still shows what the text says (307f1662 still drew a dropped second answer).
 
 - **A check on the batch FILE is not a check on what the database returns.**
   Postgres jsonb re-sorts an object's keys (shortest first), so `vars` written in

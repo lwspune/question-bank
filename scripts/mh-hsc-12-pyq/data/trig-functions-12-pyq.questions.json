@@ -119,7 +119,7 @@
       }
     ],
     "answer": "B",
-    "solution": "**(B)**\n\n\\(\\sec x = \\dfrac{2}{\\sqrt{3}}\\ \\Rightarrow\\ \\cos x = \\dfrac{\\sqrt{3}}{2}\\)\n\nPrincipal solutions are the solutions that lie in \\([0,\\ 2\\pi)\\).\n\nHere \\(\\cos x > 0\\), so \\(x\\) lies in the first or the fourth quadrant, and the reference angle is \\(\\dfrac{\\pi}{6}\\) because \\(\\cos\\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{2}\\).\n\nFirst quadrant: \\(x = \\dfrac{\\pi}{6}\\)\n\nFourth quadrant: \\(x = 2\\pi - \\dfrac{\\pi}{6} = \\dfrac{11\\pi}{6}\\)\n\nCheck the second value: \\(\\cos\\dfrac{11\\pi}{6} = \\cos\\left(2\\pi - \\dfrac{\\pi}{6}\\right) = \\cos\\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{2}\\), so \\(\\sec\\dfrac{11\\pi}{6} = \\dfrac{2}{\\sqrt{3}}\\). Both values satisfy the equation.\n\nHence the principal solutions are \\(\\dfrac{\\pi}{6},\\ \\dfrac{11\\pi}{6}\\) — option (B).\n\nWhy the others fail: \\(\\sec\\dfrac{\\pi}{3} = 2 \\neq \\dfrac{2}{\\sqrt{3}}\\), which rules out (A); and \\(\\dfrac{11\\pi}{4} = 2.75\\pi\\) is greater than \\(2\\pi\\), so it is not a principal solution at all, which rules out (C) and (D).",
+    "solution": "**(B)**\n\n\\(\\sec x = \\dfrac{2}{\\sqrt{3}}\\ \\Rightarrow\\ \\cos x = \\dfrac{\\sqrt{3}}{2}\\)\n\nPrincipal solutions are the solutions that lie in \\([0,\\ 2\\pi)\\).\n\nHere \\(\\cos x > 0\\), so \\(x\\) lies in the first or the fourth quadrant, and the reference angle is \\(\\dfrac{\\pi}{6}\\) because \\(\\cos\\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{2}\\).\n\nFirst quadrant: \\(x = \\dfrac{\\pi}{6}\\)\n\nFourth quadrant: \\(x = 2\\pi - \\dfrac{\\pi}{6} = \\dfrac{11\\pi}{6}\\)\n\nCheck the second value: \\(\\cos\\dfrac{11\\pi}{6} = \\cos\\left(2\\pi - \\dfrac{\\pi}{6}\\right) = \\cos\\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{2}\\), so \\(\\sec\\dfrac{11\\pi}{6} = \\dfrac{2}{\\sqrt{3}}\\). Both values satisfy the equation.\n\nHence the principal solutions are \\(\\dfrac{\\pi}{6},\\ \\dfrac{11\\pi}{6}\\), option (B).\n\nWhy the others fail: \\(\\sec\\dfrac{\\pi}{3} = 2 \\neq \\dfrac{2}{\\sqrt{3}}\\), which rules out (A); and \\(\\dfrac{11\\pi}{4} = 2.75\\pi\\) is greater than \\(2\\pi\\), so it is not a principal solution at all, which rules out (C) and (D).",
     "difficulty": "EASY"
   },
   {
@@ -204,7 +204,7 @@
     "format": "subjective",
     "subtopic": "Properties of Inverse Trigonometric Functions",
     "stem": "If \\(2\\tan^{- 1}(cosx) = \\tan^{- 1}(2cosecx)\\), then find the value of \\(x\\).",
-    "solution": "For \\(|y| < 1\\), \\(2\\tan^{-1}y = \\tan^{-1}\\dfrac{2y}{1 - y^{2}}\\). Taking \\(y = \\cos x\\) (so \\(|\\cos x| < 1\\), i.e. \\(\\sin x \\neq 0\\)):\n\n\\(2\\tan^{-1}(\\cos x) = \\tan^{-1}\\dfrac{2\\cos x}{1 - \\cos^{2}x} = \\tan^{-1}\\dfrac{2\\cos x}{\\sin^{2}x}\\).\n\nAlso \\(\\tan^{-1}(2\\,\\text{cosec}\\,x) = \\tan^{-1}\\dfrac{2}{\\sin x}\\).\n\nThe given equation therefore becomes\n\n\\(\\tan^{-1}\\dfrac{2\\cos x}{\\sin^{2}x} = \\tan^{-1}\\dfrac{2}{\\sin x}\\)\n\n\\(\\therefore \\dfrac{2\\cos x}{\\sin^{2}x} = \\dfrac{2}{\\sin x}\\)  (as \\(\\tan^{-1}\\) is one-one)\n\n\\(\\therefore \\dfrac{\\cos x}{\\sin^{2}x} = \\dfrac{1}{\\sin x}\\)\n\nMultiplying by \\(\\sin^{2}x\\) (permissible, \\(\\sin x \\neq 0\\)):\n\n\\(\\therefore \\cos x = \\sin x\\)\n\n\\(\\therefore \\tan x = 1\\)\n\n\\(\\therefore x = \\dfrac{\\pi}{4}\\).\n\nCheck: at \\(x = \\dfrac{\\pi}{4}\\), \\(\\cos x = \\dfrac{1}{\\sqrt{2}}\\), so L.H.S. \\(= 2\\tan^{-1}\\dfrac{1}{\\sqrt{2}}\\); and \\(2\\,\\text{cosec}\\dfrac{\\pi}{4} = 2\\sqrt{2}\\), so R.H.S. \\(= \\tan^{-1}(2\\sqrt{2})\\). Using the doubling formula, \\(\\tan\\left(2\\tan^{-1}\\dfrac{1}{\\sqrt{2}}\\right) = \\dfrac{2/\\sqrt{2}}{1 - 1/2} = \\dfrac{\\sqrt{2}}{1/2} = 2\\sqrt{2}\\), so the two sides agree.\n\n(The full solution set of \\(\\tan x = 1\\) consistent with the equation is \\(x = n\\pi + \\dfrac{\\pi}{4},\\ n \\in Z\\); \\(x = \\dfrac{\\pi}{4}\\) is the value asked for.)",
+    "solution": "For \\(|y| < 1\\), \\(2\\tan^{-1}y = \\tan^{-1}\\dfrac{2y}{1 - y^{2}}\\). Taking \\(y = \\cos x\\) (so \\(|\\cos x| < 1\\), i.e. \\(\\sin x \\neq 0\\)):\n\n\\(2\\tan^{-1}(\\cos x) = \\tan^{-1}\\dfrac{2\\cos x}{1 - \\cos^{2}x} = \\tan^{-1}\\dfrac{2\\cos x}{\\sin^{2}x}\\).\n\nAlso \\(\\tan^{-1}(2\\,\\text{cosec}\\,x) = \\tan^{-1}\\dfrac{2}{\\sin x}\\).\n\nThe given equation therefore becomes\n\n\\(\\tan^{-1}\\dfrac{2\\cos x}{\\sin^{2}x} = \\tan^{-1}\\dfrac{2}{\\sin x}\\)\n\n\\(\\therefore \\dfrac{2\\cos x}{\\sin^{2}x} = \\dfrac{2}{\\sin x}\\)  (as \\(\\tan^{-1}\\) is one-one)\n\n\\(\\therefore \\dfrac{\\cos x}{\\sin^{2}x} = \\dfrac{1}{\\sin x}\\)\n\nMultiplying by \\(\\sin^{2}x\\) (permissible, \\(\\sin x \\neq 0\\)):\n\n\\(\\therefore \\cos x = \\sin x\\)\n\n\\(\\therefore \\tan x = 1 = \\tan\\dfrac{\\pi}{4}\\)\n\n\\(\\therefore x = n\\pi + \\dfrac{\\pi}{4},\\ n \\in Z\\). In particular, \\(x = \\dfrac{\\pi}{4}\\).\n\nCheck: at \\(x = \\dfrac{\\pi}{4}\\), \\(\\cos x = \\dfrac{1}{\\sqrt{2}}\\), so L.H.S. \\(= 2\\tan^{-1}\\dfrac{1}{\\sqrt{2}}\\); and \\(2\\,\\text{cosec}\\dfrac{\\pi}{4} = 2\\sqrt{2}\\), so R.H.S. \\(= \\tan^{-1}(2\\sqrt{2})\\). Using the doubling formula, \\(\\tan\\left(2\\tan^{-1}\\dfrac{1}{\\sqrt{2}}\\right) = \\dfrac{2/\\sqrt{2}}{1 - 1/2} = \\dfrac{\\sqrt{2}}{1/2} = 2\\sqrt{2}\\), so the two sides agree.",
     "difficulty": "MODERATE"
   },
   {
@@ -361,7 +361,7 @@
     "pyqYear": 2020,
     "pyqMonth": "February",
     "format": "mcq",
-    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "subtopic": "Solution of Triangle: Sine, Cosine and Projection Rules",
     "stem": "In \\(\\bigtriangleup ABC\\), if \\(a = 2,b = 3\\) and \\(sinA = \\frac{2}{3}\\), then \\(\\angle B\\) = ?",
     "options": [
       {
@@ -402,7 +402,7 @@
     "pyqYear": 2022,
     "pyqMonth": "March",
     "format": "mcq",
-    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "subtopic": "Solution of Triangle: Sine, Cosine and Projection Rules",
     "stem": "In \\(\\bigtriangleup ABC\\), if \\(c^{2} = a^{2} + b^{2} = ac\\), then \\(\\angle B\\) = ?",
     "options": [
       {
@@ -423,7 +423,7 @@
       }
     ],
     "answer": "B",
-    "solution": "**(B)**\n\nThe stem as printed reads \\(c^{2} = a^{2} + b^{2} = ac\\), a double equality no triangle can satisfy — see the errata note. The question is answered on the intended condition \\(c^{2} + a^{2} - b^{2} = ac\\), which is how the same question is printed in the March 2023 paper and how the Balbharati textbook carries it.\n\nBy the cosine rule,\n\n\\(\\cos B = \\dfrac{c^{2} + a^{2} - b^{2}}{2ac}\\)\n\nSubstituting the given condition \\(c^{2} + a^{2} - b^{2} = ac\\):\n\n\\(\\cos B = \\dfrac{ac}{2ac} = \\dfrac{1}{2}\\)\n\nSince \\(0 < B < \\pi\\), the only such angle is\n\n\\(B = \\dfrac{\\pi}{3}\\)\n\nwhich is option (B).",
+    "solution": "**(B)**\n\nThe stem as printed reads \\(c^{2} = a^{2} + b^{2} = ac\\), a double equality no triangle can satisfy. The question is answered on the intended condition \\(c^{2} + a^{2} - b^{2} = ac\\), which is how the same question is printed in the March 2023 paper and how the Balbharati textbook carries it.\n\nBy the cosine rule,\n\n\\(\\cos B = \\dfrac{c^{2} + a^{2} - b^{2}}{2ac}\\)\n\nSubstituting the given condition \\(c^{2} + a^{2} - b^{2} = ac\\):\n\n\\(\\cos B = \\dfrac{ac}{2ac} = \\dfrac{1}{2}\\)\n\nSince \\(0 < B < \\pi\\), the only such angle is\n\n\\(B = \\dfrac{\\pi}{3}\\)\n\nwhich is option (B).",
     "difficulty": "MODERATE"
   },
   {
@@ -432,7 +432,7 @@
     "pyqYear": 2023,
     "pyqMonth": "March",
     "format": "mcq",
-    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "subtopic": "Solution of Triangle: Sine, Cosine and Projection Rules",
     "stem": "In \\(\\bigtriangleup ABC\\), if \\(c^{2} + a^{2} - b^{2} = ac\\), then \\(\\angle B\\) = ______.",
     "options": [
       {
@@ -484,7 +484,7 @@
     "pyqYear": 2025,
     "pyqMonth": null,
     "format": "mcq",
-    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "subtopic": "Solution of Triangle: Sine, Cosine and Projection Rules",
     "stem": "In \\(\\bigtriangleup ABC\\), \\((a + b)cosC + (b + c)cosA + (c + a)cosB\\) is equal to _______.",
     "options": [
       {

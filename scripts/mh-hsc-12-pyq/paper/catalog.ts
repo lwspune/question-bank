@@ -113,7 +113,7 @@ export const HSC_MATHS_CATALOG: PaperCatalog = {
             "Inverse Trigonometric Functions and Principal Values",
             "Polar Coordinates",
             "Properties of Inverse Trigonometric Functions",
-            "Solution of Triangle — Sine, Cosine and Projection Rules",
+            "Solution of Triangle: Sine, Cosine and Projection Rules",
             "Trigonometric Equations and General Solutions"
         ],
         "Vectors": [

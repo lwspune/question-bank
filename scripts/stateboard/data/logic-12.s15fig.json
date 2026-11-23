@@ -8,7 +8,7 @@
     "context": "Q.1. (Solved) Express the following circuits in the symbolic form of logic and write the input-output table.",
     "setLabel": "1.5fig-solved-ex1",
     "stem": "Circuit (i)",
-    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(L\\) : The lamp \\(L\\).\n\nHere \\(\\wedge\\) = switches in series, \\(\\vee\\) = branches in parallel. The upper block has \\(S_1\\) parallel to \\(S_2\\), and this whole block is parallel to the lower branch \\(S_1'\\)–\\(S_2'\\) (in series).\n\nThe circuit is expressed as \\((p \\vee q) \\vee (\\sim p \\wedge \\sim q)\\).",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(L\\) : The lamp \\(L\\).\n\nHere \\(\\wedge\\) = switches in series, \\(\\vee\\) = branches in parallel. The upper block has \\(S_1\\) parallel to \\(S_2\\), and this whole block is parallel to the lower branch \\(S_1'\\) and \\(S_2'\\) (in series).\n\nThe circuit is expressed as \\((p \\vee q) \\vee (\\sim p \\wedge \\sim q)\\).",
     "page": 22,
     "bbox": [
       0.356,
@@ -26,7 +26,7 @@
     "context": "Q.1. (Solved) Express the following circuits in the symbolic form of logic and write the input-output table.",
     "setLabel": "1.5fig-solved-ex1",
     "stem": "Circuit (ii)",
-    "solution": "Let \\(p\\) : The switch \\(S_1\\) is closed, \\(q\\) : The switch \\(S_2\\), \\(r\\) : The switch \\(S_3\\), \\(L\\) : The lamp \\(L\\).\n\nA parallel block of two branches — \\(S_1\\)–\\(S_2\\) (series) parallel to \\(S_1'\\)–\\(S_2'\\) (series) — is joined in series with \\(S_3\\).\n\nThe symbolic form is \\([(p \\wedge q) \\vee (\\sim p \\wedge \\sim q)] \\wedge r\\).",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\) is closed, \\(q\\) : The switch \\(S_2\\), \\(r\\) : The switch \\(S_3\\), \\(L\\) : The lamp \\(L\\).\n\nA parallel block of two branches (\\(S_1\\) and \\(S_2\\) in series, parallel to \\(S_1'\\) and \\(S_2'\\) in series) is joined in series with \\(S_3\\).\n\nThe symbolic form is \\([(p \\wedge q) \\vee (\\sim p \\wedge \\sim q)] \\wedge r\\).",
     "page": 22,
     "bbox": [
       0.092,
@@ -134,7 +134,7 @@
     "context": "Q.1. Express the following circuits in the symbolic form of logic and write the input-output table.",
     "setLabel": "1.5fig-ex-q1",
     "stem": "Circuit (i)",
-    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(r\\) : The switch \\(S_3\\).\n\nHere \\(\\wedge\\) = series, \\(\\vee\\) = parallel. The upper branch is \\(S_1\\); the lower branch is \\(S_2\\)–\\(S_3\\) in series; the two branches are in parallel.\n\nThe symbolic form is \\(p \\vee (q \\wedge r)\\).",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(r\\) : The switch \\(S_3\\).\n\nHere \\(\\wedge\\) = series, \\(\\vee\\) = parallel. The upper branch is \\(S_1\\); the lower branch is \\(S_2\\) and \\(S_3\\) in series; the two branches are in parallel.\n\nThe symbolic form is \\(p \\vee (q \\wedge r)\\).",
     "page": 28,
     "bbox": [
       0.157,
@@ -152,7 +152,7 @@
     "context": "Q.1. Express the following circuits in the symbolic form of logic and write the input-output table.",
     "setLabel": "1.5fig-ex-q1",
     "stem": "Circuit (ii)",
-    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(r\\) : The switch \\(S_3\\).\n\nThe upper branch is \\(S_1'\\)–\\(S_2\\) in series; the lower branch is \\(S_1\\)–\\(S_2'\\) in series; the two branches are in parallel.\n\nThe symbolic form is \\((\\sim p \\wedge q) \\vee (p \\wedge \\sim q)\\).",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(r\\) : The switch \\(S_3\\).\n\nThe upper branch is \\(S_1'\\) and \\(S_2\\) in series; the lower branch is \\(S_1\\) and \\(S_2'\\) in series; the two branches are in parallel.\n\nThe symbolic form is \\((\\sim p \\wedge q) \\vee (p \\wedge \\sim q)\\).",
     "page": 28,
     "bbox": [
       0.53,
@@ -170,7 +170,7 @@
     "context": "Q.1. Express the following circuits in the symbolic form of logic and write the input-output table.",
     "setLabel": "1.5fig-ex-q1",
     "stem": "Circuit (iii)",
-    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(r\\) : The switch \\(S_3\\).\n\nUpper branch: \\(S_1\\) in series with a block of \\(S_2'\\) parallel to \\(S_3\\). Lower branch: \\(S_2'\\)–\\(S_3'\\) in series. The two branches are in parallel.\n\nThe symbolic form is \\([S_1 \\wedge (\\sim q \\vee r)] \\vee (\\sim q \\wedge \\sim r)\\), i.e. \\([p \\wedge (\\sim q \\vee r)] \\vee (\\sim q \\wedge \\sim r)\\).",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(r\\) : The switch \\(S_3\\).\n\nUpper branch: \\(S_1\\) in series with a block of \\(S_2'\\) parallel to \\(S_3\\). Lower branch: \\(S_2'\\) and \\(S_3'\\) in series. The two branches are in parallel.\n\nThe symbolic form is \\([S_1 \\wedge (\\sim q \\vee r)] \\vee (\\sim q \\wedge \\sim r)\\), i.e. \\([p \\wedge (\\sim q \\vee r)] \\vee (\\sim q \\wedge \\sim r)\\).",
     "page": 28,
     "bbox": [
       0.1,
@@ -206,7 +206,7 @@
     "context": "Q.1. Express the following circuits in the symbolic form of logic and write the input-output table.",
     "setLabel": "1.5fig-ex-q1",
     "stem": "Circuit (v)",
-    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\).\n\nThe top branch is \\(S_1\\); below it a branch \\(S_1'\\)–\\(S_2'\\) in series; the lowest branch \\(S_1\\)–\\(S_2\\) in series. All three branches are in parallel.\n\nThe symbolic form is \\(p \\vee (\\sim p \\wedge \\sim q) \\vee (p \\wedge q)\\).",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\).\n\nThe top branch is \\(S_1\\); below it a branch \\(S_1'\\) and \\(S_2'\\) in series; the lowest branch \\(S_1\\) and \\(S_2\\) in series. All three branches are in parallel.\n\nThe symbolic form is \\(p \\vee (\\sim p \\wedge \\sim q) \\vee (p \\wedge q)\\).",
     "page": 28,
     "bbox": [
       0.103,
@@ -260,7 +260,7 @@
     "context": "Q.3. Give an alternative equivalent simple circuits for the following circuits.",
     "setLabel": "1.5fig-ex-q3",
     "stem": "Circuit (ii)",
-    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(r\\) : The switch \\(S_3\\).\n\nUpper branch: \\(S_1\\) in series with a block of \\(S_2\\) parallel to \\(S_3\\). Lower branch: \\(S_3'\\)–\\(S_2'\\)–\\(S_1\\) in series. The two branches are in parallel.\n\nThe symbolic form is \\([p \\wedge (q \\vee r)] \\vee (\\sim r \\wedge \\sim q \\wedge p)\\).\n\nSimplify: \\([p \\wedge (q \\vee r)] \\vee [p \\wedge (\\sim q \\wedge \\sim r)] \\equiv p \\wedge [(q \\vee r) \\vee (\\sim q \\wedge \\sim r)] \\equiv p \\wedge [(q \\vee r) \\vee \\sim(q \\vee r)] \\equiv p \\wedge t \\equiv p\\).\n\nThe equivalent simple circuit is the single switch \\(S_1\\).",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(r\\) : The switch \\(S_3\\).\n\nUpper branch: \\(S_1\\) in series with a block of \\(S_2\\) parallel to \\(S_3\\). Lower branch: \\(S_3'\\), \\(S_2'\\) and \\(S_1\\) in series. The two branches are in parallel.\n\nThe symbolic form is \\([p \\wedge (q \\vee r)] \\vee (\\sim r \\wedge \\sim q \\wedge p)\\).\n\nSimplify: \\([p \\wedge (q \\vee r)] \\vee [p \\wedge (\\sim q \\wedge \\sim r)] \\equiv p \\wedge [(q \\vee r) \\vee (\\sim q \\wedge \\sim r)] \\equiv p \\wedge [(q \\vee r) \\vee \\sim(q \\vee r)] \\equiv p \\wedge t \\equiv p\\).\n\nThe equivalent simple circuit is the single switch \\(S_1\\).",
     "page": 29,
     "bbox": [
       0.52,
@@ -296,7 +296,7 @@
     "context": "Q.4. Write the symbolic form of the following switching circuits, construct its switching table and interpret it.",
     "setLabel": "1.5fig-ex-q4",
     "stem": "Circuit (ii)",
-    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\).\n\nThree parallel branches: \\(S_1\\) (top); \\(S_1'\\)–\\(S_2'\\) in series (middle); \\(S_1\\)–\\(S_2\\) in series (bottom).\n\nThe symbolic form is \\(p \\vee (\\sim p \\wedge \\sim q) \\vee (p \\wedge q)\\).",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\).\n\nThree parallel branches: \\(S_1\\) (top); \\(S_1'\\) and \\(S_2'\\) in series (middle); \\(S_1\\) and \\(S_2\\) in series (bottom).\n\nThe symbolic form is \\(p \\vee (\\sim p \\wedge \\sim q) \\vee (p \\wedge q)\\).",
     "page": 29,
     "bbox": [
       0.473,
@@ -314,7 +314,7 @@
     "context": "Q.4. Write the symbolic form of the following switching circuits, construct its switching table and interpret it.",
     "setLabel": "1.5fig-ex-q4",
     "stem": "Circuit (iii)",
-    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(r\\) : The switch \\(S_3\\).\n\nFirst block: three parallel branches \\(S_1\\), \\(S_2'\\), \\(S_3'\\). Second block: \\(S_1\\) parallel to the series branch \\(S_2\\)–\\(S_3\\). The two blocks are in series.\n\nThe symbolic form is \\((p \\vee \\sim q \\vee \\sim r) \\wedge [p \\vee (q \\wedge r)]\\).",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(r\\) : The switch \\(S_3\\).\n\nFirst block: three parallel branches \\(S_1\\), \\(S_2'\\), \\(S_3'\\). Second block: \\(S_1\\) parallel to the series branch \\(S_2\\) and \\(S_3\\). The two blocks are in series.\n\nThe symbolic form is \\((p \\vee \\sim q \\vee \\sim r) \\wedge [p \\vee (q \\wedge r)]\\).",
     "page": 29,
     "bbox": [
       0.249,

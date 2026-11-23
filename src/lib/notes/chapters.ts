@@ -3361,6 +3361,81 @@ import {
   HSC_PH_AN_NOTES,
   HSC_PH_AN_SLUGS,
 } from "@/app/notes/mh-hsc-12-physics/structure-of-atoms-and-nuclei/_data";
+import {
+  HSC_MA_MX_CHAPTER,
+  HSC_MA_MX_NOTES,
+  HSC_MA_MX_SLUGS,
+} from "@/app/notes/mh-hsc-12-maths/matrices/_data";
+import {
+  HSC_MA_ML_CHAPTER,
+  HSC_MA_ML_NOTES,
+  HSC_MA_ML_SLUGS,
+} from "@/app/notes/mh-hsc-12-maths/mathematical-logic/_data";
+import {
+  HSC_MA_TF_CHAPTER,
+  HSC_MA_TF_NOTES,
+  HSC_MA_TF_SLUGS,
+} from "@/app/notes/mh-hsc-12-maths/trigonometric-functions/_data";
+import {
+  HSC_MA_PS_CHAPTER,
+  HSC_MA_PS_NOTES,
+  HSC_MA_PS_SLUGS,
+} from "@/app/notes/mh-hsc-12-maths/pair-of-straight-lines/_data";
+import {
+  HSC_MA_VE_CHAPTER,
+  HSC_MA_VE_NOTES,
+  HSC_MA_VE_SLUGS,
+} from "@/app/notes/mh-hsc-12-maths/vectors/_data";
+import {
+  HSC_MA_LR_CHAPTER,
+  HSC_MA_LR_NOTES,
+  HSC_MA_LR_SLUGS,
+} from "@/app/notes/mh-hsc-12-maths/linear-programming/_data";
+import {
+  HSC_MA_LP_CHAPTER,
+  HSC_MA_LP_NOTES,
+  HSC_MA_LP_SLUGS,
+} from "@/app/notes/mh-hsc-12-maths/line-and-planes/_data";
+import {
+  HSC_MA_DF_CHAPTER,
+  HSC_MA_DF_NOTES,
+  HSC_MA_DF_SLUGS,
+} from "@/app/notes/mh-hsc-12-maths/differentiation/_data";
+import {
+  HSC_MA_AD_CHAPTER,
+  HSC_MA_AD_NOTES,
+  HSC_MA_AD_SLUGS,
+} from "@/app/notes/mh-hsc-12-maths/application-of-derivatives/_data";
+import {
+  HSC_MA_II_CHAPTER,
+  HSC_MA_II_NOTES,
+  HSC_MA_II_SLUGS,
+} from "@/app/notes/mh-hsc-12-maths/indefinite-integration/_data";
+import {
+  HSC_MA_AI_CHAPTER,
+  HSC_MA_AI_NOTES,
+  HSC_MA_AI_SLUGS,
+} from "@/app/notes/mh-hsc-12-maths/application-of-definite-integration/_data";
+import {
+  HSC_MA_DI_CHAPTER,
+  HSC_MA_DI_NOTES,
+  HSC_MA_DI_SLUGS,
+} from "@/app/notes/mh-hsc-12-maths/definite-integration/_data";
+import {
+  HSC_MA_DE_CHAPTER,
+  HSC_MA_DE_NOTES,
+  HSC_MA_DE_SLUGS,
+} from "@/app/notes/mh-hsc-12-maths/differential-equations/_data";
+import {
+  HSC_MA_PD_CHAPTER,
+  HSC_MA_PD_NOTES,
+  HSC_MA_PD_SLUGS,
+} from "@/app/notes/mh-hsc-12-maths/probability-distributions/_data";
+import {
+  HSC_MA_BD_CHAPTER,
+  HSC_MA_BD_NOTES,
+  HSC_MA_BD_SLUGS,
+} from "@/app/notes/mh-hsc-12-maths/binomial-distribution/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -10804,6 +10879,171 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HSC_PH_AN_CHAPTER,
     notes: HSC_PH_AN_NOTES,
     slugs: HSC_PH_AN_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "mh-hsc-12-maths",
+    subjectDisplay: "HSC Maths",
+    chapterSlug: "matrices",
+    chipLabel: "Matrices notes",
+    chapter: HSC_MA_MX_CHAPTER,
+    notes: HSC_MA_MX_NOTES,
+    slugs: HSC_MA_MX_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "mh-hsc-12-maths",
+    subjectDisplay: "HSC Maths",
+    chapterSlug: "mathematical-logic",
+    chipLabel: "Mathematical Logic notes",
+    chapter: HSC_MA_ML_CHAPTER,
+    notes: HSC_MA_ML_NOTES,
+    slugs: HSC_MA_ML_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "mh-hsc-12-maths",
+    subjectDisplay: "HSC Maths",
+    chapterSlug: "trigonometric-functions",
+    chipLabel: "Trigonometric Functions notes",
+    chapter: HSC_MA_TF_CHAPTER,
+    notes: HSC_MA_TF_NOTES,
+    slugs: HSC_MA_TF_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "mh-hsc-12-maths",
+    subjectDisplay: "HSC Maths",
+    chapterSlug: "pair-of-straight-lines",
+    chipLabel: "Pair of Straight Lines notes",
+    chapter: HSC_MA_PS_CHAPTER,
+    notes: HSC_MA_PS_NOTES,
+    slugs: HSC_MA_PS_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "mh-hsc-12-maths",
+    subjectDisplay: "HSC Maths",
+    chapterSlug: "vectors",
+    chipLabel: "Vectors notes",
+    chapter: HSC_MA_VE_CHAPTER,
+    notes: HSC_MA_VE_NOTES,
+    slugs: HSC_MA_VE_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "mh-hsc-12-maths",
+    subjectDisplay: "HSC Maths",
+    chapterSlug: "linear-programming",
+    chipLabel: "Linear Programming notes",
+    chapter: HSC_MA_LR_CHAPTER,
+    notes: HSC_MA_LR_NOTES,
+    slugs: HSC_MA_LR_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "mh-hsc-12-maths",
+    subjectDisplay: "HSC Maths",
+    chapterSlug: "line-and-planes",
+    chipLabel: "Line and Planes notes",
+    chapter: HSC_MA_LP_CHAPTER,
+    notes: HSC_MA_LP_NOTES,
+    slugs: HSC_MA_LP_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "mh-hsc-12-maths",
+    subjectDisplay: "HSC Maths",
+    chapterSlug: "differentiation",
+    chipLabel: "Differentiation notes",
+    chapter: HSC_MA_DF_CHAPTER,
+    notes: HSC_MA_DF_NOTES,
+    slugs: HSC_MA_DF_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "mh-hsc-12-maths",
+    subjectDisplay: "HSC Maths",
+    chapterSlug: "application-of-derivatives",
+    chipLabel: "Application of Derivatives notes",
+    chapter: HSC_MA_AD_CHAPTER,
+    notes: HSC_MA_AD_NOTES,
+    slugs: HSC_MA_AD_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "mh-hsc-12-maths",
+    subjectDisplay: "HSC Maths",
+    chapterSlug: "indefinite-integration",
+    chipLabel: "Indefinite Integration notes",
+    chapter: HSC_MA_II_CHAPTER,
+    notes: HSC_MA_II_NOTES,
+    slugs: HSC_MA_II_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "mh-hsc-12-maths",
+    subjectDisplay: "HSC Maths",
+    chapterSlug: "application-of-definite-integration",
+    chipLabel: "Application of Definite Integration notes",
+    chapter: HSC_MA_AI_CHAPTER,
+    notes: HSC_MA_AI_NOTES,
+    slugs: HSC_MA_AI_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "mh-hsc-12-maths",
+    subjectDisplay: "HSC Maths",
+    chapterSlug: "definite-integration",
+    chipLabel: "Definite Integration notes",
+    chapter: HSC_MA_DI_CHAPTER,
+    notes: HSC_MA_DI_NOTES,
+    slugs: HSC_MA_DI_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "mh-hsc-12-maths",
+    subjectDisplay: "HSC Maths",
+    chapterSlug: "differential-equations",
+    chipLabel: "Differential Equations notes",
+    chapter: HSC_MA_DE_CHAPTER,
+    notes: HSC_MA_DE_NOTES,
+    slugs: HSC_MA_DE_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "mh-hsc-12-maths",
+    subjectDisplay: "HSC Maths",
+    chapterSlug: "probability-distributions",
+    chipLabel: "Probability Distributions notes",
+    chapter: HSC_MA_PD_CHAPTER,
+    notes: HSC_MA_PD_NOTES,
+    slugs: HSC_MA_PD_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "mh-hsc-12-maths",
+    subjectDisplay: "HSC Maths",
+    chapterSlug: "binomial-distribution",
+    chipLabel: "Binomial Distribution notes",
+    chapter: HSC_MA_BD_CHAPTER,
+    notes: HSC_MA_BD_NOTES,
+    slugs: HSC_MA_BD_SLUGS,
   },
 ];
 

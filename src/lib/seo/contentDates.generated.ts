@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 686
+ * Entries: 701
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -241,14 +241,29 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/jee-mains-physics/wave-optics": "2026-11-20T01:33:03+05:30",
   "/notes/jee-mains-physics/waves": "2026-11-20T01:05:34+05:30",
   "/notes/jee-mains-physics/work-energy-and-power": "2026-11-20T01:25:25+05:30",
-  "/notes/mh-hsc-12-physics/ac-circuits": "2026-11-23T13:40:35+05:30",
+  "/notes/mh-hsc-12-maths/application-of-definite-integration": "2026-11-23T17:30:59+05:30",
+  "/notes/mh-hsc-12-maths/application-of-derivatives": "2026-11-23T16:58:51+05:30",
+  "/notes/mh-hsc-12-maths/binomial-distribution": "2026-11-23T16:58:51+05:30",
+  "/notes/mh-hsc-12-maths/definite-integration": "2026-11-23T16:58:51+05:30",
+  "/notes/mh-hsc-12-maths/differential-equations": "2026-11-23T16:58:51+05:30",
+  "/notes/mh-hsc-12-maths/differentiation": "2026-11-23T16:58:51+05:30",
+  "/notes/mh-hsc-12-maths/indefinite-integration": "2026-11-23T17:30:59+05:30",
+  "/notes/mh-hsc-12-maths/line-and-planes": "2026-11-23T17:30:59+05:30",
+  "/notes/mh-hsc-12-maths/linear-programming": "2026-11-23T17:30:59+05:30",
+  "/notes/mh-hsc-12-maths/mathematical-logic": "2026-11-23T17:30:59+05:30",
+  "/notes/mh-hsc-12-maths/matrices": "2026-11-23T16:58:51+05:30",
+  "/notes/mh-hsc-12-maths/pair-of-straight-lines": "2026-11-23T17:30:59+05:30",
+  "/notes/mh-hsc-12-maths/probability-distributions": "2026-11-23T16:58:51+05:30",
+  "/notes/mh-hsc-12-maths/trigonometric-functions": "2026-11-23T17:30:59+05:30",
+  "/notes/mh-hsc-12-maths/vectors": "2026-11-23T16:58:51+05:30",
+  "/notes/mh-hsc-12-physics/ac-circuits": "2026-11-23T14:43:57+05:30",
   "/notes/mh-hsc-12-physics/current-electricity": "2026-11-23T12:24:21+05:30",
-  "/notes/mh-hsc-12-physics/dual-nature-of-radiation-and-matter": "2026-11-23T13:56:12+05:30",
+  "/notes/mh-hsc-12-physics/dual-nature-of-radiation-and-matter": "2026-11-23T14:43:57+05:30",
   "/notes/mh-hsc-12-physics/electromagnetic-induction": "2026-11-23T13:40:35+05:30",
   "/notes/mh-hsc-12-physics/electrostatics": "2026-11-23T13:27:26+05:30",
   "/notes/mh-hsc-12-physics/kinetic-theory-of-gases": "2026-11-23T13:14:58+05:30",
-  "/notes/mh-hsc-12-physics/magnetic-fields-due-to-electric-current": "2026-11-23T13:27:26+05:30",
-  "/notes/mh-hsc-12-physics/magnetic-materials": "2026-11-23T13:40:35+05:30",
+  "/notes/mh-hsc-12-physics/magnetic-fields-due-to-electric-current": "2026-11-23T14:43:57+05:30",
+  "/notes/mh-hsc-12-physics/magnetic-materials": "2026-11-23T14:43:57+05:30",
   "/notes/mh-hsc-12-physics/mechanical-properties-of-fluids": "2026-11-23T13:14:58+05:30",
   "/notes/mh-hsc-12-physics/oscillations": "2026-11-23T13:14:58+05:30",
   "/notes/mh-hsc-12-physics/rotational-dynamics": "2026-11-23T13:14:58+05:30",
