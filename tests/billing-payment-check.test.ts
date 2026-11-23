@@ -21,6 +21,7 @@ vi.mock("@/lib/billing/paddle", async (importOriginal) => ({
 }));
 vi.mock("@/lib/billing/webhookReceipts", () => ({
   readReceivedRefs: vi.fn(async () => new Set<string>()),
+  firstReceiptSec: vi.fn(async () => null),
   claimDailyAlarm: vi.fn(async () => true),
   releaseDailyAlarm: vi.fn(async () => undefined),
   trimReceipts: vi.fn(async () => undefined),
@@ -29,7 +30,7 @@ vi.mock("@/lib/answerSheets/grader", () => ({ readGraderEmails: vi.fn(async () =
 vi.mock("@/lib/email/resend", () => ({ sendEmail: vi.fn(async () => ({ ok: true, providerId: "e1" })) }));
 
 import { listPayments } from "@/lib/billing/razorpay";
-import { claimDailyAlarm, readReceivedRefs, releaseDailyAlarm } from "@/lib/billing/webhookReceipts";
+import { claimDailyAlarm, firstReceiptSec, readReceivedRefs, releaseDailyAlarm } from "@/lib/billing/webhookReceipts";
 import { sendEmail } from "@/lib/email/resend";
 import { runPaymentCheck } from "@/lib/billing/paymentCheck";
 import { WEBHOOK_RECEIPTS_SINCE_SEC } from "@/lib/billing/webhookAlarm";
@@ -62,6 +63,8 @@ beforeEach(() => {
   vi.mocked(claimDailyAlarm).mockClear().mockResolvedValue(true);
   vi.mocked(releaseDailyAlarm).mockClear();
   vi.mocked(readReceivedRefs).mockReset().mockResolvedValue(new Set());
+  // Recording began a day before the payment.
+  vi.mocked(firstReceiptSec).mockReset().mockResolvedValue(PAID_AN_HOUR_AGO - 86400);
   onePaidOrder();
 });
 
@@ -102,5 +105,18 @@ describe("runPaymentCheck: the webhook alarm", () => {
     expect(claimDailyAlarm).not.toHaveBeenCalled();
     expect(sendEmail).not.toHaveBeenCalled();
     expect(r.emails).toEqual([expect.stringMatching(/webhook has gone quiet/)]);
+  });
+
+  it("stays quiet until the first delivery is recorded: before that, no order can have one", async () => {
+    vi.mocked(firstReceiptSec).mockResolvedValue(null);
+    const r = await run();
+    expect(r.silent.razorpay).toEqual([]);
+    expect(sendEmail).not.toHaveBeenCalled();
+  });
+
+  it("ignores orders paid before the first recorded delivery (the deploy that began recording)", async () => {
+    vi.mocked(firstReceiptSec).mockResolvedValue(PAID_AN_HOUR_AGO + 60);
+    const r = await run();
+    expect(r.silent.razorpay).toEqual([]);
   });
 });

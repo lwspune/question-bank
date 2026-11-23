@@ -10,7 +10,7 @@
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { claimDailyAlarm, readReceivedRefs, recordWebhookReceipt } from "@/lib/billing/webhookReceipts";
+import { claimDailyAlarm, firstReceiptSec, readReceivedRefs, recordWebhookReceipt } from "@/lib/billing/webhookReceipts";
 import { testRunId } from "./helpers/runId";
 
 const HAS_ENV =
@@ -47,6 +47,12 @@ describe.skipIf(!HAS_ENV)("billing_webhook_receipts + billing_alarm_sends (0283)
     await recordWebhookReceipt({ provider: "razorpay", event: "refund.processed", ref: REF_B }, admin);
     const got = await readReceivedRefs(admin, "razorpay", [REF_A, REF_B], ["order.paid"]);
     expect([...got]).toEqual([REF_A]);
+  });
+
+  it("knows when the first delivery was recorded", async () => {
+    const first = await firstReceiptSec(admin, "razorpay");
+    expect(first).not.toBeNull();
+    expect(first!).toBeLessThanOrEqual(Date.now() / 1000 + 60);
   });
 
   it("does not mix providers", async () => {

@@ -70,3 +70,20 @@ export async function trimReceipts(admin: SupabaseClient, nowMs: number): Promis
   const { error } = await admin.from("billing_webhook_receipts").delete().lt("received_at", cutoff);
   if (error) console.error("webhook receipts trim failed", error.message);
 }
+
+/**
+ * When `provider`'s first recorded delivery arrived (seconds), or null when
+ * none has been. A paid order before it can have no receipt by construction:
+ * recording began with the deploy that added it, whenever that was pushed.
+ */
+export async function firstReceiptSec(admin: SupabaseClient, provider: WebhookProvider): Promise<number | null> {
+  const { data, error } = await admin
+    .from("billing_webhook_receipts")
+    .select("received_at")
+    .eq("provider", provider)
+    .order("received_at", { ascending: true })
+    .limit(1);
+  if (error) throw new Error(`webhook receipts read failed: ${error.message}`);
+  const at = data?.[0]?.received_at as string | undefined;
+  return at ? Math.floor(Date.parse(at) / 1000) : null;
+}
