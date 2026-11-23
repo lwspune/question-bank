@@ -243,6 +243,26 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "probability-distributions": { cls: 12, chapterNo: 14, book: "XII Part II 7 Probability Distributions" },
     "binomial-distribution": { cls: 12, chapterNo: 15, book: "XII Part II 8 Binomial Distribution" },
   },
+  // Maharashtra HSC Class 12 Chemistry (board notes, 2026-11-23): the Balbharati Std XII book,
+  // chapters 1 to 16. Add each chapter as it ships.
+  "mh-hsc-12-chemistry": {
+    "solid-state": { cls: 12, chapterNo: 1, book: "XII 1 Solid State" },
+    solutions: { cls: 12, chapterNo: 2, book: "XII 2 Solutions" },
+    "ionic-equilibria": { cls: 12, chapterNo: 3, book: "XII 3 Ionic Equilibria" },
+    "chemical-thermodynamics": { cls: 12, chapterNo: 4, book: "XII 4 Chemical Thermodynamics" },
+    electrochemistry: { cls: 12, chapterNo: 5, book: "XII 5 Electrochemistry" },
+    "chemical-kinetics": { cls: 12, chapterNo: 6, book: "XII 6 Chemical Kinetics" },
+    "elements-of-group-16-17-and-18": { cls: 12, chapterNo: 7, book: "XII 7 Elements of Groups 16, 17 and 18" },
+    "transition-and-inner-transition-elements": { cls: 12, chapterNo: 8, book: "XII 8 Transition and Inner Transition Elements" },
+    "coordination-compounds": { cls: 12, chapterNo: 9, book: "XII 9 Coordination Compounds" },
+    "halogen-derivatives": { cls: 12, chapterNo: 10, book: "XII 10 Halogen Derivatives" },
+    "alcohols-phenols-and-ethers": { cls: 12, chapterNo: 11, book: "XII 11 Alcohols, Phenols and Ethers" },
+    "aldehydes-ketones-and-carboxylic-acids": { cls: 12, chapterNo: 12, book: "XII 12 Aldehydes, Ketones and Carboxylic Acids" },
+    amines: { cls: 12, chapterNo: 13, book: "XII 13 Amines" },
+    biomolecules: { cls: 12, chapterNo: 14, book: "XII 14 Biomolecules" },
+    "introduction-to-polymer-chemistry": { cls: 12, chapterNo: 15, book: "XII 15 Introduction to Polymer Chemistry" },
+    "green-chemistry-and-nanochemistry": { cls: 12, chapterNo: 16, book: "XII 16 Green Chemistry and Nanochemistry" },
+  },
   // JEE Mains Chemistry follows the rationalised NCERT books (the "NCERT" spine in
   // syllabus_concepts). Judgment calls: The p-Block Elements is no longer in either
   // rationalised book but stays on the JEE syllabus, so it sits before The d- and f-Block

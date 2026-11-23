@@ -5113,5 +5113,117 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "HSC Maths",
     "chapterSlug": "binomial-distribution",
     "subtopicCount": 3
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "solid-state",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "solutions",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "ionic-equilibria",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "chemical-thermodynamics",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "chemical-kinetics",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "electrochemistry",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "coordination-compounds",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "transition-and-inner-transition-elements",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "elements-of-group-16-17-and-18",
+    "subtopicCount": 11
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "alcohols-phenols-and-ethers",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "halogen-derivatives",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "aldehydes-ketones-and-carboxylic-acids",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "biomolecules",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "amines",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "introduction-to-polymer-chemistry",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-chemistry",
+    "subjectDisplay": "HSC Chemistry",
+    "chapterSlug": "green-chemistry-and-nanochemistry",
+    "subtopicCount": 6
   }
 ];

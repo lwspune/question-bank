@@ -3436,6 +3436,86 @@ import {
   HSC_MA_BD_NOTES,
   HSC_MA_BD_SLUGS,
 } from "@/app/notes/mh-hsc-12-maths/binomial-distribution/_data";
+import {
+  HSC_CH_SS_CHAPTER,
+  HSC_CH_SS_NOTES,
+  HSC_CH_SS_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/solid-state/_data";
+import {
+  HSC_CH_SO_CHAPTER,
+  HSC_CH_SO_NOTES,
+  HSC_CH_SO_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/solutions/_data";
+import {
+  HSC_CH_IE_CHAPTER,
+  HSC_CH_IE_NOTES,
+  HSC_CH_IE_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/ionic-equilibria/_data";
+import {
+  HSC_CH_TH_CHAPTER,
+  HSC_CH_TH_NOTES,
+  HSC_CH_TH_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/chemical-thermodynamics/_data";
+import {
+  HSC_CH_CK_CHAPTER,
+  HSC_CH_CK_NOTES,
+  HSC_CH_CK_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/chemical-kinetics/_data";
+import {
+  HSC_CH_EC_CHAPTER,
+  HSC_CH_EC_NOTES,
+  HSC_CH_EC_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/electrochemistry/_data";
+import {
+  HSC_CH_CC_CHAPTER,
+  HSC_CH_CC_NOTES,
+  HSC_CH_CC_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/coordination-compounds/_data";
+import {
+  HSC_CH_TR_CHAPTER,
+  HSC_CH_TR_NOTES,
+  HSC_CH_TR_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/transition-and-inner-transition-elements/_data";
+import {
+  HSC_CH_GP_CHAPTER,
+  HSC_CH_GP_NOTES,
+  HSC_CH_GP_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/elements-of-group-16-17-and-18/_data";
+import {
+  HSC_CH_AP_CHAPTER,
+  HSC_CH_AP_NOTES,
+  HSC_CH_AP_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/alcohols-phenols-and-ethers/_data";
+import {
+  HSC_CH_HD_CHAPTER,
+  HSC_CH_HD_NOTES,
+  HSC_CH_HD_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/halogen-derivatives/_data";
+import {
+  HSC_CH_AK_CHAPTER,
+  HSC_CH_AK_NOTES,
+  HSC_CH_AK_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/aldehydes-ketones-and-carboxylic-acids/_data";
+import {
+  HSC_CH_BM_CHAPTER,
+  HSC_CH_BM_NOTES,
+  HSC_CH_BM_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/biomolecules/_data";
+import {
+  HSC_CH_AM_CHAPTER,
+  HSC_CH_AM_NOTES,
+  HSC_CH_AM_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/amines/_data";
+import {
+  HSC_CH_PO_CHAPTER,
+  HSC_CH_PO_NOTES,
+  HSC_CH_PO_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/introduction-to-polymer-chemistry/_data";
+import {
+  HSC_CH_GN_CHAPTER,
+  HSC_CH_GN_NOTES,
+  HSC_CH_GN_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/green-chemistry-and-nanochemistry/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -11044,6 +11124,182 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HSC_MA_BD_CHAPTER,
     notes: HSC_MA_BD_NOTES,
     slugs: HSC_MA_BD_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "solid-state",
+    chipLabel: "Solid State notes",
+    chapter: HSC_CH_SS_CHAPTER,
+    notes: HSC_CH_SS_NOTES,
+    slugs: HSC_CH_SS_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "solutions",
+    chipLabel: "Solutions notes",
+    chapter: HSC_CH_SO_CHAPTER,
+    notes: HSC_CH_SO_NOTES,
+    slugs: HSC_CH_SO_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "ionic-equilibria",
+    chipLabel: "Ionic Equilibria notes",
+    chapter: HSC_CH_IE_CHAPTER,
+    notes: HSC_CH_IE_NOTES,
+    slugs: HSC_CH_IE_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "chemical-thermodynamics",
+    chipLabel: "Chemical Thermodynamics notes",
+    chapter: HSC_CH_TH_CHAPTER,
+    notes: HSC_CH_TH_NOTES,
+    slugs: HSC_CH_TH_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "chemical-kinetics",
+    chipLabel: "Chemical Kinetics notes",
+    chapter: HSC_CH_CK_CHAPTER,
+    notes: HSC_CH_CK_NOTES,
+    slugs: HSC_CH_CK_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "electrochemistry",
+    chipLabel: "Electrochemistry notes",
+    chapter: HSC_CH_EC_CHAPTER,
+    notes: HSC_CH_EC_NOTES,
+    slugs: HSC_CH_EC_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "coordination-compounds",
+    chipLabel: "Coordination Compounds notes",
+    chapter: HSC_CH_CC_CHAPTER,
+    notes: HSC_CH_CC_NOTES,
+    slugs: HSC_CH_CC_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "transition-and-inner-transition-elements",
+    chipLabel: "Transition Elements notes",
+    chapter: HSC_CH_TR_CHAPTER,
+    notes: HSC_CH_TR_NOTES,
+    slugs: HSC_CH_TR_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "elements-of-group-16-17-and-18",
+    chipLabel: "Groups 16, 17 and 18 notes",
+    chapter: HSC_CH_GP_CHAPTER,
+    notes: HSC_CH_GP_NOTES,
+    slugs: HSC_CH_GP_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "alcohols-phenols-and-ethers",
+    chipLabel: "Alcohols, Phenols and Ethers notes",
+    chapter: HSC_CH_AP_CHAPTER,
+    notes: HSC_CH_AP_NOTES,
+    slugs: HSC_CH_AP_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "halogen-derivatives",
+    chipLabel: "Halogen Derivatives notes",
+    chapter: HSC_CH_HD_CHAPTER,
+    notes: HSC_CH_HD_NOTES,
+    slugs: HSC_CH_HD_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "aldehydes-ketones-and-carboxylic-acids",
+    chipLabel: "Aldehydes, Ketones and Carboxylic Acids notes",
+    chapter: HSC_CH_AK_CHAPTER,
+    notes: HSC_CH_AK_NOTES,
+    slugs: HSC_CH_AK_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "biomolecules",
+    chipLabel: "Biomolecules notes",
+    chapter: HSC_CH_BM_CHAPTER,
+    notes: HSC_CH_BM_NOTES,
+    slugs: HSC_CH_BM_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "amines",
+    chipLabel: "Amines notes",
+    chapter: HSC_CH_AM_CHAPTER,
+    notes: HSC_CH_AM_NOTES,
+    slugs: HSC_CH_AM_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "introduction-to-polymer-chemistry",
+    chipLabel: "Polymer Chemistry notes",
+    chapter: HSC_CH_PO_CHAPTER,
+    notes: HSC_CH_PO_NOTES,
+    slugs: HSC_CH_PO_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "green-chemistry-and-nanochemistry",
+    chipLabel: "Green Chemistry and Nanochemistry notes",
+    chapter: HSC_CH_GN_CHAPTER,
+    notes: HSC_CH_GN_NOTES,
+    slugs: HSC_CH_GN_SLUGS,
   },
 ];
 
