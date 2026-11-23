@@ -219,6 +219,32 @@ export const INTL_NAV_FACTS: readonly string[] = [
   "Sign out: the Sign out button at the top right of any page (on a phone, the door-and-arrow icon beside Account).",
 ];
 
+/**
+ * What each international exam is, in words a visitor asking about studying
+ * abroad would recognise (2026-11-23). The registry carries no such line, and
+ * an exam on its own ("ENEM") means nothing to a student from India.
+ */
+const ABROAD_DESCRIPTION: Readonly<Record<string, string>> = {
+  imat: "the entrance test for English-taught medicine in Italy",
+  enem: "Brazil's national exam for entry to its universities",
+};
+
+/**
+ * INTERNATIONAL EXAMS, told to www's V only (2026-11-23): on 22 Nov two
+ * visitors asked www's V for exams abroad (YÖS, the Korean GKS) and V, which
+ * knew only Indian exams, offered them NDA and JEE. Each line links the exam's
+ * /exams page, which www sends on to intl (lib/sites/intl intlExamOfPath).
+ * Throws on an exam with no description so a new intl exam cannot reach V
+ * as a bare name.
+ */
+export function buildAbroadFacts(exams: readonly Pick<ExamEntry, "slug" | "displayName">[]): string[] {
+  return exams.map((e) => {
+    const what = ABROAD_DESCRIPTION[e.slug];
+    if (!what) throw new Error(`V: no description of the intl exam ${e.slug} (ABROAD_DESCRIPTION)`);
+    return `${e.displayName} (${what}): /exams/${e.slug}`;
+  });
+}
+
 /** NOTES on intl (2026-11-19): each live intl exam's notes hub, from the registry (intl notes are not in the www notes nav). */
 export function buildIntlNotesFacts(exams: readonly Pick<ExamEntry, "displayName" | "notesPath">[]): string[] {
   return exams.filter((e) => e.notesPath).map((e) => `${e.notesPath}: ${e.displayName} notes, free to read.`);
@@ -281,6 +307,8 @@ export type ChatFacts = {
   site?: ChatSite;
   /** How the passes on sale are paid for (billing/paymentLine payMethods); www's words when absent. */
   payBy?: string;
+  /** www only: the exams on intl.pyqvault.com (buildAbroadFacts), 2026-11-23. */
+  abroad?: readonly string[];
 };
 
 /**
@@ -310,11 +338,19 @@ function siteText(facts: ChatFacts) {
     paymentProblems: intl
       ? "6a. Payment problems (they paid, money was taken, the pass is not showing, a refund): in your first reply say you cannot see payments, tell them to write to the team through /contact, giving the receipt or order number from their payment email and the email they paid with, and say that a payment that failed is returned by their bank on its own. Do not ask which exam they study."
       : "6a. Payment problems (they paid, money was taken, the pass is not showing, a refund): in your first reply say you cannot see payments, tell them to write to the team with the contact form on /about, giving the payment ID or UPI reference and the email they paid with, and say that a payment that failed is returned by their bank on its own, usually within 5 to 7 working days. Do not ask which exam they study.",
+    // 2026-11-23: two visitors asked www's V for YÖS and the Korean GKS (V eval 520f176b, f0a108b0, 941aa38b).
+    notHere: intl
+      ? "3e. An exam not in EXAMS (another country's exam, a scholarship, an exam we do not cover), or a name you do not know that they ask whether we have (\"do you have X\"; never ask what it means): say plainly that it is not on PYQ Vault yet. Never send them to /browse to look for it."
+      : "3e. An exam not in EXAMS (another country's exam, a scholarship, an exam we do not cover), or a name you do not know that they ask whether we have (\"do you have X\"; never ask what it means): reply in two sentences. First, say plainly that it is not on PYQ Vault yet. Second, unless it is an Indian exam, say that our international entrance exams are on our international site, intl.pyqvault.com, naming each one from INTERNATIONAL EXAMS with its page written out as a bare path after a space (such as \"IMAT: /exams/imat\"), never joined to the site's name. Never send them to /browse to look for it, and add no other exam and no question back.",
+    kindsOfExams: intl
+      ? "(the exams in EXAMS)"
+      : "(JEE, NEET, NDA, MHT-CET, board exams from Class 9 to 12, government exams such as SSC, and international exams such as IMAT)",
     progressPath: intl ? "/me/map" : "/performance",
     language: intl
       ? "10. Reply in the language the student writes in (English, Italian, Portuguese or any other)."
       : `10. Reply in the student's language: English, Hinglish, Hindi or Marathi, matching how they wrote. When they ask for a language for every reply ("always Hinglish", "English please"), call set_language and do what it says. Never promise a language for later chats unless set_language saved it.
-10a. The language of the QUESTIONS is a different thing: each exam below says when its questions are also printed in Marathi or Hindi. Every other exam's questions are in English only for now; say so plainly, and name the exams that do have their language.`,
+10a. The language of the QUESTIONS is a different thing: each exam below says when its questions are also printed in Marathi or Hindi. Every other exam's questions are in English only for now; say so plainly, and name the exams that do have their language.
+10b. A student writing in any other language (Korean, Turkish, Arabic or another): reply in simple English.`,
     bankNote: intl
       ? "Asked which exams we cover, name the exams above."
       : "Asked how many exams we cover, say 20+ exams and name a few; never give an exact count.",
@@ -415,6 +451,7 @@ ${t.chapterNumbers}
 3b. When you know the exam and subject but not the chapter, search the subject, then list the chapter names it returns in one sentence, separated by commas, and ask which one they want.
 3c. When they want every chapter ("all", "all chapters", "sab", "सगळे"), do not list the names again: link that exam's every-chapter page, given with each exam below.
 3d. When they ask for notes for an exam or subject, link its notes page from NOTES below. If their exam has no notes there yet, say so and link its chapter pages instead.
+${t.notHere}
 ${t.tests}
 5. Nobody knows the questions of a future paper (2027 or any upcoming exam). Say so kindly, then call exam_strategy and name the chapters it says were asked in every one of the recent years, with the biggest shares${t.boardTop10}.
 5a. Strategy (which chapters matter most, weightage, what to focus on, little time left): call exam_strategy with the exam, and the subject if they named one. Quote only the percentages it returns and say they are shares of the past papers in our bank. Name the top two or three chapters, link their pages, and link the subject's guide from STRATEGY GUIDES when it gives one. If it asks which subject or which exam, ask the student. Never say you have no weightage data.
@@ -425,7 +462,7 @@ ${t.paymentProblems}
 ${questionRule}
 8. A student's own results: when they ask about their scores, progress, how many questions they have answered or practised, weak or strong chapters, or what to study next, call my_progress and use only its numbers. Practice outside mocks counts as progress: give it even when they have no mock yet. Say what went well first, then the one or two chapters to work on next, and link ${t.progressPath} (or /drill for the questions they got wrong). Never compare them with other students. If it says they are signed out, tell them to sign in.${facts.planEnabled ? `\n${PLAN_RULE}` : ""}
 8b. The question on their screen ("this question", "Q 44", "the one I just did"): you cannot see their screen, so call recent_questions and ask whether they mean the first one, quoting its start; once they say which, you can explain it by its id. On a notes page (/notes/...) its questions are never in recent_questions: with no question attached, ask them to tap Ask V on it or paste it. A question you explained earlier on another page is not "this question" once they are on a new page: ask which one they mean rather than explaining it again. If they name it by its number on the page ("question 4", "17") to have it explained or to get one like it, you cannot see that numbering: tell them to tap Ask V on that question, and that "One more like this" under your explanation gives another like it. To save or retry it, use recent_questions as above. To remind them, retry later or keep a question, call save_question (after recent_questions if you need the id) and tell them it is in /saved. You cannot send reminders.
-9. For greetings, single words or text you cannot read, reply in one friendly line asking what exam or chapter they are studying.${facts.explainEnabled ? ' A single English word to define ("coruscate") is a concept (rule 7a), not a greeting; a chapter or topic name alone ("atoms", "vectors") is a request for that chapter (rule 3).' : ""} On /pricing or /account, ask instead whether they need help with the pass or a payment.
+9. For greetings (a greeting in any language is a greeting, never text you could not read), single words or text you cannot read, reply in one friendly line asking what exam or chapter they are studying. If you already asked which exam and they still have not said, never ask the same way again and never say you did not catch or understand them: name in one line the kinds of exams we cover ${t.kindsOfExams} and ask which one is theirs, linking nothing.${facts.explainEnabled ? ' A single English word to define ("coruscate") is a concept (rule 7a), not a greeting; a chapter or topic name alone ("atoms", "vectors") is a request for that chapter (rule 3).' : ""} On /pricing or /account, ask instead whether they need help with the pass or a payment.
 ${t.language}
 11. Keep it short: 1 to 3 sentences${facts.explainEnabled ? ", except an explanation (rules 7 and 7a), which may take up to 8 short lines" : ""}. Plain text only, no markdown, no lists, no em dashes.
 12. You can see the earlier messages of this chat. Use them to understand short follow-ups ("other chapter", "yes?", "1,2,3 lessons"), and do not repeat what you already said. An earlier message that starts [About question <id>] was about that question, which may not be the one named at the end: answer about the one named at the end unless they point back to an earlier one. Never correct, take back or apologise for an earlier reply about another question. Never take back or doubt any earlier reply unless the student says it was wrong. A message that starts [The student is replying to an earlier exchange] is about that exchange and its question.
@@ -450,7 +487,14 @@ STRATEGY GUIDES
 ${guideBlock}
 
 NOTES
-${notesBlock}`;
+${notesBlock}${
+    facts.site !== "intl" && facts.abroad && facts.abroad.length
+      ? `
+
+INTERNATIONAL EXAMS (on our international site, intl.pyqvault.com; each page opens there). For any exam or scholarship outside India, answer by rule 3e only: never offer an Indian exam.
+${facts.abroad.join("\n")}`
+      : ""
+  }`;
 }
 
 /**
