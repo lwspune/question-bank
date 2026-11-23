@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import * as Popover from "@radix-ui/react-popover";
-import { BookMarked, BookOpen, Bookmark, GraduationCap, Building2, CreditCard, FileCheck2, FileText, LayoutDashboard, Lightbulb, LogOut, MessageSquarePlus, PenLine, ShieldCheck, TrendingUp, User, Target } from "lucide-react";
+import { BookMarked, BookOpen, Bookmark, GraduationCap, Building2, CreditCard, FileCheck2, FileText, LayoutDashboard, Lightbulb, LogOut, MessageSquarePlus, PenLine, School, ShieldCheck, TrendingUp, User, Target } from "lucide-react";
 import { toast } from "sonner";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { totalsLine, type Pulse } from "@/lib/pulse/cache";
@@ -14,6 +14,7 @@ import { drillHref } from "@/lib/drill/from";
 import { VaultPointsMenuLine } from "@/components/billing/useFixPoints";
 import { InviteFriendMenuLink } from "@/components/referrals/InviteFriendCard";
 import GetAppMenuLink from "@/components/install/GetAppMenuLink";
+import { trackFunnel } from "@/lib/analytics/trackFunnel";
 
 export default function UserMenu({
   email,
@@ -267,6 +268,20 @@ export default function UserMenu({
             <CreditCard className="h-4 w-4" aria-hidden />
             Account &amp; access
           </Link>
+          {/* Offline classes in Pune (owner, 2026-11-23): moved here from the
+              header, so only signed-in visitors reach the lead form, and only
+              students (teachers and staff never get the /me class card
+              either). The tap still counts as classes_link_click. */}
+          {role === null && !isStaff && (
+            <Link
+              href="/classes?from=menu"
+              onClick={() => trackFunnel("classes_link_click", { from: "menu" })}
+              className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"
+            >
+              <School className="h-4 w-4" aria-hidden />
+              Offline classes
+            </Link>
+          )}
           {/* Referrals (0249), students only: staff do not buy a pass. */}
           {role === null && !isStaff && (
             <InviteFriendMenuLink className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none" />

@@ -17,7 +17,7 @@ const src = (p: string) => readFileSync(join(process.cwd(), p), "utf8");
 const primaryNav = src("src/components/PrimaryNav.tsx");
 const userMenu = src("src/components/UserMenu.tsx");
 
-describe("header fits beside Ebooks, Classes and Play", () => {
+describe("header fits beside Ebooks and Play (Classes moved to the avatar menu, 2026-11-23)", () => {
   it("has no Guides tab in the top nav", () => {
     expect(primaryNav).not.toMatch(/label:\s*"Guides"/);
     expect(primaryNav).not.toMatch(/guidesHref/);
@@ -43,7 +43,7 @@ describe("header fits beside Ebooks, Classes and Play", () => {
     // avatar: the row needed ~110 px more. The logo and the words stay.
     const headerBar = src("src/components/header/HeaderBar.tsx");
     expect(headerBar).toMatch(/<span className="max-lg:sr-only">PYQ Vault<\/span>/);
-    for (const icon of ["ShoppingBag", "GraduationCap", "Gamepad2"]) {
+    for (const icon of ["ShoppingBag", "Gamepad2"]) {
       expect(headerBar).toMatch(new RegExp(`<${icon} className="hidden h-4 w-4 shrink-0 lg:block"`));
     }
   });
