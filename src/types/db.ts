@@ -484,6 +484,48 @@ export type Database = {
           },
         ]
       }
+      billing_alarm_sends: {
+        Row: {
+          alarm: string
+          ist_day: string
+          sent_at: string
+        }
+        Insert: {
+          alarm: string
+          ist_day: string
+          sent_at?: string
+        }
+        Update: {
+          alarm?: string
+          ist_day?: string
+          sent_at?: string
+        }
+        Relationships: []
+      }
+      billing_webhook_receipts: {
+        Row: {
+          event: string
+          id: number
+          provider: string
+          received_at: string
+          ref: string | null
+        }
+        Insert: {
+          event: string
+          id?: never
+          provider: string
+          received_at?: string
+          ref?: string | null
+        }
+        Update: {
+          event?: string
+          id?: never
+          provider?: string
+          received_at?: string
+          ref?: string | null
+        }
+        Relationships: []
+      }
       board_paper_downloads: {
         Row: {
           board_paper_id: string

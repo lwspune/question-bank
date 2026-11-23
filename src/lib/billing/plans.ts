@@ -362,6 +362,8 @@ export function stampOrderNotes(plan: Plan, userId: string, nowMs: number = Date
 
 /** The fields of a Razorpay order that decide what it bought. */
 export type PaidOrder = {
+  /** Razorpay's order id (`order_…`); the webhook alarm files a delivery under it (0283). */
+  id?: string;
   status?: string;
   amount_paid?: number;
   currency?: string;

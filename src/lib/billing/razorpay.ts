@@ -168,3 +168,36 @@ export async function fetchOrder(
     return { ok: false, error: err instanceof Error ? err.message : String(err) };
   }
 }
+
+/** The payments made against one order (a buyer may have tried more than once). */
+export type OrderPayment = { id: string; status: string };
+
+/**
+ * Every payment Razorpay holds for an order. Read by the return check
+ * (lib/billing/confirmOrder.ts), which needs the CAPTURED payment's id to grant:
+ * the order itself does not carry it.
+ */
+export async function fetchOrderPayments(
+  orderId: string
+): Promise<{ ok: true; payments: OrderPayment[] } | { ok: false; error: string }> {
+  const keyId = process.env.RAZORPAY_KEY_ID;
+  const keySecret = process.env.RAZORPAY_KEY_SECRET;
+  if (!keyId || !keySecret) return { ok: false, error: "Razorpay keys not configured" };
+  if (!/^order_[A-Za-z0-9]+$/.test(orderId)) return { ok: false, error: "bad order id" };
+  const auth = Buffer.from(`${keyId}:${keySecret}`).toString("base64");
+  try {
+    const res = await fetch(`https://api.razorpay.com/v1/orders/${orderId}/payments`, {
+      headers: { Authorization: `Basic ${auth}` },
+      cache: "no-store",
+    });
+    const data = (await res.json().catch(() => null)) as
+      | { items?: OrderPayment[]; error?: { description?: string } }
+      | null;
+    if (!res.ok || !data?.items) {
+      return { ok: false, error: data?.error?.description ?? `Razorpay error ${res.status}` };
+    }
+    return { ok: true, payments: data.items };
+  } catch (err) {
+    return { ok: false, error: err instanceof Error ? err.message : String(err) };
+  }
+}

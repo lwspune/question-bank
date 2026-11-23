@@ -6,6 +6,8 @@ import { decideWebhook, type WebhookBody } from "@/lib/billing/webhook";
 import { applyPaidOrder } from "@/lib/billing/applyPaidOrder";
 import { revokeEbookPurchase } from "@/lib/ebooks/grant";
 import { revokeReferralReward } from "@/lib/referrals/service";
+import { razorpayReceipt } from "@/lib/billing/webhookAlarm";
+import { recordWebhookReceipt } from "@/lib/billing/webhookReceipts";
 
 export const maxDuration = 30;
 
@@ -38,6 +40,11 @@ export async function POST(request: NextRequest) {
   } catch {
     return NextResponse.json({ error: "bad json" }, { status: 400 });
   }
+
+  // Every signed delivery is recorded first, whatever it means (0283): the
+  // payment check reads these to notice the webhook going quiet.
+  const receipt = razorpayReceipt(body);
+  if (receipt) await recordWebhookReceipt(receipt);
 
   const decision = decideWebhook(body);
 

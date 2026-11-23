@@ -17,6 +17,8 @@ import { NextRequest } from "next/server";
 import { stampOrderNotes, type Plan } from "@/lib/billing/plans";
 import type { PaddleTransaction } from "@/lib/billing/paddle";
 
+// Webhook deliveries are recorded (0283); kept off the database here.
+vi.mock("@/lib/billing/webhookReceipts", () => ({ recordWebhookReceipt: vi.fn(async () => undefined) }));
 vi.mock("@/lib/auth", () => ({ getSessionUser: vi.fn(async () => ({ id: "u1", email: "asha@example.com" })) }));
 vi.mock("@/lib/supabase/server", () => ({ createSupabaseServerClient: vi.fn(() => ({})) }));
 vi.mock("@/lib/supabase/admin", () => ({ createSupabaseAdminClient: vi.fn(() => ({})) }));

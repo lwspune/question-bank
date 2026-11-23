@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { sendActivity } from "@/lib/activity/clientBeacon";
 import type { DownloadBox } from "@/lib/activity/clientEvents";
@@ -8,6 +8,8 @@ import { trackFunnel } from "@/lib/analytics/trackFunnel";
 import { checkoutContactOptions } from "@/lib/billing/checkoutOptions";
 import { invalidatePulse } from "@/lib/viewer/usePulse";
 import { closePaddleCheckout, openPaddleCheckout, verifyPaddleTransaction } from "./paddleCheckout";
+import { claimOrder, useReturnCheck } from "./useReturnCheck";
+import { STUDENT_PENDING_KEY, browserStorage, forgetPendingOrder, rememberPendingOrder } from "@/lib/billing/pendingOrder";
 
 /** Minimal shape of the Razorpay Checkout global we use. */
 type RazorpayOptions = {
@@ -28,7 +30,7 @@ type RazorpaySuccess = {
   razorpay_order_id: string;
   razorpay_signature: string;
 };
-type RazorpayInstance = { open: () => void };
+type RazorpayInstance = { open: () => void; close?: () => void };
 declare global {
   interface Window {
     Razorpay?: new (opts: RazorpayOptions) => RazorpayInstance;
@@ -131,6 +133,27 @@ export function useCheckout({
   useEffect(() => {
     loadRazorpay().catch(() => undefined);
   }, []);
+
+  // Back on the page after paying (a UPI app, a reload) with the success
+  // callback never run: the server grants the paid order and we finish here
+  // (2026-11-22, lib/billing/confirmOrder.ts).
+  const rzpRef = useRef<RazorpayInstance | null>(null);
+  const onDoneRef = useRef(onDone);
+  useEffect(() => {
+    onDoneRef.current = onDone;
+  }, [onDone]);
+  useReturnCheck({
+    endpoint: "/api/billing/check-order",
+    storageKey: STUDENT_PENDING_KEY,
+    onPaid: () => {
+      rzpRef.current?.close?.();
+      trackFunnel("checkout_paid", { surface, via: "return_check" });
+      toast.success(ebookSlug ? "Payment received. Your book is ready to download." : "Payment received. Access unlocked!");
+      setBusy(false);
+      invalidatePulse();
+      onDoneRef.current("paid");
+    },
+  });
 
   const start = useCallback(async () => {
     setBusy(true);
@@ -237,6 +260,9 @@ export function useCheckout({
         ...checkoutContactOptions({ email: order.email, contact: order.contact }),
         theme: { color: "#1d4ed8" },
         handler: async (resp) => {
+          // A return check may have finished this order already.
+          if (!claimOrder(resp.razorpay_order_id)) return;
+          forgetPendingOrder(browserStorage(), STUDENT_PENDING_KEY);
           try {
             const verifyRes = await fetch("/api/billing/verify", {
               method: "POST",
@@ -273,6 +299,8 @@ export function useCheckout({
         },
       });
       trackFunnel("checkout_opened", funnelProps);
+      rzpRef.current = rzp;
+      rememberPendingOrder(browserStorage(), STUDENT_PENDING_KEY, order.orderId, Date.now());
       rzp.open();
     } catch (err) {
       fail(err instanceof Error ? err.message : "Checkout failed");
