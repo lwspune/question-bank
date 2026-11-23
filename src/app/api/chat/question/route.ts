@@ -10,7 +10,9 @@
  * POST /api/chat/question  { id, chose, after? }  a signed-in student's pick,
  *      checked here. It is one of the day's free answers like any other
  *      reveal, and it is recorded as practice on the "v" surface, with a miss
- *      as an answer_wrong so the drill brings it back.
+ *      as an answer_wrong so the drill brings it back, and (2026-11-23) a right
+ *      answer to a question missed before as an answer_correct, the drill's own
+ *      rule, so a lesson's "Your turn" on the student's mistake can fix it.
  *      `after` (2026-11-10, V_LEARNING_LOOP.md step 2): the question V explained
  *      before "One more like this". The server links the two (v_followups,
  *      0250) only once it has checked V explained it today, and the first
@@ -28,9 +30,10 @@ import { queryQuestionsByIds } from "@/lib/questions/query";
 import { passOnSale } from "@/lib/billing/passOnSale";
 import { logActivityOnce } from "@/lib/activity/service";
 import { istDayKey } from "@/lib/email/dueNudge";
+import { hasPriorWrong } from "@/lib/drill/query";
 import { readChatSettings } from "@/lib/chat/settingsAdmin";
 import { parseAskedQuestion, toVQuestion } from "@/lib/chat/questionTools";
-import { cardView, gradeCard } from "@/lib/chat/questionCard";
+import { cardView, gradeCard, vCardAnswerKind } from "@/lib/chat/questionCard";
 import { claimVReveal } from "@/lib/chat/questionReveal";
 import { parseFollowsUp } from "@/lib/chat/followUp";
 import { settleFollowUp } from "@/lib/chat/followUpServer";
@@ -139,6 +142,12 @@ export async function POST(request: NextRequest) {
     if (!settings.followUpFree) await settle();
 
     const day = istDayKey(now);
+    // Read before this pick is written: "missed before" must not count a miss made just now.
+    const missedBefore = graded.correct ? await hasPriorWrong(db, userId, asked.id).catch((e) => {
+          console.error("chat/question prior-miss read failed", asked.id, e);
+          return false;
+        })
+      : false;
     await logActivityOnce(db, userId, {
       kind: "question_practiced",
       refId: asked.id,
@@ -146,13 +155,15 @@ export async function POST(request: NextRequest) {
       metadata: { surface: "v", chose: asked.chose, correct: graded.correct },
       dedupeKey: `v_card:${asked.id}:${userId}:${day}`,
     });
-    if (!graded.correct) {
+    const extra = vCardAnswerKind(graded.correct, missedBefore);
+    if (extra) {
       await logActivityOnce(db, userId, {
-        kind: "answer_wrong",
+        kind: extra,
         refId: asked.id,
         refKind: "question",
         metadata: { surface: "v", chose: asked.chose },
-        dedupeKey: `answer:v:${userId}:${asked.id}:${day}`,
+        // The miss keeps its key; a recovery has its own, so a wrong then right on one day writes both.
+        dedupeKey: extra === "answer_wrong" ? `answer:v:${userId}:${asked.id}:${day}` : `answer_correct:v:${userId}:${asked.id}:${day}`,
       });
     }
     return NextResponse.json({ ok: true, correct: graded.correct, answer: graded.answer }, { status: 200 });
