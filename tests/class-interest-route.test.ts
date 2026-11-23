@@ -1,9 +1,10 @@
 /**
- * /api/class-interest (owner, 2026-11-16; migration 0265). Anyone may leave a
- * number for offline classes, signed in or not (owner's choice: a parent may
- * have no account), so the IP rate limit runs before the body is read and the
- * write is keyed on the MOBILE: the same number twice updates one lead. A
- * signed-out answer never clears the account a lead was already tied to.
+ * /api/class-interest (owner, 2026-11-16; migration 0265). Since 2026-11-23 a
+ * lead needs an ACCOUNT (owner: "we need signed up account"; 5 of the first 12
+ * leads came signed out and none could be matched to anyone later), so a
+ * signed-out POST is refused before anything else. The IP rate limit runs
+ * before the body is read and the write is keyed on the MOBILE: the same
+ * number twice updates one lead.
  * GET prefills the cached /classes form for a signed-in visitor.
  * Session and database are mocked; the decisions are real.
  */
@@ -45,7 +46,20 @@ beforeEach(() => {
 });
 
 describe("POST /api/class-interest", () => {
-  it("saves a signed-out lead keyed on the mobile, without an account column", async () => {
+  beforeEach(() => {
+    user.current = { id: "u1", email: "a@example.com", name: null };
+  });
+
+  it("refuses a signed-out visitor, before the rate limit or the body", async () => {
+    user.current = null;
+    const res = await POST(post(good));
+    expect(res.status).toBe(401);
+    expect(await res.json()).toEqual({ error: "Please sign in to ask for a call.", signedIn: false });
+    expect(checkAndIncrement).not.toHaveBeenCalled();
+    expect(upsert).not.toHaveBeenCalled();
+  });
+
+  it("saves a signed-in lead keyed on the mobile, tied to the account", async () => {
     const res = await POST(post(good));
     expect(res.status).toBe(200);
     expect(await res.json()).toEqual({ ok: true });
@@ -53,6 +67,7 @@ describe("POST /api/class-interest", () => {
     const [row, opts] = upsert.mock.calls[0] as unknown as [Record<string, unknown>, unknown];
     expect(opts).toEqual({ onConflict: "mobile" });
     expect(row).toMatchObject({
+      user_id: "u1",
       courses: ["nda", "board-12"],
       city: "Pune",
       is_pune: true,
@@ -62,14 +77,12 @@ describe("POST /api/class-interest", () => {
       from_section: "notes",
       exam_slug: "nda",
     });
-    // A signed-out answer must not unlink a lead an account already owns,
-    // and a resubmission must keep the team's "called" tick and first date.
-    expect(row).not.toHaveProperty("user_id");
+    // A resubmission must keep the team's "called" tick and first date.
     expect(row).not.toHaveProperty("called_at");
     expect(row).not.toHaveProperty("created_at");
   });
 
-  it("ties a signed-in lead to the account and falls back to the account name", async () => {
+  it("falls back to the account name", async () => {
     user.current = { id: "u1", email: "a@example.com", name: "Asha Patil" };
     await POST(post({ ...good, name: "" }));
     const [row] = upsert.mock.calls[0] as unknown as [Record<string, unknown>];

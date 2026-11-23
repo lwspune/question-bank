@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePublicPathname } from "@/lib/nav/usePublicPathname";
-import { Gamepad2, Gem, GraduationCap, ShoppingBag } from "lucide-react";
+import { Gamepad2, Gem, ShoppingBag } from "lucide-react";
 import { trackFunnel } from "@/lib/analytics/trackFunnel";
 import SignInLink from "@/components/reveal/SignInLink";
 import { Button } from "@/components/ui/button";
@@ -148,8 +148,6 @@ export default function HeaderBar({
             {/* The ebook store (2026-10-20): its own button, apart from the study
                 tabs, at every width (owner: "a separate buy section on top"). */}
             <StoreLink />
-            {/* Offline classes in Pune (2026-11-16; was the 1:1 tutoring check), beside the store. */}
-            <ClassesLink />
             {/* The /play games (2026-11-16; a hub since 2026-11-17), open to everyone, signed in or not. */}
             <PlayLink />
             {/* Theme toggle is visible to everyone, anon included. */}
@@ -233,27 +231,6 @@ function StoreLink() {
           at 360 px. From lg up since 2026-11-18, for the same reason at
           tablet widths, where the study tabs share the row. */}
       <span>Ebooks</span>
-    </Link>
-  );
-}
-
-/**
- * Offline classes in Pune (2026-11-16, migration 0265; the Tutor button from
- * 2026-10-27 until then); `from` rides to the stored lead.
- */
-function ClassesLink() {
-  const pathname = usePublicPathname();
-  const active = pathname.startsWith("/classes");
-  const from = pathname.split("/")[1] || "home";
-  return (
-    <Link
-      href={active ? "/classes" : `/classes?from=${encodeURIComponent(from)}`}
-      onClick={() => trackFunnel("classes_link_click", { from })}
-      aria-current={active ? "page" : undefined}
-      className={headerButtonClass(active)}
-    >
-      <GraduationCap className="hidden h-4 w-4 shrink-0 lg:block" aria-hidden />
-      <span>Classes</span>
     </Link>
   );
 }

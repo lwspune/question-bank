@@ -2,13 +2,14 @@
  * POST /api/class-interest: a lead for offline classes in Pune (migration 0265).
  * GET: what the cached /classes form prefills for a signed-in visitor.
  *
- * Anyone may answer, signed in or not (owner, 2026-11-16: a parent may have no
- * account), so: rate-limit (IP) first → validate (shared pure validator) →
- * service-role upsert keyed on the MOBILE, so the same number twice updates one
- * lead instead of adding a second. The row never carries `called_at` or
- * `created_at`, so a resubmission keeps the team's "called" tick and the first
- * date; a signed-out answer never carries `user_id`, so it cannot unlink a lead
- * an account already owns. The exam comes from the visitor's qb_exam cookie.
+ * Signed in only since 2026-11-23 (owner: "we need signed up account"; it was
+ * open to anyone from 2026-11-16, and none of the 5 signed-out leads could be
+ * matched to an account later). So: session → rate-limit (IP) → validate
+ * (shared pure validator) → service-role upsert keyed on the MOBILE, so the
+ * same number twice updates one lead instead of adding a second. The row never
+ * carries `called_at` or `created_at`, so a resubmission keeps the team's
+ * "called" tick and the first date. The exam comes from the visitor's qb_exam
+ * cookie.
  */
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
@@ -46,6 +47,13 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
+    // A lead needs an account (owner, 2026-11-23): the form shows a sign-in
+    // step to a signed-out visitor, and this is the rule behind it.
+    const user = await getSessionUser();
+    if (!user) {
+      return NextResponse.json({ error: "Please sign in to ask for a call.", signedIn: false }, { status: 401 });
+    }
+
     const admin = createSupabaseAdminClient();
 
     const rl = await checkAndIncrement(admin, `class-interest:${getClientIp(request)}`, {
@@ -69,10 +77,9 @@ export async function POST(request: NextRequest) {
     const v = validateClassInterest(raw);
     if (!v.ok) return NextResponse.json({ error: v.error, field: v.field }, { status: 400 });
 
-    const user = await getSessionUser();
-    const accountName = user?.name?.trim().slice(0, CLASS_TEXT_MAX) || null;
+    const accountName = user.name?.trim().slice(0, CLASS_TEXT_MAX) || null;
     const row = {
-      ...(user ? { user_id: user.id } : {}),
+      user_id: user.id,
       name: v.value.name ?? accountName,
       courses: v.value.courses,
       city: v.value.city,
