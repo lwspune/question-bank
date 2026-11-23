@@ -1,5 +1,6 @@
 -- Readout for the "me-class-offer" experiment (src/lib/growth/registry.ts;
--- migration 0282): per card (SPI crash course, offline NDA classes), the
+-- migrations 0282, 0285): per card (one per course: SPI crash course, NDA,
+-- and from 2026-11-23 MHT-CET, JEE, CDS, AFCAT, 12th Board, SSC CGL), the
 -- students who saw it, tapped Know more, said Yes or No, and the Yes leads by
 -- Pune vs other. Staff (org members) and teachers are left out.
 -- Run read-only (Supabase SQL editor or MCP execute_sql).
