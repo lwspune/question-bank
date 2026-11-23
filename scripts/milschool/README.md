@@ -129,13 +129,18 @@ npx tsx scripts/milschool/commit.ts <id> [--apply]             # 8. PRIVATE
 - Short GK answers (fill-ins, true/false) are held on the GK paper and moved to
   `<gk id>-short` by `split-short.ts`.
 
-## Status (2026-11-17)
+## Status (2026-11-23)
 
-All rows PRIVATE until `npx tsx scripts/milschool/publish.ts --apply` (dry run
-without `--apply`; it refuses unless every paper holds exactly the rows commit.ts
-writes, each with a solution). Then the mocks: `npx tsx scripts/mocks/build.ts
---paper=milschool --apply --publish`, 11 whole papers (MOCKS.md); the 7 papers
-with a held question stay held, and RIMC gets none.
+All 4,081 rows PUBLIC and the 11 whole-paper mocks published on 2026-11-23
+(`npx tsx scripts/milschool/publish.ts --apply`, then `npx tsx
+scripts/mocks/build.ts --paper=milschool --apply --publish`; MOCKS.md). The 7
+papers with a held question stay held, and RIMC gets none. publish.ts refuses
+unless every paper holds exactly the rows commit.ts writes, each with a
+solution or, for a question the key dropped, its cancelled_note. A question
+printed again in a later session is stored once (content_hash): config
+`storedElsewhere` says so (RIMC Dec 2019 GK Q39 = Dec 2020 Q38). A dropped
+question has no key, so the mock builder graces it in `prepare`
+(milschoolSittings.ts, from the answers file's `dropped`), not via flawed.json.
 
 | Exam | Papers | Rows | Answers |
 |---|---|---|---|

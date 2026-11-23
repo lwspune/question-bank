@@ -11,12 +11,16 @@
  *
  * Questions the lane flagged as defective ride as grace through
  * src/lib/mocks/flawed.json (scripts/milschool/commit.ts writes them there).
+ * A question the KEY DROPPED is stored keyless (cancelled_note), so it is
+ * graced here in `prepare`: flawed.json is applied after the build's "has a
+ * correct answer" check, which would refuse it (the CAPF pattern).
  *
  * Unit-tested in tests/mock-milschool.test.ts.
  */
 import type { MockPaperBlueprint } from "../../src/lib/mocks/blueprints";
 import { aisseePaper, RMS_CET_6_PAPER, RMS_CET_9_PAPER } from "../../src/lib/mocks/blueprints";
-import { PAPERS, type Paper } from "../milschool/config";
+import type { PaperQuestionRow } from "../../src/lib/mocks/reconstruct";
+import { droppedFor, PAPERS, type Paper } from "../milschool/config";
 
 /**
  * Each AISSEE paper's sections in printed order, as the bank holds them
@@ -47,6 +51,8 @@ export type MilschoolSitting = {
   blueprint: MockPaperBlueprint;
   /** Why this paper is not built: it is missing questions. */
   hold?: string;
+  /** Marks the key's dropped questions grace before the build checks keys. */
+  prepare?: (rows: PaperQuestionRow[]) => PaperQuestionRow[];
 };
 
 function blueprintFor(p: Paper, order: Record<string, string[]>): MockPaperBlueprint {
@@ -69,22 +75,32 @@ const TITLE: Record<string, string> = {
 
 export function deriveMilschoolSittings(
   papers: readonly Paper[],
-  order: Record<string, string[]> = SECTION_ORDER
+  order: Record<string, string[]> = SECTION_ORDER,
+  dropped: (id: string) => number[] = droppedFor
 ): MilschoolSitting[] {
   return papers
     .filter((p) => p.exam !== "rimc")
     .sort((a, b) => a.exam.localeCompare(b.exam) || a.pyqYear - b.pyqYear)
-    .map((p) => ({
-      key: p.id,
-      sourceFile: p.sourceFile,
-      year: p.pyqYear,
-      slug: p.id,
-      title: `${TITLE[p.exam]} ${p.pyqYear} Class ${p.exam.endsWith("6") ? 6 : 9}`,
-      blueprint: blueprintFor(p, order),
-      ...(p.held?.numbers.length
-        ? { hold: `${p.held.numbers.length} question(s) not in the bank: ${p.held.why}` }
-        : {}),
-    }));
+    .map((p) => {
+      const grace = new Set(dropped(p.id));
+      return {
+        key: p.id,
+        sourceFile: p.sourceFile,
+        year: p.pyqYear,
+        slug: p.id,
+        title: `${TITLE[p.exam]} ${p.pyqYear} Class ${p.exam.endsWith("6") ? 6 : 9}`,
+        blueprint: blueprintFor(p, order),
+        ...(p.held?.numbers.length
+          ? { hold: `${p.held.numbers.length} question(s) not in the bank: ${p.held.why}` }
+          : {}),
+        ...(grace.size
+          ? {
+              prepare: (rows: PaperQuestionRow[]) =>
+                rows.map((r) => (grace.has(Number(r.questionNumber)) ? { ...r, grace: true } : r)),
+            }
+          : {}),
+      };
+    });
 }
 
 export function milschoolSittings(): MilschoolSitting[] {
