@@ -14336,6 +14336,75 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 5,
       "traps": 44
     }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "dual-nature-of-radiation-and-matter",
+    "chipLabel": "Dual Nature of Radiation and Matter notes",
+    "slugs": [
+      "hscp-dn-photoelectric",
+      "hscp-dn-einstein",
+      "hscp-dn-radiation",
+      "hscp-dn-photocell",
+      "hscp-dn-debroglie",
+      "hscp-dn-davisson"
+    ],
+    "chapterName": "Dual Nature of Radiation and Matter",
+    "formulaCounts": {
+      "formulas": 12,
+      "tables": 5,
+      "traps": 39
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "semiconductor-devices",
+    "chipLabel": "Semiconductor Devices notes",
+    "slugs": [
+      "hscp-sd-rectifier",
+      "hscp-sd-ripple",
+      "hscp-sd-zener",
+      "hscp-sd-optodiodes",
+      "hscp-sd-transistor",
+      "hscp-sd-amplifier",
+      "hscp-sd-gates"
+    ],
+    "chapterName": "Semiconductor Devices",
+    "formulaCounts": {
+      "formulas": 13,
+      "tables": 6,
+      "traps": 37
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "structure-of-atoms-and-nuclei",
+    "chipLabel": "Structure of Atoms and Nuclei notes",
+    "slugs": [
+      "hscp-an-rutherford",
+      "hscp-an-bohr",
+      "hscp-an-spectra",
+      "hscp-an-nucleus",
+      "hscp-an-binding",
+      "hscp-an-decays",
+      "hscp-an-halflife",
+      "hscp-an-fission"
+    ],
+    "chapterName": "Structure of Atoms and Nuclei",
+    "formulaCounts": {
+      "formulas": 16,
+      "tables": 4,
+      "traps": 45
+    }
   }
 ];
 
@@ -15052,4 +15121,7 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "mh-hsc-12-physics/magnetic-materials": () => import("@/app/notes/mh-hsc-12-physics/magnetic-materials/_data").then((m) => ({ chapter: m.HSC_PH_MM_CHAPTER, notes: m.HSC_PH_MM_NOTES })),
   "mh-hsc-12-physics/ac-circuits": () => import("@/app/notes/mh-hsc-12-physics/ac-circuits/_data").then((m) => ({ chapter: m.HSC_PH_AC_CHAPTER, notes: m.HSC_PH_AC_NOTES })),
   "mh-hsc-12-physics/electromagnetic-induction": () => import("@/app/notes/mh-hsc-12-physics/electromagnetic-induction/_data").then((m) => ({ chapter: m.HSC_PH_EM_CHAPTER, notes: m.HSC_PH_EM_NOTES })),
+  "mh-hsc-12-physics/dual-nature-of-radiation-and-matter": () => import("@/app/notes/mh-hsc-12-physics/dual-nature-of-radiation-and-matter/_data").then((m) => ({ chapter: m.HSC_PH_DN_CHAPTER, notes: m.HSC_PH_DN_NOTES })),
+  "mh-hsc-12-physics/semiconductor-devices": () => import("@/app/notes/mh-hsc-12-physics/semiconductor-devices/_data").then((m) => ({ chapter: m.HSC_PH_SD_CHAPTER, notes: m.HSC_PH_SD_NOTES })),
+  "mh-hsc-12-physics/structure-of-atoms-and-nuclei": () => import("@/app/notes/mh-hsc-12-physics/structure-of-atoms-and-nuclei/_data").then((m) => ({ chapter: m.HSC_PH_AN_CHAPTER, notes: m.HSC_PH_AN_NOTES })),
 };

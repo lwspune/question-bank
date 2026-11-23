@@ -715,7 +715,10 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "mh-hsc-12-physics/magnetic-fields-due-to-electric-current",
   "mh-hsc-12-physics/magnetic-materials",
   "mh-hsc-12-physics/ac-circuits",
-  "mh-hsc-12-physics/electromagnetic-induction"
+  "mh-hsc-12-physics/electromagnetic-induction",
+  "mh-hsc-12-physics/dual-nature-of-radiation-and-matter",
+  "mh-hsc-12-physics/semiconductor-devices",
+  "mh-hsc-12-physics/structure-of-atoms-and-nuclei"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1431,4 +1434,7 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "mh-hsc-12-physics/magnetic-materials": () => import("@/app/notes/mh-hsc-12-physics/magnetic-materials/_data").then((m) => m.HSC_PH_MM_NOTES),
   "mh-hsc-12-physics/ac-circuits": () => import("@/app/notes/mh-hsc-12-physics/ac-circuits/_data").then((m) => m.HSC_PH_AC_NOTES),
   "mh-hsc-12-physics/electromagnetic-induction": () => import("@/app/notes/mh-hsc-12-physics/electromagnetic-induction/_data").then((m) => m.HSC_PH_EM_NOTES),
+  "mh-hsc-12-physics/dual-nature-of-radiation-and-matter": () => import("@/app/notes/mh-hsc-12-physics/dual-nature-of-radiation-and-matter/_data").then((m) => m.HSC_PH_DN_NOTES),
+  "mh-hsc-12-physics/semiconductor-devices": () => import("@/app/notes/mh-hsc-12-physics/semiconductor-devices/_data").then((m) => m.HSC_PH_SD_NOTES),
+  "mh-hsc-12-physics/structure-of-atoms-and-nuclei": () => import("@/app/notes/mh-hsc-12-physics/structure-of-atoms-and-nuclei/_data").then((m) => m.HSC_PH_AN_NOTES),
 };

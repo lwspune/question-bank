@@ -219,6 +219,9 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "magnetic-materials": { cls: 12, chapterNo: 11, book: "XII 11 Magnetic Materials" },
     "electromagnetic-induction": { cls: 12, chapterNo: 12, book: "XII 12 Electromagnetic Induction" },
     "ac-circuits": { cls: 12, chapterNo: 13, book: "XII 13 AC Circuits" },
+    "dual-nature-of-radiation-and-matter": { cls: 12, chapterNo: 14, book: "XII 14 Dual Nature of Radiation and Matter" },
+    "structure-of-atoms-and-nuclei": { cls: 12, chapterNo: 15, book: "XII 15 Structure of Atoms and Nuclei" },
+    "semiconductor-devices": { cls: 12, chapterNo: 16, book: "XII 16 Semiconductor Devices" },
   },
   // JEE Mains Chemistry follows the rationalised NCERT books (the "NCERT" spine in
   // syllabus_concepts). Judgment calls: The p-Block Elements is no longer in either

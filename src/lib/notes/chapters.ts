@@ -3346,6 +3346,21 @@ import {
   HSC_PH_EM_NOTES,
   HSC_PH_EM_SLUGS,
 } from "@/app/notes/mh-hsc-12-physics/electromagnetic-induction/_data";
+import {
+  HSC_PH_DN_CHAPTER,
+  HSC_PH_DN_NOTES,
+  HSC_PH_DN_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/dual-nature-of-radiation-and-matter/_data";
+import {
+  HSC_PH_SD_CHAPTER,
+  HSC_PH_SD_NOTES,
+  HSC_PH_SD_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/semiconductor-devices/_data";
+import {
+  HSC_PH_AN_CHAPTER,
+  HSC_PH_AN_NOTES,
+  HSC_PH_AN_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/structure-of-atoms-and-nuclei/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -10756,6 +10771,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HSC_PH_EM_CHAPTER,
     notes: HSC_PH_EM_NOTES,
     slugs: HSC_PH_EM_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "dual-nature-of-radiation-and-matter",
+    chipLabel: "Dual Nature of Radiation and Matter notes",
+    chapter: HSC_PH_DN_CHAPTER,
+    notes: HSC_PH_DN_NOTES,
+    slugs: HSC_PH_DN_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "semiconductor-devices",
+    chipLabel: "Semiconductor Devices notes",
+    chapter: HSC_PH_SD_CHAPTER,
+    notes: HSC_PH_SD_NOTES,
+    slugs: HSC_PH_SD_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "structure-of-atoms-and-nuclei",
+    chipLabel: "Structure of Atoms and Nuclei notes",
+    chapter: HSC_PH_AN_CHAPTER,
+    notes: HSC_PH_AN_NOTES,
+    slugs: HSC_PH_AN_SLUGS,
   },
 ];
 
