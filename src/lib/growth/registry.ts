@@ -555,6 +555,12 @@ export const CLASS_LEADS_PUNE_KEEP = 10;
  * leads in its first 6 days (0 SPI, 2 NDA).
  */
 export const ME_CLASS_OFFER_YES_KEEP_PCT = 5;
+/**
+ * "notes-visuals": the Visuals gallery is kept if this many signed-in students
+ * open a visual in 4 weeks AND this share of them tap "Practise 3 questions".
+ */
+export const NOTES_VISUALS_OPENERS_KEEP = 100;
+export const NOTES_VISUALS_PRACTISE_PCT = 20;
 /** "play-games": signed-in students who finish a /play round in 4 weeks, the floor for reading the rule at all. */
 export const PLAY_PLAYERS_MIN = 50;
 
@@ -649,7 +655,8 @@ export type Readout =
   | "me-class-offer"
   | "play-games"
   | "practice-trial"
-  | "v-intl";
+  | "v-intl"
+  | "notes-visuals";
 
 export type Experiment = {
   id: string;
@@ -1873,6 +1880,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-19",
     windowDays: 21,
     readout: "v-intl",
+    status: "running",
+  },
+  {
+    id: "notes-visuals",
+    title: "Visuals: the notes' pictures and diagrams in one place",
+    change:
+      "The header's Visuals button (in the slot Classes left, 2026-11-23) opens /visuals/<subject> for the student's exam: every notes visual of that subject as a grid of squares, with Exam and Subject dropdowns, chapter chips with counts and All · Try it · 3D · Pictures. A tile opens it full screen (swipe up for the next) with the concept's name and intuition, Read in notes, Practise 3 questions (that concept's own questions in the notes drill panel; answers count toward the free limit) and Share. Signed-in students see the chapters with mistakes waiting first. Notes visuals only (912 across 27 subjects on www), not animated solutions.",
+    why: "Animated solutions are measured popular (499 students, 82-86% of plays finished, 7% switched to Still), and the owner asked for every visual in one place. The notes' 542 diagrams sit one per concept deep inside notes pages, and nothing recorded whether anyone used them.",
+    metric:
+      "Signed-in students who open a visual, and of them who tap Practise 3 questions and Read in notes (user_activity surface_viewed, surface visuals: page, open, practise, notes; staff left out; scripts/gallery/readout.sql). Header taps signed in or out (visuals_link_click) in Vercel by hand",
+    rule: `Keep the header button if ${NOTES_VISUALS_OPENERS_KEEP}+ signed-in students open a visual in 4 weeks and ${NOTES_VISUALS_PRACTISE_PCT}%+ of them tap Practise 3 questions; below either, bring the numbers to the owner with a choice (move it under Notes, or keep it).`,
+    liveSince: "2026-11-23",
+    windowDays: 28,
+    readout: "notes-visuals",
     status: "running",
   },
 ];

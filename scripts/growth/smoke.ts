@@ -393,6 +393,10 @@ async function main() {
         // Read by hand: play_round rows (migration 0267), players' study days before vs after the first round.
         line = "by hand: scripts/play/readout.sql + Vercel play_link_click / play_round_end";
         break;
+      case "notes-visuals":
+        // Read by hand: surface_viewed rows with surface visuals (page, open, practise, notes).
+        line = "by hand: scripts/gallery/readout.sql + Vercel visuals_link_click";
+        break;
       case "practice-trial":
         // Read by hand: offers, activations and purchases after the 7-day trial (migration 0273).
         line = "by hand: scripts/billing/practice-trial-readout.sql";
