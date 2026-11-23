@@ -10,6 +10,6 @@ export const HSC_MA_AI_CHAPTER: ChapterNote = {
     "Marks go to the steps: a rough sketch with the region shaded, the points of intersection, the curve written as y in terms of x, the integral with its limits, and the answer in square units. " +
     "Every area in the chapter is one definite integral set up the right way, so learn the area under one curve before the area between two.",
   cardBlurb:
-    "The area under a curve along either axis, regions below or across the X-axis, parabola, circle and ellipse areas by symmetry, and the area between two curves, including two parabolas and a chord of a circle.",
+    "The area under a curve along either axis, regions under or across the X-axis, parabola, circle and ellipse areas by symmetry, and the area between two curves, including two parabolas and a chord of a circle.",
   subtopicOrder: ["hscm-ai-under", "hscm-ai-between"],
 };
