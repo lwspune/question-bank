@@ -67,7 +67,7 @@
  {
   "id": "305e6d68-3ba8-414a-9bf7-ceca47e9d9fa",
   "ref": "Misc 2A Q.6",
-  "solution": "[Textbook answer-key error: the printed answer has the \\((2,2)\\) entry as \\(+\\tfrac{1}{2}\\); it should be \\(-\\tfrac{1}{2}\\) (our answer).]\n\n\\(AX = I\\) means \\(X = A^{-1}\\) for \\(A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}\\).\n\n\\(|A| = (1)(4) - (2)(3) = 4 - 6 = -2 \\neq 0\\).\n\n\\(\\text{adj}(A) = \\begin{bmatrix} 4 & -2 \\\\ -3 & 1 \\end{bmatrix}\\).\n\n\\(X = A^{-1} = \\frac{1}{|A|}\\,\\text{adj}(A) = -\\frac{1}{2}\\begin{bmatrix} 4 & -2 \\\\ -3 & 1 \\end{bmatrix} = \\begin{bmatrix} -2 & 1 \\\\ \\tfrac{3}{2} & -\\tfrac{1}{2} \\end{bmatrix}\\)."
+  "solution": "[Textbook answer-key error: the printed answer has the \\((2,2)\\) entry as \\(+\\tfrac{1}{2}\\); it should be \\(-\\tfrac{1}{2}\\).]\n\n\\(AX = I\\) means \\(X = A^{-1}\\) for \\(A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}\\).\n\n\\(|A| = (1)(4) - (2)(3) = 4 - 6 = -2 \\neq 0\\).\n\n\\(\\text{adj}(A) = \\begin{bmatrix} 4 & -2 \\\\ -3 & 1 \\end{bmatrix}\\).\n\n\\(X = A^{-1} = \\frac{1}{|A|}\\,\\text{adj}(A) = -\\frac{1}{2}\\begin{bmatrix} 4 & -2 \\\\ -3 & 1 \\end{bmatrix} = \\begin{bmatrix} -2 & 1 \\\\ \\tfrac{3}{2} & -\\tfrac{1}{2} \\end{bmatrix}\\)."
  },
  {
   "id": "459f7dbc-0898-401b-ada6-63cc69398db2",
@@ -177,7 +177,7 @@
  {
   "id": "95569106-af91-43aa-86a6-d321c4a213f9",
   "ref": "Misc 2A Q.19 i)",
-  "solution": "Let \\(A = [a_{ij}]_{3\\times3}\\) with cofactors \\(A_{ij}\\). The expression\n\\(a_{11}A_{21} + a_{12}A_{22} + a_{13}A_{23}\\)\nmultiplies the entries of row 1 by the cofactors of row 2.\n\nBy the property of \\(\"alien cofactors\\)\": the sum of products of the elements of one row with the cofactors of a DIFFERENT row is \\(0\\). Equivalently, this sum equals the determinant of the matrix obtained by replacing row 2 of \\(A\\) with a copy of row 1 — that matrix has two identical rows, so its determinant is \\(0\\).\n\nHence \\(a_{11}A_{21} + a_{12}A_{22} + a_{13}A_{23} = 0\\)."
+  "solution": "Let \\(A = [a_{ij}]_{3\\times3}\\) with cofactors \\(A_{ij}\\). The expression\n\\(a_{11}A_{21} + a_{12}A_{22} + a_{13}A_{23}\\)\nmultiplies the entries of row 1 by the cofactors of row 2.\n\nBy the property of \\(\"alien cofactors\\)\": the sum of products of the elements of one row with the cofactors of a DIFFERENT row is \\(0\\). Equivalently, this sum equals the determinant of the matrix obtained by replacing row 2 of \\(A\\) with a copy of row 1; that matrix has two identical rows, so its determinant is \\(0\\).\n\nHence \\(a_{11}A_{21} + a_{12}A_{22} + a_{13}A_{23} = 0\\)."
  },
  {
   "id": "6446a6f9-6c2f-4c85-8b29-c757aac3ed81",

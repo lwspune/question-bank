@@ -827,7 +827,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     subtopics: [
       "Trigonometric Equations and General Solutions",
       "Polar Coordinates",
-      "Solution of Triangle — Sine, Cosine and Projection Rules",
+      "Solution of Triangle: Sine, Cosine and Projection Rules",
       "Applications of Sine, Cosine and Projection Rules",
       "Inverse Trigonometric Functions and Principal Values",
       "Properties of Inverse Trigonometric Functions",

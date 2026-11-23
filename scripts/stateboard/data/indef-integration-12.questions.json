@@ -2406,7 +2406,7 @@
     "subtopic": "Elementary Integration and Standard Formulae",
     "difficulty": "MODERATE",
     "stem": "Evaluate: \\(\\int \\left( \\sin x + \\dfrac{1}{x} + \\dfrac{1}{\\sqrt[3]{x}} \\right) dx\\)",
-    "solution": "\\(\\int \\left( \\sin x + \\dfrac{1}{x} + \\dfrac{1}{\\sqrt[3]{x}} \\right) dx\\)\n\\(= \\int \\sin x\\, dx + \\int \\dfrac{1}{x}\\, dx + \\int \\dfrac{1}{\\sqrt[3]{x}}\\, dx\\)\n\\(= \\int \\sin x\\, dx + \\int \\dfrac{1}{x}\\, dx + \\int x^{-\\frac{1}{3}}\\, dx\\)\n\\(= -\\cos x + \\log x + \\dfrac{x^{-\\frac{1}{3}+1}}{-\\frac{1}{3}+1} + c\\)\n\\(= -\\cos x + \\log x + \\dfrac{x^{\\frac{2}{3}}}{\\frac{2}{3}} + c\\)"
+    "solution": "\\(\\int \\left( \\sin x + \\dfrac{1}{x} + \\dfrac{1}{\\sqrt[3]{x}} \\right) dx\\)\n\\(= \\int \\sin x\\, dx + \\int \\dfrac{1}{x}\\, dx + \\int \\dfrac{1}{\\sqrt[3]{x}}\\, dx\\)\n\\(= \\int \\sin x\\, dx + \\int \\dfrac{1}{x}\\, dx + \\int x^{-\\frac{1}{3}}\\, dx\\)\n\\(= -\\cos x + \\log|x| + \\dfrac{x^{-\\frac{1}{3}+1}}{-\\frac{1}{3}+1} + c\\)\n\\(= -\\cos x + \\log|x| + \\dfrac{x^{\\frac{2}{3}}}{\\frac{2}{3}} + c\\)"
   },
   {
     "ref": "3.1 SolvedEx.3",
@@ -3009,7 +3009,7 @@
     "subtopic": "Integration by Parts",
     "difficulty": "MODERATE",
     "stem": "\\(\\int \\sqrt{a^2 + x^2}\\, dx\\)",
-    "solution": "With reference to Example 6 (the standard result \\(\\int \\sqrt{a^2 - x^2}\\, dx\\) derived by integration by parts), the book states the result:\n\\(\\int \\sqrt{a^2 + x^2}\\, dx = \\frac{x}{2} \\sqrt{x^2 + a^2} + \\frac{a^2}{2} \\log \\left( x + \\sqrt{x^2 + a^2} \\right) + c\\)"
+    "solution": "Let \\(I = \\int \\sqrt{x^2 + a^2}\\cdot 1\\, dx\\). Integrating by parts with \\(\\sqrt{x^2 + a^2}\\) as the first function,\n\\(I = x\\sqrt{x^2 + a^2} - \\int x \\cdot \\dfrac{x}{\\sqrt{x^2 + a^2}}\\, dx = x\\sqrt{x^2 + a^2} - \\int \\dfrac{x^2}{\\sqrt{x^2 + a^2}}\\, dx\\).\nWrite \\(x^2 = (x^2 + a^2) - a^2\\):\n\\(I = x\\sqrt{x^2 + a^2} - \\int \\sqrt{x^2 + a^2}\\, dx + a^2\\int \\dfrac{dx}{\\sqrt{x^2 + a^2}} = x\\sqrt{x^2 + a^2} - I + a^2 \\log\\left( x + \\sqrt{x^2 + a^2} \\right)\\)\n\\(\\therefore 2I = x\\sqrt{x^2 + a^2} + a^2 \\log\\left( x + \\sqrt{x^2 + a^2} \\right)\\)\n\\(\\therefore \\int \\sqrt{a^2 + x^2}\\, dx = \\dfrac{x}{2} \\sqrt{x^2 + a^2} + \\dfrac{a^2}{2} \\log \\left( x + \\sqrt{x^2 + a^2} \\right) + c\\)"
   },
   {
     "ref": "3.3 SolvedEx.8",
@@ -3018,7 +3018,7 @@
     "subtopic": "Integration by Parts",
     "difficulty": "MODERATE",
     "stem": "\\(\\int \\sqrt{x^2 - a^2}\\, dx\\)",
-    "solution": "With reference to Example 6 (the standard result \\(\\int \\sqrt{a^2 - x^2}\\, dx\\) derived by integration by parts), the book states the result:\n\\(\\int \\sqrt{x^2 - a^2}\\, dx = \\frac{x}{2} \\sqrt{x^2 - a^2} - \\frac{a^2}{2} \\log \\left( x + \\sqrt{x^2 - a^2} \\right) + c\\)"
+    "solution": "Let \\(I = \\int \\sqrt{x^2 - a^2}\\cdot 1\\, dx\\). Integrating by parts with \\(\\sqrt{x^2 - a^2}\\) as the first function,\n\\(I = x\\sqrt{x^2 - a^2} - \\int x \\cdot \\dfrac{x}{\\sqrt{x^2 - a^2}}\\, dx = x\\sqrt{x^2 - a^2} - \\int \\dfrac{x^2}{\\sqrt{x^2 - a^2}}\\, dx\\).\nWrite \\(x^2 = (x^2 - a^2) + a^2\\):\n\\(I = x\\sqrt{x^2 - a^2} - \\int \\sqrt{x^2 - a^2}\\, dx - a^2\\int \\dfrac{dx}{\\sqrt{x^2 - a^2}} = x\\sqrt{x^2 - a^2} - I - a^2 \\log\\left| x + \\sqrt{x^2 - a^2} \\right|\\)\n\\(\\therefore 2I = x\\sqrt{x^2 - a^2} - a^2 \\log\\left| x + \\sqrt{x^2 - a^2} \\right|\\)\n\\(\\therefore \\int \\sqrt{x^2 - a^2}\\, dx = \\dfrac{x}{2} \\sqrt{x^2 - a^2} - \\dfrac{a^2}{2} \\log \\left| x + \\sqrt{x^2 - a^2} \\right| + c\\)"
   },
   {
     "ref": "3.3 SolvedEx.9",
