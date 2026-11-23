@@ -76,7 +76,7 @@ Assignments for the 18 entries:
 |---|---|
 | school | `foundation-course`, `mh-sb-9`, `mh-ssc-10`, `cbse-10`, `up-board-10`, `spi` (SPI entrance, sat in Class 10) |
 | senior | `nda`, `mht-cet`, `jee-mains`, `neet`, `worksheets-11-12`, `cbse-11`, `cbse-12`, `isc-12`, `up-board-12`, `mh-sb-11`, `mh-hsc-12`, `ipmat-indore`, `ipmat-rohtak`, `jipmat`, `uceed`, `imat`, `enem` |
-| graduate | `cds`, `mpsc-group-b-c`, `mpsc-state-services-prelims`, `mpsc-forest-service-prelims`, `mpsc-agriculture-service-prelims`, the five MPSC Mains exams (`mpsc-state-services-mains`, `mpsc-group-b-combined-mains`, `mpsc-sti-mains`, `mpsc-aso-mains`, `mpsc-psi-mains`), `upsc-cse`, `afcat`, `ssc-cgl`, `ssc-chsl` (SSC CHSL: Class 12 eligibility, sat mostly by graduates and CGL aspirants), `ssc-cpo`, `rrb-ntpc`, `rrb-ntpc-undergraduate` (RRB NTPC's Class 12 level: graduate for the same reason as CHSL) |
+| graduate | `cds`, `mpsc-group-b-c`, `mpsc-state-services-prelims`, `mpsc-forest-service-prelims`, `mpsc-agriculture-service-prelims`, the five MPSC Mains exams (`mpsc-state-services-mains`, `mpsc-group-b-combined-mains`, `mpsc-sti-mains`, `mpsc-aso-mains`, `mpsc-psi-mains`), `upsc-cse`, `afcat`, `ssc-cgl`, `ssc-chsl` (SSC CHSL: Class 12 eligibility, sat mostly by graduates and CGL aspirants), `ssc-cpo`, `rrb-ntpc`, `rrb-ntpc-undergraduate` (RRB NTPC's Class 12 level: graduate for the same reason as CHSL), `gate-cs` (GATE Computer Science: sat in or after a B.Tech) |
 
 Future SSC, MPSC, CAPF, UPSC entries declare `tier: "graduate"` on the same
 line as their other flags. Because the field is required, TypeScript refuses

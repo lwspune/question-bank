@@ -60,6 +60,8 @@ describe("every exam declares a goal", () => {
     ["jipmat", "management"],
     ["cbse-12", "boards"],
     ["clat", "law"],
+    // Owner 2026-11-23: GATE is for engineering graduates (M.Tech, PSU jobs), its own goal.
+    ["gate-cs", "engineering"],
     // Owner 2026-11-20: a scholarship exam is none of the others.
     ["mh-scholarship-4", "scholarship"],
     ["mh-scholarship-5", "scholarship"],
@@ -78,6 +80,7 @@ describe("every exam declares a goal", () => {
       management: "Management",
       law: "Law",
       scholarship: "Scholarships",
+      engineering: "Engineering graduates",
     });
   });
 });

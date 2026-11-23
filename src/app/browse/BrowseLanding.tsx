@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Award, BookOpen, Briefcase, FlaskConical, Landmark, Layers, LibraryBig, Scale, Shield } from "lucide-react";
+import { Award, BookOpen, Briefcase, Cpu, FlaskConical, Landmark, Layers, LibraryBig, Scale, Shield } from "lucide-react";
 import type { ExamFamilyNode } from "@/lib/exam/examFamily";
 import { membersByStage } from "@/lib/exam/examFamily";
 import type { ExamGoal } from "@/lib/exam/examContext";
@@ -37,6 +37,7 @@ const GOAL_ICON: Record<ExamGoal, typeof Shield> = {
   management: Briefcase,
   law: Scale,
   scholarship: Award,
+  engineering: Cpu,
 };
 
 const pillClass =
