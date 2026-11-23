@@ -14199,6 +14199,76 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 2,
       "traps": 46
     }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "wave-optics",
+    "chipLabel": "Wave Optics notes",
+    "slugs": [
+      "hscp-wo-huygens",
+      "hscp-wo-reflection",
+      "hscp-wo-polarization",
+      "hscp-wo-interference",
+      "hscp-wo-diffraction",
+      "hscp-wo-resolving"
+    ],
+    "chapterName": "Wave Optics",
+    "formulaCounts": {
+      "formulas": 12,
+      "tables": 5,
+      "traps": 39
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "electrostatics",
+    "chipLabel": "Electrostatics notes",
+    "slugs": [
+      "hscp-es-gauss",
+      "hscp-es-potential",
+      "hscp-es-equipotential",
+      "hscp-es-dipoles",
+      "hscp-es-conductors",
+      "hscp-es-capacitors",
+      "hscp-es-dielectric",
+      "hscp-es-energy"
+    ],
+    "chapterName": "Electrostatics",
+    "formulaCounts": {
+      "formulas": 19,
+      "tables": 4,
+      "traps": 48
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "magnetic-fields-due-to-electric-current",
+    "chipLabel": "Magnetic Fields due to Electric Current notes",
+    "slugs": [
+      "hscp-mg-charge",
+      "hscp-mg-cyclotron",
+      "hscp-mg-wire",
+      "hscp-mg-torque",
+      "hscp-mg-dipole",
+      "hscp-mg-field",
+      "hscp-mg-parallel",
+      "hscp-mg-ampere"
+    ],
+    "chapterName": "Magnetic Fields due to Electric Current",
+    "formulaCounts": {
+      "formulas": 18,
+      "tables": 4,
+      "traps": 44
+    }
   }
 ];
 
@@ -14909,4 +14979,7 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "mh-hsc-12-physics/thermodynamics": () => import("@/app/notes/mh-hsc-12-physics/thermodynamics/_data").then((m) => ({ chapter: m.HSC_PH_TD_CHAPTER, notes: m.HSC_PH_TD_NOTES })),
   "mh-hsc-12-physics/superposition-of-waves": () => import("@/app/notes/mh-hsc-12-physics/superposition-of-waves/_data").then((m) => ({ chapter: m.HSC_PH_SW_CHAPTER, notes: m.HSC_PH_SW_NOTES })),
   "mh-hsc-12-physics/oscillations": () => import("@/app/notes/mh-hsc-12-physics/oscillations/_data").then((m) => ({ chapter: m.HSC_PH_OS_CHAPTER, notes: m.HSC_PH_OS_NOTES })),
+  "mh-hsc-12-physics/wave-optics": () => import("@/app/notes/mh-hsc-12-physics/wave-optics/_data").then((m) => ({ chapter: m.HSC_PH_WO_CHAPTER, notes: m.HSC_PH_WO_NOTES })),
+  "mh-hsc-12-physics/electrostatics": () => import("@/app/notes/mh-hsc-12-physics/electrostatics/_data").then((m) => ({ chapter: m.HSC_PH_ES_CHAPTER, notes: m.HSC_PH_ES_NOTES })),
+  "mh-hsc-12-physics/magnetic-fields-due-to-electric-current": () => import("@/app/notes/mh-hsc-12-physics/magnetic-fields-due-to-electric-current/_data").then((m) => ({ chapter: m.HSC_PH_MG_CHAPTER, notes: m.HSC_PH_MG_NOTES })),
 };

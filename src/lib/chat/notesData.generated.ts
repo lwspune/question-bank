@@ -709,7 +709,10 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "mh-hsc-12-physics/kinetic-theory-of-gases",
   "mh-hsc-12-physics/thermodynamics",
   "mh-hsc-12-physics/superposition-of-waves",
-  "mh-hsc-12-physics/oscillations"
+  "mh-hsc-12-physics/oscillations",
+  "mh-hsc-12-physics/wave-optics",
+  "mh-hsc-12-physics/electrostatics",
+  "mh-hsc-12-physics/magnetic-fields-due-to-electric-current"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1419,4 +1422,7 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "mh-hsc-12-physics/thermodynamics": () => import("@/app/notes/mh-hsc-12-physics/thermodynamics/_data").then((m) => m.HSC_PH_TD_NOTES),
   "mh-hsc-12-physics/superposition-of-waves": () => import("@/app/notes/mh-hsc-12-physics/superposition-of-waves/_data").then((m) => m.HSC_PH_SW_NOTES),
   "mh-hsc-12-physics/oscillations": () => import("@/app/notes/mh-hsc-12-physics/oscillations/_data").then((m) => m.HSC_PH_OS_NOTES),
+  "mh-hsc-12-physics/wave-optics": () => import("@/app/notes/mh-hsc-12-physics/wave-optics/_data").then((m) => m.HSC_PH_WO_NOTES),
+  "mh-hsc-12-physics/electrostatics": () => import("@/app/notes/mh-hsc-12-physics/electrostatics/_data").then((m) => m.HSC_PH_ES_NOTES),
+  "mh-hsc-12-physics/magnetic-fields-due-to-electric-current": () => import("@/app/notes/mh-hsc-12-physics/magnetic-fields-due-to-electric-current/_data").then((m) => m.HSC_PH_MG_NOTES),
 };

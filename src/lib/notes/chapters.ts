@@ -3316,6 +3316,21 @@ import {
   HSC_PH_OS_NOTES,
   HSC_PH_OS_SLUGS,
 } from "@/app/notes/mh-hsc-12-physics/oscillations/_data";
+import {
+  HSC_PH_WO_CHAPTER,
+  HSC_PH_WO_NOTES,
+  HSC_PH_WO_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/wave-optics/_data";
+import {
+  HSC_PH_ES_CHAPTER,
+  HSC_PH_ES_NOTES,
+  HSC_PH_ES_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/electrostatics/_data";
+import {
+  HSC_PH_MG_CHAPTER,
+  HSC_PH_MG_NOTES,
+  HSC_PH_MG_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/magnetic-fields-due-to-electric-current/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -10660,6 +10675,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HSC_PH_OS_CHAPTER,
     notes: HSC_PH_OS_NOTES,
     slugs: HSC_PH_OS_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "wave-optics",
+    chipLabel: "Wave Optics notes",
+    chapter: HSC_PH_WO_CHAPTER,
+    notes: HSC_PH_WO_NOTES,
+    slugs: HSC_PH_WO_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "electrostatics",
+    chipLabel: "Electrostatics notes",
+    chapter: HSC_PH_ES_CHAPTER,
+    notes: HSC_PH_ES_NOTES,
+    slugs: HSC_PH_ES_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "magnetic-fields-due-to-electric-current",
+    chipLabel: "Magnetic Fields due to Electric Current notes",
+    chapter: HSC_PH_MG_CHAPTER,
+    notes: HSC_PH_MG_NOTES,
+    slugs: HSC_PH_MG_SLUGS,
   },
 ];
 

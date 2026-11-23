@@ -4945,5 +4945,26 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "HSC Physics",
     "chapterSlug": "oscillations",
     "subtopicCount": 9
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "wave-optics",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "electrostatics",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "magnetic-fields-due-to-electric-current",
+    "subtopicCount": 8
   }
 ];
