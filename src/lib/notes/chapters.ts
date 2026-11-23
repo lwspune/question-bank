@@ -3436,6 +3436,21 @@ import {
   HSC_MA_BD_NOTES,
   HSC_MA_BD_SLUGS,
 } from "@/app/notes/mh-hsc-12-maths/binomial-distribution/_data";
+import {
+  HSC_CH_SS_CHAPTER,
+  HSC_CH_SS_NOTES,
+  HSC_CH_SS_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/solid-state/_data";
+import {
+  HSC_CH_SO_CHAPTER,
+  HSC_CH_SO_NOTES,
+  HSC_CH_SO_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/solutions/_data";
+import {
+  HSC_CH_IE_CHAPTER,
+  HSC_CH_IE_NOTES,
+  HSC_CH_IE_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/ionic-equilibria/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -11044,6 +11059,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HSC_MA_BD_CHAPTER,
     notes: HSC_MA_BD_NOTES,
     slugs: HSC_MA_BD_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "solid-state",
+    chipLabel: "Solid State notes",
+    chapter: HSC_CH_SS_CHAPTER,
+    notes: HSC_CH_SS_NOTES,
+    slugs: HSC_CH_SS_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "solutions",
+    chipLabel: "Solutions notes",
+    chapter: HSC_CH_SO_CHAPTER,
+    notes: HSC_CH_SO_NOTES,
+    slugs: HSC_CH_SO_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "ionic-equilibria",
+    chipLabel: "Ionic Equilibria notes",
+    chapter: HSC_CH_IE_CHAPTER,
+    notes: HSC_CH_IE_NOTES,
+    slugs: HSC_CH_IE_SLUGS,
   },
 ];
 

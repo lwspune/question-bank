@@ -243,6 +243,13 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "probability-distributions": { cls: 12, chapterNo: 14, book: "XII Part II 7 Probability Distributions" },
     "binomial-distribution": { cls: 12, chapterNo: 15, book: "XII Part II 8 Binomial Distribution" },
   },
+  // Maharashtra HSC Class 12 Chemistry (board notes, 2026-11-23): the Balbharati Std XII book,
+  // chapters 1 to 16. Add each chapter as it ships.
+  "mh-hsc-12-chemistry": {
+    "solid-state": { cls: 12, chapterNo: 1, book: "XII 1 Solid State" },
+    solutions: { cls: 12, chapterNo: 2, book: "XII 2 Solutions" },
+    "ionic-equilibria": { cls: 12, chapterNo: 3, book: "XII 3 Ionic Equilibria" },
+  },
   // JEE Mains Chemistry follows the rationalised NCERT books (the "NCERT" spine in
   // syllabus_concepts). Judgment calls: The p-Block Elements is no longer in either
   // rationalised book but stays on the JEE syllabus, so it sits before The d- and f-Block
