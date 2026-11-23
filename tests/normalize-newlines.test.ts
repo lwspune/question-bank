@@ -83,3 +83,26 @@ describe("normalizeNewlines", () => {
     expect(normalizeNewlines(input)).toBe(expected);
   });
 });
+
+describe("normalizeNewlines: fenced code is never touched (GATE CS, 2026-11-23)", () => {
+  // In C, \n inside a string or char literal IS the code: printf("%d\n", x) and
+  // getchar() != '\n' must keep their backslash-n, or the program changes meaning.
+  const fence = ["Consider the program:", "```c", String.raw`printf("%d\n", x);`, String.raw`if (c != '\n') putchar(c);`, "```", "What is printed?"].join("\n");
+
+  it("has a real backslash-n in its code lines (the fixture itself)", () => {
+    expect(fence).toContain(String.raw`"%d\n"`);
+  });
+
+  it("leaves a backslash-n inside a fence as it is", () => {
+    expect(normalizeNewlines(fence)).toBe(fence);
+  });
+
+  it("still converts a stray backslash-n outside the fence", () => {
+    expect(normalizeNewlines(fence + String.raw`\nwhere x = 3.`)).toBe(fence + "\nwhere x = 3.");
+  });
+
+  it("is idempotent with a fence present", () => {
+    const once = normalizeNewlines(fence + String.raw`\nNote.`);
+    expect(normalizeNewlines(once)).toBe(once);
+  });
+});

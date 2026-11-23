@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
-import { ArrowRight, Award, BookOpen, Briefcase, ChevronLeft, ChevronRight, FlaskConical, Landmark, Pause, Play, Scale, Shield } from "lucide-react";
+import { ArrowRight, Award, BookOpen, Briefcase, ChevronLeft, ChevronRight, Cpu, FlaskConical, Landmark, Pause, Play, Scale, Shield } from "lucide-react";
 import type { ExamGoal } from "@/lib/exam/examContext";
 import { slotStyle, wrapOffset } from "@/lib/exam/showcaseSlots";
 import type { ShowcaseCard } from "@/lib/exam/examShowcase";
@@ -29,6 +29,7 @@ const GOAL_ICON: Record<ExamGoal, typeof Shield> = {
   management: Briefcase,
   law: Scale,
   scholarship: Award,
+  engineering: Cpu,
 };
 const GOAL_SHORT: Record<ExamGoal, string> = {
   defence: "Defence",
@@ -38,6 +39,7 @@ const GOAL_SHORT: Record<ExamGoal, string> = {
   management: "Management",
   law: "Law",
   scholarship: "Scholarship",
+  engineering: "Engineering",
 };
 /** Faint symbols that drift behind each card, from the subjects each goal tests. */
 const GOAL_GLYPHS: Record<ExamGoal, string[]> = {
@@ -48,6 +50,7 @@ const GOAL_GLYPHS: Record<ExamGoal, string[]> = {
   management: ["%", "÷", "x̄", "∴"],
   law: ["§", "Art. 14", "∴", "v."],
   scholarship: ["½", "?", "अ", "ABC"],
+  engineering: ["O(n)", "∀x", "λ", "2ⁿ"],
 };
 
 const fmt = (n: number) => n.toLocaleString("en-IN");

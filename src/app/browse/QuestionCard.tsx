@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import KatexRenderer from "@/components/math/KatexRenderer";
+import { stripCodeFences } from "@/components/math/parseTableBlocks";
 import BlockText from "@/components/math/BlockText";
 import { cn } from "@/lib/utils";
 import { optionMark } from "@/lib/questions/optionMark";
@@ -488,7 +489,8 @@ export default function QuestionCard({
               </div>
             ) : (
               <span lang={stems[0].lang}>
-                <KatexRenderer text={stems[0].text} />
+                {/* The two-line preview drops a code fence's ``` lines and keeps the code. */}
+                <KatexRenderer text={stripCodeFences(stems[0].text)} />
               </span>
             )}
           </div>

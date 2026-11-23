@@ -59,6 +59,7 @@ export type ExamSlug =
   | "rrb-ntpc-undergraduate"
   | "capf-ac"
   | "rpsc-ras"
+  | "gate-cs"
   | "clat"
   | "aissee-6"
   | "aissee-9"
@@ -96,7 +97,7 @@ export const EXAM_TIERS: readonly ExamTier[] = ["school", "senior", "graduate"];
  * SPI is a Class 10 exam (tier "school") whose students are aiming for NDA, so
  * its goal is "defence". Labels and grouping: lib/exam/examGoals.ts.
  */
-export type ExamGoal = "boards" | "science" | "government" | "defence" | "management" | "law" | "scholarship";
+export type ExamGoal = "boards" | "science" | "government" | "defence" | "management" | "law" | "scholarship" | "engineering";
 
 export const TIER_LABELS: Record<ExamTier, string> = {
   school: "Class 9–10",
@@ -973,6 +974,30 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     examName: "UPSC CAPF (AC)", // must match the `exams` DB row exactly
     // PUBLIC since 2026-11-14: nine years, 1,125 q, every one with a worked
     // solution. One timed mock per year (capf-ac-paper-1-*), MOCKS.md.
+    hasMocks: true,
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "gate-cs",
+    // GATE Computer Science and Information Technology (CS), the IITs' and IISc's
+    // entrance to M.Tech and the screen for PSU jobs. Wave 1 (owner, 2026-11-23):
+    // both CS sets of 2024, 2025 and 2026, 390 q, each on its organising institute's
+    // FINAL key (scripts/gate/). 65 questions a paper: General Aptitude Q1-10, then CS.
+    tier: "graduate",
+    goal: "engineering",
+    displayName: "GATE CS",
+    examName: "GATE CS", // must match the `exams` DB row exactly
+    // A GATE family (owner, 2026-11-23): Computer Science is its first branch. One
+    // member is not a family (examFamily rule 2), so it shows flat as "GATE CS"
+    // until a second branch joins.
+    family: "GATE",
+    familyLabel: "Computer Science",
+    familyAxis: "Branch",
+    mixedFormats: true, // MCQ, MSQ and NAT in every paper since 2021
+    // PUBLIC since 2026-11-23 (owner OK): 390 q, every one with a worked solution.
+    // One timed mock per paper (gate-cs-<year>-cs<set>), MOCKS.md.
     hasMocks: true,
     pastPaperSolutions: true,
     guidesPath: null,

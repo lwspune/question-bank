@@ -117,6 +117,8 @@ export function blocksHtml(text: string, tail = ""): string {
   const lastText = blocks.reduce((acc, b, i) => (b.kind === "text" ? i : acc), -1);
   const out = blocks.map((b, i) => {
     if (b.kind === "text") return `<div class="p">${richHtml(b.text)}${i === lastText ? tail : ""}</div>`;
+    // Fenced code: escaped and kept as written, never through the maths parser (tests/code-blocks).
+    if (b.kind === "code") return `<pre class="code">${esc(b.code)}</pre>`;
     const head = b.headers.map((h) => `<th>${richHtml(h)}</th>`).join("");
     const rows = b.rows.map((r) => `<tr>${r.map((c) => `<td>${richHtml(c)}</td>`).join("")}</tr>`).join("");
     return `<table class="t"><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table>`;
@@ -201,6 +203,7 @@ h1 { font-size: 17pt; line-height: 1.25; margin: 2pt 0 3pt; color: #0F1D4A; font
 .ol { flex: none; color: #374151; }
 .ot { min-width: 0; }
 .t { border-collapse: collapse; margin: 5pt 0; font-size: 9.5pt; }
+.code { font-family: Consolas, "Courier New", monospace; font-size: 9pt; line-height: 1.35; white-space: pre-wrap; margin: 4pt 0; padding: 4pt 6pt; border: .6pt solid #D1D5DB; background: #F8FAFC; break-inside: avoid; }
 .t th, .t td { border: .6pt solid #9CA3AF; padding: 2.5pt 6pt; text-align: left; vertical-align: top; }
 .t th { background: #EEF1F7; font-weight: 600; }
 .mblock { display: block; margin: 4pt 0; }

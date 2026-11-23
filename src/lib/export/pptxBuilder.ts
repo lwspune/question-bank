@@ -392,7 +392,11 @@ function estimateHeightPt(load: SlideLoad, sizeHundredths: number): number {
 // Runs and paragraphs
 // ————————————————————————————————————————————————————————————————
 
-function runProps(size: number, opts: { bold?: boolean; italic?: boolean; underline?: boolean; color?: string } = {}): string {
+function runProps(
+  size: number,
+  opts: { bold?: boolean; italic?: boolean; underline?: boolean; color?: string; font?: string } = {}
+): string {
+  const font = opts.font ?? FONT;
   return (
     `<a:rPr lang="en-IN"${attr("sz", size)}` +
     (opts.bold ? ` b="1"` : "") +
@@ -400,7 +404,7 @@ function runProps(size: number, opts: { bold?: boolean; italic?: boolean; underl
     (opts.underline ? ` u="sng"` : "") +
     ` dirty="0">` +
     `<a:solidFill><a:srgbClr${attr("val", opts.color ?? BLACK)}/></a:solidFill>` +
-    `<a:latin${attr("typeface", FONT)}/><a:cs${attr("typeface", FONT)}/>` +
+    `<a:latin${attr("typeface", font)}/><a:cs${attr("typeface", font)}/>` +
     `</a:rPr>`
   );
 }
@@ -434,13 +438,24 @@ type ParaOpts = {
   bold?: boolean;
   color?: string;
   align?: "l" | "ctr";
+  /** Fenced code: one plain run per line in a monospace font, no maths or bold reading. */
+  mono?: boolean;
 };
+
+const MONO_FONT = "Consolas";
 
 /**
  * Render one paragraph from a rich-text string. `<a:defRPr>` carries the size
  * because the a14:m math block ignores sibling run properties (rule 2).
  */
 function paragraph(text: string, opts: ParaOpts): string {
+  if (opts.mono) {
+    const runs = text
+      .split("\n")
+      .map((line, i) => (i > 0 ? "<a:br/>" : "") + (line ? textRun(line, opts.size, { color: opts.color, font: MONO_FONT }) : ""))
+      .join("");
+    return wrapParagraph(runs, opts);
+  }
   const runs = segmentRuns(textWithMathToOmmlSegments(text), opts);
   return wrapParagraph(runs, opts);
 }
@@ -516,6 +531,13 @@ function contentBlocks(
   for (const block of parseTableBlocks(text)) {
     if (block.kind === "table") {
       out.push({ kind: "table", table: block });
+      continue;
+    }
+    if (block.kind === "code") {
+      // A stem that OPENS with code still needs its number: on its own line first.
+      if (first && prefix) out.push({ kind: "paras", items: [{ text: prefix.trim(), opts }] });
+      first = false;
+      out.push({ kind: "paras", items: [{ text: block.code, opts: { ...opts, mono: true } }] });
       continue;
     }
     const body = first && prefix ? `${prefix}${block.text}` : block.text;

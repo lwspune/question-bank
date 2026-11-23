@@ -85,6 +85,24 @@ describe("EXAM_REGISTRY", () => {
     expect(uceed?.noImageIndex).toBe(true);
   });
 
+  it("registers GATE CS as a graduate exam in the GATE family, with mocks and worked solutions", () => {
+    const gate = getExamBySlug("gate-cs");
+    expect(gate?.examName).toBe("GATE CS");
+    expect(gate?.tier).toBe("graduate");
+    expect(gate?.goal).toBe("engineering");
+    // MCQ, MSQ and NAT in every paper since 2021, so /browse shows the format filter.
+    expect(gate?.mixedFormats).toBe(true);
+    // Owner 2026-11-23: a GATE family, Computer Science its first branch.
+    expect(gate?.family).toBe("GATE");
+    expect(gate?.familyLabel).toBe("Computer Science");
+    expect(gate?.familyAxis).toBe("Branch");
+    expect(gate?.practiceOnly).not.toBe(true);
+    // PUBLIC since 2026-11-23: on the pickers, six mocks, every question solved.
+    expect(gate?.noPublicContent).not.toBe(true);
+    expect(gate?.hasMocks).toBe(true);
+    expect(gate?.pastPaperSolutions).toBe(true);
+  });
+
   it("registers SSC CGL as a graduate exam with mocks and worked solutions", () => {
     const ssc = getExamBySlug("ssc-cgl");
     expect(ssc?.examName).toBe("SSC CGL");
@@ -565,6 +583,7 @@ describe("exam tiers", () => {
       "rrb-ntpc-undergraduate",
       "capf-ac",
       "rpsc-ras",
+      "gate-cs",
     ],
   };
 

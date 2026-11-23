@@ -12,7 +12,7 @@
 import type { ExamGoal } from "./examContext";
 import type { ExamFamilyNode, ExamResolver } from "./examFamily";
 
-export const EXAM_GOALS: readonly ExamGoal[] = ["boards", "science", "government", "defence", "management", "law", "scholarship"];
+export const EXAM_GOALS: readonly ExamGoal[] = ["boards", "science", "engineering", "government", "defence", "management", "law", "scholarship"];
 
 export const GOAL_LABEL: Record<ExamGoal, string> = {
   boards: "School boards",
@@ -22,6 +22,7 @@ export const GOAL_LABEL: Record<ExamGoal, string> = {
   management: "Management",
   law: "Law",
   scholarship: "Scholarships",
+  engineering: "Engineering graduates",
 };
 
 export type GoalGroup<T> = { goal: ExamGoal; label: string; nodes: ExamFamilyNode<T>[] };

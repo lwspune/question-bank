@@ -1,0 +1,44 @@
+{
+ "2": {
+  "why": "Stem patterns cut without the question box's border lines; the four option pictures as a labelled A-D grid.",
+  "figureBox": {
+   "page": 1,
+   "top": 0.14,
+   "bottom": 0.22,
+   "left": 0.4,
+   "right": 0.72
+  },
+  "figureFiles": [],
+  "figureOptions": [
+   "Q02_2.png",
+   "Q02_3.png",
+   "Q02_4.png",
+   "Q02_5.png"
+  ]
+ },
+ "15": {
+  "why": "Options held code fences, which render as raw backticks inline; the same instructions as plain lines.",
+  "options": [
+   {
+    "label": "A",
+    "text": "ADD Z, X, Y"
+   },
+   {
+    "label": "B",
+    "text": "LOAD R0, X\nADD Z, R0, Y"
+   },
+   {
+    "label": "C",
+    "text": "ADD R0, X, Y\nSTORE Z, R0"
+   },
+   {
+    "label": "D",
+    "text": "LOAD R0, X\nLOAD R1, Y\nADD R2, R0, R1\nSTORE Z, R2"
+   }
+  ]
+ },
+ "29": {
+  "why": "The question asks for the FALSE statements; the solution marked each but never named the answer. Closing line added.",
+  "solution": "(A) False: the Banker's algorithm is a deadlock avoidance algorithm, not prevention.\n\n(B) True: denying hold and wait breaks one of the four necessary conditions, which is prevention.\n\n(C) False: an assignment edge goes from a resource to a process; an edge from a process to a resource is a request edge.\n\n(D) True: in a safe state there is a sequence in which every process can finish.\n\nSo the FALSE statements are A and C."
+ }
+}

@@ -1351,6 +1351,62 @@ export function uceedPaper(year: number): MockPaperBlueprint {
 }
 
 /**
+ * GATE Computer Science (CS): the General Aptitude paper every GATE candidate sits, then the
+ * ten sections of the official CS syllabus (GATE 2026, IIT Guwahati), in its order.
+ */
+export const GATE_CS_SUBJECTS = [
+  "General Aptitude",
+  "Engineering Mathematics",
+  "Digital Logic",
+  "Computer Organization and Architecture",
+  "Programming and Data Structures",
+  "Algorithms",
+  "Theory of Computation",
+  "Compiler Design",
+  "Operating System",
+  "Databases",
+  "Computer Networks",
+] as const;
+
+/**
+ * The marks a GATE question carries, from its printed number. Every GATE paper since 2010
+ * has 65 questions in the same layout: General Aptitude Q1-5 one mark and Q6-10 two marks,
+ * then the subject's Q11-35 one mark and Q36-65 two marks.
+ */
+export function gateQuestionMarks(n: number): 1 | 2 {
+  if (!Number.isInteger(n) || n < 1 || n > 65) throw new Error(`GATE has no Q${n}`);
+  return n <= 5 || (n >= 11 && n <= 35) ? 1 : 2;
+}
+
+/**
+ * GATE CS (2024 onwards), as the paper's instructions print it: 65 questions, 100 marks,
+ * 3 hours. A wrong MCQ costs a third of its marks; a multiple-select question scores only
+ * on the exact set and, like a numerical answer, costs nothing when wrong. The marks follow
+ * the printed number (gateQuestionMarks), so the sections are the four number ranges; the
+ * no-penalty rows are marked per question by the sitting builder (scripts/mocks/gateSittings).
+ */
+export function gatePaper(): MockPaperBlueprint {
+  const ga = ["General Aptitude"];
+  const cs = GATE_CS_SUBJECTS.filter((s) => s !== "General Aptitude");
+  const one = { correct: 1, wrong: -1 / 3 };
+  const two = { correct: 2, wrong: -2 / 3 };
+  return {
+    code: "cs",
+    examName: "GATE CS",
+    examSlug: "gate-cs",
+    paperLabel: "Computer Science",
+    durationSecs: 180 * 60,
+    marking: one,
+    sections: [
+      { key: "ga-1", label: "General Aptitude, 1 mark", subjects: ga, count: 5, questionNumbers: { from: 1, to: 5 }, marking: one, msqScheme: "exact" },
+      { key: "ga-2", label: "General Aptitude, 2 marks", subjects: ga, count: 5, questionNumbers: { from: 6, to: 10 }, marking: two, msqScheme: "exact" },
+      { key: "cs-1", label: "Computer Science, 1 mark", subjects: cs, count: 25, questionNumbers: { from: 11, to: 35 }, marking: one, msqScheme: "exact" },
+      { key: "cs-2", label: "Computer Science, 2 marks", subjects: cs, count: 30, questionNumbers: { from: 36, to: 65 }, marking: two, msqScheme: "exact" },
+    ],
+  };
+}
+
+/**
  * AISSEE (Sainik Schools, NTA), as printed on the booklet covers: no negative
  * marking, and Mathematics worth more than every other section.
  *   Class 6: Language 25 x 2, Mathematics 50 x 3, Intelligence 25 x 2,
@@ -1547,6 +1603,7 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   CLAT_PAPER,
   IMAT_PAPER,
   ENEM_DAY_2,
+  gatePaper(), // one shape for every GATE CS paper (gateSittings.ts)
   CBSE_10_CHAPTER_MCQ_PAPER,
   CBSE_12_CHAPTER_MCQ_PAPER,
   MH_HSC_12_CHAPTER_MCQ_PAPER,

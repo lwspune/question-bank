@@ -37,6 +37,7 @@
  *   npx tsx scripts/mocks/build.ts --paper=ipmat-indore    # IPMAT Indore 2022-2026
  *   npx tsx scripts/mocks/build.ts --paper=imat            # IMAT ministry papers 2023+
  *   npx tsx scripts/mocks/build.ts --paper=uceed           # UCEED Part A 2019-2026 (opt-in)
+ *   npx tsx scripts/mocks/build.ts --paper=gate            # GATE CS, both sets of 2024-2026 (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=iat             # IISER IAT, one per committed year (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=ugc-net         # UGC NET Paper 1, one per committed shift (opt-in)
  *   npx tsx scripts/mocks/build.ts --paper=rrb-ntpc        # RRB NTPC Graduate CBT 1, one per shift (opt-in)
@@ -91,6 +92,7 @@ import {
   spiPaperFor,
   IMAT_PAPER,
   uceedPaper,
+  gatePaper,
   iatPaper,
   UGC_NET_PAPER_1,
   RRB_NTPC_CBT_1,
@@ -134,6 +136,7 @@ import { chslSittings, cpoSittings, sscSittings, sscT2Sittings, t2Rows, withHeld
 import { spiSittings } from "./spiSittings";
 import { imatSittings } from "./imatSittings";
 import { uceedSittings } from "./uceedSittings";
+import { gateNoPenalty, gateSittings } from "./gateSittings";
 import { iatSittings } from "./iatSittings";
 import { ugcNetSittings } from "./ugcNetSittings";
 import { rrbNtpcSittings, rrbNtpcUgSittings } from "./rrbNtpcSittings";
@@ -807,6 +810,20 @@ async function buildSpi(db: SupabaseClient, run: RunState) {
  * in 2020, 2022 and 2024). IIT Bombay's cancelled questions ride as grace; the flawed list
  * adds the rest (mockTestRow).
  */
+/**
+ * GATE CS, one mock per paper (both sets of 2024-2026), all on gatePaper. Each row of an MSQ
+ * or NAT carries noPenalty (GATE marks down only a wrong MCQ); grace comes from flawed.json.
+ */
+async function buildGate(db: SupabaseClient, run: RunState) {
+  await buildFromSourceFiles(
+    db,
+    gatePaper(),
+    gateSittings().map((s) => ({ ...s, prepare: gateNoPenalty })),
+    run,
+    "gateSittings.ts"
+  );
+}
+
 async function buildUceed(db: SupabaseClient, run: RunState) {
   for (const s of uceedSittings()) {
     const grace = new Set(s.graceNumbers);
@@ -1048,6 +1065,7 @@ async function main() {
   const runMpscMains = paperFilter === "mpsc-mains";
   // Opt-in too until UCEED's multiple-select and range rows are PUBLIC (migration 0214).
   const runUceed = paperFilter === "uceed";
+  const runGate = paperFilter === "gate";
   // Opt-in too: IAT rows are PRIVATE until the owner OKs them (scripts/iat/README.md).
   const runIat = paperFilter === "iat";
   // Opt-in: UGC NET rows are PRIVATE until the owner OKs them (scripts/ugc-net/README.md).
@@ -1071,9 +1089,9 @@ async function main() {
   const runHomiBhabha = paperFilter === "homi-bhabha";
   // Opt-in: MH Scholarship (scripts/mh-scholarship/README.md).
   const runMhScholarship = paperFilter === "mh-scholarship";
-  if (paperFilter && !runRas && !runEnem && !runMilschool && !runHomiBhabha && !runMhScholarship && !runUceed && !runIat && !runUgcNet && !runClat && !runRrbNtpc && !runRrbNtpcUg && !runCpo && !runCapf && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runChsl && !runSpi && !runImat && !runMpscMains) {
+  if (paperFilter && !runRas && !runEnem && !runMilschool && !runHomiBhabha && !runMhScholarship && !runUceed && !runGate && !runIat && !runUgcNet && !runClat && !runRrbNtpc && !runRrbNtpcUg && !runCpo && !runCapf && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runChsl && !runSpi && !runImat && !runMpscMains) {
     throw new Error(
-      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, ssc-chsl, ssc-cpo, spi, imat, mpsc-mains, uceed, iat, ugc-net, clat, rrb-ntpc, rrb-ntpc-undergraduate, capf, ras, enem, milschool, homi-bhabha, mh-scholarship)`
+      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, ssc-chsl, ssc-cpo, spi, imat, mpsc-mains, uceed, gate, iat, ugc-net, clat, rrb-ntpc, rrb-ntpc-undergraduate, capf, ras, enem, milschool, homi-bhabha, mh-scholarship)`
     );
   }
 
@@ -1148,6 +1166,7 @@ async function main() {
   if (runImat) await buildFromSourceFiles(db, IMAT_PAPER, imatMockSittings(), run, "imatSittings.ts");
   if (runMpscMains) await buildMpscMains(db, run);
   if (runUceed) await buildUceed(db, run);
+  if (runGate) await buildGate(db, run);
   if (runIat) await buildIat(db, run);
   if (runUgcNet) await buildUgcNet(db, run);
   if (runClat) await buildClat(db, run);

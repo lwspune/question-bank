@@ -199,7 +199,7 @@ export function parseArticleBody(body: string): ArticleBlock[] {
           if (b.kind === "table") {
             blocks.push({ kind: "table", headers: b.headers.map(splitLinks), rows: b.rows.map((r) => r.map(splitLinks)) });
           }
-          else if (b.text.trim()) blocks.push({ kind: "p", inlines: splitLinks(b.text.trim().replace(/\n/g, " ")) });
+          else if (b.kind === "text" && b.text.trim()) blocks.push({ kind: "p", inlines: splitLinks(b.text.trim().replace(/\n/g, " ")) });
         }
       } else {
         para.push(...run);

@@ -83,7 +83,11 @@ const LETTERS: Letter[] = ["A", "B", "C", "D"];
 const DASH = /—| – | -- /;
 const DIFFICULTY = { easy: "EASY", moderate: "MODERATE", hard: "HARD" } as const;
 
-export function planPaper(paper: UceedPaper, key: UceedKey): Plan {
+/**
+ * `authority`: whose final key this is, named in an accepted-answers notice. UCEED's is IIT
+ * Bombay; the GATE lane passes its sitting's organising institute (scripts/gate/lib.ts).
+ */
+export function planPaper(paper: UceedPaper, key: UceedKey, authority = "IIT Bombay"): Plan {
   const issues: string[] = [];
   const rows: PlannedRow[] = [];
   const held: Plan["held"] = [];
@@ -134,7 +138,7 @@ ${editorial.solution.trim()}` : editorial.solution.trim(),
       ...(notice ? { notice } : {}),
     });
     const noticeFrom = (accepted: (string | number)[]) => {
-      const notes = [q.defect?.trim(), accepted.length > 1 ? acceptsNotice(accepted) : undefined].filter(Boolean);
+      const notes = [q.defect?.trim(), accepted.length > 1 ? acceptsNotice(accepted, authority) : undefined].filter(Boolean);
       return notes.length ? notes.join(" ") : undefined;
     };
 
@@ -186,13 +190,13 @@ ${editorial.solution.trim()}` : editorial.solution.trim(),
 }
 
 /** "accepts both A and B" / "accepts any of B, C and D"; the first is the one marked. */
-function acceptsNotice(answers: (string | number)[]): string {
+function acceptsNotice(answers: (string | number)[], authority: string): string {
   const [first] = answers;
   if (answers.length === 2) {
-    return `IIT Bombay's final key accepts both ${answers[0]} and ${answers[1]}, so either earns full marks. The answer marked here is ${first}.`;
+    return `${authority}'s final key accepts both ${answers[0]} and ${answers[1]}, so either earns full marks. The answer marked here is ${first}.`;
   }
   const list = `${answers.slice(0, -1).join(", ")} and ${answers[answers.length - 1]}`;
-  return `IIT Bombay's final key accepts any of ${list}, so each earns full marks. The answer marked here is ${first}.`;
+  return `${authority}'s final key accepts any of ${list}, so each earns full marks. The answer marked here is ${first}.`;
 }
 
 /** An MCQ or MSQ row in the shape SSC CGL's parseCommitRows takes (picture options stay "[figure]"). */

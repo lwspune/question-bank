@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, type ComponentType } from "react";
-import { hasPipeTable } from "@/lib/chat/tableText";
+import { hasBlockContent } from "@/lib/chat/tableText";
 import MathText from "./MathText";
 
 type Renderer = ComponentType<{ text: string; className?: string }>;
@@ -12,10 +12,11 @@ let loaded: Renderer | null = null;
  * drawn as a table. MathText knows nothing about tables and printed
  * "| Organism | Habitat |" as raw pipes. The table renderer (BlockText,
  * which also draws the maths) is fetched only when the text holds a table;
- * until it arrives, and for every text without one, this is MathText.
+ * until it arrives, and for every text without one, this is MathText. Fenced
+ * code needs it too (GATE CS, 2026-11-23): MathText would read `*p` as italics.
  */
 export default function MathBlockText({ text }: { text: string }) {
-  const table = hasPipeTable(text);
+  const table = hasBlockContent(text);
   // An initialiser, as in MathText: a component handed to useState directly would be called as one.
   const [Block, setBlock] = useState<Renderer | null>(() => loaded);
   useEffect(() => {
