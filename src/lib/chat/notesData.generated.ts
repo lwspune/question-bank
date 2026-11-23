@@ -712,7 +712,10 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "mh-hsc-12-physics/oscillations",
   "mh-hsc-12-physics/wave-optics",
   "mh-hsc-12-physics/electrostatics",
-  "mh-hsc-12-physics/magnetic-fields-due-to-electric-current"
+  "mh-hsc-12-physics/magnetic-fields-due-to-electric-current",
+  "mh-hsc-12-physics/magnetic-materials",
+  "mh-hsc-12-physics/ac-circuits",
+  "mh-hsc-12-physics/electromagnetic-induction"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1425,4 +1428,7 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "mh-hsc-12-physics/wave-optics": () => import("@/app/notes/mh-hsc-12-physics/wave-optics/_data").then((m) => m.HSC_PH_WO_NOTES),
   "mh-hsc-12-physics/electrostatics": () => import("@/app/notes/mh-hsc-12-physics/electrostatics/_data").then((m) => m.HSC_PH_ES_NOTES),
   "mh-hsc-12-physics/magnetic-fields-due-to-electric-current": () => import("@/app/notes/mh-hsc-12-physics/magnetic-fields-due-to-electric-current/_data").then((m) => m.HSC_PH_MG_NOTES),
+  "mh-hsc-12-physics/magnetic-materials": () => import("@/app/notes/mh-hsc-12-physics/magnetic-materials/_data").then((m) => m.HSC_PH_MM_NOTES),
+  "mh-hsc-12-physics/ac-circuits": () => import("@/app/notes/mh-hsc-12-physics/ac-circuits/_data").then((m) => m.HSC_PH_AC_NOTES),
+  "mh-hsc-12-physics/electromagnetic-induction": () => import("@/app/notes/mh-hsc-12-physics/electromagnetic-induction/_data").then((m) => m.HSC_PH_EM_NOTES),
 };

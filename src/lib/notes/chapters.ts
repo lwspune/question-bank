@@ -3331,6 +3331,21 @@ import {
   HSC_PH_MG_NOTES,
   HSC_PH_MG_SLUGS,
 } from "@/app/notes/mh-hsc-12-physics/magnetic-fields-due-to-electric-current/_data";
+import {
+  HSC_PH_MM_CHAPTER,
+  HSC_PH_MM_NOTES,
+  HSC_PH_MM_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/magnetic-materials/_data";
+import {
+  HSC_PH_AC_CHAPTER,
+  HSC_PH_AC_NOTES,
+  HSC_PH_AC_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/ac-circuits/_data";
+import {
+  HSC_PH_EM_CHAPTER,
+  HSC_PH_EM_NOTES,
+  HSC_PH_EM_SLUGS,
+} from "@/app/notes/mh-hsc-12-physics/electromagnetic-induction/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -10708,6 +10723,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HSC_PH_MG_CHAPTER,
     notes: HSC_PH_MG_NOTES,
     slugs: HSC_PH_MG_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "magnetic-materials",
+    chipLabel: "Magnetic Materials notes",
+    chapter: HSC_PH_MM_CHAPTER,
+    notes: HSC_PH_MM_NOTES,
+    slugs: HSC_PH_MM_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "ac-circuits",
+    chipLabel: "AC Circuits notes",
+    chapter: HSC_PH_AC_CHAPTER,
+    notes: HSC_PH_AC_NOTES,
+    slugs: HSC_PH_AC_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Physics",
+    subjectRoute: "mh-hsc-12-physics",
+    subjectDisplay: "HSC Physics",
+    chapterSlug: "electromagnetic-induction",
+    chipLabel: "Electromagnetic Induction notes",
+    chapter: HSC_PH_EM_CHAPTER,
+    notes: HSC_PH_EM_NOTES,
+    slugs: HSC_PH_EM_SLUGS,
   },
 ];
 

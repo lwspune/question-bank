@@ -14269,6 +14269,73 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 4,
       "traps": 44
     }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "magnetic-materials",
+    "chipLabel": "Magnetic Materials notes",
+    "slugs": [
+      "hscp-mm-torque",
+      "hscp-mm-origin",
+      "hscp-mm-magnetization",
+      "hscp-mm-classes",
+      "hscp-mm-hysteresis",
+      "hscp-mm-applications"
+    ],
+    "chapterName": "Magnetic Materials",
+    "formulaCounts": {
+      "formulas": 11,
+      "tables": 5,
+      "traps": 36
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "ac-circuits",
+    "chipLabel": "AC Circuits notes",
+    "slugs": [
+      "hscp-ac-rms",
+      "hscp-ac-phasors",
+      "hscp-ac-power",
+      "hscp-ac-lc",
+      "hscp-ac-resonance"
+    ],
+    "chapterName": "AC Circuits",
+    "formulaCounts": {
+      "formulas": 12,
+      "tables": 2,
+      "traps": 27
+    }
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "electromagnetic-induction",
+    "chipLabel": "Electromagnetic Induction notes",
+    "slugs": [
+      "hscp-em-faraday",
+      "hscp-em-lenz",
+      "hscp-em-motional",
+      "hscp-em-stationary",
+      "hscp-em-generators",
+      "hscp-em-eddy",
+      "hscp-em-self",
+      "hscp-em-mutual"
+    ],
+    "chapterName": "Electromagnetic Induction",
+    "formulaCounts": {
+      "formulas": 17,
+      "tables": 5,
+      "traps": 44
+    }
   }
 ];
 
@@ -14982,4 +15049,7 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "mh-hsc-12-physics/wave-optics": () => import("@/app/notes/mh-hsc-12-physics/wave-optics/_data").then((m) => ({ chapter: m.HSC_PH_WO_CHAPTER, notes: m.HSC_PH_WO_NOTES })),
   "mh-hsc-12-physics/electrostatics": () => import("@/app/notes/mh-hsc-12-physics/electrostatics/_data").then((m) => ({ chapter: m.HSC_PH_ES_CHAPTER, notes: m.HSC_PH_ES_NOTES })),
   "mh-hsc-12-physics/magnetic-fields-due-to-electric-current": () => import("@/app/notes/mh-hsc-12-physics/magnetic-fields-due-to-electric-current/_data").then((m) => ({ chapter: m.HSC_PH_MG_CHAPTER, notes: m.HSC_PH_MG_NOTES })),
+  "mh-hsc-12-physics/magnetic-materials": () => import("@/app/notes/mh-hsc-12-physics/magnetic-materials/_data").then((m) => ({ chapter: m.HSC_PH_MM_CHAPTER, notes: m.HSC_PH_MM_NOTES })),
+  "mh-hsc-12-physics/ac-circuits": () => import("@/app/notes/mh-hsc-12-physics/ac-circuits/_data").then((m) => ({ chapter: m.HSC_PH_AC_CHAPTER, notes: m.HSC_PH_AC_NOTES })),
+  "mh-hsc-12-physics/electromagnetic-induction": () => import("@/app/notes/mh-hsc-12-physics/electromagnetic-induction/_data").then((m) => ({ chapter: m.HSC_PH_EM_CHAPTER, notes: m.HSC_PH_EM_NOTES })),
 };

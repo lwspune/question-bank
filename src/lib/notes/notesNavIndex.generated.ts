@@ -4966,5 +4966,26 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "HSC Physics",
     "chapterSlug": "magnetic-fields-due-to-electric-current",
     "subtopicCount": 8
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "magnetic-materials",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "ac-circuits",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "Maharashtra HSC Class 12",
+    "subjectRoute": "mh-hsc-12-physics",
+    "subjectDisplay": "HSC Physics",
+    "chapterSlug": "electromagnetic-induction",
+    "subtopicCount": 8
   }
 ];
