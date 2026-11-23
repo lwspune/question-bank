@@ -3466,6 +3466,16 @@ import {
   HSC_CH_EC_NOTES,
   HSC_CH_EC_SLUGS,
 } from "@/app/notes/mh-hsc-12-chemistry/electrochemistry/_data";
+import {
+  HSC_CH_CC_CHAPTER,
+  HSC_CH_CC_NOTES,
+  HSC_CH_CC_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/coordination-compounds/_data";
+import {
+  HSC_CH_TR_CHAPTER,
+  HSC_CH_TR_NOTES,
+  HSC_CH_TR_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/transition-and-inner-transition-elements/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -11140,6 +11150,28 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HSC_CH_EC_CHAPTER,
     notes: HSC_CH_EC_NOTES,
     slugs: HSC_CH_EC_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "coordination-compounds",
+    chipLabel: "Coordination Compounds notes",
+    chapter: HSC_CH_CC_CHAPTER,
+    notes: HSC_CH_CC_NOTES,
+    slugs: HSC_CH_CC_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "transition-and-inner-transition-elements",
+    chipLabel: "Transition Elements notes",
+    chapter: HSC_CH_TR_CHAPTER,
+    notes: HSC_CH_TR_NOTES,
+    slugs: HSC_CH_TR_SLUGS,
   },
 ];
 
