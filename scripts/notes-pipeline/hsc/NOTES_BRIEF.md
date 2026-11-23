@@ -150,6 +150,32 @@ candidate, with one line of why.
 - **Content source** is the MHT-CET Maths notes chapter named in your task message (MHT-CET is an MCQ
   exam; the board wants written working, so keep the ideas, rewrite the worked examples board-style).
 
+## Chemistry (added 2026-11-23, HSC Chemistry)
+
+- **Checking scope.** Board rows: solve or check every one before reading its answer. Textbook rows:
+  every MCQ, every numerical, every row you feature, and at least one in five of the written rest.
+- **Physical chapters** (Solid State to Chemical Kinetics): numericals as board answers (Given,
+  Formula, Substitution with units, Answer with unit, the book's significant figures). Derivations the
+  board asks for go in the concept's `definition`, one step a line, in the book's symbols.
+- **Inorganic and organic chapters:** a reaction is written in maths with `\\text{}` formulas and the
+  condition over the arrow: `\\(\\text{C}_2\\text{H}_5\\text{OH} \\xrightarrow{\\text{conc. H}_2\\text{SO}_4,\\ 443\\ \\text{K}} \\text{C}_2\\text{H}_4 + \\text{H}_2\\text{O}\\)`.
+  NEVER `\\ce{}` (KaTeX here has no mhchem). Named reactions are taught with the book's own example.
+  "Give reasons", "distinguish", "convert" and "test for" answers suit reference tables or short
+  worked examples; uses, properties and colours suit reference tables.
+- **Structures cannot be drawn.** Give condensed formulas or words; prefer a featured row whose answer
+  needs no structure figure; a row whose answer is a figure is still tagged.
+- **Plain-text fields** take Unicode formulas (H₂SO₄, Fe³⁺, ΔG°), never LaTeX.
+- **Four different rungs (learned on Maths):** notes:lint compares NUMBERS, so a worked example or
+  self-check that reuses the featured question's numbers (same concentrations, same masses, same
+  compound with the same data) is flagged even when the wording differs. Pick other numbers and,
+  for organic rungs, another compound.
+- A correction you report for a textbook row whose answer the book prints wrongly goes as a
+  `[Textbook answer-key error: ...]` or `[Textbook misprint: ...]` bracket at the START of the
+  solution, never the end.
+- **Content source** is the MHT-CET Chemistry notes chapter named in your task message; its pages
+  carry em dashes, terse prose and MCQ shortcuts: keep the facts you can confirm in the book, rewrite
+  everything else board-style.
+
 ## Text rules (gates fail on these)
 
 - Plain-text fields take NO LaTeX and no `**`: `title`, `oneLineDefinition`, `whyItMatters`,
