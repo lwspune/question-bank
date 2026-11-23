@@ -261,6 +261,7 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     amines: { cls: 12, chapterNo: 13, book: "XII 13 Amines" },
     biomolecules: { cls: 12, chapterNo: 14, book: "XII 14 Biomolecules" },
     "introduction-to-polymer-chemistry": { cls: 12, chapterNo: 15, book: "XII 15 Introduction to Polymer Chemistry" },
+    "green-chemistry-and-nanochemistry": { cls: 12, chapterNo: 16, book: "XII 16 Green Chemistry and Nanochemistry" },
   },
   // JEE Mains Chemistry follows the rationalised NCERT books (the "NCERT" spine in
   // syllabus_concepts). Judgment calls: The p-Block Elements is no longer in either

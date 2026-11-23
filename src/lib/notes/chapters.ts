@@ -3511,6 +3511,11 @@ import {
   HSC_CH_PO_NOTES,
   HSC_CH_PO_SLUGS,
 } from "@/app/notes/mh-hsc-12-chemistry/introduction-to-polymer-chemistry/_data";
+import {
+  HSC_CH_GN_CHAPTER,
+  HSC_CH_GN_NOTES,
+  HSC_CH_GN_SLUGS,
+} from "@/app/notes/mh-hsc-12-chemistry/green-chemistry-and-nanochemistry/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -11284,6 +11289,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HSC_CH_PO_CHAPTER,
     notes: HSC_CH_PO_NOTES,
     slugs: HSC_CH_PO_SLUGS,
+  },
+  {
+    examName: "Maharashtra HSC Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "mh-hsc-12-chemistry",
+    subjectDisplay: "HSC Chemistry",
+    chapterSlug: "green-chemistry-and-nanochemistry",
+    chipLabel: "Green Chemistry and Nanochemistry notes",
+    chapter: HSC_CH_GN_CHAPTER,
+    notes: HSC_CH_GN_NOTES,
+    slugs: HSC_CH_GN_SLUGS,
   },
 ];
 
