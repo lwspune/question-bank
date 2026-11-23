@@ -249,6 +249,7 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "solid-state": { cls: 12, chapterNo: 1, book: "XII 1 Solid State" },
     solutions: { cls: 12, chapterNo: 2, book: "XII 2 Solutions" },
     "ionic-equilibria": { cls: 12, chapterNo: 3, book: "XII 3 Ionic Equilibria" },
+    "chemical-thermodynamics": { cls: 12, chapterNo: 4, book: "XII 4 Chemical Thermodynamics" },
   },
   // JEE Mains Chemistry follows the rationalised NCERT books (the "NCERT" spine in
   // syllabus_concepts). Judgment calls: The p-Block Elements is no longer in either
