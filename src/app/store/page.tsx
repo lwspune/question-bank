@@ -7,7 +7,7 @@ import { listStoreEbooks, type StoreEbook } from "@/lib/ebooks/query";
 import { formatRupees } from "@/lib/billing/plans";
 import { KIND_LABEL } from "@/lib/ebooks/theme";
 import { shelfExamSlugs, storeShelves } from "@/lib/ebooks/shelves";
-import { PARTNER_COURSES, PARTNER_NAME, courseShelves } from "@/lib/partnerCourses/courses";
+import { PARTNER_COURSES, courseShelves, joinNames } from "@/lib/partnerCourses/courses";
 import ExamFeedList, { type FeedListItem } from "@/components/exam/ExamFeedList";
 import BookCover from "./_components/BookCover";
 import CourseCard from "./_components/CourseCard";
@@ -102,13 +102,12 @@ export default async function StorePage() {
 
   const courseItems: FeedListItem[] = courses.map((s) => ({
     key: s.key,
-    slugs: [s.slug],
+    slugs: s.feedSlugs,
     node: (
       <section id={shelfId(s.key)} className="mt-10 scroll-mt-20" aria-labelledby={`${shelfId(s.key)}-h`}>
         <h2 id={`${shelfId(s.key)}-h`} className="section-title text-lg font-semibold">
           {s.label} online {s.courses.length === 1 ? "course" : "courses"}
         </h2>
-        <p className="mt-1 text-xs text-muted-foreground">Live classes, recorded, from our partner {PARTNER_NAME}.</p>
         <ul className="mt-4 grid gap-4 sm:grid-cols-2 sm:gap-6">
           {s.courses.map((c) => (
             <li key={c.id}>
@@ -125,7 +124,7 @@ export default async function StorePage() {
   const items = [...bookItems.filter((i) => i.key !== "more"), ...courseItems, ...more];
   const chips: ShelfChip[] = [
     ...shelves.filter((s) => s.key !== "more").map((s) => ({ key: s.key, short: s.short, count: s.books.length, slugs: shelfExamSlugs(s.key) })),
-    ...courses.map((s) => ({ key: s.key, short: s.short, count: s.courses.length, slugs: [s.slug] })),
+    ...courses.map((s) => ({ key: s.key, short: s.short, count: s.courses.length, slugs: s.feedSlugs })),
     ...shelves.filter((s) => s.key === "more").map((s) => ({ key: s.key, short: s.short, count: s.books.length, slugs: shelfExamSlugs(s.key) })),
   ];
 
@@ -137,7 +136,7 @@ export default async function StorePage() {
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Store</h1>
           <p className="mx-auto mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">
             Repeated and chapter-wise PYQ ebooks, fully solved, to download.
-            {courses.length > 0 ? ` And online courses for ${courses.map((s) => s.label).join(" and ")}.` : null}
+            {courses.length > 0 ? ` And online courses for ${joinNames(courses.map((s) => s.label))}.` : null}
           </p>
         </header>
 
