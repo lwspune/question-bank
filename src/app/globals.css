@@ -300,6 +300,17 @@ a[data-nav-pending] {
   .notes-figure > .max-w-sm,
   .notes-figure > .max-w-md { max-width: 32rem; }
   .notes-figure p.text-xs:not(.uppercase) { font-size: 0.8125rem; line-height: 1.55; }
+  /* The Visuals gallery's tiles (src/app/visuals, 2026-11-23): a notes diagram
+     drawn as static markup, shrunk into a square. Only its picture: its box,
+     captions and controls (a slider drawn in its starting place) are dropped,
+     since a tile is for recognising the idea, not reading it. The viewer shows
+     the whole diagram. Diagrams keep their own light and dark colours. */
+  .gallery-thumb { pointer-events: none; overflow: hidden; }
+  .gallery-thumb > * { max-width: 100%; max-height: 100%; margin: 0; padding: 0; border: 0; box-shadow: none; background: transparent; }
+  .gallery-thumb svg { display: block; width: 100%; height: auto; max-height: 100%; }
+  .gallery-thumb :is(p, label, input, button, select, figcaption, table, ul, ol) { display: none; }
+  /* The gallery viewer is full screen; V's button would sit on its Practise button. */
+  .gallery-viewer-open .chat-launcher-offset { display: none; }
   /* Animated solutions (lib/visuals): a scene names TONES, never colours, and
      these map them to the theme. Text tones (fg, muted, brand-text, amber,
      good) clear AA on --viz-bg in both modes. */
