@@ -1,17 +1,20 @@
 /**
- * The class offer on /me (owner, 2026-11-22; migration 0282). A card on Home
- * asks Class 10 students "Looking for an SPI crash course in Pune?" and NDA
- * students "Looking for offline NDA classes in Pune?", with Yes · No · Know
- * more. A Yes asks for the mobile and city and becomes a /classes lead (the
- * team calls back); No hides the card for good; Know more opens the exam's
- * pattern-and-syllabus page and leaves the card where it is.
+ * The class offer on /me (owner, 2026-11-22; migration 0282; widened
+ * 2026-11-23, migration 0285). A card on Home asks a student ONCE about
+ * offline classes in Pune for their main exam: the SPI crash course for a
+ * Class 10 student, else that exam's course (NDA, MHT-CET, JEE, CDS, AFCAT,
+ * 12th Board, SSC CGL). Yes · No · Know more. A Yes asks for the mobile and
+ * city and becomes a /classes lead (the team calls back); No ends the offers
+ * for good; Know more opens the exam's pattern-and-syllabus page and leaves
+ * the card where it is.
+ *
+ * Since 2026-11-23 this card is where most students meet the classes: the
+ * header's Classes button moved to the avatar menu.
  *
  * Pure: the loader, the card and POST /api/me/class-offer use these rules.
  * Spec: tests/me-class-offer.test.ts.
  */
 import { validateClassInterest, type ClassInterestAnswer, type ClassInterestField } from "@/lib/classes/interest";
-
-export type ClassOffer = "spi" | "nda";
 
 /**
  * The exams that mean a student is in Class 10 this year: SPI itself, and the
@@ -20,62 +23,106 @@ export type ClassOffer = "spi" | "nda";
  */
 export const CLASS_10_EXAMS = ["spi", "cbse-10", "mh-ssc-10", "icse-10", "up-board-10"] as const;
 
-/** Each offer, in the order a student who fits both is asked (SPI is the nearer exam). */
+/** The /classes courses the card can ask about (the DB CHECK in 0285 mirrors it). */
+export const CLASS_OFFER_SLUGS = ["spi", "nda", "mht-cet", "jee", "cds", "afcat", "board-12", "ssc-cgl"] as const;
+export type ClassOffer = (typeof CLASS_OFFER_SLUGS)[number];
+
 export const CLASS_OFFERS: readonly {
   offer: ClassOffer;
-  /** The exam whose pattern-and-syllabus page Know more opens. */
-  examSlug: string;
+  /** The student exams that lead to this course. Each exam is in one entry only. */
+  exams: readonly string[];
+  /** The exam whose pattern-and-syllabus page Know more opens; unset = the student's own exam. */
+  knowMoreExam?: string;
   title: string;
   question: string;
-  /** The exam's name on the Know more button. */
-  examLabel: string;
 }[] = [
   {
     offer: "spi",
-    examSlug: "spi",
+    exams: CLASS_10_EXAMS,
+    knowMoreExam: "spi",
     title: "SPI crash course in Pune",
     question: "Are you looking for an SPI crash course? We run one offline in Pune.",
-    examLabel: "SPI",
   },
   {
     offer: "nda",
-    examSlug: "nda",
+    exams: ["nda"],
     title: "Offline NDA classes in Pune",
     question: "Are you looking for offline NDA classes? We run them in Pune.",
-    examLabel: "NDA",
+  },
+  {
+    offer: "mht-cet",
+    exams: ["mht-cet"],
+    title: "Offline MHT-CET classes in Pune",
+    question: "Are you looking for offline MHT-CET classes? We run them in Pune.",
+  },
+  {
+    offer: "jee",
+    exams: ["jee-mains"],
+    title: "Offline JEE classes in Pune",
+    question: "Are you looking for offline JEE classes? We run them in Pune.",
+  },
+  {
+    offer: "cds",
+    exams: ["cds"],
+    title: "Offline CDS classes in Pune",
+    question: "Are you looking for offline CDS classes? We run them in Pune.",
+  },
+  {
+    offer: "afcat",
+    exams: ["afcat"],
+    title: "Offline AFCAT classes in Pune",
+    question: "Are you looking for offline AFCAT classes? We run them in Pune.",
+  },
+  {
+    offer: "board-12",
+    exams: ["cbse-12", "mh-hsc-12", "isc-12", "up-board-12"],
+    title: "12th Board classes in Pune",
+    question: "Are you looking for offline classes for your 12th Board exams? We run them in Pune.",
+  },
+  {
+    offer: "ssc-cgl",
+    exams: ["ssc-cgl", "ssc-cgl-tier-2"],
+    title: "Offline SSC CGL classes in Pune",
+    question: "Are you looking for offline SSC CGL classes? We run them in Pune.",
   },
 ];
 
-const OFFER_SLUGS: readonly string[] = CLASS_OFFERS.map((o) => o.offer);
-
-export const isClassOffer = (v: unknown): v is ClassOffer => typeof v === "string" && OFFER_SLUGS.includes(v);
+export const isClassOffer = (v: unknown): v is ClassOffer =>
+  typeof v === "string" && (CLASS_OFFER_SLUGS as readonly string[]).includes(v);
 
 export function classOfferInfo(offer: ClassOffer) {
   return CLASS_OFFERS.find((o) => o.offer === offer)!;
 }
 
-/** The offers a student's exams fit, in asking order. */
-export function offersFor(targets: readonly string[]): ClassOffer[] {
-  const out: ClassOffer[] = [];
-  if (targets.some((t) => (CLASS_10_EXAMS as readonly string[]).includes(t))) out.push("spi");
-  if (targets.includes("nda")) out.push("nda");
-  return out;
+/** The course an exam leads to, or null. */
+export function offerForExam(examSlug: string): ClassOffer | null {
+  return CLASS_OFFERS.find((o) => o.exams.includes(examSlug))?.offer ?? null;
+}
+
+/** The exam whose Know more page the card links, for this offer and student exam. */
+export function knowMoreExamFor(offer: ClassOffer, examSlug: string): string {
+  return classOfferInfo(offer).knowMoreExam ?? examSlug;
 }
 
 /**
- * The one card to show, or null. Never to a teacher; never again once the
- * student answered it; never for a course they already asked about on
- * /classes (their number is already with the team).
+ * The one card to show, or null. One offer per student, EVER (owner,
+ * 2026-11-23): the main exam's course, else the first other exam that has
+ * one. Never to a teacher; never once any offer was answered, Yes or No; never
+ * to a student whose number is already with the team from /classes.
  */
 export function pickClassOffer(input: {
+  /** The exam in focus, else their first (lib/me/startNext startNextExam). */
+  mainExam: string | null;
   targets: readonly string[];
   role: string | null;
   answered: ReadonlySet<ClassOffer>;
-  leadCourses: readonly string[];
-}): ClassOffer | null {
-  if (input.role === "teacher") return null;
-  for (const o of offersFor(input.targets)) {
-    if (!input.answered.has(o) && !input.leadCourses.includes(o)) return o;
+  hasLead: boolean;
+}): { offer: ClassOffer; examSlug: string } | null {
+  if (input.role === "teacher" || input.answered.size > 0 || input.hasLead) return null;
+  const order = input.mainExam ? [input.mainExam, ...input.targets.filter((t) => t !== input.mainExam)] : input.targets;
+  for (const examSlug of order) {
+    const offer = offerForExam(examSlug);
+    if (offer) return { offer, examSlug };
   }
   return null;
 }

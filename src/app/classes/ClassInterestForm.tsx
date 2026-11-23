@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Check, Loader2, MapPin } from "lucide-react";
+import { Check, Loader2, LogIn, MapPin } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -23,10 +23,15 @@ import {
  * The offline-classes form (migration 0265): courses, Pune or another city, a
  * name and a mobile with consent, then "Our team will call you". One screen,
  * not steps: four short answers fit a phone, and a parent sees everything they
- * are agreeing to before they send it. Anyone may answer; a signed-in visitor
- * gets their name, mobile and city filled in from the account (asked from the
- * browser so the page stays cached). Rules: lib/classes/interest.ts.
+ * are agreeing to before they send it. Since 2026-11-23 it needs an account
+ * (owner): a signed-out visitor sees a sign-in step instead, and the route
+ * refuses them too. A signed-in visitor gets their name, mobile and city filled
+ * in from the account. Both are asked from the browser so the page stays
+ * cached. Rules: lib/classes/interest.ts.
  */
+
+/** Who is looking, as the browser can tell: the form shows only when signed in. */
+type Viewer = "checking" | "signedOut" | "signedIn";
 
 type CityChoice = "pune" | "other" | null;
 
@@ -45,18 +50,29 @@ export default function ClassInterestForm() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<{ field: ClassInterestField | null; message: string } | null>(null);
   const [done, setDone] = useState(false);
+  const [viewer, setViewer] = useState<Viewer>("checking");
   const doneRef = useRef<HTMLHeadingElement>(null);
 
-  // A signed-in visitor: fill in what the account already knows. Never
-  // overwrite something they have started typing.
+  // Signed in? Then fill in what the account already knows, never
+  // overwriting something they have started typing.
   useEffect(() => {
-    if (!hasAuthCookie()) return;
+    if (!hasAuthCookie()) {
+      setViewer("signedOut");
+      return;
+    }
     let cancelled = false;
     (async () => {
       try {
         const res = await fetch("/api/class-interest", { cache: "no-store" });
         const p = res.ok ? ((await res.json()) as Prefill) : null;
-        if (cancelled || !p?.signedIn) return;
+        if (cancelled) return;
+        if (p && !p.signedIn) {
+          setViewer("signedOut");
+          return;
+        }
+        // An unreadable answer still shows the form: the route decides.
+        setViewer("signedIn");
+        if (!p) return;
         if (p.name) setName((v) => v || p.name!.slice(0, CLASS_TEXT_MAX));
         if (p.mobile) setMobile((v) => v || p.mobile!);
         if (p.city) {
@@ -65,7 +81,9 @@ export default function ClassInterestForm() {
           if (!isPune) setOtherCity((v) => v || p.city!.slice(0, CLASS_TEXT_MAX));
         }
       } catch {
-        // Prefill is a convenience: the empty form still works.
+        // Prefill is a convenience: the empty form still works, and the route
+        // refuses a visitor who turns out to be signed out.
+        if (!cancelled) setViewer("signedIn");
       }
     })();
     return () => {
@@ -101,6 +119,11 @@ export default function ClassInterestForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ courses, city, otherCity, name, mobile, consent, from }),
       });
+      if (res.status === 401) {
+        setViewer("signedOut");
+        toast.error("Please sign in to ask for a call.");
+        return;
+      }
       if (!res.ok) {
         const body = (await res.json().catch(() => null)) as { error?: string; field?: ClassInterestField } | null;
         setError({ field: body?.field ?? null, message: body?.error ?? "Could not save. Please try again." });
@@ -134,6 +157,39 @@ export default function ClassInterestForm() {
         <Button asChild variant="outline" className="mt-5">
           <Link href="/">Back to PYQ Vault</Link>
         </Button>
+      </section>
+    );
+  }
+
+  if (viewer === "checking") {
+    return (
+      <section className="mt-6 flex items-center justify-center gap-2 rounded-xl border bg-card p-6 text-sm text-muted-foreground" aria-busy="true">
+        <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
+        Checking your account
+      </section>
+    );
+  }
+
+  if (viewer === "signedOut") {
+    return (
+      <section className="mt-6 rounded-xl border bg-card p-6 text-center" aria-labelledby="classes-signin-heading">
+        <span className="icon-tile mx-auto inline-flex h-10 w-10 items-center justify-center rounded-full">
+          <LogIn className="h-5 w-5" aria-hidden />
+        </span>
+        <h2 id="classes-signin-heading" className="mt-3 text-lg font-semibold">
+          Sign in to ask for a call
+        </h2>
+        <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground">
+          Our team calls back students who have a PYQ Vault account. It is free and takes a minute.
+        </p>
+        <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row">
+          <Button asChild variant="brand">
+            <Link href="/signup?next=/classes">Create a free account</Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link href="/login?next=/classes">Sign in</Link>
+          </Button>
+        </div>
       </section>
     );
   }
