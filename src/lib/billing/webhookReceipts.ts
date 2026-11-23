@@ -5,10 +5,8 @@
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { readInChunks } from "@/lib/supabase/readInChunks";
 import type { WebhookProvider, WebhookReceipt } from "./webhookAlarm";
-
-/** `.in()` puts the refs in the URL; past ~200 the request line overflows (CLAUDE.md pitfalls). */
-const IN_CHUNK = 200;
 
 /**
  * Records one delivery. Best effort: it logs and returns on any failure,
@@ -32,19 +30,17 @@ export async function readReceivedRefs(
   refs: readonly string[],
   events: readonly string[]
 ): Promise<Set<string>> {
-  const got = new Set<string>();
-  const unique = [...new Set(refs)];
-  for (let i = 0; i < unique.length; i += IN_CHUNK) {
-    const { data, error } = await admin
+  const rows = await readInChunks<{ ref: string | null }>(refs, (ids, from, to) =>
+    admin
       .from("billing_webhook_receipts")
       .select("ref")
       .eq("provider", provider)
       .in("event", [...events])
-      .in("ref", unique.slice(i, i + IN_CHUNK));
-    if (error) throw new Error(`webhook receipts read failed: ${error.message}`);
-    for (const r of data ?? []) if (r.ref) got.add(r.ref as string);
-  }
-  return got;
+      .in("ref", ids)
+      .order("id")
+      .range(from, to)
+  );
+  return new Set(rows.map((r) => r.ref).filter((r): r is string => !!r));
 }
 
 /**

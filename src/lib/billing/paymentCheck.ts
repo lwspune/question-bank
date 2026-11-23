@@ -32,9 +32,7 @@ import { readGraderEmails } from "@/lib/answerSheets/grader";
 import { sendEmail } from "@/lib/email/resend";
 import { istDate } from "@/lib/sales/summary";
 import type { BuiltEmail } from "@/lib/email/templates";
-
-/** `.in()` puts the ids in the URL; past ~200 the request line overflows (CLAUDE.md pitfalls). */
-const IN_CHUNK = 200;
+import { readInChunks } from "@/lib/supabase/readInChunks";
 
 export type PaymentCheckOptions = {
   admin: SupabaseClient;
@@ -59,18 +57,17 @@ export type PaymentCheckResult = {
 
 /** Every payment id among `ids` that a pass or an ebook row already carries. */
 async function readGrantedRefs(admin: SupabaseClient, ids: string[]): Promise<Set<string>> {
+  const [passes, books] = await Promise.all([
+    readInChunks<{ provider_ref: string | null }>(ids, (part, from, to) =>
+      admin.from("entitlements").select("provider_ref").in("provider_ref", part).order("id").range(from, to)
+    ),
+    readInChunks<{ payment_id: string | null }>(ids, (part, from, to) =>
+      admin.from("ebook_purchases").select("payment_id").in("payment_id", part).order("id").range(from, to)
+    ),
+  ]);
   const granted = new Set<string>();
-  for (let i = 0; i < ids.length; i += IN_CHUNK) {
-    const chunk = ids.slice(i, i + IN_CHUNK);
-    const [passes, books] = await Promise.all([
-      admin.from("entitlements").select("provider_ref").in("provider_ref", chunk),
-      admin.from("ebook_purchases").select("payment_id").in("payment_id", chunk),
-    ]);
-    if (passes.error) throw new Error(`entitlements read failed: ${passes.error.message}`);
-    if (books.error) throw new Error(`ebook_purchases read failed: ${books.error.message}`);
-    for (const r of passes.data ?? []) if (r.provider_ref) granted.add(r.provider_ref);
-    for (const r of books.data ?? []) if (r.payment_id) granted.add(r.payment_id);
-  }
+  for (const r of passes) if (r.provider_ref) granted.add(r.provider_ref);
+  for (const r of books) if (r.payment_id) granted.add(r.payment_id);
   return granted;
 }
 

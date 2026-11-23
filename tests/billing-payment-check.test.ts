@@ -38,7 +38,7 @@ import { WEBHOOK_RECEIPTS_SINCE_SEC } from "@/lib/billing/webhookAlarm";
 function fakeAdmin(): SupabaseClient {
   const result = { data: [{ provider_ref: "pay_A", payment_id: null }], error: null, count: 0 };
   const chain: Record<string, unknown> = {};
-  for (const m of ["select", "in", "eq"]) chain[m] = () => chain;
+  for (const m of ["select", "in", "eq", "order", "range"]) chain[m] = () => chain;
   chain.then = (resolve: (v: typeof result) => unknown) => resolve(result);
   return { from: () => chain } as unknown as SupabaseClient;
 }
