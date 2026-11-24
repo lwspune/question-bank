@@ -255,4 +255,26 @@ describe("askV", () => {
     stubTurns({ stop_reason: "refusal", content: [], usage: { input_tokens: 1, output_tokens: 0 } });
     expect((await askV({ system: "facts", message: "hi", tools: [tool] })).ok).toBe(false);
   });
+
+  // 2026-11-24: twice in a day V answered a tapped question with "I can't see which question is on your
+  // screen", told of the tap only in the system tail. The note now sits after the student's message.
+  it("sends a turn note as a system message straight after the student's message", async () => {
+    stubTurns(toolTurn("t1", { query: "x" }), textTurn("Done"));
+    await askV({ system: "facts", message: "Explain this question.", tools: [tool], turnNote: "tapped q1" });
+    const first = sent[0].messages;
+    expect(first.slice(-2)).toEqual([
+      { role: "user", content: "Explain this question." },
+      { role: "system", content: "tapped q1" },
+    ]);
+    // A tool round follows it with an assistant turn, as the API requires.
+    const second = sent[1].messages;
+    expect(second[second.length - 3]).toEqual({ role: "system", content: "tapped q1" });
+    expect(second[second.length - 2].role).toBe("assistant");
+  });
+
+  it("sends no system message without a turn note", async () => {
+    stubTurns(textTurn("Hi"));
+    await askV({ system: "facts", message: "hi", tools: [tool] });
+    expect(sent[0].messages.some((m) => m.role === "system")).toBe(false);
+  });
 });

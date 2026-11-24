@@ -11,6 +11,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { loadVContext } from "./context";
 import { askV, type AskVResult } from "./anthropic";
+import { tapTurnNote } from "./facts";
 import { allowedReplyLinks, plainLinks, plainQuotes } from "./replyLinks";
 import type { ModelTurn } from "./conversation";
 
@@ -32,6 +33,11 @@ export async function answerWithV(input: {
     message: input.replyTo ? `${input.replyTo}\n\n${input.message}` : input.message,
     tools: ctx.tools,
     history: input.history,
+    turnNote: tapTurnNote({
+      questionId: input.context.question?.id ?? null,
+      message: input.message,
+      followsUp: Boolean(input.context.followsUp),
+    }),
   });
   if (!result.ok) return { ...result, links: [] };
   const reply = plainLinks(plainQuotes(result.reply));

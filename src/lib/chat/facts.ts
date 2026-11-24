@@ -19,6 +19,7 @@ import { NOT_UNDERSTOOD } from "./understood";
 import { explainStepMessage } from "./stepChips";
 import { languageLine, type VLanguage } from "./language";
 import { followUpTailLine } from "./followUp";
+import { isAskVMessage } from "./askVEvent";
 import type { ExamEntry } from "@/lib/exam/examContext";
 
 export type ChatExamFact = {
@@ -495,6 +496,19 @@ INTERNATIONAL EXAMS (on our international site, intl.pyqvault.com; each page ope
 ${facts.abroad.join("\n")}`
       : ""
   }`;
+}
+
+/**
+ * The tapped question, said again straight after the student's message
+ * (2026-11-24). On 22-23 Nov V twice answered an Ask V tap with "I can't see
+ * which question is on your screen": named only in the system tail, the tap
+ * was lost late in a conversation of earlier "Explain this question." turns.
+ * Only on the Ask V message itself; a typed follow-up about the same question
+ * and a follow-up card (which builds on the earlier explanation) get none.
+ */
+export function tapTurnNote(input: { questionId: string | null; message: string; followsUp: boolean }): string | null {
+  if (!input.questionId || input.followsUp || !isAskVMessage(input.message)) return null;
+  return `The student just tapped Ask V on question ${input.questionId}. That is the question they mean: call explain_question for it now, and do not ask which question.`;
 }
 
 /**
