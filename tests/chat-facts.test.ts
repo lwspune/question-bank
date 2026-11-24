@@ -240,6 +240,22 @@ describe("NAV_FACTS", () => {
     expect(app).toMatch(/^\/app:/);
   });
 
+  it("calls /homework Most Asked, as the header does since the rename (2026-11-24)", () => {
+    // The owner renamed the Homework section "Most Asked": a plan opens on each
+    // chapter's Top 10 PYQs, with Daily homework as its second tab. A student
+    // asked whether these are the same as the PYQ section, so V must say they
+    // ARE past-year questions, the most repeated ones.
+    const line = NAV_FACTS.find((f) => f.startsWith("/homework:"));
+    expect(line).toBeDefined();
+    expect(line).toMatch(/Most Asked/);
+    expect(line).toMatch(/Top 10 PYQs/);
+    expect(line).toMatch(/Daily homework/);
+    expect(line).toMatch(/past-year questions/);
+    expect(line).not.toMatch(/Homework tab/);
+    // V knows no plan's address, so it must never be handed a placeholder path to repeat.
+    expect(line).not.toMatch(/<[a-z]+>/);
+  });
+
   it("names the pages students asked V for", () => {
     const all = NAV_FACTS.join(" ");
     for (const path of ["/pricing", "/question-papers", "/board", "/guide", "/notes", "/signup"]) {
