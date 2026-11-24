@@ -11,6 +11,7 @@ import { HOMEWORK_HUB, MOST_ASKED, planHref, topChapterHref } from "@/lib/homewo
 import { planWording } from "@/lib/homework/display";
 import { homeworkSideNav } from "@/lib/homework/chapters";
 import PlanTabs from "../_components/PlanTabs";
+import TopProgressBox from "../_components/TopProgressBox";
 
 type Params = { planSlug: string };
 
@@ -61,6 +62,9 @@ export default async function HomeworkPlanPage(props: { params: Promise<Params> 
       <GuideHero eyebrow={`${MOST_ASKED} · Top 10 PYQs`} title={plan.title} />
 
       <PlanTabs planSlug={plan.slug} active="top" />
+
+      {/* Signed in: progress through the Top 10s and the next chapter, filled in by the browser. */}
+      <TopProgressBox planSlug={plan.slug} />
 
       <p className="mt-6 text-sm text-muted-foreground">
         The ten questions to practise first in each chapter: the ones {planWording(plan.examName).asker} asked again,

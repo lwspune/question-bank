@@ -1,10 +1,11 @@
 /**
- * GET /api/homework/progress?plan=<slug>[&day=<n>] — the signed-in student's
- * progress through a homework plan (2026-11-05).
+ * GET /api/homework/progress?plan=<slug>[&day=<n> | &view=top] — the signed-in
+ * student's progress through a homework plan (2026-11-05).
  *
- * Without `day`: every day's summary and where to continue, for the plan page.
+ * Without `day`: every day's summary and where to continue, for the days page.
  * With `day`: that day's question marks and the ones waiting in the drill, for
- * the day page. Both pages are cached and shared by every visitor, so the
+ * the day page. With `view=top` (2026-11-24): progress through each chapter's
+ * Top 10 and the next chapter, for the plan's front page. Both pages are cached and shared by every visitor, so the
  * personal part is fetched here by the browser, the /api/me/header pattern,
  * and only by a signed-in browser: a signed-out visitor gets 401 and the page
  * stays as it is.
@@ -14,9 +15,9 @@
  */
 import { NextResponse, type NextRequest } from "next/server";
 import { getSessionUser } from "@/lib/auth";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createTypedServerClient } from "@/lib/supabase/server";
 import { parseProgressQuery } from "@/lib/homework/progress";
-import { loadHomeworkDayMarks, loadHomeworkProgress } from "@/lib/homework/progressService";
+import { loadHomeworkDayMarks, loadHomeworkProgress, loadTopProgress } from "@/lib/homework/progressService";
 
 export const dynamic = "force-dynamic";
 
@@ -35,11 +36,13 @@ export async function GET(request: NextRequest) {
   if (!user) return NextResponse.json({ error: "Sign in to see your progress." }, { status: 401, headers: NO_STORE });
 
   try {
-    const db = createSupabaseServerClient();
+    const db = createTypedServerClient();
     const out =
-      parsed.day === undefined
-        ? await loadHomeworkProgress(db, user.id, parsed.slug)
-        : await loadHomeworkDayMarks(db, user.id, parsed.slug, parsed.day);
+      parsed.view === "top"
+        ? await loadTopProgress(db, user.id, parsed.slug)
+        : parsed.day === undefined
+          ? await loadHomeworkProgress(db, user.id, parsed.slug)
+          : await loadHomeworkDayMarks(db, user.id, parsed.slug, parsed.day);
     if (!out) return NextResponse.json({ error: "No such homework." }, { status: 404, headers: NO_STORE });
     return NextResponse.json(out, { headers: NO_STORE });
   } catch (e) {

@@ -14,6 +14,8 @@
  * holds five, so it filters by id.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
+import type { Database } from "@/types/db";
+import { topProgress, type TopItem, type TopProgress } from "./topProgress";
 import {
   marksFor,
   planProgress,
@@ -28,7 +30,14 @@ const PAGE = 1000;
 const KINDS: ProgressEvent["kind"][] = ["self_mark", "question_practiced", "answer_wrong", "answer_correct", "v_not_understood"];
 
 type ItemRow = { day: number; position: number; question_id: string; question: { question_format: QuestionFormat } | null };
-type EventRow = { ref_id: string; kind: ProgressEvent["kind"]; created_at: string; mark: string | null };
+type EventRow = {
+  ref_id: string;
+  kind: ProgressEvent["kind"];
+  created_at: string;
+  mark: string | null;
+  surface: string | null;
+  mock_id: string | null;
+};
 
 async function planIdOf(db: SupabaseClient, slug: string): Promise<string | null> {
   const { data, error } = await db.from("homework_plans").select("id").eq("slug", slug).maybeSingle();
@@ -56,7 +65,9 @@ async function loadProgressItems(db: SupabaseClient, planId: string, day?: numbe
 
 function toEvent(r: EventRow): ProgressEvent {
   const mark = r.mark === "understood" || r.mark === "review" ? r.mark : undefined;
-  return { questionId: r.ref_id, kind: r.kind, at: r.created_at, ...(mark ? { mark } : {}) };
+  // A mock answer stores no surface, only its mockId.
+  const surface = r.surface ?? (r.mock_id ? "mock" : null);
+  return { questionId: r.ref_id, kind: r.kind, at: r.created_at, ...(mark ? { mark } : {}), ...(surface ? { surface } : {}) };
 }
 
 async function loadEvents(db: SupabaseClient, userId: string, questionIds?: string[]): Promise<ProgressEvent[]> {
@@ -64,7 +75,7 @@ async function loadEvents(db: SupabaseClient, userId: string, questionIds?: stri
   for (let from = 0; ; from += PAGE) {
     let q = db
       .from("user_activity")
-      .select("ref_id, kind, created_at, mark:metadata->>mark")
+      .select("ref_id, kind, created_at, mark:metadata->>mark, surface:metadata->>surface, mock_id:metadata->>mockId")
       .eq("user_id", userId)
       .in("kind", KINDS)
       .not("ref_id", "is", null);
@@ -87,6 +98,51 @@ export async function loadHomeworkProgress(
   if (!planId) return null;
   const [items, events] = await Promise.all([loadProgressItems(db, planId), loadEvents(db, userId)]);
   return { progress: planProgress(items, events) };
+}
+
+/** Every item of the plan with its chapter, for the Top 10 view. Paged: a
+ *  plan holds up to ~2,700 rows, past PostgREST's 1,000-row cap. Typed
+ *  client, so the joined rows come back with their real shape. */
+async function loadTopItems(db: SupabaseClient<Database>, planId: string): Promise<TopItem[]> {
+  const out: TopItem[] = [];
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await db
+      .from("homework_plan_items")
+      .select("day, position, sub, question_id, question:questions(question_format, chapter:chapters(id, name, order_index))")
+      .eq("plan_id", planId)
+      .order("day")
+      .order("position")
+      .order("sub")
+      .range(from, from + PAGE - 1);
+    if (error) throw new Error(`homework top progress items: ${error.message}`);
+    const rows = data ?? [];
+    for (const r of rows) {
+      const c = r.question?.chapter ?? null;
+      out.push({
+        day: r.day,
+        position: r.position,
+        sub: r.sub,
+        questionId: r.question_id,
+        // A multiple-select question is answered by a pick, like an MCQ.
+        format: r.question?.question_format === "msq" ? "mcq" : (r.question?.question_format ?? "mcq"),
+        chapter: c ? { id: c.id, name: c.name, orderIndex: c.order_index } : null,
+      });
+    }
+    if (rows.length < PAGE) return out;
+  }
+}
+
+/** The plan's front page: progress through each chapter's Top 10 and the
+ *  chapter to work on next. Null for an unknown plan. */
+export async function loadTopProgress(
+  db: SupabaseClient<Database>,
+  userId: string,
+  slug: string
+): Promise<{ top: TopProgress } | null> {
+  const planId = await planIdOf(db, slug);
+  if (!planId) return null;
+  const [items, events] = await Promise.all([loadTopItems(db, planId), loadEvents(db, userId)]);
+  return { top: topProgress(items, events) };
 }
 
 /** One day page: each question's mark and those waiting in the drill. Null
