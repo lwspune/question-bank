@@ -138,6 +138,16 @@ describe("buildDayCard: the check-in", () => {
     expect(card?.checkIn?.stuck.map((s) => s.chapter)).toEqual(["Trigonometry"]);
   });
 
+  // 2026-11-24: a student on the MHT-CET card who had practised JEE Mains that morning told V "No my last
+  // visit was today only". Away means away from the whole site, not from the card's exam.
+  it("is not set when the student answered in another exam within the gap", () => {
+    const base = { days: [span("2026-11-10", 12, 7)], dueChapters: ["X"], stuckChapters: [ch("c-x", "X", 1)] };
+    expect(buildDayCard(input({ ...base, lastAnswerAnyExamAt: "2026-11-21T02:00:00Z" }))?.checkIn).toBeNull();
+    expect(buildDayCard(input({ ...base, lastAnswerAnyExamAt: "2026-11-19T12:00:00Z" }))?.checkIn).toBeNull();
+    // Another exam's answer older than the gap changes nothing.
+    expect(buildDayCard(input({ ...base, lastAnswerAnyExamAt: "2026-11-12T12:00:00Z" }))?.checkIn).not.toBeNull();
+  });
+
   it("is not set after a shorter gap, nor for a student with no earlier day", () => {
     expect(buildDayCard(input({ days: [span("2026-11-18", 12, 7)], dueChapters: ["X"] }))?.checkIn).toBeNull();
     expect(buildDayCard(input({ dueChapters: ["X"] }))?.checkIn).toBeNull();
