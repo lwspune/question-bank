@@ -177,6 +177,22 @@ describe("diffSeoViews", () => {
     expect(a.meta["og:image"]).toBe("{origin}/opengraph-image");
   });
 
+  it("treats the live address a local server prints in og:url as its own origin", () => {
+    // A local server prints the site's fixed address (SITE_URL) in og:url, the live one prints the same
+    // address as its own origin: one page, not a difference (found comparing live with localhost, 2026-11-24).
+    const head = '<title>T</title><meta property="og:url" content="https://www.pyqvault.com/blog/x"/>';
+    const live = seoView(page("<h1>A</h1>", head), "https://www.pyqvault.com");
+    const local = seoView(page("<h1>A</h1>", head), "http://localhost:3001");
+    expect(diffSeoViews(live, local)).toEqual([]);
+    expect(local.meta["og:url"]).toBe("{origin}/blog/x");
+  });
+
+  it("still catches an og:url that names another page", () => {
+    const live = seoView(page("<h1>A</h1>", '<title>T</title><meta property="og:url" content="https://www.pyqvault.com/a"/>'), "https://www.pyqvault.com");
+    const local = seoView(page("<h1>A</h1>", '<title>T</title><meta property="og:url" content="https://www.pyqvault.com/b"/>'), "http://localhost:3001");
+    expect(diffSeoViews(live, local).join("\n")).toMatch(/og:url/);
+  });
+
   it("still catches a canonical that names the wrong site", () => {
     const a = seoView(page("<h1>A</h1>", '<link rel="canonical" href="https://www.pyqvault.com/x"/>'), "https://www.pyqvault.com");
     const b = seoView(page("<h1>A</h1>", '<link rel="canonical" href="https://www.pyqvault.com/y"/>'), "http://localhost:3001");
@@ -208,9 +224,44 @@ describe("diffSeoViews", () => {
     const inline = page("<h1>A</h1><div><p>Outer</p><div><p>Inner</p></div></div><footer>F</footer>");
     const streamed = page(
       '<h1>A</h1><!--$?--><template id="B:2"></template><!--/$--><footer>F</footer>' +
-        '<div hidden id="S:2"><div><p>Outer</p><div><p>Inner</p></div></div></div>',
+        '<div hidden id="S:2"><div><p>Outer</p><div><p>Inner</p></div></div></div><script>$RC("B:2","S:2")</script>',
     );
     expect(diffSeoViews(seoView(inline), seoView(streamed))).toEqual([]);
+  });
+
+  // React pairs each parked section with its place by SCRIPT, not by number (found 2026-11-24:
+  // a dev /browse streamed 45 sections, most as SEGMENTS, and the tool read the page as empty).
+  it("puts a streamed segment ($RS into a P: template) back", () => {
+    const inline = page("<h1>A</h1><ul><li>One</li></ul><footer>F</footer>");
+    const streamed = page(
+      '<h1>A</h1><template id="P:2"></template><footer>F</footer>' +
+        '<div hidden id="S:2"><ul><li>One</li></ul></div><script>$RS("S:2","P:2")</script>',
+    );
+    expect(diffSeoViews(seoView(inline), seoView(streamed))).toEqual([]);
+  });
+
+  it("follows the script when a boundary and its section have different numbers", () => {
+    const inline = page("<h1>A</h1><p>Late text</p><footer>F</footer>");
+    const streamed = page(
+      '<h1>A</h1><!--$?--><template id="B:1"></template><p>Loading</p><!--/$--><footer>F</footer>' +
+        '<div hidden id="S:3"><p>Late text</p></div><script>$RC("B:1","S:3")</script>',
+    );
+    expect(diffSeoViews(seoView(inline), seoView(streamed))).toEqual([]);
+  });
+
+  it("puts a segment back inside a section that streamed itself", () => {
+    const inline = page("<h1>A</h1><section><h2>B</h2><p>Deep</p></section><footer>F</footer>");
+    const streamed = page(
+      '<h1>A</h1><!--$?--><template id="B:0"></template><!--/$--><footer>F</footer>' +
+        '<div hidden id="S:1"><section><h2>B</h2><template id="P:2"></template></section></div><script>$RC("B:0","S:1")</script>' +
+        '<div hidden id="S:2"><p>Deep</p></div><script>$RS("S:2","P:2")</script>',
+    );
+    expect(diffSeoViews(seoView(inline), seoView(streamed))).toEqual([]);
+  });
+
+  it("never drops a parked section no script places", () => {
+    const view = seoView(page('<h1>A</h1><footer>F</footer><div hidden id="S:9"><h2>Kept</h2></div>'));
+    expect(view.headings).toContain("h2: Kept");
   });
 
   it("catches a nofollow added to a link", () => {

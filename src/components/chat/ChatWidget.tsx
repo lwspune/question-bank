@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useIntlSite } from "@/lib/sites/useIntlSite";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -23,7 +23,6 @@ import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { useVFeatures } from "@/lib/chat/useVExplain";
 import { CHAT_MESSAGE_MAX } from "@/lib/chat/validate";
 import { vPlacement } from "@/lib/chat/placement";
-import { launcherHiddenAfterScroll } from "@/lib/chat/launcherScroll";
 import { panelBox, type PanelBox } from "@/lib/chat/panelBox";
 import { NOT_UNDERSTOOD, replySteps, stuckStepMessage } from "@/lib/chat/understood";
 import { explainStepMessage, replyParts } from "@/lib/chat/stepChips";
@@ -73,7 +72,6 @@ function noteAccountChecked(): void {
   }
 }
 import { useCart } from "@/lib/cart/CartProvider";
-import VSays from "./VSays";
 import MathText from "./MathText";
 import VQuestionCard from "./VQuestionCard";
 import VAskedCard from "./VAskedCard";
@@ -114,8 +112,12 @@ import {
   questionForRequest,
   type AskVDetail,
 } from "@/lib/chat/askVEvent";
-import { MESSAGE_IN, USER_BUBBLE, V_BUBBLE } from "./chatStyles";
-import PracticeBuilder, { PENDING_BUILD_KEY, logBuilderStep } from "./PracticeBuilder";
+import { MESSAGE_IN, USER_BUBBLE, V_BUBBLE, V_WINDOW, V_WINDOW_HEADER } from "./chatStyles";
+import PracticeBuilder, { logBuilderStep } from "./PracticeBuilder";
+import { PENDING_BUILD_KEY } from "@/lib/chat/pendingBuild";
+import VLauncher from "./VLauncher";
+import { useLauncherTucked } from "./useLauncherTucked";
+import type { VStart } from "@/lib/chat/windowStart";
 import type { BuilderAnswers } from "@/lib/practiceTests/builder";
 import { sceneOf } from "@/lib/visuals/usage";
 import { reportVisual } from "@/lib/visuals/usageBeacon";
@@ -262,8 +264,17 @@ const INTL_GREETING: ChatTurn = { ...GREETING, text: "Hi, I'm V. Ask me about an
  * (it was capped at 40rem, which cut off the "Your day" card's buttons on a
  * laptop), and the launcher hides while V is open: the header's X closes it.
  */
-export default function ChatWidget() {
-  const [open, setOpen] = useState(false);
+type ChatWidgetProps = {
+  /** What V's launcher caught before this window loaded (lib/chat/windowStart). */
+  start?: VStart;
+  /** Called once this window listens for Ask V itself, so the launcher stops catching. */
+  onReady?: () => void;
+};
+
+export default function ChatWidget({ start, onReady }: ChatWidgetProps) {
+  // Loaded for a tap or an Ask V: open from the first paint, so the launcher's loading frame
+  // gives way to the window with no closed button in between (the start effect does the rest).
+  const [open, setOpen] = useState(() => !!start && start.kind !== "quiet");
   // The Learn lesson playing full screen over V, tapped on a chapter map (2026-11-22).
   const [playing, setPlaying] = useState<LessonTarget | null>(null);
   const [mode, setMode] = useState<"chat" | "builder">("chat");
@@ -423,32 +434,13 @@ export default function ChatWidget() {
     window.addEventListener(ASK_V_TEXT_EVENT, onAskText);
     return () => window.removeEventListener(ASK_V_TEXT_EVENT, onAskText);
   }, []);
-  // Phones only: tuck the launcher away while the student scrolls down a page
-  // and bring it back on any scroll up (UX_ACTION_PLAN.md A7). It used to sit
-  // over card content on every page. Never while the chat is open.
-  const [tucked, setTucked] = useState(false);
+  // Phones only: the button tucks away while the student scrolls down (useLauncherTucked).
+  const [tucked, setTucked] = useLauncherTucked(open);
+  // This window now catches Ask V itself (the listeners above run first): the launcher stops.
   useEffect(() => {
-    if (open) {
-      setTucked(false);
-      return;
-    }
-    const phone = window.matchMedia("(max-width: 639px)");
-    let prevY = window.scrollY;
-    let frame = 0;
-    const onScroll = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        const y = window.scrollY;
-        setTucked((hidden) => (phone.matches ? launcherHiddenAfterScroll({ prevY, y, hidden }) : false));
-        prevY = y;
-      });
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      cancelAnimationFrame(frame);
-    };
-  }, [open]);
+    onReady?.();
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- once per mount
+  }, []);
   // Back from sign-in with a test half built: reopen V on the builder.
   useEffect(() => {
     let pending: BuilderAnswers | null = null;
@@ -1014,6 +1006,29 @@ export default function ChatWidget() {
     void askTyped(message, null);
   };
 
+  // What V's launcher caught before this window loaded (PAGE_WEIGHT_SPEC.md item 2): a tap on
+  // the button or an Ask V. Acted on once each, and only after the saved chat is read above,
+  // since a message needs this device's conversation id and an Ask V checks earlier answers.
+  const handledStartRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (!start || !conversationId || handledStartRef.current === start.seq) return;
+    handledStartRef.current = start.seq;
+    switch (start.kind) {
+      case "open":
+        openChat();
+        break;
+      case "ask":
+        onAskRef.current(start.detail);
+        break;
+      case "askText":
+        onAskTextRef.current(start.message);
+        break;
+      case "quiet":
+        break;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- acts per start, once the conversation is known
+  }, [start, conversationId]);
+
   function startReply(id: string, text: string) {
     setReplyingTo({ id, text });
     inputRef.current?.focus();
@@ -1178,12 +1193,16 @@ export default function ChatWidget() {
   // A Learn lesson's map has no buttons of its own (the student taps a lesson), so V's stay.
   const lessonOpen = lastReplyAt >= 0 && !!turns[lastReplyAt].lesson && turns[lastReplyAt].lesson!.kind !== "learn";
 
-  // Vertical position lives in globals.css (.chat-launcher-offset): clear of
-  // MobileTabBar below sm, and raised by --v-lift over /browse's cart pill.
-  const lift = { "--v-lift": placement.aboveCart ? "3.5rem" : "0px" } as CSSProperties;
-
   return (
-    <div className="chat-launcher-offset fixed right-4 z-50 print:hidden" style={lift}>
+    <VLauncher
+      open={open}
+      label={vLauncherLabel({ open, unread, dayDue: dayDot, giftDue: giftBadge })}
+      tucked={tucked}
+      badge={launcherBadge}
+      aboveCart={placement.aboveCart}
+      onClick={() => (open ? close() : openChat())}
+      buttonRef={launcherRef}
+    >
       {playing && <LearnLessonOverlay key={`${playing.chapter}/${playing.concept}`} target={playing} onClose={() => setPlaying(null)} />}
       {open && (
         <div
@@ -1192,14 +1211,14 @@ export default function ChatWidget() {
           aria-modal="true"
           aria-label={building ? "Build a practice test with V" : "Chat with V"}
           style={box ?? undefined}
-          className="fixed inset-0 flex h-[100dvh] w-full flex-col overflow-hidden bg-background sm:fixed sm:inset-auto sm:bottom-[max(1rem,env(safe-area-inset-bottom))] sm:right-4 sm:top-4 sm:h-auto sm:w-[30rem] sm:max-w-[calc(100vw-2rem)] sm:rounded-2xl sm:border sm:border-border sm:shadow-[0_28px_64px_-24px_rgb(15_29_74/0.55)] motion-safe:sm:animate-in motion-safe:sm:fade-in motion-safe:sm:slide-in-from-bottom-4 motion-safe:sm:duration-200"
+          className={V_WINDOW}
           onKeyDown={(e) => {
             // The download box is a portal: its keys bubble here through React,
             // and its own Escape must not close V too.
             if (e.key === "Escape" && panelRef.current?.contains(e.target as Node)) close();
           }}
         >
-          <div className="hero-brand flex shrink-0 items-center justify-between px-4 pb-3 pt-[max(0.75rem,env(safe-area-inset-top))] sm:pt-3">
+          <div className={V_WINDOW_HEADER}>
             <div className="flex min-w-0 items-center gap-3">
               <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/25">
                 <VFace avatar="talk" className="h-8 w-8 object-contain" />
@@ -1712,43 +1731,6 @@ export default function ChatWidget() {
           )}
         </div>
       )}
-
-      {/* Celebrations, in V's voice (2026-10-04). Unmounted while the chat is
-          open, so celebrate() falls back to the toast then. */}
-      {!open && <VSays />}
-      <button
-        ref={launcherRef}
-        type="button"
-        onClick={() => (open ? close() : openChat())}
-        aria-label={vLauncherLabel({ open, unread, dayDue: dayDot, giftDue: giftBadge })}
-        aria-expanded={open}
-        title="Chat with V"
-        tabIndex={tucked ? -1 : undefined}
-        className={`relative ml-auto ${open ? "hidden" : "flex"} h-11 w-11 items-center justify-center rounded-full bg-background shadow-lg transition-[transform,opacity] duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none sm:h-14 sm:w-14 ${
-          tucked ? "pointer-events-none translate-y-[160%] opacity-0" : ""
-        }`}
-      >
-        {open ? (
-          <X className="h-5 w-5 text-foreground" aria-hidden />
-        ) : (
-          <VFace avatar="idle" className="h-9 w-9 object-contain sm:h-12 sm:w-12" />
-        )}
-        {/* What waits inside V (lib/chat/launcher): unread replies in the brand
-            colour, as before; otherwise a red count of the "Your day" card
-            (2026-11-20, was a 12 px blue dot that read as decoration) and a
-            gift (2026-11-21), the way a phone marks something new. red-600
-            under white text is 4.8:1. */}
-        {launcherBadge && (
-          <span
-            aria-hidden
-            className={`absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full px-1 text-[11px] font-semibold leading-none ring-2 ring-background ${
-              launcherBadge.tone === "reply" ? "bg-brand text-brand-foreground" : "bg-red-600 text-white"
-            }`}
-          >
-            {launcherBadge.count > 9 ? "9+" : launcherBadge.count}
-          </span>
-        )}
-      </button>
-    </div>
+    </VLauncher>
   );
 }

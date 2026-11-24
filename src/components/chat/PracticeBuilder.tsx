@@ -37,7 +37,8 @@ type BuiltTest = {
 };
 
 /** sessionStorage key: a signed-out student's answers, kept across sign-in. */
-export const PENDING_BUILD_KEY = "v-practice-builder";
+import { PENDING_BUILD_KEY } from "@/lib/chat/pendingBuild";
+export { PENDING_BUILD_KEY };
 
 const PROMPTS: Record<BuilderStep, string> = {
   exam: "Let's build your practice test. Which exam is it for?",

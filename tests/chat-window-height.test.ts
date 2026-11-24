@@ -14,11 +14,16 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
 const widget = readFileSync(join(process.cwd(), "src/components/chat/ChatWidget.tsx"), "utf8");
-const windowClass = widget.match(/role="dialog"[^]*?className="([^"]+)"/)?.[1] ?? "";
+// The window's class is shared with the frame drawn while it loads (PAGE_WEIGHT_SPEC.md item 2).
+const styles = readFileSync(join(process.cwd(), "src/components/chat/chatStyles.ts"), "utf8");
+const windowClass = styles.match(/export const V_WINDOW =\s*"([^"]+)"/)?.[1] ?? "";
+// The round button is drawn by VLauncher, for the window and the launcher alike.
+const launcher = readFileSync(join(process.cwd(), "src/components/chat/VLauncher.tsx"), "utf8");
 
 describe("V's window from sm up", () => {
   it("is found", () => {
     expect(windowClass).toContain("sm:w-[30rem]");
+    expect(widget).toMatch(/role="dialog"[^]*?className=\{V_WINDOW\}/);
   });
 
   it("runs from 1rem below the top to 1rem above the bottom", () => {
@@ -42,8 +47,8 @@ describe("V's window from sm up", () => {
 
 describe("the launcher while V is open", () => {
   it("hides at every width (the X in V's header closes V)", () => {
-    expect(widget).not.toMatch(/open \? "hidden sm:flex"/);
-    expect(widget).toMatch(/\$\{open \? "hidden" : "flex"\}/);
+    expect(launcher).not.toMatch(/open \? "hidden sm:flex"/);
+    expect(launcher).toMatch(/\$\{open \? "hidden" : "flex"\}/);
   });
 
   it("takes focus back after V closes, once it is shown again", () => {
