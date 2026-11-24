@@ -51,6 +51,10 @@ describe("V's window imports nothing from node", () => {
     expect(nodeImportsReachedFrom("components/chat/ChatWidget.tsx")).toEqual([]);
   });
 
+  it("V's launcher (what the layout mounts) has none either", () => {
+    expect(nodeImportsReachedFrom("components/chat/ChatLauncher.tsx")).toEqual([]);
+  });
+
   it("the walker does see node: imports (it would catch the old chain)", () => {
     expect(nodeImportsReachedFrom("lib/push/core.ts").length).toBeGreaterThan(0);
   });

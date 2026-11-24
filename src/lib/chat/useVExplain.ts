@@ -26,6 +26,11 @@ function fetchFeatures(): Promise<VFeatures> {
   return pending;
 }
 
+/** Ask early (V's button touched before its window loads), so the window opens with its buttons. */
+export function warmVFeatures(): void {
+  void fetchFeatures();
+}
+
 export function useVFeatures(): VFeatures {
   const [on, setOn] = useState<VFeatures>(OFF);
   useEffect(() => {

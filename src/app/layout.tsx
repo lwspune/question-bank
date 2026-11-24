@@ -7,7 +7,7 @@ import VercelAnalytics from "@/components/analytics/VercelAnalytics";
 import AcquisitionCapture from "@/components/acquisition/AcquisitionCapture";
 import ClarityScript from "@/components/analytics/ClarityScript";
 import NavigationProgress from "@/components/NavigationProgress";
-import ChatWidget from "@/components/chat/ChatWidget";
+import ChatLauncher from "@/components/chat/ChatLauncher";
 import PendingSelfMarkSaver from "@/components/reveal/PendingSelfMarkSaver";
 import AppInstallCapture from "@/components/install/AppInstallCapture";
 import { CartProvider } from "@/lib/cart/CartProvider";
@@ -136,7 +136,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <ClarityScript />
           {/* V, the FAQ helper. No server read at mount — it only calls out when
               opened or a question is clicked — so prerendered routes stay cached. */}
-          <ChatWidget />
+          <ChatLauncher />
           {/* Saves a signed-out "Review later" tap once the visitor is back
               signed in. One localStorage read per page; no server read at
               render, so prerendered routes stay cached. */}
