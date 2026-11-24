@@ -353,6 +353,28 @@ Both touch sign-in and payment, so each gets its own plan and the owner's OK
 after the measurement. The payment return path (0283) must keep working: its
 tests are the gate.
 
+**Measured (2026-11-25, live files, signed-out phone):**
+
+- **Found on the way: Next's server toolkit was in the browser bundle.**
+  `lib/billing/pendingOrder.ts` (browser) imported `ORDER_ID_RE` from
+  `lib/billing/returnCheckHttp.ts`, which imports `NextResponse` for the
+  return-check routes, so all of `next/server` rode along on every page: 42
+  modules, about 72 KB of code, about 22 KB sent (an estimate: modules sized by
+  following the minified links). FIXED on `fix/client-next-server`: the rule
+  lives in `lib/billing/orderId.ts`; `tests/client-no-next-server.test.ts`
+  fails if any "use client" file reaches `next/server` again (this was the
+  only one). Proof on a dev server: /pricing on main downloads next/server's
+  request, response and user-agent modules; on the branch, none. All 41
+  payment test files pass. Measure the real saving on live after the push.
+- **Payment code itself: about 5 KB sent** (checkout return, decline reasons,
+  Paddle loader). Under the 10 KB line: left as it is.
+- **Supabase: 61 KB sent, 233 KB of code**, all of it the client library plus
+  a Buffer polyfill, on every page. Eight always-on files import the browser
+  client. The owner chose to do it (B): its own branch and plan. Signed-in
+  visitors keep it at once (on public pages only the browser library renews
+  their token); the sign-in-without-reload case on /login must still update
+  the header (the 2026-11-16 fix).
+
 ### Item 4. The notes freeze: prototype and measure before deciding
 
 **The problem:** 2.8 s of freeze on a notes page against 0.4 s on a plain page.
