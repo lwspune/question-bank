@@ -9,7 +9,7 @@ import { createSupabaseAnonClient, createTypedAnonClient } from "@/lib/supabase/
 import { getPlanDayPage, getPlanLinks } from "@/lib/homework/query";
 import { homeworkOfferFacts, homeworkOfferLead } from "@/lib/billing/passOfferLead";
 import { adjacentDays, homeworkDayView } from "@/lib/homework/dayView";
-import { dayHref, parseDayParam, planHref } from "@/lib/homework/links";
+import { HOMEWORK_HUB, MOST_ASKED, dayHref, daysHref, parseDayParam, planHref } from "@/lib/homework/links";
 import { loadBoardQuestions } from "@/lib/questionPapers/query";
 import HomeworkDownload from "../../../_components/HomeworkDownload";
 import HomeworkDayReader from "../../../_components/HomeworkDayReader";
@@ -88,8 +88,9 @@ export default async function HomeworkDayPage(props: { params: Promise<Params> }
         <Breadcrumbs
           className="mb-4"
           items={[
-            { href: "/homework", label: "Daily Homework" },
+            { href: HOMEWORK_HUB, label: MOST_ASKED },
             { href: planHref(plan.slug), label: plan.title },
+            { href: daysHref(plan.slug), label: "Daily homework" },
             { label: `Day ${day}` },
           ]}
         />
@@ -130,7 +131,7 @@ export default async function HomeworkDayPage(props: { params: Promise<Params> }
           ) : (
             <span />
           )}
-          <Link href={planHref(plan.slug)} className="text-muted-foreground hover:text-foreground hover:underline">
+          <Link href={daysHref(plan.slug)} className="text-muted-foreground hover:text-foreground hover:underline">
             All days
           </Link>
           {next ? (

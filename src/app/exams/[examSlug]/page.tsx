@@ -21,7 +21,7 @@ import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getPlanLinks } from "@/lib/homework/query";
 import { examHomeworkHref } from "@/lib/homework/links";
 import { notFound, redirect } from "next/navigation";
-import { ArrowRight, BookOpen, CalendarDays, ClipboardCheck, Compass, Files, FileText, Library, ListChecks, NotebookPen } from "lucide-react";
+import { ArrowRight, BookOpen, Flame, ClipboardCheck, Compass, Files, FileText, Library, ListChecks, NotebookPen } from "lucide-react";
 import { getEvergreenArticle } from "@/lib/blog/articles";
 import { syllabusHref } from "@/lib/blog/paths";
 import AppHeader from "@/components/AppHeader";
@@ -44,7 +44,6 @@ import { fitTitle } from "@/lib/seo/title";
 import { withArticle } from "@/lib/text/article";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import { canonicalFor } from "@/lib/sites/intl";
-import { planWording } from "@/lib/homework/display";
 
 
 export const revalidate = 86400;
@@ -151,8 +150,8 @@ export default async function ExamHomePage(props: Params) {
     },
     homeworkHref && {
       href: homeworkHref,
-      label: `Daily homework: 5 ${planWording(exam?.examName ?? "").questions} a day`,
-      Icon: CalendarDays,
+      label: "Most asked PYQs: Top 10 by chapter",
+      Icon: Flame,
     },
     model.links.mocks && {
       href: model.links.mocks,

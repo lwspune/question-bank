@@ -6,14 +6,15 @@ import { listPublishedPlans } from "@/lib/homework/query";
 import { groupPlansByExam, homeworkExamLabel, homeworkSideNav, wwwPlans } from "@/lib/homework/chapters";
 import { slugify } from "@/lib/board/query";
 import PlanCard from "./_components/PlanCard";
+import { MOST_ASKED } from "@/lib/homework/links";
 
 // Plans change only when the plan builder runs; a day is plenty.
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "Daily Homework from Past Papers",
+  title: "Most Asked PYQs: Top 10 by Chapter and Daily Homework",
   description:
-    "Five past exam questions a day, as a Word or PDF file to hand out. The questions asked again come first, highest count first.",
+    "The past exam questions asked most often: each chapter's Top 10 PYQs, and daily homework of five questions, to do on screen or hand out as a Word or PDF file.",
   alternates: { canonical: "/homework" },
 };
 
@@ -31,19 +32,19 @@ export default async function HomeworkIndex() {
   return (
     <GuideShell
       wide
-      guideTitle="Daily Homework"
+      guideTitle={MOST_ASKED}
       sideNav={homeworkSideNav(plans)}
-      breadcrumbs={[{ label: "Daily Homework" }]}
+      breadcrumbs={[{ label: MOST_ASKED }]}
     >
       <GuideHero
-        eyebrow="Daily homework"
-        title="Daily homework from past papers"
-        subtitle="Five past exam questions a day, the most repeated first. Do them here or download the day. Each subject also has the Top 10 PYQs of every chapter."
+        eyebrow={MOST_ASKED}
+        title="Most asked PYQs"
+        subtitle="The past exam questions asked most often. Each subject has the Top 10 PYQs of every chapter, and daily homework: five questions a day, the most asked first."
       />
 
       {plans.length === 0 ? (
         <p className="mt-8 rounded-lg border border-dashed p-8 text-center text-sm text-muted-foreground">
-          Homework plans are coming soon. Check back shortly.
+          Most asked PYQs are coming soon. Check back shortly.
         </p>
       ) : (
         <div className="mt-8 space-y-8">

@@ -9,7 +9,7 @@ import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getPlanChapters } from "@/lib/homework/query";
 import { loadPlanChapterTopPyqs } from "@/lib/homework/chapterTop";
 import { chapterNeighbours } from "@/lib/homework/chapters";
-import { planHref, topChapterHref, topListHref } from "@/lib/homework/links";
+import { HOMEWORK_HUB, MOST_ASKED, planHref, topChapterHref, topListHref } from "@/lib/homework/links";
 import { planWording } from "@/lib/homework/display";
 import NotesTopPyqs from "@/app/notes/_components/NotesTopPyqs";
 
@@ -66,9 +66,9 @@ export default async function HomeworkTopChapterPage(props: { params: Promise<Pa
         <Breadcrumbs
           className="mb-4"
           items={[
-            { href: "/homework", label: "Daily Homework" },
+            { href: HOMEWORK_HUB, label: MOST_ASKED },
+            // The plan's own page IS its Top 10 list since 2026-11-24.
             { href: planHref(plan.slug), label: plan.title },
-            { href: topListHref(plan.slug), label: "Top 10 PYQs" },
             { label: chapter.name },
           ]}
         />

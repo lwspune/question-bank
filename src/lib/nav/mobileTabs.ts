@@ -39,6 +39,7 @@
 import type { ActiveTab } from "@/lib/exam/examContext";
 import type { ExamNav } from "@/lib/exam/examNav";
 import { FIX_TAB_HREF, type FifthTab } from "@/lib/nav/fifthTab";
+import { MOST_ASKED } from "@/lib/homework/links";
 
 /** The subset of primary-nav tabs that appears on a phone. */
 export type MobileTabId = Extract<
@@ -76,7 +77,8 @@ export function resolveMobileTabs(nav: ExamNav, fifth: FifthTab = "board"): Mobi
     // Homework for every visitor (owner, 2026-11-04), in Learn's slot: see the note above.
     // Guides (2026-10-28) and Learn are in the account menu; anonymous phone readers reach
     // Guides from the Footer, like Blog.
-    { id: "homework", label: "Homework", href: nav.homeworkHref },
+    // Named "Most Asked" since 2026-11-24 (owner): see MOST_ASKED in lib/homework/links.
+    { id: "homework", label: MOST_ASKED, href: nav.homeworkHref },
     { id: "notes", label: "Notes", href: nav.notesHref },
     { id: "mock", label: "Mocks", href: nav.mockHref },
     fifth === "fix"

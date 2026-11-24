@@ -8,7 +8,7 @@ import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { homeworkDownloads } from "@/lib/homework/display";
 import { getPlanLinks, listPublishedPlans } from "@/lib/homework/query";
 import { homeworkSideNav } from "@/lib/homework/chapters";
-import { examHomeworkPageHref, HOMEWORK_HUB } from "@/lib/homework/links";
+import { examHomeworkPageHref, HOMEWORK_HUB, MOST_ASKED } from "@/lib/homework/links";
 import PlanCard from "../../_components/PlanCard";
 
 type Params = { examSlug: string };
@@ -34,10 +34,10 @@ function examFor(slug: string) {
 export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
   const params = await props.params;
   const exam = examFor(params.examSlug);
-  if (!exam) return { title: "Daily homework" };
+  if (!exam) return { title: MOST_ASKED };
   return {
-    title: `${exam.displayName} Daily Homework from Past Papers`,
-    description: `${exam.displayName} past questions, five a day, the most repeated first, and the Top 10 PYQs of every chapter.`,
+    title: `${exam.displayName} Most Asked PYQs: Top 10 by Chapter and Daily Homework`,
+    description: `The ${exam.displayName} past questions asked most often: the Top 10 PYQs of every chapter, and daily homework, five questions a day, the most asked first.`,
     alternates: { canonical: examHomeworkPageHref(exam.slug) },
   };
 }
@@ -53,26 +53,26 @@ export default async function HomeworkExamPage(props: { params: Promise<Params> 
   return (
     <GuideShell
       wide
-      guideTitle="Daily Homework"
+      guideTitle={MOST_ASKED}
       sideNav={homeworkSideNav(links.length ? links : plans, exam.examName)}
       landingHref={HOMEWORK_HUB}
-      breadcrumbs={[{ href: HOMEWORK_HUB, label: "Daily Homework" }, { label: exam.displayName }]}
+      breadcrumbs={[{ href: HOMEWORK_HUB, label: MOST_ASKED }, { label: exam.displayName }]}
     >
       <GuideHero
-        eyebrow="Daily homework"
-        title={`${exam.displayName} homework from past papers`}
+        eyebrow={MOST_ASKED}
+        title={`${exam.displayName} most asked PYQs`}
         subtitle={
           plans.length
-            ? `Five past questions a day, the most repeated first. ${homeworkDownloads(exam.examName) ? "Do them here or download the day." : "Do them here, with the answers one tap away."} Each subject also has the Top 10 PYQs of every chapter.`
+            ? `The Top 10 PYQs of every chapter, and daily homework: five questions a day, the most asked first. ${homeworkDownloads(exam.examName) ? "Do them here or download the day." : "Do them here, with the answers one tap away."}`
             : undefined
         }
       />
 
       {plans.length === 0 ? (
         <p className="mt-8 rounded-lg border border-dashed p-8 text-center text-sm text-muted-foreground">
-          Homework for {exam.displayName} is coming soon.{" "}
+          Most asked PYQs for {exam.displayName} are coming soon.{" "}
           <Link href={HOMEWORK_HUB} className="font-medium text-brand-accent underline underline-offset-2">
-            See every homework plan
+            See every exam
           </Link>
         </p>
       ) : (

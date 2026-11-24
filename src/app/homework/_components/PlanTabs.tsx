@@ -1,20 +1,19 @@
 import Link from "next/link";
 import { CalendarDays, Flame } from "lucide-react";
-import { planHref, topListHref } from "@/lib/homework/links";
+import { planViews } from "@/lib/homework/links";
+
+const ICONS = { top: Flame, days: CalendarDays } as const;
 
 /**
- * A plan's two views (2026-11-04): its days, and its chapters' Top 10 PYQs.
- * Links, not a client switch: each view is its own cached page with its own
- * address, so the days stay on the first screen however many chapters a plan
- * has (NDA Maths has 31), and a teacher can share either one.
+ * A plan's two views: its chapters' Top 10 PYQs, then its days (owner,
+ * 2026-11-24: Top 10 first, and the plan opens on it; the order is
+ * planViews in lib/homework/links). Links, not a client switch: each view is
+ * its own cached page with its own address, and a teacher can share either.
  */
 export default function PlanTabs({ planSlug, active }: { planSlug: string; active: "days" | "top" }) {
-  const tabs = [
-    { id: "days" as const, label: "Daily homework", href: planHref(planSlug), Icon: CalendarDays },
-    { id: "top" as const, label: "Top 10 PYQs", href: topListHref(planSlug), Icon: Flame },
-  ];
+  const tabs = planViews(planSlug).map((v) => ({ ...v, Icon: ICONS[v.id] }));
   return (
-    <nav aria-label="Homework views" className="mt-6 grid grid-cols-2 gap-1 rounded-lg bg-muted p-1">
+    <nav aria-label="Plan views" className="mt-6 grid grid-cols-2 gap-1 rounded-lg bg-muted p-1">
       {tabs.map(({ id, label, href, Icon }) => {
         const on = id === active;
         return (

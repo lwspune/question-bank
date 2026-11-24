@@ -51,7 +51,7 @@ export function footerLinks(): FooterGroup[] {
         { href: "/mock", label: "Mock tests" },
         { href: "/board", label: "Board textbook reader" },
         { href: "/question-papers", label: "Board past papers" },
-        { href: "/homework", label: "Daily homework" },
+        { href: "/homework", label: "Most asked PYQs" },
         { href: "/formula", label: "Questions by formula" },
       ],
     },

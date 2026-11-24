@@ -314,21 +314,21 @@ describe("isIntlPagePath (header, footer and chatbot pick the intl look from the
 
 describe("intlNavFor", () => {
   it("links Homework for an exam with homework plans, active on every homework page (2026-11-17)", () => {
-    for (const p of ["/homework/exam/imat", "/homework/imat-biology", "/homework/imat-biology/day/2", "/homework/imat-biology/top"]) {
-      expect(intlNavFor(p).find((l) => l.active)?.label, p).toBe("Homework");
+    for (const p of ["/homework/exam/imat", "/homework/imat-biology", "/homework/imat-biology/day/2", "/homework/imat-biology/days"]) {
+      expect(intlNavFor(p).find((l) => l.active)?.label, p).toBe("Most Asked");
     }
-    expect(intlNavFor("/notes/imat").find((l) => l.label === "Homework")?.href).toBe("/homework/exam/imat");
+    expect(intlNavFor("/notes/imat").find((l) => l.label === "Most Asked")?.href).toBe("/homework/exam/imat");
   });
 
   it("shows no Homework tab for an exam without plans", () => {
-    expect(intlNavFor("/mock/exam/enem").some((l) => l.label === "Homework")).toBe(false);
+    expect(intlNavFor("/mock/exam/enem").some((l) => l.label === "Most Asked")).toBe(false);
   });
 
   it("links the current exam's notes, mocks, homework and question bank, marking the active one", () => {
     expect(intlNavFor("/notes/imat-biology/cell-biology")).toEqual([
       { label: "Notes", href: "/notes/imat", active: true },
       { label: "Mocks", href: "/mock/exam/imat", active: false },
-      { label: "Homework", href: "/homework/exam/imat", active: false },
+      { label: "Most Asked", href: "/homework/exam/imat", active: false },
       { label: "Questions", href: "/browse", active: false },
     ]);
   });
@@ -350,7 +350,7 @@ describe("intlNavFor", () => {
     expect(intlNavFor("/pricing", { signedIn: true }).map((l) => l.label)).toEqual([
       "Notes",
       "Mocks",
-      "Homework",
+      "Most Asked",
       "Questions",
       "Progress",
     ]);

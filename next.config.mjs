@@ -65,6 +65,13 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        // 2026-11-24: a plan opens on its Top 10 PYQs, so the list's old
+        // address lands on the plan. /top/<chapter> is untouched.
+        source: "/homework/:planSlug/top",
+        destination: "/homework/:planSlug",
+        permanent: true,
+      },
+      {
         // 2026-11-18: Word Builder left /play (owner: it is flashcards, not a
         // game), so old links land on the games hub.
         source: "/play/word-builder",

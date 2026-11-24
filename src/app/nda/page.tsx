@@ -6,7 +6,7 @@ import {
   Atom,
   Timer,
   BookOpen,
-  CalendarDays,
+  Flame,
   Compass,
   Files,
   FlaskConical,
@@ -214,8 +214,8 @@ export default async function NdaHomePage() {
                 href={homeworkHref}
                 className="inline-flex items-center gap-2 rounded-md border border-input bg-background px-4 py-2.5 text-sm font-semibold transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
-                <CalendarDays className="h-4 w-4" aria-hidden />
-                Daily homework
+                <Flame className="h-4 w-4" aria-hidden />
+                Most asked PYQs
               </Link>
             )}
           </div>

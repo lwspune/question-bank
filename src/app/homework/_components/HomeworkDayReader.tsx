@@ -27,7 +27,7 @@ import { SELF_MARK_SAVED_EVENT, type SelfMarkSavedDetail } from "@/components/re
 import type { BoardQuestion } from "@/lib/board/query";
 import type { HomeworkSlot } from "@/lib/homework/dayView";
 import { summarizeDay, type DaySummary, type QuestionMark } from "@/lib/homework/progress";
-import { dayHref, planHref } from "@/lib/homework/links";
+import { dayHref, daysHref } from "@/lib/homework/links";
 import { drillHref } from "@/lib/drill/from";
 import { useBoardReveal } from "@/app/board/useBoardReveal";
 import { cn } from "@/lib/utils";
@@ -257,7 +257,7 @@ function DayDoneCard({
       </p>
       <div className="mt-4 flex flex-col gap-2 sm:flex-row">
         <Link
-          href={nextDay ? dayHref(planSlug, nextDay) : planHref(planSlug)}
+          href={nextDay ? dayHref(planSlug, nextDay) : daysHref(planSlug)}
           prefetch={false}
           className="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-brand px-4 text-sm font-semibold text-brand-foreground hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >

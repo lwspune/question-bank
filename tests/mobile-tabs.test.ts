@@ -78,7 +78,7 @@ describe("mobile tab bar — shape", () => {
   it("sends Homework to the exam's homework page, or to every plan without an exam", () => {
     const homeworkFor = (slug: string | null) =>
       resolveMobileTabs(resolveExamNav(slug, EXAM_IDS)).find((t) => t.id === "homework")!;
-    expect(homeworkFor("cbse-12")).toEqual({ id: "homework", label: "Homework", href: "/homework/exam/cbse-12" });
+    expect(homeworkFor("cbse-12")).toEqual({ id: "homework", label: "Most Asked", href: "/homework/exam/cbse-12" });
     expect(homeworkFor("jee-mains").href).toBe("/homework/exam/jee-mains");
     expect(homeworkFor(null).href).toBe("/homework");
   });
@@ -99,7 +99,7 @@ describe("mobile tab bar — shape", () => {
     for (const tab of tabs) {
       expect(tab.label.trim()).not.toBe("");
     }
-    expect(tabs.map((t) => t.label)).toEqual(["PYQs", "Homework", "Notes", "Mocks", "Board"]);
+    expect(tabs.map((t) => t.label)).toEqual(["PYQs", "Most Asked", "Notes", "Mocks", "Board"]);
   });
 
   it("exports its id list in the same order it renders", () => {

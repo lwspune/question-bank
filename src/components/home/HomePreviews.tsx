@@ -166,7 +166,7 @@ export function HomeworkPreview() {
     { t: "Inverse functions", done: false },
   ];
   return (
-    <ScreenPreview title="Homework" label="A homework day for NDA Mathematics: 3 of 5 questions marked, two still to do">
+    <ScreenPreview title="Daily homework" label="A homework day for NDA Mathematics: 3 of 5 questions marked, two still to do">
       <div className="space-y-3">
         <div>
           <p className="text-lg font-semibold tracking-tight">NDA Mathematics · Day 12</p>
