@@ -62,6 +62,23 @@ const nextConfig = {
       "./node_modules/katex/dist/fonts/*.woff2",
     ],
   },
+  // 2026-11-24: browsers may keep the icons, the manifest and V's pictures
+  // (VERCEL_COST_SPEC.md item 1). They were served `max-age=0`, so every page
+  // view asked for each one again, and every ask is a billed CDN request: the
+  // cycle must stay under 10M or the CDN tier goes from $20 to $100 a month.
+  // A replaced file can take up to 7 days to reach a returning visitor: to
+  // change one sooner, give it a new name. `/sw.js` is deliberately absent: a
+  // kept service worker never updates. tests/static-cache-headers.test.ts.
+  async headers() {
+    const week = [{ key: "Cache-Control", value: "public, max-age=604800" }];
+    const day = [{ key: "Cache-Control", value: "public, max-age=86400" }];
+    return [
+      ...["/icons/:path*", "/chat/:path*", "/marketing/:path*", "/favicon.ico", "/icon.png", "/apple-icon.png"].map(
+        (source) => ({ source, headers: week }),
+      ),
+      { source: "/manifest.webmanifest", headers: day },
+    ];
+  },
   async redirects() {
     return [
       {
