@@ -237,7 +237,7 @@ the footer and header icons use it.
 
 **Undo:** swap `QuietLink` back to `Link`. One commit.
 
-**Result (2026-11-24, branch `feat/quiet-links`, awaiting the owner's OK):**
+**Result (2026-11-24, merged and pushed in `be1453e5e`):**
 
 - Built: `src/components/QuietLink.tsx`, used by both footers and the Store,
   Visuals and Play buttons; `GuideSideNav` no longer fetches the page it is
@@ -248,9 +248,20 @@ the footer and header icons use it.
   `QuietLink` 14 of 14, main's 0 of 14, so each side served its own code.
 - **Rule B passed:** before/after sheets (header and footer, phone and
   desktop, `/pricing` and a notes subtopic) show no difference.
-- **Not yet measured: the saving itself.** Next fetches in advance only in a
-  production build, never in `next dev`. Measure after the push:
-  `npm run audit:page-weight -- --check` against the saved baseline.
+- **Measured live after the push (12:45 UTC):** the 14 pages, scrolled to the
+  foot on a phone, sent 23.7 MB before and 18.0 MB after (-24%); pages fetched
+  in advance fell 8.2 MB to 3.6 MB (-55%); /notes 1,952 KB to 1,066 KB. Two
+  pages read higher, both because the BASELINE under-counted: on the board
+  chapter (3.5 s of blocking) and /browse, its advance fetches had started
+  but not finished (0 KB) when the run read them. What is still fetched in
+  advance is body links (Home's exam cards, /store's book cards, /browse's
+  link to the /questions index, 902 KB unpacked: a later candidate).
+- **Correction (found in item 2):** the Rule A check above read /browse and
+  the board chapter as EMPTY on both dev servers, so "the same" there proved
+  nothing (see item 2's result). Item 1's markup claim rests on
+  `tests/quiet-link.test.ts`, which renders a QuietLink and a Link to the
+  same HTML; live (item 1) and item 2's branch read the same on all 14 pages
+  with the fixed tool.
 - What the comparison had to learn on the way, now built into the tool:
   React streams slow sections late depending on timing, and Next streams the
   title into the body for ordinary browsers but not for crawlers. Comparing
@@ -288,6 +299,41 @@ window; `npm run v:eval` before merging, as V_SPEC.md requires for any change
 to V.
 
 **Undo:** one commit.
+
+**Result (2026-11-24, branch `perf/lazy-v-window`, awaiting the owner's OK):**
+
+- Built: the layout mounts `ChatLauncher` (the button, V's celebration
+  bubble, the scroll tuck, and a catch for Ask V events). `ChatWidget`, the
+  window, is now its own chunk. The button is one component, `VLauncher`,
+  drawn by both, so it cannot drift. The window loads on the first touch,
+  hover or focus of the button; on an Ask V or Teach me event (handed on to
+  the window once it listens); and AT ONCE for a signed-in visitor, an unread
+  reply, or a test half built before sign-in (`lib/chat/windowStart.ts`):
+  those buttons carry badges only the window's logic can decide. So the
+  saving is for signed-out visitors: first visits and search traffic.
+- Size on live before the change: V's chunk is 29.6 KB sent, 105.7 KB of
+  code, on every page. Measure the real saving after the push with `--check`.
+- **Kept as it was:** V's switchable buttons ("Teach me a chapter") wait for
+  `/api/chat/features`; the launcher asks for it with the page, as the window
+  did. The before/after sheet caught a phone tap opening V without that
+  button when it was asked only on touch.
+- **Rule A passed:** live (= main) against the branch on a dev server, as
+  Google's phone crawler: 14 of 14 the same, /browse and the board chapter
+  read in full.
+- **Rule B passed:** sheets of the closed button (/notes, /browse, phone and
+  desktop) and of V opened by a tap (phone and desktop) match live. A first
+  tap on a slow network shows the window's frame with a loading state.
+- Checked in a headless phone browser, V's write calls stubbed: no window
+  code before a touch; a touch loads it and the tap opens V; an Ask V and a
+  Teach me sent before it loaded each reach V with their message; an unread
+  reply loads it at once with its badge; a signed-in cookie loads it at
+  once; a waiting test opens V on the builder.
+- What the comparison had to learn, now built into the tool: React pairs each
+  streamed section with its place by SCRIPT (`$RC("B:x","S:n")`,
+  `$RS("S:n","P:y")`), not by number; the old tool paired by number and read
+  a dev /browse (45 sections, most of them segments) as an empty page. And a
+  local server prints the live address in `og:url`, so that address counts
+  as the server's own origin.
 
 ### Item 3. Measure, then decide: payment code and the sign-in library
 
