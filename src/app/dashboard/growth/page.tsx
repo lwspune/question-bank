@@ -33,6 +33,7 @@ import {
   PRICE_BASELINE_WEEKLY_REVENUE,
   ANSWER_LIMIT_RETURN_BASELINE_PCT,
   ANSWER_LIMIT_RETURN_MAX_DROP,
+  SIGNED_OUT_SIGNUPS_PER_100_BASELINE,
   STARTER_KEEP_PCT,
   CHIPS_KEEP_PCT,
   FORMULA_PAGES_INDEXED_KEEP,
@@ -1308,6 +1309,13 @@ export default async function GrowthPage() {
             <ReadingsList metric="answer-limit-students" />
             <ReadingsList metric="answer-limit-return" />
           </div>
+        );
+      case "signed-out-answers":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand, first at 14 days, then on {fmtDate(checkOn(e.liveSince))}: keep 5 free answers signed out if
+            signups per 100 India visitors stay at or above {SIGNED_OUT_SIGNUPS_PER_100_BASELINE}.
+          </p>
         );
       case "indexing": {
         const v = indexingView(READINGS["google-indexed"].entries);

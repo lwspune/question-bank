@@ -122,6 +122,7 @@ describe("EXPERIMENTS", () => {
       "score-plan",
       "second-page",
       "self-mark",
+      "signed-out-answers",
       "specific-offer",
       "stuck-offer",
       "study-circle",

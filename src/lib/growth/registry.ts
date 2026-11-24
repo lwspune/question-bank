@@ -518,6 +518,12 @@ export const PASS_TIERS_BASELINE_WEEKLY_REVENUE = 1397;
  */
 export const ANSWER_LIMIT_RETURN_BASELINE_PCT = 65;
 /**
+ * "signed-out-answers": signups per 100 India visitors before the signed-out
+ * limit went from 10 to 5 (2026-11-24). About 10 in each week from 19 Oct to
+ * 9 Nov (Vercel, country IN); 89 signups a day in the week of 17-23 Nov.
+ */
+export const SIGNED_OUT_SIGNUPS_PER_100_BASELINE = 10;
+/**
  * V's AI replies followed by another message within 30 minutes, before the
  * line-by-line reveal (%), repeat Ask V taps on the same question left out
  * (2026-11-07; counted, they had made it 48%). `npm run v:followups`.
@@ -606,6 +612,7 @@ export type Readout =
   | "pass-price"
   | "pass-tiers"
   | "answer-limit"
+  | "signed-out-answers"
   | "v-reveal"
   | "tutor-interest"
   | "tutor-price"
@@ -1571,6 +1578,19 @@ export const EXPERIMENTS: readonly Experiment[] = [
     rule: `Keep 25 if the students who meet it still come back (within ${ANSWER_LIMIT_RETURN_MAX_DROP} points of ${ANSWER_LIMIT_RETURN_BASELINE_PCT}%) and more of them open checkout; if the return share falls further, go back to 30.`,
     liveSince: "2026-10-23",
     readout: "answer-limit",
+    status: "running",
+  },
+  {
+    id: "signed-out-answers",
+    title: "5 free answers signed out, down from 10",
+    change:
+      "A visitor who is not signed in can open 5 answers (bank, board reader, question papers, notes questions) before the sign-in prompt, down from 10, from 2026-11-24. The count is kept in the browser, so a visitor who had already opened 5 or more meets the prompt on the next answer.",
+    why: "The owner (2026-11-24): five answers show enough of the bank to sign up for, so asking sooner should bring more signups, not fewer. It was raised from 3 to 10 on 2026-10-01, when visitors walled at the 4th tapped the locked card and left.",
+    metric:
+      "Signups per 100 India visitors (auth.users per IST day over Vercel unique visitors with country IN, summed by week), against about 10; reveal_wall_signin_click over reveal_wall_hit (Vercel), and signups a day against 89 (17-23 Nov). Read 25 Nov on, as 24 Nov straddles the change",
+    rule: `Keep 5 if signups per 100 India visitors stay at or above ${SIGNED_OUT_SIGNUPS_PER_100_BASELINE}; if they fall a point or more below it over two weeks, go back to 10.`,
+    liveSince: "2026-11-24",
+    readout: "signed-out-answers",
     status: "running",
   },
   {
