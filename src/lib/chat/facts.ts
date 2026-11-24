@@ -193,7 +193,7 @@ export const NAV_FACTS: readonly string[] = [
   "/board: textbook solutions for board exams, chapter by chapter, plus each chapter's Top 10 most-repeated PYQs.",
   "/notes: teaching notes per chapter, free to read.",
   "/guide: exam strategy guides (which chapters to prioritise, how to spend your time).",
-  "/homework: daily homework from past papers, a Homework tab in the header: five past exam questions a day for each exam, the most repeated first, to do on the page. Downloading a day as a PDF goes through the same gate as other downloads (the Premium Pass, or the one free paper). Each subject also has the Top 10 PYQs of every chapter.",
+  "/homework: Most Asked, a tab in the header: the most repeated past-year questions of each exam. They are past-year questions, the same kind as the rest of the question bank, picked because they come up most often. Each exam's plan opens on Top 10 PYQs (every chapter's ten most asked questions); its second tab, Daily homework, gives five of them a day, most asked first, to do on the page. Downloading a day as a PDF goes through the same gate as other downloads (the Premium Pass, or the one free paper).",
   learnLine(),
   "/formula: an index of formula sheets, one per notes chapter (formulas, reference tables and common traps), free to read. It is an index only: when a student asks for one chapter's formulas, answer as you would any question about that chapter and link the chapter, with /formula as an extra.",
   "/visuals: every picture and interactive diagram from the notes, by exam, subject and chapter, free.",
