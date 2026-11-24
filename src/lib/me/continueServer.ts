@@ -16,7 +16,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Database } from "@/types/db";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { landingHref, listChapterLandings } from "@/lib/questions/landing";
-import { planHref } from "@/lib/homework/links";
+import { daysHref } from "@/lib/homework/links";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import {
   focusContinue,
@@ -171,8 +171,8 @@ async function loadHomeworkItem(
     key: `homework:${slug}`,
     kind: "homework",
     title: plan.data.title,
-    subtitle: "Homework",
-    href: planHref(slug),
+    subtitle: "Daily homework",
+    href: daysHref(slug),
     at,
     planSlug: slug,
     examSlug: examSlugOf(examIds, plan.data.exam_id),

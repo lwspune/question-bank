@@ -6,7 +6,7 @@ import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { loadGroupPage } from "@/lib/homework/groupPage";
 import { groupHeading } from "@/lib/homework/chapters";
-import { parseDayParam, planHref } from "@/lib/homework/links";
+import { HOMEWORK_HUB, MOST_ASKED, parseDayParam, planHref } from "@/lib/homework/links";
 import HomeworkDayReader from "../../../_components/HomeworkDayReader";
 
 type Params = { planSlug: string; n: string };
@@ -34,7 +34,7 @@ async function load(params: Params) {
 export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
   const params = await props.params;
   const data = await load(params);
-  if (!data) return { title: "Daily homework" };
+  if (!data) return { title: MOST_ASKED };
   return {
     title: `${data.group.label}: ${data.plan.title} PYQs`,
     description: groupHeading(data.group, data.slots.length),
@@ -55,7 +55,7 @@ export default async function HomeworkGroupPage(props: { params: Promise<Params>
         <Breadcrumbs
           className="mb-4"
           items={[
-            { href: "/homework", label: "Daily Homework" },
+            { href: HOMEWORK_HUB, label: MOST_ASKED },
             { href: planHref(plan.slug), label: plan.title },
             { label: group.tier === "repeat" ? "Asked again" : "Question type" },
           ]}

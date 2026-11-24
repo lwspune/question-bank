@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { usePublicPathname } from "@/lib/nav/usePublicPathname";
-import { BookMarked, BookOpen, CalendarDays, Compass, FileText, Library, NotebookPen, Target, Timer } from "lucide-react";
+import { BookMarked, BookOpen, Compass, FileText, Flame, Library, NotebookPen, Target, Timer } from "lucide-react";
+import { MOST_ASKED } from "@/lib/homework/links";
 import { getActiveTab, type ActiveTab } from "@/lib/exam/examContext";
 import { FIX_TAB_HREF, type FifthTab } from "@/lib/nav/fifthTab";
 
@@ -55,7 +56,9 @@ export default function PrimaryNav({
     { id: "notes", label: "Notes", href: notesHref, Icon: NotebookPen },
     // Homework took Learn's place at every width (owner, 2026-11-04); Learn is
     // in the account menu. See lib/nav/mobileTabs.
-    { id: "homework", label: "Homework", href: homeworkHref, Icon: CalendarDays },
+    // "Most Asked" since 2026-11-24 (owner): the section leads with each
+    // chapter's Top 10 PYQs, hence the Top 10 tab's flame.
+    { id: "homework", label: MOST_ASKED, href: homeworkHref, Icon: Flame },
     // Mocks — always visible, like Board. It used to be gated on the active
     // exam's `hasMocks`, which hid a working page for 11 of 13 exam states.
     // mockHref is the exam's own catalogue when it has mocks, else /mock, which

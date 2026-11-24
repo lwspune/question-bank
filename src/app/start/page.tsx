@@ -17,7 +17,7 @@
  */
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BookOpen, CalendarDays, Compass, Library, NotebookPen, Timer } from "lucide-react";
+import { BookOpen, Flame, Compass, Library, NotebookPen, Timer } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import ViewBeacon from "@/components/ViewBeacon";
 import Footer from "@/components/Footer";
@@ -55,10 +55,10 @@ const TABS = [
     line: "Full past papers as timed tests. See your score, how each section went, and every question afterwards.",
   },
   {
-    Icon: CalendarDays,
-    label: "Homework",
+    Icon: Flame,
+    label: "Most Asked",
     href: "/homework",
-    line: "A short set of questions a day, chapter by chapter, plus each chapter's ten most-asked questions.",
+    line: "Each chapter's ten most-asked questions, plus daily homework: a short set a day, the most asked first.",
   },
   {
     Icon: NotebookPen,

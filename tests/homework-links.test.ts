@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { dayHref, examHomeworkHref, parseDayParam, subjectHomework } from "@/lib/homework/links";
+import { MOST_ASKED, dayHref, daysHref, examHomeworkHref, parseDayParam, planHref, planViews, subjectHomework } from "@/lib/homework/links";
 
 const plan = (slug: string, examName: string, subjectName: string, perDay = 5) => ({
   slug,
@@ -14,9 +14,11 @@ const PLANS = [
 ];
 
 describe("subjectHomework", () => {
-  it("gives a board subject tab its plan", () => {
+  // The card says "daily homework", so it opens the plan's days, not its
+  // Top 10 front page (2026-11-24).
+  it("gives a board subject tab its plan's days", () => {
     expect(subjectHomework(PLANS, "CBSE Class 12", "Chemistry")).toEqual({
-      href: "/homework/cbse-12-chemistry",
+      href: "/homework/cbse-12-chemistry/days",
       perDay: 4,
     });
   });
@@ -39,6 +41,26 @@ describe("examHomeworkHref", () => {
 
   it("gives no link to an exam with no plan", () => {
     expect(examHomeworkHref(PLANS, "NEET", "neet")).toBeNull();
+  });
+});
+
+describe("Most Asked (2026-11-24)", () => {
+  // A student asked V whether "homework" was the same as the PYQs: the
+  // section is named for what it holds, the most asked past questions.
+  it("names the section Most Asked", () => {
+    expect(MOST_ASKED).toBe("Most Asked");
+  });
+
+  it("opens a plan on its Top 10 PYQs, with its days on their own page", () => {
+    expect(planHref("nda-maths")).toBe("/homework/nda-maths");
+    expect(daysHref("nda-maths")).toBe("/homework/nda-maths/days");
+  });
+
+  it("puts Top 10 PYQs first and Daily homework second in a plan's tabs", () => {
+    expect(planViews("nda-maths")).toEqual([
+      { id: "top", label: "Top 10 PYQs", href: "/homework/nda-maths" },
+      { id: "days", label: "Daily homework", href: "/homework/nda-maths/days" },
+    ]);
   });
 });
 

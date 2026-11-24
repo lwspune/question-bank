@@ -10,7 +10,7 @@
  * Pure. Spec: tests/me-continue.test.ts.
  */
 import { slugify } from "@/lib/slug";
-import { dayHref, planHref } from "@/lib/homework/links";
+import { dayHref, daysHref } from "@/lib/homework/links";
 
 export type ContinueKind = "bank" | "board" | "notes" | "homework";
 
@@ -115,7 +115,7 @@ export type HomeworkProgressLite = {
 
 /** A homework entry's line and where it leads, once its progress is known. */
 export function homeworkLine(plan: { slug: string }, p: HomeworkProgressLite): { line: string; href: string } {
-  if (p.nextDay === null) return { line: `All ${p.totalDays} days done`, href: planHref(plan.slug) };
+  if (p.nextDay === null) return { line: `All ${p.totalDays} days done`, href: daysHref(plan.slug) };
   if (!p.started) return { line: `${p.totalDays} days · start with day ${p.nextDay}`, href: dayHref(plan.slug, p.nextDay) };
   return { line: `Day ${p.nextDay} next · ${p.doneDays} of ${p.totalDays} days done`, href: dayHref(plan.slug, p.nextDay) };
 }

@@ -22,8 +22,9 @@ describe("homework addresses", () => {
     expect(groupHref("nda-maths", 12)).toBe("/homework/nda-maths/group/12");
   });
 
-  it("puts a plan's Top 10 list and each chapter's Top 10 under the plan", () => {
-    expect(topListHref("cbse-12-mathematics")).toBe("/homework/cbse-12-mathematics/top");
+  // Since 2026-11-24 the Top 10 list IS the plan's front page.
+  it("puts a plan's Top 10 list on the plan's own address, each chapter's under it", () => {
+    expect(topListHref("cbse-12-mathematics")).toBe("/homework/cbse-12-mathematics");
     expect(topChapterHref("cbse-12-mathematics", "integrals")).toBe("/homework/cbse-12-mathematics/top/integrals");
   });
 });

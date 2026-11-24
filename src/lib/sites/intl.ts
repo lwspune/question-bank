@@ -20,6 +20,7 @@ import { SITE_URL } from "@/lib/brand";
 import { EXAM_REGISTRY, type ExamEntry, type ExamSlug } from "@/lib/exam/examContext";
 import { examFromPath } from "@/lib/exam/examFromPath";
 import type { PlanSite } from "@/lib/billing/plans";
+import { MOST_ASKED } from "@/lib/homework/links";
 
 export const INTL_ORIGIN = "https://intl.pyqvault.com";
 export const WWW_ORIGIN = SITE_URL;
@@ -309,7 +310,7 @@ export function intlNavFor(pathname: string, opts: { signedIn?: boolean } = {}):
     ...(exam.homework
       ? [
           {
-            label: "Homework",
+            label: MOST_ASKED,
             href: `/homework/exam/${exam.slug}`,
             active: section(`/homework/exam/${exam.slug}`) || pathname.startsWith(`/homework/${exam.slug}-`),
           },

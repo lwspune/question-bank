@@ -146,10 +146,10 @@ describe("homeworkLine", () => {
     });
   });
 
-  it("a finished plan: says so and links to the plan", () => {
+  it("a finished plan: says so and links to the plan's days", () => {
     expect(homeworkLine(plan, { started: true, nextDay: null, doneDays: 30, totalDays: 30 })).toEqual({
       line: "All 30 days done",
-      href: "/homework/cds-maths",
+      href: "/homework/cds-maths/days",
     });
   });
 });
@@ -158,6 +158,7 @@ describe("planSlugOf", () => {
   it("reads the plan from a plan, day or Top 10 address", () => {
     expect(planSlugOf("/homework/cds-maths")).toBe("cds-maths");
     expect(planSlugOf("/homework/cds-maths/day/4")).toBe("cds-maths");
+    expect(planSlugOf("/homework/cds-maths/days")).toBe("cds-maths");
     expect(planSlugOf("/homework/cds-maths/top/probability")).toBe("cds-maths");
   });
 

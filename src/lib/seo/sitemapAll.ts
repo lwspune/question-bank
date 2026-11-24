@@ -101,12 +101,15 @@ async function homeworkEntries(buildDate: Date): Promise<MetadataRoute.Sitemap> 
     if (!data || data.length === 0) return [];
     return [
       { url: `${SITE_URL}/homework`, lastModified: buildDate, changeFrequency: "weekly" as const, priority: 0.7 },
-      ...data.map((p) => ({
-        url: `${SITE_URL}/homework/${p.slug}`,
-        lastModified: p.updated_at ? new Date(p.updated_at as string) : buildDate,
-        changeFrequency: "weekly" as const,
-        priority: 0.7,
-      })),
+      // A plan's front page (its Top 10 PYQs) and its days (2026-11-24).
+      ...data.flatMap((p) =>
+        [`${SITE_URL}/homework/${p.slug}`, `${SITE_URL}/homework/${p.slug}/days`].map((url) => ({
+          url,
+          lastModified: p.updated_at ? new Date(p.updated_at as string) : buildDate,
+          changeFrequency: "weekly" as const,
+          priority: 0.7,
+        }))
+      ),
     ];
   } catch {
     return [];

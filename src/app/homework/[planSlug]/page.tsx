@@ -1,159 +1,92 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { cache } from "react";
+import { ChevronRight } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
-import { getPlanBySlug, getPlanLinks } from "@/lib/homework/query";
-import { sectionsOf, shortNote } from "@/lib/homework/display";
+import { getPlanChapters, getPlanLinks } from "@/lib/homework/query";
+import { HOMEWORK_HUB, MOST_ASKED, planHref, topChapterHref } from "@/lib/homework/links";
+import { planWording } from "@/lib/homework/display";
 import { homeworkSideNav } from "@/lib/homework/chapters";
-import { homeworkOfferFacts, homeworkOfferLead } from "@/lib/billing/passOfferLead";
-import HomeworkDownload from "../_components/HomeworkDownload";
-import { HomeworkDayBadge, HomeworkProgressProvider, HomeworkProgressSummary } from "../_components/HomeworkProgress";
 import PlanTabs from "../_components/PlanTabs";
-import Link from "next/link";
-import { Eye } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { dayHref } from "@/lib/homework/links";
-import { homeworkDownloads, planWording } from "@/lib/homework/display";
-import { planIntro } from "@/lib/homework/intro";
-
-// Plans change only when the plan builder runs; a day is plenty.
-export const revalidate = 86400;
 
 type Params = { planSlug: string };
 
-// The metadata and the page both need the plan: one read per render, not two.
-const loadPlan = cache((slug: string) => getPlanBySlug(createSupabaseAnonClient(), slug));
+/**
+ * A plan's front page (2026-11-24, owner): its chapters, each opening its Top
+ * 10 PYQs, with the days a tab away at /homework/<plan>/days. This list was
+ * /homework/<plan>/top from 2026-11-04 (now a redirect here). Rendered on
+ * first visit and cached for a day, never built ahead: its read walks every
+ * item of the plan, and a build reads production.
+ */
+export const revalidate = 86400;
 
-export async function generateStaticParams(): Promise<Params[]> {
-  try {
-    return (await getPlanLinks()).map((p) => ({ planSlug: p.slug }));
-  } catch {
-    return [];
-  }
+export function generateStaticParams(): Params[] {
+  return [];
 }
+
+// The metadata and the page both need the chapters: one read per render, not two.
+const load = cache((slug: string) => getPlanChapters(createSupabaseAnonClient(), slug));
 
 export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
   const params = await props.params;
-  const plan = await loadPlan(params.planSlug);
-  if (!plan) return {};
+  const data = await load(params.planSlug);
+  if (!data) return { title: "Most Asked PYQs" };
+  const { plan } = data;
   return {
-    title: `${plan.title} Daily Homework from ${planWording(plan.examName).papers} Papers`,
-    description: `${plan.examName} ${plan.subjectName} ${planWording(plan.examName).questions}, ${plan.perDay} a day, ${homeworkDownloads(plan.examName) ? "as a file to hand out" : "to do on screen"}. The questions ${planWording(plan.examName).asker} asked again come first.`,
-    alternates: { canonical: `/homework/${plan.slug}` },
+    title: `${plan.title} Most Asked PYQs: Top 10 by Chapter`,
+    description: `The ten ${plan.examName} ${plan.subjectName} past questions to practise first in each chapter: the ones ${planWording(plan.examName).asker} asked again, highest count first. Plus daily homework, five a day.`,
+    alternates: { canonical: planHref(plan.slug) },
   };
 }
 
-// Repeats and types are ranked together by count since 2026-11-04, so they
-// share the first section.
-const sectionTitle = (asker: string): Record<"most" | "once", string> => ({
-  most: `Asked most often by ${asker}`,
-  once: "Questions asked once",
-});
-
-const SECTION_HELP: Record<"most" | "once", string> = {
-  most: "Highest count first: questions asked again in their latest wording, and one example of each type of question that keeps coming back.",
-  once: "Every other question from the papers.",
-};
-
-/**
- * One homework plan, day by day (2026-10-09). Each day lists its chapters and
- * how often each question was asked, with a download box. Cached: the box asks
- * the browser who is looking.
- */
 export default async function HomeworkPlanPage(props: { params: Promise<Params> }) {
   const params = await props.params;
-  // The side menu and the offer need each plan's name, exam and subject only:
-  // getPlanLinks, never the plan list with counts, which counts every plan's
-  // items (tests/homework-page-reads.test.ts).
-  const [plan, plans] = await Promise.all([loadPlan(params.planSlug), getPlanLinks()]);
-  if (!plan) notFound();
-  const sections = sectionsOf(plan.dayList);
-  const offer = homeworkOfferLead(homeworkOfferFacts(plan, plans));
-  // An intl exam's homework is on screen only (owner, 2026-11-17).
-  const downloads = homeworkDownloads(plan.examName);
+  const data = await load(params.planSlug);
+  if (!data) notFound();
+  const { plan, chapters } = data;
+  // The side nav is a convenience: a failed read leaves this plan alone in it.
+  const links = await getPlanLinks().catch(() => []);
+  const sideNav = homeworkSideNav(links.length ? links : [plan], plan.examName);
 
   return (
     <GuideShell
-      guideTitle="Daily Homework"
-      sideNav={homeworkSideNav(plans, plan.examName)}
-      landingHref="/homework"
-      breadcrumbs={[{ href: "/homework", label: "Daily Homework" }, { label: plan.title }]}
+      guideTitle={MOST_ASKED}
+      sideNav={sideNav}
+      landingHref={HOMEWORK_HUB}
+      breadcrumbs={[{ href: HOMEWORK_HUB, label: MOST_ASKED }, { label: plan.title }]}
     >
-      <GuideHero
-        eyebrow={`Daily homework · ${plan.perDay} questions a day`}
-        title={`${plan.title} daily homework`}
-        subtitle={planIntro(plan.summary)}
-      />
+      <GuideHero eyebrow={`${MOST_ASKED} · Top 10 PYQs`} title={plan.title} />
 
-      <PlanTabs planSlug={plan.slug} active="days" />
+      <PlanTabs planSlug={plan.slug} active="top" />
 
-      {/* Signed in: "Your progress" and each day's label, filled in by the
-          browser (the page is cached and shared). */}
-      <HomeworkProgressProvider planSlug={plan.slug}>
-        <HomeworkProgressSummary planSlug={plan.slug} />
+      <p className="mt-6 text-sm text-muted-foreground">
+        The ten questions to practise first in each chapter: the ones {planWording(plan.examName).asker} asked again,
+        highest count first.
+      </p>
 
-      <div className="mt-8 space-y-10">
-        {sections.map((s) => (
-          <section key={s.from} aria-labelledby={`part-${s.from}`}>
-            <h2 id={`part-${s.from}`} className="section-title text-lg font-semibold">
-              {sectionTitle(planWording(plan.examName).asker)[s.kind]}
-            </h2>
-            <p className="mt-1 text-sm text-muted-foreground">
-              <span className="font-medium text-foreground tabular-nums">
-                {s.from === s.to ? `Day ${s.from}.` : `Days ${s.from} to ${s.to}.`}
-              </span>{" "}
-              {SECTION_HELP[s.kind]}
-            </p>
-            <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-              {s.days.map((d) => (
-                <li key={d.day} className="rounded-lg border bg-card p-4">
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex min-w-0 flex-wrap items-center gap-2">
-                      <h3 className="font-semibold">
-                        <Link href={dayHref(plan.slug, d.day)} prefetch={false} className="hover:underline">
-                          Day {d.day}
-                        </Link>
-                      </h3>
-                      <HomeworkDayBadge day={d.day} />
-                    </div>
-                    <div className="flex items-center gap-2">
-                      {/* prefetch off: a plan page holds up to 262 days, and each
-                          day page renders on first visit from the database. */}
-                      <Button asChild variant="outline" size="sm">
-                        <Link href={dayHref(plan.slug, d.day)} prefetch={false} aria-label={`Open day ${d.day} questions`}>
-                          <Eye className="h-4 w-4" aria-hidden />
-                          Open
-                        </Link>
-                      </Button>
-                      {downloads && <HomeworkDownload planSlug={plan.slug} day={d.day} planTitle={plan.title} offer={offer} />}
-                    </div>
-                  </div>
-                  <ol className="mt-3 space-y-1.5 text-sm">
-                    {d.items
-                      .filter((it) => it.sub === 1)
-                      .map((it) => {
-                        const parts = d.items.filter((x) => x.position === it.position).length;
-                        return (
-                          <li key={it.position} className="flex gap-2">
-                            <span className="w-4 shrink-0 text-muted-foreground tabular-nums">{it.position}.</span>
-                            <span className="min-w-0">
-                              {it.chapter}
-                              {parts > 1 && <span className="text-muted-foreground"> (case study, {parts} parts)</span>}
-                              <span className="ml-1.5 text-xs text-muted-foreground">{shortNote(it.note)}</span>
-                            </span>
-                          </li>
-                        );
-                      })}
-                  </ol>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
-      </div>
-      </HomeworkProgressProvider>
+      {chapters.length === 0 ? (
+        <p className="mt-4 rounded-lg border border-dashed p-8 text-center text-sm text-muted-foreground">
+          No chapter lists for this plan yet.
+        </p>
+      ) : (
+        <ul className="mt-4 divide-y overflow-hidden rounded-lg border bg-card">
+          {chapters.map((c) => (
+            <li key={c.id}>
+              <Link
+                href={topChapterHref(plan.slug, c.slug)}
+                prefetch={false}
+                className="group flex items-center justify-between gap-3 px-4 py-3 text-sm font-medium transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"
+              >
+                <span className="min-w-0 group-hover:text-brand-accent">{c.name}</span>
+                <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden />
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </GuideShell>
   );
 }

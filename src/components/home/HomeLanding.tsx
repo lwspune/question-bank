@@ -5,7 +5,7 @@ import {
   ArrowRight,
   BookMarked,
   BookOpen,
-  CalendarDays,
+  Flame,
   Compass,
   Cpu,
   FileText,
@@ -225,8 +225,8 @@ const FEATURED: { href: string; title: string; blurb: string; Preview: () => JSX
   },
   {
     href: "/homework",
-    title: "Daily homework",
-    blurb: "A short set every day, chapter by chapter, until the subject is done.",
+    title: "Most asked PYQs",
+    blurb: "Each chapter's ten most-asked past questions, and daily homework: five a day, the most asked first.",
     Preview: HomeworkPreview,
   },
   {
@@ -296,11 +296,12 @@ const SURFACES: SurfacePreview[] = [
   },
   {
     href: "/homework",
-    title: "Daily homework",
-    // Shape: a routine, then the extra it comes with.
+    title: "Most asked PYQs",
+    // Shape: what it is, then the routine it comes with (2026-11-24: was
+    // "Daily homework", renamed for what it holds).
     blurb:
-      "A short set every day, chapter by chapter, until the subject is done. Every plan also lists each chapter's ten most-asked questions.",
-    Icon: CalendarDays,
+      "Each chapter's ten most-asked past questions. Plus daily homework: five a day, the most asked first, until the subject is done.",
+    Icon: Flame,
   },
   {
     href: "/drill",

@@ -23,7 +23,7 @@ const KIND_LABEL: Record<ContinueKind, string> = {
   bank: "Questions",
   board: "Textbook",
   notes: "Notes",
-  homework: "Homework",
+  homework: "Daily homework",
 };
 
 export default function ContinueCard({ items, notesHref }: { items: ContinueItem[]; notesHref: string }) {
