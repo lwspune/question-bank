@@ -237,6 +237,26 @@ the footer and header icons use it.
 
 **Undo:** swap `QuietLink` back to `Link`. One commit.
 
+**Result (2026-11-24, branch `feat/quiet-links`, awaiting the owner's OK):**
+
+- Built: `src/components/QuietLink.tsx`, used by both footers and the Store,
+  Visuals and Play buttons; `GuideSideNav` no longer fetches the page it is
+  on. The study tabs are unchanged. Tests: `tests/quiet-link.test.ts`.
+- **Rule A passed:** fetched as Google's phone crawler, all 14 page types read
+  the same with and without item 1 (`--html-diff` over two `--save-html`
+  folders, one dev server at a time). Positive check: the branch pages name
+  `QuietLink` 14 of 14, main's 0 of 14, so each side served its own code.
+- **Rule B passed:** before/after sheets (header and footer, phone and
+  desktop, `/pricing` and a notes subtopic) show no difference.
+- **Not yet measured: the saving itself.** Next fetches in advance only in a
+  production build, never in `next dev`. Measure after the push:
+  `npm run audit:page-weight -- --check` against the saved baseline.
+- What the comparison had to learn on the way, now built into the tool:
+  React streams slow sections late depending on timing, and Next streams the
+  title into the body for ordinary browsers but not for crawlers. Comparing
+  as Google, with streamed sections put back, is what makes two loads of the
+  same page read the same.
+
 ### Item 2. Load V's chat window when it is opened
 
 **The problem:** V's window, practice builder, gift and check-in code (30 KB
