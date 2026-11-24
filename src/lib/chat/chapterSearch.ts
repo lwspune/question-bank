@@ -20,6 +20,11 @@ export type ChapterSearchRow = {
   chapterId?: string;
   /** The chapter's subtopic names (lib/chat/subtopicIndex.ts), so "budget" finds the chapter holding "Union Budget". */
   subtopicNames?: readonly string[];
+  /**
+   * False for a chapter under the landing threshold (lib/questions/shortChapters.ts, 2026-11-24): it has no
+   * /questions page, so chapterPath links /go/chapter/..., which opens it on /browse. Absent = a landing page.
+   */
+  hasLanding?: boolean;
 };
 
 /** A found chapter, with the subtopics that matched when its own name did not. */
@@ -264,7 +269,8 @@ export function nameHasWords(name: string, query: string): boolean {
 }
 
 export function chapterPath(row: ChapterSearchRow): string {
-  return `/questions/${row.examSlug}/${row.subjectSlug}/${row.chapterSlug}`;
+  const at = `${row.examSlug}/${row.subjectSlug}/${row.chapterSlug}`;
+  return row.hasLanding === false ? `/go/chapter/${at}` : `/questions/${at}`;
 }
 
 /**

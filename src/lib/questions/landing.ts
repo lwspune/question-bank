@@ -29,13 +29,9 @@ import { queryQuestions, type QueryResult } from "@/lib/questions/query";
 import { parseFilters } from "@/lib/questions/filters";
 import type { ChapterProfile, LandingSubtopic } from "@/lib/questions/landingSummary";
 
-/**
- * A chapter needs at least this many PUBLIC questions to earn a landing page.
- * Thin pages dilute a site's standing with search engines, and a 3-question page
- * is a poor landing experience anyway — those chapters stay reachable through
- * /browse and through their subject's landing index.
- */
-export const MIN_QUESTIONS_FOR_LANDING = 15;
+// The landing threshold lives in landingMin.ts so pure code (shortChapters.ts) can read it without this module.
+import { MIN_QUESTIONS_FOR_LANDING } from "@/lib/questions/landingMin";
+export { MIN_QUESTIONS_FOR_LANDING };
 
 /** How many questions each landing page renders before pointing at /browse. */
 export const LANDING_PAGE_SIZE = 50;

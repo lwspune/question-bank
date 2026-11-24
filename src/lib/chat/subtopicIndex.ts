@@ -12,6 +12,7 @@
 import { unstable_cache } from "next/cache";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { listChapterLandings, type ChapterLanding } from "@/lib/questions/landing";
+import { listShortChapters } from "@/lib/questions/shortChaptersServer";
 import type { ChapterSearchRow } from "./chapterSearch";
 
 const PAGE = 1000;
@@ -41,18 +42,29 @@ const readSubtopicIndex = unstable_cache(readSubtopicIndexUncached, ["chat", "su
   revalidate: TTL_SECONDS,
 });
 
-export function withSubtopics(landings: readonly ChapterLanding[], index: SubtopicIndex): ChapterSearchRow[] {
-  return landings.map((l) => ({ ...l, subtopicNames: index[l.chapterId] ?? [] }));
+export function withSubtopics(
+  landings: readonly (ChapterLanding | ChapterSearchRow)[],
+  index: SubtopicIndex
+): ChapterSearchRow[] {
+  return landings.map((l) => ({ ...l, subtopicNames: (l.chapterId && index[l.chapterId]) || [] }));
 }
 
-/** V's search list: the cached chapter list with each chapter's subtopics. Without them the search still runs on names. */
+/**
+ * V's search list: the cached chapter list with each chapter's subtopics, plus the chapters too small for
+ * a landing page (2026-11-24, lib/questions/shortChapters.ts). Without the subtopics the search still runs
+ * on names; without the small chapters it still finds every landing page.
+ */
 export async function listChapterSearchRows(): Promise<ChapterSearchRow[]> {
-  const [landings, index] = await Promise.all([
+  const [landings, short, index] = await Promise.all([
     listChapterLandings(),
+    listShortChapters().catch((err) => {
+      console.error("V: small chapters unavailable", err);
+      return [] as ChapterSearchRow[];
+    }),
     readSubtopicIndex().catch((err) => {
       console.error("V: subtopic index unavailable", err);
       return {} as SubtopicIndex;
     }),
   ]);
-  return withSubtopics(landings, index);
+  return withSubtopics([...landings, ...short], index);
 }

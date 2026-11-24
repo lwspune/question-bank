@@ -63,6 +63,8 @@ export function linkLabel(href: string, labels?: Readonly<Record<string, string>
   if (seg[0] === "notes" && seg.length === 3) return `${words(seg[2])} notes`;
   if (seg[0] === "notes" && seg.length >= 4) return words(seg[seg.length - 1]);
   if (seg[0] === "questions" && seg.length === 4) return `${words(seg[3])} questions`;
+  // A chapter with no landing page (2026-11-24, lib/questions/shortChapters.ts): /go/chapter/<exam>/<subject>/<chapter>.
+  if (seg[0] === "go" && seg[1] === "chapter" && seg.length === 5) return `${words(seg[4])} questions`;
   if (seg[0] === "board" && seg.length >= 4) return words(seg[seg.length - 1]);
   // Learn (2026-11-22): a lesson is /learn/lesson/<chapter>/<lesson>, a chapter /learn/<course>/<chapter>.
   if (seg[0] === "learn" && seg[1] === "lesson" && seg.length === 4) return `${words(seg[3])} lesson`;
