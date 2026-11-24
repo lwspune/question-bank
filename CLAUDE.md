@@ -165,6 +165,7 @@ npm run quiz:coverage [route] [chapter] [--review]   # flag formulas/traps TAUGH
 npm run quiz:assemble <route> <chapter> [max] [size] [-- --theme=X]   # ready atoms → quiz → record (quizzes+map) → push nda-tracker draft
 npm run quiz:delete <slug>   # delete an assembled quiz here + propagate the delete to nda-tracker (drafts only there)
 npm run quiz:push [daily/<slug>]   # push a single DraftQuiz module to nda-tracker (default: the hand-authored classical quiz)
+npm run audit:page-weight  # page weight, signed-out phone; --check, --html-diff (SEO). PAGE_WEIGHT_SPEC.md
 npm run stats              # report live bank size (PUBLIC by exam/subject) + taxonomy + /notes chapter & diagram counts — for verifying the header lines instead of hand-maintaining them
 npm run seo:dates          # regenerate src/lib/seo/contentDates.generated.ts (the sitemap's per-page <lastmod> for /notes + /guide). **RUN AFTER SHIPPING A NOTES CHAPTER OR GUIDE and commit the result**; `-- --check` exits 1 if stale. Generated-and-committed, not computed at build, because Vercel's shallow clone collapses `git log` to one commit. Staleness is SAFE -- it under-claims a change, never over-claims
 npm run notes:nav-index    # regenerate src/lib/notes/notesNavIndex.generated.ts, the four facts per chapter the nav reads, so AppHeader never imports the notes corpus (it did until 2026-10-02: every page held all 1,884 _data modules). RUN AFTER SHIPPING OR RENAMING A NOTES CHAPTER; tests/notes-nav-index.test.ts fails until you do. `-- --check` exits 1 if stale
