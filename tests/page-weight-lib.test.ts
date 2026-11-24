@@ -3,6 +3,7 @@ import {
   blockingTime,
   compareToBaseline,
   diffSeoViews,
+  isSavedFolder,
   parsePageWeightArgs,
   prefetchedPages,
   requestKind,
@@ -166,6 +167,22 @@ describe("diffSeoViews", () => {
     expect(diffSeoViews(base, after)).toEqual([]);
   });
 
+  it("treats two servers' own origin and build hashes as the same page", () => {
+    const head = (origin: string, hash: string) =>
+      `<title>T</title><meta property="og:image" content="${origin}/opengraph-image?${hash}"/><meta name="next-size-adjust" content=""/>` +
+      `<link rel="canonical" href="https://www.pyqvault.com/x"/>`;
+    const a = seoView(page('<h1>A</h1><a href="/x">X</a><p>Hello world</p>', head("https://www.pyqvault.com", "bd5f368b0dc9315c")), "https://www.pyqvault.com");
+    const b = seoView(page('<h1>A</h1><a href="/x">X</a><p>Hello world</p>', head("http://localhost:3001", "fc0f63f68bd5d37a")), "http://localhost:3001");
+    expect(diffSeoViews(a, b)).toEqual([]);
+    expect(a.meta["og:image"]).toBe("{origin}/opengraph-image");
+  });
+
+  it("still catches a canonical that names the wrong site", () => {
+    const a = seoView(page("<h1>A</h1>", '<link rel="canonical" href="https://www.pyqvault.com/x"/>'), "https://www.pyqvault.com");
+    const b = seoView(page("<h1>A</h1>", '<link rel="canonical" href="https://www.pyqvault.com/y"/>'), "http://localhost:3001");
+    expect(diffSeoViews(a, b).join("\n")).toMatch(/canonical/);
+  });
+
   it("catches a nofollow added to a link", () => {
     const after = seoView(page('<h1>A</h1><a href="/x" rel="nofollow">X</a><p>Hello world</p>', "<title>T</title>"));
     expect(diffSeoViews(base, after).join("\n")).toMatch(/links/);
@@ -231,6 +248,19 @@ describe("parsePageWeightArgs", () => {
     expect(a.mode).toBe("html-diff");
     expect(a.before).toBe("https://www.pyqvault.com");
     expect(a.after).toBe("http://localhost:3000");
+  });
+
+  it("saves each page's server HTML to a folder, so two builds can be compared one server at a time", () => {
+    const a = parsePageWeightArgs(["--save-html=out/main", "--base=http://localhost:3001"]);
+    expect(a.mode).toBe("save-html");
+    expect(a.saveHtml).toBe("out/main");
+  });
+
+  it("compares two saved folders as well as two servers", () => {
+    const a = parsePageWeightArgs(["--html-diff", "--before=out/main", "--after=out/branch"]);
+    expect(a.before).toBe("out/main");
+    expect(isSavedFolder(a.before!)).toBe(true);
+    expect(isSavedFolder("http://localhost:3001")).toBe(false);
   });
 
   it("refuses an unknown flag rather than ignoring it", () => {

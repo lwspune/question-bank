@@ -194,15 +194,31 @@ function canonicalJson(raw: string): string {
   }
 }
 
-export function seoView(html: string): SeoView {
+/**
+ * A meta value as it would read on any server: this server's own origin as
+ * "{origin}", and the build hash Next appends to a generated image dropped.
+ * Only meta values: the canonical is a fixed site address in code, so a
+ * canonical naming the wrong site must still show as a difference.
+ */
+function portableMeta(value: string, origin?: string): string {
+  let v = origin ? value.split(origin).join("{origin}") : value;
+  v = v.replace(/((?:opengraph|twitter)-image|icon|apple-icon)\?[0-9a-f]{8,}/g, "$1");
+  return v;
+}
+
+/** Meta tags Next adds in one build mode and not the other: never read by a search engine. */
+const BUILD_ONLY_META = new Set(["viewport", "next-size-adjust"]);
+
+/** `origin` = the server the HTML came from, so two servers compare as one. */
+export function seoView(html: string, origin?: string): SeoView {
   const title = textOf(html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] ?? "");
 
   const meta: Record<string, string> = {};
   for (const m of html.matchAll(/<meta\b[^>]*>/gi)) {
     const a = attrs(m[0]);
     const key = a.name ?? a.property;
-    if (!key || key === "viewport") continue;
-    meta[key] = a.content ?? "";
+    if (!key || BUILD_ONLY_META.has(key)) continue;
+    meta[key] = portableMeta(a.content ?? "", origin);
   }
 
   let canonical = "";
@@ -311,17 +327,29 @@ export const DEFAULT_PAGES = [
 ];
 
 export type PageWeightArgs = {
-  mode: "weigh" | "check" | "save-baseline" | "html-diff";
+  mode: "weigh" | "check" | "save-baseline" | "html-diff" | "save-html";
   base: string;
   pages: string[];
   cpu: number;
   runs: number;
+  /** --html-diff sides: a server URL, or a folder written by --save-html. */
   before: string | null;
   after: string | null;
   out: string | null;
+  /** --save-html=<dir>: write each page's server HTML there (and nothing else). */
+  saveHtml: string | null;
 };
 
 const trimSlash = (u: string) => u.replace(/\/+$/, "");
+
+/**
+ * A --html-diff side that is a folder of saved pages rather than a server.
+ * Saving lets two builds be compared one dev server at a time: two at once
+ * filled the disk on 2026-11-24 (each webpack cache ~1-2 GB).
+ */
+export function isSavedFolder(side: string): boolean {
+  return !/^https?:\/\//i.test(side);
+}
 
 export function parsePageWeightArgs(argv: string[]): PageWeightArgs {
   const a: PageWeightArgs = {
@@ -333,6 +361,7 @@ export function parsePageWeightArgs(argv: string[]): PageWeightArgs {
     before: null,
     after: null,
     out: null,
+    saveHtml: null,
   };
   for (const arg of argv) {
     const [flag, value] = arg.includes("=") ? [arg.slice(0, arg.indexOf("=")), arg.slice(arg.indexOf("=") + 1)] : [arg, ""];
@@ -367,11 +396,16 @@ export function parsePageWeightArgs(argv: string[]): PageWeightArgs {
       case "--html-diff":
         a.mode = "html-diff";
         break;
+      case "--save-html":
+        a.mode = "save-html";
+        a.saveHtml = value;
+        break;
       default:
         throw new Error(`unknown flag ${flag} (see the header of scripts/perf/pageWeight.ts)`);
     }
   }
   if (!(a.cpu >= 1) || !(a.runs >= 1)) throw new Error("--cpu and --runs must be 1 or more");
-  if (a.mode === "html-diff" && (!a.before || !a.after)) throw new Error("--html-diff needs --before=<url> and --after=<url>");
+  if (a.mode === "html-diff" && (!a.before || !a.after)) throw new Error("--html-diff needs --before=<url|folder> and --after=<url|folder>");
+  if (a.mode === "save-html" && !a.saveHtml) throw new Error("--save-html needs a folder: --save-html=<dir>");
   return a;
 }
