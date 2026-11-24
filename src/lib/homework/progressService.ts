@@ -14,6 +14,7 @@
  * holds five, so it filters by id.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
+import type { Database } from "@/types/db";
 import { topProgress, type TopItem, type TopProgress } from "./topProgress";
 import {
   marksFor,
@@ -99,20 +100,10 @@ export async function loadHomeworkProgress(
   return { progress: planProgress(items, events) };
 }
 
-type TopItemRow = {
-  day: number;
-  position: number;
-  sub: number;
-  question_id: string;
-  question: {
-    question_format: QuestionFormat;
-    chapter: { id: string; name: string; order_index: number | null } | null;
-  } | null;
-};
-
 /** Every item of the plan with its chapter, for the Top 10 view. Paged: a
- *  plan holds up to ~2,700 rows, past PostgREST's 1,000-row cap. */
-async function loadTopItems(db: SupabaseClient, planId: string): Promise<TopItem[]> {
+ *  plan holds up to ~2,700 rows, past PostgREST's 1,000-row cap. Typed
+ *  client, so the joined rows come back with their real shape. */
+async function loadTopItems(db: SupabaseClient<Database>, planId: string): Promise<TopItem[]> {
   const out: TopItem[] = [];
   for (let from = 0; ; from += PAGE) {
     const { data, error } = await db
@@ -124,7 +115,7 @@ async function loadTopItems(db: SupabaseClient, planId: string): Promise<TopItem
       .order("sub")
       .range(from, from + PAGE - 1);
     if (error) throw new Error(`homework top progress items: ${error.message}`);
-    const rows = (data ?? []) as unknown as TopItemRow[];
+    const rows = data ?? [];
     for (const r of rows) {
       const c = r.question?.chapter ?? null;
       out.push({
@@ -132,7 +123,8 @@ async function loadTopItems(db: SupabaseClient, planId: string): Promise<TopItem
         position: r.position,
         sub: r.sub,
         questionId: r.question_id,
-        format: r.question?.question_format ?? "mcq",
+        // A multiple-select question is answered by a pick, like an MCQ.
+        format: r.question?.question_format === "msq" ? "mcq" : (r.question?.question_format ?? "mcq"),
         chapter: c ? { id: c.id, name: c.name, orderIndex: c.order_index } : null,
       });
     }
@@ -143,7 +135,7 @@ async function loadTopItems(db: SupabaseClient, planId: string): Promise<TopItem
 /** The plan's front page: progress through each chapter's Top 10 and the
  *  chapter to work on next. Null for an unknown plan. */
 export async function loadTopProgress(
-  db: SupabaseClient,
+  db: SupabaseClient<Database>,
   userId: string,
   slug: string
 ): Promise<{ top: TopProgress } | null> {

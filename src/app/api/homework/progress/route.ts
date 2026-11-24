@@ -15,7 +15,7 @@
  */
 import { NextResponse, type NextRequest } from "next/server";
 import { getSessionUser } from "@/lib/auth";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createTypedServerClient } from "@/lib/supabase/server";
 import { parseProgressQuery } from "@/lib/homework/progress";
 import { loadHomeworkDayMarks, loadHomeworkProgress, loadTopProgress } from "@/lib/homework/progressService";
 
@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
   if (!user) return NextResponse.json({ error: "Sign in to see your progress." }, { status: 401, headers: NO_STORE });
 
   try {
-    const db = createSupabaseServerClient();
+    const db = createTypedServerClient();
     const out =
       parsed.view === "top"
         ? await loadTopProgress(db, user.id, parsed.slug)
