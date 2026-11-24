@@ -14,6 +14,7 @@
  * holds five, so it filters by id.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { topProgress, type TopItem, type TopProgress } from "./topProgress";
 import {
   marksFor,
   planProgress,
@@ -87,6 +88,60 @@ export async function loadHomeworkProgress(
   if (!planId) return null;
   const [items, events] = await Promise.all([loadProgressItems(db, planId), loadEvents(db, userId)]);
   return { progress: planProgress(items, events) };
+}
+
+type TopItemRow = {
+  day: number;
+  position: number;
+  sub: number;
+  question_id: string;
+  question: {
+    question_format: QuestionFormat;
+    chapter: { id: string; name: string; order_index: number | null } | null;
+  } | null;
+};
+
+/** Every item of the plan with its chapter, for the Top 10 view. Paged: a
+ *  plan holds up to ~2,700 rows, past PostgREST's 1,000-row cap. */
+async function loadTopItems(db: SupabaseClient, planId: string): Promise<TopItem[]> {
+  const out: TopItem[] = [];
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await db
+      .from("homework_plan_items")
+      .select("day, position, sub, question_id, question:questions(question_format, chapter:chapters(id, name, order_index))")
+      .eq("plan_id", planId)
+      .order("day")
+      .order("position")
+      .order("sub")
+      .range(from, from + PAGE - 1);
+    if (error) throw new Error(`homework top progress items: ${error.message}`);
+    const rows = (data ?? []) as unknown as TopItemRow[];
+    for (const r of rows) {
+      const c = r.question?.chapter ?? null;
+      out.push({
+        day: r.day,
+        position: r.position,
+        sub: r.sub,
+        questionId: r.question_id,
+        format: r.question?.question_format ?? "mcq",
+        chapter: c ? { id: c.id, name: c.name, orderIndex: c.order_index } : null,
+      });
+    }
+    if (rows.length < PAGE) return out;
+  }
+}
+
+/** The plan's front page: progress through each chapter's Top 10 and the
+ *  chapter to work on next. Null for an unknown plan. */
+export async function loadTopProgress(
+  db: SupabaseClient,
+  userId: string,
+  slug: string
+): Promise<{ top: TopProgress } | null> {
+  const planId = await planIdOf(db, slug);
+  if (!planId) return null;
+  const [items, events] = await Promise.all([loadTopItems(db, planId), loadEvents(db, userId)]);
+  return { top: topProgress(items, events) };
 }
 
 /** One day page: each question's mark and those waiting in the drill. Null

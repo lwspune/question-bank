@@ -186,12 +186,20 @@ const SLUG_RE = /^[a-z0-9][a-z0-9-]{0,79}$/;
 /** Well past the longest plan (548 days on 2026-11-05). */
 const MAX_DAY = 10_000;
 
-export type ProgressQuery = { ok: true; slug: string; day?: number } | { ok: false; error: string };
+export type ProgressQuery =
+  | { ok: true; slug: string; day?: number; view?: "top" }
+  | { ok: false; error: string };
 
-/** GET /api/homework/progress?plan=<slug>[&day=<n>]. */
+/** GET /api/homework/progress?plan=<slug>[&day=<n> | &view=top]. */
 export function parseProgressQuery(params: URLSearchParams): ProgressQuery {
   const slug = params.get("plan") ?? "";
   if (!SLUG_RE.test(slug)) return { ok: false, error: "plan must be a plan slug." };
+  const view = params.get("view");
+  if (view !== null) {
+    if (view !== "top") return { ok: false, error: "view must be top." };
+    if (params.get("day") !== null) return { ok: false, error: "view=top takes no day." };
+    return { ok: true, slug, view: "top" };
+  }
   const rawDay = params.get("day");
   if (rawDay === null) return { ok: true, slug };
   if (!/^\d+$/.test(rawDay)) return { ok: false, error: "day must be a whole number." };
