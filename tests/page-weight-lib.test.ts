@@ -3,6 +3,7 @@ import {
   blockingTime,
   compareToBaseline,
   diffSeoViews,
+  isSavedFolder,
   parsePageWeightArgs,
   prefetchedPages,
   requestKind,
@@ -166,6 +167,52 @@ describe("diffSeoViews", () => {
     expect(diffSeoViews(base, after)).toEqual([]);
   });
 
+  it("treats two servers' own origin and build hashes as the same page", () => {
+    const head = (origin: string, hash: string) =>
+      `<title>T</title><meta property="og:image" content="${origin}/opengraph-image?${hash}"/><meta name="next-size-adjust" content=""/>` +
+      `<link rel="canonical" href="https://www.pyqvault.com/x"/>`;
+    const a = seoView(page('<h1>A</h1><a href="/x">X</a><p>Hello world</p>', head("https://www.pyqvault.com", "bd5f368b0dc9315c")), "https://www.pyqvault.com");
+    const b = seoView(page('<h1>A</h1><a href="/x">X</a><p>Hello world</p>', head("http://localhost:3001", "fc0f63f68bd5d37a")), "http://localhost:3001");
+    expect(diffSeoViews(a, b)).toEqual([]);
+    expect(a.meta["og:image"]).toBe("{origin}/opengraph-image");
+  });
+
+  it("still catches a canonical that names the wrong site", () => {
+    const a = seoView(page("<h1>A</h1>", '<link rel="canonical" href="https://www.pyqvault.com/x"/>'), "https://www.pyqvault.com");
+    const b = seoView(page("<h1>A</h1>", '<link rel="canonical" href="https://www.pyqvault.com/y"/>'), "http://localhost:3001");
+    expect(diffSeoViews(a, b).join("\n")).toMatch(/canonical/);
+  });
+
+  it("reads a section that arrived late by streaming as if it were in place", () => {
+    // React streams a slow section as a placeholder (+ fallback) and parks the
+    // real content in a hidden div after the footer; the browser swaps it in.
+    // Which sections stream depends on timing, so two runs of the SAME page
+    // can differ. Compare what a browser (and Google's renderer) ends up with.
+    const inline = page('<h1>A</h1><section><a href="/x">X</a><p>Paper text</p></section><footer>F</footer>');
+    const streamed = page(
+      '<h1>A</h1><!--$?--><template id="B:1"></template><p>Loading…</p><!--/$--><footer>F</footer>' +
+        '<div hidden id="S:1"><section><a href="/x">X</a><p>Paper text</p></section></div><script>$RC("B:1","S:1")</script>',
+    );
+    expect(diffSeoViews(seoView(inline), seoView(streamed))).toEqual([]);
+  });
+
+  it("does not count a title streamed into the body as page text", () => {
+    // Next streams metadata into a hidden body block for ordinary browsers;
+    // the title is compared on its own, so it must not also count as text.
+    const inHead = page("<h1>A</h1><p>Body</p>", "<title>Paper · PYQ Vault</title>");
+    const inBody = page('<div hidden=""><title>Paper · PYQ Vault</title></div><h1>A</h1><p>Body</p>');
+    expect(diffSeoViews(seoView(inHead), seoView(inBody))).toEqual([]);
+  });
+
+  it("puts nested streamed sections back too", () => {
+    const inline = page("<h1>A</h1><div><p>Outer</p><div><p>Inner</p></div></div><footer>F</footer>");
+    const streamed = page(
+      '<h1>A</h1><!--$?--><template id="B:2"></template><!--/$--><footer>F</footer>' +
+        '<div hidden id="S:2"><div><p>Outer</p><div><p>Inner</p></div></div></div>',
+    );
+    expect(diffSeoViews(seoView(inline), seoView(streamed))).toEqual([]);
+  });
+
   it("catches a nofollow added to a link", () => {
     const after = seoView(page('<h1>A</h1><a href="/x" rel="nofollow">X</a><p>Hello world</p>', "<title>T</title>"));
     expect(diffSeoViews(base, after).join("\n")).toMatch(/links/);
@@ -231,6 +278,19 @@ describe("parsePageWeightArgs", () => {
     expect(a.mode).toBe("html-diff");
     expect(a.before).toBe("https://www.pyqvault.com");
     expect(a.after).toBe("http://localhost:3000");
+  });
+
+  it("saves each page's server HTML to a folder, so two builds can be compared one server at a time", () => {
+    const a = parsePageWeightArgs(["--save-html=out/main", "--base=http://localhost:3001"]);
+    expect(a.mode).toBe("save-html");
+    expect(a.saveHtml).toBe("out/main");
+  });
+
+  it("compares two saved folders as well as two servers", () => {
+    const a = parsePageWeightArgs(["--html-diff", "--before=out/main", "--after=out/branch"]);
+    expect(a.before).toBe("out/main");
+    expect(isSavedFolder(a.before!)).toBe(true);
+    expect(isSavedFolder("http://localhost:3001")).toBe(false);
   });
 
   it("refuses an unknown flag rather than ignoring it", () => {

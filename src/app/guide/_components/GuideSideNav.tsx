@@ -68,6 +68,9 @@ function NavList({
       <li key={item.href}>
         <Link
           href={item.href}
+          // The page this menu is on is already here: fetching it again
+          // cost a notes page 141 KB (PAGE_WEIGHT_SPEC.md item 1).
+          prefetch={pathname === item.href ? false : undefined}
           onClick={onNavigate}
           className={cn(
             "block rounded-md px-3 py-2 text-sm font-medium transition-colors",

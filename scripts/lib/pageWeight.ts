@@ -170,7 +170,9 @@ function dropInvisible(html: string): string {
     .replace(/<style\b[\s\S]*?<\/style>/gi, "")
     .replace(/<svg\b[\s\S]*?<\/svg>/gi, "")
     .replace(/<template\b[\s\S]*?<\/template>/gi, "")
-    .replace(/<noscript\b[\s\S]*?<\/noscript>/gi, "");
+    .replace(/<noscript\b[\s\S]*?<\/noscript>/gi, "")
+    // Compared as its own field; Next can stream it into the body for browsers.
+    .replace(/<title\b[\s\S]*?<\/title>/gi, "");
 }
 
 /** Text of an HTML fragment, tags dropped, a space where a tag was. */
@@ -194,15 +196,65 @@ function canonicalJson(raw: string): string {
   }
 }
 
-export function seoView(html: string): SeoView {
+/**
+ * A meta value as it would read on any server: this server's own origin as
+ * "{origin}", and the build hash Next appends to a generated image dropped.
+ * Only meta values: the canonical is a fixed site address in code, so a
+ * canonical naming the wrong site must still show as a difference.
+ */
+function portableMeta(value: string, origin?: string): string {
+  let v = origin ? value.split(origin).join("{origin}") : value;
+  v = v.replace(/((?:opengraph|twitter)-image|icon|apple-icon)\?[0-9a-f]{8,}/g, "$1");
+  return v;
+}
+
+/** Meta tags Next adds in one build mode and not the other: never read by a search engine. */
+const BUILD_ONLY_META = new Set(["viewport", "next-size-adjust"]);
+
+/** End index (exclusive) of the element opened by the `<div` at `start`, counting nested divs. */
+function divEnd(html: string, start: number): number {
+  const re = /<div\b|<\/div>/gi;
+  re.lastIndex = start;
+  let depth = 0;
+  for (let m = re.exec(html); m; m = re.exec(html)) {
+    depth += m[0] === "</div>" ? -1 : 1;
+    if (depth === 0) return m.index + m[0].length;
+  }
+  return html.length;
+}
+
+/**
+ * The page as the browser ends up showing it: each section React streamed late
+ * (a `<template id="B:n">` placeholder plus fallback, the real content parked
+ * in `<div hidden id="S:n">` after the footer) put back where it belongs.
+ * Which sections stream depends on timing, so without this two loads of the
+ * same page compare as different (2026-11-24, the question paper page).
+ */
+export function resolveStreamed(html: string): string {
+  let out = html;
+  for (let guard = 0; guard < 200; guard++) {
+    const open = /<div hidden(?:="[^"]*")? id="S:([0-9a-z]+)"[^>]*>/i.exec(out);
+    if (!open) break;
+    const end = divEnd(out, open.index);
+    const content = out.slice(open.index + open[0].length, end - "</div>".length);
+    out = out.slice(0, open.index) + out.slice(end);
+    const holder = new RegExp(`<!--\\$\\?--><template id="B:${open[1]}"></template>[\\s\\S]*?<!--/\\$-->`);
+    out = holder.test(out) ? out.replace(holder, () => content) : out;
+  }
+  return out;
+}
+
+/** `origin` = the server the HTML came from, so two servers compare as one. */
+export function seoView(rawHtml: string, origin?: string): SeoView {
+  const html = resolveStreamed(rawHtml);
   const title = textOf(html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] ?? "");
 
   const meta: Record<string, string> = {};
   for (const m of html.matchAll(/<meta\b[^>]*>/gi)) {
     const a = attrs(m[0]);
     const key = a.name ?? a.property;
-    if (!key || key === "viewport") continue;
-    meta[key] = a.content ?? "";
+    if (!key || BUILD_ONLY_META.has(key)) continue;
+    meta[key] = portableMeta(a.content ?? "", origin);
   }
 
   let canonical = "";
@@ -311,17 +363,29 @@ export const DEFAULT_PAGES = [
 ];
 
 export type PageWeightArgs = {
-  mode: "weigh" | "check" | "save-baseline" | "html-diff";
+  mode: "weigh" | "check" | "save-baseline" | "html-diff" | "save-html";
   base: string;
   pages: string[];
   cpu: number;
   runs: number;
+  /** --html-diff sides: a server URL, or a folder written by --save-html. */
   before: string | null;
   after: string | null;
   out: string | null;
+  /** --save-html=<dir>: write each page's server HTML there (and nothing else). */
+  saveHtml: string | null;
 };
 
 const trimSlash = (u: string) => u.replace(/\/+$/, "");
+
+/**
+ * A --html-diff side that is a folder of saved pages rather than a server.
+ * Saving lets two builds be compared one dev server at a time: two at once
+ * filled the disk on 2026-11-24 (each webpack cache ~1-2 GB).
+ */
+export function isSavedFolder(side: string): boolean {
+  return !/^https?:\/\//i.test(side);
+}
 
 export function parsePageWeightArgs(argv: string[]): PageWeightArgs {
   const a: PageWeightArgs = {
@@ -333,6 +397,7 @@ export function parsePageWeightArgs(argv: string[]): PageWeightArgs {
     before: null,
     after: null,
     out: null,
+    saveHtml: null,
   };
   for (const arg of argv) {
     const [flag, value] = arg.includes("=") ? [arg.slice(0, arg.indexOf("=")), arg.slice(arg.indexOf("=") + 1)] : [arg, ""];
@@ -367,11 +432,16 @@ export function parsePageWeightArgs(argv: string[]): PageWeightArgs {
       case "--html-diff":
         a.mode = "html-diff";
         break;
+      case "--save-html":
+        a.mode = "save-html";
+        a.saveHtml = value;
+        break;
       default:
         throw new Error(`unknown flag ${flag} (see the header of scripts/perf/pageWeight.ts)`);
     }
   }
   if (!(a.cpu >= 1) || !(a.runs >= 1)) throw new Error("--cpu and --runs must be 1 or more");
-  if (a.mode === "html-diff" && (!a.before || !a.after)) throw new Error("--html-diff needs --before=<url> and --after=<url>");
+  if (a.mode === "html-diff" && (!a.before || !a.after)) throw new Error("--html-diff needs --before=<url|folder> and --after=<url|folder>");
+  if (a.mode === "save-html" && !a.saveHtml) throw new Error("--save-html needs a folder: --save-html=<dir>");
   return a;
 }

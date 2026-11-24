@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import QuietLink from "@/components/QuietLink";
 import { usePublicPathname } from "@/lib/nav/usePublicPathname";
 import { Gamepad2, Gem, Images, ShoppingBag } from "lucide-react";
 import { trackFunnel } from "@/lib/analytics/trackFunnel";
@@ -223,7 +224,7 @@ function StoreLink() {
   const pathname = usePublicPathname();
   const active = pathname.startsWith("/store");
   return (
-    <Link
+    <QuietLink
       href="/store"
       onClick={() => trackFunnel("ebook_store_link_click", { from: pathname.split("/")[1] || "home" })}
       aria-current={active ? "page" : undefined}
@@ -236,7 +237,7 @@ function StoreLink() {
           at 360 px. From lg up since 2026-11-18, for the same reason at
           tablet widths, where the study tabs share the row. */}
       <span>Store</span>
-    </Link>
+    </QuietLink>
   );
 }
 
@@ -252,7 +253,7 @@ function VisualsLink({ examSlug }: { examSlug: string | null }) {
   const pathname = usePublicPathname();
   const active = pathname.startsWith("/visuals");
   return (
-    <Link
+    <QuietLink
       href={galleryHrefFor(examSlug, GALLERY_NAV)}
       onClick={() => trackFunnel("visuals_link_click", { from: pathname.split("/")[1] || "home" })}
       aria-current={active ? "page" : undefined}
@@ -260,7 +261,7 @@ function VisualsLink({ examSlug }: { examSlug: string | null }) {
     >
       <Images className="hidden h-4 w-4 shrink-0 lg:block" aria-hidden />
       <span>Visuals</span>
-    </Link>
+    </QuietLink>
   );
 }
 
@@ -273,7 +274,7 @@ function PlayLink() {
   const pathname = usePublicPathname();
   const active = pathname.startsWith("/play");
   return (
-    <Link
+    <QuietLink
       href="/play"
       onClick={() => trackFunnel("play_link_click", { from: pathname.split("/")[1] || "home" })}
       aria-current={active ? "page" : undefined}
@@ -282,6 +283,6 @@ function PlayLink() {
     >
       <Gamepad2 className="hidden h-4 w-4 shrink-0 lg:block" aria-hidden />
       <span>Play</span>
-    </Link>
+    </QuietLink>
   );
 }
