@@ -13,7 +13,7 @@
  * - Built from numbers, never by the model: no AI call, nothing made up.
  * - What went well first, then the next step. A line with nothing in it is
  *   left out, never shown as 0.
- * - After a gap it says "Since your last visit" with the date. It never counts
+ * - After a gap it says "Since your last <exam> practice" with the date. It never counts
  *   the days missed and keeps no streak: this cohort studies in bursts.
  * - On the board plan, today's task is the plan's own (lib/path), so V and
  *   Home cannot disagree.
@@ -111,6 +111,11 @@ export type DayCardInput = {
   dueByChapter?: Record<string, number>;
   /** The card exam's chapters with mistakes waiting, with their links, for V's check-in (2026-11-21). */
   stuckChapters?: CheckInChapter[];
+  /**
+   * The student's latest answer in ANY exam, today included (2026-11-24). The card's days are one exam's,
+   * so without this V asked "How's your study going?" of a student who had practised another exam that day.
+   */
+  lastAnswerAnyExamAt?: string | null;
 };
 
 export type DayRowItem = { name: string; note: string };
@@ -155,6 +160,18 @@ function daysBetween(a: string, b: string): number {
 function dateLabel(day: string): string {
   const d = new Date(`${day}T00:00:00Z`);
   return `${WEEKDAYS[d.getUTCDay()]} ${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]}`;
+}
+
+/**
+ * Days since the student last answered anything: the card exam's last day, shortened by a later answer in
+ * any exam (today counts as 0). Null with no earlier day in the card's exam: another exam only ever makes
+ * the gap shorter, so it never starts a check-in the card would not have asked.
+ */
+export function daysAwayOf(last: DaySpan | null, anyExamAt: string | null, now: Date): number | null {
+  if (!last) return null;
+  const today = istDay(now);
+  const away = daysBetween(last.day, today);
+  return anyExamAt ? Math.min(away, Math.max(0, daysBetween(istDay(anyExamAt), today))) : away;
 }
 
 /** The latest day before today with an answer, within the lookback; else null. */
@@ -428,7 +445,7 @@ export function buildDayCard(input: DayCardInput): DayCard | null {
   // V's check-in (2026-11-21): after 4+ days away, a question first.
   const biggest = bigChapters(input.bigChapters ?? [])[0];
   const checkIn = buildCheckIn({
-    daysAway: last ? daysBetween(last.day, istDay(input.now)) : null,
+    daysAway: daysAwayOf(last, input.lastAnswerAnyExamAt ?? null, input.now),
     due,
     stuck: input.stuckChapters ?? [],
     top: biggest ? { chapter: biggest.chapter, practiceHref: goPracticeHref(biggest.examName, biggest.subject, biggest.chapter) } : null,
@@ -440,7 +457,8 @@ export function buildDayCard(input: DayCardInput): DayCard | null {
       : kind === "since"
         ? "Good to see you again. Here's where you left off."
         : "Welcome back. Here's your day.",
-    title: kind === "yesterday" ? "Since yesterday" : kind === "since" ? "Since your last visit" : "Your day",
+    // Named for the exam (2026-11-24): the card's answers are this exam's alone.
+    title: kind === "yesterday" ? "Since yesterday" : kind === "since" ? `Since your last ${input.exam.displayName} practice` : "Your day",
     subtitle: kind === "since" && last ? `${dateLabel(last.day)} · ${input.exam.displayName}` : `${input.exam.displayName}${left}`,
     rows,
     primary,

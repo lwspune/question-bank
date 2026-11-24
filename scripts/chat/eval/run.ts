@@ -49,6 +49,7 @@ import { isIntlPagePath, LIVE_INTL_EXAMS } from "../../../src/lib/sites/intl";
 const siteOf = (c: { page_path: string | null }) => (c.page_path && isIntlPagePath(c.page_path.split(/[?#]/)[0]) ? "intl" : "pyqvault");
 import { readChapterLandingsUncached } from "../../../src/lib/questions/landing";
 import { readSubtopicIndexUncached, withSubtopics } from "../../../src/lib/chat/subtopicIndex";
+import { readShortChaptersUncached } from "../../../src/lib/questions/shortChaptersServer";
 import { loadSimilarId, loadVQuestion, searchVQuestions } from "../../../src/lib/chat/questionToolsServer";
 import { loadPaperRepeats } from "../../../src/lib/chat/paperRepeatsServer";
 import { notesTappedFrom, tappedFrom } from "../../../src/lib/chat/questionToolSet";
@@ -146,7 +147,11 @@ async function main() {
 
   const settings = await readChatSettings(admin);
   // The chapter list is the slow read: once for the whole run.
-  const chapters = withSubtopics(await readChapterLandingsUncached(), await readSubtopicIndexUncached());
+  // The small chapters too (2026-11-24), as listChapterSearchRows gives V in production.
+  const chapters = withSubtopics(
+    [...(await readChapterLandingsUncached()), ...(await readShortChaptersUncached())],
+    await readSubtopicIndexUncached()
+  );
   // The exam catalogue is day-cached by Next in the app; here it is read once, uncached.
   const catalogPayload = await loadExamCatalogPayload(anon);
   const catalog = shapeExamCatalog(

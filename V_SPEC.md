@@ -131,6 +131,11 @@ The owner's rulings, collected so a change does not quietly reverse one. Each
 is enforced in `facts.ts` or the tools; the date is when it was made.
 
 - **Students only.** Teacher and download questions were dropped from V (2026-10-15).
+- **V is told about every page (2026-11-24).** A page or tab a student can reach
+  gets a line in `NAV_FACTS` in the same branch, or a reason in `NOT_FOR_V`
+  (`tests/chat-nav-coverage.test.ts` fails on a page with neither). A page that
+  changes what it does updates its line too. V told a student "there is no
+  homework section" when Homework had been a tab for three weeks.
 - **Ask, never guess the exam.** "Class 12" alone is not an exam (2026-10-18).
 - **Answer only what was asked.** No unsolicited "try this one" or check-question
   in V's text (2026-10-22). Optional TAP BUTTONS under a reply are allowed

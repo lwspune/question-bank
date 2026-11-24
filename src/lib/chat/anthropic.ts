@@ -96,7 +96,8 @@ type ApiResponse = {
   };
 };
 
-type Message = { role: "user" | "assistant"; content: unknown };
+// "system" is a mid-conversation operator note (Haiku 5.5 takes it with no beta), kept after the cache mark.
+type Message = { role: "user" | "assistant" | "system"; content: unknown };
 
 /**
  * One answer. The system prompt carries every fact;  carries the
@@ -112,6 +113,11 @@ export async function askV(input: {
   tools: readonly VTool[];
   /** Earlier exchanges of this conversation, oldest first (lib/chat/conversation modelHistory). */
   history?: readonly { role: "user" | "assistant"; content: string }[];
+  /**
+   * A note for this turn alone, sent as a system message straight after the student's message, where the
+   * model reads it last (facts.ts tapTurnNote, 2026-11-24). It sits after every cache mark, so it costs no cache.
+   */
+  turnNote?: string | null;
 }): Promise<AskVResult> {
   let tokensIn = 0;
   let tokensOut = 0;
@@ -139,7 +145,11 @@ export async function askV(input: {
   }
 
   const toolDefs = input.tools.map(({ name, description, input_schema }) => ({ name, description, input_schema }));
-  const messages: Message[] = [...(input.history ?? []), { role: "user", content: input.message }];
+  const messages: Message[] = [
+    ...(input.history ?? []),
+    { role: "user", content: input.message },
+    ...(input.turnNote ? [{ role: "system" as const, content: input.turnNote }] : []),
+  ];
   const system = [
     { type: "text", text: input.system, cache_control: { type: "ephemeral", ttl: "1h" } },
     ...(input.systemTail ? [{ type: "text", text: input.systemTail }] : []),

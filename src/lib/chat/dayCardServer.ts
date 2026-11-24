@@ -31,6 +31,7 @@ import { dayStudyLine, type StudyRow } from "@/lib/studyTime/report";
 import {
   buildDayCard,
   DAY_LOOKBACK_DAYS,
+  daysAwayOf,
   istDay,
   COUNTDOWN_DAYS,
   COUNTDOWN_MOCK_DAYS,
@@ -57,7 +58,7 @@ export async function loadDayCard(
   userId: string,
   now: Date = new Date()
 ): Promise<DayCard | null> {
-  const [profile, perf, ladder, active, studyRows] = await Promise.all([
+  const [profile, perf, ladder, active, studyRows, lastAnyExamAt] = await Promise.all([
     getOwnProfile(db, userId),
     getOwnPerformance(),
     getOwnLadder(db, userId, now),
@@ -66,6 +67,11 @@ export async function loadDayCard(
     loadStudyRows(db, userId, now, DAY_LOOKBACK_DAYS + 1).catch((e: unknown) => {
       console.error("day card: study time read failed", e instanceof Error ? e.message : e);
       return [] as StudyRow[];
+    }),
+    // Away from the whole site, not the card's exam (2026-11-24); a failed read falls back to the exam's days.
+    lastAnswerAnyExam(db, userId).catch((e: unknown) => {
+      console.error("day card: last answer read failed", e instanceof Error ? e.message : e);
+      return null;
     }),
   ]);
 
@@ -122,7 +128,7 @@ export async function loadDayCard(
   // check-in's Short on time; a failed read is [] (loadChapterWeights), which
   // shows no countdown row.
   const examId = pickedId ?? payload.exam_id;
-  const away = last ? Math.round((Date.parse(`${istDay(now)}T00:00:00Z`) - Date.parse(`${last.day}T00:00:00Z`)) / 86_400_000) : 0;
+  const away = daysAwayOf(last, lastAnyExamAt, now) ?? 0;
   const inCountdown = !!countdown && countdown.daysLeft > COUNTDOWN_MOCK_DAYS && countdown.daysLeft <= COUNTDOWN_DAYS;
   const weights = (inCountdown || away >= CHECKIN_AWAY_DAYS) && examId ? await loadChapterWeights(examId) : [];
 
@@ -150,7 +156,24 @@ export async function loadDayCard(
     movedUp: perf && lastStart ? movedUpSince(perf, exam.examName, now, lastStart) : [],
     plan,
     studyOnDay: last ? dayStudyLine(studyRows, last.day, pickedId ?? payload.exam_id) : null,
+    lastAnswerAnyExamAt: lastAnyExamAt,
   });
+}
+
+// What counts as having studied: the answer kinds the card's own days count, plus a finished mock.
+const ANSWER_KINDS = ["question_practiced", "answer_wrong", "answer_correct", "mock_submitted"] as const;
+
+/** The student's latest answer in any exam (own rows, RLS), or null when they have none. */
+async function lastAnswerAnyExam(db: ReturnType<typeof createSupabaseServerClient>, userId: string): Promise<string | null> {
+  const { data, error } = await db
+    .from("user_activity")
+    .select("created_at")
+    .eq("user_id", userId)
+    .in("kind", [...ANSWER_KINDS])
+    .order("created_at", { ascending: false })
+    .limit(1);
+  if (error) throw new Error(error.message);
+  return (data?.[0]?.created_at as string | undefined) ?? null;
 }
 
 /** The exam's chapters with mistakes waiting, each with its notes page (when it has one) and practice link. */
