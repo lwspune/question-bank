@@ -93,6 +93,17 @@ describe("where QuietLink is used", () => {
     }
   });
 
+  it("sign-in links are quiet (VERCEL_COST_SPEC.md item 2)", () => {
+    // The header's Sign in fetched /login in advance on every signed-out page
+    // view: 5.3K of 228K CDN requests in 12 hours, the largest link left.
+    const s = read("src/components/reveal/SignInLink.tsx");
+    expect(s).not.toMatch(/from "next\/link"/);
+    expect(s).toMatch(/from "@\/components\/QuietLink"/);
+    expect(s.match(/<Link\b/g) ?? []).toEqual([]);
+    // Both the Suspense fallback and the link with the query stay quiet.
+    expect((s.match(/<QuietLink\b/g) ?? []).length).toBe(2);
+  });
+
   it("the main study tabs keep Next's default, so those taps stay instant", () => {
     for (const f of ["src/components/MobileTabBar.tsx", "src/components/PrimaryNav.tsx"]) {
       expect(read(f), f).not.toMatch(/QuietLink/);
