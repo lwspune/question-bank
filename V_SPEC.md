@@ -158,7 +158,8 @@ is enforced in `facts.ts` or the tools; the date is when it was made.
 - **Cost is tracked, and cut only where quality cannot move (owner, 2026-10-23):**
   the fixed instructions sit in the 1-hour prompt cache (most cache writes
   came 5-60 minutes apart, after the 5-minute one had lapsed); a change is
-  tested on its own cases first (`--case`), the whole set once before merging.
+  tested on its own cases (`--case` or `--job`) before merging, and the whole
+  set runs once a week, on Thursday (owner, 2026-11-24; see section 4).
   Test runs are NOT batched: tried 2026-10-23, a batch's requests did not read
   the cache and the find cases cost 2.5x as much. Cost per answer is on
   `/dashboard/chat` and in `npm run v:cost`.
@@ -257,8 +258,15 @@ student has no results yet. So a `reflect` case tests that V reads the
 results, not what it says about them. `-- --case=<id start,...>`,
 `-- --job=find`, `-- --limit=N`, `-- --label="..."`, `-- --dry`. About
 $0.0005 a case, roughly $0.10 a run. In the week to 2026-10-22, test runs cost
-$0.31 and students' answers $0.16, so test spend is watched too: re-test a
-change on its own cases (`--case`), and run the whole set once, before merging.
+$0.31 and students' answers $0.16, so test spend is watched too: before
+merging, re-test a change on its own cases (`--case`, or `--job` for every job
+the change can move); the whole set runs once a week, on Thursday, and that run
+catches a regression in a job the change was not expected to touch.
+**Why (owner, 2026-11-24):** running the whole set before every merge made the
+test runs the spikes on the Anthropic Console. 26 Oct to 24 Nov: 4,283 cases
+replayed (16 passes through a ~250-case suite, up to 3 a day), about 91M of
+the month's 129M Haiku tokens and $2.54 against students' $1.53. Each case is
+about 20k input tokens, the same as a student's answer.
 
 **Checks** (`scripts/lib/vEval.ts`, spec `tests/v-eval.test.ts`): tools called
 or not, tappable links, wording that must or must not appear, length, plus
@@ -278,8 +286,8 @@ reads everything else from the stored row.
 
 1. Name the job and the cases that show the problem (add them if missing).
 2. Change `facts.ts` or a tool.
-3. `npm run v:eval -- --case=<ids>` (or `--job=<job>`) while working, then the
-   whole set once before merging.
+3. `npm run v:eval -- --case=<ids>` (or `--job=<job>`) while working and once
+   more before merging. Not the whole set: that is Thursday's run.
 4. Read the report: no case that passed before may now fail without a reason
    written down; mark the `judge` cases.
 5. Ship, and say in the commit which job and cases it moved.
