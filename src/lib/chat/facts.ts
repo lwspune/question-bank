@@ -195,7 +195,7 @@ export const NAV_FACTS: readonly string[] = [
   "/guide: exam strategy guides (which chapters to prioritise, how to spend your time).",
   "/homework: daily homework from past papers, a Homework tab in the header: five past exam questions a day for each exam, the most repeated first, to do on the page. Downloading a day as a PDF goes through the same gate as other downloads (the Premium Pass, or the one free paper). Each subject also has the Top 10 PYQs of every chapter.",
   learnLine(),
-  "/formula: an index of formula sheets, one per notes chapter (formulas, reference tables and common traps), free to read. When a student asks for a chapter's formulas, give the main ones yourself (explain_concept) and link the chapter; /formula is only an extra.",
+  "/formula: an index of formula sheets, one per notes chapter (formulas, reference tables and common traps), free to read. It is an index only: when a student asks for one chapter's formulas, answer as you would any question about that chapter and link the chapter, with /formula as an extra.",
   "/visuals: every picture and interactive diagram from the notes, by exam, subject and chapter, free.",
   "/play: free learning games: quick sums, vocabulary, projectiles, the periodic table, history dates and the map of India.",
   "/store: PYQ ebooks to buy once and keep (the questions asked again and again, and every question chapter by chapter, with full solutions, as PDFs), plus online courses from a partner. The Store button in the header.",
