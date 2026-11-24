@@ -18,7 +18,7 @@ import type { ChapterSearchRow } from "@/lib/chat/chapterSearch";
 import { MIN_QUESTIONS_FOR_LANDING } from "@/lib/questions/landingMin";
 
 /** A chapter V can find that has no landing page: the ids are for its /browse link. */
-export type ShortChapterRow = ChapterSearchRow & { examId: string; subjectId: string; hasLanding: false };
+export type ShortChapterRow = ChapterSearchRow & { chapterId: string; examId: string; subjectId: string; hasLanding: false };
 
 /** One subject's chapters with 1 to 14 questions of the exam's corpus (PYQ, or practice on a practice-only exam). */
 export function shortChapterRows(input: {
