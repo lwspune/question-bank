@@ -183,6 +183,36 @@ describe("diffSeoViews", () => {
     expect(diffSeoViews(a, b).join("\n")).toMatch(/canonical/);
   });
 
+  it("reads a section that arrived late by streaming as if it were in place", () => {
+    // React streams a slow section as a placeholder (+ fallback) and parks the
+    // real content in a hidden div after the footer; the browser swaps it in.
+    // Which sections stream depends on timing, so two runs of the SAME page
+    // can differ. Compare what a browser (and Google's renderer) ends up with.
+    const inline = page('<h1>A</h1><section><a href="/x">X</a><p>Paper text</p></section><footer>F</footer>');
+    const streamed = page(
+      '<h1>A</h1><!--$?--><template id="B:1"></template><p>Loading…</p><!--/$--><footer>F</footer>' +
+        '<div hidden id="S:1"><section><a href="/x">X</a><p>Paper text</p></section></div><script>$RC("B:1","S:1")</script>',
+    );
+    expect(diffSeoViews(seoView(inline), seoView(streamed))).toEqual([]);
+  });
+
+  it("does not count a title streamed into the body as page text", () => {
+    // Next streams metadata into a hidden body block for ordinary browsers;
+    // the title is compared on its own, so it must not also count as text.
+    const inHead = page("<h1>A</h1><p>Body</p>", "<title>Paper · PYQ Vault</title>");
+    const inBody = page('<div hidden=""><title>Paper · PYQ Vault</title></div><h1>A</h1><p>Body</p>');
+    expect(diffSeoViews(seoView(inHead), seoView(inBody))).toEqual([]);
+  });
+
+  it("puts nested streamed sections back too", () => {
+    const inline = page("<h1>A</h1><div><p>Outer</p><div><p>Inner</p></div></div><footer>F</footer>");
+    const streamed = page(
+      '<h1>A</h1><!--$?--><template id="B:2"></template><!--/$--><footer>F</footer>' +
+        '<div hidden id="S:2"><div><p>Outer</p><div><p>Inner</p></div></div></div>',
+    );
+    expect(diffSeoViews(seoView(inline), seoView(streamed))).toEqual([]);
+  });
+
   it("catches a nofollow added to a link", () => {
     const after = seoView(page('<h1>A</h1><a href="/x" rel="nofollow">X</a><p>Hello world</p>', "<title>T</title>"));
     expect(diffSeoViews(base, after).join("\n")).toMatch(/links/);

@@ -43,6 +43,8 @@ import {
   type RequestRecord,
 } from "../lib/pageWeight";
 
+const GOOGLEBOT_UA =
+  "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)";
 const BASELINE = resolve("scripts/perf/page-weight-baseline.json");
 const SETTLE_MS = 12_000;
 const AFTER_SCROLL_MS = 6_000;
@@ -178,7 +180,9 @@ function report(results: Measurement[], regressions: string[] | null, cpu: numbe
 type Saved = { origin: string; status: Record<string, number> };
 
 async function fetchPage(base: string, page: string) {
-  const res = await fetch(urlOf(base, page), { headers: { "user-agent": PHONE_UA }, redirect: "follow" });
+  // As Google's phone crawler: Next serves a crawler the full head (metadata
+  // not streamed), so this is the HTML a search engine actually reads.
+  const res = await fetch(urlOf(base, page), { headers: { "user-agent": GOOGLEBOT_UA }, redirect: "follow" });
   return { status: res.status, html: await res.text() };
 }
 

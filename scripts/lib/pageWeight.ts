@@ -170,7 +170,9 @@ function dropInvisible(html: string): string {
     .replace(/<style\b[\s\S]*?<\/style>/gi, "")
     .replace(/<svg\b[\s\S]*?<\/svg>/gi, "")
     .replace(/<template\b[\s\S]*?<\/template>/gi, "")
-    .replace(/<noscript\b[\s\S]*?<\/noscript>/gi, "");
+    .replace(/<noscript\b[\s\S]*?<\/noscript>/gi, "")
+    // Compared as its own field; Next can stream it into the body for browsers.
+    .replace(/<title\b[\s\S]*?<\/title>/gi, "");
 }
 
 /** Text of an HTML fragment, tags dropped, a space where a tag was. */
@@ -209,8 +211,42 @@ function portableMeta(value: string, origin?: string): string {
 /** Meta tags Next adds in one build mode and not the other: never read by a search engine. */
 const BUILD_ONLY_META = new Set(["viewport", "next-size-adjust"]);
 
+/** End index (exclusive) of the element opened by the `<div` at `start`, counting nested divs. */
+function divEnd(html: string, start: number): number {
+  const re = /<div\b|<\/div>/gi;
+  re.lastIndex = start;
+  let depth = 0;
+  for (let m = re.exec(html); m; m = re.exec(html)) {
+    depth += m[0] === "</div>" ? -1 : 1;
+    if (depth === 0) return m.index + m[0].length;
+  }
+  return html.length;
+}
+
+/**
+ * The page as the browser ends up showing it: each section React streamed late
+ * (a `<template id="B:n">` placeholder plus fallback, the real content parked
+ * in `<div hidden id="S:n">` after the footer) put back where it belongs.
+ * Which sections stream depends on timing, so without this two loads of the
+ * same page compare as different (2026-11-24, the question paper page).
+ */
+export function resolveStreamed(html: string): string {
+  let out = html;
+  for (let guard = 0; guard < 200; guard++) {
+    const open = /<div hidden(?:="[^"]*")? id="S:([0-9a-z]+)"[^>]*>/i.exec(out);
+    if (!open) break;
+    const end = divEnd(out, open.index);
+    const content = out.slice(open.index + open[0].length, end - "</div>".length);
+    out = out.slice(0, open.index) + out.slice(end);
+    const holder = new RegExp(`<!--\\$\\?--><template id="B:${open[1]}"></template>[\\s\\S]*?<!--/\\$-->`);
+    out = holder.test(out) ? out.replace(holder, () => content) : out;
+  }
+  return out;
+}
+
 /** `origin` = the server the HTML came from, so two servers compare as one. */
-export function seoView(html: string, origin?: string): SeoView {
+export function seoView(rawHtml: string, origin?: string): SeoView {
+  const html = resolveStreamed(rawHtml);
   const title = textOf(html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] ?? "");
 
   const meta: Record<string, string> = {};
