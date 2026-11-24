@@ -83,6 +83,45 @@ Where the sent bytes go, notes page, page open:
 
 ---
 
+### Baseline, all page types (2026-11-24, item 0's first run)
+
+`npm run audit:page-weight -- --save-baseline`, live site, one run per page.
+Saved in `scripts/perf/page-weight-baseline.json`.
+
+| Page | Sent at open | Sent scrolled | Unpacked scrolled | Requests open / scrolled | Blocking | Elements |
+|---|---|---|---|---|---|---|
+| `/` | 1,083 | 1,930 | 8,375 | 82 / 202 | 1.0 s | 2,288 |
+| `/browse` | 966 | 966 | 3,209 | 94 / 99 | 0.3 s | 717 |
+| `/questions/nda/mathematics/3d-geometry` | 1,158 | 1,958 | 9,701 | 96 / 172 | 1.2 s | 15,257 |
+| `/mock` | 1,065 | 1,653 | 6,751 | 86 / 168 | 0.3 s | 872 |
+| `/notes` | 1,122 | 1,952 | 8,464 | 98 / 253 | 0.3 s | 963 |
+| `/notes/nda` | 1,173 | 1,548 | 6,539 | 97 / 150 | 0.2 s | 1,004 |
+| notes chapter (HSC Vectors) | 1,278 | 1,811 | 8,038 | 99 / 160 | 0.4 s | 5,661 |
+| notes subtopic (Triple products) | 1,143 | 1,599 | 6,992 | 88 / 154 | 1.3 s | 10,753 |
+| board chapter (HSC Vectors) | 1,146 | 1,147 | 7,330 | 54 / 56 | **3.5 s** | **72,850** |
+| question paper (CBSE 10 Maths 2022) | **2,854** | 3,240 | 7,750 | 90 / 148 | 0.3 s | 1,758 |
+| `/guide/nda-maths` | 1,140 | 1,544 | 6,378 | 92 / 169 | 0.2 s | 1,908 |
+| blog article | 1,024 | 1,401 | 5,703 | 82 / 137 | 0.2 s | 776 |
+| `/pricing` | 1,052 | 1,080 | 3,407 | 81 / 89 | 0.3 s | 312 |
+| `/store` | 1,111 | 1,823 | 7,999 | 82 / 174 | 0.3 s | 1,730 |
+
+What the full run adds to section 1:
+
+- **Scrolling to the foot adds 400 to 850 KB sent on 11 of 14 pages.** On the
+  homepage it fetches 85 more pages. This is item 1's target, and it is
+  site-wide, not a notes problem.
+- **The board chapter is the heaviest page measured:** 72,850 elements, its
+  HTML 5.2 MB unpacked (278 KB sent), 3.5 s of freeze. A board chapter prints
+  every question with its full model answer on one page.
+- **The question paper sends 2.85 MB, of which 1.8 MB is images.** Two figures
+  (`cbse-10-pyq/5f965fae14ac.png`, `b1d399023ef8.png`) are 808 KB each, and
+  question figures are not marked to load only when scrolled near.
+- **Blocking time is noisy.** Triple products read 2.8 s in the first run and
+  1.3 s here. Compare blocking time only as the median of `--runs=3` or more.
+  Sent bytes and request counts are stable from run to run.
+
+---
+
 ## 2. The two rules every item must pass
 
 The owner's condition: **no impact on students' screens, no impact on SEO.**
@@ -286,6 +325,26 @@ differences outside the page data block.
 
 **Rule B:** identical markup means identical pixels. Sheets on five notes
 pages, light and dark.
+
+### Item 5. Question figures: load when near, and the oversized files (found in the baseline)
+
+- **Load when near.** Add `loading="lazy"` and `decoding="async"` to question
+  and solution figures below the first screen. The `<img src>` and `alt` stay in
+  the HTML, so search engines read the same page, and an image loads before it
+  scrolls into view. Rule B: the sheet must show the same page, and the image
+  must have its width and height set, so nothing shifts when it arrives.
+- **The oversized files.** List every stored figure over 200 KB
+  (`question-images` bucket) with its question. A re-compression keeps the
+  same pixels (a lossless PNG pass), so the figure looks identical. This
+  rewrites stored files, so it needs the owner's OK and a backup first, and
+  is planned on its own.
+
+### Item 6. The board chapter page (found in the baseline)
+
+72,850 elements and 3.5 s of freeze. Not designed here. It needs its own
+look at how the reader renders a chapter's answers, under the same two rules.
+The answers are in the server HTML today, which search engines read, so any
+change must keep them there.
 
 ### Declined
 
