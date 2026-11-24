@@ -8,7 +8,7 @@
  * because storage can be blocked (private mode, cleared site data), and then
  * the page simply does not check; the webhook and the payment check remain.
  */
-import { ORDER_ID_RE } from "./returnCheckHttp";
+import { ORDER_ID_RE } from "./orderId";
 
 /** A UPI payment that has not landed in half an hour is not coming back to this page. */
 export const PENDING_ORDER_MAX_AGE_MS = 30 * 60 * 1000;
