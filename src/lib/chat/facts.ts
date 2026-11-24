@@ -19,7 +19,8 @@ import { NOT_UNDERSTOOD } from "./understood";
 import { explainStepMessage } from "./stepChips";
 import { languageLine, type VLanguage } from "./language";
 import { followUpTailLine } from "./followUp";
-import type { ExamEntry } from "@/lib/exam/examContext";
+import { isAskVMessage } from "./askVEvent";
+import { EXAM_REGISTRY, type ExamEntry } from "@/lib/exam/examContext";
 
 export type ChatExamFact = {
   /** The registry slug: names the exam's page that lists every chapter. Absent in the FAQ's own facts. */
@@ -171,9 +172,19 @@ export function buildIntlFreeFacts(limits: FreeLimits | null): string[] {
   ];
 }
 
+/** The Learn courses, from the registry's learnPath, so a new course reaches V without an edit here. */
+function learnLine(): string {
+  const courses = EXAM_REGISTRY.filter((e) => e.learnPath).map((e) => `${e.displayName} (${e.learnPath})`);
+  return `/learn: step-by-step Maths lessons, one idea at a time: a short lesson, then questions until the student has it, with the mistake behind each wrong answer explained. Courses: ${courses.join(", ")}. In the account menu.`;
+}
+
 /** Hand-written: there's no registry for "what's at this route", and building
  *  one for a handful of static pointers would be over-engineering. Every path
- *  here may be linked in a reply (lib/chat/replyLinks.ts). */
+ *  here may be linked in a reply (lib/chat/replyLinks.ts).
+ *  tests/chat-nav-coverage.test.ts fails on a page under src/app that is
+ *  neither here nor on its NOT_FOR_V list (2026-11-24: V told a student there
+ *  was no homework section). A page that changes what it does keeps its
+ *  address, so update its line here in the same branch. */
 export const NAV_FACTS: readonly string[] = [
   "/browse: filter and preview the question bank by exam, chapter, subtopic, difficulty and year (free, no account needed); its exam picker lists every exam we cover.",
   "/mock: real past papers as timed, auto-graded online tests.",
@@ -182,7 +193,19 @@ export const NAV_FACTS: readonly string[] = [
   "/board: textbook solutions for board exams, chapter by chapter, plus each chapter's Top 10 most-repeated PYQs.",
   "/notes: teaching notes per chapter, free to read.",
   "/guide: exam strategy guides (which chapters to prioritise, how to spend your time).",
+  "/homework: daily homework from past papers, a Homework tab in the header: five past exam questions a day for each exam, the most repeated first, to do on the page. Downloading a day as a PDF goes through the same gate as other downloads (the Premium Pass, or the one free paper). Each subject also has the Top 10 PYQs of every chapter.",
+  learnLine(),
+  "/formula: an index of formula sheets, one per notes chapter (formulas, reference tables and common traps), free to read. It is an index only: when a student asks for one chapter's formulas, answer as you would any question about that chapter and link the chapter, with /formula as an extra.",
+  "/visuals: every picture and interactive diagram from the notes, by exam, subject and chapter, free.",
+  "/play: free learning games: quick sums, vocabulary, projectiles, the periodic table, history dates and the map of India.",
+  "/store: PYQ ebooks to buy once and keep (the questions asked again and again, and every question chapter by chapter, with full solutions, as PDFs), plus online courses from a partner. The Store button in the header.",
+  "/score-calculator: free answer-key score calculators for JEE Main and SSC exams: the student brings their response sheet and gets their marks on the official key, part by part.",
+  "/classes: offline classroom coaching in Pune (NDA, CDS, AFCAT, SPI, MHT-CET, JEE, 10th and 12th boards, SSC CGL). A signed-in student leaves their number and the team calls. In the account menu.",
+  "/start: how PYQ Vault works: sit a real past paper, fix what you missed five questions at a time, and watch your chapter map fill.",
+  "/blog: exam news, dates and paper analysis; every date links to the official notice.",
+  "/results: PYQ Vault students who cleared their exams, shown with their permission.",
   "/drill: practise the questions you got wrong (needs a free account).",
+  "/review: the questions a student marked to review and the ones waiting to be fixed (needs a free account).",
   "/saved: the questions a student saved to come back to (needs a free account).",
   "/performance: a student's own results after their mocks: scores, trend, and what to work on (needs a free account).",
   "/me/map: a student's mastery map, chapter by chapter (needs a free account).",
@@ -190,11 +213,14 @@ export const NAV_FACTS: readonly string[] = [
   "Build a practice test: a button in this chat window; V builds a test from the chapters, length and difficulty the student picks.",
   "How's my progress: a button beside it in this chat window for a signed-in student who has practised; it shows a card of their own numbers (this week's answers, mistakes fixed, exam covered, mocks, chapters, notes read) with Fix my mistakes (/drill) and View full performance (/performance).",
   "My plan for today: a button in this chat window for a student already on the board plan; it pins today's card of board plan tasks at the top of this chat for the day, each task linked to its work. The board plan is only in this chat and takes no new starters.",
-  "/signup: create a free account (Google or email).",
+  "/signup: create a free account (Google or email). /login: sign in to an existing account.",
+  "/account: a student's account and pass.",
   "/pricing: the Premium Pass and how to buy it.",
   "Ask a parent to pay: a student who cannot pay themselves taps \"Ask a parent to pay\" under a pass on /pricing, or under a pass offer when a free limit is reached. It makes a payment link to send by WhatsApp (or share or copy); the parent pays by UPI, card or netbanking with no account, and the pass comes to the student's account.",
   "Sign out: tap the round letter button at the top right of any page (the account menu), then Sign out at the bottom of the menu.",
   "/about: who runs PYQ Vault, and the contact form to write to the team about a payment, the pass or an account problem.",
+  "/contact: how to write to the team. /feedback: send the team feedback about the site.",
+  "/refunds, /terms, /privacy: the refund policy, the terms of use and the privacy policy.",
   "/app: how to install the PYQ Vault app. There is no app in the Play Store or App Store, but the site installs like one: on Android, /app has an Install button (or Chrome's three-dot menu, then Add to Home screen); on iPhone, Safari's Share button, then Add to Home Screen. It then opens from the home screen in its own window, like an app.",
 ];
 
@@ -495,6 +521,19 @@ INTERNATIONAL EXAMS (on our international site, intl.pyqvault.com; each page ope
 ${facts.abroad.join("\n")}`
       : ""
   }`;
+}
+
+/**
+ * The tapped question, said again straight after the student's message
+ * (2026-11-24). On 22-23 Nov V twice answered an Ask V tap with "I can't see
+ * which question is on your screen": named only in the system tail, the tap
+ * was lost late in a conversation of earlier "Explain this question." turns.
+ * Only on the Ask V message itself; a typed follow-up about the same question
+ * and a follow-up card (which builds on the earlier explanation) get none.
+ */
+export function tapTurnNote(input: { questionId: string | null; message: string; followsUp: boolean }): string | null {
+  if (!input.questionId || input.followsUp || !isAskVMessage(input.message)) return null;
+  return `The student just tapped Ask V on question ${input.questionId}. That is the question they mean: call explain_question for it now, and do not ask which question.`;
 }
 
 /**

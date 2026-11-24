@@ -168,7 +168,9 @@ describe("buildDayCard", () => {
     );
     expect(card?.kind).toBe("since");
     expect(card?.greeting).toBe("Good to see you again. Here's where you left off.");
-    expect(card?.title).toBe("Since your last visit");
+    // Named for the card's exam (2026-11-24): its answers are this exam's, and a student who practised
+    // another exam since read "Since your last visit" as a wrong claim about the site.
+    expect(card?.title).toBe("Since your last MHT-CET practice");
     expect(card?.subtitle).toBe("Thu 12 Nov · MHT-CET");
     expect(card?.rows).toEqual([
       { label: "Last time", value: "12 questions, 8 right (67%)", detail: "Mostly Probability" },
