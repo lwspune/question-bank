@@ -31,6 +31,7 @@ import { dayStudyLine, type StudyRow } from "@/lib/studyTime/report";
 import {
   buildDayCard,
   DAY_LOOKBACK_DAYS,
+  daysAwayOf,
   istDay,
   COUNTDOWN_DAYS,
   COUNTDOWN_MOCK_DAYS,
