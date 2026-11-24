@@ -7,11 +7,13 @@
  * already counted is free (no double-charge). Soft nudge over PUBLIC content — the
  * answer is in the payload — so a client meter is the right tool.
  *
- * 10, not 3, since 2026-10-01: Clarity recordings showed anon visitors (most of
- * them arriving from ChatGPT on a /questions chapter page) spending all 3 on the
+ * 5 since 2026-11-24 (owner: five answers show enough to sign up for; experiment
+ * "signed-out-answers" in lib/growth/registry). It was 10 from 2026-10-01, and 3
+ * before that: Clarity recordings then showed anon visitors (most of them
+ * arriving from ChatGPT on a /questions chapter page) spending all 3 on the
  * landing page, tapping the 4th card repeatedly, and leaving without signing in.
  */
-export const FREE_REVEAL_LIMIT = 10;
+export const FREE_REVEAL_LIMIT = 5;
 
 /**
  * A signed-in student's free answers today (2026-10-05, owner: 50 a day, on the

@@ -40,13 +40,13 @@ describe("revealDecision", () => {
     expect(revealDecision({ signedIn: false, revealedIds: ids, questionId: "new" }).allow).toBe(false);
   });
 
-  // Product decision 2026-10-01: Clarity showed anon visitors walled at the 4th
-  // reveal (3 was the limit) and almost none signed in. Ten is the new budget.
-  it("lets an anon viewer reveal 10 new questions and walls the 11th", () => {
-    const nine = Array.from({ length: 9 }, (_, i) => `q${i}`);
-    expect(revealDecision({ signedIn: false, revealedIds: nine, questionId: "q9" }).allow).toBe(true);
-    const ten = Array.from({ length: 10 }, (_, i) => `q${i}`);
-    expect(revealDecision({ signedIn: false, revealedIds: ten, questionId: "q10" }).allow).toBe(false);
+  // Owner, 2026-11-24: five answers show enough to sign up for (was 10 from
+  // 2026-10-01, 3 before that). Judged by experiment "signed-out-answers".
+  it("lets an anon viewer reveal 5 new questions and walls the 6th", () => {
+    const four = Array.from({ length: 4 }, (_, i) => `q${i}`);
+    expect(revealDecision({ signedIn: false, revealedIds: four, questionId: "q4" }).allow).toBe(true);
+    const five = Array.from({ length: 5 }, (_, i) => `q${i}`);
+    expect(revealDecision({ signedIn: false, revealedIds: five, questionId: "q5" }).allow).toBe(false);
   });
 });
 
