@@ -1,12 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowDown, ArrowUp, ChevronsUpDown, Download } from "lucide-react";
+import { ArrowDown, ArrowUp, ChevronLeft, ChevronRight, ChevronsUpDown, Download } from "lucide-react";
 import StatCard from "@/app/dashboard/StatCard";
 import WhatsappLink from "@/components/contact/WhatsappLink";
 import { checkInMessage } from "@/lib/students/checkIn";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
+import { paginate, visiblePages } from "@/lib/pagination";
+import { cn } from "@/lib/utils";
 import {
   EXAM_UNSPECIFIED,
   filterRoster,
@@ -34,6 +36,9 @@ const WINDOWS: { id: string; label: string; window: TimeWindow }[] = [
   { id: "never", label: "Never active", window: { kind: "never" } },
 ];
 
+/** Rows per table page. The filters, stat cards and CSV still cover every match. */
+const PAGE_SIZE = 50;
+
 type Column = { key: SortKey; label: string; help: string; numeric: boolean };
 
 const COLUMNS: Column[] = [
@@ -54,6 +59,8 @@ export default function StudentRosterClient({ rows }: { rows: StudentRosterRow[]
   const [search, setSearch] = useState("");
   const [sortKey, setSortKey] = useState<SortKey>("signedUp");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
+  const [page, setPage] = useState(1);
+  const tableTop = useRef<HTMLDivElement>(null);
 
   // One clock for filtering and the summary, so a row can't be "active" for one
   // and not the other. Recomputed per render, which is fine for a day-scale window.
@@ -67,11 +74,22 @@ export default function StudentRosterClient({ rows }: { rows: StudentRosterRow[]
 
   const summary = useMemo(() => summariseRoster(visible, now), [visible, now]);
 
+  // Clamped, so a page number left over from a wider filter can never show an empty table.
+  const shown = paginate(visible, page, PAGE_SIZE);
+
+  /** Bottom pager: bring the table's top back into view, or the new page starts off-screen. */
+  function goToPage(p: number, scroll: boolean) {
+    setPage(p);
+    if (scroll) tableTop.current?.scrollIntoView({ block: "start" });
+  }
+
   function toggleExam(slug: string) {
     setExams((prev) => (prev.includes(slug) ? prev.filter((s) => s !== slug) : [...prev, slug]));
+    setPage(1);
   }
 
   function sortOn(key: SortKey) {
+    setPage(1);
     if (key === sortKey) {
       setSortDir((d) => (d === "asc" ? "desc" : "asc"));
     } else {
@@ -109,7 +127,10 @@ export default function StudentRosterClient({ rows }: { rows: StudentRosterRow[]
         <div className="flex flex-wrap items-center gap-2">
           <input
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setPage(1);
+            }}
             placeholder="Search name, email or mobile…"
             aria-label="Search students"
             className="h-9 min-w-[16rem] flex-1 rounded-md border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
@@ -120,7 +141,10 @@ export default function StudentRosterClient({ rows }: { rows: StudentRosterRow[]
           <select
             id="date-field"
             value={dateField}
-            onChange={(e) => setDateField(e.target.value as DateField)}
+            onChange={(e) => {
+              setDateField(e.target.value as DateField);
+              setPage(1);
+            }}
             className="h-9 rounded-md border bg-background px-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             <option value="lastActive">Active in</option>
@@ -132,7 +156,10 @@ export default function StudentRosterClient({ rows }: { rows: StudentRosterRow[]
                 key={w.id}
                 type="button"
                 aria-pressed={windowId === w.id}
-                onClick={() => setWindowId(w.id)}
+                onClick={() => {
+                  setWindowId(w.id);
+                  setPage(1);
+                }}
                 className={`rounded-md border px-2.5 py-1.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
                   windowId === w.id ? "border-brand bg-brand text-brand-foreground" : "hover:bg-muted"
                 }`}
@@ -164,7 +191,10 @@ export default function StudentRosterClient({ rows }: { rows: StudentRosterRow[]
           {exams.length > 0 && (
             <button
               type="button"
-              onClick={() => setExams([])}
+              onClick={() => {
+                setExams([]);
+                setPage(1);
+              }}
               className="ml-1 rounded-md px-2 py-1 text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               Clear
@@ -182,112 +212,204 @@ export default function StudentRosterClient({ rows }: { rows: StudentRosterRow[]
           No students match these filters.
         </p>
       ) : (
-        <div className="overflow-x-auto rounded-lg border">
-          <table className="w-full min-w-[900px] text-sm">
-            <thead className="bg-muted/50 text-xs uppercase tracking-wide text-muted-foreground">
-              <tr>
-                {COLUMNS.map((c) => (
-                  <SortHeader
-                    key={c.key}
-                    column={c}
-                    active={sortKey === c.key}
-                    dir={sortDir}
-                    onClick={() => sortOn(c.key)}
-                  />
-                ))}
-                <th scope="col" className="px-3 py-2 text-left font-medium">
-                  Target exams
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y">
-              {visible.map((s) => (
-                <tr key={s.id} className="group hover:bg-accent/40">
-                  <td className="max-w-[16rem] px-3 py-2">
-                    <Link
-                      // One per student — 315 rows today, each pointing at a
-                      // page that re-reads that student whole. Prefetching the
-                      // visible ones is a thundering herd; see
-                      // tests/dashboard-students-no-prefetch.test.ts.
-                      prefetch={false}
-                      href={`/dashboard/students/${s.id}`}
-                      className="block min-w-0 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                    >
-                      <span className="block truncate font-medium group-hover:text-brand-accent" title={s.name}>
-                        {s.name}
-                      </span>
-                    </Link>
-                    {/* Outside the row link on purpose: an anchor nested in an
-                        anchor is invalid HTML, and this one has to be its own. */}
-                    <span className="block truncate text-xs text-muted-foreground" title={s.email}>
-                      <WhatsappLink mobile={s.mobile} icon={false}>
-                        {formatMobile(s.mobile)}
-                      </WhatsappLink>{" "}
-                      · {s.email}
-                    </span>
-                    {s.mobile && (
-                      <WhatsappLink
-                        mobile={s.mobile}
-                        text={checkInMessage(s.name, s.checkInExam)}
-                        className="mt-1 rounded-md border px-2 py-0.5 text-xs font-medium text-foreground"
-                      >
-                        Message
-                      </WhatsappLink>
-                    )}
-                  </td>
-                  <td className="px-3 py-2 tabular-nums">
-                    {s.mocksSubmitted}
-                    {s.mocksStarted > s.mocksSubmitted && (
-                      <span className="text-xs text-muted-foreground"> /{s.mocksStarted}</span>
-                    )}
-                  </td>
-                  {/* No graded attempt is a dash, never 0% — "not scored yet" is not "scored zero". */}
-                  <td className="px-3 py-2 tabular-nums">{s.avgPct === null ? "—" : `${s.avgPct}%`}</td>
-                  <td className="px-3 py-2 tabular-nums">{s.qsAnswered.toLocaleString("en-IN")}</td>
-                  <td className="px-3 py-2 tabular-nums">
-                    {s.notesSubtopics}
-                    {s.notesMastered > 0 && (
-                      <span className="text-xs text-emerald-600 dark:text-emerald-400"> ·{s.notesMastered}★</span>
-                    )}
-                  </td>
-                  <td className="px-3 py-2 tabular-nums">{s.bookmarks}</td>
-                  <td className="px-3 py-2 tabular-nums text-muted-foreground">{fmtDate(s.lastActive)}</td>
-                  <td className="px-3 py-2 tabular-nums text-muted-foreground">{fmtDate(s.signedUp)}</td>
-                  <td className="px-3 py-2">
-                    {s.targetExams.length === 0 ? (
-                      s.guessedExam ? (
-                        // Dashed + "guess": the student never chose this; it is
-                        // our guess (lib/students/rosterExamGuess.ts).
-                        <span
-                          className="rounded border border-dashed px-1.5 py-0.5 text-[11px] italic text-muted-foreground"
-                          title={
-                            s.guessedExam.source === "practice"
-                              ? "Our guess, from the questions they practised"
-                              : "Our guess, from the page they landed on"
-                          }
-                        >
-                          {s.guessedExam.slug} · guess
-                        </span>
-                      ) : (
-                        <span className="text-xs text-muted-foreground">—</span>
-                      )
-                    ) : (
-                      <span className="flex flex-wrap gap-1">
-                        {s.targetExams.map((x) => (
-                          <span key={x} className="rounded border px-1.5 py-0.5 text-[11px] text-muted-foreground">
-                            {x}
-                          </span>
-                        ))}
-                      </span>
-                    )}
-                  </td>
+        <div ref={tableTop} className="scroll-mt-4 space-y-3">
+          <RosterPager shown={shown} onPage={(p) => goToPage(p, false)} />
+          <div className="overflow-x-auto rounded-lg border">
+            <table className="w-full min-w-[900px] text-sm">
+              <thead className="bg-muted/50 text-xs uppercase tracking-wide text-muted-foreground">
+                <tr>
+                  {COLUMNS.map((c) => (
+                    <SortHeader
+                      key={c.key}
+                      column={c}
+                      active={sortKey === c.key}
+                      dir={sortDir}
+                      onClick={() => sortOn(c.key)}
+                    />
+                  ))}
+                  <th scope="col" className="px-3 py-2 text-left font-medium">
+                    Target exams
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y">
+                {shown.items.map((s) => (
+                  <tr key={s.id} className="group hover:bg-accent/40">
+                    <td className="max-w-[16rem] px-3 py-2">
+                      <Link
+                        // One per student — 315 rows today, each pointing at a
+                        // page that re-reads that student whole. Prefetching the
+                        // visible ones is a thundering herd; see
+                        // tests/dashboard-students-no-prefetch.test.ts.
+                        prefetch={false}
+                        href={`/dashboard/students/${s.id}`}
+                        className="block min-w-0 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      >
+                        <span className="block truncate font-medium group-hover:text-brand-accent" title={s.name}>
+                          {s.name}
+                        </span>
+                      </Link>
+                      {/* Outside the row link on purpose: an anchor nested in an
+                          anchor is invalid HTML, and this one has to be its own. */}
+                      <span className="block truncate text-xs text-muted-foreground" title={s.email}>
+                        <WhatsappLink mobile={s.mobile} icon={false}>
+                          {formatMobile(s.mobile)}
+                        </WhatsappLink>{" "}
+                        · {s.email}
+                      </span>
+                      {s.mobile && (
+                        <WhatsappLink
+                          mobile={s.mobile}
+                          text={checkInMessage(s.name, s.checkInExam)}
+                          className="mt-1 rounded-md border px-2 py-0.5 text-xs font-medium text-foreground"
+                        >
+                          Message
+                        </WhatsappLink>
+                      )}
+                    </td>
+                    <td className="px-3 py-2 tabular-nums">
+                      {s.mocksSubmitted}
+                      {s.mocksStarted > s.mocksSubmitted && (
+                        <span className="text-xs text-muted-foreground"> /{s.mocksStarted}</span>
+                      )}
+                    </td>
+                    {/* No graded attempt is a dash, never 0% — "not scored yet" is not "scored zero". */}
+                    <td className="px-3 py-2 tabular-nums">{s.avgPct === null ? "—" : `${s.avgPct}%`}</td>
+                    <td className="px-3 py-2 tabular-nums">{s.qsAnswered.toLocaleString("en-IN")}</td>
+                    <td className="px-3 py-2 tabular-nums">
+                      {s.notesSubtopics}
+                      {s.notesMastered > 0 && (
+                        <span className="text-xs text-emerald-600 dark:text-emerald-400"> ·{s.notesMastered}★</span>
+                      )}
+                    </td>
+                    <td className="px-3 py-2 tabular-nums">{s.bookmarks}</td>
+                    <td className="px-3 py-2 tabular-nums text-muted-foreground">{fmtDate(s.lastActive)}</td>
+                    <td className="px-3 py-2 tabular-nums text-muted-foreground">{fmtDate(s.signedUp)}</td>
+                    <td className="px-3 py-2">
+                      {s.targetExams.length === 0 ? (
+                        s.guessedExam ? (
+                          // Dashed + "guess": the student never chose this; it is
+                          // our guess (lib/students/rosterExamGuess.ts).
+                          <span
+                            className="rounded border border-dashed px-1.5 py-0.5 text-[11px] italic text-muted-foreground"
+                            title={
+                              s.guessedExam.source === "practice"
+                                ? "Our guess, from the questions they practised"
+                                : "Our guess, from the page they landed on"
+                            }
+                          >
+                            {s.guessedExam.slug} · guess
+                          </span>
+                        ) : (
+                          <span className="text-xs text-muted-foreground">—</span>
+                        )
+                      ) : (
+                        <span className="flex flex-wrap gap-1">
+                          {s.targetExams.map((x) => (
+                            <span key={x} className="rounded border px-1.5 py-0.5 text-[11px] text-muted-foreground">
+                              {x}
+                            </span>
+                          ))}
+                        </span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <RosterPager shown={shown} onPage={(p) => goToPage(p, true)} />
         </div>
       )}
     </div>
+  );
+}
+
+function RosterPager({
+  shown,
+  onPage,
+}: {
+  shown: { page: number; totalPages: number; from: number; to: number; total: number };
+  onPage: (page: number) => void;
+}) {
+  const { page, totalPages, from, to, total } = shown;
+  const range = (
+    <p className="text-sm tabular-nums text-muted-foreground">
+      Showing {from.toLocaleString("en-IN")}–{to.toLocaleString("en-IN")} of {total.toLocaleString("en-IN")}
+    </p>
+  );
+  if (totalPages <= 1) return range;
+
+  return (
+    <nav aria-label="Student list pages" className="flex flex-wrap items-center justify-between gap-2">
+      {range}
+      {/* Phone: Prev / Page X of Y / Next, the /browse pager's compact bar. */}
+      <div className="flex items-center gap-2 sm:hidden">
+        <PagerButton disabled={page === 1} onClick={() => onPage(page - 1)} label="Previous page">
+          <ChevronLeft className="h-4 w-4" aria-hidden />
+          <span className="ml-1">Prev</span>
+        </PagerButton>
+        <span className="text-sm tabular-nums text-muted-foreground">
+          Page {page} of {totalPages}
+        </span>
+        <PagerButton disabled={page === totalPages} onClick={() => onPage(page + 1)} label="Next page">
+          <span className="mr-1">Next</span>
+          <ChevronRight className="h-4 w-4" aria-hidden />
+        </PagerButton>
+      </div>
+      <div className="hidden items-center gap-1 sm:flex">
+        <PagerButton disabled={page === 1} onClick={() => onPage(page - 1)} label="Previous page">
+          <ChevronLeft className="h-4 w-4" aria-hidden />
+        </PagerButton>
+        {visiblePages(page, totalPages).map((p, i) =>
+          p === "…" ? (
+            <span key={`gap-${i}`} className="px-2 text-sm text-muted-foreground" aria-hidden>
+              …
+            </span>
+          ) : (
+            <PagerButton key={p} active={p === page} onClick={() => onPage(p)} label={`Page ${p}`}>
+              {p}
+            </PagerButton>
+          )
+        )}
+        <PagerButton disabled={page === totalPages} onClick={() => onPage(page + 1)} label="Next page">
+          <ChevronRight className="h-4 w-4" aria-hidden />
+        </PagerButton>
+      </div>
+    </nav>
+  );
+}
+
+function PagerButton({
+  active,
+  disabled,
+  onClick,
+  label,
+  children,
+}: {
+  active?: boolean;
+  disabled?: boolean;
+  onClick: () => void;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      aria-label={label}
+      aria-current={active ? "page" : undefined}
+      className={cn(
+        "inline-flex h-9 min-w-9 items-center justify-center rounded-md px-3 text-sm tabular-nums focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+        active
+          ? "bg-primary text-primary-foreground"
+          : "border border-input bg-background transition-colors hover:bg-accent",
+        disabled && "pointer-events-none opacity-40"
+      )}
+    >
+      {children}
+    </button>
   );
 }
 
