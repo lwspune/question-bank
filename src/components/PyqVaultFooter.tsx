@@ -1,4 +1,4 @@
-import Link from "next/link";
+import QuietLink from "@/components/QuietLink";
 import { footerLinks, legalLinks } from "@/lib/nav/footerLinks";
 
 /**
@@ -30,9 +30,9 @@ export default function PyqVaultFooter() {
         */}
         <p>
           <span className="font-medium">PYQ Vault</span>, built in Pune by{" "}
-          <Link href="/about" className="underline hover:text-foreground">
+          <QuietLink href="/about" className="underline hover:text-foreground">
             Vilas Shinde
-          </Link>
+          </QuietLink>
           . Free to browse, forever.
         </p>
 
@@ -58,12 +58,12 @@ export default function PyqVaultFooter() {
                     </li>
                   ) : (
                     <li key={link.href}>
-                      <Link
+                      <QuietLink
                         href={link.href}
                         className="transition-colors hover:text-foreground"
                       >
                         {link.label}
-                      </Link>
+                      </QuietLink>
                     </li>
                   )
                 )}
@@ -77,13 +77,13 @@ export default function PyqVaultFooter() {
           className="mt-8 flex flex-wrap gap-x-4 gap-y-2 border-t pt-4"
         >
           {legalLinks().map((link) => (
-            <Link
+            <QuietLink
               key={link.href}
               href={link.href}
               className="transition-colors hover:text-foreground"
             >
               {link.label}
-            </Link>
+            </QuietLink>
           ))}
         </nav>
       </div>

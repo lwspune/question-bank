@@ -1,4 +1,4 @@
-import Link from "next/link";
+import QuietLink from "@/components/QuietLink";
 import { legalLinks } from "@/lib/nav/footerLinks";
 import { LIVE_INTL_EXAMS } from "@/lib/sites/intl";
 
@@ -23,22 +23,22 @@ export default function IntlFooter() {
               <ul className="space-y-1.5">
                 {exam.notesPath && (
                   <li>
-                    <Link href={exam.notesPath} className="transition-colors hover:text-foreground">
+                    <QuietLink href={exam.notesPath} className="transition-colors hover:text-foreground">
                       Notes
-                    </Link>
+                    </QuietLink>
                   </li>
                 )}
                 <li>
-                  <Link href={`/mock/exam/${exam.slug}`} className="transition-colors hover:text-foreground">
+                  <QuietLink href={`/mock/exam/${exam.slug}`} className="transition-colors hover:text-foreground">
                     Mock tests
-                  </Link>
+                  </QuietLink>
                 </li>
                 {/* Formula sheets are built from notes, so an exam without notes has none. */}
                 {exam.notesPath && (
                   <li>
-                    <Link href={`/formula/${exam.slug}`} className="transition-colors hover:text-foreground">
+                    <QuietLink href={`/formula/${exam.slug}`} className="transition-colors hover:text-foreground">
                       Formula sheets
-                    </Link>
+                    </QuietLink>
                   </li>
                 )}
               </ul>
@@ -48,23 +48,23 @@ export default function IntlFooter() {
             <h2 className="mb-2 text-[11px] font-medium uppercase tracking-wide text-foreground/70">Account</h2>
             <ul className="space-y-1.5">
               <li>
-                <Link href="/pricing" className="transition-colors hover:text-foreground">
+                <QuietLink href="/pricing" className="transition-colors hover:text-foreground">
                   Premium Pass
-                </Link>
+                </QuietLink>
               </li>
               <li>
-                <Link href="/account" className="transition-colors hover:text-foreground">
+                <QuietLink href="/account" className="transition-colors hover:text-foreground">
                   Your account
-                </Link>
+                </QuietLink>
               </li>
             </ul>
           </div>
         </nav>
         <nav aria-label="Legal" className="mt-8 flex flex-wrap gap-x-4 gap-y-2 border-t pt-4">
           {legalLinks().map((link) => (
-            <Link key={link.href} href={link.href} className="transition-colors hover:text-foreground">
+            <QuietLink key={link.href} href={link.href} className="transition-colors hover:text-foreground">
               {link.label}
-            </Link>
+            </QuietLink>
           ))}
         </nav>
       </div>
