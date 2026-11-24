@@ -5,8 +5,8 @@
 import { NextResponse } from "next/server";
 import type { ConfirmState } from "./confirmOrder";
 
-/** Razorpay order ids, checked before any call leaves our server. */
-export const ORDER_ID_RE = /^order_[A-Za-z0-9]{1,40}$/;
+/** Razorpay order ids: one rule for the routes and the browser (lib/billing/orderId.ts). */
+export { ORDER_ID_RE } from "./orderId";
 
 /** Checks per caller an hour: a page asks once per return, so a few dozen covers any real buyer. */
 export const RETURN_CHECKS_PER_HOUR = 60;
