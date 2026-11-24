@@ -105,6 +105,22 @@ describe("topProgress: the next chapter", () => {
     expect(topProgress(items, later).next).toMatchObject({ name: "Probability", done: 3 });
   });
 
+  it("a mock or Fix your mistakes answer counts towards done but never picks the next chapter", () => {
+    const events: ProgressEvent[] = [
+      ...seen(["p1", "p2"], "2026-11-20T10:00:00Z"),
+      { ...ev("t1", "answer_wrong", "2026-11-21T10:00:00Z"), surface: "mock" },
+      { ...ev("a1", "answer_correct", "2026-11-22T10:00:00Z"), surface: "drill" },
+    ];
+    const p = topProgress(items, events);
+    expect(p.next).toMatchObject({ name: "Probability", done: 2 });
+    expect(p.chapters.find((c) => c.name === "Trigonometry")).toMatchObject({ done: 1, started: true });
+  });
+
+  it("falls back to the first chapter not done when only mocks touched anything", () => {
+    const events: ProgressEvent[] = [{ ...ev("t1", "answer_wrong", "2026-11-21T10:00:00Z"), surface: "mock" }];
+    expect(topProgress(items, events).next).toMatchObject({ name: "Algebra", started: false });
+  });
+
   it("is null when every chapter is done", () => {
     const p = topProgress(items, seen([...range("a", 1, 10), ...range("p", 1, 10), ...range("t", 1, 10)]));
     expect(p.next).toBeNull();

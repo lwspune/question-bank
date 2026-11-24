@@ -13,10 +13,11 @@
  * reveal or pick, made anywhere on the site. A chapter is done when every one
  * of its slots is.
  *
- * Next chapter: the started-but-unfinished chapter touched last, else the
- * first chapter not done. (Not the half-done one in book order: a mark made
- * anywhere counts, so one /browse answer could otherwise pull the box away
- * from the chapter the student is working through.)
+ * Next chapter: the started-but-unfinished chapter last practised on a
+ * question page, else the first chapter not done. Mock and Fix your mistakes
+ * answers never pick it (owner, 2026-11-24): on real data a student with 1-4
+ * mock answers in 23 chapters was sent to whichever chapter their last mock
+ * question came from.
  *
  * Pure: no DB, no clock. Spec: tests/homework-top-progress.test.ts.
  */
@@ -60,6 +61,9 @@ export type TopProgress = {
 
 type Part = { id: string; format: QuestionFormat };
 
+/** Answers recorded here mix chapters (a whole paper; the due queue). */
+const NOT_STEERING = new Set(["mock", "drill"]);
+
 export function topProgress(items: readonly TopItem[], events: readonly ProgressEvent[]): TopProgress {
   // Slots in plan order, each with its parts and the chapter of its first part.
   const slots = new Map<string, { day: number; position: number; chapterId: string | null; parts: (Part & { sub: number })[] }>();
@@ -93,10 +97,12 @@ export function topProgress(items: readonly TopItem[], events: readonly Progress
     events
   );
 
-  // When each question was last acted on (a No to V marks nothing).
+  // When each question was last practised on purpose. A No to V marks nothing;
+  // a mock or Fix your mistakes answer counts towards done (marksFor above)
+  // but jumps across chapters, so it never picks the next one.
   const lastAt = new Map<string, string>();
   for (const e of events) {
-    if (e.kind === "v_not_understood") continue;
+    if (e.kind === "v_not_understood" || (e.surface && NOT_STEERING.has(e.surface))) continue;
     const prev = lastAt.get(e.questionId);
     if (!prev || e.at > prev) lastAt.set(e.questionId, e.at);
   }
@@ -112,7 +118,8 @@ export function topProgress(items: readonly TopItem[], events: readonly Progress
         const t = lastAt.get(p.id) ?? "";
         return t > m ? t : m;
       }, "");
-      touched.push({ slug: c.slug, at });
+      // Touched only by mocks or Fix your mistakes: no time, so it steers nothing.
+      if (at) touched.push({ slug: c.slug, at });
     }
     return { slug: c.slug, name: c.name, total: sum.total, done: sum.done, toReview: sum.toReview, complete: sum.complete, started };
   });

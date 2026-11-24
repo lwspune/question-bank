@@ -37,6 +37,10 @@ export type ProgressEvent = {
   at: string;
   /** self_mark only. */
   mark?: "understood" | "review";
+  /** The page that recorded it ("bank", "board", "drill", ...; "mock" for a
+   *  mock answer, which stores none). Read only by the Top 10 box's choice of
+   *  next chapter (lib/homework/topProgress). */
+  surface?: string;
 };
 
 export type QuestionMark = "understood" | "review" | "answered" | null;

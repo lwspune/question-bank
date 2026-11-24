@@ -29,7 +29,14 @@ const PAGE = 1000;
 const KINDS: ProgressEvent["kind"][] = ["self_mark", "question_practiced", "answer_wrong", "answer_correct", "v_not_understood"];
 
 type ItemRow = { day: number; position: number; question_id: string; question: { question_format: QuestionFormat } | null };
-type EventRow = { ref_id: string; kind: ProgressEvent["kind"]; created_at: string; mark: string | null };
+type EventRow = {
+  ref_id: string;
+  kind: ProgressEvent["kind"];
+  created_at: string;
+  mark: string | null;
+  surface: string | null;
+  mock_id: string | null;
+};
 
 async function planIdOf(db: SupabaseClient, slug: string): Promise<string | null> {
   const { data, error } = await db.from("homework_plans").select("id").eq("slug", slug).maybeSingle();
@@ -57,7 +64,9 @@ async function loadProgressItems(db: SupabaseClient, planId: string, day?: numbe
 
 function toEvent(r: EventRow): ProgressEvent {
   const mark = r.mark === "understood" || r.mark === "review" ? r.mark : undefined;
-  return { questionId: r.ref_id, kind: r.kind, at: r.created_at, ...(mark ? { mark } : {}) };
+  // A mock answer stores no surface, only its mockId.
+  const surface = r.surface ?? (r.mock_id ? "mock" : null);
+  return { questionId: r.ref_id, kind: r.kind, at: r.created_at, ...(mark ? { mark } : {}), ...(surface ? { surface } : {}) };
 }
 
 async function loadEvents(db: SupabaseClient, userId: string, questionIds?: string[]): Promise<ProgressEvent[]> {
@@ -65,7 +74,7 @@ async function loadEvents(db: SupabaseClient, userId: string, questionIds?: stri
   for (let from = 0; ; from += PAGE) {
     let q = db
       .from("user_activity")
-      .select("ref_id, kind, created_at, mark:metadata->>mark")
+      .select("ref_id, kind, created_at, mark:metadata->>mark, surface:metadata->>surface, mock_id:metadata->>mockId")
       .eq("user_id", userId)
       .in("kind", KINDS)
       .not("ref_id", "is", null);
