@@ -196,14 +196,20 @@ function canonicalJson(raw: string): string {
   }
 }
 
+/** The live site's address, which every server prints in some meta values (SITE_URL in code). */
+const SITE_ORIGIN = "https://www.pyqvault.com";
+
 /**
- * A meta value as it would read on any server: this server's own origin as
- * "{origin}", and the build hash Next appends to a generated image dropped.
+ * A meta value as it would read on any server: this server's own origin and
+ * the live site's address as "{origin}" (a local server prints the live
+ * address in og:url, where the live server's own origin is that address), and
+ * the build hash Next appends to a generated image dropped.
  * Only meta values: the canonical is a fixed site address in code, so a
  * canonical naming the wrong site must still show as a difference.
  */
 function portableMeta(value: string, origin?: string): string {
-  let v = origin ? value.split(origin).join("{origin}") : value;
+  let v = value.split(SITE_ORIGIN).join("{origin}");
+  if (origin) v = v.split(origin).join("{origin}");
   v = v.replace(/((?:opengraph|twitter)-image|icon|apple-icon)\?[0-9a-f]{8,}/g, "$1");
   return v;
 }
@@ -223,24 +229,77 @@ function divEnd(html: string, start: number): number {
   return html.length;
 }
 
+/** End index (exclusive) of the Suspense boundary whose `<!--$?-->` opens at `start`, counting nested boundaries. */
+function boundaryEnd(html: string, start: number): number {
+  const re = /<!--\$[?!]?-->|<!--\/\$-->/g;
+  re.lastIndex = start;
+  let depth = 0;
+  for (let m = re.exec(html); m; m = re.exec(html)) {
+    depth += m[0] === "<!--/$-->" ? -1 : 1;
+    if (depth === 0) return m.index + m[0].length;
+  }
+  return html.length;
+}
+
 /**
  * The page as the browser ends up showing it: each section React streamed late
- * (a `<template id="B:n">` placeholder plus fallback, the real content parked
- * in `<div hidden id="S:n">` after the footer) put back where it belongs.
+ * put back where it belongs. React parks the late content in a
+ * `<div hidden id="S:n">` after the footer and a script says where it goes:
+ * `$RC("B:x","S:n")` (or `$RR`) replaces a Suspense boundary (`<!--$?-->`
+ * + `<template id="B:x">` + fallback), `$RS("S:n","P:y")` replaces a segment's
+ * `<template id="P:y">`. The numbers of a pair need not match, so the SCRIPT
+ * decides, never the number (2026-11-24: a dev /browse streamed 45 sections,
+ * most as segments, and pairing by number read it as an empty page).
+ * Placed in script order, in as many passes as nesting needs; a section no
+ * script names stays where it is, so nothing is silently dropped.
  * Which sections stream depends on timing, so without this two loads of the
  * same page compare as different (2026-11-24, the question paper page).
  */
 export function resolveStreamed(html: string): string {
-  let out = html;
-  for (let guard = 0; guard < 200; guard++) {
-    const open = /<div hidden(?:="[^"]*")? id="S:([0-9a-z]+)"[^>]*>/i.exec(out);
-    if (!open) break;
-    const end = divEnd(out, open.index);
-    const content = out.slice(open.index + open[0].length, end - "</div>".length);
-    out = out.slice(0, open.index) + out.slice(end);
-    const holder = new RegExp(`<!--\\$\\?--><template id="B:${open[1]}"></template>[\\s\\S]*?<!--/\\$-->`);
-    out = holder.test(out) ? out.replace(holder, () => content) : out;
+  // [content id, place id] in the order React's scripts run.
+  const steps: [string, string][] = [];
+  for (const m of html.matchAll(/\$R([CRS])\("([A-Z]:[0-9a-z]+)","([A-Z]:[0-9a-z]+)"/g)) {
+    steps.push(m[1] === "S" ? [m[2], m[3]] : [m[3], m[2]]);
   }
+  const named = new Set(steps.map(([content]) => content));
+  if (named.size === 0) return html;
+
+  // Lift out only the parked sections a script places; any other stays where React left it.
+  const parked = new Map<string, string>();
+  let out = html;
+  const opener = /<div hidden(?:="[^"]*")? id="(S:[0-9a-z]+)"[^>]*>/gi;
+  for (let m = opener.exec(out); m; m = opener.exec(out)) {
+    if (!named.has(m[1])) continue;
+    const end = divEnd(out, m.index);
+    parked.set(m[1], out.slice(m.index + m[0].length, end - "</div>".length));
+    out = out.slice(0, m.index) + out.slice(end);
+    opener.lastIndex = m.index;
+  }
+
+  let pending = steps.filter(([content]) => parked.has(content));
+  for (let pass = 0; pending.length > 0 && pass < 50; pass++) {
+    const left: [string, string][] = [];
+    for (const [content, place] of pending) {
+      const body = parked.get(content)!;
+      const holder = `<template id="${place}"></template>`;
+      const at = out.indexOf(holder);
+      if (at < 0) {
+        left.push([content, place]);
+        continue;
+      }
+      if (place.startsWith("P:")) {
+        out = out.slice(0, at) + body + out.slice(at + holder.length);
+      } else {
+        const open = out.lastIndexOf("<!--$", at);
+        out = out.slice(0, open < 0 ? at : open) + body + out.slice(open < 0 ? at + holder.length : boundaryEnd(out, open));
+      }
+    }
+    if (left.length === pending.length) break;
+    pending = left;
+  }
+  // A section whose place never appeared goes back unplaced, inside the body: never dropped.
+  const unplaced = pending.map(([content]) => `<div hidden id="${content}">${parked.get(content)}</div>`).join("");
+  if (unplaced) out = out.includes("</body>") ? out.replace("</body>", () => unplaced + "</body>") : out + unplaced;
   return out;
 }
 
