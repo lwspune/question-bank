@@ -15088,6 +15088,238 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 8,
       "traps": 34
     }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "electric-charges-and-fields",
+    "chipLabel": "Electric Charges and Fields notes",
+    "slugs": [
+      "cbp-ef-charge",
+      "cbp-ef-coulomb",
+      "cbp-ef-field",
+      "cbp-ef-dipole",
+      "cbp-ef-gauss",
+      "cbp-ef-applications"
+    ],
+    "chapterName": "Electric Charges and Fields",
+    "formulaCounts": {
+      "formulas": 20,
+      "tables": 1,
+      "traps": 50
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "electrostatic-potential-and-capacitance",
+    "chipLabel": "Electrostatic Potential and Capacitance notes",
+    "slugs": [
+      "cbp-ep-potential",
+      "cbp-ep-equipotential",
+      "cbp-ep-energy",
+      "cbp-ep-conductors",
+      "cbp-ep-capacitors",
+      "cbp-ep-stored"
+    ],
+    "chapterName": "Electrostatic Potential and Capacitance",
+    "formulaCounts": {
+      "formulas": 18,
+      "tables": 2,
+      "traps": 50
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "current-electricity",
+    "chipLabel": "Current Electricity notes",
+    "slugs": [
+      "cbp-ce-ohm",
+      "cbp-ce-drift",
+      "cbp-ce-temperature",
+      "cbp-ce-power",
+      "cbp-ce-combination",
+      "cbp-ce-cells",
+      "cbp-ce-kirchhoff"
+    ],
+    "chapterName": "Current Electricity",
+    "formulaCounts": {
+      "formulas": 18,
+      "tables": 3,
+      "traps": 43
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "magnetism-and-matter",
+    "chipLabel": "Magnetism and Matter notes",
+    "slugs": [
+      "cbp-mm-barmagnet",
+      "cbp-mm-gauss",
+      "cbp-mm-magnetisation",
+      "cbp-mm-materials"
+    ],
+    "chapterName": "Magnetism and Matter",
+    "formulaCounts": {
+      "formulas": 6,
+      "tables": 5,
+      "traps": 29
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "moving-charges-and-magnetism",
+    "chipLabel": "Moving Charges and Magnetism notes",
+    "slugs": [
+      "cbp-mc-force",
+      "cbp-mc-biot",
+      "cbp-mc-ampere",
+      "cbp-mc-parallel",
+      "cbp-mc-torque",
+      "cbp-mc-galvanometer"
+    ],
+    "chapterName": "Moving Charges and Magnetism",
+    "formulaCounts": {
+      "formulas": 20,
+      "tables": 0,
+      "traps": 47
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "electromagnetic-induction",
+    "chipLabel": "Electromagnetic Induction notes",
+    "slugs": [
+      "cbp-ei-faraday",
+      "cbp-ei-lenz",
+      "cbp-ei-motional",
+      "cbp-ei-inductance",
+      "cbp-ei-generator"
+    ],
+    "chapterName": "Electromagnetic Induction",
+    "formulaCounts": {
+      "formulas": 14,
+      "tables": 2,
+      "traps": 41
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "alternating-current",
+    "chipLabel": "Alternating Current notes",
+    "slugs": [
+      "cbp-ac-resistor",
+      "cbp-ac-reactance",
+      "cbp-ac-lcr",
+      "cbp-ac-power",
+      "cbp-ac-transformer"
+    ],
+    "chapterName": "Alternating Current",
+    "formulaCounts": {
+      "formulas": 13,
+      "tables": 4,
+      "traps": 42
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "electromagnetic-waves",
+    "chipLabel": "Electromagnetic Waves notes",
+    "slugs": [
+      "cbp-ew-displacement",
+      "cbp-ew-waves",
+      "cbp-ew-spectrum"
+    ],
+    "chapterName": "Electromagnetic Waves",
+    "formulaCounts": {
+      "formulas": 6,
+      "tables": 5,
+      "traps": 29
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "wave-optics",
+    "chipLabel": "Wave Optics notes",
+    "slugs": [
+      "cbp-wo-huygens",
+      "cbp-wo-refraction",
+      "cbp-wo-interference",
+      "cbp-wo-diffraction",
+      "cbp-wo-polarisation"
+    ],
+    "chapterName": "Wave Optics",
+    "formulaCounts": {
+      "formulas": 9,
+      "tables": 6,
+      "traps": 34
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "ray-optics-and-optical-instruments",
+    "chipLabel": "Ray Optics and Optical Instruments notes",
+    "slugs": [
+      "cbp-ro-mirrors",
+      "cbp-ro-refraction",
+      "cbp-ro-lenses",
+      "cbp-ro-prism",
+      "cbp-ro-instruments"
+    ],
+    "chapterName": "Ray Optics and Optical Instruments",
+    "formulaCounts": {
+      "formulas": 15,
+      "tables": 3,
+      "traps": 47
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "dual-nature-of-radiation-and-matter",
+    "chipLabel": "Dual Nature of Radiation and Matter notes",
+    "slugs": [
+      "cbp-dn-emission",
+      "cbp-dn-photoelectric",
+      "cbp-dn-einstein",
+      "cbp-dn-matter"
+    ],
+    "chapterName": "Dual Nature of Radiation and Matter",
+    "formulaCounts": {
+      "formulas": 8,
+      "tables": 5,
+      "traps": 42
+    }
   }
 ];
 
@@ -15838,4 +16070,15 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "mh-hsc-12-chemistry/amines": () => import("@/app/notes/mh-hsc-12-chemistry/amines/_data").then((m) => ({ chapter: m.HSC_CH_AM_CHAPTER, notes: m.HSC_CH_AM_NOTES })),
   "mh-hsc-12-chemistry/introduction-to-polymer-chemistry": () => import("@/app/notes/mh-hsc-12-chemistry/introduction-to-polymer-chemistry/_data").then((m) => ({ chapter: m.HSC_CH_PO_CHAPTER, notes: m.HSC_CH_PO_NOTES })),
   "mh-hsc-12-chemistry/green-chemistry-and-nanochemistry": () => import("@/app/notes/mh-hsc-12-chemistry/green-chemistry-and-nanochemistry/_data").then((m) => ({ chapter: m.HSC_CH_GN_CHAPTER, notes: m.HSC_CH_GN_NOTES })),
+  "cbse-12-physics/electric-charges-and-fields": () => import("@/app/notes/cbse-12-physics/electric-charges-and-fields/_data").then((m) => ({ chapter: m.CB_PH_EF_CHAPTER, notes: m.CB_PH_EF_NOTES })),
+  "cbse-12-physics/electrostatic-potential-and-capacitance": () => import("@/app/notes/cbse-12-physics/electrostatic-potential-and-capacitance/_data").then((m) => ({ chapter: m.CB_PH_EP_CHAPTER, notes: m.CB_PH_EP_NOTES })),
+  "cbse-12-physics/current-electricity": () => import("@/app/notes/cbse-12-physics/current-electricity/_data").then((m) => ({ chapter: m.CB_PH_CE_CHAPTER, notes: m.CB_PH_CE_NOTES })),
+  "cbse-12-physics/magnetism-and-matter": () => import("@/app/notes/cbse-12-physics/magnetism-and-matter/_data").then((m) => ({ chapter: m.CB_PH_MM_CHAPTER, notes: m.CB_PH_MM_NOTES })),
+  "cbse-12-physics/moving-charges-and-magnetism": () => import("@/app/notes/cbse-12-physics/moving-charges-and-magnetism/_data").then((m) => ({ chapter: m.CB_PH_MC_CHAPTER, notes: m.CB_PH_MC_NOTES })),
+  "cbse-12-physics/electromagnetic-induction": () => import("@/app/notes/cbse-12-physics/electromagnetic-induction/_data").then((m) => ({ chapter: m.CB_PH_EI_CHAPTER, notes: m.CB_PH_EI_NOTES })),
+  "cbse-12-physics/alternating-current": () => import("@/app/notes/cbse-12-physics/alternating-current/_data").then((m) => ({ chapter: m.CB_PH_AC_CHAPTER, notes: m.CB_PH_AC_NOTES })),
+  "cbse-12-physics/electromagnetic-waves": () => import("@/app/notes/cbse-12-physics/electromagnetic-waves/_data").then((m) => ({ chapter: m.CB_PH_EW_CHAPTER, notes: m.CB_PH_EW_NOTES })),
+  "cbse-12-physics/wave-optics": () => import("@/app/notes/cbse-12-physics/wave-optics/_data").then((m) => ({ chapter: m.CB_PH_WO_CHAPTER, notes: m.CB_PH_WO_NOTES })),
+  "cbse-12-physics/ray-optics-and-optical-instruments": () => import("@/app/notes/cbse-12-physics/ray-optics-and-optical-instruments/_data").then((m) => ({ chapter: m.CB_PH_RO_CHAPTER, notes: m.CB_PH_RO_NOTES })),
+  "cbse-12-physics/dual-nature-of-radiation-and-matter": () => import("@/app/notes/cbse-12-physics/dual-nature-of-radiation-and-matter/_data").then((m) => ({ chapter: m.CB_PH_DN_CHAPTER, notes: m.CB_PH_DN_NOTES })),
 };

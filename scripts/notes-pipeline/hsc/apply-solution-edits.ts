@@ -39,7 +39,12 @@ import type { SolutionVisual } from "../../../src/lib/visuals/types";
 const envLocal = join(process.cwd(), ".env.local");
 if (existsSync(envLocal)) require("dotenv").config({ path: envLocal, override: true });
 
-const ROOTS = ["scripts/stateboard/data", "scripts/mh-hsc-12-pyq/data", "scripts/mh-hsc-12-pyq/paper/data"];
+// The pipelines whose JSON files hold this exam's answers. HSC by default; another board names its
+// own (`--roots=scripts/ncert/data,scripts/cbse-12-pyq/data` for CBSE Class 12, 2026-11-25).
+const rootsArg = process.argv.find((a) => a.startsWith("--roots="));
+const ROOTS = rootsArg
+  ? rootsArg.slice("--roots=".length).split(",").filter(Boolean)
+  : ["scripts/stateboard/data", "scripts/mh-hsc-12-pyq/data", "scripts/mh-hsc-12-pyq/paper/data"];
 
 type Edit = { id: string; why: string; find: string; replace: string };
 

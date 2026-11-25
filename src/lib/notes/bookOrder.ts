@@ -263,6 +263,21 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "introduction-to-polymer-chemistry": { cls: 12, chapterNo: 15, book: "XII 15 Introduction to Polymer Chemistry" },
     "green-chemistry-and-nanochemistry": { cls: 12, chapterNo: 16, book: "XII 16 Green Chemistry and Nanochemistry" },
   },
+  // CBSE Class 12 Physics (board notes, 2026-11-25): the rationalised NCERT Class XII book.
+  // Add each chapter as it ships.
+  "cbse-12-physics": {
+    "electric-charges-and-fields": { cls: 12, chapterNo: 1, book: "NCERT XII 1 Electric Charges and Fields" },
+    "electrostatic-potential-and-capacitance": { cls: 12, chapterNo: 2, book: "NCERT XII 2 Electrostatic Potential and Capacitance" },
+    "current-electricity": { cls: 12, chapterNo: 3, book: "NCERT XII 3 Current Electricity" },
+    "moving-charges-and-magnetism": { cls: 12, chapterNo: 4, book: "NCERT XII 4 Moving Charges and Magnetism" },
+    "magnetism-and-matter": { cls: 12, chapterNo: 5, book: "NCERT XII 5 Magnetism and Matter" },
+    "electromagnetic-induction": { cls: 12, chapterNo: 6, book: "NCERT XII 6 Electromagnetic Induction" },
+    "alternating-current": { cls: 12, chapterNo: 7, book: "NCERT XII 7 Alternating Current" },
+    "electromagnetic-waves": { cls: 12, chapterNo: 8, book: "NCERT XII 8 Electromagnetic Waves" },
+    "ray-optics-and-optical-instruments": { cls: 12, chapterNo: 9, book: "NCERT XII 9 Ray Optics and Optical Instruments" },
+    "wave-optics": { cls: 12, chapterNo: 10, book: "NCERT XII 10 Wave Optics" },
+    "dual-nature-of-radiation-and-matter": { cls: 12, chapterNo: 11, book: "NCERT XII 11 Dual Nature of Radiation and Matter" },
+  },
   // JEE Mains Chemistry follows the rationalised NCERT books (the "NCERT" spine in
   // syllabus_concepts). Judgment calls: The p-Block Elements is no longer in either
   // rationalised book but stays on the JEE syllabus, so it sits before The d- and f-Block
