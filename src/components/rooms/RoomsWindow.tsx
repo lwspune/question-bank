@@ -11,9 +11,25 @@
  * tab is visible, every 6 seconds while messages flow and every 20 once quiet
  * (lib/rooms/poll). Closing the window stops it.
  */
-import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+} from "react";
 import { toast } from "sonner";
-import { ArrowLeft, Check, Loader2, MessagesSquare, MoreVertical, Pin, Send, ShieldCheck, X } from "lucide-react";
+import {
+  ArrowLeft,
+  Check,
+  Loader2,
+  MessagesSquare,
+  MoreVertical,
+  Pin,
+  Send,
+  ShieldCheck,
+  X,
+} from "lucide-react";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import BlockText from "@/components/math/BlockText";
 import {
@@ -27,19 +43,24 @@ import {
   type RoomsListResponse,
 } from "@/lib/rooms/client";
 import { nextPollDelay } from "@/lib/rooms/poll";
+import { plainPreview, roomBadge } from "@/lib/rooms/list";
 import { ROOM_TEXT_MAX } from "@/lib/rooms/text";
 import type { RoomMessageView, RoomQuestionView } from "@/lib/rooms/view";
 import type { RoomReportReason } from "@/lib/rooms/validate";
 
 const WINDOW =
   "fixed inset-0 z-50 flex h-[100dvh] w-full flex-col overflow-hidden bg-background sm:inset-auto sm:bottom-[max(1rem,env(safe-area-inset-bottom))] sm:left-4 sm:top-4 sm:h-auto sm:w-[28rem] sm:max-w-[calc(100vw-2rem)] sm:rounded-2xl sm:border sm:border-border sm:shadow-[0_28px_64px_-24px_rgb(15_29_74/0.55)] motion-safe:sm:animate-in motion-safe:sm:fade-in motion-safe:sm:slide-in-from-bottom-4 motion-safe:sm:duration-200";
-const HEADER = "flex shrink-0 items-center gap-1 border-b border-border bg-card px-1 pb-2 pt-[max(0.5rem,env(safe-area-inset-top))] sm:pt-2";
+const HEADER =
+  "flex shrink-0 items-center gap-1 border-b border-border bg-card px-1 pb-2 pt-[max(0.5rem,env(safe-area-inset-top))] sm:pt-2";
 const ICON_BUTTON =
   "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
 const CHIP =
   "inline-flex h-8 items-center rounded-full border border-border bg-card px-3 text-xs font-semibold text-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-60";
 
-type View = { kind: "list" } | { kind: "join"; slug: string; name: string } | { kind: "room"; slug: string; name: string };
+type View =
+  | { kind: "list" }
+  | { kind: "join"; slug: string; name: string }
+  | { kind: "room"; slug: string; name: string };
 
 const REASONS: { value: RoomReportReason; label: string }[] = [
   { value: "spam", label: "Spam" },
@@ -48,18 +69,16 @@ const REASONS: { value: RoomReportReason; label: string }[] = [
   { value: "off_topic", label: "Off topic" },
 ];
 
-function abbr(name: string): string {
-  const words = name.replace(/[^A-Za-z0-9 ]/g, "").split(/\s+/).filter(Boolean);
-  if (words.length === 1) return words[0].slice(0, 3).toUpperCase();
-  return words
-    .map((w) => w[0])
-    .join("")
-    .slice(0, 3)
-    .toUpperCase();
-}
-
-const TIME = new Intl.DateTimeFormat("en-IN", { hour: "numeric", minute: "2-digit", timeZone: "Asia/Kolkata" });
-const DAY = new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short", timeZone: "Asia/Kolkata" });
+const TIME = new Intl.DateTimeFormat("en-IN", {
+  hour: "numeric",
+  minute: "2-digit",
+  timeZone: "Asia/Kolkata",
+});
+const DAY = new Intl.DateTimeFormat("en-IN", {
+  day: "numeric",
+  month: "short",
+  timeZone: "Asia/Kolkata",
+});
 const DAY_KEY = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" });
 
 function dayLabel(iso: string): string {
@@ -72,19 +91,41 @@ function dayLabel(iso: string): string {
 }
 
 function errorText(e: unknown): string {
-  return e instanceof Error ? e.message : "Something went wrong. Please try again.";
+  return e instanceof Error
+    ? e.message
+    : "Something went wrong. Please try again.";
 }
 
-function RoomAvatar({ name, size = "md" }: { name: string; size?: "sm" | "md" | "lg" }) {
-  const cls = size === "lg" ? "h-16 w-16 text-lg" : size === "sm" ? "h-9 w-9 text-[11px]" : "h-12 w-12 text-xs";
+function RoomAvatar({
+  name,
+  size = "md",
+}: {
+  name: string;
+  size?: "sm" | "md" | "lg";
+}) {
+  const cls =
+    size === "lg"
+      ? "h-16 w-16 text-lg"
+      : size === "sm"
+        ? "h-9 w-9 text-[9px] leading-none"
+        : "h-12 w-12 text-[11px] leading-none";
   return (
-    <span aria-hidden className={`inline-flex shrink-0 items-center justify-center rounded-full bg-brand font-bold text-brand-foreground ${cls}`}>
-      {abbr(name)}
+    <span
+      aria-hidden
+      className={`inline-flex shrink-0 items-center justify-center rounded-full bg-brand font-bold text-brand-foreground ${cls}`}
+    >
+      {roomBadge(name)}
     </span>
   );
 }
 
-export default function RoomsWindow({ onClose, onUnread }: { onClose: () => void; onUnread: (n: number) => void }) {
+export default function RoomsWindow({
+  onClose,
+  onUnread,
+}: {
+  onClose: () => void;
+  onUnread: (n: number) => void;
+}) {
   const [view, setView] = useState<View>({ kind: "list" });
   const [rooms, setRooms] = useState<RoomsListResponse | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -171,49 +212,71 @@ function RoomList({
   return (
     <>
       <header className={HEADER}>
-        <button type="button" onClick={onClose} aria-label="Close exam rooms" className={ICON_BUTTON}>
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close exam rooms"
+          className={ICON_BUTTON}
+        >
           <X className="h-5 w-5" aria-hidden />
         </button>
         <div className="min-w-0">
           <h2 className="text-base font-bold leading-tight">Exam rooms</h2>
-          <p className="text-xs text-muted-foreground">Rooms for the exams you study</p>
+          <p className="text-xs text-muted-foreground">
+            Rooms for the exams you study
+          </p>
         </div>
       </header>
       <div className="flex-1 overflow-y-auto py-2">
-        {error && <p className="px-4 py-6 text-sm text-muted-foreground">{error}</p>}
+        {error && (
+          <p className="px-4 py-6 text-sm text-muted-foreground">{error}</p>
+        )}
         {!rooms && !error && (
           <p className="flex items-center gap-2 px-4 py-6 text-sm text-muted-foreground">
-            <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> Loading rooms
+            <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> Loading
+            rooms
           </p>
         )}
         {rooms && rooms.joined.length === 0 && rooms.others.length === 0 && (
           <div className="px-4 py-8 text-sm text-muted-foreground">
             <p>Choose your exams to see their rooms.</p>
-            <a href="/account" className="mt-2 inline-block font-semibold text-brand-accent underline-offset-4 hover:underline">
+            <a
+              href="/account"
+              className="mt-2 inline-block font-semibold text-brand-accent underline-offset-4 hover:underline"
+            >
               Choose exams
             </a>
           </div>
         )}
         {rooms && rooms.joined.length > 0 && (
           <>
-            <h3 className="px-4 pb-1 pt-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Joined</h3>
+            <h3 className="px-4 pb-1 pt-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              Joined
+            </h3>
             <ul>
               {rooms.joined.map((r) => (
                 <li key={r.slug}>
                   <button
                     type="button"
                     onClick={() => onOpen(r.slug, r.name)}
+                    aria-label={`Open the ${r.name} room${r.unread > 0 ? `, ${r.unread} unread` : ""}`}
                     className="flex w-full items-center gap-3 px-4 py-2.5 text-left hover:bg-muted focus-visible:bg-muted focus-visible:outline-none"
                   >
                     <RoomAvatar name={r.name} />
                     <span className="min-w-0 flex-1">
                       <span className="flex items-baseline justify-between gap-2">
                         <span className="font-semibold">{r.name}</span>
-                        {r.last && <span className="shrink-0 text-xs text-muted-foreground">{TIME.format(new Date(r.last.at))}</span>}
+                        {r.last && (
+                          <span className="shrink-0 text-xs text-muted-foreground">
+                            {TIME.format(new Date(r.last.at))}
+                          </span>
+                        )}
                       </span>
                       <span className="flex items-center justify-between gap-2">
                         <span className="truncate text-sm text-muted-foreground">
-                          {r.last ? `${r.last.name}: ${r.last.body.replace(/\s+/g, " ")}` : "No messages yet"}
+                          {r.last
+                            ? `${r.last.name}: ${plainPreview(r.last.body)}`
+                            : "No messages yet"}
                         </span>
                         {r.unread > 0 && (
                           <span className="inline-flex h-5 min-w-5 shrink-0 items-center justify-center rounded-full bg-brand px-1.5 text-[11px] font-semibold text-brand-foreground">
@@ -231,14 +294,21 @@ function RoomList({
         )}
         {rooms && rooms.others.length > 0 && (
           <>
-            <h3 className="px-4 pb-1 pt-5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Also for your exams</h3>
+            <h3 className="px-4 pb-1 pt-5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              Also for your exams
+            </h3>
             <ul>
               {rooms.others.map((r) => (
-                <li key={r.slug} className="flex items-center gap-3 px-4 py-2.5">
+                <li
+                  key={r.slug}
+                  className="flex items-center gap-3 px-4 py-2.5"
+                >
                   <RoomAvatar name={r.name} />
                   <span className="min-w-0 flex-1">
                     <span className="block font-semibold">{r.name}</span>
-                    <span className="block text-sm text-muted-foreground">Daily question, doubts on PYQs</span>
+                    <span className="block text-sm text-muted-foreground">
+                      Daily question, doubts on PYQs
+                    </span>
                   </span>
                   <button
                     type="button"
@@ -256,7 +326,10 @@ function RoomList({
         {rooms && (rooms.joined.length > 0 || rooms.others.length > 0) && (
           <p className="mx-4 mt-6 rounded-xl bg-muted p-3 text-xs leading-relaxed text-muted-foreground">
             You see rooms only for the exams on your profile.{" "}
-            <a href="/account" className="font-semibold text-brand-accent underline-offset-4 hover:underline">
+            <a
+              href="/account"
+              className="font-semibold text-brand-accent underline-offset-4 hover:underline"
+            >
               Change your exams
             </a>{" "}
             to see other rooms.
@@ -267,7 +340,17 @@ function RoomList({
   );
 }
 
-function JoinRoom({ slug, name, onBack, onJoined }: { slug: string; name: string; onBack: () => void; onJoined: () => void }) {
+function JoinRoom({
+  slug,
+  name,
+  onBack,
+  onJoined,
+}: {
+  slug: string;
+  name: string;
+  onBack: () => void;
+  onJoined: () => void;
+}) {
   const [busy, setBusy] = useState(false);
   async function join() {
     setBusy(true);
@@ -283,7 +366,12 @@ function JoinRoom({ slug, name, onBack, onJoined }: { slug: string; name: string
   return (
     <>
       <header className={HEADER}>
-        <button type="button" onClick={onBack} aria-label="Back to rooms" className={ICON_BUTTON}>
+        <button
+          type="button"
+          onClick={onBack}
+          aria-label="Back to rooms"
+          className={ICON_BUTTON}
+        >
           <ArrowLeft className="h-5 w-5" aria-hidden />
         </button>
         <h2 className="text-base font-bold">{name} room</h2>
@@ -293,7 +381,8 @@ function JoinRoom({ slug, name, onBack, onJoined }: { slug: string; name: string
           <RoomAvatar name={name} size="lg" />
           <p className="text-lg font-bold">{name} room</p>
           <p className="max-w-xs text-sm text-muted-foreground">
-            For students preparing for {name}. Ask doubts on past questions and solve the daily question together.
+            For students preparing for {name}. Ask doubts on past questions and
+            solve the daily question together.
           </p>
         </div>
         <ul className="space-y-3 text-sm">
@@ -304,15 +393,21 @@ function JoinRoom({ slug, name, onBack, onJoined }: { slug: string; name: string
             <span>
               <strong className="font-semibold">A daily question</strong>
               <br />
-              <span className="text-muted-foreground">A past {name} question, pinned every morning.</span>
+              <span className="text-muted-foreground">
+                A past {name} question, pinned every morning.
+              </span>
             </span>
           </li>
           <li className="flex gap-3">
-            <span className="icon-tile inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg font-extrabold">V</span>
+            <span className="icon-tile inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg font-extrabold">
+              V
+            </span>
             <span>
               <strong className="font-semibold">V answers doubts too</strong>
               <br />
-              <span className="text-muted-foreground">Tap Ask V on a doubt and V replies in the room.</span>
+              <span className="text-muted-foreground">
+                Tap Ask V on a doubt and V replies in the room.
+              </span>
             </span>
           </li>
         </ul>
@@ -350,7 +445,10 @@ function JoinRoom({ slug, name, onBack, onJoined }: { slug: string; name: string
   );
 }
 
-function mergeById(a: RoomMessageView[], b: RoomMessageView[]): RoomMessageView[] {
+function mergeById(
+  a: RoomMessageView[],
+  b: RoomMessageView[],
+): RoomMessageView[] {
   const map = new Map<number, RoomMessageView>();
   for (const m of a) map.set(m.id, m);
   for (const m of b) map.set(m.id, m);
@@ -399,10 +497,13 @@ function RoomChat({
     (incoming: RoomMessageView[]) => {
       if (incoming.length === 0) return;
       setMessages((prev) => mergeById(prev ?? [], incoming));
-      lastIdRef.current = Math.max(lastIdRef.current, ...incoming.map((m) => m.id));
+      lastIdRef.current = Math.max(
+        lastIdRef.current,
+        ...incoming.map((m) => m.id),
+      );
       if (atBottomRef.current) scrollToEnd();
     },
-    [scrollToEnd]
+    [scrollToEnd],
   );
 
   // First page, then polling while the room is open and the tab is visible.
@@ -423,7 +524,8 @@ function RoomChat({
           // A missed poll is retried on the next one.
         }
       }
-      if (!stopped) timer = setTimeout(tick, nextPollDelay(Date.now() - lastNewAt));
+      if (!stopped)
+        timer = setTimeout(tick, nextPollDelay(Date.now() - lastNewAt));
     }
 
     fetchPage(slug)
@@ -432,7 +534,9 @@ function RoomChat({
         setMessages(page.messages);
         setPinned(page.pinned);
         setHasMore(page.hasMore);
-        lastIdRef.current = page.messages.length ? page.messages[page.messages.length - 1].id : 1;
+        lastIdRef.current = page.messages.length
+          ? page.messages[page.messages.length - 1].id
+          : 1;
         scrollToEnd();
         timer = setTimeout(tick, nextPollDelay(0));
       })
@@ -480,7 +584,11 @@ function RoomChat({
       if (r.message) {
         atBottomRef.current = true;
         absorb([r.message]);
-        setMessages((prev) => (prev ?? []).map((x) => (x.id === m.id ? { ...x, canAskV: false } : x)));
+        setMessages((prev) =>
+          (prev ?? []).map((x) =>
+            x.id === m.id ? { ...x, canAskV: false } : x,
+          ),
+        );
       } else if (r.skipped) {
         toast(r.error ?? "V answers study doubts only.");
       }
@@ -514,9 +622,25 @@ function RoomChat({
   }
 
   function onAnswered(messageId: number, question: RoomQuestionView) {
-    const patch = (m: RoomMessageView) => (m.id === messageId ? { ...m, question } : m);
+    const patch = (m: RoomMessageView) =>
+      m.id === messageId ? { ...m, question } : m;
     setMessages((prev) => (prev ?? []).map(patch));
     setPinned((p) => (p ? patch(p) : p));
+  }
+
+  // The pinned bar jumps to the question in the chat when it is loaded; only a
+  // pin further back than the loaded page opens in place (no second copy).
+  function openPinned() {
+    if (!pinned) return;
+    const el = listRef.current?.querySelector<HTMLElement>(
+      `#room-msg-${pinned.id}`,
+    );
+    if (el) {
+      setShowPinned(false);
+      el.scrollIntoView({ block: "start", behavior: "smooth" });
+    } else {
+      setShowPinned((s) => !s);
+    }
   }
 
   let lastDay = "";
@@ -524,18 +648,38 @@ function RoomChat({
   return (
     <>
       <header className={HEADER}>
-        <button type="button" onClick={onBack} aria-label="Back to rooms" className={ICON_BUTTON}>
+        <button
+          type="button"
+          onClick={onBack}
+          aria-label="Back to rooms"
+          className={ICON_BUTTON}
+        >
           <ArrowLeft className="h-5 w-5" aria-hidden />
         </button>
         <RoomAvatar name={name} size="sm" />
         <div className="min-w-0 flex-1 pl-1">
-          <h2 className="truncate text-base font-bold leading-tight">{name} room</h2>
-          <p className="truncate text-xs text-muted-foreground">Doubts, PYQs and the daily question</p>
+          <h2 className="truncate text-base font-bold leading-tight">
+            {name} room
+          </h2>
+          <p className="truncate text-xs text-muted-foreground">
+            Doubts, PYQs and the daily question
+          </p>
         </div>
-        <button type="button" onClick={() => setMenuOpen((o) => !o)} aria-label="Room options" aria-expanded={menuOpen} className={ICON_BUTTON}>
+        <button
+          type="button"
+          onClick={() => setMenuOpen((o) => !o)}
+          aria-label="Room options"
+          aria-expanded={menuOpen}
+          className={ICON_BUTTON}
+        >
           <MoreVertical className="h-5 w-5" aria-hidden />
         </button>
-        <button type="button" onClick={onClose} aria-label="Close exam rooms" className={`${ICON_BUTTON} hidden sm:inline-flex`}>
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close exam rooms"
+          className={`${ICON_BUTTON} hidden sm:inline-flex`}
+        >
           <X className="h-5 w-5" aria-hidden />
         </button>
       </header>
@@ -547,7 +691,11 @@ function RoomChat({
             <button type="button" onClick={leave} className={CHIP}>
               Leave
             </button>
-            <button type="button" onClick={() => setMenuOpen(false)} className={CHIP}>
+            <button
+              type="button"
+              onClick={() => setMenuOpen(false)}
+              className={CHIP}
+            >
               Cancel
             </button>
           </span>
@@ -555,7 +703,11 @@ function RoomChat({
       )}
 
       {joined.length > 1 && (
-        <div role="tablist" aria-label="Your rooms" className="hidden shrink-0 gap-2 overflow-x-auto border-b border-border px-4 py-2 sm:flex">
+        <div
+          role="tablist"
+          aria-label="Your rooms"
+          className="hidden shrink-0 gap-2 overflow-x-auto border-b border-border px-4 py-2 sm:flex"
+        >
           {joined.map((r) => (
             <button
               key={r.slug}
@@ -564,7 +716,9 @@ function RoomChat({
               aria-selected={r.slug === slug}
               onClick={() => r.slug !== slug && onSwitch(r.slug, r.name)}
               className={`h-8 shrink-0 rounded-full px-3 text-xs font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
-                r.slug === slug ? "bg-primary text-primary-foreground" : "border border-border bg-card text-foreground hover:bg-muted"
+                r.slug === slug
+                  ? "bg-primary text-primary-foreground"
+                  : "border border-border bg-card text-foreground hover:bg-muted"
               }`}
             >
               {r.name}
@@ -577,20 +731,37 @@ function RoomChat({
         <div className="shrink-0 border-b border-border bg-card">
           <button
             type="button"
-            onClick={() => setShowPinned((s) => !s)}
+            onClick={openPinned}
             aria-expanded={showPinned}
             className="flex w-full items-center gap-3 px-3 py-2 text-left hover:bg-muted focus-visible:bg-muted focus-visible:outline-none"
           >
-            <span aria-hidden className="w-[3px] self-stretch rounded bg-brand" />
+            <span
+              aria-hidden
+              className="w-[3px] self-stretch rounded bg-brand"
+            />
             <span className="min-w-0 flex-1">
-              <span className="block text-xs font-semibold text-brand-accent">Pinned · Today&apos;s question</span>
-              <span className="block truncate text-sm text-muted-foreground">{pinned.question ? pinned.question.text.replace(/\s+/g, " ") : pinned.body}</span>
+              <span className="block text-xs font-semibold text-brand-accent">
+                Pinned · Today&apos;s question
+              </span>
+              <span className="block truncate text-sm text-muted-foreground">
+                {plainPreview(
+                  pinned.question ? pinned.question.text : pinned.body,
+                )}
+              </span>
             </span>
-            <Pin className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden />
+            <Pin
+              className="h-4 w-4 shrink-0 text-muted-foreground"
+              aria-hidden
+            />
           </button>
           {showPinned && pinned.question && (
             <div className="max-h-[50vh] overflow-y-auto px-3 pb-3">
-              <QuestionCard slug={slug} messageId={pinned.id} question={pinned.question} onAnswered={onAnswered} />
+              <QuestionCard
+                slug={slug}
+                messageId={pinned.id}
+                question={pinned.question}
+                onAnswered={onAnswered}
+              />
             </div>
           )}
         </div>
@@ -600,15 +771,21 @@ function RoomChat({
         ref={listRef}
         onScroll={(e) => {
           const el = e.currentTarget;
-          atBottomRef.current = el.scrollHeight - el.scrollTop - el.clientHeight < 80;
+          atBottomRef.current =
+            el.scrollHeight - el.scrollTop - el.clientHeight < 80;
         }}
         className="flex-1 space-y-2.5 overflow-y-auto bg-muted/60 px-3 py-3"
         aria-live="polite"
       >
-        {error && <p className="py-6 text-center text-sm text-muted-foreground">{error}</p>}
+        {error && (
+          <p className="py-6 text-center text-sm text-muted-foreground">
+            {error}
+          </p>
+        )}
         {!messages && !error && (
           <p className="flex items-center justify-center gap-2 py-6 text-sm text-muted-foreground">
-            <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> Loading messages
+            <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> Loading
+            messages
           </p>
         )}
         {hasMore && (
@@ -619,16 +796,24 @@ function RoomChat({
           </div>
         )}
         {messages && messages.length === 0 && (
-          <p className="py-8 text-center text-sm text-muted-foreground">No messages yet. Ask the first doubt.</p>
+          <p className="py-8 text-center text-sm text-muted-foreground">
+            No messages yet. Ask the first doubt.
+          </p>
         )}
         {messages?.map((m) => {
           const day = dayLabel(m.at);
           const showDay = day !== lastDay;
           lastDay = day;
           return (
-            <div key={m.id} className="space-y-2.5">
+            <div
+              key={m.id}
+              id={`room-msg-${m.id}`}
+              className="scroll-mt-2 space-y-2.5"
+            >
               {showDay && (
-                <p className="mx-auto w-fit rounded-full bg-card px-3 py-0.5 text-xs text-muted-foreground">{day}</p>
+                <p className="mx-auto w-fit rounded-full bg-card px-3 py-0.5 text-xs text-muted-foreground">
+                  {day}
+                </p>
               )}
               <MessageBubble
                 m={m}
@@ -654,23 +839,32 @@ function RoomChat({
         })}
       </div>
 
-      <form onSubmit={submit} className="shrink-0 border-t border-border bg-card p-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
+      <form
+        onSubmit={submit}
+        className="shrink-0 border-t border-border bg-card p-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]"
+      >
         {replyTo && (
           <div className="mb-2 flex items-center gap-2 rounded-lg bg-muted px-3 py-1.5 text-xs">
             <span className="min-w-0 flex-1 truncate">
-              Replying to <strong>{replyTo.name}</strong>: {replyTo.body.replace(/\s+/g, " ")}
+              Replying to <strong>{replyTo.name}</strong>:{" "}
+              {plainPreview(replyTo.body)}
             </span>
-            <button type="button" onClick={() => setReplyTo(null)} aria-label="Cancel reply" className="inline-flex h-8 w-8 items-center justify-center rounded-full hover:bg-card">
+            <button
+              type="button"
+              onClick={() => setReplyTo(null)}
+              aria-label="Cancel reply"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-full hover:bg-card"
+            >
               <X className="h-4 w-4" aria-hidden />
             </button>
           </div>
         )}
         <div className="flex items-end gap-2">
-          <label htmlFor={`room-msg-${slug}`} className="sr-only">
+          <label htmlFor={`room-input-${slug}`} className="sr-only">
             Message the {name} room
           </label>
           <textarea
-            id={`room-msg-${slug}`}
+            id={`room-input-${slug}`}
             rows={1}
             value={text}
             maxLength={ROOM_TEXT_MAX}
@@ -690,7 +884,11 @@ function RoomChat({
             aria-label="Send"
             className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand text-brand-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-60"
           >
-            {sending ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : <Send className="h-4 w-4" aria-hidden />}
+            {sending ? (
+              <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
+            ) : (
+              <Send className="h-4 w-4" aria-hidden />
+            )}
           </button>
         </div>
         {text.length > ROOM_TEXT_MAX - 100 && (
@@ -745,27 +943,38 @@ function MessageBubble({
 
   const avatar =
     m.kind === "v" ? (
-      <span aria-hidden className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-[1.5px] border-brand bg-card text-sm font-extrabold text-brand-accent">
+      <span
+        aria-hidden
+        className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-[1.5px] border-brand bg-card text-sm font-extrabold text-brand-accent"
+      >
         V
       </span>
     ) : m.kind === "team" ? (
-      <span aria-hidden className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-[11px] font-bold text-primary-foreground">
+      <span
+        aria-hidden
+        className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-[11px] font-bold text-primary-foreground"
+      >
         PV
       </span>
     ) : (
-      <span aria-hidden className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-card text-xs font-bold text-foreground ring-1 ring-border">
+      <span
+        aria-hidden
+        className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-card text-xs font-bold text-foreground ring-1 ring-border"
+      >
         {m.name.charAt(0)}
       </span>
     );
 
   return (
-    <div className="flex max-w-[92%] items-end gap-2">
-      {avatar}
-      <div className="min-w-0 space-y-1.5">
-        <div className="rounded-2xl rounded-bl-md bg-card px-3 py-2 shadow-sm">
+    <div className="max-w-[92%] space-y-1.5">
+      <div className="flex items-end gap-2">
+        {avatar}
+        <div className="min-w-0 rounded-2xl rounded-bl-md bg-card px-3 py-2 shadow-sm">
           <p className="flex items-center gap-1 text-xs font-semibold text-brand-accent">
             {m.kind === "v" ? "V · tutor" : m.name}
-            {m.kind === "team" && <Check className="h-3.5 w-3.5" aria-label="PYQ Vault team" />}
+            {m.kind === "team" && (
+              <Check className="h-3.5 w-3.5" aria-label="PYQ Vault team" />
+            )}
           </p>
           {m.replyTo && (
             <p className="my-1 border-l-2 border-border pl-2 text-xs text-muted-foreground">
@@ -773,11 +982,21 @@ function MessageBubble({
             </p>
           )}
           {m.kind === "v" ? (
-            <KatexRenderer text={m.body} className="block whitespace-pre-wrap break-words text-sm" />
+            <KatexRenderer
+              text={m.body}
+              className="block whitespace-pre-wrap break-words text-sm"
+            />
           ) : (
             <p className="whitespace-pre-wrap break-words text-sm">{m.body}</p>
           )}
-          {m.question && <QuestionCard slug={slug} messageId={m.id} question={m.question} onAnswered={onAnswered} />}
+          {m.question && (
+            <QuestionCard
+              slug={slug}
+              messageId={m.id}
+              question={m.question}
+              onAnswered={onAnswered}
+            />
+          )}
           <div className="mt-0.5 flex items-center justify-end gap-2">
             <span className="text-[11px] text-muted-foreground">{time}</span>
             {m.kind !== "team" && (
@@ -793,38 +1012,49 @@ function MessageBubble({
             )}
           </div>
         </div>
-        {(selected || asking) && !reporting && (
-          <div className="flex flex-wrap gap-1.5">
-            <button type="button" onClick={onReply} className={CHIP}>
-              Reply
-            </button>
-            {m.canAskV && (
-              <button
-                type="button"
-                onClick={onAskV}
-                disabled={asking}
-                className={`${CHIP} border-brand bg-brand/10 text-brand-accent`}
-              >
-                {asking && <Loader2 className="mr-1 h-3 w-3 animate-spin" aria-hidden />}
-                Ask V
-              </button>
-            )}
-            <button type="button" onClick={onReportOpen} className={CHIP}>
-              Report
-            </button>
-          </div>
-        )}
-        {reporting && (
-          <div className="flex flex-wrap items-center gap-1.5" role="group" aria-label="Why are you reporting this?">
-            <span className="text-xs text-muted-foreground">Why?</span>
-            {REASONS.map((r) => (
-              <button key={r.value} type="button" onClick={() => onReport(r.value)} className={CHIP}>
-                {r.label}
-              </button>
-            ))}
-          </div>
-        )}
       </div>
+      {(selected || asking) && !reporting && (
+        <div className="ml-10 flex flex-wrap gap-1.5">
+          <button type="button" onClick={onReply} className={CHIP}>
+            Reply
+          </button>
+          {m.canAskV && (
+            <button
+              type="button"
+              onClick={onAskV}
+              disabled={asking}
+              className={`${CHIP} border-brand bg-brand/10 text-brand-accent`}
+            >
+              {asking && (
+                <Loader2 className="mr-1 h-3 w-3 animate-spin" aria-hidden />
+              )}
+              Ask V
+            </button>
+          )}
+          <button type="button" onClick={onReportOpen} className={CHIP}>
+            Report
+          </button>
+        </div>
+      )}
+      {reporting && (
+        <div
+          className="ml-10 flex flex-wrap items-center gap-1.5"
+          role="group"
+          aria-label="Why are you reporting this?"
+        >
+          <span className="text-xs text-muted-foreground">Why?</span>
+          {REASONS.map((r) => (
+            <button
+              key={r.value}
+              type="button"
+              onClick={() => onReport(r.value)}
+              className={CHIP}
+            >
+              {r.label}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -858,8 +1088,13 @@ function QuestionCard({
 
   return (
     <div className="mt-2 space-y-2 rounded-xl border border-border bg-background p-3">
-      {question.context && <BlockText text={question.context} className="font-serif text-sm" />}
-      <BlockText text={question.text} className="font-serif text-[15px] leading-relaxed" />
+      {question.context && (
+        <BlockText text={question.context} className="font-serif text-sm" />
+      )}
+      <BlockText
+        text={question.text}
+        className="font-serif text-[15px] leading-relaxed"
+      />
       <div className="grid gap-1.5">
         {question.options.map((o) => {
           const chosen = answered?.optionId === o.id;
@@ -880,22 +1115,45 @@ function QuestionCard({
               aria-pressed={chosen}
               className={`flex min-h-10 items-center gap-2 rounded-lg border px-3 py-1.5 text-left font-serif text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default ${tone}`}
             >
-              <span className="font-sans text-xs font-semibold">({o.label.toLowerCase()})</span>
+              <span className="font-sans text-xs font-semibold">
+                ({o.label.toLowerCase()})
+              </span>
               <KatexRenderer text={o.text} />
-              {busy === o.id && <Loader2 className="ml-auto h-3.5 w-3.5 animate-spin" aria-hidden />}
-              {answered && right && <span className="ml-auto font-sans text-xs font-semibold text-emerald-700 dark:text-emerald-400">Right answer</span>}
-              {answered && chosen && !right && <span className="ml-auto font-sans text-xs font-semibold text-red-700 dark:text-red-400">Your answer</span>}
+              {busy === o.id && (
+                <Loader2
+                  className="ml-auto h-3.5 w-3.5 animate-spin"
+                  aria-hidden
+                />
+              )}
+              {answered && right && (
+                <span className="ml-auto font-sans text-xs font-semibold text-emerald-700 dark:text-emerald-400">
+                  Right answer
+                </span>
+              )}
+              {answered && chosen && !right && (
+                <span className="ml-auto font-sans text-xs font-semibold text-red-700 dark:text-red-400">
+                  Your answer
+                </span>
+              )}
             </button>
           );
         })}
       </div>
-      {!answered && <p className="text-xs text-muted-foreground">Answer first, then discuss. The answer shows once you pick.</p>}
+      {!answered && (
+        <p className="text-xs text-muted-foreground">
+          Answer first, then discuss. The answer shows once you pick.
+        </p>
+      )}
       {answered?.solution && (
         <div className="rounded-lg bg-muted p-2.5">
           <p className="mb-1 flex items-center gap-1 text-xs font-semibold">
             <MessagesSquare className="h-3.5 w-3.5" aria-hidden /> Solution
           </p>
-          <BlockText text={answered.solution} solution className="font-serif text-sm" />
+          <BlockText
+            text={answered.solution}
+            solution
+            className="font-serif text-sm"
+          />
         </div>
       )}
     </div>

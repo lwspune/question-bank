@@ -15,7 +15,7 @@
 import { describe, it, expect } from "vitest";
 import { checkRoomText, ROOM_TEXT_MAX } from "@/lib/rooms/text";
 import { roomDisplayName } from "@/lib/rooms/names";
-import { buildRoomList, totalUnread, badgeText } from "@/lib/rooms/list";
+import { buildRoomList, totalUnread, badgeText, plainPreview, roomBadge } from "@/lib/rooms/list";
 import { pickDailyQuestion } from "@/lib/rooms/daily";
 import { roomVMessage, cleanRoomVReply } from "@/lib/rooms/vReply";
 import { hasPersonal } from "@/lib/chat/maskPersonal";
@@ -125,6 +125,34 @@ describe("buildRoomList", () => {
   it("keeps a joined room whose exam left the profile (the student can still leave it)", () => {
     const list = buildRoomList({ targetExams: ["cds"], nameOf, joined: new Set(["nda"]), closed: new Set(), unread: new Map() });
     expect(list.joined.map((r) => r.slug)).toEqual(["nda"]);
+  });
+});
+
+describe("roomBadge", () => {
+  it("uses the exam's distinctive short word, plus a level or class", () => {
+    expect(roomBadge("SSC CGL")).toBe("CGL");
+    expect(roomBadge("SSC CGL Tier II")).toBe("CGL II");
+    expect(roomBadge("NDA")).toBe("NDA");
+    expect(roomBadge("CBSE Class 12")).toBe("CBSE 12");
+    expect(roomBadge("JEE Mains")).toBe("JEE");
+    expect(roomBadge("MHT-CET")).toBe("CET");
+    expect(roomBadge("MPSC Group B & C")).toBe("MPSC");
+  });
+  it("falls back to initials when no short capital word exists", () => {
+    expect(roomBadge("Foundation Course")).toBe("FC");
+    expect(roomBadge("Worksheets")).toBe("WOR");
+  });
+});
+
+describe("plainPreview", () => {
+  it("drops maths delimiters and writes simple LaTeX as text for one-line previews", () => {
+    expect(plainPreview("If \\(x + \\frac{1}{x} = 5\\), find \\(x^2 + \\frac{1}{x^2}\\)")).toBe("If x + 1/x = 5, find x² + 1/x²");
+    expect(plainPreview("\\(a^{3} - b^3\\) and \\(x^{n}\\)")).toBe("a³ - b³ and x^n");
+    expect(plainPreview("So \\(25 - 2 \\cdot 1 = 23\\)")).toBe("So 25 - 2 · 1 = 23");
+    expect(plainPreview("line one\n\nline two")).toBe("line one line two");
+  });
+  it("leaves plain text alone", () => {
+    expect(plainPreview("Why take 2 away? I keep getting 25.")).toBe("Why take 2 away? I keep getting 25.");
   });
 });
 

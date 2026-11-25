@@ -3,6 +3,7 @@
  * see a name only), and the daily question's answer only after the student
  * answered (lib/rooms/server attaches it). Pure. Spec: tests/rooms-view.test.ts.
  */
+import { plainPreview } from "./list";
 
 export type RoomMessageRow = {
   id: number;
@@ -41,7 +42,7 @@ export type RoomMessageView = {
 const SNIPPET = 60;
 
 function snippetOf(body: string): string {
-  const flat = body.replace(/\s+/g, " ").trim();
+  const flat = plainPreview(body);
   return flat.length > SNIPPET ? `${flat.slice(0, SNIPPET).trimEnd()}…` : flat;
 }
 
