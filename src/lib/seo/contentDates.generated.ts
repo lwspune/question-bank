@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 717
+ * Entries: 731
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -48,6 +48,20 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/afcat-maths/statistics": "2026-10-22T14:10:35+05:30",
   "/notes/afcat-maths/surface-area-volume": "2026-10-22T13:49:14+05:30",
   "/notes/afcat-maths/time-work": "2026-10-22T13:49:14+05:30",
+  "/notes/cbse-12-physics/alternating-current": "2026-11-25T07:25:18+05:30",
+  "/notes/cbse-12-physics/atoms": "2026-11-25T16:48:51+05:30",
+  "/notes/cbse-12-physics/current-electricity": "2026-11-25T07:25:18+05:30",
+  "/notes/cbse-12-physics/dual-nature-of-radiation-and-matter": "2026-11-25T07:25:18+05:30",
+  "/notes/cbse-12-physics/electric-charges-and-fields": "2026-11-25T07:25:18+05:30",
+  "/notes/cbse-12-physics/electromagnetic-induction": "2026-11-25T07:25:18+05:30",
+  "/notes/cbse-12-physics/electromagnetic-waves": "2026-11-25T07:25:18+05:30",
+  "/notes/cbse-12-physics/electrostatic-potential-and-capacitance": "2026-11-25T07:25:18+05:30",
+  "/notes/cbse-12-physics/magnetism-and-matter": "2026-11-25T07:25:18+05:30",
+  "/notes/cbse-12-physics/moving-charges-and-magnetism": "2026-11-25T07:25:18+05:30",
+  "/notes/cbse-12-physics/nuclei": "2026-11-25T16:48:51+05:30",
+  "/notes/cbse-12-physics/ray-optics-and-optical-instruments": "2026-11-25T07:25:18+05:30",
+  "/notes/cbse-12-physics/semiconductor-electronics": "2026-11-25T16:48:51+05:30",
+  "/notes/cbse-12-physics/wave-optics": "2026-11-25T07:25:18+05:30",
   "/notes/cds-biology/biochemistry": "2026-10-23T01:30:18+05:30",
   "/notes/cds-biology/biodiversity-classification": "2026-10-23T01:39:13+05:30",
   "/notes/cds-biology/cell-biology": "2026-10-23T01:44:46+05:30",
