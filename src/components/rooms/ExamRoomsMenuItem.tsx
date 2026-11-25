@@ -18,13 +18,17 @@ export default function ExamRoomsMenuItem({ className }: { className: string }) 
   const unread = state?.unread ?? 0;
   const hidden = state ? buttonHidden(state.hiddenUntil, Date.now()) : false;
 
+  // Shows at once, saves in the background; a failed save hides it again.
   async function showNow() {
+    const before = state?.hiddenUntil ?? null;
+    saveRoomsState({ hiddenUntil: null });
+    toast.success("Rooms button is back.");
     try {
       const r = await setRoomsButton("show");
       saveRoomsState({ hiddenUntil: r.hiddenUntil });
-      toast.success("Rooms button is back.");
     } catch (e) {
-      toast.error(e instanceof Error ? e.message : "Could not save.");
+      saveRoomsState({ hiddenUntil: before });
+      toast.error(e instanceof Error ? `Could not show the button: ${e.message}` : "Could not show the button.");
     }
   }
 

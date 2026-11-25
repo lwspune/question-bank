@@ -20,7 +20,7 @@ import { vPlacement } from "@/lib/chat/placement";
 import { hasAuthCookie } from "@/lib/viewer/useViewerSession";
 import { badgeCacheFresh } from "@/lib/rooms/poll";
 import { badgeText } from "@/lib/rooms/list";
-import { buttonHidden, hiddenToast, msUntilShown, type HideMode } from "@/lib/rooms/button";
+import { buttonHidden, hiddenToast, hideUntilFor, msUntilShown, type HideMode } from "@/lib/rooms/button";
 import { fetchRooms, setRoomsButton } from "@/lib/rooms/client";
 import { OPEN_ROOMS_EVENT, readRoomsState, saveRoomsState, useRoomsState } from "@/lib/rooms/store";
 import { useLauncherTucked } from "@/components/chat/useLauncherTucked";
@@ -65,23 +65,32 @@ export default function RoomsLauncher() {
     return () => clearTimeout(t);
   }, [hiddenUntil]);
 
+  // Hides at once and saves in the background: on a slow network the save took
+  // 2 s in testing, and the button must not linger after the student chose.
+  // A failed save brings the button back with an error.
   async function hide(mode: Exclude<HideMode, "show">) {
+    const before = readRoomsState()?.hiddenUntil ?? null;
+    const until = hideUntilFor(mode, Date.now());
+    saveRoomsState({ hiddenUntil: until });
+    setOpen(false);
+    toast(hiddenToast(until ?? ""), {
+      action: {
+        label: "Undo",
+        onClick: () => {
+          saveRoomsState({ hiddenUntil: null });
+          setRoomsButton("show").catch(() => {
+            saveRoomsState({ hiddenUntil: until });
+            toast.error("Could not show it again. Use the account menu.");
+          });
+        },
+      },
+    });
     try {
       const r = await setRoomsButton(mode);
       saveRoomsState({ hiddenUntil: r.hiddenUntil });
-      setOpen(false);
-      toast(hiddenToast(r.hiddenUntil ?? ""), {
-        action: {
-          label: "Undo",
-          onClick: () => {
-            setRoomsButton("show")
-              .then((u) => saveRoomsState({ hiddenUntil: u.hiddenUntil }))
-              .catch(() => toast.error("Could not show it again. Use the account menu."));
-          },
-        },
-      });
     } catch (e) {
-      toast.error(e instanceof Error ? e.message : "Could not save.");
+      saveRoomsState({ hiddenUntil: before });
+      toast.error(e instanceof Error ? `Could not hide the button: ${e.message}` : "Could not hide the button.");
     }
   }
 

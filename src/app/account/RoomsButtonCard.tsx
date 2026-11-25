@@ -52,7 +52,7 @@ export default function RoomsButtonCard() {
   }
 
   return (
-    <section className="mt-6 rounded-xl border bg-card p-6" aria-labelledby="rooms-button">
+    <section className="my-6 rounded-xl border bg-card p-6" aria-labelledby="rooms-button">
       <h2 id="rooms-button" className="text-base font-semibold">
         Exam rooms button
       </h2>

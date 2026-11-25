@@ -34,8 +34,14 @@ export const renameInRoom = (slug: string, nickname: string) =>
 export const leaveRoom = (slug: string) =>
   call<{ ok: true }>(`${base(slug)}/membership`, { method: "POST", body: JSON.stringify({ action: "leave" }) });
 
+// keepalive: the button hides at once (RoomsLauncher), so the student may close
+// the tab before this save lands; keepalive lets the request finish anyway.
 export const setRoomsButton = (mode: "show" | "2h" | "off") =>
-  call<{ ok: true; hiddenUntil: string | null }>("/api/rooms/button", { method: "POST", body: JSON.stringify({ mode }) });
+  call<{ ok: true; hiddenUntil: string | null }>("/api/rooms/button", {
+    method: "POST",
+    body: JSON.stringify({ mode }),
+    keepalive: true,
+  });
 
 export const fetchPage = (slug: string, cursor: { after?: number; before?: number } = {}) => {
   const qs = cursor.after ? `?after=${cursor.after}` : cursor.before ? `?before=${cursor.before}` : "";
