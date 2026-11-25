@@ -13,6 +13,11 @@ const EMAIL = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g;
 // run of digits.
 const PHONE = /(?<!\d)(?:\+?91[\s-]?|0)?[6-9]\d{4}[\s-]?\d{5}(?!\d)/g;
 
+/** Whether the text carries an email or an Indian mobile (exam rooms refuse these, lib/rooms/text). */
+export function hasPersonal(text: string): boolean {
+  return new RegExp(EMAIL.source).test(text) || new RegExp(PHONE.source).test(text);
+}
+
 export function maskPersonal(text: string): string {
   return text.replace(EMAIL, "[email]").replace(PHONE, "[phone]");
 }

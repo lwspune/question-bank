@@ -1,0 +1,37 @@
+name: Rooms daily question
+
+# Pin each open exam room's question of the day (migration 0289). Picks the
+# exam's Most Asked "asked again" questions first, never one the room has had,
+# else the one it had longest ago. A room already pinned today is skipped, so
+# a re-run is safe. scripts/rooms/daily.ts.
+#
+# 01:30 UTC IS 07:00 IST, before students' morning study.
+#
+# --apply lives HERE and nowhere else, so `npm run rooms:daily` by hand stays
+# a dry run.
+
+on:
+  schedule:
+    - cron: "30 1 * * *"
+  workflow_dispatch: # run on demand from the Actions tab
+
+jobs:
+  daily:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # MUST match ci.yml and package.json engines (">=22").
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Pin the daily questions
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: npm run rooms:daily -- --apply

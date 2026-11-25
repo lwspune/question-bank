@@ -197,6 +197,13 @@ Then save any plan at `/dashboard/pricing` (or wait a day) so the cached plan li
 - **Secrets:** the same four as the grading email (`NEXT_PUBLIC_SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, `EMAIL_FROM`). One email a day from the shared 100/day Resend quota.
 - **Experiment `checkout-followup`:** readout `scripts/billing/checkout-followup-readout.sql` (students with a mobile against without, paid within 7 days).
 
+### Exam rooms (migration 0289, 2026-11-25)
+
+- **Moderation:** `/dashboard/rooms` (superadmin). A message reported by 3 members hides itself; Keep shows it again (earlier reports stop counting), Hide keeps it hidden, Mute author 7 days stops them posting in that room. The evening email (`rooms-digest.yml`, 18:30 IST) lists the same plus doubts nobody answered for 2+ hours.
+- **Switch a room off:** Close room on the dashboard (`exam_rooms.open = false`). Students stop seeing it and nobody can post; its history stays.
+- **Daily question:** `rooms-daily.yml` at 07:00 IST pins one per open room with members. To change today's, paste a question id into Swap today's question (a PUBLIC MCQ of that exam, no figure). By hand: `npm run rooms:daily` (dry run) shows the plan.
+- **Limits (in the database, not the route):** 5 s between a student's messages, 100 a day, 1,000 characters; Ask V 5 a day per student. Change them only by a migration.
+
 ### Outbound email (Resend) — the mock-recommendation campaign
 
 **Provider:** Resend, account `official.lwspune`. Domain `pyqvault.com` **Verified**, region Tokyo (ap-northeast-1), DNS auto-configured at GoDaddy. Free tier = **100 emails/day, 3,000/month, 2 req/sec** (the 600ms throttle in [resend.ts](src/lib/email/resend.ts) is sized to that rate limit). Env: `RESEND_API_KEY` + `EMAIL_FROM` (`"PYQ Vault <mocks@pyqvault.com>"`), in THREE places: `.env.local` (hand-run scripts), GitHub repo secrets (the crons) **and Vercel Production** — the `/contact` alert to `hello@pyqvault.com` is sent by a ROUTE (`/api/contact` → `notifyNewContactMessage`), so it needs them on Vercel. They were missing there until 2026-10-06 and every contact alert silently never sent: the message row still saved and the sender still saw success, so only Resend's log (no send to `hello@` at all) showed it. A failed alert logs `contact notification not sent` in Vercel → Logs. Missing either ⇒ a script fails fast before touching an address.

@@ -1,0 +1,133 @@
+/**
+ * The morning question for every open room with members (owner, 2026-11-25:
+ * automatic, the team can swap it). Candidates, in order: the exam's Most
+ * Asked "asked again" questions (homework_plan_items part 1, published plans),
+ * then its other PUBLIC past-year MCQs, newest sitting first. Only questions a
+ * chat card can show whole: an MCQ with options, no figure on the stem or an
+ * option. lib/rooms/daily picks one never posted in the room, else the oldest.
+ * A room that already has today's (IST) pin is left alone, so a re-run is safe.
+ */
+import type { SupabaseClient } from "@supabase/supabase-js";
+import { getExamBySlug } from "@/lib/exam/examContext";
+import { readInChunks } from "@/lib/supabase/readInChunks";
+import { pickDailyQuestion } from "./daily";
+
+export const DAILY_BODY = "Today's question. Answer first, then discuss.";
+const MAX_STEM = 700;
+const FALLBACK = 300;
+
+const IST_DAY = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" });
+
+export type DailyPlan = { slug: string; questionId: string | null; skipped: string | null };
+
+async function examIdOf(db: SupabaseClient, slug: string): Promise<string | null> {
+  const name = getExamBySlug(slug)?.examName;
+  if (!name) return null;
+  const { data } = await db.from("exams").select("id").eq("name", name).maybeSingle();
+  return (data?.id as string | undefined) ?? null;
+}
+
+async function usable(db: SupabaseClient, ids: string[]): Promise<Set<string>> {
+  const [qs, opts] = await Promise.all([
+    readInChunks<{ id: string; text: string | null; image_url: string | null; visibility: string; question_format: string }>(ids, (part, from, to) =>
+      db.from("questions").select("id, text, image_url, visibility, question_format").in("id", part).order("id").range(from, to)
+    ),
+    readInChunks<{ id: string; question_id: string; image_url: string | null }>(ids, (part, from, to) =>
+      db.from("options").select("id, question_id, image_url").in("question_id", part).order("id").range(from, to)
+    ),
+  ]);
+  const optCount = new Map<string, number>();
+  const optImage = new Set<string>();
+  for (const o of opts) {
+    optCount.set(o.question_id, (optCount.get(o.question_id) ?? 0) + 1);
+    if (o.image_url) optImage.add(o.question_id);
+  }
+  const ok = new Set<string>();
+  for (const q of qs) {
+    if (q.visibility !== "PUBLIC" || q.question_format !== "mcq" || q.image_url || optImage.has(q.id)) continue;
+    if ((optCount.get(q.id) ?? 0) < 2 || String(q.text ?? "").length > MAX_STEM) continue;
+    ok.add(q.id);
+  }
+  return ok;
+}
+
+export async function dailyCandidates(db: SupabaseClient, examId: string): Promise<string[]> {
+  const plans = await db.from("homework_plans").select("id").eq("exam_id", examId).eq("published", true);
+  if (plans.error) throw new Error(`rooms daily plans: ${plans.error.message}`);
+  const planIds = (plans.data ?? []).map((p) => p.id as string);
+  let mostAsked: string[] = [];
+  if (planIds.length) {
+    const items = await db
+      .from("homework_plan_items")
+      .select("question_id")
+      .in("plan_id", planIds)
+      .eq("part", 1)
+      .order("day")
+      .order("position")
+      .limit(1000);
+    if (items.error) throw new Error(`rooms daily items: ${items.error.message}`);
+    mostAsked = (items.data ?? []).map((r) => r.question_id as string);
+  }
+  const rest = await db
+    .from("questions")
+    .select("id")
+    .eq("exam_id", examId)
+    .eq("visibility", "PUBLIC")
+    .eq("question_kind", "pyq")
+    .eq("question_format", "mcq")
+    .is("image_url", null)
+    .order("pyq_year", { ascending: false, nullsFirst: false })
+    .limit(FALLBACK);
+  if (rest.error) throw new Error(`rooms daily fallback: ${rest.error.message}`);
+  const ordered = [...new Set([...mostAsked, ...(rest.data ?? []).map((r) => r.id as string)])];
+  const ok = await usable(db, ordered);
+  return ordered.filter((id) => ok.has(id));
+}
+
+/** Which question each room gets this morning. Writes nothing. */
+export async function planDaily(db: SupabaseClient, now: Date): Promise<DailyPlan[]> {
+  const rooms = await db.from("exam_rooms").select("exam_slug").eq("open", true);
+  if (rooms.error) throw new Error(`rooms daily rooms: ${rooms.error.message}`);
+  const today = IST_DAY.format(now);
+  const out: DailyPlan[] = [];
+  for (const { exam_slug: slug } of (rooms.data ?? []) as { exam_slug: string }[]) {
+    const members = await db.from("exam_room_members").select("user_id", { count: "exact", head: true }).eq("exam_slug", slug);
+    if (!members.count) {
+      out.push({ slug, questionId: null, skipped: "no members" });
+      continue;
+    }
+    const pin = await db.from("exam_room_messages").select("created_at").eq("exam_slug", slug).eq("pinned", true).maybeSingle();
+    if (pin.data && IST_DAY.format(new Date(pin.data.created_at as string)) === today) {
+      out.push({ slug, questionId: null, skipped: "already pinned today" });
+      continue;
+    }
+    const examId = await examIdOf(db, slug);
+    if (!examId) {
+      out.push({ slug, questionId: null, skipped: "exam not found" });
+      continue;
+    }
+    const candidates = await dailyCandidates(db, examId);
+    const posted = await db.from("exam_room_messages").select("question_id, created_at").eq("exam_slug", slug).not("question_id", "is", null);
+    if (posted.error) throw new Error(`rooms daily posted: ${posted.error.message}`);
+    const last = new Map<string, string>();
+    for (const p of posted.data ?? []) {
+      const id = p.question_id as string;
+      const at = p.created_at as string;
+      if ((last.get(id) ?? "") < at) last.set(id, at);
+    }
+    const questionId = pickDailyQuestion(candidates, last);
+    out.push({ slug, questionId, skipped: questionId ? null : "no usable question" });
+  }
+  return out;
+}
+
+export async function postDaily(db: SupabaseClient, slug: string, questionId: string, staffUserId: string | null = null): Promise<number> {
+  const { data, error } = await db.rpc("post_exam_room_daily", {
+    p_exam_slug: slug,
+    p_question_id: questionId,
+    p_body: DAILY_BODY,
+    p_user_id: staffUserId,
+  });
+  if (error) throw new Error(`rooms daily post ${slug}: ${error.message}`);
+  return Number(data);
+}
