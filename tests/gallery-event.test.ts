@@ -4,7 +4,8 @@
  *   page      the gallery for a subject was opened
  *   open      a visual was opened full screen
  *   practise  "Practise 3 questions" was tapped
- *   notes     "Read in notes" was tapped
+ *   notes     "Read in notes" was tapped (the notes panel opened, 2026-11-25)
+ *   full_notes  the panel's "Read the full notes page" was tapped
  * Once per visual (or subject, for page), step and IST day. No migration:
  * it is a surface_viewed row, like the "Teach me" buttons.
  */
@@ -20,7 +21,7 @@ describe("the gallery's events", () => {
   });
 
   it("records a visual's steps, once per visual, step and day", () => {
-    for (const action of ["open", "practise", "notes"] as const) {
+    for (const action of ["open", "practise", "notes", "full_notes"] as const) {
       expect(
         parseClientEvent({ kind: "surface_viewed", surface: "visuals", action, subject: "nda-maths", slug: "line-plane-intersection" }, "u1", NOW)
       ).toEqual({

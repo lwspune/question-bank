@@ -51,7 +51,10 @@ export default function NotesDrillPanel({
   onMore,
   closeHint = "Close to go back to your notes",
   returnFocusTo,
+  teachNotesHref: teachNotesHrefProp = null,
 }: {
+  /** The notes a wrong answer's "Teach me the idea" opens, where the page is not a notes page (the Visuals viewer). */
+  teachNotesHref?: string | null;
   /** The button that opened the panel: focus goes back to it on close (no Radix Trigger here). */
   returnFocusTo: React.RefObject<HTMLButtonElement | null>;
   open: boolean;
@@ -69,7 +72,8 @@ export default function NotesDrillPanel({
   // Teach me the idea under a wrong answer opens this page's own notes (2026-11-19): the cards here carry
   // no notes link, so it messaged V about the notes the student was already reading.
   const pagePath = usePublicPathname();
-  const teachNotesHref = parseNotesHref(pagePath) ? pagePath : null;
+  // The Visuals viewer passes its visual's own notes (2026-11-25): /visuals is not a notes page.
+  const teachNotesHref = teachNotesHrefProp ?? (parseNotesHref(pagePath) ? pagePath : null);
   const key = sourceKey(source);
   const [data, setData] = useState<Loaded | null>(() => loaded.get(key) ?? null);
   const [failed, setFailed] = useState(false);

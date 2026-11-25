@@ -5,7 +5,7 @@
  * notes link, and the concepts the panel shows, in what order.
  */
 import { describe, it, expect } from "vitest";
-import { parseNotesHref, teachConcepts } from "@/lib/notes/teachPanel";
+import { diagramNoteShown, parseNotesHref, teachConcepts } from "@/lib/notes/teachPanel";
 import type { ConceptUnit, SubtopicNote } from "@/app/notes/_types";
 
 describe("parseNotesHref", () => {
@@ -68,5 +68,21 @@ describe("teachConcepts", () => {
     expect(c).not.toHaveProperty("practiceSet");
     expect(c.hasDiagram).toBe(true);
     expect(c).toMatchObject({ slug: "a", name: "Concept a", intuition: "why", definition: "what" });
+  });
+});
+
+describe("diagramNoteShown", () => {
+  const [withDiagram] = teachConcepts(note([concept("a", { visualizationSlug: "dice-sum-grid" } as Partial<ConceptUnit>)]), null);
+  const [plain] = teachConcepts(note([concept("b")]), null);
+
+  it("points at the full page's diagram when there is one", () => {
+    expect(diagramNoteShown(withDiagram, null)).toBe(true);
+    expect(diagramNoteShown(plain, null)).toBe(false);
+  });
+
+  it("says nothing about the diagram the student was just looking at (the Visuals viewer)", () => {
+    expect(diagramNoteShown(withDiagram, "a")).toBe(false);
+    // Another concept's diagram is still worth pointing at.
+    expect(diagramNoteShown(withDiagram, "b")).toBe(true);
   });
 });

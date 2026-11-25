@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import dynamic from "next/dynamic";
 import { ArrowLeft, ArrowUp, BookOpen, Share2, Target } from "lucide-react";
 import { toast } from "sonner";
@@ -21,13 +20,20 @@ import type { GalleryItem } from "./GalleryView";
  * notes drill panel with that concept's own questions; answers count toward
  * the daily free limit like everywhere) and Share.
  *
+ * Both open in a panel over the visual (owner, 2026-11-25): Read in notes is
+ * the stuck offer's TeachPanel with the concept's subtopic, that concept
+ * first; until then it left for the notes page and the student lost the feed.
+ *
  * A Try it or 3D visual that runs in the browser loads its working version
  * on the screen in view and its neighbours; every other screen shows the
  * picture, so a long chapter never loads every diagram's script at once.
- * Arrow keys move, Escape closes, focus goes back to the tile.
+ * Arrow keys move, Escape closes, focus goes back to the tile. While a panel
+ * is open its keys are its own: React passes a portaled sheet's key presses up
+ * to this dialog, so Escape would otherwise close the viewer too.
  */
 
 const NotesDrillPanel = dynamic(() => import("@/app/notes/_components/NotesDrillPanel"), { ssr: false });
+const TeachPanel = dynamic(() => import("@/components/reveal/TeachPanel"), { ssr: false });
 
 export default function GalleryViewer({
   items,
@@ -46,11 +52,14 @@ export default function GalleryViewer({
 }) {
   const [active, setActive] = useState(start);
   const [practice, setPractice] = useState<number | null>(null);
+  const [reading, setReading] = useState<number | null>(null);
   const scroller = useRef<HTMLDivElement>(null);
   const slides = useRef<(HTMLElement | null)[]>([]);
   const closeRef = useRef<HTMLButtonElement>(null);
   /** The Practise button last tapped: focus goes back to it when the panel closes. */
   const practiceButton = useRef<HTMLButtonElement | null>(null);
+  /** The Read in notes button last tapped, likewise. */
+  const notesButton = useRef<HTMLButtonElement | null>(null);
 
   // Open on the tapped visual; the page behind does not scroll.
   useEffect(() => {
@@ -95,7 +104,7 @@ export default function GalleryViewer({
   }
 
   function onKeyDown(e: React.KeyboardEvent) {
-    if (practice !== null) return;
+    if (practice !== null || reading !== null) return;
     if (e.key === "Escape") onClose();
     else if (e.key === "ArrowDown" || e.key === "PageDown") {
       e.preventDefault();
@@ -123,6 +132,7 @@ export default function GalleryViewer({
   }
 
   const practising = practice !== null ? items[practice] : null;
+  const readingItem = reading !== null ? items[reading] : null;
 
   return (
     <div
@@ -205,16 +215,19 @@ export default function GalleryViewer({
                   </div>
                 )}
                 <div className="mt-3 flex gap-2">
-                  <Link
-                    href={notesHrefOf(v)}
-                    onClick={() => {
+                  <button
+                    type="button"
+                    aria-haspopup="dialog"
+                    onClick={(e) => {
+                      notesButton.current = e.currentTarget;
                       if (signedIn) sendActivity({ kind: "surface_viewed", surface: "visuals", action: "notes", subject: v.subjectRoute, slug: v.slug });
+                      setReading(i);
                     }}
                     className="inline-flex h-11 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-lg bg-brand px-3 text-sm font-semibold text-brand-foreground hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   >
                     <BookOpen className="hidden h-4 w-4 sm:block" aria-hidden />
                     Read in notes
-                  </Link>
+                  </button>
                   {n > 0 && (
                     <button
                       type="button"
@@ -267,6 +280,25 @@ export default function GalleryViewer({
           onFullPage={() => {}}
           onMore={() => {}}
           returnFocusTo={practiceButton}
+          closeHint="Close to go back to the visual"
+          teachNotesHref={notesHrefOf(practising)}
+        />
+      )}
+
+      {readingItem && (
+        <TeachPanel
+          open
+          onOpenChange={(o) => {
+            if (!o) setReading(null);
+          }}
+          notesHref={notesHrefOf(readingItem)}
+          onFullNotes={() => {
+            if (signedIn) {
+              sendActivity({ kind: "surface_viewed", surface: "visuals", action: "full_notes", subject: readingItem.subjectRoute, slug: readingItem.slug });
+            }
+          }}
+          returnFocusTo={notesButton}
+          skipDiagramNoteFor={readingItem.conceptSlug}
           closeHint="Close to go back to the visual"
         />
       )}
