@@ -3516,6 +3516,76 @@ import {
   HSC_CH_GN_NOTES,
   HSC_CH_GN_SLUGS,
 } from "@/app/notes/mh-hsc-12-chemistry/green-chemistry-and-nanochemistry/_data";
+import {
+  CB_PH_EF_CHAPTER,
+  CB_PH_EF_NOTES,
+  CB_PH_EF_SLUGS,
+} from "@/app/notes/cbse-12-physics/electric-charges-and-fields/_data";
+import {
+  CB_PH_EP_CHAPTER,
+  CB_PH_EP_NOTES,
+  CB_PH_EP_SLUGS,
+} from "@/app/notes/cbse-12-physics/electrostatic-potential-and-capacitance/_data";
+import {
+  CB_PH_CE_CHAPTER,
+  CB_PH_CE_NOTES,
+  CB_PH_CE_SLUGS,
+} from "@/app/notes/cbse-12-physics/current-electricity/_data";
+import {
+  CB_PH_MM_CHAPTER,
+  CB_PH_MM_NOTES,
+  CB_PH_MM_SLUGS,
+} from "@/app/notes/cbse-12-physics/magnetism-and-matter/_data";
+import {
+  CB_PH_MC_CHAPTER,
+  CB_PH_MC_NOTES,
+  CB_PH_MC_SLUGS,
+} from "@/app/notes/cbse-12-physics/moving-charges-and-magnetism/_data";
+import {
+  CB_PH_EI_CHAPTER,
+  CB_PH_EI_NOTES,
+  CB_PH_EI_SLUGS,
+} from "@/app/notes/cbse-12-physics/electromagnetic-induction/_data";
+import {
+  CB_PH_AC_CHAPTER,
+  CB_PH_AC_NOTES,
+  CB_PH_AC_SLUGS,
+} from "@/app/notes/cbse-12-physics/alternating-current/_data";
+import {
+  CB_PH_EW_CHAPTER,
+  CB_PH_EW_NOTES,
+  CB_PH_EW_SLUGS,
+} from "@/app/notes/cbse-12-physics/electromagnetic-waves/_data";
+import {
+  CB_PH_WO_CHAPTER,
+  CB_PH_WO_NOTES,
+  CB_PH_WO_SLUGS,
+} from "@/app/notes/cbse-12-physics/wave-optics/_data";
+import {
+  CB_PH_RO_CHAPTER,
+  CB_PH_RO_NOTES,
+  CB_PH_RO_SLUGS,
+} from "@/app/notes/cbse-12-physics/ray-optics-and-optical-instruments/_data";
+import {
+  CB_PH_DN_CHAPTER,
+  CB_PH_DN_NOTES,
+  CB_PH_DN_SLUGS,
+} from "@/app/notes/cbse-12-physics/dual-nature-of-radiation-and-matter/_data";
+import {
+  CB_PH_AT_CHAPTER,
+  CB_PH_AT_NOTES,
+  CB_PH_AT_SLUGS,
+} from "@/app/notes/cbse-12-physics/atoms/_data";
+import {
+  CB_PH_NU_CHAPTER,
+  CB_PH_NU_NOTES,
+  CB_PH_NU_SLUGS,
+} from "@/app/notes/cbse-12-physics/nuclei/_data";
+import {
+  CB_PH_SE_CHAPTER,
+  CB_PH_SE_NOTES,
+  CB_PH_SE_SLUGS,
+} from "@/app/notes/cbse-12-physics/semiconductor-electronics/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -11300,6 +11370,161 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HSC_CH_GN_CHAPTER,
     notes: HSC_CH_GN_NOTES,
     slugs: HSC_CH_GN_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Physics",
+    subjectRoute: "cbse-12-physics",
+    subjectDisplay: "CBSE Class 12 Physics",
+    chapterSlug: "electric-charges-and-fields",
+    chipLabel: "Electric Charges and Fields notes",
+    chapter: CB_PH_EF_CHAPTER,
+    notes: CB_PH_EF_NOTES,
+    slugs: CB_PH_EF_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Physics",
+    subjectRoute: "cbse-12-physics",
+    subjectDisplay: "CBSE Class 12 Physics",
+    chapterSlug: "electrostatic-potential-and-capacitance",
+    chipLabel: "Electrostatic Potential and Capacitance notes",
+    chapter: CB_PH_EP_CHAPTER,
+    notes: CB_PH_EP_NOTES,
+    slugs: CB_PH_EP_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Physics",
+    subjectRoute: "cbse-12-physics",
+    subjectDisplay: "CBSE Class 12 Physics",
+    chapterSlug: "current-electricity",
+    chipLabel: "Current Electricity notes",
+    chapter: CB_PH_CE_CHAPTER,
+    notes: CB_PH_CE_NOTES,
+    slugs: CB_PH_CE_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Physics",
+    subjectRoute: "cbse-12-physics",
+    subjectDisplay: "CBSE Class 12 Physics",
+    chapterSlug: "magnetism-and-matter",
+    chipLabel: "Magnetism and Matter notes",
+    chapter: CB_PH_MM_CHAPTER,
+    notes: CB_PH_MM_NOTES,
+    slugs: CB_PH_MM_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Physics",
+    subjectRoute: "cbse-12-physics",
+    subjectDisplay: "CBSE Class 12 Physics",
+    chapterSlug: "moving-charges-and-magnetism",
+    chipLabel: "Moving Charges and Magnetism notes",
+    chapter: CB_PH_MC_CHAPTER,
+    notes: CB_PH_MC_NOTES,
+    slugs: CB_PH_MC_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Physics",
+    subjectRoute: "cbse-12-physics",
+    subjectDisplay: "CBSE Class 12 Physics",
+    chapterSlug: "electromagnetic-induction",
+    chipLabel: "Electromagnetic Induction notes",
+    chapter: CB_PH_EI_CHAPTER,
+    notes: CB_PH_EI_NOTES,
+    slugs: CB_PH_EI_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Physics",
+    subjectRoute: "cbse-12-physics",
+    subjectDisplay: "CBSE Class 12 Physics",
+    chapterSlug: "alternating-current",
+    chipLabel: "Alternating Current notes",
+    chapter: CB_PH_AC_CHAPTER,
+    notes: CB_PH_AC_NOTES,
+    slugs: CB_PH_AC_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Physics",
+    subjectRoute: "cbse-12-physics",
+    subjectDisplay: "CBSE Class 12 Physics",
+    chapterSlug: "electromagnetic-waves",
+    chipLabel: "Electromagnetic Waves notes",
+    chapter: CB_PH_EW_CHAPTER,
+    notes: CB_PH_EW_NOTES,
+    slugs: CB_PH_EW_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Physics",
+    subjectRoute: "cbse-12-physics",
+    subjectDisplay: "CBSE Class 12 Physics",
+    chapterSlug: "wave-optics",
+    chipLabel: "Wave Optics notes",
+    chapter: CB_PH_WO_CHAPTER,
+    notes: CB_PH_WO_NOTES,
+    slugs: CB_PH_WO_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Physics",
+    subjectRoute: "cbse-12-physics",
+    subjectDisplay: "CBSE Class 12 Physics",
+    chapterSlug: "ray-optics-and-optical-instruments",
+    chipLabel: "Ray Optics and Optical Instruments notes",
+    chapter: CB_PH_RO_CHAPTER,
+    notes: CB_PH_RO_NOTES,
+    slugs: CB_PH_RO_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Physics",
+    subjectRoute: "cbse-12-physics",
+    subjectDisplay: "CBSE Class 12 Physics",
+    chapterSlug: "dual-nature-of-radiation-and-matter",
+    chipLabel: "Dual Nature of Radiation and Matter notes",
+    chapter: CB_PH_DN_CHAPTER,
+    notes: CB_PH_DN_NOTES,
+    slugs: CB_PH_DN_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Physics",
+    subjectRoute: "cbse-12-physics",
+    subjectDisplay: "CBSE Class 12 Physics",
+    chapterSlug: "atoms",
+    chipLabel: "Atoms notes",
+    chapter: CB_PH_AT_CHAPTER,
+    notes: CB_PH_AT_NOTES,
+    slugs: CB_PH_AT_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Physics",
+    subjectRoute: "cbse-12-physics",
+    subjectDisplay: "CBSE Class 12 Physics",
+    chapterSlug: "nuclei",
+    chipLabel: "Nuclei notes",
+    chapter: CB_PH_NU_CHAPTER,
+    notes: CB_PH_NU_NOTES,
+    slugs: CB_PH_NU_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Physics",
+    subjectRoute: "cbse-12-physics",
+    subjectDisplay: "CBSE Class 12 Physics",
+    chapterSlug: "semiconductor-electronics",
+    chipLabel: "Semiconductor Electronics notes",
+    titleName: "Semiconductor Electronics",
+    chapter: CB_PH_SE_CHAPTER,
+    notes: CB_PH_SE_NOTES,
+    slugs: CB_PH_SE_SLUGS,
   },
 ];
 

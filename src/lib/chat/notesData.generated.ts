@@ -749,7 +749,21 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "mh-hsc-12-chemistry/biomolecules",
   "mh-hsc-12-chemistry/amines",
   "mh-hsc-12-chemistry/introduction-to-polymer-chemistry",
-  "mh-hsc-12-chemistry/green-chemistry-and-nanochemistry"
+  "mh-hsc-12-chemistry/green-chemistry-and-nanochemistry",
+  "cbse-12-physics/electric-charges-and-fields",
+  "cbse-12-physics/electrostatic-potential-and-capacitance",
+  "cbse-12-physics/current-electricity",
+  "cbse-12-physics/magnetism-and-matter",
+  "cbse-12-physics/moving-charges-and-magnetism",
+  "cbse-12-physics/electromagnetic-induction",
+  "cbse-12-physics/alternating-current",
+  "cbse-12-physics/electromagnetic-waves",
+  "cbse-12-physics/wave-optics",
+  "cbse-12-physics/ray-optics-and-optical-instruments",
+  "cbse-12-physics/dual-nature-of-radiation-and-matter",
+  "cbse-12-physics/atoms",
+  "cbse-12-physics/nuclei",
+  "cbse-12-physics/semiconductor-electronics"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1499,4 +1513,18 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "mh-hsc-12-chemistry/amines": () => import("@/app/notes/mh-hsc-12-chemistry/amines/_data").then((m) => m.HSC_CH_AM_NOTES),
   "mh-hsc-12-chemistry/introduction-to-polymer-chemistry": () => import("@/app/notes/mh-hsc-12-chemistry/introduction-to-polymer-chemistry/_data").then((m) => m.HSC_CH_PO_NOTES),
   "mh-hsc-12-chemistry/green-chemistry-and-nanochemistry": () => import("@/app/notes/mh-hsc-12-chemistry/green-chemistry-and-nanochemistry/_data").then((m) => m.HSC_CH_GN_NOTES),
+  "cbse-12-physics/electric-charges-and-fields": () => import("@/app/notes/cbse-12-physics/electric-charges-and-fields/_data").then((m) => m.CB_PH_EF_NOTES),
+  "cbse-12-physics/electrostatic-potential-and-capacitance": () => import("@/app/notes/cbse-12-physics/electrostatic-potential-and-capacitance/_data").then((m) => m.CB_PH_EP_NOTES),
+  "cbse-12-physics/current-electricity": () => import("@/app/notes/cbse-12-physics/current-electricity/_data").then((m) => m.CB_PH_CE_NOTES),
+  "cbse-12-physics/magnetism-and-matter": () => import("@/app/notes/cbse-12-physics/magnetism-and-matter/_data").then((m) => m.CB_PH_MM_NOTES),
+  "cbse-12-physics/moving-charges-and-magnetism": () => import("@/app/notes/cbse-12-physics/moving-charges-and-magnetism/_data").then((m) => m.CB_PH_MC_NOTES),
+  "cbse-12-physics/electromagnetic-induction": () => import("@/app/notes/cbse-12-physics/electromagnetic-induction/_data").then((m) => m.CB_PH_EI_NOTES),
+  "cbse-12-physics/alternating-current": () => import("@/app/notes/cbse-12-physics/alternating-current/_data").then((m) => m.CB_PH_AC_NOTES),
+  "cbse-12-physics/electromagnetic-waves": () => import("@/app/notes/cbse-12-physics/electromagnetic-waves/_data").then((m) => m.CB_PH_EW_NOTES),
+  "cbse-12-physics/wave-optics": () => import("@/app/notes/cbse-12-physics/wave-optics/_data").then((m) => m.CB_PH_WO_NOTES),
+  "cbse-12-physics/ray-optics-and-optical-instruments": () => import("@/app/notes/cbse-12-physics/ray-optics-and-optical-instruments/_data").then((m) => m.CB_PH_RO_NOTES),
+  "cbse-12-physics/dual-nature-of-radiation-and-matter": () => import("@/app/notes/cbse-12-physics/dual-nature-of-radiation-and-matter/_data").then((m) => m.CB_PH_DN_NOTES),
+  "cbse-12-physics/atoms": () => import("@/app/notes/cbse-12-physics/atoms/_data").then((m) => m.CB_PH_AT_NOTES),
+  "cbse-12-physics/nuclei": () => import("@/app/notes/cbse-12-physics/nuclei/_data").then((m) => m.CB_PH_NU_NOTES),
+  "cbse-12-physics/semiconductor-electronics": () => import("@/app/notes/cbse-12-physics/semiconductor-electronics/_data").then((m) => m.CB_PH_SE_NOTES),
 };

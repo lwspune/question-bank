@@ -5225,5 +5225,103 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "HSC Chemistry",
     "chapterSlug": "green-chemistry-and-nanochemistry",
     "subtopicCount": 6
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "electric-charges-and-fields",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "electrostatic-potential-and-capacitance",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "current-electricity",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "magnetism-and-matter",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "moving-charges-and-magnetism",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "electromagnetic-induction",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "alternating-current",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "electromagnetic-waves",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "wave-optics",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "ray-optics-and-optical-instruments",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "dual-nature-of-radiation-and-matter",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "atoms",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "nuclei",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "semiconductor-electronics",
+    "subtopicCount": 5
   }
 ];
