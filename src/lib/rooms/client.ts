@@ -7,8 +7,8 @@ import type { RoomMessageView, RoomQuestionView } from "./view";
 import type { RoomReportReason } from "./validate";
 
 export type RoomSummaryView = RoomListItem & { last: { name: string; body: string; at: string } | null };
-export type RoomsListResponse = { joined: RoomSummaryView[]; others: RoomListItem[]; unread: number };
-export type RoomPage = { messages: RoomMessageView[]; pinned: RoomMessageView | null; hasMore: boolean };
+export type RoomsListResponse = { joined: RoomSummaryView[]; others: RoomListItem[]; unread: number; hiddenUntil: string | null };
+export type RoomPage = { messages: RoomMessageView[]; pinned: RoomMessageView | null; hasMore: boolean; nickname: string };
 
 async function call<T>(url: string, init?: RequestInit): Promise<T> {
   const res = await fetch(url, {
@@ -25,8 +25,23 @@ const base = (slug: string) => `/api/rooms/${encodeURIComponent(slug)}`;
 
 export const fetchRooms = () => call<RoomsListResponse>("/api/rooms");
 
-export const setMembership = (slug: string, action: "join" | "leave") =>
-  call<{ ok: true }>(`${base(slug)}/membership`, { method: "POST", body: JSON.stringify({ action }) });
+export const joinRoom = (slug: string, nickname: string) =>
+  call<{ ok: true }>(`${base(slug)}/membership`, { method: "POST", body: JSON.stringify({ action: "join", nickname }) });
+
+export const renameInRoom = (slug: string, nickname: string) =>
+  call<{ ok: true; nickname: string }>(`${base(slug)}/membership`, { method: "POST", body: JSON.stringify({ action: "rename", nickname }) });
+
+export const leaveRoom = (slug: string) =>
+  call<{ ok: true }>(`${base(slug)}/membership`, { method: "POST", body: JSON.stringify({ action: "leave" }) });
+
+// keepalive: the button hides at once (RoomsLauncher), so the student may close
+// the tab before this save lands; keepalive lets the request finish anyway.
+export const setRoomsButton = (mode: "show" | "2h" | "off") =>
+  call<{ ok: true; hiddenUntil: string | null }>("/api/rooms/button", {
+    method: "POST",
+    body: JSON.stringify({ mode }),
+    keepalive: true,
+  });
 
 export const fetchPage = (slug: string, cursor: { after?: number; before?: number } = {}) => {
   const qs = cursor.after ? `?after=${cursor.after}` : cursor.before ? `?before=${cursor.before}` : "";

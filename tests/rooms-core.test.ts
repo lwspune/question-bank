@@ -6,7 +6,6 @@
  *   REFUSED, not masked (a room is public to its members, and a masked number
  *   still invites "DM me"); abuse is refused; maths, years and question numbers
  *   pass.
- * - roomDisplayName: first name + last initial, never an email.
  * - buildRoomList: joined rooms first, then the student's other exams; unknown
  *   slugs and closed rooms drop out.
  * - pickDailyQuestion: never used in this room first, else the one used longest ago.
@@ -14,7 +13,6 @@
  */
 import { describe, it, expect } from "vitest";
 import { checkRoomText, ROOM_TEXT_MAX } from "@/lib/rooms/text";
-import { roomDisplayName } from "@/lib/rooms/names";
 import { buildRoomList, totalUnread, badgeText, plainPreview, roomBadge } from "@/lib/rooms/list";
 import { pickDailyQuestion } from "@/lib/rooms/daily";
 import { roomVMessage, cleanRoomVReply } from "@/lib/rooms/vReply";
@@ -73,25 +71,6 @@ describe("hasPersonal", () => {
     expect(hasPersonal("9876543210")).toBe(true);
     expect(hasPersonal("a@b.co")).toBe(true);
     expect(hasPersonal("2024 Q.45, 142 marks")).toBe(false);
-  });
-});
-
-describe("roomDisplayName", () => {
-  it("is the first name and the last initial", () => {
-    expect(roomDisplayName("Priya Sharma")).toBe("Priya S.");
-    expect(roomDisplayName("priya ramesh sharma")).toBe("Priya S.");
-  });
-  it("is the first name alone when there is one word", () => {
-    expect(roomDisplayName("aman")).toBe("Aman");
-  });
-  it("is Student when there is no usable name", () => {
-    expect(roomDisplayName(null)).toBe("Student");
-    expect(roomDisplayName("  ")).toBe("Student");
-    expect(roomDisplayName("riya@gmail.com")).toBe("Student");
-    expect(roomDisplayName("9876543210")).toBe("Student");
-  });
-  it("is capped in length", () => {
-    expect(roomDisplayName("A".repeat(60)).length).toBeLessThanOrEqual(24);
   });
 });
 

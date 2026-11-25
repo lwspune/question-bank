@@ -16,6 +16,7 @@ import { getOwnProfile } from "@/lib/profile/service";
 import { readFreeMockLimit } from "@/lib/billing/plansQuery";
 import ProfileForm from "./ProfileForm";
 import PushCard from "./PushCard";
+import RoomsButtonCard from "./RoomsButtonCard";
 import MeHeader from "@/components/me/MeHeader";
 import { loadMeHeader } from "@/lib/me/header";
 import { getExamIdMap } from "@/lib/exam/examIdMap";
@@ -94,6 +95,9 @@ export default async function AccountPage() {
 
           {/* The public key only: nothing on Vercel sends, so the private key never lives there. */}
           <PushCard vapidKey={process.env.VAPID_PUBLIC_KEY ?? ""} />
+
+          {/* Show or hide the exam rooms button (0290). */}
+          <RoomsButtonCard />
 
           <div className="mb-6">
             <BatchesCard

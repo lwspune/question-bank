@@ -59,7 +59,7 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/cbse-12-chemistry/haloalkanes-and-haloarenes": "2026-11-25T18:34:13+05:30",
   "/notes/cbse-12-chemistry/solutions": "2026-11-25T18:14:49+05:30",
   "/notes/cbse-12-maths/application-of-derivatives": "2026-11-25T21:06:59+05:30",
-  "/notes/cbse-12-maths/application-of-integrals": "2026-11-25T22:18:48+05:30",
+  "/notes/cbse-12-maths/application-of-integrals": "2026-11-25T23:06:59+05:30",
   "/notes/cbse-12-maths/continuity-and-differentiability": "2026-11-25T21:06:59+05:30",
   "/notes/cbse-12-maths/determinants": "2026-11-25T21:06:59+05:30",
   "/notes/cbse-12-maths/differential-equations": "2026-11-25T22:18:48+05:30",

@@ -5064,6 +5064,7 @@ export type Database = {
           mobile: string | null
           onboarded_at: string | null
           push_prompted_at: string | null
+          rooms_button_hidden_until: string | null
           signup_country: string | null
           stage: string | null
           target_exams: string[]
@@ -5097,6 +5098,7 @@ export type Database = {
           mobile?: string | null
           onboarded_at?: string | null
           push_prompted_at?: string | null
+          rooms_button_hidden_until?: string | null
           signup_country?: string | null
           stage?: string | null
           target_exams?: string[]
@@ -5130,6 +5132,7 @@ export type Database = {
           mobile?: string | null
           onboarded_at?: string | null
           push_prompted_at?: string | null
+          rooms_button_hidden_until?: string | null
           signup_country?: string | null
           stage?: string | null
           target_exams?: string[]

@@ -8,7 +8,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { buildRoomList, type RoomListItem } from "./list";
-import { roomDisplayName } from "./names";
+import { checkNickname } from "./nickname";
 import { toMessageView, type RoomMessageRow, type RoomMessageView, type RoomQuestionView } from "./view";
 import type { RoomReportReason } from "./validate";
 
@@ -29,17 +29,38 @@ export function roomName(slug: string): string | null {
   return getExamBySlug(slug)?.displayName ?? null;
 }
 
+async function profileOf(db: SupabaseClient, userId: string): Promise<{ targets: string[]; hiddenUntil: string | null }> {
+  const { data, error } = await db
+    .from("student_profiles")
+    .select("target_exams, rooms_button_hidden_until")
+    .eq("user_id", userId)
+    .maybeSingle();
+  if (error) throw new Error(`rooms profile: ${error.message}`);
+  return {
+    targets: ((data?.target_exams as string[] | null) ?? []).slice(),
+    hiddenUntil: (data?.rooms_button_hidden_until as string | null | undefined) ?? null,
+  };
+}
+
 async function targetExams(db: SupabaseClient, userId: string): Promise<string[]> {
-  const { data, error } = await db.from("student_profiles").select("target_exams").eq("user_id", userId).maybeSingle();
-  if (error) throw new Error(`rooms target exams: ${error.message}`);
-  return ((data?.target_exams as string[] | null) ?? []).slice();
+  return (await profileOf(db, userId)).targets;
+}
+
+const TAKEN = "That name is taken in this room. Try another.";
+
+/** Postgres unique violation on the nickname index (migration 0290). */
+function nicknameTaken(err: { code?: string; message: string } | null): boolean {
+  return !!err && err.code === "23505" && err.message.includes("exam_room_members_nickname_uniq");
 }
 
 export type RoomSummary = RoomListItem & { last: { name: string; body: string; at: string } | null };
 
-export async function loadRoomList(db: SupabaseClient, userId: string): Promise<{ joined: RoomSummary[]; others: RoomListItem[] }> {
-  const [targets, summaries, closedRows] = await Promise.all([
-    targetExams(db, userId),
+export async function loadRoomList(
+  db: SupabaseClient,
+  userId: string
+): Promise<{ joined: RoomSummary[]; others: RoomListItem[]; hiddenUntil: string | null }> {
+  const [profile, summaries, closedRows] = await Promise.all([
+    profileOf(db, userId),
     db.rpc("exam_room_summaries", { p_user_id: userId }),
     db.from("exam_rooms").select("exam_slug").eq("open", false),
   ]);
@@ -53,7 +74,7 @@ export async function loadRoomList(db: SupabaseClient, userId: string): Promise<
     last_at: string | null;
   }[];
   const list = buildRoomList({
-    targetExams: targets,
+    targetExams: profile.targets,
     nameOf: roomName,
     joined: new Set(rows.map((r) => r.exam_slug)),
     closed: new Set((closedRows.data ?? []).map((r) => r.exam_slug as string)),
@@ -66,6 +87,7 @@ export async function loadRoomList(db: SupabaseClient, userId: string): Promise<
       return { ...item, last: r?.last_at ? { name: r.last_name ?? "", body: r.last_body ?? "", at: r.last_at } : null };
     }),
     others: list.others,
+    hiddenUntil: profile.hiddenUntil,
   };
 }
 
@@ -82,8 +104,10 @@ async function requireMember(db: SupabaseClient, userId: string, slug: string): 
 }
 
 /** Join a room of one of the student's exams. Idempotent. */
-export async function joinRoom(db: SupabaseClient, userId: string, slug: string, accountName: string | null): Promise<void> {
+export async function joinRoom(db: SupabaseClient, userId: string, slug: string, rawNickname: string): Promise<void> {
   if (!roomName(slug)) throw new RoomAccessError("There is no room for that exam.", 404);
+  const nick = checkNickname(rawNickname);
+  if (!nick.ok) throw new RoomAccessError(nick.error, 400);
   const targets = await targetExams(db, userId);
   if (!targets.includes(slug)) throw new RoomAccessError("Add this exam to your profile to join its room.", 403);
 
@@ -99,12 +123,37 @@ export async function joinRoom(db: SupabaseClient, userId: string, slug: string,
     {
       exam_slug: slug,
       user_id: userId,
-      display_name: roomDisplayName(accountName),
+      display_name: nick.name,
       last_read_id: latest?.[0]?.id ?? 0,
     },
     { onConflict: "exam_slug,user_id", ignoreDuplicates: true }
   );
+  if (nicknameTaken(member.error)) throw new RoomAccessError(TAKEN, 409);
   if (member.error) throw new Error(`rooms join: ${member.error.message}`);
+}
+
+/** A new room nickname for new messages; old ones keep the name they were sent under. */
+export async function renameInRoom(db: SupabaseClient, userId: string, slug: string, rawNickname: string): Promise<string> {
+  await requireMember(db, userId, slug);
+  const nick = checkNickname(rawNickname);
+  if (!nick.ok) throw new RoomAccessError(nick.error, 400);
+  const { error } = await db.from("exam_room_members").update({ display_name: nick.name }).eq("exam_slug", slug).eq("user_id", userId);
+  if (nicknameTaken(error)) throw new RoomAccessError(TAKEN, 409);
+  if (error) throw new Error(`rooms rename: ${error.message}`);
+  return nick.name;
+}
+
+/** Hide or show the rooms button (lib/rooms/button), on the student's profile. */
+export async function setButtonHidden(db: SupabaseClient, userId: string, until: string | null): Promise<void> {
+  const { data, error } = await db
+    .from("student_profiles")
+    .update({ rooms_button_hidden_until: until })
+    .eq("user_id", userId)
+    .select("user_id");
+  if (error) throw new Error(`rooms button: ${error.message}`);
+  if (data && data.length > 0) return;
+  const ins = await db.from("student_profiles").insert({ user_id: userId, rooms_button_hidden_until: until });
+  if (ins.error) throw new Error(`rooms button insert: ${ins.error.message}`);
 }
 
 export async function leaveRoom(db: SupabaseClient, userId: string, slug: string): Promise<void> {
@@ -192,7 +241,7 @@ export async function loadMessages(
   userId: string,
   slug: string,
   cursor: { after?: number | null; before?: number | null }
-): Promise<{ messages: RoomMessageView[]; pinned: RoomMessageView | null; hasMore: boolean }> {
+): Promise<{ messages: RoomMessageView[]; pinned: RoomMessageView | null; hasMore: boolean; nickname: string }> {
   const member = await requireMember(db, userId, slug);
   let q = db.from("exam_room_messages").select(MESSAGE_COLUMNS).eq("exam_slug", slug).is("hidden_at", null);
   if (cursor.after) q = q.gt("id", cursor.after);
@@ -222,7 +271,7 @@ export async function loadMessages(
       .lt("last_read_id", maxId);
     if (readErr) console.error("rooms mark read failed:", readErr.message);
   }
-  return { messages, pinned, hasMore };
+  return { messages, pinned, hasMore, nickname: member.displayName };
 }
 
 export async function postMessage(
