@@ -52,10 +52,18 @@ describe("client bundles do not carry the /notes content", () => {
     expect(clientModules.length).toBeGreaterThan(50);
   });
 
-  it("no client module's value imports reach lib/notes/chapters.ts or a notes _data module", () => {
+  // Every client walk re-reads the same shared modules (481 entries, up to 400 files each):
+  // cache the reads, and allow a minute, since the walk grows as client features land
+  // (it reached ~50 s uncached on 2026-11-25 against the 30 s default).
+  it("no client module's value imports reach lib/notes/chapters.ts or a notes _data module", { timeout: 60_000 }, () => {
+    const cache = new Map<string, string | null>();
+    const readCached = (rel: string) => {
+      if (!cache.has(rel)) cache.set(rel, readRepoFile(rel));
+      return cache.get(rel)!;
+    };
     const offenders: string[] = [];
     for (const entry of clientModules) {
-      const reached = collectImports(entry, readRepoFile, { valueOnly: true });
+      const reached = collectImports(entry, readCached, { valueOnly: true });
       const hit = [...reached].find(isNotesContent);
       if (hit) offenders.push(`${entry} → … → ${hit}`);
     }
