@@ -15452,6 +15452,75 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 2,
       "traps": 41
     }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "d-and-f-block-elements",
+    "chipLabel": "The d-and f-Block Elements notes",
+    "slugs": [
+      "cbc-df-position",
+      "cbc-df-configuration",
+      "cbc-df-properties",
+      "cbc-df-compounds",
+      "cbc-df-lanthanoids",
+      "cbc-df-actinoids"
+    ],
+    "chapterName": "The d-and f-Block Elements",
+    "formulaCounts": {
+      "formulas": 7,
+      "tables": 9,
+      "traps": 39
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "coordination-compounds",
+    "chipLabel": "Coordination Compounds notes",
+    "slugs": [
+      "cbc-cc-werner",
+      "cbc-cc-terms",
+      "cbc-cc-nomenclature",
+      "cbc-cc-isomerism",
+      "cbc-cc-bonding",
+      "cbc-cc-carbonyls",
+      "cbc-cc-applications"
+    ],
+    "chapterName": "Coordination Compounds",
+    "formulaCounts": {
+      "formulas": 6,
+      "tables": 13,
+      "traps": 42
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "haloalkanes-and-haloarenes",
+    "chipLabel": "Haloalkanes and Haloarenes notes",
+    "slugs": [
+      "cbc-ha-classification",
+      "cbc-ha-nomenclature",
+      "cbc-ha-bond",
+      "cbc-ha-preparation",
+      "cbc-ha-haloarenes",
+      "cbc-ha-physical",
+      "cbc-ha-reactions",
+      "cbc-ha-polyhalogen"
+    ],
+    "chapterName": "Haloalkanes and Haloarenes",
+    "formulaCounts": {
+      "formulas": 8,
+      "tables": 12,
+      "traps": 50
+    }
   }
 ];
 
@@ -16219,4 +16288,7 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "cbse-12-chemistry/solutions": () => import("@/app/notes/cbse-12-chemistry/solutions/_data").then((m) => ({ chapter: m.CB_CH_SO_CHAPTER, notes: m.CB_CH_SO_NOTES })),
   "cbse-12-chemistry/electrochemistry": () => import("@/app/notes/cbse-12-chemistry/electrochemistry/_data").then((m) => ({ chapter: m.CB_CH_EC_CHAPTER, notes: m.CB_CH_EC_NOTES })),
   "cbse-12-chemistry/chemical-kinetics": () => import("@/app/notes/cbse-12-chemistry/chemical-kinetics/_data").then((m) => ({ chapter: m.CB_CH_CK_CHAPTER, notes: m.CB_CH_CK_NOTES })),
+  "cbse-12-chemistry/d-and-f-block-elements": () => import("@/app/notes/cbse-12-chemistry/d-and-f-block-elements/_data").then((m) => ({ chapter: m.CB_CH_DF_CHAPTER, notes: m.CB_CH_DF_NOTES })),
+  "cbse-12-chemistry/coordination-compounds": () => import("@/app/notes/cbse-12-chemistry/coordination-compounds/_data").then((m) => ({ chapter: m.CB_CH_CC_CHAPTER, notes: m.CB_CH_CC_NOTES })),
+  "cbse-12-chemistry/haloalkanes-and-haloarenes": () => import("@/app/notes/cbse-12-chemistry/haloalkanes-and-haloarenes/_data").then((m) => ({ chapter: m.CB_CH_HA_CHAPTER, notes: m.CB_CH_HA_NOTES })),
 };

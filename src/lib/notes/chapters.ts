@@ -3601,6 +3601,21 @@ import {
   CB_CH_CK_NOTES,
   CB_CH_CK_SLUGS,
 } from "@/app/notes/cbse-12-chemistry/chemical-kinetics/_data";
+import {
+  CB_CH_DF_CHAPTER,
+  CB_CH_DF_NOTES,
+  CB_CH_DF_SLUGS,
+} from "@/app/notes/cbse-12-chemistry/d-and-f-block-elements/_data";
+import {
+  CB_CH_CC_CHAPTER,
+  CB_CH_CC_NOTES,
+  CB_CH_CC_SLUGS,
+} from "@/app/notes/cbse-12-chemistry/coordination-compounds/_data";
+import {
+  CB_CH_HA_CHAPTER,
+  CB_CH_HA_NOTES,
+  CB_CH_HA_SLUGS,
+} from "@/app/notes/cbse-12-chemistry/haloalkanes-and-haloarenes/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -11573,6 +11588,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CB_CH_CK_CHAPTER,
     notes: CB_CH_CK_NOTES,
     slugs: CB_CH_CK_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "cbse-12-chemistry",
+    subjectDisplay: "CBSE Class 12 Chemistry",
+    chapterSlug: "d-and-f-block-elements",
+    chipLabel: "The d-and f-Block Elements notes",
+    chapter: CB_CH_DF_CHAPTER,
+    notes: CB_CH_DF_NOTES,
+    slugs: CB_CH_DF_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "cbse-12-chemistry",
+    subjectDisplay: "CBSE Class 12 Chemistry",
+    chapterSlug: "coordination-compounds",
+    chipLabel: "Coordination Compounds notes",
+    chapter: CB_CH_CC_CHAPTER,
+    notes: CB_CH_CC_NOTES,
+    slugs: CB_CH_CC_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "cbse-12-chemistry",
+    subjectDisplay: "CBSE Class 12 Chemistry",
+    chapterSlug: "haloalkanes-and-haloarenes",
+    chipLabel: "Haloalkanes and Haloarenes notes",
+    chapter: CB_CH_HA_CHAPTER,
+    notes: CB_CH_HA_NOTES,
+    slugs: CB_CH_HA_SLUGS,
   },
 ];
 

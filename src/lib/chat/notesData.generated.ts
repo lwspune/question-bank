@@ -766,7 +766,10 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "cbse-12-physics/semiconductor-electronics",
   "cbse-12-chemistry/solutions",
   "cbse-12-chemistry/electrochemistry",
-  "cbse-12-chemistry/chemical-kinetics"
+  "cbse-12-chemistry/chemical-kinetics",
+  "cbse-12-chemistry/d-and-f-block-elements",
+  "cbse-12-chemistry/coordination-compounds",
+  "cbse-12-chemistry/haloalkanes-and-haloarenes"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1533,4 +1536,7 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "cbse-12-chemistry/solutions": () => import("@/app/notes/cbse-12-chemistry/solutions/_data").then((m) => m.CB_CH_SO_NOTES),
   "cbse-12-chemistry/electrochemistry": () => import("@/app/notes/cbse-12-chemistry/electrochemistry/_data").then((m) => m.CB_CH_EC_NOTES),
   "cbse-12-chemistry/chemical-kinetics": () => import("@/app/notes/cbse-12-chemistry/chemical-kinetics/_data").then((m) => m.CB_CH_CK_NOTES),
+  "cbse-12-chemistry/d-and-f-block-elements": () => import("@/app/notes/cbse-12-chemistry/d-and-f-block-elements/_data").then((m) => m.CB_CH_DF_NOTES),
+  "cbse-12-chemistry/coordination-compounds": () => import("@/app/notes/cbse-12-chemistry/coordination-compounds/_data").then((m) => m.CB_CH_CC_NOTES),
+  "cbse-12-chemistry/haloalkanes-and-haloarenes": () => import("@/app/notes/cbse-12-chemistry/haloalkanes-and-haloarenes/_data").then((m) => m.CB_CH_HA_NOTES),
 };
