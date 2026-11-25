@@ -3571,6 +3571,21 @@ import {
   CB_PH_DN_NOTES,
   CB_PH_DN_SLUGS,
 } from "@/app/notes/cbse-12-physics/dual-nature-of-radiation-and-matter/_data";
+import {
+  CB_PH_AT_CHAPTER,
+  CB_PH_AT_NOTES,
+  CB_PH_AT_SLUGS,
+} from "@/app/notes/cbse-12-physics/atoms/_data";
+import {
+  CB_PH_NU_CHAPTER,
+  CB_PH_NU_NOTES,
+  CB_PH_NU_SLUGS,
+} from "@/app/notes/cbse-12-physics/nuclei/_data";
+import {
+  CB_PH_SE_CHAPTER,
+  CB_PH_SE_NOTES,
+  CB_PH_SE_SLUGS,
+} from "@/app/notes/cbse-12-physics/semiconductor-electronics/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -11476,6 +11491,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CB_PH_DN_CHAPTER,
     notes: CB_PH_DN_NOTES,
     slugs: CB_PH_DN_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Physics",
+    subjectRoute: "cbse-12-physics",
+    subjectDisplay: "CBSE Class 12 Physics",
+    chapterSlug: "atoms",
+    chipLabel: "Atoms notes",
+    chapter: CB_PH_AT_CHAPTER,
+    notes: CB_PH_AT_NOTES,
+    slugs: CB_PH_AT_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Physics",
+    subjectRoute: "cbse-12-physics",
+    subjectDisplay: "CBSE Class 12 Physics",
+    chapterSlug: "nuclei",
+    chipLabel: "Nuclei notes",
+    chapter: CB_PH_NU_CHAPTER,
+    notes: CB_PH_NU_NOTES,
+    slugs: CB_PH_NU_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Physics",
+    subjectRoute: "cbse-12-physics",
+    subjectDisplay: "CBSE Class 12 Physics",
+    chapterSlug: "semiconductor-electronics",
+    chipLabel: "Semiconductor Electronics: Materials, Devices and Simple Circuits notes",
+    chapter: CB_PH_SE_CHAPTER,
+    notes: CB_PH_SE_NOTES,
+    slugs: CB_PH_SE_SLUGS,
   },
 ];
 

@@ -5302,5 +5302,26 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "CBSE Class 12 Physics",
     "chapterSlug": "dual-nature-of-radiation-and-matter",
     "subtopicCount": 4
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "atoms",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "nuclei",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "semiconductor-electronics",
+    "subtopicCount": 5
   }
 ];

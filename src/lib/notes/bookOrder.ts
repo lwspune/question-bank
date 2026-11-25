@@ -277,6 +277,9 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "ray-optics-and-optical-instruments": { cls: 12, chapterNo: 9, book: "NCERT XII 9 Ray Optics and Optical Instruments" },
     "wave-optics": { cls: 12, chapterNo: 10, book: "NCERT XII 10 Wave Optics" },
     "dual-nature-of-radiation-and-matter": { cls: 12, chapterNo: 11, book: "NCERT XII 11 Dual Nature of Radiation and Matter" },
+    atoms: { cls: 12, chapterNo: 12, book: "NCERT XII 12 Atoms" },
+    nuclei: { cls: 12, chapterNo: 13, book: "NCERT XII 13 Nuclei" },
+    "semiconductor-electronics": { cls: 12, chapterNo: 14, book: "NCERT XII 14 Semiconductor Electronics: Materials, Devices and Simple Circuits" },
   },
   // JEE Mains Chemistry follows the rationalised NCERT books (the "NCERT" spine in
   // syllabus_concepts). Judgment calls: The p-Block Elements is no longer in either

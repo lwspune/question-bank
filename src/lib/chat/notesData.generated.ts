@@ -760,7 +760,10 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "cbse-12-physics/electromagnetic-waves",
   "cbse-12-physics/wave-optics",
   "cbse-12-physics/ray-optics-and-optical-instruments",
-  "cbse-12-physics/dual-nature-of-radiation-and-matter"
+  "cbse-12-physics/dual-nature-of-radiation-and-matter",
+  "cbse-12-physics/atoms",
+  "cbse-12-physics/nuclei",
+  "cbse-12-physics/semiconductor-electronics"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1521,4 +1524,7 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "cbse-12-physics/wave-optics": () => import("@/app/notes/cbse-12-physics/wave-optics/_data").then((m) => m.CB_PH_WO_NOTES),
   "cbse-12-physics/ray-optics-and-optical-instruments": () => import("@/app/notes/cbse-12-physics/ray-optics-and-optical-instruments/_data").then((m) => m.CB_PH_RO_NOTES),
   "cbse-12-physics/dual-nature-of-radiation-and-matter": () => import("@/app/notes/cbse-12-physics/dual-nature-of-radiation-and-matter/_data").then((m) => m.CB_PH_DN_NOTES),
+  "cbse-12-physics/atoms": () => import("@/app/notes/cbse-12-physics/atoms/_data").then((m) => m.CB_PH_AT_NOTES),
+  "cbse-12-physics/nuclei": () => import("@/app/notes/cbse-12-physics/nuclei/_data").then((m) => m.CB_PH_NU_NOTES),
+  "cbse-12-physics/semiconductor-electronics": () => import("@/app/notes/cbse-12-physics/semiconductor-electronics/_data").then((m) => m.CB_PH_SE_NOTES),
 };

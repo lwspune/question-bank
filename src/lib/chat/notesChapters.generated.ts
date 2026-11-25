@@ -761,4 +761,7 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterRef[] = [
   {"key":"cbse-12-physics/wave-optics","examName":"CBSE Class 12","chapterName":"Wave Optics","slugs":["cbp-wo-huygens","cbp-wo-refraction","cbp-wo-interference","cbp-wo-diffraction","cbp-wo-polarisation"]},
   {"key":"cbse-12-physics/ray-optics-and-optical-instruments","examName":"CBSE Class 12","chapterName":"Ray Optics and Optical Instruments","slugs":["cbp-ro-mirrors","cbp-ro-refraction","cbp-ro-lenses","cbp-ro-prism","cbp-ro-instruments"]},
   {"key":"cbse-12-physics/dual-nature-of-radiation-and-matter","examName":"CBSE Class 12","chapterName":"Dual Nature of Radiation and Matter","slugs":["cbp-dn-emission","cbp-dn-photoelectric","cbp-dn-einstein","cbp-dn-matter"]},
+  {"key":"cbse-12-physics/atoms","examName":"CBSE Class 12","chapterName":"Atoms","slugs":["cbp-at-rutherford","cbp-at-spectra","cbp-at-bohr","cbp-at-series","cbp-at-debroglie"]},
+  {"key":"cbse-12-physics/nuclei","examName":"CBSE Class 12","chapterName":"Nuclei","slugs":["cbp-nu-composition","cbp-nu-size","cbp-nu-binding","cbp-nu-force","cbp-nu-energy"]},
+  {"key":"cbse-12-physics/semiconductor-electronics","examName":"CBSE Class 12","chapterName":"Semiconductor Electronics: Materials, Devices and Simple Circuits","slugs":["cbp-se-bands","cbp-se-extrinsic","cbp-se-junction","cbp-se-rectifier","cbp-se-special"]},
 ];

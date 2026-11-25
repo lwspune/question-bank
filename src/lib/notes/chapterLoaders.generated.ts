@@ -15320,6 +15320,69 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 5,
       "traps": 42
     }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "atoms",
+    "chipLabel": "Atoms notes",
+    "slugs": [
+      "cbp-at-rutherford",
+      "cbp-at-spectra",
+      "cbp-at-bohr",
+      "cbp-at-series",
+      "cbp-at-debroglie"
+    ],
+    "chapterName": "Atoms",
+    "formulaCounts": {
+      "formulas": 10,
+      "tables": 3,
+      "traps": 32
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "nuclei",
+    "chipLabel": "Nuclei notes",
+    "slugs": [
+      "cbp-nu-composition",
+      "cbp-nu-size",
+      "cbp-nu-binding",
+      "cbp-nu-force",
+      "cbp-nu-energy"
+    ],
+    "chapterName": "Nuclei",
+    "formulaCounts": {
+      "formulas": 9,
+      "tables": 6,
+      "traps": 46
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Physics",
+    "subjectRoute": "cbse-12-physics",
+    "subjectDisplay": "CBSE Class 12 Physics",
+    "chapterSlug": "semiconductor-electronics",
+    "chipLabel": "Semiconductor Electronics: Materials, Devices and Simple Circuits notes",
+    "slugs": [
+      "cbp-se-bands",
+      "cbp-se-extrinsic",
+      "cbp-se-junction",
+      "cbp-se-rectifier",
+      "cbp-se-special"
+    ],
+    "chapterName": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 12,
+      "traps": 47
+    }
   }
 ];
 
@@ -16081,4 +16144,7 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "cbse-12-physics/wave-optics": () => import("@/app/notes/cbse-12-physics/wave-optics/_data").then((m) => ({ chapter: m.CB_PH_WO_CHAPTER, notes: m.CB_PH_WO_NOTES })),
   "cbse-12-physics/ray-optics-and-optical-instruments": () => import("@/app/notes/cbse-12-physics/ray-optics-and-optical-instruments/_data").then((m) => ({ chapter: m.CB_PH_RO_CHAPTER, notes: m.CB_PH_RO_NOTES })),
   "cbse-12-physics/dual-nature-of-radiation-and-matter": () => import("@/app/notes/cbse-12-physics/dual-nature-of-radiation-and-matter/_data").then((m) => ({ chapter: m.CB_PH_DN_CHAPTER, notes: m.CB_PH_DN_NOTES })),
+  "cbse-12-physics/atoms": () => import("@/app/notes/cbse-12-physics/atoms/_data").then((m) => ({ chapter: m.CB_PH_AT_CHAPTER, notes: m.CB_PH_AT_NOTES })),
+  "cbse-12-physics/nuclei": () => import("@/app/notes/cbse-12-physics/nuclei/_data").then((m) => ({ chapter: m.CB_PH_NU_CHAPTER, notes: m.CB_PH_NU_NOTES })),
+  "cbse-12-physics/semiconductor-electronics": () => import("@/app/notes/cbse-12-physics/semiconductor-electronics/_data").then((m) => ({ chapter: m.CB_PH_SE_CHAPTER, notes: m.CB_PH_SE_NOTES })),
 };
