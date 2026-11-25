@@ -15369,7 +15369,8 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
     "subjectRoute": "cbse-12-physics",
     "subjectDisplay": "CBSE Class 12 Physics",
     "chapterSlug": "semiconductor-electronics",
-    "chipLabel": "Semiconductor Electronics: Materials, Devices and Simple Circuits notes",
+    "chipLabel": "Semiconductor Electronics notes",
+    "titleName": "Semiconductor Electronics",
     "slugs": [
       "cbp-se-bands",
       "cbp-se-extrinsic",
