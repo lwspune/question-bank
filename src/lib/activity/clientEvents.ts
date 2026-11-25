@@ -48,8 +48,9 @@ const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
  *  me the idea (2026-11-11): back on the question (returned), then Try one tapped (try_after). */
 /** The Review traps panel's steps (src/app/review/ChapterTraps). */
 export const REVIEW_TRAPS_ACTIONS: ReadonlySet<string> = new Set(["shown", "expand", "playbook"]);
-/** The Visuals gallery's steps (src/app/visuals), and the shape of a subject route or visual slug. */
-export const GALLERY_ACTIONS: ReadonlySet<string> = new Set(["page", "open", "practise", "notes"]);
+/** The Visuals gallery's steps (src/app/visuals), and the shape of a subject route or visual slug.
+ *  notes = the notes panel opened (2026-11-25; before, it left for the notes page); full_notes = left from the panel. */
+export const GALLERY_ACTIONS: ReadonlySet<string> = new Set(["page", "open", "practise", "notes", "full_notes"]);
 const GALLERY_SLUG_RE = /^[a-z0-9-]{1,80}$/;
 /** The "Teach me" buttons' steps and places (lib/chat/teachChapter). */
 const TEACH_CHAPTER_ACTIONS: ReadonlySet<string> = new Set(["shown", "tap"]);

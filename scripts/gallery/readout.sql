@@ -1,8 +1,10 @@
 -- Readout for the "notes-visuals" experiment (src/lib/growth/registry.ts;
 -- 2026-11-23): signed-in students who opened the Visuals gallery, opened a
 -- visual, tapped Practise 3 questions or Read in notes (user_activity
--- surface_viewed, metadata.surface = 'visuals'). Staff (org members) and
--- platform admins are left out. Run read-only (SQL editor or MCP execute_sql).
+-- surface_viewed, metadata.surface = 'visuals'). Since 2026-11-25 Read in
+-- notes opens a panel over the visual, and full_notes = left from that panel
+-- for the notes page. Staff (org members) and platform admins are left out.
+-- Run read-only (SQL editor or MCP execute_sql).
 
 WITH v AS (
   SELECT ua.user_id, ua.metadata->>'action' AS action, ua.metadata->>'subject' AS subject, ua.created_at
@@ -21,6 +23,7 @@ SELECT
   round(100.0 * (SELECT count(DISTINCT user_id) FROM v WHERE action = 'practise')
         / NULLIF((SELECT count(*) FROM openers), 0), 1)                                AS practise_pct_of_openers,
   (SELECT count(DISTINCT user_id) FROM v WHERE action = 'notes')                       AS tapped_read_in_notes,
+  (SELECT count(DISTINCT user_id) FROM v WHERE action = 'full_notes')                  AS left_for_full_notes,
   (SELECT count(*) FROM v WHERE action = 'open')                                       AS visual_opens_days;
 
 -- By subject:

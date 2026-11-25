@@ -57,10 +57,11 @@ export type ClientEvent =
       chapterId: string;
     }
   | {
-      /** The Visuals gallery (2026-11-23): a subject's page, or a visual opened, practised or read in notes. */
+      /** The Visuals gallery (2026-11-23): a subject's page, or a visual opened, practised or read in
+       *  notes (the panel, 2026-11-25), or the panel's full notes page followed (full_notes). */
       kind: "surface_viewed";
       surface: "visuals";
-      action: "page" | "open" | "practise" | "notes";
+      action: "page" | "open" | "practise" | "notes" | "full_notes";
       subject: string;
       slug?: string;
     }

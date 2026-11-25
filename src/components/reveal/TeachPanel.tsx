@@ -10,7 +10,7 @@ import FormulaBlock from "@/app/notes/_components/FormulaBlock";
 import WorkedExampleAuthored from "@/app/notes/_components/WorkedExampleAuthored";
 import ReferenceTableBlock from "@/app/notes/_components/ReferenceTableBlock";
 import TrapCallout from "@/app/notes/_components/TrapCallout";
-import { parseNotesHref, type TeachConcept } from "@/lib/notes/teachPanel";
+import { diagramNoteShown, parseNotesHref, type TeachConcept } from "@/lib/notes/teachPanel";
 
 /**
  * The stuck offer's "Teach me the idea" since 2026-11-15 (owner): the
@@ -22,6 +22,10 @@ import { parseNotesHref, type TeachConcept } from "@/lib/notes/teachPanel";
  * Shows the teaching half of each concept card, in the notes' own blocks
  * (lib/notes/teachPanel says what and why the diagrams stay on the full page).
  * Content comes from GET /api/notes/subtopic, cached a day.
+ *
+ * The Visuals viewer's "Read in notes" opens it too (2026-11-25), with its own
+ * close line, focus back to its button, and no pointer to the diagram the
+ * student was just looking at.
  */
 type Payload = { title: string; oneLineDefinition: string; href: string; concepts: TeachConcept[] };
 
@@ -32,12 +36,21 @@ export default function TeachPanel({
   onOpenChange,
   notesHref,
   onFullNotes,
+  closeHint = "Close to go back to your question",
+  returnFocusTo,
+  skipDiagramNoteFor = null,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   notesHref: string;
   /** Called as the student leaves for the full notes page. */
   onFullNotes: () => void;
+  /** The footer line: where closing takes the student. */
+  closeHint?: string;
+  /** The button that opened the panel: focus goes back to it on close (no Radix Trigger here). */
+  returnFocusTo?: React.RefObject<HTMLButtonElement | null>;
+  /** A concept whose diagram the student has just seen: no "diagram on the full page" line for it. */
+  skipDiagramNoteFor?: string | null;
 }) {
   const key = notesHref;
   const [data, setData] = useState<Payload | null>(() => loaded.get(key) ?? null);
@@ -71,6 +84,14 @@ export default function TeachPanel({
       <SheetContent
         side="right"
         className="flex flex-col gap-0 p-0 sm:max-w-[30rem]"
+        onCloseAutoFocus={
+          returnFocusTo
+            ? (e) => {
+                e.preventDefault();
+                returnFocusTo?.current?.focus();
+              }
+            : undefined
+        }
         closeClassName="right-3 top-3 flex h-11 w-11 items-center justify-center rounded-xl border bg-card opacity-100"
       >
         <div className="border-b px-4 pb-3 pt-4 pr-16 font-sans">
@@ -131,7 +152,7 @@ export default function TeachPanel({
                       ))}
                     </div>
                   )}
-                  {c.hasDiagram && (
+                  {diagramNoteShown(c, skipDiagramNoteFor) && (
                     <p className="mt-3 font-sans text-xs text-muted-foreground">
                       There is an interactive diagram for this on the{" "}
                       <Link href={`${fullHref}#${c.slug}`} prefetch={false} onClick={onFullNotes} className="font-semibold text-brand-accent hover:underline">
@@ -147,7 +168,7 @@ export default function TeachPanel({
         </div>
 
         <div className="flex items-center justify-between gap-3 border-t px-4 py-1 font-sans">
-          <span className="text-xs text-muted-foreground">Close to go back to your question</span>
+          <span className="text-xs text-muted-foreground">{closeHint}</span>
           <Link
             href={fullHref}
             prefetch={false}
