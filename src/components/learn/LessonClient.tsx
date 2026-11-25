@@ -13,6 +13,7 @@ import type { RenderedSlide } from "@/lib/learn/lesson/renderDeck";
 import type { LessonItem } from "@/lib/learn/query";
 import { LessonStage } from "./LessonStage";
 import { type Attempt, QuestionPanel, type StartProgress } from "./QuestionPanel";
+import { useLessonVisit } from "./useLessonVisit";
 
 /**
  * A lesson page's live part. The page around it is cached and the same for everyone; this asks
@@ -128,8 +129,20 @@ export function LessonClient({
   const view = lessonView({ pool, scope: home ? new Set(home.scope) : undefined, code, learner, signedIn: student !== null, from });
   const own = student?.progress.find((r) => r.chapter === chapter && r.code === code);
   const mapHref = home ? chapterHref(home.course, home.chapter) : null;
+  const questionsIndex = slides.findIndex((s) => s.kind === "questions");
+  const lockedPage = student !== null && view.locked && !fill;
 
-  if (student && view.locked && !fill) {
+  // How far through the slides this visit got (2026-11-25, lib/learn/visit). A locked lesson shows
+  // no slides, so it is no visit.
+  const onSlide = useLessonVisit({
+    path: lessonHref(chapter, slug),
+    slides: slides.length,
+    questionsIndex,
+    place: fill ? "v" : "page",
+    signedIn: student !== null && !lockedPage,
+  });
+
+  if (lockedPage) {
     return (
       <div className="mx-auto mt-6 max-w-lg rounded-2xl border bg-card p-8 text-center">
         <span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-muted text-muted-foreground">
@@ -163,8 +176,6 @@ export function LessonClient({
     reviewDue: own ? isReviewDue(own.state, own.next_review_at, Date.now()) : false,
     reviewCorrect: own?.review_correct ?? 0,
   };
-  const questionsIndex = slides.findIndex((s) => s.kind === "questions");
-
   const place = home?.place ?? null;
 
   const content = (
@@ -197,6 +208,7 @@ export function LessonClient({
         label={`${title} lesson`}
         fill={fill}
         onBegin={() => setBegun(true)}
+        onSlide={onSlide}
         // A refresher always starts at the beginning: rereading is the point.
         startIndex={answeredBefore && !view.refresher ? questionsIndex : 0}
         banner={

@@ -39,3 +39,55 @@ select
   (select count(*) from opened o where exists (select 1 from begun b where b.user_id = o.user_id and b.day = o.day)) as opened_and_begun,
   (select count(*) from (select distinct user_id, day from steps where surface = 'stuck_offer' and action = 'learn_open') x) as stuck_offer_lessons_opened,
   (select count(*) from (select distinct user_id, day from steps where surface = 'teach_chapter' and place = 'lesson_notes' and action = 'tap') n) as opened_notes_any_lesson;
+
+-- Where lessons lose students (learn_visit, migration 0288, from its deploy on).
+-- One line per place (page | v): visits, and of those NOT answered (no Learn
+-- answer for that lesson by that student the same India day), how many reached
+-- the questions slide, how many stopped earlier, and the median slide left
+-- from and seconds on it. Each visit's LAST row is the visit (a visit sends again
+-- as it gets further). Visits that opened at the questions (start = slides: a
+-- student who answered before) are left out: they never saw the slides.
+with params as (
+  select timestamptz '2026-11-25 00:00+05:30' as live_from,   -- set to learn_visit's deploy day
+         timestamptz '2026-12-20 00:00+05:30' as live_to
+),
+staff as (select user_id from public.org_members union select user_id from public.platform_admins),
+visits as (
+  select distinct on (a.user_id, a.metadata->>'visit')
+         a.user_id, (a.created_at at time zone 'Asia/Kolkata')::date as day,
+         a.metadata->>'path' as path, a.metadata->>'place' as place,
+         (a.metadata->>'slides')::int as slides, (a.metadata->>'start')::int as start,
+         (a.metadata->>'furthest')::int as furthest, (a.metadata->>'left')::int as left_at,
+         (a.metadata->>'leftSeconds')::int as left_seconds, (a.metadata->>'seconds')::int as seconds,
+         (a.metadata->>'questions')::boolean as questions
+  from public.user_activity a, params p
+  where a.kind = 'learn_visit'
+    and a.created_at >= p.live_from and a.created_at < p.live_to
+    and a.user_id not in (select user_id from staff)
+  order by a.user_id, a.metadata->>'visit', a.created_at desc
+),
+answered as (
+  select distinct la.user_id, (la.created_at at time zone 'Asia/Kolkata')::date as day,
+         '/learn/lesson/' || ch.slug || '/' || c.slug as path
+  from public.learn_attempts la
+  join public.learn_items i on i.id = la.item_id
+  join public.learn_concepts c on c.id = i.concept_id
+  join public.learn_chapters ch on ch.id = c.chapter_id, params p
+  where la.created_at >= p.live_from and la.created_at < p.live_to
+),
+unanswered as (
+  select v.* from visits v
+  where v.start < v.slides
+    and not exists (select 1 from answered x where x.user_id = v.user_id and x.day = v.day and x.path = v.path)
+)
+select v.place,
+  count(*) as visits,
+  (select count(*) from unanswered u where u.place = v.place) as unanswered,
+  (select count(*) from unanswered u where u.place = v.place and u.questions) as unanswered_reached_questions,
+  (select count(*) from unanswered u where u.place = v.place and not u.questions) as unanswered_stopped_in_slides,
+  (select percentile_cont(0.5) within group (order by u.left_at::float / u.slides) from unanswered u where u.place = v.place and not u.questions) as median_share_of_slides_seen,
+  (select percentile_cont(0.5) within group (order by u.left_seconds) from unanswered u where u.place = v.place and not u.questions) as median_seconds_on_last_slide,
+  (select percentile_cont(0.5) within group (order by u.seconds) from unanswered u where u.place = v.place) as median_seconds_in_lesson
+from visits v
+where v.start < v.slides
+group by v.place;

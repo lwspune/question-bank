@@ -93,6 +93,13 @@ export const ACTIVITY_KINDS = [
   // NOT studying, so nothing that counts work, homework, plan tasks or answered
   // totals reads it. The play-games experiment asks whether players study MORE.
   "play_round",
+  // One visit to a Learn lesson (2026-11-25, lib/learn/visit) — 0288. Metadata:
+  // path, visit (a random id), place page | v, slides, start, furthest, left
+  // (the slide left from), leftSeconds, seconds (on screen), questions. Sent on
+  // hiding or closing the lesson, deduped per visit + furthest + left, so a
+  // visit has a few rows and the readout takes its last. Readout only: answers
+  // are learn_attempts, so nothing that counts work reads it.
+  "learn_visit",
 ] as const;
 
 export type ActivityKind = (typeof ACTIVITY_KINDS)[number];
