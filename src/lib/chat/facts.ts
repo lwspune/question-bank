@@ -210,6 +210,7 @@ export const NAV_FACTS: readonly string[] = [
   "/performance: a student's own results after their mocks: scores, trend, and what to work on (needs a free account).",
   "/me/map: a student's mastery map, chapter by chapter (needs a free account).",
   "/me: a student's own home page: what to do next (needs a free account).",
+  "Exam rooms: the round chat button at the bottom left of every page (signed-in students; V is the one at the bottom right). One group chat per exam, and a student sees the rooms for the exams on their profile, each with Join. Each room has a past question pinned every morning, students' doubts and replies, and an Ask V button on a doubt that gets V's answer posted in the room. Phone numbers, emails and links cannot be posted, and Report hides a message after 3 reports. To see another exam's room, add that exam on /account.",
   "Build a practice test: a button in this chat window; V builds a test from the chapters, length and difficulty the student picks.",
   "How's my progress: a button beside it in this chat window for a signed-in student who has practised; it shows a card of their own numbers (this week's answers, mistakes fixed, exam covered, mocks, chapters, notes read) with Fix my mistakes (/drill) and View full performance (/performance).",
   "My plan for today: a button in this chat window for a student already on the board plan; it pins today's card of board plan tasks at the top of this chat for the day, each task linked to its work. The board plan is only in this chat and takes no new starters.",

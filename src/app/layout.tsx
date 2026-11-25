@@ -8,6 +8,7 @@ import AcquisitionCapture from "@/components/acquisition/AcquisitionCapture";
 import ClarityScript from "@/components/analytics/ClarityScript";
 import NavigationProgress from "@/components/NavigationProgress";
 import ChatLauncher from "@/components/chat/ChatLauncher";
+import RoomsLauncher from "@/components/rooms/RoomsLauncher";
 import PendingSelfMarkSaver from "@/components/reveal/PendingSelfMarkSaver";
 import AppInstallCapture from "@/components/install/AppInstallCapture";
 import { CartProvider } from "@/lib/cart/CartProvider";
@@ -137,6 +138,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {/* V, the FAQ helper. No server read at mount — it only calls out when
               opened or a question is clicked — so prerendered routes stay cached. */}
           <ChatLauncher />
+          {/* Exam rooms, bottom left (migration 0289). Signed-in only, decided in the
+              browser from the auth cookie; no server read at render, so
+              prerendered routes stay cached. */}
+          <RoomsLauncher />
           {/* Saves a signed-out "Review later" tap once the visitor is back
               signed in. One localStorage read per page; no server read at
               render, so prerendered routes stay cached. */}
