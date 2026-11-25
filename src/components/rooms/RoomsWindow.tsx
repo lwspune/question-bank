@@ -51,6 +51,7 @@ import { nextPollDelay } from "@/lib/rooms/poll";
 import { plainPreview, roomBadge } from "@/lib/rooms/list";
 import { ROOM_TEXT_MAX } from "@/lib/rooms/text";
 import { NICK_MAX, suggestNickname } from "@/lib/rooms/nickname";
+import { backAtLabel, hideUntilFor } from "@/lib/rooms/button";
 import type { RoomMessageView, RoomQuestionView } from "@/lib/rooms/view";
 import type { RoomReportReason } from "@/lib/rooms/validate";
 
@@ -139,16 +140,23 @@ export default function RoomsWindow({
   const [rooms, setRooms] = useState<RoomsListResponse | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
 
+  // The parent's callback through a ref: depending on it would re-run the
+  // fetch on every parent render (a loop, tests/rooms-store.test.ts).
+  const onUnreadRef = useRef(onUnread);
+  useEffect(() => {
+    onUnreadRef.current = onUnread;
+  }, [onUnread]);
+
   const reload = useCallback(async () => {
     try {
       const r = await fetchRooms();
       setRooms(r);
       setLoadError(null);
-      onUnread(r.unread);
+      onUnreadRef.current(r.unread);
     } catch (e) {
       setLoadError(errorText(e));
     }
-  }, [onUnread]);
+  }, []);
 
   useEffect(() => {
     void reload();
@@ -398,7 +406,7 @@ function HideSheet({
           <span>
             <span className="block font-semibold">For 2 hours</span>
             <span className="block text-sm text-muted-foreground">
-              Comes back by itself
+              {backAtLabel(hideUntilFor("2h", Date.now()) ?? "")}, by itself
             </span>
           </span>
         </button>
@@ -845,7 +853,7 @@ function RoomChat({
 
       {panel === "menu" && (
         <div className="flex shrink-0 flex-wrap items-center gap-2 border-b border-border bg-muted px-4 py-2 text-sm">
-          <span className="min-w-0 flex-1 truncate text-muted-foreground">
+          <span className="basis-full text-muted-foreground">
             You are <strong className="text-foreground">{nickname}</strong> here
           </span>
           <button

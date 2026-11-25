@@ -28,23 +28,28 @@ export function readRoomsState(): RoomsState | null {
 }
 
 export function saveRoomsState(patch: Partial<Omit<RoomsState, "at">>): void {
-  const prev = readRoomsState() ?? { unread: 0, hiddenUntil: null, at: 0 };
-  cached = { ...prev, ...patch, at: Date.now() };
+  const before = readRoomsState();
+  const prev = before ?? { unread: 0, hiddenUntil: null, at: 0 };
+  const next = { ...prev, ...patch, at: Date.now() };
+  // Same values: refresh the time only, notify nobody (a listener that saves
+  // again would otherwise loop; tests/rooms-store.test.ts).
+  const changed = !before || next.unread !== prev.unread || next.hiddenUntil !== prev.hiddenUntil;
+  cached = changed ? next : { ...prev, at: next.at };
   try {
     sessionStorage.setItem(KEY, JSON.stringify(cached));
   } catch {
     // Private mode: the state lives for this page only.
   }
-  listeners.forEach((l) => l());
+  if (changed) listeners.forEach((l) => l());
 }
 
-function subscribe(listener: () => void): () => void {
+export function subscribeRoomsState(listener: () => void): () => void {
   listeners.add(listener);
   return () => listeners.delete(listener);
 }
 
 export function useRoomsState(): RoomsState | null {
-  return useSyncExternalStore(subscribe, readRoomsState, () => null);
+  return useSyncExternalStore(subscribeRoomsState, readRoomsState, () => null);
 }
 
 /** Open the rooms window from anywhere (the account menu), even while the button is hidden. */
