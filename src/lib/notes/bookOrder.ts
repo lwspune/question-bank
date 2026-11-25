@@ -290,6 +290,10 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "d-and-f-block-elements": { cls: 12, chapterNo: 4, book: "NCERT XII 4 The d- and f-Block Elements" },
     "coordination-compounds": { cls: 12, chapterNo: 5, book: "NCERT XII 5 Coordination Compounds" },
     "haloalkanes-and-haloarenes": { cls: 12, chapterNo: 6, book: "NCERT XII 6 Haloalkanes and Haloarenes" },
+    "alcohols-phenols-and-ethers": { cls: 12, chapterNo: 7, book: "NCERT XII 7 Alcohols, Phenols and Ethers" },
+    "aldehydes-ketones-and-carboxylic-acids": { cls: 12, chapterNo: 8, book: "NCERT XII 8 Aldehydes, Ketones and Carboxylic Acids" },
+    amines: { cls: 12, chapterNo: 9, book: "NCERT XII 9 Amines" },
+    biomolecules: { cls: 12, chapterNo: 10, book: "NCERT XII 10 Biomolecules" },
   },
   // JEE Mains Chemistry follows the rationalised NCERT books (the "NCERT" spine in
   // syllabus_concepts). Judgment calls: The p-Block Elements is no longer in either

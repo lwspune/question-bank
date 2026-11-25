@@ -15521,6 +15521,94 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 12,
       "traps": 50
     }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "alcohols-phenols-and-ethers",
+    "chipLabel": "Alcohols, Phenols and Ethers notes",
+    "slugs": [
+      "cbc-ap-classification",
+      "cbc-ap-nomenclature",
+      "cbc-ap-alcohols",
+      "cbc-ap-ethers"
+    ],
+    "chapterName": "Alcohols, Phenols and Ethers",
+    "formulaCounts": {
+      "formulas": 8,
+      "tables": 7,
+      "traps": 40
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "aldehydes-ketones-and-carboxylic-acids",
+    "chipLabel": "Aldehydes, Ketones and Carboxylic Acids notes",
+    "slugs": [
+      "cbc-ak-nomenclature",
+      "cbc-ak-preparation",
+      "cbc-ak-physical",
+      "cbc-ak-reactions",
+      "cbc-ak-carboxyl",
+      "cbc-ak-acidprep",
+      "cbc-ak-acidphysical",
+      "cbc-ak-acidreactions"
+    ],
+    "chapterName": "Aldehydes, Ketones and Carboxylic Acids",
+    "formulaCounts": {
+      "formulas": 10,
+      "tables": 9,
+      "traps": 38
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "amines",
+    "chipLabel": "Amines notes",
+    "slugs": [
+      "cbc-am-classification",
+      "cbc-am-nomenclature",
+      "cbc-am-preparation",
+      "cbc-am-physical",
+      "cbc-am-reactions",
+      "cbc-am-diazonium",
+      "cbc-am-synthesis"
+    ],
+    "chapterName": "Amines",
+    "formulaCounts": {
+      "formulas": 14,
+      "tables": 6,
+      "traps": 45
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "biomolecules",
+    "chipLabel": "Biomolecules notes",
+    "slugs": [
+      "cbc-bm-carbohydrates",
+      "cbc-bm-proteins",
+      "cbc-bm-enzymes",
+      "cbc-bm-vitamins",
+      "cbc-bm-nucleic"
+    ],
+    "chapterName": "Biomolecules",
+    "formulaCounts": {
+      "formulas": 1,
+      "tables": 15,
+      "traps": 41
+    }
   }
 ];
 
@@ -16291,4 +16379,8 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "cbse-12-chemistry/d-and-f-block-elements": () => import("@/app/notes/cbse-12-chemistry/d-and-f-block-elements/_data").then((m) => ({ chapter: m.CB_CH_DF_CHAPTER, notes: m.CB_CH_DF_NOTES })),
   "cbse-12-chemistry/coordination-compounds": () => import("@/app/notes/cbse-12-chemistry/coordination-compounds/_data").then((m) => ({ chapter: m.CB_CH_CC_CHAPTER, notes: m.CB_CH_CC_NOTES })),
   "cbse-12-chemistry/haloalkanes-and-haloarenes": () => import("@/app/notes/cbse-12-chemistry/haloalkanes-and-haloarenes/_data").then((m) => ({ chapter: m.CB_CH_HA_CHAPTER, notes: m.CB_CH_HA_NOTES })),
+  "cbse-12-chemistry/alcohols-phenols-and-ethers": () => import("@/app/notes/cbse-12-chemistry/alcohols-phenols-and-ethers/_data").then((m) => ({ chapter: m.CB_CH_AP_CHAPTER, notes: m.CB_CH_AP_NOTES })),
+  "cbse-12-chemistry/aldehydes-ketones-and-carboxylic-acids": () => import("@/app/notes/cbse-12-chemistry/aldehydes-ketones-and-carboxylic-acids/_data").then((m) => ({ chapter: m.CB_CH_AK_CHAPTER, notes: m.CB_CH_AK_NOTES })),
+  "cbse-12-chemistry/amines": () => import("@/app/notes/cbse-12-chemistry/amines/_data").then((m) => ({ chapter: m.CB_CH_AM_CHAPTER, notes: m.CB_CH_AM_NOTES })),
+  "cbse-12-chemistry/biomolecules": () => import("@/app/notes/cbse-12-chemistry/biomolecules/_data").then((m) => ({ chapter: m.CB_CH_BM_CHAPTER, notes: m.CB_CH_BM_NOTES })),
 };

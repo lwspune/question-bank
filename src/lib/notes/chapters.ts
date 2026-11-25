@@ -3616,6 +3616,26 @@ import {
   CB_CH_HA_NOTES,
   CB_CH_HA_SLUGS,
 } from "@/app/notes/cbse-12-chemistry/haloalkanes-and-haloarenes/_data";
+import {
+  CB_CH_AP_CHAPTER,
+  CB_CH_AP_NOTES,
+  CB_CH_AP_SLUGS,
+} from "@/app/notes/cbse-12-chemistry/alcohols-phenols-and-ethers/_data";
+import {
+  CB_CH_AK_CHAPTER,
+  CB_CH_AK_NOTES,
+  CB_CH_AK_SLUGS,
+} from "@/app/notes/cbse-12-chemistry/aldehydes-ketones-and-carboxylic-acids/_data";
+import {
+  CB_CH_AM_CHAPTER,
+  CB_CH_AM_NOTES,
+  CB_CH_AM_SLUGS,
+} from "@/app/notes/cbse-12-chemistry/amines/_data";
+import {
+  CB_CH_BM_CHAPTER,
+  CB_CH_BM_NOTES,
+  CB_CH_BM_SLUGS,
+} from "@/app/notes/cbse-12-chemistry/biomolecules/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -11621,6 +11641,50 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CB_CH_HA_CHAPTER,
     notes: CB_CH_HA_NOTES,
     slugs: CB_CH_HA_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "cbse-12-chemistry",
+    subjectDisplay: "CBSE Class 12 Chemistry",
+    chapterSlug: "alcohols-phenols-and-ethers",
+    chipLabel: "Alcohols, Phenols and Ethers notes",
+    chapter: CB_CH_AP_CHAPTER,
+    notes: CB_CH_AP_NOTES,
+    slugs: CB_CH_AP_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "cbse-12-chemistry",
+    subjectDisplay: "CBSE Class 12 Chemistry",
+    chapterSlug: "aldehydes-ketones-and-carboxylic-acids",
+    chipLabel: "Aldehydes, Ketones and Carboxylic Acids notes",
+    chapter: CB_CH_AK_CHAPTER,
+    notes: CB_CH_AK_NOTES,
+    slugs: CB_CH_AK_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "cbse-12-chemistry",
+    subjectDisplay: "CBSE Class 12 Chemistry",
+    chapterSlug: "amines",
+    chipLabel: "Amines notes",
+    chapter: CB_CH_AM_CHAPTER,
+    notes: CB_CH_AM_NOTES,
+    slugs: CB_CH_AM_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "cbse-12-chemistry",
+    subjectDisplay: "CBSE Class 12 Chemistry",
+    chapterSlug: "biomolecules",
+    chipLabel: "Biomolecules notes",
+    chapter: CB_CH_BM_CHAPTER,
+    notes: CB_CH_BM_NOTES,
+    slugs: CB_CH_BM_SLUGS,
   },
 ];
 

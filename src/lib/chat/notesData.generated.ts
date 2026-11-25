@@ -769,7 +769,11 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "cbse-12-chemistry/chemical-kinetics",
   "cbse-12-chemistry/d-and-f-block-elements",
   "cbse-12-chemistry/coordination-compounds",
-  "cbse-12-chemistry/haloalkanes-and-haloarenes"
+  "cbse-12-chemistry/haloalkanes-and-haloarenes",
+  "cbse-12-chemistry/alcohols-phenols-and-ethers",
+  "cbse-12-chemistry/aldehydes-ketones-and-carboxylic-acids",
+  "cbse-12-chemistry/amines",
+  "cbse-12-chemistry/biomolecules"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1539,4 +1543,8 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "cbse-12-chemistry/d-and-f-block-elements": () => import("@/app/notes/cbse-12-chemistry/d-and-f-block-elements/_data").then((m) => m.CB_CH_DF_NOTES),
   "cbse-12-chemistry/coordination-compounds": () => import("@/app/notes/cbse-12-chemistry/coordination-compounds/_data").then((m) => m.CB_CH_CC_NOTES),
   "cbse-12-chemistry/haloalkanes-and-haloarenes": () => import("@/app/notes/cbse-12-chemistry/haloalkanes-and-haloarenes/_data").then((m) => m.CB_CH_HA_NOTES),
+  "cbse-12-chemistry/alcohols-phenols-and-ethers": () => import("@/app/notes/cbse-12-chemistry/alcohols-phenols-and-ethers/_data").then((m) => m.CB_CH_AP_NOTES),
+  "cbse-12-chemistry/aldehydes-ketones-and-carboxylic-acids": () => import("@/app/notes/cbse-12-chemistry/aldehydes-ketones-and-carboxylic-acids/_data").then((m) => m.CB_CH_AK_NOTES),
+  "cbse-12-chemistry/amines": () => import("@/app/notes/cbse-12-chemistry/amines/_data").then((m) => m.CB_CH_AM_NOTES),
+  "cbse-12-chemistry/biomolecules": () => import("@/app/notes/cbse-12-chemistry/biomolecules/_data").then((m) => m.CB_CH_BM_NOTES),
 };

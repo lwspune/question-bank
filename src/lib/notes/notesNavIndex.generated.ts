@@ -5365,5 +5365,33 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "CBSE Class 12 Chemistry",
     "chapterSlug": "haloalkanes-and-haloarenes",
     "subtopicCount": 8
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "alcohols-phenols-and-ethers",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "aldehydes-ketones-and-carboxylic-acids",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "amines",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "biomolecules",
+    "subtopicCount": 5
   }
 ];
