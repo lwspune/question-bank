@@ -15,6 +15,7 @@ import type { DeclineReason } from "@/lib/billing/declineReasons";
 import type { ChapterFixFrom } from "@/lib/drill/from";
 import type { StartNextFrom } from "@/lib/me/startNext";
 import type { TeachChapterFrom } from "@/lib/chat/teachChapter";
+import type { VisitReport } from "@/lib/learn/visit";
 
 const ENDPOINT = "/api/activity/event";
 const sent = new Set<string>();
@@ -56,10 +57,11 @@ export type ClientEvent =
       chapterId: string;
     }
   | {
-      /** The Visuals gallery (2026-11-23): a subject's page, or a visual opened, practised or read in notes. */
+      /** The Visuals gallery (2026-11-23): a subject's page, or a visual opened, practised or read in
+       *  notes (the panel, 2026-11-25), or the panel's full notes page followed (full_notes). */
       kind: "surface_viewed";
       surface: "visuals";
-      action: "page" | "open" | "practise" | "notes";
+      action: "page" | "open" | "practise" | "notes" | "full_notes";
       subject: string;
       slug?: string;
     }
@@ -162,6 +164,13 @@ export type ClientEvent =
   | { kind: "play_round"; game: "element_hunt"; world: number; score: number; right: number; wrong: number }
   | { kind: "play_round"; game: "timeline"; pack: string; placed: number; won: boolean }
   | { kind: "play_round"; game: "pin_it"; pack: string; score: number }
+  | ({
+      /** One visit to a Learn lesson (lib/learn/visit, migration 0288). */
+      kind: "learn_visit";
+      path: string;
+      visit: string;
+      place: "page" | "v";
+    } & VisitReport)
   | {
       /** A finished Daily Word (lib/play/words/daily). */
       kind: "play_round";

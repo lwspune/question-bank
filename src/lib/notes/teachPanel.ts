@@ -57,6 +57,15 @@ function teachConcept(c: ConceptUnit): TeachConcept {
   };
 }
 
+/**
+ * Whether a concept says "there is an interactive diagram on the full notes
+ * page". Not for the concept the student opened the panel from in the Visuals
+ * viewer (2026-11-25): they were just looking at that diagram.
+ */
+export function diagramNoteShown(c: Pick<TeachConcept, "slug" | "hasDiagram">, skipFor: string | null): boolean {
+  return c.hasDiagram && c.slug !== skipFor;
+}
+
 /** The panel's concepts: the one the question is tagged with first, then teaching order. */
 export function teachConcepts(note: SubtopicNote, conceptSlug: string | null): TeachConcept[] {
   const all = note.concepts.map(teachConcept);
