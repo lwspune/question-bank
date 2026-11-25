@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 741
+ * Entries: 754
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -58,6 +58,19 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/cbse-12-chemistry/electrochemistry": "2026-11-25T18:14:49+05:30",
   "/notes/cbse-12-chemistry/haloalkanes-and-haloarenes": "2026-11-25T18:34:13+05:30",
   "/notes/cbse-12-chemistry/solutions": "2026-11-25T18:14:49+05:30",
+  "/notes/cbse-12-maths/application-of-derivatives": "2026-11-25T21:06:59+05:30",
+  "/notes/cbse-12-maths/application-of-integrals": "2026-11-25T23:06:59+05:30",
+  "/notes/cbse-12-maths/continuity-and-differentiability": "2026-11-25T21:06:59+05:30",
+  "/notes/cbse-12-maths/determinants": "2026-11-25T21:06:59+05:30",
+  "/notes/cbse-12-maths/differential-equations": "2026-11-25T22:18:48+05:30",
+  "/notes/cbse-12-maths/integrals": "2026-11-25T22:18:48+05:30",
+  "/notes/cbse-12-maths/inverse-trigonometric-functions": "2026-11-25T21:06:59+05:30",
+  "/notes/cbse-12-maths/linear-programming": "2026-11-25T22:18:48+05:30",
+  "/notes/cbse-12-maths/matrices": "2026-11-25T21:06:59+05:30",
+  "/notes/cbse-12-maths/probability": "2026-11-25T22:18:48+05:30",
+  "/notes/cbse-12-maths/relations-and-functions": "2026-11-25T21:06:59+05:30",
+  "/notes/cbse-12-maths/three-dimensional-geometry": "2026-11-25T22:18:48+05:30",
+  "/notes/cbse-12-maths/vector-algebra": "2026-11-25T22:18:48+05:30",
   "/notes/cbse-12-physics/alternating-current": "2026-11-25T07:25:18+05:30",
   "/notes/cbse-12-physics/atoms": "2026-11-25T16:48:51+05:30",
   "/notes/cbse-12-physics/current-electricity": "2026-11-25T07:25:18+05:30",

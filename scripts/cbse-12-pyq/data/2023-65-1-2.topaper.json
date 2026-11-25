@@ -92,7 +92,7 @@
     }
    ],
    "answer": "D",
-   "solution": "Let the direction cosines of the line be \\(l, m, n\\). Being perpendicular to the x-axis, whose direction ratios are \\(1, 0, 0\\), gives \\(l = 0\\); being perpendicular to the z-axis, whose direction ratios are \\(0, 0, 1\\), gives \\(n = 0\\). Since \\(l^2 + m^2 + n^2 = 1\\), this leaves \\(m^2 = 1\\). Taking \\(m = 1\\), the direction cosines are \\(0, 1, 0\\) — the line is parallel to the y-axis, which is what a line perpendicular to both the other axes must be."
+   "solution": "Let the direction cosines of the line be \\(l, m, n\\). Being perpendicular to the x-axis, whose direction ratios are \\(1, 0, 0\\), gives \\(l = 0\\); being perpendicular to the z-axis, whose direction ratios are \\(0, 0, 1\\), gives \\(n = 0\\). Since \\(l^2 + m^2 + n^2 = 1\\), this leaves \\(m^2 = 1\\). Taking \\(m = 1\\), the direction cosines are \\(0, 1, 0\\): the line is parallel to the y-axis, which is what a line perpendicular to both the other axes must be."
   },
   {
    "hash": "34d9f9164885b72bec545c32ea7a9ca4532a59185307f097b61c326b6a09b09f",
@@ -122,7 +122,7 @@
     }
    ],
    "answer": "D",
-   "solution": "Continuity at \\(x = 0\\) is the only thing in question, since each branch is continuous on its own side. From the branch for \\(x \\le 0\\), \\(f(0) = k\\left(3(0)^2 - 5(0)\\right) = 0\\), and \\(\\lim_{x \\to 0^-} f(x) = 0\\) as well — the factor \\(3x^2 - 5x\\) vanishes at \\(x = 0\\), so multiplying it by \\(k\\) cannot change that, whatever \\(k\\) may be. From the other side, \\(\\lim_{x \\to 0^+} f(x) = \\cos 0 = 1\\). Continuity would require \\(0 = 1\\), which is impossible, so no value of \\(k\\) makes \\(f\\) continuous. Hence the choice 'No value'."
+   "solution": "Continuity at \\(x = 0\\) is the only thing in question, since each branch is continuous on its own side. From the branch for \\(x \\le 0\\), \\(f(0) = k\\left(3(0)^2 - 5(0)\\right) = 0\\), and \\(\\lim_{x \\to 0^-} f(x) = 0\\) as well: the factor \\(3x^2 - 5x\\) vanishes at \\(x = 0\\), so multiplying it by \\(k\\) cannot change that, whatever \\(k\\) may be. From the other side, \\(\\lim_{x \\to 0^+} f(x) = \\cos 0 = 1\\). Continuity would require \\(0 = 1\\), which is impossible, so no value of \\(k\\) makes \\(f\\) continuous. Hence the choice 'No value'."
   },
   {
    "hash": "9e356d619f520cfe14e6808e7191cb76f3bb974f399394f5023b7a9abb93e997",
@@ -183,7 +183,7 @@
     }
    ],
    "answer": "C",
-   "solution": "A function from \\(P\\) to \\(Q\\) fails to be onto exactly when it misses one of the two elements of \\(Q\\). There are \\(2^5 = 32\\) functions in all from a 5-element set to a 2-element set, and exactly 2 of them are constant (the ones that miss an element), so the number of onto functions is \\(32 - 2 = 30\\). The Assertion is therefore correct. The Reason, however, offers \\(n^m\\) as the count of onto functions; that expression is the total number of functions from an \\(m\\)-element set to an \\(n\\)-element set, onto or not — here it gives 32, not 30, so it even contradicts the Assertion it is supposed to justify. So the Assertion is true while the Reason is false."
+   "solution": "A function from \\(P\\) to \\(Q\\) fails to be onto exactly when it misses one of the two elements of \\(Q\\). There are \\(2^5 = 32\\) functions in all from a 5-element set to a 2-element set, and exactly 2 of them are constant (the ones that miss an element), so the number of onto functions is \\(32 - 2 = 30\\). The Assertion is therefore correct. The Reason, however, offers \\(n^m\\) as the count of onto functions; that expression is the total number of functions from an \\(m\\)-element set to an \\(n\\)-element set, onto or not: here it gives 32, not 30, so it even contradicts the Assertion it is supposed to justify. So the Assertion is true while the Reason is false."
   },
   {
    "hash": "2f4e4080f12dea3161a586f5e6d339f028d0df23d5d84b7c9ee17136954986d5",
@@ -238,7 +238,7 @@
    "chapter": "Linear Programming",
    "subtopic": "Graphical Solution and the Feasible Region",
    "stem": "Solve the following linear programming problem graphically :\nMaximize P = 100x + 5y\nsubject to the constraints\n\\(x + y \\le 300\\),\n\\(3x + y \\le 600\\),\n\\(y \\le x + 200\\),\n\\(x, y \\ge 0\\).",
-   "solution": "[CBSE marking scheme: in the printed graph the slanted boundary rising to the right is labelled \\(y = x + 100\\), but the constraint is \\(y \\le x + 200\\) and the line actually drawn — through the marked points \\((0, 200)\\) and \\((50, 250)\\) — is \\(y = x + 200\\). Only the label is mistyped; the shaded region, the five corner points and every value in the scheme's table are correct.] The constraints \\(x + y \\le 300\\), \\(3x + y \\le 600\\), \\(y \\le x + 200\\), \\(x \\ge 0\\), \\(y \\ge 0\\) determine a bounded convex feasible region. Its corner points come from intersecting the boundary lines in pairs: \\(x + y = 300\\) with \\(3x + y = 600\\) gives \\(2x = 300\\), so \\((150, 150)\\); \\(x + y = 300\\) with \\(y = x + 200\\) gives \\(2x = 100\\), so \\((50, 250)\\); \\(y = x + 200\\) with \\(x = 0\\) gives \\((0, 200)\\); \\(3x + y = 600\\) with \\(y = 0\\) gives \\((200, 0)\\); and the origin \\((0, 0)\\). Evaluating \\(P = 100x + 5y\\) at each: \\(P(0, 0) = 0\\), \\(P(200, 0) = 20000\\), \\(P(150, 150) = 15000 + 750 = 15750\\), \\(P(50, 250) = 5000 + 1250 = 6250\\), \\(P(0, 200) = 1000\\). Since the feasible region is bounded, the largest of these values is the maximum: \\(P = 20000\\), attained at \\(x = 200\\), \\(y = 0\\)."
+   "solution": "[CBSE marking scheme: in the printed graph the slanted boundary rising to the right is labelled \\(y = x + 100\\), but the constraint is \\(y \\le x + 200\\) and the line actually drawn (through the marked points \\((0, 200)\\) and \\((50, 250)\\)) is \\(y = x + 200\\). Only the label is mistyped; the shaded region, the five corner points and every value in the scheme's table are correct.] The constraints \\(x + y \\le 300\\), \\(3x + y \\le 600\\), \\(y \\le x + 200\\), \\(x \\ge 0\\), \\(y \\ge 0\\) determine a bounded convex feasible region. Its corner points come from intersecting the boundary lines in pairs: \\(x + y = 300\\) with \\(3x + y = 600\\) gives \\(2x = 300\\), so \\((150, 150)\\); \\(x + y = 300\\) with \\(y = x + 200\\) gives \\(2x = 100\\), so \\((50, 250)\\); \\(y = x + 200\\) with \\(x = 0\\) gives \\((0, 200)\\); \\(3x + y = 600\\) with \\(y = 0\\) gives \\((200, 0)\\); and the origin \\((0, 0)\\). Evaluating \\(P = 100x + 5y\\) at each: \\(P(0, 0) = 0\\), \\(P(200, 0) = 20000\\), \\(P(150, 150) = 15000 + 750 = 15750\\), \\(P(50, 250) = 5000 + 1250 = 6250\\), \\(P(0, 200) = 1000\\). Since the feasible region is bounded, the largest of these values is the maximum: \\(P = 20000\\), attained at \\(x = 200\\), \\(y = 0\\)."
   },
   {
    "hash": "2d6caa20209acb8559fe64d56ca7f80f98e03888092ec0d870b7aedd98fa1380",

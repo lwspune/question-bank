@@ -3636,6 +3636,71 @@ import {
   CB_CH_BM_NOTES,
   CB_CH_BM_SLUGS,
 } from "@/app/notes/cbse-12-chemistry/biomolecules/_data";
+import {
+  CB_MA_IT_CHAPTER,
+  CB_MA_IT_NOTES,
+  CB_MA_IT_SLUGS,
+} from "@/app/notes/cbse-12-maths/inverse-trigonometric-functions/_data";
+import {
+  CB_MA_RF_CHAPTER,
+  CB_MA_RF_NOTES,
+  CB_MA_RF_SLUGS,
+} from "@/app/notes/cbse-12-maths/relations-and-functions/_data";
+import {
+  CB_MA_MT_CHAPTER,
+  CB_MA_MT_NOTES,
+  CB_MA_MT_SLUGS,
+} from "@/app/notes/cbse-12-maths/matrices/_data";
+import {
+  CB_MA_DT_CHAPTER,
+  CB_MA_DT_NOTES,
+  CB_MA_DT_SLUGS,
+} from "@/app/notes/cbse-12-maths/determinants/_data";
+import {
+  CB_MA_AD_CHAPTER,
+  CB_MA_AD_NOTES,
+  CB_MA_AD_SLUGS,
+} from "@/app/notes/cbse-12-maths/application-of-derivatives/_data";
+import {
+  CB_MA_CD_CHAPTER,
+  CB_MA_CD_NOTES,
+  CB_MA_CD_SLUGS,
+} from "@/app/notes/cbse-12-maths/continuity-and-differentiability/_data";
+import {
+  CB_MA_AI_CHAPTER,
+  CB_MA_AI_NOTES,
+  CB_MA_AI_SLUGS,
+} from "@/app/notes/cbse-12-maths/application-of-integrals/_data";
+import {
+  CB_MA_IN_CHAPTER,
+  CB_MA_IN_NOTES,
+  CB_MA_IN_SLUGS,
+} from "@/app/notes/cbse-12-maths/integrals/_data";
+import {
+  CB_MA_DE_CHAPTER,
+  CB_MA_DE_NOTES,
+  CB_MA_DE_SLUGS,
+} from "@/app/notes/cbse-12-maths/differential-equations/_data";
+import {
+  CB_MA_VA_CHAPTER,
+  CB_MA_VA_NOTES,
+  CB_MA_VA_SLUGS,
+} from "@/app/notes/cbse-12-maths/vector-algebra/_data";
+import {
+  CB_MA_TG_CHAPTER,
+  CB_MA_TG_NOTES,
+  CB_MA_TG_SLUGS,
+} from "@/app/notes/cbse-12-maths/three-dimensional-geometry/_data";
+import {
+  CB_MA_LP_CHAPTER,
+  CB_MA_LP_NOTES,
+  CB_MA_LP_SLUGS,
+} from "@/app/notes/cbse-12-maths/linear-programming/_data";
+import {
+  CB_MA_PR_CHAPTER,
+  CB_MA_PR_NOTES,
+  CB_MA_PR_SLUGS,
+} from "@/app/notes/cbse-12-maths/probability/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -11685,6 +11750,149 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CB_CH_BM_CHAPTER,
     notes: CB_CH_BM_NOTES,
     slugs: CB_CH_BM_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "cbse-12-maths",
+    subjectDisplay: "CBSE Class 12 Maths",
+    chapterSlug: "inverse-trigonometric-functions",
+    chipLabel: "Inverse Trigonometric Functions notes",
+    chapter: CB_MA_IT_CHAPTER,
+    notes: CB_MA_IT_NOTES,
+    slugs: CB_MA_IT_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "cbse-12-maths",
+    subjectDisplay: "CBSE Class 12 Maths",
+    chapterSlug: "relations-and-functions",
+    chipLabel: "Relations and Functions notes",
+    chapter: CB_MA_RF_CHAPTER,
+    notes: CB_MA_RF_NOTES,
+    slugs: CB_MA_RF_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "cbse-12-maths",
+    subjectDisplay: "CBSE Class 12 Maths",
+    chapterSlug: "matrices",
+    chipLabel: "Matrices notes",
+    chapter: CB_MA_MT_CHAPTER,
+    notes: CB_MA_MT_NOTES,
+    slugs: CB_MA_MT_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "cbse-12-maths",
+    subjectDisplay: "CBSE Class 12 Maths",
+    chapterSlug: "determinants",
+    chipLabel: "Determinants notes",
+    chapter: CB_MA_DT_CHAPTER,
+    notes: CB_MA_DT_NOTES,
+    slugs: CB_MA_DT_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "cbse-12-maths",
+    subjectDisplay: "CBSE Class 12 Maths",
+    chapterSlug: "application-of-derivatives",
+    chipLabel: "Application of Derivatives notes",
+    chapter: CB_MA_AD_CHAPTER,
+    notes: CB_MA_AD_NOTES,
+    slugs: CB_MA_AD_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "cbse-12-maths",
+    subjectDisplay: "CBSE Class 12 Maths",
+    chapterSlug: "continuity-and-differentiability",
+    chipLabel: "Continuity and Differentiability notes",
+    chapter: CB_MA_CD_CHAPTER,
+    notes: CB_MA_CD_NOTES,
+    slugs: CB_MA_CD_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "cbse-12-maths",
+    subjectDisplay: "CBSE Class 12 Maths",
+    chapterSlug: "application-of-integrals",
+    chipLabel: "Application of Integrals notes",
+    chapter: CB_MA_AI_CHAPTER,
+    notes: CB_MA_AI_NOTES,
+    slugs: CB_MA_AI_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "cbse-12-maths",
+    subjectDisplay: "CBSE Class 12 Maths",
+    chapterSlug: "integrals",
+    chipLabel: "Integrals notes",
+    chapter: CB_MA_IN_CHAPTER,
+    notes: CB_MA_IN_NOTES,
+    slugs: CB_MA_IN_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "cbse-12-maths",
+    subjectDisplay: "CBSE Class 12 Maths",
+    chapterSlug: "differential-equations",
+    chipLabel: "Differential Equations notes",
+    chapter: CB_MA_DE_CHAPTER,
+    notes: CB_MA_DE_NOTES,
+    slugs: CB_MA_DE_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "cbse-12-maths",
+    subjectDisplay: "CBSE Class 12 Maths",
+    chapterSlug: "vector-algebra",
+    chipLabel: "Vector Algebra notes",
+    chapter: CB_MA_VA_CHAPTER,
+    notes: CB_MA_VA_NOTES,
+    slugs: CB_MA_VA_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "cbse-12-maths",
+    subjectDisplay: "CBSE Class 12 Maths",
+    chapterSlug: "three-dimensional-geometry",
+    chipLabel: "Three Dimensional Geometry notes",
+    chapter: CB_MA_TG_CHAPTER,
+    notes: CB_MA_TG_NOTES,
+    slugs: CB_MA_TG_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "cbse-12-maths",
+    subjectDisplay: "CBSE Class 12 Maths",
+    chapterSlug: "linear-programming",
+    chipLabel: "Linear Programming notes",
+    chapter: CB_MA_LP_CHAPTER,
+    notes: CB_MA_LP_NOTES,
+    slugs: CB_MA_LP_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "cbse-12-maths",
+    subjectDisplay: "CBSE Class 12 Maths",
+    chapterSlug: "probability",
+    chipLabel: "Probability notes",
+    chapter: CB_MA_PR_CHAPTER,
+    notes: CB_MA_PR_NOTES,
+    slugs: CB_MA_PR_SLUGS,
   },
 ];
 

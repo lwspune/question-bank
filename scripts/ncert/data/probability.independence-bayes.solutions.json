@@ -42,12 +42,12 @@
   {
     "id": "aaf11bd7-aa66-480a-8e29-d6fabece5f49",
     "ref": "Ex 13.2 Q8(iii)",
-    "solution": "By definition \\(P(A|B) = \\frac{P(A \\cap B)}{P(B)}\\), and by independence \\(P(A \\cap B) = P(A)P(B) = 0.12\\). Hence \\(P(A|B) = \\frac{0.12}{0.4} = 0.3\\), which is just \\(P(A)\\) — as independence requires. So \\(P(A|B) = 0.3\\)."
+    "solution": "By definition \\(P(A|B) = \\frac{P(A \\cap B)}{P(B)}\\), and by independence \\(P(A \\cap B) = P(A)P(B) = 0.12\\). Hence \\(P(A|B) = \\frac{0.12}{0.4} = 0.3\\), which is just \\(P(A)\\), as independence requires. So \\(P(A|B) = 0.3\\)."
   },
   {
     "id": "7b80da2b-87d5-4e53-8a31-b80afffff944",
     "ref": "Ex 13.2 Q8(iv)",
-    "solution": "By definition \\(P(B|A) = \\frac{P(A \\cap B)}{P(A)}\\), and by independence \\(P(A \\cap B) = P(A)P(B) = 0.12\\). Hence \\(P(B|A) = \\frac{0.12}{0.3} = 0.4\\), which is just \\(P(B)\\) — as independence requires. So \\(P(B|A) = 0.4\\)."
+    "solution": "By definition \\(P(B|A) = \\frac{P(A \\cap B)}{P(A)}\\), and by independence \\(P(A \\cap B) = P(A)P(B) = 0.12\\). Hence \\(P(B|A) = \\frac{0.12}{0.3} = 0.4\\), which is just \\(P(B)\\), as independence requires. So \\(P(B|A) = 0.4\\)."
   },
   {
     "id": "ea4fbdc5-bf61-4c69-8084-d76e8ec85d2d",
@@ -118,7 +118,7 @@
   {
     "id": "22639498-dc28-470e-911c-55e871b163a4",
     "ref": "Ex 13.2 Q15(ii)",
-    "solution": "There are 26 black cards and 4 kings, so \\(P(E) = \\frac{26}{52} = \\frac{1}{2}\\) and \\(P(F) = \\frac{4}{52} = \\frac{1}{13}\\). The event \\(E \\cap F\\) is 'a black king' — the king of spades and the king of clubs — so \\(P(E \\cap F) = \\frac{2}{52} = \\frac{1}{26}\\). Since \\(P(E)\\,P(F) = \\frac{1}{2} \\times \\frac{1}{13} = \\frac{1}{26} = P(E \\cap F)\\), the events E and F are independent."
+    "solution": "There are 26 black cards and 4 kings, so \\(P(E) = \\frac{26}{52} = \\frac{1}{2}\\) and \\(P(F) = \\frac{4}{52} = \\frac{1}{13}\\). The event \\(E \\cap F\\) is 'a black king' (the king of spades and the king of clubs), so \\(P(E \\cap F) = \\frac{2}{52} = \\frac{1}{26}\\). Since \\(P(E)\\,P(F) = \\frac{1}{2} \\times \\frac{1}{13} = \\frac{1}{26} = P(E \\cap F)\\), the events E and F are independent."
   },
   {
     "id": "f6c34652-450c-4fac-8db5-e84fb633781a",
@@ -128,7 +128,7 @@
   {
     "id": "fe8940d0-4bbe-47a0-b757-57b4e102f925",
     "ref": "Misc Q4",
-    "solution": "[Textbook note: this question requires the binomial distribution, which the rationalised 2025-26 edition no longer teaches in this chapter — the chapter now ends at Bayes' theorem. The solution below uses the binomial model.] The ten people are chosen independently and each is right-handed with probability \\(p = \\frac{9}{10}\\), so the number X of right-handed people in the sample is binomial with \\(n = 10\\), \\(p = \\frac{9}{10}\\), \\(q = \\frac{1}{10}\\), and \\(P(X = r) = \\binom{10}{r}\\left(\\frac{9}{10}\\right)^{r}\\left(\\frac{1}{10}\\right)^{10-r}\\). Summing \\(r = 0\\) to \\(6\\) is long, so use the complement: \\(P(X \\le 6) = 1 - \\left[P(X=7) + P(X=8) + P(X=9) + P(X=10)\\right]\\). Each of those four terms has the common factor \\(\\frac{9^{7}}{10^{10}}\\), since \\(\\left(\\frac{9}{10}\\right)^{r}\\left(\\frac{1}{10}\\right)^{10-r} = \\frac{9^{r}}{10^{10}}\\); the coefficients are \\(\\binom{10}{7} = 120\\), \\(\\binom{10}{8}\\cdot 9 = 45 \\times 9 = 405\\), \\(\\binom{10}{9}\\cdot 9^{2} = 10 \\times 81 = 810\\) and \\(9^{3} = 729\\), which total \\(120 + 405 + 810 + 729 = 2064\\). Hence \\(P(X \\le 6) = 1 - \\frac{2064 \\times 9^{7}}{10^{10}} = 1 - \\frac{9872048016}{10^{10}} \\approx 0.0128\\).",
+    "solution": "[Textbook note: this question requires the binomial distribution, which the rationalised 2025-26 edition no longer teaches in this chapter. The chapter now ends at Bayes' theorem. The solution below uses the binomial model.] The ten people are chosen independently and each is right-handed with probability \\(p = \\frac{9}{10}\\), so the number X of right-handed people in the sample is binomial with \\(n = 10\\), \\(p = \\frac{9}{10}\\), \\(q = \\frac{1}{10}\\), and \\(P(X = r) = \\binom{10}{r}\\left(\\frac{9}{10}\\right)^{r}\\left(\\frac{1}{10}\\right)^{10-r}\\). Summing \\(r = 0\\) to \\(6\\) is long, so use the complement: \\(P(X \\le 6) = 1 - \\left[P(X=7) + P(X=8) + P(X=9) + P(X=10)\\right]\\). Each of those four terms has the common factor \\(\\frac{9^{7}}{10^{10}}\\), since \\(\\left(\\frac{9}{10}\\right)^{r}\\left(\\frac{1}{10}\\right)^{10-r} = \\frac{9^{r}}{10^{10}}\\); the coefficients are \\(\\binom{10}{7} = 120\\), \\(\\binom{10}{8}\\cdot 9 = 45 \\times 9 = 405\\), \\(\\binom{10}{9}\\cdot 9^{2} = 10 \\times 81 = 810\\) and \\(9^{3} = 729\\), which total \\(120 + 405 + 810 + 729 = 2064\\). Hence \\(P(X \\le 6) = 1 - \\frac{2064 \\times 9^{7}}{10^{10}} = 1 - \\frac{9872048016}{10^{10}} \\approx 0.0128\\).",
     "_note": "Derivation cross-checked against the coordinator's two quoted reference forms. My answer AGREES with the explicit form \\(1-[\\binom{10}{7}(0.9)^7(0.1)^3+\\binom{10}{8}(0.9)^8(0.1)^2+\\binom{10}{9}(0.9)^9(0.1)+(0.9)^{10}]\\), which evaluates to 0.01280. It DISAGREES with the closed form quoted as \\(1-\\frac{9^7 \\cdot 217}{10^{10}}\\): the correct coefficient is 2064, not 217. Note the two quoted forms also contradict each other — \\(1-\\frac{9^7 \\cdot 217}{10^{10}} = 0.8962\\), which cannot be \\(P(X \\le 6)\\) when \\(E(X) = 9\\) (the mass sits at the top of the range, so \\(P(X \\le 6)\\) must be small). Per the brief I have written my own derivation's conclusion, 0.0128. If the book genuinely prints 217, that is a book defect for the cross-check gate to adjudicate."
   },
   {

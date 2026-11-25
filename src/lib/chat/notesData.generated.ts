@@ -773,7 +773,20 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "cbse-12-chemistry/alcohols-phenols-and-ethers",
   "cbse-12-chemistry/aldehydes-ketones-and-carboxylic-acids",
   "cbse-12-chemistry/amines",
-  "cbse-12-chemistry/biomolecules"
+  "cbse-12-chemistry/biomolecules",
+  "cbse-12-maths/inverse-trigonometric-functions",
+  "cbse-12-maths/relations-and-functions",
+  "cbse-12-maths/matrices",
+  "cbse-12-maths/determinants",
+  "cbse-12-maths/application-of-derivatives",
+  "cbse-12-maths/continuity-and-differentiability",
+  "cbse-12-maths/application-of-integrals",
+  "cbse-12-maths/integrals",
+  "cbse-12-maths/differential-equations",
+  "cbse-12-maths/vector-algebra",
+  "cbse-12-maths/three-dimensional-geometry",
+  "cbse-12-maths/linear-programming",
+  "cbse-12-maths/probability"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1547,4 +1560,17 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "cbse-12-chemistry/aldehydes-ketones-and-carboxylic-acids": () => import("@/app/notes/cbse-12-chemistry/aldehydes-ketones-and-carboxylic-acids/_data").then((m) => m.CB_CH_AK_NOTES),
   "cbse-12-chemistry/amines": () => import("@/app/notes/cbse-12-chemistry/amines/_data").then((m) => m.CB_CH_AM_NOTES),
   "cbse-12-chemistry/biomolecules": () => import("@/app/notes/cbse-12-chemistry/biomolecules/_data").then((m) => m.CB_CH_BM_NOTES),
+  "cbse-12-maths/inverse-trigonometric-functions": () => import("@/app/notes/cbse-12-maths/inverse-trigonometric-functions/_data").then((m) => m.CB_MA_IT_NOTES),
+  "cbse-12-maths/relations-and-functions": () => import("@/app/notes/cbse-12-maths/relations-and-functions/_data").then((m) => m.CB_MA_RF_NOTES),
+  "cbse-12-maths/matrices": () => import("@/app/notes/cbse-12-maths/matrices/_data").then((m) => m.CB_MA_MT_NOTES),
+  "cbse-12-maths/determinants": () => import("@/app/notes/cbse-12-maths/determinants/_data").then((m) => m.CB_MA_DT_NOTES),
+  "cbse-12-maths/application-of-derivatives": () => import("@/app/notes/cbse-12-maths/application-of-derivatives/_data").then((m) => m.CB_MA_AD_NOTES),
+  "cbse-12-maths/continuity-and-differentiability": () => import("@/app/notes/cbse-12-maths/continuity-and-differentiability/_data").then((m) => m.CB_MA_CD_NOTES),
+  "cbse-12-maths/application-of-integrals": () => import("@/app/notes/cbse-12-maths/application-of-integrals/_data").then((m) => m.CB_MA_AI_NOTES),
+  "cbse-12-maths/integrals": () => import("@/app/notes/cbse-12-maths/integrals/_data").then((m) => m.CB_MA_IN_NOTES),
+  "cbse-12-maths/differential-equations": () => import("@/app/notes/cbse-12-maths/differential-equations/_data").then((m) => m.CB_MA_DE_NOTES),
+  "cbse-12-maths/vector-algebra": () => import("@/app/notes/cbse-12-maths/vector-algebra/_data").then((m) => m.CB_MA_VA_NOTES),
+  "cbse-12-maths/three-dimensional-geometry": () => import("@/app/notes/cbse-12-maths/three-dimensional-geometry/_data").then((m) => m.CB_MA_TG_NOTES),
+  "cbse-12-maths/linear-programming": () => import("@/app/notes/cbse-12-maths/linear-programming/_data").then((m) => m.CB_MA_LP_NOTES),
+  "cbse-12-maths/probability": () => import("@/app/notes/cbse-12-maths/probability/_data").then((m) => m.CB_MA_PR_NOTES),
 };
