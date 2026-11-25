@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 731
+ * Entries: 741
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -48,6 +48,16 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/afcat-maths/statistics": "2026-10-22T14:10:35+05:30",
   "/notes/afcat-maths/surface-area-volume": "2026-10-22T13:49:14+05:30",
   "/notes/afcat-maths/time-work": "2026-10-22T13:49:14+05:30",
+  "/notes/cbse-12-chemistry/alcohols-phenols-and-ethers": "2026-11-25T19:05:30+05:30",
+  "/notes/cbse-12-chemistry/aldehydes-ketones-and-carboxylic-acids": "2026-11-25T19:05:30+05:30",
+  "/notes/cbse-12-chemistry/amines": "2026-11-25T19:05:30+05:30",
+  "/notes/cbse-12-chemistry/biomolecules": "2026-11-25T19:05:30+05:30",
+  "/notes/cbse-12-chemistry/chemical-kinetics": "2026-11-25T18:14:49+05:30",
+  "/notes/cbse-12-chemistry/coordination-compounds": "2026-11-25T18:34:13+05:30",
+  "/notes/cbse-12-chemistry/d-and-f-block-elements": "2026-11-25T18:34:13+05:30",
+  "/notes/cbse-12-chemistry/electrochemistry": "2026-11-25T18:14:49+05:30",
+  "/notes/cbse-12-chemistry/haloalkanes-and-haloarenes": "2026-11-25T18:34:13+05:30",
+  "/notes/cbse-12-chemistry/solutions": "2026-11-25T18:14:49+05:30",
   "/notes/cbse-12-physics/alternating-current": "2026-11-25T07:25:18+05:30",
   "/notes/cbse-12-physics/atoms": "2026-11-25T16:48:51+05:30",
   "/notes/cbse-12-physics/current-electricity": "2026-11-25T07:25:18+05:30",
