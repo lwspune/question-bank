@@ -122,7 +122,7 @@
     }
    ],
    "answer": "D",
-   "solution": "\\( A \\) is of order \\( 1 \\times 3 \\), so \\( A' \\) is of order \\( 3 \\times 1 \\) and the product \\( AA' \\) is of order \\( 1 \\times 1 \\). Its single entry is \\( 1(1) + 2(2) + 3(3) = 1 + 4 + 9 = 14 \\). The product is therefore the \\( 1 \\times 1 \\) matrix \\( \\begin{bmatrix} 14 \\end{bmatrix} \\) — a matrix, not the scalar 14 — so the correct option is \\( \\begin{bmatrix} 14 \\end{bmatrix} \\)."
+   "solution": "\\( A \\) is of order \\( 1 \\times 3 \\), so \\( A' \\) is of order \\( 3 \\times 1 \\) and the product \\( AA' \\) is of order \\( 1 \\times 1 \\). Its single entry is \\( 1(1) + 2(2) + 3(3) = 1 + 4 + 9 = 14 \\). The product is therefore the \\( 1 \\times 1 \\) matrix \\( \\begin{bmatrix} 14 \\end{bmatrix} \\) (a matrix, not the scalar 14), so the correct option is \\( \\begin{bmatrix} 14 \\end{bmatrix} \\)."
   },
   {
    "hash": "2bf50f693926d7f1fc00b4c344f16927b84f406bc2330b3859e761569045fb2b",
@@ -573,7 +573,7 @@
     }
    ],
    "answer": "D",
-   "solution": "The Assertion is false. A trigonometric function is not one-one on its whole domain — for instance \\( \\sin x \\) takes the value 0 at every integer multiple of \\( \\pi \\) — so it has no inverse there; an inverse exists only after the domain is restricted to a principal value branch. The Reason is true: \\( \\tan^{-1} \\) is a bijection from \\( \\mathbb{R} \\) onto \\( \\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right) \\), so it is itself invertible. Hence Assertion (A) is false and Reason (R) is true."
+   "solution": "The Assertion is false. A trigonometric function is not one-one on its whole domain (for instance \\( \\sin x \\) takes the value 0 at every integer multiple of \\( \\pi \\)), so it has no inverse there; an inverse exists only after the domain is restricted to a principal value branch. The Reason is true: \\( \\tan^{-1} \\) is a bijection from \\( \\mathbb{R} \\) onto \\( \\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right) \\), so it is itself invertible. Hence Assertion (A) is false and Reason (R) is true."
   },
   {
    "hash": "28c0aa0725204c850bfe94cbbb43beaad9ffab723d0157bbc5f14ba66ba2558f",
@@ -681,7 +681,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Direction Cosines and Direction Ratios",
    "stem": "The equations of a line are \\( 5x - 3 = 15y + 7 = 3 - 10z \\). Write the direction cosines of the line and find the coordinates of a point through which it passes.",
-   "solution": "Write each of the three expressions as a constant times (variable minus a number): \\( 5x - 3 = 5\\left(x - \\frac{3}{5}\\right) \\), \\( 15y + 7 = 15\\left(y + \\frac{7}{15}\\right) \\) and \\( 3 - 10z = -10\\left(z - \\frac{3}{10}\\right) \\). Equating these three and dividing through, the line in symmetric form is\n\\( \\frac{x - \\frac{3}{5}}{\\frac{1}{5}} = \\frac{y + \\frac{7}{15}}{\\frac{1}{15}} = \\frac{z - \\frac{3}{10}}{-\\frac{1}{10}} \\).\nSo direction ratios are \\( \\left(\\frac{1}{5},\\, \\frac{1}{15},\\, -\\frac{1}{10}\\right) \\), and multiplying by 30 gives the simpler set \\( (6, 2, -3) \\). Since \\( \\sqrt{6^2 + 2^2 + (-3)^2} = \\sqrt{49} = 7 \\), the direction cosines are \\( \\left(\\frac{6}{7},\\, \\frac{2}{7},\\, -\\frac{3}{7}\\right) \\) — or their negatives, if the opposite sense along the line is taken.\nReading the constants off the symmetric form, the line passes through the point \\( \\left(\\frac{3}{5},\\, -\\frac{7}{15},\\, \\frac{3}{10}\\right) \\)."
+   "solution": "Write each of the three expressions as a constant times (variable minus a number): \\( 5x - 3 = 5\\left(x - \\frac{3}{5}\\right) \\), \\( 15y + 7 = 15\\left(y + \\frac{7}{15}\\right) \\) and \\( 3 - 10z = -10\\left(z - \\frac{3}{10}\\right) \\). Equating these three and dividing through, the line in symmetric form is\n\\( \\frac{x - \\frac{3}{5}}{\\frac{1}{5}} = \\frac{y + \\frac{7}{15}}{\\frac{1}{15}} = \\frac{z - \\frac{3}{10}}{-\\frac{1}{10}} \\).\nSo direction ratios are \\( \\left(\\frac{1}{5},\\, \\frac{1}{15},\\, -\\frac{1}{10}\\right) \\), and multiplying by 30 gives the simpler set \\( (6, 2, -3) \\). Since \\( \\sqrt{6^2 + 2^2 + (-3)^2} = \\sqrt{49} = 7 \\), the direction cosines are \\( \\left(\\frac{6}{7},\\, \\frac{2}{7},\\, -\\frac{3}{7}\\right) \\), or their negatives, if the opposite sense along the line is taken.\nReading the constants off the symmetric form, the line passes through the point \\( \\left(\\frac{3}{5},\\, -\\frac{7}{15},\\, \\frac{3}{10}\\right) \\)."
   },
   {
    "hash": "618d7676de055fc9bb7f9d64e89482a16753367c328700f4df6f8921cef650c9",

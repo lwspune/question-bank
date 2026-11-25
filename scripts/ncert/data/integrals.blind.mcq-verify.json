@@ -3,7 +3,7 @@
     "id": "17d4b063-78f9-4424-acdd-483b4168fc19",
     "ref": "Ex 7.1 Q21",
     "derived_answer": "C",
-    "solution": "Rewrite the integrand with fractional powers as \\(x^{1/2} + x^{-1/2}\\) and apply the power rule \\(\\int x^n\\,dx = \\tfrac{x^{n+1}}{n+1}\\) to each term. This gives \\(\\tfrac{x^{3/2}}{3/2} + \\tfrac{x^{1/2}}{1/2} = \\tfrac{2}{3}x^{3/2} + 2x^{1/2} + C\\). Differentiating this back returns \\(\\tfrac{2}{3}\\cdot\\tfrac{3}{2}x^{1/2} + 2\\cdot\\tfrac{1}{2}x^{-1/2} = \\sqrt{x} + \\tfrac{1}{\\sqrt{x}}\\), which confirms the result.",
+    "solution": "Rewrite the integrand with fractional powers as \\(x^{1/2} + x^{-1/2}\\) and apply the power rule \\(\\int x^n\\,dx = \\tfrac{x^{n+1}}{n+1}\\) to each term. This gives \\(\\tfrac{x^{3/2}}{3/2} + \\tfrac{x^{1/2}}{1/2} = \\tfrac{2}{3}x^{3/2} + 2x^{1/2} + C\\). Check by differentiating: \\(\\tfrac{2}{3}\\cdot\\tfrac{3}{2}x^{1/2} + 2\\cdot\\tfrac{1}{2}x^{-1/2} = \\sqrt{x} + \\tfrac{1}{\\sqrt{x}}\\).",
     "matches_current": true
   },
   {
@@ -80,7 +80,7 @@
     "id": "d25da03b-0d71-4559-b117-ab9cc20be88e",
     "ref": "Ex 7.5 Q23",
     "derived_answer": "A",
-    "solution": "Split the integrand as \\(\\frac{1}{x(x^2+1)} = \\frac{1}{x} - \\frac{x}{x^2+1}\\), which is verified by recombining the right side over the common denominator \\(x(x^2+1)\\). Integrating gives \\(\\log|x| - \\tfrac{1}{2}\\log(x^2+1) + C\\), where the second term uses \\(\\int\\frac{x\\,dx}{x^2+1} = \\tfrac{1}{2}\\log(x^2+1)\\). The minus sign between the two logarithms is essential, because the sum form differentiates to \\(\\frac{1}{x} + \\frac{x}{x^2+1}\\), a different function.",
+    "solution": "Split the integrand as \\(\\frac{1}{x(x^2+1)} = \\frac{1}{x} - \\frac{x}{x^2+1}\\), as recombining the right side over the common denominator \\(x(x^2+1)\\) shows. Integrating gives \\(\\log|x| - \\tfrac{1}{2}\\log(x^2+1) + C\\), where the second term uses \\(\\int\\frac{x\\,dx}{x^2+1} = \\tfrac{1}{2}\\log(x^2+1)\\). The minus sign between the two logarithms is essential, because the sum form differentiates to \\(\\frac{1}{x} + \\frac{x}{x^2+1}\\), a different function.",
     "matches_current": true
   },
   {

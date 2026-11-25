@@ -32,7 +32,7 @@
     }
    ],
    "answer": "D",
-   "solution": "Test the three properties one at a time on \\(A = \\{1, 2, 3\\}\\).\nReflexive: this needs \\((1,1)\\), \\((2,2)\\) and \\((3,3)\\) all present. \\((3,3)\\) is missing, so R is not reflexive.\nSymmetric: \\((1,2) \\in R\\) but \\((2,1) \\notin R\\), so R is not symmetric.\nTransitive: the only chains available are \\((1,1)\\) followed by \\((1,2)\\), which demands \\((1,2)\\), and \\((1,2)\\) followed by \\((2,2)\\), which again demands \\((1,2)\\) — and it is present. No chain is broken, so R is transitive.\nHence R is transitive but neither reflexive nor symmetric, which is the option Transitive only."
+   "solution": "Test the three properties one at a time on \\(A = \\{1, 2, 3\\}\\).\nReflexive: this needs \\((1,1)\\), \\((2,2)\\) and \\((3,3)\\) all present. \\((3,3)\\) is missing, so R is not reflexive.\nSymmetric: \\((1,2) \\in R\\) but \\((2,1) \\notin R\\), so R is not symmetric.\nTransitive: the only chains available are \\((1,1)\\) followed by \\((1,2)\\), which demands \\((1,2)\\), and \\((1,2)\\) followed by \\((2,2)\\), which again demands \\((1,2)\\), and it is present. No chain is broken, so R is transitive.\nHence R is transitive but neither reflexive nor symmetric, which is the option Transitive only."
   },
   {
    "hash": "b2e96ab68189d9a18eecf062ff2e958d9d26f2bf5e13c26c477e6ab0c3e2b262",
@@ -482,7 +482,7 @@
     }
    ],
    "answer": "B",
-   "solution": "In a linear programming problem the linear expression to be optimised — the one being maximised or minimised — is called the objective function. The inequalities restricting the variables are the constraints, the region they cut out is the feasible region, and the corner points of that region are what the objective function is evaluated at. So the required term is an objective function."
+   "solution": "In a linear programming problem the linear expression to be optimised (the one being maximised or minimised) is called the objective function. The inequalities restricting the variables are the constraints, the region they cut out is the feasible region, and the corner points of that region are what the objective function is evaluated at. So the required term is an objective function."
   },
   {
    "hash": "b3c6f8266ec67ddaa6e1b1e76fdfac3015a9b428f56824a3f02f37f1a3a09a3f",
@@ -513,7 +513,7 @@
    ],
    "answer": "C",
    "figure": "REQUIRED - the question IS about a printed graph; the shaded feasible region is the only thing that distinguishes the four option pairs. The stem carries no numbers at all. Page idx 10.",
-   "solution": "Read the two boundary lines off their intercepts. One passes through \\((0,5)\\) and \\((5,0)\\), so it is \\(x + y = 5\\). The other passes through \\((0,3)\\) and \\((9,0)\\), so it is \\(\\frac{x}{9} + \\frac{y}{3} = 1\\), that is \\(x + 3y = 9\\).\nThe two meet where \\(x + y = 5\\) and \\(x + 3y = 9\\); subtracting gives \\(2y = 4\\), so \\(y = 2\\) and \\(x = 3\\) — exactly the point at which the shading begins in the figure.\nNow test an interior point of the shaded region, say \\((5, 1)\\): \\(x + y = 6 \\ge 5\\) and \\(x + 3y = 8 \\le 9\\). So the region lies on the far side of \\(x + y = 5\\) and the near side of \\(x + 3y = 9\\).\nThe non-trivial constraints are therefore \\(x + y \\ge 5\\) and \\(x + 3y \\le 9\\), which is that option."
+   "solution": "Read the two boundary lines off their intercepts. One passes through \\((0,5)\\) and \\((5,0)\\), so it is \\(x + y = 5\\). The other passes through \\((0,3)\\) and \\((9,0)\\), so it is \\(\\frac{x}{9} + \\frac{y}{3} = 1\\), that is \\(x + 3y = 9\\).\nThe two meet where \\(x + y = 5\\) and \\(x + 3y = 9\\); subtracting gives \\(2y = 4\\), so \\(y = 2\\) and \\(x = 3\\), exactly the point at which the shading begins in the figure.\nNow test an interior point of the shaded region, say \\((5, 1)\\): \\(x + y = 6 \\ge 5\\) and \\(x + 3y = 8 \\le 9\\). So the region lies on the far side of \\(x + y = 5\\) and the near side of \\(x + 3y = 9\\).\nThe non-trivial constraints are therefore \\(x + y \\ge 5\\) and \\(x + 3y \\le 9\\), which is that option."
   },
   {
    "hash": "bbea5e60e5aae26164e36be809cc0786b4c143d034f234b6288a65e42cc30488",
@@ -660,7 +660,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Rate of Change of Quantities",
    "stem": "If the volume of a solid hemisphere increases at a uniform rate, prove that its surface area varies inversely as its radius.",
-   "solution": "For a solid hemisphere of radius \\(r\\), the volume is \\(V = \\frac{2}{3}\\pi r^3\\) and the total surface area is \\(S = 3\\pi r^2\\) (the curved part \\(2\\pi r^2\\) together with the flat circular face \\(\\pi r^2\\)).\nThe volume increases at a uniform rate, so \\(\\frac{dV}{dt}\\) is a constant, say C. Differentiating the volume,\n\\(\\frac{dV}{dt} = 2\\pi r^2\\frac{dr}{dt} = C\\), so \\(\\frac{dr}{dt} = \\frac{C}{2\\pi r^2}\\).\nNow differentiate the surface area and substitute this:\n\\(\\frac{dS}{dt} = 6\\pi r\\frac{dr}{dt} = 6\\pi r \\times \\frac{C}{2\\pi r^2} = \\frac{3C}{r}\\).\nSince C is constant, \\(\\frac{dS}{dt} = \\frac{3C}{r}\\) is inversely proportional to \\(r\\). Hence the surface area varies inversely as the radius, as required.\n[Note on the wording: taken literally, \\(S = 3\\pi r^2\\) INCREASES with \\(r\\), so it is not \\(S\\) itself that varies inversely as \\(r\\). The statement to be proved is the standard one about the RATE of change: the rate at which the surface area grows is inversely proportional to the radius, which is exactly what \\(\\frac{dS}{dt} = \\frac{3C}{r}\\) says. The official marking scheme proves this same statement.]"
+   "solution": "For a solid hemisphere of radius \\(r\\), the volume is \\(V = \\frac{2}{3}\\pi r^3\\) and the total surface area is \\(S = 3\\pi r^2\\) (the curved part \\(2\\pi r^2\\) together with the flat circular face \\(\\pi r^2\\)).\nThe volume increases at a uniform rate, so \\(\\frac{dV}{dt}\\) is a constant, say C. Differentiating the volume,\n\\(\\frac{dV}{dt} = 2\\pi r^2\\frac{dr}{dt} = C\\), so \\(\\frac{dr}{dt} = \\frac{C}{2\\pi r^2}\\).\nNow differentiate the surface area and substitute this:\n\\(\\frac{dS}{dt} = 6\\pi r\\frac{dr}{dt} = 6\\pi r \\times \\frac{C}{2\\pi r^2} = \\frac{3C}{r}\\).\nSince C is constant, \\(\\frac{dS}{dt} = \\frac{3C}{r}\\) is inversely proportional to \\(r\\). Hence the surface area varies inversely as the radius, as required.\n[Note on the wording: taken literally, \\(S = 3\\pi r^2\\) INCREASES with \\(r\\), so it is not \\(S\\) itself that varies inversely as \\(r\\). The statement to be proved is the standard one about the RATE of change: the rate at which the surface area grows is inversely proportional to the radius, which is exactly what \\(\\frac{dS}{dt} = \\frac{3C}{r}\\) says.]"
   },
   {
    "hash": "fead1583fe75a0f990df8dcdeb9c28ffcdfa4240ff286d6c0819743e154e60eb",

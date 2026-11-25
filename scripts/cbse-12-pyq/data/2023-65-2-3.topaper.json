@@ -152,7 +152,7 @@
     }
    ],
    "answer": "B",
-   "solution": "A symmetric matrix satisfies \\(a_{ij} = a_{ji}\\), so a \\(3 \\times 3\\) symmetric matrix is completely determined by the entries on and above the main diagonal — the \\(3\\) diagonal entries together with the \\(3\\) entries above it, \\(6\\) in all. Each of those \\(6\\) may independently be \\(1\\) or \\(-1\\), and the remaining \\(3\\) entries below the diagonal are then forced by symmetry. The count is therefore \\(2^6 = 64\\), which is the choice 64. (The figure \\(512 = 2^9\\) would count all \\(3 \\times 3\\) matrices with those entries, symmetric or not.)"
+   "solution": "A symmetric matrix satisfies \\(a_{ij} = a_{ji}\\), so a \\(3 \\times 3\\) symmetric matrix is completely determined by the entries on and above the main diagonal: the \\(3\\) diagonal entries together with the \\(3\\) entries above it, \\(6\\) in all. Each of those \\(6\\) may independently be \\(1\\) or \\(-1\\), and the remaining \\(3\\) entries below the diagonal are then forced by symmetry. The count is therefore \\(2^6 = 64\\), which is the choice 64. (The figure \\(512 = 2^9\\) would count all \\(3 \\times 3\\) matrices with those entries, symmetric or not.)"
   },
   {
    "hash": "30d1aff4dd9555044ab9ac274458ae607f7c2c7a20438c5139643b4560e29331",
@@ -248,7 +248,7 @@
    "chapter": "Integrals",
    "subtopic": "Properties of Definite Integrals",
    "stem": "Evaluate \\(\\int\\limits_{-a}^{a} f(x) \\, dx\\), where \\(f(x) = \\frac{9^x}{1 + 9^x}\\).",
-   "solution": "Let \\(I = \\int_{-a}^{a}\\frac{9^x}{1 + 9^x}dx\\) — call this (i). Apply the property \\(\\int_{-a}^{a}f(x)\\,dx = \\int_{-a}^{a}f(-a + a - x)\\,dx\\), which here replaces \\(x\\) by \\(-x\\): \\(I = \\int_{-a}^{a}\\frac{9^{-x}}{1 + 9^{-x}}dx\\). Multiplying numerator and denominator by \\(9^x\\) turns this into \\(I = \\int_{-a}^{a}\\frac{1}{1 + 9^x}dx\\) — call this (ii). Adding (i) and (ii), the two integrands combine to \\(\\frac{9^x + 1}{1 + 9^x} = 1\\), so \\(2I = \\int_{-a}^{a}dx = \\left[x\\right]_{-a}^{a} = 2a\\). Hence \\(I = a\\)."
+   "solution": "Let \\(I = \\int_{-a}^{a}\\frac{9^x}{1 + 9^x}dx\\). Call this (i). Apply the property \\(\\int_{-a}^{a}f(x)\\,dx = \\int_{-a}^{a}f(-a + a - x)\\,dx\\), which here replaces \\(x\\) by \\(-x\\): \\(I = \\int_{-a}^{a}\\frac{9^{-x}}{1 + 9^{-x}}dx\\). Multiplying numerator and denominator by \\(9^x\\) turns this into \\(I = \\int_{-a}^{a}\\frac{1}{1 + 9^x}dx\\). Call this (ii). Adding (i) and (ii), the two integrands combine to \\(\\frac{9^x + 1}{1 + 9^x} = 1\\), so \\(2I = \\int_{-a}^{a}dx = \\left[x\\right]_{-a}^{a} = 2a\\). Hence \\(I = a\\)."
   },
   {
    "hash": "e2d2d68d5b699f79a232bf41216355094f4504b504dd50479013ea8d1d482811",
