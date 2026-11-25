@@ -15,6 +15,15 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-11-25 (third) — CBSE Class 12 Maths board notes: all 13 chapters (3,180 q), 3,180 answers cleaned. No migration. Branch `feat/board-notes-cbse12-maths`. Completes CBSE Class 12 PCM.**
+
+- **Same lane as CBSE Physics and Chemistry**, merged earlier the same day: pages = NCERT sections, both kinds tagged, JEE maths notes as the content source (Linear Programming from mht-cet-maths: JEE has no LPP chapter), every number re-checked with sympy or exact fractions.
+- **Integrals (556 rows, 10 subtopics) went to two agents** (indefinite: 7 pages, 377 rows; definite: 3 pages, 179 rows) with page slugs fixed up front and the two tag maps merged by the main session; concept slugs were prefixed per half so they could not collide.
+- **Keys read in CBSE's schemes.** All stood, apart from: 2024 65/4/3 Q5 (as printed AB = I is impossible; CBSE accepted (B) or (C)) and 2023 65/4/2 Q13 (scheme (B) one; the bank keeps the correct (A) zero with a bracket). NCERT's own Ex 10.2 Q18 prints options (B) and (C) identically; our copy is faithful and the answer says so.
+- **Maths answers carried fewer dashes and more method notes**: "verified numerically", sampling scans, decimal arguments for exact results, and binomial-mean checks the present book cannot support. Those went; check lines a student can write ("Check by differentiating") stayed. One answer's wrong case split (the 2023 sec-inverse derivative) was corrected interval by interval.
+- **The Probability page no longer tells students to give random-variable distributions less time:** the board asked them every year 2022 to 2025, so the page states the facts and points to the current syllabus.
+- **Owner list (not changed):** defective as printed (2026 65/3/3 Q33, 2024 65/4/3 Q5), NCERT Ex 6.2 Q12 has two correct options but one key, 14 textbook answers point to figures not stored, impossible printed data in five probability rows, same-year duplicates, refiles.
+
 **2026-11-25 (second) — CBSE Class 12 Chemistry board notes: all 10 chapters (2,083 q), 2,083 answers cleaned. No migration. Branch `feat/board-notes-cbse12-chemistry`.**
 
 - **Same lane as CBSE Physics**, merged an hour earlier: pages = NCERT sections, both kinds tagged, JEE chemistry notes as the content source, every fact checked in the rationalised NCERT PDF. Surface Chemistry [Outdated] (10 rows) has no notes, by the owner's plan.
