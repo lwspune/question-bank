@@ -1575,6 +1575,200 @@ export type Database = {
         }
         Relationships: []
       }
+      exam_room_answers: {
+        Row: {
+          correct: boolean
+          created_at: string
+          message_id: number
+          option_id: string
+          user_id: string
+        }
+        Insert: {
+          correct: boolean
+          created_at?: string
+          message_id: number
+          option_id: string
+          user_id: string
+        }
+        Update: {
+          correct?: boolean
+          created_at?: string
+          message_id?: number
+          option_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "exam_room_answers_message_id_fkey"
+            columns: ["message_id"]
+            isOneToOne: false
+            referencedRelation: "exam_room_messages"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "exam_room_answers_option_id_fkey"
+            columns: ["option_id"]
+            isOneToOne: false
+            referencedRelation: "options"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      exam_room_members: {
+        Row: {
+          display_name: string
+          exam_slug: string
+          joined_at: string
+          last_read_id: number
+          muted_until: string | null
+          notify: boolean
+          user_id: string
+        }
+        Insert: {
+          display_name: string
+          exam_slug: string
+          joined_at?: string
+          last_read_id?: number
+          muted_until?: string | null
+          notify?: boolean
+          user_id: string
+        }
+        Update: {
+          display_name?: string
+          exam_slug?: string
+          joined_at?: string
+          last_read_id?: number
+          muted_until?: string | null
+          notify?: boolean
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "exam_room_members_exam_slug_fkey"
+            columns: ["exam_slug"]
+            isOneToOne: false
+            referencedRelation: "exam_rooms"
+            referencedColumns: ["exam_slug"]
+          },
+        ]
+      }
+      exam_room_messages: {
+        Row: {
+          author_kind: string
+          body: string
+          created_at: string
+          display_name: string
+          exam_slug: string
+          hidden_at: string | null
+          hidden_reason: string | null
+          id: number
+          pinned: boolean
+          question_id: string | null
+          reply_to: number | null
+          reviewed_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          author_kind: string
+          body: string
+          created_at?: string
+          display_name: string
+          exam_slug: string
+          hidden_at?: string | null
+          hidden_reason?: string | null
+          id?: never
+          pinned?: boolean
+          question_id?: string | null
+          reply_to?: number | null
+          reviewed_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          author_kind?: string
+          body?: string
+          created_at?: string
+          display_name?: string
+          exam_slug?: string
+          hidden_at?: string | null
+          hidden_reason?: string | null
+          id?: never
+          pinned?: boolean
+          question_id?: string | null
+          reply_to?: number | null
+          reviewed_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "exam_room_messages_exam_slug_fkey"
+            columns: ["exam_slug"]
+            isOneToOne: false
+            referencedRelation: "exam_rooms"
+            referencedColumns: ["exam_slug"]
+          },
+          {
+            foreignKeyName: "exam_room_messages_question_id_fkey"
+            columns: ["question_id"]
+            isOneToOne: false
+            referencedRelation: "questions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "exam_room_messages_reply_to_fkey"
+            columns: ["reply_to"]
+            isOneToOne: false
+            referencedRelation: "exam_room_messages"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      exam_room_reports: {
+        Row: {
+          created_at: string
+          message_id: number
+          reason: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          message_id: number
+          reason: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          message_id?: number
+          reason?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "exam_room_reports_message_id_fkey"
+            columns: ["message_id"]
+            isOneToOne: false
+            referencedRelation: "exam_room_messages"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      exam_rooms: {
+        Row: {
+          created_at: string
+          exam_slug: string
+          open: boolean
+        }
+        Insert: {
+          created_at?: string
+          exam_slug: string
+          open?: boolean
+        }
+        Update: {
+          created_at?: string
+          exam_slug?: string
+          open?: boolean
+        }
+        Relationships: []
+      }
       exam_sittings: {
         Row: {
           date: string
@@ -3739,6 +3933,47 @@ export type Database = {
             foreignKeyName: "question_audience_exclusions_question_id_fkey"
             columns: ["question_id"]
             isOneToOne: false
+            referencedRelation: "questions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      question_board_answers: {
+        Row: {
+          answer: string
+          created_at: string
+          marks: number
+          model: string
+          question_id: string
+          solution_hash: string
+          tokens_in: number | null
+          tokens_out: number | null
+        }
+        Insert: {
+          answer: string
+          created_at?: string
+          marks: number
+          model: string
+          question_id: string
+          solution_hash: string
+          tokens_in?: number | null
+          tokens_out?: number | null
+        }
+        Update: {
+          answer?: string
+          created_at?: string
+          marks?: number
+          model?: string
+          question_id?: string
+          solution_hash?: string
+          tokens_in?: number | null
+          tokens_out?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "question_board_answers_question_id_fkey"
+            columns: ["question_id"]
+            isOneToOne: true
             referencedRelation: "questions"
             referencedColumns: ["id"]
           },
@@ -6066,6 +6301,16 @@ export type Database = {
           stage: string
         }[]
       }
+      exam_room_summaries: {
+        Args: { p_user_id: string }
+        Returns: {
+          exam_slug: string
+          last_at: string
+          last_body: string
+          last_name: string
+          unread: number
+        }[]
+      }
       fix_points_readout: {
         Args: { p_since: string; p_until: string }
         Returns: {
@@ -6382,6 +6627,15 @@ export type Database = {
           chapter_id: string
           last_at: string
         }[]
+      }
+      post_exam_room_daily: {
+        Args: {
+          p_body: string
+          p_exam_slug: string
+          p_question_id: string
+          p_user_id?: string
+        }
+        Returns: number
       }
       public_pyq_year_counts: {
         Args: never
