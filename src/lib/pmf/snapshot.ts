@@ -203,6 +203,10 @@ export const TELEMETRY_KINDS: readonly string[] = [
   // never "adoption" of a study feature; its question is whether players study
   // MORE, read by the play-games experiment (scripts/play/readout.sql).
   "play_round",
+  // A Learn lesson visit (2026-11-25, migration 0288): how far through the
+  // slides, for the v-learn-first readout. Learn's use is its answers
+  // (learn_attempts), so a visit is never "adoption" on its own.
+  "learn_visit",
 ];
 
 export const FEATURE_LABELS: Partial<Record<ActivityKind, string>> = {
@@ -875,6 +879,13 @@ export const SURFACE_COVERAGE: SurfaceCoverage[] = [
     kinds: ["play_round"],
     tracked: "partial",
     lost: "Signed-out rounds are not recorded at all (only header Play taps, play_link_click, in Vercel by hand), and a round left before its 60 seconds end records nothing. Levels cleared and best rounds are per device (localStorage), so they never reach the server.",
+  },
+  {
+    surface: "Learn lessons (/learn, and played in V)",
+    via: "learn_attempts (every answer); surface_viewed learn (page) and learn_start (first move); user_activity learn_visit (migration 0288): how far through the slides, the slide left from and the time on it",
+    kinds: ["learn_visit"],
+    tracked: "partial",
+    lost: "Signed-out visits are not recorded (only Vercel's learn_lesson_start). A visit under 5 seconds writes no row, and one whose browser is killed before the lesson is hidden or closed loses its last row. Points revealed within a slide are not counted, only slides.",
   },
   {
     surface: "Blog (/blog)",

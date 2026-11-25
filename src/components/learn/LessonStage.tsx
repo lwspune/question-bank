@@ -29,6 +29,9 @@ const subscribeFullscreen = (cb: () => void) => {
  * - `onBegin`: called once, on the learner's first move (Start, Next, a swipe, an arrow key).
  * - `fill`: the stage already fills a full-screen frame (the lesson played in V, 2026-11-22): it
  *   takes its frame's height, has no Start and no full-screen button.
+ * - `onSlide`: the slide on screen, every time it changes (and first on mount), with whether the
+ *   learner has moved yet: before that the stage may jump on its own (to the questions, for a
+ *   student who answered before). Read by the lesson visit (lib/learn/visit, 2026-11-25).
  */
 export function LessonStage({
   slides,
@@ -37,6 +40,7 @@ export function LessonStage({
   banner,
   questions,
   onBegin,
+  onSlide,
   fill = false,
 }: {
   slides: RenderedSlide[];
@@ -45,6 +49,7 @@ export function LessonStage({
   banner?: ReactNode;
   questions?: (api: { active: boolean; reread: () => void }) => ReactNode;
   onBegin?: () => void;
+  onSlide?: (index: number, begun: boolean) => void;
   fill?: boolean;
 }) {
   const [pos, setPos] = useState<Position>(() => startAt(slides, startIndex));
@@ -91,6 +96,14 @@ export function LessonStage({
   useEffect(() => {
     if (begun) onBeginRef.current?.();
   }, [begun]);
+
+  const onSlideRef = useRef(onSlide);
+  useEffect(() => {
+    onSlideRef.current = onSlide;
+  }, [onSlide]);
+  useEffect(() => {
+    onSlideRef.current?.(pos.index, begunRef.current);
+  }, [pos.index]);
 
   // Move focus to a new slide's heading so screen readers announce it (a new point announces itself).
   useEffect(() => {

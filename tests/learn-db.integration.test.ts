@@ -413,6 +413,18 @@ describe.skipIf(!HAS_ENV)("Learn tables (0192)", () => {
       expect(r.opened_lesson).toBeLessThan(r.visited); // Bob saw only the hub
     });
 
+    it("a lesson visit row (learn_visit, 0288) is a kind the table accepts, once per key", async () => {
+      const visit = {
+        user_id: aliceId,
+        kind: "learn_visit",
+        metadata: { path: "/learn/lesson/x/concept-c01", visit: "abcdef0123456789", place: "page", slides: 6, start: 1, furthest: 3, left: 3, leftSeconds: 40, seconds: 90, questions: false },
+        dedupe_key: `learn_visit:${aliceId}:abcdef0123456789:3:3`,
+      };
+      expect((await alice.from("user_activity").insert(visit)).error).toBeNull();
+      // The same visit, furthest slide and slide left from again is refused by the key.
+      expect((await alice.from("user_activity").insert(visit)).error).not.toBeNull();
+    });
+
     it("anon gets nothing from the own-progress reads", async () => {
       expect((await anon.rpc("learn_my_misses", { p_exam: "x" })).error).not.toBeNull();
       expect((await anon.rpc("learn_my_progress", {})).error).not.toBeNull();

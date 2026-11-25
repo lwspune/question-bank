@@ -88,6 +88,7 @@ const ACTIVITY_LABELS: Record<ActivityKind, string> = {
   path_covered: "Told their board plan what the class has covered",
   path_switched: "Switched their board plan's chapter",
   play_round: "Played a round of a /play game",
+  learn_visit: "Opened a Learn lesson",
 };
 
 const ACTIVITY_KIND_SET: ReadonlySet<string> = new Set(ACTIVITY_KINDS);

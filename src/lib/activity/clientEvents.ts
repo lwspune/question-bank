@@ -19,6 +19,7 @@ import { LAUNCH_LEVELS, MAX_REPORTED_SHOTS } from "@/lib/play/launch";
 import { TIMELINE_PACKS } from "@/lib/play/data/timeline";
 import { PLACE_PACKS } from "@/lib/play/data/places";
 import { PLACES_PER_ROUND } from "@/lib/play/pin";
+import { MAX_SLIDES, MAX_VISIT_SECONDS, MIN_VISIT_SECONDS } from "@/lib/learn/visit";
 import type { ActivityEvent } from "./events";
 import { boardChapterPath, isReadingSurface, isSurface, learnLessonPath, readingViewFor, viewDedupeKey } from "./views";
 
@@ -553,7 +554,46 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
 
   if (raw.kind === "play_round") return parsePlayRound(raw);
 
+  if (raw.kind === "learn_visit") return parseLearnVisit(raw, userId);
+
   return { ok: false, error: "That kind cannot be written by a client." };
+}
+
+const LEARN_VISIT_KEYS = new Set(["kind", "path", "visit", "place", "slides", "start", "furthest", "left", "leftSeconds", "seconds", "questions"]);
+const VISIT_ID_RE = /^[a-z0-9]{16,40}$/i;
+
+/**
+ * One visit to a Learn lesson (2026-11-25, lib/learn/visit, migration 0288):
+ * how far through the slides, the slide left from and the time on it. Keyed
+ * by visit, furthest slide and slide left from, so a second send from the same
+ * place writes nothing and a visit writes at most a few rows; the readout
+ * takes each visit's last row.
+ */
+function parseLearnVisit(raw: Record<string, unknown>, userId: string): ParseClientEventResult {
+  if (Object.keys(raw).some((k) => !LEARN_VISIT_KEYS.has(k))) return { ok: false, error: "Unknown field on a lesson visit." };
+  const path = typeof raw.path === "string" ? learnLessonPath(raw.path) : null;
+  if (!path) return { ok: false, error: "Invalid lesson address." };
+  if (typeof raw.visit !== "string" || !VISIT_ID_RE.test(raw.visit)) return { ok: false, error: "Invalid visit." };
+  if (raw.place !== "page" && raw.place !== "v") return { ok: false, error: "Unknown place." };
+  const int = (v: unknown, min: number, max: number): v is number =>
+    typeof v === "number" && Number.isInteger(v) && v >= min && v <= max;
+  const { slides, start, furthest, left, leftSeconds, seconds, questions } = raw;
+  if (!int(slides, 1, MAX_SLIDES)) return { ok: false, error: "Invalid slide count." };
+  if (!int(start, 1, slides) || !int(furthest, start, slides) || !int(left, 1, furthest)) {
+    return { ok: false, error: "Invalid slide." };
+  }
+  if (!int(seconds, MIN_VISIT_SECONDS, MAX_VISIT_SECONDS) || !int(leftSeconds, 0, seconds)) {
+    return { ok: false, error: "Invalid time." };
+  }
+  if (typeof questions !== "boolean") return { ok: false, error: "Invalid questions." };
+  return {
+    ok: true,
+    value: {
+      kind: "learn_visit",
+      metadata: { path, visit: raw.visit, place: raw.place, slides, start, furthest, left, leftSeconds, seconds, questions },
+      dedupeKey: `learn_visit:${userId}:${raw.visit}:${furthest}:${left}`,
+    },
+  };
 }
 
 /** Ceilings a 60-second /play round cannot reach honestly (4 points a right answer x 10 x 200). */
