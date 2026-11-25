@@ -11,7 +11,7 @@ export const CB_MA_AI_CHAPTER: ChapterNote = {
     "Marks go to the steps: a rough sketch with the region shaded, the points where the boundaries meet, the integral with its limits, the evaluation and the answer in square units. " +
     "Split the integral wherever the curve crosses the x-axis or a modulus graph turns its corner.",
   cardBlurb:
-    "Area under a curve with vertical and horizontal strips, curves below the axis and modulus graphs, circles, ellipses and parabolas cut by lines, triangles from straight lines, and the older area between two curves.",
+    "Area under a curve with vertical and horizontal strips, curves under the x-axis and modulus graphs, circles, ellipses and parabolas cut by lines, triangles from straight lines, and the older area between two curves.",
   subtopicOrder: [
     "cbm-ai-under",
     "cbm-ai-bounded",

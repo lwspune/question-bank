@@ -174,6 +174,20 @@ describe("chapter names shared with AFCAT", () => {
   });
 });
 
+describe("chapter names shared with CBSE Class 12", () => {
+  // CBSE Class 12's 37 board-notes chapters (2026-11-25) reuse NDA, JEE and MHT-CET names
+  // ("Probability", "Matrices", "Current Electricity"); they yield so /go/learn keeps its targets.
+  it.each(["Statistics", "Probability"])("%s still resolves to NDA", (name) => {
+    expect(getChapterByName(name)?.examName).toBe("NDA");
+  });
+
+  it("a CBSE-only chapter name still resolves to CBSE Class 12", () => {
+    expect(getChapterByName("Semiconductor Electronics: Materials, Devices and Simple Circuits")?.examName).toBe(
+      "CBSE Class 12"
+    );
+  });
+});
+
 describe("chapter names shared with SSC CGL", () => {
   // SSC CGL's Maths catalog is copied from CDS, so every SSC chapter name is
   // already a CDS chapter name; SSC must never take over CDS's links.
