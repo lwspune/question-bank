@@ -390,6 +390,7 @@ The load-bearing choices made during the initial scaffold. Every later phase res
   - **Owner's call over Claude's advice** (thin rooms, burst usage, study circle 3.8% Yes): every exam on day one, `exam_rooms.open` switches one off; a student sees only their profile's exams, with Join.
   - **The database holds the rules** (service-role only): member, not muted, 5 s apart, 100 a day, 1,000 chars; V 5 a day; one pin; 3 reports hide; answers marked from `is_correct`. Numbers, emails and links refused, not masked.
   - **No Realtime:** a room polls only while open and visible (6 s, 20 s when quiet); the badge is asked once a visit. Daily question 07:00 IST, owner email 18:30 IST, `/dashboard/rooms`. Experiment `exam-rooms`. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
+  - **Round 2 (0290):** a room nickname (unique per room, changeable) replaces the real name; social handles refused; the button hides for 2 h or until turned on (on the account), the menu keeps Exam rooms.
 - **2026-11-25 — CBSE Class 12 board notes, Physics first (14 chapters, 1,879 q); all 1,879 answers cleaned (no migration).**
   - **Same lane as HSC** (pages = DB subtopics = NCERT sections, both kinds tagged); content source = jee-mains-physics, facts checked in the NCERT PDF; `scripts/notes-pipeline/cbse/`.
   - **CBSE prints a marking scheme per paper,** so every disputed key was read there; all stood. CBSE 2023-26 assertion-reason codes: D = both false, never "A false R true".
