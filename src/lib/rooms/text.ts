@@ -7,6 +7,11 @@
  * invites (t.me, wa.me, chat.whatsapp.com) are the commonest spam in Indian
  * exam groups. Abuse reuses V's word list (lib/chat/abuse). The 1,000-character
  * cap is mirrored by a CHECK in migration 0289.
+ *
+ * Social handles are refused too (round 2, 2026-11-25): a platform word followed
+ * by a handle ("insta: priya_2009", "snap me riya2009"), or an @handle carrying
+ * a digit, underscore or inner dot. A plain "@Quiet" mention of a room name, and
+ * "snap test", stay allowed: a handle needs a separator, an @ or such a character.
  */
 import { hasPersonal } from "@/lib/chat/maskPersonal";
 import { isAbusive } from "@/lib/chat/abuse";
@@ -20,6 +25,18 @@ export type RoomTextResult = { ok: true; body: string } | { ok: false; error: st
 const LINK =
   /(https?:\/\/|www\.|\b[a-z0-9-]+\.(?:com|in|org|net|io|me|ly|co|app|info|xyz|link|gl|page)(?:\/|\b))/i;
 
+const PLATFORM =
+  /\b(?:insta(?:gram)?|snap(?:chat)?|telegram|discord|youtube|twitter)\b(?:\s+(?:me|is|id|handle|at|on|username|par|pe))*\s*([:\-]\s*|@)?(@?[a-z0-9_.#]{3,})/gi;
+const AT_HANDLE = /(?:^|\s)@[a-z0-9_.]*(?:[0-9_]|\.[a-z])/i;
+
+export function hasSocialHandle(text: string): boolean {
+  for (const m of text.matchAll(PLATFORM)) {
+    const [, sep, handle] = m;
+    if (sep || handle.startsWith("@") || /[0-9_.#]/.test(handle)) return true;
+  }
+  return AT_HANDLE.test(text);
+}
+
 export function checkRoomText(raw: string): RoomTextResult {
   const body = raw
     .replace(/\r\n?/g, "\n")
@@ -29,6 +46,7 @@ export function checkRoomText(raw: string): RoomTextResult {
   if (body.length > ROOM_TEXT_MAX) return { ok: false, error: `Keep it under ${ROOM_TEXT_MAX} characters.` };
   if (hasPersonal(body)) return { ok: false, error: "Phone numbers and email addresses can't be shared in rooms." };
   if (LINK.test(body)) return { ok: false, error: "Links can't be shared in rooms." };
+  if (hasSocialHandle(body)) return { ok: false, error: "Social media handles can't be shared in rooms." };
   if (isAbusive(body)) return { ok: false, error: "Please keep it kind. That message can't be posted." };
   return { ok: true, body };
 }

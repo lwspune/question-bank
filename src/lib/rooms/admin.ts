@@ -20,6 +20,8 @@ export type FlaggedMessage = {
   slug: string;
   room: string;
   userId: string | null;
+  /** The author's account email: staff only, so a nickname can be traced (0290). */
+  email: string | null;
   name: string;
   kind: string;
   body: string;
@@ -72,6 +74,7 @@ export async function loadFlagged(db: SupabaseClient): Promise<FlaggedMessage[]>
         slug: m.exam_slug,
         room: roomName(m.exam_slug) ?? m.exam_slug,
         userId: m.author_kind === "student" ? m.user_id : null,
+        email: null,
         name: m.display_name,
         kind: m.author_kind,
         body: m.body,
@@ -85,7 +88,17 @@ export async function loadFlagged(db: SupabaseClient): Promise<FlaggedMessage[]>
     by.set(m.id, e);
   }
   // A message hidden by staff without reports still shows in the room's history list, not here.
-  return [...by.values()].sort((a, b) => Number(b.hidden) - Number(a.hidden) || b.reports - a.reports || b.id - a.id);
+  const list = [...by.values()].sort((a, b) => Number(b.hidden) - Number(a.hidden) || b.reports - a.reports || b.id - a.id);
+  // Nicknames hide students from each other, not from the owner moderating them.
+  const ids = [...new Set(list.map((f) => f.userId).filter((id): id is string => !!id))].slice(0, 100);
+  const emails = new Map<string, string | null>();
+  await Promise.all(
+    ids.map(async (id) => {
+      const { data } = await db.auth.admin.getUserById(id);
+      emails.set(id, data.user?.email ?? null);
+    })
+  );
+  return list.map((f) => ({ ...f, email: f.userId ? emails.get(f.userId) ?? null : null }));
 }
 
 export async function reviewMessage(db: SupabaseClient, id: number, verdict: "keep" | "hide"): Promise<void> {

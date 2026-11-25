@@ -14,6 +14,7 @@ import { drillHref } from "@/lib/drill/from";
 import { VaultPointsMenuLine } from "@/components/billing/useFixPoints";
 import { InviteFriendMenuLink } from "@/components/referrals/InviteFriendCard";
 import GetAppMenuLink from "@/components/install/GetAppMenuLink";
+import ExamRoomsMenuItem from "@/components/rooms/ExamRoomsMenuItem";
 import { trackFunnel } from "@/lib/analytics/trackFunnel";
 
 export default function UserMenu({
@@ -252,6 +253,11 @@ export default function UserMenu({
             <Bookmark className="h-4 w-4" aria-hidden />
             Saved questions
           </Link>
+          {/* Exam rooms (0290), students only: the way in that stays when the
+              rooms button is hidden for focused study. No request of its own. */}
+          {role === null && !isStaff && (
+            <ExamRoomsMenuItem className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none" />
+          )}
           <Link
             // prefetch off: a per-user server render, like /performance above.
             prefetch={false}

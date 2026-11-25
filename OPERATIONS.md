@@ -202,6 +202,8 @@ Then save any plan at `/dashboard/pricing` (or wait a day) so the cached plan li
 - **Moderation:** `/dashboard/rooms` (superadmin). A message reported by 3 members hides itself; Keep shows it again (earlier reports stop counting), Hide keeps it hidden, Mute author 7 days stops them posting in that room. The evening email (`rooms-digest.yml`, 18:30 IST) lists the same plus doubts nobody answered for 2+ hours.
 - **Switch a room off:** Close room on the dashboard (`exam_rooms.open = false`). Students stop seeing it and nobody can post; its history stays.
 - **Daily question:** `rooms-daily.yml` at 07:00 IST pins one per open room with members. To change today's, paste a question id into Swap today's question (a PUBLIC MCQ of that exam, no figure). By hand: `npm run rooms:daily` (dry run) shows the plan.
+- **Who wrote it:** students see only room nicknames; /dashboard/rooms shows the account email beside a reported one. A nickname clash is refused per room, ignoring case.
+- **A student who hid the button:** `student_profiles.rooms_button_hidden_until` (a time, or `infinity` until they turn it back on). They can show it from the account menu or Account; nothing for staff to do.
 - **Limits (in the database, not the route):** 5 s between a student's messages, 100 a day, 1,000 characters; Ask V 5 a day per student. Change them only by a migration.
 
 ### Outbound email (Resend) — the mock-recommendation campaign
