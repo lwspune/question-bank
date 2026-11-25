@@ -763,7 +763,10 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "cbse-12-physics/dual-nature-of-radiation-and-matter",
   "cbse-12-physics/atoms",
   "cbse-12-physics/nuclei",
-  "cbse-12-physics/semiconductor-electronics"
+  "cbse-12-physics/semiconductor-electronics",
+  "cbse-12-chemistry/solutions",
+  "cbse-12-chemistry/electrochemistry",
+  "cbse-12-chemistry/chemical-kinetics"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1527,4 +1530,7 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "cbse-12-physics/atoms": () => import("@/app/notes/cbse-12-physics/atoms/_data").then((m) => m.CB_PH_AT_NOTES),
   "cbse-12-physics/nuclei": () => import("@/app/notes/cbse-12-physics/nuclei/_data").then((m) => m.CB_PH_NU_NOTES),
   "cbse-12-physics/semiconductor-electronics": () => import("@/app/notes/cbse-12-physics/semiconductor-electronics/_data").then((m) => m.CB_PH_SE_NOTES),
+  "cbse-12-chemistry/solutions": () => import("@/app/notes/cbse-12-chemistry/solutions/_data").then((m) => m.CB_CH_SO_NOTES),
+  "cbse-12-chemistry/electrochemistry": () => import("@/app/notes/cbse-12-chemistry/electrochemistry/_data").then((m) => m.CB_CH_EC_NOTES),
+  "cbse-12-chemistry/chemical-kinetics": () => import("@/app/notes/cbse-12-chemistry/chemical-kinetics/_data").then((m) => m.CB_CH_CK_NOTES),
 };

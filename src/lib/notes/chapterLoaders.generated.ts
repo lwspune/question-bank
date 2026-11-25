@@ -15384,6 +15384,74 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 12,
       "traps": 47
     }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "solutions",
+    "chipLabel": "Solutions notes",
+    "slugs": [
+      "cbc-so-types",
+      "cbc-so-concentration",
+      "cbc-so-solubility",
+      "cbc-so-raoult",
+      "cbc-so-ideal",
+      "cbc-so-colligative",
+      "cbc-so-abnormal"
+    ],
+    "chapterName": "Solutions",
+    "formulaCounts": {
+      "formulas": 14,
+      "tables": 7,
+      "traps": 55
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "electrochemistry",
+    "chipLabel": "Electrochemistry notes",
+    "slugs": [
+      "cbc-ec-cells",
+      "cbc-ec-galvanic",
+      "cbc-ec-nernst",
+      "cbc-ec-conductance",
+      "cbc-ec-electrolysis",
+      "cbc-ec-batteries",
+      "cbc-ec-fuel",
+      "cbc-ec-corrosion"
+    ],
+    "chapterName": "Electrochemistry",
+    "formulaCounts": {
+      "formulas": 14,
+      "tables": 7,
+      "traps": 47
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Chemistry",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "chemical-kinetics",
+    "chipLabel": "Chemical Kinetics notes",
+    "slugs": [
+      "cbc-ck-rate",
+      "cbc-ck-factors",
+      "cbc-ck-integrated",
+      "cbc-ck-temperature",
+      "cbc-ck-collision"
+    ],
+    "chapterName": "Chemical Kinetics",
+    "formulaCounts": {
+      "formulas": 13,
+      "tables": 2,
+      "traps": 41
+    }
   }
 ];
 
@@ -16148,4 +16216,7 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "cbse-12-physics/atoms": () => import("@/app/notes/cbse-12-physics/atoms/_data").then((m) => ({ chapter: m.CB_PH_AT_CHAPTER, notes: m.CB_PH_AT_NOTES })),
   "cbse-12-physics/nuclei": () => import("@/app/notes/cbse-12-physics/nuclei/_data").then((m) => ({ chapter: m.CB_PH_NU_CHAPTER, notes: m.CB_PH_NU_NOTES })),
   "cbse-12-physics/semiconductor-electronics": () => import("@/app/notes/cbse-12-physics/semiconductor-electronics/_data").then((m) => ({ chapter: m.CB_PH_SE_CHAPTER, notes: m.CB_PH_SE_NOTES })),
+  "cbse-12-chemistry/solutions": () => import("@/app/notes/cbse-12-chemistry/solutions/_data").then((m) => ({ chapter: m.CB_CH_SO_CHAPTER, notes: m.CB_CH_SO_NOTES })),
+  "cbse-12-chemistry/electrochemistry": () => import("@/app/notes/cbse-12-chemistry/electrochemistry/_data").then((m) => ({ chapter: m.CB_CH_EC_CHAPTER, notes: m.CB_CH_EC_NOTES })),
+  "cbse-12-chemistry/chemical-kinetics": () => import("@/app/notes/cbse-12-chemistry/chemical-kinetics/_data").then((m) => ({ chapter: m.CB_CH_CK_CHAPTER, notes: m.CB_CH_CK_NOTES })),
 };

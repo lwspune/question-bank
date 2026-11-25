@@ -3586,6 +3586,21 @@ import {
   CB_PH_SE_NOTES,
   CB_PH_SE_SLUGS,
 } from "@/app/notes/cbse-12-physics/semiconductor-electronics/_data";
+import {
+  CB_CH_SO_CHAPTER,
+  CB_CH_SO_NOTES,
+  CB_CH_SO_SLUGS,
+} from "@/app/notes/cbse-12-chemistry/solutions/_data";
+import {
+  CB_CH_EC_CHAPTER,
+  CB_CH_EC_NOTES,
+  CB_CH_EC_SLUGS,
+} from "@/app/notes/cbse-12-chemistry/electrochemistry/_data";
+import {
+  CB_CH_CK_CHAPTER,
+  CB_CH_CK_NOTES,
+  CB_CH_CK_SLUGS,
+} from "@/app/notes/cbse-12-chemistry/chemical-kinetics/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -11525,6 +11540,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CB_PH_SE_CHAPTER,
     notes: CB_PH_SE_NOTES,
     slugs: CB_PH_SE_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "cbse-12-chemistry",
+    subjectDisplay: "CBSE Class 12 Chemistry",
+    chapterSlug: "solutions",
+    chipLabel: "Solutions notes",
+    chapter: CB_CH_SO_CHAPTER,
+    notes: CB_CH_SO_NOTES,
+    slugs: CB_CH_SO_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "cbse-12-chemistry",
+    subjectDisplay: "CBSE Class 12 Chemistry",
+    chapterSlug: "electrochemistry",
+    chipLabel: "Electrochemistry notes",
+    chapter: CB_CH_EC_CHAPTER,
+    notes: CB_CH_EC_NOTES,
+    slugs: CB_CH_EC_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "cbse-12-chemistry",
+    subjectDisplay: "CBSE Class 12 Chemistry",
+    chapterSlug: "chemical-kinetics",
+    chipLabel: "Chemical Kinetics notes",
+    chapter: CB_CH_CK_CHAPTER,
+    notes: CB_CH_CK_NOTES,
+    slugs: CB_CH_CK_SLUGS,
   },
 ];
 

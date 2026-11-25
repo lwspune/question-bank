@@ -281,6 +281,13 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     nuclei: { cls: 12, chapterNo: 13, book: "NCERT XII 13 Nuclei" },
     "semiconductor-electronics": { cls: 12, chapterNo: 14, book: "NCERT XII 14 Semiconductor Electronics: Materials, Devices and Simple Circuits" },
   },
+  // CBSE Class 12 Chemistry (board notes, 2026-11-25): the rationalised NCERT Class XII book.
+  // Add each chapter as it ships.
+  "cbse-12-chemistry": {
+    solutions: { cls: 12, chapterNo: 1, book: "NCERT XII 1 Solutions" },
+    electrochemistry: { cls: 12, chapterNo: 2, book: "NCERT XII 2 Electrochemistry" },
+    "chemical-kinetics": { cls: 12, chapterNo: 3, book: "NCERT XII 3 Chemical Kinetics" },
+  },
   // JEE Mains Chemistry follows the rationalised NCERT books (the "NCERT" spine in
   // syllabus_concepts). Judgment calls: The p-Block Elements is no longer in either
   // rationalised book but stays on the JEE syllabus, so it sits before The d- and f-Block

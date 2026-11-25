@@ -95,9 +95,11 @@ long answers (5 marks), most with an internal OR choice. The marking scheme give
   (Maths); for "show that" and proofs, every step on its own line.
 - A concept the board asks to DERIVE carries the derivation's outline in its `definition`, one step
   a line, in NCERT's symbols and labelling.
-- Teach assertion-reason the way the board marks it. CBSE's 2023 to 2026 papers print four codes:
+- Teach assertion-reason the way the board marks it. CBSE's 2023 to 2026 papers print four codes,
   (A) both true and R explains A, (B) both true and R does not explain A, (C) A true and R false,
-  (D) both A and R false. There is no "A false, R true" code in these papers. A trap may name the usual slip.
+  and a fourth that DIFFERS BY SUBJECT (counted from the dumps, 2026-11-25): **Physics (D) = both A
+  and R false; Chemistry and Maths (D) = A false, R true.** Use your subject's code. A trap may name
+  the usual slip.
 - Traps include where marks are lost: a missing unit, no labelled diagram where one is asked, a
   definition without its condition, a "distinguish" point that covers one side only, a sign
   convention not stated.

@@ -764,4 +764,7 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterRef[] = [
   {"key":"cbse-12-physics/atoms","examName":"CBSE Class 12","chapterName":"Atoms","slugs":["cbp-at-rutherford","cbp-at-spectra","cbp-at-bohr","cbp-at-series","cbp-at-debroglie"]},
   {"key":"cbse-12-physics/nuclei","examName":"CBSE Class 12","chapterName":"Nuclei","slugs":["cbp-nu-composition","cbp-nu-size","cbp-nu-binding","cbp-nu-force","cbp-nu-energy"]},
   {"key":"cbse-12-physics/semiconductor-electronics","examName":"CBSE Class 12","chapterName":"Semiconductor Electronics: Materials, Devices and Simple Circuits","slugs":["cbp-se-bands","cbp-se-extrinsic","cbp-se-junction","cbp-se-rectifier","cbp-se-special"]},
+  {"key":"cbse-12-chemistry/solutions","examName":"CBSE Class 12","chapterName":"Solutions","slugs":["cbc-so-types","cbc-so-concentration","cbc-so-solubility","cbc-so-raoult","cbc-so-ideal","cbc-so-colligative","cbc-so-abnormal"]},
+  {"key":"cbse-12-chemistry/electrochemistry","examName":"CBSE Class 12","chapterName":"Electrochemistry","slugs":["cbc-ec-cells","cbc-ec-galvanic","cbc-ec-nernst","cbc-ec-conductance","cbc-ec-electrolysis","cbc-ec-batteries","cbc-ec-fuel","cbc-ec-corrosion"]},
+  {"key":"cbse-12-chemistry/chemical-kinetics","examName":"CBSE Class 12","chapterName":"Chemical Kinetics","slugs":["cbc-ck-rate","cbc-ck-factors","cbc-ck-integrated","cbc-ck-temperature","cbc-ck-collision"]},
 ];
