@@ -15,6 +15,14 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-11-25 (second) — CBSE Class 12 Chemistry board notes: all 10 chapters (2,083 q), 2,083 answers cleaned. No migration. Branch `feat/board-notes-cbse12-chemistry`.**
+
+- **Same lane as CBSE Physics**, merged an hour earlier: pages = NCERT sections, both kinds tagged, JEE chemistry notes as the content source, every fact checked in the rationalised NCERT PDF. Surface Chemistry [Outdated] (10 rows) has no notes, by the owner's plan.
+- **The assertion-reason fourth code differs by subject.** Counted from every CBSE paper in the bank: Physics prints (D) as "both A and R false"; Chemistry and Maths print it as "A false, R true". The brief said "both false" for all; two Chemistry agents caught it, and the brief is now subject-specific.
+- **Keys read in CBSE's schemes.** All disputed keys stood, apart from: 2024 56/3/1 Q10 (scheme (A) "k remains constant" with a catalyst; bank keeps the correct (C), with a bracket) and 2026 56/3/1 Q13 (scheme (C) for Zr/Hf; bank keeps (B), with a bracket, owner list). For 2026 56/3/3, the bank's Q13 to Q16 keys (B, A, C, B) match no 2026 scheme file (56/3/3 prints A, B, A, C): left for an owner audit, no key changed.
+- **Answers cleaned the Physics way** (about 4,000 dashes, scheme talk, method notes), with wrong facts fixed against NCERT or the scheme; NCERT Ex 2.6 button cell went from 1.10 V to NCERT's 1.56 V, and its animation was re-drawn on the corrected numbers (a re-tie moves only text, so a changed result needs its picture rebuilt).
+- **Owner list (not changed):** defective as printed (2023 56/1/2 Q4, 2026 56/3/1 Q10, 2024 56/5/1 Q16), three Haloalkanes rows missing their structures, the 56/3/3 key audit, same-year duplicates, the benzaldehyde/acetone HCN order answered both ways (2022 vs 2024).
+
 **2026-11-25 — CBSE Class 12 board notes, Physics first: all 14 chapters (1,879 q), 1,879 answers cleaned. No migration. Branch `feat/board-notes-cbse12-physics`.**
 
 - **Owner:** "complete cbse 12th boards notes for pcm similar to hsc end to end"; plan OK'd ("go"): Physics, then Chemistry, then Maths, agents at most 3, Surface Chemistry [Outdated] (10 rows) gets no notes, one /board before/after sheet, merge to local main without pushing. Paused at a clean point the same day and resumed.
