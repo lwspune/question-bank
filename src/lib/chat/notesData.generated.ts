@@ -779,7 +779,14 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "cbse-12-maths/matrices",
   "cbse-12-maths/determinants",
   "cbse-12-maths/application-of-derivatives",
-  "cbse-12-maths/continuity-and-differentiability"
+  "cbse-12-maths/continuity-and-differentiability",
+  "cbse-12-maths/application-of-integrals",
+  "cbse-12-maths/integrals",
+  "cbse-12-maths/differential-equations",
+  "cbse-12-maths/vector-algebra",
+  "cbse-12-maths/three-dimensional-geometry",
+  "cbse-12-maths/linear-programming",
+  "cbse-12-maths/probability"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1559,4 +1566,11 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "cbse-12-maths/determinants": () => import("@/app/notes/cbse-12-maths/determinants/_data").then((m) => m.CB_MA_DT_NOTES),
   "cbse-12-maths/application-of-derivatives": () => import("@/app/notes/cbse-12-maths/application-of-derivatives/_data").then((m) => m.CB_MA_AD_NOTES),
   "cbse-12-maths/continuity-and-differentiability": () => import("@/app/notes/cbse-12-maths/continuity-and-differentiability/_data").then((m) => m.CB_MA_CD_NOTES),
+  "cbse-12-maths/application-of-integrals": () => import("@/app/notes/cbse-12-maths/application-of-integrals/_data").then((m) => m.CB_MA_AI_NOTES),
+  "cbse-12-maths/integrals": () => import("@/app/notes/cbse-12-maths/integrals/_data").then((m) => m.CB_MA_IN_NOTES),
+  "cbse-12-maths/differential-equations": () => import("@/app/notes/cbse-12-maths/differential-equations/_data").then((m) => m.CB_MA_DE_NOTES),
+  "cbse-12-maths/vector-algebra": () => import("@/app/notes/cbse-12-maths/vector-algebra/_data").then((m) => m.CB_MA_VA_NOTES),
+  "cbse-12-maths/three-dimensional-geometry": () => import("@/app/notes/cbse-12-maths/three-dimensional-geometry/_data").then((m) => m.CB_MA_TG_NOTES),
+  "cbse-12-maths/linear-programming": () => import("@/app/notes/cbse-12-maths/linear-programming/_data").then((m) => m.CB_MA_LP_NOTES),
+  "cbse-12-maths/probability": () => import("@/app/notes/cbse-12-maths/probability/_data").then((m) => m.CB_MA_PR_NOTES),
 };

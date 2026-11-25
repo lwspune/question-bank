@@ -780,4 +780,11 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterRef[] = [
   {"key":"cbse-12-maths/determinants","examName":"CBSE Class 12","chapterName":"Determinants","slugs":["cbm-dt-expand","cbm-dt-area","cbm-dt-cofactors","cbm-dt-inverse","cbm-dt-system"]},
   {"key":"cbse-12-maths/application-of-derivatives","examName":"CBSE Class 12","chapterName":"Application of Derivatives","slugs":["cbm-ad-rates","cbm-ad-increasing","cbm-ad-maxima","cbm-ad-absolute"]},
   {"key":"cbse-12-maths/continuity-and-differentiability","examName":"CBSE Class 12","chapterName":"Continuity and Differentiability","slugs":["cbm-cd-continuity","cbm-cd-chain","cbm-cd-implicit","cbm-cd-exponential","cbm-cd-logarithmic","cbm-cd-parametric","cbm-cd-second"]},
+  {"key":"cbse-12-maths/application-of-integrals","examName":"CBSE Class 12","chapterName":"Application of Integrals","slugs":["cbm-ai-under","cbm-ai-bounded"]},
+  {"key":"cbse-12-maths/integrals","examName":"CBSE Class 12","chapterName":"Integrals","slugs":["cbm-in-antiderivative","cbm-in-substitution","cbm-in-trig","cbm-in-particular","cbm-in-partial","cbm-in-parts","cbm-in-special","cbm-in-definite","cbm-in-defsub","cbm-in-properties"]},
+  {"key":"cbse-12-maths/differential-equations","examName":"CBSE Class 12","chapterName":"Differential Equations","slugs":["cbm-de-order","cbm-de-solutions","cbm-de-separable","cbm-de-homogeneous","cbm-de-linear"]},
+  {"key":"cbse-12-maths/vector-algebra","examName":"CBSE Class 12","chapterName":"Vector Algebra","slugs":["cbm-va-types","cbm-va-addition","cbm-va-components","cbm-va-section","cbm-va-dot","cbm-va-cross"]},
+  {"key":"cbse-12-maths/three-dimensional-geometry","examName":"CBSE Class 12","chapterName":"Three Dimensional Geometry","slugs":["cbm-tg-cosines","cbm-tg-line","cbm-tg-angle","cbm-tg-distance","cbm-tg-plane"]},
+  {"key":"cbse-12-maths/linear-programming","examName":"CBSE Class 12","chapterName":"Linear Programming","slugs":["cbm-lp-graphical"]},
+  {"key":"cbse-12-maths/probability","examName":"CBSE Class 12","chapterName":"Probability","slugs":["cbm-pr-conditional","cbm-pr-multiplication","cbm-pr-independent","cbm-pr-total","cbm-pr-bayes","cbm-pr-distributions"]},
 ];

@@ -304,6 +304,13 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     determinants: { cls: 12, chapterNo: 4, book: "NCERT XII 4 Determinants" },
     "continuity-and-differentiability": { cls: 12, chapterNo: 5, book: "NCERT XII 5 Continuity and Differentiability" },
     "application-of-derivatives": { cls: 12, chapterNo: 6, book: "NCERT XII 6 Application of Derivatives" },
+    integrals: { cls: 12, chapterNo: 7, book: "NCERT XII 7 Integrals" },
+    "application-of-integrals": { cls: 12, chapterNo: 8, book: "NCERT XII 8 Application of Integrals" },
+    "differential-equations": { cls: 12, chapterNo: 9, book: "NCERT XII 9 Differential Equations" },
+    "vector-algebra": { cls: 12, chapterNo: 10, book: "NCERT XII 10 Vector Algebra" },
+    "three-dimensional-geometry": { cls: 12, chapterNo: 11, book: "NCERT XII 11 Three Dimensional Geometry" },
+    "linear-programming": { cls: 12, chapterNo: 12, book: "NCERT XII 12 Linear Programming" },
+    probability: { cls: 12, chapterNo: 13, book: "NCERT XII 13 Probability" },
   },
   // JEE Mains Chemistry follows the rationalised NCERT books (the "NCERT" spine in
   // syllabus_concepts). Judgment calls: The p-Block Elements is no longer in either

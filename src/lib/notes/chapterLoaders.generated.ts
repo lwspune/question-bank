@@ -15735,6 +15735,153 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 1,
       "traps": 51
     }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "cbse-12-maths",
+    "subjectDisplay": "CBSE Class 12 Maths",
+    "chapterSlug": "application-of-integrals",
+    "chipLabel": "Application of Integrals notes",
+    "slugs": [
+      "cbm-ai-under",
+      "cbm-ai-bounded"
+    ],
+    "chapterName": "Application of Integrals",
+    "formulaCounts": {
+      "formulas": 8,
+      "tables": 0,
+      "traps": 18
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "cbse-12-maths",
+    "subjectDisplay": "CBSE Class 12 Maths",
+    "chapterSlug": "integrals",
+    "chipLabel": "Integrals notes",
+    "slugs": [
+      "cbm-in-antiderivative",
+      "cbm-in-substitution",
+      "cbm-in-trig",
+      "cbm-in-particular",
+      "cbm-in-partial",
+      "cbm-in-parts",
+      "cbm-in-special",
+      "cbm-in-definite",
+      "cbm-in-defsub",
+      "cbm-in-properties"
+    ],
+    "chapterName": "Integrals",
+    "formulaCounts": {
+      "formulas": 37,
+      "tables": 1,
+      "traps": 98
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "cbse-12-maths",
+    "subjectDisplay": "CBSE Class 12 Maths",
+    "chapterSlug": "differential-equations",
+    "chipLabel": "Differential Equations notes",
+    "slugs": [
+      "cbm-de-order",
+      "cbm-de-solutions",
+      "cbm-de-separable",
+      "cbm-de-homogeneous",
+      "cbm-de-linear"
+    ],
+    "chapterName": "Differential Equations",
+    "formulaCounts": {
+      "formulas": 18,
+      "tables": 1,
+      "traps": 51
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "cbse-12-maths",
+    "subjectDisplay": "CBSE Class 12 Maths",
+    "chapterSlug": "vector-algebra",
+    "chipLabel": "Vector Algebra notes",
+    "slugs": [
+      "cbm-va-types",
+      "cbm-va-addition",
+      "cbm-va-components",
+      "cbm-va-section",
+      "cbm-va-dot",
+      "cbm-va-cross"
+    ],
+    "chapterName": "Vector Algebra",
+    "formulaCounts": {
+      "formulas": 22,
+      "tables": 2,
+      "traps": 58
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "cbse-12-maths",
+    "subjectDisplay": "CBSE Class 12 Maths",
+    "chapterSlug": "three-dimensional-geometry",
+    "chipLabel": "Three Dimensional Geometry notes",
+    "slugs": [
+      "cbm-tg-cosines",
+      "cbm-tg-line",
+      "cbm-tg-angle",
+      "cbm-tg-distance",
+      "cbm-tg-plane"
+    ],
+    "chapterName": "Three Dimensional Geometry",
+    "formulaCounts": {
+      "formulas": 18,
+      "tables": 1,
+      "traps": 44
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "cbse-12-maths",
+    "subjectDisplay": "CBSE Class 12 Maths",
+    "chapterSlug": "linear-programming",
+    "chipLabel": "Linear Programming notes",
+    "slugs": [
+      "cbm-lp-graphical"
+    ],
+    "chapterName": "Linear Programming",
+    "formulaCounts": {
+      "formulas": 5,
+      "tables": 1,
+      "traps": 20
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "cbse-12-maths",
+    "subjectDisplay": "CBSE Class 12 Maths",
+    "chapterSlug": "probability",
+    "chipLabel": "Probability notes",
+    "slugs": [
+      "cbm-pr-conditional",
+      "cbm-pr-multiplication",
+      "cbm-pr-independent",
+      "cbm-pr-total",
+      "cbm-pr-bayes",
+      "cbm-pr-distributions"
+    ],
+    "chapterName": "Probability",
+    "formulaCounts": {
+      "formulas": 23,
+      "tables": 1,
+      "traps": 60
+    }
   }
 ];
 
@@ -16515,4 +16662,11 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "cbse-12-maths/determinants": () => import("@/app/notes/cbse-12-maths/determinants/_data").then((m) => ({ chapter: m.CB_MA_DT_CHAPTER, notes: m.CB_MA_DT_NOTES })),
   "cbse-12-maths/application-of-derivatives": () => import("@/app/notes/cbse-12-maths/application-of-derivatives/_data").then((m) => ({ chapter: m.CB_MA_AD_CHAPTER, notes: m.CB_MA_AD_NOTES })),
   "cbse-12-maths/continuity-and-differentiability": () => import("@/app/notes/cbse-12-maths/continuity-and-differentiability/_data").then((m) => ({ chapter: m.CB_MA_CD_CHAPTER, notes: m.CB_MA_CD_NOTES })),
+  "cbse-12-maths/application-of-integrals": () => import("@/app/notes/cbse-12-maths/application-of-integrals/_data").then((m) => ({ chapter: m.CB_MA_AI_CHAPTER, notes: m.CB_MA_AI_NOTES })),
+  "cbse-12-maths/integrals": () => import("@/app/notes/cbse-12-maths/integrals/_data").then((m) => ({ chapter: m.CB_MA_IN_CHAPTER, notes: m.CB_MA_IN_NOTES })),
+  "cbse-12-maths/differential-equations": () => import("@/app/notes/cbse-12-maths/differential-equations/_data").then((m) => ({ chapter: m.CB_MA_DE_CHAPTER, notes: m.CB_MA_DE_NOTES })),
+  "cbse-12-maths/vector-algebra": () => import("@/app/notes/cbse-12-maths/vector-algebra/_data").then((m) => ({ chapter: m.CB_MA_VA_CHAPTER, notes: m.CB_MA_VA_NOTES })),
+  "cbse-12-maths/three-dimensional-geometry": () => import("@/app/notes/cbse-12-maths/three-dimensional-geometry/_data").then((m) => ({ chapter: m.CB_MA_TG_CHAPTER, notes: m.CB_MA_TG_NOTES })),
+  "cbse-12-maths/linear-programming": () => import("@/app/notes/cbse-12-maths/linear-programming/_data").then((m) => ({ chapter: m.CB_MA_LP_CHAPTER, notes: m.CB_MA_LP_NOTES })),
+  "cbse-12-maths/probability": () => import("@/app/notes/cbse-12-maths/probability/_data").then((m) => ({ chapter: m.CB_MA_PR_CHAPTER, notes: m.CB_MA_PR_NOTES })),
 };

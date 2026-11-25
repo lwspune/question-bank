@@ -5435,5 +5435,54 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "CBSE Class 12 Maths",
     "chapterSlug": "continuity-and-differentiability",
     "subtopicCount": 7
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-maths",
+    "subjectDisplay": "CBSE Class 12 Maths",
+    "chapterSlug": "application-of-integrals",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-maths",
+    "subjectDisplay": "CBSE Class 12 Maths",
+    "chapterSlug": "integrals",
+    "subtopicCount": 10
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-maths",
+    "subjectDisplay": "CBSE Class 12 Maths",
+    "chapterSlug": "differential-equations",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-maths",
+    "subjectDisplay": "CBSE Class 12 Maths",
+    "chapterSlug": "vector-algebra",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-maths",
+    "subjectDisplay": "CBSE Class 12 Maths",
+    "chapterSlug": "three-dimensional-geometry",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-maths",
+    "subjectDisplay": "CBSE Class 12 Maths",
+    "chapterSlug": "linear-programming",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-maths",
+    "subjectDisplay": "CBSE Class 12 Maths",
+    "chapterSlug": "probability",
+    "subtopicCount": 6
   }
 ];
