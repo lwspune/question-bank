@@ -573,6 +573,11 @@ export const NOTES_VISUALS_PRACTISE_PCT = 20;
  * to Defence Mania as a commission or coupon deal (owner, 2026-11-17).
  */
 export const PARTNER_COURSE_TAPPERS_KEEP = 30;
+/** Exam rooms (migration 0289): students who joined any room in 4 weeks, their extra return days over
+ *  matched non-members, and student messages a day in the busiest rooms. */
+export const EXAM_ROOMS_JOINERS_KEEP = 100;
+export const EXAM_ROOMS_RETURN_LIFT = 1.2;
+export const EXAM_ROOMS_MESSAGES_PER_DAY = 1;
 /** "play-games": signed-in students who finish a /play round in 4 weeks, the floor for reading the rule at all. */
 export const PLAY_PLAYERS_MIN = 50;
 
@@ -670,7 +675,8 @@ export type Readout =
   | "practice-trial"
   | "v-intl"
   | "notes-visuals"
-  | "partner-courses";
+  | "partner-courses"
+  | "exam-rooms";
 
 export type Experiment = {
   id: string;
@@ -1681,6 +1687,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-16",
     windowDays: 28,
     readout: "play-games",
+    status: "running",
+  },
+  {
+    id: "exam-rooms",
+    title: "Exam rooms: does an in-app group chat bring students back?",
+    change:
+      "A bubble at the bottom left (V keeps the right) opens Exam rooms for every signed-in student: one room per exam, listing only the exams on their profile, each with Join and the room's rules. In a room: a past question pinned every morning (Most Asked first, the team can swap it), doubts and replies, Ask V on a doubt (V answers in the room, 5 a day per student), Report (3 reports hide a message), and no member counts, ranks or links. The owner reviews reports at /dashboard/rooms and gets an evening email.",
+    why: "Owner's call (2026-11-25), on the TotalGadha model: students sit in Telegram and WhatsApp exam groups for daily questions and doubts, and every one of those visits happens outside PYQ Vault. Claude first advised against it (thin rooms across many exams, students who come in bursts, the friends-only study circle at 3.8% Yes on 15 Nov); the owner chose every exam on day one over a pilot.",
+    metric:
+      "From exam_room_members, exam_room_messages and user_activity (scripts/rooms/readout.sql; staff left out): students who joined, joiners' active days in the 14 days after joining vs students active on the same days before who did not join, student messages a day per room, Ask V uses, reports and hides",
+    rule: `Keep the rooms if ${EXAM_ROOMS_JOINERS_KEEP}+ students join in 4 weeks, joiners come back on ${EXAM_ROOMS_RETURN_LIFT}x+ the days of matched non-joiners, and the 3 busiest rooms average ${EXAM_ROOMS_MESSAGES_PER_DAY}+ student message a day. Otherwise close the rooms with no student messages and decide with the owner whether to keep any.`,
+    liveSince: "2026-11-25",
+    windowDays: 28,
+    readout: "exam-rooms",
     status: "running",
   },
   {

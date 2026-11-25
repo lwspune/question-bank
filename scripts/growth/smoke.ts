@@ -409,6 +409,10 @@ async function main() {
         // Read by hand: v_followups against Ask V explanations (migration 0250, V_LEARNING_LOOP.md step 2).
         line = "by hand: npm run v:learning";
         break;
+      case "exam-rooms":
+        // Read by hand: joiners, their return days vs matched non-joiners, messages a day (migration 0289).
+        line = "by hand: scripts/rooms/readout.sql";
+        break;
       case "signed-out-answers":
         // Read by hand: signups a day (auth.users) over India visitors (Vercel, country IN), weekly.
         line = "by hand: signups per 100 India visitors (auth.users + Vercel Analytics)";
