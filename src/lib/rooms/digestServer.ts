@@ -6,6 +6,7 @@
  * has replied to. Counts: the last 24 hours per room.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { readInChunks } from "@/lib/supabase/readInChunks";
 import { roomName } from "./server";
 import type { RoomsDigestInput } from "./digest";
 
@@ -25,8 +26,10 @@ export async function loadRoomsDigest(db: SupabaseClient, now: Date): Promise<Om
   if (reports.error) throw new Error(`rooms digest reports: ${reports.error.message}`);
   type Msg = { id: number; exam_slug: string; display_name: string; body: string; hidden_at: string | null };
   const byMsg = new Map<number, { msg: Msg; reasons: Set<string>; reports: number }>();
-  for (const r of (reports.data ?? []) as unknown as { message_id: number; reason: string; exam_room_messages: Msg }[]) {
-    const e = byMsg.get(r.message_id) ?? { msg: r.exam_room_messages, reasons: new Set<string>(), reports: 0 };
+  for (const r of reports.data ?? []) {
+    // Many-to-one, so one row at runtime; untyped supabase-js infers a list.
+    const msg: Msg = Array.isArray(r.exam_room_messages) ? r.exam_room_messages[0] : r.exam_room_messages;
+    const e = byMsg.get(r.message_id) ?? { msg, reasons: new Set<string>(), reports: 0 };
     e.reasons.add(r.reason);
     e.reports++;
     byMsg.set(r.message_id, e);
@@ -55,12 +58,10 @@ export async function loadRoomsDigest(db: SupabaseClient, now: Date): Promise<Om
     .limit(200);
   if (doubts.error) throw new Error(`rooms digest doubts: ${doubts.error.message}`);
   const doubtIds = (doubts.data ?? []).map((d) => d.id as number);
-  const replied = new Set<number>();
-  for (let i = 0; i < doubtIds.length; i += 200) {
-    const r = await db.from("exam_room_messages").select("reply_to").in("reply_to", doubtIds.slice(i, i + 200));
-    if (r.error) throw new Error(`rooms digest replies: ${r.error.message}`);
-    for (const x of r.data ?? []) replied.add(Number(x.reply_to));
-  }
+  const replies = await readInChunks<{ id: number; reply_to: number }>(doubtIds.map(String), (part, from, to) =>
+    db.from("exam_room_messages").select("id, reply_to").in("reply_to", part).order("id").range(from, to)
+  );
+  const replied = new Set(replies.map((x) => Number(x.reply_to)));
   const unanswered = (doubts.data ?? [])
     .filter((d) => !replied.has(Number(d.id)))
     .slice(0, CAP)

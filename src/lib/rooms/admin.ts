@@ -9,6 +9,10 @@ import { checkRoomText } from "./text";
 import { postDaily } from "./dailyServer";
 import { getExamBySlug } from "@/lib/exam/examContext";
 
+function one<T>(x: T | T[]): T {
+  return Array.isArray(x) ? x[0] : x;
+}
+
 export type AdminRoom = { slug: string; name: string; open: boolean; members: number; messages24h: number; pinnedQuestionId: string | null };
 
 export type FlaggedMessage = {
@@ -58,8 +62,9 @@ export async function loadFlagged(db: SupabaseClient): Promise<FlaggedMessage[]>
   if (error) throw new Error(`rooms admin flagged: ${error.message}`);
   type M = { id: number; exam_slug: string; user_id: string | null; author_kind: string; display_name: string; body: string; created_at: string; hidden_at: string | null };
   const by = new Map<number, FlaggedMessage>();
-  for (const r of (data ?? []) as unknown as { reason: string; exam_room_messages: M }[]) {
-    const m = r.exam_room_messages;
+  for (const r of data ?? []) {
+    // Many-to-one, so one row at runtime; untyped supabase-js infers a list.
+    const m: M = one(r.exam_room_messages);
     const e =
       by.get(m.id) ??
       ({

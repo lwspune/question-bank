@@ -9,6 +9,7 @@
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { getExamBySlug } from "@/lib/exam/examContext";
+import { readInChunks } from "@/lib/supabase/readInChunks";
 import { pickDailyQuestion } from "./daily";
 
 export const DAILY_BODY = "Today's question. Answer first, then discuss.";
@@ -27,26 +28,25 @@ async function examIdOf(db: SupabaseClient, slug: string): Promise<string | null
 }
 
 async function usable(db: SupabaseClient, ids: string[]): Promise<Set<string>> {
+  const [qs, opts] = await Promise.all([
+    readInChunks<{ id: string; text: string | null; image_url: string | null; visibility: string; question_format: string }>(ids, (part, from, to) =>
+      db.from("questions").select("id, text, image_url, visibility, question_format").in("id", part).order("id").range(from, to)
+    ),
+    readInChunks<{ id: string; question_id: string; image_url: string | null }>(ids, (part, from, to) =>
+      db.from("options").select("id, question_id, image_url").in("question_id", part).order("id").range(from, to)
+    ),
+  ]);
+  const optCount = new Map<string, number>();
+  const optImage = new Set<string>();
+  for (const o of opts) {
+    optCount.set(o.question_id, (optCount.get(o.question_id) ?? 0) + 1);
+    if (o.image_url) optImage.add(o.question_id);
+  }
   const ok = new Set<string>();
-  for (let i = 0; i < ids.length; i += 200) {
-    const chunk = ids.slice(i, i + 200);
-    const [qs, opts] = await Promise.all([
-      db.from("questions").select("id, text, image_url, visibility, question_format").in("id", chunk),
-      db.from("options").select("question_id, image_url").in("question_id", chunk),
-    ]);
-    if (qs.error || opts.error) throw new Error(`rooms daily usable: ${(qs.error ?? opts.error)!.message}`);
-    const optCount = new Map<string, number>();
-    const optImage = new Set<string>();
-    for (const o of opts.data ?? []) {
-      optCount.set(o.question_id as string, (optCount.get(o.question_id as string) ?? 0) + 1);
-      if (o.image_url) optImage.add(o.question_id as string);
-    }
-    for (const q of qs.data ?? []) {
-      const id = q.id as string;
-      if (q.visibility !== "PUBLIC" || q.question_format !== "mcq" || q.image_url || optImage.has(id)) continue;
-      if ((optCount.get(id) ?? 0) < 2 || String(q.text ?? "").length > MAX_STEM) continue;
-      ok.add(id);
-    }
+  for (const q of qs) {
+    if (q.visibility !== "PUBLIC" || q.question_format !== "mcq" || q.image_url || optImage.has(q.id)) continue;
+    if ((optCount.get(q.id) ?? 0) < 2 || String(q.text ?? "").length > MAX_STEM) continue;
+    ok.add(q.id);
   }
   return ok;
 }

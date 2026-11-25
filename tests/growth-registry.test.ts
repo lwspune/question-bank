@@ -83,6 +83,7 @@ describe("EXPERIMENTS", () => {
       "email-cap",
       "enem-interest",
       "exam-guess-card",
+      "exam-rooms",
       "fix-points",
       "flashcards",
       "formula-pages",
