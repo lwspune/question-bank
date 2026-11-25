@@ -63,7 +63,8 @@ export default function RoomsAdmin({ rooms, flagged }: { rooms: AdminRoom[]; fla
           {flagged.map((m) => (
             <li key={m.id} className="rounded-xl border bg-card p-4">
               <p className="text-xs text-muted-foreground">
-                {m.room} · {m.name} · {new Date(m.at).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })} ·{" "}
+                {m.room} · {m.name}
+                {m.email ? ` (${m.email})` : ""} · {new Date(m.at).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })} ·{" "}
                 {m.hidden ? `Hidden after ${m.reports} reports` : `${m.reports} report${m.reports === 1 ? "" : "s"}`} ·{" "}
                 {m.reasons.map((r) => REASON[r] ?? r).join(", ")}
               </p>

@@ -22,6 +22,9 @@ import { toast } from "sonner";
 import {
   ArrowLeft,
   Check,
+  Clock,
+  EyeOff,
+  Shuffle,
   Loader2,
   MessagesSquare,
   MoreVertical,
@@ -38,13 +41,16 @@ import {
   fetchPage,
   fetchRooms,
   reportMessage,
+  joinRoom,
+  leaveRoom,
+  renameInRoom,
   sendMessage,
-  setMembership,
   type RoomsListResponse,
 } from "@/lib/rooms/client";
 import { nextPollDelay } from "@/lib/rooms/poll";
 import { plainPreview, roomBadge } from "@/lib/rooms/list";
 import { ROOM_TEXT_MAX } from "@/lib/rooms/text";
+import { NICK_MAX, suggestNickname } from "@/lib/rooms/nickname";
 import type { RoomMessageView, RoomQuestionView } from "@/lib/rooms/view";
 import type { RoomReportReason } from "@/lib/rooms/validate";
 
@@ -122,9 +128,12 @@ function RoomAvatar({
 export default function RoomsWindow({
   onClose,
   onUnread,
+  onHide,
 }: {
   onClose: () => void;
   onUnread: (n: number) => void;
+  /** Hide the rooms button for focused study (lib/rooms/button). */
+  onHide: (mode: "2h" | "off") => void;
 }) {
   const [view, setView] = useState<View>({ kind: "list" });
   const [rooms, setRooms] = useState<RoomsListResponse | null>(null);
@@ -160,6 +169,7 @@ export default function RoomsWindow({
           rooms={rooms}
           error={loadError}
           onClose={onClose}
+          onHide={onHide}
           onOpen={(slug, name) => setView({ kind: "room", slug, name })}
           onJoin={(slug, name) => setView({ kind: "join", slug, name })}
         />
@@ -200,17 +210,23 @@ function RoomList({
   rooms,
   error,
   onClose,
+  onHide,
   onOpen,
   onJoin,
 }: {
   rooms: RoomsListResponse | null;
   error: string | null;
   onClose: () => void;
+  onHide: (mode: "2h" | "off") => void;
   onOpen: (slug: string, name: string) => void;
   onJoin: (slug: string, name: string) => void;
 }) {
+  const [sheetOpen, setSheetOpen] = useState(false);
   return (
     <>
+      {sheetOpen && (
+        <HideSheet onPick={onHide} onCancel={() => setSheetOpen(false)} />
+      )}
       <header className={HEADER}>
         <button
           type="button"
@@ -220,12 +236,21 @@ function RoomList({
         >
           <X className="h-5 w-5" aria-hidden />
         </button>
-        <div className="min-w-0">
+        <div className="min-w-0 flex-1">
           <h2 className="text-base font-bold leading-tight">Exam rooms</h2>
           <p className="text-xs text-muted-foreground">
             Rooms for the exams you study
           </p>
         </div>
+        <button
+          type="button"
+          onClick={() => setSheetOpen(true)}
+          aria-label="Rooms options"
+          aria-haspopup="dialog"
+          className={ICON_BUTTON}
+        >
+          <MoreVertical className="h-5 w-5" aria-hidden />
+        </button>
       </header>
       <div className="flex-1 overflow-y-auto py-2">
         {error && (
@@ -340,6 +365,98 @@ function RoomList({
   );
 }
 
+/** The rooms list's options (mockup H1): hide the button for 2 hours or until turned back on. */
+function HideSheet({
+  onPick,
+  onCancel,
+}: {
+  onPick: (mode: "2h" | "off") => void;
+  onCancel: () => void;
+}) {
+  const OPTION =
+    "flex w-full items-center gap-3 rounded-xl border border-border p-3 text-left hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+  return (
+    <div
+      className="absolute inset-0 z-10 flex items-end bg-[rgb(15_29_74/0.35)]"
+      onClick={onCancel}
+    >
+      <section
+        role="dialog"
+        aria-label="Hide the rooms button"
+        onClick={(e) => e.stopPropagation()}
+        className="w-full space-y-2 rounded-t-2xl bg-card p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] shadow-[0_-12px_32px_-12px_rgb(15_29_74/0.35)]"
+      >
+        <h3 className="text-lg font-bold">Hide the rooms button</h3>
+        <p className="pb-2 text-sm text-muted-foreground">
+          For focused study. You can still open Exam rooms from your account
+          menu.
+        </p>
+        <button type="button" onClick={() => onPick("2h")} className={OPTION}>
+          <span className="icon-tile inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg">
+            <Clock className="h-4 w-4" aria-hidden />
+          </span>
+          <span>
+            <span className="block font-semibold">For 2 hours</span>
+            <span className="block text-sm text-muted-foreground">
+              Comes back by itself
+            </span>
+          </span>
+        </button>
+        <button type="button" onClick={() => onPick("off")} className={OPTION}>
+          <span className="icon-tile inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg">
+            <EyeOff className="h-4 w-4" aria-hidden />
+          </span>
+          <span>
+            <span className="block font-semibold">Until I turn it back on</span>
+            <span className="block text-sm text-muted-foreground">
+              From the account menu or Account
+            </span>
+          </span>
+        </button>
+        <button
+          type="button"
+          onClick={onCancel}
+          className="inline-flex h-11 w-full items-center justify-center rounded-xl text-sm font-medium text-muted-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          Cancel
+        </button>
+      </section>
+    </div>
+  );
+}
+
+/** A room nickname field with a random suggestion and "Try another" (migration 0290). */
+function NicknameField({
+  id,
+  value,
+  onChange,
+}: {
+  id: string;
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <div className="flex gap-2">
+      <input
+        id={id}
+        value={value}
+        maxLength={NICK_MAX}
+        onChange={(e) => onChange(e.target.value)}
+        autoComplete="off"
+        className="h-11 min-w-0 flex-1 rounded-xl border border-input bg-background px-3 text-[15px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      />
+      <button
+        type="button"
+        onClick={() => onChange(suggestNickname())}
+        className="inline-flex h-11 shrink-0 items-center gap-1.5 rounded-xl border border-border px-3 text-sm font-semibold hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      >
+        <Shuffle className="h-4 w-4" aria-hidden />
+        Try another
+      </button>
+    </div>
+  );
+}
+
 function JoinRoom({
   slug,
   name,
@@ -352,11 +469,12 @@ function JoinRoom({
   onJoined: () => void;
 }) {
   const [busy, setBusy] = useState(false);
+  const [nickname, setNickname] = useState(() => suggestNickname());
   async function join() {
     setBusy(true);
     try {
-      await setMembership(slug, "join");
-      toast.success(`You joined the ${name} room.`);
+      await joinRoom(slug, nickname);
+      toast.success(`You joined the ${name} room as ${nickname.trim()}.`);
       onJoined();
     } catch (e) {
       toast.error(errorText(e));
@@ -411,6 +529,23 @@ function JoinRoom({
             </span>
           </li>
         </ul>
+        <div className="space-y-2">
+          <label
+            htmlFor={`join-nick-${slug}`}
+            className="block text-sm font-semibold"
+          >
+            Your name in this room
+          </label>
+          <NicknameField
+            id={`join-nick-${slug}`}
+            value={nickname}
+            onChange={setNickname}
+          />
+          <p className="text-xs text-muted-foreground">
+            Other students see this name, never your real one. You can change it
+            later.
+          </p>
+        </div>
         <div className="rounded-xl border border-border bg-muted p-4 text-sm">
           <p className="flex items-center gap-2 font-semibold">
             <ShieldCheck className="h-4 w-4" aria-hidden /> Room rules
@@ -418,7 +553,8 @@ function JoinRoom({
           <ul className="mt-2 list-disc space-y-1 pl-5 text-muted-foreground">
             <li>Be kind. Every question is a fair question.</li>
             <li>Stay on {name} preparation.</li>
-            <li>No phone numbers, emails or links.</li>
+            <li>No phone numbers, emails, links or social media handles.</li>
+            <li>Don&apos;t share your full name, school or city.</li>
             <li>Break these and you are muted.</li>
           </ul>
         </div>
@@ -427,7 +563,7 @@ function JoinRoom({
         <button
           type="button"
           onClick={join}
-          disabled={busy}
+          disabled={busy || !nickname.trim()}
           className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-brand text-base font-semibold text-brand-foreground hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-70"
         >
           {busy && <Loader2 className="h-4 w-4 animate-spin" aria-hidden />}
@@ -480,7 +616,11 @@ function RoomChat({
   const [replyTo, setReplyTo] = useState<RoomMessageView | null>(null);
   const [text, setText] = useState("");
   const [sending, setSending] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  // The room menu (0290): Change my name, Leave room.
+  const [panel, setPanel] = useState<null | "menu" | "rename" | "leave">(null);
+  const [nickname, setNickname] = useState("");
+  const [draft, setDraft] = useState("");
+  const [renaming, setRenaming] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const lastIdRef = useRef(0);
   const listRef = useRef<HTMLDivElement>(null);
@@ -532,6 +672,7 @@ function RoomChat({
       .then((page) => {
         if (stopped) return;
         setMessages(page.messages);
+        setNickname(page.nickname);
         setPinned(page.pinned);
         setHasMore(page.hasMore);
         lastIdRef.current = page.messages.length
@@ -613,11 +754,29 @@ function RoomChat({
 
   async function leave() {
     try {
-      await setMembership(slug, "leave");
+      await leaveRoom(slug);
       toast.success(`You left the ${name} room.`);
       onBack();
     } catch (err) {
       toast.error(errorText(err));
+    }
+  }
+
+  async function rename(e: FormEvent) {
+    e.preventDefault();
+    if (!draft.trim() || renaming) return;
+    setRenaming(true);
+    try {
+      const r = await renameInRoom(slug, draft);
+      setNickname(r.nickname);
+      setPanel(null);
+      toast.success(
+        `Your name in this room is now ${r.nickname}. Earlier messages keep the old name.`,
+      );
+    } catch (err) {
+      toast.error(errorText(err));
+    } finally {
+      setRenaming(false);
     }
   }
 
@@ -667,9 +826,9 @@ function RoomChat({
         </div>
         <button
           type="button"
-          onClick={() => setMenuOpen((o) => !o)}
+          onClick={() => setPanel((p) => (p ? null : "menu"))}
           aria-label="Room options"
-          aria-expanded={menuOpen}
+          aria-expanded={panel !== null}
           className={ICON_BUTTON}
         >
           <MoreVertical className="h-5 w-5" aria-hidden />
@@ -684,7 +843,68 @@ function RoomChat({
         </button>
       </header>
 
-      {menuOpen && (
+      {panel === "menu" && (
+        <div className="flex shrink-0 flex-wrap items-center gap-2 border-b border-border bg-muted px-4 py-2 text-sm">
+          <span className="min-w-0 flex-1 truncate text-muted-foreground">
+            You are <strong className="text-foreground">{nickname}</strong> here
+          </span>
+          <button
+            type="button"
+            onClick={() => {
+              setDraft(nickname);
+              setPanel("rename");
+            }}
+            className={CHIP}
+          >
+            Change my name
+          </button>
+          <button
+            type="button"
+            onClick={() => setPanel("leave")}
+            className={CHIP}
+          >
+            Leave room
+          </button>
+        </div>
+      )}
+      {panel === "rename" && (
+        <form
+          onSubmit={rename}
+          className="shrink-0 space-y-2 border-b border-border bg-muted px-4 py-3 text-sm"
+        >
+          <label htmlFor={`rename-${slug}`} className="block font-semibold">
+            Your name in this room
+          </label>
+          <NicknameField
+            id={`rename-${slug}`}
+            value={draft}
+            onChange={setDraft}
+          />
+          <p className="text-xs text-muted-foreground">
+            New messages use the new name. Earlier ones keep the old one.
+          </p>
+          <div className="flex gap-2">
+            <button
+              type="submit"
+              disabled={renaming || !draft.trim()}
+              className={CHIP}
+            >
+              {renaming && (
+                <Loader2 className="mr-1 h-3 w-3 animate-spin" aria-hidden />
+              )}
+              Save
+            </button>
+            <button
+              type="button"
+              onClick={() => setPanel(null)}
+              className={CHIP}
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      )}
+      {panel === "leave" && (
         <div className="flex shrink-0 items-center justify-between gap-2 border-b border-border bg-muted px-4 py-2 text-sm">
           <span>Leave the {name} room?</span>
           <span className="flex gap-2">
@@ -693,7 +913,7 @@ function RoomChat({
             </button>
             <button
               type="button"
-              onClick={() => setMenuOpen(false)}
+              onClick={() => setPanel(null)}
               className={CHIP}
             >
               Cancel

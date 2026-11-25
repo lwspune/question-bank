@@ -1,7 +1,7 @@
 /**
  * GET /api/rooms: the rooms the signed-in student sees (migration 0289):
  * joined rooms with unread and the latest message, then the other exams on
- * their profile, each with Join. Signed in only; the left bubble asks once a
+ * their profile, each with Join, and whether the button is hidden (0290). Signed in only; the left bubble asks once a
  * visit for its badge and again when the window opens.
  */
 import { NextResponse } from "next/server";
@@ -18,7 +18,7 @@ export async function GET() {
     if (!user) return NextResponse.json({ error: "Please sign in." }, { status: 401 });
     const list = await loadRoomList(createSupabaseAdminClient(), user.id);
     return NextResponse.json(
-      { ok: true, joined: list.joined, others: list.others, unread: totalUnread(list.joined) },
+      { ok: true, joined: list.joined, others: list.others, unread: totalUnread(list.joined), hiddenUntil: list.hiddenUntil },
       { headers: { "Cache-Control": "private, no-store" } }
     );
   } catch (err) {
