@@ -3586,6 +3586,56 @@ import {
   CB_PH_SE_NOTES,
   CB_PH_SE_SLUGS,
 } from "@/app/notes/cbse-12-physics/semiconductor-electronics/_data";
+import {
+  CB_CH_SO_CHAPTER,
+  CB_CH_SO_NOTES,
+  CB_CH_SO_SLUGS,
+} from "@/app/notes/cbse-12-chemistry/solutions/_data";
+import {
+  CB_CH_EC_CHAPTER,
+  CB_CH_EC_NOTES,
+  CB_CH_EC_SLUGS,
+} from "@/app/notes/cbse-12-chemistry/electrochemistry/_data";
+import {
+  CB_CH_CK_CHAPTER,
+  CB_CH_CK_NOTES,
+  CB_CH_CK_SLUGS,
+} from "@/app/notes/cbse-12-chemistry/chemical-kinetics/_data";
+import {
+  CB_CH_DF_CHAPTER,
+  CB_CH_DF_NOTES,
+  CB_CH_DF_SLUGS,
+} from "@/app/notes/cbse-12-chemistry/d-and-f-block-elements/_data";
+import {
+  CB_CH_CC_CHAPTER,
+  CB_CH_CC_NOTES,
+  CB_CH_CC_SLUGS,
+} from "@/app/notes/cbse-12-chemistry/coordination-compounds/_data";
+import {
+  CB_CH_HA_CHAPTER,
+  CB_CH_HA_NOTES,
+  CB_CH_HA_SLUGS,
+} from "@/app/notes/cbse-12-chemistry/haloalkanes-and-haloarenes/_data";
+import {
+  CB_CH_AP_CHAPTER,
+  CB_CH_AP_NOTES,
+  CB_CH_AP_SLUGS,
+} from "@/app/notes/cbse-12-chemistry/alcohols-phenols-and-ethers/_data";
+import {
+  CB_CH_AK_CHAPTER,
+  CB_CH_AK_NOTES,
+  CB_CH_AK_SLUGS,
+} from "@/app/notes/cbse-12-chemistry/aldehydes-ketones-and-carboxylic-acids/_data";
+import {
+  CB_CH_AM_CHAPTER,
+  CB_CH_AM_NOTES,
+  CB_CH_AM_SLUGS,
+} from "@/app/notes/cbse-12-chemistry/amines/_data";
+import {
+  CB_CH_BM_CHAPTER,
+  CB_CH_BM_NOTES,
+  CB_CH_BM_SLUGS,
+} from "@/app/notes/cbse-12-chemistry/biomolecules/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -11525,6 +11575,116 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CB_PH_SE_CHAPTER,
     notes: CB_PH_SE_NOTES,
     slugs: CB_PH_SE_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "cbse-12-chemistry",
+    subjectDisplay: "CBSE Class 12 Chemistry",
+    chapterSlug: "solutions",
+    chipLabel: "Solutions notes",
+    chapter: CB_CH_SO_CHAPTER,
+    notes: CB_CH_SO_NOTES,
+    slugs: CB_CH_SO_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "cbse-12-chemistry",
+    subjectDisplay: "CBSE Class 12 Chemistry",
+    chapterSlug: "electrochemistry",
+    chipLabel: "Electrochemistry notes",
+    chapter: CB_CH_EC_CHAPTER,
+    notes: CB_CH_EC_NOTES,
+    slugs: CB_CH_EC_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "cbse-12-chemistry",
+    subjectDisplay: "CBSE Class 12 Chemistry",
+    chapterSlug: "chemical-kinetics",
+    chipLabel: "Chemical Kinetics notes",
+    chapter: CB_CH_CK_CHAPTER,
+    notes: CB_CH_CK_NOTES,
+    slugs: CB_CH_CK_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "cbse-12-chemistry",
+    subjectDisplay: "CBSE Class 12 Chemistry",
+    chapterSlug: "d-and-f-block-elements",
+    chipLabel: "The d-and f-Block Elements notes",
+    chapter: CB_CH_DF_CHAPTER,
+    notes: CB_CH_DF_NOTES,
+    slugs: CB_CH_DF_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "cbse-12-chemistry",
+    subjectDisplay: "CBSE Class 12 Chemistry",
+    chapterSlug: "coordination-compounds",
+    chipLabel: "Coordination Compounds notes",
+    chapter: CB_CH_CC_CHAPTER,
+    notes: CB_CH_CC_NOTES,
+    slugs: CB_CH_CC_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "cbse-12-chemistry",
+    subjectDisplay: "CBSE Class 12 Chemistry",
+    chapterSlug: "haloalkanes-and-haloarenes",
+    chipLabel: "Haloalkanes and Haloarenes notes",
+    chapter: CB_CH_HA_CHAPTER,
+    notes: CB_CH_HA_NOTES,
+    slugs: CB_CH_HA_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "cbse-12-chemistry",
+    subjectDisplay: "CBSE Class 12 Chemistry",
+    chapterSlug: "alcohols-phenols-and-ethers",
+    chipLabel: "Alcohols, Phenols and Ethers notes",
+    chapter: CB_CH_AP_CHAPTER,
+    notes: CB_CH_AP_NOTES,
+    slugs: CB_CH_AP_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "cbse-12-chemistry",
+    subjectDisplay: "CBSE Class 12 Chemistry",
+    chapterSlug: "aldehydes-ketones-and-carboxylic-acids",
+    chipLabel: "Aldehydes, Ketones and Carboxylic Acids notes",
+    chapter: CB_CH_AK_CHAPTER,
+    notes: CB_CH_AK_NOTES,
+    slugs: CB_CH_AK_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "cbse-12-chemistry",
+    subjectDisplay: "CBSE Class 12 Chemistry",
+    chapterSlug: "amines",
+    chipLabel: "Amines notes",
+    chapter: CB_CH_AM_CHAPTER,
+    notes: CB_CH_AM_NOTES,
+    slugs: CB_CH_AM_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Chemistry",
+    subjectRoute: "cbse-12-chemistry",
+    subjectDisplay: "CBSE Class 12 Chemistry",
+    chapterSlug: "biomolecules",
+    chipLabel: "Biomolecules notes",
+    chapter: CB_CH_BM_CHAPTER,
+    notes: CB_CH_BM_NOTES,
+    slugs: CB_CH_BM_SLUGS,
   },
 ];
 

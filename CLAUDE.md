@@ -386,6 +386,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-25 (second) — CBSE Class 12 Chemistry board notes, all 10 chapters (2,083 q); answers cleaned (no migration).**
+  - **Assertion-reason (D) differs by subject:** Physics "both false", Chemistry and Maths "A false, R true" (counted from the papers); the brief is subject-specific.
+  - **Two keys kept against CBSE's scheme with a bracket** (2024 56/3/1 Q10, 2026 56/3/1 Q13); 2026 56/3/3 Q13-16 match no scheme file: owner audit, no key changed.
+  - **A changed result needs its animation rebuilt,** not only re-tied (NCERT Ex 2.6, 1.10 V to 1.56 V). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-25 — Exam rooms: one group chat per exam, a bubble at the bottom left (V keeps the right); migration 0289.**
   - **Owner's call over Claude's advice** (thin rooms, burst usage, study circle 3.8% Yes): every exam on day one, `exam_rooms.open` switches one off; a student sees only their profile's exams, with Join.
   - **The database holds the rules** (service-role only): member, not muted, 5 s apart, 100 a day, 1,000 chars; V 5 a day; one pin; 3 reports hide; answers marked from `is_correct`. Numbers, emails and links refused, not masked.

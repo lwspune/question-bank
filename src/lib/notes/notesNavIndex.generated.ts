@@ -5323,5 +5323,75 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "CBSE Class 12 Physics",
     "chapterSlug": "semiconductor-electronics",
     "subtopicCount": 5
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "solutions",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "electrochemistry",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "chemical-kinetics",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "d-and-f-block-elements",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "coordination-compounds",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "haloalkanes-and-haloarenes",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "alcohols-phenols-and-ethers",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "aldehydes-ketones-and-carboxylic-acids",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "amines",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectRoute": "cbse-12-chemistry",
+    "subjectDisplay": "CBSE Class 12 Chemistry",
+    "chapterSlug": "biomolecules",
+    "subtopicCount": 5
   }
 ];
