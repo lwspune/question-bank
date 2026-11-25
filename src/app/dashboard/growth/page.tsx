@@ -127,6 +127,9 @@ import {
   NOTES_VISUALS_OPENERS_KEEP,
   NOTES_VISUALS_PRACTISE_PCT,
   PARTNER_COURSE_TAPPERS_KEEP,
+  EXAM_ROOMS_JOINERS_KEEP,
+  EXAM_ROOMS_RETURN_LIFT,
+  EXAM_ROOMS_MESSAGES_PER_DAY,
   WHY_NOT_BUY_LEAD_PCT,
   WHY_NOT_BUY_MIN_ANSWERS,
   PARENT_PAY_KEEP,
@@ -1025,6 +1028,14 @@ export default async function GrowthPage() {
             Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with{" "}
             <code>scripts/partner-courses/readout.sql</code>: take the courses to Defence Mania as a deal if{" "}
             {PARTNER_COURSE_TAPPERS_KEEP}+ different students tap one; otherwise take the course shelves down.
+          </p>
+        );
+      case "exam-rooms":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with <code>scripts/rooms/readout.sql</code>: keep
+            the rooms if {EXAM_ROOMS_JOINERS_KEEP}+ students join, joiners come back on {EXAM_ROOMS_RETURN_LIFT}x+ the days
+            of matched non-joiners, and the 3 busiest rooms average {EXAM_ROOMS_MESSAGES_PER_DAY}+ student message a day.
           </p>
         );
       case "practice-trial":
