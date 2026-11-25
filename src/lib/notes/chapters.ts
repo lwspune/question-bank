@@ -3636,6 +3636,36 @@ import {
   CB_CH_BM_NOTES,
   CB_CH_BM_SLUGS,
 } from "@/app/notes/cbse-12-chemistry/biomolecules/_data";
+import {
+  CB_MA_IT_CHAPTER,
+  CB_MA_IT_NOTES,
+  CB_MA_IT_SLUGS,
+} from "@/app/notes/cbse-12-maths/inverse-trigonometric-functions/_data";
+import {
+  CB_MA_RF_CHAPTER,
+  CB_MA_RF_NOTES,
+  CB_MA_RF_SLUGS,
+} from "@/app/notes/cbse-12-maths/relations-and-functions/_data";
+import {
+  CB_MA_MT_CHAPTER,
+  CB_MA_MT_NOTES,
+  CB_MA_MT_SLUGS,
+} from "@/app/notes/cbse-12-maths/matrices/_data";
+import {
+  CB_MA_DT_CHAPTER,
+  CB_MA_DT_NOTES,
+  CB_MA_DT_SLUGS,
+} from "@/app/notes/cbse-12-maths/determinants/_data";
+import {
+  CB_MA_AD_CHAPTER,
+  CB_MA_AD_NOTES,
+  CB_MA_AD_SLUGS,
+} from "@/app/notes/cbse-12-maths/application-of-derivatives/_data";
+import {
+  CB_MA_CD_CHAPTER,
+  CB_MA_CD_NOTES,
+  CB_MA_CD_SLUGS,
+} from "@/app/notes/cbse-12-maths/continuity-and-differentiability/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -11685,6 +11715,72 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CB_CH_BM_CHAPTER,
     notes: CB_CH_BM_NOTES,
     slugs: CB_CH_BM_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "cbse-12-maths",
+    subjectDisplay: "CBSE Class 12 Maths",
+    chapterSlug: "inverse-trigonometric-functions",
+    chipLabel: "Inverse Trigonometric Functions notes",
+    chapter: CB_MA_IT_CHAPTER,
+    notes: CB_MA_IT_NOTES,
+    slugs: CB_MA_IT_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "cbse-12-maths",
+    subjectDisplay: "CBSE Class 12 Maths",
+    chapterSlug: "relations-and-functions",
+    chipLabel: "Relations and Functions notes",
+    chapter: CB_MA_RF_CHAPTER,
+    notes: CB_MA_RF_NOTES,
+    slugs: CB_MA_RF_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "cbse-12-maths",
+    subjectDisplay: "CBSE Class 12 Maths",
+    chapterSlug: "matrices",
+    chipLabel: "Matrices notes",
+    chapter: CB_MA_MT_CHAPTER,
+    notes: CB_MA_MT_NOTES,
+    slugs: CB_MA_MT_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "cbse-12-maths",
+    subjectDisplay: "CBSE Class 12 Maths",
+    chapterSlug: "determinants",
+    chipLabel: "Determinants notes",
+    chapter: CB_MA_DT_CHAPTER,
+    notes: CB_MA_DT_NOTES,
+    slugs: CB_MA_DT_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "cbse-12-maths",
+    subjectDisplay: "CBSE Class 12 Maths",
+    chapterSlug: "application-of-derivatives",
+    chipLabel: "Application of Derivatives notes",
+    chapter: CB_MA_AD_CHAPTER,
+    notes: CB_MA_AD_NOTES,
+    slugs: CB_MA_AD_SLUGS,
+  },
+  {
+    examName: "CBSE Class 12",
+    subjectName: "Mathematics",
+    subjectRoute: "cbse-12-maths",
+    subjectDisplay: "CBSE Class 12 Maths",
+    chapterSlug: "continuity-and-differentiability",
+    chipLabel: "Continuity and Differentiability notes",
+    chapter: CB_MA_CD_CHAPTER,
+    notes: CB_MA_CD_NOTES,
+    slugs: CB_MA_CD_SLUGS,
   },
 ];
 

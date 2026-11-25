@@ -295,6 +295,16 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     amines: { cls: 12, chapterNo: 9, book: "NCERT XII 9 Amines" },
     biomolecules: { cls: 12, chapterNo: 10, book: "NCERT XII 10 Biomolecules" },
   },
+  // CBSE Class 12 Mathematics (board notes, 2026-11-25): the rationalised NCERT Class XII book.
+  // Add each chapter as it ships.
+  "cbse-12-maths": {
+    "relations-and-functions": { cls: 12, chapterNo: 1, book: "NCERT XII 1 Relations and Functions" },
+    "inverse-trigonometric-functions": { cls: 12, chapterNo: 2, book: "NCERT XII 2 Inverse Trigonometric Functions" },
+    matrices: { cls: 12, chapterNo: 3, book: "NCERT XII 3 Matrices" },
+    determinants: { cls: 12, chapterNo: 4, book: "NCERT XII 4 Determinants" },
+    "continuity-and-differentiability": { cls: 12, chapterNo: 5, book: "NCERT XII 5 Continuity and Differentiability" },
+    "application-of-derivatives": { cls: 12, chapterNo: 6, book: "NCERT XII 6 Application of Derivatives" },
+  },
   // JEE Mains Chemistry follows the rationalised NCERT books (the "NCERT" spine in
   // syllabus_concepts). Judgment calls: The p-Block Elements is no longer in either
   // rationalised book but stays on the JEE syllabus, so it sits before The d- and f-Block

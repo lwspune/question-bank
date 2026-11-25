@@ -15609,6 +15609,132 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterMeta[] = [
       "tables": 15,
       "traps": 41
     }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "cbse-12-maths",
+    "subjectDisplay": "CBSE Class 12 Maths",
+    "chapterSlug": "inverse-trigonometric-functions",
+    "chipLabel": "Inverse Trigonometric Functions notes",
+    "slugs": [
+      "cbm-it-branches",
+      "cbm-it-evaluate",
+      "cbm-it-properties"
+    ],
+    "chapterName": "Inverse Trigonometric Functions",
+    "formulaCounts": {
+      "formulas": 9,
+      "tables": 2,
+      "traps": 33
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "cbse-12-maths",
+    "subjectDisplay": "CBSE Class 12 Maths",
+    "chapterSlug": "relations-and-functions",
+    "chipLabel": "Relations and Functions notes",
+    "slugs": [
+      "cbm-rf-relations",
+      "cbm-rf-equivalence",
+      "cbm-rf-functions",
+      "cbm-rf-composition"
+    ],
+    "chapterName": "Relations and Functions",
+    "formulaCounts": {
+      "formulas": 12,
+      "tables": 1,
+      "traps": 39
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "cbse-12-maths",
+    "subjectDisplay": "CBSE Class 12 Maths",
+    "chapterSlug": "matrices",
+    "chipLabel": "Matrices notes",
+    "slugs": [
+      "cbm-mt-order",
+      "cbm-mt-equality",
+      "cbm-mt-addition",
+      "cbm-mt-multiplication",
+      "cbm-mt-transpose",
+      "cbm-mt-symmetric",
+      "cbm-mt-inverse"
+    ],
+    "chapterName": "Matrices",
+    "formulaCounts": {
+      "formulas": 20,
+      "tables": 1,
+      "traps": 56
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "cbse-12-maths",
+    "subjectDisplay": "CBSE Class 12 Maths",
+    "chapterSlug": "determinants",
+    "chipLabel": "Determinants notes",
+    "slugs": [
+      "cbm-dt-expand",
+      "cbm-dt-area",
+      "cbm-dt-cofactors",
+      "cbm-dt-inverse",
+      "cbm-dt-system"
+    ],
+    "chapterName": "Determinants",
+    "formulaCounts": {
+      "formulas": 17,
+      "tables": 0,
+      "traps": 43
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "cbse-12-maths",
+    "subjectDisplay": "CBSE Class 12 Maths",
+    "chapterSlug": "application-of-derivatives",
+    "chipLabel": "Application of Derivatives notes",
+    "slugs": [
+      "cbm-ad-rates",
+      "cbm-ad-increasing",
+      "cbm-ad-maxima",
+      "cbm-ad-absolute"
+    ],
+    "chapterName": "Application of Derivatives",
+    "formulaCounts": {
+      "formulas": 16,
+      "tables": 0,
+      "traps": 52
+    }
+  },
+  {
+    "examName": "CBSE Class 12",
+    "subjectName": "Mathematics",
+    "subjectRoute": "cbse-12-maths",
+    "subjectDisplay": "CBSE Class 12 Maths",
+    "chapterSlug": "continuity-and-differentiability",
+    "chipLabel": "Continuity and Differentiability notes",
+    "slugs": [
+      "cbm-cd-continuity",
+      "cbm-cd-chain",
+      "cbm-cd-implicit",
+      "cbm-cd-exponential",
+      "cbm-cd-logarithmic",
+      "cbm-cd-parametric",
+      "cbm-cd-second"
+    ],
+    "chapterName": "Continuity and Differentiability",
+    "formulaCounts": {
+      "formulas": 24,
+      "tables": 1,
+      "traps": 51
+    }
   }
 ];
 
@@ -16383,4 +16509,10 @@ export const NOTES_CHAPTER_LOADERS: Record<string, () => Promise<{ chapter: Chap
   "cbse-12-chemistry/aldehydes-ketones-and-carboxylic-acids": () => import("@/app/notes/cbse-12-chemistry/aldehydes-ketones-and-carboxylic-acids/_data").then((m) => ({ chapter: m.CB_CH_AK_CHAPTER, notes: m.CB_CH_AK_NOTES })),
   "cbse-12-chemistry/amines": () => import("@/app/notes/cbse-12-chemistry/amines/_data").then((m) => ({ chapter: m.CB_CH_AM_CHAPTER, notes: m.CB_CH_AM_NOTES })),
   "cbse-12-chemistry/biomolecules": () => import("@/app/notes/cbse-12-chemistry/biomolecules/_data").then((m) => ({ chapter: m.CB_CH_BM_CHAPTER, notes: m.CB_CH_BM_NOTES })),
+  "cbse-12-maths/inverse-trigonometric-functions": () => import("@/app/notes/cbse-12-maths/inverse-trigonometric-functions/_data").then((m) => ({ chapter: m.CB_MA_IT_CHAPTER, notes: m.CB_MA_IT_NOTES })),
+  "cbse-12-maths/relations-and-functions": () => import("@/app/notes/cbse-12-maths/relations-and-functions/_data").then((m) => ({ chapter: m.CB_MA_RF_CHAPTER, notes: m.CB_MA_RF_NOTES })),
+  "cbse-12-maths/matrices": () => import("@/app/notes/cbse-12-maths/matrices/_data").then((m) => ({ chapter: m.CB_MA_MT_CHAPTER, notes: m.CB_MA_MT_NOTES })),
+  "cbse-12-maths/determinants": () => import("@/app/notes/cbse-12-maths/determinants/_data").then((m) => ({ chapter: m.CB_MA_DT_CHAPTER, notes: m.CB_MA_DT_NOTES })),
+  "cbse-12-maths/application-of-derivatives": () => import("@/app/notes/cbse-12-maths/application-of-derivatives/_data").then((m) => ({ chapter: m.CB_MA_AD_CHAPTER, notes: m.CB_MA_AD_NOTES })),
+  "cbse-12-maths/continuity-and-differentiability": () => import("@/app/notes/cbse-12-maths/continuity-and-differentiability/_data").then((m) => ({ chapter: m.CB_MA_CD_CHAPTER, notes: m.CB_MA_CD_NOTES })),
 };

@@ -774,4 +774,10 @@ export const NOTES_CHAPTER_INDEX: readonly NotesChapterRef[] = [
   {"key":"cbse-12-chemistry/aldehydes-ketones-and-carboxylic-acids","examName":"CBSE Class 12","chapterName":"Aldehydes, Ketones and Carboxylic Acids","slugs":["cbc-ak-nomenclature","cbc-ak-preparation","cbc-ak-physical","cbc-ak-reactions","cbc-ak-carboxyl","cbc-ak-acidprep","cbc-ak-acidphysical","cbc-ak-acidreactions"]},
   {"key":"cbse-12-chemistry/amines","examName":"CBSE Class 12","chapterName":"Amines","slugs":["cbc-am-classification","cbc-am-nomenclature","cbc-am-preparation","cbc-am-physical","cbc-am-reactions","cbc-am-diazonium","cbc-am-synthesis"]},
   {"key":"cbse-12-chemistry/biomolecules","examName":"CBSE Class 12","chapterName":"Biomolecules","slugs":["cbc-bm-carbohydrates","cbc-bm-proteins","cbc-bm-enzymes","cbc-bm-vitamins","cbc-bm-nucleic"]},
+  {"key":"cbse-12-maths/inverse-trigonometric-functions","examName":"CBSE Class 12","chapterName":"Inverse Trigonometric Functions","slugs":["cbm-it-branches","cbm-it-evaluate","cbm-it-properties"]},
+  {"key":"cbse-12-maths/relations-and-functions","examName":"CBSE Class 12","chapterName":"Relations and Functions","slugs":["cbm-rf-relations","cbm-rf-equivalence","cbm-rf-functions","cbm-rf-composition"]},
+  {"key":"cbse-12-maths/matrices","examName":"CBSE Class 12","chapterName":"Matrices","slugs":["cbm-mt-order","cbm-mt-equality","cbm-mt-addition","cbm-mt-multiplication","cbm-mt-transpose","cbm-mt-symmetric","cbm-mt-inverse"]},
+  {"key":"cbse-12-maths/determinants","examName":"CBSE Class 12","chapterName":"Determinants","slugs":["cbm-dt-expand","cbm-dt-area","cbm-dt-cofactors","cbm-dt-inverse","cbm-dt-system"]},
+  {"key":"cbse-12-maths/application-of-derivatives","examName":"CBSE Class 12","chapterName":"Application of Derivatives","slugs":["cbm-ad-rates","cbm-ad-increasing","cbm-ad-maxima","cbm-ad-absolute"]},
+  {"key":"cbse-12-maths/continuity-and-differentiability","examName":"CBSE Class 12","chapterName":"Continuity and Differentiability","slugs":["cbm-cd-continuity","cbm-cd-chain","cbm-cd-implicit","cbm-cd-exponential","cbm-cd-logarithmic","cbm-cd-parametric","cbm-cd-second"]},
 ];
